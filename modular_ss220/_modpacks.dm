@@ -5,33 +5,32 @@ SUBSYSTEM_DEF(modpacks)
 	var/list/loaded_modpacks = list()
 
 /datum/controller/subsystem/modpacks/Initialize()
-	var/list/all_modpacks = subtypesof(/datum/modpack)
-
+	var/list/all_modpacks = list()
+	for(var/modpack in subtypesof(/datum/modpack/))
+		all_modpacks.Add(new modpack)
 	// Pre-init and register all compiled modpacks.
-	for(var/datum/modpack/manifest in all_modpacks)
-		var/fail_msg = manifest.pre_initialize()
-		if(QDELETED(manifest))
-			CRASH("Modpack of type [manifest.type] is null or queued for deletion.")
+	for(var/datum/modpack/package as anything in all_modpacks)
+		var/fail_msg = package.pre_initialize()
+		if(QDELETED(package))
+			CRASH("Modpack of type [package.type] is null or queued for deletion.")
 			continue
 		if(fail_msg)
-			CRASH("Modpack [manifest.name] failed to pre-initialize: [fail_msg].")
+			CRASH("Modpack [package.name] failed to pre-initialize: [fail_msg].")
 			continue
-		if(loaded_modpacks[manifest.name])
-			CRASH("Attempted to register duplicate modpack name [manifest.name].")
+		if(loaded_modpacks[package.name])
+			CRASH("Attempted to register duplicate modpack name [package.name].")
 			continue
-		loaded_modpacks[manifest.name] = manifest
+		loaded_modpacks.Add(package)
 
 	// Handle init and post-init (two stages in case a modpack needs to implement behavior based on the presence of other packs).
-	for(var/datum/modpack/manifest in all_modpacks)
-		var/fail_msg = manifest.initialize()
+	for(var/datum/modpack/package as anything in all_modpacks)
+		var/fail_msg = package.initialize()
 		if(fail_msg)
-			CRASH("Modpack [(istype(manifest) && manifest.name) || "Unknown"] failed to initialize: [fail_msg]")
-	for(var/datum/modpack/manifest in all_modpacks)
-		var/fail_msg = manifest.post_initialize()
+			CRASH("Modpack [(istype(package) && package.name) || "Unknown"] failed to initialize: [fail_msg]")
+	for(var/datum/modpack/package as anything in all_modpacks)
+		var/fail_msg = package.post_initialize()
 		if(fail_msg)
-			CRASH("Modpack [(istype(manifest) && manifest.name) || "Unknown"] failed to post-initialize: [fail_msg]")
-
-	. = ..()
+			CRASH("Modpack [(istype(package) && package.name) || "Unknown"] failed to post-initialize: [fail_msg]")
 
 /client/verb/modpacks_list()
 	set name = "Modpacks List"
@@ -42,7 +41,7 @@ SUBSYSTEM_DEF(modpacks)
 
 	if(length(SSmodpacks.loaded_modpacks))
 		. = "<hr><br><center><b><font size = 3>Список модификаций</font></b></center><br><hr><br>"
-		for(var/datum/modpack/M in SSmodpacks.loaded_modpacks)
+		for(var/datum/modpack/M as anything in SSmodpacks.loaded_modpacks)
 			if(M.name)
 				. += "<div class = 'statusDisplay'>"
 				. += "<center><b>[M.name]</b></center>"
