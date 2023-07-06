@@ -1,3 +1,5 @@
+#define INIT_ORDER_MODPACKS 16.5
+
 SUBSYSTEM_DEF(modpacks)
 	name = "Modpacks"
 	init_order = INIT_ORDER_SOUNDS
@@ -13,13 +15,10 @@ SUBSYSTEM_DEF(modpacks)
 		var/fail_msg = package.pre_initialize()
 		if(QDELETED(package))
 			CRASH("Modpack of type [package.type] is null or queued for deletion.")
-			continue
 		if(fail_msg)
 			CRASH("Modpack [package.name] failed to pre-initialize: [fail_msg].")
-			continue
 		if(loaded_modpacks[package.name])
 			CRASH("Attempted to register duplicate modpack name [package.name].")
-			continue
 		loaded_modpacks.Add(package)
 
 	// Handle init and post-init (two stages in case a modpack needs to implement behavior based on the presence of other packs).
