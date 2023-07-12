@@ -40,6 +40,7 @@ def get_unticked_files(root:Path):
             nested_dmes = [file for file in included if ".dme" in file]
             print(f'Found {len(included)} includes and {len(nested_dmes)} nested .dme\'s in {root / includer}')
             ticked_files.update([root / Path(includer).parent / Path(PureWindowsPath(i)) for i in included])
+            print(f"DEBUG {nested_dmes}")
             INCLUDER_FILES.extend([file.replace("\\\\", "/") for file in nested_dmes])
 
     all_dm_files = {f for f in root.glob('**/*.dm')}
