@@ -158,12 +158,16 @@
 	name = "Хихикать"
 
 /datum/keybinding/emote/carbon/gurgle
+	name = "Булькать"
 
 /datum/keybinding/emote/carbon/inhale
+	name = "Вдохнуть"
 
 /datum/keybinding/emote/carbon/inhale/sharp
+	name = "Вдохнуть (резко)"
 
 /datum/keybinding/emote/carbon/kiss
+	name = "Поцеловать"
 
 /datum/keybinding/emote/carbon/wave
 	name = "Махать"
@@ -172,16 +176,19 @@
 	name = "Зевать"
 
 /datum/keybinding/emote/carbon/exhale
+	name = "Выдохнуть"
 
 /datum/keybinding/emote/carbon/laugh
 	name = "Смеяться"
 
 /datum/keybinding/emote/carbon/scowl
+	name = "Хмуриться"
 
 /datum/keybinding/emote/carbon/faint
 	name = "Потерять сознание"
 
 /datum/keybinding/emote/carbon/sign
+	name = "Знак"
 
 /datum/keybinding/emote/carbon/alien/humanoid/roar
 	name = "Рычать"
@@ -192,8 +199,10 @@
 /datum/keybinding/emote/carbon/alien/humanoid/gnarl
 
 /datum/keybinding/emote/carbon/brain/alarm
+	name = "Тревога"
 
 /datum/keybinding/emote/carbon/brain/alert
+	name = "Предупреждение"
 
 /datum/keybinding/emote/carbon/brain/notice
 	name = "Оповещение"
@@ -252,6 +261,7 @@
 	name = "Салютовать"
 
 /datum/keybinding/emote/carbon/human/sign/signal
+	name = "Сигналить"
 
 /datum/keybinding/emote/carbon/human/shrug
 	name = "Пожать плечами"
@@ -260,6 +270,7 @@
 	name = "Понюхать"
 
 /datum/keybinding/emote/carbon/human/johnny
+	name = "Джонни"
 
 /datum/keybinding/emote/carbon/human/sneeze
 	name = "Чихнуть"
@@ -280,6 +291,7 @@
 	name = "Щёлкнуть пальцами"
 
 /datum/keybinding/emote/carbon/human/crack
+	name = "Хрустеть"
 
 /datum/keybinding/emote/carbon/human/fart
 	name = "Пёрнуть"
@@ -297,6 +309,7 @@
 	name = "Агрессивно махать крыльями"
 
 /datum/keybinding/emote/carbon/human/flutter
+	name = "Трепетать"
 
 /datum/keybinding/emote/carbon/human/quill
 	name = "Шуршать перьями"
@@ -311,11 +324,13 @@
 	name = "Щёлкать"
 
 /datum/keybinding/emote/carbon/human/drask_talk/drone
-
-/datum/keybinding/emote/carbon/human/drask_talk/hum
 	name = "Гудеть"
 
+/datum/keybinding/emote/carbon/human/drask_talk/hum
+	name = "Жужжать"
+
 /datum/keybinding/emote/carbon/human/drask_talk/rumble
+	name = "Урчать"
 
 /datum/keybinding/emote/carbon/human/hiss
 	name = "Шипеть"
@@ -333,19 +348,24 @@
 	name = "Рычать"
 
 /datum/keybinding/emote/carbon/human/rattle
+	name = "Греметь"
 
 /datum/keybinding/emote/carbon/human/monkey/gnarl
 
 /datum/keybinding/emote/carbon/human/monkey/roll
+	name = "Крутиться (мартышка)"
 
 /datum/keybinding/emote/carbon/human/monkey/scratch
 	name = "Почесаться"
 
 /datum/keybinding/emote/carbon/human/monkey/tail
+	name = "Хвост (мартышка)"
 
 /datum/keybinding/emote/carbon/human/monkey/scream/screech
+	name = "Визжать (мартышка)"
 
 /datum/keybinding/emote/carbon/human/monkey/scream/screech/roar
+	name = "Рычать (мартышка)"
 
 /datum/keybinding/emote/silicon/scream
 	name = "Кричать"
@@ -363,6 +383,7 @@
 	name = "Пищать"
 
 /datum/keybinding/emote/silicon/boop
+	name = "Буп"
 
 /datum/keybinding/emote/silicon/yes
 	name = "Утвердительно"
@@ -390,7 +411,7 @@
 	name = "Рычать (пёс)"
 
 /datum/keybinding/emote/simple_animal/mouse/squeak
-	name = "Squeak (мышь)"
+	name = "Пищать (мышь)"
 
 /datum/keybinding/emote/simple_animal/pet/cat/meow
 	name = "Мяукать (кот)"
@@ -402,36 +423,37 @@
 	name = "Мурчать (кот)"
 
 /datum/keybinding/emote/simple_animal/pet/cat/sit
+	name = "Сесть/встать (кот)"
 
 /datum/keybinding/custom
 	default_emote_text = "Введите текст вашей эмоции"
 
 /datum/keybinding/custom/one
-	name = "Custom Emote 1"
+	name = "Своя эмоция 1"
 
 /datum/keybinding/custom/two
-	name = "Custom Emote 2"
+	name = "Своя эмоция 2"
 
 /datum/keybinding/custom/three
-	name = "Custom Emote 3"
+	name = "Своя эмоция 3"
 
 /datum/keybinding/custom/four
-	name = "Custom Emote 4"
+	name = "Своя эмоция 4"
 
 /datum/keybinding/custom/five
-	name = "Custom Emote 5"
+	name = "Своя эмоцияe 5"
 
 /datum/keybinding/custom/six
-	name = "Custom Emote 6"
+	name = "Своя эмоция 6"
 
 /datum/keybinding/custom/seven
-	name = "Custom Emote 7"
+	name = "Своя эмоция 7"
 
 /datum/keybinding/custom/eight
-	name = "Custom Emote 8"
+	name = "Своя эмоция 8"
 
 /datum/keybinding/custom/nine
-	name = "Custom Emote 9"
+	name = "Своя эмоция 9"
 
 /datum/keybinding/custom/ten
-	name = "Custom Emote 10"
+	name = "Своя эмоция 10"

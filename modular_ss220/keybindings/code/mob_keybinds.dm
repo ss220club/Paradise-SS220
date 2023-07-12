@@ -23,11 +23,11 @@
 	keys = list("G", "Insert")
 
 /datum/keybinding/mob/walk_hold
-	name = "Идти (Зажать)"
+	name = "Идти (зажать)"
 	keys = list("Alt")
 
 /datum/keybinding/mob/walk_toggle
-	name = "Идти (Переключить)"
+	name = "Идти (переключить)"
 
 /datum/keybinding/mob/stop_pulling
 	name = "Перестать тащить"
