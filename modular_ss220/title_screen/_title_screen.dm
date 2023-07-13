@@ -1,6 +1,6 @@
 /datum/modpack/title_screen
 	name = "Title Screen"
-	desc = "Updates Title Screen to be an image"
+	desc = "Заменяет изображение в лобби настоящей картинкой, а не объектом в мире игры."
 	author = "larentoun"
 
 /datum/modpack/title_screen/pre_initialize()
