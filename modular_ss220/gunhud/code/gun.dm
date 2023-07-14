@@ -30,6 +30,18 @@
 	. = ..()
 	SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD)
 
+/obj/item/gun/projectile/revolver/attackby(obj/item/A, mob/user, params)
+	. = ..()
+	SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD)
+
+/obj/item/gun/projectile/revolver/attack_self(mob/living/user)
+	. = ..()
+	SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD)
+
+/obj/item/weldingtool/toggle_welder(turn_off)
+	. = ..()
+	SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD)
+
 /obj/item/weldingtool/remove_fuel(amount)
 	. = ..()
 	SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD)
