@@ -3,7 +3,7 @@
 
 /datum/component/ammo_hud/Initialize()
 	. = ..()
-	if(!istype(parent, /obj/item/gun) && !istype(parent, /obj/item/weldingtool))
+	if(!istype(parent, /obj/item/gun) && !istype(parent, /obj/item/weldingtool) || istype(parent, /obj/item/gun/projectile/revolver))
 		return COMPONENT_INCOMPATIBLE
 	RegisterSignal(parent, COMSIG_ITEM_EQUIPPED, PROC_REF(wake_up))
 
@@ -114,7 +114,7 @@
 			return
 
 		var/indicator
-		var/fuel = num2text(welder.GET_FUEL)
+		var/fuel
 		var/oth_o
 		var/oth_t
 		var/oth_h
@@ -124,7 +124,7 @@
 		else
 			indicator = "flame_off"
 
-		fuel = num2text(welder.GET_FUEL)
+		fuel = num2text(round(welder.GET_FUEL))
 
 		switch(length(fuel))
 			if(1)
