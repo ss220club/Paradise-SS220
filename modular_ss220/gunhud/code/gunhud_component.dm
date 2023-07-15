@@ -1,17 +1,17 @@
-/datum/component/ammo_hud
+/datum/component/gunhud
 	var/obj/screen/ammo_counter/hud
 
-/datum/component/ammo_hud/Initialize()
+/datum/component/gunhud/Initialize()
 	. = ..()
 	if(!istype(parent, /obj/item/gun) && !istype(parent, /obj/item/weldingtool) || istype(parent, /obj/item/gun/projectile/revolver))
 		return COMPONENT_INCOMPATIBLE
 	RegisterSignal(parent, COMSIG_ITEM_EQUIPPED, PROC_REF(wake_up))
 
-/datum/component/ammo_hud/Destroy()
+/datum/component/gunhud/Destroy()
 	turn_off()
 	return ..()
 
-/datum/component/ammo_hud/proc/wake_up(datum/source, mob/user, slot)
+/datum/component/gunhud/proc/wake_up(datum/source, mob/user, slot)
 	SIGNAL_HANDLER
 
 	if(ishuman(user))
@@ -23,28 +23,28 @@
 		else
 			turn_off()
 
-/datum/component/ammo_hud/proc/turn_on()
+/datum/component/gunhud/proc/turn_on()
 	SIGNAL_HANDLER
 
 	RegisterSignal(parent, COMSIG_PARENT_PREQDELETED, PROC_REF(turn_off))
 	RegisterSignal(parent, COMSIG_ITEM_DROPPED, PROC_REF(turn_off))
-	RegisterSignal(parent, COMSIG_UPDATE_AMMO_HUD, PROC_REF(update_hud))
+	RegisterSignal(parent, COMSIG_UPDATE_GUNHUD, PROC_REF(update_hud))
 
 	hud.turn_on()
 	update_hud()
 
-/datum/component/ammo_hud/proc/turn_off()
+/datum/component/gunhud/proc/turn_off()
 	SIGNAL_HANDLER
 
 	UnregisterSignal(parent, COMSIG_PARENT_PREQDELETED)
 	UnregisterSignal(parent, COMSIG_ITEM_DROPPED)
-	UnregisterSignal(parent, COMSIG_UPDATE_AMMO_HUD)
+	UnregisterSignal(parent, COMSIG_UPDATE_GUNHUD)
 
 	if(hud)
 		hud.turn_off()
 		hud = null
 
-/datum/component/ammo_hud/proc/update_hud()
+/datum/component/gunhud/proc/update_hud()
 	SIGNAL_HANDLER
 	if(istype(parent, /obj/item/gun/projectile))
 		var/obj/item/gun/projectile/pew = parent
@@ -142,29 +142,30 @@
 				oth_h = "h9"
 		hud.set_hud(backing_color, oth_o, oth_t, oth_h, indicator)
 
-/obj/item/proc/add_ammo_hud()
+/obj/item/proc/add_gunhud()
 	return
 
-/obj/item/gun/projectile/add_ammo_hud()
-	AddComponent(/datum/component/ammo_hud)
+/obj/item/gun/projectile/add_gunhud()
+	AddComponent(/datum/component/gunhud)
 
-/obj/item/gun/projectile/revolver/add_ammo_hud()
+/obj/item/gun/projectile/revolver/add_gunhud()
 	return
 
-/obj/item/gun/energy/add_ammo_hud()
-	AddComponent(/datum/component/ammo_hud)
+/obj/item/gun/energy/add_gunhud()
+	AddComponent(/datum/component/gunhud)
 
-/obj/item/weldingtool/add_ammo_hud()
-	AddComponent(/datum/component/ammo_hud)
+/obj/item/weldingtool/add_gunhud()
+	AddComponent(/datum/component/gunhud)
 
 /obj/item/gun/projectile/Initialize(mapload)
 	. = ..()
-	add_ammo_hud()
+	add_gunhud()
 
 /obj/item/gun/energy/Initialize(mapload)
 	. = ..()
-	add_ammo_hud()
+	add_gunhud()
 
 /obj/item/weldingtool/Initialize(mapload)
 	. = ..()
-	add_ammo_hud()
+	add_gunhud()
+

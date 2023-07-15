@@ -1,20 +1,29 @@
+/datum/hud
+	var/obj/screen/ammo_counter
+
+/datum/hud/human/New(mob/living/carbon/human/owner, ui_style, ui_color, ui_alpha)
+	. = ..()
+	ammo_counter = new /obj/screen/ammo_counter()
+	ammo_counter.hud = src
+	infodisplay += ammo_counter
+
 /*
 *	Customizable ammo hud
 */
 
 /*
-*	This hud is controlled namely by the ammo_hud component. Generally speaking this is inactive much like all other hud components until it's needed.
+*	This hud is controlled namely by the gunhud component. Generally speaking this is inactive much like all other hud components until it's needed.
 *	It does not do any calculations of it's own, you must do this externally.
-*	If you wish to use this hud, use the ammo_hud component or create another one which interacts with it via the below procs.
+*	If you wish to use this hud, use the gunhud component or create another one which interacts with it via the below procs.
 *	proc/turn_off
 *	proc/turn_on
 *	proc/set_hud
-*	Check the gun_hud.dmi for all available icons you can use.
+*	Check the gunhud.dmi for all available icons you can use.
 */
 
 /obj/screen/ammo_counter
 	name = "ammo counter"
-	icon = 'modular_ss220/gunhud/icons/gun_hud.dmi'
+	icon = 'modular_ss220/gunhud/icons/gunhud.dmi'
 	icon_state = "backing"
 	screen_loc = ui_ammocounter
 	invisibility = INVISIBILITY_ABSTRACT
