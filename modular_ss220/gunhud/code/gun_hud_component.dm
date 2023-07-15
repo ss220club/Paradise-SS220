@@ -142,14 +142,29 @@
 				oth_h = "h9"
 		hud.set_hud(backing_color, oth_o, oth_t, oth_h, indicator)
 
+/obj/item/proc/add_ammo_hud()
+	return
+
+/obj/item/gun/projectile/add_ammo_hud()
+	AddComponent(/datum/component/ammo_hud)
+
+/obj/item/gun/projectile/revolver/add_ammo_hud()
+	return
+
+/obj/item/gun/energy/add_ammo_hud()
+	AddComponent(/datum/component/ammo_hud)
+
+/obj/item/weldingtool/add_ammo_hud()
+	AddComponent(/datum/component/ammo_hud)
+
 /obj/item/gun/projectile/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/ammo_hud)
+	add_ammo_hud()
 
 /obj/item/gun/energy/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/ammo_hud)
+	add_ammo_hud()
 
 /obj/item/weldingtool/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/ammo_hud)
+	add_ammo_hud()
