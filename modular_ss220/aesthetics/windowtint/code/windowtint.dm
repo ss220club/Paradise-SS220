@@ -1,5 +1,5 @@
 /obj/machinery/button/windowtint
-	icon = 'modular_ss220/visual_update/icons/windowtint.dmi'
+	icon = 'modular_ss220/aesthetics/windowtint/icons/windowtint.dmi'
 	icon_state = "polarizer-0"
 	layer = ABOVE_WINDOW_LAYER
 
@@ -7,7 +7,7 @@
 	if(!allowed(user) && !user.can_advanced_admin_interact())
 		to_chat(user, span_warning("Access Denied."))
 		flick("polarizer-denied",src)
-		playsound(src, pick('modular_ss220/visual_update/sound/machines/button.ogg', 'modular_ss220/visual_update/sound/machines/button_alternate.ogg', 'modular_ss220/visual_update/sound/machines/button_meloboom.ogg'), 20)
+		playsound(src, pick('modular_ss220/aesthetics/windowtint/sound/button.ogg', 'modular_ss220/aesthetics/windowtint/sound/button_alternate.ogg', 'modular_ss220/aesthetics/windowtint/sound/button_meloboom.ogg'), 20)
 		return 1
 
 	toggle_tint()
