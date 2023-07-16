@@ -1,4 +1,5 @@
 /obj/machinery/door/poddoor/shutters
+	icon = 'modular_ss220/aesthetics/shutters/icons/shutters.dmi'
 	var/door_open_sound = 'modular_ss220/aesthetics/shutters/sound/shutters_open.ogg'
 	var/door_close_sound = 'modular_ss220/aesthetics/shutters/sound/shutters_close.ogg'
 

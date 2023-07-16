@@ -1,5 +1,5 @@
 /obj/machinery/button/windowtint
-	icon = 'modular_ss220/aesthetics/windowtint/icons/windowtint.dmi'
+	icon = 'modular_ss220/aesthetics/windowtint/icons/polarizer.dmi'
 	icon_state = "polarizer-0"
 	layer = ABOVE_WINDOW_LAYER
 
