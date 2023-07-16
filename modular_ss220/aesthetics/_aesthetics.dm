@@ -1,4 +1,4 @@
 /datum/modpack/aesthetics
-	name = "Обновление визуального ряда"
-	desc = "Замена иконок"
+	name = "Эстетика"
+	desc = "Обновление визуального ряда"
 	author = "larentoun, Aylong220"
