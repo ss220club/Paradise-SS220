@@ -10,6 +10,10 @@
 	. = ..()
 	update_icon(UPDATE_OVERLAYS)
 
+/obj/machinery/plantgenes/update_genes()
+	. = ..()
+	update_icon(UPDATE_OVERLAYS)
+
 /obj/item/storage/bag/plants
 	icon = 'modular_ss220/aesthetics/hydroponics/icons/hydroponics.dmi'
 
