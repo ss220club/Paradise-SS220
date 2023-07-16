@@ -39,7 +39,7 @@
 		var/obj/item/gun/our_gun = O
 		our_gun.place_on_rack()
 
-/obj/structure/rack/gunrack/attackby(obj/item/W, mob/user, params)
+/obj/structure/rack/gunrack/attackby(obj/item/W, mob/user, params) //TODO: fix logic
 	if(!(istype(W, /obj/item/gun)))
 		to_chat(user, span_warning("This item doesn't fit!"))
 		return
