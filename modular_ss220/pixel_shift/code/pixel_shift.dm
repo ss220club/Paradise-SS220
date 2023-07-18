@@ -11,25 +11,17 @@
 /mob/living/silicon/ai/add_pixel_shift_component()
 	return
 
-/mob/living/movement_delay()
-	if(SEND_SIGNAL(src, COMSIG_MOB_PIXEL_SHIFTING) & COMPONENT_LIVING_PIXEL_SHIFTING)
+// Да, костыльно, но модульно по другому не вижу как
+/mob/living/Process_Spacemove(movement_dir)
+	if(SEND_SIGNAL(src, COMSIG_MOB_PIXEL_SHIFTING) & COMPONENT_LIVING_PASSABLE)
+		SEND_SIGNAL(src, COMSIG_MOB_PIXEL_SHIFT, movement_dir)
 		return 0
 	. = ..()
 
 /*
-/mob/living/Move_Pulled(atom/A)
-	. = ..()
-	if(!. || !isliving(A))
-		return
-	var/mob/living/pulled_mob = A
-	SEND_SIGNAL(pulled_mob, COMSIG_MOB_UNPIXEL_SHIFT)
-*/
-
-/*
 /atom/movable/post_buckle_mob(mob/living/M)
 	. = ..()
-
-	M.unpixel_shift()
+	SEND_SIGNAL(M, COMSIG_MOB_UNPIXEL_SHIFT)
 */
 
 /mob/living/CanPass(atom/movable/mover, turf/target, height)

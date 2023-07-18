@@ -36,7 +36,7 @@
 	UnregisterSignal(owner, COMSIG_MOB_PIXEL_SHIFT_PASSABLE)
 	UnregisterSignal(owner, COMSIG_MOB_PIXEL_SHIFTING)
 
-/datum/component/pixel_shift/proc/check_passable(dir)
+/datum/component/pixel_shift/proc/check_passable(mob/target, dir)
 	if(passthroughable & dir)
 		return COMPONENT_LIVING_PASSABLE
 
@@ -44,7 +44,7 @@
 	if(shifting)
 		return COMPONENT_LIVING_PIXEL_SHIFTING
 
-/datum/component/pixel_shift/proc/on_pixel_shift(active)
+/datum/component/pixel_shift/proc/on_pixel_shift(mob/target, active)
 	shifting = active
 
 /datum/component/pixel_shift/proc/unpixel_shift()
@@ -54,8 +54,8 @@
 		owner.pixel_x = owner.get_standard_pixel_x_offset()
 		owner.pixel_y = owner.get_standard_pixel_y_offset()
 
-/datum/component/pixel_shift/proc/pixel_shift(direction)
-	if(owner.restrained() || HAS_TRAIT(owner, TRAIT_IMMOBILIZED) || length(owner.grabbed_by) || owner.stat != CONSCIOUS)
+/datum/component/pixel_shift/proc/pixel_shift(mob/target, direction)
+	if(HAS_TRAIT(owner, TRAIT_RESTRAINED) || HAS_TRAIT(owner, TRAIT_IMMOBILIZED) || length(owner.grabbed_by) || owner.stat != CONSCIOUS)
 		return
 	passthroughable = NONE
 	switch(direction)
