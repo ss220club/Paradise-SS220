@@ -15,7 +15,7 @@
 /mob/living/Process_Spacemove(movement_dir)
 	if(SEND_SIGNAL(src, COMSIG_MOB_PIXEL_SHIFTING) & COMPONENT_LIVING_PASSABLE)
 		SEND_SIGNAL(src, COMSIG_MOB_PIXEL_SHIFT, movement_dir)
-		return 0
+		return FALSE
 	. = ..()
 
 /mob/living/CanPass(atom/movable/mover, turf/target, height)
