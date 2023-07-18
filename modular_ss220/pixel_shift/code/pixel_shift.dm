@@ -18,12 +18,6 @@
 		return 0
 	. = ..()
 
-/*
-/atom/movable/post_buckle_mob(mob/living/M)
-	. = ..()
-	SEND_SIGNAL(M, COMSIG_MOB_UNPIXEL_SHIFT)
-*/
-
 /mob/living/CanPass(atom/movable/mover, turf/target, height)
 	if(!istype(mover, /obj/item/projectile) && !mover.throwing)
 		if(SEND_SIGNAL(src, COMSIG_MOB_PIXEL_SHIFT_PASSABLE, get_dir(src, mover)) & COMPONENT_LIVING_PASSABLE)
