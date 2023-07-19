@@ -15,7 +15,7 @@
 
 /obj/structure/window/full/plasmareinforced
 	icon = 'modular_ss220/aesthetics/windows/icons/rplasma_window.dmi'
-	edge_overlay_file = 'modular_ss220/aesthetics/windows/icons/window_edges.dmi'
+	edge_overlay_file = 'modular_ss220/aesthetics/windows/icons/reinforced_window_edges.dmi'
 
 /turf/simulated/wall/indestructible/fakeglass
 	icon = 'modular_ss220/aesthetics/windows/icons/reinforced_window.dmi'
