@@ -161,7 +161,6 @@
 #define rustg_hash_generate_totp(seed) RUSTG_CALL(RUST_G, "generate_totp")(seed)
 #define rustg_hash_generate_totp_tolerance(seed, tolerance) RUSTG_CALL(RUST_G, "generate_totp_tolerance")(seed, tolerance)
 
-#define RUSTG_HASH_MD5 "md5"
 #define RUSTG_HASH_SHA1 "sha1"
 #define RUSTG_HASH_SHA256 "sha256"
 #define RUSTG_HASH_SHA512 "sha512"
