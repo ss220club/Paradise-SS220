@@ -281,11 +281,3 @@
 /obj/item/storage/box/dish_drive
 	icon = 'modular_ss220/aesthetics/boxes/icons/boxes.dmi'
 	icon_state = "box"
-
-/obj/item/storage/box/disks_plantgene
-	icon = 'modular_ss220/aesthetics/boxes/icons/boxes.dmi'
-	icon_state = "disk_box"
-
-/obj/item/storage/box/disks
-	icon = 'modular_ss220/aesthetics/boxes/icons/boxes.dmi'
-	icon_state = "disk_box"
