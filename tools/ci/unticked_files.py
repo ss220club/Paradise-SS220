@@ -27,6 +27,8 @@ INCLUDER_FILES = [
 IGNORE_FILES = {
     # Included directly in the function /datum/tgs_api/v5#ApiVersion
     'code/modules/tgs/v5/v5_interop_version.dm',
+    # Included as part of OD lints
+    'tools/ci/lints.dm'
     # Example files. They should not be included in the build
     'modular_ss220/example/code/example.dm',
     'modular_ss220/example/_example.dm'
