@@ -1,8 +1,65 @@
-// TODO: SS220-TTS to delete
-//world/proc/shelleo
 #define SHELLEO_ERRORLEVEL 1
 #define SHELLEO_STDOUT 2
 #define SHELLEO_STDERR 3
+
+#define SHELLEO_NAME "data/shelleo."
+#define SHELLEO_ERR ".err"
+#define SHELLEO_OUT ".out"
+
+/world/proc/shelleo(command)
+	var/static/list/shelleo_ids = list()
+	var/stdout = ""
+	var/stderr = ""
+	var/errorcode = 1
+	var/shelleo_id
+	var/out_file = ""
+	var/err_file = ""
+	var/static/list/interpreters = list("[MS_WINDOWS]" = "cmd /c", "[UNIX]" = "sh -c")
+	var/interpreter = interpreters["[world.system_type]"]
+	if(interpreter)
+		for(var/seo_id in shelleo_ids)
+			if(!shelleo_ids[seo_id])
+				shelleo_ids[seo_id] = TRUE
+				shelleo_id = "[seo_id]"
+				break
+		if(!shelleo_id)
+			shelleo_id = "[shelleo_ids.len + 1]"
+			shelleo_ids += shelleo_id
+			shelleo_ids[shelleo_id] = TRUE
+		out_file = "[SHELLEO_NAME][shelleo_id][SHELLEO_OUT]"
+		err_file = "[SHELLEO_NAME][shelleo_id][SHELLEO_ERR]"
+		if(world.system_type == UNIX)
+			errorcode = shell("[interpreter] \"[replacetext(command, "\"", "\\\"")]\" > [out_file] 2> [err_file]")
+		else
+			errorcode = shell("[interpreter] \"[command]\" > [out_file] 2> [err_file]")
+		if(fexists(out_file))
+			stdout = file2text(out_file)
+			fdel(out_file)
+		if(fexists(err_file))
+			stderr = file2text(err_file)
+			fdel(err_file)
+		shelleo_ids[shelleo_id] = FALSE
+	else
+		CRASH("Operating System: [world.system_type] not supported") // If you encounter this error, you are encouraged to update this proc with support for the new operating system
+	. = list(errorcode, stdout, stderr)
+
+/proc/shell_url_scrub(url)
+	var/static/regex/bad_chars_regex = regex("\[^#%&./:=?\\w]*", "g")
+	var/scrubbed_url = ""
+	var/bad_match = ""
+	var/last_good = 1
+	var/bad_chars = 1
+	do
+		bad_chars = bad_chars_regex.Find(url)
+		scrubbed_url += copytext(url, last_good, bad_chars)
+		if(bad_chars)
+			bad_match = url_encode(bad_chars_regex.match)
+			scrubbed_url += bad_match
+			last_good = bad_chars + length(bad_chars_regex.match)
+	while(bad_chars)
+	. = scrubbed_url
+
+
 
 /proc/apply_sound_effect(effect, filename_input, filename_output)
 	if(!effect)
@@ -10,8 +67,8 @@
 
 	var/taskset
 	// TODO: SS220-TTS
-	if(CONFIG_GET(string/ffmpeg_cpuaffinity))
-		taskset = "taskset -ac [CONFIG_GET(string/ffmpeg_cpuaffinity)]"
+	if(GLOB.configuration.tts.ffmpeg_cpuaffinity)
+		taskset = "taskset -ac [GLOB.configuration.tts.ffmpeg_cpuaffinity]"
 
 	var/list/output
 	switch(effect)
@@ -32,13 +89,15 @@
 	var/stderr = output[SHELLEO_STDERR]
 	if(errorlevel)
 		error("Error: apply_sound_effect([effect], [filename_input], [filename_output]) - See debug logs.")
-		// TODO: SS220-TTS log_debug -> debug_world_log
-		debug_world_log("apply_sound_effect([effect], [filename_input], [filename_output]) STDOUT: [stdout]")
-		debug_world_log("apply_sound_effect([effect], [filename_input], [filename_output]) STDERR: [stderr]")
+		log_debug("apply_sound_effect([effect], [filename_input], [filename_output]) STDOUT: [stdout]")
+		log_debug("apply_sound_effect([effect], [filename_input], [filename_output]) STDERR: [stderr]")
 		return FALSE
 	return TRUE
 
-//world/proc/shelleo
 #undef SHELLEO_ERRORLEVEL
 #undef SHELLEO_STDOUT
 #undef SHELLEO_STDERR
+
+#undef SHELLEO_NAME
+#undef SHELLEO_ERR
+#undef SHELLEO_OUT

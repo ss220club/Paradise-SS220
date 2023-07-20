@@ -183,11 +183,9 @@ SUBSYSTEM_DEF(tts220)
 	tts_seeds_names = sortTim(tts_seeds_names, /proc/cmp_text_asc)
 
 /datum/controller/subsystem/tts220/Initialize(start_timeofday)
-	is_enabled = CONFIG_GET(flag/tts_enabled)
+	is_enabled = GLOB.configuration.tts.tts_enabled
 	if(!is_enabled)
 		flags |= SS_NO_FIRE
-
-	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/tts220/fire()
 	tts_rps = tts_rps_counter
@@ -234,7 +232,7 @@ SUBSYSTEM_DEF(tts220)
 /datum/controller/subsystem/tts220/proc/queue_request(text, datum/tts_seed/seed, datum/callback/proc_callback)
 	if(LAZYLEN(tts_requests_queue) > tts_requests_queue_limit)
 		is_enabled = FALSE
-		to_chat(world, span_announce("SERVER: очередь запросов превысила лимит, подсистема SStts принудительно отключена!"))
+		to_chat(world, span_announcement("SERVER: очередь запросов превысила лимит, подсистема SStts принудительно отключена!"))
 		return FALSE
 
 	if(tts_rps_counter < tts_rps_limit)
@@ -336,7 +334,7 @@ SUBSYSTEM_DEF(tts220)
 
 	rustgss220_file_write_b64decode(voice, "[filename].ogg")
 
-	if (!CONFIG_GET(flag/tts_cache))
+	if (!GLOB.configuration.tts.tts_cache_enabled)
 		addtimer(CALLBACK(src, PROC_REF(cleanup_tts_file), "[filename].ogg"), 30 SECONDS)
 
 	for(var/datum/callback/cb in tts_queue[filename])
