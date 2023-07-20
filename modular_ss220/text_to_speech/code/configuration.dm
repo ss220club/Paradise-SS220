@@ -1,14 +1,29 @@
-/datum/config_entry/flag/tts_enabled
-	default = FALSE
-	protection = CONFIG_ENTRY_LOCKED | CONFIG_ENTRY_HIDDEN
+/datum/server_configuration
+	/// Holder for the tts configuration datum
+	var/datum/configuration_section/tts_configuration/tts
 
-/datum/config_entry/string/tts_token_silero
-	default = ""
-	protection = CONFIG_ENTRY_LOCKED | CONFIG_ENTRY_HIDDEN
+/datum/server_configuration/load_all_sections()
+	tts = new()
+	safe_load(tts, "tts_configuration")
 
-/datum/config_entry/flag/tts_cache
-	default = FALSE
-	protection = CONFIG_ENTRY_LOCKED | CONFIG_ENTRY_HIDDEN
+/datum/configuration_section/tts_configuration
+	/// Is TTS enabled
+	var/tts_enabled = FALSE
+	/// TTS API token for silero provider
+	var/tts_token_silero = ""
+	/// Should oggs be cached
+	var/tts_cache_enabled = FALSE
+	/// What cpu threads should ffmpeg use
+	var/ffmpeg_cpuaffinity
 
-/datum/config_entry/string/ffmpeg_cpuaffinity
-	protection = CONFIG_ENTRY_LOCKED | CONFIG_ENTRY_HIDDEN
+/datum/configuration_section/tts_configuration/load_data(list/data)
+	CONFIG_LOAD_BOOL(tts_enabled, data["tts_enabled"])
+	CONFIG_LOAD_STR(tts_token_silero, data["tts_token_silero"])
+	CONFIG_LOAD_BOOL(tts_cache_enabled, data["tts_cache_enabled"])
+	CONFIG_LOAD_STR(ffmpeg_cpuaffinity, data["ffmpeg_cpuaffinity"])
+
+	tts_enabled = tts_enabled & tts_token_silero
+	var/sanitized = regex(@"[^0-9,-]", "g").Replace(ffmpeg_cpuaffinity, "")
+	if(ffmpeg_cpuaffinity != sanitized)
+		log_config("Wrong value for ffmpeg_cpuaffinity. Check out taskset man page.")
+		ffmpeg_cpuaffinity = "1"
