@@ -70,7 +70,7 @@
 
 // =========== toilets ===========
 /obj/structure/toilet
-	var/is_final = FALSE
+	var/is_nt = FALSE
 
 /obj/structure/toilet/material
 	name = "Унитаз"
@@ -78,7 +78,7 @@
 	icon = 'modular_ss220/unique_objects/icons/watercloset.dmi'
 
 /obj/structure/toilet/attacked_by(obj/item/I, mob/living/user)
-	if(!istype(I, /obj/item/stack) && !is_final)
+	if(!istype(I, /obj/item/stack) && !is_nt)
 		. = ..()
 
 	var/obj/item/stack/M = I
@@ -98,7 +98,7 @@
 					construct(/obj/structure/toilet/material/captain, user, M, need_amount)
 				if(/obj/item/stack/ore/bluespace_crystal)
 					construct(/obj/structure/toilet/material/bluespace, user, M, need_amount)
-				else visible_message("Неподходящий материал для улучшения.")
+				else to_chat(user, "<span class='warning'>Неподходящий материал для улучшения.</span>")
 		if(/obj/structure/toilet/material/gold)
 			construct(/obj/structure/toilet/material/gold/nt, user, M, need_amount)
 		if(/obj/structure/toilet/material/captain)
@@ -106,13 +106,18 @@
 		if(/obj/structure/toilet/material/bluespace)
 			construct(/obj/structure/toilet/material/bluespace/nt, user, M, need_amount)
 		else
-			visible_message("Неподходящая цель для гравировки.")
+			to_chat(user, "<span class='warning'>Неподходящая цель для гравировки.</span>")
 
 /obj/structure/toilet/proc/construct(var/build_type, mob/living/user, var/obj/item/stack/M, var/amount)
-	if(do_after(user, 20, target = src))
+	if(do_after(user, 2 SECONDS, target = src))
 		M.use(amount)
 		new build_type(loc)
 		qdel(src)
+
+/obj/structure/toilet/material/bluespace/update_overlays()
+	. = ..()
+	if(open)
+		. += singulo_layer
 
 /obj/structure/toilet/material/gold
 	name = "Золотой унитаз"
@@ -123,22 +128,18 @@
 	name = "Королевский Унитаз"
 	desc = "Только самые снобные снобы и люди не имеющие вкуса будут восседать на этом троне."
 	icon_state = "gold_toilet00-NT"
-	is_final = TRUE
+	is_nt = TRUE
 
-/obj/structure/toilet/material/gold/update_icon()
+/obj/structure/toilet/material/gold/update_icon_state()
 	. = ..()
-	icon_state = "gold_toilet[open][cistern]"
-
-/obj/structure/toilet/material/gold/nt/update_icon()
-	. = ..()
-	icon_state = "gold_toilet[open][cistern]-NT"
+	icon_state = "gold_toilet[open][cistern][is_nt ? "-NT" : ""]"
 
 /obj/structure/toilet/material/captain
 	name = "Унитаз Капитана"
 	desc = "Престижное седалище для престижной персоны. Судя по форме, был идеально подготовлен под седальное место Капитана."
 	icon_state = "captain_toilet00"
 
-/obj/structure/toilet/material/captain/update_icon()
+/obj/structure/toilet/material/captain/update_icon_state()
 	. = ..()
 	icon_state = "captain_toilet[open][cistern]"
 
@@ -157,50 +158,47 @@
 	desc = "То, ради чего наука и была создана и первый гуманоид ударил палку о камень. Главное не смотреть в бездну."
 	icon_state = "bluespace_toilet00-NT"
 	tp_range = 3
-	is_final = TRUE
+	is_nt = TRUE
 
 /obj/structure/toilet/material/bluespace/emag_act(mob/user)
 	if(!emagged)
-		visible_message("Блюспейс начал переливаться красными краплениями.")
-		if(do_after(user, 20, target = src))
+		to_chat(user, "<span class='notice'>Блюспейс начал переливаться красными вкраплениями.</span>")
+		if(do_after(user, 2 SECONDS, target = src))
 			emagged = TRUE
 			tp_range = initial(tp_range) * 3
 			singulo_layer = "bluespace_toilet_singularity-emagged"
-			update_icon()
+			update_icon(UPDATE_ICON_STATE)
 			playsound(src, "sparks", 100, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
+			visible_message("<span class='warning'>Блюспейс начал переливаться словно редспейс.</span>")
 
-/obj/structure/toilet/material/bluespace/update_icon()
+/obj/structure/toilet/material/bluespace/update_icon_state()
 	. = ..()
-	icon_state = "bluespace_toilet[open][cistern]"
-
-/obj/structure/toilet/material/bluespace/nt/update_icon()
-	. = ..()
-	icon_state = "bluespace_toilet[open][cistern]-NT"
+	icon_state = "bluespace_toilet[open][cistern][is_nt ? "-NT" : ""]"
+	update_icon(UPDATE_OVERLAYS)
 
 /obj/structure/toilet/material/bluespace/attack_hand(mob/living/user)
 	. = ..()
-	overlays.Cut()
+	update_icon(UPDATE_OVERLAYS)
 	if(open)
-		overlays += image(icon, singulo_layer)
-
-		if(do_after(user, 100, target = src))
+		if(do_after(user, 10 SECONDS, target = src))
 			teleport(tp_range)
 
 /obj/structure/toilet/material/bluespace/proc/teleport(var/range_dist = 1)
 	playsound(loc, teleport_sound, 100, 1)
+	var/ext_range = range_dist * 3
 
 	var/list/objects = range(range_dist, src)
 
 	var/turf/simulated/floor/F = find_safe_turf(zlevels = src.z)
 	for(var/mob/living/H in objects)
-		do_teleport(H, F, range_dist * 3)
-		investigate_log("teleported [key_name_log(H)] to [COORD(F)]")
+		do_teleport(H, F, H.loc == loc ? 0 : ext_range)
+		investigate_log("teleported [key_name_log(H)] to [COORD(H)], with range in: [COORD(F)]")
 	for(var/obj/O in objects)
 		if(!O.anchored && O.invisibility == 0 && prob(50))
-			do_teleport(O, F, range_dist * 3)
+			do_teleport(O, F, O.loc == loc ? 0 : ext_range)
 
 	do_teleport(src, F)
 
 /obj/structure/toilet/material/bluespace/Destroy()
-	teleport(tp_range*3)
+	teleport(tp_range * 3)
 	. = ..()
