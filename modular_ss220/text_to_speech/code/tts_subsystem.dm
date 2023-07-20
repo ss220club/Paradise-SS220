@@ -232,7 +232,7 @@ SUBSYSTEM_DEF(tts220)
 /datum/controller/subsystem/tts220/proc/queue_request(text, datum/tts_seed/seed, datum/callback/proc_callback)
 	if(LAZYLEN(tts_requests_queue) > tts_requests_queue_limit)
 		is_enabled = FALSE
-		to_chat(world, span_announcement("SERVER: очередь запросов превысила лимит, подсистема SStts принудительно отключена!"))
+		to_chat(world, span_announcement("SERVER: очередь запросов превысила лимит, подсистема SStts220 принудительно отключена!"))
 		return FALSE
 
 	if(tts_rps_counter < tts_rps_limit)
@@ -383,10 +383,10 @@ SUBSYSTEM_DEF(tts220)
 	var/volume
 	var/channel
 	if(is_local)
-		volume = LOCAL_TTS_VOLUME(listener)
+		volume = 100 // LOCAL_TTS_VOLUME(listener) FURIOR TODO
 		channel = get_local_channel_by_owner(speaker)
 	else
-		volume = RADIO_TTS_VOLUME(listener)
+		volume = 100 // RADIO_TTS_VOLUME(listener) FURIOR TODO
 		channel = CHANNEL_TTS_RADIO
 
 	var/sound/output = sound(voice)

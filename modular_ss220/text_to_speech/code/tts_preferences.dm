@@ -1,7 +1,25 @@
-/datum/preferences/ui_static_data(mob/user)
-	var/list/data = ..()
+/datum/ui_module/tts_seeds_explorer
+	name = "Эксплорер TTS голосов"
+	var/phrases = TTS_PHRASES
 
-	data["tts_enabled"] = CONFIG_GET(flag/tts_enabled)
+/datum/ui_module/tts_seeds_explorer/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = FALSE, datum/tgui/master_ui = null, datum/ui_state/state = GLOB.always_state)
+	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
+	if(!ui)
+		ui = new(user, src, ui_key, "TTSSeedsExplorer", name, 550, 800, master_ui, state)
+		ui.set_autoupdate(FALSE)
+		ui.open()
+
+/datum/ui_module/tts_seeds_explorer/ui_data(mob/user)
+	var/list/data = list()
+
+	data["selected_seed"] = user.client.prefs.tts_seed
+
+	data["donator_level"] = usr.client.donator_level
+
+	return data
+
+/datum/ui_module/tts_seeds_explorer/ui_static_data(mob/user)
+	var/list/data = list()
 
 	var/list/providers = list()
 	for(var/_provider in SStts220.tts_providers)
@@ -25,49 +43,36 @@
 		))
 	data["seeds"] = seeds
 
-	data["phrases"] = TTS_PHRASES
+	data["phrases"] = phrases
 
 	return data
 
-
-/datum/preferences/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
-	. = ..()
-	if (.)
+/datum/ui_module/tts_seeds_explorer/ui_act(action, list/params)
+	if(..())
 		return
+	. = TRUE
 
-	switch (action)
+	switch(action)
 		if("listen")
 			var/phrase = params["phrase"]
 			var/seed_name = params["seed"]
 
-			if((phrase in TTS_PHRASES) && (seed_name in SStts220.tts_seeds))
-				INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(tts_cast), null, usr, phrase, seed_name, FALSE)
+			if(!(phrase in phrases))
+				return
+			if(!(seed_name in SStts220.tts_seeds))
+				return
+
+			INVOKE_ASYNC(GLOBAL_PROC, /proc/tts_cast, null, usr, phrase, seed_name, FALSE)
+		if("select")
+			var/seed_name = params["seed"]
+
+			if(!(seed_name in SStts220.tts_seeds))
+				return
+			var/datum/tts_seed/seed = SStts220.tts_seeds[seed_name]
+			if(usr.client.donator_level < seed.donator_level)
+				return
+
+			usr.client.prefs.tts_seed = seed_name
+		else
 			return FALSE
 
-		if("select_voice")
-			var/seed_name = params["seed"]
-			var/datum/preference/tts_seed = GLOB.preference_entries_by_key["tts_seed"]
-			write_preference(tts_seed, seed_name)
-			return TRUE
-
-/datum/preference/numeric/sound_tts_local
-	category = PREFERENCE_CATEGORY_GAME_PREFERENCES
-	savefile_key = "sound_tts_local"
-	savefile_identifier = PREFERENCE_PLAYER
-
-	minimum = 0
-	maximum = 100
-
-/datum/preference/numeric/sound_tts_local/create_default_value()
-	return 100
-
-/datum/preference/numeric/sound_tts_radio
-	category = PREFERENCE_CATEGORY_GAME_PREFERENCES
-	savefile_key = "sound_tts_radio"
-	savefile_identifier = PREFERENCE_PLAYER
-
-	minimum = 0
-	maximum = 100
-
-/datum/preference/numeric/sound_tts_radio/create_default_value()
-	return 50

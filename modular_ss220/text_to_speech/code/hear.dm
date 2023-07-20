@@ -1,4 +1,8 @@
-/mob/proc/Hear_tts(message, atom/movable/speaker, message_language, raw_message, radio_freq, list/spans, list/message_mods, message_range)
+
+
+
+
+/* /mob/proc/Hear_tts(message, atom/movable/speaker, message_language, raw_message, radio_freq, list/spans, list/message_mods, message_range)
 	if(!SStts220.is_enabled)
 		return
 
@@ -62,3 +66,4 @@
 	. = ..(message, speaker, message_language, plussless_message, radio_freq, spans, message_mods, message_range)
 
 	Hear_tts(message, speaker, message_language, raw_message, radio_freq, spans, message_mods, message_range)
+ */

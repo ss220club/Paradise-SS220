@@ -53,7 +53,3 @@
 		"Капитан, вы уверены что хотите назначить клоуна на должность главы персонала?",\
 	)
 
-#define LOCAL_TTS_VOLUME(mob) mob.client.prefs.read_preference(/datum/preference/numeric/sound_tts_local)
-#define RADIO_TTS_VOLUME(mob) mob.client.prefs.read_preference(/datum/preference/numeric/sound_tts_radio)
-#define LOCAL_TTS_ENABLED(mob) LOCAL_TTS_VOLUME(mob)
-#define RADIO_TTS_ENABLED(mob) RADIO_TTS_VOLUME(mob)

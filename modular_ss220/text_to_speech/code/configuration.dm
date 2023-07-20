@@ -8,6 +8,7 @@
 	safe_load(tts, "tts_configuration")
 
 /datum/configuration_section/tts_configuration
+	protection_state = PROTECTION_PRIVATE
 	/// Is TTS enabled
 	var/tts_enabled = FALSE
 	/// TTS API token for silero provider
