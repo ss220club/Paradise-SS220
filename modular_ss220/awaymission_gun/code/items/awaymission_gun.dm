@@ -22,7 +22,7 @@
 	onTransitZ(new_z = loc.z)
 
 /obj/item/gun/energy/laser/awaymission_aeg/onTransitZ(old_z, new_z)
-	if (emagged)
+	if(emagged)
 		return
 
 	if(is_away_level(new_z))
