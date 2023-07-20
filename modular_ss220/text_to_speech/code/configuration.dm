@@ -3,6 +3,7 @@
 	var/datum/configuration_section/tts_configuration/tts
 
 /datum/server_configuration/load_all_sections()
+	. = ..()
 	tts = new()
 	safe_load(tts, "tts_configuration")
 
