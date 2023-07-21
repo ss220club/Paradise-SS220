@@ -1,6 +1,7 @@
 /atom
 	var/tts_seed
 
+// SS220 TODO: usage of tts in dna
 /datum/dna
 	var/tts_seed_dna
 

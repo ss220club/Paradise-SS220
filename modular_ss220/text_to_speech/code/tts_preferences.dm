@@ -1,5 +1,3 @@
-// FURIOR TODO: actual saving in bd
-
 /datum/preferences
 	var/static/list/explorer_users = list()
 
