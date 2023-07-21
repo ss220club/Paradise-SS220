@@ -308,8 +308,10 @@ GLOBAL_LIST_INIT(special_role_times, list( //minimum age (in days) for accounts 
 
 			// SS220 ADDITION START
 			if(GLOB.configuration.tts.tts_enabled)
-				dat += "<h2>Text-to-Speech</h2>"
-				dat += "<b>Выбор голоса:</b> <a href='?_src_=prefs;preference=tts_seed;task=input'>Эксплорер TTS голосов</a><br>"
+				dat += {"
+				<h2>Text-to-Speech</h2>
+				<b>Выбор голоса:</b> <a href='?_src_=prefs;preference=tts_seed;task=input'>Эксплорер TTS голосов</a><br>
+				"}
 			// SS220 ADDITION END
 
 			dat += "<h2>Limbs</h2>"

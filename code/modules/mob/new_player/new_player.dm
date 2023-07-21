@@ -167,12 +167,12 @@
 		// SS220 ADDITION START
 		if(GLOB.configuration.tts.tts_enabled)
 			if(!client.prefs.tts_seed)
-				to_chat(usr, "<span class='danger'>Вам необходимо настроить голос персонажа! Не забудьте сохранить настройки.</span>")
+				to_chat(usr, span_danger("<span class='danger'>Вам необходимо настроить голос персонажа! Не забудьте сохранить настройки.</span>"))
 				client.prefs.ShowChoices(src)
 				return FALSE
 			var/datum/tts_seed/seed = SStts220.tts_seeds[client.prefs.tts_seed]
-			if(client.donator_level < seed.donator_level)
-				to_chat(usr, "<span class='danger'>Выбранный голос персонажа более недоступен на текущем уровне подписки!</span>")
+			if(client.donator_level < seed.required_donator_level)
+				to_chat(usr, span_danger("Выбранный голос персонажа более недоступен на текущем уровне подписки!</span>"))
 				client.prefs.ShowChoices(src)
 				return FALSE
 		// SS220 ADDITION END
@@ -256,7 +256,7 @@
 				client.prefs.ShowChoices(src)
 				return FALSE
 			var/datum/tts_seed/seed = SStts220.tts_seeds[client.prefs.tts_seed]
-			if(client.donator_level < seed.donator_level)
+			if(client.donator_level < seed.required_donator_level)
 				to_chat(usr, "<span class='danger'>Выбранный голос персонажа более недоступен на текущем уровне подписки!</span>")
 				client.prefs.ShowChoices(src)
 				return FALSE

@@ -30,9 +30,9 @@
 	if(!new_tts_seed)
 		return null
 	if(!silent_target && ismob(src) && src != user)
-		INVOKE_ASYNC(GLOBAL_PROC, /proc/tts_cast, null, src, tts_test_str, new_tts_seed, FALSE)
+		INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(tts_cast), null, src, tts_test_str, new_tts_seed, FALSE)
 	if(user)
-		INVOKE_ASYNC(GLOBAL_PROC, /proc/tts_cast, null, user, tts_test_str, new_tts_seed, FALSE)
+		INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(tts_cast), null, user, tts_test_str, new_tts_seed, FALSE)
 	return new_tts_seed
 
 /atom/proc/change_voice(mob/user, override = FALSE)
@@ -52,7 +52,7 @@
 	var/category = TTS_CATEGORY_OTHER
 	var/gender = TTS_GENDER_ANY
 	var/datum/tts_provider/provider = /datum/tts_provider
-	var/donator_level = 0
+	var/required_donator_level = 0
 
 /datum/tts_seed/vv_edit_var(var_name, var_value)
 	return FALSE

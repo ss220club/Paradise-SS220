@@ -52,7 +52,7 @@
 		var/message_tts = combine_message_tts(message_pieces, speaker, always_stars = hard_to_hear)
 		if(isrobot(speaker))
 			effect = SOUND_EFFECT_RADIO_ROBOT
-		INVOKE_ASYNC(GLOBAL_PROC, /proc/tts_cast, src, src, message_tts, speaker.tts_seed, FALSE, effect, null, null, 'sound/effects/radio_chatter.ogg')
+		INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(tts_cast), src, src, message_tts, speaker.tts_seed, FALSE, effect, null, null, 'sound/effects/radio_chatter.ogg')
 
 /mob/hear_holopad_talk(list/message_pieces, verb, mob/speaker, obj/effect/overlay/holo_pad_hologram/H)
 	. = ..()
@@ -62,4 +62,4 @@
 	var/effect = SOUND_EFFECT_RADIO
 	if(isrobot(speaker))
 		effect = SOUND_EFFECT_RADIO_ROBOT
-	INVOKE_ASYNC(GLOBAL_PROC, /proc/tts_cast, H, src, message_tts, speaker.tts_seed, TRUE, effect)
+	INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(tts_cast), H, src, message_tts, speaker.tts_seed, TRUE, effect)
