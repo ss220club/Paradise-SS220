@@ -164,6 +164,19 @@
 			ready = FALSE
 			return FALSE
 
+		// SS220 START
+		if(GLOB.configuration.tts.tts_enabled)
+			if(!client.prefs.tts_seed)
+				to_chat(usr, "<span class='danger'>Вам необходимо настроить голос персонажа! Не забудьте сохранить настройки.</span>")
+				client.prefs.ShowChoices(src)
+				return FALSE
+			var/datum/tts_seed/seed = SStts220.tts_seeds[client.prefs.tts_seed]
+			if(client.donator_level < seed.donator_level)
+				to_chat(usr, "<span class='danger'>Выбранный голос персонажа более недоступен на текущем уровне подписки!</span>")
+				client.prefs.ShowChoices(src)
+				return FALSE
+		// SS220 END
+
 		ready = !ready
 		new_player_panel_proc()
 
@@ -235,6 +248,19 @@
 		if(!can_use_species(src, client.prefs.active_character.species))
 			to_chat(src, alert("You are currently not whitelisted to play [client.prefs.active_character.species]."))
 			return FALSE
+
+		// SS220 START
+		if(GLOB.configuration.tts.tts_enabled)
+			if(!client.prefs.tts_seed)
+				to_chat(usr, "<span class='danger'>Вам необходимо настроить голос персонажа! Не забудьте сохранить настройки.</span>")
+				client.prefs.ShowChoices(src)
+				return FALSE
+			var/datum/tts_seed/seed = SStts220.tts_seeds[client.prefs.tts_seed]
+			if(client.donator_level < seed.donator_level)
+				to_chat(usr, "<span class='danger'>Выбранный голос персонажа более недоступен на текущем уровне подписки!</span>")
+				client.prefs.ShowChoices(src)
+				return FALSE
+		// SS220 END
 
 		LateChoices()
 

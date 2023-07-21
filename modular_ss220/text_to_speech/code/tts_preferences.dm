@@ -1,3 +1,9 @@
+/datum/character_save
+	var/tts_seed
+
+/datum/preferences
+	var/tts_seed
+
 /datum/ui_module/tts_seeds_explorer
 	name = "Эксплорер TTS голосов"
 	var/phrases = TTS_PHRASES
@@ -14,7 +20,7 @@
 
 	data["selected_seed"] = user.client.prefs.tts_seed
 
-	data["donator_level"] = usr.client.donator_level
+	data["donator_level"] = user.client.donator_level
 
 	return data
 

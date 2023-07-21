@@ -709,6 +709,17 @@
 
 						active_character.flavor_text = msg
 
+				// SS220 ADDITION START
+				if("tts_seed")
+					var/static/list/explorer_users = list()
+					var/datum/ui_module/tts_seeds_explorer/explorer = explorer_users[user]
+					if(!explorer)
+						explorer = new()
+						explorer_users[user] = explorer
+					explorer.ui_interact(user)
+					return
+				// SS220 ADDITION END
+
 				if("limbs")
 					var/valid_limbs = list("Left Leg", "Right Leg", "Left Arm", "Right Arm", "Left Foot", "Right Foot", "Left Hand", "Right Hand")
 					if(S.bodyflags & ALL_RPARTS)
