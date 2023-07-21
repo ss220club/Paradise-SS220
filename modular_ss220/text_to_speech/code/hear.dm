@@ -1,69 +1,68 @@
+/mob/proc/combine_message_tts(list/message_pieces, mob/speaker, always_stars = FALSE)
+	var/iteration_count = 0
+	var/msg = ""
+	for(var/datum/multilingual_say_piece/SP in message_pieces)
+		iteration_count++
+		var/piece = SP.message
+		if(piece == "")
+			continue
+
+		if(SP.speaking && SP.speaking.flags & INNATE) // TTS should not read emotes like "laughts"
+			return ""
+
+		if(iteration_count == 1)
+			piece = capitalize(piece)
+
+		if(always_stars)
+			continue
+		if(!say_understands(speaker, SP.speaking))
+			if(isanimal(speaker))
+				var/mob/living/simple_animal/S = speaker
+				if(LAZYLEN(S.speak))
+					piece = pick(S.speak)
+				else
+					continue
+			else if(SP.speaking)
+				piece = SP.speaking.scramble(piece)
+			else
+				continue
+		msg += (piece + " ")
+	return trim(msg)
 
 
-
-
-/* /mob/proc/Hear_tts(message, atom/movable/speaker, message_language, raw_message, radio_freq, list/spans, list/message_mods, message_range)
-	if(!SStts220.is_enabled)
+/mob/hear_say(list/message_pieces, verb, italics, mob/speaker, sound/speech_sound, sound_vol, sound_frequency, use_voice)
+	. = ..()
+	if(!can_hear())
 		return
 
-	if(!isliving(src) && !isobserver(src))
+	var/message_tts = combine_message_tts(message_pieces, speaker)
+	var/effect = SOUND_EFFECT_NONE
+	if(isrobot(speaker))
+		effect = SOUND_EFFECT_ROBOT
+	var/traits = TTS_TRAIT_RATE_FASTER
+	var/is_whisper = verb == "whispers"
+	if(is_whisper)
+		traits |= TTS_TRAIT_PITCH_WHISPER
+	INVOKE_ASYNC(GLOBAL_PROC, /proc/tts_cast, speaker, src, message_tts, speaker.tts_seed, TRUE, effect, traits)
+
+/mob/hear_radio(list/message_pieces, verb, part_a, part_b, mob/speaker, hard_to_hear, vname, atom/follow_target, radio_freq)
+	. = ..()
+	if(!can_hear())
 		return
 
-	if(!client)
+	if(src != speaker || isrobot(src) || isAI(src))
+		var/effect = SOUND_EFFECT_RADIO
+		var/message_tts = combine_message_tts(message_pieces, speaker, always_stars = hard_to_hear)
+		if(isrobot(speaker))
+			effect = SOUND_EFFECT_RADIO_ROBOT
+		INVOKE_ASYNC(GLOBAL_PROC, /proc/tts_cast, src, src, message_tts, speaker.tts_seed, FALSE, effect, null, null, 'sound/effects/radio_chatter.ogg')
+
+/mob/hear_holopad_talk(list/message_pieces, verb, mob/speaker, obj/effect/overlay/holo_pad_hologram/H)
+	. = ..()
+	if(!can_hear())
 		return
-
-	if(!message_language)
-		return
-
-	var/is_custom_say_emote_without_message = (MODE_CUSTOM_SAY_ERASE_INPUT in message_mods)
-	if(is_custom_say_emote_without_message)
-		return
-
-	if(stat == UNCONSCIOUS)
-		return
-
-	if(!radio_freq && !LOCAL_TTS_ENABLED(src) || radio_freq && !RADIO_TTS_ENABLED(src))
-		return
-
-	var/atom/movable/virtualspeaker/virtual_speaker = speaker
-	var/atom/movable/real_speaker = istype(virtual_speaker) ? virtual_speaker.source : speaker
-
-	var/self_radio = radio_freq && src == real_speaker
-	if(self_radio)
-		return
-
-	var/is_speaker_whispering = (WHISPER_MODE in message_mods)
-	var/can_hear_whisper = get_dist(speaker, src) <= message_range || isobserver(src)
-	if(is_speaker_whispering && !can_hear_whisper)
-		return
-
-	var/effect = issilicon(real_speaker) ? SOUND_EFFECT_ROBOT : SOUND_EFFECT_NONE
-	if(radio_freq)
-		effect = issilicon(real_speaker) ? SOUND_EFFECT_RADIO_ROBOT : SOUND_EFFECT_RADIO
-	else if(SPAN_COMMAND in spans)
-		effect = issilicon(real_speaker) ? SOUND_EFFECT_MEGAPHONE_ROBOT : SOUND_EFFECT_MEGAPHONE
-
-	var/traits = TTS_TRAIT_RATE_MEDIUM
-	if(is_speaker_whispering)
-		traits &= TTS_TRAIT_PITCH_WHISPER
-
-	var/message_tts = translate_language(language = message_language, raw_message = raw_message)
-
-	INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(tts_cast), speaker, src, message_tts, real_speaker.tts_seed, !radio_freq, effect, traits)
-
-/mob/living/Hear(message, atom/movable/speaker, message_language, raw_message, radio_freq, list/spans, list/message_mods, message_range)
-	var/static/regex/plus_sign_replace = new(@"\+", "g")
-	var/plussless_message = plus_sign_replace.Replace(raw_message, "")
-
-	. = ..(message, speaker, message_language, plussless_message, radio_freq, spans, message_mods, message_range)
-
-	Hear_tts(message, speaker, message_language, raw_message, radio_freq, spans, message_mods, message_range)
-
-/mob/dead/observer/Hear(message, atom/movable/speaker, message_language, raw_message, radio_freq, list/spans, list/message_mods, message_range)
-	var/static/regex/plus_sign_replace = new(@"\+", "g")
-	var/plussless_message = plus_sign_replace.Replace(raw_message, "")
-
-	. = ..(message, speaker, message_language, plussless_message, radio_freq, spans, message_mods, message_range)
-
-	Hear_tts(message, speaker, message_language, raw_message, radio_freq, spans, message_mods, message_range)
- */
+	var/message_tts = combine_message_tts(message_pieces, speaker)
+	var/effect = SOUND_EFFECT_RADIO
+	if(isrobot(speaker))
+		effect = SOUND_EFFECT_RADIO_ROBOT
+	INVOKE_ASYNC(GLOBAL_PROC, /proc/tts_cast, H, src, message_tts, speaker.tts_seed, TRUE, effect)

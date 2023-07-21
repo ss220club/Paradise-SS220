@@ -1,6 +1,19 @@
 /atom
 	var/tts_seed
 
+/datum/dna
+	var/tts_seed_dna
+
+/datum/dna/Clone()
+	. = ..()
+	var/datum/dna/new_dna = .
+	new_dna.tts_seed_dna = tts_seed_dna
+
+/mob/living/carbon/human/Initialize(mapload, datum/species/new_species)
+	. = ..()
+	if(dna)
+		dna.tts_seed_dna = tts_seed
+
 /atom/proc/select_voice(mob/user, silent_target = FALSE, override = FALSE)
 	if(!ismob(src) && !user)
 		return null

@@ -1,5 +1,12 @@
+// FURIOR TODO: actual saving in bd and applying of prefs
+
 /datum/character_save
 	var/tts_seed
+
+/datum/character_save/copy_to(mob/living/carbon/human/character)
+	. = ..()
+	character.tts_seed = tts_seed
+	character.dna.tts_seed_dna = tts_seed
 
 /datum/preferences
 	var/tts_seed

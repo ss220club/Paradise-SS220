@@ -2,7 +2,6 @@
 	var/name = "STUB"
 	var/is_enabled = TRUE
 
-	// Throttling
 	var/is_throttled = FALSE
 	var/throttled_until = 0
 
