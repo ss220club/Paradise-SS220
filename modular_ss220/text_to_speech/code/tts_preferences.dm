@@ -60,7 +60,7 @@
 			"category" = seed.category,
 			"gender" = seed.gender,
 			"provider" = initial(seed.provider.name),
-			"donator_level" = seed.required_donator_level,
+			"required_donator_level" = seed.required_donator_level,
 		))
 	data["seeds"] = seeds
 
