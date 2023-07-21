@@ -18,10 +18,9 @@
 		if(!say_understands(speaker, SP.speaking))
 			if(isanimal(speaker))
 				var/mob/living/simple_animal/S = speaker
-				if(LAZYLEN(S.speak))
-					piece = pick(S.speak)
-				else
+				if(!LAZYLEN(S.speak))
 					continue
+				piece = pick(S.speak)
 			else if(SP.speaking)
 				piece = SP.speaking.scramble(piece)
 			else
