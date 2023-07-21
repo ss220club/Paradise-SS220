@@ -395,9 +395,7 @@ SUBSYSTEM_DEF(tts220)
 	if(isnull(speaker))
 		output.wait = TRUE
 		output.channel = channel
-		// TODO: SS220-TTS
-		// output.volume = volume * listener.client.prefs.get_channel_volume(CHANNEL_GENERAL) * listener.client.prefs.get_channel_volume(channel)
-		output.volume = volume
+		output.volume = volume * listener.client.prefs.get_channel_volume(CHANNEL_GENERAL) * listener.client.prefs.get_channel_volume(channel)
 		output.environment = -1
 
 		if(output.volume <= 0)
@@ -451,10 +449,9 @@ SUBSYSTEM_DEF(tts220)
 	if(!M.client)
 		return _tts_seeds_names
 
-	// TODO: SS220-TTS
-	// for(var/donator_level in 0 to DONATOR_LEVEL_MAX)
-	// 	if(M.client.donator_level < donator_level)
-	// 		_tts_seeds_names -= tts_seeds_names_by_donator_levels["[donator_level]"]
+	for(var/donator_level in 0 to DONATOR_LEVEL_MAX)
+		if(M.client.donator_level < donator_level)
+			_tts_seeds_names -= tts_seeds_names_by_donator_levels["[donator_level]"]
 	return _tts_seeds_names
 
 /datum/controller/subsystem/tts220/proc/get_random_seed(owner)

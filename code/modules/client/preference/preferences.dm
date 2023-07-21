@@ -306,11 +306,11 @@ GLOBAL_LIST_INIT(special_role_times, list( //minimum age (in days) for accounts 
 			else
 				dat += "<a href=\"byond://?_src_=prefs;preference=records;record=1\">Character Records</a><br>"
 
-			// SS220 START
+			// SS220 ADDITION START
 			if(GLOB.configuration.tts.tts_enabled)
 				dat += "<h2>Text-to-Speech</h2>"
 				dat += "<b>Выбор голоса:</b> <a href='?_src_=prefs;preference=tts_seed;task=input'>Эксплорер TTS голосов</a><br>"
-			// SS220 END
+			// SS220 ADDITION END
 
 			dat += "<h2>Limbs</h2>"
 			if(S.bodyflags & HAS_ALT_HEADS) //Species with alt heads.

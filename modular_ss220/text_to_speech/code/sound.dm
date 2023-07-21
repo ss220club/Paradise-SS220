@@ -66,7 +66,6 @@
 		CRASH("Invalid sound effect chosen.")
 
 	var/taskset
-	// TODO: SS220-TTS
 	if(GLOB.configuration.tts.ffmpeg_cpuaffinity)
 		taskset = "taskset -ac [GLOB.configuration.tts.ffmpeg_cpuaffinity]"
 
