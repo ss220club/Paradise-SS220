@@ -395,7 +395,7 @@ SUBSYSTEM_DEF(tts220)
 	if(isnull(speaker))
 		output.wait = TRUE
 		output.channel = channel
-		output.volume = volume * listener.client.prefs.get_channel_volume(CHANNEL_GENERAL) * listener.client.prefs.get_channel_volume(channel)
+		output.volume = volume * listener.client.prefs.get_channel_volume(channel)
 		output.environment = -1
 
 		if(output.volume <= 0)

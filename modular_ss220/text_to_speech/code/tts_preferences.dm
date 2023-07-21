@@ -86,6 +86,7 @@
 				return
 
 			usr.client.prefs.tts_seed = seed_name
+			usr.client.prefs.active_character.tts_seed = seed_name
 		else
 			return FALSE
 
