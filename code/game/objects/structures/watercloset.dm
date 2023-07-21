@@ -106,6 +106,9 @@
 			else
 				to_chat(user, "<span class='warning'>You need a tighter grip!</span>")
 
+	if(try_construct(I, user))
+		return TRUE
+
 	if(cistern)
 		stash_goods(I, user)
 		return

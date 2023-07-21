@@ -71,15 +71,16 @@
 // =========== toilets ===========
 /obj/structure/toilet
 	var/is_nt = FALSE
+	var/is_final = FALSE
 
 /obj/structure/toilet/material
 	name = "Унитаз"
 	desc = "Особенный унитаз для особенных особ."
 	icon = 'modular_ss220/unique_objects/icons/watercloset.dmi'
 
-/obj/structure/toilet/attacked_by(obj/item/I, mob/living/user)
-	if(!istype(I, /obj/item/stack) && !is_nt)
-		. = ..()
+/obj/structure/toilet/proc/try_construct(obj/item/I, mob/living/user)
+	if(!istype(I, /obj/item/stack) && !is_final)
+		return TRUE
 
 	var/obj/item/stack/M = I
 
@@ -87,28 +88,38 @@
 	var/need_amount = is_rare ? 2 : 10
 	if(M.get_amount() < need_amount)
 		visible_message("Недостаточно материала, нужно хотя бы [need_amount] шт.")
-		. = ..()
+		return FALSE
 
 	switch(type)
 		if(/obj/structure/toilet)
 			switch(M.type)
 				if(/obj/item/stack/sheet/mineral/gold)
-					construct(/obj/structure/toilet/material/gold, user, M, need_amount)
+					construct(M, user, /obj/structure/toilet/material/gold, need_amount)
 				if(/obj/item/stack/sheet/mineral/silver)
-					construct(/obj/structure/toilet/material/captain, user, M, need_amount)
+					construct(M, user, /obj/structure/toilet/material/captain, need_amount)
 				if(/obj/item/stack/ore/bluespace_crystal)
-					construct(/obj/structure/toilet/material/bluespace, user, M, need_amount)
+					construct(M, user, /obj/structure/toilet/material/bluespace, need_amount)
 				else to_chat(user, "<span class='warning'>Неподходящий материал для улучшения.</span>")
 		if(/obj/structure/toilet/material/gold)
-			construct(/obj/structure/toilet/material/gold/nt, user, M, need_amount)
+			if(M.type == /obj/item/stack/sheet/mineral/gold)
+				construct(M, user, /obj/structure/toilet/material/gold/nt, need_amount)
+		if(/obj/structure/toilet/material/gold/nt)
+			if(M.type == /obj/item/stack/sheet/mineral/silver)
+				construct(M, user, /obj/structure/toilet/material/captain, need_amount)
 		if(/obj/structure/toilet/material/captain)
-			construct(/obj/structure/toilet/material/gold/nt, user, M, need_amount)
+			if(M.type == /obj/item/stack/sheet/mineral/gold)
+				construct(M, user, /obj/structure/toilet/material/king, need_amount)
+		if(/obj/structure/toilet/material/king)
+			if(M.type == /obj/item/stack/sheet/mineral/gold)
+				construct(M, user, /obj/structure/toilet/material/king/nt, need_amount)
 		if(/obj/structure/toilet/material/bluespace)
-			construct(/obj/structure/toilet/material/bluespace/nt, user, M, need_amount)
+			if(M.type == /obj/structure/toilet/material/bluespace)
+				construct(M, user, /obj/structure/toilet/material/bluespace/nt, need_amount)
 		else
 			to_chat(user, "<span class='warning'>Неподходящая цель для гравировки.</span>")
+	return TRUE
 
-/obj/structure/toilet/proc/construct(var/build_type, mob/living/user, var/obj/item/stack/M, var/amount)
+/obj/structure/toilet/proc/construct(var/obj/item/stack/M, mob/living/user, var/build_type, var/amount)
 	if(do_after(user, 2 SECONDS, target = src))
 		M.use(amount)
 		new build_type(loc)
@@ -125,8 +136,8 @@
 	icon_state = "gold_toilet00"
 
 /obj/structure/toilet/material/gold/nt
-	name = "Королевский Унитаз"
-	desc = "Только самые снобные снобы и люди не имеющие вкуса будут восседать на этом троне."
+	name = "Золотой унитаз Nanotrasen"
+	desc = "Особенный унитаз для лучших из Nanotrasen."
 	icon_state = "gold_toilet00-NT"
 	is_nt = TRUE
 
@@ -143,6 +154,22 @@
 	. = ..()
 	icon_state = "captain_toilet[open][cistern]"
 
+/obj/structure/toilet/material/king
+	name = "Королевский Унитаз"
+	desc = "Только самые снобные снобы и люди не имеющие вкуса будут восседать на этом троне."
+	icon_state = "king_toilet00"
+
+/obj/structure/toilet/material/king/nt
+	name = "Унитаз Верховного Командования Nanotrasen"
+	desc = "Говорят что на таких восседают самые верховные верхушки которые бы даже не посмотрели на того, кто смог соорудить такую безвкусицу. Но главное - статус!"
+	icon_state = "king_toilet00-NT"
+	is_nt = TRUE
+	is_final = TRUE
+
+/obj/structure/toilet/material/king/update_icon_state()
+	. = ..()
+	icon_state = "king_toilet[open][cistern][is_nt ? "-NT" : ""]"
+
 //Bluspace Tolkan
 /obj/structure/toilet/material/bluespace
 	name = "Научный унитаз"
@@ -151,7 +178,6 @@
 	var/singulo_layer = "bluespace_toilet_singularity"
 	var/teleport_sound = 'sound/magic/lightning_chargeup.ogg'
 	var/tp_range = 1
-	emagged = FALSE
 
 /obj/structure/toilet/material/bluespace/nt
 	name = "Воронка Бездны Синего Космоса"
@@ -159,6 +185,7 @@
 	icon_state = "bluespace_toilet00-NT"
 	tp_range = 3
 	is_nt = TRUE
+	is_final = TRUE
 
 /obj/structure/toilet/material/bluespace/emag_act(mob/user)
 	if(!emagged)

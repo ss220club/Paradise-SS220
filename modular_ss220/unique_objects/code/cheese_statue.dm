@@ -14,12 +14,15 @@
 	icon_state = "cheesus1"
 
 /obj/structure/statue/cheese/cheesus/attackby(obj/item/W, mob/user, params)
-	if(obj_integrity <= 25)
-		icon_state = "cheesus4"
-	if(obj_integrity <= 45)
-		icon_state = "cheesus3"
-	if(obj_integrity <= 65)
-		icon_state = "cheesus2"
+	switch(obj_integrity)
+		if(0 to 20)
+			icon_state = "cheesus4"
+		if(20 to 40)
+			icon_state = "cheesus3"
+		if(40 to 60)
+			icon_state = "cheesus2"
+		else
+			icon_state = "cheesus1"
 	update_icon(UPDATE_ICON_STATE)
 	return ..()
 
