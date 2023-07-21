@@ -1,4 +1,11 @@
-// FURIOR TODO: actual saving in bd and applying of prefs
+// FURIOR TODO: actual saving in bd
+
+/datum/preferences/New(client/C, datum/db_query/Q)
+	. = ..()
+	volume_mixer.Add(list(
+		"1013" = 50, // CHANNEL_TTS_LOCAL
+		"1012" = 20, // CHANNEL_TTS_RADIO
+	))
 
 /datum/character_save
 	var/tts_seed

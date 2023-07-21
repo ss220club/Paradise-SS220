@@ -380,13 +380,13 @@ SUBSYSTEM_DEF(tts220)
 
 	var/turf/turf_source = get_turf(speaker)
 
-	var/volume
-	var/channel
+	var/volume = 100
+	var/channel = CHANNEL_TTS_RADIO
 	if(is_local)
-		volume = 100 // LOCAL_TTS_VOLUME(listener) FURIOR TODO
+		volume *= listener.client.prefs.get_channel_volume(CHANNEL_TTS_LOCAL)
 		channel = get_local_channel_by_owner(speaker)
 	else
-		volume = 100 // RADIO_TTS_VOLUME(listener) FURIOR TODO
+		volume *= listener.client.prefs.get_channel_volume(CHANNEL_TTS_RADIO)
 		channel = CHANNEL_TTS_RADIO
 
 	var/sound/output = sound(voice)
