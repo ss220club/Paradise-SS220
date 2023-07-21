@@ -9,9 +9,6 @@
 	var/failed_requests = 0
 	var/failed_requests_limit = 10
 
-/datum/tts_provider/proc/send_request(list/req_body, datum/callback/proc_callback)
-	return
-
 /datum/tts_provider/proc/request(text, datum/tts_seed/seed, datum/callback/proc_callback)
 	return TRUE
 
