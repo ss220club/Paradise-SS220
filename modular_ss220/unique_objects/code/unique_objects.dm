@@ -79,8 +79,12 @@
 	icon = 'modular_ss220/unique_objects/icons/watercloset.dmi'
 
 /obj/structure/toilet/proc/try_construct(obj/item/I, mob/living/user)
-	if(!istype(I, /obj/item/stack) && !is_final)
-		return TRUE
+	if(!istype(I, /obj/item/stack))
+		return FALSE
+
+	if(!is_final)
+		to_chat(user, "<span class='warning'>Этот унитаз достиг пика своего великолепия и безвкусия. Нельзя больше улучшить.</span>")
+		return FALSE
 
 	var/obj/item/stack/M = I
 
@@ -94,12 +98,13 @@
 		if(istype(M, P))
 			is_correct = TRUE
 			break
+
 	if(!is_correct)
 		to_chat(user, "<span class='warning'>Неподходящий материал для улучшения.</span>")
 		return FALSE
 
 	var/is_rare = istype(M, /obj/item/stack/ore/bluespace_crystal)
-	var/need_amount = is_rare ? 2 : 10
+	var/need_amount = is_rare ? 2 : 5
 	if(M.get_amount() < need_amount)
 		visible_message("Недостаточно материала, нужно хотя бы [need_amount] шт.")
 		return FALSE
