@@ -16,7 +16,6 @@
 #undef rustgss220_hash_string
 #undef rustgss220_hash_file
 
-#undef RUSTG_HASH_MD5
 
 #ifdef RUSTG_OVERRIDE_BUILTINS
 	#undef md5
