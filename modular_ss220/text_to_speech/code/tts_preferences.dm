@@ -62,7 +62,7 @@
 			"category" = seed.category,
 			"gender" = seed.gender,
 			"provider" = initial(seed.provider.name),
-			"donator_level" = seed.donator_level,
+			"donator_level" = seed.required_donator_level,
 		))
 	data["seeds"] = seeds
 
@@ -92,7 +92,7 @@
 			if(!(seed_name in SStts220.tts_seeds))
 				return
 			var/datum/tts_seed/seed = SStts220.tts_seeds[seed_name]
-			if(usr.client.donator_level < seed.donator_level)
+			if(usr.client.donator_level < seed.required_donator_level)
 				return
 
 			usr.client.prefs.tts_seed = seed_name
@@ -100,3 +100,14 @@
 		else
 			return FALSE
 
+/mob/new_player/proc/check_tts_seed_ready()
+	if(GLOB.configuration.tts.tts_enabled)
+		if(!client.prefs.tts_seed)
+			to_chat(usr, span_danger("<span class='danger'>Вам необходимо настроить голос персонажа! Не забудьте сохранить настройки.</span>"))
+			client.prefs.ShowChoices(src)
+			return FALSE
+		var/datum/tts_seed/seed = SStts220.tts_seeds[client.prefs.tts_seed]
+		if(client.donator_level < seed.required_donator_level)
+			to_chat(usr, span_danger("Выбранный голос персонажа более недоступен на текущем уровне подписки!</span>"))
+			client.prefs.ShowChoices(src)
+			return FALSE

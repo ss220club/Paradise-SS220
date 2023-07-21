@@ -179,7 +179,7 @@ SUBSYSTEM_DEF(tts220)
 		seed.provider = tts_providers[initial(seed.provider.name)]
 		tts_seeds[seed.name] = seed
 		tts_seeds_names += seed.name
-		tts_seeds_names_by_donator_levels["[seed.donator_level]"] += list(seed.name)
+		tts_seeds_names_by_donator_levels["[seed.required_donator_level]"] += list(seed.name)
 	tts_seeds_names = sortTim(tts_seeds_names, /proc/cmp_text_asc)
 
 /datum/controller/subsystem/tts220/Initialize(start_timeofday)

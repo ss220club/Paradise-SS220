@@ -72,7 +72,7 @@ export const TTSSeedsExplorerContent = (props, context) => {
 
   const categories = seeds.map(seed => seed.category).filter((category, i, a) => a.indexOf(category) === i);
   const genders = seeds.map(seed => seed.gender).filter((gender, i, a) => a.indexOf(gender) === i);
-  const donatorLevels = seeds.map(seed => seed.donator_level).filter((level, i, a) => a.indexOf(level) === i).map(level => donatorTiers[level]);
+  const donatorLevels = seeds.map(seed => seed.required_donator_level).filter((level, i, a) => a.indexOf(level) === i).map(level => donatorTiers[level]);
 
   const [selectedProviders, setSelectedProviders] = useLocalState(context, 'selectedProviders', providers);
   const [selectedGenders, setSelectedGenders] = useLocalState(context, 'selectedGenders', genders);
@@ -115,7 +115,7 @@ export const TTSSeedsExplorerContent = (props, context) => {
     selectedProviders.some(provider => provider.name === seed.provider)
     && selectedGenders.includes(seed.gender)
     && selectedCategories.includes(seed.category)
-    && selectedDonatorLevels.includes(donatorTiers[seed.donator_level])
+    && selectedDonatorLevels.includes(donatorTiers[seed.required_donator_level])
     && seed.name.toLowerCase().includes(searchtext.toLowerCase())
   );
 
@@ -129,7 +129,7 @@ export const TTSSeedsExplorerContent = (props, context) => {
             fluid
             color={selected_seed === seed.name ? "green" : "transparent"}
             content={selected_seed === seed.name ? "Выбрано" : "Выбрать"}
-            tooltip={donator_level < seed.donator_level && "Требуется более высокий уровень подписки"}
+            tooltip={donator_level < seed.required_donator_level && "Требуется более высокий уровень подписки"}
             tooltipPosition="right "
             textAlign="left"
             onClick={() => act('select', { seed: seed.name })} />
@@ -145,7 +145,7 @@ export const TTSSeedsExplorerContent = (props, context) => {
         </Table.Cell>
         <Table.Cell
           bold
-          textColor={seed.donator_level > 0 && selected_seed !== seed.name ? "orange" : "white"}>
+          textColor={seed.required_donator_level > 0 && selected_seed !== seed.name ? "orange" : "white"}>
           {seed.name}
         </Table.Cell>
         <Table.Cell
@@ -169,9 +169,9 @@ export const TTSSeedsExplorerContent = (props, context) => {
           opacity={0.5}
           textColor="white"
           textAlign="right">
-          {seed.donator_level > 0 && (
+          {seed.required_donator_level > 0 && (
             <>
-              {donatorTiers[seed.donator_level]}
+              {donatorTiers[seed.required_donator_level]}
               <Icon ml={1} mr={2} name="coins" />
             </>
           )}
