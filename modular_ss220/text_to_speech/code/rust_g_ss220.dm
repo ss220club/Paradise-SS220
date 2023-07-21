@@ -47,7 +47,6 @@
 #define rustgss220_hash_string(algorithm, text) RUSTG_CALL(RUST_G_SS220, "hash_string")(algorithm, text)
 #define rustgss220_hash_file(algorithm, fname) RUSTG_CALL(RUST_G_SS220, "hash_file")(algorithm, fname)
 
-#define RUSTG_HASH_MD5 "md5"
 
 #ifdef RUSTG_OVERRIDE_BUILTINS
 	#define md5(thing) (isfile(thing) ? rustgss220_hash_file(RUSTG_HASH_MD5, "[thing]") : rustgss220_hash_string(RUSTG_HASH_MD5, thing))
