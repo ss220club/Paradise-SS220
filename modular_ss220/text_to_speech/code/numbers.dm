@@ -12,11 +12,7 @@
 	if(num.cache["[n]"])
 		return num.cache["[n]"]
 
-	var/result
-	if(decimal)
-		result = num.decimal2words(n)
-	else
-		result = num.int2words(n)
+	var/result = decimal ? num.decimal2words(n) : num.int2words(n)
 
 	result = " [result] "
 	num.cache["[n]"] = result
