@@ -40,7 +40,7 @@
 	var/is_whisper = verb == "whispers"
 	if(is_whisper)
 		traits |= TTS_TRAIT_PITCH_WHISPER
-	INVOKE_ASYNC(GLOBAL_PROC, /proc/tts_cast, speaker, src, message_tts, speaker.tts_seed, TRUE, effect, traits)
+	INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(tts_cast), speaker, src, message_tts, speaker.tts_seed, TRUE, effect, traits)
 
 /mob/hear_radio(list/message_pieces, verb, part_a, part_b, mob/speaker, hard_to_hear, vname, atom/follow_target, radio_freq)
 	. = ..()
