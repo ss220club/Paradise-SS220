@@ -7,7 +7,7 @@
 		if(piece == "")
 			continue
 
-		if(SP.speaking && SP.speaking.flags & INNATE) // TTS should not read emotes like "laughts"
+		if(SP.speaking?.flags & INNATE) // TTS should not read emotes like "laughts"
 			return ""
 
 		if(iteration_count == 1)
