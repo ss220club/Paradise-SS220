@@ -8,6 +8,7 @@
 	. = ..()
 	var/datum/dna/new_dna = .
 	new_dna.tts_seed_dna = tts_seed_dna
+	return new_dna
 
 /mob/living/carbon/human/Initialize(mapload, datum/species/new_species)
 	. = ..()
