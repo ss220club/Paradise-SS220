@@ -1,3 +1,5 @@
+#define DEFAULT_FFMPEG_CPUAFFINITY "1"
+
 /datum/server_configuration
 	/// Holder for the tts configuration datum
 	var/datum/configuration_section/tts_configuration/tts
@@ -29,3 +31,5 @@
 	if(ffmpeg_cpuaffinity != sanitized)
 		log_config("Wrong value for ffmpeg_cpuaffinity. Check out taskset man page.")
 		ffmpeg_cpuaffinity = "1"
+
+#undef DEFAULT_FFMPEG_CPUAFFINITY

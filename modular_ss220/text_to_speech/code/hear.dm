@@ -1,28 +1,29 @@
 /mob/proc/combine_message_tts(list/message_pieces, mob/speaker, always_stars = FALSE)
 	var/iteration_count = 0
 	var/msg = ""
-	for(var/datum/multilingual_say_piece/SP in message_pieces)
+	for(var/datum/multilingual_say_piece/say_piece in message_pieces)
 		iteration_count++
-		var/piece = SP.message
+		var/piece = say_piece.message
 		if(piece == "")
 			continue
 
-		if(SP.speaking?.flags & INNATE) // TTS should not read emotes like "laughts"
+		if(say_piece.speaking?.flags & INNATE) // TTS should not read emotes like "laughts"
 			return ""
+
+		if(always_stars)
+			continue
 
 		if(iteration_count == 1)
 			piece = capitalize(piece)
 
-		if(always_stars)
-			continue
-		if(!say_understands(speaker, SP.speaking))
+		if(!say_understands(speaker, say_piece.speaking))
 			if(isanimal(speaker))
 				var/mob/living/simple_animal/S = speaker
 				if(!LAZYLEN(S.speak))
 					continue
 				piece = pick(S.speak)
-			else if(SP.speaking)
-				piece = SP.speaking.scramble(piece)
+			else if(say_piece.speaking)
+				piece = say_piece.speaking.scramble(piece)
 			else
 				continue
 		msg += (piece + " ")
