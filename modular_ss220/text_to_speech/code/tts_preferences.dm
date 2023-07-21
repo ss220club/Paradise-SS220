@@ -1,5 +1,8 @@
 // FURIOR TODO: actual saving in bd
 
+/datum/preferences
+	var/static/list/explorer_users = list()
+
 /datum/preferences/New(client/C, datum/db_query/Q)
 	. = ..()
 	volume_mixer.Add(list(

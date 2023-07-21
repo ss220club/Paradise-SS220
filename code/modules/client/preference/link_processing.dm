@@ -711,7 +711,6 @@
 
 				// SS220 ADDITION START
 				if("tts_seed")
-					var/static/list/explorer_users = list()
 					var/datum/ui_module/tts_seeds_explorer/explorer = explorer_users[user]
 					if(!explorer)
 						explorer = new()
