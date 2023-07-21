@@ -85,7 +85,7 @@
 			if(!(seed_name in SStts220.tts_seeds))
 				return
 
-			INVOKE_ASYNC(GLOBAL_PROC, /proc/tts_cast, null, usr, phrase, seed_name, FALSE)
+			INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(tts_cast), null, usr, phrase, seed_name, FALSE)
 		if("select")
 			var/seed_name = params["seed"]
 
