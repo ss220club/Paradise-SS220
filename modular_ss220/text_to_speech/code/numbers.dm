@@ -80,12 +80,7 @@
 	var/plural = 3
 	var/list/name = list()
 	var/use_teens = (rest % 100 >= 10) && (rest % 100 <= 19)
-	var/list/data = list()
-
-	if(!use_teens)
-		data = list( list(units, 10), list(tens, 100), list(hundreds, 1000) )
-	else
-		data = list( list(teens, 10), list(hundreds, 1000) )
+	data = use_teens ? list(list(teens, 10), list(hundreds, 1000)) : list(list(units, 10), list(tens, 100), list(hundreds, 1000))
 	for(var/list in data)
 
 		var/names = list[1]
