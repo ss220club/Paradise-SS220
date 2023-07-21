@@ -35,9 +35,7 @@
 		return
 
 	var/message_tts = combine_message_tts(message_pieces, speaker)
-	var/effect = SOUND_EFFECT_NONE
-	if(isrobot(speaker))
-		effect = SOUND_EFFECT_ROBOT
+	var/effect = isrobot(speaker) ? SOUND_EFFECT_ROBOT : SOUND_EFFECT_NONE
 	var/traits = TTS_TRAIT_RATE_FASTER
 	var/is_whisper = verb == "whispers"
 	if(is_whisper)
