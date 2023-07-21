@@ -84,6 +84,20 @@
 
 	var/obj/item/stack/M = I
 
+	var/list/possible_materials = list(
+		/obj/item/stack/sheet/mineral/silver,
+		/obj/item/stack/sheet/mineral/gold,
+		/obj/item/stack/ore/bluespace_crystal,
+		)
+	var/is_correct = FALSE
+	for(var/P in possible_materials)
+		if(istype(M, P))
+			is_correct = TRUE
+			break
+	if(!is_correct)
+		to_chat(user, "<span class='warning'>Неподходящий материал для улучшения.</span>")
+		return FALSE
+
 	var/is_rare = istype(M, /obj/item/stack/ore/bluespace_crystal)
 	var/need_amount = is_rare ? 2 : 10
 	if(M.get_amount() < need_amount)
@@ -99,7 +113,6 @@
 					construct(M, user, /obj/structure/toilet/material/captain, need_amount)
 				if(/obj/item/stack/ore/bluespace_crystal)
 					construct(M, user, /obj/structure/toilet/material/bluespace, need_amount)
-				else to_chat(user, "<span class='warning'>Неподходящий материал для улучшения.</span>")
 		if(/obj/structure/toilet/material/gold)
 			if(M.type == /obj/item/stack/sheet/mineral/gold)
 				construct(M, user, /obj/structure/toilet/material/gold/nt, need_amount)
