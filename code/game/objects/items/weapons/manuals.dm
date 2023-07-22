@@ -34,7 +34,7 @@
 	icon_state ="bookDetective"
 	author = "Nanotrasen"
 	title = "The Film Noir: Proper Procedures for Investigations"
-	pages = list({"<html>
+	pages = list({"<html><meta charset='UTF-8'>
 			<head>
 			<style>
 			h1 {font-size: 18px; margin: 15px 0px 5px;}
@@ -75,7 +75,7 @@
 	author = "Engineering Encyclopedia"
 	title = "Particle Accelerator User's Guide"
 
-	pages = list({"<html>
+	pages = list({"<html><meta charset='UTF-8'>
 				<head>
 				<style>
 				h1 {font-size: 18px; margin: 15px 0px 5px;}
@@ -202,7 +202,7 @@
 	icon_state = "pipingbook"
 	author = "Maria Crash, Senior Atmospherics Technician"
 	title = "Pipes and You: Getting To Know Your Scary Tools"
-	pages = list({"<html>
+	pages = list({"<html><meta charset='UTF-8'>
 				<head>
 				<style>
 				h1 {font-size: 18px; margin: 15px 0px 5px;}
@@ -286,7 +286,7 @@
 	icon_state = "evabook"
 	author = "Maria Crash, Senior Atmospherics Technician"
 	title = "EVA Gear and You: Not Spending All Day Inside"
-	pages = list({"<html>
+	pages = list({"<html><meta charset='UTF-8'>
 				<head>
 				<style>
 				h1 {font-size: 18px; margin: 15px 0px 5px;}
@@ -347,7 +347,7 @@
 	author = "Engineering Encyclopedia"
 	title = "Singularity Safety in Special Circumstances"
 
-	pages = list({"<html>
+	pages = list({"<html><meta charset='UTF-8'>
 				<head>
 				<style>
 				h1 {font-size: 18px; margin: 15px 0px 5px;}
@@ -395,7 +395,7 @@
 	author = "Medical Journal, volume 3"
 	title = "Cloning techniques of the 26th century"
 
-	pages = list({"<html>
+	pages = list({"<html><meta charset='UTF-8'>
 				<head>
 				<style>
 				h1 {font-size: 18px; margin: 15px 0px 5px;}
@@ -472,7 +472,7 @@
 	author = "Weyland-Yutani Corp"
 	title = "APLU \"Ripley\" Construction and Operation Manual"
 
-	pages = list({"<html>
+	pages = list({"<html><meta charset='UTF-8'>
 				<head>
 				<style>
 				h1 {font-size: 18px; margin: 15px 0px 5px;}
@@ -547,7 +547,7 @@
 	author = "Dr. L. Ight"
 	title = "Research and Development 101"
 	pages = list({"
-	<html>
+	<html><meta charset='UTF-8'>
 				<head>
 				<style>
 				h1 {font-size: 18px; margin: 15px 0px 5px;}
@@ -597,7 +597,7 @@
 	icon_state = "barbook"
 	author = "Sir John Rose"
 	title = "Barman Recipes"
-	pages = list({"<html>
+	pages = list({"<html><meta charset='UTF-8'>
 				<head>
 				<style>
 				h1 {font-size: 18px; margin: 15px 0px 5px;}
@@ -641,7 +641,7 @@
 	author = "Syndicate"
 	protected = TRUE
 	title = "Fission Mailed: Nuclear Sabotage 101"
-	pages = list({"<html>
+	pages = list({"<html><meta charset='UTF-8'>
 			Nuclear Explosives 101:<br>
 			Hello and thank you for choosing the Syndicate for your nuclear information needs.<br>
 			Today's crash course will deal with the operation of a Fusion Class Nanotrasen made Nuclear Device.<br>
@@ -677,7 +677,7 @@
 	icon_state ="bookHydroponicsPodPeople"
 	author = "Farmer John"
 	title = "The Human Harvest - From seed to market"
-	pages = list({"<html>
+	pages = list({"<html><meta charset='UTF-8'>
 				<head>
 				<style>
 				h1 {font-size: 18px; margin: 15px 0px 5px;}
@@ -733,7 +733,7 @@
 /obj/item/book/manual/wiki/Initialize()
 	. = ..()
 	pages = list({"
-		<html><head></head><body bgcolor='[book_bgcolor]'>
+		<html><meta charset='UTF-8'><head></head><body bgcolor='[book_bgcolor]'>
 		<iframe width='100%' height='97%' src="[GLOB.configuration.url.wiki_url]/index.php/[wiki_article_title]?action=render" frameborder="0" id="main_frame"></iframe>
 		</body></html>"})
 
