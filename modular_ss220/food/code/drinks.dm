@@ -3,11 +3,11 @@
 	if(!reagents.reagent_list.len)
 		icon = initial(icon)
 		return
-	var/datum/reagent/R = reagents.get_master_reagent()
-	if(!istype(R, /datum/reagent/consumable/ethanol))
+	var/datum/reagent/reagent = reagents.get_master_reagent()
+	if(!istype(reagent, /datum/reagent/consumable/ethanol))
 		return
-	var/datum/reagent/consumable/ethanol/E = R
-	icon = E.drinking_glass_icon
+	var/datum/reagent/consumable/ethanol/booze = R
+	icon = booze.drinking_glass_icon
 
 /datum/reagent/consumable/ethanol
 	var/drinking_glass_icon = 'icons/obj/drinks.dmi'
