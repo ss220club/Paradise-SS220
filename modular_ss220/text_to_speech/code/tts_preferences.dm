@@ -16,9 +16,6 @@
 	character.tts_seed = tts_seed
 	character.dna.tts_seed_dna = tts_seed
 
-/datum/preferences
-	var/tts_seed
-
 /datum/ui_module/tts_seeds_explorer
 	name = "Эксплорер TTS голосов"
 	var/phrases = TTS_PHRASES
@@ -33,7 +30,7 @@
 /datum/ui_module/tts_seeds_explorer/ui_data(mob/user)
 	var/list/data = list()
 
-	data["selected_seed"] = user.client.prefs.tts_seed
+	data["selected_seed"] = user.client.prefs.active_character.tts_seed
 
 	data["donator_level"] = user.client.donator_level
 
@@ -93,18 +90,17 @@
 			if(usr.client.donator_level < seed.required_donator_level)
 				return
 
-			usr.client.prefs.tts_seed = seed_name
 			usr.client.prefs.active_character.tts_seed = seed_name
 		else
 			return FALSE
 
 /mob/new_player/proc/check_tts_seed_ready()
 	if(GLOB.configuration.tts.tts_enabled)
-		if(!client.prefs.tts_seed)
+		if(!client.prefs.active_character.tts_seed)
 			to_chat(usr, span_danger("Вам необходимо настроить голос персонажа! Не забудьте сохранить настройки."))
 			client.prefs.ShowChoices(src)
 			return FALSE
-		var/datum/tts_seed/seed = SStts220.tts_seeds[client.prefs.tts_seed]
+		var/datum/tts_seed/seed = SStts220.tts_seeds[client.prefs.active_character.tts_seed]
 		if(client.donator_level < seed.required_donator_level)
 			to_chat(usr, span_danger("Выбранный голос персонажа более недоступен на текущем уровне подписки!"))
 			client.prefs.ShowChoices(src)
