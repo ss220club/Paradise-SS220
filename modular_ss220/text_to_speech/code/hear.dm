@@ -51,10 +51,8 @@
 		return
 
 	if(src != speaker || isrobot(src) || isAI(src))
-		var/effect = SOUND_EFFECT_RADIO
+		var/effect = isrobot(speaker) ? SOUND_EFFECT_RADIO : SOUND_EFFECT_RADIO_ROBOT
 		var/message_tts = combine_message_tts(message_pieces, speaker, always_stars = hard_to_hear)
-		if(isrobot(speaker))
-			effect = SOUND_EFFECT_RADIO_ROBOT
 		INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(tts_cast), src, src, message_tts, speaker.tts_seed, FALSE, effect, null, null, 'modular_ss220/text_to_speech/code/sound/radio_chatter.ogg')
 
 /mob/hear_holopad_talk(list/message_pieces, verb, mob/speaker, obj/effect/overlay/holo_pad_hologram/H)
@@ -81,3 +79,4 @@
 		INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(tts_cast), null, M, message_tts, tts_seed, FALSE, SOUND_EFFECT_NONE, TTS_TRAIT_RATE_MEDIUM)
 	for(var/mob/M in garbled_receivers)
 		INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(tts_cast), null, M, garbled_message_tts, tts_seed, FALSE, SOUND_EFFECT_NONE, TTS_TRAIT_RATE_MEDIUM)
+
