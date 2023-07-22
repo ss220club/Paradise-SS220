@@ -60,9 +60,7 @@
 	if(!can_hear())
 		return
 	var/message_tts = combine_message_tts(message_pieces, speaker)
-	var/effect = SOUND_EFFECT_RADIO
-	if(isrobot(speaker))
-		effect = SOUND_EFFECT_RADIO_ROBOT
+	var/effect = isrobot(speaker) ? SOUND_EFFECT_RADIO : SOUND_EFFECT_RADIO_ROBOT
 	INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(tts_cast), H, src, message_tts, speaker.tts_seed, TRUE, effect)
 
 /datum/announcer/Message(message, garbled_message, receivers, garbled_receivers)
