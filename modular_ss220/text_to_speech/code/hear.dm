@@ -66,3 +66,18 @@
 	if(isrobot(speaker))
 		effect = SOUND_EFFECT_RADIO_ROBOT
 	INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(tts_cast), H, src, message_tts, speaker.tts_seed, TRUE, effect)
+
+/datum/announcer/Message(message, garbled_message, receivers, garbled_receivers)
+	var/tts_seed = "Glados"
+	if(GLOB.ai_list.len)
+		var/mob/living/silicon/ai/AI = pick(GLOB.ai_list)
+		tts_seed = AI.tts_seed
+	var/message_tts = message
+	var/garbled_message_tts = garbled_message
+	message = replace_characters(message, list("+"))
+	garbled_message = replace_characters(garbled_message, list("+"))
+	. = ..()
+	for(var/mob/M in receivers)
+		INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(tts_cast), null, M, message_tts, tts_seed, FALSE, SOUND_EFFECT_NONE, TTS_TRAIT_RATE_MEDIUM)
+	for(var/mob/M in garbled_receivers)
+		INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(tts_cast), null, M, garbled_message_tts, tts_seed, FALSE, SOUND_EFFECT_NONE, TTS_TRAIT_RATE_MEDIUM)
