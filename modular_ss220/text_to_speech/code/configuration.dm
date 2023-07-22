@@ -32,4 +32,8 @@
 		log_config("Wrong value for ffmpeg_cpuaffinity. Check out taskset man page.")
 		ffmpeg_cpuaffinity = "1"
 
+/datum/http_request/vv_get_var(var_name)
+	if(var_name == "body")
+		return FALSE
+
 #undef DEFAULT_FFMPEG_CPUAFFINITY
