@@ -6,7 +6,7 @@
 	var/datum/reagent/reagent = reagents.get_master_reagent()
 	if(!istype(reagent, /datum/reagent/consumable/ethanol))
 		return
-	var/datum/reagent/consumable/ethanol/booze = R
+	var/datum/reagent/consumable/ethanol/booze = reagent
 	icon = booze.drinking_glass_icon
 
 /datum/reagent/consumable/ethanol
