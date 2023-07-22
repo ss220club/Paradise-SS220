@@ -28,6 +28,7 @@
 	req_body["format"] = "ogg"
 	req_body["word_ts"] = FALSE
 
+	// FURIOR TODO: request body protection
 	SShttp.create_async_request(RUSTG_HTTP_METHOD_POST, api_url, json_encode(req_body), list("content-type" = "application/json"), proc_callback)
 
 	return TRUE

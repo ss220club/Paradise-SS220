@@ -1,3 +1,5 @@
+// FURIOR TODO: TTS FOR ANOUNCMENTS
+
 /mob/proc/combine_message_tts(list/message_pieces, mob/speaker, always_stars = FALSE)
 	var/iteration_count = 0
 	var/msg = ""
