@@ -2,10 +2,10 @@
 /// from living/Life(). (deltatime, times_fired)
 #define COMSIG_LIVING_LIFE "living_life"
 
-/// from living/handle_critical_condition
+/// from living/handle_critical_condition.
 #define COMSIG_LIVING_HANDLE_CRITICAL_CONDITION "living_handle_critical_condition"
 
-/// from living/handle_message_mode
+/// from living/handle_message_mode. (message_mode, message_pieces, verb, used_radios)
 #define COMSIG_LIVING_HANDLE_MESSAGE_MODE "living_handle_message_mode"
 	#define COMPONENT_FORCE_WHISPER (1<<0)
 
@@ -17,8 +17,3 @@
 
 #define COMPONENT_LIVING_PASSABLE (1<<0)
 #define COMPONENT_LIVING_PIXEL_SHIFTING (1<<0)
-
-/mob/living/CanPass(atom/movable/mover, turf/target, height)
-	if(SEND_SIGNAL(src, COMSIG_LIVING_CAN_ALLOW_THROUGH, mover, target, height) & COMPONENT_LIVING_PASSABLE)
-		return TRUE
-	return ..()
