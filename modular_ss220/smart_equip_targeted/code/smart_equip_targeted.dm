@@ -27,12 +27,3 @@
 
 /mob/living/carbon/human/quick_equip_item(slot_item)
 	smart_equip_targeted(slot_item)
-
-/datum/keybinding/human/bag_equip/down(client/C)
-	. = ..()
-
-/datum/keybinding/human/belt_equip/down(client/C)
-	. = ..()
-
-/datum/keybinding/human/suit_equip/down(client/C)
-	. = ..()
