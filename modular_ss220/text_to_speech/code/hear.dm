@@ -49,7 +49,7 @@
 		return
 
 	if(src != speaker || isrobot(src) || isAI(src))
-		var/effect = isrobot(speaker) ? SOUND_EFFECT_RADIO : SOUND_EFFECT_RADIO_ROBOT
+		var/effect = isrobot(speaker) ? SOUND_EFFECT_RADIO_ROBOT : SOUND_EFFECT_RADIO
 		var/message_tts = combine_message_tts(message_pieces, speaker, always_stars = hard_to_hear)
 		INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(tts_cast), src, src, message_tts, speaker.tts_seed, FALSE, effect, null, null, 'modular_ss220/text_to_speech/code/sound/radio_chatter.ogg')
 
@@ -58,7 +58,7 @@
 	if(!can_hear())
 		return
 	var/message_tts = combine_message_tts(message_pieces, speaker)
-	var/effect = isrobot(speaker) ? SOUND_EFFECT_RADIO : SOUND_EFFECT_RADIO_ROBOT
+	var/effect = isrobot(speaker) ? SOUND_EFFECT_RADIO_ROBOT : SOUND_EFFECT_RADIO
 	INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(tts_cast), H, src, message_tts, speaker.tts_seed, TRUE, effect)
 
 /datum/announcer/Message(message, garbled_message, receivers, garbled_receivers)
