@@ -20,6 +20,8 @@
 		return
 	if(thing)
 		return
+	if(!length(equipped_item.contents))
+		return
 	var/obj/item/stored = equipped_item.contents[length(equipped_item.contents)]
 	if(!stored || stored.on_found(src))
 		return
