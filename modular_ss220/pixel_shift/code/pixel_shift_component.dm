@@ -2,7 +2,7 @@
 #define PASSABLE_SHIFT_THRESHOLD 8
 
 /datum/component/pixel_shift
-	var/mob/living/owner
+	dupe_mode = COMPONENT_DUPE_UNIQUE
 	/// Whether the mob is pixel shifted or not
 	var/is_shifted = FALSE
 	/// If we are in the shifting setting.
@@ -14,10 +14,8 @@
 	. = ..()
 	if(!isliving(parent) || isAI(parent))
 		return COMPONENT_INCOMPATIBLE
-	owner = parent
 
 /datum/component/pixel_shift/RegisterWithParent()
-	. = ..()
 	RegisterSignal(owner, COMSIG_MOB_PIXEL_SHIFT_KEYBIND, PROC_REF(on_pixel_shift))
 	RegisterSignal(owner, COMSIG_MOB_UNPIXEL_SHIFT, PROC_REF(unpixel_shift))
 	RegisterSignal(owner, COMSIG_MOB_PIXEL_SHIFT, PROC_REF(pixel_shift))
@@ -27,7 +25,6 @@
 	RegisterSignal(owner, COMSIG_MOB_PIXEL_SHIFTING, PROC_REF(check_shifting))
 
 /datum/component/pixel_shift/UnregisterFromParent()
-	. = ..()
 	UnregisterSignal(owner, COMSIG_MOB_PIXEL_SHIFT_KEYBIND)
 	UnregisterSignal(owner, COMSIG_MOB_UNPIXEL_SHIFT)
 	UnregisterSignal(owner, COMSIG_MOB_PIXEL_SHIFT)
@@ -36,8 +33,10 @@
 	UnregisterSignal(owner, COMSIG_MOB_PIXEL_SHIFT_PASSABLE)
 	UnregisterSignal(owner, COMSIG_MOB_PIXEL_SHIFTING)
 
-/datum/component/pixel_shift/proc/check_passable(mob/target, dir)
-	if(passthroughable & dir)
+/datum/component/pixel_shift/proc/check_passable(mob/source, atom/movable/mover, target, height)
+	SIGNAL_HANDLER
+	var/mob/living/carbon/human/owner = parent
+	if(!istype(mover, /obj/item/projectile) && !mover.throwing && passthroughable & get_dir(owner, mover))
 		return COMPONENT_LIVING_PASSABLE
 
 /datum/component/pixel_shift/proc/check_shifting()

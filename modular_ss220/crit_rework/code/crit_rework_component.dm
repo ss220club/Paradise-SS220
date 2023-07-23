@@ -5,14 +5,15 @@
 	. = ..()
 	if(!ishuman(parent))
 		return COMPONENT_INCOMPATIBLE
+	ADD_TRAIT(parent, TRAIT_HEALTH_CRIT, SOFTCRIT_REWORK_TRAIT)
+	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, PROC_REF(on_examine))
+	RegisterSignal(parent, COMSIG_LIVING_LIFE, PROC_REF(check_health))
 
 /datum/component/softcrit/RegisterWithParent()
-	RegisterSignal(parent, COMSIG_HUMAN_HANDLE_CRITICAL_CONDITION, PROC_REF(on_handle_critical_condition))
 	RegisterSignal(parent, SIGNAL_ADDTRAIT(TRAIT_HEALTH_CRIT), PROC_REF(on_health_crit_trait_gain))
 	RegisterSignal(parent, SIGNAL_REMOVETRAIT(TRAIT_HEALTH_CRIT), PROC_REF(on_health_crit_trait_loss))
 
 /datum/component/softcrit/UnregisterFromParent()
-	UnregisterSignal(parent, COMSIG_HUMAN_HANDLE_CRITICAL_CONDITION)
 	UnregisterSignal(parent, SIGNAL_ADDTRAIT(TRAIT_HEALTH_CRIT))
 	UnregisterSignal(parent, SIGNAL_REMOVETRAIT(TRAIT_HEALTH_CRIT))
 
