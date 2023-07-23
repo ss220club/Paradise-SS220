@@ -3,8 +3,7 @@
 		return FALSE
 	. = ..()
 	if(health <= HEALTH_THRESHOLD_CRIT)
-		//AddComponent(/datum/component/softcrit) // Disabled for now
-		return
+		AddComponent(/datum/component/softcrit)
 
 /mob/living/carbon/human/check_death_method()
 	return FALSE
