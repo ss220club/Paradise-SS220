@@ -39,7 +39,7 @@ def get_unticked_files(root:Path):
     for includer in INCLUDER_FILES:
         with open(root / includer, 'r') as f:
             lines = [line for line in f.readlines() if line.startswith('#include')]
-            included = [line.replace('#include ', '').rstrip('\r\n').strip('"') for line in lines]
+            included = [line.replace('// #include ', '').replace('#include ', '').rstrip('\r\n').strip('"') for line in lines]
             includer_path = "/".join(includer.split('/')[0:-1])
             nested_dmes = [(includer_path + "/" if includer_path else "") + file for file in included if ".dme" in file]
             print(f'Found {len(included)} includes and {len(nested_dmes)} nested .dme\'s in {root / includer}')
