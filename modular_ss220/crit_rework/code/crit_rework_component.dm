@@ -1,3 +1,5 @@
+#define OLD_CRIT_TRAIT "old-crit"
+
 /datum/component/softcrit
 	dupe_mode = COMPONENT_DUPE_UNIQUE
 
@@ -19,13 +21,13 @@
 
 /datum/component/softcrit/proc/softcrit_entered()
 	SIGNAL_HANDLER
-	ADD_TRAIT(parent, TRAIT_FLOORED, "[UID()]")
-	ADD_TRAIT(parent, TRAIT_HANDS_BLOCKED, "[UID()]")
+	ADD_TRAIT(parent, TRAIT_FLOORED, OLD_CRIT_TRAIT)
+	ADD_TRAIT(parent, TRAIT_HANDS_BLOCKED, OLD_CRIT_TRAIT)
 
 /datum/component/softcrit/proc/softcrit_removed()
 	SIGNAL_HANDLER
-	REMOVE_TRAIT(parent, TRAIT_FLOORED, "[UID()]")
-	REMOVE_TRAIT(parent, TRAIT_HANDS_BLOCKED, "[UID()]")
+	REMOVE_TRAIT(parent, TRAIT_FLOORED, OLD_CRIT_TRAIT)
+	REMOVE_TRAIT(parent, TRAIT_HANDS_BLOCKED, OLD_CRIT_TRAIT)
 	qdel(src)
 	return
 
@@ -43,6 +45,6 @@
 
 /datum/component/softcrit/proc/force_whisper(mob/source, message_mode, list/message_pieces, verb, used_radios)
 	SIGNAL_HANDLER
-	var/mob/living/carbon/human/owner = parent
-	owner.whisper_say(message_pieces)
 	return COMPONENT_FORCE_WHISPER
+
+#undef OLD_CRIT_TRAIT
