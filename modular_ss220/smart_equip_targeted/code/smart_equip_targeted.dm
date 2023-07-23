@@ -1,14 +1,18 @@
 /// take the most recent item out of a slot or place held item in a slot
 /mob/living/carbon/human/proc/smart_equip_targeted(slot_item = slot_belt)
 	var/obj/item/thing = get_active_hand()
-	var/obj/item/storage/equipped_item = get_item_by_slot(slot_item)
+	var/obj/item/item_in_slot = get_item_by_slot(slot_item)
+	var/obj/item/storage/equipped_item
+	if(isstorage(item_in_slot))
+		equipped_item = item_in_slot
 	if(ismecha(loc) || HAS_TRAIT(src, TRAIT_HANDS_BLOCKED))
 		return
 	if(!istype(equipped_item))
 		if(thing)
 			equip_to_slot_if_possible(thing, slot_item)
 		else
-			equipped_item.attack_hand(src)
+			if(istype(item_in_slot))
+				item_in_slot.attack_hand(src)
 		return
 	if(thing && equipped_item.can_be_inserted(thing))
 		equipped_item.handle_item_insertion(thing)
