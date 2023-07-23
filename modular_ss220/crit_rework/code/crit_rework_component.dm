@@ -5,32 +5,28 @@
 	. = ..()
 	if(!ishuman(parent))
 		return COMPONENT_INCOMPATIBLE
-	ADD_TRAIT(parent, TRAIT_HEALTH_CRIT, SOFTCRIT_REWORK_TRAIT)
-	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, PROC_REF(on_examine))
-	RegisterSignal(parent, COMSIG_LIVING_LIFE, PROC_REF(check_health))
+	softcrit_entered()
 
 /datum/component/softcrit/RegisterWithParent()
-	RegisterSignal(parent, SIGNAL_ADDTRAIT(TRAIT_HEALTH_CRIT), PROC_REF(on_health_crit_trait_gain))
-	RegisterSignal(parent, SIGNAL_REMOVETRAIT(TRAIT_HEALTH_CRIT), PROC_REF(on_health_crit_trait_loss))
-
-/datum/component/softcrit/UnregisterFromParent()
-	UnregisterSignal(parent, SIGNAL_ADDTRAIT(TRAIT_HEALTH_CRIT))
-	UnregisterSignal(parent, SIGNAL_REMOVETRAIT(TRAIT_HEALTH_CRIT))
-
-/datum/component/softcrit/proc/on_health_crit_trait_gain()
-	SIGNAL_HANDLER
 	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, PROC_REF(on_examine))
 	RegisterSignal(parent, COMSIG_LIVING_LIFE, PROC_REF(check_health))
-	ADD_TRAIT(parent, TRAIT_FLOORED, TRAIT_HEALTH_CRIT)
-	ADD_TRAIT(parent, TRAIT_HANDS_BLOCKED, TRAIT_HEALTH_CRIT)
-	return
+	RegisterSignal(parent, COMSIG_LIVING_HANDLE_MESSAGE_MODE, PROC_REF(force_whisper))
 
-/datum/component/softcrit/proc/on_health_crit_trait_loss()
+/datum/component/softcrit/UnregisterFromParent()
+	UnregisterSignal(parent, COMSIG_PARENT_EXAMINE)
+	UnregisterSignal(parent, COMSIG_LIVING_LIFE)
+	UnregisterSignal(parent, COMSIG_LIVING_HANDLE_MESSAGE_MODE)
+
+/datum/component/softcrit/proc/softcrit_entered()
 	SIGNAL_HANDLER
-	UnregisterSignal(parent, COMSIG_PARENT_EXAMINE, PROC_REF(on_examine))
-	UnregisterSignal(parent, COMSIG_LIVING_LIFE, PROC_REF(check_health))
-	REMOVE_TRAIT(parent, TRAIT_FLOORED, TRAIT_HEALTH_CRIT)
-	REMOVE_TRAIT(parent, TRAIT_HANDS_BLOCKED, TRAIT_HEALTH_CRIT)
+	ADD_TRAIT(parent, TRAIT_FLOORED, "[UID()]")
+	ADD_TRAIT(parent, TRAIT_HANDS_BLOCKED, "[UID()]")
+
+/datum/component/softcrit/proc/softcrit_removed()
+	SIGNAL_HANDLER
+	REMOVE_TRAIT(parent, TRAIT_FLOORED, "[UID()]")
+	REMOVE_TRAIT(parent, TRAIT_HANDS_BLOCKED, "[UID()]")
+	qdel(src)
 	return
 
 /datum/component/softcrit/proc/on_examine(atom/A, mob/user, list/examine_list)
@@ -39,14 +35,14 @@
 	if(owner.stat == CONSCIOUS)
 		examine_list += span_warning("<B>[owner] с трудом держится в сознании.\n</B>")
 
-/datum/component/softcrit/proc/on_handle_critical_condition()
-	SIGNAL_HANDLER
-	var/mob/living/carbon/human/owner = parent
-	if(owner.health <= HEALTH_THRESHOLD_CRIT)
-		ADD_TRAIT(src, TRAIT_HEALTH_CRIT, SOFTCRIT_REWORK_TRAIT)
-
 /datum/component/softcrit/proc/check_health()
 	SIGNAL_HANDLER
 	var/mob/living/carbon/human/owner = parent
 	if(owner.health > HEALTH_THRESHOLD_CRIT)
-		REMOVE_TRAIT(owner, TRAIT_HEALTH_CRIT, SOFTCRIT_REWORK_TRAIT)
+		softcrit_removed()
+
+/datum/component/softcrit/proc/force_whisper(mob/source, message_mode, list/message_pieces, verb, used_radios)
+	SIGNAL_HANDLER
+	var/mob/living/carbon/human/owner = parent
+	owner.whisper_say(message_pieces)
+	return COMPONENT_FORCE_WHISPER
