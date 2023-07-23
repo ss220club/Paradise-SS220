@@ -11,11 +11,19 @@
 #undef TTS_TRAIT_RATE_FASTER
 #undef TTS_TRAIT_RATE_MEDIUM
 
-#undef rustg_ss220_file_write_b64decode
+#undef rustgss220_file_write_b64decode
+
+#undef rustgss220_hash_string
+#undef rustgss220_hash_file
+
+
+#ifdef RUSTG_OVERRIDE_BUILTINS
+	#undef md5
+#endif
 
 // Text Operations //
-#undef rustg_ss220_cyrillic_to_latin
-#undef rustg_ss220_latin_to_cyrillic
+#undef rustgss220_cyrillic_to_latin
+#undef rustgss220_latin_to_cyrillic
 
 #undef TTS_CATEGORY_OTHER
 #undef TTS_CATEGORY_WARCRAFT3

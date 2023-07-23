@@ -1,7 +1,7 @@
 //All named pets
 
-/mob/living/simple_animal/hostile/retaliate/araneus
+/mob/living/basic/giant_spider/sgt_araneus
 	tts_seed = "Anubarak"
 
-/mob/living/simple_animal/parrot/Poly
+/mob/living/simple_animal/parrot/poly
 	tts_seed = "Gyro"

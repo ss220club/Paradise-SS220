@@ -38,7 +38,7 @@ SUBSYSTEM_DEF(tts220)
 
 	var/list/tts_requests_queue = list()
 	var/tts_requests_queue_limit = 100
-	var/tts_rps_limit = 11
+	var/tts_rps_limit = 5
 
 	var/list/tts_queue = list()
 	var/list/tts_effects_queue = list()
@@ -279,17 +279,16 @@ SUBSYSTEM_DEF(tts220)
 	if(traits & TTS_TRAIT_PITCH_WHISPER)
 		text = provider.pitch_whisper(text)
 
-	var/hash = rustg_hash_string(RUSTG_HASH_MD5, lowertext(text))
-	var/filename = "data/tts_cache/[seed.name]/[hash]"
+	var/hash = rustgss220_hash_string(RUSTG_HASH_MD5, text)
+	var/filename = "sound/tts_cache/[seed.name]/[hash]"
 
+	var/datum/callback/play_tts_cb = CALLBACK(src, PROC_REF(play_tts), speaker, listener, filename, is_local, effect, preSFX, postSFX)
 
 	if(fexists("[filename].ogg"))
 		tts_reused++
 		tts_rrps_counter++
 		play_tts(speaker, listener, filename, is_local, effect, preSFX, postSFX)
 		return
-
-	var/datum/callback/play_tts_cb = CALLBACK(src, PROC_REF(play_tts), speaker, listener, filename, is_local, effect, preSFX, postSFX)
 
 	if(LAZYLEN(tts_queue[filename]))
 		tts_reused++
@@ -306,15 +305,17 @@ SUBSYSTEM_DEF(tts220)
 
 	// Bail if it errored
 	if(response.errored)
-		provider.timed_out_requests++
-		log_game(span_warning("Error connecting to [provider.name] TTS API. Please inform a maintainer or server host."))
-		message_admins(span_warning("Error connecting to [provider.name] TTS API. Please inform a maintainer or server host."))
+		provider.failed_requests++
+		if(provider.failed_requests >= provider.failed_requests_limit)
+			provider.is_enabled = FALSE
+		message_admins("<span class='warning'>Error connecting to [provider.name] TTS API. Please inform a maintainer or server host.</span>")
 		return
 
 	if(response.status_code != 200)
 		provider.failed_requests++
-		log_game(span_warning("Error performing [provider.name] TTS API request (Code: [response.status_code])"))
-		message_admins(span_warning("Error performing [provider.name] TTS API request (Code: [response.status_code])"))
+		if(provider.failed_requests >= provider.failed_requests_limit)
+			provider.is_enabled = FALSE
+		message_admins("<span class='warning'>Error performing [provider.name] TTS API request (Code: [response.status_code])</span>")
 		tts_request_failed++
 		if(response.status_code)
 			if(tts_errors["[response.status_code]"])
@@ -331,7 +332,7 @@ SUBSYSTEM_DEF(tts220)
 	if(!voice)
 		return
 
-	rustg_ss220_file_write_b64decode(voice, "[filename].ogg")
+	rustgss220_file_write_b64decode(voice, "[filename].ogg")
 
 	if (!GLOB.configuration.tts.tts_cache_enabled)
 		addtimer(CALLBACK(src, PROC_REF(cleanup_tts_file), "[filename].ogg"), 30 SECONDS)
@@ -409,7 +410,7 @@ SUBSYSTEM_DEF(tts220)
 	if(preSFX)
 		play_sfx(listener, preSFX, output.channel, output.volume, output.environment)
 
-	output = listener.playsound_local(turf_source, output, volume, S = output, channel = channel, wait = TRUE)
+	listener.playsound_local(turf_source, output, volume, S = output, channel = channel, wait = TRUE)
 
 	if(!output || output.volume <= 0)
 		return
@@ -459,7 +460,7 @@ SUBSYSTEM_DEF(tts220)
 /datum/controller/subsystem/tts220/proc/sanitize_tts_input(message)
 	var/hash
 	if(sanitized_messages_caching)
-		hash = rustg_hash_string(RUSTG_HASH_MD5, lowertext(message))
+		hash = rustgss220_hash_string(RUSTG_HASH_MD5, message)
 		if(sanitized_messages_cache[hash])
 			sanitized_messages_cache_hit++
 			return sanitized_messages_cache[hash]
@@ -482,7 +483,7 @@ SUBSYSTEM_DEF(tts220)
 	. = replacetext(., words, /proc/tts_word_replacer)
 	for(var/job in tts_job_replacements)
 		. = replacetext(., regex(job, "igm"), tts_job_replacements[job])
-	. = rustg_ss220_latin_to_cyrillic(.)
+	. = rustgss220_latin_to_cyrillic(.)
 
 	var/static/regex/decimals = new(@"-?\d+\.\d+", "g")
 	. = replacetext(., decimals, /proc/dec_in_words)

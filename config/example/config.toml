@@ -32,9 +32,6 @@
 # - url_configuration
 # - voting_configuration
 
-# SS220 CONFIGS
-# - gateway_configuration
-# - tts_configuration
 
 ################################################################
 
@@ -147,7 +144,7 @@ ipc_screens = [
 # Enable/disable the database on a whole
 sql_enabled = false
 # SQL version. If this is a mismatch, round start will be delayed
-sql_version = 522205
+sql_version = 522201
 # SQL server address. Can be an IP or DNS name
 sql_address = "127.0.0.1"
 # SQL server port
@@ -627,14 +624,7 @@ active_space_ruins = [
 	"_maps/map_files/RandomRuins/SpaceRuins/wizardcrash.dmm",
 	"_maps/map_files/RandomRuins/SpaceRuins/voyager.dmm",
 	"_maps/map_files/RandomRuins/SpaceRuins/wreckedcargoship.dmm",
-	"_maps/map_files220/RandomRuins/SpaceRuins/mechtransport_new.dmm",
-	"_maps/map_files220/RandomRuins/SpaceRuins/destroyed_infiltrator.dmm",
-	"_maps/map_files220/RandomRuins/SpaceRuins/transit_bar.dmm",
-	"_maps/map_files220/RandomRuins/SpaceRuins/infected_ship.dmm",
-	"_maps/map_files220/RandomRuins/SpaceRuins/convoy_ambush.dmm",
-	"_maps/map_files220/RandomRuins/SpaceRuins/voxraiders_1.dmm",
-	"_maps/map_files220/RandomRuins/SpaceRuins/spacehotel.dmm",
-
+	"_maps/map_files/RandomRuins/SpaceRuins/abandoned_engi_sat.dmm",
 
 	### The following ruins are based from past pre-spawned Zlevel content ###
 	"_maps/map_files/RandomRuins/SpaceRuins/abandonedtele.dmm",
@@ -652,7 +642,7 @@ active_space_ruins = [
 	# The following is the white ship ruin. Its force-spawned and is required to stop SSshuttle runtiming on startup
 	# Its also important incase a white-ship console is ever built midround
 	# DO NOT DISABLE THIS UNLESS YOU HAVE A GOOD REASON
-	"_maps/map_files220/RandomRuins/SpaceRuins/whiteship.dmm",
+	"_maps/map_files/RandomRuins/SpaceRuins/whiteship.dmm",
 
 	# The following is a force-spawned ruin consisting mostly of empty space with a shuttle docking port for the free golem shuttle
 	# Disabling it will lead to the free golem shuttle sometimes being stuck on lavaland.
@@ -699,10 +689,9 @@ active_lava_ruins = [
 	"_maps/map_files/RandomRuins/LavaRuins/lavaland_surface_survivalpod.dmm",
 	"_maps/map_files/RandomRuins/LavaRuins/lavaland_surface_ufo_crash.dmm",
 	"_maps/map_files/RandomRuins/LavaRuins/lavaland_surface_xeno_nest.dmm",
-	"_maps/map_files220/RandomRuins/LavaRuins/scp_facility.dmm",
 ]
 # Budget for lavaland ruins. A higher number means more will spawn
-lavaland_ruin_budget = 100
+lavaland_ruin_budget = 60
 
 
 ################################################################
@@ -839,25 +828,6 @@ map_vote_day_types = [
 ################################################################
 
 
-[gateway_configuration]
-# This section contains everything relating to the ingame gateway (away mission) system.
-
-# Do we want to enable this at all? Disable for faster load times in testing
-enable_away_mission = false
-# Delay (in deciseconds) before the gateway is usable
-away_mission_delay = 0
-# List of all enabled away missions. Comment out an entry to disable it.
-enabled_away_missions = [
-	"_maps/map_files220/RandomZLevels/beach.dmm",
-	"_maps/map_files220/RandomZLevels/wildwest.dmm",
-	"_maps/map_files220/RandomZLevels/blackmarketpackers.dmm",
-	"_maps/map_files220/RandomZLevels/gate_lizard.dmm",
-	"_maps/map_files220/RandomZLevels/caves.dmm",
-]
-
-
-################################################################
-
 [tts_configuration]
 # This section contains all settings relating to the TTS system
 
@@ -870,13 +840,5 @@ tts_cache_enabled = false
 # What CPU threads are used for ffmpeg. Example valid values: "0-3" or "1,4-7"
 ffmpeg_cpuaffinity = ""
 
-
-################################################################
-
-[ss220_misc_configuration]
-# This section contains everything that should be in general_configuration
-
-# Force discord verification
-force_discord_verification = false
 
 ################################################################
