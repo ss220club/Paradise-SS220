@@ -2,7 +2,7 @@
 #define DEFAULT_TITLE_LOADING_SCREEN 'modular_ss220/title_screen/icons/loading_screen.gif'
 
 #define DEFAULT_TITLE_HTML {"
-	<html>
+	<html><meta charset='UTF-8'>
 		<head>
 			<meta http-equiv="X-UA-Compatible" content="IE=edge">
 			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
