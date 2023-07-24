@@ -77,6 +77,7 @@ CREATE TABLE `characters` (
   `hair_gradient_colour` varchar(7) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '#000000',
   `hair_gradient_alpha` tinyint(3) UNSIGNED NOT NULL DEFAULT '255',
   `custom_emotes` LONGTEXT COLLATE 'utf8mb4_unicode_ci' DEFAULT NULL,
+  `tts_seed` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `ckey` (`ckey`)
 ) ENGINE=InnoDB AUTO_INCREMENT=125467 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -605,3 +606,21 @@ CREATE TABLE `tickets` (
 	CONSTRAINT `all_responses` CHECK (json_valid(`all_responses`)),
 	CONSTRAINT `awho` CHECK (json_valid(`awho`))
 ) COLLATE='utf8mb4_general_ci' ENGINE=InnoDB;
+
+--
+-- Table structure for table `ckey_whitelist`
+--
+
+DROP TABLE IF EXISTS `ckey_whitelist`;
+CREATE TABLE `ckey_whitelist`
+(
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`date` DATETIME DEFAULT now() NOT NULL,
+	`ckey` VARCHAR(32) NOT NULL,
+	`adminwho` VARCHAR(32) NOT NULL,
+	`port` INT(5) UNSIGNED NOT NULL,
+	`date_start` DATETIME DEFAULT now() NOT NULL,
+	`date_end` DATETIME NULL,
+	`is_valid` BOOLEAN DEFAULT true NOT NULL,
+	PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
