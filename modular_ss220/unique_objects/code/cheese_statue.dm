@@ -26,6 +26,10 @@
 	update_icon(UPDATE_ICON_STATE)
 	return ..()
 
+/obj/machinery/reagentgrinder/Initialize(mapload)
+	. = ..()
+	LAZYADD(blend_items, list(/obj/item/stack/sheet/cheese = list("milk" = 20)))
+
 // =========== items ===========
 
 GLOBAL_LIST_INIT(cheese_recipes, list(

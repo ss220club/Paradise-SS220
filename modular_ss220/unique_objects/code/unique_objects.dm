@@ -78,11 +78,16 @@
 	desc = "Особенный унитаз для особенных особ."
 	icon = 'modular_ss220/unique_objects/icons/watercloset.dmi'
 
+/obj/structure/toilet/attackby(obj/item/I, mob/living/user, params)
+	. = ..()
+	if(try_construct(I, user))
+		return TRUE
+
 /obj/structure/toilet/proc/try_construct(obj/item/I, mob/living/user)
 	if(!istype(I, /obj/item/stack))
 		return FALSE
 
-	if(!is_final)
+	if(is_final)
 		to_chat(user, "<span class='warning'>Этот унитаз достиг пика своего великолепия и безвкусия. Нельзя больше улучшить.</span>")
 		return FALSE
 
@@ -137,10 +142,11 @@
 			to_chat(user, "<span class='warning'>Неподходящая цель для гравировки.</span>")
 	return TRUE
 
-/obj/structure/toilet/proc/construct(var/obj/item/stack/M, mob/living/user, var/build_type, var/amount)
+/obj/structure/toilet/proc/construct(obj/item/stack/M, mob/living/user, build_type, amount)
 	if(do_after(user, 2 SECONDS, target = src))
 		M.use(amount)
-		new build_type(loc)
+		var/obj/structure/T = new build_type(loc)
+		T.dir = dir
 		qdel(src)
 
 /obj/structure/toilet/material/bluespace/update_overlays()
