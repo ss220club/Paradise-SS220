@@ -27,10 +27,10 @@
 	message = "радостно танцует."
 	var/dance_time = 3 SECONDS
 
-/datum/emote/living/dance/run_emote(mob/user, params, type_override, intentional)
+/datum/emote/living/dance/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()
-	spin(dance_time, pick(0.1 SECONDS, 0.2 SECONDS))
-	do_jitter_animation(rand(80, 160), dance_time / 4)
+	user.spin(dance_time, pick(0.1 SECONDS, 0.2 SECONDS))
+	user.do_jitter_animation(rand(8 SECONDS, 16 SECONDS), dance_time / 4)
 
 /datum/emote/living/jump
 	message = "прыгает!"
@@ -348,6 +348,23 @@
 /datum/emote/living/carbon/human/cry
 	message = "плачет."
 	muzzled_noises = list("слабо", "жалко", "грустно")
+	emote_type = EMOTE_AUDIBLE | EMOTE_MOUTH | EMOTE_SOUND
+
+/datum/emote/living/carbon/human/cry/get_sound(mob/living/user)
+	. = ..()
+	if(user.gender == FEMALE)
+		return pick(
+			"modular_ss220/emotes/audio/cry_female_1.ogg",
+			"modular_ss220/emotes/audio/cry_female_2.ogg",
+			"modular_ss220/emotes/audio/cry_female_3.ogg",
+		)
+	else
+		return pick(
+			"modular_ss220/emotes/audio/cry_male_1.ogg",
+			"modular_ss220/emotes/audio/cry_male_2.ogg",
+		)
+
+
 
 /datum/emote/living/carbon/human/eyebrow
 	message = "приподнимает бровь."
