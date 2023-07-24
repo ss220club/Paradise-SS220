@@ -282,7 +282,7 @@
 	set name = "~ Показать несколько пальцев "
 	set category = "Эмоции"
 	var/Cnt = input("Руки должны быть свободны", "Показать несколько пальцев", 1) in list(1,2,3,4,5,6,7,8,9,10)
-	emote("signal-[Cnt]")
+	emote("sign", message = Cnt)
 
 /mob/living/carbon/human/verb/emote_shiver()
 	set name = "~ Дрожать "
