@@ -29,9 +29,7 @@
 		out_file = "[SHELLEO_NAME][shelleo_id][SHELLEO_OUT]"
 		err_file = "[SHELLEO_NAME][shelleo_id][SHELLEO_ERR]"
 		if(world.system_type == UNIX)
-			message_admins("Using command: [interpreter] \"[replacetext(command, "\"", "\\\"")]\" > [out_file] 2> [err_file]")
 			errorcode = shell("[interpreter] \"[replacetext(command, "\"", "\\\"")]\" > [out_file] 2> [err_file]")
-			message_admins("Succesfully")
 		else
 			errorcode = shell("[interpreter] \"[command]\" > [out_file] 2> [err_file]")
 		if(fexists(out_file))
