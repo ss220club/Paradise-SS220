@@ -7,4 +7,4 @@
 	GLOB.admin_verbs_event |= list(
 		/client/proc/admin_change_title_screen,
 		/client/proc/change_title_screen_html,
-		/client/proc/change_title_screen_notice,)
+		/client/proc/change_title_screen_notice)
