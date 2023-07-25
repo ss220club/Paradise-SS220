@@ -234,7 +234,7 @@
 		if(do_after(user, 10 SECONDS, target = src))
 			teleport(tp_range)
 
-/obj/structure/toilet/material/bluespace/proc/teleport(var/range_dist = 1)
+/obj/structure/toilet/material/bluespace/proc/teleport(range_dist = 1)
 	playsound(loc, teleport_sound, 100, 1)
 	var/ext_range = range_dist * 3
 
