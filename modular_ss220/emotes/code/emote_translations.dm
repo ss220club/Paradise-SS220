@@ -412,7 +412,7 @@
 /datum/emote/living/carbon/human/salute
 	message = "салютует."
 	message_param = "салютует %t."
-	emote_type = EMOTE_SOUND
+	emote_type = EMOTE_VISIBLE | EMOTE_SOUND
 	sound = "modular_ss220/emotes/audio/salute.ogg"
 
 /datum/emote/living/carbon/human/shrug
