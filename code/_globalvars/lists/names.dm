@@ -24,6 +24,9 @@ GLOBAL_LIST_INIT(last_names_soviet, file2list("config/names/last_soviet_male.txt
 GLOBAL_LIST_INIT(verbs, file2list("config/names/verbs.txt"))
 GLOBAL_LIST_INIT(nouns, file2list("config/names/nouns.txt"))
 GLOBAL_LIST_INIT(adjectives, file2list("config/names/adjectives.txt"))
+GLOBAL_LIST_INIT(cocktails, file2list("config/names/cocktails.txt"))
+GLOBAL_LIST_INIT(locations, file2list("config/names/locations.txt"))
+GLOBAL_LIST_INIT(jobs, file2list("config/names/jobs.txt"))
 GLOBAL_LIST_INIT(dream_strings, file2list("config/names/dreams.txt"))
 GLOBAL_LIST_INIT(nightmare_strings, file2list("config/names/nightmares.txt"))
 //loaded on startup because of "
