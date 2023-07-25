@@ -86,6 +86,9 @@
 	var/errorlevel = output[SHELLEO_ERRORLEVEL]
 	var/stdout = output[SHELLEO_STDOUT]
 	var/stderr = output[SHELLEO_STDERR]
+	message_admins(errorlevel)
+	message_admins(stdout)
+	message_admins(stderr)
 	if(errorlevel)
 		error("Error: apply_sound_effect([effect], [filename_input], [filename_output]) - See debug logs.")
 		log_debug("apply_sound_effect([effect], [filename_input], [filename_output]) STDOUT: [stdout]")
