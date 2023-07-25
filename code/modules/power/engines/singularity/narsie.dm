@@ -30,14 +30,14 @@
 	icon_state = SSticker.cultdat?.entity_icon_state
 	name = SSticker.cultdat?.entity_name
 
-	//var/sound/cry = sound(pick('sound/hallucinations/im_here1.ogg', 'sound/hallucinations/im_here2.ogg')) //SS220 EDIT - REMOVAL
+	var/sound/cry = sound('modular_ss220/aesthetics_sounds/sound/narsie/narsie_risen.ogg') //SS220 EDIT
 
 	for(var/mob/living/player in GLOB.player_list)
 		if(isnewplayer(player))
 			continue
 
 		to_chat(player, "<font size='15' color='red'><b> [uppertext(name)] HAS RISEN</b></font>")
-		SEND_SOUND(player, sound('modular_ss220/aesthetics_sounds/sound/narsie/narsie_risen.ogg')) //SS220 EDIT
+		SEND_SOUND(player, cry)
 
 	var/datum/game_mode/gamemode = SSticker.mode
 	if(gamemode)
