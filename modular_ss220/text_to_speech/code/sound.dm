@@ -31,9 +31,7 @@
 		if(world.system_type == UNIX)
 			errorcode = shell("[interpreter] \"[replacetext(command, "\"", "\\\"")]\" > [out_file] 2> [err_file]")
 		else
-			message_admins({"Using command: [interpreter] \"[command]\" > [out_file] 2> [err_file]"})
 			errorcode = shell("[interpreter] \"[command]\" > [out_file] 2> [err_file]")
-			message_admins("And it even hasnt crashed")
 		if(fexists(out_file))
 			stdout = file2text(out_file)
 			fdel(out_file)
