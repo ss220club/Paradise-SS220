@@ -253,14 +253,9 @@
 		L.source_atom.update_light()
 	return TRUE
 
-// Change glide size for the duration of one movement
 /atom/movable/proc/glide_for(movetime)
 	if(movetime)
 		glide_size = world.icon_size/max(DS2TICKS(movetime), 1)
-		spawn(movetime)
-			glide_size = initial(glide_size)
-	else
-		glide_size = initial(glide_size)
 
 // Previously known as HasEntered()
 // This is automatically called when something enters your square

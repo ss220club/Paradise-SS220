@@ -309,12 +309,20 @@
 	var/move_result = 0
 	var/move_type = 0
 	if(internal_damage & MECHA_INT_CONTROL_LOST)
+		if(direction & (direction - 1))	//moved diagonally
+			glide_for(step_in * 1.41)
+		else
+			glide_for(step_in)
 		move_result = mechsteprand()
 		move_type = MECHAMOVE_RAND
 	else if(dir != direction)
 		move_result = mechturn(direction)
 		move_type = MECHAMOVE_TURN
 	else
+		if(direction & (direction - 1))	//moved diagonally
+			glide_for(step_in * 1.41)
+		else
+			glide_for(step_in)
 		move_result = mechstep(direction)
 		move_type = MECHAMOVE_STEP
 
