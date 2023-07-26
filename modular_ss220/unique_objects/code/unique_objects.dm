@@ -9,7 +9,7 @@
 
 /obj/structure/statue/tranquillite/mime/unique
 	name = "статуя гордости пантомимы"
-	desc = "Искусно слепленная статуя из транквилиума, если приглядеться, то на статую надета старая униформа мима, перекрашенная под текстуру транквилиума, а рот статуи заклеен скотчем. Похоже кто-то полностью отдавал себя искусству пантомимы. На груди виднеется медаль с еле различимой закрашенной надписью \"За Отвагу\", поверх которой написано \"За Военные Преступления\"."
+	desc = "Искусно слепленная статуя из транквилиума, если приглядеться, то на статую надета старая униформа мима, перекрашенная под текстуру материала, а рот статуи заклеен скотчем. Похоже кто-то полностью отдавал себя искусству пантомимы. На груди виднеется медаль с еле различимой закрашенной надписью \"За Отвагу\", поверх которой написано \"За Военные Преступления\"."
 	icon = 'modular_ss220/unique_objects/icons/statue.dmi'
 	icon_state = "mime_unique"
 	oreAmount = 20
@@ -24,7 +24,7 @@
 
 /obj/structure/statue/ell_good
 	name = "Mr.Буум"
-	desc = "Загадочный клоун с жёлтым оттенком кожи и выразительными зелёными глазами. Лучший двойной агент синдиката умудрявшийся захватить власть множества объектов. \
+	desc = "Загадочный клоун с жёлтым оттенком кожи и выразительными зелёными глазами. Лучший двойной агент синдиката, получивший власть над множеством фасилити. \
 			Его имя часто произносят неправильно из-за чего его заслуги по документам принадлежат сразу нескольким Буумам. \
 			Так же знаменит тем, что убедил руководство НТ тратить время, силы и средства, на золотой унитаз."
 	icon = 'modular_ss220/unique_objects/icons/statuelarge.dmi'
@@ -49,7 +49,7 @@
 
 /obj/structure/statue/mooniverse
 	name = "Неизвестный агент"
-	desc = "Информация на табличке под статуей исцарапана и нечитабельна... Поверх написана невнятная вселенская смесь из слов \"Furry\" и \"Universe\""
+	desc = "Информация на табличке под статуей исцарапана и нечитабельна... Поверх написано невнятное словосочетание из слов \"Furry\" и \"Universe\""
 	icon = 'modular_ss220/unique_objects/icons/statuelarge.dmi'
 	icon_state = "mooniverse"
 	pixel_y = 7
@@ -63,7 +63,7 @@
 
 /obj/item/bikehorn/rubberducky/captain
 	name = "уточка-капитан"
-	desc = "Капитан всех уточек на этой станции. Крайне важная и престижная уточка. Выпущены в ограниченных экземплярах и только для капитанов. Ценная находка для коллекционеров."
+	desc = "Капитан всех уточек на этой станции. Крайне важная и престижная уточка. Выпущены в ограниченном тираже и только для капитанов. Ценная находка для коллекционеров."
 	icon = 'modular_ss220/unique_objects/icons/watercloset.dmi'
 	icon_state = "captain_rubberducky"
 	item_state = "captain_rubberducky"
@@ -78,12 +78,17 @@
 	desc = "Особенный унитаз для особенных особ."
 	icon = 'modular_ss220/unique_objects/icons/watercloset.dmi'
 
+/obj/structure/toilet/attackby(obj/item/I, mob/living/user, params)
+	. = ..()
+	if(try_construct(I, user))
+		return TRUE
+
 /obj/structure/toilet/proc/try_construct(obj/item/I, mob/living/user)
 	if(!istype(I, /obj/item/stack))
 		return FALSE
 
-	if(!is_final)
-		to_chat(user, "<span class='warning'>Этот унитаз достиг пика своего великолепия и безвкусия. Нельзя больше улучшить.</span>")
+	if(is_final)
+		to_chat(user, "<span class='warning'>Этот унитаз достиг пика великолепия и безвкусия. Нельзя больше улучшить.</span>")
 		return FALSE
 
 	var/obj/item/stack/M = I
@@ -137,10 +142,11 @@
 			to_chat(user, "<span class='warning'>Неподходящая цель для гравировки.</span>")
 	return TRUE
 
-/obj/structure/toilet/proc/construct(var/obj/item/stack/M, mob/living/user, var/build_type, var/amount)
+/obj/structure/toilet/proc/construct(obj/item/stack/M, mob/living/user, build_type, amount)
 	if(do_after(user, 2 SECONDS, target = src))
 		M.use(amount)
-		new build_type(loc)
+		var/obj/structure/T = new build_type(loc)
+		T.dir = dir
 		qdel(src)
 
 /obj/structure/toilet/material/bluespace/update_overlays()
@@ -228,7 +234,7 @@
 		if(do_after(user, 10 SECONDS, target = src))
 			teleport(tp_range)
 
-/obj/structure/toilet/material/bluespace/proc/teleport(var/range_dist = 1)
+/obj/structure/toilet/material/bluespace/proc/teleport(range_dist = 1)
 	playsound(loc, teleport_sound, 100, 1)
 	var/ext_range = range_dist * 3
 
