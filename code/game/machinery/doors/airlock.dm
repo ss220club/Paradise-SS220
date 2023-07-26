@@ -527,8 +527,9 @@ GLOBAL_LIST_EMPTY(airlock_emissive_underlays)
 		if(AIRLOCK_OPEN)
 			frame_overlay = get_airlock_overlay("open", icon)
 			// SS220 ADDITION - START
-			lights_overlay = get_airlock_overlay("lights_poweron_open", overlays_file)
-			lights_underlay = get_airlock_emissive_underlay("lights_poweron_open_lightmask", overlays_file)
+			if(lights && arePowerSystemsOn())
+				lights_overlay = get_airlock_overlay("lights_poweron_open", overlays_file)
+				lights_underlay = get_airlock_emissive_underlay("lights_poweron_open_lightmask", overlays_file)
 			// SS220 ADDITION - END
 			if(airlock_material)
 				filling_overlay = get_airlock_overlay("[airlock_material]_open", overlays_file)
