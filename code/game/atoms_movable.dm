@@ -158,37 +158,7 @@
 	loc = T
 	Moved(old_loc, get_dir(old_loc, loc))
 
-///////////////////////////////////////////////////////
-
 /atom/movable/Move(atom/newloc, direction, glide_size_override = 0)
-	if(!loc || !newloc)
-		return FALSE
-
-	var/atom/oldloc = loc
-	//Early override for some cases like diagonal movement
-	if(glide_size_override && glide_size != glide_size_override)
-		set_glide_size(glide_size_override)
-
-	if(loc != newloc)
-		. = IS_DIR_DIAGONAL(direction) ? MoveDiagonally(direction) : MoveCardinally(newloc, direction, glide_size_override)
-
-	if(!loc || (loc == oldloc && oldloc != newloc))
-		last_move = 0
-		return FALSE
-
-	//glide_size strangely enough can change mid movement acid_actnimation and update correctly while the animation is playing
-	//This means that if you don't override it late like this, it will just be set back by the movement update that's called when you move turfs.
-	if(glide_size_override)
-		set_glide_size(glide_size_override)
-
-	last_move = direction
-
-	if(dir != direction)
-		setDir(direction)
-	if(. && has_buckled_mobs() && !handle_buckled_mob_movement(loc, direction, glide_size_override)) //movement failed due to buckled mob(s)
-		. = FALSE
-
-/atom/movable/proc/MoveCardinally(atom/newloc, direction, glide_size_override = 0)
 	. = FALSE
 	if(!newloc || newloc == loc)
 		return
@@ -210,57 +180,87 @@
 	else if(!loc.Exit(src, direction))
 		return
 
-	var/list/new_locs
-	if(is_multi_tile_object && isturf(newloc))
-		new_locs = block(
-			newloc,
-			locate(
-				min(world.maxx, newloc.x + CEILING(bound_width / 32, 1)),
-				min(world.maxy, newloc.y + CEILING(bound_height / 32, 1)),
-				newloc.z
-				)
-		) // If this is a multi-tile object then we need to predict the new locs and check if they allow our entrance.
-		for(var/atom/entering_loc as anything in new_locs)
-			if(!entering_loc.Enter(src))
-				return
-			if(SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_MOVE, entering_loc) & COMPONENT_MOVABLE_BLOCK_PRE_MOVE)
-				return
-	else // Else just try to enter the single destination.
-		if(!newloc.Enter(src))
-			return
-		if(SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_MOVE, newloc) & COMPONENT_MOVABLE_BLOCK_PRE_MOVE)
-			return
+	// var/list/new_locs
+	// if(is_multi_tile_object && isturf(newloc))
+	// 	new_locs = block(
+	// 		newloc,
+	// 		locate(
+	// 			min(world.maxx, newloc.x + CEILING(bound_width / 32, 1)),
+	// 			min(world.maxy, newloc.y + CEILING(bound_height / 32, 1)),
+	// 			newloc.z
+	// 			)
+	// 	) // If this is a multi-tile object then we need to predict the new locs and check if they allow our entrance.
+	// 	for(var/atom/entering_loc as anything in new_locs)
+	// 		if(!entering_loc.Enter(src))
+	// 			return
+	// 		if(SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_MOVE, entering_loc) & COMPONENT_MOVABLE_BLOCK_PRE_MOVE)
+	// 			return
+	// else // Else just try to enter the single destination.
+	// 	if(!newloc.Enter(src))
+	// 		return
+	// 	if(SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_MOVE, newloc) & COMPONENT_MOVABLE_BLOCK_PRE_MOVE)
+	// 		return
 
 	// Past this is the point of no return
 	var/atom/oldloc = loc
-	var/area/oldarea = get_area(oldloc)
-	var/area/newarea = get_area(newloc)
+	// var/area/oldarea = get_area(oldloc)
+	// var/area/newarea = get_area(newloc)
 
-	loc = newloc
+	..(newloc, direction)
 
 	. = TRUE
 
-	if(old_locs) // This condition will only be true if it is a multi-tile object.
-		for(var/atom/exited_loc as anything in (old_locs - new_locs))
-			exited_loc.Exited(src, direction)
-	else // Else there's just one loc to be exited.
-		oldloc.Exited(src, direction)
-	if(oldarea != newarea)
-		oldarea.Exited(src, direction)
+	// if(old_locs) // This condition will only be true if it is a multi-tile object.
+	// 	for(var/atom/exited_loc as anything in (old_locs - new_locs))
+	// 		exited_loc.Exited(src, direction)
+	// else // Else there's just one loc to be exited.
+	// 	oldloc.Exited(src, direction)
+	// if(oldarea != newarea)
+	// 	oldarea.Exited(src, direction)
 
-	if(new_locs) // Same here, only if multi-tile.
-		for(var/atom/entered_loc as anything in (new_locs - old_locs))
-			entered_loc.Entered(src, oldloc, old_locs)
-	else
-		newloc.Entered(src, oldloc, old_locs)
-	if(oldarea != newarea)
-		newarea.Entered(src, oldarea)
+	// if(new_locs) // Same here, only if multi-tile.
+	// 	for(var/atom/entered_loc as anything in (new_locs - old_locs))
+	// 		entered_loc.Entered(src, oldloc, old_locs)
+	// else
+	// 	newloc.Entered(src, oldloc, old_locs)
+	// if(oldarea != newarea)
+	// 	newarea.Entered(src, oldarea)
 
 	Moved(oldloc, direction, FALSE, old_locs)
 
 	last_move = direction
 	move_speed = world.time - l_move_time
 	l_move_time = world.time
+
+///////////////////////////////////////////////////////
+
+/atom/movable/Move(atom/newloc, direction, glide_size_override = 0)
+	if(!loc || !newloc)
+		return FALSE
+
+	var/atom/oldloc = loc
+	//Early override for some cases like diagonal movement
+	if(glide_size_override && glide_size != glide_size_override)
+		set_glide_size(glide_size_override)
+
+	if(loc != newloc)
+		. = IS_DIR_DIAGONAL(direction) ? MoveDiagonally(direction) : ..()
+
+	if(!loc || (loc == oldloc && oldloc != newloc))
+		last_move = 0
+		return FALSE
+
+	//glide_size strangely enough can change mid movement acid_actnimation and update correctly while the animation is playing
+	//This means that if you don't override it late like this, it will just be set back by the movement update that's called when you move turfs.
+	if(glide_size_override)
+		set_glide_size(glide_size_override)
+
+	last_move = direction
+
+	if(dir != direction)
+		setDir(direction)
+	if(. && has_buckled_mobs() && !handle_buckled_mob_movement(loc, direction, glide_size_override)) //movement failed due to buckled mob(s)
+		. = FALSE
 
 /atom/movable/proc/MoveDiagonally(direction)
 	moving_diagonally = FIRST_DIAG_STEP
