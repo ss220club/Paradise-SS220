@@ -1,6 +1,7 @@
 /turf/simulated/floor
 	icon = 'modular_ss220/aesthetics/floors/icons/floors.dmi'
 
+// WOODEN FLOORS
 /turf/simulated/floor/wood/oak
 	icon_state = "wood-oak"
 	floor_tile = /obj/item/stack/tile/wood/oak
@@ -35,3 +36,20 @@
 	icon_state = "light-fancy-wood"
 	floor_tile = /obj/item/stack/tile/wood/fancy/light
 	broken_states = list("light-fancy-wood-broken", "light-fancy-wood-broken2", "light-fancy-wood-broken3", "light-fancy-wood-broken4", "light-fancy-wood-broken5", "light-fancy-wood-broken6", "light-fancy-wood-broken7")
+
+// LIGHT FLOORS
+/turf/simulated/floor/light/red
+	color = "#f23030"
+	light_color = "#f23030"
+
+/turf/simulated/floor/light/green
+	color = "#30f230"
+	light_color = "#30f230"
+
+/turf/simulated/floor/light/blue
+	color = "#3030f2"
+	light_color = "#3030f2"
+
+/turf/simulated/floor/light/purple
+	color = "#9130f2"
+	light_color = "#9130f2"
