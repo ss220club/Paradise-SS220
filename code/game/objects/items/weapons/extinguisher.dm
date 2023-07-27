@@ -121,8 +121,6 @@
 				var/obj/B = usr.buckled
 				var/movementdirection = turn(direction,180)
 				if(C)	C.propelled = 4
-				B.glide_for(1)
-				usr.glide_for(1)
 				step(B, movementdirection)
 				sleep(1)
 				step(B, movementdirection)
@@ -132,16 +130,12 @@
 				sleep(1)
 				step(B, movementdirection)
 				if(C)	C.propelled = 2
-				B.glide_for(2)
-				usr.glide_for(2)
 				sleep(2)
 				step(B, movementdirection)
 				if(C)	C.propelled = 1
 				sleep(2)
 				step(B, movementdirection)
 				if(C)	C.propelled = 0
-				B.glide_for(3)
-				usr.glide_for(3)
 				sleep(3)
 				step(B, movementdirection)
 				sleep(3)

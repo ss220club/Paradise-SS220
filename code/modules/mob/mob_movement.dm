@@ -66,9 +66,6 @@
 	if(!mob?.loc)
 		return FALSE
 
-	if (mob.ckey == "gaxeer")
-		var/a = 0
-
 	if(mob.notransform)
 		return FALSE //This is sota the goto stop mobs from moving var
 
