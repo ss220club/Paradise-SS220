@@ -110,3 +110,4 @@ GLOBAL_LIST_INIT(glass_sheet_types, typecacheof(list(
 #define isradio(A) istype(A, /obj/item/radio)
 #define ispill(A) istype(A, /obj/item/reagent_containers/food/pill)
 
+#define is_multi_tile_object(atom) (atom.bound_width > world.icon_size || atom.bound_height > world.icon_size)

@@ -630,6 +630,7 @@
 
 	// movement process, persists while holder is moving through pipes
 /obj/structure/disposalholder/proc/move()
+	var/ticks = 1
 	var/obj/structure/disposalpipe/last
 	while(active)
 	/*	if(hasmob && prob(3))
@@ -646,11 +647,12 @@
 		sleep(1)		// was 1
 		var/obj/structure/disposalpipe/curr = loc
 		last = curr
+		set_glide_size(DELAY_TO_GLIDE_SIZE(ticks * world.tick_lag))
 		curr = curr.transfer(src)
 		if(!curr)
 			last.expel(src, loc, dir)
 
-		//
+		ticks = stoplag()
 		if(!(count--))
 			active = FALSE
 	return
