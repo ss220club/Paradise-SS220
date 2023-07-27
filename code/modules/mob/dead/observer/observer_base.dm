@@ -255,10 +255,13 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 /mob/dead/observer/Process_Spacemove(movement_dir)
 	return 1
 
-/mob/dead/observer/Move(NewLoc, direct)
+/mob/dead/observer/Move(NewLoc, direct, glide_size_override = 32)
 	update_parallax_contents()
 	setDir(direct)
 	ghostimage.dir = dir
+
+	if(glide_size_override)
+		set_glide_size(glide_size_override)
 
 	if(NewLoc)
 		forceMove(NewLoc, direct)

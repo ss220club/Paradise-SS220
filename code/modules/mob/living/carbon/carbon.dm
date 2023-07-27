@@ -35,7 +35,7 @@
 		show_message("<span class='userdanger'>The blob attacks!</span>")
 		adjustBruteLoss(10)
 
-/mob/living/carbon/Move(NewLoc, direct)
+/mob/living/carbon/Move(NewLoc, direct, glide_size_override)
 	. = ..()
 	if(.)
 		if(nutrition && stat != DEAD)

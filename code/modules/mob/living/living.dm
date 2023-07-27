@@ -199,8 +199,8 @@
 	var/current_dir
 	if(isliving(AM))
 		current_dir = AM.dir
-	if(step(AM, t))
-		step(src, t)
+	if(AM.Move(get_step(AM.loc, t), t, glide_size))
+		Move(get_step(loc, t), t)
 	if(current_dir)
 		AM.setDir(current_dir)
 	now_pushing = FALSE
@@ -548,12 +548,12 @@
 /mob/living/proc/UpdateDamageIcon()
 	return
 
-/mob/living/Move(atom/newloc, direct, movetime)
+/mob/living/Move(atom/newloc, direct, glide_size_override)
 	if(buckled && buckled.loc != newloc) //not updating position
-		if(!buckled.anchored)
-			return buckled.Move(newloc, direct)
-		else
-			return 0
+		if(buckled.anchored)
+			return FALSE
+
+		return buckled.Move(newloc, direct, glide_size)
 
 	var/atom/movable/pullee = pulling
 	if(pullee && get_dist(src, pullee) > 1)
@@ -568,8 +568,8 @@
 	. = ..()
 	if(.)
 		step_count++
-		pull_pulled(old_loc, pullee, movetime)
-		pull_grabbed(old_loc, direct, movetime)
+		pull_pulled(old_loc, pullee, glide_size_override)
+		pull_grabbed(old_loc, direct, glide_size_override)
 
 	if(pulledby && moving_diagonally != FIRST_DIAG_STEP && get_dist(src, pulledby) > 1) //seperated from our puller and not in the middle of a diagonal move
 		pulledby.stop_pulling()
@@ -577,23 +577,23 @@
 	if(s_active && !(s_active in contents) && get_turf(s_active) != get_turf(src))	//check !( s_active in contents ) first so we hopefully don't have to call get_turf() so much.
 		s_active.close(src)
 
-/mob/living/proc/pull_pulled(turf/dest, atom/movable/pullee, movetime)
+/mob/living/proc/pull_pulled(turf/dest, atom/movable/pullee, glide_size_override)
 	if(pulling && pulling == pullee) // we were pulling a thing and didn't lose it during our move.
 		if(pulling.anchored)
 			stop_pulling()
 			return
 
 		var/pull_dir = get_dir(src, pulling)
-		if(get_dist(src, pulling) > 1 || (moving_diagonally != SECOND_DIAG_STEP && ((pull_dir - 1) & pull_dir))) // puller and pullee more than one tile away or in diagonal position
+		if(get_dist(src, pulling) > 1 || (moving_diagonally != SECOND_DIAG_STEP && IS_DIR_DIAGONAL(pull_dir))) // puller and pullee more than one tile away or in diagonal position
 			if(isliving(pulling))
 				var/mob/living/M = pulling
 				if(IS_HORIZONTAL(M) && !M.buckled && (prob(M.getBruteLoss() * 200 / M.maxHealth)))
 					M.makeTrail(dest)
-			pulling.Move(dest, get_dir(pulling, dest), movetime) // the pullee tries to reach our previous position
+			pulling.Move(dest, get_dir(pulling, dest), glide_size_override) // the pullee tries to reach our previous position
 			if(pulling && get_dist(src, pulling) > 1) // the pullee couldn't keep up
 				stop_pulling()
 
-/mob/living/proc/pull_grabbed(turf/old_turf, direct, movetime)
+/mob/living/proc/pull_grabbed(turf/old_turf, direct, glide_size_override)
 	if(!Adjacent(old_turf))
 		return
 	// We might not actually be grab pulled, but we are pretending that we are, so as to
@@ -625,14 +625,14 @@
 			if(dest.Adjacent(M))
 				possible_dest |= dest
 		if(i == 1) // at least one of them should try to trail behind us, for aesthetics purposes
-			if(M.Move(old_turf, get_dir(M, old_turf), movetime))
+			if(M.Move(old_turf, get_dir(M, old_turf), glide_size_override))
 				continue
 		// By this time the `old_turf` is definitely occupied by something immovable.
 		// So try to move them into some other adjacent turf, in a believable way
 		if(Adjacent(M))
 			continue // they are already adjacent
 		for(var/turf/dest in possible_dest)
-			if(M.Move(dest, get_dir(M, dest), movetime))
+			if(M.Move(dest, get_dir(M, dest), glide_size_override))
 				break
 	for(var/mob/M in grabbing)
 		M.currently_grab_pulled = null

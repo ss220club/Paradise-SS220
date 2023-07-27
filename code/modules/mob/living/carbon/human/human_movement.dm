@@ -35,7 +35,7 @@
 /mob/living/carbon/human/mob_negates_gravity()
 	return shoes && shoes.negates_gravity()
 
-/mob/living/carbon/human/Move(NewLoc, direct)
+/mob/living/carbon/human/Move(NewLoc, direct, glide_size_override)
 	. = ..()
 	if(.) // did we actually move?
 		if(!IS_HORIZONTAL(src) && !buckled && !throwing)
