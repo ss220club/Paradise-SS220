@@ -568,8 +568,8 @@
 	. = ..()
 	if(.)
 		step_count++
-		pull_pulled(old_loc, pullee, glide_size_override)
-		pull_grabbed(old_loc, direct, glide_size_override)
+		pull_pulled(old_loc, pullee, glide_size)
+		pull_grabbed(old_loc, direct, glide_size)
 
 	if(pulledby && moving_diagonally != FIRST_DIAG_STEP && get_dist(src, pulledby) > 1) //seperated from our puller and not in the middle of a diagonal move
 		pulledby.stop_pulling()
