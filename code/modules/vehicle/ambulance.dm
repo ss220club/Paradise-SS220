@@ -96,14 +96,8 @@
 	if(bed && !Adjacent(bed))
 		bed = null
 	. = ..()
-	if(bed && get_dist(oldloc, loc) <= 2)
-		bed.glide_size = glide_size
-		bed.Move(oldloc, get_dir(bed, oldloc))
-		bed.dir = Dir
-		if(bed.has_buckled_mobs())
-			for(var/m in bed.buckled_mobs)
-				var/mob/living/buckled_mob = m
-				buckled_mob.setDir(Dir)
+	if(. && bed && get_dist(oldloc, loc) <= 2)
+		bed.Move(oldloc, get_dir(bed, oldloc), glide_size)
 
 /obj/structure/bed/amb_trolley
 	name = "ambulance train trolley"

@@ -167,35 +167,39 @@
 		unbuckle_mob(user)
 		return
 
-	if(held_keycheck(user))
-		if(!Process_Spacemove(direction) || !isturf(loc))
-			return
-
-		last_vehicle_move = GLOB.configuration.movement.human_delay + vehicle_move_delay
-		Move(get_step(src, direction), direction, last_vehicle_move)
-
-		if(direction & (direction - 1))		//moved diagonally
-			last_vehicle_move *= 1.41
-		last_vehicle_move += world.time
-
-		if(has_buckled_mobs())
-			if(issimulatedturf(loc))
-				var/turf/simulated/T = loc
-				if(T.wet == TURF_WET_LUBE)	//Lube! Fall off!
-					playsound(src, 'sound/misc/slip.ogg', 50, 1, -3)
-					for(var/m in buckled_mobs)
-						var/mob/living/buckled_mob = m
-						buckled_mob.KnockDown(10 SECONDS)
-					unbuckle_all_mobs()
-					step(src, dir)
-
-		handle_vehicle_layer()
-		handle_vehicle_offsets()
-	else
+	if(!held_keycheck(user))
 		to_chat(user, "<span class='warning'>You'll need the keys in one of your hands to drive [src].</span>")
+		return
 
+	var/delay = (IS_DIR_DIAGONAL(direction) ? sqrt(2) : 1) * (vehicle_move_delay + GLOB.configuration.movement.human_delay)
+	if(world.time < last_vehicle_move + delay)
+		return
 
-/obj/vehicle/Move(NewLoc, Dir = 0, movetime)
+	last_vehicle_move = world.time
+
+	if(!Process_Spacemove(direction) || !isturf(loc))
+		return
+
+	Move(get_step(src, direction), direction, DELAY_TO_GLIDE_SIZE(delay))
+
+	try_slip_on_lube()
+
+	handle_vehicle_layer()
+	handle_vehicle_offsets()
+
+/obj/vehicle/proc/try_slip_on_lube()
+	if(has_buckled_mobs())
+		if(issimulatedturf(loc))
+			var/turf/simulated/T = loc
+			if(T.wet == TURF_WET_LUBE)	//Lube! Fall off!
+				playsound(src, 'sound/misc/slip.ogg', 50, 1, -3)
+				for(var/m in buckled_mobs)
+					var/mob/living/buckled_mob = m
+					buckled_mob.KnockDown(10 SECONDS)
+				unbuckle_all_mobs()
+				step(src, dir)
+
+/obj/vehicle/Move(atom/newloc, direction, glide_size_override)
 	. = ..()
 	handle_vehicle_layer()
 	handle_vehicle_offsets()

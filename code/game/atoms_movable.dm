@@ -1,6 +1,5 @@
 /atom/movable
 	layer = 3
-	appearance_flags = TILE_BOUND
 	glide_size = 8 // Default, adjusted when mobs move based on their movement delays
 	var/last_move = null
 	var/anchored = FALSE
@@ -28,9 +27,10 @@
 	var/inertia_next_move = 0
 	var/inertia_move_delay = 5
 
-	var/moving_diagonally = 0 //0: not doing a diagonal move. 1 and 2: doing the first/second step of the diagonal move
-	var/list/client_mobs_in_contents
+	/// 0: not doing a diagonal move. 1 and 2: doing the first/second step of the diagonal move
+	var/moving_diagonally = 0
 
+	var/list/client_mobs_in_contents
 	/// Either FALSE, [EMISSIVE_BLOCK_GENERIC], or [EMISSIVE_BLOCK_UNIQUE]
 	var/blocks_emissive = FALSE
 	///Internal holder for emissive blocker object, do not use directly use blocks_emissive
@@ -82,10 +82,10 @@
 /atom/movable/proc/get_cell()
 	return
 
-/atom/movable/proc/start_pulling(atom/movable/AM, state, force = pull_force, show_message = FALSE)
-	if(QDELETED(AM))
+/atom/movable/proc/start_pulling(atom/movable/pulled_atom, state, force = pull_force, show_message = FALSE)
+	if(QDELETED(pulled_atom))
 		return FALSE
-	if(!(AM.can_be_pulled(src, state, force)))
+	if(!(pulled_atom.can_be_pulled(src, state, force)))
 		return FALSE
 
 	// if we're pulling something then drop what we're currently pulling and pull this instead.
@@ -94,22 +94,24 @@
 			stop_pulling()
 			return FALSE
 		// Are we trying to pull something we are already pulling? Then enter grab cycle and end.
-		if(AM == pulling)
-			if(isliving(AM))
-				var/mob/living/AMob = AM
-				AMob.grabbedby(src)
+		if(pulled_atom == pulling)
+			if(isliving(pulled_atom))
+				var/mob/living/pulled_mob = pulled_atom
+				pulled_mob.grabbedby(src)
 			return TRUE
 		stop_pulling()
-	if(AM.pulledby)
-		add_attack_logs(AM, AM.pulledby, "pulled from", ATKLOG_ALMOSTALL)
-		AM.pulledby.stop_pulling() //an object can't be pulled by two mobs at once.
-	pulling = AM
-	AM.pulledby = src
-	if(ismob(AM))
-		var/mob/M = AM
-		add_attack_logs(src, M, "passively grabbed", ATKLOG_ALMOSTALL)
+
+	if(pulled_atom.pulledby)
+		add_attack_logs(pulled_atom, pulled_atom.pulledby, "pulled from", ATKLOG_ALMOSTALL)
+		pulled_atom.pulledby.stop_pulling() //an object can't be pulled by two mobs at once.
+	pulling = pulled_atom
+	pulled_atom.pulledby = src
+	SEND_SIGNAL(src, COMSIG_ATOM_START_PULL, pulled_atom, state, force)
+	if(ismob(pulled_atom))
+		var/mob/pulled_mob = pulled_atom
+		add_attack_logs(src, pulled_mob, "passively grabbed", ATKLOG_ALMOSTALL)
 		if(show_message)
-			visible_message("<span class='warning'>[src] has grabbed [M] passively!</span>")
+			visible_message("<span class='warning'>[src] has grabbed [pulled_mob] passively!</span>")
 	return TRUE
 
 /atom/movable/proc/stop_pulling()
@@ -119,20 +121,16 @@
 
 /atom/movable/proc/check_pulling()
 	if(pulling)
-		var/atom/movable/pullee = pulling
-		if(pullee && get_dist(src, pullee) > 1)
+		if(pulling && get_dist(src, pulling) > 1)
 			stop_pulling()
-			return
-		if(!isturf(loc))
+		else if(!isturf(loc))
 			stop_pulling()
-			return
-		if(pullee && !isturf(pullee.loc) && pullee.loc != loc) //to be removed once all code that changes an object's loc uses forceMove().
-			log_game("DEBUG:[src]'s pull on [pullee] wasn't broken despite [pullee] being in [pullee.loc]. Pull stopped manually.")
+		else if(pulling && !isturf(pulling.loc) && pulling.loc != loc) //to be removed once all code that changes an object's loc uses forceMove().
+			log_game("DEBUG:[src]'s pull on [pulling] wasn't broken despite [pulling] being in [pulling.loc]. Pull stopped manually.")
 			stop_pulling()
-			return
-		if(pulling.anchored || pulling.move_resist > move_force)
+		else if(pulling.anchored || pulling.move_resist > move_force)
 			stop_pulling()
-			return
+
 	if(pulledby && moving_diagonally != FIRST_DIAG_STEP && get_dist(src, pulledby) > 1)		//separated from our puller and not in the middle of a diagonal move.
 		pulledby.stop_pulling()
 
@@ -160,91 +158,177 @@
 	loc = T
 	Moved(old_loc, get_dir(old_loc, loc))
 
-/atom/movable/Move(atom/newloc, direct = 0, movetime)
-	if(!loc || !newloc) return 0
+///////////////////////////////////////////////////////
+
+/atom/movable/Move(atom/newloc, direction, glide_size_override = 0)
+	if(!loc || !newloc)
+		return FALSE
+
 	var/atom/oldloc = loc
+	//Early override for some cases like diagonal movement
+	if(glide_size_override && glide_size != glide_size_override)
+		set_glide_size(glide_size_override)
 
 	if(loc != newloc)
-		if(movetime > 0)
-			glide_for(movetime)
-		if(!(direct & (direct - 1))) //Cardinal move
-			. = ..(newloc, direct) // don't pass up movetime
-		else //Diagonal move, split it into cardinal moves
-			moving_diagonally = FIRST_DIAG_STEP
-			var/first_step_dir
-			// The `&& moving_diagonally` checks are so that a forceMove taking
-			// place due to a Crossed, Bumped, etc. call will interrupt
-			// the second half of the diagonal movement, or the second attempt
-			// at a first half if the cardinal Move() fails because we hit something.
-			if(direct & NORTH)
-				if(direct & EAST)
-					if(Move(get_step(src,  NORTH),  NORTH) && moving_diagonally)
-						first_step_dir = NORTH
-						moving_diagonally = SECOND_DIAG_STEP
-						. = Move(get_step(src,  EAST),  EAST)
-					else if(moving_diagonally && Move(get_step(src,  EAST),  EAST))
-						first_step_dir = EAST
-						moving_diagonally = SECOND_DIAG_STEP
-						. = Move(get_step(src,  NORTH),  NORTH)
-				else if(direct & WEST)
-					if(Move(get_step(src,  NORTH),  NORTH) && moving_diagonally)
-						first_step_dir = NORTH
-						moving_diagonally = SECOND_DIAG_STEP
-						. = Move(get_step(src,  WEST),  WEST)
-					else if(moving_diagonally && Move(get_step(src,  WEST),  WEST))
-						first_step_dir = WEST
-						moving_diagonally = SECOND_DIAG_STEP
-						. = Move(get_step(src,  NORTH),  NORTH)
-			else if(direct & SOUTH)
-				if(direct & EAST)
-					if(Move(get_step(src,  SOUTH),  SOUTH) && moving_diagonally)
-						first_step_dir = SOUTH
-						moving_diagonally = SECOND_DIAG_STEP
-						. = Move(get_step(src,  EAST),  EAST)
-					else if(moving_diagonally && Move(get_step(src,  EAST),  EAST))
-						first_step_dir = EAST
-						moving_diagonally = SECOND_DIAG_STEP
-						. = Move(get_step(src,  SOUTH),  SOUTH)
-				else if(direct & WEST)
-					if(Move(get_step(src,  SOUTH),  SOUTH) && moving_diagonally)
-						first_step_dir = SOUTH
-						moving_diagonally = SECOND_DIAG_STEP
-						. = Move(get_step(src,  WEST),  WEST)
-					else if(moving_diagonally && Move(get_step(src,  WEST),  WEST))
-						first_step_dir = WEST
-						moving_diagonally = SECOND_DIAG_STEP
-						. = Move(get_step(src,  SOUTH),  SOUTH)
-			if(moving_diagonally == SECOND_DIAG_STEP)
-				if(!.)
-					setDir(first_step_dir)
-				else if(!inertia_moving)
-					inertia_next_move = world.time + inertia_move_delay
-					newtonian_move(direct)
-			moving_diagonally = 0
-			return
+		. = IS_DIR_DIAGONAL(direction) ? MoveDiagonally(direction) : MoveCardinally(newloc, direction, glide_size_override)
 
 	if(!loc || (loc == oldloc && oldloc != newloc))
 		last_move = 0
+		return FALSE
+
+	//glide_size strangely enough can change mid movement acid_actnimation and update correctly while the animation is playing
+	//This means that if you don't override it late like this, it will just be set back by the movement update that's called when you move turfs.
+	if(glide_size_override)
+		set_glide_size(glide_size_override)
+
+	last_move = direction
+
+	if(dir != direction)
+		setDir(direction)
+	if(. && has_buckled_mobs() && !handle_buckled_mob_movement(loc, direction, glide_size_override)) //movement failed due to buckled mob(s)
+		. = FALSE
+
+/atom/movable/proc/MoveCardinally(atom/newloc, direction, glide_size_override = 0)
+	. = FALSE
+	if(!newloc || newloc == loc)
 		return
 
-	if(.)
-		Moved(oldloc, direct)
+	if(!direction)
+		direction = get_dir(src, newloc)
 
-	last_move = direct
+	if(dir != direction)
+		setDir(direction)
+
+	var/is_multi_tile_object = is_multi_tile_object(src)
+
+	var/list/old_locs
+	if(is_multi_tile_object && isturf(loc))
+		old_locs = locs // locs is a special list, this is effectively the same as .Copy() but with less steps
+		for(var/atom/exiting_loc as anything in old_locs)
+			if(!exiting_loc.Exit(src, direction))
+				return
+	else if(!loc.Exit(src, direction))
+		return
+
+	var/list/new_locs
+	if(is_multi_tile_object && isturf(newloc))
+		new_locs = block(
+			newloc,
+			locate(
+				min(world.maxx, newloc.x + CEILING(bound_width / 32, 1)),
+				min(world.maxy, newloc.y + CEILING(bound_height / 32, 1)),
+				newloc.z
+				)
+		) // If this is a multi-tile object then we need to predict the new locs and check if they allow our entrance.
+		for(var/atom/entering_loc as anything in new_locs)
+			if(!entering_loc.Enter(src))
+				return
+			if(SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_MOVE, entering_loc) & COMPONENT_MOVABLE_BLOCK_PRE_MOVE)
+				return
+	else // Else just try to enter the single destination.
+		if(!newloc.Enter(src))
+			return
+		if(SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_MOVE, newloc) & COMPONENT_MOVABLE_BLOCK_PRE_MOVE)
+			return
+
+	// Past this is the point of no return
+	var/atom/oldloc = loc
+	var/area/oldarea = get_area(oldloc)
+	var/area/newarea = get_area(newloc)
+
+	loc = newloc
+
+	. = TRUE
+
+	if(old_locs) // This condition will only be true if it is a multi-tile object.
+		for(var/atom/exited_loc as anything in (old_locs - new_locs))
+			exited_loc.Exited(src, direction)
+	else // Else there's just one loc to be exited.
+		oldloc.Exited(src, direction)
+	if(oldarea != newarea)
+		oldarea.Exited(src, direction)
+
+	if(new_locs) // Same here, only if multi-tile.
+		for(var/atom/entered_loc as anything in (new_locs - old_locs))
+			entered_loc.Entered(src, oldloc, old_locs)
+	else
+		newloc.Entered(src, oldloc, old_locs)
+	if(oldarea != newarea)
+		newarea.Entered(src, oldarea)
+
+	Moved(oldloc, direction, FALSE, old_locs)
+
+	last_move = direction
 	move_speed = world.time - l_move_time
 	l_move_time = world.time
 
-	if(. && has_buckled_mobs() && !handle_buckled_mob_movement(loc, direct, movetime)) //movement failed due to buckled mob
-		. = 0
+/atom/movable/proc/MoveDiagonally(direction)
+	moving_diagonally = FIRST_DIAG_STEP
+	var/first_step_dir
+	// The `&& moving_diagonally` checks are so that a forceMove taking
+	// place due to a Crossed, Bumped, etc. call will interrupt
+	// the second half of the diagonal movement, or the second attempt
+	// at a first half if step() fails because we hit something.
+	if (direction & NORTH)
+		if (direction & EAST)
+			if (step(src, NORTH) && moving_diagonally)
+				first_step_dir = NORTH
+				moving_diagonally = SECOND_DIAG_STEP
+				. = step(src, EAST)
+			else if (moving_diagonally && step(src, EAST))
+				first_step_dir = EAST
+				moving_diagonally = SECOND_DIAG_STEP
+				. = step(src, NORTH)
+		else if (direction & WEST)
+			if (step(src, NORTH) && moving_diagonally)
+				first_step_dir = NORTH
+				moving_diagonally = SECOND_DIAG_STEP
+				. = step(src, WEST)
+			else if (moving_diagonally && step(src, WEST))
+				first_step_dir = WEST
+				moving_diagonally = SECOND_DIAG_STEP
+				. = step(src, NORTH)
+	else if (direction & SOUTH)
+		if (direction & EAST)
+			if (step(src, SOUTH) && moving_diagonally)
+				first_step_dir = SOUTH
+				moving_diagonally = SECOND_DIAG_STEP
+				. = step(src, EAST)
+			else if (moving_diagonally && step(src, EAST))
+				first_step_dir = EAST
+				moving_diagonally = SECOND_DIAG_STEP
+				. = step(src, SOUTH)
+		else if (direction & WEST)
+			if (step(src, SOUTH) && moving_diagonally)
+				first_step_dir = SOUTH
+				moving_diagonally = SECOND_DIAG_STEP
+				. = step(src, WEST)
+			else if (moving_diagonally && step(src, WEST))
+				first_step_dir = WEST
+				moving_diagonally = SECOND_DIAG_STEP
+				. = step(src, SOUTH)
+
+	if(moving_diagonally == SECOND_DIAG_STEP)
+		if(!.)
+			setDir(first_step_dir)
+		else if(!inertia_moving)
+			inertia_next_move = world.time + inertia_move_delay
+			newtonian_move(direction)
+		if(client_mobs_in_contents)
+			update_parallax_contents()
+	moving_diagonally = 0
 
 // Called after a successful Move(). By this point, we've already moved
-/atom/movable/proc/Moved(atom/OldLoc, Dir, Forced = FALSE)
-	SEND_SIGNAL(src, COMSIG_MOVABLE_MOVED, OldLoc, Dir, Forced)
+/atom/movable/proc/Moved(atom/old_loc, movement_dir, forced = FALSE,  list/old_locs)
+	SHOULD_CALL_PARENT(TRUE)
+
 	if(!inertia_moving)
 		inertia_next_move = world.time + inertia_move_delay
-		newtonian_move(Dir)
-	if(length(client_mobs_in_contents))
+		newtonian_move(movement_dir)
+	if(!moving_diagonally && length(client_mobs_in_contents))
 		update_parallax_contents()
+
+	SEND_SIGNAL(src, COMSIG_MOVABLE_MOVED, old_loc, movement_dir, forced, old_locs)
 
 	var/datum/light_source/L
 	var/thing
@@ -253,9 +337,12 @@
 		L.source_atom.update_light()
 	return TRUE
 
-/atom/movable/proc/glide_for(movetime)
-	if(movetime)
-		glide_size = world.icon_size/max(DS2TICKS(movetime), 1)
+/atom/movable/proc/set_glide_size(target = 8)
+	SEND_SIGNAL(src, COMSIG_MOVABLE_UPDATE_GLIDE_SIZE, target)
+	glide_size = target
+
+	for(var/mob/buckled_mob as anything in buckled_mobs)
+		buckled_mob.set_glide_size(target)
 
 // Previously known as HasEntered()
 // This is automatically called when something enters your square
@@ -332,31 +419,34 @@
 //movement_dir == 0 when stopping or any dir when trying to move
 /atom/movable/proc/Process_Spacemove(movement_dir = 0)
 	if(has_gravity(src))
-		return 1
+		return TRUE
 
-	if(pulledby && !pulledby.pulling)
-		return 1
+	if(pulledby && !pulledby.pulledby)
+		return TRUE
 
 	if(throwing)
-		return 1
+		return TRUE
+
+	if(!isturf(loc))
+		return TRUE
 
 	if(locate(/obj/structure/lattice) in range(1, get_turf(src))) //Not realistic but makes pushing things in space easier
-		return 1
+		return TRUE
 
-	return 0
+	return FALSE
 
 /atom/movable/proc/newtonian_move(direction) //Only moves the object if it's under no gravity
 	if(!loc || Process_Spacemove(0))
 		inertia_dir = 0
-		return 0
+		return FALSE
 
 	inertia_dir = direction
 	if(!direction)
-		return 1
+		return TRUE
 
 	inertia_last_loc = loc
 	SSspacedrift.processing[src] = src
-	return 1
+	return TRUE
 
 //called when src is thrown into hit_atom
 /atom/movable/proc/throw_impact(atom/hit_atom, throwingdatum)
@@ -470,16 +560,16 @@
 	if(master)
 		return master.attack_hand(a, b, c)
 
-/atom/movable/proc/handle_buckled_mob_movement(newloc,direct,movetime)
-	for(var/m in buckled_mobs)
-		var/mob/living/buckled_mob = m
-		if(!buckled_mob.Move(newloc, direct, movetime))
+/atom/movable/proc/handle_buckled_mob_movement(newloc, direct, glide_size_override)
+	for(var/mob/living/buckled_mob as anything in buckled_mobs)
+		if(!buckled_mob.Move(newloc, direct, glide_size_override)) //If a mob buckled to us can't make the same move as us
 			forceMove(buckled_mob.loc)
 			last_move = buckled_mob.last_move
 			inertia_dir = last_move
 			buckled_mob.inertia_dir = last_move
-			return 0
-	return 1
+			return FALSE
+
+	return TRUE
 
 /atom/movable/proc/force_pushed(atom/movable/pusher, force = MOVE_FORCE_DEFAULT, direction)
 	return FALSE

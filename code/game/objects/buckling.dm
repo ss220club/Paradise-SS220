@@ -88,6 +88,7 @@
 	buckled_mobs |= M
 	ADD_TRAIT(M, TRAIT_IMMOBILIZED, BUCKLING_TRAIT)
 	M.throw_alert("buckled", /obj/screen/alert/restrained/buckled)
+	M.set_glide_size(glide_size)
 	post_buckle_mob(M)
 	SEND_SIGNAL(src, COMSIG_MOVABLE_BUCKLE, M, force)
 	return TRUE
@@ -106,6 +107,7 @@
 		buckled_mob.anchored = initial(buckled_mob.anchored)
 		REMOVE_TRAIT(buckled_mob, TRAIT_IMMOBILIZED, BUCKLING_TRAIT)
 		buckled_mob.clear_alert("buckled")
+		buckled_mob.set_glide_size(DELAY_TO_GLIDE_SIZE(buckled_mob.movement_delay()))
 		buckled_mobs -= buckled_mob
 		SEND_SIGNAL(src, COMSIG_MOVABLE_UNBUCKLE, buckled_mob, force)
 		if((buckled_mob.mobility_flags & MOBILITY_STAND) && !buckled_mob.resting)

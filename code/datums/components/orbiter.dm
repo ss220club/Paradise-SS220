@@ -116,6 +116,7 @@
 
 	if(!lock_in_orbit)
 		RegisterSignal(orbiter, COMSIG_MOVABLE_MOVED, PROC_REF(orbiter_move_react))
+		RegisterSignal(parent, COMSIG_MOVABLE_UPDATE_GLIDE_SIZE, .proc/orbiter_glide_size_update)
 
 	// Head first!
 	if(pre_rotation)
@@ -169,6 +170,7 @@
 
 		UnregisterSignal(orbiter, COMSIG_MOVABLE_MOVED)
 		UnregisterSignal(orbiter, COMSIG_PARENT_QDELETING)
+		UnregisterSignal(orbiter, COMSIG_MOVABLE_UPDATE_GLIDE_SIZE)
 
 		orbiter.orbiting_uid = null
 
@@ -371,6 +373,11 @@
 		var/list/orbit_params = orbit_data[orbiter]
 		if(orbit_params)
 			return orbit_params[3]
+
+/datum/component/orbiter/proc/orbiter_glide_size_update(datum/source, target)
+	for(var/orbiter in orbiter_list)
+		var/atom/movable/movable_orbiter = orbiter
+		movable_orbiter.glide_size = target
 
 ///////////////////////////////////
 // Atom procs/vars
