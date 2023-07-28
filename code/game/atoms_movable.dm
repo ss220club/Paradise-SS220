@@ -169,16 +169,16 @@
 	if(dir != direction)
 		setDir(direction)
 
-	var/is_multi_tile_object = is_multi_tile_object(src)
+	// var/is_multi_tile_object = is_multi_tile_object(src)
 
-	var/list/old_locs
-	if(is_multi_tile_object && isturf(loc))
-		old_locs = locs // locs is a special list, this is effectively the same as .Copy() but with less steps
-		for(var/atom/exiting_loc as anything in old_locs)
-			if(!exiting_loc.Exit(src, direction))
-				return
-	else if(!loc.Exit(src, direction))
-		return
+	// var/list/old_locs
+	// if(is_multi_tile_object && isturf(loc))
+	// 	old_locs = locs // locs is a special list, this is effectively the same as .Copy() but with less steps
+	// 	for(var/atom/exiting_loc as anything in old_locs)
+	// 		if(!exiting_loc.Exit(src, direction))
+	// 			return
+	// else if(!loc.Exit(src, direction))
+	// 	return
 
 	// var/list/new_locs
 	// if(is_multi_tile_object && isturf(newloc))
@@ -206,9 +206,9 @@
 	// var/area/oldarea = get_area(oldloc)
 	// var/area/newarea = get_area(newloc)
 
-	..(newloc, direction)
-
-	. = TRUE
+	if(SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_MOVE, newloc) & COMPONENT_MOVABLE_BLOCK_PRE_MOVE)
+		return
+	. = ..(newloc, direction)
 
 	// if(old_locs) // This condition will only be true if it is a multi-tile object.
 	// 	for(var/atom/exited_loc as anything in (old_locs - new_locs))
@@ -226,11 +226,11 @@
 	// if(oldarea != newarea)
 	// 	newarea.Entered(src, oldarea)
 
-	Moved(oldloc, direction, FALSE, old_locs)
-
-	last_move = direction
-	move_speed = world.time - l_move_time
-	l_move_time = world.time
+	if (.)
+		Moved(oldloc, direction, FALSE)
+		last_move = direction
+		move_speed = world.time - l_move_time
+		l_move_time = world.time
 
 ///////////////////////////////////////////////////////
 
@@ -321,7 +321,6 @@
 // Called after a successful Move(). By this point, we've already moved
 /atom/movable/proc/Moved(atom/old_loc, movement_dir, forced = FALSE,  list/old_locs)
 	SHOULD_CALL_PARENT(TRUE)
-
 	if(!inertia_moving)
 		inertia_next_move = world.time + inertia_move_delay
 		newtonian_move(movement_dir)
