@@ -172,6 +172,9 @@
 
 	move_delay += add_delay
 
+	if(mob.pulledby)
+		mob.pulledby.stop_pulling()
+
 	if(prev_pulling_loc && mob.pulling?.face_while_pulling && (mob.pulling.loc != prev_pulling_loc))
 		mob.setDir(get_dir(mob, mob.pulling)) // Face welding tanks and stuff when pulling
 	else
