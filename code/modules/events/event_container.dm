@@ -70,7 +70,7 @@ GLOBAL_LIST_EMPTY(event_last_fired)
 	for(var/event_meta in last_event_time) if(possible_events[event_meta])
 		var/time_passed = world.time - GLOB.event_last_fired[event_meta]
 		var/half_of_round = GLOB.configuration.event.expected_round_length / 2
-		var/weight_modifier = min(1, 1 - ((half_of_round - time_passed) / half_of_round)) 
+		var/weight_modifier = min(1, 1 - ((half_of_round - time_passed) / half_of_round))
 		//With this formula, an event ran 30 minutes ago has half weight, and an event ran an hour ago, has 100 % weight. This works better in general for events, as super high weight events are impacted in a meaningful way.
 		var/new_weight = max(possible_events[event_meta] * weight_modifier, 0)
 		if(new_weight)
@@ -145,6 +145,7 @@ GLOBAL_LIST_EMPTY(event_last_fired)
 		new /datum/event_meta(EVENT_LEVEL_MUNDANE, "Camera Failure",	/datum/event/camera_failure,		100, list(ASSIGNMENT_ENGINEER = 10)),
 		new /datum/event_meta(EVENT_LEVEL_MUNDANE, "Fake Virus",		/datum/event/fake_virus,		50),
 		new /datum/event_meta(EVENT_LEVEL_MUNDANE, "Bureaucratic Error",/datum/event/bureaucratic_error,					80, TRUE),
+		new /datum/event_meta(EVENT_LEVEL_MUNDANE, "New Space Law",		/datum/event/new_space_law,					80, TRUE), //SS220 EDIT - ADDITION
 		new /datum/event_meta(EVENT_LEVEL_MUNDANE, "Disease Outbreak",	/datum/event/disease_outbreak, 			50,		list(ASSIGNMENT_MEDICAL = 25), TRUE)
 	)
 
