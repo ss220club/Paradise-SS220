@@ -167,6 +167,9 @@
 
 	move_delay += add_delay
 
+	if(mob.pulledby)
+		mob.pulledby.stop_pulling()
+
 	moving = 0
 	if(mob && .)
 		if(mob.throwing)
