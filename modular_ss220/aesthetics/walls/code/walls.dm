@@ -31,7 +31,7 @@
 	canSmoothWith = list(SMOOTH_GROUP_WALLS, SMOOTH_GROUP_CULT_WALLS)
 
 //indestructible whiteshuttle walls
-/turf/simulated/wall/indestructible/whiteshuttle 
+/turf/simulated/wall/indestructible/whiteshuttle
 	name = "wall"
 	desc = "A light-weight titanium wall used in shuttles."
 	icon = 'icons/turf/walls/plastinum_wall.dmi'
@@ -126,3 +126,5 @@
 	. = ..()
 	T.transform = transform
 
+/turf/simulated/wall/indestructible/riveted
+	icon = 'modular_ss220/aesthetics/walls/icons/reinforced_wall.dmi'
