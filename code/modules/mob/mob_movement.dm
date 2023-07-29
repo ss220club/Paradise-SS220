@@ -133,17 +133,16 @@
 
 	//We are now going to move
 	moving = 1
+
 	var/add_delay = mob.movement_delay()
-	mob.set_glide_size(DELAY_TO_GLIDE_SIZE(add_delay * ((IS_DIR_DIAGONAL(direct)) ? sqrt(2) : 1 )))
+	if(locate(/obj/item/grab, mob))
+		add_delay += 7
 
 	if(old_move_delay + world.tick_lag > world.time)
 		move_delay = old_move_delay
 	else
 		move_delay = world.time
 	mob.last_movement = world.time
-
-	if(locate(/obj/item/grab, mob))
-		add_delay += 7
 
 	if(istype(living_mob))
 		var/newdir = NONE
@@ -158,27 +157,18 @@
 			direct = newdir
 			new_loc = get_step(mob, direct)
 
-	mob.last_movement_dir = direct
-
-	var/prev_pulling_loc = null
-	if(mob.pulling)
-		prev_pulling_loc = mob.pulling.loc
-
-	. = ..()
+	. = mob.Move(new_loc, direct, DELAY_TO_GLIDE_SIZE(add_delay * (IS_DIR_DIAGONAL(direct) ? sqrt(2) : 1)))
 
 	if(IS_DIR_DIAGONAL(direct) && mob.loc == new_loc) //moved diagonally successfully
 		add_delay *= sqrt(2)
+
 	mob.set_glide_size(DELAY_TO_GLIDE_SIZE(add_delay))
+	mob.pulling?.set_glide_size(mob.glide_size)
 
 	move_delay += add_delay
 
 	if(mob.pulledby)
 		mob.pulledby.stop_pulling()
-
-	if(prev_pulling_loc && mob.pulling?.face_while_pulling && (mob.pulling.loc != prev_pulling_loc))
-		mob.setDir(get_dir(mob, mob.pulling)) // Face welding tanks and stuff when pulling
-	else
-		mob.setDir(direct)
 
 	moving = 0
 	if(mob && .)

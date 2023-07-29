@@ -188,9 +188,6 @@
 
 	var/last_movement = -100 // Last world.time the mob actually moved of its own accord.
 
-	/// The direction they last moved
-	var/last_movement_dir
-
 	var/last_logout = 0
 
 	var/resize = 1 //Badminnery resize
