@@ -40,6 +40,12 @@
 	update_runechat_msg_location()
 	. = ..()
 
+/// Le Crutch to make mobs not controlled by the player, to actually glide from tile to tile. This will remain here, until the mob movement refactor.
+/mob/Move(atom/newloc, direction, glide_size_override = 0)
+	if (!glide_size_override && !moving_diagonally)
+		glide_size_override =  DELAY_TO_GLIDE_SIZE(movement_delay())
+	. = ..()
+
 /atom/proc/prepare_huds()
 	hud_list = list()
 	for(var/hud in hud_possible)
