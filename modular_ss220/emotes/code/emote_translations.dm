@@ -573,7 +573,7 @@
 	linked_emote = /datum/emote/living/carbon/human/scratch
 	name = "Чесаться"
 
-/datum/keybinding/emote/carbon/human/whistle
+/datum/emote/living/carbon/human/whistle
 	key = "whistle"
 	key_third_person = "whistles"
 	message = "свистит."
