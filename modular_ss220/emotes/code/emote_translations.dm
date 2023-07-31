@@ -577,6 +577,6 @@
 	key = "whistle"
 	key_third_person = "whistles"
 	message = "свистит."
-	self_message = "Вы свистите."
+	message_param = "свистит на %t."
 	emote_type = EMOTE_AUDIBLE | EMOTE_MOUTH | EMOTE_SOUND
 	sound = "modular_ss220/emotes/audio/whistle.ogg"
