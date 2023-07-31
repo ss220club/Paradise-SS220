@@ -15,6 +15,7 @@
 	origin_tech = "combat=1"
 	needs_permit = TRUE
 	attack_verb = list("struck", "hit", "bashed")
+	appearance_flags = TILE_BOUND|PIXEL_SCALE|LONG_GLIDE|KEEP_TOGETHER
 
 	var/fire_sound = "gunshot"
 	var/magin_sound = 'sound/weapons/gun_interactions/smg_magin.ogg'
