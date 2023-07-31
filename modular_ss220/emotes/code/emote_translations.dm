@@ -572,3 +572,11 @@
 /datum/keybinding/emote/carbon/human/scratch
 	linked_emote = /datum/emote/living/carbon/human/scratch
 	name = "Чесаться"
+
+/datum/keybinding/emote/carbon/human/whistle
+	key = "whistle"
+	key_third_person = "whistles"
+	message = "свистит."
+	self_message = "Вы свистите."
+	emote_type = EMOTE_AUDIBLE | EMOTE_MOUTH | EMOTE_SOUND
+	sound = "modular_ss220/emotes/audio/whistle.ogg"
