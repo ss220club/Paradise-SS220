@@ -580,3 +580,7 @@
 	message_param = "свистит на %t."
 	emote_type = EMOTE_AUDIBLE | EMOTE_MOUTH | EMOTE_SOUND
 	sound = "modular_ss220/emotes/audio/whistle.ogg"
+
+/datum/keybinding/emote/carbon/human/whistle
+	linked_emote = /datum/emote/living/carbon/human/whistle
+	name = "Свистеть"
