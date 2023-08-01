@@ -116,5 +116,5 @@
 	var/obj/item/paper/form/paper = new form (loc)
 	toner--
 	if(toner == 0)
-		visible_message("<span class='notice'>Красная лампочка на [src]е мигает, походу закончился тонер.</span>")
+		visible_message("<span class='notice'>На [src]е мигает красная лампочка. Похоже закончился тонер.</span>")
 	return paper
