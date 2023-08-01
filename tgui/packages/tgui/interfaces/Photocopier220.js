@@ -10,8 +10,8 @@ String.prototype.trimLongStr = function (length) {
 
 export const Photocopier220 = (props, context) => {
   const { act, data } = useBackend(context);
-  if (data.mode === "mode_aipic" && !data.isAI) {
-    act("mode_copy");
+  if (!data.isAI) {
+    act("aipic");
   }
 
   const forms = sortBy(form => form.category)(data.forms || []);
@@ -42,107 +42,97 @@ export const Photocopier220 = (props, context) => {
             <Section
               title="Статус">
               <Flex>
-                <Flex.Item width="40%" color="blue">
+                <Flex.Item mr="20px" color="grey">
                   Заряд тонера:
                 </Flex.Item>
-                <Flex.Item mr="3px" color={data.toner > 0 ? "good" : "bad"}>
+                <Flex.Item mr="5px" color={data.toner > 0 ? "good" : "bad"} bold>
                   {data.toner}
                 </Flex.Item>
                 </Flex>
                 <Flex>
-                  <FlexItem width="40%" color="blue">
-                    Слот сканера:
-                  </FlexItem>
-                  <Flex.Item mr="3px">
+                  <Flex.Item width="100%" mt="8px">
                     <Button
-                      icon="sign-out-alt"
-                      disabled={data.isAI || data.copyitem === null}
-                      content="Извлечь"
-                      onClick={() => act("removedocument")}
-                      />
+                      fluid
+                      textAlign="center"
+                      disabled={!data.copyitem && !data.mob}
+                      content={
+                        data.copyitem
+                          ? data.copyitem
+                          : data.mob
+                          ? "Жопа " + data.mob + "!"
+                          : 'Слот для документа'
+                      }
+                      onClick={() => act('removedocument')}
+                  />
                   </Flex.Item>
-                </Flex>
+                  </Flex>
+                  <Flex>
+                  <Flex.Item width="100%"mt="3px">
+                  <Button
+                    fluid
+                    textAlign="center"
+                    disabled={!data.folder}
+                    content={data.folder ? data.folder : 'Слот для папки'}
+                    onClick={() => act('removefolder')}
+                  />
+                  </Flex.Item>
+                  </Flex>
             </Section>
-
             <Section
               title="Управление">
                 <Flex>
-                  <Flex.Item width="40%" color="blue">
-                    Режим:
-                  </Flex.Item>
-                  <Flex.Item mr="3px">
+                  <Flex.Item width="30%" mr="3px">
                   <Button
-                    icon="file"
-                    content="Копирование"
-                    selected={data.mode === "mode_copy" ? "selected" : null}
-                    onClick={() => act("mode_copy")}
+                    fluid
+                    textAlign="center"
+                    icon="clone"
+                    content="Копия"
+                    disabled={data.toner === 0 || !data.copyitem && !data.mob}
+                    onClick={() => act("copy")}
                   />
                   </Flex.Item>
-                  <Flex.Item mr="3px">
+                  <Flex.Item width="40%" mr="3px">
                   <Button
+                    fluid
+                    textAlign="center"
                     icon="file"
+                    disabled={data.toner === 0 || data.form === null}
                     content="Печать"
-                    disabled={data.toner === 0}
-                    selected={data.mode === "mode_print" ? "selected" : null}
-                    onClick={() => act("mode_print")}
+                    onClick={() => act("print_form")}
                   />
                   </Flex.Item>
-                  <Flex.Item mr="3px">
+                  <Flex.Item width="30%" mr="3px">
+                  <Button
+                    fluid
+                    textAlign="center"
+                    icon="print"
+                    content="Скан"
+                    onClick={() => act("scandocument")}
+                  />
+                  </Flex.Item>
+                </Flex>
+                <Flex>
+                  <Flex.Item width="100%" mr="5px">
                   {!!data.isAI && (
                   <Button
+                    fluid
+                    textAlign="center"
                     icon="terminal"
                     disabled={data.toner === 0}
                     content="Фото из БД"
-                    selected={data.mode === "mode_aipic" ? "selected" : null}
-                    onClick={() => act("mode_aipic")}
+                    onClick={() => act("aipic")}
                   />
                   )}
                   </Flex.Item>
                 </Flex>
                 <Flex>
-                  <Flex.Item width="40%" color="blue">
-                    Выполнить:
-                  </Flex.Item>
-                  <Flex.Item mr="3px" >
-                  {data.mode === "mode_copy" && (
-                  <Button
-                      icon="print"
-                      disabled={data.toner === 0
-                        || (data.copyitem === null
-                        && !data.ass)}
-                      textAlign="center"
-                      content="Копирование"
-                      onClick={() => act("copy")}
-                    />
-                  )}
-                  <Button
-                    fluid
-                    icon="file-import"
-                    float="center"
-                    textAlign="center"
-                    content="Сканировать"
-                    onClick={() => act('scandocument')}
-                  />
-                    </Flex.Item>
-                    <Flex.Item mr="3px">
-                    {data.mode === "mode_print" && (
-                    <Button
-                      icon="print"
-                      disabled={data.toner === 0 || data.form === null}
-                      content="Печать"
-                      onClick={() => act("print_form")}
-                    />
-                    )}
-                  </Flex.Item>
-                </Flex>
-                <Flex>
-                  <Flex.Item width="40%" color="blue">
+                  <Flex.Item mr="10px" mt="10px" color="grey">
                     Количество:
                   </Flex.Item>
-                  <Flex.Item>
+                  <Flex.Item mr="15px" mt="10px">
                   {data.copynumber}
                   </Flex.Item>
-                  <Flex.Item mr="3px">
+                  <Flex.Item mr="3px" mt="8px">
                     <Button
                       fluid
                       icon="minus"
@@ -151,7 +141,7 @@ export const Photocopier220 = (props, context) => {
                       onClick={() => act('minus')}
                     />
                   </Flex.Item>
-                  <Flex.Item mr="3px">
+                  <Flex.Item mr="3px" mt="8px">
                   <Button
                     fluid
                     icon="plus"
@@ -165,7 +155,7 @@ export const Photocopier220 = (props, context) => {
             <Section
               title="Бюрократия">
               <Flex>
-                <Flex.Item width="40%">
+                <Flex.Item mr="20px">
                   Форма:
                 </Flex.Item>
                 <FlexItem>
@@ -176,7 +166,8 @@ export const Photocopier220 = (props, context) => {
                 direction="column"
                 mt={2}>
                 <Flex.Item>
-                  <Button fluid
+                  <Button
+                    fluid
                     icon="chevron-right"
                     content="Все формы"
                     selected={data.category === "" ? "selected" : null}

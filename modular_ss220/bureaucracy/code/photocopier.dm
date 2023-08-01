@@ -1,10 +1,6 @@
-#define MODE_COPY 	"mode_copy"
-#define MODE_PRINT 	"mode_print"
-#define MODE_SCAN   "mode_print"
 #define MODE_AIPIC 	"mode_aipic"
 
 /obj/machinery/photocopier
-	var/mode = MODE_COPY
 	var/category = "" // selected form's category
 	var/form_id = "" // selected form's id
 	var/list/forms = new/list() // forms list
@@ -47,14 +43,6 @@
 			form_id = params["id"]
 		if("choose_category")
 			category = params["category"]
-		if("mode_copy")
-			mode = MODE_COPY
-		if("mode_print")
-			mode = MODE_PRINT
-		if("mode_scan")
-			mode = MODE_SCAN
-		if("mode_aipic")
-			mode = MODE_AIPIC
 		else
 			return FALSE
 	add_fingerprint(usr)
@@ -78,7 +66,6 @@
 	data["folder"] = (folder ? folder.name : null)
 	data["mob"] = (copymob ? copymob.name : null)
 	data["files"] = list()
-	data["mode"] = mode
 	data["form"] = form
 	data["category"] = category
 	data["form_id"] = form_id
@@ -111,6 +98,4 @@
 		visible_message("<span class='notice'>Красная лампочка на [src]е мигает, походу закончился тонер.</span>")
 	return paper
 
-#undef MODE_COPY
-#undef MODE_PRINT
 #undef MODE_AIPIC
