@@ -112,7 +112,7 @@
 		form["category"] = initial(ff.category)
 		forms[++forms.len] = form
 
-/obj/machinery/photocopier/proc/print_form(var/obj/item/paper/form/form)
+/obj/machinery/photocopier/proc/print_form(obj/item/paper/form/form)
 	var/obj/item/paper/form/paper = new form (loc)
 	toner--
 	if(toner == 0)
