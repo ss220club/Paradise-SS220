@@ -1,8 +1,8 @@
-import { Fragment } from 'inferno';
 import { useBackend } from '../backend';
 import { Button, LabeledList, Section, Box, Flex, NoticeBox } from "../components";
 import { Window } from '../layouts';
 import { sortBy } from "common/collections";
+import { FlexItem } from '../components/Flex';
 
 String.prototype.trimLongStr = function (length) {
   return this.length > length ? this.substring(0, length) + "..." : this;
@@ -32,48 +32,118 @@ export const Photocopier220 = (props, context) => {
 
   return (
     <Window theme={data.ui_theme}>
-      <Window.Content>
+      <Window.Content scrollable>
         <Flex
           direction="row"
           spacing={1}>
           <Flex.Item
             width={24}
             shrink={0}>
-            <Section>
-              <Box bold m={1}>
-                Статус
-              </Box>
-              <LabeledList>
-                <LabeledList.Item label="Заряд тонера"
-                  color={data.toner > 0 ? "good" : "bad"}>
+            <Section
+              title="Статус">
+              <Flex>
+                <Flex.Item width="30%" color="blue">
+                  Заряд тонера:
+                </Flex.Item>
+                <Flex.Item mr="3px" color={data.toner > 0 ? "good" : "bad"}>
                   {data.toner}
-                </LabeledList.Item>
-                <LabeledList.Item label="Слот сканера">
-                  <Button
-                    icon="sign-out-alt"
-                    disabled={data.isAI || data.copyitem === null}
-                    content="Извлечь"
-                    onClick={() => act("removedocument")}
-                  />
-                </LabeledList.Item>
-              </LabeledList>
-              <Box bold m={1}>
-                Управление
-              </Box>
-              <LabeledList>
-                <LabeledList.Item label="Количество">
+                </Flex.Item>
+                </Flex>
                 <Flex>
-                <Box width="2em" bold>
-                  {data.copynumber}
-                </Box>
-                <Fragment float="right">
+                  <FlexItem width="30%" color="blue">
+                    Слот сканера:
+                  </FlexItem>
+                  <Flex.Item mr="3px">
+                    <Button
+                      icon="sign-out-alt"
+                      disabled={data.isAI || data.copyitem === null}
+                      content="Извлечь"
+                      onClick={() => act("removedocument")}
+                      />
+                  </Flex.Item>
+                </Flex>
+            </Section>
+
+            <Section
+              title="Управление">
+                <Flex>
+                  <Flex.Item width="30%" color="blue">
+                    Режим:
+                  </Flex.Item>
+                  <Flex.Item mr="3px">
                   <Button
-                    fluid
-                    icon="minus"
-                    textAlign="center"
-                    content=""
-                    onClick={() => act('minus')}
+                    icon="scan"
+                    content="Копирование"
+                    disabled={data.toner === 0}
+                    selected={data.mode === "mode_copy" ? "selected" : null}
+                    onClick={() => act("mode_scan")}
                   />
+                  </Flex.Item>
+                  <Flex.Item mr="3px">
+                  <Button
+                    icon="file"
+                    content="Печать"
+                    disabled={data.toner === 0}
+                    selected={data.mode === "mode_print" ? "selected" : null}
+                    onClick={() => act("mode_copy")}
+                  />
+                  </Flex.Item>
+                  <Flex.Item mr="3px">
+                  {!!data.isAI && (
+                  <Button
+                    icon="terminal"
+                    disabled={data.toner === 0}
+                    content="Фото из БД"
+                    selected={data.mode === "mode_aipic" ? "selected" : null}
+                    onClick={() => act("mode_aipic")}
+                  />
+                  )}
+                  </Flex.Item>
+                </Flex>
+                <Flex>
+                  <Flex.Item width="30%" color="blue">
+                    Выполнить:
+                  </Flex.Item>
+                  <Flex.Item mr="3px" >
+                  {data.mode === "mode_copy" && (
+                  <Button
+                      icon="print"
+                      disabled={data.toner === 0
+                        || (data.copyitem === null
+                        && !data.ass)}
+                      content="Копирование"
+                      onClick={() => act("copy")}
+                    />
+                  )}
+                    </Flex.Item>
+                    <Flex.Item mr="3px">
+                    {data.mode === "mode_print" && (
+                    <Button
+                      icon="print"
+                      disabled={data.toner === 0 || data.form === null}
+                      content="Печать"
+                      onClick={() => act("print_form")}
+                    />
+                    )}
+                  </Flex.Item>
+                </Flex>
+                <Flex>
+                  <Flex.Item width="30%" color="blue">
+                    Количество:
+                  </Flex.Item>
+                  <Flex.Item>
+                  {data.copynumber}
+                  </Flex.Item>
+                  <Flex.Item mr="3px">
+                    <Button
+                      fluid
+                      icon="minus"
+                      textAlign="center"
+                      content=""
+                      onClick={() => act('minus')}
+                    />
+                  </Flex.Item>
+                  <Flex.Item mr="3px">
                   <Button
                     fluid
                     icon="plus"
@@ -81,76 +151,19 @@ export const Photocopier220 = (props, context) => {
                     content=""
                     onClick={() => act('add')}
                   />
-                </Fragment>
-              </Flex>
-                </LabeledList.Item>
-                <LabeledList.Item label="Режим">
-                   <Button
-                    icon="file"
-                    disabled={data.toner === 0}
-                    content="Сканирование"
-                    selected={data.mode === "mode_print" ? "selected" : null}
-                    onClick={() => act("mode_scan")}
-                  />
-                  <Button
-                    icon="clone"
-                    disabled={data.toner === 0}
-                    content="Копирование"
-                    selected={data.mode === "mode_copy" ? "selected" : null}
-                    onClick={() => act("mode_copy")}
-                  />
-                  <Button
-                    icon="file"
-                    disabled={data.toner === 0}
-                    content="Печать"
-                    selected={data.mode === "mode_print" ? "selected" : null}
-                    onClick={() => act("mode_print")}
-                  />
-                  {!!data.isAI && (
-                    <Button
-                      icon="terminal"
-                      disabled={data.toner === 0}
-                      content="Фото из ДБ"
-                      selected={data.mode === "mode_aipic" ? "selected" : null}
-                      onClick={() => act("mode_aipic")}
-                    />
-                  )}
-                </LabeledList.Item>
-                <LabeledList.Item label="Выполнить">
-                    <Button
-                      icon="clone"
-                      disabled={data.toner === 0
-                        || (data.copyitem === null
-                        && !data.ass)}
-                      content="Копировать"
-                      onClick={() => act("copy")}
-                    />
-                    <Button
-                      icon="print"
-                      disabled={data.toner === 0 || data.form === null}
-                      content="Печать"
-                      onClick={() => act("print_form")}
-                    />
-                  {data.mode === "mode_aipic" && (
-                    <Button
-                      icon="print"
-                      disabled={data.toner === 0}
-                      content="Печать фото"
-                      onClick={() => act("aipic")}
-                    />
-                  )}
-                </LabeledList.Item>
-              </LabeledList>
+                  </Flex.Item>
+                </Flex>
             </Section>
-            <Section>
-              <Box bold m={1}>
-                Бюрократия
-              </Box>
-              <LabeledList>
-                <LabeledList.Item label="Форма">
+            <Section
+              title="Бюрократия">
+              <Flex>
+                <Flex.Item width="30%">
+                  Форма:
+                </Flex.Item>
+                <FlexItem>
                   {data.form_id === "" ? "Не выбрана" : data.form_id}
-                </LabeledList.Item>
-              </LabeledList>
+                </FlexItem>
+              </Flex>
               <Flex
                 direction="column"
                 mt={2}>
@@ -183,17 +196,15 @@ export const Photocopier220 = (props, context) => {
           </Flex.Item>
           <Flex.Item
             width={35}>
-            <Section scrollable>
-              <Box bold m={1}>
-                {data.category === "" ? "Все формы" : data.category}
-              </Box>
+            <Section
+              title = {data.category === "" ? "Все формы" : data.category}>
               <Flex
                 direction="column"
                 mt={2}>
                 {category.map(form => (
                   <Flex.Item key={form.path}>
                     <Button fluid key={form.path}
-                      content={form.id + ": " + form.altername.trimLongStr(30)}
+                      content={form.id + ": " + form.altername.trimLongStr(35)}
                       tooltip={form.id + ": " + form.altername}
                       selected={data.form === form.path ? "selected" : null}
                       onClick={() => act("choose_form", {
