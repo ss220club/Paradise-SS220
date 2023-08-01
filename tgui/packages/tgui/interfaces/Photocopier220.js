@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Button, LabeledList, Section, Box, Flex, NoticeBox } from "../components";
+import { Button, Section, Flex } from "../components";
 import { Window } from '../layouts';
 import { sortBy } from "common/collections";
 import { FlexItem } from '../components/Flex';
@@ -33,7 +33,6 @@ export const Photocopier220 = (props, context) => {
   return (
     <Window theme={data.ui_theme}>
       <Window.Content
-        title="Ксерокс"
         scrollable
         display="flex">
         <Flex
