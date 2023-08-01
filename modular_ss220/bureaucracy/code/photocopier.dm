@@ -1,5 +1,3 @@
-#define MODE_AIPIC 	"mode_aipic"
-
 /obj/machinery/photocopier
 	var/category = "" // selected form's category
 	var/form_id = "" // selected form's id
@@ -50,7 +48,7 @@
 /obj/machinery/photocopier/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = FALSE, datum/tgui/master_ui = null, datum/ui_state/state = GLOB.default_state)
 	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
 	if(!ui)
-		ui = new(user, src, ui_key, "Photocopier220", name, 700, 630, master_ui, state)
+		ui = new(user, src, ui_key, "Photocopier220", name, 650, 635, master_ui, state)
 		ui.open()
 
 /obj/machinery/photocopier/ui_data(mob/user)
@@ -59,7 +57,6 @@
 
 	var/list/data = list()
 
-	data["isAI"] = issilicon(user)
 	data["copynumber"] = copies
 	data["toner"] = toner
 	data["copyitem"] = (copyitem ? copyitem.name : null)
@@ -97,5 +94,3 @@
 	if(toner == 0)
 		visible_message("<span class='notice'>Красная лампочка на [src]е мигает, походу закончился тонер.</span>")
 	return paper
-
-#undef MODE_AIPIC

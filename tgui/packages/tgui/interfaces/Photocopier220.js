@@ -32,7 +32,10 @@ export const Photocopier220 = (props, context) => {
 
   return (
     <Window theme={data.ui_theme}>
-      <Window.Content scrollable>
+      <Window.Content
+        title="Ксерокс"
+        scrollable
+        display="flex">
         <Flex
           direction="row"
           spacing={1}>
@@ -81,7 +84,7 @@ export const Photocopier220 = (props, context) => {
             <Section
               title="Управление">
                 <Flex>
-                  <Flex.Item width="30%" mr="3px">
+                  <Flex.Item width="60%" mr="3px">
                   <Button
                     fluid
                     textAlign="center"
@@ -100,29 +103,6 @@ export const Photocopier220 = (props, context) => {
                     content="Печать"
                     onClick={() => act("print_form")}
                   />
-                  </Flex.Item>
-                  <Flex.Item width="30%" mr="3px">
-                  <Button
-                    fluid
-                    textAlign="center"
-                    icon="print"
-                    content="Скан"
-                    onClick={() => act("scandocument")}
-                  />
-                  </Flex.Item>
-                </Flex>
-                <Flex>
-                  <Flex.Item width="100%" mr="5px">
-                  {!!data.isAI && (
-                  <Button
-                    fluid
-                    textAlign="center"
-                    icon="terminal"
-                    disabled={data.toner === 0}
-                    content="Фото из БД"
-                    onClick={() => act("aipic")}
-                  />
-                  )}
                   </Flex.Item>
                 </Flex>
                 <Flex>
@@ -155,10 +135,10 @@ export const Photocopier220 = (props, context) => {
             <Section
               title="Бюрократия">
               <Flex>
-                <Flex.Item mr="20px">
+                <Flex.Item mr="20px" color="grey">
                   Форма:
                 </Flex.Item>
-                <FlexItem>
+                <FlexItem bold>
                   {data.form_id === "" ? "Не выбрана" : data.form_id}
                 </FlexItem>
               </Flex>
@@ -203,7 +183,7 @@ export const Photocopier220 = (props, context) => {
                 {category.map(form => (
                   <Flex.Item key={form.path}>
                     <Button fluid key={form.path}
-                      content={form.id + ": " + form.altername.trimLongStr(35)}
+                      content={form.id + ": " + form.altername.trimLongStr(30)}
                       tooltip={form.id + ": " + form.altername}
                       selected={data.form === form.path ? "selected" : null}
                       onClick={() => act("choose_form", {
