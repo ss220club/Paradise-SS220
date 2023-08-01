@@ -6,4 +6,4 @@ CREATE TABLE IF NOT EXISTS `discord_links` (
   `one_time_token` varchar(100) NOT NULL,
   `valid` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2048 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
