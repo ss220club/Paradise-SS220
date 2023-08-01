@@ -42,7 +42,7 @@ export const Photocopier220 = (props, context) => {
             <Section
               title="Статус">
               <Flex>
-                <Flex.Item width="30%" color="blue">
+                <Flex.Item width="40%" color="blue">
                   Заряд тонера:
                 </Flex.Item>
                 <Flex.Item mr="3px" color={data.toner > 0 ? "good" : "bad"}>
@@ -50,7 +50,7 @@ export const Photocopier220 = (props, context) => {
                 </Flex.Item>
                 </Flex>
                 <Flex>
-                  <FlexItem width="30%" color="blue">
+                  <FlexItem width="40%" color="blue">
                     Слот сканера:
                   </FlexItem>
                   <Flex.Item mr="3px">
@@ -67,16 +67,15 @@ export const Photocopier220 = (props, context) => {
             <Section
               title="Управление">
                 <Flex>
-                  <Flex.Item width="30%" color="blue">
+                  <Flex.Item width="40%" color="blue">
                     Режим:
                   </Flex.Item>
                   <Flex.Item mr="3px">
                   <Button
-                    icon="scan"
+                    icon="file"
                     content="Копирование"
-                    disabled={data.toner === 0}
                     selected={data.mode === "mode_copy" ? "selected" : null}
-                    onClick={() => act("mode_scan")}
+                    onClick={() => act("mode_copy")}
                   />
                   </Flex.Item>
                   <Flex.Item mr="3px">
@@ -85,7 +84,7 @@ export const Photocopier220 = (props, context) => {
                     content="Печать"
                     disabled={data.toner === 0}
                     selected={data.mode === "mode_print" ? "selected" : null}
-                    onClick={() => act("mode_copy")}
+                    onClick={() => act("mode_print")}
                   />
                   </Flex.Item>
                   <Flex.Item mr="3px">
@@ -101,7 +100,7 @@ export const Photocopier220 = (props, context) => {
                   </Flex.Item>
                 </Flex>
                 <Flex>
-                  <Flex.Item width="30%" color="blue">
+                  <Flex.Item width="40%" color="blue">
                     Выполнить:
                   </Flex.Item>
                   <Flex.Item mr="3px" >
@@ -111,10 +110,19 @@ export const Photocopier220 = (props, context) => {
                       disabled={data.toner === 0
                         || (data.copyitem === null
                         && !data.ass)}
+                      textAlign="center"
                       content="Копирование"
                       onClick={() => act("copy")}
                     />
                   )}
+                  <Button
+                    fluid
+                    icon="file-import"
+                    float="center"
+                    textAlign="center"
+                    content="Сканировать"
+                    onClick={() => act('scandocument')}
+                  />
                     </Flex.Item>
                     <Flex.Item mr="3px">
                     {data.mode === "mode_print" && (
@@ -128,7 +136,7 @@ export const Photocopier220 = (props, context) => {
                   </Flex.Item>
                 </Flex>
                 <Flex>
-                  <Flex.Item width="30%" color="blue">
+                  <Flex.Item width="40%" color="blue">
                     Количество:
                   </Flex.Item>
                   <Flex.Item>
@@ -157,7 +165,7 @@ export const Photocopier220 = (props, context) => {
             <Section
               title="Бюрократия">
               <Flex>
-                <Flex.Item width="30%">
+                <Flex.Item width="40%">
                   Форма:
                 </Flex.Item>
                 <FlexItem>
