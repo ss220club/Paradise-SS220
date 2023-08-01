@@ -1,7 +1,3 @@
-/datum/sprite_accessory/hair/vulpkanin
-	icon = 'modular_ss220/hairs/icons/vulpkanin_hair.dmi'
-	species_allowed = list("Vulpkanin")
-
 /datum/sprite_accessory/hair/vulpkanin/vulp_hair_kajam
 	name = "Kajam"
 	icon_state = "kajam"
