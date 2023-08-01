@@ -106,6 +106,20 @@ export const Photocopier220 = (props, context) => {
                   </Flex.Item>
                 </Flex>
                 <Flex>
+                  <Flex.Item width="100%" mr="5px">
+                  {!!data.isAI && (
+                  <Button
+                    fluid
+                    textAlign="center"
+                    icon="terminal"
+                    disabled={data.toner === 0}
+                    content="Фото из БД"
+                    onClick={() => act("aipic")}
+                  />
+                  )}
+                  </Flex.Item>
+                </Flex>
+                <Flex>
                   <Flex.Item mr="10px" mt="10px" color="grey">
                     Количество:
                   </Flex.Item>

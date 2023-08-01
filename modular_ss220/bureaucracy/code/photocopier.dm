@@ -29,10 +29,10 @@
 	add_fingerprint(usr)
 	switch(action)
 		if("print_form")
-			playsound(loc, 'sound/goonstation/machines/printer_dotmatrix.ogg', 25, 1)
 			for(var/i = 0, i < copies, i++)
 				if(toner <= 0)
 					break
+				playsound(loc, 'sound/goonstation/machines/printer_dotmatrix.ogg', 25, 1)
 				print_form(form)
 				sleep(15)
 				use_power(active_power_consumption)
@@ -41,6 +41,29 @@
 			form_id = params["id"]
 		if("choose_category")
 			category = params["category"]
+		if("aipic")
+			if(!istype(usr,/mob/living/silicon))
+				return
+
+			if(toner >= 5)
+				var/mob/living/silicon/tempAI = usr
+				var/obj/item/camera/siliconcam/camera = tempAI.aiCamera
+
+				if(!camera)
+					return
+				var/datum/picture/selection = camera.selectpicture()
+				if(!selection)
+					return
+
+				playsound(loc, 'sound/goonstation/machines/printer_dotmatrix.ogg', 50, 1)
+				var/obj/item/photo/p = new /obj/item/photo (src.loc)
+				p.construct(selection)
+				if(p.desc == "")
+					p.desc += "Copied by [tempAI.name]"
+				else
+					p.desc += " - Copied by [tempAI.name]"
+				toner -= 5
+				sleep(15)
 		else
 			return FALSE
 	add_fingerprint(usr)
@@ -57,6 +80,7 @@
 
 	var/list/data = list()
 
+	data["isAI"] = issilicon(user)
 	data["copynumber"] = copies
 	data["toner"] = toner
 	data["copyitem"] = (copyitem ? copyitem.name : null)
