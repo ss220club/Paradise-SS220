@@ -1,7 +1,6 @@
 /datum/preferences
 	var/discord_id
 
-// IF you have linked your account, this will trigger a verify of the user
 /client/verb/link_discord_account()
 	set name = "Привязка Discord"
 	set category = "Special Verbs"
@@ -44,3 +43,23 @@
 			return FALSE
 
 	. = ..()
+
+/datum/preferences/load_preferences(datum/db_query/query)
+	if(!(. = ..()))
+		return
+
+	var/datum/db_query/discord_query = SSdbcore.NewQuery({"SELECT
+		valid,
+		discord_id
+		FROM discord_links
+		WHERE ckey=:ckey"}, list(
+			"ckey" = parent.ckey
+		))
+
+	while(discord_query.NextRow())
+		var/valid = discord_query.item[1]
+		if(valid)
+			discord_id = discord_query.item[2]
+
+	qdel(discord_query)
+
