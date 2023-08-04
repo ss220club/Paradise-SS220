@@ -250,7 +250,6 @@
 	force = 3
 	throwforce = 5
 	knockdown_duration = 6 SECONDS
-	w_class = WEIGHT_CLASS_BULKY
 	hitcost = 2000
 	slot_flags = SLOT_BACK | SLOT_BELT
 	var/obj/item/assembly/igniter/sparkler = null
