@@ -35,7 +35,7 @@ GLOBAL_DATUM_INIT(security_announcement, /datum/announcer, new(config_type = /da
 
 		switch(level)
 			if(SEC_LEVEL_GREEN)
-				GLOB.security_announcement.Announce("All threats to the station have passed. All weapons need to be holstered and privacy laws are once again fully enforced.","Attention! Security level lowered to green.", new_sound2 = 'sound/AI/green.ogg')
+				GLOB.security_announcement.Announce("Все угрозы для станции устранены. Все оружие должно быть в кобуре, и законы о конфиденциальности вновь полностью соблюдаются.","ВНИМАНИЕ! Уровень угрозы понижен до ЗЕЛЁНОГО.", new_sound2 = 'sound/AI/green.ogg')
 				GLOB.security_level = SEC_LEVEL_GREEN
 				unset_stationwide_emergency_lighting()
 				post_status(STATUS_DISPLAY_TRANSFER_SHUTTLE_TIME)
@@ -43,11 +43,11 @@ GLOBAL_DATUM_INIT(security_announcement, /datum/announcer, new(config_type = /da
 
 			if(SEC_LEVEL_BLUE)
 				if(GLOB.security_level < SEC_LEVEL_BLUE)
-					GLOB.security_announcement.Announce("The station has received reliable information about possible hostile activity on the station. Security staff may have weapons visible and random searches are permitted.", "Attention! Security level elevated to blue.",
+					GLOB.security_announcement.Announce("Станция получила надежные данные о возможной враждебной активности на борту. Служба Безопасности может держать оружие на виду.","ВНИМАНИЕ! Уровень угрозы повышен до СИНЕГО",
 					new_sound = 'sound/misc/notice1.ogg',
 					new_sound2 = 'sound/AI/blue.ogg')
 				else
-					GLOB.security_announcement.Announce("The immediate threat has passed. Security may no longer have weapons drawn at all times, but may continue to have them visible. Random searches are still allowed.", "Attention! Security level lowered to blue.", new_sound2 = 'sound/AI/blue.ogg')
+					GLOB.security_announcement.Announce("Непосредственная угроза миновала. Служба безопасности может больше не держать оружие в полной боевой готовности, но может по-прежнему держать его на виду. Выборочные обыски запрещены.","ВНИМАНИЕ! Уровень угрозы понижен до СИНЕГО", new_sound2 = 'sound/AI/blue.ogg')
 				GLOB.security_level = SEC_LEVEL_BLUE
 
 				post_status(STATUS_DISPLAY_TRANSFER_SHUTTLE_TIME)
@@ -56,11 +56,11 @@ GLOBAL_DATUM_INIT(security_announcement, /datum/announcer, new(config_type = /da
 
 			if(SEC_LEVEL_RED)
 				if(GLOB.security_level < SEC_LEVEL_RED)
-					GLOB.security_announcement.Announce("There is an immediate and serious threat to the station. Security may have weapons unholstered at all times. Random searches are allowed and advised.", "Attention! Code Red!",
+					GLOB.security_announcement.Announce("Станции грозит серьёзная опасность. Службе Безопасности рекомендуется иметь оружие в полной боевой готовности. Выборочные обыски разрешены.","ВНИМАНИЕ! КОД КРАСНЫЙ!",
 					new_sound = 'sound/misc/notice1.ogg',
 					new_sound2 = 'sound/AI/red.ogg')
 				else
-					GLOB.security_announcement.Announce("The station's self-destruct mechanism has been deactivated, but there is still an immediate and serious threat to the station. Security may have weapons unholstered at all times. Random searches are allowed and advised.", "Attention! Code Red!", new_sound2 = 'sound/AI/red.ogg')
+					GLOB.security_announcement.Announce("Механизм самоуничтожения станции деактивирован, но станции по-прежнему грозит серьёзная опасность. Службе Безопасности рекомендуется иметь оружие в полной боевой готовности. Выборочные обыски разрешены.","ВНИМАНИЕ! КОД КРАСНЫЙ!", new_sound2 = 'sound/AI/red.ogg')
 					unset_stationwide_emergency_lighting()
 				GLOB.security_level = SEC_LEVEL_RED
 
@@ -72,7 +72,7 @@ GLOBAL_DATUM_INIT(security_announcement, /datum/announcer, new(config_type = /da
 				update_firealarms()
 
 			if(SEC_LEVEL_GAMMA)
-				GLOB.security_announcement.Announce("Central Command has ordered the Gamma security level on the station. Security is to have weapons equipped at all times, and all civilians are to immediately seek their nearest head for transportation to a secure location.", "Attention! Gamma security level activated!", 'sound/effects/new_siren.ogg', new_sound2 = 'sound/AI/gamma.ogg')
+				GLOB.security_announcement.Announce("Центральным Командованием был установлен Код Гамма на станции. Служба безопасности должна быть полностью вооружена. Гражданский персонал обязан немедленно обратиться к Главам отделов для получения дальнейших указаний.", "Внимание! Код ГАММА!", 'sound/effects/new_siren.ogg', new_sound2 = 'sound/AI/gamma.ogg')
 				GLOB.security_level = SEC_LEVEL_GAMMA
 
 				if(GLOB.security_level < SEC_LEVEL_RED)
@@ -97,7 +97,7 @@ GLOBAL_DATUM_INIT(security_announcement, /datum/announcer, new(config_type = /da
 			if(SEC_LEVEL_DELTA)
 				var/temp_sound = GLOB.security_announcement.config.sound
 				GLOB.security_announcement.config.sound = null
-				GLOB.security_announcement.Announce("The station's self-destruct mechanism has been engaged. All crew are instructed to obey all instructions given by heads of staff. Any violations of these orders can be punished by death. This is not a drill.","Attention! Delta security level reached!",
+				GLOB.security_announcement.Announce("Механизм самоуничтожения станции задействован. Все члены экипажа обязан подчиняться всем указаниям, данными Главами отделов. Любые нарушения этих приказов наказуемы уничтожением на месте. Это не учебная тревога.","ВНИМАНИЕ! КОД ДЕЛЬТА!",
 					new_sound = null,
 					new_sound2 = null)
 				GLOB.security_announcement.config.sound = temp_sound
@@ -215,7 +215,7 @@ GLOBAL_DATUM_INIT(security_announcement, /datum/announcer, new(config_type = /da
 			INVOKE_ASYNC(L, TYPE_PROC_REF(/obj/machinery/light, update), FALSE)
 
 /proc/epsilon_process()
-	GLOB.security_announcement.Announce("Central Command has ordered the Epsilon security level on the station. Consider all contracts terminated.", "Attention! Epsilon security level activated!", 'modular_ss220/aesthetics_sounds/sound/epsilon/epsilon.ogg') //SS220 EDIT
+	GLOB.security_announcement.Announce("Центральным командованием был установлен код ЭПСИЛОН. Все контракты расторгнуты.","ВНИМАНИЕ! КОД ЭПСИЛОН", 'modular_ss220/aesthetics_sounds/sound/epsilon/epsilon.ogg') //SS220 EDIT
 	GLOB.security_level = SEC_LEVEL_EPSILON
 	post_status(STATUS_DISPLAY_ALERT, "epsilonalert")
 	for(var/area/A as anything in GLOB.all_areas)
