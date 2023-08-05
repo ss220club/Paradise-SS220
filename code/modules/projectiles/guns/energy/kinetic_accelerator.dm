@@ -9,14 +9,14 @@
 	origin_tech = "combat=3;powerstorage=3;engineering=3"
 	weapon_weight = WEAPON_LIGHT
 	can_flashlight = TRUE
-	flight_x_offset = 15
-	flight_y_offset = 9
+	flight_x_offset = 22
+	flight_y_offset = 8
 	var/overheat_time = 16
 	var/holds_charge = FALSE
 	var/unique_frequency = FALSE // modified by KA modkits
 	var/overheat = FALSE
 	can_bayonet = TRUE
-	knife_x_offset = 20
+	knife_x_offset = 25
 	knife_y_offset = 12
 
 	var/max_mod_capacity = 100
