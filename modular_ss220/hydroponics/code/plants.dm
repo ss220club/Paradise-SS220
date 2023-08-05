@@ -9,7 +9,8 @@
 	icon_state = "seed-buckwheat"
 	growing_icon = 'modular_ss220/hydroponics/icons/growing.dmi'
 	species = "buckwheat"
-	plantname = "Buckwheat Stalks"
+	icon_dead = "buckwheat-dead"
+	plantname = "Стебли Гречки"
 	product = /obj/item/reagent_containers/food/snacks/grown/buckwheat
 	mutatelist = list()
 
@@ -22,5 +23,5 @@
 	icon_state = "buckwheat"
 	filling_color = "#8e633c"
 	bitesize_mod = 2
-	tastes = list("buckwheat" = 1)
+	tastes = list("гречка" = 1)
 	can_distill = FALSE
