@@ -21,7 +21,7 @@
 	gender = PLURAL
 	icon = 'modular_ss220/hydroponics/icons/plants.dmi'
 	icon_state = "buckwheat"
-	filling_color = "#8e633c"
+	filling_color = "#8E633C"
 	bitesize_mod = 2
 	tastes = list("гречка" = 1)
 	can_distill = FALSE

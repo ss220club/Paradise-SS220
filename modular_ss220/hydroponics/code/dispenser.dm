@@ -5,7 +5,7 @@
 	dispensable_reagents = list("mutagen", "saltpetre", "ammonia", "water")
 	upgrade_reagents = list("atrazine", "glyphosate", "pestkiller", "diethylamine", "ash")
 
-/obj/machinery/chem_dispenser/Initialize(mapload)
+/obj/machinery/chem_dispenser/botanical/Initialize(mapload)
 	. = ..()
 	component_parts = list()
 	component_parts += new /obj/item/circuitboard/chem_dispenser/botanical(null)
@@ -18,7 +18,7 @@
 	RefreshParts()
 	dispensable_reagents = sortList(dispensable_reagents)
 
-/obj/machinery/chem_dispenser/upgraded/Initialize(mapload)
+/obj/machinery/chem_dispenser/botanical/upgraded/Initialize(mapload)
 	. = ..()
 	component_parts = list()
 	component_parts += new /obj/item/circuitboard/chem_dispenser/botanical(null)
