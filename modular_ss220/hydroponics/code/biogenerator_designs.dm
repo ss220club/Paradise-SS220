@@ -1,5 +1,5 @@
 /datum/design/rollingpapers
-	name = "Rolling paper pack"
+	name = "Бумага для самокруток"
 	id = "rolling_paper_pack"
 	build_type = BIOGENERATOR
 	materials = list(MAT_BIOMASS = 100)
@@ -7,7 +7,7 @@
 	category = list("initial","Organic Materials")
 
 /datum/design/strange_seeds
-	name = "Strange seeds"
+	name = "Странные семена"
 	id = "strange_seeds"
 	build_type = BIOGENERATOR
 	materials = list(MAT_BIOMASS = 10000)

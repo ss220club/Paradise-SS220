@@ -1,7 +1,7 @@
 // Reagent Grinder
 /obj/machinery/reagentgrinder/Initialize(mapload)
 	. = ..()
-	LAZYADD(blend_items, list(/obj/item/reagent_containers/food/snacks/grown/buckwheat = list("buckwheat" = -5)))
+	blend_items = list(/obj/item/reagent_containers/food/snacks/grown/buckwheat = list("buckwheat" = -5)) + blend_items
 
 // Buckwheat
 /datum/reagent/consumable/buckwheat
@@ -29,7 +29,7 @@
 
 /obj/item/reagent_containers/food/snacks/buckwheat_merchant
 	name = "гречка по-купечески"
-	desc = "Hot and steamy, soviet spies are involved. No doubt."
+	desc = "Тушённая гречка с овощами и мясом."
 	icon = 'modular_ss220/food/icons/food.dmi'
 	icon_state = "buckwheat_merchant"
 	trash = /obj/item/trash/plate
