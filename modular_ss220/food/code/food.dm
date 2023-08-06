@@ -5,13 +5,13 @@
 
 // Buckwheat
 /datum/reagent/consumable/buckwheat
-	name = "Buckwheat"
+	name = "Гречка"
 	id = "buckwheat"
-	description = "Rumors tell soviet people are eating only vodka and... this?"
+	description = "Ходят слухи, что советские люди жрут только водку и... это?"
 	reagent_state = SOLID
 	nutriment_factor = 3 * REAGENTS_METABOLISM
 	color = "#8E633C" // rgb: 142, 99, 60
-	taste_description = "dry buckwheat"
+	taste_description = "сухая гречка"
 
 /obj/item/reagent_containers/food/snacks/boiledbuckwheat
 	name = "варённая гречка"
