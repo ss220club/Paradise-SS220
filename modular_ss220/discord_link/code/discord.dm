@@ -45,7 +45,8 @@
 	. = ..()
 
 /datum/preferences/load_preferences(datum/db_query/query)
-	if(!(. = ..()))
+	. = ..()
+	if (!.)
 		return
 
 	var/datum/db_query/discord_query = SSdbcore.NewQuery({"SELECT
