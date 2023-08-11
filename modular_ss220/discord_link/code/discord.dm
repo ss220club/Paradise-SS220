@@ -26,8 +26,7 @@
 			return
 		qdel(query_update_token)
 		to_chat(usr, "<span class='darkmblue'>Для завершения используйте команду <span class='boldannounce'>/привязать</span> и токен \"[token]\" в канале <b>#дом-бота</b> в Discord-сообществе!</span>")
-		if(prefs)
-			prefs.load_preferences(usr)
+		prefs?.load_preferences(usr)
 
 /mob/new_player/Topic(href, href_list[])
 	if(src != usr)
