@@ -13,9 +13,9 @@
 		return
 	if(prefs)
 		prefs.load_preferences(usr)
-	if(prefs && prefs.discord_id)
-		to_chat(usr, "<span class='darkmblue'>Аккаунт Discord уже привязан! Чтобы отвязать используйте команду <span class='boldannounce'>/отвязать</span> в канале <b>#дом-бота</b> в Discord-сообществе!</span>")
-		return
+		if(prefs.discord_id)
+			to_chat(usr, "<span class='darkmblue'>Аккаунт Discord уже привязан! Чтобы отвязать используйте команду <span class='boldannounce'>/отвязать</span> в канале <b>#дом-бота</b> в Discord-сообществе!</span>")
+			return
 	var/token = md5("[world.time+rand(1000,1000000)]")
 	if(SSdbcore.IsConnected())
 		var/datum/db_query/query_update_token = SSdbcore.NewQuery("UPDATE discord_links SET one_time_token=:token WHERE ckey =:ckey", list("token" = token, "ckey" = ckey))
