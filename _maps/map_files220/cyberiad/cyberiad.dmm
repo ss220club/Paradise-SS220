@@ -22667,19 +22667,18 @@
 /area/hallway/primary/central/se)
 "bFV" = (
 /obj/machinery/door/airlock/maintenance{
-	name = "Morgue Maintenance";
-	req_access_txt = "6"
+	name = "Morgue Maintenance"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/mapping_helpers/airlock/access/any/medical/morgue,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/effect/mapping_helpers/airlock/access/any/medical/general,
 /turf/simulated/floor/plating,
 /area/medical/morgue)
 "bFW" = (
@@ -22924,7 +22923,7 @@
 /obj/machinery/power/apc{
 	dir = 4;
 	name = "east bump";
-	pixel_x = 26
+	pixel_x = 24
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -24098,8 +24097,7 @@
 /area/engine/gravitygenerator)
 "bLj" = (
 /obj/machinery/door/airlock/engineering{
-	name = "Engineering Checkpoint";
-	req_one_access_txt = "11;24"
+	name = "Engineering Checkpoint"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4
@@ -24549,11 +24547,11 @@
 "bMZ" = (
 /obj/effect/turf_decal/delivery/red,
 /obj/machinery/door/window/reinforced/normal{
-	name = "Body delivery system";
-	req_access_txt = "6"
+	name = "Body delivery system"
 	},
 /obj/structure/disposalpipe/segment,
 /obj/effect/mapping_helpers/airlock/windoor/access/any/medical/morgue,
+/obj/effect/mapping_helpers/airlock/windoor/access/any/medical/general,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -25926,6 +25924,18 @@
 /area/assembly/chargebay)
 "bRz" = (
 /obj/effect/spawner/random_spawners/blood_maybe,
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 5
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
 "bRI" = (
@@ -27288,7 +27298,6 @@
 /area/hallway/primary/central/se)
 "bVV" = (
 /obj/machinery/door/airlock/medical/glass{
-	id = "cloning";
 	id_tag = "CloningDoor";
 	name = "Genetics Cloning"
 	},
@@ -27314,6 +27323,9 @@
 	dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/access/any/medical/general,
+/obj/effect/mapping_helpers/airlock/polarized{
+	id = "cloning"
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "whitebluefull"
 	},
@@ -27426,25 +27438,6 @@
 	icon_state = "whitepurple"
 	},
 /area/toxins/hallway)
-"bWs" = (
-/obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 2;
-	icon_state = "pipe-c"
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
-	dir = 10
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/asmaint2)
 "bWt" = (
 /turf/simulated/floor/plasteel{
 	dir = 8;
@@ -28457,7 +28450,7 @@
 /obj/structure/closet/radiation,
 /obj/machinery/power/apc{
 	name = "south bump";
-	pixel_y = -26
+	pixel_y = -24
 	},
 /obj/structure/extinguisher_cabinet{
 	name = "east extinguisher cabinet";
@@ -28490,7 +28483,7 @@
 /obj/machinery/power/apc{
 	dir = 8;
 	name = "west bump";
-	pixel_x = -26
+	pixel_x = -24
 	},
 /obj/structure/cable{
 	d2 = 2;
@@ -29367,7 +29360,7 @@
 "ccq" = (
 /obj/machinery/power/apc{
 	name = "south bump";
-	pixel_y = -26
+	pixel_y = -24
 	},
 /obj/structure/cable{
 	d2 = 4;
@@ -29660,6 +29653,9 @@
 	},
 /obj/effect/mapping_helpers/airlock/windoor/access/any/science/robotics{
 	dir = 4
+	},
+/obj/structure/disposalpipe/trunk{
+	dir = 1
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "freezerfloor"
@@ -30114,8 +30110,18 @@
 	},
 /area/hallway/primary/starboard/east)
 "cfA" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 10
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
 "cfB" = (
@@ -30803,7 +30809,7 @@
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "north bump";
-	pixel_y = 26
+	pixel_y = 24
 	},
 /obj/structure/cable{
 	d2 = 8;
@@ -32201,7 +32207,7 @@
 /obj/machinery/power/apc{
 	dir = 8;
 	name = "west bump";
-	pixel_x = -26
+	pixel_x = -24
 	},
 /turf/simulated/floor/plasteel{
 	dir = 10;
@@ -32904,7 +32910,7 @@
 "cqZ" = (
 /obj/machinery/power/apc{
 	name = "south bump";
-	pixel_y = -26
+	pixel_y = -24
 	},
 /obj/structure/cable{
 	d2 = 4;
@@ -34559,17 +34565,6 @@
 	icon_state = "white"
 	},
 /area/medical/biostorage)
-"cxy" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
-/obj/structure/disposalpipe/segment,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plating,
-/area/maintenance/asmaint2)
 "cxz" = (
 /obj/effect/spawner/window/reinforced,
 /turf/simulated/floor/plating,
@@ -36939,8 +36934,7 @@
 "cFA" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /obj/machinery/door/airlock/atmos{
-	name = "Atmospherics Maintenance";
-	req_access_txt = "12;24"
+	name = "Atmospherics Maintenance"
 	},
 /obj/effect/mapping_helpers/airlock/access/any/engineering/atmos,
 /obj/effect/mapping_helpers/airlock/access/any/engineering/maintenance,
@@ -52828,7 +52822,7 @@
 /obj/machinery/power/apc{
 	dir = 8;
 	name = "west bump";
-	pixel_x = -26
+	pixel_x = -24
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -54305,7 +54299,7 @@
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "north bump";
-	pixel_y = 26
+	pixel_y = 24
 	},
 /obj/structure/cable{
 	d2 = 2;
@@ -57036,10 +57030,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
-/obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
-	},
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
 "hpY" = (
@@ -58700,7 +58691,7 @@
 "ibM" = (
 /obj/machinery/power/apc{
 	name = "south bump";
-	pixel_y = -26
+	pixel_y = -24
 	},
 /obj/structure/cable{
 	d2 = 8;
@@ -59299,6 +59290,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/effect/mapping_helpers/airlock/access/any/medical/general,
 /turf/simulated/floor/plasteel{
 	icon_state = "darkbluefull"
 	},
@@ -59521,6 +59513,18 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /turf/simulated/floor/plating,
 /area/maintenance/aft)
+"ixM" = (
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/asmaint2)
 "ixW" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -60862,7 +60866,7 @@
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "north bump";
-	pixel_y = 26
+	pixel_y = 24
 	},
 /obj/structure/cable{
 	d2 = 2;
@@ -61740,6 +61744,18 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/port)
+"jFF" = (
+/obj/effect/spawner/random_spawners/blood_maybe,
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
+/obj/effect/spawner/wire_splicing/thirty,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/asmaint2)
 "jGG" = (
 /obj/structure/grille/broken,
 /obj/item/stack/rods,
@@ -66155,7 +66171,7 @@
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "north bump";
-	pixel_y = 26
+	pixel_y = 24
 	},
 /obj/structure/cable{
 	d2 = 2;
@@ -66655,14 +66671,6 @@
 	icon_state = "blue"
 	},
 /area/maintenance/aft)
-"lWa" = (
-/obj/structure/disposalpipe/segment{
-	dir = 2;
-	icon_state = "pipe-c"
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plating,
-/area/maintenance/asmaint2)
 "lWF" = (
 /obj/effect/spawner/window/reinforced,
 /obj/structure/cable{
@@ -67556,7 +67564,7 @@
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "north bump";
-	pixel_y = 26
+	pixel_y = 24
 	},
 /obj/structure/cable{
 	d2 = 2;
@@ -68222,8 +68230,7 @@
 /area/engine/gravitygenerator)
 "mCc" = (
 /obj/machinery/door/airlock/engineering{
-	name = "Engineering Checkpoint";
-	req_one_access_txt = "11;24"
+	name = "Engineering Checkpoint"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -68265,7 +68272,7 @@
 /obj/machinery/power/apc{
 	dir = 4;
 	name = "east bump";
-	pixel_x = 26
+	pixel_x = 24
 	},
 /obj/structure/cable{
 	d2 = 8;
@@ -69365,17 +69372,6 @@
 	},
 /turf/simulated/floor/noslip,
 /area/engine/engineering)
-"ngo" = (
-/obj/structure/disposalpipe/segment,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
-/obj/effect/spawner/wire_splicing/thirty,
-/turf/simulated/floor/plating,
-/area/maintenance/asmaint2)
 "ngO" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -72136,9 +72132,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint)
 "otJ" = (
-/obj/machinery/door/airlock/maintenance{
-	req_access_txt = "12"
-	},
+/obj/machinery/door/airlock/maintenance,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
@@ -76100,19 +76094,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/carpet/arcade,
 /area/crew_quarters/arcade)
-"qgj" = (
-/obj/structure/disposalpipe/segment{
-	dir = 2;
-	icon_state = "pipe-c"
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
-/obj/effect/spawner/random_spawners/grille_often,
-/turf/simulated/floor/plating,
-/area/maintenance/asmaint2)
 "qgz" = (
 /obj/effect/spawner/random_spawners/oil_maybe,
 /obj/structure/disposalpipe/segment,
@@ -77196,7 +77177,7 @@
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "north bump";
-	pixel_y = 26
+	pixel_y = 24
 	},
 /obj/structure/cable{
 	d2 = 2;
@@ -80087,8 +80068,7 @@
 "sdu" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /obj/machinery/door/airlock/atmos{
-	name = "Atmospherics Maintenance";
-	req_access_txt = "12;24"
+	name = "Atmospherics Maintenance"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/effect/mapping_helpers/airlock/access/any/engineering/atmos,
@@ -80978,7 +80958,7 @@
 "sAl" = (
 /obj/machinery/power/apc{
 	name = "south bump";
-	pixel_y = -26
+	pixel_y = -24
 	},
 /obj/structure/cable,
 /turf/simulated/floor/plasteel,
@@ -81078,8 +81058,7 @@
 /area/quartermaster/office)
 "sBW" = (
 /obj/machinery/door/airlock/maintenance{
-	name = "Robotics Maintenance";
-	req_access_txt = "29"
+	name = "Robotics Maintenance"
 	},
 /obj/machinery/door/poddoor/preopen{
 	id_tag = "Biohazard";
@@ -81088,6 +81067,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/effect/mapping_helpers/airlock/access/any/science/robotics,
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
 "sCm" = (
@@ -81704,18 +81684,21 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
-	dir = 5
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
 /obj/effect/spawner/random_spawners/oil_maybe,
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
 "sPu" = (
@@ -82938,6 +82921,18 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/plating,
 /area/maintenance/fsmaint)
+"tsG" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/asmaint2)
 "tsJ" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -83045,6 +83040,13 @@
 "tuJ" = (
 /obj/machinery/light/small{
 	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
+/obj/structure/disposalpipe/segment,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
@@ -83181,7 +83183,7 @@
 	},
 /obj/machinery/power/apc{
 	name = "south bump";
-	pixel_y = -26
+	pixel_y = -24
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "whitegreen"
@@ -85570,6 +85572,17 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/disposal)
+"uAd" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/asmaint2)
 "uAg" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/disposalpipe/segment{
@@ -89759,20 +89772,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plating,
 /area/maintenance/aft)
-"wty" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
-/obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plating,
-/area/maintenance/asmaint2)
 "wtA" = (
 /obj/machinery/door/airlock/atmos{
 	name = "Aft-Port Secondary Atmospherics Maintenance";
@@ -91914,9 +91913,7 @@
 /turf/simulated/floor/plasteel,
 /area/assembly/assembly_line)
 "xvT" = (
-/obj/machinery/door/airlock/maintenance{
-	req_access_txt = "12"
-	},
+/obj/machinery/door/airlock/maintenance,
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable{
 	d1 = 1;
@@ -91943,9 +91940,8 @@
 	},
 /area/medical/virology)
 "xwi" = (
-/obj/machinery/door/airlock/maintenance{
-	req_access = list(12)
-	},
+/obj/machinery/door/airlock/maintenance,
+/obj/effect/mapping_helpers/airlock/access/any/engineering/maintenance,
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
 "xxa" = (
@@ -93422,7 +93418,6 @@
 "yad" = (
 /obj/machinery/door/window/classic/reversed{
 	name = "Coroner";
-	req_one_access_txt = "5;4";
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment{
@@ -93435,6 +93430,9 @@
 	d1 = 1;
 	d2 = 8;
 	icon_state = "1-8"
+	},
+/obj/effect/mapping_helpers/airlock/windoor/access/any/medical/general{
+	dir = 4
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -93536,7 +93534,7 @@
 /obj/machinery/power/apc{
 	dir = 4;
 	name = "east bump";
-	pixel_x = 26
+	pixel_x = 24
 	},
 /obj/structure/cable,
 /turf/simulated/floor/plasteel{
@@ -133395,7 +133393,7 @@ cep
 cEx
 chf
 cAe
-cmt
+hNr
 cAe
 chf
 chf
@@ -136449,8 +136447,8 @@ rkb
 hpR
 sPs
 tuJ
-bRz
-dlD
+jFF
+uAd
 bRz
 qZN
 bKl
@@ -136703,11 +136701,11 @@ cdb
 dlD
 fWu
 dlD
-lWa
-bWs
-ngo
-cxy
-wty
+dlD
+pio
+bGG
+dlD
+dlD
 cfA
 cFA
 uIg
@@ -136964,8 +136962,8 @@ cuQ
 pio
 dlD
 pBP
-ufu
-dlD
+bGG
+tsG
 qZN
 xFM
 sGi
@@ -137221,8 +137219,8 @@ cLh
 ccF
 dlD
 cuQ
-kwo
 dlD
+tsG
 qZN
 qZN
 qZN
@@ -137478,8 +137476,8 @@ bGr
 pio
 cAU
 ceJ
-qgj
-psU
+pBP
+ixM
 xrP
 xrP
 xrP
