@@ -28523,6 +28523,10 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
+/obj/machinery/camera{
+	c_tag = "Virology Observation";
+	dir = 4
+	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "whitegreen"
@@ -28945,6 +28949,9 @@
 "caW" = (
 /obj/structure/table/glass,
 /obj/item/storage/fancy/vials,
+/obj/machinery/camera{
+	c_tag = "Virology Workspace"
+	},
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "whitegreen"
@@ -29362,6 +29369,10 @@
 /obj/structure/table/glass,
 /obj/item/storage/box/donkpockets,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 8
+	},
+/obj/machinery/camera{
+	c_tag = "Virology Break Room";
 	dir = 8
 	},
 /turf/simulated/floor/plasteel{
@@ -35571,6 +35582,10 @@
 /obj/structure/chair/comfy/teal{
 	dir = 4
 	},
+/obj/machinery/camera{
+	c_tag = "Virology Lobby";
+	dir = 1
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "whitegreen"
 	},
@@ -36813,8 +36828,12 @@
 /area/maintenance/aft)
 "cED" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/table_frame,
+/obj/effect/spawner/lootdrop/maintenance,
+/obj/structure/sign/poster/official/healthy{
+	pixel_y = 32
+	},
 /turf/simulated/floor/plasteel{
-	dir = 6;
 	icon_state = "whitehall"
 	},
 /area/maintenance/aft)
@@ -62650,6 +62669,13 @@
 	icon_state = "blue"
 	},
 /area/hallway/primary/central/nw)
+"jZB" = (
+/obj/machinery/camera{
+	c_tag = "Starboard Primary Hallway 3";
+	dir = 1
+	},
+/turf/simulated/floor/plasteel,
+/area/hallway/primary/starboard/west)
 "kaa" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable{
@@ -79146,6 +79172,15 @@
 	icon_state = "white"
 	},
 /area/maintenance/aft)
+"rAp" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/defibrillator_mount{
+	pixel_y = 28
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "whitehall"
+	},
+/area/maintenance/aft)
 "rAt" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/unary/vent_pump/on{
@@ -86054,6 +86089,12 @@
 /obj/machinery/atmospherics/portable/pump,
 /turf/simulated/floor/plasteel,
 /area/toxins/mixing)
+"uEc" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table,
+/obj/item/storage/firstaid,
+/turf/simulated/floor/plating,
+/area/maintenance/aft)
 "uES" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -135707,7 +135748,7 @@ mKO
 oil
 bAr
 wzx
-bAk
+jZB
 bEu
 nuM
 ttj
@@ -135752,7 +135793,7 @@ cMO
 cpA
 kKD
 chf
-cyJ
+uEc
 tpW
 luz
 hFe
@@ -136266,7 +136307,7 @@ nwj
 bYf
 cDg
 chf
-uAo
+rAp
 rAi
 xRP
 chf
