@@ -4471,33 +4471,6 @@
 /area/security/lobby)
 "asY" = (
 /obj/structure/chair/office/dark,
-/obj/machinery/door_control{
-	desc = "A remote control switch for the brig foyer.";
-	id = "BrigEast";
-	name = "Brig Foyer East Doors";
-	normaldoorcontrol = 1;
-	pixel_x = 5;
-	pixel_y = -35;
-	req_one_access_txt = "63"
-	},
-/obj/machinery/door_control{
-	desc = "A remote control switch for the brig foyer.";
-	id = "BrigRight";
-	name = "Brig Foyer Right Doors";
-	normaldoorcontrol = 1;
-	pixel_x = 5;
-	pixel_y = -25;
-	req_one_access_txt = "63"
-	},
-/obj/machinery/door_control{
-	desc = "A remote control switch for the brig foyer.";
-	id = "BrigLeft";
-	name = "Brig Foyer Left Doors";
-	normaldoorcontrol = 1;
-	pixel_x = -5;
-	pixel_y = -25;
-	req_one_access_txt = "63"
-	},
 /turf/simulated/floor/plasteel{
 	dir = 6;
 	icon_state = "darkred"
@@ -4975,6 +4948,33 @@
 	icon_state = "4-8"
 	},
 /obj/effect/mapping_helpers/airlock/windoor/access/any/security/general,
+/obj/machinery/door_control{
+	desc = "A remote control switch for the brig foyer.";
+	id = "BrigLeft";
+	name = "Brig Foyer Left Doors";
+	normaldoorcontrol = 1;
+	pixel_x = -5;
+	req_one_access_txt = "63";
+	pixel_y = 6
+	},
+/obj/machinery/door_control{
+	desc = "A remote control switch for the brig foyer.";
+	id = "BrigRight";
+	name = "Brig Foyer Right Doors";
+	normaldoorcontrol = 1;
+	pixel_x = 5;
+	req_one_access_txt = "63";
+	pixel_y = 6
+	},
+/obj/machinery/door_control{
+	desc = "A remote control switch for the brig foyer.";
+	id = "BrigEast";
+	name = "Brig Foyer East Doors";
+	normaldoorcontrol = 1;
+	pixel_x = 5;
+	pixel_y = -2;
+	req_one_access_txt = "63"
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "redfull"
 	},
@@ -8295,8 +8295,8 @@
 /obj/machinery/door/airlock/atmos{
 	name = "Aft-Starboard Atmospherics Maintenance"
 	},
-/obj/effect/mapping_helpers/airlock/access/any/engineering/maintenance,
-/obj/effect/mapping_helpers/airlock/access/any/engineering/atmos,
+/obj/effect/mapping_helpers/airlock/access/all/engineering/atmos,
+/obj/effect/mapping_helpers/airlock/access/all/engineering/maintenance,
 /turf/simulated/floor/plating,
 /area/maintenance/fpmaint2)
 "aEN" = (
@@ -13313,8 +13313,8 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
-/obj/effect/mapping_helpers/airlock/access/any/engineering/maintenance,
-/obj/effect/mapping_helpers/airlock/access/any/engineering/atmos,
+/obj/effect/mapping_helpers/airlock/access/all/engineering/maintenance,
+/obj/effect/mapping_helpers/airlock/access/all/engineering/atmos,
 /turf/simulated/floor/plating,
 /area/maintenance/turbine)
 "aWh" = (
@@ -31500,7 +31500,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/wood,
 /area/blueshield)
 "ckP" = (
 /obj/machinery/door/airlock{
@@ -38484,6 +38484,7 @@
 	name = "Atmos Blast Door"
 	},
 /obj/effect/mapping_helpers/airlock/access/any/engineering/atmos,
+/obj/effect/mapping_helpers/airlock/access/any/engineering/general,
 /turf/simulated/floor/plasteel,
 /area/atmos/control)
 "cJz" = (
@@ -38581,6 +38582,7 @@
 	dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/access/any/engineering/atmos,
+/obj/effect/mapping_helpers/airlock/access/any/engineering/general,
 /turf/simulated/floor/plating,
 /area/maintenance/aft)
 "cJG" = (
@@ -54174,8 +54176,8 @@
 	name = "Turbine Access"
 	},
 /obj/machinery/door/firedoor,
-/obj/effect/mapping_helpers/airlock/access/any/engineering/maintenance,
-/obj/effect/mapping_helpers/airlock/access/any/engineering/atmos,
+/obj/effect/mapping_helpers/airlock/access/all/engineering/maintenance,
+/obj/effect/mapping_helpers/airlock/access/all/engineering/atmos,
 /turf/simulated/floor/plating,
 /area/maintenance/turbine)
 "gdy" = (
@@ -74847,7 +74849,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/wood,
 /area/ntrep)
 "pqS" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -90231,8 +90233,8 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/effect/mapping_helpers/airlock/access/any/engineering/atmos,
-/obj/effect/mapping_helpers/airlock/access/any/engineering/maintenance,
+/obj/effect/mapping_helpers/airlock/access/all/engineering/atmos,
+/obj/effect/mapping_helpers/airlock/access/all/engineering/maintenance,
 /turf/simulated/floor/plating,
 /area/maintenance/apmaint2)
 "wug" = (
