@@ -77,6 +77,7 @@ menu "menu"
 	elem
 		name = "&Масштабирование"
 		category = "&Вид"
+		saved-params = "is-checked;command"
 	elem "NN"
 		name = "&Искажённое"
 		command = ".winset \"mapwindow.map.zoom-mode=distort\""
@@ -88,6 +89,7 @@ menu "menu"
 		command = ".winset \"mapwindow.map.zoom-mode=normal\""
 		category = "&Масштабирование"
 		can-check = true
+		is-checked = true
 		group = "scale"
 	elem "BL"
 		name = "&Билинейное"
