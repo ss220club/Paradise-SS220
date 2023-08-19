@@ -943,6 +943,7 @@
 	///// BUTTONS /////
 	SSchangelog.UpdatePlayerChangelogButton(src)
 	/* Rpane */
+	winset(src, "rpane.fullscreenb", "background-color=#494949;text-color=#a4bad6") // SS220 ADDITION
 	winset(src, "rpane.textb", "background-color=#494949;text-color=#a4bad6")
 	winset(src, "rpane.infob", "background-color=#494949;text-color=#a4bad6")
 	winset(src, "rpane.wikib", "background-color=#494949;text-color=#a4bad6")

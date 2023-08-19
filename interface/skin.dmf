@@ -258,8 +258,8 @@ window "rpane"
 		is-vert = false
 	elem "infob"
 		type = BUTTON
-		pos = 5,7
-		size = 60x16
+		pos = 3,7
+		size = 40x16
 		is-checked = true
 		saved-params = "is-checked"
 		text = "Инфо"
@@ -268,37 +268,31 @@ window "rpane"
 		button-type = pushbox
 	elem "wikib"
 		type = BUTTON
-		pos = 70,7
+		pos = 48,7
 		size = 50x16
 		text = "Вики"
 		command = "wiki"
 	elem "rulesb"
 		type = BUTTON
-		pos = 121,7
-		size = 50x16
+		pos = 99,7
+		size = 60x16
 		text = "Правила"
 		command = "rules"
 	elem "githubb"
 		type = BUTTON
-		pos = 172,7
+		pos = 160,7
 		size = 50x16
 		text = "GitHub"
 		command = "github"
 	elem "webmap"
 		type = BUTTON
-		pos = 223,7
+		pos = 211,7
 		size = 50x16
 		text = "Карта"
 		command = "webmap"
-	elem "changelog"
-		type = BUTTON
-		pos = 278,7
-		size = 70x16
-		text = "Чейнджлог"
-		command = "Changelog"
 	elem "discordb"
 		type = BUTTON
-		pos = 349,7
+		pos = 266,7
 		size = 60x16
 		font-style = "bold"
 		text-color = #ffffff
@@ -307,13 +301,26 @@ window "rpane"
 		command = "discord"
 	elem "donate"
 		type = BUTTON
-		pos = 410,7
+		pos = 327,7
 		size = 60x16
 		font-style = "bold"
 		text-color = #ffffff
 		background-color = #ef642b
 		text = "Бусти"
 		command = "Donate"
+	elem "changelog"
+		type = BUTTON
+		pos = 393,7
+		size = 70x16
+		text = "Чейнджлог"
+		command = "Changelog"
+	elem "fullscreenb"
+		type = BUTTON
+		pos = 464,7
+		size = 70x16
+		saved-params = "is-checked"
+		text = "Fullscreen"
+		command = "fullscreen"
 
 window "infowindow"
 	elem "infowindow"
