@@ -2094,6 +2094,32 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Undersea"
 	icon_state = "undersea"
 
+/area/awaymission/wwspace
+    name = "Wild West"
+    report_alerts = FALSE
+    icon_state = "away"
+
+/area/awaymission/wwspace/wwmines
+    name = "\improper Wild West Mines"
+    icon_state = "awaycontent1"
+    requires_power = FALSE
+    dynamic_lighting = DYNAMIC_LIGHTING_FORCED
+
+/area/awaymission/wwspace/wwvaultdoors
+    name = "\improper Wild West Vault Doors"
+    icon_state = "awaycontent2"
+    requires_power = FALSE
+    dynamic_lighting = DYNAMIC_LIGHTING_FORCED
+
+/area/awaymission/wwspace/wwrefine
+    name = "\improper Wild West Refinery"
+    icon_state = "awaycontent3"
+    requires_power = FALSE
+    dynamic_lighting = DYNAMIC_LIGHTING_FORCED
+
+/area/awaymission/wwspace/wwvault
+    name = "\improper Wild West Vault"
+    icon_state = "awaycontent3"
 
 ////////////////////////AWAY AREAS///////////////////////////////////
 
