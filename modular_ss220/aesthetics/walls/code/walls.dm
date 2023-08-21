@@ -13,7 +13,7 @@
 /turf/simulated/wall/indestructible/whiteshuttle
     name = "reinforced shuttle wall"
     desc = "A light-weight reinforced titanium wall used in shuttles."
-    icon = 'modular_ss220/aesthetics/walls/icons/plastinum_wall.dmi'
+    icon = 'icons/turf/walls/plastinum_wall.dmi'
     icon_state = "plastinum_wall-0"
     base_icon_state = "plastinum_wall"
     smoothing_flags = SMOOTH_BITMASK | SMOOTH_DIAGONAL_CORNERS
@@ -27,7 +27,7 @@
 /turf/simulated/wall/indestructible/syndishuttle
     name = "reinforced shuttle wall"
     desc = "An evil reinforced wall of plasma and titanium."
-    icon = 'modular_ss220/aesthetics/walls/icons/plastitanium_wall.dmi'
+    icon = 'icons/turf/walls/plastitanium_wall.dmi'
     icon_state = "plastitanium_wall-0"
     base_icon_state = "plastitanium_wall"
     smoothing_flags = SMOOTH_BITMASK | SMOOTH_DIAGONAL_CORNERS
