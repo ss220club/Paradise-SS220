@@ -14,7 +14,7 @@
 /turf/simulated/wall/indestructible/rock/mineral
     name = "dense rock"
     desc = "An extremely densely-packed rock, Most mining tools or explosives would never get through this."
-    icon = 'modular_ss220/aesthetics/walls/icons/smoothrocks.dmi'
+    icon = 'icons/turf/walls//smoothrocks.dmi'
     icon_state = "smoothrocks-0"
     base_icon_state = "smoothrocks"
     color = COLOR_ANCIENT_ROCK
@@ -24,7 +24,7 @@
 
 /turf/simulated/wall/indestructible/cult
     name = "runed metal wall"
-    icon = 'modular_ss220/aesthetics/walls/icons/cult_wall.dmi'
+    icon = 'icons/turf/walls/cult_wall.dmi'
     icon_state = "cult_wall-0"
     base_icon_state = "cult_wall"
     smoothing_flags = SMOOTH_BITMASK
