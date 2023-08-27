@@ -13,11 +13,11 @@
 // Комментарии УДАЛИТЬ если копируешь пример.
 
 /datum/map_template/ruin/space/mechtransport_new
-    name = "Mechtransport"
-    id = "mechtransport_new"
-    description = "An abandoned unarmed transport ship, a perfect target for the bandit scum."
-    suffix = "mechtransport_new.dmm"
-    cost = 3
-    allow_duplicates = FALSE
-    always_place = FALSE
+	name = "Mechtransport"
+	id = "mechtransport_new"
+	description = "An abandoned unarmed transport ship, a perfect target for the bandit scum."
+	suffix = "mechtransport_new.dmm"
+	cost = 3
+	allow_duplicates = FALSE
+	always_place = FALSE
 
