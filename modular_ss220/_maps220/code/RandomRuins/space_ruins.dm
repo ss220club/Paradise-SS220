@@ -13,10 +13,10 @@
 // Комментарии УДАЛИТЬ если копируешь пример.
 
 /datum/map_template/ruin/space/space_wildwest
-    name = "Space Wild West"
-    id = "space_wildwest"
-    description = "A captured mining outpost on a lonely asteroid. There are rumors that a horrible structure is entombed in its depths."
-    suffix = "space_wildwest.dmm"
-    cost = 5
-    allow_duplicates = FALSE
-    always_place = FALSE
+	name = "Space Wild West"
+	id = "space_wildwest"
+	description = "A captured mining outpost on a lonely asteroid. There are rumors that a horrible structure is entombed in its depths."
+	suffix = "space_wildwest.dmm"
+	cost = 5
+	allow_duplicates = FALSE
+	always_place = FALSE
