@@ -461,7 +461,6 @@
 /obj/machinery/door/airlock/external{
 	aiControlDisabled = 1;
 	hackProof = 1;
-	id_tag = "emergency_away";
 	name = "Arrival Airlock"
 	},
 /turf/simulated/floor/plasteel/dark,
@@ -5447,7 +5446,8 @@
 /obj/machinery/door/airlock/external{
 	name = "Шаттл доставки";
 	opacity = 0;
-	req_one_access_txt = "106"
+	req_one_access_txt = "106";
+	id_tag = "s_docking_airlock"
 	},
 /obj/structure/fans/tiny,
 /turf/simulated/floor/plating,
@@ -8819,7 +8819,9 @@
 /obj/machinery/door/airlock/external{
 	aiControlDisabled = 1;
 	hackProof = 1;
-	name = "Arrival Airlock"
+	name = "Arrival Airlock";
+	locked = 1;
+	id_tag = "emergency_away"
 	},
 /obj/structure/fans/tiny,
 /turf/simulated/floor/plasteel/dark,
@@ -15378,7 +15380,9 @@
 /obj/machinery/door/airlock/external{
 	aiControlDisabled = 1;
 	hackProof = 1;
-	name = "Arrival Airlock"
+	name = "Arrival Airlock";
+	locked = 1;
+	id_tag = "emergency_away"
 	},
 /obj/structure/fans/tiny,
 /turf/simulated/floor/plasteel/dark,
