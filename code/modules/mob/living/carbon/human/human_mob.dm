@@ -252,9 +252,9 @@
 			if(bomb_armor)
 				brute_loss = 30 * (2 - round(bomb_armor * 0.01, 0.05))
 				burn_loss = brute_loss				//Damage gets reduced from 120 to up to 60 combined brute+burn
-			if(check_ear_prot() < HEARING_PROTECTION_TOTAL)
-				Deaf(2 MINUTES)
+			if(ears && check_ear_prot() < HEARING_PROTECTION_TOTAL)
 				ears.receive_damage(30)
+			Deaf(2 MINUTES)
 			Weaken(stuntime)
 			KnockDown(stuntime * 3) //Up to 15 seconds of knockdown
 
@@ -262,9 +262,9 @@
 			brute_loss = 30
 			if(bomb_armor)
 				brute_loss = 15 * (2 - round(bomb_armor * 0.01, 0.05)) //Reduced from 30 to up to 15
-			if(check_ear_prot() < HEARING_PROTECTION_TOTAL)
-				Deaf(1 MINUTES)
+			if(ears && check_ear_prot() < HEARING_PROTECTION_TOTAL)
 				ears.receive_damage(15)
+			Deaf(1 MINUTES)
 			KnockDown(10 SECONDS - bomb_armor) //Between no knockdown to 10 seconds of knockdown depending on bomb armor
 			valid_limbs = list("l_hand", "l_foot", "r_hand", "r_foot")
 			limb_loss_chance = 25
@@ -1047,17 +1047,16 @@
 
 	if(HAS_TRAIT(src, TRAIT_PIERCEIMMUNE))
 		. = FALSE
-	if(HAS_TRAIT(wear_suit, TRAIT_PUNCTURE_IMMUNE))
-		. = FALSE
+
 	var/obj/item/organ/external/affecting = get_organ(target_zone)
 	var/fail_msg
 	if(!affecting)
 		. = FALSE
 		fail_msg = "[p_they(TRUE)] [p_are()] missing that limb."
-	if(affecting.is_robotic())
+	else if(affecting.is_robotic())
 		. = FALSE
 		fail_msg = "That limb is robotic."
-	if(piercing)
+	if(wear_suit && !HAS_TRAIT(wear_suit, TRAIT_PUNCTURE_IMMUNE) && piercing)
 		return TRUE
 	if(target_zone == "head")
 		if((head?.flags & THICKMATERIAL) && !penetrate_thick)

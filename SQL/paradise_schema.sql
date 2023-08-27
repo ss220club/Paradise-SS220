@@ -609,6 +609,22 @@ CREATE TABLE `tickets` (
 ) COLLATE='utf8mb4_general_ci' ENGINE=InnoDB;
 
 --
+-- Table structure for table `json_datum_saves`
+--
+DROP TABLE IF EXISTS `json_datum_saves`;
+CREATE TABLE `json_datum_saves` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`ckey` VARCHAR(64) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`slotname` VARCHAR(32) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`slotjson` LONGTEXT NOT NULL COLLATE 'utf8mb4_general_ci',
+	`created` DATETIME NOT NULL DEFAULT current_timestamp(),
+	`updated` DATETIME NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+	PRIMARY KEY (`id`) USING BTREE,
+	UNIQUE INDEX `ckey_unique` (`ckey`, `slotname`) USING BTREE,
+	INDEX `ckey` (`ckey`) USING BTREE
+) COLLATE = 'utf8mb4_general_ci' ENGINE = InnoDB;
+
+--
 -- Table structure for table `ckey_whitelist`
 --
 
@@ -624,4 +640,18 @@ CREATE TABLE `ckey_whitelist`
 	`date_end` DATETIME NULL,
 	`is_valid` BOOLEAN DEFAULT true NOT NULL,
 	PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Table structure for table `admin_wl`
+--
+
+CREATE TABLE `admin_wl` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ckey` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `admin_rank` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Administrator',
+  `level` int(2) NOT NULL DEFAULT '0',
+  `flags` int(16) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `ckey` (`ckey`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
