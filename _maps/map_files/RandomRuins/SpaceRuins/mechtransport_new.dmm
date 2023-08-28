@@ -266,13 +266,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/mineral/titanium/yellow,
 /area/ruin/space/powered)
-"gL" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/status_display{
-	pixel_y = 32
-	},
-/turf/simulated/floor/plating,
-/area/ruin/space/powered)
 "gU" = (
 /obj/machinery/door_control{
 	pixel_y = -30;
@@ -679,6 +672,10 @@
 	},
 /turf/simulated/floor/mineral/titanium,
 /area/ruin/space/powered)
+"oT" = (
+/obj/machinery/status_display,
+/turf/simulated/floor/mineral/titanium/yellow,
+/area/ruin/space/powered)
 "oY" = (
 /obj/structure/closet/crate{
 	icon_state = "scicrate";
@@ -892,6 +889,9 @@
 /obj/effect/landmark/damageturf,
 /turf/simulated/floor/plating,
 /area/ruin/space/powered)
+"tv" = (
+/turf/simulated/wall/indestructible/whiteshuttle,
+/area/ruin/space/unpowered/unpowered_structures)
 "tE" = (
 /obj/effect/decal/cleanable/glass,
 /obj/effect/decal/cleanable/dirt,
@@ -1164,12 +1164,15 @@
 	},
 /turf/simulated/floor/mineral/titanium,
 /area/ruin/space/powered)
-"yZ" = (
-/turf/simulated/wall/indestructible/whiteshuttle,
-/area/ruin/space/unpowered/unpowered_structures)
 "ze" = (
 /obj/structure/girder/reinforced,
 /turf/simulated/floor/plating/airless,
+/area/ruin/space/powered)
+"zy" = (
+/obj/machinery/status_display{
+	pixel_y = 32
+	},
+/turf/simulated/floor/mineral/titanium,
 /area/ruin/space/powered)
 "zF" = (
 /obj/structure/shuttle/engine/propulsion,
@@ -1284,11 +1287,6 @@
 /obj/machinery/light/small,
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/ruin/space/powered)
-"BB" = (
-/obj/structure/lattice,
-/obj/structure/lattice,
-/turf/template_noop,
-/area/template_noop)
 "BD" = (
 /obj/structure/computerframe{
 	dir = 1
@@ -1405,8 +1403,11 @@
 /turf/simulated/floor/mineral/titanium,
 /area/ruin/space/powered)
 "DE" = (
-/obj/machinery/status_display,
-/turf/simulated/floor/mineral/titanium/yellow,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/status_display{
+	pixel_y = 32
+	},
+/turf/simulated/floor/plating,
 /area/ruin/space/powered)
 "DG" = (
 /obj/machinery/door/airlock/hatch,
@@ -2432,12 +2433,6 @@
 "Vo" = (
 /turf/simulated/floor/plating/airless,
 /area/ruin/space/powered)
-"Vq" = (
-/obj/machinery/status_display{
-	pixel_y = 32
-	},
-/turf/simulated/floor/mineral/titanium,
-/area/ruin/space/powered)
 "VA" = (
 /obj/effect/decal/cleanable/dirt,
 /mob/living/simple_animal/hostile/scavengers/meele/axe,
@@ -2781,7 +2776,7 @@ Vk
 Vk
 Vk
 Vk
-BB
+Vk
 Vk
 Kb
 Qd
@@ -2893,8 +2888,8 @@ Sb
 qU
 Vk
 qU
-yZ
-gL
+tv
+DE
 dk
 sD
 nk
@@ -3831,7 +3826,7 @@ PT
 Kb
 Cm
 Jr
-DE
+oT
 nk
 sD
 iK
@@ -3981,7 +3976,7 @@ qU
 Sb
 ym
 yU
-yZ
+tv
 KH
 bs
 lS
@@ -4103,8 +4098,8 @@ Sb
 qU
 Vk
 qU
-yZ
-Vq
+tv
+zy
 Jr
 sD
 sD
