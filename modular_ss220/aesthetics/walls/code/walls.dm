@@ -84,3 +84,25 @@
 	icon_state = "map-overspace"
 	smoothing_flags = SMOOTH_BITMASK | SMOOTH_DIAGONAL_CORNERS
 	fixed_underlay = list("space" = TRUE)
+
+/turf/simulated/wall/indestructible/syndishuttle/interior/copyTurf(turf/T)
+	if(T.type != type)
+		T.ChangeTurf(type)
+		if(underlays.len)
+			T.underlays = underlays
+	if(T.icon_state != icon_state)
+		T.icon_state = icon_state
+	if(T.icon != icon)
+		T.icon = icon
+	if(color)
+		T.atom_colours = atom_colours.Copy()
+		T.update_atom_colour()
+	if(T.dir != dir)
+		T.setDir(dir)
+	T.transform = transform
+	return T
+
+/turf/simulated/wall/indestructible/syndishuttle/copyTurf(turf/T)
+	. = ..()
+	T.transform = transform
+
