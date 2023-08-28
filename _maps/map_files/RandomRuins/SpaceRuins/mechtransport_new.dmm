@@ -33,18 +33,6 @@
 /obj/item/stack/sheet/mineral/uranium/fifty,
 /turf/simulated/floor/mineral/titanium,
 /area/ruin/space/powered)
-"aV" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/button/windowtint{
-	id = "mech_toilet";
-	pixel_x = 30
-	},
-/obj/machinery/light_construct{
-	icon_state = "tube-broken";
-	dir = 1
-	},
-/turf/simulated/floor/mineral/titanium,
-/area/ruin/space/powered)
 "be" = (
 /obj/machinery/light/spot{
 	dir = 4
@@ -176,11 +164,6 @@
 	},
 /turf/simulated/floor/mineral/titanium,
 /area/ruin/space/powered)
-"cI" = (
-/obj/structure/computerframe,
-/obj/effect/decal/cleanable/glass,
-/turf/simulated/floor/mineral/titanium/blue,
-/area/ruin/space/powered)
 "cJ" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/wall/indestructible/whiteshuttle/nodiagonal,
@@ -206,12 +189,10 @@
 /turf/simulated/floor/mineral/titanium/yellow,
 /area/ruin/space/powered)
 "dL" = (
-/obj/structure{
+/obj/structure/plasticflaps{
 	icon_state = "controller-o";
-	icon = 'icons/obj/stationobjs.dmi';
 	desc = "These are some kind of high-tech structures.";
-	name = "data server";
-	density = 1
+	name = "data base"
 	},
 /turf/simulated/floor/bluegrid,
 /area/ruin/space/powered)
@@ -323,9 +304,6 @@
 	pixel_y = 20;
 	pixel_x = 5
 	},
-/obj/item/storage/fancy/cigarettes/cigpack_robust{
-	pixel_x = -9
-	},
 /turf/simulated/floor/mineral/titanium,
 /area/ruin/space/powered)
 "hM" = (
@@ -352,7 +330,7 @@
 /turf/simulated/floor/mineral/titanium,
 /area/ruin/space/powered)
 "il" = (
-/turf/simulated/wall/indestructible/riveted,
+/turf/simulated/wall/r_wall,
 /area/ruin/space/powered)
 "io" = (
 /obj/machinery/door_control{
@@ -578,9 +556,17 @@
 /turf/simulated/floor/mineral/titanium,
 /area/ruin/space/powered)
 "mN" = (
+/obj/machinery/button/windowtint{
+	id = "mech_toilet";
+	pixel_x = -30
+	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/toilet{
-	dir = 4
+	dir = 1
+	},
+/obj/machinery/light_construct{
+	icon_state = "tube-broken";
+	dir = 8
 	},
 /turf/simulated/floor/mineral/titanium,
 /area/ruin/space/powered)
@@ -624,7 +610,7 @@
 /area/ruin/space/powered)
 "nx" = (
 /obj/effect/spawner/random_spawners/wall_rusted_always,
-/turf/simulated/wall/indestructible/riveted,
+/turf/simulated/wall/r_wall,
 /area/ruin/space/powered)
 "nA" = (
 /obj/machinery/door/airlock/external{
@@ -665,13 +651,6 @@
 /obj/effect/decal/cleanable/glass,
 /obj/effect/landmark/damageturf,
 /turf/simulated/floor/plating,
-/area/ruin/space/powered)
-"oj" = (
-/obj/structure/sign/nosmoking_2{
-	pixel_y = 32
-	},
-/obj/effect/landmark/burnturf,
-/turf/simulated/floor/mineral/titanium/yellow,
 /area/ruin/space/powered)
 "ol" = (
 /obj/effect/turf_decal/stripes{
@@ -794,12 +773,10 @@
 /turf/simulated/floor/plating,
 /area/ruin/space/powered)
 "ro" = (
-/obj/structure{
+/obj/structure/plasticflaps{
 	icon_state = "mechfab1";
 	desc = "Nothing is being built.";
-	name = "exosuit fabricator";
-	icon = 'icons/obj/stationobjs.dmi';
-	density = 1
+	name = "exosuit fabricator"
 	},
 /turf/simulated/floor/mineral/titanium,
 /area/ruin/space/powered)
@@ -889,7 +866,7 @@
 /obj/item/toy/figure/mech/durand{
 	pixel_y = 8
 	},
-/turf/simulated/floor/mineral/titanium,
+/turf/simulated/floor/mineral/titanium/blue,
 /area/ruin/space/powered)
 "tj" = (
 /obj/structure/table,
@@ -1289,7 +1266,7 @@
 /obj/machinery/light/spot{
 	dir = 4
 	},
-/turf/simulated/floor/mineral/titanium,
+/turf/simulated/floor/mineral/titanium/blue,
 /area/ruin/space/powered)
 "Bj" = (
 /obj/structure/chair{
@@ -1410,10 +1387,10 @@
 /turf/simulated/floor/mineral/titanium,
 /area/ruin/space/powered)
 "DE" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/mounted/frame/display{
-	pixel_y = 32
+/obj/item/mounted/frame/display/entertainment_frame{
+	pixel_y = 30
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/mineral/titanium,
 /area/ruin/space/powered)
 "DG" = (
@@ -1454,12 +1431,10 @@
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/ruin/space/powered)
 "EI" = (
-/obj/structure{
+/obj/structure/plasticflaps{
 	icon_state = "controller-p";
-	icon = 'icons/obj/stationobjs.dmi';
 	desc = "These are some kind of high-tech structures.";
-	name = "data server";
-	density = 1
+	name = "data base"
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/bluegrid,
@@ -1524,12 +1499,11 @@
 	icon_state = "tube-broken";
 	dir = 4
 	},
-/turf/simulated/floor/mineral/titanium,
+/turf/simulated/floor/mineral/titanium/blue,
 /area/ruin/space/powered)
 "Fx" = (
-/obj/structure{
+/obj/structure/fluff{
 	icon_state = "holopad_open";
-	icon = 'icons/obj/stationobjs.dmi';
 	desc = "Holopad for long-distance communication.";
 	name = "Holopad"
 	},
@@ -1561,7 +1535,7 @@
 "FF" = (
 /obj/structure/closet/walllocker/emerglocker/west,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/mineral/titanium,
+/turf/simulated/floor/mineral/titanium/blue,
 /area/ruin/space/powered)
 "FK" = (
 /obj/machinery/light_construct{
@@ -1598,16 +1572,12 @@
 	pixel_x = -2
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/sign/nosmoking_2{
-	pixel_y = 32
-	},
 /turf/simulated/floor/mineral/titanium/purple,
 /area/ruin/space/powered)
 "Gt" = (
 /obj/structure/table,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/storage/fancy/donut_box,
-/turf/simulated/floor/mineral/titanium,
+/turf/simulated/floor/mineral/titanium/blue,
 /area/ruin/space/powered)
 "Gu" = (
 /obj/machinery/light_construct{
@@ -1649,13 +1619,6 @@
 	},
 /turf/simulated/floor/mineral/titanium/yellow,
 /area/ruin/space/powered)
-"GW" = (
-/obj/item/shard{
-	icon_state = "medium"
-	},
-/obj/effect/decal/cleanable/glass,
-/turf/simulated/floor/mineral/titanium/blue,
-/area/ruin/space/powered)
 "Hb" = (
 /obj/effect/decal/cleanable/dirt,
 /mob/living/simple_animal/hostile/scavengers/meele/crusher,
@@ -1670,12 +1633,10 @@
 /turf/simulated/floor/mineral/titanium/purple,
 /area/ruin/space/powered)
 "Hl" = (
-/obj/structure{
+/obj/structure/plasticflaps{
 	icon_state = "blackbox_b";
-	icon = 'icons/obj/stationobjs.dmi';
-	desc = "This is an old-style communications server.";
 	name = "communications server";
-	density = 1
+	desc = "This is an old-style communications server."
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/bluegrid,
@@ -1685,7 +1646,7 @@
 	name = "shuttle control console";
 	desc = "The screen dims greens with an ERROR message. It looks completely unusable."
 	},
-/turf/simulated/floor/mineral/titanium,
+/turf/simulated/floor/mineral/titanium/blue,
 /area/ruin/space/powered)
 "Hs" = (
 /obj/machinery/power/smes,
@@ -1727,12 +1688,6 @@
 	},
 /turf/simulated/floor/mineral/titanium,
 /area/ruin/space/powered)
-"Ii" = (
-/obj/structure/sign/nosmoking_2{
-	pixel_y = -32
-	},
-/turf/simulated/floor/mineral/titanium,
-/area/ruin/space/powered)
 "Ij" = (
 /obj/machinery/economy/vending/cigarette/free,
 /turf/simulated/floor/mineral/titanium,
@@ -1743,8 +1698,7 @@
 	icon_state = "tube-broken";
 	dir = 8
 	},
-/obj/item/radio/off,
-/turf/simulated/floor/mineral/titanium,
+/turf/simulated/floor/mineral/titanium/blue,
 /area/ruin/space/powered)
 "Ix" = (
 /obj/structure/computerframe,
@@ -1777,7 +1731,7 @@
 	},
 /obj/item/shard,
 /obj/effect/decal/cleanable/glass,
-/turf/simulated/floor/mineral/titanium,
+/turf/simulated/floor/mineral/titanium/blue,
 /area/ruin/space/powered)
 "IK" = (
 /obj/effect/landmark/burnturf,
@@ -1795,13 +1749,6 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/bluegrid,
-/area/ruin/space/powered)
-"Jn" = (
-/obj/structure/table,
-/obj/effect/decal/cleanable/dirt,
-/obj/item/folder/blue,
-/obj/item/pen,
-/turf/simulated/floor/mineral/titanium,
 /area/ruin/space/powered)
 "Jq" = (
 /obj/item/twohanded/required/kirbyplants{
@@ -2016,9 +1963,6 @@
 /obj/machinery/light_construct{
 	icon_state = "tube-broken"
 	},
-/obj/structure/sign/science{
-	pixel_y = -32
-	},
 /turf/simulated/floor/plating,
 /area/ruin/space/powered)
 "Nl" = (
@@ -2111,7 +2055,7 @@
 	pixel_x = 27
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/mineral/titanium,
+/turf/simulated/floor/mineral/titanium/blue,
 /area/ruin/space/powered)
 "PF" = (
 /obj/structure/mecha_wreckage/durand{
@@ -2142,13 +2086,6 @@
 /obj/structure/fans/tiny,
 /turf/simulated/floor/plating,
 /area/ruin/space/powered)
-"PX" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/sign/nosmoking_2{
-	pixel_y = -32
-	},
-/turf/simulated/floor/mineral/titanium,
-/area/ruin/space/powered)
 "Qb" = (
 /obj/structure/door_assembly/door_assembly_ext,
 /turf/simulated/floor/plating,
@@ -2178,9 +2115,6 @@
 /obj/effect/decal/cleanable/glass,
 /obj/effect/decal/cleanable/dirt,
 /mob/living/simple_animal/hostile/scavengers/meele/axe,
-/obj/item/stack/cable_coil{
-	amount = 1
-	},
 /turf/simulated/floor/mineral/titanium/blue,
 /area/ruin/space/powered)
 "Qx" = (
@@ -2217,13 +2151,6 @@
 /obj/effect/decal/cleanable/blood/oil,
 /obj/effect/landmark/burnturf,
 /turf/simulated/floor/plating,
-/area/ruin/space/powered)
-"QQ" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/sign/cargo{
-	pixel_x = -32
-	},
-/turf/simulated/floor/mineral/titanium,
 /area/ruin/space/powered)
 "QS" = (
 /obj/item/reagent_containers/food/drinks/cans/beer{
@@ -2280,7 +2207,7 @@
 "Sd" = (
 /obj/structure/table,
 /obj/item/toy/plushie/ipcplushie,
-/turf/simulated/floor/mineral/titanium,
+/turf/simulated/floor/mineral/titanium/blue,
 /area/ruin/space/powered)
 "Sq" = (
 /obj/machinery/light_construct{
@@ -2373,7 +2300,7 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/mineral/titanium,
+/turf/simulated/floor/mineral/titanium/blue,
 /area/ruin/space/powered)
 "TS" = (
 /obj/effect/decal/cleanable/dirt,
@@ -2997,7 +2924,7 @@ qU
 qU
 qU
 Sb
-DE
+lS
 dk
 gH
 sD
@@ -3168,7 +3095,7 @@ YU
 Fn
 IG
 Pf
-Ii
+AC
 Kb
 Kb
 Sb
@@ -3415,10 +3342,10 @@ qU
 qU
 qU
 PT
-Jn
+Gt
 VL
 oE
-GW
+QY
 QY
 TR
 Kb
@@ -3473,13 +3400,13 @@ PT
 Hn
 VL
 oE
-cI
+Hn
 Qt
 oE
 PT
 Qx
 ly
-QQ
+lS
 lS
 Ju
 iU
@@ -3500,7 +3427,7 @@ sD
 qT
 Wu
 Kb
-oj
+lR
 Mp
 Sb
 Kb
@@ -3938,7 +3865,7 @@ hW
 hW
 hW
 Ul
-PX
+lS
 Kb
 Kb
 Sb
@@ -4137,7 +4064,7 @@ qU
 qU
 qU
 Sb
-aV
+lS
 mN
 Kb
 tj
