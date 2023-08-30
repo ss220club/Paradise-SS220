@@ -102,9 +102,13 @@
 	return data
 
 /obj/machinery/photocopier/proc/parse_forms(mob/user)
+	var/list/access = user.get_access()
 	forms = new/list()
 	for(var/F in subtypesof(/obj/item/paper/form))
 		var/obj/item/paper/form/ff = F
+		var/req_access = initial(ff.access)
+		if(req_access && !(req_access in access))
+			continue
 		var/form[0]
 		form["path"] = F
 		form["id"] = initial(ff.id)
