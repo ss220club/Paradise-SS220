@@ -29,7 +29,7 @@
 		to_chat(usr, span_darkmblue("Аккаунт Discord уже привязан! Чтобы отвязать используйте команду [span_boldannounce("/отвязать")] в канале <b>#дом-бота</b> в Discord-сообществе!"))
 		prefs?.load_preferences(usr)
 
-/mob/new_player/Topic(href, href_list[])
+/mob/new_player/Topic(href, href_list)
 	if(src != usr)
 		return
 
