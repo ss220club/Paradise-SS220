@@ -28,8 +28,7 @@
 /area/ruin/space/powered)
 "aK" = (
 /obj/structure/closet/crate{
-	icon_state = "radiation";
-	icon_opened = "radiation_open"
+	icon_state = "radiation"
 	},
 /obj/item/stack/sheet/mineral/uranium/fifty,
 /turf/simulated/floor/mineral/titanium,
@@ -443,9 +442,12 @@
 "kD" = (
 /obj/structure/table,
 /obj/machinery/door_control{
+	pixel_x = -9;
+	id = "hang1_mech"
+	},
+/obj/machinery/door_control{
 	id = "shang1_mech";
-	pixel_x = 6;
-	pixel_y = -2
+	pixel_x = 2
 	},
 /obj/item/hand_labeler{
 	pixel_y = 9
@@ -672,14 +674,9 @@
 	},
 /turf/simulated/floor/mineral/titanium,
 /area/ruin/space/powered)
-"oT" = (
-/obj/machinery/status_display,
-/turf/simulated/floor/mineral/titanium/yellow,
-/area/ruin/space/powered)
 "oY" = (
 /obj/structure/closet/crate{
-	icon_state = "scicrate";
-	icon_opened = "scicrate_open"
+	icon_state = "scicrate"
 	},
 /obj/item/stack/sheet/mineral/plasma/fifty,
 /obj/item/stack/sheet/mineral/plasma/fifty,
@@ -889,9 +886,6 @@
 /obj/effect/landmark/damageturf,
 /turf/simulated/floor/plating,
 /area/ruin/space/powered)
-"tv" = (
-/turf/simulated/wall/indestructible/whiteshuttle,
-/area/ruin/space/unpowered/unpowered_structures)
 "tE" = (
 /obj/effect/decal/cleanable/glass,
 /obj/effect/decal/cleanable/dirt,
@@ -1168,12 +1162,6 @@
 /obj/structure/girder/reinforced,
 /turf/simulated/floor/plating/airless,
 /area/ruin/space/powered)
-"zy" = (
-/obj/machinery/status_display{
-	pixel_y = 32
-	},
-/turf/simulated/floor/mineral/titanium,
-/area/ruin/space/powered)
 "zF" = (
 /obj/structure/shuttle/engine/propulsion,
 /turf/simulated/floor/plating/airless,
@@ -1396,18 +1384,14 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/cobweb,
-/obj/machinery/door_control{
-	id = "hang1_mech";
-	pixel_y = 32
-	},
 /turf/simulated/floor/mineral/titanium,
 /area/ruin/space/powered)
 "DE" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/status_display{
-	pixel_y = 32
+/obj/item/mounted/frame/display/entertainment_frame{
+	pixel_y = 30
 	},
-/turf/simulated/floor/plating,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/mineral/titanium,
 /area/ruin/space/powered)
 "DG" = (
 /obj/machinery/door/airlock/hatch,
@@ -1485,8 +1469,7 @@
 /area/ruin/space/powered)
 "Fr" = (
 /obj/structure/closet/crate{
-	icon_state = "scicrate";
-	icon_opened = "scicrate_open"
+	icon_state = "scicrate"
 	},
 /obj/item/stack/sheet/mineral/plastitanium/fifty,
 /obj/item/stack/sheet/metal/fifty,
@@ -1980,10 +1963,6 @@
 /obj/machinery/light_construct{
 	icon_state = "tube-broken"
 	},
-/obj/machinery/door_control{
-	id = "shang1_mech";
-	pixel_y = -30
-	},
 /turf/simulated/floor/plating,
 /area/ruin/space/powered)
 "Nl" = (
@@ -2187,8 +2166,7 @@
 /area/ruin/space/powered)
 "Rb" = (
 /obj/structure/closet/crate{
-	icon_state = "scicrate";
-	icon_opened = "scicrate_open"
+	icon_state = "scicrate"
 	},
 /obj/item/stack/sheet/mineral/gold/fifty,
 /obj/item/stack/sheet/mineral/silver/fifty,
@@ -2447,11 +2425,10 @@
 /obj/item/reagent_containers/food/snacks/beans,
 /obj/item/reagent_containers/food/snacks/beans,
 /obj/item/reagent_containers/food/snacks/beans,
+/obj/item/reagent_containers/food/snacks/candy,
+/obj/item/reagent_containers/food/snacks/candy,
+/obj/item/reagent_containers/food/snacks/candy,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/reagent_containers/food/snacks/candy/candybar,
-/obj/item/reagent_containers/food/snacks/candy/candybar,
-/obj/item/reagent_containers/food/snacks/candy/candybar,
-/obj/item/reagent_containers/food/snacks/candy/taffy,
 /turf/simulated/floor/mineral/titanium,
 /area/ruin/space/powered)
 "VF" = (
@@ -2509,7 +2486,7 @@
 "Wk" = (
 /obj/structure/table,
 /obj/machinery/door_control{
-	pixel_x = -6;
+	pixel_x = -5;
 	id = "bdoorleft_mech"
 	},
 /turf/simulated/floor/mineral/titanium,
@@ -2531,11 +2508,14 @@
 /area/ruin/space/powered)
 "WD" = (
 /obj/structure/closet/crate/secure/weapon{
-	req_access_txt = "7"
+	req_access = "58"
 	},
 /obj/item/mecha_parts/mecha_equipment/weapon/honker,
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/flashbang,
-/obj/item/mecha_modkit/voice/nanotrasen,
+/obj/item/mecha_modkit/voice/honk{
+	pixel_y = 10;
+	pixel_x = 3
+	},
 /obj/item/toy/figure/mech/mauler,
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light_construct{
@@ -2714,15 +2694,15 @@ Sb
 GP
 GP
 Sb
-qU
-qU
-qU
-qU
-qU
-qU
-qU
-qU
-qU
+Vk
+Vk
+Vk
+Vk
+Vk
+Vk
+Vk
+Vk
+Vk
 Sb
 Sb
 PV
@@ -2769,15 +2749,15 @@ Sb
 ZT
 ZT
 Sb
+qU
+qU
+qU
+qU
 Vk
+qU
+qU
 Vk
-Vk
-Vk
-Vk
-Vk
-Vk
-Vk
-Vk
+qU
 Kb
 Qd
 AC
@@ -2825,7 +2805,7 @@ mt
 mt
 Kb
 Sb
-Vk
+qU
 qU
 qU
 Vk
@@ -2885,11 +2865,11 @@ PT
 PT
 Sb
 Sb
-qU
 Vk
-qU
-tv
-DE
+Vk
+Vk
+Sb
+hw
 dk
 sD
 nk
@@ -2940,9 +2920,9 @@ VF
 NH
 Kb
 Sb
-Vk
-Vk
-Vk
+qU
+qU
+qU
 Sb
 lS
 dk
@@ -3826,7 +3806,7 @@ PT
 Kb
 Cm
 Jr
-oT
+nk
 nk
 sD
 iK
@@ -3976,7 +3956,7 @@ qU
 Sb
 ym
 yU
-tv
+Sb
 KH
 bs
 lS
@@ -4040,11 +4020,11 @@ GH
 lf
 Kb
 Sb
-Vk
-Vk
-Vk
+qU
+qU
+qU
 Sb
-lS
+DE
 Jr
 nk
 GF
@@ -4095,11 +4075,11 @@ PT
 PT
 Sb
 Sb
-qU
 Vk
-qU
-tv
-zy
+Vk
+Vk
+Sb
+AC
 Jr
 sD
 sD
@@ -4148,10 +4128,10 @@ Sb
 Sb
 qU
 qU
-Vk
 qU
 qU
-Vk
+qU
+qU
 qU
 Sb
 AC
@@ -4203,11 +4183,11 @@ qU
 qU
 qU
 qU
-Vk
-Vk
-Vk
-Vk
-Vk
+qU
+qU
+qU
+qU
+qU
 Sb
 FK
 lS
