@@ -60,6 +60,7 @@
 			break
 
 	qdel(discord_query)
+	return TRUE
 
 /datum/preferences/load_preferences(datum/db_query/query)
 	. = ..()
