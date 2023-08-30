@@ -7,7 +7,7 @@
 	suffix = "" // .dmm файл руины, вписывать название полностью, пример: suffix = "example.dmm". Саму карту закидывать в путь префикса.
 	cost = 5 // Вес руины, чем он больше, тем меньше шанс что она заспавнится
 	allow_duplicates = FALSE // Разрешает/Запрещает дубликаты руины. TRUE - могут быть дубликаты. FALSE - дубликатов не будет.
-	always_place = TRUE // Если вписать эту строчку, руина будет спавнится всегда.
+	always_place = TRUE // Если вписать эту строчку, руина будет спавнится всегда. Использовать ТОЛЬКО для теста! После удалить.
 	ci_exclude = /datum/map_template/ruin/space/example // Это не использовать.
 
 // Добавлять свои руины под этими комментариями. Делать это по примеру выше!
@@ -36,4 +36,3 @@
 	id = "space_wildwest"
 	description = "A captured mining outpost on a lonely asteroid. There are rumors that a horrible structure is entombed in its depths."
 	suffix = "space_wildwest.dmm"
-	allow_duplicates = FALSE
