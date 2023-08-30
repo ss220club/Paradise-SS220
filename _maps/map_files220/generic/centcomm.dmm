@@ -39,7 +39,12 @@
 /turf/simulated/floor/carpet/red,
 /area/wizard_station)
 "aj" = (
-/obj/machinery/computer/card,
+/obj/structure/table,
+/obj/machinery/photocopier/faxmachine/longrange{
+	department = "Central Command";
+	pixel_y = 4;
+	req_one_access = list(101)
+	},
 /turf/simulated/floor/carpet/royalblack,
 /area/shuttle/administration)
 "ak" = (
@@ -54,8 +59,8 @@
 	pixel_y = 5
 	},
 /obj/item/lighter/zippo/blue{
-	pixel_y = 6;
-	pixel_x = 14
+	pixel_x = 14;
+	pixel_y = 6
 	},
 /turf/simulated/floor/wood/fancy/cherry,
 /area/centcom220/admin2)
@@ -80,12 +85,6 @@
 	dir = 4
 	},
 /area/space)
-"ar" = (
-/turf/simulated/floor/plasteel{
-	icon_state = "neutralcorner";
-	dir = 1
-	},
-/area/centcom220/evac)
 "as" = (
 /obj/structure/table/wood{
 	color = "#996633"
@@ -153,8 +152,8 @@
 /area/ninja/outpost)
 "aC" = (
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "navybluecorners";
-	dir = 1
+	dir = 1;
+	icon_state = "navybluecorners"
 	},
 /area/centcom220/admin3)
 "aD" = (
@@ -169,28 +168,28 @@
 "aF" = (
 /obj/structure/table,
 /obj/item/clothing/accessory/medal/gold{
-	pixel_y = 10;
-	pixel_x = -6
+	pixel_x = -6;
+	pixel_y = 10
 	},
 /obj/item/clothing/accessory/medal/gold/heroism{
-	pixel_y = 10;
-	pixel_x = 6
+	pixel_x = 6;
+	pixel_y = 10
 	},
 /obj/item/clothing/accessory/medal/gold{
-	pixel_y = 10;
-	pixel_x = -6
+	pixel_x = -6;
+	pixel_y = 10
 	},
 /obj/item/clothing/accessory/medal/gold{
-	pixel_y = 10;
-	pixel_x = -6
+	pixel_x = -6;
+	pixel_y = 10
 	},
 /obj/item/clothing/accessory/medal/gold/heroism{
-	pixel_y = 10;
-	pixel_x = 6
+	pixel_x = 6;
+	pixel_y = 10
 	},
 /obj/item/clothing/accessory/medal/gold/heroism{
-	pixel_y = 10;
-	pixel_x = 6
+	pixel_x = 6;
+	pixel_y = 10
 	},
 /obj/effect/turf_decal/stripes/white/full{
 	color = "#b59959"
@@ -270,8 +269,8 @@
 /obj/effect/decal/warning_stripes/red,
 /obj/machinery/door/poddoor/impassable{
 	id_tag = "CC_Armory";
-	name = "Оружейная";
-	layer = 3
+	layer = 3;
+	name = "Оружейная"
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom220/admin3)
@@ -283,14 +282,14 @@
 /area/abductor_ship)
 "aW" = (
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "navyblue";
-	dir = 10
+	dir = 10;
+	icon_state = "navyblue"
 	},
 /area/centcom220/admin3)
 "aX" = (
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkbluealtstrip";
-	dir = 5
+	dir = 5;
+	icon_state = "darkbluealtstrip"
 	},
 /area/centcom220/admin3)
 "aY" = (
@@ -396,31 +395,31 @@
 "bs" = (
 /obj/structure/table,
 /obj/machinery/door_control{
+	id = "CC_Interior_1";
 	name = "Открыть вход";
 	normaldoorcontrol = 1;
-	pixel_y = -2;
 	pixel_x = -6;
-	req_one_access_txt = "101";
-	id = "CC_Interior_1"
+	pixel_y = -2;
+	req_one_access_txt = "101"
 	},
 /obj/machinery/door_control{
+	id = "CC_Exterior_1";
 	name = "Открыть выход";
 	normaldoorcontrol = 1;
-	pixel_y = 8;
 	pixel_x = -6;
-	req_one_access_txt = "101";
-	id = "CC_Exterior_1"
+	pixel_y = 8;
+	req_one_access_txt = "101"
 	},
 /obj/machinery/door_control/no_emag{
-	name = "Blast Door Open";
 	id = "СС_BD_Interior_1";
+	name = "Blast Door Open";
 	pixel_x = 6;
 	pixel_y = -2;
 	req_one_access_txt = "101"
 	},
 /obj/machinery/door_control/no_emag{
-	name = "Blast Door Open";
 	id = "СС_BD_Exterior_1";
+	name = "Blast Door Open";
 	pixel_x = 6;
 	pixel_y = 8;
 	req_one_access_txt = "101"
@@ -520,8 +519,8 @@
 /area/abductor_ship)
 "bG" = (
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkbluealt";
-	dir = 1
+	dir = 1;
+	icon_state = "darkbluealt"
 	},
 /area/centcom220/admin1)
 "bH" = (
@@ -614,8 +613,8 @@
 /area/abductor_ship)
 "bW" = (
 /obj/structure/statue/furukai{
-	pixel_y = 8;
-	layer = 4
+	layer = 4;
+	pixel_y = 8
 	},
 /turf/simulated/floor/plasteel{
 	desc = "\"This is a plaque in honour of our comrades on the G4407 Stations. Hopefully TG4407 model can live up to your fame and fortune.\" Scratched in beneath that is a crude image of a meteor and a spaceman. The spaceman is laughing. The meteor is exploding.";
@@ -628,8 +627,8 @@
 	dir = 1
 	},
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkredalt";
-	dir = 1
+	dir = 1;
+	icon_state = "darkredalt"
 	},
 /area/centcom220/jail)
 "bY" = (
@@ -662,38 +661,38 @@
 "cd" = (
 /obj/structure/rack,
 /obj/item/grenade/empgrenade{
-	pixel_y = 13;
-	pixel_x = -5
+	pixel_x = -5;
+	pixel_y = 13
 	},
 /obj/item/grenade/empgrenade{
-	pixel_y = 9;
-	pixel_x = -5
+	pixel_x = -5;
+	pixel_y = 9
 	},
 /obj/item/grenade/empgrenade{
-	pixel_y = 5;
-	pixel_x = -5
+	pixel_x = -5;
+	pixel_y = 5
 	},
 /obj/item/grenade/empgrenade{
-	pixel_y = 13;
-	pixel_x = 8
+	pixel_x = 8;
+	pixel_y = 13
 	},
 /obj/item/grenade/empgrenade{
-	pixel_y = 9;
-	pixel_x = 8
+	pixel_x = 8;
+	pixel_y = 9
 	},
 /obj/item/grenade/empgrenade{
-	pixel_y = 5;
-	pixel_x = 8
+	pixel_x = 8;
+	pixel_y = 5
 	},
 /obj/machinery/door_control{
-	name = "Оружейная - Дополнительный аренал";
-	req_one_access_txt = "114";
 	id = "CC_Armory_Advanced";
-	pixel_y = -24
+	name = "Оружейная - Дополнительный аренал";
+	pixel_y = -24;
+	req_one_access_txt = "114"
 	},
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "navyblue";
-	dir = 6
+	dir = 6;
+	icon_state = "navyblue"
 	},
 /area/centcom220/admin3)
 "cf" = (
@@ -752,8 +751,8 @@
 /area/centcom220/supply)
 "cn" = (
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkyellowalt";
-	dir = 4
+	dir = 4;
+	icon_state = "darkyellowalt"
 	},
 /area/centcom220/supply)
 "co" = (
@@ -810,15 +809,15 @@
 	dir = 8
 	},
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "navyblue";
-	dir = 10
+	dir = 10;
+	icon_state = "navyblue"
 	},
 /area/centcom220/admin3)
 "cx" = (
 /obj/machinery/economy/vending/nta/green,
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkgreen";
-	dir = 6
+	dir = 6;
+	icon_state = "darkgreen"
 	},
 /area/centcom220/admin3)
 "cy" = (
@@ -837,14 +836,14 @@
 /area/centcom220/general)
 "cC" = (
 /obj/machinery/door_control{
-	pixel_x = 24;
+	id = "CC_GammaShuttle";
 	name = "Blast Door Control";
-	req_one_access_txt = "114";
-	id = "CC_GammaShuttle"
+	pixel_x = 24;
+	req_one_access_txt = "114"
 	},
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkbluealt";
-	dir = 4
+	dir = 4;
+	icon_state = "darkbluealt"
 	},
 /area/centcom220/admin3)
 "cD" = (
@@ -899,8 +898,8 @@
 /area/centcom220/admin2)
 "cN" = (
 /obj/structure/chair/sofa/corner{
-	dir = 6;
-	color = "#63009c"
+	color = "#63009c";
+	dir = 6
 	},
 /turf/simulated/floor/wood,
 /area/wizard_station)
@@ -922,8 +921,8 @@
 /obj/effect/landmark/spawner/teleport_scroll,
 /obj/structure/table/wood/fancy/black,
 /obj/item/paper/crumpled/bloody/ruins/lavaland/clown_planet{
-	name = "our demands";
-	info = "Deliver five cream pies to the agreed place or your apprentice gets honked again"
+	info = "Deliver five cream pies to the agreed place or your apprentice gets honked again";
+	name = "our demands"
 	},
 /turf/simulated/floor/carpet/purple,
 /area/wizard_station)
@@ -1054,16 +1053,6 @@
 /obj/item/bonegel/alien,
 /turf/simulated/floor/plating/abductor,
 /area/abductor_ship)
-"dp" = (
-/obj/structure/window/plasmareinforced{
-	color = "#FF0000"
-	},
-/obj/structure/chair/comfy/shuttle{
-	dir = 8
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plating,
-/area/shuttle/administration)
 "dr" = (
 /obj/structure/window/reinforced,
 /obj/structure/flora/ausbushes/fullgrass,
@@ -1118,13 +1107,13 @@
 /area/centcom220/bar)
 "dD" = (
 /obj/machinery/airlock_controller/air_cycler{
+	ext_button_link_id = "syndishuttle_btn_ext";
+	ext_door_link_id = "syndishuttle_door_ext";
+	int_button_link_id = "syndishuttle_btn_int";
+	int_door_link_id = "syndishuttle_door_int";
 	pixel_x = 25;
 	req_access_txt = "150";
-	vent_link_id = "syndishuttle_vent";
-	ext_door_link_id = "syndishuttle_door_ext";
-	int_door_link_id = "syndishuttle_door_int";
-	ext_button_link_id = "syndishuttle_btn_ext";
-	int_button_link_id = "syndishuttle_btn_int"
+	vent_link_id = "syndishuttle_vent"
 	},
 /obj/machinery/light{
 	dir = 4
@@ -1149,12 +1138,12 @@
 "dG" = (
 /obj/structure/table/wood/fancy/royalblack,
 /obj/item/paper_bin/nanotrasen{
-	pixel_y = 6;
-	pixel_x = 4
+	pixel_x = 4;
+	pixel_y = 6
 	},
 /obj/item/stamp/chameleon{
-	pixel_y = 5;
-	pixel_x = 4
+	pixel_x = 4;
+	pixel_y = 5
 	},
 /obj/item/pen/multi/gold{
 	pixel_y = 3
@@ -1163,9 +1152,9 @@
 /area/centcom220/admin2)
 "dI" = (
 /obj/structure/statue/sandstone/venus{
+	anchored = 1;
 	layer = 5;
-	pixel_y = 8;
-	anchored = 1
+	pixel_y = 8
 	},
 /turf/simulated/floor/plasteel{
 	desc = "\"This is a plaque in honour of our comrades on the G4407 Stations. Hopefully TG4407 model can live up to your fame and fortune.\" Scratched in beneath that is a crude image of a meteor and a spaceman. The spaceman is laughing. The meteor is exploding.";
@@ -1227,8 +1216,8 @@
 /area/centcom220/evac)
 "dQ" = (
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkbluealt";
-	dir = 1
+	dir = 1;
+	icon_state = "darkbluealt"
 	},
 /area/centcom220/admin2)
 "dR" = (
@@ -1289,11 +1278,11 @@
 "dZ" = (
 /obj/structure/table/wood,
 /obj/item/flashlight/lantern{
-	on = 1;
-	pixel_y = 10;
+	anchored = 1;
 	layer = 5;
 	light_color = "#FF9F40";
-	anchored = 1
+	on = 1;
+	pixel_y = 10
 	},
 /turf/simulated/floor/carpet,
 /area/centcom220/evac)
@@ -1371,12 +1360,12 @@
 "en" = (
 /obj/structure/table/wood/fancy/black,
 /obj/item/candle/eternal/wizard{
-	pixel_y = 5;
-	pixel_x = -7
+	pixel_x = -7;
+	pixel_y = 5
 	},
 /obj/item/reagent_containers/food/drinks/mugwort{
-	pixel_y = 6;
-	pixel_x = 8
+	pixel_x = 8;
+	pixel_y = 6
 	},
 /turf/simulated/floor/carpet/purple,
 /area/wizard_station)
@@ -1394,14 +1383,14 @@
 /obj/item/mecha_parts/mecha_equipment/repair_droid,
 /obj/item/mecha_parts/mecha_equipment/repair_droid,
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkbrown";
-	dir = 10
+	dir = 10;
+	icon_state = "darkbrown"
 	},
 /area/centcom220/admin3)
 "eq" = (
 /obj/machinery/door/airlock/bathroom{
-	name = "Туалет";
-	id_tag = "cc_toilet_2"
+	id_tag = "cc_toilet_2";
+	name = "Туалет"
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "hydrofloor"
@@ -1410,8 +1399,8 @@
 "et" = (
 /obj/machinery/door/poddoor/impassable{
 	id_tag = "CC_Armory";
-	name = "Оружейная";
-	layer = 3
+	layer = 3;
+	name = "Оружейная"
 	},
 /obj/effect/decal/warning_stripes/red,
 /turf/simulated/floor/plasteel/dark,
@@ -1496,8 +1485,8 @@
 /area/ninja/holding)
 "eG" = (
 /obj/structure/chair/sofa/bench/left{
-	dir = 1;
-	cover_color = "#404144"
+	cover_color = "#404144";
+	dir = 1
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom220/admin1)
@@ -1561,8 +1550,8 @@
 	},
 /obj/structure/fans/tiny,
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkbluealt";
-	dir = 1
+	dir = 1;
+	icon_state = "darkbluealt"
 	},
 /area/shuttle/administration)
 "eS" = (
@@ -1639,12 +1628,12 @@
 /obj/structure/flora/grass/jungle,
 /obj/structure/flora/rock/jungle,
 /obj/item/flashlight/lantern{
-	on = 1;
-	pixel_y = 10;
-	pixel_x = -1;
+	anchored = 1;
 	layer = 5;
 	light_color = "#FF9F40";
-	anchored = 1
+	on = 1;
+	pixel_x = -1;
+	pixel_y = 10
 	},
 /turf/simulated/floor/grass/jungle,
 /area/centcom220/park)
@@ -1693,8 +1682,8 @@
 /area/centcom220/supply)
 "fn" = (
 /obj/structure/chair/sofa/left{
-	dir = 4;
-	color = "#63009c"
+	color = "#63009c";
+	dir = 4
 	},
 /turf/simulated/floor/wood,
 /area/wizard_station)
@@ -1785,28 +1774,28 @@
 /obj/structure/window/reinforced,
 /obj/structure/table/glass,
 /obj/item/clothing/mask/cigarette/cigar/cohiba{
-	pixel_y = 2;
-	pixel_x = -5
+	pixel_x = -5;
+	pixel_y = 2
 	},
 /obj/item/clothing/mask/cigarette/cigar/cohiba{
-	pixel_y = 5;
-	pixel_x = -5
+	pixel_x = -5;
+	pixel_y = 5
 	},
 /obj/item/clothing/mask/cigarette/cigar/cohiba{
-	pixel_y = 8;
-	pixel_x = -5
+	pixel_x = -5;
+	pixel_y = 8
 	},
 /obj/item/clothing/mask/cigarette/cigar/cohiba{
-	pixel_y = 2;
-	pixel_x = -2
+	pixel_x = -2;
+	pixel_y = 2
 	},
 /obj/item/clothing/mask/cigarette/cigar/cohiba{
-	pixel_y = 5;
-	pixel_x = -2
+	pixel_x = -2;
+	pixel_y = 5
 	},
 /obj/item/clothing/mask/cigarette/cigar/cohiba{
-	pixel_y = 8;
-	pixel_x = -2
+	pixel_x = -2;
+	pixel_y = 8
 	},
 /turf/simulated/floor/carpet/black,
 /area/centcom220/admin2)
@@ -1856,8 +1845,8 @@
 	pixel_y = 4
 	},
 /obj/structure/noticeboard{
-	pixel_y = -32;
-	dir = 1
+	dir = 1;
+	pixel_y = -32
 	},
 /obj/item/paper{
 	info = "Уволить клоуна."
@@ -1880,11 +1869,6 @@
 	icon_state = "bot"
 	},
 /area/shuttle/escape)
-"fO" = (
-/obj/structure/chair/comfy/shuttle,
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plating,
-/area/shuttle/administration)
 "fP" = (
 /obj/structure/sign/vacuum/external,
 /turf/simulated/wall/indestructible/riveted,
@@ -1903,9 +1887,9 @@
 	layer = 3
 	},
 /obj/machinery/door/airlock/centcom{
-	req_one_access_txt = "101";
+	id_tag = "CC_Interior_1";
 	name = "Зона ЦК";
-	id_tag = "CC_Interior_1"
+	req_one_access_txt = "101"
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom220/admin1)
@@ -1928,28 +1912,28 @@
 "fW" = (
 /obj/structure/rack,
 /obj/item/rcd_ammo/large{
-	pixel_y = 7;
-	pixel_x = 6
+	pixel_x = 6;
+	pixel_y = 7
 	},
 /obj/item/rcd_ammo/large{
-	pixel_y = 4;
-	pixel_x = 6
+	pixel_x = 6;
+	pixel_y = 4
 	},
 /obj/item/rcd_ammo/large{
-	pixel_y = 1;
-	pixel_x = 6
+	pixel_x = 6;
+	pixel_y = 1
 	},
 /obj/item/rcd_ammo/large{
-	pixel_y = 7;
-	pixel_x = -6
+	pixel_x = -6;
+	pixel_y = 7
 	},
 /obj/item/rcd_ammo/large{
-	pixel_y = 4;
-	pixel_x = -6
+	pixel_x = -6;
+	pixel_y = 4
 	},
 /obj/item/rcd_ammo/large{
-	pixel_y = 1;
-	pixel_x = -6
+	pixel_x = -6;
+	pixel_y = 1
 	},
 /obj/item/rcd_ammo/large{
 	pixel_y = 7
@@ -2024,6 +2008,10 @@
 	dir = 4
 	},
 /area/space)
+"gh" = (
+/obj/structure/table,
+/turf/simulated/floor/carpet/royalblack,
+/area/shuttle/administration)
 "gi" = (
 /obj/structure/table/wood{
 	color = "#996633"
@@ -2141,8 +2129,8 @@
 	pixel_y = 4
 	},
 /obj/item/pen/multi{
-	pixel_y = 6;
-	pixel_x = -2
+	pixel_x = -2;
+	pixel_y = 6
 	},
 /turf/simulated/floor/carpet/black,
 /area/centcom220/general)
@@ -2184,9 +2172,9 @@
 /obj/structure/table/reinforced,
 /obj/machinery/door/window{
 	dir = 8;
+	name = "Стойка";
 	opacity = 1;
-	req_one_access_txt = "160";
-	name = "Стойка"
+	req_one_access_txt = "160"
 	},
 /turf/simulated/floor/mineral/titanium/blue,
 /area/shuttle/trade/sol)
@@ -2418,8 +2406,8 @@
 /area/abductor_ship)
 "ht" = (
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkbluealt";
-	dir = 6
+	dir = 6;
+	icon_state = "darkbluealt"
 	},
 /area/centcom220/admin3)
 "hu" = (
@@ -2671,24 +2659,24 @@
 "ib" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/box/bodybags{
-	pixel_y = 6;
-	pixel_x = -6
+	pixel_x = -6;
+	pixel_y = 6
 	},
 /obj/item/storage/box/bodybags{
-	pixel_y = 6;
-	pixel_x = -6
+	pixel_x = -6;
+	pixel_y = 6
 	},
 /obj/item/storage/box/bodybags{
-	pixel_y = 6;
-	pixel_x = -6
+	pixel_x = -6;
+	pixel_y = 6
 	},
 /obj/item/storage/box/bodybags{
-	pixel_y = 6;
-	pixel_x = -6
+	pixel_x = -6;
+	pixel_y = 6
 	},
 /obj/item/storage/box/bodybags{
-	pixel_y = 6;
-	pixel_x = -6
+	pixel_x = -6;
+	pixel_y = 6
 	},
 /obj/item/storage/box/zipties{
 	pixel_x = -6;
@@ -2809,17 +2797,17 @@
 /area/syndicate_mothership)
 "io" = (
 /obj/machinery/door/window/classic/normal{
+	dir = 1;
 	name = "Out";
-	req_access_txt = "150";
-	dir = 1
+	req_access_txt = "150"
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/syndicate_mothership)
 "ip" = (
 /obj/machinery/door/window/classic/reversed{
+	dir = 1;
 	name = "In";
-	req_access_txt = "150";
-	dir = 1
+	req_access_txt = "150"
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/syndicate_mothership)
@@ -2837,8 +2825,8 @@
 /area/shuttle/escape)
 "it" = (
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkyellowcornersalt";
-	dir = 8
+	dir = 8;
+	icon_state = "darkyellowcornersalt"
 	},
 /area/centcom220/supply)
 "iu" = (
@@ -2847,8 +2835,8 @@
 /area/centcom220/general)
 "iv" = (
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkbluealt";
-	dir = 6
+	dir = 6;
+	icon_state = "darkbluealt"
 	},
 /area/centcom220/admin1)
 "iw" = (
@@ -2946,10 +2934,10 @@
 	name = "Тебе скорее всего сюда нельзя, увы."
 	},
 /obj/machinery/door_control/no_emag{
-	name = "Blast Door Open";
 	id = "СС_Office_COO_Door";
-	req_one_access_txt = "114";
-	pixel_x = -24
+	name = "Blast Door Open";
+	pixel_x = -24;
+	req_one_access_txt = "114"
 	},
 /turf/simulated/floor/wood/fancy/cherry,
 /area/centcom220/admin2)
@@ -3122,8 +3110,8 @@
 "jj" = (
 /obj/mecha/combat/marauder/seraph/loaded,
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkbrown";
-	dir = 6
+	dir = 6;
+	icon_state = "darkbrown"
 	},
 /area/centcom220/admin3)
 "jk" = (
@@ -3172,22 +3160,22 @@
 /obj/structure/bookcase/manuals,
 /obj/item/book/manual/wiki/sop_legal,
 /obj/machinery/door_control/no_emag{
-	name = "Открыть створки";
 	id = "СС_Office_COO";
-	req_one_access_txt = "114";
-	pixel_y = 24
+	name = "Открыть створки";
+	pixel_y = 24;
+	req_one_access_txt = "114"
 	},
 /turf/simulated/floor/wood/fancy/cherry,
 /area/centcom220/admin2)
 "ju" = (
 /obj/machinery/airlock_controller/access_controller{
+	ext_button_link_id = "syndijail_btn_ext";
+	ext_door_link_id = "syndijail_door_ext";
+	int_button_link_id = "syndijail_btn_int";
+	int_door_link_id = "syndijail_door_int";
 	name = "Syndicate Jail Access Controller";
 	pixel_y = 24;
-	req_access_txt = "150";
-	ext_door_link_id = "syndijail_door_ext";
-	int_door_link_id = "syndijail_door_int";
-	ext_button_link_id = "syndijail_btn_ext";
-	int_button_link_id = "syndijail_btn_int"
+	req_access_txt = "150"
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/syndicate_mothership)
@@ -3475,9 +3463,9 @@
 /area/syndicate_mothership)
 "ku" = (
 /obj/machinery/door/window/classic/normal{
+	dir = 1;
 	name = "cell door";
-	req_access_txt = "150";
-	dir = 1
+	req_access_txt = "150"
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/syndicate_mothership)
@@ -3730,8 +3718,8 @@
 /area/centcom220/park)
 "ll" = (
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkbluecornersalt";
-	dir = 4
+	dir = 4;
+	icon_state = "darkbluecornersalt"
 	},
 /area/centcom220/admin1)
 "lm" = (
@@ -3740,19 +3728,19 @@
 /area/syndicate_mothership/jail)
 "ln" = (
 /obj/effect/overlay/coconut{
-	pixel_y = -4;
-	pixel_x = -4
+	pixel_x = -4;
+	pixel_y = -4
 	},
 /obj/structure/flora/tree/palm{
-	pixel_y = 8;
-	pixel_x = 8
+	pixel_x = 8;
+	pixel_y = 8
 	},
 /obj/item/stock_parts/cell/infinite{
 	desc = "Интересная батарейка золотого цвета, главный вопрос который вас терзает - а что она делает в космосе? \n Жаль что контакты окислились.";
+	initialized = 1;
 	name = "Батарейка в космосе?";
-	pixel_y = 7;
 	pixel_x = 2;
-	initialized = 1
+	pixel_y = 7
 	},
 /turf/simulated/floor/beach/away/sand,
 /area/centcom220/evac)
@@ -3934,8 +3922,8 @@
 /area/shuttle/administration)
 "lJ" = (
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkbluealtstrip";
-	dir = 4
+	dir = 4;
+	icon_state = "darkbluealtstrip"
 	},
 /area/centcom220/admin1)
 "lK" = (
@@ -3947,8 +3935,8 @@
 "lM" = (
 /obj/machinery/cryopod/offstation,
 /obj/machinery/computer/cryopod{
-	pixel_y = -32;
-	dir = 1
+	dir = 1;
+	pixel_y = -32
 	},
 /turf/simulated/floor/wood/fancy/oak,
 /area/centcom220/general)
@@ -4027,8 +4015,8 @@
 /area/centcom220/bar)
 "md" = (
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkyellowalt";
-	dir = 6
+	dir = 6;
+	icon_state = "darkyellowalt"
 	},
 /area/centcom220/supply)
 "mf" = (
@@ -4118,23 +4106,23 @@
 /area/syndicate_mothership/jail)
 "ms" = (
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkyellowcornersalt";
-	dir = 4
+	dir = 4;
+	icon_state = "darkyellowcornersalt"
 	},
 /area/centcom220/supply)
 "mt" = (
 /obj/structure/table,
 /obj/item/clothing/accessory/medal/silver{
-	pixel_y = 10;
-	pixel_x = -8
+	pixel_x = -8;
+	pixel_y = 10
 	},
 /obj/item/clothing/accessory/medal/silver{
-	pixel_y = 10;
-	pixel_x = -8
+	pixel_x = -8;
+	pixel_y = 10
 	},
 /obj/item/clothing/accessory/medal/silver{
-	pixel_y = 10;
-	pixel_x = -8
+	pixel_x = -8;
+	pixel_y = 10
 	},
 /obj/item/clothing/accessory/medal/silver/leadership{
 	pixel_y = 10
@@ -4146,8 +4134,8 @@
 	pixel_y = 10
 	},
 /obj/item/clothing/accessory/medal/silver/valor{
-	pixel_y = 10;
-	pixel_x = 8
+	pixel_x = 8;
+	pixel_y = 10
 	},
 /obj/effect/turf_decal/stripes/white/full{
 	color = "#b59959"
@@ -4212,15 +4200,15 @@
 	pixel_y = 4
 	},
 /obj/item/pen/multi{
-	pixel_y = 6;
-	pixel_x = 2
+	pixel_x = 2;
+	pixel_y = 6
 	},
 /turf/simulated/floor/carpet/green,
 /area/centcom220/general)
 "mx" = (
 /obj/structure/chair/comfy{
-	dir = 1;
-	color = "orange"
+	color = "orange";
+	dir = 1
 	},
 /obj/machinery/light/spot,
 /turf/simulated/floor/carpet/orange,
@@ -4354,12 +4342,12 @@
 "mS" = (
 /obj/structure/table/wood/fancy/black,
 /obj/item/storage/fancy/cigarettes/cigpack_robustgold{
-	pixel_y = 4;
-	pixel_x = 4
+	pixel_x = 4;
+	pixel_y = 4
 	},
 /obj/item/storage/box/matches{
-	pixel_y = -10;
-	pixel_x = 4
+	pixel_x = 4;
+	pixel_y = -10
 	},
 /turf/simulated/floor/carpet/red,
 /area/centcom220/bar)
@@ -4374,8 +4362,8 @@
 /area/syndicate_mothership)
 "mV" = (
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkbluealt";
-	dir = 8
+	dir = 8;
+	icon_state = "darkbluealt"
 	},
 /area/centcom220/admin1)
 "mW" = (
@@ -4423,8 +4411,8 @@
 /area/centcom220/evac)
 "nd" = (
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkbluealt";
-	dir = 5
+	dir = 5;
+	icon_state = "darkbluealt"
 	},
 /area/centcom220/admin1)
 "ne" = (
@@ -4454,8 +4442,8 @@
 /area/shuttle/specops)
 "ni" = (
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkyellowalt";
-	dir = 9
+	dir = 9;
+	icon_state = "darkyellowalt"
 	},
 /area/centcom220/supply)
 "nj" = (
@@ -4579,8 +4567,8 @@
 "nH" = (
 /obj/machinery/cryopod/offstation/right,
 /obj/machinery/computer/cryopod{
-	pixel_y = -32;
-	dir = 1
+	dir = 1;
+	pixel_y = -32
 	},
 /turf/simulated/floor/wood/fancy/oak,
 /area/centcom220/general)
@@ -4643,10 +4631,19 @@
 "nP" = (
 /obj/machinery/recharge_station/upgraded,
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkgreen";
-	dir = 8
+	dir = 8;
+	icon_state = "darkgreen"
 	},
 /area/centcom220/admin3)
+"nQ" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 8
+	},
+/obj/structure/window/plasmareinforced{
+	color = "#FF0000"
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/administration)
 "nR" = (
 /obj/machinery/computer/emergency_shuttle,
 /turf/simulated/floor/plasteel/dark,
@@ -4734,8 +4731,8 @@
 "ol" = (
 /obj/machinery/economy/vending/nta/green,
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkgreen";
-	dir = 1
+	dir = 1;
+	icon_state = "darkgreen"
 	},
 /area/centcom220/admin3)
 "on" = (
@@ -4765,8 +4762,8 @@
 "or" = (
 /obj/mecha/combat/marauder/loaded,
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkbrown";
-	dir = 1
+	dir = 1;
+	icon_state = "darkbrown"
 	},
 /area/centcom220/admin3)
 "os" = (
@@ -4791,15 +4788,15 @@
 	layer = 3
 	},
 /obj/machinery/door_control/no_emag{
-	name = "Blast Door Open";
 	id = "СС_BD_Interior_1";
+	name = "Blast Door Open";
 	pixel_x = -24;
 	req_one_access_txt = "101"
 	},
 /obj/machinery/door/airlock/centcom{
-	req_one_access_txt = "101";
+	id_tag = "CC_Interior_1";
 	name = "Зона ЦК";
-	id_tag = "CC_Interior_1"
+	req_one_access_txt = "101"
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom220/admin1)
@@ -4829,8 +4826,8 @@
 	pixel_y = 20
 	},
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "navyblue";
-	dir = 1
+	dir = 1;
+	icon_state = "navyblue"
 	},
 /area/centcom220/admin3)
 "oC" = (
@@ -4838,11 +4835,11 @@
 	pixel_y = -12
 	},
 /obj/item/flashlight/lantern{
-	on = 1;
-	pixel_y = 14;
-	pixel_x = 10;
+	anchored = 1;
 	light_color = "#FF9F40";
-	anchored = 1
+	on = 1;
+	pixel_x = 10;
+	pixel_y = 14
 	},
 /turf/simulated/floor/grass/jungle,
 /area/centcom220/park)
@@ -4896,8 +4893,8 @@
 /area/centcom220/evac)
 "oN" = (
 /obj/structure/chair/sofa/bench/left{
-	dir = 8;
-	cover_color = "#68452a"
+	cover_color = "#68452a";
+	dir = 8
 	},
 /turf/simulated/floor/wood,
 /area/centcom220/park)
@@ -4991,9 +4988,9 @@
 /area/centcom220/admin2)
 "oX" = (
 /obj/structure/statue/gold/ce{
-	pixel_y = 9;
+	anchored = 1;
 	layer = 4;
-	anchored = 1
+	pixel_y = 9
 	},
 /turf/simulated/floor/plasteel{
 	desc = "\"This is a plaque in honour of our comrades on the G4407 Stations. Hopefully TG4407 model can live up to your fame and fortune.\" Scratched in beneath that is a crude image of a meteor and a spaceman. The spaceman is laughing. The meteor is exploding.";
@@ -5003,8 +5000,8 @@
 /area/centcom220/park)
 "oY" = (
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkbluealt";
-	dir = 10
+	dir = 10;
+	icon_state = "darkbluealt"
 	},
 /area/shuttle/administration)
 "oZ" = (
@@ -5119,16 +5116,16 @@
 /obj/machinery/door/airlock/titanium,
 /obj/structure/fans/tiny,
 /obj/docking_port/stationary{
+	dir = 2;
 	dwidth = 3;
 	height = 8;
 	id = "backup_away";
 	name = "Backup Shuttle Dock";
-	width = 8;
-	dir = 2
+	width = 8
 	},
 /obj/docking_port/mobile/emergency/backup{
-	dwidth = 9;
-	dir = 2
+	dir = 2;
+	dwidth = 9
 	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/shuttle/escape)
@@ -5190,21 +5187,21 @@
 "py" = (
 /obj/structure/table/glass,
 /obj/item/folder{
-	pixel_y = 6;
-	pixel_x = 6
+	pixel_x = 6;
+	pixel_y = 6
 	},
 /obj/item/lighter/zippo/blue{
-	pixel_y = 6;
-	pixel_x = -6
+	pixel_x = -6;
+	pixel_y = 6
 	},
 /obj/item/folder/blue{
-	pixel_y = 3;
-	pixel_x = 3
+	pixel_x = 3;
+	pixel_y = 3
 	},
 /obj/item/folder/red,
 /obj/item/clothing/mask/cigarette/cigar/cohiba{
-	pixel_y = -10;
-	pixel_x = 8
+	pixel_x = 8;
+	pixel_y = -10
 	},
 /obj/machinery/newscaster{
 	dir = 8;
@@ -5235,8 +5232,8 @@
 	color = "#996633"
 	},
 /obj/item/paper_bin/nanotrasen{
-	pixel_y = 4;
-	pixel_x = 4
+	pixel_x = 4;
+	pixel_y = 4
 	},
 /obj/item/pen/multi/gold{
 	pixel_x = -2
@@ -5275,8 +5272,8 @@
 "pH" = (
 /obj/structure/table/wood,
 /obj/item/candle/eternal/wizard{
-	pixel_y = 5;
-	pixel_x = -7
+	pixel_x = -7;
+	pixel_y = 5
 	},
 /turf/simulated/floor/carpet/black,
 /area/wizard_station)
@@ -5320,34 +5317,34 @@
 "pN" = (
 /obj/structure/table/wood/fancy/black,
 /obj/item/reagent_containers/food/drinks/cans/beer{
-	pixel_y = 10;
+	initialized = 1;
 	pixel_x = -14;
-	initialized = 1
+	pixel_y = 10
 	},
 /obj/item/reagent_containers/food/drinks/cans/beer{
-	pixel_y = 10;
+	initialized = 1;
 	pixel_x = 6;
-	initialized = 1
+	pixel_y = 10
 	},
 /obj/item/reagent_containers/food/drinks/cans/beer{
-	pixel_y = 4;
+	initialized = 1;
 	pixel_x = 6;
-	initialized = 1
+	pixel_y = 4
 	},
 /obj/item/reagent_containers/food/drinks/cans/beer{
-	pixel_y = 10;
+	initialized = 1;
 	pixel_x = -4;
-	initialized = 1
+	pixel_y = 10
 	},
 /obj/item/reagent_containers/food/drinks/cans/beer{
-	pixel_y = 4;
+	initialized = 1;
 	pixel_x = -4;
-	initialized = 1
+	pixel_y = 4
 	},
 /obj/item/reagent_containers/food/drinks/cans/beer{
-	pixel_y = 4;
+	initialized = 1;
 	pixel_x = -14;
-	initialized = 1
+	pixel_y = 4
 	},
 /turf/simulated/floor/carpet/red,
 /area/centcom220/bar)
@@ -5452,10 +5449,10 @@
 /area/centcom220/bar)
 "qf" = (
 /obj/machinery/door/airlock/external{
+	id_tag = "s_docking_airlock";
 	name = "Шаттл доставки";
 	opacity = 0;
-	req_one_access_txt = "106";
-	id_tag = "s_docking_airlock"
+	req_one_access_txt = "106"
 	},
 /obj/structure/fans/tiny,
 /turf/simulated/floor/plating,
@@ -5531,15 +5528,15 @@
 	pixel_y = 4
 	},
 /obj/machinery/door_control{
-	name = "Оружейная - Уровень 4";
-	req_one_access_txt = "114";
+	color = "#ffbf80";
 	id = "CC_Armory_Epsilon";
+	name = "Оружейная - Уровень 4";
 	pixel_y = 24;
-	color = "#ffbf80"
+	req_one_access_txt = "114"
 	},
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "navyblue";
-	dir = 5
+	dir = 5;
+	icon_state = "navyblue"
 	},
 /area/centcom220/admin3)
 "qs" = (
@@ -5572,8 +5569,8 @@
 /area/centcom220/park)
 "qy" = (
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkbluealtstrip";
-	dir = 8
+	dir = 8;
+	icon_state = "darkbluealtstrip"
 	},
 /area/centcom220/admin3)
 "qz" = (
@@ -5604,8 +5601,8 @@
 /obj/item/kitchen/knife/butcher,
 /obj/structure/table/reinforced,
 /obj/item/kitchen/knife/butcher/meatcleaver{
-	pixel_y = 4;
-	pixel_x = 2
+	pixel_x = 2;
+	pixel_y = 4
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "cafeteria"
@@ -5728,8 +5725,8 @@
 "qW" = (
 /obj/mecha/combat/gygax/dark/loaded,
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkbrown";
-	dir = 9
+	dir = 9;
+	icon_state = "darkbrown"
 	},
 /area/centcom220/admin3)
 "qX" = (
@@ -5738,14 +5735,14 @@
 /area/centcom220/general)
 "qY" = (
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "navyblue";
-	dir = 8
+	dir = 8;
+	icon_state = "navyblue"
 	},
 /area/centcom220/admin3)
 "qZ" = (
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkbluecornersalt";
-	dir = 4
+	dir = 4;
+	icon_state = "darkbluecornersalt"
 	},
 /area/centcom220/admin3)
 "ra" = (
@@ -5798,8 +5795,8 @@
 	},
 /obj/item/clothing/accessory/holster,
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "navyblue";
-	dir = 9
+	dir = 9;
+	icon_state = "navyblue"
 	},
 /area/centcom220/admin3)
 "rg" = (
@@ -5855,8 +5852,8 @@
 /area/centcom220/general)
 "rq" = (
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkblue";
-	dir = 8
+	dir = 8;
+	icon_state = "darkblue"
 	},
 /area/centcom220/admin3)
 "rr" = (
@@ -5868,8 +5865,8 @@
 /area/centcom220/evac)
 "rt" = (
 /obj/structure/chair/sofa/bench{
-	layer = 3.1;
-	cover_color = "#68452a"
+	cover_color = "#68452a";
+	layer = 3.1
 	},
 /turf/simulated/floor/wood,
 /area/centcom220/park)
@@ -5905,8 +5902,8 @@
 /area/centcom220/evac)
 "rz" = (
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkredalt";
-	dir = 1
+	dir = 1;
+	icon_state = "darkredalt"
 	},
 /area/centcom220/jail)
 "rA" = (
@@ -6070,9 +6067,9 @@
 /area/syndicate_mothership)
 "sc" = (
 /obj/machinery/door/window{
+	dir = 4;
 	name = "Uplink Management Control";
-	req_access_txt = "151";
-	dir = 4
+	req_access_txt = "151"
 	},
 /turf/simulated/floor/wood,
 /area/syndicate_mothership)
@@ -6101,9 +6098,9 @@
 /area/shuttle/assault_pod)
 "si" = (
 /obj/machinery/door/window{
+	dir = 4;
 	name = "Equipment Room";
-	req_access_txt = "150";
-	dir = 4
+	req_access_txt = "150"
 	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate)
@@ -6131,8 +6128,8 @@
 	dir = 8
 	},
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "navyblue";
-	dir = 8
+	dir = 8;
+	icon_state = "navyblue"
 	},
 /area/centcom220/admin3)
 "sn" = (
@@ -6146,12 +6143,12 @@
 "sp" = (
 /obj/structure/table,
 /obj/item/paper_bin/nanotrasen{
-	pixel_y = 4;
-	pixel_x = -4
+	pixel_x = -4;
+	pixel_y = 4
 	},
 /obj/item/pen/multi/fountain{
-	pixel_y = 3;
-	pixel_x = 4
+	pixel_x = 4;
+	pixel_y = 3
 	},
 /turf/simulated/floor/wood,
 /area/centcom220/admin1)
@@ -6166,28 +6163,28 @@
 /area/shuttle/trade/sol)
 "sr" = (
 /obj/structure/closet/crate/secure/bin{
-	color = "#996633";
-	anchored = 1
+	anchored = 1;
+	color = "#996633"
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom220/admin2)
 "ss" = (
 /obj/structure/table,
 /obj/item/beach_ball/holoball{
-	pixel_y = 6;
-	pixel_x = -6
+	pixel_x = -6;
+	pixel_y = 6
 	},
 /obj/item/beach_ball/holoball{
-	pixel_y = 6;
-	pixel_x = 6
+	pixel_x = 6;
+	pixel_y = 6
 	},
 /obj/item/beach_ball/holoball{
-	pixel_y = -1;
-	pixel_x = 6
+	pixel_x = 6;
+	pixel_y = -1
 	},
 /obj/item/beach_ball/holoball{
-	pixel_y = -1;
-	pixel_x = -6
+	pixel_x = -6;
+	pixel_y = -1
 	},
 /turf/simulated/floor/wood/fancy/light,
 /area/centcom220/evac)
@@ -6255,10 +6252,10 @@
 "sF" = (
 /obj/machinery/door/window{
 	base_state = "right";
+	dir = 4;
 	icon_state = "right";
 	name = "Equipment Room";
-	req_access_txt = "150";
-	dir = 4
+	req_access_txt = "150"
 	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate)
@@ -6315,24 +6312,24 @@
 "sP" = (
 /obj/structure/table/wood/fancy/black,
 /obj/item/reagent_containers/food/drinks/cans/beer{
-	pixel_y = 10;
+	initialized = 1;
 	pixel_x = 8;
-	initialized = 1
+	pixel_y = 10
 	},
 /obj/item/reagent_containers/food/drinks/cans/beer{
-	pixel_y = 4;
+	initialized = 1;
 	pixel_x = 8;
-	initialized = 1
+	pixel_y = 4
 	},
 /obj/item/reagent_containers/food/drinks/cans/beer{
-	pixel_y = 10;
+	initialized = 1;
 	pixel_x = -2;
-	initialized = 1
+	pixel_y = 10
 	},
 /obj/item/reagent_containers/food/drinks/cans/beer{
-	pixel_y = 4;
+	initialized = 1;
 	pixel_x = -2;
-	initialized = 1
+	pixel_y = 4
 	},
 /turf/simulated/floor/carpet/red,
 /area/centcom220/bar)
@@ -6384,8 +6381,8 @@
 "sY" = (
 /obj/item/flag/nt,
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkgreen";
-	dir = 9
+	dir = 9;
+	icon_state = "darkgreen"
 	},
 /area/centcom220/admin3)
 "sZ" = (
@@ -6581,9 +6578,9 @@
 /area/shuttle/trade/sol)
 "tN" = (
 /obj/structure/statue/gold/rd{
-	pixel_y = 9;
+	anchored = 1;
 	layer = 4;
-	anchored = 1
+	pixel_y = 9
 	},
 /turf/simulated/floor/plasteel{
 	desc = "\"This is a plaque in honour of our comrades on the G4407 Stations. Hopefully TG4407 model can live up to your fame and fortune.\" Scratched in beneath that is a crude image of a meteor and a spaceman. The spaceman is laughing. The meteor is exploding.";
@@ -6593,16 +6590,16 @@
 /area/centcom220/park)
 "tO" = (
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
-	dir = 1;
-	autolink_id = "syndishuttle_vent"
+	autolink_id = "syndishuttle_vent";
+	dir = 1
 	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate)
 "tP" = (
 /obj/machinery/door/window{
+	dir = 4;
 	name = "Infirmary";
-	req_access_txt = "150";
-	dir = 4
+	req_access_txt = "150"
 	},
 /obj/machinery/light/spot{
 	dir = 1
@@ -6623,9 +6620,9 @@
 /area/centcom220/admin1)
 "tT" = (
 /obj/machinery/door/window/classic/reversed{
+	dir = 8;
 	name = "Tool Storage";
-	req_access_txt = "150";
-	dir = 8
+	req_access_txt = "150"
 	},
 /obj/machinery/light/spot{
 	dir = 1
@@ -6690,10 +6687,10 @@
 "ub" = (
 /obj/machinery/door/window{
 	base_state = "right";
+	dir = 4;
 	icon_state = "right";
 	name = "Infirmary";
-	req_access_txt = "150";
-	dir = 4
+	req_access_txt = "150"
 	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate)
@@ -6821,9 +6818,9 @@
 /area/shuttle/syndicate)
 "us" = (
 /obj/machinery/door/airlock/external{
+	id_tag = "admin_away";
 	name = "Велосипед";
-	opacity = 0;
-	id_tag = "admin_away"
+	opacity = 0
 	},
 /obj/structure/fans/tiny,
 /turf/simulated/floor/plasteel/dark,
@@ -6855,8 +6852,8 @@
 	pixel_y = 5
 	},
 /obj/item/lighter/zippo/blue{
-	pixel_y = 6;
-	pixel_x = -12
+	pixel_x = -12;
+	pixel_y = 6
 	},
 /turf/simulated/floor/wood/fancy/cherry,
 /area/centcom220/admin2)
@@ -7038,35 +7035,35 @@
 "uX" = (
 /obj/structure/table/reinforced,
 /obj/item/shield/riot{
-	pixel_y = 3;
-	pixel_x = -6
+	pixel_x = -6;
+	pixel_y = 3
 	},
 /obj/item/shield/riot{
-	pixel_y = 3;
-	pixel_x = 6
+	pixel_x = 6;
+	pixel_y = 3
 	},
 /obj/item/shield/riot{
-	pixel_y = 3;
-	pixel_x = -6
+	pixel_x = -6;
+	pixel_y = 3
 	},
 /obj/item/shield/riot{
-	pixel_y = 3;
-	pixel_x = -6
+	pixel_x = -6;
+	pixel_y = 3
 	},
 /obj/item/shield/riot{
-	pixel_y = 3;
-	pixel_x = 6
+	pixel_x = 6;
+	pixel_y = 3
 	},
 /obj/item/shield/riot{
-	pixel_y = 3;
-	pixel_x = 6
+	pixel_x = 6;
+	pixel_y = 3
 	},
 /obj/machinery/light/spot{
 	dir = 8
 	},
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkgreen";
-	dir = 8
+	dir = 8;
+	icon_state = "darkgreen"
 	},
 /area/centcom220/admin3)
 "uY" = (
@@ -7079,12 +7076,6 @@
 /obj/structure/statue/uranium/nuke,
 /turf/simulated/floor/plating/asteroid/snow/airless,
 /area/syndicate_mothership)
-"va" = (
-/turf/simulated/floor/plasteel{
-	icon_state = "neutralcorner";
-	dir = 8
-	},
-/area/centcom220/evac)
 "vb" = (
 /obj/effect/spawner/lootdrop/trade_sol/eng,
 /obj/structure/closet,
@@ -7227,9 +7218,9 @@
 /area/trader_station/sol)
 "vw" = (
 /obj/machinery/access_button{
-	pixel_y = -22;
+	autolink_id = "syndijail_btn_ext";
 	pixel_x = 8;
-	autolink_id = "syndijail_btn_ext"
+	pixel_y = -22
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/syndicate_mothership)
@@ -7281,35 +7272,35 @@
 /area/trader_station/sol)
 "vE" = (
 /obj/machinery/door_control/no_emag{
+	id = "СС_Jail_1";
 	name = "Камера 1";
 	pixel_x = 24;
-	pixel_y = 6;
-	id = "СС_Jail_1"
+	pixel_y = 6
 	},
 /obj/machinery/door_control/no_emag{
+	id = "СС_Jail_2";
 	name = "Камера 2";
 	pixel_x = 24;
-	pixel_y = -6;
-	id = "СС_Jail_2"
+	pixel_y = -6
 	},
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkredalt";
-	dir = 4
+	dir = 4;
+	icon_state = "darkredalt"
 	},
 /area/centcom220/jail)
 "vF" = (
 /obj/machinery/door/airlock/centcom{
-	req_one_access_txt = "101";
+	id_tag = "CC_Exterior_2";
 	name = "Зона ЦК";
-	id_tag = "CC_Exterior_2"
+	req_one_access_txt = "101"
 	},
 /obj/machinery/door/poddoor/impassable{
 	id_tag = "СС_BD_Exterior_2";
 	layer = 3
 	},
 /obj/machinery/door_control/no_emag{
-	name = "Blast Door Open";
 	id = "СС_BD_Exterior_2";
+	name = "Blast Door Open";
 	pixel_x = -24;
 	req_one_access_txt = "101"
 	},
@@ -7325,8 +7316,8 @@
 /area/centcom220/admin1)
 "vI" = (
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkbluealtstrip";
-	dir = 1
+	dir = 1;
+	icon_state = "darkbluealtstrip"
 	},
 /area/centcom220/admin1)
 "vK" = (
@@ -7359,8 +7350,8 @@
 /area/centcom220/evac)
 "vR" = (
 /obj/structure/statue/ell_good{
-	pixel_y = 8;
-	layer = 4
+	layer = 4;
+	pixel_y = 8
 	},
 /turf/simulated/floor/plasteel{
 	desc = "\"This is a plaque in honour of our comrades on the G4407 Stations. Hopefully TG4407 model can live up to your fame and fortune.\" Scratched in beneath that is a crude image of a meteor and a spaceman. The spaceman is laughing. The meteor is exploding.";
@@ -7377,12 +7368,12 @@
 	pixel_y = 4
 	},
 /obj/item/pen/multi{
-	pixel_y = 6;
-	pixel_x = -2
+	pixel_x = -2;
+	pixel_y = 6
 	},
 /obj/item/clipboard{
-	pixel_y = 24;
-	pixel_x = 3
+	pixel_x = 3;
+	pixel_y = 24
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "grimy"
@@ -7400,8 +7391,8 @@
 /area/centcom220/park)
 "vW" = (
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkbluealt";
-	dir = 10
+	dir = 10;
+	icon_state = "darkbluealt"
 	},
 /area/centcom220/admin1)
 "vX" = (
@@ -7511,8 +7502,8 @@
 /area/trader_station/sol)
 "wo" = (
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkbluealt";
-	dir = 5
+	dir = 5;
+	icon_state = "darkbluealt"
 	},
 /area/centcom220/admin3)
 "wp" = (
@@ -7628,10 +7619,10 @@
 	dir = 1
 	},
 /obj/item/candle/eternal{
-	start_lit = 1;
-	pixel_y = 17;
+	layer = 4;
 	pixel_x = -12;
-	layer = 4
+	pixel_y = 17;
+	start_lit = 1
 	},
 /turf/simulated/floor/carpet,
 /area/centcom220/evac)
@@ -7656,8 +7647,8 @@
 /area/centcom220/general)
 "wN" = (
 /obj/structure/chair/sofa/bench/left{
-	dir = 1;
-	cover_color = "#68452a"
+	cover_color = "#68452a";
+	dir = 1
 	},
 /turf/simulated/floor/wood,
 /area/centcom220/park)
@@ -7667,14 +7658,14 @@
 	id = "QMLoad2"
 	},
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkyellowalt";
-	dir = 1
+	dir = 1;
+	icon_state = "darkyellowalt"
 	},
 /area/centcom220/supply)
 "wP" = (
 /obj/structure/statue/elwycco{
-	pixel_y = 9;
-	layer = 4
+	layer = 4;
+	pixel_y = 9
 	},
 /turf/simulated/floor/plasteel{
 	desc = "\"This is a plaque in honour of our comrades on the G4407 Stations. Hopefully TG4407 model can live up to your fame and fortune.\" Scratched in beneath that is a crude image of a meteor and a spaceman. The spaceman is laughing. The meteor is exploding.";
@@ -7693,9 +7684,9 @@
 	color = "#996633"
 	},
 /obj/item/flashlight/lamp/green/off{
-	pixel_y = 12;
+	layer = 3.1;
 	pixel_x = -4;
-	layer = 3.1
+	pixel_y = 12
 	},
 /turf/simulated/floor/carpet,
 /area/centcom220/general)
@@ -7721,8 +7712,8 @@
 /area/centcom220/bar)
 "wW" = (
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkbluealt";
-	dir = 9
+	dir = 9;
+	icon_state = "darkbluealt"
 	},
 /area/centcom220/admin2)
 "wX" = (
@@ -7759,10 +7750,10 @@
 	dir = 1
 	},
 /obj/item/candle/eternal{
-	start_lit = 1;
-	pixel_y = 17;
+	layer = 4;
 	pixel_x = 13;
-	layer = 4
+	pixel_y = 17;
+	start_lit = 1
 	},
 /turf/simulated/floor/carpet,
 /area/centcom220/evac)
@@ -7779,15 +7770,15 @@
 	layer = 3
 	},
 /obj/machinery/door_control/no_emag{
-	name = "Blast Door Open";
 	id = "СС_BD_Exterior_1";
+	name = "Blast Door Open";
 	pixel_x = -24;
 	req_one_access_txt = "101"
 	},
 /obj/machinery/door/airlock/centcom{
-	req_one_access_txt = "101";
+	id_tag = "CC_Exterior_1";
 	name = "Зона ЦК";
-	id_tag = "CC_Exterior_1"
+	req_one_access_txt = "101"
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom220/admin1)
@@ -7822,8 +7813,8 @@
 	pixel_y = 14
 	},
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "navyblue";
-	dir = 9
+	dir = 9;
+	icon_state = "navyblue"
 	},
 /area/centcom220/admin3)
 "xl" = (
@@ -7845,8 +7836,8 @@
 /area/centcom220/evac)
 "xo" = (
 /obj/machinery/door/airlock/centcom{
-	req_one_access_txt = "101";
-	name = "Блокпост"
+	name = "Блокпост";
+	req_one_access_txt = "101"
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom220/admin1)
@@ -7895,11 +7886,23 @@
 	pixel_y = 3
 	},
 /obj/item/folder/red{
-	pixel_y = 6;
-	pixel_x = 4
+	pixel_x = 4;
+	pixel_y = 6
 	},
 /turf/simulated/floor/carpet/black,
 /area/centcom220/admin1)
+"xu" = (
+/obj/structure/table,
+/obj/item/paper_bin/nanotrasen{
+	pixel_x = -4;
+	pixel_y = 4
+	},
+/obj/item/pen/multi/fountain{
+	pixel_x = 4;
+	pixel_y = 3
+	},
+/turf/simulated/floor/carpet/royalblack,
+/area/shuttle/administration)
 "xw" = (
 /obj/structure/flora/ausbushes/brflowers,
 /obj/structure/flora/ausbushes/ywflowers,
@@ -7990,8 +7993,8 @@
 	dir = 8
 	},
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkbluealt";
-	dir = 8
+	dir = 8;
+	icon_state = "darkbluealt"
 	},
 /area/centcom220/admin1)
 "xO" = (
@@ -8042,15 +8045,15 @@
 /area/centcom220/general)
 "xT" = (
 /obj/machinery/door_control{
-	name = "Оружейная - Уровень 3";
-	req_one_access_txt = "114";
-	id = "CC_Armory_Red";
 	color = "#ff8080";
-	pixel_x = 24
+	id = "CC_Armory_Red";
+	name = "Оружейная - Уровень 3";
+	pixel_x = 24;
+	req_one_access_txt = "114"
 	},
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "navyblue";
-	dir = 5
+	dir = 5;
+	icon_state = "navyblue"
 	},
 /area/centcom220/admin3)
 "xU" = (
@@ -8069,8 +8072,8 @@
 /area/centcom220/admin1)
 "xX" = (
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkyellowalt";
-	dir = 1
+	dir = 1;
+	icon_state = "darkyellowalt"
 	},
 /area/centcom220/supply)
 "xY" = (
@@ -8081,8 +8084,8 @@
 /area/centcom220/evac)
 "xZ" = (
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkbluecornersalt";
-	dir = 1
+	dir = 1;
+	icon_state = "darkbluecornersalt"
 	},
 /area/centcom220/admin3)
 "ya" = (
@@ -8106,8 +8109,8 @@
 /area/centcom220/admin2)
 "yd" = (
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkyellowaltstrip";
-	dir = 1
+	dir = 1;
+	icon_state = "darkyellowaltstrip"
 	},
 /area/centcom220/supply)
 "ye" = (
@@ -8165,15 +8168,15 @@
 	},
 /obj/item/clothing/accessory/holster,
 /obj/machinery/door_control{
-	name = "Оружейная - Уровень 1";
-	req_one_access_txt = "114";
+	color = "#80ff80";
 	id = "CC_Armory_Green";
+	name = "Оружейная - Уровень 1";
 	pixel_y = 24;
-	color = "#80ff80"
+	req_one_access_txt = "114"
 	},
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "navyblue";
-	dir = 5
+	dir = 5;
+	icon_state = "navyblue"
 	},
 /area/centcom220/admin3)
 "yl" = (
@@ -8257,12 +8260,12 @@
 	color = "#996633"
 	},
 /obj/item/folder/yellow{
-	pixel_y = 9;
-	pixel_x = -6
+	pixel_x = -6;
+	pixel_y = 9
 	},
 /obj/item/taperecorder{
-	pixel_y = 4;
-	pixel_x = 6
+	pixel_x = 6;
+	pixel_y = 4
 	},
 /obj/machinery/light/spot{
 	dir = 4
@@ -8279,8 +8282,8 @@
 /area/centcom220/bar)
 "yC" = (
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkyellowaltstrip";
-	dir = 4
+	dir = 4;
+	icon_state = "darkyellowaltstrip"
 	},
 /area/centcom220/supply)
 "yD" = (
@@ -8298,27 +8301,27 @@
 	color = "#996633"
 	},
 /obj/item/candle/eternal{
-	start_lit = 1;
+	pixel_x = 1;
 	pixel_y = 4;
-	pixel_x = 1
+	start_lit = 1
 	},
 /turf/simulated/floor/carpet/black,
 /area/centcom220/general)
 "yG" = (
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "navyblue";
-	dir = 4
+	dir = 4;
+	icon_state = "navyblue"
 	},
 /area/centcom220/admin3)
 "yH" = (
 /obj/structure/table,
 /obj/item/reagent_containers/food/drinks/cans/beer{
-	pixel_y = 4;
-	pixel_x = 6
+	pixel_x = 6;
+	pixel_y = 4
 	},
 /obj/item/reagent_containers/food/drinks/cans/beer{
-	pixel_y = 4;
-	pixel_x = -6
+	pixel_x = -6;
+	pixel_y = 4
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/shuttle/administration)
@@ -8355,8 +8358,8 @@
 	dir = 4
 	},
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "navyblue";
-	dir = 4
+	dir = 4;
+	icon_state = "navyblue"
 	},
 /area/centcom220/admin3)
 "yN" = (
@@ -8436,8 +8439,8 @@
 /area/centcom220/supply)
 "yX" = (
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkbluecornersalt";
-	dir = 8
+	dir = 8;
+	icon_state = "darkbluecornersalt"
 	},
 /area/centcom220/admin1)
 "yZ" = (
@@ -8552,8 +8555,8 @@
 /area/centcom220/admin1)
 "zk" = (
 /obj/machinery/sleeper{
-	pixel_x = 3;
-	dir = 4
+	dir = 4;
+	pixel_x = 3
 	},
 /turf/simulated/floor/plasteel{
 	dir = 9;
@@ -8678,8 +8681,8 @@
 	color = "#996633"
 	},
 /obj/item/flashlight/lamp/green{
-	pixel_y = 12;
-	pixel_x = 4
+	pixel_x = 4;
+	pixel_y = 12
 	},
 /obj/machinery/button/windowtint{
 	id = "CC_Conf";
@@ -8701,15 +8704,15 @@
 /area/centcom220/bar)
 "zG" = (
 /obj/machinery/door_control{
-	name = "Оружейная - Уровень 2";
-	req_one_access_txt = "114";
-	id = "CC_Armory_Blue";
 	color = "#8080ff";
-	pixel_x = -24
+	id = "CC_Armory_Blue";
+	name = "Оружейная - Уровень 2";
+	pixel_x = -24;
+	req_one_access_txt = "114"
 	},
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "navyblue";
-	dir = 9
+	dir = 9;
+	icon_state = "navyblue"
 	},
 /area/centcom220/admin3)
 "zJ" = (
@@ -8740,8 +8743,8 @@
 /area/centcom220/admin2)
 "zN" = (
 /obj/machinery/door/window/classic/normal{
-	name = "Индейки";
-	dir = 8
+	dir = 8;
+	name = "Индейки"
 	},
 /obj/effect/mapping_helpers/airlock/windoor/access/any/service/hydroponics{
 	dir = 8
@@ -8769,8 +8772,8 @@
 /area/centcom220/general)
 "zQ" = (
 /obj/structure/statue/mooniverse{
-	pixel_y = 8;
-	layer = 4
+	layer = 4;
+	pixel_y = 8
 	},
 /turf/simulated/floor/plasteel{
 	desc = "\"This is a plaque in honour of our comrades on the G4407 Stations. Hopefully TG4407 model can live up to your fame and fortune.\" Scratched in beneath that is a crude image of a meteor and a spaceman. The spaceman is laughing. The meteor is exploding.";
@@ -8803,8 +8806,8 @@
 	dir = 1
 	},
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkbluealt";
-	dir = 1
+	dir = 1;
+	icon_state = "darkbluealt"
 	},
 /area/centcom220/admin2)
 "zU" = (
@@ -8820,8 +8823,8 @@
 /area/centcom220/bar)
 "zY" = (
 /obj/structure/closet/crate/secure/bin{
-	color = "#00eafa";
-	anchored = 1
+	anchored = 1;
+	color = "#00eafa"
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom220/evac)
@@ -8833,8 +8836,8 @@
 /obj/machinery/door/airlock/external{
 	aiControlDisabled = 1;
 	hackProof = 1;
-	name = "Arrival Airlock";
-	locked = 1
+	locked = 1;
+	name = "Arrival Airlock"
 	},
 /obj/structure/fans/tiny,
 /turf/simulated/floor/plasteel/dark,
@@ -8913,8 +8916,8 @@
 /area/centcom220/admin1)
 "Am" = (
 /obj/structure/closet/crate/secure/bin{
-	color = "#996633";
-	anchored = 1
+	anchored = 1;
+	color = "#996633"
 	},
 /turf/simulated/floor/wood/fancy/cherry,
 /area/centcom220/bar)
@@ -9027,8 +9030,8 @@
 	pixel_y = 2
 	},
 /obj/item/kitchen/utensil/spoon{
-	pixel_y = 8;
-	pixel_x = 11
+	pixel_x = 11;
+	pixel_y = 8
 	},
 /turf/simulated/floor/carpet/black,
 /area/centcom220/admin2)
@@ -9079,8 +9082,8 @@
 	dir = 8
 	},
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkredalt";
-	dir = 8
+	dir = 8;
+	icon_state = "darkredalt"
 	},
 /area/centcom220/jail)
 "AK" = (
@@ -9106,8 +9109,8 @@
 /area/centcom220/evac)
 "AN" = (
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkyellowalt";
-	dir = 10
+	dir = 10;
+	icon_state = "darkyellowalt"
 	},
 /area/centcom220/supply)
 "AO" = (
@@ -9120,8 +9123,8 @@
 /area/centcom220/evac)
 "AP" = (
 /obj/effect/turf_decal/arrows/white{
-	dir = 8;
-	color = "#6697cc"
+	color = "#6697cc";
+	dir = 8
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom220/admin3)
@@ -9146,8 +9149,8 @@
 /area/centcom220/park)
 "AU" = (
 /obj/machinery/sleeper{
-	pixel_x = 3;
-	dir = 4
+	dir = 4;
+	pixel_x = 3
 	},
 /obj/machinery/light/spot{
 	dir = 8
@@ -9169,8 +9172,8 @@
 "AX" = (
 /obj/item/flag/nt,
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkgreen";
-	dir = 5
+	dir = 5;
+	icon_state = "darkgreen"
 	},
 /area/centcom220/admin3)
 "AY" = (
@@ -9250,57 +9253,57 @@
 "Bm" = (
 /obj/structure/table,
 /obj/machinery/door_control{
+	id = "CC_Exterior_2";
 	name = "Открыть выход";
 	normaldoorcontrol = 1;
-	pixel_y = 8;
 	pixel_x = -6;
-	req_one_access_txt = "101";
-	id = "CC_Exterior_2"
+	pixel_y = 8;
+	req_one_access_txt = "101"
 	},
 /obj/machinery/door_control/no_emag{
-	name = "Blast Door Open";
 	id = "СС_BD_Exterior_2";
+	name = "Blast Door Open";
 	pixel_x = 6;
 	pixel_y = 8;
 	req_one_access_txt = "101"
 	},
 /obj/machinery/door_control/no_emag{
-	name = "Blast Door Open";
 	id = "СС_BD_Interior_2";
+	name = "Blast Door Open";
 	pixel_x = 6;
 	pixel_y = -2;
 	req_one_access_txt = "101"
 	},
 /obj/machinery/door_control/no_emag{
-	name = "Blast Door Open";
 	id = "СС_BD_Interior_2";
+	name = "Blast Door Open";
 	pixel_x = -6;
-	req_one_access_txt = "101";
-	pixel_y = -2
+	pixel_y = -2;
+	req_one_access_txt = "101"
 	},
 /turf/simulated/floor/carpet/black,
 /area/centcom220/admin1)
 "Bn" = (
 /obj/structure/table/glass,
 /obj/item/paper_bin/nanotrasen{
-	pixel_y = 4;
-	pixel_x = 4
+	pixel_x = 4;
+	pixel_y = 4
 	},
 /obj/item/pen/multi/gold{
-	pixel_y = 3;
-	pixel_x = 6
+	pixel_x = 6;
+	pixel_y = 3
 	},
 /obj/item/stamp/denied{
-	pixel_y = 10;
-	pixel_x = -8
+	pixel_x = -8;
+	pixel_y = 10
 	},
 /obj/item/stamp/granted{
-	pixel_y = 4;
-	pixel_x = -8
+	pixel_x = -8;
+	pixel_y = 4
 	},
 /obj/item/stamp/centcom{
-	pixel_y = -2;
-	pixel_x = -8
+	pixel_x = -8;
+	pixel_y = -2
 	},
 /obj/machinery/newscaster{
 	dir = 1;
@@ -9317,8 +9320,8 @@
 /area/centcom220/general)
 "Bp" = (
 /obj/machinery/door/poddoor/shutters{
-	name = "Blue";
-	id_tag = "CC_Armory_Blue"
+	id_tag = "CC_Armory_Blue";
+	name = "Blue"
 	},
 /obj/effect/decal/warning_stripes/white/hollow,
 /turf/simulated/floor/plasteel/dark{
@@ -9345,8 +9348,8 @@
 /area/shuttle/supply)
 "Bu" = (
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkbluealtstrip";
-	dir = 8
+	dir = 8;
+	icon_state = "darkbluealtstrip"
 	},
 /area/centcom220/admin2)
 "Bv" = (
@@ -9414,8 +9417,8 @@
 /area/centcom220/admin2)
 "BD" = (
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkredalt";
-	dir = 6
+	dir = 6;
+	icon_state = "darkredalt"
 	},
 /area/centcom220/jail)
 "BE" = (
@@ -9442,15 +9445,15 @@
 /area/syndicate_mothership)
 "BH" = (
 /obj/machinery/door_control{
-	pixel_x = 24;
-	name = "Blast Door Control";
-	req_one_access_txt = "114";
 	color = "#ffbf80";
-	id = "CC_DeathSquad"
+	id = "CC_DeathSquad";
+	name = "Blast Door Control";
+	pixel_x = 24;
+	req_one_access_txt = "114"
 	},
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkbluealt";
-	dir = 4
+	dir = 4;
+	icon_state = "darkbluealt"
 	},
 /area/centcom220/admin3)
 "BI" = (
@@ -9516,8 +9519,8 @@
 /area/wizard_station)
 "BS" = (
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkyellowalt";
-	dir = 8
+	dir = 8;
+	icon_state = "darkyellowalt"
 	},
 /area/centcom220/supply)
 "BT" = (
@@ -9544,12 +9547,12 @@
 "BW" = (
 /obj/structure/flora/rock/jungle,
 /obj/item/flashlight/lantern{
-	on = 1;
-	pixel_y = 10;
-	pixel_x = -1;
+	anchored = 1;
 	layer = 5;
 	light_color = "#FF9F40";
-	anchored = 1
+	on = 1;
+	pixel_x = -1;
+	pixel_y = 10
 	},
 /turf/simulated/floor/grass/jungle,
 /area/centcom220/park)
@@ -9578,8 +9581,8 @@
 	pixel_y = 4
 	},
 /obj/item/pen/multi{
-	pixel_y = 6;
-	pixel_x = 2
+	pixel_x = 2;
+	pixel_y = 6
 	},
 /turf/simulated/floor/carpet/purple,
 /area/centcom220/general)
@@ -9616,8 +9619,8 @@
 /area/shuttle/administration)
 "Co" = (
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkred";
-	dir = 4
+	dir = 4;
+	icon_state = "darkred"
 	},
 /area/centcom220/admin3)
 "Cq" = (
@@ -9646,14 +9649,14 @@
 /area/centcom220/admin3)
 "Ct" = (
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkyellowaltstrip";
-	dir = 8
+	dir = 8;
+	icon_state = "darkyellowaltstrip"
 	},
 /area/centcom220/supply)
 "Cu" = (
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkbluealt";
-	dir = 1
+	dir = 1;
+	icon_state = "darkbluealt"
 	},
 /area/centcom220/admin3)
 "Cv" = (
@@ -9702,8 +9705,8 @@
 /area/centcom220/bar)
 "CD" = (
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkredalt";
-	dir = 10
+	dir = 10;
+	icon_state = "darkredalt"
 	},
 /area/centcom220/jail)
 "CF" = (
@@ -9711,9 +9714,9 @@
 	color = "#996633"
 	},
 /obj/item/flashlight/lamp/green/off{
-	pixel_y = 12;
+	layer = 3.1;
 	pixel_x = 4;
-	layer = 3.1
+	pixel_y = 12
 	},
 /turf/simulated/floor/carpet,
 /area/centcom220/general)
@@ -9746,12 +9749,12 @@
 "CM" = (
 /obj/structure/table/reinforced,
 /obj/item/reagent_containers/food/drinks/shaker{
-	pixel_y = 4;
-	pixel_x = 6
+	pixel_x = 6;
+	pixel_y = 4
 	},
 /obj/item/reagent_containers/food/drinks/shaker{
-	pixel_y = 4;
-	pixel_x = -6
+	pixel_x = -6;
+	pixel_y = 4
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom220/admin2)
@@ -9776,8 +9779,8 @@
 /area/centcom220/admin1)
 "CU" = (
 /obj/structure/chair/comfy/purp{
-	name = "wizard council throne";
-	dir = 1
+	dir = 1;
+	name = "wizard council throne"
 	},
 /turf/simulated/floor/carpet/red,
 /area/wizard_station)
@@ -9801,8 +9804,8 @@
 "CZ" = (
 /obj/machinery/recharge_station/upgraded,
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkgreen";
-	dir = 4
+	dir = 4;
+	icon_state = "darkgreen"
 	},
 /area/centcom220/admin3)
 "Da" = (
@@ -9855,11 +9858,11 @@
 	layer = 8.9
 	},
 /obj/item/flashlight/lantern{
-	on = 1;
-	pixel_y = 7;
-	pixel_x = -11;
+	anchored = 1;
 	light_color = "#FF9F40";
-	anchored = 1
+	on = 1;
+	pixel_x = -11;
+	pixel_y = 7
 	},
 /turf/simulated/floor/grass/jungle,
 /area/centcom220/park)
@@ -9869,8 +9872,8 @@
 /area/centcom220/bar)
 "Dk" = (
 /obj/structure/closet/crate/secure/bin{
-	color = "#996633";
-	anchored = 1
+	anchored = 1;
+	color = "#996633"
 	},
 /turf/simulated/floor/wood,
 /area/centcom220/park)
@@ -9907,8 +9910,8 @@
 /area/centcom220/evac)
 "Dr" = (
 /obj/machinery/sleeper{
-	pixel_x = 3;
-	dir = 4
+	dir = 4;
+	pixel_x = 3
 	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
@@ -9936,14 +9939,14 @@
 	pixel_y = 13
 	},
 /obj/machinery/door_control{
-	name = "Оружейная - Мехи";
-	req_one_access_txt = "114";
 	id = "CC_Armory_Mech";
-	pixel_y = 24
+	name = "Оружейная - Мехи";
+	pixel_y = 24;
+	req_one_access_txt = "114"
 	},
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "navyblue";
-	dir = 5
+	dir = 5;
+	icon_state = "navyblue"
 	},
 /area/centcom220/admin3)
 "Dx" = (
@@ -10008,8 +10011,8 @@
 /area/shuttle/gamma/space)
 "DM" = (
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkbluealt";
-	dir = 8
+	dir = 8;
+	icon_state = "darkbluealt"
 	},
 /area/centcom220/admin3)
 "DN" = (
@@ -10035,15 +10038,15 @@
 /area/centcom220/bar)
 "DQ" = (
 /obj/effect/turf_decal/arrows/white{
-	dir = 1;
-	color = "#6697cc"
+	color = "#6697cc";
+	dir = 1
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom220/admin3)
 "DR" = (
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkbluealtstrip";
-	dir = 8
+	dir = 8;
+	icon_state = "darkbluealtstrip"
 	},
 /area/centcom220/admin1)
 "DT" = (
@@ -10062,12 +10065,12 @@
 "DV" = (
 /obj/structure/table/glass,
 /obj/item/paper_bin/nanotrasen{
-	pixel_y = 4;
-	pixel_x = 6
+	pixel_x = 6;
+	pixel_y = 4
 	},
 /obj/item/pen/multi/fountain{
-	pixel_y = 3;
-	pixel_x = 4
+	pixel_x = 4;
+	pixel_y = 3
 	},
 /turf/simulated/floor/carpet/black,
 /area/centcom220/admin1)
@@ -10136,8 +10139,8 @@
 "Eg" = (
 /obj/structure/table/glass,
 /obj/item/flashlight/lamp/green{
-	pixel_y = 12;
-	pixel_x = -4
+	pixel_x = -4;
+	pixel_y = 12
 	},
 /turf/simulated/floor/carpet/black,
 /area/centcom220/admin1)
@@ -10146,8 +10149,8 @@
 	dir = 1
 	},
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkyellowalt";
-	dir = 1
+	dir = 1;
+	icon_state = "darkyellowalt"
 	},
 /area/centcom220/supply)
 "Ej" = (
@@ -10243,10 +10246,10 @@
 /area/shuttle/escape)
 "Ex" = (
 /obj/structure/statue/sandstone/venus{
+	anchored = 1;
 	dir = 8;
-	pixel_y = 8;
 	layer = 5;
-	anchored = 1
+	pixel_y = 8
 	},
 /turf/simulated/floor/plasteel{
 	desc = "\"This is a plaque in honour of our comrades on the G4407 Stations. Hopefully TG4407 model can live up to your fame and fortune.\" Scratched in beneath that is a crude image of a meteor and a spaceman. The spaceman is laughing. The meteor is exploding.";
@@ -10287,8 +10290,8 @@
 	dir = 1
 	},
 /turf/simulated/floor/beach/away/coastline{
-	water_overlay_image = null;
-	dir = 1
+	dir = 1;
+	water_overlay_image = null
 	},
 /area/centcom220/evac)
 "EE" = (
@@ -10335,8 +10338,8 @@
 /area/centcom220/evac)
 "EL" = (
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkbluealt";
-	dir = 9
+	dir = 9;
+	icon_state = "darkbluealt"
 	},
 /area/centcom220/admin3)
 "EN" = (
@@ -10365,25 +10368,25 @@
 /area/centcom220/general)
 "EQ" = (
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkbluealt";
-	dir = 1
+	dir = 1;
+	icon_state = "darkbluealt"
 	},
 /area/shuttle/administration)
 "ER" = (
 /obj/machinery/economy/vending/boozeomat,
 /obj/item/reagent_containers/food/drinks/bottle/cognac{
-	pixel_y = 23;
+	initialized = 1;
 	pixel_x = 9;
-	initialized = 1
+	pixel_y = 23
 	},
 /obj/item/reagent_containers/food/drinks/bottle/absinthe/premium{
-	pixel_y = 25;
+	initialized = 1;
 	pixel_x = -8;
-	initialized = 1
+	pixel_y = 25
 	},
 /obj/item/reagent_containers/food/drinks/bottle/whiskey{
-	pixel_y = 23;
-	initialized = 1
+	initialized = 1;
+	pixel_y = 23
 	},
 /turf/simulated/floor/carpet/red,
 /area/centcom220/bar)
@@ -10439,19 +10442,19 @@
 /area/centcom220/admin1)
 "Fa" = (
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkbluealtstrip";
-	dir = 1
+	dir = 1;
+	icon_state = "darkbluealtstrip"
 	},
 /area/centcom220/admin3)
 "Fb" = (
 /obj/structure/table/wood/fancy/black,
 /obj/item/storage/fancy/cigarettes/cigpack_shadyjims{
-	pixel_y = 4;
-	pixel_x = -4
+	pixel_x = -4;
+	pixel_y = 4
 	},
 /obj/item/lighter/zippo{
-	pixel_y = 4;
-	pixel_x = 10
+	pixel_x = 10;
+	pixel_y = 4
 	},
 /turf/simulated/floor/carpet/red,
 /area/centcom220/bar)
@@ -10552,8 +10555,8 @@
 /area/shuttle/escape)
 "Fp" = (
 /obj/structure/flora/tree/jungle{
-	pixel_y = 0;
-	pixel_x = -32
+	pixel_x = -32;
+	pixel_y = 0
 	},
 /obj/structure/flora/junglebush,
 /turf/simulated/floor/grass/jungle/no_creep,
@@ -10570,8 +10573,8 @@
 	},
 /obj/structure/flora/ausbushes/sunnybush,
 /turf/simulated/floor/beach/away/coastline{
-	water_overlay_image = null;
-	dir = 1
+	dir = 1;
+	water_overlay_image = null
 	},
 /area/centcom220/evac)
 "Fs" = (
@@ -10596,44 +10599,44 @@
 "Fx" = (
 /obj/structure/rack,
 /obj/item/ammo_casing/rocket{
-	pixel_y = 8;
-	pixel_x = -7
+	pixel_x = -7;
+	pixel_y = 8
 	},
 /obj/item/ammo_casing/rocket{
-	pixel_y = 4;
-	pixel_x = -7
+	pixel_x = -7;
+	pixel_y = 4
 	},
 /obj/item/ammo_casing/rocket{
-	pixel_y = 8;
-	pixel_x = -3
+	pixel_x = -3;
+	pixel_y = 8
 	},
 /obj/item/ammo_casing/rocket{
-	pixel_y = 8;
-	pixel_x = 1
+	pixel_x = 1;
+	pixel_y = 8
 	},
 /obj/item/ammo_casing/rocket{
-	pixel_y = 8;
-	pixel_x = 5
+	pixel_x = 5;
+	pixel_y = 8
 	},
 /obj/item/ammo_casing/rocket{
-	pixel_y = 8;
-	pixel_x = 9
+	pixel_x = 9;
+	pixel_y = 8
 	},
 /obj/item/ammo_casing/rocket{
-	pixel_y = 4;
-	pixel_x = 9
+	pixel_x = 9;
+	pixel_y = 4
 	},
 /obj/item/ammo_casing/rocket{
-	pixel_y = 4;
-	pixel_x = 5
+	pixel_x = 5;
+	pixel_y = 4
 	},
 /obj/item/ammo_casing/rocket{
-	pixel_y = 4;
-	pixel_x = 1
+	pixel_x = 1;
+	pixel_y = 4
 	},
 /obj/item/ammo_casing/rocket{
-	pixel_y = 4;
-	pixel_x = -3
+	pixel_x = -3;
+	pixel_y = 4
 	},
 /obj/effect/decal/warning_stripes/white{
 	color = "76643a"
@@ -10678,24 +10681,24 @@
 /obj/structure/table/glass,
 /obj/structure/window/reinforced,
 /obj/item/paper_bin/nanotrasen{
-	pixel_y = 4;
-	pixel_x = 4
+	pixel_x = 4;
+	pixel_y = 4
 	},
 /obj/item/pen/multi/gold{
-	pixel_y = 3;
-	pixel_x = 6
+	pixel_x = 6;
+	pixel_y = 3
 	},
 /obj/item/stamp/denied{
-	pixel_y = 10;
-	pixel_x = -8
+	pixel_x = -8;
+	pixel_y = 10
 	},
 /obj/item/stamp/granted{
-	pixel_y = 4;
-	pixel_x = -8
+	pixel_x = -8;
+	pixel_y = 4
 	},
 /obj/item/stamp/centcom{
-	pixel_y = -2;
-	pixel_x = -8
+	pixel_x = -8;
+	pixel_y = -2
 	},
 /turf/simulated/floor/carpet/black,
 /area/centcom220/admin2)
@@ -10729,8 +10732,8 @@
 /area/centcom220/bar)
 "FM" = (
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkbluecornersalt";
-	dir = 8
+	dir = 8;
+	icon_state = "darkbluecornersalt"
 	},
 /area/centcom220/admin3)
 "FN" = (
@@ -10780,8 +10783,8 @@
 "FX" = (
 /obj/machinery/door/window/reinforced/normal{
 	color = "#d70000";
-	req_access_txt = "104";
-	name = "Комната заключённых"
+	name = "Комната заключённых";
+	req_access_txt = "104"
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
@@ -10795,8 +10798,8 @@
 /obj/effect/decal/warning_stripes/red,
 /obj/machinery/door/poddoor/impassable{
 	id_tag = "CC_GammaShuttle";
-	name = "Гамма шаттл";
-	layer = 3
+	layer = 3;
+	name = "Гамма шаттл"
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom220/admin3)
@@ -10870,8 +10873,8 @@
 /area/centcom220/admin3)
 "Go" = (
 /obj/machinery/sleeper{
-	pixel_x = 3;
-	dir = 4
+	dir = 4;
+	pixel_x = 3
 	},
 /turf/simulated/floor/plasteel{
 	dir = 10;
@@ -10890,8 +10893,8 @@
 "Gu" = (
 /obj/structure/table/reinforced,
 /obj/item/paper_bin{
-	pixel_y = 3;
-	pixel_x = -3
+	pixel_x = -3;
+	pixel_y = 3
 	},
 /obj/item/pen{
 	pixel_x = 4;
@@ -10945,8 +10948,8 @@
 "GB" = (
 /obj/mecha/combat/gygax/dark/loaded,
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkbrown";
-	dir = 1
+	dir = 1;
+	icon_state = "darkbrown"
 	},
 /area/centcom220/admin3)
 "GC" = (
@@ -11041,12 +11044,12 @@
 	dir = 8
 	},
 /obj/machinery/photocopier{
-	pixel_y = -3;
-	pixel_x = 3
+	pixel_x = 3;
+	pixel_y = -3
 	},
 /obj/item/bee_briefcase{
-	pixel_y = -19;
-	pixel_x = 3
+	pixel_x = 3;
+	pixel_y = -19
 	},
 /turf/simulated/floor/wood/fancy/cherry,
 /area/centcom220/admin2)
@@ -11208,8 +11211,8 @@
 "Hw" = (
 /obj/machinery/door/poddoor/shutters{
 	dir = 8;
-	name = "Red";
-	id_tag = "CC_Armory_Red"
+	id_tag = "CC_Armory_Red";
+	name = "Red"
 	},
 /obj/effect/decal/warning_stripes/white/hollow,
 /turf/simulated/floor/plasteel/dark{
@@ -11229,18 +11232,18 @@
 /area/centcom220/admin3)
 "Hz" = (
 /obj/structure/flora/junglebush/large{
-	pixel_y = -7;
-	pixel_x = -15
+	pixel_x = -15;
+	pixel_y = -7
 	},
 /turf/simulated/floor/grass/jungle,
 /area/centcom220/park)
 "HA" = (
 /obj/structure/table/wood,
 /obj/item/flashlight/lantern{
-	on = 1;
+	anchored = 1;
 	layer = 5;
 	light_color = "#FF9F40";
-	anchored = 1;
+	on = 1;
 	pixel_y = 10
 	},
 /turf/simulated/floor/wood,
@@ -11264,11 +11267,11 @@
 /area/shuttle/gamma/space)
 "HC" = (
 /obj/machinery/door_control{
-	pixel_x = -24;
-	name = "Blast Door Control";
-	req_one_access_txt = "114";
 	color = "#ffbf80";
-	id = "CC_DeathSquad"
+	id = "CC_DeathSquad";
+	name = "Blast Door Control";
+	pixel_x = -24;
+	req_one_access_txt = "114"
 	},
 /obj/machinery/light/spot{
 	dir = 8
@@ -11382,15 +11385,15 @@
 	},
 /obj/effect/decal/warning_stripes/red,
 /obj/machinery/door_control/no_emag{
-	pixel_x = 24;
 	id = "CC_BSA";
 	name = "Blast Door Control";
+	pixel_x = 24;
 	req_one_access_txt = "114"
 	},
 /obj/machinery/door/poddoor/impassable{
 	id_tag = "CC_BSA";
-	name = "Блюспейс Артиллерия";
-	layer = 3
+	layer = 3;
+	name = "Блюспейс Артиллерия"
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom220/admin3)
@@ -11550,8 +11553,8 @@
 	pixel_y = 2
 	},
 /obj/item/reagent_containers/applicator/dual{
-	pixel_y = 4;
-	pixel_x = 4
+	pixel_x = 4;
+	pixel_y = 4
 	},
 /turf/simulated/floor/plasteel/dark{
 	icon_state = "barber"
@@ -11650,23 +11653,23 @@
 	layer = 3
 	},
 /obj/machinery/door_control/no_emag{
-	name = "Blast Door Open";
 	id = "СС_BD_Jail";
-	req_one_access_txt = "114";
-	pixel_y = 24
+	name = "Blast Door Open";
+	pixel_y = 24;
+	req_one_access_txt = "114"
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom220/admin2)
 "IP" = (
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkyellowcornersalt";
-	dir = 1
+	dir = 1;
+	icon_state = "darkyellowcornersalt"
 	},
 /area/centcom220/supply)
 "IQ" = (
 /obj/structure/chair/sofa/bench/right{
-	dir = 1;
-	cover_color = "#404144"
+	cover_color = "#404144";
+	dir = 1
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom220/admin1)
@@ -11795,8 +11798,8 @@
 "Jh" = (
 /obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkredalt";
-	dir = 4
+	dir = 4;
+	icon_state = "darkredalt"
 	},
 /area/centcom220/jail)
 "Jj" = (
@@ -11921,8 +11924,8 @@
 /area/centcom220/bar)
 "JJ" = (
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkredalt";
-	dir = 5
+	dir = 5;
+	icon_state = "darkredalt"
 	},
 /area/centcom220/jail)
 "JK" = (
@@ -11967,12 +11970,12 @@
 	pixel_y = 3
 	},
 /obj/item/folder/yellow{
-	pixel_y = 3;
-	pixel_x = 6
+	pixel_x = 6;
+	pixel_y = 3
 	},
 /obj/item/folder/blue{
-	pixel_y = 3;
-	pixel_x = -6
+	pixel_x = -6;
+	pixel_y = 3
 	},
 /obj/item/folder/red{
 	pixel_y = 3
@@ -12013,8 +12016,8 @@
 /obj/item/clothing/suit/space/syndicate/black/red,
 /obj/item/clothing/head/helmet/space/syndicate/black/red,
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
-	dir = 1;
-	autolink_id = "syndishuttle_vent"
+	autolink_id = "syndishuttle_vent";
+	dir = 1
 	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate)
@@ -12036,10 +12039,14 @@
 /obj/item/mecha_parts/mecha_equipment/repair_droid,
 /obj/item/mecha_parts/mecha_equipment/repair_droid,
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkbrown";
-	dir = 8
+	dir = 8;
+	icon_state = "darkbrown"
 	},
 /area/centcom220/admin3)
+"JY" = (
+/obj/structure/chair/comfy/shuttle,
+/turf/simulated/floor/plating,
+/area/shuttle/administration)
 "JZ" = (
 /obj/structure/table/glass,
 /obj/item/paper_bin{
@@ -12047,8 +12054,8 @@
 	pixel_y = 4
 	},
 /obj/item/pen/multi{
-	pixel_y = 6;
-	pixel_x = -2
+	pixel_x = -2;
+	pixel_y = 6
 	},
 /turf/simulated/floor/carpet/arcade,
 /area/centcom220/general)
@@ -12070,8 +12077,8 @@
 /obj/item/flag/nt,
 /obj/machinery/light/spot,
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkbluealt";
-	dir = 6
+	dir = 6;
+	icon_state = "darkbluealt"
 	},
 /area/centcom220/admin3)
 "Kc" = (
@@ -12086,8 +12093,8 @@
 /area/centcom220/supply)
 "Ke" = (
 /obj/structure/chair/sofa/bench/left{
-	dir = 4;
-	cover_color = "#68452a"
+	cover_color = "#68452a";
+	dir = 4
 	},
 /turf/simulated/floor/wood,
 /area/centcom220/park)
@@ -12123,8 +12130,8 @@
 	dir = 8
 	},
 /turf/simulated/floor/beach/away/coastline{
-	water_overlay_image = null;
-	dir = 9
+	dir = 9;
+	water_overlay_image = null
 	},
 /area/centcom220/evac)
 "Kl" = (
@@ -12132,20 +12139,20 @@
 /area/centcom220/park)
 "Km" = (
 /obj/machinery/door_control/no_emag{
+	id = "СС_Jail_4";
 	name = "Камера 4";
 	pixel_x = 24;
-	pixel_y = -6;
-	id = "СС_Jail_4"
+	pixel_y = -6
 	},
 /obj/machinery/door_control/no_emag{
+	id = "СС_Jail_3";
 	name = "Камера 3";
 	pixel_x = 24;
-	pixel_y = 6;
-	id = "СС_Jail_3"
+	pixel_y = 6
 	},
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkredalt";
-	dir = 4
+	dir = 4;
+	icon_state = "darkredalt"
 	},
 /area/centcom220/jail)
 "Ko" = (
@@ -12217,8 +12224,8 @@
 	dir = 4
 	},
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkbrown";
-	dir = 4
+	dir = 4;
+	icon_state = "darkbrown"
 	},
 /area/centcom220/admin3)
 "Ky" = (
@@ -12284,8 +12291,8 @@
 /area/centcom220/admin2)
 "KK" = (
 /obj/structure/chair/sofa/bench/right{
-	layer = 3.1;
-	cover_color = "#68452a"
+	cover_color = "#68452a";
+	layer = 3.1
 	},
 /turf/simulated/floor/wood,
 /area/centcom220/park)
@@ -12293,8 +12300,8 @@
 /obj/item/flag/nt,
 /obj/machinery/light/spot,
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkbluealt";
-	dir = 10
+	dir = 10;
+	icon_state = "darkbluealt"
 	},
 /area/centcom220/admin3)
 "KN" = (
@@ -12364,6 +12371,12 @@
 /obj/item/book/manual/wiki/security_space_law/black,
 /turf/simulated/floor/wood/fancy/cherry,
 /area/centcom220/admin2)
+"Ld" = (
+/obj/machinery/computer/card{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/royalblack,
+/area/shuttle/administration)
 "Le" = (
 /obj/machinery/door/airlock/external{
 	id_tag = "specops_away";
@@ -12421,8 +12434,8 @@
 /area/centcom220/admin3)
 "Lm" = (
 /obj/structure/chair/sofa/bench{
-	dir = 8;
-	cover_color = "#68452a"
+	cover_color = "#68452a";
+	dir = 8
 	},
 /turf/simulated/floor/wood/fancy/oak,
 /area/centcom220/general)
@@ -12495,12 +12508,12 @@
 "Lx" = (
 /obj/structure/table,
 /obj/item/reagent_containers/applicator/dual{
-	pixel_y = 2;
-	pixel_x = -6
+	pixel_x = -6;
+	pixel_y = 2
 	},
 /obj/item/reagent_containers/applicator/dual{
-	pixel_y = 2;
-	pixel_x = 6
+	pixel_x = 6;
+	pixel_y = 2
 	},
 /obj/machinery/defibrillator_mount/loaded{
 	pixel_y = 26
@@ -12527,20 +12540,20 @@
 	},
 /obj/structure/table,
 /obj/item/reagent_containers/glass/beaker/cryoxadone{
-	pixel_y = 12;
-	pixel_x = -6
+	pixel_x = -6;
+	pixel_y = 12
 	},
 /obj/item/reagent_containers/glass/beaker/cryoxadone{
-	pixel_y = 2;
-	pixel_x = -6
+	pixel_x = -6;
+	pixel_y = 2
 	},
 /obj/item/reagent_containers/glass/beaker/cryoxadone{
-	pixel_y = 12;
-	pixel_x = 6
+	pixel_x = 6;
+	pixel_y = 12
 	},
 /obj/item/reagent_containers/glass/beaker/cryoxadone{
-	pixel_y = 2;
-	pixel_x = 6
+	pixel_x = 6;
+	pixel_y = 2
 	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
@@ -12567,8 +12580,8 @@
 /area/centcom220/bar)
 "LD" = (
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkredalt";
-	dir = 8
+	dir = 8;
+	icon_state = "darkredalt"
 	},
 /area/centcom220/jail)
 "LE" = (
@@ -12653,8 +12666,8 @@
 /area/shuttle/escape)
 "LV" = (
 /obj/machinery/door/airlock/centcom{
-	req_one_access_txt = "101";
-	name = "Офисы"
+	name = "Офисы";
+	req_one_access_txt = "101"
 	},
 /turf/simulated/floor/wood/fancy/cherry,
 /area/centcom220/admin2)
@@ -12703,12 +12716,12 @@
 "Ma" = (
 /obj/structure/table/wood/fancy/black,
 /obj/item/storage/fancy/cigarettes/cigpack_shadyjims{
-	pixel_y = 4;
-	pixel_x = 4
+	pixel_x = 4;
+	pixel_y = 4
 	},
 /obj/item/lighter/random{
-	pixel_y = 6;
-	pixel_x = -6
+	pixel_x = -6;
+	pixel_y = 6
 	},
 /turf/simulated/floor/carpet/red,
 /area/centcom220/bar)
@@ -12761,8 +12774,8 @@
 	dir = 1
 	},
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkbluealt";
-	dir = 1
+	dir = 1;
+	icon_state = "darkbluealt"
 	},
 /area/shuttle/administration)
 "Ml" = (
@@ -12785,8 +12798,8 @@
 "Mr" = (
 /obj/structure/table/glass,
 /obj/item/reagent_containers/food/snacks/appletart{
-	pixel_y = -10;
-	pixel_x = -16
+	pixel_x = -16;
+	pixel_y = -10
 	},
 /obj/item/reagent_containers/food/snacks/applecakeslice{
 	pixel_y = 4
@@ -12874,31 +12887,31 @@
 "MI" = (
 /obj/structure/table/glass,
 /obj/item/paper_bin/nanotrasen{
-	pixel_y = 4;
-	pixel_x = 4
+	pixel_x = 4;
+	pixel_y = 4
 	},
 /obj/item/pen/multi/gold{
-	pixel_y = 3;
-	pixel_x = 6
+	pixel_x = 6;
+	pixel_y = 3
 	},
 /obj/item/stamp/denied{
-	pixel_y = 10;
-	pixel_x = -8
+	pixel_x = -8;
+	pixel_y = 10
 	},
 /obj/item/stamp/granted{
-	pixel_y = 4;
-	pixel_x = -8
+	pixel_x = -8;
+	pixel_y = 4
 	},
 /obj/item/stamp/centcom{
-	pixel_y = -2;
-	pixel_x = -8
+	pixel_x = -8;
+	pixel_y = -2
 	},
 /turf/simulated/floor/carpet/black,
 /area/centcom220/admin2)
 "MJ" = (
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkbluealt";
-	dir = 4
+	dir = 4;
+	icon_state = "darkbluealt"
 	},
 /area/centcom220/admin1)
 "MK" = (
@@ -12928,9 +12941,9 @@
 	layer = 3
 	},
 /obj/machinery/door/airlock/centcom{
-	req_one_access_txt = "101";
+	id_tag = "CC_Exterior_1";
 	name = "Зона ЦК";
-	id_tag = "CC_Exterior_1"
+	req_one_access_txt = "101"
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom220/admin1)
@@ -13049,8 +13062,8 @@
 	dir = 8
 	},
 /turf/simulated/floor/beach/away/coastline{
-	water_overlay_image = null;
-	dir = 10
+	dir = 10;
+	water_overlay_image = null
 	},
 /area/centcom220/evac)
 "Nc" = (
@@ -13074,8 +13087,8 @@
 /area/centcom220/admin3)
 "Ng" = (
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "navyblue";
-	dir = 1
+	dir = 1;
+	icon_state = "navyblue"
 	},
 /area/centcom220/admin3)
 "Nh" = (
@@ -13159,8 +13172,8 @@
 /area/centcom220/admin2)
 "Nv" = (
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "navybluecorners";
-	dir = 8
+	dir = 8;
+	icon_state = "navybluecorners"
 	},
 /area/centcom220/admin3)
 "Nw" = (
@@ -13260,8 +13273,8 @@
 "NH" = (
 /obj/item/beach_ball,
 /obj/item/clothing/glasses/sunglasses/yeah{
-	pixel_y = -2;
-	pixel_x = -2
+	pixel_x = -2;
+	pixel_y = -2
 	},
 /turf/simulated/floor/beach/away/sand,
 /area/centcom220/evac)
@@ -13286,14 +13299,14 @@
 /area/centcom220/bar)
 "NK" = (
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "navybluecorners";
-	dir = 4
+	dir = 4;
+	icon_state = "navybluecorners"
 	},
 /area/centcom220/admin3)
 "NL" = (
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkbluealt";
-	dir = 9
+	dir = 9;
+	icon_state = "darkbluealt"
 	},
 /area/shuttle/administration)
 "NM" = (
@@ -13320,8 +13333,8 @@
 	pixel_y = 4
 	},
 /obj/item/pen/multi{
-	pixel_y = 6;
-	pixel_x = -2
+	pixel_x = -2;
+	pixel_y = 6
 	},
 /turf/simulated/floor/carpet/orange,
 /area/centcom220/general)
@@ -13342,8 +13355,8 @@
 "NW" = (
 /obj/machinery/door/poddoor/impassable{
 	id_tag = "sst_mechbay";
-	name = "Mech Bay";
-	layer = 3
+	layer = 3;
+	name = "Mech Bay"
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/syndicate_mothership)
@@ -13384,14 +13397,14 @@
 /area/centcom220/bar)
 "Of" = (
 /obj/machinery/door_control/no_emag{
-	pixel_x = 24;
 	id = "CC_Armory";
 	name = "Оружейная";
+	pixel_x = 24;
 	req_one_access_txt = "114"
 	},
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "navyblue";
-	dir = 6
+	dir = 6;
+	icon_state = "navyblue"
 	},
 /area/centcom220/admin3)
 "Og" = (
@@ -13462,8 +13475,8 @@
 	dir = 8
 	},
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkbrown";
-	dir = 8
+	dir = 8;
+	icon_state = "darkbrown"
 	},
 /area/centcom220/admin3)
 "Ox" = (
@@ -13503,8 +13516,8 @@
 "OD" = (
 /obj/machinery/door/poddoor/shutters{
 	dir = 1;
-	name = "Мехи";
-	id_tag = "CC_Armory_Mech"
+	id_tag = "CC_Armory_Mech";
+	name = "Мехи"
 	},
 /obj/effect/decal/warning_stripes/red,
 /turf/simulated/floor/plasteel/dark,
@@ -13581,8 +13594,8 @@
 	color = "36373a"
 	},
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkbluealt";
-	dir = 10
+	dir = 10;
+	icon_state = "darkbluealt"
 	},
 /area/centcom220/admin1)
 "ON" = (
@@ -13622,8 +13635,8 @@
 /area/centcom220/park)
 "OT" = (
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkyellowalt";
-	dir = 5
+	dir = 5;
+	icon_state = "darkyellowalt"
 	},
 /area/centcom220/supply)
 "OW" = (
@@ -13709,39 +13722,39 @@
 "Pj" = (
 /obj/structure/rack,
 /obj/item/grenade/smokebomb{
-	pixel_y = 12;
-	pixel_x = -6
+	pixel_x = -6;
+	pixel_y = 12
 	},
 /obj/item/grenade/smokebomb{
-	pixel_y = 8;
-	pixel_x = -6
+	pixel_x = -6;
+	pixel_y = 8
 	},
 /obj/item/grenade/smokebomb{
-	pixel_y = 4;
-	pixel_x = -6
+	pixel_x = -6;
+	pixel_y = 4
 	},
 /obj/item/grenade/smokebomb{
-	pixel_y = 12;
-	pixel_x = 7
+	pixel_x = 7;
+	pixel_y = 12
 	},
 /obj/item/grenade/smokebomb{
-	pixel_y = 8;
-	pixel_x = 7
+	pixel_x = 7;
+	pixel_y = 8
 	},
 /obj/item/grenade/smokebomb{
-	pixel_y = 4;
-	pixel_x = 7
+	pixel_x = 7;
+	pixel_y = 4
 	},
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "navyblue";
-	dir = 9
+	dir = 9;
+	icon_state = "navyblue"
 	},
 /area/centcom220/admin3)
 "Pl" = (
 /obj/mecha/combat/marauder/loaded,
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkbrown";
-	dir = 5
+	dir = 5;
+	icon_state = "darkbrown"
 	},
 /area/centcom220/admin3)
 "Pm" = (
@@ -13750,20 +13763,20 @@
 /area/centcom220/admin1)
 "Pn" = (
 /obj/machinery/door/window/classic/reversed{
-	name = "Барная стойка";
-	dir = 4
+	dir = 4;
+	name = "Барная стойка"
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/shuttle/administration)
 "Pp" = (
 /obj/structure/flora/rock/jungle,
 /obj/item/flashlight/lantern{
-	on = 1;
-	pixel_y = 11;
-	pixel_x = -2;
+	anchored = 1;
 	layer = 5;
 	light_color = "#FF9F40";
-	anchored = 1
+	on = 1;
+	pixel_x = -2;
+	pixel_y = 11
 	},
 /turf/simulated/floor/grass/jungle,
 /area/centcom220/park)
@@ -13796,11 +13809,11 @@
 "Pu" = (
 /obj/structure/flora/tree/jungle,
 /obj/item/flashlight/lantern{
-	on = 1;
-	pixel_y = 11;
-	pixel_x = -9;
+	anchored = 1;
 	light_color = "#FF9F40";
-	anchored = 1
+	on = 1;
+	pixel_x = -9;
+	pixel_y = 11
 	},
 /turf/simulated/floor/grass/jungle,
 /area/centcom220/park)
@@ -13814,13 +13827,13 @@
 	},
 /obj/machinery/door/poddoor/impassable{
 	id_tag = "CC_Cargo";
-	name = "Склад";
-	layer = 3
+	layer = 3;
+	name = "Склад"
 	},
 /obj/machinery/door_control/no_emag{
-	pixel_y = 24;
 	id = "CC_Cargo";
 	name = "Blast Door Control";
+	pixel_y = 24;
 	req_one_access_txt = "106"
 	},
 /turf/simulated/floor/plasteel/dark,
@@ -13898,8 +13911,8 @@
 	dir = 8
 	},
 /turf/simulated/floor/beach/away/coastline{
-	water_overlay_image = null;
-	dir = 8
+	dir = 8;
+	water_overlay_image = null
 	},
 /area/centcom220/evac)
 "PL" = (
@@ -13915,8 +13928,8 @@
 /area/centcom220/bar)
 "PO" = (
 /obj/machinery/door/airlock/centcom{
-	req_one_access_txt = "101";
-	name = "Блокпост"
+	name = "Блокпост";
+	req_one_access_txt = "101"
 	},
 /obj/effect/decal/warning_stripes/blue,
 /turf/simulated/floor/plasteel/dark,
@@ -13953,20 +13966,20 @@
 /area/shuttle/administration)
 "PT" = (
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkbluealtstrip";
-	dir = 1
+	dir = 1;
+	icon_state = "darkbluealtstrip"
 	},
 /area/centcom220/admin2)
 "PU" = (
 /obj/machinery/door_control/no_emag{
-	pixel_x = -24;
 	id = "CC_Armory";
 	name = "Оружейная";
+	pixel_x = -24;
 	req_one_access_txt = "114"
 	},
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkbluealtstrip";
-	dir = 9
+	dir = 9;
+	icon_state = "darkbluealtstrip"
 	},
 /area/centcom220/admin3)
 "PV" = (
@@ -13975,16 +13988,16 @@
 "PW" = (
 /obj/structure/table,
 /obj/item/clothing/accessory/medal{
-	pixel_y = 10;
-	pixel_x = -8
+	pixel_x = -8;
+	pixel_y = 10
 	},
 /obj/item/clothing/accessory/medal{
-	pixel_y = 10;
-	pixel_x = -8
+	pixel_x = -8;
+	pixel_y = 10
 	},
 /obj/item/clothing/accessory/medal{
-	pixel_y = 10;
-	pixel_x = -8
+	pixel_x = -8;
+	pixel_y = 10
 	},
 /obj/item/clothing/accessory/medal/engineering{
 	pixel_y = 10
@@ -13996,28 +14009,28 @@
 	pixel_y = 10
 	},
 /obj/item/clothing/accessory/medal/legal{
-	pixel_y = 10;
-	pixel_x = 8
+	pixel_x = 8;
+	pixel_y = 10
 	},
 /obj/item/clothing/accessory/medal/legal{
-	pixel_y = 10;
-	pixel_x = 8
+	pixel_x = 8;
+	pixel_y = 10
 	},
 /obj/item/clothing/accessory/medal/legal{
-	pixel_y = 10;
-	pixel_x = 8
+	pixel_x = 8;
+	pixel_y = 10
 	},
 /obj/item/clothing/accessory/medal/medical{
-	pixel_y = 6;
-	pixel_x = -8
+	pixel_x = -8;
+	pixel_y = 6
 	},
 /obj/item/clothing/accessory/medal/medical{
-	pixel_y = 6;
-	pixel_x = -8
+	pixel_x = -8;
+	pixel_y = 6
 	},
 /obj/item/clothing/accessory/medal/medical{
-	pixel_y = 6;
-	pixel_x = -8
+	pixel_x = -8;
+	pixel_y = 6
 	},
 /obj/item/clothing/accessory/medal/science{
 	pixel_y = 6
@@ -14029,16 +14042,16 @@
 	pixel_y = 6
 	},
 /obj/item/clothing/accessory/medal/security{
-	pixel_y = 6;
-	pixel_x = 8
+	pixel_x = 8;
+	pixel_y = 6
 	},
 /obj/item/clothing/accessory/medal/security{
-	pixel_y = 6;
-	pixel_x = 8
+	pixel_x = 8;
+	pixel_y = 6
 	},
 /obj/item/clothing/accessory/medal/security{
-	pixel_y = 6;
-	pixel_x = 8
+	pixel_x = 8;
+	pixel_y = 6
 	},
 /obj/item/clothing/accessory/medal/service{
 	pixel_x = -4;
@@ -14053,16 +14066,16 @@
 	pixel_y = 2
 	},
 /obj/item/clothing/accessory/medal/heart{
-	pixel_y = 2;
-	pixel_x = 4
+	pixel_x = 4;
+	pixel_y = 2
 	},
 /obj/item/clothing/accessory/medal/heart{
-	pixel_y = 2;
-	pixel_x = 4
+	pixel_x = 4;
+	pixel_y = 2
 	},
 /obj/item/clothing/accessory/medal/heart{
-	pixel_y = 2;
-	pixel_x = 4
+	pixel_x = 4;
+	pixel_y = 2
 	},
 /obj/effect/turf_decal/stripes/white/full{
 	color = "#b59959"
@@ -14117,8 +14130,8 @@
 /area/space)
 "Qb" = (
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkredalt";
-	dir = 4
+	dir = 4;
+	icon_state = "darkredalt"
 	},
 /area/centcom220/jail)
 "Qc" = (
@@ -14194,18 +14207,18 @@
 /area/centcom220/bar)
 "Qp" = (
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkbluealtstrip";
-	dir = 4
+	dir = 4;
+	icon_state = "darkbluealtstrip"
 	},
 /area/centcom220/admin3)
 "Qq" = (
 /obj/item/flashlight/lantern{
-	on = 1;
-	pixel_y = 15;
-	pixel_x = -7;
-	light_color = "#FF9F40";
 	anchored = 1;
-	layer = 6
+	layer = 6;
+	light_color = "#FF9F40";
+	on = 1;
+	pixel_x = -7;
+	pixel_y = 15
 	},
 /turf/simulated/floor/wood,
 /area/centcom220/park)
@@ -14229,40 +14242,40 @@
 "Qw" = (
 /obj/structure/table/glass,
 /obj/item/reagent_containers/glass/beaker/waterbottle{
-	pixel_y = 16;
-	pixel_x = -8
+	pixel_x = -8;
+	pixel_y = 16
 	},
 /obj/item/reagent_containers/glass/beaker/waterbottle{
-	pixel_y = 10;
-	pixel_x = -8
+	pixel_x = -8;
+	pixel_y = 10
 	},
 /obj/item/reagent_containers/glass/beaker/waterbottle{
-	pixel_y = 4;
-	pixel_x = -8
+	pixel_x = -8;
+	pixel_y = 4
 	},
 /obj/item/reagent_containers/glass/beaker/waterbottle{
-	pixel_y = 16;
-	pixel_x = -1
+	pixel_x = -1;
+	pixel_y = 16
 	},
 /obj/item/reagent_containers/glass/beaker/waterbottle{
-	pixel_y = 10;
-	pixel_x = -1
+	pixel_x = -1;
+	pixel_y = 10
 	},
 /obj/item/reagent_containers/glass/beaker/waterbottle{
-	pixel_y = 4;
-	pixel_x = -1
+	pixel_x = -1;
+	pixel_y = 4
 	},
 /obj/item/reagent_containers/glass/beaker/waterbottle{
-	pixel_y = 16;
-	pixel_x = 6
+	pixel_x = 6;
+	pixel_y = 16
 	},
 /obj/item/reagent_containers/glass/beaker/waterbottle{
-	pixel_y = 10;
-	pixel_x = 6
+	pixel_x = 6;
+	pixel_y = 10
 	},
 /obj/item/reagent_containers/glass/beaker/waterbottle{
-	pixel_y = 4;
-	pixel_x = 6
+	pixel_x = 6;
+	pixel_y = 4
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom220/admin2)
@@ -14449,9 +14462,9 @@
 /area/centcom220/admin3)
 "Ra" = (
 /obj/structure/statue/gold/hos{
-	pixel_y = 9;
+	anchored = 1;
 	layer = 5;
-	anchored = 1
+	pixel_y = 9
 	},
 /turf/simulated/floor/plasteel{
 	desc = "\"This is a plaque in honour of our comrades on the G4407 Stations. Hopefully TG4407 model can live up to your fame and fortune.\" Scratched in beneath that is a crude image of a meteor and a spaceman. The spaceman is laughing. The meteor is exploding.";
@@ -14531,8 +14544,8 @@
 /area/centcom220/bar)
 "Rm" = (
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkgreen";
-	dir = 1
+	dir = 1;
+	icon_state = "darkgreen"
 	},
 /area/centcom220/admin3)
 "Ro" = (
@@ -14630,8 +14643,8 @@
 /area/centcom220/supply)
 "RH" = (
 /obj/machinery/door/airlock/bathroom{
-	name = "Туалет";
-	id_tag = "cc_toilet_3"
+	id_tag = "cc_toilet_3";
+	name = "Туалет"
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "hydrofloor"
@@ -14652,16 +14665,16 @@
 "RK" = (
 /obj/structure/table/glass,
 /obj/item/paper_bin{
-	pixel_y = 4;
-	pixel_x = -6
+	pixel_x = -6;
+	pixel_y = 4
 	},
 /obj/item/lighter/zippo/blue{
-	pixel_y = 2;
-	pixel_x = 8
+	pixel_x = 8;
+	pixel_y = 2
 	},
 /obj/item/pen/multi/fountain{
-	pixel_y = 9;
-	pixel_x = 8
+	pixel_x = 8;
+	pixel_y = 9
 	},
 /turf/simulated/floor/carpet,
 /area/centcom220/admin3)
@@ -14696,8 +14709,8 @@
 /area/wizard_station)
 "RU" = (
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "navyblue";
-	dir = 6
+	dir = 6;
+	icon_state = "navyblue"
 	},
 /area/centcom220/admin3)
 "RV" = (
@@ -14711,8 +14724,8 @@
 /area/centcom220/admin2)
 "RW" = (
 /obj/structure/chair/sofa/bench/right{
-	dir = 1;
-	cover_color = "#68452a"
+	cover_color = "#68452a";
+	dir = 1
 	},
 /turf/simulated/floor/wood,
 /area/centcom220/park)
@@ -14736,9 +14749,9 @@
 "Sb" = (
 /obj/structure/table/wood/fancy/black,
 /obj/item/candle/eternal{
-	start_lit = 1;
+	pixel_x = 1;
 	pixel_y = 4;
-	pixel_x = 1
+	start_lit = 1
 	},
 /turf/simulated/floor/wood/fancy/cherry,
 /area/centcom220/bar)
@@ -14770,9 +14783,9 @@
 /area/centcom220/admin2)
 "Sg" = (
 /obj/machinery/access_button{
+	autolink_id = "syndijail_btn_int";
 	pixel_x = -22;
-	pixel_y = -8;
-	autolink_id = "syndijail_btn_int"
+	pixel_y = -8
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/syndicate_mothership/jail)
@@ -14904,16 +14917,16 @@
 "SE" = (
 /obj/structure/table/glass,
 /obj/item/folder{
-	pixel_y = 6;
-	pixel_x = 6
+	pixel_x = 6;
+	pixel_y = 6
 	},
 /obj/item/lighter/zippo/blue{
-	pixel_y = 6;
-	pixel_x = -6
+	pixel_x = -6;
+	pixel_y = 6
 	},
 /obj/item/folder/blue{
-	pixel_y = 3;
-	pixel_x = 3
+	pixel_x = 3;
+	pixel_y = 3
 	},
 /obj/item/folder/red,
 /turf/simulated/floor/carpet/black,
@@ -15054,6 +15067,16 @@
 /obj/structure/chair/sofa/corner,
 /turf/simulated/floor/carpet/red,
 /area/centcom220/bar)
+"Te" = (
+/obj/structure/window/plasmareinforced{
+	color = "#FF0000"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/chair/comfy/shuttle{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/administration)
 "Tf" = (
 /obj/machinery/light/small,
 /turf/simulated/floor/plasteel{
@@ -15063,8 +15086,8 @@
 "Tg" = (
 /obj/item/twohanded/required/kirbyplants,
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkbluealt";
-	dir = 9
+	dir = 9;
+	icon_state = "darkbluealt"
 	},
 /area/centcom220/admin1)
 "Th" = (
@@ -15166,24 +15189,24 @@
 "Tv" = (
 /obj/structure/table/glass,
 /obj/item/paper_bin/nanotrasen{
-	pixel_y = 4;
-	pixel_x = -4
+	pixel_x = -4;
+	pixel_y = 4
 	},
 /obj/item/pen/multi/gold{
-	pixel_y = 3;
-	pixel_x = -4
+	pixel_x = -4;
+	pixel_y = 3
 	},
 /obj/item/stamp/denied{
-	pixel_y = 10;
-	pixel_x = 8
+	pixel_x = 8;
+	pixel_y = 10
 	},
 /obj/item/stamp/granted{
-	pixel_y = 4;
-	pixel_x = 8
+	pixel_x = 8;
+	pixel_y = 4
 	},
 /obj/item/stamp/centcom{
-	pixel_y = -2;
-	pixel_x = 8
+	pixel_x = 8;
+	pixel_y = -2
 	},
 /obj/machinery/newscaster{
 	dir = 1;
@@ -15195,40 +15218,40 @@
 "Tw" = (
 /obj/structure/rack,
 /obj/item/grenade/chem_grenade/teargas{
-	pixel_y = 14;
-	pixel_x = -5
+	pixel_x = -5;
+	pixel_y = 14
 	},
 /obj/item/grenade/chem_grenade/teargas{
-	pixel_y = 10;
-	pixel_x = -5
+	pixel_x = -5;
+	pixel_y = 10
 	},
 /obj/item/grenade/chem_grenade/teargas{
-	pixel_y = 6;
-	pixel_x = -5
+	pixel_x = -5;
+	pixel_y = 6
 	},
 /obj/item/grenade/chem_grenade/teargas{
-	pixel_y = 2;
-	pixel_x = -5
+	pixel_x = -5;
+	pixel_y = 2
 	},
 /obj/item/grenade/chem_grenade/teargas{
-	pixel_y = 14;
-	pixel_x = 8
+	pixel_x = 8;
+	pixel_y = 14
 	},
 /obj/item/grenade/chem_grenade/teargas{
-	pixel_y = 10;
-	pixel_x = 8
+	pixel_x = 8;
+	pixel_y = 10
 	},
 /obj/item/grenade/chem_grenade/teargas{
-	pixel_y = 6;
-	pixel_x = 8
+	pixel_x = 8;
+	pixel_y = 6
 	},
 /obj/item/grenade/chem_grenade/teargas{
-	pixel_y = 2;
-	pixel_x = 8
+	pixel_x = 8;
+	pixel_y = 2
 	},
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "navyblue";
-	dir = 10
+	dir = 10;
+	icon_state = "navyblue"
 	},
 /area/centcom220/admin3)
 "Tx" = (
@@ -15352,8 +15375,8 @@
 /area/centcom220/bar)
 "Ua" = (
 /obj/machinery/door/airlock/centcom{
-	req_one_access_txt = "109";
-	name = "ОБР"
+	name = "ОБР";
+	req_one_access_txt = "109"
 	},
 /obj/effect/decal/warning_stripes/white,
 /turf/simulated/floor/plasteel/dark,
@@ -15369,6 +15392,10 @@
 /obj/item/tank/internals/plasmaman/belt/full,
 /turf/simulated/floor/carpet/black,
 /area/wizard_station)
+"Ud" = (
+/obj/structure/dresser,
+/turf/simulated/floor/carpet/royalblack,
+/area/shuttle/administration)
 "Ue" = (
 /mob/living/simple_animal/hostile/creature{
 	name = "Experiment 35b"
@@ -15396,13 +15423,13 @@
 /area/centcom220/admin2)
 "Uj" = (
 /obj/machinery/door/airlock/centcom{
-	req_one_access_txt = "101";
+	id_tag = "СС_Interior_2";
 	name = "Зона ЦК";
-	id_tag = "СС_Interior_2"
+	req_one_access_txt = "101"
 	},
 /obj/machinery/door_control/no_emag{
-	name = "Blast Door Open";
 	id = "СС_BD_Interior_2";
+	name = "Blast Door Open";
 	pixel_x = -24;
 	req_one_access_txt = "101"
 	},
@@ -15417,8 +15444,8 @@
 /obj/machinery/door/airlock/external{
 	aiControlDisabled = 1;
 	hackProof = 1;
-	name = "Arrival Airlock";
-	locked = 1
+	locked = 1;
+	name = "Arrival Airlock"
 	},
 /obj/structure/fans/tiny,
 /turf/simulated/floor/plasteel/dark,
@@ -15444,8 +15471,8 @@
 /area/centcom220/admin2)
 "Uq" = (
 /obj/structure/chair/sofa/bench/right{
-	dir = 4;
-	cover_color = "#68452a"
+	cover_color = "#68452a";
+	dir = 4
 	},
 /turf/simulated/floor/wood,
 /area/centcom220/park)
@@ -15468,8 +15495,8 @@
 	network = list("SS13","Telecomms","Research Outpost","Mining Outpost","ERT","CentComm","Thunderdome")
 	},
 /obj/item/radio/intercom/specops{
-	pixel_x = 22;
-	dir = 8
+	dir = 8;
+	pixel_x = 22
 	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/shuttle/specops)
@@ -15550,8 +15577,8 @@
 /area/centcom220/bar)
 "UH" = (
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkbluealt";
-	dir = 4
+	dir = 4;
+	icon_state = "darkbluealt"
 	},
 /area/centcom220/admin3)
 "UJ" = (
@@ -15598,14 +15625,14 @@
 /area/centcom220/park)
 "UR" = (
 /turf/simulated/floor/beach/away/water/dense{
-	water_overlay_image = null;
-	density = 0
+	density = 0;
+	water_overlay_image = null
 	},
 /area/centcom220/park)
 "US" = (
 /obj/machinery/door/airlock/bathroom{
-	name = "Туалет";
-	id_tag = "cc_toilet_1"
+	id_tag = "cc_toilet_1";
+	name = "Туалет"
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "hydrofloor"
@@ -15614,8 +15641,8 @@
 "UT" = (
 /obj/effect/landmark/spawner/aroomwarp,
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkyellowalt";
-	dir = 4
+	dir = 4;
+	icon_state = "darkyellowalt"
 	},
 /area/centcom220/supply)
 "UV" = (
@@ -15658,8 +15685,8 @@
 "Vd" = (
 /obj/structure/table,
 /obj/item/storage/fancy/cigarettes/dromedaryco{
-	pixel_y = 2;
-	pixel_x = 6
+	pixel_x = 6;
+	pixel_y = 2
 	},
 /obj/item/lighter/zippo{
 	pixel_x = -4;
@@ -15669,8 +15696,8 @@
 /area/shuttle/administration)
 "Ve" = (
 /obj/machinery/door/window/classic/normal{
-	name = "Бджолы";
-	dir = 8
+	dir = 8;
+	name = "Бджолы"
 	},
 /obj/structure/flora/ausbushes/brflowers,
 /obj/effect/mapping_helpers/airlock/windoor/access/any/service/hydroponics{
@@ -15772,10 +15799,10 @@
 /area/centcom220/general)
 "Vt" = (
 /obj/machinery/door_control{
-	name = "Огнестрел";
-	req_one_access_txt = "114";
 	id = "CC_Armory_Advanced_2";
-	pixel_y = -24
+	name = "Огнестрел";
+	pixel_y = -24;
+	req_one_access_txt = "114"
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom220/admin3)
@@ -15790,12 +15817,12 @@
 "Vz" = (
 /obj/structure/table,
 /obj/item/paper_bin/nanotrasen{
-	pixel_y = 4;
-	pixel_x = -4
+	pixel_x = -4;
+	pixel_y = 4
 	},
 /obj/item/pen/multi/fountain{
-	pixel_y = 3;
-	pixel_x = 4
+	pixel_x = 4;
+	pixel_y = 3
 	},
 /turf/simulated/floor/carpet/black,
 /area/centcom220/admin1)
@@ -15806,8 +15833,8 @@
 "VB" = (
 /obj/machinery/economy/vending/nta/yellow,
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkbrown";
-	dir = 4
+	dir = 4;
+	icon_state = "darkbrown"
 	},
 /area/centcom220/admin3)
 "VE" = (
@@ -15815,8 +15842,8 @@
 	dir = 1
 	},
 /turf/simulated/floor/beach/away/coastline{
-	water_overlay_image = null;
-	dir = 1
+	dir = 1;
+	water_overlay_image = null
 	},
 /area/centcom220/evac)
 "VG" = (
@@ -15835,8 +15862,8 @@
 /area/shuttle/administration)
 "VJ" = (
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkredaltstrip";
-	dir = 4
+	dir = 4;
+	icon_state = "darkredaltstrip"
 	},
 /area/centcom220/jail)
 "VK" = (
@@ -15904,8 +15931,8 @@
 /area/centcom220/admin1)
 "Wb" = (
 /obj/structure/chair/sofa/bench{
-	dir = 1;
-	cover_color = "#404144"
+	cover_color = "#404144";
+	dir = 1
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom220/admin1)
@@ -15965,8 +15992,8 @@
 	},
 /obj/item/flashlight/lamp/green/off{
 	layer = 3.1;
-	pixel_y = 24;
-	pixel_x = -16
+	pixel_x = -16;
+	pixel_y = 24
 	},
 /turf/simulated/floor/carpet,
 /area/centcom220/general)
@@ -15981,14 +16008,14 @@
 /area/shuttle/transport)
 "Wo" = (
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkredalt";
-	dir = 9
+	dir = 9;
+	icon_state = "darkredalt"
 	},
 /area/centcom220/jail)
 "Wp" = (
 /obj/structure/chair/sofa/bench/right{
-	dir = 8;
-	cover_color = "#68452a"
+	cover_color = "#68452a";
+	dir = 8
 	},
 /turf/simulated/floor/wood/fancy/oak,
 /area/centcom220/general)
@@ -16079,8 +16106,8 @@
 /area/centcom220/general)
 "Wz" = (
 /obj/structure/chair/sofa/bench/left{
-	dir = 8;
-	cover_color = "#68452a"
+	cover_color = "#68452a";
+	dir = 8
 	},
 /turf/simulated/floor/wood/fancy/oak,
 /area/centcom220/general)
@@ -16100,12 +16127,12 @@
 	},
 /obj/structure/fans/tiny,
 /obj/docking_port/stationary{
+	dir = 2;
 	dwidth = 2;
 	height = 11;
 	id = "specops_away";
 	name = "centcom bay 3";
-	width = 5;
-	dir = 2
+	width = 5
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/specops)
@@ -16116,8 +16143,8 @@
 /area/centcom220/jail)
 "WC" = (
 /obj/structure/chair/sofa/bench/right{
-	dir = 8;
-	cover_color = "#68452a"
+	cover_color = "#68452a";
+	dir = 8
 	},
 /turf/simulated/floor/wood,
 /area/centcom220/park)
@@ -16144,8 +16171,8 @@
 	dir = 1
 	},
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkbluealt";
-	dir = 1
+	dir = 1;
+	icon_state = "darkbluealt"
 	},
 /area/centcom220/admin1)
 "WJ" = (
@@ -16213,9 +16240,9 @@
 /area/centcom220/bar)
 "WU" = (
 /obj/structure/statue/gold/hop{
-	pixel_y = 9;
+	anchored = 1;
 	layer = 5;
-	anchored = 1
+	pixel_y = 9
 	},
 /turf/simulated/floor/plasteel{
 	desc = "\"This is a plaque in honour of our comrades on the G4407 Stations. Hopefully TG4407 model can live up to your fame and fortune.\" Scratched in beneath that is a crude image of a meteor and a spaceman. The spaceman is laughing. The meteor is exploding.";
@@ -16281,8 +16308,8 @@
 /area/centcom220/admin1)
 "Xd" = (
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkbluecornersalt";
-	dir = 1
+	dir = 1;
+	icon_state = "darkbluecornersalt"
 	},
 /area/centcom220/admin1)
 "Xf" = (
@@ -16298,8 +16325,8 @@
 "Xh" = (
 /obj/machinery/door/poddoor/impassable{
 	id_tag = "sst_armory";
-	name = "Armory";
-	layer = 3
+	layer = 3;
+	name = "Armory"
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/syndicate_mothership)
@@ -16309,8 +16336,8 @@
 /area/shuttle/administration)
 "Xj" = (
 /obj/machinery/door/airlock/centcom{
-	req_one_access_txt = "114";
-	name = "Оружейная"
+	name = "Оружейная";
+	req_one_access_txt = "114"
 	},
 /obj/machinery/door/poddoor/impassable{
 	id_tag = "СС_Office_Armory";
@@ -16318,10 +16345,10 @@
 	name = "Тебе скорее всего сюда нельзя, увы."
 	},
 /obj/machinery/door_control/no_emag{
-	name = "Blast Door Open";
 	id = "СС_Office_Armory";
-	req_one_access_txt = "114";
-	pixel_x = -24
+	name = "Blast Door Open";
+	pixel_x = -24;
+	req_one_access_txt = "114"
 	},
 /turf/simulated/floor/wood/fancy/cherry,
 /area/centcom220/admin2)
@@ -16389,9 +16416,9 @@
 /area/centcom220/evac)
 "Xy" = (
 /obj/machinery/door/poddoor/impassable{
-	name = "Отряд Специальных Операций";
 	id_tag = "CC_DeathSquad";
-	layer = 3
+	layer = 3;
+	name = "Отряд Специальных Операций"
 	},
 /obj/effect/decal/warning_stripes/white,
 /turf/simulated/floor/plasteel/dark,
@@ -16471,11 +16498,11 @@
 "XK" = (
 /obj/structure/flora/tree/jungle,
 /obj/item/flashlight/lantern{
-	on = 1;
-	pixel_y = 14;
-	pixel_x = 10;
+	anchored = 1;
 	light_color = "#FF9F40";
-	anchored = 1
+	on = 1;
+	pixel_x = 10;
+	pixel_y = 14
 	},
 /turf/simulated/floor/grass/jungle,
 /area/centcom220/park)
@@ -16568,9 +16595,9 @@
 "XZ" = (
 /obj/structure/safe,
 /obj/item/stack/spacecash{
-	name = "Мильён";
+	amount = 1000000;
 	max_amount = 1000000;
-	amount = 1000000
+	name = "Мильён"
 	},
 /turf/simulated/floor/carpet/black,
 /area/centcom220/admin2)
@@ -16618,8 +16645,8 @@
 	dir = 4
 	},
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkbluealt";
-	dir = 4
+	dir = 4;
+	icon_state = "darkbluealt"
 	},
 /area/centcom220/admin1)
 "Yh" = (
@@ -16640,8 +16667,8 @@
 /area/centcom220/admin2)
 "Yl" = (
 /obj/structure/chair/sofa/bench/left{
-	layer = 3.1;
-	cover_color = "#68452a"
+	cover_color = "#68452a";
+	layer = 3.1
 	},
 /turf/simulated/floor/wood,
 /area/centcom220/park)
@@ -16669,8 +16696,8 @@
 "Yq" = (
 /obj/machinery/door/poddoor/impassable{
 	id_tag = "nukeop_ready";
-	name = "Shuttle Dock Door";
-	layer = 3
+	layer = 3;
+	name = "Shuttle Dock Door"
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "bar"
@@ -16679,9 +16706,9 @@
 "Yr" = (
 /obj/structure/table/reinforced,
 /obj/machinery/kitchen_machine/microwave{
+	layer = 5;
 	pixel_x = -1;
-	pixel_y = 7;
-	layer = 5
+	pixel_y = 7
 	},
 /obj/machinery/light/spot,
 /turf/simulated/floor/plasteel{
@@ -16721,8 +16748,8 @@
 /area/centcom220/general)
 "YG" = (
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkbrown";
-	dir = 1
+	dir = 1;
+	icon_state = "darkbrown"
 	},
 /area/centcom220/admin3)
 "YH" = (
@@ -16762,8 +16789,8 @@
 	pixel_y = 4
 	},
 /obj/item/pen/multi{
-	pixel_y = 6;
-	pixel_x = -2
+	pixel_x = -2;
+	pixel_y = 6
 	},
 /turf/simulated/floor/carpet/cyan,
 /area/centcom220/general)
@@ -16779,8 +16806,8 @@
 "YR" = (
 /obj/machinery/economy/vending/nta/green,
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkgreen";
-	dir = 10
+	dir = 10;
+	icon_state = "darkgreen"
 	},
 /area/centcom220/admin3)
 "YS" = (
@@ -16904,10 +16931,10 @@
 /area/shuttle/transport)
 "Zf" = (
 /obj/item/flashlight/lantern{
-	on = 1;
+	anchored = 1;
 	layer = 5;
 	light_color = "#FF9F40";
-	anchored = 1
+	on = 1
 	},
 /turf/simulated/floor/wood,
 /area/centcom220/park)
@@ -16940,28 +16967,28 @@
 "Zj" = (
 /obj/structure/table/reinforced,
 /obj/item/radio{
-	pixel_y = 6;
-	pixel_x = -6
+	pixel_x = -6;
+	pixel_y = 6
 	},
 /obj/item/radio{
-	pixel_y = 6;
-	pixel_x = 6
+	pixel_x = 6;
+	pixel_y = 6
 	},
 /obj/item/radio{
-	pixel_y = 6;
-	pixel_x = -6
+	pixel_x = -6;
+	pixel_y = 6
 	},
 /obj/item/radio{
-	pixel_y = 6;
-	pixel_x = -6
+	pixel_x = -6;
+	pixel_y = 6
 	},
 /obj/item/radio{
-	pixel_y = 6;
-	pixel_x = 6
+	pixel_x = 6;
+	pixel_y = 6
 	},
 /obj/item/radio{
-	pixel_y = 6;
-	pixel_x = 6
+	pixel_x = 6;
+	pixel_y = 6
 	},
 /obj/item/radio{
 	pixel_y = 6
@@ -16976,14 +17003,14 @@
 	dir = 4
 	},
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkgreen";
-	dir = 4
+	dir = 4;
+	icon_state = "darkgreen"
 	},
 /area/centcom220/admin3)
 "Zk" = (
 /obj/machinery/door/airlock/centcom{
-	req_one_access_txt = "101";
-	name = "Офисы"
+	name = "Офисы";
+	req_one_access_txt = "101"
 	},
 /obj/effect/decal/warning_stripes/blue,
 /turf/simulated/floor/plasteel/dark,
@@ -17088,8 +17115,8 @@
 /area/centcom220/bar)
 "ZA" = (
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkbluealt";
-	dir = 10
+	dir = 10;
+	icon_state = "darkbluealt"
 	},
 /area/centcom220/admin2)
 "ZB" = (
@@ -17129,12 +17156,12 @@
 	pixel_y = 12
 	},
 /obj/item/toy/figure/crew/librarian{
-	pixel_y = 12;
-	pixel_x = 12
+	pixel_x = 12;
+	pixel_y = 12
 	},
 /obj/item/paper{
-	pixel_y = -8;
-	pixel_x = 3
+	pixel_x = 3;
+	pixel_y = -8
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "grimy"
@@ -17166,8 +17193,8 @@
 /area/centcom220/general)
 "ZR" = (
 /obj/structure/sink{
-	pixel_y = -10;
-	dir = 1
+	dir = 1;
+	pixel_y = -10
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "whiteblue"
@@ -17178,8 +17205,8 @@
 	dir = 1
 	},
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkbluealt";
-	dir = 1
+	dir = 1;
+	icon_state = "darkbluealt"
 	},
 /area/centcom220/admin3)
 "ZT" = (
@@ -17220,8 +17247,8 @@
 /area/centcom220/bar)
 "ZZ" = (
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "darkbluealt";
-	dir = 9
+	dir = 9;
+	icon_state = "darkbluealt"
 	},
 /area/centcom220/admin1)
 
@@ -20737,8 +20764,8 @@ zE
 zE
 zE
 zE
-ar
-va
+nf
+cD
 zE
 zE
 zE
@@ -28236,7 +28263,7 @@ aN
 aN
 aN
 aN
-aN
+ZG
 ZG
 ZG
 ZG
@@ -28494,7 +28521,7 @@ aN
 aN
 aN
 ZG
-Rv
+Ld
 Zv
 Ys
 ZG
@@ -28748,12 +28775,12 @@ fA
 fA
 aN
 aN
-aN
+ZG
 ZG
 Rv
 aj
 jA
-aG
+xu
 ZG
 QS
 Vw
@@ -29006,11 +29033,11 @@ fA
 aN
 aN
 ZG
-Rv
-Xi
 aG
 aG
 aG
+aG
+gh
 ZG
 II
 Vw
@@ -29264,8 +29291,8 @@ aN
 aN
 ZG
 cW
-aG
-aG
+Ud
+Xi
 aG
 Nj
 ZG
@@ -30807,7 +30834,7 @@ aN
 ZG
 VH
 xy
-So
+Te
 Cn
 uS
 ZG
@@ -31062,8 +31089,8 @@ fA
 aN
 aN
 ZG
-Rv
-fO
+JY
+xy
 FX
 Cn
 AF
@@ -31318,10 +31345,10 @@ fA
 fA
 aN
 aN
-aN
+ZG
 ZG
 Rv
-dp
+So
 Cn
 lI
 ZG
@@ -31578,7 +31605,7 @@ aN
 aN
 aN
 ZG
-Rv
+nQ
 Lf
 wh
 ZG
@@ -31834,7 +31861,7 @@ aN
 aN
 aN
 aN
-aN
+ZG
 ZG
 ZG
 ZG
