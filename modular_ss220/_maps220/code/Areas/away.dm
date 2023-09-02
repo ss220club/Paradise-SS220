@@ -28,3 +28,4 @@
 /area/ruin/space/powered/requires_power_space
 	requires_power = TRUE
 	report_alerts = FALSE
+
