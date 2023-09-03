@@ -20902,17 +20902,6 @@
 	icon_state = "vault"
 	},
 /area/security/hos)
-"bun" = (
-/obj/structure/disposalpipe/trunk{
-	dir = 8
-	},
-/obj/structure/disposaloutlet{
-	name = "evidence outlet"
-	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
-/area/security/evidence)
 "buo" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -26816,6 +26805,13 @@
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/storage/tech)
+"bKz" = (
+/obj/machinery/atmospherics/pipe/simple/visible,
+/turf/simulated/floor/plasteel{
+	dir = 8;
+	icon_state = "arrival"
+	},
+/area/hallway/secondary/entry)
 "bKA" = (
 /obj/structure/rack,
 /obj/item/book/manual/wiki/hacking,
@@ -63611,6 +63607,12 @@
 	},
 /turf/simulated/floor/plasteel/grimy,
 /area/library)
+"fbp" = (
+/obj/machinery/door/firedoor,
+/obj/effect/decal/warning_stripes/yellow,
+/obj/machinery/atmospherics/pipe/simple/visible,
+/turf/simulated/floor/plasteel,
+/area/hallway/secondary/entry)
 "fbD" = (
 /obj/effect/spawner/lootdrop/maintenance,
 /obj/structure/cable{
@@ -76224,6 +76226,9 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/machinery/atmospherics/pipe/simple/visible{
+	dir = 4
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/auxsolarstarboard)
 "mRb" = (
@@ -76779,6 +76784,12 @@
 	icon_state = "neutralfull"
 	},
 /area/hallway/primary/central)
+"ngP" = (
+/obj/machinery/atmospherics/pipe/simple/visible{
+	dir = 5
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/apmaint)
 "ngX" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -80946,6 +80957,14 @@
 	},
 /turf/simulated/floor/plasteel/white,
 /area/toxins/storage)
+"psZ" = (
+/obj/machinery/atmospherics/pipe/simple/visible{
+	dir = 9
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "neutralfull"
+	},
+/area/maintenance/apmaint)
 "ptw" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable{
@@ -81489,6 +81508,9 @@
 	d1 = 2;
 	d2 = 8;
 	icon_state = "2-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/visible{
+	dir = 5
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/auxsolarstarboard)
@@ -82618,6 +82640,7 @@
 /turf/simulated/floor/plasteel/white,
 /area/medical/genetics)
 "qtk" = (
+/obj/machinery/atmospherics/pipe/simple/visible,
 /turf/simulated/floor/plasteel{
 	dir = 9;
 	icon_state = "arrival"
@@ -84338,6 +84361,7 @@
 /obj/machinery/door/airlock/external{
 	id_tag = "arrivalsn_door_int"
 	},
+/obj/machinery/atmospherics/pipe/simple/visible,
 /turf/simulated/floor/plating,
 /area/hallway/secondary/entry)
 "rua" = (
@@ -91427,6 +91451,13 @@
 	icon_state = "dark"
 	},
 /area/security/execution)
+"vsW" = (
+/obj/effect/decal/warning_stripes/yellow,
+/obj/machinery/atmospherics/pipe/simple/visible{
+	dir = 5
+	},
+/turf/simulated/floor/plasteel,
+/area/hallway/secondary/entry)
 "vtq" = (
 /obj/item/radio/intercom{
 	name = "north bump";
@@ -94024,6 +94055,9 @@
 	pixel_x = -25;
 	pixel_y = -25
 	},
+/obj/machinery/atmospherics/pipe/simple/visible{
+	dir = 10
+	},
 /turf/simulated/floor/plasteel,
 /area/hallway/secondary/entry)
 "xcP" = (
@@ -95089,6 +95123,9 @@
 	id_tag = "sol_door_int";
 	locked = 1;
 	name = "Arrivals External Access"
+	},
+/obj/machinery/atmospherics/pipe/simple/visible{
+	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/hallway/secondary/entry)
@@ -127388,9 +127425,9 @@ agA
 agg
 adZ
 xcL
-amL
+fbp
 qtk
-aou
+bKz
 wSO
 adb
 aaa
@@ -127618,7 +127655,7 @@ aaa
 nXF
 pUC
 rtH
-afb
+vsW
 afh
 aea
 oYY
@@ -129061,7 +129098,7 @@ dbp
 sJD
 ssL
 dHB
-dOO
+ngP
 dPw
 dIx
 dXD
@@ -129575,7 +129612,7 @@ fVi
 dbp
 ddy
 dIy
-tjB
+psZ
 ivR
 dKY
 hRF
@@ -149559,7 +149596,7 @@ bLB
 bXu
 iAD
 cgr
-bun
+ccP
 ceF
 ccP
 jIs
