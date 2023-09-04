@@ -3,8 +3,8 @@
 /client/proc/get_ooc_badged_name()
 	. = key
 	if(donator_level && (prefs.toggles & PREFTOGGLE_DONATOR_PUBLIC))
-		var/icon/doantor = icon(CHAT_BADGES_DMI, donator_level > 3 ? "Trusted" : "Paradise")
-		. = "[bicon(doantor)][.]"
+		var/icon/donator = icon(CHAT_BADGES_DMI, donator_level > 3 ? "Trusted" : "Paradise")
+		. = "[bicon(donator)][.]"
 
 	if(prefs.unlock_content)
 		if(prefs.toggles & PREFTOGGLE_MEMBER_PUBLIC)
