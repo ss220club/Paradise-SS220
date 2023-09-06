@@ -1,8 +1,16 @@
 /obj/machinery/photocopier
-	var/category = "" // selected form's category
-	var/form_id = "" // selected form's id
-	var/list/forms = new/list() // forms list
-	var/obj/item/paper/form/form = null // selected form for print
+	/// Selected form's category
+	var/category = ""
+	/// Selected form's id
+	var/form_id = ""
+	/// List of available forms
+	var/list/forms
+	/// Selected form's datum
+	var/obj/item/paper/form/form
+
+/obj/machinery/photocopier/Initialize(mapload)
+	. = ..()
+	forms = new
 
 /obj/machinery/photocopier/attack_ai(mob/user)
 	src.add_hiddenprint(user)
@@ -75,7 +83,7 @@
 		ui.open()
 
 /obj/machinery/photocopier/ui_data(mob/user)
-	if(forms.len == 0)
+	if(!length(forms))
 		parse_forms(user)
 
 	var/list/data = list()
@@ -117,8 +125,8 @@
 		forms[++forms.len] = form
 
 /obj/machinery/photocopier/proc/print_form(obj/item/paper/form/form)
-	var/obj/item/paper/form/paper = new form (loc)
+	var/obj/item/paper/form/paper = new form(loc)
 	toner--
-	if(toner == 0)
-		visible_message("<span class='notice'>На [src]е мигает красная лампочка. Похоже закончился тонер.</span>")
+	if(!toner)
+		visible_message("<span class='notice'>На [src] мигает красная лампочка. Похоже закончился тонер.</span>")
 	return paper
