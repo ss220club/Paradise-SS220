@@ -81,6 +81,7 @@ GLOBAL_DATUM_INIT(configuration, /datum/server_configuration, new())
 	discord = new()
 	event = new()
 	gamemode = new()
+	gateway = new() // SS220 ADDITION
 	general = new()
 	ipintel = new()
 	jobs = new()
