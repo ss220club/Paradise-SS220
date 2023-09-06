@@ -20,8 +20,10 @@ GLOBAL_DATUM_INIT(configuration, /datum/server_configuration, new())
 	var/datum/configuration_section/event_configuration/event
 	/// Holder for the gamemode configuration datum
 	var/datum/configuration_section/gamemode_configuration/gamemode
+	/* SS220 ADDITION - START */
 	/// Holder for the gateway configuration datum
 	var/datum/configuration_section/gateway_configuration/gateway
+	/* SS220 ADDITION - END */
 	/// Holder for the general configuration datum
 	var/datum/configuration_section/general_configuration/general
 	/// Holder for the IPIntel configuration datum

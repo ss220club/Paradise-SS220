@@ -24,5 +24,5 @@
 		log_startup_progress("Away mission loaded in [stop_watch(watch)]s.")
 
 	else
-		log_startup_progress("ДА БЛЯТЬ, СУКА ЁБАНАЯ, ГЕЙТЫ СНОВА СЛОМАЛИСЬ!")
+		log_startup_progress("No away missions found.")
 		return
