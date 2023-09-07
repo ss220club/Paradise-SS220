@@ -7,6 +7,8 @@
 	var/list/forms
 	/// Selected form's datum
 	var/datum/bureaucratic_form/form
+	/// Printing sound
+	var/print_sound = 'sound/goonstation/machines/printer_dotmatrix.ogg'
 
 /obj/machinery/photocopier/Initialize(mapload)
 	. = ..()
@@ -36,10 +38,9 @@
 	. = FALSE
 	switch(action)
 		if("print_form")
-			for(var/i = 0, i < copies, i++)
+			for(var/i in 1 to copies)
 				if(toner <= 0)
 					break
-				playsound(loc, 'sound/goonstation/machines/printer_dotmatrix.ogg', 25, 1)
 				print_form(form)
 				use_power(active_power_consumption)
 				sleep(15)
@@ -64,7 +65,7 @@
 			if(!selection)
 				return
 
-			playsound(loc, 'sound/goonstation/machines/printer_dotmatrix.ogg', 50, 1)
+			playsound(loc, print_sound, 50, 1)
 			var/obj/item/photo/photo = new /obj/item/photo(loc)
 			photo.construct(selection)
 			photo.desc += "[photo.desc ? " - " : ""]Copied by [tempAI.name]"
@@ -121,6 +122,7 @@
 		forms[++forms.len] = form
 
 /obj/machinery/photocopier/proc/print_form(datum/bureaucratic_form/form)
+	playsound(loc, print_sound, 25, 1)
 	toner--
 	if(!toner)
 		visible_message("<span class='notice'>На [src] мигает красная лампочка. Похоже закончился тонер.</span>")
