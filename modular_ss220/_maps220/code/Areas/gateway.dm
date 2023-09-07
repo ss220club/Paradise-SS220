@@ -1,41 +1,22 @@
-/* moonoutpost19 */
-/area/moonoutpost19
-	name = "moonoutpost"
-	has_gravity = TRUE
+/area/awaymission/wildwest
+	name = "Wild West"
 	report_alerts = FALSE
+	icon_state = "away"
+	requires_power = FALSE
+	dynamic_lighting = DYNAMIC_LIGHTING_FORCED
 
-/area/moonoutpost19/mo19arrivals
-	name = "MO19 Arrivals"
+/area/awaymission/wildwest/wildwest_mines
+	name = "\improper Wild West Mines"
 	icon_state = "awaycontent1"
 
-/area/moonoutpost19/mo19research
-	name = "MO19 Research"
+/area/awaymission/wildwest/wildwest_vaultdoors
+	name = "\improper Wild West Vault Doors"
 	icon_state = "awaycontent2"
 
-/area/moonoutpost19/khonsu19
-	name = "Khonsu 19"
+/area/awaymission/wildwest/wildwest_refine
+	name = "\improper Wild West Refinery"
 	icon_state = "awaycontent3"
-	always_unpowered = TRUE
-	ambientsounds = list('sound/ambience/ambimine.ogg')
-	power_environ = FALSE
-	power_equip = FALSE
-	power_light = FALSE
-	poweralm = FALSE
-	outdoors = TRUE
 
-/area/moonoutpost19/syndicateoutpost
-	name = "Syndicate Outpost"
-	icon_state = "awaycontent4"
-
-/area/moonoutpost19/hive
-	name = "The Hive"
-	icon_state = "awaycontent5"
-	always_unpowered = TRUE
-	power_environ = FALSE
-	power_equip = FALSE
-	power_light = FALSE
-	poweralm = FALSE
-
-/area/moonoutpost19/mo19utilityroom
-	name = "MO19 Utility Room"
-	icon_state = "awaycontent6"
+/area/awaymission/wildwest/wildwest_vault
+	name = "\improper Wild West Vault"
+	icon_state = "awaycontent3"
