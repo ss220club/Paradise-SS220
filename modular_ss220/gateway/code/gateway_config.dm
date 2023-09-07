@@ -1,8 +1,12 @@
+/datum/server_configuration
+	/// Holder for the gateway configuration datum
+	var/datum/configuration_section/gateway_configuration/gateway
+
 /datum/server_configuration/load_all_sections()
 	. = ..()
+	gateway = new()
 	safe_load(gateway, "gateway_configuration")
 
-/* Config holder for all gateway related things */
 /datum/configuration_section/gateway_configuration
 	/// Do we want to enable away missions or not
 	var/enable_away_mission = TRUE
