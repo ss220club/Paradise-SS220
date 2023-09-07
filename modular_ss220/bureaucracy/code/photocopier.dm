@@ -44,28 +44,19 @@
 				print_form(form)
 				use_power(active_power_consumption)
 				sleep(15)
+			. = TRUE
 		if("choose_form")
 			form = params["path"]
 			form_id = params["id"]
+			. = TRUE
 		if("choose_category")
 			category = params["category"]
+			. = TRUE
 		if("aipic")
-			if(!istype(usr, /mob/living/silicon))
-				return
+			aipic()
+			. = TRUE
+	update_icon()
 
-			if(toner < 5)
-				return
-
-			var/mob/living/silicon/tempAI = usr
-			var/obj/item/camera/siliconcam/camera = tempAI.aiCamera
-
-			if(!camera)
-				return
-			var/datum/picture/selection = camera.selectpicture()
-			if(!selection)
-				return
-
-			print_photo(selection, tempAI.name)
 
 /obj/machinery/photocopier/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = FALSE, datum/tgui/master_ui = null, datum/ui_state/state = GLOB.default_state)
 	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
@@ -122,10 +113,3 @@
 	var/obj/item/paper/paper = new(loc)
 	var/datum/bureaucratic_form/ink = new form
 	ink.apply_to_paper(paper)
-
-/obj/machinery/photocopier/proc/print_photo(datum/picture/selection, author)
-	playsound(loc, print_sound, 50, 1)
-	var/obj/item/photo/photo = new /obj/item/photo(loc)
-	photo.construct(selection)
-	photo.desc += "[photo.desc ? " - " : ""]Copied by [author]"
-	toner -= 5
