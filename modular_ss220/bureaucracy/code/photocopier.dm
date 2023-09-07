@@ -50,7 +50,7 @@
 		if("choose_category")
 			category = params["category"]
 		if("aipic")
-			if(!istype(usr,/mob/living/silicon))
+			if(!istype(usr, /mob/living/silicon))
 				return
 
 			if(toner < 5)
@@ -66,12 +66,9 @@
 				return
 
 			playsound(loc, 'sound/goonstation/machines/printer_dotmatrix.ogg', 50, 1)
-			var/obj/item/photo/p = new /obj/item/photo (src.loc)
-			p.construct(selection)
-			if(p.desc == "")
-				p.desc += "Copied by [tempAI.name]"
-			else
-				p.desc += " - Copied by [tempAI.name]"
+			var/obj/item/photo/photo = new /obj/item/photo(loc)
+			photo.construct(selection)
+			photo.desc += "[photo.desc ? " - " : ""]Copied by [tempAI.name]"
 			toner -= 5
 		else
 			return FALSE
