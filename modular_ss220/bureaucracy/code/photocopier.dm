@@ -34,7 +34,6 @@
 	if(..())
 		return
 	. = FALSE
-	add_fingerprint(usr)
 	switch(action)
 		if("print_form")
 			for(var/i = 0, i < copies, i++)
