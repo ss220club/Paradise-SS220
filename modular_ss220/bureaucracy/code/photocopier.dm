@@ -46,7 +46,7 @@
 				sleep(15)
 			. = TRUE
 		if("choose_form")
-			form = params["path"]
+			form = GLOB.bureaucratic_forms[params["path"]]
 			form_id = params["id"]
 			. = TRUE
 		if("choose_category")
@@ -91,17 +91,18 @@
 
 /obj/machinery/photocopier/proc/parse_forms(mob/user)
 	var/list/access = user.get_access()
-	forms = new/list()
-	for(var/datum/bureaucratic_form/F as anything in subtypesof(/datum/bureaucratic_form))
-		var/req_access = initial(F.req_access)
+	forms.Cut()
+	for(var/path in GLOB.bureaucratic_forms)
+		var/datum/bureaucratic_form/F = GLOB.bureaucratic_forms[path]
+		var/req_access = F.req_access
 		if(req_access && !(req_access in access))
 			continue
 		var/form[0]
-		form["path"] = F
-		form["id"] = initial(F.id)
-		form["altername"] = initial(F.altername)
-		form["category"] = initial(F.category)
-		forms[++forms.len] = form
+		form["path"] = F.type
+		form["id"] = F.id
+		form["altername"] = F.altername
+		form["category"] = F.category
+		forms.Add(list(form))
 
 /obj/machinery/photocopier/proc/print_form(datum/bureaucratic_form/form)
 	playsound(loc, print_sound, 25, 1)
@@ -109,5 +110,4 @@
 	if(!toner)
 		visible_message("<span class='notice'>На [src] мигает красная лампочка. Похоже закончился тонер.</span>")
 	var/obj/item/paper/paper = new(loc)
-	var/datum/bureaucratic_form/ink = new form
-	ink.apply_to_paper(paper)
+	form.apply_to_paper(paper)
