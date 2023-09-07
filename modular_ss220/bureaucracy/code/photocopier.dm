@@ -6,7 +6,7 @@
 	/// List of available forms
 	var/list/forms
 	/// Selected form's datum
-	var/obj/item/paper/form/form
+	var/datum/bureaucratic_form/form
 
 /obj/machinery/photocopier/Initialize(mapload)
 	. = ..()
@@ -23,7 +23,7 @@
 	return attack_hand(user)
 
 /obj/machinery/photocopier/attack_hand(mob/user)
-	if(..(user))
+	if(..())
 		return 1
 
 	user.set_machine(src)
@@ -42,8 +42,8 @@
 					break
 				playsound(loc, 'sound/goonstation/machines/printer_dotmatrix.ogg', 25, 1)
 				print_form(form)
-				sleep(15)
 				use_power(active_power_consumption)
+				sleep(15)
 		if("choose_form")
 			form = params["path"]
 			form_id = params["id"]
@@ -53,25 +53,26 @@
 			if(!istype(usr,/mob/living/silicon))
 				return
 
-			if(toner >= 5)
-				var/mob/living/silicon/tempAI = usr
-				var/obj/item/camera/siliconcam/camera = tempAI.aiCamera
+			if(toner < 5)
+				return
 
-				if(!camera)
-					return
-				var/datum/picture/selection = camera.selectpicture()
-				if(!selection)
-					return
+			var/mob/living/silicon/tempAI = usr
+			var/obj/item/camera/siliconcam/camera = tempAI.aiCamera
 
-				playsound(loc, 'sound/goonstation/machines/printer_dotmatrix.ogg', 50, 1)
-				var/obj/item/photo/p = new /obj/item/photo (src.loc)
-				p.construct(selection)
-				if(p.desc == "")
-					p.desc += "Copied by [tempAI.name]"
-				else
-					p.desc += " - Copied by [tempAI.name]"
-				toner -= 5
-				sleep(15)
+			if(!camera)
+				return
+			var/datum/picture/selection = camera.selectpicture()
+			if(!selection)
+				return
+
+			playsound(loc, 'sound/goonstation/machines/printer_dotmatrix.ogg', 50, 1)
+			var/obj/item/photo/p = new /obj/item/photo (src.loc)
+			p.construct(selection)
+			if(p.desc == "")
+				p.desc += "Copied by [tempAI.name]"
+			else
+				p.desc += " - Copied by [tempAI.name]"
+			toner -= 5
 		else
 			return FALSE
 	add_fingerprint(usr)
@@ -112,21 +113,22 @@
 /obj/machinery/photocopier/proc/parse_forms(mob/user)
 	var/list/access = user.get_access()
 	forms = new/list()
-	for(var/F in subtypesof(/obj/item/paper/form))
-		var/obj/item/paper/form/ff = F
-		var/req_access = initial(ff.access)
+	for(var/datum/bureaucratic_form/F as anything in subtypesof(/datum/bureaucratic_form))
+		var/req_access = initial(F.req_access)
 		if(req_access && !(req_access in access))
 			continue
 		var/form[0]
 		form["path"] = F
-		form["id"] = initial(ff.id)
-		form["altername"] = initial(ff.altername)
-		form["category"] = initial(ff.category)
+		form["id"] = initial(F.id)
+		form["altername"] = initial(F.altername)
+		form["category"] = initial(F.category)
 		forms[++forms.len] = form
 
-/obj/machinery/photocopier/proc/print_form(obj/item/paper/form/form)
-	var/obj/item/paper/form/paper = new form(loc)
+/obj/machinery/photocopier/proc/print_form(datum/bureaucratic_form/form)
 	toner--
 	if(!toner)
 		visible_message("<span class='notice'>На [src] мигает красная лампочка. Похоже закончился тонер.</span>")
-	return paper
+	var/obj/item/paper/paper = new(loc)
+	var/datum/bureaucratic_form/ink = new form
+	ink.apply_to_paper(paper)
+	qdel(ink)

@@ -10,9 +10,6 @@ String.prototype.trimLongStr = function (length) {
 
 export const Photocopier220 = (props, context) => {
   const { act, data } = useBackend(context);
-  if (!data.isAI) {
-    act("aipic");
-  }
 
   const forms = sortBy(form => form.category)(data.forms || []);
 
@@ -111,7 +108,7 @@ export const Photocopier220 = (props, context) => {
                     fluid
                     textAlign="center"
                     icon="terminal"
-                    disabled={data.toner === 0}
+                    disabled={data.toner < 5}
                     content="Фото из БД"
                     onClick={() => act("aipic")}
                   />
@@ -130,6 +127,7 @@ export const Photocopier220 = (props, context) => {
                       fluid
                       icon="minus"
                       textAlign="center"
+                      disabled={data.copynumber === 1}
                       content=""
                       onClick={() => act('minus')}
                     />
@@ -139,6 +137,7 @@ export const Photocopier220 = (props, context) => {
                     fluid
                     icon="plus"
                     textAlign="center"
+                    disabled={data.copynumber >= data.toner}
                     content=""
                     onClick={() => act('add')}
                   />
