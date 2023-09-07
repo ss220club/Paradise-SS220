@@ -45,10 +45,10 @@
 	icon_state = "broken_machine"
 
 /obj/effect/mapping_helpers/machinery/damaged/payload(obj/machinery/M)
-    M.take_damage(M.obj_integrity - M.integrity_failure)
+	M.take_damage(M.obj_integrity - M.integrity_failure)
 
 /obj/effect/mapping_helpers/machinery/destroyed/payload(obj/machinery/M)
-    M.take_damage(M.obj_integrity)
+	M.take_damage(M.obj_integrity)
 
 //Window helpers
 ///Deals random damage to the first window found on a tile to appear cracked
