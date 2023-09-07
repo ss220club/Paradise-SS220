@@ -6575,8 +6575,8 @@
 "pv" = (
 /obj/machinery/atmospherics/air_sensor{
 	frequency = 1443;
-	id_tag = "UO71_air_sensor";
-	output = 7
+	output = 7;
+	autolink_id = "UO71_air_sensor"
 	},
 /turf/simulated/floor/engine/air,
 /area/awaymission/UO71/eng)
@@ -6769,20 +6769,18 @@
 "pP" = (
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
 	external_pressure_bound = 0;
-	frequency = 1443;
 	icon_state = "in";
-	id_tag = "UO71_air_out";
 	internal_pressure_bound = 2000;
 	on = 1;
 	pressure_checks = 2;
-	pump_direction = 0
+	autolink_id = "UO71_air_out"
 	},
 /turf/simulated/floor/engine/air,
 /area/awaymission/UO71/eng)
 "pQ" = (
 /obj/machinery/atmospherics/unary/outlet_injector/on{
 	frequency = 1443;
-	id = "UO71_air_in"
+	autolink_id = "UO71_air_in"
 	},
 /turf/simulated/floor/engine/air,
 /area/awaymission/UO71/eng)
@@ -7087,7 +7085,6 @@
 /area/awaymission/UO71/science)
 "qC" = (
 /obj/machinery/atmospherics/unary/thermomachine/freezer{
-	current_temperature = 80;
 	on = 1
 	},
 /turf/simulated/floor/plasteel{
@@ -8171,13 +8168,10 @@
 /obj/machinery/atmospherics/unary/vent_pump{
 	dir = 8;
 	external_pressure_bound = 0;
-	frequency = 1441;
-	id_tag = "UO71_waste_out";
-	initialize_directions = 1;
 	internal_pressure_bound = 4000;
 	on = 1;
 	pressure_checks = 2;
-	pump_direction = 0
+	autolink_id = "UO71_waste_out"
 	},
 /turf/simulated/floor/engine{
 	name = "vacuum floor";
@@ -8551,7 +8545,7 @@
 "tx" = (
 /obj/machinery/atmospherics/unary/outlet_injector/on{
 	dir = 8;
-	id = "UO71_waste_in"
+	autolink_id = "UO71_waste_in"
 	},
 /turf/simulated/floor/engine{
 	name = "vacuum floor";
@@ -8561,8 +8555,8 @@
 /area/awaymission/UO71/eng)
 "ty" = (
 /obj/machinery/atmospherics/air_sensor{
-	id_tag = "UO71_waste_sensor";
-	output = 63
+	output = 63;
+	autolink_id = "UO71_waste_sensor"
 	},
 /turf/simulated/floor/engine{
 	name = "vacuum floor";
@@ -9492,7 +9486,7 @@
 "vE" = (
 /obj/machinery/atmospherics/unary/outlet_injector/on{
 	dir = 1;
-	id = "UO71_n2_in"
+	autolink_id = "UO71_n2_in"
 	},
 /turf/simulated/floor/engine/n2,
 /area/awaymission/UO71/eng)
@@ -9500,20 +9494,17 @@
 /obj/machinery/atmospherics/unary/vent_pump{
 	dir = 1;
 	external_pressure_bound = 0;
-	frequency = 1441;
-	id_tag = "UO71_n2_out";
-	initialize_directions = 1;
 	internal_pressure_bound = 4000;
 	on = 1;
 	pressure_checks = 2;
-	pump_direction = 0
+	autolink_id = "UO71_n2_out"
 	},
 /turf/simulated/floor/engine/n2,
 /area/awaymission/UO71/eng)
 "vG" = (
 /obj/machinery/atmospherics/unary/outlet_injector/on{
 	dir = 1;
-	id = "UO71_o2_in"
+	autolink_id = "UO71_o2_in"
 	},
 /turf/simulated/floor/engine/o2,
 /area/awaymission/UO71/eng)
@@ -9521,13 +9512,10 @@
 /obj/machinery/atmospherics/unary/vent_pump{
 	dir = 1;
 	external_pressure_bound = 0;
-	frequency = 1441;
-	id_tag = "UO71_o2_out";
-	initialize_directions = 1;
 	internal_pressure_bound = 4000;
 	on = 1;
 	pressure_checks = 2;
-	pump_direction = 0
+	autolink_id = "UO71_o2_out"
 	},
 /turf/simulated/floor/engine/o2,
 /area/awaymission/UO71/eng)
@@ -9808,7 +9796,7 @@
 /area/awaymission/UO71/eng)
 "wl" = (
 /obj/machinery/atmospherics/air_sensor{
-	id_tag = "UO71_n2_sensor"
+	autolink_id = "UO71_n2_sensor"
 	},
 /obj/machinery/light/small,
 /turf/simulated/floor/engine/n2,
@@ -9819,7 +9807,7 @@
 /area/awaymission/UO71/eng)
 "wn" = (
 /obj/machinery/atmospherics/air_sensor{
-	id_tag = "UO71_o2_sensor"
+	autolink_id = "UO71_o2_sensor"
 	},
 /obj/machinery/light/small,
 /turf/simulated/floor/engine/o2,
