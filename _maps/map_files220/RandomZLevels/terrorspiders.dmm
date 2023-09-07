@@ -4104,7 +4104,6 @@
 /area/awaymission/UO71/gateway)
 "kH" = (
 /obj/structure/spider/cocoon{
-	contents = newlist(/obj/effect/decal/remains/human);
 	icon_state = "cocoon_large1"
 	},
 /obj/structure/spider/terrorweb,
@@ -6574,7 +6573,6 @@
 /area/awaymission/UO71/eng)
 "pv" = (
 /obj/machinery/atmospherics/air_sensor{
-	frequency = 1443;
 	output = 7;
 	autolink_id = "UO71_air_sensor"
 	},
@@ -6779,7 +6777,6 @@
 /area/awaymission/UO71/eng)
 "pQ" = (
 /obj/machinery/atmospherics/unary/outlet_injector/on{
-	frequency = 1443;
 	autolink_id = "UO71_air_in"
 	},
 /turf/simulated/floor/engine/air,
@@ -6983,9 +6980,9 @@
 /area/awaymission/UO71/centralhall)
 "qr" = (
 /obj/machinery/atmospherics/meter{
-	id = "UO71_mair_out_meter";
 	layer = 3.3;
-	name = "Mixed Air Tank Out"
+	name = "Mixed Air Tank Out";
+	autolink_id = "UO71_mair_out_meter"
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/cyan,
 /turf/simulated/wall,
@@ -6993,9 +6990,9 @@
 "qs" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan,
 /obj/machinery/atmospherics/meter{
-	id = "UO71_mair_in_meter";
 	layer = 3.3;
-	name = "Mixed Air Tank In"
+	name = "Mixed Air Tank In";
+	autolink_id = "UO71_mair_in_meter"
 	},
 /turf/simulated/wall,
 /area/awaymission/UO71/eng)
@@ -7014,8 +7011,7 @@
 	initialize_directions = 1;
 	internal_pressure_bound = 4000;
 	on = 1;
-	pressure_checks = 2;
-	pump_direction = 0
+	pressure_checks = 2
 	},
 /turf/simulated/floor/bluegrid,
 /area/awaymission/UO71/science)
@@ -8135,7 +8131,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/meter{
-	id = "UO71_dloop_atm_meter";
+	autolink_id = "UO71_dloop_atm_meter";
 	name = "Distribution Loop"
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -8789,7 +8785,7 @@
 /area/awaymission/UO71/eng)
 "ud" = (
 /obj/machinery/atmospherics/meter{
-	id = "UO71_wloop_atm_meter";
+	autolink_id = "UO71_wloop_atm_meter";
 	name = "Waste Loop"
 	},
 /obj/machinery/atmospherics/pipe/manifold/visible/purple{
