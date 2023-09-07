@@ -5064,16 +5064,7 @@
 /area/awaymission/UO71/centralhall)
 "mF" = (
 /obj/structure/closet/secure_closet{
-	desc = "It's a secure locker for personnel. The first card swiped gains control.";
-	icon_broken = "cabinetdetective_broken";
-	icon_closed = "cabinetdetective";
-	icon_locked = "cabinetdetective_locked";
-	icon_off = "cabinetdetective_broken";
-	icon_opened = "cabinetdetective_open";
-	icon_state = "cabinetdetective";
-	locked = 0;
-	name = "personal closet";
-	req_access = list(271)
+	locked = 0
 	},
 /obj/item/clothing/under/misc/pj/red,
 /turf/simulated/floor/carpet,
@@ -5370,16 +5361,7 @@
 /area/awaymission/UO71/centralhall)
 "nj" = (
 /obj/structure/closet/secure_closet{
-	desc = "It's a secure locker for personnel. The first card swiped gains control.";
-	icon_broken = "cabinetdetective_broken";
-	icon_closed = "cabinetdetective";
-	icon_locked = "cabinetdetective_locked";
-	icon_off = "cabinetdetective_broken";
-	icon_opened = "cabinetdetective_open";
-	icon_state = "cabinetdetective";
-	locked = 0;
-	name = "personal closet";
-	req_access = list(271)
+	locked = 0
 	},
 /turf/simulated/floor/carpet,
 /area/awaymission/UO71/centralhall)
@@ -7313,12 +7295,10 @@
 /area/awaymission/UO71/eng)
 "qZ" = (
 /obj/machinery/computer/general_air_control/large_tank_control{
-	frequency = 1443;
-	input_tag = "UO71_air_in";
 	name = "Mixed Air Supply Control";
-	output_tag = "UO71_air_out";
-	pressure_setting = 2000;
-	sensors = list("UO71_air_sensor"="Tank")
+	autolink_sensors = list("UO71_air_sensor"="Tank");
+	outlet_vent_autolink_id = "UO71_air_out";
+	inlet_injector_autolink_id = "UO71_air_in"
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/cyan,
 /turf/simulated/floor/plasteel{
@@ -8602,11 +8582,11 @@
 /area/awaymission/UO71/eng)
 "tB" = (
 /obj/machinery/computer/general_air_control/large_tank_control{
-	input_tag = "UO71_waste_in";
 	name = "Gas Mix Tank Control";
-	output_tag = "UO71_waste_out";
-	sensors = list("UO71_waste_sensor"="Tank");
-	dir = 8
+	dir = 8;
+	inlet_injector_autolink_id = "UO71_waste_in";
+	outlet_vent_autolink_id = "UO71_waste_out";
+	autolink_sensors = list("UO71_waste_sensor"="Tank")
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 6
@@ -9115,13 +9095,6 @@
 	req_access = list(271)
 	},
 /obj/structure/closet/secure_closet{
-	icon_broken = "secbroken";
-	icon_closed = "sec";
-	icon_locked = "sec1";
-	icon_off = "secoff";
-	icon_opened = "secopen";
-	icon_state = "sec1";
-	name = "security officer's locker";
 	req_access = list(271)
 	},
 /obj/item/clothing/suit/armor/vest,
@@ -9192,11 +9165,11 @@
 	dir = 4
 	},
 /obj/machinery/computer/general_air_control/large_tank_control{
-	input_tag = "UO71_n2_in";
 	name = "Nitrogen Supply Control";
-	output_tag = "UO71_n2_out";
-	sensors = list("UO71_n2_sensor"="Tank");
-	dir = 1
+	dir = 1;
+	inlet_injector_autolink_id = "UO71_n2_in";
+	outlet_vent_autolink_id = "UO71_n2_out";
+	autolink_sensors = list("UO71_n2_sensor"="Tank")
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/cyan,
 /turf/simulated/floor/plasteel{
@@ -9210,11 +9183,11 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/cyan,
 /obj/machinery/computer/general_air_control/large_tank_control{
-	input_tag = "UO71_o2_in";
 	name = "Oxygen Supply Control";
-	output_tag = "UO71_o2_out";
-	sensors = list("UO71_o2_sensor"="Tank");
-	dir = 1
+	dir = 1;
+	inlet_injector_autolink_id = "UO71_o2_in";
+	outlet_vent_autolink_id = "UO71_o2_out";
+	autolink_sensors = list("UO71_o2_sensor"="Tank")
 	},
 /turf/simulated/floor/plasteel{
 	dir = 6;
@@ -9309,7 +9282,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/computer/general_air_control{
 	name = "Tank Monitor";
-	sensors = list("UO71_n2_sensor"="Nitrogen","UO71_o2_sensor"="Oxygen","UO71_waste_sensor"="Gas Mix Tank");
 	dir = 4
 	},
 /turf/simulated/floor/plasteel{
@@ -9490,11 +9462,10 @@
 "vB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/computer/general_air_control{
-	frequency = 1443;
-	level = 3;
 	name = "Distribution and Waste Monitor";
-	sensors = list("UO71_mair_in_meter"="Mixed Air In","UO71_air_sensor"="Mixed Air Supply Tank","UO71_mair_out_meter"="Mixed Air Out","UO71_dloop_atm_meter"="Distribution Loop","UO71_wloop_atm_meter"="Waste Loop");
-	dir = 4
+	dir = 4;
+	autolink_sensors = list("UO71_mair_in_meter"="Mixed Air In","UO71_air_sensor"="Mixed Air Supply Tank","UO71_mair_out_meter"="Mixed Air Out","UO71_dloop_atm_meter"="Distribution Loop","UO71_wloop_atm_meter"="Waste Loop");
+	level = 3
 	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
@@ -10794,9 +10765,7 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/UO71/mining)
 "yn" = (
-/obj/machinery/mineral/processing_unit_console{
-	machinedir = 8
-	},
+/obj/machinery/mineral/processing_unit_console,
 /obj/effect/spawner/random_spawners/wall_rusted_always,
 /turf/simulated/wall,
 /area/awaymission/UO71/mining)
@@ -10905,9 +10874,7 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/UO71/mining)
 "yC" = (
-/obj/machinery/mineral/stacking_unit_console{
-	machinedir = 2
-	},
+/obj/machinery/mineral/stacking_unit_console,
 /turf/simulated/wall,
 /area/awaymission/UO71/mining)
 "yD" = (
