@@ -20,9 +20,9 @@
 	paper_height = initial(paper_height)
 
 /obj/item/paper/Topic(href, href_list)
-	..()
 	if(!usr || (usr.stat || usr.restrained()))
 		return
+
 	if(href_list["auto_write"])
 		var/id = href_list["auto_write"]
 		var/const/sign_text = "\[Подпись\]"
@@ -31,22 +31,22 @@
 		var/const/num_text = "\[Номер аккаунта\]"
 		var/const/pin_text = "\[ПИН\]"
 		var/const/station_text = "\[Название станции\]"
-		var/list/menu_list = list() //text items in the menu
-		menu_list.Add(usr.real_name) //the real name of the character, even if it is hidden
-		if(usr.real_name != usr.name || usr.name != "unknown") //if the player is masked or the name is different a new answer option is added
+		var/list/menu_list = list()
+		menu_list.Add(usr.real_name)
+		if(usr.real_name != usr.name || usr.name != "unknown")
 			menu_list.Add("[usr.name]")
-		menu_list.Add(usr.job, //current job
-			num_text, //account number
-			pin_text, //pin code number
-			sign_text, //signature
-			time_text, //time
-			date_text, //date
-			station_text, // station name
-			usr.gender, //current gender
-			usr.dna.species //current species
+		menu_list.Add(usr.job, // Сurrent job
+			num_text, // Account number
+			pin_text, // Pin code number
+			sign_text, // Signature
+			time_text, // Time
+			date_text, // Date
+			station_text, // Station name
+			usr.gender, // Current gender
+			usr.dna.species // Current species
 		)
 		var/input_element = input("Select the text you want to add:", "Select item") as null|anything in menu_list
-		switch(input_element) //format selected menu items in pencode and internal data
+		switch(input_element) // Format selected menu items in pencode and internal data
 			if(sign_text)
 				input_element = "\[sign\]"
 			if(time_text)
@@ -60,7 +60,5 @@
 			if(pin_text)
 				input_element = usr.mind.initial_account.account_pin
 		topic_href_write(id, input_element)
-	if(href_list["write"] )
-		var/id = href_list["write"]
-		var/input_element = input("Enter what you want to write:", "Write", null, null) as message
-		topic_href_write(id, input_element)
+
+	..()
