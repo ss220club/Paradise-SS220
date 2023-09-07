@@ -11317,7 +11317,7 @@
 	},
 /area/security/customs2)
 "aOF" = (
-/obj/structure/reagent_dispensers/fueltank,
+/obj/item/reagent_containers/food/drinks/cans/beer,
 /turf/simulated/floor/plating,
 /area/maintenance/fsmaint)
 "aOI" = (
@@ -12078,6 +12078,7 @@
 /area/maintenance/fsmaint)
 "aQJ" = (
 /obj/machinery/atmospherics/portable/canister/air,
+/obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/fsmaint)
 "aQL" = (
@@ -47835,7 +47836,7 @@
 /obj/structure/rack{
 	dir = 1
 	},
-/obj/effect/spawner/lootdrop/maintenance,
+/obj/effect/spawner/lootdrop/maintenance/two,
 /turf/simulated/floor/plating,
 /area/maintenance/fsmaint)
 "dqL" = (
@@ -52437,9 +52438,6 @@
 	},
 /obj/structure/closet/emcloset,
 /obj/effect/decal/cleanable/dust,
-/obj/effect/turf_decal/stripes{
-	dir = 1
-	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "yellowcorner"
@@ -53752,6 +53750,9 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/molten_object/large,
 /obj/effect/decal/remains/human,
+/obj/structure/railing/cap/normal{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "showroomfloor"
 	},
@@ -57163,6 +57164,9 @@
 /area/security/permabrig)
 "gXj" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/railing/cap/reversed{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "showroomfloor"
 	},
@@ -65093,9 +65097,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/turf_decal/siding/white{
-	dir = 5
-	},
+/obj/effect/decal/warning_stripes/northeast,
 /turf/simulated/floor/plating,
 /area/maintenance/fsmaint)
 "kCM" = (
@@ -66042,6 +66044,15 @@
 	icon_state = "darkblue"
 	},
 /area/medical/morgue)
+"kWl" = (
+/obj/structure/toilet{
+	name = "Унитаз";
+	desc = "Старый унитаз. Что он тут делает?"
+	},
+/obj/effect/decal/cleanable/vomit,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/plating,
+/area/maintenance/fsmaint)
 "kWu" = (
 /obj/effect/spawner/window/reinforced,
 /obj/structure/cable{
@@ -66455,6 +66466,7 @@
 "ldl" = (
 /obj/effect/decal/cleanable/dust,
 /obj/machinery/light/small,
+/obj/item/clothing/shoes/sandal,
 /turf/simulated/floor/plating,
 /area/maintenance/fsmaint)
 "lee" = (
@@ -67039,9 +67051,6 @@
 	},
 /obj/effect/decal/cleanable/cobweb,
 /obj/effect/decal/cleanable/dust,
-/obj/effect/turf_decal/stripes{
-	dir = 1
-	},
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "yellowcorner"
@@ -67912,7 +67921,6 @@
 /obj/effect/spawner/lootdrop/maintenance,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/ants,
-/obj/effect/decal/cleanable/vomit,
 /turf/simulated/floor/plasteel{
 	icon_state = "stage_bleft"
 	},
@@ -77348,9 +77356,7 @@
 /obj/machinery/atmospherics/unary/tank/air{
 	dir = 4
 	},
-/obj/effect/turf_decal/siding/white{
-	dir = 6
-	},
+/obj/effect/decal/warning_stripes/southeast,
 /turf/simulated/floor/plating,
 /area/maintenance/fsmaint)
 "pJH" = (
@@ -78239,7 +78245,7 @@
 /area/toxins/server)
 "qej" = (
 /obj/structure/table,
-/obj/effect/spawner/lootdrop/maintenance/eight,
+/obj/effect/spawner/lootdrop/maintenance/two,
 /obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/plasteel{
 	dir = 1;
@@ -93848,9 +93854,7 @@
 	},
 /obj/effect/decal/cleanable/dust,
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/turf_decal/stripes{
-	dir = 1
-	},
+/obj/effect/decal/warning_stripes/yellow/partial,
 /turf/simulated/floor/plasteel,
 /area/maintenance/fsmaint)
 "wYi" = (
@@ -138515,7 +138519,7 @@ xAf
 aGX
 aQJ
 aRI
-aGY
+aOF
 aGX
 aTZ
 cQZ
@@ -138770,7 +138774,7 @@ aOi
 aGX
 fEx
 aGX
-aHb
+kWl
 qtc
 aGY
 lrO
@@ -139284,7 +139288,7 @@ uKa
 dYq
 wZU
 aMz
-aOF
+aUU
 qtc
 aGX
 sYP
@@ -139541,7 +139545,7 @@ aOi
 lie
 vBm
 aMz
-aHb
+aNh
 qtc
 uDS
 vZl
