@@ -17492,10 +17492,7 @@
 "bjN" = (
 /obj/structure/table/glass,
 /obj/item/dice/d20,
-/turf/simulated/floor/light/purple{
-	color = "#ffadfd";
-	light_color = "#ffadfd"
-	},
+/turf/simulated/floor/light/purple,
 /area/crew_quarters/bar/atrium)
 "bjO" = (
 /obj/structure/table/wood,
@@ -20048,10 +20045,7 @@
 /area/chapel/main)
 "buC" = (
 /obj/structure/table/glass,
-/turf/simulated/floor/light/purple{
-	color = "#ffadfd";
-	light_color = "#ffadfd"
-	},
+/turf/simulated/floor/light/purple,
 /area/crew_quarters/bar/atrium)
 "buE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -50366,10 +50360,7 @@
 	pixel_x = 9;
 	pixel_y = 5
 	},
-/turf/simulated/floor/light/purple{
-	color = "#ffadfd";
-	light_color = "#ffadfd"
-	},
+/turf/simulated/floor/light/purple,
 /area/crew_quarters/bar)
 "eeJ" = (
 /obj/structure/disposalpipe/segment,
@@ -50425,10 +50416,7 @@
 	pixel_y = 8
 	},
 /obj/machinery/door/firedoor,
-/turf/simulated/floor/light/purple{
-	color = "#ffadfd";
-	light_color = "#ffadfd"
-	},
+/turf/simulated/floor/light/purple,
 /area/crew_quarters/bar)
 "efD" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
@@ -52000,11 +51988,13 @@
 /turf/simulated/floor/carpet,
 /area/medical/psych)
 "eLz" = (
-/obj/structure/window/reinforced{
-	dir = 4
-	},
 /obj/machinery/disposal,
-/obj/structure/disposalpipe/trunk,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/disposalpipe/trunk{
+	dir = 1
+	},
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
@@ -54644,6 +54634,9 @@
 	},
 /area/crew_quarters/toilet)
 "fYu" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -54657,13 +54650,9 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
 /turf/simulated/floor/plasteel{
-	icon_state = "white"
+	dir = 1;
+	icon_state = "whitepurple"
 	},
 /area/toxins/xenobiology)
 "fYx" = (
@@ -54937,10 +54926,7 @@
 	pixel_x = -5;
 	pixel_y = 4
 	},
-/turf/simulated/floor/light/purple{
-	color = "#ffadfd";
-	light_color = "#ffadfd"
-	},
+/turf/simulated/floor/light/purple,
 /area/crew_quarters/bar/atrium)
 "ggD" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -60551,19 +60537,30 @@
 /turf/simulated/floor/plasteel,
 /area/security/processing)
 "iun" = (
-/obj/machinery/disposal,
-/obj/structure/window/reinforced{
-	dir = 8
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
 	},
-/obj/structure/disposalpipe/trunk{
-	dir = 1
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
 	},
 /obj/structure/cable{
 	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
+	d2 = 4;
+	icon_state = "1-4"
 	},
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel{
+	icon_state = "white"
+	},
 /area/toxins/xenobiology)
 "iuF" = (
 /obj/structure/falsewall,
@@ -62429,10 +62426,7 @@
 	pixel_x = 8;
 	pixel_y = 2
 	},
-/turf/simulated/floor/light/purple{
-	color = "#ffadfd";
-	light_color = "#ffadfd"
-	},
+/turf/simulated/floor/light/purple,
 /area/crew_quarters/bar)
 "jrq" = (
 /obj/effect/decal/cleanable/dirt,
@@ -69025,10 +69019,7 @@
 	pixel_x = -5;
 	pixel_y = 6
 	},
-/turf/simulated/floor/light/purple{
-	color = "#ffadfd";
-	light_color = "#ffadfd"
-	},
+/turf/simulated/floor/light/purple,
 /area/crew_quarters/bar)
 "mhQ" = (
 /obj/machinery/door/airlock/engineering/glass{
@@ -71242,10 +71233,7 @@
 "nif" = (
 /obj/structure/table/glass,
 /obj/item/deck/cards,
-/turf/simulated/floor/light/purple{
-	color = "#ffadfd";
-	light_color = "#ffadfd"
-	},
+/turf/simulated/floor/light/purple,
 /area/crew_quarters/bar/atrium)
 "nin" = (
 /obj/machinery/light{
@@ -72737,10 +72725,7 @@
 "nQl" = (
 /obj/structure/table/reinforced,
 /obj/machinery/door/firedoor,
-/turf/simulated/floor/light/purple{
-	color = "#ffadfd";
-	light_color = "#ffadfd"
-	},
+/turf/simulated/floor/light/purple,
 /area/crew_quarters/bar)
 "nQG" = (
 /obj/effect/decal/warning_stripes/southeast,
@@ -85564,26 +85549,17 @@
 /turf/simulated/floor/plating,
 /area/maintenance/aft)
 "ttZ" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
+/obj/machinery/disposal,
+/obj/structure/disposalpipe/trunk,
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
-/turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "whitepurple"
-	},
+/turf/simulated/floor/plasteel,
 /area/toxins/xenobiology)
 "tue" = (
 /obj/effect/spawner/lootdrop/maintenance,
@@ -89143,29 +89119,14 @@
 /turf/simulated/floor/carpet,
 /area/medical/psych)
 "uVL" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
 /obj/structure/cable{
 	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
+	d2 = 2;
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/plasteel{
-	icon_state = "white"
+	dir = 1;
+	icon_state = "whitepurple"
 	},
 /area/toxins/xenobiology)
 "uVU" = (
@@ -90490,14 +90451,26 @@
 /turf/simulated/floor/plasteel,
 /area/toxins/launch)
 "vzg" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
 /obj/structure/cable{
 	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
+	d2 = 4;
+	icon_state = "1-4"
 	},
 /turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "whitepurple"
+	icon_state = "white"
 	},
 /area/toxins/xenobiology)
 "vzi" = (
@@ -96703,10 +96676,7 @@
 "ygF" = (
 /obj/structure/table/glass,
 /obj/item/clothing/head/cakehat,
-/turf/simulated/floor/light/purple{
-	color = "#ffadfd";
-	light_color = "#ffadfd"
-	},
+/turf/simulated/floor/light/purple,
 /area/crew_quarters/bar/atrium)
 "ygK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -139854,7 +139824,7 @@ xRU
 fsR
 pZK
 iip
-eLz
+ttZ
 oGs
 qig
 qig
@@ -140621,8 +140591,8 @@ qKN
 osN
 uSD
 icn
+uVL
 vzg
-fYu
 jXI
 ial
 qYK
@@ -141649,8 +141619,8 @@ cRY
 fsM
 mGG
 cZq
-vzg
 uVL
+iun
 sen
 ial
 ddF
@@ -142419,8 +142389,8 @@ iGI
 qig
 qig
 ohx
-iun
-vzg
+eLz
+uVL
 llI
 jXI
 ial
@@ -143192,7 +143162,7 @@ cEH
 cEH
 bER
 oLS
-ttZ
+fYu
 jXI
 cNh
 oDE
