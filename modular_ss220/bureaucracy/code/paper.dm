@@ -6,6 +6,9 @@
 
 /obj/item/paper/updateinfolinks()
 	. = ..()
+	update_size()
+
+/obj/item/paper/proc/update_size()
 	if(force_big || length(info) > small_paper_cap)
 		become_big()
 	else
