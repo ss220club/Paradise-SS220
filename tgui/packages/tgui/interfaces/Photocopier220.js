@@ -60,26 +60,26 @@ export const Photocopier220 = (props, context) => {
                 <Flex.Item mr="5px" color={data.toner > 0 ? "good" : "bad"} bold>
                   {data.toner}
                 </Flex.Item>
-                </Flex>
-                <Flex>
-                  <Flex.Item width="100%" mt="8px">
-                    <Button
-                      fluid
-                      textAlign="center"
-                      disabled={!data.copyitem && !data.mob}
-                      content={
-                        data.copyitem
-                          ? data.copyitem
-                          : data.mob
+              </Flex>
+              <Flex>
+                <Flex.Item width="100%" mt="8px">
+                  <Button
+                    fluid
+                    textAlign="center"
+                    disabled={!data.copyitem && !data.mob}
+                    content={
+                      data.copyitem
+                        ? data.copyitem
+                        : data.mob
                           ? "Жопа " + data.mob + "!"
                           : 'Слот для документа'
-                      }
-                      onClick={() => act('removedocument')}
+                    }
+                    onClick={() => act('removedocument')}
                   />
-                  </Flex.Item>
-                  </Flex>
-                  <Flex>
-                  <Flex.Item width="100%"mt="3px">
+                </Flex.Item>
+              </Flex>
+              <Flex>
+                <Flex.Item width="100%" mt="3px">
                   <Button
                     fluid
                     textAlign="center"
@@ -87,13 +87,13 @@ export const Photocopier220 = (props, context) => {
                     content={data.folder ? data.folder : 'Слот для папки'}
                     onClick={() => act('removefolder')}
                   />
-                  </Flex.Item>
-                  </Flex>
+                </Flex.Item>
+              </Flex>
             </Section>
             <Section
               title="Управление">
-                <Flex>
-                  <Flex.Item width="60%" mr="3px">
+              <Flex>
+                <Flex.Item width="60%" mr="3px">
                   <Button
                     fluid
                     textAlign="center"
@@ -102,8 +102,8 @@ export const Photocopier220 = (props, context) => {
                     disabled={data.toner === 0 || !data.copyitem && !data.mob}
                     onClick={() => act("copy")}
                   />
-                  </Flex.Item>
-                  <Flex.Item width="40%" mr="3px">
+                </Flex.Item>
+                <Flex.Item width="40%" mr="3px">
                   <Button
                     fluid
                     textAlign="center"
@@ -112,40 +112,40 @@ export const Photocopier220 = (props, context) => {
                     content="Печать"
                     onClick={() => act("print_form")}
                   />
-                  </Flex.Item>
-                </Flex>
-                <Flex>
-                  <Flex.Item width="100%" mr="5px">
+                </Flex.Item>
+              </Flex>
+              <Flex>
+                <Flex.Item width="100%" mr="5px">
                   {!!data.isAI && (
-                  <Button
-                    fluid
-                    textAlign="center"
-                    icon="terminal"
-                    disabled={data.toner < 5}
-                    content="Фото из БД"
-                    onClick={() => act("aipic")}
-                  />
-                  )}
-                  </Flex.Item>
-                </Flex>
-                <Flex>
-                  <Flex.Item mr="10px" mt="10px" color="grey">
-                    Количество:
-                  </Flex.Item>
-                  <Flex.Item mr="15px" mt="10px">
-                  {data.copynumber}
-                  </Flex.Item>
-                  <Flex.Item mr="3px" mt="8px">
                     <Button
                       fluid
-                      icon="minus"
                       textAlign="center"
-                      disabled={data.copynumber === 1}
-                      content=""
-                      onClick={() => act('minus')}
+                      icon="terminal"
+                      disabled={data.toner < 5}
+                      content="Фото из БД"
+                      onClick={() => act("aipic")}
                     />
-                  </Flex.Item>
-                  <Flex.Item mr="3px" mt="8px">
+                  )}
+                </Flex.Item>
+              </Flex>
+              <Flex>
+                <Flex.Item mr="10px" mt="10px" color="grey">
+                  Количество:
+                </Flex.Item>
+                <Flex.Item mr="15px" mt="10px">
+                  {data.copynumber}
+                </Flex.Item>
+                <Flex.Item mr="3px" mt="8px">
+                  <Button
+                    fluid
+                    icon="minus"
+                    textAlign="center"
+                    disabled={data.copynumber === 1}
+                    content=""
+                    onClick={() => act('minus')}
+                  />
+                </Flex.Item>
+                <Flex.Item mr="3px" mt="8px">
                   <Button
                     fluid
                     icon="plus"
@@ -154,8 +154,8 @@ export const Photocopier220 = (props, context) => {
                     content=""
                     onClick={() => act('add')}
                   />
-                  </Flex.Item>
-                </Flex>
+                </Flex.Item>
+              </Flex>
             </Section>
             <Section
               title="Бюрократия">
@@ -201,13 +201,13 @@ export const Photocopier220 = (props, context) => {
           <Flex.Item
             width={35}>
             <Section
-              title = {data.category === "" ? "Все формы" : data.category}>
-            <Input
-              fluid
-              mb={1}
-              placeholder="Поиск формы"
-              onInput={(e, value) => setSearchText(value)}
-            />
+              title={data.category === "" ? "Все формы" : data.category}>
+              <Input
+                fluid
+                mb={1}
+                placeholder="Поиск формы"
+                onInput={(e, value) => setSearchText(value)}
+              />
               <Flex
                 direction="column"
                 mt={2}>
