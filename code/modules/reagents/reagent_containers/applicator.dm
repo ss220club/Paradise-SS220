@@ -48,11 +48,11 @@
 /obj/item/reagent_containers/applicator/update_overlays()
 	. = ..()
 	if(reagents.total_volume)
-		var/mutable_appearance/filling = mutable_appearance('icons/goonstation/objects/objects.dmi', "mender-fluid")
+		var/mutable_appearance/filling = mutable_appearance('modular_ss220/aesthetics/applicator/icons/applicator.dmi', "mender-fluid") // SS220 EDIT - ORIGINAL: icons/goonstation/objects/objects.dmi
 		filling.color = mix_color_from_reagents(reagents.reagent_list)
 		. += filling
 	var/reag_pct = round((reagents.total_volume / volume) * 100)
-	var/mutable_appearance/applicator_bar = mutable_appearance('icons/goonstation/objects/objects.dmi', "app_e")
+	var/mutable_appearance/applicator_bar = mutable_appearance('modular_ss220/aesthetics/applicator/icons/applicator.dmi', "app_e") // SS220 EDIT - ORIGINAL: icons/goonstation/objects/objects.dmi
 	switch(reag_pct)
 		if(51 to 100)
 			applicator_bar.icon_state = "app_hf"
@@ -62,7 +62,7 @@
 			applicator_bar.icon_state = "app_e"
 	. += applicator_bar
 
-/obj/item/reagent_containers/applicator/attack(mob/living/M, mob/user)
+/obj/item/reagent_containers/applicator/proc/apply(mob/living/M, mob/user)
 	if(!reagents.total_volume)
 		to_chat(user, "<span class='warning'>[src] is empty!</span>")
 		return
@@ -93,6 +93,11 @@
 		update_icon()
 		user.changeNext_move(CLICK_CD_MELEE)
 
+/obj/item/reagent_containers/applicator/attack(mob/living/M, mob/user)
+	return apply(M, user)
+
+/obj/item/reagent_containers/applicator/attack_self(mob/user)
+	return apply(user, user)
 
 /obj/item/reagent_containers/applicator/proc/apply_to(mob/living/carbon/M, mob/user, multiplier = 1, show_message = TRUE)
 	var/total_applied_amount = applied_amount * multiplier

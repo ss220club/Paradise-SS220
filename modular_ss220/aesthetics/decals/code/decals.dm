@@ -1,4 +1,4 @@
-// SIDING
+/* SIDING */
 /obj/effect/turf_decal/siding/wood
 	icon = 'modular_ss220/aesthetics/decals/icons/siding.dmi'
 	icon_state = "siding_wood_line"
@@ -76,3 +76,37 @@
 
 /obj/effect/turf_decal/siding/brown/end
 	icon_state = "siding_end"
+
+/* NT LOGO */
+/obj/effect/decal/nanotrasen_logo
+	name = "NanoTrasen Logo"
+	icon = 'modular_ss220/aesthetics/decals/icons/NT_logo.dmi'
+
+/obj/effect/decal/nanotrasen_logo/n1
+	icon_state = "logo1"
+
+/obj/effect/decal/nanotrasen_logo/n2
+	icon_state = "logo2"
+
+/obj/effect/decal/nanotrasen_logo/n3
+	icon_state = "logo3"
+
+/obj/effect/decal/nanotrasen_logo/n4
+	icon_state = "logo4"
+
+/obj/effect/decal/nanotrasen_logo/n5
+	icon_state = "logo5"
+
+/obj/effect/decal/nanotrasen_logo/n6
+	icon_state = "logo6"
+
+/obj/effect/decal/cleanable/dust
+	name = "dust"
+	desc = "It's a little dusty. Someone should clean that up."
+	gender = PLURAL
+	density = FALSE
+	layer = TURF_LAYER
+	icon = 'modular_ss220/aesthetics/decals/icons/dirt.dmi'
+	icon_state = "dust"
+	base_icon_state = "dust"
+	mouse_opacity = FALSE
