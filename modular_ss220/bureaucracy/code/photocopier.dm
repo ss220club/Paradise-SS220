@@ -105,7 +105,7 @@
 		forms.Add(list(form))
 
 /obj/machinery/photocopier/proc/print_form(datum/bureaucratic_form/form)
-	playsound(loc, print_sound, 25, 1)
+	playsound(loc, print_sound, 25, TRUE)
 	toner--
 	if(toner <= 0)
 		visible_message("<span class='notice'>На [src] мигает красная лампочка. Похоже, закончился тонер.</span>")
