@@ -11,6 +11,9 @@
 /area/bridge/checkpoint/south
 	name = "\improper South Command Checkpoint"
 
+/area/atmos/controlroom
+	name = "\improper Atmospheric Control Room"
+
 /* CentCom */
 /area/centcom220
 	name = "\improper ЦК"
