@@ -195,9 +195,9 @@ export const Photocopier220 = (props, context) => {
                 {category.map(form => (
                   <Flex.Item key={form.path}>
                     <Button fluid key={form.path}
-                      content={form.id + ": " + form.altername.trimLongStr(30)}
+                      content={form.id + ": " + form.altername.trimLongStr(27)}
                       tooltip={form.id + ": " + form.altername}
-                      selected={data.form === form.path ? "selected" : null}
+                      selected={data.form_id === form.id ? "selected" : null}
                       onClick={() => act("choose_form", {
                         path: form.path,
                         id: form.id,
