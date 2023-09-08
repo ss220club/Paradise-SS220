@@ -15,7 +15,7 @@ const selectForms = (forms, searchText = '') => {
   return flow([
     filter((form) => form?.altername),
     searchText && filter(testSearch),
-    sortBy((form) => form.altername),
+    sortBy((form) => form.id),
   ])(forms);
 };
 
