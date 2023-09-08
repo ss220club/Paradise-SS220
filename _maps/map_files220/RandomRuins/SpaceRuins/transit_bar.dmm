@@ -30,7 +30,7 @@
 	},
 /area/ruin/space/powered)
 "d" = (
-/obj/machinery/light/small/directional/north,
+/obj/machinery/light/small,
 /turf/simulated/floor/plating,
 /area/ruin/space/powered)
 "f" = (
@@ -58,7 +58,9 @@
 /turf/simulated/wall/r_wall,
 /area/ruin/space/powered)
 "j" = (
-/obj/structure/sign/poster/contraband/random/east,
+/obj/structure/sign/poster/contraband/random{
+	pixel_x = 32
+	},
 /turf/simulated/floor/transparent/glass/reinforced,
 /area/ruin/space/powered)
 "k" = (
@@ -96,7 +98,7 @@
 /obj/machinery/door/window/reinforced/normal{
 	dir = 4
 	},
-/obj/machinery/light/small/directional/south,
+/obj/machinery/light/small,
 /obj/structure/sign/monkey_paint{
 	pixel_y = -32
 	},
@@ -130,7 +132,7 @@
 /turf/template_noop,
 /area/template_noop)
 "y" = (
-/obj/effect/spawner/window/reinforced/grilled,
+/obj/effect/spawner/window/reinforced,
 /turf/simulated/floor/plating,
 /area/ruin/space/powered)
 "z" = (
@@ -153,7 +155,9 @@
 	},
 /area/ruin/space/powered)
 "B" = (
-/obj/machinery/light/small/directional/south,
+/obj/machinery/light/small{
+	dir = 1
+	},
 /turf/simulated/floor/plating,
 /area/ruin/space/powered)
 "C" = (
@@ -187,13 +191,19 @@
 	},
 /area/ruin/space/powered)
 "J" = (
-/obj/machinery/light/small/directional/west,
+/obj/machinery/light/small{
+	dir = 8
+	},
 /obj/structure/chair/stool/bar,
 /turf/simulated/floor/carpet/red,
 /area/ruin/space/powered)
 "K" = (
-/obj/machinery/light/small/directional/north,
-/obj/structure/sign/poster/contraband/random/north,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/structure/sign/poster/contraband/random{
+	pixel_y = 32
+	},
 /turf/simulated/floor/transparent/glass/reinforced,
 /area/ruin/space/powered)
 "L" = (
@@ -234,7 +244,10 @@
 /area/ruin/space/powered)
 "T" = (
 /obj/structure/table/wood,
-/obj/machinery/light/small/directional/east,
+/obj/machinery/light/small{
+	dir = 4;
+	pixel_y = 8
+	},
 /obj/item/ashtray/bronze,
 /obj/item/reagent_containers/food/drinks/drinkingglass{
 	pixel_y = 12;
@@ -338,7 +351,7 @@ n
 x
 n
 a
-d
+B
 a
 y
 a
@@ -446,7 +459,7 @@ z
 a
 y
 a
-B
+d
 i
 n
 x
