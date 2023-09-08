@@ -37,9 +37,9 @@ GLOBAL_LIST_INIT(bureaucratic_forms, list())
 	if(is_header_needed)
 		header = "<font face=\"Verdana\" color=black><table></td><tr><td><img src = ntlogo.png><td><table></td><tr><td><font size = \"1\">[name][confidential ? " \[КОНФИДЕНЦИАЛЬНО\]" : ""]</font></td><tr><td></td><tr><td><B><font size=\"4\">[altername]</font></B></td><tr><td><table></td><tr><td>[from]<td>[category]</td></tr></table></td></tr></table></td></tr></table><center><font size = \"1\">[notice]</font></center><BR><HR><BR></font>"
 
-/datum/bureaucratic_form/proc/apply_to_paper(obj/item/paper/paper)
+/datum/bureaucratic_form/proc/apply_to_paper(obj/item/paper/paper, mob/user = null)
 	paper.name = name
-	paper.info = text
+	paper.info = admin_pencode_to_html(text, user)
 	paper.header = header
 	paper.footer = footer
 	paper.force_big = TRUE
@@ -438,6 +438,19 @@ GLOBAL_LIST_INIT(bureaucratic_forms, list())
 	footer = footer_confidential
 
 // Центральное командование
+
+/datum/bureaucratic_form/NT_COM_00
+	name = "Форма NT-COM-00"
+	id = "NT-COM-00"
+	altername = "Общая форма ЦК"
+	category = "Центральное командование"
+	from = "Административная станция Nanotrasen &#34;Trurl&#34;"
+	notice = "Перед заполнением прочтите от начала до конца | Высокий приоритет"
+	confidential = TRUE
+	req_access = ACCESS_CENT_GENERAL
+	text = "\[small\]Станция — \[b\]Центральное командование\[/b\]\[br\]Год: 2567\[br\]Время: \[time\]\[/small\]\[br\]\[i\]\[large\]\[b\]\[field\] \[b\]\[/large\]\[/i\]\[/grid\]\[hr\]\[center\]Приветствую экипаж и руководство \[station\]!\[/center\]\[br\]\[br\]\[field\]\[br\]\[small\]\[i\]\[br\]Подпись: \[sign\]\[/i\],   в должности: \[i\]\[field\].\[/i\]\[/small\]"
+	footer = footer_confidential
+
 /datum/bureaucratic_form/NT_COM_01
 	name = "Форма NT-COM-01"
 	id = "NT-COM-01"

@@ -110,4 +110,4 @@
 	if(toner <= 0)
 		visible_message("<span class='notice'>На [src] мигает красная лампочка. Похоже, закончился тонер.</span>")
 	var/obj/item/paper/paper = new(loc)
-	form.apply_to_paper(paper)
+	form.apply_to_paper(paper, usr)
