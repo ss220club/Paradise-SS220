@@ -269,7 +269,9 @@
 /turf/space,
 /area/space)
 "bg" = (
-/obj/structure/computerframe,
+/obj/structure/computerframe{
+	dir = 8
+	},
 /turf/simulated/floor/plating/airless,
 /area/awaymission/BMPship/MedBay)
 "bh" = (
@@ -967,7 +969,9 @@
 /turf/simulated/floor/plating,
 /area/awaymission/BMPship/Gate)
 "dc" = (
-/obj/structure/bed,
+/obj/structure/bed{
+	dir = 4
+	},
 /obj/item/stack/sheet/animalhide/monkey{
 	layer = 3.2
 	},
@@ -980,22 +984,21 @@
 	},
 /turf/simulated/floor/carpet,
 /area/awaymission/BMPship/Dormitories)
-"dd" = (
-/mob/living/simple_animal/mouse,
-/turf/simulated/floor/plating,
-/area/awaymission/BMPship/Engines)
 "de" = (
 /obj/structure/chair/comfy/beige,
-/mob/living/simple_animal/chicken,
 /obj/structure/spider/stickyweb,
 /turf/simulated/floor/plasteel{
 	icon_state = "cafeteria"
 	},
 /area/awaymission/BMPship/CommonArea)
 "dg" = (
-/obj/structure/bed,
+/obj/structure/bed{
+	dir = 4
+	},
 /obj/item/storage/wallet/random,
-/obj/item/bedsheet/captain,
+/obj/item/bedsheet/captain{
+	dir = 4
+	},
 /obj/structure/sign/poster/contraband/revolver{
 	pixel_x = -32
 	},
@@ -1007,7 +1010,6 @@
 /area/awaymission/BMPship/TurretsSouth)
 "dj" = (
 /obj/effect/decal/warning_stripes/south,
-/mob/living/simple_animal/mouse/white,
 /obj/structure/sign/securearea{
 	name = "MAXIMUM ATTENTION";
 	pixel_x = -32
@@ -1336,7 +1338,6 @@
 /area/awaymission/BMPship/Engines)
 "dZ" = (
 /obj/effect/decal/cleanable/blood/oil,
-/mob/living/simple_animal/hostile/poison/giant_spider/hunter,
 /obj/machinery/firealarm/no_alarm{
 	pixel_y = -24;
 	dir = 1
@@ -1500,11 +1501,6 @@
 /obj/structure/spider/stickyweb,
 /obj/structure/spider/stickyweb,
 /obj/effect/decal/cleanable/dirt,
-/mob/living/simple_animal/hostile/poison/giant_spider{
-	health = 250;
-	maxHealth = 250;
-	name = "angry giant spider"
-	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/BMPship/Containment)
 "ey" = (
@@ -1642,7 +1638,6 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/BMPship/Engines)
 "eQ" = (
-/mob/living/simple_animal/chick,
 /obj/structure/window/reinforced{
 	color = "yellow";
 	layer = 2.9
@@ -1823,16 +1818,6 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/BMPship/Dormitories)
-"fo" = (
-/mob/living/simple_animal/chick,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/spider/stickyweb,
-/turf/simulated/floor/plasteel{
-	icon_state = "cafeteria"
-	},
-/area/awaymission/BMPship/CommonArea)
 "fp" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -2082,7 +2067,6 @@
 	},
 /area/awaymission/BMPship/Kitchen)
 "fT" = (
-/mob/living/carbon/human/monkey,
 /obj/effect/landmark/damageturf,
 /turf/simulated/floor/plasteel{
 	icon_state = "cafeteria"
@@ -2374,15 +2358,6 @@
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "darkredaltstrip"
-	},
-/area/awaymission/BMPship/CommonArea)
-"gK" = (
-/mob/living/simple_animal/bot/cleanbot{
-	on = 0
-	},
-/obj/structure/spider/stickyweb,
-/turf/simulated/floor/plasteel{
-	icon_state = "cafeteria"
 	},
 /area/awaymission/BMPship/CommonArea)
 "gL" = (
@@ -2833,15 +2808,6 @@
 	},
 /turf/simulated/floor/grass,
 /area/awaymission/BMPship/Kitchen)
-"iq" = (
-/mob/living/simple_animal/mouse/gray,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/plasteel{
-	icon_state = "cafeteria"
-	},
-/area/awaymission/BMPship/CommonArea)
 "ir" = (
 /turf/simulated/wall/mineral/titanium,
 /area/awaymission/BMPship/Fore)
@@ -3513,7 +3479,6 @@
 /obj/item/stack/spacecash/c500{
 	layer = 2.9
 	},
-/mob/living/simple_animal/cockroach,
 /turf/simulated/floor/plasteel{
 	icon_state = "showroomfloor"
 	},
@@ -3540,18 +3505,6 @@
 	icon_state = "green"
 	},
 /area/awaymission/BMPship/Kitchen)
-"mu" = (
-/obj/structure/alien/weeds,
-/mob/living/simple_animal/mouse,
-/turf/simulated/floor/plating/airless,
-/area/awaymission/BMPship/Fore)
-"mv" = (
-/obj/structure/chair/stool,
-/mob/living/simple_animal/cockroach,
-/turf/simulated/floor/plasteel{
-	icon_state = "cafeteria"
-	},
-/area/awaymission/BMPship/CommonArea)
 "mA" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/kirbyplants{
@@ -3823,10 +3776,6 @@
 	icon_state = "cafeteria"
 	},
 /area/awaymission/BMPship/CommonArea)
-"oI" = (
-/obj/effect/mist,
-/turf/simulated/floor/plating/asteroid/airless,
-/area/awaymission)
 "oR" = (
 /obj/item/shard{
 	icon_state = "medium";
@@ -4249,7 +4198,9 @@
 	},
 /area/awaymission/BMPship/Fore)
 "sq" = (
-/obj/structure/bed,
+/obj/structure/bed{
+	dir = 4
+	},
 /obj/item/clothing/head/corgi,
 /obj/structure/sign/poster/contraband/syndicate_recruitment{
 	pixel_x = -32
@@ -4290,7 +4241,7 @@
 	name = "Angry giant spider"
 	},
 /obj/effect/landmark/damageturf,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/BMPship/Containment)
 "sQ" = (
 /turf/simulated/floor/plating/airless,
@@ -4430,10 +4381,6 @@
 	icon_state = "wood-broken5"
 	},
 /area/awaymission/BMPship/Armory)
-"ua" = (
-/mob/living/simple_animal/cockroach,
-/turf/simulated/floor/grass,
-/area/awaymission/BMPship/Kitchen)
 "uj" = (
 /obj/effect/mob_spawn/human/corpse/tacticool{
 	layer = 4
@@ -4630,16 +4577,6 @@
 	icon_state = "cafeteria"
 	},
 /area/awaymission/BMPship/CommonArea)
-"vL" = (
-/mob/living/simple_animal/mouse/white,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "darkyellowalt"
-	},
-/area/awaymission/BMPship/Dormitories)
 "vV" = (
 /obj/machinery/door/airlock/titanium{
 	locked = 1
@@ -5566,7 +5503,6 @@
 "Eq" = (
 /obj/effect/decal/cleanable/flour,
 /obj/item/trash/fried_vox,
-/mob/living/simple_animal/cockroach,
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
@@ -5847,17 +5783,6 @@
 	},
 /turf/simulated/floor/wood/fancy,
 /area/awaymission/BMPship/CommonArea)
-"GD" = (
-/mob/living/simple_animal/bot/cleanbot{
-	on = 0
-	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/plasteel{
-	icon_state = "cafeteria"
-	},
-/area/awaymission/BMPship/CommonArea)
 "GG" = (
 /obj/structure/closet/crate/can,
 /obj/item/trash/plate,
@@ -5866,7 +5791,6 @@
 /obj/item/kitchen/utensil/fork,
 /obj/item/trash/candy,
 /obj/item/trash/raisins,
-/mob/living/simple_animal/cockroach,
 /turf/simulated/floor/plasteel{
 	icon_state = "cafeteria"
 	},
@@ -5937,19 +5861,6 @@
 	icon_state = "cafeteria"
 	},
 /area/awaymission/BMPship/CommonArea)
-"Hu" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/spider/stickyweb,
-/mob/living/simple_animal/hostile/poison/giant_spider{
-	health = 250;
-	maxHealth = 250;
-	name = "angry giant spider"
-	},
-/turf/simulated/floor/mineral/plastitanium/red,
-/area/awaymission/BMPship/Containment)
 "Hv" = (
 /obj/structure/grille,
 /obj/item/shard{
@@ -6078,20 +5989,6 @@
 	icon_state = "cafeteria"
 	},
 /area/awaymission/BMPship/CommonArea)
-"ID" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/structure/spider/stickyweb,
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/spider/stickyweb,
-/mob/living/simple_animal/hostile/poison/giant_spider/hunter{
-	health = 150;
-	maxHealth = 150;
-	name = "Angry giant spider"
-	},
-/turf/simulated/floor/mineral/plastitanium/red,
-/area/awaymission/BMPship/Containment)
 "IF" = (
 /obj/effect/landmark/damageturf,
 /obj/item/shard{
@@ -6166,6 +6063,7 @@
 	},
 /mob/living/simple_animal/pet/cat/kitten{
 	faction = list("alien","neutral");
+	death_sound = 'sound/voice/gasp_female4.ogg';
 	desc = "Он выглядит так, будто повидал многое за свою короткую жизнь"
 	},
 /turf/simulated/floor/wood,
@@ -6469,10 +6367,6 @@
 	icon_state = "cafeteria"
 	},
 /area/awaymission/BMPship/CommonArea)
-"NA" = (
-/obj/effect/mist,
-/turf/space,
-/area/awaymission)
 "ND" = (
 /obj/item/stack/ore/iron,
 /obj/effect/decal/cleanable/ash,
@@ -6575,17 +6469,6 @@
 /obj/structure/table,
 /turf/simulated/floor/plating/airless,
 /area/awaymission/BMPship/Fore)
-"OX" = (
-/obj/structure/spider/stickyweb,
-/obj/effect/decal/cleanable/dirt,
-/mob/living/simple_animal/hostile/poison/giant_spider{
-	health = 250;
-	maxHealth = 250;
-	name = "angry giant spider";
-	speed = 0.9
-	},
-/turf/simulated/floor/mineral/plastitanium/red,
-/area/awaymission/BMPship/Containment)
 "Ph" = (
 /obj/item/shard,
 /obj/effect/decal/cleanable/ash,
@@ -6751,15 +6634,6 @@
 /obj/effect/landmark/damageturf,
 /turf/simulated/floor/plating/airless,
 /area/awaymission/BMPship/TraderShuttle)
-"QO" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/mob/living/simple_animal/mouse,
-/obj/structure/spider/stickyweb,
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/mineral/plastitanium/red,
-/area/awaymission/BMPship/Containment)
 "QQ" = (
 /obj/machinery/flasher/portable{
 	anchored = 1
@@ -7179,11 +7053,6 @@
 	icon_state = "cafeteria"
 	},
 /area/awaymission/BMPship/CommonArea)
-"VD" = (
-/mob/living/simple_animal/mouse,
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/mineral/plastitanium/red,
-/area/awaymission/BMPship/Containment)
 "VG" = (
 /obj/effect/decal/cleanable/greenglow,
 /obj/item/reagent_containers/food/snacks/monstermeat/spiderleg,
@@ -7212,11 +7081,6 @@
 	},
 /turf/simulated/floor/plating/airless,
 /area/awaymission/BMPship/Fore)
-"VK" = (
-/mob/living/simple_animal/chick,
-/obj/structure/spider/stickyweb,
-/turf/simulated/floor/grass,
-/area/awaymission/BMPship/Kitchen)
 "VL" = (
 /obj/effect/decal/warning_stripes/east,
 /obj/structure/largecrate,
@@ -7278,7 +7142,6 @@
 /turf/simulated/floor/plating,
 /area/awaymission/BMPship/Bath)
 "WD" = (
-/mob/living/carbon/human/monkey,
 /obj/effect/gibspawner/generic,
 /obj/structure/spider/stickyweb,
 /turf/simulated/floor/grass,
@@ -7293,11 +7156,6 @@
 	},
 /turf/simulated/floor/plating/airless,
 /area/awaymission/BMPship/Shelter)
-"WN" = (
-/obj/effect/mist,
-/obj/effect/mist,
-/turf/simulated/mineral/random/high_chance,
-/area/awaymission)
 "WO" = (
 /obj/structure/cable{
 	icon_state = "2-8"
@@ -13650,7 +13508,7 @@ ir
 Pz
 dL
 dL
-mu
+dL
 PJ
 mL
 dL
@@ -15602,7 +15460,7 @@ er
 er
 gH
 LT
-QO
+MN
 NZ
 wG
 XP
@@ -15994,7 +15852,7 @@ dT
 rw
 fE
 WO
-ID
+Gy
 Dy
 eK
 Dp
@@ -16122,7 +15980,7 @@ er
 er
 gH
 NZ
-Hu
+Ll
 BL
 NZ
 fM
@@ -16644,7 +16502,7 @@ mA
 ej
 MN
 MN
-VD
+kn
 nO
 eM
 er
@@ -16773,7 +16631,7 @@ er
 VX
 kA
 bU
-OX
+LT
 kn
 kn
 eM
@@ -17899,13 +17757,13 @@ aa
 aa
 aa
 aa
-NA
-NA
-NA
-NA
-NA
-NA
-NA
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -18027,16 +17885,16 @@ aa
 aa
 aa
 aa
-NA
-NA
-oI
+aa
+aa
+ac
 ab
 ab
-oI
-oI
-oI
-NA
-NA
+ac
+ac
+ac
+aa
+aa
 aa
 aa
 aa
@@ -18156,18 +18014,18 @@ aa
 aa
 aa
 aa
-NA
-NA
-oI
+aa
+aa
+ac
 ab
 ab
 ab
 ab
 ab
-oI
-oI
-oI
-NA
+ac
+ac
+ac
+aa
 aa
 aa
 aa
@@ -18286,18 +18144,18 @@ aa
 aa
 aa
 aa
-NA
-oI
-oI
+aa
+ac
+ac
 FC
 FC
 FC
 FC
 FC
 ab
-WN
-oI
-NA
+ab
+ac
+aa
 aa
 aa
 aa
@@ -18341,7 +18199,7 @@ xG
 xG
 xG
 xG
-vL
+Af
 im
 xG
 xG
@@ -18415,9 +18273,9 @@ aa
 aa
 aa
 aa
-NA
-oI
-oI
+aa
+ac
+ac
 ab
 FC
 mi
@@ -18426,8 +18284,8 @@ fX
 FC
 ab
 ab
-oI
-oI
+ac
+ac
 aa
 aa
 aa
@@ -18544,9 +18402,9 @@ aa
 aa
 aa
 aa
-NA
-oI
-oI
+aa
+ac
+ac
 ab
 ab
 FC
@@ -18557,7 +18415,7 @@ FC
 ab
 ab
 ab
-oI
+ac
 aa
 aa
 Vt
@@ -18675,8 +18533,8 @@ aa
 aa
 aa
 aa
-oI
-oI
+ac
+ac
 ab
 ab
 FC
@@ -18687,7 +18545,7 @@ FC
 ab
 ab
 ab
-NA
+aa
 aa
 aa
 aa
@@ -18719,7 +18577,7 @@ cp
 cc
 FZ
 tA
-ua
+hI
 wY
 eN
 Nw
@@ -18805,9 +18663,9 @@ aa
 aa
 aa
 aa
-NA
-oI
-oI
+aa
+ac
+ac
 ab
 FC
 UK
@@ -18815,9 +18673,9 @@ Mg
 Zj
 FC
 ab
-oI
-NA
-NA
+ac
+aa
+aa
 aa
 aa
 aa
@@ -18853,7 +18711,7 @@ in
 WD
 Yf
 yG
-gK
+Hr
 Sq
 jl
 Bi
@@ -18936,7 +18794,7 @@ aa
 aa
 aa
 aa
-NA
+aa
 ab
 ab
 FC
@@ -18945,8 +18803,8 @@ FC
 FC
 FC
 ab
-NA
-NA
+aa
+aa
 aa
 aa
 aa
@@ -18980,7 +18838,7 @@ pN
 FZ
 tA
 pc
-VK
+wY
 AI
 Qf
 UF
@@ -19067,15 +18925,15 @@ aa
 aa
 aa
 aa
-NA
-NA
-oI
-oI
+aa
+aa
+ac
+ac
 ab
 ab
 ab
 ab
-oI
+ac
 aa
 aa
 aa
@@ -19114,7 +18972,7 @@ hI
 hZ
 if
 UF
-iq
+De
 jl
 jn
 xG
@@ -19199,13 +19057,13 @@ aa
 aa
 aa
 aa
-NA
-NA
-NA
-oI
+aa
+aa
+aa
+ac
 ab
-oI
-oI
+ac
+ac
 aa
 aa
 aa
@@ -19332,9 +19190,9 @@ aa
 aa
 aa
 aa
-NA
-NA
-NA
+aa
+aa
+aa
 aa
 aa
 aa
@@ -19374,8 +19232,8 @@ Ra
 dD
 tA
 fh
-fo
-mv
+ll
+Ec
 jF
 xG
 xG
@@ -20156,7 +20014,7 @@ Du
 DC
 oG
 DC
-GD
+DC
 DC
 aA
 ur
@@ -20801,7 +20659,7 @@ UA
 Lk
 Eo
 gx
-dd
+gx
 gx
 gx
 gx
