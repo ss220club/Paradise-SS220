@@ -26,7 +26,7 @@
 
 /obj/machinery/photocopier/attack_hand(mob/user)
 	if(..())
-		return 1
+		return TRUE
 
 	user.set_machine(src)
 	parse_forms(user)
@@ -108,6 +108,6 @@
 	playsound(loc, print_sound, 25, 1)
 	toner--
 	if(!toner)
-		visible_message("<span class='notice'>На [src] мигает красная лампочка. Похоже закончился тонер.</span>")
+		visible_message("<span class='notice'>На [src] мигает красная лампочка. Похоже, закончился тонер.</span>")
 	var/obj/item/paper/paper = new(loc)
 	form.apply_to_paper(paper)
