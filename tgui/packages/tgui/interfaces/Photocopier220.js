@@ -1,18 +1,31 @@
-import { useBackend } from '../backend';
-import { Button, Section, Flex } from "../components";
+import { useBackend, useLocalState } from '../backend';
+import { Button, Section, Flex, Input } from "../components";
 import { Window } from '../layouts';
-import { sortBy } from "common/collections";
+import { filter, sortBy } from 'common/collections';
 import { FlexItem } from '../components/Flex';
+import { flow } from 'common/fp';
+import { createSearch } from 'common/string';
 
 String.prototype.trimLongStr = function (length) {
   return this.length > length ? this.substring(0, length) + "..." : this;
 };
 
+const selectForms = (forms, searchText = '') => {
+  const testSearch = createSearch(searchText, (form) => form.altername);
+  return flow([
+    filter((form) => form?.altername),
+    searchText && filter(testSearch),
+    sortBy((form) => form.altername),
+  ])(forms);
+};
+
+
 export const Photocopier220 = (props, context) => {
   const { act, data } = useBackend(context);
 
-  const forms = sortBy(form => form.category)(data.forms || []);
+  const [searchText, setSearchText] = useLocalState(context, 'searchText', '');
 
+  const forms = selectForms(sortBy(form => form.category)(data.forms || []), searchText);
   const categories = [];
   for (let form of forms) {
     if (!categories.includes(form.category)) {
@@ -189,6 +202,12 @@ export const Photocopier220 = (props, context) => {
             width={35}>
             <Section
               title = {data.category === "" ? "Все формы" : data.category}>
+            <Input
+              fluid
+              mb={1}
+              placeholder="Поиск формы"
+              onInput={(e, value) => setSearchText(value)}
+            />
               <Flex
                 direction="column"
                 mt={2}>
