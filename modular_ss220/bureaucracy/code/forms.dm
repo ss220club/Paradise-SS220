@@ -1,3 +1,5 @@
+GLOBAL_LIST_INIT(bureaucratic_forms, list())
+
 /datum/bureaucratic_form
 	/// Form name. Will be applied to a paper
 	var/name
