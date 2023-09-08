@@ -1,6 +1,6 @@
 /datum/modpack/bureaucracy
 	name = "Бюрократия"
-	desc = "Добавляет бланки в ксероксе"
+	desc = "Добавляет бланки в ксероксе."
 	author = "Aylong220, Furior, RV666"
 
 /datum/modpack/bureaucracy/initialize()
