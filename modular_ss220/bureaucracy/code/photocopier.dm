@@ -107,7 +107,7 @@
 /obj/machinery/photocopier/proc/print_form(datum/bureaucratic_form/form)
 	playsound(loc, print_sound, 25, 1)
 	toner--
-	if(!toner)
+	if(toner <= 0)
 		visible_message("<span class='notice'>На [src] мигает красная лампочка. Похоже, закончился тонер.</span>")
 	var/obj/item/paper/paper = new(loc)
 	form.apply_to_paper(paper)
