@@ -16,14 +16,19 @@
 	var/stop = 0
 	var/list/songs = list()
 	var/datum/track/selection = null
-	var/volume = 50
+	var/volume = 25
 	var/max_volume = 50
+
+/obj/machinery/jukebox/anchored
+	anchored = TRUE
 
 /obj/machinery/jukebox/bar
 	name = "jukebox"
 	desc = "A classic music player."
 	req_access = list(ACCESS_BAR)
-	volume = 25
+
+/obj/machinery/jukebox/bar/anchored
+	anchored = TRUE
 
 /obj/machinery/jukebox/disco
 	name = "radiant dance machine mark IV"
@@ -31,12 +36,16 @@
 	icon_state = "disco"
 	max_integrity = 300
 	integrity_failure = 150
-	volume = 100
+	volume = 50
 	max_volume = 100
 	var/list/spotlights = list()
 	var/list/sparkles = list()
 
 /obj/machinery/jukebox/disco/anchored
+	anchored = TRUE
+
+/obj/machinery/jukebox/disco/anchored/indestructible
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	anchored = TRUE
 
 /datum/track
