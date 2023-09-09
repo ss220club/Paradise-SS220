@@ -30,6 +30,24 @@
 	cost = 3
 	allow_duplicates = FALSE
 
+/datum/map_template/ruin/space/transit_bar
+	name = "Transit Bar"
+	id = "transit_bar"
+	description = "One of the trillion bars in this galaxy, this one looks especially homey and comfy."
+	prefix = "_maps/map_files220/RandomRuins/SpaceRuins/"
+	suffix = "transit_bar.dmm"
+	cost = 1
+	allow_duplicates = FALSE
+
+/datum/map_template/ruin/space/infected_ship
+	name = "Infected Ship"
+	id = "infected_ship"
+	description = "A lonely drifting ship showing no signs of life... What kind of black rubber substance is weaving around its shell?"
+	prefix = "_maps/map_files220/RandomRuins/SpaceRuins/"
+	suffix = "infected_ship.dmm"
+	cost = 3
+	allow_duplicates = FALSE
+
 
 // Тут код гейтов которые перенесли в космос, делать можно по приверу ниже.
 // Сам gateaway не трогать, это группа которая не позволяет спавнится сразу нескольким "гейтам"
