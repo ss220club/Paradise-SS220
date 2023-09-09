@@ -381,6 +381,12 @@
 
 /obj/machinery/jukebox/disco/proc/dance(mob/living/M) //Show your moves
 	set waitfor = FALSE
+	if(M.client)
+		if(!(M.client.prefs.sound & SOUND_DISCO)) //they dont want music or dancing
+			rangers -= M //Doing that here as it'll be checked less often than in processing.
+			return
+		if(!(M.client.prefs.toggles2 & PREFTOGGLE_2_DANCE_DISCO)) //they just dont wanna dance
+			return
 	switch(rand(0,9))
 		if(0 to 1)
 			dance2(M)
@@ -529,7 +535,7 @@
 			active_power_consumption = (volume * 10)
 			change_power_mode(ACTIVE_POWER_USE)
 		for(var/mob/M in range(10,src))
-			if(!M.client || !(M.client.prefs.sound & SOUND_INSTRUMENTS))
+			if(!M.client || !(M.client.prefs.sound & SOUND_DISCO))
 				continue
 			if(!(M in rangers))
 				rangers[M] = TRUE
