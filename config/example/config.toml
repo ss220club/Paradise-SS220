@@ -19,6 +19,7 @@
 # - discord_configuration
 # - event_configuration
 # - gamemode_configuration
+# - gateway_configuration
 # - general_configuration
 # - ipintel_configuration
 # - job_configuration
@@ -253,6 +254,25 @@ disable_certain_round_early_end = false
 traitor_objective_amount = 2
 # Enable player limits on gamemodes. Disable if testing
 enable_gamemode_player_limit = true
+
+
+################################################################
+
+
+[gateway_configuration]
+# This section contains everything relating to the ingame gateway (away mission) system.
+
+# Do we want to enable this at all? Disable for faster load times in testing
+enable_away_mission = false
+# Delay (in deciseconds) before the gateway is usable
+away_mission_delay = 0
+# List of all enabled away missions. Comment out an entry to disable it.
+enabled_away_missions = [
+	"_maps/map_files220/RandomZLevels/beach.dmm",
+	"_maps/map_files220/RandomZLevels/wildwest.dmm",
+	"_maps/map_files220/RandomZLevels/terrorspiders.dmm",
+	"_maps/map_files220/RandomZLevels/blackmarketpackers.dmm",
+]
 
 
 ################################################################
@@ -622,7 +642,6 @@ active_space_ruins = [
 	"_maps/map_files/RandomRuins/SpaceRuins/wizardcrash.dmm",
 	"_maps/map_files/RandomRuins/SpaceRuins/voyager.dmm",
 	"_maps/map_files/RandomRuins/SpaceRuins/wreckedcargoship.dmm",
-	"_maps/map_files220/RandomRuins/SpaceRuins/space_wildwest.dmm",
 	"_maps/map_files220/RandomRuins/SpaceRuins/mechtransport_new.dmm",
 	"_maps/map_files220/RandomRuins/SpaceRuins/destroyed_infiltrator.dmm",
 	"_maps/map_files220/RandomRuins/SpaceRuins/transit_bar.dmm",
