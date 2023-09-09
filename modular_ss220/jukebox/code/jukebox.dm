@@ -1,6 +1,6 @@
 /obj/machinery/jukebox
-	name = "jukebox"
-	desc = "A classic music player."
+	name = "музыкальный автомат"
+	desc = "Классический музыкальный автомат."
 	icon = 'modular_ss220/jukebox/icons/jukebox.dmi'
 	icon_state = "jukebox"
 	atom_say_verb = "states"
@@ -16,6 +16,7 @@
 	var/stop = 0
 	var/list/songs = list()
 	var/datum/track/selection = null
+	var/list/free_jukebox_channels = list()
 	var/volume = 25
 	var/max_volume = 50
 	COOLDOWN_DECLARE(jukebox_error_cd)
@@ -24,16 +25,14 @@
 	anchored = TRUE
 
 /obj/machinery/jukebox/bar
-	name = "jukebox"
-	desc = "A classic music player."
 	req_access = list(ACCESS_BAR)
 
 /obj/machinery/jukebox/bar/anchored
 	anchored = TRUE
 
 /obj/machinery/jukebox/disco
-	name = "radiant dance machine mark IV"
-	desc = "The first three prototypes were discontinued after mass casualty incidents."
+	name = "танцевальный диско-шар - тип IV"
+	desc = "Первые три прототипа были сняты с производства после инцидентов с массовыми жертвами."
 	icon_state = "disco"
 	max_integrity = 300
 	integrity_failure = 150
@@ -49,25 +48,9 @@
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	anchored = TRUE
 
-/datum/track/New(name, path, length, beat)
-	song_name = name
-	song_path = path
-	song_length = length
-	song_beat = beat
-
 /obj/machinery/jukebox/Initialize(mapload)
 	. = ..()
-	var/list/tracks = flist("config/jukebox_music/sounds/")
-
-	for(var/S in tracks)
-		var/datum/track/T = new()
-		T.song_path = file("config/jukebox_music/sounds/[S]")
-		var/list/L = splittext(S,"+")
-		T.song_name = L[1]
-		T.song_length = text2num(L[2])
-		T.song_beat = text2num(L[3])
-		songs |= T
-
+	songs = SSjukeboxes.songs
 	if(songs.len)
 		selection = pick(songs)
 
@@ -76,7 +59,7 @@
 	return ..()
 
 /obj/machinery/jukebox/attackby(obj/item/O, mob/user, params)
-	if(!active)
+	if(!active && !(resistance_flags & INDESTRUCTIBLE))
 		if(iswrench(O))
 			if(!anchored && !isinspace())
 				to_chat(user,"<span class='notice'>You secure [src] to the floor.</span>")
@@ -122,14 +105,14 @@
 	..()
 	src.add_fingerprint(user)
 	if(!anchored)
-		to_chat(user,"<span class='warning'>This device must be anchored by a wrench!</span>")
+		to_chat(user,"<span class='warning'>Это устройство должно быть закреплено гаечным ключом!</span>")
 		return
 	if(!allowed(user) && !isobserver(user))
-		to_chat(user,"<span class='warning'>Error: Access Denied.</span>")
+		to_chat(user,"<span class='warning'>Ошибка: Отказано в доступе.</span>")
 		user.playsound_local(src, 'sound/misc/compiler-failure.ogg', 25, TRUE)
 		return
 	if(!songs.len && !isobserver(user))
-		to_chat(user,"<span class='warning'>Error: No music tracks have been authorized for your station. Petition Central Command to resolve this issue.</span>")
+		to_chat(user,"<span class='warning'>Ошибка: Для вашей станции не было авторизовано ни одной музыкальной композиции. Обратитесь к Центральному командованию с просьбой решить эту проблему.</span>")
 		user.playsound_local(src, 'sound/misc/compiler-failure.ogg', 25, TRUE)
 		return
 	if(stat & (BROKEN|NOPOWER))
@@ -172,14 +155,13 @@
 				return
 			if(!active)
 				if(stop > world.time)
-					to_chat(usr, "<span class='warning'>Error: The device is still resetting from the last activation, it will be ready again in [DisplayTimeText(stop-world.time)].</span>")
+					to_chat(usr, "<span class='warning'>Ошибка: Устройство все еще находится в состоянии сброса после последней активации, оно будет готово снова через [DisplayTimeText(stop-world.time)].</span>")
 					if(!COOLDOWN_FINISHED(src, jukebox_error_cd))
 						return
 					playsound(src, 'sound/misc/compiler-failure.ogg', 50, TRUE)
 					COOLDOWN_START(src, jukebox_error_cd, 5 SECONDS)
 					return
 				activate_music()
-				START_PROCESSING(SSobj, src)
 				return TRUE
 			else
 				stop = 0
@@ -189,7 +171,7 @@
 				to_chat(usr, "<span class='warning'>Error: You cannot change the song until the current one is over.</span>")
 				return
 			var/list/available = list()
-			for(var/datum/track/S in songs)
+			for(var/datum/track/S in SSjukeboxes.songs)
 				available[S.song_name] = S
 			var/selected = params["track"]
 			if(QDELETED(src) || !selected || !istype(available[selected], /datum/track))
@@ -215,10 +197,15 @@
 					return TRUE
 
 /obj/machinery/jukebox/proc/activate_music()
-	active = TRUE
-	update_icon()
-	START_PROCESSING(SSobj, src)
-	stop = world.time + selection.song_length
+	var/jukebox_to_take = SSjukeboxes.add_jukebox(src, selection, 2)
+	if(jukebox_to_take)
+		active = TRUE
+		update_icon()
+		START_PROCESSING(SSobj, src)
+		stop = world.time + selection.song_length
+		return TRUE
+	else
+		return FALSE
 
 /obj/machinery/jukebox/disco/activate_music()
 	..()
@@ -377,9 +364,6 @@
 /obj/machinery/jukebox/disco/proc/dance(mob/living/M) //Show your moves
 	set waitfor = FALSE
 	if(M.client)
-		if(!(M.client.prefs.sound & SOUND_DISCO)) //they dont want music or dancing
-			rangers -= M //Doing that here as it'll be checked less often than in processing.
-			return
 		if(!(M.client.prefs.toggles2 & PREFTOGGLE_2_DANCE_DISCO)) //they just dont wanna dance
 			return
 	switch(rand(0,9))
@@ -499,10 +483,11 @@
 	M.lying_fix()
 
 /obj/machinery/jukebox/proc/dance_over()
-	for(var/mob/living/L in rangers)
-		if(!L || !L.client)
-			continue
-		L.stop_sound_channel(CHANNEL_JUKEBOX)
+	var/position = SSjukeboxes.find_jukebox_index(src)
+	if(!position)
+		return
+	SSjukeboxes.remove_jukebox(position)
+	STOP_PROCESSING(SSobj, src)
 	rangers = list()
 
 /obj/machinery/jukebox/disco/dance_over()
@@ -521,22 +506,21 @@
 
 /obj/machinery/jukebox/process()
 	if(world.time < stop && active)
-		var/sound/song_played = sound(selection.song_path)
 		if(active)
 			active_power_consumption = (volume * 10)
 			change_power_mode(ACTIVE_POWER_USE)
 		for(var/mob/M in range(10,src))
-			if(!M.client || !(M.client.prefs.sound & SOUND_DISCO))
+			if(!M.client || !(M.client.prefs.toggles & SOUND_DISCO))
 				continue
 			if(!(M in rangers))
 				rangers[M] = TRUE
-				M.playsound_local(get_turf(M), null, volume, channel = CHANNEL_JUKEBOX, S = song_played)
+			M.set_sound_channel_volume(SOUND_DISCO, volume) // We want volume updated without having to walk away!!
 		for(var/mob/L in rangers)
-			if(get_dist(src, L) > 10)
+			if(get_dist(src,L) > 10)
 				rangers -= L
 				if(!L || !L.client)
 					continue
-				L.stop_sound_channel(CHANNEL_JUKEBOX)
+				L.set_sound_channel_volume(SOUND_DISCO, 0)
 	else if(active)
 		turn_off()
 
