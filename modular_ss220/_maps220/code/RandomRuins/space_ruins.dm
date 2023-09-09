@@ -30,6 +30,15 @@
 	cost = 3
 	allow_duplicates = FALSE
 
+/datum/map_template/ruin/space/transit_bar
+	name = "Transit Bar"
+	id = "transit_bar"
+	description = "One of the trillion bars in this galaxy, this one looks especially homey and comfy."
+	prefix = "_maps/map_files220/RandomRuins/SpaceRuins/"
+	suffix = "transit_bar.dmm"
+	cost = 1
+	allow_duplicates = FALSE
+
 /datum/map_template/ruin/space/infected_ship
 	name = "Infected Ship"
 	id = "infected_ship"
