@@ -226,6 +226,7 @@
 	lights_spin()
 
 /obj/machinery/jukebox/disco/proc/dance_setup()
+	stop = world.time + selection.song_length
 	var/turf/cen = get_turf(src)
 	FOR_DVIEW(var/turf/t, 3, get_turf(src),INVISIBILITY_LIGHTING)
 		if(t.x == cen.x && t.y > cen.y)
@@ -290,7 +291,7 @@
 /obj/machinery/jukebox/disco/proc/hierofunk()
 	for(var/i in 1 to 10)
 		new /obj/effect/temp_visual/hierophant/telegraph/edge(get_turf(src))
-		sleep(5)
+		sleep(0.5 SECONDS)
 
 #define DISCO_INFENO_RANGE (rand(85, 115)*0.01)
 
@@ -314,7 +315,7 @@
 			if(25)
 				S.pixel_y = 7
 				S.forceMove(get_turf(src))
-		sleep(7)
+		sleep(0.7 SECONDS)
 	for(var/obj/reveal in sparkles)
 		reveal.alpha = 255
 	while(active)
@@ -397,8 +398,8 @@
 			M.setDir(d)
 			if(i == WEST && !M.incapacitated())
 				M.SpinAnimation(7, 1)
-			sleep(1)
-		sleep(20)
+			sleep(0.1 SECONDS)
+		sleep(2 SECONDS)
 
 /obj/machinery/jukebox/disco/proc/dance3(mob/living/M)
 	var/matrix/initial_matrix = matrix(M.transform)
@@ -444,7 +445,7 @@
 				initial_matrix = matrix(M.transform)
 				initial_matrix.Translate(-3,0)
 				animate(M, transform = initial_matrix, time = 1, loop = 0)
-		sleep(1)
+		sleep(0.1 SECONDS)
 	M.lying_fix()
 
 
@@ -494,7 +495,7 @@
 				initial_matrix = matrix(M.transform)
 				initial_matrix.Translate(-3,0)
 				animate(M, transform = initial_matrix, time = 1, loop = 0)
-		sleep(1)
+		sleep(0.1 SECONDS)
 	M.lying_fix()
 
 /obj/machinery/jukebox/proc/dance_over()
