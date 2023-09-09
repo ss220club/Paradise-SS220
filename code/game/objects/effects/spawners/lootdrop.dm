@@ -348,7 +348,7 @@
 	name = "8. largeitem"
 	lootcount = 1
 	loot = list(
-				/obj/machinery/jukebox = 20,
+				/obj/machinery/disco = 20,
 				/obj/structure/spirit_board = 20,
 				/obj/mecha/combat/durand/old = 20
 				)
