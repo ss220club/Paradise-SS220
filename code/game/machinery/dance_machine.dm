@@ -6,12 +6,18 @@
 	atom_say_verb = "states"
 	density = TRUE
 	anchored = FALSE
+	idle_power_consumption = 10
+	active_power_consumption = 100
+	max_integrity = 200
+	integrity_failure = 100
+	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, RAD = 0, FIRE = 20, ACID = 10)
 	var/active = FALSE
 	var/list/rangers = list()
 	var/stop = 0
 	var/list/songs = list()
 	var/datum/track/selection = null
 	var/volume = 50
+	var/max_volume = 50
 
 /obj/machinery/jukebox/bar
 	name = "jukebox"
@@ -23,7 +29,10 @@
 	name = "radiant dance machine mark IV"
 	desc = "The first three prototypes were discontinued after mass casualty incidents."
 	icon_state = "disco"
+	max_integrity = 300
+	integrity_failure = 150
 	volume = 100
+	max_volume = 100
 	var/list/spotlights = list()
 	var/list/sparkles = list()
 
@@ -76,6 +85,9 @@
 	return ..()
 
 /obj/machinery/jukebox/update_icon_state()
+	if(stat & BROKEN)
+		icon_state = "[initial(icon_state)]_broken"
+		return
 	if(active)
 		icon_state = "[initial(icon_state)]-active"
 	else
@@ -85,10 +97,26 @@
 	. = ..()
 	underlays.Cut()
 
+	if(stat & (NOPOWER|BROKEN))
+		return
 	if(active)
 		underlays += emissive_appearance(icon, "[icon_state]_lightmask")
 
+/obj/machinery/jukebox/power_change()
+	if(!..())
+		return
+	if(stat & NOPOWER)
+		turn_off()
+		return ..()
+
+/obj/machinery/jukebox/obj_break(damage_flag)
+	if(!(stat & BROKEN))
+		stat |= BROKEN
+		turn_off()
+
 /obj/machinery/jukebox/attack_hand(mob/user)
+	..()
+	src.add_fingerprint(user)
 	if(!anchored)
 		to_chat(user,"<span class='warning'>This device must be anchored by a wrench!</span>")
 		return
@@ -99,6 +127,8 @@
 	if(!songs.len && !isobserver(user))
 		to_chat(user,"<span class='warning'>Error: No music tracks have been authorized for your station. Petition Central Command to resolve this issue.</span>")
 		playsound(src, 'sound/misc/compiler-failure.ogg', 25, TRUE)
+		return
+	if(stat & (BROKEN|NOPOWER))
 		return
 	ui_interact(user)
 
@@ -168,11 +198,14 @@
 				volume = 0
 				return TRUE
 			else if(new_volume == "max")
-				volume = 100
+				volume = max_volume
 				return TRUE
 			else if(text2num(new_volume) != null)
-				volume = text2num(new_volume)
-				return TRUE
+				if (text2num(new_volume) > max_volume)
+					volume = max_volume
+				else
+					volume = text2num(new_volume)
+					return TRUE
 
 /obj/machinery/jukebox/proc/activate_music()
 	active = TRUE
@@ -275,8 +308,6 @@
 				S.pixel_y = 7
 				S.forceMove(get_turf(src))
 		sleep(7)
-	if(selection.song_name == "Engineering's Ultimate High-Energy Hustle")
-		sleep(280)
 	for(var/obj/reveal in sparkles)
 		reveal.alpha = 255
 	while(active)
@@ -469,10 +500,21 @@
 	QDEL_LIST_CONTENTS(spotlights)
 	QDEL_LIST_CONTENTS(sparkles)
 
+/obj/machinery/jukebox/proc/turn_off()
+	active = FALSE
+	change_power_mode(IDLE_POWER_USE)
+	STOP_PROCESSING(SSobj, src)
+	dance_over()
+	playsound(src,'sound/machines/terminal_off.ogg',50,1)
+	update_icon()
+	stop = world.time + 100
+
 /obj/machinery/jukebox/process()
 	if(world.time < stop && active)
 		var/sound/song_played = sound(selection.song_path)
-
+		if(active)
+			active_power_consumption = (volume * 10)
+			change_power_mode(ACTIVE_POWER_USE)
 		for(var/mob/M in range(10,src))
 			if(!M.client || !(M.client.prefs.sound & SOUND_INSTRUMENTS))
 				continue
@@ -486,13 +528,7 @@
 					continue
 				L.stop_sound_channel(CHANNEL_JUKEBOX)
 	else if(active)
-		active = FALSE
-		STOP_PROCESSING(SSobj, src)
-		dance_over()
-		playsound(src,'sound/machines/terminal_off.ogg',50,1)
-		update_icon()
-		stop = world.time + 100
-
+		turn_off()
 
 /obj/machinery/jukebox/disco/process()
 	. = ..()
