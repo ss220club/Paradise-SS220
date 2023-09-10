@@ -3,7 +3,7 @@
 	desc = "Крутой шлем."
 	icon = 'modular_ss220/clothing/icons/object/hats.dmi'
 	icon_state = "bike_helmet"
-	icon_override = 'modular_ss220/clothing/icons/mob/helmets.dmi'
+	icon_override = 'modular_ss220/clothing/icons/mob/hats.dmi'
 	item_state = "bike_helmet"
 	lefthand_file = 'modular_ss220/clothing/icons/inhands/left_hand.dmi'
 	righthand_file = 'modular_ss220/clothing/icons/inhands/right_hand.dmi'
@@ -22,3 +22,11 @@
 		"Vox" = 'modular_ss220/clothing/icons/mob/species/vox/helmet.dmi',
 		"Vulpkanin" = 'modular_ss220/clothing/icons/mob/species/vulpkanin/helmet.dmi',
 		)
+
+/obj/item/clothing/head/caphat/beret_black
+	name = "чёрный капитанский берет"
+	desc = "Хорошо быть королём."
+	icon = 'modular_ss220/clothing/icons/object/hats.dmi'
+	icon_state = "cap_beret_black"
+	icon_override = 'modular_ss220/clothing/icons/mob/hats.dmi'
+	item_state = "cap_beret_black"
