@@ -23,38 +23,38 @@ export const Jukebox = (props, context) => {
       height={313}>
       <Window.Content>
         <Section
-          title="Song Player"
+          title="Проигрыватель"
           buttons={(
             <Button
               icon={active ? 'pause' : 'play'}
-              content={active ? 'Stop' : 'Play'}
+              content={active ? 'Стоп' : 'Воспроизвести'}
               selected={active}
               onClick={() => act('toggle')} />
           )}>
           <LabeledList>
-            <LabeledList.Item label="Track Selected">
+            <LabeledList.Item label="Трек">
               <Dropdown
                 overflow-y="scroll"
                 width="240px"
                 options={songs.map(song => song.name)}
                 disabled={active}
-                selected={track_selected || "Select a Track"}
+                selected={track_selected || "Выбрать трек"}
                 onSelected={value => act('select_track', {
                   track: value,
                 })} />
             </LabeledList.Item>
-            <LabeledList.Item label="Track Length">
-              {track_selected ? track_length : "No Track Selected"}
+            <LabeledList.Item label="Длительность">
+              {track_selected ? track_length : "Трек не выбран"}
             </LabeledList.Item>
-            <LabeledList.Item label="Track Beat">
-              {track_selected ? track_beat : "No Track Selected"}
+            <LabeledList.Item label="Ритм">
+              {track_selected ? track_beat : "Трек не выбран"}
               {track_beat === 1 ? " beat" : " beats"}
             </LabeledList.Item>
           </LabeledList>
         </Section>
-        <Section title="Machine Settings">
+        <Section title="Параметры">
           <LabeledControls justify="center">
-            <LabeledControls.Item label="Volume">
+            <LabeledControls.Item label="Громкость">
               <Box position="relative">
                 <Knob
                   size={3.2}
