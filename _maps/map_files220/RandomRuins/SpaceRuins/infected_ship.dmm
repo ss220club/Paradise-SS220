@@ -17,7 +17,8 @@
 	mask_type = null;
 	storage_type = null;
 	suit_type = null;
-	state_open = 1
+	state_open = 1;
+	req_access = null
 	},
 /obj/item/trash/spentcasing{
 	icon_state = "r-casing";
@@ -213,10 +214,6 @@
 	},
 /turf/simulated/floor,
 /area/ruin/space/powered/requires_power_space)
-"eE" = (
-/mob/living/simple_animal/hostile/alien,
-/turf/simulated/floor/mineral/plastitanium,
-/area/ruin/space/powered/requires_power_space)
 "eG" = (
 /obj/effect/decal/cleanable/glass,
 /obj/effect/decal/cleanable/dirt,
@@ -364,12 +361,6 @@
 /obj/machinery/economy/vending/snack/free,
 /turf/simulated/floor/pod,
 /area/ruin/space/powered/requires_power_space)
-"hT" = (
-/mob/living/simple_animal/hostile/alien,
-/obj/effect/decal/cleanable/blood/splatter,
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/mineral/plastitanium,
-/area/ruin/space/powered/requires_power_space)
 "ia" = (
 /obj/structure/grille/broken,
 /obj/item/shard,
@@ -406,7 +397,8 @@
 	dir = 8
 	},
 /obj/structure/closet/crate/secure/weapon{
-	req_access_txt = "150"
+	req_access_txt = null;
+	req_access = list(150)
 	},
 /obj/effect/turf_decal/stripes/white/line{
 	dir = 8
@@ -419,7 +411,6 @@
 /obj/effect/turf_decal/stripes/white/line{
 	dir = 1
 	},
-/mob/living/simple_animal/hostile/alien,
 /obj/item/shard{
 	icon_state = "small";
 	pixel_x = 10
@@ -542,7 +533,6 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/stripes/white/line,
-/mob/living/simple_animal/hostile/alien,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/ruin/space/powered/requires_power_space)
@@ -598,7 +588,6 @@
 /obj/structure/sink{
 	pixel_y = 17
 	},
-/mob/living/simple_animal/hostile/alien/sentinel,
 /obj/item/organ/internal/body_egg/alien_embryo,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor,
@@ -674,6 +663,7 @@
 /turf/simulated/floor,
 /area/ruin/space/powered/requires_power_space)
 "nz" = (
+/mob/living/simple_animal/hostile/alien,
 /turf/simulated/floor/pod,
 /area/ruin/space/powered/requires_power_space)
 "nE" = (
@@ -965,6 +955,7 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
+/mob/living/simple_animal/hostile/alien,
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/ruin/space/powered/requires_power_space)
 "vk" = (
@@ -1187,7 +1178,6 @@
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered/requires_power_space)
 "Bc" = (
-/mob/living/simple_animal/hostile/alien,
 /obj/item/trash/spentcasing{
 	icon_state = "r-casing";
 	dir = 4
@@ -1388,7 +1378,7 @@
 /area/ruin/space/powered/requires_power_space)
 "Ja" = (
 /obj/structure/table/reinforced,
-/obj/item/stack/spacecash/c1000,
+/obj/item/stack/spacecash/c200,
 /turf/simulated/floor,
 /area/ruin/space/powered/requires_power_space)
 "Je" = (
@@ -1497,9 +1487,7 @@
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered/requires_power_space)
 "Mu" = (
-/obj/structure/closet{
-	icon_state = "syndicate"
-	},
+/obj/structure/closet/syndicate,
 /obj/item/clothing/gloves/combat,
 /obj/item/clothing/under/syndicate/tacticool,
 /obj/item/clothing/suit/armor/vest/fluff/tactical,
@@ -1535,7 +1523,9 @@
 /obj/machinery/suit_storage_unit/syndicate{
 	mask_type = null;
 	storage_type = null;
-	suit_type = null
+	suit_type = null;
+	state_open = 1;
+	req_access = null
 	},
 /turf/simulated/floor,
 /area/ruin/space/powered/requires_power_space)
@@ -1610,11 +1600,6 @@
 	},
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered/requires_power_space)
-"PD" = (
-/mob/living/simple_animal/hostile/alien/sentinel,
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/mineral/plastitanium,
-/area/ruin/space/powered/requires_power_space)
 "PV" = (
 /obj/structure/door_assembly/door_assembly_pod,
 /turf/simulated/floor/mineral/plastitanium,
@@ -1628,7 +1613,8 @@
 	mask_type = null;
 	storage_type = null;
 	suit_type = null;
-	state_open = 1
+	state_open = 1;
+	req_access = null
 	},
 /obj/effect/turf_decal/stripes/white/line{
 	dir = 8
@@ -1902,10 +1888,6 @@
 "ZE" = (
 /obj/structure/table/reinforced,
 /obj/item/ammo_box/c9mm,
-/obj/item/ammo_box/c9mm{
-	pixel_y = 9;
-	pixel_x = 3
-	},
 /turf/simulated/floor,
 /area/ruin/space/powered/requires_power_space)
 "ZQ" = (
@@ -2200,7 +2182,7 @@ pP
 jw
 yW
 tO
-eE
+Cg
 ky
 FS
 st
@@ -2331,7 +2313,7 @@ jp
 iP
 ns
 jb
-hT
+IR
 UK
 zq
 mS
@@ -2413,7 +2395,7 @@ la
 dI
 ou
 Nj
-jW
+aH
 Rg
 vL
 lA
@@ -2583,7 +2565,7 @@ nl
 wO
 NY
 Jp
-PD
+aH
 jw
 iB
 iB
