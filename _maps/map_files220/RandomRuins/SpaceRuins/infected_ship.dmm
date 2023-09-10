@@ -27,8 +27,8 @@
 /turf/simulated/floor,
 /area/ruin/space/powered/requires_power_space)
 "aF" = (
-/obj/effect/decal/cleanable/blood/old,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/blood_often,
+/obj/effect/spawner/random_spawners/dirt_often,
 /obj/item/trash/spentcasing{
 	icon_state = "r-casing";
 	dir = 5;
@@ -39,7 +39,7 @@
 	},
 /area/ruin/space/powered/requires_power_space)
 "aH" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered/requires_power_space)
 "aY" = (
@@ -48,11 +48,11 @@
 	dir = 2
 	},
 /obj/effect/decal/cleanable/blood/splatter,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered/requires_power_space)
 "bh" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /obj/effect/decal/cleanable/dirt/blackpowder,
 /obj/effect/decal/cleanable/blood/gibs/xeno,
 /obj/item/trash/spentcasing{
@@ -83,7 +83,7 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/blood/gibs/xeno/body,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /obj/effect/decal/cleanable/blood/gibs/body,
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/ruin/space/powered/requires_power_space)
@@ -91,7 +91,7 @@
 /obj/structure/computerframe{
 	dir = 1
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor,
 /area/ruin/space/powered/requires_power_space)
 "cB" = (
@@ -102,7 +102,7 @@
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered/requires_power_space)
 "cC" = (
-/obj/effect/decal/cleanable/blood/old,
+/obj/effect/spawner/random_spawners/blood_often,
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered/requires_power_space)
 "cK" = (
@@ -132,20 +132,13 @@
 "do" = (
 /obj/effect/decal/warning_stripes/east,
 /obj/effect/decal/cleanable/glass,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
+/obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/ruin/space/powered/requires_power_space)
 "dq" = (
 /obj/structure/bed/nest,
 /turf/simulated/floor/mineral/plastitanium,
-/area/ruin/space/powered/requires_power_space)
-"dC" = (
-/obj/machinery/power/terminal{
-	dir = 8
-	},
-/obj/structure/alien/egg/burst,
-/turf/simulated/floor,
 /area/ruin/space/powered/requires_power_space)
 "dG" = (
 /obj/effect/turf_decal/stripes/white/line,
@@ -163,7 +156,7 @@
 "dI" = (
 /mob/living/simple_animal/hostile/alien,
 /obj/effect/decal/cleanable/glass,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered/requires_power_space)
 "dK" = (
@@ -174,7 +167,7 @@
 	pixel_y = 32
 	},
 /obj/effect/decal/cleanable/blood/gibs/xeno/body,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered/requires_power_space)
 "dU" = (
@@ -202,21 +195,21 @@
 	icon_state = "bulb-broken";
 	dir = 2
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/plasteel/freezer,
 /area/ruin/space/powered/requires_power_space)
 "eC" = (
 /obj/machinery/atmospherics/portable/canister,
-/obj/machinery/atmospherics/unary/portables_connector,
 /obj/machinery/light_construct{
 	icon_state = "bulb-broken";
 	dir = 4
 	},
+/obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor,
 /area/ruin/space/powered/requires_power_space)
 "eG" = (
 /obj/effect/decal/cleanable/glass,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /obj/item/organ/internal/body_egg/alien_embryo{
 	icon_state = "facehugger_dead"
 	},
@@ -238,7 +231,12 @@
 /turf/simulated/floor,
 /area/ruin/space/powered/requires_power_space)
 "eL" = (
-/obj/machinery/power/tesla_coil,
+/obj/structure{
+	desc = "For the union!";
+	icon = 'icons/obj/tesla_engine/tesla_coil.dmi';
+	icon_state = "coil0";
+	name = "tesla coil"
+	},
 /obj/machinery/light_construct{
 	icon_state = "bulb-broken";
 	dir = 1
@@ -274,7 +272,7 @@
 /obj/effect/turf_decal/stripes/white/line{
 	dir = 1
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /obj/effect/decal/cleanable/blood/gibs/cleangibs,
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/ruin/space/powered/requires_power_space)
@@ -287,7 +285,7 @@
 /obj/structure/sign/poster/contraband/random{
 	pixel_y = 32
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/plasteel{
 	icon_state = "stage_left"
 	},
@@ -304,7 +302,7 @@
 /obj/machinery/atmospherics/unary/vent_pump{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/plasteel{
 	icon_state = "stage_left"
 	},
@@ -340,19 +338,21 @@
 /obj/item/bedsheet/syndie,
 /obj/item/trash/syndi_cakes,
 /obj/item/trash/syndi_cakes,
-/obj/effect/decal/cleanable/blood/old,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/blood_often,
+/obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor,
 /area/ruin/space/powered/requires_power_space)
 "hG" = (
 /obj/machinery/light/small,
-/obj/machinery/mech_bay_recharge_port,
+/obj/machinery/constructable_frame{
+	icon_state = "box_1"
+	},
 /obj/effect/decal/warning_stripes/south,
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered/requires_power_space)
 "hP" = (
 /obj/effect/decal/cleanable/blood/gibs/xeno/body,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/plasteel{
 	icon_state = "stage_left"
 	},
@@ -365,7 +365,7 @@
 /obj/structure/grille/broken,
 /obj/item/shard,
 /obj/effect/decal/cleanable/glass,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /obj/effect/decal/cleanable/blood/drip{
 	icon_state = "5"
 	},
@@ -380,13 +380,16 @@
 /area/template_noop)
 "iH" = (
 /obj/structure/table,
-/obj/machinery/kitchen_machine/microwave{
+/obj/structure{
+	desc = "A microwave, perfect for reheating things with radiation.";
+	icon = 'icons/obj/kitchen.dmi';
+	icon_state = "mw";
+	name = "microwave";
 	pixel_y = 9
 	},
 /obj/item/reagent_containers/food/snacks/syndidonkpocket{
 	pixel_x = -7
 	},
-/obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
 	icon_state = "stage_left"
 	},
@@ -430,7 +433,7 @@
 	},
 /obj/effect/turf_decal/stripes/white/line,
 /mob/living/simple_animal/hostile/alien/sentinel,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /obj/effect/decal/cleanable/generic,
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/ruin/space/powered/requires_power_space)
@@ -441,7 +444,7 @@
 /obj/effect/decal/cleanable/blood/drip{
 	icon_state = "5"
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /obj/effect/decal/cleanable/generic,
 /obj/item/trash/spentcasing{
 	icon_state = "r-casing";
@@ -464,8 +467,8 @@
 /area/ruin/space/powered/requires_power_space)
 "jr" = (
 /obj/item/chair,
-/obj/effect/decal/cleanable/blood/old,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/blood_often,
+/obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/plasteel{
 	icon_state = "stage_left"
 	},
@@ -477,23 +480,25 @@
 /area/ruin/space/powered/requires_power_space)
 "jW" = (
 /mob/living/simple_animal/hostile/alien,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered/requires_power_space)
 "kg" = (
-/obj/machinery/door/airlock/highsecurity{
+/obj/machinery/door/airlock/hatch{
 	welded = 1
 	},
 /turf/simulated/floor,
 /area/ruin/space/powered/requires_power_space)
 "km" = (
-/obj/machinery/door/airlock/highsecurity,
+/obj/machinery/door/airlock/highsecurity{
+	welded = 1
+	},
 /obj/effect/turf_decal/stripes/white/line,
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/ruin/space/powered/requires_power_space)
 "kx" = (
 /obj/item/chair/stool,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /obj/item/trash/spentcasing{
 	icon_state = "r-casing";
 	dir = 9
@@ -506,7 +511,7 @@
 /obj/machinery/atmospherics/unary/vent_pump,
 /obj/effect/decal/cleanable/blood/drip,
 /obj/effect/decal/cleanable/blood/drip,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /obj/item/trash/spentcasing{
 	icon_state = "r-casing"
 	},
@@ -523,8 +528,8 @@
 	pixel_y = 9
 	},
 /obj/effect/decal/cleanable/glass,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/blood/old,
+/obj/effect/spawner/random_spawners/dirt_often,
+/obj/effect/spawner/random_spawners/blood_often,
 /obj/item/trash/spentcasing,
 /turf/simulated/floor/pod,
 /area/ruin/space/powered/requires_power_space)
@@ -533,7 +538,7 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/stripes/white/line,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/ruin/space/powered/requires_power_space)
 "la" = (
@@ -555,13 +560,13 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/blood/gibs/xeno/body,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/ruin/space/powered/requires_power_space)
 "lk" = (
 /obj/effect/decal/cleanable/generic,
 /obj/effect/decal/cleanable/vomit/green,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered/requires_power_space)
 "lm" = (
@@ -589,7 +594,7 @@
 	pixel_y = 17
 	},
 /obj/item/organ/internal/body_egg/alien_embryo,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor,
 /area/ruin/space/powered/requires_power_space)
 "lu" = (
@@ -598,11 +603,13 @@
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered/requires_power_space)
 "lA" = (
-/obj/machinery/economy/vending/cola/free,
+/obj/machinery/constructable_frame{
+	icon_state = "box_1"
+	},
 /turf/simulated/floor/pod,
 /area/ruin/space/powered/requires_power_space)
 "lP" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /obj/effect/decal/cleanable/blood/gibs/xeno,
 /obj/structure/sign/poster/contraband/random{
 	pixel_y = 32
@@ -626,7 +633,7 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/stripes/white/line,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/ruin/space/powered/requires_power_space)
 "ne" = (
@@ -653,7 +660,7 @@
 /obj/effect/decal/cleanable/blood/drip{
 	icon_state = "5"
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered/requires_power_space)
 "ns" = (
@@ -668,7 +675,7 @@
 /area/ruin/space/powered/requires_power_space)
 "nE" = (
 /mob/living/simple_animal/hostile/alien/sentinel,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /obj/effect/decal/cleanable/blood/drip{
 	icon_state = "3"
 	},
@@ -682,7 +689,7 @@
 	},
 /obj/effect/turf_decal/stripes/white/line,
 /obj/effect/decal/cleanable/blood/splatter,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered/requires_power_space)
 "nU" = (
@@ -708,7 +715,7 @@
 /obj/structure/computerframe{
 	icon_state = "comp_frame_2"
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /obj/item/shard{
 	icon_state = "small";
 	pixel_x = 10;
@@ -725,8 +732,8 @@
 /area/ruin/space/powered/requires_power_space)
 "pg" = (
 /obj/structure/alien/egg/burst,
-/obj/effect/decal/cleanable/blood/old,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/blood_often,
+/obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor,
 /area/ruin/space/powered/requires_power_space)
 "pj" = (
@@ -737,7 +744,7 @@
 /obj/structure/computerframe{
 	icon_state = "comp_frame_5"
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /obj/item/shard,
 /obj/item/stack/cable_coil{
 	amount = 1
@@ -755,8 +762,8 @@
 /obj/item/chair{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/blood/old,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/blood_often,
+/obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/plasteel{
 	icon_state = "stage_left"
 	},
@@ -769,7 +776,7 @@
 /obj/effect/turf_decal/stripes/white/line{
 	dir = 8
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered/requires_power_space)
 "pK" = (
@@ -782,7 +789,7 @@
 	pixel_x = 8;
 	pixel_y = -4
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor,
 /area/ruin/space/powered/requires_power_space)
 "pO" = (
@@ -795,7 +802,7 @@
 /obj/item/trash/raisins,
 /obj/item/trash/can,
 /obj/item/trash/plate,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/plasteel{
 	icon_state = "stage_left"
 	},
@@ -819,8 +826,8 @@
 /turf/simulated/floor/pod,
 /area/ruin/space/powered/requires_power_space)
 "rs" = (
-/obj/effect/decal/cleanable/blood/old,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/blood_often,
+/obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/plasteel{
 	icon_state = "stage_left"
 	},
@@ -841,12 +848,13 @@
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered/requires_power_space)
 "sb" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/blood/old,
+/obj/effect/spawner/random_spawners/dirt_often,
+/obj/effect/spawner/random_spawners/blood_often,
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered/requires_power_space)
 "sg" = (
-/obj/machinery/door/airlock/highsecurity{
+/obj/machinery/door/airlock/hatch{
+	welded = 1;
 	locked = 1
 	},
 /turf/simulated/floor,
@@ -855,7 +863,7 @@
 /obj/structure/closet/crate/freezer,
 /obj/item/reagent_containers/food/snacks/meat/corgi,
 /obj/item/reagent_containers/food/snacks/meat/corgi,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/plasteel/freezer,
 /area/ruin/space/powered/requires_power_space)
 "st" = (
@@ -902,13 +910,13 @@
 	},
 /obj/structure/alien/egg/burst,
 /obj/effect/decal/warning_stripes/east,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/ruin/space/powered/requires_power_space)
 "tO" = (
 /obj/effect/decal/cleanable/glass,
 /obj/effect/decal/cleanable/blood/gibs/body,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered/requires_power_space)
 "tX" = (
@@ -918,18 +926,18 @@
 /area/ruin/space/powered/requires_power_space)
 "ue" = (
 /obj/effect/decal/cleanable/glass,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered/requires_power_space)
 "ug" = (
 /obj/effect/decal/cleanable/blood/drip,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /obj/item/organ/external/chest,
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/ruin/space/powered/requires_power_space)
 "ul" = (
 /obj/structure/table_frame,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /obj/item/stack/sheet/metal,
 /turf/simulated/floor,
 /area/ruin/space/powered/requires_power_space)
@@ -938,7 +946,7 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/stripes/white/line,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /obj/effect/decal/cleanable/generic,
 /obj/item/trash/spentcasing{
 	icon_state = "r-casing";
@@ -954,7 +962,7 @@
 /obj/effect/turf_decal/stripes/white/line{
 	dir = 1
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /mob/living/simple_animal/hostile/alien,
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/ruin/space/powered/requires_power_space)
@@ -971,9 +979,6 @@
 /area/ruin/space/powered/requires_power_space)
 "vB" = (
 /obj/structure/table/glass,
-/obj/machinery/economy/vending/wallmed/syndicate{
-	pixel_y = 31
-	},
 /obj/item/scalpel,
 /obj/item/retractor,
 /turf/simulated/floor,
@@ -981,7 +986,7 @@
 "vL" = (
 /obj/effect/turf_decal/stripes/white/line,
 /obj/effect/decal/cleanable/blood/gibs/xeno/body,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered/requires_power_space)
 "vX" = (
@@ -991,13 +996,13 @@
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered/requires_power_space)
 "wO" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /obj/item/organ/internal/beard,
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/ruin/space/powered/requires_power_space)
 "wY" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/blood/old,
+/obj/effect/spawner/random_spawners/dirt_often,
+/obj/effect/spawner/random_spawners/blood_often,
 /obj/item/trash/spentcasing{
 	icon_state = "r-casing";
 	dir = 6
@@ -1015,7 +1020,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/blood/gibs/xeno/body,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /obj/item/trash/spentcasing{
 	icon_state = "r-casing";
 	dir = 8;
@@ -1029,7 +1034,7 @@
 /obj/effect/turf_decal/stripes/white/line{
 	dir = 1
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /obj/effect/decal/cleanable/blood/drip,
 /obj/effect/decal/cleanable/blood/gibs/xeno,
 /obj/item/trash/spentcasing{
@@ -1045,7 +1050,7 @@
 	dir = 8
 	},
 /obj/item/paper/crumpled,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /obj/item/storage/secure/briefcase/syndie,
 /obj/item/trash/spentcasing{
 	icon_state = "r-casing";
@@ -1081,13 +1086,8 @@
 	name = "north bump";
 	pixel_y = 30
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor,
-/area/ruin/space/powered/requires_power_space)
-"yW" = (
-/obj/effect/decal/cleanable/blood/old,
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered/requires_power_space)
 "zq" = (
 /obj/machinery/light_construct{
@@ -1095,7 +1095,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/blood/splatter,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/mineral/plastitanium/red/airless{
 	icon_state = "plastitanium"
 	},
@@ -1113,7 +1113,7 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/stripes/white/line,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered/requires_power_space)
 "zL" = (
@@ -1125,7 +1125,7 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/stripes/white/line,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /obj/item/organ/internal/body_egg/alien_embryo{
 	icon_state = "facehugger_dead"
 	},
@@ -1133,9 +1133,9 @@
 /area/ruin/space/powered/requires_power_space)
 "Ai" = (
 /obj/effect/decal/warning_stripes/east,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /obj/effect/decal/cleanable/dirt/blackpowder,
-/obj/effect/decal/cleanable/blood/old,
+/obj/effect/spawner/random_spawners/blood_often,
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/ruin/space/powered/requires_power_space)
 "As" = (
@@ -1155,8 +1155,8 @@
 /obj/effect/decal/cleanable/blood/drip{
 	icon_state = "4"
 	},
-/obj/effect/decal/cleanable/blood/old,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/blood_often,
+/obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered/requires_power_space)
 "AV" = (
@@ -1172,7 +1172,7 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/stripes/white/line,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered/requires_power_space)
 "Bc" = (
@@ -1182,16 +1182,6 @@
 	},
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered/requires_power_space)
-"Bk" = (
-/obj/machinery/economy/vending/hatdispenser,
-/turf/simulated/floor/pod,
-/area/ruin/space/powered/requires_power_space)
-"Bq" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 9
-	},
-/turf/simulated/floor,
-/area/ruin/space/powered/requires_power_space)
 "BA" = (
 /obj/machinery/door/airlock/external,
 /obj/structure/fans/tiny,
@@ -1200,7 +1190,7 @@
 "BK" = (
 /obj/machinery/light/small,
 /obj/effect/decal/cleanable/blood/gibs/xeno/body,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/plasteel{
 	icon_state = "stage_left"
 	},
@@ -1231,9 +1221,11 @@
 /turf/simulated/floor/plating/airless,
 /area/ruin/space/powered/requires_power_space)
 "ET" = (
-/obj/structure/closet/crate/engineering,
-/obj/effect/spawner/lootdrop/maintenance/eight,
-/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/portable/canister,
+/obj/machinery/light_construct{
+	icon_state = "bulb-broken";
+	dir = 4
+	},
 /turf/simulated/floor,
 /area/ruin/space/powered/requires_power_space)
 "Fv" = (
@@ -1245,14 +1237,14 @@
 /obj/effect/decal/cleanable/blood/drip{
 	icon_state = "4"
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /obj/effect/decal/cleanable/blood/gibs/body,
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered/requires_power_space)
 "FH" = (
 /obj/structure/table_frame/wood,
-/obj/effect/decal/cleanable/blood/old,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/blood_often,
+/obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/plasteel{
 	icon_state = "stage_left"
 	},
@@ -1267,8 +1259,8 @@
 /area/ruin/space/powered/requires_power_space)
 "FS" = (
 /obj/effect/decal/cleanable/blood/gibs/xeno/body,
-/obj/effect/decal/cleanable/blood/old,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/blood_often,
+/obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered/requires_power_space)
 "FT" = (
@@ -1285,7 +1277,7 @@
 	pixel_y = 14;
 	pixel_x = 6
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/plasteel{
 	icon_state = "stage_left"
 	},
@@ -1303,7 +1295,7 @@
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered/requires_power_space)
 "He" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/pod,
 /area/ruin/space/powered/requires_power_space)
 "Hg" = (
@@ -1347,7 +1339,7 @@
 /turf/simulated/floor,
 /area/ruin/space/powered/requires_power_space)
 "Ie" = (
-/obj/effect/decal/cleanable/blood/old,
+/obj/effect/spawner/random_spawners/blood_often,
 /obj/structure/alien/resin/door{
 	dir = 4
 	},
@@ -1358,13 +1350,13 @@
 /turf/template_noop,
 /area/template_noop)
 "IH" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /obj/effect/decal/cleanable/blood/gibs/body,
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/ruin/space/powered/requires_power_space)
 "IR" = (
 /obj/effect/decal/cleanable/blood/splatter,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered/requires_power_space)
 "IX" = (
@@ -1384,7 +1376,7 @@
 	icon_state = "bulb-broken";
 	dir = 2
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /obj/item/trash/spentcasing{
 	icon_state = "r-casing";
 	dir = 8;
@@ -1393,7 +1385,7 @@
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered/requires_power_space)
 "Jp" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /obj/effect/decal/cleanable/blood/gibs/body,
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered/requires_power_space)
@@ -1410,9 +1402,7 @@
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered/requires_power_space)
 "JK" = (
-/obj/machinery/atmospherics/binary/valve{
-	dir = 8
-	},
+/obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor,
 /area/ruin/space/powered/requires_power_space)
 "JO" = (
@@ -1420,12 +1410,9 @@
 /turf/template_noop,
 /area/template_noop)
 "JS" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 5
-	},
 /mob/living/simple_animal/hostile/alien/sentinel,
 /obj/effect/decal/cleanable/blood/gibs/xeno/body,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor,
 /area/ruin/space/powered/requires_power_space)
 "Kv" = (
@@ -1451,12 +1438,17 @@
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered/requires_power_space)
 "Ln" = (
-/obj/machinery/power/smes,
+/obj/structure{
+	desc = "A high-capacity superconducting magnetic energy storage (SMES) unit.";
+	icon = 'icons/obj/power.dmi';
+	icon_state = "smes";
+	name = "power storage unit"
+	},
 /turf/simulated/floor,
 /area/ruin/space/powered/requires_power_space)
 "LA" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/plasteel{
 	icon_state = "stage_left"
 	},
@@ -1464,7 +1456,7 @@
 "LO" = (
 /obj/effect/decal/warning_stripes/east,
 /obj/effect/decal/cleanable/blood/drip,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /obj/effect/decal/cleanable/blood/gibs/body,
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/ruin/space/powered/requires_power_space)
@@ -1506,14 +1498,14 @@
 /obj/effect/turf_decal/stripes/white/corner{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/blood/old,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/blood_often,
+/obj/effect/spawner/random_spawners/dirt_often,
+/obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/ruin/space/powered/requires_power_space)
 "Nj" = (
 /obj/structure/barricade/security,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered/requires_power_space)
 "NN" = (
@@ -1528,6 +1520,7 @@
 /area/ruin/space/powered/requires_power_space)
 "NP" = (
 /obj/item/reagent_containers/food/drinks/oilcan,
+/obj/item/wrench,
 /turf/simulated/floor,
 /area/ruin/space/powered/requires_power_space)
 "NY" = (
@@ -1538,8 +1531,8 @@
 /obj/effect/turf_decal/stripes/white/line{
 	dir = 1
 	},
-/obj/effect/decal/cleanable/blood/old,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/blood_often,
+/obj/effect/spawner/random_spawners/dirt_often,
 /obj/item/organ/external/hand,
 /obj/machinery/power/apc/off_station/empty_charge{
 	pixel_x = -24
@@ -1551,7 +1544,7 @@
 /turf/simulated/floor,
 /area/ruin/space/powered/requires_power_space)
 "OA" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /obj/structure/sign/poster/contraband/random{
 	pixel_y = -32
 	},
@@ -1560,7 +1553,7 @@
 "OL" = (
 /obj/structure/alien/egg/burst,
 /obj/effect/decal/warning_stripes/east,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/ruin/space/powered/requires_power_space)
 "Pm" = (
@@ -1575,8 +1568,9 @@
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered/requires_power_space)
 "Po" = (
-/obj/machinery/atmospherics/unary/tank/air,
-/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/crate/engineering,
+/obj/effect/spawner/lootdrop/maintenance/eight,
+/obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor,
 /area/ruin/space/powered/requires_power_space)
 "Pq" = (
@@ -1654,7 +1648,7 @@
 "SA" = (
 /obj/effect/decal/cleanable/glass,
 /obj/effect/decal/cleanable/blood/gibs/body,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /obj/item/trash/spentcasing{
 	icon_state = "r-casing"
 	},
@@ -1669,8 +1663,8 @@
 	},
 /area/ruin/space/powered/requires_power_space)
 "Tn" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/blood/old,
+/obj/effect/spawner/random_spawners/dirt_often,
+/obj/effect/spawner/random_spawners/blood_often,
 /obj/structure/barricade/security,
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered/requires_power_space)
@@ -1682,17 +1676,22 @@
 /turf/simulated/floor,
 /area/ruin/space/powered/requires_power_space)
 "Tx" = (
-/obj/machinery/power/smes,
+/obj/structure{
+	desc = "A high-capacity superconducting magnetic energy storage (SMES) unit.";
+	icon = 'icons/obj/power.dmi';
+	icon_state = "smes";
+	name = "power storage unit"
+	},
 /obj/item/wrench,
 /turf/simulated/floor,
 /area/ruin/space/powered/requires_power_space)
 "TV" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /obj/effect/decal/cleanable/generic,
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered/requires_power_space)
 "Us" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /obj/structure/table_frame,
 /obj/item/organ/internal/body_egg/alien_embryo{
 	icon_state = "facehugger_impregnated"
@@ -1719,22 +1718,22 @@
 /obj/effect/turf_decal/stripes/white/line{
 	dir = 8
 	},
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/blood/old,
+/obj/effect/spawner/random_spawners/dirt_often,
+/obj/effect/spawner/random_spawners/blood_often,
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/ruin/space/powered/requires_power_space)
 "Vc" = (
 /obj/machinery/atmospherics/unary/vent_pump{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/mineral/plastitanium/red/airless{
 	icon_state = "plastitanium"
 	},
 /area/ruin/space/powered/requires_power_space)
 "Vn" = (
 /obj/structure/barricade/security,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/ruin/space/powered/requires_power_space)
 "VF" = (
@@ -1749,8 +1748,8 @@
 /area/ruin/space/powered/requires_power_space)
 "VN" = (
 /obj/item/organ/external/chest,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/blood/old,
+/obj/effect/spawner/random_spawners/dirt_often,
+/obj/effect/spawner/random_spawners/blood_often,
 /turf/simulated/floor/pod,
 /area/ruin/space/powered/requires_power_space)
 "Wd" = (
@@ -1758,7 +1757,7 @@
 	icon_state = "r-casing";
 	dir = 1
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor,
 /area/ruin/space/powered/requires_power_space)
 "We" = (
@@ -1769,8 +1768,8 @@
 "Ww" = (
 /obj/item/clothing/suit/fire/firefighter,
 /obj/effect/decal/cleanable/glass,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
+/obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered/requires_power_space)
 "WQ" = (
@@ -1783,7 +1782,7 @@
 /turf/simulated/floor,
 /area/ruin/space/powered/requires_power_space)
 "WR" = (
-/obj/effect/decal/cleanable/blood/old,
+/obj/effect/spawner/random_spawners/blood_often,
 /obj/effect/decal/cleanable/blood/drip{
 	icon_state = "5"
 	},
@@ -1794,8 +1793,8 @@
 /turf/simulated/floor,
 /area/ruin/space/powered/requires_power_space)
 "Xe" = (
-/obj/effect/decal/cleanable/blood/old,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/blood_often,
+/obj/effect/spawner/random_spawners/dirt_often,
 /obj/item/trash/spentcasing{
 	icon_state = "r-casing";
 	dir = 4
@@ -1812,14 +1811,14 @@
 /area/ruin/space/powered/requires_power_space)
 "XL" = (
 /obj/structure/bed/nest,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor,
 /area/ruin/space/powered/requires_power_space)
 "XW" = (
 /obj/structure/kitchenspike_frame,
 /obj/item/stack/rods,
 /obj/item/stack/rods,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/plasteel/freezer,
 /area/ruin/space/powered/requires_power_space)
 "Ye" = (
@@ -1837,7 +1836,11 @@
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered/requires_power_space)
 "YF" = (
-/obj/machinery/recharge_station,
+/obj/structure{
+	icon = 'icons/obj/objects.dmi';
+	icon_state = "borgdecon2";
+	name = "cyborg recharging station"
+	},
 /obj/effect/decal/warning_stripes/south,
 /obj/structure/sign/poster/contraband/random{
 	pixel_y = -32
@@ -1855,7 +1858,7 @@
 /obj/effect/turf_decal/stripes/white/line{
 	dir = 1
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered/requires_power_space)
 "Zc" = (
@@ -1864,8 +1867,8 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/glass,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/blood/old,
+/obj/effect/spawner/random_spawners/dirt_often,
+/obj/effect/spawner/random_spawners/blood_often,
 /obj/item/trash/spentcasing,
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/ruin/space/powered/requires_power_space)
@@ -1876,8 +1879,8 @@
 /obj/structure/toilet{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/blood/old,
+/obj/effect/spawner/random_spawners/dirt_often,
+/obj/effect/spawner/random_spawners/blood_often,
 /turf/simulated/floor,
 /area/ruin/space/powered/requires_power_space)
 "ZA" = (
@@ -1996,7 +1999,7 @@ jb
 Zk
 jb
 eL
-dC
+Xx
 IX
 NP
 jb
@@ -2122,7 +2125,7 @@ jw
 Cg
 jb
 eC
-Bq
+JK
 iS
 hF
 jb
@@ -2182,7 +2185,7 @@ iB
 iB
 pP
 jw
-yW
+cC
 tO
 Cg
 ky
@@ -2371,7 +2374,7 @@ iB
 JO
 iB
 jw
-Bk
+lA
 CM
 Ww
 eT
