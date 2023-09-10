@@ -144,7 +144,7 @@
 	usr.user_triggered_emote("grumble")
 
 /mob/living/carbon/human/verb/emote_sniff()
-	set name = "~ Понюхать "
+	set name = "> Понюхать "
 	set category = "Эмоции"
 	usr.user_triggered_emote("sniff")
 
@@ -310,7 +310,7 @@
 	usr.user_triggered_emote("handshake")
 
 /mob/living/carbon/human/verb/emote_slap()
-	set name = "> Шлепнуть "
+	set name = "> Шлёпнуть "
 	set category = "Эмоции"
 	usr.user_triggered_emote("slap")
 

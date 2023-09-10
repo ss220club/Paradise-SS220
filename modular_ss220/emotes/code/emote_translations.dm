@@ -3,12 +3,11 @@
 ////////////////////
 /datum/emote/living/scream
 	message = "кричит!"
-	message_mime = "делает вид что кричит!"
+	message_mime = "как будто кричит!"
 	message_simple = "скулит."
 	message_alien = "рычит!"
 	message_postfix = "на %t!"
 	emote_type = EMOTE_VISIBLE | EMOTE_MOUTH
-	cooldown = 5 SECONDS
 
 /datum/emote/flip
 	message = "делает кувырок!"
@@ -146,7 +145,7 @@
 	message = "дрожит от страха!"
 
 /datum/emote/living/twitch
-	message = "сильно дергается."
+	message = "сильно дёргается."
 
 /datum/emote/living/twitch_s
 	message = "дергается."
@@ -211,7 +210,11 @@
 	message_mime = "крепко спит."
 	message_simple = "ворочается во сне."
 	message_robot = "мечтает об электроовцах"
-	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
+	emote_type = EMOTE_AUDIBLE | EMOTE_SOUND
+	stat_allowed = CONSCIOUS
+	max_stat_allowed = CONSCIOUS
+	unintentional_stat_allowed = CONSCIOUS
+	max_unintentional_stat_allowed = CONSCIOUS
 
 /datum/emote/living/snore/get_sound(mob/living/user)
 	. = ..()
@@ -239,22 +242,13 @@
 	message = "хлопает."
 	message_mime = "бесшумно хлопает."
 	message_param = "хлопает %t."
+	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
 
 /datum/emote/living/carbon/chuckle
 	message = "усмехается."
 	message_mime = "бесшумно усмехается."
-	emote_type = EMOTE_AUDIBLE | EMOTE_MOUTH
+	emote_type = EMOTE_AUDIBLE | EMOTE_MOUTH | EMOTE_VISIBLE
 	muzzled_noises = list("радостно", "оптимистично")
-
-/datum/emote/living/carbon/cough
-	message = "кашляет!"
-	message_mime = "бесшумно кашляет!"
-	emote_type = EMOTE_VISIBLE | EMOTE_MOUTH
-
-/datum/emote/living/carbon/giggle
-	message = "хихикает."
-	message_mime = "бесшумно хихикает!"
-	muzzled_noises = list("булькающе")
 
 /datum/emote/living/carbon/gurgle
 	message = "издает неприятное бульканье."
@@ -305,25 +299,38 @@
 	muzzled_noises = list("болезненно")
 	emote_type = EMOTE_VISIBLE
 
+/datum/emote/living/carbon/moan/get_sound(mob/living/user)
+	. = ..()
+	if(user.gender == FEMALE)
+		return pick(
+			"modular_ss220/emotes/audio/female/moan_female_1.ogg",
+			"modular_ss220/emotes/audio/female/moan_female_2.ogg",
+			"modular_ss220/emotes/audio/female/moan_female_3.ogg")
+	else
+		return pick(
+			"modular_ss220/emotes/audio/male/moan_male_1.ogg",
+			"modular_ss220/emotes/audio/male/moan_male_2.ogg",
+			"modular_ss220/emotes/audio/male/moan_male_3.ogg")
+
 /datum/emote/living/carbon/laugh
 	message = "смеется."
 	message_mime = "бесшумно смеется!"
 	message_param = "смеется над %t."
 	muzzled_noises = list("счастливо", "весело")
-	emote_type = EMOTE_AUDIBLE | EMOTE_MOUTH | EMOTE_SOUND
+	emote_type = EMOTE_AUDIBLE | EMOTE_MOUTH | EMOTE_VISIBLE
 
 /datum/emote/living/carbon/laugh/get_sound(mob/living/user)
 	. = ..()
 	if(user.gender == FEMALE)
 		return pick(
-			"modular_ss220/emotes/audio/laugh_female_1.ogg",
-			"modular_ss220/emotes/audio/laugh_female_2.ogg",
-			"modular_ss220/emotes/audio/laugh_female_3.ogg")
+			"modular_ss220/emotes/audio/female/laugh_female_1.ogg",
+			"modular_ss220/emotes/audio/female/laugh_female_2.ogg",
+			"modular_ss220/emotes/audio/female/laugh_female_3.ogg")
 	else
 		return pick(
-			"modular_ss220/emotes/audio/laugh_male_1.ogg",
-			"modular_ss220/emotes/audio/laugh_male_2.ogg",
-			"modular_ss220/emotes/audio/laugh_male_3.ogg")
+			"modular_ss220/emotes/audio/male/laugh_male_1.ogg",
+			"modular_ss220/emotes/audio/male/laugh_male_2.ogg",
+			"modular_ss220/emotes/audio/male/laugh_male_3.ogg")
 
 /datum/emote/living/carbon/yawn
 	message = "зевает."
@@ -342,17 +349,45 @@
 			"modular_ss220/emotes/audio/male/yawn_male_1.ogg",
 			"modular_ss220/emotes/audio/male/yawn_male_2.ogg")
 
+/datum/emote/living/carbon/giggle
+	message = "хихикает."
+	message_mime = "бесшумно хихикает!"
+	muzzled_noises = list("булькающе")
+
+/datum/emote/living/carbon/giggle/get_sound(mob/living/user)
+	. = ..()
+	if(user.gender == FEMALE)
+		return pick(
+			"modular_ss220/emotes/audio/female/giggle_female_1.ogg",
+			"modular_ss220/emotes/audio/female/giggle_female_2.ogg",
+			"modular_ss220/emotes/audio/female/giggle_female_3.ogg",
+			"modular_ss220/emotes/audio/female/giggle_female_4.ogg")
+	else
+		return pick(
+			"modular_ss220/emotes/audio/male/giggle_male_1.ogg",
+			"modular_ss220/emotes/audio/male/giggle_male_2.ogg")
+
+/datum/emote/living/carbon/cough
+	message = "кашляет!"
+	message_mime = "бесшумно кашляет!"
+	emote_type = EMOTE_VISIBLE | EMOTE_MOUTH
+
+/datum/emote/living/carbon/cough/get_sound(mob/living/user)
+	. = ..()
+	if(user.gender == FEMALE)
+		return pick(
+			"modular_ss220/emotes/audio/female/cough_female_1.ogg",
+			"modular_ss220/emotes/audio/female/cough_female_2.ogg",
+			"modular_ss220/emotes/audio/female/cough_female_3.ogg")
+	else
+		return pick(
+			"modular_ss220/emotes/audio/male/cough_male_1.ogg",
+			"modular_ss220/emotes/audio/male/cough_male_2.ogg",
+			"modular_ss220/emotes/audio/male/cough_male_2.ogg")
+
 /////////////////////
 /// Human Emotes ///
 ///////////////////
-/datum/emote/living/carbon/human/scream
-	message = "кричит!"
-	message_mime = "делает вид что кричит!"
-	message_simple = "скулит."
-	message_alien = "рычит!"
-	message_postfix = "на %t!"
-	emote_type = EMOTE_VISIBLE | EMOTE_MOUTH
-
 /datum/emote/living/carbon/human/airguitar
 	message = "натягивает струны и бьет головой, как шимпанзе в сафари."
 
@@ -382,12 +417,6 @@
 	message = "кивает."
 	message_param = "кивает, обращаясь к %t."
 
-/datum/emote/living/carbon/human/scream
-	message = "кричит!"
-	message_mime = "как будто кричит!"
-	message_postfix = "на %t!"
-	muzzled_noises = list("очень громко")
-
 /datum/emote/living/carbon/human/shake
 	message = "трясет головой."
 	message_param = "трясет головой, обращяясь к %t."
@@ -398,23 +427,8 @@
 /datum/emote/living/carbon/human/raise
 	message = "поднимает руку."
 
-/datum/emote/living/carbon/human/salute
-	message = "салютует."
-	message_param = "салютует %t."
-	emote_type = EMOTE_VISIBLE
-
-/datum/emote/living/carbon/human/salute/get_sound(mob/living/user)
-	var/mob/living/carbon/human/H = user
-	if(!is_type_in_list(H.shoes, funny_shoes))
-		return 'sound/effects/salute.ogg'
-	if(is_type_in_list(H.shoes, funny_shoes))
-		return 'sound/items/toysqueak1.ogg'
-
 /datum/emote/living/carbon/human/shrug
 	message = "пожимает плечами."
-
-/datum/emote/living/carbon/human/sniff
-	message = "нюхает."
 
 /datum/emote/living/carbon/human/johnny
 	message = "затягивается сигаретой и выдыхает дым в форме своего имени."
@@ -549,18 +563,46 @@
 //////////////////////////////////
 /// Human Emotes - With Sound ///
 ////////////////////////////////
+/datum/emote/living/carbon/human/scream
+	message = "кричит!"
+	message_mime = "как будто кричит!"
+	message_simple = "скулит."
+	message_alien = "рычит!"
+	message_postfix = "на %t!"
+	muzzled_noises = list("очень громко")
+	emote_type = EMOTE_VISIBLE | EMOTE_MOUTH
+
+/datum/emote/living/carbon/human/scream/select_message_type(mob/user, msg, intentional)
+	. = ..()
+	var/mob/living/carbon/human/H = user
+	if(H.dna.species?.scream_verb)
+		if(H.mind?.miming)
+			return "как будто [H.dna.species?.scream_verb]!"
+		else
+			return "[H.dna.species?.scream_verb]!"
+
+/datum/emote/living/carbon/human/scream/get_sound(mob/living/user)
+	. = ..()
+	if(user.gender == FEMALE)
+		return pick(
+			"modular_ss220/emotes/audio/female/scream_female_1.ogg",
+			"modular_ss220/emotes/audio/female/scream_female_2.ogg",
+			"modular_ss220/emotes/audio/female/scream_female_3.ogg")
+	else
+		return "modular_ss220/emotes/audio/male/scream_male.ogg"
+
 /datum/emote/living/carbon/human/whistle
 	key = "whistle"
 	key_third_person = "whistles"
 	message = "свистит."
 	message_param = "свистит на %t."
-	emote_type = EMOTE_AUDIBLE | EMOTE_MOUTH | EMOTE_SOUND
+	emote_type = EMOTE_AUDIBLE | EMOTE_MOUTH | EMOTE_VISIBLE
 	sound = "modular_ss220/emotes/audio/whistle.ogg"
 
 /datum/emote/living/carbon/human/cry
 	message = "плачет."
 	muzzled_noises = list("слабо", "жалко", "грустно")
-	emote_type = EMOTE_AUDIBLE | EMOTE_MOUTH
+	emote_type = EMOTE_AUDIBLE | EMOTE_MOUTH | EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/cry/get_sound(mob/living/user)
 	. = ..()
@@ -577,6 +619,7 @@
 /datum/emote/living/carbon/human/gasp
 	message = "задыхается!"
 	message_mime = "кажется, задыхается!"
+	emote_type = EMOTE_AUDIBLE | EMOTE_MOUTH | EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/gasp/get_sound(mob/living/user)
 	. = ..()
@@ -598,6 +641,18 @@
 			"modular_ss220/emotes/audio/male/gasp_male_5.ogg",
 			"modular_ss220/emotes/audio/male/gasp_male_6.ogg",
 			"modular_ss220/emotes/audio/male/gasp_male_7.ogg")
+
+/datum/emote/living/carbon/human/salute
+	message = "салютует."
+	message_param = "салютует %t."
+	emote_type = EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/salute/get_sound(mob/living/user)
+	var/mob/living/carbon/human/H = user
+	if(!is_type_in_list(H.shoes, funny_shoes))
+		return 'sound/effects/salute.ogg'
+	if(is_type_in_list(H.shoes, funny_shoes))
+		return 'sound/items/toysqueak1.ogg'
 
 /////////////////////
 /// Alien Emotes ///
@@ -664,3 +719,123 @@
 /datum/keybinding/emote/carbon/human/snuffle
 	linked_emote = /datum/emote/living/carbon/human/snuffle
 	name = "Шмыгать носом"
+
+////////////////
+/// ОСУЖДАЮ ///
+//////////////
+/datum/species
+	scream_verb = "кричит"
+	suicide_messages = list(
+		"пытается откусить себе язык!",
+		"выдавливает свои глазницы большими пальцами!",
+		"сворачивает себе шею!",
+		"задерживает дыхание!")
+
+/datum/species/diona
+	suicide_messages = list(
+		"теряет ветви!",
+		"вытаскивает из тайника бутыль с гербицидом и делает большой глоток!",
+		"разваливается на множество нимф!")
+
+/datum/species/drask
+	suicide_messages = list(
+		"трёт себя до возгорания!",
+		"давит пальцами на свои большие глаза!",
+		"втягивает теплый воздух!",
+		"задерживает дыхание!")
+
+/datum/species/golem
+	suicide_messages = list(
+		"рассыпается в прах!",
+		"разбивает своё тело на части!")
+
+/datum/species/kidan
+	suicide_messages = list(
+		"пытается откусить себе усики!",
+		"вонзает когти в свои глазницы!",
+		"сворачивает себе шею!",
+		"разбивает себе панцирь",
+		"протыкает себя челюстями!",
+		"задерживает дыхание!")
+
+/datum/species/machine
+	suicide_messages = list(
+		"отключает питание!",
+		"разбивает свой монитор!",
+		"выкручивает себе шею!",
+		"загружает дополнительную оперативную память!",
+		"замыкает свои микросхемы!",
+		"блокирует свой вентиляционный порт!")
+
+/datum/species/moth
+	suicide_messages = list(
+		"откусывает свои усики!",
+		"вспарывает себе живот!",
+		"отрывает себе крылья!",
+		"заддерживает своё дыхание!")
+
+/datum/species/plasmaman
+	suicide_messages = list(
+		"сворачивает себе шею!",
+		"впускает себе немного O2!",
+		"осознает экзистенциальную проблему быть рождённым из плазмы!",
+		"показывает свою истинную природу, которая оказывается плазмой!")
+
+/datum/species/shadow
+	suicide_messages = list(
+		"пытается откусить себе язык!",
+		"выдавливает большими пальцами себе глазницы!",
+		"сворачивает себе шею!",
+		"пялится на ближайший источник света!")
+
+/datum/species/skeleton
+	suicide_messages = list(
+		"ломает себе кости!",
+		"сваливается в кучу!",
+		"разваливается!",
+		"откручивает себе череп!")
+
+/datum/species/skrell
+	suicide_messages = list(
+		"пытается откусить себе язык!",
+		"выдавливает большими пальцами свои глазницы!",
+		"сворачивает себе шею!",
+		"задыхается словно рыба!",
+		"душит себя собственными усиками!")
+
+/datum/species/slime
+	suicide_messages = list(
+		"тает в лужу!",
+		"растекается в лужу!",
+		"становится растаявшим желе!",
+		"вырывает собственное ядро!",
+		"становится коричневым, тусклым и растекается в лужу!")
+
+/datum/species/tajaran
+	suicide_messages = list(
+		"пытается откусить себе язык!",
+		"вонзает когти себе в глазницы!",
+		"сворачивает себе шею!",
+		"задерживает дыхание!")
+
+/datum/species/unathi
+	suicide_messages = list(
+		"is attempting to bite their tongue off!",
+		"is jamming their claws into their eye sockets!",
+		"is twisting their own neck!",
+		"is holding their breath!")
+
+/datum/species/vox
+	suicide_messages = list(
+		"пытается откусить себе язык!",
+		"вонзает когти себе в глазницы!",
+		"сворачивает себе шею!",
+		"задерживает дыхание!",
+		"глубоко вдыхает кислород!")
+
+/datum/species/vulpkanin
+	suicide_messages = list(
+		"пытается откусить себе язык!",
+		"выдавливает когтями свои глазницы!",
+		"сворачивает себе шею!",
+		"задерживает дыхание!")
