@@ -1,3 +1,15 @@
+//////////////////////
+/// Living Emotes ///
+////////////////////
+/datum/emote/living/scream
+	message = "кричит!"
+	message_mime = "делает вид что кричит!"
+	message_simple = "скулит."
+	message_alien = "рычит!"
+	message_postfix = "на %t!"
+	emote_type = EMOTE_VISIBLE | EMOTE_MOUTH
+	cooldown = 5 SECONDS
+
 /datum/emote/flip
 	message = "делает кувырок!"
 
@@ -16,10 +28,6 @@
 	message = "отрыгивает."
 	message_mime = "довольно противно открывает рот."
 
-/datum/emote/living/choke
-	message = "задыхается!"
-	message_mime = "отчаянно хватается за горло!"
-
 /datum/emote/living/collapse
 	message = "падает!"
 
@@ -31,9 +39,6 @@
 	. = ..()
 	user.spin(dance_time, pick(0.1 SECONDS, 0.2 SECONDS))
 	user.do_jitter_animation(rand(8 SECONDS, 16 SECONDS), dance_time / 4)
-
-/datum/emote/living/jump
-	message = "прыгает!"
 
 /datum/emote/living/deathgasp
 	message = "цепенеет и расслабляется, взгляд становится пустым и безжизненным..."
@@ -87,29 +92,11 @@
 /datum/emote/living/pout
 	message = "надувает губы."
 
-/datum/emote/living/scream
-	message = "кричит!"
-	message_mime = "как будто кричит!"
-	message_simple = "скулит."
-	message_alien = "рычит!"
-
 /datum/emote/living/shake
 	message = "трясет головой."
 
 /datum/emote/living/shiver
 	message = "дрожит."
-
-/datum/emote/living/sigh
-	message = "вздыхает."
-	message_mime = "беззвучно вздыхает."
-	emote_type = EMOTE_AUDIBLE | EMOTE_MOUTH | EMOTE_SOUND
-
-/datum/emote/living/sigh/get_sound(mob/living/user)
-	. = ..()
-	if(user.gender == FEMALE)
-		return "modular_ss220/emotes/audio/sigh_female.ogg"
-	else
-		return "modular_ss220/emotes/audio/sigh_male.ogg"
 
 /datum/emote/living/sigh/happy
 	message = "Удовлетворённо вздыхает."
@@ -126,15 +113,6 @@
 /datum/emote/living/smug
 	message = "самодовольно ухмыляется."
 	message_param = "самодовольно ухмыляется, смотря на %t."
-
-/datum/emote/living/sniff
-	message = "нюхает."
-
-/datum/emote/living/snore
-	message = "храпит."
-	message_mime = "крепко спит."
-	message_simple = "ворочается во сне."
-	message_robot = "мечтает об электроовцах"
 
 /datum/emote/living/nightmare
 	message = "ворочается во сне."
@@ -181,6 +159,75 @@
 /datum/emote/living/wsmile
 	message = "слабо улыбается."
 
+///////////////////////////////////
+/// Living Emotes - With Sound ///
+/////////////////////////////////
+/datum/emote/living/sigh
+	message = "вздыхает."
+	message_mime = "беззвучно вздыхает."
+	emote_type = EMOTE_AUDIBLE | EMOTE_MOUTH
+
+/datum/emote/living/sigh/get_sound(mob/living/user)
+	. = ..()
+	if(user.gender == FEMALE)
+		return "modular_ss220/emotes/audio/female/sigh_female.ogg"
+	else
+		return "modular_ss220/emotes/audio/male/sigh_male.ogg"
+
+/datum/emote/living/choke
+	message = "подавился!"
+	message_mime = "отчаянно хватается за горло!"
+	emote_type = EMOTE_AUDIBLE | EMOTE_MOUTH
+	audio_cooldown = 3 SECONDS
+
+/datum/emote/living/choke/get_sound(mob/living/user)
+	. = ..()
+	if(user.gender == FEMALE)
+		return pick(
+			"modular_ss220/emotes/audio/female/choke_female_1.ogg",
+			"modular_ss220/emotes/audio/female/choke_female_2.ogg",
+			"modular_ss220/emotes/audio/female/choke_female_3.ogg")
+	else
+		return pick(
+			"modular_ss220/emotes/audio/male/choke_male_1.ogg",
+			"modular_ss220/emotes/audio/male/choke_male_2.ogg",
+			"modular_ss220/emotes/audio/male/choke_male_3.ogg")
+
+/datum/emote/living/sniff
+	message = "нюхает."
+	message_mime = "бесшумно нюхнул."
+	cooldown = 5 SECONDS
+	audio_cooldown = 3 SECONDS
+
+/datum/emote/living/sniff/get_sound(mob/living/user)
+	. = ..()
+	if(user.gender == FEMALE)
+		return "modular_ss220/emotes/audio/female/sniff_female.ogg"
+	else
+		return "modular_ss220/emotes/audio/male/sniff_male.ogg"
+
+/datum/emote/living/snore
+	message = "храпит."
+	message_mime = "крепко спит."
+	message_simple = "ворочается во сне."
+	message_robot = "мечтает об электроовцах"
+	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
+
+/datum/emote/living/snore/get_sound(mob/living/user)
+	. = ..()
+	if(iscarbon(user))
+		return pick(
+			"modular_ss220/emotes/audio/snore_1.ogg",
+			"modular_ss220/emotes/audio/snore_2.ogg",
+			"modular_ss220/emotes/audio/snore_3.ogg",
+			"modular_ss220/emotes/audio/snore_4.ogg",
+			"modular_ss220/emotes/audio/snore_5.ogg",
+			"modular_ss220/emotes/audio/snore_6.ogg",
+			"modular_ss220/emotes/audio/snore_7.ogg")
+
+//////////////////////
+/// Carbon Emotes ///
+////////////////////
 /datum/emote/living/carbon/blink
 	message = "моргает."
 
@@ -193,9 +240,6 @@
 	message_mime = "бесшумно хлопает."
 	message_param = "хлопает %t."
 
-/datum/emote/living/carbon/cross
-	message = "скрещивает руки."
-
 /datum/emote/living/carbon/chuckle
 	message = "усмехается."
 	message_mime = "бесшумно усмехается."
@@ -205,11 +249,7 @@
 /datum/emote/living/carbon/cough
 	message = "кашляет!"
 	message_mime = "бесшумно кашляет!"
-
-/datum/emote/living/carbon/moan
-	message = "стонет!"
-	message_mime = "как будто стонет!"
-	muzzled_noises = list("болезненно")
+	emote_type = EMOTE_VISIBLE | EMOTE_MOUTH
 
 /datum/emote/living/carbon/giggle
 	message = "хихикает."
@@ -236,49 +276,8 @@
 	message = "машет."
 	message_param = "машет %t."
 
-/datum/emote/living/carbon/yawn
-	message = "зевает."
-	muzzled_noises = list("устало", "медленно", "сонно")
-	emote_type = EMOTE_AUDIBLE | EMOTE_MOUTH | EMOTE_SOUND
-
-/datum/emote/living/carbon/yawn/get_sound(mob/living/user)
-	. = ..()
-	if(user.gender == FEMALE)
-		return pick(
-			"modular_ss220/emotes/audio/yawn_female_1.ogg",
-			"modular_ss220/emotes/audio/yawn_female_2.ogg",
-			"modular_ss220/emotes/audio/yawn_female_3.ogg",
-		)
-	else
-		return pick(
-			"modular_ss220/emotes/audio/yawn_male_1.ogg",
-			"modular_ss220/emotes/audio/yawn_male_2.ogg",
-		)
-
 /datum/emote/living/carbon/exhale
 	message = "выдыхает."
-
-/datum/emote/living/carbon/laugh
-	message = "смеется."
-	message_mime = "бесшумно смеется!"
-	message_param = "смеется над %t."
-	muzzled_noises = list("счастливо", "весело")
-	emote_type = EMOTE_AUDIBLE | EMOTE_MOUTH | EMOTE_SOUND
-
-/datum/emote/living/carbon/laugh/get_sound(mob/living/user)
-	. = ..()
-	if(user.gender == FEMALE)
-		return pick(
-			"modular_ss220/emotes/audio/laugh_female_1.ogg",
-			"modular_ss220/emotes/audio/laugh_female_2.ogg",
-			"modular_ss220/emotes/audio/laugh_female_3.ogg",
-		)
-	else
-		return pick(
-			"modular_ss220/emotes/audio/laugh_male_1.ogg",
-			"modular_ss220/emotes/audio/laugh_male_2.ogg",
-			"modular_ss220/emotes/audio/laugh_male_3.ogg",
-		)
 
 /datum/emote/living/carbon/scowl
 	message = "хмурится."
@@ -297,74 +296,68 @@
 /datum/emote/living/carbon/faint
 	message = "падает в обморок."
 
-/datum/emote/living/carbon/alien/humanoid/roar
-	message = "ревет!"
-	message_param = "ревет на %t!"
+///////////////////////////////////
+/// Carbon Emotes - With Sound ///
+/////////////////////////////////
+/datum/emote/living/carbon/moan
+	message = "стонет!"
+	message_mime = "как будто стонет!"
+	muzzled_noises = list("болезненно")
+	emote_type = EMOTE_VISIBLE
 
-/datum/emote/living/carbon/alien/humanoid/hiss
-	message = "шипит!"
-	message_param = "шипит %t!"
-
-/datum/emote/living/carbon/alien/humanoid/gnarl
-	message = "оскаливается и показывает зубы."
-	message_param = "оскаливается и показывает зубы %t."
-
-/datum/emote/living/carbon/brain/alarm
-	message = "подает сигнал тревоги."
-	self_message = "Вы подаете сигнал тревоги."
-
-/datum/emote/living/carbon/brain/alert
-	message = "издаёт страдальческий звук."
-	self_message = "Вы издаёте страдальческий звук."
-
-/datum/emote/living/carbon/brain/notice
-	message = "воспроизводит громкий звук."
-	self_message = "Вы воспроизводите громкий звук."
-
-/datum/emote/living/carbon/brain/flash
-	message = "начинает быстро мигать лампочками!"
-
-/datum/emote/living/carbon/brain/whistle
-	message = "свистит."
-	self_message = "Вы свистите."
+/datum/emote/living/carbon/laugh
+	message = "смеется."
+	message_mime = "бесшумно смеется!"
+	message_param = "смеется над %t."
+	muzzled_noises = list("счастливо", "весело")
 	emote_type = EMOTE_AUDIBLE | EMOTE_MOUTH | EMOTE_SOUND
-	sound = "modular_ss220/emotes/audio/whistle.ogg"
 
-/datum/emote/living/carbon/brain/beep
-	message = "бипает."
-	self_message = "Вы бипаете."
+/datum/emote/living/carbon/laugh/get_sound(mob/living/user)
+	. = ..()
+	if(user.gender == FEMALE)
+		return pick(
+			"modular_ss220/emotes/audio/laugh_female_1.ogg",
+			"modular_ss220/emotes/audio/laugh_female_2.ogg",
+			"modular_ss220/emotes/audio/laugh_female_3.ogg")
+	else
+		return pick(
+			"modular_ss220/emotes/audio/laugh_male_1.ogg",
+			"modular_ss220/emotes/audio/laugh_male_2.ogg",
+			"modular_ss220/emotes/audio/laugh_male_3.ogg")
 
-/datum/emote/living/carbon/brain/boop
-	message = "бупает."
-	self_message = "вы бупаете."
+/datum/emote/living/carbon/yawn
+	message = "зевает."
+	muzzled_noises = list("устало", "медленно", "сонно")
+	emote_type = EMOTE_AUDIBLE | EMOTE_MOUTH | EMOTE_SOUND
 
+/datum/emote/living/carbon/yawn/get_sound(mob/living/user)
+	. = ..()
+	if(user.gender == FEMALE)
+		return pick(
+			"modular_ss220/emotes/audio/female/yawn_female_1.ogg",
+			"modular_ss220/emotes/audio/female/yawn_female_2.ogg",
+			"modular_ss220/emotes/audio/female/yawn_female_3.ogg")
+	else
+		return pick(
+			"modular_ss220/emotes/audio/male/yawn_male_1.ogg",
+			"modular_ss220/emotes/audio/male/yawn_male_2.ogg")
+
+/////////////////////
+/// Human Emotes ///
+///////////////////
+/datum/emote/living/carbon/human/scream
+	message = "кричит!"
+	message_mime = "делает вид что кричит!"
+	message_simple = "скулит."
+	message_alien = "рычит!"
+	message_postfix = "на %t!"
+	emote_type = EMOTE_VISIBLE | EMOTE_MOUTH
 
 /datum/emote/living/carbon/human/airguitar
 	message = "натягивает струны и бьет головой, как шимпанзе в сафари."
 
 /datum/emote/living/carbon/human/crack
 	message = "хрустит пальцами."
-
-/datum/emote/living/carbon/human/cry
-	message = "плачет."
-	muzzled_noises = list("слабо", "жалко", "грустно")
-	emote_type = EMOTE_AUDIBLE | EMOTE_MOUTH | EMOTE_SOUND
-
-/datum/emote/living/carbon/human/cry/get_sound(mob/living/user)
-	. = ..()
-	if(user.gender == FEMALE)
-		return pick(
-			"modular_ss220/emotes/audio/cry_female_1.ogg",
-			"modular_ss220/emotes/audio/cry_female_2.ogg",
-			"modular_ss220/emotes/audio/cry_female_3.ogg",
-		)
-	else
-		return pick(
-			"modular_ss220/emotes/audio/cry_male_1.ogg",
-			"modular_ss220/emotes/audio/cry_male_2.ogg",
-		)
-
-
 
 /datum/emote/living/carbon/human/eyebrow
 	message = "приподнимает бровь."
@@ -395,10 +388,6 @@
 	message_postfix = "на %t!"
 	muzzled_noises = list("очень громко")
 
-/datum/emote/living/carbon/human/gasp
-	message = "задыхается!"
-	message_mime = "кажется, задыхается!"
-
 /datum/emote/living/carbon/human/shake
 	message = "трясет головой."
 	message_param = "трясет головой, обращяясь к %t."
@@ -412,8 +401,14 @@
 /datum/emote/living/carbon/human/salute
 	message = "салютует."
 	message_param = "салютует %t."
-	emote_type = EMOTE_VISIBLE | EMOTE_SOUND
-	sound = "modular_ss220/emotes/audio/salute.ogg"
+	emote_type = EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/salute/get_sound(mob/living/user)
+	var/mob/living/carbon/human/H = user
+	if(!is_type_in_list(H.shoes, funny_shoes))
+		return 'sound/effects/salute.ogg'
+	if(is_type_in_list(H.shoes, funny_shoes))
+		return 'sound/items/toysqueak1.ogg'
 
 /datum/emote/living/carbon/human/shrug
 	message = "пожимает плечами."
@@ -443,7 +438,6 @@
 /datum/emote/living/carbon/sign/signal
 	message_param = "показывает %t пальцев."
 	param_desc = "число(0-10)"
-
 
 /datum/emote/living/carbon/human/wag
 	message = "начинает вилять хвостом."
@@ -480,11 +474,6 @@
 /datum/emote/living/carbon/human/quill
 	message = "шелестят перьями."
 	message_param = "шелестят перьями на %t."
-
-// SS220 TRANSLATION TODO: wtf is it
-/datum/emote/living/carbon/human/warble
-	message = "warbles."
-	message_param = "warbles at %t."
 
 /datum/emote/living/carbon/human/clack
 	message = "клацает своими мандибулами."
@@ -545,19 +534,11 @@
 	message = "шмыгает носом."
 	message_param = "шмыгает носом на %t."
 
-/datum/keybinding/emote/carbon/human/snuffle
-	linked_emote = /datum/emote/living/carbon/human/snuffle
-	name = "Шмыгать носом"
-
 /datum/emote/living/carbon/human/hem
 	key = "hem"
 	key_third_person = "hems"
 	message = "хмыкает."
 	message_param = "хмыкает %t."
-
-/datum/keybinding/emote/carbon/human/hem
-	linked_emote = /datum/emote/living/carbon/human/hem
-	name = "Хныкать"
 
 /datum/emote/living/carbon/human/scratch
 	key = "scratch"
@@ -565,10 +546,9 @@
 	message = "чешется."
 	message_param = "чешет %t."
 
-/datum/keybinding/emote/carbon/human/scratch
-	linked_emote = /datum/emote/living/carbon/human/scratch
-	name = "Чесаться"
-
+//////////////////////////////////
+/// Human Emotes - With Sound ///
+////////////////////////////////
 /datum/emote/living/carbon/human/whistle
 	key = "whistle"
 	key_third_person = "whistles"
@@ -577,6 +557,110 @@
 	emote_type = EMOTE_AUDIBLE | EMOTE_MOUTH | EMOTE_SOUND
 	sound = "modular_ss220/emotes/audio/whistle.ogg"
 
+/datum/emote/living/carbon/human/cry
+	message = "плачет."
+	muzzled_noises = list("слабо", "жалко", "грустно")
+	emote_type = EMOTE_AUDIBLE | EMOTE_MOUTH
+
+/datum/emote/living/carbon/human/cry/get_sound(mob/living/user)
+	. = ..()
+	if(user.gender == FEMALE)
+		return pick(
+			"modular_ss220/emotes/audio/female/cry_female_1.ogg",
+			"modular_ss220/emotes/audio/female/cry_female_2.ogg",
+			"modular_ss220/emotes/audio/female/cry_female_3.ogg",)
+	else
+		return pick(
+			"modular_ss220/emotes/audio/male/cry_male_1.ogg",
+			"modular_ss220/emotes/audio/male/cry_male_2.ogg",)
+
+/datum/emote/living/carbon/human/gasp
+	message = "задыхается!"
+	message_mime = "кажется, задыхается!"
+
+/datum/emote/living/carbon/human/gasp/get_sound(mob/living/user)
+	. = ..()
+	if(user.gender == FEMALE)
+		return pick(
+			"modular_ss220/emotes/audio/female/gasp_female_1.ogg",
+			"modular_ss220/emotes/audio/female/gasp_female_2.ogg",
+			"modular_ss220/emotes/audio/female/gasp_female_3.ogg",
+			"modular_ss220/emotes/audio/female/gasp_female_4.ogg",
+			"modular_ss220/emotes/audio/female/gasp_female_5.ogg",
+			"modular_ss220/emotes/audio/female/gasp_female_6.ogg",
+			"modular_ss220/emotes/audio/female/gasp_female_7.ogg")
+	else
+		return pick(
+			"modular_ss220/emotes/audio/male/gasp_male_1.ogg",
+			"modular_ss220/emotes/audio/male/gasp_male_2.ogg",
+			"modular_ss220/emotes/audio/male/gasp_male_3.ogg",
+			"modular_ss220/emotes/audio/male/gasp_male_4.ogg",
+			"modular_ss220/emotes/audio/male/gasp_male_5.ogg",
+			"modular_ss220/emotes/audio/male/gasp_male_6.ogg",
+			"modular_ss220/emotes/audio/male/gasp_male_7.ogg")
+
+/////////////////////
+/// Alien Emotes ///
+///////////////////
+/datum/emote/living/carbon/alien/humanoid/roar
+	message = "ревет!"
+	message_param = "ревет на %t!"
+
+/datum/emote/living/carbon/alien/humanoid/hiss
+	message = "шипит!"
+	message_param = "шипит %t!"
+
+/datum/emote/living/carbon/alien/humanoid/gnarl
+	message = "оскаливается и показывает зубы."
+	message_param = "оскаливается и показывает зубы %t."
+
+/////////////////////
+/// Brain Emotes ///
+///////////////////
+/datum/emote/living/carbon/brain/alarm
+	message = "подает сигнал тревоги."
+	self_message = "Вы подаете сигнал тревоги."
+
+/datum/emote/living/carbon/brain/alert
+	message = "издаёт страдальческий звук."
+	self_message = "Вы издаёте страдальческий звук."
+
+/datum/emote/living/carbon/brain/notice
+	message = "воспроизводит громкий звук."
+	self_message = "Вы воспроизводите громкий звук."
+
+/datum/emote/living/carbon/brain/flash
+	message = "начинает быстро мигать лампочками!"
+
+/datum/emote/living/carbon/brain/whistle
+	message = "свистит."
+	self_message = "Вы свистите."
+	emote_type = EMOTE_AUDIBLE | EMOTE_MOUTH | EMOTE_SOUND
+	sound = "modular_ss220/emotes/audio/whistle.ogg"
+
+/datum/emote/living/carbon/brain/beep
+	message = "бипает."
+	self_message = "Вы бипаете."
+
+/datum/emote/living/carbon/brain/boop
+	message = "бупает."
+	self_message = "вы бупаете."
+
+////////////////////
+/// Keybindings ///
+//////////////////
+/datum/keybinding/emote/carbon/human/hem
+	linked_emote = /datum/emote/living/carbon/human/hem
+	name = "Хныкать"
+
+/datum/keybinding/emote/carbon/human/scratch
+	linked_emote = /datum/emote/living/carbon/human/scratch
+	name = "Чесаться"
+
 /datum/keybinding/emote/carbon/human/whistle
 	linked_emote = /datum/emote/living/carbon/human/whistle
 	name = "Свистеть"
+
+/datum/keybinding/emote/carbon/human/snuffle
+	linked_emote = /datum/emote/living/carbon/human/snuffle
+	name = "Шмыгать носом"
