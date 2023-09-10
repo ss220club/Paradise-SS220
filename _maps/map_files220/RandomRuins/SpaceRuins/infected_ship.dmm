@@ -17,7 +17,6 @@
 	mask_type = null;
 	storage_type = null;
 	suit_type = null;
-	state_open = 1;
 	req_access = null
 	},
 /obj/item/trash/spentcasing{
@@ -124,7 +123,8 @@
 /obj/machinery/suit_storage_unit/syndicate{
 	mask_type = null;
 	storage_type = null;
-	suit_type = null
+	suit_type = null;
+	req_access = null
 	},
 /obj/effect/decal/warning_stripes/north,
 /turf/simulated/floor/mineral/plastitanium,
@@ -1054,9 +1054,7 @@
 /turf/simulated/floor,
 /area/ruin/space/powered/requires_power_space)
 "yd" = (
-/obj/structure/closet{
-	icon_state = "syndicate"
-	},
+/obj/structure/closet/syndicate,
 /obj/item/storage/firstaid/brute/empty,
 /obj/item/clothing/gloves/color/latex/nitrile,
 /obj/item/clothing/mask/surgical,
@@ -1620,7 +1618,13 @@
 /turf/simulated/floor,
 /area/ruin/space/powered/requires_power_space)
 "QU" = (
-/obj/machinery/suit_storage_unit/syndicate,
+/obj/machinery/suit_storage_unit/syndicate{
+	mask_type = null;
+	storage_type = null;
+	suit_type = null;
+	state_open = 1;
+	req_access = null
+	},
 /obj/effect/decal/warning_stripes/north,
 /turf/simulated/floor/mineral/plastitanium,
 /area/ruin/space/powered/requires_power_space)
