@@ -3,24 +3,15 @@
 #define CHANNEL_ADMIN 1023
 #define CHANNEL_VOX 1022
 #define CHANNEL_JUKEBOX 1021
-#define CHANNEL_JUKEBOX_START 1020
-#define CHANNEL_HEARTBEAT 1019 //sound channel for heartbeats
-#define CHANNEL_BUZZ 1018
-#define CHANNEL_AMBIENCE 1017
-#define CHANNEL_ENGINE 1016 // Engine ambient sounds
-#define CHANNEL_FIREALARM 1015 //fire alarm alarms
-#define CHANNEL_ASH_STORM 1014
-/* SS220 ADDITION - ORIGINAL
 #define CHANNEL_HEARTBEAT 1020 //sound channel for heartbeats
 #define CHANNEL_BUZZ 1019
 #define CHANNEL_AMBIENCE 1018
 #define CHANNEL_ENGINE 1017 // Engine ambient sounds
 #define CHANNEL_FIREALARM 1016 //fire alarm alarms
 #define CHANNEL_ASH_STORM 1015
-*/
 // SS220 ADDITION START
-#define CHANNEL_TTS_RADIO 1012
-#define CHANNEL_TTS_LOCAL 1011
+#define CHANNEL_TTS_RADIO 1013
+#define CHANNEL_TTS_LOCAL 1012
 // SS220 ADDITION END
 
 #define USER_VOLUME(M, C) M?.client?.prefs.get_channel_volume(C)
@@ -28,7 +19,8 @@
 //THIS SHOULD ALWAYS BE THE LOWEST ONE!
 //KEEP IT UPDATED
 
-#define CHANNEL_HIGHEST_AVAILABLE 1010 // SS220 EDIT
+#define CHANNEL_HIGHEST_AVAILABLE 1011 // SS220 EDIT
+
 #define MAX_INSTRUMENT_CHANNELS (128 * 6)
 
 ///Default range of a sound.
