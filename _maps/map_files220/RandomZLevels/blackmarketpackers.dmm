@@ -9,7 +9,7 @@
 /turf/simulated/floor/plating/asteroid/airless,
 /area/awaymission)
 "ad" = (
-/obj/effect/mob_spawn/human/corpse/doctor,
+/obj/effect/mob_spawn/human/doctor,
 /obj/effect/decal/cleanable/blood/gibs/old,
 /turf/simulated/floor/plating/asteroid/airless,
 /area/awaymission)
@@ -108,14 +108,17 @@
 	},
 /area/awaymission/BMPship/CommonArea)
 "ax" = (
-/obj/machinery/light/directional/east,
+/obj/machinery/light{
+	dir = 4
+	},
 /mob/living/simple_animal/hostile/poison/giant_spider/hunter{
 	health = 150;
 	maxHealth = 150;
 	name = "Angry giant spider"
 	},
-/obj/effect/landmark/damageturf,
-/turf/simulated/floor/wood/fancy/oak,
+/turf/simulated/floor/wood{
+	icon_state = "wood-broken3"
+	},
 /area/awaymission/BMPship/CommonArea)
 "aA" = (
 /obj/structure/cable{
@@ -132,11 +135,15 @@
 /turf/simulated/floor/engine,
 /area/awaymission/BMPship/Gate)
 "aC" = (
-/obj/machinery/light_construct/small/north,
+/obj/machinery/light_construct/small{
+	dir = 1
+	},
 /turf/simulated/floor/engine/vacuum,
 /area/awaymission/BMPship/TurretsSouth)
 "aD" = (
-/obj/machinery/light/small/directional/north,
+/obj/machinery/light/small{
+	dir = 1
+	},
 /mob/living/simple_animal/hostile/poison/giant_spider,
 /obj/structure/spider/stickyweb,
 /turf/simulated/floor/plasteel{
@@ -167,10 +174,13 @@
 /turf/simulated/floor/plating,
 /area/awaymission/BMPship/Engines)
 "aG" = (
-/obj/machinery/light_construct/small/north,
+/obj/machinery/light_construct/small{
+	dir = 1
+	},
 /obj/structure/alien/weeds,
-/obj/effect/landmark/damageturf,
-/turf/simulated/floor/wood/oak,
+/turf/simulated/floor/wood{
+	icon_state = "wood-broken3"
+	},
 /area/awaymission/BMPship/Armory)
 "aH" = (
 /obj/structure/window/reinforced,
@@ -296,8 +306,10 @@
 	pixel_y = 12;
 	on = 0
 	},
-/obj/effect/landmark/damageturf,
-/turf/simulated/floor/wood/oak,
+/turf/simulated/floor/wood{
+	icon_state = "wood-broken5";
+	tag = "icon-wood-broken5"
+	},
 /area/awaymission/BMPship/Fore)
 "bm" = (
 /obj/item/storage/box,
@@ -312,7 +324,7 @@
 /obj/item/coin/silver,
 /obj/item/coin/silver,
 /obj/item/storage/bag/money,
-/turf/simulated/floor/wood/oak,
+/turf/simulated/floor/wood,
 /area/awaymission/BMPship/Fore)
 "bo" = (
 /obj/structure/cable{
@@ -336,7 +348,7 @@
 /turf/simulated/floor/plating/asteroid/airless,
 /area/awaymission/BMPship/Buffer)
 "br" = (
-/obj/machinery/light/small/directional/south,
+/obj/machinery/light/small,
 /obj/effect/decal/warning_stripes/south,
 /obj/structure/largecrate/goat,
 /turf/simulated/floor/plating,
@@ -376,12 +388,14 @@
 	pixel_y = 24;
 	pixel_x = 8
 	},
-/obj/machinery/light_construct/directional/east,
+/obj/machinery/light_construct{
+	dir = 4
+	},
 /obj/item/petcollar{
 	name = "Derpy"
 	},
 /obj/effect/mob_spawn/human/corpse/tacticool,
-/turf/simulated/floor/wood/oak,
+/turf/simulated/floor/wood,
 /area/awaymission/BMPship/Fore)
 "bw" = (
 /obj/structure/alien/weeds,
@@ -427,14 +441,14 @@
 /obj/effect/decal/cleanable/blood/tracks{
 	dir = 4
 	},
-/turf/simulated/floor/wood/oak,
+/turf/simulated/floor/wood,
 /area/awaymission/BMPship/Fore)
 "bG" = (
 /obj/structure/chair/comfy/shuttle{
 	dir = 8
 	},
 /obj/effect/decal/cleanable/blood/old,
-/turf/simulated/floor/wood/oak,
+/turf/simulated/floor/wood,
 /area/awaymission/BMPship/Fore)
 "bH" = (
 /obj/effect/decal/cleanable/blood/drip{
@@ -461,7 +475,7 @@
 /area/awaymission/BMPship/Gate)
 "bL" = (
 /obj/item/reagent_containers/glass/beaker/waterbottle/large,
-/turf/simulated/floor/wood/fancy/oak,
+/turf/simulated/floor/wood/fancy,
 /area/awaymission/BMPship/CommonArea)
 "bM" = (
 /obj/item/stack/cable_coil,
@@ -514,7 +528,7 @@
 /area/awaymission/BMPship/Fore)
 "bQ" = (
 /obj/structure/dresser,
-/turf/simulated/floor/wood/oak,
+/turf/simulated/floor/wood,
 /area/awaymission/BMPship/Fore)
 "bR" = (
 /obj/structure/cable{
@@ -536,7 +550,7 @@
 /area/awaymission/BMPship/Fore)
 "bT" = (
 /obj/effect/decal/warning_stripes/south,
-/obj/effect/spawner/window/reinforced/grilled,
+/obj/effect/spawner/window/reinforced,
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
@@ -564,13 +578,13 @@
 	dir = 8
 	},
 /obj/structure/spider/stickyweb,
-/turf/simulated/floor/wood/fancy/oak,
+/turf/simulated/floor/wood/fancy,
 /area/awaymission/BMPship/CommonArea)
 "bZ" = (
 /obj/effect/decal/warning_stripes/south,
 /obj/item/reagent_containers/food/drinks/sillycup,
 /obj/item/reagent_containers/food/pill/methamphetamine,
-/turf/simulated/floor/wood/fancy/oak,
+/turf/simulated/floor/wood/fancy,
 /area/awaymission/BMPship/CommonArea)
 "ca" = (
 /obj/item/clothing/glasses/regular/hipster,
@@ -600,11 +614,11 @@
 /obj/item/gun/projectile/shotgun/riot/short,
 /obj/structure/alien/weeds,
 /obj/structure/alien/resin,
-/turf/simulated/floor/wood/oak,
+/turf/simulated/floor/wood,
 /area/awaymission/BMPship/Armory)
 "cd" = (
 /obj/effect/decal/warning_stripes/southeast,
-/obj/effect/spawner/window/reinforced/grilled,
+/obj/effect/spawner/window/reinforced,
 /obj/structure/cable{
 	d2 = 8;
 	icon_state = "0-8"
@@ -676,7 +690,7 @@
 /area/awaymission/BMPship/Dormitories)
 "cp" = (
 /obj/structure/alien/weeds,
-/turf/simulated/floor/wood/oak,
+/turf/simulated/floor/wood,
 /area/awaymission/BMPship/Armory)
 "cq" = (
 /obj/structure/cable{
@@ -811,7 +825,7 @@
 /area/awaymission/BMPship/TurretsSouth)
 "cH" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/light_construct/small/south,
+/obj/machinery/light_construct/small,
 /obj/item/reagent_containers/food/snacks/meat,
 /obj/structure/spider/stickyweb,
 /obj/structure/spider/cocoon,
@@ -820,7 +834,9 @@
 "cI" = (
 /obj/structure/table,
 /obj/item/storage/box,
-/obj/machinery/light/small/directional/north,
+/obj/machinery/light/small{
+	dir = 1
+	},
 /obj/effect/decal/warning_stripes/north,
 /turf/simulated/floor/plating,
 /area/awaymission/BMPship/Gate)
@@ -842,7 +858,9 @@
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/BMPship/Containment)
 "cN" = (
-/obj/machinery/light/small/directional/east,
+/obj/machinery/light/small{
+	dir = 4
+	},
 /obj/machinery/chem_master/condimaster,
 /obj/item/reagent_containers/glass/beaker/large,
 /turf/simulated/floor/plasteel{
@@ -869,7 +887,7 @@
 /obj/structure/alien/resin{
 	layer = 3.1
 	},
-/turf/simulated/floor/wood/oak,
+/turf/simulated/floor/wood,
 /area/awaymission/BMPship/Armory)
 "cQ" = (
 /obj/machinery/economy/vending/cigarette/free,
@@ -879,7 +897,7 @@
 /area/awaymission/BMPship/CommonArea)
 "cR" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/light_construct/small/south,
+/obj/machinery/light_construct/small,
 /obj/item/reagent_containers/food/snacks/meat,
 /turf/simulated/floor/engine,
 /area/awaymission/BMPship/Containment)
@@ -896,7 +914,7 @@
 /turf/simulated/floor/vault,
 /area/awaymission/BMPship/Buffer)
 "cT" = (
-/obj/machinery/light_construct/directional/north,
+/obj/machinery/light_construct,
 /turf/simulated/floor/plating/airless,
 /area/awaymission/BMPship/MedBay)
 "cU" = (
@@ -918,14 +936,18 @@
 /obj/structure/sign/poster/contraband/energy_swords{
 	pixel_y = 32
 	},
-/obj/machinery/light_construct/small/east,
+/obj/machinery/light_construct/small{
+	dir = 4
+	},
 /obj/structure/spider/stickyweb,
 /obj/structure/spider/stickyweb,
 /turf/simulated/floor/engine,
 /area/awaymission/BMPship/Armory)
 "cX" = (
 /obj/machinery/gibber,
-/obj/machinery/light/small/directional/north,
+/obj/machinery/light/small{
+	dir = 1
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -992,8 +1014,9 @@
 	name = "MAXIMUM ATTENTION";
 	pixel_x = -32
 	},
-/obj/effect/landmark/damageturf,
-/turf/simulated/floor/wood/fancy/oak,
+/turf/simulated/floor/wood{
+	icon_state = "wood-broken3"
+	},
 /area/awaymission/BMPship/CommonArea)
 "dl" = (
 /obj/item/whetstone,
@@ -1293,8 +1316,9 @@
 /area/awaymission/BMPship/Containment)
 "dU" = (
 /obj/item/reagent_containers/food/drinks/sillycup,
-/obj/effect/landmark/damageturf,
-/turf/simulated/floor/wood/fancy/oak,
+/turf/simulated/floor/wood{
+	icon_state = "wood-broken5"
+	},
 /area/awaymission/BMPship/CommonArea)
 "dV" = (
 /obj/effect/decal/warning_stripes/southwest,
@@ -1433,8 +1457,10 @@
 /obj/machinery/economy/vending/boozeomat{
 	layer = 3.1
 	},
-/obj/effect/landmark/damageturf,
-/turf/simulated/floor/wood/oak,
+/turf/simulated/floor/wood{
+	icon_state = "wood-broken5";
+	tag = "icon-wood-broken5"
+	},
 /area/awaymission/BMPship/Fore)
 "en" = (
 /obj/effect/landmark/awaystart,
@@ -1448,7 +1474,7 @@
 "eq" = (
 /obj/structure/weightmachine/stacklifter,
 /obj/item/reagent_containers/food/pill/methamphetamine,
-/turf/simulated/floor/wood/fancy/oak,
+/turf/simulated/floor/wood/fancy,
 /area/awaymission/BMPship/CommonArea)
 "er" = (
 /turf/simulated/wall/r_wall,
@@ -1510,8 +1536,10 @@
 /area/awaymission/BMPship/TurretsNorth)
 "eD" = (
 /obj/structure/spider/stickyweb,
-/obj/effect/landmark/damageturf,
-/turf/simulated/floor/wood/fancy/oak,
+/turf/simulated/floor/wood{
+	icon_state = "wood-broken5";
+	tag = "icon-wood-broken5"
+	},
 /area/awaymission/BMPship/CommonArea)
 "eE" = (
 /turf/simulated/floor/engine,
@@ -1538,11 +1566,17 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/BMPship/Bath)
 "eI" = (
-/obj/machinery/light_construct/small/east,
+/obj/machinery/light_construct/small{
+	dir = 4
+	},
 /turf/simulated/floor/engine/vacuum,
 /area/awaymission/BMPship/Buffer)
 "eJ" = (
-/obj/structure/sink/directional/east,
+/obj/structure/sink{
+	dir = 8;
+	pixel_x = -12;
+	pixel_y = 2
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "cafeteria"
 	},
@@ -1560,7 +1594,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/turf/simulated/floor/plating/airless,
+/turf/simulated/floor/plating,
 /area/awaymission/BMPship/Engines)
 "eM" = (
 /obj/effect/decal/cleanable/dirt,
@@ -1612,7 +1646,7 @@
 /turf/simulated/floor/grass,
 /area/awaymission/BMPship/Kitchen)
 "eR" = (
-/obj/machinery/light_construct/directional/south,
+/obj/machinery/light_construct,
 /turf/simulated/floor/plasteel{
 	icon_state = "darkyellowalt"
 	},
@@ -1683,7 +1717,9 @@
 /turf/simulated/floor/plating/airless,
 /area/awaymission/BMPship/Fore)
 "fb" = (
-/obj/machinery/light_construct/directional/east,
+/obj/machinery/light_construct{
+	dir = 4
+	},
 /obj/structure/alien/weeds,
 /turf/simulated/floor/plating/airless,
 /area/awaymission/BMPship/Fore)
@@ -1755,7 +1791,9 @@
 /obj/item/cigbutt/roach{
 	pixel_x = -12
 	},
-/obj/machinery/light/directional/north,
+/obj/machinery/light{
+	dir = 1
+	},
 /obj/structure/spider/stickyweb,
 /turf/simulated/floor/plasteel{
 	icon_state = "cafeteria"
@@ -1814,8 +1852,13 @@
 	},
 /area/awaymission/BMPship/CommonArea)
 "ft" = (
-/obj/structure/sink/directional/west,
-/obj/machinery/light/small/directional/east,
+/obj/structure/sink{
+	dir = 4;
+	pixel_x = 11
+	},
+/obj/machinery/light/small{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "barber";
 	tag = "icon-barber"
@@ -1860,7 +1903,9 @@
 	icon_state = "plant-dead";
 	tag = "plant-dead"
 	},
-/obj/machinery/light/small/directional/south,
+/obj/machinery/light/small{
+	dir = 1
+	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/BMPship/Containment)
 "fy" = (
@@ -1871,14 +1916,16 @@
 	pixel_y = 12;
 	layer = 2.9
 	},
-/obj/machinery/light_construct/directional/north,
+/obj/machinery/light_construct{
+	dir = 1
+	},
 /turf/simulated/floor/plating,
 /area/awaymission/BMPship/Kitchen)
 "fz" = (
 /obj/item/beach_ball/holoball,
 /obj/effect/decal/warning_stripes/north,
 /obj/structure/spider/stickyweb,
-/turf/simulated/floor/wood/fancy/oak,
+/turf/simulated/floor/wood/fancy,
 /area/awaymission/BMPship/CommonArea)
 "fA" = (
 /obj/structure/cable{
@@ -1894,7 +1941,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/BMPship/Gate)
 "fB" = (
-/turf/simulated/floor/wood/fancy/oak,
+/turf/simulated/floor/wood/fancy,
 /area/awaymission/BMPship/CommonArea)
 "fC" = (
 /obj/structure/spider/stickyweb,
@@ -1940,7 +1987,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/spider/stickyweb,
-/obj/machinery/light_construct/small/south,
+/obj/machinery/light_construct/small,
 /turf/simulated/floor/engine,
 /area/awaymission/BMPship/Armory)
 "fH" = (
@@ -1963,7 +2010,9 @@
 /turf/simulated/floor/plating,
 /area/awaymission/BMPship/Gate)
 "fK" = (
-/obj/machinery/light/small/directional/east,
+/obj/machinery/light/small{
+	dir = 4
+	},
 /obj/structure/spider/stickyweb,
 /turf/simulated/floor/plating,
 /area/awaymission/BMPship/Engines)
@@ -1979,7 +2028,7 @@
 "fM" = (
 /obj/structure/spider/stickyweb,
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/light_construct/small/north,
+/obj/machinery/light_construct/small,
 /obj/item/kirbyplants{
 	icon_state = "plant-dead";
 	tag = "plant-dead"
@@ -2074,7 +2123,9 @@
 /turf/simulated/floor/plating/asteroid/airless,
 /area/awaymission/BMPship/Mining)
 "gc" = (
-/obj/machinery/light_construct/directional/south,
+/obj/machinery/light_construct{
+	dir = 1
+	},
 /turf/simulated/floor/plating/airless,
 /area/awaymission/BMPship/MedBay)
 "gd" = (
@@ -2280,7 +2331,9 @@
 "gH" = (
 /obj/structure/spider/stickyweb,
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/light_construct/small/south,
+/obj/machinery/light_construct/small{
+	dir = 1
+	},
 /obj/item/kirbyplants{
 	icon_state = "plant-dead";
 	tag = "plant-dead"
@@ -2363,10 +2416,11 @@
 	},
 /area/awaymission/BMPship/Dormitories)
 "gV" = (
-/obj/machinery/door_control/shutter/south{
-	id = "packerCargo"
+/obj/machinery/door_control{
+	id = "packerCargo";
+	pixel_y = -24
 	},
-/obj/machinery/light/small/directional/south,
+/obj/machinery/light/small,
 /obj/effect/decal/warning_stripes/south,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
@@ -2375,8 +2429,9 @@
 /obj/structure/closet/fireaxecabinet{
 	pixel_x = -30
 	},
-/obj/effect/landmark/damageturf,
-/turf/simulated/floor/wood/fancy/oak,
+/turf/simulated/floor/wood{
+	icon_state = "wood-broken3"
+	},
 /area/awaymission/BMPship/CommonArea)
 "gX" = (
 /obj/structure/table,
@@ -2405,12 +2460,14 @@
 /turf/simulated/floor/plating/airless,
 /area/awaymission/BMPship/Mining)
 "hc" = (
-/obj/machinery/light/small/directional/west,
+/obj/machinery/light/small{
+	dir = 8
+	},
 /obj/structure/closet/cardboard{
 	opened = 1
 	},
 /obj/structure/alien/weeds,
-/turf/simulated/floor/wood/oak,
+/turf/simulated/floor/wood,
 /area/awaymission/BMPship/Armory)
 "he" = (
 /obj/structure/alien/weeds,
@@ -2525,7 +2582,9 @@
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/BMPship/Containment)
 "hB" = (
-/obj/machinery/light_construct/small/north,
+/obj/machinery/light_construct/small{
+	dir = 1
+	},
 /obj/effect/landmark/damageturf,
 /turf/simulated/floor/plating/airless,
 /area/awaymission/BMPship/Fore)
@@ -2537,7 +2596,9 @@
 /turf/simulated/floor/plating/airless,
 /area/awaymission/BMPship/Buffer)
 "hE" = (
-/obj/machinery/light_construct/small/north,
+/obj/machinery/light_construct/small{
+	dir = 1
+	},
 /obj/structure/rack,
 /obj/item/tank/internals/emergency_oxygen/empty,
 /turf/simulated/floor/plating/asteroid/airless,
@@ -2556,7 +2617,9 @@
 /turf/simulated/floor/grass,
 /area/awaymission/BMPship/Kitchen)
 "hJ" = (
-/obj/machinery/light_construct/small/north,
+/obj/machinery/light_construct/small{
+	dir = 1
+	},
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating/airless,
 /area/awaymission/BMPship/Mining)
@@ -2571,7 +2634,9 @@
 /area/awaymission/BMPship/Mining)
 "hM" = (
 /obj/structure/ore_box,
-/obj/machinery/light_construct/small/north,
+/obj/machinery/light_construct/small{
+	dir = 1
+	},
 /turf/simulated/floor/plating/airless,
 /area/awaymission/BMPship/Mining)
 "hN" = (
@@ -2656,7 +2721,7 @@
 /area/awaymission/BMPship/Fore)
 "hY" = (
 /obj/effect/gibspawner/robot,
-/turf/simulated/floor/plating/airless,
+/turf/simulated,
 /area/awaymission/BMPship/Buffer)
 "hZ" = (
 /obj/structure/window/reinforced{
@@ -2738,7 +2803,9 @@
 /area/awaymission/BMPship/Dormitories)
 "in" = (
 /obj/machinery/hydroponics/soil,
-/obj/machinery/light_construct/directional/north,
+/obj/machinery/light_construct{
+	dir = 1
+	},
 /turf/simulated/floor/grass,
 /area/awaymission/BMPship/Kitchen)
 "ir" = (
@@ -2861,7 +2928,7 @@
 "iJ" = (
 /obj/structure/alien/weeds,
 /obj/structure/alien/resin,
-/turf/simulated/floor/wood/oak,
+/turf/simulated/floor/wood,
 /area/awaymission/BMPship/Armory)
 "iK" = (
 /turf/simulated/floor/plating,
@@ -3011,7 +3078,7 @@
 /area/awaymission/BMPship/CommonArea)
 "jq" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/light_construct/small/north,
+/obj/machinery/light_construct/small,
 /turf/simulated/floor/engine,
 /area/awaymission/BMPship/Containment)
 "jr" = (
@@ -3023,7 +3090,10 @@
 /turf/simulated/floor/plating,
 /area/awaymission/BMPship/Gate)
 "js" = (
-/obj/machinery/economy/vending/wallmed/directional/west,
+/obj/machinery/economy/vending/wallmed{
+	name = "Emergency NanoMed";
+	pixel_x = -28
+	},
 /obj/structure/mopbucket,
 /obj/item/mop,
 /turf/simulated/floor/plasteel{
@@ -3099,7 +3169,9 @@
 /obj/effect/decal/cleanable/blood/gibs/xeno,
 /obj/structure/alien/weeds,
 /obj/item/reagent_containers/food/snacks/meat,
-/obj/machinery/light_construct/small/north,
+/obj/machinery/light_construct/small{
+	dir = 1
+	},
 /turf/simulated/floor/engine,
 /area/awaymission/BMPship/Containment)
 "jI" = (
@@ -3157,7 +3229,10 @@
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/BMPship/Containment)
 "kr" = (
-/obj/machinery/light/small/directional/west,
+/obj/machinery/light/small{
+	dir = 8;
+	brightness_range = 2
+	},
 /obj/structure/alien/weeds,
 /obj/structure/spider/stickyweb,
 /turf/simulated/floor/vault,
@@ -3239,7 +3314,7 @@
 /area/awaymission/BMPship/Buffer)
 "kP" = (
 /obj/item/flag/species/human,
-/turf/simulated/floor/wood/oak,
+/turf/simulated/floor/wood,
 /area/awaymission/BMPship/Fore)
 "kR" = (
 /obj/effect/decal/cleanable/dirt,
@@ -3280,7 +3355,9 @@
 /turf/simulated/floor/carpet,
 /area/awaymission/BMPship/Dormitories)
 "lv" = (
-/obj/machinery/light_construct/directional/east,
+/obj/machinery/light_construct{
+	dir = 4
+	},
 /obj/structure/alien/weeds,
 /obj/structure/alien/resin,
 /turf/simulated/floor/plating/airless,
@@ -3292,7 +3369,7 @@
 /obj/structure/coatrack{
 	layer = 2.9
 	},
-/turf/simulated/floor/wood/oak,
+/turf/simulated/floor/wood,
 /area/awaymission/BMPship/Fore)
 "lD" = (
 /obj/effect/decal/cleanable/dirt,
@@ -3314,7 +3391,7 @@
 /obj/structure/alien/resin{
 	layer = 3.1
 	},
-/turf/simulated/floor/wood/oak,
+/turf/simulated/floor/wood,
 /area/awaymission/BMPship/Armory)
 "lH" = (
 /obj/structure/table/tray,
@@ -3340,7 +3417,9 @@
 /obj/item/stock_parts/capacitor,
 /obj/item/stock_parts/cell/high,
 /obj/item/stock_parts/cell/high,
-/obj/machinery/light_construct/small/west,
+/obj/machinery/light_construct/small{
+	dir = 8
+	},
 /turf/simulated/floor/plating,
 /area/awaymission/BMPship/TurretsNorth)
 "lR" = (
@@ -3367,7 +3446,9 @@
 /obj/structure/spider/stickyweb,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/spider/stickyweb,
-/obj/machinery/light_construct/small/west,
+/obj/machinery/light_construct/small{
+	dir = 8
+	},
 /turf/simulated/floor/engine,
 /area/awaymission/BMPship/Armory)
 "lW" = (
@@ -3379,16 +3460,19 @@
 /turf/simulated/floor/plating/airless,
 /area/awaymission/BMPship/MedBay)
 "mb" = (
-/obj/machinery/light/directional/east,
+/obj/machinery/light{
+	dir = 4
+	},
 /obj/structure/spider/stickyweb,
-/turf/simulated/floor/wood/fancy/oak,
+/turf/simulated/floor/wood/fancy,
 /area/awaymission/BMPship/CommonArea)
 "mc" = (
-/obj/machinery/door_control/shutter/west{
+/obj/machinery/door_control{
 	id = "packerToilet";
+	pixel_x = -24;
 	name = "remote door-control packerToilet"
 	},
-/obj/machinery/light/small/directional/south,
+/obj/machinery/light/small,
 /obj/structure/toilet/material/gold{
 	dir = 1
 	},
@@ -3401,7 +3485,7 @@
 /area/awaymission/BMPship/Bath)
 "mh" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/light_construct/small/south,
+/obj/machinery/light_construct/small,
 /turf/simulated/floor/engine,
 /area/awaymission/BMPship/Armory)
 "mi" = (
@@ -3427,7 +3511,9 @@
 	icon_state = "plant-dead";
 	tag = "plant-dead"
 	},
-/obj/machinery/light_construct/small/north,
+/obj/machinery/light_construct/small{
+	dir = 1
+	},
 /obj/structure/spider/stickyweb,
 /obj/structure/spider/stickyweb,
 /turf/simulated/floor/mineral/plastitanium/red,
@@ -3460,10 +3546,10 @@
 /area/awaymission/BMPship/Containment)
 "mW" = (
 /obj/structure/weightmachine/weightlifter,
-/turf/simulated/floor/wood/fancy/oak,
+/turf/simulated/floor/wood/fancy,
 /area/awaymission/BMPship/CommonArea)
 "mY" = (
-/obj/machinery/light_construct/small/south,
+/obj/machinery/light_construct/small,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
@@ -3536,12 +3622,12 @@
 /area/space/nearstation)
 "nO" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/light_construct/small/south,
+/obj/machinery/light_construct/small,
 /obj/item/kirbyplants{
 	icon_state = "plant-dead";
 	tag = "plant-dead"
 	},
-/obj/machinery/light/small/directional/south,
+/obj/machinery/light/small,
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/BMPship/Containment)
 "nQ" = (
@@ -3670,8 +3756,9 @@
 	pixel_y = 13
 	},
 /obj/item/clothing/head/collectable/captain,
-/obj/effect/landmark/damageturf,
-/turf/simulated/floor/wood/oak,
+/turf/simulated/floor/wood{
+	icon_state = "wood-broken3"
+	},
 /area/awaymission/BMPship/Fore)
 "oD" = (
 /obj/effect/landmark/damageturf,
@@ -3745,7 +3832,7 @@
 /obj/structure/alien/resin{
 	layer = 3.1
 	},
-/turf/simulated/floor/wood/oak,
+/turf/simulated/floor/wood,
 /area/awaymission/BMPship/Armory)
 "pn" = (
 /obj/effect/landmark/damageturf,
@@ -3785,7 +3872,7 @@
 /turf/simulated/wall/mineral/titanium/nodiagonal,
 /area/awaymission/BMPship/CommonArea)
 "pt" = (
-/obj/machinery/light_construct/small/south,
+/obj/machinery/light_construct/small,
 /mob/living/simple_animal/cockroach,
 /turf/simulated/floor/carpet,
 /area/awaymission/BMPship/Dormitories)
@@ -3853,7 +3940,7 @@
 /obj/structure/alien/resin{
 	layer = 3.1
 	},
-/turf/simulated/floor/wood/oak,
+/turf/simulated/floor/wood,
 /area/awaymission/BMPship/Armory)
 "pT" = (
 /obj/structure/alien/weeds,
@@ -3876,11 +3963,13 @@
 /turf/simulated/floor/engine,
 /area/awaymission/BMPship/Containment)
 "pW" = (
-/obj/machinery/light_construct/small/south,
+/obj/machinery/light_construct/small,
 /turf/simulated/floor/carpet,
 /area/awaymission/BMPship/Dormitories)
 "pZ" = (
-/obj/machinery/light/small/directional/east,
+/obj/machinery/light/small{
+	dir = 4
+	},
 /obj/structure/spider/stickyweb,
 /obj/structure/sign/radiation/rad_area{
 	pixel_x = 32
@@ -3898,10 +3987,12 @@
 	dir = 4
 	},
 /obj/effect/decal/warning_stripes/yellow/hollow,
-/turf/simulated/floor/wood/fancy/oak,
+/turf/simulated/floor/wood/fancy,
 /area/awaymission/BMPship/CommonArea)
 "ql" = (
-/obj/machinery/light/small/directional/north,
+/obj/machinery/light/small{
+	dir = 1
+	},
 /turf/simulated/floor/carpet,
 /area/awaymission/BMPship/Dormitories)
 "qp" = (
@@ -4027,7 +4118,7 @@
 /area/awaymission/BMPship/Containment)
 "ry" = (
 /obj/structure/reagent_dispensers/water_cooler,
-/turf/simulated/floor/wood/fancy/oak,
+/turf/simulated/floor/wood/fancy,
 /area/awaymission/BMPship/CommonArea)
 "rB" = (
 /obj/structure/cable{
@@ -4053,7 +4144,9 @@
 /obj/structure/cable{
 	icon_state = "2-4"
 	},
-/obj/machinery/light/small/directional/west,
+/obj/machinery/light/small{
+	dir = 8
+	},
 /obj/item/clothing/suit/soldiercoat,
 /turf/simulated/floor/plasteel,
 /area/awaymission/BMPship/Bath)
@@ -4100,8 +4193,9 @@
 	pixel_x = -13
 	},
 /obj/item/wrench,
-/obj/effect/landmark/damageturf,
-/turf/simulated/floor/wood/oak,
+/turf/simulated/floor/wood{
+	icon_state = "wood-broken5"
+	},
 /area/awaymission/BMPship/Fore)
 "sq" = (
 /obj/structure/bed{
@@ -4178,7 +4272,9 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/machinery/light/small/directional/west,
+/obj/machinery/light/small{
+	dir = 8
+	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/BMPship/Bath)
 "tb" = (
@@ -4229,14 +4325,16 @@
 	dir = 4;
 	tag = "icon-propulsion (WEST)"
 	},
-/turf/simulated/floor/plating/airless,
+/turf/simulated/floor/plating,
 /area/awaymission/BMPship/Gate)
 "tA" = (
 /turf/simulated/wall/mineral/titanium,
 /area/awaymission/BMPship/Kitchen)
 "tE" = (
 /obj/effect/landmark/damageturf,
-/obj/machinery/light_construct/directional/east,
+/obj/machinery/light_construct{
+	dir = 4
+	},
 /turf/simulated/floor/plating/airless,
 /area/awaymission/BMPship/Fore)
 "tF" = (
@@ -4279,8 +4377,9 @@
 "tY" = (
 /obj/structure/alien/weeds,
 /obj/item/skeleton/r_arm,
-/obj/effect/landmark/damageturf,
-/turf/simulated/floor/wood/oak,
+/turf/simulated/floor/wood{
+	icon_state = "wood-broken5"
+	},
 /area/awaymission/BMPship/Armory)
 "uj" = (
 /obj/effect/mob_spawn/human/corpse/tacticool{
@@ -4361,7 +4460,7 @@
 /obj/structure/alien/resin{
 	layer = 3.1
 	},
-/turf/simulated/floor/wood/oak,
+/turf/simulated/floor/wood,
 /area/awaymission/BMPship/Armory)
 "uR" = (
 /obj/item/circuitboard/operating,
@@ -4418,8 +4517,10 @@
 	faction = list("alien");
 	layer = 2.6
 	},
-/obj/effect/landmark/damageturf,
-/turf/simulated/floor/wood/oak,
+/turf/simulated/floor/wood{
+	icon_state = "wood-broken5";
+	tag = "icon-wood-broken5"
+	},
 /area/awaymission/BMPship/Armory)
 "vl" = (
 /obj/item/clothing/suit/space/hardsuit/medical,
@@ -4437,7 +4538,10 @@
 /turf/simulated/floor/mineral/plastitanium/red/airless,
 /area/awaymission/BMPship/TraderShuttle)
 "vy" = (
-/obj/structure/sink/directional/west,
+/obj/structure/sink{
+	dir = 4;
+	pixel_x = 11
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "cafeteria"
 	},
@@ -4503,7 +4607,7 @@
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/BMPship/Containment)
 "wd" = (
-/obj/machinery/light_construct/small/south,
+/obj/machinery/light_construct/small,
 /obj/effect/decal/cleanable/ash,
 /obj/effect/decal/cleanable/blood/oil,
 /obj/effect/landmark/damageturf,
@@ -4512,7 +4616,8 @@
 "wg" = (
 /obj/structure/alien/weeds,
 /obj/structure/filingcabinet/chestdrawer,
-/obj/machinery/door_control/shutter/north{
+/obj/machinery/door_control{
+	pixel_y = 24;
 	id = "packerCaptain"
 	},
 /turf/simulated/floor/plating/airless,
@@ -4540,7 +4645,7 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/BMPship/Kitchen)
 "wt" = (
-/obj/effect/spawner/window/reinforced/grilled,
+/obj/effect/spawner/window/reinforced,
 /turf/simulated/floor/plating/airless,
 /area/awaymission/BMPship/MedBay)
 "wv" = (
@@ -4579,7 +4684,9 @@
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/BMPship/Containment)
 "wH" = (
-/obj/machinery/light/directional/north,
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "cmo"
 	},
@@ -4606,7 +4713,7 @@
 /obj/structure/alien/resin{
 	layer = 3.1
 	},
-/turf/simulated/floor/wood/oak,
+/turf/simulated/floor/wood,
 /area/awaymission/BMPship/Armory)
 "wV" = (
 /obj/effect/decal/warning_stripes/north,
@@ -4643,7 +4750,9 @@
 /turf/simulated/floor/plating,
 /area/awaymission/BMPship/Gate)
 "xg" = (
-/obj/machinery/light/small/directional/east,
+/obj/machinery/light/small{
+	dir = 4
+	},
 /obj/structure/closet/critter{
 	opened = 1
 	},
@@ -4652,7 +4761,7 @@
 	health = 250;
 	maxHealth = 250
 	},
-/turf/simulated/floor/wood/oak,
+/turf/simulated/floor/wood,
 /area/awaymission/BMPship/Armory)
 "xj" = (
 /obj/item/clothing/under/syndicate/tacticool,
@@ -4770,7 +4879,9 @@
 "yu" = (
 /obj/item/reagent_containers/food/snacks/meat,
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/light_construct/small/north,
+/obj/machinery/light_construct/small{
+	dir = 1
+	},
 /mob/living/simple_animal/hostile/poison/giant_spider/hunter{
 	health = 150;
 	maxHealth = 150;
@@ -4795,7 +4906,7 @@
 /obj/structure/alien/weeds,
 /obj/structure/alien/weeds/node,
 /obj/effect/decal/cleanable/blood/gibs/body,
-/turf/simulated/floor/wood/oak,
+/turf/simulated/floor/wood,
 /area/awaymission/BMPship/Armory)
 "yG" = (
 /obj/effect/decal/cleanable/dirt,
@@ -4820,7 +4931,7 @@
 /obj/structure/alien/resin{
 	layer = 3.1
 	},
-/turf/simulated/floor/wood/oak,
+/turf/simulated/floor/wood,
 /area/awaymission/BMPship/Armory)
 "yN" = (
 /obj/effect/decal/warning_stripes/west,
@@ -5037,7 +5148,9 @@
 "AZ" = (
 /obj/effect/decal/cleanable/greenglow,
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/light_construct/small/north,
+/obj/machinery/light_construct/small{
+	dir = 1
+	},
 /obj/effect/mob_spawn/human/corpse/damaged,
 /turf/simulated/floor/engine,
 /area/awaymission/BMPship/Containment)
@@ -5291,7 +5404,10 @@
 	},
 /area/awaymission/BMPship/Kitchen)
 "Dx" = (
-/obj/structure/sink/directional/west,
+/obj/structure/sink{
+	dir = 4;
+	pixel_x = 13
+	},
 /obj/structure/mirror{
 	pixel_x = 32
 	},
@@ -5339,7 +5455,7 @@
 	},
 /obj/structure/rack,
 /obj/structure/alien/weeds,
-/turf/simulated/floor/wood/oak,
+/turf/simulated/floor/wood,
 /area/awaymission/BMPship/Armory)
 "DP" = (
 /obj/item/clothing/suit/space/nasavoid/ltblue,
@@ -5466,6 +5582,20 @@
 /obj/item/clothing/mask/breath,
 /turf/simulated/floor/plating,
 /area/awaymission/BMPship/TurretsNorth)
+"EY" = (
+/obj/machinery/door/airlock/vault{
+	req_access = list(111);
+	hackProof = 1;
+	locked = 1
+	},
+/obj/effect/mine/stun{
+	faction = list("alien");
+	layer = 2.6
+	},
+/turf/simulated/floor/wood{
+	icon_state = "wood-broken3"
+	},
+/area/awaymission/BMPship/Armory)
 "Fb" = (
 /obj/structure/closet/walllocker/medlocker/west,
 /obj/item/stack/medical/ointment/advanced,
@@ -5491,7 +5621,9 @@
 /turf/space,
 /area/space)
 "Fs" = (
-/obj/machinery/light/small/directional/north,
+/obj/machinery/light/small{
+	dir = 1
+	},
 /obj/item/reagent_containers/food/pill/charcoal,
 /turf/simulated/floor/carpet,
 /area/awaymission/BMPship/Dormitories)
@@ -5548,7 +5680,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/turf/simulated/floor/plating/airless,
+/turf/simulated/floor/plating,
 /area/awaymission/BMPship/Gate)
 "FQ" = (
 /obj/effect/landmark/damageturf,
@@ -5569,7 +5701,7 @@
 /obj/structure/alien/weeds,
 /obj/structure/alien/weeds/node,
 /obj/item/skeleton/head,
-/turf/simulated/floor/wood/oak,
+/turf/simulated/floor/wood,
 /area/awaymission/BMPship/Armory)
 "FZ" = (
 /turf/simulated/wall/r_wall,
@@ -5582,7 +5714,7 @@
 /area/awaymission/BMPship/Gate)
 "Gn" = (
 /obj/item/card/emag_broken,
-/turf/simulated/floor/wood/oak,
+/turf/simulated/floor/wood,
 /area/awaymission/BMPship/Fore)
 "Go" = (
 /obj/structure/cable{
@@ -5649,7 +5781,7 @@
 	maxHealth = 150;
 	name = "Angry giant spider"
 	},
-/turf/simulated/floor/wood/fancy/oak,
+/turf/simulated/floor/wood/fancy,
 /area/awaymission/BMPship/CommonArea)
 "GG" = (
 /obj/structure/closet/crate/can,
@@ -5742,7 +5874,7 @@
 "Hz" = (
 /obj/structure/alien/weeds,
 /obj/item/skeleton/l_leg,
-/turf/simulated/floor/wood/oak,
+/turf/simulated/floor/wood,
 /area/awaymission/BMPship/Armory)
 "HA" = (
 /obj/effect/decal/cleanable/blood/drip{
@@ -5827,7 +5959,7 @@
 /area/awaymission/BMPship/Engines)
 "Iy" = (
 /obj/effect/decal/warning_stripes/north,
-/obj/effect/spawner/window/reinforced/grilled,
+/obj/effect/spawner/window/reinforced,
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
@@ -5870,8 +6002,9 @@
 	name = "MAXIMUM ATTENTION";
 	pixel_x = -32
 	},
-/obj/effect/landmark/damageturf,
-/turf/simulated/floor/wood/fancy/oak,
+/turf/simulated/floor/wood{
+	icon_state = "wood-broken5"
+	},
 /area/awaymission/BMPship/CommonArea)
 "IH" = (
 /obj/item/shard,
@@ -5932,7 +6065,7 @@
 	faction = list("alien","neutral");
 	desc = "Он выглядит так, будто повидал многое за свою короткую жизнь"
 	},
-/turf/simulated/floor/wood/oak,
+/turf/simulated/floor/wood,
 /area/awaymission/BMPship/Fore)
 "Jz" = (
 /obj/effect/decal/cleanable/dirt,
@@ -5959,7 +6092,10 @@
 /turf/simulated/floor/engine,
 /area/awaymission/BMPship/Engines)
 "JL" = (
-/obj/machinery/light/small/directional/east,
+/obj/machinery/light/small{
+	dir = 4;
+	brightness_range = 2
+	},
 /turf/simulated/floor/engine,
 /area/awaymission/BMPship/Buffer)
 "JS" = (
@@ -6048,7 +6184,7 @@
 	health = 250;
 	maxHealth = 250
 	},
-/turf/simulated/floor/wood/oak,
+/turf/simulated/floor/wood,
 /area/awaymission/BMPship/Armory)
 "Lk" = (
 /obj/structure/spider/stickyweb,
@@ -6088,7 +6224,7 @@
 "Lx" = (
 /obj/effect/decal/warning_stripes/north,
 /obj/structure/spider/stickyweb,
-/turf/simulated/floor/wood/fancy/oak,
+/turf/simulated/floor/wood/fancy,
 /area/awaymission/BMPship/CommonArea)
 "LC" = (
 /obj/structure/girder,
@@ -6123,7 +6259,9 @@
 /turf/simulated/floor/plating/airless,
 /area/awaymission/BMPship/Fore)
 "Mf" = (
-/obj/machinery/light/small/directional/west,
+/obj/machinery/light/small{
+	dir = 8
+	},
 /turf/simulated/floor/plating,
 /area/awaymission/BMPship/TurretsSouth)
 "Mg" = (
@@ -6137,7 +6275,7 @@
 	dir = 4;
 	tag = "icon-propulsion (WEST)"
 	},
-/turf/simulated/floor/plating/airless,
+/turf/simulated/floor/plating,
 /area/awaymission/BMPship/Bath)
 "Ms" = (
 /obj/structure/cable{
@@ -6177,7 +6315,7 @@
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/BMPship/Containment)
 "MT" = (
-/obj/machinery/light/small/directional/south,
+/obj/machinery/light/small,
 /turf/simulated/floor/plasteel,
 /area/awaymission/BMPship/Bath)
 "MY" = (
@@ -6199,7 +6337,9 @@
 /obj/item/storage/fancy/cigarettes,
 /obj/item/storage/fancy/cigarettes/dromedaryco,
 /obj/item/storage/box/matches,
-/obj/machinery/light/small/directional/west,
+/obj/machinery/light/small{
+	dir = 8
+	},
 /obj/structure/cable{
 	icon_state = "2-4"
 	},
@@ -6311,7 +6451,9 @@
 /turf/simulated/floor/plating/airless,
 /area/awaymission/BMPship/TraderShuttle)
 "OU" = (
-/obj/machinery/light/directional/north,
+/obj/machinery/light{
+	dir = 1
+	},
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
@@ -6400,7 +6542,9 @@
 "PQ" = (
 /obj/structure/spider/stickyweb,
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/light_construct/small/north,
+/obj/machinery/light_construct/small{
+	dir = 1
+	},
 /obj/effect/mob_spawn/human/corpse/tacticool,
 /turf/simulated/floor/engine,
 /area/awaymission/BMPship/Containment)
@@ -6504,7 +6648,7 @@
 /obj/item/storage/box/flashbangs,
 /obj/item/fluff/dogwhistle,
 /obj/structure/alien/weeds,
-/turf/simulated/floor/wood/oak,
+/turf/simulated/floor/wood,
 /area/awaymission/BMPship/Armory)
 "QW" = (
 /obj/structure/cable{
@@ -6559,10 +6703,11 @@
 /turf/simulated/floor/plating,
 /area/awaymission/BMPship/TurretsNorth)
 "Rm" = (
-/obj/machinery/door_control/shutter/south{
+/obj/machinery/door_control{
+	pixel_y = -24;
 	id = "packerCaptain"
 	},
-/turf/simulated/floor/wood/oak,
+/turf/simulated/floor/wood,
 /area/awaymission/BMPship/Fore)
 "Rn" = (
 /obj/effect/landmark/damageturf,
@@ -6570,7 +6715,7 @@
 /area/awaymission/BMPship/MedBay)
 "RB" = (
 /obj/structure/shuttle/engine/propulsion,
-/turf/simulated/floor/plating/airless,
+/turf/simulated/floor/plating,
 /area/awaymission/BMPship/TraderShuttle)
 "RF" = (
 /obj/structure/cable{
@@ -6643,16 +6788,18 @@
 /turf/simulated/floor/plating,
 /area/awaymission/BMPship/Engines)
 "Sy" = (
-/obj/machinery/light_construct/small/north,
+/obj/machinery/light_construct/small{
+	dir = 1
+	},
 /obj/structure/alien/weeds,
-/turf/simulated/floor/wood/oak,
+/turf/simulated/floor/wood,
 /area/awaymission/BMPship/Armory)
 "SF" = (
 /obj/structure/shuttle/engine/propulsion{
 	dir = 4;
 	tag = "icon-propulsion (WEST)"
 	},
-/turf/simulated/floor/plating/airless,
+/turf/simulated/floor/plating,
 /area/awaymission/BMPship/Engines)
 "SJ" = (
 /obj/item/stack/ore/uranium,
@@ -6673,7 +6820,7 @@
 /obj/effect/decal/cleanable/blood/drip,
 /obj/structure/alien/weeds,
 /obj/structure/alien/resin,
-/turf/simulated/floor/wood/oak,
+/turf/simulated/floor/wood,
 /area/awaymission/BMPship/Armory)
 "Tj" = (
 /obj/structure/cable{
@@ -6709,7 +6856,9 @@
 /obj/item/stock_parts/capacitor,
 /obj/item/stock_parts/cell/high,
 /obj/item/stock_parts/cell/high,
-/obj/machinery/light_construct/small/west,
+/obj/machinery/light_construct/small{
+	dir = 8
+	},
 /turf/simulated/floor/plating,
 /area/awaymission/BMPship/TurretsNorth)
 "TI" = (
@@ -6807,7 +6956,9 @@
 /area/awaymission/BMPship/CommonArea)
 "UH" = (
 /obj/effect/decal/warning_stripes/west,
-/obj/machinery/light/small/directional/west,
+/obj/machinery/light/small{
+	dir = 8
+	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/BMPship/Engines)
 "UI" = (
@@ -6875,7 +7026,7 @@
 /obj/item/clothing/suit/space/nasavoid/captain,
 /obj/item/clothing/head/helmet/space/nasavoid/captain,
 /obj/item/clothing/accessory/medal/heart,
-/turf/simulated/floor/wood/oak,
+/turf/simulated/floor/wood,
 /area/awaymission/BMPship/Fore)
 "Vo" = (
 /obj/structure/largecrate,
@@ -6954,9 +7105,14 @@
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/BMPship/Containment)
 "Wc" = (
-/obj/structure/sink/directional/west,
+/obj/structure/sink{
+	dir = 4;
+	pixel_x = 11
+	},
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/light/small/directional/east,
+/obj/machinery/light/small{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "green";
@@ -6982,7 +7138,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/turf/simulated/floor/plating/airless,
+/turf/simulated/floor/plating,
 /area/awaymission/BMPship/Bath)
 "WD" = (
 /obj/effect/gibspawner/generic,
@@ -7048,7 +7204,7 @@
 "Xn" = (
 /obj/effect/decal/warning_stripes/south,
 /obj/structure/punching_bag,
-/turf/simulated/floor/wood/fancy/oak,
+/turf/simulated/floor/wood/fancy,
 /area/awaymission/BMPship/CommonArea)
 "Xy" = (
 /obj/item/stack/tile/plasteel,
@@ -7097,7 +7253,7 @@
 "XP" = (
 /obj/structure/spider/stickyweb,
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/light_construct/small/south,
+/obj/machinery/light_construct/small,
 /obj/item/kirbyplants{
 	icon_state = "plant-dead";
 	tag = "plant-dead"
@@ -7149,7 +7305,7 @@
 /area/awaymission/BMPship/Kitchen)
 "Yh" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/light_construct/small/south,
+/obj/machinery/light_construct/small,
 /obj/item/reagent_containers/food/snacks/meat,
 /obj/structure/spider/stickyweb,
 /obj/structure/spider/cocoon,
@@ -7181,11 +7337,15 @@
 /area/awaymission/BMPship/Containment)
 "Yz" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/light_construct/small/south,
+/obj/machinery/light_construct/small{
+	dir = 1
+	},
 /turf/simulated/floor/engine,
 /area/awaymission/BMPship/Containment)
 "YA" = (
-/obj/machinery/light_construct/small/west,
+/obj/machinery/light_construct/small{
+	dir = 8
+	},
 /obj/effect/decal/warning_stripes/west,
 /obj/structure/closet/walllocker/firelocker/west,
 /turf/simulated/floor/plating,
@@ -7223,7 +7383,7 @@
 	icon_state = "plant-dead";
 	tag = "plant-dead"
 	},
-/obj/machinery/light/small/directional/north,
+/obj/machinery/light/small,
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/BMPship/Containment)
 "YX" = (
@@ -15297,7 +15457,7 @@ er
 er
 er
 er
-fM
+gH
 LT
 MN
 NZ
@@ -15817,12 +15977,12 @@ eM
 er
 er
 er
-fM
+gH
 NZ
 Ll
 BL
 NZ
-gH
+fM
 eM
 er
 er
@@ -16074,7 +16234,7 @@ bz
 uR
 Rn
 er
-jq
+Yz
 fD
 Zz
 gd
@@ -16085,7 +16245,7 @@ ek
 kn
 Jz
 fD
-Yz
+jq
 er
 Nd
 rm
@@ -16857,12 +17017,12 @@ er
 er
 er
 er
-YU
+fx
 gd
 Ll
 ks
 kn
-fx
+YU
 eM
 er
 er
@@ -17107,11 +17267,11 @@ aa
 aa
 OH
 ve
-cT
+gc
 by
 ca
 lX
-gc
+cT
 ve
 er
 AZ
@@ -18280,7 +18440,7 @@ Ak
 WS
 sW
 sW
-vi
+EY
 iJ
 cp
 pg
