@@ -15,6 +15,26 @@
 	name = "\improper  AI Satellite Transfer Point"
 	icon_state = "engi"
 
+/area/engine/hallway
+	name = "\improper Engineering Hallway"
+	icon_state = "engine_hallway"
+
+/area/engine/dronefabricator
+	name = "\improper Engineering Drone Fabricator Room"
+	icon_state = "engi"
+
+/area/engine/emergency
+	name = "\improper Engineering Emergency Supplies"
+	icon_state = "emergencystorage"
+
+/area/engine/supermatter_room
+	name = "\improper Supermatter Room"
+	icon_state = "engi"
+
+/area/atmos/storage
+	name = "\improper Atmospherics Storage"
+	icon_state = "atmos"
+
 /* CentCom */
 /area/centcom220
 	name = "\improper ЦК"
