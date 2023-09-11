@@ -21,7 +21,6 @@
 			if(1000 to INFINITY)
 				donator_level = DONATOR_LEVEL_MAX
 		donor_loadout_points()
-	qdel(query_donor_select)
 
 /datum/client_login_processor/donator_check/get_query(client/C)
 	var/datum/db_query/query = SSdbcore.NewQuery({"
