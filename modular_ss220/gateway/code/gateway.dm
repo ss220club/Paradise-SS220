@@ -30,14 +30,14 @@ GLOBAL_DATUM_INIT(the_gateway, /obj/machinery/gateway/centerstation, null)
 	update_density_from_dir()
 
 /obj/machinery/gateway/proc/update_density_from_dir()
-	if(dir == 2 | dir == 6 | dir == 10)
+	if(dir in list(SOUTH, SOUTHEAST, SOUTHWEST))
 		density = FALSE
 
 /obj/machinery/gateway/update_icon_state()
 	icon_state = active ? "on" : "off"
 
 
-//this is da important part wot makes things go
+// This is da important part wot makes things go
 /obj/machinery/gateway/centerstation
 	density = TRUE
 	icon_state = "offcenter"
@@ -45,8 +45,7 @@ GLOBAL_DATUM_INIT(the_gateway, /obj/machinery/gateway/centerstation, null)
 
 	//warping vars
 	var/list/linked = list()
-	var/ready = FALSE				//have we got all the parts for a gateway?
-	var/wait = 0				//this just grabs world.time at world start
+	var/ready = FALSE				// Have we got all the parts for a gateway?
 	var/obj/machinery/gateway/centeraway/awaygate = null
 
 /obj/machinery/gateway/centerstation/Initialize(mapload)
@@ -55,7 +54,6 @@ GLOBAL_DATUM_INIT(the_gateway, /obj/machinery/gateway/centerstation, null)
 		GLOB.the_gateway = src
 
 	update_icon(UPDATE_ICON_STATE)
-	wait = world.time + GLOB.configuration.gateway.away_mission_delay
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/machinery/gateway/centerstation/LateInitialize()
@@ -93,7 +91,7 @@ GLOBAL_DATUM_INIT(the_gateway, /obj/machinery/gateway/centerstation, null)
 			linked.Add(G)
 			continue
 
-		//this is only done if we fail to find a part
+		// This is only done if we fail to find a part
 		ready = FALSE
 		toggleoff()
 		break
@@ -112,10 +110,11 @@ GLOBAL_DATUM_INIT(the_gateway, /obj/machinery/gateway/centerstation, null)
 	if(!awaygate)
 		awaygate = locate(/obj/machinery/gateway/centeraway) in GLOB.machines
 		if(!awaygate)
-			to_chat(user, "<span class='notice'>Error: No destination found.</span>")
+			to_chat(user, span_notice("Error: No destination found."))
 			return
-	if(world.time < wait)
-		to_chat(user, "<span class='notice'>Error: Warpspace triangulation in progress. Estimated time to completion: [round(((wait - world.time) / 10) / 60)] minutes.</span>")
+	var/wait = world.time - SSticker.round_start_time
+	if(wait > GLOB.configuration.gateway.away_mission_delay)
+		to_chat(user, span_notice("Error: Warpspace triangulation in progress. Estimated time to completion: [round(((wait - world.time) / 10) / 60)] minutes."))
 		return
 
 	for(var/obj/machinery/gateway/G in linked)
@@ -143,7 +142,7 @@ GLOBAL_DATUM_INIT(the_gateway, /obj/machinery/gateway/centerstation, null)
 	toggleoff()
 
 
-//okay, here's the good teleporting stuff
+// Okay, here's the good teleporting stuff
 /obj/machinery/gateway/centerstation/Bumped(atom/movable/M as mob|obj)
 	if(!ready)
 		return
@@ -179,8 +178,8 @@ GLOBAL_DATUM_INIT(the_gateway, /obj/machinery/gateway/centerstation, null)
 	icon_state = "offcenter"
 	power_state = NO_POWER_USE
 
-	var/calibrated = 1
-	var/list/linked = list()	//a list of the connected gateway chunks
+	var/calibrated = TRUE
+	var/list/linked = list()	// A list of the connected gateway chunks
 	var/ready = FALSE
 	var/obj/machinery/gateway/centeraway/stationgate = null
 
@@ -199,7 +198,7 @@ GLOBAL_DATUM_INIT(the_gateway, /obj/machinery/gateway/centerstation, null)
 
 
 /obj/machinery/gateway/centeraway/proc/detect()
-	linked = list()	//clear the list
+	linked.Cut()
 	var/turf/T = loc
 
 	for(var/i in GLOB.alldirs)
@@ -209,24 +208,24 @@ GLOBAL_DATUM_INIT(the_gateway, /obj/machinery/gateway/centerstation, null)
 			linked.Add(G)
 			continue
 
-		//this is only done if we fail to find a part
+		// This is only done if we fail to find a part
 		ready = FALSE
 		toggleoff()
 		break
 
-	if(linked.len == 8)
+	if(length(linked) == 8)
 		ready = TRUE
 
 
 /obj/machinery/gateway/centeraway/proc/toggleon(mob/user as mob)
 	if(!ready)
 		return
-	if(linked.len != 8)
+	if(length(linked) != 8)
 		return
 	if(!stationgate)
 		stationgate = locate(/obj/machinery/gateway/centerstation) in GLOB.machines
 		if(!stationgate)
-			to_chat(user, "<span class='notice'>Error: No destination found.</span>")
+			to_chat(user, span_notice("Error: No destination found."))
 			return
 
 	for(var/obj/machinery/gateway/G in linked)
@@ -282,19 +281,19 @@ GLOBAL_DATUM_INIT(the_gateway, /obj/machinery/gateway/centerstation, null)
 			M.client.move_delay = max(world.time + 5, M.client.move_delay)
 
 /obj/machinery/gateway/centeraway/proc/exilecheck(mob/living/carbon/M)
-	for(var/obj/item/implant/exile/E in M)//Checking that there is an exile bio-chip in the contents
-		if(E.imp_in == M)//Checking that it's actually implanted vs just in their pocket
-			to_chat(M, "<span class='notice'>The station gate has detected your exile bio-chip and is blocking your entry.</span>")
+	for(var/obj/item/implant/exile/E in M) // Checking that there is an exile bio-chip in the contents
+		if(E.imp_in == M) // Checking that it's actually implanted vs just in their pocket
+			to_chat(M, span_notice("The station gate has detected your exile bio-chip and is blocking your entry."))
 			return 1
 	return 0
 
 /obj/machinery/gateway/centeraway/attackby(obj/item/W as obj, mob/user as mob, params)
 	if(istype(W,/obj/item/multitool))
 		if(calibrated)
-			to_chat(user, "<span class='notice'>The gate is already calibrated, there is no work for you to do here.</span>")
+			to_chat(user, span_notice("The gate is already calibrated, there is no work for you to do here."))
 			return
 		else
-			to_chat(user, "<span class='boldnotice'>Recalibration successful!</span><span class='notice'>: This gate's systems have been fine tuned.  Travel to this gate will now be on target.</span>")
-			calibrated = 1
+			to_chat(user, span_boldannounce("Recalibration successful!") + span_notice(": This gate's systems have been fine tuned.  Travel to this gate will now be on target."))
+			calibrated = TRUE
 		return
 	return ..()
