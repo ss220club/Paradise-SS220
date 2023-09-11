@@ -216,6 +216,7 @@
 
 /datum/emote/living/dance
 	message = "радостно танцует."
+	cooldown = 5 SECONDS
 	var/dance_time = 3 SECONDS
 
 /datum/emote/living/dance/run_emote(mob/living/user, params, type_override, intentional)

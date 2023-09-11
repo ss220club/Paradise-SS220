@@ -89,16 +89,16 @@
 
 /datum/species/moth
 	scream_verb = "жужжит"
-	female_giggle_sound = 'modular_ss220/emotes/audio/moth/mothchitter.ogg'
-	male_giggle_sound = 'modular_ss220/emotes/audio/moth/mothchitter.ogg'
-	male_scream_sound = 'modular_ss220/emotes/audio/moth/scream_moth.ogg'
-	female_scream_sound = 'modular_ss220/emotes/audio/moth/scream_moth.ogg'
-	male_sneeze_sound = 'modular_ss220/emotes/audio/moth/mothsneeze.ogg'
-	female_sneeze_sound = 'modular_ss220/emotes/audio/moth/mothsneeze.ogg'
-	female_laugh_sound = 'modular_ss220/emotes/audio/moth/mothlaugh.ogg'
-	male_laugh_sound = 'modular_ss220/emotes/audio/moth/mothlaugh.ogg'
-	female_cough_sounds = 'modular_ss220/emotes/audio/moth/mothcough.ogg'
-	male_cough_sounds = 'modular_ss220/emotes/audio/moth/mothcough.ogg'
+	female_giggle_sound = 'modular_ss220/emotes/audio/moth/moth_chitter.ogg'
+	male_giggle_sound = 'modular_ss220/emotes/audio/moth/moth_chitter.ogg'
+	male_scream_sound = 'modular_ss220/emotes/audio/moth/moth_scream.ogg'
+	female_scream_sound = 'modular_ss220/emotes/audio/moth/moth_scream.ogg'
+	male_sneeze_sound = 'modular_ss220/emotes/audio/moth/moth_sneeze.ogg'
+	female_sneeze_sound = 'modular_ss220/emotes/audio/moth/moth_sneeze.ogg'
+	female_laugh_sound = 'modular_ss220/emotes/audio/moth/moth_laugh.ogg'
+	male_laugh_sound = 'modular_ss220/emotes/audio/moth/moth_laugh.ogg'
+	female_cough_sounds = 'modular_ss220/emotes/audio/moth/moth_cough.ogg'
+	male_cough_sounds = 'modular_ss220/emotes/audio/moth/moth_cough.ogg'
 	suicide_messages = list(
 		"откусывает свои усики!",
 		"вспарывает себе живот!",
@@ -106,6 +106,14 @@
 		"заддерживает своё дыхание!")
 
 /datum/species/plasmaman
+	male_scream_sound = list(
+		'modular_ss220/emotes/audio/plasmaman/scream_plasmaman_1.ogg',
+		'modular_ss220/emotes/audio/plasmaman/scream_plasmaman_2.ogg',
+		'modular_ss220/emotes/audio/plasmaman/scream_plasmaman_3.ogg')
+	female_scream_sound = list(
+		'modular_ss220/emotes/audio/plasmaman/scream_plasmaman_1.ogg',
+		'modular_ss220/emotes/audio/plasmaman/scream_plasmaman_2.ogg',
+		'modular_ss220/emotes/audio/plasmaman/scream_plasmaman_3.ogg')
 	suicide_messages = list(
 		"сворачивает себе шею!",
 		"впускает себе немного O2!",
@@ -127,6 +135,16 @@
 		"откручивает себе череп!")
 
 /datum/species/skrell
+	male_giggle_sound = 'modular_ss220/emotes/audio/skrell/giggle_male_1.ogg'
+	female_giggle_sound = 'modular_ss220/emotes/audio/skrell/giggle_female_1.ogg'
+	male_laugh_sound = list(
+		'modular_ss220/emotes/audio/skrell/laugh_male_1.ogg',
+		'modular_ss220/emotes/audio/skrell/laugh_male_2.ogg',
+		'modular_ss220/emotes/audio/skrell/laugh_male_3.ogg')
+	female_laugh_sound = list(
+		'modular_ss220/emotes/audio/skrell/laugh_female_1.ogg',
+		'modular_ss220/emotes/audio/skrell/laugh_female_2.ogg',
+		'modular_ss220/emotes/audio/skrell/laugh_female_3.ogg')
 	suicide_messages = list(
 		"пытается откусить себе язык!",
 		"выдавливает большими пальцами свои глазницы!",
@@ -135,6 +153,8 @@
 		"душит себя собственными усиками!")
 
 /datum/species/slime
+	male_scream_sound = 'modular_ss220/emotes/audio/scream_jelly.ogg'
+	female_scream_sound = 'modular_ss220/emotes/audio/scream_jelly.ogg'
 	suicide_messages = list(
 		"тает в лужу!",
 		"растекается в лужу!",
@@ -143,6 +163,8 @@
 		"становится коричневым, тусклым и растекается в лужу!")
 
 /datum/species/tajaran
+	male_scream_sound = 'modular_ss220/emotes/audio/tajaran/scream_tajaran.ogg'
+	female_scream_sound = 'modular_ss220/emotes/audio/tajaran/scream_tajaran.ogg'
 	suicide_messages = list(
 		"пытается откусить себе язык!",
 		"вонзает когти себе в глазницы!",
@@ -150,6 +172,19 @@
 		"задерживает дыхание!")
 
 /datum/species/unathi
+	speech_sounds = list(
+		'modular_ss220/emotes/audio/unathi/talk_unathi_1.ogg',
+		'modular_ss220/emotes/audio/unathi/talk_unathi_2.ogg',
+		'modular_ss220/emotes/audio/unathi/talk_unathi_3.ogg')
+	male_scream_sound = list(
+		'modular_ss220/emotes/audio/unathi/scream_male_1.ogg',
+		'modular_ss220/emotes/audio/unathi/scream_male_2.ogg')
+	female_scream_sound = list(
+		'modular_ss220/emotes/audio/unathi/scream_female_1.ogg',
+		'modular_ss220/emotes/audio/unathi/scream_female_2.ogg')
+	male_sneeze_sound = 'modular_ss220/emotes/audio/unathi/sneeze_male.ogg'
+	female_sneeze_sound = 'modular_ss220/emotes/audio/unathi/sneeze_female.ogg'
+	death_sounds = 'modular_ss220/emotes/audio/unathi/deathsound_unathi.ogg'
 	suicide_messages = list(
 		"пытается откусить себе язык!",
 		"вонзает когти себе в глазницы!",
@@ -157,6 +192,7 @@
 		"задерживает дыхание!")
 
 /datum/species/vox
+	scream_verb = "скрипит"
 	suicide_messages = list(
 		"пытается откусить себе язык!",
 		"вонзает когти себе в глазницы!",
@@ -165,8 +201,12 @@
 		"глубоко вдыхает кислород!")
 
 /datum/species/vulpkanin
+	scream_verb = "скулит"
 	suicide_messages = list(
 		"пытается откусить себе язык!",
 		"выдавливает когтями свои глазницы!",
 		"сворачивает себе шею!",
 		"задерживает дыхание!")
+
+/datum/species/monkey
+	scream_verb = "визжит"
