@@ -336,7 +336,7 @@
 #define TRANSIT_TUBE_CLOSED 3
 
 // Maximum donation level
-#define DONATOR_LEVEL_MAX 4
+#define DONATOR_LEVEL_MAX 5 // SS220 EDIT
 
 // The cooldown on OOC messages such as OOC, LOOC, praying and adminhelps
 #define OOC_COOLDOWN 5
