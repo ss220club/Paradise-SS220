@@ -14,7 +14,7 @@
 		var/map = pick(GLOB.configuration.gateway.enabled_away_missions)
 		var/file = wrap_file(map)
 		if(isfile(file))
-			var/zlev = GLOB.space_manager.add_new_zlevel(AWAY_MISSION, linkage = UNAFFECTED, traits = list(AWAY_LEVEL,BLOCK_TELEPORT))
+			var/zlev = GLOB.space_manager.add_new_zlevel(AWAY_MISSION, linkage = UNAFFECTED, traits = list(AWAY_LEVEL, BLOCK_TELEPORT))
 			GLOB.space_manager.add_dirt(zlev)
 			GLOB.maploader.load_map(file, z_offset = zlev)
 			late_setup_level(block(locate(1, 1, zlev), locate(world.maxx, world.maxy, zlev)))
@@ -25,4 +25,3 @@
 
 	else
 		log_startup_progress("No away missions found.")
-		return
