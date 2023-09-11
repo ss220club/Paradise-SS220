@@ -85,17 +85,14 @@
 	muzzled_noises = list("булькающе")
 
 /datum/emote/living/carbon/giggle/get_sound(mob/living/user)
-	. = ..()
-	if(user.gender == FEMALE)
-		return pick(
-			"modular_ss220/emotes/audio/female/giggle_female_1.ogg",
-			"modular_ss220/emotes/audio/female/giggle_female_2.ogg",
-			"modular_ss220/emotes/audio/female/giggle_female_3.ogg",
-			"modular_ss220/emotes/audio/female/giggle_female_4.ogg")
+	if(!ishuman(user))
+		return
+	var/mob/living/carbon/human/H = user
+
+	if(H.gender == FEMALE)
+		return pick(H.dna.species.female_giggle_sound)
 	else
-		return pick(
-			"modular_ss220/emotes/audio/male/giggle_male_1.ogg",
-			"modular_ss220/emotes/audio/male/giggle_male_2.ogg")
+		return pick(H.dna.species.male_giggle_sound)
 
 /datum/emote/living/carbon/moan
 	message = "стонет!"
@@ -124,17 +121,14 @@
 	emote_type = EMOTE_AUDIBLE | EMOTE_MOUTH | EMOTE_VISIBLE
 
 /datum/emote/living/carbon/laugh/get_sound(mob/living/user)
-	. = ..()
-	if(user.gender == FEMALE)
-		return pick(
-			"modular_ss220/emotes/audio/female/laugh_female_1.ogg",
-			"modular_ss220/emotes/audio/female/laugh_female_2.ogg",
-			"modular_ss220/emotes/audio/female/laugh_female_3.ogg")
+	if(!ishuman(user))
+		return
+	var/mob/living/carbon/human/H = user
+
+	if(H.gender == FEMALE)
+		return pick(H.dna.species.female_laugh_sound)
 	else
-		return pick(
-			"modular_ss220/emotes/audio/male/laugh_male_1.ogg",
-			"modular_ss220/emotes/audio/male/laugh_male_2.ogg",
-			"modular_ss220/emotes/audio/male/laugh_male_3.ogg")
+		return pick(H.dna.species.male_laugh_sound)
 
 /datum/emote/living/carbon/yawn
 	message = "зевает."

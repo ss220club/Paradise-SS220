@@ -1,9 +1,21 @@
 /datum/species
 	scream_verb = "кричит"
-	female_scream_sound = list(
-		'modular_ss220/emotes/audio/female/scream_female_1.ogg',
-		'modular_ss220/emotes/audio/female/scream_female_2.ogg',
-		'modular_ss220/emotes/audio/female/scream_female_3.ogg')
+	var/male_giggle_sound = list(
+		'modular_ss220/emotes/audio/male/giggle_male_1.ogg',
+		'modular_ss220/emotes/audio/male/giggle_male_2.ogg')
+	var/female_giggle_sound = list(
+		'modular_ss220/emotes/audio/female/giggle_female_1.ogg',
+		'modular_ss220/emotes/audio/female/giggle_female_2.ogg',
+		'modular_ss220/emotes/audio/female/giggle_female_3.ogg',
+		'modular_ss220/emotes/audio/female/giggle_female_4.ogg')
+	var/male_laugh_sound = list(
+		'modular_ss220/emotes/audio/male/laugh_male_1.ogg',
+		'modular_ss220/emotes/audio/male/laugh_male_2.ogg',
+		'modular_ss220/emotes/audio/male/laugh_male_3.ogg')
+	var/female_laugh_sound = list(
+		'modular_ss220/emotes/audio/female/laugh_female_1.ogg',
+		'modular_ss220/emotes/audio/female/laugh_female_2.ogg',
+		'modular_ss220/emotes/audio/female/laugh_female_3.ogg')
 	var/female_gasp_sound = list(
 		'modular_ss220/emotes/audio/female/gasp_female_1.ogg',
 		'modular_ss220/emotes/audio/female/gasp_female_2.ogg',
@@ -20,6 +32,10 @@
 		'modular_ss220/emotes/audio/male/gasp_male_5.ogg',
 		'modular_ss220/emotes/audio/male/gasp_male_6.ogg',
 		'modular_ss220/emotes/audio/male/gasp_male_7.ogg')
+	female_scream_sound = list(
+		'modular_ss220/emotes/audio/female/scream_female_1.ogg',
+		'modular_ss220/emotes/audio/female/scream_female_2.ogg',
+		'modular_ss220/emotes/audio/female/scream_female_3.ogg')
 	male_cough_sounds = list(
 		'modular_ss220/emotes/audio/male/cough_male_1.ogg',
 		'modular_ss220/emotes/audio/male/cough_male_2.ogg',
@@ -73,16 +89,16 @@
 
 /datum/species/moth
 	scream_verb = "жужжит"
-	female_giggle_sound = 'sound/voice/mothchitter.ogg'
-	male_giggle_sound = 'sound/voice/mothchitter.ogg'
-	male_scream_sound = 'sound/voice/scream_moth.ogg'
-	female_scream_sound = 'sound/voice/scream_moth.ogg'
-	male_sneeze_sound = 'sound/effects/mob_effects/mothsneeze.ogg'
-	female_sneeze_sound = 'sound/effects/mob_effects/mothsneeze.ogg'
-	female_laugh_sound = 'sound/voice/mothlaugh.ogg'
-	male_laugh_sound = 'sound/voice/mothlaugh.ogg'
-	female_cough_sounds = 'sound/effects/mob_effects/mothcough.ogg'
-	male_cough_sounds = 'sound/effects/mob_effects/mothcough.ogg'
+	female_giggle_sound = 'modular_ss220/emotes/audio/moth/mothchitter.ogg'
+	male_giggle_sound = 'modular_ss220/emotes/audio/moth/mothchitter.ogg'
+	male_scream_sound = 'modular_ss220/emotes/audio/moth/scream_moth.ogg'
+	female_scream_sound = 'modular_ss220/emotes/audio/moth/scream_moth.ogg'
+	male_sneeze_sound = 'modular_ss220/emotes/audio/moth/mothsneeze.ogg'
+	female_sneeze_sound = 'modular_ss220/emotes/audio/moth/mothsneeze.ogg'
+	female_laugh_sound = 'modular_ss220/emotes/audio/moth/mothlaugh.ogg'
+	male_laugh_sound = 'modular_ss220/emotes/audio/moth/mothlaugh.ogg'
+	female_cough_sounds = 'modular_ss220/emotes/audio/moth/mothcough.ogg'
+	male_cough_sounds = 'modular_ss220/emotes/audio/moth/mothcough.ogg'
 	suicide_messages = list(
 		"откусывает свои усики!",
 		"вспарывает себе живот!",
