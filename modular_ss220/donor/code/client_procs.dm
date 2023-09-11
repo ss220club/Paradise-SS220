@@ -2,7 +2,7 @@
 	if(IsGuestKey(C.ckey))
 		return
 
-	if(check_rights_client(R_ADMIN, FALSE, C)) // Yes, the mob is required, regardless of other examples in this file, it won't work otherwise
+	if(check_rights_client(R_ADMIN, FALSE, C))
 		donator_level = DONATOR_LEVEL_MAX
 		donor_loadout_points()
 		return
