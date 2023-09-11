@@ -197,9 +197,7 @@
 	message_simple = "ворочается во сне."
 	message_robot = "мечтает об электроовцах"
 	emote_type = EMOTE_AUDIBLE | EMOTE_SOUND
-	stat_allowed = UNCONSCIOUS
-	max_stat_allowed = CONSCIOUS
-	unintentional_stat_allowed = UNCONSCIOUS
+	max_stat_allowed = UNCONSCIOUS
 	max_unintentional_stat_allowed = CONSCIOUS
 
 /datum/emote/living/snore/get_sound(mob/living/user)
