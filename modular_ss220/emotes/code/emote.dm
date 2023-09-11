@@ -11,6 +11,7 @@
 	message_mime = "кажется, задыхается!"
 	emote_type = EMOTE_SOUND
 	unintentional_stat_allowed = UNCONSCIOUS
+	bypass_unintentional_cooldown = TRUE
 
 /datum/emote/living/carbon/human/gasp/get_sound(mob/user)
 	if(!ishuman(user))
@@ -199,6 +200,7 @@
 	emote_type = EMOTE_AUDIBLE | EMOTE_SOUND
 	max_stat_allowed = UNCONSCIOUS
 	max_unintentional_stat_allowed = CONSCIOUS
+	unintentional_stat_allowed = CONSCIOUS
 
 /datum/emote/living/snore/get_sound(mob/living/user)
 	. = ..()
