@@ -1,6 +1,6 @@
 //Platform Code by Danaleja2005
 /obj/structure/platform
-	name = "Metal platform"
+	name = "platform"
 	icon = 'modular_ss220/objects/icons/platform.dmi'
 	icon_state = "metal"
 	desc = "A metal platform."
@@ -40,7 +40,7 @@
 
 /obj/structure/platform/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>The [src] is [anchored == TRUE ? "screwed" : "unscrewed"] to the floor.</span>"
+	. += "<span class='notice'>[src] is [anchored == TRUE ? "screwed" : "unscrewed"] [anchored == TRUE ? "to" : "from"] the floor.</span>"
 
 /obj/structure/platform/verb/rotate()
 	set name = "Rotate Platform Counter-Clockwise"
@@ -86,10 +86,10 @@
 //Construction
 /obj/structure/platform/screwdriver_act(mob/user, obj/item/I)
 	. = TRUE
-	to_chat(user, "<span class='notice'>You begin [anchored == TRUE ? "unscrewing" : "screwing"] [src] to the floor.</span>")
+	to_chat(user, "<span class='notice'>You begin [anchored == TRUE ? "unscrewing" : "screwing"] [src] [anchored == TRUE ? "from" : "to"] the floor.</span>")
 	if(!I.use_tool(src, user, decon_speed, volume = I.tool_volume))
 		return
-	to_chat(user, "<span class='notice'>You [anchored == TRUE ? "unscrew" : "screw"] [src] to the floor.</span>")
+	to_chat(user, "<span class='notice'>You [anchored == TRUE ? "unscrew" : "screw"] [src] [anchored == TRUE ? "from" : "to"] the floor.</span>")
 	anchored = !anchored
 
 /obj/structure/platform/wrench_act(mob/user, obj/item/I)
@@ -97,7 +97,7 @@
 		return
 	. = TRUE
 	if(anchored)
-		to_chat(user, "<span class='notice'>You cannot disassemble [src] unscrew it firts!.</span>")
+		to_chat(user, "<span class='notice'>You cannot disassemble [src], unscrew it first!</span>")
 		return
 	TOOL_ATTEMPT_DISMANTLE_MESSAGE
 	if(!I.use_tool(src, user, decon_speed, volume = I.tool_volume))
@@ -149,18 +149,18 @@
 		return
 	var/blocking_object = density_check()
 	if(blocking_object)
-		to_chat(user, "<span class='warning'>You cannot climb [src], as it is blocked by \a [blocking_object]!</span>")
+		to_chat(user, "<span class='warning'>You cannot climb over [src], as it is blocked by \a [blocking_object]!</span>")
 		return
 
 	var/destination_climb = get_step(src, dir)
 	if(is_blocked_turf(destination_climb))
-		to_chat(user, "<span class='warning'>You cannot climb over the [src], the path is blocked!")
+		to_chat(user, "<span class='warning'>You cannot climb over [src], the path is blocked!")
 		return
 	var/turf/T = src.loc
 	if(!T || !istype(T)) return
 
 	if(get_turf(user) == get_turf(src))
-		usr.visible_message("<span class='warning'>[user] starts climbing onto \the [src]!</span>")
+		usr.visible_message("<span class='warning'>[user] starts climbing over \the [src]!</span>")
 	else
 		usr.visible_message("<span class='warning'>[user] starts getting off \the [src]!</span>")
 	climber = user
@@ -177,7 +177,7 @@
 		usr.visible_message("<span class='warning'>[user] leaves \the [src]!</span>")
 	else
 		usr.loc = get_turf(src)
-		usr.visible_message("<span class='warning'>[user] starts climbing onto \the [src]!</span>")
+		usr.visible_message("<span class='warning'>[user] starts climbing over \the [src]!</span>")
 	climber = null
 
 /obj/structure/platform/CanAtmosPass()
@@ -185,24 +185,24 @@
 
 //Platform types
 /obj/structure/platform/reinforced
-	name = "Reinforced plasteel platform"
+	name = "reinforced platform"
 	desc = "A robust platform made of plasteel, more resistance for hazard sites."
-	icon_state = "metal2"
+	icon_state = "plasteel"
 	material_type = /obj/item/stack/sheet/plasteel
 	max_integrity = 300
 	armor = list("melee" = 20, "bullet" = 30, "laser" = 30, "energy" = 100, "bomb" = 50, "bio" = 0, "rad" = 75, "fire" = 100, "acid" = 100)
 
 ///Corners
 /obj/structure/platform/corner
-	name = "Metal platform corner"
+	name = "platform corner"
+	desc = "A metal platform corner."
 	icon_state = "metalcorner"
-	desc = "A metal platform corner"
 	corner = TRUE
 	material_amount = 2
 
 /obj/structure/platform/reinforced/corner
-	name = "Reinforced platform corner"
+	name = "reinforced platform corner"
 	desc = "A robust platform corner made of plasteel, more resistance for hazard sites."
-	icon_state = "metalcorner2"
+	icon_state = "plasteelcorner"
 	corner = TRUE
 	material_amount = 2
