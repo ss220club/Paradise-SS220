@@ -214,7 +214,7 @@
 /datum/emote/living/carbon/cough
 	message = "кашляет!"
 	message_mime = "бесшумно кашляет!"
-	emote_type = EMOTE_VISIBLE | EMOTE_MOUTH
+	emote_type = EMOTE_VISIBLE | EMOTE_MOUTH | EMOTE_AUDIBLE
 
 /////////////////////
 /// Human Emotes ///
@@ -363,6 +363,7 @@
 	message_mime = "бесшумно рычит."
 	message_param = "рычит на %t."
 	muzzled_noises = list("раздражённо")
+	emote_type = EMOTE_VISIBLE | EMOTE_MOUTH | EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/human/rattle
 	message = "гремит костями."

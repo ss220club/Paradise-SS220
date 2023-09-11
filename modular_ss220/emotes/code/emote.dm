@@ -1,17 +1,8 @@
-/mob/proc/user_triggered_emote(act, type, message, force)
-	if(stat || !use_me && usr == src)
-		if(usr)
-			to_chat(usr, "Вы не можете проявлять эмоции.")
-		return
-	emote(act, type, message, force)
-
-
 /datum/emote/living/carbon/human/gasp
 	message = "задыхается!"
 	message_mime = "кажется, задыхается!"
 	emote_type = EMOTE_SOUND
 	unintentional_stat_allowed = UNCONSCIOUS
-	bypass_unintentional_cooldown = TRUE
 
 /datum/emote/living/carbon/human/gasp/get_sound(mob/user)
 	if(!ishuman(user))
@@ -99,7 +90,7 @@
 	message = "стонет!"
 	message_mime = "как будто стонет!"
 	muzzled_noises = list("болезненно")
-	emote_type = EMOTE_VISIBLE
+	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/moan/get_sound(mob/living/user)
 	. = ..()
@@ -198,21 +189,22 @@
 	message_simple = "ворочается во сне."
 	message_robot = "мечтает об электроовцах"
 	emote_type = EMOTE_AUDIBLE | EMOTE_SOUND
-	max_stat_allowed = UNCONSCIOUS
-	max_unintentional_stat_allowed = CONSCIOUS
-	unintentional_stat_allowed = CONSCIOUS
+	stat_allowed = CONSCIOUS
+	max_stat_allowed = CONSCIOUS
+	unintentional_stat_allowed = UNCONSCIOUS
+	max_unintentional_stat_allowed = UNCONSCIOUS
 
 /datum/emote/living/snore/get_sound(mob/living/user)
 	. = ..()
 	if(iscarbon(user))
 		return pick(
-			"modular_ss220/emotes/audio/snore_1.ogg",
-			"modular_ss220/emotes/audio/snore_2.ogg",
-			"modular_ss220/emotes/audio/snore_3.ogg",
-			"modular_ss220/emotes/audio/snore_4.ogg",
-			"modular_ss220/emotes/audio/snore_5.ogg",
-			"modular_ss220/emotes/audio/snore_6.ogg",
-			"modular_ss220/emotes/audio/snore_7.ogg")
+			'modular_ss220/emotes/audio/snore_1.ogg',
+			'modular_ss220/emotes/audio/snore_2.ogg',
+			'modular_ss220/emotes/audio/snore_3.ogg',
+			'modular_ss220/emotes/audio/snore_4.ogg',
+			'modular_ss220/emotes/audio/snore_5.ogg',
+			'modular_ss220/emotes/audio/snore_6.ogg',
+			'modular_ss220/emotes/audio/snore_7.ogg')
 
 /datum/emote/living/dance
 	message = "радостно танцует."
@@ -223,3 +215,64 @@
 	. = ..()
 	user.spin(dance_time, pick(0.1 SECONDS, 0.2 SECONDS))
 	user.do_jitter_animation(rand(8 SECONDS, 16 SECONDS), dance_time / 4)
+
+/datum/emote/living/carbon/human/roar
+	key = "roar"
+	key_third_person = "roar"
+	message = "рычит."
+	message_mime = "бесшумно рычит."
+	message_param = "рычит на %t."
+	species_type_whitelist_typecache = list(/datum/species/unathi)
+	volume = 50
+	muzzled_noises = list("раздражённый")
+	emote_type = EMOTE_VISIBLE | EMOTE_MOUTH | EMOTE_AUDIBLE
+	age_based = TRUE
+
+/datum/emote/living/carbon/human/roar/get_sound(mob/living/user)
+	return pick(
+		'modular_ss220/emotes/audio/unathi/roar_unathi_1.ogg',
+		'modular_ss220/emotes/audio/unathi/roar_unathi_2.ogg',
+		'modular_ss220/emotes/audio/unathi/roar_unathi_3.ogg')
+
+/datum/emote/living/carbon/human/rumble
+	key = "rumble"
+	key_third_person = "rumble"
+	message = "урчит."
+	message_param = "урчит на %t."
+	species_type_whitelist_typecache = list(/datum/species/unathi)
+	emote_type = EMOTE_VISIBLE | EMOTE_MOUTH | EMOTE_AUDIBLE
+	age_based = TRUE
+	volume = 50
+	muzzled_noises = list("слабо урчащий")
+
+/datum/emote/living/carbon/human/rumble/get_sound(mob/living/user)
+	return pick(
+		'modular_ss220/emotes/audio/unathi/rumble_unathi_1.ogg',
+		'modular_ss220/emotes/audio/unathi/rumble_unathi_2.ogg')
+
+/datum/emote/living/carbon/human/threat
+	key = "threat"
+	key_third_person = "threat"
+	message = "угрожающе рычит."
+	message_param = "угрожающе рычит на %t."
+	species_type_whitelist_typecache = list(/datum/species/unathi)
+	emote_type = EMOTE_VISIBLE | EMOTE_MOUTH | EMOTE_AUDIBLE
+	age_based = TRUE
+	volume = 80
+	muzzled_noises = list("очень раздражённый")
+
+/datum/emote/living/carbon/human/threat/get_sound(mob/living/user)
+	return pick(
+		'modular_ss220/emotes/audio/unathi/threat_unathi_1.ogg',
+		'modular_ss220/emotes/audio/unathi/threat_unathi_2.ogg')
+
+/datum/emote/living/carbon/human/threat
+	key = "threat"
+	key_third_person = "threat"
+	message = "угрожающе рычит."
+	message_param = "угрожающе рычит на %t."
+	species_type_whitelist_typecache = list(/datum/species/unathi)
+	emote_type = EMOTE_VISIBLE | EMOTE_MOUTH | EMOTE_AUDIBLE
+	age_based = TRUE
+	volume = 80
+	muzzled_noises = list("очень раздражённый")

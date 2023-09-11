@@ -32,10 +32,6 @@
 		'modular_ss220/emotes/audio/male/gasp_male_5.ogg',
 		'modular_ss220/emotes/audio/male/gasp_male_6.ogg',
 		'modular_ss220/emotes/audio/male/gasp_male_7.ogg')
-	female_scream_sound = list(
-		'modular_ss220/emotes/audio/female/scream_female_1.ogg',
-		'modular_ss220/emotes/audio/female/scream_female_2.ogg',
-		'modular_ss220/emotes/audio/female/scream_female_3.ogg')
 	male_cough_sounds = list(
 		'modular_ss220/emotes/audio/male/cough_male_1.ogg',
 		'modular_ss220/emotes/audio/male/cough_male_2.ogg',
@@ -176,12 +172,9 @@
 		'modular_ss220/emotes/audio/unathi/talk_unathi_1.ogg',
 		'modular_ss220/emotes/audio/unathi/talk_unathi_2.ogg',
 		'modular_ss220/emotes/audio/unathi/talk_unathi_3.ogg')
-	male_scream_sound = list(
-		'modular_ss220/emotes/audio/unathi/scream_male_1.ogg',
-		'modular_ss220/emotes/audio/unathi/scream_male_2.ogg')
-	female_scream_sound = list(
-		'modular_ss220/emotes/audio/unathi/scream_female_1.ogg',
-		'modular_ss220/emotes/audio/unathi/scream_female_2.ogg')
+	speech_chance = 20
+	male_scream_sound = 'modular_ss220/emotes/audio/unathi/scream_male.ogg'
+	female_scream_sound = 'modular_ss220/emotes/audio/unathi/scream_female.ogg'
 	male_sneeze_sound = 'modular_ss220/emotes/audio/unathi/sneeze_male.ogg'
 	female_sneeze_sound = 'modular_ss220/emotes/audio/unathi/sneeze_female.ogg'
 	death_sounds = 'modular_ss220/emotes/audio/unathi/deathsound_unathi.ogg'
