@@ -10,7 +10,6 @@
 	toggle_message = "Вы опустили защитное стекло"
 	alt_toggle_message = "Вы подняли защитное стекло"
 	actions_types = list(/datum/action/item_action/toggle_helmet_mode)
-	armor = list("melee" = 20, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "rad" = 0, "fire" = 10, "acid" = 10)
 	can_toggle = TRUE
 	toggle_sound = 'sound/weapons/tap.ogg'
 	dog_fashion = null
@@ -22,6 +21,10 @@
 		"Vox" = 'modular_ss220/clothing/icons/mob/species/vox/helmet.dmi',
 		"Vulpkanin" = 'modular_ss220/clothing/icons/mob/species/vulpkanin/helmet.dmi',
 		)
+
+/obj/item/clothing/head/helmet/bike_helmet/replica
+	desc = "Крутой шлем. На вид хлипкий..."
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 
 /obj/item/clothing/head/caphat/beret_black
 	name = "чёрный капитанский берет"

@@ -12,7 +12,7 @@
 
 /datum/gear/donor/bike_helmet
 	display_name = "Байкерский шлем"
-	path = /obj/item/clothing/head/helmet/bike_helmet
+	path = /obj/item/clothing/head/helmet/bike_helmet/replica
 	donator_tier = 2
 	cost = 2
 
