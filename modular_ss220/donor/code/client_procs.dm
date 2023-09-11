@@ -1,5 +1,4 @@
 /datum/client_login_processor/donator_check/process_result(datum/db_query/Q, client/C)
-	set waitfor = FALSE // This needs to run async because any sleep() inside /client/New() breaks stuff badly
 	if(IsGuestKey(C.ckey))
 		return
 
