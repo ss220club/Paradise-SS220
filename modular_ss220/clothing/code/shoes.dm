@@ -54,7 +54,7 @@
 
 /obj/item/clothing/shoes/shark
 	name = "акульи тапочки"
-	desc = "These shoes are made from shark skin, or is it?"
+	desc = "Эти тапочки сделаны из акульей кожи, или нет?"
 	icon = 'modular_ss220/clothing/icons/object/shoes.dmi'
 	icon_state = "shark"
 	icon_override = 'modular_ss220/clothing/icons/mob/shoes.dmi'

@@ -10,7 +10,7 @@
 	toggle_message = "Вы опустили защитное стекло"
 	alt_toggle_message = "Вы подняли защитное стекло"
 	actions_types = list(/datum/action/item_action/toggle_helmet_mode)
-	armor = list("melee" = 25, "bullet" = 15, "laser" = 10, "energy" = 10, "bomb" = 10, "bio" = 0, "rad" = 0, "fire" = 15, "acid" = 0)
+	armor = list("melee" = 20, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "rad" = 0, "fire" = 10, "acid" = 10)
 	can_toggle = TRUE
 	toggle_sound = 'sound/weapons/tap.ogg'
 	dog_fashion = null
