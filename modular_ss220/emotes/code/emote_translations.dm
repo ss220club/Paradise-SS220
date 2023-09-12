@@ -349,6 +349,7 @@
 	message = "шипит."
 	message_param = "шипит на %t."
 	muzzled_noises = list("слабое шипение")
+	emote_type = EMOTE_VISIBLE | EMOTE_MOUTH | EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/human/creak
 	message = "скрипит."

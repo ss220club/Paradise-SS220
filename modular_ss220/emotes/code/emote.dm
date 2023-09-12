@@ -289,6 +289,35 @@
 		'modular_ss220/emotes/audio/unathi/threat_unathi_1.ogg',
 		'modular_ss220/emotes/audio/unathi/threat_unathi_2.ogg')
 
+/datum/emote/living/carbon/human/purr
+	key = "purr"
+	key_third_person = "purr"
+	message = "мурчит."
+	message_param = "мурчит из-за %t."
+	species_type_whitelist_typecache = list(/datum/species/tajaran)
+	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
+	age_based = TRUE
+	volume = 80
+	muzzled_noises = list("слабо")
+
+/datum/emote/living/carbon/human/purr/get_sound(mob/living/user)
+	return 'modular_ss220/emotes/audio/tajaran/purr_tajaran.ogg'
+
+/datum/emote/living/carbon/human/purrl
+	key = "purrl"
+	key_third_person = "purrl"
+	message = "мурчит."
+	message_param = "мурчит из-за %t."
+	cooldown = 5 SECONDS
+	species_type_whitelist_typecache = list(/datum/species/tajaran)
+	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
+	age_based = TRUE
+	volume = 80
+	muzzled_noises = list("слабо")
+
+/datum/emote/living/carbon/human/purrl/get_sound(mob/living/user)
+	return 'modular_ss220/emotes/audio/tajaran/purr_tajaran_long.ogg'
+
 ////////////////////
 /// Keybindings ///
 //////////////////
@@ -319,3 +348,11 @@
 /datum/keybinding/emote/carbon/human/threat
 	linked_emote = /datum/emote/living/carbon/human/threat
 	name = "Угрожающе рычать"
+
+/datum/keybinding/emote/carbon/human/purr
+	linked_emote = /datum/emote/living/carbon/human/purr
+	name = "Мурчать"
+
+/datum/keybinding/emote/carbon/human/purrl
+	linked_emote = /datum/emote/living/carbon/human/purrl
+	name = "Мурчать подольше"
