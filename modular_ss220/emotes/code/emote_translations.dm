@@ -316,6 +316,7 @@
 /datum/emote/living/carbon/human/quill
 	message = "шелестят перьями."
 	message_param = "шелестят перьями на %t."
+	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/human/clack
 	message = "клацает своими мандибулами."
@@ -337,6 +338,7 @@
 /datum/emote/living/carbon/human/drask_talk/hum
 	message = "напевает."
 	message_param = "напевает %t."
+	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE | EMOTE_MOUTH
 
 /datum/emote/living/carbon/human/drask_talk/rumble
 	message = "урчит."
@@ -351,11 +353,13 @@
 /datum/emote/living/carbon/human/creak
 	message = "скрипит."
 	message_param = "скрипит на %t."
+	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/human/howl
 	message = "воет."
 	message_mime = "беззвучно воет."
 	message_param = "воет на %t."
+	emote_type = EMOTE_VISIBLE | EMOTE_MOUTH | EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/human/growl
 	message = "рычит."
