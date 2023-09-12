@@ -320,12 +320,14 @@
 /datum/emote/living/carbon/human/clack
 	message = "клацает своими мандибулами."
 	message_param = "клацает своими мандибулами на %t."
+	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE | EMOTE_MOUTH
 
 /datum/emote/living/carbon/human/clack/click
 	key = "click"
 	key_third_person = "clicks"
 	message = "щелкает своими мандибулами."
 	message_param = "щелкает своими мандибулами на %t."
+	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE | EMOTE_MOUTH
 
 /datum/emote/living/carbon/human/drask_talk/drone
 	message = "жужжит."
