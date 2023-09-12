@@ -169,10 +169,22 @@
 			"modular_ss220/emotes/audio/male/choke_male_2.ogg",
 			"modular_ss220/emotes/audio/male/choke_male_3.ogg")
 
+/datum/emote/living/carbon/human/sniff
+	message = "нюхает."
+	message_mime = "бесшумно нюхнул."
+	emote_type = EMOTE_AUDIBLE
+
+/datum/emote/living/carbon/human/sniff/get_sound(mob/living/user)
+	. = ..()
+	if(user.gender == FEMALE)
+		return "modular_ss220/emotes/audio/female/sniff_female.ogg"
+	else
+		return "modular_ss220/emotes/audio/male/sniff_male.ogg"
+
 /datum/emote/living/sniff
 	message = "нюхает."
 	message_mime = "бесшумно нюхнул."
-	cooldown = 3 SECONDS
+	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/sniff/get_sound(mob/living/user)
 	. = ..()
