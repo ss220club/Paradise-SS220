@@ -447,22 +447,3 @@
 /datum/emote/living/carbon/brain/boop
 	message = "бупает."
 	self_message = "вы бупаете."
-
-////////////////////
-/// Keybindings ///
-//////////////////
-/datum/keybinding/emote/carbon/human/hem
-	linked_emote = /datum/emote/living/carbon/human/hem
-	name = "Хныкать"
-
-/datum/keybinding/emote/carbon/human/scratch
-	linked_emote = /datum/emote/living/carbon/human/scratch
-	name = "Чесаться"
-
-/datum/keybinding/emote/carbon/human/whistle
-	linked_emote = /datum/emote/living/carbon/human/whistle
-	name = "Свистеть"
-
-/datum/keybinding/emote/carbon/human/snuffle
-	linked_emote = /datum/emote/living/carbon/human/snuffle
-	name = "Шмыгать носом"

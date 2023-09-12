@@ -155,7 +155,6 @@
 	message = "подавился!"
 	message_mime = "отчаянно хватается за горло!"
 	emote_type = EMOTE_AUDIBLE | EMOTE_MOUTH
-	audio_cooldown = 3 SECONDS
 
 /datum/emote/living/choke/get_sound(mob/living/user)
 	. = ..()
@@ -173,8 +172,7 @@
 /datum/emote/living/sniff
 	message = "нюхает."
 	message_mime = "бесшумно нюхнул."
-	cooldown = 5 SECONDS
-	audio_cooldown = 3 SECONDS
+	cooldown = 3 SECONDS
 
 /datum/emote/living/sniff/get_sound(mob/living/user)
 	. = ..()
@@ -266,13 +264,33 @@
 		'modular_ss220/emotes/audio/unathi/threat_unathi_1.ogg',
 		'modular_ss220/emotes/audio/unathi/threat_unathi_2.ogg')
 
-/datum/emote/living/carbon/human/threat
-	key = "threat"
-	key_third_person = "threat"
-	message = "угрожающе рычит."
-	message_param = "угрожающе рычит на %t."
-	species_type_whitelist_typecache = list(/datum/species/unathi)
-	emote_type = EMOTE_VISIBLE | EMOTE_MOUTH | EMOTE_AUDIBLE
-	age_based = TRUE
-	volume = 80
-	muzzled_noises = list("очень раздражённый")
+////////////////////
+/// Keybindings ///
+//////////////////
+/datum/keybinding/emote/carbon/human/hem
+	linked_emote = /datum/emote/living/carbon/human/hem
+	name = "Хныкать"
+
+/datum/keybinding/emote/carbon/human/scratch
+	linked_emote = /datum/emote/living/carbon/human/scratch
+	name = "Чесаться"
+
+/datum/keybinding/emote/carbon/human/whistle
+	linked_emote = /datum/emote/living/carbon/human/whistle
+	name = "Свистеть"
+
+/datum/keybinding/emote/carbon/human/snuffle
+	linked_emote = /datum/emote/living/carbon/human/snuffle
+	name = "Шмыгать носом"
+
+/datum/keybinding/emote/carbon/human/roar
+	linked_emote = /datum/emote/living/carbon/human/roar
+	name = "Рычать"
+
+/datum/keybinding/emote/carbon/human/rumble
+	linked_emote = /datum/emote/living/carbon/human/rumble
+	name = "Урчать"
+
+/datum/keybinding/emote/carbon/human/threat
+	linked_emote = /datum/emote/living/carbon/human/threat
+	name = "Угрожающе рычать"
