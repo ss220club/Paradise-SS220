@@ -73,16 +73,14 @@
 	emote_type = EMOTE_AUDIBLE | EMOTE_MOUTH | EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/cry/get_sound(mob/living/user)
-	. = ..()
-	if(user.gender == FEMALE)
-		return pick(
-			"modular_ss220/emotes/audio/female/cry_female_1.ogg",
-			"modular_ss220/emotes/audio/female/cry_female_2.ogg",
-			"modular_ss220/emotes/audio/female/cry_female_3.ogg",)
+	if(!ishuman(user))
+		return
+	var/mob/living/carbon/human/H = user
+
+	if(H.gender == FEMALE)
+		return pick(H.dna.species.female_cry_sound)
 	else
-		return pick(
-			"modular_ss220/emotes/audio/male/cry_male_1.ogg",
-			"modular_ss220/emotes/audio/male/cry_male_2.ogg",)
+		return pick(H.dna.species.male_cry_sound)
 
 /datum/emote/living/carbon/giggle
 	message = "хихикает."
@@ -106,17 +104,14 @@
 	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/moan/get_sound(mob/living/user)
-	. = ..()
-	if(user.gender == FEMALE)
-		return pick(
-			"modular_ss220/emotes/audio/female/moan_female_1.ogg",
-			"modular_ss220/emotes/audio/female/moan_female_2.ogg",
-			"modular_ss220/emotes/audio/female/moan_female_3.ogg")
+	if(!ishuman(user))
+		return
+	var/mob/living/carbon/human/H = user
+
+	if(H.gender == FEMALE)
+		return pick(H.dna.species.female_moan_sound)
 	else
-		return pick(
-			"modular_ss220/emotes/audio/male/moan_male_1.ogg",
-			"modular_ss220/emotes/audio/male/moan_male_2.ogg",
-			"modular_ss220/emotes/audio/male/moan_male_3.ogg")
+		return pick(H.dna.species.male_moan_sound)
 
 /datum/emote/living/carbon/laugh
 	message = "смеется."
@@ -152,17 +147,35 @@
 			"modular_ss220/emotes/audio/male/yawn_male_1.ogg",
 			"modular_ss220/emotes/audio/male/yawn_male_2.ogg")
 
+/datum/emote/living/carbon/human/sneeze
+	message = "чихает."
+	muzzled_noises = list("странно", "остро")
+	emote_type = EMOTE_VISIBLE | EMOTE_MOUTH
+
+/datum/emote/living/carbon/human/sneeze/get_sound(mob/user)
+	if(!ishuman(user))
+		return
+	var/mob/living/carbon/human/H = user
+
+	if(H.gender == FEMALE)
+		return pick(H.dna.species.female_sneeze_sound)
+	else
+		return pick(H.dna.species.male_sneeze_sound)
+
 /datum/emote/living/sigh
 	message = "вздыхает."
 	message_mime = "беззвучно вздыхает."
 	emote_type = EMOTE_AUDIBLE | EMOTE_MOUTH
 
 /datum/emote/living/sigh/get_sound(mob/living/user)
-	. = ..()
-	if(user.gender == FEMALE)
-		return "modular_ss220/emotes/audio/female/sigh_female.ogg"
+	if(!ishuman(user))
+		return
+	var/mob/living/carbon/human/H = user
+
+	if(H.gender == FEMALE)
+		return pick(H.dna.species.female_sigh_sound)
 	else
-		return "modular_ss220/emotes/audio/male/sigh_male.ogg"
+		return pick(H.dna.species.male_sigh_sound)
 
 /datum/emote/living/choke
 	message = "подавился!"
@@ -297,11 +310,9 @@
 	species_type_whitelist_typecache = list(/datum/species/tajaran)
 	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
 	age_based = TRUE
+	sound = 'modular_ss220/emotes/audio/tajaran/purr_tajaran.ogg'
 	volume = 80
 	muzzled_noises = list("слабо")
-
-/datum/emote/living/carbon/human/purr/get_sound(mob/living/user)
-	return 'modular_ss220/emotes/audio/tajaran/purr_tajaran.ogg'
 
 /datum/emote/living/carbon/human/purrl
 	key = "purrl"
@@ -312,11 +323,44 @@
 	species_type_whitelist_typecache = list(/datum/species/tajaran)
 	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
 	age_based = TRUE
+	sound = 'modular_ss220/emotes/audio/tajaran/purr_tajaran_long.ogg'
 	volume = 80
 	muzzled_noises = list("слабо")
 
-/datum/emote/living/carbon/human/purrl/get_sound(mob/living/user)
-	return 'modular_ss220/emotes/audio/tajaran/purr_tajaran_long.ogg'
+/datum/emote/living/carbon/human/waves_k
+	key = "waves_k"
+	key_third_person = "waves_k"
+	message = "взмахивает усиками."
+	message_param = "взмахивает усиками из-за %t."
+	species_type_whitelist_typecache = list(/datum/species/kidan)
+	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE | EMOTE_MOUTH
+	age_based = TRUE
+	volume = 80
+	muzzled_noises = list("слабо")
+
+/datum/emote/living/carbon/human/waves_k/get_sound(mob/living/user)
+	return pick(
+		'modular_ss220/emotes/audio/kidan/waves_kidan_1.ogg',
+		'modular_ss220/emotes/audio/kidan/waves_kidan_2.ogg')
+
+/datum/emote/living/carbon/human/wiggles
+	key = "wiggles"
+	key_third_person = "wiggles"
+	message = "шевелит усиками."
+	message_param = "шевелит усиками из-за %t."
+	cooldown = 5 SECONDS
+	species_type_whitelist_typecache = list(/datum/species/kidan)
+	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE | EMOTE_MOUTH
+	age_based = TRUE
+	volume = 80
+	muzzled_noises = list("слабо")
+
+/datum/emote/living/carbon/human/wiggles/get_sound(mob/living/user)
+	return pick(
+		'modular_ss220/emotes/audio/kidan/wiggles_kidan_1.ogg',
+		'modular_ss220/emotes/audio/kidan/wiggles_kidan_2.ogg',
+		'modular_ss220/emotes/audio/kidan/wiggles_kidan_3.ogg')
+
 
 ////////////////////
 /// Keybindings ///
@@ -356,3 +400,11 @@
 /datum/keybinding/emote/carbon/human/purrl
 	linked_emote = /datum/emote/living/carbon/human/purrl
 	name = "Мурчать подольше"
+
+/datum/keybinding/emote/carbon/human/waves
+	linked_emote = /datum/emote/living/carbon/human/waves
+	name = "Взмахнуть усиками"
+
+/datum/keybinding/emote/carbon/human/wiggles
+	linked_emote = /datum/emote/living/carbon/human/wiggles
+	name = "Шевелить усиками"

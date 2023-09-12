@@ -4,10 +4,20 @@
 	set category = "Эмоции"
 	emote("laugh", intentional = TRUE)
 
+/mob/living/carbon/human/verb/emote_cry()
+	set name = "▷ Плакать "
+	set category = "Эмоции"
+	emote("cry", intentional = TRUE)
+
 /mob/living/carbon/human/verb/emote_giggle()
 	set name = "▷ Хихикать "
 	set category = "Эмоции"
 	emote("giggle", intentional = TRUE)
+
+/mob/living/carbon/human/verb/emote_cough()
+	set name = "▷ Кашлять "
+	set category = "Эмоции"
+	emote("cough", intentional = TRUE)
 
 /mob/living/carbon/human/verb/emote_scream()
 	set name = "▷ Кричать "
@@ -66,6 +76,11 @@
 
 /mob/living/carbon/human/verb/emote_snap()
 	set name = "▷ Щелкнуть пальцами "
+	set category = "Эмоции"
+	emote("snap", intentional = TRUE)
+
+/mob/living/carbon/human/verb/emote_clap()
+	set name = "▷ Хлопать "
 	set category = "Эмоции"
 	emote("snap", intentional = TRUE)
 
@@ -396,6 +411,16 @@
 	set name = "< Отрицательно >"
 	set category = "Эмоции"
 	emote("no", intentional = TRUE)
+
+/mob/living/carbon/human/proc/emote_waves_k()
+	set name = "< Взмахнуть усиками >"
+	set category = "Эмоции"
+	emote("waves_k", intentional = TRUE)
+
+/mob/living/carbon/human/proc/emote_wiggles()
+	set name = "< Шевелить усиками >"
+	set category = "Эмоции"
+	emote("wiggles", intentional = TRUE)
 
 /// Слишком переполненное меню, убираю то что легче написать чем искать. ///
 /*

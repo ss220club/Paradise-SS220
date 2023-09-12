@@ -265,11 +265,6 @@
 	message = "затягивается сигаретой и выдыхает дым в форме своего имени."
 	message_param = "тупо"
 
-/datum/emote/living/carbon/human/sneeze
-	message = "чихает."
-	muzzled_noises = list("странно", "остро")
-	emote_type = EMOTE_VISIBLE | EMOTE_MOUTH
-
 /datum/emote/living/carbon/human/wink
 	message = "подмигивает."
 

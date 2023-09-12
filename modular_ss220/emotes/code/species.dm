@@ -1,5 +1,12 @@
 /datum/species
 	scream_verb = "кричит"
+	var/male_cry_sound = list(
+		'modular_ss220/emotes/audio/male/cry_male_1.ogg',
+		'modular_ss220/emotes/audio/male/cry_male_2.ogg')
+	var/female_cry_sound = list(
+		'modular_ss220/emotes/audio/female/cry_female_1.ogg',
+		'modular_ss220/emotes/audio/female/cry_female_2.ogg',
+		'modular_ss220/emotes/audio/female/cry_female_3.ogg')
 	var/male_giggle_sound = list(
 		'modular_ss220/emotes/audio/male/giggle_male_1.ogg',
 		'modular_ss220/emotes/audio/male/giggle_male_2.ogg')
@@ -16,6 +23,16 @@
 		'modular_ss220/emotes/audio/female/laugh_female_1.ogg',
 		'modular_ss220/emotes/audio/female/laugh_female_2.ogg',
 		'modular_ss220/emotes/audio/female/laugh_female_3.ogg')
+	var/male_sigh_sound = list('modular_ss220/emotes/audio/female/sigh_female.ogg')
+	var/female_sigh_sound = list('modular_ss220/emotes/audio/male/sigh_male.ogg')
+	var/male_moan_sound = list(
+		'modular_ss220/emotes/audio/male/moan_male_1.ogg',
+		'modular_ss220/emotes/audio/male/moan_male_2.ogg',
+		'modular_ss220/emotes/audio/male/moan_male_3.ogg')
+	var/female_moan_sound = list(
+		'modular_ss220/emotes/audio/female/moan_female_1.ogg',
+		'modular_ss220/emotes/audio/female/moan_female_2.ogg',
+		'modular_ss220/emotes/audio/female/moan_female_3.ogg')
 	var/female_gasp_sound = list(
 		'modular_ss220/emotes/audio/female/gasp_female_1.ogg',
 		'modular_ss220/emotes/audio/female/gasp_female_2.ogg',
@@ -76,6 +93,63 @@
 			"с" = list("з", "зс", "ззз", "ззсз"))
 	autohiss_exempt = list("Chittin")
 
+	scream_verb = "визжит"
+	speech_sounds = list(
+		'modular_ss220/emotes/audio/kidan/talk_kidan_1.ogg',
+		'modular_ss220/emotes/audio/kidan/talk_kidan_2.ogg',
+		'modular_ss220/emotes/audio/kidan/talk_kidan_3.ogg')
+	speech_chance = 20
+	male_scream_sound = 'modular_ss220/emotes/audio/kidan/scream_kidan.ogg'
+	female_scream_sound = 'modular_ss220/emotes/audio/kidan/scream_kidan.ogg'
+	male_cry_sound = list(
+		'modular_ss220/emotes/audio/kidan/cry_kidan_1.ogg',
+		'modular_ss220/emotes/audio/kidan/cry_kidan_2.ogg')
+	female_cry_sound = list(
+		'modular_ss220/emotes/audio/kidan/cry_kidan_1.ogg',
+		'modular_ss220/emotes/audio/kidan/cry_kidan_2.ogg')
+	male_giggle_sound = list(
+		'modular_ss220/emotes/audio/kidan/giggle_kidan_1.ogg',
+		'modular_ss220/emotes/audio/kidan/giggle_kidan_2.ogg')
+	female_giggle_sound = list(
+		'modular_ss220/emotes/audio/kidan/giggle_kidan_1.ogg',
+		'modular_ss220/emotes/audio/kidan/giggle_kidan_2.ogg')
+	male_laugh_sound = list(
+		'modular_ss220/emotes/audio/kidan/laugh_kidan_1.ogg',
+		'modular_ss220/emotes/audio/kidan/laugh_kidan_2.ogg',
+		'modular_ss220/emotes/audio/kidan/laugh_kidan_3.ogg',
+		'modular_ss220/emotes/audio/kidan/laugh_kidan_4.ogg')
+	female_laugh_sound = list(
+		'modular_ss220/emotes/audio/kidan/laugh_kidan_1.ogg',
+		'modular_ss220/emotes/audio/kidan/laugh_kidan_2.ogg',
+		'modular_ss220/emotes/audio/kidan/laugh_kidan_3.ogg',
+		'modular_ss220/emotes/audio/kidan/laugh_kidan_4.ogg')
+	male_sigh_sound = list(
+		'modular_ss220/emotes/audio/kidan/sigh_kidan_1.ogg',
+		'modular_ss220/emotes/audio/kidan/sigh_kidan_2.ogg')
+	female_sigh_sound = list(
+		'modular_ss220/emotes/audio/kidan/sigh_kidan_1.ogg',
+		'modular_ss220/emotes/audio/kidan/sigh_kidan_2.ogg')
+	male_moan_sound = list('modular_ss220/emotes/audio/kidan/moan_kidan.ogg')
+	female_moan_sound = list('modular_ss220/emotes/audio/kidan/moan_kidan.ogg')
+	male_cough_sounds = list('modular_ss220/emotes/audio/kidan/cough_kidan.ogg')
+	female_cough_sounds = list('modular_ss220/emotes/audio/kidan/cough_kidan.ogg')
+	male_sneeze_sound = list(
+		'modular_ss220/emotes/audio/kidan/sneeze_kidan_1.ogg',
+		'modular_ss220/emotes/audio/kidan/sneeze_kidan_2.ogg',
+		'modular_ss220/emotes/audio/kidan/sneeze_kidan_3.ogg')
+	female_sneeze_sound = list(
+		'modular_ss220/emotes/audio/kidan/sneeze_kidan_1.ogg',
+		'modular_ss220/emotes/audio/kidan/sneeze_kidan_2.ogg',
+		'modular_ss220/emotes/audio/kidan/sneeze_kidan_3.ogg')
+	male_dying_gasp_sounds = list(
+		'modular_ss220/emotes/audio/kidan/dying_gasp_kidan_1.ogg',
+		'modular_ss220/emotes/audio/kidan/dying_gasp_kidan_2.ogg',
+		'modular_ss220/emotes/audio/kidan/dying_gasp_kidan_3.ogg')
+	female_dying_gasp_sounds = list(
+		'modular_ss220/emotes/audio/kidan/dying_gasp_kidan_1.ogg',
+		'modular_ss220/emotes/audio/kidan/dying_gasp_kidan_2.ogg',
+		'modular_ss220/emotes/audio/kidan/dying_gasp_kidan_3.ogg')
+	death_sounds = 'modular_ss220/emotes/audio/kidan/deathsound_kidan.ogg'
 	suicide_messages = list(
 		"пытается откусить себе усики!",
 		"вонзает когти в свои глазницы!",
