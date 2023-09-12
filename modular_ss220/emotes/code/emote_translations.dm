@@ -408,6 +408,11 @@
 	message_param = "издаёт трель для %t."
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
 
+/datum/emote/living/carbon/human/slime/squish
+	message = "хлюпает."
+	message_param = "хлюпает на %t."
+	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
+
 /////////////////////
 /// Alien Emotes ///
 ///////////////////
