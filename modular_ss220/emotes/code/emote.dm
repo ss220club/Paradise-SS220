@@ -1,7 +1,11 @@
+/datum/emote
+	cooldown = 1.5 SECONDS
+	audio_cooldown = 3 SECONDS
+
 /datum/emote/living/carbon/human/gasp
 	message = "задыхается!"
 	message_mime = "кажется, задыхается!"
-	emote_type = EMOTE_SOUND
+	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
 	unintentional_stat_allowed = UNCONSCIOUS
 
 /datum/emote/living/carbon/human/gasp/get_sound(mob/user)
@@ -41,6 +45,15 @@
 			return "как будто [H.dna.species?.scream_verb]!"
 		else
 			return "[H.dna.species?.scream_verb]!"
+
+/datum/emote/living/carbon/human/scream/get_sound(mob/living/user)
+	var/mob/living/carbon/human/human = user
+	if(human.mind?.miming || !istype(human))
+		return
+	if(human.gender == FEMALE)
+		return pick(human.dna.species.female_scream_sound)
+	else
+		return pick(human.dna.species.male_scream_sound)
 
 /datum/emote/living/carbon/human/salute
 	message = "салютует."

@@ -276,6 +276,7 @@
 /datum/emote/living/carbon/human/snap
 	message = "щелкает пальцами."
 	message_param = "щелкает пальцами на %t."
+	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/human/fart
 	message = "пердит."
