@@ -23,8 +23,8 @@
 		'modular_ss220/emotes/audio/female/laugh_female_1.ogg',
 		'modular_ss220/emotes/audio/female/laugh_female_2.ogg',
 		'modular_ss220/emotes/audio/female/laugh_female_3.ogg')
-	var/male_sigh_sound = list('modular_ss220/emotes/audio/female/sigh_female.ogg')
-	var/female_sigh_sound = list('modular_ss220/emotes/audio/male/sigh_male.ogg')
+	var/male_sigh_sound = list('modular_ss220/emotes/audio/male/sigh_male.ogg')
+	var/female_sigh_sound = list('modular_ss220/emotes/audio/female/sigh_female.ogg')
 	var/male_moan_sound = list(
 		'modular_ss220/emotes/audio/male/moan_male_1.ogg',
 		'modular_ss220/emotes/audio/male/moan_male_2.ogg',
