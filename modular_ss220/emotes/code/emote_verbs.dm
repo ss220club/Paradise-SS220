@@ -82,7 +82,7 @@
 /mob/living/carbon/human/verb/emote_clap()
 	set name = "▷ Хлопать "
 	set category = "Эмоции"
-	emote("snap", intentional = TRUE)
+	emote("clap", intentional = TRUE)
 
 /// Action Emotes ///
 /mob/living/carbon/human/verb/emote_collapse()
