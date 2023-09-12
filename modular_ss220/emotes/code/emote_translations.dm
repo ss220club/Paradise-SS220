@@ -403,6 +403,11 @@
 	emote_type = EMOTE_AUDIBLE | EMOTE_MOUTH | EMOTE_VISIBLE
 	sound = "modular_ss220/emotes/audio/whistle.ogg"
 
+/datum/emote/living/carbon/human/warble
+	message = "издаёт трель."
+	message_param = "издаёт трель для %t."
+	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
+
 /////////////////////
 /// Alien Emotes ///
 ///////////////////
