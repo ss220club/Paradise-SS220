@@ -402,7 +402,7 @@
 	name = "Мурчать подольше"
 
 /datum/keybinding/emote/carbon/human/waves
-	linked_emote = /datum/emote/living/carbon/human/waves
+	linked_emote = /datum/emote/living/carbon/human/waves_k
 	name = "Взмахнуть усиками"
 
 /datum/keybinding/emote/carbon/human/wiggles
