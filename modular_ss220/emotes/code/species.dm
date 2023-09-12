@@ -66,6 +66,16 @@
 		"разбивает своё тело на части!")
 
 /datum/species/kidan
+	autohiss_basic_map = list(
+			"z" = list("zz", "zzz", "zzzz"),
+			"v" = list("vv", "vvv", "vvvv"),
+			"з" = list("зз", "ззз", "зззз"),
+			"в" = list("вв", "ввв", "вввв"))
+	autohiss_extra_map = list(
+			"s" = list("z", "zs", "zzz", "zzsz"),
+			"с" = list("з", "зс", "ззз", "ззсз"))
+	autohiss_exempt = list("Chittin")
+
 	suicide_messages = list(
 		"пытается откусить себе усики!",
 		"вонзает когти в свои глазницы!",
@@ -102,6 +112,10 @@
 		"заддерживает своё дыхание!")
 
 /datum/species/plasmaman
+	autohiss_basic_map = list(
+			"s" = list("ss", "sss", "ssss"),
+			"с" = list("сс", "ссс", "сссс"))
+
 	male_scream_sound = list(
 		'modular_ss220/emotes/audio/plasmaman/scream_plasmaman_1.ogg',
 		'modular_ss220/emotes/audio/plasmaman/scream_plasmaman_2.ogg',
@@ -159,6 +173,11 @@
 		"становится коричневым, тусклым и растекается в лужу!")
 
 /datum/species/tajaran
+	autohiss_basic_map = list(
+			"r" = list("rr", "rrr", "rrrr"),
+			"р" = list("рр", "ррр", "рррр"))
+	autohiss_exempt = list("Siik'tajr")
+
 	male_scream_sound = 'modular_ss220/emotes/audio/tajaran/scream_tajaran.ogg'
 	female_scream_sound = 'modular_ss220/emotes/audio/tajaran/scream_tajaran.ogg'
 	suicide_messages = list(
@@ -168,6 +187,15 @@
 		"задерживает дыхание!")
 
 /datum/species/unathi
+	autohiss_basic_map = list(
+			"s" = list("ss", "sss", "ssss"),
+			"с" = list("сс", "ссс", "сссс"))
+	autohiss_extra_map = list(
+			"x" = list("ks", "kss", "ksss"),
+			"ш" = list("шш", "шшш", "шшшш"),
+			"ч" = list("щ", "щщ", "щщщ"))
+	autohiss_exempt = list("Sinta'unathi")
+
 	speech_sounds = list(
 		'modular_ss220/emotes/audio/unathi/talk_unathi_1.ogg',
 		'modular_ss220/emotes/audio/unathi/talk_unathi_2.ogg',
@@ -185,6 +213,13 @@
 		"задерживает дыхание!")
 
 /datum/species/vox
+	autohiss_basic_map = list(
+			"ch" = list("ch", "chch", "chich"),
+			"k" = list("k", "kk", "kik"),
+			"ч" = list("ч", "чч", "чич"),
+			"к" = list("к", "кк", "кик"))
+	autohiss_exempt = list("Vox-pidgin")
+
 	scream_verb = "скрипит"
 	suicide_messages = list(
 		"пытается откусить себе язык!",
@@ -194,6 +229,11 @@
 		"глубоко вдыхает кислород!")
 
 /datum/species/vulpkanin
+	autohiss_basic_map = list(
+			"r" = list("r", "rr", "rrr"),
+			"р" = list("р", "рр", "ррр"))
+	autohiss_exempt = list("Canilunzt")
+
 	scream_verb = "скулит"
 	suicide_messages = list(
 		"пытается откусить себе язык!",
