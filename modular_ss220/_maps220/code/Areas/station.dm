@@ -12,7 +12,7 @@
 	name = "\improper South Command Checkpoint"
 
 /area/engine/aitransit
-	name = "\improper  AI Satellite Transfer Point"
+	name = "\improper AI Satellite Transfer Point"
 	icon_state = "engi"
 
 /area/engine/hallway
