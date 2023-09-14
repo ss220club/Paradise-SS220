@@ -69,9 +69,8 @@
 	},
 /area/ruin/space/unpowered/unpowered_structures)
 "cn" = (
-/mob/living/simple_animal/hostile/syndicate/melee/autogib/depot/space{
-	name = "Syndicate Commando"
-	},
+/obj/structure/closet/crate/secure,
+/obj/item/stack/ore/plasma,
 /turf/simulated/floor/plasteel/airless{
 	icon_state = "dark"
 	},
@@ -146,12 +145,6 @@
 /obj/effect/landmark/burnturf,
 /obj/effect/decal/cleanable/glass,
 /turf/simulated/floor/plating/airless,
-/area/ruin/space/unpowered/unpowered_structures)
-"ei" = (
-/mob/living/simple_animal/hostile/syndicate/ranged/space/autogib{
-	wander = 0
-	},
-/turf/simulated/floor/plating/asteroid/airless,
 /area/ruin/space/unpowered/unpowered_structures)
 "ew" = (
 /obj/structure/shuttle/engine/propulsion/burst{
@@ -237,16 +230,12 @@
 /obj/item/chair{
 	dir = 4
 	},
-/mob/living/simple_animal/hostile/syndicate/ranged/space/autogib{
-	wander = 0
+/mob/living/simple_animal/hostile/syndicate/melee/autogib/depot/space{
+	name = "Syndicate Commando"
 	},
 /turf/simulated/floor/plasteel/airless{
 	icon_state = "dark"
 	},
-/area/ruin/space/unpowered/unpowered_structures)
-"jz" = (
-/obj/machinery/porta_turret/syndicate,
-/turf/simulated/wall/mineral/plastitanium/interior,
 /area/ruin/space/unpowered/unpowered_structures)
 "jP" = (
 /obj/item/shard{
@@ -448,7 +437,6 @@
 	req_access_txt = "3"
 	},
 /obj/item/gun/energy/laser/retro/old,
-/obj/item/gun/energy/laser/retro/old,
 /turf/simulated/floor/plasteel/airless{
 	icon_state = "dark"
 	},
@@ -550,8 +538,12 @@
 /turf/template_noop,
 /area/template_noop)
 "wu" = (
-/obj/machinery/atmospherics/unary/vent_pump{
-	dir = 8
+/obj/item/stack/ore/silver{
+	amount = 25
+	},
+/obj/structure/closet/crate,
+/obj/item/stack/ore/gold{
+	amount = 25
 	},
 /turf/simulated/floor/plasteel/airless{
 	icon_state = "dark"
@@ -691,9 +683,7 @@
 /turf/template_noop,
 /area/template_noop)
 "Da" = (
-/obj/machinery/door/airlock/external{
-	req_access_txt = "150"
-	},
+/obj/machinery/door/airlock/external,
 /obj/structure/fans/tiny,
 /turf/simulated/floor,
 /area/ruin/space/powered)
@@ -723,19 +713,6 @@
 	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/ruin/space/powered)
-"DC" = (
-/obj/structure/closet/crate,
-/obj/item/stack/ore/silver{
-	amount = 25
-	},
-/obj/effect/turf_decal/delivery,
-/obj/item/stack/ore/gold{
-	amount = 25
-	},
-/turf/simulated/floor/plasteel/airless{
-	icon_state = "dark"
-	},
-/area/ruin/space/unpowered/unpowered_structures)
 "DT" = (
 /obj/machinery/atmospherics/unary/vent_pump{
 	dir = 8
@@ -778,15 +755,8 @@
 /obj/item/reagent_containers/food/snacks/chinese/chowmein,
 /obj/item/reagent_containers/food/snacks/chinese/chowmein,
 /obj/item/reagent_containers/food/snacks/chinese/rice,
-/obj/item/reagent_containers/food/pill/methamphetamine,
-/turf/simulated/floor/plasteel/airless{
-	icon_state = "blackfull"
-	},
-/area/ruin/space/unpowered/unpowered_structures)
-"FS" = (
-/obj/effect/turf_decal/delivery,
-/obj/structure/closet/crate/secure,
-/obj/item/stack/ore/plasma,
+/obj/item/stack/spacecash/c20,
+/obj/item/stack/spacecash/c10,
 /turf/simulated/floor/plasteel/airless{
 	icon_state = "blackfull"
 	},
@@ -892,9 +862,6 @@
 /area/ruin/space/unpowered/unpowered_structures)
 "IZ" = (
 /obj/effect/decal/cleanable/blood,
-/mob/living/simple_animal/hostile/syndicate/melee/autogib/depot/space{
-	name = "Syndicate Commando"
-	},
 /turf/simulated/floor/plasteel/airless{
 	icon_state = "darkbluecornersalt"
 	},
@@ -1096,10 +1063,10 @@
 /turf/simulated/wall/mineral/titanium/nodiagonal,
 /area/ruin/space/unpowered/unpowered_structures)
 "RV" = (
-/obj/structure/chair/comfy/shuttle{
-	dir = 4
+/mob/living/simple_animal/hostile/syndicate/melee/autogib/depot/space{
+	name = "Syndicate Commando"
 	},
-/turf/simulated/floor/mineral/plastitanium/red,
+/turf/simulated/floor/plating/asteroid/airless,
 /area/ruin/space/unpowered/unpowered_structures)
 "RY" = (
 /obj/machinery/mass_driver_frame{
@@ -1124,6 +1091,9 @@
 "Sn" = (
 /obj/structure/closet/walllocker/emerglocker/west,
 /obj/effect/mob_spawn/human/corpse/damaged,
+/mob/living/simple_animal/hostile/syndicate/ranged/space/autogib{
+	wander = 0
+	},
 /turf/simulated/floor/plasteel/airless{
 	icon_state = "dark"
 	},
@@ -1145,6 +1115,10 @@
 /area/ruin/space/unpowered/unpowered_structures)
 "SR" = (
 /obj/effect/decal/cleanable/blood/oil,
+/obj/structure/closet/crate,
+/obj/item/stack/ore/titanium{
+	amount = 10
+	},
 /turf/simulated/floor/plasteel/airless{
 	icon_state = "dark"
 	},
@@ -1191,14 +1165,6 @@
 	},
 /turf/template_noop,
 /area/template_noop)
-"Uh" = (
-/mob/living/simple_animal/hostile/syndicate/ranged/space/autogib{
-	wander = 0
-	},
-/turf/simulated/floor/plasteel/airless{
-	icon_state = "dark"
-	},
-/area/ruin/space/unpowered/unpowered_structures)
 "Uo" = (
 /obj/item/stack/sheet/plasteel,
 /turf/template_noop,
@@ -1226,8 +1192,7 @@
 /obj/item/reagent_containers/food/snacks/chinese/chowmein,
 /obj/item/reagent_containers/food/snacks/chinese/chowmein,
 /obj/item/reagent_containers/food/snacks/chinese/rice,
-/obj/item/reagent_containers/food/pill/methamphetamine,
-/obj/item/reagent_containers/food/pill/methamphetamine,
+/obj/item/stack/spacecash/c100,
 /turf/simulated/floor/plasteel/airless{
 	icon_state = "dark"
 	},
@@ -1252,16 +1217,6 @@
 /obj/effect/decal/cleanable/blood/gibs,
 /turf/simulated/floor/plasteel/airless{
 	icon_state = "dark"
-	},
-/area/ruin/space/unpowered/unpowered_structures)
-"Wh" = (
-/obj/effect/turf_decal/delivery,
-/obj/item/stack/ore/titanium{
-	amount = 10
-	},
-/obj/structure/closet/crate,
-/turf/simulated/floor/plasteel/airless{
-	icon_state = "blackfull"
 	},
 /area/ruin/space/unpowered/unpowered_structures)
 "Wq" = (
@@ -2459,13 +2414,13 @@ wr
 wr
 wr
 wr
-jz
+GX
 GX
 GX
 GX
 Da
 GX
-jz
+GX
 wr
 wr
 wr
@@ -2633,7 +2588,7 @@ wr
 wr
 KG
 Dt
-zU
+bA
 bA
 zU
 yO
@@ -2747,7 +2702,7 @@ wr
 wr
 KG
 OT
-zU
+bA
 bA
 zU
 yO
@@ -2844,7 +2799,7 @@ wr
 hV
 tW
 st
-Uh
+Wv
 NK
 Dq
 lY
@@ -2915,13 +2870,13 @@ wr
 wr
 wr
 wr
-jz
+GX
 GX
 GX
 GX
 Da
 GX
-jz
+GX
 wr
 wr
 wr
@@ -3017,7 +2972,7 @@ Sw
 cj
 aX
 Wv
-cn
+Wv
 cG
 Py
 wr
@@ -4758,11 +4713,11 @@ wr
 zo
 zo
 Jj
+RV
 Jj
 Jj
 Jj
 Jj
-ei
 Jj
 aZ
 Jj
@@ -4832,7 +4787,7 @@ Ra
 yr
 LF
 SR
-Wv
+cn
 fV
 RP
 wr
@@ -4873,8 +4828,8 @@ oq
 oq
 bd
 bA
-RV
-RV
+bA
+bA
 nP
 Jj
 zo
@@ -4887,9 +4842,9 @@ kt
 tZ
 bf
 TA
-vU
-Wh
-FS
+wB
+rI
+rI
 SA
 RP
 wr
@@ -4944,8 +4899,8 @@ kt
 zv
 bj
 wB
+vU
 wB
-DC
 dO
 SA
 RP
@@ -5002,7 +4957,7 @@ zv
 nI
 st
 Wv
-Uh
+Wv
 wu
 Nj
 RP
