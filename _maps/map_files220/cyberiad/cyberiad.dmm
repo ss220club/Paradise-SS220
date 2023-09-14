@@ -26723,6 +26723,11 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/carpet/royalblack,
 /area/ntrep)
 "bSG" = (
@@ -30060,6 +30065,11 @@
 	dir = 8;
 	icon_state = "pipe-c"
 	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/wood,
 /area/blueshield)
 "ccX" = (
@@ -31009,6 +31019,10 @@
 	id_tag = "representative";
 	name = "Privacy Shutters";
 	opacity = 0
+	},
+/obj/structure/cable{
+	d2 = 4;
+	icon_state = "0-4"
 	},
 /turf/simulated/floor/plating,
 /area/ntrep)
@@ -31981,6 +31995,16 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/disposalpipe/segment,
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
 /turf/simulated/floor/wood,
 /area/ntrep)
 "ckP" = (
@@ -32344,6 +32368,11 @@
 	icon_state = "2-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/carpet/blue,
 /area/blueshield)
 "cmc" = (
@@ -33891,6 +33920,16 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
 /turf/simulated/floor/wood,
 /area/blueshield)
 "csB" = (
@@ -52303,6 +52342,11 @@
 "exT" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/carpet/blue,
 /area/blueshield)
 "eyg" = (
@@ -54426,6 +54470,11 @@
 /obj/structure/disposalpipe/segment{
 	dir = 1;
 	icon_state = "pipe-c"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/wood,
 /area/ntrep)
@@ -59799,6 +59848,10 @@
 	id_tag = "blueshield";
 	name = "Privacy Shutters";
 	opacity = 0
+	},
+/obj/structure/cable{
+	d2 = 4;
+	icon_state = "0-4"
 	},
 /turf/simulated/floor/plating,
 /area/blueshield)
@@ -72097,6 +72150,11 @@
 "mbP" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/carpet/royalblack,
 /area/ntrep)
 "mbZ" = (
@@ -78114,6 +78172,22 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint)
+"otH" = (
+/obj/effect/spawner/window/reinforced,
+/obj/machinery/door/poddoor/shutters{
+	density = 0;
+	dir = 2;
+	icon_state = "open";
+	id_tag = "representative";
+	name = "Privacy Shutters";
+	opacity = 0
+	},
+/obj/structure/cable{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/turf/simulated/floor/plating,
+/area/ntrep)
 "otJ" = (
 /obj/machinery/door/airlock/maintenance,
 /obj/structure/cable{
@@ -85990,6 +86064,22 @@
 	icon_state = "whitegreen"
 	},
 /area/medical/virology)
+"ruL" = (
+/obj/effect/spawner/window/reinforced,
+/obj/machinery/door/poddoor/shutters{
+	density = 0;
+	dir = 2;
+	icon_state = "open";
+	id_tag = "blueshield";
+	name = "Privacy Shutters";
+	opacity = 0
+	},
+/obj/structure/cable{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/turf/simulated/floor/plating,
+/area/blueshield)
 "ruR" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/firedoor,
@@ -131948,7 +132038,7 @@ kQs
 xTc
 hng
 cdN
-cgZ
+otH
 dto
 ckw
 uoR
@@ -134518,7 +134608,7 @@ bSi
 ceC
 pVZ
 cdN
-hlI
+ruL
 clR
 ckt
 ckt
