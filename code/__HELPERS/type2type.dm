@@ -207,7 +207,7 @@
 			return 'icons/mob/screen_operative.dmi'
 		if("White")
 			return 'icons/mob/screen_white.dmi'
-		//SS220 ADDITION START
+		// SS220 ADDITION START
 		if("Vaporwave")
 			return 'modular_ss220/aesthetics/skin/icons/screen_vaporwave.dmi'
 		if("Detective")
@@ -216,7 +216,7 @@
 			return 'modular_ss220/aesthetics/skin/icons/screen_trasenknox.dmi'
 		if("Clockwork")
 			return 'modular_ss220/aesthetics/skin/icons/screen_clockwork.dmi'
-		//SS220 ADDITION END
+		// SS220 ADDITION END
 		else
 			return 'icons/mob/screen_midnight.dmi'
 
