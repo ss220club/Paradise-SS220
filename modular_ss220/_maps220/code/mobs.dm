@@ -135,7 +135,7 @@
 	wander = FALSE
 
 //Undead
-/mob/living/simple_animal/hostile/undead/zombie
+/mob/living/simple_animal/hostile/undead
 	name = "zombie"
 	icon = 'icons/mob/human.dmi'
 	icon_state = "zombie_s"
