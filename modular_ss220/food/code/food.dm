@@ -152,3 +152,89 @@
 		/obj/item/reagent_containers/food/snacks/grown/cucumber)
 	result = /obj/item/reagent_containers/food/snacks/soup/rassolnik
 
+// Doner
+/obj/item/reagent_containers/food/snacks/shawarma
+	name = "шаурма"
+	desc = "Великолепное сочетание мяса с гриля и свежих овощей. Не спрашивайте о мясе."
+	icon_state = "shawarma"
+	filling_color = "#c0720c"
+	list_reagents = list("protein" = 4, "nutriment" = 4, "vitamin" = 2, "tomatojuice" = 4)
+	tastes = list("счастье" = 3, "мясо" = 2, "овощи" = 1)
+
+/datum/recipe/microwave/shawarma
+	reagents = list("sodiumchloride" = 1, "blackpepper" = 1)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/meatsteak,
+		/obj/item/reagent_containers/food/snacks/meatsteak,
+		/obj/item/reagent_containers/food/snacks/grown/cabbage,
+		/obj/item/reagent_containers/food/snacks/onion_slice,
+		/obj/item/reagent_containers/food/snacks/grown/tomato,
+		/obj/item/reagent_containers/food/snacks/grown/carrot,
+		/obj/item/reagent_containers/food/snacks/sliceable/flatdough)
+	result = /obj/item/reagent_containers/food/snacks/shawarma
+
+// Doner - Cheese
+/obj/item/reagent_containers/food/snacks/doner_cheese
+	name = "сырная шаурма"
+	desc = "Фирменное блюдо от шеф-повара - мясо с гриля и свежие овощи с теплым сырным соусом. Вкусно!"
+	icon_state = "doner_cheese"
+	filling_color = "#c0720c"
+	list_reagents = list("protein" = 4, "nutriment" = 6, "vitamin" = 2, "tomatojuice" = 4)
+	tastes = list("счастье" = 3, "сыр" = 2, "мясо" = 2, "овощи" = 1)
+
+/datum/recipe/microwave/doner_cheese
+	reagents = list("sodiumchloride" = 1, "blackpepper" = 1)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/meatsteak,
+		/obj/item/reagent_containers/food/snacks/meatsteak,
+		/obj/item/reagent_containers/food/snacks/cheesewedge,
+		/obj/item/reagent_containers/food/snacks/cheesewedge,
+		/obj/item/reagent_containers/food/snacks/grown/cabbage,
+		/obj/item/reagent_containers/food/snacks/grown/tomato,
+		/obj/item/reagent_containers/food/snacks/sliceable/flatdough)
+	result = /obj/item/reagent_containers/food/snacks/doner_cheese
+
+// Doner - Mushroom
+/obj/item/reagent_containers/food/snacks/doner_mushroom
+	name = "шаурма с грибами"
+	desc = "Мясо с гриля, свежие овощи и грибы. Грибы немного вытеснили мясо, но всё так же вкусно!"
+	icon_state = "doner_mushroom"
+	filling_color = "#c0720c"
+	list_reagents = list("protein" = 4, "nutriment" = 4, "plantmatter" = 2, "vitamin" = 2, "tomatojuice" = 4)
+	tastes = list("счастье" = 3, "мясо" = 2, "овощи" = 2, "томат" = 1)
+
+/datum/recipe/microwave/doner_mushroom
+	reagents = list("sodiumchloride" = 1, "blackpepper" = 1)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/meatsteak,
+		/obj/item/reagent_containers/food/snacks/grown/mushroom,
+		/obj/item/reagent_containers/food/snacks/grown/mushroom,
+		/obj/item/reagent_containers/food/snacks/grown/mushroom,
+		/obj/item/reagent_containers/food/snacks/grown/cabbage,
+		/obj/item/reagent_containers/food/snacks/onion_slice,
+		/obj/item/reagent_containers/food/snacks/grown/tomato,
+		/obj/item/reagent_containers/food/snacks/grown/carrot,
+		/obj/item/reagent_containers/food/snacks/sliceable/flatdough)
+	result = /obj/item/reagent_containers/food/snacks/doner_mushroom
+
+// Doner - Vegetable
+/obj/item/reagent_containers/food/snacks/doner_vegan
+	name = "овощная шаурма"
+	desc = "Свежие овощи, завернутые в длинный рулет. Мясо в комплект не входит!"
+	icon_state = "doner_vegan"
+	filling_color = "#c0720c"
+	list_reagents = list("nutriment" = 4, "plantmatter" = 4, "vitamin" = 4, "tomatojuice" = 8)
+	tastes = list("овощи" = 2, "томат" = 1, "перец" = 1)
+
+/datum/recipe/microwave/doner_vegan
+	reagents = list("sodiumchloride" = 1, "blackpepper" = 1)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/grown/cabbage,
+		/obj/item/reagent_containers/food/snacks/onion_slice,
+		/obj/item/reagent_containers/food/snacks/onion_slice,
+		/obj/item/reagent_containers/food/snacks/grown/tomato,
+		/obj/item/reagent_containers/food/snacks/grown/tomato,
+		/obj/item/reagent_containers/food/snacks/grown/carrot,
+		/obj/item/reagent_containers/food/snacks/grown/carrot,
+		/obj/item/reagent_containers/food/snacks/sliceable/flatdough)
+	result = /obj/item/reagent_containers/food/snacks/doner_vegan
