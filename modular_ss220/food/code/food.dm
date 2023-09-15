@@ -162,6 +162,7 @@
 /obj/item/reagent_containers/food/snacks/shawarma
 	name = "шаурма"
 	desc = "Великолепное сочетание мяса с гриля и свежих овощей. Не спрашивайте о мясе."
+	icon = 'modular_ss220/food/icons/food.dmi'
 	icon_state = "shawarma"
 	filling_color = "#c0720c"
 	list_reagents = list("protein" = 4, "nutriment" = 4, "vitamin" = 2, "tomatojuice" = 4)
@@ -183,6 +184,7 @@
 /obj/item/reagent_containers/food/snacks/doner_cheese
 	name = "сырная шаурма"
 	desc = "Фирменное блюдо от шеф-повара - мясо с гриля и свежие овощи с теплым сырным соусом. Вкусно!"
+	icon = 'modular_ss220/food/icons/food.dmi'
 	icon_state = "doner_cheese"
 	filling_color = "#c0720c"
 	list_reagents = list("protein" = 4, "nutriment" = 6, "vitamin" = 2, "tomatojuice" = 4)
@@ -204,6 +206,7 @@
 /obj/item/reagent_containers/food/snacks/doner_mushroom
 	name = "шаурма с грибами"
 	desc = "Мясо с гриля, свежие овощи и грибы. Грибы немного вытеснили мясо, но всё так же вкусно!"
+	icon = 'modular_ss220/food/icons/food.dmi'
 	icon_state = "doner_mushroom"
 	filling_color = "#c0720c"
 	list_reagents = list("protein" = 4, "nutriment" = 4, "plantmatter" = 2, "vitamin" = 2, "tomatojuice" = 4)
@@ -227,6 +230,7 @@
 /obj/item/reagent_containers/food/snacks/doner_vegan
 	name = "овощная шаурма"
 	desc = "Свежие овощи, завернутые в длинный рулет. Мясо в комплект не входит!"
+	icon = 'modular_ss220/food/icons/food.dmi'
 	icon_state = "doner_vegan"
 	filling_color = "#c0720c"
 	list_reagents = list("nutriment" = 4, "plantmatter" = 4, "vitamin" = 4, "tomatojuice" = 8)
@@ -244,3 +248,287 @@
 		/obj/item/reagent_containers/food/snacks/grown/carrot,
 		/obj/item/reagent_containers/food/snacks/sliceable/flatdough)
 	result = /obj/item/reagent_containers/food/snacks/doner_vegan
+
+// Slime Pie
+/obj/item/reagent_containers/food/snacks/sliceable/slimepie
+	name = "слаймовый пирог"
+	desc = "Блюрп блоб блуп блеп блоп. Можно нарезать."
+	icon = 'modular_ss220/food/icons/food.dmi'
+	icon_state = "slimepie"
+	slice_path = /obj/item/reagent_containers/food/snacks/slimepieslice
+	slices_num = 5
+	bitesize = 3
+	filling_color = "#00d9ff"
+	list_reagents = list("nutriment" = 20, "vitamin" = 5)
+	tastes = list("slime" = 5, "sweetness" = 1, "jelly" = 1)
+
+/obj/item/reagent_containers/food/snacks/slimepieslice
+	name = "кусочек слаймового пирога"
+	desc = "Блюрп блоб блуп блеп блоп."
+	icon = 'modular_ss220/food/icons/food.dmi'
+	icon_state = "slimepieslice"
+	trash = /obj/item/trash/plate
+	filling_color = "#00d9ff"
+	tastes = list("slime" = 5, "sweetness" = 1, "jelly" = 1)
+
+/datum/recipe/oven/slimepie
+	reagents = list("custard" = 1, "milk" = 5, "sugar" = 15)
+	items = list(/obj/item/organ/internal/heart/slime)
+	result = /obj/item/reagent_containers/food/snacks/sliceable/slimepie
+
+// Kidan Ragu
+/obj/item/reagent_containers/food/snacks/kidanragu
+	name = "острое хитиновое рагу"
+	desc = "Рагу из очень жесткого хитинового мяса и тушеных овощей."
+	icon = 'modular_ss220/food/icons/food.dmi'
+	icon_state = "kidanragu"
+	list_reagents = list("nutriment" = 8, "vitamin" = 4, "protein" = 4)
+	tastes = list("insect" = 3, "vegetable" = 2)
+
+/datum/recipe/microwave/kidan_ragu
+	reagents = list("water" = 10, "sodiumchloride" = 1)
+	items = list(
+		/obj/item/organ/internal/heart/kidan,
+		/obj/item/reagent_containers/food/snacks/grown/potato,
+		/obj/item/reagent_containers/food/snacks/grown/potato,
+		/obj/item/reagent_containers/food/snacks/grown/carrot,
+		/obj/item/reagent_containers/food/snacks/grown/tomato,
+		/obj/item/reagent_containers/food/snacks/grown/chili)
+	result = /obj/item/reagent_containers/food/snacks/kidanragu
+
+// Fried Unathi Meat
+/obj/item/reagent_containers/food/snacks/sliceable/lizard
+	name = "жареное мясо унатха"
+	desc = "Сочный стейк из мяса крупной ящерицы, вызывающий желание полежать на теплых камнях. Можно нарезать."
+	icon = 'modular_ss220/food/icons/food.dmi'
+	icon_state = "lizard_steak"
+	slice_path = /obj/item/reagent_containers/food/snacks/lizardslice
+	slices_num = 5
+	list_reagents = list("protein" = 20, "nutriment" = 10, "vitamin" = 5)
+	tastes = list("мясо ящерицы" = 4, "курятина" = 2)
+
+/obj/item/reagent_containers/food/snacks/lizardslice
+	name = "стейк из унатха"
+	desc = "Порция мяса унатхи."
+	icon = 'modular_ss220/food/icons/food.dmi'
+	icon_state = "lizard_slice"
+	trash = /obj/item/trash/plate
+	filling_color = "#a55f3a"
+	tastes = list("мясо ящерицы" = 2, "курятина" = 1)
+
+/datum/deepfryer_special/unathi
+	input = /obj/item/organ/external
+	output = /obj/item/reagent_containers/food/snacks/lizardslice
+
+/datum/deepfryer_special/unathi/validate(obj/item/I)
+	if(!..())
+		return FALSE
+	var/obj/item/organ/external/E = I
+	return istype(E.dna.species, /datum/species/unathi)
+
+// Tajaroni
+/obj/item/reagent_containers/food/snacks/tajaroni
+	name = "Таярони"
+	desc = "Острая вяленая колбаса с перцем и... Оно только что мяукнуло?"
+	icon = 'modular_ss220/food/icons/food.dmi'
+	icon_state = "tajaroni"
+	list_reagents = list("nutriment" = 8, "vitamin" = 4, "protein" = 4)
+	tastes = list("сухое мясо" = 3, "кошатина" = 2)
+
+/datum/deepfryer_special/tajaroni
+	input = /obj/item/organ/external
+	output = /obj/item/reagent_containers/food/snacks/tajaroni
+
+/datum/deepfryer_special/tajaroni/validate(obj/item/I)
+	if(!..())
+		return FALSE
+	var/obj/item/organ/external/E = I
+	return istype(E.dna.species, /datum/species/tajaran)
+
+// Vulpixes
+/obj/item/reagent_containers/food/snacks/vulpix
+	name = "вульпиксы"
+	desc = "Аппетитно выглядящие мясные шарики в тесте... Главное - не думать о том, из кого они сделаны!"
+	icon = 'modular_ss220/food/icons/food.dmi'
+	icon_state = "vulpix"
+	list_reagents = list("nutriment" = 10, "vitamin" = 4, "protein" = 5)
+	tastes = list("булка" = 2, "собачатина" = 3)
+
+/datum/recipe/oven/vuplix
+	reagents = list("blackpepper" = 1, "sodiumchloride" = 1, "herbsmix" = 1, "tsauce" = 1, "cream" = 5)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/dough,
+		/obj/item/reagent_containers/food/snacks/meat,
+		/obj/item/organ/internal/liver/vulpkanin)
+	result = /obj/item/reagent_containers/food/snacks/vulpix
+
+// Cheese Vulpixes
+/obj/item/reagent_containers/food/snacks/vulpix/cheese
+	name = "сырные вульпыксы"
+	desc = "Аппетитно выглядящие мясные шарики в тесте с начинкой из сыра... Главное - не думать о том, из кого они сделаны!"
+	icon = 'modular_ss220/food/icons/food.dmi'
+	icon_state = "vulpix_cheese"
+	tastes = list("булка" = 2, "собачатина" = 3, "сыр" = 2)
+
+/datum/recipe/oven/vulpixcheese
+	reagents = list("blackpepper" = 1, "sodiumchloride" = 1, "herbsmix" = 1, "csauce" = 1, "cream" = 5)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/dough,
+		/obj/item/reagent_containers/food/snacks/meat,
+		/obj/item/organ/internal/liver/vulpkanin,
+		/obj/item/reagent_containers/food/snacks/cheesewedge)
+	result = /obj/item/reagent_containers/food/snacks/vulpix/cheese
+
+// Bacon Vulpixes
+/obj/item/reagent_containers/food/snacks/vulpix/bacon
+	name = "вульпиксы с беконом"
+	desc = "Аппетитно выглядящие мясные шарики в тесте с начинкой... Главное - не думать о том, из кого они сделаны!"
+	icon = 'modular_ss220/food/icons/food.dmi'
+	icon_state = "vulpix_bacon"
+	tastes = list("булка" = 2, "собачатина" = 3, "бекон" = 2, "грибы" = 2)
+
+/datum/recipe/oven/vulpixbacon
+	reagents = list("blackpepper" = 1, "sodiumchloride" = 1, "herbsmix" = 1, "msauce" = 1, "cream" = 5)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/dough,
+		/obj/item/reagent_containers/food/snacks/meat,
+		/obj/item/organ/internal/liver/vulpkanin,
+		/obj/item/reagent_containers/food/snacks/raw_bacon,
+		/obj/item/reagent_containers/food/snacks/grown/mushroom)
+	result = /obj/item/reagent_containers/food/snacks/vulpix/bacon
+
+// Chilli Vulpixes
+/obj/item/reagent_containers/food/snacks/vulpix/chilli
+	name = "вульпиксы-чилли"
+	desc = "Аппетитно выглядящие мясные шарики в тесте... Главное - не думать о том, из кого они сделаны! Язык обжигает."
+	icon = 'modular_ss220/food/icons/food.dmi'
+	icon_state = "vulpix_chillie"
+	tastes = list("булка" = 2, "собачатина" = 3, "чилли" = 2)
+
+/datum/recipe/oven/vulpixchilli
+	reagents = list("blackpepper" = 1, "sodiumchloride" = 1, "herbsmix" = 1, "dsauce" = 1, "cream" = 5)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/dough,
+		/obj/item/reagent_containers/food/snacks/meat,
+		/obj/item/organ/internal/liver/vulpkanin,
+		/obj/item/reagent_containers/food/snacks/grown/chili)
+	result = /obj/item/reagent_containers/food/snacks/vulpix/chilli
+
+// Seafood Pizza
+/obj/item/reagent_containers/food/snacks/sliceable/pizza/seafood
+	name = "пицца с морепродуктами"
+	desc = "Дары космических озер, сыр и немного кислинки."
+	icon = 'modular_ss220/food/icons/food.dmi'
+	icon_state = "fishpizza"
+	slice_path = /obj/item/reagent_containers/food/snacks/seapizzaslice
+	list_reagents = list("nutriment" = 30, "vitamin" = 15, "protein" = 15)
+	filling_color = "#ffe45d"
+	tastes = list("crust" = 1, "garlic" = 1, "cheese" = 2, "seafood" = 1, "sourness" = 1)
+
+/obj/item/reagent_containers/food/snacks/seapizzaslice
+	name = "кусочек пиццы с морепродуктами"
+	desc = "Аппетитный кусочек пиццы с морепродуктами и сыром..."
+	icon = 'modular_ss220/food/icons/food.dmi'
+	icon_state = "fishpizzaslice"
+	filling_color = "#ffe45d"
+	tastes = list("crust" = 1, "garlic" = 1, "cheese" = 2, "seafood" = 1, "sourness" = 1)
+
+/datum/recipe/oven/seapizza
+	reagents = list("herbs" = 1, "garlic_sauce" = 1)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/sliceable/flatdough,
+		/obj/item/reagent_containers/food/snacks/cheesewedge,
+		/obj/item/reagent_containers/food/snacks/salmonmeat,
+		/obj/item/reagent_containers/food/snacks/salmonmeat,
+		/obj/item/reagent_containers/food/snacks/boiled_shrimp,
+		/obj/item/reagent_containers/food/snacks/grown/citrus/lemon)
+	result = /obj/item/reagent_containers/food/snacks/sliceable/pizza/seafood
+
+// Bacon Pizza
+/obj/item/reagent_containers/food/snacks/sliceable/pizza/bacon
+	name = "пицца с беконом"
+	desc = "Классическая пицца, один из ингредиентов которой был заменен на жареный бекон."
+	icon = 'modular_ss220/food/icons/food.dmi'
+	icon_state = "baconpizza"
+	slice_path = /obj/item/reagent_containers/food/snacks/baconpizzaslice
+	list_reagents = list("nutriment" = 40, "vitamin" = 5, "protein" = 15)
+	filling_color = "#ffe45d"
+	tastes = list("crust" = 1, "mushroom" = 1, "cheese" = 2, "bacon" = 1)
+
+/obj/item/reagent_containers/food/snacks/baconpizzaslice
+	name = "кусочек пиццы с беконом"
+	desc = "Аппетитный кусок пиццы с беконом и грибами..."
+	icon = 'modular_ss220/food/icons/food.dmi'
+	icon_state = "baconpizzaslice"
+	filling_color = "#ffe45d"
+	tastes = list("crust" = 1, "mushroom" = 1, "cheese" = 2, "bacon" = 1)
+
+/datum/recipe/oven/baconpizza
+	reagents = list("mushroom_sauce" = 1)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/sliceable/flatdough,
+		/obj/item/reagent_containers/food/snacks/cheesewedge,
+		/obj/item/reagent_containers/food/snacks/grown/mushroom,
+		/obj/item/reagent_containers/food/snacks/grown/mushroom,
+		/obj/item/reagent_containers/food/snacks/raw_bacon,
+		/obj/item/reagent_containers/food/snacks/raw_bacon)
+	result = /obj/item/reagent_containers/food/snacks/sliceable/pizza/bacon
+
+// Pizza Tajaroni
+/obj/item/reagent_containers/food/snacks/sliceable/pizza/tajaroni
+	name = "пицца с таярони"
+	desc = "Острые колбаски таярони с сыром и оливками. Что из этого ужаснее, еще предстоит решить."
+	icon = 'modular_ss220/food/icons/food.dmi'
+	icon_state = "tajarpizza"
+	slice_path = /obj/item/reagent_containers/food/snacks/tajpizzaslice
+	list_reagents = list("nutriment" = 30, "vitamin" = 15, "protein" = 15)
+	filling_color = "#ffe45d"
+	tastes = list("crust" = 1, "tomato" = 1, "cheese" = 2, "tajaroni" = 1, "olives" = 1)
+
+/obj/item/reagent_containers/food/snacks/tajpizzaslice
+	name = "кусочек пиццы с таярони"
+	desc = "Вкуснейший кусок пиццы с таярони и оливками..."
+	icon = 'modular_ss220/food/icons/food.dmi'
+	icon_state = "tajarpizzaslice"
+	filling_color = "#ffe45d"
+	tastes = list("crust" = 1, "tomato" = 1, "cheese" = 2, "tajaroni" = 1, "olives" = 1)
+
+datum/recipe/oven/tajarpizza
+	reagents = list("herbs" = 1, "tomato_sauce" = 1, "blackpepper" = 1)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/sliceable/flatdough,
+		/obj/item/reagent_containers/food/snacks/cheesewedge,
+		/obj/item/reagent_containers/food/snacks/cheesewedge,
+		/obj/item/reagent_containers/food/snacks/tajaroni,
+		/obj/item/reagent_containers/food/snacks/grown/olive,)
+	result = /obj/item/reagent_containers/food/snacks/sliceable/pizza/tajaroni
+
+// Diablo Pizza
+/obj/item/reagent_containers/food/snacks/sliceable/pizza/diablo
+	name = "пицца 'Диабло'"
+	desc = "Невероятно жгучая пицца с кусочками мяса, некоторые утверждают, что она может отправить вас в рэдспейс."
+	icon = 'modular_ss220/food/icons/food.dmi'
+	icon_state = "diablopizza"
+	slice_path = /obj/item/reagent_containers/food/snacks/diablopizzaslice
+	list_reagents = list("nutriment" = 30, "vitamin" = 15, "protein" = 15, "capsaicin" = 15)
+	filling_color = "#ffe45d"
+	tastes = list("crust" = 1, "hotness" = 1, "cheese" = 2, "meat" = 1, "spice" = 1)
+
+/obj/item/reagent_containers/food/snacks/diablopizzaslice
+	name = "кусочек пиццы 'Диабло'"
+	desc = "Аппетитный кусок пиццы с соусом 'Диабло' и мясом..."
+	icon = 'modular_ss220/food/icons/food.dmi'
+	icon_state = "diablopizzaslice"
+	filling_color = "#ffe45d"
+	tastes = list("crust" = 1, "hotness" = 1, "cheese" = 2, "meat" = 1, "spice" = 1)
+
+/datum/recipe/oven/diablopizza
+	reagents = list("herbs" = 1, "diablo_sauce" = 1)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/sliceable/flatdough,
+		/obj/item/reagent_containers/food/snacks/cheesewedge,
+		/obj/item/reagent_containers/food/snacks/grown/tomato,
+		/obj/item/reagent_containers/food/snacks/grown/chili,
+		/obj/item/reagent_containers/food/snacks/meatball,
+		/obj/item/reagent_containers/food/snacks/meatball)
+	result = /obj/item/reagent_containers/food/snacks/sliceable/pizza/diablo
