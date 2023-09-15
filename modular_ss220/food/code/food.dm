@@ -104,7 +104,8 @@
 // Pickles
 /obj/item/reagent_containers/food/snacks/pickles
 	name = "маринованные огурцы"
-	desc = "Damn, that's a lot of brined cucumbers."
+	desc = "Черт, тут много маринованных огурчиков."
+	icon = 'modular_ss220/food/icons/food.dmi'
 	icon_state = "pickles"
 	trash = /obj/item/reagent_containers/food/snacks/brine
 	filling_color = "#C2CFAB"
@@ -116,6 +117,7 @@
 	name = "рассол"
 	desc = "Самое то после бурной ночи."
 	consume_sound = 'sound/items/drink.ogg'
+	icon = 'modular_ss220/food/icons/food.dmi'
 	icon_state = "brine"
 	filling_color = "#C2CFAB"
 	bitesize = 4
@@ -124,11 +126,12 @@
 
 /datum/crafting_recipe/pickles
 	name = "Маринованные огурцы"
+	result = list(/obj/item/reagent_containers/food/snacks/pickles)
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/grown/cucumber = 3,
 		/datum/reagent/water = 10,
 		/datum/reagent/consumable/sodiumchloride = 10)
-	result = /obj/item/reagent_containers/food/snacks/pickles
+	time = 1 SECONDS
 	category = CAT_FOOD
 	subcategory = CAT_MISCFOOD
 

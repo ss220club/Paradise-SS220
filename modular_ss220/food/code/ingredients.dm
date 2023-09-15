@@ -10,10 +10,11 @@
 
 // Slices
 /obj/item/reagent_containers/food/snacks/cucumberslice
- 	name = "cucumber slice"
- 	desc = "A slice from a cucumber."
- 	icon_state = "cucumberslice"
- 	filling_color = "#00DB00"
- 	bitesize = 6
- 	list_reagents = list("kelotane" = 1)
- 	tastes = list("cucumber" = 1)
+	name = "ломтик огурца"
+	desc = "Нарезанный огурец, неожиданно, правда?"
+	icon = 'modular_ss220/food/icons/food.dmi'
+	icon_state = "cucumberslice"
+	filling_color = "#00DB00"
+	bitesize = 6
+	list_reagents = list("kelotane" = 1)
+	tastes = list("cucumber" = 1)
