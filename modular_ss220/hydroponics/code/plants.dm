@@ -1,7 +1,8 @@
 // HydroSeed //
 /obj/machinery/economy/vending/hydroseeds/Initialize(mapload)
 	products += list(
-		/obj/item/seeds/cucumber = 3,)
+		/obj/item/seeds/cucumber = 3,
+		/obj/item/seeds/soya/olive = 3,)
 	. = ..()
 
 // Buckwheat
@@ -35,7 +36,7 @@
 // Cucumber
 /obj/item/seeds/cucumber
 	name = "семена огурцов"
-	desc = "Из этих семян вырастают огурцы."
+	desc = "Из этих семян вырастут огурцы."
 	icon = 'modular_ss220/hydroponics/icons/seeds.dmi'
 	icon_state = "seed-cucumber"
 	species = "cucumber"
@@ -67,3 +68,51 @@
 	tastes = list("огурец" = 1)
 	bitesize_mod = 2
 	distill_reagent = "enzyme"
+
+// Olives
+/obj/item/seeds/soya/olive
+	name = "семена оливок"
+	desc = "Из этих семян вырастут оливки."
+	icon = 'modular_ss220/hydroponics/icons/seeds.dmi'
+	icon_state = "seed-olives"
+	species = "olives"
+	plantname = "Оливковое Деревце"
+	product = /obj/item/reagent_containers/food/snacks/grown/olive
+	growing_icon = 'modular_ss220/hydroponics/icons/growing.dmi'
+	icon_grow = "olives-grow"
+	icon_dead = "olives-dead"
+	icon_harvest = "olives-harvest"
+	mutatelist = list(/obj/item/seeds/soya/olive/charcoal)
+
+/obj/item/reagent_containers/food/snacks/grown/olive
+	seed = /obj/item/seeds/soya/olive
+	name = "оливки"
+	desc = "Любишь их или ненавидишь..."
+	icon = 'modular_ss220/hydroponics/icons/plants.dmi'
+	icon_state = "olives"
+	filling_color = "#161220"
+	tastes = list("оливок" = 1)
+
+// Olives Charcoal
+/obj/item/seeds/soya/olive/charcoal
+	name = "семена угливок"
+	desc = "Из этих семян вырастут угливки."
+	icon = 'modular_ss220/hydroponics/icons/seeds.dmi'
+	icon_state = "seed-charcolives"
+	species = "charcolives"
+	plantname = "Угливковое Деревце"
+	product = /obj/item/reagent_containers/food/snacks/grown/olive/charcoal
+	growing_icon = 'modular_ss220/hydroponics/icons/growing.dmi'
+	icon_grow = "charcolives-grow"
+	icon_dead = "charcolives-dead"
+	icon_harvest = "charcolives-harvest"
+	reagents_add = list("charcoal" = 0.4, "plantmatter" = 0.05)
+
+/obj/item/reagent_containers/food/snacks/grown/olive/charcoal
+	seed = /obj/item/seeds/soya/olive/charcoal
+	name = "угливки"
+	desc = "Это... маслины?"
+	icon = 'modular_ss220/hydroponics/icons/plants.dmi'
+	icon_state = "charcolives"
+	filling_color = "#000000"
+	tastes = list("уголя" = 1)
