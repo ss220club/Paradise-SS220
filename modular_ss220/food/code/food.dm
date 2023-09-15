@@ -3,6 +3,12 @@
 	. = ..()
 	blend_items = list(/obj/item/reagent_containers/food/snacks/grown/buckwheat = list("buckwheat" = -5)) + blend_items
 
+// Vending
+/obj/machinery/economy/vending/dinnerware/Initialize(mapload)
+	products += list(
+		/obj/item/reagent_containers/food/condiment/herbs = 2,)
+	. = ..()
+
 // Boiled Buckwheat
 /obj/item/reagent_containers/food/snacks/boiledbuckwheat
 	name = "варённая гречка"

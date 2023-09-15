@@ -1,4 +1,4 @@
-// HydroSeed //
+// HydroSeed
 /obj/machinery/economy/vending/hydroseeds/Initialize(mapload)
 	products += list(
 		/obj/item/seeds/cucumber = 3,
