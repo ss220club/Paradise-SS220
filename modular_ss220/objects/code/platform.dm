@@ -83,7 +83,7 @@
 /obj/structure/platform/AltClick(mob/user)
 	rotate()
 
-//Construction
+// Construction
 /obj/structure/platform/screwdriver_act(mob/user, obj/item/I)
 	. = TRUE
 	to_chat(user, span_notice("You begin [anchored == TRUE ? "unscrewing" : "screwing"] [src] [anchored == TRUE ? "from" : "to"] the floor."))
