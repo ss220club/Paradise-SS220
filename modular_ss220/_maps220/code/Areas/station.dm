@@ -31,6 +31,10 @@
 	name = "\improper Supermatter Room"
 	icon_state = "engi"
 
+/area/engine/utility
+	name = "\improper Engineering Utility Room"
+	icon_state = "engimaint"
+
 /area/atmos/storage
 	name = "\improper Atmospherics Storage"
 	icon_state = "atmos"
