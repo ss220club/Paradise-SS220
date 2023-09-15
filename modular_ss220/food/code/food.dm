@@ -318,7 +318,7 @@
 
 /datum/deepfryer_special/unathi
 	input = /obj/item/organ/external
-	output = /obj/item/reagent_containers/food/snacks/lizardslice
+	output = /obj/item/reagent_containers/food/snacks/sliceable/lizard
 
 /datum/deepfryer_special/unathi/validate(obj/item/I)
 	if(!..())
@@ -328,11 +328,11 @@
 
 // Tajaroni
 /obj/item/reagent_containers/food/snacks/tajaroni
-	name = "Таярони"
+	name = "таярони"
 	desc = "Острая вяленая колбаса с перцем и... Оно только что мяукнуло?"
 	icon = 'modular_ss220/food/icons/food.dmi'
 	icon_state = "tajaroni"
-	list_reagents = list("nutriment" = 8, "vitamin" = 4, "protein" = 4)
+	list_reagents = list("nutriment" = 4, "vitamin" = 2, "protein" = 2)
 	tastes = list("сухое мясо" = 3, "кошатина" = 2)
 
 /datum/deepfryer_special/tajaroni
@@ -351,7 +351,7 @@
 	desc = "Аппетитно выглядящие мясные шарики в тесте... Главное - не думать о том, из кого они сделаны!"
 	icon = 'modular_ss220/food/icons/food.dmi'
 	icon_state = "vulpix"
-	list_reagents = list("nutriment" = 10, "vitamin" = 4, "protein" = 5)
+	list_reagents = list("nutriment" = 4, "vitamin" = 2, "protein" = 4)
 	tastes = list("булка" = 2, "собачатина" = 3)
 
 /datum/recipe/oven/vuplix
@@ -368,6 +368,7 @@
 	desc = "Аппетитно выглядящие мясные шарики в тесте с начинкой из сыра... Главное - не думать о том, из кого они сделаны!"
 	icon = 'modular_ss220/food/icons/food.dmi'
 	icon_state = "vulpix_cheese"
+	list_reagents = list("nutriment" = 4, "vitamin" = 2, "protein" = 4)
 	tastes = list("булка" = 2, "собачатина" = 3, "сыр" = 2)
 
 /datum/recipe/oven/vulpixcheese
@@ -385,6 +386,7 @@
 	desc = "Аппетитно выглядящие мясные шарики в тесте с начинкой... Главное - не думать о том, из кого они сделаны!"
 	icon = 'modular_ss220/food/icons/food.dmi'
 	icon_state = "vulpix_bacon"
+	list_reagents = list("nutriment" = 4, "vitamin" = 2, "protein" = 4)
 	tastes = list("булка" = 2, "собачатина" = 3, "бекон" = 2, "грибы" = 2)
 
 /datum/recipe/oven/vulpixbacon
@@ -403,6 +405,7 @@
 	desc = "Аппетитно выглядящие мясные шарики в тесте... Главное - не думать о том, из кого они сделаны! Язык обжигает."
 	icon = 'modular_ss220/food/icons/food.dmi'
 	icon_state = "vulpix_chillie"
+	list_reagents = list("nutriment" = 4, "vitamin" = 2, "protein" = 4)
 	tastes = list("булка" = 2, "собачатина" = 3, "чилли" = 2)
 
 /datum/recipe/oven/vulpixchilli
@@ -493,7 +496,7 @@
 	filling_color = "#ffe45d"
 	tastes = list("crust" = 1, "tomato" = 1, "cheese" = 2, "tajaroni" = 1, "olives" = 1)
 
-datum/recipe/oven/tajarpizza
+/datum/recipe/oven/tajarpizza
 	reagents = list("herbs" = 1, "tomato_sauce" = 1, "blackpepper" = 1)
 	items = list(
 		/obj/item/reagent_containers/food/snacks/sliceable/flatdough,
