@@ -1,4 +1,4 @@
-//Platform Code by Danaleja2005
+// Platform Code by Danaleja2005
 /obj/structure/platform
 	name = "platform"
 	icon = 'modular_ss220/objects/icons/platform.dmi'
@@ -137,7 +137,7 @@
 	if(mover && mover.throwing)
 		return TRUE
 	var/obj/structure/S = locate(/obj/structure) in get_turf(mover)
-	if(S && S.climbable && !(S.flags & ON_BORDER) && climbable && isliving(mover))//Climbable objects allow you to universally climb over others
+	if(S && S.climbable && !(S.flags & ON_BORDER) && climbable && isliving(mover))// Climbable objects allow you to universally climb over others
 		return TRUE
 	if(!(flags & ON_BORDER) || get_dir(loc, target) == dir)
 		return FALSE
@@ -183,7 +183,7 @@
 /obj/structure/platform/CanAtmosPass()
 	return TRUE
 
-//Platform types
+// Platform types
 /obj/structure/platform/reinforced
 	name = "reinforced platform"
 	desc = "A robust platform made of plasteel, more resistance for hazard sites."
@@ -192,7 +192,7 @@
 	max_integrity = 300
 	armor = list("melee" = 20, "bullet" = 30, "laser" = 30, "energy" = 100, "bomb" = 50, "bio" = 0, "rad" = 75, "fire" = 100, "acid" = 100)
 
-///Corners
+// Platform corners
 /obj/structure/platform/corner
 	name = "platform corner"
 	desc = "A metal platform corner."
