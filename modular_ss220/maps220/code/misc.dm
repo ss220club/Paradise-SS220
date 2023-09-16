@@ -1,6 +1,6 @@
 /obj/machinery/wish_granter_dark
 	name = "Исполнитель Желаний"
-	desc = "Вы, больше, не уверены в этом..."
+	desc = "Вы уже не уверены в этом..."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "syndbeacon"
 
