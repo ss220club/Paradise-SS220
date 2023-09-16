@@ -78,7 +78,7 @@
 		output += "Aside from your new traits, you are mentally unchanged and retain your prior obligations."
 		user.regenerate_icons()
 
-	to_chat(src, output.Join("<br>"))
+	to_chat(user, output.Join("<br>"))
 
 #define TRAIT_REVIVAL_IN_PROGRESS "revival_in_progress"
 
