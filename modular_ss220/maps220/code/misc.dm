@@ -98,13 +98,6 @@
 /mob/living/carbon/human/proc/resurrect()
 	// Stolen from ling stasis
 	revive()
-	updatehealth("Immortality")
-	update_blind_effects()
-	update_blurry_effects()
-	regenerate_icons()
-	update_revive()
-	med_hud_set_status()
-	med_hud_set_health()
 	REMOVE_TRAIT(src, TRAIT_REVIVAL_IN_PROGRESS, "Immortality")
 	to_chat(src, span_notice("Вы вернулись из небытия."))
 	visible_message(span_warning("[src] восстаёт из мертвых, исцелив все свои раны"))
