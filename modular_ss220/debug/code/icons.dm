@@ -1,4 +1,4 @@
-/proc/bicon64(obj, use_class = TRUE)
+/proc/flatbicon(obj, use_class = TRUE)
 	return bicon(getFlatIcon(obj))
 
 /atom/proc/download_flaticon()
