@@ -134,7 +134,7 @@
 	minbodytemp = 0
 	wander = FALSE
 
-//Undead
+// Undead
 /mob/living/simple_animal/hostile/undead
 	name = "zombie"
 	icon = 'icons/mob/human.dmi'
