@@ -99,7 +99,15 @@
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/mob/living/carbon/human, resurrect)), rand(80 SECONDS, 120 SECONDS))
 
 /mob/living/carbon/human/proc/resurrect()
+	// Stolen from ling stasis
 	revive()
+	updatehealth("Immortality")
+	update_blind_effects()
+	update_blurry_effects()
+	regenerate_icons()
+	update_revive()
+	med_hud_set_status()
+	med_hud_set_health()
 	REMOVE_TRAIT(src, TRAIT_REVIVAL_IN_PROGRESS, "Immortality")
 	to_chat(src, span_notice("You have regenerated."))
 	visible_message(span_warning("[src] appears to wake from the dead, having healed all wounds"))
