@@ -610,6 +610,7 @@
 /obj/item/reagent_containers/food/snacks/sliceable/noel
 	name = "Bûche de Noël"
 	desc = "Что?"
+	icon = 'modular_ss220/food/icons/food.dmi'
 	icon_state = "noel"
 	trash = /obj/item/trash/tray
 	slice_path = /obj/item/reagent_containers/food/snacks/noelslice
@@ -621,6 +622,7 @@
 /obj/item/reagent_containers/food/snacks/noelslice
 	name = "кусочек Noël"
 	desc = "Кусочек чего?"
+	icon = 'modular_ss220/food/icons/food.dmi'
 	icon_state = "noel_s"
 	trash = /obj/item/trash/plate
 	filling_color = "#5e1706"
@@ -641,6 +643,7 @@
 /obj/item/reagent_containers/food/snacks/sundae
 	name = "Сандей"
 	desc = "Сливочное удовольствие."
+	icon = 'modular_ss220/food/icons/food.dmi'
 	icon_state = "sundae"
 	filling_color = "#F5DEB8"
 	list_reagents = list("nutriment" = 4, "plantmatter" = 2, "bananajucie" = 4, "cream" = 3)
@@ -659,6 +662,7 @@
 /obj/item/reagent_containers/food/snacks/bunbun
 	name = "Бун-Бун"
 	desc = "Маленькая хлебная обезьянка, сформованная из двух булочек для гамбургеров."
+	icon = 'modular_ss220/food/icons/food.dmi'
 	icon_state = "bunbun"
 	list_reagents = list("nutriment" = 2)
 	tastes = list("тесто" = 2)
@@ -674,6 +678,7 @@
 /obj/item/reagent_containers/food/snacks/tortilla
 	name = "тортилья"
 	desc = "Hasta la vista, baby"
+	icon = 'modular_ss220/food/icons/food.dmi'
 	icon_state = "tortilla"
 	trash = /obj/item/trash/plate
 	filling_color = "#E8C31E"
@@ -690,6 +695,7 @@
 /obj/item/reagent_containers/food/snacks/nachos
 	name = "начос"
 	desc = "Хола!"
+	icon = 'modular_ss220/food/icons/food.dmi'
 	icon_state = "nachos"
 	trash = /obj/item/trash/plate
 	filling_color = "#E8C31E"
@@ -706,6 +712,7 @@
 /obj/item/reagent_containers/food/snacks/cheesenachos
 	name = "сырные начос"
 	desc = "Сырное хола!"
+	icon = 'modular_ss220/food/icons/food.dmi'
 	icon_state = "cheesenachos"
 	trash = /obj/item/trash/plate
 	filling_color = "#f1d65c"
@@ -724,6 +731,7 @@
 /obj/item/reagent_containers/food/snacks/cubannachos
 	name = "кубинские начос"
 	desc = "Очень острое хола!"
+	icon = 'modular_ss220/food/icons/food.dmi'
 	icon_state = "cubannachos"
 	trash = /obj/item/trash/plate
 	filling_color = "#ec5c23"
@@ -742,6 +750,7 @@
 /obj/item/reagent_containers/food/snacks/carneburrito
 	name = "Carne de burrito asado"
 	desc = "Как классический буррито, но с мясом."
+	icon = 'modular_ss220/food/icons/food.dmi'
 	icon_state = "carneburrito"
 	filling_color = "#69250b"
 	list_reagents = list("nutriment" = 8, "protein" = 3, "soysauce" = 1)
@@ -760,6 +769,7 @@
 /obj/item/reagent_containers/food/snacks/cheeseburrito
 	name = "сырное буритто"
 	desc = "Нужно ли здесь что-то говорить?"
+	icon = 'modular_ss220/food/icons/food.dmi'
 	icon_state = "cheeseburrito"
 	filling_color = "#f1d65c"
 	list_reagents = list("nutriment" = 10, "soysauce" = 2)
@@ -777,6 +787,7 @@
 /obj/item/reagent_containers/food/snacks/plasmaburrito
 	name = "Fuego Plasma Burrito"
 	desc = "Очень острое, амигос."
+	icon = 'modular_ss220/food/icons/food.dmi'
 	icon_state = "plasmaburrito"
 	filling_color = "#f35a46"
 	list_reagents = list("nutriment" = 4, "plantmatter" = 4, "capsaicin" = 4)
@@ -795,6 +806,7 @@
 /obj/item/reagent_containers/food/snacks/pelmeni
 	name = "пельмени"
 	desc = "Мясо завёрнутое в тесто."
+	icon = 'modular_ss220/food/icons/food.dmi'
 	icon_state = "pelmeni"
 	filling_color = "#d9be29"
 	list_reagents = list("protein" = 2)
@@ -813,6 +825,7 @@
 /obj/item/reagent_containers/food/snacks/boiledpelmeni
 	name = "варённые пельмени"
 	desc = "Мы не знаем, какой была Сибирь, но эти вкусные пельмени определенно прибыли оттуда."
+	icon = 'modular_ss220/food/icons/food.dmi'
 	icon_state = "boiledpelmeni"
 	trash = /obj/item/trash/snack_bowl
 	filling_color = "#d9be29"
@@ -829,6 +842,7 @@
 /obj/item/reagent_containers/food/snacks/smokedsausage
 	name = "копчённая колбаска"
 	desc = "Кусок копченой колбасы. Под пивко пойдёт."
+	icon = 'modular_ss220/food/icons/food.dmi'
 	icon_state = "smokedsausage"
 	list_reagents = list("protein" = 12)
 	tastes = list("мясо" = 3)
@@ -842,6 +856,7 @@
 /obj/item/reagent_containers/food/snacks/sliceable/salami
 	name = "салями"
 	desc = "Не лучший выбор для сэндвича."
+	icon = 'modular_ss220/food/icons/food.dmi'
 	icon_state = "salami"
 	slice_path = /obj/item/reagent_containers/food/snacks/slice/salami
 	slices_num = 6
@@ -851,6 +866,7 @@
 /obj/item/reagent_containers/food/snacks/slice/salami
 	name = "ломтик салями"
 	desc = "Лучший выбор для сэндвича."
+	icon = 'modular_ss220/food/icons/food.dmi'
 	icon_state = "salami_s"
 	bitesize = 2
 
@@ -863,6 +879,7 @@
 /obj/item/reagent_containers/food/snacks/fruitcup
 	name = "фруктовая кружка"
 	desc = "Фруктовый салат со съедобной кружкой."
+	icon = 'modular_ss220/food/icons/food.dmi'
 	icon_state = "fruitcup"
 	filling_color = "#C2CFAB"
 	list_reagents = list("nutriment" = 3, "watermelonjuice" = 5, "orangejuice" = 5, "vitamin" = 4)
@@ -883,6 +900,7 @@
 /obj/item/reagent_containers/food/snacks/junglesalad
 	name = "салат 'Джунгли'"
 	desc = "Из глубин джунглей."
+	icon = 'modular_ss220/food/icons/food.dmi'
 	icon_state = "junglesalad"
 	filling_color = "#C2CFAB"
 	list_reagents = list("nutriment" = 6, "watermelonjuice" = 3, "vitamin" = 4)
@@ -900,6 +918,7 @@
 /obj/item/reagent_containers/food/snacks/delightsalad
 	name = "cалат 'Восторг'"
 	desc = "Настоящий цитрусовый восторг."
+	icon = 'modular_ss220/food/icons/food.dmi'
 	icon_state = "delightsalad"
 	filling_color = "#C2CFAB"
 	trash = /obj/item/trash/snack_bowl
@@ -918,6 +937,7 @@
 /obj/item/reagent_containers/food/snacks/chowmein
 	name = "чау-мейн"
 	desc = "Nihao!"
+	icon = 'modular_ss220/food/icons/food.dmi'
 	icon_state = "chowmein"
 	trash = /obj/item/trash/plate
 	list_reagents = list("nutriment" = 6, "protein" = 6)
@@ -936,6 +956,7 @@
 /obj/item/reagent_containers/food/snacks/beefnoodles
 	name = "лапша с говядиной"
 	desc = "Так просто и так вкусно!"
+	icon = 'modular_ss220/food/icons/food.dmi'
 	icon_state = "beefnoodles"
 	trash = /obj/item/trash/snack_bowl
 	list_reagents = list("nutriment" = 3, "protein" = 5, "plantmatter" = 3)
@@ -954,6 +975,7 @@
 /obj/item/reagent_containers/food/snacks/fathersoup
 	name = "батин суп"
 	desc = "Адовое блюдо, усреднённый рецепт ибо вариаций масса. Ух бля."
+	icon = 'modular_ss220/food/icons/food.dmi'
 	icon_state = "fathersoup"
 	trash = /obj/item/trash/pan
 	filling_color = "#f85210"
@@ -962,11 +984,17 @@
 	bitesize = 5
 
 /datum/recipe/oven/fathersoup
-	reagents = list(/datum/reagent/nutriment/flour = 10, /datum/reagent/blackpepper = 5)
+	reagents = list("flour" = 10, "blackpepper" = 5)
 	items = list(
-		/obj/item/weapon/reagent_containers/food/snacks/tomatosoup,
+		/obj/item/reagent_containers/food/snacks/soup/tomatosoup,
 		/obj/item/reagent_containers/food/snacks/grown/garlic,
+		/obj/item/reagent_containers/food/snacks/grown/onion,
 		/obj/item/reagent_containers/food/snacks/grown/ghost_chili,
 		/obj/item/reagent_containers/food/snacks/grown/ghost_chili,
 		/obj/item/reagent_containers/food/snacks/grown/tomato)
-	result = /obj/item/weapon/reagent_containers/food/snacks/fathersoup
+	result = /obj/item/reagent_containers/food/snacks/fathersoup
+
+/obj/item/trash/pan
+	name = "дырявая сковорода"
+	icon = 'modular_ss220/food/icons/food.dmi'
+	icon_state = "pan"
