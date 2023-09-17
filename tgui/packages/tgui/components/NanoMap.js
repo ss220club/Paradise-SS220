@@ -5,13 +5,9 @@ import { LabeledList } from './LabeledList';
 import { Slider } from './Slider';
 import { getBoundingBox } from "./ByondUi";
 
-const pauseEvent = (e) => {
-  if (e.stopPropagation) {
-    e.stopPropagation();
-  }
-  if (e.preventDefault) {
-    e.preventDefault();
-  }
+const pauseEvent = e => {
+  if (e.stopPropagation) { e.stopPropagation(); }
+  if (e.preventDefault) { e.preventDefault(); }
   e.cancelBubble = true;
   e.returnValue = false;
   return false;
@@ -22,8 +18,8 @@ export class NanoMap extends Component {
     super(props);
 
     // Auto center based on window size
-    const Xcenter = window.innerWidth / 2 - 256;
-    const Ycenter = window.innerHeight / 2 - 256;
+    const Xcenter = 0;
+    const Ycenter = (window.innerHeight / 2) - 256;
 
     this.state = {
       offsetX: Xcenter,
@@ -36,7 +32,7 @@ export class NanoMap extends Component {
     };
 
     // Dragging
-    this.handleDragStart = (e) => {
+    this.handleDragStart = e => {
       this.ref = e.target;
       this.setState({
         dragging: false,
@@ -48,8 +44,8 @@ export class NanoMap extends Component {
       pauseEvent(e);
     };
 
-    this.handleDragMove = (e) => {
-      this.setState((prevState) => {
+    this.handleDragMove = e => {
+      this.setState(prevState => {
         const state = { ...prevState };
         const newOffsetX = e.screenX - state.originX;
         const newOffsetY = e.screenY - state.originY;
@@ -66,7 +62,7 @@ export class NanoMap extends Component {
       pauseEvent(e);
     };
 
-    this.handleDragEnd = (e) => {
+    this.handleDragEnd = e => {
       this.setState({
         dragging: false,
         originX: null,
@@ -78,7 +74,7 @@ export class NanoMap extends Component {
     };
 
     this.handleZoom = (_e, value) => {
-      this.setState((state) => {
+      this.setState(state => {
         const newZoom = Math.min(Math.max(value, 1), 8);
         const zoomDiff = newZoom / state.zoom;
         if (zoomDiff === 1) {
@@ -102,6 +98,7 @@ export class NanoMap extends Component {
         return state;
       });
     };
+
   }
 
   render() {
@@ -109,20 +106,21 @@ export class NanoMap extends Component {
     const { dragging, offsetX, offsetY, zoom = 1 } = this.state;
     const { children } = this.props;
 
-    const mapUrl = config.map + '_nanomap_z1.png';
-    const mapSize = 510 * zoom + 'px';
+    const mapUrl = config.map + "_nanomap_z1.png";
+    const mapSize = (510 * zoom) + 'px';
     const newStyle = {
       width: mapSize,
       height: mapSize,
-      'margin-top': offsetY + 'px',
-      'margin-left': offsetX + 'px',
-      'overflow': 'hidden',
-      'position': 'relative',
-      'background-image': 'url(' + mapUrl + ')',
-      'background-size': 'cover',
-      'background-repeat': 'no-repeat',
-      'text-align': 'center',
-      'cursor': dragging ? 'move' : 'auto',
+      "margin-top": offsetY + "px",
+      "margin-left": offsetX + "px",
+      "overflow": "hidden",
+      "position": "relative",
+      "background-image": "url(" + mapUrl + ")",
+      "background-size": "cover",
+      "background-repeat": "no-repeat",
+      "border": '1px solid rgba(0, 0, 0, .3)',
+      "text-align": "center",
+      "cursor": dragging ? "move" : "auto",
     };
 
     return (
@@ -130,9 +128,10 @@ export class NanoMap extends Component {
         <Box
           style={newStyle}
           textAlign="center"
-          onMouseDown={this.handleDragStart}
-        >
-          <Box>{children}</Box>
+          onMouseDown={this.handleDragStart}>
+          <Box>
+            {children}
+          </Box>
         </Box>
         <NanoMapZoomer zoom={zoom} onZoom={this.handleZoom} />
       </Box>
@@ -151,8 +150,8 @@ const NanoMapMarker = props => {
     onClick,
     size = 6,
   } = props;
-  const rx = x * 2 * zoom - zoom - 3;
-  const ry = y * 2 * zoom - zoom - 3;
+  const rx = ((x * 2 * zoom) - zoom) - 3;
+  const ry = ((y * 2 * zoom) - zoom) - 3;
   return (
     <div>
       <Box
@@ -231,7 +230,7 @@ const NanoMapZoomer = props => {
             minValue="1"
             maxValue="8"
             stepPixelSize="10"
-            format={(v) => v + 'x'}
+            format={v => v + "x"}
             value={props.zoom}
             onDrag={(e, v) => props.onZoom(e, v)}
           />

@@ -22,7 +22,7 @@
 			user.client.register_map_obj(plane)
 		user.client.register_map_obj(cam_background)
 		// Open UI
-		ui = new(user, src, ui_key, "CameraConsole220", name, 1170, 755, master_ui, state)
+		ui = new(user, src, ui_key, "CameraConsole220", name, 1200, 600, master_ui, state)
 		ui.open()
 
 /obj/machinery/computer/security/ui_data()
