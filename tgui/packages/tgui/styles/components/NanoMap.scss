@@ -1,7 +1,7 @@
 $color-background: rgba(0, 0, 0, 0.33) !default;
 
 .NanoMap__container {
-  overflow: hiddden;
+  overflow: hidden;
   width: 100%;
   z-index: 1;
 }
@@ -11,6 +11,18 @@ $color-background: rgba(0, 0, 0, 0.33) !default;
   padding: 0px;
   margin: 0px;
 }
+
+// SS220 ADDITION - START
+.NanoMap__button{
+  padding: 3px 3px;
+  font-size: 12px;
+  border: 2px solid black;
+}
+
+.NanoMap__button:hover {
+  background-color: greenyellow;
+}
+// SS220 ADDITION - END
 
 .NanoMap__zoomer {
   z-index: 20;
