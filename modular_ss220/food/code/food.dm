@@ -569,7 +569,404 @@
 	tastes = list("beef" = 1, "noodles" = 1)
 
 /obj/item/trash/doshik
-	name = "packaging from doshik"
+	name = "упаковка из под дошика"
 	icon = 'modular_ss220/food/icons/food.dmi'
 	icon_state = "doshik-empty"
-	desc = "Still have delicious smell."
+	desc = "Всё ещё вкусно пахнет."
+
+// Chocolate Cake
+/obj/item/reagent_containers/food/snacks/sliceable/choccherrycake
+	name = "шоколадно-вишневый торт"
+	desc = "Ещё один торт. Тем не менее."
+	icon = 'modular_ss220/food/icons/food.dmi'
+	icon_state = "choccherrycake"
+	slice_path = /obj/item/reagent_containers/food/snacks/choccherrycakeslice
+	slices_num = 6
+	bitesize = 3
+	filling_color = "#5e1706"
+	tastes = list("cherry" = 5, "sweetness" = 1, "chocolate" = 1)
+	list_reagents = list("nutriment" = 10, "sugar" = 3, "coco" = 4)
+
+/obj/item/reagent_containers/food/snacks/choccherrycakeslice
+	name = "кусочек шоколадно-вишневого торта"
+	desc = "Кусочек очередного торта. Подождите, что?"
+	icon = 'modular_ss220/food/icons/food.dmi'
+	icon_state = "choccherrycake_s"
+	trash = /obj/item/trash/plate
+	filling_color = "#5e1706"
+
+/datum/recipe/oven/choccherrycake
+	reagents = list("milk" = 5, "flour" = 15)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/egg,
+		/obj/item/reagent_containers/food/snacks/egg,
+		/obj/item/reagent_containers/food/snacks/egg,
+		/obj/item/reagent_containers/food/snacks/chocolatebar,
+		/obj/item/reagent_containers/food/snacks/chocolatebar,
+		/obj/item/reagent_containers/food/snacks/grown/cherries)
+	result = /obj/item/reagent_containers/food/snacks/sliceable/choccherrycake
+
+// Noel
+/obj/item/reagent_containers/food/snacks/sliceable/noel
+	name = "Bûche de Noël"
+	desc = "Что?"
+	icon_state = "noel"
+	trash = /obj/item/trash/tray
+	slice_path = /obj/item/reagent_containers/food/snacks/noelslice
+	slices_num = 5
+	filling_color = "#5e1706"
+	tastes = list("chocolate" = 3, "sweetness" = 2, "egg" = 1, "berries" = 2)
+	list_reagents = list("nutriment" = 6, "plantmatter" = 2, "coco" = 2, "cream" = 3, "sugar" = 3, "berryjucie" = 3)
+
+/obj/item/reagent_containers/food/snacks/noelslice
+	name = "кусочек Noël"
+	desc = "Кусочек чего?"
+	icon_state = "noel_s"
+	trash = /obj/item/trash/plate
+	filling_color = "#5e1706"
+	bitesize = 2
+
+/datum/recipe/oven/noel
+	reagents = list("flour" = 15, "cream" = 10, "milk" = 5)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/egg,
+		/obj/item/reagent_containers/food/snacks/egg,
+		/obj/item/reagent_containers/food/snacks/chocolatebar,
+		/obj/item/reagent_containers/food/snacks/chocolatebar,
+		/obj/item/reagent_containers/food/snacks/grown/berries,
+		/obj/item/reagent_containers/food/snacks/grown/berries)
+	result = /obj/item/reagent_containers/food/snacks/sliceable/noel
+
+// Sundae
+/obj/item/reagent_containers/food/snacks/sundae
+	name = "Сандей"
+	desc = "Сливочное удовольствие."
+	icon_state = "sundae"
+	filling_color = "#F5DEB8"
+	list_reagents = list("nutriment" = 4, "plantmatter" = 2, "bananajucie" = 4, "cream" = 3)
+	tastes = list("banana" = 1, "cherry" = 1, "cream" = 1)
+	bitesize = 5
+
+/datum/recipe/oven/sundae
+	reagents = list("cream" = 10)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/grown/cherries,
+		/obj/item/reagent_containers/food/snacks/grown/banana,
+		/obj/item/reagent_containers/food/snacks/doughslice)
+	result = /obj/item/reagent_containers/food/snacks/sundae
+
+// Bun-Bun
+/obj/item/reagent_containers/food/snacks/bunbun
+	name = "Бун-Бун"
+	desc = "Маленькая хлебная обезьянка, сформованная из двух булочек для гамбургеров."
+	icon_state = "bunbun"
+	list_reagents = list("nutriment" = 2)
+	tastes = list("булка" = 2)
+	bitesize = 2
+
+/datum/recipe/oven/bunbun
+	items = list(
+		/obj/item/reagent_containers/food/snacks/bun,
+		/obj/item/reagent_containers/food/snacks/bun)
+	result = /obj/item/reagent_containers/food/snacks/bunbun
+
+// Tortilla
+/obj/item/reagent_containers/food/snacks/tortilla
+	name = "тортилья"
+	desc = "Hasta la vista, baby"
+	icon_state = "tortilla"
+	trash = /obj/item/trash/plate
+	filling_color = "#E8C31E"
+	list_reagents = list("nutriment" = 4)
+	tastes = list("corn" = 2)
+	bitesize = 2
+
+/datum/recipe/microwave/tortilla
+	reagents = list("flour" = 10)
+	items = list(/obj/item/reagent_containers/food/snacks/grown/corn)
+	result = /obj/item/reagent_containers/food/snacks/tortilla
+
+// Nachos
+/obj/item/reagent_containers/food/snacks/nachos
+	name = "начос"
+	desc = "Хола!"
+	icon_state = "nachos"
+	trash = /obj/item/trash/plate
+	filling_color = "#E8C31E"
+	list_reagents = list("nutriment" = 5, "salt" = 1)
+	tastes = list("corn" = 2)
+	bitesize = 3
+
+/datum/recipe/microwave/nachos
+	reagents = list("sodiumchloride" = 1)
+	items = list(/obj/item/reagent_containers/food/snacks/tortilla)
+	result = /obj/item/reagent_containers/food/snacks/nachos
+
+// Cheese Nachos
+/obj/item/reagent_containers/food/snacks/cheesenachos
+	name = "сырные начос"
+	desc = "Сырное хола!"
+	icon_state = "cheesenachos"
+	trash = /obj/item/trash/plate
+	filling_color = "#f1d65c"
+	list_reagents = list("nutriment" = 7, "salt" = 1)
+	tastes = list("corn" = 1, "cheese" = 2)
+	bitesize = 4
+
+/datum/recipe/microwave/cheesenachos
+	reagents = list("sodiumchloride" = 1)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/tortilla,
+		/obj/item/reagent_containers/food/snacks/cheesewedge)
+	result = /obj/item/reagent_containers/food/snacks/cheesenachos
+
+// Cuban Nachos
+/obj/item/reagent_containers/food/snacks/cubannachos
+	name = "кубинские начос"
+	desc = "Очень острое хола!"
+	icon_state = "cubannachos"
+	trash = /obj/item/trash/plate
+	filling_color = "#ec5c23"
+	list_reagents = list("nutriment" = 7, "salt" = 1, "capsaicin" = 3, "plantmatter" = 1)
+	tastes = list("corn" = 1, "chili" = 2)
+	bitesize = 4
+
+/datum/recipe/microwave/cubannachos
+	items = list(
+		/obj/item/reagent_containers/food/snacks/tortilla,
+		/obj/item/reagent_containers/food/snacks/grown/chili,
+		/obj/item/reagent_containers/food/snacks/grown/chili)
+	result = /obj/item/reagent_containers/food/snacks/cubannachos
+
+// Carne Buritto
+/obj/item/reagent_containers/food/snacks/carneburrito
+	name = "Carne de burrito asado"
+	desc = "Как классический буррито, но с мясом."
+	icon_state = "carneburrito"
+	filling_color = "#69250b"
+	list_reagents = list("nutriment" = 8, "protein" = 3, "soysauce" = 1)
+	tastes = list("corn" = 1, "meat" = 2, "beans" = 1)
+	bitesize = 4
+
+/datum/recipe/microwave/carneburrito
+	items = list(
+		/obj/item/reagent_containers/food/snacks/tortilla,
+		/obj/item/reagent_containers/food/snacks/grown/soybeans,
+		/obj/item/reagent_containers/food/snacks/cutlet,
+		/obj/item/reagent_containers/food/snacks/cutlet)
+	result = /obj/item/reagent_containers/food/snacks/carneburrito
+
+// Cheese Buritto
+/obj/item/reagent_containers/food/snacks/cheeseburrito
+	name = "сырное буритто"
+	desc = "Нужно ли здесь что-то говорить?"
+	icon_state = "cheeseburrito"
+	filling_color = "#f1d65c"
+	list_reagents = list("nutriment" = 10, "soysauce" = 2)
+	tastes = list("corn" = 1, "beans" = 1, "cheese" = 2)
+	bitesize = 4
+
+/datum/recipe/microwave/cheeseburrito
+	items = list(
+		/obj/item/reagent_containers/food/snacks/tortilla,
+		/obj/item/reagent_containers/food/snacks/cheesewedge,
+		/obj/item/reagent_containers/food/snacks/cheesewedge)
+	result = /obj/item/reagent_containers/food/snacks/cheeseburrito
+
+// Plasma Buritto
+/obj/item/reagent_containers/food/snacks/plasmaburrito
+	name = "Fuego Plasma Burrito"
+	desc = "Очень острое, амигос."
+	icon_state = "plasmaburrito"
+	filling_color = "#f35a46"
+	list_reagents = list("nutriment" = 4, "plantmatter" = 4, "capsaicin" = 4)
+	tastes = list("corn" = 1, "beans" = 1, "chili" = 2)
+	bitesize = 4
+
+/datum/recipe/microwave/plasmaburrito
+	items = list(
+		/obj/item/reagent_containers/food/snacks/tortilla,
+		/obj/item/reagent_containers/food/snacks/grown/soybeans,
+		/obj/item/reagent_containers/food/snacks/grown/chili,
+		/obj/item/reagent_containers/food/snacks/grown/chili)
+	result = /obj/item/reagent_containers/food/snacks/plasmaburrito
+
+// Pelmeni
+/obj/item/reagent_containers/food/snacks/pelmeni
+	name = "пельмени"
+	desc = "Мясо завёрнутое в тесто."
+	icon_state = "pelmeni"
+	filling_color = "#d9be29"
+	list_reagents = list("protein" = 2)
+	bitesize = 2
+	tastes = list("raw meat" = 1, "raw dough" = 1)
+
+/obj/item/reagent_containers/food/snacks/doughslice/attackby(obj/item/I, mob/user, params)
+	if(istype(I, /obj/item/reagent_containers/food/snacks/rawcutlet))
+		new /obj/item/reagent_containers/food/snacks/pelmeni(src)
+		to_chat(user, "Вы сделали немного пельменей.")
+		qdel(src)
+		qdel(I)
+	else
+		..()
+
+/obj/item/reagent_containers/food/snacks/boiledpelmeni
+	name = "варённые пельмени"
+	desc = "Мы не знаем, какой была Сибирь, но эти вкусные пельмени определенно прибыли оттуда."
+	icon_state = "boiledpelmeni"
+	trash = /obj/item/trash/snack_bowl
+	filling_color = "#d9be29"
+	list_reagents = list("protein" = 5)
+	bitesize = 3
+	tastes = list("meat" = 2, "dough" = 2)
+
+/datum/recipe/microwave/pelmeni
+	reagents = list("water" = 5)
+	items = list(/obj/item/reagent_containers/food/snacks/pelmeni)
+	result = /obj/item/reagent_containers/food/snacks/boiledpelmeni
+
+// Smoked Sausage
+/obj/item/reagent_containers/food/snacks/smokedsausage
+	name = "копчённая колбаска"
+	desc = "Кусок копченой колбасы. Под пивко пойдёт."
+	icon_state = "smokedsausage"
+	list_reagents = list("protein" = 12)
+	tastes = list("meat" = 3)
+
+/datum/recipe/oven/smokedsausage
+	reagents = list("sodiumchloride" = 5, "blackpepper" = 5)
+	items = list(/obj/item/reagent_containers/food/snacks/sausage)
+	result = /obj/item/reagent_containers/food/snacks/smokedsausage
+
+// Salami
+/obj/item/reagent_containers/food/snacks/sliceable/salami
+	name = "салями"
+	desc = "Не лучший выбор для сэндвича."
+	icon_state = "salami"
+	slice_path = /obj/item/reagent_containers/food/snacks/slice/salami
+	slices_num = 6
+	list_reagents = list("protein" = 12)
+	tastes = list("meat" = 3, "garlic" = 1)
+
+/obj/item/reagent_containers/food/snacks/slice/salami
+	name = "ломтик салями"
+	desc = "Лучший выбор для сэндвича."
+	icon_state = "salami_s"
+	bitesize = 2
+
+/datum/recipe/oven/salami
+	reagents = list("garlic_sauce" = 5)
+	items = list(/obj/item/reagent_containers/food/snacks/smokedsausage)
+	result = /obj/item/reagent_containers/food/snacks/sliceable/salami
+
+// Fruit Cup
+/obj/item/reagent_containers/food/snacks/fruitcup
+	name = "фруктовая кружка"
+	desc = "Фруктовый салат со съедобной кружкой."
+	icon_state = "fruitcup"
+	filling_color = "#C2CFAB"
+	list_reagents = list("nutriment" = 3, "watermelonjuice" = 5, "orangejuice" = 5, "vitamin" = 4)
+	tastes = list("apple" = 2, "banana" = 2, "waterlemon" = 2, "lemon" = 1, "ambrosia" = 1)
+	bitesize = 4
+
+/datum/recipe/microwave/fruitcup
+	items = list(
+		/obj/item/reagent_containers/food/snacks/grown/apple,
+		/obj/item/reagent_containers/food/snacks/grown/citrus/orange,
+		/obj/item/reagent_containers/food/snacks/grown/ambrosia,
+		/obj/item/reagent_containers/food/snacks/grown/banana,
+		/obj/item/reagent_containers/food/snacks/grown/citrus/lemon,
+		/obj/item/reagent_containers/food/snacks/grown/watermelon)
+	result = /obj/item/reagent_containers/food/snacks/fruitcup
+
+// Jungle Salad
+/obj/item/reagent_containers/food/snacks/junglesalad
+	name = "салат 'Джунгли'"
+	desc = "Из глубин джунглей."
+	icon_state = "junglesalad"
+	filling_color = "#C2CFAB"
+	list_reagents = list("nutriment" = 6, "watermelonjuice" = 3, "vitamin" = 4)
+	tastes = list("apple" = 1, "banana" = 2, "waterlemon" = 1)
+
+/datum/recipe/microwave/junglesalad
+	items = list(
+		/obj/item/reagent_containers/food/snacks/grown/apple,
+		/obj/item/reagent_containers/food/snacks/grown/banana,
+		/obj/item/reagent_containers/food/snacks/grown/banana,
+		/obj/item/reagent_containers/food/snacks/grown/watermelon)
+	result = /obj/item/reagent_containers/food/snacks/junglesalad
+
+// Delight Salad
+/obj/item/reagent_containers/food/snacks/delightsalad
+	name = "cалат 'Восторг'"
+	desc = "Настоящий цитрусовый восторг."
+	icon_state = "delightsalad"
+	filling_color = "#C2CFAB"
+	trash = /obj/item/trash/snack_bowl
+	list_reagents = list("nutriment" = 3, "lemonjuice" = 4, "orangejuice" = 4, "vitamin" = 4, "limejuice" = 4)
+	tastes = list("lemon" = 1, "lime" = 2, "orange" = 1)
+	bitesize = 4
+
+/datum/recipe/microwave/delightsalad
+	items = list(
+		/obj/item/reagent_containers/food/snacks/grown/citrus/lemon,
+		/obj/item/reagent_containers/food/snacks/grown/citrus/orange,
+		/obj/item/reagent_containers/food/snacks/grown/citrus/lime)
+	result = /obj/item/reagent_containers/food/snacks/delightsalad
+
+// Chowmein
+/obj/item/reagent_containers/food/snacks/chowmein
+	name = "чау-мейн"
+	desc = "Nihao!"
+	icon_state = "chowmein"
+	trash = /obj/item/trash/plate
+	list_reagents = list("nutriment" = 6, "protein" = 6)
+	tastes = list("pasta" = 1, "carrot" = 1, "cabage" = 1, "meat" = 1)
+	bitesize = 3
+
+/datum/recipe/microwave/chowmein
+	items = list(
+		/obj/item/reagent_containers/food/snacks/boiledspaghetti,
+		/obj/item/reagent_containers/food/snacks/cutlet,
+		/obj/item/reagent_containers/food/snacks/grown/cabbage,
+		/obj/item/reagent_containers/food/snacks/grown/carrot)
+	result = /obj/item/reagent_containers/food/snacks/chowmein
+
+// Beef Noodles
+/obj/item/reagent_containers/food/snacks/beefnoodles
+	name = "лапша с говядиной"
+	desc = "Так просто и так вкусно!"
+	icon_state = "beefnoodles"
+	trash = /obj/item/trash/snack_bowl
+	list_reagents = list("nutriment" = 3, "protein" = 5, "plantmatter" = 3)
+	tastes = list("pasta" = 1, "cabage" = 1, "meat" = 2)
+	bitesize = 2
+
+/datum/recipe/microwave/beefnoodles
+	items = list(
+		/obj/item/reagent_containers/food/snacks/boiledspaghetti,
+		/obj/item/reagent_containers/food/snacks/cutlet,
+		/obj/item/reagent_containers/food/snacks/cutlet,
+		/obj/item/reagent_containers/food/snacks/grown/cabbage)
+	result = /obj/item/reagent_containers/food/snacks/beefnoodles
+
+// Father's Soup
+/obj/item/weapon/reagent_containers/food/snacks/fathersoup
+	name = "батин суп"
+	desc = "Адовое блюдо, усреднённый рецепт ибо вариаций масса. Ух бля."
+	icon_state = "fathersoup"
+	trash = /obj/item/trash/pan
+	filling_color = "#f85210"
+	list_reagents = list("nutriment" = 3, "protein" = 6, "plantmatter" = 3, "thermite" = 2)
+	tastes = list("ух бля" = 4, "ёбаный ад" = 2, "мясо" = 2)
+	bitesize = 5
+
+/datum/recipe/oven/fathersoup
+	reagents = list(/datum/reagent/nutriment/flour = 10, /datum/reagent/blackpepper = 5)
+	items = list(
+		/obj/item/weapon/reagent_containers/food/snacks/tomatosoup,
+		/obj/item/reagent_containers/food/snacks/grown/garlic,
+		/obj/item/reagent_containers/food/snacks/grown/ghost_chili,
+		/obj/item/reagent_containers/food/snacks/grown/ghost_chili,
+		/obj/item/reagent_containers/food/snacks/grown/tomato)
+	result = /obj/item/weapon/reagent_containers/food/snacks/fathersoup
