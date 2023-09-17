@@ -126,7 +126,7 @@
 	filling_color = "#C2CFAB"
 	bitesize = 8
 	list_reagents = list("nutriment" = 2, "vitamin" = 1)
-	tastes = list("pickles" = 1)
+	tastes = list("маринованые огурцы" = 1)
 
 /obj/item/reagent_containers/food/snacks/brine
 	name = "рассол"
@@ -137,7 +137,7 @@
 	filling_color = "#C2CFAB"
 	bitesize = 4
 	list_reagents = list("nutriment" = 1, "antihol" = 2)
-	tastes = list("brine" = 3)
+	tastes = list("рассол" = 3)
 
 /datum/crafting_recipe/pickles
 	name = "Маринованные огурцы"
@@ -269,7 +269,7 @@
 	bitesize = 3
 	filling_color = "#00d9ff"
 	list_reagents = list("nutriment" = 20, "vitamin" = 5)
-	tastes = list("slime" = 5, "sweetness" = 1, "jelly" = 1)
+	tastes = list("слизь" = 5, "сладость" = 1, "желе" = 1)
 
 /obj/item/reagent_containers/food/snacks/slimepieslice
 	name = "кусочек слаймового пирога"
@@ -278,7 +278,7 @@
 	icon_state = "slimepieslice"
 	trash = /obj/item/trash/plate
 	filling_color = "#00d9ff"
-	tastes = list("slime" = 5, "sweetness" = 1, "jelly" = 1)
+	tastes = list("слизь" = 5, "сладость" = 1, "желе" = 1)
 
 /datum/recipe/oven/slimepie
 	reagents = list("custard" = 1, "milk" = 5, "sugar" = 15)
@@ -292,7 +292,7 @@
 	icon = 'modular_ss220/food/icons/food.dmi'
 	icon_state = "kidanragu"
 	list_reagents = list("nutriment" = 8, "vitamin" = 4, "protein" = 4)
-	tastes = list("insect" = 3, "vegetable" = 2)
+	tastes = list("насекомое" = 3, "овощи" = 2)
 
 /datum/recipe/microwave/kidan_ragu
 	reagents = list("water" = 10, "sodiumchloride" = 1)
@@ -361,7 +361,7 @@
 	icon = 'modular_ss220/food/icons/food.dmi'
 	icon_state = "vulpix"
 	list_reagents = list("nutriment" = 4, "vitamin" = 2, "protein" = 4)
-	tastes = list("булка" = 2, "собачатина" = 3)
+	tastes = list("тесто" = 2, "собачатина" = 3)
 
 /datum/recipe/oven/vuplix
 	reagents = list("blackpepper" = 1, "sodiumchloride" = 1, "herbsmix" = 1, "tsauce" = 1, "cream" = 5)
@@ -378,7 +378,7 @@
 	icon = 'modular_ss220/food/icons/food.dmi'
 	icon_state = "vulpix_cheese"
 	list_reagents = list("nutriment" = 4, "vitamin" = 2, "protein" = 4)
-	tastes = list("булка" = 2, "собачатина" = 3, "сыр" = 2)
+	tastes = list("тесто" = 2, "собачатина" = 3, "сыр" = 2)
 
 /datum/recipe/oven/vulpixcheese
 	reagents = list("blackpepper" = 1, "sodiumchloride" = 1, "herbsmix" = 1, "csauce" = 1, "cream" = 5)
@@ -396,7 +396,7 @@
 	icon = 'modular_ss220/food/icons/food.dmi'
 	icon_state = "vulpix_bacon"
 	list_reagents = list("nutriment" = 4, "vitamin" = 2, "protein" = 4)
-	tastes = list("булка" = 2, "собачатина" = 3, "бекон" = 2, "грибы" = 2)
+	tastes = list("тесто" = 2, "собачатина" = 3, "бекон" = 2, "грибы" = 2)
 
 /datum/recipe/oven/vulpixbacon
 	reagents = list("blackpepper" = 1, "sodiumchloride" = 1, "herbsmix" = 1, "msauce" = 1, "cream" = 5)
@@ -415,7 +415,7 @@
 	icon = 'modular_ss220/food/icons/food.dmi'
 	icon_state = "vulpix_chillie"
 	list_reagents = list("nutriment" = 4, "vitamin" = 2, "protein" = 4)
-	tastes = list("булка" = 2, "собачатина" = 3, "чилли" = 2)
+	tastes = list("тесто" = 2, "собачатина" = 3, "чилли" = 2)
 
 /datum/recipe/oven/vulpixchilli
 	reagents = list("blackpepper" = 1, "sodiumchloride" = 1, "herbsmix" = 1, "dsauce" = 1, "cream" = 5)
@@ -435,7 +435,7 @@
 	slice_path = /obj/item/reagent_containers/food/snacks/seapizzaslice
 	list_reagents = list("nutriment" = 30, "vitamin" = 15, "protein" = 15)
 	filling_color = "#ffe45d"
-	tastes = list("crust" = 1, "garlic" = 1, "cheese" = 2, "seafood" = 1, "sourness" = 1)
+	tastes = list("чеснок" = 1, "сыр" = 2, "морепродукты" = 1, "кислинка" = 1)
 
 /obj/item/reagent_containers/food/snacks/seapizzaslice
 	name = "кусочек пиццы с морепродуктами"
@@ -443,7 +443,7 @@
 	icon = 'modular_ss220/food/icons/food.dmi'
 	icon_state = "fishpizzaslice"
 	filling_color = "#ffe45d"
-	tastes = list("crust" = 1, "garlic" = 1, "cheese" = 2, "seafood" = 1, "sourness" = 1)
+	tastes = list("чеснок" = 1, "сыр" = 2, "морепродукты" = 1, "кислинка" = 1)
 
 /datum/recipe/oven/seapizza
 	reagents = list("herbs" = 1, "garlic_sauce" = 1)
@@ -465,7 +465,7 @@
 	slice_path = /obj/item/reagent_containers/food/snacks/baconpizzaslice
 	list_reagents = list("nutriment" = 40, "vitamin" = 5, "protein" = 15)
 	filling_color = "#ffe45d"
-	tastes = list("crust" = 1, "mushroom" = 1, "cheese" = 2, "bacon" = 1)
+	tastes = list("грибы" = 1, "сыр" = 2, "бекон" = 1)
 
 /obj/item/reagent_containers/food/snacks/baconpizzaslice
 	name = "кусочек пиццы с беконом"
@@ -473,7 +473,7 @@
 	icon = 'modular_ss220/food/icons/food.dmi'
 	icon_state = "baconpizzaslice"
 	filling_color = "#ffe45d"
-	tastes = list("crust" = 1, "mushroom" = 1, "cheese" = 2, "bacon" = 1)
+	tastes = list("грибы" = 1, "сыр" = 2, "бекон" = 1)
 
 /datum/recipe/oven/baconpizza
 	reagents = list("mushroom_sauce" = 1)
@@ -495,7 +495,7 @@
 	slice_path = /obj/item/reagent_containers/food/snacks/tajpizzaslice
 	list_reagents = list("nutriment" = 30, "vitamin" = 15, "protein" = 15)
 	filling_color = "#ffe45d"
-	tastes = list("crust" = 1, "tomato" = 1, "cheese" = 2, "tajaroni" = 1, "olives" = 1)
+	tastes = list("томат" = 1, "сыр" = 2, "таярони" = 1, "оливки" = 1)
 
 /obj/item/reagent_containers/food/snacks/tajpizzaslice
 	name = "кусочек пиццы с таярони"
@@ -503,7 +503,7 @@
 	icon = 'modular_ss220/food/icons/food.dmi'
 	icon_state = "tajarpizzaslice"
 	filling_color = "#ffe45d"
-	tastes = list("crust" = 1, "tomato" = 1, "cheese" = 2, "tajaroni" = 1, "olives" = 1)
+	tastes = list("томат" = 1, "сыр" = 2, "таярони" = 1, "оливки" = 1)
 
 /datum/recipe/oven/tajarpizza
 	reagents = list("herbs" = 1, "tomato_sauce" = 1, "blackpepper" = 1)
@@ -524,7 +524,7 @@
 	slice_path = /obj/item/reagent_containers/food/snacks/diablopizzaslice
 	list_reagents = list("nutriment" = 30, "vitamin" = 15, "protein" = 15, "capsaicin" = 15)
 	filling_color = "#ffe45d"
-	tastes = list("crust" = 1, "hotness" = 1, "cheese" = 2, "meat" = 1, "spice" = 1)
+	tastes = list("остроту" = 1, "сыр" = 2, "мясо" = 1, "специи" = 1)
 
 /obj/item/reagent_containers/food/snacks/diablopizzaslice
 	name = "кусочек пиццы 'Диабло'"
@@ -532,7 +532,7 @@
 	icon = 'modular_ss220/food/icons/food.dmi'
 	icon_state = "diablopizzaslice"
 	filling_color = "#ffe45d"
-	tastes = list("crust" = 1, "hotness" = 1, "cheese" = 2, "meat" = 1, "spice" = 1)
+	tastes = list("остроту" = 1, "сыр" = 2, "мясо" = 1, "специи" = 1)
 
 /datum/recipe/oven/diablopizza
 	reagents = list("herbs" = 1, "diablo_sauce" = 1)
@@ -555,7 +555,7 @@
 	trash = /obj/item/trash/doshik
 	list_reagents = list("dry_ramen" = 30)
 	junkiness = 25
-	tastes = list("chiken" = 1, "noodles" = 1)
+	tastes = list("курятина" = 1, "лапша" = 1)
 
 /obj/item/reagent_containers/food/snacks/doshik_spicy
 	name = "острый дошик"
@@ -566,7 +566,7 @@
 	trash = /obj/item/trash/doshik
 	list_reagents = list("dry_ramen" = 30,"capsaicin" = 5)
 	junkiness = 30
-	tastes = list("beef" = 1, "noodles" = 1)
+	tastes = list("говядина" = 1, "лапша" = 1)
 
 /obj/item/trash/doshik
 	name = "упаковка из под дошика"
@@ -584,7 +584,7 @@
 	slices_num = 6
 	bitesize = 3
 	filling_color = "#5e1706"
-	tastes = list("cherry" = 5, "sweetness" = 1, "chocolate" = 1)
+	tastes = list("вишня" = 5, "сладость" = 1, "шоколад" = 1)
 	list_reagents = list("nutriment" = 10, "sugar" = 3, "coco" = 4)
 
 /obj/item/reagent_containers/food/snacks/choccherrycakeslice
@@ -615,7 +615,7 @@
 	slice_path = /obj/item/reagent_containers/food/snacks/noelslice
 	slices_num = 5
 	filling_color = "#5e1706"
-	tastes = list("chocolate" = 3, "sweetness" = 2, "egg" = 1, "berries" = 2)
+	tastes = list("шоколад" = 3, "сладость" = 2, "яйца" = 1, "ягоды" = 2)
 	list_reagents = list("nutriment" = 6, "plantmatter" = 2, "coco" = 2, "cream" = 3, "sugar" = 3, "berryjucie" = 3)
 
 /obj/item/reagent_containers/food/snacks/noelslice
@@ -644,7 +644,7 @@
 	icon_state = "sundae"
 	filling_color = "#F5DEB8"
 	list_reagents = list("nutriment" = 4, "plantmatter" = 2, "bananajucie" = 4, "cream" = 3)
-	tastes = list("banana" = 1, "cherry" = 1, "cream" = 1)
+	tastes = list("банан" = 1, "вишня" = 1, "крем" = 1)
 	bitesize = 5
 
 /datum/recipe/oven/sundae
@@ -661,7 +661,7 @@
 	desc = "Маленькая хлебная обезьянка, сформованная из двух булочек для гамбургеров."
 	icon_state = "bunbun"
 	list_reagents = list("nutriment" = 2)
-	tastes = list("булка" = 2)
+	tastes = list("тесто" = 2)
 	bitesize = 2
 
 /datum/recipe/oven/bunbun
@@ -678,7 +678,7 @@
 	trash = /obj/item/trash/plate
 	filling_color = "#E8C31E"
 	list_reagents = list("nutriment" = 4)
-	tastes = list("corn" = 2)
+	tastes = list("кукуруза" = 2)
 	bitesize = 2
 
 /datum/recipe/microwave/tortilla
@@ -694,7 +694,7 @@
 	trash = /obj/item/trash/plate
 	filling_color = "#E8C31E"
 	list_reagents = list("nutriment" = 5, "salt" = 1)
-	tastes = list("corn" = 2)
+	tastes = list("кукуруза" = 2)
 	bitesize = 3
 
 /datum/recipe/microwave/nachos
@@ -710,7 +710,7 @@
 	trash = /obj/item/trash/plate
 	filling_color = "#f1d65c"
 	list_reagents = list("nutriment" = 7, "salt" = 1)
-	tastes = list("corn" = 1, "cheese" = 2)
+	tastes = list("кукуруза" = 1, "сыр" = 2)
 	bitesize = 4
 
 /datum/recipe/microwave/cheesenachos
@@ -728,7 +728,7 @@
 	trash = /obj/item/trash/plate
 	filling_color = "#ec5c23"
 	list_reagents = list("nutriment" = 7, "salt" = 1, "capsaicin" = 3, "plantmatter" = 1)
-	tastes = list("corn" = 1, "chili" = 2)
+	tastes = list("кукуруза" = 1, "чили" = 2)
 	bitesize = 4
 
 /datum/recipe/microwave/cubannachos
@@ -745,7 +745,7 @@
 	icon_state = "carneburrito"
 	filling_color = "#69250b"
 	list_reagents = list("nutriment" = 8, "protein" = 3, "soysauce" = 1)
-	tastes = list("corn" = 1, "meat" = 2, "beans" = 1)
+	tastes = list("кукуруза" = 1, "мясо" = 2, "бобы" = 1)
 	bitesize = 4
 
 /datum/recipe/microwave/carneburrito
@@ -763,7 +763,7 @@
 	icon_state = "cheeseburrito"
 	filling_color = "#f1d65c"
 	list_reagents = list("nutriment" = 10, "soysauce" = 2)
-	tastes = list("corn" = 1, "beans" = 1, "cheese" = 2)
+	tastes = list("кукуруза" = 1, "бобы" = 1, "сыр" = 2)
 	bitesize = 4
 
 /datum/recipe/microwave/cheeseburrito
@@ -780,7 +780,7 @@
 	icon_state = "plasmaburrito"
 	filling_color = "#f35a46"
 	list_reagents = list("nutriment" = 4, "plantmatter" = 4, "capsaicin" = 4)
-	tastes = list("corn" = 1, "beans" = 1, "chili" = 2)
+	tastes = list("кукуруза" = 1, "бобы" = 1, "чили" = 2)
 	bitesize = 4
 
 /datum/recipe/microwave/plasmaburrito
@@ -799,7 +799,7 @@
 	filling_color = "#d9be29"
 	list_reagents = list("protein" = 2)
 	bitesize = 2
-	tastes = list("raw meat" = 1, "raw dough" = 1)
+	tastes = list("сырое мясо" = 1, "сырое тесто" = 1)
 
 /obj/item/reagent_containers/food/snacks/doughslice/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/reagent_containers/food/snacks/rawcutlet))
@@ -818,7 +818,7 @@
 	filling_color = "#d9be29"
 	list_reagents = list("protein" = 5)
 	bitesize = 3
-	tastes = list("meat" = 2, "dough" = 2)
+	tastes = list("мясо" = 2, "тесто" = 2)
 
 /datum/recipe/microwave/pelmeni
 	reagents = list("water" = 5)
@@ -831,7 +831,7 @@
 	desc = "Кусок копченой колбасы. Под пивко пойдёт."
 	icon_state = "smokedsausage"
 	list_reagents = list("protein" = 12)
-	tastes = list("meat" = 3)
+	tastes = list("мясо" = 3)
 
 /datum/recipe/oven/smokedsausage
 	reagents = list("sodiumchloride" = 5, "blackpepper" = 5)
@@ -846,7 +846,7 @@
 	slice_path = /obj/item/reagent_containers/food/snacks/slice/salami
 	slices_num = 6
 	list_reagents = list("protein" = 12)
-	tastes = list("meat" = 3, "garlic" = 1)
+	tastes = list("мясо" = 3, "чеснок" = 1)
 
 /obj/item/reagent_containers/food/snacks/slice/salami
 	name = "ломтик салями"
@@ -866,7 +866,7 @@
 	icon_state = "fruitcup"
 	filling_color = "#C2CFAB"
 	list_reagents = list("nutriment" = 3, "watermelonjuice" = 5, "orangejuice" = 5, "vitamin" = 4)
-	tastes = list("apple" = 2, "banana" = 2, "waterlemon" = 2, "lemon" = 1, "ambrosia" = 1)
+	tastes = list("яблоко" = 2, "банан" = 2, "арбуз" = 2, "лимон" = 1, "амброзия" = 1)
 	bitesize = 4
 
 /datum/recipe/microwave/fruitcup
@@ -886,7 +886,7 @@
 	icon_state = "junglesalad"
 	filling_color = "#C2CFAB"
 	list_reagents = list("nutriment" = 6, "watermelonjuice" = 3, "vitamin" = 4)
-	tastes = list("apple" = 1, "banana" = 2, "waterlemon" = 1)
+	tastes = list("яблоко" = 1, "банан" = 2, "арбуз" = 1)
 
 /datum/recipe/microwave/junglesalad
 	items = list(
@@ -904,7 +904,7 @@
 	filling_color = "#C2CFAB"
 	trash = /obj/item/trash/snack_bowl
 	list_reagents = list("nutriment" = 3, "lemonjuice" = 4, "orangejuice" = 4, "vitamin" = 4, "limejuice" = 4)
-	tastes = list("lemon" = 1, "lime" = 2, "orange" = 1)
+	tastes = list("лимон" = 1, "лайм" = 2, "апельсин" = 1)
 	bitesize = 4
 
 /datum/recipe/microwave/delightsalad
@@ -921,7 +921,7 @@
 	icon_state = "chowmein"
 	trash = /obj/item/trash/plate
 	list_reagents = list("nutriment" = 6, "protein" = 6)
-	tastes = list("pasta" = 1, "carrot" = 1, "cabage" = 1, "meat" = 1)
+	tastes = list("лапша" = 1, "морковка" = 1, "капуста" = 1, "мясо" = 1)
 	bitesize = 3
 
 /datum/recipe/microwave/chowmein
@@ -939,7 +939,7 @@
 	icon_state = "beefnoodles"
 	trash = /obj/item/trash/snack_bowl
 	list_reagents = list("nutriment" = 3, "protein" = 5, "plantmatter" = 3)
-	tastes = list("pasta" = 1, "cabage" = 1, "meat" = 2)
+	tastes = list("лапша" = 1, "капуста" = 1, "мясо" = 2)
 	bitesize = 2
 
 /datum/recipe/microwave/beefnoodles
@@ -951,7 +951,7 @@
 	result = /obj/item/reagent_containers/food/snacks/beefnoodles
 
 // Father's Soup
-/obj/item/weapon/reagent_containers/food/snacks/fathersoup
+/obj/item/reagent_containers/food/snacks/fathersoup
 	name = "батин суп"
 	desc = "Адовое блюдо, усреднённый рецепт ибо вариаций масса. Ух бля."
 	icon_state = "fathersoup"
