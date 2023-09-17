@@ -63,13 +63,13 @@ export const CameraConsole220 = (props, context) => {
               key="Map"
               selected={0 === tabIndex}
               onClick={() => setTabIndex(0)}>
-              <Icon name="map-marked-alt" /> Map
+              <Icon name="map-marked-alt" /> Карта
             </Tabs.Tab>
             <Tabs.Tab
               key="List"
               selected={1 === tabIndex}
               onClick={() => setTabIndex(1)}>
-              <Icon name="table" /> List
+              <Icon name="table" /> Список
             </Tabs.Tab>
           </Tabs>
           {decideTab(tabIndex)}
@@ -109,7 +109,7 @@ export const CameraConsoleMapContent = (props, context) => {
       <Box height="100%" resizable className="CameraConsole__new__right">
         <div className="CameraConsole__header">
           <div className="CameraConsole__title">
-            <b>Camera: </b>
+            <b>Камера: </b>
             {activeCamera
               && activeCamera.name
               || '—'}
@@ -162,7 +162,7 @@ export const CameraConsoleOldContent = (props, context) => {
             <Input
               fluid
               mb={1}
-              placeholder="Search for a camera"
+              placeholder="Найти камеру"
               onInput={(e, value) => setSearchText(value)} />
             <Section>
               {cameras.map(camera => (
@@ -195,7 +195,7 @@ export const CameraConsoleOldContent = (props, context) => {
       </div>
       <div className="CameraConsole__right">
         <div className="CameraConsole__toolbar">
-          <b>Camera: </b>
+          <b>Камера: </b>
           {activeCamera
             && activeCamera.name
             || '—'}
