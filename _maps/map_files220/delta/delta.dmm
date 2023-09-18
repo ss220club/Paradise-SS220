@@ -58670,6 +58670,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/firedoor,
 /obj/effect/mapping_helpers/airlock/access/any/engineering/maintenance,
+/obj/effect/mapping_helpers/airlock/access/any/service/bar,
 /turf/simulated/floor/plating,
 /area/maintenance/fore)
 "eBK" = (
@@ -59626,7 +59627,6 @@
 	name = "Service Hall"
 	},
 /obj/machinery/door/firedoor,
-/obj/effect/mapping_helpers/airlock/access/any/service,
 /turf/simulated/floor/plasteel{
 	dir = 5;
 	icon_state = "dark"
@@ -67089,19 +67089,6 @@
 /obj/structure/window/full/reinforced,
 /turf/simulated/floor/plasteel/dark,
 /area/hallway/secondary/exit)
-"iHH" = (
-/obj/machinery/door/airlock/freezer,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/machinery/door/firedoor,
-/obj/effect/mapping_helpers/airlock/access/any/service/hydroponics,
-/turf/simulated/floor/plasteel/white,
-/area/crew_quarters/kitchen)
 "iHJ" = (
 /obj/machinery/door/airlock/security/glass{
 	name = "Security Office"
@@ -82089,6 +82076,7 @@
 /obj/machinery/door/firedoor,
 /obj/effect/mapping_helpers/airlock/access/any/service/theatre,
 /obj/effect/mapping_helpers/airlock/access/any/engineering/maintenance,
+/obj/effect/mapping_helpers/airlock/access/any/service/bar,
 /turf/simulated/floor/plating,
 /area/maintenance/fore)
 "qdW" = (
@@ -87100,6 +87088,9 @@
 	dir = 8;
 	id_tag = "Kitchen Windows";
 	name = "Kitchen Privacy Shutters"
+	},
+/obj/effect/mapping_helpers/airlock/windoor/access/any/service/kitchen{
+	dir = 1
 	},
 /turf/simulated/floor/plating,
 /area/hydroponics)
@@ -96824,7 +96815,9 @@
 	name = "Kitchen Desk";
 	dir = 1
 	},
-/obj/effect/mapping_helpers/airlock/access/any/service/kitchen,
+/obj/effect/mapping_helpers/airlock/windoor/access/any/service/kitchen{
+	dir = 1
+	},
 /turf/simulated/floor/plasteel,
 /area/crew_quarters/kitchen)
 "xEl" = (
@@ -132022,7 +132015,7 @@ leM
 leM
 hUV
 ldm
-iHH
+rrL
 qpZ
 hGT
 qzG
