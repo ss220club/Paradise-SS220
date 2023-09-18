@@ -1000,6 +1000,8 @@
 	if(prob(33))
 		var/soup_talk = "Ух бля..."
 		M.say(soup_talk)
+	if(prob(33))
+		M.emote("fart")
 	return ..()
 
 /obj/item/trash/pan
