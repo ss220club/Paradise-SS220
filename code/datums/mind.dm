@@ -162,7 +162,7 @@
 /datum/mind/proc/show_memory(mob/recipient, window = 1)
 	if(!recipient)
 		recipient = current
-	var/output = {"<meta charset="UTF-8"><B>[current.real_name]'s Memories:</B><HR>"}
+	var/output = {"<meta charset="UTF-8"><B>[current.real_name]'s Memories:</B><HR>"} // SS220 EDIT - ORIGINAL: "<B>[current.real_name]'s Memories:</B><HR>"
 	output += memory
 
 	var/antag_datum_objectives = FALSE
@@ -468,7 +468,7 @@
 		alert("Not before round-start!", "Alert")
 		return
 
-	var/out = {"<meta charset="UTF-8"><B>[name]</B>[(current && (current.real_name != name))?" (as [current.real_name])" : ""]<br>"}
+	var/out = {"<meta charset="UTF-8"><B>[name]</B>[(current && (current.real_name != name))?" (as [current.real_name])" : ""]<br>"} // SS220 EDIT - ORIGINAL: "<B>[name]</B>[(current && (current.real_name != name))?" (as [current.real_name])" : ""]<br>"
 	out += "Mind currently owned by key: [key] [active ? "(synced)" : "(not synced)"]<br>"
 	out += "Assigned role: [assigned_role]. <a href='?src=[UID()];role_edit=1'>Edit</a><br>"
 	out += "Factions and special roles:<br>"
