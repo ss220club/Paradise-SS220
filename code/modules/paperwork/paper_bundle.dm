@@ -109,7 +109,7 @@
 		. += "<span class='notice'>It is too far away.</span>"
 
 /obj/item/paper_bundle/proc/show_content(mob/user as mob)
-	var/dat = {"<meta charset="UTF-8">"}
+	var/dat = {"<meta charset="UTF-8">"} // SS220 EDIT - ORIGINAL: ... Empty var
 	var/obj/item/W = src[page]
 	switch(screen)
 		if(0)
