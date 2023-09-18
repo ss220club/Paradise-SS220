@@ -996,7 +996,7 @@
 
 /obj/item/reagent_containers/food/snacks/fathersoup/On_Consume(mob/M, mob/user)
 	. = ..()
-	user.visible_message("<span class='notice'>У [M] на лбу аж пот выступает от [src].</span>")
+	user.visible_message("<span class='notice'>У [M] на лбу аж пот выступает.</span>")
 	if(prob(33))
 		var/soup_talk = "Ух бля..."
 		M.say(soup_talk)
