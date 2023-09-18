@@ -980,7 +980,7 @@
 	trash = /obj/item/trash/pan
 	filling_color = "#f85210"
 	list_reagents = list("nutriment" = 4, "protein" = 2, "plantmatter" = 4, "thermite" = 2)
-	tastes = list("ух бля" = 4, "ёбаный ад" = 2, "мясо" = 2)
+	tastes = list("перец" = 4, "чеснок" = 2, "томат" = 2)
 	bitesize = 5
 
 /datum/recipe/oven/fathersoup
@@ -993,6 +993,14 @@
 		/obj/item/reagent_containers/food/snacks/grown/ghost_chili,
 		/obj/item/reagent_containers/food/snacks/grown/tomato)
 	result = /obj/item/reagent_containers/food/snacks/fathersoup
+
+/obj/item/reagent_containers/food/snacks/fathersoup/On_Consume(mob/M, mob/user)
+	. = ..()
+	user.visible_message("<span class='notice'>У [M] на лбу аж пот выступает от [src].</span>")
+	if(prob(33))
+		var/soup_talk = "Ух бля..."
+		M.say(soup_talk)
+	return ..()
 
 /obj/item/trash/pan
 	name = "дырявая сковорода"
