@@ -4775,11 +4775,10 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
-/obj/structure/disposalpipe/segment,
 /obj/structure/cable{
-	d1 = 4;
+	d1 = 2;
 	d2 = 8;
-	icon_state = "4-8"
+	icon_state = "2-8"
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads)
@@ -19072,7 +19071,9 @@
 	},
 /area/maintenance/port)
 "bpm" = (
-/obj/structure/disposalpipe/segment,
+/obj/structure/disposalpipe/junction{
+	dir = 1
+	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
 	},
@@ -20748,6 +20749,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "blue"
@@ -20798,6 +20802,9 @@
 	},
 /obj/effect/mapping_helpers/airlock/access/any/command/general,
 /obj/effect/mapping_helpers/airlock/autoname,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel,
 /area/bridge)
 "bwW" = (
@@ -20951,6 +20958,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plasteel/stairs/left,
 /area/bridge)
 "bxs" = (
@@ -21216,6 +21224,9 @@
 	},
 /obj/effect/mapping_helpers/airlock/access/any/command/general,
 /obj/effect/mapping_helpers/airlock/autoname,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel,
 /area/bridge)
 "byr" = (
@@ -26051,10 +26062,14 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
 	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
@@ -40458,11 +40473,6 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/item/kirbyplants,
-/obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
-	},
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 4;
@@ -41634,6 +41644,9 @@
 /obj/item/lighter/zippo/engraved,
 /obj/effect/turf_decal/siding/wood{
 	dir = 1
+	},
+/obj/machinery/ai_status_display{
+	pixel_y = 32
 	},
 /turf/simulated/floor/wood/fancy/oak,
 /area/bridge/meeting_room)
@@ -51972,9 +51985,6 @@
 /area/atmos/control)
 "eQB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/structure/cable{
 	d1 = 2;
 	d2 = 8;
@@ -58540,6 +58550,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel,
 /area/bridge)
 "hhl" = (
@@ -61200,8 +61213,9 @@
 	},
 /area/maintenance/port)
 "iat" = (
-/obj/structure/disposalpipe/junction{
-	dir = 4
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
@@ -62239,7 +62253,6 @@
 	},
 /area/security/brig)
 "iwP" = (
-/obj/structure/disposalpipe/segment,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
@@ -62914,6 +62927,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/wood/fancy/oak,
 /area/bridge/meeting_room)
 "iKU" = (
@@ -64347,14 +64361,14 @@
 	},
 /area/engine/hallway)
 "jov" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
-	},
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
 	},
 /turf/simulated/floor/wood/fancy/oak,
 /area/bridge/meeting_room)
@@ -64714,7 +64728,6 @@
 	name = "east bump";
 	pixel_x = 24
 	},
-/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads)
 "jva" = (
@@ -65677,6 +65690,10 @@
 	d1 = 2;
 	d2 = 4;
 	icon_state = "2-4"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
 	},
 /turf/simulated/floor/carpet/black,
 /area/bridge/meeting_room)
@@ -69950,6 +69967,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "blue"
@@ -71277,10 +71295,6 @@
 	},
 /area/security/permabrig)
 "lUn" = (
-/obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
-	},
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 8;
@@ -76592,7 +76606,6 @@
 /area/crew_quarters/bar)
 "nQG" = (
 /obj/machinery/hologram/holopad,
-/obj/structure/disposalpipe/segment,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
@@ -77088,7 +77101,6 @@
 /obj/machinery/door/airlock/command/hop,
 /obj/effect/mapping_helpers/airlock/access/any/command/hop,
 /obj/machinery/door/firedoor,
-/obj/structure/disposalpipe/segment,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/structure/cable{
 	d1 = 1;
@@ -77142,6 +77154,9 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /turf/simulated/floor/plasteel,
@@ -79413,6 +79428,9 @@
 /obj/effect/mapping_helpers/airlock/polarized{
 	id = "conference"
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/simulated/floor/carpet/black,
 /area/bridge/meeting_room)
 "oPX" = (
@@ -79743,9 +79761,9 @@
 	icon_state = "1-4"
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -79944,6 +79962,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "blue"
@@ -82102,6 +82121,7 @@
 	name = "south bump";
 	pixel_y = -24
 	},
+/obj/item/kirbyplants,
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads)
 "pNL" = (
@@ -82565,6 +82585,10 @@
 	pixel_y = 24
 	},
 /obj/item/flag/nt,
+/obj/structure/cable{
+	d2 = 8;
+	icon_state = "0-8"
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads)
 "pWW" = (
@@ -84732,7 +84756,6 @@
 "qJx" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/command/hop,
-/obj/structure/disposalpipe/segment,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
@@ -85080,11 +85103,11 @@
 	name = "south bump";
 	pixel_y = -24
 	},
-/obj/structure/disposalpipe/trunk{
-	dir = 8
-	},
 /obj/effect/turf_decal/siding/wood{
 	dir = 6
+	},
+/obj/structure/disposalpipe/trunk{
+	dir = 8
 	},
 /turf/simulated/floor/wood/fancy/oak,
 /area/bridge/meeting_room)
@@ -85997,7 +86020,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/disposalpipe/segment,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
@@ -86723,6 +86745,9 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/simulated/floor/carpet/black,
 /area/bridge/meeting_room)
 "rxW" = (
@@ -87432,9 +87457,8 @@
 /obj/machinery/recharger/wallcharger{
 	pixel_x = 32
 	},
-/obj/structure/disposalpipe/segment{
-	dir = 2;
-	icon_state = "pipe-c"
+/obj/structure/chair/comfy/brown{
+	dir = 8
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads)
@@ -89586,6 +89610,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/carpet/black,
 /area/bridge/meeting_room)
 "sBh" = (
@@ -91209,6 +91234,10 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
+	},
 /turf/simulated/floor/plasteel,
 /area/bridge)
 "tdT" = (
@@ -92819,7 +92848,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/fpmaint)
 "tJk" = (
-/obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -93689,7 +93717,6 @@
 /turf/simulated/floor/plasteel,
 /area/toxins/mixing)
 "tYc" = (
-/obj/structure/disposalpipe/segment,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
@@ -98868,9 +98895,6 @@
 	},
 /area/engine/aitransit)
 "vQV" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
@@ -98882,8 +98906,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel,
-/area/hallway/primary/central/south)
+/area/bridge)
 "vQZ" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
@@ -99419,6 +99446,10 @@
 "waY" = (
 /obj/structure/bed/dogbed/ian,
 /mob/living/simple_animal/pet/dog/corgi/Ian,
+/obj/machinery/status_display{
+	layer = 4;
+	pixel_y = 32
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads)
 "wbl" = (
@@ -102991,11 +103022,15 @@
 /turf/simulated/floor/plating,
 /area/maintenance/aft)
 "xtq" = (
-/obj/structure/disposalpipe/segment,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads)
@@ -103827,6 +103862,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "bluecorner"
@@ -104131,6 +104167,9 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /turf/simulated/floor/plasteel,
@@ -132387,7 +132426,7 @@ aaa
 bmc
 bqO
 bsv
-hBF
+vQV
 bwc
 bCw
 qsV
@@ -132923,7 +132962,7 @@ qVG
 gyM
 gyM
 cdY
-vQV
+vVF
 jKP
 cgZ
 ckv
