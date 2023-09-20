@@ -75,3 +75,12 @@
 	suffix = "voxraiders_1.dmm"
 	cost = 4
 	allow_duplicates = FALSE
+
+/datum/map_template/ruin/space/blackmarket
+	name = "Blackmarket"
+	id = "blackmarket"
+	description = "A hidden base of smugglers equipped inside a large asteroid."
+	prefix = "_maps/map_files220/RandomRuins/SpaceRuins/"
+	suffix = "blackmarket.dmm"
+	cost = 4
+	allow_duplicates = FALSE
