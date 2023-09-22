@@ -330,7 +330,7 @@
 	/var/melee_block_chance = 10
 	/var/ranged_block_chance = 10
 
-/mob/living/simple_animal/hostile/jungle_lizard/spearman/attackby(var/obj/item/O as obj, var/mob/user as mob, params)
+/mob/living/simple_animal/hostile/jungle_lizard/spearman/attackby(/obj/item/O as obj, /mob/user as mob, params)
 	user.changeNext_move(CLICK_CD_MELEE)
 	user.do_attack_animation(src)
 	if(O.force)
