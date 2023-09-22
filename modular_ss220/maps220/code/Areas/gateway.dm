@@ -229,12 +229,12 @@
 /area/awaymission/jungle_planet/outside/river
 	name = "River"
 	icon_state = "awaycontent2"
-	ambientsounds = 'modular_ss220/aesthetics_sounds/sound/area_ambient/river.ogg'
+	ambientsounds = list ('modular_ss220/aesthetics_sounds/sound/area_ambient/river.ogg')
 
 /area/awaymission/jungle_planet/outside/waterfall
 	name = "Waterfall"
 	icon_state = "awaycontent3"
-	ambientsounds = 'modular_ss220/aesthetics_sounds/sound/area_ambient/waterfall.ogg'
+	ambientsounds = list ('modular_ss220/aesthetics_sounds/sound/area_ambient/waterfall.ogg')
 
 /area/awaymission/jungle_planet/outside/cave
 	name = "Cave"
@@ -257,7 +257,7 @@
 	icon_state = "awaycontent6"
 	always_unpowered = FALSE
 	requires_power = FALSE
-	ambientsounds = "modular_ss220/aesthetics_sounds/sound/area_ambient/cave_waterdrops.ogg"
+	ambientsounds = list ('modular_ss220/aesthetics_sounds/sound/area_ambient/cave_waterdrops.ogg')
 
 /area/awaymission/jungle_planet/inside
 	name = "Hangar 2"
