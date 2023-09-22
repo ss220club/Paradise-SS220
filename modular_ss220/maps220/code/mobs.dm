@@ -330,36 +330,6 @@
 	/var/melee_block_chance = 10
 	/var/ranged_block_chance = 10
 
-/mob/living/simple_animal/hostile/jungle_lizard/spearman/attackby(/obj/item/O as obj, /mob/user as mob, params)
-	user.changeNext_move(CLICK_CD_MELEE)
-	user.do_attack_animation(src)
-	if(O.force)
-		if(prob(melee_block_chance))
-			visible_message("<span class='boldwarning'>[src] blocks the [O] with its shield! </span>")
-		else
-			var/damage = O.force
-			if(O.damtype == STAMINA)
-				damage = 0
-			if(force_threshold && damage < force_threshold)
-				visible_message("<span class='boldwarning'>[src] is unharmed by [O]!</span>")
-				return
-			adjustHealth(damage)
-			visible_message("<span class='boldwarning'>[src] has been attacked with the [O] by [user]. </span>")
-		playsound(loc, O.hitsound, 25, 1, -1)
-	else
-		to_chat(usr, "<span class='warning'>This weapon is ineffective, it does no damage.</span>")
-		visible_message("<span class='warning'>[user] gently taps [src] with the [O]. </span>")
-
-/mob/living/simple_animal/hostile/jungle_lizard/spearman/bullet_act(var/obj/item/projectile/Proj)
-	if(!Proj)
-		return
-	if(prob(ranged_block_chance))
-		visible_message("<span class='danger'>[src] blocks [Proj] with its shield!</span>")
-	else
-		if((Proj.damage_type == BRUTE || Proj.damage_type == BURN))
-			adjustHealth(Proj.damage)
-	return 0
-
 /mob/living/simple_animal/hostile/jungle_lizard/archer
 	name = "Tribal Archer"
 	desc = "An aboriginal resident of the this planet. Armed with a deadly composite bow."

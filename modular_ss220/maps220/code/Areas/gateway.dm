@@ -234,7 +234,7 @@
 /area/awaymission/jungle_planet/outside/waterfall
 	name = "Waterfall"
 	icon_state = "awaycontent3"
-	ambientsounds = "modular_ss220/aesthetics_sounds/sound/area_ambient/watefall.ogg"
+	ambientsounds = "modular_ss220/aesthetics_sounds/sound/area_ambient/waterfall.ogg"
 
 /area/awaymission/jungle_planet/outside/cave
 	name = "Cave"
