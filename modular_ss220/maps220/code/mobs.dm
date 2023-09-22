@@ -278,7 +278,7 @@
 
 /* Jungle Mob */
 /mob/living/simple_animal/hostile/jungle_lizard
-	name = "Tribal Lizardman"
+	name = "tribal lizardman"
 	desc = "An aboriginal resident of this planet. This barbaric will not tolerate intruders."
 	icon = 'modular_ss220/maps220/icons/simple_human.dmi'
 	icon_state = "lizardman_1"
@@ -316,7 +316,7 @@
 	health = 70
 
 /mob/living/simple_animal/hostile/jungle_lizard/spearman
-	name = "Tribal Spearman"
+	name = "tribal spearman"
 	desc = "An aboriginal resident of the this planet. Armed with a sharp spear, a strong-wood made shield and a furious desire to protect their territories."
 	icon_state = "lizardman_spear"
 	icon_living = "lizardman_spear"
@@ -329,7 +329,7 @@
 	attacktext = "колет"
 
 /mob/living/simple_animal/hostile/jungle_lizard/archer
-	name = "Tribal Archer"
+	name = "tribal archer"
 	desc = "An aboriginal resident of the this planet. Armed with a deadly composite bow."
 	icon_state = "lizardman_bow"
 	icon_living = "lizardman_bow"
@@ -348,7 +348,7 @@
 	damage_type = BRUTE
 
 /mob/living/simple_animal/hostile/jungle_lizard/axeman
-	name = "Tribal Axeman"
+	name = "tribal axeman"
 	desc = "An aboriginal resident of the this planet. His axe is as huge and dangerous as he is."
 	icon_state = "lizardman_axe"
 	icon_living = "lizardman_axe"
@@ -360,7 +360,7 @@
 	attacktext = "рубит"
 
 /mob/living/simple_animal/hostile/jungle_lizard/leader
-	name = "Tribal Leader"
+	name = "tribal leader"
 	desc = "An aboriginal resident of the this planet.He deserved his rank by savagery and brutality to enemies."
 	icon_state = "lizardman_leader"
 	icon_living = "lizardman_leader"
@@ -373,7 +373,7 @@
 	damage_coeff = list(BRUTE = 0.8, BURN = 0.8, TOX = 1, CLONE = 2, STAMINA = 1, OXY = 1)
 
 /mob/living/simple_animal/hostile/panther/huge_panther
-	name = "Huge panther"
+	name = "huge panther"
 	desc = "A long sleek, black cat with sharp teeth and claws. This one looks very huge."
 	maxHealth = 120
 	health = 120
@@ -388,7 +388,7 @@
 	faction = list("junglemob")
 
 /mob/living/simple_animal/hostile/poison_snake
-	name = "Poison snake"
+	name = "poison snake"
 	desc = "A slithery snake. It's worth looking at the ground when you walk. The poison of many of them is extremely dangerous!"
 	icon_state = "snake"
 	icon_living = "snake"
