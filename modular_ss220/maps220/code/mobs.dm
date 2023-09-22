@@ -380,29 +380,29 @@
 	damage_type = BRUTE
 
 /mob/living/simple_animal/hostile/jungle_lizard/axeman
-    name = "Tribal Axeman"
-    desc = "An aboriginal resident of the this planet. His axe is as huge and dangerous as he is."
-    icon_state = "lizardman_axe"
-    icon_living = "lizardman_axe"
-    maxHealth = 160
-    health = 160
-    melee_damage_lower = 25
-    melee_damage_upper = 25
-    attack_sound = 'sound/weapons/bladeslice.ogg'
-    attacktext = "рубит"
+	name = "Tribal Axeman"
+	desc = "An aboriginal resident of the this planet. His axe is as huge and dangerous as he is."
+	icon_state = "lizardman_axe"
+	icon_living = "lizardman_axe"
+	maxHealth = 160
+	health = 160
+	melee_damage_lower = 25
+	melee_damage_upper = 25
+	attack_sound = 'sound/weapons/bladeslice.ogg'
+	attacktext = "рубит"
 
 /mob/living/simple_animal/hostile/jungle_lizard/leader
-    name = "Tribal Leader"
-    desc = "An aboriginal resident of the this planet.He deserved his rank by savagery and brutality to enemies."
-    icon_state = "lizardman_leader"
-    icon_living = "lizardman_leader"
-    maxHealth = 200
-    health = 200
-    melee_damage_lower = 30
-    melee_damage_upper = 30
-    attack_sound = 'sound/weapons/bladeslice.ogg'
-    attacktext = "рубит"
-    damage_coeff = list(BRUTE = 0.8, BURN = 0.8, TOX = 1, CLONE = 2, STAMINA = 1, OXY = 1)
+	name = "Tribal Leader"
+	desc = "An aboriginal resident of the this planet.He deserved his rank by savagery and brutality to enemies."
+	icon_state = "lizardman_leader"
+	icon_living = "lizardman_leader"
+	maxHealth = 200
+	health = 200
+	melee_damage_lower = 30
+	melee_damage_upper = 30
+	attack_sound = 'sound/weapons/bladeslice.ogg'
+	attacktext = "рубит"
+	damage_coeff = list(BRUTE = 0.8, BURN = 0.8, TOX = 1, CLONE = 2, STAMINA = 1, OXY = 1)
 
 /mob/living/simple_animal/hostile/panther/huge_panther
 	name = "Huge panther"
