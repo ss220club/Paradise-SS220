@@ -32,7 +32,7 @@
 	smoothing_groups = list(SMOOTH_GROUP_TURF, SMOOTH_GROUP_GRASS)
 	canSmoothWith = list(SMOOTH_GROUP_GRASS, SMOOTH_GROUP_JUNGLE_GRASS)
 	layer = ABOVE_OPEN_TURF_LAYER
-	mouse_opacity = MOUSE_OPACITY_ICON
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	footstep = FOOTSTEP_GRASS
 	barefootstep = FOOTSTEP_GRASS
 	clawfootstep = FOOTSTEP_GRASS
