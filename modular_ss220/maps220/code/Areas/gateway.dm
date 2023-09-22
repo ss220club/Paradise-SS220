@@ -224,17 +224,17 @@
 	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
 	icon_state = "awaycontent1"
 	always_unpowered = TRUE
-	ambientsounds = list ('modular_ss220/aesthetics_sounds/sound/area_ambient/jungle1.ogg', 'modular_ss220/aesthetics_sounds/sound/area_ambient/jungle2.ogg')
+	ambientsounds = list ('modular_ss220/aesthetics_sounds/sound/area_ambient/jungle1.ogg', 'modular_ss220/aesthetics_sounds/sound/area_ambient/jungle2.ogg', 'modular_ss220/aesthetics_sounds/sound/area_ambient/jungle3.ogg')
 
 /area/awaymission/jungle_planet/outside/river
 	name = "River"
 	icon_state = "awaycontent2"
-	ambientsounds = "modular_ss220/aesthetics_sounds/sound/area_ambient/river.ogg"
+	ambientsounds = 'modular_ss220/aesthetics_sounds/sound/area_ambient/river.ogg'
 
 /area/awaymission/jungle_planet/outside/waterfall
 	name = "Waterfall"
 	icon_state = "awaycontent3"
-	ambientsounds = "modular_ss220/aesthetics_sounds/sound/area_ambient/waterfall.ogg"
+	ambientsounds = 'modular_ss220/aesthetics_sounds/sound/area_ambient/waterfall.ogg'
 
 /area/awaymission/jungle_planet/outside/cave
 	name = "Cave"
