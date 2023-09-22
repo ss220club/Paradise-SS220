@@ -1,4 +1,4 @@
-/* Coastline */
+/* Beach */
 /turf/simulated/floor/beach/away/coastline/beachcorner
 	name = "beachcorner"
 	icon = 'modular_ss220/maps220/icons/floors.dmi'
@@ -9,6 +9,18 @@
 	clawfootstep = FOOTSTEP_WATER
 	heavyfootstep = FOOTSTEP_WATER
 	baseturf = /turf/simulated/floor/beach/away/coastline/beachcorner
+
+/turf/simulated/floor/beach/away/water/deep/dense_canpass
+	name = "Deep Water"
+	smoothing_groups = list()
+	water_overlay_image = null
+	icon_state = "seadeep"
+	baseturf = /turf/simulated/floor/beach/away/water/deep
+
+/turf/simulated/floor/beach/away/water/deep/dense_canpass/CanPass (atom/movable/mover, border_dir)
+	.=..()
+	if(isliving(mover))
+		return FALSE
 
 /* Indestructible */
 /turf/simulated/floor/indestructible/grass
