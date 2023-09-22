@@ -327,8 +327,6 @@
 	rapid_melee = 2
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	attacktext = "колет"
-	/var/melee_block_chance = 10
-	/var/ranged_block_chance = 10
 
 /mob/living/simple_animal/hostile/jungle_lizard/archer
 	name = "Tribal Archer"
