@@ -23,30 +23,28 @@
 		add_fingerprint(user)
 		empty_bin(user, W)
 		return
-	else
-		var/paper_result
-		for(var/shred_type in shred_amounts)
-			if(istype(W, shred_type))
-				paper_result = shred_amounts[shred_type]
-		if(paper_result)
-			if(paperamount == max_paper)
-				to_chat(user, span_warning("\The [src] is full; please empty it before you continue."))
-				return
-			paperamount += paper_result
-			qdel(W)
-			playsound(src.loc, 'modular_ss220/objects/sound/pshred.ogg', 75, 1)
-			if(paperamount > max_paper)
-				to_chat(user, span_danger("\The [src] was too full, and shredded paper goes everywhere!"))
-				for(var/i=(paperamount-max_paper);i>0;i--)
-					var/obj/item/shredded_paper/SP = get_shredded_paper()
-					SP.loc = get_turf(src)
-					SP.throw_at(get_edge_target_turf(src, pick(GLOB.alldirs)), 1, 1)
-				paperamount = max_paper
-			update_icon()
-			add_fingerprint(user)
-			return
-	..()
-
+	var/paper_result
+	for(var/shred_type in shred_amounts)
+		if(istype(W, shred_type))
+			paper_result = shred_amounts[shred_type]
+	if(!paper_result)
+		. = ..()
+		return
+	if(paperamount == max_paper)
+		to_chat(user, span_warning("[src] is full; please empty it before you continue."))
+		return
+	paperamount += paper_result
+	qdel(W)
+	playsound(loc, 'modular_ss220/objects/sound/pshred.ogg', 75, 1)
+	if(paperamount > max_paper)
+		to_chat(user, span_danger("[src] was too full, and shredded paper goes everywhere!"))
+		for(var/i in 1 to paperamount-max_paper)
+			var/obj/item/shredded_paper/SP = get_shredded_paper()
+			SP.loc = get_turf(src)
+			SP.throw_at(get_edge_target_turf(src, pick(GLOB.alldirs)), 1, 1)
+		paperamount = max_paper
+	update_icon()
+	add_fingerprint(user)
 	return
 
 /obj/machinery/papershredder/wrench_act(mob/user, obj/item/I)
@@ -73,7 +71,7 @@
 		return
 
 	if(!paperamount)
-		to_chat(usr, span_notice("\The [src] is empty."))
+		to_chat(usr, span_notice("[src] is empty."))
 		return
 
 	empty_bin(usr)
@@ -84,25 +82,26 @@
 	if(empty_into && !istype(empty_into))
 		empty_into = null
 
-	if(empty_into && empty_into.contents.len >= empty_into.storage_slots)
-		to_chat(user, span_notice("\The [empty_into] is full."))
+	if(empty_into && length(empty_into.contents) >= empty_into.storage_slots)
+		to_chat(user, span_notice("[empty_into] is full."))
 		return
 
 	while(paperamount)
 		var/obj/item/shredded_paper/SP = get_shredded_paper()
-		if(!SP) break
+		if(!SP)
+			break
 		if(empty_into)
 			empty_into.handle_item_insertion(SP)
-			if(empty_into.contents.len >= empty_into.storage_slots)
+			if(length(empty_into.contents) >= empty_into.storage_slots)
 				break
 	if(empty_into)
 		if(paperamount)
-			to_chat(user, span_notice("You fill \the [empty_into] with as much shredded paper as it will carry."))
+			to_chat(user, span_notice("You fill [empty_into] with as much shredded paper as it will carry."))
 		else
-			to_chat(user, span_notice("You empty \the [src] into \the [empty_into]."))
+			to_chat(user, span_notice("You empty [src] into [empty_into]."))
 
 	else
-		to_chat(user, span_notice("You empty \the [src]."))
+		to_chat(user, span_notice("You empty [src]."))
 	update_icon()
 
 /obj/machinery/papershredder/proc/get_shredded_paper()
@@ -120,7 +119,7 @@
 		return
 	if(is_hot(W, user))
 		add_fingerprint(user)
-		user.visible_message(span_danger("\The [user] burns right through \the [src], turning it to ash. It flutters through the air before settling on the floor in a heap."), span_danger("You burn right through \the [src], turning it to ash. It flutters through the air before settling on the floor in a heap."))
+		user.visible_message(span_danger("\The [user] burns right through [src], turning it to ash. It flutters through the air before settling on the floor in a heap."), span_danger("You burn right through [src], turning it to ash. It flutters through the air before settling on the floor in a heap."))
 		fire_act()
 	else
 		..()
@@ -139,4 +138,5 @@
 
 /obj/item/shredded_paper/Initialize()
 	. = ..()
-	if(prob(65)) color = pick("#8b8b8b","#e7e4e4", "#c9c9c9")
+	if(prob(65))
+		color = pick("#8b8b8b","#e7e4e4", "#c9c9c9")
