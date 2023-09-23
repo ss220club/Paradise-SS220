@@ -279,7 +279,7 @@
 /* Jungle Mob */
 /mob/living/simple_animal/hostile/jungle_lizard
 	name = "tribal lizardman"
-	desc = "An aboriginal resident of this planet. This barbaric will not tolerate intruders."
+	desc = "Представитель коренного населения этой планеты. Этот варвар не потерпит незваных гостей."
 	icon = 'modular_ss220/maps220/icons/simple_human.dmi'
 	icon_state = "lizardman_1"
 	icon_living = "lizardman_1"
@@ -317,7 +317,7 @@
 
 /mob/living/simple_animal/hostile/jungle_lizard/spearman
 	name = "tribal spearman"
-	desc = "An aboriginal resident of the this planet. Armed with a sharp spear, a strong-wood made shield and a furious desire to protect their territories."
+	desc = "Представитель коренного населения этой планеты. Вооружен острым копьем, крепким деревянным баклером и яростным желанием защищать свои земли."
 	icon_state = "lizardman_spear"
 	icon_living = "lizardman_spear"
 	maxHealth = 100
@@ -330,7 +330,7 @@
 
 /mob/living/simple_animal/hostile/jungle_lizard/archer
 	name = "tribal archer"
-	desc = "An aboriginal resident of the this planet. Armed with a deadly composite bow."
+	desc = "Представитель коренного населения этой планеты. Вооружен мастерски сделанным композитным луком и смертоносными стрелами."
 	icon_state = "lizardman_bow"
 	icon_living = "lizardman_bow"
 	ranged = 1
@@ -349,7 +349,7 @@
 
 /mob/living/simple_animal/hostile/jungle_lizard/axeman
 	name = "tribal axeman"
-	desc = "An aboriginal resident of the this planet. His axe is as huge and dangerous as he is."
+	desc = "Представитель коренного населения этой планеты. Закован в плотный самодельный костяной панцырь и вооружен огромным топором, таким же опасным, как и он сам."
 	icon_state = "lizardman_axe"
 	icon_living = "lizardman_axe"
 	maxHealth = 160
@@ -361,7 +361,7 @@
 
 /mob/living/simple_animal/hostile/jungle_lizard/leader
 	name = "tribal leader"
-	desc = "An aboriginal resident of the this planet.He deserved his rank by savagery and brutality to enemies."
+	desc = "Представитель коренного населения этой планеты. Этот ящер заслужил свое звание жестокостью и кровожадностью по отношению к врагам."
 	icon_state = "lizardman_leader"
 	icon_living = "lizardman_leader"
 	maxHealth = 200
@@ -374,7 +374,7 @@
 
 /mob/living/simple_animal/hostile/panther/huge_panther
 	name = "huge panther"
-	desc = "A long sleek, black cat with sharp teeth and claws. This one looks very huge."
+	desc = "Большой, гладкий черный кот с острыми клыками и когтями. Этот выглядит особенно огромным."
 	maxHealth = 120
 	health = 120
 	harm_intent_damage = 5
@@ -389,7 +389,7 @@
 
 /mob/living/simple_animal/hostile/poison_snake
 	name = "poison snake"
-	desc = "A slithery snake. It's worth looking at the ground when you walk. The poison of many of them is extremely dangerous!"
+	desc = "Изворотливая змея, незаметно скользящая своим брюхом по земле. Яд многих из них может быть смертельно опасным."
 	icon_state = "snake"
 	icon_living = "snake"
 	icon_dead = "snake_dead"

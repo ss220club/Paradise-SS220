@@ -286,9 +286,7 @@
 /turf/simulated/floor/engine,
 /area/awaymission/jungle_planet/inside/complex)
 "arP" = (
-/obj/machinery/door/airlock{
-	name = "Toilet Room"
-	},
+/obj/machinery/door/airlock,
 /turf/simulated/floor/plasteel{
 	icon_state = "freezerfloor"
 	},
@@ -410,9 +408,8 @@
 /area/awaymission/jungle_planet/outside/river)
 "aEA" = (
 /obj/machinery/firealarm{
-	dir = 8;
-	pixel_x = 24;
-	pixel_y = -4
+	dir = 4;
+	pixel_x = 24
 	},
 /obj/item/reagent_containers/glass/beaker/waterbottle,
 /obj/effect/spawner/random_spawners/dirt_frequent,
@@ -606,10 +603,7 @@
 	},
 /area/awaymission/jungle_planet/inside/complex)
 "aPs" = (
-/obj/machinery/door/airlock/glass{
-	name = "Robotech Passing Door";
-	req_access = list(271)
-	},
+/obj/machinery/door/airlock/glass,
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/inside/complex)
 "aRy" = (
@@ -623,7 +617,6 @@
 /obj/machinery/door/poddoor/shutters{
 	dir = 2;
 	id_tag = "Main in";
-	name = "Main Bridge Shutters";
 	requires_power = 0
 	},
 /turf/simulated/floor/plasteel,
@@ -675,7 +668,7 @@
 	pixel_y = -32
 	},
 /obj/item/card/id/away/old/sec{
-	name = "MC-16 Multicard";
+	name = "MC-16 multicard";
 	desc = "A clip on ID Badge, has one of those fancy new magnetic strips built in."
 	},
 /obj/effect/decal/remains/human,
@@ -809,14 +802,10 @@
 /area/awaymission/jungle_planet/outside)
 "beN" = (
 /obj/machinery/door/airlock/engineering{
-	name = "Engineering";
+	name = "engineering";
 	req_access = list(271)
 	},
-/obj/machinery/door/firedoor{
-	density = 1;
-	icon_state = "door_closed";
-	opacity = 1
-	},
+/obj/machinery/door/firedoor/closed,
 /turf/simulated/floor/indestructible,
 /area/awaymission/jungle_planet/inside/complex)
 "bhj" = (
@@ -991,7 +980,7 @@
 "bql" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock{
-	name = "Dorm";
+	name = "dorm";
 	req_access = list(271)
 	},
 /turf/simulated/floor/wood{
@@ -1116,15 +1105,11 @@
 "bty" = (
 /obj/machinery/door/airlock/command{
 	locked = 1;
-	name = "Command Door";
+	name = "command";
 	req_access = list(271);
 	id_tag = "commanddoor"
 	},
-/obj/machinery/door/firedoor{
-	density = 1;
-	icon_state = "door_closed";
-	opacity = 1
-	},
+/obj/machinery/door/firedoor/closed,
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
@@ -1133,7 +1118,6 @@
 /obj/machinery/door/poddoor/shutters{
 	dir = 8;
 	id_tag = "Command";
-	name = "Command Shutters";
 	requires_power = 0
 	},
 /turf/simulated/floor/plasteel,
@@ -1209,10 +1193,10 @@
 "bvE" = (
 /obj/structure/table,
 /obj/machinery/recharger{
-	pixel_x = 8
+	pixel_x = 7
 	},
 /obj/machinery/recharger{
-	pixel_x = -5
+	pixel_x = -7
 	},
 /obj/item/clothing/glasses/sunglasses{
 	pixel_y = 11
@@ -1313,7 +1297,7 @@
 /area/awaymission/jungle_planet/outside/cave)
 "bCI" = (
 /obj/machinery/door/airlock/mining{
-	name = "Second Hangar";
+	name = "second hangar";
 	locked = 1;
 	req_access = list(271);
 	id_tag = "hang2in"
@@ -1325,8 +1309,7 @@
 	},
 /obj/machinery/door/poddoor/shutters{
 	dir = 8;
-	id_tag = "Cargo in";
-	name = "Second Hangar Shutters"
+	id_tag = "Cargo in"
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -1334,10 +1317,12 @@
 	},
 /area/awaymission/jungle_planet/inside)
 "bDb" = (
-/obj/item/bedsheet/black,
-/obj/item/stack/sheet/wood{
-	pixel_y = 0
+/obj/item/card/id/away/old/sec{
+	name = "MC-16 multicard";
+	desc = "A clip on ID Badge, has one of those fancy new magnetic strips built in."
 	},
+/obj/effect/decal/remains/human,
+/obj/effect/spawner/random_spawners/blood_often,
 /turf/simulated/floor/wood{
 	icon_state = "wood-broken5"
 	},
@@ -1871,13 +1856,10 @@
 /turf/simulated/floor/plating,
 /area/awaymission/jungle_planet/inside/complex)
 "coG" = (
-/obj/structure/flora/ausbushes/brflowers,
-/obj/structure/flora/ausbushes/ppflowers,
-/obj/structure/flora/junglebush/large{
-	icon_state = "bush3"
-	},
-/turf/simulated/floor/indestructible/grass,
-/area/awaymission/jungle_planet/inside/complex)
+/obj/effect/spawner/random_spawners/dirt_maybe,
+/obj/effect/landmark/awaystart,
+/turf/simulated/floor/plasteel,
+/area/awaymission/jungle_planet/inside)
 "cpc" = (
 /obj/structure/disposalpipe/broken{
 	dir = 4
@@ -1999,9 +1981,7 @@
 /area/awaymission/jungle_planet/outside/river)
 "cyh" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/glass{
-	name = "Bar"
-	},
+/obj/machinery/door/airlock/glass,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
@@ -2119,7 +2099,7 @@
 "cDY" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock{
-	name = "Dorm";
+	name = "dorm";
 	req_access = list(271)
 	},
 /turf/simulated/floor/wood,
@@ -2276,18 +2256,14 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/door/firedoor{
-	density = 1;
-	icon_state = "door_closed";
-	opacity = 1
-	},
+/obj/machinery/door/firedoor/closed,
 /obj/item/stack/cable_coil{
 	pixel_y = -11;
 	amount = 2
 	},
 /obj/machinery/door/airlock/engineering{
 	locked = 1;
-	name = "Engineering";
+	name = "engineering";
 	req_access = list(271)
 	},
 /turf/simulated/floor/plasteel,
@@ -2329,11 +2305,7 @@
 	},
 /area/awaymission/jungle_planet/outside/cave)
 "cPv" = (
-/obj/machinery/door/firedoor{
-	density = 1;
-	icon_state = "door_closed";
-	opacity = 1
-	},
+/obj/machinery/door/firedoor/closed,
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/inside/complex)
 "cPB" = (
@@ -2374,9 +2346,6 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/inside/complex)
 "cUf" = (
-/obj/machinery/door_control{
-	pixel_x = 31
-	},
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
@@ -2449,7 +2418,6 @@
 "cWO" = (
 /obj/effect/spawner/window/reinforced,
 /obj/machinery/door/poddoor/shutters{
-	name = "Security Shutters";
 	id_tag = "Sec in";
 	requires_power = 0
 	},
@@ -2577,10 +2545,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/door/airlock/glass{
-	name = "Robotech Passing Door";
-	req_access = list(271)
-	},
+/obj/machinery/door/airlock/glass,
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/inside/complex)
 "diO" = (
@@ -2654,7 +2619,6 @@
 /obj/effect/spawner/window/reinforced,
 /obj/machinery/door/poddoor/shutters{
 	dir = 8;
-	name = "Main Hangar Shutters";
 	id_tag = "Hang in";
 	requires_power = 0
 	},
@@ -3329,8 +3293,8 @@
 	icon_keyboard = "";
 	icon_screen = "telescreen";
 	icon_state = "telescreen_console";
-	name = "Broken Computer";
-	pixel_x = 30
+	pixel_x = 30;
+	density = 0
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/wood,
@@ -3624,12 +3588,11 @@
 	},
 /obj/machinery/door/airlock/mining{
 	locked = 1;
-	name = "Main Hangar";
+	name = "main hangar";
 	req_access = list(271)
 	},
 /obj/machinery/door/poddoor/shutters{
 	dir = 8;
-	name = "Main Hangar Shutters";
 	id_tag = "Hang in";
 	requires_power = 0
 	},
@@ -3738,6 +3701,7 @@
 "eGY" = (
 /obj/effect/decal/cleanable/cobweb2,
 /obj/effect/spawner/random_spawners/dirt_maybe,
+/obj/effect/landmark/awaystart,
 /turf/simulated/floor/wood{
 	icon_state = "wood-broken2"
 	},
@@ -3899,7 +3863,7 @@
 "ePb" = (
 /obj/item/gun/energy/gun/mini{
 	selfcharge = 1;
-	name = "Self-charge gun prototype"
+	name = "self-charge gun prototype"
 	},
 /turf/simulated/floor/wood,
 /area/awaymission/jungle_planet/inside/complex)
@@ -4207,7 +4171,7 @@
 /area/awaymission/jungle_planet/outside)
 "flq" = (
 /obj/machinery/door/airlock{
-	name = "Dorm";
+	name = "dorm";
 	req_access = list(271)
 	},
 /obj/machinery/door/firedoor,
@@ -4226,18 +4190,13 @@
 	pixel_y = 10;
 	amount = 2
 	},
-/obj/machinery/door/firedoor{
-	density = 1;
-	icon_state = "door_closed";
-	opacity = 1
-	},
+/obj/machinery/door/firedoor/closed,
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/door/poddoor/shutters{
-	name = "Right Bridge Shutters";
 	id_tag = "Right in";
 	dir = 8;
 	requires_power = 0
@@ -4437,16 +4396,12 @@
 	anchored = 1
 	},
 /obj/item/airlock_electronics,
-/obj/machinery/door/firedoor{
-	density = 1;
-	icon_state = "door_closed";
-	opacity = 1
-	},
+/obj/machinery/door/firedoor/closed,
 /turf/simulated/floor/plating,
 /area/awaymission/jungle_planet/inside/complex)
 "fBI" = (
 /obj/machinery/door/airlock{
-	name = "Restrooms"
+	name = "restrooms"
 	},
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
@@ -4464,7 +4419,6 @@
 	icon_state = "small"
 	},
 /obj/machinery/door/poddoor/shutters{
-	name = "Security Shutters";
 	id_tag = "Sec in";
 	dir = 8;
 	requires_power = 0
@@ -4499,7 +4453,6 @@
 	icon_keyboard = "";
 	icon_screen = "telescreen";
 	icon_state = "telescreen_console";
-	name = "Broken Computer";
 	pixel_x = -32
 	},
 /obj/item/reagent_containers/food/drinks/drinkingglass/shotglass,
@@ -4696,7 +4649,7 @@
 /area/awaymission/jungle_planet/inside/complex)
 "fNF" = (
 /obj/machinery/computer{
-	name = "Broken Computer";
+	name = "broken computer";
 	desc = "A computer long since rendered non-functional due to lack of maintenance. Spitting out error messages.";
 	icon_state = "computer";
 	dir = 1
@@ -5140,7 +5093,7 @@
 "gxN" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock{
-	name = "Dorm";
+	name = "dorm";
 	req_access = list(271)
 	},
 /turf/simulated/floor/wood{
@@ -5156,7 +5109,7 @@
 /obj/structure{
 	icon = 'icons/obj/machines/telecomms.dmi';
 	icon_state = "hub_off";
-	name = "Messaging Server";
+	name = "messaging server";
 	desc = "A machine that processes and routes PDA and request console messages.";
 	density = 1;
 	anchored = 1
@@ -5350,8 +5303,7 @@
 /obj/structure/grille/broken,
 /obj/machinery/door/poddoor/shutters{
 	dir = 2;
-	id_tag = "CMDgate";
-	name = "Medbay Shutters"
+	id_tag = "CMDgate"
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/jungle_planet/inside/complex)
@@ -5605,7 +5557,7 @@
 /area/awaymission/jungle_planet/outside/river)
 "hbL" = (
 /obj/machinery/door/airlock/medical{
-	name = "Morgue";
+	name = "morgue";
 	req_access = list(271)
 	},
 /turf/simulated/floor/plasteel{
@@ -5854,7 +5806,7 @@
 "hov" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock{
-	name = "Dorm";
+	name = "dorm";
 	req_access = list(271)
 	},
 /turf/simulated/floor/wood{
@@ -6095,9 +6047,6 @@
 /obj/effect/turf_decal/arrows{
 	dir = 8
 	},
-/obj/machinery/door_control{
-	pixel_y = -28
-	},
 /turf/simulated/floor/plasteel{
 	icon_state = "purple"
 	},
@@ -6259,6 +6208,9 @@
 /area/awaymission/jungle_planet/outside)
 "hLp" = (
 /obj/structure/flora/junglebush/large,
+/mob/living/simple_animal/hostile/poison_snake{
+	wander = 0
+	},
 /turf/simulated/floor/indestructible/grass,
 /area/awaymission/jungle_planet/outside/waterfall)
 "hMy" = (
@@ -6522,11 +6474,11 @@
 /obj/effect/turf_decal/loading_area{
 	dir = 1
 	},
-/obj/effect/landmark/awaystart,
 /obj/machinery/light_construct{
 	dir = 8
 	},
 /obj/effect/spawner/random_spawners/dirt_often,
+/obj/effect/landmark/awaystart,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "darkgrey"
@@ -6574,11 +6526,10 @@
 	},
 /obj/machinery/door/airlock/security{
 	locked = 1;
-	name = "Security Central Post";
+	name = "security";
 	req_access = list(271)
 	},
 /obj/machinery/door/poddoor/shutters{
-	name = "Security Shutters";
 	id_tag = "Sec in";
 	requires_power = 0
 	},
@@ -6671,12 +6622,11 @@
 /obj/effect/decal/warning_stripes/west,
 /obj/machinery/door/airlock/mining{
 	locked = 1;
-	name = "Main Hangar";
+	name = "main hangar";
 	req_access = list(271)
 	},
 /obj/machinery/door/poddoor/shutters{
 	dir = 2;
-	name = "Main Hangar Shutters";
 	id_tag = "Hang in";
 	requires_power = 0
 	},
@@ -6693,9 +6643,7 @@
 /turf/simulated/floor/indestructible/grass,
 /area/awaymission/jungle_planet/outside)
 "iiu" = (
-/obj/machinery/door/airlock/glass{
-	name = "Bar"
-	},
+/obj/machinery/door/airlock/glass,
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/wood,
 /area/awaymission/jungle_planet/inside/complex)
@@ -6846,7 +6794,6 @@
 	icon_keyboard = "";
 	icon_screen = "telescreen";
 	icon_state = "telescreen_console";
-	name = "Broken Computer";
 	pixel_x = 30
 	},
 /turf/simulated/floor/plasteel,
@@ -6960,7 +6907,7 @@
 /area/awaymission/jungle_planet/outside)
 "iAq" = (
 /obj/machinery/door/airlock/medical{
-	name = "Medbay";
+	name = "medbay";
 	req_access = list(271)
 	},
 /obj/machinery/door/firedoor,
@@ -7158,7 +7105,6 @@
 	icon_keyboard = "";
 	icon_screen = "telescreen";
 	icon_state = "telescreen_console";
-	name = "Broken Computer";
 	pixel_x = 30
 	},
 /obj/item/flag/species,
@@ -7500,8 +7446,7 @@
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/machinery/power/apc/off_station/empty_charge{
-	pixel_x = 24;
-	name = "Engineering APC"
+	pixel_x = 24
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -7566,7 +7511,6 @@
 /area/awaymission/jungle_planet/outside/river)
 "jjL" = (
 /obj/machinery/computer{
-	name = "Mech Management Console";
 	desc = "A computer long since rendered non-functional due to lack of maintenance. Spitting out error messages.";
 	icon_state = "computer";
 	dir = 8
@@ -7731,9 +7675,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/door/airlock/glass{
-	name = "Bar"
-	},
+/obj/machinery/door/airlock/glass,
 /turf/simulated/floor/wood,
 /area/awaymission/jungle_planet/inside/complex)
 "jtW" = (
@@ -8040,11 +7982,7 @@
 /area/awaymission/jungle_planet/outside)
 "jKq" = (
 /obj/item/stack/sheet/metal,
-/obj/machinery/door/firedoor{
-	density = 1;
-	icon_state = "door_closed";
-	opacity = 1
-	},
+/obj/machinery/door/firedoor/closed,
 /turf/simulated/floor/plating,
 /area/awaymission/jungle_planet/inside/complex)
 "jKX" = (
@@ -8059,7 +7997,6 @@
 /turf/simulated/floor/indestructible/grass,
 /area/awaymission/jungle_planet/outside/waterfall)
 "jMb" = (
-/obj/structure/flora/rock/pile,
 /obj/effect/landmark/awaymissions/gate_lizard/mine_spawner{
 	id = "cave1"
 	},
@@ -8174,12 +8111,7 @@
 	icon_state = "tracks";
 	dir = 4
 	},
-/obj/machinery/recharger/wallcharger{
-	pixel_y = -37;
-	pixel_x = 8
-	},
 /obj/machinery/door_control{
-	pixel_x = 9;
 	pixel_y = -26;
 	id = "Sec in";
 	name = "Security Shutters-control";
@@ -8476,9 +8408,7 @@
 /turf/simulated/floor/indestructible/grass,
 /area/awaymission/jungle_planet/outside)
 "kmg" = (
-/obj/machinery/door/airlock/glass{
-	name = "Bar"
-	},
+/obj/machinery/door/airlock/glass,
 /obj/structure/firelock_frame,
 /turf/simulated/floor/wood{
 	icon_state = "wood-broken5"
@@ -8591,7 +8521,6 @@
 /obj/machinery/door/poddoor/shutters{
 	dir = 2;
 	id_tag = "Command";
-	name = "Command Shutters";
 	requires_power = 0
 	},
 /turf/simulated/floor/plasteel,
@@ -9000,7 +8929,6 @@
 	icon_keyboard = "";
 	icon_screen = "telescreen";
 	icon_state = "telescreen_console";
-	name = "Broken Computer";
 	pixel_x = -32;
 	density = 0
 	},
@@ -9103,7 +9031,6 @@
 /turf/simulated/floor/plating,
 /area/awaymission/jungle_planet/outside/abandoned)
 "kWk" = (
-/obj/effect/landmark/awaystart,
 /obj/effect/spawner/random_spawners/dirt_maybe,
 /obj/structure/cable{
 	d1 = 4;
@@ -9201,12 +9128,10 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/outside)
 "lbI" = (
-/obj/structure/door_assembly/door_assembly_research,
-/obj/machinery/door/firedoor{
-	density = 1;
-	icon_state = "door_closed";
-	opacity = 1
+/obj/structure/door_assembly/door_assembly_research{
+	anchored = 1
 	},
+/obj/machinery/door/firedoor/closed,
 /obj/item/airlock_electronics,
 /obj/structure/cable{
 	d1 = 4;
@@ -9434,13 +9359,10 @@
 /area/awaymission/jungle_planet/inside/complex)
 "lmK" = (
 /obj/machinery/door/airlock/research{
-	locked = 1
+	locked = 1;
+	name = "robotech"
 	},
-/obj/machinery/door/firedoor{
-	density = 1;
-	icon_state = "door_closed";
-	opacity = 1
-	},
+/obj/machinery/door/firedoor/closed,
 /turf/simulated/floor/plasteel{
 	icon_state = "purplefull"
 	},
@@ -9672,6 +9594,19 @@
 	icon_state = "darkgrey"
 	},
 /area/awaymission/jungle_planet/inside/complex)
+"lBS" = (
+/obj/machinery/door/poddoor/shutters{
+	id_tag = "Cargo out"
+	},
+/obj/machinery/door/airlock/mining{
+	name = "second hangar";
+	req_access = list(271)
+	},
+/turf/simulated/floor/plasteel{
+	dir = 4;
+	icon_state = "darkgrey"
+	},
+/area/awaymission/jungle_planet/inside)
 "lCT" = (
 /obj/structure/reagent_dispensers/fueltank/chem{
 	pixel_y = 30
@@ -9837,12 +9772,16 @@
 /area/awaymission/jungle_planet/outside/river)
 "lOz" = (
 /obj/machinery/door/poddoor/shutters{
-	id_tag = "Cargo out";
-	name = "Landing Ground Shutters"
+	id_tag = "Cargo out"
 	},
 /obj/machinery/door/airlock/mining{
-	name = "Second Hangar";
+	name = "second hangar";
 	req_access = list(271)
+	},
+/obj/machinery/door_control{
+	id = "Cargo out";
+	req_access = list(271);
+	pixel_y = 28
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -9891,7 +9830,6 @@
 	amount = 2
 	},
 /obj/machinery/door/poddoor/shutters{
-	name = "Security Shutters";
 	id_tag = "Sec in";
 	dir = 8;
 	requires_power = 0
@@ -10116,8 +10054,7 @@
 	icon_state = "0-4"
 	},
 /obj/machinery/power/apc/off_station/empty_charge{
-	pixel_y = -24;
-	name = "Second Hangar APC"
+	pixel_y = -24
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "grimy"
@@ -10230,15 +10167,14 @@
 /area/awaymission/jungle_planet/inside)
 "mky" = (
 /obj/machinery/door/airlock/mining{
-	name = "Second Hangar";
+	name = "second hangar";
 	locked = 1;
 	req_access = list(271);
 	id_tag = "hang2in"
 	},
 /obj/machinery/door/poddoor/shutters{
 	dir = 8;
-	id_tag = "Cargo in";
-	name = "Second Hangar Shutters"
+	id_tag = "Cargo in"
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -10256,7 +10192,7 @@
 "mkI" = (
 /obj/machinery/door/airlock/security{
 	locked = 1;
-	name = "Security Central Post";
+	name = "security";
 	req_access = list(271)
 	},
 /obj/machinery/door/firedoor,
@@ -10581,7 +10517,7 @@
 /area/awaymission/jungle_planet/inside/complex)
 "mBd" = (
 /obj/machinery/door/airlock/engineering{
-	name = "Engineering";
+	name = "engineering";
 	req_access = list(271)
 	},
 /turf/simulated/floor/plating,
@@ -10997,12 +10933,12 @@
 /obj/machinery/door_control{
 	pixel_x = 8;
 	id = "Command";
-	name = "Command Shutters-control";
+	name = "command shsutters control";
 	req_access = list(271)
 	},
 /obj/machinery/door_control{
 	pixel_x = -8;
-	name = "Hangar Shutters-control";
+	name = "shutters control";
 	id = "Hang in";
 	req_access = list(271)
 	},
@@ -11012,7 +10948,8 @@
 	desiredstate_open = 1;
 	normaldoorcontrol = 1;
 	specialfunctions = 4;
-	id = "commanddoor"
+	id = "commanddoor";
+	name = "door bolts control"
 	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/inside/complex)
@@ -11147,7 +11084,6 @@
 /obj/machinery/door/poddoor/shutters{
 	dir = 2;
 	id_tag = "Command";
-	name = "Command Shutters";
 	requires_power = 0
 	},
 /turf/simulated/floor/plating,
@@ -11199,7 +11135,7 @@
 /area/awaymission/jungle_planet/outside/river)
 "nhA" = (
 /obj/machinery/computer{
-	name = "Broken Computer";
+	name = "broken computer";
 	desc = "A computer long since rendered non-functional due to lack of maintenance. Spitting out error messages.";
 	icon_state = "computer";
 	dir = 1
@@ -11845,7 +11781,6 @@
 /area/awaymission/jungle_planet/inside)
 "obM" = (
 /obj/machinery/door/airlock/hatch,
-/obj/machinery/door/firedoor,
 /obj/structure/spider/stickyweb,
 /turf/simulated/floor/plating,
 /area/awaymission/jungle_planet/inside/complex)
@@ -11911,8 +11846,7 @@
 /obj/effect/spawner/window/reinforced,
 /obj/machinery/door/poddoor/shutters{
 	dir = 2;
-	id_tag = "CMDgate";
-	name = "Medbay Shutters"
+	id_tag = "CMDgate"
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/jungle_planet/inside/complex)
@@ -11956,7 +11890,8 @@
 /turf/simulated/floor/indestructible/grass,
 /area/awaymission/jungle_planet/outside)
 "okA" = (
-/turf/simulated/floor/beach/away/sand,
+/obj/structure/flora/ausbushes/brflowers,
+/turf/simulated/floor/indestructible/grass,
 /area/awaymission/jungle_planet/inside/complex)
 "olI" = (
 /obj/structure/railing{
@@ -12203,7 +12138,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/airlock/mining{
-	name = "Second Hangar";
+	name = "second hangar";
 	req_access = list(271)
 	},
 /turf/simulated/floor/plasteel{
@@ -12490,7 +12425,6 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/outside/river)
 "oMS" = (
-/obj/effect/landmark/awaystart,
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
@@ -12520,19 +12454,15 @@
 /turf/simulated/floor/wood,
 /area/awaymission/jungle_planet/inside/complex)
 "oND" = (
-/obj/effect/landmark/awaystart,
-/obj/effect/landmark/awaystart,
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
+/obj/effect/spawner/random_spawners/dirt_maybe,
+/obj/effect/decal/remains/human,
+/obj/effect/spawner/random_spawners/blood_often,
+/obj/item/card/id/away/old/sec{
+	name = "MC-16 multicard";
+	desc = "A clip on ID Badge, has one of those fancy new magnetic strips built in."
 	},
-/obj/effect/spawner/random_spawners/dirt_often,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "darkgrey"
-	},
-/area/awaymission/jungle_planet/inside)
+/turf/simulated/floor/wood,
+/area/awaymission/jungle_planet/inside/complex)
 "oOq" = (
 /obj/structure/flora/grass/jungle,
 /turf/simulated/floor/beach/away/water{
@@ -12720,7 +12650,7 @@
 "oZK" = (
 /obj/machinery/door/airlock/command{
 	locked = 1;
-	name = "Command Door";
+	name = "command";
 	req_access = list(271)
 	},
 /obj/machinery/door/firedoor,
@@ -13102,9 +13032,8 @@
 /turf/simulated/floor/indestructible/grass,
 /area/awaymission/jungle_planet/outside)
 "pzW" = (
-/obj/effect/decal/remains/human,
-/obj/effect/spawner/random_spawners/blood_often,
-/obj/effect/spawner/random_spawners/dirt_maybe,
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/item/bedsheet/black,
 /turf/simulated/floor/wood{
 	icon_state = "wood-broken7"
 	},
@@ -13632,7 +13561,7 @@
 "qmr" = (
 /obj/structure/table,
 /obj/machinery/computer{
-	name = "Broken Computer";
+	name = "broken computer";
 	desc = "A computer long since rendered non-functional due to lack of maintenance. Spitting out error messages.";
 	icon_state = "laptop";
 	dir = 8;
@@ -13795,7 +13724,7 @@
 /area/awaymission/jungle_planet/outside/river)
 "qwf" = (
 /obj/machinery/door/airlock/engineering{
-	name = "Engineering";
+	name = "engineering";
 	req_access = list(271)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/universal{
@@ -13885,12 +13814,11 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/mining{
 	locked = 1;
-	name = "Main Hangar";
+	name = "main hangar";
 	req_access = list(271)
 	},
 /obj/machinery/door/poddoor/shutters{
 	dir = 8;
-	name = "Main Hangar Shutters";
 	id_tag = "Hang in";
 	requires_power = 0
 	},
@@ -14006,6 +13934,7 @@
 /obj/effect/spawner/random_spawners/blood_often,
 /obj/effect/decal/warning_stripes/west,
 /obj/effect/spawner/random_spawners/dirt_often,
+/obj/item/ammo_casing/caseless/arrow,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "darkgrey"
@@ -14021,13 +13950,9 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/door/firedoor{
-	density = 1;
-	icon_state = "door_closed";
-	opacity = 1
-	},
+/obj/machinery/door/firedoor/closed,
 /obj/machinery/door/airlock/engineering{
-	name = "Engineering";
+	name = "engineering";
 	req_access = list(271)
 	},
 /turf/simulated/floor/plasteel,
@@ -14292,6 +14217,7 @@
 	dir = 4;
 	pixel_x = 12
 	},
+/obj/effect/decal/cleanable/spiderling_remains,
 /turf/simulated/floor/plasteel{
 	icon_state = "freezerfloor"
 	},
@@ -14371,10 +14297,6 @@
 "rgF" = (
 /obj/structure/table,
 /obj/item/trash/can,
-/obj/item/card/id/away/old/sec{
-	name = "MC-16 Multicard";
-	desc = "A clip on ID Badge, has one of those fancy new magnetic strips built in."
-	},
 /turf/simulated/floor/plasteel{
 	icon_state = "redcorner"
 	},
@@ -14687,13 +14609,11 @@
 /obj/machinery/door/firedoor,
 /obj/effect/decal/warning_stripes/east,
 /obj/machinery/door/airlock/mining{
-	locked = 1;
-	name = "Main Hangar";
+	name = "main hangar";
 	req_access = list(271)
 	},
 /obj/machinery/door/poddoor/shutters{
 	dir = 2;
-	name = "Main Hangar Shutters";
 	id_tag = "Hang in";
 	requires_power = 0
 	},
@@ -14720,7 +14640,6 @@
 	icon_keyboard = "";
 	icon_screen = "telescreen";
 	icon_state = "telescreen_console";
-	name = "Broken Computer";
 	pixel_x = -32;
 	density = 0
 	},
@@ -14929,7 +14848,6 @@
 "rNK" = (
 /obj/effect/spawner/window/reinforced,
 /obj/machinery/door/poddoor/shutters{
-	name = "Security Shutters";
 	id_tag = "Sec in";
 	requires_power = 0
 	},
@@ -15018,8 +14936,7 @@
 /area/awaymission/jungle_planet/inside/complex)
 "rSn" = (
 /obj/machinery/firealarm{
-	dir = 8;
-	name = "east fire alarm";
+	dir = 4;
 	pixel_x = 24
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
@@ -15046,7 +14963,7 @@
 /obj/structure{
 	icon = 'icons/obj/machines/telecomms.dmi';
 	icon_state = "AAS_Off_Open";
-	name = "Messaging Server";
+	name = "messaging server";
 	desc = "A machine that processes and routes PDA and request console messages.";
 	pixel_x = -5;
 	density = 1;
@@ -15061,14 +14978,15 @@
 "rUm" = (
 /obj/structure/flora/ausbushes/ywflowers,
 /obj/structure/flora/ausbushes/ppflowers,
-/obj/structure/largecrate,
+/obj/structure/closet/crate{
+	opened = 1
+	},
 /turf/simulated/floor/indestructible/grass,
 /area/awaymission/jungle_planet/inside/complex)
 "rUV" = (
 /obj/machinery/door/airlock/maintenance_hatch{
 	name = "Shuttle Maintenance"
 	},
-/obj/machinery/door/firedoor,
 /obj/structure/spider/stickyweb,
 /turf/simulated/floor/plating,
 /area/awaymission/jungle_planet/inside/complex)
@@ -15491,8 +15409,7 @@
 /area/awaymission/jungle_planet/inside/complex)
 "ssW" = (
 /obj/structure/computerframe{
-	icon_state = "comp_frame_2";
-	name = "mech bay power control console"
+	icon_state = "comp_frame_2"
 	},
 /obj/item/shard{
 	icon_state = "small"
@@ -15530,8 +15447,11 @@
 /turf/simulated/floor/beach/away/sand,
 /area/awaymission/jungle_planet/outside)
 "syJ" = (
-/obj/structure/table_frame,
-/obj/item/stack/sheet/metal,
+/obj/structure/table,
+/obj/item/card/id/away/old/sec{
+	name = "MC-16 multicard";
+	desc = "A clip on ID Badge, has one of those fancy new magnetic strips built in."
+	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "darkgrey"
@@ -15613,7 +15533,6 @@
 /area/awaymission/jungle_planet/inside/complex)
 "sAP" = (
 /obj/machinery/door/poddoor/shutters{
-	name = "Security Shutters";
 	id_tag = "Sec in";
 	dir = 8;
 	requires_power = 0
@@ -15877,7 +15796,7 @@
 "sRJ" = (
 /obj/machinery/computer{
 	desc = "A computer long since rendered non-functional due to lack of maintenance. Spitting out error messages.";
-	name = "Broken Computer"
+	name = "broken computer"
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "purple";
@@ -15919,13 +15838,8 @@
 /turf/simulated/floor/beach/away/sand,
 /area/awaymission/jungle_planet/outside/waterfall)
 "sTS" = (
-/obj/machinery/door/firedoor{
-	density = 1;
-	icon_state = "door_closed";
-	opacity = 1
-	},
+/obj/machinery/door/firedoor/closed,
 /obj/machinery/door/poddoor/shutters{
-	name = "Armory Shutters";
 	id_tag = "Arm in";
 	dir = 2;
 	requires_power = 0
@@ -16414,7 +16328,7 @@
 /area/awaymission/jungle_planet/outside/cave/pirate)
 "tzH" = (
 /obj/machinery/door/airlock/mining{
-	name = "Second Hangar";
+	name = "second hangar";
 	locked = 1;
 	req_access = list(271);
 	id_tag = "hang2in"
@@ -16430,8 +16344,7 @@
 	},
 /obj/machinery/door/poddoor/shutters{
 	dir = 8;
-	id_tag = "Cargo in";
-	name = "Second Hangar Shutters"
+	id_tag = "Cargo in"
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -16604,7 +16517,7 @@
 	icon_state = "0-4"
 	},
 /obj/item/card/id/away/old/sec{
-	name = "MC-16 Multicard";
+	name = "MC-16 multicard";
 	desc = "A clip on ID Badge, has one of those fancy new magnetic strips built in."
 	},
 /turf/simulated/floor/plating,
@@ -16793,44 +16706,25 @@
 	},
 /area/awaymission/jungle_planet/outside/river)
 "tUy" = (
+/obj/effect/landmark/awaystart,
+/turf/simulated/floor/mineral/titanium/blue,
+/area/awaymission/jungle_planet/outside/abandoned)
+"tUU" = (
+/obj/machinery/door/firedoor,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/door/poddoor/shutters{
+	id_tag = "Right in";
+	dir = 8;
+	requires_power = 0
+	},
 /obj/machinery/door/airlock/mining{
 	locked = 1;
-	name = "Main Hangar";
+	name = "main hangar";
 	req_access = list(271)
-	},
-/obj/machinery/door/firedoor,
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/machinery/door/poddoor/shutters{
-	name = "Right Bridge Shutters";
-	id_tag = "Right in";
-	dir = 8;
-	requires_power = 0
-	},
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "darkgrey"
-	},
-/area/awaymission/jungle_planet/inside/complex)
-"tUU" = (
-/obj/machinery/door/airlock/mining{
-	name = "Main Hangar";
-	req_access = list(271)
-	},
-/obj/machinery/door/firedoor,
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/machinery/door/poddoor/shutters{
-	name = "Right Bridge Shutters";
-	id_tag = "Right in";
-	dir = 8;
-	requires_power = 0
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -16904,6 +16798,12 @@
 	name = "ground"
 	},
 /area/awaymission/jungle_planet/outside/river)
+"tZQ" = (
+/obj/item/pickaxe/mini,
+/turf/simulated/floor/plating/asteroid/ancient{
+	name = "ground"
+	},
+/area/awaymission/jungle_planet/outside/cave)
 "tZR" = (
 /obj/structure/fence/door,
 /turf/simulated/floor/plating/asteroid/ancient{
@@ -16936,7 +16836,6 @@
 	},
 /obj/effect/spawner/random_spawners/blood_often,
 /obj/machinery/light_construct,
-/obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/inside/complex)
 "uca" = (
@@ -17197,11 +17096,11 @@
 "upX" = (
 /obj/item/stack/rods,
 /obj/item/shard,
-/obj/machinery/firealarm{
-	dir = 4;
-	pixel_x = -26
-	},
 /obj/effect/spawner/random_spawners/dirt_maybe,
+/obj/machinery/firealarm{
+	dir = 8;
+	pixel_x = -24
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -17376,6 +17275,7 @@
 /area/awaymission/jungle_planet/outside)
 "uBo" = (
 /obj/item/match,
+/obj/effect/decal/cleanable/spiderling_remains,
 /turf/simulated/floor/plating,
 /area/awaymission/jungle_planet/inside/complex)
 "uBr" = (
@@ -17549,10 +17449,6 @@
 	},
 /area/awaymission/jungle_planet/outside)
 "uKR" = (
-/obj/machinery/firealarm{
-	dir = 4;
-	pixel_x = -26
-	},
 /obj/structure/closet,
 /obj/item/clothing/mask/gas,
 /obj/item/wrench,
@@ -17680,7 +17576,7 @@
 /area/awaymission/jungle_planet/inside/complex)
 "uRJ" = (
 /obj/machinery/door/airlock{
-	name = "Restrooms"
+	name = "restrooms"
 	},
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/plasteel{
@@ -17813,7 +17709,7 @@
 /obj/structure{
 	icon = 'icons/obj/stationobjs.dmi';
 	icon_state = "controller-o";
-	name = "Blackbox Recorder";
+	name = "blackbox recorder";
 	density = 1;
 	anchored = 1
 	},
@@ -18090,7 +17986,6 @@
 "vrP" = (
 /obj/effect/spawner/window/reinforced,
 /obj/machinery/door/poddoor/shutters{
-	name = "Security Shutters";
 	id_tag = "Sec in";
 	dir = 8;
 	requires_power = 0
@@ -18179,8 +18074,7 @@
 /obj/effect/decal/cleanable/cobweb2,
 /obj/structure/computerframe{
 	icon_state = "comp_frame_5";
-	dir = 8;
-	name = "Mech Management Console"
+	dir = 8
 	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/inside/complex)
@@ -18410,20 +18304,15 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/door/firedoor{
-	density = 1;
-	icon_state = "door_closed";
-	opacity = 1
-	},
+/obj/machinery/door/firedoor/closed,
 /obj/machinery/door/poddoor/shutters{
-	name = "Security Shutters";
 	id_tag = "Sec in";
 	dir = 8;
 	requires_power = 0
 	},
 /obj/machinery/door/airlock/security{
 	locked = 1;
-	name = "Security Central Post";
+	name = "security";
 	req_access = list(271)
 	},
 /turf/simulated/floor/plasteel{
@@ -19535,17 +19424,10 @@
 /turf/simulated/floor/indestructible/grass,
 /area/awaymission/jungle_planet/outside)
 "xam" = (
-/obj/effect/spawner/random_spawners/dirt_frequent,
-/obj/machinery/door_control{
-	id = "Cargo out";
-	req_access = list(271);
-	pixel_x = -32
-	},
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "darkgrey"
-	},
-/area/awaymission/jungle_planet/inside)
+/obj/effect/spawner/random_spawners/dirt_often,
+/obj/effect/landmark/awaystart,
+/turf/simulated/floor/plating,
+/area/awaymission/jungle_planet/inside/complex)
 "xaI" = (
 /obj/effect/turf_decal/caution,
 /obj/effect/spawner/random_spawners/dirt_frequent,
@@ -19567,38 +19449,28 @@
 "xbo" = (
 /obj/machinery/door/airlock/command{
 	locked = 1;
-	name = "Command Door";
+	name = "command";
 	req_access = list(271);
 	id_tag = "commanddoor"
 	},
-/obj/machinery/door/firedoor{
-	density = 1;
-	icon_state = "door_closed";
-	opacity = 1
-	},
+/obj/machinery/door/firedoor/closed,
 /obj/machinery/door/poddoor/shutters{
 	dir = 8;
 	id_tag = "Command";
-	name = "Command Shutters";
 	requires_power = 0
 	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/inside/complex)
 "xbW" = (
-/obj/machinery/door/firedoor{
-	density = 1;
-	icon_state = "door_closed";
-	opacity = 1
-	},
+/obj/machinery/door/firedoor/closed,
 /obj/machinery/door/poddoor/shutters{
-	name = "Armory Shutters";
 	id_tag = "Arm in";
 	dir = 2;
 	requires_power = 0
 	},
 /obj/machinery/door/airlock/security{
 	locked = 1;
-	name = "Security Central Post";
+	name = "security";
 	req_access = list(271)
 	},
 /turf/simulated/floor/plasteel{
@@ -19680,6 +19552,12 @@
 /obj/item/ammo_casing/caseless/arrow,
 /obj/effect/spawner/random_spawners/blood_often,
 /obj/effect/spawner/random_spawners/dirt_often,
+/obj/machinery/door_control{
+	pixel_y = -28;
+	name = "Armory Shutters-control";
+	id = "Arm in";
+	req_access = list(271)
+	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "darkredcorners"
@@ -20081,7 +19959,7 @@
 /obj/machinery/computer{
 	icon_state = "computer";
 	dir = 8;
-	name = "Arrival Console"
+	name = "arrival console"
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -20180,13 +20058,11 @@
 /area/awaymission/jungle_planet/inside/complex)
 "xPr" = (
 /obj/machinery/door/airlock/research{
-	name = "Robotech Department";
+	name = "robotech";
 	req_access = list(271)
 	},
 /obj/machinery/door/firedoor,
-/obj/machinery/door/poddoor/shutters{
-	name = "Robo Shutters"
-	},
+/obj/machinery/door/firedoor/closed,
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/inside/complex)
 "xPM" = (
@@ -20219,8 +20095,8 @@
 /obj/effect/turf_decal/loading_area{
 	dir = 1
 	},
-/obj/effect/landmark/awaystart,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/awaystart,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "darkgrey"
@@ -20275,13 +20151,12 @@
 "xUs" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/poddoor/shutters{
-	name = "Security Shutters";
 	id_tag = "Sec in";
 	requires_power = 0
 	},
 /obj/machinery/door/airlock/security{
 	locked = 1;
-	name = "Security Central Post";
+	name = "security";
 	req_access = list(271)
 	},
 /turf/simulated/floor/plasteel,
@@ -20477,13 +20352,9 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/door/firedoor{
-	density = 1;
-	icon_state = "door_closed";
-	opacity = 1
-	},
+/obj/machinery/door/firedoor/closed,
 /obj/machinery/door/airlock/engineering{
-	name = "Engineering";
+	name = "engineering";
 	req_access = list(271)
 	},
 /turf/simulated/floor/plasteel,
@@ -23469,7 +23340,7 @@ wbT
 koU
 mAT
 ulv
-dGT
+vgF
 wDF
 koU
 kzC
@@ -24407,7 +24278,7 @@ cku
 cku
 wHC
 hdm
-euH
+mTn
 idC
 wOP
 wOP
@@ -24575,7 +24446,7 @@ pxm
 rBC
 sXj
 xkK
-btI
+xam
 cku
 fOl
 mUy
@@ -24975,7 +24846,7 @@ rJu
 iUc
 gMI
 jxT
-jxT
+tUy
 jxT
 jxT
 kpa
@@ -25515,7 +25386,7 @@ bql
 vSc
 spr
 gxN
-jjQ
+oND
 kCn
 sXj
 iGS
@@ -26102,8 +25973,8 @@ tha
 qni
 qni
 lOz
-lOz
-lOz
+lBS
+lBS
 tBu
 fcs
 fhz
@@ -26287,7 +26158,7 @@ wQZ
 oiZ
 vrK
 aHb
-xam
+iAY
 jxB
 bmT
 jxB
@@ -27218,7 +27089,7 @@ pfh
 tRE
 iKL
 tAR
-oND
+oMS
 xPb
 mFJ
 kXb
@@ -27789,7 +27660,7 @@ aZA
 qST
 tBu
 cDs
-cDs
+coG
 ibX
 iKm
 khp
@@ -29066,8 +28937,8 @@ dKU
 jHd
 srT
 dGT
-coG
 aaG
+qVG
 hFe
 vmE
 btI
@@ -29253,7 +29124,7 @@ fSp
 aRy
 dGT
 dGT
-qVG
+aaG
 qzW
 mkC
 jEv
@@ -30190,7 +30061,7 @@ ssW
 gAk
 plk
 xlu
-pHo
+dGT
 vmE
 nWh
 fTr
@@ -31315,7 +31186,7 @@ omz
 omz
 tUU
 fnt
-tUy
+tUU
 omz
 omz
 jHd
@@ -53707,7 +53578,7 @@ miM
 miM
 kWD
 kWD
-miM
+kWD
 miM
 miM
 njd
@@ -54296,7 +54167,7 @@ gZv
 gZv
 miM
 jMb
-rOc
+nai
 miM
 miM
 miM
@@ -54482,9 +54353,9 @@ mTn
 gZv
 gZv
 miM
-rOc
-rOc
-aFD
+nai
+nai
+nai
 nai
 miM
 miM
@@ -54669,7 +54540,7 @@ aHl
 gZv
 miM
 miM
-drq
+nai
 miM
 miM
 mTn
@@ -54855,8 +54726,8 @@ sNa
 mTn
 gZv
 miM
-drq
-drq
+nai
+nai
 miM
 miM
 lWL
@@ -55042,7 +54913,7 @@ gZv
 gZv
 gZv
 miM
-drq
+nai
 miM
 miM
 miM
@@ -56529,7 +56400,7 @@ miM
 miM
 drq
 drq
-rOc
+tZQ
 rOc
 rOc
 aFD
@@ -58894,7 +58765,7 @@ sbr
 mfj
 nai
 miM
-sbr
+nai
 sbr
 sbr
 sbr
@@ -59081,7 +58952,7 @@ sbr
 sbr
 nai
 nai
-sbr
+nai
 sbr
 sbr
 sbr
