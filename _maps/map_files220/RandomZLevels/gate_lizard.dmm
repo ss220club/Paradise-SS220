@@ -1856,9 +1856,22 @@
 /turf/simulated/floor/plating,
 /area/awaymission/jungle_planet/inside/complex)
 "coG" = (
-/obj/effect/spawner/random_spawners/dirt_maybe,
-/obj/effect/landmark/awaystart,
-/turf/simulated/floor/plasteel,
+/obj/machinery/door/poddoor/shutters{
+	id_tag = "Cargo out"
+	},
+/obj/machinery/door/airlock/mining{
+	name = "second hangar";
+	req_access = list(271)
+	},
+/obj/machinery/door_control{
+	id = "Cargo out";
+	req_access = list(271);
+	pixel_y = 28
+	},
+/turf/simulated/floor/plasteel{
+	dir = 4;
+	icon_state = "darkgrey"
+	},
 /area/awaymission/jungle_planet/inside)
 "cpc" = (
 /obj/structure/disposalpipe/broken{
@@ -8590,6 +8603,16 @@
 /obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/wood,
 /area/awaymission/jungle_planet/outside/cave/pirate)
+"kwD" = (
+/obj/effect/spawner/random_spawners/dirt_maybe,
+/obj/effect/decal/remains/human,
+/obj/effect/spawner/random_spawners/blood_often,
+/obj/item/card/id/away/old/sec{
+	name = "MC-16 multicard";
+	desc = "A clip on ID Badge, has one of those fancy new magnetic strips built in."
+	},
+/turf/simulated/floor/wood,
+/area/awaymission/jungle_planet/inside/complex)
 "kwU" = (
 /obj/machinery/light_construct{
 	dir = 8
@@ -9594,19 +9617,6 @@
 	icon_state = "darkgrey"
 	},
 /area/awaymission/jungle_planet/inside/complex)
-"lBS" = (
-/obj/machinery/door/poddoor/shutters{
-	id_tag = "Cargo out"
-	},
-/obj/machinery/door/airlock/mining{
-	name = "second hangar";
-	req_access = list(271)
-	},
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "darkgrey"
-	},
-/area/awaymission/jungle_planet/inside)
 "lCT" = (
 /obj/structure/reagent_dispensers/fueltank/chem{
 	pixel_y = 30
@@ -9777,11 +9787,6 @@
 /obj/machinery/door/airlock/mining{
 	name = "second hangar";
 	req_access = list(271)
-	},
-/obj/machinery/door_control{
-	id = "Cargo out";
-	req_access = list(271);
-	pixel_y = 28
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -12455,14 +12460,9 @@
 /area/awaymission/jungle_planet/inside/complex)
 "oND" = (
 /obj/effect/spawner/random_spawners/dirt_maybe,
-/obj/effect/decal/remains/human,
-/obj/effect/spawner/random_spawners/blood_often,
-/obj/item/card/id/away/old/sec{
-	name = "MC-16 multicard";
-	desc = "A clip on ID Badge, has one of those fancy new magnetic strips built in."
-	},
-/turf/simulated/floor/wood,
-/area/awaymission/jungle_planet/inside/complex)
+/obj/effect/landmark/awaystart,
+/turf/simulated/floor/plasteel,
+/area/awaymission/jungle_planet/inside)
 "oOq" = (
 /obj/structure/flora/grass/jungle,
 /turf/simulated/floor/beach/away/water{
@@ -16706,10 +16706,6 @@
 	},
 /area/awaymission/jungle_planet/outside/river)
 "tUy" = (
-/obj/effect/landmark/awaystart,
-/turf/simulated/floor/mineral/titanium/blue,
-/area/awaymission/jungle_planet/outside/abandoned)
-"tUU" = (
 /obj/machinery/door/firedoor,
 /obj/structure/cable{
 	d1 = 4;
@@ -16730,6 +16726,11 @@
 	dir = 4;
 	icon_state = "darkgrey"
 	},
+/area/awaymission/jungle_planet/inside/complex)
+"tUU" = (
+/obj/effect/spawner/random_spawners/dirt_often,
+/obj/effect/landmark/awaystart,
+/turf/simulated/floor/plating,
 /area/awaymission/jungle_planet/inside/complex)
 "tUX" = (
 /obj/effect/turf_decal/delivery/white,
@@ -16798,12 +16799,6 @@
 	name = "ground"
 	},
 /area/awaymission/jungle_planet/outside/river)
-"tZQ" = (
-/obj/item/pickaxe/mini,
-/turf/simulated/floor/plating/asteroid/ancient{
-	name = "ground"
-	},
-/area/awaymission/jungle_planet/outside/cave)
 "tZR" = (
 /obj/structure/fence/door,
 /turf/simulated/floor/plating/asteroid/ancient{
@@ -17408,6 +17403,12 @@
 	icon_state = "purple"
 	},
 /area/awaymission/jungle_planet/inside/complex)
+"uIE" = (
+/obj/item/pickaxe/mini,
+/turf/simulated/floor/plating/asteroid/ancient{
+	name = "ground"
+	},
+/area/awaymission/jungle_planet/outside/cave)
 "uIX" = (
 /obj/structure/flora/ausbushes/reedbush,
 /turf/simulated/floor/beach/away/coastline{
@@ -19424,10 +19425,9 @@
 /turf/simulated/floor/indestructible/grass,
 /area/awaymission/jungle_planet/outside)
 "xam" = (
-/obj/effect/spawner/random_spawners/dirt_often,
 /obj/effect/landmark/awaystart,
-/turf/simulated/floor/plating,
-/area/awaymission/jungle_planet/inside/complex)
+/turf/simulated/floor/mineral/titanium/blue,
+/area/awaymission/jungle_planet/outside/abandoned)
 "xaI" = (
 /obj/effect/turf_decal/caution,
 /obj/effect/spawner/random_spawners/dirt_frequent,
@@ -20061,7 +20061,6 @@
 	name = "robotech";
 	req_access = list(271)
 	},
-/obj/machinery/door/firedoor,
 /obj/machinery/door/firedoor/closed,
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/inside/complex)
@@ -24446,7 +24445,7 @@ pxm
 rBC
 sXj
 xkK
-xam
+tUU
 cku
 fOl
 mUy
@@ -24846,7 +24845,7 @@ rJu
 iUc
 gMI
 jxT
-tUy
+xam
 jxT
 jxT
 kpa
@@ -25386,7 +25385,7 @@ bql
 vSc
 spr
 gxN
-oND
+kwD
 kCn
 sXj
 iGS
@@ -25972,9 +25971,9 @@ wCr
 tha
 qni
 qni
+coG
 lOz
-lBS
-lBS
+lOz
 tBu
 fcs
 fhz
@@ -27660,7 +27659,7 @@ aZA
 qST
 tBu
 cDs
-coG
+oND
 ibX
 iKm
 khp
@@ -31184,9 +31183,9 @@ omz
 omz
 omz
 omz
-tUU
+tUy
 fnt
-tUU
+tUy
 omz
 omz
 jHd
@@ -56400,7 +56399,7 @@ miM
 miM
 drq
 drq
-tZQ
+uIE
 rOc
 rOc
 aFD
