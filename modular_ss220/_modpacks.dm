@@ -23,7 +23,6 @@ SUBSYSTEM_DEF(modpacks)
 			stack_trace("Attempted to register duplicate modpack name: [package.name].")
 		loaded_modpacks.Add(package)
 
-
 	// Handle init and post-init (two stages in case a modpack needs to implement behavior based on the presence of other packs).
 	for(var/datum/modpack/package as anything in loaded_modpacks)
 		var/fail_msg = package.initialize()
