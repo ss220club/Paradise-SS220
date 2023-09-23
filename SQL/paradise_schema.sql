@@ -627,8 +627,6 @@ CREATE TABLE `json_datum_saves` (
 
 
 
-
-
 --
 -- SS220 ADDITION AND EDITS
 --
@@ -636,7 +634,6 @@ CREATE TABLE `json_datum_saves` (
 --
 -- Table structure for table `ckey_whitelist`
 --
-
 DROP TABLE IF EXISTS `ckey_whitelist`;
 CREATE TABLE `ckey_whitelist`
 (
@@ -654,7 +651,6 @@ CREATE TABLE `ckey_whitelist`
 --
 -- Table structure for table `admin_wl`
 --
-
 CREATE TABLE `admin_wl` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ckey` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
