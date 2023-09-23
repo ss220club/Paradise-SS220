@@ -2,7 +2,7 @@
 
 SUBSYSTEM_DEF(modpacks)
 	name = "Modpacks"
-	init_order = INIT_ORDER_SOUNDS
+	init_order = INIT_ORDER_MODPACKS
 	flags = SS_NO_FIRE
 	var/list/loaded_modpacks = list()
 
