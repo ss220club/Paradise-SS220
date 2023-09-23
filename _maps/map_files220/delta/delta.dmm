@@ -12093,8 +12093,7 @@
 "baC" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/small{
-	dir = 4;
-	pixel_y = 8
+	dir = 4
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "neutralcorner"
@@ -12705,9 +12704,9 @@
 	icon_state = "1-8"
 	},
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "showroomfloor"
@@ -15900,9 +15899,6 @@
 	},
 /area/station/service/hydroponics)
 "bmV" = (
-/obj/machinery/light{
-	dir = 4
-	},
 /obj/machinery/camera{
 	c_tag = "Hydroponics";
 	dir = 8
@@ -21773,7 +21769,6 @@
 /area/station/engineering/gravitygenerator)
 "bGx" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/lootdrop/trash,
 /obj/machinery/light/small{
 	nightshift_enabled = 1;
 	nightshift_allowed = 0
@@ -35651,6 +35646,7 @@
 /obj/machinery/shower{
 	dir = 4
 	},
+/obj/structure/curtain/open/shower,
 /turf/simulated/floor/plasteel/freezer,
 /area/station/public/toilet/lockerroom)
 "cyC" = (
@@ -35664,6 +35660,7 @@
 /obj/machinery/shower{
 	dir = 8
 	},
+/obj/structure/curtain/open/shower,
 /turf/simulated/floor/plasteel/freezer,
 /area/station/public/toilet/lockerroom)
 "cyE" = (
@@ -36607,6 +36604,7 @@
 	name = "south bump";
 	pixel_y = -22
 	},
+/obj/machinery/light/small,
 /turf/simulated/floor/plasteel/freezer,
 /area/station/public/toilet/lockerroom)
 "cBJ" = (
@@ -58338,8 +58336,7 @@
 /area/station/maintenance/apmaint)
 "exE" = (
 /obj/machinery/light/small{
-	dir = 4;
-	pixel_y = 8
+	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
@@ -59952,8 +59949,7 @@
 "fiI" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/small{
-	dir = 4;
-	pixel_y = 8
+	dir = 4
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -64253,6 +64249,7 @@
 "hle" = (
 /obj/effect/spawner/random_spawners/oil_maybe,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/effect/spawner/lootdrop/trash,
 /turf/simulated/floor/plating,
 /area/station/maintenance/fore)
 "hlo" = (
@@ -68656,6 +68653,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/item/soap,
 /turf/simulated/floor/plasteel/freezer,
 /area/station/public/toilet/lockerroom)
 "jql" = (
@@ -69580,8 +69578,7 @@
 /area/station/security/storage)
 "jRf" = (
 /obj/machinery/light/small{
-	dir = 4;
-	pixel_y = 8
+	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
@@ -70036,6 +70033,9 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/table_frame,
 /obj/effect/spawner/lootdrop/maintenance,
+/obj/machinery/light/small{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "neutralfull"
 	},
@@ -70658,8 +70658,7 @@
 /area/station/public/construction)
 "kno" = (
 /obj/machinery/light/small{
-	dir = 4;
-	pixel_y = 8
+	dir = 4
 	},
 /obj/structure/grille,
 /turf/simulated/floor/plating,
@@ -72385,8 +72384,7 @@
 /area/station/service/kitchen)
 "lhN" = (
 /obj/machinery/light/small{
-	dir = 4;
-	pixel_y = 8
+	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/fore)
@@ -88782,6 +88780,14 @@
 	icon_state = "yellow"
 	},
 /area/station/engineering/break_room)
+"taW" = (
+/obj/machinery/shower{
+	dir = 4
+	},
+/obj/structure/curtain/open/shower,
+/obj/item/bikehorn/rubberducky,
+/turf/simulated/floor/plasteel/freezer,
+/area/station/public/toilet/lockerroom)
 "tbb" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
@@ -90463,9 +90469,6 @@
 "tOP" = (
 /obj/machinery/hydroponics/constructable,
 /obj/effect/decal/warning_stripes/yellow/hollow,
-/obj/machinery/light{
-	dir = 8
-	},
 /obj/item/radio/intercom{
 	dir = 4;
 	name = "west bump";
@@ -97005,8 +97008,7 @@
 /area/station/maintenance/port)
 "xej" = (
 /obj/machinery/light/small{
-	dir = 4;
-	pixel_y = 8
+	dir = 4
 	},
 /obj/structure/closet,
 /obj/effect/spawner/lootdrop/maintenance/two,
@@ -144138,7 +144140,7 @@ lNj
 pZs
 cBT
 cxn
-cyB
+taW
 cAc
 cyB
 cxn
