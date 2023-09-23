@@ -1,4 +1,4 @@
-#define HOURGLASS_STATES 7 //Remember to update if you change the sprite
+#define HOURGLASS_STATES 7 // Remember to update if you change the sprite
 
 // Hourglass
 /obj/item/hourglass
@@ -8,8 +8,8 @@
 	icon_state = "hourglass_idle"
 	var/obj/effect/countdown/hourglass/countdown
 	var/time = 1 MINUTES
-	var/finish_time //So countdown doesn't need to fiddle with timers
-	var/timing_id //If present we're timing
+	var/finish_time // So countdown doesn't need to fiddle with timers
+	var/timing_id // If present we're timing
 	var/hand_activated = TRUE
 
 /obj/item/hourglass/Initialize(mapload)
@@ -23,11 +23,11 @@
 
 /obj/item/hourglass/proc/toggle(mob/user)
 	if(!timing_id)
-		to_chat(user, span_notice("You flip the [src]."))
+		to_chat(user, span_notice("You flip [src]."))
 		start()
 		flick("hourglass_flip",src)
 	else
-		to_chat(user, span_notice("You stop the [src].")) //Sand magically flows back because that's more convinient to use.
+		to_chat(user, span_notice("You stop [src].")) // Sand magically flows back because that's more convinient to use.
 		stop()
 
 /obj/item/hourglass/update_icon()

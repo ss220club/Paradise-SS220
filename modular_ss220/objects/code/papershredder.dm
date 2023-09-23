@@ -18,15 +18,14 @@
 		/obj/item/book = 5
 		)
 
-/obj/machinery/papershredder/attackby(obj/item/W, mob/user, params)
-	if(istype(W, /obj/item/storage))
+/obj/machinery/papershredder/attackby(obj/item/item, mob/user, params)
+	if(istype(item, /obj/item/storage))
 		add_fingerprint(user)
-		empty_bin(user, W)
+		empty_bin(user, item)
 		return
 	var/paper_result
-	for(var/shred_type in shred_amounts)
-		if(istype(W, shred_type))
-			paper_result = shred_amounts[shred_type]
+	if(item.type in shred_amounts)
+		paper_result = shred_amounts[item.type]
 	if(!paper_result)
 		. = ..()
 		return
@@ -34,22 +33,21 @@
 		to_chat(user, span_warning("[src] is full; please empty it before you continue."))
 		return
 	paperamount += paper_result
-	qdel(W)
+	qdel(item)
 	playsound(loc, 'modular_ss220/objects/sound/pshred.ogg', 75, 1)
 	if(paperamount > max_paper)
 		to_chat(user, span_danger("[src] was too full, and shredded paper goes everywhere!"))
 		for(var/i in 1 to paperamount-max_paper)
-			var/obj/item/shredded_paper/SP = get_shredded_paper()
-			SP.loc = get_turf(src)
-			SP.throw_at(get_edge_target_turf(src, pick(GLOB.alldirs)), 1, 1)
+			var/obj/item/shredded_paper/shredp = get_shredded_paper()
+			shredp.loc = get_turf(src)
+			shredp.throw_at(get_edge_target_turf(src, pick(GLOB.alldirs)), 1, 1)
 		paperamount = max_paper
 	update_icon()
 	add_fingerprint(user)
-	return
 
-/obj/machinery/papershredder/wrench_act(mob/user, obj/item/I)
+/obj/machinery/papershredder/wrench_act(mob/user, obj/item/tool)
 	. = TRUE
-	if(!I.use_tool(src, user, 0, volume = I.tool_volume))
+	if(!tool.use_tool(src, user, 0, volume = tool.tool_volume))
 		return
 	anchored = !anchored
 	if(anchored)
@@ -113,11 +111,11 @@
 /obj/machinery/papershredder/update_icon_state()
 	icon_state = "papershredder[clamp(round(paperamount/3), 0, 5)]"
 
-/obj/item/shredded_paper/attackby(obj/item/W as obj, mob/user)
+/obj/item/shredded_paper/attackby(obj/item/shredp as obj, mob/user)
 	if(resistance_flags & ON_FIRE)
 		add_fingerprint(user)
 		return
-	if(is_hot(W, user))
+	if(is_hot(shredp, user))
 		add_fingerprint(user)
 		user.visible_message(span_danger("\The [user] burns right through [src], turning it to ash. It flutters through the air before settling on the floor in a heap."), span_danger("You burn right through [src], turning it to ash. It flutters through the air before settling on the floor in a heap."))
 		fire_act()

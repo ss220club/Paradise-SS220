@@ -1,23 +1,23 @@
 // It's just works :skull:
-/obj/item/paper/stamp(obj/item/stamp/S)
-	if(S.stampoverlay_custom_icon)
-		stamps += (!stamps || stamps == "" ? "<HR>" : "") + "<img src=large_[S.icon_state].png>"
-		var/image/stampoverlay = image(S.stampoverlay_custom_icon)
+/obj/item/paper/stamp(obj/item/stamp/stamp)
+	if(stamp.stampoverlay_custom_icon)
+		stamps += (!stamps || stamps == "" ? "<HR>" : "") + "<img src=large_[stamp.icon_state].png>"
+		var/image/stampoverlay = image(stamp.stampoverlay_custom_icon)
 		var/x = rand(-2, 0)
 		var/y = rand(-1, 2)
 		offset_x += x
 		offset_y += y
 		stampoverlay.pixel_x = x
 		stampoverlay.pixel_y = y
-		stampoverlay.icon_state = "paper_[S.icon_state]"
+		stampoverlay.icon_state = "paper_[stamp.icon_state]"
 		stamp_overlays += stampoverlay
 
 		if(!ico)
 			ico = new
-		ico += "paper_[S.icon_state]"
+		ico += "paper_[stamp.icon_state]"
 		if(!stamped)
 			stamped = new
-		stamped += S.type
+		stamped += stamp.type
 
 		update_icon(UPDATE_OVERLAYS)
 	else

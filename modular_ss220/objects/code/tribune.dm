@@ -12,16 +12,16 @@
 	var/mover_dir = null
 	var/ini_dir = null
 
-/obj/structure/tribune/wrench_act(mob/user, obj/item/I)
+/obj/structure/tribune/wrench_act(mob/user, obj/item/tool)
 	. = TRUE
-	default_unfasten_wrench(user, I)
+	default_unfasten_wrench(user, tool)
 
-/obj/structure/tribune/screwdriver_act(mob/user, obj/item/I)
+/obj/structure/tribune/screwdriver_act(mob/user, obj/item/tool)
 	. = TRUE
 	if(flags & NODECONSTRUCT)
 		to_chat(user, span_warning("Try as you might, you can't figure out how to deconstruct [src]."))
 		return
-	if(!I.use_tool(src, user, 30, volume = I.tool_volume))
+	if(!tool.use_tool(src, user, 30, volume = tool.tool_volume))
 		return
 	deconstruct(TRUE)
 
@@ -68,10 +68,10 @@
 		return !density
 	return TRUE
 
-/obj/structure/tribune/CheckExit(atom/movable/O, target)
-	if(istype(O) && O.checkpass(PASSGLASS))
+/obj/structure/tribune/CheckExit(atom/movable/object, target)
+	if(istype(object) && object.checkpass(PASSGLASS))
 		return TRUE
-	if(get_dir(O.loc, target) == dir)
+	if(get_dir(object.loc, target) == dir)
 		return FALSE
 	return TRUE
 
