@@ -1008,3 +1008,35 @@
 	name = "дырявая сковорода"
 	icon = 'modular_ss220/food/icons/food.dmi'
 	icon_state = "pan"
+
+// An anomalous pizza box that, when opened, produces the opener's favorite kind of pizza.
+/obj/item/pizzabox/infinite
+	resistance_flags = FIRE_PROOF | LAVA_PROOF | ACID_PROOF // hard to destroy
+	var/list/pizza_types = list(
+		/obj/item/reagent_containers/food/snacks/sliceable/pizza/meatpizza = 1,
+		/obj/item/reagent_containers/food/snacks/sliceable/pizza/mushroompizza = 1,
+		/obj/item/reagent_containers/food/snacks/sliceable/pizza/margheritapizza = 1,
+		/obj/item/reagent_containers/food/snacks/sliceable/pizza/pepperonipizza = 0.8,
+		/obj/item/reagent_containers/food/snacks/sliceable/pizza/seafood = 0.8,
+		/obj/item/reagent_containers/food/snacks/sliceable/pizza/vegetablepizza = 0.8,
+   		/obj/item/reagent_containers/food/snacks/sliceable/pizza/hawaiianpizza = 0.5,
+		/obj/item/reagent_containers/food/snacks/sliceable/pizza/bacon = 0.5,
+		/obj/item/reagent_containers/food/snacks/sliceable/pizza/tajaroni = 0.4,
+		/obj/item/reagent_containers/food/snacks/sliceable/pizza/donkpocketpizza = 0.3,
+		/obj/item/reagent_containers/food/snacks/sliceable/pizza/diablo = 0.2,
+		/obj/item/reagent_containers/food/snacks/sliceable/pizza/dankpizza = 0.1) // pizzas here are weighted by chance to be someone's favorite
+	var/static/list/pizza_preferences
+
+/obj/item/pizzabox/infinite/Initialize(mapload)
+	. = ..()
+	if(!pizza_preferences)
+		pizza_preferences = list()
+
+/obj/item/pizzabox/infinite/examine(mob/user)
+	. = ..()
+	if(isobserver(user))
+		. += span_deadsay("Эта коробка для пиццы является аномальной и будет производить бесконечное количество пиццы.")
+
+/obj/item/pizzabox/infinite/attack_self(mob/living/user)
+	QDEL_NULL(pizza)
+	. = ..()
