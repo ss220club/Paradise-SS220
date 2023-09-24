@@ -14328,7 +14328,7 @@
 	name = "west bump";
 	pixel_x = -22
 	},
-/obj/item/storage/belt/champion,
+/obj/item/storage/belt/champion/wrestling,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "vault"
@@ -24210,13 +24210,6 @@
 	icon_state = "purple"
 	},
 /area/station/science/rnd)
-"bLs" = (
-/obj/structure/tribune{
-	dir = 8;
-	anchored = 1
-	},
-/turf/simulated/floor/carpet,
-/area/station/legal/courtroom)
 "bLx" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -26965,6 +26958,7 @@
 /obj/structure/table,
 /obj/item/storage/belt/utility,
 /obj/item/screwdriver/cargo,
+/obj/item/storage/firstaid/regular,
 /turf/simulated/floor/plasteel,
 /area/station/supply/office)
 "bXc" = (
@@ -27260,16 +27254,12 @@
 /turf/simulated/floor/plating,
 /area/station/command/office/blueshield)
 "bYG" = (
-/obj/structure/table,
-/obj/item/storage/firstaid/regular{
-	pixel_x = 6;
-	pixel_y = -5
-	},
 /obj/machinery/newscaster{
 	dir = 1;
 	name = "south bump";
 	pixel_y = -28
 	},
+/obj/machinery/papershredder,
 /turf/simulated/floor/plasteel,
 /area/station/supply/office)
 "bYH" = (
@@ -63911,7 +63901,6 @@
 	c_tag = "Medbay Treatment East";
 	dir = 8
 	},
-/obj/structure/closet/crate/freezer/iv_storage,
 /turf/simulated/floor/plasteel{
 	dir = 5;
 	icon_state = "whiteblue"
@@ -71776,6 +71765,14 @@
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/fsmaint)
 "mcM" = (
+/obj/structure/closet/crate/medical,
+/obj/item/crutches,
+/obj/item/crutches{
+	pixel_x = 4
+	},
+/obj/item/crutches{
+	pixel_x = 8
+	},
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "whiteblue"
@@ -74507,9 +74504,12 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/fpmaint2)
 "neH" = (
-/obj/machinery/papershredder,
-/turf/simulated/floor/plasteel,
-/area/station/supply/office)
+/obj/structure/closet/crate/freezer/iv_storage,
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "whiteblue"
+	},
+/area/station/medical/sleeper)
 "neO" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable{
@@ -83864,7 +83864,8 @@
 /obj/machinery/door_control{
 	id = "stationawaygate";
 	name = "Gateway Shutters Control";
-	pixel_x = 24
+	pixel_x = 24;
+	req_one_access_txt = "62"
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
@@ -98847,13 +98848,6 @@
 	pixel_y = 16
 	},
 /obj/structure/table,
-/obj/item/crutches,
-/obj/item/crutches{
-	pixel_x = 4
-	},
-/obj/item/crutches{
-	pixel_x = 8
-	},
 /turf/simulated/floor/plasteel{
 	icon_state = "whiteblue"
 	},
@@ -128232,7 +128226,7 @@ bDX
 bSK
 bPV
 bRN
-neH
+bBn
 itH
 bBn
 bYJ
@@ -131018,7 +131012,7 @@ aAp
 aAp
 aKl
 aKl
-aLR
+aKl
 aKl
 qJg
 aAp
@@ -131275,7 +131269,7 @@ aAp
 aHz
 aIX
 fda
-bLs
+aLR
 pYd
 aOw
 fFz
@@ -143397,7 +143391,7 @@ bOB
 uYw
 bOQ
 bIq
-mcM
+neH
 dvz
 edz
 het
