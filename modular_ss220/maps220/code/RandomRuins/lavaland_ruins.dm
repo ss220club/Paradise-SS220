@@ -20,4 +20,3 @@
 	suffix = "scp_facility.dmm"
 	cost = 20 // Бесконечная пицца
 	allow_duplicates = FALSE
-	always_place = TRUE
