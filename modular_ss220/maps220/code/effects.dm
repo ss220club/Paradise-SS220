@@ -1,4 +1,4 @@
-//firefly
+// Firefly
 /obj/effect/firefly
 	name = "firefly"
 	desc = ""
@@ -16,3 +16,11 @@
 /obj/effect/firefly/green
 	icon_state = "fire_fly2"
 	light_color = "#228B22"
+
+// Decals
+/obj/effect/decal/syndie_logo
+	name = "Syndicate logo"
+	icon = 'modular_ss220/maps220/icons/syndie_logo.dmi'
+	icon_state = "logo1"
+	layer = TURF_LAYER
+	desc = "Death to Nanotrasen."
