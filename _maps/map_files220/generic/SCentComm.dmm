@@ -52,6 +52,16 @@
 	icon_state = "warndarkgreycornerred"
 	},
 /area/syndicate_mothership/infteam)
+"adh" = (
+/obj/item/kirbyplants,
+/obj/effect/turf_decal/miscellaneous/goldensiding{
+	dir = 5
+	},
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "dark"
+	},
+/area/syndicate_mothership/control)
 "adZ" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -86,15 +96,14 @@
 	},
 /area/syndicate_mothership/infteam)
 "ahx" = (
-/obj/effect/turf_decal/siding/white/corner{
-	dir = 4;
-	color = "#444444"
+/obj/effect/turf_decal/miscellaneous/goldensiding/corner{
+	dir = 6
 	},
 /turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "darkredaltstrip"
+	dir = 1;
+	icon_state = "dark"
 	},
-/area/syndicate_mothership/jail)
+/area/syndicate_mothership/control)
 "ajJ" = (
 /obj/machinery/door/airlock/hatch/syndicate/command{
 	name = "Тюрьма"
@@ -166,12 +175,15 @@
 	department = "Syndicate"
 	},
 /obj/structure/table/wood/fancy/black,
-/obj/effect/turf_decal/siding/white{
-	dir = 4;
-	color = "#444444"
-	},
 /turf/simulated/floor/carpet/black,
 /area/syndicate_mothership/control)
+"aoB" = (
+/obj/effect/decal/syndie_logo{
+	icon_state = "logo18"
+	},
+/obj/effect/turf_decal/woodsiding,
+/turf/simulated/floor/mineral/plastitanium,
+/area/syndicate_mothership)
 "apu" = (
 /obj/structure/flora/tree/jungle,
 /obj/effect/mapping_helpers/light,
@@ -283,7 +295,7 @@
 	},
 /obj/structure/ore_box,
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "aEb" = (
@@ -297,6 +309,9 @@
 /area/syndicate_mothership/outside)
 "aFh" = (
 /obj/structure/railing,
+/obj/effect/turf_decal/miscellaneous/goldensiding{
+	dir = 1
+	},
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "dark"
@@ -318,11 +333,11 @@
 /obj/item/target,
 /obj/effect/decal/cleanable/confetti,
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "aII" = (
-/obj/effect/turf_decal/siding/yellow{
+/obj/effect/turf_decal/woodsiding{
 	dir = 9
 	},
 /turf/simulated/floor/carpet/royalblack,
@@ -434,14 +449,14 @@
 /turf/simulated/wall/indestructible/rock/mineral,
 /area/syndicate_mothership/outside)
 "baU" = (
-/obj/effect/turf_decal/siding/white{
-	color = "#444444"
+/obj/effect/turf_decal/miscellaneous/goldensiding/corner{
+	dir = 9
 	},
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "dark"
 	},
-/area/syndicate_mothership/jail)
+/area/syndicate_mothership/control)
 "bce" = (
 /obj/structure/shuttle/engine/platform{
 	dir = 1;
@@ -676,8 +691,18 @@
 /obj/effect/decal/syndie_logo{
 	icon_state = "logo17"
 	},
+/obj/effect/turf_decal/siding/black,
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/syndicate_mothership/control)
+"bGM" = (
+/obj/effect/decal/syndie_logo{
+	icon_state = "logo9"
+	},
+/obj/effect/turf_decal/woodsiding{
+	dir = 8
+	},
+/turf/simulated/floor/mineral/plastitanium,
+/area/syndicate_mothership)
 "bIU" = (
 /obj/machinery/smartfridge/secure/chemistry/preloaded/syndicate,
 /turf/simulated/floor/plasteel{
@@ -702,6 +727,9 @@
 /area/syndicate_mothership/jail)
 "bLi" = (
 /obj/structure/chair/sofa/corp/right,
+/obj/effect/turf_decal/miscellaneous/goldensiding{
+	dir = 1
+	},
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "dark"
@@ -853,7 +881,7 @@
 /obj/effect/turf_decal/delivery/white,
 /obj/structure/ore_box,
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "bVI" = (
@@ -885,6 +913,12 @@
 	icon_state = "dark"
 	},
 /area/syndicate_mothership/control)
+"ccz" = (
+/obj/structure/ore_box,
+/turf/simulated/floor/plasteel{
+	icon_state = "blackfull"
+	},
+/area/syndicate_mothership)
 "ceD" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 1
@@ -912,9 +946,10 @@
 "cfx" = (
 /obj/structure/bed,
 /obj/item/bedsheet/syndie,
-/turf/simulated/floor/wood{
-	icon_state = "fancy-wood-cherry"
+/obj/effect/turf_decal/miscellaneous/goldensiding{
+	dir = 4
 	},
+/turf/simulated/floor/carpet/black,
 /area/syndicate_mothership/control)
 "cfK" = (
 /obj/structure/bed,
@@ -1011,8 +1046,18 @@
 /obj/effect/decal/syndie_logo{
 	icon_state = "logo15"
 	},
+/obj/effect/turf_decal/siding/black{
+	dir = 4
+	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/syndicate_mothership/jail)
+"csc" = (
+/obj/structure/dresser,
+/obj/effect/turf_decal/miscellaneous/goldensiding{
+	dir = 5
+	},
+/turf/simulated/floor/carpet/black,
+/area/syndicate_mothership/control)
 "csJ" = (
 /turf/simulated/floor/plasteel{
 	dir = 9;
@@ -1028,6 +1073,17 @@
 	icon_state = "fancy-wood-oak"
 	},
 /area/syndicate_mothership)
+"cuh" = (
+/obj/item/kirbyplants,
+/obj/effect/turf_decal/miscellaneous/goldensiding,
+/turf/simulated/floor/carpet/black,
+/area/syndicate_mothership/control)
+"cyr" = (
+/obj/effect/decal/syndie_logo{
+	icon_state = "logo19"
+	},
+/turf/simulated/floor/mineral/plastitanium,
+/area/syndicate_mothership/infteam)
 "cyS" = (
 /obj/machinery/door/poddoor/impassable{
 	id_tag = "SST_to_ATOM"
@@ -1051,9 +1107,16 @@
 "cBV" = (
 /obj/effect/turf_decal/stripes/line,
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
+"cCD" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/chair/sofa/bench/right,
+/turf/simulated/floor/plasteel{
+	icon_state = "darkgrey"
+	},
+/area/syndicate_mothership/infteam)
 "cGz" = (
 /obj/structure/table/wood,
 /obj/item/clothing/suit/space/hardsuit/syndi{
@@ -1171,7 +1234,7 @@
 /obj/structure/curtain/black{
 	pixel_x = -32
 	},
-/obj/machinery/photocopier,
+/obj/machinery/photocopier/syndie,
 /turf/simulated/floor/carpet/black,
 /area/syndicate_mothership/infteam)
 "cYf" = (
@@ -1231,10 +1294,6 @@
 	dir = 8
 	},
 /obj/item/paper/monitorkey,
-/obj/effect/turf_decal/siding/white{
-	dir = 8;
-	color = "#444444"
-	},
 /turf/simulated/floor/carpet/black,
 /area/syndicate_mothership/control)
 "dfR" = (
@@ -1340,7 +1399,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "dxK" = (
@@ -1351,6 +1410,9 @@
 	icon_state = "logo5"
 	},
 /obj/effect/landmark/spawner/syndicateofficer,
+/obj/effect/turf_decal/siding/black{
+	dir = 8
+	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/syndicate_mothership/control)
 "dyZ" = (
@@ -1391,9 +1453,6 @@
 /area/syndicate_mothership/cargo)
 "dGC" = (
 /obj/machinery/computer/shuttle/sst,
-/obj/effect/turf_decal/siding/white{
-	color = "#444444"
-	},
 /turf/simulated/floor/carpet/black,
 /area/syndicate_mothership/control)
 "dGJ" = (
@@ -1467,11 +1526,27 @@
 	dir = 4;
 	tag = "icon-tube1 (EAST)"
 	},
+/obj/effect/turf_decal/miscellaneous/goldensiding{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "dark"
 	},
 /area/syndicate_mothership/control)
+"dNi" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/kirbyplants,
+/obj/effect/turf_decal/siding/black{
+	dir = 1
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "blackfull"
+	},
+/area/syndicate_mothership)
 "dNO" = (
 /obj/machinery/computer/shuttle/syndicate{
 	name = "Nuclear Operatives Shuttle Console"
@@ -1527,7 +1602,7 @@
 	},
 /area/syndicate_mothership/control)
 "dVt" = (
-/obj/effect/turf_decal/siding/yellow{
+/obj/effect/turf_decal/woodsiding{
 	dir = 1
 	},
 /turf/simulated/floor/carpet/royalblack,
@@ -1556,7 +1631,7 @@
 	},
 /area/syndicate_mothership)
 "dYq" = (
-/obj/structure/chair/comfy/shuttle{
+/obj/structure/chair/comfy/shuttle/dark{
 	dir = 4
 	},
 /turf/simulated/floor/mineral/plastitanium/red,
@@ -1585,11 +1660,10 @@
 	},
 /area/syndicate_mothership/infteam)
 "eab" = (
-/obj/effect/turf_decal/bot_white,
-/obj/item/paper/syndimemo{
-	info = "Увы-увы"
+/obj/structure/chair/sofa/bench/right,
+/turf/simulated/floor/plasteel{
+	icon_state = "darkgrey"
 	},
-/turf/simulated/floor/mineral/plastitanium,
 /area/syndicate_mothership/elite_squad)
 "ebc" = (
 /obj/structure/window/reinforced{
@@ -1644,6 +1718,7 @@
 	pixel_x = -32;
 	emagged = 1
 	},
+/obj/effect/turf_decal/miscellaneous/goldensiding,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "dark"
@@ -1671,7 +1746,7 @@
 	specialfunctions = 4
 	},
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "eeV" = (
@@ -1693,6 +1768,14 @@
 	tag = "icon-stage_stairs"
 	},
 /area/syndicate_mothership)
+"ehA" = (
+/obj/effect/turf_decal/delivery,
+/obj/mecha/combat/durand/rover/loaded,
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "dark"
+	},
+/area/syndicate_mothership/cargo)
 "ejy" = (
 /obj/structure/table/reinforced{
 	color = "#444444"
@@ -1712,6 +1795,9 @@
 /obj/effect/decal/syndie_logo{
 	icon_state = "logo3"
 	},
+/obj/effect/turf_decal/siding/black{
+	dir = 1
+	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/syndicate_mothership/jail)
 "ena" = (
@@ -1721,6 +1807,13 @@
 	icon_state = "darkredaltstrip"
 	},
 /area/syndicate_mothership/jail)
+"enx" = (
+/obj/structure/chair/stool,
+/obj/effect/decal/syndie_logo{
+	icon_state = "logo8"
+	},
+/turf/simulated/floor/mineral/plastitanium,
+/area/syndicate_mothership/infteam)
 "eqZ" = (
 /obj/effect/turf_decal/grass{
 	icon_state = "grass_edge_medium";
@@ -1785,6 +1878,12 @@
 	icon_state = "darkredaltstrip"
 	},
 /area/syndicate_mothership/jail)
+"eHU" = (
+/obj/effect/decal/syndie_logo{
+	icon_state = "logo4"
+	},
+/turf/simulated/floor/mineral/plastitanium,
+/area/syndicate_mothership/infteam)
 "eIq" = (
 /obj/structure/table/wood,
 /obj/item/tank/jetpack/oxygen/harness{
@@ -1845,6 +1944,9 @@
 	},
 /area/syndicate_mothership/elite_squad)
 "eKN" = (
+/obj/effect/decal/syndie_logo{
+	icon_state = "logo2"
+	},
 /turf/simulated/floor/mineral/plastitanium,
 /area/syndicate_mothership/infteam)
 "eMn" = (
@@ -1865,7 +1967,7 @@
 	spawn_inside = null
 	},
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "eNB" = (
@@ -1890,9 +1992,8 @@
 	},
 /area/syndicate_mothership)
 "ePM" = (
-/obj/effect/turf_decal/siding/white{
-	dir = 8;
-	color = "#444444"
+/obj/effect/turf_decal/siding/black{
+	dir = 8
 	},
 /turf/simulated/floor/plasteel{
 	color = "gray";
@@ -1903,6 +2004,9 @@
 "eQq" = (
 /obj/effect/decal/syndie_logo{
 	icon_state = "logo13"
+	},
+/obj/effect/turf_decal/siding/black{
+	dir = 8
 	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/syndicate_mothership/control)
@@ -1953,9 +2057,8 @@
 	pixel_x = -3;
 	pixel_y = 5
 	},
-/turf/simulated/floor/wood{
-	icon_state = "fancy-wood-cherry"
-	},
+/obj/effect/turf_decal/miscellaneous/goldensiding,
+/turf/simulated/floor/carpet/black,
 /area/syndicate_mothership/control)
 "eTj" = (
 /obj/effect/decal/cleanable/dirt,
@@ -1978,6 +2081,9 @@
 "eZu" = (
 /obj/effect/decal/syndie_logo{
 	icon_state = "logo5"
+	},
+/obj/effect/turf_decal/siding/black{
+	dir = 8
 	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/syndicate_mothership/jail)
@@ -2029,6 +2135,12 @@
 "fkL" = (
 /turf/simulated/floor/carpet/black,
 /area/syndicate_mothership/control)
+"fmd" = (
+/obj/effect/decal/syndie_logo{
+	icon_state = "logo11"
+	},
+/turf/simulated/floor/mineral/plastitanium,
+/area/syndicate_mothership)
 "fna" = (
 /obj/machinery/light/small,
 /turf/simulated/floor/wood{
@@ -2053,10 +2165,6 @@
 	pixel_x = 7;
 	id = "SST_to_ATOM";
 	name = "SST to ATOM hall"
-	},
-/obj/effect/turf_decal/siding/white{
-	dir = 1;
-	color = "#444444"
 	},
 /turf/simulated/floor/carpet/black,
 /area/syndicate_mothership/control)
@@ -2166,6 +2274,9 @@
 /obj/effect/decal/syndie_logo{
 	icon_state = "logo9"
 	},
+/obj/effect/turf_decal/siding/black{
+	dir = 8
+	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/syndicate_mothership/jail)
 "fxW" = (
@@ -2177,7 +2288,10 @@
 	},
 /area/syndicate_mothership/jail)
 "fzj" = (
-/obj/effect/turf_decal/siding/brown{
+/obj/effect/decal/syndie_logo{
+	icon_state = "logo3"
+	},
+/obj/effect/turf_decal/woodsiding{
 	dir = 1
 	},
 /turf/simulated/floor/mineral/plastitanium,
@@ -2208,14 +2322,14 @@
 	},
 /obj/structure/ore_box,
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "fCi" = (
 /obj/effect/turf_decal/delivery/red,
 /obj/structure/ore_box,
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "fEn" = (
@@ -2279,9 +2393,10 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/simulated/floor/wood{
-	icon_state = "fancy-wood-cherry"
+/obj/effect/turf_decal/miscellaneous/goldensiding{
+	dir = 1
 	},
+/turf/simulated/floor/carpet/black,
 /area/syndicate_mothership/control)
 "fHL" = (
 /obj/structure/chair/sofa/right,
@@ -2295,6 +2410,15 @@
 	icon_state = "darkyellowaltstrip"
 	},
 /area/syndicate_mothership/control)
+"fKK" = (
+/obj/effect/decal/syndie_logo{
+	icon_state = "logo2"
+	},
+/obj/effect/turf_decal/woodsiding{
+	dir = 1
+	},
+/turf/simulated/floor/mineral/plastitanium,
+/area/syndicate_mothership)
 "fLr" = (
 /obj/structure/flora/ausbushes/brflowers,
 /obj/structure/flora/ausbushes/grassybush,
@@ -2305,11 +2429,17 @@
 	icon_state = "darkfull"
 	},
 /area/syndicate_mothership/control)
+"fML" = (
+/obj/effect/decal/syndie_logo{
+	icon_state = "logo5"
+	},
+/obj/effect/turf_decal/woodsiding{
+	dir = 8
+	},
+/turf/simulated/floor/mineral/plastitanium,
+/area/syndicate_mothership)
 "fPk" = (
 /obj/machinery/computer/camera_advanced,
-/obj/effect/turf_decal/siding/white{
-	color = "#444444"
-	},
 /turf/simulated/floor/carpet/black,
 /area/syndicate_mothership/control)
 "fPv" = (
@@ -2326,10 +2456,6 @@
 /obj/machinery/computer/crew{
 	pixel_x = -6;
 	dir = 8
-	},
-/obj/effect/turf_decal/siding/white{
-	dir = 8;
-	color = "#444444"
 	},
 /turf/simulated/floor/carpet/black,
 /area/syndicate_mothership/control)
@@ -2418,6 +2544,9 @@
 	dir = 8;
 	tag = "icon-tube1 (WEST)"
 	},
+/obj/effect/turf_decal/miscellaneous/goldensiding{
+	dir = 8
+	},
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "dark"
@@ -2457,6 +2586,9 @@
 	},
 /obj/effect/decal/syndie_logo{
 	icon_state = "logo2"
+	},
+/obj/effect/turf_decal/siding/black{
+	dir = 1
 	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/syndicate_mothership/control)
@@ -2541,6 +2673,7 @@
 /area/syndicate_mothership/outside)
 "gkO" = (
 /obj/machinery/light/spot,
+/obj/effect/turf_decal/miscellaneous/goldensiding,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "dark"
@@ -2607,6 +2740,9 @@
 /obj/structure/railing/corner{
 	dir = 1
 	},
+/obj/effect/turf_decal/miscellaneous/goldensiding/corner{
+	dir = 10
+	},
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "dark"
@@ -2649,11 +2785,16 @@
 	},
 /obj/item/storage/fancy/donut_box,
 /obj/structure/table/wood/fancy/black,
-/obj/effect/turf_decal/siding/white{
-	dir = 4;
-	color = "#444444"
-	},
 /turf/simulated/floor/carpet/black,
+/area/syndicate_mothership/control)
+"gAO" = (
+/obj/effect/turf_decal/miscellaneous/goldensiding{
+	dir = 5
+	},
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "dark"
+	},
 /area/syndicate_mothership/control)
 "gCy" = (
 /obj/structure/flora/ausbushes/reedbush,
@@ -2816,7 +2957,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "gSC" = (
@@ -2839,7 +2980,7 @@
 	},
 /obj/effect/turf_decal/delivery/white,
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "gVQ" = (
@@ -2877,6 +3018,10 @@
 	},
 /turf/simulated/floor/carpet,
 /area/syndicate_mothership/control)
+"gZh" = (
+/obj/effect/decal/syndie_logo,
+/turf/simulated/floor/mineral/plastitanium,
+/area/syndicate_mothership/infteam)
 "gZM" = (
 /obj/machinery/economy/vending/syndisnack,
 /turf/simulated/floor/wood{
@@ -2906,7 +3051,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "hbs" = (
@@ -2924,8 +3069,9 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/item/kirbyplants,
+/obj/effect/turf_decal/siding/black,
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "hcx" = (
@@ -2960,6 +3106,12 @@
 	icon_state = "blackfull"
 	},
 /area/syndicate_mothership/jail)
+"hjs" = (
+/obj/effect/turf_decal/delivery/white,
+/turf/simulated/floor/plasteel{
+	icon_state = "blackfull"
+	},
+/area/syndicate_mothership)
 "hjQ" = (
 /obj/machinery/door/airlock/external{
 	name = "Ship External Access";
@@ -3006,22 +3158,23 @@
 	},
 /area/syndicate_mothership)
 "htS" = (
-/obj/item/bedsheet/syndie,
-/obj/structure/bed,
-/turf/simulated/floor/wood{
-	icon_state = "fancy-wood-cherry"
+/obj/item/bedsheet/syndie{
+	dir = 1
 	},
+/obj/structure/bed{
+	dir = 1
+	},
+/obj/effect/turf_decal/miscellaneous/goldensiding{
+	dir = 8
+	},
+/turf/simulated/floor/carpet/black,
 /area/syndicate_mothership/control)
 "huy" = (
 /obj/structure/window/reinforced{
 	color = "red";
 	dir = 8
 	},
-/obj/machinery/photocopier,
-/obj/effect/turf_decal/siding/white{
-	dir = 4;
-	color = "#444444"
-	},
+/obj/machinery/photocopier/syndie,
 /turf/simulated/floor/carpet/black,
 /area/syndicate_mothership/control)
 "hwi" = (
@@ -3034,10 +3187,6 @@
 	},
 /obj/item/pen/multi/gold,
 /obj/structure/table/wood/fancy/black,
-/obj/effect/turf_decal/siding/white{
-	dir = 4;
-	color = "#444444"
-	},
 /turf/simulated/floor/carpet/black,
 /area/syndicate_mothership/control)
 "hxf" = (
@@ -3049,6 +3198,9 @@
 "hxg" = (
 /obj/effect/decal/syndie_logo{
 	icon_state = "logo2"
+	},
+/obj/effect/turf_decal/siding/black{
+	dir = 1
 	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/syndicate_mothership/jail)
@@ -3093,11 +3245,19 @@
 	wires = 1;
 	emagged = 1
 	},
+/obj/effect/turf_decal/miscellaneous/goldensiding,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "dark"
 	},
 /area/syndicate_mothership/control)
+"hEU" = (
+/obj/structure/chair/stool,
+/obj/effect/decal/syndie_logo{
+	icon_state = "logo14"
+	},
+/turf/simulated/floor/mineral/plastitanium,
+/area/syndicate_mothership/infteam)
 "hGk" = (
 /obj/machinery/economy/vending/syndisnack,
 /obj/effect/turf_decal/siding/brown{
@@ -3148,9 +3308,10 @@
 /area/syndicate_mothership/control)
 "hPQ" = (
 /obj/structure/dresser,
-/turf/simulated/floor/wood{
-	icon_state = "fancy-wood-cherry"
+/obj/effect/turf_decal/miscellaneous/goldensiding{
+	dir = 9
 	},
+/turf/simulated/floor/carpet/black,
 /area/syndicate_mothership/control)
 "hQg" = (
 /obj/structure/weightmachine/weightlifter,
@@ -3275,6 +3436,9 @@
 	icon_state = "logo8"
 	},
 /obj/effect/landmark/spawner/syndicateofficer,
+/obj/effect/turf_decal/siding/black{
+	dir = 4
+	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/syndicate_mothership/control)
 "iog" = (
@@ -3303,6 +3467,15 @@
 	icon_state = "darkgrey"
 	},
 /area/syndicate_mothership)
+"iqY" = (
+/obj/effect/turf_decal/miscellaneous/goldensiding{
+	dir = 10
+	},
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "dark"
+	},
+/area/syndicate_mothership/control)
 "isc" = (
 /obj/structure/reagent_dispensers/fueltank/chem{
 	pixel_x = 32
@@ -3317,16 +3490,11 @@
 	color = "red";
 	dir = 4
 	},
-/obj/effect/turf_decal/siding/white{
-	dir = 8;
-	color = "#444444"
-	},
 /turf/simulated/floor/carpet/black,
 /area/syndicate_mothership/control)
 "itW" = (
-/obj/effect/turf_decal/siding/white{
-	dir = 4;
-	color = "#444444"
+/obj/effect/turf_decal/siding/black{
+	dir = 4
 	},
 /turf/simulated/floor/plasteel{
 	color = "gray";
@@ -3344,20 +3512,17 @@
 	},
 /area/syndicate_mothership/jail)
 "iwT" = (
-/obj/effect/turf_decal/siding/white/corner{
-	color = "#444444"
+/obj/effect/decal/syndie_logo{
+	icon_state = "logo7"
 	},
-/turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "darkredaltstrip"
-	},
-/area/syndicate_mothership/jail)
+/turf/simulated/floor/mineral/plastitanium,
+/area/syndicate_mothership)
 "iyi" = (
 /obj/structure/closet/syndicate/personal,
 /obj/machinery/light/small,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "izc" = (
@@ -3448,7 +3613,7 @@
 /obj/effect/turf_decal/delivery/white,
 /obj/structure/ore_box,
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "iPw" = (
@@ -3489,6 +3654,9 @@
 /area/syndicate_mothership/jail)
 "iRW" = (
 /obj/structure/railing/corner,
+/obj/effect/turf_decal/miscellaneous/goldensiding/corner{
+	dir = 5
+	},
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "dark"
@@ -3650,6 +3818,15 @@
 	icon_state = "darkjail"
 	},
 /area/syndicate_mothership/jail)
+"jtO" = (
+/obj/effect/turf_decal/miscellaneous/goldensiding{
+	dir = 6
+	},
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "dark"
+	},
+/area/syndicate_mothership/control)
 "jvC" = (
 /obj/effect/turf_decal/delivery,
 /obj/structure/window/reinforced{
@@ -3730,6 +3907,9 @@
 	pixel_y = 32;
 	emagged = 1
 	},
+/obj/effect/turf_decal/miscellaneous/goldensiding/corner{
+	dir = 5
+	},
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "dark"
@@ -3782,6 +3962,9 @@
 /obj/effect/decal/syndie_logo{
 	icon_state = "logo19"
 	},
+/obj/effect/turf_decal/siding/black{
+	dir = 6
+	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/syndicate_mothership/jail)
 "jFK" = (
@@ -3790,6 +3973,9 @@
 	},
 /obj/effect/decal/syndie_logo{
 	icon_state = "logo3"
+	},
+/obj/effect/turf_decal/siding/black{
+	dir = 1
 	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/syndicate_mothership/control)
@@ -3802,9 +3988,10 @@
 	pixel_x = -32
 	},
 /obj/structure/closet/secure_closet/syndicate_officer,
-/turf/simulated/floor/wood{
-	icon_state = "fancy-wood-cherry"
+/obj/effect/turf_decal/miscellaneous/goldensiding{
+	dir = 10
 	},
+/turf/simulated/floor/carpet/black,
 /area/syndicate_mothership/control)
 "jGH" = (
 /obj/structure/closet/syndicate/sst,
@@ -3820,15 +4007,12 @@
 /turf/simulated/floor/plating,
 /area/syndicate_mothership/elite_squad)
 "jHY" = (
-/obj/effect/turf_decal/siding/white/corner{
-	dir = 1;
-	color = "#444444"
-	},
+/obj/effect/turf_decal/miscellaneous/goldensiding,
 /turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "darkredaltstrip"
+	dir = 1;
+	icon_state = "dark"
 	},
-/area/syndicate_mothership/jail)
+/area/syndicate_mothership/control)
 "jIq" = (
 /obj/structure/sign/nosmoking_2{
 	pixel_x = 28
@@ -3912,9 +4096,10 @@
 	name = "mirror";
 	pixel_y = 25
 	},
-/turf/simulated/floor/wood{
-	icon_state = "fancy-wood-cherry"
+/obj/effect/turf_decal/miscellaneous/goldensiding{
+	dir = 1
 	},
+/turf/simulated/floor/carpet/black,
 /area/syndicate_mothership/control)
 "jSZ" = (
 /obj/machinery/light/small,
@@ -3951,6 +4136,9 @@
 /obj/effect/decal/syndie_logo{
 	icon_state = "logo12"
 	},
+/obj/effect/turf_decal/siding/black{
+	dir = 4
+	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/syndicate_mothership/jail)
 "jXH" = (
@@ -3966,6 +4154,7 @@
 	req_access = list(153);
 	emagged = 1
 	},
+/obj/effect/turf_decal/miscellaneous/goldensiding,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "dark"
@@ -4012,6 +4201,9 @@
 "keD" = (
 /obj/effect/decal/syndie_logo{
 	icon_state = "logo4"
+	},
+/obj/effect/turf_decal/siding/black{
+	dir = 5
 	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/syndicate_mothership/jail)
@@ -4077,19 +4269,15 @@
 	},
 /obj/effect/turf_decal/delivery/white,
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "koA" = (
-/obj/effect/turf_decal/siding/white{
-	dir = 4;
-	color = "#444444"
+/obj/effect/decal/syndie_logo{
+	icon_state = "logo14"
 	},
-/turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "darkredcornersalt"
-	},
-/area/syndicate_mothership/jail)
+/turf/simulated/floor/mineral/plastitanium,
+/area/syndicate_mothership)
 "kpr" = (
 /obj/machinery/door/airlock/hatch/syndicate/command{
 	name = "Тюрьма";
@@ -4161,7 +4349,7 @@
 /turf/simulated/floor/carpet/black,
 /area/syndicate_mothership/jail)
 "kyO" = (
-/obj/structure/chair/comfy/shuttle,
+/obj/structure/chair/comfy/shuttle/dark,
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/shuttle/assault_pod)
 "kzm" = (
@@ -4189,6 +4377,12 @@
 	icon_state = "darkredaltstrip"
 	},
 /area/syndicate_mothership/jail)
+"kCR" = (
+/obj/effect/decal/syndie_logo{
+	icon_state = "logo5"
+	},
+/turf/simulated/floor/mineral/plastitanium,
+/area/syndicate_mothership/infteam)
 "kGJ" = (
 /obj/structure/chair/sofa/right,
 /turf/simulated/floor/wood{
@@ -4218,12 +4412,17 @@
 	id = "nukeop_outside";
 	name = "ATOM Outside Doors"
 	},
-/obj/effect/turf_decal/siding/white{
-	dir = 1;
-	color = "#444444"
-	},
 /turf/simulated/floor/carpet/black,
 /area/syndicate_mothership/control)
+"kIY" = (
+/obj/effect/turf_decal/delivery/red,
+/obj/effect/spawner/random_spawners/syndicate/loot{
+	spawn_inside = null
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "blackfull"
+	},
+/area/syndicate_mothership)
 "kJh" = (
 /obj/structure/curtain/black{
 	pixel_y = -32
@@ -4302,7 +4501,7 @@
 	},
 /area/syndicate_mothership/elite_squad)
 "kQm" = (
-/obj/structure/chair/comfy/shuttle{
+/obj/structure/chair/comfy/shuttle/dark{
 	dir = 4
 	},
 /turf/simulated/floor/plasteel{
@@ -4418,10 +4617,6 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/obj/effect/turf_decal/siding/white{
-	dir = 4;
-	color = "#444444"
-	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "darkredaltstrip"
@@ -4498,6 +4693,18 @@
 	icon_state = "fancy-wood-oak"
 	},
 /area/syndicate_mothership/infteam)
+"lcr" = (
+/obj/effect/turf_decal/siding/black{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/black{
+	dir = 4
+	},
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "rampbottom"
+	},
+/area/syndicate_mothership)
 "leD" = (
 /obj/item/flag/syndi,
 /obj/structure/curtain/black{
@@ -4534,7 +4741,7 @@
 	spawn_inside = null
 	},
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "lge" = (
@@ -4549,7 +4756,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "ljv" = (
@@ -4572,7 +4779,7 @@
 /obj/machinery/light/spot{
 	dir = 1
 	},
-/obj/structure/chair/comfy/shuttle,
+/obj/structure/chair/comfy/shuttle/dark,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "darkyellowalt"
@@ -4656,6 +4863,15 @@
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "darkgrey"
+	},
+/area/syndicate_mothership)
+"lsm" = (
+/obj/effect/turf_decal/delivery/white,
+/obj/effect/spawner/random_spawners/syndicate/loot{
+	spawn_inside = null
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "lsF" = (
@@ -4759,7 +4975,7 @@
 	},
 /area/syndicate_mothership/elite_squad)
 "lzU" = (
-/obj/structure/chair/comfy/shuttle{
+/obj/structure/chair/comfy/shuttle/dark{
 	dir = 8
 	},
 /turf/simulated/floor/plasteel{
@@ -4767,8 +4983,17 @@
 	icon_state = "darkredalt"
 	},
 /area/syndicate_mothership/cargo)
+"lAy" = (
+/obj/effect/turf_decal/woodsiding{
+	dir = 8
+	},
+/turf/simulated/floor/carpet/royalblack,
+/area/syndicate_mothership/control)
 "lDc" = (
 /obj/structure/chair/sofa/corp/left,
+/obj/effect/turf_decal/miscellaneous/goldensiding{
+	dir = 1
+	},
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "dark"
@@ -4834,9 +5059,10 @@
 	pixel_y = -32
 	},
 /obj/item/kirbyplants,
-/turf/simulated/floor/wood{
-	icon_state = "fancy-wood-cherry"
+/obj/effect/turf_decal/miscellaneous/goldensiding{
+	dir = 10
 	},
+/turf/simulated/floor/carpet/black,
 /area/syndicate_mothership/control)
 "lKD" = (
 /obj/structure/flora/grass/jungle,
@@ -4861,7 +5087,7 @@
 	req_access = list(150)
 	},
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "lNn" = (
@@ -5002,9 +5228,10 @@
 	},
 /obj/item/clothing/under/syndicate,
 /obj/item/card/id/syndicate/command,
-/turf/simulated/floor/wood{
-	icon_state = "fancy-wood-cherry"
+/obj/effect/turf_decal/miscellaneous/goldensiding{
+	dir = 1
 	},
+/turf/simulated/floor/carpet/black,
 /area/syndicate_mothership/control)
 "mcE" = (
 /obj/effect/turf_decal/siding/brown/corner{
@@ -5050,7 +5277,7 @@
 /turf/simulated/floor/carpet/black,
 /area/syndicate_mothership/infteam)
 "mfK" = (
-/obj/structure/chair/comfy/shuttle,
+/obj/structure/chair/comfy/shuttle/dark,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "darkyellowalt"
@@ -5102,9 +5329,8 @@
 /area/syndicate_mothership/elite_squad)
 "mmf" = (
 /obj/structure/chair/comfy/black,
-/obj/effect/turf_decal/siding/yellow,
 /obj/effect/landmark/spawner/syndicateofficer,
-/turf/simulated/floor/carpet/royalblack,
+/turf/simulated/floor/carpet/black,
 /area/syndicate_mothership/control)
 "moS" = (
 /obj/structure/chair/sofa/right{
@@ -5129,9 +5355,8 @@
 /turf/simulated/floor/carpet,
 /area/syndicate_mothership/infteam)
 "mpW" = (
-/obj/effect/turf_decal/siding/white{
-	dir = 8;
-	color = "#444444"
+/obj/effect/turf_decal/siding/black{
+	dir = 8
 	},
 /turf/simulated/floor/plasteel{
 	dir = 1;
@@ -5414,7 +5639,7 @@
 	},
 /obj/machinery/door/airlock/hatch/syndicate/command,
 /turf/simulated/floor/wood{
-	icon_state = "fancy-wood-cherry"
+	icon_state = "light-fancy-wood"
 	},
 /area/syndicate_mothership/control)
 "mIR" = (
@@ -5505,12 +5730,21 @@
 	icon_state = "fancy-wood-cherry"
 	},
 /area/syndicate_mothership/infteam)
+"mNM" = (
+/obj/effect/turf_decal/miscellaneous/goldensiding/corner{
+	dir = 5
+	},
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "dark"
+	},
+/area/syndicate_mothership/control)
 "mOA" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "mPk" = (
@@ -5530,7 +5764,10 @@
 	},
 /area/syndicate_mothership)
 "mPY" = (
-/obj/effect/turf_decal/siding/brown{
+/obj/effect/decal/syndie_logo{
+	icon_state = "logo19"
+	},
+/obj/effect/turf_decal/woodsiding{
 	dir = 6
 	},
 /turf/simulated/floor/mineral/plastitanium,
@@ -5551,7 +5788,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "mRG" = (
@@ -5580,13 +5817,17 @@
 	},
 /area/syndicate_mothership/jail)
 "mUj" = (
-/obj/effect/turf_decal/siding/brown,
+/obj/effect/decal/syndie_logo{
+	icon_state = "logo17"
+	},
+/obj/effect/turf_decal/woodsiding,
 /turf/simulated/floor/mineral/plastitanium,
 /area/syndicate_mothership)
 "mUV" = (
 /obj/effect/decal/syndie_logo{
 	icon_state = "logo18"
 	},
+/obj/effect/turf_decal/siding/black,
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/syndicate_mothership/control)
 "mVo" = (
@@ -5609,11 +5850,10 @@
 	},
 /area/syndicate_mothership/control)
 "mVq" = (
-/obj/mecha/combat/marauder/mauler/loaded,
 /turf/simulated/floor/plasteel{
-	icon_state = "darkyellowfull"
+	icon_state = "blackfull"
 	},
-/area/syndicate_mothership/cargo)
+/area/syndicate_mothership)
 "mVX" = (
 /obj/effect/turf_decal/grass{
 	icon_state = "grass_edge_medium";
@@ -5655,7 +5895,8 @@
 /turf/simulated/floor/carpet,
 /area/syndicate_mothership/control)
 "naW" = (
-/obj/effect/turf_decal/siding/brown{
+/obj/effect/decal/syndie_logo,
+/obj/effect/turf_decal/woodsiding{
 	dir = 9
 	},
 /turf/simulated/floor/mineral/plastitanium,
@@ -5792,6 +6033,7 @@
 /area/syndicate_mothership/infteam)
 "njf" = (
 /obj/machinery/door/airlock/hatch/syndicate/command,
+/obj/effect/turf_decal/miscellaneous/goldensiding,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "dark"
@@ -5836,9 +6078,9 @@
 /obj/effect/turf_decal/siding/wood{
 	dir = 4
 	},
-/obj/machinery/door/airlock/hatch/syndicate{
-	name = "Vault";
-	req_access = list(153)
+/obj/machinery/door/airlock/hatch/syndicate/vault{
+	req_access = list(153);
+	name = "Vault"
 	},
 /turf/simulated/floor/wood{
 	icon_state = "light-fancy-wood"
@@ -5917,14 +6159,19 @@
 /obj/effect/decal/syndie_logo{
 	icon_state = "logo4"
 	},
+/obj/effect/turf_decal/siding/black{
+	dir = 5
+	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/syndicate_mothership/control)
 "nvg" = (
-/obj/effect/turf_decal/siding/white/corner{
-	dir = 1;
-	color = "#444444"
+/obj/effect/turf_decal/miscellaneous/goldensiding{
+	dir = 8
 	},
-/turf/simulated/floor/carpet/black,
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "dark"
+	},
 /area/syndicate_mothership/control)
 "nvA" = (
 /obj/structure/sink/kitchen{
@@ -6046,7 +6293,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "nHg" = (
@@ -6057,7 +6304,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "nIw" = (
@@ -6111,11 +6358,11 @@
 	spawn_inside = null
 	},
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "nKV" = (
-/obj/effect/turf_decal/siding/yellow{
+/obj/effect/turf_decal/woodsiding{
 	dir = 5
 	},
 /turf/simulated/floor/carpet/royalblack,
@@ -6227,12 +6474,10 @@
 	},
 /area/syndicate_mothership/control)
 "nVR" = (
-/obj/effect/turf_decal/siding/brown{
-	dir = 9
+/obj/effect/decal/syndie_logo{
+	icon_state = "logo18"
 	},
-/turf/simulated/wall/indestructible/syndicate{
-	smoothing_flags = 2
-	},
+/turf/simulated/floor/mineral/plastitanium,
 /area/syndicate_mothership/infteam)
 "nVS" = (
 /obj/machinery/cryopod/offstation{
@@ -6484,6 +6729,9 @@
 /obj/structure/curtain/open/shower,
 /obj/machinery/shower{
 	pixel_y = 20
+	},
+/obj/effect/turf_decal/miscellaneous/plumbing{
+	dir = 1
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "blackfull"
@@ -6761,15 +7009,14 @@
 /turf/simulated/floor/indestructible/grass,
 /area/syndicate_mothership/outside)
 "oNE" = (
-/obj/effect/turf_decal/siding/white{
-	dir = 8;
-	color = "#444444"
+/obj/effect/turf_decal/miscellaneous/goldensiding{
+	dir = 1
 	},
 /turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "darkredaltstrip"
+	dir = 1;
+	icon_state = "dark"
 	},
-/area/syndicate_mothership/jail)
+/area/syndicate_mothership/control)
 "oOb" = (
 /obj/structure/rack/holorack,
 /obj/item/organ/internal/cyberimp/brain/anti_drop,
@@ -6864,7 +7111,7 @@
 "oPc" = (
 /obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "oQP" = (
@@ -6891,14 +7138,14 @@
 /obj/machinery/photocopier/faxmachine/longrange/syndie{
 	department = "Syndicate"
 	},
-/turf/simulated/floor/wood{
-	icon_state = "fancy-wood-cherry"
-	},
+/obj/effect/turf_decal/miscellaneous/goldensiding,
+/turf/simulated/floor/carpet/black,
 /area/syndicate_mothership/control)
 "oRz" = (
 /obj/effect/decal/syndie_logo{
 	icon_state = "logo18"
 	},
+/obj/effect/turf_decal/siding/black,
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/syndicate_mothership/jail)
 "oSq" = (
@@ -6914,7 +7161,10 @@
 	},
 /area/syndicate_mothership/infteam)
 "oUj" = (
-/obj/effect/turf_decal/siding/brown{
+/obj/effect/decal/syndie_logo{
+	icon_state = "logo4"
+	},
+/obj/effect/turf_decal/woodsiding{
 	dir = 5
 	},
 /turf/simulated/floor/mineral/plastitanium,
@@ -6930,6 +7180,9 @@
 /area/syndicate_mothership)
 "oVu" = (
 /obj/item/flag/syndi,
+/obj/effect/turf_decal/miscellaneous/goldensiding/corner{
+	dir = 9
+	},
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "dark"
@@ -6947,6 +7200,13 @@
 	icon_state = "darkyellowcornersalt"
 	},
 /area/syndicate_mothership/cargo)
+"oVO" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/chair/sofa/bench/left,
+/turf/simulated/floor/plasteel{
+	icon_state = "darkgrey"
+	},
+/area/syndicate_mothership/elite_squad)
 "oVV" = (
 /obj/structure/flora/rock,
 /turf/simulated/floor/beach/away/sand,
@@ -6976,12 +7236,16 @@
 /obj/effect/decal/syndie_logo{
 	icon_state = "logo15"
 	},
+/obj/effect/turf_decal/siding/black{
+	dir = 4
+	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/syndicate_mothership/control)
 "pez" = (
 /obj/structure/railing{
 	dir = 1
 	},
+/obj/effect/turf_decal/miscellaneous/goldensiding,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "dark"
@@ -7012,6 +7276,9 @@
 "pko" = (
 /obj/structure/railing/corner{
 	dir = 4
+	},
+/obj/effect/turf_decal/miscellaneous/goldensiding/corner{
+	dir = 6
 	},
 /turf/simulated/floor/plasteel{
 	dir = 1;
@@ -7101,6 +7368,9 @@
 	pixel_y = 32;
 	emagged = 1
 	},
+/obj/effect/turf_decal/miscellaneous/goldensiding/corner{
+	dir = 5
+	},
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "dark"
@@ -7158,6 +7428,9 @@
 "pui" = (
 /obj/effect/decal/syndie_logo{
 	icon_state = "logo9"
+	},
+/obj/effect/turf_decal/siding/black{
+	dir = 8
 	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/syndicate_mothership/control)
@@ -7330,6 +7603,9 @@
 /obj/effect/decal/syndie_logo{
 	icon_state = "logo16"
 	},
+/obj/effect/turf_decal/siding/black{
+	dir = 10
+	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/syndicate_mothership/jail)
 "pMn" = (
@@ -7354,9 +7630,6 @@
 /obj/machinery/computer/shuttle/syndicate{
 	name = "Nuclear Operatives Shuttle Console"
 	},
-/obj/effect/turf_decal/siding/white{
-	color = "#444444"
-	},
 /turf/simulated/floor/carpet/black,
 /area/syndicate_mothership/control)
 "pNM" = (
@@ -7379,7 +7652,7 @@
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/turf_decal/delivery/red,
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "pOE" = (
@@ -7577,6 +7850,9 @@
 /obj/structure/chair/comfy/black{
 	dir = 4
 	},
+/obj/effect/decal/syndie_logo{
+	icon_state = "logo9"
+	},
 /turf/simulated/floor/mineral/plastitanium,
 /area/syndicate_mothership/infteam)
 "pZe" = (
@@ -7589,15 +7865,24 @@
 	pixel_x = 13;
 	pixel_y = 9
 	},
+/obj/effect/decal/syndie_logo{
+	icon_state = "logo10"
+	},
 /turf/simulated/floor/mineral/plastitanium,
 /area/syndicate_mothership/infteam)
 "qar" = (
 /obj/structure/table/wood,
 /obj/item/reagent_containers/food/snacks/watermelonslice,
+/obj/effect/decal/syndie_logo{
+	icon_state = "logo11"
+	},
 /turf/simulated/floor/mineral/plastitanium,
 /area/syndicate_mothership/infteam)
 "qbb" = (
 /obj/structure/table/wood,
+/obj/effect/decal/syndie_logo{
+	icon_state = "logo12"
+	},
 /turf/simulated/floor/mineral/plastitanium,
 /area/syndicate_mothership/infteam)
 "qbn" = (
@@ -7693,17 +7978,15 @@
 	dir = 8
 	},
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership/elite_squad)
 "qgr" = (
-/obj/machinery/door/airlock/hatch/syndicate{
-	name = "Syndicate Base"
+/obj/effect/decal/syndie_logo{
+	icon_state = "logo3"
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
-	},
-/area/syndicate_mothership/elite_squad)
+/turf/simulated/floor/mineral/plastitanium,
+/area/syndicate_mothership/infteam)
 "qgP" = (
 /obj/structure/holohoop{
 	dir = 8
@@ -7735,6 +8018,12 @@
 	},
 /turf/simulated/floor/carpet/black,
 /area/syndicate_mothership/elite_squad)
+"qis" = (
+/obj/effect/decal/syndie_logo{
+	icon_state = "logo16"
+	},
+/turf/simulated/floor/mineral/plastitanium,
+/area/syndicate_mothership/infteam)
 "qjg" = (
 /obj/effect/turf_decal/delivery,
 /obj/structure/window/reinforced{
@@ -7820,6 +8109,9 @@
 /obj/structure/railing/corner{
 	dir = 8
 	},
+/obj/effect/turf_decal/miscellaneous/goldensiding/corner{
+	dir = 9
+	},
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "dark"
@@ -7902,7 +8194,7 @@
 	dir = 10
 	},
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "qtA" = (
@@ -7926,7 +8218,7 @@
 "qvD" = (
 /obj/structure/fans/tiny/invisible,
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "qwH" = (
@@ -7936,15 +8228,14 @@
 /turf/simulated/floor/indestructible/grass/no_creep,
 /area/syndicate_mothership/outside)
 "qzc" = (
-/obj/effect/turf_decal/siding/white{
-	dir = 1;
-	color = "#444444"
+/obj/effect/decal/syndie_logo{
+	icon_state = "logo15"
 	},
-/turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "dark"
+/obj/effect/turf_decal/woodsiding{
+	dir = 4
 	},
-/area/syndicate_mothership/jail)
+/turf/simulated/floor/mineral/plastitanium,
+/area/syndicate_mothership)
 "qzC" = (
 /obj/structure/window/reinforced{
 	color = "red";
@@ -7953,10 +8244,6 @@
 /obj/machinery/computer/camera_advanced{
 	pixel_x = -6;
 	dir = 8
-	},
-/obj/effect/turf_decal/siding/white{
-	dir = 8;
-	color = "#444444"
 	},
 /turf/simulated/floor/carpet/black,
 /area/syndicate_mothership/control)
@@ -8028,10 +8315,6 @@
 	},
 /area/syndicate_mothership/outside)
 "qGW" = (
-/obj/effect/turf_decal/siding/white{
-	dir = 4;
-	color = "#444444"
-	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "darkredcornersalt"
@@ -8054,7 +8337,7 @@
 /turf/simulated/floor/redgrid,
 /area/syndicate_mothership)
 "qKF" = (
-/obj/structure/chair/comfy/shuttle{
+/obj/structure/chair/comfy/shuttle/dark{
 	dir = 1
 	},
 /turf/simulated/floor/mineral/plastitanium/red,
@@ -8216,6 +8499,9 @@
 	name = "Биба";
 	obj_integrity = 9999
 	},
+/obj/effect/turf_decal/miscellaneous/goldensiding/corner{
+	dir = 5
+	},
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "dark"
@@ -8248,6 +8534,17 @@
 	icon_state = "fancy-wood-cherry"
 	},
 /area/syndicate_mothership/control)
+"rdj" = (
+/obj/effect/turf_decal/siding/black{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/black,
+/turf/simulated/floor/plasteel{
+	dir = 8;
+	icon_state = "rampbottom";
+	tag = "icon-stage_stairs"
+	},
+/area/syndicate_mothership)
 "rdZ" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -8311,15 +8608,14 @@
 	id = "SIT_outside";
 	name = "SIT Outside Doors"
 	},
-/obj/effect/turf_decal/siding/white{
-	dir = 1;
-	color = "#444444"
-	},
 /turf/simulated/floor/carpet/black,
 /area/syndicate_mothership/control)
 "rgS" = (
 /obj/effect/decal/syndie_logo{
 	icon_state = "logo13"
+	},
+/obj/effect/turf_decal/siding/black{
+	dir = 8
 	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/syndicate_mothership/jail)
@@ -8399,9 +8695,8 @@
 	pixel_x = 4;
 	pixel_y = 6
 	},
-/turf/simulated/floor/wood{
-	icon_state = "fancy-wood-cherry"
-	},
+/obj/effect/turf_decal/miscellaneous/goldensiding,
+/turf/simulated/floor/carpet/black,
 /area/syndicate_mothership/control)
 "ror" = (
 /obj/structure/sign/poster/contraband/random{
@@ -8427,9 +8722,15 @@
 	req_access = list(150)
 	},
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
+"roR" = (
+/obj/effect/turf_decal/miscellaneous/goldensiding/corner{
+	dir = 10
+	},
+/turf/simulated/floor/carpet/black,
+/area/syndicate_mothership/control)
 "rpG" = (
 /obj/machinery/door/poddoor/impassable{
 	id_tag = "SST_armory_main";
@@ -8456,6 +8757,13 @@
 	icon_state = "darkbluealtstrip"
 	},
 /area/syndicate_mothership/elite_squad)
+"rsw" = (
+/obj/structure/chair/stool,
+/obj/effect/decal/syndie_logo{
+	icon_state = "logo6"
+	},
+/turf/simulated/floor/mineral/plastitanium,
+/area/syndicate_mothership/infteam)
 "rtg" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -8553,6 +8861,17 @@
 /obj/effect/turf_decal/bot_white,
 /turf/simulated/floor/mineral/plastitanium,
 /area/syndicate_mothership/elite_squad)
+"rAZ" = (
+/obj/effect/turf_decal/siding/black,
+/obj/effect/turf_decal/siding/black{
+	dir = 1
+	},
+/turf/simulated/floor/plasteel{
+	dir = 4;
+	icon_state = "rampbottom";
+	tag = "icon-stage_stairs"
+	},
+/area/syndicate_mothership)
 "rBY" = (
 /turf/simulated/floor/wood{
 	icon_state = "fancy-wood-oak"
@@ -8595,9 +8914,10 @@
 	pixel_x = 32
 	},
 /obj/structure/closet/secure_closet/syndicate_officer,
-/turf/simulated/floor/wood{
-	icon_state = "fancy-wood-cherry"
+/obj/effect/turf_decal/miscellaneous/goldensiding{
+	dir = 6
 	},
+/turf/simulated/floor/carpet/black,
 /area/syndicate_mothership/control)
 "rGT" = (
 /obj/structure/shuttle/engine/large,
@@ -8656,6 +8976,9 @@
 /obj/machinery/shower{
 	pixel_y = 20
 	},
+/obj/effect/turf_decal/miscellaneous/plumbing{
+	dir = 1
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "freezerfloor"
 	},
@@ -8703,6 +9026,9 @@
 	info = "Дней без рассекречивания Тайпана: 0"
 	},
 /obj/effect/decal/syndie_logo,
+/obj/effect/turf_decal/siding/black{
+	dir = 9
+	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/syndicate_mothership/control)
 "rOs" = (
@@ -8949,7 +9275,7 @@
 /obj/structure/closet/syndicate/personal,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "sqi" = (
@@ -9171,7 +9497,7 @@
 /obj/machinery/light/small,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "sDl" = (
@@ -9183,10 +9509,14 @@
 /obj/effect/decal/syndie_logo{
 	icon_state = "logo19"
 	},
+/obj/effect/turf_decal/siding/black{
+	dir = 6
+	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/syndicate_mothership/control)
 "sGZ" = (
 /obj/effect/turf_decal/bot_white,
+/obj/mecha/combat/durand/rover/loaded,
 /turf/simulated/floor/mineral/plastitanium,
 /area/syndicate_mothership/elite_squad)
 "sHP" = (
@@ -9198,6 +9528,7 @@
 	wires = 1;
 	emagged = 1
 	},
+/obj/effect/turf_decal/miscellaneous/goldensiding,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "dark"
@@ -9229,6 +9560,13 @@
 	},
 /turf/simulated/floor/mineral/plastitanium,
 /area/syndicate_mothership/elite_squad)
+"sJk" = (
+/obj/structure/chair/stool,
+/obj/effect/decal/syndie_logo{
+	icon_state = "logo7"
+	},
+/turf/simulated/floor/mineral/plastitanium,
+/area/syndicate_mothership/infteam)
 "sKd" = (
 /obj/machinery/light{
 	dir = 8
@@ -9277,9 +9615,6 @@
 /area/syndicate_mothership/outside)
 "sNl" = (
 /obj/machinery/computer/shuttle/sit,
-/obj/effect/turf_decal/siding/white{
-	color = "#444444"
-	},
 /turf/simulated/floor/carpet/black,
 /area/syndicate_mothership/control)
 "sOp" = (
@@ -9364,6 +9699,9 @@
 /obj/effect/decal/syndie_logo{
 	icon_state = "logo8"
 	},
+/obj/effect/turf_decal/siding/black{
+	dir = 4
+	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/syndicate_mothership/jail)
 "sSy" = (
@@ -9402,6 +9740,9 @@
 	},
 /obj/machinery/shower{
 	pixel_y = 20
+	},
+/obj/effect/turf_decal/miscellaneous/plumbing{
+	dir = 1
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "freezerfloor"
@@ -9571,10 +9912,6 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/obj/effect/turf_decal/siding/white{
-	dir = 8;
-	color = "#444444"
-	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "darkredaltstrip"
@@ -9622,7 +9959,10 @@
 /turf/simulated/floor/carpet/red,
 /area/syndicate_mothership/control)
 "tox" = (
-/obj/effect/turf_decal/siding/brown{
+/obj/effect/decal/syndie_logo{
+	icon_state = "logo13"
+	},
+/obj/effect/turf_decal/woodsiding{
 	dir = 8
 	},
 /turf/simulated/floor/mineral/plastitanium,
@@ -9949,10 +10289,6 @@
 	color = "red";
 	dir = 8
 	},
-/obj/effect/turf_decal/siding/white{
-	dir = 4;
-	color = "#444444"
-	},
 /turf/simulated/floor/carpet/black,
 /area/syndicate_mothership/control)
 "tKP" = (
@@ -9965,6 +10301,9 @@
 	max_integrity = 9999;
 	name = "Биба";
 	obj_integrity = 9999
+	},
+/obj/effect/turf_decal/miscellaneous/goldensiding/corner{
+	dir = 9
 	},
 /turf/simulated/floor/plasteel{
 	dir = 1;
@@ -10087,6 +10426,9 @@
 /obj/effect/decal/syndie_logo{
 	icon_state = "logo16"
 	},
+/obj/effect/turf_decal/siding/black{
+	dir = 10
+	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/syndicate_mothership/control)
 "tVX" = (
@@ -10124,6 +10466,12 @@
 	},
 /turf/simulated/floor/mineral/plastitanium,
 /area/syndicate_mothership/elite_squad)
+"uat" = (
+/obj/effect/decal/syndie_logo{
+	icon_state = "logo10"
+	},
+/turf/simulated/floor/mineral/plastitanium,
+/area/syndicate_mothership)
 "ubY" = (
 /obj/machinery/door/poddoor/impassable{
 	id_tag = "SIT_outside"
@@ -10239,9 +10587,10 @@
 /area/syndicate_mothership)
 "uku" = (
 /obj/item/kirbyplants,
-/turf/simulated/floor/wood{
-	icon_state = "fancy-wood-cherry"
+/obj/effect/turf_decal/miscellaneous/goldensiding{
+	dir = 1
 	},
+/turf/simulated/floor/carpet/black,
 /area/syndicate_mothership/control)
 "ulu" = (
 /turf/simulated/wall/indestructible/opsglass,
@@ -10518,6 +10867,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
+/obj/effect/turf_decal/miscellaneous/goldensiding,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "dark"
@@ -10553,7 +10903,7 @@
 /obj/effect/turf_decal/delivery/white,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "uwo" = (
@@ -10562,7 +10912,7 @@
 	},
 /obj/structure/ore_box,
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "uwE" = (
@@ -10572,7 +10922,7 @@
 /obj/structure/ore_box,
 /obj/effect/turf_decal/delivery/white,
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "uwF" = (
@@ -10595,7 +10945,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "uyg" = (
@@ -10604,7 +10954,7 @@
 	},
 /obj/effect/turf_decal/delivery/white,
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "uyZ" = (
@@ -10632,6 +10982,13 @@
 	icon_state = "dark"
 	},
 /area/syndicate_mothership/control)
+"uBR" = (
+/obj/structure/chair/stool,
+/obj/effect/decal/syndie_logo{
+	icon_state = "logo15"
+	},
+/turf/simulated/floor/mineral/plastitanium,
+/area/syndicate_mothership/infteam)
 "uCi" = (
 /obj/machinery/light{
 	dir = 8
@@ -10647,7 +11004,7 @@
 /obj/structure/ore_box,
 /obj/effect/turf_decal/delivery/white,
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "uFu" = (
@@ -10705,7 +11062,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "uLm" = (
@@ -10724,7 +11081,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "uMQ" = (
@@ -10734,7 +11091,7 @@
 /obj/effect/turf_decal/delivery/white,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "uNb" = (
@@ -10749,7 +11106,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "uNG" = (
@@ -10760,8 +11117,20 @@
 	icon_state = "darkfull"
 	},
 /area/syndicate_mothership/cargo)
+"uOh" = (
+/obj/effect/turf_decal/miscellaneous/goldensiding{
+	dir = 9
+	},
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "dark"
+	},
+/area/syndicate_mothership/control)
 "uOv" = (
 /obj/item/kirbyplants,
+/obj/effect/turf_decal/miscellaneous/goldensiding{
+	dir = 1
+	},
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "dark"
@@ -10813,7 +11182,7 @@
 	},
 /obj/effect/turf_decal/delivery/white,
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "uSD" = (
@@ -10822,7 +11191,7 @@
 	},
 /obj/effect/turf_decal/delivery/white,
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "uUC" = (
@@ -10865,7 +11234,7 @@
 /area/syndicate_mothership/control)
 "uXx" = (
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership/elite_squad)
 "uZp" = (
@@ -10885,7 +11254,7 @@
 	spawn_inside = null
 	},
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "van" = (
@@ -10894,14 +11263,14 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "vdW" = (
 /obj/structure/ore_box,
 /obj/effect/turf_decal/delivery/red,
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "vex" = (
@@ -10928,7 +11297,7 @@
 /obj/structure/ore_box,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "viy" = (
@@ -10944,7 +11313,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/spawner/lootdrop/maintenance,
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "viM" = (
@@ -10954,11 +11323,11 @@
 /obj/structure/ore_box,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "vjq" = (
-/obj/structure/chair/comfy/shuttle{
+/obj/structure/chair/comfy/shuttle/dark{
 	dir = 8
 	},
 /turf/simulated/floor/mineral/plastitanium/red,
@@ -11025,7 +11394,7 @@
 /obj/item/target,
 /obj/item/target,
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "vow" = (
@@ -11038,6 +11407,10 @@
 	},
 /area/syndicate_mothership/cargo)
 "voR" = (
+/obj/effect/turf_decal/siding/black{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/black,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "rampbottom";
@@ -11051,9 +11424,9 @@
 /obj/effect/turf_decal/siding/wood{
 	dir = 8
 	},
-/obj/machinery/door/airlock/hatch/syndicate{
-	name = "Vault";
-	req_access = list(153)
+/obj/machinery/door/airlock/hatch/syndicate/vault{
+	req_access = list(153);
+	name = "Vault"
 	},
 /turf/simulated/floor/wood{
 	icon_state = "light-fancy-wood"
@@ -11066,17 +11439,16 @@
 	},
 /area/syndicate_mothership/control)
 "vry" = (
-/obj/effect/turf_decal/siding/white/corner{
-	dir = 8;
-	color = "#444444"
+/obj/effect/turf_decal/miscellaneous/goldensiding/corner{
+	dir = 10
 	},
 /turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "darkredaltstrip"
+	dir = 1;
+	icon_state = "dark"
 	},
-/area/syndicate_mothership/jail)
+/area/syndicate_mothership/control)
 "vrH" = (
-/obj/effect/turf_decal/siding/yellow{
+/obj/effect/turf_decal/woodsiding{
 	dir = 10
 	},
 /turf/simulated/floor/carpet/royalblack,
@@ -11126,7 +11498,7 @@
 /obj/effect/turf_decal/delivery/red,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "vwk" = (
@@ -11135,7 +11507,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "vxf" = (
@@ -11143,7 +11515,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/spawner/lootdrop/maintenance,
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "vxY" = (
@@ -11162,13 +11534,17 @@
 	dir = 4
 	},
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "vAv" = (
 /obj/machinery/door/poddoor/impassable{
 	id_tag = "nukeop_outside";
 	name = "Outside Blast Door"
+	},
+/obj/effect/turf_decal/siding/black,
+/obj/effect/turf_decal/siding/black{
+	dir = 1
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -11184,14 +11560,14 @@
 /obj/effect/turf_decal/delivery/white,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "vDI" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "vDS" = (
@@ -11201,7 +11577,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "vGa" = (
@@ -11209,7 +11585,7 @@
 /obj/effect/turf_decal/delivery/white,
 /obj/effect/spawner/lootdrop/maintenance,
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "vHi" = (
@@ -11221,7 +11597,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "vIV" = (
@@ -11241,7 +11617,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "vKQ" = (
@@ -11313,10 +11689,6 @@
 	id = "SyndFB_prison_stroll_blast";
 	name = "Prison Stroll Blastdoors"
 	},
-/obj/effect/turf_decal/siding/white{
-	dir = 1;
-	color = "#444444"
-	},
 /turf/simulated/floor/carpet/black,
 /area/syndicate_mothership/control)
 "vMj" = (
@@ -11328,6 +11700,9 @@
 "vMq" = (
 /obj/effect/decal/syndie_logo{
 	icon_state = "logo12"
+	},
+/obj/effect/turf_decal/siding/black{
+	dir = 4
 	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/syndicate_mothership/control)
@@ -11353,6 +11728,9 @@
 /area/syndicate_mothership/cargo)
 "vSg" = (
 /obj/effect/decal/syndie_logo,
+/obj/effect/turf_decal/siding/black{
+	dir = 9
+	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/syndicate_mothership/jail)
 "vSy" = (
@@ -11377,9 +11755,10 @@
 	pixel_x = 32
 	},
 /obj/item/kirbyplants,
-/turf/simulated/floor/wood{
-	icon_state = "fancy-wood-cherry"
+/obj/effect/turf_decal/miscellaneous/goldensiding{
+	dir = 6
 	},
+/turf/simulated/floor/carpet/black,
 /area/syndicate_mothership/control)
 "vTC" = (
 /obj/machinery/porta_turret/syndicate/pod,
@@ -11412,7 +11791,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/spawner/lootdrop/maintenance,
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "vWC" = (
@@ -11426,7 +11805,7 @@
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "vWY" = (
@@ -11444,7 +11823,7 @@
 /obj/effect/turf_decal/delivery/white,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "vZd" = (
@@ -11470,7 +11849,7 @@
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/turf_decal/delivery/white,
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "waI" = (
@@ -11481,7 +11860,7 @@
 /obj/effect/turf_decal/delivery/white,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "wbw" = (
@@ -11589,6 +11968,7 @@
 /obj/effect/decal/syndie_logo{
 	icon_state = "logo17"
 	},
+/obj/effect/turf_decal/siding/black,
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/syndicate_mothership/jail)
 "wkr" = (
@@ -11695,6 +12075,13 @@
 	icon_state = "darkyellowaltstrip"
 	},
 /area/syndicate_mothership/control)
+"wvK" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/chair/sofa/bench/left,
+/turf/simulated/floor/plasteel{
+	icon_state = "darkgrey"
+	},
+/area/syndicate_mothership/infteam)
 "wvS" = (
 /obj/machinery/door/poddoor/impassable{
 	id_tag = "SST_pod_ready";
@@ -11702,7 +12089,13 @@
 	name = "Shuttle Dock Door"
 	},
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
+	},
+/area/syndicate_mothership)
+"wxw" = (
+/obj/effect/turf_decal/delivery/red,
+/turf/simulated/floor/plasteel{
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "wxN" = (
@@ -11815,12 +12208,26 @@
 	},
 /area/syndicate_mothership/cargo)
 "wKn" = (
-/obj/effect/turf_decal/siding/white/corner{
-	dir = 4;
-	color = "#444444"
+/obj/effect/turf_decal/miscellaneous/goldensiding{
+	dir = 4
 	},
-/turf/simulated/floor/carpet/black,
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "dark"
+	},
 /area/syndicate_mothership/control)
+"wLj" = (
+/obj/effect/decal/syndie_logo{
+	icon_state = "logo13"
+	},
+/turf/simulated/floor/mineral/plastitanium,
+/area/syndicate_mothership/infteam)
+"wLB" = (
+/obj/effect/decal/syndie_logo{
+	icon_state = "logo6"
+	},
+/turf/simulated/floor/mineral/plastitanium,
+/area/syndicate_mothership)
 "wLD" = (
 /obj/structure/flora/junglebush,
 /obj/structure/flora/junglebush,
@@ -11833,6 +12240,9 @@
 	},
 /obj/machinery/light/small{
 	dir = 4
+	},
+/obj/effect/turf_decal/miscellaneous/plumbing{
+	dir = 1
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "freezerfloor"
@@ -11848,10 +12258,6 @@
 	max_integrity = 9999;
 	name = "Плуто";
 	obj_integrity = 9999
-	},
-/obj/effect/turf_decal/siding/white{
-	dir = 4;
-	color = "#444444"
 	},
 /turf/simulated/floor/plasteel{
 	dir = 1;
@@ -11875,15 +12281,20 @@
 /turf/simulated/floor/carpet,
 /area/syndicate_mothership/control)
 "wOk" = (
-/obj/effect/turf_decal/siding/white{
-	dir = 4;
-	color = "#444444"
+/obj/effect/turf_decal/siding/black{
+	dir = 4
 	},
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "rampbottom"
 	},
 /area/syndicate_mothership/outside)
+"wPm" = (
+/obj/effect/decal/syndie_logo{
+	icon_state = "logo17"
+	},
+/turf/simulated/floor/mineral/plastitanium,
+/area/syndicate_mothership/infteam)
 "wPq" = (
 /obj/structure/noticeboard{
 	pixel_x = -32
@@ -11901,7 +12312,10 @@
 /turf/simulated/floor/indestructible/grass,
 /area/syndicate_mothership/outside)
 "wRB" = (
-/obj/effect/turf_decal/siding/brown{
+/obj/effect/decal/syndie_logo{
+	icon_state = "logo16"
+	},
+/obj/effect/turf_decal/woodsiding{
 	dir = 10
 	},
 /turf/simulated/floor/mineral/plastitanium,
@@ -11949,7 +12363,7 @@
 	},
 /area/syndicate_mothership/jail)
 "wVJ" = (
-/obj/effect/turf_decal/siding/yellow,
+/obj/effect/turf_decal/woodsiding,
 /turf/simulated/floor/carpet/royalblack,
 /area/syndicate_mothership/control)
 "wVK" = (
@@ -12022,7 +12436,7 @@
 /turf/simulated/wall/mineral/plastitanium/nodiagonal,
 /area/shuttle/assault_pod)
 "xcu" = (
-/obj/effect/turf_decal/siding/yellow{
+/obj/effect/turf_decal/woodsiding{
 	dir = 6
 	},
 /turf/simulated/floor/carpet/royalblack,
@@ -12049,7 +12463,10 @@
 	},
 /area/syndicate_mothership)
 "xgK" = (
-/obj/effect/turf_decal/siding/brown{
+/obj/effect/decal/syndie_logo{
+	icon_state = "logo8"
+	},
+/obj/effect/turf_decal/woodsiding{
 	dir = 4
 	},
 /turf/simulated/floor/mineral/plastitanium,
@@ -12086,7 +12503,7 @@
 /obj/machinery/mech_bay_recharge_port/upgraded/unsimulated,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "xjy" = (
@@ -12113,7 +12530,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "xlF" = (
@@ -12144,13 +12561,13 @@
 "xoy" = (
 /obj/machinery/computer/mech_bay_power_console,
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "xoH" = (
 /obj/item/target,
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "xqw" = (
@@ -12166,6 +12583,16 @@
 	icon_state = "fancy-wood-oak"
 	},
 /area/syndicate_mothership)
+"xuf" = (
+/obj/machinery/door/airlock/hatch/syndicate/command,
+/obj/effect/turf_decal/miscellaneous/goldensiding{
+	dir = 1
+	},
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "dark"
+	},
+/area/syndicate_mothership/control)
 "xxy" = (
 /turf/simulated/floor/plasteel{
 	dir = 1;
@@ -12177,6 +12604,12 @@
 /obj/structure/flora/rock/jungle,
 /turf/simulated/floor/indestructible/grass,
 /area/syndicate_mothership/outside)
+"xxR" = (
+/obj/effect/turf_decal/miscellaneous/goldensiding/corner{
+	dir = 6
+	},
+/turf/simulated/floor/carpet/black,
+/area/syndicate_mothership/control)
 "xAs" = (
 /obj/structure/sink{
 	dir = 8;
@@ -12212,6 +12645,16 @@
 	icon_state = "dark"
 	},
 /area/syndicate_mothership/cargo)
+"xGJ" = (
+/obj/item/kirbyplants,
+/obj/effect/turf_decal/miscellaneous/goldensiding{
+	dir = 9
+	},
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "dark"
+	},
+/area/syndicate_mothership/control)
 "xGV" = (
 /obj/structure/closet/secure_closet/engineering_welding,
 /obj/item/extinguisher/mini,
@@ -12254,6 +12697,9 @@
 /turf/simulated/floor/carpet/black,
 /area/syndicate_mothership/jail)
 "xJF" = (
+/obj/effect/turf_decal/woodsiding{
+	dir = 4
+	},
 /turf/simulated/floor/carpet/royalblack,
 /area/syndicate_mothership/control)
 "xLn" = (
@@ -12341,7 +12787,7 @@
 /obj/structure/table,
 /obj/item/gun/energy/ionrifle,
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "yaa" = (
@@ -12352,7 +12798,7 @@
 "yas" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "yaI" = (
@@ -12380,7 +12826,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/economy/vending/tool/free,
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "yds" = (
@@ -12412,6 +12858,15 @@
 	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/syndicate_mothership/elite_squad)
+"ygX" = (
+/obj/effect/decal/syndie_logo{
+	icon_state = "logo12"
+	},
+/obj/effect/turf_decal/woodsiding{
+	dir = 4
+	},
+/turf/simulated/floor/mineral/plastitanium,
+/area/syndicate_mothership)
 "yhy" = (
 /obj/machinery/door/airlock/hatch/syndicate{
 	name = "Syndicate Base"
@@ -12441,7 +12896,7 @@
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "yjF" = (
@@ -12452,7 +12907,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
-	icon_state = "darkfull"
+	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
 "yjY" = (
@@ -13218,7 +13673,7 @@ eer
 tIM
 tIM
 dzf
-mVq
+akI
 sBf
 sBf
 pNM
@@ -13531,11 +13986,11 @@ gWl
 plE
 qrV
 oTb
-eKN
-eKN
+gZh
+kCR
 pYo
-eKN
-eKN
+wLj
+qis
 plE
 qrV
 oTb
@@ -13654,10 +14109,10 @@ jkn
 ibe
 tVx
 eKN
-qso
+rsw
 pZe
 qso
-eKN
+wPm
 jkn
 ibe
 tVx
@@ -13775,11 +14230,11 @@ gWl
 jkn
 ibe
 tVx
-eKN
-qso
+qgr
+sJk
 qar
-qso
-eKN
+hEU
+nVR
 jkn
 ibe
 tVx
@@ -13823,7 +14278,7 @@ bMn
 oOt
 xDM
 wKl
-auc
+ehA
 xxy
 vtR
 vtR
@@ -13897,11 +14352,11 @@ gWl
 jkn
 ibe
 tVx
-eKN
-qso
+eHU
+enx
 qbb
-qso
-eKN
+uBR
+cyr
 jkn
 ibe
 tVx
@@ -14262,7 +14717,7 @@ dZp
 dZp
 ioz
 ioz
-nVR
+ioz
 ioz
 mdz
 gWl
@@ -14304,7 +14759,7 @@ oOt
 vtR
 xxy
 uwF
-vtR
+aaP
 tEB
 oaS
 sBf
@@ -14414,7 +14869,7 @@ xMR
 xMR
 xMR
 hWV
-vtR
+aaP
 vtR
 vtR
 bhK
@@ -14799,7 +15254,7 @@ xis
 oOt
 xDM
 wKl
-auc
+ehA
 xxy
 vtR
 vtR
@@ -15850,7 +16305,7 @@ ioz
 xMR
 jiV
 qZx
-uJo
+cCD
 uJo
 uJo
 qZx
@@ -15972,7 +16427,7 @@ nSG
 xMR
 xMR
 qZx
-uJo
+wvK
 uJo
 tYg
 qZx
@@ -16385,8 +16840,8 @@ unf
 kVT
 gPJ
 oab
-woR
-woR
+mNM
+ahx
 oab
 fZg
 pun
@@ -16507,8 +16962,8 @@ luv
 woR
 lxn
 oab
-woR
-woR
+oNE
+jHY
 oab
 yjY
 fZg
@@ -16629,8 +17084,8 @@ woR
 woR
 obd
 byS
-woR
-woR
+oNE
+jHY
 oab
 yjY
 yjY
@@ -16718,7 +17173,7 @@ pVc
 fCi
 chw
 mzU
-moV
+mVq
 iBM
 pVc
 pOi
@@ -16727,8 +17182,8 @@ pYn
 pYn
 blr
 naW
-tox
-tox
+fML
+bGM
 tox
 wRB
 xNs
@@ -16751,7 +17206,7 @@ ocY
 nVy
 obd
 byS
-woR
+oNE
 sHP
 oab
 fZg
@@ -16837,10 +17292,10 @@ pQe
 bVx
 moV
 ucn
-moV
-ucn
-moV
-iEH
+mVq
+hjs
+mVq
+lsm
 pVc
 iEH
 cBV
@@ -16848,9 +17303,9 @@ pQe
 pQe
 rew
 khv
-fzj
-aWO
-aWO
+fKK
+wLB
+uat
 aWO
 mUj
 rIL
@@ -16873,8 +17328,8 @@ gby
 qmw
 obd
 byS
-woR
-woR
+oNE
+jHY
 oab
 fZg
 yjY
@@ -16959,10 +17414,10 @@ pQe
 uxM
 vgP
 sUD
-iBM
-pVc
-iBM
-moV
+kIY
+ccz
+kIY
+mVq
 vgP
 moV
 eMS
@@ -16971,10 +17426,10 @@ pQe
 rew
 khv
 fzj
-aWO
-aWO
-aWO
-mUj
+iwT
+fmd
+koA
+aoB
 khv
 pYn
 pNM
@@ -16995,8 +17450,8 @@ bZu
 mJn
 lxn
 oab
-woR
-woR
+oNE
+jHY
 oab
 yjY
 fZg
@@ -17094,8 +17549,8 @@ pYn
 mFf
 oUj
 xgK
-xgK
-xgK
+ygX
+qzc
 mPY
 khv
 pYn
@@ -17117,8 +17572,8 @@ jIq
 isc
 fHZ
 oab
-woR
-woR
+oNE
+jHY
 oab
 yjY
 yjY
@@ -17221,7 +17676,7 @@ eOV
 khv
 khv
 khv
-vua
+lcr
 okO
 wXZ
 wXZ
@@ -17239,7 +17694,7 @@ oab
 oab
 oab
 oab
-njf
+xuf
 njf
 oab
 oab
@@ -17343,7 +17798,7 @@ bCL
 khv
 khv
 khv
-vua
+lcr
 okO
 wXZ
 jSZ
@@ -17358,19 +17813,19 @@ woR
 woR
 tfq
 oab
-woR
-woR
-woR
-woR
-woR
-woR
-woR
-woR
-woR
+uOh
+nvg
+nvg
+baU
+vry
+nvg
+nvg
+nvg
+nvg
 oab
 jSH
-ovy
-ovy
+fkL
+roR
 lJL
 gSC
 svg
@@ -17480,19 +17935,19 @@ woR
 woR
 jJf
 oab
-woR
-woR
-woR
-woR
+oNE
+ahx
+wKn
+wKn
 dMk
-woR
+wKn
 rca
 woR
 woR
 oab
 mcz
-aII
-vrH
+fkL
+fkL
 rms
 oab
 oDx
@@ -17602,8 +18057,8 @@ wWz
 xmo
 wvF
 oab
-woR
-woR
+oNE
+jHY
 oab
 oab
 oab
@@ -17613,7 +18068,7 @@ bus
 bus
 oab
 fGc
-dVt
+fkL
 mmf
 eSy
 oab
@@ -17724,8 +18179,8 @@ ouC
 oab
 oab
 oab
-woR
-woR
+oNE
+jHY
 gSC
 nar
 nar
@@ -17735,8 +18190,8 @@ fkL
 fkL
 oab
 mcz
-nKV
-xcu
+fkL
+fkL
 oRn
 oab
 eMn
@@ -17844,10 +18299,10 @@ woR
 woR
 ouC
 oab
-uOv
-woR
-woR
-woR
+xGJ
+nvg
+baU
+jHY
 gSC
 sAo
 nOy
@@ -17857,9 +18312,9 @@ fkL
 fkL
 oab
 uku
-ovy
-ovy
-uku
+fkL
+fkL
+cuh
 oab
 mLJ
 vua
@@ -17940,7 +18395,7 @@ nqY
 nqY
 rkx
 uwE
-moV
+mVq
 vDS
 pQe
 pYn
@@ -17968,8 +18423,8 @@ oab
 oab
 bLi
 woR
-woR
-woR
+ahx
+jtO
 gSC
 bdj
 bXA
@@ -18062,7 +18517,7 @@ nqY
 nqY
 rkx
 uxM
-vgP
+wxw
 vDI
 pQe
 pYn
@@ -18073,8 +18528,8 @@ nEp
 hsL
 pYn
 xuc
-tcM
-tcM
+rdj
+rdj
 xuc
 pYn
 oDx
@@ -18212,7 +18667,7 @@ pez
 byS
 uOv
 woR
-woR
+jHY
 gSC
 sxa
 nar
@@ -18332,9 +18787,9 @@ aFh
 mRs
 pez
 byS
+oNE
 woR
-woR
-woR
+jHY
 gSC
 kwZ
 nOy
@@ -18454,9 +18909,9 @@ aFh
 uQe
 pez
 byS
-woR
-woR
-woR
+oNE
+ahx
+jtO
 gSC
 bdj
 bXA
@@ -18576,8 +19031,8 @@ aFh
 ttr
 usi
 oab
-woR
-woR
+oNE
+jHY
 oab
 oab
 gzB
@@ -18585,7 +19040,7 @@ hwi
 anf
 huy
 tKD
-wKn
+fkL
 fkL
 oab
 nYu
@@ -18699,7 +19154,7 @@ qtS
 gwk
 oab
 oVu
-woR
+jHY
 gSC
 sNl
 rOl
@@ -18816,12 +19271,12 @@ bPp
 woR
 ppU
 sRy
-xJF
-xJF
-xJF
+aII
+lAy
+vrH
 ceD
 woR
-woR
+jHY
 gSC
 fPk
 geC
@@ -18938,12 +19393,12 @@ bPp
 woR
 ppU
 sRy
+nKV
 xJF
-xJF
-xJF
+xcu
 ceD
 woR
-woR
+jHY
 gSC
 pMF
 jFK
@@ -19065,7 +19520,7 @@ uoE
 pko
 oab
 psf
-woR
+jHY
 gSC
 dGC
 nuU
@@ -19186,8 +19641,8 @@ aFh
 ttr
 usi
 oab
-woR
-woR
+oNE
+jHY
 oab
 oab
 dcA
@@ -19195,7 +19650,7 @@ qzC
 fPz
 itt
 itt
-nvg
+fkL
 fkL
 oab
 nYu
@@ -19308,9 +19763,9 @@ aFh
 fLr
 pez
 byS
-woR
-woR
-woR
+oNE
+vry
+iqY
 gSC
 bdj
 gXa
@@ -19430,9 +19885,9 @@ aFh
 iog
 pez
 byS
+oNE
 woR
-woR
-woR
+jHY
 gSC
 vlG
 nOy
@@ -19554,7 +20009,7 @@ pez
 byS
 uOv
 woR
-woR
+jHY
 gSC
 dNO
 nar
@@ -19770,7 +20225,7 @@ nqY
 nqY
 rkx
 uSv
-moV
+mVq
 vZf
 pMv
 pYn
@@ -19781,7 +20236,7 @@ ntx
 fnJ
 pYn
 spk
-moV
+mVq
 yas
 spk
 pYn
@@ -19798,8 +20253,8 @@ oab
 oab
 lDc
 woR
-woR
-woR
+vry
+iqY
 gSC
 bdj
 gXa
@@ -19892,7 +20347,7 @@ nqY
 nqY
 rkx
 uxM
-vgP
+wxw
 vDI
 pQe
 pYn
@@ -19903,7 +20358,7 @@ ntx
 hZc
 pYn
 spk
-moV
+mVq
 yas
 spk
 pYn
@@ -19918,10 +20373,10 @@ woR
 woR
 rim
 oab
-uOv
-woR
-woR
-woR
+adh
+wKn
+mNM
+jHY
 gSC
 vlG
 nOy
@@ -19931,9 +20386,9 @@ fkL
 fkL
 oab
 uku
-ovy
-ovy
-uku
+fkL
+fkL
+cuh
 oab
 wVK
 vua
@@ -20026,7 +20481,7 @@ fwf
 pYn
 liY
 yas
-moV
+mVq
 iyi
 pYn
 wXZ
@@ -20042,8 +20497,8 @@ rim
 oab
 oab
 oab
-woR
-woR
+oNE
+jHY
 gSC
 lHa
 nar
@@ -20053,8 +20508,8 @@ fkL
 fkL
 oab
 mcz
-aII
-vrH
+fkL
+fkL
 rms
 oab
 fAD
@@ -20147,7 +20602,7 @@ ntx
 fwf
 pYn
 spk
-moV
+mVq
 yas
 spk
 pYn
@@ -20164,8 +20619,8 @@ esC
 xLn
 jnx
 oab
-woR
-woR
+oNE
+jHY
 oab
 oab
 oab
@@ -20175,7 +20630,7 @@ bus
 bus
 oab
 fGc
-dVt
+fkL
 mmf
 eSy
 oab
@@ -20286,19 +20741,19 @@ ruB
 woR
 qjR
 oab
-woR
-woR
-woR
-woR
+oNE
+vry
+nvg
+nvg
 fXA
-woR
+nvg
 tKP
 woR
 woR
 oab
 mcz
-nKV
-xcu
+fkL
+fkL
 oRn
 oab
 oDx
@@ -20388,12 +20843,12 @@ xjo
 xYF
 hbu
 voR
-voR
-hbu
+rAZ
+dNi
 yas
-moV
-moV
-vua
+mVq
+mVq
+lcr
 okO
 wXZ
 jSZ
@@ -20408,19 +20863,19 @@ ruB
 izp
 kgG
 oab
-woR
-woR
-woR
-woR
-woR
-woR
-woR
-woR
-woR
+gAO
+wKn
+wKn
+mNM
+ahx
+wKn
+wKn
+wKn
+wKn
 oab
 jSH
-ovy
-ovy
+fkL
+xxR
 vTr
 gSC
 xMR
@@ -20508,14 +20963,14 @@ nqY
 pYn
 xlE
 yas
-moV
-moV
-moV
-moV
+mVq
+mVq
+mVq
+mVq
 yas
 yas
 yas
-vua
+lcr
 okO
 wXZ
 wXZ
@@ -20533,14 +20988,14 @@ oab
 oab
 oab
 oab
+xuf
 njf
-njf
 oab
 oab
 oab
 oab
 oab
-hPQ
+csc
 cfx
 rGH
 gSC
@@ -20634,7 +21089,7 @@ yas
 yas
 yas
 xlE
-moV
+mVq
 yas
 pYn
 pYn
@@ -20655,8 +21110,8 @@ fhX
 hRw
 hcx
 oab
-woR
-woR
+oNE
+jHY
 oab
 yjY
 yjY
@@ -20753,8 +21208,8 @@ pYn
 pYn
 ycX
 yas
-moV
-moV
+mVq
+mVq
 xlE
 yas
 sCt
@@ -20777,8 +21232,8 @@ woR
 nyA
 nMV
 oab
-woR
-woR
+oNE
+jHY
 oab
 yjY
 yjY
@@ -20878,8 +21333,8 @@ yas
 yas
 xlE
 yas
-moV
-moV
+mVq
+mVq
 pYn
 pYn
 pYn
@@ -20899,8 +21354,8 @@ ruB
 woR
 qpY
 byS
-woR
-woR
+oNE
+jHY
 oab
 yjY
 yjY
@@ -21000,8 +21455,8 @@ oDx
 oDx
 oDx
 xlE
-moV
-moV
+mVq
+mVq
 yas
 vwk
 pYn
@@ -21021,7 +21476,7 @@ ruB
 izp
 bUX
 byS
-woR
+oNE
 hEO
 oab
 yjY
@@ -21118,13 +21573,13 @@ nqY
 pYn
 xoH
 yjA
-moV
+mVq
 oPc
 lMt
-moV
+mVq
 yas
-moV
-moV
+mVq
+mVq
 vwk
 oDx
 xMR
@@ -21143,8 +21598,8 @@ ruB
 woR
 jEe
 byS
-woR
-woR
+oNE
+jHY
 oab
 yjY
 yjY
@@ -21241,10 +21696,10 @@ pYn
 aHf
 yjF
 yas
-moV
+mVq
 lMt
-moV
-moV
+mVq
+mVq
 yas
 xlE
 dxs
@@ -21265,8 +21720,8 @@ ekY
 woR
 bgu
 oab
-woR
-woR
+oNE
+jHY
 oab
 yjY
 yjY
@@ -21363,13 +21818,13 @@ pYn
 oDx
 ykF
 vnN
-moV
+mVq
 roL
-moV
+mVq
 haW
 yas
-moV
-moV
+mVq
+mVq
 pYn
 xMR
 svg
@@ -21387,8 +21842,8 @@ iQH
 xRi
 jNM
 oab
-woR
-woR
+baU
+vry
 oab
 yjY
 yjY
@@ -21706,7 +22161,7 @@ nXS
 xMR
 xMR
 ulu
-uVJ
+eab
 oxW
 oxW
 ulu
@@ -21828,7 +22283,7 @@ nXS
 xMR
 xMR
 ulu
-oxW
+oVO
 uVJ
 oxW
 ulu
@@ -22435,7 +22890,7 @@ xMR
 xMR
 xMR
 ulu
-uIx
+mwR
 wFZ
 uXx
 uXx
@@ -22683,7 +23138,7 @@ lNM
 lNM
 lNM
 lNM
-qgr
+oHZ
 lNM
 lNM
 lNM
@@ -22815,7 +23270,7 @@ rQN
 shc
 lNM
 sGZ
-eab
+sGZ
 sGZ
 lNM
 umd
@@ -24183,13 +24638,13 @@ sDl
 sDl
 oDL
 jQm
-iwT
+jQm
 kWe
-koA
+dQq
 wNd
 qGW
 kWe
-ahx
+jQm
 jQm
 sfW
 sDl
@@ -24305,13 +24760,13 @@ sDl
 usm
 dQq
 vex
-baU
+vex
 vSg
 eZu
 fwS
 rgS
 pMe
-qzc
+vex
 vex
 uSt
 eJz
@@ -24427,13 +24882,13 @@ lUt
 dQq
 vex
 vex
-baU
+vex
 hxg
 ceI
 bDG
 pqR
 wko
-qzc
+vex
 vex
 uSt
 eJz
@@ -24549,13 +25004,13 @@ kpr
 feu
 vex
 vex
-baU
+vex
 eld
 xWL
 npa
 pKD
 oRz
-qzc
+vex
 vex
 uSt
 eJz
@@ -24671,13 +25126,13 @@ sDl
 rVB
 feu
 vex
-baU
+vex
 keD
 sRN
 jXd
 crl
 jFg
-qzc
+vex
 vex
 uSt
 eJz
@@ -24793,13 +25248,13 @@ sDl
 sDl
 oVF
 eGh
-vry
+eGh
 tls
-oNE
-oNE
-oNE
+eGh
+eGh
+eGh
 tls
-jHY
+eGh
 eGh
 sas
 sDl
