@@ -567,5 +567,5 @@
 	flying = TRUE
 
 	faction = list("spooky")
-	del_on_death = 1
+	del_on_death = TRUE
 	random_color = FALSE
