@@ -1298,18 +1298,11 @@
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 4
 	},
-/obj/machinery/access_button{
-	pixel_x = -1;
-	pixel_y = 29;
-	req_access = list(153);
-	autolink_id = "int_syndie_cargo_right_airlocks"
-	},
 /obj/machinery/door/airlock/external{
-	id_tag = "syndie_cargo_right_shuttle_airlock_interior";
 	name = "Ship External Access";
 	req_access = list(153)
 	},
-/obj/structure/fans/tiny/invisible,
+/obj/structure/fans/tiny,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "dark"
@@ -2734,25 +2727,6 @@
 /obj/item/electropack,
 /turf/simulated/floor/plasteel{
 	icon_state = "darkfull"
-	},
-/area/syndicate_mothership)
-"hjQ" = (
-/obj/machinery/access_button{
-	pixel_x = -1;
-	pixel_y = 29;
-	req_access = list(153);
-	autolink_id = "ext_syndie_cargo_right_airlocks"
-	},
-/obj/machinery/door/airlock/external{
-	id_tag = "syndie_cargo_right_shuttle_airlock_exterior";
-	locked = 1;
-	name = "Ship External Access";
-	req_access = list(153)
-	},
-/obj/structure/fans/tiny/invisible,
-/turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "dark"
 	},
 /area/syndicate_mothership)
 "hpO" = (
@@ -4220,15 +4194,6 @@
 "lng" = (
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
 	autolink_id = "syndie_cargo_right_shuttle_pump"
-	},
-/obj/machinery/airlock_controller{
-	pixel_y = 32;
-	ext_button_link_id = "ext_syndie_cargo_right_airlocks";
-	ext_door_link_id = "syndie_cargo_right_shuttle_airlock_exterior";
-	int_button_link_id = "int_syndie_cargo_right_airlocks";
-	int_door_link_id = "syndie_cargo_right_shuttle_airlock_interior";
-	vent_link_id = "syndie_cargo_left_shuttle_pump";
-	req_access = list(153)
 	},
 /turf/simulated/floor/plasteel{
 	dir = 1;
@@ -6898,15 +6863,6 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/obj/machinery/airlock_controller{
-	pixel_y = 32;
-	ext_button_link_id = "ext_syndie_cargo_left_airlocks";
-	ext_door_link_id = "syndie_cargo_left_shuttle_airlock_exterior";
-	int_button_link_id = "int_syndie_cargo_left_airlocks";
-	int_door_link_id = "syndie_cargo_left_shuttle_airlock_interior";
-	vent_link_id = "syndie_cargo_left_shuttle_pump";
-	req_access = list(153)
-	},
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "dark"
@@ -8071,27 +8027,6 @@
 	},
 /turf/simulated/floor/mineral/plastitanium,
 /area/syndicate_mothership)
-"rSc" = (
-/obj/machinery/atmospherics/pipe/simple/visible{
-	dir = 4
-	},
-/obj/machinery/door/airlock/external{
-	id_tag = "syndie_cargo_left_shuttle_airlock_interior";
-	name = "Ship External Access";
-	req_access = list(153)
-	},
-/obj/machinery/access_button{
-	pixel_x = -1;
-	pixel_y = 29;
-	req_access = list(153);
-	autolink_id = "int_syndie_cargo_left_airlocks"
-	},
-/obj/structure/fans/tiny/invisible,
-/turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "dark"
-	},
-/area/syndicate_mothership)
 "rVB" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -8747,18 +8682,10 @@
 /area/syndicate_mothership)
 "tbn" = (
 /obj/machinery/door/airlock/external{
-	id_tag = "syndie_cargo_left_shuttle_airlock_exterior";
-	locked = 1;
 	name = "Ship External Access";
 	req_access = list(153)
 	},
-/obj/machinery/access_button{
-	pixel_x = -1;
-	pixel_y = 29;
-	req_access = list(153);
-	autolink_id = "ext_syndie_cargo_left_airlocks"
-	},
-/obj/structure/fans/tiny/invisible,
+/obj/structure/fans/tiny,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "dark"
@@ -12545,7 +12472,7 @@ vWC
 sAE
 tPy
 tPy
-rSc
+dIi
 tPy
 xhG
 bBD
@@ -14619,7 +14546,7 @@ sBf
 sBf
 sBf
 tPy
-hjQ
+tbn
 sBf
 sBf
 sBf
