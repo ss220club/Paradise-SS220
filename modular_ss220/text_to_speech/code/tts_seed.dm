@@ -23,7 +23,7 @@
 /client/create_response_team_part_1(new_gender, new_species, role, turf/spawn_location)
 	. = ..()
 	var/mob/living/ert_member = .
-	ert_member.change_voice()
+	ert_member.change_voice(src.mob)
 
 /mob/living/silicon/verb/synth_change_voice()
 	set name = "Change Voice"
@@ -34,7 +34,7 @@
 /atom/proc/select_voice(mob/user, silent_target = FALSE, override = FALSE)
 	if(!ismob(src) && !user)
 		return null
-	var/tts_test_str = "Так звучит мой голос."
+	var/static/tts_test_str = "Так звучит мой голос."
 
 	var/tts_seeds
 	if(user && (check_rights(R_ADMIN, FALSE, user) || override))
