@@ -3,24 +3,24 @@
 		return
 
 	if(check_rights_client(R_ADMIN, FALSE, C))
-		donator_level = DONATOR_LEVEL_MAX
-		donor_loadout_points()
+		C.donator_level = DONATOR_LEVEL_MAX
+		C.donor_loadout_points()
 		return
 
 	while(Q.NextRow())
 		var/total = Q.item[1]
 		switch(total)
 			if(220 to 439)
-				donator_level = 1
+				C.donator_level = 1
 			if(440 to 999)
-				donator_level = 2
+				C.donator_level = 2
 			if(1000 to 2219)
-				donator_level = 3
+				C.donator_level = 3
 			if(2220 to 9999)
-				donator_level = 4
+				C.donator_level = 4
 			if(1000 to INFINITY)
-				donator_level = DONATOR_LEVEL_MAX
-		donor_loadout_points()
+				C.donator_level = DONATOR_LEVEL_MAX
+		C.donor_loadout_points()
 
 /datum/client_login_processor/donator_check/get_query(client/C)
 	var/datum/db_query/query = SSdbcore.NewQuery({"
