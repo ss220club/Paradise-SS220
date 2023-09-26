@@ -1,3 +1,14 @@
+/datum/tts_seed
+	var/name = "STUB"
+	var/value = "STUB"
+	var/category = TTS_CATEGORY_OTHER
+	var/gender = TTS_GENDER_ANY
+	var/datum/tts_provider/provider = /datum/tts_provider
+	var/required_donator_level = 0
+
+/datum/tts_seed/vv_edit_var(var_name, var_value)
+	return FALSE
+
 /atom
 	var/tts_seed
 
@@ -9,26 +20,6 @@
 	var/datum/dna/new_dna = .
 	new_dna.tts_seed_dna = tts_seed_dna
 	return new_dna
-
-/mob/living/carbon/human/Initialize(mapload, datum/species/new_species)
-	. = ..()
-	if(dna)
-		dna.tts_seed_dna = tts_seed
-
-/mob/living/carbon/human/change_dna(datum/dna/new_dna, include_species_change, keep_flavor_text)
-	. = ..()
-	tts_seed = dna.tts_seed_dna
-
-/client/create_response_team_part_1(new_gender, new_species, role, turf/spawn_location)
-	. = ..()
-	var/mob/living/ert_member = .
-	ert_member.change_voice(src.mob)
-
-/mob/living/silicon/verb/synth_change_voice()
-	set name = "Change Voice"
-	set desc = "Express yourself!"
-	set category = "Subsystems"
-	change_voice()
 
 /atom/proc/select_voice(mob/user, silent_target = FALSE, override = FALSE)
 	if(!ismob(src) && !user)
@@ -61,14 +52,22 @@
 	tts_seed = new_tts_seed
 	return new_tts_seed
 
-/datum/tts_seed
-	var/name = "STUB"
-	var/value = "STUB"
-	var/category = TTS_CATEGORY_OTHER
-	var/gender = TTS_GENDER_ANY
-	var/datum/tts_provider/provider = /datum/tts_provider
-	var/required_donator_level = 0
+/mob/living/carbon/human/Initialize(mapload, datum/species/new_species)
+	. = ..()
+	if(dna)
+		dna.tts_seed_dna = tts_seed
 
-/datum/tts_seed/vv_edit_var(var_name, var_value)
-	return FALSE
+/mob/living/carbon/human/change_dna(datum/dna/new_dna, include_species_change, keep_flavor_text)
+	. = ..()
+	tts_seed = dna.tts_seed_dna
 
+/client/create_response_team_part_1(new_gender, new_species, role, turf/spawn_location)
+	. = ..()
+	var/mob/living/ert_member = .
+	ert_member.change_voice(src.mob)
+
+/mob/living/silicon/verb/synth_change_voice()
+	set name = "Change Voice"
+	set desc = "Express yourself!"
+	set category = "Subsystems"
+	change_voice()
