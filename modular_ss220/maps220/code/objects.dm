@@ -1,5 +1,4 @@
-/* Stuff & misc */
-
+/* Awaymission - Gate Lizard */
 //Trees
 /obj/structure/flora/tree/great_tree
 	name = "great tree"
@@ -8,7 +7,6 @@
 	icon_state = "great_tree"
 
 //Crates
-//Wooden crates
 /obj/structure/closet/crate/wooden
 	icon = 'modular_ss220/maps220/icons/crates.dmi'
 	open_sound = 'sound/machines/wooden_closet_open.ogg'
@@ -45,6 +43,34 @@
 /obj/structure/chair/comfy/shuttle/dark/GetArmrest()
 	return mutable_appearance('modular_ss220/maps220/icons/chairs.dmi', "shuttle_chair_dark_armrest")
 
+/obj/structure/closet/secure_closet/syndicate/medbay
+	name = "Syndicate Medical Doctor's Locker"
+	req_access = list(ACCESS_SYNDICATE)
+	icon_state = "tac"
+	icon_closed = "tac"
+	icon_opened = "tac_open"
+	open_door_sprite = "syndicate_door"
+
+/obj/structure/mecha_wreckage/durand/rover
+	icon_state = "darkdurand-broken"
+
+/obj/structure/closet/secure_closet/syndicate/medbay/populate_contents()
+	new /obj/item/storage/backpack/duffel/syndie/med/surgery
+	new /obj/item/storage/backpack/duffel/syndie/med/surgery
+	new /obj/item/clothing/under/rank/medical(src)
+	new /obj/item/clothing/suit/storage/labcoat(src)
+	new /obj/item/clothing/shoes/white(src)
+	new /obj/item/clothing/gloves/color/latex/nitrile(src)
+	new /obj/item/defibrillator/loaded(src)
+	new /obj/item/handheld_defibrillator(src)
+	new /obj/item/storage/belt/medical(src)
+	new /obj/item/storage/belt/medical(src)
+	new /obj/item/clothing/glasses/hud/health(src)
+	new /obj/item/clothing/glasses/hud/health(src)
+	new /obj/item/clothing/head/headmirror(src)
+	new /obj/item/clothing/shoes/sandal/white(src)
+	new /obj/item/storage/backpack/duffel/syndie(src)
+
 // Mecha
 /obj/mecha/combat/durand/rover
 	desc = "Combat exosuit, developed by syndicate from the Durand Mk. II by scraping unnecessary things, and adding some of their tech. Much more protected from any Nanotrasen hazards."
@@ -63,12 +89,12 @@
 /obj/mecha/combat/durand/rover/GrantActions(mob/living/user, human_occupant = 0)
 	..()
 	thrusters_action.Grant(user, src)
-	energywall_action.Grant(user, src)
+	defense_action.Grant(user, src)
 
 /obj/mecha/combat/durand/rover/RemoveActions(mob/living/user, human_occupant = 0)
 	..()
 	thrusters_action.Remove(user)
-	energywall_action.Remove(user)
+	defense_action.Remove(user)
 
 /obj/mecha/combat/durand/rover/loaded/Initialize(mapload)
 	. = ..()
@@ -78,8 +104,17 @@
 	ME.attach(src)
 	ME = new /obj/item/mecha_parts/mecha_equipment/antiproj_armor_booster
 	ME.attach(src)
-	ME = new /obj/item/mecha_parts/mecha_equipment/weapon/energy/ionshotgun
+	ME = new /obj/item/mecha_parts/mecha_equipment/weapon/energy/ion
 	ME.attach(src)
 
 /obj/mecha/combat/durand/rover/loaded/add_cell()
 	cell = new /obj/item/stock_parts/cell/bluespace(src)
+
+// Mecha equipment
+/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/lmg/syndi
+	name = "\improper AC 2 \"Special\""
+	desc = "C-20r inside!"
+	equip_cooldown = 8
+	projectile = /obj/item/projectile/bullet/midbullet2
+	fire_sound = 'sound/weapons/gunshots/gunshot_smg.ogg'
+	projectile_energy_cost = 14
