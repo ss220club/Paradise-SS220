@@ -295,8 +295,7 @@
 /area/shuttle/administration)
 "amY" = (
 /obj/structure/shuttle/engine/propulsion{
-	dir = 1;
-	tag = "icon-propulsion (NORTH)"
+	dir = 1
 	},
 /turf/simulated/floor/plating/airless,
 /area/shuttle/syndicate_sit)
@@ -531,19 +530,19 @@
 	},
 /area/centcom220/admin2)
 "avl" = (
-/obj/machinery/door_control{
+/obj/machinery/door_control/no_emag{
 	wires = 1;
 	emagged = 1;
-	req_access = list(153);
+	req_access_txt = "153";
 	pixel_y = -30;
 	pixel_x = -7;
 	name = "SST Outside Doors";
 	id = "SST_outside"
 	},
-/obj/machinery/door_control{
+/obj/machinery/door_control/no_emag{
 	wires = 1;
 	emagged = 1;
-	req_access = list(153);
+	req_access_txt = "153";
 	pixel_y = -30;
 	pixel_x = 7;
 	id = "SST_to_ATOM";
@@ -584,7 +583,7 @@
 	color = "red";
 	icon_state = "rightsecure";
 	name = "Riot Control";
-	req_access = list(156)
+	req_access_txt = "156"
 	},
 /turf/simulated/floor/plasteel{
 	dir = 1;
@@ -594,6 +593,9 @@
 "awj" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
+	},
+/obj/structure/sign/poster/contraband/syndicate_recruitment{
+	pixel_x = -32
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
@@ -658,8 +660,7 @@
 "axX" = (
 /obj/structure/shuttle/engine/propulsion{
 	dir = 1;
-	icon_state = "propulsion_l";
-	tag = "icon-propulsion_l (NORTH)"
+	icon_state = "propulsion_l"
 	},
 /turf/simulated/floor/plating/airless,
 /area/shuttle/syndicate_elite)
@@ -861,12 +862,12 @@
 /obj/structure/railing/corner{
 	dir = 4
 	},
-/obj/machinery/door_control{
+/obj/machinery/door_control/no_emag{
 	id = "syndFB_tool";
 	name = "Tool Storage";
 	wires = 1;
 	specialfunctions = 4;
-	req_access = list(153);
+	req_access_txt = "153";
 	pixel_x = -32;
 	emagged = 1
 	},
@@ -1305,8 +1306,7 @@
 "bcm" = (
 /obj/structure/shuttle/engine/propulsion{
 	dir = 1;
-	icon_state = "propulsion_r";
-	tag = "icon-propulsion_r (NORTH)"
+	icon_state = "propulsion_r"
 	},
 /turf/simulated/floor/plating/airless,
 /area/shuttle/syndicate_elite)
@@ -1706,7 +1706,7 @@
 /area/centcom220/park)
 "bvs" = (
 /obj/structure/table,
-/obj/machinery/door_control{
+/obj/machinery/door_control/no_emag{
 	id = "CC_Interior_1";
 	name = "Открыть вход";
 	normaldoorcontrol = 1;
@@ -1714,7 +1714,7 @@
 	pixel_y = -2;
 	req_one_access_txt = "101"
 	},
-/obj/machinery/door_control{
+/obj/machinery/door_control/no_emag{
 	id = "CC_Exterior_1";
 	name = "Открыть выход";
 	normaldoorcontrol = 1;
@@ -2005,7 +2005,7 @@
 /area/syndicate_mothership/elite_squad)
 "bLA" = (
 /obj/structure/table,
-/obj/item/gun/energy/ionrifle,
+/obj/item/gun/energy/ionrifle/carbine,
 /turf/simulated/floor/plasteel{
 	icon_state = "blackfull"
 	},
@@ -2415,7 +2415,7 @@
 /area/syndicate_mothership/infteam)
 "bWD" = (
 /obj/structure/closet/secure_closet/brig{
-	req_access = list(153)
+	req_access_txt = "153"
 	},
 /turf/simulated/floor/carpet/black,
 /area/syndicate_mothership/jail)
@@ -2496,7 +2496,7 @@
 /obj/item/flag/syndi,
 /obj/machinery/computer/cryopod{
 	pixel_x = 32;
-	req_access = list(150)
+	req_access_txt = "150"
 	},
 /turf/simulated/floor/carpet/black,
 /area/syndicate_mothership/elite_squad)
@@ -3106,7 +3106,7 @@
 /turf/simulated/floor/plasteel/dark,
 /area/centcom220/general)
 "cCA" = (
-/obj/machinery/door_control{
+/obj/machinery/door_control/no_emag{
 	color = "#ffbf80";
 	id = "CC_DeathSquad";
 	name = "Blast Door Control";
@@ -3224,7 +3224,7 @@
 /turf/simulated/floor/wood/fancy/cherry,
 /area/centcom220/admin2)
 "cGC" = (
-/obj/machinery/door_control{
+/obj/machinery/door_control/no_emag{
 	color = "#ff8080";
 	id = "CC_Armory_Red";
 	name = "Оружейная - Уровень 3";
@@ -3251,20 +3251,6 @@
 /obj/item/deck/cards/syndicate,
 /turf/simulated/floor/carpet/black,
 /area/syndicate_mothership)
-"cHm" = (
-/obj/machinery/door/airlock/external{
-	id_tag = "syndishuttle_door_int";
-	locked = 1;
-	name = "Ship External Access";
-	req_access_txt = "150"
-	},
-/obj/structure/fans/tiny/invisible,
-/obj/machinery/access_button{
-	autolink_id = "syndishuttle_btn_int";
-	pixel_x = -25
-	},
-/turf/simulated/floor/plating,
-/area/shuttle/syndicate)
 "cHw" = (
 /obj/structure/table/wood/fancy/black,
 /obj/item/candle/eternal/wizard{
@@ -3623,8 +3609,7 @@
 "cUl" = (
 /turf/simulated/floor/plasteel{
 	dir = 8;
-	icon_state = "rampbottom";
-	tag = "icon-stage_stairs"
+	icon_state = "rampbottom"
 	},
 /area/syndicate_mothership)
 "cUU" = (
@@ -3993,7 +3978,7 @@
 "dlt" = (
 /obj/machinery/door/airlock/external{
 	id_tag = "syndicate_away";
-	req_access = list(150)
+	req_access_txt = "150"
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "darkfull"
@@ -4012,7 +3997,7 @@
 "dmb" = (
 /obj/machinery/computer/cryopod{
 	pixel_y = -32;
-	req_access = list(150)
+	req_access_txt = "150"
 	},
 /turf/simulated/floor/carpet/black,
 /area/syndicate_mothership/elite_squad)
@@ -4519,8 +4504,7 @@
 /obj/effect/turf_decal/siding/black,
 /turf/simulated/floor/plasteel{
 	dir = 4;
-	icon_state = "rampbottom";
-	tag = "icon-stage_stairs"
+	icon_state = "rampbottom"
 	},
 /area/syndicate_mothership)
 "dCr" = (
@@ -5496,10 +5480,10 @@
 	},
 /area/syndicate_mothership/infteam)
 "erT" = (
-/obj/machinery/door_control{
+/obj/machinery/door_control/no_emag{
 	id = "Aspid_deck";
 	wires = 1;
-	req_access = list(153);
+	req_access_txt = "153";
 	name = "Aspid main storage";
 	emagged = 1;
 	pixel_x = 32
@@ -5521,8 +5505,7 @@
 	},
 /turf/simulated/floor/plasteel{
 	color = "gray";
-	icon_state = "rampbottom";
-	tag = "icon-stage_stairs"
+	icon_state = "rampbottom"
 	},
 /area/syndicate_mothership)
 "esG" = (
@@ -5680,8 +5663,7 @@
 /area/syndicate_mothership/control)
 "eAg" = (
 /turf/simulated/floor/plasteel{
-	icon_state = "rampbottom";
-	tag = "icon-stage_stairs"
+	icon_state = "rampbottom"
 	},
 /area/syndicate_mothership)
 "eAj" = (
@@ -6452,8 +6434,7 @@
 "eYN" = (
 /obj/structure/shuttle/engine/propulsion{
 	dir = 1;
-	icon_state = "propulsion_l";
-	tag = "icon-propulsion_l (NORTH)"
+	icon_state = "propulsion_l"
 	},
 /turf/simulated/floor/plating/airless,
 /area/shuttle/syndicate_sit)
@@ -6713,7 +6694,7 @@
 /turf/simulated/floor/wood/fancy/cherry,
 /area/centcom220/bar)
 "fkO" = (
-/obj/machinery/door_control{
+/obj/machinery/door_control/no_emag{
 	id = "CC_GammaShuttle";
 	name = "Blast Door Control";
 	pixel_x = 24;
@@ -6880,7 +6861,7 @@
 	pixel_y = 2
 	},
 /obj/item/clothing/accessory/holster,
-/obj/machinery/door_control{
+/obj/machinery/door_control/no_emag{
 	color = "#80ff80";
 	id = "CC_Armory_Green";
 	name = "Оружейная - Уровень 1";
@@ -7097,8 +7078,7 @@
 /area/centcom220/admin2)
 "fzO" = (
 /obj/structure/shuttle/engine/propulsion{
-	dir = 1;
-	tag = "icon-propulsion (NORTH)"
+	dir = 1
 	},
 /turf/simulated/floor/plating/airless,
 /area/shuttle/syndicate_elite)
@@ -7131,12 +7111,12 @@
 /turf/simulated/floor/plasteel/dark,
 /area/centcom220/supply)
 "fBu" = (
-/obj/machinery/door_control{
+/obj/machinery/door_control/no_emag{
 	id = "syndicate_elite";
 	name = "Blast Doors";
 	pixel_x = -30;
 	pixel_y = -11;
-	req_access = list(150)
+	req_access_txt = "150"
 	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate_elite)
@@ -7238,8 +7218,7 @@
 /area/centcom220/admin2)
 "fEW" = (
 /obj/structure/shuttle/engine/heater{
-	dir = 1;
-	tag = "icon-heater (NORTH)"
+	dir = 1
 	},
 /obj/structure/window/reinforced{
 	color = "red"
@@ -7754,7 +7733,7 @@
 /turf/simulated/floor/wood,
 /area/wizard_station)
 "gjt" = (
-/obj/machinery/door_control{
+/obj/machinery/door_control/no_emag{
 	color = "#8080ff";
 	id = "CC_Armory_Blue";
 	name = "Оружейная - Уровень 2";
@@ -7808,7 +7787,7 @@
 /obj/item/storage/toolbox/drone{
 	pixel_y = 13
 	},
-/obj/machinery/door_control{
+/obj/machinery/door_control/no_emag{
 	id = "CC_Armory_Mech";
 	name = "Оружейная - Мехи";
 	pixel_y = 24;
@@ -7855,7 +7834,6 @@
 "gof" = (
 /obj/machinery/light/small{
 	dir = 4;
-	tag = "icon-bulb1 (EAST)";
 	requires_power = 0
 	},
 /turf/simulated/floor/mineral/plastitanium/red,
@@ -7954,8 +7932,7 @@
 	},
 /turf/simulated/floor/plasteel{
 	color = "gray";
-	icon_state = "rampbottom";
-	tag = "icon-stage_stairs"
+	icon_state = "rampbottom"
 	},
 /area/syndicate_mothership)
 "gtk" = (
@@ -8299,7 +8276,6 @@
 "gEl" = (
 /obj/machinery/light/small{
 	dir = 8;
-	tag = "icon-bulb1 (WEST)";
 	requires_power = 0
 	},
 /turf/simulated/floor/mineral/plastitanium/red,
@@ -8381,8 +8357,7 @@
 /area/syndicate_mothership)
 "gIb" = (
 /obj/structure/shuttle/engine/heater{
-	dir = 1;
-	tag = "icon-heater (NORTH)"
+	dir = 1
 	},
 /obj/structure/window/reinforced{
 	color = "red"
@@ -8863,7 +8838,7 @@
 	color = "red";
 	icon_state = "rightsecure";
 	name = "Riot Control";
-	req_access = list(156)
+	req_access_txt = "156"
 	},
 /obj/structure/curtain/black{
 	pixel_y = 32;
@@ -8958,7 +8933,7 @@
 	},
 /area/syndicate_mothership)
 "hjo" = (
-/obj/machinery/door_control{
+/obj/machinery/door_control/no_emag{
 	id = "cc_toilet_1";
 	name = "Door Bolt Control";
 	normaldoorcontrol = 1;
@@ -9025,7 +9000,7 @@
 	},
 /obj/machinery/door/airlock/external{
 	name = "Ship External Access";
-	req_access = list(153)
+	req_access_txt = "153"
 	},
 /obj/structure/fans/tiny,
 /turf/simulated/floor/plasteel{
@@ -9239,7 +9214,7 @@
 /obj/structure/table,
 /obj/machinery/door/window/brigdoor{
 	color = "red";
-	req_access = list(150)
+	req_access_txt = "150"
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "blackfull"
@@ -9431,10 +9406,10 @@
 /area/centcom220/supply)
 "hFw" = (
 /obj/structure/table/reinforced,
-/obj/machinery/door_control{
+/obj/machinery/door_control/no_emag{
 	id = "syndieshutters";
 	name = "remote shutter control";
-	req_access = list(150)
+	req_access_txt = "150"
 	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate)
@@ -9605,7 +9580,7 @@
 /obj/machinery/door/window/brigdoor{
 	color = "red";
 	dir = 8;
-	req_access = list(150)
+	req_access_txt = "150"
 	},
 /turf/simulated/floor/plating{
 	icon = 'icons/turf/floors.dmi';
@@ -9834,10 +9809,10 @@
 	dir = 1
 	},
 /obj/item/flag/syndi,
-/obj/machinery/door_control{
+/obj/machinery/door_control/no_emag{
 	wires = 1;
 	emagged = 1;
-	req_access = list(150);
+	req_access_txt = "150";
 	pixel_y = 30;
 	id = "nukeop_storage";
 	name = "ATOM Storage"
@@ -9868,12 +9843,12 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 6
 	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
-	dir = 8;
-	autolink_id = "synd_pump_bottom"
-	},
 /obj/structure/sign/vacuum{
 	pixel_y = -32
+	},
+/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+	autolink_id = "syndishuttle_vent";
+	dir = 8
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
@@ -9969,8 +9944,7 @@
 	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
-	icon_state = "rampbottom";
-	tag = "icon-stage_stairs"
+	icon_state = "rampbottom"
 	},
 /area/syndicate_mothership)
 "hXq" = (
@@ -10108,8 +10082,7 @@
 	},
 /turf/simulated/floor/plasteel{
 	color = "gray";
-	icon_state = "rampbottom";
-	tag = "icon-stage_stairs"
+	icon_state = "rampbottom"
 	},
 /area/syndicate_mothership)
 "ifH" = (
@@ -10199,7 +10172,7 @@
 	layer = 4;
 	name = "Prison Flasher";
 	pixel_x = -26;
-	req_access = list(150)
+	req_access_txt = "150"
 	},
 /obj/machinery/light/small{
 	dir = 8
@@ -10331,12 +10304,12 @@
 /turf/simulated/floor/wood/fancy/cherry,
 /area/centcom220/admin2)
 "ipn" = (
-/obj/machinery/door_control{
+/obj/machinery/door_control/no_emag{
 	pixel_x = -32;
 	wires = 1;
 	id = "nukeop_ready";
 	name = "Shuttle Dock Door";
-	req_access = list(151);
+	req_access_txt = "151";
 	specialfunctions = 4
 	},
 /turf/simulated/floor/plasteel{
@@ -10409,13 +10382,13 @@
 	dir = 8
 	},
 /obj/machinery/airlock_controller/air_cycler{
-	ext_button_link_id = "syndishuttle_btn_ext";
+	pixel_x = -25;
+	req_access_txt = "150";
+	vent_link_id = "syndishuttle_vent";
 	ext_door_link_id = "syndishuttle_door_ext";
-	int_button_link_id = "syndishuttle_btn_int";
 	int_door_link_id = "syndishuttle_door_int";
-	pixel_x = -26;
-	vent_link_id = "synd_pump_bottom";
-	req_access_txt = "150"
+	ext_button_link_id = "syndishuttle_btn_ext";
+	int_button_link_id = "syndishuttle_btn_int"
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
@@ -11125,8 +11098,7 @@
 	},
 /turf/simulated/floor/plasteel{
 	dir = 1;
-	icon_state = "rampbottom";
-	tag = "icon-stage_stairs"
+	icon_state = "rampbottom"
 	},
 /area/syndicate_mothership/infteam)
 "iUD" = (
@@ -11248,7 +11220,7 @@
 "jak" = (
 /obj/machinery/door/airlock/external{
 	name = "Ship External Access";
-	req_access = list(153)
+	req_access_txt = "153"
 	},
 /obj/structure/fans/tiny,
 /turf/simulated/floor/plasteel{
@@ -11296,10 +11268,10 @@
 /area/syndicate_mothership/infteam)
 "jcg" = (
 /obj/machinery/light/spot,
-/obj/machinery/door_control{
+/obj/machinery/door_control/no_emag{
 	id = "Aspid_main_storage";
 	wires = 1;
-	req_access = list(153);
+	req_access_txt = "153";
 	name = "Aspid main storage";
 	emagged = 1;
 	pixel_y = -32
@@ -11783,8 +11755,7 @@
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
-	icon_state = "rampbottom";
-	tag = "icon-stage_stairs"
+	icon_state = "rampbottom"
 	},
 /area/syndicate_mothership)
 "jyV" = (
@@ -11999,11 +11970,11 @@
 /obj/effect/turf_decal/siding/red{
 	color = "#aa2222"
 	},
-/obj/machinery/door_control{
+/obj/machinery/door_control/no_emag{
 	pixel_x = 32;
 	id = "Aspid_poddor_right";
 	wires = 1;
-	req_access = list(153);
+	req_access_txt = "153";
 	name = "Aspid poddor";
 	emagged = 1
 	},
@@ -12134,8 +12105,7 @@
 "jOk" = (
 /turf/simulated/floor/plasteel{
 	dir = 4;
-	icon_state = "rampbottom";
-	tag = "icon-stage_stairs"
+	icon_state = "rampbottom"
 	},
 /area/syndicate_mothership/infteam)
 "jOB" = (
@@ -12908,7 +12878,7 @@
 	layer = 4;
 	name = "Prison Flasher";
 	pixel_x = 26;
-	req_access = list(150)
+	req_access_txt = "150"
 	},
 /obj/machinery/light/small{
 	dir = 4
@@ -12965,13 +12935,13 @@
 /obj/machinery/door/airlock/external{
 	id_tag = "s_docking_airlock";
 	name = "Shuttle Airlock";
-	req_access = list(150)
+	req_access_txt = "150"
 	},
-/obj/machinery/door_control{
+/obj/machinery/door_control/no_emag{
 	id = "syndicate_sit_1";
 	name = "Blast Doors";
 	pixel_x = -25;
-	req_access = list(150)
+	req_access_txt = "150"
 	},
 /obj/structure/fans/tiny,
 /obj/machinery/door/poddoor{
@@ -12980,7 +12950,7 @@
 	id_tag = "syndicate_sit_1";
 	name = "Front Hull Door";
 	opacity = 0;
-	req_access = list(150)
+	req_access_txt = "150"
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/syndicate_sit)
@@ -13085,7 +13055,7 @@
 /obj/machinery/door/airlock/external{
 	id_tag = "s_docking_airlock";
 	name = "Shuttle Airlock";
-	req_access = list(150)
+	req_access_txt = "150"
 	},
 /obj/machinery/door/poddoor{
 	density = 0;
@@ -13093,14 +13063,14 @@
 	id_tag = "syndicate_sit_1";
 	name = "Side Hull Door";
 	opacity = 0;
-	req_access = list(150)
+	req_access_txt = "150"
 	},
 /obj/structure/fans/tiny,
-/obj/machinery/door_control{
+/obj/machinery/door_control/no_emag{
 	id = "syndicate_sit_1";
 	name = "Blast Doors";
 	pixel_y = -23;
-	req_access = list(150);
+	req_access_txt = "150";
 	wires = 1
 	},
 /obj/docking_port/mobile{
@@ -13638,11 +13608,11 @@
 	},
 /area/syndicate_mothership/infteam)
 "lqw" = (
-/obj/machinery/door_control{
+/obj/machinery/door_control/no_emag{
 	id = "syndFB_baseleft";
 	name = "Forward Base Access";
 	pixel_y = -25;
-	req_access = list(153);
+	req_access_txt = "153";
 	wires = 1;
 	emagged = 1
 	},
@@ -13726,7 +13696,7 @@
 	armor = list("melee"=100,"bullet"=100,"laser"=100,"energy"=100,"bomb"=100,"bio"=100,"rad"=100,"fire"=100,"acid"=100);
 	layer = 2.9;
 	name = "LMG M249 SAW";
-	req_access = list(114)
+	req_access_txt = "114"
 	},
 /obj/item/ammo_box/magazine/mm556x45/ap,
 /obj/item/ammo_box/magazine/mm556x45/ap,
@@ -14143,7 +14113,7 @@
 /area/syndicate_mothership/elite_squad)
 "lEw" = (
 /obj/structure/table,
-/obj/machinery/door_control{
+/obj/machinery/door_control/no_emag{
 	id = "CC_Exterior_2";
 	name = "Открыть выход";
 	normaldoorcontrol = 1;
@@ -14463,7 +14433,7 @@
 /area/centcom220/admin2)
 "lNa" = (
 /obj/structure/closet/secure_closet/medical1{
-	req_access = list(150)
+	req_access_txt = "150"
 	},
 /obj/item/storage/box/beakers/bluespace,
 /obj/item/storage/box/beakers/bluespace,
@@ -14655,8 +14625,7 @@
 	dir = 4
 	},
 /obj/machinery/light/small{
-	dir = 8;
-	tag = "icon-bulb1 (WEST)"
+	dir = 8
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "podfloor_light"
@@ -15377,7 +15346,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/computer/cryopod{
 	pixel_y = -32;
-	req_access = list(150)
+	req_access_txt = "150"
 	},
 /obj/machinery/cryopod/offstation{
 	icon_state = "sleeper_s";
@@ -15441,7 +15410,7 @@
 "mzs" = (
 /obj/machinery/door/window/brigdoor{
 	color = "red";
-	req_access = list(150)
+	req_access_txt = "150"
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "blackfull"
@@ -15915,8 +15884,8 @@
 	dir = 5
 	},
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
-	dir = 8;
-	autolink_id = "synd_pump_bottom"
+	autolink_id = "syndishuttle_vent";
+	dir = 8
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
@@ -16038,8 +16007,7 @@
 	},
 /turf/simulated/floor/plasteel{
 	color = "gray";
-	icon_state = "rampbottom";
-	tag = "icon-stage_stairs"
+	icon_state = "rampbottom"
 	},
 /area/syndicate_mothership)
 "ndl" = (
@@ -16260,10 +16228,10 @@
 	},
 /area/centcom220/admin2)
 "nnO" = (
-/obj/machinery/door_control{
+/obj/machinery/door_control/no_emag{
 	wires = 1;
 	emagged = 1;
-	req_access = list(153);
+	req_access_txt = "153";
 	pixel_y = -30;
 	id = "nukeop_outside";
 	name = "ATOM Outside Doors"
@@ -16450,7 +16418,7 @@
 	pixel_x = 8;
 	pixel_y = 5
 	},
-/obj/machinery/door_control{
+/obj/machinery/door_control/no_emag{
 	id = "CC_Armory_Advanced";
 	name = "Оружейная - Дополнительный аренал";
 	pixel_y = -24;
@@ -17324,8 +17292,7 @@
 "okp" = (
 /obj/structure/shuttle/engine/propulsion{
 	dir = 1;
-	icon_state = "propulsion_r";
-	tag = "icon-propulsion_r (NORTH)"
+	icon_state = "propulsion_r"
 	},
 /turf/simulated/floor/plating/airless,
 /area/shuttle/syndicate_sit)
@@ -17424,7 +17391,7 @@
 	},
 /area/centcom220/evac)
 "onI" = (
-/obj/machinery/door_control{
+/obj/machinery/door_control/no_emag{
 	id = "cc_toilet_3";
 	name = "Door Bolt Control";
 	normaldoorcontrol = 1;
@@ -17483,7 +17450,7 @@
 "oqA" = (
 /obj/machinery/computer/cryopod{
 	pixel_x = 32;
-	req_access = list(150)
+	req_access_txt = "150"
 	},
 /obj/machinery/light/small{
 	dir = 4
@@ -17494,18 +17461,18 @@
 /turf/simulated/wall/mineral/plastitanium,
 /area/shuttle/syndicate)
 "orK" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
-	dir = 4;
-	autolink_id = "synd_pump_bottom"
-	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
 	},
 /obj/machinery/door_control/no_emag{
 	id = "smindicate";
 	name = "External Shutters Control";
-	pixel_x = -26;
+	pixel_x = -25;
 	req_access_txt = "150"
+	},
+/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+	autolink_id = "syndishuttle_vent";
+	dir = 4
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
@@ -17696,10 +17663,6 @@
 	pixel_y = -32;
 	turf_type = /turf/space/transit/north;
 	width = 18
-	},
-/obj/machinery/access_button{
-	autolink_id = "syndishuttle_btn_ext";
-	pixel_x = -25
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/syndicate)
@@ -17938,7 +17901,7 @@
 /obj/machinery/door/window/brigdoor{
 	color = "red";
 	name = "Riot Control";
-	req_access = list(156)
+	req_access_txt = "156"
 	},
 /obj/structure/curtain/black{
 	pixel_y = 32;
@@ -18328,12 +18291,12 @@
 /area/centcom220/general)
 "oZd" = (
 /obj/machinery/light,
-/obj/machinery/door_control{
+/obj/machinery/door_control/no_emag{
 	pixel_y = -32;
 	id = "SST_armory_main";
 	emagged = 1;
 	wires = 1;
-	req_access = list(153);
+	req_access_txt = "153";
 	name = "SST Armory"
 	},
 /turf/simulated/floor/plasteel{
@@ -18714,8 +18677,7 @@
 	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
-	icon_state = "rampbottom";
-	tag = "icon-stage_stairs"
+	icon_state = "rampbottom"
 	},
 /area/syndicate_mothership)
 "psX" = (
@@ -18746,7 +18708,7 @@
 /obj/machinery/door/window/brigdoor{
 	color = "red";
 	name = "Riot Control";
-	req_access = list(156)
+	req_access_txt = "156"
 	},
 /turf/simulated/floor/plasteel{
 	dir = 1;
@@ -18781,6 +18743,10 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
 	},
+/obj/machinery/access_button{
+	autolink_id = "syndishuttle_btn_ext";
+	pixel_x = -25
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -18804,7 +18770,7 @@
 /obj/item/grenade/clusterbuster/emp{
 	pixel_y = 4
 	},
-/obj/machinery/door_control{
+/obj/machinery/door_control/no_emag{
 	color = "#ffbf80";
 	id = "CC_Armory_Epsilon";
 	name = "Оружейная - Уровень 4";
@@ -19100,12 +19066,12 @@
 /area/wizard_station)
 "pKg" = (
 /obj/item/flag/syndi,
-/obj/machinery/door_control{
+/obj/machinery/door_control/no_emag{
 	id = "syndFB_teleport1";
 	name = "Teleporter";
 	wires = 1;
 	specialfunctions = 4;
-	req_access = list(153);
+	req_access_txt = "153";
 	pixel_y = 32;
 	emagged = 1
 	},
@@ -20014,8 +19980,7 @@
 	id_tag = "SIT_outside"
 	},
 /turf/simulated/floor/plasteel{
-	icon_state = "rampbottom";
-	tag = "icon-stage_stairs"
+	icon_state = "rampbottom"
 	},
 /area/syndicate_mothership/infteam)
 "quL" = (
@@ -20100,7 +20065,7 @@
 /obj/machinery/door/window/brigdoor{
 	color = "red";
 	name = "Secure Door";
-	req_access = list(150)
+	req_access_txt = "150"
 	},
 /turf/simulated/floor/mineral/plastitanium,
 /area/shuttle/syndicate)
@@ -20112,7 +20077,7 @@
 	dir = 8
 	},
 /obj/machinery/door/airlock/hatch/syndicate/vault{
-	req_access = list(153);
+	req_access_txt = "153";
 	name = "Vault"
 	},
 /turf/simulated/floor/wood{
@@ -20160,11 +20125,12 @@
 /turf/simulated/floor/beach/away/sand,
 /area/ninja/holding)
 "qAw" = (
-/obj/structure/sign/poster/contraband/syndicate_recruitment{
-	pixel_x = -32
-	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
+	},
+/obj/machinery/access_button{
+	autolink_id = "syndishuttle_btn_int";
+	pixel_x = -25
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
@@ -20302,7 +20268,7 @@
 /obj/machinery/door/window/brigdoor{
 	color = "red";
 	dir = 8;
-	req_access = list(150)
+	req_access_txt = "150"
 	},
 /turf/simulated/floor/plating{
 	icon = 'icons/turf/floors.dmi';
@@ -20404,7 +20370,7 @@
 	armor = list("melee"=100,"bullet"=100,"laser"=100,"energy"=100,"bomb"=100,"bio"=100,"rad"=100,"fire"=100,"acid"=100);
 	layer = 2.9;
 	name = "Automatic Shotgun";
-	req_access = list(114)
+	req_access_txt = "114"
 	},
 /obj/item/gun/projectile/automatic/shotgun/bulldog,
 /obj/item/gun/projectile/automatic/shotgun/bulldog,
@@ -20629,10 +20595,10 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/obj/machinery/door_control{
+/obj/machinery/door_control/no_emag{
 	pixel_x = 32;
 	id = "SIT_ready";
-	req_access = list(150);
+	req_access_txt = "150";
 	specialfunctions = 4;
 	wires = 1;
 	name = "Shuttle Dock Door"
@@ -20658,40 +20624,40 @@
 	},
 /area/shuttle/escape)
 "qTE" = (
-/obj/machinery/door_control{
+/obj/machinery/door_control/no_emag{
 	pixel_y = -24;
 	id = "SST_armory_mech_maintenance";
 	wires = 1;
-	req_access = list(153);
+	req_access_txt = "153";
 	emagged = 1;
 	name = "SST_armory_mech_maintenance"
 	},
-/obj/machinery/door_control{
+/obj/machinery/door_control/no_emag{
 	pixel_y = -40;
 	id = "SST_armory_mech_mauler";
 	emagged = 1;
 	wires = 1;
-	req_access = list(153);
+	req_access_txt = "153";
 	name = "SST Armory Mech Mauler";
 	color = "#ff9999"
 	},
-/obj/machinery/door_control{
+/obj/machinery/door_control/no_emag{
 	pixel_y = -32;
 	pixel_x = 6;
 	id = "SST_armory_mech_gygax";
 	emagged = 1;
 	wires = 1;
-	req_access = list(153);
+	req_access_txt = "153";
 	name = "SST_armory_mech_gygax";
 	color = "#ffdd99"
 	},
-/obj/machinery/door_control{
+/obj/machinery/door_control/no_emag{
 	pixel_y = -32;
 	pixel_x = -6;
 	id = "SST_armory_mech_rover";
 	emagged = 1;
 	wires = 1;
-	req_access = list(153);
+	req_access_txt = "153";
 	name = "SST Armory Mech Rover";
 	color = "#9999ff"
 	},
@@ -20905,7 +20871,7 @@
 /obj/machinery/door/airlock/external{
 	id_tag = "s_docking_airlock";
 	name = "Shuttle Airlock";
-	req_access = list(150)
+	req_access_txt = "150"
 	},
 /obj/machinery/door/poddoor{
 	density = 0;
@@ -20913,7 +20879,7 @@
 	id_tag = "syndicate_elite";
 	name = "Front Hull Door";
 	opacity = 0;
-	req_access = list(150)
+	req_access_txt = "150"
 	},
 /obj/structure/fans/tiny,
 /turf/simulated/floor/plating,
@@ -20941,7 +20907,7 @@
 	pixel_y = -32;
 	pixel_x = -8
 	},
-/obj/machinery/door_control{
+/obj/machinery/door_control/no_emag{
 	id = "SSTprivateroom";
 	name = "Privacy Room Bolt Control";
 	normaldoorcontrol = 1;
@@ -21548,8 +21514,8 @@
 	dir = 9
 	},
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
-	dir = 4;
-	autolink_id = "synd_pump_bottom"
+	autolink_id = "syndishuttle_vent";
+	dir = 4
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
@@ -21616,7 +21582,7 @@
 	},
 /area/syndicate_mothership/control)
 "rER" = (
-/obj/machinery/door_control{
+/obj/machinery/door_control/no_emag{
 	color = "#ffbf80";
 	id = "CC_DeathSquad";
 	name = "Blast Door Control";
@@ -22182,8 +22148,7 @@
 /obj/effect/turf_decal/siding/black,
 /turf/simulated/floor/plasteel{
 	dir = 8;
-	icon_state = "rampbottom";
-	tag = "icon-stage_stairs"
+	icon_state = "rampbottom"
 	},
 /area/syndicate_mothership)
 "saL" = (
@@ -22201,7 +22166,7 @@
 /turf/simulated/floor/plasteel/dark,
 /area/centcom220/supply)
 "sbF" = (
-/obj/machinery/door_control{
+/obj/machinery/door_control/no_emag{
 	id = "cc_toilet_2";
 	name = "Door Bolt Control";
 	normaldoorcontrol = 1;
@@ -22436,8 +22401,7 @@
 /area/centcom220/admin3)
 "skx" = (
 /turf/simulated/floor/plasteel{
-	icon_state = "rampbottom";
-	tag = "icon-stage_stairs"
+	icon_state = "rampbottom"
 	},
 /area/syndicate_mothership/infteam)
 "skE" = (
@@ -22839,8 +22803,7 @@
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
-	icon_state = "rampbottom";
-	tag = "icon-stage_stairs"
+	icon_state = "rampbottom"
 	},
 /area/syndicate_mothership)
 "sFq" = (
@@ -23471,13 +23434,13 @@
 /obj/structure/railing/corner{
 	dir = 1
 	},
-/obj/machinery/door_control{
+/obj/machinery/door_control/no_emag{
 	pixel_x = 32;
 	id = "syndFB_med";
 	name = "Medbay";
 	wires = 1;
 	specialfunctions = 4;
-	req_access = list(153);
+	req_access_txt = "153";
 	emagged = 1
 	},
 /obj/effect/turf_decal/miscellaneous/goldensiding,
@@ -23783,8 +23746,7 @@
 	dir = 4
 	},
 /obj/machinery/light/small{
-	dir = 8;
-	tag = "icon-bulb1 (WEST)"
+	dir = 8
 	},
 /obj/effect/turf_decal/box,
 /turf/simulated/floor/plasteel{
@@ -24011,7 +23973,7 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock/hatch/syndicate/vault{
-	req_access = list(153);
+	req_access_txt = "153";
 	name = "Vault"
 	},
 /turf/simulated/floor/wood{
@@ -24034,40 +23996,40 @@
 /turf/simulated/floor/mineral/plastitanium,
 /area/syndicate_mothership)
 "tIq" = (
-/obj/machinery/door_control{
+/obj/machinery/door_control/no_emag{
 	pixel_y = -24;
 	emagged = 1;
 	wires = 1;
-	req_access = list(153);
+	req_access_txt = "153";
 	name = "SST Armory Basic Weapons";
 	id = "SST_armory_basic";
 	color = "#99ff99"
 	},
-/obj/machinery/door_control{
+/obj/machinery/door_control/no_emag{
 	pixel_y = -40;
 	id = "SST_armory_advanced";
 	emagged = 1;
 	wires = 1;
-	req_access = list(153);
+	req_access_txt = "153";
 	name = "SST_armory_advanced"
 	},
-/obj/machinery/door_control{
+/obj/machinery/door_control/no_emag{
 	pixel_y = -32;
 	pixel_x = 6;
 	id = "SST_armory_grenades";
 	emagged = 1;
 	wires = 1;
-	req_access = list(153);
+	req_access_txt = "153";
 	name = "SST_armory_grenades";
 	color = "#ffdd99"
 	},
-/obj/machinery/door_control{
+/obj/machinery/door_control/no_emag{
 	pixel_y = -32;
 	pixel_x = -6;
 	id = "SST_armory_support";
 	emagged = 1;
 	wires = 1;
-	req_access = list(153);
+	req_access_txt = "153";
 	name = "SST_armory_support";
 	color = "#9999ff"
 	},
@@ -24826,7 +24788,7 @@
 /obj/machinery/door/airlock/external{
 	name = "Assault Pod";
 	aiControlDisabled = 1;
-	req_access = list(150)
+	req_access_txt = "150"
 	},
 /obj/docking_port/mobile/assault_pod,
 /turf/simulated/floor/mineral/plastitanium/red,
@@ -25161,8 +25123,7 @@
 "uDK" = (
 /turf/simulated/floor/plasteel{
 	dir = 1;
-	icon_state = "rampbottom";
-	tag = "icon-stage_stairs"
+	icon_state = "rampbottom"
 	},
 /area/syndicate_mothership/cargo)
 "uEs" = (
@@ -25304,10 +25265,10 @@
 	},
 /area/syndicate_mothership/control)
 "uJB" = (
-/obj/machinery/door_control{
+/obj/machinery/door_control/no_emag{
 	wires = 1;
 	emagged = 1;
-	req_access = list(153);
+	req_access_txt = "153";
 	pixel_y = -30;
 	id = "SIT_outside";
 	name = "SIT Outside Doors"
@@ -25401,12 +25362,12 @@
 /obj/structure/chair/office/dark{
 	dir = 4
 	},
-/obj/machinery/door_control{
+/obj/machinery/door_control/no_emag{
 	id = "syndicate_jail_cell";
 	name = "Bolt Cell Doors";
 	normaldoorcontrol = 1;
 	pixel_y = -32;
-	req_access = list(150);
+	req_access_txt = "150";
 	specialfunctions = 4;
 	wires = 1
 	},
@@ -25415,7 +25376,7 @@
 	id = "syndie_FB_cells";
 	layer = 4;
 	name = "Prison Flasher";
-	req_access = list(150);
+	req_access_txt = "150";
 	pixel_y = -24
 	},
 /turf/simulated/floor/carpet/black,
@@ -25486,7 +25447,7 @@
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/syndicate_mothership/elite_squad)
 "uOS" = (
-/obj/machinery/door_control{
+/obj/machinery/door_control/no_emag{
 	id = "CC_Armory_Advanced_2";
 	name = "Огнестрел";
 	pixel_y = -24;
@@ -25552,7 +25513,7 @@
 /obj/machinery/door/airlock/external{
 	name = "Assault Pod";
 	aiControlDisabled = 1;
-	req_access = list(150)
+	req_access_txt = "150"
 	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/shuttle/assault_pod)
@@ -25856,10 +25817,10 @@
 /area/centcom220/admin2)
 "vgV" = (
 /obj/structure/table,
-/obj/machinery/door_control{
+/obj/machinery/door_control/no_emag{
 	id = "syndieshutters_Aspid";
 	name = "remote shutter control";
-	req_access = list(150);
+	req_access_txt = "150";
 	wires = 1
 	},
 /turf/simulated/floor/plasteel{
@@ -25915,11 +25876,11 @@
 /area/syndicate_mothership/cargo)
 "vjA" = (
 /obj/machinery/light/spot,
-/obj/machinery/door_control{
+/obj/machinery/door_control/no_emag{
 	id = "syndFB_lockdown";
 	name = "Forward Base Bridge Lockdown";
 	pixel_y = -25;
-	req_access = list(153);
+	req_access_txt = "153";
 	wires = 1
 	},
 /turf/simulated/floor/carpet/black,
@@ -26262,10 +26223,10 @@
 	},
 /area/centcom220/admin3)
 "vvC" = (
-/obj/machinery/door_control{
+/obj/machinery/door_control/no_emag{
 	pixel_x = -32;
 	id = "SST_ready";
-	req_access = list(150);
+	req_access_txt = "150";
 	specialfunctions = 4;
 	wires = 1
 	},
@@ -26303,12 +26264,12 @@
 /area/syndicate_mothership)
 "vwT" = (
 /obj/structure/railing/corner,
-/obj/machinery/door_control{
+/obj/machinery/door_control/no_emag{
 	id = "syndFB_teleport";
 	name = "Teleporter";
 	wires = 1;
 	specialfunctions = 4;
-	req_access = list(153);
+	req_access_txt = "153";
 	pixel_y = 32;
 	emagged = 1
 	},
@@ -26370,11 +26331,11 @@
 /turf/simulated/wall/mineral/plastitanium,
 /area/shuttle/syndicate)
 "vAq" = (
-/obj/machinery/door_control{
+/obj/machinery/door_control/no_emag{
 	id = "syndFB_baseright";
 	name = "Forward Base Access";
 	pixel_y = -25;
-	req_access = list(153);
+	req_access_txt = "153";
 	wires = 1;
 	emagged = 1
 	},
@@ -26697,8 +26658,7 @@
 	},
 /turf/simulated/floor/plasteel{
 	color = "gray";
-	icon_state = "rampbottom";
-	tag = "icon-stage_stairs"
+	icon_state = "rampbottom"
 	},
 /area/syndicate_mothership)
 "vOd" = (
@@ -26983,8 +26943,7 @@
 "vZM" = (
 /turf/simulated/floor/plasteel{
 	dir = 1;
-	icon_state = "rampbottom";
-	tag = "icon-stage_stairs"
+	icon_state = "rampbottom"
 	},
 /area/syndicate_mothership/infteam)
 "vZZ" = (
@@ -27153,7 +27112,7 @@
 	pixel_y = -25
 	},
 /obj/structure/closet/secure_closet/brig{
-	req_access = list(153)
+	req_access_txt = "153"
 	},
 /turf/simulated/floor/carpet/black,
 /area/syndicate_mothership/jail)
@@ -27978,11 +27937,11 @@
 /obj/effect/turf_decal/siding/red{
 	color = "#aa2222"
 	},
-/obj/machinery/door_control{
+/obj/machinery/door_control/no_emag{
 	pixel_x = -32;
 	id = "Aspid_poddor_left";
 	wires = 1;
-	req_access = list(153);
+	req_access_txt = "153";
 	name = "Aspid poddor";
 	emagged = 1
 	},
@@ -27998,8 +27957,7 @@
 	},
 /turf/simulated/floor/plasteel{
 	color = "gray";
-	icon_state = "rampbottom";
-	tag = "icon-stage_stairs"
+	icon_state = "rampbottom"
 	},
 /area/syndicate_mothership)
 "wSu" = (
@@ -28271,29 +28229,29 @@
 /turf/simulated/floor/grass/no_creep,
 /area/centcom220/evac)
 "xdN" = (
-/obj/machinery/door_control{
+/obj/machinery/door_control/no_emag{
 	wires = 1;
 	emagged = 1;
-	req_access = list(153);
+	req_access_txt = "153";
 	pixel_y = -25;
 	id = "SyndFB_prison_stroll";
 	name = "Prison Stroll Zone";
 	normaldoorcontrol = 4;
 	specialfunctions = 4
 	},
-/obj/machinery/door_control{
+/obj/machinery/door_control/no_emag{
 	wires = 1;
 	emagged = 1;
-	req_access = list(153);
+	req_access_txt = "153";
 	pixel_y = -35;
 	pixel_x = -7;
 	name = "Prison Outside Doors";
 	id = "SyndFB_prison_outside"
 	},
-/obj/machinery/door_control{
+/obj/machinery/door_control/no_emag{
 	wires = 1;
 	emagged = 1;
-	req_access = list(153);
+	req_access_txt = "153";
 	pixel_y = -35;
 	pixel_x = 7;
 	id = "SyndFB_prison_stroll_blast";
@@ -28842,7 +28800,7 @@
 /obj/machinery/door/window/brigdoor{
 	color = "red";
 	name = "Cell Door";
-	req_access = list(150)
+	req_access_txt = "150"
 	},
 /turf/simulated/floor/mineral/plastitanium,
 /area/shuttle/syndicate_sit)
@@ -29045,8 +29003,7 @@
 	id_tag = "SST_outside"
 	},
 /turf/simulated/floor/plasteel{
-	icon_state = "rampbottom";
-	tag = "icon-stage_stairs"
+	icon_state = "rampbottom"
 	},
 /area/syndicate_mothership/elite_squad)
 "xBZ" = (
@@ -29229,7 +29186,7 @@
 /obj/machinery/door/window/brigdoor{
 	color = "red";
 	name = "Arrivals Post";
-	req_access = list(154);
+	req_access_txt = "154";
 	dir = 4
 	},
 /obj/machinery/airlock_controller/access_controller{
@@ -29499,7 +29456,7 @@
 /obj/machinery/door/airlock/external{
 	id_tag = "s_docking_airlock";
 	name = "Shuttle Airlock";
-	req_access = list(150)
+	req_access_txt = "150"
 	},
 /obj/machinery/door/poddoor{
 	density = 0;
@@ -29507,7 +29464,7 @@
 	id_tag = "syndicate_elite";
 	name = "Side Hull Door";
 	opacity = 0;
-	req_access = list(150)
+	req_access_txt = "150"
 	},
 /obj/structure/fans/tiny,
 /obj/docking_port/mobile{
@@ -91323,7 +91280,7 @@ kBX
 qxe
 uVK
 ezC
-cHm
+urd
 qAw
 awj
 kIB
