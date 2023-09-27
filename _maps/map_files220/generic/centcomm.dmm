@@ -592,7 +592,8 @@
 /area/syndicate_mothership/control)
 "awj" = (
 /obj/effect/turf_decal/stripes/line{
-	dir = 8
+	dir = 8;
+	do_not_delete_me = 1
 	},
 /obj/structure/sign/poster/contraband/syndicate_recruitment{
 	pixel_x = -32
@@ -634,7 +635,9 @@
 /area/centcom220/general)
 "axn" = (
 /obj/machinery/atmospherics/pipe/manifold/visible,
-/obj/effect/turf_decal/stripes/corner,
+/obj/effect/turf_decal/stripes/corner{
+	do_not_delete_me = 1
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -1404,10 +1407,17 @@
 /turf/simulated/floor/plasteel/dark,
 /area/centcom220/admin3)
 "bgJ" = (
-/turf/simulated/wall/mineral/plastitanium/nosmooth{
+/obj/structure/barricade{
+	icon = 'icons/turf/shuttle.dmi';
 	icon_state = "diagonalWall3";
+	name = "diagonal shields";
+	proj_pass_rate = 0;
+	max_integrity = 200;
+	armor = list(melee = 10, bullet = 50, laser = 50, energy = 50, bomb = 10, rad = 100, fire = 10, acid = 0);
+	stacktype = null;
 	dir = 1
 	},
+/turf/simulated/floor/indestructible/transparent_floor,
 /area/shuttle/syndicate)
 "bhB" = (
 /obj/effect/turf_decal/siding/red{
@@ -1926,7 +1936,9 @@
 /obj/machinery/suit_storage_unit/syndicate{
 	pixel_y = 6
 	},
-/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/stripes/line{
+	do_not_delete_me = 1
+	},
 /turf/simulated/floor/mineral/plastitanium,
 /area/shuttle/syndicate)
 "bHw" = (
@@ -2528,7 +2540,8 @@
 "cct" = (
 /obj/machinery/atmospherics/pipe/manifold4w/visible,
 /obj/effect/turf_decal/stripes/corner{
-	dir = 4
+	dir = 4;
+	do_not_delete_me = 1
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
@@ -3359,7 +3372,8 @@
 	id_tag = "smindicate";
 	layer = 5;
 	name = "Outer Airlock";
-	opacity = 0
+	opacity = 0;
+	closingLayer = 3.11
 	},
 /obj/structure/fans/tiny/invisible,
 /turf/simulated/floor/plating,
@@ -3778,7 +3792,8 @@
 /obj/item/aicard,
 /obj/item/storage/box/zipties,
 /obj/effect/turf_decal/stripes/line{
-	dir = 8
+	dir = 8;
+	do_not_delete_me = 1
 	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate)
@@ -5646,7 +5661,9 @@
 /obj/effect/turf_decal/caution/stand_clear{
 	dir = 1
 	},
-/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/stripes/line{
+	do_not_delete_me = 1
+	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate)
 "ezD" = (
@@ -7006,7 +7023,8 @@
 /obj/item/tank/internals/oxygen/red,
 /obj/item/clothing/mask/gas,
 /obj/effect/turf_decal/stripes/line{
-	dir = 10
+	dir = 10;
+	do_not_delete_me = 1
 	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate)
@@ -7314,7 +7332,8 @@
 "fLI" = (
 /obj/machinery/sleeper/syndie,
 /obj/effect/turf_decal/stripes/line{
-	dir = 4
+	dir = 4;
+	do_not_delete_me = 1
 	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate)
@@ -7404,7 +7423,8 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/stripes/line{
-	dir = 8
+	dir = 8;
+	do_not_delete_me = 1
 	},
 /turf/simulated/floor/mineral/plastitanium,
 /area/shuttle/syndicate)
@@ -7575,7 +7595,9 @@
 	pixel_y = -28
 	},
 /obj/machinery/light/small,
-/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/stripes/line{
+	do_not_delete_me = 1
+	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate)
 "fZS" = (
@@ -7590,7 +7612,8 @@
 	dir = 8
 	},
 /obj/effect/turf_decal/stripes/line{
-	dir = 8
+	dir = 8;
+	do_not_delete_me = 1
 	},
 /turf/simulated/floor/mineral/plastitanium,
 /area/shuttle/syndicate)
@@ -8650,7 +8673,8 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/stripes/corner{
-	dir = 8
+	dir = 8;
+	do_not_delete_me = 1
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
@@ -9193,7 +9217,8 @@
 "hrZ" = (
 /obj/machinery/sleeper/syndie,
 /obj/effect/turf_decal/stripes/line{
-	dir = 6
+	dir = 6;
+	do_not_delete_me = 1
 	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate)
@@ -9698,10 +9723,17 @@
 	},
 /area/syndicate_mothership/control)
 "hMm" = (
-/turf/simulated/wall/mineral/plastitanium/nosmooth{
+/obj/structure/barricade{
+	icon = 'icons/turf/shuttle.dmi';
 	icon_state = "diagonalWall3";
+	name = "diagonal shields";
+	proj_pass_rate = 0;
+	max_integrity = 200;
+	armor = list(melee = 10, bullet = 50, laser = 50, energy = 50, bomb = 10, rad = 100, fire = 10, acid = 0);
+	stacktype = null;
 	dir = 8
 	},
+/turf/simulated/floor/indestructible/transparent_floor,
 /area/shuttle/syndicate_sit)
 "hMQ" = (
 /obj/machinery/light/small,
@@ -9841,7 +9873,8 @@
 /area/centcom220/admin1)
 "hRt" = (
 /obj/effect/turf_decal/stripes/line{
-	dir = 6
+	dir = 6;
+	do_not_delete_me = 1
 	},
 /obj/structure/sign/vacuum{
 	pixel_y = -32
@@ -9856,7 +9889,8 @@
 /area/shuttle/syndicate)
 "hSm" = (
 /obj/effect/turf_decal/stripes/line{
-	dir = 8
+	dir = 8;
+	do_not_delete_me = 1
 	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate)
@@ -10341,9 +10375,16 @@
 /turf/simulated/floor/carpet/royalblack,
 /area/centcom220/admin2)
 "iqM" = (
-/turf/simulated/wall/mineral/plastitanium/nosmooth{
-	icon_state = "diagonalWall3"
+/obj/structure/barricade{
+	icon = 'icons/turf/shuttle.dmi';
+	icon_state = "diagonalWall3";
+	name = "diagonal shields";
+	proj_pass_rate = 0;
+	max_integrity = 200;
+	armor = list(melee = 10, bullet = 50, laser = 50, energy = 50, bomb = 10, rad = 100, fire = 10, acid = 0);
+	stacktype = null
 	},
+/turf/simulated/floor/indestructible/transparent_floor,
 /area/shuttle/syndicate)
 "iri" = (
 /obj/structure/table,
@@ -10376,7 +10417,8 @@
 /area/syndicate_mothership/jail)
 "irK" = (
 /obj/effect/turf_decal/stripes/line{
-	dir = 8
+	dir = 8;
+	do_not_delete_me = 1
 	},
 /obj/machinery/light/small{
 	dir = 8
@@ -12784,7 +12826,8 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/stripes/line{
-	dir = 4
+	dir = 4;
+	do_not_delete_me = 1
 	},
 /turf/simulated/floor/mineral/plastitanium,
 /area/shuttle/syndicate)
@@ -13045,7 +13088,8 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/stripes/corner{
-	dir = 1
+	dir = 1;
+	do_not_delete_me = 1
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
@@ -13369,7 +13413,9 @@
 /obj/machinery/suit_storage_unit/syndicate{
 	pixel_y = 6
 	},
-/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/stripes/line{
+	do_not_delete_me = 1
+	},
 /obj/machinery/light/small{
 	dir = 1
 	},
@@ -15464,7 +15510,7 @@
 /obj/machinery/access_button{
 	autolink_id = "syndicate_jail_button_ext";
 	name = "Jail Access Button";
-	req_access_txt = "10";
+	req_access_txt = "153";
 	pixel_x = -25
 	},
 /turf/simulated/floor/plasteel{
@@ -15881,7 +15927,8 @@
 /area/shuttle/specops)
 "mZG" = (
 /obj/effect/turf_decal/stripes/line{
-	dir = 5
+	dir = 5;
+	do_not_delete_me = 1
 	},
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
 	autolink_id = "syndishuttle_vent";
@@ -16134,7 +16181,8 @@
 "nkK" = (
 /obj/machinery/atmospherics/pipe/simple/visible,
 /obj/effect/turf_decal/stripes/line{
-	dir = 4
+	dir = 4;
+	do_not_delete_me = 1
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
@@ -17008,7 +17056,8 @@
 /area/centcom220/admin2)
 "nUg" = (
 /obj/effect/turf_decal/stripes/line{
-	dir = 1
+	dir = 1;
+	do_not_delete_me = 1
 	},
 /obj/machinery/economy/vending/wallmed/syndicate{
 	pixel_x = -30
@@ -17462,7 +17511,8 @@
 /area/shuttle/syndicate)
 "orK" = (
 /obj/effect/turf_decal/stripes/line{
-	dir = 10
+	dir = 10;
+	do_not_delete_me = 1
 	},
 /obj/machinery/door_control/no_emag{
 	id = "smindicate";
@@ -17618,7 +17668,8 @@
 /area/centcom220/admin1)
 "oxt" = (
 /obj/effect/turf_decal/stripes/corner{
-	dir = 8
+	dir = 8;
+	do_not_delete_me = 1
 	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate)
@@ -17643,7 +17694,8 @@
 	id_tag = "smindicate";
 	layer = 5;
 	name = "Outer Airlock";
-	opacity = 0
+	opacity = 0;
+	closingLayer = 3.11
 	},
 /obj/structure/fans/tiny/invisible,
 /obj/docking_port/mobile{
@@ -17893,7 +17945,9 @@
 	},
 /area/centcom220/general)
 "oHm" = (
-/obj/effect/turf_decal/stripes/corner,
+/obj/effect/turf_decal/stripes/corner{
+	do_not_delete_me = 1
+	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate)
 "oHW" = (
@@ -17979,7 +18033,8 @@
 	dir = 8
 	},
 /obj/effect/turf_decal/stripes/line{
-	dir = 4
+	dir = 4;
+	do_not_delete_me = 1
 	},
 /turf/simulated/floor/mineral/plastitanium,
 /area/shuttle/syndicate)
@@ -18567,7 +18622,9 @@
 /area/centcom220/evac)
 "pmM" = (
 /obj/machinery/light/small,
-/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/stripes/line{
+	do_not_delete_me = 1
+	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate)
 "pnR" = (
@@ -18741,7 +18798,8 @@
 /area/centcom220/general)
 "puM" = (
 /obj/effect/turf_decal/stripes/line{
-	dir = 10
+	dir = 10;
+	do_not_delete_me = 1
 	},
 /obj/machinery/access_button{
 	autolink_id = "syndishuttle_btn_ext";
@@ -18813,7 +18871,8 @@
 /area/centcom220/admin3)
 "pwz" = (
 /obj/effect/turf_decal/stripes/line{
-	dir = 6
+	dir = 6;
+	do_not_delete_me = 1
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
@@ -18964,7 +19023,8 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/stripes/line{
-	dir = 5
+	dir = 5;
+	do_not_delete_me = 1
 	},
 /turf/simulated/floor/mineral/plastitanium,
 /area/shuttle/syndicate)
@@ -19049,7 +19109,8 @@
 	dir = 6
 	},
 /obj/effect/turf_decal/stripes/line{
-	dir = 5
+	dir = 5;
+	do_not_delete_me = 1
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
@@ -20126,7 +20187,8 @@
 /area/ninja/holding)
 "qAw" = (
 /obj/effect/turf_decal/stripes/line{
-	dir = 9
+	dir = 9;
+	do_not_delete_me = 1
 	},
 /obj/machinery/access_button{
 	autolink_id = "syndishuttle_btn_int";
@@ -20935,7 +20997,8 @@
 /area/centcom220/admin3)
 "rgQ" = (
 /obj/effect/turf_decal/stripes/line{
-	dir = 1
+	dir = 1;
+	do_not_delete_me = 1
 	},
 /turf/simulated/floor/mineral/plastitanium,
 /area/shuttle/syndicate)
@@ -21423,7 +21486,8 @@
 	dir = 8
 	},
 /obj/effect/turf_decal/stripes/line{
-	dir = 9
+	dir = 9;
+	do_not_delete_me = 1
 	},
 /turf/simulated/floor/mineral/plastitanium,
 /area/shuttle/syndicate)
@@ -21511,7 +21575,8 @@
 /area/syndicate_mothership/infteam)
 "rBb" = (
 /obj/effect/turf_decal/stripes/line{
-	dir = 9
+	dir = 9;
+	do_not_delete_me = 1
 	},
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
 	autolink_id = "syndishuttle_vent";
@@ -22197,10 +22262,17 @@
 	},
 /area/syndicate_mothership/infteam)
 "scX" = (
-/turf/simulated/wall/mineral/plastitanium/nosmooth{
+/obj/structure/barricade{
+	icon = 'icons/turf/shuttle.dmi';
 	icon_state = "diagonalWall3";
+	name = "diagonal shields";
+	proj_pass_rate = 0;
+	max_integrity = 200;
+	armor = list(melee = 10, bullet = 50, laser = 50, energy = 50, bomb = 10, rad = 100, fire = 10, acid = 0);
+	stacktype = null;
 	dir = 1
 	},
+/turf/simulated/floor/indestructible/transparent_floor,
 /area/shuttle/syndicate_sit)
 "sdf" = (
 /obj/structure/closet/crate/freezer{
@@ -23228,10 +23300,17 @@
 /turf/simulated/floor/wood,
 /area/centcom220/park)
 "sXy" = (
-/turf/simulated/wall/mineral/plastitanium/nosmooth{
+/obj/structure/barricade{
+	icon = 'icons/turf/shuttle.dmi';
 	icon_state = "diagonalWall3";
+	name = "diagonal shields";
+	proj_pass_rate = 0;
+	max_integrity = 200;
+	armor = list(melee = 10, bullet = 50, laser = 50, energy = 50, bomb = 10, rad = 100, fire = 10, acid = 0);
+	stacktype = null;
 	dir = 1
 	},
+/turf/simulated/floor/indestructible/transparent_floor,
 /area/shuttle/syndicate_elite)
 "sXM" = (
 /obj/structure/closet/secure_closet/syndicate/medbay,
@@ -23857,7 +23936,8 @@
 /area/shuttle/syndicate_elite)
 "tBr" = (
 /obj/effect/turf_decal/stripes/line{
-	dir = 10
+	dir = 10;
+	do_not_delete_me = 1
 	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate)
@@ -24780,7 +24860,8 @@
 /area/syndicate_mothership/jail)
 "unF" = (
 /obj/effect/turf_decal/stripes/line{
-	dir = 6
+	dir = 6;
+	do_not_delete_me = 1
 	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate)
@@ -25598,10 +25679,17 @@
 /turf/simulated/floor/plasteel/dark,
 /area/centcom220/evac)
 "uWc" = (
-/turf/simulated/wall/mineral/plastitanium/nosmooth{
+/obj/structure/barricade{
+	icon = 'icons/turf/shuttle.dmi';
 	icon_state = "diagonalWall3";
+	name = "diagonal shields";
+	proj_pass_rate = 0;
+	max_integrity = 200;
+	armor = list(melee = 10, bullet = 50, laser = 50, energy = 50, bomb = 10, rad = 100, fire = 10, acid = 0);
+	stacktype = null;
 	dir = 4
 	},
+/turf/simulated/floor/indestructible/transparent_floor,
 /area/shuttle/syndicate)
 "uWu" = (
 /obj/item/flag/nt,
@@ -25625,7 +25713,8 @@
 /area/shuttle/syndicate)
 "uXa" = (
 /obj/effect/turf_decal/stripes/line{
-	dir = 4
+	dir = 4;
+	do_not_delete_me = 1
 	},
 /obj/machinery/light/small{
 	dir = 4
@@ -25995,6 +26084,12 @@
 	icon_state = "darkjail"
 	},
 /area/syndicate_mothership/jail)
+"voU" = (
+/obj/machinery/porta_turret/syndicate{
+	layer = 3.1
+	},
+/turf/simulated/wall/mineral/plastitanium,
+/area/shuttle/syndicate)
 "vpo" = (
 /turf/space/transit/horizontal{
 	dir = 4
@@ -26326,10 +26421,6 @@
 	icon_state = "darkyellowalt"
 	},
 /area/centcom220/supply)
-"vzd" = (
-/obj/machinery/porta_turret/syndicate,
-/turf/simulated/wall/mineral/plastitanium,
-/area/shuttle/syndicate)
 "vAq" = (
 /obj/machinery/door_control/no_emag{
 	id = "syndFB_baseright";
@@ -26787,7 +26878,9 @@
 	},
 /area/shuttle/escape)
 "vSv" = (
-/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/stripes/line{
+	do_not_delete_me = 1
+	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate)
 "vSI" = (
@@ -27469,7 +27562,8 @@
 /area/syndicate_mothership/elite_squad)
 "wzD" = (
 /obj/effect/turf_decal/stripes/line{
-	dir = 4
+	dir = 4;
+	do_not_delete_me = 1
 	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate)
@@ -27641,10 +27735,17 @@
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/shuttle/escape)
 "wGX" = (
-/turf/simulated/wall/mineral/plastitanium/nosmooth{
+/obj/structure/barricade{
+	icon = 'icons/turf/shuttle.dmi';
 	icon_state = "diagonalWall3";
+	name = "diagonal shields";
+	proj_pass_rate = 0;
+	max_integrity = 200;
+	armor = list(melee = 10, bullet = 50, laser = 50, energy = 50, bomb = 10, rad = 100, fire = 10, acid = 0);
+	stacktype = null;
 	dir = 8
 	},
+/turf/simulated/floor/indestructible/transparent_floor,
 /area/shuttle/syndicate_elite)
 "wHd" = (
 /obj/effect/turf_decal/bot,
@@ -28626,12 +28727,6 @@
 	icon_state = "dark"
 	},
 /area/syndicate_mothership/cargo)
-"xni" = (
-/obj/machinery/porta_turret/syndicate{
-	pixel_y = 2
-	},
-/turf/simulated/wall/mineral/plastitanium,
-/area/shuttle/syndicate)
 "xnm" = (
 /obj/structure/table/wood{
 	color = "#996633"
@@ -29162,7 +29257,7 @@
 /obj/machinery/access_button{
 	autolink_id = "syndicate_jail_button_int";
 	name = "Jail Access Button";
-	req_access_txt = "10";
+	req_access_txt = "153";
 	pixel_x = -25
 	},
 /turf/simulated/floor/plasteel{
@@ -29431,10 +29526,17 @@
 	},
 /area/syndicate_mothership)
 "xYf" = (
-/turf/simulated/wall/mineral/plastitanium/nosmooth{
+/obj/structure/barricade{
+	icon = 'icons/turf/shuttle.dmi';
 	icon_state = "diagonalWall3";
+	name = "diagonal shields";
+	proj_pass_rate = 0;
+	max_integrity = 200;
+	armor = list(melee = 10, bullet = 50, laser = 50, energy = 50, bomb = 10, rad = 100, fire = 10, acid = 0);
+	stacktype = null;
 	dir = 8
 	},
+/turf/simulated/floor/indestructible/transparent_floor,
 /area/shuttle/syndicate)
 "xYk" = (
 /obj/effect/turf_decal/woodsiding{
@@ -29714,9 +29816,12 @@
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate)
 "yjV" = (
-/obj/effect/turf_decal/stripes/line,
 /obj/effect/turf_decal/stripes/line{
-	dir = 1
+	do_not_delete_me = 1
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 1;
+	do_not_delete_me = 1
 	},
 /obj/machinery/door/airlock/hatch/syndicate{
 	name = "Syndicate Nuclear Team Shuttle"
@@ -89479,7 +89584,7 @@ xYf
 viN
 kKO
 viN
-orn
+spP
 orn
 orn
 orn
@@ -89729,7 +89834,7 @@ lgH
 lgH
 lgH
 lgH
-xni
+voU
 pQE
 pQE
 orn
@@ -90495,7 +90600,7 @@ lgH
 lgH
 lgH
 lgH
-xni
+voU
 orn
 pEY
 oKw
@@ -90773,7 +90878,7 @@ orn
 orn
 orn
 orn
-vzd
+voU
 lgH
 lgH
 lgH
@@ -92058,7 +92163,7 @@ orn
 orn
 orn
 orn
-vzd
+voU
 lgH
 lgH
 lgH
@@ -92294,7 +92399,7 @@ lgH
 lgH
 lgH
 lgH
-xni
+voU
 orn
 rwU
 fPV
@@ -93070,7 +93175,7 @@ lgH
 lgH
 lgH
 lgH
-xni
+voU
 svw
 svw
 orn
@@ -93334,7 +93439,7 @@ bgJ
 viN
 udu
 viN
-orn
+spP
 orn
 orn
 orn
