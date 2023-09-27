@@ -240,8 +240,9 @@
 
 	var/html = {"
 <html>
+	<meta charset="UTF-8">	<!-- SS220 ADDITION-->
 	<head>
-		<meta charset="UTF-8"><title>[title]</title>	<!-- SS220 ADDITION - <meta charset="UTF-8"> -->
+		<title>[title]</title>
 		<style>
 			body {
 				font-family: Verdana, sans-serif;
