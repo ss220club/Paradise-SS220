@@ -1,0 +1,19 @@
+# This file is stolen from tg
+version: 1
+byond: "515.1614"
+# Folders to create in "<instance_path>/Configuration/GameStaticFiles/"
+static_files:
+  # Config directory should be static
+  - name: config
+    # This implies the folder should be pre-populated with contents from the repo
+    populate: true
+  # Data directory must be static
+  - name: data
+# String dictionary. The value is the location of the file in the repo to upload to TGS. The key is the name of the file to upload to "<instance_path>/Configuration/EventScripts/"
+# This one is for Linux hosted servers
+linux_scripts:
+  PreCompile.sh: tools/tgs_scripts/PreCompile.sh
+  WatchdogLaunch.sh: tools/tgs_scripts/WatchdogLaunch.sh
+  InstallDeps.sh: tools/tgs_scripts/InstallDeps.sh
+# The security level the game should be run at
+security: Trusted
