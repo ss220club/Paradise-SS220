@@ -6511,7 +6511,9 @@
 /area/shuttle/escape)
 "fbq" = (
 /obj/structure/table/wood,
-/obj/machinery/chem_dispenser/beer/upgraded,
+/obj/machinery/chem_dispenser/beer/upgraded{
+	dir = 8
+	},
 /turf/simulated/floor/plating{
 	icon = 'icons/turf/floors.dmi';
 	icon_state = "elevatorshaft";
@@ -9909,7 +9911,9 @@
 	},
 /area/syndicate_mothership/elite_squad)
 "hUn" = (
-/obj/machinery/icemachine,
+/obj/machinery/icemachine{
+	dir = 1
+	},
 /turf/simulated/floor/plating{
 	icon = 'icons/turf/floors.dmi';
 	icon_state = "elevatorshaft";
@@ -10585,7 +10589,9 @@
 /turf/simulated/floor/plasteel/dark,
 /area/shuttle/administration)
 "ivd" = (
-/obj/machinery/computer/arcade/battle,
+/obj/machinery/computer/arcade/battle{
+	dir = 4
+	},
 /obj/structure/curtain/black{
 	pixel_y = 32;
 	anchored = 1
@@ -13309,7 +13315,8 @@
 "kUd" = (
 /obj/structure/table/reinforced,
 /obj/machinery/processor{
-	pixel_y = 10
+	pixel_y = 10;
+	dir = 8
 	},
 /obj/machinery/light{
 	dir = 4
@@ -18888,7 +18895,9 @@
 /area/syndicate_mothership/outside)
 "pxW" = (
 /obj/structure/table/wood,
-/obj/machinery/chem_dispenser/soda/upgraded,
+/obj/machinery/chem_dispenser/soda/upgraded{
+	dir = 8
+	},
 /turf/simulated/floor/plating{
 	icon = 'icons/turf/floors.dmi';
 	icon_state = "elevatorshaft";
@@ -27835,15 +27844,6 @@
 	},
 /turf/simulated/floor/carpet/black,
 /area/centcom220/admin2)
-"wLf" = (
-/obj/machinery/door/poddoor/impassable{
-	density = 0;
-	icon_state = "open";
-	id_tag = "syndFB_lockdown";
-	opacity = 0
-	},
-/turf/simulated/wall/indestructible/opsglass,
-/area/syndicate_mothership/outside)
 "wLN" = (
 /obj/effect/turf_decal/delivery,
 /obj/effect/spawner/random_spawners/syndicate/loot{
@@ -46915,7 +46915,7 @@ fxM
 fxM
 fxM
 nML
-wLf
+nML
 tJz
 tJz
 tJz
