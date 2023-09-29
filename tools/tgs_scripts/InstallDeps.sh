@@ -35,5 +35,5 @@ fi
 if ! ( [ -x "$has_ffmpeg" ] ); then
 	echo "Installing ffmpeg..."
 	apt-get update
-	apt-get install ffmpeg
+	apt-get install -y ffmpeg
 fi
