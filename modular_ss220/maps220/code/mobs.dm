@@ -12,7 +12,7 @@
 	turns_per_move = 5
 	speed = 0
 	stat_attack = UNCONSCIOUS
-	robust_searching = 1
+	robust_searching = TRUE
 	maxHealth = 75
 	health = 75
 	harm_intent_damage = 8
@@ -84,7 +84,7 @@
 	icon_dead = "scavdead"
 	maxHealth = 100
 	health = 100
-	ranged = 1
+	ranged = TRUE
 	retreat_distance = 5
 	minimum_distance = 5
 	rapid = 2
@@ -112,7 +112,7 @@
 	icon_dead = "scavdead"
 	maxHealth = 100
 	health = 100
-	ranged = 1
+	ranged = TRUE
 	retreat_distance = 5
 	minimum_distance = 5
 	rapid = 0
@@ -203,7 +203,7 @@
 	turns_per_move = 5
 	speed = 0
 	stat_attack = UNCONSCIOUS
-	robust_searching = 1
+	robust_searching = TRUE
 	maxHealth = 90
 	health = 90
 	harm_intent_damage = 8
@@ -242,7 +242,7 @@
 	icon_dead = "voxdead"
 	melee_damage_lower = 20
 	melee_damage_upper = 20
-	ranged = 1
+	ranged = TRUE
 	retreat_distance = 5
 	minimum_distance = 5
 	casingtype = /obj/item/ammo_casing/c45
@@ -421,7 +421,7 @@
 	. = ..()
 	if(. && isliving(target))
 		var/mob/living/L = target
-		if(L.reagents && !poison_per_bite == 0)
+		if(L.reagents && poison_per_bite)
 			L.reagents.add_reagent(poison_type, poison_per_bite)
 		return .
 
@@ -457,7 +457,7 @@
 			continue
 		if(S.id == id)
 			new S.jungle_mob(get_turf(S))
-			triggered = 1
+			triggered = TRUE
 	qdel(src)
 
 /mob/living/proc/spawn_alert(atom/A) // Вызывает появление восклицательного знака над головой при наступании на маркер
