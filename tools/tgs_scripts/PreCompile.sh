@@ -35,8 +35,7 @@ cd ..
 
 # SS220 TODO: compile aa's rustg natively too
 
-# SS220 TODO: tg like compile tgui
 # compile tgui
-# echo "Compiling tgui..."
-# cd "$1"
-# env TG_BOOTSTRAP_CACHE="$original_dir" TG_BOOTSTRAP_NODE_LINUX=1 CBT_BUILD_MODE="TGS" tools/bootstrap/node tools/build/build.js
+echo "Compiling tgui..."
+cd "$1"
+env TG_BOOTSTRAP_CACHE="$original_dir" TG_BOOTSTRAP_NODE_LINUX=1 CBT_BUILD_MODE="TGS" tools/bootstrap/node tools/build/build.js

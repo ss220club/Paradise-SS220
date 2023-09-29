@@ -13,3 +13,6 @@ export BETA_BYOND_MAJOR=515
 export BETA_BYOND_MINOR=1610
 # Python version for mapmerge and other tools
 export PYTHON_VERSION=3.7.9
+#node version
+export NODE_VERSION=18
+export NODE_VERSION_PRECISE=18.18.0
