@@ -9,7 +9,7 @@ set -x
 # Need to switch to game dir for Dockerfile weirdness
 original_dir=$PWD
 cd "$1"
-. build_dependencies.sh
+. _build_dependencies.sh
 cd "$original_dir"
 
 
@@ -27,10 +27,9 @@ else
 fi
 
 echo "Deploying rust-g..."
-git checkout "$RUST_G_VERSION"
 RUSTFLAGS="-C target-cpu=native"
 env PKG_CONFIG_ALLOW_CROSS=1 ~/.cargo/bin/cargo build --release --features all --target=i686-unknown-linux-gnu
-mv target/i686-unknown-linux-gnu/release/librust_g_ss220.so "$1/librust_g_ss220.so"
+mv target/i686-unknown-linux-gnu/release/librust_g.so "$original_dir/../GameStaticFiles/librust_g_ss220.so"
 cd ..
 
 # SS220 TODO: #22629 tg like compile tgui
