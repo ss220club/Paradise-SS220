@@ -430,9 +430,9 @@
 	icon = 'icons/obj/items.dmi'
 	icon_state = "fleshtrap"
 	var/id = null
-	var/triggered = 0
+	var/triggered = FALSE
 	var/faction = null
-	var/safety_z_check = 1
+	var/safety_z_check = TRUE
 
 /obj/effect/landmark/awaymissions/gate_lizard/mob_spawn
 	name = "spawner"
