@@ -32,7 +32,7 @@ env PKG_CONFIG_ALLOW_CROSS=1 ~/.cargo/bin/cargo build --release --features all -
 mv target/i686-unknown-linux-gnu/release/librust_g.so "$original_dir/../GameStaticFiles/librust_g_ss220.so"
 cd ..
 
-# SS220 TODO: #22629 tg like compile tgui
+# SS220 TODO: tg like compile tgui
 # compile tgui
 # echo "Compiling tgui..."
 # cd "$1"
