@@ -29,7 +29,8 @@ fi
 echo "Deploying rust-g..."
 RUSTFLAGS="-C target-cpu=native"
 env PKG_CONFIG_ALLOW_CROSS=1 ~/.cargo/bin/cargo build --release --features all --target=i686-unknown-linux-gnu
-mv -f target/i686-unknown-linux-gnu/release/librust_g.so "$original_dir/../GameStaticFiles/librust_g_ss220.so"
+rm -f "$original_dir/../GameStaticFiles/librust_g_ss220.so"
+mv target/i686-unknown-linux-gnu/release/librust_g.so "$original_dir/../GameStaticFiles/librust_g_ss220.so"
 cd ..
 
 # SS220 TODO: tg like compile tgui
