@@ -255,7 +255,7 @@
 	icon_state = "voxlaser"
 	icon_living = "voxlaser"
 	icon_dead = "voxsuitdead"
-	ranged = 1
+	ranged = TRUE
 	retreat_distance = 5
 	minimum_distance = 5
 	rapid = 2
@@ -292,7 +292,7 @@
 	speed = -0.5
 	move_to_delay = 2
 	stat_attack = UNCONSCIOUS
-	robust_searching = 1
+	robust_searching = TRUE
 	maxHealth = 80
 	health = 80
 	harm_intent_damage = 8
@@ -302,7 +302,7 @@
 	attack_sound = 'sound/weapons/punch1.ogg'
 	a_intent = INTENT_HARM
 	faction = list("junglemob")
-	check_friendly_fire = 1
+	check_friendly_fire = TRUE
 	status_flags = CANPUSH
 	unsuitable_atmos_damage = 10
 	loot = list(/obj/effect/decal/cleanable/blood/gibs)
@@ -333,7 +333,7 @@
 	desc = "Представитель коренного населения этой планеты. Вооружен мастерски сделанным композитным луком и смертоносными стрелами."
 	icon_state = "lizardman_bow"
 	icon_living = "lizardman_bow"
-	ranged = 1
+	ranged = TRUE
 	retreat_distance = 5
 	minimum_distance = 6
 	projectiletype = /obj/item/projectile/bullet/arrow
@@ -383,7 +383,7 @@
 	rapid_melee = 2
 	move_to_delay = 2
 	speed = -2
-	dodging = 1
+	dodging = TRUE
 	sidestep_per_cycle = 2
 	faction = list("junglemob")
 
