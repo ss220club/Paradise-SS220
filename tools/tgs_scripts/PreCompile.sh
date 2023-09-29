@@ -33,6 +33,8 @@ rm -f "$original_dir/../GameStaticFiles/librust_g_ss220.so"
 mv target/i686-unknown-linux-gnu/release/librust_g.so "$original_dir/../GameStaticFiles/librust_g_ss220.so"
 cd ..
 
+# SS220 TODO: compile aa's rustg natively too
+
 # SS220 TODO: tg like compile tgui
 # compile tgui
 # echo "Compiling tgui..."
