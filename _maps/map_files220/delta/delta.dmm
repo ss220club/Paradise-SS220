@@ -35488,9 +35488,6 @@
 /obj/machinery/gateway{
 	dir = 1
 	},
-/obj/structure/sign/poster/official/fruit_bowl{
-	pixel_y = 32
-	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "vault"
@@ -41094,7 +41091,7 @@
 	name = "Escape Pod"
 	},
 /turf/simulated/floor/plating,
-/area/space)
+/area/station/maintenance/starboard)
 "cTv" = (
 /obj/machinery/camera{
 	c_tag = "Xenobio West";
@@ -56367,7 +56364,7 @@
 /area/station/medical/sleeper)
 "fIy" = (
 /turf/simulated/floor/plating,
-/area/space)
+/area/space/nearstation)
 "fIA" = (
 /turf/simulated/floor/plating,
 /area/station/maintenance/dormitory_maintenance)
@@ -66431,6 +66428,9 @@
 	icon_state = "whitepurplefull"
 	},
 /area/station/science/genetics)
+"jJR" = (
+/turf/simulated/wall/r_wall,
+/area/station/maintenance/incinerator)
 "jJU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
@@ -67271,10 +67271,6 @@
 	},
 /area/station/engineering/break_room)
 "kaS" = (
-/obj/machinery/door_control{
-	pixel_y = -24;
-	autolink_id = "ex_int"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
@@ -75647,6 +75643,12 @@
 	},
 /obj/effect/decal/warning_stripes/north,
 /obj/effect/mapping_helpers/airlock/access/all/engineering/general,
+/obj/machinery/access_button{
+	autolink_id = "assolar_btn_int";
+	name = "interior access button";
+	pixel_x = 24;
+	req_access_txt = "10;13"
+	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/starboardsolar)
 "nAZ" = (
@@ -77279,13 +77281,6 @@
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
-	},
-/obj/machinery/access_button{
-	autolink_id = "assolar_btn_ext";
-	name = "exterior access button";
-	pixel_x = -25;
-	pixel_y = 25;
-	req_access_txt = "13"
 	},
 /turf/space,
 /area/station/maintenance/starboardsolar)
@@ -81747,7 +81742,9 @@
 /obj/machinery/atmospherics/unary/portables_connector{
 	dir = 1
 	},
-/obj/machinery/atmospherics/portable/canister/air,
+/obj/machinery/atmospherics/portable/canister/air{
+	anchored = 1
+	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/starboard2)
 "pPG" = (
@@ -85616,15 +85613,16 @@
 /area/station/maintenance/port)
 "rul" = (
 /obj/machinery/airlock_controller/air_cycler{
-	ext_door_link_id = "ex_outer";
-	int_button_link_id = "ex_int";
-	int_door_link_id = "ex_inner";
+	ext_door_link_id = "med_outer_door";
+	int_button_link_id = "med_int_button";
+	int_door_link_id = "med_int_door";
 	req_access_txt = "13";
-	vent_link_id = "assolar_vent";
-	pixel_x = 25
+	vent_link_id = "med_vent";
+	pixel_x = 25;
+	ext_button_link_id = "med_outer_button"
 	},
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
-	autolink_id = "ex_vent";
+	autolink_id = "med_vent";
 	dir = 1
 	},
 /turf/simulated/floor/engine,
@@ -86365,8 +86363,9 @@
 /turf/simulated/floor/plasteel/dark,
 /area/station/service/library)
 "rKg" = (
-/obj/machinery/door_control{
+/obj/machinery/driver_button{
 	id_tag = "chapelgun2";
+	name = "Chapel Mass Driver";
 	pixel_y = -24
 	},
 /turf/simulated/floor/plasteel{
@@ -86749,7 +86748,8 @@
 /area/station/maintenance/Virology_maint)
 "rSb" = (
 /obj/machinery/door/poddoor{
-	id_tag = "chapelgun2"
+	id_tag = "chapelgun2";
+	name = "Chapel Launcher Door"
 	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/starboard2)
@@ -87717,7 +87717,12 @@
 /area/station/public/sleep_male)
 "skK" = (
 /obj/machinery/door/airlock/external{
-	id_tag = "ex_outer"
+	id_tag = "med_outer_door"
+	},
+/obj/machinery/access_button{
+	autolink_id = "med_outer_button";
+	name = "interior access button";
+	pixel_x = 24
 	},
 /turf/simulated/floor/engine,
 /area/station/maintenance/starboard2)
@@ -91760,6 +91765,12 @@
 	},
 /obj/effect/decal/warning_stripes/north,
 /obj/effect/mapping_helpers/airlock/access/all/engineering/general,
+/obj/machinery/access_button{
+	autolink_id = "assolar_btn_ext";
+	name = "exterior access button";
+	pixel_x = -24;
+	req_access_txt = "13"
+	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/starboardsolar)
 "tRq" = (
@@ -93297,13 +93308,6 @@
 /turf/simulated/floor/plasteel,
 /area/station/service/theatre)
 "uvM" = (
-/obj/machinery/access_button{
-	autolink_id = "assolar_btn_int";
-	name = "interior access button";
-	pixel_x = 25;
-	pixel_y = -25;
-	req_access_txt = "10;13"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
 	},
@@ -94759,9 +94763,16 @@
 /area/station/service/hydroponics)
 "uXU" = (
 /obj/machinery/door/airlock/external{
-	id_tag = "ex_inner"
+	id_tag = "med_int_door"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/machinery/access_button{
+	autolink_id = "med_int_button";
+	name = "interior access button";
+	pixel_x = 24
+	},
+/obj/effect/mapping_helpers/airlock/access/all/engineering/general,
+/obj/effect/mapping_helpers/airlock/access/all/engineering/external,
 /turf/simulated/floor/engine,
 /area/station/maintenance/starboard2)
 "uYc" = (
@@ -95366,11 +95377,9 @@
 	id = "disp"
 	},
 /obj/machinery/power/apc{
-	cell_type = 25000;
 	dir = 4;
 	name = "east bump";
-	pixel_x = 24;
-	shock_proof = 1
+	pixel_x = 24
 	},
 /obj/structure/cable{
 	d2 = 8;
@@ -101103,9 +101112,6 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/port)
-"xON" = (
-/turf/simulated/wall,
-/area/space)
 "xOQ" = (
 /obj/structure/table/wood,
 /obj/item/storage/fancy/candle_box/full{
@@ -157510,11 +157516,11 @@ kwD
 xaX
 brM
 aEG
-aGZ
-aGZ
-aGZ
-aGZ
-aGZ
+jJR
+jJR
+jJR
+jJR
+jJR
 abj
 abj
 abj
@@ -157720,10 +157726,10 @@ kjB
 kjB
 cWh
 csi
-xON
-xON
+ixf
+ixf
 cTu
-xON
+ixf
 qPD
 uYi
 uYi
@@ -157766,13 +157772,13 @@ brM
 nMl
 brM
 brM
-aGZ
-aGZ
+jJR
+jJR
 ylr
 fSa
 rix
-aGZ
-aGZ
+jJR
+jJR
 aaa
 abj
 aaa
@@ -157977,7 +157983,7 @@ cuM
 cuM
 nZg
 csi
-xON
+ixf
 fIy
 fIy
 fIy
@@ -158023,13 +158029,13 @@ brM
 nMl
 bqj
 brM
-aGZ
+jJR
 cqJ
 wmp
 hbq
 heT
 jpo
-aGZ
+jJR
 abj
 abj
 abj
@@ -158234,7 +158240,7 @@ cWh
 cWh
 cXO
 csi
-xON
+ixf
 aaa
 aaa
 aaa
@@ -158286,7 +158292,7 @@ tcQ
 jNM
 gvn
 omg
-aGZ
+jJR
 aaa
 abj
 aaa
@@ -158537,13 +158543,13 @@ xaX
 nMo
 brM
 xaX
-aGZ
+jJR
 pyC
 geX
 hbq
 hfw
 gCZ
-aGZ
+jJR
 abj
 abj
 abj
@@ -158794,13 +158800,13 @@ bgs
 nMo
 brM
 xaX
-aGZ
-aGZ
+jJR
+jJR
 vmO
 yeD
 rix
-aGZ
-aGZ
+jJR
+jJR
 aaa
 abj
 aaa
@@ -159052,11 +159058,11 @@ cak
 xaX
 uME
 brM
-aGZ
-aGZ
-aGZ
-aGZ
-aGZ
+jJR
+jJR
+jJR
+jJR
+jJR
 abj
 abj
 abj
@@ -159313,9 +159319,9 @@ mBY
 icT
 gYK
 tPx
-cPS
-cPS
-cPS
+cPC
+cPC
+cPC
 abj
 aaa
 aaa
@@ -159827,9 +159833,9 @@ cPC
 cyA
 xhr
 cym
-cPS
-cPS
-cPS
+cPC
+cPC
+cPC
 abj
 aaa
 aaa
