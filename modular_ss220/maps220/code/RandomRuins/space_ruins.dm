@@ -82,5 +82,5 @@
 	description = "An interstellar hotel, where the weary spaceman can rest their head and relax, assured that the residental staff will not murder them in their sleep. Probably."
 	prefix = "_maps/map_files220/RandomRuins/SpaceRuins/"
 	suffix = "spacehotel.dmm"
-	cost = 3
+	cost = 7
 	allow_duplicates = FALSE

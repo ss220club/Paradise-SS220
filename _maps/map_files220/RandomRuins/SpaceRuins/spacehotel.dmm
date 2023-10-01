@@ -7,7 +7,7 @@
 /obj/structure/lattice/catwalk,
 /obj/structure/marker_beacon/dock_marker/collision,
 /turf/template_noop,
-/area/template_noop)
+/area/space/nearstation)
 "ae" = (
 /obj/machinery/light{
 	dir = 1
@@ -68,7 +68,7 @@
 /area/ruin/space/spacehotelv1/engi1)
 "aG" = (
 /obj/effect/turf_decal/siding/wood,
-/obj/machinery/economy/vending/cigarette/free,
+/obj/machinery/economy/vending/hatdispenser,
 /obj/structure/sign/poster/random{
 	pixel_y = 32
 	},
@@ -169,13 +169,13 @@
 /obj/item/candle/eternal{
 	pixel_y = 4
 	},
-/obj/item/reagent_containers/food/condiment/peppermill{
-	pixel_x = -9;
-	pixel_y = 6
-	},
 /obj/item/reagent_containers/food/condiment/saltshaker{
 	pixel_x = -9;
 	pixel_y = 12
+	},
+/obj/item/reagent_containers/food/condiment/peppermill{
+	pixel_x = -9;
+	pixel_y = 6
 	},
 /turf/simulated/floor/carpet/black,
 /area/ruin/space/spacehotelv1/restoraunt2)
@@ -222,10 +222,8 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/obj/structure/sign/vacuum{
-	pixel_x = -32
-	},
 /obj/effect/spawner/random_spawners/dirt_often,
+/obj/structure/closet/emcloset,
 /turf/simulated/floor/plating,
 /area/ruin/space/spacehotelv1/engi2)
 "bC" = (
@@ -254,8 +252,13 @@
 	icon_state = "1-4"
 	},
 /turf/template_noop,
-/area/template_noop)
+/area/space/nearstation)
 "bI" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /obj/structure/chair/wood,
 /turf/simulated/floor/carpet/royalblack,
 /area/ruin/space/spacehotelv1/restoraunt3)
@@ -278,7 +281,7 @@
 /obj/structure/grille,
 /obj/structure/grille,
 /turf/template_noop,
-/area/template_noop)
+/area/space/nearstation)
 "bZ" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -690,6 +693,14 @@
 /obj/structure/railing/cap{
 	dir = 10
 	},
+/obj/machinery/power/apc/off_station{
+	dir = 1;
+	pixel_y = 24
+	},
+/obj/structure/cable{
+	d2 = 4;
+	icon_state = "0-4"
+	},
 /turf/simulated/floor/carpet/royalblack,
 /area/ruin/space/spacehotelv1/restoraunt3)
 "eW" = (
@@ -708,7 +719,7 @@
 /area/ruin/space/spacehotelv1/restoraunt1)
 "eY" = (
 /obj/machinery/light_switch{
-	pixel_y = -30;
+	pixel_y = -24;
 	dir = 1
 	},
 /turf/simulated/floor/carpet/cyan,
@@ -725,20 +736,7 @@
 /turf/simulated/floor/wood,
 /area/ruin/space/spacehotelv1/forehallway)
 "fo" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/effect/spawner/random_spawners/dirt_often,
-/obj/structure/sign/poster/random{
-	pixel_x = -32
-	},
+/obj/machinery/atmospherics/portable/canister/oxygen,
 /turf/simulated/floor/plating,
 /area/ruin/space/spacehotelv1/engi2)
 "fp" = (
@@ -900,22 +898,22 @@
 /turf/simulated/floor/plating,
 /area/ruin/space/spacehotelv1/engi1)
 "gC" = (
-/obj/machinery/economy/vending/hatdispenser,
-/turf/simulated/floor/plasteel{
-	icon_state = "showroomfloor"
-	},
-/area/ruin/space/spacehotelv1/bar)
-"gF" = (
+/obj/effect/spawner/window/reinforced,
 /obj/structure/cable{
+	d1 = 2;
 	d2 = 4;
-	icon_state = "0-4"
+	icon_state = "2-4"
 	},
-/obj/machinery/power/apc/off_station{
-	dir = 1;
-	pixel_y = 24
-	},
+/turf/simulated/floor/plating,
+/area/ruin/space/spacehotelv1/forehallway)
+"gF" = (
 /obj/structure/chair/wood{
 	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/carpet/royalblack,
 /area/ruin/space/spacehotelv1/restoraunt3)
@@ -1032,7 +1030,7 @@
 	icon_state = "1-4"
 	},
 /turf/template_noop,
-/area/template_noop)
+/area/space/nearstation)
 "hy" = (
 /obj/structure/closet/emcloset,
 /obj/effect/spawner/random_spawners/dirt_often,
@@ -1056,7 +1054,7 @@
 /turf/simulated/floor/plasteel/airless{
 	icon_state = "solarpanel"
 	},
-/area/template_noop)
+/area/space/nearstation)
 "hG" = (
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/plasteel/dark,
@@ -1522,7 +1520,8 @@
 	normaldoorcontrol = 1;
 	name = "Door Bolt Control";
 	id = "gstroom5";
-	pixel_y = 32
+	pixel_y = 24;
+	pixel_x = 8
 	},
 /turf/simulated/floor/carpet/cyan,
 /area/ruin/space/spacehotelv1/guestroom5)
@@ -1545,12 +1544,18 @@
 /obj/structure/toilet{
 	dir = 4
 	},
-/obj/machinery/light/small{
-	dir = 1
-	},
 /obj/machinery/button/windowtint{
-	pixel_y = 32;
-	id = "restoom2_tint"
+	pixel_y = 24;
+	id = "restoom2_tint";
+	pixel_x = -8
+	},
+/obj/machinery/door_control{
+	pixel_y = 24;
+	specialfunctions = 4;
+	normaldoorcontrol = 1;
+	name = "Door Bolt Control";
+	id = "restoom2";
+	pixel_x = 8
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "showroomfloor"
@@ -1625,7 +1630,7 @@
 	icon_state = "2-8"
 	},
 /turf/template_noop,
-/area/template_noop)
+/area/space/nearstation)
 "lr" = (
 /obj/effect/spawner/random_spawners/dirt_often,
 /obj/structure/sign/poster/random{
@@ -1818,12 +1823,18 @@
 /area/ruin/space/spacehotelv1/engi1)
 "mC" = (
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
-/turf/simulated/wall,
-/area/ruin/space/spacehotelv1/forehallway)
+/obj/structure/chair/wood{
+	dir = 8
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/carpet/royalblack,
+/area/ruin/space/spacehotelv1/restoraunt3)
 "mE" = (
 /turf/simulated/wall,
 /area/ruin/space/spacehotelv1/barber)
@@ -1875,7 +1886,8 @@
 	normaldoorcontrol = 1;
 	name = "Door Bolt Control";
 	id = "ext_eva_door2";
-	pixel_y = 32
+	pixel_y = 24;
+	pixel_x = 8
 	},
 /obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/plating,
@@ -1957,7 +1969,8 @@
 	normaldoorcontrol = 1;
 	name = "Door Bolt Control";
 	id = "gstroom1";
-	pixel_y = -32
+	pixel_y = -24;
+	pixel_x = 8
 	},
 /turf/simulated/floor/wood,
 /area/ruin/space/spacehotelv1/guestroom1)
@@ -2006,7 +2019,7 @@
 /turf/simulated/floor/carpet/royalblack,
 /area/ruin/space/spacehotelv1/guestroom6)
 "nW" = (
-/obj/machinery/economy/vending/autodrobe,
+/obj/structure/closet/athletic_mixed,
 /turf/simulated/floor/plasteel{
 	icon_state = "showroomfloor"
 	},
@@ -2031,11 +2044,20 @@
 /turf/simulated/floor/wood,
 /area/ruin/space/spacehotelv1/restoraunt3)
 "oa" = (
-/obj/machinery/economy/vending/clothing,
-/turf/simulated/floor/plasteel{
-	icon_state = "showroomfloor"
+/obj/structure/table/wood/fancy/red,
+/obj/item/reagent_containers/food/condiment/peppermill{
+	pixel_x = 3;
+	pixel_y = 16
 	},
-/area/ruin/space/spacehotelv1/bar)
+/obj/item/reagent_containers/food/condiment/saltshaker{
+	pixel_x = -3;
+	pixel_y = 16
+	},
+/obj/item/candle/eternal{
+	pixel_y = 4
+	},
+/turf/simulated/floor/carpet/royalblack,
+/area/ruin/space/spacehotelv1/restoraunt3)
 "ob" = (
 /obj/machinery/door/airlock/public/glass,
 /turf/simulated/floor/plasteel,
@@ -2121,7 +2143,7 @@
 /area/ruin/space/spacehotelv1/forehallway)
 "oD" = (
 /obj/machinery/light_switch{
-	pixel_y = -30;
+	pixel_y = -24;
 	dir = 1
 	},
 /turf/simulated/floor/carpet/blue,
@@ -2266,13 +2288,13 @@
 /turf/simulated/floor/wood,
 /area/ruin/space/spacehotelv1/restoraunt3)
 "pD" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
 /obj/structure/chair/sofa{
 	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
 	},
 /turf/simulated/floor/plasteel/grimy,
 /area/ruin/space/spacehotelv1/forehallway)
@@ -2327,7 +2349,7 @@
 /area/ruin/space/spacehotelv1/centralhallway)
 "pU" = (
 /obj/machinery/light_switch{
-	pixel_y = 30
+	pixel_y = 24
 	},
 /obj/structure/table/wood/fancy/black,
 /obj/item/paicard,
@@ -2366,14 +2388,13 @@
 	pixel_y = 4
 	},
 /obj/item/reagent_containers/food/condiment/peppermill{
-	pixel_x = 9;
-	pixel_y = 6
+	pixel_x = 3;
+	pixel_y = 2
 	},
 /obj/item/reagent_containers/food/condiment/saltshaker{
-	pixel_x = 9;
-	pixel_y = 12
+	pixel_x = -3;
+	pixel_y = 2
 	},
-/obj/machinery/light,
 /turf/simulated/floor/carpet/royalblack,
 /area/ruin/space/spacehotelv1/restoraunt3)
 "qq" = (
@@ -2402,13 +2423,13 @@
 /obj/item/candle/eternal{
 	pixel_y = 4
 	},
-/obj/item/reagent_containers/food/condiment/peppermill{
-	pixel_x = -9;
-	pixel_y = 6
-	},
 /obj/item/reagent_containers/food/condiment/saltshaker{
-	pixel_x = -9;
+	pixel_x = 9;
 	pixel_y = 12
+	},
+/obj/item/reagent_containers/food/condiment/peppermill{
+	pixel_x = 9;
+	pixel_y = 6
 	},
 /turf/simulated/floor/carpet/royalblack,
 /area/ruin/space/spacehotelv1/restoraunt3)
@@ -2448,7 +2469,8 @@
 	normaldoorcontrol = 1;
 	name = "Door Bolt Control";
 	id = "gstroom4";
-	pixel_y = 32
+	pixel_y = 24;
+	pixel_x = -8
 	},
 /turf/simulated/floor/carpet/red,
 /area/ruin/space/spacehotelv1/guestroom4)
@@ -2492,7 +2514,7 @@
 /area/ruin/space/spacehotelv1/bar)
 "ri" = (
 /obj/effect/turf_decal/siding/wood,
-/obj/machinery/computer/arcade,
+/obj/machinery/economy/vending/shoedispenser,
 /turf/simulated/floor/wood,
 /area/ruin/space/spacehotelv1/entryhallway)
 "rj" = (
@@ -2504,8 +2526,8 @@
 /obj/effect/spawner/window/reinforced,
 /obj/structure/cable{
 	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
+	d2 = 8;
+	icon_state = "1-8"
 	},
 /turf/simulated/floor/plating,
 /area/ruin/space/spacehotelv1/forehallway)
@@ -2615,7 +2637,7 @@
 /obj/machinery/door_control{
 	id = "hotel_cargo2";
 	name = "Storage Doors";
-	pixel_x = 30
+	pixel_x = 24
 	},
 /turf/simulated/floor/plating,
 /area/ruin/space/spacehotelv1/cargostorage)
@@ -2822,16 +2844,16 @@
 /obj/machinery/door/window/reinforced/normal{
 	dir = 8
 	},
-/obj/item/reagent_containers/food/condiment/peppermill,
 /obj/item/reagent_containers/food/condiment/saltshaker{
 	pixel_x = 3
 	},
+/obj/item/reagent_containers/food/condiment/peppermill,
 /turf/simulated/floor/plasteel,
 /area/ruin/space/spacehotelv1/kitchen)
 "tI" = (
 /obj/structure/lattice/catwalk,
 /turf/template_noop,
-/area/template_noop)
+/area/space/nearstation)
 "tJ" = (
 /obj/structure/bed{
 	dir = 4
@@ -2982,7 +3004,7 @@
 	},
 /obj/machinery/light_switch{
 	dir = 8;
-	pixel_x = 30
+	pixel_x = 24
 	},
 /turf/simulated/floor/plasteel,
 /area/ruin/space/spacehotelv1/kitchen)
@@ -3070,13 +3092,13 @@
 /obj/item/candle/eternal{
 	pixel_y = 4
 	},
-/obj/item/reagent_containers/food/condiment/peppermill{
-	pixel_x = -9;
-	pixel_y = 6
-	},
 /obj/item/reagent_containers/food/condiment/saltshaker{
 	pixel_x = -9;
 	pixel_y = 12
+	},
+/obj/item/reagent_containers/food/condiment/peppermill{
+	pixel_x = -9;
+	pixel_y = 6
 	},
 /turf/simulated/floor/carpet/black,
 /area/ruin/space/spacehotelv1/restoraunt2)
@@ -3114,7 +3136,7 @@
 	icon_state = "1-4"
 	},
 /turf/template_noop,
-/area/template_noop)
+/area/space/nearstation)
 "vJ" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -3161,13 +3183,6 @@
 	pixel_x = -12
 	},
 /obj/machinery/light/small,
-/obj/machinery/door_control{
-	pixel_y = -32;
-	specialfunctions = 4;
-	normaldoorcontrol = 1;
-	name = "Door Bolt Control";
-	id = "restoom2"
-	},
 /turf/simulated/floor/plasteel{
 	icon_state = "showroomfloor"
 	},
@@ -3176,7 +3191,7 @@
 /obj/structure/grille,
 /obj/structure/lattice,
 /turf/template_noop,
-/area/template_noop)
+/area/space/nearstation)
 "we" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -3193,19 +3208,16 @@
 	icon_state = "4-8"
 	},
 /obj/structure/table/wood/fancy/red,
-/obj/item/candle/eternal{
-	pixel_y = 4
+/obj/item/reagent_containers/food/condiment/peppermill{
+	pixel_x = 3;
+	pixel_y = 16
 	},
 /obj/item/reagent_containers/food/condiment/saltshaker{
-	pixel_x = 9;
-	pixel_y = 12
+	pixel_x = -3;
+	pixel_y = 16
 	},
-/obj/item/reagent_containers/food/condiment/peppermill{
-	pixel_x = 9;
-	pixel_y = 6
-	},
-/obj/machinery/light{
-	dir = 1
+/obj/item/candle/eternal{
+	pixel_y = 4
 	},
 /turf/simulated/floor/carpet/royalblack,
 /area/ruin/space/spacehotelv1/restoraunt3)
@@ -3272,6 +3284,11 @@
 "wF" = (
 /obj/structure/chair/sofa/right{
 	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
 	},
 /turf/simulated/floor/plasteel/grimy,
 /area/ruin/space/spacehotelv1/forehallway)
@@ -3403,18 +3420,18 @@
 /turf/simulated/floor/plasteel,
 /area/ruin/space/spacehotelv1/guestroom4)
 "xp" = (
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
 	},
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 4;
 	icon_state = "1-4"
 	},
-/obj/effect/turf_decal/siding/wood{
-	dir = 10
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
 	},
 /turf/simulated/floor/wood,
 /area/ruin/space/spacehotelv1/restoraunt2)
@@ -3475,7 +3492,7 @@
 /turf/simulated/floor/plasteel/airless{
 	icon_state = "solarpanel"
 	},
-/area/template_noop)
+/area/space/nearstation)
 "xJ" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -3501,7 +3518,7 @@
 	icon_state = "1-8"
 	},
 /turf/template_noop,
-/area/template_noop)
+/area/space/nearstation)
 "xN" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -3549,21 +3566,15 @@
 /turf/simulated/floor/carpet/black,
 /area/ruin/space/spacehotelv1/reception)
 "yc" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
-/obj/structure/cable{
-	d2 = 8;
-	icon_state = "0-8"
-	},
-/obj/machinery/computer/monitor{
+/obj/machinery/light_switch{
+	pixel_y = -24;
 	dir = 1
 	},
-/obj/effect/spawner/random_spawners/dirt_often,
-/turf/simulated/floor/plating,
-/area/ruin/space/spacehotelv1/engi2)
+/obj/structure/chair/wood{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/royalblack,
+/area/ruin/space/spacehotelv1/restoraunt3)
 "yf" = (
 /obj/machinery/tcomms/relay/ruskie{
 	network_id = "TWIN-NEXUS HOTEL"
@@ -3636,11 +3647,12 @@
 /area/ruin/space/spacehotelv1/kitchen)
 "yN" = (
 /obj/machinery/door_control{
-	pixel_y = -32;
+	pixel_y = -24;
 	specialfunctions = 4;
 	normaldoorcontrol = 1;
 	name = "Door Bolt Control";
-	id = "ext_shuttle_door"
+	id = "ext_shuttle_door";
+	pixel_x = 8
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "darkblue"
@@ -3752,7 +3764,8 @@
 	normaldoorcontrol = 1;
 	name = "Door Bolt Control";
 	id = "gstroom3";
-	pixel_y = -32
+	pixel_y = -24;
+	pixel_x = 8
 	},
 /turf/simulated/floor/wood,
 /area/ruin/space/spacehotelv1/guestroom3)
@@ -3861,7 +3874,7 @@
 /turf/simulated/floor/plasteel/airless{
 	icon_state = "solarpanel"
 	},
-/area/template_noop)
+/area/space/nearstation)
 "Ac" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -3928,7 +3941,7 @@
 	icon_state = "2-4"
 	},
 /turf/template_noop,
-/area/template_noop)
+/area/space/nearstation)
 "AD" = (
 /obj/structure/window/full/basic,
 /obj/structure/flora/ausbushes/ppflowers,
@@ -4009,7 +4022,7 @@
 /turf/simulated/floor/plasteel/airless{
 	icon_state = "solarpanel"
 	},
-/area/template_noop)
+/area/space/nearstation)
 "Bf" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -4165,7 +4178,7 @@
 /obj/machinery/door_control{
 	id = "hotel_cargo3";
 	name = "Storage Doors";
-	pixel_y = -30
+	pixel_y = -24
 	},
 /turf/simulated/floor/plating,
 /area/ruin/space/spacehotelv1/cargostorage)
@@ -4235,12 +4248,12 @@
 	icon_state = "1-4"
 	},
 /turf/template_noop,
-/area/template_noop)
+/area/space/nearstation)
 "CH" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/marker_beacon/spotlight/yellow,
 /turf/template_noop,
-/area/template_noop)
+/area/space/nearstation)
 "CM" = (
 /obj/item/kirbyplants,
 /obj/effect/turf_decal/siding/wood{
@@ -4270,7 +4283,7 @@
 "Dj" = (
 /obj/structure/dresser,
 /obj/machinery/light_switch{
-	pixel_y = 30
+	pixel_y = 24
 	},
 /turf/simulated/floor/wood,
 /area/ruin/space/spacehotelv1/guestroom1)
@@ -4346,8 +4359,9 @@
 /area/ruin/space/spacehotelv1/reception)
 "DH" = (
 /obj/structure/lattice,
+/obj/structure/grille,
 /turf/template_noop,
-/area/template_noop)
+/area/space/nearstation)
 "DJ" = (
 /obj/effect/turf_decal/stripes,
 /obj/effect/turf_decal/arrows,
@@ -4432,13 +4446,21 @@
 /turf/simulated/floor/plating,
 /area/ruin/space/spacehotelv1/forestarboardmaints)
 "Ek" = (
-/obj/structure/lattice,
-/obj/structure/grille,
-/turf/template_noop,
-/area/template_noop)
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/plating,
+/area/ruin/space/spacehotelv1/engi2)
 "En" = (
 /obj/machinery/driver_button{
-	pixel_x = 32;
+	pixel_x = 24;
 	name = "Push me";
 	id_tag = "hotelstrash"
 	},
@@ -4506,7 +4528,7 @@
 /obj/structure/lattice/catwalk,
 /obj/structure/marker_beacon/dock_marker,
 /turf/template_noop,
-/area/template_noop)
+/area/space/nearstation)
 "EW" = (
 /turf/simulated/wall,
 /area/ruin/space/spacehotelv1/guestroom5)
@@ -4539,7 +4561,7 @@
 	icon_state = "1-2"
 	},
 /turf/template_noop,
-/area/template_noop)
+/area/space/nearstation)
 "Fh" = (
 /obj/machinery/light{
 	dir = 1
@@ -4559,7 +4581,7 @@
 	icon_state = "2-4"
 	},
 /turf/template_noop,
-/area/template_noop)
+/area/space/nearstation)
 "Fj" = (
 /obj/structure/closet/cabinet,
 /obj/item/clothing/head/kitty/mouse,
@@ -4706,6 +4728,7 @@
 	dir = 4
 	},
 /obj/effect/spawner/random_spawners/dirt_often,
+/obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/plating,
 /area/ruin/space/spacehotelv1/engi2)
 "FV" = (
@@ -4724,13 +4747,15 @@
 	},
 /area/ruin/space/spacehotelv1/cargostorage)
 "Gb" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
+/obj/effect/spawner/random_spawners/dirt_often,
+/obj/structure/sign/vacuum{
+	pixel_y = -32
 	},
-/turf/simulated/floor/plating/airless,
-/area/template_noop)
+/obj/structure/sign/poster/random{
+	pixel_x = 32
+	},
+/turf/simulated/floor/plating,
+/area/ruin/space/spacehotelv1/engi2)
 "Gd" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -4764,7 +4789,7 @@
 /area/ruin/space/spacehotelv1/restoraunt3)
 "Gi" = (
 /turf/simulated/floor/plating/airless,
-/area/template_noop)
+/area/space/nearstation)
 "Gj" = (
 /turf/simulated/floor/plasteel{
 	icon_state = "showroomfloor"
@@ -4860,7 +4885,7 @@
 	icon_state = "2-8"
 	},
 /turf/template_noop,
-/area/template_noop)
+/area/space/nearstation)
 "GM" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -4935,9 +4960,7 @@
 /turf/simulated/floor/plating,
 /area/ruin/space/spacehotelv1/forestarboardmaints)
 "Hr" = (
-/obj/machinery/teleport/perma{
-	layer = 3
-	},
+/obj/machinery/teleport/perma,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "vault"
@@ -5206,7 +5229,7 @@
 /obj/structure/lattice/catwalk,
 /obj/structure/marker_beacon/spotlight/jade,
 /turf/template_noop,
-/area/template_noop)
+/area/space/nearstation)
 "JE" = (
 /turf/simulated/floor/plasteel{
 	icon_state = "showroomfloor"
@@ -5247,13 +5270,13 @@
 /obj/item/candle/eternal{
 	pixel_y = 4
 	},
-/obj/item/reagent_containers/food/condiment/peppermill{
-	pixel_x = -9;
-	pixel_y = 6
-	},
 /obj/item/reagent_containers/food/condiment/saltshaker{
 	pixel_x = -9;
 	pixel_y = 12
+	},
+/obj/item/reagent_containers/food/condiment/peppermill{
+	pixel_x = -9;
+	pixel_y = 6
 	},
 /turf/simulated/floor/carpet/black,
 /area/ruin/space/spacehotelv1/restoraunt2)
@@ -5339,7 +5362,7 @@
 /turf/simulated/floor/plasteel/airless{
 	icon_state = "solarpanel"
 	},
-/area/template_noop)
+/area/space/nearstation)
 "KC" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -5368,9 +5391,9 @@
 /turf/simulated/floor/plating/airless,
 /area/ruin/space/spacehotelv1/tcomms)
 "KG" = (
-/obj/machinery/light_switch{
-	pixel_y = -30;
-	dir = 1
+/obj/machinery/light,
+/obj/structure/chair/wood{
+	dir = 8
 	},
 /turf/simulated/floor/carpet/royalblack,
 /area/ruin/space/spacehotelv1/restoraunt3)
@@ -5452,7 +5475,7 @@
 /turf/simulated/floor/plasteel/airless{
 	icon_state = "solarpanel"
 	},
-/area/template_noop)
+/area/space/nearstation)
 "Lj" = (
 /obj/machinery/fishtank/wall,
 /turf/simulated/floor/plating,
@@ -5541,28 +5564,19 @@
 /turf/simulated/floor/wood,
 /area/ruin/space/spacehotelv1/restoraunt1)
 "LI" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/plating/airless,
-/area/template_noop)
+/obj/structure/lattice,
+/turf/template_noop,
+/area/space/nearstation)
 "LN" = (
-/obj/structure/table/wood/fancy/red,
-/obj/item/candle/eternal{
-	pixel_y = 4
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
-/obj/item/reagent_containers/food/condiment/saltshaker{
-	pixel_x = 9;
-	pixel_y = 12
-	},
-/obj/item/reagent_containers/food/condiment/peppermill{
-	pixel_x = 9;
-	pixel_y = 6
-	},
-/turf/simulated/floor/carpet/royalblack,
-/area/ruin/space/spacehotelv1/restoraunt3)
+/obj/effect/spawner/random_spawners/dirt_often,
+/obj/machinery/door/airlock/maintenance,
+/turf/simulated/floor/plating,
+/area/ruin/space/spacehotelv1/engi2)
 "LP" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 5
@@ -5604,7 +5618,7 @@
 /area/ruin/space/spacehotelv1/bar)
 "Mb" = (
 /obj/machinery/light_switch{
-	pixel_y = -30;
+	pixel_y = -24;
 	dir = 1
 	},
 /turf/simulated/floor/wood,
@@ -5617,7 +5631,7 @@
 	icon_state = "4-8"
 	},
 /turf/template_noop,
-/area/template_noop)
+/area/space/nearstation)
 "Mh" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/cable{
@@ -5626,7 +5640,7 @@
 	icon_state = "1-8"
 	},
 /turf/template_noop,
-/area/template_noop)
+/area/space/nearstation)
 "Mk" = (
 /obj/structure/closet/emcloset,
 /obj/effect/turf_decal/siding/wood{
@@ -5804,7 +5818,7 @@
 	icon_state = "2-8"
 	},
 /turf/template_noop,
-/area/template_noop)
+/area/space/nearstation)
 "ND" = (
 /obj/structure/bed{
 	dir = 4
@@ -5883,7 +5897,7 @@
 	icon_state = "1-4"
 	},
 /turf/template_noop,
-/area/template_noop)
+/area/space/nearstation)
 "NX" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -5934,7 +5948,7 @@
 /turf/simulated/floor/plasteel/airless{
 	icon_state = "solarpanel"
 	},
-/area/template_noop)
+/area/space/nearstation)
 "Op" = (
 /turf/simulated/wall,
 /area/ruin/space/spacehotelv1/engi1)
@@ -6028,12 +6042,21 @@
 /area/ruin/space/spacehotelv1/forestarboardmaints)
 "OU" = (
 /obj/structure/cable{
-	d1 = 2;
+	d1 = 1;
 	d2 = 8;
-	icon_state = "2-8"
+	icon_state = "1-8"
 	},
-/obj/machinery/atmospherics/portable/canister/oxygen,
+/obj/structure/cable{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/obj/machinery/computer/monitor{
+	dir = 1
+	},
 /obj/effect/spawner/random_spawners/dirt_often,
+/obj/structure/sign/poster/random{
+	pixel_y = -32
+	},
 /turf/simulated/floor/plating,
 /area/ruin/space/spacehotelv1/engi2)
 "OV" = (
@@ -6057,7 +6080,7 @@
 /turf/simulated/floor/plasteel/airless{
 	icon_state = "solarpanel"
 	},
-/area/template_noop)
+/area/space/nearstation)
 "Ph" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -6171,8 +6194,14 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
-/turf/simulated/wall,
-/area/ruin/space/spacehotelv1/guestroom4)
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -24;
+	name = "south bump"
+	},
+/obj/item/kirbyplants,
+/turf/simulated/floor/carpet/black,
+/area/ruin/space/spacehotelv1/restoraunt2)
 "PO" = (
 /obj/structure/rack,
 /obj/item/clothing/gloves/color/yellow/power,
@@ -6348,7 +6377,7 @@
 /area/ruin/space/spacehotelv1/restoraunt1)
 "Rk" = (
 /turf/simulated/wall,
-/area/template_noop)
+/area/space/nearstation)
 "RC" = (
 /obj/structure/rack,
 /obj/item/storage/fancy/crayons,
@@ -6473,7 +6502,7 @@
 /area/ruin/space/spacehotelv1/bar)
 "SC" = (
 /obj/machinery/light_switch{
-	pixel_y = -30;
+	pixel_y = -24;
 	dir = 1
 	},
 /turf/simulated/floor/carpet/royalblack,
@@ -6676,7 +6705,7 @@
 /obj/structure/closet/crate/can,
 /obj/machinery/light_switch{
 	dir = 8;
-	pixel_x = 30
+	pixel_x = 24
 	},
 /turf/simulated/floor/carpet,
 /area/ruin/space/spacehotelv1/restoraunt1)
@@ -6695,7 +6724,8 @@
 	normaldoorcontrol = 1;
 	name = "Door Bolt Control";
 	id = "ext_eva_door";
-	pixel_x = 32
+	pixel_x = 24;
+	pixel_y = 8
 	},
 /obj/machinery/light/small,
 /obj/effect/spawner/random_spawners/dirt_often,
@@ -6780,7 +6810,7 @@
 	icon_state = "2-8"
 	},
 /turf/template_noop,
-/area/template_noop)
+/area/space/nearstation)
 "UO" = (
 /obj/structure/chair/sofa/left{
 	dir = 1
@@ -6919,7 +6949,8 @@
 	normaldoorcontrol = 1;
 	name = "Door Bolt Control";
 	id = "gstroom2";
-	pixel_y = -32
+	pixel_y = -24;
+	pixel_x = -8
 	},
 /obj/structure/table/wood/fancy/black,
 /obj/item/flashlight/lamp/green/off,
@@ -6930,7 +6961,7 @@
 /turf/simulated/floor/plasteel/airless{
 	icon_state = "solarpanel"
 	},
-/area/template_noop)
+/area/space/nearstation)
 "VL" = (
 /obj/machinery/power/smes{
 	charge = 3000000
@@ -6983,7 +7014,7 @@
 	icon_state = "2-4"
 	},
 /turf/template_noop,
-/area/template_noop)
+/area/space/nearstation)
 "Wa" = (
 /obj/structure/rack,
 /obj/effect/spawner/lootdrop/maintenance,
@@ -7016,21 +7047,6 @@
 	icon_state = "showroomfloor"
 	},
 /area/ruin/space/spacehotelv1/guestroom6)
-"Wn" = (
-/obj/structure/table/wood/fancy/red,
-/obj/item/candle/eternal{
-	pixel_y = 4
-	},
-/obj/item/reagent_containers/food/condiment/peppermill{
-	pixel_x = 9;
-	pixel_y = 6
-	},
-/obj/item/reagent_containers/food/condiment/saltshaker{
-	pixel_x = 9;
-	pixel_y = 12
-	},
-/turf/simulated/floor/carpet/royalblack,
-/area/ruin/space/spacehotelv1/restoraunt3)
 "Wp" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -7061,7 +7077,7 @@
 	},
 /obj/structure/fans/tiny,
 /obj/machinery/door_control{
-	pixel_x = 32;
+	pixel_x = 24;
 	id = "hotel_cargo";
 	name = "Cargo Doors"
 	},
@@ -7132,12 +7148,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/ruin/space/spacehotelv1/guestroom5)
-"WZ" = (
-/obj/machinery/economy/vending/shoedispenser,
-/turf/simulated/floor/plasteel{
-	icon_state = "showroomfloor"
-	},
-/area/ruin/space/spacehotelv1/bar)
 "Xb" = (
 /obj/structure/sign/securearea{
 	pixel_y = 32
@@ -7166,7 +7176,8 @@
 	normaldoorcontrol = 1;
 	name = "Door Bolt Control";
 	id = "gstroom6";
-	pixel_y = 32
+	pixel_y = 24;
+	pixel_x = -8
 	},
 /turf/simulated/floor/carpet/royalblack,
 /area/ruin/space/spacehotelv1/guestroom6)
@@ -7199,7 +7210,7 @@
 /turf/simulated/floor/plasteel/airless{
 	icon_state = "solarpanel"
 	},
-/area/template_noop)
+/area/space/nearstation)
 "XC" = (
 /obj/machinery/door/airlock,
 /obj/structure/cable{
@@ -7259,21 +7270,19 @@
 /turf/simulated/floor/wood,
 /area/ruin/space/spacehotelv1/restoraunt1)
 "XX" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
-/obj/machinery/firealarm{
-	dir = 1;
-	pixel_y = -24;
-	name = "south bump"
+/obj/effect/turf_decal/siding/wood{
+	dir = 10
 	},
 /obj/machinery/light_switch{
 	dir = 8;
-	pixel_x = 30
+	pixel_x = 24
 	},
-/turf/simulated/floor/carpet/black,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/wood,
 /area/ruin/space/spacehotelv1/restoraunt2)
 "XY" = (
 /obj/structure/table/glass,
@@ -7304,11 +7313,11 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/effect/turf_decal/siding/wood{
-	dir = 8
-	},
 /obj/effect/turf_decal/siding/wood/corner{
 	dir = 4
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
 	},
 /turf/simulated/floor/wood,
 /area/ruin/space/spacehotelv1/restoraunt2)
@@ -7338,13 +7347,10 @@
 /turf/simulated/floor/plating,
 /area/ruin/space/spacehotelv1/engi2)
 "YA" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/simulated/wall,
-/area/ruin/space/spacehotelv1/guestroom4)
+/obj/effect/spawner/random_spawners/dirt_often,
+/obj/structure/reagent_dispensers/watertank,
+/turf/simulated/floor/plating,
+/area/ruin/space/spacehotelv1/engi2)
 "YC" = (
 /obj/structure/table/holotable/wood,
 /obj/structure/window/reinforced{
@@ -7491,7 +7497,7 @@
 /turf/simulated/floor/plasteel/airless{
 	icon_state = "solarpanel"
 	},
-/area/template_noop)
+/area/space/nearstation)
 "ZP" = (
 /obj/structure/reagent_dispensers/fueltank,
 /obj/effect/spawner/random_spawners/dirt_often,
@@ -7813,7 +7819,7 @@ IZ
 IZ
 IZ
 IZ
-DH
+LI
 IZ
 IZ
 IZ
@@ -7971,9 +7977,9 @@ IZ
 IZ
 IZ
 IZ
-DH
+LI
 IZ
-DH
+LI
 IZ
 IZ
 IZ
@@ -8050,7 +8056,7 @@ IZ
 IZ
 IZ
 IZ
-DH
+LI
 IZ
 ad
 IZ
@@ -8062,7 +8068,7 @@ IZ
 IZ
 IZ
 IZ
-DH
+LI
 IZ
 IZ
 IZ
@@ -8110,13 +8116,13 @@ IZ
 IZ
 IZ
 IZ
-DH
+LI
 IZ
 IZ
 IZ
 IZ
 IZ
-DH
+LI
 IZ
 IZ
 IZ
@@ -8126,12 +8132,12 @@ IZ
 IZ
 IZ
 IZ
-DH
+LI
 IZ
 IZ
-DH
+LI
 IZ
-DH
+LI
 IZ
 IZ
 IZ
@@ -8187,17 +8193,17 @@ IZ
 IZ
 IZ
 IZ
+LI
 DH
-Ek
-DH
-Ek
-Ek
-Ek
-Ek
+LI
 DH
 DH
-Ek
-Ek
+DH
+DH
+LI
+LI
+DH
+DH
 IZ
 IZ
 IZ
@@ -8217,21 +8223,21 @@ aW
 IZ
 IZ
 IZ
-DH
+LI
 IZ
 IZ
-DH
-IZ
-IZ
-IZ
+LI
 IZ
 IZ
 IZ
 IZ
 IZ
-DH
+IZ
+IZ
+IZ
+LI
 Mg
-DH
+LI
 IZ
 IZ
 IZ
@@ -8265,8 +8271,8 @@ IZ
 IZ
 IZ
 EV
-DH
-DH
+LI
+LI
 Es
 Es
 Es
@@ -8276,15 +8282,15 @@ Es
 Es
 Es
 Es
-DH
-DH
+LI
+LI
 ad
 IZ
 IZ
 IZ
 IZ
 IZ
-DH
+LI
 IZ
 aW
 NV
@@ -8299,21 +8305,21 @@ IZ
 Jy
 IZ
 IZ
-DH
+LI
 IZ
 IZ
 IZ
 IZ
 IZ
-DH
+LI
 IZ
 IZ
-DH
+LI
 Mg
-DH
+LI
 IZ
 IZ
-DH
+LI
 IZ
 IZ
 IZ
@@ -8345,7 +8351,7 @@ IZ
 IZ
 IZ
 IZ
-Ek
+DH
 Es
 qt
 JW
@@ -8355,15 +8361,15 @@ tI
 cb
 yP
 Es
-Ek
-IZ
-IZ
-IZ
-IZ
-IZ
-IZ
-IZ
 DH
+IZ
+IZ
+IZ
+IZ
+IZ
+IZ
+IZ
+LI
 IZ
 GJ
 dT
@@ -8375,26 +8381,26 @@ GJ
 IZ
 IZ
 IZ
-DH
+LI
 IZ
 IZ
-DH
+LI
 IZ
 IZ
 IZ
-DH
-DH
-DH
-DH
-DH
+LI
+LI
+LI
+LI
+LI
 VO
 UN
 vI
-DH
-DH
-DH
-DH
-DH
+LI
+LI
+LI
+LI
+LI
 IZ
 IZ
 IZ
@@ -8419,12 +8425,12 @@ IZ
 IZ
 IZ
 IZ
-Ek
+DH
 wc
 IZ
 IZ
 IZ
-DH
+LI
 Es
 yf
 JW
@@ -8434,16 +8440,16 @@ tI
 OV
 Qc
 Es
-Ek
-IZ
-DH
-DH
-DH
-DH
 DH
 IZ
-DH
-DH
+LI
+LI
+LI
+LI
+LI
+IZ
+LI
+LI
 GJ
 ED
 Vq
@@ -8451,13 +8457,13 @@ pC
 Vq
 ED
 GJ
-DH
+LI
 IZ
-DH
-DH
+LI
+LI
 IZ
-DH
-DH
+LI
+LI
 IZ
 IZ
 Ol
@@ -8467,7 +8473,7 @@ hE
 hE
 hE
 hw
-DH
+LI
 Ar
 xF
 xF
@@ -8497,13 +8503,13 @@ IZ
 IZ
 IZ
 IZ
-Ek
-Ek
 DH
+DH
+LI
 IZ
 IZ
 IZ
-Ek
+DH
 Es
 Es
 KF
@@ -8513,7 +8519,7 @@ Es
 KF
 Es
 Es
-Ek
+DH
 IZ
 SY
 SY
@@ -8536,12 +8542,12 @@ kV
 kV
 kV
 kV
+kV
 qN
-DH
 IZ
 IZ
 IZ
-DH
+LI
 tI
 tI
 tI
@@ -8551,7 +8557,7 @@ Mg
 tI
 tI
 tI
-DH
+LI
 IZ
 IZ
 IZ
@@ -8575,24 +8581,24 @@ IZ
 IZ
 IZ
 IZ
-Ek
-Ek
-IZ
 DH
+DH
+IZ
+LI
 IZ
 IZ
 IZ
 bQ
 DH
-Gi
-tI
-tI
-tI
-tI
-NC
-Gb
-Ek
 DH
+tI
+tI
+tI
+tI
+Mg
+LI
+DH
+LI
 IZ
 SY
 TH
@@ -8606,17 +8612,17 @@ GJ
 eP
 sV
 Ly
-Ly
+sV
 LQ
 GJ
 eO
 bh
 VH
+zm
 ub
 vu
 VH
 kV
-DH
 IZ
 Ol
 hE
@@ -8625,7 +8631,7 @@ hE
 hE
 hE
 hw
-DH
+LI
 Ar
 xF
 xF
@@ -8653,23 +8659,23 @@ IZ
 IZ
 IZ
 IZ
-Ek
-Ek
-IZ
-IZ
+DH
 DH
 IZ
 IZ
-IZ
-IZ
-IZ
-Gi
-IZ
-IZ
-IZ
-IZ
-IZ
 LI
+IZ
+IZ
+IZ
+IZ
+IZ
+DH
+tI
+IZ
+IZ
+IZ
+Mg
+DH
 IZ
 IZ
 IZ
@@ -8694,12 +8700,12 @@ zm
 zm
 zm
 zm
+zm
 kV
-DH
 IZ
 IZ
 IZ
-DH
+LI
 tI
 tI
 tI
@@ -8709,7 +8715,7 @@ Mg
 tI
 tI
 tI
-DH
+LI
 IZ
 IZ
 IZ
@@ -8731,23 +8737,23 @@ IZ
 IZ
 IZ
 IZ
-Ek
-Ek
-IZ
-IZ
-IZ
+DH
 DH
 IZ
 IZ
 IZ
-IZ
-IZ
-Gi
+LI
 IZ
 IZ
 IZ
 IZ
 IZ
+LI
+tI
+IZ
+IZ
+IZ
+Mg
 LI
 IZ
 IZ
@@ -8761,20 +8767,20 @@ WM
 OG
 Ad
 at
+qS
 GB
-sF
 GB
-hT
+GB
 GB
 Gh
 ub
 JT
 VH
+zm
 ub
 JT
 VH
 kV
-DH
 IZ
 Ol
 hE
@@ -8783,7 +8789,7 @@ hE
 hE
 hE
 hw
-DH
+LI
 Ar
 xF
 xF
@@ -8811,26 +8817,26 @@ IZ
 IZ
 IZ
 IZ
-DH
+LI
 IZ
 IZ
 IZ
-DH
-DH
-DH
-DH
-DH
-DH
+LI
+LI
+LI
+LI
+LI
+LI
 Sd
-IZ
-IZ
-IZ
-IZ
-IZ
-YA
-DH
-DH
-DH
+tI
+tI
+tI
+tI
+Mg
+kR
+LI
+LI
+LI
 SY
 Rj
 Ad
@@ -8840,11 +8846,11 @@ Ig
 Ad
 Ad
 NU
-bI
-Wn
-bI
-LN
-cd
+qS
+GB
+sF
+GB
+GB
 NU
 zm
 zm
@@ -8852,23 +8858,23 @@ zm
 zm
 zm
 zm
+zm
 kV
-tI
 IZ
 IZ
-DH
-DH
-DH
-DH
+LI
+LI
+LI
+LI
 tI
 Mg
 tI
 Mg
 tI
-DH
-DH
-DH
-DH
+LI
+LI
+LI
+LI
 IZ
 IZ
 IZ
@@ -8890,11 +8896,11 @@ IZ
 IZ
 IZ
 IZ
-DH
-DH
-DH
-DH
-DH
+LI
+LI
+LI
+LI
+LI
 Sd
 Sd
 Sd
@@ -8903,10 +8909,10 @@ Sd
 Sd
 Lk
 Lk
-mC
+jW
+gC
 rm
-rm
-PM
+kR
 kR
 kR
 kR
@@ -8921,18 +8927,18 @@ sH
 GJ
 gF
 GB
-te
+oa
 GB
-sF
+yc
 GJ
 ub
 Va
 VH
+zm
 ub
 aw
 VH
 kV
-tI
 IZ
 IZ
 IZ
@@ -8941,7 +8947,7 @@ IZ
 IZ
 tI
 Mg
-DH
+LI
 Mg
 tI
 IZ
@@ -8969,11 +8975,11 @@ IZ
 IZ
 IZ
 IZ
-DH
+LI
 IZ
 IZ
 IZ
-DH
+LI
 Sd
 QF
 KQ
@@ -8999,11 +9005,12 @@ gq
 Ad
 GJ
 wf
-cd
-sF
-bI
+GB
+hT
+GB
 qn
 GJ
+zm
 zm
 zm
 zm
@@ -9013,9 +9020,8 @@ QH
 qN
 tI
 tI
+tI
 VO
-Fe
-Fe
 Fe
 Fe
 Fe
@@ -9023,10 +9029,10 @@ bG
 tI
 Mg
 tI
-DH
-DH
-DH
-DH
+LI
+LI
+LI
+LI
 IZ
 IZ
 IZ
@@ -9048,11 +9054,11 @@ IZ
 IZ
 IZ
 IZ
-DH
+LI
 IZ
 IZ
 IZ
-DH
+LI
 Sd
 Dj
 TW
@@ -9077,29 +9083,29 @@ Ad
 Ja
 Ad
 GJ
-qS
+mC
 GB
-Wn
-cd
+te
+GB
 KG
 GJ
 ub
 Va
 VH
+zm
 ub
 PD
 kl
-nI
+qN
 nj
 nI
-Mg
-IZ
-IZ
-IZ
-IZ
 IZ
 Mg
-DH
+IZ
+IZ
+IZ
+Mg
+LI
 Mg
 VJ
 VJ
@@ -9122,16 +9128,16 @@ IZ
 IZ
 IZ
 IZ
-DH
+LI
 IZ
-IZ
-IZ
-Ek
-Ek
-Ek
 IZ
 IZ
 DH
+DH
+DH
+IZ
+IZ
+LI
 Sd
 qg
 FR
@@ -9168,22 +9174,22 @@ zg
 Yt
 xp
 XX
-nI
+PM
+qN
 Dk
+nI
 nI
 aU
 nI
 nI
-nI
-DH
-DH
+LI
 Mg
 tI
 Mg
 tI
 tI
 tI
-DH
+LI
 IZ
 IZ
 IZ
@@ -9210,7 +9216,7 @@ IZ
 IZ
 IZ
 IZ
-DH
+LI
 Sd
 pL
 bs
@@ -9246,18 +9252,18 @@ qN
 qN
 jL
 MN
-nI
-nI
+qN
+qN
+qN
 nj
 nI
-OU
 fo
+Ek
 FV
 nI
 IZ
-IZ
 Mg
-DH
+LI
 Mg
 VJ
 VJ
@@ -9280,7 +9286,7 @@ IZ
 IZ
 IZ
 IZ
-DH
+LI
 IZ
 IZ
 IZ
@@ -9289,7 +9295,7 @@ IZ
 IZ
 IZ
 IZ
-DH
+LI
 Sd
 Mz
 Mz
@@ -9328,20 +9334,20 @@ zJ
 nI
 bz
 sM
+Gb
 nI
 PO
 By
 VL
 zu
 IZ
-IZ
 Mg
 tI
 Mg
 tI
 tI
 tI
-DH
+LI
 IZ
 IZ
 IZ
@@ -9358,9 +9364,9 @@ IZ
 IZ
 IZ
 IZ
-Ek
-Ek
-Ek
+DH
+DH
+DH
 IZ
 IZ
 IZ
@@ -9405,17 +9411,17 @@ tk
 rw
 zJ
 nI
+YA
 sM
 nI
 nI
 Wy
 fD
-yc
+OU
 nI
-DH
-DH
+LI
 Mg
-DH
+LI
 Mg
 VJ
 VJ
@@ -9438,7 +9444,7 @@ IZ
 IZ
 IZ
 IZ
-DH
+LI
 IZ
 IZ
 IZ
@@ -9485,22 +9491,22 @@ rw
 zJ
 nI
 fD
-Fv
+UF
+LN
 UF
 FU
 Yz
 TV
 zu
 IZ
-IZ
 NC
 Fe
 Mh
-DH
-DH
-DH
-DH
-DH
+LI
+LI
+LI
+LI
+LI
 IZ
 IZ
 IZ
@@ -9517,7 +9523,7 @@ IZ
 IZ
 IZ
 IZ
-Ek
+DH
 IZ
 IZ
 IZ
@@ -9570,11 +9576,11 @@ nI
 nI
 nI
 nI
+nI
 IZ
-IZ
-DH
+LI
 tI
-DH
+LI
 IZ
 IZ
 IZ
@@ -9594,17 +9600,17 @@ IZ
 IZ
 IZ
 EV
+LI
+LI
 DH
-DH
-Ek
-DH
-DH
-DH
-DH
-DH
-DH
-DH
-DH
+LI
+LI
+LI
+LI
+LI
+LI
+LI
+LI
 uF
 wK
 Ls
@@ -9675,10 +9681,10 @@ IZ
 IZ
 IZ
 IZ
-Ek
-IZ
-IZ
 DH
+IZ
+IZ
+LI
 IZ
 IZ
 tI
@@ -9730,9 +9736,9 @@ Ib
 IZ
 IZ
 IZ
-DH
+LI
 IZ
-DH
+LI
 IZ
 Ib
 tI
@@ -9754,10 +9760,10 @@ IZ
 IZ
 IZ
 IZ
-Ek
-IZ
-IZ
 DH
+IZ
+IZ
+LI
 IZ
 IZ
 VO
@@ -9833,10 +9839,10 @@ IZ
 IZ
 IZ
 IZ
-DH
+LI
 IZ
 IZ
-DH
+LI
 IZ
 IZ
 Mg
@@ -9912,10 +9918,10 @@ IZ
 IZ
 IZ
 IZ
-DH
+LI
 IZ
 IZ
-DH
+LI
 IZ
 IZ
 Mg
@@ -9974,7 +9980,7 @@ Zd
 Ib
 tI
 IZ
-DH
+LI
 IZ
 IZ
 IZ
@@ -9991,10 +9997,10 @@ IZ
 IZ
 IZ
 IZ
-Ek
-IZ
-IZ
 DH
+IZ
+IZ
+LI
 IZ
 IZ
 Mg
@@ -10041,7 +10047,7 @@ JE
 JE
 JE
 JE
-gC
+nW
 Ib
 rh
 YC
@@ -10053,7 +10059,7 @@ mo
 Ib
 tI
 IZ
-DH
+LI
 IZ
 IZ
 IZ
@@ -10070,10 +10076,10 @@ IZ
 IZ
 IZ
 IZ
-Ek
-IZ
-IZ
 DH
+IZ
+IZ
+LI
 IZ
 IZ
 Mg
@@ -10120,7 +10126,7 @@ GV
 vB
 Yq
 JE
-oa
+nW
 Ib
 ae
 SA
@@ -10130,9 +10136,9 @@ nd
 nd
 hI
 Ib
+tI
 IZ
-IZ
-DH
+LI
 IZ
 IZ
 IZ
@@ -10149,10 +10155,10 @@ IZ
 IZ
 IZ
 IZ
-Ek
-IZ
-IZ
 DH
+IZ
+IZ
+LI
 IZ
 IZ
 Mg
@@ -10226,16 +10232,16 @@ IZ
 IZ
 IZ
 ad
-DH
-DH
-DH
-DH
-DH
-DH
-DH
-DH
+LI
+LI
+LI
+LI
+LI
+LI
+LI
+LI
 Mg
-DH
+LI
 Op
 nu
 fK
@@ -10277,7 +10283,7 @@ aK
 QA
 QA
 Ib
-WZ
+JE
 ZJ
 XC
 iy
@@ -10307,14 +10313,14 @@ IZ
 IZ
 IZ
 IZ
-Ek
+DH
 IZ
 IZ
 IZ
 IZ
 IZ
 Mg
-DH
+LI
 uF
 NX
 fK
@@ -10386,14 +10392,14 @@ IZ
 IZ
 IZ
 IZ
-DH
+LI
 IZ
 IZ
 IZ
 IZ
 IZ
 Mg
-DH
+LI
 uF
 NX
 fK
@@ -10464,15 +10470,15 @@ IZ
 IZ
 IZ
 IZ
+LI
 DH
-Ek
-Ek
+DH
 IZ
 IZ
 IZ
 IZ
 Mg
-DH
+LI
 uF
 NX
 fK
@@ -10544,14 +10550,14 @@ IZ
 IZ
 IZ
 IZ
-DH
+LI
 IZ
 IZ
 IZ
 IZ
 IZ
 Mg
-DH
+LI
 uF
 NX
 Op
@@ -10623,14 +10629,14 @@ IZ
 IZ
 IZ
 IZ
-DH
+LI
 IZ
 IZ
 IZ
 IZ
 IZ
 Mg
-DH
+LI
 Op
 is
 to
@@ -10781,7 +10787,7 @@ IZ
 IZ
 IZ
 IZ
-DH
+LI
 IZ
 IZ
 IZ
@@ -10943,7 +10949,7 @@ IZ
 IZ
 IZ
 IZ
-Ek
+DH
 IZ
 Mg
 Op
@@ -11022,10 +11028,10 @@ IZ
 IZ
 IZ
 IZ
-Ek
 DH
+LI
 Mg
-DH
+LI
 Op
 Ls
 nC
@@ -11101,10 +11107,10 @@ IZ
 IZ
 IZ
 IZ
-DH
+LI
 IZ
 Mg
-DH
+LI
 Op
 Ls
 nC
@@ -11150,13 +11156,13 @@ IZ
 IZ
 IZ
 IZ
-DH
+LI
 IZ
 IZ
 IZ
 IZ
 IZ
-DH
+LI
 IZ
 IZ
 IZ
@@ -11180,10 +11186,10 @@ IZ
 IZ
 IZ
 IZ
-Ek
+DH
 IZ
 Mg
-DH
+LI
 Op
 XK
 nC
@@ -11229,13 +11235,13 @@ IZ
 IZ
 IZ
 IZ
-DH
+LI
 IZ
 IZ
 IZ
 IZ
 IZ
-DH
+LI
 IZ
 IZ
 IZ
@@ -11259,10 +11265,10 @@ IZ
 IZ
 IZ
 IZ
-Ek
+DH
 IZ
 Mg
-DH
+LI
 Op
 mA
 nC
@@ -11308,13 +11314,13 @@ IZ
 IZ
 IZ
 IZ
-DH
+LI
 IZ
 IZ
 IZ
 IZ
 IZ
-DH
+LI
 IZ
 IZ
 IZ
@@ -11338,10 +11344,10 @@ IZ
 IZ
 IZ
 IZ
-DH
+LI
 IZ
 Mg
-DH
+LI
 Op
 lr
 nC
@@ -11387,7 +11393,7 @@ IZ
 IZ
 IZ
 IZ
-DH
+LI
 IZ
 IZ
 IZ
@@ -11417,10 +11423,10 @@ IZ
 IZ
 IZ
 IZ
-DH
-DH
+LI
+LI
 Mg
-DH
+LI
 Op
 Ls
 nC
@@ -11466,13 +11472,13 @@ IZ
 IZ
 IZ
 IZ
-DH
+LI
 IZ
 IZ
 IZ
 IZ
 IZ
-DH
+LI
 IZ
 IZ
 IZ
@@ -11496,7 +11502,7 @@ IZ
 IZ
 IZ
 IZ
-Ek
+DH
 IZ
 Mg
 Op
@@ -11545,7 +11551,7 @@ IZ
 IZ
 IZ
 IZ
-DH
+LI
 IZ
 IZ
 IZ
@@ -11703,7 +11709,7 @@ IZ
 IZ
 IZ
 IZ
-DH
+LI
 IZ
 IZ
 IZ
@@ -11807,9 +11813,9 @@ IZ
 IZ
 IZ
 Bd
-DH
+LI
 Bd
-DH
+LI
 Bd
 IZ
 IZ
@@ -11882,13 +11888,13 @@ IZ
 IZ
 IZ
 tI
-DH
-DH
+LI
+LI
 tI
 Bd
-DH
+LI
 Bd
-DH
+LI
 Bd
 VO
 Fe
@@ -11970,9 +11976,9 @@ lo
 Fe
 lo
 NW
-DH
+LI
 tI
-DH
+LI
 Fi
 Fe
 vI
@@ -11980,13 +11986,13 @@ Op
 uF
 uF
 Op
-DH
+LI
 Op
-DH
-DH
-DH
-DH
-DH
+LI
+LI
+LI
+LI
+LI
 du
 WD
 pj
@@ -11998,10 +12004,10 @@ HA
 DA
 Ud
 du
-DH
-DH
-DH
-DH
+LI
+LI
+LI
+LI
 Ms
 Ms
 cW
@@ -12040,20 +12046,20 @@ IZ
 IZ
 IZ
 tI
-DH
-DH
+LI
+LI
 tI
 Bd
-DH
+LI
 Bd
-DH
+LI
 Bd
 NC
 Fe
 Fe
 Fe
 bG
-DH
+LI
 Mg
 tI
 tI
@@ -12123,9 +12129,9 @@ IZ
 IZ
 IZ
 Bd
-DH
+LI
 Bd
-DH
+LI
 Bd
 IZ
 IZ
@@ -12138,9 +12144,9 @@ IZ
 IZ
 IZ
 IZ
-DH
+LI
 IZ
-DH
+LI
 IZ
 IZ
 IZ
@@ -12150,7 +12156,7 @@ tI
 tI
 Gi
 tI
-DH
+LI
 tI
 Yh
 DA
@@ -12211,7 +12217,7 @@ IZ
 IZ
 IZ
 Mg
-DH
+LI
 Mg
 IZ
 IZ
@@ -12225,12 +12231,12 @@ IZ
 IZ
 IZ
 Gi
-DH
-DH
+LI
+LI
 Gi
 IZ
 IZ
-DH
+LI
 du
 Eh
 du
@@ -12304,15 +12310,15 @@ IZ
 IZ
 IZ
 Gi
-DH
-DH
+LI
+LI
 Gi
 IZ
 IZ
 tI
-DH
+LI
 IZ
-DH
+LI
 IZ
 IZ
 IZ
@@ -12383,15 +12389,15 @@ IZ
 IZ
 IZ
 Gi
-DH
-DH
+LI
+LI
 Gi
 IZ
 IZ
 IZ
 EV
 IZ
-DH
+LI
 IZ
 IZ
 IZ
@@ -12446,11 +12452,11 @@ IZ
 IZ
 IZ
 IZ
-DH
-DH
+LI
+LI
 Mg
-DH
-DH
+LI
+LI
 IZ
 IZ
 IZ
@@ -12462,15 +12468,15 @@ IZ
 IZ
 IZ
 Gi
-DH
-DH
+LI
+LI
 Gi
 IZ
 IZ
 IZ
 IZ
 IZ
-DH
+LI
 IZ
 IZ
 IZ
@@ -12604,11 +12610,11 @@ IZ
 IZ
 IZ
 IZ
-DH
-DH
+LI
+LI
 Mg
-DH
-DH
+LI
+LI
 IZ
 IZ
 IZ
@@ -12617,14 +12623,14 @@ IZ
 IZ
 IZ
 CH
-DH
-DH
+LI
+LI
 Gi
 Gi
 Gi
 Gi
-DH
-DH
+LI
+LI
 ad
 IZ
 IZ
@@ -12634,13 +12640,13 @@ IZ
 IZ
 IZ
 IZ
-DH
+LI
 IZ
 IZ
 IZ
 IZ
 IZ
-DH
+LI
 IZ
 IZ
 IZ
@@ -12713,13 +12719,13 @@ IZ
 IZ
 IZ
 IZ
-DH
+LI
 IZ
 IZ
 IZ
 IZ
 IZ
-DH
+LI
 IZ
 IZ
 IZ
@@ -12792,13 +12798,13 @@ IZ
 IZ
 IZ
 IZ
-DH
+LI
 IZ
 IZ
 IZ
 IZ
 IZ
-DH
+LI
 IZ
 IZ
 IZ
@@ -12842,9 +12848,9 @@ IZ
 IZ
 IZ
 IZ
-DH
+LI
 Mg
-DH
+LI
 IZ
 IZ
 IZ
@@ -12856,13 +12862,10 @@ IZ
 IZ
 IZ
 IZ
-DH
+LI
 IZ
 IZ
-DH
-IZ
-IZ
-IZ
+LI
 IZ
 IZ
 IZ
@@ -12871,13 +12874,16 @@ IZ
 IZ
 IZ
 IZ
-DH
+IZ
+IZ
+IZ
+LI
 IZ
 IZ
 IZ
 IZ
 IZ
-DH
+LI
 IZ
 IZ
 IZ
@@ -12921,9 +12927,9 @@ IZ
 IZ
 IZ
 IZ
-DH
+LI
 Mg
-DH
+LI
 IZ
 IZ
 IZ
