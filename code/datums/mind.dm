@@ -139,11 +139,8 @@
 
 		SStgui.on_transfer(current, new_character)
 
-		new_character.job = current.job //transfer our job over to the new body
-
 	if(new_character.mind)		//remove any mind currently in our new body's mind variable
 		new_character.mind.current = null
-
 	current = new_character		//link ourself to our new body
 	new_character.mind = src	//and link our new body to ourself
 	for(var/a in antag_datums)	//Makes sure all antag datums effects are applied in the new body
@@ -152,12 +149,10 @@
 	transfer_antag_huds(hud_to_transfer)				//inherit the antag HUD
 	transfer_actions(new_character)
 	if(martial_art)
-		for(var/datum/martial_art/MA in known_martial_arts)
-			if(MA.temporary)
-				MA.remove(current)
-			else
-				MA.remove(current)
-				MA.teach(current)
+		if(martial_art.temporary)
+			martial_art.remove(current)
+		else
+			martial_art.teach(current)
 	if(active)
 		new_character.key = key		//now transfer the key to link the client to our new body
 	SEND_SIGNAL(src, COMSIG_MIND_TRANSER_TO, new_character)
@@ -173,7 +168,7 @@
 	if(!recipient)
 		recipient = current
 	var/list/output = list()
-	output.Add("<meta charset='UTF-8'><B>[current.real_name]'s Memories:</B><HR>")
+	output.Add("<B>[current.real_name]'s Memories:</B><HR>")
 	output.Add(memory)
 
 	for(var/datum/antagonist/A in antag_datums)
@@ -512,7 +507,7 @@
 		alert("Not before round-start!", "Alert")
 		return
 
-	var/list/out = list("<meta charset='UTF-8'><B>[name]</B>[(current && (current.real_name != name))?" (as [current.real_name])" : ""]")
+	var/list/out = list("<B>[name]</B>[(current && (current.real_name != name))?" (as [current.real_name])" : ""]")
 	out.Add("Mind currently owned by key: [key] [active ? "(synced)" : "(not synced)"]")
 	out.Add("Assigned role: [assigned_role]. <a href='?src=[UID()];role_edit=1'>Edit</a>")
 	out.Add("Factions and special roles:")
@@ -757,7 +752,7 @@
 				var/datum/objective/escape/escape_with_identity/O = new_objective
 				O.target_real_name = new_objective.target.current.real_name
 			if("custom")
-				var/expl = sanitize(copytext_char(input("Custom objective:", "Objective", objective ? objective.explanation_text : "") as text|null,1,MAX_MESSAGE_LEN))	// SS220 EDIT - ORIGINAL: copytext
+				var/expl = sanitize(copytext(input("Custom objective:", "Objective", objective ? objective.explanation_text : "") as text|null,1,MAX_MESSAGE_LEN))
 				if(!expl)
 					return
 				new_objective = new /datum/objective

@@ -592,8 +592,6 @@ SUBSYSTEM_DEF(ticker)
 	for(var/datum/team/team in GLOB.antagonist_teams)
 		team.on_round_end()
 
-	play_cinematic(/datum/cinematic/credits, world)
-
 	// Display the scoreboard window
 	score.scoreboard()
 
