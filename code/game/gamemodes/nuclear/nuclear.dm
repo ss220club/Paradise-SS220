@@ -319,11 +319,6 @@
 	synd_mob.update_icons()
 	return 1
 
-/datum/game_mode/nuclear/check_win()
-	if(nukes_left == 0)
-		return 1
-	return ..()
-
 
 /datum/game_mode/proc/is_operatives_are_dead()
 	for(var/datum/mind/operative_mind in syndicates)
@@ -434,7 +429,7 @@
 
 /proc/nukelastname(mob/M as mob) //--All praise goes to NEO|Phyte, all blame goes to DH, and it was Cindi-Kate's idea. Also praise Urist for copypasta ho.
 	var/randomname = pick(GLOB.last_names)
-	var/newname = sanitize(copytext(input(M,"You are the nuke operative [pick("Czar", "Boss", "Commander", "Chief", "Kingpin", "Director", "Overlord")]. Please choose a last name for your family.", "Name change",randomname),1,MAX_NAME_LEN))
+	var/newname = sanitize(copytext_char(input(M,"You are the nuke operative [pick("Czar", "Boss", "Commander", "Chief", "Kingpin", "Director", "Overlord")]. Please choose a last name for your family.", "Name change",randomname),1,MAX_NAME_LEN)) // SS220 EDIT - ORIGINAL: copytext
 
 	if(!newname)
 		newname = randomname

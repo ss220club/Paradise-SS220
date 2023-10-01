@@ -240,6 +240,7 @@
 
 	var/html = {"
 <html>
+	<meta charset="UTF-8">	<!-- SS220 ADDITION-->
 	<head>
 		<title>[title]</title>
 		<style>
@@ -571,7 +572,7 @@
 			to_chat(usr, "This can only be used on instances of type /mob")
 			return
 
-		var/new_name = reject_bad_name(sanitize(copytext(input(usr, "What would you like to name this mob?", "Input a name", M.real_name) as text|null, 1, MAX_NAME_LEN)), allow_numbers = TRUE)
+		var/new_name = reject_bad_name(sanitize(copytext_char(input(usr, "What would you like to name this mob?", "Input a name", M.real_name) as text|null, 1, MAX_NAME_LEN)), allow_numbers = TRUE)	// SS220 EDIT - ORIGINAL: copytext
 		if( !new_name || !M )	return
 
 		message_admins("Admin [key_name_admin(usr)] renamed [key_name_admin(M)] to [new_name].")
@@ -1420,3 +1421,29 @@
 	if(href_list["listrefresh"])
 		debug_variables(locate(href_list["listrefresh"]))
 		return TRUE
+
+/client/proc/debug_global_variables(var_search as text)
+	set category = "Debug"
+	set name = "Debug Global Variables"
+
+	if(!check_rights(R_ADMIN|R_VIEWRUNTIMES))
+		to_chat(usr, "<span class='warning'>You need to be an administrator to access this.</span>")
+		return
+
+	var_search = trim(var_search)
+	if(!var_search)
+		return
+	if(!GLOB.can_vv_get(var_search))
+		return
+	switch(var_search)
+		if("vars")
+			return FALSE
+	if(!(var_search in GLOB.vars))
+		to_chat(src, "<span class='debug'>GLOB.[var_search] does not exist.</span>")
+		return
+	log_and_message_admins("is debugging the Global Variables controller with the search term \"[var_search]\"")
+	var/result = GLOB.vars[var_search]
+	if(islist(result) || isclient(result) || istype(result, /datum))
+		to_chat(src, "<span class='debug'>Now showing GLOB.[var_search].</span>")
+		return debug_variables(result)
+	to_chat(src, "<span class='debug'>GLOB.[var_search] returned [result].</span>")
