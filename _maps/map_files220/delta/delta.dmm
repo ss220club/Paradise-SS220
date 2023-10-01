@@ -65908,6 +65908,9 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
+/obj/effect/mapping_helpers/airlock/windoor/access/any/medical/genetics{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "whitepurplefull"
 	},
@@ -74360,6 +74363,9 @@
 	name = "Cryo Tank Storage"
 	},
 /obj/machinery/atmospherics/portable/canister/oxygen,
+/obj/effect/mapping_helpers/airlock/windoor/access/any/medical/general{
+	dir = 1
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "whiteblue"
 	},
@@ -83169,9 +83175,6 @@
 /area/station/public/sleep_male)
 "qSp" = (
 /obj/effect/decal/warning_stripes/yellow,
-/obj/structure/plasticflaps{
-	opacity = 1
-	},
 /obj/machinery/navbeacon{
 	codes_txt = "delivery";
 	dir = 8;
@@ -83192,6 +83195,19 @@
 	d1 = 2;
 	d2 = 8;
 	icon_state = "2-8"
+	},
+/obj/machinery/door/window/classic/reversed{
+	name = "Chemistry Delivery";
+	dir = 1
+	},
+/obj/effect/mapping_helpers/airlock/windoor/access/any/medical/chemistry{
+	dir = 1
+	},
+/obj/effect/mapping_helpers/airlock/windoor/access/any/supply/mule_bot{
+	dir = 1
+	},
+/obj/structure/plasticflaps{
+	opacity = 1
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "neutralfull"
@@ -93155,6 +93171,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/effect/landmark/start/geneticist,
+/obj/effect/mapping_helpers/airlock/windoor/access/any/medical/genetics{
+	dir = 1
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -94110,6 +94129,9 @@
 	dir = 8;
 	name = "east bump";
 	pixel_x = 24
+	},
+/obj/item/paper{
+	pixel_y = 2
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
