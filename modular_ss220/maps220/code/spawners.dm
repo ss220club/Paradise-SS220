@@ -96,3 +96,11 @@
 
 /obj/effect/spawner/random_spawners/syndicate/loot/stetchkin
 	icon_state = "stetchkin"
+
+/obj/item/reagent_containers/food/pill/random_drugs
+	icon = 'modular_ss220/maps220/icons/spawner_icons.dmi'
+	icon_state = "pills"
+
+/obj/item/reagent_containers/food/drinks/bottle/random_drink
+	icon = 'modular_ss220/maps220/icons/spawner_icons.dmi'
+	icon_state = "drinks"
