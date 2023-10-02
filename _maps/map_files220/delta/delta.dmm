@@ -41602,14 +41602,6 @@
 	icon_state = "neutralfull"
 	},
 /area/station/public/fitness)
-"cUM" = (
-/obj/machinery/door_control{
-	pixel_y = -24;
-	pixel_x = -8;
-	id = "unknowndoor"
-	},
-/turf/simulated/floor/plating,
-/area/station/maintenance/old_kitchen)
 "cUO" = (
 /obj/structure/table/wood,
 /obj/item/storage/fancy/crayons,
@@ -62017,16 +62009,8 @@
 /area/station/hallway/secondary/exit)
 "hCx" = (
 /obj/item/camera_film,
-/obj/item/radio/intercom{
-	dir = 1;
-	name = "south bump";
-	pixel_y = -22
-	},
-/obj/item/radio/intercom/department/security{
-	pixel_y = -35;
-	dir = 1
-	},
 /obj/effect/decal/cleanable/dirt,
+/obj/item/mounted/frame/intercom,
 /turf/simulated/floor/plasteel{
 	icon_state = "grimy"
 	},
@@ -62373,6 +62357,9 @@
 	id_tag = "chapelgun2"
 	},
 /obj/machinery/door/window{
+	dir = 1
+	},
+/obj/effect/mapping_helpers/airlock/windoor/access/any/service/chapel_office{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
@@ -67078,11 +67065,6 @@
 "jvm" = (
 /obj/structure/table/reinforced,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/radio/intercom{
-	dir = 8;
-	name = "east bump";
-	pixel_x = 22
-	},
 /turf/simulated/floor/plasteel{
 	icon_state = "redyellowfull"
 	},
@@ -67540,6 +67522,13 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/spawner/wire_splicing/thirty,
+/turf/simulated/floor/plating,
+/area/station/maintenance/old_kitchen)
+"jEH" = (
+/obj/machinery/door_control{
+	pixel_x = 24;
+	id = "unknowndoor"
+	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/old_kitchen)
 "jEI" = (
@@ -70063,13 +70052,6 @@
 /obj/structure/sign/explosives,
 /turf/simulated/wall/r_wall,
 /area/station/science/toxins/mixing)
-"kCr" = (
-/obj/item/radio/intercom{
-	name = "north bump";
-	pixel_y = 22
-	},
-/turf/simulated/floor/plating,
-/area/station/maintenance/virology_maint)
 "kCw" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
@@ -71640,7 +71622,7 @@
 /turf/simulated/floor/plasteel,
 /area/station/service/kitchen)
 "lhF" = (
-/obj/machinery/door/airlock/virology/glass,
+/obj/machinery/door/airlock/virology,
 /obj/machinery/door/firedoor,
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -71933,14 +71915,6 @@
 /obj/structure/closet/emcloset,
 /turf/simulated/floor/plating,
 /area/station/maintenance/fsmaint)
-"llZ" = (
-/obj/machinery/door_control{
-	id = "unknowndoor";
-	pixel_y = 24;
-	pixel_x = 24
-	},
-/turf/simulated/floor/plating,
-/area/station/maintenance/virology_maint)
 "lmo" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -85165,14 +85139,6 @@
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/plating,
 /area/station/maintenance/library)
-"qeB" = (
-/obj/effect/landmark/damageturf,
-/obj/item/radio/intercom{
-	name = "north bump";
-	pixel_y = 22
-	},
-/turf/simulated/floor/plating,
-/area/station/maintenance/starboard2)
 "qeU" = (
 /obj/machinery/ai_status_display{
 	pixel_x = -32
@@ -89854,8 +89820,10 @@
 "rSb" = (
 /obj/machinery/door/poddoor{
 	id_tag = "chapelgun2";
-	name = "Chapel Launcher Door"
+	name = "Chapel Launcher Door";
+	protected = 0
 	},
+/obj/structure/fans/tiny,
 /turf/simulated/floor/plating,
 /area/station/maintenance/starboard2)
 "rSe" = (
@@ -92813,7 +92781,7 @@
 /obj/effect/spawner/window/reinforced,
 /obj/effect/mapping_helpers/damaged_window,
 /obj/machinery/door/poddoor/shutters/preopen{
-	dir = 2;
+	dir = 1;
 	id_tag = "detprivacy";
 	name = "Detective Privacy Shutters Control"
 	},
@@ -158567,7 +158535,7 @@ bgs
 ltQ
 juo
 bgs
-qeB
+cYg
 kwD
 cqI
 iKY
@@ -162912,7 +162880,7 @@ qPD
 qPD
 oMS
 mRI
-kCr
+uDO
 daR
 ooq
 eQi
@@ -163425,8 +163393,8 @@ fZf
 fzE
 ndH
 fzE
-uYi
-llZ
+jEH
+uDO
 tqE
 vMW
 rRQ
@@ -163681,7 +163649,7 @@ eyM
 ulP
 kDl
 uwh
-cUM
+uYi
 sIu
 rad
 rad
