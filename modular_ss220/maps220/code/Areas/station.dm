@@ -51,7 +51,7 @@
 	name = "\improper Old Detective Office"
 	icon_state = "detective"
 
-/area/station/maintenance/Virology_maint
+/area/station/maintenance/virology_maint
 	name = "\improper Virology Maintenance Construction Area"
 	icon_state = "smaint"
 
