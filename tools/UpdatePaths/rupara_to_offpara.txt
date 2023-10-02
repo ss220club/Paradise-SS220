@@ -10,20 +10,25 @@
 /area/security/armory: /area/security/armoury
 /area/civilian/vacantoffice : /area/security/vacantoffice
 /area/gateway : /area/expedition
-/turf/simulated/floor/shuttle : /turf/simulated/floor/mineral/titanium
+/turf/simulated/floor/engine/insulated : /turf/simulated/floor/engine
+/turf/simulated/floor/engine/insulated/vacuum : /turf/simulated/floor/engine/vacuum
+/turf/simulated/floor/shuttle : /turf/simulated/floor/mineral/titanium/blue
+/turf/simulated/floor/shuttle/plating : /turf/simulated/floor/indestructible
 /turf/simulated/floor/indestructible/abductor : /turf/simulated/floor/plating/abductor
 /turf/simulated/floor/indestructible/asteroid : /turf/simulated/floor/plating/asteroid
 /turf/simulated/floor/indestructible/snow : /turf/simulated/floor/plating/asteroid/snow
-/turf/simulated/floor/indestructible/grass : /turf/simulated/floor/grass
 /turf/simulated/floor/indestructible/beach/sand : /turf/simulated/floor/beach/sand
 /turf/simulated/floor/indestructible/beach/water : /turf/simulated/floor/beach/water
 /turf/simulated/floor/indestructible/beach/water/deep/dense : /turf/simulated/floor/beach/away/water/deep/dense
 /turf/simulated/floor/indestructible/beach/coastline : /turf/simulated/floor/beach/coastline
+/turf/simulated/wall/r_wall/coated : /turf/simulated/wall/r_wall
 /turf/simulated/wall/indestructible/reinforced : /turf/simulated/wall/indestructible/riveted
 /turf/simulated/wall/shuttle : /turf/simulated/wall/mineral/titanium
 /turf/simulated/wall/shuttle/overspace : /turf/simulated/wall/mineral/titanium/overspace
-/turf/simulated/wall/shuttle/nosmooth : /turf/simulated/wall/mineral/titanium/nosmooth
 /turf/simulated/wall/shuttle/nodiagonal : /turf/simulated/wall/mineral/titanium/nodiagonal
+/turf/simulated/wall/shuttle/nosmooth : /turf/simulated/wall/mineral/titanium/nosmooth
+/turf/simulated/wall/shuttle/onlyselfsmooth : /turf/simulated/wall/mineral/titanium
+/turf/simulated/wall/shuttle/onlyselfsmooth/nodiagonal : /turf/simulated/wall/mineral/titanium/nodiagonal
 /mob/living/carbon/human/lesser/monkey : /mob/living/carbon/human/monkey
 /mob/living/carbon/human/lesser/monkey/punpun : /mob/living/carbon/human/monkey/punpun
 /mob/living/carbon/human/lesser/wolpin : /mob/living/carbon/human/wolpin
@@ -49,6 +54,7 @@
 /obj/effect/landmark/nuclear_bomb : /obj/effect/landmark/spawner/nuclear_bomb
 /obj/effect/landmark/start/hop : /obj/effect/landmark/start/head_of_personnel
 /obj/effect/landmark/start/cmo : /obj/effect/landmark/start/chief_medical_officer
+/obj/effect/landmark/event/revenantspawn : /obj/effect/landmark/spawner/rev
 /obj/effect/landmark/event/carpspawn : /obj/effect/landmark/spawner/carp
 /obj/effect/landmark/event/xeno_spawn : /obj/effect/landmark/spawner/xeno
 /obj/effect/landmark/event/lightsout : /obj/effect/landmark/lightsout
@@ -57,11 +63,14 @@
 /obj/effect/spawner/lootdrop/maintenance/double : /obj/effect/spawner/lootdrop/maintenance/two
 /obj/effect/spawner/lootdrop/maintenance/tripple : /obj/effect/spawner/lootdrop/maintenance/three
 /obj/structure/foodcart : /obj/machinery/smartfridge/foodcart
-/obj/structure/piano : /obj/structure/musician/piano
+/obj/structure/pianoclassic : /obj/structure/musician/piano
 /obj/structure/toilet/captain_toilet : /obj/structure/toilet/material/captain
 /obj/structure/flora/grass/jungle/b : /obj/structure/flora/grass/jungle
 /obj/structure/flora/junglebush/c : /obj/structure/flora/junglebush
 /obj/structure/flora/junglebush/b : /obj/structure/flora/junglebush
+/obj/item/pipe_painter : /obj/item/painter
+/obj/item/radio/sec : /obj/item/radio/security {OLD}
+/obj/item/ammo_box/rubber9mm : /obj/item/storage/box/enforcer_rubber
 /obj/item/gun/energy/gun/pdw9 : /obj/item/gun/energy/gun/blueshield/pdw9
 /obj/item/grenade/plastic/c4_shaped/flash : /obj/item/grenade/plastic/c4/shaped/flash
 /obj/item/airlock_painter : /obj/item/painter
@@ -75,6 +84,7 @@
 /obj/item/mounted/frame/newscaster_frame : /obj/item/mounted/frame/display/newscaster_frame
 /obj/item/stack/spacecash/c1000000 : /obj/item/stack/spacecash/c10000
 /obj/item/organ/internal/cyberimp/brain/anti_stun/hardened : /obj/item/organ/internal/cyberimp/brain/anti_stam/hardened
+/obj/item/paper/deltainfo : /obj/item/paper/pamphlet/deltainfo
 /obj/item/book/manual/faxes : /obj/item/book/manual/wiki/faxes
 /obj/item/book/manual/experimentor : /obj/item/book/manual/wiki/experimentor
 /obj/item/book/manual/robotics_cyborgs : /obj/item/book/manual/wiki/robotics_cyborgs
@@ -96,6 +106,7 @@
 /obj/item/storage/ashtray : /obj/item/ashtray
 /obj/item/storage/ashtray/bronze : /obj/item/ashtray/bronze
 /obj/item/storage/ashtray/glass : /obj/item/ashtray/glass
+/obj/item/storage/belt/champion/wrestling/true : /obj/item/storage/belt/champion/wrestling
 /obj/item/storage/backpack/duffel/syndie/surgery : /obj/item/storage/backpack/duffel/syndie/med/surgery
 /obj/item/storage/backpack/duffel/syndie/ammo/shotgun : /obj/item/storage/backpack/duffel/syndie/shotgun
 /obj/item/storage/backpack/duffel/syndie/ammo/smg : /obj/item/storage/backpack/duffel/syndie/smg
@@ -104,27 +115,38 @@
 /obj/item/clothing/head/beret/elo : /obj/item/clothing/head/beret/fluff/elo
 /obj/item/clothing/neck/cloak/furcape : /obj/item/clothing/suit/furcape
 /obj/item/clothing/mask/gas/pennywise : /obj/item/clothing/mask/gas/clown_hat/pennywise
+/obj/item/clothing/mask/gas/mime/sexy : /obj/item/clothing/mask/gas/sexymime
+/obj/item/clothing/suit/jacket/pilot : /obj/item/clothing/suit/jacket/secbomber
+/obj/item/clothing/under/rainbow : /obj/item/clothing/under/color/rainbow
 /obj/item/clothing/under/blacktango : /obj/item/clothing/under/dress/blacktango
+/obj/item/clothing/under/redpyjamas : /obj/item/clothing/under/misc/pj/red
+/obj/item/clothing/under/bluepyjamas : /obj/item/clothing/under/misc/pj/blue
 /obj/item/clothing/under/acj : /obj/item/clothing/under/misc/acj
 /obj/item/clothing/under/kilt : /obj/item/clothing/under/costume/kilt
 /obj/item/clothing/under/maid : /obj/item/clothing/under/costume/maid
 /obj/item/clothing/under/soviet : /obj/item/clothing/under/new_soviet
 /obj/item/clothing/under/mafia : /obj/item/clothing/under/suit/mafia
 /obj/item/clothing/under/mafia/white : /obj/item/clothing/under/suit/mafia/white
+/obj/item/clothing/under/mafia/sue : /obj/item/clothing/under/suit/mafia/vest
 /obj/item/clothing/under/suit_jacket/really_black : /obj/item/clothing/under/suit/really_black
+/obj/item/clothing/under/suit_jacket/tan : /obj/item/clothing/under/suit/tan
 /obj/item/clothing/under/lawyer/black : /obj/item/clothing/under/rank/civilian/lawyer/black
 /obj/item/clothing/under/lawyer/blue : /obj/item/clothing/under/rank/civilian/lawyer/blue
 /obj/item/clothing/under/lawyer/bluesuit : /obj/item/clothing/under/rank/civilian/lawyer/bluesuit
 /obj/item/clothing/under/lawyer/female : /obj/item/clothing/under/rank/civilian/lawyer/dress_hr
 /obj/item/clothing/under/lawyer/oldman : /obj/item/clothing/under/rank/civilian/lawyer/oldman
 /obj/item/clothing/under/lawyer/red : /obj/item/clothing/under/rank/civilian/lawyer/red
+/obj/item/clothing/under/swimsuit/red : /obj/item/clothing/under/misc/swimsuit/red
 /obj/item/clothing/under/captain_fly : /obj/item/clothing/under/costume/captain_fly
 /obj/item/clothing/under/captainparade : /obj/item/clothing/under/rank/captain/parade
 /obj/item/clothing/under/assistantformal : /obj/item/clothing/under/misc/assistantformal
 /obj/item/clothing/under/soldieruniform : /obj/item/clothing/under/costume/soldieruniform
 /obj/item/clothing/under/officeruniform : /obj/item/clothing/under/rank/security/officer
+/obj/item/clothing/under/rank/security2 : /obj/item/clothing/under/rank/security/officer/uniform
 /obj/item/clothing/under/rank/warden/formal : /obj/item/clothing/under/rank/security/formal/warden
 /obj/item/clothing/under/rank/head_of_security/formal : /obj/item/clothing/under/rank/security/formal/head_of_security
+/obj/item/toy/owl : /obj/item/toy/figure/owl
+/obj/item/toy/griffin : /obj/item/toy/figure/griffin
 /obj/item/toy/figure/ian : /obj/item/toy/figure/crew/ian
 /obj/item/toy/figure/janitor : /obj/item/toy/figure/crew/janitor
 /obj/item/toy/figure/assistant : /obj/item/toy/figure/crew/assistant
@@ -138,6 +160,7 @@
 /obj/item/toy/figure/secofficer : /obj/item/toy/figure/crew/secofficer
 /obj/item/toy/figure/lawyer : /obj/item/toy/figure/crew/lawyer
 /obj/item/toy/figure/botanist : /obj/item/toy/figure/crew/botanist
+/obj/item/toy/figure/chemist : /obj/item/toy/figure/crew/chemist
 /obj/item/toy/figure/virologist : /obj/item/toy/figure/crew/virologist
 /obj/item/toy/figure/roboticist : /obj/item/toy/figure/crew/roboticist
 /obj/item/toy/figure/geneticist : /obj/item/toy/figure/crew/geneticist
@@ -168,12 +191,17 @@
 /obj/item/deck/doublecards : /obj/item/deck/cards/doublecards
 /obj/machinery/atm : /obj/machinery/economy/atm
 /obj/machinery/air_sensor : /obj/machinery/atmospherics/air_sensor
+/obj/machinery/slot_machine : /obj/machinery/economy/slot_machine
+/obj/machinery/access_button/airlock_exterior : /obj/machinery/access_button
+/obj/machinery/access_button/airlock_interior : /obj/machinery/access_button
 /obj/machinery/arcade/claw : /obj/machinery/economy/arcade/claw
 /obj/machinery/computer/merch : /obj/machinery/economy/merch
-/obj/machinery/slot_machine : /obj/machinery/economy/slot_machine
+/obj/machinery/computer/library/public : /obj/machinery/computer/library
+/obj/machinery/computer/library/checkout : /obj/machinery/computer/library
 /obj/machinery/suit_storage_unit/cmo/sec_storage : /obj/machinery/suit_storage_unit/cmo/secure/sec_storage
 /obj/machinery/power/supermatter_shard : /obj/machinery/atmospherics/supermatter_crystal/shard
 /obj/machinery/atmospherics/unary/cold_sink/freezer : /obj/machinery/atmospherics/unary/thermomachine/freezer
+/obj/machinery/atmospherics/unary/heat_reservoir/heater : /obj/machinery/atmospherics/unary/thermomachine/heater
 /obj/machinery/portable_atmospherics/pump : /obj/machinery/atmospherics/portable/pump
 /obj/machinery/portable_atmospherics/scrubber : /obj/machinery/atmospherics/portable/scrubber
 /obj/machinery/portable_atmospherics/scrubber/huge : /obj/machinery/atmospherics/portable/scrubber/huge
@@ -212,6 +240,7 @@
 /obj/machinery/vending/plasmaresearch : /obj/machinery/economy/vending/plasmaresearch
 /obj/machinery/vending/hydronutrients : /obj/machinery/economy/vending/hydronutrients
 /obj/machinery/vending/hydroseeds : /obj/machinery/economy/vending/hydroseeds
+/obj/machinery/vending/sustenance : /obj/machinery/economy/vending/sustenance
 /obj/machinery/vending/syndichem : /obj/machinery/economy/vending/syndichem
 /obj/machinery/vending/syndisnack : /obj/machinery/economy/vending/syndisnack
 /obj/machinery/vending/syndicigs : /obj/machinery/economy/vending/syndicigs
@@ -228,6 +257,7 @@
 /obj/machinery/vending/clothing/departament/cargo : /obj/machinery/economy/vending/cargodrobe
 /obj/machinery/vending/clothing/departament/science : /obj/machinery/economy/vending/scidrobe
 /obj/machinery/vending/clothing/departament/law : /obj/machinery/economy/vending/lawdrobe
+/obj/machinery/vending/clothing/departament/service/botanical : /obj/machinery/economy/vending/hydrodrobe
 /obj/machinery/vending/nta : /obj/machinery/economy/vending/nta
 /obj/machinery/vending/nta/ertarmory/blue : /obj/machinery/economy/vending/nta/blue
 /obj/machinery/vending/nta/ertarmory/green : /obj/machinery/economy/vending/nta/green
@@ -237,8 +267,19 @@
 /obj/machinery/vending/nta/ertarmory/engineer : /obj/machinery/economy/vending/nta/engineer
 /obj/machinery/vending/nta/ertarmory/janitor : /obj/machinery/economy/vending/nta/janitor
 /obj/machinery/meter : /obj/machinery/atmospherics/meter
+/obj/machinery/door/airlock/hatch/gamma : /obj/machinery/door/poddoor/impassable/gamma
 /obj/machinery/door/airlock/shuttle : /obj/machinery/door/airlock/titanium
 /obj/machinery/door/airlock/shuttle/glass : /obj/machinery/door/airlock/titanium/glass
 /obj/machinery/door/poddoor/shutters/invincible : /obj/machinery/door/poddoor/impassable
 /obj/machinery/embedded_controller/radio/airlock/airlock_controller : /obj/machinery/airlock_controller
 /obj/machinery/embedded_controller/radio/airlock/access_controller : /obj/machinery/airlock_controller/access_controller
+/obj/structure/closet/medical_wall {pixel_x=32} : /obj/structure/closet/walllocker/medlocker/east
+/obj/structure/closet/medical_wall {pixel_x=-32} : /obj/structure/closet/walllocker/medlocker/west
+/obj/structure/closet/medical_wall {pixel_y=32} : /obj/structure/closet/walllocker/medlocker/north
+/obj/structure/closet/medical_wall {pixel_y=-32} : /obj/structure/closet/walllocker/medlocker/south
+/obj/structure/closet/hydrant {pixel_x=32} : /obj/structure/closet/walllocker/firelocker/east
+/obj/structure/closet/hydrant {pixel_x=-32} : /obj/structure/closet/walllocker/firelocker/west
+/obj/structure/closet/hydrant {pixel_y=32} : /obj/structure/closet/walllocker/firelocker/north
+/obj/structure/closet/hydrant {pixel_y=-32} : /obj/structure/closet/walllocker/firelocker/south
+/obj/structure/delta_statue/@SUBTYPES : /obj/structure/statue/delta/@SUBTYPES{@OLD}
+/obj/structure/bookcase/random/religion : /obj/structure/bookcase {name="bookcase (Religious)"}
