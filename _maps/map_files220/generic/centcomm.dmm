@@ -42,6 +42,11 @@
 	icon_state = "cafeteria"
 	},
 /area/ninja/holding)
+"abb" = (
+/obj/structure/closet,
+/obj/effect/spawner/lootdrop/trade_sol/donksoft,
+/turf/simulated/floor/wood/fancy/birch,
+/area/shuttle/trade/sol)
 "abl" = (
 /obj/structure/reagent_dispensers/beerkeg/nuke{
 	desc = "Однажды незадачливый отряд внедрения синдиката вместо настоящей бомбы, украл у НТ эту стилизованную кегу с пивом. Эти ребята более не ходят по миру, но кега всё ещё украшает один из местных баров. На ней виднеется зачёркнутое слово 'Нанотрейзен' и приписанное рядом, кровью, слово 'Синдикат'";
@@ -56,6 +61,10 @@
 	color = "#f63d3d"
 	},
 /area/syndicate_mothership/elite_squad)
+"abF" = (
+/obj/structure/closet/secure_closet/personal,
+/turf/simulated/floor/wood/fancy/cherry,
+/area/trader_station/sol)
 "abI" = (
 /turf/simulated/floor/plasteel{
 	icon_state = "darkyellowfull"
@@ -144,6 +153,9 @@
 	icon_state = "whiteblue"
 	},
 /area/centcom/ss220/general)
+"aga" = (
+/turf/simulated/floor/carpet/black,
+/area/trader_station/sol)
 "agt" = (
 /obj/machinery/conveyor/west{
 	id = "SFBQMLoad"
@@ -924,12 +936,6 @@
 /obj/effect/landmark/spawner/aroomwarp,
 /turf/simulated/floor/carpet/black,
 /area/centcom/ss220/admin2)
-"aIA" = (
-/obj/structure/railing,
-/obj/structure/table/wood,
-/obj/item/dice/d20,
-/turf/simulated/floor/wood,
-/area/trader_station/sol)
 "aIZ" = (
 /obj/machinery/computer/library,
 /obj/structure/table/wood,
@@ -1342,13 +1348,6 @@
 	},
 /turf/simulated/floor/carpet/black,
 /area/centcom/ss220/admin2)
-"beC" = (
-/obj/structure/shuttle/engine/propulsion{
-	dir = 8;
-	icon_state = "burst_l"
-	},
-/turf/simulated/floor/plating/airless,
-/area/shuttle/trade/sol)
 "bfb" = (
 /obj/structure/curtain/black{
 	pixel_y = -32;
@@ -1470,6 +1469,12 @@
 	icon_state = "fancy-wood-oak"
 	},
 /area/syndicate_mothership)
+"bjD" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 6
+	},
+/turf/simulated/floor/carpet/royalblack,
+/area/shuttle/trade/sol)
 "bjU" = (
 /obj/structure/table/reinforced,
 /obj/item/reagent_containers/food/condiment/enzyme{
@@ -1625,6 +1630,12 @@
 	name = "floor"
 	},
 /area/syndicate_mothership/elite_squad)
+"bqN" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 4
+	},
+/turf/simulated/floor/wood/fancy/cherry,
+/area/shuttle/trade/sol)
 "brr" = (
 /obj/effect/overlay/coconut{
 	pixel_x = -4;
@@ -1710,6 +1721,12 @@
 	},
 /turf/simulated/floor/carpet/black,
 /area/centcom/ss220/admin2)
+"bux" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/green,
+/area/shuttle/trade/sol)
 "buT" = (
 /turf/simulated/floor/wood,
 /area/centcom/ss220/park)
@@ -1892,11 +1909,18 @@
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/admin3)
 "bFg" = (
-/obj/machinery/economy/vending/wallmed{
-	name = "Emergency NanoMed";
-	pixel_y = 30
+/obj/structure/light_fake{
+	dir = 8
 	},
-/turf/simulated/floor/wood,
+/obj/structure/table/holotable/wood{
+	color = "#996633"
+	},
+/obj/item/storage/bag/money{
+	pixel_y = 8
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "grimy"
+	},
 /area/trader_station/sol)
 "bFA" = (
 /turf/simulated/wall/indestructible/syndicate{
@@ -1931,6 +1955,10 @@
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/shuttle/administration)
+"bGD" = (
+/obj/machinery/door/airlock/wood,
+/turf/simulated/floor/wood/fancy/cherry,
+/area/trader_station/sol)
 "bGG" = (
 /obj/machinery/suit_storage_unit/syndicate{
 	pixel_y = 6
@@ -1938,11 +1966,6 @@
 /obj/effect/turf_decal/stripes/line,
 /turf/simulated/floor/mineral/plastitanium,
 /area/shuttle/syndicate)
-"bHw" = (
-/obj/effect/spawner/lootdrop/trade_sol/eng,
-/obj/structure/closet,
-/turf/simulated/floor/mineral/titanium,
-/area/shuttle/trade/sol)
 "bHy" = (
 /obj/structure/chair/sofa/bench/right{
 	dir = 1
@@ -2019,6 +2042,15 @@
 	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
+"bMk" = (
+/obj/structure/table/holotable/wood{
+	color = "#996633"
+	},
+/obj/machinery/chem_dispenser/beer/upgraded{
+	pixel_y = 6
+	},
+/turf/simulated/floor/carpet/black,
+/area/trader_station/sol)
 "bMv" = (
 /obj/machinery/computer/communications{
 	dir = 4
@@ -2194,6 +2226,15 @@
 /obj/item/paper/monitorkey,
 /turf/simulated/floor/carpet/black,
 /area/syndicate_mothership/control)
+"bRL" = (
+/obj/structure/table/holotable/wood{
+	color = "#996633"
+	},
+/obj/item/pizzabox{
+	pixel_y = 10
+	},
+/turf/simulated/floor/carpet/black,
+/area/trader_station/sol)
 "bSb" = (
 /obj/machinery/bodyscanner,
 /turf/simulated/floor/plasteel{
@@ -2433,14 +2474,6 @@
 /obj/effect/turf_decal/box/white,
 /turf/simulated/floor/mineral/abductor,
 /area/centcom/ss220/bar)
-"bWS" = (
-/obj/machinery/door/airlock/external{
-	id_tag = "trade_sol_base";
-	name = "Docking Port"
-	},
-/obj/structure/fans/tiny,
-/turf/simulated/floor/wood,
-/area/trader_station/sol)
 "bWW" = (
 /obj/structure/chair/comfy/red{
 	dir = 8
@@ -2691,7 +2724,7 @@
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/syndicate_mothership/jail)
 "ciJ" = (
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/fancy/cherry,
 /area/trader_station/sol)
 "ciP" = (
 /turf/simulated/wall/indestructible/riveted,
@@ -2726,6 +2759,12 @@
 /obj/machinery/economy/vending/cigarette/free,
 /turf/simulated/floor/wood/fancy/oak,
 /area/centcom/ss220/general)
+"ckR" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/turf/simulated/floor/carpet/green,
+/area/shuttle/trade/sol)
 "ckX" = (
 /obj/structure/closet/secure_closet/guncabinet,
 /obj/machinery/light/spot{
@@ -2917,11 +2956,6 @@
 /obj/machinery/cryopod/robot/offstation,
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/admin3)
-"cte" = (
-/obj/structure/flora/ausbushes/fernybush,
-/obj/structure/flora/ausbushes/ywflowers,
-/turf/simulated/floor/grass,
-/area/trader_station/sol)
 "cts" = (
 /obj/mecha/combat/marauder/ares/loaded,
 /obj/structure/cable{
@@ -3090,10 +3124,6 @@
 /obj/structure/window/reinforced,
 /turf/simulated/floor/wood/fancy/light,
 /area/centcom/ss220/evac)
-"cCw" = (
-/obj/machinery/economy/vending/snack/free,
-/turf/simulated/floor/wood,
-/area/trader_station/sol)
 "cCy" = (
 /obj/machinery/door/airlock/centcom{
 	id_tag = "CC_Exterior_2";
@@ -3156,6 +3186,12 @@
 	},
 /turf/simulated/floor/carpet/red,
 /area/centcom/ss220/bar)
+"cEr" = (
+/obj/machinery/light/spot{
+	dir = 1
+	},
+/turf/simulated/floor/wood/fancy/birch,
+/area/shuttle/trade/sol)
 "cEu" = (
 /obj/structure/chair/sofa/corp/right{
 	dir = 8
@@ -3197,11 +3233,13 @@
 	},
 /area/centcom/ss220/admin3)
 "cEO" = (
-/obj/item/mop,
-/obj/structure/mirror{
-	pixel_x = 28
+/obj/structure/table/holotable/wood{
+	color = "#996633"
 	},
-/turf/simulated/floor/plasteel/freezer,
+/obj/item/reagent_containers/glass/beaker/waterbottle{
+	pixel_y = 4
+	},
+/turf/simulated/floor/wood/fancy/cherry,
 /area/trader_station/sol)
 "cFJ" = (
 /obj/machinery/door/airlock/command/glass{
@@ -3672,6 +3710,12 @@
 	icon_state = "warndarkgreyred"
 	},
 /area/syndicate_mothership)
+"cXw" = (
+/obj/machinery/economy/vending/snack/free,
+/turf/simulated/floor/plasteel{
+	icon_state = "grimy"
+	},
+/area/trader_station/sol)
 "cXK" = (
 /obj/structure/lattice,
 /obj/effect/mapping_helpers/light{
@@ -3751,6 +3795,12 @@
 	},
 /turf/simulated/floor/plating/abductor,
 /area/abductor_ship)
+"cZQ" = (
+/obj/structure/flora/ausbushes/sparsegrass,
+/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/window/full/basic,
+/turf/simulated/floor/grass/no_creep,
+/area/trader_station/sol)
 "cZT" = (
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/plasteel{
@@ -3963,6 +4013,12 @@
 	icon_state = "fancy-wood-oak"
 	},
 /area/syndicate_mothership/infteam)
+"dkr" = (
+/obj/structure/closet,
+/obj/effect/spawner/lootdrop/trade_sol/med,
+/obj/machinery/light/spot,
+/turf/simulated/floor/wood/fancy/cherry,
+/area/shuttle/trade/sol)
 "dkB" = (
 /obj/structure/window/full/basic,
 /obj/structure/flora/ausbushes/ywflowers,
@@ -4011,11 +4067,6 @@
 	},
 /turf/simulated/floor/carpet/black,
 /area/syndicate_mothership/elite_squad)
-"dmq" = (
-/obj/effect/spawner/lootdrop/trade_sol/sec,
-/obj/structure/closet,
-/turf/simulated/floor/mineral/titanium,
-/area/shuttle/trade/sol)
 "dnm" = (
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -4214,13 +4265,6 @@
 	icon_state = "darkred"
 	},
 /area/shuttle/escape)
-"dtp" = (
-/obj/structure/shuttle/engine/propulsion{
-	dir = 8;
-	icon_state = "burst_r"
-	},
-/turf/simulated/floor/plating/airless,
-/area/shuttle/trade/sol)
 "dts" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -4296,6 +4340,13 @@
 	},
 /turf/simulated/floor/carpet/red,
 /area/centcom/ss220/bar)
+"dwj" = (
+/obj/structure/bed,
+/obj/item/bedsheet{
+	color = "darkred"
+	},
+/turf/simulated/floor/carpet/royalblue,
+/area/shuttle/trade/sol)
 "dwn" = (
 /obj/structure/table/wood/fancy/black,
 /obj/item/ashtray/glass{
@@ -4303,10 +4354,6 @@
 	},
 /turf/simulated/floor/carpet/red,
 /area/centcom/ss220/bar)
-"dws" = (
-/obj/effect/spawner/lootdrop/trade_sol/largeitem,
-/turf/simulated/floor/mineral/titanium,
-/area/shuttle/trade/sol)
 "dwQ" = (
 /obj/structure/table/abductor,
 /obj/item/paper/abductor,
@@ -4617,6 +4664,13 @@
 	name = "Comemmorative Plaque"
 	},
 /area/centcom/ss220/park)
+"dHo" = (
+/obj/machinery/light/spot,
+/obj/machinery/economy/atm{
+	pixel_y = -32
+	},
+/turf/simulated/floor/wood/fancy/cherry,
+/area/shuttle/trade/sol)
 "dHM" = (
 /turf/simulated/floor/plasteel{
 	icon_state = "blackfull"
@@ -5008,12 +5062,6 @@
 	},
 /turf/simulated/floor/carpet,
 /area/centcom/ss220/general)
-"dUo" = (
-/obj/structure/chair/comfy/shuttle{
-	dir = 8
-	},
-/turf/simulated/floor/mineral/titanium/blue,
-/area/shuttle/trade/sol)
 "dUy" = (
 /obj/structure/shuttle/engine/platform{
 	dir = 1;
@@ -5296,6 +5344,9 @@
 /obj/item/kirbyplants,
 /turf/simulated/floor/carpet/black,
 /area/centcom/ss220/admin2)
+"ejt" = (
+/turf/simulated/floor/wood/fancy/birch,
+/area/shuttle/trade/sol)
 "ejv" = (
 /obj/machinery/door/window/classic/normal{
 	name = "Коровки"
@@ -5838,6 +5889,17 @@
 	icon_state = "dark"
 	},
 /area/syndicate_mothership/elite_squad)
+"eEq" = (
+/obj/machinery/door/airlock/titanium/glass{
+	req_one_access_txt = "160"
+	},
+/obj/effect/turf_decal/siding/wood,
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/effect/mapping_helpers/airlock/autoname,
+/turf/simulated/floor/carpet/orange,
+/area/shuttle/trade/sol)
 "eEu" = (
 /obj/structure/window/reinforced{
 	color = "red";
@@ -5901,14 +5963,6 @@
 	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/syndicate_mothership/control)
-"eGc" = (
-/obj/structure/railing,
-/obj/effect/landmark/spawner/soltrader,
-/obj/structure/chair/comfy/brown{
-	dir = 8
-	},
-/turf/simulated/floor/wood,
-/area/trader_station/sol)
 "eGe" = (
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -6088,12 +6142,6 @@
 	icon_state = "barber"
 	},
 /area/shuttle/administration)
-"eMj" = (
-/obj/structure/chair/office/dark{
-	dir = 8
-	},
-/turf/simulated/floor/wood,
-/area/trader_station/sol)
 "eNb" = (
 /obj/effect/decal/warning_stripes/red,
 /obj/machinery/door/poddoor/impassable{
@@ -6214,6 +6262,14 @@
 /obj/machinery/computer/communications,
 /turf/simulated/floor/carpet/black,
 /area/centcom/ss220/admin2)
+"eQb" = (
+/obj/structure/bed,
+/obj/effect/landmark/spawner/soltrader,
+/obj/item/bedsheet{
+	color = "darkred"
+	},
+/turf/simulated/floor/wood/fancy/cherry,
+/area/trader_station/sol)
 "eQu" = (
 /obj/machinery/shuttle_manipulator{
 	pixel_x = -16
@@ -6428,6 +6484,17 @@
 	icon_state = "freezerfloor"
 	},
 /area/syndicate_mothership)
+"eYi" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/machinery/door/airlock/titanium{
+	req_one_access_txt = "160"
+	},
+/obj/effect/mapping_helpers/airlock/autoname,
+/turf/simulated/floor/carpet/orange,
+/area/shuttle/trade/sol)
 "eYF" = (
 /obj/structure/closet/crate/secure/bin,
 /turf/simulated/floor/plasteel{
@@ -6497,6 +6564,20 @@
 /obj/machinery/economy/vending/snack/free,
 /turf/simulated/floor/wood/fancy/cherry,
 /area/centcom/ss220/bar)
+"fba" = (
+/obj/structure/light_fake{
+	dir = 4
+	},
+/obj/structure/table/holotable/wood{
+	color = "#996633"
+	},
+/obj/item/storage/bag/money{
+	pixel_y = 8
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "grimy"
+	},
+/area/trader_station/sol)
 "fbg" = (
 /obj/structure/ore_box,
 /obj/effect/decal/warning_stripes/yellow/hollow,
@@ -6562,6 +6643,13 @@
 	icon_state = "blackfull"
 	},
 /area/syndicate_mothership/jail)
+"ffE" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 6
+	},
+/obj/item/kirbyplants,
+/turf/simulated/floor/carpet/royalblack,
+/area/shuttle/trade/sol)
 "ffJ" = (
 /obj/machinery/door/poddoor/multi_tile/two_tile_hor{
 	id_tag = "SIT_ready";
@@ -6817,10 +6905,6 @@
 	icon_state = "warndarkgreyred"
 	},
 /area/syndicate_mothership)
-"fmR" = (
-/obj/structure/railing,
-/turf/simulated/floor/wood,
-/area/trader_station/sol)
 "fmX" = (
 /obj/machinery/bsa/full/admin/east,
 /turf/simulated/floor/plating,
@@ -6987,6 +7071,9 @@
 	icon_state = "warndarkgreyred"
 	},
 /area/syndicate_mothership)
+"fuv" = (
+/turf/simulated/floor/wood/fancy/cherry,
+/area/shuttle/trade/sol)
 "fuU" = (
 /obj/structure/table/glass,
 /obj/item/storage/backpack/duffel/syndie/med/surgery{
@@ -7157,9 +7244,10 @@
 	},
 /area/syndicate_mothership/elite_squad)
 "fCa" = (
-/obj/effect/landmark/spawner/soltrader,
-/obj/structure/chair/comfy/brown,
-/turf/simulated/floor/wood,
+/obj/structure/chair/comfy/red{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/arcade,
 /area/trader_station/sol)
 "fCs" = (
 /obj/structure/table/reinforced,
@@ -7195,6 +7283,12 @@
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/admin1)
+"fDq" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/turf/simulated/floor/carpet/royalblue,
+/area/shuttle/trade/sol)
 "fDx" = (
 /obj/structure/railing{
 	dir = 8
@@ -7623,6 +7717,12 @@
 	icon_state = "darkgrey"
 	},
 /area/syndicate_mothership)
+"gbe" = (
+/obj/structure/chair/sofa/left,
+/turf/simulated/floor/plasteel{
+	icon_state = "grimy"
+	},
+/area/trader_station/sol)
 "gbQ" = (
 /obj/structure/chair/sofa/left,
 /turf/simulated/floor/carpet/black,
@@ -7647,6 +7747,10 @@
 	icon_state = "cafeteria"
 	},
 /area/ninja/holding)
+"gcN" = (
+/obj/machinery/light/spot,
+/turf/simulated/floor/wood/fancy/birch,
+/area/shuttle/trade/sol)
 "gcV" = (
 /turf/simulated/floor/wood/fancy/oak,
 /area/centcom/ss220/general)
@@ -7707,6 +7811,15 @@
 	icon_state = "neutral"
 	},
 /area/centcom/ss220/evac)
+"ggQ" = (
+/obj/item/kirbyplants,
+/obj/structure/extinguisher_cabinet{
+	pixel_y = 32
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "grimy"
+	},
+/area/trader_station/sol)
 "ggR" = (
 /obj/structure/chair,
 /obj/item/radio/intercom/locked/confessional{
@@ -7785,6 +7898,30 @@
 	icon_state = "darkred"
 	},
 /area/syndicate_mothership/infteam)
+"glO" = (
+/obj/structure/closet,
+/obj/effect/spawner/lootdrop/trade_sol/eng,
+/turf/simulated/floor/wood/fancy/cherry,
+/area/shuttle/trade/sol)
+"gmg" = (
+/obj/structure/table/wood/fancy/orange,
+/obj/item/stack/packageWrap{
+	pixel_y = 9
+	},
+/obj/item/stack/packageWrap{
+	pixel_y = 5
+	},
+/obj/item/stack/packageWrap{
+	pixel_y = 1
+	},
+/obj/item/stack/packageWrap{
+	pixel_y = -3
+	},
+/obj/item/hand_labeler{
+	pixel_y = -6
+	},
+/turf/simulated/floor/carpet/royalblue,
+/area/shuttle/trade/sol)
 "gmx" = (
 /obj/structure/table/reinforced,
 /obj/item/borg/upgrade/selfrepair,
@@ -7807,6 +7944,15 @@
 	icon_state = "navyblue"
 	},
 /area/centcom/ss220/admin3)
+"gnt" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 4
+	},
+/obj/machinery/computer/shuttle/trade/sol{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/royalblack,
+/area/shuttle/trade/sol)
 "gnu" = (
 /obj/structure/chair/comfy/purp{
 	dir = 8
@@ -8117,6 +8263,12 @@
 /obj/effect/turf_decal/miscellaneous/goldensiding,
 /turf/simulated/floor/carpet/black,
 /area/syndicate_mothership/control)
+"gyx" = (
+/obj/item/reagent_containers/food/snacks/grown/cannabis/rainbow,
+/obj/item/reagent_containers/food/snacks/grown/cannabis/rainbow,
+/obj/item/reagent_containers/food/snacks/grown/cannabis/rainbow,
+/turf/simulated/floor/wood/fancy/cherry,
+/area/trader_station/sol)
 "gzd" = (
 /obj/structure/light_fake/spot{
 	dir = 4
@@ -8127,6 +8279,12 @@
 /obj/item/folder/yellow,
 /turf/simulated/floor/wood/fancy/cherry,
 /area/centcom/ss220/admin2)
+"gze" = (
+/obj/structure/chair/comfy/brown{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/black,
+/area/trader_station/sol)
 "gzn" = (
 /obj/machinery/computer/arcade/orion_trail{
 	dir = 4
@@ -8271,11 +8429,18 @@
 /obj/structure/light_fake/small,
 /turf/simulated/floor/carpet/black,
 /area/syndicate_mothership/infteam)
+"gDq" = (
+/obj/machinery/light/spot,
+/turf/simulated/floor/wood/fancy/cherry,
+/area/shuttle/trade/sol)
 "gDv" = (
 /turf/simulated/floor/plasteel{
 	icon_state = "darkredcornersalt"
 	},
 /area/syndicate_mothership/jail)
+"gDO" = (
+/turf/simulated/wall/mineral/titanium/overspace,
+/area/shuttle/trade/sol)
 "gDW" = (
 /turf/simulated/floor/carpet/green,
 /area/centcom/ss220/general)
@@ -8395,6 +8560,12 @@
 /obj/structure/flora/ausbushes/reedbush,
 /turf/simulated/floor/indestructible/grass,
 /area/syndicate_mothership/outside)
+"gJB" = (
+/obj/machinery/economy/vending/cola/free,
+/turf/simulated/floor/plasteel{
+	icon_state = "grimy"
+	},
+/area/trader_station/sol)
 "gJM" = (
 /obj/effect/turf_decal/arrows/white{
 	color = "#6697cc";
@@ -8520,6 +8691,12 @@
 	icon_state = "darkyellowfull"
 	},
 /area/centcom/ss220/admin2)
+"gPD" = (
+/obj/structure/table/holotable/wood{
+	color = "#996633"
+	},
+/turf/simulated/floor/wood/fancy/cherry,
+/area/trader_station/sol)
 "gPJ" = (
 /turf/simulated/floor/indestructible/grass,
 /area/syndicate_mothership/cargo)
@@ -9236,6 +9413,17 @@
 "hsh" = (
 /turf/simulated/wall/indestructible/fakeglass,
 /area/ninja/holding)
+"hsv" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 10
+	},
+/turf/simulated/floor/carpet/royalblue,
+/area/shuttle/trade/sol)
+"htr" = (
+/turf/simulated/floor/plasteel{
+	icon_state = "grimy"
+	},
+/area/trader_station/sol)
 "htP" = (
 /obj/structure/table/glass,
 /obj/item/paper_bin/nanotrasen{
@@ -9283,6 +9471,12 @@
 	icon_state = "darkjail"
 	},
 /area/syndicate_mothership/jail)
+"hwc" = (
+/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/flora/ausbushes/sparsegrass,
+/obj/structure/window/full/basic,
+/turf/simulated/floor/grass/no_creep,
+/area/trader_station/sol)
 "hwj" = (
 /obj/structure/table/glass,
 /obj/structure/window/reinforced{
@@ -9338,11 +9532,23 @@
 	name = "floor"
 	},
 /area/syndicate_mothership/elite_squad)
+"hyh" = (
+/obj/structure/table/holotable/wood{
+	color = "#996633"
+	},
+/turf/simulated/floor/carpet/black,
+/area/trader_station/sol)
 "hzk" = (
 /obj/structure/window/reinforced,
 /obj/item/kirbyplants,
 /turf/simulated/floor/carpet/green,
 /area/centcom/ss220/general)
+"hAC" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 5
+	},
+/turf/simulated/floor/carpet/royalblue,
+/area/shuttle/trade/sol)
 "hAD" = (
 /obj/structure/light_fake/small{
 	dir = 4
@@ -9675,10 +9881,6 @@
 	icon_state = "freezerfloor"
 	},
 /area/syndicate_mothership/infteam)
-"hKF" = (
-/obj/structure/flora/ausbushes/brflowers,
-/turf/simulated/floor/grass,
-/area/trader_station/sol)
 "hLd" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/fans/tiny/invisible,
@@ -9762,6 +9964,10 @@
 	icon_state = "dark"
 	},
 /area/syndicate_mothership/control)
+"hNI" = (
+/obj/item/flag/solgov,
+/turf/simulated/floor/wood/fancy/cherry,
+/area/shuttle/trade/sol)
 "hNP" = (
 /obj/machinery/computer/card{
 	dir = 4
@@ -9962,6 +10168,21 @@
 	icon_state = "cafeteria"
 	},
 /area/centcom/ss220/bar)
+"hVJ" = (
+/obj/machinery/light/spot{
+	dir = 1
+	},
+/obj/machinery/economy/atm{
+	pixel_y = 32
+	},
+/turf/simulated/floor/wood/fancy/cherry,
+/area/shuttle/trade/sol)
+"hWx" = (
+/obj/structure/chair/sofa/corp/left{
+	dir = 8
+	},
+/turf/simulated/floor/wood/fancy/cherry,
+/area/shuttle/trade/sol)
 "hWD" = (
 /turf/simulated/floor/plasteel{
 	icon_state = "neutralfull"
@@ -10054,6 +10275,12 @@
 "iav" = (
 /turf/simulated/wall/mineral/titanium/nodiagonal,
 /area/shuttle/trade/sol)
+"iaF" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/wood/fancy/birch,
+/area/shuttle/trade/sol)
 "ibG" = (
 /obj/machinery/dna_scannernew/upgraded,
 /turf/simulated/floor/plasteel/dark{
@@ -10131,9 +10358,6 @@
 	icon_state = "darkyellowfull"
 	},
 /area/syndicate_mothership/cargo)
-"ifQ" = (
-/turf/simulated/floor/plating/airless,
-/area/trader_station/sol)
 "igF" = (
 /obj/machinery/door/airlock/external{
 	id_tag = "s_docking_airlock";
@@ -10153,11 +10377,6 @@
 /obj/structure/flora/ausbushes/ywflowers,
 /turf/simulated/floor/grass/no_creep,
 /area/centcom/ss220/evac)
-"igQ" = (
-/obj/structure/railing,
-/obj/structure/table/wood,
-/turf/simulated/floor/wood,
-/area/trader_station/sol)
 "iht" = (
 /obj/structure/filingcabinet/filingcabinet,
 /turf/simulated/floor/wood,
@@ -10303,6 +10522,19 @@
 	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/syndicate_mothership/control)
+"inP" = (
+/obj/structure/closet,
+/obj/effect/spawner/lootdrop/trade_sol/minerals,
+/turf/simulated/floor/wood/fancy/birch,
+/area/shuttle/trade/sol)
+"inT" = (
+/obj/machinery/cryopod/offstation{
+	dir = 4
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "grimy"
+	},
+/area/trader_station/sol)
 "ios" = (
 /obj/machinery/door/airlock/hatch/syndicate{
 	name = "Syndicate Base"
@@ -10361,6 +10593,12 @@
 	},
 /turf/simulated/floor/carpet/black,
 /area/centcom/ss220/admin2)
+"ipZ" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 9
+	},
+/turf/simulated/floor/carpet/royalblue,
+/area/shuttle/trade/sol)
 "iqg" = (
 /obj/structure/flora/junglebush/large{
 	layer = 5
@@ -10536,20 +10774,6 @@
 /obj/structure/chair/stool,
 /turf/simulated/floor/beach/away/sand,
 /area/ninja/holding)
-"iud" = (
-/obj/structure/toilet{
-	dir = 8
-	},
-/obj/structure/window/reinforced/tinted{
-	dir = 1
-	},
-/obj/machinery/door/window{
-	dir = 8;
-	name = "Toilet";
-	opacity = 1
-	},
-/turf/simulated/floor/plasteel/freezer,
-/area/trader_station/sol)
 "iuD" = (
 /obj/structure/toilet{
 	dir = 8
@@ -10938,10 +11162,6 @@
 	water_overlay_image = null
 	},
 /area/syndicate_mothership/outside)
-"iKr" = (
-/obj/machinery/economy/vending/coffee/free,
-/turf/simulated/floor/wood,
-/area/trader_station/sol)
 "iKK" = (
 /obj/structure/light_fake,
 /turf/simulated/floor/plasteel{
@@ -11179,14 +11399,6 @@
 	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
-"iWX" = (
-/obj/structure/railing,
-/obj/effect/landmark/spawner/soltrader,
-/obj/structure/chair/comfy/brown{
-	dir = 4
-	},
-/turf/simulated/floor/wood,
-/area/trader_station/sol)
 "iXk" = (
 /obj/structure/mirror{
 	pixel_x = 30
@@ -11250,12 +11462,6 @@
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/admin2)
-"iZS" = (
-/obj/machinery/door/airlock{
-	name = "Toilet"
-	},
-/turf/simulated/floor/plasteel/freezer,
-/area/trader_station/sol)
 "iZU" = (
 /obj/effect/turf_decal/stripes/red/full,
 /turf/simulated/floor/plasteel/dark,
@@ -11458,6 +11664,16 @@
 	icon_state = "darkgreen"
 	},
 /area/centcom/ss220/admin3)
+"jkk" = (
+/obj/structure/table/wood/fancy/orange,
+/obj/item/paper_bin{
+	pixel_y = 3
+	},
+/obj/item/pen/fancy{
+	pixel_y = 4
+	},
+/turf/simulated/floor/wood/fancy/birch,
+/area/shuttle/trade/sol)
 "jkN" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -11469,11 +11685,6 @@
 /obj/effect/spawner/window/shuttle,
 /turf/simulated/floor/plating,
 /area/shuttle/transport)
-"jlX" = (
-/obj/effect/spawner/lootdrop/trade_sol/civ,
-/obj/structure/closet,
-/turf/simulated/floor/mineral/titanium,
-/area/shuttle/trade/sol)
 "jmk" = (
 /obj/structure/sign/poster/contraband/random{
 	pixel_y = -30
@@ -11496,6 +11707,19 @@
 	},
 /turf/simulated/floor/beach/away/sand,
 /area/syndicate_mothership/outside)
+"jnv" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/machinery/door/airlock/titanium/glass{
+	req_one_access_txt = "160"
+	},
+/obj/effect/mapping_helpers/airlock/autoname,
+/turf/simulated/floor/carpet/orange,
+/area/shuttle/trade/sol)
 "jnA" = (
 /obj/structure/bookcase/random,
 /turf/simulated/floor/wood/fancy/oak,
@@ -11718,6 +11942,16 @@
 /obj/machinery/photocopier,
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/admin1)
+"jvF" = (
+/obj/structure/chair/sofa/corp/left{
+	dir = 8
+	},
+/obj/machinery/flasher{
+	id = "soltraderflash";
+	pixel_x = 24
+	},
+/turf/simulated/floor/wood/fancy/cherry,
+/area/shuttle/trade/sol)
 "jvG" = (
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/plasteel,
@@ -11760,6 +11994,22 @@
 	icon_state = "bot"
 	},
 /area/shuttle/escape)
+"jww" = (
+/obj/structure/window/reinforced/mazeglass,
+/obj/structure/window/reinforced/mazeglass{
+	dir = 1
+	},
+/obj/item/soap,
+/obj/structure/mopbucket{
+	dir = 4
+	},
+/obj/item/mop,
+/turf/simulated/floor/plasteel/freezer,
+/area/trader_station/sol)
+"jwK" = (
+/obj/item/kirbyplants,
+/turf/simulated/floor/wood/fancy/birch,
+/area/shuttle/trade/sol)
 "jwT" = (
 /obj/structure/light_fake/spot{
 	dir = 8
@@ -11988,6 +12238,12 @@
 /obj/machinery/economy/vending/toyliberationstation,
 /turf/simulated/floor/carpet/black,
 /area/syndicate_mothership/infteam)
+"jKa" = (
+/obj/structure/flora/ausbushes/sparsegrass,
+/obj/structure/flora/ausbushes/ppflowers,
+/obj/structure/window/full/basic,
+/turf/simulated/floor/grass/no_creep,
+/area/trader_station/sol)
 "jKB" = (
 /obj/effect/turf_decal/delivery,
 /turf/simulated/floor/plasteel{
@@ -12124,14 +12380,6 @@
 /obj/machinery/recharger,
 /turf/simulated/floor/plasteel/freezer,
 /area/ninja/holding)
-"jNR" = (
-/obj/machinery/door/airlock/titanium/glass{
-	name = "trader shuttle airlock";
-	req_access_txt = "160";
-	security_level = 6
-	},
-/turf/simulated/floor/mineral/titanium/blue,
-/area/shuttle/trade/sol)
 "jOb" = (
 /turf/simulated/floor/mineral/titanium/blue,
 /area/shuttle/supply)
@@ -12464,6 +12712,18 @@
 	icon_state = "darkyellowaltstrip"
 	},
 /area/syndicate_mothership/cargo)
+"kiQ" = (
+/obj/structure/table/holotable/wood{
+	color = "#996633"
+	},
+/obj/item/paper_bin{
+	pixel_y = 3
+	},
+/obj/item/pen/multi{
+	pixel_y = 5
+	},
+/turf/simulated/floor/carpet/black,
+/area/trader_station/sol)
 "kiY" = (
 /obj/machinery/computer/shuttle/sst{
 	dir = 1
@@ -12541,6 +12801,12 @@
 /obj/item/deck/cards/black,
 /turf/simulated/floor/carpet/black,
 /area/centcom/ss220/bar)
+"klj" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 5
+	},
+/turf/simulated/floor/carpet/royalblack,
+/area/shuttle/trade/sol)
 "klm" = (
 /obj/machinery/computer/shuttle/syndicate/recall,
 /turf/simulated/floor/plasteel{
@@ -12896,6 +13162,32 @@
 	icon_state = "dark"
 	},
 /area/syndicate_mothership/elite_squad)
+"kCt" = (
+/obj/item/flag/solgov,
+/obj/machinery/door_control/no_emag{
+	id = "trader_privacy";
+	name = "Privacy Shutters Control";
+	pixel_x = 24;
+	pixel_y = 8;
+	req_access_txt = "160";
+	req_one_access_txt = "160"
+	},
+/obj/machinery/door_control/no_emag{
+	id = "soltrader_north";
+	name = "Trade Deposits Door";
+	normaldoorcontrol = 1;
+	pixel_x = 24;
+	pixel_y = -8;
+	req_access_txt = "160";
+	req_one_access_txt = "160"
+	},
+/obj/machinery/flasher_button{
+	id = "soltraderflash";
+	pixel_x = 24;
+	req_one_access_txt = "160"
+	},
+/turf/simulated/floor/wood/fancy/cherry,
+/area/shuttle/trade/sol)
 "kCK" = (
 /obj/structure/chair/comfy/black{
 	dir = 8
@@ -13215,6 +13507,15 @@
 	},
 /turf/simulated/floor/wood,
 /area/wizard_station)
+"kOF" = (
+/obj/structure/table/holotable/wood{
+	color = "#996633"
+	},
+/obj/machinery/chem_dispenser/soda/upgraded{
+	pixel_y = 6
+	},
+/turf/simulated/floor/carpet/black,
+/area/trader_station/sol)
 "kOR" = (
 /obj/structure/light_fake{
 	dir = 8
@@ -13286,6 +13587,10 @@
 	icon_state = "brownoldfull"
 	},
 /area/syndicate_mothership/jail)
+"kSM" = (
+/obj/structure/light_fake,
+/turf/simulated/floor/wood/fancy/cherry,
+/area/trader_station/sol)
 "kTp" = (
 /turf/simulated/floor/grass/no_creep,
 /area/centcom/ss220/evac)
@@ -13401,6 +13706,10 @@
 "lcm" = (
 /turf/simulated/floor/mineral/plastitanium,
 /area/shuttle/syndicate)
+"lcv" = (
+/obj/effect/spawner/lootdrop/trade_sol/largeitem,
+/turf/simulated/floor/wood/fancy/birch,
+/area/shuttle/trade/sol)
 "lcG" = (
 /obj/machinery/economy/vending/boozeomat,
 /turf/simulated/floor/plasteel/dark,
@@ -13463,11 +13772,6 @@
 /obj/machinery/economy/vending/magivend,
 /turf/simulated/floor/carpet/black,
 /area/wizard_station)
-"lff" = (
-/obj/effect/spawner/lootdrop/trade_sol/minerals,
-/obj/structure/closet,
-/turf/simulated/floor/mineral/titanium,
-/area/shuttle/trade/sol)
 "lfl" = (
 /obj/machinery/door/poddoor/impassable{
 	id_tag = "syndFB_teleport"
@@ -13994,12 +14298,6 @@
 /obj/effect/landmark/spawner/ds,
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/admin3)
-"lxv" = (
-/obj/machinery/light/spot{
-	dir = 1
-	},
-/turf/simulated/floor/mineral/titanium/blue,
-/area/shuttle/trade/sol)
 "lxO" = (
 /obj/structure/window/reinforced{
 	color = "red";
@@ -14058,11 +14356,6 @@
 /obj/structure/chair/comfy/shuttle,
 /turf/simulated/floor/plating,
 /area/shuttle/administration)
-"lzb" = (
-/obj/structure/flora/ausbushes/fullgrass,
-/obj/structure/flora/ausbushes/brflowers,
-/turf/simulated/floor/grass,
-/area/trader_station/sol)
 "lzj" = (
 /obj/machinery/computer/shuttle/sit{
 	dir = 1
@@ -14216,6 +14509,11 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/shuttle/administration)
+"lFy" = (
+/obj/effect/turf_decal/siding/wood/corner,
+/obj/structure/table/wood/fancy/orange,
+/turf/simulated/floor/carpet/royalblack,
+/area/shuttle/trade/sol)
 "lGl" = (
 /obj/structure/bookcase/manuals,
 /obj/item/book/manual/wiki/sop_service,
@@ -14234,6 +14532,32 @@
 	},
 /turf/simulated/floor/carpet/black,
 /area/centcom/ss220/bar)
+"lGW" = (
+/obj/item/flag/solgov,
+/obj/machinery/door_control/no_emag{
+	id = "soltrader_north";
+	name = "Trade Deposits Door";
+	normaldoorcontrol = 1;
+	pixel_x = 24;
+	pixel_y = 8;
+	req_access_txt = "160";
+	req_one_access_txt = "160"
+	},
+/obj/machinery/door_control/no_emag{
+	id = "trader_privacy";
+	name = "Privacy Shutters Control";
+	pixel_x = 24;
+	pixel_y = -8;
+	req_access_txt = "160";
+	req_one_access_txt = "160"
+	},
+/obj/machinery/flasher_button{
+	id = "soltraderflash";
+	pixel_x = 24;
+	req_one_access_txt = "160"
+	},
+/turf/simulated/floor/wood/fancy/cherry,
+/area/shuttle/trade/sol)
 "lHj" = (
 /obj/structure/table/reinforced,
 /obj/item/toy/plushie/marble_fox{
@@ -14254,11 +14578,17 @@
 	icon_state = "whiteblue"
 	},
 /area/centcom/ss220/general)
-"lIM" = (
-/obj/structure/shuttle/engine/propulsion{
-	dir = 8
+"lHU" = (
+/obj/machinery/economy/vending/coffee/free,
+/turf/simulated/floor/plasteel{
+	icon_state = "grimy"
 	},
-/turf/simulated/floor/plating/airless,
+/area/trader_station/sol)
+"lIT" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 5
+	},
+/turf/simulated/floor/carpet/green,
 /area/shuttle/trade/sol)
 "lIU" = (
 /obj/structure/light_fake/small{
@@ -14334,13 +14664,6 @@
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/scattershot,
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/supply)
-"lJt" = (
-/obj/machinery/light/spot,
-/obj/effect/spawner/lootdrop/trade_sol/serv,
-/obj/structure/closet,
-/obj/item/stack/tile/disco_light/thirty,
-/turf/simulated/floor/mineral/titanium,
-/area/shuttle/trade/sol)
 "lJz" = (
 /obj/structure/light_fake/small,
 /turf/simulated/floor/carpet/black,
@@ -14405,6 +14728,15 @@
 	icon_state = "dark"
 	},
 /area/syndicate_mothership/cargo)
+"lLh" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/structure/chair/comfy/shuttle{
+	dir = 8
+	},
+/turf/simulated/floor/carpet/royalblack,
+/area/shuttle/trade/sol)
 "lLn" = (
 /obj/item/gun/projectile/automatic/m90{
 	pixel_x = -3;
@@ -14440,10 +14772,6 @@
 "lLq" = (
 /turf/simulated/floor/plasteel,
 /area/shuttle/escape)
-"lLW" = (
-/obj/effect/spawner/window/reinforced,
-/turf/simulated/floor/plating,
-/area/trader_station/sol)
 "lMl" = (
 /obj/structure/chair/comfy/shuttle{
 	dir = 8
@@ -14651,6 +14979,13 @@
 	icon_state = "navybluealt"
 	},
 /area/syndicate_mothership/control)
+"lRr" = (
+/obj/structure/table/wood/poker,
+/obj/item/deck/cards/doublecards{
+	pixel_y = 2
+	},
+/turf/simulated/floor/carpet/arcade,
+/area/trader_station/sol)
 "lRu" = (
 /obj/structure/table,
 /obj/item/paper/syndimemo{
@@ -14682,6 +15017,15 @@
 	icon_state = "podfloor_light"
 	},
 /area/syndicate_mothership/jail)
+"lSz" = (
+/obj/item/kirbyplants,
+/obj/machinery/computer/cryopod{
+	pixel_y = 28
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "grimy"
+	},
+/area/trader_station/sol)
 "lSO" = (
 /obj/structure/chair/sofa/right{
 	color = "#63009c"
@@ -14856,6 +15200,19 @@
 	name = "Comemmorative Plaque"
 	},
 /area/centcom/ss220/park)
+"lXX" = (
+/obj/machinery/door/airlock/titanium{
+	req_one_access_txt = "160"
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/airlock/autoname,
+/turf/simulated/floor/carpet/orange,
+/area/shuttle/trade/sol)
 "lYn" = (
 /obj/structure/chair{
 	dir = 8
@@ -14945,12 +15302,6 @@
 /obj/structure/flora/junglebush/large,
 /turf/simulated/floor/grass/jungle/no_creep,
 /area/centcom/ss220/park)
-"mcN" = (
-/obj/structure/chair/comfy/shuttle{
-	dir = 4
-	},
-/turf/simulated/floor/mineral/titanium,
-/area/shuttle/trade/sol)
 "mcR" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/kirbyplants,
@@ -15133,6 +15484,20 @@
 	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
+"mlh" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/shuttle/engine/platform{
+	layer = 2.9;
+	dir = 4
+	},
+/obj/structure/shuttle/engine/heater{
+	icon_state = "heater2x2_side";
+	dir = 4
+	},
+/turf/simulated/floor/plating/airless,
+/area/shuttle/trade/sol)
 "mln" = (
 /obj/structure/fans/tiny,
 /turf/simulated/floor/plating,
@@ -15661,10 +16026,6 @@
 "mLx" = (
 /turf/simulated/floor/carpet/black,
 /area/wizard_station)
-"mLB" = (
-/obj/machinery/economy/vending/cola/free,
-/turf/simulated/floor/wood,
-/area/trader_station/sol)
 "mLC" = (
 /obj/structure/table/wood{
 	color = "#996633"
@@ -15837,6 +16198,12 @@
 "mSA" = (
 /turf/simulated/wall/indestructible/fakeglass,
 /area/ninja/outpost)
+"mSP" = (
+/obj/item/kirbyplants,
+/turf/simulated/floor/plasteel{
+	icon_state = "grimy"
+	},
+/area/trader_station/sol)
 "mTB" = (
 /turf/simulated/floor/beach/away/water{
 	water_overlay_image = null
@@ -16004,6 +16371,14 @@
 "nbL" = (
 /turf/simulated/floor/mech_bay_recharge_floor,
 /area/shuttle/escape)
+"nbM" = (
+/obj/machinery/door/airlock/external{
+	id_tag = "trade_sol_base";
+	name = "Docking Port"
+	},
+/obj/structure/fans/tiny,
+/turf/simulated/floor/wood/fancy/cherry,
+/area/trader_station/sol)
 "nbQ" = (
 /obj/structure/chair/sofa/right,
 /turf/simulated/floor/carpet/red,
@@ -16714,6 +17089,12 @@
 /obj/effect/landmark/spawner/commando_manual,
 /turf/simulated/floor/wood/fancy/cherry,
 /area/centcom/ss220/admin3)
+"nFp" = (
+/obj/structure/light_fake/small{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/black,
+/area/trader_station/sol)
 "nFN" = (
 /obj/structure/mirror{
 	pixel_x = -30
@@ -16829,6 +17210,12 @@
 /obj/item/toy/plushie/orange_fox,
 /turf/simulated/floor/carpet/black,
 /area/centcom/ss220/bar)
+"nIM" = (
+/obj/structure/light_fake/small{
+	dir = 8
+	},
+/turf/simulated/floor/plasteel/freezer,
+/area/trader_station/sol)
 "nJs" = (
 /obj/structure/chair/sofa/corner{
 	dir = 8
@@ -17021,6 +17408,13 @@
 	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/syndicate_mothership/control)
+"nSl" = (
+/obj/structure/table/wood/fancy/red,
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/royalblue,
+/area/shuttle/trade/sol)
 "nSN" = (
 /obj/structure/chair/sofa/left,
 /turf/simulated/floor/plasteel{
@@ -17087,9 +17481,6 @@
 	},
 /turf/simulated/floor/plating/abductor,
 /area/abductor_ship)
-"nWy" = (
-/turf/simulated/wall/indestructible/fakeglass,
-/area/trader_station/sol)
 "nWQ" = (
 /obj/effect/turf_decal/bot,
 /obj/machinery/atmospherics/portable/canister/toxins,
@@ -17189,34 +17580,17 @@
 	water_overlay_image = null
 	},
 /area/syndicate_mothership/outside)
+"obm" = (
+/obj/structure/chair/comfy/red{
+	dir = 8
+	},
+/turf/simulated/floor/carpet/arcade,
+/area/trader_station/sol)
 "obD" = (
 /obj/structure/flora/rock/jungle,
 /obj/structure/flora/junglebush,
 /turf/simulated/floor/grass/jungle,
 /area/centcom/ss220/park)
-"ocy" = (
-/obj/docking_port/mobile{
-	dir = 8;
-	dwidth = 4;
-	height = 11;
-	id = "trade_sol";
-	name = "sol trade shuttle";
-	width = 9
-	},
-/obj/machinery/door/airlock/titanium/glass{
-	id_tag = "s_docking_airlock"
-	},
-/obj/docking_port/stationary{
-	dir = 8;
-	dwidth = 4;
-	height = 11;
-	id = "trade_sol_base";
-	name = "docking bay 2 at Jupiter Station";
-	width = 9
-	},
-/obj/structure/fans/tiny,
-/turf/simulated/floor/mineral/titanium/blue,
-/area/shuttle/trade/sol)
 "ocR" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -17282,13 +17656,6 @@
 /obj/structure/table/wood/fancy/black,
 /turf/simulated/floor/carpet/black,
 /area/syndicate_mothership/control)
-"ogW" = (
-/obj/structure/railing,
-/obj/structure/table/wood,
-/obj/item/paper_bin,
-/obj/item/pen,
-/turf/simulated/floor/wood,
-/area/trader_station/sol)
 "ohc" = (
 /obj/structure/light_fake/small{
 	dir = 4
@@ -17809,12 +18176,6 @@
 /obj/structure/filingcabinet,
 /turf/simulated/floor/wood/fancy/cherry,
 /area/centcom/ss220/admin2)
-"oCf" = (
-/obj/machinery/door/poddoor/multi_tile/impassable/four_tile_ver{
-	name = "Jupiter Station Central Access"
-	},
-/turf/simulated/floor/plating/airless,
-/area/trader_station/sol)
 "oCQ" = (
 /turf/simulated/floor/plasteel{
 	dir = 9;
@@ -17880,6 +18241,19 @@
 /obj/structure/weightmachine/weightlifter,
 /turf/simulated/floor/wood,
 /area/centcom/ss220/park)
+"oGg" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 10
+	},
+/turf/simulated/floor/carpet/green,
+/area/shuttle/trade/sol)
+"oGq" = (
+/obj/structure/table/holotable/wood{
+	color = "#996633"
+	},
+/obj/item/reagent_containers/food/snacks/cheeseburger,
+/turf/simulated/floor/carpet/black,
+/area/trader_station/sol)
 "oGr" = (
 /obj/structure/flora/ausbushes/genericbush,
 /turf/simulated/floor/indestructible/grass,
@@ -17890,6 +18264,12 @@
 	},
 /turf/simulated/floor/carpet,
 /area/centcom/ss220/general)
+"oGz" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/turf/simulated/floor/carpet/royalblue,
+/area/shuttle/trade/sol)
 "oGA" = (
 /obj/structure/light_fake/spot{
 	dir = 4
@@ -18110,6 +18490,12 @@
 	icon_state = "freezerfloor"
 	},
 /area/syndicate_mothership)
+"oQC" = (
+/obj/structure/chair/comfy/brown{
+	dir = 8
+	},
+/turf/simulated/floor/carpet/black,
+/area/trader_station/sol)
 "oQS" = (
 /obj/effect/decal/nanotrasen_logo/n1,
 /turf/simulated/floor/plasteel/dark,
@@ -18200,6 +18586,12 @@
 	icon_state = "fancy-wood-oak"
 	},
 /area/syndicate_mothership)
+"oTI" = (
+/obj/structure/toilet{
+	dir = 8
+	},
+/turf/simulated/floor/plasteel/freezer,
+/area/trader_station/sol)
 "oUn" = (
 /obj/structure/toilet{
 	dir = 8
@@ -18514,9 +18906,6 @@
 /obj/structure/flora/ausbushes/sparsegrass,
 /turf/simulated/floor/grass/no_creep,
 /area/centcom/ss220/evac)
-"peW" = (
-/turf/simulated/floor/mineral/titanium/blue,
-/area/shuttle/trade/sol)
 "pfz" = (
 /turf/simulated/floor/wood,
 /area/centcom/ss220/evac)
@@ -18619,6 +19008,10 @@
 	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate)
+"pmY" = (
+/obj/structure/curtain/open/shower/security,
+/turf/simulated/wall/indestructible/fakeglass,
+/area/trader_station/sol)
 "pnR" = (
 /turf/simulated/floor/plasteel{
 	dir = 8;
@@ -18736,16 +19129,6 @@
 	icon_state = "warndarkgreyred"
 	},
 /area/syndicate_mothership)
-"ptk" = (
-/obj/machinery/flasher{
-	id = "soltraderflash";
-	pixel_y = -28
-	},
-/obj/structure/chair/comfy/shuttle{
-	dir = 8
-	},
-/turf/simulated/floor/mineral/titanium/blue,
-/area/shuttle/trade/sol)
 "ptx" = (
 /obj/structure/light_fake/small{
 	dir = 4
@@ -18831,6 +19214,17 @@
 	icon_state = "navyblue"
 	},
 /area/centcom/ss220/admin3)
+"pwb" = (
+/obj/structure/bed{
+	dir = 4
+	},
+/obj/effect/landmark/spawner/soltrader,
+/obj/item/bedsheet{
+	color = "darkred";
+	dir = 4
+	},
+/turf/simulated/floor/wood/fancy/cherry,
+/area/trader_station/sol)
 "pwc" = (
 /obj/structure/table/reinforced,
 /obj/machinery/cell_charger{
@@ -18914,6 +19308,11 @@
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/admin1)
+"pyC" = (
+/obj/structure/closet,
+/obj/effect/spawner/lootdrop/trade_sol/civ,
+/turf/simulated/floor/wood/fancy/cherry,
+/area/shuttle/trade/sol)
 "pzc" = (
 /obj/structure/chair/sofa/bench{
 	cover_color = "#404144";
@@ -19123,6 +19522,12 @@
 	},
 /turf/simulated/floor/carpet/black,
 /area/wizard_station)
+"pKe" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/royalblue,
+/area/shuttle/trade/sol)
 "pKg" = (
 /obj/item/flag/syndi,
 /obj/machinery/door_control/no_emag{
@@ -19194,6 +19599,10 @@
 /obj/structure/flora/ausbushes/sparsegrass,
 /turf/simulated/floor/grass/no_creep,
 /area/centcom/ss220/evac)
+"pMK" = (
+/obj/effect/spawner/lootdrop/trade_sol/vehicle,
+/turf/simulated/floor/wood/fancy/birch,
+/area/shuttle/trade/sol)
 "pMO" = (
 /obj/structure/closet/cabinet{
 	req_one_access_txt = "153"
@@ -19393,16 +19802,6 @@
 	icon_state = "darkblue"
 	},
 /area/centcom/ss220/bar)
-"pRc" = (
-/obj/structure/railing,
-/obj/structure/sign/directions/engineering{
-	desc = "A sign that shows there are doors here. There are doors everywhere!";
-	icon_state = "doors";
-	name = "WARNING: BLAST DOORS";
-	pixel_x = 32
-	},
-/turf/simulated/floor/wood,
-/area/trader_station/sol)
 "pRh" = (
 /obj/structure/closet/secure_closet/guncabinet,
 /obj/item/ammo_box/magazine/smgm9mm,
@@ -19619,14 +20018,6 @@
 	icon_state = "darkbrownfull"
 	},
 /area/centcom/ss220/admin3)
-"qcD" = (
-/obj/machinery/light/spot{
-	dir = 1
-	},
-/obj/effect/spawner/lootdrop/trade_sol/donksoft,
-/obj/structure/closet,
-/turf/simulated/floor/mineral/titanium,
-/area/shuttle/trade/sol)
 "qcR" = (
 /obj/machinery/abductor/console{
 	team = 1
@@ -19891,12 +20282,6 @@
 	icon_state = "blackfull"
 	},
 /area/syndicate_mothership/jail)
-"qnx" = (
-/obj/machinery/computer/shuttle/trade/sol{
-	dir = 4
-	},
-/turf/simulated/floor/wood,
-/area/trader_station/sol)
 "qnB" = (
 /obj/structure/rack,
 /obj/item/nullrod,
@@ -20049,24 +20434,6 @@
 /obj/structure/flora/tree/jungle/small,
 /turf/simulated/floor/grass/jungle,
 /area/centcom/ss220/park)
-"quW" = (
-/obj/machinery/door_control/no_emag{
-	id = "soltrader_north";
-	name = "Trade Deposits Door";
-	normaldoorcontrol = 1;
-	pixel_x = 24;
-	pixel_y = -8;
-	req_access_txt = "160"
-	},
-/obj/machinery/door_control/no_emag{
-	id = "trader_privacy";
-	name = "Privacy Shutters Control";
-	pixel_x = 24;
-	pixel_y = 8;
-	req_access_txt = "160"
-	},
-/turf/simulated/floor/mineral/titanium/blue,
-/area/shuttle/trade/sol)
 "qvc" = (
 /obj/structure/fans/tiny/invisible,
 /turf/simulated/floor/plasteel{
@@ -20467,6 +20834,19 @@
 /obj/effect/turf_decal/woodsiding,
 /turf/simulated/floor/mineral/plastitanium,
 /area/syndicate_mothership)
+"qLd" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/machinery/door/airlock/titanium/glass{
+	req_one_access_txt = "160"
+	},
+/obj/effect/mapping_helpers/airlock/autoname,
+/turf/simulated/floor/carpet/orange,
+/area/shuttle/trade/sol)
 "qLq" = (
 /obj/structure/table,
 /obj/item/paper_bin/nanotrasen{
@@ -20486,11 +20866,6 @@
 "qLO" = (
 /turf/simulated/floor/grass/jungle,
 /area/centcom/ss220/park)
-"qMa" = (
-/obj/structure/mopbucket,
-/obj/item/soap,
-/turf/simulated/floor/plasteel/freezer,
-/area/trader_station/sol)
 "qNg" = (
 /obj/structure/bookcase/random,
 /obj/effect/decal/cleanable/cobweb,
@@ -20725,11 +21100,10 @@
 	icon_state = "dark"
 	},
 /area/syndicate_mothership/elite_squad)
-"qUA" = (
-/obj/effect/spawner/lootdrop/trade_sol/sci,
-/obj/structure/closet,
-/turf/simulated/floor/mineral/titanium,
-/area/shuttle/trade/sol)
+"qUK" = (
+/obj/machinery/door/airlock/bathroom,
+/turf/simulated/floor/wood/fancy/cherry,
+/area/trader_station/sol)
 "qUN" = (
 /turf/simulated/floor/plasteel/dark{
 	dir = 5;
@@ -20899,6 +21273,12 @@
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/ninja/outpost)
+"rdO" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 9
+	},
+/turf/simulated/floor/carpet/green,
+/area/shuttle/trade/sol)
 "ref" = (
 /obj/effect/decal/cleanable/blood,
 /obj/machinery/flasher{
@@ -21074,6 +21454,12 @@
 	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/syndicate_mothership/control)
+"rlq" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 4
+	},
+/turf/simulated/floor/wood/fancy/birch,
+/area/shuttle/trade/sol)
 "rlL" = (
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
@@ -21450,11 +21836,30 @@
 /obj/structure/light_fake/small,
 /turf/simulated/floor/carpet,
 /area/centcom/ss220/general)
-"rvS" = (
-/obj/structure/flora/ausbushes/palebush,
-/obj/structure/flora/ausbushes/leafybush,
-/turf/simulated/floor/grass,
-/area/trader_station/sol)
+"rvD" = (
+/obj/structure/table/wood/fancy/orange,
+/obj/item/stack/packageWrap,
+/obj/item/stack/packageWrap{
+	pixel_y = 3
+	},
+/obj/item/stack/packageWrap{
+	pixel_y = 6
+	},
+/obj/item/stack/packageWrap{
+	pixel_y = 9
+	},
+/obj/item/hand_labeler{
+	pixel_y = 14
+	},
+/turf/simulated/floor/carpet/royalblue,
+/area/shuttle/trade/sol)
+"rvX" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/structure/chair/comfy/shuttle{
+	dir = 8
+	},
+/turf/simulated/floor/carpet/royalblack,
+/area/shuttle/trade/sol)
 "rwc" = (
 /turf/simulated/floor/carpet/black,
 /area/centcom/ss220/evac)
@@ -21585,10 +21990,6 @@
 /obj/machinery/computer/communications,
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/admin3)
-"rBM" = (
-/obj/machinery/light/spot,
-/turf/simulated/floor/mineral/titanium/blue,
-/area/shuttle/trade/sol)
 "rBS" = (
 /obj/structure/table/wood/fancy/black,
 /obj/item/storage/fancy/cigarettes/cigpack_shadyjims{
@@ -21772,6 +22173,13 @@
 /obj/structure/flora/junglebush,
 /turf/simulated/floor/grass/jungle/no_creep,
 /area/centcom/ss220/park)
+"rLD" = (
+/obj/structure/dresser,
+/obj/structure/mirror{
+	pixel_y = -30
+	},
+/turf/simulated/floor/wood/fancy/cherry,
+/area/trader_station/sol)
 "rLQ" = (
 /obj/structure/sign/directions/engineering{
 	desc = "A sign that shows there are doors here. There are doors everywhere!";
@@ -21813,6 +22221,16 @@
 	icon_state = "darkfull"
 	},
 /area/syndicate_mothership)
+"rND" = (
+/obj/structure/chair/sofa/corp/right{
+	dir = 8
+	},
+/obj/machinery/flasher{
+	id = "soltraderflash";
+	pixel_x = 24
+	},
+/turf/simulated/floor/wood/fancy/cherry,
+/area/shuttle/trade/sol)
 "rNY" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -21971,6 +22389,12 @@
 	},
 /turf/simulated/floor/carpet/black,
 /area/centcom/ss220/admin1)
+"rTz" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 6
+	},
+/turf/simulated/floor/carpet/green,
+/area/shuttle/trade/sol)
 "rTB" = (
 /obj/structure/railing{
 	dir = 1
@@ -22396,6 +22820,12 @@
 	icon_state = "freezerfloor"
 	},
 /area/syndicate_mothership)
+"sgR" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 8
+	},
+/turf/simulated/floor/wood/fancy/cherry,
+/area/shuttle/trade/sol)
 "siy" = (
 /obj/structure/chair/sofa{
 	dir = 8
@@ -22468,7 +22898,8 @@
 	},
 /area/syndicate_mothership/infteam)
 "skE" = (
-/turf/simulated/wall/indestructible/riveted,
+/obj/item/kirbyplants,
+/turf/simulated/floor/wood/fancy/cherry,
 /area/trader_station/sol)
 "slA" = (
 /obj/effect/decal/cleanable/dirt,
@@ -22685,14 +23116,6 @@
 	icon_state = "darkfull"
 	},
 /area/syndicate_mothership/infteam)
-"sxh" = (
-/obj/machinery/cryopod/offstation/right,
-/turf/simulated/floor/wood,
-/area/trader_station/sol)
-"sxJ" = (
-/obj/item/kirbyplants,
-/turf/simulated/floor/wood,
-/area/trader_station/sol)
 "sxS" = (
 /obj/structure/light_fake/spot{
 	dir = 8
@@ -23385,6 +23808,13 @@
 	icon_state = "fancy-wood-oak"
 	},
 /area/syndicate_mothership)
+"tbe" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 5
+	},
+/obj/item/kirbyplants,
+/turf/simulated/floor/carpet/royalblack,
+/area/shuttle/trade/sol)
 "tbJ" = (
 /obj/structure/bed,
 /obj/item/bedsheet/red,
@@ -23475,6 +23905,13 @@
 	water_overlay_image = null
 	},
 /area/syndicate_mothership/outside)
+"tdR" = (
+/obj/structure/shuttle/engine/platform{
+	layer = 2.9;
+	dir = 8
+	},
+/turf/simulated/floor/indestructible/transparent_floor,
+/area/shuttle/trade/sol)
 "tdY" = (
 /obj/structure/table/wood{
 	color = "#996633"
@@ -23547,6 +23984,13 @@
 	color = "#f63d3d"
 	},
 /area/syndicate_mothership/infteam)
+"thD" = (
+/obj/structure/table/holotable/wood{
+	color = "#996633"
+	},
+/obj/item/reagent_containers/food/snacks/sliceable/turkey,
+/turf/simulated/floor/carpet/black,
+/area/trader_station/sol)
 "thG" = (
 /obj/effect/landmark/spawner/syndicate_infiltrator_leader,
 /turf/simulated/floor/carpet/black,
@@ -23587,11 +24031,6 @@
 	},
 /turf/simulated/floor/plating/abductor,
 /area/abductor_ship)
-"tld" = (
-/obj/structure/flora/ausbushes/fullgrass,
-/obj/structure/flora/ausbushes/pointybush,
-/turf/simulated/floor/grass,
-/area/trader_station/sol)
 "tls" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -23609,6 +24048,9 @@
 	},
 /turf/simulated/floor/plating/airless,
 /area/shuttle/specops)
+"tma" = (
+/turf/simulated/floor/plasteel/dark,
+/area/trader_station/sol)
 "tmr" = (
 /obj/structure/table/glass,
 /obj/item/radio/headset/centcom{
@@ -23869,6 +24311,9 @@
 /obj/structure/curtain/open/shower/security,
 /turf/simulated/floor/carpet/black,
 /area/centcom/ss220/bar)
+"tyz" = (
+/turf/simulated/floor/carpet/arcade,
+/area/trader_station/sol)
 "tAi" = (
 /obj/machinery/atmospherics/portable/canister/oxygen{
 	anchored = 1;
@@ -23983,6 +24428,15 @@
 	icon_state = "fancy-wood-cherry"
 	},
 /area/syndicate_mothership/control)
+"tCg" = (
+/obj/structure/closet,
+/obj/effect/spawner/lootdrop/trade_sol/serv,
+/obj/machinery/light/spot{
+	dir = 1
+	},
+/obj/item/stack/tile/disco_light/thirty,
+/turf/simulated/floor/wood/fancy/cherry,
+/area/shuttle/trade/sol)
 "tCr" = (
 /obj/machinery/door/poddoor/multi_tile/four_tile_ver{
 	id_tag = "nukeop_storage";
@@ -24161,6 +24615,17 @@
 	icon_state = "dark"
 	},
 /area/syndicate_mothership/cargo)
+"tJQ" = (
+/obj/machinery/door/airlock/titanium/glass{
+	req_one_access_txt = "160"
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/wood,
+/obj/effect/mapping_helpers/airlock/autoname,
+/turf/simulated/floor/carpet/orange,
+/area/shuttle/trade/sol)
 "tKN" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Камера";
@@ -24216,6 +24681,13 @@
 	icon_state = "darkyellowaltstrip"
 	},
 /area/syndicate_mothership/control)
+"tMH" = (
+/obj/structure/dresser,
+/obj/structure/mirror{
+	pixel_y = 26
+	},
+/turf/simulated/floor/wood/fancy/cherry,
+/area/trader_station/sol)
 "tMP" = (
 /obj/structure/table/reinforced,
 /obj/item/kitchen/knife{
@@ -24311,12 +24783,6 @@
 /obj/structure/light_fake/spot,
 /turf/simulated/floor/carpet/black,
 /area/centcom/ss220/admin2)
-"tRf" = (
-/obj/machinery/door/airlock/centcom/glass{
-	name = "Jupiter Station Central Access"
-	},
-/turf/simulated/floor/wood,
-/area/trader_station/sol)
 "tRH" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/wood{
@@ -24364,22 +24830,6 @@
 	},
 /turf/simulated/floor/plating/abductor,
 /area/abductor_ship)
-"tSE" = (
-/obj/machinery/door/poddoor{
-	density = 0;
-	icon_state = "open";
-	id_tag = "soltradeship_south";
-	name = "Security Doors";
-	opacity = 0
-	},
-/obj/machinery/door/airlock/titanium/glass{
-	id_tag = "soltrader_south";
-	name = "trader shuttle airlock";
-	req_access_txt = "160";
-	security_level = 6
-	},
-/turf/simulated/floor/mineral/titanium/blue,
-/area/shuttle/trade/sol)
 "tTd" = (
 /obj/structure/curtain/black{
 	pixel_y = -32;
@@ -24515,6 +24965,9 @@
 	icon_state = "darkyellowalt"
 	},
 /area/centcom/ss220/supply)
+"tWI" = (
+/turf/simulated/wall/indestructible/wood,
+/area/trader_station/sol)
 "tXw" = (
 /obj/item/flag/wiz,
 /turf/simulated/floor/carpet/purple,
@@ -24542,6 +24995,10 @@
 /obj/effect/decal/nanotrasen_logo/n1,
 /turf/simulated/floor/plasteel,
 /area/centcom/ss220/evac)
+"tYC" = (
+/obj/structure/table/wood/poker,
+/turf/simulated/floor/carpet/arcade,
+/area/trader_station/sol)
 "tYW" = (
 /obj/structure/closet/boxinggloves,
 /turf/simulated/floor/wood,
@@ -24649,11 +25106,6 @@
 	dir = 8
 	},
 /area/shuttle/syndicate)
-"udB" = (
-/obj/structure/flora/ausbushes/lavendergrass,
-/obj/structure/flora/ausbushes/reedbush,
-/turf/simulated/floor/grass,
-/area/trader_station/sol)
 "udY" = (
 /obj/machinery/power/apc{
 	name = "Gamma Armory APC";
@@ -24790,10 +25242,32 @@
 	icon_state = "darkbluealt"
 	},
 /area/centcom/ss220/admin3)
+"ujQ" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 6
+	},
+/turf/simulated/floor/carpet/royalblue,
+/area/shuttle/trade/sol)
 "ukm" = (
 /obj/machinery/ai_status_display,
 /turf/simulated/wall/mineral/titanium,
 /area/shuttle/escape)
+"ulb" = (
+/obj/structure/table/wood/fancy/orange,
+/obj/machinery/door/poddoor/shutters{
+	density = 0;
+	icon_state = "open";
+	id_tag = "trader_privacy";
+	name = "Privacy Shutters";
+	opacity = 0
+	},
+/obj/machinery/door/window{
+	dir = 4;
+	name = "Стойка";
+	req_one_access_txt = "160"
+	},
+/turf/simulated/floor/wood/fancy/cherry,
+/area/shuttle/trade/sol)
 "uln" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -24893,6 +25367,12 @@
 	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/syndicate_mothership/jail)
+"upr" = (
+/obj/structure/light_fake{
+	dir = 8
+	},
+/turf/simulated/floor/wood/fancy/cherry,
+/area/trader_station/sol)
 "upJ" = (
 /obj/structure/chair/sofa/corner{
 	dir = 1
@@ -24990,6 +25470,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/syndicate_mothership/elite_squad)
+"utQ" = (
+/obj/machinery/economy/vending/cigarette/free,
+/turf/simulated/floor/plasteel{
+	icon_state = "grimy"
+	},
+/area/trader_station/sol)
 "uud" = (
 /obj/structure/holohoop{
 	dir = 8
@@ -25266,11 +25752,8 @@
 /turf/simulated/floor/fakespace,
 /area/centcom/ss220/bar)
 "uGR" = (
-/obj/item/kirbyplants,
-/obj/machinery/computer/cryopod{
-	pixel_y = 32
-	},
-/turf/simulated/floor/wood,
+/obj/structure/chair/comfy/red,
+/turf/simulated/floor/carpet/arcade,
 /area/trader_station/sol)
 "uHA" = (
 /obj/structure/table/glass,
@@ -25282,6 +25765,16 @@
 	},
 /turf/simulated/floor/carpet/black,
 /area/centcom/ss220/admin3)
+"uHG" = (
+/obj/structure/shuttle/engine/platform{
+	layer = 2.9;
+	dir = 8
+	},
+/obj/structure/shuttle/engine/large{
+	dir = 4
+	},
+/turf/simulated/floor/indestructible/transparent_floor,
+/area/shuttle/trade/sol)
 "uHI" = (
 /obj/structure/table/reinforced,
 /obj/machinery/cell_charger,
@@ -25310,6 +25803,12 @@
 	icon_state = "dark"
 	},
 /area/syndicate_mothership/elite_squad)
+"uIB" = (
+/obj/structure/chair/sofa/corp/right{
+	dir = 8
+	},
+/turf/simulated/floor/wood/fancy/cherry,
+/area/shuttle/trade/sol)
 "uIE" = (
 /obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/wood,
@@ -25388,12 +25887,6 @@
 	icon_state = "darkfull"
 	},
 /area/syndicate_mothership)
-"uMd" = (
-/obj/structure/urinal{
-	pixel_y = 28
-	},
-/turf/simulated/floor/plasteel/freezer,
-/area/trader_station/sol)
 "uMm" = (
 /obj/structure/flora/tree/jungle,
 /obj/item/flashlight/lantern{
@@ -25559,11 +26052,6 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/centcom/ss220/evac)
-"uQJ" = (
-/obj/effect/spawner/lootdrop/trade_sol/med,
-/obj/structure/closet,
-/turf/simulated/floor/mineral/titanium,
-/area/shuttle/trade/sol)
 "uRt" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -25930,16 +26418,24 @@
 /obj/effect/turf_decal/bot_white,
 /turf/simulated/floor/mineral/plastitanium,
 /area/syndicate_mothership/elite_squad)
-"vhT" = (
-/obj/structure/flora/ausbushes/fullgrass,
-/turf/simulated/floor/grass,
-/area/trader_station/sol)
 "vhV" = (
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "browncorner"
 	},
 /area/shuttle/escape)
+"vik" = (
+/obj/item/flag/solgov,
+/obj/machinery/economy/vending/wallmed{
+	pixel_y = 32
+	},
+/obj/structure/light_fake{
+	dir = 1
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "grimy"
+	},
+/area/trader_station/sol)
 "viA" = (
 /turf/simulated/floor/plating,
 /area/syndicate_mothership)
@@ -26129,6 +26625,12 @@
 	icon_state = "darkblue"
 	},
 /area/centcom/ss220/bar)
+"vpX" = (
+/obj/structure/chair/sofa,
+/turf/simulated/floor/plasteel{
+	icon_state = "grimy"
+	},
+/area/trader_station/sol)
 "vpZ" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
@@ -26145,17 +26647,6 @@
 	},
 /turf/simulated/floor/mineral/plastitanium,
 /area/syndicate_mothership/infteam)
-"vqs" = (
-/obj/effect/spawner/window/reinforced,
-/obj/machinery/door/poddoor/shutters{
-	density = 0;
-	icon_state = "open";
-	id_tag = "trader_privacy";
-	name = "Privacy Shutters";
-	opacity = 0
-	},
-/turf/simulated/floor/mineral/titanium/blue,
-/area/shuttle/trade/sol)
 "vqP" = (
 /obj/structure/window/reinforced{
 	color = "red";
@@ -26163,25 +26654,6 @@
 	},
 /turf/simulated/floor/carpet/black,
 /area/syndicate_mothership/control)
-"vqW" = (
-/obj/machinery/door_control/no_emag{
-	id = "soltrader_south";
-	name = "Trade Deposits Door";
-	normaldoorcontrol = 1;
-	pixel_x = 24;
-	pixel_y = 8;
-	req_access_txt = "160"
-	},
-/obj/machinery/flasher_button{
-	id = "soltraderflash";
-	pixel_x = 24;
-	pixel_y = -8
-	},
-/obj/machinery/computer/shuttle/trade/sol{
-	dir = 8
-	},
-/turf/simulated/floor/mineral/titanium/blue,
-/area/shuttle/trade/sol)
 "vrd" = (
 /obj/structure/flora/tree/jungle,
 /turf/simulated/floor/indestructible/grass/no_creep,
@@ -26825,6 +27297,16 @@
 	icon_state = "cafeteria"
 	},
 /area/centcom/ss220/bar)
+"vPR" = (
+/obj/structure/sink{
+	dir = 8;
+	pixel_x = -12
+	},
+/obj/structure/mirror{
+	pixel_x = -26
+	},
+/turf/simulated/floor/plasteel/freezer,
+/area/trader_station/sol)
 "vPU" = (
 /obj/effect/decal/syndie_logo{
 	icon_state = "logo4"
@@ -26985,6 +27467,12 @@
 	icon_state = "navybluecornersalt"
 	},
 /area/syndicate_mothership/control)
+"vXB" = (
+/obj/structure/chair/sofa/right,
+/turf/simulated/floor/plasteel{
+	icon_state = "grimy"
+	},
+/area/trader_station/sol)
 "vYt" = (
 /obj/structure/chair/comfy/green,
 /obj/structure/light_fake/spot{
@@ -27052,6 +27540,11 @@
 	name = "floor"
 	},
 /area/syndicate_mothership/elite_squad)
+"wae" = (
+/obj/structure/closet,
+/obj/effect/spawner/lootdrop/trade_sol/sci,
+/turf/simulated/floor/wood/fancy/cherry,
+/area/shuttle/trade/sol)
 "wap" = (
 /obj/structure/chair/sofa{
 	dir = 4
@@ -27078,6 +27571,9 @@
 	},
 /turf/simulated/floor/carpet/red,
 /area/centcom/ss220/bar)
+"wdF" = (
+/turf/simulated/floor/indestructible/transparent_floor,
+/area/shuttle/trade/sol)
 "wdG" = (
 /obj/machinery/computer/bsa_control/admin,
 /obj/structure/light_fake/spot{
@@ -27336,6 +27832,12 @@
 /obj/item/kirbyplants,
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/evac)
+"wpd" = (
+/obj/item/flag/solgov,
+/turf/simulated/floor/plasteel{
+	icon_state = "grimy"
+	},
+/area/trader_station/sol)
 "wql" = (
 /obj/structure/fence/corner{
 	color = "#b0b7c6";
@@ -27415,6 +27917,10 @@
 	},
 /turf/simulated/floor/wood/fancy/cherry,
 /area/centcom/ss220/admin2)
+"wtc" = (
+/obj/item/kirbyplants,
+/turf/simulated/floor/wood/fancy/cherry,
+/area/shuttle/trade/sol)
 "wtd" = (
 /obj/structure/table/wood/fancy/royalblack,
 /obj/item/radio/phone{
@@ -27475,15 +27981,6 @@
 	},
 /turf/simulated/floor/carpet/black,
 /area/centcom/ss220/admin2)
-"wwl" = (
-/obj/machinery/economy/atm{
-	pixel_y = 32
-	},
-/obj/structure/chair/comfy/shuttle{
-	dir = 8
-	},
-/turf/simulated/floor/mineral/titanium/blue,
-/area/shuttle/trade/sol)
 "wwG" = (
 /obj/structure/flora/junglebush/large{
 	pixel_y = -6
@@ -27819,6 +28316,11 @@
 	water_overlay_image = null
 	},
 /area/syndicate_mothership/outside)
+"wKA" = (
+/obj/structure/closet,
+/obj/effect/spawner/lootdrop/trade_sol/sec,
+/turf/simulated/floor/wood/fancy/cherry,
+/area/shuttle/trade/sol)
 "wKU" = (
 /obj/structure/light_fake/spot{
 	dir = 8
@@ -28140,6 +28642,12 @@
 	icon_state = "fancy-wood-oak"
 	},
 /area/syndicate_mothership)
+"wYb" = (
+/obj/machinery/computer/shuttle/trade/sol,
+/turf/simulated/floor/plasteel{
+	icon_state = "grimy"
+	},
+/area/trader_station/sol)
 "wYt" = (
 /obj/structure/reagent_dispensers/water_cooler,
 /turf/simulated/floor/carpet/black,
@@ -28284,6 +28792,13 @@
 /obj/structure/closet/cabinet/wizard,
 /turf/simulated/floor/carpet/black,
 /area/wizard_station)
+"xcA" = (
+/obj/structure/light_fake,
+/obj/structure/chair/comfy/blue{
+	dir = 1
+	},
+/turf/simulated/floor/carpet/arcade,
+/area/trader_station/sol)
 "xcG" = (
 /obj/structure/window/reinforced{
 	color = "red";
@@ -28568,6 +29083,12 @@
 	icon_state = "dark"
 	},
 /area/syndicate_mothership/control)
+"xiD" = (
+/obj/machinery/light/spot{
+	dir = 1
+	},
+/turf/simulated/floor/wood/fancy/cherry,
+/area/shuttle/trade/sol)
 "xjk" = (
 /obj/structure/bookcase{
 	name = "bookcase (Religious)"
@@ -28638,10 +29159,6 @@
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/supply)
-"xkf" = (
-/obj/effect/spawner/lootdrop/trade_sol/vehicle,
-/turf/simulated/floor/mineral/titanium,
-/area/shuttle/trade/sol)
 "xkj" = (
 /obj/structure/flora/rock/jungle,
 /turf/simulated/floor/grass/jungle/no_creep,
@@ -28678,6 +29195,13 @@
 /obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/plating,
 /area/centcom/ss220/jail)
+"xlk" = (
+/obj/structure/table/holotable/wood{
+	color = "#996633"
+	},
+/obj/item/dice/d20,
+/turf/simulated/floor/carpet/black,
+/area/trader_station/sol)
 "xlO" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Бар";
@@ -28717,6 +29241,18 @@
 	icon_state = "grimy"
 	},
 /area/centcom/ss220/general)
+"xns" = (
+/obj/machinery/door/airlock/titanium/glass{
+	req_one_access_txt = "160";
+	id_tag = "soltrader_south"
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/wood,
+/obj/effect/mapping_helpers/airlock/autoname,
+/turf/simulated/floor/carpet/orange,
+/area/shuttle/trade/sol)
 "xny" = (
 /obj/item/kirbyplants,
 /turf/simulated/floor/plasteel{
@@ -28863,6 +29399,13 @@
 /obj/structure/chair/stool,
 /turf/simulated/floor/beach/away/sand,
 /area/syndicate_mothership/outside)
+"xsO" = (
+/obj/structure/table/holotable/wood{
+	color = "#996633"
+	},
+/obj/item/kitchen/knife,
+/turf/simulated/floor/carpet/black,
+/area/trader_station/sol)
 "xtg" = (
 /obj/structure/flora/junglebush/large{
 	layer = 4.9
@@ -28932,9 +29475,6 @@
 	icon_state = "darkgrey"
 	},
 /area/syndicate_mothership)
-"xuq" = (
-/turf/simulated/floor/mineral/titanium,
-/area/shuttle/trade/sol)
 "xuw" = (
 /obj/effect/decal/syndie_logo{
 	icon_state = "logo9"
@@ -28993,6 +29533,10 @@
 	color = "#f63d3d"
 	},
 /area/syndicate_mothership/elite_squad)
+"xww" = (
+/obj/effect/turf_decal/siding/wood,
+/turf/simulated/floor/carpet/royalblue,
+/area/shuttle/trade/sol)
 "xwW" = (
 /obj/item/radio/intercom/syndicate{
 	pixel_y = 28
@@ -29034,6 +29578,20 @@
 	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
+"xyP" = (
+/turf/simulated/floor/carpet/royalblue,
+/area/shuttle/trade/sol)
+"xyW" = (
+/obj/effect/spawner/window/shuttle,
+/obj/machinery/door/poddoor/shutters{
+	density = 0;
+	icon_state = "open";
+	id_tag = "trader_privacy";
+	name = "Privacy Shutters";
+	opacity = 0
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/trade/sol)
 "xzc" = (
 /mob/living/carbon/human/monkey,
 /turf/simulated/floor/wood,
@@ -29146,15 +29704,36 @@
 /turf/simulated/floor/wood/fancy/cherry,
 /area/centcom/ss220/bar)
 "xEA" = (
-/obj/structure/mirror{
-	pixel_x = 28
+/obj/structure/closet/secure_closet/personal{
+	locked = 0
 	},
-/obj/structure/sink{
-	dir = 4;
-	pixel_x = 11
-	},
-/turf/simulated/floor/plasteel/freezer,
+/turf/simulated/floor/wood/fancy/cherry,
 /area/trader_station/sol)
+"xEB" = (
+/obj/machinery/door/airlock/titanium{
+	id_tag = "s_docking_airlock"
+	},
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/structure/fans/tiny,
+/obj/docking_port/stationary{
+	dir = 8;
+	dwidth = 2;
+	height = 11;
+	id = "trade_sol_base";
+	name = "docking bay 2 at Jupiter Station";
+	width = 5
+	},
+/obj/docking_port/mobile{
+	dir = 8;
+	dwidth = 7;
+	height = 18;
+	id = "trade_sol";
+	name = "sol trade shuttle";
+	width = 15;
+	dheight = 1
+	},
+/turf/simulated/floor/wood/fancy/cherry,
+/area/shuttle/trade/sol)
 "xEG" = (
 /obj/structure/light_fake/spot,
 /obj/effect/turf_decal/miscellaneous/goldensiding,
@@ -29286,22 +29865,6 @@
 	},
 /turf/simulated/floor/mineral/plastitanium,
 /area/syndicate_mothership/infteam)
-"xKF" = (
-/obj/machinery/door/poddoor{
-	density = 0;
-	icon_state = "open";
-	id_tag = "soltradeship_north";
-	name = "Security Doors";
-	opacity = 0
-	},
-/obj/machinery/door/airlock/titanium/glass{
-	id_tag = "soltrader_north";
-	name = "trader shuttle airlock";
-	req_access_txt = "160";
-	security_level = 6
-	},
-/turf/simulated/floor/mineral/titanium/blue,
-/area/shuttle/trade/sol)
 "xLF" = (
 /turf/simulated/wall/indestructible/riveted,
 /area/space/centcomm)
@@ -29686,23 +30249,6 @@
 	},
 /turf/simulated/floor/carpet/black,
 /area/centcom/ss220/general)
-"yeF" = (
-/obj/machinery/door/poddoor/shutters{
-	density = 0;
-	icon_state = "open";
-	id_tag = "trader_privacy";
-	name = "Privacy Shutters";
-	opacity = 0
-	},
-/obj/structure/table/reinforced,
-/obj/machinery/door/window{
-	dir = 8;
-	name = "Стойка";
-	opacity = 1;
-	req_one_access_txt = "160"
-	},
-/turf/simulated/floor/mineral/titanium/blue,
-/area/shuttle/trade/sol)
 "yeU" = (
 /obj/effect/turf_decal/delivery,
 /obj/structure/window/reinforced{
@@ -29714,6 +30260,12 @@
 	icon_state = "dark"
 	},
 /area/syndicate_mothership/cargo)
+"yfk" = (
+/obj/machinery/door/airlock/multi_tile/glass{
+	dir = 2
+	},
+/turf/simulated/floor/wood/fancy/cherry,
+/area/trader_station/sol)
 "yfn" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -29750,10 +30302,24 @@
 	icon_state = "darkfull"
 	},
 /area/syndicate_mothership/cargo)
+"ygJ" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 8
+	},
+/turf/simulated/floor/wood/fancy/birch,
+/area/shuttle/trade/sol)
 "ygY" = (
 /obj/machinery/economy/vending/cola/free,
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/admin3)
+"yhp" = (
+/obj/machinery/door/airlock/titanium{
+	id_tag = "s_docking_airlock"
+	},
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/structure/fans/tiny,
+/turf/simulated/floor/wood/fancy/cherry,
+/area/shuttle/trade/sol)
 "yhY" = (
 /obj/machinery/economy/vending/cola/free,
 /turf/simulated/floor/wood/fancy/oak,
@@ -29770,6 +30336,20 @@
 	icon_state = "cmo"
 	},
 /area/shuttle/escape)
+"yiF" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/shuttle/engine/platform{
+	layer = 2.9;
+	dir = 4
+	},
+/obj/structure/shuttle/engine/heater{
+	icon_state = "heater2x2";
+	dir = 4
+	},
+/turf/simulated/floor/plating/airless,
+/area/shuttle/trade/sol)
 "yiG" = (
 /obj/effect/overlay/palmtree_l,
 /turf/simulated/floor/beach/away/sand,
@@ -29783,6 +30363,10 @@
 	},
 /turf/simulated/floor/wood,
 /area/centcom/ss220/bar)
+"yiU" = (
+/obj/machinery/economy/vending/boozeomat,
+/turf/simulated/floor/carpet/black,
+/area/trader_station/sol)
 "yjy" = (
 /obj/structure/railing/corner{
 	dir = 1
@@ -29852,6 +30436,18 @@
 	},
 /turf/simulated/floor/wood,
 /area/wizard_station)
+"ylD" = (
+/obj/machinery/door/airlock/titanium/glass{
+	req_one_access_txt = "160";
+	id_tag = "soltrader_south"
+	},
+/obj/effect/turf_decal/siding/wood,
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/effect/mapping_helpers/airlock/autoname,
+/turf/simulated/floor/carpet/orange,
+/area/shuttle/trade/sol)
 
 (1,1,1) = {"
 sLM
@@ -82781,17 +83377,17 @@ adJ
 adJ
 adJ
 adJ
-skE
-skE
-skE
-skE
-skE
-skE
-skE
-skE
-skE
-skE
-skE
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
 adJ
 adJ
 "}
@@ -83038,17 +83634,17 @@ adJ
 adJ
 adJ
 adJ
-skE
-eNi
-beC
-lIM
-beC
-lIM
-dtp
-lIM
-dtp
-eNi
-skE
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
 adJ
 adJ
 "}
@@ -83280,34 +83876,34 @@ adJ
 adJ
 adJ
 adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-skE
-eNi
-eNi
-eNi
-eNi
-eNi
-eNi
-eNi
-eNi
-eNi
-skE
-adJ
-adJ
+tWI
+tWI
+tWI
+tWI
+tWI
+tWI
+tWI
+tWI
+tWI
+tWI
+tWI
+tWI
+tWI
+tWI
+tWI
+tWI
+tWI
+tWI
+tWI
+tWI
+tWI
+tWI
+tWI
+tWI
+tWI
+tWI
+tWI
+tWI
 "}
 (209,1,1) = {"
 adJ
@@ -83537,34 +84133,34 @@ adJ
 adJ
 adJ
 adJ
+tWI
 adJ
 adJ
 adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-skE
+gDO
 eNi
-jlX
-peW
-qUA
-peW
-dmq
-peW
-dws
+dqH
+dqH
+dqH
+dqH
 eNi
-skE
+gDO
 adJ
 adJ
+adJ
+tWI
+tma
+tma
+tma
+tma
+tma
+tma
+tma
+tma
+tma
+tma
+tma
+tWI
 "}
 (210,1,1) = {"
 adJ
@@ -83794,34 +84390,34 @@ adJ
 adJ
 adJ
 adJ
+tWI
 adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-skE
+gDO
 dqH
-lff
-peW
-uQJ
-peW
-bHw
-peW
-xkf
+eNi
+eNi
+tbe
+gnt
+lFy
+ffE
+eNi
+eNi
 dqH
-skE
+gDO
 adJ
-adJ
+tWI
+tma
+tma
+tma
+tma
+tma
+tma
+tma
+tma
+tma
+tma
+tma
+tWI
 "}
 (211,1,1) = {"
 adJ
@@ -84051,34 +84647,34 @@ adJ
 adJ
 adJ
 adJ
+tWI
 adJ
+dqH
+xyP
+xyP
+eYi
+fuv
+lLh
+rvX
+fuv
+eYi
+xyP
+xyP
+dqH
 adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-skE
-eNi
-qcD
-peW
-xuq
-peW
-xuq
-peW
-lJt
-eNi
-skE
-adJ
-adJ
+tWI
+tma
+tma
+tma
+tma
+tma
+tma
+tma
+tma
+tma
+tma
+tma
+tWI
 "}
 (212,1,1) = {"
 adJ
@@ -84308,34 +84904,34 @@ adJ
 adJ
 adJ
 adJ
+tWI
 adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-skE
+dqH
+dwj
+nSl
 eNi
-xuq
-xuq
-xuq
-xuq
-xuq
-mcN
-xuq
+xiD
+klj
+bjD
+gDq
 eNi
-skE
+nSl
+dwj
+dqH
 adJ
-adJ
+tWI
+tma
+tma
+tma
+tma
+tma
+tma
+tma
+tma
+tma
+tma
+tma
+tWI
 "}
 (213,1,1) = {"
 adJ
@@ -84565,34 +85161,34 @@ adJ
 adJ
 adJ
 adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-skE
+tWI
+gDO
 eNi
-peW
-quW
-mcN
-mcN
-mcN
-vqW
-peW
 eNi
-skE
-adJ
-adJ
+eNi
+eNi
+jnv
+eNi
+eNi
+qLd
+eNi
+eNi
+eNi
+eNi
+gDO
+tWI
+tma
+tma
+tma
+tma
+tma
+tma
+tma
+tma
+tma
+tma
+tma
+tWI
 "}
 (214,1,1) = {"
 adJ
@@ -84822,34 +85418,34 @@ adJ
 adJ
 adJ
 adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-skE
+tWI
 eNi
-jNR
-iav
-vqs
-yeF
-vqs
-iav
-jNR
+lcv
+iaF
+tJQ
+fuv
+fuv
+wKA
+glO
+fuv
+fuv
+eEq
+iaF
+pMK
 eNi
-skE
-adJ
-adJ
+tWI
+tma
+tma
+tma
+tma
+tma
+tma
+tma
+tma
+tma
+tma
+tma
+tWI
 "}
 (215,1,1) = {"
 adJ
@@ -85079,34 +85675,34 @@ adJ
 adJ
 adJ
 adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-skE
+tWI
 eNi
-peW
+abb
+ejt
 eNi
-wwl
-dUo
-ptk
+tCg
+ipZ
+fDq
+fDq
+hsv
+dkr
 eNi
-peW
+ejt
+inP
 eNi
-skE
-adJ
-adJ
+tWI
+tma
+tma
+tma
+tma
+tma
+tma
+tma
+tma
+tma
+tma
+tma
+tWI
 "}
 (216,1,1) = {"
 adJ
@@ -85336,34 +85932,34 @@ adJ
 adJ
 adJ
 adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-skE
+tWI
+eNi
 dqH
-lxv
-xKF
-peW
-peW
-peW
-tSE
-rBM
+lXX
+eNi
+pyC
+oGz
+gmg
+rvD
+xww
+wae
+eNi
+lXX
 dqH
-skE
-adJ
-adJ
+eNi
+tWI
+tma
+tma
+tma
+tma
+tma
+tma
+tma
+tma
+tma
+tma
+tma
+tWI
 "}
 (217,1,1) = {"
 adJ
@@ -85593,34 +86189,34 @@ adJ
 adJ
 adJ
 adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-skE
+tWI
 eNi
+ejt
+ejt
+tJQ
+fuv
+hAC
+pKe
+pKe
+ujQ
+fuv
+eEq
+ejt
+ejt
 eNi
-eNi
-dqH
-ocy
-dqH
-eNi
-eNi
-eNi
-skE
-adJ
-adJ
+tWI
+tma
+tma
+tma
+tma
+tma
+tma
+tma
+tma
+tma
+tma
+tma
+tWI
 "}
 (218,1,1) = {"
 adJ
@@ -85850,34 +86446,34 @@ adJ
 adJ
 adJ
 adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-skE
-skE
-skE
-skE
-skE
-bWS
-skE
-skE
-skE
-skE
-skE
-skE
-adJ
+tWI
+dqH
+rlq
+ejt
+eNi
+lGW
+bqN
+fuv
+fuv
+bqN
+kCt
+eNi
+ejt
+rlq
+dqH
+tWI
+tma
+tma
+tma
+tma
+tma
+tma
+tma
+tma
+tma
+tma
+tma
+tWI
 "}
 (219,1,1) = {"
 adJ
@@ -86107,34 +86703,34 @@ adJ
 adJ
 adJ
 adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-skE
-qnx
-ciJ
-sxJ
-skE
-uMd
-dgI
-dgI
-skE
-adJ
+tWI
+dqH
+jkk
+gcN
+eNi
+eNi
+ulb
+xyW
+xyW
+ulb
+eNi
+eNi
+cEr
+jkk
+dqH
+tWI
+tma
+tma
+tma
+tma
+tma
+tma
+tma
+tma
+tma
+tma
+tma
+tWI
 "}
 (220,1,1) = {"
 adJ
@@ -86364,34 +86960,34 @@ adJ
 adJ
 adJ
 adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-skE
-eMj
+tWI
+dqH
+ygJ
+ejt
+eNi
+hNI
+sgR
+wtc
+wtc
+sgR
+hNI
+eNi
+ejt
+ygJ
+dqH
+tWI
+tWI
 ciJ
-ciJ
-skE
-qMa
-dgI
-iud
-skE
-adJ
+yfk
+tWI
+tWI
+tWI
+tWI
+tWI
+tWI
+tWI
+tWI
+tWI
 "}
 (221,1,1) = {"
 adJ
@@ -86621,34 +87217,34 @@ adJ
 adJ
 adJ
 adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-skE
+tWI
+eNi
+jwK
+ejt
+xns
+fuv
+rdO
+ckR
+ckR
+oGg
+fuv
+ylD
+ejt
+jwK
+eNi
+pmY
+mSP
+ciJ
+ciJ
 bFg
-ciJ
-ciJ
-iZS
+mSP
+tWI
+tWI
 cEO
 xEA
+pwb
 skE
-skE
-adJ
+tWI
 "}
 (222,1,1) = {"
 adJ
@@ -86878,34 +87474,34 @@ adJ
 adJ
 adJ
 adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-skE
-sxJ
+tWI
+iav
+yiF
+mlh
+eNi
+hVJ
+lIT
+bux
+bux
+rTz
+dHo
+eNi
+yiF
+mlh
+iav
+pmY
+vXB
 ciJ
 ciJ
-skE
-skE
-skE
-skE
-skE
-adJ
+ciJ
+ciJ
+ciJ
+bGD
+aga
+aga
+aga
+rLD
+tWI
 "}
 (223,1,1) = {"
 adJ
@@ -87135,34 +87731,34 @@ adJ
 adJ
 adJ
 adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-skE
-mLB
+tWI
+gDO
+tdR
+uHG
+eNi
+uIB
+jvF
+fuv
+fuv
+rND
+hWx
+eNi
+tdR
+uHG
+gDO
+pmY
+vpX
 ciJ
 ciJ
-fmR
-lzb
-nWy
-adJ
-adJ
-adJ
+ciJ
+wpd
+mSP
+tWI
+aga
+aga
+aga
+kSM
+tWI
 "}
 (224,1,1) = {"
 adJ
@@ -87392,34 +87988,34 @@ adJ
 adJ
 adJ
 adJ
+tWI
 adJ
+wdF
+wdF
+iav
+eNi
+eNi
+yhp
+xEB
+eNi
+eNi
+iav
+wdF
+wdF
 adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-skE
-cCw
+pmY
+gbe
 ciJ
 ciJ
-iWX
-tld
-nWy
-adJ
-adJ
-adJ
+ciJ
+ciJ
+ciJ
+bGD
+aga
+aga
+aga
+rLD
+tWI
 "}
 (225,1,1) = {"
 adJ
@@ -87649,34 +88245,34 @@ adJ
 adJ
 adJ
 adJ
+tWI
 adJ
 adJ
 adJ
 adJ
 adJ
+tWI
+nbM
+nbM
+tWI
 adJ
 adJ
 adJ
 adJ
 adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-skE
-iKr
+pmY
+mSP
 ciJ
+ciJ
+tyz
 fCa
-igQ
-vhT
-nWy
-adJ
-adJ
-adJ
+fCa
+tWI
+cEO
+xEA
+eQb
+skE
+tWI
 "}
 (226,1,1) = {"
 adJ
@@ -87906,34 +88502,34 @@ adJ
 adJ
 adJ
 adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-skE
-skE
-uGR
+tWI
+tWI
+tWI
+tWI
+tWI
+tWI
+tWI
 ciJ
-fCa
-ogW
-cte
-nWy
-adJ
-adJ
-adJ
+ciJ
+tWI
+pmY
+pmY
+pmY
+pmY
+pmY
+tWI
+tWI
+ciJ
+ciJ
+uGR
+tYC
+tYC
+tWI
+tWI
+tWI
+tWI
+tWI
+tWI
 "}
 (227,1,1) = {"
 adJ
@@ -88163,34 +88759,34 @@ adJ
 adJ
 adJ
 adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-nWy
-sxh
+tWI
+gPD
+aga
+abF
+tWI
+mSP
+wYb
 ciJ
 ciJ
-fCa
-aIA
-hKF
-nWy
-adJ
-adJ
-adJ
+tWI
+lSz
+inT
+inT
+inT
+mSP
+tWI
+wpd
+ciJ
+ciJ
+uGR
+lRr
+xcA
+tWI
+gyx
+gyx
+gyx
+gyx
+tWI
 "}
 (228,1,1) = {"
 adJ
@@ -88420,34 +89016,34 @@ adJ
 adJ
 adJ
 adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-nWy
-sxh
+tWI
+skE
+aga
+aga
+bGD
 ciJ
 ciJ
 ciJ
-eGc
-rvS
-nWy
-adJ
-adJ
-adJ
+ciJ
+upr
+ciJ
+ciJ
+ciJ
+ciJ
+ciJ
+upr
+ciJ
+ciJ
+ciJ
+uGR
+tYC
+tyz
+tWI
+tWI
+tWI
+tWI
+tWI
+tWI
 "}
 (229,1,1) = {"
 adJ
@@ -88677,34 +89273,34 @@ adJ
 adJ
 adJ
 adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-nWy
-sxh
+tWI
+tMH
+nFp
+eQb
+tWI
+ggQ
 ciJ
 ciJ
 ciJ
-pRc
-udB
+ciJ
+ciJ
+ciJ
+ciJ
+ciJ
+ciJ
+ciJ
+ciJ
+ciJ
+ciJ
+tyz
+obm
+tyz
+tWI
+cEO
+xEA
+pwb
 skE
-adJ
-adJ
-adJ
+tWI
 "}
 (230,1,1) = {"
 adJ
@@ -88934,34 +89530,34 @@ adJ
 adJ
 adJ
 adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-skE
-skE
-lLW
-tRf
-tRf
-lLW
-skE
-skE
-adJ
-adJ
-adJ
+tWI
+tWI
+tWI
+tWI
+tWI
+vik
+ciJ
+ciJ
+hwc
+yiU
+aga
+gze
+gze
+gze
+aga
+jKa
+utQ
+ciJ
+ciJ
+ciJ
+ciJ
+ciJ
+bGD
+aga
+aga
+aga
+rLD
+tWI
 "}
 (231,1,1) = {"
 adJ
@@ -89191,34 +89787,34 @@ adJ
 adJ
 adJ
 adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-skE
-ifQ
-ifQ
-ifQ
-oCf
-skE
-adJ
-adJ
-adJ
-adJ
+tWI
+vPR
+nIM
+vPR
+tWI
+ggQ
+ciJ
+ciJ
+cZQ
+kOF
+aga
+xsO
+hyh
+bRL
+aga
+hwc
+lHU
+ciJ
+ciJ
+ciJ
+wpd
+mSP
+tWI
+aga
+aga
+aga
+kSM
+tWI
 "}
 (232,1,1) = {"
 adJ
@@ -89448,34 +90044,34 @@ adJ
 adJ
 adJ
 adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
+pmY
+dgI
+dgI
+dgI
+qUK
+ciJ
+ciJ
+ciJ
+hwc
+bMk
+aga
+xlk
+thD
+oGq
+aga
+cZQ
+gJB
+ciJ
+ciJ
+ciJ
+ciJ
+ciJ
+bGD
+aga
+aga
+aga
+rLD
+tWI
 "}
 (233,1,1) = {"
 adJ
@@ -89705,34 +90301,34 @@ adJ
 adJ
 adJ
 adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
+tWI
+oTI
+jww
+oTI
+tWI
+mSP
+htr
+mSP
+jKa
+kiQ
+aga
+oQC
+oQC
+oQC
+aga
+hwc
+cXw
+ciJ
+ciJ
+fba
+mSP
+tWI
+tWI
+cEO
+xEA
+eQb
+skE
+tWI
 "}
 (234,1,1) = {"
 adJ
@@ -89962,34 +90558,34 @@ adJ
 adJ
 adJ
 adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
+tWI
+tWI
+tWI
+tWI
+tWI
+tWI
+tWI
+tWI
+tWI
+tWI
+pmY
+pmY
+pmY
+pmY
+pmY
+tWI
+tWI
+tWI
+tWI
+tWI
+tWI
+tWI
+tWI
+tWI
+tWI
+tWI
+tWI
+tWI
 "}
 (235,1,1) = {"
 adJ
