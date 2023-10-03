@@ -1,4 +1,7 @@
 /* Intercom */
+/obj/item/radio/intercom
+   name = "\improper station intercom"
+
 /obj/item/radio/intercom/directional
     name = "\improper station intercom"
 
@@ -8,7 +11,6 @@
 
 /obj/item/radio/intercom/directional/north
     pixel_y = 22
-	dir = 2
 
 /obj/item/radio/intercom/directional/west
     pixel_x = -22
@@ -44,7 +46,6 @@
 
 /obj/machinery/alarm/directional/north
     pixel_y = 24
-	dir = 2
 
 /obj/machinery/alarm/directional/west
     pixel_x = -24
@@ -64,7 +65,6 @@
 
 /obj/machinery/firealarm/directional/north
     pixel_y = 24
-	dir = 2
 
 /obj/machinery/firealarm/directional/west
     pixel_x = -24
@@ -83,7 +83,6 @@
 
 /obj/machinery/firealarm/no_alarm/north
     pixel_y = 24
-	dir = 2
 
 /obj/machinery/firealarm/no_alarm/west
     pixel_x = -24
@@ -103,7 +102,6 @@
 
 /obj/machinery/light_switch/north
     pixel_y = 24
-	dir = 2
 
 /obj/machinery/light_switch/west
     pixel_x = -24
@@ -122,7 +120,6 @@
 
 /obj/machinery/holosign_switch/north
     pixel_y = 24
-	dir = 2
 
 /obj/machinery/holosign_switch/west
     pixel_x = -24
@@ -142,7 +139,6 @@
 
 /obj/machinery/keycard_auth/north
     pixel_y = 24
-	dir = 2
 
 /obj/machinery/keycard_auth/west
     pixel_x = -24
@@ -162,7 +158,6 @@
 
 /obj/machinery/door_control/directional/north
     pixel_y = 24
-	dir = 2
 
 /obj/machinery/door_control/directional/west
     pixel_x = -24
@@ -181,7 +176,6 @@
 
 /obj/machinery/door_control/no_emag/north
     pixel_y = 24
-	dir = 2
 
 /obj/machinery/door_control/no_emag/west
     pixel_x = -24
@@ -200,7 +194,6 @@
 
 /obj/machinery/button/windowtint/north
     pixel_y = 24
-	dir = 2
 
 /obj/machinery/button/windowtint/west
     pixel_x = -24
@@ -218,7 +211,6 @@
     dir = 1
 
 /obj/machinery/light/directional/north
-	dir = 2
 
 /obj/machinery/light/directional/west
     dir = 4
@@ -233,7 +225,6 @@
     dir = 1
 
 /obj/machinery/light/built/north
-	dir = 2
 
 /obj/machinery/light/built/west
     dir = 4
@@ -248,7 +239,6 @@
     dir = 1
 
 /obj/machinery/light/small/directional/north
-	dir = 2
 
 /obj/machinery/light/small/directional/west
     dir = 4
@@ -263,7 +253,6 @@
     dir = 1
 
 /obj/machinery/light/small/built/north
-	dir = 2
 
 /obj/machinery/light/small/built/west
     dir = 4
@@ -278,7 +267,6 @@
     dir = 1
 
 /obj/machinery/light_construct/directional/north
-	dir = 2
 
 /obj/machinery/light_construct/directional/west
     dir = 4
@@ -290,7 +278,6 @@
     dir = 1
 
 /obj/machinery/light_construct/small/north
-	dir = 2
 
 /obj/machinery/light_construct/small/west
     dir = 4
@@ -308,7 +295,6 @@
 
 /obj/structure/extinguisher_cabinet/directional/north
     pixel_y = 32
-	dir = 2
 
 /obj/structure/extinguisher_cabinet/directional/west
     pixel_x = -24
@@ -324,7 +310,6 @@
 
 /obj/structure/extinguisher_cabinet/empty/north
     pixel_y = 32
-	dir = 2
 
 /obj/structure/extinguisher_cabinet/empty/west
     pixel_x = -24
@@ -344,7 +329,6 @@
 
 /obj/machinery/power/apc/directional/north
     pixel_y = 24
-	dir = 2
 
 /obj/machinery/power/apc/directional/west
     pixel_x = -24
@@ -365,7 +349,6 @@
 
 /obj/machinery/power/apc/engie/north
     pixel_y = 24
-	dir = 2
 
 /obj/machinery/power/apc/engie/west
     pixel_x = -24
@@ -381,7 +364,6 @@
 
 /obj/machinery/power/apc/worn_out/north
     pixel_y = 24
-	dir = 2
 
 /obj/machinery/power/apc/worn_out/west
     pixel_x = -24
@@ -401,7 +383,6 @@
 
 /obj/structure/reagent_dispensers/fueltank/chem/north
     pixel_y = 32
-	dir = 2
 
 /obj/structure/reagent_dispensers/fueltank/chem/west
     pixel_x = -32
@@ -420,7 +401,6 @@
 
 /obj/structure/reagent_dispensers/virusfood/north
     pixel_y = 32
-	dir = 2
 
 /obj/structure/reagent_dispensers/virusfood/west
     pixel_x = -32
@@ -439,7 +419,6 @@
 
 /obj/structure/reagent_dispensers/spacecleanertank/north
     pixel_y = 32
-	dir = 2
 
 /obj/structure/reagent_dispensers/spacecleanertank/west
     pixel_x = -32
@@ -458,7 +437,6 @@
 
 /obj/structure/reagent_dispensers/peppertank/north
     pixel_y = 32
-	dir = 2
 
 /obj/structure/reagent_dispensers/peppertank/west
     pixel_x = -32
@@ -469,7 +447,7 @@
     dir = 8
 
 /* NewsCaster */
-/obj/machinery/newscaster
+/obj/machinery/newscaster/directional
 	name = "\improper newscaster"
 
 /obj/machinery/newscaster/directional/south
@@ -478,13 +456,30 @@
 
 /obj/machinery/newscaster/directional/north
     pixel_y = 28
-	dir = 2
 
 /obj/machinery/newscaster/directional/west
     pixel_x = -28
     dir = 4
 
 /obj/machinery/newscaster/directional/east
+    pixel_x = 28
+    dir = 8
+
+/obj/machinery/newscaster/security_unit
+	name = "\improper security newscaster"
+
+/obj/machinery/newscaster/security_unit/south
+    pixel_y = -28
+    dir = 1
+
+/obj/machinery/newscaster/security_unit/north
+    pixel_y = 28
+
+/obj/machinery/newscaster/security_unit/west
+    pixel_x = -28
+    dir = 4
+
+/obj/machinery/newscaster/security_unit/east
     pixel_x = 28
     dir = 8
 
@@ -498,7 +493,6 @@
 
 /obj/structure/sink/directional/north
     pixel_y = 18
-	dir = 2
 
 /obj/structure/sink/directional/west
     pixel_x = 12
@@ -514,7 +508,6 @@
 
 /obj/structure/sink/kitchen/north
     pixel_y = 18
-	dir = 2
 
 /obj/structure/sink/kitchen/west
     pixel_x = -11
