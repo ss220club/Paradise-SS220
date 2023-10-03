@@ -19,16 +19,19 @@
     dir = 8
 
 /* WallMed */
-/obj/machinery/economy/vending/wallmed/south
+/obj/machinery/economy/vending/wallmed
+	name = "\improper Emergency NanoMed"
+
+/obj/machinery/economy/vending/wallmed/directional/south
     pixel_y = -32
 
-/obj/machinery/economy/vending/wallmed/north
+/obj/machinery/economy/vending/wallmed/directional/north
     pixel_y = 32
 
-/obj/machinery/economy/vending/wallmed/west
+/obj/machinery/economy/vending/wallmed/directional/west
     pixel_x = -24
 
-/obj/machinery/economy/vending/wallmed/east
+/obj/machinery/economy/vending/wallmed/directional/east
     pixel_x = 24
 
 /* Air Alarm */
