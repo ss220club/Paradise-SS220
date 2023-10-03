@@ -66,7 +66,7 @@
 * Below are the operations for organics and IPC.
 */
 
-//Surgery for organics
+// Surgery for organics
 /datum/surgery/vocal_cords_surgery
 	name = "Vocal Cords Tuning Surgery"
 	steps = list(
@@ -92,7 +92,7 @@
 	var/target_vocal = "vocal cords"
 
 /datum/surgery_step/tune_vocal_cords/begin_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	user.visible_message("[user] begins to tune [target]'s vocals.", "<span class='notice'>You begin to tune [target]'s vocals...</span>")
+	 user.visible_message("[user] begins to tune [target]'s vocals.", span_notice("You begin to tune [target]'s vocals..."))
 	..()
 
 /datum/surgery_step/tune_vocal_cords/end_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/surgery/surgery)
@@ -108,7 +108,7 @@
 	target.apply_damage(10, BRUTE, head, sharp = TRUE)
 	return FALSE
 
-//Surgery for IPC
+// Surgery for IPC
 /datum/surgery/vocal_cords_surgery/ipc
 	name = "Microphone Setup Operation"
 	steps = list(
@@ -133,5 +133,5 @@
 
 /datum/surgery_step/tune_vocal_cords/ipc
 	name = "microphone setup"
-	allowed_tools = list(/obj/item/multitool = 100, /obj/item/screwdriver = 55, /obj/item/kitchen/knife = 20, /obj/item/scalpel = 25)
+	allowed_tools = list(/obj/item/multitool = 100, /obj/item/screwdriver = 55, /obj/item/scalpel = 25, /obj/item/kitchen/knife = 20)
 	target_vocal = "microphone"
