@@ -24,7 +24,7 @@ Old paths properties:
     property = @UNSET - will apply the rule only if the property is not mapedited
 """
 
-default_map_directory = "../../_maps/map_files220"
+default_map_directory = "../../_maps"
 replacement_re = re.compile(r'\s*(?P<path>[^{]*)\s*(\{(?P<props>.*)\})?')
 
 #urgent todo: replace with actual parser, this is slow as janitor in crit
