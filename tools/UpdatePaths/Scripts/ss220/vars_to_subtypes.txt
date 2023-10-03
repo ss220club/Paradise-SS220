@@ -188,6 +188,11 @@
 /obj/machinery/computer/security/telescreen/entertainment {pixel_x=-32} : /obj/machinery/computer/security/telescreen/entertainment/directional/west
 /obj/machinery/computer/security/telescreen/entertainment {pixel_x=32} : /obj/machinery/computer/security/telescreen/entertainment/directional/east
 
+/obj/machinery/economy/atm {pixel_y=-32} : /obj/machinery/economy/atm/south
+/obj/machinery/economy/atm {pixel_y=32} : /obj/machinery/economy/atm/north
+/obj/machinery/economy/atm {pixel_x=-32} : /obj/machinery/economy/atm/west
+/obj/machinery/economy/atm {pixel_x=32} : /obj/machinery/economy/atm/east
+
 /obj/machinery/door_control {pixel_y=-16;specialfunctions=4;normaldoorcontrol=1} : /obj/machinery/door_control/bolt_control/south {@OLD;pixel_y=@SKIP;name=@SKIP;specialfunctions=@SKIP;normaldoorcontrol=@SKIP}
 /obj/machinery/door_control {pixel_y=-17;specialfunctions=4;normaldoorcontrol=1} : /obj/machinery/door_control/bolt_control/south {@OLD;pixel_y=@SKIP;name=@SKIP;specialfunctions=@SKIP;normaldoorcontrol=@SKIP}
 /obj/machinery/door_control {pixel_y=-18;specialfunctions=4;normaldoorcontrol=1} : /obj/machinery/door_control/bolt_control/south {@OLD;pixel_y=@SKIP;name=@SKIP;specialfunctions=@SKIP;normaldoorcontrol=@SKIP}
@@ -439,6 +444,11 @@
 /obj/machinery/door_control/no_emag {pixel_x=-24} : /obj/machinery/door_control/no_emag/west {@OLD;pixel_x=@SKIP}
 /obj/machinery/door_control/no_emag {pixel_x=24} : /obj/machinery/door_control/no_emag/east {@OLD;pixel_x=@SKIP}
 
+/obj/machinery/access_button {pixel_y=-24} : /obj/machinery/access_button/south {@OLD;pixel_y=@SKIP}
+/obj/machinery/access_button {pixel_y=24} : /obj/machinery/access_button/north {@OLD;pixel_y=@SKIP}
+/obj/machinery/access_button {pixel_x=-24} : /obj/machinery/access_button/west {@OLD;pixel_x=@SKIP}
+/obj/machinery/access_button {pixel_x=24} : /obj/machinery/access_button/east {@OLD;pixel_x=@SKIP}
+
 /obj/machinery/button/windowtint {pixel_y=-16} : /obj/machinery/button/windowtint/south {@OLD;pixel_y=@SKIP;name=@SKIP}
 /obj/machinery/button/windowtint {pixel_y=-17} : /obj/machinery/button/windowtint/south {@OLD;pixel_y=@SKIP;name=@SKIP}
 /obj/machinery/button/windowtint {pixel_y=-18} : /obj/machinery/button/windowtint/south {@OLD;pixel_y=@SKIP;name=@SKIP}
@@ -519,7 +529,6 @@
 /obj/machinery/button/windowtint {pixel_x=33} : /obj/machinery/button/windowtint/east {@OLD;pixel_x=@SKIP;name=@SKIP}
 /obj/machinery/button/windowtint {pixel_x=34} : /obj/machinery/button/windowtint/east {@OLD;pixel_x=@SKIP;name=@SKIP}
 /obj/machinery/button/windowtint {pixel_x=35} : /obj/machinery/button/windowtint/east {@OLD;pixel_x=@SKIP;name=@SKIP}
-/obj/machinery/button/windowtint : /obj/machinery/button/windowtint {@OLD}
 
 /obj/machinery/power/apc {pixel_y=-24;name="south bump"} : /obj/machinery/power/apc/south
 /obj/machinery/power/apc {pixel_y=24;name="south north"} : /obj/machinery/power/apc/north
@@ -530,7 +539,7 @@
 /obj/machinery/power/apc {pixel_y=24;name="north bump Engineering"} : /obj/machinery/power/apc/engineering/north
 /obj/machinery/power/apc {pixel_x=-24;name="west bump Engineering"} : /obj/machinery/power/apc/engineering/west
 /obj/machinery/power/apc {pixel_x=24;name="east bump Engineering"} : /obj/machinery/power/apc/engineering/east
-/obj/machinery/power/apc {pixel_y=24;name="north bump Atmospherics"} : /obj/machinery/power/apc/engineering/north {OLD:cell_type}
+/obj/machinery/power/apc {pixel_y=24;name="north bump Atmospherics"} : /obj/machinery/power/apc/engineering/north {@OLD;name=@SKIP;dir=@SKIP;pixel_y=@SKIP;shock_proof=@SKIP}
 
 /obj/machinery/power/apc {pixel_y=-24;name="south bump Important Area"} : /obj/machinery/power/apc/important/south
 /obj/machinery/power/apc {pixel_y=24;name="north bump Important Area"} : /obj/machinery/power/apc/important/north

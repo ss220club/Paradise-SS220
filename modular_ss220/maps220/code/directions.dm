@@ -726,3 +726,29 @@ obj/machinery/power/apc/important
 
 /obj/machinery/computer/security/telescreen/entertainment/directional/east
 	pixel_x = 32
+
+/* ATM */
+/obj/machinery/economy/atm/south
+	pixel_y = -32
+
+/obj/machinery/economy/atm/north
+	pixel_y = 32
+
+/obj/machinery/economy/atm/west
+	pixel_x = -32
+
+/obj/machinery/economy/atm/east
+	pixel_x = 32
+
+/* Airlock Cycle Button */
+/obj/machinery/access_button/south
+	pixel_y = -24
+
+/obj/machinery/access_button/north
+	pixel_y = 24
+
+/obj/machinery/access_button/west
+	pixel_x = -24
+
+/obj/machinery/access_button/east
+	pixel_x = 24
