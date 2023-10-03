@@ -227,7 +227,7 @@
     dir = 8
 
 /obj/machinery/light/built
-	name "\improper light fixture"
+	name = "\improper light fixture"
 
 /obj/machinery/light/built/south
     dir = 1
@@ -242,7 +242,7 @@
     dir = 8
 
 /obj/machinery/light/small/directional
-	name "\improper light fixture"
+	name = "\improper light fixture"
 
 /obj/machinery/light/small/directional/south
     dir = 1
@@ -257,7 +257,7 @@
     dir = 8
 
 /obj/machinery/light/small/built
-	name "\improper light fixture"
+	name = "\improper light fixture"
 
 /obj/machinery/light/small/built/south
     dir = 1
