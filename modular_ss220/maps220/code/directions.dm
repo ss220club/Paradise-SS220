@@ -254,6 +254,22 @@
 /obj/machinery/light/directional/east
 	dir = 8
 
+/obj/machinery/light/nightshifted
+	name = "\improper light fixture"
+	nightshift_allowed = 0
+	nightshift_enabled = 1
+
+/obj/machinery/light/nightshifted/south
+	dir = 1
+
+/obj/machinery/light/nightshifted/north
+
+/obj/machinery/light/nightshifted/west
+	dir = 4
+
+/obj/machinery/light/nightshifted/east
+	dir = 8
+
 /obj/machinery/light/built
 	name = "\improper light fixture"
 
@@ -277,6 +293,22 @@
 /obj/machinery/light/small/directional/north
 
 /obj/machinery/light/small/directional/west
+	dir = 4
+
+/obj/machinery/light/small/directional/east
+	dir = 8
+
+/obj/machinery/light/small/nightshifted
+	name = "\improper light fixture"
+	nightshift_allowed = 0
+	nightshift_enabled = 1
+
+/obj/machinery/light/small/nightshifted/south
+	dir = 1
+
+/obj/machinery/light/small/nightshifted/north
+
+/obj/machinery/light/small/nightshifted/west
 	dir = 4
 
 /obj/machinery/light/small/directional/east
