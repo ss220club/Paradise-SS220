@@ -513,3 +513,28 @@
 /obj/structure/sink/kitchen/east
     pixel_x = 11
     dir = 8
+
+/* Posters */
+/obj/structure/sign/poster/contraband/random/south
+	pixel_y = -32
+
+/obj/structure/sign/poster/contraband/random/north
+	pixel_y = 32
+
+/obj/structure/sign/poster/contraband/random/west
+	pixel_x = -32
+
+/obj/structure/sign/poster/contraband/random/east
+	pixel_x = 32
+
+/obj/structure/sign/poster/official/random/south
+	pixel_y = -32
+
+/obj/structure/sign/poster/official/random/north
+	pixel_y = 32
+
+/obj/structure/sign/poster/official/random/west
+	pixel_x = -32
+
+/obj/structure/sign/poster/official/random/east
+	pixel_x = 32
