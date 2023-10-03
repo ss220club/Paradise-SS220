@@ -413,6 +413,25 @@
 	pixel_x = 24
 	dir = 4
 
+/obj/machinery/power/apc/cryo
+	name = "\improper Cryo and Arrivals Super APC"
+	cell_type = 20000
+
+/obj/machinery/power/apc/cryo/south
+	pixel_y = -24
+
+/obj/machinery/power/apc/cryo/north
+	pixel_y = 24
+	dir = 1
+
+/obj/machinery/power/apc/cryo/west
+	pixel_x = -24
+	dir = 8
+
+/obj/machinery/power/apc/cryo/east
+	pixel_x = 24
+	dir = 4
+
 obj/machinery/power/apc/important
 	name = "\improper Important APC"
 	cell_type = 5000
@@ -619,6 +638,7 @@ obj/machinery/power/apc/important
 /* Displays */
 /obj/machinery/status_display/directional
 	name = "\improper status display"
+	layer = ABOVE_WINDOW_LAYER
 
 /obj/machinery/status_display/directional/south
 	pixel_y = -32
@@ -644,6 +664,9 @@ obj/machinery/power/apc/important
 /obj/machinery/status_display/supply_display/east
 	pixel_x = 32
 
+/obj/machinery/ai_status_display
+	layer = ABOVE_WINDOW_LAYER
+
 /obj/machinery/ai_status_display/south
 	pixel_y = -32
 
@@ -658,6 +681,7 @@ obj/machinery/power/apc/important
 
 /obj/machinery/computer/security/telescreen/entertainment/directional
 	name = "\improper entertainment monitor"
+	layer = ABOVE_WINDOW_LAYER
 
 /obj/machinery/computer/security/telescreen/entertainment/directional/south
 	pixel_y = -32
