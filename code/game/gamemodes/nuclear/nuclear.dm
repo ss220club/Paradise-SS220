@@ -65,8 +65,7 @@
 	if(operative_mind in syndicates)
 		SSticker.mode.syndicates -= operative_mind
 		operative_mind.special_role = null
-		for(var/datum/objective/nuclear/O in operative_mind.objectives)
-			operative_mind.objectives -= O
+		operative_mind.objective_holder.clear(/datum/objective/nuclear)
 		operative_mind.current.create_attack_log("<span class='danger'>No longer nuclear operative</span>")
 		operative_mind.current.create_log(CONVERSION_LOG, "No longer nuclear operative")
 		if(issilicon(operative_mind.current))
@@ -238,19 +237,14 @@
 		message_admins("Warning: Operative [key_name_admin(synd_mind.current)] spawned without an ID card!")
 
 /datum/game_mode/proc/forge_syndicate_objectives(datum/mind/syndicate)
-	var/datum/objective/nuclear/syndobj = new
-	syndobj.owner = syndicate
-	syndicate.objectives += syndobj
-
+	syndicate.add_mind_objective(/datum/objective/nuclear)
 
 /datum/game_mode/proc/greet_syndicate(datum/mind/syndicate, you_are=1)
 	SEND_SOUND(syndicate.current, sound('sound/ambience/antag/ops.ogg'))
 	if(you_are)
 		to_chat(syndicate.current, "<span class='notice'>You are a [syndicate_name()] agent!</span>")
-	var/obj_count = 1
-	for(var/datum/objective/objective in syndicate.objectives)
-		to_chat(syndicate.current, "<B>Objective #[obj_count]</B>: [objective.explanation_text]")
-		obj_count++
+
+	syndicate.announce_objectives(title = FALSE)
 	to_chat(syndicate.current, "<span class='motd'>For more information, check the wiki page: ([GLOB.configuration.url.wiki_url]/index.php/Nuclear_Agent)</span>")
 	syndicate.current.create_log(MISC_LOG, "[syndicate.current] was made into a nuclear operative")
 
@@ -429,7 +423,7 @@
 
 /proc/nukelastname(mob/M as mob) //--All praise goes to NEO|Phyte, all blame goes to DH, and it was Cindi-Kate's idea. Also praise Urist for copypasta ho.
 	var/randomname = pick(GLOB.last_names)
-	var/newname = sanitize(copytext(input(M,"You are the nuke operative [pick("Czar", "Boss", "Commander", "Chief", "Kingpin", "Director", "Overlord")]. Please choose a last name for your family.", "Name change",randomname),1,MAX_NAME_LEN))
+	var/newname = sanitize(copytext_char(input(M,"You are the nuke operative [pick("Czar", "Boss", "Commander", "Chief", "Kingpin", "Director", "Overlord")]. Please choose a last name for your family.", "Name change",randomname),1,MAX_NAME_LEN)) // SS220 EDIT - ORIGINAL: copytext
 
 	if(!newname)
 		newname = randomname
