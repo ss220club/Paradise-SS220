@@ -50,7 +50,7 @@
 	},
 /area/awaymission/jungle_planet/outside)
 "adt" = (
-/obj/machinery/light_construct/small,
+/obj/machinery/light_construct/small/north,
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plasteel{
 	icon_state = "showroomfloor"
@@ -149,8 +149,7 @@
 /area/awaymission/jungle_planet/outside)
 "aiM" = (
 /obj/effect/turf_decal/delivery/white,
-/obj/machinery/door_control{
-	pixel_y = 28;
+/obj/machinery/door_control/shutter/north{
 	id = "Main in";
 	req_access = list(271)
 	},
@@ -246,8 +245,7 @@
 	pixel_y = -9
 	},
 /obj/item/clothing/accessory/stethoscope,
-/obj/machinery/door_control{
-	pixel_x = -27;
+/obj/machinery/door_control/shutter/west{
 	id = "CMDgate";
 	req_access = list(271)
 	},
@@ -1194,7 +1192,7 @@
 /obj/item/clothing/glasses/sunglasses{
 	pixel_y = 11
 	},
-/obj/machinery/light_construct,
+/obj/machinery/light_construct/directional/north,
 /turf/simulated/floor/plasteel{
 	icon_state = "redfull"
 	},
@@ -1619,7 +1617,7 @@
 /turf/simulated/floor/wood,
 /area/awaymission/jungle_planet/inside/complex)
 "cbj" = (
-/obj/machinery/light_construct,
+/obj/machinery/light_construct/directional/north,
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -1842,10 +1840,9 @@
 	name = "second hangar";
 	req_access = list(271)
 	},
-/obj/machinery/door_control{
+/obj/machinery/door_control/shutter/north{
 	id = "Cargo out";
-	req_access = list(271);
-	pixel_y = 28
+	req_access = list(271)
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -1895,7 +1892,7 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/outside/river)
 "crR" = (
-/obj/machinery/light_construct,
+/obj/machinery/light_construct/directional/north,
 /obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/plating,
 /area/awaymission/jungle_planet/inside/complex)
@@ -3062,8 +3059,7 @@
 /turf/simulated/floor/indestructible/grass,
 /area/awaymission/jungle_planet/outside/river)
 "dVT" = (
-/obj/machinery/door_control{
-	pixel_y = 28;
+/obj/machinery/door_control/shutter/north{
 	name = "Armory Shutters-control";
 	id = "Arm in";
 	req_access = list(271)
@@ -3237,7 +3233,7 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/outside)
 "efM" = (
-/obj/machinery/light_construct,
+/obj/machinery/light_construct/directional/north,
 /obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/inside/complex)
@@ -3528,7 +3524,7 @@
 /area/awaymission/jungle_planet/inside/complex)
 "evE" = (
 /obj/structure/toilet/material/gold,
-/obj/machinery/door_control{
+/obj/machinery/door_control/shutter{
 	layer = 2.9;
 	id = "gatelizard_piratcaptain";
 	name = "hidden button"
@@ -3882,8 +3878,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/jungle_planet/inside)
 "eRi" = (
-/obj/machinery/door_control{
-	pixel_x = 25;
+/obj/machinery/door_control/shutter/east{
 	id = "Right in";
 	req_access = list(271)
 	},
@@ -7152,7 +7147,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/light_construct,
+/obj/machinery/light_construct/directional/north,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "rampbottom"
@@ -7835,10 +7830,9 @@
 /area/awaymission/jungle_planet/inside/complex)
 "jFM" = (
 /obj/effect/decal/cleanable/blood/old,
-/obj/machinery/door_control{
+/obj/machinery/door_control/shutter/south{
 	id = "Cargo in";
-	req_access = list(271);
-	pixel_y = -32
+	req_access = list(271)
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -8040,8 +8034,7 @@
 	icon_state = "tracks";
 	dir = 4
 	},
-/obj/machinery/door_control{
-	pixel_y = -26;
+/obj/machinery/door_control/shutter/south{
 	id = "Sec in";
 	name = "Security Shutters-control";
 	req_access = list(271)
@@ -10802,7 +10795,7 @@
 "mVg" = (
 /obj/effect/turf_decal/delivery,
 /obj/structure/closet/crate,
-/obj/machinery/light_construct,
+/obj/machinery/light_construct/directional/north,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "darkgrey"
@@ -10825,26 +10818,23 @@
 /area/awaymission/jungle_planet/outside/cave/small)
 "mWX" = (
 /obj/structure/table/reinforced,
-/obj/machinery/door_control{
+/obj/machinery/door_control/shutter{
 	pixel_x = 8;
 	id = "Command";
 	name = "command shsutters control";
 	req_access = list(271)
 	},
-/obj/machinery/door_control{
+/obj/machinery/door_control/shutter{
 	pixel_x = -8;
 	name = "shutters control";
 	id = "Hang in";
 	req_access = list(271)
 	},
-/obj/machinery/door_control{
+/obj/machinery/door_control/bolt_control{
 	pixel_y = 8;
 	in_use = 1;
 	desiredstate_open = 1;
-	normaldoorcontrol = 1;
-	specialfunctions = 4;
-	id = "commanddoor";
-	name = "door bolts control"
+	id = "commanddoor"
 	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/inside/complex)
@@ -11539,7 +11529,7 @@
 	},
 /area/awaymission/jungle_planet/outside/river)
 "nSR" = (
-/obj/machinery/light_construct,
+/obj/machinery/light_construct/directional/north,
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/wood,
 /area/awaymission/jungle_planet/inside/complex)
@@ -11825,7 +11815,7 @@
 	icon_state = "tracks";
 	dir = 4
 	},
-/obj/machinery/light_construct/small,
+/obj/machinery/light_construct/small/north,
 /turf/simulated/floor/plating,
 /area/awaymission/jungle_planet/inside/complex)
 "onB" = (
@@ -12681,7 +12671,7 @@
 "pjP" = (
 /obj/item/stack/spacecash/c1000,
 /obj/item/stack/spacecash/c500,
-/obj/machinery/light/small{
+/obj/machinery/light/small/directional/north{
 	no_emergency = 1
 	},
 /obj/effect/spawner/random_spawners/dirt_often,
@@ -14709,8 +14699,7 @@
 /turf/simulated/wall/indestructible/rock/mineral,
 /area/awaymission/jungle_planet/outside)
 "rNJ" = (
-/obj/machinery/door_control{
-	pixel_y = -25;
+/obj/machinery/door_control/shutter/south{
 	id = "Main in";
 	req_access = list(271);
 	requires_power = 0
@@ -15149,7 +15138,7 @@
 "snP" = (
 /obj/effect/decal/warning_stripes/south,
 /obj/effect/decal/warning_stripes/south,
-/obj/machinery/light_construct,
+/obj/machinery/light_construct/directional/north,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "darkgrey"
@@ -15640,8 +15629,7 @@
 /area/awaymission/jungle_planet/inside/complex)
 "sQH" = (
 /obj/effect/decal/warning_stripes/south,
-/obj/machinery/door_control{
-	pixel_y = -32;
+/obj/machinery/door_control/shutter/south{
 	id = "Cargo in";
 	req_access = list(271)
 	},
@@ -16691,7 +16679,7 @@
 	icon_state = "4-8"
 	},
 /obj/effect/spawner/random_spawners/blood_often,
-/obj/machinery/light_construct,
+/obj/machinery/light_construct/directional/north,
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/inside/complex)
 "uca" = (
@@ -17367,7 +17355,7 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/outside)
 "uND" = (
-/obj/machinery/light_construct,
+/obj/machinery/light_construct/directional/north,
 /obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -17615,16 +17603,13 @@
 /obj/item/folder/yellow{
 	pixel_x = -5
 	},
-/obj/machinery/door_control{
+/obj/machinery/door_control/bolt_control{
 	pixel_x = 8;
 	desiredstate_open = 1;
 	in_use = 1;
-	normaldoorcontrol = 1;
-	specialfunctions = 4;
-	id = "hang2in";
-	name = "door bolts control"
+	id = "hang2in"
 	},
-/obj/machinery/door_control{
+/obj/machinery/door_control/shutter{
 	pixel_x = 8;
 	pixel_y = 8;
 	id = "gate_lizard_QM"
@@ -19405,8 +19390,7 @@
 /obj/item/ammo_casing/caseless/arrow,
 /obj/effect/spawner/random_spawners/blood_often,
 /obj/effect/spawner/random_spawners/dirt_often,
-/obj/machinery/door_control{
-	pixel_y = -28;
+/obj/machinery/door_control/shutter/south{
 	name = "Armory Shutters-control";
 	id = "Arm in";
 	req_access = list(271)

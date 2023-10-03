@@ -105,7 +105,7 @@
 "cB" = (
 /obj/item/bedsheet/black,
 /obj/structure/bed,
-/obj/machinery/light/small{
+/obj/machinery/light/small/directional/north{
 	brightness_range = 6;
 	light_range = 8;
 	nightshift_light_range = 6;
@@ -238,7 +238,7 @@
 /area/admin)
 "ea" = (
 /obj/structure/table/wood/poker,
-/obj/machinery/door_control{
+/obj/machinery/door_control/shutter{
 	id = "eventroom";
 	name = "Ready room";
 	pixel_x = -6;
@@ -1919,9 +1919,8 @@
 	},
 /obj/item/radio,
 /obj/structure/table/wood,
-/obj/machinery/door_control/no_emag{
+/obj/machinery/door_control/no_emag/east{
 	id = "tdome1";
-	pixel_x = 24;
 	req_access_txt = "102"
 	},
 /turf/simulated/floor/plasteel{
@@ -2234,7 +2233,7 @@
 /obj/machinery/status_display{
 	pixel_y = -30
 	},
-/obj/machinery/light/small{
+/obj/machinery/light/small/directional/north{
 	brightness_range = 6;
 	light_range = 8;
 	nightshift_light_range = 6;
@@ -3084,9 +3083,8 @@
 	},
 /obj/item/radio,
 /obj/structure/table/wood,
-/obj/machinery/door_control/no_emag{
+/obj/machinery/door_control/no_emag/west{
 	id = "tdome2";
-	pixel_x = -24;
 	req_access_txt = "102"
 	},
 /turf/simulated/floor/plasteel{

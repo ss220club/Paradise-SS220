@@ -340,7 +340,7 @@
 	},
 /area/awaymission/UO71/plaza)
 "bc" = (
-/obj/machinery/light/small,
+/obj/machinery/light/small/directional/north,
 /obj/machinery/alarm/monitor{
 	dir = 1;
 	locked = 0;
@@ -768,12 +768,8 @@
 /obj/structure/chair/wood{
 	dir = 1
 	},
-/obj/machinery/door_control{
-	id = "awaydorm2";
-	name = "Door Bolt Control";
-	normaldoorcontrol = 1;
-	pixel_y = -25;
-	specialfunctions = 4
+/obj/machinery/door_control/bolt_control/south{
+	id = "awaydorm2"
 	},
 /obj/machinery/atmospherics/unary/vent_pump{
 	dir = 4;
@@ -804,12 +800,8 @@
 	dir = 1;
 	on = 1
 	},
-/obj/machinery/door_control{
-	id = "awaydorm1";
-	name = "Door Bolt Control";
-	normaldoorcontrol = 1;
-	pixel_y = -25;
-	specialfunctions = 4
+/obj/machinery/door_control/bolt_control/south{
+	id = "awaydorm1"
 	},
 /turf/simulated/floor/carpet,
 /area/awaymission/UO71/plaza)
@@ -1814,12 +1806,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/door_control{
-	id = "awaydorm3";
-	name = "Door Bolt Control";
-	normaldoorcontrol = 1;
-	pixel_y = 25;
-	specialfunctions = 4
+/obj/machinery/door_control/bolt_control/north{
+	id = "awaydorm3"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
@@ -1907,7 +1895,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/UO71/centralhall)
 "fl" = (
-/obj/machinery/light/small,
+/obj/machinery/light/small/directional/north,
 /obj/machinery/alarm/monitor{
 	dir = 1;
 	locked = 0;
@@ -3044,7 +3032,7 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/UO71/gateway)
 "if" = (
-/obj/machinery/light/small,
+/obj/machinery/light/small/directional/north,
 /turf/simulated/floor/vault,
 /area/awaymission/UO71/prince)
 "ig" = (
@@ -4257,7 +4245,7 @@
 /area/awaymission/UO71/science)
 "lh" = (
 /obj/structure/closet/firecloset,
-/obj/machinery/light/small,
+/obj/machinery/light/small/directional/north,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes/south,
 /turf/simulated/floor/plasteel{
@@ -4321,7 +4309,7 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/UO71/centralhall)
 "lo" = (
-/obj/machinery/light/small,
+/obj/machinery/light/small/directional/north,
 /turf/simulated/floor/plasteel,
 /area/awaymission/UO71/centralhall)
 "lp" = (
@@ -5009,12 +4997,11 @@
 /obj/item/stack/rods{
 	amount = 50
 	},
-/obj/machinery/door_control{
+/obj/machinery/door_control/shutter/south{
 	desc = "A remote control-switch for secure storage.";
 	id = "UO71_Secure Storage";
 	name = "Engineering Secure Storage";
 	pixel_x = 6;
-	pixel_y = -24;
 	req_access = list(271)
 	},
 /turf/simulated/floor/plating,
@@ -5077,7 +5064,7 @@
 	pixel_y = -24;
 	start_charge = 100
 	},
-/obj/machinery/light/small,
+/obj/machinery/light/small/directional/north,
 /obj/structure/rack{
 	dir = 8;
 	layer = 2.9
@@ -5241,12 +5228,8 @@
 /obj/machinery/atmospherics/unary/vent_scrubber{
 	on = 1
 	},
-/obj/machinery/door_control{
-	id = "awaydorm5";
-	name = "Door Bolt Control";
-	normaldoorcontrol = 1;
-	pixel_y = -25;
-	specialfunctions = 4
+/obj/machinery/door_control/bolt_control/south{
+	id = "awaydorm5"
 	},
 /obj/structure/chair/wood{
 	dir = 1
@@ -5274,12 +5257,8 @@
 /turf/simulated/floor/carpet,
 /area/awaymission/UO71/centralhall)
 "nm" = (
-/obj/machinery/door_control{
-	id = "awaydorm7";
-	name = "Door Bolt Control";
-	normaldoorcontrol = 1;
-	pixel_y = -25;
-	specialfunctions = 4
+/obj/machinery/door_control/bolt_control/south{
+	id = "awaydorm7"
 	},
 /turf/simulated/floor/carpet,
 /area/awaymission/UO71/centralhall)
@@ -6396,7 +6375,7 @@
 	},
 /area/awaymission/UO71/centralhall)
 "pq" = (
-/obj/machinery/light/small,
+/obj/machinery/light/small/directional/north,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -6787,12 +6766,8 @@
 	dir = 1;
 	on = 1
 	},
-/obj/machinery/door_control{
-	id = "awaydorm4";
-	name = "Door Bolt Control";
-	normaldoorcontrol = 1;
-	pixel_x = -25;
-	specialfunctions = 4
+/obj/machinery/door_control/bolt_control/west{
+	id = "awaydorm4"
 	},
 /turf/simulated/floor/carpet,
 /area/awaymission/UO71/centralhall)
@@ -6808,12 +6783,8 @@
 	dir = 1;
 	on = 1
 	},
-/obj/machinery/door_control{
-	id = "awaydorm6";
-	name = "Door Bolt Control";
-	normaldoorcontrol = 1;
-	pixel_x = 25;
-	specialfunctions = 4
+/obj/machinery/door_control/bolt_control/east{
+	id = "awaydorm6"
 	},
 /turf/simulated/floor/carpet,
 /area/awaymission/UO71/centralhall)
@@ -7351,7 +7322,7 @@
 	dir = 5;
 	initialize_directions = 5
 	},
-/obj/machinery/light/small,
+/obj/machinery/light/small/directional/north,
 /turf/simulated/floor/plasteel,
 /area/awaymission/UO71/eng)
 "rB" = (
@@ -8177,7 +8148,7 @@
 	},
 /area/awaymission/UO71/centralhall)
 "td" = (
-/obj/machinery/light/small,
+/obj/machinery/light/small/directional/north,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -8534,11 +8505,10 @@
 	network = list("UO71");
 	dir = 1
 	},
-/obj/machinery/door_control{
+/obj/machinery/door_control/shutter/west{
 	desc = "A remote control-switch for the security privacy shutters.";
 	id = "UO71_EngineeringOffice";
 	name = "Privacy Shutters";
-	pixel_x = -24;
 	pixel_y = 6;
 	req_access = list(271)
 	},
@@ -8893,11 +8863,10 @@
 	dir = 1;
 	on = 1
 	},
-/obj/machinery/door_control{
+/obj/machinery/door_control/shutter/east{
 	desc = "A remote control-switch for the engineering security doors.";
 	id = "UO71_Engineering";
 	name = "Engineering Lockdown";
-	pixel_x = 24;
 	pixel_y = 6;
 	req_access = list(271)
 	},
@@ -9288,7 +9257,7 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/UO71/eng)
 "vD" = (
-/obj/machinery/light,
+/obj/machinery/light/directional/north,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel,
 /area/awaymission/UO71/bridge)
@@ -9452,7 +9421,7 @@
 /area/awaymission/UO71/bridge)
 "vW" = (
 /obj/structure/table,
-/obj/machinery/door_control{
+/obj/machinery/door_control/shutter{
 	desc = "A remote control-switch for heavy lockdown doors.";
 	id = "UO71_Containment";
 	name = "Science Containment Doors";
@@ -9464,7 +9433,7 @@
 /area/awaymission/UO71/bridge)
 "vX" = (
 /obj/structure/table,
-/obj/machinery/door_control{
+/obj/machinery/door_control/shutter{
 	desc = "A remote control-switch for heavy lockdown doors.";
 	id = "UO71_Queen";
 	name = "Terror Queen Containment Doors";
@@ -9476,7 +9445,7 @@
 /area/awaymission/UO71/bridge)
 "vY" = (
 /obj/structure/table,
-/obj/machinery/door_control{
+/obj/machinery/door_control/shutter{
 	desc = "A remote control-switch for heavy lockdown doors.";
 	id = "UO71_Armory";
 	name = "Armory Doors";
@@ -9605,7 +9574,7 @@
 /obj/machinery/atmospherics/air_sensor{
 	autolink_id = "UO71_n2_sensor"
 	},
-/obj/machinery/light/small,
+/obj/machinery/light/small/directional/north,
 /turf/simulated/floor/engine/n2,
 /area/awaymission/UO71/eng)
 "wm" = (
@@ -9616,7 +9585,7 @@
 /obj/machinery/atmospherics/air_sensor{
 	autolink_id = "UO71_o2_sensor"
 	},
-/obj/machinery/light/small,
+/obj/machinery/light/small/directional/north,
 /turf/simulated/floor/engine/o2,
 /area/awaymission/UO71/eng)
 "wo" = (
@@ -9894,7 +9863,7 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/UO71/bridge)
 "wV" = (
-/obj/machinery/light,
+/obj/machinery/light/directional/north,
 /turf/simulated/floor/plasteel,
 /area/awaymission/UO71/bridge)
 "wW" = (
@@ -10032,12 +10001,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/door_control{
-	id = "awaydorm8";
-	name = "Door Bolt Control";
-	normaldoorcontrol = 1;
-	pixel_y = -25;
-	specialfunctions = 4
+/obj/machinery/door_control/bolt_control/south{
+	id = "awaydorm8"
 	},
 /turf/simulated/floor/carpet,
 /area/awaymission/UO71/mining)
@@ -10192,7 +10157,7 @@
 /area/awaymission/UO71/eng)
 "xE" = (
 /obj/structure/sink/directional/west,
-/obj/machinery/light/small,
+/obj/machinery/light/small/directional/north,
 /obj/structure/mirror{
 	pixel_x = 28
 	},
@@ -10218,12 +10183,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/door_control{
-	id = "awaydorm9";
-	name = "Door Bolt Control";
-	normaldoorcontrol = 1;
-	pixel_y = 25;
-	specialfunctions = 4
+/obj/machinery/door_control/bolt_control/north{
+	id = "awaydorm9"
 	},
 /turf/simulated/floor/carpet,
 /area/awaymission/UO71/mining)
@@ -10298,7 +10259,7 @@
 	},
 /area/awaymission/UO71/eng)
 "xO" = (
-/obj/machinery/light/small,
+/obj/machinery/light/small/directional/north,
 /obj/structure/bed,
 /obj/item/bedsheet,
 /turf/simulated/floor/carpet,
@@ -10322,7 +10283,7 @@
 	pixel_y = -24;
 	start_charge = 1
 	},
-/obj/machinery/light/small,
+/obj/machinery/light/small/directional/north,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -10459,24 +10420,22 @@
 	},
 /area/awaymission/UO71/eng)
 "yd" = (
-/obj/machinery/light/small,
+/obj/machinery/light/small/directional/north,
 /obj/machinery/computer/atmos_alert{
 	dir = 1
 	},
-/obj/machinery/door_control{
+/obj/machinery/door_control/shutter/south{
 	desc = "A remote control-switch for the engineering security doors.";
 	id = "UO71_Engineering";
 	name = "Engineering Lockdown";
 	pixel_x = -6;
-	pixel_y = -24;
 	req_access = list(271)
 	},
-/obj/machinery/door_control{
+/obj/machinery/door_control/shutter/south{
 	desc = "A remote control-switch for secure storage.";
 	id = "UO71_Secure Storage";
 	name = "Engineering Secure Storage";
 	pixel_x = 6;
-	pixel_y = -24;
 	req_access = list(271)
 	},
 /turf/simulated/floor/plasteel{
@@ -10879,7 +10838,7 @@
 /area/awaymission/UO71/queen)
 "zm" = (
 /obj/structure/table,
-/obj/machinery/light,
+/obj/machinery/light/directional/north,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel,
 /area/awaymission/UO71/queen)
@@ -11052,11 +11011,11 @@
 /obj/structure/chair/wood{
 	dir = 8
 	},
-/obj/machinery/light,
+/obj/machinery/light/directional/north,
 /turf/simulated/floor/wood,
 /area/awaymission/UO71/queen)
 "Ah" = (
-/obj/machinery/light,
+/obj/machinery/light/directional/north,
 /turf/simulated/floor/wood,
 /area/awaymission/UO71/queen)
 "AW" = (

@@ -146,21 +146,60 @@
 	dir = 8
 
 /* Buttons */
-/obj/machinery/door_control/directional
+/obj/machinery/door_control/bolt_control
 	name = "\improper Door Bolt Control"
+	normaldoorcontrol = 1
+	specialfunctions = 4
 
-/obj/machinery/door_control/directional/south
+/obj/machinery/door_control/bolt_control/south
 	pixel_y = -24
 	dir = 1
 
-/obj/machinery/door_control/directional/north
+/obj/machinery/door_control/bolt_control/north
 	pixel_y = 24
 
-/obj/machinery/door_control/directional/west
+/obj/machinery/door_control/bolt_control/west
 	pixel_x = -24
 	dir = 4
 
-/obj/machinery/door_control/directional/east
+/obj/machinery/door_control/bolt_control/east
+	pixel_x = 24
+	dir = 8
+
+/obj/machinery/door_control/normal
+	name = "\improper Door Control"
+	normaldoorcontrol = 1
+
+/obj/machinery/door_control/normal/south
+	pixel_y = -24
+	dir = 1
+
+/obj/machinery/door_control/normal/north
+	pixel_y = 24
+
+/obj/machinery/door_control/normal/west
+	pixel_x = -24
+	dir = 4
+
+/obj/machinery/door_control/normal/east
+	pixel_x = 24
+	dir = 8
+
+/obj/machinery/door_control/shutter
+	name = "\improper Shutters Control"
+
+/obj/machinery/door_control/shutter/south
+	pixel_y = -24
+	dir = 1
+
+/obj/machinery/door_control/shutter/north
+	pixel_y = 24
+
+/obj/machinery/door_control/shutter/west
+	pixel_x = -24
+	dir = 4
+
+/obj/machinery/door_control/shutter/east
 	pixel_x = 24
 	dir = 8
 
