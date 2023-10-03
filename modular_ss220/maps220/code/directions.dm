@@ -374,23 +374,61 @@
 	pixel_x = 24
 	dir = 4
 
-/obj/machinery/power/apc/engie
+/obj/machinery/power/apc/engineering
 	name = "\improper Engineering APC"
-	cell_type = 25000
 	shock_proof = TRUE
 
-/obj/machinery/power/apc/engie/south
+/obj/machinery/power/apc/engineering/south
 	pixel_y = -24
 
-/obj/machinery/power/apc/engie/north
+/obj/machinery/power/apc/engineering/north
 	pixel_y = 24
 	dir = 1
 
-/obj/machinery/power/apc/engie/west
+/obj/machinery/power/apc/engineering/west
 	pixel_x = -24
 	dir = 8
 
-/obj/machinery/power/apc/engie/east
+/obj/machinery/power/apc/engineering/east
+	pixel_x = 24
+	dir = 4
+
+/obj/machinery/power/apc/super
+	name = "\improper Super APC"
+	cell_type = 25000
+	shock_proof = TRUE
+
+/obj/machinery/power/apc/super/south
+	pixel_y = -24
+
+/obj/machinery/power/apc/super/north
+	pixel_y = 24
+	dir = 1
+
+/obj/machinery/power/apc/super/west
+	pixel_x = -24
+	dir = 8
+
+/obj/machinery/power/apc/super/east
+	pixel_x = 24
+	dir = 4
+
+obj/machinery/power/apc/important
+	name = "\improper Important APC"
+	cell_type = 5000
+
+/obj/machinery/power/apc/important/south
+	pixel_y = -24
+
+/obj/machinery/power/apc/important/north
+	pixel_y = 24
+	dir = 1
+
+/obj/machinery/power/apc/important/west
+	pixel_x = -24
+	dir = 8
+
+/obj/machinery/power/apc/important/east
 	pixel_x = 24
 	dir = 4
 

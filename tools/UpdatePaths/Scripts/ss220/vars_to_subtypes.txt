@@ -1,38 +1,41 @@
-/obj/item/radio/intercom {dir=1;name="south bump";pixel_y=-22} : /obj/item/radio/intercom/directional/south
-/obj/item/radio/intercom {name="north bump";pixel_y=22} : /obj/item/radio/intercom/directional/north
-/obj/item/radio/intercom {dir=4;name="west bump";pixel_x=-22} : /obj/item/radio/intercom/directional/west
-/obj/item/radio/intercom {dir=8;name="east bump";pixel_x=22} : /obj/item/radio/intercom/directional/east
+/obj/item/radio/intercom {pixel_y=-22} : /obj/item/radio/intercom/directional/south
+/obj/item/radio/intercom {pixel_x=-22} : /obj/item/radio/intercom/directional/west
+/obj/item/radio/intercom {pixel_x=22} : /obj/item/radio/intercom/directional/east
+/obj/item/radio/intercom {pixel_y=22} : /obj/item/radio/intercom/directional/north
 /obj/item/radio/intercom {name="custom placement"} : /obj/item/radio/intercom
 
-/obj/machinery/economy/vending/wallmed {name="Emergency NanoMed";pixel_y=-32} : /obj/machinery/economy/vending/wallmed/directional/south
-/obj/machinery/economy/vending/wallmed {name="Emergency NanoMed";pixel_y=-28} : /obj/machinery/economy/vending/wallmed/directional/south
-/obj/machinery/economy/vending/wallmed {name="Emergency NanoMed";pixel_y=32} : /obj/machinery/economy/vending/wallmed/directional/north
+/obj/machinery/economy/vending/wallmed {pixel_y=-32} : /obj/machinery/economy/vending/wallmed/directional/south
+/obj/machinery/economy/vending/wallmed {pixel_y=-28} : /obj/machinery/economy/vending/wallmed/directional/south
 /obj/machinery/economy/vending/wallmed {pixel_y=32} : /obj/machinery/economy/vending/wallmed/directional/north
-/obj/machinery/economy/vending/wallmed {name="Emergency NanoMed";pixel_y=28} : /obj/machinery/economy/vending/wallmed/directional/north
-/obj/machinery/economy/vending/wallmed {name="Emergency NanoMed";pixel_x=-28} : /obj/machinery/economy/vending/wallmed/directional/west
-/obj/machinery/economy/vending/wallmed {name="Emergency NanoMed";pixel_x=28} : /obj/machinery/economy/vending/wallmed/directional/east
-/obj/machinery/economy/vending/wallmed {name="Emergency NanoMed";pixel_x=-25} : /obj/machinery/economy/vending/wallmed/directional/west
-/obj/machinery/economy/vending/wallmed {name="Emergency NanoMed";pixel_x=28;layer=3.3} : /obj/machinery/economy/vending/wallmed/directional/east
+/obj/machinery/economy/vending/wallmed {pixel_y=28} : /obj/machinery/economy/vending/wallmed/directional/north
+/obj/machinery/economy/vending/wallmed {pixel_x=-28} : /obj/machinery/economy/vending/wallmed/directional/west
+/obj/machinery/economy/vending/wallmed {pixel_x=28} : /obj/machinery/economy/vending/wallmed/directional/east
+/obj/machinery/economy/vending/wallmed {pixel_x=-25} : /obj/machinery/economy/vending/wallmed/directional/west
+/obj/machinery/economy/vending/wallmed {layer=3.3} : /obj/machinery/economy/vending/wallmed/directional/east
 
-/obj/machinery/alarm {dir=1;name="south bump";pixel_y=-24} : /obj/machinery/alarm/directional/south
-/obj/machinery/alarm {name="north bump";pixel_y=24} : /obj/machinery/alarm/directional/north
-/obj/machinery/alarm {dir=4;name="west bump";pixel_x=-24} : /obj/machinery/alarm/directional/west
-/obj/machinery/alarm {dir=8;name="east bump";pixel_x=24} : /obj/machinery/alarm/directional/east
+/obj/machinery/alarm {pixel_y=-24} : /obj/machinery/alarm/directional/south
+/obj/machinery/alarm {pixel_y=24} : /obj/machinery/alarm/directional/north
+/obj/machinery/alarm {pixel_x=-24} : /obj/machinery/alarm/directional/west
+/obj/machinery/alarm {pixel_x=24} : /obj/machinery/alarm/directional/east
 
-/obj/machinery/firealarm {dir=1;name="south bump";pixel_y=-24} : /obj/machinery/firealarm/directional/south
+/obj/machinery/firealarm {name="south bump";pixel_y=-24} : /obj/machinery/firealarm/directional/south
+/obj/machinery/firealarm {name="custom placement";pixel_y=-24} : /obj/machinery/firealarm/directional/south {@OLD;pixel_y=@SKIP;name=@SKIP}
 /obj/machinery/firealarm {name="north bump";pixel_y=24} : /obj/machinery/firealarm/directional/north
-/obj/machinery/firealarm {dir=8;name="west bump";pixel_x=-24} : /obj/machinery/firealarm/directional/west
-/obj/machinery/firealarm {dir=4;name="east bump";pixel_x=24} : /obj/machinery/firealarm/directional/east
+/obj/machinery/firealarm {name="custom placement";pixel_y=24} : /obj/machinery/firealarm/directional/north {@OLD;pixel_y=@SKIP;name=@SKIP}
+/obj/machinery/firealarm {name="west bump";pixel_x=-24} : /obj/machinery/firealarm/directional/west
+/obj/machinery/firealarm {name="custom placement";pixel_x=-24} : /obj/machinery/firealarm/directional/west {@OLD;pixel_y=@SKIP;name=@SKIP}
+/obj/machinery/firealarm {name="east bump";pixel_x=24} : /obj/machinery/firealarm/directional/east
+/obj/machinery/firealarm {name="custom placement";pixel_x=24} : /obj/machinery/firealarm/directional/east {@OLD;pixel_y=@SKIP;name=@SKIP}
 
-/obj/machinery/light_switch {dir=1;name="south bump";pixel_y=-24} : /obj/machinery/light_switch/south
+/obj/machinery/light_switch {name="south bump";pixel_y=-24} : /obj/machinery/light_switch/south
+/obj/machinery/light_switch {name="custom placement";pixel_y=-24} : /obj/machinery/light_switch/south {@OLD;pixel_y=@SKIP;name=@SKIP}
 /obj/machinery/light_switch {name="north bump";pixel_y=24} : /obj/machinery/light_switch/north
-/obj/machinery/light_switch {name="custom placement";pixel_y=24} : /obj/machinery/light_switch/north {pixel_x=@OLD}
-/obj/machinery/light_switch {dir=4;name="west bump";pixel_x=-24} : /obj/machinery/light_switch/west
-/obj/machinery/light_switch {dir=1;name="west bump";pixel_x=-24} : /obj/machinery/light_switch/west
-/obj/machinery/light_switch {dir=4;name="custom placement";pixel_x=-24} : /obj/machinery/light_switch/west {pixel_y=@OLD}
-/obj/machinery/light_switch {dir=8;name="east bump";pixel_x=24} : /obj/machinery/light_switch/east
-/obj/machinery/light_switch {dir=8;name="custom placement";pixel_x=24} : /obj/machinery/light_switch/east {pixel_y=@OLD}
-/obj/machinery/light_switch {name="custom placement"} : /obj/machinery/light_switch
+/obj/machinery/light_switch {name="custom placement";pixel_y=24} : /obj/machinery/light_switch/north {@OLD;pixel_y=@SKIP;name=@SKIP}
+/obj/machinery/light_switch {name="west bump";pixel_x=-24} : /obj/machinery/light_switch/west
+/obj/machinery/light_switch {name="custom placement";pixel_x=-24} : /obj/machinery/light_switch/west {@OLD;pixel_x=@SKIP;name=@SKIP}
+/obj/machinery/light_switch {name="east bump";pixel_x=24} : /obj/machinery/light_switch/east
+/obj/machinery/light_switch {name="custom placement";pixel_x=24} : /obj/machinery/light_switch/east {@OLD;pixel_x=@SKIP;name=@SKIP}
+/obj/machinery/light_switch {name="custom placement"} : /obj/machinery/light_switch {@OLD}
 
 /obj/machinery/keycard_auth {pixel_y=-24} : /obj/machinery/keycard_auth/south
 /obj/machinery/keycard_auth {dir=1;pixel_y=-24} : /obj/machinery/keycard_auth/south
