@@ -256,8 +256,8 @@
 
 /obj/machinery/light/nightshifted
 	name = "\improper light fixture"
-	nightshift_allowed = 0
-	nightshift_enabled = 1
+	nightshift_allowed = FALSE
+	nightshift_enabled = TRUE
 
 /obj/machinery/light/nightshifted/south
 	dir = 1
@@ -300,8 +300,8 @@
 
 /obj/machinery/light/small/nightshifted
 	name = "\improper light fixture"
-	nightshift_allowed = 0
-	nightshift_enabled = 1
+	nightshift_allowed = FALSE
+	nightshift_enabled = TRUE
 
 /obj/machinery/light/small/nightshifted/south
 	dir = 1
