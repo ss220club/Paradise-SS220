@@ -31,7 +31,7 @@
     pixel_y = 32
 
 /obj/machinery/economy/vending/wallmed/directional/west
-    pixel_x = -24
+    pixel_x = -25
 
 /obj/machinery/economy/vending/wallmed/directional/east
     pixel_x = 24
@@ -68,11 +68,11 @@
 
 /obj/machinery/firealarm/directional/west
     pixel_x = -24
-    dir = 4
+    dir = 8
 
 /obj/machinery/firealarm/directional/east
     pixel_x = 24
-    dir = 8
+    dir = 4
 
 /obj/machinery/firealarm/no_alarm
 	name = "\improper fire alarm"
@@ -320,15 +320,15 @@
     dir = 8
 
 /* APC */
-/obj/machinery/power/apc
+/obj/machinery/power/apc/directional
 	name = "\improper Area Power Controller"
 
 /obj/machinery/power/apc/directional/south
     pixel_y = -24
-    dir = 1
 
 /obj/machinery/power/apc/directional/north
     pixel_y = 24
+    dir = 1
 
 /obj/machinery/power/apc/directional/west
     pixel_x = -24
@@ -484,7 +484,7 @@
     dir = 8
 
 /* Sinks */
-/obj/structure/sink
+/obj/structure/sink/directional
 	name = "\improper sink"
 
 /obj/structure/sink/directional/south
