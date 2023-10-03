@@ -19,7 +19,7 @@
     dir = 8
 
 /* WallMed */
-/obj/machinery/economy/vending/wallmed
+/obj/machinery/economy/vending/wallmed/directional
 	name = "\improper Emergency NanoMed"
 
 /obj/machinery/economy/vending/wallmed/directional/south
@@ -35,7 +35,7 @@
     pixel_x = 24
 
 /* Air Alarm */
-/obj/machinery/alarm
+/obj/machinery/alarm/directional
 	name = "\improper air alarm"
 
 /obj/machinery/alarm/directional/south
@@ -55,7 +55,7 @@
     dir = 8
 
 /* Fire Alarm */
-/obj/machinery/firealarm
+/obj/machinery/firealarm/directional
 	name = "\improper fire alarm"
 
 /obj/machinery/firealarm/directional/south
@@ -153,7 +153,7 @@
     dir = 8
 
 /* Buttons */
-/obj/machinery/door_control
+/obj/machinery/door_control/directional
 	name = "\improper Door Bolt Control"
 
 /obj/machinery/door_control/directional/south
@@ -211,7 +211,7 @@
     dir = 8
 
 /* Light Fixtures */
-/obj/machinery/light
+/obj/machinery/light/directional
 	name = "\improper light fixture"
 
 /obj/machinery/light/directional/south
@@ -226,6 +226,9 @@
 /obj/machinery/light/directional/east
     dir = 8
 
+/obj/machinery/light/built
+	name "\improper light fixture"
+
 /obj/machinery/light/built/south
     dir = 1
 
@@ -237,6 +240,9 @@
 
 /obj/machinery/light/built/east
     dir = 8
+
+/obj/machinery/light/small/directional
+	name "\improper light fixture"
 
 /obj/machinery/light/small/directional/south
     dir = 1
@@ -250,6 +256,9 @@
 /obj/machinery/light/small/directional/east
     dir = 8
 
+/obj/machinery/light/small/built
+	name "\improper light fixture"
+
 /obj/machinery/light/small/built/south
     dir = 1
 
@@ -262,7 +271,7 @@
 /obj/machinery/light/small/built/east
     dir = 8
 
-/obj/machinery/light_construct
+/obj/machinery/light_construct/directional
 	name = "\improper light fixture frame"
 
 /obj/machinery/light_construct/directional/south
