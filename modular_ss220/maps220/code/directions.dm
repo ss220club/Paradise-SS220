@@ -1,9 +1,6 @@
 /* Intercom */
-/obj/item/radio/intercom
-   name = "\improper station intercom"
-
 /obj/item/radio/intercom/directional
-    name = "\improper station intercom"
+	name = "\improper station intercom"
 
 /obj/item/radio/intercom/directional/south
     pixel_y = -22
@@ -286,7 +283,7 @@
     dir = 8
 
 /* Extinguisher */
-/obj/structure/extinguisher_cabinet
+/obj/structure/extinguisher_cabinet/directional
 	name = "\improper extinguisher cabinet"
 
 /obj/structure/extinguisher_cabinet/directional/south
@@ -345,33 +342,33 @@
 
 /obj/machinery/power/apc/engie/south
     pixel_y = -24
-    dir = 1
 
 /obj/machinery/power/apc/engie/north
     pixel_y = 24
+    dir = 1
 
 /obj/machinery/power/apc/engie/west
     pixel_x = -24
-    dir = 4
+    dir = 8
 
 /obj/machinery/power/apc/engie/east
     pixel_x = 24
-    dir = 8
+    dir = 4
 
 /obj/machinery/power/apc/worn_out/south
     pixel_y = -24
-    dir = 1
 
 /obj/machinery/power/apc/worn_out/north
     pixel_y = 24
+    dir = 1
 
 /obj/machinery/power/apc/worn_out/west
     pixel_x = -24
-    dir = 4
+    dir = 8
 
 /obj/machinery/power/apc/worn_out/east
     pixel_x = 24
-    dir = 8
+    dir = 4
 
 /* Wall Tanks */
 /obj/structure/reagent_dispensers/fueltank/chem

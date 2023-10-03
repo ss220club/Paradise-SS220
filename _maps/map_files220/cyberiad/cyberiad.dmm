@@ -1290,11 +1290,8 @@
 "ahW" = (
 /obj/effect/decal/warning_stripes/east,
 /obj/effect/decal/warning_stripes/southwestcorner,
-/obj/machinery/power/apc{
-	cell_type = 5000;
-	dir = 4;
-	name = "east bump Important Area";
-	pixel_x = 24
+/obj/machinery/power/apc/directional/east{
+	cell_type = 5000
 	},
 /obj/structure/cable{
 	d2 = 2;
@@ -8452,11 +8449,8 @@
 	c_tag = "Fore Port Solar Control";
 	dir = 1
 	},
-/obj/machinery/power/apc{
-	dir = 8;
-	name = "west bump Engineering";
-	pixel_x = -24;
-	shock_proof = 1
+/obj/machinery/power/apc/engie/west{
+	cell_type = 2500
 	},
 /obj/structure/cable{
 	d2 = 4;
@@ -9241,11 +9235,8 @@
 	d2 = 4;
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc{
-	dir = 8;
-	name = "west bump Engineering";
-	pixel_x = -24;
-	shock_proof = 1
+/obj/machinery/power/apc/engie/west{
+	cell_type = 2500
 	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/auxsolarstarboard)
@@ -11145,11 +11136,8 @@
 	},
 /area/station/hallway/secondary/entry)
 "aPS" = (
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump Engineering";
-	pixel_y = 24;
-	shock_proof = 1
+/obj/machinery/power/apc/engie/north{
+	cell_type = 2500
 	},
 /obj/structure/cable{
 	d2 = 2;
@@ -12088,12 +12076,7 @@
 "aTt" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/power/apc{
-	cell_type = 15000;
-	dir = 4;
-	name = "Cryo and Arrivals Super APC";
-	pixel_x = 24
-	},
+/obj/machinery/power/apc/directional/east,
 /obj/structure/cable,
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -30139,11 +30122,8 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump Engineering";
-	pixel_y = 24;
-	shock_proof = 1
+/obj/machinery/power/apc/engie/north{
+	cell_type = 2500
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -32106,10 +32086,8 @@
 	},
 /area/station/engineering/break_room)
 "cyw" = (
-/obj/machinery/power/apc{
-	name = "south bump Engineering";
-	pixel_y = -24;
-	shock_proof = 1
+/obj/machinery/power/apc/engie/south{
+	cell_type = 2500
 	},
 /obj/structure/cable{
 	d2 = 8;
@@ -36735,12 +36713,8 @@
 /turf/simulated/floor/mineral/titanium/blue,
 /area/shuttle/pod_4)
 "cPy" = (
-/obj/machinery/power/apc{
-	cell_type = 25000;
-	dir = 1;
-	name = "Engineering Engine Super APC";
-	pixel_y = 24;
-	shock_proof = 1
+/obj/machinery/power/apc/engie/north{
+	cell_type = 5000
 	},
 /obj/structure/cable{
 	d2 = 8;
@@ -37406,11 +37380,8 @@
 	pixel_x = -1
 	},
 /obj/effect/decal/warning_stripes/blue/hollow,
-/obj/machinery/power/apc{
-	dir = 8;
-	name = "west bump Engineering";
-	pixel_x = -24;
-	shock_proof = 1
+/obj/machinery/power/apc/engie/west{
+	cell_type = 2500
 	},
 /obj/structure/cable{
 	d2 = 4;
@@ -37751,11 +37722,8 @@
 	},
 /area/station/engineering/atmos)
 "cSq" = (
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "east bump Engineering";
-	pixel_x = 24;
-	shock_proof = 1
+/obj/machinery/power/apc/engie/east{
+	cell_type = 2500
 	},
 /obj/structure/cable{
 	d2 = 8;
@@ -38409,11 +38377,8 @@
 /turf/simulated/floor/carpet,
 /area/station/public/mrchangs)
 "cUj" = (
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump Engineering";
-	pixel_y = 24;
-	shock_proof = 1
+/obj/machinery/power/apc/engie/north{
+	cell_type = 2500
 	},
 /obj/structure/cable{
 	d2 = 2;
@@ -38786,10 +38751,8 @@
 	icon_state = "1-8"
 	},
 /obj/structure/cable,
-/obj/machinery/power/apc{
-	name = "south bump Engineering";
-	pixel_y = -24;
-	shock_proof = 1
+/obj/machinery/power/apc/engie/south{
+	cell_type = 2500
 	},
 /turf/simulated/floor/plasteel{
 	dir = 6;
@@ -40652,11 +40615,8 @@
 /turf/simulated/floor/plasteel,
 /area/station/engineering/break_room)
 "dcl" = (
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump Engineering";
-	pixel_y = 24;
-	shock_proof = 1
+/obj/machinery/power/apc/engie/north{
+	cell_type = 2500
 	},
 /obj/structure/reagent_dispensers/watertank,
 /obj/effect/decal/warning_stripes/yellow/hollow,
@@ -41262,12 +41222,8 @@
 	},
 /area/station/medical/patients_rooms)
 "deu" = (
-/obj/machinery/power/apc{
-	cell_type = 25000;
-	dir = 1;
-	name = "Engineering Engine Super APC";
-	pixel_y = 24;
-	shock_proof = 1
+/obj/machinery/power/apc/engie/north{
+	cell_type = 5000
 	},
 /obj/structure/cable{
 	d2 = 2;
@@ -41496,11 +41452,8 @@
 	d2 = 4;
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc{
-	dir = 8;
-	name = "west bump Engineering";
-	pixel_x = -24;
-	shock_proof = 1
+/obj/machinery/power/apc/engie/west{
+	cell_type = 2500
 	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/starboardsolar)
@@ -42667,11 +42620,8 @@
 /area/station/engineering/control)
 "djv" = (
 /obj/machinery/light/directional/south,
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump Engineering";
-	pixel_y = 24;
-	shock_proof = 1
+/obj/machinery/power/apc/engie/north{
+	cell_type = 2500
 	},
 /obj/structure/cable{
 	d2 = 8;
@@ -42727,7 +42677,9 @@
 	icon_state = "0-8"
 	},
 /obj/structure/chair,
-/obj/machinery/power/apc/directional/east,
+/obj/machinery/power/apc/directional/east{
+	cell_type = 15000
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -44247,11 +44199,8 @@
 	pixel_y = -7
 	},
 /obj/item/storage/toolbox/mechanical,
-/obj/machinery/power/apc{
-	dir = 8;
-	name = "west bump Engineering";
-	pixel_x = -24;
-	shock_proof = 1
+/obj/machinery/power/apc/engie/west{
+	cell_type = 2500
 	},
 /obj/structure/cable{
 	d2 = 4;
@@ -44734,10 +44683,8 @@
 	network = list("SS13","MiniSat");
 	start_active = 1
 	},
-/obj/machinery/power/apc{
-	cell_type = 5000;
-	name = "south bump Important Area";
-	pixel_y = -24
+/obj/machinery/power/apc/directional/south{
+	cell_type = 5000
 	},
 /turf/simulated/floor/bluegrid,
 /area/station/turret_protected/ai)
@@ -45140,11 +45087,8 @@
 	c_tag = "Tech Storage";
 	network = list("SS13","Engineering")
 	},
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump Engineering";
-	pixel_y = 24;
-	shock_proof = 1
+/obj/machinery/power/apc/engie/north{
+	cell_type = 2500
 	},
 /turf/simulated/floor/plating,
 /area/station/engineering/tech_storage)
@@ -51431,12 +51375,8 @@
 	dir = 4;
 	pixel_x = -24
 	},
-/obj/machinery/power/apc{
-	cell_type = 25000;
-	dir = 1;
-	name = "Engineering Engine Super APC";
-	pixel_y = 24;
-	shock_proof = 1
+/obj/machinery/power/apc/engie/north{
+	cell_type = 5000
 	},
 /obj/machinery/atmospherics/binary/pump{
 	dir = 1;
@@ -56639,11 +56579,8 @@
 /area/station/science/toxins/mixing)
 "hAX" = (
 /obj/structure/reagent_dispensers/fueltank,
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump Engineering";
-	pixel_y = 24;
-	shock_proof = 1
+/obj/machinery/power/apc/engie/north{
+	cell_type = 2500
 	},
 /obj/structure/cable{
 	d2 = 2;
@@ -59309,10 +59246,8 @@
 	dir = 1
 	},
 /obj/structure/cable,
-/obj/machinery/power/apc{
-	name = "south bump Engineering";
-	pixel_y = -24;
-	shock_proof = 1
+/obj/machinery/power/apc/engie/south{
+	cell_type = 2500
 	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/portsolar)
@@ -59353,10 +59288,8 @@
 /area/station/maintenance/fore)
 "iDz" = (
 /obj/structure/filingcabinet/filingcabinet,
-/obj/machinery/power/apc{
-	cell_type = 5000;
-	name = "south bump Important Area";
-	pixel_y = -24
+/obj/machinery/power/apc/directional/south{
+	cell_type = 5000
 	},
 /obj/machinery/light/directional/north,
 /obj/structure/cable,
@@ -59458,12 +59391,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/power/apc{
-	cell_type = 5000;
-	dir = 1;
-	name = "north bump Atmospherics";
-	pixel_y = 24;
-	shock_proof = 1
+/obj/machinery/power/apc/engie/north{
+	cell_type = 5000
 	},
 /turf/simulated/floor/plasteel{
 	dir = 1;
@@ -61695,10 +61624,8 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc{
-	name = "south bump Engineering";
-	pixel_y = -24;
-	shock_proof = 1
+/obj/machinery/power/apc/engie/south{
+	cell_type = 2500
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "darkyellow"
@@ -64422,10 +64349,8 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/fore)
 "kDW" = (
-/obj/machinery/power/apc{
-	cell_type = 5000;
-	name = "south bump Important Area";
-	pixel_y = -24
+/obj/machinery/power/apc/directional/south{
+	cell_type = 5000
 	},
 /obj/structure/cable,
 /obj/machinery/light/directional/north,
@@ -69024,11 +68949,8 @@
 /area/station/maintenance/asmaint)
 "mlz" = (
 /obj/item/radio/intercom/directional/south,
-/obj/machinery/power/apc{
-	dir = 8;
-	name = "west bump Engineering";
-	pixel_x = -24;
-	shock_proof = 1
+/obj/machinery/power/apc/engie/west{
+	cell_type = 2500
 	},
 /obj/structure/cable{
 	d2 = 4;
@@ -75219,7 +75141,9 @@
 /area/station/science/test_chamber)
 "oER" = (
 /obj/structure/cable,
-/obj/machinery/power/apc/directional/east,
+/obj/machinery/power/apc/directional/east{
+	cell_type = 15000
+	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
@@ -82758,11 +82682,8 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc{
-	cell_type = 15000;
-	dir = 1;
-	name = "Cryo and Arrivals Super APC";
-	pixel_y = 24
+/obj/machinery/power/apc/engie/north{
+	cell_type = 5000
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "whitegreenfull"
@@ -86240,10 +86161,8 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/asmaint)
 "sLy" = (
-/obj/machinery/power/apc{
-	name = "south bump Engineering";
-	pixel_y = -24;
-	shock_proof = 1
+/obj/machinery/power/apc/engie/south{
+	cell_type = 2500
 	},
 /obj/structure/cable,
 /turf/simulated/floor/plating,
@@ -90553,11 +90472,8 @@
 /turf/simulated/floor/carpet/royalblack,
 /area/station/command/office/ntrep)
 "uph" = (
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump Engineering";
-	pixel_y = 24;
-	shock_proof = 1
+/obj/machinery/power/apc/engie/north{
+	cell_type = 2500
 	},
 /obj/structure/cable{
 	d2 = 2;
@@ -94827,15 +94743,12 @@
 /turf/simulated/floor/bluegrid,
 /area/station/aisat/hall)
 "vTU" = (
-/obj/machinery/power/apc{
-	cell_type = 5000;
-	dir = 1;
-	name = "north bump Important Area";
-	pixel_y = 24
-	},
 /obj/structure/cable{
 	d2 = 2;
 	icon_state = "0-2"
+	},
+/obj/machinery/power/apc/directional/north{
+	cell_type = 5000
 	},
 /turf/simulated/floor/wood/fancy/cherry,
 /area/station/command/office/captain)
@@ -99322,11 +99235,8 @@
 	},
 /area/station/maintenance/apmaint)
 "xHz" = (
-/obj/machinery/power/apc{
-	dir = 8;
-	name = "west bump Engineering";
-	pixel_x = -24;
-	shock_proof = 1
+/obj/machinery/power/apc/engie/west{
+	cell_type = 2500
 	},
 /obj/structure/cable{
 	d2 = 2;
