@@ -1532,7 +1532,7 @@
 	},
 /area/station/hallway/secondary/entry)
 "anp" = (
-/obj/machinery/power/apc/directional/north,
+/obj/machinery/power/apc/cryo/north,
 /obj/machinery/camera{
 	c_tag = "Arrivals Hall Center"
 	},
@@ -1923,7 +1923,6 @@
 "apg" = (
 /obj/item/kirbyplants,
 /obj/machinery/firealarm/directional/north,
-/obj/machinery/keycard_auth/north,
 /obj/machinery/light_switch/east,
 /turf/simulated/floor/plasteel{
 	dir = 5;
@@ -2169,6 +2168,7 @@
 /turf/simulated/floor/wood,
 /area/station/public/vacant_office)
 "apV" = (
+/obj/machinery/keycard_auth/west,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "blue"
@@ -9398,9 +9398,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/plasteel/goonplaque{
-	dir = 4
-	},
+/turf/simulated/floor/plasteel/goonplaque,
 /area/station/hallway/primary/fore)
 "aTp" = (
 /obj/item/kirbyplants,
@@ -12369,9 +12367,6 @@
 	},
 /area/station/service/kitchen)
 "bcr" = (
-/obj/machinery/door/airlock/public/glass{
-	name = "Kitchen"
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -12388,6 +12383,9 @@
 	},
 /obj/machinery/door/firedoor,
 /obj/effect/mapping_helpers/airlock/access/any/service/kitchen,
+/obj/machinery/door/airlock/public{
+	name = "Kitchen"
+	},
 /turf/simulated/floor/plasteel/white,
 /area/station/service/kitchen)
 "bcs" = (
@@ -17029,14 +17027,6 @@
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/plasteel/dark,
 /area/station/service/hydroponics)
-"bse" = (
-/obj/machinery/door_control/shutter/north{
-	id = "bridge blast north";
-	name = "North Bridge Blast Door Control";
-	req_access_txt = "19"
-	},
-/turf/simulated/floor/plasteel/dark,
-/area/station/command/bridge)
 "bsh" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -18394,6 +18384,10 @@
 "bxt" = (
 /obj/structure/table/reinforced,
 /obj/machinery/status_display/directional/north,
+/obj/machinery/door_control/shutter{
+	id = "bridge blast north";
+	name = "North Bridge Blast Door Control"
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/command/bridge)
 "bxu" = (
@@ -21488,7 +21482,9 @@
 	pixel_x = -7;
 	req_one_access_txt = "18"
 	},
-/obj/machinery/keycard_auth/south,
+/obj/machinery/keycard_auth/south{
+	pixel_y = -32
+	},
 /turf/simulated/floor/carpet,
 /area/station/command/bridge)
 "bHu" = (
@@ -25120,7 +25116,10 @@
 /turf/simulated/floor/bluegrid,
 /area/station/turret_protected/ai_upload)
 "bSO" = (
-/obj/machinery/keycard_auth/north,
+/obj/machinery/keycard_auth/north{
+	pixel_x = -24;
+	dir = 4
+	},
 /obj/machinery/computer/card{
 	dir = 4
 	},
@@ -26266,9 +26265,8 @@
 /turf/space,
 /area/space/nearstation)
 "bWl" = (
-/obj/machinery/keycard_auth{
-	pixel_x = -34;
-	dir = 4
+/obj/machinery/keycard_auth/west{
+	pixel_x = -34
 	},
 /obj/machinery/door_control/shutter/west{
 	id = "engstorage";
@@ -27542,12 +27540,6 @@
 	pixel_x = -38;
 	pixel_y = -6
 	},
-/obj/machinery/light_switch{
-	dir = 4;
-	name = "custom placement";
-	pixel_x = -36;
-	pixel_y = 8
-	},
 /obj/machinery/door_control/shutter/west{
 	id = "hop";
 	name = "Privacy Shutters";
@@ -28507,7 +28499,9 @@
 	name = "Desk Door"
 	},
 /obj/effect/mapping_helpers/airlock/windoor/access/any/command/blueshield,
-/obj/machinery/keycard_auth/east,
+/obj/machinery/keycard_auth/east{
+	pixel_y = -3
+	},
 /turf/simulated/floor/wood,
 /area/station/command/office/blueshield)
 "cdT" = (
@@ -29093,7 +29087,7 @@
 /obj/item/paper_bin,
 /obj/machinery/button/windowtint{
 	id = "Courtroom";
-	pixel_x = -8;
+	pixel_x = -14;
 	req_one_access_txt = "74;3"
 	},
 /obj/structure/cable{
@@ -29849,8 +29843,7 @@
 "ciL" = (
 /obj/machinery/light/directional/south,
 /turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "neutral"
+	icon_state = "neutralfull"
 	},
 /area/station/hallway/secondary/bridge)
 "ciO" = (
@@ -30772,8 +30765,7 @@
 	c_tag = "Central Ring Hallway Center"
 	},
 /turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "neutralcorner"
+	icon_state = "neutralfull"
 	},
 /area/station/hallway/secondary/bridge)
 "clW" = (
@@ -32610,10 +32602,11 @@
 /turf/simulated/wall/r_wall,
 /area/station/service/expedition)
 "csW" = (
-/turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "neutralcorner"
+/obj/structure/statue/delta/nw,
+/obj/effect/turf_decal/siding/yellow{
+	dir = 9
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/station/hallway/secondary/bridge)
 "csX" = (
 /obj/machinery/door/firedoor,
@@ -34438,10 +34431,11 @@
 	},
 /area/station/maintenance/old_kitchen)
 "czY" = (
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "neutralcorner"
+/obj/structure/statue/delta/ne,
+/obj/effect/turf_decal/siding/yellow{
+	dir = 5
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/station/hallway/secondary/bridge)
 "cAb" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
@@ -42802,8 +42796,9 @@
 /obj/machinery/button/windowtint/south{
 	dir = 1;
 	id = "RD";
-	pixel_x = -6;
-	req_access_txt = "30"
+	pixel_x = -2;
+	req_access_txt = "30";
+	pixel_y = -36
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "whitepurplecorner"
@@ -49540,6 +49535,13 @@
 	icon_state = "grimy"
 	},
 /area/station/service/bar/atrium)
+"ega" = (
+/obj/structure/statue/delta/w,
+/obj/effect/turf_decal/siding/yellow{
+	dir = 8
+	},
+/turf/simulated/floor/plasteel/dark,
+/area/station/hallway/secondary/bridge)
 "egM" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable{
@@ -51714,6 +51716,13 @@
 /obj/item/wrench,
 /turf/simulated/floor/plating,
 /area/station/maintenance/starboard)
+"fas" = (
+/obj/structure/statue/delta/north,
+/obj/effect/turf_decal/siding/yellow{
+	dir = 1
+	},
+/turf/simulated/floor/plasteel/dark,
+/area/station/hallway/secondary/bridge)
 "faB" = (
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/plasteel{
@@ -52629,6 +52638,11 @@
 	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/port)
+"fun" = (
+/obj/structure/statue/delta/s,
+/obj/effect/turf_decal/siding/yellow,
+/turf/simulated/floor/plasteel/dark,
+/area/station/hallway/secondary/bridge)
 "fut" = (
 /obj/machinery/door/firedoor,
 /obj/effect/decal/warning_stripes/yellow,
@@ -53227,6 +53241,10 @@
 	icon_state = "bluecorner"
 	},
 /area/station/hallway/primary/central/nw)
+"fFT" = (
+/obj/structure/statue/delta/c,
+/turf/simulated/floor/plasteel/dark,
+/area/station/hallway/secondary/bridge)
 "fFX" = (
 /obj/effect/decal/warning_stripes/southeast,
 /obj/machinery/disposal,
@@ -60395,6 +60413,13 @@
 	icon_state = "darkredfull"
 	},
 /area/station/security/prison/cell_block)
+"isc" = (
+/obj/structure/statue/delta/se,
+/obj/effect/turf_decal/siding/yellow{
+	dir = 6
+	},
+/turf/simulated/floor/plasteel/dark,
+/area/station/hallway/secondary/bridge)
 "iss" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -64050,6 +64075,13 @@
 	icon_state = "dark"
 	},
 /area/station/security/storage)
+"jQg" = (
+/obj/structure/statue/delta/sw,
+/obj/effect/turf_decal/siding/yellow{
+	dir = 10
+	},
+/turf/simulated/floor/plasteel/dark,
+/area/station/hallway/secondary/bridge)
 "jQi" = (
 /obj/item/chair/wood,
 /turf/simulated/floor/plating,
@@ -73259,6 +73291,15 @@
 	icon_state = "whitegreencorner"
 	},
 /area/station/medical/virology)
+"nzV" = (
+/obj/effect/spawner/window/reinforced,
+/obj/machinery/door/poddoor/shutters/preopen{
+	dir = 1;
+	id_tag = "Kitchen Windows";
+	name = "Kitchen Privacy Shutters"
+	},
+/turf/simulated/floor/plating,
+/area/station/service/kitchen)
 "nAf" = (
 /obj/structure/chair/comfy/black{
 	dir = 4
@@ -86211,6 +86252,13 @@
 /obj/effect/spawner/random_spawners/wall_rusted_maybe,
 /turf/simulated/wall,
 /area/station/maintenance/apmaint)
+"ssR" = (
+/obj/structure/statue/delta/e,
+/obj/effect/turf_decal/siding/yellow{
+	dir = 4
+	},
+/turf/simulated/floor/plasteel/dark,
+/area/station/hallway/secondary/bridge)
 "ssV" = (
 /obj/machinery/door/airlock/medical/glass{
 	id_tag = "MedbayFoyerPort"
@@ -88560,6 +88608,10 @@
 	icon_state = "dark"
 	},
 /area/station/security/execution)
+"tpv" = (
+/obj/machinery/light_switch/north,
+/turf/simulated/floor/wood,
+/area/station/command/office/hop)
 "tpP" = (
 /obj/machinery/light/small/directional/west,
 /turf/simulated/floor/plating,
@@ -136802,7 +136854,7 @@ dDJ
 dBq
 dBq
 dDJ
-bmZ
+nzV
 baQ
 lxC
 bfm
@@ -137059,7 +137111,7 @@ dBq
 dBq
 dBq
 dBq
-bmZ
+nzV
 bcs
 bcq
 bdL
@@ -137859,7 +137911,7 @@ bMQ
 bOF
 bKN
 ciB
-bWR
+tpv
 bWT
 chi
 chi
@@ -139925,7 +139977,7 @@ drp
 bYv
 ckt
 bYv
-csW
+ckv
 ckv
 ckv
 rcs
@@ -140180,11 +140232,11 @@ cca
 oLl
 cfK
 ckt
-csW
-csW
-csW
 ckv
 ckv
+csW
+ega
+jQg
 rcs
 crE
 csQ
@@ -140439,9 +140491,9 @@ cfK
 ckt
 ciL
 ckv
-ckv
-ckv
-ckv
+fas
+fFT
+fun
 cqb
 crF
 csR
@@ -140694,11 +140746,11 @@ ccc
 cdO
 cfL
 ckt
-czY
-czY
-czY
 ckv
 ckv
+czY
+ssR
+isc
 rcs
 crG
 csS
@@ -140931,7 +140983,7 @@ cGk
 abj
 bwf
 bxt
-bse
+byU
 bMV
 rpN
 bEi
@@ -154839,11 +154891,11 @@ csj
 xpq
 cuK
 uGY
-ctx
+iVg
 xql
 cAt
 cBZ
-iVg
+ctx
 mYH
 fLx
 cGX

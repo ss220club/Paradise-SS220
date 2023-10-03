@@ -771,7 +771,9 @@
 	pixel_y = -8;
 	req_one_access_txt = "58"
 	},
-/obj/machinery/keycard_auth/east,
+/obj/machinery/keycard_auth/east{
+	pixel_y = 2
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -9956,8 +9958,9 @@
 /obj/item/gavelhammer,
 /obj/machinery/button/windowtint{
 	id = "Courtroom";
-	pixel_x = -8;
-	req_one_access_txt = "74;3"
+	pixel_x = -4;
+	req_one_access_txt = "74;3";
+	pixel_y = -10
 	},
 /turf/simulated/floor/carpet,
 /area/station/legal/courtroom)
@@ -19347,11 +19350,11 @@
 /turf/simulated/floor/carpet/royalblue,
 /area/station/command/office/captain)
 "bxp" = (
-/obj/machinery/ai_status_display/north,
 /obj/structure/table/wood/fancy/blue,
 /obj/item/kirbyplants{
 	pixel_y = 10
 	},
+/obj/machinery/ai_status_display/west,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -20421,7 +20424,8 @@
 /area/station/turret_protected/ai_upload)
 "bCL" = (
 /obj/item/radio/intercom/private{
-	pixel_y = -28
+	pixel_y = -22;
+	dir = 1
 	},
 /obj/machinery/computer/borgupload{
 	dir = 1
@@ -42687,7 +42691,9 @@
 	pixel_x = -6;
 	req_access_txt = "67"
 	},
-/obj/machinery/keycard_auth/south,
+/obj/machinery/keycard_auth/south{
+	pixel_y = -34
+	},
 /obj/effect/landmark/start/blueshield,
 /obj/structure/cable{
 	d1 = 1;
@@ -54859,7 +54865,8 @@
 /obj/machinery/light/nightshifted/east,
 /obj/machinery/button/windowtint/east{
 	id = "psych";
-	pixel_y = -2
+	pixel_y = -2;
+	pixel_x = 18
 	},
 /obj/item/clothing/glasses/hud/skills,
 /turf/simulated/floor/carpet,
@@ -61982,6 +61989,14 @@
 	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/fpmaint2)
+"jSf" = (
+/obj/structure/closet/emcloset,
+/obj/machinery/light_switch/south,
+/obj/machinery/ai_status_display/east,
+/turf/simulated/floor/plasteel{
+	icon_state = "blue"
+	},
+/area/station/command/bridge)
 "jSq" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -62682,7 +62697,9 @@
 	pixel_x = 6;
 	req_access_txt = "73"
 	},
-/obj/machinery/keycard_auth/south,
+/obj/machinery/keycard_auth/south{
+	pixel_y = -34
+	},
 /obj/effect/landmark/start/nanotrasen_rep,
 /obj/structure/chair/comfy/corp{
 	dir = 1
@@ -70316,11 +70333,11 @@
 /obj/machinery/door_control/shutter/north{
 	id = "heads_meeting";
 	name = "Privacy Shutters Control";
-	pixel_x = -6
+	pixel_x = -11
 	},
 /obj/machinery/button/windowtint/north{
 	id = "conference";
-	pixel_x = 6
+	pixel_x = 11
 	},
 /obj/machinery/door_control/bolt_control/north{
 	id = "conference"
@@ -77602,7 +77619,8 @@
 	},
 /obj/machinery/door_control/bolt_control/west{
 	id = "psych_bolt";
-	pixel_y = 7
+	pixel_y = 7;
+	pixel_x = -14
 	},
 /turf/simulated/floor/carpet,
 /area/station/medical/psych)
@@ -127288,7 +127306,7 @@ bmc
 bqO
 bsv
 vQV
-bwc
+jSf
 bCw
 qsV
 tfz

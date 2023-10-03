@@ -180,7 +180,7 @@
 /area/lavaland/surface/outdoors/explored)
 "aE" = (
 /obj/item/radio/intercom/locked/prison{
-	pixel_y = 24
+	pixel_y = 22
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -858,7 +858,7 @@
 	dir = 8
 	},
 /obj/item/radio/intercom/locked/prison{
-	pixel_y = 24
+	pixel_y = 22
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "barber"
@@ -1079,7 +1079,7 @@
 /obj/effect/decal/cleanable/cobweb2,
 /obj/machinery/atmospherics/portable/canister/air,
 /obj/item/radio/intercom/locked/prison{
-	pixel_y = 24
+	pixel_y = 22
 	},
 /turf/simulated/floor/plating,
 /area/mine/laborcamp)
@@ -1263,7 +1263,6 @@
 	},
 /obj/machinery/light/small/directional/north,
 /obj/machinery/power/apc{
-	dir = 4;
 	name = "Processing Room APC";
 	pixel_y = -24
 	},
@@ -1303,10 +1302,7 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 4
 	},
-/obj/machinery/light_switch{
-	name = "North Switch";
-	pixel_y = 24
-	},
+/obj/machinery/light_switch/north,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "darkfull"
@@ -1532,7 +1528,8 @@
 	},
 /obj/item/radio/intercom{
 	name = "south bump";
-	pixel_y = -28
+	pixel_y = -22;
+	dir = 1
 	},
 /obj/machinery/camera{
 	c_tag = "Mining Outpost - Mech Storage 1";
@@ -1925,10 +1922,6 @@
 	icon_state = "darkyellowcorners"
 	},
 /area/mine/production)
-"ej" = (
-/obj/item/radio/intercom,
-/turf/simulated/wall,
-/area/mine/production)
 "ek" = (
 /obj/machinery/door/airlock/mining{
 	name = "Mining Station Storage"
@@ -1976,10 +1969,7 @@
 	c_tag = "Mining Outpost - EVA Storage";
 	network = list("Mining Outpost")
 	},
-/obj/machinery/light_switch{
-	name = "North Switch";
-	pixel_y = 24
-	},
+/obj/machinery/light_switch/north,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "darkfull"
@@ -1990,7 +1980,6 @@
 	dir = 4
 	},
 /obj/machinery/power/apc{
-	dir = 4;
 	name = "Dinner Room APC";
 	pixel_y = -24
 	},
@@ -2174,11 +2163,7 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
-/obj/machinery/light_switch{
-	pixel_x = 24;
-	name = "East Switch";
-	dir = 8
-	},
+/obj/machinery/light_switch/east,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "darkfull"
@@ -2751,10 +2736,7 @@
 /area/mine/storage)
 "fI" = (
 /obj/effect/turf_decal/loading_area,
-/obj/item/radio/intercom{
-	name = "west bump";
-	pixel_x = -28
-	},
+/obj/item/radio/intercom/directional/west,
 /turf/simulated/floor/plating,
 /area/mine/abandoned)
 "fJ" = (
@@ -2897,10 +2879,7 @@
 	c_tag = "Mining Outpost - Storage Room";
 	network = list("Mining Outpost")
 	},
-/obj/machinery/light_switch{
-	name = "North Switch";
-	pixel_y = 24
-	},
+/obj/machinery/light_switch/north,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "darkfull"
@@ -3291,11 +3270,7 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 4
 	},
-/obj/machinery/light_switch{
-	pixel_x = -24;
-	name = "West Switch";
-	dir = 4
-	},
+/obj/machinery/light_switch/west,
 /turf/simulated/floor/plasteel/dark,
 /area/mine/comms)
 "gM" = (
@@ -3363,6 +3338,13 @@
 	icon_state = "darkred"
 	},
 /area/mine/laborcamp)
+"hy" = (
+/obj/item/radio/intercom/directional/east,
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "darkfull"
+	},
+/area/mine/production)
 "hz" = (
 /obj/structure/table,
 /obj/machinery/reagentgrinder,
@@ -3402,7 +3384,8 @@
 	dir = 4
 	},
 /obj/item/radio/intercom/locked/prison{
-	pixel_y = -28
+	pixel_y = -22;
+	dir = 1
 	},
 /turf/simulated/floor/plasteel,
 /area/mine/laborcamp)
@@ -4501,7 +4484,8 @@
 /area/shuttle/siberia)
 "pt" = (
 /obj/item/radio/intercom/locked/prison{
-	pixel_y = -28
+	pixel_y = -22;
+	dir = 1
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -4729,7 +4713,7 @@
 	dir = 1
 	},
 /obj/item/radio/intercom/locked/prison{
-	pixel_y = 24
+	pixel_y = 22
 	},
 /turf/simulated/floor/plasteel,
 /area/mine/laborcamp)
@@ -4747,7 +4731,7 @@
 	dir = 8
 	},
 /obj/item/radio/intercom/locked/prison{
-	pixel_y = 24
+	pixel_y = 22
 	},
 /turf/simulated/floor/wood{
 	icon_state = "wood-broken6"
@@ -4785,7 +4769,6 @@
 /area/mine/laborcamp)
 "vf" = (
 /obj/machinery/power/apc{
-	dir = 4;
 	name = "Labor Camp Security APC";
 	pixel_y = -24
 	},
@@ -4843,7 +4826,7 @@
 	pixel_x = 2
 	},
 /obj/item/radio/intercom/locked/prison{
-	pixel_y = 24
+	pixel_y = 22
 	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
@@ -5109,10 +5092,7 @@
 /turf/simulated/floor/plasteel,
 /area/mine/laborcamp)
 "Ab" = (
-/obj/machinery/light_switch{
-	name = "custom placement";
-	pixel_y = 25
-	},
+/obj/machinery/light_switch/north,
 /obj/structure/table,
 /obj/item/paper_bin{
 	pixel_x = 1;
@@ -5161,7 +5141,8 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/power/apc{
 	pixel_x = 24;
-	name = "Mech Bay APC"
+	name = "Mech Bay APC";
+	dir = 4
 	},
 /obj/structure/cable,
 /turf/simulated/floor/plasteel{
@@ -5292,7 +5273,7 @@
 	dir = 8
 	},
 /obj/item/radio/intercom/locked/prison{
-	pixel_y = 24
+	pixel_y = 22
 	},
 /turf/simulated/floor/wood{
 	icon_state = "wood-broken6"
@@ -5540,11 +5521,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/light_switch{
-	pixel_x = -24;
-	name = "West Switch";
-	dir = 4
-	},
+/obj/machinery/light_switch/west,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "darkyellowcorners"
@@ -6158,7 +6135,8 @@
 	},
 /obj/machinery/power/apc{
 	pixel_x = -24;
-	name = "East Hallway APC"
+	name = "East Hallway APC";
+	dir = 8
 	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
@@ -22562,7 +22540,7 @@ fv
 fp
 Ww
 fx
-bU
+hy
 eF
 bU
 LK
@@ -22819,7 +22797,7 @@ da
 bq
 bq
 bq
-ej
+bq
 bq
 Cw
 zy
