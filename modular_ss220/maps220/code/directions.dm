@@ -332,11 +332,11 @@
 
 /obj/machinery/power/apc/directional/west
     pixel_x = -24
-    dir = 4
+    dir = 8
 
 /obj/machinery/power/apc/directional/east
     pixel_x = 24
-    dir = 8
+    dir = 4
 
 /obj/machinery/power/apc/engie
 	name = "\improper Engineering APC"
