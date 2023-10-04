@@ -5990,9 +5990,15 @@
 /obj/structure/noticeboard{
 	pixel_y = -30
 	},
-/obj/item/reagent_containers/food/drinks/flask/detflask,
 /obj/effect/turf_decal/siding/wood{
 	dir = 1
+	},
+/obj/item/hand_labeler{
+	pixel_x = -4
+	},
+/obj/item/storage/box/evidence{
+	pixel_x = 14;
+	pixel_y = 2
 	},
 /turf/simulated/floor/wood,
 /area/station/security/detective)
@@ -9373,13 +9379,19 @@
 /obj/machinery/alarm/directional/south,
 /obj/structure/table/wood,
 /obj/item/paper_bin{
-	pixel_y = 4
+	pixel_y = 4;
+	pixel_x = -4
 	},
 /obj/item/pen/multi{
-	pixel_y = 9
+	pixel_y = 7;
+	pixel_x = -3
 	},
 /obj/effect/turf_decal/siding/wood{
 	dir = 1
+	},
+/obj/item/reagent_containers/food/drinks/flask/detflask{
+	pixel_y = 4;
+	pixel_x = 10
 	},
 /turf/simulated/floor/wood,
 /area/station/security/detective)
@@ -50222,8 +50234,15 @@
 /area/station/maintenance/apmaint)
 "fwA" = (
 /obj/structure/table/wood,
-/obj/item/storage/photo_album{
-	pixel_y = -2
+/obj/item/storage/photo_album,
+/obj/machinery/requests_console{
+	department = "Detective";
+	departmentType = 5;
+	name = "Detective Requests Console";
+	pixel_y = -30
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
 	},
 /obj/item/camera_film{
 	pixel_y = 7
@@ -50235,38 +50254,7 @@
 	desc = "A one use - polaroid camera. 30 photos left.";
 	name = "detectives camera";
 	pictures_left = 30;
-	pixel_y = 8
-	},
-/obj/machinery/requests_console{
-	department = "Detective";
-	departmentType = 5;
-	name = "Detective Requests Console";
-	pixel_y = -30
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/table/wood,
-/obj/item/storage/photo_album{
-	pixel_y = -10
-	},
-/obj/item/camera_film,
-/obj/item/camera_film,
-/obj/item/camera{
-	desc = "A one use - polaroid camera. 30 photos left.";
-	name = "detectives camera";
-	pictures_left = 30
-	},
-/obj/machinery/requests_console{
-	department = "Detective";
-	departmentType = 5;
-	name = "Detective Requests Console";
-	pixel_y = -30
-	},
-/obj/effect/turf_decal/siding/wood{
-	dir = 1
+	pixel_y = 2
 	},
 /turf/simulated/floor/wood,
 /area/station/security/detective)
@@ -54390,18 +54378,10 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/port)
 "gVt" = (
-/obj/machinery/dnaforensics,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/structure/table/wood,
-/obj/item/folder/red{
-	pixel_y = 3
+/obj/machinery/microscope{
+	pixel_y = 8
 	},
-/obj/item/hand_labeler,
-/obj/item/storage/box/evidence,
 /turf/simulated/floor/plasteel{
 	dir = 10;
 	icon_state = "darkblue"
@@ -59241,16 +59221,6 @@
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos)
 "iKi" = (
-/obj/machinery/ai_status_display/south,
-/obj/structure/table/wood,
-/obj/machinery/microscope{
-	pixel_y = 8
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/structure/closet/secure_closet{
 	anchored = 1;
 	name = "Evidence Storage";
@@ -65859,13 +65829,6 @@
 	},
 /area/station/engineering/supermatter_room)
 "lpF" = (
-/obj/machinery/light/directional/north,
-/obj/structure/filingcabinet/chestdrawer,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/structure/filingcabinet/chestdrawer,
 /obj/machinery/ai_status_display/south,
 /turf/simulated/floor/plasteel{
@@ -76945,15 +76908,7 @@
 /turf/simulated/floor/plasteel,
 /area/station/hallway/primary/fore)
 "prR" = (
-/obj/machinery/alarm/directional/south,
-/obj/structure/closet/secure_closet/detective,
-/obj/item/restraints/handcuffs,
-/obj/item/flash,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
+/obj/machinery/dnaforensics,
 /turf/simulated/floor/plasteel{
 	dir = 10;
 	icon_state = "darkblue"
@@ -82259,13 +82214,6 @@
 	},
 /area/station/science/genetics)
 "rtU" = (
-/obj/machinery/newscaster/security_unit/east,
-/obj/machinery/photocopier,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
 	},
