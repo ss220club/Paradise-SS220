@@ -323,6 +323,7 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
+/obj/machinery/hologram/holopad,
 /turf/simulated/floor/plasteel,
 /area/station/security/range)
 "acM" = (
@@ -454,6 +455,8 @@
 /area/station/security/permabrig)
 "adl" = (
 /obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -512,6 +515,8 @@
 /obj/effect/decal/warning_stripes/red/hollow,
 /obj/structure/chair/stool,
 /obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -598,12 +603,16 @@
 /area/station/security/main)
 "adX" = (
 /obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/plasteel,
 /area/station/security/main)
 "adY" = (
 /obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/plasteel{
@@ -1140,6 +1149,8 @@
 /area/station/security/brig)
 "ahf" = (
 /obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/plasteel{
@@ -1452,6 +1463,17 @@
 	icon_state = "dark"
 	},
 /area/station/security/brig)
+"aiu" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/station/security/detective)
 "aiv" = (
 /turf/simulated/wall/r_wall,
 /area/station/security/armory/secure)
@@ -2109,12 +2131,16 @@
 	},
 /obj/effect/landmark/start/detective,
 /obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/plasteel,
 /area/station/security/main)
 "alq" = (
 /obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/plasteel{
@@ -2148,6 +2174,8 @@
 /area/station/security/prison/cell_block/A)
 "alu" = (
 /obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -2387,6 +2415,8 @@
 /obj/structure/chair/stool,
 /obj/effect/decal/warning_stripes/red/hollow,
 /obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -2427,6 +2457,8 @@
 /area/space/nearstation)
 "amm" = (
 /obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/plasteel{
@@ -2687,6 +2719,8 @@
 /area/station/security/main)
 "amP" = (
 /obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/plasteel{
@@ -2696,6 +2730,8 @@
 /area/station/security/main)
 "amQ" = (
 /obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/plasteel{
@@ -2905,6 +2941,8 @@
 /area/station/security/storage)
 "anL" = (
 /obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
 	icon_state = "2-4"
 	},
 /obj/structure/cable{
@@ -3169,6 +3207,8 @@
 /area/station/security/main)
 "aoM" = (
 /obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -3184,6 +3224,8 @@
 /area/station/security/main)
 "aoN" = (
 /obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/plasteel{
@@ -3199,9 +3241,13 @@
 /area/station/security/lobby)
 "aoP" = (
 /obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
 	icon_state = "2-4"
 	},
 /obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
 	icon_state = "2-8"
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -5359,9 +5405,6 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/fore)
 "awG" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
-	dir = 1
-	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "darkbluecorners"
@@ -8245,16 +8288,19 @@
 /area/station/security/detective)
 "aFD" = (
 /obj/structure/table/wood,
-/obj/item/flashlight/lamp/green{
-	on = 0;
-	pixel_x = -3;
-	pixel_y = 8
+/obj/item/storage/fancy/cigarettes/dromedaryco{
+	pixel_x = -16
 	},
-/obj/item/storage/fancy/cigarettes/dromedaryco,
-/obj/item/ashtray/bronze,
+/obj/item/ashtray/bronze{
+	pixel_x = -16
+	},
 /obj/item/radio/intercom/department/security{
 	pixel_x = 22;
 	dir = 8
+	},
+/obj/item/flashlight/lamp/green{
+	on = 0;
+	pixel_y = 8
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "grimy"
@@ -9020,13 +9066,17 @@
 	},
 /area/station/service/barber)
 "aIb" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
 	},
-/area/station/security/detective)
+/turf/simulated/floor/plating,
+/area/station/maintenance/fore)
 "aIc" = (
 /turf/simulated/wall,
 /area/station/service/clown)
@@ -45079,7 +45129,8 @@
 /area/station/science/hallway)
 "dAH" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/universal,
-/turf/simulated/wall,
+/obj/effect/spawner/window/reinforced/tinted,
+/turf/simulated/floor/plating,
 /area/station/maintenance/fore)
 "dBd" = (
 /obj/machinery/door/firedoor,
@@ -48042,9 +48093,13 @@
 "eEj" = (
 /obj/effect/spawner/window/reinforced,
 /obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
 	icon_state = "2-4"
 	},
 /obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
 	icon_state = "2-8"
 	},
 /obj/structure/cable{
@@ -56686,16 +56741,19 @@
 	},
 /area/station/security/prisonlockers)
 "hLk" = (
-/obj/structure/disposalpipe/segment,
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
 /obj/structure/cable{
 	d1 = 2;
 	d2 = 8;
 	icon_state = "2-8"
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
 	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/fore)
@@ -57028,6 +57086,8 @@
 /area/station/engineering/hallway)
 "hRm" = (
 /obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -61711,6 +61771,8 @@
 	dir = 4
 	},
 /obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -68379,6 +68441,8 @@
 /area/station/science/hallway)
 "mjR" = (
 /obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -68639,10 +68703,10 @@
 	},
 /area/station/medical/reception)
 "mqw" = (
-/obj/structure/disposalpipe/junction/y,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+/obj/structure/disposalpipe/junction/y,
 /turf/simulated/floor/plating,
 /area/station/maintenance/fore)
 "mqG" = (
@@ -74887,6 +74951,8 @@
 /area/station/maintenance/asmaint2)
 "oHE" = (
 /obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/door/firedoor,
@@ -79642,6 +79708,9 @@
 	},
 /area/station/science/rnd)
 "qvP" = (
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 1
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -92106,9 +92175,13 @@
 /area/station/service/clown)
 "veR" = (
 /obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
 	icon_state = "2-4"
 	},
 /obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
 	icon_state = "1-4"
 	},
 /obj/machinery/door/firedoor,
@@ -92122,6 +92195,8 @@
 	dir = 4
 	},
 /obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/effect/mapping_helpers/airlock/access/any/security/general,
@@ -132034,7 +132109,7 @@ fqq
 wrn
 aFE
 aGC
-kIk
+aiu
 awG
 aKB
 axe
@@ -132291,7 +132366,7 @@ aAx
 usw
 axe
 aGF
-aIb
+kIk
 qvP
 aKD
 axe
@@ -133059,7 +133134,7 @@ aAx
 aAx
 aAx
 aAx
-mqw
+ogL
 axe
 axe
 bWJ
@@ -133316,14 +133391,14 @@ azY
 aBo
 aAB
 aBs
-mbb
+mqw
 gDU
 aGH
 ssY
 ssY
 ssY
 ssY
-avq
+aIb
 aOI
 aQp
 aSM
