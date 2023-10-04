@@ -118,7 +118,7 @@
 
 /obj/machinery/dnaforensics/proc/remove_sample(mob/living/remover)
 	if(!istype(remover) || remover.incapacitated() || !Adjacent(remover))
-		return ..()
+		return
 	if(!swab)
 		to_chat(remover, "<span class='warning'>Внутри сканера нет образца!.</span>")
 		return
@@ -159,12 +159,6 @@
 		return
 	. = TRUE
 	default_deconstruction_crowbar(user, I)
-
-// This is the output of the stringpercent(print) proc, and means about 80% of
-// the print must be there for it to be complete.  (Prints are 32 digits)
-var/const/FINGERPRINT_COMPLETE = 6
-proc/is_complete_print(print)
-	return stringpercent(print) <= FINGERPRINT_COMPLETE
 
 // Microscope code itself
 // This is the output of the stringpercent(print) proc, and means about 80% of
