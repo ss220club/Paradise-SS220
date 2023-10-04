@@ -41138,6 +41138,19 @@
 /obj/structure/sign/nosmoking_2,
 /turf/simulated/wall/r_wall,
 /area/station/engineering/atmos/control)
+"deX" = (
+/obj/effect/spawner/window/reinforced/polarized{
+	id = "hos_room"
+	},
+/obj/structure/cable{
+	d2 = 4;
+	icon_state = "0-4"
+	},
+/obj/machinery/door/poddoor{
+	id_tag = "hos_secure_doors"
+	},
+/turf/simulated/floor/plating,
+/area/station/command/office/hos)
 "deY" = (
 /obj/structure/table/reinforced,
 /obj/item/lighter/zippo/ce,
@@ -48976,6 +48989,9 @@
 	id = "hos_room"
 	},
 /obj/structure/cable,
+/obj/machinery/door/poddoor{
+	id_tag = "hos_secure_doors"
+	},
 /turf/simulated/floor/plating,
 /area/station/command/office/hos)
 "eWC" = (
@@ -52220,6 +52236,9 @@
 	d1 = 2;
 	d2 = 8;
 	icon_state = "2-8"
+	},
+/obj/machinery/door/poddoor{
+	id_tag = "hos_secure_doors"
 	},
 /turf/simulated/floor/plating,
 /area/station/command/office/hos)
@@ -62004,6 +62023,9 @@
 	d2 = 2;
 	icon_state = "0-2"
 	},
+/obj/machinery/door/poddoor{
+	id_tag = "hos_secure_doors"
+	},
 /turf/simulated/floor/plating,
 /area/station/command/office/hos)
 "jQC" = (
@@ -68548,6 +68570,9 @@
 	c_tag = "Brig Head of Security's Bedroom"
 	},
 /obj/machinery/newscaster/security_unit/north,
+/obj/machinery/door_control/shutter/west{
+	id = "hos_secure_doors"
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "grimy"
 	},
@@ -69453,17 +69478,9 @@
 	name = "HoS personal weapons";
 	req_access = list(58)
 	},
-/obj/item/ammo_box/a357{
-	pixel_x = -9;
-	pixel_y = 9
-	},
-/obj/item/ammo_box/a357{
-	pixel_x = -4;
-	pixel_y = 4
-	},
+/obj/item/clothing/gloves/combat,
 /obj/item/ammo_box/a357,
 /obj/item/gun/projectile/revolver/mateba,
-/obj/item/clothing/gloves/combat,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -69583,6 +69600,9 @@
 	d1 = 2;
 	d2 = 8;
 	icon_state = "2-8"
+	},
+/obj/machinery/door/poddoor{
+	id_tag = "hos_secure_doors"
 	},
 /turf/simulated/floor/plating,
 /area/station/command/office/hos)
@@ -88048,6 +88068,19 @@
 	icon_state = "dark"
 	},
 /area/station/turret_protected/ai_upload)
+"tEw" = (
+/obj/effect/spawner/window/reinforced/polarized{
+	id = "hos_room"
+	},
+/obj/structure/cable{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/obj/machinery/door/poddoor{
+	id_tag = "hos_secure_doors"
+	},
+/turf/simulated/floor/plating,
+/area/station/command/office/hos)
 "tFl" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
@@ -136189,7 +136222,7 @@ aaa
 aaa
 alv
 aaa
-wxF
+deX
 jRb
 eTn
 umg
@@ -136703,7 +136736,7 @@ aaa
 aaa
 dQR
 aaa
-kPs
+tEw
 dBR
 sKj
 qbR
