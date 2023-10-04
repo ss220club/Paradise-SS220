@@ -25,37 +25,37 @@
 	if(!ishuman(M))
 		return ..()
 	if(is_used())
-		to_chat(user, "<span class='warning'>Вы уже берёте образец.</span>")
+		to_chat(user, "<span_class='warning'>Вы уже берёте образец.</span>")
 		return
 
 	var/mob/living/carbon/human/H = M
 	var/sample_type
 	inuse = TRUE
-	to_chat(user, "<span class='notice'>Вы начинаете собирать образцы.</span>")
+	to_chat(user, "<span_class='notice'>Вы начинаете собирать образцы.</span>")
 	if(do_after(user, 2 SECONDS, target = user))
 		if(H.wear_mask)
-			to_chat(user, "<span class='warning'>[H] носит маску.</span>")
+			to_chat(user, "<span_class='warning'>[H] носит маску.</span>")
 			inuse = FALSE
 			return
 
 		if(!H.dna || !H.dna.unique_enzymes)
-			to_chat(user, "<span class='warning'>Похоже у него нет ДНК!</span>")
+			to_chat(user, "<span_class='warning'>Похоже у него нет ДНК!</span>")
 			inuse = FALSE
 			return
 
 		if(user != H && H.a_intent != INTENT_HELP && !IS_HORIZONTAL(H))
-			user.visible_message("<span class='danger'>[user] пытается взять образец у [H], но он сопротивляется.</span>")
+			user.visible_message("<span_class='danger'>[user] пытается взять образец у [H], но он сопротивляется.</span>")
 			inuse = FALSE
 			return
 		var/target_dna
 		var/target_gsr
 		if(user.zone_selected == "mouth")
 			if(!H.has_organ("head"))
-				to_chat(user, "<span class='warning'>У него нет головы.</span>")
+				to_chat(user, "<span_class='warning'>У него нет головы.</span>")
 				inuse = FALSE
 				return
 			if(!H.check_has_mouth())
-				to_chat(user, "<span class='warning'>У него нет рта.</span>")
+				to_chat(user, "<span_class='warning'>У него нет рта.</span>")
 				inuse = FALSE
 				return
 			user.visible_message("[user] берёт мазок изо рта [H] для анализа.")
@@ -72,7 +72,7 @@
 				if(istype(O))
 					has_hand = TRUE
 			if(!has_hand)
-				to_chat(user, "<span class='warning'>Он безрукий.</span>")
+				to_chat(user, "<span_class='warning'>Он безрукий.</span>")
 				inuse = FALSE
 				return
 			user.visible_message("[user] берёт мазок с ладони [H] для анализа.")
@@ -106,12 +106,12 @@
 		return
 
 	if(is_used())
-		to_chat(user, "<span class='warning'>Этот образец уже используется.</span>")
+		to_chat(user, "<span_class='warning'>Этот образец уже используется.</span>")
 		return
 
 	add_fingerprint(user)
 	inuse = TRUE
-	to_chat(user, "<span class='notice'>Вы начинаете собирать улики.</span>")
+	to_chat(user, "<span_class='notice'>Вы начинаете собирать улики.</span>")
 	if(do_after(user, 2 SECONDS, target = user))
 		var/list/choices = list()
 		if(A.blood_DNA)
@@ -121,7 +121,7 @@
 
 		var/choice
 		if(!choices.len)
-			to_chat(user, "<span class='warning'>На [A] нет улик.</span>")
+			to_chat(user, "<span_class='warning'>На [A] нет улик.</span>")
 			inuse = FALSE
 			return
 		else if(choices.len == 1)
@@ -146,7 +146,7 @@
 		else if(choice == "Частицы пороха")
 			var/obj/item/clothing/B = A
 			if(!istype(B) || !B.gunshot_residue)
-				to_chat(user, "<span class='warning'>На [A] нет ни намёка на порох.</span>")
+				to_chat(user, "<span_class='warning'>На [A] нет ни намёка на порох.</span>")
 				inuse = FALSE
 				return
 			target_gsr = B.gunshot_residue

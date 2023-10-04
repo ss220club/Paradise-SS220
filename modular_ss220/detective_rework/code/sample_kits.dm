@@ -29,7 +29,7 @@
 		return FALSE
 	evidence |= supplied.evidence
 	name = ("[initial(name)] (combined)")
-	to_chat(user, "<span class='notice'>Вы перемещаете содержимое \the [supplied] в \the [src].</span>")
+	to_chat(user, "<span_class='notice'>Вы перемещаете содержимое \the [supplied] в \the [src].</span>")
 	return TRUE
 
 /obj/item/sample/print/merge_evidence(obj/item/sample/supplied, mob/user)
@@ -41,7 +41,7 @@
 		else
 			evidence[print] = supplied.evidence[print]
 	name = ("[initial(name)] (combined)")
-	to_chat(user, "<span class='notice'>You overlay \the [src] and \the [supplied], combining the print records.</span>")
+	to_chat(user, "<span_class='notice'>You overlay \the [src] and \the [supplied], combining the print records.</span>")
 	return TRUE
 
 /obj/item/sample/pre_attack(atom/A, mob/living/user, params)
@@ -75,10 +75,10 @@
 		return
 	var/mob/living/carbon/human/H = user
 	if(H.gloves)
-		to_chat(user, "<span class='warning'>Take [H.gloves] off first.</span>")
+		to_chat(user, "<span_class='warning'>Take [H.gloves] off first.</span>")
 		return
 
-	to_chat(user, "<span class='notice'>Вы плотно прижимаете кончики своих пальцев к карте.</span>")
+	to_chat(user, "<span_class='notice'>Вы плотно прижимаете кончики своих пальцев к карте.</span>")
 	var/fullprint = H.get_full_print()
 	evidence[fullprint] = fullprint
 	name = ("[initial(name)] ([H])")
@@ -95,11 +95,11 @@
 	var/mob/living/carbon/human/H = M
 
 	if(H.gloves)
-		to_chat(user, "<span class='warning'>У [H] надеты перчатки.</span>")
+		to_chat(user, "<span_class='warning'>У [H] надеты перчатки.</span>")
 		return TRUE
 
 	if(user != H && H.a_intent != INTENT_HELP && !IS_HORIZONTAL(H))
-		user.visible_message("<span class='danger'>[user] пытался снять отпечатки у [H], но он сопротивляется.</span>")
+		user.visible_message("<span_class='danger'>[user] пытался снять отпечатки у [H], но он сопротивляется.</span>")
 		return TRUE
 
 	if(user.zone_selected == "r_hand" || user.zone_selected == "l_hand")
@@ -112,7 +112,7 @@
 			if(istype(O))
 				has_hand = TRUE
 		if(!has_hand)
-			to_chat(user, "<span class='warning'>А рук то у него нет.</span>")
+			to_chat(user, "<span_class='warning'>А рук то у него нет.</span>")
 			return FALSE
 		if (!do_after(user, 2 SECONDS, target = user))
 			return FALSE
@@ -147,7 +147,7 @@
 
 /obj/item/forensics/sample_kit/proc/take_sample(mob/user, atom/supplied)
 	var/obj/item/sample/S = new evidence_path(get_turf(user), supplied)
-	to_chat(user, "<span class='notice'>Вы перемещаете [S.evidence.len] [S.evidence.len > 1 ? "[evidence_type]" : "[evidence_type]"] в \the [S].</span>")
+	to_chat(user, "<span_class='notice'>Вы перемещаете [S.evidence.len] [S.evidence.len > 1 ? "[evidence_type]" : "[evidence_type]"] в \the [S].</span>")
 
 /obj/item/forensics/sample_kit/afterattack(atom/A, mob/user, proximity)
 	if(!proximity)
@@ -156,7 +156,7 @@
 		take_sample(user,A)
 		. = TRUE
 	else
-		to_chat(user, "<span class='warning'>Вы не можете найти [evidence_type] на [A].</span>")
+		to_chat(user, "<span_class='warning'>Вы не можете найти [evidence_type] на [A].</span>")
 		. = ..()
 
 /obj/item/forensics/sample_kit/MouseDrop(atom/over)
