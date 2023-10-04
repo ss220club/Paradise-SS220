@@ -192,7 +192,8 @@
 	if(istype(W, /obj/item/forensics/swab)|| istype(W, /obj/item/sample/fibers) || istype(W, /obj/item/sample/print))
 		add_fingerprint(user)
 		to_chat(user, "<span class='notice'>Вы вставили \the [W] в микроскоп.</span>")
-		user.drop_transfer_item_to_loc(W, src)
+		user.unEquip(W)
+		W.forceMove(src)
 		sample = W
 		update_icon()
 
@@ -268,8 +269,8 @@
 		to_chat(remover, "<span class='warning'>Внутри микроскопа нет образца!</span>")
 		return
 	to_chat(remover, "<span class='notice'>Вы вытащили \the [sample] из микроскопа.</span>")
-	sample.forceMove_turf()
-	remover.put_in_hands(sample, ignore_anim = FALSE)
+	sample.forceMove(get_turf(src))
+	remover.put_in_hands(sample)
 	sample = null
 	update_icon()
 
@@ -285,7 +286,7 @@
 	else
 		return ..()
 
-/obj/machinery/microscope/update_icon()
+/obj/machinery/microscope/update_icon_state()
 	icon_state = "microscope"
 	if(sample)
 		icon_state += "slide"
