@@ -4,7 +4,7 @@
 /obj/item/clothing
 	var/gunshot_residue
 
-/obj/item/clothing/clean_blood()
+/obj/item/clothing/clean_blood(radiation_clean = FALSE)
 	. = ..()
 	gunshot_residue = null
 
