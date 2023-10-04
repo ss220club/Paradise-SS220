@@ -32,7 +32,7 @@
 	var/sample_type
 	inuse = TRUE
 	to_chat(user, "<span class='notice'>Вы начинаете собирать образцы.</span>")
-	if(do_after(user, 2 SECONDS, target = target))
+	if(do_after(user, 2 SECONDS, target = user))
 		if(H.wear_mask)
 			to_chat(user, "<span class='warning'>[H] носит маску.</span>")
 			inuse = FALSE
@@ -112,7 +112,7 @@
 	add_fingerprint(user)
 	inuse = TRUE
 	to_chat(user, "<span class='notice'>Вы начинаете собирать улики.</span>")
-	if(do_after(user, 2 SECOND, target = target))
+	if(do_after(user, 2 SECONDS, target = user))
 		var/list/choices = list()
 		if(A.blood_DNA)
 			choices |= "Кровь"

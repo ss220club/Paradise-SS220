@@ -114,7 +114,7 @@
 		if(!has_hand)
 			to_chat(user, "<span class='warning'>А рук то у него нет.</span>")
 			return FALSE
-		if (!do_after(user, 2 SECONDS, target = M))
+		if (!do_after(user, 2 SECONDS, target = user))
 			return FALSE
 
 		user.visible_message("[user] делает копию отмечатков [H].")
