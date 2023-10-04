@@ -1,7 +1,7 @@
 /mob/living/simple_animal/snail
 	name = "space snail"
 	desc = "Маленькая космо-улиточка со своим космо-домиком. Прочная, тихая и медленная."
-	icon = 'modular_ss220/mobs/icons/animals.dmi'
+	icon = 'modular_ss220/mobs/icons/mob/animal.dmi'
 	icon_state = "snail"
 	icon_living = "snail"
 	icon_dead = "snail_dead"
@@ -62,7 +62,7 @@
 /mob/living/simple_animal/turtle
 	name = "черепаха"
 	desc = "Большая космочерепаха. Прочная, тихая и медленная."
-	icon = 'modular_ss220/mobs/icons/animals.dmi'
+	icon = 'modular_ss220/mobs/icons/mob/animal.dmi'
 	icon_state = "yeeslow"
 	icon_living = "yeeslow"
 	icon_dead = "yeeslow_dead"

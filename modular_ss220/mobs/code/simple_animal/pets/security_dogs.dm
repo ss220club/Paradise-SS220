@@ -2,7 +2,7 @@
 	name = "Мухтар"
 	real_name = "Мухтар"
 	desc = "Верный служебный пес. Он гордо несёт бремя хорошего мальчика."
-	icon = 'modular_ss220/mobs/icons/pets.dmi'
+	icon = 'modular_ss220/mobs/icons/mob/pets.dmi'
 	icon_state = "german_shep"
 	icon_living = "german_shep"
 	icon_resting = "german_shep_rest"

@@ -1,7 +1,7 @@
 /mob/living/simple_animal/pet/slugcat
 	name = "слизнекот"
 	desc = "Удивительное существо, напоминающая кота и слизня в одном обличии. Но это не слизь, а иной вид существа. Гордость ксенобиологии. Крайне ловкое и умное, родом с планеты с опасной средой обитания. Обожает копья, не стоит давать ему его в лапки. На нем отлично смотрятся шляпы."
-	icon = 'modular_ss220/mobs/icons/pets.dmi'
+	icon = 'modular_ss220/mobs/icons/mob/pets.dmi'
 	icon_state = "slugcat"
 	icon_living = "slugcat"
 	icon_dead = "slugcat_dead"

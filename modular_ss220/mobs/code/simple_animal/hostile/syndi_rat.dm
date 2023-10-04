@@ -1,7 +1,7 @@
 /mob/living/simple_animal/hostile/retaliate/syndirat
 	name = "Синди-мышь"
 	desc = "Мышь на службе синдиката?"
-	icon = 'modular_ss220/mobs/icons/syndirat.dmi'
+	icon = 'modular_ss220/mobs/icons/mob/animal.dmi'
 	icon_state = "syndirat"
 	icon_living = "syndirat"
 	icon_dead = "syndirat_dead"
