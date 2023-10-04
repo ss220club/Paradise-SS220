@@ -32,7 +32,7 @@
 	var/sample_type
 	inuse = TRUE
 	to_chat(user, "<span class='notice'>Вы начинаете собирать образцы.</span>")
-	if(do_after(user, 2 SECONDS, target = src))
+	if(do_after(user, 2 SECONDS, target = target))
 		if(H.wear_mask)
 			to_chat(user, "<span class='warning'>[H] носит маску.</span>")
 			inuse = FALSE
@@ -112,7 +112,7 @@
 	add_fingerprint(user)
 	inuse = TRUE
 	to_chat(user, "<span class='notice'>Вы начинаете собирать улики.</span>")
-	if(do_after(user,20,src))
+	if(do_after(user, 2 SECOND, target = target))
 		var/list/choices = list()
 		if(A.blood_DNA)
 			choices |= "Кровь"
@@ -167,7 +167,7 @@
 
 /obj/item/forensics/swab/proc/set_used(sample_str, atom/source)
 	name = ("[initial(name)] ([sample_str] - [source])")
-	desc = "[initial(desc)] Этикетка на флаконе гласит: 'Образец [sample_str] с [source].'."
+	desc = "[initial(desc)] /Этикетка на флаконе гласит: 'Образец [sample_str] с [source].'."
 	icon_state = "swab_used"
 	used = TRUE
 
