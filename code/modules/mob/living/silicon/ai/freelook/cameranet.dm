@@ -123,6 +123,7 @@ GLOBAL_DATUM_INIT(cameranet, /datum/cameranet, new())
 
 /datum/cameranet/proc/updatePortableCamera(obj/machinery/camera/c, turf/old_loc)
 	majorChunkChange(c, 1, old_loc)
+	c.update_computers_watched_by() // SS220 ADDITION
 
 // Never access this proc directly!!!!
 // This will update the chunk and all the surrounding chunks.

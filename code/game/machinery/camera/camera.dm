@@ -75,6 +75,7 @@
 		A.motioncameras -= src
 	area_motion = null
 	cancelAlarm()
+	LAZYCLEARLIST(computers_watched_by) // SS220 ADDITION
 	return ..()
 
 /obj/machinery/camera/examine(mob/user)
