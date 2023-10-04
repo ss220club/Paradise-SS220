@@ -18,11 +18,13 @@ SUBSYSTEM_DEF(radio)
 	"Service" 		= SRV_FREQ,
 	"AI Private"	= AI_FREQ,
 	"Medical(I)"	= MED_I_FREQ,
-	"Security(I)"	= SEC_I_FREQ
+	"Security(I)"	= SEC_I_FREQ,
+	"Spy Spider"	= SPY_SPIDER_FREQ // SS220 EDIT - ADDITION
 	)
 	var/list/CENT_FREQS = list(ERT_FREQ, DTH_FREQ)
 	var/list/ANTAG_FREQS = list(SYND_FREQ, SYNDTEAM_FREQ)
 	var/list/DEPT_FREQS = list(AI_FREQ, COMM_FREQ, ENG_FREQ, MED_FREQ, SEC_FREQ, SCI_FREQ, SRV_FREQ, SUP_FREQ, PROC_FREQ)
+	var/list/syndicate_blacklist = list(SPY_SPIDER_FREQ) // SS220 EDIT - ADDITION
 	var/list/datum/radio_frequency/frequencies = list()
 
 // This is a disgusting hack to stop this tripping CI when this thing needs to FUCKING DIE
@@ -57,6 +59,10 @@ SUBSYSTEM_DEF(radio)
 			return "srvradio"
 		if(PROC_FREQ)
 			return "proradio"
+		// SS220 EDIT - ADDITION START
+		if(SPY_SPIDER_FREQ)
+			return "spyradio"
+		// SS220 EDIT - ADDITION END
 
 	// If the above switch somehow failed. And it needs the SSradio. part otherwise it fails to compile
 	if(frequency in DEPT_FREQS)
