@@ -1,3 +1,8 @@
+/atom/movable/Moved(atom/OldLoc, Dir, Forced = FALSE)
+	for(var/atom/movable/atom in contents)
+		SEND_SIGNAL(atom, COMSIG_MOVABLE_HOLDER_MOVED, OldLoc, Dir, Forced)
+	. = ..()
+
 /obj/item/body_camera
 	name = "BodyCam"
 	desc = "Камера которую можно надеть на голову, обычно используются спортсменами."
@@ -19,9 +24,9 @@
 	camera.c_tag = "Body Camera"
 	camera.network = list("SS13")
 	toggle()
-	RegisterSignal(src, COMSIG_ITEM_PICKUP, .proc/was_pickedup)
-	RegisterSignal(src, COMSIG_ITEM_EQUIPPED, .proc/was_pickedup)
-	RegisterSignal(src, COMSIG_ITEM_DROPPED, .proc/was_dropped)
+	RegisterSignal(src, COMSIG_ITEM_PICKUP, PROC_REF(was_pickedup))
+	RegisterSignal(src, COMSIG_ITEM_EQUIPPED, PROC_REF(was_pickedup))
+	RegisterSignal(src, COMSIG_ITEM_DROPPED, PROC_REF(was_dropped))
 
 /obj/item/body_camera/Destroy()
 	. = ..()
@@ -75,8 +80,8 @@
 	was_pickedup(src, user)
 
 /obj/item/body_camera/proc/was_pickedup(datum/source, mob/user)
-	RegisterSignal(user, COMSIG_MOVABLE_MOVED, .proc/update_position, override = TRUE)
-	RegisterSignal(user, COMSIG_MOVABLE_HOLDER_MOVED, .proc/update_position, override = TRUE)
+	RegisterSignal(user, COMSIG_MOVABLE_MOVED, PROC_REF(update_position), override = TRUE)
+	RegisterSignal(user, COMSIG_MOVABLE_HOLDER_MOVED, PROC_REF(update_position), override = TRUE)
 
 /obj/item/body_camera/proc/was_dropped(datum/source, mob/user)
 	UnregisterSignal(user, list(COMSIG_MOVABLE_MOVED, COMSIG_MOVABLE_HOLDER_MOVED))
