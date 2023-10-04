@@ -76,9 +76,10 @@
 
 /obj/item/body_camera/proc/was_pickedup(datum/source, mob/user)
 	RegisterSignal(user, COMSIG_MOVABLE_MOVED, .proc/update_position, override = TRUE)
+	RegisterSignal(user, COMSIG_MOVABLE_HOLDER_MOVED, .proc/update_position, override = TRUE)
 
 /obj/item/body_camera/proc/was_dropped(datum/source, mob/user)
-	UnregisterSignal(user, COMSIG_MOVABLE_MOVED)
+	UnregisterSignal(user, list(COMSIG_MOVABLE_MOVED, COMSIG_MOVABLE_HOLDER_MOVED))
 
 /obj/item/body_camera/proc/update_position(datum/source, turf/oldLoc)
 	if(!camera || !camera.status)

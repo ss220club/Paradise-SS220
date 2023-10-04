@@ -941,3 +941,6 @@
 #define COMSIG_MOD_WEARER_UNSET "mod_wearer_unset"
 
 
+// SS220 signals
+/// fomr base of atom/movable/Moved(): (/atom, dir)
+#define COMSIG_MOVABLE_HOLDER_MOVED "movable_holder_moved"
