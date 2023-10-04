@@ -1,3 +1,11 @@
+/datum/controller/subsystem/radio
+	var/list/syndicate_blacklist = list(SPY_SPIDER_FREQ)
+
+/datum/controller/subsystem/radio/frequency_span_class(frequency)
+	if(frequency == SPY_SPIDER_FREQ)
+		return "spyradio"
+	return ..()
+
 /obj/item/radio/spy_spider
 	name = "шпионский жучок"
 	desc = "Кажется, ты видел такого в фильмах про шпионов."
@@ -50,7 +58,7 @@
  * CLOTHING PART
  */
 /obj/item/clothing
-	var/obj/item/radio/spy_spider/spy_spider_attached = null
+	var/obj/item/radio/spy_spider/spy_spider_attached
 
 /obj/item/clothing/Destroy()
 	QDEL_NULL(spy_spider_attached)
@@ -85,7 +93,7 @@
 /obj/item/clothing/proc/remove_spy_spider()
 	set name = "Снять жучок"
 	set category = "Object"
-	set src in oview(1)
+	set src in range(1, usr)
 
 	if(!ishuman(usr))
 		return
