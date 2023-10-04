@@ -63,11 +63,11 @@
 /obj/machinery/dnaforensics/attackby(obj/item/W as obj, mob/user as mob)
 
 	if(swab)
-		to_chat(user, "<span_class='warning'>Внутри сканера уже есть пробирка.</span>")
+		to_chat(user, span_warning("Внутри сканера уже есть пробирка."))
 		return
 
 	if(istype(W, /obj/item/forensics/swab))
-		to_chat(user, "<span_class='notice'>Вы вставляете \the [W] в ДНК анализатор.</span>")
+		to_chat(user, span_notice("Вы вставляете [W] в ДНК анализатор."))
 		user.unEquip(W)
 		W.forceMove(src)
 		swab = W
@@ -78,20 +78,20 @@
 /obj/machinery/dnaforensics/attack_hand(mob/user)
 
 	if(!swab)
-		to_chat(user, "<span_class='warning'>Сканер пуст!</span>")
+		to_chat(user, span_warning("Сканер пуст!"))
 		return
 	scanning = TRUE
 	update_icon()
-	to_chat(user, "<span_class='notice'>Сканер начинает с жужением анализировать содержимое пробирки \the [swab].</span>")
+	to_chat(user, span_notice("Сканер начинает с жужением анализировать содержимое пробирки [swab]."))
 
 	if(!do_after(user, 25, src) || !swab)
-		to_chat(user, "<span_class='notice'>Вы перестали анализировать \the [swab].</span>")
+		to_chat(user, span_notice("Вы перестали анализировать [swab]."))
 		scanning = FALSE
 		update_icon()
 
 		return
 
-	to_chat(user, "<span_class='notice'>Печать отчета...</span>")
+	to_chat(user, span_notice("Печать отчета..."))
 	var/obj/item/paper/report = new(get_turf(src))
 	report.stamped = list(/obj/item/stamp)
 	report.overlays = list("paper_stamped")
@@ -105,7 +105,7 @@
 		if(bloodswab.dna != null)
 			data = "Спектрометрический анализ на предоставленном образце определил наличие нитей ДНК в количестве [bloodswab.dna.len].<br><br>"
 			for(var/blood in bloodswab.dna)
-				data += "<span_class='notice'>Группа крови: [bloodswab.dna[blood]]<br>\nДНК: [blood]</span><br><br>"
+				data += span_notice("Группа крови: [bloodswab.dna[blood]]<br>\nДНК: [blood]<br><br>")
 		else
 			data += "\nДНК не найдено.<br>"
 		report.info = "<b>Отчет №[report_num] по \n[src]</b><br>"
@@ -120,9 +120,9 @@
 	if(!istype(remover) || remover.incapacitated() || !Adjacent(remover))
 		return
 	if(!swab)
-		to_chat(remover, "<span_class='warning'>Внутри сканера нет образца!.</span>")
+		to_chat(remover, span_warning("Внутри сканера нет образца!."))
 		return
-	to_chat(remover, "<span_class='notice'>Вы вытащили \the [swab] из сканера.</span>")
+	to_chat(remover, span_notice("Вы вытащили [swab] из сканера."))
 	swab.forceMove(get_turf(src))
 	remover.put_in_hands(swab)
 	swab = null
@@ -186,12 +186,12 @@
 /obj/machinery/microscope/attackby(obj/item/W as obj, mob/user as mob)
 
 	if(sample)
-		to_chat(user, "<span_class='warning'>В микроскопе уже есть образец!</span>")
+		to_chat(user, span_warning("В микроскопе уже есть образец!"))
 		return
 
 	if(istype(W, /obj/item/forensics/swab)|| istype(W, /obj/item/sample/fibers) || istype(W, /obj/item/sample/print))
 		add_fingerprint(user)
-		to_chat(user, "<span_class='notice'>Вы вставили \the [W] в микроскоп.</span>")
+		to_chat(user, span_notice("Вы вставили [W] в микроскоп."))
 		user.unEquip(W)
 		W.forceMove(src)
 		sample = W
@@ -203,17 +203,17 @@
 /obj/machinery/microscope/attack_hand(mob/user)
 
 	if(!sample)
-		to_chat(user, "<span_class='warning'>В микроскопе нет образца для анализа.</span>")
+		to_chat(user, span_warning("В микроскопе нет образца для анализа."))
 		return
 
 	add_fingerprint(user)
-	to_chat(user, "<span_class='notice'>Микроскоп жужжит, пока вы анализируете \the [sample].</span>")
+	to_chat(user, span_notice("Микроскоп жужжит, пока вы анализируете [sample]."))
 
 	if(!do_after(user, 25, src) || !sample)
-		to_chat(user, "<span_class='notice'>Вы перестаёте анализировать \the [sample].</span>")
+		to_chat(user, span_notice("Вы перестаёте анализировать [sample]."))
 		return
 
-	to_chat(user, "<span_class='notice'>Печать отчета...</span>")
+	to_chat(user, span_notice("Печать отчета..."))
 	var/obj/item/paper/report = new(get_turf(src))
 	report.stamped = list(/obj/item/stamp)
 	report.overlays = list("paper_stamped")
@@ -237,7 +237,7 @@
 		if(fibers.evidence)
 			report.info = "Молекулярный анализ на предоставленном образце определил наличие уникальных волоконных струн.<br><br>"
 			for(var/fiber in fibers.evidence)
-				report.info += "<span_class='notice'>Наиболее вероятное совпадение: [fiber]</span><br><br>"
+				report.info += span_notice("Наиболее вероятное совпадение: [fiber]<br><br>")
 		else
 			report.info += "Волокна не найдены."
 	else if(istype(sample, /obj/item/sample/print))
@@ -247,7 +247,7 @@
 		if(card.evidence && card.evidence.len)
 			report.info += "<br>Поверхностный анализ определил следующие уникальные строки отпечатков пальцев:<br><br>"
 			for(var/prints in card.evidence)
-				report.info += "<span_class='notice'>Строка отпечатков пальцев: </span>"
+				report.info += span_notice("Строка отпечатков пальцев: ")
 				if(!is_complete_print(prints))
 					report.info += "НЕПОЛНЫЙ ОТПЕЧАТОК"
 				else
@@ -266,9 +266,9 @@
 	if(!istype(remover) || remover.incapacitated() || !Adjacent(remover))
 		return
 	if(!sample)
-		to_chat(remover, "<span_class='warning'>Внутри микроскопа нет образца!</span>")
+		to_chat(remover, span_warning("Внутри микроскопа нет образца!"))
 		return
-	to_chat(remover, "<span_class='notice'>Вы вытащили \the [sample] из микроскопа.</span>")
+	to_chat(remover, span_notice("Вы вытащили [sample] из микроскопа."))
 	sample.forceMove(get_turf(src))
 	remover.put_in_hands(sample)
 	sample = null
