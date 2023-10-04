@@ -39,7 +39,7 @@
 
 // DNA machine
 /obj/machinery/dnaforensics
-	name = "Анализатор ДНК"
+	name = "\improper Анализатор ДНК"
 	desc = "Высокотехнологичная машина, которая предназначена для правильного считывания образцов ДНК."
 	icon = 'modular_ss220/detective_rework/icons/forensics.dmi'
 	icon_state = "dnaopen"
@@ -164,7 +164,7 @@
 // This is the output of the stringpercent(print) proc, and means about 80% of
 // the print must be there for it to be complete.  (Prints are 32 digits)
 /obj/machinery/microscope
-	name = "Электронный микроскоп"
+	name = "\improper Электронный микроскоп"
 	desc = "Высокотехнологичный микроскоп, способный увеличивать изображение до 3000 раз."
 	icon = 'modular_ss220/detective_rework/icons/forensics.dmi'
 	icon_state = "microscope"

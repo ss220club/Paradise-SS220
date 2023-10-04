@@ -3,7 +3,7 @@
 
 // Boxes
 /obj/item/storage/box/swabs
-	name = "коробка с наборами для взятия образцов"
+	name = "\improper коробка с наборами для взятия образцов"
 	desc = "Стерильное оборудование внутри. Не допускать загрязнения."
 	icon = 'modular_ss220/aesthetics/boxes/icons/boxes.dmi'
 	icon_state = "dnakit"
@@ -18,7 +18,7 @@
 	new /obj/item/forensics/swab(src)
 
 /obj/item/storage/box/fingerprints
-	name = "коробка со дактилоскопическими картами"
+	name = "\improper коробка со дактилоскопическими картами"
 	desc = "Стерильное оборудование внутри. Не допускать загрязнения."
 	icon = 'modular_ss220/aesthetics/boxes/icons/boxes.dmi'
 	icon_state = "dnakit"
@@ -34,7 +34,7 @@
 
 // Crime scene kit
 /obj/item/storage/briefcase/crimekit
-	name = "набор для осмотра места преступления"
+	name = "\improper набор для осмотра места преступления"
 	desc = "Чемодан с покрытием из нержавеющей стали для всех ваших криминалистических нужд. По ощущениям тяжелый."
 	icon = 'modular_ss220/detective_rework/icons/forensics.dmi'
 	icon_state = "case"

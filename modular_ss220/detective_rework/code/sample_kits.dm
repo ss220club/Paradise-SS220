@@ -3,7 +3,7 @@
 	w_class = WEIGHT_CLASS_TINY
 
 /obj/item/sample
-	name = "forensic sample"
+	name = "\improper образец для анализа"
 	icon = 'modular_ss220/detective_rework/icons/forensics.dmi'
 	w_class = WEIGHT_CLASS_TINY
 	var/list/evidence = list()
@@ -57,12 +57,12 @@
 	return ..()
 
 /obj/item/sample/fibers
-	name = "пакетик для волокн"
+	name = "\improper пакетик для волокн"
 	desc = "Используется для хранения волоконных доказательств для детектива."
 	icon_state = "fiberbag"
 
 /obj/item/sample/print
-	name = "дактилоскопическая карта"
+	name = "\improper дактилоскопическая карта"
 	desc = "Сохраняет отпечатки пальцев."
 	icon = 'modular_ss220/aesthetics/better_ids/icons/better_ids.dmi'
 	icon_state = "fingerprint0"
@@ -135,7 +135,7 @@
 /obj/item/forensics
 
 /obj/item/forensics/sample_kit
-	name = "набор для сбора волокон"
+	name = "\improper набор для сбора волокон"
 	desc = "Увеличительное стекло и пинцет. Используется для поднятия волокон ткани."
 	icon_state = "m_glass"
 	w_class = WEIGHT_CLASS_SMALL
@@ -164,7 +164,7 @@
 		afterattack(over, usr, TRUE)
 
 /obj/item/forensics/sample_kit/powder
-	name = "дактилоскопический порошок"
+	name = "\improper дактилоскопический порошок"
 	desc = "Баночка с алюминиевой пудрой и специализированная кисточка."
 	icon_state = "dust"
 	evidence_type = "отпечатки"

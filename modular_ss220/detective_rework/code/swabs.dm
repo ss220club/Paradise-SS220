@@ -9,7 +9,7 @@
 	gunshot_residue = null
 
 /obj/item/forensics/swab
-	name = "набор для взятия образцов"
+	name = "\improper набор для взятия образцов"
 	desc = "Стерильная ватная палочка и пробирка, для взятия образцов."
 	icon_state = "swab"
 	var/dispenser = FALSE
