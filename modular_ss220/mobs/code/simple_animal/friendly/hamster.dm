@@ -2,7 +2,7 @@
 	name = "хомяк"
 	real_name = "хомяк"
 	desc = "С надутыми щечками."
-	icon = 'modular_ss220/mobs/icons/animals.dmi'
+	icon = 'modular_ss220/mobs/icons/mob/animal.dmi'
 	icon_state = "hamster"
 	icon_living = "hamster"
 	icon_dead = "hamster_dead"
@@ -18,20 +18,6 @@
 	maxHealth = 10
 	health = 10
 
-/mob/living/simple_animal/mouse/hamster/representative
-	name = "представитель Алексей"
-	desc = "Представитель федерации хомяков. Проявите уважение при его виде, ведь он с позитивным исходом решил немало дипломатических вопросов между федерацией мышей, республикой крыс и корпорацией Нанотрейзен. Да и кто вообще хомяка так назвал?!"
-	icon = 'modular_ss220/mobs/icons/animals.dmi'
-	icon_state = "hamster_rep"
-	icon_living = "hamster_rep"
-	icon_dead = "hamster_rep_dead"
-	icon_resting = "hamster_rep_rest"
-	unique_pet = TRUE
-	gold_core_spawnable = NO_SPAWN
-	holder_type = /obj/item/holder/hamster_rep
-	maxHealth = 20
-	health = 20
-	resting = TRUE
 
 /mob/living/simple_animal/mouse/hamster/baby
 	name = "хомячок"
@@ -50,19 +36,6 @@
 	can_hide = 1
 	can_collar = 0
 	holder_type = /obj/item/holder/hamster
-
-// Hamster holders
-/obj/item/holder/hamster
-	name = "pet"
-	desc = "It's a pet"
-	icon = 'icons/mob/animal.dmi'
-	icon_state = "hamster"
-
-/obj/item/holder/hamster_rep
-	name = "Представитель Алексей"
-	desc = "Уважаемый хомяк"
-	icon = 'icons/mob/animal.dmi'
-	icon_state = "hamster_rep"
 
 // Hamster procs
 #define MAX_HAMSTER 20

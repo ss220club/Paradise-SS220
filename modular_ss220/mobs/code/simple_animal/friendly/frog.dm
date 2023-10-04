@@ -2,7 +2,7 @@
 	name = "лягушка"
 	real_name = "лягушка"
 	desc = "Выглядит грустным не по средам и когда её не целуют."
-	icon = 'modular_ss220/mobs/icons/animals.dmi'
+	icon = 'modular_ss220/mobs/icons/mob/animal.dmi'
 	icon_state = "frog"
 	icon_living = "frog"
 	icon_dead = "frog_dead"
@@ -146,14 +146,3 @@
 			to_chat(src, "warcry")
 	..()
 
-// Frog holders
-/obj/item/holder/frog
-	name = "frog"
-	desc = "It's a wednesday, my dudes."
-	icon = 'icons/mob/animal.dmi'
-	icon_state = "frog"
-
-/obj/item/holder/frog/toxic
-	name = "rare frog"
-	desc = "It's a toxic wednesday, my dudes."
-	icon_state = "rare_frog"

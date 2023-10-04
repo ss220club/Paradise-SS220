@@ -4,7 +4,7 @@
 	endemic to the Americas of Earth, but now inexplicably found across settled space. Nobody is \
 	entirely sure how they travel to such disparate locations, with the leading theories including \
 	smuggling, cargo stowaways, fungal spore reproduction, teleportation, or unknown quantum effects."
-	icon = 'modular_ss220/mobs/icons/pets.dmi'
+	icon = 'modular_ss220/mobs/icons/mob/pets.dmi'
 	icon_state = "possum"
 	icon_living = "possum"
 	icon_dead = "possum_dead"
@@ -49,15 +49,3 @@
 		if(INTENT_HARM, INTENT_DISARM, INTENT_GRAB)
 			icon_state = icon_harm
 	. = ..()
-
-/mob/living/simple_animal/possum/Poppy
-	name = "Ключик"
-	desc = "Маленький работяга. Его жилетка подчеркивает его рабочие... лапы. Тот еще трудяга. Очень не любит ассистентов в инженерном отделе. И Полли. Интересно, почему?"
-	icon_state = "possum_poppy"
-	icon_living = "possum_poppy"
-	icon_dead = "possum_poppy_dead"
-	icon_resting = "possum_poppy_sleep"
-	icon_harm = "possum_poppy_aaa"
-	holder_type = /obj/item/holder/possum/poppy
-	maxHealth = 50
-	health = 50
