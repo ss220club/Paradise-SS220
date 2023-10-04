@@ -32597,13 +32597,18 @@
 	dir = 1
 	},
 /obj/structure/cable/yellow{
-	d2 = 2;
-	icon_state = "0-2"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
+	d2 = 4;
+	icon_state = "0-4"
 	},
 /obj/effect/decal/warning_stripes/north,
+/obj/structure/cable/yellow{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "yellowfull"
 	},
@@ -36928,11 +36933,6 @@
 	},
 /area/station/engineering/hallway)
 "cRf" = (
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
 /obj/machinery/firealarm/directional/west,
 /turf/simulated/floor/plasteel{
 	dir = 10;
@@ -37419,11 +37419,6 @@
 /turf/simulated/floor/engine/vacuum,
 /area/station/engineering/atmos)
 "cSx" = (
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/machinery/hologram/holopad,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
@@ -37433,6 +37428,16 @@
 	},
 /obj/effect/decal/warning_stripes/northwestcorner,
 /obj/effect/decal/warning_stripes/northeastcorner,
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "floorgrime"
 	},
@@ -38355,32 +38360,23 @@
 /turf/simulated/floor/engine/vacuum,
 /area/station/engineering/atmos)
 "cVw" = (
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
-/obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
 /obj/machinery/camera{
 	c_tag = "Engineering SMES Room";
 	dir = 1;
 	network = list("SS13","Engineering")
+	},
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 1
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "yellow"
 	},
 /area/station/engineering/smes)
 "cVy" = (
-/obj/structure/cable/yellow{
-	d1 = 1;
+/obj/structure/cable{
 	d2 = 8;
-	icon_state = "1-8"
+	icon_state = "0-8"
 	},
-/obj/structure/cable,
 /obj/machinery/power/apc/engineering/south,
 /turf/simulated/floor/plasteel{
 	dir = 6;
@@ -40886,16 +40882,6 @@
 	},
 /area/station/engineering/hallway)
 "deA" = (
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
 /obj/structure/table,
 /obj/item/storage/toolbox/electrical,
 /obj/machinery/light/directional/north,
@@ -40903,17 +40889,10 @@
 /turf/simulated/floor/plasteel,
 /area/station/engineering/smes)
 "deB" = (
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
-/obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
 /obj/machinery/alarm/directional/south,
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 1
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "yellow"
 	},
@@ -43823,15 +43802,10 @@
 	dir = 1
 	},
 /obj/structure/cable/yellow{
-	d2 = 2;
-	icon_state = "0-2"
+	d2 = 8;
+	icon_state = "0-8"
 	},
 /obj/effect/decal/warning_stripes/north,
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
 /turf/simulated/floor/plasteel{
 	icon_state = "yellowfull"
 	},
@@ -57706,14 +57680,6 @@
 /turf/simulated/floor/plasteel,
 /area/station/public/locker)
 "idF" = (
-/obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/unary/vent_pump/on{
-	dir = 1
-	},
 /turf/simulated/floor/plasteel{
 	icon_state = "yellow"
 	},
@@ -60090,10 +60056,12 @@
 	},
 /area/station/maintenance/fsmaint)
 "jbt" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 6
-	},
 /obj/effect/decal/warning_stripes/north,
+/obj/structure/cable/yellow{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/smes)
 "jbB" = (
@@ -60397,8 +60365,8 @@
 	dir = 1
 	},
 /obj/structure/cable/yellow{
-	d2 = 2;
-	icon_state = "0-2"
+	d2 = 4;
+	icon_state = "0-4"
 	},
 /obj/effect/decal/warning_stripes/north,
 /obj/machinery/light_switch/west,
@@ -68040,14 +68008,16 @@
 	},
 /area/station/hallway/primary/central/north)
 "mdn" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 10
-	},
 /obj/effect/decal/warning_stripes/north,
+/obj/structure/cable/yellow{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /obj/structure/cable{
 	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
+	d2 = 2;
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "floorgrime"
@@ -83194,13 +83164,10 @@
 /turf/simulated/floor/plating,
 /area/station/engineering/smes)
 "rPZ" = (
-/obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
-	dir = 1
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "yellow"
@@ -84217,13 +84184,18 @@
 	dir = 1
 	},
 /obj/structure/cable/yellow{
-	d2 = 2;
-	icon_state = "0-2"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
+	d2 = 8;
+	icon_state = "0-8"
 	},
 /obj/effect/decal/warning_stripes/north,
+/obj/structure/cable/yellow{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 10
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "yellowfull"
 	},
