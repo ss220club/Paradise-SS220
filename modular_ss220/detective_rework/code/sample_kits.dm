@@ -75,13 +75,13 @@
 		return
 	var/mob/living/carbon/human/H = user
 	if(H.gloves)
-		to_chat(user, "<span class='warning'>Take \the [H.gloves] off first.</span>")
+		to_chat(user, "<span class='warning'>Take [H.gloves] off first.</span>")
 		return
 
 	to_chat(user, "<span class='notice'>Вы плотно прижимаете кончики своих пальцев к карте.</span>")
 	var/fullprint = H.get_full_print()
 	evidence[fullprint] = fullprint
-	name = ("[initial(name)] (\the [H])")
+	name = ("[initial(name)] ([H])")
 	icon_state = "fingerprint1"
 
 /obj/item/sample/print/attack(mob/living/M, mob/user)
@@ -95,11 +95,11 @@
 	var/mob/living/carbon/human/H = M
 
 	if(H.gloves)
-		to_chat(user, "<span class='warning'>У \The [H] надеты перчатки.</span>")
+		to_chat(user, "<span class='warning'>У [H] надеты перчатки.</span>")
 		return TRUE
 
 	if(user != H && H.a_intent != INTENT_HELP && !IS_HORIZONTAL(H))
-		user.visible_message("<span class='danger'>\The [user] пытался снять отпечатки у \the [H], но он сопротивляется.</span>")
+		user.visible_message("<span class='danger'>[user] пытался снять отпечатки у [H], но он сопротивляется.</span>")
 		return TRUE
 
 	if(user.zone_selected == "r_hand" || user.zone_selected == "l_hand")
@@ -156,7 +156,7 @@
 		take_sample(user,A)
 		. = TRUE
 	else
-		to_chat(user, "<span class='warning'>Вы не можете найти ни кусочка [evidence_type] на \the [A].</span>")
+		to_chat(user, "<span class='warning'>Вы не можете найти [evidence_type] на [A].</span>")
 		. = ..()
 
 /obj/item/forensics/sample_kit/MouseDrop(atom/over)
