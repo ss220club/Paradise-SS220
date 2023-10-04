@@ -29,7 +29,7 @@
 		return FALSE
 	evidence |= supplied.evidence
 	name = ("[initial(name)] (combined)")
-	to_chat(user, "<span class='notice'>You transfer the contents of \the [supplied] into \the [src].</span>")
+	to_chat(user, "<span class='notice'>Вы перемещаете содержимое \the [supplied] в \the [src].</span>")
 	return TRUE
 
 /obj/item/sample/print/merge_evidence(obj/item/sample/supplied, mob/user)
@@ -57,14 +57,14 @@
 	return ..()
 
 /obj/item/sample/fibers
-	name = "fiber bag"
-	desc = "Used to hold fiber evidence for the detective."
+	name = "пакетик для волокн"
+	desc = "Используется для хранения волоконных доказательств для детектива."
 	icon_state = "fiberbag"
 
 /obj/item/sample/print
-	name = "fingerprint card"
-	desc = "Records a set of fingerprints."
-	icon = 'icons/obj/card.dmi'
+	name = "дактилоскопическая карта"
+	desc = "Сохраняет отпечатки пальцев."
+	icon = 'modular_ss220/aesthetics/better_ids/icons/better_ids.dmi'
 	icon_state = "fingerprint0"
 	item_state = "paper"
 
@@ -78,7 +78,7 @@
 		to_chat(user, "<span class='warning'>Take \the [H.gloves] off first.</span>")
 		return
 
-	to_chat(user, "<span class='notice'>You firmly press your fingertips onto the card.</span>")
+	to_chat(user, "<span class='notice'>Вы плотно прижимаете кончики своих пальцев к карте.</span>")
 	var/fullprint = H.get_full_print()
 	evidence[fullprint] = fullprint
 	name = ("[initial(name)] (\the [H])")
@@ -95,11 +95,11 @@
 	var/mob/living/carbon/human/H = M
 
 	if(H.gloves)
-		to_chat(user, "<span class='warning'>\The [H] is wearing gloves.</span>")
+		to_chat(user, "<span class='warning'>У \The [H] надеты перчатки.</span>")
 		return TRUE
 
 	if(user != H && H.a_intent != INTENT_HELP && !IS_HORIZONTAL(H))
-		user.visible_message("<span class='danger'>\The [user] tries to take prints from \the [H], but they move away.</span>")
+		user.visible_message("<span class='danger'>\The [user] пытался снять отпечатки у \the [H], но он сопротивляется.</span>")
 		return TRUE
 
 	if(user.zone_selected == "r_hand" || user.zone_selected == "l_hand")
@@ -112,9 +112,12 @@
 			if(istype(O))
 				has_hand = TRUE
 		if(!has_hand)
-			to_chat(user, "<span class='warning'>They don't have any hands.</span>")
+			to_chat(user, "<span class='warning'>А рук то у него нет.</span>")
 			return FALSE
-		user.visible_message("[user] takes a copy of \the [H]'s fingerprints.")
+		if (!do_after(user, 2 SECONDS, target = M))
+			return FALSE
+
+		user.visible_message("[user] делает копию отмечатков [H].")
 		var/fullprint = H.get_full_print()
 		evidence[fullprint] = fullprint
 		copy_evidence(src)
@@ -132,11 +135,11 @@
 /obj/item/forensics
 
 /obj/item/forensics/sample_kit
-	name = "fiber collection kit"
-	desc = "A magnifying glass and tweezers. Used to lift suit fibers."
+	name = "набор для сбора волокон"
+	desc = "Увеличительное стекло и пинцет. Используется для поднятия волокон ткани."
 	icon_state = "m_glass"
 	w_class = WEIGHT_CLASS_SMALL
-	var/evidence_type = "fiber"
+	var/evidence_type = "волокон"
 	var/evidence_path = /obj/item/sample/fibers
 
 /obj/item/forensics/sample_kit/proc/can_take_sample(mob/user, atom/supplied)
@@ -144,7 +147,7 @@
 
 /obj/item/forensics/sample_kit/proc/take_sample(mob/user, atom/supplied)
 	var/obj/item/sample/S = new evidence_path(get_turf(user), supplied)
-	to_chat(user, "<span class='notice'>You transfer [S.evidence.len] [S.evidence.len > 1 ? "[evidence_type]s" : "[evidence_type]"] to \the [S].</span>")
+	to_chat(user, "<span class='notice'>Вы перемещаете [S.evidence.len] [S.evidence.len > 1 ? "[evidence_type]" : "[evidence_type]"] в \the [S].</span>")
 
 /obj/item/forensics/sample_kit/afterattack(atom/A, mob/user, proximity)
 	if(!proximity)
@@ -153,7 +156,7 @@
 		take_sample(user,A)
 		. = TRUE
 	else
-		to_chat(user, "<span class='warning'>You are unable to locate any [evidence_type]s on \the [A].</span>")
+		to_chat(user, "<span class='warning'>Вы не можете найти ни кусочка [evidence_type] на \the [A].</span>")
 		. = ..()
 
 /obj/item/forensics/sample_kit/MouseDrop(atom/over)
@@ -161,10 +164,10 @@
 		afterattack(over, usr, TRUE)
 
 /obj/item/forensics/sample_kit/powder
-	name = "fingerprint powder"
-	desc = "A jar containing aluminum powder and a specialized brush."
+	name = "дактилоскопический порошок"
+	desc = "Баночка с алюминиевой пудрой и специализированная кисточка."
 	icon_state = "dust"
-	evidence_type = "fingerprint"
+	evidence_type = "отпечатки"
 	evidence_path = /obj/item/sample/print
 
 /obj/item/forensics/sample_kit/powder/can_take_sample(mob/user, atom/supplied)

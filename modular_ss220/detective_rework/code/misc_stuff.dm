@@ -1,9 +1,10 @@
 /obj/item/clothing/gloves/color/black/forensics
 	transfer_prints = FALSE
+
 // Boxes
 /obj/item/storage/box/swabs
-	name = "box of swab kits"
-	desc = "Sterilized equipment within. Do not contaminate."
+	name = "коробка с наборами для взятия образцов"
+	desc = "Стерильное оборудование внутри. Не допускать загрязнения."
 	icon = 'modular_ss220/aesthetics/boxes/icons/boxes.dmi'
 	icon_state = "dnakit"
 
@@ -17,8 +18,8 @@
 	new /obj/item/forensics/swab(src)
 
 /obj/item/storage/box/fingerprints
-	name = "box of fingerprint cards"
-	desc = "Sterilized equipment within. Do not contaminate."
+	name = "коробка со дактилоскопическими картами"
+	desc = "Стерильное оборудование внутри. Не допускать загрязнения."
 	icon = 'modular_ss220/aesthetics/boxes/icons/boxes.dmi'
 	icon_state = "dnakit"
 
@@ -33,8 +34,8 @@
 
 // Crime scene kit
 /obj/item/storage/briefcase/crimekit
-	name = "crime scene kit"
-	desc = "A stainless steel-plated carrycase for all your forensic needs. Feels heavy."
+	name = "набор для осмотра места преступления"
+	desc = "Чемодан с покрытием из нержавеющей стали для всех ваших криминалистических нужд. По ощущениям тяжелый."
 	icon = 'modular_ss220/detective_rework/icons/forensics.dmi'
 	icon_state = "case"
 	lefthand_file = 'modular_ss220/detective_rework/icons/items_lefthand.dmi'
@@ -48,3 +49,17 @@
 	new /obj/item/forensics/sample_kit(src)
 	new /obj/item/forensics/sample_kit/powder(src)
 	new /obj/item/detective_scanner(src)
+
+/datum/supply_packs/security/forensics
+	contains = list(/obj/item/storage/box/evidence,
+					/obj/item/camera,
+					/obj/item/taperecorder,
+					/obj/item/toy/crayon/white,
+					/obj/item/clothing/head/det_hat,
+					/obj/item/storage/box/swabs,
+					/obj/item/storage/box/fingerprints,
+					/obj/item/storage/briefcase/crimekit)
+
+/obj/structure/closet/secure_closet/detective/populate_contents()
+	new /obj/item/storage/briefcase/crimekit(src)
+	. = ..()

@@ -9,8 +9,8 @@
 	gunshot_residue = null
 
 /obj/item/forensics/swab
-	name = "swab kit"
-	desc = "A sterilized cotton swab and vial used to take forensic samples."
+	name = "набор для взятия образцов"
+	desc = "Стерильная ватная палочка и пробирка, для взятия образцов."
 	icon_state = "swab"
 	var/dispenser = FALSE
 	var/gsr = FALSE
@@ -22,45 +22,43 @@
 	return used
 
 /obj/item/forensics/swab/attack(mob/living/M, mob/user)
-
 	if(!ishuman(M))
 		return ..()
-
 	if(is_used())
-		to_chat(user, "<span class='warning'>This swab has already been used.</span>")
+		to_chat(user, "<span class='warning'>Вы уже берёте образец.</span>")
 		return
 
 	var/mob/living/carbon/human/H = M
 	var/sample_type
-	inuse = 1
-	to_chat(user, "<span class='notice'>You begin collecting evidence.</span>")
-	if(do_after(user,20,src))
+	inuse = TRUE
+	to_chat(user, "<span class='notice'>Вы начинаете собирать образцы.</span>")
+	if(do_after(user, 2 SECONDS, target = src))
 		if(H.wear_mask)
-			to_chat(user, "<span class='warning'>\The [H] is wearing a mask.</span>")
+			to_chat(user, "<span class='warning'>[H] носит маску.</span>")
 			inuse = FALSE
 			return
 
 		if(!H.dna || !H.dna.unique_enzymes)
-			to_chat(user, "<span class='warning'>They don't seem to have DNA!</span>")
+			to_chat(user, "<span class='warning'>Похоже у него нет ДНК!</span>")
 			inuse = FALSE
 			return
 
 		if(user != H && H.a_intent != INTENT_HELP && !IS_HORIZONTAL(H))
-			user.visible_message("<span class='danger'>\The [user] tries to take a swab sample from \the [H], but they move away.</span>")
+			user.visible_message("<span class='danger'>[user] пытается взять образец у [H], но он сопротивляется.</span>")
 			inuse = FALSE
 			return
 		var/target_dna
 		var/target_gsr
 		if(user.zone_selected == "mouth")
 			if(!H.has_organ("head"))
-				to_chat(user, "<span class='warning'>They don't have a head.</span>")
+				to_chat(user, "<span class='warning'>У него нет головы.</span>")
 				inuse = FALSE
 				return
 			if(!H.check_has_mouth())
-				to_chat(user, "<span class='warning'>They don't have a mouth.</span>")
+				to_chat(user, "<span class='warning'>У него нет рта.</span>")
 				inuse = FALSE
 				return
-			user.visible_message("[user] swabs \the [H]'s mouth for a saliva sample.")
+			user.visible_message("[user] берёт мазок изо рта [H] для анализа.")
 			target_dna = list(H.dna.unique_enzymes)
 			sample_type = "DNA"
 
@@ -74,10 +72,10 @@
 				if(istype(O))
 					has_hand = TRUE
 			if(!has_hand)
-				to_chat(user, "<span class='warning'>They don't have any hands.</span>")
+				to_chat(user, "<span class='warning'>Он безрукий.</span>")
 				inuse = FALSE
 				return
-			user.visible_message("[user] swabs [H]'s palm for a sample.")
+			user.visible_message("[user] берёт мазок с ладони [H] для анализа.")
 			sample_type = "GSR"
 			target_gsr = H.gunshot_residue
 		else
@@ -108,28 +106,28 @@
 		return
 
 	if(is_used())
-		to_chat(user, "<span class='warning'>This swab has already been used.</span>")
+		to_chat(user, "<span class='warning'>Этот образец уже используется.</span>")
 		return
 
 	add_fingerprint(user)
 	inuse = TRUE
-	to_chat(user, "<span class='notice'>You begin collecting evidence.</span>")
+	to_chat(user, "<span class='notice'>Вы начинаете собирать улики.</span>")
 	if(do_after(user,20,src))
 		var/list/choices = list()
 		if(A.blood_DNA)
-			choices |= "Blood"
+			choices |= "Кровь"
 		if(istype(A, /obj/item/clothing))
-			choices |= "Gunshot Residue"
+			choices |= "Частицы пороха"
 
 		var/choice
 		if(!choices.len)
-			to_chat(user, "<span class='warning'>There is no evidence on \the [A].</span>")
+			to_chat(user, "<span class='warning'>На [A] нет улик.</span>")
 			inuse = FALSE
 			return
 		else if(choices.len == 1)
 			choice = choices[1]
 		else
-			choice = input("What kind of evidence are you looking for?","Evidence Collection") as null|anything in choices
+			choice = input("Какие доказательства вы ищете?","Сбор доказательств") as null|anything in choices
 
 		if(!choice)
 			inuse = FALSE
@@ -138,24 +136,24 @@
 		var/sample_type
 		var/target_dna
 		var/target_gsr
-		if(choice == "Blood")
+		if(choice == "Кровь")
 			if(!A.blood_DNA || !A.blood_DNA.len)
 				inuse = FALSE
 				return
 			target_dna = A.blood_DNA.Copy()
-			sample_type = "blood"
+			sample_type = "крови"
 
-		else if(choice == "Gunshot Residue")
+		else if(choice == "Частицы пороха")
 			var/obj/item/clothing/B = A
 			if(!istype(B) || !B.gunshot_residue)
-				to_chat(user, "<span class='warning'>There is no residue on \the [A].</span>")
+				to_chat(user, "<span class='warning'>На [A] нет ни намёка на порох.</span>")
 				inuse = FALSE
 				return
 			target_gsr = B.gunshot_residue
-			sample_type = "residue"
+			sample_type = "порох"
 
 		if(sample_type)
-			user.visible_message("\The [user] swabs \the [A] for a sample.", "You swab \the [A] for a sample.")
+			user.visible_message("[user] берёт мазок с [A] для анализа.", "Вы берёте мазок с [A] для анализа.")
 			if (!dispenser)
 				dna = target_dna
 				gsr = target_gsr
@@ -169,11 +167,9 @@
 
 /obj/item/forensics/swab/proc/set_used(sample_str, atom/source)
 	name = ("[initial(name)] ([sample_str] - [source])")
-	desc = "[initial(desc)] The label on the vial reads 'Sample of [sample_str] from [source].'."
+	desc = "[initial(desc)] Этикетка на флаконе гласит: 'Образец [sample_str] с [source].'."
 	icon_state = "swab_used"
 	used = TRUE
 
 /obj/item/forensics/swab/cyborg
-	name = "swab kit"
-	desc = "A sterilized cotton swab and vial used to take forensic samples."
 	dispenser = TRUE
