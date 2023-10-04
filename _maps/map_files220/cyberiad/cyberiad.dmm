@@ -9312,14 +9312,19 @@
 "aJm" = (
 /obj/structure/table/wood,
 /obj/item/storage/photo_album{
-	pixel_y = -10
+	pixel_y = -2
 	},
-/obj/item/camera_film,
-/obj/item/camera_film,
+/obj/item/camera_film{
+	pixel_y = 7
+	},
+/obj/item/camera_film{
+	pixel_y = 7
+	},
 /obj/item/camera{
 	desc = "A one use - polaroid camera. 30 photos left.";
 	name = "detectives camera";
-	pictures_left = 30
+	pictures_left = 30;
+	pixel_y = 8
 	},
 /obj/machinery/requests_console{
 	department = "Detective";
@@ -9333,17 +9338,16 @@
 /area/station/security/detective)
 "aJn" = (
 /obj/machinery/alarm/directional/south,
-/obj/structure/closet/secure_closet{
-	anchored = 1;
-	name = "Evidence Storage";
-	req_one_access_txt = "4"
-	},
+/obj/structure/closet/secure_closet/detective,
+/obj/item/restraints/handcuffs,
+/obj/item/flash,
 /turf/simulated/floor/plasteel{
 	icon_state = "grimy"
 	},
 /area/station/security/detective)
 "aJo" = (
 /obj/machinery/newscaster/security_unit/east,
+/obj/machinery/photocopier,
 /turf/simulated/floor/plasteel{
 	icon_state = "grimy"
 	},
@@ -9633,23 +9637,24 @@
 	},
 /area/station/hallway/primary/fore)
 "aKB" = (
-/obj/structure/closet/secure_closet/detective,
-/obj/item/restraints/handcuffs,
-/obj/item/flash,
+/obj/machinery/dnaforensics,
 /turf/simulated/floor/plasteel{
 	icon_state = "grimy"
 	},
 /area/station/security/detective)
 "aKC" = (
-/obj/machinery/photocopier,
 /obj/machinery/light/directional/north,
+/obj/structure/filingcabinet/chestdrawer,
 /turf/simulated/floor/plasteel{
 	icon_state = "grimy"
 	},
 /area/station/security/detective)
 "aKD" = (
-/obj/structure/filingcabinet/chestdrawer,
 /obj/machinery/ai_status_display/south,
+/obj/structure/table/wood,
+/obj/machinery/microscope{
+	pixel_y = 8
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "grimy"
 	},
