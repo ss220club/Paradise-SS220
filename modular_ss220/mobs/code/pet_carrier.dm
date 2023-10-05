@@ -50,11 +50,11 @@
 		return FALSE
 	. = ..()
 
-/obj/item/pet_carrier/emp_act(var/intensity)
+/obj/item/pet_carrier/emp_act(intensity)
 	for(var/mob/living/M in contents)
 		M.emp_act(intensity)
 
-/obj/item/pet_carrier/ex_act(var/intensity)
+/obj/item/pet_carrier/ex_act(intensity)
 	for(var/mob/living/M in contents)
 		M.ex_act(intensity)
 

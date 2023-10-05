@@ -36,7 +36,7 @@
 	icon_dead = initial(icon_dead)
 	icon_resting = initial(icon_resting)
 
-/mob/living/simple_animal/mouse/splat(var/obj/item/item = null, var/mob/living/user = null)
+/mob/living/simple_animal/mouse/splat(obj/item/item = null, mob/living/user = null)
 	if(non_standard)
 		var/temp_state = initial(icon_state)
 		icon_dead = "[temp_state]_splat"
