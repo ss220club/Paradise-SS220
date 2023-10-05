@@ -33,6 +33,7 @@
 	ui_interact(user)
 
 /obj/machinery/photocopier/ui_act(action, list/params)
+	. = ..()
 	if(..())
 		return
 
