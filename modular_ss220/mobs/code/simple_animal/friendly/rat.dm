@@ -28,7 +28,7 @@
 /mob/living/simple_animal/mouse/rat/irish
 	name = "irish rat"
 	real_name = "irish rat"
-	desc = "Ирландская крыса. На космической станции?! На этот раз им точно некуда бежать!"
+	desc = "Ирландская крыса, борец за независимость. На космической станции?! На этот раз им точно некуда бежать!"
 	icon_state = "rat_irish"
 	icon_living = "rat_irish"
 	icon_dead = "rat_irish_dead"

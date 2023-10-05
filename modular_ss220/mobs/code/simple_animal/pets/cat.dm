@@ -33,7 +33,7 @@
 	return
 
 /mob/living/simple_animal/pet/cat/white
-	name = "white"
+	name = "white cat"
 	desc = "Белоснежная шерстка. Плохо различается на белой плитке, зато отлично виден в темноте!"
 	icon = 'modular_ss220/mobs/icons/mob/pets.dmi'
 	icon_state = "penny"
@@ -44,8 +44,8 @@
 	holder_type = /obj/item/holder/cak
 
 /mob/living/simple_animal/pet/cat/birman
-	name = "birman"
-	real_name = "birman"
+	name = "birman cat"
+	real_name = "birman cat"
 	desc = "Священная порода Бирма."
 	icon = 'modular_ss220/mobs/icons/mob/pets.dmi'
 	icon_state = "crusher"
@@ -54,6 +54,19 @@
 	icon_resting = "crusher_rest"
 	gender = MALE
 	holder_type = /obj/item/holder/crusher
+
+
+/mob/living/simple_animal/pet/cat/black
+	name = "black cat"
+	real_name = "black cat"
+	desc = "Он ужас летящий на крыльях ночи! Он - тыгыдык и спотыкание во тьме ночной! Бойся не заметить черного кота в тени!"
+	icon = 'modular_ss220/mobs/icons/mob/pets.dmi'
+	icon_state = "salem"
+	icon_living = "salem"
+	icon_dead = "salem_dead"
+	icon_resting = "salem_rest"
+	gender = MALE
+	holder_type = /obj/item/holder/cat
 
 /mob/living/simple_animal/pet/cat/spacecat
 	name = "spacecat"
@@ -105,3 +118,8 @@
 /mob/living/simple_animal/pet/cat/spacecat/Musya
 	name = "Муся"
 	desc = "Любимая почтенная кошка отдела токсинов. Всегда готова к вылетам!"
+
+/mob/living/simple_animal/pet/cat/black/Salem
+	name = "Салем"
+	real_name = "Салем"
+	desc = "Говорят что это бывший колдун, лишенный всех своих сил и превратившейся в черного кота Советом Колдунов из-за попытки захватить мир, а в руки НТ попал чтобы отбывать своё наказание. Судя по его скверному нраву, это может быть похоже на правду."
