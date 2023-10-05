@@ -5,6 +5,10 @@
 	drop_sound = 'modular_ss220/aesthetics_sounds/sound/handling/drop/card.ogg'
 	pickup_sound =  'modular_ss220/aesthetics_sounds/sound/handling/pickup/card.ogg'
 
+/obj/item/coin
+	drop_sound = 'modular_ss220/aesthetics_sounds/sound/handling/drop/ring.ogg'
+	pickup_sound =  'modular_ss220/aesthetics_sounds/sound/handling/pickup/ring.ogg'
+
 /obj/item/stock_parts
 	drop_sound = 'sound/items/handling/component_drop.ogg'
 	pickup_sound =  'sound/items/handling/component_pickup.ogg'
