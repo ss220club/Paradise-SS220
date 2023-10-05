@@ -7,4 +7,3 @@
 	GLOB.admin_verbs_admin += list(
 		/client/proc/cmd_admin_offer_control,
 	)
-	load_admins()
