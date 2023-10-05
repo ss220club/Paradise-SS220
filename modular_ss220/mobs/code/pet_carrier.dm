@@ -62,7 +62,7 @@
 	if(ishuman(user) && Adjacent(user) && !user.incapacitated(FALSE, TRUE, TRUE))
 		try_free_content(user = user)
 
-/obj/item/pet_carrier/proc/put_in_carrier(var/mob/living/target, var/mob/living/user)
+/obj/item/pet_carrier/proc/put_in_carrier(mob/living/target, mob/living/user)
 	if(!opened)
 		to_chat(user, "<span class='warning'>Ваша переноска закрыта!</span>")
 		return FALSE
@@ -134,15 +134,15 @@
 
 	return ..()
 
-/obj/item/pet_carrier/emp_act(var/intensity)
+/obj/item/pet_carrier/emp_act(intensity)
 	for(var/mob/living/M in contents)
 		M.emp_act(intensity)
 
-/obj/item/pet_carrier/ex_act(var/intensity)
+/obj/item/pet_carrier/ex_act(intensity)
 	for(var/mob/living/M in contents)
 		M.ex_act(intensity)
 
-/obj/item/pet_carrier/container_resist(var/mob/living/L)
+/obj/item/pet_carrier/container_resist(mob/living/L)
 	var/breakout_time = 60 SECONDS //1 minute
 	var/breakout_time_open = 5 SECONDS //for escape
 
