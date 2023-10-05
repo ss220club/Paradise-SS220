@@ -1,7 +1,7 @@
 /mob/living/simple_animal/moth
 	name = "моль"
 	desc = "Смотря на эту моль становится понятно куда пропали шубы перевозимые СССП."
-	icon = 'icons/mob/animal.dmi'
+	icon = 'modular_ss220/mobs/icons/mob/animal.dmi'
 	icon_state = "moth"
 	icon_living = "moth"
 	icon_dead = "moth_dead"
@@ -28,7 +28,7 @@
 /mob/living/simple_animal/mothroach
 	name = "mothroach"
 	desc = "Мотылёк. Обожает светочи."
-	icon = 'icons/mob/pets.dmi'
+	icon = 'modular_ss220/mobs/icons/mob/pets.dmi'
 	icon_state = "mothroach"
 	icon_living = "mothroach"
 	icon_dead = "mothroach_dead"

@@ -6,7 +6,7 @@
 	item_state = "pet_carrier"
 	max_integrity = 100
 	w_class = WEIGHT_CLASS_SMALL
-	var/mob_size = MOB_SIZE_TINY
+	var/mob_size = MOB_SIZE_SMALL
 
 	var/list/possible_skins = list("black", "blue", "red", "yellow", "green", "purple")
 	var/color_skin
@@ -23,7 +23,7 @@
 	item_state = "pet_carrier_normal"
 	max_integrity = 200
 	w_class = WEIGHT_CLASS_NORMAL
-	mob_size = MOB_SIZE_SMALL
+	mob_size = MOB_SIZE_LARGE
 
 
 /obj/item/pet_carrier/Initialize(mapload)
@@ -143,15 +143,33 @@
 		M.ex_act(intensity)
 
 /obj/item/pet_carrier/container_resist(var/mob/living/L)
-	var/breakout_time = 60 //1 minute
-	var/breakout_time_open = 5 //seconds for escape
-	var/dcsec = 10 //seconds * 10deciseconds
+	var/breakout_time = 60 SECONDS //1 minute
+	var/breakout_time_open = 5 SECONDS //for escape
 
-	to_chat(L, "<span class='warning'>Вы начали вылезать из переноски (это займет [breakout_time_open] секунд, не двигайтесь)</span>")
+	if(do_after(L,(breakout_time_open/2), target = src))
+		to_chat(L, "<span class='warning'>ТЕСТ 1 - Вы начали вылезать из переноски (это займет [breakout_time_open] секунд, не двигайтесь)</span>")
+
+	if(do_after(L,(breakout_time_open/2)))
+		to_chat(L, "<span class='warning'>ТЕСТ 2 - Вы начали вылезать из переноски (это займет [breakout_time_open] секунд, не двигайтесь)</span>")
+
+	if(do_after(L,(breakout_time_open/2), target = loc))
+		to_chat(L, "<span class='warning'>ТЕСТ 3 - Вы начали вылезать из переноски (это займет [breakout_time_open] секунд, не двигайтесь)</span>")
+
+	if(do_after(L,(breakout_time_open/2), target = src.loc))
+		to_chat(L, "<span class='warning'>ТЕСТ 4 - Вы начали вылезать из переноски (это займет [breakout_time_open] секунд, не двигайтесь)</span>")
+
+	if(do_after(L,(breakout_time_open/2), target = L))
+		to_chat(L, "<span class='warning'>ТЕСТ 5 - Вы начали вылезать из переноски (это займет [breakout_time_open] секунд, не двигайтесь)</span>")
+
+	if(do_after(L,(breakout_time_open/2), target = L.loc))
+		to_chat(L, "<span class='warning'>ТЕСТ 6 - Вы начали вылезать из переноски (это займет [breakout_time_open] секунд, не двигайтесь)</span>")
+
+
 
 	if(opened && L.loc == src)
+		to_chat(L, "<span class='warning'>Вы начали вылезать из переноски (это займет [breakout_time_open] секунд, не двигайтесь)</span>")
 		spawn(0)
-			if(do_after(L,(breakout_time_open*dcsec), target = src))
+			if(do_after(L,(breakout_time_open), target = src))
 				if(!src || !L || L.stat != CONSCIOUS || L.loc != src || !opened)
 					to_chat(L, "<span class='warning'>Побег прерван!</span>")
 					return
@@ -165,7 +183,7 @@
 		O.show_message("<span class='danger'>[src.name] начинает трястись!</span>", 1)
 
 	spawn(0)
-		if(do_after(L,(breakout_time*dcsec), target = src))
+		if(do_after(L,(breakout_time), target = src))
 			if(!src || !L || L.stat != CONSCIOUS || L.loc != src || opened) //closet/user destroyed OR user dead/unconcious OR user no longer in closet OR closet opened
 				to_chat(L, "<span class='warning'>Побег прерван!</span>")
 				return

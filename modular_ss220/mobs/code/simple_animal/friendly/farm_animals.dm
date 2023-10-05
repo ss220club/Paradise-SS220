@@ -41,6 +41,7 @@
 	name = "петух"
 	desc = "Гордый и важный вид."
 	gender = MALE
+	icon = 'modular_ss220/mobs/icons/mob/animal.dmi'
 	icon_state = "cock"
 	icon_living = "cock"
 	icon_dead = "cock_dead"

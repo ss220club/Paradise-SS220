@@ -1,5 +1,3 @@
-
-
 /mob/living/simple_animal/mouse/rat
 	name = "rat"
 	real_name = "rat"
@@ -44,23 +42,6 @@
 		icon_living = "rat_[mouse_color]"
 		icon_dead = "rat_[mouse_color]_dead"
 		icon_resting = "rat_[mouse_color]_sleep"
-
-/mob/living/simple_animal/mouse/splat(obj/item/item = null, mob/living/user = null)
-	if(non_standard)
-		var/temp_state = initial(icon_state)
-		icon_dead = "[temp_state]_splat"
-		icon_state = "[temp_state]_splat"
-	else
-		icon_dead = "mouse_[mouse_color]_splat"
-		icon_state = "mouse_[mouse_color]_splat"
-
-	if(prob(50))
-		var/turf/location = get_turf(src)
-		add_splatter_floor(location)
-		if(item)
-			item.add_mob_blood(src)
-		if(user)
-			user.add_mob_blood(src)
 
 /mob/living/simple_animal/mouse/rat/pull_constraint(atom/movable/AM, show_message = FALSE)
 	return TRUE
