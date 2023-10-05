@@ -7,7 +7,7 @@
 	friendly = "утыкается в" //If the mob does no damage with it's attack
 
 	tts_seed = "Kleiner"
-	var/list/damaged_sound = null // The sound player when player hits animal
+	var/list/damaged_sound = null // The sound played when player hits animal
 	var/list/talk_sound = null // The sound played when talk
 
 
@@ -18,37 +18,37 @@
 
 /mob/living/simple_animal/attacked_by(obj/item/I, mob/living/user)
 	. = ..()
-	if(. && length(src.damaged_sound))
+	if(. && length(src.damaged_sound) && src.stat != DEAD)
 		playsound(src, pick(src.damaged_sound), 40, 1)
 
 /mob/living/simple_animal/attack_hand(mob/living/carbon/human/M)
 	. = ..()
-	if(. && length(src.damaged_sound))
+	if(. && length(src.damaged_sound) && src.stat != DEAD)
 		playsound(src, pick(src.damaged_sound), 40, 1)
 
 /mob/living/simple_animal/attack_animal(mob/living/simple_animal/M)
 	. = ..()
-	if(. && length(src.damaged_sound))
+	if(. && length(src.damaged_sound) && src.stat != DEAD)
 		playsound(src, pick(src.damaged_sound), 40, 1)
 
 /mob/living/simple_animal/attack_alien(mob/living/carbon/alien/humanoid/M)
 	. = ..()
-	if(. && length(src.damaged_sound))
+	if(. && length(src.damaged_sound) && src.stat != DEAD)
 		playsound(src, pick(src.damaged_sound), 40, 1)
 
 /mob/living/simple_animal/attack_larva(mob/living/carbon/alien/larva/L)
 	. = ..()
-	if(. && length(src.damaged_sound))
+	if(. && length(src.damaged_sound) && src.stat != DEAD)
 		playsound(src, pick(src.damaged_sound), 40, 1)
 
 /mob/living/simple_animal/attack_slime(mob/living/simple_animal/slime/M)
 	. = ..()
-	if(. && length(src.damaged_sound))
+	if(. && length(src.damaged_sound) && src.stat != DEAD)
 		playsound(src, pick(src.damaged_sound), 40, 1)
 
 /mob/living/simple_animal/attack_robot(mob/living/user)
 	. = ..()
-	if(. && length(src.damaged_sound))
+	if(. && length(src.damaged_sound) && src.stat != DEAD)
 		playsound(src, pick(src.damaged_sound), 40, 1)
 
 

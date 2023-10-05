@@ -1,77 +1,23 @@
 /mob/living/simple_animal/mouse
 	var/non_standard = FALSE // for no "mouse_" with mouse_color
+	icon = 'modular_ss220/mobs/icons/mob/animal.dmi'
 	death_sound = 'modular_ss220/mobs/sound/creatures/rat_death.ogg'
 	talk_sound = list('modular_ss220/mobs/sound/creatures/rat_talk.ogg')
 	damaged_sound = list('modular_ss220/mobs/sound/creatures/rat_wound.ogg')
-	icon = 'modular_ss220/mobs/icons/mob/animal.dmi'
-
-// /mob/proc/become_mouse()
-	// вместо этого:
-	// var/mob/living/simple_animal/mouse/host = new(vent_found.loc)
-	// это:
-	// var/choosen_type = prob(90) ? /mob/living/simple_animal/mouse : /mob/living/simple_animal/mouse/rat
-	// var/mob/living/simple_animal/mouse/host = new choosen_type(vent_found.loc)
-
-
-
-
-// /mob/proc/safe_respawn(var/MP)
-
-// 	if(ispath(MP, /mob/living/simple_animal/cock))
-// 		return 1
-// 	if(ispath(MP, /mob/living/simple_animal/goose))
-// 		return 1
-// 	if(ispath(MP, /mob/living/simple_animal/turkey))
-// 		return 1
-// 	if(ispath(MP, /mob/living/simple_animal/mouse/hamster))
-// 		return 1
-// 	if(ispath(MP, /mob/living/simple_animal/mouse/rat))
-// 		return 1
-
-// 	if(ispath(MP, /mob/living/simple_animal/possum))
-// 		return 1
-// 	if(ispath(MP, /mob/living/simple_animal/pet/slugcat))
-// 		return 1
-// 	if(ispath(MP, /mob/living/simple_animal/frog))
-// 		return 1
-
-
-
-/obj/effect/decal/remains/mouse
-	name = "remains"
-	desc = "Некогда бывшая мышь. Её останки. Больше не будет пищать..."
-	icon = 'icons/mob/animal.dmi'
-	icon_state = "mouse_skeleton"
-	anchored = FALSE
-	move_resist = MOVE_FORCE_EXTREMELY_WEAK
-
-/obj/effect/decal/remains/mouse/water_act(volume, temperature, source, method)
-	. = ..()
-
-
-
-
-
-
-
+	blood_volume = BLOOD_VOLUME_SURVIVE
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/mouse)
+	tts_seed = "Gyro"
 
 /mob/living/simple_animal/mouse/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/squeak, list("[squeak_sound]" = 1), 100, extrarange = SHORT_RANGE_SOUND_EXTRARANGE) //as quiet as a mouse or whatever
-
-/mob/living/simple_animal/mouse
-	tts_seed = "Gyro"
-	talk_sound = list('modular_ss220/mobs/sound/creatures/rat_talk.ogg')
-	damaged_sound = list('modular_ss220/mobs/sound/creatures/rat_wound.ogg')
-	death_sound = 'modular_ss220/mobs/sound/creatures/rat_death.ogg'
-	blood_volume = BLOOD_VOLUME_SURVIVE
-	//var/non_standard = FALSE //for no "mouse_" with mouse_color
 
 /mob/living/simple_animal/mouse/New()
 	..()
 	pixel_x = rand(-6, 6)
 	pixel_y = rand(0, 10)
 
+	mouse_color = initial(mouse_color) // сбрасываем из-за наследования чтобы своим проком переписать
 	color_pick()
 
 /mob/living/simple_animal/mouse/proc/color_pick()
@@ -83,22 +29,20 @@
 	icon_resting = "mouse_[mouse_color]_sleep"
 	update_appearance(UPDATE_DESC)
 
-
-
-
+/mob/living/simple_animal/mouse/proc/reinitial()
+	mouse_color = initial(mouse_color)
+	icon_state = initial(icon_state)
+	icon_living = initial(icon_living)
+	icon_dead = initial(icon_dead)
+	icon_resting = initial(icon_resting)
 
 /mob/living/simple_animal/mouse/splat(var/obj/item/item = null, var/mob/living/user = null)
-
-	//icon_dead = "mouse_[mouse_color]_splat"
-	//icon_state = "mouse_[mouse_color]_splat"
-
 	if(non_standard)
 		var/temp_state = initial(icon_state)
 		icon_dead = "[temp_state]_splat"
 		icon_state = "[temp_state]_splat"
 	else
-		icon_dead = "mouse_[mouse_color]_splat"
-		icon_state = "mouse_[mouse_color]_splat"
+		..()
 
 	if(prob(50))
 		var/turf/location = get_turf(src)
@@ -108,21 +52,10 @@
 		if(user)
 			user.add_mob_blood(src)
 
-
 /mob/living/simple_animal/mouse/death(gibbed)
 	if(gibbed)
 		make_remains()
-
-	// Only execute the below if we successfully died
-	playsound(src, squeak_sound, 40, 1)
 	. = ..(gibbed)
-	if(!.)
-		return FALSE
-	layer = MOB_LAYER
-	if(client)
-		client.time_died_as_mouse = world.time
-
-
 
 /mob/living/simple_animal/mouse/proc/make_remains()
 	var/obj/effect/decal/remains = new /obj/effect/decal/remains/mouse(src.loc)
@@ -147,10 +80,6 @@
 	maxHealth = 10
 	health = 10
 
-
-
-
-
 /mob/living/simple_animal/mouse/fluff/clockwork
 	name = "Chip"
 	real_name = "Chip"
@@ -164,3 +93,4 @@
 	butcher_results = list(/obj/item/stack/sheet/metal = 1)
 	maxHealth = 20
 	health = 20
+	tts_seed = "Clockwerk"

@@ -1,94 +1,18 @@
-// D:\GitHub\Paradise-Remake-SS220\code\modules\mob\living\living_defense.dm
-/mob/living/grabbedby(mob/living/carbon/user, supress_message = FALSE)
-	if(user == src || anchored)
-		return FALSE
-	if(!(status_flags & CANPUSH))
-		return FALSE
-	if(user.pull_force < move_force)
-		return FALSE
+// \code\modules\mob\mob_holder.dm
+/obj/item/holder
+	icon_override = 'modular_ss220/mobs/icons/mob/inhead/head.dmi'
+	lefthand_file = 'modular_ss220/mobs/icons/mob/inhands/mobs_lefthand.dmi'
+	righthand_file = 'modular_ss220/mobs/icons/mob/inhands/mobs_righthand.dmi'
+	origin_tech = "biotech=2"
+	slot_flags = SLOT_HEAD
 
-	for(var/obj/item/grab/G in grabbed_by)
-		if(G.assailant == user)
-			to_chat(user, "<span class='notice'>You already grabbed [src].</span>")
-
-			// if(holder_type)
-			// 	get_scooped(user)
-			// else
-			// 	to_chat(user, "<span class='notice'>[pluralize_ru(user.gender,"Ты","Вы")] уже схватил[genderize_ru(user.gender,"","а","о","и")] [src.declent_ru(ACCUSATIVE)].</span>")
-			return
-
-	add_attack_logs(user, src, "Grabbed passively", ATKLOG_ALL)
-
-	var/obj/item/grab/G = new /obj/item/grab(user, src)
-	if(!G)	//the grab will delete itself in New if src is anchored
-		return 0
-	user.put_in_active_hand(G)
-	G.synch()
-	LAssailant = user
-
-	playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
-	/*if(user.dir == src.dir)
-		G.state = GRAB_AGGRESSIVE
-		G.last_upgrade = world.time
-		if(!supress_message)
-			visible_message("<span class='warning'>[user] has grabbed [src] from behind!</span>")
-	else*///This is an example of how you can make special types of grabs simply based on direction.
-	if(!supress_message)
-		visible_message("<span class='warning'>[user] has grabbed [src] passively!</span>")
-
-	return G
-
-
-
-// D:\GitHub\Paradise-Remake-SS220\code\modules\mob\living\simple_animal\animal_defense.dm
 /mob/living/simple_animal/attackby(obj/item/O, mob/living/user)
-	if(can_collar && istype(O, /obj/item/petcollar) && !pcollar)
-		add_collar(O, user)
-		return
-	else
-		return ..()
-
-
-	// if(user.a_intent == INTENT_HELP || user.a_intent == INTENT_GRAB)
-	// 	if(can_collar && istype(O, /obj/item/clothing/accessory/petcollar) && !pcollar)
-	// 		add_collar(O, user)
-	// 		return
-	// 	if(istype(O, /obj/item/pet_carrier))
-	// 		var/obj/item/pet_carrier/C = O
-	// 		if(C.put_in_carrier(src, user))
-	// 			return
-	// return ..()
-
-
-
-
-/mob/living/simple_animal/attack_hand(mob/living/carbon/human/M)
-	..()
-	switch(M.a_intent)
-
-		if(INTENT_HELP)
-			if(health > 0)
-				visible_message("<span class='notice'>[M] [response_help] [src].</span>", "<span class='notice'>[M] [response_help] you.</span>")
-				playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
-
-		if(INTENT_GRAB)
-			grabbedby(M)
-			// if(holder_type)
-			// 	get_scooped(M)
-			// else
-			// 	grabbedby(M)
-
-		if(INTENT_HARM, INTENT_DISARM)
-			if(HAS_TRAIT(M, TRAIT_PACIFISM))
-				to_chat(M, "<span class='warning'>You don't want to hurt [src]!</span>")
+	if(user.a_intent == INTENT_HELP || user.a_intent == INTENT_GRAB)
+		if(istype(O, /obj/item/pet_carrier))
+			var/obj/item/pet_carrier/C = O
+			if(C.put_in_carrier(src, user))
 				return
-			M.do_attack_animation(src, ATTACK_EFFECT_PUNCH)
-			visible_message("<span class='danger'>[M] [response_harm] [src]!</span>", "<span class='userdanger'>[M] [response_harm] you!</span>")
-			playsound(loc, attacked_sound, 25, 1, -1)
-			attack_threshold_check(harm_intent_damage)
-			add_attack_logs(M, src, "Melee attacked with fists")
-			updatehealth()
-			return TRUE
+	return ..()
 
 
 
@@ -97,3 +21,346 @@
 
 
 
+//!!!!!!!!!! Проверить работу без этого прока, а потом с этим при захвате ПИИ, мышей, Куриц разных цветов
+// /mob/living/proc/get_scooped(mob/living/carbon/grabber, has_variant = FALSE)
+// 	. = ..()
+// 	if(.)
+// 		H.icon = icon
+// 		H.icon_state = icon_state
+
+/mob/living/get_scooped(mob/living/carbon/grabber, has_variant = FALSE)
+	var/obj/item/holder/H = ..()
+	if(!H)
+		return FALSE
+
+	switch(mob_size)
+		if(MOB_SIZE_TINY)
+			H.w_class = WEIGHT_CLASS_TINY
+		if(MOB_SIZE_SMALL)
+			H.w_class = WEIGHT_CLASS_SMALL
+		if(MOB_SIZE_HUMAN)
+			H.w_class = WEIGHT_CLASS_NORMAL
+		if(MOB_SIZE_LARGE)
+			H.w_class = WEIGHT_CLASS_HUGE
+
+	return H
+
+
+/obj/item/holder/diona
+	name = "diona nymph"
+	desc = "It's a tiny plant critter."
+	icon_state = "nymph"
+	origin_tech = "biotech=5"
+	slot_flags = SLOT_HEAD|SLOT_EARS
+
+/obj/item/holder/pai
+	name = "pAI"
+	desc = "It's a little robot."
+	icon_state = "pai"
+	origin_tech = "materials=3;programming=4;engineering=4"
+	slot_flags = SLOT_HEAD|SLOT_EARS
+
+/obj/item/holder/bunny
+	slot_flags = SLOT_HEAD|SLOT_EARS
+
+/obj/item/holder/mouse
+	name = "mouse"
+	desc = "It's a small, disease-ridden rodent."
+	icon = 'modular_ss220/mobs/icons/mob/animal.dmi'
+	icon_state = "mouse_gray"
+	slot_flags = SLOT_HEAD|SLOT_EARS
+
+/obj/item/holder/drone
+	name = "maintenance drone"
+	desc = "It's a small maintenance robot."
+	icon_state = "drone"
+	origin_tech = "materials=3;programming=4;powerstorage=3;engineering=4"
+
+/obj/item/holder/drone/emagged
+	name = "maintenance drone"
+	icon_state = "drone-emagged"
+	origin_tech = "materials=3;programming=4;powerstorage=3;engineering=4;syndicate=3"
+
+/obj/item/holder/cogscarab
+	name = "cogscarab"
+	desc = "A strange, drone-like machine. It constantly emits the hum of gears."
+	icon_state = "cogscarab"
+	origin_tech = "materials=3;magnets=4;powerstorage=9;bluespace=4"
+
+/obj/item/holder/monkey
+	name = "monkey"
+	desc = "It's a monkey"
+	icon_state = "monkey"
+	origin_tech = "biotech=3"
+
+/obj/item/holder/farwa
+	name = "farwa"
+	desc = "It's a farwa"
+	icon_state = "farwa"
+	origin_tech = "biotech=3"
+
+/obj/item/holder/stok
+	name = "stok"
+	desc = "It's a stok"
+	icon_state = "stok"
+	origin_tech = "biotech=3"
+
+/obj/item/holder/neara
+	name = "neara"
+	desc = "It's a neara"
+	icon_state = "neara"
+	origin_tech = "biotech=3"
+
+/obj/item/holder/corgi
+	name = "pet"
+	desc = "It's a pet"
+	icon = 'modular_ss220/mobs/icons/mob/pets.dmi'
+	icon_state = "corgi"
+
+/obj/item/holder/lisa
+	name = "pet"
+	desc = "It's a pet"
+	icon = 'modular_ss220/mobs/icons/mob/pets.dmi'
+	icon_state = "lisa"
+
+/obj/item/holder/old_corgi
+	name = "pet"
+	desc = "It's a pet"
+	icon = 'modular_ss220/mobs/icons/mob/pets.dmi'
+	icon_state = "old_corgi"
+
+/obj/item/holder/borgi
+	name = "pet"
+	desc = "It's a pet"
+	icon = 'modular_ss220/mobs/icons/mob/pets.dmi'
+	icon_state = "borgi"
+
+/obj/item/holder/void_puppy
+	name = "pet"
+	desc = "It's a pet"
+	icon = 'modular_ss220/mobs/icons/mob/pets.dmi'
+	icon_state = "void_puppy"
+	origin_tech = "biotech=4;bluespace=5"
+
+/obj/item/holder/slime_puppy
+	name = "pet"
+	desc = "It's a pet"
+	icon = 'modular_ss220/mobs/icons/mob/pets.dmi'
+	icon_state = "slime_puppy"
+	origin_tech = "biotech=6"
+
+/obj/item/holder/narsian
+	name = "pet"
+	desc = "It's a pet"
+	icon = 'modular_ss220/mobs/icons/mob/pets.dmi'
+	icon_state = "narsian"
+	slot_flags = null
+	origin_tech = "bluespace=10"
+
+/obj/item/holder/pug
+	name = "pet"
+	desc = "It's a pet"
+	icon = 'modular_ss220/mobs/icons/mob/pets.dmi'
+	icon_state = "pug"
+
+/obj/item/holder/fox
+	name = "pet"
+	desc = "It's a pet"
+	icon = 'modular_ss220/mobs/icons/mob/pets.dmi'
+	icon_state = "fox"
+
+/obj/item/holder/sloth
+	name = "pet"
+	desc = "It's a pet"
+	icon = 'modular_ss220/mobs/icons/mob/pets.dmi'
+	icon_state = "sloth"
+	slot_flags = null
+
+/obj/item/holder/cat
+	name = "pet"
+	desc = "It's a pet"
+	icon = 'modular_ss220/mobs/icons/mob/pets.dmi'
+	icon_state = "cat"
+
+/obj/item/holder/cat2
+	name = "pet"
+	desc = "It's a pet"
+	icon = 'modular_ss220/mobs/icons/mob/pets.dmi'
+	icon_state = "cat2"
+
+/obj/item/holder/cak
+	name = "pet"
+	desc = "It's a pet"
+	icon = 'modular_ss220/mobs/icons/mob/pets.dmi'
+	icon_state = "cak"
+	origin_tech = "biotech=5"
+
+/obj/item/holder/fatcat
+	name = "pet"
+	desc = "It's a pet"
+	icon = 'modular_ss220/mobs/icons/mob/pets.dmi'
+	icon_state = "iriska"
+	origin_tech = "biotech=5"
+	slot_flags = null
+
+/obj/item/holder/crusher
+	name = "pet"
+	desc = "It's a pet"
+	icon = 'modular_ss220/mobs/icons/mob/pets.dmi'
+	icon_state = "crusher"
+
+/obj/item/holder/original
+	name = "pet"
+	desc = "It's a pet"
+	icon = 'modular_ss220/mobs/icons/mob/pets.dmi'
+	icon_state = "original"
+
+/obj/item/holder/spacecat
+	name = "pet"
+	desc = "It's a pet"
+	icon = 'modular_ss220/mobs/icons/mob/pets.dmi'
+	icon_state = "spacecat"
+
+/obj/item/holder/bullterrier
+	name = "pet"
+	desc = "It's a pet"
+	icon = 'modular_ss220/mobs/icons/mob/pets.dmi'
+	icon_state = "bullterrier"
+	slot_flags = null
+
+/obj/item/holder/crab
+	name = "pet"
+	desc = "It's a pet"
+	icon = 'modular_ss220/mobs/icons/mob/animal.dmi'
+	icon_state = "crab"
+
+/obj/item/holder/evilcrab
+	name = "pet"
+	desc = "It's a pet"
+	icon = 'modular_ss220/mobs/icons/mob/animal.dmi'
+	icon_state = "evilcrab"
+
+/obj/item/holder/snake
+	name = "pet"
+	desc = "It's a pet"
+	icon = 'modular_ss220/mobs/icons/mob/animal.dmi'
+	icon_state = "snake"
+
+/obj/item/holder/parrot
+	name = "pet"
+	desc = "It's a pet"
+	icon = 'modular_ss220/mobs/icons/mob/animal.dmi'
+	icon_state = "parrot_fly"
+
+/obj/item/holder/axolotl
+	name = "pet"
+	desc = "It's a pet"
+	icon = 'modular_ss220/mobs/icons/mob/animal.dmi'
+	icon_state = "axolotl"
+
+/obj/item/holder/lizard
+	name = "pet"
+	desc = "It's a pet"
+	icon = 'modular_ss220/mobs/icons/mob/animal.dmi'
+	icon_state = "lizard"
+
+/obj/item/holder/chick
+	name = "pet"
+	desc = "It's a small chicken"
+	icon = 'modular_ss220/mobs/icons/mob/animal.dmi'
+	icon_state = "chick"
+
+/obj/item/holder/chicken
+	name = "pet"
+	desc = "It's a chicken"
+	icon = 'modular_ss220/mobs/icons/mob/animal.dmi'
+	icon_state = "chicken_brown"
+	slot_flags = null
+
+/obj/item/holder/cock
+	name = "pet"
+	desc = "It's a pet"
+	icon = 'modular_ss220/mobs/icons/mob/animal.dmi'
+	icon_state = "cock"
+	slot_flags = null
+
+/obj/item/holder/hamster
+	name = "pet"
+	desc = "It's a pet"
+	icon = 'modular_ss220/mobs/icons/mob/animal.dmi'
+	icon_state = "hamster"
+
+/obj/item/holder/hamster_rep
+	name = "Представитель Алексей"
+	desc = "Уважаемый хомяк"
+	icon = 'modular_ss220/mobs/icons/mob/animal.dmi'
+	icon_state = "hamster_rep"
+
+/obj/item/holder/fennec
+	name = "fennec"
+	desc = "It's a fennec. Yiff!"
+	icon_state = "fennec"
+	origin_tech = "biotech=4"
+
+/obj/item/holder/mothroach
+	name = "mothroach"
+	desc = "Bzzzz"
+	icon = 'modular_ss220/mobs/icons/mob/pets.dmi'
+	icon_state = "mothroach"
+	origin_tech = "biotech=4"
+
+/obj/item/holder/moth
+	name = "moth"
+	desc = "Bzzzz"
+	icon = 'modular_ss220/mobs/icons/mob/animal.dmi'
+	icon_state = "moth"
+	origin_tech = "biotech=4"
+
+/obj/item/holder/headslug
+	name = "headslug"
+	desc = "It's a headslug. Ewwww..."
+	icon = 'modular_ss220/mobs/icons/mob/animal.dmi'
+	icon_state = "headslug"
+	origin_tech = "biotech=6"
+
+/obj/item/holder/possum
+	name = "possum"
+	desc = "It's a possum. Ewwww..."
+	icon = 'modular_ss220/mobs/icons/mob/pets.dmi'
+	icon_state = "possum"
+	origin_tech = "biotech=3"
+
+/obj/item/holder/possum/poppy
+	name = "poppy"
+	desc = "It's a possum Poppy. Ewwww..."
+	icon = 'modular_ss220/mobs/icons/mob/pets.dmi'
+	icon_state = "poppy"
+
+/obj/item/holder/frog
+	name = "frog"
+	desc = "It's a wednesday, my dudes."
+	icon = 'modular_ss220/mobs/icons/mob/animal.dmi'
+	icon_state = "frog"
+
+/obj/item/holder/frog/toxic
+	name = "rare frog"
+	desc = "It's a toxic wednesday, my dudes."
+	icon_state = "rare_frog"
+
+/obj/item/holder/snail
+	name = "snail"
+	desc = "Slooooow"
+	icon = 'modular_ss220/mobs/icons/mob/animal.dmi'
+	icon_state = "snail"
+
+/obj/item/holder/turtle
+	name = "yeeslow"
+	desc = "Slooooow"
+	icon = 'modular_ss220/mobs/icons/mob/animal.dmi'
+	icon_state = "yeeslow"
+
+/obj/item/holder/clowngoblin
+	name = "clowngoblin"
+	desc = "Honk honk"
+	icon = 'modular_ss220/mobs/icons/mob/animal.dmi'
+	icon_state = "clowngoblin"

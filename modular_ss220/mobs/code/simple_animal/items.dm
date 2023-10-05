@@ -22,6 +22,7 @@
 /obj/item/reagent_containers/food/snacks/meat/mouse
 	name = "мышатина"
 	desc = "На безрыбье и мышь мясо. Кто знает чем питался этот грызун до его подачи к столу."
+	icon = 'modular_ss220/mobs/icons/items.dmi'
 	icon_state = "meat_clear"
 	list_reagents = list("nutriment" = 2, "blood" = 3, "toxin" = 1)
 
@@ -41,3 +42,15 @@
 	name = "Удобная лежанка"
 	desc = "Комфортная лежанка для любимейшего питомца отдела."
 	anchored = TRUE
+
+// Останки
+/obj/effect/decal/remains/mouse
+	name = "remains"
+	desc = "Некогда бывшая мышь. Её останки. Больше не будет пищать..."
+	icon = 'modular_ss220/mobs/icons/items.dmi'
+	icon_state = "mouse_skeleton"
+	anchored = FALSE
+	move_resist = MOVE_FORCE_EXTREMELY_WEAK
+
+/obj/effect/decal/remains/mouse/water_act(volume, temperature, source, method)
+	. = ..()

@@ -27,7 +27,7 @@
 	turns_per_move = 2
 	response_help  = "полапал"
 	response_disarm = "аккуратно отодвинул"
-	response_harm   = "наступил на"
+	response_harm   = "пихнул"
 	attacktext = "толкается"
 	transform = matrix(0.7, 0, 0, 0, 0.7, 0)
 	health = 3
@@ -42,6 +42,7 @@
 GLOBAL_VAR_INIT(hamster_count, 0)
 
 /mob/living/simple_animal/mouse/hamster/color_pick()
+	reinitial()
 	return
 
 /mob/living/simple_animal/mouse/hamster/New()
