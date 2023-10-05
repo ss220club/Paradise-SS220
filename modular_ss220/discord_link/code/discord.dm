@@ -21,7 +21,10 @@
 		return
 
 	var/token = md5("[world.time+rand(1000,1000000)]")
-	var/datum/db_query/query_replace_token = SSdbcore.NewQuery("REPLACE INTO discord_links (ckey, timestamp, one_time_token) VALUES (:ckey, NOW(), :token)", list("token" = token, "ckey" = ckey))
+	var/datum/db_query/query_replace_token = SSdbcore.NewQuery("REPLACE INTO discord_links (ckey, timestamp, one_time_token) VALUES (:ckey, NOW(), :token)", list(
+		"token" = token,
+		"ckey" = ckey
+		))
 	if(!query_replace_token.warn_execute())
 		to_chat(usr, span_warning("Ошибка записи токена в БД! Обратитесь к администрации."))
 		log_debug("link_discord_account: failed db update discord_id for ckey [ckey]")
@@ -46,7 +49,7 @@
 	. = ..()
 
 /datum/preferences/proc/get_discord_id()
-	var/datum/db_query/discord_query = SSdbcore.NewQuery({"SELECT discord_id, valid FROM discord_links WHERE ckey=:ckey"}, list(
+	var/datum/db_query/discord_query = SSdbcore.NewQuery("SELECT discord_id, valid FROM discord_links WHERE ckey=:ckey", list(
 			"ckey" = parent.ckey
 		))
 
