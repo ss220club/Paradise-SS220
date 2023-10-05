@@ -26959,6 +26959,7 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/firedoor,
+/obj/effect/mapping_helpers/airlock/autoname,
 /turf/simulated/floor/wood/fancy/cherry,
 /area/station/legal/lawoffice)
 "bYR" = (
@@ -27435,18 +27436,12 @@
 	},
 /turf/simulated/floor/wood/fancy/oak,
 /area/station/legal/courtroom)
-"caD" = (
-/obj/machinery/light/directional/north,
-/obj/effect/turf_decal/box/red,
-/turf/simulated/floor/wood/fancy/oak,
-/area/station/legal/courtroom)
 "caF" = (
 /obj/structure/disposalpipe/trunk{
 	dir = 4
 	},
 /obj/machinery/disposal,
 /obj/machinery/light_switch/north,
-/obj/machinery/light/directional/west,
 /turf/simulated/floor/wood,
 /area/station/legal/magistrate)
 "caH" = (
@@ -28024,12 +28019,6 @@
 /obj/effect/landmark/start/captain,
 /turf/simulated/floor/carpet/black,
 /area/station/command/office/captain/bedroom)
-"ccp" = (
-/obj/structure/railing,
-/obj/machinery/light/directional/west,
-/obj/structure/chair/office,
-/turf/simulated/floor/carpet/black,
-/area/station/legal/courtroom)
 "ccq" = (
 /obj/structure/chair{
 	dir = 4
@@ -28974,7 +28963,6 @@
 /turf/simulated/floor/carpet/royalblack,
 /area/station/legal/courtroom)
 "cfZ" = (
-/obj/machinery/light/directional/west,
 /obj/machinery/firealarm/directional/west,
 /turf/simulated/floor/wood,
 /area/station/legal/magistrate)
@@ -29133,7 +29121,9 @@
 "cgS" = (
 /obj/machinery/light/directional/south,
 /obj/structure/table/wood,
-/obj/machinery/photocopier/faxmachine/longrange,
+/obj/machinery/photocopier/faxmachine/longrange{
+	pixel_y = 4
+	},
 /turf/simulated/floor/carpet/red,
 /area/station/legal/lawoffice)
 "cgW" = (
@@ -29737,12 +29727,10 @@
 /area/station/service/expedition)
 "cjb" = (
 /obj/structure/table/reinforced,
-/obj/machinery/photocopier/faxmachine/longrange,
-/obj/machinery/camera{
-	c_tag = "Magistrate Office";
-	dir = 1;
-	start_active = 1
+/obj/machinery/photocopier/faxmachine/longrange{
+	pixel_y = 4
 	},
+/obj/machinery/light/directional/south,
 /turf/simulated/floor/wood,
 /area/station/legal/magistrate)
 "cjf" = (
@@ -29763,6 +29751,7 @@
 /obj/effect/mapping_helpers/airlock/access/any/command/magistrate,
 /obj/machinery/door/airlock/command,
 /obj/machinery/door/firedoor,
+/obj/effect/mapping_helpers/airlock/autoname,
 /turf/simulated/floor/wood,
 /area/station/legal/magistrate)
 "cjl" = (
@@ -30574,7 +30563,6 @@
 /area/station/legal/courtroom)
 "cmm" = (
 /obj/machinery/photocopier,
-/obj/machinery/light/directional/west,
 /turf/simulated/floor/wood,
 /area/station/legal/magistrate)
 "cmn" = (
@@ -30583,7 +30571,9 @@
 	},
 /area/station/hallway/primary/aft)
 "cmo" = (
-/obj/machinery/computer/brigcells,
+/obj/machinery/computer/brigcells{
+	dir = 1
+	},
 /turf/simulated/floor/wood,
 /area/station/legal/magistrate)
 "cmq" = (
@@ -31237,16 +31227,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/station/command/teleporter)
-"coI" = (
-/obj/structure/railing{
-	dir = 1
-	},
-/obj/machinery/light/directional/west,
-/obj/structure/chair/office{
-	dir = 1
-	},
-/turf/simulated/floor/carpet/black,
-/area/station/legal/courtroom)
 "coL" = (
 /obj/structure/railing{
 	dir = 5
@@ -40980,7 +40960,7 @@
 	dir = 1
 	},
 /obj/machinery/camera{
-	c_tag = "Court Room South";
+	c_tag = "Courtroom South";
 	dir = 1;
 	start_active = 1
 	},
@@ -51479,6 +51459,7 @@
 /obj/effect/mapping_helpers/airlock/access/any/security/court,
 /obj/machinery/door/airlock,
 /obj/machinery/door/firedoor,
+/obj/effect/mapping_helpers/airlock/autoname,
 /turf/simulated/floor/carpet/black,
 /area/station/legal/courtroom)
 "fbB" = (
@@ -65531,6 +65512,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/firedoor,
+/obj/effect/mapping_helpers/airlock/autoname,
 /turf/simulated/floor/wood/fancy/oak,
 /area/station/legal/courtroom)
 "kxX" = (
@@ -67395,7 +67377,7 @@
 "ljq" = (
 /obj/structure/chair/office,
 /obj/machinery/camera{
-	c_tag = "Court Room North"
+	c_tag = "Courtroom North"
 	},
 /turf/simulated/floor/carpet/black,
 /area/station/legal/courtroom)
@@ -76734,6 +76716,11 @@
 	pixel_x = 7;
 	pixel_y = 8
 	},
+/obj/machinery/camera{
+	c_tag = "Magistrate Office";
+	dir = 1;
+	start_active = 1
+	},
 /turf/simulated/floor/wood,
 /area/station/legal/magistrate)
 "oOW" = (
@@ -79067,6 +79054,7 @@
 /obj/effect/mapping_helpers/airlock/access/any/security/court,
 /obj/machinery/door/airlock,
 /obj/machinery/door/firedoor,
+/obj/effect/mapping_helpers/airlock/autoname,
 /turf/simulated/floor/wood/fancy/oak,
 /area/station/legal/courtroom)
 "pDQ" = (
@@ -82972,7 +82960,7 @@
 	dir = 8
 	},
 /obj/machinery/camera{
-	c_tag = "Court Room East";
+	c_tag = "Courtroom East";
 	dir = 8
 	},
 /turf/simulated/floor/carpet/royalblack,
@@ -83246,6 +83234,7 @@
 /obj/effect/mapping_helpers/airlock/windoor/access/any/security{
 	dir = 8
 	},
+/obj/effect/mapping_helpers/airlock/autoname,
 /turf/simulated/floor/plating,
 /area/station/legal/courtroom)
 "rnI" = (
@@ -83323,7 +83312,6 @@
 	},
 /area/station/medical/sleeper)
 "rpx" = (
-/obj/machinery/light/directional/south,
 /obj/effect/turf_decal/box/red,
 /turf/simulated/floor/wood/fancy/oak,
 /area/station/legal/courtroom)
@@ -95379,6 +95367,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/firedoor,
+/obj/effect/mapping_helpers/airlock/autoname,
 /turf/simulated/floor/wood,
 /area/station/legal/magistrate)
 "vXB" = (
@@ -96966,6 +96955,7 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
+/obj/machinery/light/directional/west,
 /turf/simulated/floor/wood/fancy/oak,
 /area/station/legal/courtroom)
 "wHt" = (
@@ -98763,7 +98753,6 @@
 /area/station/security/warden)
 "xuX" = (
 /obj/structure/bookcase,
-/obj/machinery/light/directional/east,
 /turf/simulated/floor/carpet/royalblack,
 /area/station/legal/magistrate)
 "xvo" = (
@@ -99815,7 +99804,6 @@
 /area/station/bridge/checkpoint/south)
 "xPW" = (
 /obj/structure/closet/secure_closet/magistrate,
-/obj/machinery/light/directional/east,
 /turf/simulated/floor/wood,
 /area/station/legal/magistrate)
 "xQj" = (
@@ -145819,7 +145807,7 @@ qRt
 mrW
 bYH
 fRQ
-ccp
+hNV
 cvu
 cmf
 erb
@@ -145827,7 +145815,7 @@ wHc
 uuc
 cmf
 cvu
-coI
+hBy
 fRQ
 bYH
 lNj
@@ -148131,7 +148119,7 @@ bTb
 qRt
 bXc
 bYH
-caD
+rpx
 vaU
 coM
 cfX
