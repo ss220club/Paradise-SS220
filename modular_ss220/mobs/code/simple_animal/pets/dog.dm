@@ -1,6 +1,3 @@
-
-
-
 /mob/living/simple_animal/pet/dog
 	icon = 'modular_ss220/mobs/icons/mob/pets.dmi'
 	tts_seed = "Stetmann"
@@ -105,47 +102,6 @@
 	maxHealth = 30
 	health = 30
 
-
-/mob/living/simple_animal/pet/dog/bullterrier
-	name = "\improper bullterrier"
-	real_name = "bullterrier"
-	desc = "Кого-то его мордочка напоминает..."
-	icon = 'icons/mob/pets.dmi'
-	icon_state = "bullterrier"
-	icon_living = "bullterrier"
-	icon_dead = "bullterrier_dead"
-	tts_seed = "Kleiner"
-	holder_type = /obj/item/holder/bullterrier
-
-/mob/living/simple_animal/pet/dog/tamaskan
-	name = "\improper tamaskan"
-	real_name = "tamaskan"
-	desc = "Хорошая семейная собака. Уживается с другими собаками и ассистентами."
-	icon = 'icons/mob/pets.dmi'
-	icon_state = "tamaskan"
-	icon_living = "tamaskan"
-	icon_dead = "tamaskan_dead"
-	holder_type = /obj/item/holder/bullterrier
-	tts_seed = "Kleiner"
-
-/mob/living/simple_animal/pet/dog/german
-	name = "\improper german"
-	real_name = "german"
-	desc = "Немецкая овчарка с помесью двортерьера. Судя по крупу - явно не породистый."
-	icon = 'icons/mob/pets.dmi'
-	icon_state = "german"
-	icon_living = "german"
-	icon_dead = "german_dead"
-	tts_seed = "Kleiner"
-
-
-
-
-
-
-
-
-
 /mob/living/simple_animal/pet/dog/bullterrier
 	name = "bullterrier"
 	real_name = "bullterrier"
@@ -154,6 +110,7 @@
 	icon_state = "bullterrier"
 	icon_living = "bullterrier"
 	icon_dead = "bullterrier_dead"
+	tts_seed = "Kleiner"
 	holder_type = /obj/item/holder/bullterrier
 
 /mob/living/simple_animal/pet/dog/tamaskan
@@ -165,6 +122,7 @@
 	icon_living = "tamaskan"
 	icon_dead = "tamaskan_dead"
 	holder_type = /obj/item/holder/bullterrier
+	tts_seed = "Kleiner"
 
 /mob/living/simple_animal/pet/dog/german
 	name = "german"
@@ -184,6 +142,7 @@
 	icon_state = "brittany"
 	icon_living = "brittany"
 	icon_dead = "brittany_dead"
+
 
 
 // named

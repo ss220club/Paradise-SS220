@@ -243,7 +243,6 @@
 /obj/item/holder/snake
 	name = "pet"
 	desc = "It's a pet"
-	icon = 'modular_ss220/mobs/icons/mob/animal.dmi'
 	icon_state = "snake"
 
 /obj/item/holder/parrot
@@ -334,7 +333,7 @@
 	name = "poppy"
 	desc = "It's a possum Poppy. Ewwww..."
 	icon = 'modular_ss220/mobs/icons/mob/pets.dmi'
-	icon_state = "poppy"
+	icon_state = "possum_poppy"
 
 /obj/item/holder/frog
 	name = "frog"

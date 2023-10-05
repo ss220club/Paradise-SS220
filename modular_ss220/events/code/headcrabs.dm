@@ -60,6 +60,10 @@
 /datum/event/headcrabs/announce()
 	GLOB.major_announcement.Announce("Биосканеры фиксируют размножение хедкрабов на борту станции. Избавьтесь от них, прежде чем это начнет влиять на продуктивность станции", "ВНИМАНИЕ: НЕОПОЗНАННЫЕ ФОРМЫ ЖИЗНИ.")
 
+/datum/event_container/mundane/New()
+	. = ..()
+	available_events |= new /datum/event_meta(EVENT_LEVEL_MUNDANE, 	"Headcrab Infestation",		/datum/event/headcrabs, 				100,	list(ASSIGNMENT_SECURITY = 30), TRUE)
+
 #undef HEADCRAB_NORMAL
 #undef HEADCRAB_FASTMIX
 #undef HEADCRAB_FAST
