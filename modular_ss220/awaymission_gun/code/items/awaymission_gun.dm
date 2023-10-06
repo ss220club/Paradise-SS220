@@ -23,12 +23,12 @@
 
 	if(is_away_level(new_z))
 		if(ismob(loc))
-			to_chat(loc, "<span class='notice'>Ваш [src.name] активируется, начиная потреблять энергию от ближайшего беспроводного источника питания.</span>")
+			to_chat(loc, span_notice("Ваш [name] активируется, начиная потреблять энергию от ближайшего беспроводного источника питания."))
 		selfcharge = TRUE
 	else
 		if(selfcharge)
 			if(ismob(loc))
-				to_chat(loc, "<span class='danger'>Ваш [src.name] деактивируется, так как он находится вне зоны действия источника питания.</span>")
+				to_chat(loc, span_danger("Ваш [name] деактивируется, так как он находится вне зоны действия источника питания.</span>"))
 			cell.charge = 0
 			selfcharge = FALSE
 			update_icon()
@@ -39,8 +39,8 @@
 		return
 
 	if(user)
-		user.visible_message("<span class='warning'>От [src.name] летят искры!</span>", "<span class='notice'>Вы взломали [src.name], что привело к перезаписи протоколов безопасности. Устройство может быть использовано вне ограничений.</span>")
-	playsound(src.loc, 'sound/effects/sparks4.ogg', 30, 1)
+		user.visible_message(span_warning("От [name] летят искры!"), span_notice("Вы взломали [name], что привело к перезаписи протоколов безопасности. Устройство может быть использовано вне ограничений"))
+	playsound(loc, 'sound/effects/sparks4.ogg', 30, 1)
 	do_sparks(5, 1, src)
 
 	emagged = TRUE
@@ -72,8 +72,8 @@
 	force = 10
 
 /obj/item/gun/energy/laser/awaymission_aeg/rnd/mk2/attack_self(mob/living/user)
-	var/msg_for_all = "<span class='warning'>[user.name] усердно давит на рычаг зарядки [src.name], но он не поддается!</span>"
-	var/msg_for_user = "<span class='notice'>Вы пытаетесь надавить на рычаг зарядки [src.name], но он заблокирован.</span>"
+	var/msg_for_all = span_warning("[user.name] усердно давит на рычаг зарядки [name], но он не поддается!")
+	var/msg_for_user = span_notice("Вы пытаетесь надавить на рычаг зарядки [name], но он заблокирован.")
 
 	if(!emagged)
 		user.visible_message(msg_for_all, msg_for_user)
@@ -84,10 +84,10 @@
 		return FALSE
 
 	if(user.nutrition <= NUTRITION_LEVEL_HYPOGLYCEMIA)
-		user.visible_message("<span class='warning'>[user.name] слабо давит на [src.name], но он ослаб!</span>", "<span class='notice'>Вы пытаетесь надавить на рычаг зарядки [src.name], но не можете из-за усталости!</span>")
+		user.visible_message(span_warning("[user.name] слабо давит на [name], но он ослаб!"), span_notice("Вы пытаетесь надавить на рычаг зарядки [name], но не можете из-за усталости!"))
 		return FALSE
 
-	playsound(src.loc, 'sound/effects/sparks3.ogg', 10, 1)
+	playsound(loc, 'sound/effects/sparks3.ogg', 10, 1)
 	do_sparks(1, 1, src)
 
 	cell.give(25)
