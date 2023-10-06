@@ -72,13 +72,25 @@
 	force = 10
 
 /obj/item/gun/energy/laser/awaymission_aeg/rnd/mk2/attack_self(mob/living/user)
-	. = ..()
-	if(!emagged)
-		user.visible_message("<span class='warning'>[user.name] усердно давит на рычаг зарядки [src.name], но он не поддается!</span>", "<span class='notice'>Вы пытаетесь надавить на рычаг зарядки [src.name], но он заблокирован.</span>")
-		return
+	var/msg_for_all = "<span class='warning'>[user.name] усердно давит на рычаг зарядки [src.name], но он не поддается!</span>"
+	var/msg_for_user = "<span class='notice'>Вы пытаетесь надавить на рычаг зарядки [src.name], но он заблокирован.</span>"
 
-	playsound(src.loc, 'sound/effects/sparks4.ogg', 10, 1)
-	do_sparks(3, 1, src)
+	if(!emagged)
+		user.visible_message(msg_for_all, msg_for_user)
+		return FALSE
+
+	if(cell.charge >= cell.maxcharge)
+		user.visible_message(msg_for_all, msg_for_user)
+		return FALSE
+
+	if(user.nutrition <= NUTRITION_LEVEL_HYPOGLYCEMIA)
+		user.visible_message("<span class='warning'>[user.name] слабо давит на [src.name], но он ослаб!</span>", "<span class='notice'>Вы пытаетесь надавить на рычаг зарядки [src.name], но не можете из-за усталости!</span>")
+		return FALSE
+
+	playsound(src.loc, 'sound/effects/sparks3.ogg', 10, 1)
+	do_sparks(1, 1, src)
 
 	cell.give(25)
 	user.adjust_nutrition(-2)
+
+	. = ..()
