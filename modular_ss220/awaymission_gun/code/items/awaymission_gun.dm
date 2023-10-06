@@ -12,10 +12,6 @@
 	can_charge = 0
 	emagged = FALSE
 
-/obj/item/gun/energy/laser/awaymission_aeg/rnd
-	name = "Exploreverse Mk I"
-	desc = "Первый прототип оружия с миниатюрным реактором для исследований в крайне отдаленных секторах. Данную модель невозможно подключить к зарядной станции, во избежание истощения подключенных источников питания, в связи с протоколами безопасности, опустошающие заряд при нахождении вне предназначенных мест использования устройств."
-
 /obj/item/gun/energy/laser/awaymission_aeg/Initialize(mapload)
 	. = ..()
 	// Force update it incase it spawns outside an away mission and shouldnt be charged
@@ -42,9 +38,47 @@
 	if (emagged)
 		return
 
-	user.visible_message("<span class='warning'>От [src.name] летят искры!</span>", "<span class='notice'>Вы взломали [src.name], что привело к перезаписи протоколов безопасности. Устройство может быть использовано вне ограничений.</span>")
+	if(user)
+		user.visible_message("<span class='warning'>От [src.name] летят искры!</span>", "<span class='notice'>Вы взломали [src.name], что привело к перезаписи протоколов безопасности. Устройство может быть использовано вне ограничений.</span>")
 	playsound(src.loc, 'sound/effects/sparks4.ogg', 30, 1)
 	do_sparks(5, 1, src)
 
 	emagged = TRUE
 	selfcharge = TRUE
+
+/obj/item/gun/energy/laser/awaymission_aeg/emp_act(severity)
+	. = ..()
+	emag_act()
+
+// GUNS
+/obj/item/gun/energy/laser/awaymission_aeg/rnd
+	name = "Exploreverse Mk I"
+	desc = "Первый прототип оружия с миниатюрным реактором для исследований в крайне отдаленных секторах. \
+	\nДанную модель невозможно подключить к зарядной станции, во избежание истощения подключенных источников питания, \
+	в связи с протоколами безопасности, опустошающие заряд при нахождении вне предназначенных мест использования устройств."
+	origin_tech = "combat=3;magnets=3;powerstorage=4"
+	force = 10
+
+/obj/item/gun/energy/laser/awaymission_aeg/rnd/mk2
+	name = "Exploreverse Mk II"
+	desc = "Второй прототип оружия с миниатюрным реактором и ручным восполнением для исследований в крайне отдаленных секторах. \
+	\nДанная модель оснащена системой ручного восполнения энергии типа \"Za.E.-8 A.L'sya\", \
+	позволяющий в короткие сроки восполнить необходимую электроэнергию с помощью ручного труда, личной энергии и дергания за рычаг подключенного к системе зарядки. \
+	\nСистему автозарядки невозможно использовать, в связи с протоколами безопасности, \
+	опустошающие заряд при нахождении вне предназначенных мест использования устройств. \
+	\nТеперь еще более нелепый дизайн с торчащими проводами!"
+	icon_state = "laser_gate_mk2"
+	origin_tech = "combat=5;magnets=3;powerstorage=5;programming=3;engineering=5"
+	force = 10
+
+/obj/item/gun/energy/laser/awaymission_aeg/rnd/mk2/attack_self(mob/living/user)
+	. = ..()
+	if(!emagged)
+		user.visible_message("<span class='warning'>[user.name] усердно давит на рычаг зарядки [src.name], но он не поддается!</span>", "<span class='notice'>Вы пытаетесь надавить на рычаг зарядки [src.name], но он заблокирован.</span>")
+		return
+
+	playsound(src.loc, 'sound/effects/sparks4.ogg', 10, 1)
+	do_sparks(3, 1, src)
+
+	cell.give(25)
+	user.adjust_nutrition(-2)
