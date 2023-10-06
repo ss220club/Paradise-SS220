@@ -75,7 +75,7 @@
 	var/msg_for_all = span_warning("[user.name] усердно давит на рычаг зарядки [name], но он не поддается!")
 	var/msg_for_user = span_notice("Вы пытаетесь надавить на рычаг зарядки [name], но он заблокирован.")
 
-	if(!emagged)
+	if(!is_away_level(loc.z) && !emagged)
 		user.visible_message(msg_for_all, msg_for_user)
 		return FALSE
 
