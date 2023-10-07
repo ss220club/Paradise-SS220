@@ -1,5 +1,5 @@
 /obj/machinery/jukebox
-	name = "музыкальный автомат"
+	name = "\improper музыкальный автомат"
 	desc = "Классический музыкальный автомат."
 	icon = 'modular_ss220/jukebox/icons/jukebox.dmi'
 	icon_state = "jukebox"
@@ -30,7 +30,7 @@
 	anchored = TRUE
 
 /obj/machinery/jukebox/disco
-	name = "танцевальный диско-шар - тип IV"
+	name = "\improper танцевальный диско-шар - тип IV"
 	desc = "Первые три прототипа были сняты с производства после инцидентов с массовыми жертвами."
 	icon_state = "disco"
 	max_integrity = 300
@@ -79,10 +79,10 @@
 	if(!active && !(resistance_flags & INDESTRUCTIBLE))
 		if(iswrench(O))
 			if(!anchored && !isinspace())
-				to_chat(user,"<span class='notice'>You secure [src] to the floor.</span>")
+				to_chat(user, span_notice("You secure [src] to the floor."))
 				anchored = TRUE
 			else if(anchored)
-				to_chat(user,"<span class='notice'>You unsecure and disconnect [src].</span>")
+				to_chat(user, span_notice("You unsecure and disconnect [src]."))
 				anchored = FALSE
 			playsound(src, 'sound/items/deconstruct.ogg', 50, 1)
 			return
@@ -122,14 +122,14 @@
 	..()
 	src.add_fingerprint(user)
 	if(!anchored)
-		to_chat(user,"<span class='warning'>Это устройство должно быть закреплено гаечным ключом!</span>")
+		to_chat(user, span_warning("Это устройство должно быть закреплено гаечным ключом!"))
 		return
 	if(!allowed(user) && !isobserver(user))
-		to_chat(user,"<span class='warning'>Ошибка: Отказано в доступе.</span>")
+		to_chat(user, span_warning("Ошибка: Отказано в доступе."))
 		user.playsound_local(src, 'sound/misc/compiler-failure.ogg', 25, TRUE)
 		return
 	if(!songs.len && !isobserver(user))
-		to_chat(user,"<span class='warning'>Ошибка: Для вашей станции не было авторизовано ни одной музыкальной композиции. Обратитесь к Центральному командованию с просьбой решить эту проблему.</span>")
+		to_chat(user, span_warning("Ошибка: Для вашей станции не было авторизовано ни одной музыкальной композиции. Обратитесь к Центральному командованию с просьбой решить эту проблему."))
 		user.playsound_local(src, 'sound/misc/compiler-failure.ogg', 25, TRUE)
 		return
 	if(stat & (BROKEN|NOPOWER))
@@ -172,7 +172,7 @@
 				return
 			if(!active)
 				if(stop > world.time)
-					to_chat(usr, "<span class='warning'>Ошибка: Устройство находится в состоянии сброса, оно будет готово снова через [DisplayTimeText(stop-world.time)].</span>")
+					to_chat(usr, span_warning("Ошибка: Устройство находится в состоянии сброса, оно будет готово снова через [DisplayTimeText(stop-world.time)]."))
 					if(!COOLDOWN_FINISHED(src, jukebox_error_cd))
 						return
 					playsound(src, 'sound/misc/compiler-failure.ogg', 50, TRUE)
@@ -186,7 +186,7 @@
 				return TRUE
 		if("select_track")
 			if(active)
-				to_chat(usr, "<span class='warning'>Ошибка: Вы не можете сменить композицию, пока не закончится текущая.</span>")
+				to_chat(usr, span_warning("Ошибка: Вы не можете сменить композицию, пока не закончится текущая."))
 				return
 			var/list/available = list()
 			for(var/datum/track/S in songs)
