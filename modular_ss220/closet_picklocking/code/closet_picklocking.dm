@@ -25,10 +25,10 @@
 		to_chat(user, span_notice("Вы начинаете откручивать панель замка [src]..."))
 		if(I.use_tool(src, user, 16 SECONDS, volume = I.tool_volume))
 			if(prob(95)) // EZ
-				to_chat(user, span_notice("Вы успешно открутили и сняли панель с замка [src]!"))
-				update_icon()
 				broken = TRUE
 				picklocking_stage = PANEL_OPEN
+				update_icon()
+				to_chat(user, span_notice("Вы успешно открутили и сняли панель с замка [src]!"))
 			else // Bad day
 				var/mob/living/carbon/human/H = user
 				var/obj/item/organ/external/affecting = H.get_organ(user.r_hand == I ? "l_hand" : "r_hand")
@@ -73,10 +73,10 @@
 		to_chat(user, span_notice("Вы начинаете откручивать панель замка [src]..."))
 		if(I.use_tool(src, user, 16 SECONDS, volume = I.tool_volume))
 			if(prob(95)) // EZ
-				to_chat(user, span_notice("Вы успешно открутили и сняли панель с замка [src]!"))
-				update_icon()
 				broken = TRUE
 				picklocking_stage = PANEL_OPEN
+				update_icon()
+				to_chat(user, span_notice("Вы успешно открутили и сняли панель с замка [src]!"))
 				//icon_state = icon_off // Crates has no icon_off :(
 			else // Bad day)
 				var/mob/living/carbon/human/H = user
