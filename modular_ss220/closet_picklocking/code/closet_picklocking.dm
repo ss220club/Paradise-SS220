@@ -21,30 +21,29 @@
 /* Secure closets */
 /obj/structure/closet/secure_closet/screwdriver_act(mob/living/user, obj/item/I)
 	. = ..()
-	if(locked && broken == 0 && user.a_intent != INTENT_HARM) // Stage one
+	if(locked && picklocking_stage == null && user.a_intent != INTENT_HARM) // Stage one
 		to_chat(user, span_notice("Вы начинаете откручивать панель замка [src]..."))
 		if(I.use_tool(src, user, 16 SECONDS, volume = I.tool_volume))
 			if(prob(95)) // EZ
 				to_chat(user, span_notice("Вы успешно открутили и сняли панель с замка [src]!"))
-				broken = 3
 				update_icon()
+				broken = TRUE
 				picklocking_stage = PANEL_OPEN
 			else // Bad day
 				var/mob/living/carbon/human/H = user
 				var/obj/item/organ/external/affecting = H.get_organ(user.r_hand == I ? "l_hand" : "r_hand")
-				user.apply_damage(5, BRUTE , affecting)
+				user.apply_damage(I.force, BRUTE , affecting)
 				user.emote("scream")
 				to_chat(user, span_warning("Проклятье! [I] сорвалась и повредила [affecting.name]!"))
 		return TRUE
 
 /obj/structure/closet/secure_closet/wirecutter_act(mob/living/user, obj/item/I)
 	. = ..()
-	if(locked && broken == 3 && user.a_intent != INTENT_HARM) // Stage two
+	if(locked && picklocking_stage == PANEL_OPEN && user.a_intent != INTENT_HARM) // Stage two
 		to_chat(user, span_notice("Вы начинаете подготавливать провода панели [src]..."))
 		if(I.use_tool(src, user, 16 SECONDS, volume = I.tool_volume))
 			if(prob(80)) // Good hacker!
 				to_chat(user, span_notice("Вы успешно подготовили провода панели замка [src]!"))
-				broken = 2
 				picklocking_stage = WIRES_DISCONNECTED
 			else // Bad day
 				to_chat(user, span_warning("Черт! Не тот провод!"))
@@ -54,13 +53,13 @@
 
 /obj/structure/closet/secure_closet/multitool_act(mob/living/user, obj/item/I)
 	. = ..()
-	if(locked && broken == 2 && user.a_intent != INTENT_HARM) // Stage three
+	if(locked && picklocking_stage == WIRES_DISCONNECTED && user.a_intent != INTENT_HARM) // Stage three
 		to_chat(user, span_notice("Вы начинаете подключать провода панели замка [src] к [I]..."))
 		if(I.use_tool(src, user, 16 SECONDS, volume = I.tool_volume))
 			if(prob(80)) // Good hacker!
-				broken = 0 // Can be emagged
-				emag_act(user)
+				broken = FALSE // Can be emagged
 				picklocking_stage = LOCK_OFF
+				emag_act(user)
 			else // Bad day
 				to_chat(user, span_warning("Черт! Не тот провод!"))
 				do_sparks(5, TRUE, src)
@@ -70,33 +69,31 @@
 /* Crates */
 /obj/structure/closet/crate/secure/screwdriver_act(mob/living/user, obj/item/I)
 	. = ..()
-	if(locked && broken == 0 && user.a_intent != INTENT_HARM) // Stage one
+	if(locked && picklocking_stage == null && user.a_intent != INTENT_HARM) // Stage one
 		to_chat(user, span_notice("Вы начинаете откручивать панель замка [src]..."))
 		if(I.use_tool(src, user, 16 SECONDS, volume = I.tool_volume))
 			if(prob(95)) // EZ
-				if(broken != 3)
-					to_chat(user, span_notice("Вы успешно открутили и сняли панель с замка [src]!"))
-					broken = 3
-					picklocking_stage = PANEL_OPEN
-					//icon_state = icon_off // Crates has no icon_off :(
+				to_chat(user, span_notice("Вы успешно открутили и сняли панель с замка [src]!"))
+				update_icon()
+				broken = TRUE
+				picklocking_stage = PANEL_OPEN
+				//icon_state = icon_off // Crates has no icon_off :(
 			else // Bad day)
 				var/mob/living/carbon/human/H = user
 				var/obj/item/organ/external/affecting = H.get_organ(user.r_hand == I ? "l_hand" : "r_hand")
-				user.apply_damage(5, BRUTE , affecting)
+				user.apply_damage(I.force, BRUTE , affecting)
 				user.emote("scream")
 				to_chat(user, span_warning("Проклятье! [I] сорвалась и повредила [affecting.name]!"))
 		return TRUE
 
 /obj/structure/closet/crate/secure/wirecutter_act(mob/living/user, obj/item/I)
 	. = ..()
-	if(locked && broken == 3 && user.a_intent != INTENT_HARM) // Stage two
+	if(locked && picklocking_stage == PANEL_OPEN && user.a_intent != INTENT_HARM) // Stage two
 		to_chat(user, span_notice("Вы начинаете подготавливать провода панели [src]..."))
 		if(I.use_tool(src, user, 16 SECONDS, volume = I.tool_volume))
 			if(prob(80)) // Good hacker!
-				if(broken != 2)
-					to_chat(user, span_notice("Вы успешно подготовили провода панели замка [src]!"))
-					broken = 2
-					picklocking_stage = WIRES_DISCONNECTED
+				to_chat(user, span_notice("Вы успешно подготовили провода панели замка [src]!"))
+				picklocking_stage = WIRES_DISCONNECTED
 			else // Bad day
 				to_chat(user, span_warning("Черт! Не тот провод!"))
 				do_sparks(5, TRUE, src)
@@ -105,14 +102,13 @@
 
 /obj/structure/closet/crate/secure/multitool_act(mob/living/user, obj/item/I)
 	. = ..()
-	if(locked && broken == 2 && user.a_intent != INTENT_HARM) // Stage three
+	if(locked && picklocking_stage == WIRES_DISCONNECTED && user.a_intent != INTENT_HARM) // Stage three
 		to_chat(user, span_notice("Вы начинаете подключать провода панели замка [src] к [I]..."))
 		if(I.use_tool(src, user, 16 SECONDS, volume = I.tool_volume))
 			if(prob(80)) // Good hacker!
-				if(broken != 0 && broken != 1)
-					broken = 0 // Can be emagged
-					emag_act(user)
-					picklocking_stage = LOCK_OFF
+				broken = FALSE // Can be emagged
+				picklocking_stage = LOCK_OFF
+				emag_act(user)
 			else // Bad day
 				to_chat(user, span_warning("Черт! Не тот провод!"))
 				do_sparks(5, TRUE, src)
