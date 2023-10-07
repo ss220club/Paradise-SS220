@@ -1,11 +1,21 @@
-/obj/structure/closet/secure_closet/togglelock(mob/user)
-	. = ..()
-	var/list/togglelock_sound = list(
-		'modular_ss220/aesthetics_sounds/sound/lock_1.ogg',
-		'modular_ss220/aesthetics_sounds/sound/lock_2.ogg',
-		'modular_ss220/aesthetics_sounds/sound/lock_3.ogg'
+var/list/togglelock_sound = list(
+	'modular_ss220/aesthetics_sounds/sound/lock_1.ogg',
+	'modular_ss220/aesthetics_sounds/sound/lock_2.ogg',
+	'modular_ss220/aesthetics_sounds/sound/lock_3.ogg'
 	)
-	if(allowed(user))
-		locked = !locked
+
+/obj/structure/closet/secure_closet/togglelock(mob/user)
+	if(!istype(user) || user.incapacitated())
+		to_chat(user, "<span class='warning'>You can't do that right now!</span>")
+		return
+	. = ..()
+	if(!opened && !broken && !(user.loc == src) && allowed(user))
 		playsound(loc, pick(togglelock_sound), 10, TRUE, -3)
-		return ..()
+
+/obj/structure/closet/crate/secure/togglelock(mob/user)
+	if(!istype(user) || user.incapacitated())
+		to_chat(user, "<span class='warning'>You can't do that right now!</span>")
+		return
+	. = ..()
+	if(!opened && !broken && !(user.loc == src) && allowed(user))
+		playsound(loc, pick(togglelock_sound), 10, TRUE, -3)
