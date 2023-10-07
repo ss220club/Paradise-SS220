@@ -1,8 +1,9 @@
-var/list/togglelock_sound = list(
-	'modular_ss220/aesthetics_sounds/sound/lock_1.ogg',
-	'modular_ss220/aesthetics_sounds/sound/lock_2.ogg',
-	'modular_ss220/aesthetics_sounds/sound/lock_3.ogg'
-	)
+/obj/structure/closet
+	var/list/togglelock_sound = list(
+		'modular_ss220/aesthetics_sounds/sound/lock_1.ogg',
+		'modular_ss220/aesthetics_sounds/sound/lock_2.ogg',
+		'modular_ss220/aesthetics_sounds/sound/lock_3.ogg'
+		)
 
 /obj/structure/closet/secure_closet/togglelock(mob/user)
 	if(!istype(user) || user.incapacitated())
