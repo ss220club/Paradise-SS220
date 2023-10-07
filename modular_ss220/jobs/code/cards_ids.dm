@@ -46,7 +46,7 @@ GLOBAL_LIST_INIT(Jobs_SS220, list("intern", "cadet", "trainee", "student"))
 /obj/item/card/id/medical/intern
 	name = "Intern ID"
 	registered_name = "Intern"
-	icon = 'modular_ss220/jobs/icons/card.dmi'
+	icon = 'modular_ss220/aesthetics/better_ids/icons/better_ids.dmi'
 	icon_state = "intern"
 	item_state = "intern-id"
 	rank = "Intern"
@@ -54,20 +54,20 @@ GLOBAL_LIST_INIT(Jobs_SS220, list("intern", "cadet", "trainee", "student"))
 /obj/item/card/id/research/student
 	name = "Student ID"
 	registered_name = "Student"
-	icon = 'modular_ss220/jobs/icons/card.dmi'
+	icon = 'modular_ss220/aesthetics/better_ids/icons/better_ids.dmi'
 	icon_state = "student"
 	item_state = "student-id"
 
 /obj/item/card/id/engineering/trainee
 	name = "Trainee ID"
 	registered_name = "Trainee"
-	icon = 'modular_ss220/jobs/icons/card.dmi'
+	icon = 'modular_ss220/aesthetics/better_ids/icons/better_ids.dmi'
 	icon_state = "trainee"
 	item_state = "trainee-id"
 
 /obj/item/card/id/security/cadet
 	name = "Cadet ID"
 	registered_name = "Cadet"
-	icon = 'modular_ss220/jobs/icons/card.dmi'
+	icon = 'modular_ss220/aesthetics/better_ids/icons/better_ids.dmi'
 	icon_state = "cadet"
 	item_state = "cadet-id"
