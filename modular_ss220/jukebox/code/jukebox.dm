@@ -17,7 +17,7 @@
 	var/list/songs = list()
 	var/datum/track/selection = null
 	var/volume = 25
-	var/max_volume = 50
+	var/max_volume = 25
 	COOLDOWN_DECLARE(jukebox_error_cd)
 
 /obj/machinery/jukebox/anchored
@@ -36,7 +36,7 @@
 	max_integrity = 300
 	integrity_failure = 150
 	volume = 50
-	max_volume = 100
+	max_volume = 75
 	var/list/spotlights = list()
 	var/list/sparkles = list()
 
@@ -377,9 +377,6 @@
 /obj/machinery/jukebox/disco/proc/dance(mob/living/M) //Show your moves
 	set waitfor = FALSE
 	if(M.client)
-		if(!(M.client.prefs.sound & SOUND_DISCO)) //they dont want music or dancing
-			rangers -= M //Doing that here as it'll be checked less often than in processing.
-			return
 		if(!(M.client.prefs.toggles2 & PREFTOGGLE_2_DANCE_DISCO)) //they just dont wanna dance
 			return
 	switch(rand(0,9))
@@ -517,7 +514,7 @@
 	dance_over()
 	playsound(src,'sound/machines/terminal_off.ogg',50,1)
 	update_icon()
-	stop = world.time + 100
+	stop = world.time + 3 SECONDS
 
 /obj/machinery/jukebox/process()
 	if(world.time < stop && active)
@@ -525,14 +522,14 @@
 		if(active)
 			active_power_consumption = (volume * 10)
 			change_power_mode(ACTIVE_POWER_USE)
-		for(var/mob/M in range(10,src))
-			if(!M.client || !(M.client.prefs.sound & SOUND_DISCO))
+		for(var/mob/M in range(14,src))
+			if(!M.client)
 				continue
 			if(!(M in rangers))
 				rangers[M] = TRUE
 				M.playsound_local(get_turf(M), null, volume, channel = CHANNEL_JUKEBOX, S = song_played)
 		for(var/mob/L in rangers)
-			if(get_dist(src, L) > 10)
+			if(get_dist(src, L) > 14)
 				rangers -= L
 				if(!L || !L.client)
 					continue
