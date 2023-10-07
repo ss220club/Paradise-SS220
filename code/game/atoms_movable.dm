@@ -182,7 +182,6 @@
 	if(glide_size_override && glide_size != glide_size_override)
 		set_glide_size(glide_size_override)
 
-
 	if(loc != newloc)
 		if (IS_DIR_DIAGONAL(direction))
 			. = MoveDiagonally(direction)
