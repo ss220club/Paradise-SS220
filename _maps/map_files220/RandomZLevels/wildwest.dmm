@@ -239,6 +239,7 @@
 /obj/structure/shuttle/engine/heater{
 	dir = 4
 	},
+/obj/structure/fans/tiny/invisible,
 /turf/simulated/floor/plating/airless,
 /area/awaymission/wildwest/wildwest_refine)
 "cC" = (
@@ -247,12 +248,11 @@
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/wildwest/wildwest_refine)
 "cK" = (
-/obj/effect/spawner/window/reinforced/grilled,
 /obj/machinery/door/poddoor/shutters{
 	dir = 2;
 	id_tag = "ww_window"
 	},
-/turf/simulated/floor,
+/turf/simulated/wall/indestructible/fakeglass,
 /area/awaymission/wildwest/wildwest_refine)
 "cM" = (
 /obj/effect/turf_decal/delivery,
@@ -1096,6 +1096,9 @@
 	dir = 4
 	},
 /turf/simulated/floor,
+/area/awaymission/wildwest/wildwest_refine)
+"kL" = (
+/turf/simulated/wall/indestructible/opsglass,
 /area/awaymission/wildwest/wildwest_refine)
 "kO" = (
 /turf/simulated/floor/wood{
@@ -3164,11 +3167,10 @@
 /turf/simulated/floor/wood,
 /area/awaymission/wildwest/wildwest_mines)
 "ES" = (
-/obj/effect/spawner/window/reinforced/grilled,
 /obj/machinery/door/poddoor/shutters{
 	id_tag = "ww_window"
 	},
-/turf/simulated/floor,
+/turf/simulated/wall/indestructible/fakeglass,
 /area/awaymission/wildwest/wildwest_refine)
 "ET" = (
 /obj/effect/decal/cleanable/dirt,
@@ -3954,12 +3956,11 @@
 /turf/simulated/floor/wood,
 /area/awaymission/wildwest/wildwest_mines)
 "Nk" = (
-/obj/effect/spawner/window/reinforced/grilled,
 /obj/machinery/door/poddoor/shutters{
 	dir = 8;
 	id_tag = "ww_window"
 	},
-/turf/simulated/floor,
+/turf/simulated/wall/indestructible/fakeglass,
 /area/awaymission/wildwest/wildwest_refine)
 "Nq" = (
 /obj/effect/turf_decal/caution{
@@ -4656,6 +4657,18 @@
 /mob/living/simple_animal/hostile/syndicate/ranged,
 /turf/simulated/floor,
 /area/awaymission/wildwest/wildwest_refine)
+"UN" = (
+/obj/structure/window/plasmareinforced{
+	color = "#FF0000";
+	dir = 4
+	},
+/obj/structure/shuttle/engine/heater{
+	dir = 8
+	},
+/obj/structure/fans/tiny/invisible,
+/obj/structure/fans/tiny/invisible,
+/turf/simulated/floor/plating/airless,
+/area/awaymission/wildwest/wildwest_refine)
 "UV" = (
 /turf/simulated/floor/plasteel{
 	dir = 1;
@@ -5112,6 +5125,7 @@
 /obj/structure/shuttle/engine/heater{
 	dir = 8
 	},
+/obj/structure/fans/tiny/invisible,
 /turf/simulated/floor/plating/airless,
 /area/awaymission/wildwest/wildwest_refine)
 
@@ -7356,9 +7370,9 @@ Rm
 Lv
 LT
 mg
-xb
-xb
-xb
+kL
+kL
+kL
 mg
 IF
 Lv
@@ -7478,7 +7492,7 @@ Rm
 Lv
 jC
 it
-ZW
+UN
 ZW
 ZW
 ZW
@@ -7498,9 +7512,9 @@ Rm
 Lv
 zt
 QW
-xb
+kL
 Sf
-xb
+kL
 QW
 QB
 Lv
