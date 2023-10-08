@@ -51,7 +51,7 @@
 	icon = 'icons/turf/floors/junglegrass.dmi'
 	icon_state = "junglegrass"
 	base_icon_state = "junglegrass"
-	/turf/simulated/floor/indestructible/grass/jungle
+	baseturf = /turf/simulated/floor/indestructible/grass/jungle
 	smoothing_groups = list(SMOOTH_GROUP_TURF, SMOOTH_GROUP_GRASS, SMOOTH_GROUP_JUNGLE_GRASS)
 
 /turf/simulated/floor/indestructible/grass/no_creep
