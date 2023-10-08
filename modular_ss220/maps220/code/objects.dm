@@ -257,13 +257,12 @@
 	desc = "Кольцо цвета оникса из неизвестного материала. Позолоченные надписи на внешней стороне причудливо пульсируют, испуская зловещую дымку."
 	resistance_flags = INDESTRUCTIBLE | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	actions_types = list(/datum/action/item_action/immortality)
-	var/cooldown = 0
 
 /datum/action/item_action/immortality
 	name = "Ring ability"
 
 /obj/item/clothing/gloves/ring/immortality_ring/item_action_slot_check(slot)
-	if(slot == slot_gloves)
+	if(slot_flags == SLOT_FLAG_GLOVES)
 		flags = NODROP
 		return TRUE
 
@@ -289,6 +288,6 @@
 /obj/item/clothing/gloves/ring/immortality_ring/equipped(mob/user, slot)
 	..()
 	var/mob/living/carbon/human/H = user
-	if(istype(H) && slot == slot_gloves)
+	if(istype(H) && slot_flags == SLOT_FLAG_GLOVES)
 		to_chat(H, "<span class='danger'>[name] туго обвивается вокруг твоего пальца!</span>")
 		SEND_SOUND (user, sound('modular_ss220/aesthetics_sounds/sound/creepy/demon2.ogg'))
