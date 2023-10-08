@@ -5086,11 +5086,11 @@
 /obj/item/toy/figure/crew/mime{
 	pixel_x = -5
 	},
-/obj/item/toy/crayon/mime{
-	pixel_x = 5
-	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
+	},
+/obj/item/stamp/mime{
+	pixel_x = 7
 	},
 /turf/simulated/floor/mineral/tranquillite,
 /area/station/service/mime)
@@ -18153,6 +18153,7 @@
 /obj/machinery/computer/prisoner{
 	dir = 8
 	},
+/obj/machinery/firealarm/directional/east,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -18970,7 +18971,6 @@
 /obj/structure/displaycase{
 	start_showpiece_type = /obj/item/reagent_containers/food/snacks/donut/sprinkles
 	},
-/obj/machinery/firealarm/directional/west,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -51384,6 +51384,7 @@
 /obj/machinery/light/directional/west,
 /obj/item/clipboard,
 /obj/item/toy/figure/crew/warden,
+/obj/item/stamp/warden,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "darkred"
@@ -54556,26 +54557,11 @@
 	},
 /area/station/maintenance/fore2)
 "gik" = (
-/obj/effect/spawner/window/reinforced,
 /obj/structure/cable{
 	d2 = 4;
 	icon_state = "0-4"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
 	},
 /obj/effect/spawner/window/reinforced/grilled,
-/obj/structure/cable{
-	d2 = 4;
-	icon_state = "0-4"
-	},
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 4;
