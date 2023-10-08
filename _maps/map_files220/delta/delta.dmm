@@ -5608,14 +5608,14 @@
 	heat_proof = 1;
 	name = "Supermatter Chamber"
 	},
-/obj/effect/mapping_helpers/airlock/access/any/engineering/atmos,
-/obj/effect/mapping_helpers/airlock/access/any/engineering/general,
 /obj/machinery/door_control/bolt_control/west{
 	id = "smint"
 	},
 /obj/machinery/door/poddoor/shutters/radiation/preopen{
 	id_tag = "engsm"
 	},
+/obj/effect/mapping_helpers/airlock/access/all/engineering/atmos,
+/obj/effect/mapping_helpers/airlock/access/all/engineering/general,
 /turf/simulated/floor/engine,
 /area/station/engineering/engine/supermatter)
 "aDc" = (
@@ -70881,7 +70881,8 @@
 	id_tag = "smint";
 	locked = 1
 	},
-/obj/effect/mapping_helpers/airlock/access/any/engineering/atmos,
+/obj/effect/mapping_helpers/airlock/access/all/engineering/atmos,
+/obj/effect/mapping_helpers/airlock/access/all/engineering/general,
 /turf/simulated/floor/engine,
 /area/station/engineering/engine/supermatter)
 "mxB" = (
