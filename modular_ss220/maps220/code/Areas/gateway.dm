@@ -271,7 +271,7 @@
 	ambientsounds = list('modular_ss220/aesthetics_sounds/sound/area_ambient/ambient_pulse1.ogg', 'modular_ss220/aesthetics_sounds/sound/area_ambient/ambient_pulse2.ogg')
 
 /* Caves */
-area/awaymission/caves
+/area/awaymission/caves
 	name = "Caves"
 	icon_state = "away"
 	report_alerts = FALSE
