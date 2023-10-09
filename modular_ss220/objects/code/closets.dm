@@ -7,9 +7,6 @@
 	open_door_sprite = "explorer_door"
 
 /obj/structure/closet/secure_closet/expedition/populate_contents()
-	if(prob(50))
-		new /obj/item/gun/energy/laser/awaymission_aeg/rnd(src)
-	else
-		new /obj/item/gun/energy/laser/awaymission_aeg/rnd/mk2(src)
+	new /obj/item/gun/energy/laser/awaymission_aeg/rnd(src)
 	new /obj/item/storage/firstaid/regular(src)
 	new /obj/item/paper/pamphlet/gateway(src)
