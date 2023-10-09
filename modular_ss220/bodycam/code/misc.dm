@@ -1,26 +1,6 @@
 /obj/machinery/camera
 	var/list/computers_watched_by = list()
 
-/obj/machinery/computer/security/ui_act(action, params)
-	if(..())
-		return
-	if(action == "switch_camera")
-		var/c_tag = params["name"]
-		var/list/cameras = get_available_cameras()
-		var/obj/machinery/camera/C = cameras[c_tag]
-		active_camera?.computers_watched_by -= src
-		active_camera = C
-		active_camera.computers_watched_by += src
-		playsound(src, get_sfx("terminal_type"), 25, FALSE)
-
-		// Show static if can't use the camera
-		if(!active_camera?.can_use())
-			show_camera_static()
-			return TRUE
-
-		update_camera_view()
-		return TRUE
-
 /obj/machinery/computer/security/proc/update_camera_view()
 	if(!active_camera)
 		return
@@ -44,7 +24,8 @@
 	active_camera = null
 	. = ..()
 
+// Adding bodycam to sec vendor
 /obj/machinery/economy/vending/security/Initialize(mapload)
 	products += list(
-		/obj/item/body_camera = 10)
+		/obj/item/bodycam = 10)
 	. = ..()

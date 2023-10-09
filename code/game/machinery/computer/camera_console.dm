@@ -118,7 +118,9 @@
 		var/c_tag = params["name"]
 		var/list/cameras = get_available_cameras()
 		var/obj/machinery/camera/C = cameras[c_tag]
+		active_camera?.computers_watched_by -= src // SS220 EDIT - ADDITION
 		active_camera = C
+		active_camera.computers_watched_by += src // SS220 EDIT - ADDITION
 		if(!silent_console)
 			playsound(src, get_sfx("terminal_type"), 25, FALSE)
 
