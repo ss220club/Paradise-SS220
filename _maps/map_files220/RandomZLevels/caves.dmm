@@ -871,6 +871,7 @@
 /obj/item/clothing/suit/browntrenchcoat,
 /obj/effect/decal/cleanable/cobweb2,
 /obj/effect/spawner/random_spawners/dirt_often,
+/obj/item/stack/spacecash/c20,
 /turf/simulated/floor/wood{
 	nitrogen = 23;
 	oxygen = 14;
@@ -1437,7 +1438,7 @@
 "gh" = (
 /obj/effect/baseturf_helper/lava_land/surface,
 /turf/simulated/wall/indestructible/rock/mineral,
-/area/awaymission/caves)
+/area/awaymission/caves/build)
 "gj" = (
 /obj/structure/closet/crate/freezer{
 	opened = 1
@@ -1460,10 +1461,6 @@
 /obj/structure/table/wood/fancy/royalblack,
 /obj/item/storage/fancy/crayons{
 	pixel_y = 10
-	},
-/obj/item/coin/plasma{
-	pixel_y = -3;
-	pixel_x = 8
 	},
 /turf/simulated/floor/wood{
 	nitrogen = 23;
@@ -4146,6 +4143,7 @@
 /obj/item/clothing/suit/storage/labcoat,
 /obj/item/clothing/suit/storage/labcoat,
 /obj/item/clothing/shoes/centcom,
+/obj/item/stack/spacecash/c200,
 /turf/simulated/floor/carpet/purple,
 /area/awaymission/caves/build/reqpower_build)
 "tV" = (
@@ -5079,7 +5077,11 @@
 	icon_state = "sacrificealtar-red"
 	},
 /obj/effect/decal/cleanable/cobweb,
-/obj/item/spellbook/oneuse/summonitem,
+/obj/item/soulstone,
+/obj/item/coin/plasma{
+	pixel_y = -3;
+	pixel_x = 8
+	},
 /turf/simulated/floor/wood{
 	nitrogen = 23;
 	oxygen = 14;
@@ -7048,7 +7050,7 @@
 /area/awaymission/caves)
 "Ip" = (
 /obj/structure/bookcase,
-/obj/item/spellbook/oneuse/charge,
+/obj/item/spellbook/oneuse/summonitem,
 /turf/simulated/floor/wood{
 	nitrogen = 23;
 	oxygen = 14;
@@ -7523,6 +7525,9 @@
 /obj/item/clothing/head/soft/solgov/marines/command,
 /obj/item/gun/projectile/automatic/pistol/m1911,
 /obj/item/clothing/shoes/jackboots,
+/obj/item/stack/spacecash/c1000,
+/obj/item/stack/spacecash/c500,
+/obj/item/stack/spacecash/c1000,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "dark"
@@ -7807,7 +7812,8 @@
 /area/awaymission/caves/build/reqpower_build)
 "LO" = (
 /obj/machinery/gateway/centeraway{
-	calibrated = 0
+	calibrated = 0;
+	requires_power = 0
 	},
 /turf/simulated/floor/engine/cult/lavaland_air{
 	planetary_atmos = 1
@@ -9609,6 +9615,10 @@
 /obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/plating,
 /area/awaymission/caves/build/reqpower_build)
+"Vd" = (
+/obj/effect/baseturf_helper/lava_land/surface,
+/turf/simulated/wall/indestructible/rock/mineral,
+/area/awaymission/caves/build/reqpower_build)
 "Vi" = (
 /obj/structure/statue{
 	icon_state = "angelseen";
@@ -11103,7 +11113,7 @@ LU
 LU
 LU
 LU
-LU
+Vd
 "}
 (3,1,1) = {"
 LU
@@ -15729,7 +15739,7 @@ ZJ
 ZJ
 ZJ
 ZJ
-ZJ
+Ze
 ZJ
 TK
 TK
@@ -31479,7 +31489,7 @@ LU
 TK
 TK
 ZJ
-Ze
+ZJ
 TK
 TK
 bO

@@ -271,23 +271,23 @@
 		cooldown = world.time + 1000
 		user.status_flags |= GODMODE
 		user.invisibility = 40
-		visible_message("<span class='danger'>[user] исчезает из реальности!</span>")
-		to_chat(user, "<span class='cultitalic'> Ты чувствуешь чье-то ужасающее присутствие...</span>")
+		visible_message(span_danger "[user] исчезает из реальности!")
+		to_chat(user, span_cultitalic "Ты чувствуешь чье-то ужасающее присутствие...")
 		SEND_SOUND (user, sound('sound/hallucinations/i_see_you2.ogg'))
 		spawn(60)
 			user.invisibility = 0
 			user.status_flags &= ~GODMODE
-			visible_message("<span class='danger'>[user] возвращается в реальность!</span>")
+			visible_message(span_danger "[user] возвращается в реальность!")
 			if(ishuman(user))
 				var/mob/living/carbon/human/H = user
 				H.apply_damage(rand(10, 40), BURN, pick("r_hand"))
 				H.adjustBrainLoss(30, TRUE)
 	else
-		to_chat(user, "<span class'warning'>[name] еще перезаряжается.</span>")
+		to_chat(user, span_warning "[name] еще перезаряжается")
 
 /obj/item/clothing/gloves/ring/immortality_ring/equipped(mob/user, slot)
 	..()
 	var/mob/living/carbon/human/H = user
 	if(istype(H) && slot_flags == SLOT_FLAG_GLOVES)
-		to_chat(H, "<span class='danger'>[name] туго обвивается вокруг твоего пальца!</span>")
+		to_chat(H, span_danger "[name] туго обвивается вокруг твоего пальца!")
 		SEND_SOUND (user, sound('modular_ss220/aesthetics_sounds/sound/creepy/demon2.ogg'))

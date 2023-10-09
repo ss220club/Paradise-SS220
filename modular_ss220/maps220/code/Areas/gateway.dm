@@ -276,13 +276,13 @@
 	icon_state = "away"
 	report_alerts = FALSE
 	always_unpowered = TRUE
+	dynamic_lighting = DYNAMIC_LIGHTING_FORCED
 
 /area/awaymission/caves/build
 	name = "Abandoned building"
 	icon_state = "awaycontent1"
 	always_unpowered = FALSE
 	requires_power = FALSE
-	dynamic_lighting = DYNAMIC_LIGHTING_FORCED
 
 /area/awaymission/caves/build/reqpower_build
 	name = "Research Сomplex ''Mirror''"
