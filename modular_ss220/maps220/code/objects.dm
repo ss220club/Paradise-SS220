@@ -283,7 +283,7 @@
 				H.apply_damage(rand(10, 40), BURN, pick("r_hand"))
 				H.adjustBrainLoss(30, TRUE)
 	else
-		to_chat(user, span_warning "[name] еще перезаряжается")
+		to_chat(user, span_warning ("[name] еще перезаряжается"))
 
 /obj/item/clothing/gloves/ring/immortality_ring/equipped(mob/user, slot)
 	..()
