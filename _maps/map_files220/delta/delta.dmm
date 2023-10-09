@@ -9163,14 +9163,10 @@
 /area/station/maintenance/virology_maint)
 "aRZ" = (
 /obj/machinery/status_display/supply_display,
-/turf/simulated/wall,
-/area/station/supply/qm)
-"aSa" = (
-/obj/effect/spawner/window/reinforced/grilled,
-/turf/simulated/floor/plating,
+/turf/simulated/wall/r_wall,
 /area/station/supply/qm)
 "aSb" = (
-/turf/simulated/wall,
+/turf/simulated/wall/r_wall,
 /area/station/supply/qm)
 "aSe" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -9517,6 +9513,11 @@
 "aTA" = (
 /obj/machinery/photocopier,
 /obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/obj/structure/cable{
 	d1 = 1;
 	d2 = 4;
 	icon_state = "1-4"
@@ -9527,24 +9528,15 @@
 	},
 /area/station/supply/qm)
 "aTB" = (
-/obj/machinery/power/apc/directional/north,
 /obj/structure/table/reinforced,
-/obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2"
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
 /obj/item/clipboard,
 /obj/item/toy/figure/crew/qm,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/newscaster/directional/north,
 /turf/simulated/floor/carpet/orange,
 /area/station/supply/qm)
 "aTC" = (
@@ -10086,14 +10078,11 @@
 "aVj" = (
 /obj/machinery/button/windowtint/east{
 	id = "qm";
-	pixel_y = 8;
+	pixel_y = 6;
 	req_one_access_txt = "41"
 	},
-/obj/machinery/light_switch/east{
-	pixel_y = -8
-	},
 /obj/machinery/keycard_auth/east{
-	pixel_x = 32
+	pixel_y = -6
 	},
 /turf/simulated/floor/carpet/orange,
 /area/station/supply/qm)
@@ -10994,9 +10983,7 @@
 	},
 /area/station/science/toxins/mixing)
 "aYg" = (
-/turf/simulated/floor/plasteel{
-	icon_state = "neutralfull"
-	},
+/turf/simulated/floor/plasteel,
 /area/station/supply/qm)
 "aYh" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -11008,7 +10995,6 @@
 /obj/structure/closet/secure_closet/quartermaster,
 /obj/machinery/firealarm/directional/east,
 /obj/item/megaphone,
-/obj/item/lighter/zippo/engraved,
 /turf/simulated/floor/carpet/orange,
 /area/station/supply/qm)
 "aYk" = (
@@ -11413,16 +11399,21 @@
 /turf/simulated/wall/r_wall,
 /area/station/command/office/hos)
 "aZz" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/disposalpipe/segment{
 	dir = 2;
 	icon_state = "pipe-c"
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
 	},
 /turf/simulated/floor/plasteel{
 	dir = 6;
@@ -11430,18 +11421,20 @@
 	},
 /area/station/supply/qm)
 "aZA" = (
-/obj/machinery/alarm/directional/south,
 /obj/machinery/camera{
 	c_tag = "Quartermaster Office";
 	dir = 1
 	},
 /obj/machinery/light/directional/south,
-/obj/structure/bed/dogbed,
-/mob/living/simple_animal/pet/sloth/paperwork,
+/obj/machinery/power/apc/directional/south,
+/obj/structure/cable{
+	d2 = 8;
+	icon_state = "0-8"
+	},
 /turf/simulated/floor/carpet/orange,
 /area/station/supply/qm)
 "aZB" = (
-/obj/machinery/newscaster/directional/south,
+/obj/machinery/alarm/directional/south,
 /turf/simulated/floor/carpet/orange,
 /area/station/supply/qm)
 "aZC" = (
@@ -11957,15 +11950,17 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "neutralfull"
-	},
+/turf/simulated/floor/plasteel,
 /area/station/supply/qm)
 "bbk" = (
 /obj/structure/table/reinforced,
 /obj/item/coin/silver{
 	pixel_y = 5;
 	pixel_x = 3
+	},
+/obj/item/lighter/zippo/engraved{
+	pixel_x = 8;
+	pixel_y = 9
 	},
 /obj/effect/spawner/lootdrop/officetoys,
 /turf/simulated/floor/carpet/orange,
@@ -42920,6 +42915,7 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 4
 	},
+/obj/machinery/light_switch/west,
 /turf/simulated/floor/plasteel{
 	dir = 10;
 	icon_state = "brown"
@@ -65711,9 +65707,7 @@
 	id = "qm"
 	},
 /obj/effect/mapping_helpers/airlock/autoname,
-/turf/simulated/floor/plasteel{
-	icon_state = "neutralfull"
-	},
+/turf/simulated/floor/plasteel,
 /area/station/supply/qm)
 "kvQ" = (
 /obj/structure/disposalpipe/segment,
@@ -73259,10 +73253,6 @@
 /obj/effect/spawner/lootdrop/maintenance/three,
 /turf/simulated/floor/plating,
 /area/station/maintenance/starboard)
-"nuO" = (
-/obj/structure/sign/vacuum/external,
-/turf/simulated/wall,
-/area/station/supply/qm)
 "nvc" = (
 /obj/structure/closet/secure_closet/hos,
 /obj/effect/decal/warning_stripes/west,
@@ -79926,11 +79916,6 @@
 /area/station/engineering/control)
 "pNk" = (
 /obj/structure/table/reinforced,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
 /obj/item/cartridge/quartermaster{
 	pixel_x = -3
 	},
@@ -81150,9 +81135,7 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "neutralfull"
-	},
+/turf/simulated/floor/plasteel,
 /area/station/supply/qm)
 "qpZ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -82995,9 +82978,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "neutralfull"
-	},
+/turf/simulated/floor/plasteel,
 /area/station/supply/qm)
 "qZx" = (
 /obj/effect/decal/cleanable/dirt,
@@ -90543,13 +90524,13 @@
 	},
 /area/station/maintenance/starboard2)
 "tTt" = (
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
 /obj/structure/chair{
 	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -147997,7 +147978,7 @@ aVj
 aWJ
 aYj
 aZD
-nuO
+aSb
 aWf
 ber
 blD
@@ -148254,7 +148235,7 @@ aSb
 aSb
 aSb
 aSb
-aSa
+aSb
 bbi
 bes
 bbi
