@@ -2829,6 +2829,7 @@
 /obj/structure/table/reinforced,
 /obj/item/clothing/gloves/color/latex/nitrile,
 /obj/item/clothing/mask/breath,
+/obj/item/radio/intercom/directional/south,
 /turf/simulated/floor/plasteel{
 	icon_state = "cmo"
 	},
@@ -2868,6 +2869,13 @@
 	icon_state = "whiteblue"
 	},
 /area/centcom/ss220/general)
+"cof" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 4
+	},
+/obj/item/radio/intercom/directional/south,
+/turf/simulated/floor/plasteel/dark,
+/area/shuttle/escape)
 "coE" = (
 /obj/machinery/photocopier,
 /turf/simulated/floor/carpet/black,
@@ -4056,7 +4064,7 @@
 "dnW" = (
 /obj/structure/plasticflaps/mining,
 /obj/machinery/conveyor/west{
-	id = "QMLoad"
+	id = "QMLoad2"
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/supply)
@@ -9137,7 +9145,7 @@
 "hlj" = (
 /obj/structure/plasticflaps/mining,
 /obj/machinery/conveyor/east{
-	id = "QMLoad2"
+	id = "QMLoad"
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/supply)
@@ -9714,7 +9722,7 @@
 "hIM" = (
 /obj/machinery/conveyor_switch/oneway{
 	dir = 8;
-	id = "QMLoad"
+	id = "QMLoad2"
 	},
 /turf/simulated/floor/plasteel/dark{
 	icon_state = "darkyellowalt"
@@ -9823,15 +9831,6 @@
 	icon_state = "dark"
 	},
 /area/syndicate_mothership/control)
-"hLI" = (
-/obj/item/radio/intercom{
-	dir = 4;
-	name = "Station Intercom (General)";
-	pixel_x = 29;
-	pixel_y = -60
-	},
-/turf/simulated/floor/plasteel/dark,
-/area/shuttle/escape)
 "hLU" = (
 /obj/effect/decal/syndie_logo{
 	icon_state = "logo17"
@@ -10789,10 +10788,7 @@
 /turf/simulated/floor/carpet/black,
 /area/syndicate_mothership/jail)
 "ivH" = (
-/obj/item/radio/intercom{
-	dir = 8;
-	pixel_x = -28
-	},
+/obj/item/radio/intercom/directional/west,
 /obj/machinery/recharge_station,
 /turf/simulated/floor/plasteel{
 	icon_state = "bot"
@@ -11156,7 +11152,7 @@
 /area/centcom/ss220/general)
 "iOM" = (
 /obj/machinery/conveyor/west{
-	id = "QMLoad"
+	id = "QMLoad2"
 	},
 /obj/machinery/door/poddoor{
 	id_tag = "QMLoaddoor2";
@@ -11856,7 +11852,7 @@
 /area/wizard_station)
 "jvw" = (
 /obj/machinery/conveyor/east{
-	id = "QMLoad2"
+	id = "QMLoad"
 	},
 /obj/machinery/door/poddoor{
 	id_tag = "QMLoaddoor";
@@ -12684,18 +12680,6 @@
 	icon_state = "darkbluealtstrip"
 	},
 /area/syndicate_mothership/elite_squad)
-"kko" = (
-/obj/item/radio/intercom{
-	dir = 4;
-	name = "Station Intercom (General)";
-	pixel_x = 29;
-	pixel_y = -30
-	},
-/obj/structure/bed/roller,
-/turf/simulated/floor/plasteel{
-	icon_state = "cmo"
-	},
-/area/shuttle/escape)
 "kkM" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 8
@@ -12793,7 +12777,6 @@
 /obj/machinery/door/airlock/external{
 	aiControlDisabled = 1;
 	hackProof = 1;
-	locked = 1;
 	name = "Arrival Airlock"
 	},
 /obj/structure/fans/tiny,
@@ -15154,7 +15137,7 @@
 "mcm" = (
 /obj/machinery/conveyor_switch/oneway{
 	dir = 8;
-	id = "QMLoad2"
+	id = "QMLoad"
 	},
 /turf/simulated/floor/plasteel/dark{
 	dir = 1;
@@ -18383,6 +18366,7 @@
 /obj/machinery/door/airlock/external{
 	aiControlDisabled = 1;
 	hackProof = 1;
+	id_tag = "emergency_away";
 	name = "Arrival Airlock"
 	},
 /obj/structure/fans/tiny,
@@ -20835,7 +20819,7 @@
 /area/centcom/ss220/evac)
 "qRh" = (
 /obj/machinery/conveyor/west{
-	id = "QMLoad"
+	id = "QMLoad2"
 	},
 /obj/structure/plasticflaps/mining,
 /obj/machinery/door/poddoor{
@@ -21003,7 +20987,7 @@
 /area/centcom/ss220/bar)
 "qYl" = (
 /obj/machinery/conveyor/east{
-	id = "QMLoad2"
+	id = "QMLoad"
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/supply)
@@ -22167,7 +22151,7 @@
 /area/syndicate_mothership)
 "rSQ" = (
 /obj/machinery/conveyor/west{
-	id = "QMLoad"
+	id = "QMLoad2"
 	},
 /turf/simulated/floor/plating,
 /area/centcom/ss220/supply)
@@ -25445,7 +25429,7 @@
 /area/shuttle/escape)
 "uBb" = (
 /obj/machinery/conveyor/east{
-	id = "QMLoad2"
+	id = "QMLoad"
 	},
 /obj/structure/plasticflaps/mining,
 /obj/machinery/door/poddoor{
@@ -27330,7 +27314,7 @@
 /area/syndicate_mothership/infteam)
 "vZZ" = (
 /obj/machinery/conveyor/west{
-	id = "QMLoad"
+	id = "QMLoad2"
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/supply)
@@ -27877,7 +27861,6 @@
 /obj/machinery/door/airlock/external{
 	aiControlDisabled = 1;
 	hackProof = 1;
-	locked = 1;
 	name = "Arrival Airlock"
 	},
 /obj/structure/fans/tiny,
@@ -28018,7 +28001,7 @@
 /area/shuttle/administration)
 "wFO" = (
 /obj/machinery/conveyor/east{
-	id = "QMLoad2"
+	id = "QMLoad"
 	},
 /turf/simulated/floor/plating,
 /area/centcom/ss220/supply)
@@ -30000,10 +29983,7 @@
 	},
 /area/syndicate_mothership/infteam)
 "yey" = (
-/obj/item/radio/intercom{
-	dir = 8;
-	pixel_x = -28
-	},
+/obj/item/radio/intercom/directional/west,
 /obj/structure/chair/comfy/shuttle{
 	dir = 4
 	},
@@ -57115,7 +57095,7 @@ adJ
 eRG
 sKd
 lJk
-hLI
+itB
 itB
 ycW
 dKw
@@ -57373,7 +57353,7 @@ eRG
 lZs
 itB
 wId
-wId
+cof
 snC
 snC
 uUb
@@ -58422,7 +58402,7 @@ pgS
 pgS
 qIX
 yim
-kko
+utc
 eRG
 uAZ
 pTW
