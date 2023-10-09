@@ -271,13 +271,13 @@
 		cooldown = world.time + 1000
 		user.status_flags |= GODMODE
 		user.invisibility = 40
-		visible_message(span_danger "[user] исчезает из реальности!")
-		to_chat(user, span_cultitalic "Ты чувствуешь чье-то ужасающее присутствие...")
+		visible_message(span_danger ("[user] исчезает из реальности!"))
+		to_chat(user, span_cultitalic ("Ты чувствуешь чье-то ужасающее присутствие..."))
 		SEND_SOUND (user, sound('sound/hallucinations/i_see_you2.ogg'))
 		spawn(60)
 			user.invisibility = 0
 			user.status_flags &= ~GODMODE
-			visible_message(span_danger "[user] возвращается в реальность!")
+			visible_message(span_danger ("[user] возвращается в реальность!"))
 			if(ishuman(user))
 				var/mob/living/carbon/human/H = user
 				H.apply_damage(rand(10, 40), BURN, pick("r_hand"))
@@ -289,5 +289,5 @@
 	..()
 	var/mob/living/carbon/human/H = user
 	if(istype(H) && slot_flags == SLOT_FLAG_GLOVES)
-		to_chat(H, span_danger "[name] туго обвивается вокруг твоего пальца!")
+		to_chat(H, span_danger ("[name] туго обвивается вокруг твоего пальца!"))
 		SEND_SOUND (user, sound('modular_ss220/aesthetics_sounds/sound/creepy/demon2.ogg'))
