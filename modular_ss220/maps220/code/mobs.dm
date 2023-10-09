@@ -612,7 +612,7 @@
 	maxHealth = 500
 	health = 500
 	pixel_x = -16
-	speed = 5
+	speed = 3
 	move_to_delay = 3
 	harm_intent_damage = 10
 	melee_damage_lower = 30
