@@ -1005,6 +1005,10 @@
 "afO" = (
 /turf/simulated/floor/plating/airless,
 /area/space/nearstation)
+"afT" = (
+/obj/effect/decal/warning_stripes/northwestcorner,
+/turf/simulated/floor/plating/airless,
+/area/station/engineering/control)
 "afV" = (
 /obj/machinery/door/firedoor,
 /obj/effect/mapping_helpers/airlock/access/any/security/doors,
@@ -38762,7 +38766,7 @@
 /area/station/engineering/atmos)
 "cXa" = (
 /obj/machinery/camera{
-	c_tag = "Engineering Singularity SouthEast";
+	c_tag = "Engineering Singularity South-East";
 	dir = 8;
 	network = list("SS13","Singularity","Engineering")
 	},
@@ -46570,9 +46574,9 @@
 /area/station/engineering/engine/supermatter)
 "eez" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
 	},
 /obj/structure/cable{
 	d1 = 2;
@@ -57461,7 +57465,7 @@
 /area/station/supply/office)
 "hZR" = (
 /obj/machinery/camera{
-	c_tag = "Engineering Singularity NorthEast";
+	c_tag = "Engineering Singularity North-East";
 	dir = 8;
 	network = list("SS13","Singularity","Engineering")
 	},
@@ -63538,7 +63542,7 @@
 "kxr" = (
 /obj/structure/lattice,
 /obj/machinery/camera{
-	c_tag = "Singularity South-West";
+	c_tag = "Engineering Singularity South-West";
 	dir = 4;
 	network = list("SS13","Singularity","Engineering")
 	},
@@ -68402,7 +68406,7 @@
 "mjO" = (
 /obj/structure/lattice,
 /obj/machinery/camera{
-	c_tag = "Singularity North-West";
+	c_tag = "Engineering Singularity North-West";
 	dir = 4;
 	network = list("SS13","Singularity","Engineering")
 	},
@@ -71744,12 +71748,6 @@
 /obj/effect/spawner/lootdrop/maintenance/eight,
 /turf/simulated/floor/plating,
 /area/station/maintenance/aft)
-"nyH" = (
-/obj/structure/grille,
-/obj/structure/lattice,
-/obj/structure/lattice,
-/turf/space,
-/area/space/nearstation)
 "nyJ" = (
 /obj/effect/spawner/window/reinforced/grilled,
 /obj/machinery/door/poddoor/preopen{
@@ -75927,6 +75925,7 @@
 /area/station/maintenance/asmaint2)
 "oZe" = (
 /obj/structure/lattice,
+/obj/machinery/light/directional/west,
 /turf/space,
 /area/station/engineering/control)
 "oZi" = (
@@ -80597,6 +80596,13 @@
 /obj/effect/landmark/start/coroner,
 /turf/simulated/floor/plating,
 /area/station/medical/morgue)
+"qJO" = (
+/obj/machinery/power/grounding_rod{
+	anchored = 1
+	},
+/obj/effect/decal/warning_stripes/northwest,
+/turf/simulated/floor/plating/airless,
+/area/station/engineering/control)
 "qKa" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -118273,7 +118279,7 @@ aab
 aQU
 dQR
 dQR
-nyH
+alv
 aaa
 aaa
 aaa
@@ -120329,7 +120335,7 @@ uLO
 aab
 cSU
 cSU
-cRA
+sdw
 aab
 aaa
 mjO
@@ -120347,7 +120353,7 @@ aaa
 kxr
 aaa
 aab
-cRA
+dpm
 cSU
 cSU
 aab
@@ -120586,7 +120592,7 @@ cPu
 aab
 cSU
 iIG
-cRA
+dpO
 cPn
 aaa
 cTn
@@ -120603,8 +120609,8 @@ cVB
 cVB
 rDS
 aaa
-cLC
-cRA
+qJO
+afT
 cSU
 cSU
 aab
