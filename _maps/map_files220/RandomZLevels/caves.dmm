@@ -195,12 +195,14 @@
 /area/awaymission/caves/build/reqpower_build)
 "aP" = (
 /obj/machinery/porta_turret{
-	faction = "syndicate"
+	faction = "syndicate";
+	lethal = 1;
+	requires_power = 0
 	},
 /obj/structure/window/reinforced,
 /obj/effect/decal/cleanable/glass,
 /turf/simulated/floor/plating/lavaland_air,
-/area/awaymission/caves/build)
+/area/awaymission/caves)
 "aT" = (
 /obj/structure/spider/stickyweb,
 /obj/structure/spider/cocoon,
@@ -603,7 +605,7 @@
 /turf/simulated/floor/plasteel/lavaland_air{
 	icon_state = "dark"
 	},
-/area/awaymission/caves/build/reqpower_build)
+/area/awaymission/caves)
 "cA" = (
 /obj/effect/decal/cleanable/shreds,
 /obj/effect/spawner/random_spawners/dirt_often,
@@ -3978,7 +3980,9 @@
 	},
 /area/awaymission/caves)
 "tB" = (
-/obj/structure/spirit_board,
+/obj/structure/spirit_board{
+	anchored = 1
+	},
 /obj/effect/decal/cleanable/dust,
 /obj/effect/spawner/random_spawners/blood_often,
 /turf/simulated/floor/engine/cult/lavaland_air{
@@ -4745,8 +4749,8 @@
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/awaymission/caves)
 "xf" = (
-/obj/effect/landmark/damageturf,
-/turf/simulated/floor/plating/lavaland_air,
+/obj/effect/spawner/random_spawners/wall_rusted_probably,
+/turf/simulated/wall/indestructible/riveted,
 /area/awaymission/caves/build/reqpower_build)
 "xg" = (
 /obj/effect/landmark/damageturf,
@@ -7670,6 +7674,7 @@
 "LR" = (
 /obj/machinery/door/airlock/hatch,
 /obj/machinery/atmospherics/pipe/simple/hidden/universal,
+/obj/structure/fans/tiny/invisible,
 /turf/simulated/floor/plating,
 /area/awaymission/caves/build/reqpower_build)
 "LU" = (
@@ -9424,7 +9429,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/caves/build/reqpower_build)
 "Vd" = (
-/obj/effect/baseturf_helper/lava_land/surface,
+/obj/effect/baseturf_helper/asteroid/basalt,
 /turf/simulated/wall/indestructible/rock/mineral,
 /area/awaymission/caves/build/reqpower_build)
 "Vi" = (
@@ -9835,10 +9840,8 @@
 /area/awaymission/caves/build)
 "WX" = (
 /obj/effect/spawner/random_spawners/blood_often,
-/obj/structure/extinguisher_cabinet/empty{
-	pixel_y = -30
-	},
 /obj/effect/spawner/random_spawners/dirt_often,
+/obj/structure/extinguisher_cabinet/directional/south,
 /turf/simulated/floor/plasteel/dark{
 	icon_state = "darkredalt"
 	},
@@ -9947,14 +9950,16 @@
 /area/awaymission/caves)
 "Xx" = (
 /obj/machinery/porta_turret{
-	faction = "syndicate"
+	faction = "syndicate";
+	lethal = 1;
+	requires_power = 0
 	},
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
 	dir = 8
 	},
 /turf/simulated/floor/plating/lavaland_air,
-/area/awaymission/caves/build)
+/area/awaymission/caves)
 "Xy" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -31669,10 +31674,10 @@ LU
 LU
 LU
 LU
-as
-as
-as
-as
+xf
+xf
+xf
+xf
 as
 iu
 Dw
@@ -31901,10 +31906,10 @@ LU
 LU
 LU
 LU
-as
+xf
 RB
 tT
-as
+xf
 as
 eg
 XH
@@ -32133,10 +32138,10 @@ LU
 LU
 LU
 LU
-as
+xf
 qg
 qg
-as
+xf
 tG
 Mu
 yY
@@ -32365,7 +32370,7 @@ LU
 LU
 LU
 LU
-as
+xf
 Ky
 CJ
 DW
@@ -32596,8 +32601,8 @@ TK
 TK
 TK
 TK
-TK
-as
+LU
+xf
 tr
 wx
 as
@@ -32828,11 +32833,11 @@ TK
 TK
 TK
 TK
-TK
-as
-as
-as
-as
+LU
+xf
+xf
+xf
+xf
 ct
 lL
 Py
@@ -33060,11 +33065,11 @@ TK
 TK
 TK
 TK
+LU
 TK
-tf
-tf
-tf
-as
+TK
+TK
+xf
 NL
 fV
 uY
@@ -33292,12 +33297,12 @@ TK
 TK
 TK
 TK
+LU
 TK
-tf
-tf
-tf
-as
-as
+TK
+TK
+xf
+xf
 ci
 UL
 eQ
@@ -33524,16 +33529,16 @@ TK
 TK
 TK
 TK
+LU
 TK
-tf
-xf
-tf
+aV
+TK
 cz
-as
+xf
 Vx
 Vx
 Vx
-as
+xf
 as
 Ol
 ot
@@ -34229,7 +34234,7 @@ dU
 Ez
 BH
 BH
-Ol
+xf
 jy
 tf
 tf
@@ -34461,11 +34466,11 @@ cc
 BH
 BH
 ZJ
-Ol
+xf
 tf
 tf
 tf
-Ol
+as
 tQ
 tf
 tf
@@ -34693,7 +34698,7 @@ vx
 dU
 BH
 ZJ
-Ol
+xf
 tf
 tf
 tQ
@@ -34925,14 +34930,14 @@ aV
 BH
 BH
 BH
-Ol
+xf
 tf
 tf
 jN
-Ol
+as
 aH
 Ik
-Ol
+as
 tf
 tf
 tf
@@ -35157,7 +35162,7 @@ ZC
 dU
 BH
 BH
-Ol
+xf
 tf
 FO
 aH
@@ -35389,7 +35394,7 @@ XF
 dU
 BH
 BH
-Ol
+xf
 FO
 Ik
 tQ
@@ -35621,7 +35626,7 @@ NR
 dU
 BH
 BH
-Ol
+xf
 ZG
 hE
 aH
@@ -35853,14 +35858,14 @@ Om
 XB
 BH
 BH
-Ol
-Ol
+xf
+yW
 Ix
 hE
-Ol
+as
 yW
 tf
-Ol
+as
 tf
 tf
 tf
@@ -36085,14 +36090,14 @@ BH
 BH
 BH
 BH
-Ol
-Ol
-Ol
-Ol
-Ol
+xf
+as
+as
+as
+as
 tf
 tf
-Ol
+as
 tf
 tf
 tf
@@ -36317,10 +36322,10 @@ BH
 BH
 BH
 BH
+lD
 tf
 tf
-tf
-Ol
+as
 aH
 tf
 tf
@@ -36549,7 +36554,7 @@ BH
 BH
 BH
 TK
-tf
+lD
 tf
 Rg
 tf
@@ -36781,7 +36786,7 @@ BH
 BH
 TK
 TK
-tf
+lD
 tf
 tf
 tf
@@ -37013,7 +37018,7 @@ BH
 BH
 TK
 TK
-tf
+lD
 tf
 tf
 tf
@@ -37245,7 +37250,7 @@ BH
 TK
 TK
 TK
-tf
+lD
 tf
 aH
 aH
@@ -37477,7 +37482,7 @@ BH
 BH
 TK
 TK
-tf
+lD
 tf
 Ol
 Ol
@@ -37709,7 +37714,7 @@ BH
 BH
 TK
 TK
-tf
+lD
 ZG
 tf
 TQ
@@ -37941,7 +37946,7 @@ BH
 BH
 TK
 TK
-tf
+lD
 Eu
 tQ
 ra
@@ -38173,7 +38178,7 @@ BH
 BH
 BH
 BH
-as
+xf
 as
 jy
 as
@@ -38405,7 +38410,7 @@ BH
 BH
 BH
 BH
-as
+xf
 tL
 yR
 Rn
@@ -38637,7 +38642,7 @@ BH
 BH
 BH
 BH
-as
+xf
 rs
 yR
 Pf
@@ -38652,10 +38657,10 @@ Yb
 as
 Ph
 we
-as
-as
-as
-as
+xf
+xf
+xf
+xf
 oY
 xi
 oc
@@ -38869,7 +38874,7 @@ BH
 BH
 BH
 BH
-as
+xf
 as
 as
 as
@@ -39101,7 +39106,7 @@ BH
 BH
 BH
 BH
-as
+xf
 AL
 tw
 Rn
@@ -39333,7 +39338,7 @@ BH
 BH
 BH
 BH
-as
+xf
 Cg
 yR
 Pf
@@ -39565,7 +39570,7 @@ BH
 BH
 BH
 BH
-as
+xf
 as
 as
 as
@@ -39580,7 +39585,7 @@ as
 as
 sK
 as
-as
+xf
 BH
 BH
 BH
@@ -39797,7 +39802,7 @@ BH
 BH
 BH
 BH
-as
+xf
 AL
 yR
 JY
@@ -39812,7 +39817,7 @@ as
 LM
 WV
 fm
-as
+xf
 BH
 BH
 BH
@@ -40029,7 +40034,7 @@ BH
 BH
 BH
 BH
-as
+xf
 yG
 qP
 Gq
@@ -40044,7 +40049,7 @@ as
 sn
 Rk
 iM
-as
+xf
 BH
 BH
 BH
@@ -40261,22 +40266,22 @@ BH
 BH
 BH
 BH
-as
-as
-as
-as
+xf
+xf
+xf
+xf
 Ox
 ns
-as
-as
-as
-as
-as
-as
-as
+xf
+xf
+xf
+xf
+xf
+xf
+xf
 Oo
-as
-as
+xf
+xf
 BH
 BH
 BH
@@ -43056,11 +43061,11 @@ BH
 BH
 BH
 BH
-as
-as
+xf
+xf
 Oo
-as
-as
+xf
+xf
 as
 as
 as
@@ -43288,11 +43293,11 @@ BH
 BH
 BH
 BH
-as
+xf
 rX
 bM
 WD
-as
+xf
 TQ
 TQ
 as
@@ -44216,7 +44221,7 @@ BH
 BH
 BH
 BH
-as
+xf
 nG
 yO
 Rk
@@ -44446,11 +44451,11 @@ BH
 BH
 BH
 BH
-as
-as
-as
-as
-as
+xf
+xf
+xf
+xf
+xf
 Tg
 as
 as
@@ -44678,11 +44683,11 @@ BH
 BH
 BH
 BH
-as
+xf
 dI
 XP
 qQ
-as
+xf
 TF
 HC
 as
@@ -44910,11 +44915,11 @@ BH
 BH
 BH
 BH
-as
+xf
 OA
 Rv
 mj
-as
+xf
 Rk
 Rk
 ot
@@ -45142,7 +45147,7 @@ BH
 BH
 BH
 BH
-as
+xf
 Ku
 JJ
 SM
@@ -45374,11 +45379,11 @@ BH
 BH
 BH
 BH
-as
+xf
 Dx
 Ha
 zk
-as
+xf
 Rk
 cK
 as
@@ -45606,24 +45611,24 @@ BH
 BH
 BH
 BH
-as
+xf
 qd
 SX
 lm
-as
+xf
 Yo
 hZ
-as
-as
-as
-as
-as
+xf
+xf
+xf
+xf
+xf
 HL
 ga
-as
-as
-as
-as
+xf
+xf
+xf
+xf
 as
 as
 as
@@ -45838,21 +45843,21 @@ BH
 BH
 BH
 BH
-as
-as
-as
-as
-as
-as
-as
-as
+xf
+xf
+xf
+xf
+xf
+xf
+xf
+xf
 ZJ
 ZJ
 ZJ
-as
-as
-as
-as
+xf
+xf
+xf
+xf
 ZJ
 ZJ
 LU
