@@ -14319,17 +14319,6 @@
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/engineering/atmos)
-"bjb" = (
-/obj/machinery/door_control/shutter/north{
-	id = "stationawaygate";
-	name = "Gateway Shutters Control";
-	req_access_txt = "62"
-	},
-/turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "neutralcorner"
-	},
-/area/station/hallway/primary/central)
 "bjc" = (
 /obj/machinery/power/apc/directional/west,
 /obj/structure/cable{
@@ -34978,17 +34967,6 @@
 	icon_state = "neutralfull"
 	},
 /area/station/hallway/primary/central/nw)
-"cDf" = (
-/obj/machinery/door_control/shutter/east{
-	id = "stationawaygate";
-	name = "Gateway Shutters Control";
-	req_access_txt = "62"
-	},
-/obj/effect/decal/warning_stripes/south,
-/turf/simulated/floor/plasteel{
-	icon_state = "darkblue"
-	},
-/area/station/service/expedition)
 "cDh" = (
 /obj/structure/chair/comfy/teal,
 /obj/effect/landmark/start/doctor,
@@ -83192,6 +83170,22 @@
 /obj/effect/spawner/window/reinforced/grilled,
 /turf/simulated/floor/plating,
 /area/station/medical/medbay2)
+"rbT" = (
+/obj/machinery/door/poddoor/shutters{
+	dir = 2;
+	id_tag = "stationawaygate";
+	name = "Gateway Access Shutters"
+	},
+/obj/effect/decal/warning_stripes/yellow,
+/obj/machinery/door_control/shutter/west{
+	id = "stationawaygate";
+	name = "Gateway Shutters Control";
+	req_access_txt = "62"
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/station/service/expedition)
 "rcs" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -144247,7 +144241,7 @@ cCZ
 cBA
 cCZ
 csV
-bjb
+cFa
 xQr
 bWM
 crx
@@ -144503,7 +144497,7 @@ cyw
 jRl
 ciY
 tFt
-mVV
+rbT
 cFa
 xKv
 bWM
@@ -145016,7 +145010,7 @@ scI
 cyy
 mhU
 iVf
-cDf
+tFt
 mVV
 cFa
 gfZ
