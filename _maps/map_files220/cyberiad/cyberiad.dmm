@@ -20944,6 +20944,15 @@
 	icon_state = "whitepurple"
 	},
 /area/station/science/robotics)
+"bEN" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	d2 = 4;
+	icon_state = "0-4"
+	},
+/obj/machinery/power/tracker,
+/turf/space,
+/area/station/engineering/solar/port)
 "bER" = (
 /obj/effect/landmark/start/scientist,
 /turf/simulated/floor/plasteel{
@@ -53878,6 +53887,15 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /turf/simulated/floor/plating,
 /area/station/maintenance/port)
+"gOw" = (
+/obj/structure/cable,
+/obj/machinery/power/solar{
+	name = "Aft Port Solar Array"
+	},
+/turf/simulated/floor/plasteel/airless{
+	icon_state = "solarpanel"
+	},
+/area/station/engineering/solar/port)
 "gOE" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable{
@@ -79951,7 +79969,6 @@
 /turf/simulated/floor/plasteel,
 /area/station/science/toxins/mixing)
 "qAt" = (
-/obj/machinery/power/tracker,
 /obj/structure/lattice/catwalk,
 /obj/structure/cable{
 	d1 = 4;
@@ -81285,6 +81302,18 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/asmaint)
+"qVU" = (
+/obj/structure/cable{
+	d2 = 2;
+	icon_state = "0-2"
+	},
+/obj/machinery/power/solar{
+	name = "Aft Port Solar Array"
+	},
+/turf/simulated/floor/plasteel/airless{
+	icon_state = "solarpanel"
+	},
+/area/station/engineering/solar/port)
 "qWP" = (
 /obj/machinery/hologram/holopad{
 	pixel_y = 16
@@ -89090,12 +89119,6 @@
 /obj/machinery/light/directional/east,
 /turf/simulated/floor/engine,
 /area/station/science/misc_lab)
-"tVe" = (
-/obj/structure/cable,
-/turf/simulated/floor/plasteel/airless{
-	icon_state = "solarpanel"
-	},
-/area/station/engineering/solar/port)
 "tVq" = (
 /obj/structure/chair/sofa,
 /obj/effect/decal/cleanable/dirt,
@@ -92874,13 +92897,6 @@
 	icon_state = "whiteyellow"
 	},
 /area/station/medical/chemistry)
-"vpx" = (
-/obj/machinery/power/solar{
-	name = "Aft Port Solar Array"
-	},
-/obj/structure/lattice,
-/turf/space,
-/area/space/nearstation)
 "vpE" = (
 /obj/machinery/door/airlock/maintenance,
 /obj/structure/disposalpipe/segment,
@@ -97420,15 +97436,6 @@
 	icon_state = "darkredcorners"
 	},
 /area/station/security/brig)
-"xcs" = (
-/obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2"
-	},
-/turf/simulated/floor/plasteel/airless{
-	icon_state = "solarpanel"
-	},
-/area/station/engineering/solar/port)
 "xcB" = (
 /obj/structure/chair{
 	dir = 8
@@ -113390,7 +113397,7 @@ aaa
 aaa
 alv
 aab
-cNM
+bEN
 aab
 alv
 aaa
@@ -114417,9 +114424,9 @@ aaa
 aaa
 alv
 aab
-xcs
+qVU
 vog
-tVe
+gOw
 aaa
 alv
 alv
@@ -114674,9 +114681,9 @@ aaa
 aaa
 alv
 aab
-fAC
+qVU
 pfI
-mVJ
+gOw
 aaa
 aaa
 aaa
@@ -115193,19 +115200,19 @@ pfI
 mVJ
 aaa
 aaa
-vpx
+aab
 cyO
-vpx
+aab
 aaa
 aaa
-vpx
+aab
 cyO
-vpx
+aab
 aaa
 aaa
-vpx
+aab
 cyO
-vpx
+aab
 aab
 alv
 aaa
@@ -115447,22 +115454,22 @@ alv
 aaa
 fAC
 pfI
-mVJ
+gOw
 aab
 aab
-fAC
+qVU
 vog
-mVJ
+gOw
 aaa
 aaa
-fAC
+qVU
 vog
-mVJ
+gOw
 aaa
 aaa
-fAC
+qVU
 vog
-mVJ
+gOw
 aab
 alv
 aaa
@@ -115704,22 +115711,22 @@ alv
 aab
 fAC
 pfI
-mVJ
+gOw
 aaa
 aaa
-fAC
+qVU
 pfI
-mVJ
+gOw
 aab
 aab
-fAC
+qVU
 pfI
-mVJ
+gOw
 aab
 aab
-fAC
+qVU
 pfI
-mVJ
+gOw
 aab
 alv
 aaa
@@ -115961,22 +115968,22 @@ alv
 aab
 fAC
 pfI
-mVJ
+gOw
 aab
 aab
-fAC
+qVU
 pfI
 mVJ
 aaa
 aaa
-fAC
+qVU
 pfI
-mVJ
+gOw
 aaa
 aaa
-fAC
+qVU
 pfI
-mVJ
+gOw
 aab
 alv
 aaa
@@ -116218,7 +116225,7 @@ alv
 aab
 fAC
 pfI
-mVJ
+gOw
 aaa
 aaa
 fAC
@@ -116228,7 +116235,7 @@ aaa
 aaa
 fAC
 pfI
-mVJ
+gOw
 aaa
 aaa
 fAC
@@ -116475,7 +116482,7 @@ alv
 aab
 fAC
 pfI
-mVJ
+gOw
 aaa
 aaa
 fAC
@@ -116485,7 +116492,7 @@ aaa
 aaa
 fAC
 pfI
-mVJ
+gOw
 aaa
 aaa
 fAC
@@ -116730,19 +116737,19 @@ aaa
 aaa
 aQU
 aaa
-vpx
+aab
 puy
-vpx
 aab
-aab
-fAC
-pfI
-mVJ
 aab
 aab
 fAC
 pfI
 mVJ
+aab
+aab
+fAC
+pfI
+gOw
 aab
 aab
 fAC
@@ -116992,19 +116999,19 @@ cyO
 aab
 aaa
 aaa
-xcs
+qVU
 pfI
-tVe
+gOw
 aaa
 aaa
-xcs
+qVU
 pfI
-tVe
+gOw
 aaa
 aaa
-xcs
+qVU
 pfI
-tVe
+gOw
 aab
 alv
 aaa
