@@ -940,3 +940,4 @@
 /// Called when the MODsuit wearer is unset.
 #define COMSIG_MOD_WEARER_UNSET "mod_wearer_unset"
 
+
