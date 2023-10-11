@@ -8,7 +8,7 @@
 	desc = "Специализированная портативная камера, способная передавать потоковое видео в реальном времени."
 	icon = 'modular_ss220/aesthetics/cameras/icons/cameras.dmi'
 	icon_state = "gopro_camera"
-	slot_flags = SLOT_EARS
+	slot_flags = SLOT_FLAG_EARS
 
 	var/obj/machinery/camera/camera = null
 
