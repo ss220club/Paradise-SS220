@@ -2,7 +2,7 @@
 /obj/machinery/door/poddoor/window_blinds
 	name = "жалюзи"
 	desc = "Довольно крепкие, металлические, автоматизированные жалюзи, устанавливаемые на окнах."
-	icon = 'modular_ss220/objects/icons/blinds.dmi'
+	icon = 'modular_ss220/objects/icons/goonstation/blinds.dmi'
 	icon_state = "middle_closed"
 	layer = NOT_HIGH_OBJ_LAYER
 	closingLayer = NOT_HIGH_OBJ_LAYER
