@@ -1,4 +1,4 @@
-// Middle
+// Core
 /obj/machinery/door/poddoor/window_blinds
 	name = "жалюзи"
 	desc = "Довольно крепкие, металлические, автоматизированные жалюзи, устанавливаемые на окнах."
