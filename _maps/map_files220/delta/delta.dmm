@@ -22638,14 +22638,6 @@
 	},
 /turf/space,
 /area/space/nearstation)
-"bVw" = (
-/obj/machinery/door/airlock/security/glass,
-/obj/machinery/door/poddoor/preopen{
-	id_tag = "Secure Gate";
-	name = "Security Blast Door"
-	},
-/turf/simulated/floor/plasteel/dark,
-/area/space)
 "bVz" = (
 /obj/item/kirbyplants,
 /turf/simulated/floor/plasteel{
@@ -48020,9 +48012,6 @@
 	},
 /turf/simulated/floor/plasteel/white,
 /area/station/science/toxins/mixing)
-"fqI" = (
-/turf/simulated/floor/plating,
-/area/station/security/prisonlockers)
 "fqS" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -51771,6 +51760,13 @@
 	},
 /turf/simulated/floor/carpet,
 /area/station/science/robotics/showroom)
+"gRQ" = (
+/obj/structure/sign/securearea{
+	pixel_y = -32
+	},
+/obj/structure/lattice,
+/turf/space,
+/area/space)
 "gRS" = (
 /turf/simulated/floor/wood/oak,
 /area/station/service/bar/atrium)
@@ -52760,6 +52756,14 @@
 	},
 /turf/simulated/floor/carpet/purple,
 /area/station/hallway/secondary/exit)
+"hlr" = (
+/obj/effect/spawner/window/reinforced/grilled,
+/obj/structure/cable{
+	d2 = 2;
+	icon_state = "0-2"
+	},
+/turf/simulated/floor/plating,
+/area/space)
 "hly" = (
 /obj/structure/chair/stool/bar{
 	dir = 4
@@ -52799,6 +52803,16 @@
 	icon_state = "red"
 	},
 /area/station/security/storage)
+"hnM" = (
+/obj/docking_port/stationary{
+	dwidth = 2;
+	height = 5;
+	id = "laborcamp_home";
+	name = "fore bay 1";
+	width = 9
+	},
+/turf/space,
+/area/space)
 "hoh" = (
 /obj/structure/closet,
 /obj/machinery/door/window/reinforced/normal{
@@ -53238,6 +53252,14 @@
 	},
 /turf/simulated/floor/wood/oak,
 /area/station/maintenance/apmaint)
+"hyI" = (
+/obj/machinery/door/airlock/maintenance,
+/obj/machinery/door/poddoor/preopen{
+	id_tag = "Prison Gate";
+	name = "Prison Lockdown Blast Doors"
+	},
+/turf/simulated/floor/plating,
+/area/station/security/permabrig)
 "hyS" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
@@ -60533,6 +60555,13 @@
 	icon_state = "neutral"
 	},
 /area/station/maintenance/fore)
+"ktn" = (
+/obj/structure/sign/securearea{
+	pixel_x = 32
+	},
+/obj/structure/lattice,
+/turf/space,
+/area/space)
 "ktr" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 5
@@ -64762,6 +64791,9 @@
 	icon_state = "hydrofloor"
 	},
 /area/station/public/toilet)
+"mgf" = (
+/turf/space,
+/area/station/security/permabrig)
 "mgl" = (
 /obj/effect/decal/warning_stripes/southeast,
 /obj/machinery/atmospherics/pipe/manifold/visible,
@@ -68239,11 +68271,6 @@
 	icon_state = "cmo"
 	},
 /area/station/medical/break_room)
-"nEs" = (
-/obj/structure/lattice,
-/obj/structure/lattice,
-/turf/space,
-/area/space)
 "nEM" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -68780,17 +68807,6 @@
 	},
 /turf/simulated/floor/plating/airless,
 /area/station/medical/virology/lab)
-"nNg" = (
-/obj/docking_port/stationary{
-	dwidth = 2;
-	height = 5;
-	id = "laborcamp_home";
-	name = "fore bay 1";
-	width = 9;
-	dir = 4
-	},
-/turf/space,
-/area/space)
 "nNu" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -70875,6 +70891,19 @@
 	},
 /turf/simulated/floor/carpet/arcade,
 /area/station/public/arcade)
+"oFN" = (
+/obj/machinery/door/airlock/external{
+	id_tag = "laborcamp_home";
+	locked = 1;
+	name = "Labor Camp Airlock"
+	},
+/obj/structure/fans/tiny,
+/obj/effect/mapping_helpers/airlock/unres{
+	dir = 1
+	},
+/obj/effect/mapping_helpers/airlock/access/any/security/brig,
+/turf/simulated/floor/plating,
+/area/space)
 "oFY" = (
 /obj/machinery/newscaster/directional/south,
 /obj/structure/chair/comfy/red{
@@ -71195,10 +71224,6 @@
 /obj/item/clothing/accessory/holster,
 /turf/simulated/floor/plasteel/dark,
 /area/station/security/storage)
-"oNK" = (
-/obj/structure/closet/wardrobe/orange/prison,
-/turf/simulated/floor/plasteel,
-/area/station/security/prisonlockers)
 "oNR" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -74428,10 +74453,6 @@
 	icon_state = "blue"
 	},
 /area/station/engineering/atmos)
-"qbe" = (
-/obj/structure/closet/secure_closet/brig,
-/turf/simulated/floor/plasteel,
-/area/station/security/prisonlockers)
 "qbl" = (
 /obj/effect/decal/warning_stripes/yellow/hollow,
 /obj/structure/cable{
@@ -75894,10 +75915,6 @@
 	icon_state = "purple"
 	},
 /area/station/supply/storage)
-"qJF" = (
-/obj/machinery/door/airlock/security/glass,
-/turf/simulated/floor/plasteel,
-/area/space)
 "qJJ" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -83678,6 +83695,16 @@
 "tTJ" = (
 /obj/structure/window/reinforced,
 /turf/simulated/floor/plasteel,
+/area/space)
+"tTZ" = (
+/obj/machinery/door/airlock/external{
+	id_tag = "laborcamp_home";
+	locked = 1;
+	name = "Labor Camp Airlock"
+	},
+/obj/structure/fans/tiny,
+/obj/effect/mapping_helpers/airlock/access/any/security/brig,
+/turf/simulated/floor/plating,
 /area/space)
 "tUs" = (
 /obj/structure/cable{
@@ -92034,14 +92061,6 @@
 /obj/structure/shuttle/engine/propulsion/burst,
 /turf/simulated/wall/mineral/titanium,
 /area/shuttle/pod_2)
-"xCF" = (
-/obj/machinery/door/airlock/maintenance,
-/obj/machinery/door/poddoor/preopen{
-	id_tag = "Prison Gate";
-	name = "Prison Lockdown Blast Doors"
-	},
-/turf/simulated/floor/plating,
-/area/station/maintenance/fpmaint)
 "xDo" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -92098,9 +92117,6 @@
 /obj/structure/flora/grass/jungle,
 /turf/simulated/floor/grass/no_creep,
 /area/station/hallway/secondary/exit)
-"xEq" = (
-/turf/simulated/wall,
-/area/station/maintenance/fpmaint)
 "xEC" = (
 /turf/simulated/floor/plasteel{
 	icon_state = "redfull"
@@ -92283,12 +92299,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/light/blue,
 /area/station/maintenance/old_kitchen)
-"xIo" = (
-/turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "redcorner"
-	},
-/area/space)
 "xIG" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
@@ -150011,7 +150021,7 @@ rkU
 rkU
 rkU
 aaa
-rkU
+aaa
 aaa
 cbA
 boI
@@ -150264,7 +150274,7 @@ aaa
 aaa
 aaa
 aaa
-aaa
+rkU
 aaa
 rkU
 rkU
@@ -150521,9 +150531,9 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
 rkU
+aaa
+aaa
 rkU
 aaa
 aaa
@@ -150777,8 +150787,8 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
+rkU
+rkU
 aaa
 aaa
 rkU
@@ -151034,13 +151044,13 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
+rkU
 aaa
 aaa
 aaa
 rkU
-rkU
+aaa
+aaa
 cbA
 jou
 ykk
@@ -151291,13 +151301,13 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+pDi
 rkU
+rkU
+rkU
+pDi
+pDi
+ktn
 cbA
 aym
 hWP
@@ -151548,13 +151558,13 @@ aaa
 aaa
 aaa
 aaa
+pDi
 aaa
 aaa
 aaa
 aaa
 aaa
-aaa
-rkU
+cbA
 cbA
 cbA
 cbA
@@ -151805,20 +151815,20 @@ aaa
 aaa
 aaa
 aaa
+pDi
 aaa
 aaa
 aaa
 aaa
 aaa
-aaa
-rkU
-rkU
-czd
-fqI
-fqI
-fqI
+cbA
+cmD
+kDi
+kDi
 czd
 kDi
+kDi
+czd
 kDi
 kDi
 kDi
@@ -151838,9 +151848,9 @@ caT
 caT
 caT
 nSd
-xBA
-qJF
-xBA
+cbA
+cbA
+cbA
 cbA
 fhF
 fhF
@@ -152062,20 +152072,20 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
 rkU
-czd
-fqI
-fqI
-fqI
-fhA
+aaa
+aaa
+aaa
+aaa
+hnM
+oFN
+cmD
 kDi
+kDi
+czd
+kDi
+kDi
+czd
 kDi
 kDi
 kDi
@@ -152095,9 +152105,9 @@ tRH
 sYC
 idf
 nSd
-nZo
-cmD
-mqG
+aaa
+aaa
+aaa
 cbA
 fhF
 fhF
@@ -152319,20 +152329,20 @@ aaa
 aaa
 aaa
 aaa
+pDi
 aaa
 aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-rkU
+hlr
+cmD
+kDi
+kDi
 czd
-fqI
-fqI
-fqI
 czd
-qbe
+czd
+czd
 kDi
 kDi
 kDi
@@ -152352,9 +152362,9 @@ rLx
 rLx
 rLx
 caT
-nZo
-cmD
-mqG
+aaa
+aaa
+aaa
 cbA
 fhF
 fhF
@@ -152576,20 +152586,20 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
 rkU
-czd
-czd
-czd
-czd
-czd
-qbe
+aaa
+aaa
+aaa
+aaa
+aaa
+cbA
+cmD
+kDi
+kDi
+kDi
+kDi
+kDi
+kDi
 kDi
 kDi
 kDi
@@ -152609,9 +152619,9 @@ rLx
 rLx
 oVL
 caT
-nZo
-cmD
-mqG
+aaa
+aaa
+aaa
 cbA
 cbA
 cbA
@@ -152833,20 +152843,20 @@ aaa
 aaa
 aaa
 aaa
+pDi
 aaa
 aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-rkU
-czd
-fqI
-fqI
-fqI
-czd
-qbe
+hlr
+cmD
+kDi
+kDi
+kDi
+kDi
+kDi
+kDi
 kDi
 kDi
 kDi
@@ -152866,15 +152876,15 @@ rLx
 rLx
 rLx
 caT
-nZo
-cmD
-xIo
-ceF
-ceF
-ceF
-nlB
-cbA
-rkU
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
 aaa
 aaa
 aaa
@@ -153090,20 +153100,20 @@ aaa
 aaa
 aaa
 aaa
+pDi
 aaa
 aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-rkU
-czd
-fqI
-fqI
-fqI
-fhA
+tTZ
+cmD
 kDi
+kDi
+czd
+czd
+czd
+czd
 kDi
 kDi
 kDi
@@ -153123,15 +153133,15 @@ jiB
 jKJ
 yaq
 nSd
-nZo
-cmD
-cmD
-cmD
-cmD
-cmD
-mqG
-cbA
-pDi
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
 aaa
 aaa
 aaa
@@ -153347,20 +153357,20 @@ aaa
 aaa
 aaa
 aaa
+pDi
 aaa
 aaa
 aaa
 aaa
 aaa
-aaa
-rkU
-rkU
-czd
-fqI
-fqI
-fqI
+cbA
+cmD
+kDi
+kDi
 czd
 kDi
+kDi
+czd
 kDi
 kDi
 kDi
@@ -153380,15 +153390,15 @@ nSd
 caT
 nSd
 nSd
-boI
-sMh
-sMh
-sMh
-sMh
-sMh
-fwk
-cbA
-pDi
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
 aaa
 aaa
 aaa
@@ -153604,20 +153614,20 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
 rkU
+aaa
+aaa
+aaa
+aaa
+aaa
+cbA
+kDi
+kDi
+kDi
 czd
+kDi
+kDi
 czd
-czd
-czd
-czd
-czd
-oNK
 kDi
 kDi
 kDi
@@ -153635,17 +153645,17 @@ riK
 tpg
 aaa
 aaa
-rkU
-cbA
-cbA
-bVw
-ojg
-cbA
-ojg
-bVw
-cbA
-cbA
-rkU
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
 aaa
 aaa
 aaa
@@ -153861,25 +153871,25 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
 rkU
+rkU
+pDi
+pDi
+gRQ
+cbA
+cbA
 oyw
-rTo
-rTo
-rTo
-rTo
+oyw
+oyw
+oyw
+oyw
 oyw
 eoX
 kDi
 kDi
-qbe
-qbe
-qbe
+kDi
+kDi
+kDi
 kDi
 kDi
 czd
@@ -153892,17 +153902,17 @@ riK
 tpg
 aaa
 aaa
-rkU
-aaa
-aaa
-nNg
 aaa
 aaa
 aaa
 aaa
 aaa
 aaa
-rkU
+aaa
+aaa
+aaa
+aaa
+aaa
 aaa
 aaa
 aaa
@@ -154119,18 +154129,18 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
 rkU
 rkU
+aaa
+aaa
+aaa
+aaa
 oyw
 rTo
 rTo
 rTo
 rTo
-rTo
+oyw
 eoX
 eoX
 son
@@ -154149,7 +154159,6 @@ riK
 tpg
 aaa
 aaa
-rkU
 aaa
 aaa
 aaa
@@ -154159,7 +154168,8 @@ aaa
 aaa
 aaa
 aaa
-pDi
+aaa
+aaa
 aaa
 aaa
 aaa
@@ -154377,17 +154387,17 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
 rkU
-eoX
+rkU
+aaa
+aaa
+mgf
 oyw
-xEq
-xEq
-xEq
-xCF
-xEq
+rTo
+rTo
+rTo
+rTo
+rTo
 eoX
 pQq
 pQq
@@ -154406,7 +154416,6 @@ eoX
 eoX
 rkU
 rkU
-pDi
 aaa
 aaa
 aaa
@@ -154416,7 +154425,8 @@ aaa
 aaa
 aaa
 aaa
-rkU
+aaa
+aaa
 aaa
 aaa
 aaa
@@ -154635,16 +154645,16 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
+rkU
+rkU
 rkU
 eoX
-pQq
-pQq
-pQq
-pQq
-pQq
-pQq
+eoX
+rRb
+rRb
+rRb
+hyI
+rRb
 eoX
 pQq
 pQq
@@ -154663,7 +154673,6 @@ pQq
 eoX
 aaa
 rkU
-nEs
 aaa
 aaa
 aaa
@@ -154673,7 +154682,8 @@ aaa
 aaa
 aaa
 aaa
-rkU
+aaa
+aaa
 aaa
 aaa
 aaa
@@ -154893,7 +154903,7 @@ aaa
 aaa
 aaa
 aaa
-aaa
+rkU
 rkU
 qYP
 pQq
@@ -154920,7 +154930,6 @@ pQq
 qYP
 aaa
 aaa
-pDi
 aaa
 aaa
 aaa
@@ -154930,7 +154939,8 @@ aaa
 aaa
 aaa
 aaa
-rkU
+aaa
+aaa
 aaa
 aaa
 aaa
@@ -155177,17 +155187,17 @@ pQq
 qYP
 aaa
 aaa
-pDi
-rkU
-rkU
-cbA
-pDi
-pDi
-rkU
-cbA
-rkU
-rkU
-pDi
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
 aaa
 aaa
 aaa
