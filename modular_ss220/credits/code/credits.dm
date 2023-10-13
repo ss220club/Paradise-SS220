@@ -105,16 +105,16 @@ GLOBAL_LIST(end_titles)
 	possible_titles += "[pick("ПОВОРОТ НЕ ТУДА", "ОХОТА ЗА ЗЕЛЕНОЙ \"КОЛБАСКОЙ\"", "ЧУЖОЙ ПРОТИВ ТОРГОВОГО АВТОМАТА", "КОСМИЧЕСКИЕ ДАЛЬНОБОЙЩИКИ")]"
 	titles += "<center><h1>EPISODE [GLOB.round_id]<br>[pick(possible_titles)]<h1></h1></h1></center>"
 
-	for(var/mob/living/carbon/human/H in GLOB.alive_mob_list | GLOB.dead_mob_list)
-		if(findtext(H.real_name,"(mannequin)"))
+	for(var/mob/living/carbon/human/human in GLOB.alive_mob_list | GLOB.dead_mob_list)
+		if(findtext(human.real_name,"(mannequin)"))
 			continue
-		if(ismonkeybasic(H))
+		if(ismonkeybasic(human))
 			continue
-		if(H.last_known_ckey == null) //don't mention these losers (prespawned corpses mostly)
+		if(human.last_known_ckey == null)
 			continue
 		if(!length(cast) && !chunksize)
 			chunk += "В съемках участвовали:"
-		chunk += "[H.real_name] в роли [uppertext(H.job)]"
+		chunk += "[human.real_name] в роли [uppertext(human.job)]"
 		chunksize++
 		if(chunksize > 2)
 			cast += "<center>[jointext(chunk,"<br>")]</center>"
@@ -127,11 +127,11 @@ GLOBAL_LIST(end_titles)
 
 	var/list/corpses = list()
 
-	for(var/mob/living/carbon/human/H in GLOB.dead_mob_list)
-		if(H.last_known_ckey == null) //no prespawned corpses
+	for(var/mob/living/carbon/human/human in GLOB.dead_mob_list)
+		if(human.last_known_ckey == null)
 			continue
-		else if(H.real_name)
-			corpses += H.real_name
+		else if(human.real_name)
+			corpses += human.real_name
 
 	if(length(corpses))
 		titles += "<center>Основано на реальных событиях<br>В память о [english_list(corpses)].</center>"
@@ -139,14 +139,14 @@ GLOBAL_LIST(end_titles)
 	var/list/staff = list("Съемочная группа:")
 	var/list/staffjobs = list("Носильщик кофе", "Оператор", "Надоедливый крикун", "Ответсвенный за лопату", "Хореограф", "Исторический консультант", "Дизайнер костюмов", "Главный редактор", "Исполнительный директор")
 	var/list/goodboys = list()
-	for(var/client/C)
-		if(!C.holder)
+	for(var/client/client)
+		if(!client.holder)
 			continue
 
-		if(C.holder.rights & (R_DEBUG|R_ADMIN|R_MOD))
-			staff += "[uppertext(pick(staffjobs))] - '[C.key]'"
-		else if(C.holder.rights & R_MENTOR)
-			goodboys += "[C.key]"
+		if(client.holder.rights & (R_DEBUG|R_ADMIN|R_MOD))
+			staff += "[uppertext(pick(staffjobs))] - '[client.key]'"
+		else if(client.holder.rights & R_MENTOR)
+			goodboys += "[client.key]"
 
 	titles += "<center>[jointext(staff,"<br>")]</center>"
 	if(length(goodboys))
