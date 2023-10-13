@@ -3273,7 +3273,7 @@
 	},
 /area/station/security/prison/cell_block/A)
 "aoX" = (
-/obj/structure/bed,
+/obj/structure/bed/mattress,
 /obj/machinery/camera{
 	c_tag = "Brig Cell 3"
 	},
@@ -5184,6 +5184,9 @@
 /area/station/maintenance/fpmaint)
 "avE" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/mattress/dirty{
+	dir = 1
+	},
 /obj/item/stack/cable_coil/random,
 /mob/living/simple_animal/mouse/white,
 /turf/simulated/floor/plating,
@@ -7316,7 +7319,7 @@
 	},
 /area/station/security/prison/cell_block/A)
 "aCs" = (
-/obj/structure/bed,
+/obj/structure/bed/mattress,
 /obj/machinery/flasher{
 	id = "Cell 4";
 	pixel_y = -28
@@ -7343,7 +7346,7 @@
 /turf/simulated/floor/plating,
 /area/station/command/meeting_room)
 "aCw" = (
-/obj/structure/bed,
+/obj/structure/bed/mattress/dirty,
 /obj/machinery/flasher{
 	id = "Cell 5";
 	pixel_y = -28
@@ -51813,6 +51816,13 @@
 	icon_state = "freezerfloor"
 	},
 /area/station/public/toilet/lockerroom)
+"gdX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/mattress/dirty{
+	dir = 1
+	},
+/turf/simulated/floor/plasteel,
+/area/station/maintenance/port)
 "geb" = (
 /obj/item/radio/intercom/directional/south,
 /turf/simulated/floor/plasteel{
@@ -67592,9 +67602,11 @@
 	},
 /area/station/turret_protected/ai_upload)
 "lXg" = (
-/obj/machinery/atmospherics/binary/volume_pump/on{
+/obj/machinery/atmospherics/binary/pump{
 	dir = 1;
-	name = "Air To Distro"
+	name = "Air to Station";
+	on = 1;
+	target_pressure = 303
 	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
@@ -71479,10 +71491,7 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/aft)
 "ntg" = (
-/mob/living/simple_animal/hostile/retaliate/goat{
-	name = "Pete";
-	real_name = "Pete"
-	},
+/mob/living/simple_animal/hostile/retaliate/goat/chef,
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
@@ -71854,8 +71863,7 @@
 	},
 /area/station/hallway/secondary/exit)
 "nAy" = (
-/obj/structure/bed,
-/obj/item/bedsheet/orange,
+/obj/structure/bed/mattress/dirty,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/station/maintenance/aft)
@@ -81412,10 +81420,9 @@
 	},
 /area/station/medical/reception)
 "qYy" = (
-/obj/machinery/atmospherics/binary/volume_pump/on{
-	dir = 1;
-	name = "Distro to Waste";
-	on = 0
+/obj/machinery/atmospherics/binary/pump{
+	name = "Air to Waste";
+	target_pressure = 101
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -82087,8 +82094,9 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/storage)
 "rmH" = (
-/obj/structure/bed,
+/obj/structure/bed/mattress,
 /obj/effect/decal/cleanable/dirt,
+/obj/item/bedsheet/blue,
 /turf/simulated/floor/plating,
 /area/station/maintenance/aft)
 "rmI" = (
@@ -115412,7 +115420,7 @@ aaa
 blQ
 bNP
 bCs
-svp
+gdX
 brF
 blQ
 aaa
