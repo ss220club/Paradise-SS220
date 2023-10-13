@@ -96,16 +96,14 @@ GLOBAL_LIST(end_titles)
 	var/list/possible_titles = list()
 	var/chunksize = 0
 		/* Establish a big-ass list of potential titles for the "episode". */
-	possible_titles += "THE [pick("DOWNFALL OF ", "RISE OF ", "TROUBLE WITH ", "FINAL STAND OF ", "DARK SIDE OF ", "DESOLATION OF ", "DESTRUCTION OF ", "CRISIS OF ")]\
-						[pick("SPACEMEN", "HUMANITY", "DIGNITY", "SANITY", "THE CHIMPANZEES", "THE VENDOMAT PRICES", "GIANT ARMORED", "THE GAS JANITOR",\
-						"THE SUPERMATTER CRYSTAL", "MEDICAL", "ENGINEERING", "SECURITY", "RESEARCH", "THE SERVICE DEPARTMENT", "COMMAND", "THE EXPLORERS", "THE PATHFINDER")]"
-	possible_titles += "THE CREW GETS [pick("RACIST", "PICKLED", "AN INCURABLE DISEASE", "PIZZA", "A VALUABLE HISTORY LESSON", "A BREAK", "HIGH", "TO LIVE", "TO RELIVE THEIR CHILDHOOD", "EMBROILED IN CIVIL WAR", "A BAD HANGOVER", "SERIOUS ABOUT [pick("DRUG ABUSE", "CRIME", "PRODUCTIVITY", "ANCIENT AMERICAN CARTOONS", "SPACEBALL", "DECOMPRESSION PROCEDURES")]")]"
-	possible_titles += "THE CREW LEARNS ABOUT [pick("LOVE", "DRUGS", "THE DANGERS OF MONEY LAUNDERING", "XENIC SENSITIVITY", "INVESTMENT FRAUD", "KELOTANE ABUSE", "RADIATION PROTECTION", "SACRED GEOMETRY", "STRING THEORY", "ABSTRACT MATHEMATICS", "[pick("UNATHI", "SKRELLIAN", "DIONAN", "KHAARMANI", "VOX", "SERPENTID")] MATING RITUALS", "ANCIENT CHINESE MEDICINE")]"
-	possible_titles += "A VERY [pick("CORPORATE", "NANOTRASEN", "FLEET", "HAPHAESTUS", "DAIS", "XENOLIFE", "EXPEDITIONARY", "DIONA", "PHORON", "MARTIAN", "SERPENTID")] [pick("CHRISTMAS", "EASTER", "HOLIDAY", "WEEKEND", "THURSDAY", "VACATION")]"
-	possible_titles += "[pick("GUNS, GUNS EVERYWHERE", "THE LITTLEST ARMALIS", "WHAT HAPPENS WHEN YOU MIX MAINTENANCE DRONES AND COMMERCIAL-GRADE PACKING FOAM", "ATTACK! ATTACK! ATTACK!", "SEX BOMB", "THE LEGEND OF THE ALIEN ARTIFACT: PART [pick("I","II","III","IV","V","VI","VII","VIII","IX", "X", "C","M","L")]")]"
-	possible_titles += "[pick("SPACE", "SEXY", "DRAGON", "WARLOCK", "LAUNDRY", "GUN", "ADVERTISING", "DOG", "CARBON MONOXIDE", "NINJA", "WIZARD", "SOCRATIC", "JUVENILE DELIQUENCY", "POLITICALLY MOTIVATED", "RADTACULAR SICKNASTY")] [pick("QUEST", "FORCE", "ADVENTURE")]"
-	possible_titles += "[pick("THE DAY STOOD STILL", "HUNT FOR THE GREEN WEENIE", "ALIEN VS VENDOMAT", "SPACE TRACK")]"
-	titles += "<center><h1>EPISODE [rand(1,1000)]<br>[pick(possible_titles)]<h1></h1></h1></center>"
+	possible_titles += "[pick("ПАДЕНИЕ", "ВОСТАНИЕ", "ПРОБЛЕМЫ", "ПОСЛЕДНЯЯ БИТВА", "ТЕМНАЯ СТОРОНА", "ОПУСТОШЕНИЕ", "УНИЧТОЖЕНИЕ", "КРИЗИС")]\
+						[pick("КОСМОНАВТОВ", "ЧЕЛОВЕЧЕСТВА", "ДОСТОИНСТВА", "РАЗУМА", "ШИМПАНЗЕ", "ТОРГОВЫХ АВТОМАТОВ",\
+						"КРИСТАЛА СУПЕРМАТЕРИИ", "МЕДБЕЯ", "ИНЖЕНЕРНОГО ОТДЕЛА", "СЛУЖБЫ БЕЗОПАСНОТИ", "ОТДЕЛА ИССЛЕДОВАНИЯ", "ДЕПАРТАМЕНТА СЕРВИСА", "КОМАНДНОГО ОТДЕЛА", "ИССЛЕДОВАТЕЛЕЙ")]"
+	possible_titles += "ЭКИПАЖ УЗНАЕТ О [pick("ЛЮБВИ", "НАРКОТИКАХ", "ОПАСНОСТИ УХОДА ОТ НАЛОГОВ", "ЧУВСТВИТЕЛЬНОСТИ КСЕНОСОВ", "МОШЕННИКАХ", "КРУТЕНИИ", "ЗАЩИТЕ ОТ РАДИЦИИ", "САКРАЛЬНОЙ ГЕОМЕТРИИ", "ТЕОРИИ СТРУН", "АБСТРАКТНОЙ МАТЕМАТИКЕ", "БРАЧНЫХ РИТУАЛАХ [pick("УНАТХОВ", "СКРЕЛЛОВ", "ДИОН", "ВУЛЬП", "ВОКСОВ", "БИПСКИ")]", "СИЛЕ ЗЕМЛИ")]"
+	possible_titles += "[pick("ПУШКИ! ПОВСЮДУ ПУШКИ!", "МАЛЕНЬКИЙ ВОКСИК", "ЧТО ПРОИСХОДИТ КОГДА БОХ ПОПАДАЕТ В ДРУГОЙ БОХ", "БЕЙ! БЕЙ! БЕЙ!", "СЕКС БОМБА", "ЛЕГЕНДА О ДРЕВНЕМ АРТЕФАКТЕ: ЧАСТЬ [pick("I","II","III","IV","V","VI","VII","VIII","IX", "X", "C","M","L")]")]"
+	possible_titles += "[pick("КОСМИЧЕСКОЕ", "СЕКСУАЛЬНОЕ", "ДРАКОНЬЕ", "КОЛДУНСКОЕ", "ПРАЧЕЧНОЕ", "ОРУЖЕЙНОЕ", "РЕКЛАМИРУЮЩЕЕ", "СОБАЧЬЕ", "УГАРНОЕ", "ЧАРОДЕЙСКОЕ", "ПОЛИТИЧЕСКОЕ")] [pick("ЗАДАНИЕ", "ПРЕДЛОЖЕНИЕ", "ПРИКЛЮЧЕНИЕ")]"
+	possible_titles += "[pick("ПОВОРОТ НЕ ТУДА", "ОХОТА ЗА ЗЕЛЕНОЙ \"КОЛБАСКОЙ\"", "ЧУЖОЙ ПРОТИВ ТОРГОВОГО АВТОМАТА", "КОСМИЧЕСКИЕ ДАЛЬНОБОЙЩИКИ")]"
+	titles += "<center><h1>EPISODE [GLOB.round_id]<br>[pick(possible_titles)]<h1></h1></h1></center>"
 
 	for(var/mob/living/carbon/human/H in GLOB.alive_mob_list | GLOB.dead_mob_list)
 		if(findtext(H.real_name,"(mannequin)"))
