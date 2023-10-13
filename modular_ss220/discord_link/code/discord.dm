@@ -1,6 +1,14 @@
 /datum/preferences
 	var/discord_id
 
+/datum/configuration_section/ss220_misc_configuration
+	/// Force discord verification
+	var/force_discord_verification = FALSE
+
+/datum/configuration_section/ss220_misc_configuration/load_data(list/data)
+	. = ..()
+	CONFIG_LOAD_BOOL(force_discord_verification, data["force_discord_verification"])
+
 /client/verb/link_discord_account()
 	set name = "Привязка Discord"
 	set category = "Special Verbs"
@@ -13,7 +21,7 @@
 		to_chat(usr, "Гостевой аккаунт не может быть связан.")
 		return
 
-	if(prefs.discord_id || prefs.get_discord_id())
+	if(prefs.get_discord_id() && prefs.discord_id)
 		to_chat(usr, span_darkmblue("Аккаунт Discord уже привязан!"))
 		return
 
@@ -43,7 +51,7 @@
 		return
 
 	if(href_list["observe"] || href_list["ready"] || href_list["late_join"])
-		if (GLOB.configuration.database.enabled && !(client.prefs.discord_id || client.prefs.get_discord_id()))
+		if (GLOB.configuration.database.enabled && GLOB.configuration.ss220_misc.force_discord_verification && !(client.prefs.discord_id || client.prefs.get_discord_id()))
 			to_chat(usr, span_danger("Вам необходимо привязать дискорд-профиль к аккаунту!"))
 			to_chat(usr, span_warning("Нажмите 'Привязка Discord' во вкладке 'Special Verbs' для получения инструкций."))
 			return FALSE
@@ -51,11 +59,14 @@
 	. = ..()
 
 /datum/preferences/proc/get_discord_id()
+	. = TRUE
+	if(discord_id)
+		return
+
 	var/datum/db_query/discord_query = SSdbcore.NewQuery("SELECT discord_id, valid FROM discord_links WHERE ckey=:ckey", list(
 			"ckey" = parent.ckey
 		))
 
-	. = FALSE
 	if(!discord_query.warn_execute())
 		qdel(discord_query)
 		return FALSE
@@ -64,8 +75,6 @@
 		var/valid = discord_query.item[2]
 		if(valid)
 			discord_id = discord_query.item[1]
-			qdel(discord_query)
-			return TRUE
 
 	qdel(discord_query)
 
