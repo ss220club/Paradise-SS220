@@ -4,6 +4,7 @@
 #define CREDIT_EASE_DURATION 22
 
 GLOBAL_LIST(end_titles)
+GLOBAL_VAR_INIT(title_music, pick(file2list("config/credits/sounds/title_music.txt")))
 
 /client/var/list/credits
 
@@ -17,9 +18,8 @@ GLOBAL_LIST(end_titles)
 
 	if(mob)
 		mob.overlay_fullscreen("black",/obj/screen/fullscreen/black)
+		SEND_SOUND(src, sound(GLOB.title_music, repeat = 0, wait = 0, volume = 85 * prefs.get_channel_volume(CHANNEL_LOBBYMUSIC), channel = CHANNEL_LOBBYMUSIC))
 
-		if(prefs.sound & SOUND_LOBBY)
-			SEND_SOUND(src, sound(SSticker.login_music, repeat = 0, wait = 0, volume = 85 * prefs.get_channel_volume(CHANNEL_LOBBYMUSIC), channel = CHANNEL_LOBBYMUSIC))
 	sleep(50)
 	var/list/_credits = credits
 	verbs += /client/proc/ClearCredits
@@ -93,17 +93,23 @@ GLOBAL_LIST(end_titles)
 	var/list/titles = list()
 	var/list/cast = list()
 	var/list/chunk = list()
-	var/list/possible_titles = list()
+	var/list/streamers = list()
 	var/chunksize = 0
-		/* Establish a big-ass list of potential titles for the "episode". */
-	possible_titles += "[pick("ПАДЕНИЕ", "ВОСТАНИЕ", "ПРОБЛЕМЫ", "ПОСЛЕДНЯЯ БИТВА", "ТЕМНАЯ СТОРОНА", "ОПУСТОШЕНИЕ", "УНИЧТОЖЕНИЕ", "КРИЗИС")]\
-						[pick("КОСМОНАВТОВ", "ЧЕЛОВЕЧЕСТВА", "ДОСТОИНСТВА", "РАЗУМА", "ШИМПАНЗЕ", "ТОРГОВЫХ АВТОМАТОВ",\
-						"КРИСТАЛА СУПЕРМАТЕРИИ", "МЕДБЕЯ", "ИНЖЕНЕРНОГО ОТДЕЛА", "СЛУЖБЫ БЕЗОПАСНОТИ", "ОТДЕЛА ИССЛЕДОВАНИЯ", "ДЕПАРТАМЕНТА СЕРВИСА", "КОМАНДНОГО ОТДЕЛА", "ИССЛЕДОВАТЕЛЕЙ")]"
-	possible_titles += "ЭКИПАЖ УЗНАЕТ О [pick("ЛЮБВИ", "НАРКОТИКАХ", "ОПАСНОСТИ УХОДА ОТ НАЛОГОВ", "ЧУВСТВИТЕЛЬНОСТИ КСЕНОСОВ", "МОШЕННИКАХ", "КРУТЕНИИ", "ЗАЩИТЕ ОТ РАДИЦИИ", "САКРАЛЬНОЙ ГЕОМЕТРИИ", "ТЕОРИИ СТРУН", "АБСТРАКТНОЙ МАТЕМАТИКЕ", "БРАЧНЫХ РИТУАЛАХ [pick("УНАТХОВ", "СКРЕЛЛОВ", "ДИОН", "ВУЛЬП", "ВОКСОВ", "БИПСКИ")]", "СИЛЕ ЗЕМЛИ")]"
-	possible_titles += "[pick("ПУШКИ! ПОВСЮДУ ПУШКИ!", "МАЛЕНЬКИЙ ВОКСИК", "ЧТО ПРОИСХОДИТ КОГДА БОХ ПОПАДАЕТ В ДРУГОЙ БОХ", "БЕЙ! БЕЙ! БЕЙ!", "СЕКС БОМБА", "ЛЕГЕНДА О ДРЕВНЕМ АРТЕФАКТЕ: ЧАСТЬ [pick("I","II","III","IV","V","VI","VII","VIII","IX", "X", "C","M","L")]")]"
-	possible_titles += "[pick("КОСМИЧЕСКОЕ", "СЕКСУАЛЬНОЕ", "ДРАКОНЬЕ", "КОЛДУНСКОЕ", "ПРАЧЕЧНОЕ", "ОРУЖЕЙНОЕ", "РЕКЛАМИРУЮЩЕЕ", "СОБАЧЬЕ", "УГАРНОЕ", "ЧАРОДЕЙСКОЕ", "ПОЛИТИЧЕСКОЕ")] [pick("ЗАДАНИЕ", "ПРЕДЛОЖЕНИЕ", "ПРИКЛЮЧЕНИЕ")]"
-	possible_titles += "[pick("ПОВОРОТ НЕ ТУДА", "ОХОТА ЗА ЗЕЛЕНОЙ \"КОЛБАСКОЙ\"", "ЧУЖОЙ ПРОТИВ ТОРГОВОГО АВТОМАТА", "КОСМИЧЕСКИЕ ДАЛЬНОБОЙЩИКИ")]"
-	titles += "<center><h1>EPISODE [GLOB.round_id]<br>[pick(possible_titles)]<h1></h1></h1></center>"
+
+	var/episode_title = ""
+
+	if(prob(10))
+		episode_title += pick(file2list("config/credits/titles/finished_titles.txt"))
+	else if(prob(20))
+		episode_title += "ЭКИПАЖ УЗНАЕТ О " + pick(file2list("config/credits/titles/random_titles_crews_learns.txt"))
+	else if(prob(30))
+		episode_title += pick(file2list("config/credits/titles/random_titles_neuter_2_1.txt")) + " "
+		episode_title += pick(file2list("config/credits/titles/random_titles_neuter_2_2.txt"))
+	else
+		episode_title += pick(file2list("config/credits/titles/random_titles_plural_2_1.txt")) + " "
+		episode_title += pick(file2list("config/credits/titles/random_titles_plural_2_2.txt"))
+
+	titles += "<center><h1>EPISODE [GLOB.round_id]<br>[episode_title]<h1></h1></h1></center>"
 
 	for(var/mob/living/carbon/human/human in GLOB.alive_mob_list | GLOB.dead_mob_list)
 		if(findtext(human.real_name,"(mannequin)"))
@@ -111,6 +117,9 @@ GLOBAL_LIST(end_titles)
 		if(ismonkeybasic(human))
 			continue
 		if(human.last_known_ckey == null)
+			continue
+		if(human.client.holder.rank == "Streamer")
+			streamers += "<center>[human.real_name]([human.ckey]) в роли [human.job]<br><center>"
 			continue
 		if(!length(cast) && !chunksize)
 			chunk += "В съемках участвовали:"
@@ -122,6 +131,10 @@ GLOBAL_LIST(end_titles)
 			chunksize = 0
 	if(length(chunk))
 		cast += "<center>[jointext(chunk,"<br>")]</center>"
+
+	if(length(streamers))
+		titles += "<center>Приглашенные звезды:</center><br>"
+		titles += streamers
 
 	titles += cast
 
@@ -137,7 +150,7 @@ GLOBAL_LIST(end_titles)
 		titles += "<center>Основано на реальных событиях<br>В память о [english_list(corpses)].</center>"
 
 	var/list/staff = list("Съемочная группа:")
-	var/list/staffjobs = list("Носильщик кофе", "Оператор", "Надоедливый крикун", "Ответсвенный за лопату", "Хореограф", "Исторический консультант", "Дизайнер костюмов", "Главный редактор", "Исполнительный директор")
+	var/list/staffjobs = file2list("config/credits/jobs/staffjobs.txt")
 	var/list/goodboys = list()
 	for(var/client/client)
 		if(!client.holder)
@@ -152,13 +165,13 @@ GLOBAL_LIST(end_titles)
 	if(length(goodboys))
 		titles += "<center>Мальчики на побегушках:<br>[english_list(goodboys)]</center><br>"
 
-	var/disclaimer = "<br>Sponsored by SS220.<br>All rights reserved.<br>\
+	var/disclaimer = "<br>Sponsored by WYCCSTATION.<br>All rights reserved.<br>\
 					 This motion picture is protected under the copyright laws of the Sol Central Government<br> and other nations throughout the galaxy.<br>\
 					 Colony of First Publication: [pick("Mars", "Luna", "Earth", "Venus", "Phobos", "Ceres", "Tiamat", "Ceti Epsilon", "Eos", "Pluto", "Ouere",\
 					 "Tadmor", "Brahe", "Pirx", "Iolaus", "Saffar", "Gaia")].<br>"
 	disclaimer += pick("Use for parody prohibited. PROHIBITED.",
 					   "All stunts were performed by underpaid interns. Do NOT try at home.",
-					   "SS220 does not endorse behaviour depicted. Attempt at your own risk.",
+					   "WYCCSTATION does not endorse behaviour depicted. Attempt at your own risk.",
 					   "Any unauthorized exhibition, distribution, or copying of this film or any part thereof (including soundtrack)<br>\
 						may result in an ERT being called to storm your home and take it back by force.",
 						"The story, all names, characters, and incidents portrayed in this production are fictitious. No identification with actual<br>\
