@@ -8,7 +8,7 @@
 	icon_state = "anaconda"
 
 /obj/item/gun/projectile/revolver/anaconda/attackby(obj/item/A, mob/user, params)
-	if(istype(A, /obj/item/ammo_box/b44))
+	if(istype(A, /obj/item/ammo_box/box_d44))
 		return
 	return ..()
 
@@ -40,7 +40,7 @@
 	hitsound_wall = "ricochet"
 	impact_effect_type = /obj/effect/temp_visual/impact_effect
 
-/obj/item/ammo_box/a44
+/obj/item/ammo_box/speed_loader_d44
 	name = "speed loader (.44)"
 	desc = "Designed to quickly reload revolvers."
 	ammo_type = /obj/item/ammo_casing/d44
@@ -49,7 +49,7 @@
 	icon = 'modular_ss220/objects/icons/ammo.dmi'
 	icon_state = "44"
 
-/obj/item/ammo_box/b44
+/obj/item/ammo_box/box_d44
 	name = "ammo box (.44)"
 	desc = "Contains up to seven .44 bullets, intended to either be inserted into a speed loader or into the gun manually."
 	w_class = WEIGHT_CLASS_NORMAL
