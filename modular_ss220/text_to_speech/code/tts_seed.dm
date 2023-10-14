@@ -88,7 +88,7 @@
 /datum/surgery_step/tune_vocal_cords
 	name = "tune vocal cords"
 	allowed_tools = list(/obj/item/scalpel = 100, /obj/item/kitchen/knife = 50, /obj/item/wirecutters = 35)
-	time = 64
+	time = 6 SECONDS
 	var/target_vocal = "vocal cords"
 
 /datum/surgery_step/tune_vocal_cords/begin_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/surgery/surgery)
