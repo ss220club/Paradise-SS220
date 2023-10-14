@@ -7,7 +7,7 @@ SUBSYSTEM_DEF(credits)
 
 	var/credit_roll_speed = 185
 	var/credit_spawn_speed = 20
-	var/credit_animate_height;
+	var/credit_animate_height
 	var/credit_ease_duration = 22
 
 /datum/controller/subsystem/credits/Initialize()
@@ -28,8 +28,9 @@ SUBSYSTEM_DEF(credits)
 		client.mob.overlay_fullscreen("black",/obj/screen/fullscreen/black)
 		SEND_SOUND(client, sound(title_music, repeat = 0, wait = 0, volume = 85 * client.prefs.get_channel_volume(CHANNEL_LOBBYMUSIC), channel = CHANNEL_LOBBYMUSIC))
 
-	sleep(50)
+	addtimer(CALLBACK(src, PROC_REF(roll_credits_for_client), client), 50)
 
+/datum/controller/subsystem/credits/proc/roll_credits_for_client(client/client)
 	var/list/_credits = client.credits
 
 	for(var/item in end_titles)
@@ -164,9 +165,9 @@ SUBSYSTEM_DEF(credits)
 	var/client/parent
 	var/matrix/target
 
-/obj/screen/credit/Initialize(mapload, credited, client/P)
+/obj/screen/credit/Initialize(mapload, credited, client/client)
 	. = ..()
-	parent = P
+	parent = client
 	maptext = {"<div style="font:'Small Fonts'">[credited]</div>"}
 	maptext_height = world.icon_size * 2
 	maptext_width = world.icon_size * 14
