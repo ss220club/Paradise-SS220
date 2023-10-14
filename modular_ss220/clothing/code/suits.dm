@@ -83,7 +83,7 @@
 
 /obj/item/clothing/suit/space/deathsquad/officer/syndie
 	name = "куртка офицера синдиката"
-	desc = "Длинная куртка из высокопрочного волокна на которой виднеются медали."
+	desc = "Длинная куртка из высокопрочного волокна."
 	icon = 'modular_ss220/clothing/icons/object/suits.dmi'
 	icon_state = "jacket_syndie"
 	icon_override = 'modular_ss220/clothing/icons/mob/suits.dmi'
