@@ -6,7 +6,7 @@
 	var/list/vents  = list()
 
 /datum/event/vent_clog/announce()
-	GLOB.minor_announcement.Announce("Зафиксирован скачок обратного давления в системе вытяжных труб. Возможен выброс содержимого.", "ВНИМАНИЕ: АТМОСФЕРНАЯ ТРЕВОГА.", 'sound/AI/scrubbers.ogg')
+	GLOB.minor_announcement.Announce("Зафиксирован скачок обратного давления в системе вытяжных труб. Возможен выброс содержимого.", "АТМОСФЕРНАЯ ТРЕВОГА.", 'sound/AI/scrubbers.ogg')
 
 /datum/event/vent_clog/setup()
 	endWhen = rand(25, 100)

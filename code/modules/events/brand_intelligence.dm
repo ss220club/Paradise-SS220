@@ -24,7 +24,7 @@
 		kill()
 		return
 
-	GLOB.minor_announcement.Announce("На борту станции [station_name()] зафиксировано распространение цифрового торгового вируса, пожалуйста, будьте наготове. Вирус, предположительно, берет начало от [alarm_source] торгового автомата.", "ВНИМАНИЕ: ЦИФРОВОЙ ВИРУС.", 'sound/AI/brand_intelligence.ogg')
+	GLOB.minor_announcement.Announce("На борту станции [station_name()] зафиксировано распространение цифрового торгового вируса, пожалуйста, будьте наготове. Вирус, предположительно, берет начало от [alarm_source] торгового автомата.", "ЦИФРОВОЙ ВИРУС.", 'sound/AI/brand_intelligence.ogg')
 
 /datum/event/brand_intelligence/start()
 	var/list/obj/machinery/economy/vending/leaderables = list()

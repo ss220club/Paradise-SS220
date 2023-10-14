@@ -664,7 +664,7 @@
 				lastwarning = REALTIMEOFDAY
 
 			if(power > POWER_PENALTY_THRESHOLD)
-				radio.autosay("Внимание: Гиперструктура достигла опасного уровня мощности.", name, "Engineering", list(z))
+				radio.autosay("Гиперструктура достигла опасного уровня мощности.", name, "Engineering", list(z))
 				if(powerloss_inhibitor < 0.5)
 					radio.autosay("ОПАСНОСТЬ: ИДЕТ ИНЕРЦИОННАЯ ЦЕПНАЯ РЕАКЦИЯ ЗАРЯДА.", name, "Engineering", list(z))
 

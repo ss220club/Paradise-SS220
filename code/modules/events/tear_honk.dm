@@ -8,7 +8,7 @@
 	HE = new /obj/effect/tear/honk(location)
 
 /datum/event/tear/honk/announce()
-	GLOB.minor_announcement.Announce("На борту станции зафиксирована Хонканомалия. Предполагаемая локация: [impact_area.name].", "ВНИМАНИЕ: ХОНКАНОМАЛИЯ.", 'sound/items/airhorn.ogg')
+	GLOB.minor_announcement.Announce("На борту станции зафиксирована Хонканомалия. Предполагаемая локация: [impact_area.name].", "ХОНКАНОМАЛИЯ.", 'sound/items/airhorn.ogg')
 
 /datum/event/tear/honk/end()
 	if(HE)

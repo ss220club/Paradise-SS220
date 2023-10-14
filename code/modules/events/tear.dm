@@ -50,7 +50,7 @@
 			kill()
 			return
 
-	GLOB.minor_announcement.Announce("На борту станции зафиксирован пространственно-временной разрыв. Предполагаемая локация: [impact_area.name].", "ВНИМАНИЕ: ОБНАРУЖЕНА АНОМАЛИЯ.", 'sound/AI/anomaly.ogg')
+	GLOB.minor_announcement.Announce("На борту станции зафиксирован пространственно-временной разрыв. Предполагаемая локация: [impact_area.name].", "ОБНАРУЖЕНА АНОМАЛИЯ.", 'sound/AI/anomaly.ogg')
 
 /datum/event/tear/end()
 	if(TE)
