@@ -127,9 +127,9 @@ SUBSYSTEM_DEF(credits)
 					Colony of First Publication: [pick("Mars", "Luna", "Earth", "Venus", "Phobos", "Ceres", "Tiamat", "Ceti Epsilon", "Eos", "Pluto", "Ouere",\
 					"Tadmor", "Brahe", "Pirx", "Iolaus", "Saffar", "Gaia")].<br>"
 	disclaimer += pick("Use for parody prohibited. PROHIBITED.",
-					   "All stunts were performed by underpaid interns. Do NOT try at home.",
-					   "WYCCSTATION does not endorse behaviour depicted. Attempt at your own risk.",
-					   "Any unauthorized exhibition, distribution, or copying of this film or any part thereof (including soundtrack)<br>\
+						"All stunts were performed by underpaid interns. Do NOT try at home.",
+						"WYCCSTATION does not endorse behaviour depicted. Attempt at your own risk.",
+						"Any unauthorized exhibition, distribution, or copying of this film or any part thereof (including soundtrack)<br>\
 						may result in an ERT being called to storm your home and take it back by force.",
 						"The story, all names, characters, and incidents portrayed in this production are fictitious. No identification with actual<br>\
 						persons (living or deceased), places, buildings, and products is intended or should be inferred.<br>\
