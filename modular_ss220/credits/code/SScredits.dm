@@ -1,94 +1,51 @@
-#define CREDIT_ROLL_SPEED 185
-#define CREDIT_SPAWN_SPEED 20
-#define CREDIT_ANIMATE_HEIGHT (14 * world.icon_size)
-#define CREDIT_EASE_DURATION 22
+SUBSYSTEM_DEF(credits)
+	name = "Credits"
+	init_order = INIT_ORDER_DEFAULT
+	runlevels = RUNLEVEL_POSTGAME
+	flags = SS_NO_FIRE
+	var/list/end_titles = list()
+	var/title_music = ""
 
-GLOBAL_LIST(end_titles)
-GLOBAL_VAR_INIT(title_music, pick(file2list("config/credits/sounds/title_music.txt")))
+	var/credit_roll_speed = 185
+	var/credit_spawn_speed = 20
+	var/credit_animate_height;
+	var/credit_ease_duration = 22
 
-/client/var/list/credits
+/datum/controller/subsystem/credits/Initialize()
+    credit_animate_height = 14 * world.icon_size
+    title_music = pick(file2list("config/credits/sounds/title_music.txt"))
 
-/client/proc/RollCredits()
-	set waitfor = FALSE
+/datum/controller/subsystem/credits/proc/roll_credits(client/client)
+	LAZYINITLIST(client.credits)
 
-	LAZYINITLIST(credits)
+	if(end_titles)
+		end_titles = generate_titles()
 
-	if(!GLOB.end_titles)
-		GLOB.end_titles = generate_titles()
-
-	if(mob)
-		mob.overlay_fullscreen("black",/obj/screen/fullscreen/black)
-		SEND_SOUND(src, sound(GLOB.title_music, repeat = 0, wait = 0, volume = 85 * prefs.get_channel_volume(CHANNEL_LOBBYMUSIC), channel = CHANNEL_LOBBYMUSIC))
+	if(client.mob)
+		client.mob.overlay_fullscreen("black",/obj/screen/fullscreen/black)
+		SEND_SOUND(client, sound(title_music, repeat = 0, wait = 0, volume = 85 * client.prefs.get_channel_volume(CHANNEL_LOBBYMUSIC), channel = CHANNEL_LOBBYMUSIC))
 
 	sleep(50)
-	var/list/_credits = credits
-	verbs += /client/proc/ClearCredits
-	for(var/I in GLOB.end_titles)
-		if(!credits)
+
+	var/list/_credits = client.credits
+
+	for(var/item in end_titles)
+		if(!client.credits)
 			return
-		var/obj/screen/credit/T = new(null, I, src)
-		_credits += T
-		T.rollem()
-		sleep(CREDIT_SPAWN_SPEED)
-	sleep(CREDIT_ROLL_SPEED - CREDIT_SPAWN_SPEED)
+		var/obj/screen/credit/title = new(null, item, client)
+		_credits += title
+		title.rollem()
+		sleep(credit_spawn_speed)
+	sleep(credit_roll_speed - credit_spawn_speed)
 
-	ClearCredits()
-	verbs -= /client/proc/ClearCredits
+	clear_credits(client)
 
-/client/proc/ClearCredits()
-	set name = "Stop End Titles"
-	set category = "OOC"
-	verbs -= /client/proc/ClearCredits
-	QDEL_NULL(credits)
-	mob.clear_fullscreen("black")
-	SEND_SOUND(src, sound(null, repeat = 0, wait = 0, volume = 85 * prefs.get_channel_volume(CHANNEL_LOBBYMUSIC), channel = CHANNEL_LOBBYMUSIC))
+/datum/controller/subsystem/credits/proc/clear_credits(client/client)
+	QDEL_NULL(client.credits)
+	client.mob.clear_fullscreen("black")
+	SEND_SOUND(client, sound(null, repeat = 0, wait = 0, volume = 85 * client.prefs.get_channel_volume(CHANNEL_LOBBYMUSIC), channel = CHANNEL_LOBBYMUSIC))
 
-
-/obj/screen/fullscreen/black
-	icon = 'icons/mob/screen_gen.dmi'
-	icon_state = "black"
-	screen_loc = "WEST,SOUTH to EAST,NORTH"
-	layer = ABOVE_HUD_LAYER
-
-
-/obj/screen/credit
-	icon_state = "blank"
-	mouse_opacity = 0
-	alpha = 0
-	screen_loc = "CENTER-7,CENTER-7"
-	plane = HUD_PLANE
-	layer = HUD_LAYER
-	var/client/parent
-	var/matrix/target
-
-/obj/screen/credit/Initialize(mapload, credited, client/P)
-	. = ..()
-	parent = P
-	maptext = {"<div style="font:'Small Fonts'">[credited]</div>"}
-	maptext_height = world.icon_size * 2
-	maptext_width = world.icon_size * 14
-
-/obj/screen/credit/proc/rollem()
-	var/matrix/M = matrix(transform)
-	M.Translate(0, CREDIT_ANIMATE_HEIGHT)
-	animate(src, transform = M, time = CREDIT_ROLL_SPEED)
-	target = M
-	animate(src, alpha = 255, time = CREDIT_EASE_DURATION, flags = ANIMATION_PARALLEL)
-	spawn(CREDIT_ROLL_SPEED - CREDIT_EASE_DURATION)
-		if(!QDELETED(src))
-			animate(src, alpha = 0, transform = target, time = CREDIT_EASE_DURATION)
-			sleep(CREDIT_EASE_DURATION)
-			qdel(src)
-	parent.screen += src
-
-/obj/screen/credit/Destroy()
-	if(parent)
-		parent.screen -= src
-		LAZYREMOVE(parent.credits, src)
-		parent = null
-	return ..()
-
-/proc/generate_titles()
+/datum/controller/subsystem/credits/proc/generate_titles()
 	RETURN_TYPE(/list)
 	var/list/titles = list()
 	var/list/cast = list()
@@ -185,3 +142,50 @@ GLOBAL_VAR_INIT(title_music, pick(file2list("config/credits/sounds/title_music.t
 	titles += "<center><span style='font-size:6pt;'>[jointext(disclaimer, null)]</span></center>"
 
 	return titles
+
+
+/obj/screen/fullscreen/black
+	icon = 'icons/mob/screen_gen.dmi'
+	icon_state = "black"
+	screen_loc = "WEST,SOUTH to EAST,NORTH"
+	layer = ABOVE_HUD_LAYER
+
+
+/obj/screen/credit
+	icon_state = "blank"
+	mouse_opacity = 0
+	alpha = 0
+	screen_loc = "CENTER-7,CENTER-7"
+	plane = HUD_PLANE
+	layer = HUD_LAYER
+	var/client/parent
+	var/matrix/target
+
+/obj/screen/credit/Initialize(mapload, credited, client/P)
+	. = ..()
+	parent = P
+	maptext = {"<div style="font:'Small Fonts'">[credited]</div>"}
+	maptext_height = world.icon_size * 2
+	maptext_width = world.icon_size * 14
+
+/obj/screen/credit/proc/rollem()
+	var/matrix/M = matrix(transform)
+	M.Translate(0, SScredits.credit_animate_height)
+	animate(src, transform = M, time = SScredits.credit_roll_speed)
+	target = M
+	animate(src, alpha = 255, time = SScredits.credit_ease_duration, flags = ANIMATION_PARALLEL)
+	spawn(SScredits.credit_roll_speed - SScredits.credit_ease_duration)
+		if(!QDELETED(src))
+			animate(src, alpha = 0, transform = target, time = SScredits.credit_ease_duration)
+			sleep(SScredits.credit_ease_duration)
+			qdel(src)
+	parent.screen += src
+
+/obj/screen/credit/Destroy()
+	if(parent)
+		parent.screen -= src
+		LAZYREMOVE(parent.credits, src)
+		parent = null
+	return ..()
+
+/client/var/list/credits
