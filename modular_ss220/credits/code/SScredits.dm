@@ -28,7 +28,7 @@ SUBSYSTEM_DEF(credits)
 		client.mob.overlay_fullscreen("black",/obj/screen/fullscreen/black)
 		SEND_SOUND(client, sound(title_music, repeat = 0, wait = 0, volume = 85 * client.prefs.get_channel_volume(CHANNEL_LOBBYMUSIC), channel = CHANNEL_LOBBYMUSIC))
 
-	addtimer(CALLBACK(src, PROC_REF(roll_credits_for_client), client), 50)
+	addtimer(CALLBACK(src, PROC_REF(roll_credits_for_client), client), 5 SECONDS)
 
 /datum/controller/subsystem/credits/proc/roll_credits_for_client(client/client)
 	var/list/_credits = client.credits
@@ -40,14 +40,13 @@ SUBSYSTEM_DEF(credits)
 		_credits += title
 		title.rollem()
 		sleep(credit_spawn_speed)
-	sleep(credit_roll_speed - credit_spawn_speed)
 
-	clear_credits(client)
+	addtimer(CALLBACK(src, PROC_REF(clear_credits), client), (credit_roll_speed))
 
 /datum/controller/subsystem/credits/proc/clear_credits(client/client)
 	QDEL_NULL(client.credits)
 	client.mob.clear_fullscreen("black")
-	SEND_SOUND(client, sound(null, repeat = 0, wait = 0, volume = 85 * client.prefs.get_channel_volume(CHANNEL_LOBBYMUSIC), channel = CHANNEL_LOBBYMUSIC))
+	SEND_SOUND(client, sound(null, repeat = FALSE, wait = FALSE, volume = 85 * client.prefs.get_channel_volume(CHANNEL_LOBBYMUSIC), channel = CHANNEL_LOBBYMUSIC))
 
 /datum/controller/subsystem/credits/proc/generate_titles()
 	RETURN_TYPE(/list)
@@ -59,16 +58,18 @@ SUBSYSTEM_DEF(credits)
 
 	var/episode_title = ""
 
-	if(prob(10))
-		episode_title += pick(file2list("config/credits/titles/finished_titles.txt"))
-	else if(prob(20))
-		episode_title += "ЭКИПАЖ УЗНАЕТ О " + pick(file2list("config/credits/titles/random_titles_crews_learns.txt"))
-	else if(prob(30))
-		episode_title += pick(file2list("config/credits/titles/random_titles_neuter_2_1.txt")) + " "
-		episode_title += pick(file2list("config/credits/titles/random_titles_neuter_2_2.txt"))
-	else
-		episode_title += pick(file2list("config/credits/titles/random_titles_plural_2_1.txt")) + " "
-		episode_title += pick(file2list("config/credits/titles/random_titles_plural_2_2.txt"))
+	switch(rand(1,100))
+
+		if(1 to 10)
+			episode_title += pick(file2list("config/credits/titles/finished_titles.txt"))
+		if(11 to 30)
+			episode_title += "ЭКИПАЖ УЗНАЕТ О " + pick(file2list("config/credits/titles/random_titles_crews_learns.txt"))
+		if(31 to 60)
+			episode_title += pick(file2list("config/credits/titles/random_titles_neuter_2_1.txt")) + " "
+			episode_title += pick(file2list("config/credits/titles/random_titles_neuter_2_2.txt"))
+		if(61 to 100)
+			episode_title += pick(file2list("config/credits/titles/random_titles_plural_2_1.txt")) + " "
+			episode_title += pick(file2list("config/credits/titles/random_titles_plural_2_2.txt"))
 
 	titles += "<center><h1>EPISODE [GLOB.round_id]<br>[episode_title]<h1></h1></h1></center>"
 
@@ -77,9 +78,9 @@ SUBSYSTEM_DEF(credits)
 			continue
 		if(ismonkeybasic(human))
 			continue
-		if(human.last_known_ckey == null)
+		if(!human.last_known_ckey)
 			continue
-		if(human.client.holder.rank == "Streamer")
+		if(human.client.holder.rank == "Банда")
 			streamers += "<center>[human.real_name]([human.ckey]) в роли [human.job]<br><center>"
 			continue
 		if(!length(cast) && !chunksize)
@@ -102,7 +103,7 @@ SUBSYSTEM_DEF(credits)
 	var/list/corpses = list()
 
 	for(var/mob/living/carbon/human/human in GLOB.dead_mob_list)
-		if(human.last_known_ckey == null)
+		if(!human.last_known_ckey)
 			continue
 		else if(human.real_name)
 			corpses += human.real_name
@@ -117,9 +118,9 @@ SUBSYSTEM_DEF(credits)
 		if(!client.holder)
 			continue
 
-		if(client.holder.rights & (R_DEBUG|R_ADMIN|R_MOD))
+		if(check_rights_client(R_DEBUG|R_ADMIN|R_MOD, FALSE, client))
 			staff += "[uppertext(pick(staffjobs))] - '[client.key]'"
-		else if(client.holder.rights & R_MENTOR)
+		else if(check_rights_client(R_MENTOR, FALSE, client))
 			goodboys += "[client.key]"
 
 	titles += "<center>[jointext(staff,"<br>")]</center>"
