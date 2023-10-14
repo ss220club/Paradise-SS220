@@ -297,12 +297,12 @@ GLOBAL_LIST_EMPTY(ert_request_messages)
 	if(silent)
 		message_admins("A silent response team failed to spawn. Likely, no one signed up.")
 		return
-	GLOB.major_announcement.Announce("[station_name()], к сожалению, в настоящее время мы не можем направить к вам отряд быстрого реагирования.", "Оповещение: ОБР недоступен.")
+	GLOB.major_announcement.Announce("[station_name()], к сожалению, в настоящее время мы не можем направить к вам отряд быстрого реагирования.", "ОБР недоступен.")
 
 /datum/response_team/proc/announce_team()
 	if(silent)
 		return
-	GLOB.major_announcement.Announce("Внимание, [station_name()]. Мы направляем команду высококвалифицированных ассистентов для оказания помощи(?) вам. Ожидайте.", "Оповещение: ОБР в пути.")
+	GLOB.major_announcement.Announce("Внимание, [station_name()]. Мы направляем команду высококвалифицированных ассистентов для оказания помощи(?) вам. Ожидайте.", "ОБР в пути.")
 
 // -- AMBER TEAM --
 
@@ -317,7 +317,7 @@ GLOBAL_LIST_EMPTY(ert_request_messages)
 /datum/response_team/amber/announce_team()
 	if(silent)
 		return
-	GLOB.major_announcement.Announce("Внимание, [station_name()]. Мы направляем стандартный отряд быстрого реагирования кода «ЭМБЕР». Ожидайте.", "Оповещение: ОБР в пути.")
+	GLOB.major_announcement.Announce("Внимание, [station_name()]. Мы направляем стандартный отряд быстрого реагирования кода «ЭМБЕР». Ожидайте.", "ОБР в пути.")
 
 // -- RED TEAM --
 
@@ -333,7 +333,7 @@ GLOBAL_LIST_EMPTY(ert_request_messages)
 /datum/response_team/red/announce_team()
 	if(silent)
 		return
-	GLOB.major_announcement.Announce("Внимание, [station_name()]. Мы направляем усиленный отряд быстрого реагирования кода «РЭД». Ожидайте.", "Оповещение: ОБР в пути.")
+	GLOB.major_announcement.Announce("Внимание, [station_name()]. Мы направляем усиленный отряд быстрого реагирования кода «РЭД». Ожидайте.", "ОБР в пути.")
 
 // -- GAMMA TEAM --
 
@@ -349,7 +349,7 @@ GLOBAL_LIST_EMPTY(ert_request_messages)
 /datum/response_team/gamma/announce_team()
 	if(silent)
 		return
-	GLOB.major_announcement.Announce("Внимание, [station_name()]. Мы направляем элитный отряд быстрого реагирования кода «ГАММА». Ожидайте.", "Оповещение: ОБР в пути.")
+	GLOB.major_announcement.Announce("Внимание, [station_name()]. Мы направляем элитный отряд быстрого реагирования кода «ГАММА». Ожидайте.", "ОБР в пути.")
 
 /datum/outfit/job/centcom/response_team
 	name = "Response team"
