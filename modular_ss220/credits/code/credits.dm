@@ -152,7 +152,7 @@ GLOBAL_VAR_INIT(title_music, pick(file2list("config/credits/sounds/title_music.t
 	var/list/staff = list("Съемочная группа:")
 	var/list/staffjobs = file2list("config/credits/jobs/staffjobs.txt")
 	var/list/goodboys = list()
-	for(var/client/client)
+	for(var/client/client in GLOB.clients)
 		if(!client.holder)
 			continue
 
