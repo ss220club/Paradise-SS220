@@ -1,6 +1,5 @@
 SUBSYSTEM_DEF(credits)
 	name = "Credits"
-	init_order = INIT_ORDER_DEFAULT
 	runlevels = RUNLEVEL_POSTGAME
 	flags = SS_NO_FIRE
 	var/list/end_titles = list()
@@ -14,6 +13,10 @@ SUBSYSTEM_DEF(credits)
 /datum/controller/subsystem/credits/Initialize()
 	credit_animate_height = 14 * world.icon_size
 	title_music = pick(file2list("config/credits/sounds/title_music.txt"))
+
+/datum/controller/subsystem/credits/proc/roll_credits_for_all_clients()
+	for(var/client/client in GLOB.clients)
+		SScredits.roll_credits(client)
 
 /datum/controller/subsystem/credits/proc/roll_credits(client/client)
 	LAZYINITLIST(client.credits)
