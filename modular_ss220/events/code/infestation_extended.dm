@@ -103,7 +103,7 @@
 			log_debug("Extended Infestation Event didn't provide an area to announce(), something is likely broken.")
 			kill()
 
-	GLOB.minor_announcement.Announce("Биосканеры фиксируют размножение [vermin_chosen] в [initial(spawn_area_type.name)]. Избавьтесь от них, прежде чем это начнет влиять на продуктивность станции.", "ВНИМАНИЕ: НЕОПОЗНАННЫЕ ФОРМЫ ЖИЗНИ.")
+	GLOB.minor_announcement.Announce("Биосканеры фиксируют размножение [vermin_chosen] в [initial(spawn_area_type.name)]. Избавьтесь от них, прежде чем это начнет влиять на продуктивность станции.", "НЕОПОЗНАННЫЕ ФОРМЫ ЖИЗНИ.")
 	spawn_area_type = null
 
 /datum/event/falsealarm/start()
