@@ -44,37 +44,8 @@
 	H.sec_hud_set_ID()
 
 /datum/outfit/job/syndicateofficer
-	name = "Syndicate Officer"
-	jobtype = /datum/job/syndicateofficer
-
-	uniform = /obj/item/clothing/under/syndicate
 	suit = /obj/item/clothing/suit/space/deathsquad/officer/syndie
-	back = /obj/item/storage/backpack
-	head = /obj/item/clothing/head/beret
-	gloves = /obj/item/clothing/gloves/combat
-	shoes = /obj/item/clothing/shoes/combat
-	mask = /obj/item/clothing/mask/cigarette/cigar/havana
-	belt = /obj/item/gun/projectile/automatic/pistol/deagle/camo
-	l_ear = /obj/item/radio/headset/syndicate/alt/syndteam
-	pda = /obj/item/pinpointer/advpinpointer
-	id = /obj/item/card/id/syndicate/command
-	box = /obj/item/storage/box/survival_syndi
-	backpack_contents = list(
-		/obj/item/flashlight = 1,
-		/obj/item/reagent_containers/food/snacks/syndidonkpocket = 1,
-		/obj/item/ammo_box/magazine/m50 = 2,
-		/obj/item/clothing/shoes/magboots/syndie/advance = 1,
-		/obj/item/lighter/zippo/gonzofist = 1,
-		/obj/item/storage/box/matches = 1
-	)
-	implants = list(
-		/obj/item/implant/dust
-	)
-
-	cybernetic_implants = list(
-		/obj/item/organ/internal/cyberimp/chest/nutriment/plus/hardened
-	)
-
+	
 /obj/item/clothing/under/solgov/srt
 	name = "marine uniform"
 	desc = "A comfortable and durable combat uniform"
