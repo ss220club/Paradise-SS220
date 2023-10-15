@@ -13,43 +13,43 @@ SUBSYSTEM_DEF(credits)
 	var/credit_animate_height
 	var/credit_ease_duration = 22
 
-/datum/controller/subsystem/credits/Initialize()
-	credit_animate_height = 14 * world.icon_size
-	title_music = pick(file2list("config/credits/sounds/title_music.txt"))
+// /datum/controller/subsystem/credits/Initialize()
+// 	credit_animate_height = 14 * world.icon_size
+// 	title_music = pick(file2list("config/credits/sounds/title_music.txt"))
 
-/datum/controller/subsystem/credits/proc/roll_credits_for_all_clients()
-	for(var/client/client in GLOB.clients)
-		SScredits.roll_credits(client)
+// /datum/controller/subsystem/credits/proc/roll_credits_for_all_clients()
+// 	for(var/client/client in GLOB.clients)
+// 		SScredits.roll_credits(client)
 
-/datum/controller/subsystem/credits/proc/roll_credits(client/client)
-	LAZYINITLIST(client.credits)
+// /datum/controller/subsystem/credits/proc/roll_credits(client/client)
+// 	LAZYINITLIST(client.credits)
 
-	if(end_titles)
-		end_titles = generate_titles()
+// 	if(end_titles)
+// 		end_titles = generate_titles()
 
-	addtimer(CALLBACK(src, PROC_REF(roll_credits_for_client), client), 30 SECONDS, TIMER_CLIENT_TIME)
+// 	addtimer(CALLBACK(src, PROC_REF(roll_credits_for_client), client), 30 SECONDS, TIMER_CLIENT_TIME)
 
-/datum/controller/subsystem/credits/proc/roll_credits_for_client(client/client)
-	var/list/_credits = client.credits
+// /datum/controller/subsystem/credits/proc/roll_credits_for_client(client/client)
+// 	var/list/_credits = client.credits
 
-	if(client.mob)
-		client.mob.overlay_fullscreen("black",/obj/screen/fullscreen/black)
-		SEND_SOUND(client, sound(title_music, repeat = FALSE, wait = FALSE, volume = 85 * client.prefs.get_channel_volume(CHANNEL_LOBBYMUSIC), channel = CHANNEL_LOBBYMUSIC))
+// 	if(client.mob)
+// 		client.mob.overlay_fullscreen("black",/obj/screen/fullscreen/black)
+// 		SEND_SOUND(client, sound(title_music, repeat = FALSE, wait = FALSE, volume = 85 * client.prefs.get_channel_volume(CHANNEL_LOBBYMUSIC), channel = CHANNEL_LOBBYMUSIC))
 
-	for(var/item in end_titles)
-		if(!client.credits)
-			return
-		var/obj/screen/credit/title = new(null, item, client)
-		_credits += title
-		title.rollem()
-		sleep(credit_spawn_speed)
+// 	for(var/item in end_titles)
+// 		if(!client.credits)
+// 			return
+// 		var/obj/screen/credit/title = new(null, item, client)
+// 		_credits += title
+// 		title.rollem()
+// 		sleep(credit_spawn_speed)
 
-	addtimer(CALLBACK(src, PROC_REF(clear_credits), client), (credit_roll_speed), TIMER_CLIENT_TIME)
+// 	addtimer(CALLBACK(src, PROC_REF(clear_credits), client), (credit_roll_speed), TIMER_CLIENT_TIME)
 
-/datum/controller/subsystem/credits/proc/clear_credits(client/client)
-	QDEL_NULL(client.credits)
-	client.mob.clear_fullscreen("black")
-	SEND_SOUND(client, sound(null, repeat = FALSE, wait = FALSE, volume = 85 * client.prefs.get_channel_volume(CHANNEL_LOBBYMUSIC), channel = CHANNEL_LOBBYMUSIC))
+// /datum/controller/subsystem/credits/proc/clear_credits(client/client)
+// 	QDEL_NULL(client.credits)
+// 	client.mob.clear_fullscreen("black")
+// 	SEND_SOUND(client, sound(null, repeat = FALSE, wait = FALSE, volume = 85 * client.prefs.get_channel_volume(CHANNEL_LOBBYMUSIC), channel = CHANNEL_LOBBYMUSIC))
 
 /datum/controller/subsystem/credits/proc/generate_titles()
 	RETURN_TYPE(/list)
@@ -160,41 +160,7 @@ SUBSYSTEM_DEF(credits)
 	show_when_dead = TRUE
 
 
-/obj/screen/credit
-	icon_state = "blank"
-	mouse_opacity = 0
-	alpha = 0
-	screen_loc = "CENTER-7,CENTER-7"
-	plane = CREDITS_PLANE
-	var/client/parent
-	var/matrix/target
 
-/obj/screen/credit/Initialize(mapload, credited, client/client)
-	. = ..()
-	parent = client
-	maptext = {"<div style="font:'Small Fonts'">[credited]</div>"}
-	maptext_height = world.icon_size * 2
-	maptext_width = world.icon_size * 14
-
-/obj/screen/credit/proc/rollem()
-	var/matrix/M = matrix(transform)
-	M.Translate(0, SScredits.credit_animate_height)
-	animate(src, transform = M, time = SScredits.credit_roll_speed)
-	target = M
-	animate(src, alpha = 255, time = SScredits.credit_ease_duration, flags = ANIMATION_PARALLEL)
-	spawn(SScredits.credit_roll_speed - SScredits.credit_ease_duration)
-		if(!QDELETED(src))
-			animate(src, alpha = 0, transform = target, time = SScredits.credit_ease_duration)
-			sleep(SScredits.credit_ease_duration)
-			qdel(src)
-	parent.screen += src
-
-/obj/screen/credit/Destroy()
-	if(parent)
-		parent.screen -= src
-		LAZYREMOVE(parent.credits, src)
-		parent = null
-	return ..()
 
 /client/var/list/credits
 
