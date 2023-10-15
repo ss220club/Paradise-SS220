@@ -1,3 +1,5 @@
+// Colt Anaconda .44
+
 /obj/item/gun/projectile/revolver/anaconda
 	name = "Анаконда"
 	desc = "Крупнокалиберный револьвер двадцатого века. Несмотря на то, что оружие хранилось в хороших условиях, старина даёт о себе знать."
@@ -27,11 +29,11 @@
 	caliber = "44"
 	icon = 'modular_ss220/objects/icons/ammo.dmi'
 	icon_state = "casing44"
-	projectile_type = /obj/item/projectile/bullet/anaconda
+	projectile_type = /obj/item/projectile/bullet/d44
 	muzzle_flash_strength = MUZZLE_FLASH_STRENGTH_NORMAL
 	muzzle_flash_range = MUZZLE_FLASH_RANGE_STRONG
 
-/obj/item/projectile/bullet/anaconda
+/obj/item/projectile/bullet/d44
 	name = ".44 bullet"
 	icon_state = "bullet"
 	damage = 50
@@ -51,7 +53,7 @@
 
 /obj/item/ammo_box/box_d44
 	name = "ammo box (.44)"
-	desc = "Contains up to 24 .44 bullets, intended to either be inserted into a speed loader or into the gun manually."
+	desc = "Contains up to 24 .44 cartridges, intended to either be inserted into a speed loader or into the gun manually."
 	w_class = WEIGHT_CLASS_NORMAL
 	ammo_type = /obj/item/ammo_casing/d44
 	max_ammo = 24
@@ -62,3 +64,72 @@
 	alert = TRUE
 	start_showpiece_type = /obj/item/gun/projectile/revolver/anaconda
 	req_access = list(ACCESS_HOS)
+
+// RSH-12 12.7
+
+/obj/item/gun/projectile/revolver/rsh12
+	name = "РШ-12"
+	desc = "Крупнокалиберный револьвер винтовочного калибра с, откидным вниз для более удобного заряжания, стволом. По слухам, всё ещё находится на вооружении у СССП."
+	mag_type = /obj/item/ammo_box/magazine/internal/cylinder/rsh12
+	lefthand_file = 'modular_ss220/objects/icons/guns_lefthand.dmi'
+	righthand_file = 'modular_ss220/objects/icons/guns_righthand.dmi'
+	icon = 'modular_ss220/objects/icons/guns.dmi'
+	icon_state = "rsh12"
+	var/reclined = FALSE
+
+/obj/item/gun/projectile/revolver/rsh12/attack_self(mob/living/user)
+	. = ..()
+	reclined = !reclined
+	update_icon_state()
+
+/obj/item/gun/projectile/revolver/rsh12/update_icon_state()
+	icon_state = initial(icon_state) + reclined ? "_reclined" : ""
+
+/obj/item/gun/projectile/revolver/rsh12/attackby(obj/item/A, mob/user, params)
+	if(istype(A, /obj/item/ammo_box/box_mm127))
+		return
+	if(!reclined)
+		return
+	return ..()
+
+/obj/item/ammo_box/magazine/internal/cylinder/rsh12
+	name = "12.7mm revolver cylinder"
+	ammo_type = /obj/item/ammo_casing/mm127
+	caliber = "127mm"
+	max_ammo = 5
+
+/obj/item/ammo_casing/mm127
+	desc = "A 12.7mm bullet casing."
+	caliber = "127mm"
+	icon = 'modular_ss220/objects/icons/ammo.dmi'
+	icon_state = "casing127mm"
+	projectile_type = /obj/item/projectile/bullet/mm127
+	muzzle_flash_strength = MUZZLE_FLASH_RANGE_STRONG
+	muzzle_flash_range = MUZZLE_FLASH_RANGE_STRONG
+
+/obj/item/projectile/bullet/mm127
+	name = "127mm bullet"
+	icon_state = "bullet"
+	damage = 75
+	damage_type = BRUTE
+	flag = "bullet"
+	hitsound_wall = "ricochet"
+	impact_effect_type = /obj/effect/temp_visual/impact_effect
+
+/obj/item/ammo_box/speed_loader_mm127
+	name = "speed loader (12.7mm)"
+	desc = "Designed to quickly reload... is it a revolver speedloader with rifle cartidges in it?"
+	ammo_type = /obj/item/ammo_casing/mm127
+	max_ammo = 5
+	multi_sprite_step = 1
+	icon = 'modular_ss220/objects/icons/ammo.dmi'
+	icon_state = "mm127"
+
+/obj/item/ammo_box/box_mm127
+	name = "ammo box (12.7)"
+	desc = "Contains up to 100 12.7mm cartridges."
+	w_class = WEIGHT_CLASS_BULKY
+	ammo_type = /obj/item/ammo_casing/d44
+	max_ammo = 100
+	multi_sprite_step = 1
+	icon_state = "mm127_box"
