@@ -1,5 +1,5 @@
 /obj/item/gun/projectile/revolver/anaconda
-	name = "Colt Anaconda"
+	name = "Анаконда"
 	desc = "Крупнокалиберный револьвер двадцатого века. Несмотря на то, что оружие хранилось в хороших условиях, старина даёт о себе знать."
 	mag_type = /obj/item/ammo_box/magazine/internal/cylinder/d44
 	lefthand_file = 'modular_ss220/objects/icons/guns_lefthand.dmi'
@@ -51,10 +51,10 @@
 
 /obj/item/ammo_box/box_d44
 	name = "ammo box (.44)"
-	desc = "Contains up to seven .44 bullets, intended to either be inserted into a speed loader or into the gun manually."
+	desc = "Contains up to 24 .44 bullets, intended to either be inserted into a speed loader or into the gun manually."
 	w_class = WEIGHT_CLASS_NORMAL
 	ammo_type = /obj/item/ammo_casing/d44
-	max_ammo = 7
+	max_ammo = 24
 	multi_sprite_step = 1
 	icon_state = "44_box"
 
