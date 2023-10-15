@@ -57,7 +57,6 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	ammo_type = /obj/item/ammo_casing/d44
 	max_ammo = 24
-	multi_sprite_step = 1
 	icon_state = "44_box"
 
 /obj/structure/displaycase/hos
@@ -75,15 +74,17 @@
 	righthand_file = 'modular_ss220/objects/icons/guns_righthand.dmi'
 	icon = 'modular_ss220/objects/icons/guns.dmi'
 	icon_state = "rsh12"
+	item_state = "rsh12"
 	var/reclined = FALSE
 
 /obj/item/gun/projectile/revolver/rsh12/attack_self(mob/living/user)
-	. = ..()
 	reclined = !reclined
-	update_icon_state()
+	update_icon()
+	if(reclined)
+		return ..()
 
 /obj/item/gun/projectile/revolver/rsh12/update_icon_state()
-	icon_state = initial(icon_state) + reclined ? "_reclined" : ""
+	icon_state = initial(icon_state) + (reclined ? "_reclined" : "")
 
 /obj/item/gun/projectile/revolver/rsh12/attackby(obj/item/A, mob/user, params)
 	if(istype(A, /obj/item/ammo_box/box_mm127))
@@ -131,5 +132,5 @@
 	w_class = WEIGHT_CLASS_BULKY
 	ammo_type = /obj/item/ammo_casing/d44
 	max_ammo = 100
-	multi_sprite_step = 1
+	icon = 'modular_ss220/objects/icons/ammo.dmi'
 	icon_state = "mm127_box"
