@@ -35,11 +35,11 @@
 	icon = 'icons/turf/floors/grass.dmi'
 	icon_state = "grass"
 	base_icon_state = "grass"
+	baseturf = /turf/simulated/floor/indestructible/grass
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = list(SMOOTH_GROUP_TURF, SMOOTH_GROUP_GRASS)
 	canSmoothWith = list(SMOOTH_GROUP_GRASS, SMOOTH_GROUP_JUNGLE_GRASS)
 	layer = ABOVE_OPEN_TURF_LAYER
-	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	footstep = FOOTSTEP_GRASS
 	barefootstep = FOOTSTEP_GRASS
 	clawfootstep = FOOTSTEP_GRASS
@@ -51,11 +51,42 @@
 	icon = 'icons/turf/floors/junglegrass.dmi'
 	icon_state = "junglegrass"
 	base_icon_state = "junglegrass"
+	baseturf = /turf/simulated/floor/indestructible/grass/jungle
 	smoothing_groups = list(SMOOTH_GROUP_TURF, SMOOTH_GROUP_GRASS, SMOOTH_GROUP_JUNGLE_GRASS)
 
 /turf/simulated/floor/indestructible/grass/no_creep
+	baseturf = /turf/simulated/floor/indestructible/grass/no_creep
 	smoothing_flags = null
 	smoothing_groups = null
 	canSmoothWith = null
 	layer = GRASS_UNDER_LAYER
 	transform = null
+
+/turf/simulated/floor/indestructible/grass/remove_plating(mob/user)
+	return
+
+/turf/simulated/floor/indestructible/grass/crowbar_act(mob/user, obj/item/I)
+	return
+
+/turf/simulated/floor/indestructible/grass/try_replace_tile(obj/item/stack/tile/T, mob/user, params)
+	return
+
+// Shuttle
+/turf/simulated/floor/indestructible/transparent_floor
+	icon = 'modular_ss220/maps220/icons/shuttle.dmi'
+	icon_state = "transparent"
+	oxygen = 0
+	nitrogen = 0
+	temperature = TCMB
+
+/turf/simulated/floor/indestructible/transparent_floor/Initialize()
+	..()
+	var/obj/O
+	O = new()
+	O.underlays.Add(src)
+	underlays = O.underlays
+	qdel(O)
+
+/turf/simulated/floor/indestructible/transparent_floor/copyTurf(turf/T)
+	. = ..()
+	T.transform = transform

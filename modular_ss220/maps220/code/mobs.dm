@@ -1,7 +1,7 @@
 /* Scavengers */
 /mob/living/simple_animal/hostile/scavengers
-	name = "Scavenger"
-	desc = "One of the many random looters or bandits of the frontiers."
+	name = "scavenger"
+	desc = "One of the many random bandits of the frontiers."
 	icon = 'modular_ss220/maps220/icons/simple_human.dmi'
 	icon_state = "scav"
 	icon_living = "scav"
@@ -12,7 +12,7 @@
 	turns_per_move = 5
 	speed = 0
 	stat_attack = UNCONSCIOUS
-	robust_searching = 1
+	robust_searching = TRUE
 	maxHealth = 75
 	health = 75
 	harm_intent_damage = 8
@@ -29,8 +29,8 @@
 	footstep_type = FOOTSTEP_MOB_SHOE
 
 /mob/living/simple_animal/hostile/scavengers/meele
-	name = "Scrapper Scavenger"
-	desc = "One of the many random looters or bandits of the frontiers. This one is carrying a pipe."
+	name = "scrapper scavenger"
+	desc = "One of the many random bandits of the frontiers. This one is carrying a pipe."
 	icon_state = "scavmeelepipe"
 	icon_living = "scavmeelepipe"
 	icon_dead = "scavdead"
@@ -44,8 +44,8 @@
 	attacktext = "bashing"
 
 /mob/living/simple_animal/hostile/scavengers/meele/crusher
-	name = "Heavy Scavenger"
-	desc = "One of the many random looters or bandits of the frontiers. This one is carrying a KC."
+	name = "heavy scavenger"
+	desc = "One of the many random bandits of the frontiers. This one is carrying a KC."
 	icon_state = "scavmeelecrush"
 	icon_living = "scavmeelecrush"
 	icon_dead = "scavdead"
@@ -59,7 +59,7 @@
 	attacktext = "smashes"
 
 /mob/living/simple_animal/hostile/scavengers/meele/axe
-	name = "Shipbreaker Scavenger"
+	name = "shipbreaker scavenger"
 	desc = "A shipbreaker scavenger. This one is carrying a axe."
 	icon_state = "scavmeeleaxe"
 	icon_living = "scavmeeleaxe"
@@ -77,14 +77,14 @@
 	wander = FALSE
 
 /mob/living/simple_animal/hostile/scavengers/laser
-	name = " Scavenger Gunslinger"
+	name = "gunslinger scavenger "
 	desc = "A bandit scum, who has learned to shoot accurately and quickly."
 	icon_state = "scavpistol"
 	icon_living = "scavpistol"
 	icon_dead = "scavdead"
 	maxHealth = 100
 	health = 100
-	ranged = 1
+	ranged = TRUE
 	retreat_distance = 5
 	minimum_distance = 5
 	rapid = 2
@@ -94,7 +94,7 @@
 	projectilesound = 'sound/weapons/laser.ogg'
 
 /mob/living/simple_animal/hostile/scavengers/laser/spacelaser
-	name = "Spacetrooper Scavenger"
+	name = "spacetrooper scavenger"
 	desc = "A shipbreaker scavenger. This one is carrying a laser gun."
 	icon_state = "scavlaser"
 	icon_living = "scavlaser"
@@ -105,14 +105,14 @@
 	wander = FALSE
 
 /mob/living/simple_animal/hostile/scavengers/gun
-	name = "Scavenger Gunman"
+	name = "gunman scavenger"
 	desc = "A bandit scum with a shotgun."
 	icon_state = "scavshotgun"
 	icon_living = "scavshotgun"
 	icon_dead = "scavdead"
 	maxHealth = 100
 	health = 100
-	ranged = 1
+	ranged = TRUE
 	retreat_distance = 5
 	minimum_distance = 5
 	rapid = 0
@@ -122,7 +122,7 @@
 	projectilesound = 'sound/weapons/gunshots/gunshot_shotgun.ogg'
 
 /mob/living/simple_animal/hostile/scavengers/gun/spacegun
-	name = "Spacetrooper Scavenger"
+	name = "spacetrooper scavenger"
 	desc = "A shipbreaker scavenger. This one is carrying a submachine gun."
 	icon_state = "scavm90"
 	icon_living = "scavm90"
@@ -203,7 +203,7 @@
 	turns_per_move = 5
 	speed = 0
 	stat_attack = UNCONSCIOUS
-	robust_searching = 1
+	robust_searching = TRUE
 	maxHealth = 90
 	health = 90
 	harm_intent_damage = 8
@@ -242,7 +242,7 @@
 	icon_dead = "voxdead"
 	melee_damage_lower = 20
 	melee_damage_upper = 20
-	ranged = 1
+	ranged = TRUE
 	retreat_distance = 5
 	minimum_distance = 5
 	casingtype = /obj/item/ammo_casing/c45
@@ -255,7 +255,7 @@
 	icon_state = "voxlaser"
 	icon_living = "voxlaser"
 	icon_dead = "voxsuitdead"
-	ranged = 1
+	ranged = TRUE
 	retreat_distance = 5
 	minimum_distance = 5
 	rapid = 2
@@ -289,15 +289,15 @@
 	turns_per_move = 5
 	mob_biotypes =  MOB_ORGANIC | MOB_HUMANOID
 	sentience_type = SENTIENCE_OTHER
-	speed = -0.5
-	move_to_delay = 2
+	speed = 0
+	move_to_delay = 2.8
 	stat_attack = UNCONSCIOUS
-	robust_searching = 1
+	robust_searching = TRUE
 	maxHealth = 80
 	health = 80
 	harm_intent_damage = 8
 	melee_damage_lower = 5
-	melee_damage_upper = 10
+	melee_damage_upper = 8
 	attacktext = "рвёт"
 	attack_sound = 'sound/weapons/punch1.ogg'
 	a_intent = INTENT_HARM
@@ -322,8 +322,8 @@
 	icon_living = "lizardman_spear"
 	maxHealth = 100
 	health = 100
-	melee_damage_lower = 15
-	melee_damage_upper = 15
+	melee_damage_lower = 12
+	melee_damage_upper = 12
 	rapid_melee = 2
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	attacktext = "колет"
@@ -333,7 +333,7 @@
 	desc = "Представитель коренного населения этой планеты. Вооружен мастерски сделанным композитным луком и смертоносными стрелами."
 	icon_state = "lizardman_bow"
 	icon_living = "lizardman_bow"
-	ranged = 1
+	ranged = TRUE
 	retreat_distance = 5
 	minimum_distance = 6
 	projectiletype = /obj/item/projectile/bullet/arrow
@@ -344,7 +344,7 @@
 	name = "arrow"
 	icon_state = "arrow"
 	range = 10
-	damage = 25
+	damage = 20
 	damage_type = BRUTE
 
 /mob/living/simple_animal/hostile/jungle_lizard/axeman
@@ -354,8 +354,8 @@
 	icon_living = "lizardman_axe"
 	maxHealth = 160
 	health = 160
-	melee_damage_lower = 25
-	melee_damage_upper = 25
+	melee_damage_lower = 20
+	melee_damage_upper = 23
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	attacktext = "рубит"
 
@@ -379,11 +379,11 @@
 	health = 120
 	harm_intent_damage = 5
 	melee_damage_lower = 15
-	melee_damage_upper = 18
+	melee_damage_upper = 15
 	rapid_melee = 2
-	move_to_delay = 2
-	speed = -2
-	dodging = 1
+	move_to_delay = 2.8
+	speed = -0.2
+	dodging = TRUE
 	sidestep_per_cycle = 2
 	faction = list("junglemob")
 
@@ -421,7 +421,7 @@
 	. = ..()
 	if(. && isliving(target))
 		var/mob/living/L = target
-		if(L.reagents && !poison_per_bite == 0)
+		if(L.reagents && poison_per_bite)
 			L.reagents.add_reagent(poison_type, poison_per_bite)
 		return .
 
@@ -430,9 +430,9 @@
 	icon = 'icons/obj/items.dmi'
 	icon_state = "fleshtrap"
 	var/id = null
-	var/triggered = 0
+	var/triggered = FALSE
 	var/faction = null
-	var/safety_z_check = 1
+	var/safety_z_check = TRUE
 
 /obj/effect/landmark/awaymissions/gate_lizard/mob_spawn
 	name = "spawner"
@@ -457,7 +457,7 @@
 			continue
 		if(S.id == id)
 			new S.jungle_mob(get_turf(S))
-			triggered = 1
+			triggered = TRUE
 	qdel(src)
 
 /mob/living/proc/spawn_alert(atom/A) // Вызывает появление восклицательного знака над головой при наступании на маркер

@@ -173,7 +173,7 @@
 	to_chat(M, "<span class='warning'>You absorb the potion and feel your intense desire to feed melt away.</span>")
 	to_chat(user, "<span class='notice'>You feed the slime the potion, removing its hunger and calming it.</span>")
 	being_used = TRUE
-	var/newname = sanitize(copytext(input(user, "Would you like to give the slime a name?", "Name your new pet", "pet slime") as null|text,1,MAX_NAME_LEN))
+	var/newname = sanitize(copytext_char(input(user, "Would you like to give the slime a name?", "Name your new pet", "pet slime") as null|text,1,MAX_NAME_LEN))	// SS220 EDIT - ORIGINAL: copytext
 
 	if(!newname)
 		newname = "pet slime"
@@ -574,7 +574,7 @@
 /obj/item/stack/tile/bluespace
 	name = "bluespace floor tile"
 	singular_name = "floor tile"
-	desc = "Through a series of micro-teleports, these tiles let people move at incredible speeds."
+	desc = "Through a series of micro-teleports, these tiles allow you to move things that would otherwise slow you down."
 	icon_state = "tile-bluespace"
 	w_class = WEIGHT_CLASS_NORMAL
 	force = 6
@@ -588,10 +588,13 @@
 
 
 /turf/simulated/floor/bluespace
-	slowdown = -1
 	icon_state = "bluespace"
-	desc = "Through a series of micro-teleports, these tiles let people move at incredible speeds."
+	desc = "Through a series of micro-teleports, these tiles allow you to move things that would otherwise slow you down."
 	floor_tile = /obj/item/stack/tile/bluespace
+
+/turf/simulated/floor/bluespace/Initialize(mapload)
+	. = ..()
+	ADD_TRAIT(src, TRAIT_BLUESPACE_SPEED, FLOOR_EFFECT_TRAIT)
 
 
 /obj/item/stack/tile/sepia

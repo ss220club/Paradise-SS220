@@ -268,10 +268,17 @@
 		return FALSE
 	if(user.pull_force < move_force)
 		return FALSE
+	// This if-statement checks if the user is horizontal, and if the user either has no martial art, or has judo, drunk fighting or krav, in which case it should also fail
+	if(IS_HORIZONTAL(user) && (!user.mind.martial_art || !user.mind.martial_art.can_horizontally_grab))
+		to_chat(user, "<span class='warning'>You fail to get a good grip on [src]!</span>")
+		return
 
 	for(var/obj/item/grab/G in grabbed_by)
 		if(G.assailant == user)
-			to_chat(user, "<span class='notice'>You already grabbed [src].</span>")
+			if(holder_type)			// SS220 EDIT START
+				get_scooped(user)
+			else
+				to_chat(user, "<span class='notice'>Вы уже схватили [src.name].</span>") 	// SS220 EDIT END
 			return
 
 	add_attack_logs(user, src, "Grabbed passively", ATKLOG_ALL)

@@ -321,7 +321,7 @@
 				if("metadata")
 					var/new_metadata = input(user, "Enter any information you'd like others to see, such as Roleplay-preferences:", "Game Preference" , active_character.metadata)  as message|null
 					if(new_metadata)
-						active_character.metadata = sanitize(copytext(new_metadata,1,MAX_MESSAGE_LEN))
+						active_character.metadata = sanitize(copytext_char(new_metadata,1,MAX_MESSAGE_LEN))	// SS220 EDIT - ORIGINAL: copytext
 
 				if("b_type")
 					var/new_b_type = input(user, "Choose your character's blood-type:", "Character Preference") as null|anything in list( "A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-" )
@@ -1105,6 +1105,10 @@
 					parallax = parallax_styles[input(user, "Pick a parallax style", "Parallax Style") as null|anything in parallax_styles]
 					if(parent && parent.mob && parent.mob.hud_used)
 						parent.mob.hud_used.update_parallax_pref()
+
+				if("parallax_darkness")
+					toggles2 ^= PREFTOGGLE_2_PARALLAX_IN_DARKNESS
+					parent.mob?.hud_used?.update_parallax_pref()
 
 				if("screentip_mode")
 					var/desired_screentip_mode = clamp(input(user, "Pick a screentip size, pick 0 to disable screentips. (We suggest a number between 8 and 15):", "Screentip Size") as null|num, 0, 20)

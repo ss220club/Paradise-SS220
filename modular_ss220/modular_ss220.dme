@@ -27,17 +27,23 @@
 #include "hydroponics/hydroponics.dme"
 #include "objects/_objects.dme"
 #include "sechailer/sechailer.dme"
+#include "spy_spider/_spy_spider.dme"
 #include "unique_objects/_unique_objects.dme"
 #include "vending/vending.dme"
 #include "wire_splicing/wiresplicing.dme"
 
 // --- MISC --- //
+#include "administration/_administration.dme"
 #include "aesthetics_sounds/_aesthetics_sounds.dme"
 #include "balance/_balance.dme"
 #include "bureaucracy/_bureaucracy.dme"
 #include "camera_nanomap/camera.dme"
+#include "cinematics/_cinematics.dme"
+#include "closet_picklocking/_closet_picklocking.dme"
 #include "crawl_speed/_crawl_speed.dme"
+#include "cyrillic_fixes/_cyrillic_fixes.dme"
 #include "debug/_debug.dme"
+#include "detective_rework/detective_rework.dme"
 #include "discord_link/_discord_link.dme"
 #include "donor/_donor.dme"
 #include "emotes/_emotes.dme"
@@ -45,9 +51,11 @@
 #include "fullscreen/_fullscreen.dme"
 #include "gunhud/_gunhud.dme"
 #include "jobs/_jobs.dme"
+#include "jukebox/_jukebox.dme"
 #include "keybindings/_keybindings.dme"
 #include "loadout/_loadout.dme"
 #include "logs/_logs.dme"
+#include "mobs/_mobs.dme"
 #include "pixel_shift/_pixel_shift.dme"
 #include "radio_sound/radio_sound.dme"
 #include "screentip_change/_screentip_change.dme"
@@ -55,6 +63,17 @@
 #include "text_to_speech/_tts.dme"
 #include "title_screen/_title_screen.dme"
 #include "whitelist/_whitelist.dme"
+#include "credits/_credits.dme"
+
+// --- PRIME --- //
+// #define MODPACK_MAIN_ONLY
+// Чтобы отключить модпаки прайма, нужно добавиту строку выше в code/__DEFINES/_ss220.dm.
+// Изначально они включены. Сделано так, по двум причинам.
+// 1. Добавить новый дефайн на мейне на хосте куда проще, чем на прайме.
+// 2. Так модпаки прайма будут включены в тестах и линтере.
+#ifndef MODPACK_MAIN_ONLY
+#include "security_redalert_accesses/_security_redalert_accesses.dme"
+#endif
 
 // --- UNUSED MODS --- //
 
