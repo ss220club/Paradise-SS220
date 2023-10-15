@@ -68,7 +68,7 @@
 
 /obj/item/gun/projectile/revolver/rsh12
 	name = "РШ-12"
-	desc = "Крупнокалиберный револьвер винтовочного калибра с, откидным вниз для более удобного заряжания, стволом. По слухам, всё ещё находится на вооружении у СССП."
+	desc = "Тяжелый револьвер винтовочного калибра с, откидным вниз для более удобного заряжания, стволом. По слухам, всё ещё находится на вооружении у СССП."
 	mag_type = /obj/item/ammo_box/magazine/internal/cylinder/rsh12
 	lefthand_file = 'modular_ss220/objects/icons/guns_lefthand.dmi'
 	righthand_file = 'modular_ss220/objects/icons/guns_righthand.dmi'
