@@ -282,6 +282,7 @@
 		return
 	var/mob/living/carbon/human/H = user
 	H.apply_damage(rand(10, 40), BURN, pick("r_hand"))
+	H.adjustCloneLoss(25, TRUE)
 	H.adjustBrainLoss(30, TRUE)
 
 /obj/item/clothing/gloves/ring/immortality_ring/ui_action_click(mob/user, immortality)
