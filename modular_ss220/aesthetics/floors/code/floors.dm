@@ -37,6 +37,16 @@
 	floor_tile = /obj/item/stack/tile/wood/fancy/light
 	broken_states = list("light-fancy-wood-broken", "light-fancy-wood-broken2", "light-fancy-wood-broken3", "light-fancy-wood-broken4", "light-fancy-wood-broken5", "light-fancy-wood-broken6", "light-fancy-wood-broken7")
 
+/turf/simulated/floor/wood/parquet
+	icon_state = "wood_parquet"
+	floor_tile = /obj/item/stack/tile/wood/parquet
+	broken_states = list("wood_parquet-broken", "wood_parquet-broken2", "wood_parquet-broken3", "wood_parquet-broken4", "wood_parquet-broken5", "wood_parquet-broken6", "wood_parquet-broken7")
+
+/turf/simulated/floor/wood/parquet/tile
+	icon_state = "wood_tile"
+	floor_tile = /obj/item/stack/tile/wood/parquet/tile
+	broken_states = list("wood_tile-broken", "wood_tile-broken2", "wood_tile-broken3", "wood_tile-broken4", "wood_tile-broken5", "wood_tile-broken6", "wood_tile-broken7")
+
 // LIGHT FLOORS
 /turf/simulated/floor/light
 	icon = 'icons/turf/floors.dmi'
