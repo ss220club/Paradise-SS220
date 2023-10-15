@@ -7,7 +7,6 @@
 	screen = new/obj/screen/cinematic/credits(src)
 
 /datum/cinematic/credits/start_cinematic(list/watchers)
-
 	watching = watchers
 	if(SEND_GLOBAL_SIGNAL(COMSIG_GLOB_PLAY_CINEMATIC, src) & COMPONENT_GLOB_BLOCK_CINEMATIC)
 		RegisterSignal(SSdcs, COMSIG_GLOB_CINEMATIC_STOPPED_PLAYING, PROC_REF(queue_gone))
