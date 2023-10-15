@@ -258,6 +258,8 @@
 	resistance_flags = INDESTRUCTIBLE | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	actions_types = list(/datum/action/item_action/immortality)
 	var/ability_delay = 100 SECONDS
+	var/invisibility_add = 101
+	var/invisibility_rmv = 0
 
 /datum/action/item_action/immortality
 	name = "Ring ability"
@@ -268,7 +270,7 @@
 		return
 	cooldown = world.time + ability_delay
 	user.status_flags |= GODMODE
-	user.invisibility |= INVISIBILITY_MAXIMUM
+	user.invisibility = invisibility_add
 	visible_message(span_danger("[user] исчезает из реальности!"))
 	to_chat(user, span_cultitalic("Ты чувствуешь чье-то ужасающее присутствие..."))
 	SEND_SOUND (user, sound('sound/hallucinations/i_see_you2.ogg'))
@@ -276,7 +278,7 @@
 
 /obj/item/clothing/gloves/ring/immortality_ring/proc/ring_ability_end(mob/user)
 	user.status_flags &= ~GODMODE
-	user.invisibility &= ~INVISIBILITY_MAXIMUM
+	user.invisibility = invisibility_rmv
 	visible_message(span_danger("[user] возвращается в реальность!"))
 	if(!ishuman(user))
 		return
