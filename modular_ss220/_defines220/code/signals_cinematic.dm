@@ -1,0 +1,1 @@
+#define COMSIG_GLOB_CINEMATIC_WAITING_TO_PLAY "!cinematic_waiting_to_play"
