@@ -24,7 +24,7 @@ SUBSYSTEM_DEF(credits)
 /datum/controller/subsystem/credits/proc/roll_credits(client/client)
 	LAZYINITLIST(client.credits)
 
-	if(!end_titles || end_titles.len == 0)
+	if(!end_titles || !length(end_titles) == 0)
 		end_titles = generate_titles()
 
 	addtimer(CALLBACK(src, PROC_REF(roll_credits_for_client), client), 30 SECONDS, TIMER_CLIENT_TIME)
