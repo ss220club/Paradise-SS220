@@ -176,7 +176,7 @@ export const AgentCardAppearances = (props, context) => {
             margin: '0px',
             'margin-left': '0px',
           }}
-          onclick={() => act('change_appearance_new', { new_appearance: appearance_unit.name })}
+          onclick={() => act('change_appearance', { new_appearance: appearance_unit.name })}
         />
       ))}
     </Section>
