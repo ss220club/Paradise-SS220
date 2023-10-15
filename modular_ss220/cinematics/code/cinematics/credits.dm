@@ -10,7 +10,7 @@
 
 	watching = watchers
 	if(SEND_GLOBAL_SIGNAL(COMSIG_GLOB_PLAY_CINEMATIC, src) & COMPONENT_GLOB_BLOCK_CINEMATIC)
-		RegisterSignal(SSdcs, COMSIG_GLOB_CINEMATIC_WAITING_TO_PLAY, PROC_REF(queue_gone))
+		RegisterSignal(SSdcs, COMSIG_GLOB_CINEMATIC_STOPPED_PLAYING, PROC_REF(queue_gone))
 		return
 	. = ..()
 

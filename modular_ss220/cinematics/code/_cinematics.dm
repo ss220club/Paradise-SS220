@@ -149,7 +149,7 @@
 
 	qdel(src)
 
-	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_CINEMATIC_WAITING_TO_PLAY, null)
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_CINEMATIC_STOPPED_PLAYING, null)
 
 /// Locks a mob, preventing them from moving, being hurt, or acting
 /datum/cinematic/proc/lock_mob(mob/to_lock)

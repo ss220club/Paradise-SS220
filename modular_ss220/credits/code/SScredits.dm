@@ -17,7 +17,7 @@ SUBSYSTEM_DEF(credits)
 	title_music = pick(file2list("config/credits/sounds/title_music.txt"))
 
 /datum/controller/subsystem/credits/proc/roll_credits_for_clients(list/clients)
-	if(length(end_titles) == 0)
+	if(!length(end_titles))
 		end_titles = generate_titles()
 
 	for(var/client/client in clients)
