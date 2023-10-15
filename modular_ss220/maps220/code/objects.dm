@@ -257,29 +257,32 @@
 	desc = "Кольцо цвета оникса из неизвестного материала. Позолоченные надписи на внешней стороне причудливо пульсируют, испуская зловещую дымку. Надеть его кажется не лучшей идеей..."
 	resistance_flags = INDESTRUCTIBLE | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	actions_types = list(/datum/action/item_action/immortality)
+	var/ability_delay = 100 SECONDS
 
 /datum/action/item_action/immortality
 	name = "Ring ability"
 
 /obj/item/clothing/gloves/ring/immortality_ring/proc/ring_ability(mob/user)
-	var/ability_delay = 100 SECONDS
-	if(cooldown < world.time)
-		cooldown = world.time + ability_delay
-		user.status_flags |= GODMODE
-		user.invisibility |= INVISIBILITY_MAXIMUM
-		visible_message(span_danger("[user] исчезает из реальности!"))
-		to_chat(user, span_cultitalic("Ты чувствуешь чье-то ужасающее присутствие..."))
-		SEND_SOUND (user, sound('sound/hallucinations/i_see_you2.ogg'))
-		spawn(8 SECONDS)
-			user.status_flags &= ~GODMODE
-			user.invisibility &= ~INVISIBILITY_MAXIMUM
-			visible_message(span_danger("[user] возвращается в реальность!"))
-			if(ishuman(user))
-				var/mob/living/carbon/human/H = user
-				H.apply_damage(rand(10, 40), BURN, pick("r_hand"))
-				H.adjustBrainLoss(30, TRUE)
-	else
+	if(cooldown > world.time)
 		to_chat(user, span_warning("[name] еще перезаряжается!"))
+		return
+	cooldown = world.time + ability_delay
+	user.status_flags |= GODMODE
+	user.invisibility |= INVISIBILITY_MAXIMUM
+	visible_message(span_danger("[user] исчезает из реальности!"))
+	to_chat(user, span_cultitalic("Ты чувствуешь чье-то ужасающее присутствие..."))
+	SEND_SOUND (user, sound('sound/hallucinations/i_see_you2.ogg'))
+	addtimer(CALLBACK(src, PROC_REF(ring_ability_end), user), 8 SECONDS)
+
+/obj/item/clothing/gloves/ring/immortality_ring/proc/ring_ability_end(mob/user)
+	user.status_flags &= ~GODMODE
+	user.invisibility &= ~INVISIBILITY_MAXIMUM
+	visible_message(span_danger("[user] возвращается в реальность!"))
+	if(!ishuman(user))
+		return
+	var/mob/living/carbon/human/H = user
+	H.apply_damage(rand(10, 40), BURN, pick("r_hand"))
+	H.adjustBrainLoss(30, TRUE)
 
 /obj/item/clothing/gloves/ring/immortality_ring/ui_action_click(mob/user, immortality)
 	ring_ability(user)
