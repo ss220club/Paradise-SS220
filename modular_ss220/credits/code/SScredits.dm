@@ -148,7 +148,7 @@ SUBSYSTEM_DEF(credits)
 	mouse_opacity = 0
 	alpha = 0
 	screen_loc = "CENTER-7,CENTER-7"
-	plane = 25
+	plane = CREDITS_PLANE
 
 	var/matrix/target
 	var/client/parent
