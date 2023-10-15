@@ -29,7 +29,7 @@ SUBSYSTEM_DEF(credits)
 	var/list/_credits = client.credits
 
 	for(var/item in end_titles)
-		if(!client || !client.credits)
+		if(!client?.credits)
 			return
 		var/obj/screen/credit/title = new(null, item, client)
 		_credits += title
