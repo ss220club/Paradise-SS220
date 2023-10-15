@@ -117,6 +117,16 @@
 	hitsound_wall = "ricochet"
 	impact_effect_type = /obj/effect/temp_visual/impact_effect
 
+/obj/item/projectile/bullet/mm127/on_hit(atom/target, blocked, hit_zone)
+	. = ..()
+	if(!isliving(target))
+		return
+	var/mob/living/L = target
+	if(L.move_resist == INFINITY)
+		return
+	var/atom/throw_target = get_edge_target_turf(L, get_dir(src, get_step_away(L, starting)))
+	L.throw_at(throw_target, 2, 2)
+
 /obj/item/ammo_box/speed_loader_mm127
 	name = "speed loader (12.7mm)"
 	desc = "Designed to quickly reload... is it a revolver speedloader with rifle cartidges in it?"
