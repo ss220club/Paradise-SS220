@@ -1,4 +1,3 @@
-#define CREDITS_BACKGROUND_PLANE 25
 #define CREDITS_PLANE 26
 
 SUBSYSTEM_DEF(credits)
@@ -17,39 +16,39 @@ SUBSYSTEM_DEF(credits)
 	credit_animate_height = 14 * world.icon_size
 	title_music = pick(file2list("config/credits/sounds/title_music.txt"))
 
-/datum/controller/subsystem/credits/proc/roll_credits_for_all_clients()
-	for(var/client/client in GLOB.clients)
-		SScredits.roll_credits(client)
-
-/datum/controller/subsystem/credits/proc/roll_credits(client/client)
-	LAZYINITLIST(client.credits)
-
-	if(end_titles)
+/datum/controller/subsystem/credits/proc/roll_credits_for_clients(list/clients)
+	if(!length(end_titles))
 		end_titles = generate_titles()
 
-	addtimer(CALLBACK(src, PROC_REF(roll_credits_for_client), client), 30 SECONDS, TIMER_CLIENT_TIME)
+	for(var/client/client in clients)
+		SScredits.roll_credits_for_client(client)
 
 /datum/controller/subsystem/credits/proc/roll_credits_for_client(client/client)
+	LAZYINITLIST(client.credits)
+
 	var/list/_credits = client.credits
 
-	if(client.mob)
-		client.mob.overlay_fullscreen("black",/obj/screen/fullscreen/black)
-		SEND_SOUND(client, sound(title_music, repeat = FALSE, wait = FALSE, volume = 85 * client.prefs.get_channel_volume(CHANNEL_LOBBYMUSIC), channel = CHANNEL_LOBBYMUSIC))
+	var/obj/screen/credit/logo = new /obj/screen/credit/logo(null, "", client)
+
+	addtimer(CALLBACK(src, PROC_REF(roll_credits), _credits, logo, client), 5 SECONDS, TIMER_CLIENT_TIME)
+
+/datum/controller/subsystem/credits/proc/roll_credits(list/credits, obj/screen/credit/logo/logo, client/client)
+	credits += logo
+	logo.rollem()
 
 	for(var/item in end_titles)
-		if(!client.credits)
+		if(!client?.credits)
 			return
 		var/obj/screen/credit/title = new(null, item, client)
-		_credits += title
+		credits += title
 		title.rollem()
 		sleep(credit_spawn_speed)
 
 	addtimer(CALLBACK(src, PROC_REF(clear_credits), client), (credit_roll_speed), TIMER_CLIENT_TIME)
-
 /datum/controller/subsystem/credits/proc/clear_credits(client/client)
+	if(!client)
+		return
 	QDEL_NULL(client.credits)
-	client.mob.clear_fullscreen("black")
-	SEND_SOUND(client, sound(null, repeat = FALSE, wait = FALSE, volume = 85 * client.prefs.get_channel_volume(CHANNEL_LOBBYMUSIC), channel = CHANNEL_LOBBYMUSIC))
 
 /datum/controller/subsystem/credits/proc/generate_titles()
 	RETURN_TYPE(/list)
@@ -82,6 +81,8 @@ SUBSYSTEM_DEF(credits)
 		if(ismonkeybasic(human))
 			continue
 		if(!human.last_known_ckey)
+			continue
+		if(!human.client?.holder)
 			continue
 		if(human.client.holder.rank == "Банда")
 			streamers += "<center>[human.real_name]([human.ckey]) в роли [human.job]<br><center>"
@@ -151,26 +152,19 @@ SUBSYSTEM_DEF(credits)
 
 	return titles
 
-
-/obj/screen/fullscreen/black
-	icon = 'icons/mob/screen_gen.dmi'
-	icon_state = "black"
-	screen_loc = "WEST,SOUTH to EAST,NORTH"
-	plane = CREDITS_BACKGROUND_PLANE
-	show_when_dead = TRUE
-
-
 /obj/screen/credit
 	icon_state = "blank"
 	mouse_opacity = 0
 	alpha = 0
 	screen_loc = "CENTER-7,CENTER-7"
 	plane = CREDITS_PLANE
-	var/client/parent
+
 	var/matrix/target
+	var/client/parent
 
 /obj/screen/credit/Initialize(mapload, credited, client/client)
 	. = ..()
+
 	parent = client
 	maptext = {"<div style="font:'Small Fonts'">[credited]</div>"}
 	maptext_height = world.icon_size * 2
@@ -182,12 +176,14 @@ SUBSYSTEM_DEF(credits)
 	animate(src, transform = M, time = SScredits.credit_roll_speed)
 	target = M
 	animate(src, alpha = 255, time = SScredits.credit_ease_duration, flags = ANIMATION_PARALLEL)
-	spawn(SScredits.credit_roll_speed - SScredits.credit_ease_duration)
-		if(!QDELETED(src))
-			animate(src, alpha = 0, transform = target, time = SScredits.credit_ease_duration)
-			sleep(SScredits.credit_ease_duration)
-			qdel(src)
+	addtimer(CALLBACK(src, PROC_REF(delete_credit)), SScredits.credit_roll_speed - SScredits.credit_ease_duration, TIMER_CLIENT_TIME)
 	parent.screen += src
+
+/obj/screen/credit/proc/delete_credit()
+	if(!QDELETED(src))
+		animate(src, alpha = 0, transform = target, time = SScredits.credit_ease_duration)
+		sleep(SScredits.credit_ease_duration)
+		qdel(src)
 
 /obj/screen/credit/Destroy()
 	if(parent)
@@ -196,7 +192,33 @@ SUBSYSTEM_DEF(credits)
 		parent = null
 	return ..()
 
+/obj/screen/credit/logo
+	icon = 'modular_ss220/credits/icons/logo.dmi'
+	icon_state = "ss220"
+	screen_loc = "CENTER - 2,CENTER - 3"
+	alpha = 100
+
+
+/obj/screen/credit/logo/Initialize(mapload, credited, client/client)
+	. = ..()
+	animate(src, alpha = 220, time = 3 SECONDS)
+	parent.screen += src
+
+/obj/screen/credit/logo/rollem()
+	var/matrix/M = matrix(transform)
+	M.Translate(0, SScredits.credit_animate_height / 2)
+	animate(src, transform = M, time = SScredits.credit_roll_speed / 2)
+	target = M
+	animate(src, alpha = 255, time = SScredits.credit_ease_duration / 2, flags = ANIMATION_PARALLEL)
+	addtimer(CALLBACK(src, PROC_REF(delete_credit)),(SScredits.credit_roll_speed - SScredits.credit_ease_duration) / 2, TIMER_CLIENT_TIME)
+
+
+/obj/screen/credit/logo/delete_credit()
+	if(!QDELETED(src))
+		animate(src, alpha = 0, transform = target, time = SScredits.credit_ease_duration / 2)
+		sleep(SScredits.credit_ease_duration / 2)
+		qdel(src)
+
 /client/var/list/credits
 
 #undef CREDITS_PLANE
-#undef CREDITS_BACKGROUND_PLANE
