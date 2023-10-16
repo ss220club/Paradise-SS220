@@ -9,6 +9,7 @@
 		new /datum/stack_recipe("oak wood floor tile", /obj/item/stack/tile/wood/oak, 1, 4, 20),
 		new /datum/stack_recipe("birch wood floor tiles", /obj/item/stack/tile/wood/birch, 1, 4, 20),
 		new /datum/stack_recipe("cherry wood floor tiles", /obj/item/stack/tile/wood/cherry, 1, 4, 20),
+		new /datum/stack_recipe("fancy wood floor tiles", /obj/item/stack/tile/wood/fancy, 1, 4, 20),
 		new /datum/stack_recipe("fancy oak wood floor tiles", /obj/item/stack/tile/wood/fancy/oak, 1, 4, 20),
 		new /datum/stack_recipe("fancy birch wood floor tiles", /obj/item/stack/tile/wood/fancy/birch, 1, 4, 20),
 		new /datum/stack_recipe("fancy cherry wood floor tiles", /obj/item/stack/tile/wood/fancy/cherry, 1, 4, 20),
