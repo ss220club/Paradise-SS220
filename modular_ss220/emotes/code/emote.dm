@@ -1,12 +1,6 @@
 /datum/emote
 	cooldown = 1.5 SECONDS
 	audio_cooldown = 3 SECONDS
-	var/name
-
-/datum/emote/New()
-	. = ..()
-	if(!name)
-		name = key
 
 //////////////////////
 /// Living Emotes ///
