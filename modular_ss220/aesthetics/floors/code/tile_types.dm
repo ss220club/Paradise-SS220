@@ -47,13 +47,13 @@
 	turf_type = /turf/simulated/floor/wood/fancy/cherry
 	merge_type = /obj/item/stack/tile/wood/fancy/cherry
 
-/obj/item/stack/tile/wood/fancy/light
+/obj/item/stack/tile/wood/fancy
 	name = "fancy light oak wood floor tiles"
 	singular_name = "fancy light oak wood floor tile"
 	icon = 'modular_ss220/aesthetics/floors/icons/tiles.dmi'
-	icon_state = "tile-wood-fancy-light"
-	turf_type = /turf/simulated/floor/wood/fancy/light
-	merge_type = /obj/item/stack/tile/wood/fancy/light
+	icon_state = "tile-wood-fancy"
+	turf_type = /turf/simulated/floor/wood/fancy
+	merge_type = /obj/item/stack/tile/wood/fancy
 
 /obj/item/stack/tile/wood/parquet
 	name = "parquet wood floor tiles"
