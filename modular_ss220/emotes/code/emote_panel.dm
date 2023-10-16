@@ -22,6 +22,7 @@
 					"visible" = emote.emote_type & EMOTE_VISIBLE,
 					"audible" = emote.emote_type & EMOTE_AUDIBLE,
 					"sound" = !isnull(emote.get_sound(user)),
+					"targettable" = emote.message_param,
 				))
 
 	data["emotes"] = emotes
@@ -35,17 +36,18 @@
 	switch(action)
 		if("play_emote")
 			var/emote_path = params["emote_path"]
+			var/useTarget = params["useTarget"]
 			var/datum/emote/emote = new emote_path()
 			var/emote_act = emote.key
 			var/emote_param
-			if(emote.message_param)
+			if(emote.message_param && useTarget == "true")
 				emote_param = input(usr, "Дополните эмоцию", emote.message_param)
 			usr.emote(emote_key = emote_act, message = emote_param, intentional = TRUE)
 
 /datum/emote_panel/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = FALSE, datum/tgui/master_ui = null, datum/ui_state/state = GLOB.always_state)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, ui_key, "EmotePanel", "Панель эмоций", 500, 450, master_ui, state)
+		ui = new(user, src, ui_key, "EmotePanel", "Панель эмоций", 500, 550, master_ui, state)
 		ui.open()
 	ui.set_autoupdate(FALSE)
 
