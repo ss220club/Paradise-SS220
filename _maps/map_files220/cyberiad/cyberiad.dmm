@@ -1388,10 +1388,7 @@
 	dir = 1
 	},
 /obj/structure/rack,
-/obj/item/storage/box/tranquilizer{
-	pixel_x = 3;
-	pixel_y = -3
-	},
+/obj/item/storage/box/tranquilizer,
 /obj/structure/window/reinforced{
 	dir = 8
 	},
@@ -1660,15 +1657,27 @@
 /area/station/security/brig)
 "ajq" = (
 /obj/structure/rack,
-/obj/item/clothing/suit/armor/bulletproof/sec,
-/obj/item/clothing/head/helmet/alt,
-/obj/item/clothing/suit/armor/bulletproof/sec,
-/obj/item/clothing/head/helmet/alt,
-/obj/item/clothing/suit/armor/bulletproof/sec,
-/obj/item/clothing/head/helmet/alt,
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
 	dir = 8
+	},
+/obj/item/clothing/suit/armor/bulletproof/sec{
+	pixel_x = -3
+	},
+/obj/item/clothing/suit/armor/bulletproof/sec,
+/obj/item/clothing/suit/armor/bulletproof/sec{
+	pixel_x = 3
+	},
+/obj/item/clothing/head/helmet/alt{
+	pixel_y = 8;
+	pixel_x = -3
+	},
+/obj/item/clothing/head/helmet/alt{
+	pixel_y = 8
+	},
+/obj/item/clothing/head/helmet/alt{
+	pixel_y = 8;
+	pixel_x = 3
 	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
@@ -1740,15 +1749,21 @@
 /area/station/security/brig)
 "ajK" = (
 /obj/structure/rack,
-/obj/item/clothing/head/helmet/riot,
-/obj/item/clothing/head/helmet/riot,
-/obj/item/clothing/head/helmet/riot,
 /obj/structure/window/reinforced{
 	dir = 1;
 	layer = 2.9
 	},
 /obj/structure/window/reinforced{
 	dir = 4
+	},
+/obj/item/clothing/head/helmet/riot{
+	pixel_y = 3;
+	pixel_x = 3
+	},
+/obj/item/clothing/head/helmet/riot,
+/obj/item/clothing/head/helmet/riot{
+	pixel_y = -3;
+	pixel_x = -3
 	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
@@ -1842,13 +1857,19 @@
 /area/station/security/permabrig)
 "akt" = (
 /obj/structure/rack,
-/obj/item/clothing/suit/armor/riot/sec,
-/obj/item/clothing/suit/armor/riot/sec,
-/obj/item/clothing/suit/armor/riot/sec,
 /obj/structure/window/reinforced{
 	dir = 4
 	},
 /obj/machinery/light/directional/east,
+/obj/item/clothing/suit/armor/riot/sec{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/item/clothing/suit/armor/riot/sec,
+/obj/item/clothing/suit/armor/riot/sec{
+	pixel_y = -3;
+	pixel_x = -3
+	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "vault"
@@ -10523,6 +10544,7 @@
 /area/station/hallway/primary/fore)
 "aNX" = (
 /obj/machinery/disposal,
+/obj/machinery/light_switch/west,
 /obj/structure/disposalpipe/trunk{
 	dir = 4
 	},
@@ -55408,7 +55430,6 @@
 	pixel_x = 4;
 	pixel_y = 4
 	},
-/obj/structure/reagent_dispensers/virusfood/north,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "whitegreen"
@@ -69571,7 +69592,11 @@
 	},
 /area/station/service/chapel)
 "mEM" = (
-/obj/structure/displaycase/hos,
+/obj/structure/closet/secure_closet/guncabinet{
+	name = "HoS personal weapons";
+	req_access = list(58)
+	},
+/obj/item/clothing/gloves/combat,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -76020,7 +76045,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/light_switch/east,
 /turf/simulated/floor/plasteel{
 	icon_state = "barber"
 	},
