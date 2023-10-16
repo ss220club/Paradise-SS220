@@ -82,10 +82,9 @@ SUBSYSTEM_DEF(credits)
 			continue
 		if(!human.last_known_ckey)
 			continue
-		if(human.client?.holder)
-			if(human.client.holder.rank == "Банда")
-				streamers += "<center>[human.real_name]([human.ckey]) в роли [human.job]<br><center>"
-				continue
+		if(human.client?.holder?.rank == "Банда")
+			streamers += "<center>[human.real_name]([human.ckey]) в роли [human.job]<br><center>"
+			continue
 		if(!length(cast) && !chunksize)
 			chunk += "В съемках участвовали:"
 		chunk += "[human.real_name] в роли [uppertext(human.job)]"
