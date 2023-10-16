@@ -1,4 +1,4 @@
-import { useBackend, useSharedState } from '../backend';
+import { useBackend, useLocalState, useSharedState } from '../backend';
 import { Window } from '../layouts';
 import { Button, Section, Input, LabeledList } from '../components';
 
@@ -17,7 +17,7 @@ export const EmotePanelContent = (props, context) => {
   const { act, data } = useBackend(context);
   const { emotes } = data;
 
-  const [searchText, setSearchText] = useSharedState(
+  const [searchText, setSearchText] = useLocalState(
     context,
     'searchText',
     ''

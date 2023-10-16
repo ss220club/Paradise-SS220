@@ -21,7 +21,7 @@
 					"hands" = emote.hands_use_check,
 					"visible" = emote.emote_type & EMOTE_VISIBLE,
 					"audible" = emote.emote_type & EMOTE_AUDIBLE,
-					"sound" = !isnull(emote.sound),
+					"sound" = !isnull(emote.get_sound(user)),
 				))
 
 	data["emotes"] = emotes
@@ -37,18 +37,17 @@
 			var/emote_path = params["emote_path"]
 			var/datum/emote/emote = new emote_path()
 			var/emote_act = emote.key
+			var/emote_param
 			if(emote.message_param)
-				var/emote_param = input(usr, "Дополните эмоцию", emote.message_param)
-				if(!isnull(emote_param))
-					emote_act = "[emote_act] [emote_param]"
-			usr.emote(emote_act, intentional = TRUE)
+				emote_param = input(usr, "Дополните эмоцию", emote.message_param)
+			usr.emote(emote_key = emote_act, message = emote_param, intentional = TRUE)
 
 /datum/emote_panel/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = FALSE, datum/tgui/master_ui = null, datum/ui_state/state = GLOB.always_state)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, ui_key, "EmotePanel", "Панель эмоций", 500, 450, master_ui, state)
-		ui.set_autoupdate(FALSE)
 		ui.open()
+	ui.set_autoupdate(FALSE)
 
 /mob/living/verb/emote_panel()
 	set name = "Панель эмоций"
