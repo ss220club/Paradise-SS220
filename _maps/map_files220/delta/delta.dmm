@@ -40884,8 +40884,8 @@
 	},
 /area/station/medical/medbay)
 "dCl" = (
-/obj/effect/decal/warning_stripes/north,
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/effect/decal/warning_stripes/northeastcorner,
 /turf/simulated/floor/plasteel/dark,
 /area/station/security/armory/secure)
 "dCo" = (
@@ -47752,10 +47752,10 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/fore)
 "eUA" = (
-/obj/effect/decal/warning_stripes/south,
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
 	},
+/obj/effect/decal/warning_stripes/southeastcorner,
 /turf/simulated/floor/plasteel/dark,
 /area/station/security/armory/secure)
 "eUF" = (
@@ -55377,12 +55377,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/starboard2)
-"hPM" = (
-/obj/machinery/economy/vending/security,
-/obj/effect/decal/warning_stripes/red/hollow,
-/obj/effect/decal/warning_stripes/east,
-/turf/simulated/floor/plasteel/dark,
-/area/station/security/armory/secure)
 "hQe" = (
 /obj/item/radio/intercom/directional/south,
 /turf/simulated/floor/plasteel{
@@ -56962,7 +56956,7 @@
 	},
 /area/station/hallway/primary/central/north)
 "itF" = (
-/obj/machinery/suit_storage_unit/security,
+/obj/structure/closet/l3closet/security,
 /obj/effect/decal/warning_stripes/red/hollow,
 /turf/simulated/floor/plasteel/dark,
 /area/station/security/armory/secure)
@@ -57274,10 +57268,6 @@
 	},
 /turf/simulated/floor/plasteel/white,
 /area/station/service/kitchen)
-"izl" = (
-/obj/effect/decal/warning_stripes/east,
-/turf/simulated/floor/plasteel/dark,
-/area/station/security/armory/secure)
 "izv" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -71058,6 +71048,11 @@
 "nNM" = (
 /turf/simulated/wall/r_wall,
 /area/station/engineering/equipmentstorage)
+"nNR" = (
+/obj/effect/decal/warning_stripes/northeast,
+/obj/structure/dispenser/oxygen,
+/turf/simulated/floor/plasteel/dark,
+/area/station/security/armory/secure)
 "nNZ" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
@@ -75034,12 +75029,6 @@
 	icon_state = "neutralcorner"
 	},
 /area/station/hallway/secondary/bridge)
-"prr" = (
-/obj/structure/closet/bombclosetsecurity,
-/obj/effect/decal/warning_stripes/red/hollow,
-/obj/effect/decal/warning_stripes/east,
-/turf/simulated/floor/plasteel/dark,
-/area/station/security/armory/secure)
 "prt" = (
 /obj/effect/spawner/random_spawners/fungus_maybe,
 /turf/simulated/wall,
@@ -85290,12 +85279,6 @@
 	icon_state = "neutralfull"
 	},
 /area/station/maintenance/electrical)
-"tmE" = (
-/obj/structure/dispenser/oxygen,
-/obj/effect/decal/warning_stripes/red/hollow,
-/obj/effect/decal/warning_stripes/east,
-/turf/simulated/floor/plasteel/dark,
-/area/station/security/armory/secure)
 "tmY" = (
 /obj/item/emptysandbag,
 /obj/effect/decal/cleanable/dirt,
@@ -85507,6 +85490,7 @@
 /area/station/maintenance/fore)
 "tqm" = (
 /obj/machinery/door/window/reinforced/normal,
+/obj/effect/mapping_helpers/airlock/windoor/access/all/security/general,
 /turf/simulated/floor/plating,
 /area/station/security/permabrig)
 "tqr" = (
@@ -88025,10 +88009,6 @@
 	icon_state = "green"
 	},
 /area/station/medical/virology/lab)
-"umL" = (
-/obj/effect/decal/warning_stripes/southeastcorner,
-/turf/simulated/floor/plasteel/dark,
-/area/station/security/armory/secure)
 "umY" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/small/directional/south,
@@ -90129,6 +90109,11 @@
 	icon_state = "caution"
 	},
 /area/station/engineering/atmos/control)
+"vbK" = (
+/obj/structure/closet/bombclosetsecurity,
+/obj/effect/decal/warning_stripes/red/hollow,
+/turf/simulated/floor/plasteel/dark,
+/area/station/security/armory/secure)
 "vbQ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -90690,9 +90675,9 @@
 /turf/simulated/floor/plating,
 /area/space)
 "vnV" = (
-/obj/structure/closet/l3closet/security,
 /obj/effect/decal/warning_stripes/red/hollow,
 /obj/effect/decal/warning_stripes/east,
+/obj/machinery/suit_storage_unit/security,
 /turf/simulated/floor/plasteel/dark,
 /area/station/security/armory/secure)
 "voc" = (
@@ -92754,6 +92739,11 @@
 	icon_state = "neutralcorner"
 	},
 /area/station/maintenance/starboard2)
+"wgg" = (
+/obj/effect/decal/warning_stripes/southeast,
+/obj/machinery/economy/vending/security,
+/turf/simulated/floor/plasteel/dark,
+/area/station/security/armory/secure)
 "wgx" = (
 /turf/simulated/floor/plating,
 /area/station/maintenance/library)
@@ -153027,15 +153017,15 @@ oaR
 lEP
 off
 ulm
-prr
-tmE
+vnV
+vnV
 vBg
 vBg
 ftp
 fkv
 vBg
 vBg
-hPM
+vnV
 vnV
 hKT
 edc
@@ -153799,15 +153789,15 @@ lEP
 off
 xPq
 xaa
-izl
 wJU
+lam
 jeM
 ubk
 ptZ
 acU
 nqn
-umL
-htQ
+lam
+plN
 ygI
 oaR
 lEP
@@ -154056,7 +154046,7 @@ rpE
 off
 ulm
 ulm
-itF
+xaa
 dCl
 kSW
 tWq
@@ -154064,7 +154054,7 @@ vpT
 vpT
 vpT
 eUA
-itF
+htQ
 hKT
 edc
 ePY
@@ -154313,14 +154303,14 @@ lEP
 off
 pSw
 ulm
-itF
-xaa
+vbK
+nNR
 rYw
 qBR
 gCk
 wVR
 uSp
-htQ
+wgg
 itF
 hKT
 oaR
