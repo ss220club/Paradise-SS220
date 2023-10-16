@@ -195,7 +195,7 @@ SUBSYSTEM_DEF(credits)
 /obj/screen/credit/logo
 	icon = 'modular_ss220/credits/icons/logo.dmi'
 	icon_state = "ss220"
-	screen_loc = "CENTER - 4,CENTER - 3"
+	screen_loc = "CENTER - 2,CENTER - 3"
 	alpha = 100
 
 
