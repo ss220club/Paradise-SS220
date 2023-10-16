@@ -49,7 +49,7 @@
 
 /obj/item/stack/tile/wood/fancy
 	name = "fancy light oak wood floor tiles"
-	singular_name = "fancy light oak wood floor tile"
+	singular_name = "fancy wood floor tile"
 	icon = 'modular_ss220/aesthetics/floors/icons/tiles.dmi'
 	icon_state = "tile-wood-fancy"
 	turf_type = /turf/simulated/floor/wood/fancy
@@ -57,7 +57,7 @@
 
 /obj/item/stack/tile/wood/parquet
 	name = "parquet wood floor tiles"
-	singular_name = "fancy light oak wood floor tile"
+	singular_name = "wood parquet floor tile"
 	icon = 'modular_ss220/aesthetics/floors/icons/tiles.dmi'
 	icon_state = "tile-wood-parquet"
 	turf_type = /turf/simulated/floor/wood/parquet
@@ -65,7 +65,7 @@
 
 /obj/item/stack/tile/wood/parquet/tile
 	name = "tiled parquet wood floor tiles"
-	singular_name = "fancy light oak wood floor tile"
+	singular_name = "wood tiled parquet floor tile"
 	icon = 'modular_ss220/aesthetics/floors/icons/tiles.dmi'
 	icon_state = "tile-wood-tile"
 	turf_type = /turf/simulated/floor/wood/parquet/tile
