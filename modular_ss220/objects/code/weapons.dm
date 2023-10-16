@@ -8,6 +8,7 @@
 	righthand_file = 'modular_ss220/objects/icons/guns_righthand.dmi'
 	icon = 'modular_ss220/objects/icons/guns.dmi'
 	icon_state = "anaconda"
+	item_state = "anaconda"
 
 /obj/item/gun/projectile/revolver/anaconda/attackby(obj/item/A, mob/user, params)
 	if(istype(A, /obj/item/ammo_box/box_d44))
@@ -57,6 +58,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	ammo_type = /obj/item/ammo_casing/d44
 	max_ammo = 24
+	icon = 'modular_ss220/objects/icons/ammo.dmi'
 	icon_state = "44_box"
 
 /obj/structure/displaycase/hos
@@ -140,7 +142,7 @@
 	name = "ammo box (12.7)"
 	desc = "Contains up to 100 12.7mm cartridges."
 	w_class = WEIGHT_CLASS_BULKY
-	ammo_type = /obj/item/ammo_casing/d44
+	ammo_type = /obj/item/ammo_casing/mm127
 	max_ammo = 100
 	icon = 'modular_ss220/objects/icons/ammo.dmi'
 	icon_state = "mm127_box"
