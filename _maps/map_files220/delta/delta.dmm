@@ -22432,6 +22432,11 @@
 	icon_state = "neutralfull"
 	},
 /area/station/hallway/primary/port)
+"bUe" = (
+/obj/structure/table/reinforced,
+/obj/item/book/manual/wiki/security_space_law/black,
+/turf/simulated/floor/plasteel/dark,
+/area/station/security/interrogation/observation)
 "bUi" = (
 /turf/simulated/floor/plasteel{
 	dir = 1;
@@ -23894,6 +23899,8 @@
 /obj/effect/mapping_helpers/airlock/windoor/access/all/security/general{
 	dir = 8
 	},
+/obj/item/paper_bin,
+/obj/item/pen,
 /turf/simulated/floor/plasteel/dark,
 /area/station/security/brig)
 "bZG" = (
@@ -25227,6 +25234,10 @@
 /obj/structure/cable{
 	d2 = 4;
 	icon_state = "0-4"
+	},
+/obj/structure/chair/sofa/bench/left{
+	cover_color = "#68452a";
+	dir = 4
 	},
 /turf/simulated/floor/plasteel{
 	dir = 1;
@@ -36998,6 +37009,7 @@
 /area/station/maintenance/fore2)
 "deT" = (
 /obj/structure/table,
+/obj/item/storage/fancy/donut_box,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "red"
@@ -50541,9 +50553,11 @@
 	},
 /area/station/maintenance/starboard)
 "fYP" = (
-/obj/structure/table/reinforced,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/item/folder/red,
+/obj/item/pen,
+/obj/structure/table,
 /turf/simulated/floor/plasteel,
 /area/station/security/processing)
 "fZa" = (
@@ -51141,6 +51155,11 @@
 /area/station/hallway/secondary/exit/maintenance)
 "gme" = (
 /obj/structure/table/reinforced,
+/obj/item/book/manual/wiki/sop_legal,
+/obj/item/book/manual/wiki/security_space_law{
+	pixel_y = 3
+	},
+/obj/item/megaphone,
 /turf/simulated/floor/plasteel{
 	dir = 9;
 	icon_state = "darkred"
@@ -51479,6 +51498,8 @@
 /area/station/security/storage)
 "gtc" = (
 /obj/structure/table/reinforced,
+/obj/item/clipboard,
+/obj/item/toy/figure/crew/secofficer,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "darkred"
@@ -54417,6 +54438,8 @@
 /area/station/maintenance/starboard2)
 "hzJ" = (
 /obj/structure/table/reinforced,
+/obj/item/folder/red,
+/obj/item/pen,
 /turf/simulated/floor/plasteel{
 	icon_state = "darkred"
 	},
@@ -55000,6 +55023,8 @@
 /area/station/hallway/secondary/exit/maintenance)
 "hJo" = (
 /obj/structure/table/reinforced,
+/obj/machinery/recharger,
+/obj/item/storage/fancy/donut_box,
 /turf/simulated/floor/plasteel{
 	dir = 10;
 	icon_state = "darkred"
@@ -55024,13 +55049,13 @@
 	},
 /area/station/medical/medbay2)
 "hJA" = (
-/obj/structure/table/reinforced,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
 	},
+/obj/structure/table,
 /turf/simulated/floor/plasteel{
 	icon_state = "redfull"
 	},
@@ -55435,6 +55460,16 @@
 	},
 /turf/simulated/floor/plating,
 /area/station/legal/magistrate)
+"hQQ" = (
+/obj/structure/chair/sofa/bench/right{
+	cover_color = "#68452a";
+	dir = 4
+	},
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "redcorner"
+	},
+/area/station/security/lobby)
 "hQV" = (
 /obj/machinery/atmospherics/portable/canister/nitrogen,
 /obj/machinery/atmospherics/unary/portables_connector{
@@ -56148,6 +56183,15 @@
 	},
 /turf/simulated/floor/plasteel/white,
 /area/station/science/research)
+"ieN" = (
+/obj/structure/table/reinforced,
+/obj/item/paper_bin,
+/obj/item/pen,
+/turf/simulated/floor/plasteel{
+	dir = 6;
+	icon_state = "red"
+	},
+/area/station/security/processing)
 "ieW" = (
 /obj/structure/grille{
 	density = 0;
@@ -60140,7 +60184,7 @@
 	},
 /area/station/service/bar/atrium)
 "jEo" = (
-/obj/structure/table/reinforced,
+/obj/machinery/economy/vending/security,
 /turf/simulated/floor/plasteel{
 	dir = 9;
 	icon_state = "red"
@@ -60511,6 +60555,10 @@
 /area/station/maintenance/aft)
 "jKM" = (
 /obj/structure/table/reinforced,
+/obj/item/flashlight/lamp{
+	pixel_y = 6;
+	pixel_x = -4
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/security/interrogation/observation)
 "jKW" = (
@@ -60704,13 +60752,17 @@
 /turf/simulated/floor/plating,
 /area/station/medical/virology/lab)
 "jOr" = (
-/obj/structure/table/reinforced,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
+/obj/item/flashlight/lamp{
+	pixel_y = 6;
+	pixel_x = -4
+	},
+/obj/structure/table,
 /turf/simulated/floor/plasteel,
 /area/station/security/processing)
 "jOB" = (
@@ -61933,6 +61985,7 @@
 /area/station/maintenance/fore)
 "knI" = (
 /obj/structure/table,
+/obj/item/storage/fancy/donut_box,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "red"
@@ -62668,6 +62721,7 @@
 /turf/simulated/floor/plasteel/white,
 /area/station/science/storage)
 "kDi" = (
+/obj/structure/table/reinforced,
 /turf/simulated/floor/plasteel{
 	dir = 10;
 	icon_state = "darkred"
@@ -63818,6 +63872,13 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/wood/oak,
 /area/station/maintenance/electrical_shop)
+"laY" = (
+/obj/item/flag/sec,
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "red"
+	},
+/area/station/security/processing)
 "lbc" = (
 /obj/machinery/economy/atm/west,
 /obj/machinery/atmospherics/unary/vent_pump/on{
@@ -63861,6 +63922,7 @@
 /area/station/service/chapel)
 "lcj" = (
 /obj/structure/table/reinforced,
+/obj/item/storage/fancy/donut_box,
 /turf/simulated/floor/plasteel{
 	icon_state = "darkred"
 	},
@@ -64686,6 +64748,14 @@
 	icon_state = "green"
 	},
 /area/station/service/hydroponics)
+"lrz" = (
+/obj/structure/table/reinforced,
+/obj/machinery/recharger,
+/turf/simulated/floor/plasteel{
+	dir = 5;
+	icon_state = "red"
+	},
+/area/station/security/processing)
 "lrN" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -66203,10 +66273,7 @@
 	dir = 8
 	},
 /obj/structure/window/reinforced,
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "darkred"
-	},
+/turf/simulated/floor/carpet/black,
 /area/station/security/warden)
 "lSZ" = (
 /obj/structure/cable{
@@ -72081,6 +72148,13 @@
 /area/station/security/main)
 "oiJ" = (
 /obj/structure/table/reinforced,
+/obj/item/taperecorder{
+	pixel_x = -7
+	},
+/obj/item/taperecorder,
+/obj/item/taperecorder{
+	pixel_x = 7
+	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "red"
@@ -72735,6 +72809,7 @@
 /area/station/maintenance/starboard)
 "ovT" = (
 /obj/structure/table/reinforced,
+/obj/item/storage/box/tapes,
 /turf/simulated/floor/plasteel{
 	dir = 6;
 	icon_state = "red"
@@ -73494,6 +73569,8 @@
 /area/station/public/arcade)
 "oNe" = (
 /obj/structure/table,
+/obj/item/paper_bin,
+/obj/item/pen,
 /turf/simulated/floor/plasteel{
 	dir = 5;
 	icon_state = "red"
@@ -75460,6 +75537,14 @@
 /obj/effect/decal/cleanable/fungus,
 /turf/simulated/wall,
 /area/station/maintenance/aft)
+"pyd" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/fancy/donut_box,
+/turf/simulated/floor/plasteel{
+	dir = 9;
+	icon_state = "red"
+	},
+/area/station/security/processing)
 "pys" = (
 /obj/effect/spawner/window/reinforced/grilled,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -80226,9 +80311,11 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/starboard2)
 "rqZ" = (
-/obj/structure/table/reinforced,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/item/folder/red,
+/obj/item/pen,
+/obj/structure/table,
 /turf/simulated/floor/plasteel{
 	icon_state = "redfull"
 	},
@@ -80834,6 +80921,14 @@
 	},
 /turf/simulated/floor/wood/oak,
 /area/station/maintenance/old_kitchen)
+"rBp" = (
+/obj/structure/table/reinforced,
+/obj/item/book/manual/wiki/security_space_law,
+/turf/simulated/floor/plasteel{
+	dir = 8;
+	icon_state = "darkred"
+	},
+/area/station/security/permabrig)
 "rBP" = (
 /obj/machinery/hologram/holopad,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -80999,6 +81094,18 @@
 	icon_state = "redbluefull"
 	},
 /area/station/maintenance/fore)
+"rFT" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/box/zipties,
+/obj/item/flash,
+/obj/item/flash{
+	pixel_x = 8;
+	pixel_y = 3
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "darkred"
+	},
+/area/station/security/permabrig)
 "rFU" = (
 /obj/structure/closet,
 /obj/effect/spawner/lootdrop/maintenance,
@@ -81852,13 +81959,14 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/abandoned_garden)
 "rXK" = (
-/obj/structure/table/reinforced,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
 	},
+/obj/item/book/manual/wiki/security_space_law,
+/obj/structure/table,
 /turf/simulated/floor/plasteel{
 	icon_state = "redfull"
 	},
@@ -83616,13 +83724,14 @@
 /turf/simulated/floor/plasteel,
 /area/station/security/permabrig)
 "sBx" = (
-/obj/structure/table/reinforced,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
 	},
+/obj/item/book/manual/wiki/security_space_law,
+/obj/structure/table,
 /turf/simulated/floor/plasteel,
 /area/station/security/processing)
 "sBE" = (
@@ -88866,10 +88975,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/turf/simulated/floor/plasteel{
-	dir = 6;
-	icon_state = "darkred"
-	},
+/turf/simulated/floor/carpet/black,
 /area/station/security/warden)
 "uHS" = (
 /obj/structure/table_frame,
@@ -89281,6 +89387,8 @@
 	},
 /area/station/maintenance/fsmaint)
 "uOh" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/box/zipties,
 /turf/simulated/floor/plasteel{
 	dir = 9;
 	icon_state = "darkred"
@@ -89895,6 +90003,8 @@
 /area/station/public/locker)
 "uXf" = (
 /obj/structure/table/reinforced,
+/obj/item/paper_bin,
+/obj/item/pen,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "red"
@@ -91772,6 +91882,16 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/station/security/brig)
+"vMQ" = (
+/obj/structure/chair/sofa/bench{
+	cover_color = "#68452a";
+	dir = 4
+	},
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "redcorner"
+	},
+/area/station/security/lobby)
 "vMW" = (
 /obj/structure/bed,
 /obj/item/bedsheet/red,
@@ -94045,6 +94165,15 @@
 /obj/machinery/power/port_gen/pacman,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/hardsuitstorage)
+"wLq" = (
+/obj/structure/table/reinforced,
+/obj/item/folder/red,
+/obj/item/pen,
+/turf/simulated/floor/plasteel{
+	dir = 10;
+	icon_state = "darkred"
+	},
+/area/station/security/permabrig)
 "wLR" = (
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plating,
@@ -96094,6 +96223,7 @@
 /area/station/maintenance/electrical)
 "xBZ" = (
 /obj/structure/table/reinforced,
+/obj/item/storage/fancy/donut_box,
 /turf/simulated/floor/plasteel{
 	dir = 5;
 	icon_state = "red"
@@ -147622,8 +147752,8 @@ bny
 bny
 biJ
 ceG
-bny
-bny
+vMQ
+hQQ
 btT
 btT
 llI
@@ -151721,7 +151851,7 @@ hoh
 hoh
 hoh
 rbf
-jEo
+pyd
 kKs
 iBt
 nxy
@@ -151978,7 +152108,7 @@ eyP
 gcZ
 gcZ
 rbf
-vrk
+laY
 nxy
 vhs
 nKI
@@ -152492,7 +152622,7 @@ pFO
 ksz
 ksz
 rbf
-vrk
+laY
 nxy
 euk
 nxy
@@ -152749,7 +152879,7 @@ tYs
 tYs
 tYs
 rbf
-xBZ
+lrz
 sMh
 uOM
 nxy
@@ -154292,7 +154422,7 @@ boI
 iZh
 sMh
 sMh
-ovT
+ieN
 bLK
 xBZ
 oiJ
@@ -155318,7 +155448,7 @@ aaa
 rfd
 shI
 ykk
-jKM
+bUe
 cYc
 cjx
 rfd
@@ -156087,8 +156217,8 @@ aaa
 aaa
 eoX
 uOh
-bAT
-kDi
+rBp
+wLq
 eoX
 hKV
 nCq
@@ -157123,7 +157253,7 @@ gzL
 tqd
 wKh
 tjq
-rVa
+rFT
 yia
 hsC
 hsC
