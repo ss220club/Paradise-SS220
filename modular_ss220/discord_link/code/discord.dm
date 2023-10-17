@@ -52,7 +52,7 @@
 
 	if(href_list["observe"] || href_list["ready"] || href_list["late_join"])
 		if (GLOB.configuration.database.enabled && GLOB.configuration.ss220_misc.force_discord_verification)
-			if(!client.prefs.discord_id || !(get_discord_id() && client.prefs.discord_id))
+			if(!client.prefs.discord_id || !(client.prefs.get_discord_id() && client.prefs.discord_id))
 				to_chat(usr, span_danger("Вам необходимо привязать дискорд-профиль к аккаунту!"))
 				to_chat(usr, span_warning("Нажмите 'Привязка Discord' во вкладке 'Special Verbs' для получения инструкций."))
 				return FALSE
