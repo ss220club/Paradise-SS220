@@ -459,7 +459,7 @@ SUBSYSTEM_DEF(tts220)
 /datum/controller/subsystem/tts220/proc/sanitize_tts_input(message)
 	var/hash
 	if(sanitized_messages_caching)
-		hash = rustg_hash_string(RUSTG_HASH_MD5, message)
+		hash = rustg_hash_string(RUSTG_HASH_MD5, lowertext(message))
 		if(sanitized_messages_cache[hash])
 			sanitized_messages_cache_hit++
 			return sanitized_messages_cache[hash]
