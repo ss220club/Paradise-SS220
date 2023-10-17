@@ -163,11 +163,11 @@
 	var/response = alert(registered_human, "Are you sure you want to reset access saved on the card?","Reset Access", "No", "Yes")
 	if(response == "Yes")
 		access = initial_access.Copy() // Initial() doesn't work on lists
-		to_chat(registered_human, "<span class='notice'>Card access reset.</span>")
+		to_chat(registered_human, span_notice("Card access reset."))
 
 /obj/item/card/id/syndicate/proc/change_ai_tracking()
 	untrackable = !untrackable
-	to_chat(registered_human, "<span class='notice'>This ID card is now [untrackable ? "untrackable" : "trackable"] by the AI's.</span>")
+	to_chat(registered_human, span_notice("This ID card is now [untrackable ? "untrackable" : "trackable"] by the AI's."))
 
 /obj/item/card/id/syndicate/proc/change_name()
 	var/new_name = reject_bad_name(input(registered_human,"What name would you like to put on this card?","Agent Card Name", ishuman(registered_human) ? registered_human.real_name : registered_human.name), TRUE)
@@ -175,7 +175,7 @@
 		return
 	registered_name = new_name
 	UpdateName()
-	to_chat(registered_human, "<span class='notice'>Name changed to [new_name].</span>")
+	to_chat(registered_human, span_notice("Name changed to [new_name]."))
 
 /obj/item/card/id/syndicate/proc/change_photo()
 	if(!Adjacent(registered_human))
@@ -192,14 +192,14 @@
 /obj/item/card/id/syndicate/proc/change_appearance(list/params)
 	var/choice = params["new_appearance"]
 	icon_state = choice
-	to_chat(usr, "<span class='notice'>Appearance changed to [choice].</span>")
+	to_chat(usr, span_notice("Appearance changed to [choice]."))
 
 /obj/item/card/id/syndicate/proc/change_sex()
 	var/new_sex = sanitize(stripped_input(registered_human,"What sex would you like to put on this card?","Agent Card Sex", ishuman(registered_human) ? capitalize(registered_human.gender) : "Male", MAX_MESSAGE_LEN))
 	if(!Adjacent(registered_human))
 		return
 	sex = new_sex
-	to_chat(registered_human, "<span class='notice'>Sex changed to [new_sex].</span>")
+	to_chat(registered_human, span_notice("Sex changed to [new_sex]."))
 
 /obj/item/card/id/syndicate/proc/change_age()
 	var/default = "21"
@@ -210,7 +210,7 @@
 	if(!Adjacent(registered_human))
 		return
 	age = new_age
-	to_chat(registered_human, "<span class='notice'>Age changed to [new_age].</span>")
+	to_chat(registered_human, span_notice("Age changed to [new_age]."))
 
 /obj/item/card/id/syndicate/proc/change_occupation()
 	var/list/departments =list(
@@ -271,7 +271,7 @@
 		return
 	assignment = new_job
 	rank = new_rank
-	to_chat(registered_human, "<span class='notice'>Occupation changed to [new_job].</span>")
+	to_chat(registered_human, span_notice("Occupation changed to [new_job]."))
 	UpdateName()
 	registered_human.sec_hud_set_ID()
 
@@ -280,7 +280,7 @@
 	if(!Adjacent(registered_human))
 		return
 	associated_account_number = new_account
-	to_chat(registered_human, "<span class='notice'>Linked money account changed to [new_account].</span>")
+	to_chat(registered_human, span_notice("Linked money account changed to [new_account]."))
 
 /obj/item/card/id/syndicate/proc/change_blood_type()
 	var/default = "\[UNSET\]"
@@ -292,7 +292,7 @@
 	if(!Adjacent(registered_human))
 		return
 	blood_type = new_blood_type
-	to_chat(registered_human, "<span class='notice'>Blood type changed to [new_blood_type].</span>")
+	to_chat(registered_human, span_notice("Blood type changed to [new_blood_type]."))
 
 /obj/item/card/id/syndicate/proc/change_dna_hash()
 	var/default = "\[UNSET\]"
@@ -304,7 +304,7 @@
 	if(!Adjacent(registered_human))
 		return
 	dna_hash = new_dna_hash
-	to_chat(registered_human, "<span class='notice'>DNA hash changed to [new_dna_hash].</span>")
+	to_chat(registered_human, span_notice(">DNA hash changed to [new_dna_hash]."))
 
 /obj/item/card/id/syndicate/proc/change_fingerprints()
 	var/default = "\[UNSET\]"
@@ -316,4 +316,4 @@
 	if(!Adjacent(registered_human))
 		return
 	fingerprint_hash = new_fingerprint_hash
-	to_chat(registered_human, "<span class='notice'>Fingerprint hash changed to [new_fingerprint_hash].</span>")
+	to_chat(registered_human, span_notice("Fingerprint hash changed to [new_fingerprint_hash]."))
