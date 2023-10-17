@@ -10,7 +10,7 @@
 	playsound(user, reclined ? reclined_sound : snapback_sound, 50, 1)
 	update_icon()
 
-	if (reclined)
+	if(reclined)
 		return ..()
 
 /obj/item/gun/projectile/revolver/reclinable/update_icon_state()
@@ -69,7 +69,7 @@
 	flag = "bullet"
 	hitsound_wall = "ricochet"
 	impact_effect_type = /obj/effect/temp_visual/impact_effect
-	spread = 15
+	spread = 20
 
 /obj/item/ammo_box/speed_loader_d44
 	name = "speed loader (.44)"
