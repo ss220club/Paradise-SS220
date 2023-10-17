@@ -279,16 +279,17 @@ SUBSYSTEM_DEF(tts220)
 	if(traits & TTS_TRAIT_PITCH_WHISPER)
 		text = provider.pitch_whisper(text)
 
-	var/hash = rustg_hash_string(RUSTG_HASH_MD5, text)
+	var/hash = rustg_hash_string(RUSTG_HASH_MD5, lowertext(text))
 	var/filename = "data/tts_cache/[seed.name]/[hash]"
 
-	var/datum/callback/play_tts_cb = CALLBACK(src, PROC_REF(play_tts), speaker, listener, filename, is_local, effect, preSFX, postSFX)
 
 	if(fexists("[filename].ogg"))
 		tts_reused++
 		tts_rrps_counter++
 		play_tts(speaker, listener, filename, is_local, effect, preSFX, postSFX)
 		return
+
+	var/datum/callback/play_tts_cb = CALLBACK(src, PROC_REF(play_tts), speaker, listener, filename, is_local, effect, preSFX, postSFX)
 
 	if(LAZYLEN(tts_queue[filename]))
 		tts_reused++
@@ -306,14 +307,14 @@ SUBSYSTEM_DEF(tts220)
 	// Bail if it errored
 	if(response.errored)
 		provider.timed_out_requests++
-		message_admins("<span class='warning'>Error connecting to [provider.name] TTS API. Please inform a maintainer or server host.</span>")
+		log_game(span_warning("Error connecting to [provider.name] TTS API. Please inform a maintainer or server host."))
+		message_admins(span_warning("Error connecting to [provider.name] TTS API. Please inform a maintainer or server host."))
 		return
 
 	if(response.status_code != 200)
 		provider.failed_requests++
-		if(provider.failed_requests >= provider.failed_requests_limit)
-			provider.is_enabled = FALSE
-		message_admins("<span class='warning'>Error performing [provider.name] TTS API request (Code: [response.status_code])</span>")
+		log_game(span_warning("Error connecting to [provider.name] TTS API. Please inform a maintainer or server host."))
+		message_admins(span_warning("Error connecting to [provider.name] TTS API. Please inform a maintainer or server host."))
 		tts_request_failed++
 		if(response.status_code)
 			if(tts_errors["[response.status_code]"])
