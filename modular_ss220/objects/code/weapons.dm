@@ -78,8 +78,8 @@
 	icon_state = "rsh12"
 	item_state = "rsh12"
 	fire_sound = 'modular_ss220/objects/sound/weapons/gunshots/gunshot_rsh12.ogg'
-	var/snapback_sound = 'modular_ss220/objects/sound/weapons/gunshots/snapback_rsh12.ogg'
-	var/reclined_sound = 'modular_ss220/objects/sound/weapons/gunshots/reclined_rsh12.ogg'
+	var/snapback_sound = 'modular_ss220/objects/sound/weapons/cylinder/snapback_rsh12.ogg'
+	var/reclined_sound = 'modular_ss220/objects/sound/weapons/cylinder/reclined_rsh12.ogg'
 	var/reclined = FALSE
 
 /obj/item/gun/projectile/revolver/rsh12/attack_self(mob/living/user)
