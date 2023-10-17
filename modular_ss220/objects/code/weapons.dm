@@ -2,6 +2,7 @@
 /obj/item/gun/projectile/revolver/reclinable
 	var/snapback_sound = 'modular_ss220/objects/sound/weapons/cylinder/snapback_rsh12.ogg'
 	var/reclined_sound = 'modular_ss220/objects/sound/weapons/cylinder/reclined_rsh12.ogg'
+	var/dry_fire_sound = 'sound/weapons/empty.ogg'
 	var/reclined = FALSE
 
 /obj/item/gun/projectile/revolver/reclinable/attack_self(mob/living/user)
@@ -25,7 +26,7 @@
 		return ..()
 
 	to_chat(user, "<span class='danger'>*click*</span>")
-	playsound(user, 'sound/weapons/empty.ogg', 100, 1)
+	playsound(user, dry_fire_sound, 100, 1)
 
 // Colt Anaconda .44
 
