@@ -16,7 +16,8 @@
 			if(emote.can_run_emote(user, status_check = FALSE, intentional = FALSE))
 				keys += emote.key
 				emotes += list(list(
-					"key" = emote.name,
+					"key" = emote.key,
+					"name" = emote.name,
 					"emote_path" = emote.type,
 					"hands" = emote.hands_use_check,
 					"visible" = emote.emote_type & EMOTE_VISIBLE,

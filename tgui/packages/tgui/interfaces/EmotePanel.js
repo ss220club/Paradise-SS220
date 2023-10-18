@@ -131,6 +131,7 @@ export const EmotePanelContent = (props, context) => {
         fill
         buttons={
           <Button
+            icon="crosshairs"
             selected = {useTarget}
             onClick={() => toggleUseTarget(!useTarget)}
           >
@@ -142,7 +143,8 @@ export const EmotePanelContent = (props, context) => {
           <Flex.Item>
           {emotes
           .filter(emote => emote.key &&
-            (searchText.length > 0 ? emote.key.toLowerCase().includes(searchText.toLowerCase()) : true) &&
+            ((searchText.length > 0 ? emote.key.toLowerCase().includes(searchText.toLowerCase()) : true) ||
+            (searchText.length > 0 ? emote.name.toLowerCase().includes(searchText.toLowerCase()) : true)) &&
             (filterVisible ? emote.visible : true) &&
             (filterAudible ? emote.audible : true) &&
             (filterSound ? emote.sound : true) &&
@@ -150,7 +152,7 @@ export const EmotePanelContent = (props, context) => {
             (filterTargettable ? emote.targettable : true))
           .map((emote) =>
             <Button
-              key={emote.key}
+              key={emote.name}
               onClick={() =>
                 act('play_emote', {
                   emote_path: emote.emote_path,
@@ -172,7 +174,7 @@ export const EmotePanelContent = (props, context) => {
               {emote.targettable ? (<Icon
                 name="crosshairs"
               />) : ''}
-              {emote.key.toUpperCase()}
+              {emote.name.toUpperCase()}
             </Button>
           )}
           </Flex.Item>
