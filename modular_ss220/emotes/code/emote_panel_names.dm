@@ -38,6 +38,9 @@
 /datum/emote/living/drool
 	name = "пустить слюни"
 
+/datum/emote/living/quiver
+	name = "трепетать"
+
 /datum/emote/living/frown
 	name = "похмуриться"
 
@@ -64,6 +67,12 @@
 
 /datum/emote/living/look
 	name = "посмотреть"
+
+/datum/emote/living/bshake
+	name = "потрястись"
+
+/datum/emote/living/shudder
+	name = "содрогнуться"
 
 /datum/emote/living/point
 	name = "указать"
@@ -196,7 +205,13 @@
 	name = "побулькать"
 
 /datum/emote/living/carbon/inhale
-	name = "вдохнуть"
+	name = "вздохнуть"
+
+/datum/emote/living/carbon/inhale
+	name = "удовлетвореноо вздохнуть"
+
+/datum/emote/living/carbon/kiss
+	name = "поцеловать"
 
 /datum/emote/living/carbon/exhale
 	name = "выдохнуть"
@@ -234,6 +249,18 @@
 
 /datum/emote/living/carbon/human/eyebrow
 	name = "приподнять бровь"
+
+/datum/emote/living/carbon/human/wince
+	name = "поморщиться"
+
+/datum/emote/living/carbon/human/squint
+	name = "прищуриться"
+
+/datum/emote/living/carbon/human/facepalm
+	name = "хлопнуть по лбу"
+
+/datum/emote/living/carbon/human/palm
+	name = "протянуть руку"
 
 /datum/emote/living/carbon/human/flap
 	name = "хлопнуть крыльями"
@@ -274,6 +301,9 @@
 /datum/emote/living/carbon/human/snap
 	name = "щелкнуть пальцами"
 
+/datum/emote/living/carbon/human/fart
+	name = "пёрнуть"
+
 /datum/emote/living/carbon/human/wag
 	name = "помахать хвостом"
 
@@ -282,6 +312,12 @@
 
 /datum/emote/living/carbon/human/wink
 	name = "подмигнуть"
+
+/datum/emote/living/carbon/human/highfive
+	name = "предоставить пятюню"
+
+/datum/emote/living/carbon/human/highfive/dap
+	name = "предоставить кулак"
 
 /datum/emote/living/carbon/human/pale
 	name = "побледнеть"
@@ -341,6 +377,14 @@
 
 /datum/emote/living/silicon/halt
 	name = "остановитесь"
+
+// Species specific
+
+/datum/emote/living/carbon/human/howl
+	name = "повыть"
+
+/datum/emote/living/carbon/human/growl
+	name = "порычать"
 
 // New Emotes
 

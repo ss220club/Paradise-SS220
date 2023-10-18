@@ -286,6 +286,21 @@
 	message = "приподнимает бровь."
 	message_param = "приподнимает бровь на %t."
 
+/datum/emote/living/carbon/human/wince
+	message = "морщиться."
+	message_param = "морщиться на %t."
+
+/datum/emote/living/carbon/human/squint
+	message = "прищуривается."
+	message_param = "прищуривается на %t."
+
+/datum/emote/living/carbon/human/facepalm
+	message = "хлопает себя по лбу."
+
+/datum/emote/living/carbon/human/palm
+	message = "ожидающе протягивает руку."
+	message_param = "ожидающе протягивает руку к %t."
+
 /datum/emote/living/carbon/human/grumble
 	message = "ворчит!"
 	message_mime = "как будто ворчит!"
