@@ -126,8 +126,7 @@
 	watching_client.screen += screen
 	watching_client.verbs += /client/proc/cinematic_leave
 
-	RegisterSignal(watching_client, COMSIG_PARENT_QDELETING, PROC_REF(remove_watcher))
-	RegisterSignal(watching_client, COMSIG_CINEMATIC_WATCHER_LEAVES, PROC_REF(remove_watcher))
+	RegisterSignal(watching_client, list(COMSIG_PARENT_QDELETING, COMSIG_CINEMATIC_WATCHER_LEAVES), PROC_REF(remove_watcher))
 
 /// Simple helper for playing sounds from the cinematic.
 /datum/cinematic/proc/play_cinematic_sound(sound_to_play)
