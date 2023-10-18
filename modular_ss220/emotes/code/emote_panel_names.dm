@@ -92,6 +92,9 @@
 /datum/emote/living/sigh
 	name = "вздохнуть"
 
+/datum/emote/living/sigh/happy
+	name = "удовлетворённо вздохнуть"
+
 /datum/emote/living/sit
 	name = "сесть"
 
@@ -205,10 +208,10 @@
 	name = "побулькать"
 
 /datum/emote/living/carbon/inhale
-	name = "вздохнуть"
+	name = "вдохнуть"
 
-/datum/emote/living/carbon/inhale
-	name = "удовлетвореноо вздохнуть"
+/datum/emote/living/carbon/inhale/sharp
+	name = "глубоко вдохнуть"
 
 /datum/emote/living/carbon/kiss
 	name = "поцеловать"

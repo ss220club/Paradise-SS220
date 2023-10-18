@@ -143,8 +143,7 @@ export const EmotePanelContent = (props, context) => {
           <Flex.Item>
           {emotes
           .filter(emote => emote.key &&
-            ((searchText.length > 0 ? emote.key.toLowerCase().includes(searchText.toLowerCase()) : true) ||
-            (searchText.length > 0 ? emote.name.toLowerCase().includes(searchText.toLowerCase()) : true)) &&
+            (searchText.length > 0 ? (emote.key.toLowerCase().includes(searchText.toLowerCase()) || emote.name.toLowerCase().includes(searchText.toLowerCase())) : true) &&
             (filterVisible ? emote.visible : true) &&
             (filterAudible ? emote.audible : true) &&
             (filterSound ? emote.sound : true) &&
