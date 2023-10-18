@@ -80,6 +80,10 @@
 	else
 		playsound(src, "sound/items/megaphone.ogg", 100, FALSE, 5)
 
+	// SS220 TTS EDIT - START
+	var/message_tts = message
+	message = replace_characters(message, list("+"))
+	// SS220 TTS EDIT - END
 	audible_message("<span class='game say'><span class='name'>[user.GetVoice()]</span> [user.GetAltName()] broadcasts, <span class='[span]'>\"[message]\"</span></span>", hearing_distance = 14)
 	log_say(message, user)
 	for(var/obj/O in view(14, get_turf(src)))
@@ -88,6 +92,13 @@
 	for(var/mob/M in get_mobs_in_view(7, src))
 		if((M.client?.prefs.toggles2 & PREFTOGGLE_2_RUNECHAT) && M.can_hear())
 			M.create_chat_message(user, message, FALSE, "big")
+		// SS220 TTS EDIT - START
+		var/effect = SOUND_EFFECT_MEGAPHONE
+		if(isrobot(user))
+			effect = SOUND_EFFECT_MEGAPHONE_ROBOT
+		INVOKE_ASYNC(GLOBAL_PROC, /proc/tts_cast, user, M, message_tts, user.tts_seed, FALSE, effect)
+		log_debug("megaphone.saymsg(): [message]")
+		// SS220 TTS EDIT - END
 
 /obj/item/megaphone/cmag_act(mob/user)
 	if(HAS_TRAIT(src, TRAIT_CMAGGED))
