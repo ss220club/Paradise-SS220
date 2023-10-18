@@ -11156,6 +11156,7 @@
 	icon_state = "2-8"
 	},
 /obj/machinery/light/directional/north,
+/obj/machinery/economy/vending/wallmed/directional/north,
 /turf/simulated/floor/plasteel{
 	dir = 9;
 	icon_state = "darkred"
@@ -54425,6 +54426,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel,
 /area/station/security/range)
+"gYJ" = (
+/obj/machinery/economy/vending/wallmed/directional/south,
+/turf/simulated/floor/plasteel{
+	icon_state = "red"
+	},
+/area/station/security/processing)
 "gYK" = (
 /obj/structure/cable,
 /obj/machinery/power/apc/directional/west,
@@ -60791,15 +60798,15 @@
 	},
 /area/station/medical/chemistry)
 "jif" = (
-/obj/effect/spawner/window/reinforced/polarized{
-	id = "HoS"
-	},
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/structure/cable,
+/obj/effect/spawner/window/reinforced/polarized/grilled{
+	id = "HoS"
+	},
 /turf/simulated/floor/plating,
 /area/station/command/office/hos)
 "jim" = (
@@ -68006,9 +68013,6 @@
 	},
 /obj/effect/mapping_helpers/airlock/access/any/security/doors,
 /obj/effect/mapping_helpers/airlock/autoname,
-/obj/effect/mapping_helpers/airlock/unres{
-	dir = 1
-	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "darkredcorners"
@@ -69985,10 +69989,10 @@
 /turf/simulated/floor/plasteel/white,
 /area/station/science/research)
 "muJ" = (
-/obj/effect/spawner/window/reinforced/polarized{
+/obj/structure/cable,
+/obj/effect/spawner/window/reinforced/polarized/grilled{
 	id = "HoS"
 	},
-/obj/structure/cable,
 /turf/simulated/floor/plating,
 /area/station/command/office/hos)
 "muR" = (
@@ -70815,6 +70819,7 @@
 /area/station/medical/storage/secondary)
 "mQE" = (
 /obj/machinery/economy/vending/snack,
+/obj/machinery/economy/vending/wallmed/directional/north,
 /turf/simulated/floor/plasteel{
 	dir = 5;
 	icon_state = "red"
@@ -72630,7 +72635,7 @@
 /obj/item/instrument/bikehorn{
 	pixel_y = -3
 	},
-/obj/machinery/light/directional/west,
+/obj/machinery/light/nightshifted/west,
 /turf/simulated/floor/plasteel/dark,
 /area/station/security/interrogation)
 "nwY" = (
@@ -74943,6 +74948,13 @@
 /obj/effect/landmark/start/security_officer,
 /turf/simulated/floor/plasteel/dark,
 /area/station/security/main)
+"oiI" = (
+/obj/machinery/light/directional/east,
+/turf/simulated/floor/plasteel{
+	dir = 4;
+	icon_state = "redcorner"
+	},
+/area/station/security/lobby)
 "oiJ" = (
 /obj/structure/table/reinforced,
 /obj/item/taperecorder{
@@ -77736,9 +77748,6 @@
 /obj/machinery/door/firedoor,
 /obj/effect/mapping_helpers/airlock/access/any/security/doors,
 /obj/effect/mapping_helpers/airlock/autoname,
-/obj/effect/mapping_helpers/airlock/unres{
-	dir = 1
-	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "darkredcorners"
@@ -79680,12 +79689,12 @@
 /turf/simulated/floor/plating,
 /area/station/engineering/aitransit)
 "pQa" = (
-/obj/effect/spawner/window/reinforced/polarized{
-	id = "HoS"
-	},
 /obj/structure/cable{
 	d2 = 2;
 	icon_state = "0-2"
+	},
+/obj/effect/spawner/window/reinforced/polarized/grilled{
+	id = "HoS"
 	},
 /turf/simulated/floor/plating,
 /area/station/command/office/hos)
@@ -82885,7 +82894,7 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/plasteel/dark,
 /area/station/security/prisonlockers)
 "qYd" = (
 /obj/machinery/atmospherics/pipe/simple/visible/yellow{
@@ -86330,7 +86339,7 @@
 /area/station/maintenance/fsmaint)
 "shI" = (
 /obj/machinery/alarm/directional/north,
-/obj/machinery/light/small/directional/north,
+/obj/machinery/light/small/nightshifted/north,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "darkred"
@@ -88627,6 +88636,9 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/item/ammo_box/speed_loader_d44,
+/obj/item/ammo_box/speed_loader_d44,
+/obj/item/ammo_box/speed_loader_d44,
 /turf/simulated/floor/wood,
 /area/station/command/office/hos)
 "sYI" = (
@@ -96390,7 +96402,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/light/small/directional/south,
+/obj/machinery/light/small/nightshifted/south,
 /turf/simulated/floor/plasteel{
 	icon_state = "darkred"
 	},
@@ -102649,6 +102661,7 @@
 /obj/effect/decal/warning_stripes/white/hollow,
 /obj/effect/landmark/start/head_of_security,
 /obj/machinery/light/directional/east,
+/obj/machinery/economy/vending/wallmed/directional/east,
 /turf/simulated/floor/plasteel{
 	icon_state = "darkredfull"
 	},
@@ -153767,7 +153780,7 @@ nKs
 xgA
 dmA
 xgA
-xgA
+oiI
 xgA
 xgA
 nKs
@@ -156841,7 +156854,7 @@ sAN
 wij
 uXf
 uRt
-nfX
+gYJ
 bLK
 trX
 far
@@ -158901,7 +158914,7 @@ nfX
 hqG
 oaR
 lEP
-off
+nkm
 ulm
 ozI
 lam
@@ -159156,7 +159169,7 @@ uTA
 vVY
 rFE
 bLK
-veF
+oaR
 lEP
 off
 xPq
