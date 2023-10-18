@@ -1,5 +1,6 @@
 /datum/cinematic/credits
 	is_global = TRUE
+	should_lock_watchers = FALSE
 	backdrop_type = /obj/screen/fullscreen/cinematic_backdrop/credits
 
 /datum/cinematic/credits/New(watcher, datum/callback/special_callback)
@@ -35,6 +36,11 @@
 	UnregisterSignal(SSdcs, COMSIG_GLOB_CINEMATIC_STOPPED_PLAYING)
 
 	. = ..()
+
+/datum/cinematic/credits/remove_watcher(client/no_longer_watching)
+	. = ..()
+
+	SScredits.clear_credits(no_longer_watching)
 
 /obj/screen/cinematic/credits
 	icon_state = "blank"
