@@ -170,9 +170,9 @@ SUBSYSTEM_DEF(credits)
 
 	while(ranks_ckey_read.NextRow())
 		var/client/client = get_client_by_ckey(ranks_ckey_read.item[2])
-		if(!client)
+		if(!client.mob?.name)
 			continue
-		streamers += "<center>[client.mob?.name])] a.k.a. ([client.ckey])<center>"
+		streamers += "<center>[client.mob.name])] a.k.a. ([client.ckey])<center>"
 
 	qdel(ranks_ckey_read)
 
