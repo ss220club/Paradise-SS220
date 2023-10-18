@@ -125,17 +125,27 @@ SUBSYSTEM_DEF(credits)
 
 	var/episode_title = ""
 
+	var/list/titles = list()
+
+	titles["finished"] = file2list("config/credits/titles/finished_titles.txt")
+	titles["crews_learns"] = file2list("config/credits/titles/random_titles_crews_learns.txt")
+	titles["neuter_2_1"] = file2list("config/credits/titles/random_titles_neuter_2_1.txt")
+	titles["neuter_2_2"] = file2list("config/credits/titles/random_titles_neuter_2_2.txt")
+	titles["plural_2_1"] = file2list("config/credits/titles/random_titles_plural_2_1.txt")
+	titles["plural_2_2"] = file2list("config/credits/titles/random_titles_plural_2_2.txt")
+
+	for(var/possible_titles in titles)
+		LAZYREMOVEASSOC(titles, possible_titles, "")
+
 	switch(rand(1,100))
 		if(1 to 10)
-			episode_title += pick(file2list("config/credits/titles/finished_titles.txt"))
+			episode_title += pick(titles["finished"])
 		if(11 to 30)
-			episode_title += "ЭКИПАЖ УЗНАЕТ О " + pick(file2list("config/credits/titles/random_titles_crews_learns.txt"))
+			episode_title += "ЭКИПАЖ УЗНАЕТ О " + pick(titles["crews_learns"])
 		if(31 to 60)
-			episode_title += pick(file2list("config/credits/titles/random_titles_neuter_2_1.txt")) + " "
-			episode_title += pick(file2list("config/credits/titles/random_titles_neuter_2_2.txt"))
+			episode_title += "[pick(titles["neuter_2_1"])] [pick(titles["neuter_2_2"])]"
 		if(61 to 100)
-			episode_title += pick(file2list("config/credits/titles/random_titles_plural_2_1.txt")) + " "
-			episode_title += pick(file2list("config/credits/titles/random_titles_plural_2_2.txt"))
+			episode_title += "[pick(titles["plural_2_1"])] [pick(titles["plural_2_2"])]"
 
 	content += "<center><h1>EPISODE [GLOB.round_id]<br><h1>[episode_title]</h1></h1></center>"
 
