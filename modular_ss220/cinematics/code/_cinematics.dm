@@ -177,8 +177,7 @@
 	if(!(no_longer_watching in watching))
 		CRASH("cinematic remove_watcher was passed a client which wasn't watching.")
 
-	UnregisterSignal(no_longer_watching, COMSIG_PARENT_QDELETING)
-	UnregisterSignal(no_longer_watching, COMSIG_CINEMATIC_WATCHER_LEAVES)
+	UnregisterSignal(no_longer_watching, list(COMSIG_PARENT_QDELETING, COMSIG_CINEMATIC_WATCHER_LEAVES))
 
 	if(no_longer_watching.mob)
 		unlock_mob(no_longer_watching.mob)
