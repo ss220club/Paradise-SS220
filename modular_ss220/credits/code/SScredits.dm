@@ -14,8 +14,6 @@ SUBSYSTEM_DEF(credits)
 
 /datum/controller/subsystem/credits/Initialize()
 	credit_animate_height = 16 * world.icon_size
-	title_music = pick(file2list("config/credits/sounds/title_music.txt"))
-
 
 /datum/controller/subsystem/credits/proc/roll_credits_for_clients(list/clients)
 	end_titles = new /datum/credits/default()
@@ -63,9 +61,12 @@ SUBSYSTEM_DEF(credits)
 /datum/credits
 	var/list/credits = list()
 	var/playing_time = 5 SECONDS
+	var/soundtrack
 
 /datum/credits/New()
 	. = ..()
+
+	soundtrack = pick(file2list("config/credits/sounds/title_music.txt"))
 
 	fill_credits()
 
@@ -163,17 +164,18 @@ SUBSYSTEM_DEF(credits)
 		return
 
 	var/datum/db_query/ranks_ckey_read = SSdbcore.NewQuery(
-		"SELECT admin_rank, ckey FROM admin")
+		"SELECT admin_rank, ckey FROM admin WHERE admin_rank=:rank",
+			list("rank" = "Банда"))
 
 	if(!ranks_ckey_read.warn_execute())
 		qdel(ranks_ckey_read)
 		return
 
 	while(ranks_ckey_read.NextRow())
-		if(ranks_ckey_read.item[1] != "Банда")
+		var/client/client = get_client_by_ckey(ranks_ckey_read.item[2])
+		if(!client)
 			continue
-		var/ckey = ranks_ckey_read.item[2]
-		streamers += "<center>[get_client_by_ckey(ckey)]).mob.name] a.k.a. ([ckey])<center>"
+		streamers += "<center>[client.mob?.name])] a.k.a. ([client.ckey])<center>"
 
 	qdel(ranks_ckey_read)
 
