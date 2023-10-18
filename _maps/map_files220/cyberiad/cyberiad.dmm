@@ -17376,6 +17376,10 @@
 /obj/machinery/computer/monitor{
 	name = "Bridge Power Monitoring Computer"
 	},
+/obj/structure/cable{
+	d2 = 2;
+	icon_state = "0-2"
+	},
 /turf/simulated/floor/plasteel{
 	dir = 6;
 	icon_state = "yellow"
@@ -17679,6 +17683,11 @@
 	},
 /area/station/command/bridge)
 "bpq" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "yellowcorner"
@@ -34590,6 +34599,16 @@
 /obj/effect/turf_decal/bot_red,
 /obj/structure/disposalpipe/trunk{
 	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/machinery/door/window/classic/reversed{
+	dir = 1;
+	name = "Testing Chamber Delivery Chute"
+	},
+/obj/effect/mapping_helpers/airlock/windoor/access/any/science/tox{
+	dir = 1
 	},
 /turf/simulated/floor/plasteel{
 	dir = 10;
@@ -60228,6 +60247,25 @@
 	icon_state = "darkred"
 	},
 /area/station/security/warden)
+"jfJ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/plasteel,
+/area/station/command/bridge)
 "jfQ" = (
 /obj/machinery/firealarm/directional/east,
 /obj/machinery/camera{
@@ -129438,8 +129476,8 @@ bbr
 blU
 bnV
 bpq
-bqS
-hBF
+oTG
+jfJ
 bxw
 beE
 bxp
