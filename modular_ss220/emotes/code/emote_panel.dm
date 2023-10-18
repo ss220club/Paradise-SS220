@@ -40,6 +40,8 @@
 			var/useTarget = params["useTarget"]
 			var/datum/emote/emote = new emote_path()
 			var/emote_act = emote.key
+			if(!emote_act)
+				return
 			var/emote_param
 			if(emote.message_param && useTarget == "true")
 				emote_param = input(usr, "Дополните эмоцию", emote.message_param)
