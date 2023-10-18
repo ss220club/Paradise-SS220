@@ -32,10 +32,7 @@ SUBSYSTEM_DEF(credits)
 	addtimer(CALLBACK(src, PROC_REF(roll_credits), logo, client), 5 SECONDS, TIMER_CLIENT_TIME)
 
 /datum/controller/subsystem/credits/proc/roll_credits(obj/screen/credit/logo/logo, client/client)
-	if(!client)
-		return
-
-	if(!client.credits)
+	if(!client?.credits)
 		return
 
 	addtimer(CALLBACK(logo, TYPE_PROC_REF(/obj/screen/credit/logo, rollem)), credit_roll_speed / 2.5, TIMER_CLIENT_TIME)
