@@ -1,4 +1,4 @@
-/obj/mecha/combat/durand/executioner
+/obj/mecha/combat/executioner
 	name = "mk. V \"The Executioner\""
 	desc = "Dreadnought of the Executioner Order, heavy fire support configuration, made for purge evil and heretics. Extremely durable in close combat."
 	icon_state = "executioner"
