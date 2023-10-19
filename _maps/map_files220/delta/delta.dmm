@@ -236,15 +236,19 @@
 "acU" = (
 /obj/structure/rack/gunrack,
 /obj/item/gun/energy/gun{
-	pixel_x = -3;
-	pixel_y = -3
-	},
-/obj/item/gun/energy/gun,
-/obj/item/gun/energy/gun{
-	pixel_x = 3;
-	pixel_y = 3
+	pixel_x = -2
 	},
 /obj/effect/decal/warning_stripes/red/hollow,
+/obj/item/gun/energy/gun,
+/obj/item/gun/energy/gun{
+	pixel_x = 2
+	},
+/obj/item/gun/energy/gun{
+	pixel_x = 4
+	},
+/obj/item/gun/energy/gun{
+	pixel_x = 6
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/security/armory/secure)
 "acX" = (
@@ -3542,8 +3546,8 @@
 "aud" = (
 /obj/structure/closet/secure_closet/warden,
 /obj/item/megaphone,
-/obj/machinery/status_display/directional/east,
 /obj/machinery/light/directional/east,
+/obj/item/radio/intercom/directional/east,
 /turf/simulated/floor/plasteel{
 	dir = 6;
 	icon_state = "darkred"
@@ -25432,11 +25436,6 @@
 "cep" = (
 /obj/structure/cable{
 	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
-/obj/structure/cable{
-	d1 = 1;
 	d2 = 8;
 	icon_state = "1-8"
 	},
@@ -25444,11 +25443,6 @@
 	d1 = 2;
 	d2 = 8;
 	icon_state = "2-8"
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -46238,7 +46232,11 @@
 /area/station/maintenance/starboard2)
 "eeh" = (
 /obj/machinery/papershredder,
-/obj/machinery/alarm/directional/east,
+/obj/machinery/power/apc/directional/east,
+/obj/structure/cable{
+	d2 = 8;
+	icon_state = "0-8"
+	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "darkred"
@@ -48857,6 +48855,7 @@
 "fda" = (
 /obj/structure/closet/firecloset,
 /obj/machinery/light/small/directional/north,
+/obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/station/maintenance/starboard2)
 "fdo" = (
@@ -53116,6 +53115,10 @@
 	pixel_x = -3;
 	pixel_y = -3
 	},
+/obj/item/storage/box/rubbershot{
+	pixel_x = -3;
+	pixel_y = -3
+	},
 /obj/item/storage/box/beanbag{
 	pixel_x = -3;
 	pixel_y = 3
@@ -53134,6 +53137,10 @@
 /obj/machinery/camera{
 	c_tag = "Brig Secure Armory East";
 	dir = 8
+	},
+/obj/item/storage/box/beanbag{
+	pixel_x = -3;
+	pixel_y = 3
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/security/armory/secure)
@@ -60490,15 +60497,20 @@
 "jeM" = (
 /obj/structure/rack/gunrack,
 /obj/item/gun/energy/laser{
-	pixel_x = -3;
-	pixel_y = -3
-	},
-/obj/item/gun/energy/laser,
-/obj/item/gun/energy/laser{
-	pixel_x = 3;
-	pixel_y = 3
+	pixel_x = -2;
+	pixel_y = 0
 	},
 /obj/effect/decal/warning_stripes/red/hollow,
+/obj/item/gun/energy/laser,
+/obj/item/gun/energy/laser{
+	pixel_x = 2
+	},
+/obj/item/gun/energy/laser{
+	pixel_x = 4
+	},
+/obj/item/gun/energy/laser{
+	pixel_x = 6
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/security/armory/secure)
 "jeZ" = (
@@ -63069,7 +63081,7 @@
 "jWj" = (
 /obj/machinery/disposal,
 /obj/structure/disposalpipe/trunk,
-/obj/item/radio/intercom/directional/west,
+/obj/machinery/status_display/directional/west,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "darkred"
@@ -65524,11 +65536,7 @@
 /obj/machinery/computer/prisoner{
 	dir = 8
 	},
-/obj/machinery/power/apc/directional/east,
-/obj/structure/cable{
-	d2 = 8;
-	icon_state = "0-8"
-	},
+/obj/machinery/alarm/directional/east,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "darkred"
@@ -68002,6 +68010,27 @@
 	icon_state = "darkblue"
 	},
 /area/station/ai_monitored/storage/eva)
+"lJd" = (
+/obj/structure/rack,
+/obj/effect/decal/warning_stripes/red/hollow,
+/obj/item/grenade/barrier{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/obj/item/grenade/barrier{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/item/grenade/barrier,
+/obj/item/grenade/barrier{
+	pixel_x = -3;
+	pixel_y = -3
+	},
+/turf/simulated/floor/plasteel{
+	dir = 8;
+	icon_state = "darkred"
+	},
+/area/station/security/warden)
 "lJf" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/hologram/holopad,
@@ -70165,7 +70194,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/mapping_helpers/airlock/access/any/security/doors,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -71880,7 +71908,7 @@
 	},
 /obj/machinery/flasher_button{
 	id = "Execution";
-	pixel_x = -32;
+	pixel_x = -24;
 	pixel_y = 7
 	},
 /turf/simulated/floor/plasteel/dark,
@@ -72274,13 +72302,17 @@
 /obj/effect/decal/warning_stripes/red/hollow,
 /obj/structure/rack/gunrack,
 /obj/item/gun/projectile/shotgun/riot{
-	pixel_x = -3;
-	pixel_y = -3
+	pixel_x = -2
 	},
 /obj/item/gun/projectile/shotgun/riot,
 /obj/item/gun/projectile/shotgun/riot{
-	pixel_x = 3;
-	pixel_y = 3
+	pixel_x = 2
+	},
+/obj/item/gun/projectile/shotgun/riot{
+	pixel_x = 4
+	},
+/obj/item/gun/projectile/shotgun/riot{
+	pixel_x = 6
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/security/armory/secure)
@@ -76977,10 +77009,10 @@
 /obj/item/pen/multi,
 /obj/machinery/button/windowtint/north{
 	id = "HoS";
-	pixel_x = 10
+	pixel_x = 7
 	},
 /obj/machinery/door_control/shutter/north{
-	pixel_x = -10;
+	pixel_x = -7;
 	id = "Secure Armory";
 	name = "Secure Armory Shutter Control";
 	req_one_access_txt = "3"
@@ -76990,10 +77022,10 @@
 	name = "Office Door";
 	pixel_y = 33;
 	req_one_access_txt = "58";
-	pixel_x = 10
+	pixel_x = 7
 	},
 /obj/machinery/door_control/shutter/north{
-	pixel_x = -10;
+	pixel_x = -7;
 	pixel_y = 33;
 	id = "ArmoryLock";
 	name = "Armory Lockdown";
@@ -78394,21 +78426,21 @@
 	},
 /area/station/maintenance/old_kitchen)
 "ptZ" = (
-/obj/structure/rack,
+/obj/item/gun/energy/disabler{
+	pixel_x = -2
+	},
+/obj/item/gun/energy/disabler,
 /obj/effect/decal/warning_stripes/red/hollow,
-/obj/item/grenade/barrier{
-	pixel_x = 5;
-	pixel_y = 5
+/obj/item/gun/energy/disabler{
+	pixel_x = 2
 	},
-/obj/item/grenade/barrier{
-	pixel_x = 3;
-	pixel_y = 3
+/obj/item/gun/energy/disabler{
+	pixel_x = 4
 	},
-/obj/item/grenade/barrier,
-/obj/item/grenade/barrier{
-	pixel_x = -3;
-	pixel_y = -3
+/obj/item/gun/energy/disabler{
+	pixel_x = 6
 	},
+/obj/structure/rack/gunrack,
 /turf/simulated/floor/plasteel/dark,
 /area/station/security/armory/secure)
 "pup" = (
@@ -83158,7 +83190,7 @@
 	name = "Brig Lockdown";
 	req_one_access_txt = "2";
 	pixel_y = 24;
-	pixel_x = 6
+	pixel_x = 5
 	},
 /obj/machinery/door_control/shutter{
 	desc = "A remote control-switch to lock down the prison wing's blast doors";
@@ -83166,7 +83198,7 @@
 	name = "Prison Wing Lockdown";
 	req_one_access_txt = "2";
 	pixel_y = 24;
-	pixel_x = -4
+	pixel_x = -5
 	},
 /obj/machinery/light/directional/north,
 /turf/simulated/floor/carpet/red,
@@ -95291,7 +95323,7 @@
 	name = "KEEP CLEAR: DOCKING AREA"
 	},
 /turf/simulated/wall/r_wall,
-/area/space)
+/area/station/security/permabrig)
 "vrH" = (
 /obj/structure/flora/junglebush,
 /obj/machinery/light/small/directional/east,
@@ -100748,6 +100780,22 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/fore)
+"xsg" = (
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/plasteel{
+	dir = 4;
+	icon_state = "darkred"
+	},
+/area/station/security/warden)
 "xsu" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
@@ -152431,12 +152479,12 @@ eNt
 bwA
 vmw
 eNt
-eNt
-eNt
+aZu
+aZu
 ebf
 orL
 sBN
-eNt
+aZu
 bwA
 bwA
 oeG
@@ -152693,7 +152741,7 @@ bwA
 lAG
 bWr
 fGi
-eNt
+aZu
 lAG
 lAG
 bWr
@@ -157085,7 +157133,7 @@ jWj
 nRd
 sSw
 xIf
-xvf
+lJd
 sQs
 dus
 vBg
@@ -157337,7 +157385,7 @@ off
 qDP
 nYT
 tEH
-eYD
+xsg
 eYD
 sLI
 rLn
@@ -157594,12 +157642,12 @@ off
 fVI
 hkR
 njM
-njM
+xvf
 tXu
 ayF
 sNr
 ezx
-xvf
+njM
 ezb
 exS
 flL
@@ -158129,8 +158177,8 @@ wtP
 wbW
 siM
 fda
-brM
-brM
+cqI
+cqI
 ukb
 csi
 ctA
@@ -161175,13 +161223,13 @@ aaa
 aaa
 aaa
 vrw
-rfd
-rfd
-rfd
-rfd
-rfd
-rfd
-rfd
+eoX
+eoX
+eoX
+eoX
+eoX
+eoX
+eoX
 gdN
 tjq
 gKl
