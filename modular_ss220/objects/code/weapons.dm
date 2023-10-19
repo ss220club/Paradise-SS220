@@ -193,9 +193,9 @@
 	icon = 'modular_ss220/objects/icons/ammo.dmi'
 	icon_state = "berettar-10"
 	base_icon_state = "berettar"
-	ammo_type = /obj/item/ammo_casing/rubber9mm
+	ammo_type = /obj/item/ammo_casing/mmr919
 	max_ammo = 10
-	caliber = "9mm"
+	caliber = "919mmr"
 
 /obj/item/ammo_box/magazine/beretta/update_icon()
 	..()
@@ -206,30 +206,26 @@
 	icon = 'modular_ss220/objects/icons/ammo.dmi'
 	icon_state = "berettal-10"
 	base_icon_state = "berettal"
-	ammo_type = /obj/item/ammo_casing/c9mm
+	ammo_type = /obj/item/ammo_casing/mm919
 	max_ammo = 10
-	caliber = "9mm"
+	caliber = "919mm"
 
 /obj/item/ammo_box/magazine/beretta/lethal/update_icon()
 	..()
 	icon_state = "[base_icon_state]-[round(ammo_count(),2)]"
 
-/obj/item/ammo_casing/rubber9mm
-	desc = "A 9mm rubber bullet casing."
+/obj/item/ammo_casing/mmr919
+	caliber = "919mmr"
 	icon = 'modular_ss220/objects/icons/ammo.dmi'
-	icon_state = "r-casing"
-	caliber = "9mm"
-	projectile_type = /obj/item/projectile/bullet/weakbullet4
+	icon_state = "casingmm919"
+	projectile_type = /obj/item/projectile/bullet/mmr919
 
-/obj/item/ammo_casing/c9mm
-	desc = "A 9mm bullet casing."
-	caliber = "9mm"
-	projectile_type = /obj/item/projectile/bullet/weakbullet3
-	muzzle_flash_strength = MUZZLE_FLASH_STRENGTH_WEAK
-	muzzle_flash_range = MUZZLE_FLASH_RANGE_NORMAL
+/obj/item/ammo_casing/mm919
+	caliber = "919mm"
+	projectile_type = /obj/item/projectile/bullet/mm919
 
-/obj/item/projectile/bullet/c9mm
-	name = "9mm bullet"
+/obj/item/projectile/bullet/mm919
+	name = "9x19mm bullet"
 	icon_state = "bullet"
 	damage = 21
 	damage_type = BRUTE
@@ -237,29 +233,27 @@
 	hitsound_wall = "ricochet"
 	impact_effect_type = /obj/effect/temp_visual/impact_effect
 
-/obj/item/projectile/bullet/rubber9mm
-	name = "rubber 9mm bullet"
+/obj/item/projectile/bullet/mmr919
+	name = "9x19mm rubber bullet"
 	icon_state = "bullet"
 	damage = 7
 	stamina = 30
 	flag = "bullet"
-	hitsound_wall = "ricochet"
-	impact_effect_type = /obj/effect/temp_visual/impact_effect
 
-/obj/item/ammo_box/c9mm
-	name = "box of lethal ammo (9mm)"
-	desc = "Contains up to 20 9mm cartridges."
+/obj/item/ammo_box/mm919
+	name = "box of lethal ammo (9x19mm)"
+	desc = "Contains up to 20 9x19mm cartridges."
 	w_class = WEIGHT_CLASS_NORMAL
-	ammo_type = /obj/item/ammo_casing/c9mm
+	ammo_type = /obj/item/ammo_casing/mm919
 	max_ammo = 20
 	icon = 'modular_ss220/objects/icons/ammo.dmi'
 	icon_state = "9mm_box"
 
-/obj/item/ammo_box/rubber9mm
-	name = "box of rubber ammo (9mm)"
-	desc = "Contains up to 20 rubber 9mm cartridges."
+/obj/item/ammo_box/mmr919
+	name = "box of rubber ammo (9x19mm)"
+	desc = "Contains up to 20 rubber 9x19mm cartridges."
 	w_class = WEIGHT_CLASS_NORMAL
-	ammo_type = /obj/item/ammo_casing/rubber9mm
+	ammo_type = /obj/item/ammo_casing/mmr919
 	max_ammo = 20
 	icon = 'modular_ss220/objects/icons/ammo.dmi'
 	icon_state = "9mmr_box"
@@ -273,8 +267,8 @@
 
 /datum/supply_packs/security/armory/berettaammo
 	name = "Beretta M9 Rubber Ammunition Crate"
-	contains = list(/obj/item/ammo_box/rubber9mm,
-					/obj/item/ammo_box/rubber9mm,
+	contains = list(/obj/item/ammo_box/mmr919,
+					/obj/item/ammo_box/mmr919,
 					/obj/item/ammo_box/magazine/beretta,
 					/obj/item/ammo_box/magazine/beretta)
 	cost = 400
@@ -299,5 +293,5 @@
 	req_tech = list("combat" = 1, "materials" = 1)
 	build_type = PROTOLATHE
 	materials = list(MAT_METAL = 4000)
-	build_path = /obj/item/ammo_box/c9mm
+	build_path = /obj/item/ammo_box/mm919
 	category = list("Weapons")
