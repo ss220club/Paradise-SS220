@@ -1275,7 +1275,7 @@
 	return
 
 /datum/construction/reversible/mecha/executioner
-	result = "/obj/mecha/combat/durand/executioner"
+	result = "/obj/mecha/combat/executioner"
 	steps = list(
 		//1
 		list(
