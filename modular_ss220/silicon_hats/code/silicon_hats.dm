@@ -42,7 +42,7 @@
 	isCentered = TRUE
 	canBeHatted = TRUE
 
-/mob/living/silicon/robot/proc/robot_module_hat_offset(var/module)
+/mob/living/silicon/robot/proc/robot_module_hat_offset(module)
 	switch(module)
 		//хуманоидные броботы с шляпами
 		if("Engineering", "Miner_old", "JanBot2", "Medbot", "engineerrobot", "maximillion", "secborg", "Hydrobot")
