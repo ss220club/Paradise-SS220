@@ -23,17 +23,17 @@
 	remove_from_head(user)
 
 //Если вдруг кто-то захочет сразу спавнить боргов с шапками
-/mob/living/silicon/New()
-	..()
+/mob/living/silicon/Initialize(mapload)
+	. = ..()
 	regenerate_icons()
 
 //Для уже готовых спавнов боевых боргов
-/mob/living/silicon/robot/New()
-	..()
+/mob/living/silicon/robot/Initialize(mapload)
+	. = ..()
 	robot_module_hat_offset(icon_state)
 
 /mob/living/silicon/robot/initialize_module(selected_module, selected_sprite, list/module_sprites)
-	..()
+	. = ..()
 	robot_module_hat_offset(icon_state)
 
 /datum/emote/flip/run_emote(mob/user, params, type_override, intentional)
@@ -89,3 +89,13 @@
 	var/datum/browser/popup = new(user, "mob\ref[src]", "[src]", 440, 500)
 	popup.set_content(dat)
 	popup.open()
+
+/mob/living/silicon/robot/examine(mob/user)
+	. = ..()
+	if(inventory_head)
+		. += "\nНосит [bicon(inventory_head)] [inventory_head.name].\n"
+
+/mob/living/silicon/ai/examine(mob/user)
+	. = ..()
+	if(inventory_head)
+		. += "\nНа корпусе расположился [bicon(inventory_head)] [inventory_head.name].\n"

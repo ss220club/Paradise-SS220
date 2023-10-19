@@ -47,11 +47,6 @@
 				msg += "<span class='warning'>It looks like its system is corrupted beyond repair. There is no hope of recovery.</span>\n"
 	msg += "*---------*</span>"
 
-	// SS220 ADDITION START
-	if(inventory_head)
-		msg += "\nНосит [bicon(inventory_head)] [inventory_head.name].\n"
-	// SS220 ADDITION END
-
 	if(print_flavor_text())
 		msg += "\n[print_flavor_text()]\n"
 
