@@ -164,7 +164,6 @@ SUBSYSTEM_DEF(credits)
 		content += "<hr>"
 		content += "<center><br>Приглашенные звезды:<br>[jointext(streamers, "<br>")]</center>"
 
-
 /datum/credit/streamers/proc/database_rank_check(list/streamers)
 	if(!SSdbcore.IsConnected())
 		to_chat(src, "Warning, MYSQL database is not connected.")
@@ -217,8 +216,8 @@ SUBSYSTEM_DEF(credits)
 		for(var/i = 0, i < 100, i++)
 			if(!length(cast) && !chunksize)
 				cast += "<hr>"
-				chunk += "<br>В съемках участвовали:"
-			chunk += "[human.real_name] в роли [uppertext(human.job)]"
+				chunk += "<h1>В съемках участвовали:</h1>"
+			chunk += "[human.real_name] в роли [uppertext(human.mind.assigned_role)]"
 			chunksize++
 			if(chunksize > 2)
 				cast += "<center>[jointext(chunk,"<br>")]</center>"
@@ -228,9 +227,7 @@ SUBSYSTEM_DEF(credits)
 	if(length(chunk))
 		cast += "<center>[jointext(chunk,"<br>")]</center>"
 
-
 	content += cast
-
 
 /datum/credit/crewlist
 
@@ -251,8 +248,8 @@ SUBSYSTEM_DEF(credits)
 
 		if(!length(cast) && !chunksize)
 			cast += "<hr>"
-			chunk += "<br>В съемках участвовали:"
-		chunk += "[human.real_name] в роли [uppertext(human.job)]"
+			chunk += "<h1>В съемках участвовали:</h1>"
+		chunk += "[human.real_name] в роли [uppertext(human.mind.assigned_role)]"
 		chunksize++
 		if(chunksize > 2)
 			cast += "<center>[jointext(chunk,"<br>")]</center>"
@@ -262,11 +259,33 @@ SUBSYSTEM_DEF(credits)
 	if(length(chunk))
 		cast += "<center>[jointext(chunk,"<br>")]</center>"
 
-
 	content += cast
 
+/datum/credit/corpses_debug
 
-/datum/credit/corpses
+/datum/credit/corpses_debug/New()
+	. = ..()
+
+	var/list/corpses = list()
+
+	for(var/mob/living/carbon/human/human in GLOB.mob_living_list)
+		if(!human.last_known_ckey)
+			continue
+		else if(human.real_name)
+			for(var/i = 0, i < 50, i++)
+				corpses += human.real_name
+
+	if(length(corpses))
+		content += "<hr>"
+		content += "<center><h1>Основано на реальных событиях:<br></h1><h1>В память о</h1></center>"
+		while(length(corpses) > 10)
+			content += "<center>[jointext(corpses, ", ", 1, 10)],</center>"
+			corpses.Cut(1, 10)
+
+		if(length(corpses))
+			content += "<center>[jointext(corpses, ", ")]</center>"
+
+
 
 /datum/credit/corpses/New()
 	. = ..()
@@ -278,9 +297,17 @@ SUBSYSTEM_DEF(credits)
 			continue
 		else if(human.real_name)
 			corpses += human.real_name
+
 	if(length(corpses))
 		content += "<hr>"
-		content += "<center><br>Основано на реальных событиях:<br>В память о [english_list(corpses)].<br></center>"
+		content += "<center><h1>Основано на реальных событиях:<br></h1><h1>В память о</h1></center>"
+		while(length(corpses) > 10)
+			content += "<center>[jointext(corpses, ", ", 1, 10)],</center>"
+			corpses.Cut(1, 10)
+
+		if(length(corpses))
+			content += "<center>[jointext(corpses, ", ")].</center>"
+
 
 /datum/credit/staff
 
@@ -300,11 +327,11 @@ SUBSYSTEM_DEF(credits)
 			goodboys += "[client.key]"
 
 	if(length(staff))
-		content += "<center>Съемочная группа:<br></center>"
+		content += "<center><h1>Съемочная группа:<br></h1></center>"
 		content += "<center>[jointext(staff,"<br>")]<br></center>"
 
 	if(length(goodboys))
-		content += "<center>Мальчики на побегушках:<br>[english_list(goodboys)]</center><br>"
+		content += "<center><h1>Мальчики на побегушках:<br></h1>[english_list(goodboys)]</center><br>"
 
 /datum/credit/disclaimer
 
