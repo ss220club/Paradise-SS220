@@ -5,6 +5,7 @@ SUBSYSTEM_DEF(modpacks)
 	init_order = INIT_ORDER_MODPACKS
 	flags = SS_NO_FIRE
 	var/list/loaded_modpacks
+	var/list/tgui_data
 
 /datum/controller/subsystem/modpacks/Initialize()
 	var/list/all_modpacks = list()
@@ -50,7 +51,9 @@ SUBSYSTEM_DEF(modpacks)
 /datum/controller/subsystem/modpacks/ui_static_data(mob/user)
 	var/list/data = list()
 
-	data["modpacks"] = generate_modpacks_data()
+	if(!length(tgui_data))
+		tgui_data = generate_modpacks_data()
+	data["modpacks"] = tgui_data
 
 	return data
 
