@@ -58,7 +58,7 @@
 		usr.unset_machine()
 		return
 
-	if (!canBeHatted)
+	if (!can_be_hatted)
 		return 0
 
 	if(href_list["remove_inv"])
@@ -83,7 +83,7 @@
 		return
 	user.set_machine(src)
 
-	var/dat = 	{"<meta charset="UTF-8"><div align='center'><b>Inventory of [name]</b></div><p>"}
+	var/dat = {"<meta charset="UTF-8"><div align='center'><b>Inventory of [name]</b></div><p>"}
 	dat += "<br><B>Head:</B> <A href='?src=[UID()];[inventory_head ? "remove_inv=head'>[inventory_head]" : "add_inv=head'>Nothing"]</A>"
 
 	var/datum/browser/popup = new(user, "mob\ref[src]", "[src]", 440, 500)

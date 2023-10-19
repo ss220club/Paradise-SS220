@@ -2,7 +2,7 @@
 	var/obj/item/inventory_head
 
 	var/hat_offset_y = -3
-	var/isCentered = FALSE //центрирован ли синтетик. Если нет, то шляпа будет растянута
+	var/is_centered = FALSE //центрирован ли синтетик. Если нет, то шляпа будет растянута
 
 	var/list/blacklisted_hats = list( //Запрещенные шляпы на ношение для боргов с большими головами
 		/obj/item/clothing/head/helmet,
@@ -28,91 +28,91 @@
 	var/hat_alpha
 	var/hat_color
 
-	var/canBeHatted = FALSE
-	var/canWearBlacklistedHats = FALSE
+	var/can_be_hatted = FALSE
+	var/can_wear_blacklisted_hats = FALSE
 
 /mob/living/silicon/robot/drone
 	hat_offset_y = -15
-	isCentered = TRUE
-	canBeHatted = TRUE
-	canWearBlacklistedHats = TRUE
+	is_centered = TRUE
+	can_be_hatted = TRUE
+	can_wear_blacklisted_hats = TRUE
 
 /mob/living/silicon/ai
 	hat_offset_y = 3
-	isCentered = TRUE
-	canBeHatted = TRUE
+	is_centered = TRUE
+	can_be_hatted = TRUE
 
 /mob/living/silicon/robot/proc/robot_module_hat_offset(module)
 	switch(module)
 		//хуманоидные броботы с шляпами
 		if("Engineering", "Miner_old", "JanBot2", "Medbot", "engineerrobot", "maximillion", "secborg", "Hydrobot")
-			canBeHatted = FALSE
+			can_be_hatted = FALSE
 			hat_offset_y = -1
 		if("Noble-CLN", "Noble-SRV", "Noble-DIG", "Noble-MED", "Noble-SEC", "Noble-ENG", "Noble-STD") //Высотой: 32 пикселя
-			canBeHatted = TRUE
-			canWearBlacklistedHats = TRUE
+			can_be_hatted = TRUE
+			can_wear_blacklisted_hats = TRUE
 			hat_offset_y = 4
 		if("droid-medical") //Высотой: 32 пикселя
-			canBeHatted = TRUE
-			canWearBlacklistedHats = TRUE
+			can_be_hatted = TRUE
+			can_wear_blacklisted_hats = TRUE
 			hat_offset_y = 4
 		if("droid-miner", "mk2", "mk3") //Высотой: 32 большая голова, шарообразные
-			canBeHatted = TRUE
-			isCentered = TRUE
+			can_be_hatted = TRUE
+			is_centered = TRUE
 			hat_offset_y = 3
 		if("bloodhound", "nano_bloodhound", "syndie_bloodhound", "ertgamma")//Высотой: 31
-			canBeHatted = TRUE
+			can_be_hatted = TRUE
 			hat_offset_y = 1
 		if("Cricket-SEC", "Cricket-MEDI", "Cricket-JANI", "Cricket-ENGI", "Cricket-MINE", "Cricket-SERV") //Высотой: 31
-			canBeHatted = TRUE
+			can_be_hatted = TRUE
 			hat_offset_y = 2
 		if("droidcombat-shield", "droidcombat") //Высотой: 31
-			canBeHatted = TRUE
+			can_be_hatted = TRUE
 			hat_alpha = 255
 			hat_offset_y = 2
 		if("droidcombat-roll")
-			canBeHatted = TRUE
+			can_be_hatted = TRUE
 			hat_alpha = 0
 			hat_offset_y = 2
 		if("syndi-medi", "surgeon", "toiletbot") //Высотой: 30
-			canBeHatted = TRUE
-			isCentered = TRUE
+			can_be_hatted = TRUE
+			is_centered = TRUE
 			hat_offset_y = 1
 		if("Security", "janitorrobot", "medicalrobot") //Высотой: 29
-			canBeHatted = TRUE
-			isCentered = TRUE
-			canWearBlacklistedHats = TRUE
+			can_be_hatted = TRUE
+			is_centered = TRUE
+			can_wear_blacklisted_hats = TRUE
 			hat_offset_y = -1
 		if("Brobot", "Service", "robot+o+c", "robot_old", "securityrobot",	//Высотой: 28
 			"rowtree-engineering", "rowtree-lucy", "rowtree-medical", "rowtree-security") //Бабоботы
-			canBeHatted = TRUE
-			isCentered = TRUE
-			canWearBlacklistedHats = TRUE
+			can_be_hatted = TRUE
+			is_centered = TRUE
+			can_wear_blacklisted_hats = TRUE
 			hat_offset_y = -1
 		if("Miner", "lavaland")	//Высотой: 27
-			canBeHatted = TRUE
+			can_be_hatted = TRUE
 			hat_offset_y = -1
 		if("robot", "Standard", "Standard-Secy", "Standard-Medi", "Standard-Engi",
 			"Standard-Jani", "Standard-Serv", "Standard-Mine", "xenoborg-state-a") //Высотой: 26
-			canBeHatted = TRUE
+			can_be_hatted = TRUE
 			hat_offset_y = -3
 		if("droid")	//Высотой: 25
-			canBeHatted = TRUE
-			isCentered = TRUE
-			canWearBlacklistedHats = TRUE
+			can_be_hatted = TRUE
+			is_centered = TRUE
+			can_wear_blacklisted_hats = TRUE
 			hat_offset_y = -3
 		if("landmate", "syndi-engi") //Высотой: 24 пикселя макушка
-			canBeHatted = TRUE
+			can_be_hatted = TRUE
 			hat_offset_y = -3
 		if("mopgearrex") //Высотой: 22
-			canBeHatted = TRUE
+			can_be_hatted = TRUE
 			hat_offset_y = -6
 
 	if(inventory_head)
-		if (!canBeHatted)
+		if (!can_be_hatted)
 			remove_from_head(usr)
 			return
-		if (!canWearBlacklistedHats && is_type_in_list(inventory_head, blacklisted_hats))
+		if (!can_wear_blacklisted_hats && is_type_in_list(inventory_head, blacklisted_hats))
 			remove_from_head(usr)
 			return
 
@@ -146,41 +146,41 @@
 		borgI.alpha = hat_alpha
 		borgI.color = hat_color
 		borgI.pixel_y = hat_offset_y
-		if (!isCentered)
+		if (!is_centered)
 			borgI.transform = matrix(1.125, 0, 0.5, 0, 1, 0)
 		return borgI
 
 /mob/living/silicon/proc/place_on_head(obj/item/item_to_add, mob/user)
 	if(!item_to_add)
-		user.visible_message("<span class='notice'>[user] похлопывает по голове [src].</span>", "<span class='notice'>Вы положили руку на голову [src].</span>")
+		user.visible_message(span_notice("[user] похлопывает по голове [src]."), span_notice("Вы положили руку на голову [src]."))
 		if(flags_2 & HOLOGRAM_2)
 			return FALSE
 		return FALSE
 
 	if(!istype(item_to_add, /obj/item/clothing/head/))
-		to_chat(user, "<span class='warning'>[item_to_add] нельзя надеть на голову [src]!</span>")
+		to_chat(user, span_warning("[item_to_add] нельзя надеть на голову [src]!"))
 		return FALSE
 
-	if(!canBeHatted)
-		to_chat(user, "<span class='warning'>[item_to_add] нельзя надеть на голову [src]! Похоже у него уже есть встроенная шляпа.</span>")
+	if(!can_be_hatted)
+		to_chat(user, span_warning("[item_to_add] нельзя надеть на голову [src]! Похоже у него уже есть встроенная шляпа."))
 		return FALSE
 
 	if(inventory_head)
 		if(user)
-			to_chat(user, "<span class='warning'>Нельзя надеть больше одного головного убора на голову [src]!</span>")
+			to_chat(user, span_warning("Нельзя надеть больше одного головного убора на голову [src]!"))
 		return FALSE
 
 	if(user && !user.unEquip(item_to_add))
-		to_chat(user, "<span class='warning'>[item_to_add] застрял в ваших руках, вы не можете его надеть на голову [src]!</span>")
+		to_chat(user, span_warning("[item_to_add] застрял в ваших руках, вы не можете его надеть на голову [src]!"))
 		return FALSE
 
-	if (!canWearBlacklistedHats && is_type_in_list(item_to_add, blacklisted_hats))
-		to_chat(user, "<span class='warning'>[item_to_add] не помещается на голову [src]!</span>")
+	if (!can_wear_blacklisted_hats && is_type_in_list(item_to_add, blacklisted_hats))
+		to_chat(user, span_warning("[item_to_add] не помещается на голову [src]!"))
 		return FALSE
 
-	user.visible_message("<span class='notice'>[user] надевает [item_to_add] на голову [real_name].</span>",
-		"<span class='notice'>Вы надеваете [item_to_add] на голову [real_name].</span>",
-		"<span class='italics'>Вы слышите как что-то нацепили.</span>")
+	user.visible_message(span_notice("[user] надевает [item_to_add] на голову [real_name]."),
+		span_notice("Вы надеваете [item_to_add] на голову [real_name]."),
+		span_italics("Вы слышите как что-то нацепили."))
 	item_to_add.forceMove(src)
 	inventory_head = item_to_add
 	regenerate_icons()
@@ -190,17 +190,17 @@
 /mob/living/silicon/proc/remove_from_head(mob/user)
 	if(inventory_head)
 		if(inventory_head.flags & NODROP)
-			to_chat(user, "<span class='warning'>[inventory_head.name] застрял на головном корпусе [src]! Его невозможно снять!</span>")
+			to_chat(user, span_warning("[inventory_head.name] застрял на головном корпусе [src]! Его невозможно снять!"))
 			return TRUE
 
-		to_chat(user, "<span class='warning'>Вы сняли [inventory_head.name] с головного корпуса [src].</span>")
+		to_chat(user, span_warning("Вы сняли [inventory_head.name] с головного корпуса [src]."))
 		user.put_in_hands(inventory_head)
 
 		null_hat()
 
 		regenerate_icons()
 	else
-		to_chat(user, "<span class='warning'>На головном корпусе [src] нет головного убора!</span>")
+		to_chat(user, span_warning("На головном корпусе [src] нет головного убора!"))
 		return FALSE
 
 	return TRUE
