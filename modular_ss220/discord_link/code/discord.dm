@@ -28,7 +28,7 @@
 	if(!SSdbcore.IsConnected())
 		return
 
-	var/token = md5("[world.time+rand(1000,1000000)]")
+	var/token = "WyccStation_" + md5("[world.time+rand(1000,1000000)]")
 	var/datum/db_query/query_replace_token = SSdbcore.NewQuery("REPLACE INTO discord_links (ckey, timestamp, one_time_token) VALUES (:ckey, NOW(), :token)", list(
 		"token" = token,
 		"ckey" = ckey
@@ -51,10 +51,11 @@
 		return
 
 	if(href_list["observe"] || href_list["ready"] || href_list["late_join"])
-		if (GLOB.configuration.database.enabled && GLOB.configuration.ss220_misc.force_discord_verification && !(client.prefs.discord_id || client.prefs.get_discord_id()))
-			to_chat(usr, span_danger("Вам необходимо привязать дискорд-профиль к аккаунту!"))
-			to_chat(usr, span_warning("Нажмите 'Привязка Discord' во вкладке 'Special Verbs' для получения инструкций."))
-			return FALSE
+		if (GLOB.configuration.database.enabled && GLOB.configuration.ss220_misc.force_discord_verification)
+			if(!client.prefs.discord_id || !(client.prefs.get_discord_id() && client.prefs.discord_id))
+				to_chat(usr, span_danger("Вам необходимо привязать дискорд-профиль к аккаунту!"))
+				to_chat(usr, span_warning("Нажмите 'Привязка Discord' во вкладке 'Special Verbs' для получения инструкций."))
+				return FALSE
 
 	. = ..()
 
