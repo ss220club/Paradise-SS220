@@ -15,6 +15,7 @@
 	if(initialized)
 		stack_trace("Warning: [src]([type]) initialized multiple times!")
 	initialized = TRUE
+	input_focus = src
 	GLOB.mob_list += src
 	return INITIALIZE_HINT_NORMAL
 
@@ -156,7 +157,8 @@
 			ready = FALSE
 			return FALSE
 
-		check_tts_seed_ready() // SS220 ADDITION
+		if(!check_tts_seed_ready()) // SS220 ADDITION
+			return FALSE
 
 		ready = !ready
 		new_player_panel_proc()
@@ -230,7 +232,8 @@
 			to_chat(src, alert("You are currently not whitelisted to play [client.prefs.active_character.species]."))
 			return FALSE
 
-		check_tts_seed_ready()
+		if(!check_tts_seed_ready()) // SS220 ADDITION
+			return FALSE
 
 		LateChoices()
 
@@ -447,7 +450,7 @@
 	var/mins = (mills % 36000) / 600
 	var/hours = mills / 36000
 
-	var/dat = "<html><body><center>"
+	var/dat = "<html><meta charset='utf-8'><body><center>"
 	dat += "Round Duration: [round(hours)]h [round(mins)]m<br>"
 	dat += "<b>The station alert level is: [get_security_level_colors()]</b><br>"
 

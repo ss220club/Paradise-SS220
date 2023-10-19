@@ -8,8 +8,7 @@ SUBSYSTEM_DEF(modpacks)
 
 /datum/controller/subsystem/modpacks/Initialize()
 	var/list/all_modpacks = list()
-	for(var/modpack in subtypesof(/datum/modpack/))
-		all_modpacks.Add(new modpack)
+	init_subtypes(/datum/modpack/, all_modpacks)
 
 	loaded_modpacks = list()
 	// Pre-init and register all compiled modpacks.
@@ -32,6 +31,8 @@ SUBSYSTEM_DEF(modpacks)
 		var/fail_msg = package.post_initialize()
 		if(fail_msg)
 			stack_trace("Modpack [(istype(package) && package.name) || "Unknown"] failed to post-initialize: [fail_msg]")
+
+	load_admins() // To make admins always have modular added verbs
 
 /client/verb/modpacks_list()
 	set name = "Modpacks List"

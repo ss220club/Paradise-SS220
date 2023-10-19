@@ -38,8 +38,8 @@
 		M.loc = pick(GLOB.prisonwarp)
 		if(ishuman(M))
 			var/mob/living/carbon/human/prisoner = M
-			prisoner.equip_to_slot_or_del(new /obj/item/clothing/under/color/orange(prisoner), slot_w_uniform)
-			prisoner.equip_to_slot_or_del(new /obj/item/clothing/shoes/orange(prisoner), slot_shoes)
+			prisoner.equip_to_slot_or_del(new /obj/item/clothing/under/color/orange(prisoner), SLOT_HUD_JUMPSUIT)
+			prisoner.equip_to_slot_or_del(new /obj/item/clothing/shoes/orange(prisoner), SLOT_HUD_SHOES)
 		spawn(50)
 			to_chat(M, "<span class='warning'>You have been sent to the prison station!</span>")
 		log_admin("[key_name(usr)] sent [key_name(M)] to the prison station.")
@@ -1010,7 +1010,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		return
 
 	/* ======== SSD Section ========= */
-	var/msg = "<html><head><title>SSD & AFK Report</title></head><body>"
+	var/msg = "<html><meta charset='utf-8'><head><title>SSD & AFK Report</title></head><body>"
 	msg += "SSD Players:<BR><TABLE border='1'>"
 	msg += "<TR><TD><B>Key</B></TD><TD><B>Real Name</B></TD><TD><B>Job</B></TD><TD><B>Mins SSD</B></TD><TD><B>Special Role</B></TD><TD><B>Area</B></TD><TD><B>PPN</B></TD><TD><B>Cryo</B></TD></TR>"
 	var/mins_ssd

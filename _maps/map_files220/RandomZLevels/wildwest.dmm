@@ -6,7 +6,7 @@
 /area/awaymission/wildwest/wildwest_refine)
 "ab" = (
 /obj/structure/closet/crate/can,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "ae" = (
 /obj/effect/decal/cleanable/generic,
@@ -14,12 +14,9 @@
 /turf/simulated/floor/carpet,
 /area/awaymission/wildwest/wildwest_mines)
 "ai" = (
-/obj/structure/extinguisher_cabinet{
-	name = "east bump";
-	pixel_x = 27
-	},
+/obj/structure/extinguisher_cabinet/directional/east,
 /obj/effect/decal/cleanable/glass,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "al" = (
 /obj/structure/curtain/medical,
@@ -32,11 +29,17 @@
 	icon_state = "white"
 	},
 /area/awaymission/wildwest/wildwest_mines)
+"an" = (
+/obj/effect/decal/cleanable/blood/writing{
+	dir = 4
+	},
+/turf/simulated/floor/plating/ironsand,
+/area/awaymission/wildwest/wildwest_mines)
 "ap" = (
 /obj/effect/mine/dnascramble,
 /obj/item/stack/sheet/mineral/sandstone,
 /obj/effect/decal/cleanable/blood/tracks,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "ar" = (
 /obj/effect/landmark/damageturf,
@@ -67,10 +70,8 @@
 /area/awaymission/wildwest/wildwest_mines)
 "aD" = (
 /obj/machinery/power/port_gen/pacman,
-/turf/simulated/floor/wood{
-	broken = 1;
-	icon_state = "wood-broken7"
-	},
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "aG" = (
 /obj/effect/turf_decal/loading_area{
@@ -127,7 +128,7 @@
 /obj/structure/table/holotable/wood,
 /obj/item/reagent_containers/food/snacks/mint,
 /obj/item/kitchen/utensil/fork,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "bh" = (
 /obj/structure/curtain/black,
@@ -146,11 +147,11 @@
 /turf/simulated/floor/plating/airless,
 /area/awaymission/wildwest/wildwest_refine)
 "bB" = (
-/obj/machinery/light/small,
+/obj/machinery/light/small/directional/south,
 /mob/living/simple_animal/hostile/syndicate/melee/autogib{
 	name = "Syndicate Operative"
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "bH" = (
 /obj/effect/decal/warning_stripes/southwestcorner,
@@ -159,7 +160,7 @@
 /area/awaymission/wildwest/wildwest_refine)
 "bJ" = (
 /obj/structure/chair/stool/bar,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "bP" = (
 /obj/effect/decal/cleanable/dirt,
@@ -173,10 +174,7 @@
 /turf/simulated/floor,
 /area/awaymission/wildwest/wildwest_refine)
 "bW" = (
-/obj/structure/extinguisher_cabinet{
-	name = "east bump";
-	pixel_x = 27
-	},
+/obj/structure/extinguisher_cabinet/directional/east,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
@@ -194,7 +192,7 @@
 "ch" = (
 /obj/machinery/economy/vending/cigarette/free,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "cj" = (
 /obj/effect/decal/cleanable/glass,
@@ -213,7 +211,7 @@
 	dir = 4
 	},
 /obj/structure/curtain/medical,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "cq" = (
 /obj/effect/step_trigger/sound_effect{
@@ -229,7 +227,7 @@
 /obj/effect/turf_decal/bot_white,
 /obj/machinery/atmospherics/portable/canister/oxygen,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "cw" = (
 /obj/effect/mine/dnascramble,
@@ -239,22 +237,20 @@
 /obj/structure/shuttle/engine/heater{
 	dir = 4
 	},
-/turf/simulated/floor,
+/obj/structure/fans/tiny/invisible,
+/turf/simulated/floor/plating/airless,
 /area/awaymission/wildwest/wildwest_refine)
 "cC" = (
 /obj/structure/chair/comfy/shuttle,
-/obj/machinery/light{
-	dir = 1
-	},
+/obj/machinery/light/directional/north,
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/wildwest/wildwest_refine)
 "cK" = (
-/obj/effect/spawner/window/reinforced,
 /obj/machinery/door/poddoor/shutters{
 	dir = 2;
 	id_tag = "ww_window"
 	},
-/turf/simulated/floor,
+/turf/simulated/wall/indestructible/fakeglass,
 /area/awaymission/wildwest/wildwest_refine)
 "cM" = (
 /obj/effect/turf_decal/delivery,
@@ -264,9 +260,7 @@
 	},
 /area/awaymission/wildwest/wildwest_mines)
 "cN" = (
-/obj/machinery/light/small{
-	dir = 8
-	},
+/obj/machinery/light/small/directional/east,
 /turf/simulated/floor/carpet/green,
 /area/awaymission/wildwest/wildwest_mines)
 "cQ" = (
@@ -280,6 +274,12 @@
 	icon_state = "gcircuitoff"
 	},
 /area/awaymission/wildwest/wildwest_vault)
+"cT" = (
+/obj/effect/decal/cleanable/blood/writing{
+	dir = 8
+	},
+/turf/simulated/floor/plating/ironsand,
+/area/awaymission/wildwest/wildwest_mines)
 "cV" = (
 /turf/simulated/floor/plating/asteroid{
 	icon_state = "asteroid2"
@@ -310,28 +310,16 @@
 /area/awaymission/wildwest/wildwest_mines)
 "dn" = (
 /obj/effect/mine/gas/plasma,
-/turf/simulated/floor/wood{
-	icon_state = "wood-broken7"
-	},
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "ds" = (
 /obj/effect/decal/warning_stripes/north,
 /turf/simulated/floor,
 /area/awaymission/wildwest/wildwest_refine)
 "dt" = (
-/obj/structure/table/glass,
-/obj/item/bonesetter{
-	pixel_x = 5;
-	pixel_y = 5
-	},
-/obj/item/bonegel{
-	pixel_x = 6;
-	pixel_y = 6
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	icon_state = "whiteblue"
-	},
+/obj/effect/decal/cleanable/blood/writing,
+/turf/simulated/floor/plating/ironsand,
 /area/awaymission/wildwest/wildwest_mines)
 "dC" = (
 /obj/structure/shuttle/engine/router,
@@ -339,17 +327,12 @@
 /turf/simulated/floor,
 /area/awaymission/wildwest/wildwest_refine)
 "dG" = (
-/obj/machinery/light/small{
-	dir = 8
-	},
+/obj/machinery/light/small/directional/east,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "dI" = (
-/obj/machinery/light/small{
-	dir = 4;
-	icon_state = "bulb-broken"
-	},
+/obj/machinery/light/small/directional/west,
 /turf/simulated/floor/carpet,
 /area/awaymission/wildwest/wildwest_mines)
 "dL" = (
@@ -395,7 +378,7 @@
 	pixel_x = 10;
 	pixel_y = 14
 	},
-/obj/machinery/door_control{
+/obj/machinery/door_control/shutter{
 	id = "ww_window";
 	pixel_x = -9
 	},
@@ -406,7 +389,7 @@
 /area/awaymission/wildwest/wildwest_refine)
 "ec" = (
 /obj/item/stack/sheet/cardboard,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "ee" = (
 /turf/simulated/floor/plating/asteroid{
@@ -418,31 +401,20 @@
 	icon_state = "ironsand9"
 	},
 /area/awaymission/wildwest/wildwest_mines)
-"el" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/wood{
-	icon_state = "wood-broken3"
-	},
-/area/awaymission/wildwest/wildwest_mines)
 "em" = (
 /turf/simulated/mineral/ancient,
 /area/awaymission/wildwest/wildwest_mines)
 "en" = (
-/obj/machinery/light/small{
-	dir = 8;
-	icon_state = "bulb-broken"
-	},
+/obj/machinery/light/small/directional/west,
 /turf/simulated/floor/carpet/purple,
 /area/awaymission/wildwest/wildwest_mines)
 "er" = (
 /obj/effect/mine/dnascramble,
 /obj/item/stack/sheet/mineral/sandstone,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "et" = (
-/obj/machinery/light/small{
-	icon_state = "bulb-broken"
-	},
+/obj/machinery/light/small/directional/south,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "vault"
@@ -450,9 +422,8 @@
 /area/awaymission/wildwest/wildwest_refine)
 "ey" = (
 /mob/living/simple_animal/hostile/syndicate/ranged,
-/turf/simulated/floor/wood{
-	icon_state = "wood-broken5"
-	},
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "eB" = (
 /obj/effect/decal/cleanable/dirt,
@@ -466,7 +437,7 @@
 /obj/item/kitchen/utensil/fork{
 	pixel_x = 6
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "eK" = (
 /obj/effect/decal/cleanable/blood/oil,
@@ -474,20 +445,16 @@
 /area/awaymission/wildwest/wildwest_refine)
 "eL" = (
 /obj/structure/table,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "eN" = (
 /obj/structure/chair/wood{
 	dir = 1
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "eP" = (
-/obj/structure/sink{
-	dir = 8;
-	pixel_x = -12;
-	pixel_y = 2
-	},
+/obj/structure/sink/directional/east,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
 	dir = 8;
@@ -496,7 +463,7 @@
 /area/awaymission/wildwest/wildwest_mines)
 "eT" = (
 /obj/effect/step_trigger/message{
-	message = "<span class='cult italic'><b><span class='big'>Ancient walls, monstrous petroglyphs and sweet smell of putrefaction... It's worth turning back before this cursed call takes over your mind completely!</span></b></span>"
+	message = "<span class='cult italic'><b><span class='big'>Древние циклопические стены, ужасающие петроглифы и сладковатый запах затхлости... Стоит скорее повернуть назад, пока этот проклятый зов окончательно не захватил ваш разум!</span></b></span>"
 	},
 /obj/effect/step_trigger/sound_effect{
 	happens_once = 1;
@@ -535,7 +502,7 @@
 /area/awaymission/wildwest/wildwest_mines)
 "ff" = (
 /obj/structure/closet/walllocker/emerglocker/north,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "fm" = (
 /obj/structure/closet/cabinet,
@@ -579,15 +546,12 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/light/small{
-	dir = 4;
-	pixel_y = 8
-	},
+/obj/machinery/light/small/directional/east,
 /turf/simulated/floor,
 /area/awaymission/wildwest/wildwest_mines)
 "fz" = (
 /obj/item/shard,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "fB" = (
 /obj/structure/bed,
@@ -600,12 +564,10 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "fM" = (
-/obj/machinery/light/small{
-	dir = 4
-	},
+/obj/machinery/light/small/directional/east,
 /turf/simulated/floor/plating/asteroid{
 	icon_state = "asteroid5"
 	},
@@ -617,9 +579,7 @@
 /area/awaymission/wildwest/wildwest_mines)
 "fQ" = (
 /obj/structure/table_frame,
-/obj/machinery/light/small{
-	dir = 4
-	},
+/obj/machinery/light/small/directional/east,
 /turf/simulated/floor/plasteel{
 	dir = 10;
 	icon_state = "darkyellowfull"
@@ -628,7 +588,7 @@
 "fT" = (
 /obj/structure/bed,
 /obj/item/bedsheet/medical,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "fV" = (
 /obj/structure/reagent_dispensers/watertank,
@@ -644,7 +604,7 @@
 /area/awaymission/wildwest/wildwest_refine)
 "ge" = (
 /obj/item/kirbyplants,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "gk" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
@@ -660,10 +620,7 @@
 	},
 /area/awaymission/wildwest/wildwest_refine)
 "gq" = (
-/obj/machinery/light/small{
-	dir = 8;
-	icon_state = "bulb-broken"
-	},
+/obj/machinery/light/small/directional/east,
 /turf/simulated/floor/plating/asteroid,
 /area/awaymission/wildwest/wildwest_mines)
 "gs" = (
@@ -705,7 +662,7 @@
 /area/awaymission/wildwest/wildwest_mines)
 "gK" = (
 /obj/machinery/economy/vending/boozeomat,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "gM" = (
 /turf/simulated/floor/plating/ironsand{
@@ -735,7 +692,7 @@
 	pixel_x = -5;
 	pixel_y = 5
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "gX" = (
 /obj/structure/marker_beacon/dock_marker,
@@ -754,11 +711,6 @@
 	icon_state = "dark"
 	},
 /area/awaymission/wildwest/wildwest_refine)
-"hh" = (
-/turf/simulated/floor/wood{
-	icon_state = "wood-broken5"
-	},
-/area/awaymission/wildwest/wildwest_mines)
 "hi" = (
 /obj/machinery/door/airlock/external,
 /turf/simulated/floor,
@@ -793,7 +745,7 @@
 	pixel_x = 9;
 	pixel_y = 6
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "hB" = (
 /obj/structure/flora/rock,
@@ -802,7 +754,7 @@
 "hI" = (
 /obj/machinery/atmospherics/portable/canister/oxygen,
 /obj/effect/turf_decal/bot_white,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "hM" = (
 /turf/simulated/floor/plating/ironsand{
@@ -812,10 +764,7 @@
 "hN" = (
 /obj/structure/table,
 /obj/item/megaphone,
-/obj/structure/extinguisher_cabinet{
-	name = "east bump";
-	pixel_x = 27
-	},
+/obj/structure/extinguisher_cabinet/directional/east,
 /obj/item/reagent_containers/food/drinks/coffee,
 /obj/item/folder/yellow{
 	pixel_x = 2;
@@ -832,7 +781,7 @@
 	},
 /obj/item/storage/belt/mining,
 /obj/item/clothing/shoes/workboots/mining,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "hU" = (
 /obj/structure/curtain/black,
@@ -875,16 +824,21 @@
 "it" = (
 /turf/simulated/wall/mineral/plastitanium/nodiagonal,
 /area/awaymission/wildwest/wildwest_refine)
+"iu" = (
+/obj/effect/decal/cleanable/blood/writing{
+	dir = 9
+	},
+/turf/simulated/floor/plating/ironsand,
+/area/awaymission/wildwest/wildwest_mines)
 "iy" = (
-/obj/machinery/door_control{
-	id = "ww_door_ext";
-	pixel_y = 30
+/obj/machinery/door_control/shutter/north{
+	id = "ww_door_ext"
 	},
 /turf/simulated/floor,
 /area/awaymission/wildwest/wildwest_refine)
 "iB" = (
 /obj/structure/closet,
-/obj/machinery/light/small,
+/obj/machinery/light/small/directional/south,
 /turf/simulated/floor/plasteel{
 	dir = 10;
 	icon_state = "darkyellowfull"
@@ -897,9 +851,7 @@
 /area/awaymission/wildwest/wildwest_refine)
 "iE" = (
 /obj/effect/decal/warning_stripes/east,
-/obj/machinery/light_construct/small{
-	dir = 4
-	},
+/obj/machinery/light_construct/small/east,
 /turf/simulated/floor,
 /area/awaymission/wildwest/wildwest_refine)
 "iG" = (
@@ -908,11 +860,11 @@
 "iI" = (
 /obj/structure/filingcabinet,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "iJ" = (
 /obj/effect/decal/warning_stripes/south,
-/obj/machinery/light/small,
+/obj/machinery/light/small/directional/south,
 /turf/simulated/floor,
 /area/awaymission/wildwest/wildwest_refine)
 "iL" = (
@@ -943,7 +895,7 @@
 /area/awaymission/wildwest/wildwest_mines)
 "iZ" = (
 /obj/effect/step_trigger/message{
-	message = "<span class='cult italic'><b><small><span class='big'>You catch a glimpse of how you begin to move chaotically to the beat of the call!</span></small></b></span>"
+	message = "<span class='cult italic'><b><small><span class='big'>Вы ловите себя на мысли, что ваши ноги начали двигаться в такт хаотичному ритму зова!</span></small></b></span>"
 	},
 /obj/effect/step_trigger/sound_effect{
 	happens_once = 1;
@@ -959,7 +911,7 @@
 /area/awaymission/wildwest/wildwest_mines)
 "jc" = (
 /obj/structure/reagent_dispensers/fueltank,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "je" = (
 /obj/item/stack/sheet/plasteel,
@@ -986,13 +938,7 @@
 "jl" = (
 /obj/effect/mine/dnascramble,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/wood,
-/area/awaymission/wildwest/wildwest_mines)
-"jn" = (
-/obj/machinery/light/small{
-	dir = 8
-	},
-/turf/simulated/floor/plating/asteroid,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "js" = (
 /turf/simulated/floor{
@@ -1016,7 +962,7 @@
 /obj/item/clothing/head/welding{
 	layer = 8
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "jB" = (
 /obj/machinery/mass_driver{
@@ -1032,15 +978,10 @@
 "jC" = (
 /turf/simulated/wall/mineral/plastitanium,
 /area/awaymission/wildwest/wildwest_refine)
-"jD" = (
-/turf/simulated/floor/wood{
-	icon_state = "wood-broken"
-	},
-/area/awaymission/wildwest/wildwest_mines)
 "jM" = (
 /obj/structure/table/holotable/wood,
 /obj/item/reagent_containers/food/drinks/drinkingglass/shotglass,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "jP" = (
 /obj/structure/chair/office/dark{
@@ -1054,14 +995,14 @@
 /obj/structure/table,
 /obj/item/t_scanner,
 /obj/item/wrench,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "jV" = (
 /obj/structure/table/holotable/wood,
 /obj/item/reagent_containers/glass/beaker{
 	pixel_x = 5
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "jW" = (
 /turf/simulated/floor/carpet/green,
@@ -1071,10 +1012,7 @@
 /turf/simulated/floor/plating/ironsand,
 /area/awaymission/wildwest/wildwest_mines)
 "kf" = (
-/obj/structure/extinguisher_cabinet{
-	name = "north bump";
-	pixel_y = 30
-	},
+/obj/structure/extinguisher_cabinet/directional/north,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -1093,12 +1031,12 @@
 "kk" = (
 /obj/machinery/power/port_gen/pacman,
 /obj/effect/decal/cleanable/cobweb,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "kn" = (
 /obj/structure/table,
 /obj/item/trash/tray,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "kt" = (
 /obj/effect/turf_decal/bot,
@@ -1112,10 +1050,7 @@
 /turf/simulated/floor/plating/asteroid,
 /area/awaymission/wildwest/wildwest_mines)
 "kx" = (
-/obj/machinery/light/small{
-	dir = 4;
-	icon_state = "bulb-broken"
-	},
+/obj/machinery/light/small/directional/west,
 /turf/simulated/floor/carpet/orange,
 /area/awaymission/wildwest/wildwest_mines)
 "kA" = (
@@ -1124,7 +1059,7 @@
 /area/awaymission/wildwest/wildwest_refine)
 "kE" = (
 /obj/structure/closet/secure_closet/engineering_welding,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "kJ" = (
 /obj/structure/railing{
@@ -1132,11 +1067,12 @@
 	},
 /turf/simulated/floor,
 /area/awaymission/wildwest/wildwest_refine)
+"kL" = (
+/turf/simulated/wall/indestructible/opsglass,
+/area/awaymission/wildwest/wildwest_refine)
 "kO" = (
-/turf/simulated/floor/wood{
-	broken = 1;
-	icon_state = "wood-broken7"
-	},
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "kQ" = (
 /obj/effect/decal/cleanable/blood/old,
@@ -1162,9 +1098,7 @@
 /area/awaymission/wildwest/wildwest_mines)
 "kV" = (
 /obj/effect/mine/dnascramble,
-/obj/structure/sign/poster/contraband/random{
-	pixel_y = 32
-	},
+/obj/structure/sign/poster/contraband/random/north,
 /turf/simulated/floor/plating/asteroid{
 	icon_state = "asteroid9"
 	},
@@ -1175,17 +1109,13 @@
 	},
 /obj/effect/mine/dnascramble,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/wood{
-	broken = 1;
-	icon_state = "wood-broken7"
-	},
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "lg" = (
 /obj/effect/turf_decal/delivery/white,
 /obj/structure/closet/cardboard,
-/obj/machinery/light/small{
-	dir = 8
-	},
+/obj/machinery/light/small/directional/west,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -1211,22 +1141,17 @@
 	pixel_x = -8;
 	pixel_y = 1
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "ln" = (
-/obj/machinery/light/small{
-	dir = 4;
-	icon_state = "bulb-broken"
-	},
-/turf/simulated/floor/wood,
+/obj/machinery/light/small/directional/west,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "lo" = (
 /turf/simulated/floor/carpet/purple,
 /area/awaymission/wildwest/wildwest_mines)
 "lp" = (
-/obj/machinery/light/small{
-	icon_state = "bulb-broken"
-	},
+/obj/machinery/light/small/directional/south,
 /turf/simulated/floor/plating/asteroid{
 	icon_state = "asteroid2"
 	},
@@ -1244,7 +1169,21 @@
 /area/awaymission/wildwest/wildwest_mines)
 "ls" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
+/area/awaymission/wildwest/wildwest_mines)
+"lt" = (
+/obj/effect/decal/cleanable/blood/writing{
+	dir = 9
+	},
+/turf/simulated/floor{
+	icon_state = "cult"
+	},
+/area/awaymission/wildwest/wildwest_mines)
+"lv" = (
+/obj/effect/decal/cleanable/blood/writing{
+	dir = 5
+	},
+/turf/simulated/floor/plating/ironsand,
 /area/awaymission/wildwest/wildwest_mines)
 "lw" = (
 /mob/living/simple_animal/hostile/faithless{
@@ -1260,6 +1199,16 @@
 	},
 /turf/simulated/floor{
 	icon_state = "cult"
+	},
+/area/awaymission/wildwest/wildwest_mines)
+"lF" = (
+/obj/machinery/optable,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/old,
+/obj/item/circular_saw,
+/obj/item/cautery,
+/turf/simulated/floor/plasteel{
+	icon_state = "whiteblue"
 	},
 /area/awaymission/wildwest/wildwest_mines)
 "lJ" = (
@@ -1280,7 +1229,7 @@
 /obj/structure/table_frame/wood,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/old,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "lN" = (
 /obj/effect/turf_decal/caution/stand_clear,
@@ -1289,9 +1238,7 @@
 	},
 /area/awaymission/wildwest/wildwest_refine)
 "lR" = (
-/obj/machinery/light/small{
-	dir = 4
-	},
+/obj/machinery/light/small/directional/west,
 /turf/simulated/floor/carpet/green,
 /area/awaymission/wildwest/wildwest_mines)
 "lX" = (
@@ -1305,11 +1252,11 @@
 /obj/item/stack/cable_coil{
 	amount = 1
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "lY" = (
 /obj/structure/closet/walllocker/emerglocker/west,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "md" = (
 /obj/effect/decal/cleanable/dirt,
@@ -1353,7 +1300,7 @@
 /obj/structure/chair/comfy{
 	dir = 4
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "mz" = (
 /obj/structure/chair/comfy/shuttle,
@@ -1378,20 +1325,20 @@
 "mM" = (
 /obj/effect/mine/dnascramble,
 /obj/item/storage/firstaid/brute/empty,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "mS" = (
 /obj/structure/chair/sofa/left{
 	dir = 8
 	},
 /obj/effect/decal/cleanable/blood/old,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "mU" = (
 /obj/structure/chair/comfy/shuttle{
 	dir = 1
 	},
-/obj/machinery/light,
+/obj/machinery/light/directional/south,
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/wildwest/wildwest_refine)
 "mW" = (
@@ -1400,9 +1347,7 @@
 /area/awaymission/wildwest/wildwest_mines)
 "nf" = (
 /mob/living/simple_animal/hostile/syndicate/ranged,
-/obj/machinery/light/small{
-	dir = 8
-	},
+/obj/machinery/light/small/directional/west,
 /turf/simulated/floor/plating/asteroid,
 /area/awaymission/wildwest/wildwest_mines)
 "nh" = (
@@ -1418,9 +1363,7 @@
 	icon_state = "syndicate"
 	},
 /obj/item/clothing/mask/balaclava,
-/obj/machinery/light{
-	dir = 1
-	},
+/obj/machinery/light/directional/north,
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/wildwest/wildwest_refine)
 "nn" = (
@@ -1463,7 +1406,7 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "nF" = (
 /obj/structure/stone_tile/slab/cracked{
@@ -1478,15 +1421,13 @@
 /turf/simulated/mineral/ancient,
 /area/awaymission/wildwest/wildwest_vault)
 "nL" = (
-/obj/machinery/light{
-	dir = 1
-	},
+/obj/machinery/light/directional/south,
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/wildwest/wildwest_refine)
 "nQ" = (
 /obj/structure/barricade/sandbags,
 /obj/effect/decal/cleanable/blood/old,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "nT" = (
 /mob/living/simple_animal/hostile/faithless{
@@ -1521,7 +1462,7 @@
 "oi" = (
 /obj/effect/turf_decal/bot_white,
 /obj/machinery/atmospherics/portable/canister/oxygen,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "oj" = (
 /obj/item/stack/rods{
@@ -1552,9 +1493,8 @@
 "om" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/stack/tile/wood,
-/turf/simulated/floor/wood{
-	icon_state = "wood-broken7"
-	},
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "on" = (
 /obj/machinery/shower{
@@ -1569,7 +1509,7 @@
 /obj/effect/decal/cleanable/blood/drip{
 	icon_state = "5"
 	},
-/obj/machinery/light/small,
+/obj/machinery/light/small/directional/south,
 /turf/simulated/floor/plating/asteroid,
 /area/awaymission/wildwest/wildwest_mines)
 "oC" = (
@@ -1579,7 +1519,7 @@
 	pixel_x = -5;
 	pixel_y = 6
 	},
-/obj/machinery/door_control{
+/obj/machinery/door_control/shutter{
 	id = "ww_pod";
 	pixel_x = 7;
 	pixel_y = 8
@@ -1590,10 +1530,7 @@
 	},
 /area/awaymission/wildwest/wildwest_refine)
 "oF" = (
-/obj/machinery/light/small{
-	dir = 1;
-	icon_state = "bulb-broken"
-	},
+/obj/machinery/light/small/directional/south,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
 	icon_state = "freezerfloor"
@@ -1625,7 +1562,7 @@
 "oO" = (
 /obj/machinery/atmospherics/pipe/manifold4w/hidden,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "oP" = (
 /obj/effect/decal/cleanable/blood/gibs,
@@ -1639,7 +1576,7 @@
 /obj/item/reagent_containers/food/drinks/cans/beer{
 	pixel_x = -7
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "pa" = (
 /obj/structure/chair/comfy/black{
@@ -1677,13 +1614,7 @@
 	pixel_y = 3
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/wood,
-/area/awaymission/wildwest/wildwest_mines)
-"pE" = (
-/obj/machinery/light/small{
-	dir = 4
-	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "pF" = (
 /obj/effect/decal/cleanable/dirt,
@@ -1702,18 +1633,14 @@
 /obj/structure/chair/comfy/black{
 	dir = 8
 	},
-/obj/machinery/door_control{
-	id = "ww_hang1";
-	pixel_y = -27
+/obj/machinery/door_control/shutter/south{
+	id = "ww_hang1"
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "pL" = (
-/obj/machinery/light/small{
-	dir = 8;
-	icon_state = "bulb-broken"
-	},
+/obj/machinery/light/small/directional/west,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/carpet,
 /area/awaymission/wildwest/wildwest_mines)
@@ -1748,7 +1675,7 @@
 "qb" = (
 /obj/structure/closet/walllocker/emerglocker/east,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "qe" = (
 /obj/effect/decal/warning_stripes/west,
@@ -1769,7 +1696,7 @@
 	layer = 2.9
 	},
 /obj/structure/curtain/medical,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "qq" = (
 /obj/structure/computerframe{
@@ -1797,14 +1724,7 @@
 /obj/item/clothing/under/plasmaman/mining,
 /obj/item/clothing/suit/jacket/miningbomber,
 /obj/item/storage/backpack/industrial,
-/turf/simulated/floor/wood,
-/area/awaymission/wildwest/wildwest_mines)
-"qB" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/wood{
-	broken = 1;
-	icon_state = "wood-broken7"
-	},
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "qE" = (
 /obj/structure/girder/reinforced,
@@ -1825,18 +1745,18 @@
 /area/awaymission/wildwest/wildwest_refine)
 "qM" = (
 /obj/machinery/economy/vending/cola/free,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "qN" = (
 /obj/structure/reagent_dispensers/watertank,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "qO" = (
 /obj/structure/chair/sofa/right{
 	dir = 8
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "qR" = (
 /obj/item/trash/tastybread{
@@ -1859,7 +1779,7 @@
 /obj/structure/closet/walllocker/emerglocker/west,
 /obj/effect/decal/cleanable/glass,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "ri" = (
 /obj/effect/step_trigger/sound_effect{
@@ -1876,7 +1796,7 @@
 /obj/item/clothing/gloves/color/black,
 /obj/item/storage/box/lights/mixed,
 /obj/item/crowbar/engineering,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "rn" = (
 /obj/item/stack/cable_coil{
@@ -1890,7 +1810,7 @@
 "rp" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/kirbyplants,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "rs" = (
 /obj/effect/gibspawner,
@@ -1903,7 +1823,7 @@
 	dir = 6
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "rw" = (
 /obj/effect/decal/warning_stripes/east,
@@ -1950,43 +1870,38 @@
 /obj/item/storage/toolbox/mechanical{
 	pixel_y = 5
 	},
-/obj/machinery/light/small{
-	icon_state = "bulb-broken"
-	},
-/turf/simulated/floor/wood,
+/obj/machinery/light/small/directional/south,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "rU" = (
-/obj/structure/extinguisher_cabinet{
-	name = "east bump";
-	pixel_x = 27
-	},
+/obj/structure/extinguisher_cabinet/directional/east,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "sa" = (
 /obj/item/shard{
 	icon_state = "small";
 	pixel_x = 10
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "sc" = (
 /obj/effect/decal/cleanable/generic,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "sg" = (
 /obj/structure/table/glass,
 /obj/item/clothing/accessory/stethoscope,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "sq" = (
 /obj/effect/decal/cleanable/blood/tracks,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "sr" = (
 /obj/structure/closet/walllocker/emerglocker/west,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "sw" = (
 /obj/effect/turf_decal/loading_area{
@@ -2012,7 +1927,7 @@
 	pixel_x = 3;
 	pixel_y = -3
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "sD" = (
 /obj/structure/stone_tile/slab/cracked,
@@ -2036,7 +1951,7 @@
 /area/awaymission/wildwest/wildwest_refine)
 "sG" = (
 /obj/structure/closet/secure_closet/engineering_electrical,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "sH" = (
 /obj/structure/rack,
@@ -2055,10 +1970,8 @@
 /area/awaymission/wildwest/wildwest_refine)
 "sZ" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/sign/poster/official/random{
-	pixel_x = -32
-	},
-/turf/simulated/floor/wood,
+/obj/structure/sign/poster/official/random/west,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "th" = (
 /obj/effect/step_trigger/sound_effect{
@@ -2072,7 +1985,7 @@
 /area/awaymission/wildwest/wildwest_vault)
 "to" = (
 /obj/effect/mine/dnascramble,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "tp" = (
 /obj/structure/flora/ash/tall_shroom,
@@ -2099,15 +2012,12 @@
 "tz" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/old,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "tB" = (
 /obj/machinery/economy/vending/snack/free,
-/obj/machinery/light/small{
-	dir = 4;
-	icon_state = "bulb-broken"
-	},
-/turf/simulated/floor/wood,
+/obj/machinery/light/small/directional/east,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "tH" = (
 /obj/item/broken_bottle,
@@ -2139,10 +2049,7 @@
 /turf/simulated/floor/carpet/red,
 /area/awaymission/wildwest/wildwest_mines)
 "tX" = (
-/obj/machinery/light/small{
-	dir = 4;
-	icon_state = "bulb-broken"
-	},
+/obj/machinery/light/small/directional/east,
 /mob/living/simple_animal/hostile/syndicate/melee,
 /turf/simulated/floor/carpet/green,
 /area/awaymission/wildwest/wildwest_mines)
@@ -2156,7 +2063,7 @@
 /area/awaymission/wildwest/wildwest_vault)
 "uc" = (
 /obj/structure/dispenser/oxygen,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "ud" = (
 /obj/structure/table/wood/fancy/red,
@@ -2192,9 +2099,7 @@
 /area/awaymission/wildwest/wildwest_vault)
 "ur" = (
 /obj/effect/turf_decal/delivery,
-/obj/machinery/light/small{
-	dir = 1
-	},
+/obj/machinery/light/small/directional/north,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -2220,7 +2125,7 @@
 /obj/effect/mine/dnascramble,
 /obj/item/gun/energy/kinetic_accelerator,
 /obj/effect/decal/cleanable/blood/old,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "uy" = (
 /obj/structure/closet{
@@ -2230,14 +2135,14 @@
 /obj/item/clothing/suit/jacket/miningbomber,
 /obj/item/clothing/shoes/workboots/mining,
 /obj/item/storage/backpack/industrial,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "uC" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10;
 	initialize_directions = 10
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "uF" = (
 /obj/structure/table,
@@ -2251,7 +2156,7 @@
 	dir = 5
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "uO" = (
 /obj/effect/turf_decal/box,
@@ -2279,13 +2184,13 @@
 /area/awaymission/wildwest/wildwest_mines)
 "vc" = (
 /obj/structure/curtain/medical,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "vi" = (
 /mob/living/simple_animal/hostile/syndicate/ranged/orion{
 	name = "Syndicate Operative"
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "vk" = (
 /obj/effect/decal/cleanable/glass,
@@ -2312,7 +2217,7 @@
 /obj/structure/table/glass,
 /obj/item/storage/box/syringes,
 /obj/item/storage/belt/medical,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "vA" = (
 /mob/living/simple_animal/hostile/illusion,
@@ -2332,21 +2237,11 @@
 /area/awaymission/wildwest/wildwest_mines)
 "vF" = (
 /obj/machinery/constructable_frame,
-/turf/simulated/floor/wood{
-	icon_state = "wood-broken"
-	},
-/area/awaymission/wildwest/wildwest_mines)
-"vG" = (
-/obj/machinery/light/small{
-	dir = 1
-	},
-/turf/simulated/floor/plating/asteroid,
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "vJ" = (
-/obj/machinery/light/small{
-	dir = 8;
-	icon_state = "bulb-broken"
-	},
+/obj/machinery/light/small/directional/east,
 /turf/simulated/floor/carpet/orange,
 /area/awaymission/wildwest/wildwest_mines)
 "vL" = (
@@ -2358,11 +2253,8 @@
 /obj/effect/turf_decal/bot_white,
 /obj/machinery/atmospherics/portable/canister/oxygen,
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/light/small{
-	dir = 8;
-	icon_state = "bulb-broken"
-	},
-/turf/simulated/floor/wood,
+/obj/machinery/light/small/directional/west,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "wi" = (
 /obj/effect/decal/cleanable/blood/drip{
@@ -2382,12 +2274,6 @@
 /area/awaymission/wildwest/wildwest_mines)
 "ws" = (
 /obj/structure/sink/puddle,
-/turf/simulated/floor/plating/asteroid,
-/area/awaymission/wildwest/wildwest_mines)
-"wu" = (
-/obj/machinery/light/small{
-	dir = 4
-	},
 /turf/simulated/floor/plating/asteroid,
 /area/awaymission/wildwest/wildwest_mines)
 "wz" = (
@@ -2430,15 +2316,10 @@
 "wF" = (
 /obj/structure/curtain/medical,
 /obj/effect/mine/dnascramble,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "wK" = (
 /turf/simulated/floor/plating/asteroid,
-/area/awaymission/wildwest/wildwest_mines)
-"wO" = (
-/turf/simulated/floor/wood{
-	icon_state = "wood-broken6"
-	},
 /area/awaymission/wildwest/wildwest_mines)
 "wR" = (
 /obj/effect/turf_decal/bot,
@@ -2458,7 +2339,7 @@
 /area/awaymission/wildwest/wildwest_mines)
 "xa" = (
 /obj/effect/decal/cleanable/ants,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "xb" = (
 /obj/effect/spawner/window/plastitanium,
@@ -2468,38 +2349,28 @@
 /obj/structure/table/wood,
 /obj/item/folder/blue,
 /obj/item/pen,
-/obj/machinery/light/small{
-	dir = 1
-	},
+/obj/machinery/light/small/directional/north,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/carpet,
 /area/awaymission/wildwest/wildwest_mines)
 "xd" = (
 /obj/effect/turf_decal/delivery,
 /obj/structure/closet/crate,
-/obj/machinery/light/small{
-	dir = 4
-	},
+/obj/machinery/light/small/directional/east,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
 /area/awaymission/wildwest/wildwest_mines)
 "xf" = (
-/obj/structure/sign/poster/official/random{
-	pixel_y = 32
-	},
-/turf/simulated/floor/wood,
+/obj/structure/sign/poster/official/random/north,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "xj" = (
-/obj/machinery/light/small{
-	dir = 8
-	},
+/obj/machinery/light/small/directional/west,
 /turf/simulated/floor,
 /area/awaymission/wildwest/wildwest_mines)
 "xk" = (
-/obj/machinery/light/small{
-	dir = 8
-	},
+/obj/machinery/light/small/directional/west,
 /turf/simulated/floor/carpet/cyan,
 /area/awaymission/wildwest/wildwest_mines)
 "xm" = (
@@ -2563,10 +2434,12 @@
 /obj/item/chair/wood{
 	dir = 8
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "xM" = (
-/obj/machinery/door/airlock/cult,
+/obj/machinery/door/airlock/vault{
+	locked = 1
+	},
 /turf/simulated/floor{
 	icon_state = "necro1"
 	},
@@ -2599,12 +2472,12 @@
 "yH" = (
 /obj/structure/table/holotable/wood,
 /obj/item/reagent_containers/food/drinks/cans/beer,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "yK" = (
 /obj/structure/dispenser/oxygen,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "yP" = (
 /obj/structure/table/holotable/wood,
@@ -2612,20 +2485,25 @@
 	pixel_x = 6
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
+/area/awaymission/wildwest/wildwest_mines)
+"yS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/FixOVein,
+/turf/simulated/floor/plasteel{
+	icon_state = "white"
+	},
 /area/awaymission/wildwest/wildwest_mines)
 "yT" = (
 /obj/structure/table_frame/wood,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "yU" = (
 /turf/simulated/floor/carpet/cyan,
 /area/awaymission/wildwest/wildwest_mines)
 "za" = (
-/obj/machinery/light/small{
-	icon_state = "bulb-broken"
-	},
+/obj/machinery/light/small/directional/south,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "vault"
@@ -2635,7 +2513,7 @@
 /obj/structure/chair/wood{
 	dir = 8
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "zn" = (
 /obj/structure/table/reinforced,
@@ -2667,10 +2545,10 @@
 /obj/item/stack/sheet/glass{
 	amount = 50
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "zG" = (
-/obj/machinery/light/small,
+/obj/machinery/light/small/directional/north,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
 	icon_state = "freezerfloor"
@@ -2687,24 +2565,22 @@
 	},
 /area/awaymission/wildwest/wildwest_vault)
 "zO" = (
-/obj/machinery/light/small{
-	dir = 8
-	},
+/obj/machinery/light/small/directional/west,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/carpet/orange,
 /area/awaymission/wildwest/wildwest_mines)
 "zS" = (
 /obj/structure/filingcabinet/chestdrawer,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "zU" = (
-/obj/machinery/light,
+/obj/machinery/light/directional/north,
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/wildwest/wildwest_refine)
 "zV" = (
 /obj/effect/decal/cleanable/ants,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "zY" = (
 /obj/structure/bed,
@@ -2720,9 +2596,7 @@
 /obj/effect/turf_decal/delivery,
 /obj/effect/turf_decal/delivery,
 /obj/structure/largecrate,
-/obj/machinery/light/small{
-	dir = 1
-	},
+/obj/machinery/light/small/directional/north,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -2751,7 +2625,7 @@
 /area/awaymission/wildwest/wildwest_refine)
 "Az" = (
 /obj/structure/bed/roller,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "AD" = (
 /obj/effect/rune/narsie{
@@ -2771,7 +2645,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "AI" = (
 /obj/effect/decal/warning_stripes/east,
@@ -2779,7 +2653,7 @@
 /turf/simulated/floor,
 /area/awaymission/wildwest/wildwest_refine)
 "AJ" = (
-/obj/machinery/light/small,
+/obj/machinery/light/small/directional/south,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/carpet,
 /area/awaymission/wildwest/wildwest_mines)
@@ -2791,9 +2665,8 @@
 /area/awaymission/wildwest/wildwest_mines)
 "AM" = (
 /obj/effect/mob_spawn/human/corpse/skeleton,
-/turf/simulated/floor/wood{
-	icon_state = "wood-broken3"
-	},
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "AQ" = (
 /obj/item/trash/chips,
@@ -2807,14 +2680,14 @@
 	filled = 0.1
 	},
 /obj/effect/turf_decal/bot_white,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "AT" = (
 /obj/structure/table/holotable/wood,
 /obj/machinery/chem_dispenser/soda{
 	pixel_y = 8
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "AU" = (
 /obj/effect/step_trigger/sound_effect{
@@ -2833,7 +2706,10 @@
 	triggerer_only = 1
 	},
 /obj/effect/step_trigger/message{
-	message = "<span class='cult italic'><small><b><span class='big'>Has this rock always been here?</span></small></b></span>"
+	message = "<span class='cult italic'><small><b><span class='big'>Этот камень как будто не на своем месте.</span></small></b></span>"
+	},
+/obj/effect/decal/cleanable/blood/writing{
+	dir = 8
 	},
 /turf/simulated/floor{
 	icon_state = "cult"
@@ -2847,7 +2723,7 @@
 "AY" = (
 /obj/structure/table,
 /obj/item/kitchen/rollingpin,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "AZ" = (
 /turf/simulated/floor{
@@ -2878,21 +2754,15 @@
 /turf/simulated/floor/carpet/red,
 /area/awaymission/wildwest/wildwest_mines)
 "Bj" = (
-/obj/machinery/optable,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/blood/old,
-/obj/item/circular_saw,
-/turf/simulated/floor/plasteel{
-	icon_state = "whiteblue"
+/obj/effect/decal/cleanable/blood/writing{
+	dir = 10
 	},
+/turf/simulated/floor/plating/ironsand,
 /area/awaymission/wildwest/wildwest_mines)
 "Bm" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/extinguisher_cabinet{
-	name = "west bump";
-	pixel_x = -27
-	},
-/turf/simulated/floor/wood,
+/obj/structure/extinguisher_cabinet/directional/west,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "Bo" = (
 /obj/effect/decal/cleanable/blood/drip,
@@ -2915,7 +2785,7 @@
 	pixel_x = 6
 	},
 /obj/item/kitchen/utensil/spoon,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "Bt" = (
 /obj/structure/cult/pylon,
@@ -2973,19 +2843,11 @@
 /obj/item/reagent_containers/food/drinks/drinkingglass/soda{
 	pixel_x = 11
 	},
-/obj/structure/sign/poster/official/random{
-	pixel_y = -32
-	},
-/turf/simulated/floor/wood,
+/obj/structure/sign/poster/official/random/south,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "Cx" = (
 /turf/simulated/wall/r_wall,
-/area/awaymission/wildwest/wildwest_mines)
-"Cz" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/wood{
-	icon_state = "wood-broken"
-	},
 /area/awaymission/wildwest/wildwest_mines)
 "CB" = (
 /obj/structure/closet,
@@ -2999,7 +2861,7 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "CE" = (
 /obj/machinery/door/airlock/vault{
@@ -3020,7 +2882,7 @@
 /obj/effect/decal/cleanable/blood/drip{
 	icon_state = "5"
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "CZ" = (
 /obj/structure/table/holotable/wood,
@@ -3028,7 +2890,7 @@
 	anchored = 1
 	},
 /obj/machinery/door/window,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "Da" = (
 /obj/structure/grille/broken,
@@ -3048,32 +2910,22 @@
 /obj/structure/chair/sofa/left{
 	dir = 4
 	},
-/obj/machinery/light/small{
-	dir = 8
-	},
-/turf/simulated/floor/wood,
+/obj/machinery/light/small/directional/west,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "Dj" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 4
 	},
-/obj/machinery/door_control{
-	id = "ww_hang1";
-	pixel_y = 28
+/obj/machinery/door_control/shutter/north{
+	id = "ww_hang1"
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
 /area/awaymission/wildwest/wildwest_refine)
-"Dm" = (
-/turf/simulated/floor/wood{
-	icon_state = "wood-broken3"
-	},
-/area/awaymission/wildwest/wildwest_mines)
 "Do" = (
-/obj/structure/sign/poster/contraband/random{
-	pixel_y = -32
-	},
+/obj/structure/sign/poster/contraband/random/south,
 /turf/simulated/floor/plating/asteroid,
 /area/awaymission/wildwest/wildwest_mines)
 "Du" = (
@@ -3103,24 +2955,19 @@
 	pixel_x = 6
 	},
 /obj/item/clothing/mask/cigarette,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "DB" = (
 /mob/living/simple_animal/hostile/syndicate/ranged,
 /turf/simulated/floor/plating/asteroid,
 /area/awaymission/wildwest/wildwest_mines)
 "DF" = (
-/obj/machinery/light/small{
-	dir = 8;
-	icon_state = "bulb-broken"
-	},
+/obj/machinery/light/small/directional/west,
 /obj/effect/decal/cleanable/cobweb,
 /obj/structure/closet/crate/trashcart,
 /obj/item/fireaxe,
-/turf/simulated/floor/wood{
-	broken = 1;
-	icon_state = "wood-broken7"
-	},
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "DG" = (
 /obj/structure/curtain/black,
@@ -3137,20 +2984,12 @@
 /obj/item/lighter/zippo,
 /obj/item/storage/fancy/cigarettes/cigpack_robust,
 /obj/item/storage/fancy/cigarettes/cigpack_uplift,
-/turf/simulated/floor/wood,
-/area/awaymission/wildwest/wildwest_mines)
-"DM" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/wood{
-	icon_state = "wood-broken6"
-	},
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "DO" = (
 /obj/effect/turf_decal/delivery,
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/light/small{
-	dir = 1
-	},
+/obj/machinery/light/small/directional/north,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -3179,7 +3018,7 @@
 "DW" = (
 /obj/item/stack/tile/wood,
 /obj/effect/decal/cleanable/blood/oil,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "DY" = (
 /obj/item/stack/sheet/plasteel,
@@ -3197,7 +3036,7 @@
 /area/awaymission/wildwest/wildwest_refine)
 "Eg" = (
 /obj/structure/barricade/sandbags,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "Eq" = (
 /obj/effect/turf_decal/delivery/white,
@@ -3210,11 +3049,8 @@
 /obj/structure/chair/comfy{
 	dir = 4
 	},
-/obj/machinery/light/small{
-	dir = 8;
-	icon_state = "bulb-broken"
-	},
-/turf/simulated/floor/wood,
+/obj/machinery/light/small/directional/west,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "Eu" = (
 /obj/structure/chair/comfy/shuttle{
@@ -3228,11 +3064,16 @@
 	},
 /obj/item/clothing/under/plasmaman/mining,
 /obj/item/clothing/suit/space/hardsuit/mining,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "ED" = (
 /obj/structure/mineral_door/wood,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
+/area/awaymission/wildwest/wildwest_mines)
+"EG" = (
+/obj/effect/mob_spawn/human/corpse/miner,
+/obj/effect/decal/cleanable/blood/old,
+/turf/simulated/floor/plating/ironsand,
 /area/awaymission/wildwest/wildwest_mines)
 "EH" = (
 /mob/living/simple_animal/hostile/creature,
@@ -3255,17 +3096,14 @@
 	},
 /area/awaymission/wildwest/wildwest_mines)
 "ER" = (
-/obj/machinery/light/small{
-	dir = 8
-	},
-/turf/simulated/floor/wood,
+/obj/machinery/light/small/directional/east,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "ES" = (
-/obj/effect/spawner/window/reinforced,
 /obj/machinery/door/poddoor/shutters{
 	id_tag = "ww_window"
 	},
-/turf/simulated/floor,
+/turf/simulated/wall/indestructible/fakeglass,
 /area/awaymission/wildwest/wildwest_refine)
 "ET" = (
 /obj/effect/decal/cleanable/dirt,
@@ -3278,18 +3116,12 @@
 	icon_state = "whiteblue"
 	},
 /area/awaymission/wildwest/wildwest_mines)
-"EV" = (
-/obj/machinery/light/small{
-	dir = 8
-	},
-/turf/simulated/floor/carpet/purple,
-/area/awaymission/wildwest/wildwest_mines)
 "EX" = (
 /obj/item/chair/wood{
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "EY" = (
 /obj/structure/railing/corner,
@@ -3297,18 +3129,11 @@
 	icon_state = "dark"
 	},
 /area/awaymission/wildwest/wildwest_refine)
-"Fa" = (
-/obj/structure/shuttle/engine/propulsion{
-	dir = 4;
-	icon_state = "burst_l"
-	},
-/turf/simulated/floor,
-/area/awaymission/wildwest/wildwest_refine)
 "Fb" = (
 /obj/structure/chair/wood{
 	dir = 4
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "Ff" = (
 /obj/machinery/shower{
@@ -3321,7 +3146,7 @@
 "Fn" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "Fp" = (
 /obj/structure/table,
@@ -3368,7 +3193,7 @@
 	pixel_x = -3;
 	pixel_y = 6
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "FI" = (
 /obj/structure/shuttle/engine/propulsion{
@@ -3391,16 +3216,11 @@
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/wildwest/wildwest_refine)
 "FU" = (
-/obj/machinery/light/small{
-	dir = 1
-	},
-/turf/simulated/floor/wood,
+/obj/machinery/light/small/directional/north,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "Gb" = (
-/obj/machinery/light/small{
-	dir = 1;
-	icon_state = "bulb-broken"
-	},
+/obj/machinery/light/small/directional/south,
 /turf/simulated/floor/plating/asteroid,
 /area/awaymission/wildwest/wildwest_mines)
 "Gc" = (
@@ -3429,18 +3249,21 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "Gv" = (
 /obj/structure/curtain/black,
 /turf/simulated/floor/carpet/purple,
 /area/awaymission/wildwest/wildwest_mines)
-"Gz" = (
-/obj/structure/extinguisher_cabinet{
-	name = "west bump";
-	pixel_x = -27
+"Gy" = (
+/obj/effect/decal/cleanable/blood/drip{
+	icon_state = "4"
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/plating/ironsand,
+/area/awaymission/wildwest/wildwest_mines)
+"Gz" = (
+/obj/structure/extinguisher_cabinet/directional/west,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "GC" = (
 /turf/simulated/floor/plating/ironsand{
@@ -3450,7 +3273,7 @@
 "GF" = (
 /obj/structure/table,
 /obj/item/kitchen/knife,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "GG" = (
 /obj/structure/rack,
@@ -3466,7 +3289,7 @@
 /obj/effect/mine/gas/plasma,
 /obj/effect/decal/cleanable/blood/old,
 /obj/structure/closet/cardboard,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "GK" = (
 /obj/item/stack/sheet/mineral/sandstone,
@@ -3475,7 +3298,7 @@
 /area/awaymission/wildwest/wildwest_mines)
 "GM" = (
 /obj/machinery/economy/vending/coffee/free,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "GP" = (
 /obj/machinery/atmospherics/unary/tank/air{
@@ -3488,16 +3311,13 @@
 /obj/item/kirbyplants,
 /obj/effect/mine/dnascramble,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "GS" = (
-/obj/machinery/light/small{
-	dir = 4;
-	icon_state = "bulb-broken"
-	},
+/obj/machinery/light/small/directional/east,
 /obj/effect/mine/dnascramble,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "Hg" = (
 /obj/structure/closet/crate/trashcart,
@@ -3519,18 +3339,17 @@
 	pixel_y = 8
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "Hj" = (
 /obj/structure/table/holotable/wood,
 /obj/item/reagent_containers/food/snacks/mint,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "Hm" = (
 /obj/effect/decal/cleanable/generic,
-/turf/simulated/floor/wood{
-	icon_state = "wood-broken7"
-	},
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "Hn" = (
 /obj/effect/decal/warning_stripes/east,
@@ -3561,24 +3380,21 @@
 "HF" = (
 /obj/structure/closet/walllocker/emerglocker/west,
 /obj/structure/bed/roller,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "HG" = (
 /obj/effect/mine/dnascramble,
 /obj/item/trash/chips,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "HI" = (
 /obj/structure/bookcase/random,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "HJ" = (
-/obj/machinery/light/small{
-	dir = 4;
-	icon_state = "bulb-broken"
-	},
+/obj/machinery/light/small/directional/west,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "HS" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
@@ -3617,9 +3433,7 @@
 /turf/simulated/floor/carpet/green,
 /area/awaymission/wildwest/wildwest_mines)
 "Im" = (
-/obj/machinery/door_control{
-	pixel_x = -29
-	},
+/obj/machinery/door_control/shutter/west,
 /obj/structure/door_assembly/door_assembly_ext,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
@@ -3632,7 +3446,7 @@
 /area/awaymission/wildwest/wildwest_vault)
 "Ip" = (
 /obj/structure/table/reinforced,
-/obj/machinery/light,
+/obj/machinery/light/directional/north,
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/wildwest/wildwest_refine)
 "Ir" = (
@@ -3661,7 +3475,7 @@
 /area/awaymission/wildwest/wildwest_mines)
 "IB" = (
 /obj/structure/reagent_dispensers/water_cooler,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "IF" = (
 /obj/structure/marker_beacon/dock_marker,
@@ -3703,7 +3517,7 @@
 /area/awaymission/wildwest/wildwest_mines)
 "Jf" = (
 /obj/effect/decal/cleanable/shreds,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "Jp" = (
 /turf/simulated/floor{
@@ -3711,15 +3525,12 @@
 	},
 /area/awaymission/wildwest/wildwest_mines)
 "Jt" = (
-/obj/structure/sink{
-	dir = 8;
-	pixel_x = -12
-	},
+/obj/structure/sink/directional/east,
 /obj/structure/mirror{
 	pixel_x = -28
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "Ju" = (
 /obj/item/shard{
@@ -3744,7 +3555,7 @@
 /obj/structure/toilet{
 	dir = 4
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "JO" = (
 /obj/effect/turf_decal/delivery,
@@ -3755,38 +3566,34 @@
 /area/awaymission/wildwest/wildwest_refine)
 "JQ" = (
 /obj/effect/decal/cleanable/blood/drip,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "JR" = (
 /obj/structure/stone_tile/slab,
 /turf/simulated/floor/plating/ironsand,
 /area/awaymission/wildwest/wildwest_mines)
 "JS" = (
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "JU" = (
 /obj/structure/marker_beacon/dock_marker,
 /turf/space,
 /area/space)
 "JV" = (
-/obj/machinery/light/small{
-	dir = 8;
-	icon_state = "bulb-broken"
-	},
+/obj/machinery/light/small/directional/west,
 /mob/living/simple_animal/hostile/syndicate/ranged,
 /turf/simulated/floor/carpet/purple,
 /area/awaymission/wildwest/wildwest_mines)
 "Kb" = (
 /obj/structure/closet/cabinet,
 /obj/effect/decal/cleanable/cobweb2,
-/turf/simulated/floor/wood{
-	icon_state = "wood-broken7"
-	},
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "Kk" = (
 /obj/effect/turf_decal/delivery,
 /obj/structure/closet/crate,
-/obj/machinery/light/small,
+/obj/machinery/light/small/directional/south,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -3794,13 +3601,10 @@
 "Kr" = (
 /obj/structure/reagent_dispensers/water_cooler,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "Ku" = (
-/obj/machinery/light/small{
-	dir = 4;
-	icon_state = "bulb-broken"
-	},
+/obj/machinery/light/small/directional/west,
 /turf/simulated/floor/plating/asteroid,
 /area/awaymission/wildwest/wildwest_mines)
 "KA" = (
@@ -3820,16 +3624,13 @@
 /area/awaymission/wildwest/wildwest_refine)
 "KK" = (
 /obj/structure/barricade/sandbags,
-/obj/machinery/light/small{
-	dir = 1;
-	icon_state = "bulb-broken"
-	},
+/obj/machinery/light/small/directional/north,
 /turf/simulated/floor/plating/asteroid,
 /area/awaymission/wildwest/wildwest_mines)
 "KL" = (
 /obj/effect/mine/dnascramble,
 /obj/item/clothing/suit/jacket/miningbomber,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "KN" = (
 /obj/effect/decal/warning_stripes/southeastcorner,
@@ -3838,7 +3639,7 @@
 "KO" = (
 /obj/structure/table/holotable/wood,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "KR" = (
 /turf/simulated/wall/r_wall,
@@ -3852,13 +3653,13 @@
 "KZ" = (
 /obj/structure/girder,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "Lc" = (
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/wildwest/wildwest_refine)
 "Lp" = (
-/obj/machinery/light/small,
+/obj/machinery/light/small/directional/north,
 /turf/simulated/floor/plating/asteroid,
 /area/awaymission/wildwest/wildwest_mines)
 "Lr" = (
@@ -3880,14 +3681,9 @@
 /obj/structure/chair/comfy/shuttle{
 	dir = 4
 	},
-/obj/machinery/light,
+/obj/machinery/light/directional/south,
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/wildwest/wildwest_refine)
-"LM" = (
-/turf/simulated/floor/wood{
-	icon_state = "wood-broken7"
-	},
-/area/awaymission/wildwest/wildwest_mines)
 "LO" = (
 /obj/structure/lattice/catwalk,
 /turf/space,
@@ -3938,7 +3734,7 @@
 /obj/machinery/computer{
 	dir = 4
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "Me" = (
 /obj/structure/table,
@@ -3973,9 +3769,8 @@
 "Mk" = (
 /obj/effect/decal/cleanable/blood/old,
 /mob/living/simple_animal/hostile/syndicate/ranged,
-/turf/simulated/floor/wood{
-	icon_state = "wood-broken7"
-	},
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "Mq" = (
 /obj/structure/falsewall/rock_ancient,
@@ -3996,7 +3791,7 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/light/small,
+/obj/machinery/light/small/directional/south,
 /turf/simulated/floor/plasteel{
 	dir = 6;
 	icon_state = "whiteblue"
@@ -4028,7 +3823,7 @@
 /turf/space,
 /area/space)
 "MK" = (
-/obj/machinery/light/small,
+/obj/machinery/light/small/directional/south,
 /turf/simulated/floor/plasteel{
 	dir = 10;
 	icon_state = "darkyellowfull"
@@ -4054,7 +3849,7 @@
 /area/awaymission/wildwest/wildwest_mines)
 "Nd" = (
 /obj/item/chair/wood,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "Ne" = (
 /obj/effect/decal/cleanable/blood/old,
@@ -4083,23 +3878,15 @@
 "Nj" = (
 /obj/structure/table/glass,
 /obj/item/handheld_defibrillator,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "Nk" = (
-/obj/effect/spawner/window/reinforced,
 /obj/machinery/door/poddoor/shutters{
 	dir = 8;
 	id_tag = "ww_window"
 	},
-/turf/simulated/floor,
+/turf/simulated/wall/indestructible/fakeglass,
 /area/awaymission/wildwest/wildwest_refine)
-"Nl" = (
-/obj/machinery/light/small{
-	dir = 8;
-	icon_state = "bulb-broken"
-	},
-/turf/simulated/floor/wood,
-/area/awaymission/wildwest/wildwest_mines)
 "Nq" = (
 /obj/effect/turf_decal/caution{
 	dir = 4
@@ -4116,7 +3903,7 @@
 "Nt" = (
 /obj/structure/closet/secure_closet/freezer/kitchen,
 /obj/effect/decal/cleanable/cobweb2,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "Nw" = (
 /obj/structure/fans/tiny,
@@ -4144,9 +3931,7 @@
 /turf/simulated/floor/carpet/purple,
 /area/awaymission/wildwest/wildwest_mines)
 "NH" = (
-/obj/structure/sign/poster/official/random{
-	pixel_y = -32
-	},
+/obj/structure/sign/poster/official/random/south,
 /turf/simulated/floor/carpet/red,
 /area/awaymission/wildwest/wildwest_mines)
 "NJ" = (
@@ -4161,7 +3946,7 @@
 /area/awaymission/wildwest/wildwest_mines)
 "NR" = (
 /obj/machinery/economy/vending/cigarette/free,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "NU" = (
 /obj/effect/decal/warning_stripes/west,
@@ -4193,15 +3978,17 @@
 /area/awaymission/wildwest/wildwest_mines)
 "Os" = (
 /obj/effect/decal/cleanable/blood/old,
-/obj/machinery/light/small{
-	dir = 1;
-	icon_state = "bulb-broken"
-	},
+/obj/machinery/light/small/directional/north,
 /turf/simulated/floor/plating/asteroid,
 /area/awaymission/wildwest/wildwest_mines)
 "Ov" = (
 /obj/effect/step_trigger/message{
-	message = "<span class='cult italic'><small><b>You feel some strange ominous call that stretches from the depths of the cave...</small></b></span>"
+	message = "<span class='cult italic'><small><b>Вы ощущаете странный зловещий зов, что доносится из глубин пещеры...</small></b></span>"
+	},
+/obj/effect/step_trigger/sound_effect{
+	happens_once = 1;
+	sound = "modular_ss220/aesthetics_sounds/sound/creepy/many_whisper2.ogg";
+	triggerer_only = 1
 	},
 /turf/simulated/floor/plating/ironsand,
 /area/awaymission/wildwest/wildwest_mines)
@@ -4234,24 +4021,22 @@
 /area/awaymission/wildwest/wildwest_refine)
 "OS" = (
 /obj/structure/table/reinforced,
-/obj/machinery/light{
-	dir = 1
-	},
+/obj/machinery/light/directional/south,
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/wildwest/wildwest_refine)
 "OT" = (
 /obj/structure/table_frame/wood,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "OV" = (
 /obj/structure/chair/office/dark{
 	dir = 4
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "OY" = (
 /obj/structure/chair/wood,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "OZ" = (
 /obj/item/shard{
@@ -4264,9 +4049,7 @@
 "Ph" = (
 /obj/effect/turf_decal/delivery,
 /obj/structure/ore_box,
-/obj/machinery/light/small{
-	dir = 4
-	},
+/obj/machinery/light/small/directional/east,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -4280,16 +4063,14 @@
 	},
 /area/awaymission/wildwest/wildwest_refine)
 "Pn" = (
-/obj/machinery/light/small{
-	dir = 8
-	},
+/obj/machinery/light/small/directional/west,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
 /area/awaymission/wildwest/wildwest_refine)
 "Pt" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "Pz" = (
 /obj/structure/table/holotable/wood,
@@ -4299,11 +4080,11 @@
 	pixel_x = 6
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "PC" = (
 /obj/machinery/economy/slot_machine,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "PG" = (
 /obj/effect/decal/cleanable/blood/drip,
@@ -4313,7 +4094,7 @@
 /obj/effect/decal/cleanable/blood/drip{
 	icon_state = "3"
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "PK" = (
 /obj/structure/chair/wood{
@@ -4321,13 +4102,10 @@
 	},
 /obj/effect/decal/cleanable/generic,
 /obj/effect/decal/cleanable/blood/old,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "PL" = (
-/obj/machinery/light/small{
-	dir = 8;
-	icon_state = "bulb-broken"
-	},
+/obj/machinery/light/small/directional/west,
 /turf/simulated/floor,
 /area/awaymission/wildwest/wildwest_refine)
 "PM" = (
@@ -4357,9 +4135,8 @@
 /area/awaymission/wildwest/wildwest_refine)
 "PW" = (
 /obj/effect/decal/cleanable/blood/old,
-/turf/simulated/floor/wood{
-	icon_state = "wood-broken7"
-	},
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "Qc" = (
 /obj/machinery/iv_drip{
@@ -4369,7 +4146,7 @@
 	pixel_x = 7
 	},
 /obj/effect/decal/cleanable/cobweb2,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "Qe" = (
 /obj/structure/cult/pylon,
@@ -4377,13 +4154,6 @@
 	icon_state = "cult"
 	},
 /area/awaymission/wildwest/wildwest_vault)
-"Qg" = (
-/obj/machinery/light/small{
-	dir = 8
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/carpet/red,
-/area/awaymission/wildwest/wildwest_mines)
 "Qj" = (
 /obj/structure/shuttle/engine/large{
 	dir = 8
@@ -4397,7 +4167,7 @@
 "Qn" = (
 /obj/effect/decal/cleanable/glass,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "Qo" = (
 /obj/structure/chair/comfy/black{
@@ -4408,7 +4178,7 @@
 /area/awaymission/wildwest/wildwest_mines)
 "Qs" = (
 /obj/item/stack/tile/wood,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "Qu" = (
 /obj/item/trash/spentcasing,
@@ -4427,7 +4197,7 @@
 "Qy" = (
 /obj/effect/turf_decal/delivery,
 /obj/structure/largecrate,
-/obj/machinery/light/small,
+/obj/machinery/light/small/directional/south,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -4448,19 +4218,32 @@
 /obj/item/stack/cable_coil{
 	amount = 1
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "QH" = (
 /turf/simulated/floor{
 	icon_state = "cultdamage7"
 	},
 /area/awaymission/wildwest/wildwest_vault)
+"QL" = (
+/obj/structure/table/glass,
+/obj/item/bonesetter{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/obj/item/bonegel{
+	pixel_x = 6;
+	pixel_y = 6
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/scalpel,
+/turf/simulated/floor/plasteel{
+	icon_state = "whiteblue"
+	},
+/area/awaymission/wildwest/wildwest_mines)
 "QQ" = (
 /obj/effect/landmark/damageturf,
-/obj/machinery/light/small{
-	dir = 8;
-	icon_state = "bulb-broken"
-	},
+/obj/machinery/light/small/directional/west,
 /turf/simulated/floor,
 /area/awaymission/wildwest/wildwest_refine)
 "QU" = (
@@ -4473,23 +4256,18 @@
 /area/awaymission/wildwest/wildwest_refine)
 "QY" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/wood{
-	icon_state = "wood-broken5"
-	},
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "Re" = (
 /obj/machinery/photocopier,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "Rm" = (
 /obj/structure/lattice,
 /turf/space,
 /area/space)
-"Rr" = (
-/obj/effect/spawner/window/plastitanium,
-/turf/simulated/floor/plating/airless,
-/area/awaymission/wildwest/wildwest_refine)
 "Rs" = (
 /obj/machinery/gateway{
 	dir = 9
@@ -4500,13 +4278,13 @@
 /area/awaymission/wildwest/wildwest_vault)
 "Rx" = (
 /obj/structure/table/holotable/wood,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "RA" = (
 /obj/effect/decal/cleanable/generic,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/old,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "RL" = (
 /obj/structure/fans/tiny,
@@ -4516,13 +4294,12 @@
 /obj/structure/chair/sofa/right{
 	dir = 4
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "RQ" = (
 /obj/structure/closet/crate/can,
-/turf/simulated/floor/wood{
-	icon_state = "wood-broken5"
-	},
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "RY" = (
 /obj/structure/closet{
@@ -4558,7 +4335,7 @@
 /obj/item/clothing/under/plasmaman/mining,
 /obj/item/clothing/shoes/workboots/mining,
 /obj/effect/decal/cleanable/cobweb,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "Sq" = (
 /obj/structure/table/holotable/wood,
@@ -4566,7 +4343,7 @@
 	pixel_x = -7
 	},
 /obj/item/reagent_containers/food/drinks/cans/beer,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "Sr" = (
 /mob/living/simple_animal/hostile/syndicate/ranged,
@@ -4578,6 +4355,12 @@
 /turf/simulated/floor/plating/asteroid{
 	icon_state = "asteroidfloor"
 	},
+/area/awaymission/wildwest/wildwest_mines)
+"SD" = (
+/obj/effect/decal/cleanable/blood/drip{
+	icon_state = "3"
+	},
+/turf/simulated/floor/plating/ironsand,
 /area/awaymission/wildwest/wildwest_mines)
 "SL" = (
 /obj/structure/chair/comfy/black{
@@ -4598,14 +4381,12 @@
 "SR" = (
 /obj/structure/mineral_door/wood,
 /obj/machinery/atmospherics/pipe/simple/hidden/universal,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "SU" = (
 /obj/effect/turf_decal/delivery/white,
 /obj/structure/closet/crate,
-/obj/machinery/light/small{
-	dir = 4
-	},
+/obj/machinery/light/small/directional/east,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -4630,7 +4411,7 @@
 /obj/structure/chair/sofa/left{
 	dir = 8
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "Tl" = (
 /obj/structure/table/glass,
@@ -4647,14 +4428,14 @@
 	pixel_x = 6;
 	pixel_y = 6
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "Tm" = (
 /obj/item/chair/wood{
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "To" = (
 /obj/machinery/atmospherics/unary/portables_connector{
@@ -4692,11 +4473,8 @@
 /area/awaymission/wildwest/wildwest_mines)
 "TN" = (
 /obj/structure/table,
-/obj/machinery/light/small{
-	dir = 4;
-	pixel_y = 8
-	},
-/turf/simulated/floor/wood,
+/obj/machinery/light/small/directional/east,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "TO" = (
 /obj/effect/decal/remains/human,
@@ -4706,18 +4484,12 @@
 /area/awaymission/wildwest/wildwest_vault)
 "TQ" = (
 /obj/effect/decal/warning_stripes/north,
-/obj/machinery/light/small{
-	dir = 1;
-	icon_state = "bulb-broken"
-	},
+/obj/machinery/light/small/directional/north,
 /turf/simulated/floor,
 /area/awaymission/wildwest/wildwest_refine)
 "TS" = (
 /obj/machinery/mineral/ore_redemption,
-/obj/machinery/light/small{
-	dir = 4;
-	icon_state = "bulb-broken"
-	},
+/obj/machinery/light/small/directional/east,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -4744,7 +4516,7 @@
 /obj/item/clothing/under/plasmaman/mining,
 /obj/item/clothing/shoes/workboots/mining,
 /obj/item/storage/backpack/industrial,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "Uf" = (
 /obj/structure/bed,
@@ -4753,7 +4525,7 @@
 /area/awaymission/wildwest/wildwest_mines)
 "Ui" = (
 /obj/structure/rack,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "Uj" = (
 /obj/effect/turf_decal/delivery,
@@ -4764,15 +4536,12 @@
 	},
 /area/awaymission/wildwest/wildwest_refine)
 "Uk" = (
-/obj/structure/sink{
-	dir = 8;
-	pixel_x = -12
-	},
+/obj/structure/sink/directional/east,
 /obj/structure/mirror{
 	icon_state = "mirror_broke";
 	pixel_x = -28
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "Uq" = (
 /obj/item/shard{
@@ -4815,6 +4584,18 @@
 /mob/living/simple_animal/hostile/syndicate/ranged,
 /turf/simulated/floor,
 /area/awaymission/wildwest/wildwest_refine)
+"UN" = (
+/obj/structure/window/plasmareinforced{
+	color = "#FF0000";
+	dir = 4
+	},
+/obj/structure/shuttle/engine/heater{
+	dir = 8
+	},
+/obj/structure/fans/tiny/invisible,
+/obj/structure/fans/tiny/invisible,
+/turf/simulated/floor/plating/airless,
+/area/awaymission/wildwest/wildwest_refine)
 "UV" = (
 /turf/simulated/floor/plasteel{
 	dir = 1;
@@ -4830,10 +4611,8 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/cobweb,
-/obj/structure/sign/poster/contraband/random{
-	pixel_y = -32
-	},
-/turf/simulated/floor/wood,
+/obj/structure/sign/poster/contraband/random/south,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "UZ" = (
 /obj/structure/railing/corner{
@@ -4852,10 +4631,7 @@
 /turf/simulated/floor/carpet/red,
 /area/awaymission/wildwest/wildwest_mines)
 "Vj" = (
-/obj/machinery/light/small{
-	dir = 8;
-	icon_state = "bulb-broken"
-	},
+/obj/machinery/light/small/directional/west,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/carpet/red,
 /area/awaymission/wildwest/wildwest_mines)
@@ -4873,12 +4649,10 @@
 /obj/item/reagent_containers/food/snacks/mint,
 /obj/item/kitchen/utensil/fork,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "VJ" = (
-/obj/machinery/light/small{
-	dir = 8
-	},
+/obj/machinery/light/small/directional/east,
 /turf/simulated/floor/carpet,
 /area/awaymission/wildwest/wildwest_mines)
 "VO" = (
@@ -4889,7 +4663,7 @@
 /area/awaymission/wildwest/wildwest_refine)
 "VP" = (
 /obj/effect/decal/cleanable/blood/old,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "VT" = (
 /obj/structure/curtain/black,
@@ -4897,20 +4671,14 @@
 /turf/simulated/floor/carpet,
 /area/awaymission/wildwest/wildwest_mines)
 "VU" = (
-/obj/structure/sign/poster/contraband/random{
-	pixel_y = 32
-	},
-/turf/simulated/floor/wood{
-	icon_state = "wood-broken3"
-	},
+/obj/structure/sign/poster/contraband/random/north,
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "VV" = (
 /obj/structure/reagent_dispensers/beerkeg,
-/obj/machinery/light/small{
-	dir = 1;
-	icon_state = "bulb-broken"
-	},
-/turf/simulated/floor/wood,
+/obj/machinery/light/small/directional/north,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "VW" = (
 /obj/structure/table/holotable/wood,
@@ -4918,7 +4686,7 @@
 /obj/item/reagent_containers/food/drinks/drinkingglass/soda{
 	pixel_x = 6
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "VZ" = (
 /obj/effect/mine/dnascramble,
@@ -4928,9 +4696,7 @@
 /area/awaymission/wildwest/wildwest_mines)
 "Wa" = (
 /obj/item/kirbyplants/dead,
-/obj/structure/sign/poster/official/random{
-	pixel_y = 32
-	},
+/obj/structure/sign/poster/official/random/north,
 /turf/simulated/floor/carpet/green,
 /area/awaymission/wildwest/wildwest_mines)
 "Wc" = (
@@ -4956,14 +4722,11 @@
 "Ws" = (
 /obj/structure/bed,
 /obj/item/bedsheet/medical,
-/obj/machinery/light/small{
-	dir = 4;
-	icon_state = "bulb-broken"
-	},
-/turf/simulated/floor/wood,
+/obj/machinery/light/small/directional/east,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "WH" = (
-/obj/effect/spawner/window/reinforced,
+/obj/effect/spawner/window/reinforced/grilled,
 /turf/simulated/floor,
 /area/awaymission/wildwest/wildwest_mines)
 "WI" = (
@@ -4975,17 +4738,21 @@
 /obj/effect/decal/warning_stripes/southeastcorner,
 /turf/simulated/floor/plating/airless,
 /area/awaymission/wildwest/wildwest_refine)
+"WK" = (
+/obj/effect/decal/cleanable/blood/writing{
+	dir = 8
+	},
+/turf/simulated/floor{
+	icon_state = "cult"
+	},
+/area/awaymission/wildwest/wildwest_mines)
 "WL" = (
 /obj/item/chair/wood{
 	dir = 8
 	},
-/obj/machinery/light/small{
-	dir = 4
-	},
-/obj/structure/sign/poster/official/random{
-	pixel_x = 32
-	},
-/turf/simulated/floor/wood,
+/obj/machinery/light/small/directional/east,
+/obj/structure/sign/poster/official/random/east,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "WM" = (
 /obj/effect/decal/cleanable/blood/old,
@@ -4994,29 +4761,23 @@
 	},
 /area/awaymission/wildwest/wildwest_refine)
 "WS" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	icon_state = "white"
-	},
+/obj/effect/decal/cleanable/blood/old,
+/turf/simulated/floor/plating/ironsand,
 /area/awaymission/wildwest/wildwest_mines)
 "WY" = (
-/obj/machinery/light/small{
-	dir = 1
-	},
+/obj/machinery/light/small/directional/north,
 /obj/item/stack/tile/wood,
 /turf/simulated/floor,
 /area/awaymission/wildwest/wildwest_mines)
 "Xe" = (
 /obj/structure/flora/rock/pile,
-/obj/machinery/light/small,
+/obj/machinery/light/small/directional/south,
 /turf/simulated/floor/plating/asteroid,
 /area/awaymission/wildwest/wildwest_mines)
 "Xn" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/sign/poster/official/random{
-	pixel_y = 32
-	},
-/turf/simulated/floor/wood,
+/obj/structure/sign/poster/official/random/north,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "Xr" = (
 /obj/item/stack/rods,
@@ -5030,14 +4791,11 @@
 /obj/effect/mine/dnascramble,
 /obj/effect/mob_spawn/human/corpse/miner,
 /obj/effect/decal/cleanable/blood/old,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "Xz" = (
-/obj/structure/extinguisher_cabinet{
-	name = "east bump";
-	pixel_x = 27
-	},
-/turf/simulated/floor/wood,
+/obj/structure/extinguisher_cabinet/directional/east,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "XE" = (
 /obj/effect/decal/cleanable/dirt,
@@ -5053,7 +4811,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/item/shard,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "XN" = (
 /obj/effect/decal/cleanable/dirt,
@@ -5072,7 +4830,7 @@
 /area/awaymission/wildwest/wildwest_vault)
 "XR" = (
 /mob/living/simple_animal/hostile/syndicate/ranged,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "XS" = (
 /obj/structure/chair/comfy/black{
@@ -5108,7 +4866,7 @@
 /area/awaymission/wildwest/wildwest_mines)
 "Ym" = (
 /obj/machinery/atmospherics/portable/canister/oxygen,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "YB" = (
 /obj/effect/decal/warning_stripes/west,
@@ -5119,6 +4877,10 @@
 "YC" = (
 /turf/simulated/floor/carpet,
 /area/awaymission/wildwest/wildwest_mines)
+"YH" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/simulated/floor/plating/ironsand,
+/area/awaymission/wildwest/wildwest_mines)
 "YI" = (
 /mob/living/simple_animal/hostile/syndicate/ranged/orion{
 	name = "Syndicate Operative"
@@ -5126,10 +4888,7 @@
 /turf/simulated/floor/plating/ironsand,
 /area/awaymission/wildwest/wildwest_mines)
 "YJ" = (
-/obj/machinery/light/small{
-	dir = 8;
-	icon_state = "bulb-broken"
-	},
+/obj/machinery/light/small/directional/west,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/carpet/green,
 /area/awaymission/wildwest/wildwest_mines)
@@ -5138,17 +4897,15 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/cobweb2,
-/obj/structure/sign/poster/contraband/random{
-	pixel_y = 32
-	},
-/turf/simulated/floor/wood,
+/obj/structure/sign/poster/contraband/random/north,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "YM" = (
 /obj/effect/mine/dnascramble,
 /obj/effect/decal/cleanable/generic,
 /obj/effect/mob_spawn/human/corpse/miner,
 /obj/effect/decal/cleanable/blood/old,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "YQ" = (
 /obj/structure/table_frame,
@@ -5167,12 +4924,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
 	},
-/obj/structure/extinguisher_cabinet{
-	name = "north bump";
-	pixel_y = 30
-	},
+/obj/structure/extinguisher_cabinet/directional/north,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "YW" = (
 /turf/simulated/floor/plating/ironsand{
@@ -5192,7 +4946,7 @@
 /mob/living/simple_animal/hostile/syndicate/melee/autogib{
 	name = "Syndicate Operative"
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "Zj" = (
 /obj/item/stack/rods,
@@ -5208,12 +4962,12 @@
 "Zk" = (
 /obj/structure/table_frame/wood,
 /obj/structure/table_frame/wood,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "Zm" = (
 /obj/effect/decal/cleanable/generic,
 /obj/effect/decal/cleanable/blood/old,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "Zn" = (
 /obj/structure/healingfountain,
@@ -5225,7 +4979,7 @@
 /obj/structure/table/holotable/wood,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/old,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "Zq" = (
 /obj/effect/decal/cleanable/dirt,
@@ -5242,20 +4996,24 @@
 	},
 /turf/simulated/floor,
 /area/awaymission/wildwest/wildwest_refine)
+"Zu" = (
+/obj/effect/decal/cleanable/blood/writing{
+	dir = 1
+	},
+/turf/simulated/floor/plating/ironsand,
+/area/awaymission/wildwest/wildwest_mines)
 "ZG" = (
 /obj/structure/table/holotable/wood,
 /obj/item/reagent_containers/food/drinks/drinkingglass/shotglass,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "ZK" = (
 /obj/structure/flora/ash/stem_shroom,
 /turf/simulated/floor/plating/asteroid,
 /area/awaymission/wildwest/wildwest_mines)
 "ZL" = (
-/obj/machinery/light/small{
-	dir = 4
-	},
+/obj/machinery/light/small/directional/east,
 /turf/simulated/floor/carpet/red,
 /area/awaymission/wildwest/wildwest_mines)
 "ZO" = (
@@ -5274,9 +5032,8 @@
 /area/awaymission/wildwest/wildwest_refine)
 "ZU" = (
 /obj/structure/mineral_door/wood,
-/turf/simulated/floor/wood{
-	icon_state = "wood-broken5"
-	},
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "ZV" = (
 /obj/effect/decal/cleanable/dirt,
@@ -5293,10 +5050,44 @@
 /obj/structure/shuttle/engine/heater{
 	dir = 8
 	},
-/turf/simulated/floor,
+/obj/structure/fans/tiny/invisible,
+/turf/simulated/floor/plating/airless,
 /area/awaymission/wildwest/wildwest_refine)
 
 (1,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -5487,8 +5278,6 @@ Lv
 Lv
 Lv
 Lv
-JU
-nW
 Lv
 Lv
 Lv
@@ -5507,10 +5296,45 @@ Lv
 Lv
 Lv
 Lv
-Rm
 Lv
 Lv
-MJ
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 "}
@@ -5605,7 +5429,40 @@ Lv
 Lv
 Lv
 Lv
-MJ
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -5624,6 +5481,1299 @@ Lv
 Lv
 "}
 (4,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+"}
+(5,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+"}
+(6,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+"}
+(7,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+"}
+(8,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+"}
+(9,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+"}
+(10,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+"}
+(11,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+JU
+nW
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Rm
+Lv
+Lv
+MJ
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+"}
+(12,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+MJ
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+"}
+(13,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -5731,8 +6881,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(5,1,1) = {"
+(14,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -5840,8 +7023,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(6,1,1) = {"
+(15,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -5949,8 +7165,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(7,1,1) = {"
+(16,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -6046,9 +7295,9 @@ Rm
 Lv
 LT
 mg
-Rr
-Rr
-Rr
+kL
+kL
+kL
 mg
 IF
 Lv
@@ -6058,8 +7307,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(8,1,1) = {"
+(17,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -6135,7 +7417,7 @@ Rm
 Lv
 jC
 it
-ZW
+UN
 ZW
 ZW
 ZW
@@ -6155,9 +7437,9 @@ Rm
 Lv
 zt
 QW
-xb
+kL
 Sf
-xb
+kL
 QW
 QB
 Lv
@@ -6167,8 +7449,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(9,1,1) = {"
+(18,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -6243,12 +7558,12 @@ xp
 Rm
 Lv
 jC
-OS
-Eu
-Eu
-Eu
-Eu
 Ip
+Eu
+Eu
+Eu
+Eu
+OS
 jC
 Lv
 Rm
@@ -6276,8 +7591,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(10,1,1) = {"
+(19,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -6373,9 +7721,9 @@ Rm
 Lv
 zt
 QW
-nL
-Lc
 zU
+Lc
+nL
 QW
 QB
 Lv
@@ -6385,8 +7733,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(11,1,1) = {"
+(20,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -6494,8 +7875,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(12,1,1) = {"
+(21,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -6603,8 +8017,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(13,1,1) = {"
+(22,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -6712,8 +8159,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(14,1,1) = {"
+(23,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -6821,8 +8301,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(15,1,1) = {"
+(24,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -6930,8 +8443,41 @@ Rm
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(16,1,1) = {"
+(25,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -7025,13 +8571,13 @@ go
 KR
 zt
 jC
-Fa
+sF
 jC
 mz
 zC
 LE
 QW
-Fa
+sF
 jC
 QB
 Lv
@@ -7039,8 +8585,41 @@ Rm
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(17,1,1) = {"
+(26,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -7148,8 +8727,41 @@ Rm
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(18,1,1) = {"
+(27,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -7257,8 +8869,41 @@ Rm
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(19,1,1) = {"
+(28,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -7366,8 +9011,41 @@ MJ
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(20,1,1) = {"
+(29,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -7475,8 +9153,41 @@ Rm
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(21,1,1) = {"
+(30,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -7584,8 +9295,41 @@ Rm
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(22,1,1) = {"
+(31,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -7693,8 +9437,41 @@ Rm
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(23,1,1) = {"
+(32,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -7802,8 +9579,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(24,1,1) = {"
+(33,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -7911,8 +9721,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(25,1,1) = {"
+(34,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -7945,9 +9788,9 @@ em
 wp
 wp
 wp
-wp
-wp
-wp
+dt
+YH
+Bj
 em
 em
 em
@@ -8020,8 +9863,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(26,1,1) = {"
+(35,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -8042,21 +9918,21 @@ em
 em
 wp
 wp
+lt
 gz
-gz
 wp
 em
 em
 wp
 wp
 wp
-wp
-wp
-em
+dt
 wp
 em
-em
 wp
+em
+em
+an
 em
 em
 em
@@ -8129,8 +10005,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(27,1,1) = {"
+(36,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -8150,22 +10059,22 @@ em
 em
 em
 em
+YH
+WK
+Gy
+lv
 wp
-gz
-wp
-wp
-wp
-wp
-wp
-em
-em
-em
-em
-em
+Zu
 wp
 em
 em
+em
+em
+em
 wp
+em
+em
+an
 em
 em
 em
@@ -8238,8 +10147,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(28,1,1) = {"
+(37,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -8261,21 +10203,21 @@ em
 em
 em
 AV
+YH
 wp
-wp
 em
 em
 em
 em
-em
-em
-wp
-wp
-wp
 em
 em
 wp
 wp
+wp
+em
+em
+an
+YH
 em
 wp
 wp
@@ -8347,8 +10289,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(29,1,1) = {"
+(38,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -8456,8 +10431,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(30,1,1) = {"
+(39,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -8476,8 +10484,8 @@ tv
 em
 gz
 em
-wp
-wp
+iu
+dt
 gz
 wp
 em
@@ -8514,18 +10522,18 @@ wK
 wK
 hk
 YC
-VJ
+dI
 tQ
 JS
-ER
+ln
 hk
 Cb
 eP
 hk
-ER
+ln
 JS
 Ql
-vJ
+kx
 Ne
 hk
 VZ
@@ -8565,8 +10573,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(31,1,1) = {"
+(40,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -8585,7 +10626,7 @@ tv
 em
 gz
 gz
-wp
+cT
 wp
 gz
 wp
@@ -8601,9 +10642,9 @@ em
 wp
 em
 em
-wp
-wp
-wp
+WS
+an
+WS
 wp
 wp
 gM
@@ -8644,7 +10685,7 @@ hk
 WY
 XR
 JS
-LM
+kO
 ec
 Jf
 rR
@@ -8674,8 +10715,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(32,1,1) = {"
+(41,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -8694,9 +10768,9 @@ em
 em
 em
 em
+EG
+WS
 wp
-wp
-wp
 em
 em
 em
@@ -8711,7 +10785,7 @@ em
 em
 em
 wp
-wp
+SD
 wp
 aS
 wp
@@ -8740,7 +10814,7 @@ hk
 aC
 EL
 hk
-hh
+kO
 Pt
 hk
 hk
@@ -8783,8 +10857,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(33,1,1) = {"
+(42,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -8821,7 +10928,7 @@ em
 em
 wp
 Dw
-wp
+WS
 wp
 wp
 wp
@@ -8841,7 +10948,7 @@ wK
 wK
 hk
 lo
-EV
+en
 MF
 Pt
 JS
@@ -8892,8 +10999,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(34,1,1) = {"
+(43,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -9001,8 +11141,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(35,1,1) = {"
+(44,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -9052,11 +11225,11 @@ JS
 JS
 VP
 JS
-hh
+kO
 hB
 JS
 JS
-Lp
+Gb
 hk
 hk
 hk
@@ -9076,7 +11249,7 @@ hk
 wK
 JS
 LU
-jn
+Ku
 wK
 wK
 wK
@@ -9084,7 +11257,7 @@ JS
 wK
 xy
 wK
-gq
+Ku
 wK
 wK
 wK
@@ -9110,8 +11283,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(36,1,1) = {"
+(45,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -9179,7 +11385,7 @@ Ih
 PW
 Pt
 Hx
-Qg
+Vj
 md
 hk
 wK
@@ -9193,7 +11399,7 @@ JS
 wK
 JS
 JS
-hh
+kO
 JS
 JS
 JS
@@ -9219,8 +11425,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(37,1,1) = {"
+(46,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -9328,8 +11567,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(38,1,1) = {"
+(47,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -9437,8 +11709,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(39,1,1) = {"
+(48,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -9496,7 +11801,7 @@ wK
 hk
 ge
 JS
-hh
+kO
 Pt
 JS
 Ih
@@ -9546,8 +11851,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(40,1,1) = {"
+(49,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -9611,7 +11949,7 @@ Qn
 GS
 md
 md
-HJ
+dG
 JS
 Pt
 Pt
@@ -9622,7 +11960,7 @@ wK
 JS
 JS
 wK
-Ku
+gq
 wK
 wK
 JS
@@ -9655,8 +11993,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(41,1,1) = {"
+(50,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -9701,7 +12072,7 @@ wK
 wK
 wK
 wK
-wu
+gq
 JS
 JS
 wK
@@ -9764,8 +12135,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(42,1,1) = {"
+(51,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -9816,11 +12220,11 @@ ED
 hk
 hk
 hk
-Gb
+Lp
 JS
 JS
 wK
-gq
+Ku
 wK
 wK
 wK
@@ -9873,8 +12277,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(43,1,1) = {"
+(52,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -9919,15 +12356,15 @@ wK
 wK
 hk
 Sn
-ER
+ln
 JS
 Hm
-Nl
+ln
 Ui
 hk
 wK
 JS
-LM
+kO
 JS
 JS
 JS
@@ -9982,8 +12419,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(44,1,1) = {"
+(53,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -10045,7 +12515,7 @@ vi
 JS
 JS
 JS
-hh
+kO
 JS
 kO
 VP
@@ -10091,8 +12561,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(45,1,1) = {"
+(54,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -10147,7 +12650,7 @@ wK
 JS
 JS
 wK
-wu
+gq
 wK
 wK
 wK
@@ -10200,8 +12703,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(46,1,1) = {"
+(55,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -10272,7 +12808,7 @@ hk
 hk
 hk
 hk
-Gb
+Lp
 JS
 JS
 wK
@@ -10309,8 +12845,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(47,1,1) = {"
+(56,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -10371,14 +12940,14 @@ YJ
 Ii
 JS
 JS
-Nl
-wO
+ln
+kO
 cd
-ER
+ln
 cd
 QY
 VT
-VJ
+dI
 YC
 hk
 wK
@@ -10418,8 +12987,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(48,1,1) = {"
+(57,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -10527,8 +13129,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(49,1,1) = {"
+(58,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -10575,7 +13210,7 @@ hk
 uc
 JS
 JS
-LM
+kO
 JS
 Ym
 hk
@@ -10636,8 +13271,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(50,1,1) = {"
+(59,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -10651,8 +13319,8 @@ em
 em
 tv
 em
-em
-em
+xI
+xI
 gz
 gz
 em
@@ -10705,7 +13373,7 @@ hk
 Pt
 Pt
 bh
-cN
+lR
 jW
 hk
 mW
@@ -10745,8 +13413,41 @@ Lv
 em
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(51,1,1) = {"
+(60,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -10759,8 +13460,8 @@ em
 em
 tv
 tv
-em
-em
+xI
+xI
 jX
 EI
 eT
@@ -10808,7 +13509,7 @@ hk
 cd
 Pt
 Ql
-kx
+vJ
 CG
 hk
 Pt
@@ -10854,8 +13555,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(52,1,1) = {"
+(61,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -10868,7 +13602,7 @@ em
 tv
 tv
 em
-em
+xI
 Iy
 sD
 nF
@@ -10921,7 +13655,7 @@ hk
 KZ
 hk
 jl
-wO
+kO
 hk
 hk
 hk
@@ -10963,8 +13697,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(53,1,1) = {"
+(62,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -10975,7 +13742,7 @@ em
 em
 tv
 tv
-em
+xI
 Jp
 jX
 AK
@@ -11015,7 +13782,7 @@ AX
 rn
 lr
 hk
-vG
+Lp
 JS
 JS
 wK
@@ -11072,8 +13839,41 @@ em
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(54,1,1) = {"
+(63,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -11084,14 +13884,14 @@ em
 tv
 tv
 em
-em
+xI
 Bt
 gz
 Yh
 JR
 JI
 Bt
-em
+xI
 em
 em
 em
@@ -11126,7 +13926,7 @@ uO
 hk
 wK
 to
-Dm
+kO
 wK
 hk
 sy
@@ -11135,7 +13935,7 @@ hk
 XR
 JS
 MF
-dI
+VJ
 YC
 hk
 JS
@@ -11181,8 +13981,41 @@ em
 em
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(55,1,1) = {"
+(64,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -11193,14 +14026,14 @@ em
 tv
 em
 em
-em
+xI
 gz
 gz
 gz
 gO
 De
 gz
-em
+xI
 em
 em
 em
@@ -11290,8 +14123,41 @@ em
 em
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(56,1,1) = {"
+(65,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -11302,14 +14168,14 @@ em
 tv
 em
 em
-em
+xI
 xI
 Bt
 lD
 Bt
 xI
 xI
-tv
+xI
 tv
 tv
 em
@@ -11348,7 +14214,7 @@ JS
 wK
 hk
 CG
-vJ
+kx
 Ql
 JS
 JS
@@ -11399,8 +14265,41 @@ em
 em
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(57,1,1) = {"
+(66,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -11459,21 +14358,21 @@ hk
 fB
 IX
 hk
-pE
+ER
 JS
 bh
-lR
+cN
 jW
 hk
 cd
-pE
+ER
 hk
 xm
 LP
 hk
 mW
 JS
-LM
+kO
 JS
 JS
 JS
@@ -11508,8 +14407,41 @@ em
 em
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(58,1,1) = {"
+(67,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -11580,14 +14512,14 @@ hk
 hk
 hk
 hk
-Gb
+Lp
 JS
 JS
 JS
 JS
 mM
 JS
-hh
+kO
 JS
 mW
 wK
@@ -11617,8 +14549,41 @@ em
 em
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(59,1,1) = {"
+(68,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -11678,7 +14643,7 @@ DF
 vF
 hk
 Uk
-DM
+QY
 Jt
 JS
 XN
@@ -11726,8 +14691,41 @@ em
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(60,1,1) = {"
+(69,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -11790,11 +14788,11 @@ Pt
 Pt
 bB
 hk
-oF
+zG
 XN
 XN
 uT
-zG
+oF
 hk
 wK
 wK
@@ -11835,8 +14833,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(61,1,1) = {"
+(70,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -11944,8 +14975,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(62,1,1) = {"
+(71,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -12002,7 +15066,7 @@ JS
 wK
 hk
 Kb
-wO
+kO
 hk
 ld
 Bd
@@ -12053,8 +15117,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(63,1,1) = {"
+(72,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 em
@@ -12140,7 +15237,7 @@ Pt
 JS
 al
 MO
-dt
+QL
 hk
 wK
 wK
@@ -12162,8 +15259,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(64,1,1) = {"
+(73,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 em
@@ -12218,7 +15348,7 @@ wK
 JS
 JS
 wK
-gq
+Ku
 wK
 wK
 wK
@@ -12249,7 +15379,7 @@ Pt
 sc
 uv
 JK
-Bj
+lF
 hk
 wK
 wK
@@ -12271,8 +15401,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(65,1,1) = {"
+(74,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 em
@@ -12380,8 +15543,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(66,1,1) = {"
+(75,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 em
@@ -12427,7 +15623,7 @@ wK
 wK
 wK
 JS
-hh
+kO
 JS
 JS
 JS
@@ -12489,8 +15685,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(67,1,1) = {"
+(76,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 em
@@ -12543,7 +15772,7 @@ wK
 wK
 wK
 wK
-wu
+gq
 wK
 yt
 wK
@@ -12560,7 +15789,7 @@ wK
 wK
 wK
 ee
-wu
+gq
 wK
 JS
 JS
@@ -12575,7 +15804,7 @@ hk
 eL
 Ws
 hk
-WS
+yS
 hk
 hk
 em
@@ -12598,8 +15827,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(68,1,1) = {"
+(77,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 em
@@ -12673,7 +15935,7 @@ hk
 wK
 JS
 JS
-Lp
+Gb
 hk
 hk
 hk
@@ -12707,8 +15969,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(69,1,1) = {"
+(78,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 em
@@ -12768,9 +16063,9 @@ Rx
 bJ
 Gz
 qZ
-ER
+ln
 JS
-ER
+ln
 sa
 JS
 IB
@@ -12816,8 +16111,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(70,1,1) = {"
+(79,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -12867,7 +16195,7 @@ JS
 wK
 hk
 ab
-dG
+HJ
 JS
 GF
 hk
@@ -12925,8 +16253,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(71,1,1) = {"
+(80,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -12988,7 +16349,7 @@ JS
 OY
 yP
 Pt
-el
+QY
 VG
 EX
 Pt
@@ -13034,8 +16395,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(72,1,1) = {"
+(81,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -13085,7 +16479,7 @@ JS
 wK
 hk
 FH
-Cz
+QY
 xa
 ll
 hk
@@ -13143,8 +16537,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(73,1,1) = {"
+(82,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 em
@@ -13217,7 +16644,7 @@ RO
 hk
 wK
 JS
-hh
+kO
 wK
 wK
 hk
@@ -13252,8 +16679,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(74,1,1) = {"
+(83,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 em
@@ -13305,7 +16765,7 @@ hk
 Nt
 Pt
 JS
-qB
+QY
 hk
 NR
 JS
@@ -13361,8 +16821,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(75,1,1) = {"
+(84,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 em
 em
@@ -13470,8 +16963,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(76,1,1) = {"
+(85,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 em
 em
@@ -13521,7 +17047,7 @@ JS
 wK
 hk
 kO
-ln
+ER
 Pt
 Pt
 ED
@@ -13529,7 +17055,7 @@ JS
 VF
 tz
 JS
-hh
+kO
 JS
 JS
 JS
@@ -13579,8 +17105,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(77,1,1) = {"
+(86,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 em
 em
@@ -13648,7 +17207,7 @@ JS
 PC
 PC
 PC
-ln
+ER
 RQ
 hk
 wK
@@ -13688,8 +17247,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(78,1,1) = {"
+(87,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 em
 em
@@ -13797,8 +17389,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(79,1,1) = {"
+(88,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -13906,8 +17531,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(80,1,1) = {"
+(89,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -13962,7 +17620,7 @@ JS
 JS
 Tg
 wK
-jD
+kO
 JS
 JS
 JS
@@ -13971,7 +17629,7 @@ hB
 JS
 JS
 to
-wO
+kO
 JS
 JS
 JS
@@ -13997,6 +17655,24 @@ tv
 em
 em
 em
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -14016,7 +17692,22 @@ Lv
 Lv
 Lv
 "}
-(81,1,1) = {"
+(90,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -14083,7 +17774,7 @@ JS
 JS
 JS
 JS
-hh
+kO
 hB
 wK
 XR
@@ -14124,8 +17815,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(82,1,1) = {"
+(91,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 em
@@ -14233,8 +17957,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(83,1,1) = {"
+(92,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -14342,8 +18099,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(84,1,1) = {"
+(93,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -14451,8 +18241,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(85,1,1) = {"
+(94,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -14560,8 +18383,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(86,1,1) = {"
+(95,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -14669,8 +18525,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(87,1,1) = {"
+(96,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -14778,8 +18667,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(88,1,1) = {"
+(97,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -14887,8 +18809,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(89,1,1) = {"
+(98,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -14996,8 +18951,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(90,1,1) = {"
+(99,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 vr
@@ -15105,8 +19093,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(91,1,1) = {"
+(100,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 vr
@@ -15214,8 +19235,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(92,1,1) = {"
+(101,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 vr
@@ -15323,8 +19377,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(93,1,1) = {"
+(102,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 vr
@@ -15432,8 +19519,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(94,1,1) = {"
+(103,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 vr
@@ -15541,8 +19661,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(95,1,1) = {"
+(104,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -15650,8 +19803,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(96,1,1) = {"
+(105,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -15759,8 +19945,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(97,1,1) = {"
+(106,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -15868,8 +20087,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(98,1,1) = {"
+(107,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 em
@@ -15977,8 +20229,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(99,1,1) = {"
+(108,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 em
@@ -16086,8 +20371,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(100,1,1) = {"
+(109,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -16195,8 +20513,41 @@ Lv
 em
 em
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(101,1,1) = {"
+(110,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -16304,8 +20655,41 @@ em
 em
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(102,1,1) = {"
+(111,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -16413,8 +20797,41 @@ em
 em
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(103,1,1) = {"
+(112,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -16522,8 +20939,41 @@ Lv
 em
 em
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(104,1,1) = {"
+(113,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -16631,8 +21081,41 @@ Lv
 em
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(105,1,1) = {"
+(114,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -16740,8 +21223,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(106,1,1) = {"
+(115,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -16849,8 +21365,41 @@ em
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(107,1,1) = {"
+(116,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -16958,8 +21507,41 @@ em
 em
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(108,1,1) = {"
+(117,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -17067,8 +21649,41 @@ em
 em
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(109,1,1) = {"
+(118,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -17176,8 +21791,41 @@ Lv
 em
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(110,1,1) = {"
+(119,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -17285,8 +21933,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(111,1,1) = {"
+(120,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -17394,8 +22075,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(112,1,1) = {"
+(121,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -17503,8 +22217,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(113,1,1) = {"
+(122,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -17612,8 +22359,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(114,1,1) = {"
+(123,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -17721,8 +22501,41 @@ Lv
 Lv
 Lv
 Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 "}
-(115,1,1) = {"
+(124,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -17830,977 +22643,14 @@ Lv
 Lv
 Lv
 Lv
-"}
-(116,1,1) = {"
 Lv
 Lv
 Lv
 Lv
 Lv
-em
-em
-em
-tv
-em
-em
-xI
-Qe
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-xI
-pb
-xI
-Qe
-xI
-xI
-em
-em
-em
-em
-em
-em
-em
-xI
-xI
-em
-em
-em
-em
-xI
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-xI
-xI
-xI
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-pb
-xI
-em
-em
-em
-em
-em
-em
-em
-tv
-tv
-em
-em
-em
 Lv
 Lv
 Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-"}
-(117,1,1) = {"
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-em
-em
-tv
-em
-em
-xI
-xI
-xI
-xI
-xI
-xI
-xI
-xI
-xI
-xI
-xI
-xI
-xI
-xI
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-xI
-pb
-pb
-pb
-xI
-xI
-xI
-xI
-xI
-xI
-xI
-xI
-xI
-xI
-xI
-xI
-pb
-pb
-xI
-xI
-em
-xI
-xI
-xI
-pb
-pb
-pb
-pb
-pb
-xI
-xI
-xI
-xI
-xI
-xI
-xI
-pb
-pb
-pb
-pb
-pb
-xI
-xI
-xI
-em
-em
-em
-em
-em
-tv
-tv
-tv
-em
-em
-em
-vr
-Lv
-Lv
-Lv
-Lv
-Lv
-em
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-"}
-(118,1,1) = {"
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-em
-tv
-tv
-tv
-tv
-tv
-tv
-tv
-tv
-tv
-tv
-tv
-tv
-tv
-tv
-tv
-tv
-tv
-tv
-tv
-tv
-tv
-tv
-tv
-tv
-tv
-tv
-tv
-tv
-tv
-tv
-tv
-xI
-xI
-xI
-xI
-xI
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-xI
-xI
-xI
-xI
-em
-em
-em
-em
-xI
-xI
-xI
-xI
-xI
-xI
-xI
-em
-em
-em
-em
-em
-xI
-xI
-xI
-xI
-xI
-xI
-xI
-em
-em
-em
-em
-tv
-tv
-tv
-tv
-em
-em
-em
-vr
-vr
-vr
-vr
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-"}
-(119,1,1) = {"
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-tv
-tv
-tv
-tv
-tv
-tv
-tv
-tv
-tv
-tv
-tv
-tv
-tv
-tv
-tv
-tv
-tv
-tv
-tv
-tv
-tv
-tv
-tv
-tv
-tv
-tv
-tv
-tv
-tv
-tv
-tv
-tv
-tv
-tv
-tv
-tv
-tv
-tv
-tv
-tv
-tv
-tv
-tv
-tv
-tv
-tv
-tv
-tv
-em
-em
-em
-em
-vr
-vr
-vr
-vr
-vr
-vr
-vr
-vr
-vr
-em
-Lv
-Lv
-em
-Lv
-Lv
-Lv
-Lv
-"}
-(120,1,1) = {"
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-Lv
-vr
-vr
-vr
-vr
-vr
-vr
-vr
-vr
-em
-em
-em
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-"}
-(121,1,1) = {"
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-em
-em
-em
-em
-em
-vr
-vr
-vr
-em
-em
-em
-em
-em
-em
-em
-em
-em
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-Lv
-Lv
-Lv
-Lv
-vr
-vr
-vr
-vr
-vr
-em
-em
-em
-em
-em
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-"}
-(122,1,1) = {"
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-em
-em
-em
-vr
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-vr
-vr
-vr
-em
-em
-em
-em
-em
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-"}
-(123,1,1) = {"
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-vr
-vr
-vr
-vr
-em
-em
-em
-em
-em
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-vr
-vr
-em
-em
-em
-em
-em
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-"}
-(124,1,1) = {"
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-vr
-Lv
-em
-em
-em
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-em
-em
-em
-em
-em
-em
-em
-em
-em
-em
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-em
-em
-em
-em
-em
-em
-em
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-em
-em
-em
-em
 Lv
 Lv
 Lv
@@ -18833,64 +22683,95 @@ Lv
 Lv
 Lv
 Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
 em
 em
-Lv
-Lv
-Lv
-Lv
-Lv
+em
+tv
 em
 em
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
-Lv
+xI
+Qe
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+xI
+pb
+xI
+Qe
+xI
+xI
+em
+em
+em
+em
+em
+em
+em
+xI
+xI
+em
+em
+em
+em
+xI
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+xI
+xI
+xI
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+pb
+xI
+em
+em
+em
+em
+em
+em
+em
+tv
+tv
+em
+em
 em
 Lv
 Lv
@@ -18906,10 +22787,12 @@ Lv
 Lv
 Lv
 Lv
-em
 Lv
 Lv
-em
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -18943,6 +22826,1317 @@ Lv
 Lv
 Lv
 Lv
+em
+em
+tv
+em
+em
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+xI
+pb
+pb
+pb
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+pb
+pb
+xI
+xI
+em
+xI
+xI
+xI
+pb
+pb
+pb
+pb
+pb
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+pb
+pb
+pb
+pb
+pb
+xI
+xI
+xI
+em
+em
+em
+em
+em
+tv
+tv
+tv
+em
+em
+em
+vr
+Lv
+Lv
+Lv
+Lv
+Lv
+em
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+"}
+(127,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+em
+tv
+tv
+tv
+tv
+tv
+tv
+tv
+tv
+tv
+tv
+tv
+tv
+tv
+tv
+tv
+tv
+tv
+tv
+tv
+tv
+tv
+tv
+tv
+tv
+tv
+tv
+tv
+tv
+tv
+tv
+tv
+xI
+xI
+xI
+xI
+xI
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+xI
+xI
+xI
+xI
+em
+em
+em
+em
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+em
+em
+em
+em
+em
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+em
+em
+em
+em
+tv
+tv
+tv
+tv
+em
+em
+em
+vr
+vr
+vr
+vr
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+"}
+(128,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+tv
+tv
+tv
+tv
+tv
+tv
+tv
+tv
+tv
+tv
+tv
+tv
+tv
+tv
+tv
+tv
+tv
+tv
+tv
+tv
+tv
+tv
+tv
+tv
+tv
+tv
+tv
+tv
+tv
+tv
+tv
+tv
+tv
+tv
+tv
+tv
+tv
+tv
+tv
+tv
+tv
+tv
+tv
+tv
+tv
+tv
+tv
+tv
+em
+em
+em
+em
+vr
+vr
+vr
+vr
+vr
+vr
+vr
+vr
+vr
+em
+Lv
+Lv
+em
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+"}
+(129,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+Lv
+vr
+vr
+vr
+vr
+vr
+vr
+vr
+vr
+em
+em
+em
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+"}
+(130,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+em
+em
+em
+em
+em
+vr
+vr
+vr
+em
+em
+em
+em
+em
+em
+em
+em
+em
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+Lv
+Lv
+Lv
+Lv
+vr
+vr
+vr
+vr
+vr
+em
+em
+em
+em
+em
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+"}
+(131,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+em
+em
+em
+vr
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+vr
+vr
+vr
+em
+em
+em
+em
+em
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+"}
+(132,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+vr
+vr
+vr
+vr
+em
+em
+em
+em
+em
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+vr
+vr
+em
+em
+em
+em
+em
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+"}
+(133,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+vr
+Lv
+em
+em
+em
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+em
+em
+em
+em
+em
+em
+em
+em
+em
+em
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+em
+em
+em
+em
+em
+em
+em
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+em
+em
+em
+em
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+"}
+(134,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+em
+em
+Lv
+Lv
+Lv
+Lv
+Lv
+em
+em
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+em
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+em
+Lv
+Lv
+em
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+"}
+(135,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv
@@ -19030,7 +24224,2028 @@ Lv
 Lv
 Lv
 "}
-(127,1,1) = {"
+(136,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+"}
+(137,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+"}
+(138,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+"}
+(139,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+"}
+(140,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+"}
+(141,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+"}
+(142,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+"}
+(143,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+"}
+(144,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+"}
+(145,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+"}
+(146,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+"}
+(147,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+"}
+(148,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+"}
+(149,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+"}
+(150,1,1) = {"
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
+Lv
 Lv
 Lv
 Lv

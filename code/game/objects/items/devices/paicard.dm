@@ -5,7 +5,7 @@
 	icon_state = "pai"
 	item_state = "electronic"
 	w_class = WEIGHT_CLASS_SMALL
-	slot_flags = SLOT_BELT
+	slot_flags = SLOT_FLAG_BELT
 	origin_tech = "programming=2"
 	var/request_cooldown = 5 // five seconds
 	var/last_request
@@ -36,7 +36,7 @@
 	user.set_machine(src)
 	var/dat = {"
 		<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">
-		<html>
+		<html><meta charset='utf-8'>
 			<head>
 				<style>
 					body {
