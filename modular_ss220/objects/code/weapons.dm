@@ -172,20 +172,14 @@
 	icon = 'modular_ss220/objects/icons/guns.dmi'
 	icon_state = "beretta"
 	item_state = "beretta"
-	lefthand_file = 'modular_ss220/objects/icons/guns_lefthand.dmi'
-	righthand_file = 'modular_ss220/objects/icons/guns_righthand.dmi'
-	w_class = WEIGHT_CLASS_SMALL
-	can_holster = TRUE
 	mag_type = /obj/item/ammo_box/magazine/beretta
 	fire_sound = 'modular_ss220/objects/sound/weapons/gunshots/beretta_shot.ogg'
-	can_suppress = 0
-	burst_size = 1
-	fire_delay = 0
+	can_suppress = FALSE
 	actions_types = list()
 
-/obj/item/gun/projectile/automatic/pistol/update_icon()
+/obj/item/gun/projectile/automatic/pistol/update_icon_state()
 	..()
-	icon_state = "[initial(icon_state)][chambered ? "" : "-e"][suppressed ? "-suppressed" : ""]"
+	icon_state = "[initial(icon_state)][chambered ? "" : "-e"]"
 	return
 
 /obj/item/ammo_box/magazine/beretta
@@ -197,7 +191,7 @@
 	max_ammo = 10
 	caliber = "919mmr"
 
-/obj/item/ammo_box/magazine/beretta/update_icon()
+/obj/item/ammo_box/magazine/beretta/update_icon_state()
 	..()
 	icon_state = "[base_icon_state]-[round(ammo_count(),2)]"
 
@@ -210,7 +204,7 @@
 	max_ammo = 10
 	caliber = "919mm"
 
-/obj/item/ammo_box/magazine/beretta/lethal/update_icon()
+/obj/item/ammo_box/magazine/beretta/lethal/update_icon_state()
 	..()
 	icon_state = "[base_icon_state]-[round(ammo_count(),2)]"
 
@@ -218,27 +212,13 @@
 	caliber = "919mmr"
 	icon = 'modular_ss220/objects/icons/ammo.dmi'
 	icon_state = "casingmm919"
-	projectile_type = /obj/item/projectile/bullet/mmr919
+	projectile_type = /obj/item/projectile/bullet/weakbullet3
 
 /obj/item/ammo_casing/mm919
 	caliber = "919mm"
-	projectile_type = /obj/item/projectile/bullet/mm919
-
-/obj/item/projectile/bullet/mm919
-	name = "9x19mm bullet"
-	icon_state = "bullet"
-	damage = 21
-	damage_type = BRUTE
-	flag = "bullet"
-	hitsound_wall = "ricochet"
-	impact_effect_type = /obj/effect/temp_visual/impact_effect
-
-/obj/item/projectile/bullet/mmr919
-	name = "9x19mm rubber bullet"
-	icon_state = "bullet"
-	damage = 7
-	stamina = 30
-	flag = "bullet"
+	icon = 'modular_ss220/objects/icons/ammo.dmi'
+	icon_state = "casingmm919"
+	projectile_type = /obj/item/projectile/bullet/weakbullet4
 
 /obj/item/ammo_box/mm919
 	name = "box of lethal ammo (9x19mm)"
