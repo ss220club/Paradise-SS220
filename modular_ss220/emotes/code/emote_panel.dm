@@ -40,12 +40,10 @@
 			var/useTarget = params["useTarget"]
 			var/datum/emote/emote = new emote_path()
 			var/emote_act = emote.key
-			if(!emote_act)
-				return
 			var/emote_param
 			if(emote.message_param && useTarget == "true")
 				emote_param = input(usr, "Дополните эмоцию", emote.message_param)
-			usr.emote(emote_key = emote_act, message = emote_param, intentional = TRUE)
+			usr.emote(emote_act, message = emote_param, intentional = TRUE)
 
 /datum/emote_panel/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = FALSE, datum/tgui/master_ui = null, datum/ui_state/state = GLOB.always_state)
 	ui = SStgui.try_update_ui(user, src, ui)
