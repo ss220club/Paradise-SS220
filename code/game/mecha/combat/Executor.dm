@@ -14,10 +14,10 @@
 	max_equip = 3
 	wreckage = /obj/structure/mecha_wreckage/executioner
 
-/obj/mecha/combat/durand/executioner/GrantActions(mob/living/user, human_occupant = 0)
+/obj/mecha/combat/executioner/GrantActions(mob/living/user, human_occupant = 0)
 	..()
 	flash_action.Grant(user, src)
 
-/obj/mecha/combat/durand/executioner/RemoveActions(mob/living/user, human_occupant = 0)
+/obj/mecha/combat/executioner/RemoveActions(mob/living/user, human_occupant = 0)
 	..()
 	flash_action.Remove(user)
