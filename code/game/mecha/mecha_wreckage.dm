@@ -208,6 +208,13 @@
 	icon_state = "phazon-broken"
 
 
+/obj/structure/mecha_wreckage/executioner
+	name = "\improper Executioner wreckage"
+	desc = "He failed. But.. he return. He never leave humankind."
+	icon_state = "executioner-broken"
+	parts = list(/obj/item/soulstone/anybody/purified)
+
+
 /obj/structure/mecha_wreckage/odysseus
 	name = "\improper Odysseus wreckage"
 	icon_state = "odysseus-broken"

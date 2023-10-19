@@ -77,6 +77,7 @@
 		"Durand",
 		"H.O.N.K",
 		"Reticence",
+		"Executioner",
 		"Phazon",
 		"Exosuit Equipment",
 		"Cyborg Upgrade Modules",
