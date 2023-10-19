@@ -163,3 +163,141 @@
 	max_ammo = 100
 	icon = 'modular_ss220/objects/icons/ammo.dmi'
 	icon_state = "mm127_box"
+
+    //Beretta M9//
+
+/obj/item/gun/projectile/automatic/pistol/beretta
+	name = "Беретта M9"
+	desc = "Один из самых распространенных и узнаваемых пистолетов во вселенной. Старая добрая классика."
+	icon = 'modular_ss220/objects/icons/guns.dmi'
+	icon_state = "beretta"
+	item_state = "beretta"
+	lefthand_file = 'modular_ss220/objects/icons/guns_lefthand.dmi'
+	righthand_file = 'modular_ss220/objects/icons/guns_righthand.dmi'
+	w_class = WEIGHT_CLASS_SMALL
+	can_holster = TRUE
+	mag_type = /obj/item/ammo_box/magazine/beretta
+	fire_sound = 'modular_ss220/objects/sound/weapons/gunshots/beretta_shot.ogg'
+	can_suppress = 0
+	burst_size = 1
+	fire_delay = 0
+	actions_types = list()
+
+/obj/item/gun/projectile/automatic/pistol/update_icon()
+	..()
+	icon_state = "[initial(icon_state)][chambered ? "" : "-e"][suppressed ? "-suppressed" : ""]"
+	return
+
+/obj/item/ammo_box/magazine/beretta
+	name = "rubber handgun magazine (9mm rubber)"
+	icon = 'modular_ss220/objects/icons/ammo.dmi'
+	icon_state = "berettar-10"
+	base_icon_state = "berettar"
+	ammo_type = /obj/item/ammo_casing/rubber9mm
+	max_ammo = 10
+	caliber = "9mm"
+
+/obj/item/ammo_box/magazine/beretta/update_icon()
+	..()
+	icon_state = "[base_icon_state]-[round(ammo_count(),2)]"
+
+/obj/item/ammo_box/magazine/beretta/lethal
+	name = "standard handgun magazine (9mm)"
+	icon = 'modular_ss220/objects/icons/ammo.dmi'
+	icon_state = "berettal-10"
+	base_icon_state = "berettal"
+	ammo_type = /obj/item/ammo_casing/c9mm
+	max_ammo = 10
+	caliber = "9mm"
+
+/obj/item/ammo_box/magazine/beretta/lethal/update_icon()
+	..()
+	icon_state = "[base_icon_state]-[round(ammo_count(),2)]"
+
+/obj/item/ammo_casing/rubber9mm
+	desc = "A 9mm rubber bullet casing."
+	icon = 'modular_ss220/objects/icons/ammo.dmi'
+	icon_state = "r-casing"
+	caliber = "9mm"
+	projectile_type = /obj/item/projectile/bullet/weakbullet4
+
+/obj/item/ammo_casing/c9mm
+	desc = "A 9mm bullet casing."
+	caliber = "9mm"
+	projectile_type = /obj/item/projectile/bullet/weakbullet3
+	muzzle_flash_strength = MUZZLE_FLASH_STRENGTH_WEAK
+	muzzle_flash_range = MUZZLE_FLASH_RANGE_NORMAL
+
+/obj/item/projectile/bullet/c9mm
+	name = "9mm bullet"
+	icon_state = "bullet"
+	damage = 21
+	damage_type = BRUTE
+	flag = "bullet"
+	hitsound_wall = "ricochet"
+	impact_effect_type = /obj/effect/temp_visual/impact_effect
+
+/obj/item/projectile/bullet/rubber9mm
+	name = "rubber 9mm bullet"
+	icon_state = "bullet"
+	damage = 7
+	stamina = 30
+	flag = "bullet"
+	hitsound_wall = "ricochet"
+	impact_effect_type = /obj/effect/temp_visual/impact_effect
+
+/obj/item/ammo_box/c9mm
+	name = "box of lethal ammo (9mm)"
+	desc = "Contains up to 20 9mm cartridges."
+	w_class = WEIGHT_CLASS_NORMAL
+	ammo_type = /obj/item/ammo_casing/c9mm
+	max_ammo = 20
+	icon = 'modular_ss220/objects/icons/ammo.dmi'
+	icon_state = "9mm_box"
+
+/obj/item/ammo_box/rubber9mm
+	name = "box of rubber ammo (9mm)"
+	desc = "Contains up to 20 rubber 9mm cartridges."
+	w_class = WEIGHT_CLASS_NORMAL
+	ammo_type = /obj/item/ammo_casing/rubber9mm
+	max_ammo = 20
+	icon = 'modular_ss220/objects/icons/ammo.dmi'
+	icon_state = "9mmr_box"
+
+/datum/supply_packs/security/armory/beretta
+	name = "Beretta M9 Crate"
+	contains = list(/obj/item/gun/projectile/automatic/pistol/beretta,
+					/obj/item/gun/projectile/automatic/pistol/beretta)
+	cost = 450
+	containername = "beretta m9 pack"
+
+/datum/supply_packs/security/armory/berettaammo
+	name = "Beretta M9 Rubber Ammunition Crate"
+	contains = list(/obj/item/ammo_box/rubber9mm,
+					/obj/item/ammo_box/rubber9mm,
+					/obj/item/ammo_box/magazine/beretta,
+					/obj/item/ammo_box/magazine/beretta)
+	cost = 400
+	containername = "beretta ammunition pack"
+
+//Beretta M9 Mags
+
+/datum/design/mag_beretta
+	name = "Beretta M9 Lethal Magazine (9mm)"
+	desc = "A 10 round magazine for the out of date Beretta M9"
+	id = "mag_beretta"
+	req_tech = list("combat" = 1, "materials" = 1)
+	build_type = PROTOLATHE
+	materials = list(MAT_METAL = 10000)
+	build_path = /obj/item/ammo_box/magazine/beretta/lethal
+	category = list("Weapons")
+
+/datum/design/box_beretta
+	name = "Beretta M9 Lethal Ammo Box (9mm)"
+	desc = "A box of 20 rounds for the out of date Beretta M9"
+	id = "box_beretta"
+	req_tech = list("combat" = 1, "materials" = 1)
+	build_type = PROTOLATHE
+	materials = list(MAT_METAL = 4000)
+	build_path = /obj/item/ammo_box/c9mm
+	category = list("Weapons")
