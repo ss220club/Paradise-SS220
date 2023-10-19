@@ -45,28 +45,27 @@ SUBSYSTEM_DEF(modpacks)
 		to_chat(src, "Этот сервер не использует какие-либо модификации.")
 		return
 
-	var/static/datum/modpacks_list/modpacks_list = new
-	modpacks_list.ui_interact(src)
+	SSmodpacks.ui_interact(src)
 
-/datum/modpacks_list
-
-/datum/modpacks_list/ui_static_data(mob/user)
+/datum/controller/subsystem/modpacks/ui_static_data(mob/user)
 	var/list/data = list()
-	var/list/modpacks = list()
 
-	for(var/datum/modpack/M as anything in SSmodpacks.loaded_modpacks)
-		if(M.name)
-			modpacks += list(list(
-				"name" = M.name,
-				"desc" = M.desc,
-				"author" = M.author
-			))
-
-	data["modpacks"] = modpacks
+	data["modpacks"] = generate_modpacks_data()
 
 	return data
 
-/datum/modpacks_list/ui_interact(mob/user, ui_key, datum/tgui/ui, force_open, datum/tgui/master_ui, datum/ui_state/state = GLOB.always_state)
+/datum/controller/subsystem/modpacks/proc/generate_modpacks_data()
+	var/list/modpacks = list()
+	for(var/datum/modpack/modpack as anything in loaded_modpacks)
+		if(modpack.name)
+			modpacks += list(list(
+				"name" = modpack.name,
+				"desc" = modpack.desc,
+				"author" = modpack.author
+			))
+	return modpacks
+
+/datum/controller/subsystem/modpacks/ui_interact(mob/user, ui_key, datum/tgui/ui, force_open, datum/tgui/master_ui, datum/ui_state/state = GLOB.always_state)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, ui_key, "ModpacksList", "Modpacks List", 500, 550, master_ui, state)

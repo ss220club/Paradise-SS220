@@ -22,7 +22,7 @@ export const ModpacksListContent = (props, context) => {
     ''
   );
 
-  let searchBar = (
+  const searchBar = (
     <Input
       placeholder="Искать модпак по имени, описанию или автору..."
       fluid
