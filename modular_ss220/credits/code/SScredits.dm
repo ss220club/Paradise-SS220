@@ -249,7 +249,7 @@ SUBSYSTEM_DEF(credits)
 		if(!length(cast) && !chunksize)
 			cast += "<hr>"
 			chunk += "<h1>В съемках участвовали:</h1>"
-		chunk += "[human.real_name] в роли [uppertext(human.mind.assigned_role)]"
+		chunk += "[human.real_name] [human.mind.assigned_role ? "в роли [uppertext(human.mind.assigned_role)]" : "" ]"
 		chunksize++
 		if(chunksize > 2)
 			cast += "<center>[jointext(chunk,"<br>")]</center>"
