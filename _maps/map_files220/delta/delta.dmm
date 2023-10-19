@@ -6510,6 +6510,15 @@
 	icon_state = "neutralfull"
 	},
 /area/station/engineering/controlroom)
+"aHi" = (
+/obj/structure/chair/office{
+	dir = 4
+	},
+/turf/simulated/floor/plasteel{
+	dir = 5;
+	icon_state = "red"
+	},
+/area/station/security/processing)
 "aHk" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/small/directional/north,
@@ -20468,6 +20477,9 @@
 /area/station/maintenance/fsmaint)
 "bNA" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 8
+	},
+/obj/structure/chair/office{
 	dir = 8
 	},
 /turf/simulated/floor/plasteel{
@@ -37756,10 +37768,6 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/fore)
 "dhd" = (
-/obj/machinery/door/airlock/security/glass,
-/obj/effect/mapping_helpers/airlock/access/any/security/doors,
-/obj/effect/mapping_helpers/airlock/autoname,
-/obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -37770,6 +37778,11 @@
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
+	},
+/obj/effect/spawner/window/reinforced/grilled,
+/obj/structure/cable{
+	d2 = 4;
+	icon_state = "0-4"
 	},
 /turf/simulated/floor/plasteel,
 /area/station/security/brig)
@@ -42539,6 +42552,10 @@
 	icon_state = "yellowfull"
 	},
 /area/station/engineering/hardsuitstorage)
+"dJh" = (
+/mob/living/simple_animal/pet/dog/security,
+/turf/simulated/floor/plasteel,
+/area/station/security/processing)
 "dJk" = (
 /turf/simulated/floor/carpet/cyan,
 /area/station/command/office/cmo)
@@ -48406,6 +48423,9 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/structure/chair/office{
+	dir = 1
+	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "red"
@@ -48735,12 +48755,9 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/starboard)
 "far" = (
-/obj/machinery/door/airlock/security/glass,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/mapping_helpers/airlock/access/any/security/doors,
-/obj/effect/mapping_helpers/airlock/autoname,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -48751,6 +48768,11 @@
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
+	},
+/obj/effect/spawner/window/reinforced/grilled,
+/obj/structure/cable{
+	d2 = 4;
+	icon_state = "0-4"
 	},
 /turf/simulated/floor/plasteel,
 /area/station/security/brig)
@@ -71381,6 +71403,15 @@
 	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/auxsolarstarboard)
+"nbz" = (
+/obj/structure/chair/office{
+	dir = 4
+	},
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "red"
+	},
+/area/station/security/processing)
 "nbG" = (
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 4
@@ -75557,6 +75588,9 @@
 	dir = 1
 	},
 /obj/machinery/light/directional/south,
+/obj/structure/chair/office{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "red"
 	},
@@ -90022,6 +90056,12 @@
 	icon_state = "whiteblue"
 	},
 /area/station/medical/medbay)
+"tAn" = (
+/obj/structure/chair/office{
+	dir = 8
+	},
+/turf/simulated/floor/plasteel,
+/area/station/security/processing)
 "tAt" = (
 /obj/effect/spawner/window/reinforced/grilled,
 /obj/structure/cable,
@@ -96595,7 +96635,9 @@
 /turf/simulated/floor/plating,
 /area/station/science/server)
 "vTi" = (
-/mob/living/simple_animal/pet/dog/security,
+/obj/structure/chair/office{
+	dir = 1
+	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "red"
@@ -157028,7 +157070,7 @@ rbf
 pyd
 eSx
 iBt
-nxy
+dJh
 gyL
 oGt
 bLK
@@ -157799,7 +157841,7 @@ rbf
 laY
 nxy
 euk
-nxy
+tAn
 lvu
 pau
 bLK
@@ -158824,7 +158866,7 @@ hcH
 hEh
 raw
 sIj
-boI
+aHi
 nfX
 wCZ
 vrk
@@ -159341,7 +159383,7 @@ bNA
 nLX
 nfX
 wCZ
-vrk
+nbz
 eNp
 oxi
 bLK
