@@ -156,6 +156,11 @@
 	name = "Lavaland Wastes"
 	outdoors = TRUE
 
+/area/lavaland/surface/outdoors/legion
+	name = "Necropolis"
+	no_teleportlocs = 1
+	tele_proof = 1
+
 /area/lavaland/surface/outdoors/unexplored //monsters and ruins spawn here
 	icon_state = "unexplored"
 
@@ -164,3 +169,4 @@
 
 /area/lavaland/surface/outdoors/explored
 	name = "Lavaland Labor Camp"
+
