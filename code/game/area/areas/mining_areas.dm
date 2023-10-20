@@ -164,4 +164,3 @@
 
 /area/lavaland/surface/outdoors/explored
 	name = "Lavaland Labor Camp"
-
