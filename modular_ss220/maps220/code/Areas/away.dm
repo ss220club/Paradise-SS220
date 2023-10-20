@@ -103,5 +103,5 @@
 
 /area/lavaland/surface/outdoors/legion
 	name = "Necropolis"
-	no_teleportlocs = true
-	tele_proof = true
+	no_teleportlocs = TRUE
+	tele_proof = TRUE
