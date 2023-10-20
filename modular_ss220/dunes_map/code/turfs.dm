@@ -1,12 +1,12 @@
 /turf/simulated/floor/brick
 	name = "brick floor"
-	icon = 'modular_ss220/dunes_map/icons/sand.dmi'
+	icon = 'modular_ss220/dunes_map/icons/desert.dmi'
 	icon_state = "brick"
 	baseturf = /turf/simulated/floor/indestructible/dune_sand
 
 /turf/simulated/floor/indestructible/dune_sand
 	name = "dune sand"
-	icon = 'modular_ss220/dunes_map/icons/sand.dmi'
+	icon = 'modular_ss220/dunes_map/icons/desert.dmi'
 	icon_state = "sand"
 	temperature = 325
 	planetary_atmos = TRUE
@@ -83,7 +83,7 @@
 		to_chat(user, "<span class='notice'>Вы начинаете копать...</span>")
 
 		playsound(src, I.usesound, 50, TRUE)
-		if(do_after(user, 40 * I.toolspeed * gettoolspeedmod(user), target = src))
+		if(do_after(user, 40 * I.toolspeed, target = src))
 			if(!can_dig(user))
 				return TRUE
 			to_chat(user, "<span class='notice'>Вы выкопали яму.</span>")
@@ -110,7 +110,7 @@
 /turf/simulated/floor/indestructible/dune_sand/smooth
 	icon = 'modular_ss220/dunes_map/icons/sand_smooth.dmi'
 	icon_state = "sand_smooth"
-	smooth = SMOOTH_MORE | SMOOTH_BORDER
+	smoothing_flags = SMOOTH_BITMASK | SMOOTH_BORDER
 	canSmoothWith = list(/turf/simulated/floor/indestructible/dune_sand, /turf/simulated/floor/indestructible/dune_sand/smooth)
 
 /turf/simulated/floor/indestructible/dune_sand/dug
@@ -118,9 +118,12 @@
 	icon_state = "sand_dug"
 
 /turf/simulated/floor/beach/water/desert_water
-	icon = 'modular_ss220/dunes_map/icons/water.dmi'
+	icon = 'modular_ss220/dunes_map/icons/desert.dmi'
 	baseturf = /turf/simulated/floor/beach/water/desert_water
 
 /turf/simulated/wall/indestructible/rock/mineral/dune_rock
 	name = "dune rock"
 	color = "#D9742B"
+
+/turf/simulated/floor/chasm/dune
+	icon = 'modular_ss220/dunes_map/icons/chasm.dmi'

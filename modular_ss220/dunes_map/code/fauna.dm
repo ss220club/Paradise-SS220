@@ -6,7 +6,7 @@
 
 /datum/outfit/miner
 	name = "Труп шахтёра"
-	uniform = /obj/item/clothing/under/rank/miner/lavaland
+	uniform = /obj/item/clothing/under/rank/cargo/miner/lavaland
 	shoes = /obj/item/clothing/shoes/workboots/mining
 	mask = /obj/item/clothing/mask/gas
 	back = /obj/item/storage/backpack/explorer

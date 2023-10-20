@@ -1,6 +1,5 @@
 /area/awaymission/arrakis
 	name = "\improper Пустыня"
-	icon = "modular_ss220/dunes_map/icons/areas.dmi"
 	icon_state = "away"
 	requires_power = FALSE
 	has_gravity = TRUE
@@ -101,6 +100,7 @@
 
 /area/awaymission/arrakis/bunker
 	name = "\improper Пустыня - Вход в бункер"
+	icon = 'modular_ss220/dunes_map/icons/areas.dmi'
 	icon_state = "desert_entry"
 	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
 	requires_power = TRUE
