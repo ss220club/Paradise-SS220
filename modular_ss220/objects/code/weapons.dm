@@ -164,7 +164,7 @@
 	icon = 'modular_ss220/objects/icons/ammo.dmi'
 	icon_state = "mm127_box"
 
-    //Beretta M9//
+//Beretta M9//
 
 /obj/item/gun/projectile/automatic/pistol/beretta
 	name = "Беретта M9"
