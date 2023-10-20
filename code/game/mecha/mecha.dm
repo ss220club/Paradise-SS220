@@ -96,6 +96,8 @@
 	var/smoke = 5
 	var/smoke_ready = 1
 	var/smoke_cooldown = 100
+	var/flash_ready = TRUE
+	var/flash_cooldown = 50
 	var/zoom_mode = FALSE
 	var/phasing = FALSE
 	var/phasing_energy_drain = 200
