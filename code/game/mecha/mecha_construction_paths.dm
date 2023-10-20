@@ -1283,100 +1283,104 @@
 			"backkey"=null, //Cannot remove soulstone once it's in
 			"desc"="Soulstone puted in the locket."),
 		//2
+		"key" = /obj/item/mecha_parts/core,
+			"backkey" = TOOL_SCREWDRIVER,
+			"desc" = "External armor is welded."),
+		//3
 		list(
 			"key"=TOOL_WELDER,
 			"backkey"=TOOL_WRENCH,
 			"desc"="External armor is wrenched."),
-		//3
+		//4
 		list(
 			"key"=TOOL_WRENCH,
 			"backkey"=TOOL_CROWBAR,
 			"desc"="External armor is installed."),
-		//4
+		//5
 		list(
 			"key"=/obj/item/mecha_parts/part/executioner_armor,
 			"backkey"=TOOL_WELDER,
 			"desc"="Holy cross is welded."),
-		//5
+		//6
 		list(
 			"key"=TOOL_WELDER,
 			"backkey"=TOOL_WRENCH,
 			"desc"="Holy cross is wrenched."),
-		//6
+		//7
 		list("key"=TOOL_WRENCH,
 				"backkey"=TOOL_CROWBAR,
 				"desc"="Holy cross is installed."),
-		//7
+		//8
 		list(
 			"key"=/obj/item/stack/sheet/mineral/silver,
 			"backkey"=TOOL_SCREWDRIVER,
 			"desc"="Holy helmet is blessed."),
-		//8
+		//9
 		list(
 			"key"=/obj/item/storage/bible,
 			"backkey"=TOOL_CROWBAR,
 			"desc"="Holy helmet is installed."),
-		//9
+		//10
 		list(
 			"key"=/obj/item/clothing/head/helmet/riot/knight/templar,
 			"backkey"=TOOL_SCREWDRIVER,
 			"desc"="Holy armour is blessed."),
-		//10
+		//11
 		list(
 			"key"=/obj/item/storage/bible,
 			"backkey"=TOOL_CROWBAR,
 			"desc"="Holy armour is installed."),
-		//11
+		//12
 		list(
 			"key"=/obj/item/clothing/suit/armor/riot/knight/templar,
 			"backkey"=TOOL_SCREWDRIVER,
 			"desc"="Scanning module is blessed."),
-		 //12
+		 //13
 		list(
 			"key"=/obj/item/storage/bible,
 			"backkey"=TOOL_CROWBAR,
 			"desc"="Scanning module is installed."),
-		//13
+		//14
 		list(
 			"key"=/obj/item/circuitboard/mecha/executioner/targeting,
 			"backkey"=TOOL_SCREWDRIVER,
 			"desc"="Peripherals control module is blessed."),
-		//14
+		//15
 		list(
 			"key"=/obj/item/storage/bible,
 			"backkey"=TOOL_CROWBAR,
 			"desc"="Peripherals control module is installed."),
-		//15
+		//16
 		list(
 			"key"=/obj/item/circuitboard/mecha/executioner/peripherals,
 			"backkey"=TOOL_SCREWDRIVER,
 			"desc"="Central control module is blessed."),
-		//16
+		//17
 		list(
 			"key"=/obj/item/storage/bible,
 			"backkey"=TOOL_CROWBAR,
 			"desc"="Central control module is installed."),
-		//17
+		//18
 		list(
 			"key"=/obj/item/circuitboard/mecha/executioner/main,
 			"backkey"=TOOL_SCREWDRIVER,
 			"desc"="The wiring is adjusted."),
-		//18
+		//19
 		list(
 			"key"=/obj/item/wirecutters,
 			"backkey"=TOOL_SCREWDRIVER,
 			"desc"="The wiring is added."),
-		//19
+		//20
 		list(
 			"key"=/obj/item/stack/cable_coil,
 			"backkey"=TOOL_SCREWDRIVER,
 			"desc"="The hydraulic systems are active."),
-		//20
+		//21
 		list(
 			"key"=TOOL_SCREWDRIVER,
 			"backkey"=TOOL_WRENCH,
 			"desc"="The hydraulic systems are connected."),
-		//21
+		//22
 		list(
 			"key"=TOOL_WRENCH,
 			"desc"="The hydraulic systems are disconnected.")
