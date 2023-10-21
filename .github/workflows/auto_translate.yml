@@ -38,7 +38,7 @@ jobs:
       - name: Apply existing translation
         run: |
           git checkout origin/translate -- ./tools/translator/ss220replace.json
-          ./tools/translator/ss220_replacer_linux --prefix=ss220_ --root=./../../ --location=./
+          ./tools/translator/ss220_replacer_linux --prefix=ss220 --root=./../../ --location=./
 
       - name: Apply PR translation
         run: |
