@@ -46,20 +46,20 @@
 /mob/living/silicon/attackby(obj/item/W, mob/user, params)
 	if(istype(W, /obj/item/clothing/head) && user.a_intent == INTENT_HELP)
 		place_on_head(user.get_active_hand(), user)
-		return
+		return TRUE
 	. = ..()
 
 /mob/living/silicon/Topic(href, href_list)
 	if(..())
-		return 1
+		return TRUE
 
 	if(!(iscarbon(usr) || usr.incapacitated() || !Adjacent(usr)))
 		usr << browse(null, "window=mob[UID()]")
 		usr.unset_machine()
-		return
+		return FALSE
 
 	if (!can_be_hatted)
-		return 0
+		return FALSE
 
 	if(href_list["remove_inv"])
 		var/remove_from = href_list["remove_inv"]
@@ -76,11 +76,11 @@
 		show_inv(usr)
 
 	if(usr != src)
-		return 1
+		return TRUE
 
 /mob/living/silicon/show_inv(mob/user)
 	if(user.incapacitated() || !Adjacent(user))
-		return
+		return FALSE
 	user.set_machine(src)
 
 	var/dat = {"<meta charset="UTF-8"><div align='center'><b>Inventory of [name]</b></div><p>"}
