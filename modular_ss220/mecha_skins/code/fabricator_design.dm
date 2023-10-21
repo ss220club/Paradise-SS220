@@ -1,26 +1,7 @@
 /obj/machinery/mecha_part_fabricator/Initialize(mapload)
 	. = ..()
 
-	categories |= "Exosuit Paintkits"
-		"Cyborg",
-		"Cyborg Repair",
-		"MODsuit Construction",
-		"MODsuit Modules",
-		"Ripley",
-		"Firefighter",
-		"Odysseus",
-		"Gygax",
-		"Durand",
-		"H.O.N.K",
-		"Reticence",
-		"Phazon",
-		"Exosuit Equipment",
-		"Exosuit Paintkits",
-		"Cyborg Upgrade Modules",
-		"Medical",
-		"Misc"
-	)
-
+	categories.Insert(categories.Find("Exosuit Equipment")+1,  "Exosuit Paintkits")
 
 // Paintkits
 /datum/design/paint_ripley_titan
