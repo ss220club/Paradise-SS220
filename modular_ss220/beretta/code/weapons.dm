@@ -43,26 +43,26 @@
 	icon_state = "[base_icon_state]-[round(ammo_count(),2)]"
 
 /obj/item/ammo_box/magazine/beretta/bluespace
-    name = "experimental handgun magazine (9mm)"
-    icon = 'modular_ss220/beretta/icons/ammo.dmi'
-    icon_state = "berettab-10"
-    base_icon_state = "berettab"
-    ammo_type = /obj/item/ammo_casing/beretta/mmbsp919
-    max_ammo = 10
-    caliber = "919bmm"
+	name = "experimental handgun magazine (9mm)"
+	icon = 'modular_ss220/beretta/icons/ammo.dmi'
+	icon_state = "berettab-10"
+	base_icon_state = "berettab"
+	ammo_type = /obj/item/ammo_casing/beretta/mmbsp919
+	max_ammo = 10
+	caliber = "919bmm"
 
 /obj/item/ammo_box/magazine/beretta/bluespace/update_icon_state()
 	..()
 	icon_state = "[base_icon_state]-[round(ammo_count(),2)]"
 
 /obj/item/ammo_box/magazine/beretta/ap
-    name = "armor-piercing handgun magazine (9mm)"
-    icon = 'modular_ss220/beretta/icons/ammo.dmi'
-    icon_state = "berettaap-10"
-    base_icon_state = "berettaap"
-    ammo_type = /obj/item/ammo_casing/beretta/mmap919
-    max_ammo = 10
-    caliber = "919bmm"
+	name = "armor-piercing handgun magazine (9mm)"
+	icon = 'modular_ss220/beretta/icons/ammo.dmi'
+	icon_state = "berettaap-10"
+	base_icon_state = "berettaap"
+	ammo_type = /obj/item/ammo_casing/beretta/mmap919
+	max_ammo = 10
+	caliber = "919bmm"
 
 /obj/item/ammo_box/magazine/beretta/ap/update_icon_state()
 	..()
