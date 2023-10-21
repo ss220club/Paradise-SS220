@@ -54,7 +54,7 @@
 	set waitfor = FALSE
 	var/real_name = client.prefs.active_character.real_name
 	if(client.prefs.toggles2 & PREFTOGGLE_2_RANDOMSLOT)
-		real_name = "Random Character Slot"
+		real_name = "Случайный персонаж"
 	var/output = "<center><p><a href='byond://?src=[UID()];show_preferences=1'>Настройка персонажа</A><br /><i>[real_name]</i></p>"
 
 	if(!SSticker || SSticker.current_state <= GAME_STATE_PREGAME)
@@ -76,14 +76,14 @@
 		output += "<p><a href='byond://?src=[UID()];observe=1'>Наблюдать</A></p>"
 
 	if(GLOB.join_tos)
-		output += "<p><a href='byond://?src=[UID()];tos=1'>Terms of Service</A></p>"
+		output += "<p><a href='byond://?src=[UID()];tos=1'>Условия использования</A></p>"
 
 	if(length(GLOB.configuration.system.region_map))
 		output += "<p><a href='byond://?src=[UID()];setregion=1'>Set region (reduces ping)</A></p>"
 
 	output += "</center>"
 
-	var/datum/browser/popup = new(src, "playersetup", "<div align='center'>New Player Options</div>", 240, 340)
+	var/datum/browser/popup = new(src, "playersetup", "<div align='center'>Новый игрок</div>", 240, 340)
 	popup.set_window_options("can_close=0")
 	popup.set_content(output)
 	popup.open(0)
