@@ -58,7 +58,7 @@
 	var/output = "<center><p><a href='byond://?src=[UID()];show_preferences=1'>Настройка персонажа</A><br /><i>[real_name]</i></p>"
 
 	if(!SSticker || SSticker.current_state <= GAME_STATE_PREGAME)
-		if(!ready)	output += "<p><a href='byond://?src=[UID()];ready=1'>Declare Ready</A></p>"
+		if(!ready)	output += "<p><a href='byond://?src=[UID()];ready=1'>Нажмите, если готовы</A></p>"
 		else	output += "<p><b>Вы готовы</b> (<a href='byond://?src=[UID()];ready=2'>Отмена</A>)</p>"
 	else
 		output += "<p><a href='byond://?src=[UID()];manifest=1'>Просмотр списка экипажа</A></p>"
