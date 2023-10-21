@@ -1,6 +1,7 @@
 /* Station */
 /area/station/security/checkpoint/south
 	name = "\improper Escape Security Checkpoint"
+
 /area/station/bridge/checkpoint
 	name = "\improper Command Checkpoint"
 
