@@ -50,3 +50,8 @@
 		to_chat(user, span_warning("Недостаточно заряда!"))
 		return FALSE
 	return R.cell.use(power_use)
+
+//Небольшой багфикс "непрозрачного открытого шлюза"
+/obj/structure/inflatable/door/operate()
+	. = ..()
+	opacity = FALSE
