@@ -24,7 +24,7 @@
 	desc = "Сложенный надувной шлюз, который при активации быстро расширяется в простую дверь."
 	icon_state = "folded_door"
 	power_use = 600
-	structure_type = /obj/structure/inflatable
+	structure_type = /obj/structure/inflatable/door
 
 /obj/item/inflatable/cyborg/examine(mob/user)
 	. = ..()
@@ -36,9 +36,9 @@
 		return FALSE
 
 	playsound(loc, 'sound/items/zip.ogg', 75, 1)
-	to_chat(user, span_notice("Вы надули [src.name]"))
+	to_chat(user, span_notice("Вы надули [name]"))
 	var/obj/structure/inflatable/R = new structure_type(user.loc)
-	src.transfer_fingerprints_to(R)
+	transfer_fingerprints_to(R)
 	R.add_fingerprint(user)
 	useResource(user)
 
