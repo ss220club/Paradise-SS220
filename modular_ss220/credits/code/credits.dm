@@ -195,7 +195,7 @@
 	var/list/streamers = list()
 
 	for(var/iterator_key in GLOB.configuration.admin.ckey_rank_map)
-		if(!(GLOB.configuration.admin.ckey_rank_map[iterator_key] == "Streamer"))
+		if(!(GLOB.configuration.admin.ckey_rank_map[iterator_key] == "Банда"))
 			continue
 
 		var/ckey = ckey(iterator_key)
@@ -255,11 +255,13 @@
 			continue
 		if(!human.last_known_ckey)
 			continue
+		if(!human.mind?.assigned_role)
+			continue
 
 		if(!length(cast) && !chunksize)
 			cast += "<hr>"
 			chunk += "<h1>В съемках участвовали:</h1>"
-		chunk += "[human.real_name] [human.mind.assigned_role ? "в роли [uppertext(human.mind.assigned_role)]" : "" ]"
+		chunk += "[human.real_name] в роли [uppertext(human.mind.assigned_role)]"
 		chunksize++
 		if(chunksize > 2)
 			cast += "<center>[jointext(chunk,"<br>")]</center>"
