@@ -22,12 +22,12 @@
 /mob/living/silicon/grabbedby(mob/living/user)
 	remove_from_head(user)
 
-//Если вдруг кто-то захочет сразу спавнить боргов с шапками
+// Если вдруг кто-то захочет сразу спавнить боргов с шапками
 /mob/living/silicon/Initialize(mapload)
 	. = ..()
 	regenerate_icons()
 
-//Для уже готовых спавнов боевых боргов
+// Для уже готовых спавнов боевых боргов
 /mob/living/silicon/robot/Initialize(mapload)
 	. = ..()
 	robot_module_hat_offset(icon_state)
