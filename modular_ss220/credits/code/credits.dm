@@ -158,20 +158,17 @@
 
 /datum/credit/streamers/New()
 	. = ..()
-	var/list/streamers = list()
 
-	if(GLOB.configuration.admin.use_database_admins)
-		database_rank_check(streamers)
-	else
-		no_database_rank_check(streamers)
+	var/list/streamers
+
+	streamers = GLOB.configuration.admin.use_database_admins ? database_streamers_list() : no_database_streamers_list()
 
 	if(length(streamers))
 		content += "<hr>"
-		content += "<center><br>Приглашенные звезды:<br>[jointext(streamers, "<br>")]</center>"
+		content += "<center><h1><br>Приглашенн[length(streamers) > 1 ? "ые звезды" : "ая звезда"]:<br></h1>[jointext(streamers, "<br>")]</center>"
 
-/datum/credit/streamers/proc/database_rank_check(list/streamers)
+/datum/credit/streamers/proc/database_streamers_list()
 	if(!SSdbcore.IsConnected())
-		to_chat(src, "Warning, MYSQL database is not connected.")
 		return
 
 	var/datum/db_query/ranks_ckey_read = SSdbcore.NewQuery(
@@ -182,6 +179,8 @@
 		qdel(ranks_ckey_read)
 		return
 
+	var/list/streamers = list()
+
 	while(ranks_ckey_read.NextRow())
 		var/client/client = get_client_by_ckey(ranks_ckey_read.item[2])
 		if(!client.mob?.name)
@@ -190,9 +189,13 @@
 
 	qdel(ranks_ckey_read)
 
-/datum/credit/streamers/proc/no_database_rank_check(list/streamers)
+	return streamers
+
+/datum/credit/streamers/proc/no_database_streamers_list()
+	var/list/streamers = list()
+
 	for(var/iterator_key in GLOB.configuration.admin.ckey_rank_map)
-		if(!(GLOB.configuration.admin.ckey_rank_map[iterator_key] == "Банда"))
+		if(!(GLOB.configuration.admin.ckey_rank_map[iterator_key] == "Streamer"))
 			continue
 
 		var/ckey = ckey(iterator_key)
@@ -200,6 +203,8 @@
 		if(!client)
 			continue
 		streamers += "<center>[client.mob.name] a.k.a. ([ckey])<center>"
+
+	return streamers
 
 /datum/credit/enormeus_crewlist_debug
 
