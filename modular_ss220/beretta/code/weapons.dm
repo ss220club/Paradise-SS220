@@ -194,7 +194,7 @@
 	id = "box_beretta"
 	req_tech = list("combat" = 2, "materials" = 1)
 	build_type = PROTOLATHE
-	materials = list(MAT_METAL = 4000)
+	materials = list(MAT_METAL = 40000)
 	build_path = /obj/item/ammo_box/beretta/mmlethal919
 	category = list("Weapons")
 
@@ -204,7 +204,7 @@
 	id = "box_beretta"
 	req_tech = list("combat" = 3, "materials" = 2)
 	build_type = PROTOLATHE
-	materials = list(MAT_METAL = 8000, MAT_SILVER = 3000)
+	materials = list(MAT_METAL = 80000, MAT_SILVER = 30000)
 	build_path = /obj/item/ammo_box/beretta/mmap919
 	category = list("Weapons")
 
@@ -214,6 +214,6 @@
 	id = "box_beretta"
 	req_tech = list("combat" = 3, "materials" = 2, "bluespace" = 3)
 	build_type = PROTOLATHE
-	materials = list(MAT_METAL = 8000, MAT_BLUESPACE = 500)
+	materials = list(MAT_METAL = 80000, MAT_BLUESPACE = 5000)
 	build_path = /obj/item/ammo_box/beretta/mmbluespace919
 	category = list("Weapons")
