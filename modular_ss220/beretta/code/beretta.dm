@@ -8,7 +8,6 @@
 	item_state = "beretta"
 	mag_type = /obj/item/ammo_box/magazine/beretta
 	fire_sound = 'modular_ss220/beretta/sound/beretta/beretta_shot.ogg'
-	can_suppress = FALSE
 	actions_types = list()
 
 /obj/item/gun/projectile/automatic/pistol/update_icon_state()
