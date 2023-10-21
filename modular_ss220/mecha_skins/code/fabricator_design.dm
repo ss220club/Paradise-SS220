@@ -22,7 +22,7 @@
 	)
 
 
-//Paintkits
+// Paintkits
 /datum/design/paint_ripley_titan
 	name = "Ripley, Firefighter \"Titan's Fist\""
 	id = "p_titan"
