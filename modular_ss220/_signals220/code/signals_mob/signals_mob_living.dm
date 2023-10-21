@@ -21,13 +21,6 @@
 		return TRUE
 	. = ..()
 
-// Да, костыльно, но модульно по другому не вижу как - PIXEL_SHIFT
-/mob/living/Process_Spacemove(movement_dir)
-	if(SEND_SIGNAL(src, COMSIG_LIVING_PROCESS_SPACEMOVE, movement_dir) & COMPONENT_BLOCK_SPACEMOVE)
-		return FALSE
-	. = ..()
-
 /mob/living/say(message, verb, sanitize, ignore_speech_problems, ignore_atmospherics, ignore_languages)
 	SEND_SIGNAL(src, COMSIG_MOB_SAY, args)
 	. = ..()
-
