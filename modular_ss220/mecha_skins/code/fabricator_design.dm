@@ -1,7 +1,7 @@
 /obj/machinery/mecha_part_fabricator/Initialize(mapload)
 	. = ..()
 
-	categories = list(
+	categories |= "Exosuit Paintkits"
 		"Cyborg",
 		"Cyborg Repair",
 		"MODsuit Construction",
