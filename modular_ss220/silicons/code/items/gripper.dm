@@ -34,7 +34,7 @@
 		/obj/item/circuitboard,
 		/obj/item/stack/tile/light,
 		/obj/item/stack/ore/bluespace_crystal,
-		/obj/item/assembly/igniter
+		/obj/item/assembly/igniter,
 	)
 
 	//Item currently being held.
@@ -69,9 +69,9 @@
 
 /obj/item/gripper/attackby(obj/item/weapon, mob/user, params)
 	if(!gripped_item)
-		return
+		return FALSE
 	gripped_item.attackby(weapon, user, params)
-	if (QDELETED(gripped_item)) // if item was dissasembled we need to clear the pointer
+	if(QDELETED(gripped_item)) // if item was dissasembled we need to clear the pointer
 		drop_gripped_item(TRUE) // silent = TRUE to prevent "You drop X" message from appearing without actually dropping anything
 
 /obj/item/gripper/proc/drop_gripped_item(silent = FALSE)
@@ -121,7 +121,7 @@
 			to_chat(user, "<span class='warning'>Your gripper cannot hold [target].</span>")
 			return FALSE
 
-	else if(istype(target,/obj/machinery/power/apc))
+	else if(istype(target, /obj/machinery/power/apc))
 		var/obj/machinery/power/apc/A = target
 		if(A.opened)
 			if(A.cell && is_type_in_typecache(A.cell, can_hold))
@@ -212,5 +212,6 @@
 /obj/item/gripper/nuclear
 	name = "Nuclear gripper"
 	desc = "Designed for all your nuclear needs."
+	icon = 'modular_ss220/silicons/icons/robot_tools.dmi'
 	icon_state = "diskgripper"
 	can_hold = list(/obj/item/disk/nuclear)
