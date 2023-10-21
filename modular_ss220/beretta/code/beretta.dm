@@ -3,22 +3,21 @@
 /obj/item/gun/projectile/automatic/pistol/beretta
 	name = "Беретта M9"
 	desc = "Один из самых распространенных и узнаваемых пистолетов во вселенной. Старая добрая классика."
-	icon = 'modular_ss220/beretta/icons/guns.dmi'
+	icon = 'modular_ss220/beretta/icons/beretta.dmi'
 	icon_state = "beretta"
 	item_state = "beretta"
-	mag_type = /obj/item/ammo_box/magazine/beretta/rubber
-	fire_sound = 'modular_ss220/beretta/sound/weapons/gunshots/beretta_shot.ogg'
+	mag_type = /obj/item/ammo_box/magazine/beretta
+	fire_sound = 'modular_ss220/beretta/sound/beretta/beretta_shot.ogg'
 	can_suppress = FALSE
 	actions_types = list()
 
 /obj/item/gun/projectile/automatic/pistol/update_icon_state()
-	..()
-	icon_state = "[initial(icon_state)][chambered ? "" : "-e"]"
-	return
 
-/obj/item/ammo_box/magazine/beretta/rubber
-	name = "rubber handgun magazine (9mm rubber)"
-	icon = 'modular_ss220/beretta/icons/ammo.dmi'
+	icon_state = "[initial(icon_state)][chambered ? "" : "-e"]"
+
+/obj/item/ammo_box/magazine/beretta/
+	name = "beretta rubber 9x19mm magazine"
+	icon = 'modular_ss220/beretta/icons/9x19ammunation.dmi'
 	icon_state = "berettar-10"
 	base_icon_state = "berettar"
 	ammo_type = /obj/item/ammo_casing/beretta/mmrub919
@@ -26,115 +25,105 @@
 	caliber = "919mmr"
 
 /obj/item/ammo_box/magazine/beretta/update_icon_state()
-	..()
+
 	icon_state = "[base_icon_state]-[round(ammo_count(),2)]"
 
-/obj/item/ammo_box/magazine/beretta/lethal
-	name = "standard handgun magazine (9mm)"
-	icon = 'modular_ss220/beretta/icons/ammo.dmi'
+/obj/item/ammo_box/magazine/beretta/mm919
+	name = "beretta lethal 9x19mm magazine"
+	icon = 'modular_ss220/beretta/icons/9x19ammunation.dmi'
 	icon_state = "berettal-10"
 	base_icon_state = "berettal"
-	ammo_type = /obj/item/ammo_casing/beretta/mmleth919
+	ammo_type = /obj/item/ammo_casing/beretta/mm919
 	max_ammo = 10
 	caliber = "919mm"
 
-/obj/item/ammo_box/magazine/beretta/lethal/update_icon_state()
-	..()
-	icon_state = "[base_icon_state]-[round(ammo_count(),2)]"
-
-/obj/item/ammo_box/magazine/beretta/bluespace
-	name = "experimental handgun magazine (9mm)"
-	icon = 'modular_ss220/beretta/icons/ammo.dmi'
+/obj/item/ammo_box/magazine/beretta/mmbsp919
+	name = "beretta bluespace 9x19mm magazine"
+	icon = 'modular_ss220/beretta/icons/9x19ammunation.dmi'
 	icon_state = "berettab-10"
 	base_icon_state = "berettab"
 	ammo_type = /obj/item/ammo_casing/beretta/mmbsp919
 	max_ammo = 10
 	caliber = "919bmm"
 
-/obj/item/ammo_box/magazine/beretta/bluespace/update_icon_state()
-	..()
-	icon_state = "[base_icon_state]-[round(ammo_count(),2)]"
-
-/obj/item/ammo_box/magazine/beretta/ap
-	name = "armor-piercing handgun magazine (9mm)"
-	icon = 'modular_ss220/beretta/icons/ammo.dmi'
+/obj/item/ammo_box/magazine/beretta/mmap919
+	name = "beretta armor-piercing 9x19mm magazine"
+	icon = 'modular_ss220/beretta/icons/9x19ammunation.dmi'
 	icon_state = "berettaap-10"
 	base_icon_state = "berettaap"
 	ammo_type = /obj/item/ammo_casing/beretta/mmap919
 	max_ammo = 10
-	caliber = "919bmm"
-
-/obj/item/ammo_box/magazine/beretta/ap/update_icon_state()
-	..()
-	icon_state = "[base_icon_state]-[round(ammo_count(),2)]"
+	caliber = "919apmm"
 
 /obj/item/ammo_casing/beretta/mmbsp919
+	caliber = "919bmm"
 	name = "9x19mm bluespace bullet casing"
 	desc = "A 9x19mm bluespace bullet casing."
-	projectile_type = /obj/item/projectile/bullet/beretta/bluespace
+	projectile_type = /obj/item/projectile/bullet/mmbsp919
 
-/obj/item/projectile/bullet/beretta/bluespace
+/obj/item/projectile/bullet/mmbsp919
 	name = "9x19 bluespace bullet"
 	damage = 18
 	speed = 0.2
 
 /obj/item/ammo_casing/beretta/mmap919
+	caliber = "919apmm"
 	name = "9x19mm armor-piercing bullet casing"
-	desc = "A .38 armor-piercing bullet casing."
-	projectile_type = /obj/item/projectile/bullet/beretta/ap
+	desc = "A 9x19 armor-piercing bullet casing."
+	projectile_type = /obj/item/projectile/bullet/mmap919
 
-/obj/item/projectile/bullet/beretta/ap
+/obj/item/projectile/bullet/mmap919
 	name = "9x19mm armor-piercing bullet"
 	damage = 18
-	armour_penetration_percentage = 50
-	armour_penetration_flat = 25
+	armour_penetration_percentage = 35
+	armour_penetration_flat = 15
 
 /obj/item/ammo_casing/beretta/mmrub919
 	caliber = "919mmr"
-	icon = 'modular_ss220/beretta/icons/ammo.dmi'
+	icon = 'modular_ss220/beretta/icons/9x19ammunation.dmi'
 	icon_state = "casingmm919"
 	projectile_type = /obj/item/projectile/bullet/weakbullet4
 
-/obj/item/ammo_casing/beretta/mmleth919
+/obj/item/ammo_casing/beretta/mm919
 	caliber = "919mm"
-	icon = 'modular_ss220/beretta/icons/ammo.dmi'
+	icon = 'modular_ss220/beretta/icons/9x19ammunation.dmi'
 	icon_state = "casingmm919"
 	projectile_type = /obj/item/projectile/bullet/weakbullet3
 
-/obj/item/ammo_box/beretta/mmlethal919
-	name = "box of lethal ammo (9x19mm)"
+/obj/item/ammo_box/beretta/mm919
+	name = "box of lethal 9x19mm cartridges"
 	desc = "Contains up to 20 9x19mm cartridges."
 	w_class = WEIGHT_CLASS_NORMAL
-	ammo_type = /obj/item/ammo_casing/beretta/mmleth919
+	ammo_type = /obj/item/ammo_casing/beretta/mm919
 	max_ammo = 20
-	icon = 'modular_ss220/beretta/icons/ammo.dmi'
+	icon = 'modular_ss220/beretta/icons/9x19ammunation.dmi'
 	icon_state = "9mm_box"
 
-/obj/item/ammo_box/beretta/mmrubber919
-	name = "box of rubber ammo (9x19mm)"
+/obj/item/ammo_box/beretta/mmrub919
+	name = "box of rubber 9x19mm cartridges"
 	desc = "Contains up to 20 rubber 9x19mm cartridges."
 	w_class = WEIGHT_CLASS_NORMAL
 	ammo_type = /obj/item/ammo_casing/beretta/mmrub919
 	max_ammo = 30
-	icon = 'modular_ss220/beretta/icons/ammo.dmi'
+	icon = 'modular_ss220/beretta/icons/9x19ammunation.dmi'
 	icon_state = "9mmr_box"
 
-/obj/item/ammo_box/beretta/mmbluespace919
-	name = "box of experimental ammo (9x19mm)"
+/obj/item/ammo_box/beretta/mmbsp919
+	name = "box of bluespace 9x19mm cartridges"
 	desc = "Contains up to 20 experimental 9x19mm cartridges."
 	w_class = WEIGHT_CLASS_NORMAL
 	ammo_type = /obj/item/ammo_casing/beretta/mmbsp919
 	max_ammo = 20
-	icon = 'modular_ss220/beretta/icons/ammo.dmi'
+	icon = 'modular_ss220/beretta/icons/9x19ammunation.dmi'
 	icon_state = "9mmb_box"
 
 /obj/item/ammo_box/beretta/mmap919
-	name = "box of experimental ammo (9x19mm)"
-	desc = "Contains up to 20 experimental 9x19mm cartridges."
+	name = "box of armor-penetration 9x19mm cartridges"
+	desc = "Contains up to 20 armor-penetration 9x19mm cartridges."
 	w_class = WEIGHT_CLASS_NORMAL
 	ammo_type = /obj/item/ammo_casing/beretta/mmap919
 	max_ammo = 20
-	icon = 'modular_ss220/beretta/icons/ammo.dmi'
+	icon = 'modular_ss220/beretta/icons/9x19ammunation.dmi'
 	icon_state = "9mmap_box"
 
 /datum/supply_packs/security/armory/beretta
@@ -146,36 +135,36 @@
 
 /datum/supply_packs/security/armory/berettarubberammo
 	name = "Beretta M9 Rubber Ammunition Crate"
-	contains = list(/obj/item/ammo_box/beretta/mmrubber919,
-					/obj/item/ammo_box/beretta/mmrubber919,
-					/obj/item/ammo_box/magazine/beretta/rubber,
-					/obj/item/ammo_box/magazine/beretta/rubber,
-					/obj/item/ammo_box/magazine/beretta/rubber,
-					/obj/item/ammo_box/magazine/beretta/rubber)
+	contains = list(/obj/item/ammo_box/beretta/mmrub919,
+					/obj/item/ammo_box/beretta/mmrub919,
+					/obj/item/ammo_box/beretta/mmrub919,
+					/obj/item/ammo_box/beretta/mmrub919,
+					/obj/item/ammo_box/magazine/beretta,
+					/obj/item/ammo_box/magazine/beretta)
 	cost = 350
 	containername = "beretta rubber ammunition pack"
 
 /datum/supply_packs/security/armory/berettalethalammo
 	name = "Beretta M9 Lethal Ammunition Crate"
-	contains = list(/obj/item/ammo_box/beretta/mmlethal919,
-					/obj/item/ammo_box/beretta/mmlethal919,
-					/obj/item/ammo_box/magazine/beretta/lethal,
-					/obj/item/ammo_box/magazine/beretta/lethal,
-					/obj/item/ammo_box/magazine/beretta/lethal,
-					/obj/item/ammo_box/magazine/beretta/lethal)
+	contains = list(/obj/item/ammo_box/beretta/mm919,
+					/obj/item/ammo_box/beretta/mm919,
+					/obj/item/ammo_box/beretta/mm919,
+					/obj/item/ammo_box/beretta/mm919,
+					/obj/item/ammo_box/magazine/beretta/mm919,
+					/obj/item/ammo_box/magazine/beretta/mm919)
 	cost = 400
 	containername = "beretta lethal ammunition pack"
 
 /datum/supply_packs/security/armory/berettaexperimentalammo
-	name = "Beretta M9 Experimental Ammunition Crate"
-	contains = list(/obj/item/ammo_box/beretta/mmbluespace919,
-					/obj/item/ammo_box/beretta/mmbluespace919,
-					/obj/item/ammo_box/beretta/mmbluespace919,
-					/obj/item/ammo_box/beretta/mmbluespace919,
-					/obj/item/ammo_box/magazine/beretta/bluespace,
-					/obj/item/ammo_box/magazine/beretta/bluespace)
+	name = "Beretta M9 Bluespace Ammunition Crate"
+	contains = list(/obj/item/ammo_box/beretta/mmbsp919,
+					/obj/item/ammo_box/beretta/mmbsp919,
+					/obj/item/ammo_box/beretta/mmbsp919,
+					/obj/item/ammo_box/beretta/mmbsp919,
+					/obj/item/ammo_box/magazine/beretta/mmbsp919,
+					/obj/item/ammo_box/magazine/beretta/mmbsp919)
 	cost = 500
-	containername = "beretta experimental ammunition pack"
+	containername = "beretta bluespace ammunition pack"
 
 /datum/supply_packs/security/armory/berettaarmorpiercingammo
 	name = "Beretta M9 Armor-piercing Ammunition Crate"
@@ -183,8 +172,8 @@
 					/obj/item/ammo_box/beretta/mmap919,
 					/obj/item/ammo_box/beretta/mmap919,
 					/obj/item/ammo_box/beretta/mmap919,
-					/obj/item/ammo_box/magazine/beretta/ap,
-					/obj/item/ammo_box/magazine/beretta/ap)
+					/obj/item/ammo_box/magazine/beretta/mmap919,
+					/obj/item/ammo_box/magazine/beretta/mmap919)
 	cost = 500
 	containername = "beretta AP ammunition pack"
 
@@ -194,8 +183,8 @@
 	id = "box_beretta"
 	req_tech = list("combat" = 2, "materials" = 1)
 	build_type = PROTOLATHE
-	materials = list(MAT_METAL = 40000)
-	build_path = /obj/item/ammo_box/beretta/mmlethal919
+	materials = list(MAT_METAL = 6000, MAT_SILVER = 600)
+	build_path = /obj/item/ammo_box/beretta/mm919
 	category = list("Weapons")
 
 /datum/design/box_beretta/ap
@@ -204,16 +193,16 @@
 	id = "box_beretta"
 	req_tech = list("combat" = 3, "materials" = 2)
 	build_type = PROTOLATHE
-	materials = list(MAT_METAL = 80000, MAT_SILVER = 30000)
+	materials = list(MAT_METAL = 6000, MAT_SILVER = 600, MAT_GLASS = 1000)
 	build_path = /obj/item/ammo_box/beretta/mmap919
 	category = list("Weapons")
 
 /datum/design/box_beretta/bluespace
-	name = "Beretta M9 Experimental Ammo Box (9mm)"
+	name = "Beretta M9 Bluespace Ammo Box (9mm)"
 	desc = "A box of 20 high velocity bluespace rounds for Beretta M9"
 	id = "box_beretta"
 	req_tech = list("combat" = 3, "materials" = 2, "bluespace" = 3)
 	build_type = PROTOLATHE
-	materials = list(MAT_METAL = 80000, MAT_BLUESPACE = 5000)
-	build_path = /obj/item/ammo_box/beretta/mmbluespace919
+	materials = list(MAT_METAL = 8000, MAT_SILVER = 600, MAT_BLUESPACE = 5000)
+	build_path = /obj/item/ammo_box/beretta/mmbsp919
 	category = list("Weapons")
