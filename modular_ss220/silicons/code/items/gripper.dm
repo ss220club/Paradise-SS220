@@ -71,22 +71,6 @@
 					/obj/item/photo,
 					/obj/item/toy/plushie)
 
-// /obj/item/gripper/cogscarab
-// 	name = "ancient gripper"
-// 	desc = "A brass grasping tool for supporting workmates."
-// 	icon = 'icons/obj/device.dmi'
-// 	icon_state = "clock_gripper"
-
-// /obj/item/gripper/cogscarab/New()
-// 	//Has a list of items that it can hold.
-// 	can_hold += list(
-// 		/obj/item/clockwork/integration_cog,
-// 		/obj/item/clockwork/shard,
-// 		/obj/item/stack/sheet,
-// 		/obj/item/mmi/robotic_brain/clockwork
-// 	)
-// 	..()
-
 /obj/item/gripper/nuclear
 	name = "Nuclear gripper"
 	desc = "Designed for all your nuclear needs."
@@ -259,8 +243,6 @@
 	if(G?.drop_gripped_item(silent = TRUE))
 		return TRUE
 	return FALSE
-
-	//return G?.drop_gripped_item(silent = TRUE)
 
 /obj/item/robot_module/handle_death(mob/living/silicon/robot/R, gibbed)
 	R.module_gripper_drop()
