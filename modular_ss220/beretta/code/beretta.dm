@@ -8,13 +8,12 @@
 	item_state = "beretta"
 	mag_type = /obj/item/ammo_box/magazine/beretta
 	fire_sound = 'modular_ss220/beretta/sound/beretta/beretta_shot.ogg'
-	actions_types = list()
 
-/obj/item/gun/projectile/automatic/pistol/update_icon_state()
+/obj/item/gun/projectile/automatic/pistol/beretta/update_icon_state()
 
 	icon_state = "[initial(icon_state)][chambered ? "" : "-e"]"
 
-/obj/item/ammo_box/magazine/beretta/
+/obj/item/ammo_box/magazine/beretta
 	name = "beretta rubber 9x19mm magazine"
 	icon = 'modular_ss220/beretta/icons/9x19ammunation.dmi'
 	icon_state = "berettar-10"
