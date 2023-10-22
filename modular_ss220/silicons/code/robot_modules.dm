@@ -37,6 +37,7 @@
 		/obj/item/crowbar/cyborg,
 		/obj/item/gps/cyborg,
 		/obj/item/gripper/service,
+		/obj/item/eftpos/cyborg,
 		)
 
 /obj/item/robot_module/janitor/Initialize(mapload)
@@ -84,6 +85,7 @@
 	basic_modules |= list(
 		/obj/item/gripper,
 		/obj/item/gripper/nuclear,
+		/obj/item/holosign_creator/atmos,
 	)
 
 

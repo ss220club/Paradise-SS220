@@ -35,12 +35,69 @@
 		/obj/item/stack/tile/light,
 		/obj/item/stack/ore/bluespace_crystal,
 		/obj/item/assembly/igniter,
+		/obj/item/flash,
 	)
 
 	//Item currently being held.
 	var/obj/item/gripped_item = null
 
 
+// ===================
+// different grippers
+// ===================
+/obj/item/gripper/medical
+	name = "medical gripper"
+	desc = "A grasping tool used to hold organs and help patients up once surgery is complete."
+	can_hold = list(/obj/item/organ,
+					/obj/item/reagent_containers/iv_bag,
+					/obj/item/robot_parts,
+					/obj/item/stack/sheet/mineral/plasma, //for repair plasmamans
+					/obj/item/mmi,
+					/obj/item/reagent_containers/food/pill,
+					/obj/item/reagent_containers/food/drinks,
+					/obj/item/reagent_containers/glass,
+					/obj/item/reagent_containers/syringe,
+					)
+
+/obj/item/gripper/medical/attack_self(mob/user)
+	return
+
+/obj/item/gripper/service
+	name = "Card gripper"
+	desc = "A grasping tool used to take IDs for paying taxes and waking up drunken crewmates"
+	can_hold = list(/obj/item/card,
+					/obj/item/camera_film,
+					/obj/item/paper,
+					/obj/item/photo,
+					/obj/item/toy/plushie)
+
+// /obj/item/gripper/cogscarab
+// 	name = "ancient gripper"
+// 	desc = "A brass grasping tool for supporting workmates."
+// 	icon = 'icons/obj/device.dmi'
+// 	icon_state = "clock_gripper"
+
+// /obj/item/gripper/cogscarab/New()
+// 	//Has a list of items that it can hold.
+// 	can_hold += list(
+// 		/obj/item/clockwork/integration_cog,
+// 		/obj/item/clockwork/shard,
+// 		/obj/item/stack/sheet,
+// 		/obj/item/mmi/robotic_brain/clockwork
+// 	)
+// 	..()
+
+/obj/item/gripper/nuclear
+	name = "Nuclear gripper"
+	desc = "Designed for all your nuclear needs."
+	icon = 'modular_ss220/silicons/icons/robot_tools.dmi'
+	icon_state = "diskgripper"
+	can_hold = list(/obj/item/disk/nuclear)
+
+
+// ===================
+// procs
+// ===================
 /obj/item/gripper/Initialize(mapload)
 	. = ..()
 	can_hold = typecacheof(can_hold)
@@ -74,13 +131,14 @@
 	if(QDELETED(gripped_item)) // if item was dissasembled we need to clear the pointer
 		drop_gripped_item(TRUE) // silent = TRUE to prevent "You drop X" message from appearing without actually dropping anything
 
-/obj/item/gripper/proc/drop_gripped_item(silent = FALSE)
+/obj/item/gripper/proc/drop_gripped_item(silent = FALSE) // !!!!!!!!!!!!!!! ЭТОТ
 	if(!gripped_item)
-		return
+		return FALSE
 	if(!silent)
 		to_chat(loc, "<span class='warning'>You drop [gripped_item].</span>")
 	gripped_item.forceMove(get_turf(src))
 	gripped_item = null
+	return TRUE
 
 /obj/item/gripper/attack(mob/living/carbon/M, mob/living/carbon/user)
 	return
@@ -166,52 +224,62 @@
 
 
 // ===================
-// different grippers
+// interactions
 // ===================
-/obj/item/gripper/medical
-	name = "medical gripper"
-	desc = "A grasping tool used to hold organs and help patients up once surgery is complete."
-	can_hold = list(/obj/item/organ,
-					/obj/item/reagent_containers/iv_bag,
-					/obj/item/robot_parts/head,
-					/obj/item/robot_parts/l_arm,
-					/obj/item/robot_parts/r_arm,
-					/obj/item/robot_parts/l_leg,
-					/obj/item/robot_parts/r_leg,
-					/obj/item/robot_parts/chest,
-					/obj/item/stack/sheet/mineral/plasma) //for repair plasmamans
+/turf/simulated/wall/attackby(obj/item/I, mob/user, params)
+	// The magnetic gripper does a separate attackby, so bail from this one
+	if(istype(I, /obj/item/gripper))
+		return
 
-/obj/item/gripper/medical/attack_self(mob/user)
-	return
+	. = ..()
 
-/obj/item/gripper/service
-	name = "Card gripper"
-	desc = "A grasping tool used to take IDs for paying taxes and waking up drunken crewmates"
-	can_hold = list(/obj/item/card,
-					/obj/item/camera_film,
-					/obj/item/paper,
-					/obj/item/photo,
-					/obj/item/toy/plushie)
+/datum/surgery_step/is_valid_tool(mob/living/user, obj/item/tool)
+	if(..())
+		return TRUE
 
-// /obj/item/gripper/cogscarab
-// 	name = "ancient gripper"
-// 	desc = "A brass grasping tool for supporting workmates."
-// 	icon = 'icons/obj/device.dmi'
-// 	icon_state = "clock_gripper"
+	var/success = FALSE
+	if(accept_hand)
+		if(isrobot(user) && istype(tool, /obj/item/gripper/medical))
+			success = TRUE
+	return success
 
-// /obj/item/gripper/cogscarab/New()
-// 	//Has a list of items that it can hold.
-// 	can_hold += list(
-// 		/obj/item/clockwork/integration_cog,
-// 		/obj/item/clockwork/shard,
-// 		/obj/item/stack/sheet,
-// 		/obj/item/mmi/robotic_brain/clockwork
-// 	)
-// 	..()
 
-/obj/item/gripper/nuclear
-	name = "Nuclear gripper"
-	desc = "Designed for all your nuclear needs."
-	icon = 'modular_ss220/silicons/icons/robot_tools.dmi'
-	icon_state = "diskgripper"
-	can_hold = list(/obj/item/disk/nuclear)
+//Returns the thing in our gripper
+/mob/living/silicon/robot/get_active_hand()
+	if(istype(module_active, /obj/item/gripper))
+		var/obj/item/gripper/M = module_active
+		if(M.gripped_item)
+			return M.gripped_item
+		return M
+	. = ..()
+
+// Перезаписанные проки
+/mob/living/silicon/robot/proc/module_gripper_drop() 	 // !!!!!!!!!!!!!!! ЭТОТ
+	var/obj/item/gripper/G = locate(/obj/item/gripper) in module.modules
+	if(G?.drop_gripped_item(silent = TRUE))
+		return TRUE
+	return FALSE
+
+	//return G?.drop_gripped_item(silent = TRUE)
+
+/obj/item/robot_module/handle_death(mob/living/silicon/robot/R, gibbed)
+	R.module_gripper_drop()
+
+/obj/item/robot_module/drone/handle_death(mob/living/silicon/robot/R, gibbed)
+	R.module_gripper_drop()
+
+/// Used in `robot.dm` when the user presses "Q" by default.
+/mob/living/silicon/robot/on_drop_hotkey_press()
+	. = module_gripper_drop()
+	if(!.) // if the active module is a gripper, try to drop its held item.
+		uneq_active() // else unequip the module and put it back into the robot's inventory.
+		return FALSE
+	return TRUE
+
+/datum/keybinding/mob/drop_held_object/can_use(client/C, mob/M)
+	return !isrobot(M) && ..()   //robots on 'q' have their own proc for drop, in keybindinds/robot.dm
+
+/mob/living/silicon/robot/drop_item()	// !!!!!!!!!!!!!!!! ЭТОТ ПЕРВЫЙ?
+ 	// The gripper is special because it has a normal item inside that we can drop.
+ 	// All robot inventory items have NODROP, so they should return FALSE.
+ 	return module_gripper_drop()
