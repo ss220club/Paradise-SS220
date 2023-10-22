@@ -136,6 +136,14 @@
 		for(var/client/watching_client in watching)
 			SEND_SOUND(watching_client, sound_to_play)
 
+/datum/cinematic/proc/stop_cinematic_sound()
+	if(is_global)
+		SEND_SOUND(world, sound(null, channel = CHANNEL_CINEMATIC))
+	else
+		for(var/client/watching_client in watching)
+			SEND_SOUND(watching_client, sound(null, channel = CHANNEL_CINEMATIC))
+
+
 /// Invoke any special callbacks for actual effects synchronized with animation.
 /// (Such as a real nuke explosion happening midway)
 /datum/cinematic/proc/invoke_special_callback()
@@ -147,6 +155,7 @@
 
 /// Stops the cinematic and removes it from all the viewers.
 /datum/cinematic/proc/stop_cinematic()
+	stop_cinematic_sound()
 	for(var/client/viewing_client in watching)
 		remove_watcher(viewing_client)
 
@@ -185,6 +194,8 @@
 
 	// We'll clear the cinematic if they have a mob which has one,
 	// but we won't remove notransform. Wait for the cinematic end to do that.
+	SEND_SOUND(no_longer_watching, sound(null, channel = CHANNEL_CINEMATIC))
+
 	no_longer_watching.mob?.clear_fullscreen("cinematic")
 	no_longer_watching.screen -= screen
 
