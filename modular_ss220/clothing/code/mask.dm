@@ -28,7 +28,7 @@
 		message = replacetext(message, words, TYPE_PROC_REF(/obj/item/clothing/mask/fakemoustache/chef, words_replace))
 
 		if(prob(5))
-			message += pick(" Равиоли, равиоли, подскажи мне формуоли!"," Мамма-мия!"," Мамма-мия! Какая острая фрикаделька!", " Ла ла ла ла ла фуникули+ фуникуля+!", "Вордс Реплаке!")
+			message += pick(" Равиоли, равиоли, подскажи мне формуоли!"," Мамма-мия!"," Мамма-мия! Какая острая фрикаделька!", " Ла ла ла ла ла фуникули+ фуникуля+!", " Вордс Реплаке!")
 	speech_args[SPEECH_MESSAGE] = trim(message)
 
 /obj/item/clothing/mask/fakemoustache/chef/proc/words_replace(word)
