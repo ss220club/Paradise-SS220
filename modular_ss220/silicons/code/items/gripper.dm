@@ -131,7 +131,7 @@
 	if(QDELETED(gripped_item)) // if item was dissasembled we need to clear the pointer
 		drop_gripped_item(TRUE) // silent = TRUE to prevent "You drop X" message from appearing without actually dropping anything
 
-/obj/item/gripper/proc/drop_gripped_item(silent = FALSE) // !!!!!!!!!!!!!!! ЭТОТ
+/obj/item/gripper/proc/drop_gripped_item(silent = FALSE)
 	if(!gripped_item)
 		return FALSE
 	if(!silent)
@@ -254,7 +254,7 @@
 	. = ..()
 
 // Перезаписанные проки
-/mob/living/silicon/robot/proc/module_gripper_drop() 	 // !!!!!!!!!!!!!!! ЭТОТ
+/mob/living/silicon/robot/proc/module_gripper_drop()
 	var/obj/item/gripper/G = locate(/obj/item/gripper) in module.modules
 	if(G?.drop_gripped_item(silent = TRUE))
 		return TRUE
@@ -279,7 +279,7 @@
 /datum/keybinding/mob/drop_held_object/can_use(client/C, mob/M)
 	return !isrobot(M) && ..()   //robots on 'q' have their own proc for drop, in keybindinds/robot.dm
 
-/mob/living/silicon/robot/drop_item()	// !!!!!!!!!!!!!!!! ЭТОТ ПЕРВЫЙ?
- 	// The gripper is special because it has a normal item inside that we can drop.
- 	// All robot inventory items have NODROP, so they should return FALSE.
- 	return module_gripper_drop()
+/mob/living/silicon/robot/drop_item()
+	// The gripper is special because it has a normal item inside that we can drop.
+	// All robot inventory items have NODROP, so they should return FALSE.
+	return module_gripper_drop()
