@@ -97,7 +97,7 @@
 
 /obj/item/gripper/attack_self(mob/user)
 	if(!gripped_item)
-		to_chat(user, "<span class='warning'>[src] is empty.</span>")
+		to_chat(user, span_warning("[src] is empty."))
 		return
 	gripped_item.attack_self(user)
 
@@ -119,7 +119,7 @@
 	if(!gripped_item)
 		return FALSE
 	if(!silent)
-		to_chat(loc, "<span class='warning'>You drop [gripped_item].</span>")
+		to_chat(loc, span_warning("You drop [gripped_item]."))
 	gripped_item.forceMove(get_turf(src))
 	gripped_item = null
 	return TRUE
@@ -156,11 +156,11 @@
 	else if(istype(target, /obj/item)) // Check that we're not pocketing a mob.
 		var/obj/item/I = target
 		if(is_type_in_typecache(I, can_hold)) // Make sure the item is something the gripper can hold
-			to_chat(user, "<span class='notice'>You collect [I].</span>")
+			to_chat(user, span_notice("You collect [I]."))
 			I.forceMove(src)
 			gripped_item = I
 		else
-			to_chat(user, "<span class='warning'>Your gripper cannot hold [target].</span>")
+			to_chat(user, span_warning("Your gripper cannot hold [target]."))
 			return FALSE
 
 	else if(istype(target, /obj/machinery/power/apc))
@@ -178,7 +178,7 @@
 				A.charging = APC_NOT_CHARGING
 				A.update_icon()
 
-				user.visible_message("<span class='warning'>[user] removes the power cell from [A]!</span>", "You remove the power cell.")
+				user.visible_message(span_warning("[user] removes the power cell from [A]!"), "You remove the power cell.")
 
 	else if(istype(target, /obj/machinery/cell_charger))
 		var/obj/machinery/cell_charger/cell_charger = target
@@ -200,8 +200,8 @@
 		pickup_target.stand_up()
 		playsound(user.loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 		user.visible_message( \
-			"<span class='notice'>[user] shakes [pickup_target] trying to wake [pickup_target.p_them()] up!</span>",\
-			"<span class='notice'>You shake [pickup_target] trying to wake [pickup_target.p_them()] up!</span>",\
+			span_notice("[user] shakes [pickup_target] trying to wake [pickup_target.p_them()] up!"),\
+			span_notice("You shake [pickup_target] trying to wake [pickup_target.p_them()] up!"),\
 			)
 
 	return TRUE

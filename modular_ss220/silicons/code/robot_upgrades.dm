@@ -9,8 +9,8 @@
 
 /obj/item/borg/upgrade/storageincreaser/do_install(mob/living/silicon/robot/R)
 	for(var/obj/item/borg/upgrade/storageincreaser/U in R.contents)
-		to_chat(R, "<span class='notice'>A [name] unit is already installed!</span>")
-		to_chat(usr, "<span class='notice'>There's no room for another [name] unit!</span>")
+		to_chat(R, span_notice("A [name] unit is already installed!"))
+		to_chat(usr, span_notice("There's no room for another [name] unit!"))
 		return FALSE
 
 	for(var/datum/robot_energy_storage/ES in R.module.storages)
