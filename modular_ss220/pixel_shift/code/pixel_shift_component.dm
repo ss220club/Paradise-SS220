@@ -20,7 +20,7 @@
 	RegisterSignal(parent, COMSIG_KB_MOB_PIXEL_SHIFT_UP, PROC_REF(pixel_shift_up))
 	RegisterSignal(parent, COMSIG_MOVABLE_MOVED, PROC_REF(unpixel_shift))
 	RegisterSignal(parent, SIGNAL_ADDTRAIT(TRAIT_IMMOBILIZED), PROC_REF(unpixel_shift))
-	RegisterSignal(parent, COMSIG_LIVING_PROCESS_SPACEMOVE, PROC_REF(pre_move_check))
+	RegisterSignal(parent, COMSIG_MOB_CLIENT_PRE_LIVING_MOVE, PROC_REF(pre_move_check))
 	RegisterSignal(parent, COMSIG_LIVING_CAN_PASS, PROC_REF(check_passable))
 
 /datum/component/pixel_shift/UnregisterFromParent()
@@ -28,14 +28,14 @@
 	UnregisterSignal(parent, COMSIG_KB_MOB_PIXEL_SHIFT_UP)
 	UnregisterSignal(parent, COMSIG_MOVABLE_MOVED)
 	UnregisterSignal(parent, SIGNAL_ADDTRAIT(TRAIT_IMMOBILIZED))
-	UnregisterSignal(parent, COMSIG_LIVING_PROCESS_SPACEMOVE)
+	UnregisterSignal(parent, COMSIG_MOB_CLIENT_PRE_LIVING_MOVE)
 	UnregisterSignal(parent, COMSIG_LIVING_CAN_PASS)
 
-/datum/component/pixel_shift/proc/pre_move_check(mob/source, movement_dir)
+/datum/component/pixel_shift/proc/pre_move_check(mob/source, new_loc, direct)
 	SIGNAL_HANDLER
 	if(shifting)
-		pixel_shift(source, movement_dir)
-		return COMPONENT_BLOCK_SPACEMOVE
+		pixel_shift(source, direct)
+		return COMSIG_MOB_CLIENT_BLOCK_PRE_LIVING_MOVE
 
 /datum/component/pixel_shift/proc/check_passable(mob/source, atom/movable/mover, target, height)
 	SIGNAL_HANDLER

@@ -56,19 +56,22 @@
 
 		if(calculated_move_delay < 4)
 			calculated_move_delay = 4 //no racecarts
+		if(IS_DIR_DIAGONAL(direction))	//moved diagonally
+			calculated_move_delay *= sqrt(2)
 
 		move_delay = world.time
 		move_delay += calculated_move_delay
 
+		set_glide_size(DELAY_TO_GLIDE_SIZE(calculated_move_delay))
 		if(!buckled_mob.Move(get_step(buckled_mob, direction), direction))
 			loc = buckled_mob.loc //we gotta go back
 			last_move = buckled_mob.last_move
 			inertia_dir = last_move
 			buckled_mob.inertia_dir = last_move
-			. = 0
+			. = FALSE
 
 		else
-			. = 1
+			. = TRUE
 
 /obj/structure/chair/wheelchair/Bump(atom/A)
 	..()
@@ -146,6 +149,7 @@
 		move_delay = world.time
 		move_delay += calculated_move_delay
 
+		set_glide_size(DELAY_TO_GLIDE_SIZE(calculated_move_delay))
 		if(!buckled_mob.Move(get_step(buckled_mob, direction), direction))
 			loc = buckled_mob.loc //we gotta go back
 			last_move = buckled_mob.last_move

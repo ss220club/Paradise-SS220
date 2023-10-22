@@ -2,7 +2,7 @@ GLOBAL_DATUM_INIT(minor_announcement, /datum/announcer, new(config_type = /datum
 GLOBAL_DATUM_INIT(major_announcement, /datum/announcer, new(config_type = /datum/announcement_configuration/major))
 
 /datum/announcement_configuration
-	var/default_title = "Attention"
+	var/default_title = "Внимание"
 	/// The name used when describing the announcement type in logs.
 	var/log_name = ANNOUNCE_KIND_DEFAULT
 	/// Whether or not to log the announcement when made.

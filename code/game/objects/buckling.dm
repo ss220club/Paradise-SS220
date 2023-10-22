@@ -49,7 +49,10 @@
 	if(!istype(M))
 		return FALSE
 
-	if(check_loc && M.loc != loc)
+	if(check_loc && !in_range(M, src))
+		return FALSE
+
+	if(check_loc && M.loc != loc && !M.Move(loc))
 		return FALSE
 
 	if((!can_buckle && !force) || M.buckled || (length(buckled_mobs) >= max_buckled_mobs) || (buckle_requires_restraints && !M.restrained()) || M == src)
@@ -72,7 +75,7 @@
 		qdel(G)
 
 	if(!check_loc && M.loc != loc)
-		M.forceMove(loc)
+		M.Move(loc) || M.forceMove(loc)
 
 	if(!buckle_lying)
 		M.set_body_position(STANDING_UP)
@@ -88,6 +91,7 @@
 	buckled_mobs |= M
 	ADD_TRAIT(M, TRAIT_IMMOBILIZED, BUCKLING_TRAIT)
 	M.throw_alert("buckled", /obj/screen/alert/restrained/buckled)
+	M.set_glide_size(glide_size)
 	post_buckle_mob(M)
 	SEND_SIGNAL(src, COMSIG_MOVABLE_BUCKLE, M, force)
 	return TRUE
@@ -106,6 +110,7 @@
 		buckled_mob.anchored = initial(buckled_mob.anchored)
 		REMOVE_TRAIT(buckled_mob, TRAIT_IMMOBILIZED, BUCKLING_TRAIT)
 		buckled_mob.clear_alert("buckled")
+		buckled_mob.set_glide_size(DELAY_TO_GLIDE_SIZE(buckled_mob.movement_delay()))
 		buckled_mobs -= buckled_mob
 		SEND_SIGNAL(src, COMSIG_MOVABLE_UNBUCKLE, buckled_mob, force)
 		if((buckled_mob.mobility_flags & MOBILITY_STAND) && !buckled_mob.resting)
@@ -135,9 +140,13 @@
 	if(!in_range(user, src) || !isturf(user.loc) || user.incapacitated() || M.anchored)
 		return FALSE
 
-	if (isguardian(user))
-		if (M.loc == user.loc || user.alpha == 60) //Alpha is for detecting ranged guardians in scout mode
+	if(isguardian(user))
+		if(M.loc == user.loc || user.alpha == 60) //Alpha is for detecting ranged guardians in scout mode
 			return  //unmanifested guardians shouldn't be able to buckle mobs
+
+	if(M != user)
+		if(!in_range(M, src) || !do_after(user, 1 SECONDS, target = M))
+			return FALSE
 
 	add_fingerprint(user)
 	. = buckle_mob(M, check_loc = check_loc)

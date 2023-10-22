@@ -91,18 +91,13 @@
 					buckled_mob.pixel_x = -13
 					buckled_mob.pixel_y = 7
 
-/obj/vehicle/ambulance/Move(newloc, Dir)
+/obj/vehicle/ambulance/Move(newloc, Dir, movetime)
 	var/oldloc = loc
 	if(bed && !Adjacent(bed))
 		bed = null
 	. = ..()
-	if(bed && get_dist(oldloc, loc) <= 2)
-		bed.Move(oldloc, get_dir(bed, oldloc), (last_move_diagonal? 2 : 1) * (vehicle_move_delay + GLOB.configuration.movement.human_delay))
-		bed.dir = Dir
-		if(bed.has_buckled_mobs())
-			for(var/m in bed.buckled_mobs)
-				var/mob/living/buckled_mob = m
-				buckled_mob.setDir(Dir)
+	if(. && bed && get_dist(oldloc, loc) <= 2)
+		bed.Move(oldloc, get_dir(bed, oldloc), glide_size)
 
 /obj/structure/bed/amb_trolley
 	name = "ambulance train trolley"

@@ -1,7 +1,7 @@
 /datum/tts_provider/silero
 	name = "Silero"
 	is_enabled = TRUE
-	api_url = "http://s2.ss220.club:9999/voice"
+	api_url = "http://141.95.72.94:9999/voice"
 
 /datum/tts_provider/silero/vv_edit_var(var_name, var_value)
 	if(var_name == "api_url")
