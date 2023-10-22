@@ -1,5 +1,5 @@
-//Simple borg hand.
-//Limited use.
+// Simple borg hand.
+// Limited use.
 /obj/item/gripper
 	name = "magnetic gripper"
 	desc = "A simple grasping tool for synthetic assets."
@@ -8,7 +8,7 @@
 
 	actions_types = list(/datum/action/item_action/drop_gripped_item)
 
-	//Has a list of items that it can hold.
+	// Has a list of items that it can hold.
 	var/list/can_hold = list(
 		/obj/item/firealarm_electronics,
 		/obj/item/airalarm_electronics,
@@ -38,7 +38,7 @@
 		/obj/item/flash,
 	)
 
-	//Item currently being held.
+	// Item currently being held.
 	var/obj/item/gripped_item = null
 
 
@@ -51,7 +51,7 @@
 	can_hold = list(/obj/item/organ,
 					/obj/item/reagent_containers/iv_bag,
 					/obj/item/robot_parts,
-					/obj/item/stack/sheet/mineral/plasma, //for repair plasmamans
+					/obj/item/stack/sheet/mineral/plasma, // for repair plasmamans
 					/obj/item/mmi,
 					/obj/item/reagent_containers/food/pill,
 					/obj/item/reagent_containers/food/drinks,
@@ -135,25 +135,25 @@
 	return isnull(gripped_item)
 
 /obj/item/gripper/afterattack(atom/target, mob/living/user, proximity, params)
-	if(!target || !proximity) //Target is invalid or we are not adjacent.
+	if(!target || !proximity) // Target is invalid or we are not adjacent.
 		return FALSE
 
-	if(gripped_item) //Already have an item.
+	if(gripped_item) // Already have an item.
 
-		//Pass the attack on to the target. This might delete/relocate gripped_item.
+		// Pass the attack on to the target. This might delete/relocate gripped_item.
 		if(!target.attackby(gripped_item, user, params))
 			// If the attackby didn't resolve or delete the target or gripped_item, afterattack
 			// (Certain things, such as mountable frames, rely on afterattack)
 			gripped_item?.afterattack(target, user, 1, params)
 
-		//If gripped_item either didn't get deleted, or it failed to be transfered to its target
+		// If gripped_item either didn't get deleted, or it failed to be transfered to its target
 		if(!gripped_item && contents.len)
 			gripped_item = contents[1]
 			return FALSE
 		else if(gripped_item && !contents.len)
 			gripped_item = null
 
-	else if(istype(target, /obj/item)) //Check that we're not pocketing a mob.
+	else if(istype(target, /obj/item)) // Check that we're not pocketing a mob.
 		var/obj/item/I = target
 		if(is_type_in_typecache(I, can_hold)) // Make sure the item is something the gripper can hold
 			to_chat(user, "<span class='notice'>You collect [I].</span>")
@@ -228,7 +228,7 @@
 	return success
 
 
-//Returns the thing in our gripper
+// Returns the thing in our gripper
 /mob/living/silicon/robot/get_active_hand()
 	if(istype(module_active, /obj/item/gripper))
 		var/obj/item/gripper/M = module_active
@@ -259,7 +259,7 @@
 	return TRUE
 
 /datum/keybinding/mob/drop_held_object/can_use(client/C, mob/M)
-	return !isrobot(M) && ..()   //robots on 'q' have their own proc for drop, in keybindinds/robot.dm
+	return !isrobot(M) && ..()   // robots on 'q' have their own proc for drop, in keybindinds/robot.dm
 
 /mob/living/silicon/robot/drop_item()
 	// The gripper is special because it has a normal item inside that we can drop.

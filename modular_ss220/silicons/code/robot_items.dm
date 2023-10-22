@@ -41,7 +41,7 @@
 		return FALSE
 	return R.cell.use(power_use)
 
-//Небольшой багфикс "непрозрачного открытого шлюза"
+// Небольшой багфикс "непрозрачного открытого шлюза"
 /obj/structure/inflatable/door/operate()
 	. = ..()
 	opacity = FALSE
@@ -96,8 +96,8 @@
 			else
 				to_chat(user, "[bicon(src)]<span class='warning'>No account connected to send transactions to.</span>")
 			return TRUE
-		//if(isrobot(user))
-		//	card_account = attempt_account_access(id_card.associated_account_number, pin_needed = FALSE)
+		// if(isrobot(user))
+		// 	card_account = attempt_account_access(id_card.associated_account_number, pin_needed = FALSE)
 	. = ..()
 
 // =============
