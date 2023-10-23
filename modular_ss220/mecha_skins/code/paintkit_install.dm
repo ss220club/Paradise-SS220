@@ -1,5 +1,4 @@
 /obj/mecha/attackby(obj/item/W, mob/user, params)
-	. = ..()
 	if(istype(W, /obj/item/paintkit))
 		if(occupant)
 			to_chat(user, "Вы не можете кастомизировать экзокостюм, пока кто-то его пилотирует - это небезопасно!")
@@ -27,6 +26,7 @@
 			wreckage = P.new_wreckage
 			reset_icon()
 			qdel(P)
+	return ..()
 
 //RIP AND PEPPERONI
 
