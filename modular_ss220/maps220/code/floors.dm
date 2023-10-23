@@ -19,7 +19,7 @@
 
 /turf/simulated/floor/beach/away/water/deep/dense_canpass/CanPass (atom/movable/mover, border_dir)
 	.=..()
-	if(isliving(mover) || ismecha (mover))
+	if(isliving(mover) || ismecha(mover) || istype(mover, /obj/structure/closet/cardboard))
 		return FALSE
 
 /* Lavaland */
