@@ -14,7 +14,10 @@ SUBSYSTEM_DEF(credits)
 	credit_animate_height = 16 * world.icon_size
 
 /datum/controller/subsystem/credits/proc/roll_credits_for_clients(list/clients)
-	end_titles = new /datum/credits/default()
+	if(HALLOWEEN in SSholiday.holidays)
+		end_titles = new /datum/credits/halloween()
+	else
+		end_titles = new /datum/credits/default()
 
 	end_titles.roll_credits_for_clients(clients)
 

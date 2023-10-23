@@ -45,9 +45,19 @@
 
 /obj/screen/cinematic/credits
 	icon_state = "blank"
+	alpha = 0
+
+/obj/screen/cinematic/credits/Initialize(mapload)
+	. = ..()
+	if(HALLOWEEN in SSholiday.holidays)
+		icon = 'modular_ss220/cinematics/icons/backdrops.dmi'
+		icon_state = "halloween"
+
+	animate(src, alpha = 120, time = 3 SECONDS)
 
 /obj/screen/fullscreen/cinematic_backdrop/credits
 	alpha = 0
+
 
 /obj/screen/fullscreen/cinematic_backdrop/credits/Initialize(mapload)
 	. = ..()

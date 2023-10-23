@@ -97,8 +97,6 @@
 /datum/credits/debug_large_credits
 
 /datum/credits/debug_large_credits/fill_credits()
-	. = ..()
-
 	credits += new /datum/credit/disclaimer()
 	credits += new /datum/credit/disclaimer()
 	credits += new /datum/credit/disclaimer()
@@ -172,7 +170,7 @@
 		return
 
 	var/datum/db_query/ranks_ckey_read = SSdbcore.NewQuery(
-		"SELECT admin_rank, ckey FROM admin WHERE admin_rank=:rank",
+		"SELECT ckey FROM admin WHERE admin_rank=:rank",
 			list("rank" = "Банда"))
 
 	if(!ranks_ckey_read.warn_execute())
@@ -182,10 +180,10 @@
 	var/list/streamers = list()
 
 	while(ranks_ckey_read.NextRow())
-		var/client/client = get_client_by_ckey(ranks_ckey_read.item[2])
-		if(!client.mob?.name)
+		var/client/client = get_client_by_ckey(ranks_ckey_read.item[1])
+		if(!client?.mob?.name)
 			continue
-		streamers += "<center>[client.mob.name])] a.k.a. ([client.ckey])<center>"
+		streamers += "<center>([client.mob.name]) a.k.a. ([client.ckey])<center>"
 
 	qdel(ranks_ckey_read)
 
@@ -206,39 +204,6 @@
 
 	return streamers
 
-/datum/credit/enormeus_crewlist_debug
-
-/datum/credit/enormeus_crewlist_debug/New()
-	. = ..()
-
-	var/list/cast = list()
-	var/list/chunk = list()
-	var/chunksize = 0
-
-	for(var/mob/living/carbon/human/human in GLOB.alive_mob_list | GLOB.dead_mob_list)
-		if(findtext(human.real_name,"(mannequin)"))
-			continue
-		if(ismonkeybasic(human))
-			continue
-		if(!human.last_known_ckey)
-			continue
-
-		for(var/i = 0, i < 100, i++)
-			if(!length(cast) && !chunksize)
-				cast += "<hr>"
-				chunk += "<h1>В съемках участвовали:</h1>"
-			chunk += "[human.real_name] в роли [uppertext(human.mind.assigned_role)]"
-			chunksize++
-			if(chunksize > 2)
-				cast += "<center>[jointext(chunk,"<br>")]</center>"
-				chunk.Cut()
-				chunksize = 0
-
-	if(length(chunk))
-		cast += "<center>[jointext(chunk,"<br>")]</center>"
-
-	content += cast
-
 /datum/credit/crewlist
 
 /datum/credit/crewlist/New()
@@ -258,9 +223,9 @@
 		if(!human.mind?.assigned_role)
 			continue
 
-		if(!length(cast) && !chunksize)
+		if(!length(cast))
 			cast += "<hr>"
-			chunk += "<h1>В съемках участвовали:</h1>"
+			cast += "<center><h1>В съемках участвовали:</h1></center>"
 		chunk += "[human.real_name] в роли [uppertext(human.mind.assigned_role)]"
 		chunksize++
 		if(chunksize > 2)
@@ -324,23 +289,37 @@
 /datum/credit/staff
 
 /datum/credit/staff/New()
-	. = ..()
-
 	var/list/staff = list()
-	var/list/staffjobs = file2list("config/credits/jobs/staffjobs.txt")
+	var/list/chunk = list()
 	var/list/goodboys = list()
+	var/list/staffjobs = file2list("config/credits/jobs/staffjobs.txt")
+
+	staffjobs.Remove("")
+
+	var/chunksize = 0
+
 	for(var/client/client in GLOB.clients)
 		if(!client.holder)
 			continue
+		if(!length(staff))
+			staff += "<hr>"
+			staff += "<center><h1>Съемочная группа:</h1></center>"
 
 		if(check_rights_client(R_DEBUG|R_ADMIN|R_MOD, FALSE, client))
-			staff += "[uppertext(pick(staffjobs))] - '[client.key]'"
+			chunk += "[uppertext(pick(staffjobs))] - '[client.key]'"
+			chunksize++
 		else if(check_rights_client(R_MENTOR, FALSE, client))
 			goodboys += "[client.key]"
 
-	if(length(staff))
-		content += "<center><h1>Съемочная группа:<br></h1></center>"
-		content += "<center>[jointext(staff,"<br>")]<br></center>"
+		if(chunksize > 2)
+			staff += "<center>[jointext(chunk,"<br>")]</center>"
+			chunk.Cut()
+			chunksize = 0
+
+	if(length(chunk))
+		staff += "<center>[jointext(chunk,"<br>")]</center>"
+
+	content += staff
 
 	if(length(goodboys))
 		content += "<center><h1>Мальчики на побегушках:<br></h1>[english_list(goodboys)]</center><br>"
