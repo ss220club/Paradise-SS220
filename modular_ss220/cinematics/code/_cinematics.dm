@@ -129,12 +129,11 @@
 	RegisterSignal(watching_client, list(COMSIG_PARENT_QDELETING, COMSIG_CINEMATIC_WATCHER_LEAVES), PROC_REF(remove_watcher))
 
 /// Simple helper for playing sounds from the cinematic.
-/datum/cinematic/proc/play_cinematic_sound(sound_to_play)
-	if(is_global)
-		SEND_SOUND(world, sound_to_play)
-	else
-		for(var/client/watching_client in watching)
-			SEND_SOUND(watching_client, sound_to_play)
+/datum/cinematic/proc/play_cinematic_sound(sound/sound_to_play)
+	sound_to_play.channel = CHANNEL_CINEMATIC
+	for(var/client/watching_client in watching)
+		sound_to_play.volume = 100 * watching_client.prefs.get_channel_volume(CHANNEL_CINEMATIC)
+		SEND_SOUND(watching_client, sound_to_play)
 
 /datum/cinematic/proc/stop_cinematic_sound()
 	if(is_global)

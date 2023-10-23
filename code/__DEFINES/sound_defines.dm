@@ -14,6 +14,7 @@
 // SS220 ADDITION START
 #define CHANNEL_TTS_RADIO 1012
 #define CHANNEL_TTS_LOCAL 1011
+#define CHANNEL_CINEMATIC 1010
 // SS220 ADDITION END
 
 #define USER_VOLUME(M, C) M?.client?.prefs.get_channel_volume(C)
