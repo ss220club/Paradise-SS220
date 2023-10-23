@@ -181,7 +181,7 @@
 
 /obj/item/ammo_box/magazine/beretta
 	name = "beretta rubber 9x19mm magazine"
-	icon = 'modular_ss220/object/icons/ammo.dmi'
+	icon = 'modular_ss220/objects/icons/ammo.dmi'
 	icon_state = "berettar-10"
 	base_icon_state = "berettar"
 	ammo_type = /obj/item/ammo_casing/beretta/mmrub919
@@ -194,7 +194,7 @@
 
 /obj/item/ammo_box/magazine/beretta/mm919
 	name = "beretta lethal 9x19mm magazine"
-	icon = 'modular_ss220/object/icons/ammo.dmi'
+	icon = 'modular_ss220/objects/icons/ammo.dmi'
 	icon_state = "berettal-10"
 	base_icon_state = "berettal"
 	ammo_type = /obj/item/ammo_casing/beretta/mm919
@@ -203,7 +203,7 @@
 
 /obj/item/ammo_box/magazine/beretta/mmbsp919
 	name = "beretta bluespace 9x19mm magazine"
-	icon = 'modular_ss220/object/icons/ammo.dmi'
+	icon = 'modular_ss220/objects/icons/ammo.dmi'
 	icon_state = "berettab-10"
 	base_icon_state = "berettab"
 	ammo_type = /obj/item/ammo_casing/beretta/mmbsp919
@@ -212,7 +212,7 @@
 
 /obj/item/ammo_box/magazine/beretta/mmap919
 	name = "beretta armor-piercing 9x19mm magazine"
-	icon = 'modular_ss220/object/icons/ammo.dmi'
+	icon = 'modular_ss220/objects/icons/ammo.dmi'
 	icon_state = "berettaap-10"
 	base_icon_state = "berettaap"
 	ammo_type = /obj/item/ammo_casing/beretta/mmap919
@@ -244,13 +244,13 @@
 
 /obj/item/ammo_casing/beretta/mmrub919
 	caliber = "919mmr"
-	icon = 'modular_ss220/object/icons/ammo.dmi'
+	icon = 'modular_ss220/objects/icons/ammo.dmi'
 	icon_state = "casingmm919"
 	projectile_type = /obj/item/projectile/bullet/weakbullet4
 
 /obj/item/ammo_casing/beretta/mm919
 	caliber = "919mm"
-	icon = 'modular_ss220/object/icons/ammo.dmi'
+	icon = 'modular_ss220/objects/icons/ammo.dmi'
 	icon_state = "casingmm919"
 	projectile_type = /obj/item/projectile/bullet/weakbullet3
 
@@ -260,7 +260,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	ammo_type = /obj/item/ammo_casing/beretta/mm919
 	max_ammo = 20
-	icon = 'modular_ss220/object/icons/ammo.dmi'
+	icon = 'modular_ss220/objects/icons/ammo.dmi'
 	icon_state = "9mm_box"
 
 /obj/item/ammo_box/beretta/mmrub919
@@ -269,7 +269,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	ammo_type = /obj/item/ammo_casing/beretta/mmrub919
 	max_ammo = 30
-	icon = 'modular_ss220/object/icons/ammo.dmi'
+	icon = 'modular_ss220/objects/icons/ammo.dmi'
 	icon_state = "9mmr_box"
 
 /obj/item/ammo_box/beretta/mmbsp919
@@ -278,7 +278,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	ammo_type = /obj/item/ammo_casing/beretta/mmbsp919
 	max_ammo = 20
-	icon = 'modular_ss220/object/icons/ammo.dmi'
+	icon = 'modular_ss220/objects/icons/ammo.dmi'
 	icon_state = "9mmb_box"
 
 /obj/item/ammo_box/beretta/mmap919
@@ -287,7 +287,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	ammo_type = /obj/item/ammo_casing/beretta/mmap919
 	max_ammo = 20
-	icon = 'modular_ss220/object/icons/ammo.dmi'
+	icon = 'modular_ss220/objects/icons/ammo.dmi'
 	icon_state = "9mmap_box"
 
 /datum/supply_packs/security/armory/beretta
