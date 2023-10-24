@@ -17,9 +17,9 @@
 	icon_state = "seadeep"
 	baseturf = /turf/simulated/floor/beach/away/water/deep
 
-/turf/simulated/floor/beach/away/water/deep/dense_canpass/CanPass (atom/movable/mover, border_dir)
+/turf/simulated/floor/beach/away/water/deep/dense_canpass/CanPass(atom/movable/mover, border_dir)
 	.=..()
-	if(isliving(mover) || ismecha(mover) || istype(mover, /obj/structure/closet/cardboard))
+	if(isliving(mover) || mover.density)
 		return FALSE
 
 /* Lavaland */
