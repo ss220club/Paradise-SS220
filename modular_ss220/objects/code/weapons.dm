@@ -175,52 +175,38 @@
 	mag_type = /obj/item/ammo_box/magazine/beretta
 	fire_sound = 'modular_ss220/objects/sound/weapons/gunshots/beretta_shot.ogg'
 
-/obj/item/gun/projectile/automatic/pistol/beretta/update_icon_state()
-
-	icon_state = "[initial(icon_state)][chambered ? "" : "-e"]"
-
 /obj/item/ammo_box/magazine/beretta
 	name = "beretta rubber 9x19mm magazine"
 	icon = 'modular_ss220/objects/icons/ammo.dmi'
-	icon_state = "berettar-10"
-	base_icon_state = "berettar"
+	icon_state = "berettar"
+	multi_sprite_step = 2
 	ammo_type = /obj/item/ammo_casing/beretta/mmrub919
 	max_ammo = 10
-	caliber = "919mmr"
-
-/obj/item/ammo_box/magazine/beretta/update_icon_state()
-
-	icon_state = "[base_icon_state]-[round(ammo_count(),2)]"
+	caliber = "919mm"
 
 /obj/item/ammo_box/magazine/beretta/mm919
 	name = "beretta lethal 9x19mm magazine"
 	icon = 'modular_ss220/objects/icons/ammo.dmi'
-	icon_state = "berettal-10"
-	base_icon_state = "berettal"
+	icon_state = "berettal"
 	ammo_type = /obj/item/ammo_casing/beretta/mm919
 	max_ammo = 10
-	caliber = "919mm"
 
 /obj/item/ammo_box/magazine/beretta/mmbsp919
 	name = "beretta bluespace 9x19mm magazine"
 	icon = 'modular_ss220/objects/icons/ammo.dmi'
-	icon_state = "berettab-10"
-	base_icon_state = "berettab"
+	icon_state = "berettab"
 	ammo_type = /obj/item/ammo_casing/beretta/mmbsp919
 	max_ammo = 10
-	caliber = "919bmm"
 
 /obj/item/ammo_box/magazine/beretta/mmap919
 	name = "beretta armor-piercing 9x19mm magazine"
 	icon = 'modular_ss220/objects/icons/ammo.dmi'
-	icon_state = "berettaap-10"
-	base_icon_state = "berettaap"
+	icon_state = "berettaap"
 	ammo_type = /obj/item/ammo_casing/beretta/mmap919
 	max_ammo = 10
-	caliber = "919apmm"
 
 /obj/item/ammo_casing/beretta/mmbsp919
-	caliber = "919bmm"
+	caliber = "919mm"
 	name = "9x19mm bluespace bullet casing"
 	desc = "A 9x19mm bluespace bullet casing."
 	projectile_type = /obj/item/projectile/bullet/mmbsp919
@@ -231,7 +217,6 @@
 	speed = 0.2
 
 /obj/item/ammo_casing/beretta/mmap919
-	caliber = "919apmm"
 	name = "9x19mm armor-piercing bullet casing"
 	desc = "A 9x19 armor-piercing bullet casing."
 	projectile_type = /obj/item/projectile/bullet/mmap919
@@ -243,13 +228,11 @@
 	armour_penetration_flat = 15
 
 /obj/item/ammo_casing/beretta/mmrub919
-	caliber = "919mmr"
 	icon = 'modular_ss220/objects/icons/ammo.dmi'
 	icon_state = "casingmm919"
 	projectile_type = /obj/item/projectile/bullet/weakbullet4
 
 /obj/item/ammo_casing/beretta/mm919
-	caliber = "919mm"
 	icon = 'modular_ss220/objects/icons/ammo.dmi'
 	icon_state = "casingmm919"
 	projectile_type = /obj/item/projectile/bullet/weakbullet3
@@ -265,7 +248,7 @@
 
 /obj/item/ammo_box/beretta/mmrub919
 	name = "box of rubber 9x19mm cartridges"
-	desc = "Contains up to 20 rubber 9x19mm cartridges."
+	desc = "Contains up to 30 rubber 9x19mm cartridges."
 	w_class = WEIGHT_CLASS_NORMAL
 	ammo_type = /obj/item/ammo_casing/beretta/mmrub919
 	max_ammo = 30
@@ -274,7 +257,7 @@
 
 /obj/item/ammo_box/beretta/mmbsp919
 	name = "box of bluespace 9x19mm cartridges"
-	desc = "Contains up to 20 experimental 9x19mm cartridges."
+	desc = "Contains up to 20 bluespace 9x19mm cartridges."
 	w_class = WEIGHT_CLASS_NORMAL
 	ammo_type = /obj/item/ammo_casing/beretta/mmbsp919
 	max_ammo = 20
