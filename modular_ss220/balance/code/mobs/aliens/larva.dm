@@ -8,4 +8,4 @@
 		return
 	user.visible_message(span_warning("[user] протискивается через [src]!"), \
 		span_warning("Вы протискиваетесь через [src]."), null)
-	user.forceMove(loc)
+	user.forceMove(get_turf(src))
