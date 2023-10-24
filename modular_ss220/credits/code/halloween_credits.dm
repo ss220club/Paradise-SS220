@@ -12,6 +12,22 @@
 	credits += new /datum/credit/staff/halloween()
 	credits += new /datum/credit/disclaimer()
 
+/datum/credits/halloween/setup_credits_for_client(client/client)
+	. = ..()
+
+	var/obj/screen/credit/logo = new /obj/screen/credit/halloween(null, "", client)
+	client.credits += logo
+
+/datum/credits/halloween/start_rolling_logo_for_clients(list/clients)
+	for(var/client/client in clients)
+		if(!client?.credits)
+			continue
+
+		var/obj/screen/credit/logo/logo = client.credits[1]
+		logo.rollem()
+		logo = client.credits[2]
+		logo.rollem()
+
 /datum/credit/episode_title/halloween
 
 /datum/credit/episode_title/halloween/New()
@@ -116,3 +132,29 @@
 
 	if(length(goodboys))
 		content += "<center><h1>Духи:<br></h1>[english_list(goodboys)]</center><br>"
+
+/obj/screen/credit/halloween
+	icon = 'modular_ss220/credits/icons/logo.dmi'
+	icon_state = "halloween"
+	screen_loc = "CENTER - 2,CENTER + 0.8"
+	appearance_flags = NO_CLIENT_COLOR | TILE_BOUND
+	alpha = 255
+
+/obj/screen/credit/halloween/Initialize(mapload, credited, client/client)
+	. = ..()
+	parent.screen += src
+	plane++
+
+	transform = transform.Scale(1.5)
+
+	SpinAnimation(5 SECONDS, 1, 1, 20, TRUE)
+
+	var/matrix/matrix = matrix(transform)
+	transform = transform.Translate(-8 * world.icon_size, 0)
+	animate(src, transform = matrix, time = 5 SECONDS, flags = ANIMATION_PARALLEL)
+
+/obj/screen/credit/halloween/rollem()
+	var/matrix/matrix = matrix(transform)
+	matrix.Translate(0, SScredits.credit_animate_height)
+	animate(src, transform = matrix, time = SScredits.credit_roll_speed)
+	addtimer(CALLBACK(src, PROC_REF(delete_credit)), SScredits.credit_roll_speed, TIMER_CLIENT_TIME)
