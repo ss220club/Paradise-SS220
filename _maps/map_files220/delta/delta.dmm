@@ -750,6 +750,11 @@
 	icon_state = "red"
 	},
 /area/station/security/checkpoint/south)
+"afX" = (
+/obj/structure/chair/comfy/brown,
+/obj/structure/sign/poster/official/random/west,
+/turf/simulated/floor/wood/parquet,
+/area/station/service/library)
 "agd" = (
 /obj/machinery/light/directional/west,
 /obj/effect/decal/warning_stripes/west,
@@ -8162,7 +8167,6 @@
 /area/station/supply/office)
 "aOR" = (
 /obj/machinery/papershredder,
-/obj/machinery/light/directional/north,
 /obj/machinery/alarm/directional/north,
 /turf/simulated/floor/plasteel/grimy,
 /area/station/service/library)
@@ -24086,7 +24090,7 @@
 /obj/structure/chair/comfy/beige{
 	dir = 1
 	},
-/obj/machinery/status_display/directional/west,
+/obj/structure/sign/poster/official/random/south,
 /turf/simulated/floor/carpet,
 /area/station/service/library)
 "bZN" = (
@@ -24598,7 +24602,6 @@
 /obj/structure/table/wood,
 /obj/item/folder,
 /obj/item/pen,
-/obj/machinery/newscaster/directional/west,
 /turf/simulated/floor/wood/parquet,
 /area/station/service/library)
 "cbH" = (
@@ -25850,7 +25853,7 @@
 /area/station/service/library)
 "cgY" = (
 /obj/machinery/bookbinder,
-/obj/structure/sign/poster/official/random/north,
+/obj/item/radio/intercom/directional/north,
 /turf/simulated/floor/wood/parquet,
 /area/station/service/library)
 "cgZ" = (
@@ -26718,10 +26721,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/starboard)
-"ckj" = (
-/obj/machinery/newscaster/directional/west,
-/turf/simulated/floor/wood/parquet,
-/area/station/service/library)
 "ckl" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -28838,10 +28837,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/carpet,
 /area/station/service/library)
-"ctO" = (
-/obj/effect/landmark/spawner/nukedisc_respawn,
-/turf/simulated/floor/carpet,
-/area/station/service/library)
 "ctQ" = (
 /obj/machinery/light/directional/east,
 /obj/machinery/alarm/directional/east,
@@ -28867,6 +28862,7 @@
 "ctU" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/multi_tile/glass,
+/obj/effect/mapping_helpers/airlock/autoname,
 /turf/simulated/floor/wood/parquet,
 /area/station/service/library)
 "ctV" = (
@@ -29417,18 +29413,12 @@
 	icon_state = "yellow"
 	},
 /area/station/engineering/hardsuitstorage)
-"cwE" = (
-/obj/structure/chair/comfy/beige,
-/obj/machinery/status_display/directional/west,
-/turf/simulated/floor/carpet,
-/area/station/service/library)
 "cwG" = (
 /obj/item/radio/intercom/directional/north,
 /turf/simulated/floor/carpet,
 /area/station/service/library)
 "cwH" = (
 /obj/item/kirbyplants,
-/obj/machinery/light/directional/north,
 /turf/simulated/floor/carpet,
 /area/station/service/library)
 "cwI" = (
@@ -29466,8 +29456,8 @@
 /turf/simulated/floor/carpet,
 /area/station/service/library)
 "cwN" = (
-/obj/structure/bookcase,
 /obj/machinery/status_display/directional/south,
+/obj/structure/bookcase,
 /turf/simulated/floor/carpet,
 /area/station/service/library)
 "cwQ" = (
@@ -30242,7 +30232,7 @@
 	pixel_x = 5;
 	pixel_y = 7
 	},
-/obj/structure/sign/poster/official/random/west,
+/obj/machinery/status_display/directional/west,
 /turf/simulated/floor/carpet,
 /area/station/service/library)
 "czz" = (
@@ -30574,7 +30564,6 @@
 "cAU" = (
 /obj/item/kirbyplants,
 /obj/machinery/newscaster/directional/south,
-/obj/machinery/light/directional/south,
 /turf/simulated/floor/carpet,
 /area/station/service/library)
 "cAV" = (
@@ -30599,6 +30588,7 @@
 "cAX" = (
 /obj/structure/table/wood,
 /obj/item/newspaper,
+/obj/machinery/light/directional/south,
 /turf/simulated/floor/wood/parquet/tile,
 /area/station/service/library)
 "cAZ" = (
@@ -53446,6 +53436,15 @@
 	icon_state = "darkbluecorners"
 	},
 /area/station/maintenance/starboard2)
+"gOH" = (
+/obj/structure/table/wood,
+/obj/machinery/computer/security/telescreen/entertainment{
+	pixel_x = -32
+	},
+/obj/machinery/computer/library,
+/obj/effect/decal/cleanable/cobweb,
+/turf/simulated/floor/wood/parquet/tile,
+/area/station/service/library)
 "gOP" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
@@ -54137,12 +54136,12 @@
 /area/station/maintenance/library)
 "hbO" = (
 /obj/machinery/door/airlock/maintenance,
-/obj/effect/mapping_helpers/airlock/access/all/engineering/maintenance,
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/effect/mapping_helpers/airlock/access/any/service/library,
 /turf/simulated/floor/plating,
 /area/station/service/library)
 "hci" = (
@@ -68198,6 +68197,7 @@
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 1
 	},
+/obj/effect/mapping_helpers/airlock/autoname,
 /turf/simulated/floor/wood/parquet,
 /area/station/service/library)
 "lQs" = (
@@ -78745,6 +78745,10 @@
 	icon_state = "dark"
 	},
 /area/station/aisat)
+"pEM" = (
+/obj/structure/bookcase/manuals/engineering,
+/turf/simulated/floor/carpet,
+/area/station/service/library)
 "pER" = (
 /obj/structure/table/wood,
 /obj/item/book/manual/barman_recipes,
@@ -78948,6 +78952,10 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/station/hallway/secondary/entry)
+"pHt" = (
+/obj/structure/bookcase/manuals/research_and_development,
+/turf/simulated/floor/carpet,
+/area/station/service/library)
 "pHK" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/bed/roller,
@@ -84744,6 +84752,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+/obj/effect/mapping_helpers/airlock/autoname,
 /turf/simulated/floor/wood/parquet,
 /area/station/service/library)
 "rKg" = (
@@ -85160,6 +85169,10 @@
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/plasteel/dark,
 /area/station/command/bridge)
+"rQN" = (
+/obj/structure/bookcase/manuals/medical,
+/turf/simulated/floor/carpet,
+/area/station/service/library)
 "rQP" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable{
@@ -87386,6 +87399,7 @@
 /area/station/science/break_room)
 "sBI" = (
 /obj/machinery/door/firedoor,
+/obj/effect/mapping_helpers/airlock/autoname,
 /turf/simulated/floor/wood/parquet,
 /area/station/service/library)
 "sBN" = (
@@ -88281,6 +88295,11 @@
 	icon_state = "dark"
 	},
 /area/station/security/execution)
+"sTG" = (
+/obj/structure/chair/comfy/beige,
+/obj/machinery/light/directional/north,
+/turf/simulated/floor/carpet,
+/area/station/service/library)
 "sUk" = (
 /obj/structure/chair/stool,
 /obj/effect/decal/cleanable/dirt,
@@ -89059,6 +89078,11 @@
 /obj/effect/spawner/window/reinforced/grilled,
 /turf/simulated/floor/plating,
 /area/station/medical/virology)
+"tle" = (
+/obj/structure/bookcase/sop,
+/obj/machinery/ai_status_display/south,
+/turf/simulated/floor/carpet,
+/area/station/service/library)
 "tlf" = (
 /obj/effect/decal/warning_stripes/east,
 /obj/item/radio/intercom/directional/east,
@@ -91989,6 +92013,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
+/obj/machinery/light/directional/west,
 /turf/simulated/floor/carpet,
 /area/station/service/library)
 "ujU" = (
@@ -103118,8 +103143,8 @@
 /area/station/security/interrogation/observation)
 "yko" = (
 /obj/item/kirbyplants,
-/obj/item/radio/intercom/directional/north,
 /obj/machinery/light/directional/north,
+/obj/structure/sign/poster/official/random/north,
 /turf/simulated/floor/wood/parquet,
 /area/station/service/library)
 "ykw" = (
@@ -134169,18 +134194,18 @@ bZJ
 cbF
 cdx
 cfq
-nzZ
+afX
 cgX
 ctL
 dtG
 bYj
-rfg
+gOH
 cpH
 bYj
 rfg
 bZO
 bYj
-cwE
+eWo
 cxV
 czy
 bZK
@@ -134437,7 +134462,7 @@ bYj
 mqi
 tys
 bYj
-eWo
+sTG
 cxW
 crn
 cAT
@@ -135203,7 +135228,7 @@ cnl
 sIV
 pIG
 sIV
-ckj
+sIV
 clC
 sIV
 fBm
@@ -135467,7 +135492,7 @@ itw
 nIj
 itw
 nLA
-ctO
+cnl
 cAW
 bYj
 dhG
@@ -136489,9 +136514,9 @@ sIV
 cnk
 cox
 sIV
-cwM
+pEM
 fPt
-cwM
+pEM
 cvo
 cwM
 bYj
@@ -137003,7 +137028,7 @@ sIV
 wUL
 wUL
 bBa
-cwM
+rQN
 cnl
 cwM
 cvq
@@ -137262,9 +137287,9 @@ coy
 oax
 cwM
 cnl
-cwM
+pHt
 cvq
-cwN
+tle
 bYj
 drn
 cHr
@@ -137517,9 +137542,9 @@ sIV
 cnn
 coz
 cpM
-cwM
+rQN
 sFM
-cwM
+pHt
 cvr
 cwM
 bYj
