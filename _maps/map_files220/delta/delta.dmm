@@ -753,6 +753,10 @@
 "afX" = (
 /obj/structure/chair/comfy/brown,
 /obj/structure/sign/poster/official/random/west,
+/obj/machinery/camera{
+	c_tag = "Library Fore";
+	dir = 4
+	},
 /turf/simulated/floor/wood/parquet,
 /area/station/service/library)
 "agd" = (
@@ -7049,13 +7053,6 @@
 /obj/effect/decal/warning_stripes/north,
 /turf/simulated/floor/plasteel,
 /area/station/supply/storage)
-"aJo" = (
-/obj/machinery/camera{
-	c_tag = "Library Fore";
-	dir = 1
-	},
-/turf/simulated/floor/wood/parquet,
-/area/station/service/library)
 "aJs" = (
 /obj/machinery/door_control/shutter/north{
 	id = "engsm";
@@ -29419,6 +29416,7 @@
 /area/station/service/library)
 "cwH" = (
 /obj/item/kirbyplants,
+/obj/machinery/firealarm/directional/north,
 /turf/simulated/floor/carpet,
 /area/station/service/library)
 "cwI" = (
@@ -29447,8 +29445,7 @@
 /area/station/maintenance/fore)
 "cwL" = (
 /obj/structure/dresser,
-/obj/machinery/firealarm/directional/north,
-/obj/machinery/light_switch/east,
+/obj/machinery/light_switch/north,
 /turf/simulated/floor/wood/parquet/tile,
 /area/station/service/library)
 "cwM" = (
@@ -54144,6 +54141,7 @@
 	icon_state = "4-8"
 	},
 /obj/effect/mapping_helpers/airlock/access/any/service/library,
+/obj/effect/mapping_helpers/airlock/access/any/engineering/maintenance,
 /turf/simulated/floor/plating,
 /area/station/service/library)
 "hci" = (
@@ -58223,7 +58221,7 @@
 	pixel_x = 4;
 	pixel_y = 4
 	},
-/obj/structure/extinguisher_cabinet/directional/north,
+/obj/machinery/firealarm/directional/north,
 /turf/simulated/floor/wood/parquet,
 /area/station/service/library)
 "itA" = (
@@ -62427,8 +62425,8 @@
 /area/station/security/permabrig)
 "jPp" = (
 /obj/item/kirbyplants,
-/obj/machinery/firealarm/directional/north,
 /obj/machinery/light/directional/north,
+/obj/structure/extinguisher_cabinet/directional/north,
 /turf/simulated/floor/wood/parquet,
 /area/station/service/library)
 "jPE" = (
@@ -65586,10 +65584,11 @@
 /obj/machinery/door/airlock/maintenance{
 	name = "Library Maintenance"
 	},
-/obj/effect/mapping_helpers/airlock/access/all/engineering/maintenance,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/effect/mapping_helpers/airlock/access/any/service/library,
+/obj/effect/mapping_helpers/airlock/access/any/engineering/maintenance,
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/port)
 "kWz" = (
@@ -79002,7 +79001,7 @@
 "pIG" = (
 /obj/machinery/camera{
 	c_tag = "Library South";
-	dir = 4
+	dir = 5
 	},
 /turf/simulated/floor/wood/parquet,
 /area/station/service/library)
@@ -134713,7 +134712,7 @@ wnG
 cnl
 sQX
 cnl
-aJo
+sIV
 bYj
 gtO
 mWa
