@@ -316,7 +316,7 @@
 					/obj/item/ammo_box/beretta/mmbsp919,
 					/obj/item/ammo_box/magazine/beretta/mmbsp919,
 					/obj/item/ammo_box/magazine/beretta/mmbsp919)
-	cost = 500
+	cost = 650
 	containername = "beretta bluespace ammunition pack"
 
 /datum/supply_packs/security/armory/berettaarmorpiercingammo
@@ -354,9 +354,9 @@
 	name = "Beretta M9 Bluespace Ammo Box (9mm)"
 	desc = "A box of 20 high velocity bluespace rounds for Beretta M9"
 	id = "box_beretta"
-	req_tech = list("combat" = 3, "materials" = 2, "bluespace" = 3)
+	req_tech = list("combat" = 6, "materials" = 5, "bluespace" = 6)
 	build_type = PROTOLATHE
-	materials = list(MAT_METAL = 8000, MAT_SILVER = 600, MAT_BLUESPACE = 5000)
+	materials = list(MAT_METAL = 8000, MAT_SILVER = 600, MAT_BLUESPACE = 1000)
 	build_path = /obj/item/ammo_box/beretta/mmbsp919
 	category = list("Weapons")
 
