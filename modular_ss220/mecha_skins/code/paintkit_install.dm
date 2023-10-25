@@ -29,6 +29,67 @@
 	reset_icon()
 	qdel(P)
 
+/obj/mecha/go_out(forced, atom/newloc = loc)
+	if(!occupant)
+		return
+	var/atom/movable/mob_container
+	occupant.clear_alert("charge")
+	occupant.clear_alert("locked")
+	occupant.clear_alert("mech damage")
+	occupant.clear_alert("mechaport")
+	occupant.clear_alert("mechaport_d")
+	if(ishuman(occupant))
+		mob_container = occupant
+		RemoveActions(occupant, human_occupant = 1)
+	else if(isbrain(occupant))
+		var/mob/living/carbon/brain/brain = occupant
+		RemoveActions(brain)
+		mob_container = brain.container
+	else if(isAI(occupant))
+		var/mob/living/silicon/ai/AI = occupant
+		if(forced)//This should only happen if there are multiple AIs in a round, and at least one is Malf.
+			RemoveActions(occupant)
+			occupant.gib()  //If one Malf decides to steal a mech from another AI (even other Malfs!), they are destroyed, as they have nowhere to go when replaced.
+			occupant = null
+			return
+		else
+			if(!AI.linked_core || QDELETED(AI.linked_core))
+				to_chat(AI, "<span class='userdanger'>Inactive core destroyed. Unable to return.</span>")
+				AI.linked_core = null
+				return
+			to_chat(AI, "<span class='notice'>Returning to core...</span>")
+			AI.controlled_mech = null
+			AI.remote_control = null
+			RemoveActions(occupant, 1)
+			mob_container = AI
+			newloc = get_turf(AI.linked_core)
+			qdel(AI.linked_core)
+	else
+		return
+	var/mob/living/L = occupant
+	occupant = null //we need it null when forceMove calls Exited().
+	if(mob_container.forceMove(newloc))//ejecting mob container
+		log_message("[mob_container] moved out.")
+		L << browse(null, "window=exosuit")
+
+		if(istype(mob_container, /obj/item/mmi))
+			var/obj/item/mmi/mmi = mob_container
+			if(mmi.brainmob)
+				L.forceMove(mmi)
+				L.reset_perspective()
+			mmi.mecha = null
+			mmi.update_icon()
+			if(istype(mmi, /obj/item/mmi/robotic_brain))
+				var/obj/item/mmi/robotic_brain/R = mmi
+				if(R.imprinted_master)
+					to_chat(L, "<span class='notice'>Imprint re-enabled, you are once again bound to [R.imprinted_master]'s commands.</span>")
+		icon_state = reset_icon(icon_state)+"-open"
+		dir = dir_in
+
+	if(L && L.client)
+		L.client.RemoveViewMod("mecha")
+		zoom_mode = FALSE
+
 
 //RIP AND PEPPERONI
 
