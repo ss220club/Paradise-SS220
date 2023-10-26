@@ -284,7 +284,7 @@
 	return ..() | update_flags
 
 /datum/reagent/acid/reaction_mob(mob/living/M, method = REAGENT_TOUCH, volume)
-	if(ishuman(M) && !isgrey(M))
+	if(ishuman(M)) // SS220 EDIT - fuck this shit
 		var/mob/living/carbon/human/H = M
 		if(method == REAGENT_TOUCH)
 			if(volume > 25)
@@ -337,7 +337,7 @@
 	return ..() | update_flags
 
 /datum/reagent/acid/facid/reaction_mob(mob/living/M, method = REAGENT_TOUCH, volume)
-	if(ishuman(M) && !isgrey(M))
+	if(ishuman(M)) // SS220 EDIT - fuck this shit
 		var/mob/living/carbon/human/H = M
 		if(method == REAGENT_TOUCH)
 			if(volume > 9)
