@@ -7,13 +7,14 @@
 /datum/credits/halloween/fill_credits()
 	credits += new /datum/credit/episode_title/halloween()
 	credits += new /datum/credit/streamers()
+	credits += new /datum/credit/donators/halloween()
 	credits += new /datum/credit/crewlist/halloween()
 	credits += new /datum/credit/corpses/halloween()
 	credits += new /datum/credit/staff/halloween()
 	credits += new /datum/credit/disclaimer()
 
 /datum/credits/halloween/setup_credits_for_client(client/client)
-	. = ..()
+	LAZYINITLIST(client.credits)
 
 	var/obj/screen/credit/logo = new /obj/screen/credit/halloween(null, "", client)
 	client.credits += logo
@@ -24,8 +25,6 @@
 			continue
 
 		var/obj/screen/credit/logo/logo = client.credits[1]
-		logo.rollem()
-		logo = client.credits[2]
 		logo.rollem()
 
 /datum/credit/episode_title/halloween
@@ -43,6 +42,37 @@
 	episode_title = pick(titles["halloween"])
 
 	content += "<center><h1>🎃EPISODE [GLOB.round_id]🎃<br><h1>[episode_title]</h1></h1></center>"
+
+/datum/credit/donators/halloween
+
+/datum/credit/donators/halloween/New()
+	var/list/donators = list()
+	var/list/chunk = list()
+
+	var/chunksize = 0
+
+	for(var/client/client in GLOB.clients)
+		if(!client.donator_level)
+			continue
+		if(client.holder)
+			continue
+		if(!length(donators))
+			donators += "<hr>"
+			donators += "<center><h1>Огромная благодарность меценатам:</h1></center>"
+
+		chunk += "Лепрекону - [client.ckey] за [client.donator_level]-ый уровень подписки"
+		chunksize++
+
+		if(chunksize > 2)
+			donators += "<center>[jointext(chunk,"<br>")]</center>"
+			chunk.Cut()
+			chunksize = 0
+
+	if(length(chunk))
+		donators += "<center>[jointext(chunk,"<br>")]</center>"
+
+	content += donators
+
 
 /datum/credit/crewlist/halloween
 
@@ -136,8 +166,8 @@
 /obj/screen/credit/halloween
 	icon = 'modular_ss220/credits/icons/logo.dmi'
 	icon_state = "halloween"
-	screen_loc = "CENTER - 2,CENTER + 0.8"
-	appearance_flags = NO_CLIENT_COLOR | TILE_BOUND
+	screen_loc = "CENTER - 2,CENTER + 1"
+	appearance_flags = NO_CLIENT_COLOR | TILE_BOUND | PIXEL_SCALE
 	alpha = 255
 
 /obj/screen/credit/halloween/Initialize(mapload, credited, client/client)

@@ -89,6 +89,7 @@
 /datum/credits/default/fill_credits()
 	credits += new /datum/credit/episode_title()
 	credits += new /datum/credit/streamers()
+	credits += new /datum/credit/donators()
 	credits += new /datum/credit/crewlist()
 	credits += new /datum/credit/corpses()
 	credits += new /datum/credit/staff()
@@ -203,6 +204,35 @@
 		streamers += "<center>[client.mob.name] a.k.a. ([ckey])<center>"
 
 	return streamers
+
+/datum/credit/donators
+
+/datum/credit/donators/New()
+	var/list/donators = list()
+	var/list/chunk = list()
+
+	var/chunksize = 0
+
+	for(var/client/client in GLOB.clients)
+		if(!client.donator_level)
+			continue
+		if(!length(donators))
+			donators += "<hr>"
+			donators += "<center><h1>Огромная благодарность меценатам:</h1></center>"
+
+		chunk += "[client.ckey] за [client.donator_level]-ый уровень подписки"
+		chunksize++
+
+		if(chunksize > 2)
+			donators += "<center>[jointext(chunk,"<br>")]</center>"
+			chunk.Cut()
+			chunksize = 0
+
+	if(length(chunk))
+		donators += "<center>[jointext(chunk,"<br>")]</center>"
+
+	content += donators
+
 
 /datum/credit/crewlist
 
@@ -387,7 +417,12 @@
 /obj/screen/credit/logo/Initialize(mapload, credited, client/client)
 	. = ..()
 	animate(src, alpha = 220, time = 3 SECONDS)
+	maptext = "<center><h1>Playing music - [SScredits.title_music]</h1></center>"
+	maptext_height = 10 * world.icon_size
+	maptext_x -= 5 * world.icon_size
+	maptext_y += 6 * world.icon_size
 	parent.screen += src
+
 
 /obj/screen/credit/logo/rollem()
 	var/matrix/matrix = matrix(transform)

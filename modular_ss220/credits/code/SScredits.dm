@@ -19,6 +19,8 @@ SUBSYSTEM_DEF(credits)
 	else
 		end_titles = new /datum/credits/default()
 
+	title_music = end_titles.soundtrack
+
 	end_titles.roll_credits_for_clients(clients)
 
 /datum/controller/subsystem/credits/proc/clear_credits(client/client)
