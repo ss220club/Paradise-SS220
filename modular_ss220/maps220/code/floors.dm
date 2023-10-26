@@ -18,7 +18,7 @@
 	baseturf = /turf/simulated/floor/beach/away/water/deep
 
 /turf/simulated/floor/beach/away/water/deep/dense_canpass/CanPass(atom/movable/mover, border_dir)
-	.=..()
+	. = ..()
 	if(isliving(mover) || mover.density)
 		return FALSE
 
