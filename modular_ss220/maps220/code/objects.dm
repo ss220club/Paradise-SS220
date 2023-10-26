@@ -309,7 +309,7 @@
 	desc = "Пустой рекламный щит, на котором есть место для любой рекламы."
 	icon = 'modular_ss220/maps220/icons/billboard.dmi'
 	icon_state = "billboard_blank"
-	plane = ABOVE_GAME_PLANE
+	plane = FLOOR_PLANE
 	max_integrity = 1000
 	bound_width = 96
 	bound_height = 32
