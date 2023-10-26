@@ -5,6 +5,10 @@ on:
   push:
     branches: ['translate']
 
+concurrency:
+  group: translation
+  cancel-in-progress: false
+
 jobs:
   add_translation:
     runs-on: ubuntu-latest
