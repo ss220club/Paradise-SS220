@@ -35,11 +35,17 @@
 	var/list/titles = list()
 
 	titles["halloween"] = file2list("config/credits/titles/halloween_titles.txt")
+	titles["masculine1"] = file2list("config/credits/titles/random_halloween_titles_masculine_2_1.txt")
+	titles["masculine2"] = file2list("config/credits/titles/random_halloween_titles_masculine_2_2.txt")
 
 	for(var/possible_titles in titles)
 		LAZYREMOVEASSOC(titles, possible_titles, "")
 
-	episode_title = pick(titles["halloween"])
+	switch(rand(1,100))
+		if(1 to 10)
+			episode_title += pick(titles["finished"])
+		if(11 to 100)
+			episode_title += "[pick(titles["masculine1"])] [pick(titles["masculine2"])]"
 
 	content += "<center><h1>🎃EPISODE [GLOB.round_id]🎃<br><h1>[episode_title]</h1></h1></center>"
 
