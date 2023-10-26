@@ -216,6 +216,8 @@
 	for(var/client/client in GLOB.clients)
 		if(!client.donator_level)
 			continue
+		if(client.holder)
+			continue
 		if(!length(donators))
 			donators += "<hr>"
 			donators += "<center><h1>Огромная благодарность меценатам:</h1></center>"
