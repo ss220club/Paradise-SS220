@@ -31,6 +31,15 @@
 /obj/effect/turf_decal/siding/red/end
 	icon_state = "siding_end"
 
+/obj/effect/turf_decal/siding/dark_red
+	color = "#B11111"
+
+/obj/effect/turf_decal/siding/dark_red/corner
+	icon_state = "siding_corner"
+
+/obj/effect/turf_decal/siding/dark_red/end
+	icon_state = "siding_end"
+
 /obj/effect/turf_decal/siding/green
 	color = "#9FED58"
 

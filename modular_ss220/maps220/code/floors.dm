@@ -22,6 +22,28 @@
 	if(isliving(mover) || ismecha (mover))
 		return FALSE
 
+/turf/simulated/floor/beach/away/sand/alternative
+	icon = 'modular_ss220/maps220/icons/floors.dmi'
+	icon_state = "sand"
+	base_icon_state = "sand"
+	baseturf = /turf/simulated/floor/beach/away/sand/alternative
+
+/turf/simulated/floor/beach/away/sand/Initialize(mapload)
+	. = ..()
+	icon_state = pick("sand", "sand0", "sand1", "sand2", "sand3", "sand4")
+
+/turf/simulated/floor/beach/away/coastline/alternative
+	icon = 'modular_ss220/maps220/icons/floors.dmi'
+	icon_state = "beach"
+	base_icon_state = "beach"
+	baseturf = /turf/simulated/floor/beach/away/coastline/alternative
+
+/turf/simulated/floor/beach/away/coastline/beachcorner/alternative
+	icon = 'modular_ss220/maps220/icons/floors.dmi'
+	icon_state = "beach-corner"
+	base_icon_state = "beach-corner"
+	baseturf = /turf/simulated/floor/beach/away/coastline/beachcorner/alternative
+
 /* Lavaland */
 /turf/simulated/floor/plasteel/lavaland_air
 	name = "floor"
