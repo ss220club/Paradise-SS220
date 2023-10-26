@@ -26,23 +26,40 @@
 	icon = 'modular_ss220/maps220/icons/floors.dmi'
 	icon_state = "sand"
 	base_icon_state = "sand"
+	water_overlay_image = null
 	baseturf = /turf/simulated/floor/beach/away/sand/alternative
 
 /turf/simulated/floor/beach/away/sand/Initialize(mapload)
 	. = ..()
-	icon_state = pick("sand", "sand0", "sand1", "sand2", "sand3", "sand4")
+	icon_state = pick("sand", "sand1", "sand2", "sand3", "sand4")
 
 /turf/simulated/floor/beach/away/coastline/alternative
 	icon = 'modular_ss220/maps220/icons/floors.dmi'
 	icon_state = "beach"
 	base_icon_state = "beach"
+	water_overlay_image = null
 	baseturf = /turf/simulated/floor/beach/away/coastline/alternative
 
 /turf/simulated/floor/beach/away/coastline/beachcorner/alternative
 	icon = 'modular_ss220/maps220/icons/floors.dmi'
 	icon_state = "beach-corner"
 	base_icon_state = "beach-corner"
+	water_overlay_image = null
 	baseturf = /turf/simulated/floor/beach/away/coastline/beachcorner/alternative
+
+/turf/simulated/floor/beach/away/water/drop_no_oveerlay
+	name = "Water"
+	icon = 'icons/turf/floors/seadrop.dmi'
+	icon_state = "seadrop-0"
+	base_icon_state = "seadrop"
+	water_overlay_image = null
+	smoothing_flags = SMOOTH_BITMASK
+	canSmoothWith = list(SMOOTH_GROUP_BEACH_WATER)
+	baseturf = /turf/simulated/floor/beach/away/water/drop_no_oveerlay
+
+/turf/simulated/floor/beach/away/water/drop_no_oveerlay/dense
+	density = TRUE
+	baseturf = /turf/simulated/floor/beach/away/water/drop_no_oveerlay/dense
 
 /* Lavaland */
 /turf/simulated/floor/plasteel/lavaland_air

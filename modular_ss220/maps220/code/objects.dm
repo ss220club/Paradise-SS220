@@ -309,7 +309,7 @@
 	desc = "Пустой рекламный щит, на котором есть место для любой рекламы."
 	icon = 'modular_ss220/maps220/icons/billboard.dmi'
 	icon_state = "billboard_blank"
-	plane = FLOOR_PLANE
+	layer = ABOVE_ALL_MOB_LAYER
 	max_integrity = 1000
 	bound_width = 96
 	bound_height = 32
@@ -318,7 +318,7 @@
 
 /obj/structure/billboard/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/largetransparency)
+	AddComponent(/datum/component/largetransparency, 0, 1, 2, 0)
 
 /obj/structure/billboard/donk_n_go
 	name = "\improper Билборд Donk-n-Go"
