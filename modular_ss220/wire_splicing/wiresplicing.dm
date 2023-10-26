@@ -91,20 +91,22 @@
 	loc = pick(candidates)
 
 /obj/structure/wire_splicing/examine(mob/user)
-	..()
-	to_chat(user, "It has [messiness] wire[messiness > 1?"s":""] dangling around.")
+	. = ..()
+	. += span_warning("It has [messiness] wire[messiness > 1?"s":""] dangling around.")
 
-/obj/structure/wire_splicing/Crossed(AM as mob|obj)
+/obj/structure/wire_splicing/Crossed(atom/movable/AM, oldloc)
 	. = ..()
 	if(isliving(AM))
-		var/mob/living/L = AM
+		var/mob/living/crosser = AM
+		if(HAS_TRAIT(crosser, TRAIT_FLOORED)) // No exploiting the stunned target
+			return
 		//var/turf/T = get_turf(src)
 		var/chance_to_shock = messiness * 10
 		/*
 		if(locate(/obj/structure/catwalk) in T)
 			chance_to_shock -= 20
 		*/
-		shock(L, chance_to_shock)
+		shock(crosser, chance_to_shock)
 
 /obj/structure/wire_splicing/proc/shock(mob/user, prb, siemens_coeff = 1)
 	if(!in_range(src, user))//To prevent TK and mech users from getting shocked
@@ -121,24 +123,26 @@
 	else
 		return FALSE
 
+/obj/structure/wire_splicing/wirecutter_act(mob/living/user, obj/item/I)
+	if(I.use_tool(src, user, 2 SECONDS, volume = 50))
+		if (shock(user, 50))
+			return
+		. = TRUE
+		user.visible_message("[user] cuts the splicing.", span_notice("You cut the splicing."))
+		investigate_log(" was cut by [key_name(usr)] in [AREACOORD(src)]")
+		qdel(src)
 
 /obj/structure/wire_splicing/attackby(obj/item/I, mob/user, params)
-	if(I.tool_behaviour == TOOL_WIRECUTTER)
-		if(I.use_tool(src, user, 2 SECONDS, volume = 50))
-			if (shock(user, 50))
-				return
-			user.visible_message("[user] cuts the splicing.", span_notice("You cut the splicing."))
-			investigate_log(" was cut by [key_name(usr)] in [AREACOORD(src)]")
-			qdel(src)
-
 	if(istype(I, /obj/item/stack/cable_coil) && user.a_intent == INTENT_HARM)
 		var/obj/item/stack/cable_coil/coil = I
 		if(coil.get_amount() >= 1)
 			reinforce(user, coil)
+		return
+	. = ..()
 
 /obj/structure/wire_splicing/proc/reinforce(mob/user, obj/item/stack/cable_coil/coil)
 	if(messiness >= 10)
-		to_chat(user,span_warning("You can't seem to jam more cable into the splicing!"))
+		to_chat(user, span_warning("You can't seem to jam more cable into the splicing!"))
 		return
 	if(!do_after(user, 2 SECONDS, src))
 		return
