@@ -161,7 +161,7 @@
 	content += staff
 
 	if(length(goodboys))
-		content += "<center><h1>Духи:<br></h1>[english_list(goodboys)]</center><br>"
+		content += "<center><h1>Духи:<br></h1>[english_list(goodboys, and_text = " и ")]</center><br>"
 
 /obj/screen/credit/halloween
 	icon = 'modular_ss220/credits/icons/logo.dmi'
