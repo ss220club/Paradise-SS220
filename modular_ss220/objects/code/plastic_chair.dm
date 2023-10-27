@@ -1,5 +1,5 @@
 /obj/structure/chair/plastic
-	name = "складной пластиковый стул"
+	name = "\improper складной пластиковый стул"
 	desc = "Как бы вы ни ёрзали, все равно будет неудобно."
 	icon = 'modular_ss220/objects/icons/plastic.dmi'
 	icon_state = "plastic_chair"
@@ -27,7 +27,7 @@
 			qdel(src)
 
 /obj/item/chair/plastic
-	name = "складной пластиковый стул"
+	name = "\improper складной пластиковый стул"
 	desc = "Почему-то, всегда можно найти под рингом."
 	icon = 'modular_ss220/objects/icons/plastic.dmi'
 	icon_state = "folded_chair"
@@ -41,7 +41,7 @@
 	origin_type = /obj/structure/chair/plastic
 
 /obj/effect/decal/cleanable/plastic
-	name = "пластиковые осколки"
+	name = "\improper пластиковые осколки"
 	desc = "Куски рваного, сломанного, никчёмного пластика."
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "shards"
