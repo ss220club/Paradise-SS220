@@ -9,7 +9,12 @@
 /obj/item/clothing/head/soft/black,
 /obj/item/clothing/head/soft/black,
 /obj/item/clothing/glasses/sunglasses,
-/turf/simulated/floor/plasteel/dark,
+/obj/item/key,
+/obj/item/key,
+/obj/item/key,
+/turf/simulated/floor/plasteel/dark{
+	icon_state = "dark_herringbone"
+	},
 /area/awaymission/beach)
 "aj" = (
 /obj/item/trash/candy{
@@ -38,6 +43,18 @@
 	},
 /turf/simulated/floor/beach/away/sand/alternative,
 /area/awaymission/beach)
+"aK" = (
+/obj/effect/turf_decal/sand,
+/obj/structure/toilet{
+	pixel_y = 8
+	},
+/obj/structure/sink/directional/west,
+/obj/machinery/light/small/directional/west,
+/obj/machinery/door_control/bolt_control/east{
+	id = "toilet1beach"
+	},
+/turf/simulated/floor/plasteel/white,
+/area/awaymission/beach)
 "aL" = (
 /obj/structure/chair,
 /turf/simulated/floor/beach/away/sand/alternative,
@@ -58,6 +75,10 @@
 	},
 /obj/item/kirbyplants,
 /turf/simulated/floor/wood,
+/area/awaymission/beach)
+"by" = (
+/obj/machinery/economy/vending/boozeomat,
+/turf/simulated/floor/wood/fancy/cherry,
 /area/awaymission/beach)
 "bF" = (
 /turf/simulated/floor/beach/away/coastline/alternative{
@@ -155,6 +176,10 @@
 /obj/structure/table/wood{
 	color = "#ffcc33"
 	},
+/obj/item/desk_bell{
+	pixel_x = 12;
+	pixel_y = 2
+	},
 /turf/simulated/floor/wood/fancy/cherry,
 /area/awaymission/beach)
 "cB" = (
@@ -212,7 +237,9 @@
 /turf/simulated/floor/plating,
 /area/awaymission/beach)
 "cZ" = (
-/turf/simulated/floor/plasteel/dark,
+/turf/simulated/floor/plasteel/dark{
+	icon_state = "dark_herringbone"
+	},
 /area/awaymission/beach)
 "dv" = (
 /obj/machinery/door/airlock/wood{
@@ -241,6 +268,13 @@
 /area/awaymission/beach)
 "dK" = (
 /obj/structure/closet/crate/hydroponics,
+/obj/item/reagent_containers/food/condiment/flour,
+/obj/item/reagent_containers/food/condiment/flour,
+/obj/item/reagent_containers/food/condiment/rice,
+/obj/item/reagent_containers/food/condiment/rice,
+/obj/item/reagent_containers/food/snacks/grown/banana,
+/obj/item/reagent_containers/food/snacks/grown/banana,
+/obj/item/reagent_containers/food/snacks/grown/banana,
 /turf/simulated/floor/beach/away/sand/alternative,
 /area/awaymission/beach)
 "dM" = (
@@ -272,6 +306,14 @@
 	id = "beach_room_12"
 	},
 /turf/simulated/floor/wood,
+/area/awaymission/beach)
+"es" = (
+/obj/structure/fluff/beach_umbrella/syndi,
+/obj/item/reagent_containers/food/drinks/cans/dr_gibb{
+	pixel_x = -6;
+	pixel_y = -6
+	},
+/turf/simulated/floor/beach/away/sand/alternative,
 /area/awaymission/beach)
 "ev" = (
 /obj/machinery/light/directional/south,
@@ -319,6 +361,10 @@
 	water_overlay_image = null
 	},
 /area/awaymission/beach)
+"eE" = (
+/obj/machinery/kitchen_machine/candy_maker,
+/turf/simulated/floor/wood/fancy/cherry,
+/area/awaymission/beach)
 "eG" = (
 /obj/effect/spawner/window/grilled,
 /turf/simulated/floor/plating,
@@ -347,6 +393,28 @@
 	water_overlay_image = null
 	},
 /area/awaymission/beach)
+"fa" = (
+/obj/effect/turf_decal/siding/wood/alternative{
+	dir = 1
+	},
+/turf/simulated/floor/beach/away/water{
+	water_overlay_image = null
+	},
+/area/awaymission/beach)
+"fc" = (
+/obj/structure/table/wood{
+	color = "#ffcc33"
+	},
+/obj/item/reagent_containers/food/condiment/capsaicin{
+	pixel_y = 8;
+	pixel_x = -4
+	},
+/obj/item/reagent_containers/food/condiment/bbqsauce{
+	pixel_x = 8;
+	pixel_y = 4
+	},
+/turf/simulated/floor/wood/fancy/cherry,
+/area/awaymission/beach)
 "fm" = (
 /turf/simulated/floor/wood/fancy/birch,
 /area/awaymission/beach)
@@ -361,6 +429,13 @@
 	},
 /obj/effect/overlay/coconut,
 /turf/simulated/floor/beach/away/sand/alternative,
+/area/awaymission/beach)
+"fD" = (
+/obj/structure/table/wood,
+/obj/item/reagent_containers/glass/beaker/large{
+	pixel_y = 2
+	},
+/turf/simulated/floor/wood/fancy/cherry,
 /area/awaymission/beach)
 "fJ" = (
 /obj/structure/railing{
@@ -401,6 +476,19 @@
 	},
 /turf/simulated/floor/wood,
 /area/awaymission/beach)
+"gh" = (
+/obj/structure/table/wood{
+	color = "#ffcc33"
+	},
+/obj/item/reagent_containers/food/condiment/saltshaker{
+	pixel_y = 8
+	},
+/obj/item/reagent_containers/food/condiment/peppermill{
+	pixel_y = 4;
+	pixel_x = -8
+	},
+/turf/simulated/floor/wood/fancy/cherry,
+/area/awaymission/beach)
 "gi" = (
 /obj/machinery/door/airlock/wood{
 	name = "Room 9";
@@ -417,7 +505,12 @@
 /obj/machinery/shower{
 	pixel_y = 16
 	},
+/obj/item/soap,
 /turf/simulated/floor/wood/parquet,
+/area/awaymission/beach)
+"gt" = (
+/obj/structure/fluff/beach_umbrella,
+/turf/simulated/floor/beach/away/sand/alternative,
 /area/awaymission/beach)
 "gu" = (
 /obj/effect/turf_decal/siding/wood{
@@ -435,7 +528,12 @@
 /area/awaymission/beach)
 "gF" = (
 /obj/machinery/light/directional/north,
+/obj/structure/chair/stool/holostool,
 /turf/simulated/floor/plasteel/freezer,
+/area/awaymission/beach)
+"gM" = (
+/obj/structure/fluff/beach_umbrella/cap,
+/turf/simulated/floor/beach/away/sand/alternative,
 /area/awaymission/beach)
 "gN" = (
 /obj/machinery/door_control/bolt_control/west{
@@ -472,6 +570,9 @@
 	},
 /obj/structure/sink/directional/west,
 /obj/machinery/light/small/directional/west,
+/obj/machinery/door_control/bolt_control/east{
+	id = "toilet2beach"
+	},
 /turf/simulated/floor/plasteel/white,
 /area/awaymission/beach)
 "hu" = (
@@ -485,7 +586,7 @@
 "hG" = (
 /obj/machinery/door/poddoor/shutters{
 	dir = 4;
-	id = "BeachGarage"
+	id_tag = "BeachGarage"
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/beach)
@@ -520,6 +621,12 @@
 	},
 /turf/simulated/floor/wood/fancy/cherry,
 /area/awaymission/beach)
+"hV" = (
+/obj/structure/chair/stool/holostool{
+	dir = 8
+	},
+/turf/simulated/floor/wood/oak,
+/area/awaymission/beach)
 "hW" = (
 /obj/effect/turf_decal/siding/wood/alternative/corner,
 /obj/item/stack/tickets{
@@ -548,6 +655,17 @@
 /area/awaymission/beach)
 "if" = (
 /obj/structure/rack,
+/obj/item/cardboard_cutout{
+	pixel_x = -6;
+	pixel_y = 5
+	},
+/obj/item/cardboard_cutout{
+	pixel_x = 6;
+	pixel_y = 5
+	},
+/obj/item/cardboard_cutout{
+	pixel_y = 13
+	},
 /turf/simulated/floor/beach/away/sand/alternative,
 /area/awaymission/beach)
 "io" = (
@@ -555,6 +673,13 @@
 	name = "Trash Disposal"
 	},
 /turf/simulated/floor/wood/fancy,
+/area/awaymission/beach)
+"iq" = (
+/obj/structure/table/wood,
+/obj/machinery/chem_dispenser/soda/upgraded{
+	dir = 4
+	},
+/turf/simulated/floor/wood/fancy/cherry,
 /area/awaymission/beach)
 "ir" = (
 /obj/effect/turf_decal/siding/wood{
@@ -587,6 +712,12 @@
 "iE" = (
 /obj/structure/closet/secure_closet/personal,
 /turf/simulated/floor/wood/parquet,
+/area/awaymission/beach)
+"iM" = (
+/obj/item/toy/seashell,
+/turf/simulated/floor/beach/away/coastline/alternative{
+	dir = 4
+	},
 /area/awaymission/beach)
 "jd" = (
 /obj/structure/railing{
@@ -678,11 +809,39 @@
 /obj/effect/turf_decal/sand,
 /turf/simulated/floor/beach/away/sand/alternative,
 /area/awaymission/beach)
+"kp" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 10
+	},
+/obj/machinery/economy/vending/cola/red,
+/turf/simulated/floor/wood/fancy/cherry,
+/area/awaymission/beach)
+"kv" = (
+/obj/structure/table/wood,
+/obj/item/book/manual/wiki/chef_recipes,
+/turf/simulated/floor/wood/fancy/cherry,
+/area/awaymission/beach)
 "kx" = (
 /obj/structure/sign/poster/official/fruit_bowl{
 	pixel_y = 32
 	},
 /turf/simulated/floor/carpet,
+/area/awaymission/beach)
+"ky" = (
+/obj/structure/chair/plastic{
+	dir = 4
+	},
+/obj/item/reagent_containers/food/drinks/cans/lemon_lime{
+	pixel_x = 14;
+	pixel_y = -12
+	},
+/turf/simulated/floor/beach/away/sand/alternative,
+/area/awaymission/beach)
+"kz" = (
+/obj/vehicle/atv{
+	dir = 4
+	},
+/turf/simulated/floor/beach/away/sand/alternative,
 /area/awaymission/beach)
 "kS" = (
 /obj/structure/statue/sandstone/venus{
@@ -704,6 +863,13 @@
 /area/awaymission/beach)
 "kZ" = (
 /obj/structure/bonfire,
+/turf/simulated/floor/beach/away/sand/alternative,
+/area/awaymission/beach)
+"ll" = (
+/obj/structure/flora/tree/palm{
+	pixel_x = 0;
+	pixel_y = 24
+	},
 /turf/simulated/floor/beach/away/sand/alternative,
 /area/awaymission/beach)
 "lv" = (
@@ -754,6 +920,10 @@
 	icon_state = "dark_diagonal"
 	},
 /area/awaymission/beach)
+"lP" = (
+/obj/machinery/cooker/deepfryer,
+/turf/simulated/floor/wood/fancy/cherry,
+/area/awaymission/beach)
 "lS" = (
 /obj/machinery/recharge_station,
 /turf/simulated/floor/wood/fancy,
@@ -768,7 +938,9 @@
 	pixel_y = 4
 	},
 /obj/item/storage/toolbox/emergency,
-/turf/simulated/floor/plasteel/dark,
+/turf/simulated/floor/plasteel/dark{
+	icon_state = "dark_herringbone"
+	},
 /area/awaymission/beach)
 "ms" = (
 /obj/structure/table,
@@ -788,6 +960,7 @@
 	desc = "What looks like an ordinary paper hat is actually a rare and valuable collector's edition paper hat. Keep away from fire, Curators, and ocean waves.";
 	pixel_y = -4
 	},
+/obj/structure/chair/plastic,
 /turf/simulated/floor/beach/away/sand/alternative,
 /area/awaymission/beach)
 "mP" = (
@@ -852,6 +1025,13 @@
 	icon_state = "textured_dark_large"
 	},
 /area/awaymission/beach)
+"nk" = (
+/obj/item/reagent_containers/glass/bucket/wooden{
+	pixel_y = -2;
+	pixel_x = -12
+	},
+/turf/simulated/floor/beach/away/sand/alternative,
+/area/awaymission/beach)
 "nw" = (
 /obj/effect/turf_decal/siding/wood,
 /turf/simulated/floor/beach/away/water{
@@ -886,7 +1066,7 @@
 	},
 /area/awaymission/beach)
 "oi" = (
-/obj/structure/table/reinforced/brass,
+/obj/structure/table/wood/fancy,
 /obj/machinery/light/directional/west,
 /obj/item/clothing/under/misc/bluehawaiianshirt{
 	pixel_x = 6;
@@ -967,6 +1147,16 @@
 	icon_state = "white_large"
 	},
 /area/awaymission/beach)
+"pm" = (
+/obj/structure/chair/plastic{
+	dir = 8
+	},
+/obj/item/reagent_containers/food/drinks/cans/thirteenloko{
+	pixel_x = -18;
+	pixel_y = 8
+	},
+/turf/simulated/floor/beach/away/sand/alternative,
+/area/awaymission/beach)
 "pn" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 8
@@ -992,6 +1182,14 @@
 	},
 /turf/simulated/floor/wood,
 /area/awaymission/beach)
+"pH" = (
+/obj/machinery/icemachine{
+	dir = 4;
+	pixel_x = -1;
+	pixel_y = -3
+	},
+/turf/simulated/floor/beach/away/sand/alternative,
+/area/awaymission/beach)
 "pW" = (
 /obj/machinery/door/airlock/security/glass{
 	name = "Temporary Holding Cell"
@@ -1008,14 +1206,63 @@
 /mob/living/simple_animal/crab/sea,
 /turf/simulated/floor/beach/away/sand/alternative,
 /area/awaymission/beach)
+"qf" = (
+/obj/machinery/kitchen_machine/microwave{
+	pixel_y = 6
+	},
+/obj/structure/table/wood{
+	color = "#ffcc33"
+	},
+/turf/simulated/floor/wood/fancy/cherry,
+/area/awaymission/beach)
+"qh" = (
+/obj/structure/fluff/beach_umbrella/science,
+/obj/item/reagent_containers/food/drinks/cans/cola{
+	pixel_x = -10;
+	pixel_y = -6
+	},
+/obj/item/reagent_containers/food/drinks/cans/space_up{
+	pixel_x = 12
+	},
+/turf/simulated/floor/beach/away/sand/alternative,
+/area/awaymission/beach)
+"qk" = (
+/obj/structure/table/wood,
+/obj/item/lighter/random{
+	pixel_y = 4
+	},
+/turf/simulated/floor/wood/fancy/cherry,
+/area/awaymission/beach)
+"qn" = (
+/obj/effect/turf_decal/siding/wood/alternative/corner{
+	dir = 4
+	},
+/turf/simulated/floor/beach/away/water{
+	water_overlay_image = null
+	},
+/area/awaymission/beach)
 "qp" = (
 /turf/simulated/floor/carpet/blue,
 /area/awaymission/beach)
+"qs" = (
+/obj/structure/table/wood{
+	color = "#ffcc33"
+	},
+/obj/item/reagent_containers/food/drinks/drinkingglass/shotglass{
+	pixel_x = -8;
+	pixel_y = 8
+	},
+/obj/item/book/manual/barman_recipes{
+	pixel_x = 12;
+	pixel_y = 2
+	},
+/turf/simulated/floor/wood/fancy/cherry,
+/area/awaymission/beach)
 "qx" = (
-/obj/structure/table/reinforced/brass,
+/obj/structure/table/wood,
 /obj/item/camera{
-	pixel_y = 12;
-	pixel_x = -10
+	pixel_y = 6;
+	pixel_x = -15
 	},
 /obj/item/camera{
 	pixel_y = 4;
@@ -1032,7 +1279,12 @@
 /turf/simulated/floor/wood/fancy,
 /area/awaymission/beach)
 "qB" = (
-/obj/structure/table/reinforced/brass,
+/obj/effect/turf_decal/siding/blue{
+	dir = 8
+	},
+/obj/structure/chair/plastic{
+	dir = 8
+	},
 /turf/simulated/floor/beach/away/sand/alternative,
 /area/awaymission/beach)
 "qD" = (
@@ -1047,6 +1299,11 @@
 /area/awaymission/beach)
 "qH" = (
 /obj/structure/table/wood,
+/obj/item/kitchen/knife{
+	pixel_x = -12;
+	pixel_y = 4
+	},
+/obj/item/clothing/head/chefhat,
 /turf/simulated/floor/wood/fancy/cherry,
 /area/awaymission/beach)
 "qJ" = (
@@ -1078,10 +1335,29 @@
 /obj/machinery/space_heater,
 /turf/simulated/floor/wood,
 /area/awaymission/beach)
+"rC" = (
+/obj/structure/fluff/beach_umbrella/syndi,
+/obj/item/reagent_containers/food/drinks/cans/cola{
+	pixel_x = -10;
+	pixel_y = -6
+	},
+/obj/item/reagent_containers/food/drinks/cans/dr_gibb{
+	pixel_x = 12
+	},
+/turf/simulated/floor/beach/away/sand/alternative,
+/area/awaymission/beach)
 "rE" = (
 /obj/effect/turf_decal/sand,
 /obj/effect/turf_decal/siding/wood/alternative{
 	dir = 9
+	},
+/turf/simulated/floor/beach/away/sand/alternative,
+/area/awaymission/beach)
+"rI" = (
+/obj/structure/fluff/beach_umbrella/science,
+/obj/item/reagent_containers/food/drinks/cans/starkist{
+	pixel_x = 11;
+	pixel_y = -2
 	},
 /turf/simulated/floor/beach/away/sand/alternative,
 /area/awaymission/beach)
@@ -1100,6 +1376,14 @@
 /obj/item/storage/box/drinkingglasses{
 	pixel_y = 18;
 	pixel_x = -5
+	},
+/obj/item/reagent_containers/food/drinks/shaker{
+	pixel_x = -6;
+	pixel_y = 2
+	},
+/obj/item/clothing/head/collectable/tophat{
+	pixel_x = 6;
+	pixel_y = 2
 	},
 /turf/simulated/floor/wood/fancy/cherry,
 /area/awaymission/beach)
@@ -1124,12 +1408,19 @@
 	},
 /turf/simulated/floor/beach/away/sand/alternative,
 /area/awaymission/beach)
+"sJ" = (
+/obj/effect/turf_decal/siding/wood/alternative,
+/turf/simulated/floor/beach/away/sand/alternative,
+/area/awaymission/beach)
 "sP" = (
-/obj/effect/turf_decal/siding/wood{
+/obj/effect/turf_decal/siding/wood/alternative{
 	dir = 1
 	},
 /obj/structure/railing{
 	dir = 1
+	},
+/obj/structure/railing/corner{
+	dir = 8
 	},
 /turf/simulated/floor/wood/parquet,
 /area/awaymission/beach)
@@ -1150,7 +1441,7 @@
 /turf/simulated/floor/wood,
 /area/awaymission/beach)
 "tF" = (
-/obj/effect/turf_decal/siding/wood{
+/obj/effect/turf_decal/siding/wood/alternative{
 	dir = 8
 	},
 /obj/structure/railing/cap{
@@ -1159,6 +1450,18 @@
 /turf/simulated/floor/beach/away/water{
 	water_overlay_image = null
 	},
+/area/awaymission/beach)
+"tH" = (
+/obj/effect/turf_decal/siding/wood/alternative{
+	dir = 1
+	},
+/obj/structure/reagent_dispensers/fueltank,
+/turf/simulated/floor/wood/parquet,
+/area/awaymission/beach)
+"uc" = (
+/obj/structure/table/wood,
+/obj/item/deck/unum,
+/turf/simulated/floor/wood,
 /area/awaymission/beach)
 "ud" = (
 /obj/effect/turf_decal/siding/wood/corner,
@@ -1182,12 +1485,24 @@
 /obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/plating,
 /area/awaymission/beach)
+"uD" = (
+/obj/effect/turf_decal/siding/wood/alternative/corner,
+/turf/simulated/floor/beach/away/sand/alternative,
+/area/awaymission/beach)
 "uJ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/smartfridge/foodcart{
 	dir = 8
 	},
 /turf/simulated/floor/plating,
+/area/awaymission/beach)
+"va" = (
+/obj/structure/chair/plastic,
+/obj/item/reagent_containers/food/drinks/cans/lemon_lime{
+	pixel_y = -6;
+	pixel_x = 16
+	},
+/turf/simulated/floor/beach/away/sand/alternative,
 /area/awaymission/beach)
 "vq" = (
 /obj/structure/flora/tree/palm{
@@ -1347,6 +1662,12 @@
 	},
 /turf/simulated/floor/wood,
 /area/awaymission/beach)
+"xf" = (
+/obj/structure/chair/plastic{
+	dir = 4
+	},
+/turf/simulated/floor/beach/away/sand/alternative,
+/area/awaymission/beach)
 "xg" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 9
@@ -1354,6 +1675,10 @@
 /turf/simulated/floor/beach/away/water{
 	water_overlay_image = null
 	},
+/area/awaymission/beach)
+"xG" = (
+/obj/structure/chair/plastic,
+/turf/simulated/floor/beach/away/sand/alternative,
 /area/awaymission/beach)
 "xJ" = (
 /obj/effect/turf_decal/siding/wood{
@@ -1416,6 +1741,18 @@
 /obj/machinery/light/directional/west,
 /turf/simulated/floor/wood/fancy,
 /area/awaymission/beach)
+"yF" = (
+/obj/structure/table/wood,
+/obj/item/reagent_containers/food/snacks/grown/watermelon{
+	pixel_y = 8;
+	pixel_x = 5
+	},
+/obj/item/reagent_containers/food/snacks/grown/watermelon{
+	pixel_y = 3;
+	pixel_x = -3
+	},
+/turf/simulated/floor/beach/away/sand/alternative,
+/area/awaymission/beach)
 "yI" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 8
@@ -1467,7 +1804,9 @@
 /obj/machinery/door/airlock/wood{
 	name = "Garage"
 	},
-/turf/simulated/floor/plasteel/dark,
+/turf/simulated/floor/plasteel/dark{
+	icon_state = "dark_herringbone"
+	},
 /area/awaymission/beach)
 "zo" = (
 /obj/effect/turf_decal/siding/wood{
@@ -1483,9 +1822,45 @@
 	},
 /turf/simulated/floor/beach/away/sand/alternative,
 /area/awaymission/beach)
+"zF" = (
+/obj/structure/table/wood,
+/obj/item/clothing/suit/chef/classic{
+	pixel_y = 4
+	},
+/turf/simulated/floor/wood/fancy/cherry,
+/area/awaymission/beach)
+"zU" = (
+/obj/structure/flora/tree/palm{
+	pixel_x = 0;
+	pixel_y = 24
+	},
+/obj/structure/chair/plastic{
+	dir = 4
+	},
+/turf/simulated/floor/beach/away/sand/alternative,
+/area/awaymission/beach)
+"Ae" = (
+/obj/item/storage/toolbox/fluff{
+	color = "cyan";
+	pixel_x = 8
+	},
+/turf/simulated/floor/beach/away/sand/alternative,
+/area/awaymission/beach)
+"Am" = (
+/obj/item/toy/seashell,
+/turf/simulated/floor/beach/away/sand/alternative,
+/area/awaymission/beach)
 "An" = (
 /obj/effect/turf_decal/siding/wood/corner,
 /turf/simulated/floor/beach/away/sand/alternative,
+/area/awaymission/beach)
+"As" = (
+/obj/vehicle/atv{
+	dir = 4
+	},
+/turf/simulated/floor/plasteel/dark{
+	icon_state = "dark_herringbone"
+	},
 /area/awaymission/beach)
 "Au" = (
 /obj/structure/chair/stool/bamboo{
@@ -1498,6 +1873,14 @@
 /obj/structure/table/wood,
 /turf/simulated/floor/wood,
 /area/awaymission/beach)
+"AD" = (
+/obj/structure/fluff/beach_umbrella/syndi,
+/obj/item/reagent_containers/food/drinks/cans/cola{
+	pixel_x = -6;
+	pixel_y = -6
+	},
+/turf/simulated/floor/beach/away/sand/alternative,
+/area/awaymission/beach)
 "AG" = (
 /obj/effect/turf_decal/siding/wood/corner{
 	dir = 8
@@ -1508,7 +1891,9 @@
 /area/awaymission/beach)
 "AK" = (
 /obj/machinery/light/small/directional/north,
-/turf/simulated/floor/plasteel/dark,
+/turf/simulated/floor/plasteel/dark{
+	icon_state = "dark_herringbone"
+	},
 /area/awaymission/beach)
 "AO" = (
 /obj/effect/decal/cleanable/dirt,
@@ -1539,6 +1924,11 @@
 /obj/structure/railing/cap{
 	dir = 4
 	},
+/obj/item/toy/windup_toolbox{
+	pixel_x = -4;
+	pixel_y = -8
+	},
+/obj/structure/railing/corner,
 /turf/simulated/floor/wood/parquet,
 /area/awaymission/beach)
 "Ba" = (
@@ -1564,12 +1954,21 @@
 	water_overlay_image = null
 	},
 /area/awaymission/beach)
+"Bt" = (
+/obj/effect/turf_decal/siding/wood/alternative/corner{
+	dir = 8
+	},
+/turf/simulated/floor/beach/away/sand/alternative,
+/area/awaymission/beach)
 "Bv" = (
 /obj/item/cigbutt{
 	pixel_y = -6;
 	pixel_x = -12
 	},
 /obj/item/clothing/head/soft/black,
+/obj/structure/railing/corner{
+	dir = 1
+	},
 /turf/simulated/floor/wood/parquet,
 /area/awaymission/beach)
 "Bw" = (
@@ -1639,6 +2038,11 @@
 	icon_state = "plastic"
 	},
 /area/awaymission/beach)
+"Cd" = (
+/obj/effect/turf_decal/sand,
+/mob/living/simple_animal/crab,
+/turf/simulated/floor/beach/away/sand/alternative,
+/area/awaymission/beach)
 "Cf" = (
 /obj/effect/baseturf_helper/beach/sand,
 /turf/simulated/floor/beach/away/sand/alternative,
@@ -1667,7 +2071,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/beach)
 "Cz" = (
-/obj/structure/table/reinforced/brass,
+/obj/structure/table/wood/fancy,
 /obj/item/clothing/under/misc/redhawaiianshirt{
 	pixel_y = 3;
 	pixel_x = -6
@@ -1698,9 +2102,24 @@
 /obj/structure/sign/poster/contraband/random/west,
 /turf/simulated/floor/carpet/arcade,
 /area/awaymission/beach)
+"Dg" = (
+/obj/structure/chair/plastic,
+/obj/item/reagent_containers/food/drinks/cans/starkist{
+	pixel_x = 20;
+	pixel_y = -8
+	},
+/turf/simulated/floor/beach/away/sand/alternative,
+/area/awaymission/beach)
 "Dl" = (
 /obj/machinery/economy/vending/coffee,
 /turf/simulated/floor/wood/fancy,
+/area/awaymission/beach)
+"Do" = (
+/obj/item/storage/toolbox/fluff{
+	color = "cyan";
+	pixel_y = -8
+	},
+/turf/simulated/floor/beach/away/sand/alternative,
 /area/awaymission/beach)
 "Du" = (
 /obj/item/cigbutt{
@@ -1755,6 +2174,14 @@
 	icon_state = "dark_diagonal"
 	},
 /area/awaymission/beach)
+"Ek" = (
+/obj/structure/table/wood,
+/obj/item/reagent_containers/food/condiment/enzyme{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/turf/simulated/floor/wood/fancy/cherry,
+/area/awaymission/beach)
 "Em" = (
 /obj/machinery/light/directional/south,
 /obj/structure/janitorialcart{
@@ -1769,6 +2196,14 @@
 "Ez" = (
 /obj/effect/turf_decal/siding/blue/corner{
 	dir = 8
+	},
+/turf/simulated/floor/beach/away/sand/alternative,
+/area/awaymission/beach)
+"EG" = (
+/obj/effect/turf_decal/sand/plating,
+/obj/item/reagent_containers/glass/bucket/wooden{
+	pixel_y = 8;
+	pixel_x = -6
 	},
 /turf/simulated/floor/beach/away/sand/alternative,
 /area/awaymission/beach)
@@ -1802,8 +2237,12 @@
 /obj/item/kirbyplants,
 /turf/simulated/floor/wood,
 /area/awaymission/beach)
+"EX" = (
+/obj/structure/fluff/beach_umbrella/engine,
+/turf/simulated/floor/beach/away/sand/alternative,
+/area/awaymission/beach)
 "EY" = (
-/obj/structure/table/reinforced/brass,
+/obj/structure/table/wood,
 /obj/item/camera{
 	pixel_y = 8;
 	pixel_x = -3
@@ -1841,8 +2280,20 @@
 /obj/effect/turf_decal/siding/wood,
 /turf/simulated/floor/beach/away/sand/alternative,
 /area/awaymission/beach)
+"FK" = (
+/obj/machinery/economy/vending/autodrobe,
+/turf/simulated/floor/beach/away/sand/alternative,
+/area/awaymission/beach)
+"FQ" = (
+/obj/structure/chair/plastic,
+/obj/item/paicard{
+	pixel_y = 4;
+	pixel_x = -1
+	},
+/turf/simulated/floor/beach/away/sand/alternative,
+/area/awaymission/beach)
 "FX" = (
-/obj/effect/turf_decal/siding/wood,
+/obj/effect/turf_decal/siding/wood/alternative,
 /obj/structure/table,
 /obj/item/storage/toolbox/mechanical{
 	pixel_y = 12;
@@ -1860,6 +2311,14 @@
 /area/awaymission/beach)
 "FZ" = (
 /turf/simulated/floor/carpet,
+/area/awaymission/beach)
+"Ge" = (
+/obj/structure/chair/plastic,
+/obj/item/reagent_containers/food/drinks/cans/dr_gibb{
+	pixel_x = -16;
+	pixel_y = -6
+	},
+/turf/simulated/floor/beach/away/sand/alternative,
 /area/awaymission/beach)
 "Gf" = (
 /obj/machinery/computer/arcade{
@@ -1974,7 +2433,7 @@
 /turf/simulated/floor/wood,
 /area/awaymission/beach)
 "He" = (
-/obj/structure/table/reinforced/brass,
+/obj/structure/table/wood,
 /obj/item/camera{
 	pixel_y = 12;
 	pixel_x = 6
@@ -1984,6 +2443,14 @@
 	pixel_x = -2
 	},
 /turf/simulated/floor/beach/away/sand/alternative,
+/area/awaymission/beach)
+"Hg" = (
+/obj/machinery/door_control/normal/south{
+	id = "BeachGarage"
+	},
+/turf/simulated/floor/plasteel/dark{
+	icon_state = "dark_herringbone"
+	},
 /area/awaymission/beach)
 "Hm" = (
 /obj/effect/decal/cleanable/dirt,
@@ -2020,6 +2487,20 @@
 	},
 /turf/simulated/floor/beach/away/sand/alternative,
 /area/awaymission/beach)
+"HE" = (
+/obj/effect/turf_decal/siding/wood/alternative{
+	dir = 6
+	},
+/obj/machinery/shower{
+	pixel_y = 16
+	},
+/obj/item/soap/homemade,
+/turf/simulated/floor/wood/parquet,
+/area/awaymission/beach)
+"HF" = (
+/obj/item/toy/seashell,
+/turf/simulated/floor/beach/away/coastline/alternative,
+/area/awaymission/beach)
 "HP" = (
 /obj/effect/turf_decal/siding/wood/corner{
 	dir = 1
@@ -2030,6 +2511,16 @@
 /obj/machinery/economy/vending/dinnerware,
 /turf/simulated/floor/wood/fancy/cherry,
 /area/awaymission/beach)
+"HT" = (
+/obj/structure/chair/plastic{
+	dir = 4
+	},
+/obj/item/reagent_containers/food/drinks/cans/beer{
+	pixel_x = 16;
+	pixel_y = -16
+	},
+/turf/simulated/floor/beach/away/sand/alternative,
+/area/awaymission/beach)
 "HZ" = (
 /obj/machinery/door/airlock/wood{
 	name = "Room 5";
@@ -2037,6 +2528,13 @@
 	},
 /obj/effect/turf_decal/siding/wood,
 /turf/simulated/floor/wood,
+/area/awaymission/beach)
+"Ia" = (
+/obj/structure/table/wood,
+/obj/machinery/chem_dispenser/beer/upgraded{
+	dir = 4
+	},
+/turf/simulated/floor/wood/fancy/cherry,
 /area/awaymission/beach)
 "Ih" = (
 /turf/simulated/floor/carpet/cyan,
@@ -2086,6 +2584,9 @@
 	pixel_x = -13
 	},
 /obj/machinery/light/small/directional/west,
+/obj/machinery/door_control/bolt_control/east{
+	id = "toilet3beach"
+	},
 /turf/simulated/floor/plasteel/white,
 /area/awaymission/beach)
 "II" = (
@@ -2146,6 +2647,10 @@
 "JC" = (
 /obj/item/storage/bag/tray,
 /obj/effect/turf_decal/stripes/red/box,
+/obj/item/reagent_containers/food/snacks/grown/watermelon{
+	pixel_y = 2;
+	pixel_x = 1
+	},
 /turf/simulated/floor/beach/away/sand/alternative,
 /area/awaymission/beach)
 "JJ" = (
@@ -2180,7 +2685,7 @@
 /turf/simulated/floor/beach/away/coastline/alternative,
 /area/awaymission/beach)
 "JX" = (
-/obj/structure/table/reinforced/brass,
+/obj/structure/table/wood/fancy,
 /obj/item/clothing/under/misc/orangehawaiianshirt{
 	pixel_y = 3;
 	pixel_x = -6
@@ -2236,6 +2741,10 @@
 "KE" = (
 /obj/structure/table,
 /obj/item/storage/belt/utility,
+/obj/item/reagent_containers/food/drinks/drinkingglass/shotglass{
+	pixel_y = 16;
+	pixel_x = -7
+	},
 /turf/simulated/floor/wood/parquet,
 /area/awaymission/beach)
 "KG" = (
@@ -2283,7 +2792,7 @@
 	dir = 1
 	},
 /obj/machinery/door/poddoor/shutters{
-	id = "BeachBoats"
+	id_tag = "BeachBoats"
 	},
 /turf/simulated/floor/beach/away/water{
 	water_overlay_image = null
@@ -2293,6 +2802,12 @@
 /obj/effect/turf_decal/siding/wood/corner,
 /turf/simulated/floor/wood/fancy,
 /area/awaymission/beach)
+"Lv" = (
+/obj/structure/chair/plastic{
+	dir = 8
+	},
+/turf/simulated/floor/beach/away/sand/alternative,
+/area/awaymission/beach)
 "LD" = (
 /obj/effect/turf_decal/stripes/red/box,
 /turf/simulated/floor/beach/away/sand/alternative,
@@ -2301,6 +2816,16 @@
 /obj/effect/turf_decal/sand,
 /obj/effect/turf_decal/siding/wood{
 	dir = 1
+	},
+/turf/simulated/floor/beach/away/sand/alternative,
+/area/awaymission/beach)
+"LI" = (
+/obj/structure/chair/plastic{
+	dir = 8
+	},
+/obj/item/reagent_containers/food/drinks/cans/space_up{
+	pixel_y = 12;
+	pixel_x = -8
 	},
 /turf/simulated/floor/beach/away/sand/alternative,
 /area/awaymission/beach)
@@ -2326,6 +2851,10 @@
 	pixel_y = 7
 	},
 /turf/simulated/floor/beach/away/sand/alternative,
+/area/awaymission/beach)
+"LQ" = (
+/obj/structure/closet/crate/secure/bin,
+/turf/simulated/floor/wood/fancy/cherry,
 /area/awaymission/beach)
 "LY" = (
 /obj/structure/table/glass,
@@ -2356,7 +2885,7 @@
 /turf/simulated/floor/wood,
 /area/awaymission/beach)
 "Mg" = (
-/obj/effect/turf_decal/siding/wood{
+/obj/effect/turf_decal/siding/wood/alternative{
 	dir = 8
 	},
 /obj/structure/railing{
@@ -2373,6 +2902,10 @@
 	},
 /obj/machinery/hydroponics/constructable,
 /turf/simulated/floor/beach/away/sand/alternative,
+/area/awaymission/beach)
+"Mt" = (
+/obj/machinery/kitchen_machine/oven,
+/turf/simulated/floor/wood/fancy/cherry,
 /area/awaymission/beach)
 "Mu" = (
 /obj/structure/chair/office/dark{
@@ -2410,7 +2943,23 @@
 	pixel_y = 3;
 	pixel_x = 6
 	},
+/obj/item/clothing/glasses/sunglasses/blindfold{
+	pixel_y = 5;
+	pixel_x = -2
+	},
 /turf/simulated/floor/beach/away/sand/alternative,
+/area/awaymission/beach)
+"MT" = (
+/obj/effect/turf_decal/sand,
+/obj/structure/toilet{
+	pixel_y = 8
+	},
+/obj/structure/sink/directional/west,
+/obj/machinery/light/small/directional/west,
+/obj/machinery/door_control/bolt_control/east{
+	id = "toiletfarbeach"
+	},
+/turf/simulated/floor/plasteel/white,
 /area/awaymission/beach)
 "MW" = (
 /turf/simulated/floor/beach/away/water{
@@ -2451,6 +3000,10 @@
 /obj/item/extinguisher,
 /turf/simulated/floor/wood/fancy,
 /area/awaymission/beach)
+"NM" = (
+/obj/structure/sink/kitchen/north,
+/turf/simulated/floor/wood/fancy/cherry,
+/area/awaymission/beach)
 "NS" = (
 /obj/item/storage/box/syringes{
 	pixel_y = 10;
@@ -2474,6 +3027,14 @@
 /obj/effect/spawner/window/reinforced/grilled,
 /turf/simulated/floor/plating,
 /area/awaymission/beach)
+"Of" = (
+/obj/effect/turf_decal/siding/wood/alternative{
+	dir = 4
+	},
+/turf/simulated/floor/beach/away/water{
+	water_overlay_image = null
+	},
+/area/awaymission/beach)
 "Ol" = (
 /obj/structure/table/wood/poker,
 /obj/item/storage/pill_bottle/dice{
@@ -2482,11 +3043,34 @@
 	},
 /turf/simulated/floor/wood/fancy,
 /area/awaymission/beach)
+"On" = (
+/obj/structure/chair/plastic,
+/obj/item/reagent_containers/food/drinks/cans/cola{
+	pixel_x = 18;
+	pixel_y = -3
+	},
+/turf/simulated/floor/beach/away/sand/alternative,
+/area/awaymission/beach)
 "Op" = (
 /obj/effect/turf_decal/siding/wood/corner{
 	dir = 4
 	},
 /turf/simulated/floor/wood/fancy,
+/area/awaymission/beach)
+"OA" = (
+/obj/structure/table/wood{
+	color = "#ffcc33"
+	},
+/obj/machinery/light/directional/east,
+/obj/item/reagent_containers/food/condiment/ketchup{
+	pixel_y = 8;
+	pixel_x = -2
+	},
+/obj/item/reagent_containers/food/condiment/mayonnaise{
+	pixel_x = 6;
+	pixel_y = 6
+	},
+/turf/simulated/floor/wood/fancy/cherry,
 /area/awaymission/beach)
 "OK" = (
 /obj/structure/table/wood,
@@ -2529,6 +3113,19 @@
 "Pr" = (
 /obj/effect/turf_decal/siding/dark_red{
 	dir = 8
+	},
+/turf/simulated/floor/beach/away/sand/alternative,
+/area/awaymission/beach)
+"PE" = (
+/obj/structure/chair/plastic{
+	dir = 1
+	},
+/turf/simulated/floor/beach/away/sand/alternative,
+/area/awaymission/beach)
+"PV" = (
+/obj/item/reagent_containers/food/drinks/cans/tonic{
+	pixel_x = -12;
+	pixel_y = 2
 	},
 /turf/simulated/floor/beach/away/sand/alternative,
 /area/awaymission/beach)
@@ -2577,8 +3174,14 @@
 	},
 /turf/simulated/floor/beach/away/sand/alternative,
 /area/awaymission/beach)
+"QJ" = (
+/obj/item/reagent_containers/food/drinks/cans/starkist{
+	pixel_x = -6
+	},
+/turf/simulated/floor/beach/away/sand/alternative,
+/area/awaymission/beach)
 "QK" = (
-/obj/structure/table/reinforced/brass,
+/obj/structure/table/wood/fancy,
 /obj/item/clothing/under/misc/pinkhawaiianshirt{
 	pixel_y = 3;
 	pixel_x = -6
@@ -2601,6 +3204,10 @@
 /obj/item/pen{
 	pixel_x = 7;
 	pixel_y = 6
+	},
+/obj/item/clothing/head/welding{
+	pixel_x = -5;
+	pixel_y = 2
 	},
 /turf/simulated/floor/wood/parquet,
 /area/awaymission/beach)
@@ -2677,6 +3284,15 @@
 	icon_state = "dark_diagonal"
 	},
 /area/awaymission/beach)
+"Sa" = (
+/obj/effect/turf_decal/siding/blue{
+	dir = 4
+	},
+/obj/structure/chair/plastic{
+	dir = 4
+	},
+/turf/simulated/floor/beach/away/sand/alternative,
+/area/awaymission/beach)
 "Sg" = (
 /obj/structure/table/glass,
 /obj/item/cigbutt{
@@ -2706,6 +3322,13 @@
 	},
 /turf/simulated/floor/wood/fancy,
 /area/awaymission/beach)
+"Ss" = (
+/obj/item/reagent_containers/food/drinks/cans/cola{
+	pixel_y = 16;
+	pixel_x = -8
+	},
+/turf/simulated/floor/carpet/blue,
+/area/awaymission/beach)
 "SE" = (
 /turf/simulated/floor/beach/away/coastline/beachcorner/alternative,
 /area/awaymission/beach)
@@ -2718,11 +3341,27 @@
 	icon_state = "dark_diagonal"
 	},
 /area/awaymission/beach)
+"SS" = (
+/obj/structure/fluff/beach_umbrella/syndi,
+/obj/item/reagent_containers/food/drinks/cans/space_up{
+	pixel_x = 11;
+	pixel_y = -2
+	},
+/turf/simulated/floor/beach/away/sand/alternative,
+/area/awaymission/beach)
 "SX" = (
 /obj/structure/table/wood{
 	color = "#ffcc33"
 	},
 /obj/machinery/light/directional/east,
+/obj/item/reagent_containers/glass/rag{
+	pixel_y = 4;
+	pixel_x = -4
+	},
+/obj/item/reagent_containers/food/condiment/soymilk{
+	pixel_y = 8;
+	pixel_x = 8
+	},
 /turf/simulated/floor/wood/fancy/cherry,
 /area/awaymission/beach)
 "Tn" = (
@@ -2734,6 +3373,10 @@
 	dir = 8
 	},
 /turf/simulated/floor/wood/fancy/birch,
+/area/awaymission/beach)
+"Tt" = (
+/obj/structure/chair/stool/holostool,
+/turf/simulated/floor/plasteel/freezer,
 /area/awaymission/beach)
 "TT" = (
 /obj/structure/closet/crate/trashcart,
@@ -2770,7 +3413,23 @@
 	dir = 4;
 	pixel_y = 9
 	},
-/turf/space,
+/turf/simulated/floor/wood/fancy,
+/area/awaymission/beach)
+"Us" = (
+/obj/structure/closet/secure_closet/freezer/fridge/open{
+	initialized = 1
+	},
+/obj/item/reagent_containers/food/snacks/catfishmeat,
+/obj/item/reagent_containers/food/snacks/catfishmeat,
+/obj/item/reagent_containers/food/snacks/catfishmeat,
+/obj/item/reagent_containers/food/snacks/catfishmeat,
+/obj/item/reagent_containers/food/snacks/catfishmeat,
+/obj/item/reagent_containers/food/snacks/salmonmeat,
+/obj/item/reagent_containers/food/snacks/salmonmeat,
+/obj/item/reagent_containers/food/snacks/salmonmeat,
+/obj/item/reagent_containers/food/snacks/salmonmeat,
+/obj/item/reagent_containers/food/snacks/salmonmeat,
+/turf/simulated/floor/wood/fancy/cherry,
 /area/awaymission/beach)
 "Ut" = (
 /obj/item/circular_saw{
@@ -2783,7 +3442,7 @@
 /turf/simulated/floor/wood/fancy/birch,
 /area/awaymission/beach)
 "Uu" = (
-/obj/structure/table/reinforced/brass,
+/obj/structure/table/wood,
 /obj/item/camera{
 	pixel_y = 8;
 	pixel_x = 6
@@ -2791,6 +3450,11 @@
 /obj/item/pen/blue{
 	pixel_x = -11;
 	pixel_y = 2
+	},
+/obj/item/id_decal/aa07{
+	layer = 2.7;
+	pixel_y = -3;
+	pixel_x = -2
 	},
 /turf/simulated/floor/beach/away/sand/alternative,
 /area/awaymission/beach)
@@ -2819,6 +3483,9 @@
 /obj/item/kitchen/rollingpin{
 	pixel_x = -12;
 	pixel_y = 3
+	},
+/obj/item/kitchen/sushimat{
+	pixel_x = 8
 	},
 /turf/simulated/floor/wood/fancy/cherry,
 /area/awaymission/beach)
@@ -2906,6 +3573,12 @@
 	icon_state = "white_large"
 	},
 /area/awaymission/beach)
+"Wb" = (
+/obj/item/toy/plushie/nianplushie{
+	pixel_y = 6
+	},
+/turf/simulated/floor/carpet/red,
+/area/awaymission/beach)
 "Wf" = (
 /obj/structure/table/reinforced,
 /obj/item/reagent_containers/syringe{
@@ -2933,6 +3606,12 @@
 	pixel_y = 8
 	},
 /turf/simulated/floor/wood,
+/area/awaymission/beach)
+"Wq" = (
+/obj/structure/fluff/beach_umbrella/syndi,
+/turf/simulated/floor/beach/away/coastline/beachcorner/alternative{
+	dir = 8
+	},
 /area/awaymission/beach)
 "WB" = (
 /obj/machinery/door/airlock/wood{
@@ -3008,8 +3687,11 @@
 /turf/simulated/floor/wood/fancy/cherry,
 /area/awaymission/beach)
 "WW" = (
-/obj/effect/turf_decal/siding/wood{
+/obj/effect/turf_decal/siding/wood/alternative{
 	dir = 1
+	},
+/obj/machinery/door_control/normal/south{
+	id = "BeachBoats"
 	},
 /turf/simulated/floor/wood/parquet,
 /area/awaymission/beach)
@@ -3038,6 +3720,21 @@
 /obj/structure/closet/secure_closet/personal/cabinet,
 /turf/simulated/floor/wood,
 /area/awaymission/beach)
+"Xr" = (
+/obj/structure/fluff/beach_umbrella/science,
+/turf/simulated/floor/beach/away/sand/alternative,
+/area/awaymission/beach)
+"Xv" = (
+/obj/structure/table/wood,
+/obj/item/reagent_containers/food/snacks/grown/watermelon{
+	pixel_y = 6;
+	pixel_x = 6
+	},
+/obj/item/reagent_containers/food/snacks/watermelonslice{
+	pixel_x = -6
+	},
+/turf/simulated/floor/beach/away/sand/alternative,
+/area/awaymission/beach)
 "XH" = (
 /obj/machinery/processor,
 /turf/simulated/floor/wood/fancy/cherry,
@@ -3050,7 +3747,7 @@
 /area/awaymission/beach)
 "XO" = (
 /obj/machinery/door/poddoor/shutters{
-	id = "BeachBoats"
+	id_tag = "BeachBoats"
 	},
 /turf/simulated/floor/beach/away/water{
 	water_overlay_image = null
@@ -3058,6 +3755,7 @@
 /area/awaymission/beach)
 "XT" = (
 /obj/structure/flora/tree/palm{
+	pixel_x = 0;
 	pixel_y = 16
 	},
 /turf/simulated/floor/beach/away/sand/alternative,
@@ -3073,6 +3771,14 @@
 /obj/effect/turf_decal/sand,
 /obj/effect/turf_decal/siding/wood/alternative{
 	dir = 4
+	},
+/turf/simulated/floor/beach/away/sand/alternative,
+/area/awaymission/beach)
+"Ya" = (
+/obj/structure/chair/plastic,
+/obj/item/reagent_containers/food/drinks/cans/space_mountain_wind{
+	pixel_x = 18;
+	pixel_y = 4
 	},
 /turf/simulated/floor/beach/away/sand/alternative,
 /area/awaymission/beach)
@@ -3135,6 +3841,14 @@
 	},
 /turf/simulated/floor/carpet/arcade,
 /area/awaymission/beach)
+"Ze" = (
+/obj/structure/chair/plastic,
+/obj/item/reagent_containers/food/drinks/cans/dr_gibb{
+	pixel_x = 20;
+	pixel_y = -4
+	},
+/turf/simulated/floor/beach/away/sand/alternative,
+/area/awaymission/beach)
 "Zv" = (
 /turf/simulated/floor/plasteel{
 	icon_state = "dark_diagonal"
@@ -3174,6 +3888,7 @@
 /obj/machinery/shower{
 	pixel_y = 16
 	},
+/obj/item/soap/deluxe,
 /turf/simulated/floor/wood/parquet,
 /area/awaymission/beach)
 "ZM" = (
@@ -3182,6 +3897,16 @@
 	pixel_y = -3
 	},
 /turf/simulated/floor/beach/away/sand/alternative,
+/area/awaymission/beach)
+"ZS" = (
+/obj/structure/table/wood{
+	color = "#ffcc33"
+	},
+/obj/item/desk_bell{
+	pixel_x = 6;
+	pixel_y = 6
+	},
+/turf/simulated/floor/wood/fancy/cherry,
 /area/awaymission/beach)
 "ZV" = (
 /obj/item/trash/candy,
@@ -6078,9 +6803,9 @@ ev
 DZ
 cP
 yY
+Am
 pp
-pp
-pp
+Am
 NU
 sj
 MW
@@ -6186,10 +6911,10 @@ BE
 Av
 DZ
 yY
-pp
+Am
 Xh
 pp
-pp
+Do
 pp
 NU
 sj
@@ -6296,9 +7021,9 @@ DZ
 DZ
 vq
 pp
-pp
-pp
-pp
+pm
+gt
+LI
 pp
 pp
 hX
@@ -6409,7 +7134,7 @@ pp
 pp
 pp
 pp
-pp
+RC
 hX
 MW
 MW
@@ -6831,7 +7556,7 @@ Av
 DZ
 Sl
 BE
-Av
+uc
 DZ
 wP
 DZ
@@ -6958,7 +7683,7 @@ Ys
 mi
 eG
 pp
-pp
+Am
 pp
 pp
 jM
@@ -7069,8 +7794,8 @@ eG
 pp
 pp
 pp
-pp
-jM
+es
+Wb
 pp
 pp
 pp
@@ -7187,7 +7912,7 @@ pp
 pp
 vq
 pp
-pp
+Am
 NU
 Pn
 Pn
@@ -7198,7 +7923,7 @@ pp
 pp
 pp
 pp
-pp
+Am
 NU
 sj
 MW
@@ -7290,8 +8015,8 @@ pp
 pp
 pp
 pp
-pp
-qp
+Xr
+Ss
 pp
 pp
 pp
@@ -7393,7 +8118,7 @@ Ys
 DZ
 vq
 cB
-cB
+Cd
 cB
 pp
 pp
@@ -7415,7 +8140,7 @@ DZ
 vq
 pp
 pp
-pp
+gM
 pp
 pp
 NU
@@ -7837,7 +8562,7 @@ pp
 pp
 pp
 pp
-pp
+Am
 pp
 DZ
 eG
@@ -8285,7 +9010,7 @@ pp
 cB
 pp
 cB
-pp
+Am
 pp
 pp
 pp
@@ -8398,7 +9123,7 @@ pp
 cB
 pp
 pp
-pp
+va
 pp
 hX
 MW
@@ -8484,7 +9209,7 @@ pp
 pp
 pp
 pp
-pp
+Am
 pp
 pp
 pp
@@ -8507,7 +9232,7 @@ pp
 pp
 pp
 pp
-pp
+gt
 pp
 hX
 MW
@@ -8616,7 +9341,7 @@ pp
 cB
 pp
 pp
-pp
+Ge
 pp
 hX
 MW
@@ -8715,12 +9440,12 @@ cB
 cB
 dK
 DZ
-hv
-qH
-qH
+by
+Ia
+iq
 rS
 DZ
-gu
+kp
 pp
 pp
 pp
@@ -8810,7 +9535,7 @@ OS
 aV
 OS
 OS
-pp
+Am
 pp
 pp
 pp
@@ -8824,7 +9549,7 @@ pp
 cB
 DZ
 DZ
-hv
+NM
 hv
 hv
 hv
@@ -8833,7 +9558,7 @@ wH
 gu
 pp
 pp
-pp
+Dg
 pp
 SE
 bF
@@ -8919,7 +9644,7 @@ aV
 zt
 aV
 OS
-pp
+Am
 pp
 Jf
 Yv
@@ -8934,7 +9659,7 @@ cB
 WR
 hv
 hv
-qH
+qk
 hU
 hv
 WS
@@ -8942,7 +9667,7 @@ Jq
 VJ
 pp
 pp
-pp
+gM
 pp
 hX
 MW
@@ -9042,16 +9767,16 @@ pp
 Ms
 DZ
 hv
-qH
-qH
-qH
+fD
+kv
+zF
 hv
 WS
 Jq
 VJ
 pp
 pp
-pp
+On
 pp
 hX
 MW
@@ -9131,16 +9856,16 @@ MW
 MW
 MW
 dF
-pp
+nk
 OS
-aV
+EG
 aV
 aV
 OS
-pp
+Am
 pp
 DZ
-hr
+aK
 wr
 cB
 cB
@@ -9155,7 +9880,7 @@ UZ
 qH
 hv
 hv
-WS
+qs
 Jq
 VJ
 pp
@@ -9246,7 +9971,7 @@ OS
 aV
 OS
 OS
-pp
+Am
 pp
 DZ
 DZ
@@ -9256,21 +9981,21 @@ cB
 pp
 pp
 pp
-pp
+Am
 DZ
 HS
 hv
-qH
+Ek
 XH
 hv
-hv
+LQ
 SX
 Au
 Rn
 pp
 pp
 pp
-pp
+Ze
 pp
 hX
 MW
@@ -9367,19 +10092,19 @@ pp
 pp
 pp
 eG
+eE
 hv
 hv
 hv
 hv
-hv
-WS
+fc
 DZ
 Rn
 pp
 pp
 pp
 vq
-pp
+EX
 pp
 hX
 MW
@@ -9459,7 +10184,7 @@ MW
 MW
 dF
 pp
-pp
+Am
 pp
 pp
 pp
@@ -9476,7 +10201,7 @@ pp
 pp
 pp
 eG
-hv
+qf
 hv
 hv
 hv
@@ -9486,9 +10211,9 @@ VJ
 pp
 pp
 pp
+Am
 pp
-pp
-pp
+Ya
 pp
 hX
 MW
@@ -9585,11 +10310,11 @@ vq
 pp
 pp
 eG
+lP
 hv
 hv
-hv
-WS
-WS
+gh
+ZS
 jg
 Rn
 pp
@@ -9694,10 +10419,10 @@ pp
 RC
 pp
 DZ
+Mt
 hv
-hv
-hv
-SX
+Us
+OA
 jg
 Rn
 pp
@@ -10004,7 +10729,7 @@ MW
 MW
 MW
 dF
-pp
+HT
 pp
 pp
 vq
@@ -10113,7 +10838,7 @@ MW
 MW
 MW
 dF
-vq
+ll
 pp
 pp
 pp
@@ -10130,7 +10855,7 @@ pp
 pp
 pp
 pp
-pp
+Am
 pp
 pp
 pp
@@ -10332,7 +11057,7 @@ MW
 MW
 MW
 dF
-vq
+zU
 pp
 pp
 pp
@@ -10359,7 +11084,7 @@ pp
 pp
 pp
 eW
-RC
+pp
 pp
 hX
 MW
@@ -10443,9 +11168,9 @@ MW
 dF
 pp
 pp
+ky
 pp
-pp
-pp
+SS
 pp
 pp
 pp
@@ -10466,9 +11191,9 @@ pp
 pp
 pp
 pp
-TU
 pp
 pp
+RC
 pp
 hX
 MW
@@ -10551,7 +11276,7 @@ MW
 MW
 sc
 hu
-eV
+Wq
 pp
 pp
 qp
@@ -10575,10 +11300,10 @@ pp
 eW
 pp
 pp
+TU
 pp
 pp
-pp
-pp
+Ae
 NU
 sj
 MW
@@ -10680,14 +11405,14 @@ pp
 pp
 pp
 pp
+xf
+xf
+xf
+xf
 pp
 pp
 pp
-pp
-pp
-pp
-pp
-pp
+xG
 pp
 hX
 MW
@@ -10773,7 +11498,7 @@ MW
 MW
 dF
 pp
-pp
+rI
 pp
 pp
 cB
@@ -10789,14 +11514,14 @@ pp
 pp
 pp
 eg
-Uk
-Uk
-Uk
-Uk
+Sa
+Sa
+Sa
+Sa
 Uk
 hI
 pp
-pp
+qh
 pp
 hX
 MW
@@ -10894,9 +11619,9 @@ pp
 pp
 pp
 pp
-pp
-pp
-pp
+Am
+FQ
+xG
 Ew
 pp
 pp
@@ -10905,8 +11630,8 @@ pp
 pp
 lC
 pp
-pp
-pp
+xG
+Am
 hX
 MW
 MW
@@ -11004,8 +11729,8 @@ pp
 pp
 fA
 pp
-pp
-pp
+xG
+xG
 Ew
 pp
 pp
@@ -11113,8 +11838,8 @@ pp
 pp
 pp
 pp
-pp
-pp
+xG
+xG
 Ew
 pp
 pp
@@ -11441,7 +12166,7 @@ cB
 pp
 pp
 pp
-pp
+rC
 Ew
 Jh
 Jh
@@ -11538,11 +12263,11 @@ cP
 yY
 pp
 pp
-pp
+RC
 cB
 cB
 pp
-qB
+JK
 pp
 pp
 pp
@@ -11646,7 +12371,7 @@ cP
 yY
 pp
 pp
-pp
+pH
 pp
 cB
 cB
@@ -11767,8 +12492,8 @@ pp
 pp
 pp
 RC
-pp
-pp
+xG
+xG
 Ew
 pp
 pp
@@ -11876,8 +12601,8 @@ pp
 pp
 cB
 pp
-pp
-pp
+xG
+xG
 Ew
 pp
 pp
@@ -11885,7 +12610,7 @@ pp
 pp
 pp
 lC
-pp
+Am
 NU
 sj
 MW
@@ -11985,8 +12710,8 @@ He
 pp
 pp
 pp
-pp
-pp
+xG
+xG
 Ew
 pp
 pp
@@ -12097,15 +12822,15 @@ pp
 pp
 pp
 Ez
-qJ
-qJ
-qJ
-qJ
+qB
+qB
+qB
+qB
 qJ
 XJ
 pp
 mO
-pp
+Am
 hX
 MW
 MW
@@ -12206,14 +12931,14 @@ pp
 pp
 pp
 eW
+Lv
+Lv
+Lv
+Lv
 pp
 pp
 pp
-pp
-pp
-pp
-pp
-pp
+PV
 pp
 hX
 MW
@@ -12292,7 +13017,7 @@ MW
 MW
 MW
 dF
-pp
+Am
 pp
 pp
 DZ
@@ -12322,7 +13047,7 @@ pp
 pp
 pp
 pp
-pp
+xG
 pp
 hX
 MW
@@ -12402,7 +13127,7 @@ MW
 cP
 yY
 pp
-pp
+Am
 cB
 DZ
 KN
@@ -12431,7 +13156,7 @@ eW
 pp
 pp
 pp
-pp
+AD
 pp
 hX
 MW
@@ -12540,9 +13265,9 @@ pp
 pp
 pp
 pp
+xG
 pp
-pp
-hX
+HF
 MW
 MW
 MW
@@ -12647,9 +13372,9 @@ pp
 pp
 pp
 pp
+Hv
 pp
-pp
-pp
+QJ
 pp
 hX
 MW
@@ -12731,7 +13456,7 @@ eW
 pp
 DZ
 AK
-cZ
+Hg
 DZ
 DZ
 gF
@@ -12754,7 +13479,7 @@ pp
 pp
 pp
 pp
-pp
+xf
 pp
 pp
 pp
@@ -12841,9 +13566,9 @@ pp
 DZ
 ai
 cZ
-cZ
+As
 DZ
-jP
+Tt
 jP
 KN
 DZ
@@ -12862,9 +13587,9 @@ BW
 cU
 pp
 pp
-pp
+xG
 kZ
-pp
+PE
 pp
 pp
 pp
@@ -12950,9 +13675,9 @@ pp
 DZ
 DZ
 cZ
-cZ
+As
 DZ
-jP
+Tt
 jP
 KN
 DZ
@@ -12970,13 +13695,13 @@ Mc
 Mc
 YQ
 cU
-pp
+TU
 xY
+Lv
 pp
 pp
 pp
-pp
-pp
+Am
 SE
 bF
 MW
@@ -13055,8 +13780,8 @@ MW
 MW
 MW
 dF
-pp
-pp
+Am
+kz
 DZ
 hG
 hG
@@ -13065,7 +13790,7 @@ DZ
 KN
 DZ
 DZ
-ZL
+HE
 pp
 pp
 pp
@@ -13084,7 +13809,7 @@ pp
 pp
 pp
 XT
-pp
+RC
 SE
 bF
 MW
@@ -13182,14 +13907,14 @@ pp
 pp
 pp
 Fr
-Mc
+hV
 Mc
 Mc
 Mc
 Mc
 DJ
 pp
-pp
+Ke
 pp
 pp
 pp
@@ -13297,7 +14022,7 @@ DZ
 DZ
 DZ
 DZ
-pp
+FK
 pp
 pp
 pp
@@ -13392,12 +14117,12 @@ pp
 pp
 pp
 pp
+xf
+xf
 pp
-pp
-pp
-pp
-pp
-An
+xf
+xf
+uD
 DZ
 DZ
 QO
@@ -13506,7 +14231,7 @@ pp
 pp
 pp
 pp
-yT
+sJ
 GM
 Ir
 hg
@@ -13606,7 +14331,7 @@ sc
 eV
 pp
 DZ
-hr
+MT
 fM
 pp
 pp
@@ -13615,7 +14340,7 @@ CC
 CC
 CC
 Vz
-Ht
+Bt
 DZ
 FX
 Mg
@@ -13718,7 +14443,7 @@ DZ
 DZ
 DZ
 pp
-JK
+yF
 pp
 pp
 pp
@@ -13824,10 +14549,10 @@ MW
 MW
 sc
 eV
+Am
 pp
 pp
-pp
-JK
+Xv
 JC
 pp
 pp
@@ -13836,13 +14561,13 @@ LD
 pp
 JW
 DZ
-ir
-Ba
+Of
+qn
 MW
 MW
 MW
 MW
-WW
+tH
 DZ
 MW
 MW
@@ -13942,11 +14667,11 @@ pp
 pp
 MN
 SE
-hu
+iM
 bF
 DZ
 Up
-Gw
+fa
 MW
 MW
 MW
@@ -14046,7 +14771,7 @@ eV
 Un
 pp
 pp
-pp
+Am
 SE
 hu
 hu
