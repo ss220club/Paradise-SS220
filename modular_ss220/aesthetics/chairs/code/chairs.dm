@@ -15,7 +15,7 @@
 
 // Recoloring comfy's
 /obj/structure/chair/comfy/brown
-	color = rgb(70, 45, 30)
+	color = rgb(141, 70, 0)
 
 /obj/structure/chair/comfy/beige
 	color = rgb(240, 240, 200)
@@ -33,7 +33,7 @@
 	color = rgb(100, 65, 120)
 
 /obj/structure/chair/comfy/blue
-	color = rgb(110, 165, 250)
+	color = rgb(80, 125, 220)
 
 /obj/structure/chair/comfy/red
 	color = rgb(165, 65, 65)
