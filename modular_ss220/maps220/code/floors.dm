@@ -22,14 +22,14 @@
 	if(isliving(mover) || ismecha (mover))
 		return FALSE
 
-/turf/simulated/floor/beach/away/sand/alternative
+/turf/simulated/floor/beach/away/sand_alternative
 	icon = 'modular_ss220/maps220/icons/floors.dmi'
 	icon_state = "sand"
 	base_icon_state = "sand"
 	water_overlay_image = null
-	baseturf = /turf/simulated/floor/beach/away/sand/alternative
+	baseturf = /turf/simulated/floor/beach/away/sand_alternative
 
-/turf/simulated/floor/beach/away/sand/alternative/Initialize(mapload)
+/turf/simulated/floor/beach/away/sand_alternative/Initialize(mapload)
 	. = ..()
 	if(prob(15))
 		icon_state = "sand[rand(1,4)]"
