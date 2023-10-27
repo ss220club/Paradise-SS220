@@ -27,7 +27,10 @@
 	color = rgb(60, 60, 55)
 
 /obj/structure/chair/comfy/lime
-	color = rgb(155, 190, 100)
+	color = rgb(185, 210, 115)
+
+/obj/structure/chair/comfy/yellow
+	color = rgb(225, 215, 125)
 
 /obj/structure/chair/comfy/purp
 	color = rgb(100, 65, 120)
