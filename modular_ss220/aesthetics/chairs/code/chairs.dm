@@ -10,6 +10,31 @@
 /obj/structure/chair/comfy/shuttle
 	icon = 'icons/obj/chairs.dmi'
 
+// Recoloring comfy's
+/obj/structure/chair/comfy/brown
+	color = rgb(70, 45, 30)
+
+/obj/structure/chair/comfy/beige
+	color = rgb(240, 240, 200)
+
+/obj/structure/chair/comfy/teal
+	color = rgb(115, 215, 215)
+
+/obj/structure/chair/comfy/black
+	color = rgb(60, 60, 55)
+
+/obj/structure/chair/comfy/lime
+	color = rgb(155, 190, 100)
+
+/obj/structure/chair/comfy/purp
+	color = rgb(100, 65, 120)
+
+/obj/structure/chair/comfy/blue
+	color = rgb(110, 165, 250)
+
+/obj/structure/chair/comfy/red
+	color = rgb(165, 65, 65)
+
 /obj/structure/chair/office/dark
 	icon = 'modular_ss220/aesthetics/chairs/icons/chairs.dmi'
 
