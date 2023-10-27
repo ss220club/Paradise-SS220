@@ -7,6 +7,9 @@
 /obj/structure/chair/comfy/corp
 	icon = 'icons/obj/chairs.dmi'
 
+/obj/structure/chair/comfy/corp/GetArmrest()
+	return mutable_appearance('icons/obj/chairs.dmi', "[icon_state]_armrest")
+
 /obj/structure/chair/comfy/shuttle
 	icon = 'icons/obj/chairs.dmi'
 
