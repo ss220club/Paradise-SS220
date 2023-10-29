@@ -1,4 +1,5 @@
 #define MAX_MESSINESS 10
+#define WALKING_REDUCE_PROBABILITY 50
 
 /obj/effect/spawner/wire_splicing
 	name = "wiring splicing spawner"
@@ -112,8 +113,8 @@
 	. = FALSE
 	if(!in_range(src, user)) //To prevent TK and mech users from getting shocked
 		return
-	if(user.m_intent == MOVE_INTENT_WALK) // Walk slowly to step over
-		return
+	if(user.m_intent == MOVE_INTENT_WALK) // Walk slowly to try to step over
+		prb = max(prb - WALKING_REDUCE_PROBABILITY, 0)
 	if(!prob(prb))
 		return
 	var/turf/T = get_turf(src)
@@ -155,3 +156,4 @@
 	investigate_log("wire splicing was reinforced to [messiness] by [key_name(usr)] in [AREACOORD(src)]")
 
 #undef MAX_MESSINESS
+#undef WALKING_REDUCE_PROBABILITY
