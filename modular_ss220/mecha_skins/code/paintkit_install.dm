@@ -29,13 +29,9 @@
 	reset_icon()
 	qdel(P)
 
-/obj/mecha
-	var/paintable = TRUE
-
 /obj/mecha/go_out(forced, atom/newloc = loc)
 	. = ..()
-	if(paintable)
-		icon_state = reset_icon(icon_state)+"-open"
+	icon_state = reset_icon(icon_state)+"-open"
 
 //RIP AND PEPPERONI
 
