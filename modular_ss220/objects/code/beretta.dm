@@ -8,6 +8,7 @@
 	righthand_file = 'modular_ss220/objects/icons/inhands/guns_righthand.dmi'
 	icon_state = "beretta"
 	item_state = "beretta"
+	can_suppress = FALSE
 	mag_type = /obj/item/ammo_box/magazine/beretta
 	fire_sound = 'modular_ss220/objects/sound/weapons/gunshots/beretta_shot.ogg'
 
