@@ -13,6 +13,8 @@
 	var/tts_enabled = FALSE
 	/// TTS API token for silero provider
 	var/tts_token_silero = ""
+	/// TTS API token for white dream provider
+	var/tts_token_white_dream = ""
 	/// Should oggs be cached
 	var/tts_cache_enabled = FALSE
 	/// What cpu threads should ffmpeg use
@@ -21,10 +23,11 @@
 /datum/configuration_section/tts_configuration/load_data(list/data)
 	CONFIG_LOAD_BOOL(tts_enabled, data["tts_enabled"])
 	CONFIG_LOAD_STR(tts_token_silero, data["tts_token_silero"])
+	CONFIG_LOAD_STR(tts_token_white_dream, data["tts_token_white_dream"])
 	CONFIG_LOAD_BOOL(tts_cache_enabled, data["tts_cache_enabled"])
 	CONFIG_LOAD_STR(ffmpeg_cpuaffinity, data["ffmpeg_cpuaffinity"])
 
-	tts_enabled = tts_token_silero && tts_enabled
+	tts_enabled = (tts_token_silero || tts_token_white_dream) && tts_enabled
 	var/sanitized = regex(@"[^0-9,-]", "g").Replace(ffmpeg_cpuaffinity, "")
 	if(ffmpeg_cpuaffinity != sanitized)
 		log_config("Wrong value for ffmpeg_cpuaffinity. Check out taskset man page.")
