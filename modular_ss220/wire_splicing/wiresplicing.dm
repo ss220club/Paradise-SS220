@@ -1,5 +1,6 @@
 #define MAX_MESSINESS 10
 #define WALKING_REDUCE_PROBABILITY 50
+#define SHOCK_CHANCE_PER_MESSINESS 10
 
 /obj/effect/spawner/wire_splicing
 	name = "wiring splicing spawner"
@@ -101,7 +102,7 @@
 /obj/structure/wire_splicing/Crossed(atom/movable/AM, oldloc)
 	. = ..()
 	if(isliving(AM))
-		var/chance_to_shock = messiness * 10
+		var/chance_to_shock = messiness * SHOCK_CHANCE_PER_MESSINESS
 		/*
 		var/turf/T = get_turf(src)
 		if(locate(/obj/structure/catwalk) in T)
@@ -157,3 +158,4 @@
 
 #undef MAX_MESSINESS
 #undef WALKING_REDUCE_PROBABILITY
+#undef SHOCK_CHANCE_PER_MESSINESS
