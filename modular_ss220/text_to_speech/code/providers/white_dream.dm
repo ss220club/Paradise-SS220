@@ -14,21 +14,18 @@
 
 	var/ssml_text = {"[text]"}
 
-	var/list/req_body = list()
-	req_body["text"] = ssml_text
-	req_body["speaker"] = seed.value
-	req_body["ext"] = "ogg"
+	var/requestQuery = {"speaker=[seed.value]&ext=ogg&text=[url_encode(ssml_text)]"}
+	
+	log_world(requestQuery)
 
-	SShttp.create_async_request(RUSTG_HTTP_METHOD_GET, api_url, json_encode(req_body), list("content-type" = "application/json", 
-    "Authorization", {Bearer "[GLOB.configuration.tts.tts_token_white_dream]"}), proc_callback)
+	SShttp.create_async_request(RUSTG_HTTP_METHOD_GET, {"[api_url]?[requestQuery]"}, "", list("content-type" = "application/json", "Authorization" = {"Bearer [GLOB.configuration.tts.tts_token_white_dream]"}), proc_callback)
 
 	return TRUE
 
 /datum/tts_provider/white_dream/process_response(datum/http_response/response)
-    log_debug(response.body)
-    var/data = json_decode(response.body)
-
-    return data["results"][1]["audio"]
+	log_world("rsp")
+	log_world(json_decode(response.body))
+	return json_decode(response.body)
 
 	//var/sha1 = data["original_sha1"]
 
