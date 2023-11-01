@@ -95,9 +95,9 @@
 /area/awaymission/caves/build/reqpower_build)
 "au" = (
 /obj/effect/decal/cleanable/glass/plasma,
-/obj/item/shard/plasma,
 /obj/effect/landmark/damageturf,
 /obj/effect/landmark/burnturf,
+/obj/item/shard,
 /turf/simulated/floor/plating/lavaland_air,
 /area/awaymission/caves)
 "av" = (
@@ -321,7 +321,7 @@
 	},
 /area/awaymission/caves/build/reqpower_build)
 "bq" = (
-/obj/effect/spawner/window/reinforced/plasma/grilled,
+/obj/effect/spawner/window/reinforced/grilled,
 /obj/structure/fans/tiny/invisible,
 /turf/simulated/floor/plating,
 /area/awaymission/caves/build/reqpower_build)
@@ -431,6 +431,7 @@
 "bS" = (
 /obj/item/reagent_containers/iv_bag/salglu,
 /obj/effect/spawner/random_spawners/dirt_often,
+/obj/item/stack/rods,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "dark"
@@ -775,8 +776,8 @@
 /area/awaymission/caves/build/reqpower_build)
 "ds" = (
 /obj/effect/decal/cleanable/glass/plasma,
-/obj/item/shard/plasma{
-	icon_state = "plasmasmall"
+/obj/item/shard{
+	icon_state = "medium"
 	},
 /turf/simulated/floor/plating/lavaland_air,
 /area/awaymission/caves)
@@ -916,9 +917,9 @@
 /turf/simulated/floor/plating/lavaland_air,
 /area/awaymission/caves)
 "ef" = (
-/obj/structure/railing,
 /obj/structure/sink/directional/west,
 /obj/effect/spawner/random_spawners/dirt_often,
+/obj/item/stack/rods,
 /turf/simulated/floor/plasteel/dark{
 	icon_state = "darkredalt"
 	},
@@ -1565,7 +1566,7 @@
 	},
 /area/awaymission/caves)
 "hD" = (
-/obj/effect/spawner/window/reinforced/plasma/grilled,
+/obj/effect/spawner/window/reinforced/grilled,
 /obj/structure/fans/tiny/invisible,
 /obj/effect/mapping_helpers/damaged_window,
 /turf/simulated/floor/plating,
@@ -1961,6 +1962,7 @@
 	},
 /obj/item/reagent_containers/syringe/insulin,
 /obj/effect/spawner/random_spawners/dirt_often,
+/obj/item/dnascrambler,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "dark"
@@ -2702,7 +2704,7 @@
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/awaymission/caves)
 "ns" = (
-/obj/effect/spawner/window/reinforced/plasma/grilled,
+/obj/effect/spawner/window/reinforced/grilled,
 /obj/structure/fans/tiny/invisible,
 /obj/effect/mapping_helpers/damaged_window,
 /turf/simulated/floor/plating/lavaland_air,
@@ -2870,7 +2872,12 @@
 /turf/simulated/floor/wood/oak,
 /area/awaymission/caves/build/reqpower_build)
 "oc" = (
-/turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
+/obj/effect/spawner/random_spawners/blood_often,
+/obj/effect/spawner/random_spawners/dirt_often,
+/obj/item/stack/rods,
+/turf/simulated/floor/plasteel/dark{
+	icon_state = "darkredalt"
+	},
 /area/awaymission/caves/build/reqpower_build)
 "oi" = (
 /obj/mecha/working/ripley{
@@ -3401,14 +3408,12 @@
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/awaymission/caves)
 "rm" = (
-/mob/living/simple_animal/hostile/skeleton/deadwizard{
-	wander = 0
+/obj/item/bonegel,
+/turf/simulated/floor/plasteel{
+	dir = 4;
+	icon_state = "dark"
 	},
-/obj/structure/stone_tile/slab,
-/turf/simulated/floor/engine/cult/lavaland_air{
-	planetary_atmos = 1
-	},
-/area/awaymission/caves)
+/area/awaymission/caves/build/reqpower_build)
 "ro" = (
 /obj/machinery/door/airlock/survival_pod/glass,
 /obj/effect/mapping_helpers/machinery/destroyed,
@@ -4081,8 +4086,14 @@
 	},
 /area/awaymission/caves/build/reqpower_build)
 "uO" = (
-/obj/effect/spawner/window/reinforced/plasma/grilled,
-/turf/simulated/floor/plating/lavaland_air,
+/mob/living/simple_animal/hostile/skeleton/deadwizard{
+	wander = 0
+	},
+/obj/structure/stone_tile/slab,
+/obj/structure/stone_tile/slab,
+/turf/simulated/floor/engine/cult/lavaland_air{
+	planetary_atmos = 1
+	},
 /area/awaymission/caves)
 "uP" = (
 /obj/effect/decal/cleanable/blood/old,
@@ -5675,10 +5686,11 @@
 /area/awaymission/caves/build)
 "Do" = (
 /obj/effect/decal/cleanable/glass/plasma,
-/obj/item/shard/plasma{
-	icon_state = "plasmamedium"
-	},
 /obj/effect/landmark/damageturf,
+/obj/item/shard{
+	icon_state = "small";
+	pixel_x = 10
+	},
 /turf/simulated/floor/plating/lavaland_air,
 /area/awaymission/caves)
 "Dt" = (
@@ -6946,9 +6958,6 @@
 /area/awaymission/caves)
 "JU" = (
 /obj/structure/railing/cap{
-	dir = 6
-	},
-/obj/structure/railing/cap{
 	dir = 8
 	},
 /obj/effect/decal/cleanable/blood/gibs/old,
@@ -7368,14 +7377,6 @@
 	planetary_atmos = 1
 	},
 /area/awaymission/caves)
-"LP" = (
-/obj/structure/railing,
-/obj/effect/decal/cleanable/glass,
-/obj/effect/spawner/random_spawners/dirt_often,
-/turf/simulated/floor/plasteel/dark{
-	icon_state = "darkredalt"
-	},
-/area/awaymission/caves/build/reqpower_build)
 "LR" = (
 /obj/machinery/door/airlock/hatch,
 /obj/machinery/atmospherics/pipe/simple/hidden/universal,
@@ -7629,7 +7630,7 @@
 	},
 /area/awaymission/caves/build/reqpower_build)
 "NN" = (
-/obj/effect/spawner/window/reinforced/plasma/grilled,
+/obj/effect/spawner/window/reinforced/grilled,
 /obj/effect/mapping_helpers/damaged_window,
 /turf/simulated/floor/plating/lavaland_air,
 /area/awaymission/caves)
@@ -7728,7 +7729,7 @@
 	},
 /area/awaymission/caves/build/reqpower_build)
 "Or" = (
-/obj/effect/spawner/window/reinforced/plasma/grilled,
+/obj/effect/spawner/window/reinforced/grilled,
 /obj/effect/mapping_helpers/damaged_window,
 /turf/simulated/floor/plating,
 /area/awaymission/caves)
@@ -7748,7 +7749,7 @@
 	},
 /area/awaymission/caves)
 "Ox" = (
-/obj/effect/spawner/window/reinforced/plasma/grilled,
+/obj/effect/spawner/window/reinforced/grilled,
 /obj/structure/fans/tiny/invisible,
 /turf/simulated/floor/plating/lavaland_air,
 /area/awaymission/caves/build/reqpower_build)
@@ -8060,11 +8061,13 @@
 	},
 /area/awaymission/caves/build/reqpower_build)
 "Qg" = (
-/obj/item/shard/plasma{
-	icon_state = "plasmasmall"
-	},
 /obj/effect/decal/cleanable/glass/plasma,
 /obj/effect/landmark/damageturf,
+/obj/item/shard{
+	icon_state = "medium";
+	pixel_x = -7;
+	pixel_y = -10
+	},
 /turf/simulated/floor/plating/lavaland_air,
 /area/awaymission/caves)
 "Qm" = (
@@ -8555,6 +8558,7 @@
 /obj/structure/table/glass,
 /obj/item/surgicaldrill,
 /obj/effect/spawner/random_spawners/dirt_often,
+/obj/item/bonesetter,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "dark"
@@ -9053,7 +9057,9 @@
 /turf/simulated/floor/plating,
 /area/awaymission/caves/build/reqpower_build)
 "Vd" = (
-/obj/effect/baseturf_helper/asteroid/basalt,
+/obj/effect/baseturf_helper/asteroid/basalt{
+	baseturf = /turf/simulated/floor/plating
+	},
 /turf/simulated/wall/indestructible/rock/mineral,
 /area/awaymission/caves/build/reqpower_build)
 "Vi" = (
@@ -9260,6 +9266,7 @@
 	list_reagents = list("methamphetamine" = 30)
 	},
 /obj/effect/spawner/random_spawners/dirt_often,
+/obj/item/dnascrambler,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "dark"
@@ -9539,17 +9546,6 @@
 	planetary_atmos = 1
 	},
 /area/awaymission/caves)
-"Xu" = (
-/obj/structure/railing/cap{
-	dir = 6
-	},
-/obj/effect/spawner/random_spawners/blood_often,
-/obj/effect/spawner/random_spawners/dirt_often,
-/turf/simulated/floor/plasteel/dark{
-	dir = 2;
-	icon_state = "darkredaltstrip"
-	},
-/area/awaymission/caves/build/reqpower_build)
 "Xv" = (
 /obj/structure/bonfire,
 /obj/structure{
@@ -9651,6 +9647,7 @@
 /area/awaymission/caves)
 "XN" = (
 /obj/machinery/optable,
+/obj/item/FixOVein/alien,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "dark"
@@ -9801,7 +9798,7 @@
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/awaymission/caves)
 "Yx" = (
-/obj/effect/spawner/window/reinforced/plasma/grilled,
+/obj/effect/spawner/window/reinforced/grilled,
 /turf/simulated/floor/plating,
 /area/awaymission/caves)
 "YC" = (
@@ -18168,12 +18165,12 @@ LU
 LU
 LU
 LU
-LU
-LU
-LU
-LU
-LU
-LU
+mz
+mz
+mz
+mz
+mz
+mz
 mz
 mz
 mz
@@ -18400,18 +18397,18 @@ LU
 LU
 LU
 LU
-LU
-LU
-LU
-LU
-LU
-LU
 mz
 UN
 Dv
-Dv
+Xq
+Xq
+Xq
+Xq
+Xq
 mz
 mz
+mz
+Xq
 Xq
 Dv
 UI
@@ -18632,17 +18629,17 @@ LU
 LU
 LU
 LU
-LU
-LU
-LU
-LU
-LU
-LU
 mz
 UN
 Dv
 Dv
+Xq
+Xq
+Xq
+Xq
+Dv
 mz
+Xq
 Xq
 Xq
 Dv
@@ -18864,19 +18861,19 @@ LU
 LU
 LU
 LU
-LU
-LU
-LU
-LU
-LU
-LU
 mz
 mz
-Xq
 Dv
-Xq
-Xq
-Xq
+Dv
+Dv
+Dv
+Dv
+Dv
+Dv
+Dv
+Dv
+Dv
+Dv
 Dv
 Dv
 Xq
@@ -19096,22 +19093,22 @@ LU
 LU
 LU
 LU
-LU
-LU
-LU
-LU
-LU
-LU
 mz
 mz
-mz
-Dv
 mz
 Xq
-mz
+Xq
+Xq
+Dv
+Xq
+Xq
+Dv
+Xq
+Xq
+Xq
 Dv
 GJ
-mz
+Xq
 wQ
 mz
 TK
@@ -19327,15 +19324,15 @@ LU
 LU
 LU
 LU
-LU
-LU
-LU
-LU
-LU
-LU
 mz
 mz
 mz
+Dv
+Xq
+Xq
+Dv
+Xq
+Xq
 Xq
 Dv
 Xq
@@ -19559,14 +19556,14 @@ LU
 LU
 LU
 LU
-LU
-LU
-LU
-LU
-LU
-LU
 mz
 Bz
+Dv
+Dv
+Xq
+Dv
+Xq
+Xq
 Xq
 Xq
 Dv
@@ -19791,16 +19788,16 @@ LU
 LU
 LU
 LU
-LU
-LU
-LU
-LU
-LU
-LU
 mz
 mz
-Xq
-Xq
+Dv
+Dv
+Dv
+Dv
+Dv
+Dv
+Dv
+Dv
 Dv
 Dv
 Dv
@@ -20023,15 +20020,15 @@ LU
 LU
 LU
 LU
-LU
-LU
-LU
-LU
-LU
-LU
 mz
 WF
-rm
+uO
+Dv
+Dv
+Dv
+Dv
+Dv
+Dv
 Dv
 Dv
 Dv
@@ -20255,16 +20252,16 @@ LU
 LU
 LU
 LU
-LU
-LU
-LU
-LU
-LU
-LU
 mz
 mz
-Xq
-Xq
+Dv
+Dv
+Dv
+Dv
+Dv
+Dv
+Dv
+Dv
 Dv
 Dv
 Dv
@@ -20487,14 +20484,14 @@ LU
 LU
 LU
 LU
-LU
-LU
-LU
-LU
-LU
-LU
 mz
 Bz
+Dv
+Dv
+Xq
+Dv
+Xq
+Xq
 Xq
 Xq
 Dv
@@ -20719,15 +20716,15 @@ LU
 LU
 LU
 LU
-LU
-LU
-LU
-LU
-LU
-LU
 mz
 mz
 mz
+Dv
+Xq
+Xq
+Dv
+Xq
+Xq
 Xq
 Dv
 Xq
@@ -20952,22 +20949,22 @@ LU
 LU
 LU
 LU
-LU
-LU
-LU
-LU
-LU
-LU
 mz
 mz
-mz
-Dv
 mz
 Xq
-mz
+Xq
+Xq
+Dv
+Xq
+Xq
+Dv
+Xq
+Xq
+Xq
 Dv
 Dv
-mz
+Xq
 Xq
 mz
 TK
@@ -21184,19 +21181,19 @@ LU
 LU
 LU
 LU
-LU
-LU
-LU
-LU
-LU
-LU
 mz
 mz
-Xq
 Dv
-Xq
-Xq
-Xq
+Dv
+Dv
+Dv
+Dv
+Dv
+Dv
+Dv
+Dv
+Dv
+Dv
 Dv
 Dv
 Xq
@@ -21416,17 +21413,17 @@ LU
 LU
 LU
 LU
-LU
-LU
-LU
-LU
-LU
-LU
 mz
 UN
 Dv
 Dv
+Xq
+Xq
+Xq
+Xq
+Dv
 mz
+Xq
 Xq
 Xq
 Dv
@@ -21648,18 +21645,18 @@ LU
 LU
 LU
 LU
-LU
-LU
-LU
-LU
-LU
-LU
 mz
 UN
 Dv
-Dv
+Xq
+Xq
+Xq
+Xq
+Xq
 mz
 mz
+mz
+Xq
 Xq
 Dv
 Dv
@@ -21880,12 +21877,12 @@ LU
 LU
 LU
 LU
-LU
-LU
-LU
-LU
-LU
-LU
+mz
+mz
+mz
+mz
+mz
+mz
 mz
 mz
 mz
@@ -29178,43 +29175,43 @@ LU
 LU
 LU
 LU
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
 as
 as
 as
 as
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
 LU
 LU
 LU
@@ -29410,27 +29407,27 @@ LU
 LU
 LU
 LU
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
 as
 as
 mX
@@ -29441,12 +29438,12 @@ as
 as
 as
 as
-lD
-lD
-lD
-lD
-lD
-lD
+LU
+LU
+LU
+LU
+LU
+LU
 LU
 LU
 LU
@@ -29642,27 +29639,27 @@ LU
 LU
 LU
 LU
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
 as
 dV
 pk
@@ -29673,12 +29670,12 @@ Mp
 Tk
 SU
 as
-lD
-lD
-lD
-lD
-lD
-lD
+LU
+LU
+LU
+LU
+LU
+LU
 LU
 LU
 LU
@@ -29874,27 +29871,27 @@ LU
 LU
 LU
 LU
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
 as
 gk
 pk
@@ -29905,12 +29902,12 @@ GN
 XT
 ae
 as
-lD
-lD
-lD
-lD
-lD
-lD
+LU
+LU
+LU
+LU
+LU
+LU
 LU
 LU
 LU
@@ -30106,27 +30103,27 @@ LU
 LU
 LU
 LU
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
 as
 as
 as
 as
 as
 as
-lD
+LU
 as
 vh
 pk
@@ -30138,11 +30135,11 @@ XT
 Mp
 as
 Ol
-lD
-lD
-lD
-lD
-lD
+LU
+LU
+LU
+LU
+LU
 LU
 LU
 LU
@@ -30338,27 +30335,27 @@ LU
 LU
 LU
 LU
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
 as
 Ri
 Ry
 Ri
 Rg
 as
-lD
+LU
 as
 QF
 pk
@@ -30374,7 +30371,7 @@ as
 as
 as
 as
-lD
+LU
 LU
 LU
 LU
@@ -30570,27 +30567,27 @@ LU
 LU
 LU
 LU
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
 as
 Ri
 Ri
 Ri
 Ri
 as
-lD
+LU
 as
 fq
 xQ
@@ -30606,7 +30603,7 @@ ah
 zx
 vE
 as
-lD
+LU
 LU
 LU
 LU
@@ -30802,27 +30799,27 @@ LU
 LU
 LU
 LU
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
 as
 Rg
 xE
 nb
 Ri
 as
-lD
+LU
 as
 as
 Fp
@@ -30838,7 +30835,7 @@ dP
 Ei
 iR
 as
-lD
+LU
 LU
 LU
 LU
@@ -31034,27 +31031,27 @@ LU
 LU
 LU
 LU
-lD
-lD
-lD
-lD
+LU
+LU
+LU
+LU
 as
 as
 as
 as
 as
-lD
-lD
-lD
-lD
-lD
+LU
+LU
+LU
+LU
+LU
 as
 OL
 TG
 IY
 ro
 as
-lD
+LU
 as
 eW
 Rk
@@ -31070,7 +31067,7 @@ bY
 as
 vl
 as
-lD
+LU
 LU
 LU
 LU
@@ -31275,8 +31272,8 @@ iu
 Dw
 iu
 as
-lD
-lD
+LU
+LU
 as
 as
 as
@@ -31286,7 +31283,7 @@ hG
 PA
 Vc
 as
-lD
+LU
 as
 Uj
 vg
@@ -31302,7 +31299,7 @@ vC
 as
 as
 as
-lD
+LU
 LU
 LU
 LU
@@ -31508,7 +31505,7 @@ XH
 dP
 as
 as
-lD
+LU
 as
 Tl
 Tl
@@ -31518,7 +31515,7 @@ xS
 aa
 or
 as
-lD
+LU
 as
 as
 as
@@ -31532,9 +31529,9 @@ dj
 uI
 ud
 as
-lD
-lD
-lD
+LU
+LU
+LU
 LU
 LU
 LU
@@ -31740,7 +31737,7 @@ yY
 Xz
 vY
 as
-lD
+LU
 as
 Az
 dr
@@ -31750,8 +31747,8 @@ xS
 xS
 Pq
 as
-lD
-lD
+LU
+LU
 as
 Ol
 Uv
@@ -31765,8 +31762,8 @@ as
 as
 as
 as
-lD
-lD
+LU
+LU
 LU
 LU
 LU
@@ -31972,7 +31969,7 @@ aa
 EJ
 Mo
 as
-lD
+LU
 as
 aF
 zG
@@ -31982,8 +31979,8 @@ bb
 Fo
 aa
 as
-lD
-lD
+LU
+LU
 as
 QO
 xS
@@ -31998,7 +31995,7 @@ XN
 AK
 as
 as
-lD
+LU
 LU
 LU
 LU
@@ -32215,7 +32212,7 @@ as
 ot
 as
 as
-lD
+LU
 as
 as
 ON
@@ -32230,7 +32227,7 @@ iv
 ZU
 oK
 as
-lD
+LU
 LU
 LU
 LU
@@ -32447,8 +32444,8 @@ Hd
 Vn
 di
 as
-lD
-lD
+LU
+LU
 as
 Rn
 Rn
@@ -32462,7 +32459,7 @@ yW
 Ug
 as
 as
-lD
+LU
 LU
 LU
 LU
@@ -32679,7 +32676,7 @@ qX
 ff
 pB
 as
-lD
+LU
 as
 as
 We
@@ -32690,11 +32687,11 @@ iQ
 as
 as
 pV
-yW
+rm
 MC
 Zr
 as
-lD
+LU
 LU
 LU
 LU
@@ -32911,12 +32908,12 @@ jM
 OZ
 zY
 as
-lD
+LU
 as
 lv
 aa
 JU
-Xu
+nl
 bS
 Zn
 FL
@@ -32926,7 +32923,7 @@ bQ
 DT
 as
 as
-lD
+LU
 LU
 LU
 LU
@@ -33148,7 +33145,7 @@ as
 as
 hk
 ef
-LP
+Wb
 vL
 Nh
 as
@@ -33158,7 +33155,7 @@ as
 as
 as
 as
-lD
+LU
 LU
 LU
 LU
@@ -34317,8 +34314,8 @@ as
 as
 as
 as
-lD
-lD
+LU
+LU
 LU
 LU
 LU
@@ -34550,7 +34547,7 @@ kp
 PO
 as
 as
-lD
+LU
 LU
 LU
 LU
@@ -34782,7 +34779,7 @@ RR
 Zn
 fW
 as
-lD
+LU
 LU
 LU
 LU
@@ -35014,7 +35011,7 @@ Md
 YI
 as
 as
-lD
+LU
 LU
 LU
 LU
@@ -35246,7 +35243,7 @@ Rk
 GH
 gj
 as
-lD
+LU
 LU
 LU
 LU
@@ -35468,7 +35465,7 @@ as
 QO
 so
 JU
-Xu
+nl
 Gg
 Ke
 rM
@@ -35478,7 +35475,7 @@ aD
 SY
 as
 as
-lD
+LU
 LU
 LU
 LU
@@ -35700,7 +35697,7 @@ as
 as
 Jt
 ef
-lW
+oc
 ZE
 nm
 as
@@ -35709,8 +35706,8 @@ as
 as
 as
 as
-lD
-lD
+LU
+LU
 LU
 LU
 LU
@@ -35936,13 +35933,13 @@ KF
 as
 as
 as
-lD
-lD
-lD
-lD
-lD
-lD
-lD
+LU
+LU
+LU
+LU
+LU
+LU
+LU
 LU
 LU
 LU
@@ -36168,13 +36165,13 @@ oG
 as
 Wz
 as
-lD
-lD
-lD
-lD
-lD
-lD
-lD
+LU
+LU
+LU
+LU
+LU
+LU
+LU
 LU
 LU
 LU
@@ -36400,13 +36397,13 @@ nl
 Ce
 PY
 as
-lD
-lD
-lD
-lD
-lD
-lD
-lD
+LU
+LU
+LU
+LU
+LU
+LU
+LU
 LU
 LU
 LU
@@ -36632,13 +36629,13 @@ vr
 as
 SR
 as
-lD
-lD
-lD
-lD
-lD
-lD
-lD
+LU
+LU
+LU
+LU
+LU
+LU
+LU
 LU
 LU
 LU
@@ -36864,13 +36861,13 @@ zF
 as
 as
 as
-lD
-lD
-lD
-lD
-lD
-lD
-lD
+LU
+LU
+LU
+LU
+LU
+LU
+LU
 LU
 LU
 LU
@@ -37095,14 +37092,14 @@ lE
 Rg
 lD
 lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
 LU
 LU
 LU
@@ -37327,14 +37324,14 @@ HZ
 gs
 jy
 lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
 LU
 LU
 LU
@@ -37559,14 +37556,14 @@ dP
 lD
 lD
 lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
 LU
 LU
 LU
@@ -37791,14 +37788,14 @@ lD
 lD
 lD
 lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
 LU
 LU
 LU
@@ -38023,14 +38020,14 @@ lD
 lD
 lD
 lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
-lD
+LU
+LU
+LU
+LU
+LU
+LU
+LU
+LU
 LU
 LU
 LU
@@ -38255,14 +38252,14 @@ xf
 xf
 oY
 xi
-oc
-lD
-lD
-lD
-lD
-lD
-lD
-lD
+ZJ
+LU
+LU
+LU
+LU
+LU
+LU
+LU
 LU
 LU
 LU
@@ -41264,7 +41261,7 @@ BH
 BH
 BH
 BH
-uO
+pZ
 aV
 Or
 BH
@@ -41496,7 +41493,7 @@ BH
 BH
 Th
 BH
-uO
+pZ
 vZ
 Or
 BH

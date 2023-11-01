@@ -248,7 +248,7 @@
 	fire_sound = 'sound/weapons/gunshots/gunshot_smg.ogg'
 	projectile_energy_cost = 14
 
-//Immortality ring
+/* Caves awaymission */
 /obj/item/clothing/gloves/ring/immortality_ring
 	name = "старое кольцо"
 	icon_state = "shadowring"
@@ -301,3 +301,94 @@
 		flags = NODROP
 		to_chat(user, span_danger("[name] туго обвивается вокруг твоего пальца!"))
 		SEND_SOUND (user, sound('modular_ss220/aesthetics_sounds/sound/creepy/demon2.ogg'))
+
+/obj/item/emerald_stone
+	name = "изумрудный камень"
+	desc = "Маленькая серебряная побрякушка, инкрустированная ярким изумрудом бриллиантовой огранки. На верхушечной площадке камня мелко выгравирован череп ."
+	icon = 'icons/obj/wizard.dmi'
+	icon_state = "necrostone"
+	item_state = "electronic"
+	origin_tech = "bluespace=4;materials=4"
+	w_class = WEIGHT_CLASS_TINY
+	var/list/skeletons = list()
+
+/obj/item/emerald_stone/attack(mob/living/carbon/human/M as mob, mob/living/carbon/human/user as mob)
+
+	if(!istype(M))
+		return ..()
+
+	if(!istype(user))
+		return
+
+	if(M.skeleton)
+		to_chat(user, span_warning("Этот воин уже отслужил свое."))
+		return
+
+	if(M.stat != DEAD)
+		to_chat(user, span_warning("Этот артефакт подействует лишь на мертвеца!"))
+		return
+
+	if((!M.mind || !M.client) && !M.grab_ghost())
+		to_chat(user, span_warning("Это тело никогда не было обременено душой..."))
+		return
+
+	check_skeletons()//clean out/refresh the list
+
+	if(skeletons.len >= 1)
+		to_chat(user, span_warning("Этот артефакт может поддерживать только одного мертвеца!</span>"))
+		return
+
+	else
+		M.set_species(/datum/species/skeleton) // OP skellybones
+		M.visible_message(span_warning ("[M] отторгает бренную оболочку и предстает в виде скелета!"))
+		M.grab_ghost() // yoinks the ghost if its not in the body
+		M.revive()
+		equip_undead(M)
+	skeletons |= M
+	to_chat(M, span_danger("Вас возродил </span><B>[user.real_name]!</B>"))
+	to_chat(M, span_danger("[user.p_theyre(TRUE)] теперь ваш хозяин, служите ему, чего бы это вам не стоило!</span>"))
+
+/obj/item/emerald_stone/proc/check_skeletons()
+	for(var/X in skeletons)
+		if(!ishuman(X))
+			skeletons.Remove(X)
+			continue
+		var/mob/living/carbon/human/H = X
+		if(H.stat == DEAD)
+			skeletons.Remove(X)
+			continue
+	listclearnulls(skeletons)
+
+/obj/item/emerald_stone/proc/equip_undead(mob/living/carbon/human/H as mob)
+	for(var/obj/item/I in H)
+		H.unEquip(I)
+	var/randomUndead = "roman"//defualt
+	randomUndead = pick("roman","pirate","clown")
+
+	switch(randomUndead)
+		if("roman")
+			var/hat = pick(/obj/item/clothing/head/helmet/roman, /obj/item/clothing/head/helmet/roman/legionaire)
+			H.equip_to_slot_or_del(new hat(H), SLOT_HUD_HEAD)
+			H.equip_to_slot_or_del(new /obj/item/clothing/under/costume/roman(H), SLOT_HUD_JUMPSUIT)
+			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/roman(H), SLOT_HUD_SHOES)
+			H.equip_to_slot_or_del(new /obj/item/shield/riot/roman(H), SLOT_HUD_LEFT_HAND)
+			H.equip_to_slot_or_del(new /obj/item/claymore(H), SLOT_HUD_RIGHT_HAND)
+			H.equip_to_slot_or_del(new /obj/item/spear(H), SLOT_HUD_BACK)
+		if("pirate")
+			H.equip_to_slot_or_del(new /obj/item/clothing/under/costume/pirate(H), SLOT_HUD_JUMPSUIT)
+			H.equip_to_slot_or_del(new /obj/item/clothing/suit/pirate_brown(H),  SLOT_HUD_OUTER_SUIT)
+			H.equip_to_slot_or_del(new /obj/item/clothing/head/bandana(H), SLOT_HUD_HEAD)
+			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/sandal(H), SLOT_HUD_SHOES)
+			H.equip_to_slot_or_del(new /obj/item/clothing/glasses/eyepatch(H), SLOT_HUD_GLASSES)
+			H.equip_to_slot_or_del(new /obj/item/claymore/ceremonial(H), SLOT_HUD_RIGHT_HAND)
+			H.equip_to_slot_or_del(new /obj/item/spear(H), SLOT_HUD_BACK)
+			H.equip_to_slot_or_del(new /obj/item/shield/riot/roman(H), SLOT_HUD_LEFT_HAND)
+		if("clown")
+			H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/civilian/clown(H), SLOT_HUD_JUMPSUIT)
+			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/clown_shoes(H), SLOT_HUD_SHOES)
+			H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/clown_hat(H), SLOT_HUD_WEAR_MASK)
+			H.equip_to_slot_or_del(new /obj/item/clothing/head/stalhelm(H), SLOT_HUD_HEAD)
+			H.equip_to_slot_or_del(new /obj/item/bikehorn(H), SLOT_HUD_LEFT_STORE)
+			H.equip_to_slot_or_del(new /obj/item/claymore/ceremonial(H), SLOT_HUD_RIGHT_HAND)
+			H.equip_to_slot_or_del(new /obj/item/shield/riot/roman(H), SLOT_HUD_LEFT_HAND)
+			H.equip_to_slot_or_del(new /obj/item/spear(H), SLOT_HUD_BACK)

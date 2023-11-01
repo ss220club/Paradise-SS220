@@ -209,7 +209,19 @@
 	/obj/item/clothing/head/crown,
 	/obj/item/clothing/suit/imperium_monk,
 	/obj/effect/particle_effect/smoke/bad,
-	/obj/item/necromantic_stone)
+	/obj/item/emerald_stone)
+
+/mob/living/simple_animal/hostile/skeleton/deadwizard/Shoot(atom/targeted_atom)
+	..()
+	if (get_dist(src, targeted_atom) > 9)
+		rapid = 1
+		ranged_cooldown_time = 15
+		projectiletype = /obj/item/projectile/magic/fireball/infernal
+	else
+		projectiletype = /obj/item/projectile/magic/arcane_barrage
+		rapid = 4
+		rapid_fire_delay = 1
+		ranged_cooldown_time = 15
 
 /* Vox Raiders */
 /mob/living/simple_animal/hostile/vox
