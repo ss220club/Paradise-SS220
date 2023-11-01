@@ -90,7 +90,7 @@
 	item_state = "jacket_syndie"
 
 /obj/item/clothing/suit/hooded/vi_arcane
-	name = "Куртка Ви"
+	name = "куртка Ви"
 	desc = "Слегка потрёпанный жакет боевой девчушки Ви."
 	icon = 'modular_ss220/clothing/icons/object/suits.dmi'
 	icon_state = "vi_arcane"
@@ -106,7 +106,7 @@
 	hoodtype = /obj/item/clothing/head/hooded/vi_arcane
 
 /obj/item/clothing/head/hooded/vi_arcane
-	name = "Капюшон жакета"
+	name = "капюшон Ви"
 	desc = "Капюшон, прикреплённый к жакету Ви."
 	icon = 'modular_ss220/clothing/icons/object/hats.dmi'
 	icon_state = "vi_arcane"
@@ -119,12 +119,12 @@
 	flags_inv = HIDEEARS
 
 /obj/item/clothing/suit/hooded/vi_arcane
-	name = " жакет Ви."
+	name = "жакет Ви."
 	icon_state = "vi_arcane"
 	item_state = "vi_arcane"
 	hoodtype = /obj/item/clothing/head/hooded/vi_arcane
 
 /obj/item/clothing/head/hooded/vi_arcane
-	name = "капюшон жакета"
+	name = "капюшон Ви"
 	icon_state = "vi_arcane"
 	item_state = "vi_arcane"
