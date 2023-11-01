@@ -16,6 +16,7 @@
 	// Force update it incase it spawns outside an away mission and shouldnt be charged
 	onTransitZ(new_z = loc.z)
 
+/obj/item/gun/energy/laser/awaymission_aeg/onTransitZ(old_z, new_z)
 	if(is_away_level(new_z))
 		if(ismob(loc))
 			to_chat(loc, span_notice("Ваш [name] активируется, начиная потреблять энергию от ближайшего беспроводного источника питания."))
