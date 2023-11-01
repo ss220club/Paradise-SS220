@@ -88,3 +88,43 @@
 	icon_state = "jacket_syndie"
 	icon_override = 'modular_ss220/clothing/icons/mob/suits.dmi'
 	item_state = "jacket_syndie"
+
+/obj/item/clothing/suit/hooded/vi_arcane
+	name = "Куртка Ви"
+	desc = "Слегка потрёпанный жакет боевой девчушки Ви."
+	icon = 'modular_ss220/clothing/icons/object/suits.dmi'
+	icon_state = "vi_arcane"
+	icon_override = 'modular_ss220/clothing/icons/mob/suits.dmi'
+	item_state = "vi_arcane"
+	lefthand_file = 'modular_ss220/clothing/icons/inhands/left_hand.dmi'
+	righthand_file = 'modular_ss220/clothing/icons/inhands/right_hand.dmi'
+	flags_inv = HIDEJUMPSUIT
+	body_parts_covered = UPPER_TORSO|ARMS
+	cold_protection = UPPER_TORSO|ARMS
+	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
+	allowed = list(/obj/item/tank/internals/emergency_oxygen)
+	hoodtype = /obj/item/clothing/head/hooded/vi_arcane
+
+/obj/item/clothing/head/hooded/vi_arcane
+	name = "Капюшон жакета"
+	desc = "Капюшон, прикреплённый к жакету Ви."
+	icon = 'modular_ss220/clothing/icons/object/hats.dmi'
+	icon_state = "vi_arcane"
+	icon_override = 'modular_ss220/clothing/icons/mob/hats.dmi'
+	item_state = "vi_arcane"
+	body_parts_covered = HEAD
+	cold_protection = HEAD
+	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
+	flags = BLOCKHAIR
+	flags_inv = HIDEEARS
+
+/obj/item/clothing/suit/hooded/vi_arcane
+	name = " жакет Ви."
+	icon_state = "vi_arcane"
+	item_state = "vi_arcane"
+	hoodtype = /obj/item/clothing/head/hooded/vi_arcane
+
+/obj/item/clothing/head/hooded/vi_arcane
+	name = "капюшон жакета"
+	icon_state = "vi_arcane"
+	item_state = "vi_arcane"
