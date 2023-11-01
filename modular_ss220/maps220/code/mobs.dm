@@ -194,15 +194,16 @@
 	icon = 'modular_ss220/maps220/icons/simple_human.dmi'
 	icon_living = "deadwizard"
 	icon_state = "deadwizard"
-	maxHealth = 300
-	health = 300
+	maxHealth = 400
+	health = 400
 	ranged = 1
-	rapid = 4
-	rapid_fire_delay = 1
-	retreat_distance = 4
-	minimum_distance = 4
+	retreat_distance = 7
+	minimum_distance = 5
+	ranged_cooldown_time = 5
+	ranged_ignores_vision = TRUE
+	aggro_vision_range = 12
+	vision_range = 12
 	del_on_death = 1
-	projectiletype = /obj/item/projectile/magic/arcane_barrage
 	projectilesound = 'sound/magic/blind.ogg'
 	loot = list(
 	/obj/effect/decal/remains/human,
