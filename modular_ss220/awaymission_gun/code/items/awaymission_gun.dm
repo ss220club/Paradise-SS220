@@ -19,12 +19,12 @@
 /obj/item/gun/energy/laser/awaymission_aeg/onTransitZ(old_z, new_z)
 	if(is_away_level(new_z))
 		if(ismob(loc))
-			to_chat(loc, span_notice("Ваш [name] активируется, начиная потреблять энергию от ближайшего беспроводного источника питания."))
+			to_chat(loc, span_notice("Ваш [src] активируется, начиная потреблять энергию от ближайшего беспроводного источника питания."))
 		selfcharge = TRUE
 	else
 		if(selfcharge)
 			if(ismob(loc))
-				to_chat(loc, span_danger("Ваш [name] деактивируется, так как он находится вне зоны действия источника питания.</span>"))
+				to_chat(loc, span_danger("Ваш [src] деактивируется, так как он находится вне зоны действия источника питания.</span>"))
 			cell.charge = 0
 			selfcharge = FALSE
 			update_icon()
@@ -56,10 +56,10 @@
 	force = 10
 
 /obj/item/gun/energy/laser/awaymission_aeg/rnd/mk2/attack_self(mob/living/user)
-	var/msg_for_all = span_warning("[user.name] усердно давит на рычаг зарядки [name], но он не поддается!")
-	var/msg_for_user = span_notice("Вы пытаетесь надавить на рычаг зарядки [name], но он заблокирован.")
-	var/msg_recharge_all = span_notice("[user.name] усердно давит на рычаг зарядки [name]...")
-	var/msg_recharge_user = span_notice("Вы со всей силы давите на рычаг зарядки [name], пытаясь зарядить её...")
+	var/msg_for_all = span_warning("[user.name] усердно давит на рычаг зарядки [src], но он не поддается!")
+	var/msg_for_user = span_notice("Вы пытаетесь надавить на рычаг зарядки [src], но он заблокирован.")
+	var/msg_recharge_all = span_notice("[user.name] усердно давит на рычаг зарядки [src]...")
+	var/msg_recharge_user = span_notice("Вы со всей силы давите на рычаг зарядки [src], пытаясь зарядить её...")
 
 	if(!is_away_level(loc.z) && !emagged)
 		user.visible_message(msg_for_all, msg_for_user)
@@ -70,7 +70,7 @@
 		return FALSE
 
 	if(user.nutrition <= NUTRITION_LEVEL_STARVING)
-		user.visible_message(span_warning("[user.name] слабо давит на [name], но он ослаб!"), span_notice("Вы пытаетесь надавить на рычаг зарядки [name], но не можете из-за усталости!"))
+		user.visible_message(span_warning("[user.name] слабо давит на [src], но он ослаб!"), span_notice("Вы пытаетесь надавить на рычаг зарядки [src], но не можете из-за усталости!"))
 		return FALSE
 
 	user.visible_message(msg_recharge_all, msg_recharge_user)
@@ -81,5 +81,4 @@
 	cell.give(166)
 	on_recharge()
 	user.adjust_nutrition(-25)
-
 	. = ..()
