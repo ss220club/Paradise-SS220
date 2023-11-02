@@ -118,11 +118,12 @@ export class NanoMap extends Component {
       'margin-left': offsetX + 'px',
       'overflow': 'hidden',
       'position': 'relative',
-      'background-image': 'url(' + mapUrl + ')',
       'background-size': 'cover',
       'background-repeat': 'no-repeat',
+      'background-image': 'url(' + mapUrl + ')',
       'text-align': 'center',
       'cursor': dragging ? 'move' : 'auto',
+      '-ms-interpolation-mode': 'nearest-neighbor',
     };
 
     return (
