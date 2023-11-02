@@ -1,7 +1,9 @@
 import git
 import json
+import re
 BUILD_PATH = "./"
 
+allowPathsRegexp = re.compile('^code/.*')
 
 repo = git.Repo(BUILD_PATH)
 tree = repo.head.commit.tree
@@ -36,6 +38,16 @@ for line in diff:
             translation["files"][-1]["replaces"][-1]["replace"] += f"\n{line[1:]}"
         lastaction = "+"
 
+filteredTranslation = {"files": []}
+for file in translation['files']:
+    if not allowPathsRegexp.match(file['path']):
+        continue
+    filteredTranslation["files"].append(file)
+
+fullTranslation = json.load(open('ss220replace.json', encoding='utf-8'))
+for file in filteredTranslation['files']:
+    fullTranslation["files"].append(file)
+
 with open('ss220replace.json', 'w+', encoding='utf-8') as f:
-    json.dump(translation, f, ensure_ascii=False, indent=2)
-print(f"Added translation for {len(translation['files'])} files.")
+    json.dump(fullTranslation, f, ensure_ascii=False, indent=2)
+print(f"Added translation for {len(filteredTranslation['files'])} files.")
