@@ -17,6 +17,8 @@
 
 	var/requestQuery = {"speaker=[seed.value]&ext=ogg&text=[url_encode(ssml_text)]"}
 
+	rustg_file_write("", fileName)
+
 	SShttp.create_async_request(RUSTG_HTTP_METHOD_GET, {"[api_url]?[requestQuery]"}, "", list("content-type" = "application/json", "Authorization" = {"Bearer [GLOB.configuration.tts.tts_token_white_dream]"}), proc_callback, fileName)
 
 	return TRUE

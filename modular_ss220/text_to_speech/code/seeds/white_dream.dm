@@ -7,12 +7,6 @@
 	category = TTS_CATEGORY_OTHER
 	gender = TTS_GENDER_MALE
 
-/datum/tts_seed/white_dream/papich
-	name = "Papich"
-	value = "papich"
-	category = TTS_CATEGORY_OTHER
-	gender = TTS_GENDER_MALE
-
 /datum/tts_seed/white_dream/bebey
 	name = "Bebey"
 	value = "bebey"
