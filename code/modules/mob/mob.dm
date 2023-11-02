@@ -998,13 +998,13 @@ GLOBAL_LIST_INIT(slot_equipment_priority, list( \
 	show_stat_turf_contents()
 
 	if(statpanel("Status"))
-		stat(null, "Round ID: [GLOB.round_id ? GLOB.round_id : "NULL"]")
-		stat(null, "Map: [SSmapping.map_datum.fluff_name]")
+		stat(null, "Номер раунда: [GLOB.round_id ? GLOB.round_id : "NULL"]")
+		stat(null, "Карта: [SSmapping.map_datum.fluff_name]")
 		if(SSmapping.next_map)
-			stat(null, "Next Map: [SSmapping.next_map.fluff_name]")
+			stat(null, "Следующая карта: [SSmapping.next_map.fluff_name]")
 		if(SSticker)
 			show_stat_station_time()
-		stat(null, "Players Connected: [length(GLOB.clients)]")
+		stat(null, "Игроков подключено: [length(GLOB.clients)]")
 
 	if(length(mob_spell_list))
 		for(var/obj/effect/proc_holder/spell/S in mob_spell_list)
@@ -1070,9 +1070,9 @@ GLOBAL_LIST_INIT(slot_equipment_priority, list( \
 
 // this function displays the station time in the status panel
 /mob/proc/show_stat_station_time()
-	stat(null, "Server Uptime: [worldtime2text()]")
-	stat(null, "Round Time: [ROUND_TIME ? time2text(ROUND_TIME, "hh:mm:ss") : "N/A"]")
-	stat(null, "Station Time: [station_time_timestamp()]")
+	stat(null, "Время работы сервера: [worldtime2text()]")
+	stat(null, "Длительность раунда: [ROUND_TIME ? time2text(ROUND_TIME, "hh:mm:ss") : "N/A"]")
+	stat(null, "Станционное время: [station_time_timestamp()]")
 	stat(null, "Time Dilation: [round(SStime_track.time_dilation_current,1)]% " + \
 				"AVG:([round(SStime_track.time_dilation_avg_fast,1)]%, " + \
 				"[round(SStime_track.time_dilation_avg,1)]%, " + \
