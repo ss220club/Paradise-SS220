@@ -53,9 +53,9 @@ SUBSYSTEM_DEF(http)
   * Generates an async request, and adds it to the subsystem's processing list
   * These should be used as they do not lock the entire DD process up as they execute inside their own thread pool inside RUSTG
   */
-/datum/controller/subsystem/http/proc/create_async_request(method, url, body = "", list/headers, datum/callback/proc_callback)
+/datum/controller/subsystem/http/proc/create_async_request(method, url, body = "", list/headers, datum/callback/proc_callback, output_file = "")
 	var/datum/http_request/req = new()
-	req.prepare(method, url, body, headers)
+	req.prepare(method, url, body, headers, output_file)
 	if(proc_callback)
 		req.cb = proc_callback
 

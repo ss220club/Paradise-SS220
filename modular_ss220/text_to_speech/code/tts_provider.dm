@@ -2,6 +2,7 @@
 	var/name = "STUB"
 	var/is_enabled = TRUE
 	var/api_url
+	var/skipExplicitFileSave = FALSE
 
 	var/is_throttled = FALSE
 	var/throttled_until = 0
