@@ -1,6 +1,7 @@
 import git
 import json
 import re
+import os
 BUILD_PATH = "./"
 
 allowPathsRegexp = re.compile('^code/.*')
@@ -44,10 +45,12 @@ for file in translation['files']:
         continue
     filteredTranslation["files"].append(file)
 
-fullTranslation = json.load(open('ss220replace.json', encoding='utf-8'))
+jsonFilePath = os.path.dirname(os.path.realpath(__file__)) + '/ss220replace.json'
+
+fullTranslation = json.load(open(jsonFilePath, encoding='utf-8'))
 for file in filteredTranslation['files']:
     fullTranslation["files"].append(file)
 
-with open('ss220replace.json', 'w+', encoding='utf-8') as f:
+with open(jsonFilePath, 'w+', encoding='utf-8') as f:
     json.dump(fullTranslation, f, ensure_ascii=False, indent=2)
 print(f"Added translation for {len(filteredTranslation['files'])} files.")
