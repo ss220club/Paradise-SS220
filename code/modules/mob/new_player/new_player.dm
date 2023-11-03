@@ -54,36 +54,36 @@
 	set waitfor = FALSE
 	var/real_name = client.prefs.active_character.real_name
 	if(client.prefs.toggles2 & PREFTOGGLE_2_RANDOMSLOT)
-		real_name = "Random Character Slot"
-	var/output = "<center><p><a href='byond://?src=[UID()];show_preferences=1'>Setup Character</A><br /><i>[real_name]</i></p>"
+		real_name = "Случайный персонаж"
+	var/output = "<center><p><a href='byond://?src=[UID()];show_preferences=1'>Настройка персонажа</A><br /><i>[real_name]</i></p>"
 
 	if(!SSticker || SSticker.current_state <= GAME_STATE_PREGAME)
-		if(!ready)	output += "<p><a href='byond://?src=[UID()];ready=1'>Declare Ready</A></p>"
-		else	output += "<p><b>You are ready</b> (<a href='byond://?src=[UID()];ready=2'>Cancel</A>)</p>"
+		if(!ready)	output += "<p><a href='byond://?src=[UID()];ready=1'>Нажмите, если готовы</A></p>"
+		else	output += "<p><b>Вы готовы</b> (<a href='byond://?src=[UID()];ready=2'>Отмена</A>)</p>"
 	else
-		output += "<p><a href='byond://?src=[UID()];manifest=1'>View the Crew Manifest</A></p>"
-		output += "<p><a href='byond://?src=[UID()];late_join=1'>Join Game!</A></p>"
+		output += "<p><a href='byond://?src=[UID()];manifest=1'>Просмотр списка экипажа</A></p>"
+		output += "<p><a href='byond://?src=[UID()];late_join=1'>Присоединиться к игре!</A></p>"
 
 	var/list/antags = client.prefs.be_special
 	if(antags && antags.len)
-		if(!client.skip_antag) output += "<p><a href='byond://?src=[UID()];skip_antag=1'>Global Antag Candidacy</A>"
+		if(!client.skip_antag) output += "<p><a href='byond://?src=[UID()];skip_antag=1'>Глобальная настройка антагов</A>"
 		else	output += "<p><a href='byond://?src=[UID()];skip_antag=2'>Global Antag Candidacy</A>"
-		output += "<br /><small>You are <b>[client.skip_antag ? "ineligible" : "eligible"]</b> for all antag roles.</small></p>"
+		output += "<br /><small>Вы <b>[client.skip_antag ? "не готовы" : "готовы"]</b> для всех антаг ролей.</small></p>"
 
 	if(!SSticker || SSticker.current_state == GAME_STATE_STARTUP)
-		output += "<p>Observe (Please wait...)</p>"
+		output += "<p>Наблюдать (Ожидайте...)</p>"
 	else
-		output += "<p><a href='byond://?src=[UID()];observe=1'>Observe</A></p>"
+		output += "<p><a href='byond://?src=[UID()];observe=1'>Наблюдать</A></p>"
 
 	if(GLOB.join_tos)
-		output += "<p><a href='byond://?src=[UID()];tos=1'>Terms of Service</A></p>"
+		output += "<p><a href='byond://?src=[UID()];tos=1'>Условия использования</A></p>"
 
 	if(length(GLOB.configuration.system.region_map))
 		output += "<p><a href='byond://?src=[UID()];setregion=1'>Set region (reduces ping)</A></p>"
 
 	output += "</center>"
 
-	var/datum/browser/popup = new(src, "playersetup", "<div align='center'>New Player Options</div>", 240, 340)
+	var/datum/browser/popup = new(src, "playersetup", "<div align='center'>Новый игрок</div>", 240, 340)
 	popup.set_window_options("can_close=0")
 	popup.set_content(output)
 	popup.open(0)
