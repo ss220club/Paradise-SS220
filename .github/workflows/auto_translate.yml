@@ -39,13 +39,11 @@ jobs:
 
       - name: Apply PR translation
         run: |
-          git diff ..$(git log -n 1 --pretty=format:%H origin/translate) | git apply
+          git cherry-pick -n origin/translate
 
       - name: 'Generate Translation'
         run: |
           python ./tools/translator/converter.py
-          git add ./tools/translator/ss220replace.json
-          git checkout -- .
 
       - name: 'Push Translation'
         run: |
