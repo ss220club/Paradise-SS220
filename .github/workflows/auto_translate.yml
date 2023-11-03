@@ -39,15 +39,18 @@ jobs:
 
       - name: Apply PR translation
         run: |
-          git cherry-pick -n origin/translate
+          git diff ..$(git log -n 1 --pretty=format:%H origin/translate) | git apply
 
       - name: 'Generate Translation'
         run: |
           python ./tools/translator/converter.py
+          git add ./tools/translator/ss220replace.json
+          git checkout -- .
 
       - name: 'Push Translation'
         run: |
+          git checkout origin/translate
           git config --local user.email "action@github.com"
           git config --local user.name "SS220Manager"
           git commit -m "Generate translation file"
-          git push -f origin translate_tmp:translate
+          git push origin/translate
