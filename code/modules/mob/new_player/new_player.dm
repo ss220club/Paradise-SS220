@@ -38,10 +38,10 @@
 	// Dont blank out the other window. This one is read only.
 	if(!GLOB.configuration.system.external_tos_handler)
 		src << browse(null, "window=playersetup")
-		output += "<p><a href='byond://?src=[UID()];consent_signed=SIGNED'>I consent</A>"
-		output += "<p><a href='byond://?src=[UID()];consent_rejected=NOTSIGNED'>I DO NOT consent</A>"
+		output += "<p><a href='byond://?src=[UID()];consent_signed=SIGNED'>Я согласен</A>"
+		output += "<p><a href='byond://?src=[UID()];consent_rejected=NOTSIGNED'>Я НЕ согласен</A>"
 	src << browse(output,"window=privacy_consent;size=500x300")
-	var/datum/browser/popup = new(src, "privacy_consent", "<div align='center'>Privacy Consent</div>", 500, 400)
+	var/datum/browser/popup = new(src, "privacy_consent", "<div align='center'>Соглашение о конфиденциальности</div>", 500, 400)
 	// Let them close it here, this is a read only pane
 	if(!GLOB.configuration.system.external_tos_handler)
 		popup.set_window_options("can_close=0")
