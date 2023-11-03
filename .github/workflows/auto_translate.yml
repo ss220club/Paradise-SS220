@@ -49,7 +49,7 @@ jobs:
 
       - name: 'Push Translation'
         run: |
-          git checkout origin/translate
+          git checkout translate
           git config --local user.email "action@github.com"
           git config --local user.name "SS220Manager"
           git commit -m "Generate translation file"
