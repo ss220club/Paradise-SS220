@@ -28,7 +28,7 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "SS220Manager"
 
-      - name: Update translate branch
+      - name: 'Update translate branch'
         run: |
           git fetch origin translate
           git checkout translate
@@ -36,5 +36,4 @@ jobs:
 
       - name: 'Push'
         run: |
-          git commit -m "Sync with master"
           git push origin translate:translate
