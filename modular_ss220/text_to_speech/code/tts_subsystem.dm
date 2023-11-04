@@ -211,8 +211,8 @@ SUBSYSTEM_DEF(tts220)
 		var/datum/tts_seed/seed = request[2]
 		var/datum/callback/proc_callback = request[3]
 		var/datum/tts_provider/provider = seed.provider
-		var/fileName = request[4]
-		provider.request(text, seed, proc_callback, fileName)
+		var/file_name = request[4]
+		provider.request(text, seed, proc_callback, file_name)
 		tts_rps_counter++
 	tts_requests_queue.Cut(1, clamp(LAZYLEN(tts_requests_queue), 0, free_rps) + 1)
 
@@ -332,7 +332,7 @@ SUBSYSTEM_DEF(tts220)
 	if(!voice)
 		return
 
-	if (!provider.skipExplicitFileSave)
+	if (!provider.skip_explicit_file_save)
 		rustg_ss220_file_write_b64decode(voice, "[filename].ogg")
 
 	if (!GLOB.configuration.tts.tts_cache_enabled)

@@ -8,7 +8,7 @@
 		return FALSE
 	return ..()
 
-/datum/tts_provider/silero/request(text, datum/tts_seed/silero/seed, datum/callback/proc_callback)
+/datum/tts_provider/silero/request(text, datum/tts_seed/silero/seed, datum/callback/proc_callback, file_name)
 	if(throttle_check())
 		return FALSE
 
