@@ -1,6 +1,6 @@
 /datum/tts_provider/white_dream
 	name = "White Dream"
-	is_enabled = TRUE
+	is_enabled = FALSE
 	api_url = "https://pubtts.ss14.su/api/v1/tts"
 	skip_explicit_file_save = TRUE
 

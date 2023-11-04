@@ -42,10 +42,11 @@
 	var/list/providers = list()
 	for(var/_provider in SStts220.tts_providers)
 		var/datum/tts_provider/provider = SStts220.tts_providers[_provider]
-		providers += list(list(
-			"name" = provider.name,
-			"is_enabled" = provider.is_enabled,
-		))
+		if (provider.is_enabled)
+			providers += list(list(
+				"name" = provider.name,
+				"is_enabled" = provider.is_enabled,
+			))
 	data["providers"] = providers
 
 	var/list/seeds = list()
