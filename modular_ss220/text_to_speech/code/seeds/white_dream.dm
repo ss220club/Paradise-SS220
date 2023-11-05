@@ -59,19 +59,19 @@
 	name = "Dbkn"
 	value = "dbkn"
 	category = TTS_CATEGORY_OTHER
-	gender = TTS_GENDER_ANY
+	gender = TTS_GENDER_MALE
 
 /datum/tts_seed/white_dream/xrenoid
 	name = "Xrenoid"
 	value = "xrenoid"
 	category = TTS_CATEGORY_OTHER
-	gender = TTS_GENDER_ANY
+	gender = TTS_GENDER_MALE
 
 /datum/tts_seed/white_dream/valtos
 	name = "Valtos"
 	value = "valtos"
 	category = TTS_CATEGORY_OTHER
-	gender = TTS_GENDER_ANY
+	gender = TTS_GENDER_FEMALE
 
 /datum/tts_seed/white_dream/briman
 	name = "Briman"
@@ -179,13 +179,13 @@
 	name = "Fact_core"
 	value = "fact_core"
 	category = TTS_CATEGORY_OTHER
-	gender = TTS_GENDER_ANY
+	gender = TTS_GENDER_MALE
 
 /datum/tts_seed/white_dream/space_core
 	name = "Space_core"
 	value = "space_core"
 	category = TTS_CATEGORY_OTHER
-	gender = TTS_GENDER_ANY
+	gender = TTS_GENDER_MALE
 
 /datum/tts_seed/white_dream/turret_floor
 	name = "Turret_floor"
@@ -239,7 +239,7 @@
 	name = "Ziggs"
 	value = "ziggs"
 	category = TTS_CATEGORY_OTHER
-	gender = TTS_GENDER_ANY
+	gender = TTS_GENDER_MALE
 
 /datum/tts_seed/white_dream/caitlyn
 	name = "Caitlyn"
@@ -334,5 +334,53 @@
 /datum/tts_seed/white_dream/spy
 	name = "Spy"
 	value = "spy"
+	category = TTS_CATEGORY_OTHER
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/white_dream/khajiit
+	name = "Khajiit"
+	value = "khajiit"
+	category = TTS_CATEGORY_OTHER
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/white_dream/punisher
+	name = "Punisher"
+	value = "punisher"
+	category = TTS_CATEGORY_OTHER
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/white_dream/johnny
+	name = "Johnny"
+	value = "johnny"
+	category = TTS_CATEGORY_OTHER
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/white_dream/panam
+	name = "Panam"
+	value = "panam"
+	category = TTS_CATEGORY_OTHER
+	gender = TTS_GENDER_FEMALE
+
+/datum/tts_seed/white_dream/v_female
+	name = "V"
+	value = "v_female"
+	category = TTS_CATEGORY_OTHER
+	gender = TTS_GENDER_FEMALE
+
+/datum/tts_seed/white_dream/dornan
+	name = "Dornan"
+	value = "dornan"
+	category = TTS_CATEGORY_OTHER
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/white_dream/officer_enclave
+	name = "Officer Enclave"
+	value = "officer_enclave"
+	category = TTS_CATEGORY_OTHER
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/white_dream/richardson
+	name = "Richardson"
+	value = "richardson"
 	category = TTS_CATEGORY_OTHER
 	gender = TTS_GENDER_MALE
