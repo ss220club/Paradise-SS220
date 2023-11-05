@@ -25,9 +25,11 @@
 	dir = 4
 	},
 /obj/machinery/disposal,
-/obj/effect/decal/warning_stripes/yellow/hollow,
+/obj/effect/turf_decal/delivery/hollow,
 /obj/structure/window/reinforced,
-/obj/effect/decal/warning_stripes/northwest,
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -40,7 +42,9 @@
 	},
 /area/awaymission/arrakis/bunker/engie)
 "aaf" = (
-/obj/effect/decal/warning_stripes/southeastcorner,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 2
+	},
 /obj/effect/spawner/random_spawners/blood_often,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
@@ -164,7 +168,9 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/effect/decal/warning_stripes/east,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -455,11 +461,9 @@
 /turf/simulated/floor/indestructible/dune_sand/smooth,
 /area/awaymission/arrakis/cave)
 "abl" = (
-/obj/machinery/light_switch{
+/obj/machinery/light_switch/east{
 	dir = 8;
-	pixel_x = 24;
-	on = 0;
-	name = "custom placement"
+	on = 0
 	},
 /turf/simulated/floor/plasteel{
 	dir = 5;
@@ -494,7 +498,7 @@
 	},
 /area/awaymission/arrakis/bunker/kitchen)
 "abp" = (
-/obj/effect/decal/warning_stripes/yellow/partial{
+/obj/effect/turf_decal/delivery/partial{
 	dir = 1
 	},
 /turf/simulated/floor/plasteel{
@@ -594,7 +598,9 @@
 	dir = 8
 	},
 /obj/effect/mapping_helpers/machinery/damaged,
-/obj/effect/decal/warning_stripes/northeast,
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
+	},
 /obj/machinery/door/poddoor{
 	density = 0;
 	icon_state = "open";
@@ -605,7 +611,9 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/arrakis/bunker/rnd)
 "abC" = (
-/obj/effect/decal/warning_stripes/east,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
 /obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -851,7 +859,6 @@
 	name = "Atmosia Flag"
 	},
 /obj/item/radio/intercom{
-	pixel_y = -28;
 	name = "custom placement";
 	dir = 2
 	},
@@ -1078,7 +1085,7 @@
 	},
 /area/awaymission/arrakis/bunker/medbay)
 "acY" = (
-/obj/effect/decal/warning_stripes/yellow/hollow,
+/obj/effect/turf_decal/delivery/hollow,
 /obj/machinery/constructable_frame/machine_frame,
 /turf/simulated/floor/plasteel{
 	icon_state = "whitehall"
@@ -1457,7 +1464,9 @@
 /obj/machinery/mech_bay_recharge_port{
 	dir = 8
 	},
-/obj/effect/decal/warning_stripes/east,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
 /turf/simulated/floor/plating,
 /area/awaymission/arrakis/bunker/rnd)
 "aea" = (
@@ -1485,10 +1494,11 @@
 /area/awaymission/arrakis/bunker/medbay)
 "aed" = (
 /obj/structure/extinguisher_cabinet{
-	name = "custom placement";
-	pixel_x = -24
+	name = "custom placement"
 	},
-/obj/effect/decal/warning_stripes/east,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
 /obj/machinery/light/directional/west,
 /obj/effect/mapping_helpers/machinery/damaged,
 /turf/simulated/floor/plasteel{
@@ -1529,7 +1539,9 @@
 /obj/structure/chair/stool{
 	dir = 4
 	},
-/obj/effect/decal/warning_stripes/west,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
 /turf/simulated/floor/engine,
 /area/awaymission/arrakis/bunker/medbay)
 "aem" = (
@@ -1663,9 +1675,8 @@
 /area/awaymission/arrakis/bunker/rnd)
 "aeE" = (
 /obj/item/radio/intercom{
-	dir = 2;
-	pixel_y = 28;
-	name = "custom placement"
+	name = "custom placement";
+	dir = 2
 	},
 /obj/machinery/computer/mech_bay_power_console,
 /turf/simulated/floor/bluegrid,
@@ -1678,11 +1689,7 @@
 /obj/item/book/manual/wiki/robotics_cyborgs{
 	pixel_y = 2
 	},
-/obj/machinery/newscaster{
-	dir = 8;
-	name = "east bump";
-	pixel_x = 28
-	},
+/obj/machinery/newscaster/directional/east,
 /turf/simulated/floor/plasteel{
 	dir = 6;
 	icon_state = "darkpurple"
@@ -1764,7 +1771,9 @@
 /turf/simulated/floor/indestructible/dune_sand/dug,
 /area/awaymission/arrakis/outside/outside1)
 "aeU" = (
-/obj/effect/decal/warning_stripes/northeastcorner,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 4
+	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
@@ -1862,7 +1871,9 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/effect/decal/warning_stripes/east,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/arrakis/bunker/rnd)
 "afg" = (
@@ -1993,8 +2004,12 @@
 	id_tag = "roboticsshutters";
 	name = "Mech Bay Shutters"
 	},
-/obj/effect/decal/warning_stripes/east,
-/obj/effect/decal/warning_stripes/west,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -2072,7 +2087,9 @@
 /area/awaymission/arrakis/bunker/medbay)
 "afK" = (
 /obj/effect/decal/cleanable/dust,
-/obj/effect/decal/warning_stripes/south,
+/obj/effect/turf_decal/stripes/line{
+	dir = 2
+	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable{
@@ -2233,7 +2250,9 @@
 	},
 /area/awaymission/arrakis/bunker/medbay)
 "agg" = (
-/obj/effect/decal/warning_stripes/west,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
@@ -2658,7 +2677,9 @@
 /turf/simulated/floor/indestructible/dune_sand,
 /area/awaymission/arrakis/cave)
 "aha" = (
-/obj/effect/decal/warning_stripes/south,
+/obj/effect/turf_decal/stripes/line{
+	dir = 2
+	},
 /obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
@@ -2797,7 +2818,6 @@
 	req_access = list(10,11)
 	},
 /obj/item/radio/intercom{
-	pixel_y = -28;
 	name = "custom placement";
 	dir = 2
 	},
@@ -3189,7 +3209,9 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/effect/decal/warning_stripes/west,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
 /obj/structure/cable/yellow{
 	d1 = 2;
 	d2 = 8;
@@ -3658,8 +3680,12 @@
 /turf/simulated/floor/indestructible/dune_sand,
 /area/awaymission/arrakis/cave)
 "ajH" = (
-/obj/effect/decal/warning_stripes/east,
-/obj/effect/decal/warning_stripes/southwestcorner,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/corner{
+	dir = 8
+	},
 /obj/structure/sign/securearea{
 	pixel_x = -32
 	},
@@ -3685,8 +3711,7 @@
 /area/awaymission/arrakis/bunker/rnd)
 "ajL" = (
 /obj/structure/extinguisher_cabinet{
-	name = "custom placement";
-	pixel_y = -30
+	name = "custom placement"
 	},
 /obj/machinery/light/directional/south,
 /obj/machinery/disposal,
@@ -3700,7 +3725,9 @@
 	},
 /area/awaymission/arrakis/bunker/medbay)
 "ajM" = (
-/obj/effect/decal/warning_stripes/eastnorthwest,
+/obj/effect/turf_decal/stripes/end{
+	dir = 1
+	},
 /obj/structure/bed/amb_trolley,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
@@ -3715,7 +3742,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/arrakis/bunker/engie)
 "ajO" = (
-/obj/effect/decal/warning_stripes/yellow/partial{
+/obj/effect/turf_decal/delivery/partial{
 	dir = 1
 	},
 /obj/machinery/access_button/east{
@@ -3847,7 +3874,9 @@
 	},
 /area/awaymission/arrakis/bunker/tanya_cyborg_blyat_lab)
 "akg" = (
-/obj/effect/decal/warning_stripes/west,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -3887,20 +3916,24 @@
 /area/awaymission/arrakis/bunker/engie)
 "akq" = (
 /obj/structure/reagent_dispensers/fueltank,
-/obj/effect/decal/warning_stripes/yellow,
+/obj/effect/turf_decal/delivery,
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
 /area/awaymission/arrakis/bunker/rnd)
 "akr" = (
-/obj/effect/decal/warning_stripes/east,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
 /obj/effect/decal/cleanable/blood/oil,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
 /area/awaymission/arrakis/bunker/rnd)
 "aks" = (
-/obj/effect/decal/warning_stripes/southeastcorner,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 2
+	},
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/access_button/south{
 	command = "cycle_interior";
@@ -3944,7 +3977,9 @@
 	dir = 1
 	},
 /obj/structure/table/reinforced,
-/obj/effect/decal/warning_stripes/west,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
 /obj/machinery/door_control/shutter{
 	id = "xenobio5";
 	name = "Containment Blast Doors";
@@ -3987,7 +4022,9 @@
 	},
 /area/awaymission/arrakis/bunker/engie)
 "akA" = (
-/obj/effect/decal/warning_stripes/west,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -4021,7 +4058,7 @@
 /area/awaymission/arrakis/bunker/engie)
 "akH" = (
 /obj/machinery/recharge_station,
-/obj/effect/decal/warning_stripes/yellow/hollow,
+/obj/effect/turf_decal/delivery/hollow,
 /turf/simulated/floor/plasteel{
 	icon_state = "purple"
 	},
@@ -4794,7 +4831,9 @@
 /obj/machinery/computer/rdconsole/core{
 	dir = 4
 	},
-/obj/effect/decal/warning_stripes/northwest,
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
 /obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
@@ -4826,7 +4865,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
-/obj/effect/decal/warning_stripes/west,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/toxins/server)
 "amL" = (
@@ -4904,7 +4945,9 @@
 	name = "Creature Pen";
 	req_access = list(47)
 	},
-/obj/effect/decal/warning_stripes/west,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -5106,7 +5149,9 @@
 	d2 = 2;
 	icon_state = "0-2"
 	},
-/obj/effect/decal/warning_stripes/north,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "darkgrey"
 	},
@@ -5162,11 +5207,7 @@
 	dir = 8
 	},
 /obj/machinery/light/directional/east,
-/obj/machinery/newscaster{
-	dir = 8;
-	name = "east bump";
-	pixel_x = 28
-	},
+/obj/machinery/newscaster/directional/east,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "whitepurple";
@@ -5246,7 +5287,7 @@
 /turf/simulated/floor/carpet,
 /area/awaymission/arrakis/bunker/medbay)
 "anT" = (
-/obj/effect/decal/warning_stripes/yellow/partial{
+/obj/effect/turf_decal/delivery/partial{
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dust,
@@ -5451,7 +5492,9 @@
 	},
 /area/awaymission/arrakis/bunker/medbay)
 "aot" = (
-/obj/effect/decal/warning_stripes/north,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
 /obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
@@ -5524,7 +5567,9 @@
 /obj/structure/chair/stool{
 	dir = 4
 	},
-/obj/effect/decal/warning_stripes/west,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/engine,
 /area/awaymission/arrakis/bunker/medbay)
@@ -5560,7 +5605,9 @@
 /turf/simulated/floor/plating,
 /area/toxins/server)
 "aoP" = (
-/obj/effect/decal/warning_stripes/east,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -5599,7 +5646,7 @@
 "aoU" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/hydroponics/constructable,
-/obj/effect/decal/warning_stripes/green/hollow,
+/obj/effect/turf_decal/delivery/green/hollow,
 /obj/effect/mapping_helpers/machinery/damaged,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
@@ -5681,7 +5728,9 @@
 	},
 /area/awaymission/arrakis/bunker/rnd)
 "apf" = (
-/obj/effect/decal/warning_stripes/southwest,
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
 /obj/machinery/constructable_frame/machine_frame,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
@@ -6013,7 +6062,9 @@
 	dir = 8
 	},
 /obj/machinery/chem_heater,
-/obj/effect/decal/warning_stripes/west,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
 /turf/simulated/floor/plasteel{
 	dir = 5;
 	icon_state = "vault"
@@ -6284,15 +6335,10 @@
 /area/awaymission/arrakis/bunker/medbay)
 "aqH" = (
 /obj/structure/table/wood,
-/obj/machinery/newscaster{
-	dir = 1;
-	name = "south bump";
-	pixel_y = -28
-	},
+/obj/machinery/newscaster/directional/south,
 /obj/item/radio/intercom{
-	dir = 2;
-	pixel_x = 28;
-	name = "custom placement"
+	name = "custom placement";
+	dir = 2
 	},
 /obj/item/paper/monitorkey,
 /obj/item/paper/rnd_logs_key{
@@ -6896,7 +6942,9 @@
 /area/awaymission/arrakis/outside/outside1)
 "asn" = (
 /obj/machinery/chem_master,
-/obj/effect/decal/warning_stripes/southeast,
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
 /obj/effect/mapping_helpers/machinery/damaged,
 /turf/simulated/floor/engine,
 /area/awaymission/arrakis/bunker/medbay)
@@ -7170,7 +7218,7 @@
 	},
 /area/awaymission/arrakis/bunker/medbay)
 "atc" = (
-/obj/effect/decal/warning_stripes/blue/partial,
+/obj/effect/turf_decal/delivery/blue/partial,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
 	dir = 1;
@@ -7338,13 +7386,17 @@
 /obj/machinery/r_n_d/protolathe{
 	pixel_y = 2
 	},
-/obj/effect/decal/warning_stripes/southeast,
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
 /area/awaymission/arrakis/bunker/rnd)
 "atG" = (
-/obj/effect/decal/warning_stripes/southeast,
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
 /turf/simulated/floor/bluegrid,
 /area/awaymission/arrakis/bunker/rnd)
 "atH" = (
@@ -7451,7 +7503,7 @@
 /area/awaymission/arrakis/bunker/medbay)
 "atW" = (
 /obj/machinery/atmospherics/portable/canister/sleeping_agent,
-/obj/effect/decal/warning_stripes/yellow,
+/obj/effect/turf_decal/delivery,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel,
 /area/awaymission/arrakis/bunker/rnd)
@@ -7667,7 +7719,9 @@
 /area/awaymission/arrakis/bunker/bridge)
 "auE" = (
 /obj/structure/closet/l3closet/scientist,
-/obj/effect/decal/warning_stripes/south,
+/obj/effect/turf_decal/stripes/line{
+	dir = 2
+	},
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel,
 /area/awaymission/arrakis/bunker/rnd)
@@ -7782,7 +7836,9 @@
 	},
 /area/awaymission/arrakis/bunker/medbay)
 "ava" = (
-/obj/effect/decal/warning_stripes/east,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
 /obj/effect/mapping_helpers/machinery/damaged,
 /obj/machinery/constructable_frame/machine_frame,
 /turf/simulated/floor/engine,
@@ -7847,7 +7903,9 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/arrakis/bunker/dorms)
 "avp" = (
-/obj/effect/decal/warning_stripes/west,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
 /obj/item/stack/cable_coil/cut,
 /obj/machinery/light/directional/north,
 /turf/simulated/floor/plasteel{
@@ -8068,7 +8126,9 @@
 	},
 /area/awaymission/arrakis/bunker/bar)
 "avX" = (
-/obj/effect/decal/warning_stripes/east,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -8312,7 +8372,9 @@
 /area/awaymission/arrakis/bunker/rnd)
 "awJ" = (
 /obj/machinery/constructable_frame/machine_frame,
-/obj/effect/decal/warning_stripes/northeast,
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -8324,8 +8386,7 @@
 /area/awaymission/arrakis/bunker/bedrooms)
 "awL" = (
 /obj/structure/extinguisher_cabinet{
-	name = "custom placement";
-	pixel_x = -24
+	name = "custom placement"
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/arrakis/bunker/engie)
@@ -8367,7 +8428,7 @@
 /area/awaymission/arrakis/bunker/bedrooms)
 "awQ" = (
 /obj/structure/reagent_dispensers/watertank,
-/obj/effect/decal/warning_stripes/yellow,
+/obj/effect/turf_decal/delivery,
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -8499,7 +8560,7 @@
 "axp" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/hydroponics/constructable,
-/obj/effect/decal/warning_stripes/green/hollow,
+/obj/effect/turf_decal/delivery/green/hollow,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -8527,7 +8588,7 @@
 /obj/structure/sign/nosmoking_2{
 	pixel_x = 28
 	},
-/obj/effect/decal/warning_stripes/yellow/hollow,
+/obj/effect/turf_decal/delivery/hollow,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel,
 /area/awaymission/arrakis/bunker/rnd)
@@ -8698,11 +8759,7 @@
 /area/awaymission/arrakis/bunker/medbay)
 "axX" = (
 /obj/structure/dresser,
-/obj/machinery/newscaster{
-	dir = 2;
-	name = "north bump";
-	pixel_y = 28
-	},
+/obj/machinery/newscaster/directional/north,
 /turf/simulated/floor/carpet/orange,
 /area/awaymission/arrakis/bunker/engie)
 "axY" = (
@@ -8739,7 +8796,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
 	},
-/obj/effect/decal/warning_stripes/southwestcorner,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 8
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/toxins/server)
 "ayc" = (
@@ -8774,7 +8833,9 @@
 /area/awaymission/arrakis/bunker/bridge)
 "ayg" = (
 /obj/structure/closet/l3closet/scientist,
-/obj/effect/decal/warning_stripes/west,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel,
 /area/awaymission/arrakis/bunker/rnd)
@@ -8972,7 +9033,7 @@
 	},
 /area/awaymission/arrakis/bunker/dorms)
 "ayN" = (
-/obj/effect/decal/warning_stripes/blue/partial{
+/obj/effect/turf_decal/delivery/blue/partial{
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -9295,7 +9356,7 @@
 	},
 /area/toxins/server)
 "azD" = (
-/obj/effect/decal/warning_stripes/yellow/partial{
+/obj/effect/turf_decal/delivery/partial{
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -9316,8 +9377,7 @@
 	icon_state = "1-2"
 	},
 /obj/structure/extinguisher_cabinet{
-	name = "custom placement";
-	pixel_x = 24
+	name = "custom placement"
 	},
 /obj/structure/chair,
 /turf/simulated/floor/plasteel{
@@ -9341,8 +9401,7 @@
 /area/awaymission/arrakis/bunker/bridge)
 "azL" = (
 /obj/structure/extinguisher_cabinet{
-	name = "custom placement";
-	pixel_x = -24
+	name = "custom placement"
 	},
 /obj/machinery/computer/monitor{
 	dir = 4;
@@ -9489,11 +9548,7 @@
 	pixel_y = 8;
 	pixel_x = 2
 	},
-/obj/machinery/newscaster{
-	dir = 4;
-	name = "west bump";
-	pixel_x = -28
-	},
+/obj/machinery/newscaster/directional/west,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "whitepurplecorner"
@@ -9685,8 +9740,10 @@
 	},
 /area/awaymission/arrakis/bunker/medbay)
 "aAD" = (
-/obj/effect/decal/warning_stripes/east,
-/obj/effect/decal/warning_stripes/yellow/partial{
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/delivery/partial{
 	dir = 4
 	},
 /turf/simulated/floor/plasteel{
@@ -9959,8 +10016,12 @@
 /turf/simulated/floor/indestructible/dune_sand/smooth,
 /area/awaymission/arrakis/cave)
 "aBx" = (
-/obj/effect/decal/warning_stripes/northeastcorner,
-/obj/effect/decal/warning_stripes/west,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "darkgrey"
 	},
@@ -10142,7 +10203,9 @@
 	dir = 1
 	},
 /obj/structure/table/reinforced,
-/obj/effect/decal/warning_stripes/west,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
 /obj/machinery/door_control/shutter{
 	id = "xenobio4";
 	name = "Containment Blast Doors";
@@ -10335,8 +10398,12 @@
 	},
 /area/awaymission/arrakis/bunker/medbay)
 "aCv" = (
-/obj/effect/decal/warning_stripes/east,
-/obj/effect/decal/warning_stripes/west,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
 /obj/machinery/door/poddoor/shutters{
 	id_tag = "roboticsshutters";
 	name = "Mech Bay Shutters"
@@ -10420,7 +10487,9 @@
 	},
 /area/awaymission/arrakis/bunker/medbay)
 "aCL" = (
-/obj/effect/decal/warning_stripes/southeast,
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
 /obj/structure/rack{
 	dir = 1
 	},
@@ -10510,8 +10579,12 @@
 	d2 = 4;
 	icon_state = "0-4"
 	},
-/obj/effect/decal/warning_stripes/west,
-/obj/effect/decal/warning_stripes/south,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 2
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "darkgrey"
 	},
@@ -10599,7 +10672,9 @@
 /turf/simulated/floor/indestructible/dune_sand/smooth,
 /area/awaymission/arrakis/cave)
 "aDr" = (
-/obj/effect/decal/warning_stripes/southwestcorner,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 8
+	},
 /obj/effect/decal/cleanable/dust,
 /obj/machinery/airlock_controller/access_controller{
 	id_tag = "xeno_airlock_control";
@@ -10641,7 +10716,9 @@
 /turf/simulated/floor/plating,
 /area/awaymission/arrakis/bunker/engie)
 "aDw" = (
-/obj/effect/decal/warning_stripes/northwest,
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
 /obj/structure/table_frame,
 /obj/item/shard{
 	pixel_x = -14;
@@ -10785,7 +10862,9 @@
 	},
 /area/awaymission/arrakis/bunker/medbay)
 "aDQ" = (
-/obj/effect/decal/warning_stripes/south,
+/obj/effect/turf_decal/stripes/line{
+	dir = 2
+	},
 /turf/simulated/floor/bluegrid,
 /area/awaymission/arrakis/bunker/rnd)
 "aDR" = (
@@ -10844,7 +10923,9 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 8
 	},
-/obj/effect/decal/warning_stripes/east,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -10868,7 +10949,9 @@
 	},
 /area/awaymission/arrakis/bunker/rnd)
 "aEb" = (
-/obj/effect/decal/warning_stripes/northwestcorner,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 1
+	},
 /obj/structure/sign/securearea{
 	pixel_x = -32
 	},
@@ -11083,8 +11166,8 @@
 /area/awaymission/arrakis/outside/outside4)
 "aEN" = (
 /obj/machinery/atmospherics/portable/canister/carbon_dioxide,
-/obj/effect/decal/warning_stripes/yellow,
-/obj/effect/decal/warning_stripes/yellow,
+/obj/effect/turf_decal/delivery,
+/obj/effect/turf_decal/delivery,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel,
 /area/awaymission/arrakis/bunker/rnd)
@@ -11098,7 +11181,7 @@
 	},
 /area/awaymission/arrakis/bunker/rnd)
 "aEP" = (
-/obj/effect/decal/warning_stripes/yellow,
+/obj/effect/turf_decal/delivery,
 /obj/structure/reagent_dispensers/oil,
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
@@ -11107,8 +11190,7 @@
 "aEQ" = (
 /obj/structure/filingcabinet/chestdrawer,
 /obj/structure/extinguisher_cabinet{
-	name = "custom placement";
-	pixel_x = -24
+	name = "custom placement"
 	},
 /obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/carpet,
@@ -11236,7 +11318,9 @@
 /area/awaymission/arrakis/bunker/bedrooms)
 "aFi" = (
 /obj/machinery/chem_heater,
-/obj/effect/decal/warning_stripes/southeast,
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
 /obj/effect/mapping_helpers/machinery/damaged,
 /turf/simulated/floor/engine,
 /area/awaymission/arrakis/bunker/medbay)
@@ -11488,8 +11572,12 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/effect/decal/warning_stripes/east,
-/obj/effect/decal/warning_stripes/south,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 2
+	},
 /obj/machinery/power/smes/engineering{
 	charge = 0
 	},
@@ -11809,10 +11897,8 @@
 /area/awaymission/arrakis/bunker/bedrooms)
 "aGR" = (
 /obj/machinery/light/directional/south,
-/obj/machinery/firealarm{
-	dir = 1;
-	name = "custom placement";
-	pixel_y = -24
+/obj/machinery/firealarm/directional/south{
+	dir = 1
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "navybluealt"
@@ -11879,7 +11965,9 @@
 /area/awaymission/arrakis/bunker/tanya_cyborg_blyat_lab)
 "aGY" = (
 /obj/structure/closet/l3closet/scientist,
-/obj/effect/decal/warning_stripes/southwest,
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/arrakis/bunker/rnd)
 "aGZ" = (
@@ -11899,7 +11987,9 @@
 /area/awaymission/arrakis/bunker/medbay)
 "aHb" = (
 /obj/effect/decal/cleanable/dust,
-/obj/effect/decal/warning_stripes/southeastcorner,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 2
+	},
 /obj/machinery/light/directional/south,
 /turf/simulated/floor/plasteel,
 /area/awaymission/arrakis/bunker/rnd)
@@ -12179,7 +12269,9 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 8
 	},
-/obj/effect/decal/warning_stripes/east,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/arrakis/bunker/rnd)
 "aHY" = (
@@ -12716,7 +12808,7 @@
 	},
 /obj/machinery/disposal,
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/warning_stripes/yellow/hollow,
+/obj/effect/turf_decal/delivery/hollow,
 /turf/simulated/floor/plasteel{
 	icon_state = "cafeteria"
 	},
@@ -12916,12 +13008,14 @@
 /turf/simulated/floor/carpet/blue,
 /area/awaymission/arrakis/bunker/bedrooms)
 "aKp" = (
-/obj/effect/decal/warning_stripes/southwest,
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/engine,
 /area/awaymission/arrakis/bunker/medbay)
 "aKr" = (
-/obj/effect/decal/warning_stripes/yellow,
+/obj/effect/turf_decal/delivery,
 /obj/machinery/atmospherics/portable/canister/toxins,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel,
@@ -13154,7 +13248,7 @@
 "aKT" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/disposal,
-/obj/effect/decal/warning_stripes/yellow/hollow,
+/obj/effect/turf_decal/delivery/hollow,
 /turf/simulated/floor/plasteel{
 	dir = 6;
 	icon_state = "purple"
@@ -13190,11 +13284,7 @@
 "aLa" = (
 /obj/structure/bed/psych,
 /obj/random/therapy,
-/obj/machinery/newscaster{
-	dir = 8;
-	name = "east bump";
-	pixel_x = 28
-	},
+/obj/machinery/newscaster/directional/east,
 /obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/wood{
 	icon_state = "fancy-wood-cherry"
@@ -13257,11 +13347,7 @@
 "aLi" = (
 /obj/effect/decal/cleanable/dust,
 /obj/structure/filingcabinet,
-/obj/machinery/newscaster/security_unit{
-	dir = 4;
-	name = "west bump";
-	pixel_x = -28
-	},
+/obj/machinery/newscaster/security_unit/west,
 /obj/item/radio/intercom/directional/south,
 /turf/simulated/floor/wood,
 /area/awaymission/arrakis/bunker/bridge)
@@ -13549,11 +13635,7 @@
 /obj/machinery/photocopier/faxmachine/longrange{
 	department = "Chief Engineer's Office"
 	},
-/obj/machinery/newscaster{
-	dir = 2;
-	name = "north bump";
-	pixel_y = 28
-	},
+/obj/machinery/newscaster/directional/north,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "brown"
@@ -13708,11 +13790,7 @@
 /obj/structure/table/wood,
 /obj/item/deck/cards,
 /obj/machinery/ai_status_display/south,
-/obj/machinery/newscaster{
-	dir = 4;
-	name = "west bump";
-	pixel_x = -28
-	},
+/obj/machinery/newscaster/directional/west,
 /turf/simulated/floor/plasteel{
 	icon_state = "cafeteria"
 	},
@@ -13731,7 +13809,9 @@
 	},
 /area/awaymission/arrakis/bunker/engie)
 "aMD" = (
-/obj/effect/decal/warning_stripes/south,
+/obj/effect/turf_decal/stripes/line{
+	dir = 2
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -13767,11 +13847,7 @@
 	},
 /area/awaymission/arrakis/bunker/brig)
 "aMI" = (
-/obj/machinery/newscaster{
-	dir = 8;
-	name = "east bump";
-	pixel_x = 28
-	},
+/obj/machinery/newscaster/directional/east,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "purple"
@@ -14103,7 +14179,9 @@
 	},
 /area/awaymission/arrakis/bunker/dorms)
 "aNM" = (
-/obj/effect/decal/warning_stripes/northwestcorner,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 1
+	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
@@ -14238,7 +14316,9 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
 	},
-/obj/effect/decal/warning_stripes/northwestcorner,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 1
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/toxins/server)
 "aOc" = (
@@ -14307,9 +14387,11 @@
 	dir = 4
 	},
 /obj/machinery/disposal,
-/obj/effect/decal/warning_stripes/yellow/hollow,
+/obj/effect/turf_decal/delivery/hollow,
 /obj/structure/window/reinforced,
-/obj/effect/decal/warning_stripes/west,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -14357,10 +14439,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
-/obj/machinery/firealarm{
+/obj/machinery/firealarm/directional/east{
 	dir = 4;
-	pixel_x = 24;
-	name = "custom placement"
+	pixel_x = 24
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -14369,7 +14450,9 @@
 /area/awaymission/arrakis/bunker/engie)
 "aOA" = (
 /obj/machinery/chem_heater,
-/obj/effect/decal/warning_stripes/northeast,
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
+	},
 /obj/effect/mapping_helpers/machinery/damaged,
 /turf/simulated/floor/engine,
 /area/awaymission/arrakis/bunker/medbay)
@@ -14553,7 +14636,7 @@
 /area/awaymission/arrakis/bunker/tanya_cyborg_blyat_lab)
 "aPg" = (
 /obj/machinery/recharge_station,
-/obj/effect/decal/warning_stripes/yellow/hollow,
+/obj/effect/turf_decal/delivery/hollow,
 /turf/simulated/floor/plasteel{
 	dir = 10;
 	icon_state = "purple"
@@ -15084,7 +15167,9 @@
 	},
 /area/awaymission/arrakis/bunker/medbay)
 "aQJ" = (
-/obj/effect/decal/warning_stripes/northwestcorner,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 1
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "darkgrey"
 	},
@@ -15178,7 +15263,9 @@
 	},
 /area/awaymission/arrakis/bunker/rnd)
 "aQZ" = (
-/obj/effect/decal/warning_stripes/east,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -15246,7 +15333,9 @@
 /area/awaymission/arrakis/bunker/bar)
 "aRk" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/warning_stripes/southwestcorner,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 8
+	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/arrakis/bunker/rnd)
 "aRl" = (
@@ -15282,7 +15371,7 @@
 /area/awaymission/arrakis/bunker/rnd)
 "aRq" = (
 /obj/machinery/disposal,
-/obj/effect/decal/warning_stripes/yellow/hollow,
+/obj/effect/turf_decal/delivery/hollow,
 /obj/structure/disposalpipe/trunk{
 	dir = 4
 	},
@@ -15552,7 +15641,9 @@
 	name = "Containment Pen";
 	req_access = list(55)
 	},
-/obj/effect/decal/warning_stripes/east,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -15592,8 +15683,10 @@
 /turf/simulated/floor/indestructible/dune_sand,
 /area/awaymission/arrakis/outside/outside1)
 "aSl" = (
-/obj/effect/decal/warning_stripes/west,
-/obj/effect/decal/warning_stripes/yellow/partial{
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/delivery/partial{
 	dir = 8
 	},
 /obj/machinery/atmospherics/unary/vent_pump/on{
@@ -16010,10 +16103,10 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/arrakis/bunker/rnd)
 "aTC" = (
-/obj/effect/decal/warning_stripes/north,
-/obj/effect/decal/warning_stripes/yellow/hollow{
-	pixel_y = -8
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
 	},
+/obj/effect/turf_decal/delivery/hollow,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -16036,7 +16129,9 @@
 /turf/simulated/floor/plating,
 /area/awaymission/arrakis/bunker/engie)
 "aTG" = (
-/obj/effect/decal/warning_stripes/southwestcorner,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 8
+	},
 /obj/item/radio/intercom/directional/north,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
@@ -16662,7 +16757,9 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/effect/decal/warning_stripes/east,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -16729,7 +16826,9 @@
 	},
 /area/awaymission/arrakis/bunker/clowns)
 "aVG" = (
-/obj/effect/decal/warning_stripes/west,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plasteel{
@@ -16887,7 +16986,9 @@
 	},
 /area/awaymission/arrakis/bunker/engie)
 "aWh" = (
-/obj/effect/decal/warning_stripes/west,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
 /obj/effect/decal/cleanable/blood/oil,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -16921,7 +17022,7 @@
 /area/awaymission/arrakis/bunker/medbay)
 "aWl" = (
 /obj/machinery/atmospherics/portable/canister/carbon_dioxide,
-/obj/effect/decal/warning_stripes/yellow,
+/obj/effect/turf_decal/delivery,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel,
 /area/awaymission/arrakis/bunker/rnd)
@@ -17191,7 +17292,7 @@
 	},
 /area/awaymission/arrakis/bunker/engie)
 "aWX" = (
-/obj/effect/decal/warning_stripes/yellow,
+/obj/effect/turf_decal/delivery,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "darkpurple"
@@ -17319,7 +17420,9 @@
 /area/awaymission/arrakis/bunker/rnd)
 "aXl" = (
 /obj/machinery/chem_master,
-/obj/effect/decal/warning_stripes/northeast,
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
+	},
 /obj/effect/mapping_helpers/machinery/damaged,
 /turf/simulated/floor/engine,
 /area/awaymission/arrakis/bunker/medbay)
@@ -17623,7 +17726,7 @@
 /area/awaymission/arrakis/bunker/kitchen)
 "aYh" = (
 /obj/machinery/atmospherics/portable/canister/oxygen,
-/obj/effect/decal/warning_stripes/yellow,
+/obj/effect/turf_decal/delivery,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel,
 /area/awaymission/arrakis/bunker/rnd)
@@ -17723,7 +17826,9 @@
 /obj/item/reagent_containers/glass/beaker/large{
 	pixel_y = 4
 	},
-/obj/effect/decal/warning_stripes/southwest,
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
 /turf/simulated/floor/engine,
 /area/awaymission/arrakis/bunker/medbay)
 "aYu" = (
@@ -17961,7 +18066,9 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/effect/decal/warning_stripes/south,
+/obj/effect/turf_decal/stripes/line{
+	dir = 2
+	},
 /obj/machinery/power/smes/engineering{
 	charge = 0
 	},
@@ -17980,8 +18087,10 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/arrakis/bunker/engie)
 "aZh" = (
-/obj/effect/decal/warning_stripes/west,
-/obj/effect/decal/warning_stripes/yellow/partial{
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/delivery/partial{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -18007,7 +18116,9 @@
 	},
 /area/awaymission/arrakis/bunker/bridge)
 "aZj" = (
-/obj/effect/decal/warning_stripes/north,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
 /obj/effect/decal/cleanable/dust,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -18019,7 +18130,9 @@
 /turf/simulated/wall,
 /area/awaymission/arrakis/bunker/clowns)
 "aZm" = (
-/obj/effect/decal/warning_stripes/northwest,
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
 /turf/simulated/floor/engine,
 /area/awaymission/arrakis/bunker/medbay)
 "aZn" = (
@@ -18034,7 +18147,9 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/arrakis/bunker/bedrooms)
 "aZp" = (
-/obj/effect/decal/warning_stripes/east,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
 /obj/structure/rack{
 	dir = 1
 	},
@@ -18131,7 +18246,9 @@
 /turf/simulated/floor/indestructible/dune_sand/smooth,
 /area/awaymission/arrakis/outside/outside1)
 "aZG" = (
-/obj/effect/decal/warning_stripes/eastsouthwest,
+/obj/effect/turf_decal/stripes/end{
+	dir = 2
+	},
 /obj/vehicle/ambulance,
 /obj/machinery/door_control/shutter/west{
 	id = "paramedic";
@@ -18596,7 +18713,9 @@
 /turf/simulated/floor/indestructible/dune_sand/smooth,
 /area/awaymission/arrakis/cave)
 "bxM" = (
-/obj/effect/decal/warning_stripes/south,
+/obj/effect/turf_decal/stripes/line{
+	dir = 2
+	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
@@ -18866,8 +18985,7 @@
 "bVR" = (
 /obj/effect/turf_decal/sand,
 /obj/structure/extinguisher_cabinet{
-	name = "custom placement";
-	pixel_x = 24
+	name = "custom placement"
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/awaymission/arrakis/outside/podhangars)
@@ -20019,7 +20137,9 @@
 	dir = 8
 	},
 /obj/item/radio/intercom/directional/north,
-/obj/effect/decal/warning_stripes/west,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
 /obj/machinery/constructable_frame/machine_frame,
 /obj/effect/landmark/burnturf,
 /turf/simulated/floor/plasteel{
@@ -20222,7 +20342,9 @@
 /obj/item/reagent_containers/glass/beaker/large,
 /obj/item/reagent_containers/glass/beaker/large,
 /obj/item/reagent_containers/glass/beaker/large,
-/obj/effect/decal/warning_stripes/southeast,
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
 /turf/simulated/floor/plasteel{
 	dir = 5;
 	icon_state = "vault"
@@ -20867,7 +20989,9 @@
 /turf/simulated/floor/indestructible/dune_sand,
 /area/awaymission/arrakis/cave)
 "eUT" = (
-/obj/effect/decal/warning_stripes/southwestcorner,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 8
+	},
 /obj/machinery/light/directional/east,
 /obj/effect/mapping_helpers/machinery/damaged,
 /obj/machinery/disposal,
@@ -21282,7 +21406,7 @@
 /area/awaymission/arrakis/bunker/hallway)
 "fET" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/warning_stripes/green/hollow,
+/obj/effect/turf_decal/delivery/green/hollow,
 /obj/machinery/constructable_frame/machine_frame,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
@@ -21377,7 +21501,7 @@
 /area/awaymission/arrakis/bunker/brig)
 "fKH" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/warning_stripes/green/hollow,
+/obj/effect/turf_decal/delivery/green/hollow,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -21611,7 +21735,9 @@
 /turf/simulated/floor/plasteel/dark,
 /area/awaymission/arrakis/bunker/brig)
 "gdD" = (
-/obj/effect/decal/warning_stripes/south,
+/obj/effect/turf_decal/stripes/line{
+	dir = 2
+	},
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -21856,7 +21982,9 @@
 /turf/simulated/floor/indestructible/dune_sand/smooth,
 /area/awaymission/arrakis/cave)
 "gtX" = (
-/obj/effect/decal/warning_stripes/north,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
 /obj/machinery/door/poddoor{
 	density = 0;
 	icon_state = "open";
@@ -22300,7 +22428,7 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/arrakis/bunker/bedrooms)
 "gWc" = (
-/obj/effect/decal/warning_stripes/yellow,
+/obj/effect/turf_decal/delivery,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
@@ -22379,7 +22507,9 @@
 	},
 /area/awaymission/arrakis/bunker/hallway)
 "hbU" = (
-/obj/effect/decal/warning_stripes/southeastcorner,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 2
+	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -22655,7 +22785,9 @@
 /obj/item/reagent_containers/glass/beaker/large,
 /obj/item/reagent_containers/glass/beaker/large,
 /obj/item/reagent_containers/glass/beaker/large,
-/obj/effect/decal/warning_stripes/southwest,
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
 /turf/simulated/floor/plasteel{
 	dir = 5;
 	icon_state = "vault"
@@ -23226,8 +23358,7 @@
 /area/awaymission/arrakis/outside/outside2)
 "ipT" = (
 /obj/structure/extinguisher_cabinet{
-	name = "custom placement";
-	pixel_x = 24
+	name = "custom placement"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -23383,8 +23514,10 @@
 /turf/simulated/floor/indestructible/dune_sand/smooth,
 /area/awaymission/arrakis/outside/outside2)
 "iCV" = (
-/obj/effect/decal/warning_stripes/west,
-/obj/effect/decal/warning_stripes/yellow/partial{
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/delivery/partial{
 	dir = 8
 	},
 /obj/effect/decal/cleanable/blood/oil,
@@ -23614,9 +23747,11 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 1
 	},
-/obj/effect/decal/warning_stripes/south,
+/obj/effect/turf_decal/stripes/line{
+	dir = 2
+	},
 /obj/effect/landmark/burnturf,
-/obj/effect/decal/warning_stripes/yellow/hollow,
+/obj/effect/turf_decal/delivery/hollow,
 /turf/simulated/floor/plasteel{
 	dir = 5;
 	icon_state = "vault"
@@ -23902,11 +24037,9 @@
 /area/awaymission/arrakis/bunker/engie)
 "jsq" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/light_switch{
+/obj/machinery/light_switch/south{
 	dir = 1;
-	on = 0;
-	pixel_y = -24;
-	name = "custom placement"
+	on = 0
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
@@ -24370,8 +24503,10 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 1
 	},
-/obj/effect/decal/warning_stripes/south,
-/obj/effect/decal/warning_stripes/yellow/hollow,
+/obj/effect/turf_decal/stripes/line{
+	dir = 2
+	},
+/obj/effect/turf_decal/delivery/hollow,
 /turf/simulated/floor/plasteel{
 	dir = 5;
 	icon_state = "vault"
@@ -24715,7 +24850,7 @@
 /area/awaymission/arrakis/cave)
 "kWn" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/warning_stripes/green/hollow,
+/obj/effect/turf_decal/delivery/green/hollow,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
@@ -25294,7 +25429,9 @@
 /obj/structure/window/plasmareinforced{
 	dir = 4
 	},
-/obj/effect/decal/warning_stripes/east,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
 /obj/machinery/constructable_frame/machine_frame,
 /obj/effect/landmark/burnturf,
 /turf/simulated/floor/plasteel{
@@ -25696,11 +25833,6 @@
 	icon_state = "darkred"
 	},
 /area/awaymission/arrakis/bunker/brig)
-"mHy" = (
-/turf/simulated/floor/indestructible{
-	icon_state = "asteroidfloor"
-	},
-/area/awaymission/arrakis/outside/outside2)
 "mIk" = (
 /obj/structure/railing{
 	color = "#e0ac7b";
@@ -25810,14 +25942,14 @@
 /area/awaymission/arrakis/bunker/brig)
 "mPL" = (
 /obj/structure/extinguisher_cabinet{
-	name = "custom placement";
-	pixel_x = -24
+	name = "custom placement"
 	},
 /obj/structure/extinguisher_cabinet{
-	name = "custom placement";
-	pixel_x = 24
+	name = "custom placement"
 	},
-/obj/effect/decal/warning_stripes/north,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
@@ -25839,7 +25971,9 @@
 	},
 /area/awaymission/arrakis/bunker/brig)
 "mQC" = (
-/obj/effect/decal/warning_stripes/northwest,
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/door/poddoor{
 	density = 0;
@@ -26841,8 +26975,7 @@
 "ons" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/extinguisher_cabinet{
-	name = "custom placement";
-	pixel_y = -30
+	name = "custom placement"
 	},
 /obj/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
@@ -27944,7 +28077,9 @@
 /obj/structure/window/plasmareinforced{
 	dir = 8
 	},
-/obj/effect/decal/warning_stripes/west,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
 /obj/item/reagent_containers/glass/beaker/large,
 /obj/effect/landmark/burnturf,
 /turf/simulated/floor/plasteel{
@@ -28202,7 +28337,9 @@
 /area/awaymission/arrakis/bunker/hallway)
 "qki" = (
 /obj/structure/closet/secure_closet/research_reagents,
-/obj/effect/decal/warning_stripes/south,
+/obj/effect/turf_decal/stripes/line{
+	dir = 2
+	},
 /turf/simulated/floor/plasteel{
 	dir = 5;
 	icon_state = "vault"
@@ -29368,7 +29505,9 @@
 	},
 /area/awaymission/arrakis/outside/mining_storage_outpost)
 "rWX" = (
-/obj/effect/decal/warning_stripes/west,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
@@ -30059,8 +30198,7 @@
 	},
 /area/awaymission/arrakis/bunker/brig)
 "tfQ" = (
-/obj/structure/AIcore/deactivated/tanya
-/obj/machinery/light/directional/east,
+/obj/structure/AIcore/deactivated/tanya/obj/machinery/light/directional/east,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "navybluealt"
@@ -30858,10 +30996,8 @@
 /area/awaymission/arrakis/outside/mining_town)
 "uxT" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/light_switch{
-	on = 0;
-	pixel_y = 24;
-	name = "custom placement"
+/obj/machinery/light_switch/north{
+	on = 0
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
@@ -30885,12 +31021,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plasteel,
 /area/awaymission/arrakis/bunker/bedrooms)
-"uzF" = (
-/obj/effect/turf_decal/sand/plating,
-/turf/simulated/floor/indestructible{
-	icon_state = "asteroidfloor"
-	},
-/area/awaymission/arrakis/outside/outside2)
 "uCT" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
 /turf/simulated/floor/plasteel{
@@ -31725,7 +31855,7 @@
 /area/awaymission/arrakis/bunker/bridge)
 "vRM" = (
 /obj/effect/decal/cleanable/dust,
-/obj/effect/decal/warning_stripes/green/hollow,
+/obj/effect/turf_decal/delivery/green/hollow,
 /obj/machinery/constructable_frame/machine_frame,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
@@ -32525,12 +32655,6 @@
 	icon_state = "darkred"
 	},
 /area/awaymission/arrakis/bunker/brig)
-"xla" = (
-/obj/effect/mapping_helpers/light,
-/turf/simulated/floor/indestructible{
-	icon_state = "asteroidfloor"
-	},
-/area/awaymission/arrakis/outside/outside2)
 "xlH" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -32614,7 +32738,7 @@
 /area/awaymission/arrakis/outside/podhangars)
 "xpE" = (
 /obj/effect/decal/cleanable/dust,
-/obj/effect/decal/warning_stripes/green/hollow,
+/obj/effect/turf_decal/delivery/green/hollow,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -32749,7 +32873,7 @@
 /area/awaymission/arrakis/outside/mining_town)
 "xFF" = (
 /obj/machinery/disposal,
-/obj/effect/decal/warning_stripes/yellow/hollow,
+/obj/effect/turf_decal/delivery/hollow,
 /obj/structure/disposalpipe/trunk{
 	dir = 4
 	},
@@ -32814,7 +32938,9 @@
 /obj/structure/window/plasmareinforced{
 	dir = 8
 	},
-/obj/effect/decal/warning_stripes/southwest,
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
 /obj/effect/decal/cleanable/blood/oil,
 /turf/simulated/floor/plasteel{
 	dir = 5;
@@ -33091,7 +33217,6 @@
 /area/awaymission/arrakis/outside/outside5)
 "yhJ" = (
 /obj/structure/extinguisher_cabinet{
-	pixel_y = -32;
 	name = "custom placement"
 	},
 /obj/machinery/disposal,
@@ -33118,8 +33243,7 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/arrakis/bunker/bedrooms)
 "yii" = (
-/obj/structure/AIcore/tanya
-/turf/simulated/floor/plasteel{
+/obj/structure/AIcore/tanya/turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "navybluealt"
 	},
@@ -33135,8 +33259,7 @@
 /turf/simulated/floor/indestructible/dune_sand/smooth,
 /area/awaymission/arrakis/cave)
 "ymi" = (
-/obj/structure/AIcore/deactivated/tanya
-/turf/simulated/floor/plasteel{
+/obj/structure/AIcore/deactivated/tanya/turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
 /area/awaymission/arrakis/bunker/tanya_cyborg_blyat_lab)
@@ -71843,15 +71966,15 @@ aXZ
 aXZ
 alp
 alp
-uzF
-uzF
-uzF
-uzF
-uzF
+fQh
+fQh
+fQh
+fQh
+fQh
 lwq
-uzF
+fQh
 lwq
-uzF
+fQh
 alp
 aXZ
 aXZ
@@ -72100,15 +72223,15 @@ aXZ
 aXZ
 alp
 fPj
-uzF
+fQh
 gBr
 vBv
 bme
-uzF
+fQh
 lCj
 lCj
 oYM
-uzF
+fQh
 alp
 aXZ
 alp
@@ -72357,15 +72480,15 @@ aXZ
 aXZ
 alp
 alp
-uzF
+fQh
 bme
 gBr
 bme
-uzF
+fQh
 oYM
 oYM
 oYM
-uzF
+fQh
 alp
 aXZ
 alp
@@ -72614,15 +72737,15 @@ aXZ
 aXZ
 dFo
 alp
-uzF
+fQh
 gBr
 gBr
 gBr
-mHy
+imN
 lCj
 lCj
 lCj
-uzF
+fQh
 alp
 alp
 alp
@@ -72871,15 +72994,15 @@ aXZ
 aXZ
 alp
 alp
-uzF
+fQh
 gBr
 gBr
 gBr
-mHy
+imN
 oYM
 lCj
 oYM
-uzF
+fQh
 alp
 alp
 alp
@@ -73128,15 +73251,15 @@ aXZ
 aXZ
 alp
 alp
-mHy
-mHy
-mHy
-mHy
-mHy
-mHy
-mHy
-uzF
-mHy
+imN
+imN
+imN
+imN
+imN
+imN
+imN
+fQh
+imN
 alp
 alp
 alp
@@ -73385,15 +73508,15 @@ aXZ
 aXZ
 alp
 knE
-uzF
-uzF
-mHy
-mHy
-mHy
-mHy
-mHy
-mHy
-uzF
+fQh
+fQh
+imN
+imN
+imN
+imN
+imN
+imN
+fQh
 alp
 alp
 alp
@@ -73642,15 +73765,15 @@ aXZ
 aXZ
 alp
 alp
-uzF
-uzF
-mHy
-mHy
-mHy
-mHy
-mHy
-mHy
-uzF
+fQh
+fQh
+imN
+imN
+imN
+imN
+imN
+imN
+fQh
 alp
 alp
 alp
@@ -73899,15 +74022,15 @@ alp
 alp
 alp
 alp
-uzF
-mHy
-mHy
-mHy
-mHy
-mHy
-mHy
-mHy
-uzF
+fQh
+imN
+imN
+imN
+imN
+imN
+imN
+imN
+fQh
 alp
 alp
 alp
@@ -74156,15 +74279,15 @@ aXZ
 alp
 alp
 alp
-uzF
-mHy
-mHy
-mHy
-mHy
-mHy
-mHy
-uzF
-uzF
+fQh
+imN
+imN
+imN
+imN
+imN
+imN
+fQh
+fQh
 alp
 alp
 alp
@@ -74413,15 +74536,15 @@ aXZ
 aXZ
 alp
 alp
-uzF
-uzF
-mHy
-mHy
-mHy
-mHy
+fQh
+fQh
+imN
+imN
+imN
+imN
 gig
-uzF
-uzF
+fQh
+fQh
 alp
 alp
 alp
@@ -74670,15 +74793,15 @@ aXZ
 alp
 alp
 alp
-uzF
-uzF
-mHy
-mHy
-mHy
-mHy
-mHy
-uzF
-uzF
+fQh
+fQh
+imN
+imN
+imN
+imN
+imN
+fQh
+fQh
 alp
 alp
 aXZ
@@ -74928,14 +75051,14 @@ alp
 aXZ
 alp
 fkj
-uzF
-uzF
-mHy
-mHy
-mHy
+fQh
+fQh
+imN
+imN
+imN
 ipc
-uzF
-uzF
+fQh
+fQh
 alp
 alp
 alp
@@ -75185,14 +75308,14 @@ alp
 alp
 alp
 fkj
-uzF
+fQh
 acP
-mHy
-mHy
-mHy
-mHy
-uzF
-uzF
+imN
+imN
+imN
+imN
+fQh
+fQh
 alp
 alp
 alp
@@ -75443,12 +75566,12 @@ aXZ
 alp
 fkj
 fkj
-uzF
-mHy
-mHy
+fQh
+imN
+imN
 iSe
-uzF
-uzF
+fQh
+fQh
 fkj
 alp
 alp
@@ -75700,12 +75823,12 @@ alp
 alp
 fkj
 fkj
-uzF
-mHy
-mHy
-mHy
-uzF
-uzF
+fQh
+imN
+imN
+imN
+fQh
+fQh
 fkj
 alp
 alp
@@ -75957,12 +76080,12 @@ alp
 alp
 fkj
 fkj
-uzF
+fQh
 gig
-mHy
-mHy
-uzF
-uzF
+imN
+imN
+fQh
+fQh
 fkj
 alp
 aXZ
@@ -76214,11 +76337,11 @@ alp
 alp
 fkj
 fkj
-uzF
+fQh
 gig
-mHy
-mHy
-uzF
+imN
+imN
+fQh
 fkj
 fkj
 alp
@@ -76469,15 +76592,15 @@ aXZ
 alp
 alp
 alp
-uzF
+fQh
 fkj
-uzF
-uzF
-mHy
-mHy
-uzF
-uzF
-uzF
+fQh
+fQh
+imN
+imN
+fQh
+fQh
+fQh
 alp
 alp
 aXZ
@@ -76726,15 +76849,15 @@ aXZ
 aXZ
 alp
 alp
-uzF
+fQh
 fkj
-uzF
-mHy
-mHy
-mHy
-uzF
-uzF
-uzF
+fQh
+imN
+imN
+imN
+fQh
+fQh
+fQh
 alp
 alp
 alp
@@ -76983,15 +77106,15 @@ aXZ
 aXZ
 alp
 alp
-uzF
-uzF
-uzF
-mHy
-mHy
-mHy
-mHy
-uzF
-uzF
+fQh
+fQh
+fQh
+imN
+imN
+imN
+imN
+fQh
+fQh
 alp
 alp
 aXZ
@@ -77240,15 +77363,15 @@ aXZ
 aXZ
 alp
 alp
-uzF
-mHy
-mHy
-mHy
-mHy
-mHy
-mHy
-uzF
-mHy
+fQh
+imN
+imN
+imN
+imN
+imN
+imN
+fQh
+imN
 alp
 alp
 aXZ
@@ -77497,15 +77620,15 @@ aXZ
 aXZ
 alp
 alp
-uzF
-mHy
-mHy
-mHy
-mHy
-mHy
-mHy
-uzF
-uzF
+fQh
+imN
+imN
+imN
+imN
+imN
+imN
+fQh
+fQh
 alp
 alp
 aXZ
@@ -77754,15 +77877,15 @@ aXZ
 aXZ
 alp
 alp
-uzF
-mHy
-mHy
-mHy
-mHy
-mHy
-mHy
-uzF
-uzF
+fQh
+imN
+imN
+imN
+imN
+imN
+imN
+fQh
+fQh
 alp
 alp
 aXZ
@@ -78011,15 +78134,15 @@ aXZ
 aXZ
 alp
 alp
-uzF
-mHy
-mHy
-mHy
-mHy
-mHy
-mHy
-uzF
-uzF
+fQh
+imN
+imN
+imN
+imN
+imN
+imN
+fQh
+fQh
 alp
 alp
 aXZ
@@ -78268,15 +78391,15 @@ aXZ
 aXZ
 alp
 alp
-mHy
-mHy
-mHy
-mHy
-mHy
-mHy
-mHy
-uzF
-mHy
+imN
+imN
+imN
+imN
+imN
+imN
+imN
+fQh
+imN
 alp
 alp
 aXZ
@@ -78525,15 +78648,15 @@ aXZ
 aXZ
 alp
 alp
-uzF
-mHy
-mHy
-mHy
-mHy
-mHy
-mHy
-mHy
-uzF
+fQh
+imN
+imN
+imN
+imN
+imN
+imN
+imN
+fQh
 alp
 alp
 oGz
@@ -78782,15 +78905,15 @@ aXZ
 aXZ
 alp
 alp
-uzF
-mHy
-mHy
-mHy
-mHy
-mHy
-mHy
-mHy
-uzF
+fQh
+imN
+imN
+imN
+imN
+imN
+imN
+imN
+fQh
 iSe
 alp
 aXZ
@@ -79039,14 +79162,14 @@ aXZ
 alp
 alp
 alp
-uzF
-mHy
-mHy
-mHy
-mHy
-mHy
-mHy
-mHy
+fQh
+imN
+imN
+imN
+imN
+imN
+imN
+imN
 fkj
 alp
 alp
@@ -79296,14 +79419,14 @@ aXZ
 alp
 alp
 alp
-uzF
-mHy
-mHy
-mHy
-mHy
-mHy
-mHy
-mHy
+fQh
+imN
+imN
+imN
+imN
+imN
+imN
+imN
 fkj
 alp
 alp
@@ -79553,14 +79676,14 @@ brG
 alp
 alp
 alp
-uzF
-uzF
-mHy
-mHy
-mHy
-mHy
-mHy
-mHy
+fQh
+fQh
+imN
+imN
+imN
+imN
+imN
+imN
 fkj
 alp
 alp
@@ -79811,13 +79934,13 @@ alp
 alp
 alp
 fkj
-uzF
-mHy
-mHy
-mHy
-mHy
-mHy
-mHy
+fQh
+imN
+imN
+imN
+imN
+imN
+imN
 fkj
 alp
 alp
@@ -80069,13 +80192,13 @@ alp
 alp
 fkj
 fkj
-mHy
-mHy
-mHy
-mHy
-mHy
-mHy
-uzF
+imN
+imN
+imN
+imN
+imN
+imN
+fQh
 alp
 alp
 alp
@@ -80326,12 +80449,12 @@ alp
 alp
 alp
 fkj
-mHy
-mHy
-mHy
-mHy
-mHy
-mHy
+imN
+imN
+imN
+imN
+imN
+imN
 fkj
 alp
 alp
@@ -80583,13 +80706,13 @@ alp
 alp
 ipc
 fkj
-uzF
-mHy
-mHy
-mHy
-mHy
-mHy
-uzF
+fQh
+imN
+imN
+imN
+imN
+imN
+fQh
 alp
 alp
 alp
@@ -80841,12 +80964,12 @@ alp
 alp
 fkj
 fkj
-uzF
-mHy
-mHy
-mHy
-mHy
-uzF
+fQh
+imN
+imN
+imN
+imN
+fQh
 alp
 alp
 aXZ
@@ -81096,14 +81219,14 @@ aXZ
 brG
 alp
 fkj
-uzF
-uzF
-uzF
-mHy
-mHy
-mHy
-mHy
-uzF
+fQh
+fQh
+fQh
+imN
+imN
+imN
+imN
+fQh
 alp
 alp
 alp
@@ -81353,14 +81476,14 @@ aXZ
 alp
 alp
 fkj
-mHy
-mHy
-mHy
-mHy
-mHy
-mHy
-uzF
-uzF
+imN
+imN
+imN
+imN
+imN
+imN
+fQh
+fQh
 alp
 alp
 aXZ
@@ -81611,13 +81734,13 @@ alp
 alp
 fkj
 fkj
-mHy
-mHy
-mHy
-mHy
-mHy
-uzF
-uzF
+imN
+imN
+imN
+imN
+imN
+fQh
+fQh
 alp
 alp
 aXZ
@@ -81866,15 +81989,15 @@ ayO
 alp
 alp
 alp
-uzF
+fQh
 fkj
-mHy
-mHy
-mHy
-mHy
-mHy
-uzF
-uzF
+imN
+imN
+imN
+imN
+imN
+fQh
+fQh
 alp
 alp
 aXZ
@@ -82123,15 +82246,15 @@ ayO
 alp
 alp
 fkj
-uzF
-mHy
-mHy
-mHy
-mHy
-mHy
-uzF
-uzF
-uzF
+fQh
+imN
+imN
+imN
+imN
+imN
+fQh
+fQh
+fQh
 alp
 alp
 aXZ
@@ -82380,15 +82503,15 @@ fkj
 fkj
 fkj
 fkj
-uzF
-mHy
-mHy
-mHy
-mHy
-mHy
-uzF
-uzF
-uzF
+fQh
+imN
+imN
+imN
+imN
+imN
+fQh
+fQh
+fQh
 alp
 alp
 aXZ
@@ -82637,15 +82760,15 @@ fQh
 fQh
 fQh
 fQh
-uzF
-mHy
-mHy
-mHy
-mHy
-mHy
-mHy
-uzF
-uzF
+fQh
+imN
+imN
+imN
+imN
+imN
+imN
+fQh
+fQh
 alp
 alp
 aXZ
@@ -82894,14 +83017,14 @@ imN
 erc
 imN
 imN
-uzF
+fQh
 hjT
-mHy
-mHy
-mHy
-mHy
-mHy
-mHy
+imN
+imN
+imN
+imN
+imN
+imN
 lwq
 alp
 aXZ
@@ -83151,14 +83274,14 @@ imN
 imN
 imN
 imN
-uzF
-mHy
-mHy
-mHy
-mHy
-mHy
-mHy
-mHy
+fQh
+imN
+imN
+imN
+imN
+imN
+imN
+imN
 lwq
 alp
 alp
@@ -83408,15 +83531,15 @@ odS
 imN
 imN
 imN
-uzF
-mHy
-mHy
-mHy
-mHy
-mHy
-mHy
-mHy
-uzF
+fQh
+imN
+imN
+imN
+imN
+imN
+imN
+imN
+fQh
 alp
 alp
 aXZ
@@ -83665,15 +83788,15 @@ oYM
 imN
 imN
 imN
-mHy
-mHy
-mHy
+imN
+imN
+imN
 alp
 alp
-mHy
-mHy
-mHy
-uzF
+imN
+imN
+imN
+fQh
 alp
 alp
 aXZ
@@ -83922,15 +84045,15 @@ oYM
 imN
 imN
 imN
-mHy
-mHy
-mHy
-mHy
+imN
+imN
+imN
+imN
 fPj
 alp
-mHy
+imN
 dFo
-uzF
+fQh
 alp
 alp
 aXZ
@@ -84179,15 +84302,15 @@ oYM
 imN
 imN
 imN
-mHy
-mHy
-mHy
-mHy
-mHy
-xla
-mHy
-mHy
-uzF
+imN
+imN
+imN
+imN
+imN
+erc
+imN
+imN
+fQh
 alp
 alp
 aXZ
@@ -84436,15 +84559,15 @@ oYM
 imN
 imN
 imN
-mHy
-mHy
-mHy
-mHy
-mHy
-mHy
-mHy
-mHy
-mHy
+imN
+imN
+imN
+imN
+imN
+imN
+imN
+imN
+imN
 alp
 alp
 alp
@@ -84693,15 +84816,15 @@ hvV
 imN
 imN
 imN
-mHy
+imN
 fkj
 fkj
 fkj
 fkj
 fkj
-mHy
-uzF
-uzF
+imN
+fQh
+fQh
 alp
 alp
 alp
