@@ -999,7 +999,7 @@ GLOBAL_LIST_INIT(slot_equipment_priority, list( \
 
 	if(statpanel("Status"))
 		stat(null, "Номер раунда: [GLOB.round_id ? GLOB.round_id : "NULL"]")
-		stat(null, "Map: [SSmapping.map_datum.fluff_name]")
+		stat(null, "Карта: [SSmapping.map_datum.fluff_name]")
 		if(SSmapping.next_map)
 			stat(null, "Следующая карта: [SSmapping.next_map.fluff_name]")
 		if(SSticker)
