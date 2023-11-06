@@ -38,6 +38,10 @@
 	drop_sound = 'modular_ss220/aesthetics_sounds/sound/handling/drop/generic1.ogg'
 	pickup_sound = 'modular_ss220/aesthetics_sounds/sound/handling/pickup/generic1.ogg'
 
+/obj/item/kitchen/knife/shiv/carrot
+	drop_sound = 'modular_ss220/aesthetics_sounds/sound/handling/drop/generic1.ogg'
+	pickup_sound = 'modular_ss220/aesthetics_sounds/sound/handling/pickup/generic1.ogg'
+
 /* CLOTHING */
 /obj/item/clothing
 	drop_sound = 'modular_ss220/aesthetics_sounds/sound/handling/drop/clothing.ogg'
