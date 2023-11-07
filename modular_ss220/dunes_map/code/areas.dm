@@ -102,7 +102,7 @@
 	name = "\improper Пустыня - Вход в бункер"
 	icon = 'modular_ss220/dunes_map/icons/areas.dmi'
 	icon_state = "desert_entry"
-	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
+	dynamic_lighting = DYNAMIC_LIGHTING_FORCED
 	requires_power = TRUE
 	always_unpowered = FALSE
 	ambientsounds = DESERT_SOUNDS_VAULT
@@ -118,7 +118,6 @@
 /area/awaymission/arrakis/bunker/brig/bsa
 	name = "\improper Бункер - ???"
 	requires_power = FALSE
-	dynamic_lighting = DYNAMIC_LIGHTING_FORCED
 
 /area/awaymission/arrakis/bunker/engie
 	name = "\improper Бункер - Инженерия"
@@ -170,7 +169,7 @@
 
 /area/awaymission/arrakis/bunker/tanya_cyborg_blyat_lab
 	name = "\improper Бункер - ???"
+	icon = 'icons/turf/areas.dmi'
 	icon_state = "purple"
 	requires_power = FALSE
-	dynamic_lighting = DYNAMIC_LIGHTING_FORCED
 	ambientsounds = DESERT_SOUNDS_SECRET
