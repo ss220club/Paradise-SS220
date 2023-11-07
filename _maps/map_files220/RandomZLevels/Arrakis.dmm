@@ -230,17 +230,6 @@
 /obj/item/bedsheet,
 /turf/simulated/floor/carpet,
 /area/awaymission/arrakis/bunker/bedrooms)
-"aaC" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/kirbyplants/norandom/dead,
-/obj/effect/decal/cleanable/cobweb2{
-	icon_state = "cobweb1"
-	},
-/turf/simulated/floor/plasteel{
-	dir = 9;
-	icon_state = "darkblue"
-	},
-/area/awaymission/arrakis/bunker/bridge)
 "aaD" = (
 /obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/plasteel{
@@ -316,7 +305,6 @@
 /area/awaymission/arrakis/cave)
 "aaO" = (
 /obj/effect/decal/cleanable/dust,
-/obj/machinery/economy/vending/cigarette/empty,
 /obj/effect/mapping_helpers/machinery/damaged,
 /obj/machinery/light/directional/north,
 /turf/simulated/floor/wood/fancy/cherry,
@@ -379,6 +367,12 @@
 /obj/structure/closet/secure_closet/captains,
 /obj/effect/decal/cleanable/cobweb2{
 	layer = 4
+	},
+/obj/machinery/door_control/normal/north{
+	id = "dune_secret"
+	},
+/obj/structure/sign/nuke{
+	pixel_y = 30
 	},
 /turf/simulated/floor/carpet,
 /area/awaymission/arrakis/bunker/bridge)
@@ -465,6 +459,8 @@
 	dir = 8;
 	on = 0
 	},
+/obj/structure/closet/l3closet/security,
+/obj/machinery/light/directional/north,
 /turf/simulated/floor/plasteel{
 	dir = 5;
 	icon_state = "navybluealt"
@@ -852,8 +848,7 @@
 /obj/machinery/atmospherics/binary/pump/on{
 	target_pressure = 4500
 	},
-/turf/simulated/floor/plasteel/dark/telecomms,
-/area/toxins/server)
+/turf/simulated/floor/plasteel/dark/telecomms)
 "acu" = (
 /obj/item/flag/atmos{
 	name = "Atmosia Flag"
@@ -1471,7 +1466,6 @@
 /area/awaymission/arrakis/bunker/rnd)
 "aea" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/kirbyplants/norandom/dead,
 /turf/simulated/floor/plasteel{
 	dir = 9;
 	icon_state = "darkblue"
@@ -1887,9 +1881,6 @@
 	},
 /area/awaymission/arrakis/bunker/medbay)
 "afh" = (
-/obj/structure/toilet/golden_toilet{
-	dir = 4
-	},
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
 	icon_state = "freezerfloor"
@@ -2057,14 +2048,6 @@
 	icon_state = "whiteblue"
 	},
 /area/awaymission/arrakis/bunker/medbay)
-"afG" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/kirbyplants/norandom/dead,
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "neutral"
-	},
-/area/awaymission/arrakis/bunker/dorms)
 "afH" = (
 /obj/structure/chair/comfy/brown{
 	dir = 4
@@ -2310,12 +2293,6 @@
 	icon_state = "yellow"
 	},
 /area/awaymission/arrakis/bunker/engie)
-"ago" = (
-/turf/simulated/floor/plasteel{
-	dir = 9;
-	icon_state = "navybluealt"
-	},
-/area/awaymission/arrakis/bunker/tanya_cyborg_blyat_lab)
 "agp" = (
 /obj/structure/rack,
 /turf/simulated/floor/plating,
@@ -2467,8 +2444,9 @@
 	},
 /area/awaymission/arrakis/bunker/medbay)
 "agD" = (
+/obj/structure/table/glass/reinforced,
 /turf/simulated/floor/plasteel{
-	dir = 6;
+	dir = 1;
 	icon_state = "navybluealt"
 	},
 /area/awaymission/arrakis/bunker/tanya_cyborg_blyat_lab)
@@ -2908,9 +2886,6 @@
 /area/awaymission/arrakis/bunker/bar)
 "ahz" = (
 /obj/effect/decal/cleanable/dust,
-/obj/machinery/power/apc/unpowered{
-	pixel_y = -26
-	},
 /obj/structure/cable,
 /turf/simulated/floor/wood/fancy/cherry,
 /area/awaymission/arrakis/bunker/kitchen)
@@ -3009,16 +2984,6 @@
 	},
 /turf/simulated/floor/engine,
 /area/awaymission/arrakis/bunker/rnd)
-"ahP" = (
-/obj/effect/decal/cleanable/dust,
-/obj/machinery/economy/vending/coffee/empty{
-	initialized = 1
-	},
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "whiteblue"
-	},
-/area/awaymission/arrakis/bunker/medbay)
 "ahQ" = (
 /obj/machinery/computer/security/telescreen/entertainment/directional/east,
 /obj/effect/decal/cleanable/dirt,
@@ -3057,7 +3022,7 @@
 /area/awaymission/arrakis/bunker/medbay)
 "ahW" = (
 /obj/structure/AIcore/deactivated/tanya{
-	layer = 3.8
+	layer = 3.5
 	},
 /obj/machinery/light/directional/west,
 /turf/simulated/floor/plasteel{
@@ -3184,14 +3149,6 @@
 "aim" = (
 /turf/simulated/wall/indestructible/riveted,
 /area/awaymission/arrakis/bunker)
-"ain" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/kirbyplants/norandom/dead,
-/turf/simulated/floor/plasteel{
-	dir = 6;
-	icon_state = "darkblue"
-	},
-/area/awaymission/arrakis/bunker/bridge)
 "aio" = (
 /obj/effect/decal/cleanable/cobweb,
 /obj/structure/computerframe{
@@ -3252,7 +3209,6 @@
 /area/awaymission/arrakis/bunker/engie)
 "ais" = (
 /obj/effect/decal/cleanable/dust,
-/obj/item/kirbyplants/norandom/dead,
 /turf/simulated/floor/plasteel{
 	dir = 6;
 	icon_state = "neutral"
@@ -3465,10 +3421,6 @@
 /area/awaymission/arrakis/bunker/rnd)
 "ajd" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/power/apc/unpowered{
-	dir = 4;
-	pixel_x = 26
-	},
 /obj/structure/cable{
 	d2 = 8;
 	icon_state = "0-8"
@@ -3530,8 +3482,7 @@
 /obj/machinery/atmospherics/pipe/manifold/visible{
 	dir = 1
 	},
-/turf/simulated/floor/plasteel/dark/telecomms,
-/area/toxins/server)
+/turf/simulated/floor/plasteel/dark/telecomms)
 "ajl" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/smartfridge,
@@ -3632,7 +3583,6 @@
 "ajz" = (
 /obj/effect/decal/cleanable/cobweb,
 /obj/effect/decal/cleanable/dust,
-/obj/item/kirbyplants/norandom/dead,
 /turf/simulated/floor/carpet/green,
 /area/awaymission/arrakis/bunker/bedrooms)
 "ajA" = (
@@ -3775,9 +3725,6 @@
 	},
 /area/awaymission/arrakis/bunker/medbay)
 "ajV" = (
-/obj/structure/bed/sandstone{
-	dir = 8
-	},
 /obj/effect/decal/cleanable/dust,
 /obj/structure/decorative_structures/corpse{
 	layer = 2
@@ -3799,11 +3746,12 @@
 /turf/simulated/floor/beach/sand,
 /area/awaymission/arrakis/bunker/medbay)
 "ajX" = (
-/obj/machinery/power/generator,
+/obj/structure/table/glass/reinforced,
 /turf/simulated/floor/plasteel{
-	icon_state = "dark"
+	dir = 10;
+	icon_state = "navybluealt"
 	},
-/area/awaymission/arrakis/bunker/engie)
+/area/awaymission/arrakis/bunker/tanya_cyborg_blyat_lab)
 "ajY" = (
 /obj/structure/cable/yellow{
 	d1 = 1;
@@ -4114,7 +4062,6 @@
 "akO" = (
 /obj/effect/decal/cleanable/cobweb,
 /obj/effect/decal/cleanable/dust,
-/obj/item/kirbyplants/norandom/dead,
 /turf/simulated/floor/carpet/purple,
 /area/awaymission/arrakis/bunker/bedrooms)
 "akP" = (
@@ -4595,14 +4542,6 @@
 	icon_state = "blue"
 	},
 /area/awaymission/arrakis/bunker/hallway)
-"alY" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/kirbyplants/norandom/dead,
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "darkblue"
-	},
-/area/awaymission/arrakis/bunker/bridge)
 "alZ" = (
 /obj/structure/cable,
 /obj/effect/spawner/window/reinforced/plasma/grilled,
@@ -4610,9 +4549,6 @@
 /area/awaymission/arrakis/bunker/rnd)
 "ama" = (
 /obj/structure/table/reinforced,
-/obj/item/storage/toolbox/surgery{
-	pixel_y = 6
-	},
 /obj/item/robotanalyzer{
 	pixel_y = -4
 	},
@@ -4780,7 +4716,6 @@
 /turf/simulated/floor/wood/fancy/cherry,
 /area/awaymission/arrakis/bunker/bar)
 "amA" = (
-/obj/machinery/economy/vending/coffee/empty,
 /obj/effect/mapping_helpers/machinery/damaged,
 /obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/wood{
@@ -4868,8 +4803,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/turf/simulated/floor/plasteel/dark,
-/area/toxins/server)
+/turf/simulated/floor/plasteel/dark)
 "amL" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
@@ -5122,12 +5056,6 @@
 	icon_state = "cafeteria"
 	},
 /area/awaymission/arrakis/bunker/kitchen)
-"anv" = (
-/obj/machinery/atmospherics/unary/heat_reservoir/heater/upgraded,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
-/area/awaymission/arrakis/bunker/engie)
 "anw" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -5367,10 +5295,6 @@
 /area/awaymission/arrakis/bunker/hallway)
 "aof" = (
 /obj/effect/decal/cleanable/dust,
-/obj/machinery/power/apc/unpowered{
-	dir = 8;
-	pixel_x = -26
-	},
 /obj/structure/cable{
 	d2 = 4;
 	icon_state = "0-4"
@@ -5460,11 +5384,6 @@
 /area/awaymission/arrakis/bunker/bridge)
 "aop" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/power/apc/unpowered{
-	dir = 4;
-	pixel_x = 26
-	},
-/obj/item/kirbyplants/norandom/dead,
 /turf/simulated/floor/plasteel{
 	dir = 5;
 	icon_state = "neutral"
@@ -5602,8 +5521,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/turf/simulated/floor/plating,
-/area/toxins/server)
+/turf/simulated/floor/plating)
 "aoP" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -5910,8 +5828,7 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging/junction{
 	dir = 8
 	},
-/turf/simulated/floor/bluegrid/telecomms/server,
-/area/toxins/server)
+/turf/simulated/floor/bluegrid/telecomms/server)
 "apB" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -6341,10 +6258,6 @@
 	dir = 2
 	},
 /obj/item/paper/monitorkey,
-/obj/item/paper/rnd_logs_key{
-	pixel_x = 6;
-	pixel_y = 6
-	},
 /turf/simulated/floor/carpet/purple,
 /area/awaymission/arrakis/bunker/rnd)
 "aqI" = (
@@ -6353,6 +6266,8 @@
 	pixel_y = -26;
 	name = "custom placement"
 	},
+/obj/structure/closet/l3closet/security,
+/obj/machinery/light/directional/south,
 /turf/simulated/floor/plasteel{
 	dir = 6;
 	icon_state = "navybluealt"
@@ -6649,11 +6564,6 @@
 	icon_state = "neutral"
 	},
 /area/awaymission/arrakis/bunker/dorms)
-"ary" = (
-/obj/effect/decal/cleanable/dust,
-/obj/item/kirbyplants/norandom/dead,
-/turf/simulated/floor/carpet,
-/area/awaymission/arrakis/bunker/bedrooms)
 "arz" = (
 /obj/item/stack/ore/slag,
 /turf/simulated/floor/indestructible/dune_sand,
@@ -7018,11 +6928,6 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel,
-/area/awaymission/arrakis/bunker/bedrooms)
-"asB" = (
-/obj/effect/decal/cleanable/dust,
-/obj/item/kirbyplants/norandom/dead,
-/turf/simulated/floor/carpet/cyan,
 /area/awaymission/arrakis/bunker/bedrooms)
 "asC" = (
 /turf/simulated/floor/engine,
@@ -7400,8 +7305,7 @@
 /turf/simulated/floor/bluegrid,
 /area/awaymission/arrakis/bunker/rnd)
 "atH" = (
-/turf/simulated/floor/plasteel/dark/telecomms,
-/area/toxins/server)
+/turf/simulated/floor/plasteel/dark/telecomms)
 "atI" = (
 /obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/plasteel,
@@ -7616,8 +7520,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 9
 	},
-/turf/simulated/floor/plasteel/dark/telecomms,
-/area/toxins/server)
+/turf/simulated/floor/plasteel/dark/telecomms)
 "aur" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/table/reinforced,
@@ -7688,9 +7591,6 @@
 	},
 /area/awaymission/arrakis/bunker/tanya_cyborg_blyat_lab)
 "auA" = (
-/obj/machinery/economy/vending/coffee/empty{
-	initialized = 1
-	},
 /obj/effect/mapping_helpers/machinery/damaged,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
@@ -7851,12 +7751,6 @@
 /obj/effect/landmark/burnturf,
 /turf/simulated/floor/engine,
 /area/awaymission/arrakis/bunker/rnd)
-"ave" = (
-/obj/machinery/pipedispenser,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
-/area/awaymission/arrakis/bunker/engie)
 "avf" = (
 /obj/item/kirbyplants,
 /obj/effect/turf_decal/stripes/line{
@@ -8026,17 +7920,6 @@
 /area/awaymission/arrakis/bunker/rnd)
 "avH" = (
 /obj/structure/closet/crate/freezer,
-/obj/item/reagent_containers/iv_bag/bloodsynthetic/nitrogenis,
-/obj/item/reagent_containers/iv_bag/bloodsynthetic/oxygenis,
-/obj/item/reagent_containers/iv_bag/blood/diona,
-/obj/item/reagent_containers/iv_bag/blood/grey,
-/obj/item/reagent_containers/iv_bag/blood/kidan,
-/obj/item/reagent_containers/iv_bag/blood/nian,
-/obj/item/reagent_containers/iv_bag/blood/skrell,
-/obj/item/reagent_containers/iv_bag/blood/tajaran,
-/obj/item/reagent_containers/iv_bag/blood/unathi,
-/obj/item/reagent_containers/iv_bag/blood/vulpkanin,
-/obj/item/reagent_containers/iv_bag/blood/wryn,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
 	icon_state = "whiteblue"
@@ -8083,12 +7966,6 @@
 	pixel_x = -4;
 	pixel_y = 2
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
-/area/awaymission/arrakis/bunker/engie)
-"avQ" = (
-/obj/machinery/atmospherics/unary/cold_sink/freezer/upgraded,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -8194,8 +8071,7 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 4
 	},
-/turf/simulated/floor/plasteel/dark,
-/area/toxins/server)
+/turf/simulated/floor/plasteel/dark)
 "awg" = (
 /obj/machinery/light/directional/east,
 /obj/effect/mapping_helpers/machinery/damaged,
@@ -8258,17 +8134,6 @@
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "darkyellow"
-	},
-/area/awaymission/arrakis/bunker/bridge)
-"awu" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/kirbyplants/norandom/dead,
-/obj/effect/decal/cleanable/cobweb2{
-	layer = 4
-	},
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "darkblue"
 	},
 /area/awaymission/arrakis/bunker/bridge)
 "awv" = (
@@ -8348,14 +8213,6 @@
 /obj/structure/table/reinforced/brass,
 /turf/simulated/floor/brick,
 /area/awaymission/arrakis/cave)
-"awG" = (
-/obj/effect/decal/cleanable/dust,
-/obj/item/kirbyplants/norandom/dead,
-/turf/simulated/floor/plasteel{
-	dir = 9;
-	icon_state = "neutral"
-	},
-/area/awaymission/arrakis/bunker/dorms)
 "awH" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood,
@@ -8799,8 +8656,7 @@
 /obj/effect/turf_decal/stripes/corner{
 	dir = 8
 	},
-/turf/simulated/floor/plasteel/dark,
-/area/toxins/server)
+/turf/simulated/floor/plasteel/dark)
 "ayc" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -8815,7 +8671,6 @@
 	},
 /area/awaymission/arrakis/bunker/medbay)
 "ayd" = (
-/obj/structure/bed/sandstone,
 /obj/effect/decal/cleanable/dust,
 /obj/effect/mob_spawn/human/corpse/miner,
 /obj/effect/decal/cleanable/blood,
@@ -8842,7 +8697,6 @@
 "ayk" = (
 /obj/effect/decal/cleanable/dust,
 /obj/structure/table/wood,
-/obj/item/storage/toolbox/electrical/old,
 /turf/simulated/floor/carpet/purple,
 /area/awaymission/arrakis/bunker/bedrooms)
 "aym" = (
@@ -9353,8 +9207,7 @@
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
-	},
-/area/toxins/server)
+	})
 "azD" = (
 /obj/effect/turf_decal/delivery/partial{
 	dir = 1
@@ -9840,10 +9693,6 @@
 "aAU" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/statue/tranquillite/mime/unique,
-/obj/machinery/power/apc/unpowered{
-	dir = 4;
-	pixel_x = 26
-	},
 /obj/structure/cable{
 	d2 = 8;
 	icon_state = "0-8"
@@ -10007,10 +9856,6 @@
 	icon_state = "whiteblue"
 	},
 /area/awaymission/arrakis/bunker/medbay)
-"aBt" = (
-/obj/item/trash/broken_ashtray,
-/turf/simulated/floor/indestructible/dune_sand,
-/area/awaymission/arrakis/cave)
 "aBv" = (
 /obj/item/stack/ore/titanium,
 /turf/simulated/floor/indestructible/dune_sand/smooth,
@@ -10102,8 +9947,6 @@
 "aBG" = (
 /obj/structure/closet/secure_closet/engineering_chief,
 /obj/item/rcd/preloaded,
-/obj/item/clothing/glasses/meson/sunglasses,
-/obj/item/lock_buster,
 /obj/item/cartridge/engineering{
 	pixel_x = 3
 	},
@@ -10216,15 +10059,6 @@
 	icon_state = "white"
 	},
 /area/awaymission/arrakis/bunker/rnd)
-"aBT" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/sign/poster/secret/ray{
-	pixel_y = 38
-	},
-/turf/simulated/floor/plasteel{
-	icon_state = "freezerfloor"
-	},
-/area/awaymission/arrakis/bunker/bridge)
 "aBU" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/flour,
@@ -10309,7 +10143,6 @@
 /area/awaymission/arrakis/bunker/engie)
 "aCf" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/kirbyplants/norandom/dead,
 /turf/simulated/floor/plasteel{
 	dir = 6;
 	icon_state = "neutral"
@@ -10325,9 +10158,7 @@
 /obj/structure/rack{
 	dir = 1
 	},
-/obj/item/stack/sheet/mineral/plasma{
-	amount = 30
-	},
+/obj/item/stack/sheet/mineral/plasma,
 /obj/machinery/camera{
 	c_tag = "Engineering Particle Accelerator";
 	network = list("Singularity","SS13");
@@ -10480,7 +10311,6 @@
 	},
 /area/awaymission/arrakis/bunker/medbay)
 "aCJ" = (
-/obj/machinery/economy/vending/medical/small,
 /turf/simulated/floor/plasteel{
 	dir = 6;
 	icon_state = "whiteblue"
@@ -10754,11 +10584,11 @@
 	pixel_y = -13;
 	layer = 2.6
 	},
+/obj/effect/decal/cleanable/dust,
 /obj/item/stamp/captain{
 	pixel_x = 1;
-	pixel_y = -2
+	pixel_y = -4
 	},
-/obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/wood,
 /area/awaymission/arrakis/bunker/bridge)
 "aDy" = (
@@ -11212,10 +11042,6 @@
 	icon_state = "whitehall"
 	},
 /area/awaymission/arrakis/bunker/rnd)
-"aET" = (
-/obj/effect/decal/remains/animals/mouse,
-/turf/simulated/floor/plating,
-/area/awaymission/arrakis/bunker/engie)
 "aEU" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -11288,13 +11114,7 @@
 	name = "SERVER ROOM";
 	pixel_y = -32
 	},
-/turf/simulated/floor/plating,
-/area/toxins/server)
-"aFe" = (
-/obj/item/kirbyplants/norandom/dead,
-/obj/effect/decal/cleanable/dust,
-/turf/simulated/floor/wood,
-/area/awaymission/arrakis/bunker/bridge)
+/turf/simulated/floor/plating)
 "aFf" = (
 /obj/machinery/computer/med_data/laptop{
 	pixel_x = 2;
@@ -11434,7 +11254,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
-/obj/machinery/economy/vending/boozeomat/empty,
 /obj/effect/decal/cleanable/cobweb,
 /obj/effect/mapping_helpers/machinery/damaged,
 /obj/structure/cable{
@@ -11526,15 +11345,6 @@
 /obj/machinery/light/small/directional/east,
 /turf/simulated/floor/carpet/blue,
 /area/awaymission/arrakis/bunker/bedrooms)
-"aFS" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/remains/animals/monkey,
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "dark";
-	tag = "icon-vault (NORTHEAST)"
-	},
-/area/awaymission/arrakis/bunker/bar)
 "aFU" = (
 /obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/plasteel{
@@ -11556,14 +11366,6 @@
 	icon_state = "darkbluefull"
 	},
 /area/awaymission/arrakis/bunker/medbay)
-"aFZ" = (
-/obj/machinery/door/airlock/highsecurity/secret{
-	req_access = list(114)
-	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
-/area/awaymission/arrakis/bunker/tanya_cyborg_blyat_lab)
 "aGa" = (
 /obj/structure/cable{
 	d2 = 4;
@@ -11673,7 +11475,6 @@
 "aGm" = (
 /obj/effect/decal/cleanable/cobweb,
 /obj/effect/decal/cleanable/dust,
-/obj/item/kirbyplants/norandom/dead,
 /turf/simulated/floor/carpet/red,
 /area/awaymission/arrakis/bunker/bedrooms)
 "aGn" = (
@@ -11896,10 +11697,10 @@
 /turf/simulated/floor/carpet/blue,
 /area/awaymission/arrakis/bunker/bedrooms)
 "aGR" = (
-/obj/machinery/light/directional/south,
 /obj/machinery/firealarm/directional/south{
 	dir = 1
 	},
+/obj/structure/sink/directional/south,
 /turf/simulated/floor/plasteel{
 	icon_state = "navybluealt"
 	},
@@ -11924,17 +11725,6 @@
 /area/awaymission/arrakis/bunker/medbay)
 "aGT" = (
 /obj/structure/closet/crate/freezer,
-/obj/item/reagent_containers/iv_bag/bloodsynthetic/nitrogenis,
-/obj/item/reagent_containers/iv_bag/bloodsynthetic/oxygenis,
-/obj/item/reagent_containers/iv_bag/blood/diona,
-/obj/item/reagent_containers/iv_bag/blood/grey,
-/obj/item/reagent_containers/iv_bag/blood/kidan,
-/obj/item/reagent_containers/iv_bag/blood/nian,
-/obj/item/reagent_containers/iv_bag/blood/skrell,
-/obj/item/reagent_containers/iv_bag/blood/tajaran,
-/obj/item/reagent_containers/iv_bag/blood/unathi,
-/obj/item/reagent_containers/iv_bag/blood/vulpkanin,
-/obj/item/reagent_containers/iv_bag/blood/wryn,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
 	dir = 1;
@@ -12055,12 +11845,6 @@
 	icon_state = "white"
 	},
 /area/awaymission/arrakis/bunker/medbay)
-"aHo" = (
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "navybluealt"
-	},
-/area/awaymission/arrakis/bunker/tanya_cyborg_blyat_lab)
 "aHp" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -12087,11 +11871,6 @@
 	icon_state = "whiteblue"
 	},
 /area/awaymission/arrakis/bunker/medbay)
-"aHu" = (
-/obj/effect/decal/cleanable/dust,
-/obj/item/kirbyplants/norandom/dead,
-/turf/simulated/floor/carpet/blue,
-/area/awaymission/arrakis/bunker/bedrooms)
 "aHv" = (
 /obj/structure/table/glass,
 /obj/item/healthanalyzer/advanced,
@@ -12398,10 +12177,15 @@
 /turf/simulated/floor/carpet/black,
 /area/awaymission/arrakis/bunker/bridge)
 "aIF" = (
-/obj/effect/decal/cleanable/dust,
-/obj/item/kirbyplants/norandom/dead,
-/turf/simulated/floor/carpet/black,
-/area/awaymission/arrakis/bunker/bedrooms)
+/obj/machinery/shower{
+	pixel_y = 16
+	},
+/obj/structure/curtain/open/shower/centcom,
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "navybluealt"
+	},
+/area/awaymission/arrakis/bunker/tanya_cyborg_blyat_lab)
 "aIG" = (
 /turf/simulated/wall/mineral/sandstone,
 /area/awaymission/arrakis/cave)
@@ -12439,11 +12223,12 @@
 /turf/simulated/floor/indestructible/dune_sand/smooth,
 /area/awaymission/arrakis/cave)
 "aIM" = (
-/obj/item/trash/broken_ashtray{
-	pixel_x = -11
+/obj/machinery/light/directional/south,
+/obj/structure/table/glass/reinforced,
+/turf/simulated/floor/plasteel{
+	icon_state = "navybluealt"
 	},
-/turf/simulated/floor/indestructible/dune_sand,
-/area/awaymission/arrakis/cave)
+/area/awaymission/arrakis/bunker/tanya_cyborg_blyat_lab)
 "aIN" = (
 /obj/machinery/computer/operating,
 /obj/effect/mapping_helpers/machinery/damaged,
@@ -12685,8 +12470,7 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 6
 	},
-/turf/simulated/floor/bluegrid/telecomms/server,
-/area/toxins/server)
+/turf/simulated/floor/bluegrid/telecomms/server)
 "aJB" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -13216,13 +13000,6 @@
 	icon_state = "yellow"
 	},
 /area/awaymission/arrakis/bunker/engie)
-"aKP" = (
-/obj/structure/bed/sandstone{
-	dir = 8
-	},
-/obj/effect/decal/cleanable/dust,
-/turf/simulated/floor/brick,
-/area/awaymission/arrakis/cave)
 "aKQ" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
@@ -13308,10 +13085,6 @@
 	},
 /area/awaymission/arrakis/bunker/tanya_cyborg_blyat_lab)
 "aLd" = (
-/obj/machinery/power/apc/unpowered{
-	pixel_y = 32;
-	dir = 1
-	},
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
@@ -13358,8 +13131,7 @@
 	},
 /area/awaymission/arrakis/bunker/kitchen)
 "aLk" = (
-/turf/simulated/wall/r_wall,
-/area/toxins/server)
+/turf/simulated/wall/r_wall)
 "aLl" = (
 /turf/simulated/wall,
 /area/awaymission/arrakis/bunker/janitor)
@@ -13443,21 +13215,12 @@
 	icon_state = "dark"
 	},
 /area/awaymission/arrakis/bunker/engie)
-"aLz" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/kirbyplants/norandom/dead,
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "neutral"
-	},
-/area/awaymission/arrakis/bunker/dorms)
 "aLA" = (
 /obj/effect/mapping_helpers/light,
 /turf/simulated/floor/indestructible/dune_sand,
 /area/awaymission/arrakis/outside/outside4)
 "aLB" = (
-/turf/simulated/wall/indestructible/riveted,
-/area/toxins/server)
+/turf/simulated/wall/indestructible/riveted)
 "aLC" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
@@ -13515,7 +13278,7 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/arrakis/bunker/rnd)
 "aLK" = (
-/obj/structure/table/reinforced,
+/obj/structure/table/glass/reinforced,
 /obj/item/paper_bin{
 	pixel_y = 4
 	},
@@ -13861,14 +13624,6 @@
 	icon_state = "tranquillite"
 	},
 /area/awaymission/arrakis/bunker/clowns)
-"aMK" = (
-/obj/machinery/economy/vending/coffee/empty,
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "darkblue"
-	},
-/area/awaymission/arrakis/bunker/bridge)
 "aMM" = (
 /obj/machinery/monkey_recycler,
 /turf/simulated/floor/plasteel,
@@ -14125,7 +13880,6 @@
 	},
 /area/awaymission/arrakis/bunker/medbay)
 "aNG" = (
-/obj/machinery/economy/vending/snack/empty,
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/directional/north,
 /turf/simulated/floor/plasteel{
@@ -14248,17 +14002,6 @@
 /obj/effect/mapping_helpers/machinery/damaged,
 /turf/simulated/floor/wood,
 /area/awaymission/arrakis/bunker/bridge)
-"aNT" = (
-/obj/structure/table/glass,
-/obj/item/storage/toolbox/surgery{
-	pixel_x = -1;
-	pixel_y = 2
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	icon_state = "whiteblue"
-	},
-/area/awaymission/arrakis/bunker/medbay)
 "aNU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/effect/decal/cleanable/dirt,
@@ -14319,13 +14062,11 @@
 /obj/effect/turf_decal/stripes/corner{
 	dir = 1
 	},
-/turf/simulated/floor/plasteel/dark,
-/area/toxins/server)
+/turf/simulated/floor/plasteel/dark)
 "aOc" = (
 /obj/machinery/light/small/directional/west,
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging,
-/turf/simulated/floor/plasteel/dark/telecomms,
-/area/toxins/server)
+/turf/simulated/floor/plasteel/dark/telecomms)
 "aOf" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
@@ -14408,7 +14149,7 @@
 	dir = 1
 	},
 /obj/item/stack/sheet/mineral/plasma{
-	amount = 10
+	amount = 2
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/arrakis/bunker/engie)
@@ -14737,13 +14478,6 @@
 "aPu" = (
 /turf/simulated/wall/r_wall,
 /area/awaymission/arrakis/bunker/kitchen)
-"aPv" = (
-/obj/item/pipe/circulator,
-/obj/effect/decal/cleanable/dust,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
-/area/awaymission/arrakis/bunker/engie)
 "aPw" = (
 /obj/effect/turf_decal/stripes,
 /turf/simulated/floor/plasteel{
@@ -14838,13 +14572,7 @@
 	},
 /area/awaymission/arrakis/bunker/kitchen)
 "aPH" = (
-/obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/drinks/mug/comms{
-	pixel_y = 8;
-	pixel_x = 2;
-	list_reagents = list("tea"=30);
-	layer = 4.1
-	},
+/obj/structure/table/glass/reinforced,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -15123,10 +14851,12 @@
 	},
 /area/awaymission/arrakis/bunker/bridge)
 "aQB" = (
-/obj/structure/bed/sandstone,
-/obj/effect/decal/cleanable/dust,
-/turf/simulated/floor/brick,
-/area/awaymission/arrakis/cave)
+/obj/structure/table/glass/reinforced,
+/turf/simulated/floor/plasteel{
+	dir = 4;
+	icon_state = "navybluealt"
+	},
+/area/awaymission/arrakis/bunker/tanya_cyborg_blyat_lab)
 "aQC" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 9
@@ -15182,7 +14912,6 @@
 /turf/simulated/floor/indestructible/dune_sand,
 /area/awaymission/arrakis/cave)
 "aQM" = (
-/obj/machinery/economy/vending/coffee/empty,
 /obj/machinery/computer/security/telescreen/entertainment/directional/north,
 /obj/machinery/light/directional/north,
 /obj/effect/mapping_helpers/machinery/damaged,
@@ -15883,8 +15612,7 @@
 	on = 1
 	},
 /obj/item/radio/intercom/directional/north,
-/turf/simulated/floor/plasteel/dark,
-/area/toxins/server)
+/turf/simulated/floor/plasteel/dark)
 "aSN" = (
 /obj/structure/closet/firecloset,
 /obj/machinery/camera{
@@ -15899,9 +15627,6 @@
 "aSO" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/directional/south,
-/obj/machinery/power/apc/unpowered{
-	pixel_y = -26
-	},
 /obj/structure/cable,
 /turf/simulated/floor/plasteel{
 	icon_state = "darkblue"
@@ -15911,8 +15636,7 @@
 /obj/machinery/computer/rdservercontrol{
 	dir = 1
 	},
-/turf/simulated/floor/plasteel/dark,
-/area/toxins/server)
+/turf/simulated/floor/plasteel/dark)
 "aSR" = (
 /obj/structure/flora/tree/cactus,
 /obj/structure/flora/tree/cactus,
@@ -15965,12 +15689,6 @@
 	icon_state = "whiteblue"
 	},
 /area/awaymission/arrakis/bunker/medbay)
-"aSZ" = (
-/obj/machinery/pipedispenser/disposal,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
-/area/awaymission/arrakis/bunker/engie)
 "aTa" = (
 /obj/machinery/bodyscanner,
 /obj/effect/decal/cleanable/dirt,
@@ -16155,8 +15873,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/plasteel,
-/area/toxins/server)
+/turf/simulated/floor/plasteel)
 "aTK" = (
 /obj/structure/table/glass,
 /obj/item/clipboard{
@@ -16286,7 +16003,6 @@
 /area/awaymission/arrakis/bunker/rnd)
 "aUd" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/kirbyplants/norandom/dead,
 /turf/simulated/floor/plasteel{
 	dir = 9;
 	icon_state = "neutral"
@@ -16349,7 +16065,6 @@
 /turf/simulated/floor/greengrid,
 /area/awaymission/arrakis/bunker/rnd)
 "aUs" = (
-/obj/machinery/economy/vending/medical/small,
 /turf/simulated/floor/plasteel{
 	dir = 10;
 	icon_state = "whiteblue"
@@ -16393,7 +16108,6 @@
 /turf/simulated/floor/plating,
 /area/awaymission/arrakis/bunker/engie)
 "aUA" = (
-/obj/machinery/economy/vending/cigarette/empty,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
 	dir = 1;
@@ -16475,7 +16189,6 @@
 "aUK" = (
 /obj/effect/decal/cleanable/cobweb,
 /obj/effect/decal/cleanable/dust,
-/obj/item/kirbyplants/norandom/dead,
 /turf/simulated/floor/carpet/orange,
 /area/awaymission/arrakis/bunker/bedrooms)
 "aUL" = (
@@ -16530,17 +16243,6 @@
 	icon_state = "dark"
 	},
 /area/awaymission/arrakis/bunker/bridge)
-"aUR" = (
-/obj/structure/table/glass,
-/obj/effect/decal/cleanable/dirt,
-/obj/item/storage/toolbox/surgery/empty{
-	pixel_y = 2
-	},
-/turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "whiteblue"
-	},
-/area/awaymission/arrakis/bunker/medbay)
 "aUT" = (
 /obj/item/trash/snack_bowl{
 	pixel_y = 23
@@ -16657,12 +16359,6 @@
 	icon_state = "cafeteria"
 	},
 /area/awaymission/arrakis/bunker/kitchen)
-"aVg" = (
-/obj/item/pipe/circulator,
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
-/area/awaymission/arrakis/bunker/engie)
 "aVh" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
@@ -16724,11 +16420,6 @@
 /obj/structure/spider/stickyweb,
 /turf/simulated/floor/indestructible/dune_sand/smooth,
 /area/awaymission/arrakis/cave)
-"aVs" = (
-/obj/effect/decal/cleanable/dust,
-/obj/item/kirbyplants/norandom/dead,
-/turf/simulated/floor/wood/fancy/cherry,
-/area/awaymission/arrakis/bunker/kitchen)
 "aVu" = (
 /obj/machinery/door/airlock/bathroom{
 	name = "Private Restroom"
@@ -16774,7 +16465,7 @@
 	},
 /area/awaymission/arrakis/bunker/medbay)
 "aVy" = (
-/obj/structure/table/reinforced,
+/obj/structure/table/glass/reinforced,
 /obj/machinery/computer/med_data/laptop{
 	pixel_y = 2
 	},
@@ -16801,20 +16492,11 @@
 	icon_state = "whitebluecorner"
 	},
 /area/awaymission/arrakis/bunker/medbay)
-"aVD" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/effect/decal/remains/animals/mouse,
-/turf/simulated/floor/plating,
-/area/awaymission/arrakis/bunker/engie)
 "aVE" = (
 /obj/structure/rack{
 	dir = 1
 	},
-/obj/item/stack/sheet/mineral/plasma{
-	amount = 30
-	},
+/obj/item/stack/sheet/mineral/plasma,
 /turf/simulated/floor/plating,
 /area/awaymission/arrakis/bunker/engie)
 "aVF" = (
@@ -16931,8 +16613,7 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 5
 	},
-/turf/simulated/floor/bluegrid/telecomms/server,
-/area/toxins/server)
+/turf/simulated/floor/bluegrid/telecomms/server)
 "aWa" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
@@ -16972,10 +16653,6 @@
 	icon_state = "neutral"
 	},
 /area/awaymission/arrakis/bunker/dorms)
-"aWf" = (
-/obj/item/trash/broken_ashtray,
-/turf/simulated/floor/indestructible/dune_sand/smooth,
-/area/awaymission/arrakis/cave)
 "aWg" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
@@ -17058,7 +16735,6 @@
 /area/awaymission/arrakis/bunker/medbay)
 "aWt" = (
 /obj/effect/decal/cleanable/dust,
-/obj/item/kirbyplants/norandom/dead,
 /obj/effect/decal/cleanable/cobweb2{
 	icon_state = "cobweb1"
 	},
@@ -17347,9 +17023,6 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/glass{
 	layer = 2
-	},
-/obj/machinery/power/apc/unpowered{
-	pixel_y = -26
 	},
 /obj/structure/cable,
 /turf/simulated/floor/plasteel{
@@ -17648,8 +17321,7 @@
 /obj/machinery/computer/message_monitor{
 	dir = 1
 	},
-/turf/simulated/floor/plasteel/dark,
-/area/toxins/server)
+/turf/simulated/floor/plasteel/dark)
 "aXN" = (
 /obj/item/flashlight/flare/glowstick/emergency,
 /turf/simulated/floor/indestructible/dune_sand,
@@ -17886,9 +17558,6 @@
 /area/awaymission/arrakis/bunker/medbay)
 "aYC" = (
 /obj/structure/cable,
-/obj/machinery/power/apc/unpowered{
-	pixel_y = -26
-	},
 /turf/simulated/floor/plasteel{
 	icon_state = "podfloor_dark"
 	},
@@ -17926,7 +17595,6 @@
 /area/awaymission/arrakis/bunker/medbay)
 "aYH" = (
 /obj/structure/disposalpipe/segment,
-/obj/item/trash/broken_ashtray,
 /turf/simulated/floor/indestructible/dune_sand,
 /area/awaymission/arrakis/cave)
 "aYI" = (
@@ -18005,11 +17673,14 @@
 	},
 /area/awaymission/arrakis/bunker/medbay)
 "aYT" = (
-/obj/item/trash/broken_ashtray{
-	pixel_y = -14
+/obj/structure/AIcore/deactivated/tanya{
+	layer = 3.1
 	},
-/turf/simulated/floor/indestructible/dune_sand,
-/area/awaymission/arrakis/cave)
+/turf/simulated/floor/plasteel{
+	dir = 8;
+	icon_state = "navybluealt"
+	},
+/area/awaymission/arrakis/bunker/tanya_cyborg_blyat_lab)
 "aYU" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -18226,7 +17897,7 @@
 /area/awaymission/arrakis/bunker/bar)
 "aZA" = (
 /obj/structure/AIcore/deactivated/tanya{
-	layer = 3.6
+	layer = 3.3
 	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
@@ -18469,15 +18140,6 @@
 /obj/effect/spawner/window/reinforced/grilled,
 /turf/simulated/floor/plating,
 /area/awaymission/arrakis/bunker/brig)
-"bfE" = (
-/obj/structure/lattice{
-	color = "#aaaaaa"
-	},
-/obj/effect/turf_decal/weather/dirt{
-	dir = 4
-	},
-/turf/simulated/floor/indestructible/dune_sand/smooth,
-/area/awaymission/arrakis/outside/outside5)
 "bij" = (
 /obj/item/kitchen/knife/combat,
 /turf/simulated/floor/indestructible/dune_sand,
@@ -18618,20 +18280,6 @@
 /obj/item/radio{
 	pixel_y = 5;
 	pixel_x = -19
-	},
-/obj/item/ammo_box/magazine/aksu{
-	pixel_x = -9;
-	pixel_y = 3;
-	layer = 2.9
-	},
-/obj/item/ammo_box/magazine/aksu{
-	pixel_x = -5;
-	pixel_y = 3;
-	layer = 2.9
-	},
-/obj/item/gun/projectile/automatic/rusted/aksu{
-	pixel_x = 3;
-	pixel_y = 6
 	},
 /obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/wood/fancy/oak,
@@ -19109,12 +18757,6 @@
 /obj/structure/flora/rock/pile,
 /turf/simulated/floor/beach/water/desert_water,
 /area/awaymission/arrakis/outside/outside5)
-"cmn" = (
-/obj/effect/turf_decal/weather/dirt{
-	dir = 6
-	},
-/turf/simulated/floor/indestructible/dune_sand/smooth,
-/area/awaymission/arrakis/outside/outside5)
 "cmL" = (
 /obj/effect/decal/cleanable/dust,
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
@@ -19303,15 +18945,6 @@
 	icon_state = "dark"
 	},
 /area/awaymission/arrakis/bunker/bridge)
-"czY" = (
-/obj/structure/AIcore/deactivated/tanya{
-	layer = 3.7
-	},
-/turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "navybluealt"
-	},
-/area/awaymission/arrakis/bunker/tanya_cyborg_blyat_lab)
 "cBe" = (
 /obj/structure/mineral_door/wood,
 /turf/simulated/floor/plasteel{
@@ -19320,10 +18953,6 @@
 /area/awaymission/arrakis/cave)
 "cBm" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/mecha/working/clarke{
-	max_integrity = 150;
-	ruin_mecha = 1
-	},
 /obj/effect/decal/cleanable/blood/oil,
 /obj/effect/decal/cleanable/shreds,
 /turf/simulated/floor/plasteel{
@@ -19394,9 +19023,6 @@
 	id_tag = "podhang1"
 	},
 /obj/effect/turf_decal/sand,
-/obj/structure/spacepoddoor{
-	dir = 4
-	},
 /obj/effect/turf_decal/sand/plating,
 /turf/simulated/floor/plasteel/dark,
 /area/awaymission/arrakis/outside/podhangars)
@@ -19775,10 +19401,6 @@
 	},
 /turf/simulated/floor/wood/fancy/cherry,
 /area/awaymission/arrakis/bunker/kitchen)
-"dpo" = (
-/obj/item/pod_parts/pod_frame/aft_port,
-/turf/simulated/floor/plasteel/dark,
-/area/awaymission/arrakis/outside/podhangars)
 "dpt" = (
 /obj/structure/table,
 /obj/effect/decal/cleanable/dirt,
@@ -19824,10 +19446,6 @@
 /obj/structure/statue/cheese/cheesus,
 /turf/simulated/floor/carpet/black,
 /area/awaymission/arrakis/cave)
-"dqN" = (
-/obj/structure/piano,
-/turf/simulated/floor/carpet/black,
-/area/awaymission/arrakis/cave)
 "dsc" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/disposal,
@@ -19861,12 +19479,6 @@
 	icon_state = "yellow"
 	},
 /area/awaymission/arrakis/bunker/engie)
-"dtG" = (
-/obj/effect/turf_decal/weather/dirt{
-	dir = 4
-	},
-/turf/simulated/floor/indestructible/dune_sand/smooth,
-/area/awaymission/arrakis/outside/outside5)
 "duL" = (
 /obj/machinery/door/airlock/engineering/glass{
 	name = "Engineering";
@@ -20082,31 +19694,20 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/arrakis/bunker/bedrooms)
 "dGI" = (
-/obj/structure/rack/gunrack,
-/obj/item/gun/projectile/automatic/pistol/enforcer/security{
-	pixel_x = 9
-	},
-/obj/item/gun/projectile/automatic/pistol/enforcer/security{
-	pixel_x = 3
-	},
-/obj/item/gun/projectile/automatic/pistol/enforcer/security{
-	pixel_x = -3
-	},
-/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/radiation,
+/obj/machinery/light/directional/south,
 /turf/simulated/floor/plasteel{
-	icon_state = "dark"
+	dir = 10;
+	icon_state = "navybluealt"
 	},
-/area/awaymission/arrakis/bunker/brig)
+/area/awaymission/arrakis/bunker/tanya_cyborg_blyat_lab)
 "dGN" = (
-/obj/effect/turf_decal/weather/dirt{
-	dir = 1
+/obj/structure/table/glass/reinforced,
+/turf/simulated/floor/plasteel{
+	dir = 6;
+	icon_state = "navybluealt"
 	},
-/obj/structure/grille{
-	color = "#e0ac7b"
-	},
-/obj/structure/lattice,
-/turf/simulated/floor/indestructible/dune_sand/smooth,
-/area/awaymission/arrakis/outside/outside5)
+/area/awaymission/arrakis/bunker/tanya_cyborg_blyat_lab)
 "dHN" = (
 /obj/structure/barricade/wooden,
 /obj/structure/barricade/wooden/crude{
@@ -20210,7 +19811,7 @@
 /area/awaymission/arrakis/bunker/brig)
 "dPK" = (
 /obj/structure/AIcore/deactivated/tanya{
-	layer = 3.9
+	layer = 3.6
 	},
 /turf/simulated/floor/plasteel{
 	dir = 10;
@@ -20395,9 +19996,6 @@
 "eca" = (
 /obj/structure/lattice{
 	color = "#aaaaaa"
-	},
-/obj/effect/turf_decal/weather/dirt{
-	dir = 8
 	},
 /turf/simulated/floor/indestructible/dune_sand/smooth,
 /area/awaymission/arrakis/outside/outside5)
@@ -20608,15 +20206,6 @@
 	icon_state = "darkbluefull"
 	},
 /area/awaymission/arrakis/bunker/bridge)
-"erU" = (
-/obj/effect/turf_decal/weather/dirt{
-	dir = 6
-	},
-/obj/structure/lattice{
-	color = "#aaaaaa"
-	},
-/turf/simulated/floor/indestructible/dune_sand/smooth,
-/area/awaymission/arrakis/outside/outside5)
 "esl" = (
 /obj/machinery/door/airlock/engineering/glass{
 	name = "Engineering";
@@ -20648,19 +20237,6 @@
 	icon_state = "darkbluealtstrip"
 	},
 /area/awaymission/arrakis/bunker)
-"eve" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/sign/redcross{
-	desc = "The Star of Life, a symbol of Medical Aid.";
-	icon_state = "lifestar";
-	name = "Medbay";
-	pixel_y = 32
-	},
-/turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "neutral"
-	},
-/area/awaymission/arrakis/bunker/hallway)
 "evf" = (
 /obj/machinery/light/small/directional/east,
 /obj/effect/decal/cleanable/dirt,
@@ -21188,9 +20764,6 @@
 	pixel_x = -4;
 	pixel_y = 12
 	},
-/obj/item/storage/fancy/cigcase{
-	pixel_y = 3
-	},
 /obj/item/lighter/zippo/fluff/michael_guess_1{
 	pixel_y = 2;
 	pixel_x = 16
@@ -21621,7 +21194,6 @@
 "fTF" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/oil/streak,
-/obj/item/clothing/neck/mantle/old,
 /turf/simulated/floor/plasteel{
 	icon_state = "asteroidfloor"
 	},
@@ -21837,10 +21409,6 @@
 	icon_state = "neutral"
 	},
 /area/awaymission/arrakis/bunker)
-"ggV" = (
-/obj/item/pod_parts/pod_frame/aft_starboard,
-/turf/simulated/floor/plasteel/dark,
-/area/awaymission/arrakis/outside/podhangars)
 "gig" = (
 /obj/item/stack/ore/glass,
 /turf/simulated/floor/indestructible{
@@ -21978,9 +21546,13 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/arrakis/bunker/engie)
 "gtE" = (
-/mob/living/simple_animal/hostile/scarybat/batswarm,
-/turf/simulated/floor/indestructible/dune_sand/smooth,
-/area/awaymission/arrakis/cave)
+/obj/machinery/light/directional/north,
+/obj/structure/table/glass/reinforced,
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "navybluealt"
+	},
+/area/awaymission/arrakis/bunker/tanya_cyborg_blyat_lab)
 "gtX" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -22108,7 +21680,6 @@
 	},
 /area/awaymission/arrakis/bunker/rnd)
 "gAX" = (
-/obj/machinery/autolathe/security,
 /obj/effect/mapping_helpers/machinery/destroyed,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
@@ -22279,12 +21850,6 @@
 /obj/structure/flora/rock,
 /turf/simulated/floor/indestructible/dune_sand/smooth,
 /area/awaymission/arrakis/outside/outside5)
-"gJP" = (
-/obj/effect/turf_decal/weather/dirt{
-	dir = 6
-	},
-/turf/simulated/floor/indestructible/dune_sand,
-/area/awaymission/arrakis/outside/outside5)
 "gLs" = (
 /obj/machinery/requests_console{
 	department = "Internal Affairs Office";
@@ -22347,11 +21912,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
-	},
-/obj/item/gun/energy/dominator/sibyl{
-	pixel_x = 7;
-	pixel_y = -7;
-	layer = 2
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
@@ -22438,8 +21998,6 @@
 /area/awaymission/arrakis/bunker/rnd)
 "gWo" = (
 /obj/structure/closet/firecloset{
-	icon_state = "fireclosetopen";
-	initialized = 1;
 	opened = 1
 	},
 /turf/simulated/floor/indestructible{
@@ -22915,14 +22473,6 @@
 	icon_state = "hydrofloor"
 	},
 /area/awaymission/arrakis/bunker/brig)
-"hEM" = (
-/obj/structure/sign/redcross{
-	desc = "The Star of Life, a symbol of Medical Aid.";
-	icon_state = "lifestar";
-	name = "Medbay"
-	},
-/turf/simulated/wall,
-/area/awaymission/arrakis/bunker/medbay)
 "hFl" = (
 /obj/effect/decal/cleanable/dust,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -22960,11 +22510,13 @@
 /turf/simulated/floor/indestructible/dune_sand,
 /area/awaymission/arrakis/outside/outside5)
 "hHU" = (
-/obj/effect/turf_decal/weather/dirt{
-	dir = 5
+/obj/structure/closet/radiation,
+/obj/machinery/light/directional/north,
+/turf/simulated/floor/plasteel{
+	dir = 9;
+	icon_state = "navybluealt"
 	},
-/turf/simulated/floor/indestructible/dune_sand/smooth,
-/area/awaymission/arrakis/outside/outside5)
+/area/awaymission/arrakis/bunker/tanya_cyborg_blyat_lab)
 "hHV" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -23321,11 +22873,6 @@
 	},
 /turf/simulated/floor/indestructible/dune_sand/smooth,
 /area/awaymission/arrakis/cave)
-"imd" = (
-/obj/effect/turf_decal/sand,
-/obj/item/pod_parts/pod_frame/fore_port,
-/turf/simulated/floor/plasteel/dark,
-/area/awaymission/arrakis/outside/podhangars)
 "imN" = (
 /turf/simulated/floor/indestructible{
 	icon_state = "asteroidfloor"
@@ -23539,14 +23086,6 @@
 	},
 /turf/simulated/floor/indestructible/dune_sand,
 /area/awaymission/arrakis/cave)
-"iDh" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/kirbyplants/norandom/dead,
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "darkred"
-	},
-/area/awaymission/arrakis/bunker/brig)
 "iEG" = (
 /turf/simulated/wall/mineral/wood,
 /area/awaymission/arrakis/outside/hermit_shack)
@@ -23557,10 +23096,6 @@
 /area/awaymission/arrakis/outside/podhangars)
 "iHP" = (
 /obj/structure/filingcabinet,
-/obj/item/toy/figure/magistrate{
-	pixel_x = -1;
-	pixel_y = 16
-	},
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
 	icon_state = "cult"
@@ -23714,9 +23249,6 @@
 /obj/vehicle/janicart{
 	dir = 1
 	},
-/obj/machinery/power/apc/unpowered{
-	pixel_y = -26
-	},
 /obj/structure/cable,
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -23793,14 +23325,6 @@
 	icon_state = "neutralfull"
 	},
 /area/awaymission/arrakis/bunker/hallway)
-"iVW" = (
-/obj/machinery/economy/vending/coffee/empty,
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "darkred"
-	},
-/area/awaymission/arrakis/bunker/brig)
 "iVZ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
@@ -23858,13 +23382,6 @@
 	},
 /turf/simulated/floor/chasm/dune,
 /area/awaymission/arrakis/outside/mining_town)
-"jby" = (
-/obj/effect/mapping_helpers/light,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 1
-	},
-/turf/simulated/floor/indestructible/dune_sand/smooth,
-/area/awaymission/arrakis/outside/outside5)
 "jcJ" = (
 /obj/structure/table/reinforced,
 /obj/item/stamp/law,
@@ -24138,7 +23655,7 @@
 /turf/simulated/floor/carpet/green,
 /area/awaymission/arrakis/bunker/bedrooms)
 "jyP" = (
-/obj/structure/table/reinforced,
+/obj/structure/table/glass/reinforced,
 /obj/item/flashlight/lamp/green{
 	pixel_y = 5
 	},
@@ -24174,10 +23691,6 @@
 /area/awaymission/arrakis/cave)
 "jDh" = (
 /obj/effect/decal/cleanable/dust,
-/obj/machinery/power/apc/unpowered{
-	pixel_y = 26;
-	dir = 1
-	},
 /turf/simulated/floor/plasteel{
 	icon_state = "podfloor_dark"
 	},
@@ -24261,12 +23774,6 @@
 	icon_state = "dark"
 	},
 /area/awaymission/arrakis/bunker/brig)
-"jPb" = (
-/obj/effect/turf_decal/weather/dirt{
-	dir = 10
-	},
-/turf/simulated/floor/indestructible/dune_sand/smooth,
-/area/awaymission/arrakis/outside/outside5)
 "jPI" = (
 /obj/structure/chair/comfy/black{
 	dir = 4
@@ -24274,11 +23781,12 @@
 /turf/simulated/floor/wood,
 /area/awaymission/arrakis/cave)
 "jQa" = (
-/obj/effect/turf_decal/weather/dirt{
-	dir = 10
+/obj/structure/table/glass/reinforced,
+/turf/simulated/floor/plasteel{
+	dir = 5;
+	icon_state = "navybluealt"
 	},
-/turf/simulated/floor/indestructible/dune_sand,
-/area/awaymission/arrakis/outside/outside5)
+/area/awaymission/arrakis/bunker/tanya_cyborg_blyat_lab)
 "jQo" = (
 /turf/simulated/floor/beach/water/desert_water,
 /area/awaymission/arrakis/outside/mining_town)
@@ -24512,15 +24020,6 @@
 	icon_state = "vault"
 	},
 /area/awaymission/arrakis/bunker/rnd)
-"kgV" = (
-/obj/effect/turf_decal/weather/dirt{
-	dir = 9
-	},
-/obj/effect/turf_decal/weather/dirt{
-	dir = 5
-	},
-/turf/simulated/floor/indestructible/dune_sand/smooth,
-/area/awaymission/arrakis/outside/outside5)
 "khW" = (
 /obj/machinery/light/directional/east,
 /turf/simulated/floor/plasteel{
@@ -24579,18 +24078,6 @@
 	icon_state = "asteroidfloor"
 	},
 /area/awaymission/arrakis/outside/mining_storage_outpost)
-"kzk" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/sign/redcross{
-	desc = "The Star of Life, a symbol of Medical Aid.";
-	icon_state = "lifestar";
-	name = "Medbay";
-	pixel_y = -32
-	},
-/turf/simulated/floor/plasteel{
-	icon_state = "neutral"
-	},
-/area/awaymission/arrakis/bunker/hallway)
 "kBp" = (
 /obj/machinery/light/small/directional/east,
 /obj/machinery/power/smes/engineering{
@@ -24683,8 +24170,7 @@
 	pixel_x = 26;
 	name = "custom placement"
 	},
-/turf/simulated/floor/plasteel/dark,
-/area/toxins/server)
+/turf/simulated/floor/plasteel/dark)
 "kKX" = (
 /obj/structure/flora/tree/desert/dead,
 /turf/simulated/floor/indestructible/dune_sand,
@@ -25112,14 +24598,6 @@
 	icon_state = "darkredfull"
 	},
 /area/awaymission/arrakis/bunker/brig)
-"lkv" = (
-/obj/structure/table,
-/obj/item/pod_parts/core{
-	pixel_y = 6
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel/dark,
-/area/awaymission/arrakis/outside/podhangars)
 "llm" = (
 /obj/effect/decal/remains,
 /turf/simulated/floor/indestructible/dune_sand,
@@ -25375,7 +24853,7 @@
 	},
 /area/awaymission/arrakis/bunker/brig)
 "lOf" = (
-/obj/structure/table/reinforced,
+/obj/structure/table/glass/reinforced,
 /obj/item/documents/nanotrasen,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
@@ -25543,12 +25021,7 @@
 	},
 /obj/machinery/atmospherics/unary/portables_connector,
 /obj/machinery/atmospherics/portable/canister/nitrogen,
-/obj/machinery/power/apc/unpowered{
-	pixel_y = 26;
-	dir = 1
-	},
-/turf/simulated/floor/plasteel/dark,
-/area/toxins/server)
+/turf/simulated/floor/plasteel/dark)
 "mmq" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -25603,15 +25076,6 @@
 	icon_state = "whitepurplefull"
 	},
 /area/awaymission/arrakis/bunker/rnd)
-"mpK" = (
-/obj/effect/turf_decal/weather/dirt{
-	dir = 10
-	},
-/obj/effect/turf_decal/weather/dirt{
-	dir = 9
-	},
-/turf/simulated/floor/indestructible/dune_sand/smooth,
-/area/awaymission/arrakis/outside/outside5)
 "mpU" = (
 /obj/item/stack/ore/iron,
 /turf/simulated/floor/indestructible/dune_sand,
@@ -25677,12 +25141,7 @@
 	},
 /area/awaymission/arrakis/bunker/rnd)
 "mwD" = (
-/obj/structure/closet{
-	icon_closed = "cabinet_closed";
-	icon_opened = "cabinet_open";
-	icon_state = "cabinet_closed"
-	},
-/obj/item/soap/homemade_potato,
+/obj/structure/closet,
 /obj/item/reagent_containers/food/drinks/bottle/whiskey,
 /obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/wood/fancy/oak{
@@ -25780,9 +25239,19 @@
 	icon_state = "neutral"
 	},
 /area/awaymission/arrakis/bunker/dorms)
+"mEX" = (
+/obj/machinery/door/airlock/highsecurity/secret{
+	id_tag = "dune_secret"
+	},
+/turf/simulated/wall/indestructible/riveted{
+	icon = null;
+	icon_state = null;
+	opacity = 0;
+	density = 0
+	},
+/area/awaymission/arrakis/bunker/tanya_cyborg_blyat_lab)
 "mFE" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/kirbyplants/norandom/dead,
 /turf/simulated/floor/plasteel{
 	dir = 5;
 	icon_state = "darkred"
@@ -25817,7 +25286,7 @@
 /area/awaymission/arrakis/bunker/rnd)
 "mGY" = (
 /obj/structure/AIcore/deactivated/tanya{
-	layer = 3.5
+	layer = 3.2
 	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
@@ -26018,7 +25487,6 @@
 /area/awaymission/arrakis/cave)
 "mUJ" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/mecha_part_fabricator/spacepod,
 /obj/effect/mapping_helpers/machinery/damaged,
 /turf/simulated/floor/plasteel/dark,
 /area/awaymission/arrakis/outside/podhangars)
@@ -26185,12 +25653,6 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/arrakis/bunker/rnd)
-"ndO" = (
-/obj/effect/turf_decal/weather/dirt{
-	dir = 9
-	},
-/turf/simulated/floor/indestructible/dune_sand/smooth,
-/area/awaymission/arrakis/outside/outside5)
 "neq" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -26285,14 +25747,6 @@
 /obj/structure/flora/rock/pile,
 /turf/simulated/floor/indestructible/dune_sand/smooth,
 /area/awaymission/arrakis/cave)
-"nsa" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/kirbyplants/norandom/dead,
-/turf/simulated/floor/plasteel{
-	dir = 6;
-	icon_state = "darkred"
-	},
-/area/awaymission/arrakis/bunker/brig)
 "nsh" = (
 /obj/effect/decal/cleanable/cobweb2,
 /obj/effect/decal/cleanable/dirt,
@@ -26493,7 +25947,6 @@
 	},
 /area/awaymission/arrakis/bunker/dorms)
 "nIU" = (
-/obj/machinery/economy/vending/coffee/empty,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -26587,9 +26040,7 @@
 /turf/simulated/floor/chasm/dune,
 /area/awaymission/arrakis/outside/outside5)
 "nPz" = (
-/obj/structure/AIcore/deactivated/tanya{
-	layer = 3.3
-	},
+/obj/structure/AIcore/deactivated/tanya,
 /obj/machinery/light/directional/west,
 /turf/simulated/floor/plasteel{
 	dir = 8;
@@ -27031,10 +26482,6 @@
 /obj/structure/cable{
 	d2 = 2;
 	icon_state = "0-2"
-	},
-/obj/machinery/power/apc/unpowered{
-	pixel_y = 26;
-	dir = 1
 	},
 /obj/machinery/light/directional/north,
 /turf/simulated/floor/plasteel{
@@ -27627,10 +27074,6 @@
 	initialized = 1;
 	pixel_y = 32
 	},
-/obj/machinery/power/apc/unpowered{
-	pixel_y = 26;
-	dir = 1
-	},
 /obj/structure/cable{
 	d2 = 4;
 	icon_state = "0-4"
@@ -27659,23 +27102,11 @@
 	},
 /area/awaymission/arrakis/bunker/medbay)
 "pha" = (
-/obj/structure/table/wood/fancy/black,
-/obj/item/storage/fancy/cigcase,
-/turf/simulated/floor/carpet/royalblack,
-/area/awaymission/arrakis/cave)
-"pkp" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/sign/redcross{
-	desc = "The Star of Life, a symbol of Medical Aid.";
-	icon_state = "lifestar";
-	name = "Medbay";
-	pixel_x = -32
-	},
+/obj/structure/table/glass/reinforced,
 /turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "neutral"
+	icon_state = "navybluealt"
 	},
-/area/awaymission/arrakis/bunker/hallway)
+/area/awaymission/arrakis/bunker/tanya_cyborg_blyat_lab)
 "pnp" = (
 /obj/effect/decal/cleanable/dust,
 /obj/structure/disposalpipe/segment{
@@ -27923,12 +27354,12 @@
 /turf/simulated/floor/wood,
 /area/awaymission/arrakis/bunker/bridge)
 "pBa" = (
-/obj/structure/flora/rock,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 1
+/obj/structure/table/glass/reinforced,
+/turf/simulated/floor/plasteel{
+	dir = 9;
+	icon_state = "navybluealt"
 	},
-/turf/simulated/floor/indestructible/dune_sand/smooth,
-/area/awaymission/arrakis/outside/outside5)
+/area/awaymission/arrakis/bunker/tanya_cyborg_blyat_lab)
 "pBj" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -28094,9 +27525,6 @@
 /obj/structure/grille{
 	color = "#e0ac7b"
 	},
-/obj/effect/turf_decal/weather/dirt{
-	dir = 4
-	},
 /turf/simulated/floor/indestructible/dune_sand/smooth,
 /area/awaymission/arrakis/outside/outside5)
 "pOp" = (
@@ -28215,12 +27643,6 @@
 /obj/effect/turf_decal/sand,
 /turf/simulated/floor/plasteel/dark,
 /area/awaymission/arrakis/outside/podhangars)
-"pYB" = (
-/obj/effect/turf_decal/weather/dirt{
-	dir = 8
-	},
-/turf/simulated/floor/indestructible/dune_sand/smooth,
-/area/awaymission/arrakis/outside/outside5)
 "pYC" = (
 /obj/machinery/gameboard,
 /obj/effect/decal/cleanable/dust,
@@ -28258,9 +27680,12 @@
 /turf/simulated/floor/carpet/black,
 /area/awaymission/arrakis/cave)
 "qdm" = (
-/obj/effect/turf_decal/weather/dirt,
-/turf/simulated/floor/indestructible/dune_sand/smooth,
-/area/awaymission/arrakis/outside/outside5)
+/obj/structure/table/glass/reinforced,
+/turf/simulated/floor/plasteel{
+	dir = 8;
+	icon_state = "navybluealt"
+	},
+/area/awaymission/arrakis/bunker/tanya_cyborg_blyat_lab)
 "qdE" = (
 /obj/structure/chair/sofa/right{
 	dir = 1
@@ -28571,11 +27996,6 @@
 	icon_state = "grimy"
 	},
 /area/awaymission/arrakis/bunker/brig)
-"qBQ" = (
-/obj/structure/table/wood/poker,
-/obj/item/stack/spacechips/c5000,
-/turf/simulated/floor/wood,
-/area/awaymission/arrakis/cave)
 "qCf" = (
 /obj/machinery/conveyor/east,
 /obj/machinery/door/poddoor/shutters{
@@ -28812,16 +28232,6 @@
 /obj/structure/flora/tree/desert/african,
 /turf/simulated/floor/indestructible/dune_sand,
 /area/awaymission/arrakis/outside/outside5)
-"qUn" = (
-/obj/effect/decal/cleanable/dust,
-/obj/item/storage/backpack/satchel_explorer{
-	pixel_x = -7;
-	pixel_y = 11
-	},
-/turf/simulated/floor/plasteel{
-	icon_state = "asteroidfloor"
-	},
-/area/awaymission/arrakis/outside/mining_storage_outpost)
 "qVa" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -28897,14 +28307,9 @@
 /area/awaymission/arrakis/bunker/dorms)
 "qZK" = (
 /obj/structure/table,
-/obj/item/circuitboard/mecha/pod,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel/dark,
 /area/awaymission/arrakis/outside/podhangars)
-"raN" = (
-/mob/living/simple_animal/hostile/scarybat/batswarm,
-/turf/simulated/floor/indestructible/dune_sand,
-/area/awaymission/arrakis/cave)
 "rbk" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/door/airlock/public/glass{
@@ -29063,9 +28468,6 @@
 /area/awaymission/arrakis/cave)
 "rlz" = (
 /obj/effect/turf_decal/sand,
-/obj/structure/spacepoddoor{
-	dir = 4
-	},
 /obj/effect/turf_decal/sand/plating,
 /turf/simulated/floor/plasteel/dark,
 /area/awaymission/arrakis/outside/podhangars)
@@ -29381,9 +28783,6 @@
 	},
 /area/awaymission/arrakis/bunker)
 "rPS" = (
-/obj/machinery/computer/rdconsole/mechanics{
-	dir = 8
-	},
 /obj/effect/mapping_helpers/machinery/damaged,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel/dark,
@@ -29444,8 +28843,6 @@
 /area/awaymission/arrakis/bunker/dorms)
 "rTr" = (
 /obj/structure/closet/emcloset{
-	icon_state = "emergencyopen";
-	initialized = 1;
 	opened = 1
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -29774,9 +29171,6 @@
 "swY" = (
 /obj/effect/decal/cleanable/dust,
 /obj/structure/table,
-/obj/item/storage/toolbox/electrical/old{
-	pixel_y = 4
-	},
 /turf/simulated/floor/plasteel{
 	icon_state = "podfloor_dark"
 	},
@@ -29931,10 +29325,6 @@
 /area/awaymission/arrakis/bunker/medbay)
 "sGB" = (
 /obj/structure/cable/yellow,
-/obj/machinery/power/apc/unpowered{
-	dir = 4;
-	pixel_x = 26
-	},
 /turf/simulated/floor/plasteel/dark,
 /area/awaymission/arrakis/outside/podhangars)
 "sGW" = (
@@ -29962,10 +29352,6 @@
 /area/awaymission/arrakis/bunker/bedrooms)
 "sJu" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/power/apc/unpowered{
-	dir = 8;
-	pixel_x = -26
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4;
 	icon_state = "pipe-c"
@@ -30198,7 +29584,7 @@
 	},
 /area/awaymission/arrakis/bunker/brig)
 "tfQ" = (
-/obj/structure/AIcore/deactivated/tanya/obj/machinery/light/directional/east,
+/obj/structure/AIcore/deactivated/tanya,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "navybluealt"
@@ -30697,10 +30083,6 @@
 	icon_state = "dark"
 	},
 /area/awaymission/arrakis/bunker/brig)
-"tVB" = (
-/obj/item/pod_parts/pod_frame/fore_starboard,
-/turf/simulated/floor/plasteel/dark,
-/area/awaymission/arrakis/outside/podhangars)
 "tWq" = (
 /obj/structure/table/wood,
 /obj/effect/decal/cleanable/dust,
@@ -31038,14 +30420,6 @@
 	icon_state = "darkred"
 	},
 /area/awaymission/arrakis/bunker/brig)
-"uDk" = (
-/obj/machinery/economy/vending/cigarette/empty,
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "darkred"
-	},
-/area/awaymission/arrakis/bunker/brig)
 "uEm" = (
 /obj/structure/reagent_dispensers/watertank,
 /turf/simulated/floor/indestructible/dune_sand/smooth,
@@ -31201,13 +30575,6 @@
 	icon_state = "darkblue"
 	},
 /area/awaymission/arrakis/bunker/bridge)
-"uSd" = (
-/obj/structure/filingcabinet/employment,
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	icon_state = "cult"
-	},
-/area/awaymission/arrakis/bunker/brig)
 "uTw" = (
 /obj/machinery/conveyor/north,
 /obj/structure/barricade/wooden,
@@ -31584,12 +30951,6 @@
 	},
 /turf/simulated/floor/wood/fancy/cherry,
 /area/awaymission/arrakis/bunker/kitchen)
-"vyc" = (
-/obj/effect/turf_decal/weather/dirt{
-	dir = 1
-	},
-/turf/simulated/floor/indestructible/dune_sand/smooth,
-/area/awaymission/arrakis/outside/outside5)
 "vzC" = (
 /obj/effect/decal/cleanable/dust,
 /obj/item/chair/wood{
@@ -32040,15 +31401,6 @@
 	icon_state = "darkbluecorners"
 	},
 /area/awaymission/arrakis/bunker/medbay)
-"wga" = (
-/obj/effect/turf_decal/weather/dirt{
-	dir = 6
-	},
-/obj/effect/turf_decal/weather/dirt{
-	dir = 10
-	},
-/turf/simulated/floor/indestructible/dune_sand/smooth,
-/area/awaymission/arrakis/outside/outside5)
 "wgJ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -32331,18 +31683,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/awaymission/arrakis/bunker/bridge)
-"wJc" = (
-/obj/structure/lattice{
-	color = "#aaaaaa"
-	},
-/obj/structure/grille{
-	color = "#e0ac7b"
-	},
-/obj/effect/turf_decal/weather/dirt{
-	dir = 8
-	},
-/turf/simulated/floor/indestructible/dune_sand/smooth,
-/area/awaymission/arrakis/outside/outside5)
 "wJf" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -32575,13 +31915,6 @@
 	icon_state = "neutralfull"
 	},
 /area/awaymission/arrakis/bunker/hallway)
-"wYH" = (
-/obj/effect/turf_decal/weather/dirt{
-	dir = 1;
-	color = "#b9fc7b"
-	},
-/turf/simulated/floor/beach/water/desert_water,
-/area/awaymission/arrakis/outside/mining_town)
 "wZc" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
@@ -32839,14 +32172,6 @@
 	icon_state = "Dark"
 	},
 /area/awaymission/arrakis/bunker/rnd)
-"xwH" = (
-/obj/effect/turf_decal/siding/wood{
-	dir = 4
-	},
-/obj/item/kirbyplants/norandom/dead,
-/obj/effect/decal/cleanable/dust,
-/turf/simulated/floor/wood,
-/area/awaymission/arrakis/bunker/brig)
 "xxZ" = (
 /obj/structure/table,
 /obj/item/taperecorder{
@@ -32882,13 +32207,6 @@
 	icon_state = "whitepurple"
 	},
 /area/awaymission/arrakis/bunker/rnd)
-"xGc" = (
-/obj/effect/decal/cleanable/dust,
-/obj/item/gun/projectile/revolver/detective,
-/turf/simulated/floor/plasteel{
-	icon_state = "grimy"
-	},
-/area/awaymission/arrakis/bunker/brig)
 "xGf" = (
 /obj/structure/table/wood,
 /obj/item/flashlight/lamp,
@@ -33211,10 +32529,6 @@
 	icon_state = "cult"
 	},
 /area/awaymission/arrakis/bunker/brig)
-"ygW" = (
-/obj/effect/turf_decal/weather/dirt,
-/turf/simulated/floor/indestructible/dune_sand,
-/area/awaymission/arrakis/outside/outside5)
 "yhJ" = (
 /obj/structure/extinguisher_cabinet{
 	name = "custom placement"
@@ -33243,7 +32557,8 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/arrakis/bunker/bedrooms)
 "yii" = (
-/obj/structure/AIcore/tanya/turf/simulated/floor/plasteel{
+/obj/structure/AIcore/tanya,
+/turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "navybluealt"
 	},
@@ -33259,7 +32574,8 @@
 /turf/simulated/floor/indestructible/dune_sand/smooth,
 /area/awaymission/arrakis/cave)
 "ymi" = (
-/obj/structure/AIcore/deactivated/tanya/turf/simulated/floor/plasteel{
+/obj/structure/AIcore/deactivated/tanya,
+/turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
 /area/awaymission/arrakis/bunker/tanya_cyborg_blyat_lab)
@@ -35498,7 +34814,7 @@ pQy
 jHO
 dpt
 wmh
-iDh
+erk
 aog
 aGo
 aqn
@@ -35546,7 +34862,7 @@ aGp
 agQ
 afX
 aLy
-aVg
+aKx
 air
 ayK
 agx
@@ -35558,14 +34874,14 @@ pyU
 oWI
 pyU
 aDo
-ago
+pBa
 aPe
 aPe
 nPz
-fOf
+aYT
 mGY
 aZA
-czY
+fOf
 ahW
 dPK
 aDo
@@ -35767,7 +35083,7 @@ aLT
 awi
 aKd
 aYG
-aNT
+aVz
 aoK
 aFE
 alk
@@ -35798,7 +35114,7 @@ aQp
 afm
 ayK
 aSu
-ajX
+aKx
 abi
 aKx
 aKx
@@ -35815,7 +35131,7 @@ jDh
 epM
 vUE
 aDo
-aIT
+agD
 apc
 apc
 apc
@@ -36056,12 +35372,12 @@ ajN
 ayK
 abi
 abi
-aVg
+aKx
 aKx
 abi
 abi
 abi
-aVg
+aKx
 ayK
 aUx
 adw
@@ -36072,7 +35388,7 @@ swY
 epM
 rGB
 aDo
-aOE
+gtE
 aNv
 apc
 ymi
@@ -36317,11 +35633,11 @@ aAd
 aKx
 abi
 aHd
-ajX
+aKx
 arX
 ayK
 amL
-aVD
+aYp
 aUx
 aUx
 akh
@@ -36329,7 +35645,7 @@ aXA
 lqW
 aXA
 aDo
-aIT
+agD
 apc
 apc
 apc
@@ -36520,7 +35836,7 @@ pVM
 eqD
 omY
 bdT
-uDk
+pVM
 jsz
 mQl
 mQl
@@ -36586,7 +35902,7 @@ amT
 agw
 aKL
 aDo
-aHo
+jQa
 aqm
 aqm
 tfQ
@@ -36777,7 +36093,7 @@ cwM
 wTL
 dOS
 eUx
-iVW
+pVM
 vOa
 okg
 okg
@@ -36799,7 +36115,7 @@ avH
 asW
 aIN
 aZW
-aUR
+aak
 aYG
 aZH
 aOI
@@ -37032,7 +36348,7 @@ cea
 eUx
 mFE
 tiv
-nsa
+vDU
 eUx
 mkG
 dxy
@@ -37082,14 +36398,14 @@ apG
 apG
 ajN
 ayK
-aSZ
-aPv
+aKx
+abi
 abi
 aKx
 axm
 abi
 abi
-anv
+aKx
 ayK
 aLD
 aYp
@@ -37100,7 +36416,7 @@ atz
 aBy
 aXb
 aDo
-ago
+pBa
 aPe
 aPe
 akZ
@@ -37301,7 +36617,7 @@ eUx
 aog
 aFU
 aBy
-kzk
+aqo
 aYG
 aYG
 hWL
@@ -37339,14 +36655,14 @@ alM
 ajY
 afm
 ayK
-ave
+aKx
 aMk
 aKx
 aKx
 axm
 abi
 aPN
-avQ
+aKx
 ayK
 aUx
 aYp
@@ -37357,7 +36673,7 @@ atz
 aBy
 aXb
 aDo
-aIT
+agD
 apc
 apc
 apc
@@ -37614,7 +36930,7 @@ atz
 aBy
 aXb
 aDo
-aHo
+jQa
 aqm
 aqm
 aGX
@@ -37667,11 +36983,11 @@ eHf
 rSw
 rSw
 aIG
-dqN
+lQf
 lQf
 fWF
 kLC
-qBQ
+rXv
 rXv
 kLC
 kLC
@@ -38128,12 +37444,12 @@ atz
 aBy
 aXb
 aDo
-ago
+pBa
+qdm
 aPe
 aPe
 aPe
-aPe
-ake
+ajX
 aDo
 aIT
 aNv
@@ -38329,7 +37645,7 @@ tiJ
 aog
 atz
 aBy
-kzk
+aqo
 aYG
 aYG
 rur
@@ -38385,12 +37701,12 @@ atz
 aBy
 aqo
 aDo
-aOE
+gtE
 apc
 apc
 apc
 apc
-aaY
+aIM
 aDo
 aOE
 apc
@@ -38574,7 +37890,7 @@ tBJ
 pQy
 kFJ
 pQy
-iDh
+erk
 eUx
 pVM
 gIZ
@@ -38647,11 +37963,11 @@ apc
 jyP
 aPH
 apc
-axZ
+pha
 aDo
-aHo
+jQa
 aqm
-agD
+dGN
 aDo
 ayO
 ayO
@@ -38694,7 +38010,7 @@ aIG
 own
 rSw
 rSw
-pha
+ljo
 sRA
 kLC
 kLC
@@ -39161,11 +38477,11 @@ apc
 lOf
 aLK
 apc
-axZ
+pha
 aDo
-ago
+hHU
 aPe
-ake
+dGI
 aDo
 ayO
 ayO
@@ -39402,7 +38718,7 @@ aai
 ahD
 auR
 akh
-aET
+aUx
 aPh
 aUx
 aWA
@@ -39413,14 +38729,14 @@ atz
 aIK
 aXb
 aDo
-aOE
+gtE
 apc
 apc
 apc
 apc
-aaY
+aIM
 aDo
-aOE
+aIF
 apc
 aGR
 aDo
@@ -39670,12 +38986,12 @@ atz
 aBy
 aqo
 aDo
-aHo
+jQa
+aQB
 aqm
 aqm
 aqm
-aqm
-agD
+dGN
 aDo
 abl
 aqm
@@ -39935,7 +39251,7 @@ aDo
 aDo
 aDo
 aDo
-aFZ
+mEX
 aDo
 aDo
 ayO
@@ -40445,7 +39761,7 @@ ard
 aAM
 ayf
 aLo
-aBT
+afh
 aVu
 aqt
 aDB
@@ -41051,7 +40367,7 @@ aIg
 aYs
 wLc
 hCQ
-wYH
+jQo
 jQo
 jQo
 jQo
@@ -41212,7 +40528,7 @@ aFU
 aJI
 aXb
 aLo
-aaC
+ajI
 adi
 aJE
 aLo
@@ -41308,7 +40624,7 @@ aIg
 aYs
 lfS
 ydH
-wYH
+jQo
 jQo
 jQo
 jQo
@@ -41565,7 +40881,7 @@ aIg
 aYs
 uxI
 lvc
-wYH
+jQo
 jQo
 jQo
 jQo
@@ -41634,7 +40950,7 @@ ayO
 aog
 ohT
 qJm
-dGI
+gWq
 gWq
 gWq
 fKm
@@ -41656,11 +40972,11 @@ pdt
 nGk
 jwW
 xgS
-xwH
+pdt
 pdt
 lcX
 pdt
-xwH
+pdt
 xgS
 lCQ
 pdt
@@ -41822,7 +41138,7 @@ aIg
 aYs
 spS
 mSB
-wYH
+jQo
 jQo
 jQo
 obs
@@ -41844,10 +41160,10 @@ ayO
 ayO
 ayO
 adM
-dtG
-dtG
+adM
+adM
 pNU
-bfE
+eca
 adM
 asV
 ayO
@@ -41956,7 +41272,7 @@ azB
 aoW
 aYG
 aYG
-eve
+atz
 aBy
 aXb
 akh
@@ -42079,19 +41395,11 @@ aIg
 aYs
 wkT
 lIO
-wYH
 jQo
 jQo
 jQo
 jQo
 jQo
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
 jQo
 ayO
 ayO
@@ -42100,14 +41408,22 @@ ayO
 ayO
 ayO
 ayO
-cmn
+jQo
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+adM
 hvZ
 fnS
 fnS
 hvZ
-hHU
-dtG
-dtG
+adM
+adM
+adM
 ayO
 ayO
 ayO
@@ -42336,7 +41652,7 @@ aIg
 aYs
 aOp
 uQB
-wYH
+jQo
 jQo
 jQo
 jQo
@@ -43020,7 +42336,7 @@ anl
 anl
 aqt
 pAF
-aFe
+aPy
 amB
 ayO
 ayO
@@ -43191,7 +42507,7 @@ uEz
 jcJ
 yeG
 sbd
-uSd
+sbd
 vHp
 sbd
 osZ
@@ -43207,7 +42523,7 @@ xgS
 bcl
 qAS
 dhg
-xGc
+fiK
 iYq
 xgS
 aFU
@@ -43235,7 +42551,7 @@ anN
 ayy
 aiz
 aob
-ahP
+azE
 asL
 aps
 aib
@@ -43497,7 +42813,7 @@ aYG
 aYG
 aYG
 aYG
-hEM
+aYG
 atz
 aIK
 aqo
@@ -43534,7 +42850,7 @@ aon
 azi
 amB
 cFO
-alY
+aVh
 amB
 ayO
 ayO
@@ -43743,13 +43059,13 @@ ahh
 ahh
 ahh
 ahh
-pkp
+ahh
 ayp
 aUj
 alX
 ami
 arW
-pkp
+ahh
 ahh
 agw
 agw
@@ -44415,11 +43731,11 @@ ayO
 ayO
 ayO
 ayO
-pYB
-wJc
+adM
+pNU
 eca
-pYB
-jPb
+adM
+adM
 hvZ
 hvZ
 hvZ
@@ -44562,7 +43878,7 @@ aGw
 aEl
 amB
 alj
-ain
+aOo
 amB
 ayO
 ayO
@@ -44677,7 +43993,7 @@ asV
 efC
 asV
 adM
-jPb
+adM
 hvZ
 hvZ
 hvZ
@@ -44797,7 +44113,7 @@ qRl
 aUd
 aJU
 mEA
-aLz
+azY
 aLL
 amk
 aLV
@@ -44935,7 +44251,7 @@ qmE
 asV
 hHS
 adM
-jPb
+adM
 hvZ
 hvZ
 hvZ
@@ -44949,7 +44265,7 @@ iln
 iln
 ayO
 hvZ
-pBa
+gJN
 asV
 asV
 asV
@@ -45077,7 +44393,7 @@ aZM
 aZM
 apl
 aZM
-alY
+aVh
 auP
 ayO
 ayO
@@ -45193,7 +44509,7 @@ asV
 asV
 asV
 adM
-jPb
+adM
 hvZ
 hvZ
 hvZ
@@ -45206,7 +44522,7 @@ sgp
 sgp
 uQJ
 hvZ
-vyc
+adM
 asV
 asV
 asV
@@ -45451,9 +44767,9 @@ asV
 asV
 asV
 adM
-jPb
+adM
 hvZ
-mpK
+adM
 hvZ
 hvZ
 hvZ
@@ -45463,7 +44779,7 @@ mjM
 sgp
 uQJ
 hvZ
-vyc
+adM
 wNJ
 asV
 asV
@@ -45709,10 +45025,10 @@ asV
 asV
 asV
 grL
-pYB
 adM
-pYB
-jPb
+adM
+adM
+adM
 hvZ
 hvZ
 kdb
@@ -45720,7 +45036,7 @@ sgp
 sgp
 uQJ
 hvZ
-vyc
+adM
 asV
 asV
 asV
@@ -45970,14 +45286,14 @@ asV
 asV
 goM
 asV
-jPb
+adM
 hvZ
 kdb
 sgp
 sgp
 fnS
 hvZ
-vyc
+adM
 muK
 asV
 asV
@@ -46227,14 +45543,14 @@ asV
 asV
 hAq
 asV
-qdm
+adM
 hvZ
 kdb
 sgp
 sgp
 uQJ
 hvZ
-vyc
+adM
 asV
 asV
 asV
@@ -46484,14 +45800,14 @@ asV
 asV
 asV
 asV
-qdm
+adM
 hvZ
 fnS
 sgp
 sgp
 uQJ
 hvZ
-vyc
+adM
 asV
 asV
 asV
@@ -46586,7 +45902,7 @@ aFU
 aBy
 aqo
 akK
-awG
+aIZ
 mZh
 aJU
 aJU
@@ -46603,7 +45919,7 @@ azX
 aYN
 aJU
 nmy
-aLz
+azY
 eBo
 aFU
 bBl
@@ -46741,14 +46057,14 @@ asV
 asV
 asV
 adM
-cmn
+adM
 hvZ
 fnS
 lBK
 sgp
 uQJ
 hvZ
-vyc
+adM
 asV
 asV
 asV
@@ -46866,7 +46182,7 @@ atz
 bBl
 aXb
 aLo
-awu
+aYQ
 noR
 aGn
 aLo
@@ -46997,7 +46313,7 @@ gJN
 adM
 asV
 asV
-qdm
+adM
 hvZ
 hvZ
 fnS
@@ -47005,7 +46321,7 @@ sgp
 sgp
 uQJ
 hvZ
-hHU
+adM
 adM
 asV
 asV
@@ -47127,7 +46443,7 @@ aLo
 ePq
 aLo
 aLo
-aMK
+aUA
 apE
 aXS
 auS
@@ -47255,7 +46571,7 @@ adM
 asV
 asV
 adM
-jPb
+adM
 hvZ
 kdb
 sgp
@@ -47263,7 +46579,7 @@ sgp
 uQJ
 hvZ
 hvZ
-vyc
+adM
 asV
 asV
 asV
@@ -47357,7 +46673,7 @@ avg
 aBy
 aqo
 akK
-afG
+aop
 gFd
 aHi
 tWT
@@ -47512,7 +46828,7 @@ adM
 asV
 diC
 csH
-erU
+eca
 fnS
 kdb
 sgp
@@ -47520,7 +46836,7 @@ sgp
 uQJ
 fnS
 fnS
-dGN
+csH
 pTo
 asV
 asV
@@ -47768,7 +47084,7 @@ iEG
 adM
 asV
 asV
-qdm
+adM
 hvZ
 hvZ
 kdb
@@ -47777,7 +47093,7 @@ sgp
 uQJ
 hvZ
 hvZ
-vyc
+adM
 asV
 asV
 asV
@@ -47871,9 +47187,9 @@ aFU
 aBy
 aXb
 akK
-awG
+aIZ
 mEA
-aLz
+azY
 akK
 aMQ
 aMQ
@@ -47888,7 +47204,7 @@ aMQ
 akK
 aUd
 hKP
-aLz
+azY
 akK
 atz
 bBl
@@ -47898,13 +47214,13 @@ aYQ
 aay
 aOo
 aLo
-awu
+aYQ
 arn
 aKg
 ahQ
 aSr
 arn
-ain
+aOo
 auP
 ayO
 ayO
@@ -48025,7 +47341,7 @@ llH
 adM
 asV
 asV
-qdm
+adM
 hvZ
 hvZ
 kdb
@@ -48034,7 +47350,7 @@ sgp
 hvZ
 hvZ
 hvZ
-vyc
+adM
 asV
 asV
 asV
@@ -48282,7 +47598,7 @@ llH
 adM
 asV
 bPm
-qdm
+adM
 hvZ
 hvZ
 kdb
@@ -48290,7 +47606,7 @@ sgp
 sgp
 hvZ
 hvZ
-ndO
+adM
 adM
 csw
 asV
@@ -48413,7 +47729,7 @@ aXR
 aXR
 aXR
 aXR
-aVs
+aXR
 aLl
 agB
 ayH
@@ -48539,7 +47855,7 @@ iEG
 gqT
 iYe
 asV
-qdm
+adM
 hvZ
 hvZ
 kdb
@@ -48547,7 +47863,7 @@ sgp
 sgp
 hvZ
 hvZ
-hHU
+adM
 adM
 asV
 asV
@@ -48797,7 +48113,7 @@ fAL
 asV
 asV
 adM
-jPb
+adM
 hvZ
 kdb
 sgp
@@ -48805,7 +48121,7 @@ sgp
 uQJ
 hvZ
 hvZ
-vyc
+adM
 asV
 asV
 asV
@@ -49054,7 +48370,7 @@ adM
 asV
 asV
 muK
-qdm
+adM
 hvZ
 hvZ
 sgp
@@ -49062,7 +48378,7 @@ sgp
 uQJ
 hvZ
 hvZ
-vyc
+adM
 asV
 asV
 asV
@@ -49311,14 +48627,14 @@ adM
 asV
 asV
 asV
-qdm
+adM
 hvZ
 kdb
 sgp
 sgp
 uQJ
 hvZ
-kgV
+adM
 adM
 asV
 asV
@@ -49418,7 +48734,7 @@ nUN
 awo
 aYN
 kTE
-aLz
+azY
 akK
 avC
 agN
@@ -49568,7 +48884,7 @@ adM
 asV
 asV
 asV
-qdm
+adM
 hvZ
 kdb
 sgp
@@ -49576,7 +48892,7 @@ sgp
 uQJ
 hvZ
 hvZ
-vyc
+adM
 asV
 asV
 asV
@@ -49825,7 +49141,7 @@ asV
 asV
 asV
 sdb
-qdm
+adM
 hvZ
 kdb
 sgp
@@ -49833,7 +49149,7 @@ sgp
 uQJ
 hvZ
 hvZ
-vyc
+adM
 hAq
 asV
 asV
@@ -49927,7 +49243,7 @@ avg
 aBy
 aXb
 akK
-afG
+aop
 gFd
 azN
 azN
@@ -49939,7 +49255,7 @@ evf
 aWe
 ais
 akK
-afG
+aop
 fxF
 azN
 aHi
@@ -50083,14 +49399,14 @@ asV
 asV
 asV
 adM
-wga
+adM
 kdb
 sgp
 sgp
 uQJ
 hvZ
 hvZ
-jby
+grL
 asV
 asV
 asV
@@ -50339,7 +49655,7 @@ asV
 asV
 asV
 asV
-gJP
+asV
 qlN
 qiA
 sgp
@@ -50347,7 +49663,7 @@ sgp
 uQJ
 hvZ
 hvZ
-vyc
+adM
 asV
 asV
 asV
@@ -50595,7 +49911,7 @@ asV
 asV
 asV
 asV
-ygW
+asV
 oQz
 rSs
 sgp
@@ -50853,7 +50169,7 @@ adM
 asV
 asV
 bPm
-jQa
+asV
 uXa
 oCl
 mjM
@@ -51111,7 +50427,7 @@ adM
 adM
 adM
 adM
-jPb
+adM
 kdb
 sgp
 sgp
@@ -52152,7 +51468,7 @@ ylM
 ylM
 ylM
 ylM
-gtE
+aBe
 ayO
 ayO
 ayO
@@ -53435,7 +52751,7 @@ ayO
 ayO
 roT
 aBe
-gtE
+aBe
 aBe
 uyr
 ayO
@@ -53529,7 +52845,7 @@ aaA
 akt
 aIy
 aEy
-ary
+aEq
 aOZ
 qrC
 acO
@@ -54435,7 +53751,7 @@ aHr
 aHr
 aHr
 ceL
-raN
+aHr
 mpU
 aHr
 aBe
@@ -54557,7 +53873,7 @@ ahp
 aTo
 agv
 aSs
-aIF
+anL
 aOZ
 qrC
 aiX
@@ -55098,7 +54414,7 @@ aAq
 aAq
 aAq
 amD
-aFS
+aAq
 syB
 aJx
 ayO
@@ -55461,7 +54777,7 @@ ayO
 ayO
 ayO
 ayO
-gtE
+aBe
 ayO
 ayO
 ayO
@@ -55585,7 +54901,7 @@ aGQ
 aMh
 aFR
 aBY
-aHu
+afA
 aOZ
 sHd
 jMQ
@@ -56613,7 +55929,7 @@ aJD
 aXa
 aBI
 adC
-asB
+aAH
 aOZ
 nsh
 uzE
@@ -58541,7 +57857,7 @@ uLg
 upj
 rWx
 rWx
-qUn
+kyE
 uLg
 uLg
 uLg
@@ -60234,7 +59550,7 @@ ayO
 ayO
 ayO
 ahA
-aBt
+aHr
 aej
 alH
 aUT
@@ -60489,10 +59805,10 @@ ayO
 ayO
 ayO
 ayO
-aWf
+aBe
 aQq
 aPi
-aBt
+aHr
 abM
 aBr
 aUa
@@ -61261,11 +60577,11 @@ ayO
 ayO
 aSH
 agZ
-aBt
+aHr
 anC
 aGt
 aVJ
-aBt
+aHr
 axy
 auW
 ayO
@@ -61521,7 +60837,7 @@ aOF
 aqK
 aPn
 aKC
-aYT
+aHr
 acB
 aYd
 apI
@@ -61775,7 +61091,7 @@ ayO
 ayO
 ayO
 abP
-aIM
+aHr
 aQK
 ani
 afc
@@ -79997,15 +79313,15 @@ aGD
 aGD
 azy
 aIG
-aKP
+aOm
 aOm
 aXh
 aIG
-aKP
+aOm
 aOm
 aXh
 aIG
-aKP
+aOm
 aOm
 aXh
 aIG
@@ -82053,15 +81369,15 @@ aGD
 aGD
 azy
 aIG
-aQB
+aOm
 aOm
 aYx
 aIG
-aQB
+aOm
 aOm
 aYx
 aIG
-aQB
+aOm
 aOm
 aYx
 aIG
@@ -83263,7 +82579,7 @@ fox
 fox
 twR
 cKk
-lkv
+qZK
 mVg
 rRj
 pWr
@@ -84032,11 +83348,11 @@ alp
 fox
 mUJ
 twR
-ggV
 mJS
 mJS
 mJS
-tVB
+mJS
+mJS
 pWr
 pWr
 iHH
@@ -84294,7 +83610,7 @@ mJS
 mJS
 mJS
 pWr
-imd
+pWr
 pWr
 iHH
 rlz
@@ -84547,7 +83863,7 @@ fox
 mJS
 mJS
 mJS
-dpo
+mJS
 mJS
 pWr
 pWr
@@ -87214,7 +86530,7 @@ azy
 aIG
 aOm
 aOm
-aKP
+aOm
 aIG
 aOm
 aTw
@@ -87222,7 +86538,7 @@ ajV
 aIG
 aOm
 aOm
-aKP
+aOm
 aIG
 azy
 azy
@@ -89270,7 +88586,7 @@ aGD
 azy
 azy
 aOm
-aQB
+aOm
 aIG
 aOm
 aOm
@@ -89278,7 +88594,7 @@ ayd
 aIG
 aOm
 aOm
-aQB
+aOm
 aIG
 azy
 azy
