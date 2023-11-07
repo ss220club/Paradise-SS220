@@ -61,22 +61,22 @@
 /datum/gear/donor/wallet
 	display_name = "Бумажник"
 	path = /obj/item/storage/wallet
-	cost = 18
+	cost = 12
 
 /datum/gear/donor/firefirstaid
 	display_name = "Набор первой медицинской помощи от премиальной страховки"
 	path = /obj/item/storage/firstaid/regular/donor
-	cost = 6
+	cost = 12
 
 /datum/gear/donor/airtank
 	display_name = "Спаренный балон от премиальной страховки"
 	path = /obj/item/tank/internals/emergency_oxygen/double
-	cost = 10
+	cost = 3
 
 /datum/gear/donor/toolbelt
 	display_name = "Дедушкин пояс с инструментами"
 	path = /obj/item/storage/belt/utility
-	cost = 18
+	cost = 8
 
 /datum/gear/donor/bruise_pack
 	display_name = "Медицинские бинты"
@@ -101,4 +101,4 @@
 /datum/gear/donor/healthanalyzer
 	display_name = "Медицинский анализатор"
 	path = /obj/item/healthanalyzer
-	cost = 4
+	cost = 2
