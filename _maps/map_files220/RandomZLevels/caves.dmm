@@ -57,6 +57,10 @@
 /obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/wood/lavaland_air,
 /area/awaymission/caves)
+"aj" = (
+/obj/item/wisp_lantern,
+/turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
+/area/awaymission/caves)
 "al" = (
 /obj/structure/stone_tile/slab/cracked{
 	dir = 4
@@ -890,9 +894,7 @@
 /turf/simulated/floor/carpet/purple,
 /area/awaymission/caves/build/reqpower_build)
 "dX" = (
-/turf/simulated/floor/plating/asteroid/airless/cave/volcanic{
-	planetary_atmos = 1
-	},
+/turf/simulated/floor/plating/asteroid/airless/cave/volcanic,
 /area/awaymission/caves)
 "ea" = (
 /mob/living/simple_animal/hostile/asteroid/hivelord{
@@ -1025,9 +1027,11 @@
 	},
 /area/awaymission/caves/build/reqpower_build)
 "eL" = (
-/obj/effect/spawner/random_spawners/grille_often,
-/obj/effect/spawner/random_spawners/grille_maybe,
-/turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
+/obj/structure/mineral_door/iron,
+/obj/effect/decal/cleanable/dust,
+/turf/simulated/floor/engine/cult/lavaland_air{
+	planetary_atmos = 1
+	},
 /area/awaymission/caves)
 "eM" = (
 /mob/living/simple_animal/hostile/abomination/altform1{
@@ -1652,6 +1656,14 @@
 	icon_state = "bcircuit"
 	},
 /area/awaymission/caves/build/reqpower_build)
+"hW" = (
+/obj/effect/spawner/random_spawners/dirt_often,
+/obj/item/card/id/away/old{
+	name = "Miner's Personal ID";
+	pixel_x = -5
+	},
+/turf/simulated/floor/plasteel/lavaland_air,
+/area/awaymission/caves/build)
 "hY" = (
 /obj/structure/stone_tile/slab/cracked{
 	dir = 10
@@ -2184,8 +2196,9 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/caves/build)
 "kC" = (
-/obj/item/clothing/suit/armor/riot/knight/red,
 /obj/effect/decal/remains/human,
+/obj/item/reagent_containers/food/snacks/grown/harebell,
+/obj/item/clothing/suit/armor/riot/knight/red,
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/awaymission/caves)
 "kD" = (
@@ -2704,11 +2717,9 @@
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/awaymission/caves)
 "ns" = (
-/obj/effect/spawner/window/reinforced/grilled,
-/obj/structure/fans/tiny/invisible,
-/obj/effect/mapping_helpers/damaged_window,
-/turf/simulated/floor/plating/lavaland_air,
-/area/awaymission/caves/build/reqpower_build)
+/obj/structure/spacevine,
+/turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
+/area/awaymission/caves)
 "nt" = (
 /obj/effect/spawner/random_spawners/blood_often,
 /obj/effect/gibspawner/human,
@@ -2879,6 +2890,11 @@
 	icon_state = "darkredalt"
 	},
 /area/awaymission/caves/build/reqpower_build)
+"og" = (
+/obj/structure/flora/ash/stem_shroom,
+/obj/structure/spacevine,
+/turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
+/area/awaymission/caves)
 "oi" = (
 /obj/mecha/working/ripley{
 	obj_integrity = 40
@@ -5693,6 +5709,15 @@
 	},
 /turf/simulated/floor/plating/lavaland_air,
 /area/awaymission/caves)
+"Dp" = (
+/obj/structure/stone_tile/slab/cracked{
+	dir = 9
+	},
+/obj/effect/decal/cleanable/dust,
+/turf/simulated/floor/engine/cult/lavaland_air{
+	planetary_atmos = 1
+	},
+/area/awaymission/caves)
 "Dt" = (
 /obj/structure/stone_tile/slab/cracked{
 	dir = 8
@@ -6510,6 +6535,7 @@
 /obj/structure/stone_tile/slab,
 /obj/item/toy/character/lich,
 /obj/effect/decal/cleanable/dust,
+/obj/item/clothing/shoes/sandal/magic,
 /turf/simulated/floor/engine/cult/lavaland_air{
 	planetary_atmos = 1
 	},
@@ -7189,6 +7215,11 @@
 	icon_state = "darkredalt"
 	},
 /area/awaymission/caves/build/reqpower_build)
+"KS" = (
+/obj/structure/flora/ash/tall_shroom,
+/obj/structure/spacevine,
+/turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
+/area/awaymission/caves)
 "KT" = (
 /obj/effect/rune/narsie{
 	used = 1
@@ -7722,16 +7753,16 @@
 /area/awaymission/caves)
 "Oo" = (
 /obj/machinery/door/airlock/survival_pod,
-/obj/structure/fans/tiny/invisible,
+/obj/structure/fans/tiny,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "dark"
 	},
 /area/awaymission/caves/build/reqpower_build)
 "Or" = (
-/obj/effect/spawner/window/reinforced/grilled,
-/obj/effect/mapping_helpers/damaged_window,
-/turf/simulated/floor/plating,
+/obj/structure/flora/ash/rock/style_random,
+/obj/structure/spacevine,
+/turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/awaymission/caves)
 "Os" = (
 /obj/structure/table/wood,
@@ -7749,10 +7780,14 @@
 	},
 /area/awaymission/caves)
 "Ox" = (
-/obj/effect/spawner/window/reinforced/grilled,
-/obj/structure/fans/tiny/invisible,
-/turf/simulated/floor/plating/lavaland_air,
-/area/awaymission/caves/build/reqpower_build)
+/obj/structure/stone_tile/slab/cracked{
+	dir = 2
+	},
+/obj/structure/flora/rock,
+/turf/simulated/floor/engine/cult/lavaland_air{
+	planetary_atmos = 1
+	},
+/area/awaymission/caves)
 "OA" = (
 /obj/machinery/atmospherics/unary/tank/air,
 /obj/effect/spawner/random_spawners/dirt_often,
@@ -8368,9 +8403,7 @@
 /area/awaymission/caves)
 "RX" = (
 /obj/machinery/hydroponics/soil,
-/turf/simulated/floor/plating/asteroid/airless/cave/volcanic{
-	planetary_atmos = 1
-	},
+/turf/simulated/floor/plating/asteroid/airless/cave/volcanic,
 /area/awaymission/caves)
 "RY" = (
 /turf/simulated/floor/plasteel/lavaland_air,
@@ -8541,9 +8574,7 @@
 "SV" = (
 /obj/structure/sink/puddle,
 /obj/item/reagent_containers/glass/bucket/wooden,
-/turf/simulated/floor/plating/asteroid/airless/cave/volcanic{
-	planetary_atmos = 1
-	},
+/turf/simulated/floor/plating/asteroid/airless/cave/volcanic,
 /area/awaymission/caves)
 "SX" = (
 /obj/machinery/power/smes,
@@ -9314,9 +9345,6 @@
 	name = "Miner's Personal ID";
 	pixel_x = -5
 	},
-/obj/item/card/id/away/old{
-	name = "Miner's Personal ID"
-	},
 /turf/simulated/floor/plating/lavaland_air,
 /area/awaymission/caves)
 "Wq" = (
@@ -9441,6 +9469,15 @@
 /obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/plating/lavaland_air,
 /area/awaymission/caves/build)
+"WQ" = (
+/obj/structure/stone_tile/slab/cracked{
+	dir = 5
+	},
+/obj/structure/flora/rock,
+/turf/simulated/floor/engine/cult/lavaland_air{
+	planetary_atmos = 1
+	},
+/area/awaymission/caves)
 "WR" = (
 /obj/effect/spawner/random_spawners/wall_rusted_probably,
 /turf/simulated/wall,
@@ -9951,7 +9988,10 @@
 /obj/structure/closet/crate/wooden/wooden_crate,
 /obj/structure/stone_tile/slab,
 /obj/item/reagent_containers/food/drinks/trophy/bronze_cup,
-/obj/item/reagent_containers/food/drinks/bottle/wine,
+/obj/item/reagent_containers/food/drinks/bottle/wine{
+	name = "Thousand-year-old wine";
+	icon_state = "patronbottle"
+	},
 /obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/engine/cult/lavaland_air{
 	planetary_atmos = 1
@@ -16734,10 +16774,10 @@ Lr
 kD
 VD
 ZJ
-eL
-eL
-eL
-eL
+Pb
+Pb
+Pb
+Pb
 TK
 TK
 TK
@@ -16969,8 +17009,8 @@ ZJ
 ZJ
 ZJ
 ZJ
-eL
-eL
+Pb
+Pb
 TK
 TK
 TK
@@ -17473,7 +17513,7 @@ LU
 LU
 LU
 LU
-LU
+Ox
 LU
 LU
 LU
@@ -17705,9 +17745,9 @@ LU
 LU
 LU
 LU
-LU
-LU
-LU
+iE
+WQ
+mz
 LU
 LU
 LU
@@ -17904,8 +17944,8 @@ NJ
 tW
 gq
 kG
-eL
-TK
+Pb
+ZJ
 TK
 TK
 TK
@@ -17936,10 +17976,10 @@ LU
 LU
 LU
 LU
-LU
-LU
-LU
-LU
+mz
+wC
+Dp
+mz
 LU
 LU
 LU
@@ -18136,7 +18176,7 @@ ts
 tW
 tW
 kG
-eL
+Pb
 ZJ
 ZJ
 ZJ
@@ -18169,8 +18209,8 @@ mz
 mz
 mz
 mz
-mz
-mz
+eL
+eL
 mz
 mz
 mz
@@ -18368,7 +18408,7 @@ NJ
 NJ
 Kl
 kG
-eL
+Pb
 ZJ
 ZJ
 ZJ
@@ -18402,7 +18442,7 @@ UN
 Dv
 Xq
 Xq
-Xq
+ET
 Xq
 Xq
 mz
@@ -19513,7 +19553,7 @@ ZJ
 bO
 Uh
 jA
-NS
+hW
 hw
 ew
 wh
@@ -24473,10 +24513,10 @@ TK
 TK
 TK
 TK
-ZJ
-va
-ZJ
-ZJ
+ns
+KS
+ns
+ns
 TK
 TK
 TK
@@ -24704,10 +24744,10 @@ TK
 TK
 TK
 TK
-ZJ
-ZJ
-ZJ
-ZJ
+ns
+ns
+ns
+ns
 TK
 TK
 TK
@@ -24938,9 +24978,9 @@ TK
 TK
 ZJ
 Aq
-ZJ
-ZJ
-CO
+ns
+ns
+og
 TK
 TK
 TK
@@ -25165,10 +25205,10 @@ TK
 ZJ
 TK
 ZJ
-ZJ
+ns
 TK
 TK
-ZJ
+ns
 ZJ
 ZJ
 ZJ
@@ -25395,17 +25435,17 @@ TK
 TK
 TK
 TK
-ZJ
-va
-ZJ
+ns
+KS
+ns
 TK
 TK
 ZJ
 TK
 TK
 ZJ
-ZJ
-ZJ
+ns
+ns
 TK
 TK
 TK
@@ -25637,8 +25677,8 @@ TK
 TK
 TK
 TK
-ZJ
-ZJ
+ns
+ns
 TK
 TK
 BH
@@ -25863,14 +25903,14 @@ ZJ
 ZJ
 ZJ
 TK
-ZJ
-ZJ
+ns
+ns
 TK
 Aq
 TK
 TK
-ZJ
-Aq
+ns
+Or
 TK
 TK
 BH
@@ -26094,14 +26134,14 @@ TK
 TK
 TK
 Aq
-ZJ
-ZJ
-ZJ
+ns
+ns
+ns
 TK
-ZJ
+aj
 bV
 va
-ZJ
+ns
 TK
 TK
 TK
@@ -26326,10 +26366,10 @@ TK
 TK
 TK
 ZJ
-ZJ
+ns
 hu
-ZJ
-ZJ
+ns
+ns
 ZJ
 kC
 TK
@@ -37201,7 +37241,7 @@ OK
 OK
 GF
 FF
-GF
+AE
 GF
 GF
 mz
@@ -37620,9 +37660,9 @@ bO
 bO
 bO
 ZJ
-ZJ
-TK
-TK
+bO
+bO
+bO
 TK
 TK
 TK
@@ -37630,7 +37670,7 @@ bO
 bO
 bO
 bO
-TK
+bO
 bO
 bO
 bO
@@ -37852,20 +37892,20 @@ bO
 bO
 bO
 bO
-TK
-TK
-TK
-TK
 bO
 bO
 bO
 bO
+bO
+bO
+bO
+bO
+bO
+bO
 TK
 TK
-TK
-TK
-TK
-Pb
+bO
+bO
 aV
 ZJ
 nx
@@ -37897,7 +37937,7 @@ FF
 GF
 GF
 GF
-AE
+GF
 GF
 Vt
 GF
@@ -38091,13 +38131,13 @@ bO
 bO
 bO
 bO
+bO
+bO
 TK
 TK
 TK
 TK
-TK
-TK
-TK
+aV
 kD
 ZJ
 TK
@@ -38321,16 +38361,16 @@ bO
 bO
 bO
 bO
-TK
-TK
-TK
+bO
+bO
+bO
 TK
 TK
 TK
 TK
 TK
 Aq
-ZJ
+Ge
 TK
 TK
 LU
@@ -38553,9 +38593,9 @@ bO
 bO
 bO
 bO
-TK
-TK
-TK
+bO
+bO
+bO
 TK
 TK
 TK
@@ -38785,8 +38825,8 @@ bO
 bO
 bO
 bO
-ZJ
-TK
+bO
+bO
 TK
 TK
 ZJ
@@ -39632,7 +39672,7 @@ GA
 Ce
 dP
 dP
-dP
+Rg
 dP
 as
 sn
@@ -39859,8 +39899,8 @@ xf
 xf
 xf
 xf
-Ox
-ns
+bq
+hD
 xf
 xf
 xf
@@ -40404,7 +40444,7 @@ TK
 TK
 TK
 TK
-TK
+bO
 bO
 bO
 TK
@@ -40634,9 +40674,9 @@ TK
 TK
 TK
 TK
-TK
-TK
-TK
+bO
+bO
+bO
 bO
 TK
 TK
@@ -40799,7 +40839,7 @@ BH
 Og
 dU
 zm
-Yx
+pZ
 BH
 BH
 BH
@@ -41031,7 +41071,7 @@ BH
 BH
 NN
 vZ
-Or
+NN
 BH
 BH
 BH
@@ -41263,7 +41303,7 @@ BH
 BH
 pZ
 aV
-Or
+NN
 BH
 BH
 BH
@@ -41495,7 +41535,7 @@ Th
 BH
 pZ
 vZ
-Or
+NN
 BH
 BH
 BH
@@ -41727,7 +41767,7 @@ oB
 Yx
 nu
 aV
-Yx
+pZ
 BH
 BH
 BH
@@ -44096,10 +44136,10 @@ bO
 bO
 bO
 bO
-bO
-bO
-bO
-bO
+ZJ
+TK
+TK
+TK
 ZJ
 ZJ
 ZJ
@@ -44328,10 +44368,10 @@ bO
 bO
 bO
 bO
-bO
-bO
-bO
-bO
+ZJ
+ZJ
+TK
+TK
 bO
 bO
 bO
@@ -44561,9 +44601,9 @@ bO
 bO
 bO
 bO
-bO
-bO
-bO
+ZJ
+ZJ
+ZJ
 bO
 bO
 bO
@@ -44798,8 +44838,8 @@ bO
 bO
 bO
 bO
-bO
-bO
+ZJ
+ZJ
 TK
 TK
 TK
