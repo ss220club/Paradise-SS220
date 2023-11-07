@@ -109,7 +109,7 @@
 
 /turf/simulated/floor/indestructible/dune_sand/smooth
 	icon = 'modular_ss220/dunes_map/icons/sand_smooth.dmi'
-	icon_state = "sand_smooth"
+	icon_state = "sand-0"
 	smoothing_flags = SMOOTH_BITMASK | SMOOTH_BORDER
 	canSmoothWith = list(/turf/simulated/floor/indestructible/dune_sand, /turf/simulated/floor/indestructible/dune_sand/smooth)
 
