@@ -304,14 +304,14 @@
 
 /obj/item/emerald_stone
 	name = "изумрудный камень"
-	desc = "Маленькая серебряная побрякушка, инкрустированная ярким изумрудом бриллиантовой огранки. На верхушечной площадке камня мелко выгравирован череп ."
+	desc = "Маленькая серебряная побрякушка, инкрустированная ярким изумрудом бриллиантовой огранки. На верхушечной площадке камня выгравирован череп."
 	icon = 'icons/obj/wizard.dmi'
 	icon_state = "necrostone"
 	item_state = "electronic"
 	origin_tech = "bluespace=4;materials=4"
 	w_class = WEIGHT_CLASS_TINY
 	var/list/skeletons = list()
-	var/number = 2 // можно менять в игре
+	var/number = 2 // for ingame VV change
 
 /obj/item/emerald_stone/attack(mob/living/carbon/human/undead, mob/living/carbon/human/user)
 
@@ -333,7 +333,7 @@
 		to_chat(user, span_warning("Это тело никогда не было обременено душой..."))
 		return
 
-	check_skeletons() //clean out/refresh the list
+	check_skeletons() // clean out/refresh the list
 
 	if(length(skeletons) >= number)
 		to_chat(user, span_warning("Этот артефакт может поддерживать только одного мертвеца!</span>"))
@@ -363,7 +363,7 @@
 /obj/item/emerald_stone/proc/equip_undead(mob/living/carbon/human/raised)
 	for(var/obj/item/I in raised)
 		raised.unEquip(I)
-	var/randomUndead = "roman"//defualt
+	var/randomUndead = "roman" // defualt
 	randomUndead = pick("roman","pirate","clown")
 
 	switch(randomUndead)
