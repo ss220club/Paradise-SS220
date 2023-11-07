@@ -456,8 +456,7 @@
 /area/awaymission/arrakis/cave)
 "abl" = (
 /obj/machinery/light_switch/east{
-	dir = 8;
-	on = 0
+	dir = 8
 	},
 /obj/structure/closet/l3closet/security,
 /obj/machinery/light/directional/north,
@@ -848,15 +847,13 @@
 /obj/machinery/atmospherics/binary/pump/on{
 	target_pressure = 4500
 	},
-/turf/simulated/floor/plasteel/dark/telecomms)
+/turf/simulated/floor/plasteel/dark/telecomms,
+/area/station/science/server)
 "acu" = (
 /obj/item/flag/atmos{
 	name = "Atmosia Flag"
 	},
-/obj/item/radio/intercom{
-	name = "custom placement";
-	dir = 2
-	},
+/obj/item/radio/intercom/directional/south,
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
@@ -1487,9 +1484,7 @@
 	},
 /area/awaymission/arrakis/bunker/medbay)
 "aed" = (
-/obj/structure/extinguisher_cabinet{
-	name = "custom placement"
-	},
+/obj/structure/extinguisher_cabinet/directional/west,
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
@@ -1668,10 +1663,7 @@
 	},
 /area/awaymission/arrakis/bunker/rnd)
 "aeE" = (
-/obj/item/radio/intercom{
-	name = "custom placement";
-	dir = 2
-	},
+/obj/item/radio/intercom/directional/north,
 /obj/machinery/computer/mech_bay_power_console,
 /turf/simulated/floor/bluegrid,
 /area/awaymission/arrakis/bunker/rnd)
@@ -2795,10 +2787,7 @@
 	pixel_y = -8;
 	req_access = list(10,11)
 	},
-/obj/item/radio/intercom{
-	name = "custom placement";
-	dir = 2
-	},
+/obj/item/radio/intercom/directional/south,
 /obj/machinery/door_control/shutter{
 	id = "engilockdown";
 	name = "Engineering Lockdown";
@@ -3010,16 +2999,6 @@
 /obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/brick,
 /area/awaymission/arrakis/cave)
-"ahV" = (
-/obj/structure/closet/walllocker{
-	pixel_y = 32
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "darkblue"
-	},
-/area/awaymission/arrakis/bunker/medbay)
 "ahW" = (
 /obj/structure/AIcore/deactivated/tanya{
 	layer = 3.5
@@ -3482,7 +3461,8 @@
 /obj/machinery/atmospherics/pipe/manifold/visible{
 	dir = 1
 	},
-/turf/simulated/floor/plasteel/dark/telecomms)
+/turf/simulated/floor/plasteel/dark/telecomms,
+/area/station/science/server)
 "ajl" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/smartfridge,
@@ -3660,9 +3640,7 @@
 /turf/simulated/floor/carpet/purple,
 /area/awaymission/arrakis/bunker/rnd)
 "ajL" = (
-/obj/structure/extinguisher_cabinet{
-	name = "custom placement"
-	},
+/obj/structure/extinguisher_cabinet/directional/south,
 /obj/machinery/light/directional/south,
 /obj/machinery/disposal,
 /obj/effect/decal/cleanable/dirt,
@@ -3691,21 +3669,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/arrakis/bunker/engie)
-"ajO" = (
-/obj/effect/turf_decal/delivery/partial{
-	dir = 1
-	},
-/obj/machinery/access_button/east{
-	command = "cycle_interior";
-	frequency = 1379;
-	master_tag = "xeno_airlock_control";
-	name = "Xenobiology Access Button";
-	req_access = list(55)
-	},
-/turf/simulated/floor/plasteel{
-	icon_state = "cafeteria"
-	},
-/area/awaymission/arrakis/bunker/rnd)
 "ajP" = (
 /obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/plasteel{
@@ -3883,13 +3846,6 @@
 	dir = 2
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/access_button/south{
-	command = "cycle_interior";
-	frequency = 1379;
-	master_tag = "xeno_airlock_control";
-	name = "Xenobiology Access Button";
-	req_access = list(55)
-	},
 /turf/simulated/floor/plasteel{
 	dir = 10;
 	icon_state = "purple"
@@ -3960,8 +3916,7 @@
 /area/awaymission/arrakis/bunker/medbay)
 "akz" = (
 /obj/machinery/computer/general_air_control{
-	name = "Tank Monitor";
-	sensors = list("n2_sensor"="Nitrogen","o2_sensor"="Oxygen","co2_sensor"="Carbon  Dioxide","tox_sensor"="Toxins","n2o_sensor"="Nitrous  Oxide","waste_sensor"="Gas  Mix  Tank")
+	name = "Tank Monitor"
 	},
 /obj/effect/mapping_helpers/machinery/damaged,
 /turf/simulated/floor/plasteel{
@@ -4450,9 +4405,6 @@
 	},
 /area/awaymission/arrakis/bunker/dorms)
 "alP" = (
-/obj/structure/closet/walllocker{
-	pixel_y = 32
-	},
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
 	dir = 5;
@@ -4803,7 +4755,8 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/turf/simulated/floor/plasteel/dark)
+/turf/simulated/floor/plasteel/dark,
+/area/station/science/server)
 "amL" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
@@ -5268,11 +5221,7 @@
 /area/awaymission/arrakis/bunker/medbay)
 "aoc" = (
 /obj/machinery/light/small/directional/south,
-/obj/machinery/alarm{
-	pixel_y = -32;
-	dir = 1;
-	name = "custom placement"
-	},
+/obj/machinery/alarm/directional/south,
 /turf/simulated/floor/plasteel{
 	icon_state = "podfloor_dark"
 	},
@@ -5521,7 +5470,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/turf/simulated/floor/plating)
+/turf/simulated/floor/plating,
+/area/station/science/server)
 "aoP" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -5828,7 +5778,8 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging/junction{
 	dir = 8
 	},
-/turf/simulated/floor/bluegrid/telecomms/server)
+/turf/simulated/floor/bluegrid/telecomms/server,
+/area/station/science/server)
 "apB" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -6253,19 +6204,12 @@
 "aqH" = (
 /obj/structure/table/wood,
 /obj/machinery/newscaster/directional/south,
-/obj/item/radio/intercom{
-	name = "custom placement";
-	dir = 2
-	},
+/obj/item/radio/intercom/directional/east,
 /obj/item/paper/monitorkey,
 /turf/simulated/floor/carpet/purple,
 /area/awaymission/arrakis/bunker/rnd)
 "aqI" = (
-/obj/machinery/alarm{
-	dir = 1;
-	pixel_y = -26;
-	name = "custom placement"
-	},
+/obj/machinery/alarm/directional/south,
 /obj/structure/closet/l3closet/security,
 /obj/machinery/light/directional/south,
 /turf/simulated/floor/plasteel{
@@ -7305,7 +7249,8 @@
 /turf/simulated/floor/bluegrid,
 /area/awaymission/arrakis/bunker/rnd)
 "atH" = (
-/turf/simulated/floor/plasteel/dark/telecomms)
+/turf/simulated/floor/plasteel/dark/telecomms,
+/area/station/science/server)
 "atI" = (
 /obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/plasteel,
@@ -7520,7 +7465,8 @@
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 9
 	},
-/turf/simulated/floor/plasteel/dark/telecomms)
+/turf/simulated/floor/plasteel/dark/telecomms,
+/area/station/science/server)
 "aur" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/table/reinforced,
@@ -8071,7 +8017,8 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 4
 	},
-/turf/simulated/floor/plasteel/dark)
+/turf/simulated/floor/plasteel/dark,
+/area/station/science/server)
 "awg" = (
 /obj/machinery/light/directional/east,
 /obj/effect/mapping_helpers/machinery/damaged,
@@ -8242,9 +8189,7 @@
 /turf/simulated/floor/carpet/orange,
 /area/awaymission/arrakis/bunker/bedrooms)
 "awL" = (
-/obj/structure/extinguisher_cabinet{
-	name = "custom placement"
-	},
+/obj/structure/extinguisher_cabinet/directional/west,
 /turf/simulated/floor/plating,
 /area/awaymission/arrakis/bunker/engie)
 "awM" = (
@@ -8656,7 +8601,8 @@
 /obj/effect/turf_decal/stripes/corner{
 	dir = 8
 	},
-/turf/simulated/floor/plasteel/dark)
+/turf/simulated/floor/plasteel/dark,
+/area/station/science/server)
 "ayc" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -9207,7 +9153,8 @@
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
-	})
+	},
+/area/station/science/server)
 "azD" = (
 /obj/effect/turf_decal/delivery/partial{
 	dir = 1
@@ -9229,9 +9176,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/structure/extinguisher_cabinet{
-	name = "custom placement"
-	},
+/obj/structure/extinguisher_cabinet/directional/east,
 /obj/structure/chair,
 /turf/simulated/floor/plasteel{
 	icon_state = "darkgrey"
@@ -9253,9 +9198,7 @@
 /turf/simulated/floor/wood,
 /area/awaymission/arrakis/bunker/bridge)
 "azL" = (
-/obj/structure/extinguisher_cabinet{
-	name = "custom placement"
-	},
+/obj/structure/extinguisher_cabinet/directional/north,
 /obj/machinery/computer/monitor{
 	dir = 4;
 	name = "Grid Power Monitoring Computer"
@@ -10507,12 +10450,12 @@
 	},
 /obj/effect/decal/cleanable/dust,
 /obj/machinery/airlock_controller/access_controller{
-	id_tag = "xeno_airlock_control";
+	ext_button_link_id = "xeno_btn_ext_dune";
+	ext_door_link_id = "xeno_door_ext_dune";
+	int_button_link_id = "xeno_btn_int_dune";
+	int_door_link_id = "xeno_door_int";
 	name = "Xenobiology Access Console";
-	pixel_x = 8;
-	pixel_y = -25;
-	tag_exterior_door = "xeno_airlock_exterior";
-	tag_interior_door = "xeno_airlock_interior"
+	pixel_y = -24
 	},
 /turf/simulated/floor/plasteel{
 	dir = 10;
@@ -11019,9 +10962,7 @@
 /area/awaymission/arrakis/bunker/rnd)
 "aEQ" = (
 /obj/structure/filingcabinet/chestdrawer,
-/obj/structure/extinguisher_cabinet{
-	name = "custom placement"
-	},
+/obj/structure/extinguisher_cabinet/directional/west,
 /obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/carpet,
 /area/awaymission/arrakis/bunker/medbay)
@@ -11114,7 +11055,8 @@
 	name = "SERVER ROOM";
 	pixel_y = -32
 	},
-/turf/simulated/floor/plating)
+/turf/simulated/floor/plating,
+/area/station/science/server)
 "aFf" = (
 /obj/machinery/computer/med_data/laptop{
 	pixel_x = 2;
@@ -12124,10 +12066,7 @@
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
-/obj/machinery/alarm{
-	pixel_y = 32;
-	name = "custom placement"
-	},
+/obj/machinery/alarm/directional/north,
 /turf/simulated/floor/plasteel{
 	icon_state = "darkgrey"
 	},
@@ -12470,7 +12409,8 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 6
 	},
-/turf/simulated/floor/bluegrid/telecomms/server)
+/turf/simulated/floor/bluegrid/telecomms/server,
+/area/station/science/server)
 "aJB" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -13077,9 +13017,7 @@
 	},
 /area/awaymission/arrakis/bunker/bar)
 "aLc" = (
-/obj/machinery/door/airlock/highsecurity{
-	req_access = list(114)
-	},
+/obj/machinery/door/airlock/highsecurity,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -13131,7 +13069,8 @@
 	},
 /area/awaymission/arrakis/bunker/kitchen)
 "aLk" = (
-/turf/simulated/wall/r_wall)
+/turf/simulated/wall/r_wall,
+/area/station/science/server)
 "aLl" = (
 /turf/simulated/wall,
 /area/awaymission/arrakis/bunker/janitor)
@@ -13220,7 +13159,8 @@
 /turf/simulated/floor/indestructible/dune_sand,
 /area/awaymission/arrakis/outside/outside4)
 "aLB" = (
-/turf/simulated/wall/indestructible/riveted)
+/turf/simulated/wall/indestructible/riveted,
+/area/station/science/server)
 "aLC" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
@@ -13535,11 +13475,8 @@
 /area/awaymission/arrakis/bunker/hydro)
 "aMz" = (
 /obj/machinery/computer/general_air_control{
-	dir = 1;
-	frequency = 1443;
-	level = 3;
 	name = "Distribution and Waste Monitor";
-	sensors = list("mair_in_meter"="Mixed  Air  In","air_sensor"="Mixed  Air  Supply  Tank","mair_out_meter"="Mixed  Air  Out","dloop_atm_meter"="Distribution  Loop","wloop_atm_meter"="Waste  Loop")
+	dir = 1
 	},
 /obj/item/radio/intercom/directional/west,
 /obj/effect/mapping_helpers/machinery/damaged,
@@ -14062,11 +13999,13 @@
 /obj/effect/turf_decal/stripes/corner{
 	dir = 1
 	},
-/turf/simulated/floor/plasteel/dark)
+/turf/simulated/floor/plasteel/dark,
+/area/station/science/server)
 "aOc" = (
 /obj/machinery/light/small/directional/west,
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging,
-/turf/simulated/floor/plasteel/dark/telecomms)
+/turf/simulated/floor/plasteel/dark/telecomms,
+/area/station/science/server)
 "aOf" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
@@ -15612,7 +15551,8 @@
 	on = 1
 	},
 /obj/item/radio/intercom/directional/north,
-/turf/simulated/floor/plasteel/dark)
+/turf/simulated/floor/plasteel/dark,
+/area/station/science/server)
 "aSN" = (
 /obj/structure/closet/firecloset,
 /obj/machinery/camera{
@@ -15636,7 +15576,8 @@
 /obj/machinery/computer/rdservercontrol{
 	dir = 1
 	},
-/turf/simulated/floor/plasteel/dark)
+/turf/simulated/floor/plasteel/dark,
+/area/station/science/server)
 "aSR" = (
 /obj/structure/flora/tree/cactus,
 /obj/structure/flora/tree/cactus,
@@ -15760,11 +15701,6 @@
 "aTp" = (
 /obj/machinery/computer/station_alert,
 /obj/effect/mapping_helpers/machinery/damaged,
-/obj/machinery/light_switch{
-	pixel_x = 26;
-	pixel_y = -4;
-	name = "custom placement"
-	},
 /turf/simulated/floor/plasteel{
 	dir = 6;
 	icon_state = "brown"
@@ -15873,7 +15809,8 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/plasteel)
+/turf/simulated/floor/plasteel,
+/area/station/science/server)
 "aTK" = (
 /obj/structure/table/glass,
 /obj/item/clipboard{
@@ -16613,7 +16550,8 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 5
 	},
-/turf/simulated/floor/bluegrid/telecomms/server)
+/turf/simulated/floor/bluegrid/telecomms/server,
+/area/station/science/server)
 "aWa" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
@@ -17321,7 +17259,8 @@
 /obj/machinery/computer/message_monitor{
 	dir = 1
 	},
-/turf/simulated/floor/plasteel/dark)
+/turf/simulated/floor/plasteel/dark,
+/area/station/science/server)
 "aXN" = (
 /obj/item/flashlight/flare/glowstick/emergency,
 /turf/simulated/floor/indestructible/dune_sand,
@@ -18632,9 +18571,7 @@
 /area/awaymission/arrakis/bunker/brig)
 "bVR" = (
 /obj/effect/turf_decal/sand,
-/obj/structure/extinguisher_cabinet{
-	name = "custom placement"
-	},
+/obj/structure/extinguisher_cabinet/directional/south,
 /turf/simulated/floor/plasteel/dark,
 /area/awaymission/arrakis/outside/podhangars)
 "bWz" = (
@@ -18823,18 +18760,7 @@
 /area/awaymission/arrakis/bunker/brig)
 "crD" = (
 /obj/machinery/door/airlock/highsecurity{
-	name = "Vault External Door";
-	req_access = list(114);
-	autoclose = 0;
-	frequency = 2200;
-	id_tag = "vault_out"
-	},
-/obj/machinery/access_button/north{
-	command = "cycle_exterior";
-	frequency = 2200;
-	master_tag = "vault_door_control";
-	name = "Vault Access Button";
-	req_access = list(114,63)
+	name = "Vault External Door"
 	},
 /obj/effect/mapping_helpers/airlock/locked,
 /obj/effect/decal/cleanable/dust,
@@ -18842,6 +18768,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/effect/mapping_helpers/machinery/destroyed,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "dark"
@@ -19443,6 +19370,7 @@
 	},
 /area/awaymission/arrakis/bunker/brig)
 "dqx" = (
+/obj/effect/turf_decal/siding/wood,
 /obj/structure/statue/cheese/cheesus,
 /turf/simulated/floor/carpet/black,
 /area/awaymission/arrakis/cave)
@@ -20240,11 +20168,7 @@
 "evf" = (
 /obj/machinery/light/small/directional/east,
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/alarm{
-	dir = 8;
-	pixel_x = 26;
-	name = "custom placement"
-	},
+/obj/machinery/alarm/directional/east,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "neutral"
@@ -20517,7 +20441,6 @@
 /area/awaymission/arrakis/bunker/bridge)
 "ePW" = (
 /obj/machinery/door_control/bolt_control/west{
-	desiredstate = 1;
 	id = "toilet2"
 	},
 /obj/structure/toilet{
@@ -20548,7 +20471,6 @@
 /area/awaymission/arrakis/bunker/brig)
 "eUD" = (
 /obj/structure/lattice/catwalk{
-	smooth = 0;
 	color = "#e0ac7b";
 	name = "ржавый мост";
 	desc = "Очень ржавый, скрипучий мост, который кажется вот-вот развалится."
@@ -20601,10 +20523,7 @@
 /obj/item/storage/fancy/donut_box/empty,
 /obj/structure/table,
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/alarm{
-	pixel_y = 32;
-	name = "custom placement"
-	},
+/obj/machinery/alarm/directional/north,
 /turf/simulated/floor/plasteel{
 	dir = 5;
 	icon_state = "darkred"
@@ -20670,11 +20589,7 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
 	},
-/obj/machinery/alarm{
-	dir = 1;
-	pixel_y = -26;
-	name = "custom placement"
-	},
+/obj/machinery/alarm/directional/south,
 /turf/simulated/floor/plasteel{
 	icon_state = "darkblue"
 	},
@@ -21173,13 +21088,11 @@
 /area/awaymission/arrakis/bunker/rnd)
 "fSR" = (
 /obj/structure/lattice/catwalk{
-	smooth = 0;
 	color = "#e0ac7b";
 	name = "ржавый мост";
 	desc = "Очень ржавый, скрипучий мост, который кажется вот-вот развалится."
 	},
 /obj/structure/lattice/catwalk{
-	smooth = 0;
 	color = "#e0ac7b";
 	name = "ржавый мост";
 	desc = "Очень ржавый, скрипучий мост, который кажется вот-вот развалится."
@@ -21370,11 +21283,9 @@
 "gfr" = (
 /obj/machinery/door/airlock/research{
 	autoclose = 0;
-	frequency = 1379;
-	id_tag = "xeno_airlock_exterior";
+	id_tag = "xeno_door_ext_dune";
 	locked = 1;
-	name = "Xenobiology External Airlock";
-	req_access = list(55)
+	name = "Xenobiology External Airlock"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -21387,6 +21298,10 @@
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/machinery/access_button/south{
+	autolink_id = "xeno_btn_ext_dune";
+	name = "Xenobiology Access Button"
 	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/arrakis/bunker/rnd)
@@ -21499,7 +21414,9 @@
 /area/awaymission/arrakis/outside/outside5)
 "gsF" = (
 /obj/structure/railing{
-	dir = 6
+	dir = 6;
+	name = "ржавые перила";
+	color = "#e0ac7b"
 	},
 /obj/effect/turf_decal/siding/wood{
 	dir = 6
@@ -22092,7 +22009,9 @@
 /area/awaymission/arrakis/bunker/brig)
 "hdl" = (
 /obj/structure/railing{
-	dir = 10
+	dir = 10;
+	name = "ржавые перила";
+	color = "#e0ac7b"
 	},
 /obj/effect/turf_decal/siding/wood{
 	dir = 10
@@ -22783,7 +22702,6 @@
 /area/awaymission/arrakis/bunker/brig)
 "ids" = (
 /obj/structure/lattice/catwalk{
-	smooth = 0;
 	color = "#e0ac7b";
 	name = "ржавый мост";
 	desc = "Очень ржавый, скрипучий мост, который кажется вот-вот развалится."
@@ -22862,7 +22780,6 @@
 /area/awaymission/arrakis/bunker/bedrooms)
 "iln" = (
 /obj/structure/lattice/catwalk{
-	smooth = 0;
 	color = "#e0ac7b";
 	name = "ржавый мост";
 	desc = "Очень ржавый, скрипучий мост, который кажется вот-вот развалится."
@@ -22904,9 +22821,7 @@
 /turf/simulated/floor/indestructible/dune_sand/smooth,
 /area/awaymission/arrakis/outside/outside2)
 "ipT" = (
-/obj/structure/extinguisher_cabinet{
-	name = "custom placement"
-	},
+/obj/structure/extinguisher_cabinet/directional/east,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
@@ -23075,7 +22990,6 @@
 /area/awaymission/arrakis/bunker/rnd)
 "iDe" = (
 /obj/structure/lattice/catwalk{
-	smooth = 0;
 	color = "#e0ac7b";
 	name = "ржавый мост";
 	desc = "Очень ржавый, скрипучий мост, который кажется вот-вот развалится."
@@ -23291,7 +23205,6 @@
 /area/awaymission/arrakis/bunker/rnd)
 "iTf" = (
 /obj/structure/lattice/catwalk{
-	smooth = 0;
 	color = "#e0ac7b";
 	name = "ржавый мост";
 	desc = "Очень ржавый, скрипучий мост, который кажется вот-вот развалится."
@@ -23370,7 +23283,6 @@
 /area/awaymission/arrakis/cave)
 "jaF" = (
 /obj/structure/lattice/catwalk{
-	smooth = 0;
 	color = "#e0ac7b";
 	name = "ржавый мост";
 	desc = "Очень ржавый, скрипучий мост, который кажется вот-вот развалится."
@@ -23555,8 +23467,7 @@
 "jsq" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light_switch/south{
-	dir = 1;
-	on = 0
+	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
@@ -23735,7 +23646,6 @@
 /area/awaymission/arrakis/outside/outside5)
 "jKK" = (
 /obj/structure/lattice/catwalk{
-	smooth = 0;
 	color = "#e0ac7b";
 	name = "ржавый мост";
 	desc = "Очень ржавый, скрипучий мост, который кажется вот-вот развалится."
@@ -23953,7 +23863,6 @@
 /area/awaymission/arrakis/outside/outside2)
 "kdb" = (
 /obj/structure/lattice/catwalk{
-	smooth = 0;
 	color = "#e0ac7b";
 	name = "ржавый мост";
 	desc = "Очень ржавый, скрипучий мост, который кажется вот-вот развалится."
@@ -24165,12 +24074,9 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
-/obj/machinery/alarm{
-	dir = 8;
-	pixel_x = 26;
-	name = "custom placement"
-	},
-/turf/simulated/floor/plasteel/dark)
+/obj/machinery/alarm/directional/east,
+/turf/simulated/floor/plasteel/dark,
+/area/station/science/server)
 "kKX" = (
 /obj/structure/flora/tree/desert/dead,
 /turf/simulated/floor/indestructible/dune_sand,
@@ -24718,7 +24624,6 @@
 /area/awaymission/arrakis/cave)
 "lBK" = (
 /obj/structure/lattice/catwalk{
-	smooth = 0;
 	color = "#e0ac7b";
 	name = "ржавый мост";
 	desc = "Очень ржавый, скрипучий мост, который кажется вот-вот развалится."
@@ -24993,7 +24898,6 @@
 /area/awaymission/arrakis/bunker/brig)
 "mjM" = (
 /obj/structure/lattice/catwalk{
-	smooth = 0;
 	color = "#e0ac7b";
 	name = "ржавый мост";
 	desc = "Очень ржавый, скрипучий мост, который кажется вот-вот развалится."
@@ -25021,7 +24925,8 @@
 	},
 /obj/machinery/atmospherics/unary/portables_connector,
 /obj/machinery/atmospherics/portable/canister/nitrogen,
-/turf/simulated/floor/plasteel/dark)
+/turf/simulated/floor/plasteel/dark,
+/area/station/science/server)
 "mmq" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -25265,11 +25170,7 @@
 /area/awaymission/arrakis/bunker/brig/bsa)
 "mGs" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/alarm{
-	dir = 8;
-	pixel_x = 26;
-	name = "custom placement"
-	},
+/obj/machinery/alarm/directional/east,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "green"
@@ -25410,12 +25311,8 @@
 	},
 /area/awaymission/arrakis/bunker/brig)
 "mPL" = (
-/obj/structure/extinguisher_cabinet{
-	name = "custom placement"
-	},
-/obj/structure/extinguisher_cabinet{
-	name = "custom placement"
-	},
+/obj/structure/extinguisher_cabinet/directional/east,
+/obj/structure/extinguisher_cabinet/directional/west,
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
@@ -25917,13 +25814,11 @@
 /area/awaymission/arrakis/bunker/brig)
 "nGq" = (
 /obj/structure/lattice/catwalk{
-	smooth = 0;
 	color = "#e0ac7b";
 	name = "ржавый мост";
 	desc = "Очень ржавый, скрипучий мост, который кажется вот-вот развалится."
 	},
 /obj/structure/lattice/catwalk{
-	smooth = 0;
 	color = "#e0ac7b";
 	name = "ржавый мост";
 	desc = "Очень ржавый, скрипучий мост, который кажется вот-вот развалится."
@@ -26267,10 +26162,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/alarm{
-	pixel_y = 26;
-	name = "custom placement"
-	},
+/obj/machinery/alarm/directional/north,
 /turf/simulated/floor/plasteel,
 /area/awaymission/arrakis/bunker/bedrooms)
 "obs" = (
@@ -26299,6 +26191,7 @@
 	autoclose = 0
 	},
 /obj/effect/decal/cleanable/dust,
+/obj/effect/mapping_helpers/machinery/damaged,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "dark"
@@ -26425,9 +26318,7 @@
 /area/awaymission/arrakis/bunker/brig)
 "ons" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/extinguisher_cabinet{
-	name = "custom placement"
-	},
+/obj/structure/extinguisher_cabinet/directional/south,
 /obj/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
 	dir = 1
@@ -26584,11 +26475,7 @@
 	pixel_x = -4
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/alarm{
-	dir = 1;
-	pixel_y = -26;
-	name = "custom placement"
-	},
+/obj/machinery/alarm/directional/south,
 /turf/simulated/floor/plasteel{
 	icon_state = "whiteblue"
 	},
@@ -26618,7 +26505,6 @@
 /area/awaymission/arrakis/cave)
 "oCl" = (
 /obj/structure/lattice/catwalk{
-	smooth = 0;
 	color = "#e0ac7b";
 	name = "ржавый мост";
 	desc = "Очень ржавый, скрипучий мост, который кажется вот-вот развалится."
@@ -26640,7 +26526,6 @@
 /area/awaymission/arrakis/bunker/bedrooms)
 "oCO" = (
 /obj/machinery/door_control/bolt_control/west{
-	desiredstate = 1;
 	id = "toilet1"
 	},
 /obj/structure/toilet{
@@ -26870,7 +26755,6 @@
 /area/awaymission/arrakis/bunker/brig)
 "oQz" = (
 /obj/structure/lattice/catwalk{
-	smooth = 0;
 	color = "#e0ac7b";
 	name = "ржавый мост";
 	desc = "Очень ржавый, скрипучий мост, который кажется вот-вот развалится."
@@ -26920,7 +26804,6 @@
 /area/awaymission/arrakis/cave)
 "oUj" = (
 /obj/structure/lattice/catwalk{
-	smooth = 0;
 	color = "#e0ac7b";
 	name = "ржавый мост";
 	desc = "Очень ржавый, скрипучий мост, который кажется вот-вот развалится."
@@ -26943,7 +26826,6 @@
 "oWi" = (
 /obj/effect/mapping_helpers/light,
 /obj/structure/lattice/catwalk{
-	smooth = 0;
 	color = "#e0ac7b";
 	name = "ржавый мост";
 	desc = "Очень ржавый, скрипучий мост, который кажется вот-вот развалится."
@@ -27137,11 +27019,9 @@
 "poH" = (
 /obj/machinery/door/airlock/research{
 	autoclose = 0;
-	frequency = 1379;
-	id_tag = "xeno_airlock_interior";
+	id_tag = "xeno_door_int_dune";
 	locked = 1;
-	name = "Xenobiology Internal Airlock";
-	req_access = list(55)
+	name = "Xenobiology Internal Airlock"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -27149,6 +27029,10 @@
 	icon_state = "1-2"
 	},
 /obj/structure/disposalpipe/segment,
+/obj/machinery/access_button/west{
+	autolink_id = "xeno_btn_int_dune";
+	name = "Xenobiology Access Button"
+	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/arrakis/bunker/rnd)
 "ppj" = (
@@ -27197,7 +27081,6 @@
 /area/awaymission/arrakis/bunker/dorms)
 "pqy" = (
 /obj/structure/lattice/catwalk{
-	smooth = 0;
 	color = "#e0ac7b";
 	name = "ржавый мост";
 	desc = "Очень ржавый, скрипучий мост, который кажется вот-вот развалится."
@@ -27407,7 +27290,6 @@
 /area/awaymission/arrakis/outside/mining_storage_outpost)
 "pDg" = (
 /obj/structure/lattice/catwalk{
-	smooth = 0;
 	color = "#e0ac7b";
 	name = "ржавый мост";
 	desc = "Очень ржавый, скрипучий мост, который кажется вот-вот развалится."
@@ -27729,7 +27611,6 @@
 /area/awaymission/arrakis/bunker/brig)
 "qiA" = (
 /obj/structure/lattice/catwalk{
-	smooth = 0;
 	color = "#e0ac7b";
 	name = "ржавый мост";
 	desc = "Очень ржавый, скрипучий мост, который кажется вот-вот развалится."
@@ -27814,7 +27695,6 @@
 /area/awaymission/arrakis/cave)
 "qlN" = (
 /obj/structure/lattice/catwalk{
-	smooth = 0;
 	color = "#e0ac7b";
 	name = "ржавый мост";
 	desc = "Очень ржавый, скрипучий мост, который кажется вот-вот развалится."
@@ -28258,7 +28138,6 @@
 /area/awaymission/arrakis/outside/hermit_shack)
 "qWd" = (
 /obj/structure/lattice/catwalk{
-	smooth = 0;
 	color = "#e0ac7b";
 	name = "ржавый мост";
 	desc = "Очень ржавый, скрипучий мост, который кажется вот-вот развалится."
@@ -28816,7 +28695,6 @@
 	icon_state = "tile_full"
 	},
 /obj/structure/lattice/catwalk{
-	smooth = 0;
 	color = "#e0ac7b";
 	name = "ржавый мост";
 	desc = "Очень ржавый, скрипучий мост, который кажется вот-вот развалится."
@@ -29008,7 +28886,6 @@
 /area/awaymission/arrakis/outside/outside4)
 "sgp" = (
 /obj/structure/lattice/catwalk{
-	smooth = 0;
 	color = "#e0ac7b";
 	name = "ржавый мост";
 	desc = "Очень ржавый, скрипучий мост, который кажется вот-вот развалится."
@@ -29177,7 +29054,6 @@
 /area/awaymission/arrakis/bunker/hallway)
 "sxF" = (
 /obj/structure/lattice/catwalk{
-	smooth = 0;
 	color = "#e0ac7b";
 	name = "ржавый мост";
 	desc = "Очень ржавый, скрипучий мост, который кажется вот-вот развалится."
@@ -29868,7 +29744,6 @@
 /area/awaymission/arrakis/bunker/brig)
 "tGL" = (
 /obj/structure/lattice/catwalk{
-	smooth = 0;
 	color = "#e0ac7b";
 	name = "ржавый мост";
 	desc = "Очень ржавый, скрипучий мост, который кажется вот-вот развалится."
@@ -30257,16 +30132,6 @@
 	dir = 2
 	},
 /obj/structure/table/reinforced,
-/obj/machinery/airlock_controller/access_controller{
-	dir = 1;
-	id_tag = "vault_door_control";
-	name = "Vault Access Console";
-	pixel_y = 4;
-	req_access = list(114,63);
-	tag_exterior_door = "vault_out";
-	tag_interior_door = "vault_in";
-	frequency = 2200
-	},
 /obj/effect/decal/cleanable/dust,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -30321,11 +30186,7 @@
 /area/awaymission/arrakis/bunker/dorms)
 "urR" = (
 /obj/effect/decal/cleanable/dust,
-/obj/machinery/alarm{
-	dir = 1;
-	pixel_y = -26;
-	name = "custom placement"
-	},
+/obj/machinery/alarm/directional/south,
 /turf/simulated/floor/wood/fancy/cherry,
 /area/awaymission/arrakis/bunker/kitchen)
 "utK" = (
@@ -30378,9 +30239,7 @@
 /area/awaymission/arrakis/outside/mining_town)
 "uxT" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/light_switch/north{
-	on = 0
-	},
+/obj/machinery/light_switch/north,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
@@ -30518,7 +30377,6 @@
 /area/awaymission/arrakis/outside/mining_storage_outpost)
 "uPM" = (
 /obj/structure/lattice/catwalk{
-	smooth = 0;
 	color = "#e0ac7b";
 	name = "ржавый мост";
 	desc = "Очень ржавый, скрипучий мост, который кажется вот-вот развалится."
@@ -30547,7 +30405,6 @@
 /area/awaymission/arrakis/outside/mining_town)
 "uQJ" = (
 /obj/structure/lattice/catwalk{
-	smooth = 0;
 	color = "#e0ac7b";
 	name = "ржавый мост";
 	desc = "Очень ржавый, скрипучий мост, который кажется вот-вот развалится."
@@ -30621,7 +30478,6 @@
 /area/awaymission/arrakis/bunker/dorms)
 "uXa" = (
 /obj/structure/lattice/catwalk{
-	smooth = 0;
 	color = "#e0ac7b";
 	name = "ржавый мост";
 	desc = "Очень ржавый, скрипучий мост, который кажется вот-вот развалится."
@@ -31247,11 +31103,7 @@
 /area/awaymission/arrakis/bunker/tanya_cyborg_blyat_lab)
 "vUE" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/alarm{
-	dir = 1;
-	pixel_y = -26;
-	name = "custom placement"
-	},
+/obj/machinery/alarm/directional/south,
 /turf/simulated/floor/plasteel{
 	icon_state = "podfloor_dark"
 	},
@@ -32096,7 +31948,6 @@
 /area/awaymission/arrakis/bunker/rnd)
 "xsi" = (
 /obj/structure/lattice/catwalk{
-	smooth = 0;
 	color = "#e0ac7b";
 	name = "ржавый мост";
 	desc = "Очень ржавый, скрипучий мост, который кажется вот-вот развалится."
@@ -32126,18 +31977,7 @@
 /area/awaymission/arrakis/bunker/rnd)
 "xtF" = (
 /obj/machinery/door/airlock/highsecurity{
-	name = "Vault Internal Door";
-	req_access = list(114);
-	autoclose = 0;
-	frequency = 2200;
-	id_tag = "vault_in"
-	},
-/obj/machinery/access_button/north{
-	command = "cycle_interior";
-	frequency = 2200;
-	master_tag = "vault_door_control";
-	name = "Vault Access Button";
-	req_access = list(114,63)
+	name = "Vault Internal Door"
 	},
 /obj/effect/mapping_helpers/airlock/locked,
 /obj/effect/decal/cleanable/dust,
@@ -32243,11 +32083,7 @@
 /area/awaymission/arrakis/bunker/dorms)
 "xHV" = (
 /obj/effect/decal/cleanable/dust,
-/obj/machinery/alarm{
-	dir = 4;
-	pixel_x = -26;
-	name = "custom placement"
-	},
+/obj/machinery/alarm/directional/west,
 /turf/simulated/floor/wood/fancy/oak,
 /area/awaymission/arrakis/bunker/bar)
 "xHZ" = (
@@ -32431,7 +32267,6 @@
 /area/awaymission/arrakis/bunker/brig)
 "xWG" = (
 /obj/structure/lattice/catwalk{
-	smooth = 0;
 	color = "#e0ac7b";
 	name = "ржавый мост";
 	desc = "Очень ржавый, скрипучий мост, который кажется вот-вот развалится."
@@ -32530,9 +32365,7 @@
 	},
 /area/awaymission/arrakis/bunker/brig)
 "yhJ" = (
-/obj/structure/extinguisher_cabinet{
-	name = "custom placement"
-	},
+/obj/structure/extinguisher_cabinet/directional/south,
 /obj/machinery/disposal,
 /turf/simulated/floor/plasteel{
 	dir = 10;
@@ -35334,7 +35167,7 @@ aFU
 aIK
 aqo
 aYG
-ahV
+aQm
 wfT
 axj
 axj
@@ -35460,8 +35293,8 @@ rMs
 hRf
 xGf
 qPh
+lQf
 dqx
-qbO
 aIG
 aYs
 aIg
@@ -35848,7 +35681,7 @@ atz
 aIK
 aXb
 aYG
-ahV
+aQm
 pgh
 aYw
 ayP
@@ -48208,7 +48041,7 @@ auL
 aRT
 aUL
 nXm
-ajO
+abp
 aJO
 auL
 aFU

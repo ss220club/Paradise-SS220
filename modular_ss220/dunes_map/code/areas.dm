@@ -157,14 +157,20 @@
 
 /area/awaymission/arrakis/bunker/dorms
 	name = "\improper Бункер - Дормы"
+	icon = 'icons/turf/areas.dmi'
 	icon_state = "dorms"
 
 /area/awaymission/arrakis/bunker/cryo
 	name = "\improper Бункер - Крио"
+	icon = 'icons/turf/areas.dmi'
 	icon_state = "Sleep"
+	lightswitch = FALSE
+
+/area/awaymission/arrakis/bunker/cryo/second
 
 /area/awaymission/arrakis/bunker/bedrooms
 	name = "\improper Бункер - Спальни"
+	icon = 'icons/turf/areas.dmi'
 	icon_state = "dorms"
 
 /area/awaymission/arrakis/bunker/tanya_cyborg_blyat_lab
@@ -173,3 +179,4 @@
 	icon_state = "purple"
 	requires_power = FALSE
 	ambientsounds = DESERT_SOUNDS_SECRET
+	lightswitch = FALSE
