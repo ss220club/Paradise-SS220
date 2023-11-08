@@ -5,4 +5,4 @@
 
 /obj/item/storage/bag/garment/head_of_security/populate_contents()
 	. = ..()
-	new /obj/item/clothing/gloves/combat/lite(src)
+	new /obj/item/clothing/gloves/combat(src)

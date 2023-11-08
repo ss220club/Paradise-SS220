@@ -5,9 +5,3 @@
 	icon_state = "bike_gloves"
 	icon_override = 'modular_ss220/clothing/icons/mob/hands.dmi'
 	item_state = "bike_gloves"
-
-/obj/item/clothing/gloves/combat/lite
-	name = "combat gloves"
-	desc = "Утеплённые тактические перчатки. За годы безотказной работы, лишились защиты от электричества."
-	siemens_coefficient = 0.5
-	permeability_coefficient = 1
