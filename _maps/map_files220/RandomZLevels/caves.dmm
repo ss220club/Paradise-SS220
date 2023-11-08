@@ -2890,9 +2890,7 @@
 	},
 /area/awaymission/caves/build/reqpower_build)
 "oi" = (
-/obj/mecha/working/ripley{
-	obj_integrity = 40
-	},
+/obj/structure/mecha_wreckage/ripley,
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/awaymission/caves)
 "om" = (
@@ -2912,8 +2910,7 @@
 /area/awaymission/caves)
 "oq" = (
 /obj/item/gun/energy/kinetic_accelerator,
-/obj/effect/landmark/damageturf,
-/turf/simulated/floor/plating/lavaland_air,
+/turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/awaymission/caves)
 "or" = (
 /obj/structure/closet/walllocker/firelocker/south,
@@ -3215,6 +3212,10 @@
 /obj/structure/cable{
 	d2 = 8;
 	icon_state = "0-8"
+	},
+/obj/item/paper{
+	info = "Стажёрчик, последний, мать твою, раз тебе объясняю. Генератор НАСТРОЕН!!!Ты просто заправляешь его топливом, ждешь пока СМЕС прогреется и ВСЕ!!!Еще раз я увижу как ты ковыряешься в проводке - с треском вылетишь к паукам.";
+	name = "напоминание главного техника"
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/caves/build/reqpower_build)
@@ -5753,6 +5754,10 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
+/obj/item/paper{
+	info = "Стажёрчик, последний, мать твою, раз тебе объясняю. Генератор НАСТРОЕН!!!Ты просто заправляешь его топливом, ждешь пока СМЕС прогреется и ВСЕ!!!Еще раз я увижу как ты ковыряешься в проводке - с треском вылетишь к паукам.";
+	name = "напоминание главного техника"
+	},
 /turf/simulated/floor/plating,
 /area/awaymission/caves/build/reqpower_build)
 "DH" = (
@@ -6570,6 +6575,7 @@
 /area/awaymission/caves/build)
 "HQ" = (
 /obj/effect/spawner/window/reinforced/plasma/grilled,
+/obj/effect/mapping_helpers/damaged_window,
 /turf/simulated/floor/plating,
 /area/awaymission/caves/build/reqpower_build)
 "HR" = (
@@ -7105,7 +7111,6 @@
 /obj/structure/table,
 /obj/random/toolbox,
 /obj/random/tool,
-/obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/plating,
 /area/awaymission/caves/build/reqpower_build)
 "Kw" = (
@@ -7820,6 +7825,7 @@
 /obj/machinery/door/poddoor/preopen{
 	id_tag = "cave4_blast2"
 	},
+/obj/effect/mapping_helpers/damaged_window,
 /turf/simulated/floor/plating,
 /area/awaymission/caves/build/reqpower_build)
 "OM" = (
@@ -15001,7 +15007,7 @@ BH
 BH
 TK
 ZJ
-ZJ
+Xq
 ZJ
 Aq
 BH
@@ -15465,7 +15471,7 @@ BH
 BH
 BH
 Aq
-BH
+ZJ
 ZJ
 BH
 BH
@@ -15698,7 +15704,7 @@ BH
 BH
 BH
 ZJ
-ZJ
+pL
 BH
 BH
 BH
@@ -16393,7 +16399,7 @@ BH
 BH
 BH
 BH
-ZJ
+pL
 ZJ
 ZJ
 ZJ
@@ -16625,14 +16631,14 @@ BH
 BH
 BH
 ZJ
+Xq
+BH
+BH
+BH
+BH
 BH
 BH
 ZJ
-ZJ
-BH
-BH
-BH
-BH
 BH
 BH
 BH
@@ -16859,12 +16865,12 @@ BH
 ZJ
 ZJ
 ZJ
+BH
+BH
+BH
+BH
 ZJ
-BH
-BH
-BH
-BH
-BH
+ZJ
 BH
 BH
 BH
@@ -17097,7 +17103,7 @@ BH
 BH
 BH
 BH
-BH
+ZJ
 BH
 BH
 BH
@@ -18268,7 +18274,7 @@ BH
 BH
 ZJ
 ZJ
-BH
+ZJ
 ZJ
 BH
 BH
@@ -18499,7 +18505,7 @@ ZJ
 BH
 BH
 ZJ
-BH
+ZJ
 ZJ
 ZJ
 ZJ
@@ -18733,7 +18739,7 @@ ZJ
 nx
 ZJ
 ZJ
-BH
+ZJ
 ZJ
 BH
 ZJ
@@ -26303,7 +26309,7 @@ bO
 bO
 bO
 ZJ
-oq
+aV
 UM
 FR
 WR
@@ -37497,8 +37503,8 @@ BH
 BH
 BH
 BH
-ZJ
-Xq
+BH
+BH
 BH
 BH
 BH
@@ -37728,10 +37734,10 @@ BH
 BH
 BH
 BH
-nx
-ZJ
-ZJ
-ZJ
+BH
+BH
+BH
+BH
 BH
 BH
 BH
@@ -37959,11 +37965,11 @@ BH
 BH
 mz
 ZJ
-ZJ
-ZJ
-Xq
-ZJ
-Aq
+BH
+BH
+BH
+BH
+BH
 BH
 BH
 BH
@@ -38195,9 +38201,9 @@ ZJ
 Xq
 ZJ
 BH
-ZJ
-ZJ
-ZJ
+BH
+BH
+BH
 BH
 BH
 BH
@@ -39588,7 +39594,7 @@ ZJ
 ZJ
 ZJ
 mz
-ZJ
+BH
 BH
 BH
 ZJ
@@ -39820,7 +39826,7 @@ mz
 mz
 ET
 BH
-ZJ
+BH
 BH
 ZJ
 ZJ
@@ -40752,7 +40758,7 @@ ZJ
 Xq
 Xq
 BH
-Xq
+BH
 ZJ
 BH
 BH
@@ -41223,8 +41229,8 @@ Xq
 mf
 BH
 BH
-nx
-Xq
+BH
+BH
 BH
 BH
 BH
@@ -41451,9 +41457,9 @@ mz
 BH
 ZJ
 Xq
-ZJ
-ZJ
-ZJ
+BH
+BH
+BH
 BH
 BH
 BH
@@ -41683,15 +41689,15 @@ mz
 BH
 Xq
 BH
-ZJ
-Xq
+BH
+vI
 BH
 BH
 BH
 BH
 BH
-ZJ
-Xq
+BH
+BH
 Xq
 mz
 DR
@@ -42597,8 +42603,8 @@ BH
 BH
 ET
 ZJ
-mf
-ZJ
+BH
+BH
 vI
 nx
 OK
@@ -42961,7 +42967,7 @@ TK
 TK
 TK
 ZJ
-ZJ
+oq
 TK
 TK
 TK
@@ -50459,7 +50465,7 @@ BH
 BH
 BH
 BH
-LU
+BH
 BH
 BH
 BH
@@ -50688,7 +50694,7 @@ BH
 BH
 BH
 BH
-BH
+LU
 BH
 BH
 BH
@@ -50918,7 +50924,7 @@ LU
 LU
 BH
 BH
-BH
+LU
 LU
 LU
 LU
@@ -51149,9 +51155,9 @@ LU
 LU
 LU
 BH
-BH
-BH
-BH
+LU
+LU
+LU
 LU
 LU
 LU
@@ -51381,10 +51387,10 @@ LU
 BH
 BH
 BH
+LU
 BH
 BH
-BH
-BH
+LU
 LU
 BH
 BH
