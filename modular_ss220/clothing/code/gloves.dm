@@ -8,6 +8,6 @@
 
 /obj/item/clothing/gloves/combat/lite
 	name = "combat gloves"
-	desc = "Утеплённые тактические перчатки."
+	desc = "Утеплённые тактические перчатки. За годы безотказной работы, лишились защиты от электричества."
 	siemens_coefficient = 0.5
 	permeability_coefficient = 1
