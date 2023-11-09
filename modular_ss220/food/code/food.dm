@@ -1044,3 +1044,6 @@
 	icon = 'modular_ss220/food/icons/trash.dmi'
 	icon_state = "disk"
 	item_state = "chips"
+
+/obj/item/reagent_containers/food/snacks/wingfangchu
+	icon_state = "bacon"
