@@ -9040,9 +9040,7 @@
 	pixel_y = 6
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/light_switch/west{
-	dir = 4
-	},
+/obj/structure/extinguisher_cabinet/directional/west,
 /turf/simulated/floor/plasteel,
 /area/station/supply/storage)
 "aPS" = (
@@ -9859,10 +9857,19 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/fore)
 "aSK" = (
-/obj/structure/closet/crate,
-/obj/effect/turf_decal/delivery/hollow,
+/obj/structure/rack{
+	dir = 8;
+	layer = 2.9
+	},
+/obj/item/stack/sheet/cardboard,
+/obj/item/stack/rods{
+	amount = 50
+	},
+/obj/item/paper,
+/obj/item/storage/box/lights/mixed,
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/effect/turf_decal/delivery/hollow,
 /turf/simulated/floor/plasteel,
 /area/station/supply/storage)
 "aSM" = (
@@ -10173,21 +10180,6 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/engine,
 /area/station/engineering/engine/supermatter)
-"aTW" = (
-/obj/structure/rack{
-	dir = 8;
-	layer = 2.9
-	},
-/obj/item/stack/sheet/cardboard,
-/obj/item/stack/rods{
-	amount = 50
-	},
-/obj/item/paper,
-/obj/item/storage/box/lights/mixed,
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/extinguisher_cabinet/directional/west,
-/turf/simulated/floor/plasteel,
-/area/station/supply/storage)
 "aTX" = (
 /obj/effect/landmark/spawner/nukedisc_respawn,
 /obj/effect/decal/cleanable/dirt,
@@ -10575,24 +10567,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/control)
-"aUT" = (
-/obj/structure/table,
-/obj/machinery/camera{
-	c_tag = "Cargo Bay - Starboard";
-	dir = 8
-	},
-/obj/item/toy/figure/crew/cargotech{
-	pixel_x = 3
-	},
-/obj/item/stamp/granted{
-	pixel_x = -6;
-	pixel_y = 6
-	},
-/turf/simulated/floor/plasteel{
-	dir = 9;
-	icon_state = "brown"
-	},
-/area/station/supply/storage)
 "aUU" = (
 /obj/structure/window/reinforced,
 /turf/space,
@@ -11259,7 +11233,6 @@
 	},
 /area/station/engineering/smes)
 "aWO" = (
-/obj/item/stack/sheet/cardboard,
 /obj/effect/turf_decal/delivery/hollow,
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -12446,27 +12419,18 @@
 /turf/simulated/floor/plasteel,
 /area/station/engineering/control)
 "baC" = (
-/obj/structure/table,
-/obj/item/folder/yellow{
-	pixel_x = -6;
-	pixel_y = 4
-	},
-/obj/item/folder/yellow{
-	pixel_x = -7;
-	pixel_y = -6
-	},
 /obj/item/radio/intercom/directional/east,
-/obj/item/paper_bin{
-	pixel_x = 8;
-	pixel_y = 1
-	},
-/obj/item/paper_bin{
-	pixel_x = 8;
+/obj/structure/table,
+/obj/item/stamp/granted{
+	pixel_x = -6;
 	pixel_y = 6
 	},
-/obj/item/paper_bin{
-	pixel_x = 8;
-	pixel_y = 11
+/obj/item/toy/figure/crew/cargotech{
+	pixel_x = 3
+	},
+/obj/machinery/camera{
+	c_tag = "Cargo Bay - Starboard";
+	dir = 8
 	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
@@ -48924,6 +48888,19 @@
 	icon_state = "white"
 	},
 /area/station/science/toxins/launch)
+"eZC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/light_switch/west{
+	dir = 4
+	},
+/turf/simulated/floor/plasteel,
+/area/station/supply/storage)
 "eZE" = (
 /obj/item/radio/intercom/directional/south,
 /turf/simulated/floor/plasteel{
@@ -60104,6 +60081,12 @@
 	icon_state = "dark"
 	},
 /area/station/security/execution)
+"kiC" = (
+/turf/simulated/floor/plasteel{
+	dir = 9;
+	icon_state = "brown"
+	},
+/area/station/supply/storage)
 "kiH" = (
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/plasteel,
@@ -67069,6 +67052,12 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/station/supply/office)
+"niu" = (
+/obj/effect/turf_decal/delivery/hollow,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/crate,
+/turf/simulated/floor/plasteel,
+/area/station/supply/storage)
 "niv" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -108636,7 +108625,7 @@ aYl
 aRo
 aYl
 aWM
-aRo
+kiC
 aRo
 baV
 bdZ
@@ -108890,7 +108879,7 @@ aPM
 ayH
 wNA
 iuZ
-aUT
+kiC
 aAX
 baC
 aTL
@@ -109145,9 +109134,9 @@ aOB
 aOB
 aOB
 aZt
+aZt
 uKy
 aUt
-aZt
 aZt
 aZt
 aZt
@@ -109402,9 +109391,9 @@ frx
 tWP
 aOB
 aPR
-aWt
+eZC
 gqF
-aTW
+gqF
 aMT
 bgy
 aZt
@@ -110687,7 +110676,7 @@ aLW
 aNe
 aZt
 aMH
-bsi
+niu
 bsi
 gqF
 gqF
