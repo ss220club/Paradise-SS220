@@ -9035,19 +9035,13 @@
 /turf/simulated/floor/plasteel,
 /area/station/supply/qm)
 "aPR" = (
-/obj/machinery/door_control/shutter/west{
-	id = "qm_warehouse";
-	name = "Warehouse Door Control";
-	req_access_txt = "31"
-	},
 /obj/structure/table,
 /obj/machinery/kitchen_machine/microwave{
 	pixel_y = 6
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light_switch/west{
-	dir = 4;
-	pixel_y = -8
+	dir = 4
 	},
 /turf/simulated/floor/plasteel,
 /area/station/supply/storage)
@@ -48102,7 +48096,6 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
-/obj/effect/mapping_helpers/airlock/access/all/supply/qm,
 /turf/simulated/floor/plating,
 /area/station/supply/storage)
 "eFw" = (
@@ -60779,7 +60772,6 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/effect/mapping_helpers/airlock/access/all/supply/qm,
 /turf/simulated/floor/plating,
 /area/station/supply/storage)
 "kBs" = (
@@ -82488,6 +82480,11 @@
 	dir = 8;
 	id_tag = "qm_warehouse";
 	name = "Warehouse Shutters"
+	},
+/obj/machinery/door_control/shutter/north{
+	id = "qm_warehouse";
+	name = "Warehouse Door Control";
+	req_access_txt = "31"
 	},
 /turf/simulated/floor/plasteel,
 /area/station/supply/storage)
