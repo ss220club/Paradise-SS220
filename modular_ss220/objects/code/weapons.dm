@@ -159,7 +159,7 @@
 
 // Тактическая бита Флота NanoTrasen
 /obj/item/melee/baseball_bat/homerun/central_command
-	name = "тактическая бита Флота NanoTrasen"
+	name = "тактическая бита Флота Nanotrasen"
 	desc = "Выдвижная тактическая бита Центрального Командования Nanotrasen. \
 	В официальных документах эта бита проходит под элегантным названием \"Высокоскоростная система доставки СРП\". \
 	Выдаваясь только самым верным и эффективным офицерам NanoTrasen, это оружие является одновременно символом статуса \
@@ -225,7 +225,6 @@
 	else
 		to_chat(user, span_notice("Вы деактивировали [src.name]."))
 		item_state = initial(item_state)
-		slot_flags = initial(slot_flags)
 		w_class = initial(w_class)
 		force = initial(force)
 		attack_verb = initial(attack_verb)
