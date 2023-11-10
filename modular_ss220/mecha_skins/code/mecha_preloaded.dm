@@ -45,3 +45,43 @@
 
 /obj/mecha/combat/gygax/nt/add_cell()
 	cell = new /obj/item/stock_parts/cell/high/slime(src)
+
+//DURAND
+
+/obj/mecha/combat/durand/rover
+	desc = "Combat exosuit, developed by syndicate from the Durand Mk. II by scraping unnecessary things, and adding some of their tech. Much more protected from any Nanotrasen hazards."
+	name = "Rover"
+	icon = 'modular_ss220/mecha_skins/code/mecha.dmi'
+	icon_state = "darkdurand"
+	initial_icon = "darkdurand"
+	armor = list(melee = 30, bullet = 40, laser = 50, energy = 50, bomb = 20, rad = 50, fire = 100, acid = 100)
+	operation_req_access = list(ACCESS_SYNDICATE)
+	wreckage = /obj/structure/mecha_wreckage/durand/rover
+	max_equip = 4
+	internal_damage_threshold = 35
+	starting_voice = /obj/item/mecha_modkit/voice/syndicate
+	destruction_sleep_duration = 1
+
+/obj/mecha/combat/durand/rover/GrantActions(mob/living/user, human_occupant = 0)
+	..()
+	thrusters_action.Grant(user, src)
+	defense_action.Grant(user, src)
+
+/obj/mecha/combat/durand/rover/RemoveActions(mob/living/user, human_occupant = 0)
+	..()
+	thrusters_action.Remove(user)
+	defense_action.Remove(user)
+
+/obj/mecha/combat/durand/rover/loaded/Initialize(mapload)
+	. = ..()
+	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/lmg/syndi
+	ME.attach(src)
+	ME = new /obj/item/mecha_parts/mecha_equipment/repair_droid
+	ME.attach(src)
+	ME = new /obj/item/mecha_parts/mecha_equipment/antiproj_armor_booster
+	ME.attach(src)
+	ME = new /obj/item/mecha_parts/mecha_equipment/weapon/energy/ion
+	ME.attach(src)
+
+/obj/mecha/combat/durand/rover/loaded/add_cell()
+	cell = new /obj/item/stock_parts/cell/bluespace(src)
