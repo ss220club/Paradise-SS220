@@ -11,7 +11,8 @@
 	var/list/output_data = list()
 	output_data["queue_enabled"] = SSqueue.queue_enabled
 
-	if(SSqueue.queue_enabled)
-		SSqueue.queue_bypass_list |= ckey_check
+	output_data["player_added"] = TRUE
+
+	SSqueue.queue_bypass_list |= ckey(ckey_check)
 
 	return json_encode(output_data)

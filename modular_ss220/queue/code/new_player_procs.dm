@@ -1,28 +1,32 @@
-/mob/new_player/Login()
-	. = ..()
-
-	if(!SSdbcore.IsConnected())
-		return
-
-	if(SSqueue.queue_enabled)
-		if(client?.ckey in SSqueue.queue_bypass_list)
-			return
-
-		if(client?.holder)
+/client/proc/queue_check()
+	if(SSqueue.initialized)
+		if(ckey in SSqueue.queue_bypass_list)
+			return TRUE
+		if(!SSqueue.queue_enabled)
 			SSqueue.queue_bypass_list |= ckey
-			return
+			return TRUE
 
-		if(length(GLOB.clients) < SSqueue.queue_threshold)
-			SSqueue.queue_bypass_list |= ckey
-			return
+	log_debug("Try redirect [ckey] to queue server")
 
-		src << link(GLOB.configuration.overflow.overflow_server_location)
+	var/result = world.Export("[GLOB.configuration.overflow.overflow_server_location]?ping")
 
-/mob/new_player/Logout()
-	. = ..()
+	log_debug("Ping queue server result [result]")
 
-	if(SSqueue.queue_enabled)
-		addtimer(CALLBACK(SSqueue, TYPE_PROC_REF(/datum/controller/subsystem/queue, reserve_queue_slot), last_known_ckey), GLOB.configuration.overflow.reservation_time)
+	if(!result)
+		return TRUE
+
+	var/redirect_link = "[GLOB.configuration.overflow.overflow_server_location]?target=[GLOB.configuration.overflow.server_address]:[world.port]"
+	log_debug("generated redirect link [redirect_link]")
+	src << link(redirect_link)
+
+	return FALSE
+
+
+/mob/Logout()
+	if(client?.ckey in SSqueue.queue_bypass_list)
+		addtimer(CALLBACK(SSqueue, TYPE_PROC_REF(/datum/controller/subsystem/queue, reserve_queue_slot), client.ckey), GLOB.configuration.overflow.reservation_time)
+
+		. = ..()
 
 
 /datum/controller/subsystem/queue/proc/reserve_queue_slot(reserved_ckey)

@@ -251,6 +251,11 @@
 	//CONNECT//
 	///////////
 /client/New(TopicData)
+	// SS220 addition start
+	if(!queue_check())
+		return null
+	// SS220 addition end
+
 	var/tdata = TopicData //save this for later use
 	chatOutput = new /datum/chatOutput(src) // Right off the bat.
 	TopicData = null							//Prevent calls to client.Topic from connect
