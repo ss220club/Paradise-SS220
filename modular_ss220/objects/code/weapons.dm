@@ -216,7 +216,7 @@
 	on = !on
 	icon_state = on ? icon_state_on : initial(icon_state)
 	if(on)
-		to_chat(user, span_userdanger("Вы активировали [src.name] - время для правосудия!</span>"))
+		to_chat(user, span_userdanger("Вы активировали [src.name] - время для правосудия!"))
 		item_state = item_state_on
 		w_class = WEIGHT_CLASS_HUGE //doesnt fit in backpack when its on for balance
 		force = force_on
