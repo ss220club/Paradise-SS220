@@ -1,6 +1,5 @@
 /obj/mecha
 	var/datum/action/innate/mecha/flash/flash_action = new
-
 /datum/action/innate/mecha/flash
 	name = "Святой огонь"
 	desc = "Очистите оскверненных тварей с помощью святого света!"
