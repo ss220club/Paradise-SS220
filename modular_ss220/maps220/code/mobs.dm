@@ -194,22 +194,35 @@
 	icon = 'modular_ss220/maps220/icons/simple_human.dmi'
 	icon_living = "deadwizard"
 	icon_state = "deadwizard"
-	maxHealth = 300
-	health = 300
+	maxHealth = 400
+	health = 400
 	ranged = 1
-	rapid = 4
-	rapid_fire_delay = 1
-	retreat_distance = 4
-	minimum_distance = 4
+	retreat_distance = 7
+	minimum_distance = 5
+	ranged_cooldown_time = 5
+	ranged_ignores_vision = TRUE
+	aggro_vision_range = 12
+	vision_range = 12
 	del_on_death = 1
-	projectiletype = /obj/item/projectile/magic/arcane_barrage
 	projectilesound = 'sound/magic/blind.ogg'
 	loot = list(
 	/obj/effect/decal/remains/human,
 	/obj/item/clothing/head/crown,
 	/obj/item/clothing/suit/imperium_monk,
 	/obj/effect/particle_effect/smoke/bad,
-	/obj/item/necromantic_stone)
+	/obj/item/emerald_stone)
+
+/mob/living/simple_animal/hostile/skeleton/deadwizard/Shoot(atom/targeted_atom)
+	..()
+	if (get_dist(src, targeted_atom) > 9)
+		rapid = 1
+		ranged_cooldown_time = 15
+		projectiletype = /obj/item/projectile/magic/fireball/infernal
+	else
+		projectiletype = /obj/item/projectile/magic/arcane_barrage
+		rapid = 4
+		rapid_fire_delay = 1
+		ranged_cooldown_time = 15
 
 /* Vox Raiders */
 /mob/living/simple_animal/hostile/vox
@@ -517,15 +530,16 @@
 /* Abomination */
 /mob/living/simple_animal/hostile/abomination
 	name = "мерзость"
-	desc = "Скуластое, громоздкое чудовище. Еще один неудачный эксперимент абдукторов. Что именно они пытались создать?"
+	desc = "Скуластое, громоздкое чудовище. Еще один неудачный эксперимент. Что именно они пытались создать?"
 	icon = 'modular_ss220/maps220/icons/simple_human.dmi'
 	icon_state = "abomination1"
 	icon_living = "abomination1"
 	icon_dead = "abomination_dead"
-	health = 300
-	maxHealth = 300
-	melee_damage_lower = 25
+	health = 230
+	maxHealth = 230
+	melee_damage_lower = 15
 	melee_damage_upper = 25
+	obj_damage = 60
 	attacktext = "грызёт"
 	attack_sound = 'sound/weapons/bite.ogg'
 	faction = list("abomination")
@@ -540,8 +554,8 @@
 	icon_state = "abomination_headcrab"
 	icon_living = "abomination_headcrab"
 	icon_dead = "abomination_headcrab_dead"
-	health = 250
-	maxHealth = 250
+	health = 200
+	maxHealth = 200
 
 /mob/living/simple_animal/hostile/abomination/altform1
 	icon_state = "abomination2"
