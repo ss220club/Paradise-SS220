@@ -118,7 +118,7 @@
 	icon_state = "pobeda-broken"
 
 /obj/structure/mecha_wreckage/gygax/whitegax
-	name = "\improper Обломки белого Рипли"
+	name = "\improper Обломки белого Гигакса"
 	desc = "Краска не повреждена. Забавно."
 	icon = 'modular_ss220/mecha_skins/code/mecha.dmi'
 	icon_state = "whitegax-broken"
