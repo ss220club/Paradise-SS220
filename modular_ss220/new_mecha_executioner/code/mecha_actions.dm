@@ -24,7 +24,7 @@
 	if(!owner || !chassis || chassis.occupant != owner)
 		return
 	if(chassis.flash_ready)
-		chassis.visible_message("<span class='disarm'>[chassis] emits a blinding holy light!</span>", "<span class='danger'>Your [chassis] emits a blinding holy light!</span>")
+		chassis.visible_message("<span class='disarm'>[chassis] испускает ослепляющий святой свет!</span>", "<span class='danger'>Your [chassis] испускает ослепляющий святой свет!</span>")
 		for(var/mob/living/carbon/M in oview(3, chassis))
 			flash_carbon(M, chassis.occupant, 3, FALSE)
 		chassis.flash_ready = FALSE

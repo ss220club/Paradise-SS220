@@ -1,6 +1,6 @@
 /obj/mecha/combat/executioner
 	name = "mk. V \"The Executioner\""
-	desc = "Dreadnought of the Executioner Order, heavy fire support configuration, made for purge evil and heretics. Extremely durable in close combat."
+	desc = "Дредноут Ордена Палача, тяжелая конфигурация огневой поддержки, созданная для уничтожения зла и еретиков. Чрезвычайно хорош в ближнем бою."
 	icon = 'modular_ss220/new_mecha_executioner/icons/mecha.dmi'
 	icon_state = "executioner"
 	initial_icon = "executioner"

@@ -9,7 +9,7 @@
 	)
 
 /datum/construction/mecha/executioner_chassis/custom_action(step, atom/used_atom, mob/user)
-	user.visible_message("[user] has connected [used_atom] to the [holder].", "You connect [used_atom] to the [holder]")
+	user.visible_message("[user] прикрепил [used_atom] к [holder].", "вы прикрепили [used_atom] к [holder]")
 	holder.overlays += used_atom.icon_state+"+o"
 	qdel(used_atom)
 	return 1
@@ -34,110 +34,110 @@
 		list(
 			"key"=/obj/item/soulstone/anybody/purified,
 			"backkey"=null, //Cannot remove soulstone once it's in
-			"desc"="Soulstone puted in the locket."),
+			"desc"="камень души помещен в хранилище."),
 		//2
 		list(
 		"key" = /obj/item/mecha_parts/core,
 			"backkey" = TOOL_SCREWDRIVER,
-			"desc" = "External armor is welded."),
+			"desc" = "Внешняя броня заварена."),
 		//3
 		list(
 			"key"=TOOL_WELDER,
 			"backkey"=TOOL_WRENCH,
-			"desc"="External armor is wrenched."),
+			"desc"="Внешняя броня закручена."),
 		//4
 		list(
 			"key"=TOOL_WRENCH,
 			"backkey"=TOOL_CROWBAR,
-			"desc"="External armor is installed."),
+			"desc"="Внешняя броня установлена."),
 		//5
 		list(
 			"key"=/obj/item/mecha_parts/part/executioner_armor,
 			"backkey"=TOOL_WELDER,
-			"desc"="Holy cross is welded."),
+			"desc"="святой крест заварен."),
 		//6
 		list(
 			"key"=TOOL_WELDER,
 			"backkey"=TOOL_WRENCH,
-			"desc"="Holy cross is wrenched."),
+			"desc"="святой крест зкручен."),
 		//7
 		list("key"=TOOL_WRENCH,
 				"backkey"=TOOL_CROWBAR,
-				"desc"="Holy cross is installed."),
+				"desc"="святой крест устоновлен."),
 		//8
 		list(
 			"key"=/obj/item/stack/sheet/mineral/silver,
 			"backkey"=TOOL_SCREWDRIVER,
-			"desc"="Holy helmet is blessed."),
+			"desc"="святой шлем благословлен."),
 		//9
 		list(
 			"key"=/obj/item/storage/bible,
 			"backkey"=TOOL_CROWBAR,
-			"desc"="Holy helmet is installed."),
+			"desc"="святой шлем устоновлен."),
 		//10
 		list(
 			"key"=/obj/item/clothing/head/helmet/riot/knight/templar,
 			"backkey"=TOOL_SCREWDRIVER,
-			"desc"="Holy armour is blessed."),
+			"desc"="святая броня благословлена."),
 		//11
 		list(
 			"key"=/obj/item/storage/bible,
 			"backkey"=TOOL_CROWBAR,
-			"desc"="Holy armour is installed."),
+			"desc"="святая броня устоновлена."),
 		//12
 		list(
 			"key"=/obj/item/clothing/suit/armor/riot/knight/templar,
 			"backkey"=TOOL_SCREWDRIVER,
-			"desc"="Scanning module is blessed."),
+			"desc"="сканирующей модуль благословлен."),
 		 //13
 		list(
 			"key"=/obj/item/storage/bible,
 			"backkey"=TOOL_CROWBAR,
-			"desc"="Scanning module is installed."),
+			"desc"="сканирующей модуль устоновлен."),
 		//14
 		list(
 			"key"=/obj/item/circuitboard/mecha/executioner/targeting,
 			"backkey"=TOOL_SCREWDRIVER,
-			"desc"="Peripherals control module is blessed."),
+			"desc"="периферийный контрольный модуль благословлен."),
 		//15
 		list(
 			"key"=/obj/item/storage/bible,
 			"backkey"=TOOL_CROWBAR,
-			"desc"="Peripherals control module is installed."),
+			"desc"="периферийный контрольный модуль устоновлен."),
 		//16
 		list(
 			"key"=/obj/item/circuitboard/mecha/executioner/peripherals,
 			"backkey"=TOOL_SCREWDRIVER,
-			"desc"="Central control module is blessed."),
+			"desc"="центральный контрольный модуль благословлен."),
 		//17
 		list(
 			"key"=/obj/item/storage/bible,
 			"backkey"=TOOL_CROWBAR,
-			"desc"="Central control module is installed."),
+			"desc"="центральный контрольный модуль устоновлен."),
 		//18
 		list(
 			"key"=/obj/item/circuitboard/mecha/executioner/main,
 			"backkey"=TOOL_SCREWDRIVER,
-			"desc"="The wiring is adjusted."),
+			"desc"="проводка устоновлена."),
 		//19
 		list(
 			"key"=/obj/item/wirecutters,
 			"backkey"=TOOL_SCREWDRIVER,
-			"desc"="The wiring is added."),
+			"desc"="проводка добавлена."),
 		//20
 		list(
 			"key"=/obj/item/stack/cable_coil,
 			"backkey"=TOOL_SCREWDRIVER,
-			"desc"="The hydraulic systems are active."),
+			"desc"="гидравлические системы активны."),
 		//21
 		list(
 			"key"=TOOL_SCREWDRIVER,
 			"backkey"=TOOL_WRENCH,
-			"desc"="The hydraulic systems are connected."),
+			"desc"="гидравлические системы устоновлены."),
 		//22
 		list(
 			"key"=TOOL_WRENCH,
-			"desc"="The hydraulic systems are disconnected.")
+			"desc"="Гидравлические системы отключены.")
 		)
 
 
