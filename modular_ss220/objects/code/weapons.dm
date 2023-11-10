@@ -202,9 +202,9 @@
 /obj/item/melee/baseball_bat/homerun/central_command/pickup(mob/living/user)
 	. = ..()
 	if(!(user.mind.offstation_role))
-		user.Weaken(5)
+		user.Weaken(10 SECONDS)
 		user.unEquip(src, force, silent = FALSE)
-		to_chat(user, "<span class='cultlarge'>\"Это - оружие истинного правосудия. Тебе не дано обуздать его мощь.\"</span>")
+		to_chat(user, span_userdanger("Это - оружие истинного правосудия. Тебе не дано обуздать его мощь."))
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
 			H.apply_damage(rand(force/2, force), BRUTE, pick("l_arm", "r_arm"))
@@ -216,17 +216,17 @@
 	on = !on
 	icon_state = on ? icon_state_on : initial(icon_state)
 	if(on)
-		to_chat(user, "<span class='userdanger'>Вы активировали [src.name] - время для правосудия!</span>")
+		to_chat(user, span_userdanger("Вы активировали [src.name] - время для правосудия!</span>"))
 		item_state = item_state_on
 		w_class = WEIGHT_CLASS_HUGE //doesnt fit in backpack when its on for balance
 		force = force_on
 		attack_verb = attack_verb_on
 		homerun_ready = TRUE
 	else
-		to_chat(user, "<span class='notice'>Вы деактивировали [src.name].</span>")
+		to_chat(user, span_notice("Вы деактивировали [src.name]."))
 		item_state = initial(item_state)
-		slot_flags = SLOT_FLAG_BELT
-		w_class = WEIGHT_CLASS_SMALL
+		slot_flags = initial(slot_flags)
+		w_class = initial(w_class)
 		force = initial(force)
 		attack_verb = initial(attack_verb)
 		homerun_ready = FALSE
