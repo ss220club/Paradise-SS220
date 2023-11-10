@@ -162,7 +162,8 @@
 	icon_state = "shire-broken"
 
 /obj/structure/mecha_wreckage/durand/rover
-	name = "\improper обломки Ровера. И как такой гигант пал?"
+	name = "\improper Обломки Ровера."
+	desc = "И как такой гигант пал?"
 	icon = 'modular_ss220/mecha_skins/code/mecha.dmi'
 	icon_state = "darkdurand-broken"
 
