@@ -19,5 +19,5 @@
 	flash_action.Grant(user, src)
 
 /obj/mecha/combat/executioner/RemoveActions(mob/living/user, human_occupant = 0)
-	..()
+	. = ..()
 	flash_action.Remove(user)
