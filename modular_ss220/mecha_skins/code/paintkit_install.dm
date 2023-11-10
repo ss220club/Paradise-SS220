@@ -135,6 +135,12 @@
 	icon = 'modular_ss220/mecha_skins/code/mecha.dmi'
 	icon_state = "gygax_black-broken"
 
+/obj/structure/mecha_wreckage/gygax/gygax_nt
+	name = "\improper Обломки специального гигакса НТ"
+	desc = "Видимо козырь был плохим..."
+	icon = 'modular_ss220/mecha_skins/code/mecha.dmi'
+	icon_state = "ntgygax-broken"
+
 //DURAND
 
 /obj/structure/mecha_wreckage/durand/dollhouse
