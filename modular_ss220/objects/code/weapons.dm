@@ -157,6 +157,7 @@
 	icon = 'modular_ss220/objects/icons/ammo.dmi'
 	icon_state = "mm127_box"
 
+// Тактическая бита Флота NanoTrasen
 /obj/item/melee/baseball_bat/homerun/central_command
 	name = "тактическая бита Флота NanoTrasen"
 	desc = "Выдвижная тактическая бита Центрального Командования Nanotrasen. \
