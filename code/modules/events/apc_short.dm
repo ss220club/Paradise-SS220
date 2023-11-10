@@ -20,7 +20,7 @@
 		SEND_SOUND(M, S)
 
 /datum/event/apc_short/announce()
-	GLOB.minor_announcement.Announce("Overload detected in [station_name()]'s powernet. Engineering, please repair shorted APCs.", "Systems Power Failure", 'sound/AI/power_overload.ogg')
+	GLOB.minor_announcement.Announce("Зафиксирована перегрузка энергосети станции [station_name()]. Инженерному отделу надлежит проверить все замкнувшие ЛКП.", "СБОЙ СИСТЕМЫ ПИТАНИЯ.", 'sound/AI/power_overload.ogg')
 
 /datum/event/apc_short/end()
 	return TRUE
@@ -30,7 +30,7 @@
 		/area/station/engineering/engine,
 		/area/station/engineering/engine/supermatter,
 		/area/station/turret_protected/ai)
-	GLOB.minor_announcement.Announce("Power failure detected in [station_name()]'s powernet. All APCs have lost power. Gravity systems likely to fail.", "Systems Power Failure", 'sound/AI/attention.ogg')
+	GLOB.minor_announcement.Announce("Обнаружен сбой питания в сети [station_name()]. Все ЛКП были разряжены. Вероятен отказ генератора гравитации.", "ОТКАЗ СИСТЕМЫ ПИТАНИЯ.", 'sound/AI/attention.ogg')
 	for(var/thing in GLOB.apcs)
 		var/obj/machinery/power/apc/A = thing
 		var/area/current_area = get_area(A)
@@ -49,7 +49,7 @@
 		/area/station/engineering/engine/supermatter,
 		/area/station/turret_protected/ai)
 	if(announce)
-		GLOB.minor_announcement.Announce("Overload detected in [station_name()]'s powernet. Engineering, please repair shorted APCs.", "Systems Power Failure", 'sound/AI/power_overload.ogg')
+		GLOB.minor_announcement.Announce("Зафиксирована перегрузка энергосети станции [station_name()]. Инженерному отделу надлежит проверить все замкнувшие ЛКП.", "СБОЙ СИСТЕМЫ ПИТАНИЯ.", 'sound/AI/power_overload.ogg')
 	// break APC_BREAK_PROBABILITY% of all of the APCs on the station
 	var/affected_apc_count = 0
 	for(var/thing in GLOB.apcs)
