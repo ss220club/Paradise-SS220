@@ -156,3 +156,83 @@
 	max_ammo = 100
 	icon = 'modular_ss220/objects/icons/ammo.dmi'
 	icon_state = "mm127_box"
+
+/obj/item/melee/baseball_bat/homerun/central_command
+	name = "тактическая бита Флота NanoTrasen"
+	desc = "Выдвижная тактическая бита Центрального Командования Nanotrasen. \
+	В официальных документах эта бита проходит под элегантным названием \"Высокоскоростная система доставки СРП\". \
+	Выдаваясь только самым верным и эффективным офицерам NanoTrasen, это оружие является одновременно символом статуса \
+	и инструментом высшего правосудия."
+	slot_flags = SLOT_FLAG_BELT
+	w_class = WEIGHT_CLASS_SMALL
+
+	var/on = FALSE
+	/// Force when concealed
+	force = 5
+	/// Force when extended
+	var/force_on = 20
+	/// Item state when concealed
+	lefthand_file = 'modular_ss220/objects/icons/inhands/melee_lefthand.dmi'
+	righthand_file = 'modular_ss220/objects/icons/inhands/melee_righthand.dmi'
+
+	icon = 'modular_ss220/objects/icons/melee.dmi'
+	item_state = "centcom_bat_0"
+	/// Item state when extended
+	var/item_state_on = "centcom_bat_1"
+	/// Icon state when concealed
+	icon_state = "centcom_bat_0"
+	/// Icon state when extended
+	var/icon_state_on = "centcom_bat_1"
+	/// Sound to play when concealing or extending
+	var/extend_sound = 'sound/weapons/batonextend.ogg'
+	/// Attack verbs when concealed (created on Initialize)
+	attack_verb = list("hit", "poked")
+	/// Attack verbs when extended (created on Initialize)
+	var/list/attack_verb_on = list("smacked", "struck", "cracked", "beaten")
+
+/obj/item/melee/baseball_bat/homerun/central_command/Initialize(mapload)
+	. = ..()
+	icon_state = on ? icon_state_on : initial(icon_state)
+	force = on ? force_on : initial(force)
+	attack_verb = on ? attack_verb_on : initial(attack_verb)
+	w_class = on ? WEIGHT_CLASS_HUGE : WEIGHT_CLASS_SMALL
+	homerun_able = on
+
+/obj/item/melee/baseball_bat/homerun/central_command/pickup(mob/living/user)
+	. = ..()
+	if(!(user.mind.offstation_role))
+		user.Weaken(5)
+		user.unEquip(src, force, silent = FALSE)
+		to_chat(user, "<span class='cultlarge'>\"Это - оружие истинного правосудия. Тебе не дано обуздать его мощь.\"</span>")
+		if(ishuman(user))
+			var/mob/living/carbon/human/H = user
+			H.apply_damage(rand(force/2, force), BRUTE, pick("l_arm", "r_arm"))
+		else
+			user.adjustBruteLoss(rand(force/2, force))
+		return
+
+/obj/item/melee/baseball_bat/homerun/central_command/attack_self(mob/user)
+	on = !on
+	icon_state = on ? icon_state_on : initial(icon_state)
+	if(on)
+		to_chat(user, "<span class='userdanger'>Вы активировали [src.name] - время для правосудия!</span>")
+		item_state = item_state_on
+		w_class = WEIGHT_CLASS_HUGE //doesnt fit in backpack when its on for balance
+		force = force_on
+		attack_verb = attack_verb_on
+		homerun_ready = TRUE
+	else
+		to_chat(user, "<span class='notice'>Вы деактивировали [src.name].</span>")
+		item_state = initial(item_state)
+		slot_flags = SLOT_FLAG_BELT
+		w_class = WEIGHT_CLASS_SMALL
+		force = initial(force)
+		attack_verb = initial(attack_verb)
+		homerun_ready = FALSE
+	// Update mob hand visuals
+	if(ishuman(user))
+		var/mob/living/carbon/human/H = user
+		H.update_inv_l_hand()
+		H.update_inv_r_hand()
+	playsound(loc, extend_sound, 50, TRUE)
+	add_fingerprint(user)
