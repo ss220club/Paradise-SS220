@@ -21,14 +21,14 @@
 	..("mk. V \"The Executioner\"")
 	var/obj/item/mecha_parts/chassis/const_holder = holder
 	const_holder.construct = new /datum/construction/reversible/mecha/executioner(const_holder)
-	const_holder.icon = 'icons/mecha/mech_construction.dmi'
+	const_holder.icon = 'modular_ss220/new_mecha_executioner/icons/mech_construction.dmi'
 	const_holder.icon_state = "executioner0"
 	const_holder.density = TRUE
 	qdel(src)
 	return
 
 /datum/construction/reversible/mecha/executioner
-	result = "/obj/mecha/combat/executioner"
+	result = /obj/mecha/combat/executioner
 	steps = list(
 		//1
 		list(
@@ -36,6 +36,7 @@
 			"backkey"=null, //Cannot remove soulstone once it's in
 			"desc"="Soulstone puted in the locket."),
 		//2
+		list(
 		"key" = /obj/item/mecha_parts/core,
 			"backkey" = TOOL_SCREWDRIVER,
 			"desc" = "External armor is welded."),

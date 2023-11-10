@@ -1,6 +1,7 @@
 /obj/mecha/combat/executioner
 	name = "mk. V \"The Executioner\""
 	desc = "Dreadnought of the Executioner Order, heavy fire support configuration, made for purge evil and heretics. Extremely durable in close combat."
+	icon = 'modular_ss220/new_mecha_executioner/icons/mecha.dmi'
 	icon_state = "executioner"
 	initial_icon = "executioner"
 	max_temperature = 65000

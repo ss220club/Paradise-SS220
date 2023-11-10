@@ -5,6 +5,7 @@
 /datum/action/innate/mecha/flash
 	name = "Святой огонь"
 	desc = "Очистите оскверненных тварей с помощью святого света!"
+	icon_icon = 'modular_ss220/new_mecha_executioner/icons/actions_mecha.dmi'
 	button_icon_state = "holyflash"
 
 /datum/action/innate/mecha/flash/proc/flash_carbon(mob/living/carbon/M, mob/user = null, power = 5)
