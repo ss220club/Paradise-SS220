@@ -188,10 +188,10 @@ GLOBAL_LIST_INIT(special_role_times, list( //minimum age (in days) for accounts 
 			dat += "</td><td width='405px' height='25px' valign='left'>"
 			dat += "<center>"
 			dat += "Персонаж <b>[default_slot][active_character.from_db ? "" : " (пусто)"]</b><br>"
-			dat += "<a href=\"byond://?_src_=prefs;preference=open_load_dialog\">Загрузить персонажа</a> - "
-			dat += "<a href=\"byond://?_src_=prefs;preference=save\">Сохранить персонажа</a>"
+			dat += "<a href=\"byond://?_src_=prefs;preference=open_load_dialog\">Загрузить</a> - "
+			dat += "<a href=\"byond://?_src_=prefs;preference=save\">Сохранить</a>"
 			if(active_character.from_db)
-				dat += "- <a href=\"byond://?_src_=prefs;preference=clear\"><span class='bad'>Удалить персонажа</span></a>"
+				dat += "- <a href=\"byond://?_src_=prefs;preference=clear\"><span class='bad'>Удалить</span></a>"
 			dat += "</center>"
 			dat += "</td></tr></table>"
 			dat += "<table width='100%'><tr><td width='405px' height='200px' valign='top'>"
@@ -222,7 +222,7 @@ GLOBAL_LIST_INIT(special_role_times, list( //minimum age (in days) for accounts 
 					dat += "<b>Тип крови:</b> <a href='?_src_=prefs;preference=b_type;task=input'>[active_character.b_type]</a><br>"
 			if(S.bodyflags & (HAS_SKIN_TONE|HAS_ICON_SKIN_TONE))
 				dat += "<b>Цвет кожи:</b> <a href='?_src_=prefs;preference=s_tone;task=input'>[S.bodyflags & HAS_ICON_SKIN_TONE ? "[active_character.s_tone]" : "[-active_character.s_tone + 35]/220"]</a><br>"
-			dat += "<b>Увечья:</b> <a href='?_src_=prefs;preference=disabilities'>\[Set\]</a><br>"
+			dat += "<b>Особенности:</b> <a href='?_src_=prefs;preference=disabilities'>\[Set\]</a><br>"
 			dat += "<b>Отношение к НТ:</b> <a href ='?_src_=prefs;preference=nt_relation;task=input'>[active_character.nanotrasen_relation]</a><br>"
 			dat += "<b>Телосложение:</b> <a href='?_src_=prefs;preference=physique;task=input'>[active_character.physique]</a><br>"
 			dat += "<b>Рост:</b> <a href ='?_src_=prefs;preference=height;task=input'>[active_character.height]</a><br>"
