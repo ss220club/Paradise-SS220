@@ -2,6 +2,7 @@
 
 /obj/mecha/combat/gygax/nt
 	name = "Nanotrasen Special Gygax"
+	desc = "Козырь Nanotrasen при решении проблем, легкий мех окрашенный в победоносные цвета НТ. Если вы видите этот мех, вероятно все проблемы уже решены."
 	icon = 'modular_ss220/mecha_skins/code/mecha.dmi'
 	icon_state = "ntgygax"
 	initial_icon = "ntgygax"
@@ -9,7 +10,6 @@
 	deflect_chance = 20
 	leg_overload_coeff = 100
 	max_temperature = 35000
-	desc = "Козырь Nanotrasen при решении проблем, легкий мех окрашенный в победоносные цвета НТ. Если вы видите этот мех, вероятно все проблемы уже решены."
 	armor = list(melee = 40, bullet = 40, laser = 50, energy = 35, bomb = 20, rad =20, fire = 100, acid = 100)
 	operation_req_access = list(ERT_TYPE_AMBER)
 	max_equip = 5
