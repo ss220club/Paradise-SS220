@@ -237,3 +237,7 @@
 		H.update_inv_r_hand()
 	playsound(loc, extend_sound, 50, TRUE)
 	add_fingerprint(user)
+
+/obj/item/melee/baseball_bat/homerun/central_command/attack(mob/living/target, mob/living/user)
+	. = ..()
+	homerun_ready = 1
