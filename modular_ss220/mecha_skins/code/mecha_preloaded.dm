@@ -56,9 +56,9 @@
 	initial_icon = "darkdurand"
 	armor = list(melee = 30, bullet = 40, laser = 50, energy = 50, bomb = 20, rad = 50, fire = 100, acid = 100)
 	operation_req_access = list(ACCESS_SYNDICATE)
-	wreckage = /obj/structure/mecha_wreckage/durand/rover
 	max_equip = 4
 	internal_damage_threshold = 35
+	wreckage = /obj/structure/mecha_wreckage/durand/rover
 	starting_voice = /obj/item/mecha_modkit/voice/syndicate
 	destruction_sleep_duration = 1
 
