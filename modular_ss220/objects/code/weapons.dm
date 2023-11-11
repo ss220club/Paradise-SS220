@@ -172,11 +172,11 @@
 	force = 5
 	/// Force when extended
 	var/force_on = 20
-	/// Item state when concealed
+
 	lefthand_file = 'modular_ss220/objects/icons/inhands/melee_lefthand.dmi'
 	righthand_file = 'modular_ss220/objects/icons/inhands/melee_righthand.dmi'
-
 	icon = 'modular_ss220/objects/icons/melee.dmi'
+	/// Item state when concealed
 	item_state = "centcom_bat_0"
 	/// Item state when extended
 	var/item_state_on = "centcom_bat_1"
@@ -193,12 +193,8 @@
 
 /obj/item/melee/baseball_bat/homerun/central_command/Initialize(mapload)
 	. = ..()
-	icon_state = on ? icon_state_on : initial(icon_state)
-	force = on ? force_on : initial(force)
-	attack_verb = on ? attack_verb_on : initial(attack_verb)
-	w_class = on ? WEIGHT_CLASS_HUGE : WEIGHT_CLASS_SMALL
+	/// Ability to make homerun
 	homerun_able = on
-
 /obj/item/melee/baseball_bat/homerun/central_command/pickup(mob/living/user)
 	. = ..()
 	if(!(user.mind.offstation_role))
@@ -210,14 +206,14 @@
 			H.apply_damage(rand(force/2, force), BRUTE, pick("l_arm", "r_arm"))
 		else
 			user.adjustBruteLoss(rand(force/2, force))
-		return
 
 /obj/item/melee/baseball_bat/homerun/central_command/attack_self(mob/user)
 	on = !on
-	icon_state = on ? icon_state_on : initial(icon_state)
+
 	if(on)
 		to_chat(user, span_userdanger("Вы активировали [src.name] - время для правосудия!"))
 		item_state = item_state_on
+		icon_state = icon_state_on
 		w_class = WEIGHT_CLASS_HUGE //doesnt fit in backpack when its on for balance
 		force = force_on
 		attack_verb = attack_verb_on
@@ -225,10 +221,13 @@
 	else
 		to_chat(user, span_notice("Вы деактивировали [src.name]."))
 		item_state = initial(item_state)
+		icon_state = initial(icon_state)
 		w_class = initial(w_class)
 		force = initial(force)
 		attack_verb = initial(attack_verb)
 		homerun_ready = FALSE
+
+	homerun_able = on
 	// Update mob hand visuals
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
@@ -239,4 +238,5 @@
 
 /obj/item/melee/baseball_bat/homerun/central_command/attack(mob/living/target, mob/living/user)
 	. = ..()
-	homerun_ready = 1
+	if(on)
+		homerun_ready = 1
