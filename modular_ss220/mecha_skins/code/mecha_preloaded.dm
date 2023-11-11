@@ -10,7 +10,7 @@
 	deflect_chance = 20
 	leg_overload_coeff = 100
 	max_temperature = 35000
-	armor = list(melee = 40, bullet = 40, laser = 50, energy = 35, bomb = 20, rad =20, fire = 100, acid = 100)
+	armor = list(melee = 40, bullet = 40, laser = 50, energy = 35, bomb = 20, rad = 20, fire = 100, acid = 100)
 	operation_req_access = list(ERT_TYPE_AMBER)
 	max_equip = 5
 	wreckage = /obj/structure/mecha_wreckage/gygax/gygax_nt
