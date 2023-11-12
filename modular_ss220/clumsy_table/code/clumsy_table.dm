@@ -9,13 +9,7 @@
 	. = ..()
 
 	if(!isliving(AM))
-		if(istype(AM, /obj/item/holder))
-			var/obj/item/holder/H = AM
-			for(var/mob/M in H.contents)
-				AM = M
-				break
 		return
-
 	var/mob/living/user = AM
 	if(user.mob_size <= MOB_SIZE_SMALL && !user.throwing)
 		return
