@@ -38,7 +38,7 @@
 /obj/random/hampter
 	name = "Random Hampter"
 	desc = "This is a random hampter spawner"
-	icon = 'modular_ss220/hampter/icons/hampter.dmi'
+	icon = 'modular_ss220/objects/icons/hampter.dmi'
 	icon_state = "hampter"
 
 /obj/random/hampter/item_to_spawn()
@@ -48,11 +48,11 @@
 /obj/item/toy/hampter
 	name = "Хамптер"
 	desc = "Просто плюшевый хамптер. Самый обычный."
-	icon = 'modular_ss220/hampter/icons/hampter.dmi'
+	icon = 'modular_ss220/objects/icons/hampter.dmi'
 	icon_state = "hampter"
-	icon_override = 'modular_ss220/hampter/icons/inhead/head.dmi'
-	lefthand_file = 'modular_ss220/hampter/icons/inhands/hampter_lefthand.dmi'
-	righthand_file = 'modular_ss220/hampter/icons/inhands/hampter_righthand.dmi'
+	icon_override = 'modular_ss220/objects/icons/inhead/head.dmi'
+	lefthand_file = 'modular_ss220/objects/icons/inhands/hampter_lefthand.dmi'
+	righthand_file = 'modular_ss220/objects/icons/inhands/hampter_righthand.dmi'
 	slot_flags = SLOT_FLAG_HEAD
 	w_class = WEIGHT_CLASS_TINY
 	blood_color = "#d42929"
