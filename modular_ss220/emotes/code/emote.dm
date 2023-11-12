@@ -14,6 +14,9 @@
 	. = ..()
 	user.spin(dance_time, pick(0.1 SECONDS, 0.2 SECONDS))
 	user.do_jitter_animation(rand(8 SECONDS, 16 SECONDS), dance_time / 4)
+	var/obj/structure/table/T = locate() in user.loc
+	if(T)
+		T.clumsy_stuff(user)
 
 /datum/emote/living/choke/get_sound(mob/living/user)
 	. = ..()
