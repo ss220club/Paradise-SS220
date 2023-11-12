@@ -16,7 +16,8 @@
 	user.do_jitter_animation(rand(8 SECONDS, 16 SECONDS), dance_time / 4)
 	var/obj/structure/table/T = locate() in user.loc
 	if(T)
-		T.clumsy_stuff(user)
+		SEND_SIGNAL(T, COMSIG_CLIMBED_ON, user)
+
 
 /datum/emote/living/choke/get_sound(mob/living/user)
 	. = ..()
