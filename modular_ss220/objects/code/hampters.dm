@@ -46,7 +46,7 @@
 
 // Хамптер
 /obj/item/toy/hampter
-	name = "Хамптер"
+	name = "хамптер"
 	desc = "Просто плюшевый хамптер. Самый обычный."
 	icon = 'modular_ss220/objects/icons/hampter.dmi'
 	icon_state = "hampter"
@@ -94,46 +94,46 @@
 
 // Подвиды
 /obj/item/toy/hampter/assistant
-	name = "Хамптер ассистент"
+	name = "хамптер ассистент"
 	desc = "Плюшевый хамптер ассистент. Зачем ему изольки?"
 	icon_state = "hampter_ass"
 
 /obj/item/toy/hampter/security
-	name = "Хамптер офицер"
+	name = "хамптер офицер"
 	desc = "Плюшевый хамптер офицер службы безопасности. У него станбатон!"
 	icon_state = "hampter_sec"
 
 /obj/item/toy/hampter/medical
-	name = "Хамптер врач"
+	name = "хамптер врач"
 	desc = "Плюшевый хамптер врач. Тащите дефибриллятор!"
 	icon_state = "hampter_med"
 
 /obj/item/toy/hampter/janitor
-	name = "Хамптер уборщик"
+	name = "хамптер уборщик"
 	desc = "Плюшевый хамптер уборщик. Переключись на шаг."
 	icon_state = "hampter_jan"
 
 /obj/item/toy/hampter/old_captain
-	name = "Хамптер старый капитан"
+	name = "хамптер старый капитан"
 	desc = "ПЛюшевый хамптер капитан в старой униформе. Это какой год?"
 	icon_state = "hampter_old-cap"
 
 /obj/item/toy/hampter/captain
-	name = "Хамптер капитан"
+	name = "хамптер капитан"
 	desc = "Плюшевый хамптер капитан. Где его запасная карта?"
 	icon_state = "hampter_cap"
 
 /obj/item/toy/hampter/syndicate
-	name = "Хамптер Синдиката"
+	name = "хамптер Синдиката"
 	desc = "Плюшевый хамптер агент Синдиката. Ваши активы пострадают."
 	icon_state = "hampter_sdy"
 
 /obj/item/toy/hampter/deadsquad
-	name = "Хамптер Дедсквада"
+	name = "хамптер Дедсквада"
 	desc = "Плюшевый хамптер Отряда Смерти. Все контракты расторгнуты."
 	icon_state = "hampter_ded"
 
 /obj/item/toy/hampter/ert
-	name = "Хамптер ОБР"
+	name = "хамптер ОБР"
 	desc = "Плюшевый хамптер ОБР. Доложите о ситуации на станции."
 	icon_state = "hampter_ert"
