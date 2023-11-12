@@ -1,45 +1,42 @@
 /obj/item/attack_hand(mob/user as mob)
 	var/in_someth = src.in_inventory || src.in_storage
 	var/atom/itm_loc = src.loc
-	.=..()
+	. = ..()
 	if(.&&!in_someth)
 		do_item_animation(user, src, itm_loc, 1)
 
-
 /obj/machinery/disposal/attackby(obj/item/I, mob/user)
-	.=..()
+	. = ..()
 	if(!I.in_inventory) do_item_animation(user, I, src, 2, TRUE)
 
 /obj/machinery/kitchen_machine/add_item(obj/item/I, mob/user)
-	.=..()
+	. = ..()
 	if(!I.in_inventory) do_item_animation(user, I, src, 2, TRUE)
 
 /obj/machinery/chem_master/attackby(obj/item/I, mob/user)
-	.=..()
+	. = ..()
 	if(!I.in_inventory) do_item_animation(user, I, src, 2, TRUE)
 
 /obj/machinery/chem_dispenser/attackby(obj/item/I, mob/user)
-	.=..()
+	. = ..()
 	if(!I.in_inventory) do_item_animation(user, I, src, 2, TRUE)
 
 /obj/machinery/chem_heater/attackby(obj/item/I, mob/user)
-	.=..()
+	. = ..()
 	if(!I.in_inventory) do_item_animation(user, I, src, 2, TRUE)
 
 /obj/machinery/photocopier/attackby(obj/item/O, mob/user)
-	.=..()
+	. = ..()
 	if(!O.in_inventory) do_item_animation(user, O, src, 2, TRUE)
 
 /obj/machinery/mineral/ore_redemption/attackby(obj/item/I, mob/user)
-	.=..()
+	. = ..()
 	if(!I.in_inventory) do_item_animation(user, I, src, 2, TRUE)
 
-
-/proc/do_item_animation(mob/user, obj/item/itm, atom/A, anim_type=1, reverse=FALSE)
+/proc/do_item_animation(mob/user, obj/item/itm, atom/A, anim_type = 1, reverse = FALSE)
 	var/image/I = image(icon = itm, loc = user, layer = user.layer + 0.1)
 	I.plane = GAME_PLANE
 	I.appearance_flags = APPEARANCE_UI_IGNORE_ALPHA
-
 	I.pixel_x = A.pixel_x - user.pixel_x
 	I.pixel_y = A.pixel_y - user.pixel_y
 
@@ -70,7 +67,6 @@
 
 			animate(I, pixel_x = 0, pixel_y = 0, transform = new_transform, time = 2)
 			animate(alpha = 0, time = 2, easing = CUBIC_EASING | EASE_IN, flags = ANIMATION_PARALLEL)
-
 		if(2)
 			I.transform *= 0.75
 			var/target_y = 0
@@ -78,15 +74,13 @@
 			if(istype(A, /obj/machinery/disposal))
 				new_transform.Turn(I.pixel_x<0?120:-120)
 				if(A.parent_type != /obj/machinery/disposal)
-					/*if(reverse)*/target_y = 7;
+					target_y = 7;
 				animate(I,  transform = new_transform, time = 2)
 			animate(I, pixel_x = 0, pixel_y = target_y, time = 2, flags = ANIMATION_PARALLEL)
 			animate(I, alpha = 0, time = 2, easing = CIRCULAR_EASING | EASE_IN, flags = ANIMATION_PARALLEL)
-		// ...
-
 
 /obj/structure/table/attackby(obj/item/I, mob/user)
-	.=..()
+	. = ..()
 	if(!I.in_inventory)
 		var/transform_old = I.transform
 		var/alpha_old = I.alpha
