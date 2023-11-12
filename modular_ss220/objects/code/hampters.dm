@@ -10,7 +10,7 @@
 
 // Пищание
 /datum/component/plushtoy/proc/play_squeak()
-	playsound(parent, 'modular_ss220/hampter/sound/squeaktoy.ogg', 50, TRUE, -10)
+	playsound(parent, 'sound/items/squeaktoy.ogg', 50, TRUE, -10)
 
 // Стащенный кусок кода для фикса большого числа писков в зависимости от числа хамптеров в инвентаре
 /datum/component/plushtoy/proc/play_squeak_crossed(atom/movable/AM)
@@ -56,8 +56,7 @@
 	slot_flags = SLOT_FLAG_HEAD
 	w_class = WEIGHT_CLASS_TINY
 	blood_color = "#d42929"
-	var/squeak = 'modular_ss220/hampter/sound/squeaktoy.ogg'
-	var/crush = 'modular_ss220/hampter/sound/bone_break_3.ogg'
+	var/squeak = 'sound/items/squeaktoy.ogg'
 	var/cooldown = 0
 
 // Добавляем наш "микро-компонент" хамптеру
@@ -81,7 +80,7 @@
 				blood_DNA = "Plush hampter's paint"
 
 				user.visible_message("<span class='warning'>[user] раздавил хамптера в своей руке!</span>", "<span class='warning'>Вы раздавили хамптера в своей руке!</span>")
-				playsound(get_turf(src), crush, 50, TRUE, -10)
+				playsound(get_turf(src), "bonebreak", 50, TRUE, -10)
 
 				user.hand_blood_color = blood_color
 				user.transfer_blood_dna(blood_DNA)
