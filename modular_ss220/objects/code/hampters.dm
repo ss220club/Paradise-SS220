@@ -34,7 +34,6 @@
 	if(isturf(current_parent.loc))
 		play_squeak()
 
-
 // Спавнер рандомного хамптера для карты
 /obj/random/hampter
 	name = "Random Hampter"
@@ -45,10 +44,9 @@
 /obj/random/hampter/item_to_spawn()
 	return pick(typesof(/obj/item/toy/hampter))
 
-
 // Хамптер
 /obj/item/toy/hampter
-	name = "Hampter"
+	name = "Хамптер"
 	desc = "Просто плюшевый хамптер. Самый обычный."
 	icon = 'modular_ss220/hampter/icons/hampter.dmi'
 	icon_state = "hampter"
@@ -74,11 +72,11 @@
 	if(cooldown < world.time - 10)
 		switch(user.a_intent)
 			// Если выбрано что угодно кроме харма - жмякаем с писком хамптера
-			if (INTENT_HELP, INTENT_DISARM, INTENT_GRAB)
+			if(INTENT_HELP, INTENT_DISARM, INTENT_GRAB)
 				playsound(get_turf(src), squeak, 50, 1, -10)
 
 			// Если выбран харм, сжимаем хамптера до "краски" (?) в его туловище
-			if (INTENT_HARM)
+			if(INTENT_HARM)
 				// Прописываю это здесь ибо иначе хомяки будут отмечаться кровавыми в игре
 				blood_DNA = "Plush hampter's paint"
 
@@ -95,49 +93,48 @@
 
 		cooldown = world.time
 
-
 // Подвиды
 /obj/item/toy/hampter/assistant
-	name = "Assistant Hampter"
+	name = "Хамптер ассистент"
 	desc = "Плюшевый хамптер ассистент. Зачем ему изольки?"
 	icon_state = "hampter_ass"
 
 /obj/item/toy/hampter/security
-	name = "Security Hampter"
-	desc = "Плюшевый хамптер офицер СБ. У него станбатон!"
+	name = "Хамптер офицер"
+	desc = "Плюшевый хамптер офицер службы безопасности. У него станбатон!"
 	icon_state = "hampter_sec"
 
 /obj/item/toy/hampter/medical
-	name = "Medical Hampter"
+	name = "Хамптер врач"
 	desc = "Плюшевый хамптер врач. Тащите дефибриллятор!"
 	icon_state = "hampter_med"
 
 /obj/item/toy/hampter/janitor
-	name = "Janitor Hampter"
+	name = "Хамптер уборщик"
 	desc = "Плюшевый хамптер уборщик. Переключись на шаг."
 	icon_state = "hampter_jan"
 
 /obj/item/toy/hampter/old_captain
-	name = "Old Captain Hampter"
+	name = "Хамптер старый капитан"
 	desc = "ПЛюшевый хамптер капитан в старой униформе. Это какой год?"
 	icon_state = "hampter_old-cap"
 
 /obj/item/toy/hampter/captain
-	name = "Captain Hampter"
+	name = "Хамптер капитан"
 	desc = "Плюшевый хамптер капитан. Где его запасная карта?"
 	icon_state = "hampter_cap"
 
 /obj/item/toy/hampter/syndicate
-	name = "Syndicate Hampter"
+	name = "Хамптер Синдиката"
 	desc = "Плюшевый хамптер агент Синдиката. Ваши активы пострадают."
 	icon_state = "hampter_sdy"
 
 /obj/item/toy/hampter/deadsquad
-	name = "Dead Squad Hampter"
+	name = "Хамптер Дедсквада"
 	desc = "Плюшевый хамптер Отряда Смерти. Все контракты расторгнуты."
 	icon_state = "hampter_ded"
 
 /obj/item/toy/hampter/ert
-	name = "ERT Hampter"
+	name = "Хамптер ОБР"
 	desc = "Плюшевый хамптер ОБР. Доложите о ситуации на станции."
 	icon_state = "hampter_ert"
