@@ -234,8 +234,10 @@
 		SStgui.update_uis(src)
 		return
 
-	if(isrobot(user))
-		return
+	// SS220 EDIT START
+	//if(isrobot(user))
+	// 	return
+	// SS220 EDIT END
 
 	if((istype(I, /obj/item/reagent_containers/glass) || istype(I, /obj/item/reagent_containers/food/drinks)) && user.a_intent != INTENT_HARM)
 		if(panel_open)

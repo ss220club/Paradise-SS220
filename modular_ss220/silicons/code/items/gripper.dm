@@ -270,47 +270,6 @@
 	// All robot inventory items have NODROP, so they should return FALSE.
 	return module_gripper_drop()
 
-
-// Переинициализация из-за того что ОФФы впихнули проверку на борга там, где борг и так не мог пользоваться этим,
-// т.к. хваталки у него не работала.
-/obj/machinery/chem_heater/attackby(obj/item/I, mob/user)
-	if(isrobot(user) && istype(I, /obj/item/reagent_containers/glass))
-		if(beaker)
-			to_chat(user, "<span class='notice'>A beaker is already loaded into the machine.</span>")
-			return
-
-		if(user.drop_item())
-			beaker = I
-			I.forceMove(src)
-			to_chat(user, "<span class='notice'>You add the beaker to the machine!</span>")
-			icon_state = "mixer1b"
-			SStgui.update_uis(src)
-			return
-
-	return ..()
-
-/obj/machinery/chem_dispenser/attackby(obj/item/I, mob/user, params)
-	if(isrobot(user) && (istype(I, /obj/item/reagent_containers/glass) || istype(I, /obj/item/reagent_containers/food/drinks)))
-		if(panel_open)
-			to_chat(user, "<span class='notice'>Close the maintenance panel first.</span>")
-			return
-		if(!user.drop_item())
-			to_chat(user, "<span class='warning'>[I] is stuck to you!</span>")
-			return
-		I.forceMove(src)
-		if(beaker)
-			user.put_in_hands(beaker)
-			to_chat(user, "<span class='notice'>You swap [I] with [beaker].</span>")
-		else
-			to_chat(user, "<span class='notice'>You set [I] on the machine.</span>")
-		beaker = I
-
-		SStgui.update_uis(src) // update all UIs attached to src
-		update_icon(UPDATE_ICON_STATE)
-		return
-
-	return ..()
-
 /obj/machinery/reagentgrinder/attack_ai(mob/user)
 	add_hiddenprint(user)
 	return attack_hand(user)

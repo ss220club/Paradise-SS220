@@ -62,8 +62,10 @@
 		stat |= NOPOWER
 
 /obj/machinery/chem_heater/attackby(obj/item/I, mob/user)
-	if(isrobot(user))
-		return
+	// SS220 EDIT START
+	//if(isrobot(user))
+	//	return
+	// SS220 EDIT END
 
 	if(istype(I, /obj/item/reagent_containers/glass) && user.a_intent != INTENT_HARM)
 		if(beaker)
