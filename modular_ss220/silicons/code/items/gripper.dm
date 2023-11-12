@@ -69,7 +69,11 @@
 					/obj/item/camera_film,
 					/obj/item/paper,
 					/obj/item/photo,
-					/obj/item/toy/plushie)
+					/obj/item/toy/plushie,
+					/obj/item/disk/data,
+					/obj/item/disk/design_disk,
+					/obj/item/disk/plantgene,
+					)
 
 /obj/item/gripper/nuclear
 	name = "Nuclear gripper"
