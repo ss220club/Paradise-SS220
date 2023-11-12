@@ -37,7 +37,7 @@
 // Спавнер рандомного хамптера для карты
 /obj/random/hampter
 	name = "Random Hampter"
-	desc = "This is a random hampter spawner"
+	desc = "This is a random hampter spawner."
 	icon = 'modular_ss220/objects/icons/hampter.dmi'
 	icon_state = "hampter"
 
