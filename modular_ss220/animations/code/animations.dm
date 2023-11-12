@@ -35,8 +35,7 @@
 	if(!I.in_inventory) do_item_animation(user, I, src, 2, TRUE)
 
 
-
-/proc/do_item_animation(mob/user, obj/item/itm, atom/A, var/anim_type=1, var/reverse=FALSE)
+/proc/do_item_animation(mob/user, obj/item/itm, atom/A, anim_type=1, reverse=FALSE)
 	var/image/I = image(icon = itm, loc = user, layer = user.layer + 0.1)
 	I.plane = GAME_PLANE
 	I.appearance_flags = APPEARANCE_UI_IGNORE_ALPHA
