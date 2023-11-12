@@ -1,18 +1,18 @@
 //Station goal stuff goes here
 /datum/station_goal/bluespace_tap
-	name = "Bluespace Harvester"
+	name = "Блюспейс-Сборщик"
 	var/goal = 45000
 
 /datum/station_goal/bluespace_tap/get_report()
-	return {"<b>Bluespace Harvester Experiment</b><br>
-	Another research station has developed a device called a Bluespace Harvester.
-	It reaches through bluespace into other dimensions to shift through them for interesting objects.<br>
-	Due to unforseen circumstances the large-scale test of the prototype could not be completed on the original research station. It will instead be carried out on your station.
-	Acquire the circuit board, construct the device over a wire knot and feed it enough power to generate [goal] mining points by shift end.
+	return {"<b>Эксперимент с Блюспейс-Сборщиком</b><br><br>
+	Одна из наших исследовательских станций разработала устройство, именуемое Блюспейс-Сборщиком.
+	Это устройство проникает сквозь блюспейс в другие измерения в поисках объектов интереса.<br>
+	Вследствие непредвиденных обстоятельств, изначальная исследовательская станция не смогла завершить полномасштабные испытания прототипа. Поэтому они будут проведены на вашей станции.
+	Заполучите плату БСС, установите прототип над кабельным узлом и запитайте его должным количеством энергии для генерации [goal] [declension_ru(goal,"очка","очков","очков")] добычи до конца смены.
 	<br><br>
-	Be advised that the device is experimental and might act in slightly unforseen ways if sufficiently powered.
-	<br>
-	Nanotrasen Science Directorate"}
+	Имейте в виду, что устройство является экспериментальным и при достаточном питании может работать непредвиденным образом.
+	<br><br>
+	-Исследовательский Директорат Nanotrasen"}
 
 /datum/station_goal/bluespace_tap/on_report()
 	var/datum/supply_packs/misc/station_goal/bluespace_tap/P = SSeconomy.supply_packs["[/datum/supply_packs/misc/station_goal/bluespace_tap]"]
@@ -24,7 +24,7 @@
 	var/highscore = 0
 	for(var/obj/machinery/power/bluespace_tap/T in GLOB.machines)
 		highscore = max(highscore, T.total_points)
-	to_chat(world, "<b>Bluespace Harvester Highscore</b>: [highscore >= goal ? "<span class='greenannounce'>": "<span class='boldannounce'>"][highscore]</span>")
+	to_chat(world, "<b>Рекорд Блюспейс-Сборщика</b>: [highscore >= goal ? "<span class='greenannounce'>": "<span class='boldannounce'>"][highscore]</span>")
 	if(highscore >= goal)
 		return TRUE
 	return FALSE
@@ -399,7 +399,7 @@
 		input_level--
 		update_icon()
 	if(prob(input_level - safe_levels + (emagged * 5)))	//at dangerous levels, start doing freaky shit. prob with values less than 0 treat it as 0
-		GLOB.major_announcement.Announce("Unexpected power spike during Bluespace Harvester Operation. Extra-dimensional intruder alert. Expected location: [get_area(src).name]. [emagged ? "DANGER: Emergency shutdown failed! Please proceed with manual shutdown." : "Emergency shutdown initiated."]", "Bluespace Harvester Malfunction", 'sound/AI/harvester.ogg')
+		GLOB.major_announcement.Announce("Зафиксирован скачок мощности во время работы Блюспейс-Сборщика. ТРЕВОГА: межпространственное вторжение. Ожидаемое местоположение: [get_area(src).name]. [emagged ? "ОПАСНОСТЬ: Сбой процедуры аварийного отключения! Требуется ручное вмешательство." : "Запущена процедура аварийного отключения."]", "НЕИСПРАВНОСТЬ БЛЮСПЕЙС-СБОРЩИКА", 'sound/AI/harvester.ogg')
 		if(!emagged)
 			input_level = 0	//emergency shutdown unless we're sabotaged
 			desired_level = 0
@@ -444,7 +444,7 @@
 /obj/machinery/power/bluespace_tap/attack_hand(mob/user)
 	add_fingerprint(user)
 	if(length(active_nether_portals))		//this would be cool if we made unique TGUI for this
-		to_chat(user, "<span class='warning'>UNKNOWN INTERFERENCE ... UNRESPONSIVE</span>")
+		to_chat(user, "<span class='warning'>НЕИЗВЕСТНЫЕ ПОМЕХИ ... НЕТ ОТВЕТА</span>")
 		return
 	ui_interact(user)
 
@@ -453,7 +453,7 @@
 
 /obj/machinery/power/bluespace_tap/attack_ai(mob/user)
 	if(length(active_nether_portals))		//this would be cool if we made unique TGUI for this
-		to_chat(user, "<span class='warning'>UNKNOWN INTERFERENCE ... UNRESPONSIVE</span>")
+		to_chat(user, "<span class='warning'>НЕИЗВЕСТНЫЕ ПОМЕХИ ... НЕТ ОТВЕТА</span>")
 		return
 	ui_interact(user)
 
@@ -505,7 +505,7 @@
 	emagged = TRUE
 	do_sparks(5, FALSE, src)
 	if(user)
-		user.visible_message("<span class='warning'>[user] overrides the safety protocols of [src].</span>", "<span class='warning'>You override the safety protocols.</span>")
+		user.visible_message("<span class='warning'>[user] перезаписывает протоколы безопасности у [src].</span>", "<span class='warning'>Вы перезаписали протоколы безопасности.</span>")
 
 /obj/structure/spawner/nether/bluespace_tap
 	spawn_time = 30 SECONDS
@@ -525,22 +525,22 @@
 		linked_source_object.update_icon()
 
 /obj/item/paper/bluespace_tap
-	name = "paper- 'The Experimental NT Bluespace Harvester - Mining other universes for science and profit!'"
-	info = "<h1>Important Instructions!</h1>Please follow all setup instructions to ensure proper operation. <br>\
-	1. Create a wire node with ample access to spare power. The device operates independently of APCs. <br>\
-	2. Create a machine frame as normal on the wire node, taking into account the device's dimensions (3 by 3 meters). <br>\
-	3. Insert wiring, circuit board and required components and finish construction according to NT engineering standards. <br>\
-	4. Ensure the device is connected to the proper power network and the network contains sufficient power. <br>\
-	5. Set machine to desired level. Check periodically on machine progress. <br>\
-	6. Optionally, spend earned points on fun and exciting rewards. <br><hr>\
-	<h2>Operational Principles</h2> \
-	<p>The Bluespace Harvester is capable of accepting a nearly limitless amount of power to search other universes for valuables to recover. The speed of this search is controlled via the 'level' control of the device. \
-	While it can be run on a low level by almost any power generation system, higher levels require work by a dedicated engineering team to power. \
-	As we are interested in testing how the device performs under stress, we wish to encourage you to stress-test it and see how much power you can provide it. \
-	For this reason, total shift point production will be calculated and announced at shift end. High totals may result in bonus payments to members of the Engineering department. <p>\
-	<p>NT Science Directorate, Extradimensional Exploitation Research Group</p> \
-	<p><small>Device highly experimental. Not for sale. Do not operate near small children or vital NT assets. Do not tamper with machine. In case of existential dread, stop machine immediately. \
-	Please document any and all extradimensional incursions. In case of imminent death, please leave said documentation in plain sight for clean-up teams to recover.</small></p>"
+	name = "бумага- 'Экспериментальный Блюспейс-Сборщик NT - Добыча других вселенных ради науки и прибыли!'"
+	info = "<h1>Важные инструкции!</h1>Пожалуйста, следуйте всем инструкциям по настройке для обеспечения правильной работы. <br>\
+	1. Создайте кабельный узел с доступом к источнику обильного питания. Устройство работает независимо от ЛКП. <br>\
+	2. Создайте и разместите корпус прибора на кабельном узле, принимая в расчёт размеры устройства(3 на 3 метра). <br>\
+	3. Вставьте проводку, плату и необходимые компоненты, завершите постройку согласно инженерным стандартам NT. <br>\
+	4. Убедитесь, что устройство подключено к рабочей сети питания, и что сеть может предоставить достаточное количество энергии. <br>\
+	5. Выставите желаемый уровень добычи. Периодически проверяйте прогресс добычи. <br>\
+	6. Опционально, потратьте заработанные очки на весёлые и интересные награды. <br><hr>\
+	<h2>Принципы работы</h2> \
+	<p>Блюспейс-Сборщик способен принимать почти безграничное количество энергии для поиска ценностей в других вселенных. Скорость поиска контролируется переключателем «Уровень». \
+	Хотя устройство, будучи переключённым на минимальный уровень, может быть запитанно почти любым источником энергии, более высокие уровни потребуют выделения отдельной инженерной команды для обеспечения питания. \
+	Так как мы заинтересованы в тестировании работы устройства в экстремальных условиях, мы призываем вас повышать нагрузку и фиксировать максимальное возможное количество потребляемой энергии. \
+	По вышесказанной причине, общее количество добытых за смену очков будет подсчитано и объявлено в конце смены. Высокие показатели могут привести к выплате премий сотрудникам инженерного отдела. <p>\
+	<p>Исследовательский Директорат NT, Исследовательская Группа Межпространственной Эксплуатации</p> \
+	<p><small>Экспериментальный прототип. Не для продажи. Не оперировать устройством в присутствии детей или жизненно важных активов NT. Не вносить изменения в устройство. В случае возникновения опасности для жизни, немедленно остановить работу устройства. \
+	Просьба документировать любые случаи межпространственных вторжений. В случае неминуемой смерти, просьба оставлять раннее упомянутую документацию на виду, чтобы отряды зачистки могли беспрепятственно вернуть её.</small></p>"
 
 #undef kW
 #undef MW

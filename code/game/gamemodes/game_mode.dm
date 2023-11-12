@@ -481,15 +481,15 @@
 
 /datum/game_mode/proc/send_station_goals_message()
 	var/message_text = "<div style='text-align:center;'><img src='ntlogo.png'>"
-	message_text += "<h3>NAS Trurl Orders</h3></div><hr>"
-	message_text += "<b>Special Orders for [station_name()]:</b><br><br>"
+	message_text += "<h3>Приказы АКН «Трурль»</h3></div><hr>"
+	message_text += "<b>Специальное распоряжение для [station_name()]:</b><br><br>"
 
 	for(var/datum/station_goal/G in station_goals)
 		G.on_report()
 		message_text += G.get_report()
 		message_text += "<hr>"
 
-	print_command_report(message_text, "NAS Trurl Orders", FALSE)
+	print_command_report(message_text, "Приказы АКН «Трурль»", FALSE)
 
 /datum/game_mode/proc/declare_station_goal_completion()
 	for(var/V in station_goals)

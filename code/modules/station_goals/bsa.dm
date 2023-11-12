@@ -4,15 +4,15 @@
 // Requires high level stock parts
 
 /datum/station_goal/bluespace_cannon
-	name = "Bluespace Artillery"
+	name = "Блюспейс-Артиллерия"
 
 /datum/station_goal/bluespace_cannon/get_report()
-	return {"<b>Bluespace Artillery position construction</b><br>
-	Our military presence is inadequate in your sector. We need you to construct a BSA-[rand(1,99)] Artillery position aboard your station.
+	return {"<b>Строительство Блюспейс-Артиллерийского орудия</b><br><br>
+	Военное присутствие Nanotrasen в вашем секторе оставляет желать лучшего. Необходимо построить артиллерийское орудие БСА-[rand(1,99)] на борту вашей станции.
 	<br><br>
-	Its base parts should be available for shipping by your cargo shuttle.
-	<br>
-	-Nanotrasen Naval Command"}
+	Требуемые для строительства части установки доступны для заказа в отделе снабжения.
+	<br><br>
+	-Командование ВКФ Nanotrasen"}
 
 /datum/station_goal/bluespace_cannon/on_report()
 	//Unlock BSA parts
@@ -34,14 +34,14 @@
 
 /obj/machinery/bsa/back
 	name = "Bluespace Artillery Generator"
-	desc = "Generates cannon pulse. Needs to be linked with a fusor. "
+	desc = "Генерирует пушечный импульс. Необходимо подключить к фузору."
 	icon_state = "power_box"
 
 /obj/machinery/bsa/back/attackby(obj/item/W, mob/user, params)
 	if(istype(W, /obj/item/multitool))
 		var/obj/item/multitool/M = W
 		M.buffer = src
-		to_chat(user, "<span class='notice'>You store linkage information in [W]'s buffer.</span>")
+		to_chat(user, "<span class='notice'>Вы сохранили информацию о связи в буфере [W].</span>")
 	else if(istype(W, /obj/item/wrench))
 		default_unfasten_wrench(user, W, 10)
 		return TRUE
@@ -50,14 +50,14 @@
 
 /obj/machinery/bsa/front
 	name = "Bluespace Artillery Bore"
-	desc = "Do not stand in front of cannon during operation. Needs to be linked with a fusor."
+	desc = "Не стойте перед пушкой при работе с ней. Необходимо подключить к фузору."
 	icon_state = "emitter_center"
 
 /obj/machinery/bsa/front/attackby(obj/item/W, mob/user, params)
 	if(istype(W, /obj/item/multitool))
 		var/obj/item/multitool/M = W
 		M.buffer = src
-		to_chat(user, "<span class='notice'>You store linkage information in [W]'s buffer.</span>")
+		to_chat(user, "<span class='notice'>Вы сохранили информацию о связи в буфере [W].</span>")
 	else if(istype(W, /obj/item/wrench))
 		default_unfasten_wrench(user, W, 10)
 		return TRUE
@@ -66,7 +66,7 @@
 
 /obj/machinery/bsa/middle
 	name = "Bluespace Artillery Fusor"
-	desc = "Contents classifed by Nanotrasen Naval Command. Needs to be linked with the other BSA parts using multitool."
+	desc = "Внутреннее устройство фузора засекречено ВКФ Nanotrasen. Необходимо соединить с другими частями БСА с помощью мультитула."
 	icon_state = "fuel_chamber"
 	var/obj/machinery/bsa/back/back
 	var/obj/machinery/bsa/front/front
@@ -78,11 +78,11 @@
 			if(istype(M.buffer,/obj/machinery/bsa/back))
 				back = M.buffer
 				M.buffer = null
-				to_chat(user, "<span class='notice'>You link [src] with [back].</span>")
+				to_chat(user, "<span class='notice'>Вы подключили [back] к [src].</span>")
 			else if(istype(M.buffer,/obj/machinery/bsa/front))
 				front = M.buffer
 				M.buffer = null
-				to_chat(user, "<span class='notice'>You link [src] with [front].</span>")
+				to_chat(user, "<span class='notice'>Вы подключили [front] к [src].</span>")
 	else if(istype(W, /obj/item/wrench))
 		default_unfasten_wrench(user, W, 10)
 		return TRUE
@@ -91,13 +91,13 @@
 
 /obj/machinery/bsa/middle/proc/check_completion()
 	if(!front || !back)
-		return "No multitool-linked parts detected!"
+		return "Детали, подключаемые с помощью мультитула, не обнаружены!"
 	if(!front.anchored || !back.anchored || !anchored)
-		return "Linked parts unwrenched!"
+		return "Подключаемые детали не закреплены!"
 	if(front.y != y || back.y != y || !(front.x > x && back.x < x || front.x < x && back.x > x) || front.z != z || back.z != z)
-		return "Parts misaligned!"
+		return "Детали смещены!"
 	if(!has_space())
-		return "Not enough free space!"
+		return "Недостаточно свободного места!"
 
 /obj/machinery/bsa/middle/proc/has_space()
 	var/cannon_dir = get_cannon_direction()
@@ -124,7 +124,7 @@
 
 /obj/machinery/bsa/full
 	name = "Bluespace Artillery"
-	desc = "Long range bluespace artillery."
+	desc = "Дальнобойное блюспейс-артиллерийское орудие."
 	icon = 'icons/obj/lavaland/cannon.dmi'
 	icon_state = "cannon_west"
 
@@ -373,7 +373,7 @@
 	var/list/options = gps_locators
 	if(area_aim)
 		options += target_all_areas ? SSmapping.ghostteleportlocs : SSmapping.teleportlocs
-	var/V = input(user,"Select target", "Select target",null) in options|null
+	var/V = input(user,"Выберите цель", "Выберите цель",null) in options|null
 	target = options[V]
 
 /obj/machinery/computer/bsa_control/proc/get_target_name()
@@ -394,7 +394,7 @@
 	if(!cannon || !target)
 		return
 	if(cannon.stat)
-		notice = "Cannon unpowered!"
+		notice = "Отсутствует питание орудия!"
 		return
 	notice = null
 	cannon.fire(user, get_impact_turf(), target)
@@ -407,7 +407,7 @@
 
 	var/obj/machinery/bsa/middle/centerpiece = locate() in range(7, src)
 	if(!centerpiece)
-		notice = "No BSA parts detected nearby."
+		notice = "Поблизости не обнаружено деталей БСА."
 		return null
 	notice = centerpiece.check_completion()
 	if(notice)
