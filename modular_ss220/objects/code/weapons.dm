@@ -195,6 +195,7 @@
 	. = ..()
 	/// Ability to make homerun
 	homerun_able = on
+
 /obj/item/melee/baseball_bat/homerun/central_command/pickup(mob/living/user)
 	. = ..()
 	if(!(user.mind.offstation_role))
