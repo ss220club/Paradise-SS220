@@ -16,7 +16,7 @@ export const SatelliteControl = (props, context) => {
     <Window resizable>
       <Window.Content scrollable>
         {meteor_shield && (
-          <Section title="Station Shield Coverage">
+          <Section title="Покрытие станции спутниками">
             <ProgressBar
               color={
                 meteor_shield_coverage_percentage >= 100 ? 'good' : 'average'
@@ -28,10 +28,10 @@ export const SatelliteControl = (props, context) => {
             </ProgressBar>
           </Section>
         )}
-        <Section title="Satellite Network Control">
+        <Section title="Управление сетью спутников">
           <LabeledList>
             {notice && (
-              <LabeledList.Item label="Alert" color="red">
+              <LabeledList.Item label="Внимание" color="red">
                 {data.notice}
               </LabeledList.Item>
             )}
@@ -39,7 +39,7 @@ export const SatelliteControl = (props, context) => {
               <LabeledList.Item key={sat.id} label={'#' + sat.id}>
                 {sat.mode}{' '}
                 <Button
-                  content={sat.active ? 'Deactivate' : 'Activate'}
+                  content={sat.active ? 'Деактивировать' : 'Активировать'}
                   icon={'arrow-circle-right'}
                   onClick={() => act('toggle', { id: sat.id })}
                 />

@@ -32,36 +32,36 @@ export const BluespaceTap = (props, context) => {
     <Window resizable>
       <Window.Content scrollable>
         {!!emagged && (
-          <NoticeBox danger={1}>Safety Protocols disabled</NoticeBox>
+          <NoticeBox danger={1}>Протоколы безопасности отключены</NoticeBox>
         )}
         {!!(inputLevel > safeLevels) && (
-          <NoticeBox danger={1}>High Power, Instability likely</NoticeBox>
+          <NoticeBox danger={1}>Высокая мощность, возможна нестабильность</NoticeBox>
         )}
-        <Collapsible title="Input Management">
-          <Section title="Input">
+        <Collapsible title="Управление вводом">
+          <Section title="Ввод">
             <LabeledList>
-              <LabeledList.Item label="Input Level">
+              <LabeledList.Item label="Текущий уровень">
                 {inputLevel}
               </LabeledList.Item>
-              <LabeledList.Item label="Desired Level">
+              <LabeledList.Item label="Целевой уровень">
                 <Flex inline width="100%">
                   <Flex.Item>
                     <Button
                       icon="fast-backward"
                       disabled={desiredLevel === 0}
-                      tooltip="Set to 0"
+                      tooltip="Установить на 0"
                       onClick={() => act('set', { set_level: 0 })}
                     />
                     <Button
                       icon="step-backward"
-                      tooltip="Decrease to actual input level"
+                      tooltip="Понизить до текущего уровня"
                       disabled={desiredLevel === 0}
                       onClick={() => act('set', { set_level: inputLevel })}
                     />
                     <Button
                       icon="backward"
                       disabled={desiredLevel === 0}
-                      tooltip="Decrease one step"
+                      tooltip="Понизить на шаг"
                       onClick={() => act('decrease')}
                     />
                   </Flex.Item>
@@ -85,41 +85,41 @@ export const BluespaceTap = (props, context) => {
                     <Button
                       icon="forward"
                       disabled={desiredLevel === maxLevel}
-                      tooltip="Increase one step"
+                      tooltip="Повысить на шаг"
                       tooltipPosition="left"
                       onClick={() => act('increase')}
                     />
                     <Button
                       icon="fast-forward"
                       disabled={desiredLevel === maxLevel}
-                      tooltip="Set to max"
+                      tooltip="Установить на максимум"
                       tooltipPosition="left"
                       onClick={() => act('set', { set_level: maxLevel })}
                     />
                   </Flex.Item>
                 </Flex>
               </LabeledList.Item>
-              <LabeledList.Item label="Current Power Use">
+              <LabeledList.Item label="Текущее потребление энергии">
                 {formatPower(powerUse)}
               </LabeledList.Item>
-              <LabeledList.Item label="Power for next level">
+              <LabeledList.Item label="Энергии для следующего уровня">
                 {formatPower(nextLevelPower)}
               </LabeledList.Item>
-              <LabeledList.Item label="Surplus Power">
+              <LabeledList.Item label="Доступно энергии">
                 {formatPower(availablePower)}
               </LabeledList.Item>
             </LabeledList>
           </Section>
         </Collapsible>
-        <Section title="Output">
+        <Section title="Вывод">
           <Flex>
             <Flex.Item>
               <Box>
                 <LabeledList>
-                  <LabeledList.Item label="Available Points">
+                  <LabeledList.Item label="Доступно очков">
                     {points}
                   </LabeledList.Item>
-                  <LabeledList.Item label="Total Points">
+                  <LabeledList.Item label="Всего очков">
                     {totalPoints}
                   </LabeledList.Item>
                 </LabeledList>

@@ -28,9 +28,9 @@ const DnaVaultDataBase = (props, context) => {
   const average_progress = 0.66;
   const bad_progress = 0.33;
   return (
-    <Section title="DNA Vault Database">
+    <Section title="База данных хранилища ДНК">
       <LabeledList>
-        <LabeledList.Item label="Human DNA">
+        <LabeledList.Item label="ДНК гуманоидов">
           <ProgressBar
             value={dna / dna_max}
             ranges={{
@@ -39,10 +39,10 @@ const DnaVaultDataBase = (props, context) => {
               bad: [-Infinity, bad_progress],
             }}
           >
-            {dna + ' / ' + dna_max + ' Samples'}
+            {dna + ' / ' + dna_max + ' образцов'}
           </ProgressBar>
         </LabeledList.Item>
-        <LabeledList.Item label="Plant DNA">
+        <LabeledList.Item label="ДНК растений">
           <ProgressBar
             value={plants / plants_max}
             ranges={{
@@ -51,10 +51,10 @@ const DnaVaultDataBase = (props, context) => {
               bad: [-Infinity, bad_progress],
             }}
           >
-            {plants + ' / ' + plants_max + ' Samples'}
+            {plants + ' / ' + plants_max + ' образцов'}
           </ProgressBar>
         </LabeledList.Item>
-        <LabeledList.Item label="Animal DNA">
+        <LabeledList.Item label="ДНК животных">
           <ProgressBar
             value={animals / animals_max}
             ranges={{
@@ -63,7 +63,7 @@ const DnaVaultDataBase = (props, context) => {
               bad: [-Infinity, bad_progress],
             }}
           >
-            {animals + ' / ' + animals_max + ' Samples'}
+            {animals + ' / ' + animals_max + ' образцов'}
           </ProgressBar>
         </LabeledList.Item>
       </LabeledList>
@@ -75,9 +75,9 @@ const GeneTherapySelection = (props, context) => {
   const { act, data } = useBackend(context);
   const { choiceA, choiceB, used } = data;
   return (
-    <Section title="Personal Gene Therapy">
+    <Section title="Персональная генная терапия">
       <Box bold textAlign="center" mb={1}>
-        Applicable Gene Therapy Treatments
+        Предлагаемые генетические модификации
       </Box>
       {(!used && (
         <Grid>
@@ -110,7 +110,7 @@ const GeneTherapySelection = (props, context) => {
         </Grid>
       )) || (
         <Box bold textAlign="center" mb={1}>
-          Users DNA deemed unstable. Unable to provide more upgrades.
+          ДНК пользователя нестабильна. Новые обновления недоступны.
         </Box>
       )}
     </Section>
