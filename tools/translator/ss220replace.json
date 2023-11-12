@@ -509,6 +509,23 @@
           "replace": "\tvar/datum/browser/popup = new(user, \"preferences\", \"<div align='center'>Настройка персонажа</div>\", 820, 770)"
         }
       ]
+    },
+    {
+      "path": "code/modules/client/preference/preferences.dm",
+      "replaces": [
+        {
+          "original": "\t\t\tdat += \"<a href=\\\"byond://?_src_=prefs;preference=open_load_dialog\\\">Загрузить персонажа</a> - \"\n\t\t\tdat += \"<a href=\\\"byond://?_src_=prefs;preference=save\\\">Сохранить персонажа</a>\"",
+          "replace": "\t\t\tdat += \"<a href=\\\"byond://?_src_=prefs;preference=open_load_dialog\\\">Загрузить</a> - \"\n\t\t\tdat += \"<a href=\\\"byond://?_src_=prefs;preference=save\\\">Сохранить</a>\""
+        },
+        {
+          "original": "\t\t\t\tdat += \"- <a href=\\\"byond://?_src_=prefs;preference=clear\\\"><span class='bad'>Удалить персонажа</span></a>\"",
+          "replace": "\t\t\t\tdat += \"- <a href=\\\"byond://?_src_=prefs;preference=clear\\\"><span class='bad'>Удалить</span></a>\""
+        },
+        {
+          "original": "\t\t\tdat += \"<b>Увечья:</b> <a href='?_src_=prefs;preference=disabilities'>\\[Set\\]</a><br>\"",
+          "replace": "\t\t\tdat += \"<b>Особенности:</b> <a href='?_src_=prefs;preference=disabilities'>\\[Set\\]</a><br>\""
+        }
+      ]
     }
   ]
 }
