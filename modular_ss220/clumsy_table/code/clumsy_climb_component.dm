@@ -1,24 +1,28 @@
-/datum/component/clumsy_climb_component
+/datum/component/clumsy_climb
 	/// default for all human-sized livings
 	var/thrown_chance = 80
 	/// force damage modifier
 	var/force_mod = 0.1
+	// max current possible thrown objects
 	var/max_thrown_objects = 15
+	// max possible thrown objects when not forced
 	var/max_thrown_objects_low = 5
 
-/datum/component/clumsy_climb_component/Initialize()
+/datum/component/clumsy_climb/Initialize()
 	if(!isatom(parent))
 		return COMPONENT_INCOMPATIBLE
 
-/datum/component/clumsy_climb_component/RegisterWithParent()
+/datum/component/clumsy_climb/RegisterWithParent()
 	RegisterSignal(parent, COMSIG_MOVABLE_CROSSED, PROC_REF(cross))
 	RegisterSignal(parent, COMSIG_CLIMBED_ON, PROC_REF(cross))
 	RegisterSignal(parent, COMSIG_DANCED_ON, PROC_REF(cross))
 
-/datum/component/clumsy_climb_component/UnregisterFromParent()
-	UnregisterSignal(parent, list(COMSIG_MOVABLE_CROSSED, COMSIG_CLIMBED_ON))
+/datum/component/clumsy_climb/UnregisterFromParent()
+	UnregisterSignal(parent, list(COMSIG_MOVABLE_CROSSED, COMSIG_CLIMBED_ON, COMSIG_DANCED_ON))
 
-/datum/component/clumsy_climb_component/proc/cross(atom/table, mob/living/user)
+/datum/component/clumsy_climb/proc/cross(atom/table, mob/living/user)
+	SIGNAL_HANDLER
+
 	if(!table.contents)
 		return
 
@@ -35,7 +39,7 @@
 	clumsy_stuff(user)
 
 
-/datum/component/clumsy_climb_component/proc/clumsy_stuff(mob/living/user)
+/datum/component/clumsy_climb/proc/clumsy_stuff(mob/living/user)
 	if(!user)
 		return
 
@@ -54,21 +58,23 @@
 
 	thrown_chance = clamp(thrown_chance, 1, 100)
 
-	var/list/thrown_atoms = list()
+	var/list/items_to_throw = list()
 
-	var/turf/user_turf = get_turf(user)
-	for(var/atom/movable/AM in user_turf)
-		if(!AM.anchored && !isliving(AM) && prob(thrown_chance))
-			thrown_atoms += AM
-			if(length(thrown_atoms) >= max_thrown_objects)
-				break
+	for(var/obj/item/candidate_to_throw in get_turf(user))
+		if(length(items_to_throw) >= max_thrown_objects)
+			break
 
-	for(var/obj/item/item in thrown_atoms)
-		item.force *= force_mod
-		item.throwforce *= force_mod //no killing using shards :lul:
+		if(candidate_to_throw.anchored || !prob(thrown_chance))
+			continue
+
+		items_to_throw += candidate_to_throw
+
+	for(var/obj/item/item_to_throw as anything in items_to_throw)
 		var/atom/thrown_target = get_edge_target_turf(user, get_dir(user_turf, get_step_away(item, user_turf)))
-		item.throw_at(target = thrown_target, range = 1, speed = 1)
-		item.pixel_x = rand(-6, 6)
-		item.pixel_y = rand(0, 10)
-		item.force /= force_mod
-		item.throwforce /= force_mod
+		item_to_throw.throw_at(target = thrown_target, range = 1, speed = 1)
+		item_to_throw.force *= force_mod
+		item_to_throw.throwforce *= force_mod //no killing using shards :lul:
+		item_to_throw.pixel_x = rand(-6, 6)
+		item_to_throw.pixel_y = rand(0, 10)
+		item_to_throw.force /= force_mod
+		item_to_throw.throwforce /= force_mod
