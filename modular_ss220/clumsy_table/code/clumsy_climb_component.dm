@@ -1,4 +1,5 @@
 /datum/component/clumsy_climb
+	dupe_mode = COMPONENT_DUPE_UNIQUE_PASSARGS // Only one of the component can exist on table
 	/// default for all human-sized livings
 	var/thrown_chance = 80
 	/// force damage modifier
