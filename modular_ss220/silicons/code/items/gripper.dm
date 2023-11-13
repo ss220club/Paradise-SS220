@@ -273,3 +273,7 @@
 /obj/machinery/reagentgrinder/attack_ai(mob/user)
 	add_hiddenprint(user)
 	return attack_hand(user)
+
+/obj/structure/morgue/attack_ai(mob/user)
+	add_hiddenprint(user)
+	return attack_hand(user)
