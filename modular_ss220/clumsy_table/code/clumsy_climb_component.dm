@@ -1,29 +1,30 @@
 /datum/component/clumsy_climb_component
-	var/thrown_chance = 80 	//default for all human-sized livings
-	var/force_mod = 0.1 	//коэффицент уменьшения урона при сбрасывании предмета
+	/// default for all human-sized livings
+	var/thrown_chance = 80
+	/// force damage modifier
+	var/force_mod = 0.1
 	var/max_thrown_objects = 15
 	var/max_thrown_objects_low = 5
 
 /datum/component/clumsy_climb_component/Initialize()
-	//RegisterSignal(parent, COMSIG_PARENT_ATTACKBY, PROC_REF(Repaint))
 	if(!isatom(parent))
 		return COMPONENT_INCOMPATIBLE
 
 /datum/component/clumsy_climb_component/RegisterWithParent()
 	RegisterSignal(parent, COMSIG_MOVABLE_CROSSED, PROC_REF(cross))
 	RegisterSignal(parent, COMSIG_CLIMBED_ON, PROC_REF(cross))
+	RegisterSignal(parent, COMSIG_DANCED_ON, PROC_REF(cross))
 
 /datum/component/clumsy_climb_component/UnregisterFromParent()
 	UnregisterSignal(parent, list(COMSIG_MOVABLE_CROSSED, COMSIG_CLIMBED_ON))
 
-/datum/component/clumsy_climb_component/proc/cross(atom/table, mob/living/climber)
+/datum/component/clumsy_climb_component/proc/cross(atom/table, mob/living/user)
 	if(!table.contents)
 		return
 
-	if(!istype(climber))
+	if(!istype(user))
 		return
 
-	var/mob/living/user = climber
 	if(user.mob_size <= MOB_SIZE_SMALL && !user.throwing)
 		return
 
@@ -55,20 +56,19 @@
 
 	var/list/thrown_atoms = list()
 
-	for(var/turf/T in range(0, user)) //Preventing from rotating stuff in an inventory
-		for(var/atom/movable/I in T)
-			if(!I.anchored && !isliving(I) && prob(thrown_chance))
-				thrown_atoms += I
-				if(thrown_atoms.len >= max_thrown_objects)
-					break
+	var/turf/user_turf = get_turf(user)
+	for(var/atom/movable/AM in user_turf)
+		if(!AM.anchored && !isliving(AM) && prob(thrown_chance))
+			thrown_atoms += AM
+			if(length(thrown_atoms) >= max_thrown_objects)
+				break
 
-	var/atom/thrown_target
-	for(var/obj/item/I in thrown_atoms)
-		I.force *= force_mod
-		I.throwforce *= force_mod //no killing using shards :lul:
-		thrown_target = get_edge_target_turf(user, get_dir(user, get_step_away(I, user)))
-		I.throw_at(target = thrown_target, range = 1, speed = 1)
-		I.pixel_x = rand(-6, 6)
-		I.pixel_y = rand(0, 10)
-		I.force /= force_mod
-		I.throwforce /= force_mod
+	for(var/obj/item/item in thrown_atoms)
+		item.force *= force_mod
+		item.throwforce *= force_mod //no killing using shards :lul:
+		var/atom/thrown_target = get_edge_target_turf(user, get_dir(user_turf, get_step_away(item, user_turf)))
+		item.throw_at(target = thrown_target, range = 1, speed = 1)
+		item.pixel_x = rand(-6, 6)
+		item.pixel_y = rand(0, 10)
+		item.force /= force_mod
+		item.throwforce /= force_mod
