@@ -38,4 +38,4 @@
 	launch_sequence()
 
 /obj/machinery/driver_button/drop_sm/multitool_act(mob/user, obj/item/I)
-  return FALSE
+	return FALSE
