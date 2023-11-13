@@ -4,7 +4,7 @@
 //////////////////////////////////////
 
 /obj/machinery/driver_button/sm_drop_button
-	name = "Кнопка сброса СМ"
+	name = "\improper кнопка сброса СМ"
 	desc = "Кнопка для экстренного выбраса СМ в космос"
 	icon = 'modular_ss220/sm_space_drop/icons/sm_buttons.dmi'
 	icon_state = "launcherbtt"
@@ -14,6 +14,7 @@
 	active_power_consumption = 4
 	resistance_flags = LAVA_PROOF | FIRE_PROOF
 	id_tag = "SpaceDropSM"
+	req_access = list(ACCESS_CE)
 
 /obj/machinery/driver_button/sm_drop_button/attack_hand(mob/user)
 	if(stat & (NOPOWER|BROKEN))
