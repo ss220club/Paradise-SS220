@@ -191,11 +191,6 @@
 	/// Attack verbs when extended (created on Initialize)
 	var/list/attack_verb_on = list("smacked", "struck", "cracked", "beaten")
 
-/obj/item/melee/baseball_bat/homerun/central_command/Initialize(mapload)
-	. = ..()
-	/// Ability to make homerun
-	homerun_able = on
-
 /obj/item/melee/baseball_bat/homerun/central_command/pickup(mob/living/user)
 	. = ..()
 	if(!(user.mind.offstation_role))
@@ -215,10 +210,9 @@
 		to_chat(user, span_userdanger("Вы активировали [src.name] - время для правосудия!"))
 		item_state = item_state_on
 		icon_state = icon_state_on
-		w_class = WEIGHT_CLASS_HUGE //doesnt fit in backpack when its on for balance
+		w_class = WEIGHT_CLASS_HUGE
 		force = force_on
 		attack_verb = attack_verb_on
-		homerun_ready = TRUE
 	else
 		to_chat(user, span_notice("Вы деактивировали [src.name]."))
 		item_state = initial(item_state)
@@ -226,7 +220,6 @@
 		w_class = initial(w_class)
 		force = initial(force)
 		attack_verb = initial(attack_verb)
-		homerun_ready = FALSE
 
 	homerun_able = on
 	// Update mob hand visuals
@@ -238,6 +231,6 @@
 	add_fingerprint(user)
 
 /obj/item/melee/baseball_bat/homerun/central_command/attack(mob/living/target, mob/living/user)
-	. = ..()
 	if(on)
 		homerun_ready = 1
+	. = ..()
