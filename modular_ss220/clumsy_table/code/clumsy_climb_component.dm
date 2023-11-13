@@ -60,7 +60,8 @@
 
 	var/list/items_to_throw = list()
 
-	for(var/obj/item/candidate_to_throw in get_turf(user))
+	var/turf/user_turf = get_turf(user)
+	for(var/obj/item/candidate_to_throw in user_turf)
 		if(length(items_to_throw) >= max_thrown_objects)
 			break
 
@@ -70,7 +71,7 @@
 		items_to_throw += candidate_to_throw
 
 	for(var/obj/item/item_to_throw as anything in items_to_throw)
-		var/atom/thrown_target = get_edge_target_turf(user, get_dir(user_turf, get_step_away(item, user_turf)))
+		var/atom/thrown_target = get_edge_target_turf(user, get_dir(user_turf, get_step_away(item_to_throw, user_turf)))
 		item_to_throw.throw_at(target = thrown_target, range = 1, speed = 1)
 		item_to_throw.force *= force_mod
 		item_to_throw.throwforce *= force_mod //no killing using shards :lul:
