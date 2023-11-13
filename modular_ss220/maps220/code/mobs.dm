@@ -514,6 +514,7 @@
 	stat_attack = UNCONSCIOUS
 	see_in_dark = 8
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
+	tts_seed = "Anubarak"
 
 /mob/living/simple_animal/hostile/abomination/super
 	desc = "Оскалившийся, страшный монстр. Этот кажется проворным."
@@ -603,7 +604,7 @@
 
 /mob/living/simple_animal/hostile/deadwizard
 	name = "древний маг"
-	desc = "Древний волшебник, тысячелетиями властвующий над проклятым могильником."
+	desc = "Древний некромант, тысячелетиями властвующий над проклятым могильником."
 	icon = 'modular_ss220/maps220/icons/simple_human.dmi'
 	icon_living = "deadwizard"
 	icon_state = "deadwizard"
@@ -642,6 +643,7 @@
 	/obj/item/clothing/suit/imperium_monk,
 	/obj/effect/particle_effect/smoke/bad,
 	/obj/item/emerald_stone)
+	tts_seed = "Abaddon"
 
 /mob/living/simple_animal/hostile/deadwizard/Shoot(atom/targeted_atom)
 	..()
