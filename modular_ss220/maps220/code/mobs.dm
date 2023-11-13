@@ -603,7 +603,7 @@
 	wander = FALSE
 
 /mob/living/simple_animal/hostile/deadwizard
-	name = "древний маг"
+	name = "\improper древний маг"
 	desc = "Древний некромант, тысячелетиями властвующий над проклятым могильником."
 	icon = 'modular_ss220/maps220/icons/simple_human.dmi'
 	icon_living = "deadwizard"
@@ -615,7 +615,7 @@
 	a_intent = INTENT_HARM
 	maxHealth = 400
 	health = 400
-	ranged = 1
+	ranged = TRUE
 	retreat_distance = 7
 	minimum_distance = 5
 	ranged_cooldown_time = 5
@@ -625,7 +625,6 @@
 	vision_range = 12
 	see_in_dark = 8
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
-	del_on_death = 1
 	minbodytemp = 0
 	maxbodytemp = 1500
 	speed = 1
@@ -634,7 +633,6 @@
 	faction = list("skeleton")
 	projectilesound = 'sound/magic/blind.ogg'
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
-	unsuitable_atmos_damage = 10
 	deathmessage = "collapses into a pile of bones!"
 	del_on_death = TRUE
 	loot = list(
