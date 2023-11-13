@@ -1,3 +1,7 @@
+/obj/structure/window/full
+	smoothing_groups = list(SMOOTH_GROUP_WINDOW_FULLTILE)
+	canSmoothWith = list(SMOOTH_GROUP_WINDOW_FULLTILE, SMOOTH_GROUP_WALLS, SMOOTH_GROUP_REINFORCED_WALLS, SMOOTH_GROUP_AIRLOCK)
+
 /obj/structure/window/full/basic
 	icon = 'modular_ss220/aesthetics/windows/icons/window.dmi'
 	edge_overlay_file = 'modular_ss220/aesthetics/windows/icons/window_edges.dmi'
@@ -20,6 +24,12 @@
 /turf/simulated/wall/indestructible/fakeglass
 	icon = 'modular_ss220/aesthetics/windows/icons/reinforced_window.dmi'
 	edge_overlay_file = 'modular_ss220/aesthetics/windows/icons/reinforced_window_edges.dmi'
+	smoothing_groups = list(SMOOTH_GROUP_WINDOW_FULLTILE)
+	canSmoothWith = list(SMOOTH_GROUP_WINDOW_FULLTILE, SMOOTH_GROUP_WALLS, SMOOTH_GROUP_REINFORCED_WALLS, SMOOTH_GROUP_AIRLOCK)
+
+/obj/structure/window/full/shuttle
+	smoothing_groups = list(SMOOTH_GROUP_WINDOW_FULLTILE_SHUTTLE)
+	canSmoothWith = list(SMOOTH_GROUP_WINDOW_FULLTILE_SHUTTLE, SMOOTH_GROUP_TITANIUM_WALLS, SMOOTH_GROUP_AIRLOCK)
 
 //WINDOW SPAWNERS
 /obj/effect/spawner/window
