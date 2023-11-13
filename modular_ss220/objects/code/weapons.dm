@@ -232,5 +232,5 @@
 
 /obj/item/melee/baseball_bat/homerun/central_command/attack(mob/living/target, mob/living/user)
 	if(on)
-		homerun_ready = 1
+		homerun_ready = TRUE
 	. = ..()
