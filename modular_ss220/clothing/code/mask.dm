@@ -53,3 +53,11 @@
 
 /datum/outfit/job/chef
 	mask = /obj/item/clothing/mask/fakemoustache/chef
+
+/obj/item/clothing/mask/breath/breathscarf
+	name = "Шарф с системой дыхания"
+	desc = "Стильный и инновационный шарф, который не только обогревает вас в холод, но и служит дыхательной маской в экстремальных ситуациях."
+	icon = 'modular_ss220/clothing/icons/mob/mask.dmi'
+	icon_override = 'modular_ss220/clothing/icons/mob/mask.dmi'
+	icon_state = "breathscarf"
+	item_state = "breathscarf"
