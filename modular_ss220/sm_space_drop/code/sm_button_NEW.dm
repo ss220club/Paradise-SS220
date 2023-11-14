@@ -56,17 +56,17 @@
 	// Glass present
 	else if(glass)
 		if(user.a_intent == INTENT_HARM)
-			user.custom_emote(EMOTE_VISIBLE, "разбивает стекло[src.name]!")
+			user.custom_emote(EMOTE_VISIBLE, "разбивает стекло [src.name]!")
 			glass = FALSE
 			playsound(src, 'sound/effects/hit_on_shattered_glass.ogg', 100, 1)
 			update_icon()
 		else
 			user.custom_emote(EMOTE_VISIBLE, "дружески похлопывает по [src.name].")
-			to_chat(user, "<span_warning>Если вы пытаетесь разбить стекло, вам придется ударить по нему сильнее...</span>")
+			to_chat(user, span_warning("Если вы пытаетесь разбить стекло, вам придется ударить по нему сильнее..."))
 	// Must be !glass and !launched
 	else
-		user.custom_emote(EMOTE_VISIBLE, "нажемает кнопку сброса [src.name]!")
-		visible_message("<span_notice>Кнопка громко щелкает.</span>")
+		user.custom_emote(EMOTE_VISIBLE, "нажимает кнопку сброса [src.name]!")
+		visible_message(span_notice("Кнопка громко щелкает."))
 		launch_sequence()
 		playsound(src, pick('modular_ss220/sm_space_drop/sound/button.ogg','modular_ss220/sm_space_drop/sound/button1.ogg','modular_ss220/sm_space_drop/sound/button2.ogg','modular_ss220/sm_space_drop/sound/button3.ogg','modular_ss220/sm_space_drop/sound/button4.ogg'), 100, 1)
 		update_icon()
@@ -76,7 +76,7 @@
 		if(area)
 			message_admins("Supermatter crystal reset activated(<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>[area.name]</a>)")
 			log_game("Supermatter crystal reset activated([area.name])")
-			investigate_log("<font color='red'>delete</font> at ([area.name])","SM")
+			investigate_log("<font color='red'>active</font> at ([area.name])","supermatter")
 
 /obj/machinery/driver_button/sm_drop_button/launch_sequence()
 	if(launched)
