@@ -104,6 +104,6 @@
 	cost = 2
 
 /datum/gear/donor/breathscarf
-	display_name = "Дыхательный шарф"
+	display_name = "Шарф с системой дыхания"
 	path = /obj/item/clothing/mask/breath/breathscarf
 	cost = 2
