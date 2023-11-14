@@ -1,6 +1,6 @@
 /obj/item/card/id
-	var/have_skin = FALSE
 	var/skinable = TRUE
+	var/obj/item/id_skin/skin_applied = null
 
 /obj/item/card/id/guest
 	skinable = FALSE
@@ -17,23 +17,28 @@
 /obj/item/card/id/attackby(obj/item/item as obj, mob/user as mob, params)
 	. = ..()
 	if(istype(item, /obj/item/id_skin))
-		if(have_skin)
+		if(skin_applied)
 			to_chat(usr, span_warning("На карте уже есть наклейка, сначала соскребите её!"))
 			return
 		if(!skinable)
 			to_chat(usr, span_warning("Наклейка не подходит для [src]!"))
 			return
-		else
+		to_chat(user, span_notice("Вы начинаете наносить наклейку на карту."))
+		if(do_after(usr, 2 SECONDS, target = src, progress = TRUE, allow_moving = TRUE))
 			var/obj/item/id_skin/skin = item
 			var/mutable_appearance/card_skin = mutable_appearance(skin.icon, skin.icon_state)
 			card_skin.color = skin.color
-			to_chat(user, "Вы наклеили [skin.pronoun_name] на [src].")
-			desc = initial(desc)
+			to_chat(user, span_notice("Вы наклеили [skin.pronoun_name] на [src]."))
 			desc += "<br>[skin.info]"
+			skin_applied = item
+			user.drop_item()
+			item.forceMove(src)
+			skin_applied = item
 			add_overlay(card_skin)
-			have_skin = TRUE
-			qdel(skin)
 			return
+
+/obj/item/card/id/AltClick(mob/user)
+	remove_skin()
 
 /obj/item/card/id/verb/remove_skin()
 	set name = "Соскрести наклейку"
@@ -43,12 +48,23 @@
 	if(usr.stat || HAS_TRAIT(usr, TRAIT_UI_BLOCKED) || usr.restrained())
 		return
 
-	if(have_skin)
-		to_chat(usr, span_notice("Вы начинаете соскребать наклейку с карты."))
-		if(do_after(usr, 5 SECONDS, target = src, progress = TRUE))
-			to_chat(usr, span_notice("Вы соскребаете наклейку с карты."))
+	if(skin_applied != null)
+		if(usr.a_intent == INTENT_HARM)
+			to_chat(usr, span_warning("Вы срываете наклейку с карты!"))
 			src.overlays.Cut()
-			have_skin = FALSE
+			playsound(src.loc, 'sound/items/poster_ripped.ogg', 50, 1)
+			skin_applied = null
+			desc = initial(desc)
+		else if(usr.a_intent == INTENT_HELP)
+			to_chat(usr, span_notice("Вы начинаете аккуратно снимать наклейку с карты."))
+			if(do_after(usr, 5 SECONDS, target = src, progress = TRUE))
+				to_chat(usr, span_notice("Вы сняли наклейку с карты."))
+				skin_applied.forceMove(get_turf(src))
+				if(!usr.get_active_hand() && Adjacent(usr))
+					usr.put_in_hands(skin_applied)
+				skin_applied = null
+				desc = initial(desc)
+				src.overlays.Cut()
 	else
 		to_chat(usr, span_warning("На карте нет наклейки!"))
 
@@ -59,26 +75,15 @@
 	icon_state = ""
 	var/pronoun_name = "наклейку"
 	var/info = "На ней наклейка."
-
-/obj/item/id_skin/colored
-	name = "\improper голо-наклейка на карту"
-	desc = "Голографическая наклейка на карту, вы можете выбрать цвет который она примет. После наклеивания на карту, сменить цвет нельзя!"
-	icon_state = "colored"
-	pronoun_name = "голо-наклейку"
-	info = "На ней голо-наклейка."
 	var/list/color_list = list("Красный", "Зелёный", "Синий", "Жёлтый", "Оранжевый", "Фиолетовый", "Голубой", "Циановый", "Аквамариновый", "Розовый")
 
-/obj/item/id_skin/colored/shiny
-	name = "\improper металлическая голо-наклейка"
-	icon_state = "colored_shiny"
-
-/obj/item/id_skin/colored/attack_self(mob/living/user as mob)
-	var/choice = input(user, "Какой цвет предпочитаете?", "Выбор цвета") as null|anything in list("Выбрать предустановленный", "Выбрать вручную")
+/obj/item/id_skin/proc/change_color()
+	var/choice = input(usr, "Какой цвет предпочитаете?", "Выбор цвета") as null|anything in list("Выбрать предустановленный", "Выбрать вручную")
 	if(!choice)
 		return
 	switch(choice)
 		if("Выбрать предустановленный")
-			choice = input(user, "Выберите цвет", "Выбор цвета") as null|anything in color_list
+			choice = input(usr, "Выберите цвет", "Выбор цвета") as null|anything in color_list
 			if(!choice)
 				return
 			switch(choice)
@@ -103,7 +108,17 @@
 				if("Розовый")
 					color = LIGHT_COLOR_PINK
 		if("Выбрать вручную")
-			color = input(user,"Выберите цвет") as color
+			color = input(usr,"Выберите цвет") as color
+
+/obj/item/id_skin/colored
+	name = "\improper голо-наклейка на карту"
+	desc = "Голографическая наклейка на карту. Вы можете выбрать цвет который она примет."
+	icon_state = "colored"
+	pronoun_name = "голо-наклейку"
+	info = "На ней голо-наклейка."
+
+/obj/item/id_skin/colored/attack_self(mob/living as mob)
+	change_color()
 
 /obj/item/id_skin/prisoner
 	name = "\improper тюремная наклейка на карту"
@@ -116,6 +131,16 @@
 	icon_state = "silver"
 	pronoun_name = "серебрянную наклейку"
 	info = "На ней серебрянная наклейка."
+
+/obj/item/id_skin/silver/colored
+	name = "\improper металлическая голо-наклейка"
+	desc = "Голографическая наклейка на карту, изготовленная из специального материала, похожего на металл. Вы можете выбрать цвет который она примет."
+	pronoun_name = "металлическую голо-наклейку"
+	icon_state = "colored_shiny"
+	info = "На ней металлическая голо-наклейка."
+
+/obj/item/id_skin/silver/colored/attack_self(mob/living as mob)
+	change_color()
 
 /obj/item/id_skin/gold
 	name = "\improper золотая наклейка на карту"
@@ -155,12 +180,24 @@
 
 /obj/item/id_skin/space
 	name = "\improper КОСМИЧЕСКАЯ наклейка на карту"
+	desc = "Яркая, блестящая и бескрайняя. Прямо как хозяин карты на которую её приклеят."
 	icon_state = "space"
 	pronoun_name = "КОСМИЧЕСКУЮ наклейку"
 	info = "Есть 3 вещи на которые можно смотреть вечно. Это четвёртая."
 
 /obj/item/id_skin/kitty
 	name = "\improper кото-клейка на карту"
+	desc = "Прекрасная наклейка, которая делает вашу карту похожей на котика."
 	icon_state = "kitty"
 	pronoun_name = "кото-клейку"
 	info = "Так и хочется погладить, жаль это всего-лишь наклейка..."
+
+/obj/item/id_skin/kitty/colored
+	name = "\improper цветная кото-клейка на карту"
+	desc = "Прекрасная наклейка, которая делает вашу карту похожей на котика. Эта может менять цвет."
+	icon_state = "colored_kitty"
+	pronoun_name = "кото-клейку"
+	info = "Так и хочется погладить, жаль это всего-лишь наклейка..."
+
+/obj/item/id_skin/kitty/colored/attack_self(mob/living as mob)
+	change_color()
