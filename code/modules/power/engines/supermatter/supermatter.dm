@@ -347,7 +347,7 @@
 			sleep(10)
 			continue
 		else if(i > 50)
-			speaking = "[DisplayTimeText(i, TRUE)] до стабилизации."
+			speaking = "Восстановление причинно-следственной связи неизбежно. До взрыва кристалла суперматерии осталось [DisplayTimeText(i, TRUE)]."
 		else
 			speaking = "[i*0.1]..."
 		radio.autosay(speaking, name, null, list(z))
