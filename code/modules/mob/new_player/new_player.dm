@@ -101,7 +101,7 @@
 			if(SSticker.ticker_going)
 				stat("Начало через: [round(SSticker.pregame_timeleft/10)]")
 			else
-				stat("Начало через:", "УДЕРЖАНИЕ")
+				stat("Начало через:", "ПАУЗА")
 
 			stat("Игроки: [totalPlayers]")
 			if(check_rights(R_ADMIN, 0, src))
@@ -358,10 +358,10 @@
 			character.loc = pick(GLOB.syndicateofficer)
 		else
 			character.forceMove(pick(GLOB.aroomwarp))
-		join_message = "has arrived"
+		join_message = "прибыл"
 	else
 		character.forceMove(pick(GLOB.latejoin))
-		join_message = "has arrived on the station"
+		join_message = "прибыл на станцию"
 
 	character.lastarea = get_area(loc)
 	// Moving wheelchair if they have one
