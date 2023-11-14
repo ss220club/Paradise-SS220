@@ -1,14 +1,21 @@
 /obj/item/card/id
 	var/have_skin = FALSE
+	var/skinable = TRUE
 
-/obj/item/card/id/attackby(obj/item/W as obj, mob/user as mob, params)
+/obj/item/card/id/guest
+	skinable = FALSE
+
+/obj/item/card/id/attackby(obj/item/item as obj, mob/user as mob, params)
 	. = ..()
-	if(istype(W, /obj/item/id_skin/))
+	if(istype(item, /obj/item/id_skin))
 		if(have_skin)
 			to_chat(usr, span_warning("На карте уже есть наклейка, сначала соскребите её!"))
 			return
+		if(!skinable)
+			to_chat(usr, span_warning("Наклейка не подходит для [src]!"))
+			return
 		else
-			var/obj/item/id_skin/skin = W
+			var/obj/item/id_skin/skin = item
 			var/mutable_appearance/card_skin = mutable_appearance(skin.icon, skin.icon_state)
 			card_skin.color = skin.color
 			to_chat(user, "Вы наклеили [skin.pronoun_name] на [src].")
@@ -40,7 +47,7 @@
 	name = "\improper наклейка на карту"
 	desc = "Этим можно изменить внешний вид своей карты! Покажи службе безопасности какой ты стильный."
 	icon = 'modular_ss220/donor/icons/id_skins.dmi'
-	icon_state = "skin"
+	icon_state = ""
 	var/pronoun_name = "наклейку"
 	var/info = "На ней наклейка."
 
