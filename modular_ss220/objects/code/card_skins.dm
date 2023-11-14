@@ -145,10 +145,22 @@
 	name = "\improper клоунская наклейка на карту"
 	icon_state = "clown"
 	pronoun_name = "клоунскую наклейку"
-	info = "На ней клоунская наклейка."
+	info = "На ней клоунская наклейка. HONK!"
 
 /obj/item/id_skin/rainbow
 	name = "\improper радужная наклейка на карту"
 	icon_state = "rainbow"
 	pronoun_name = "радужную наклейку"
-	info = "На ней радужная наклейка."
+	info = "На ней радужная наклейка. Одобряемо."
+
+/obj/item/id_skin/space
+	name = "\improper КОСМИЧЕСКАЯ наклейка на карту"
+	icon_state = "space"
+	pronoun_name = "КОСМИЧЕСКУЮ наклейку"
+	info = "Есть 3 вещи на которые можно смотреть вечно. Это четвёртая."
+
+/obj/item/id_skin/kitty
+	name = "\improper кото-клейка на карту"
+	icon_state = "kitty"
+	pronoun_name = "кото-клейку"
+	info = "Так и хочется погладить, жаль это всего-лишь наклейка..."
