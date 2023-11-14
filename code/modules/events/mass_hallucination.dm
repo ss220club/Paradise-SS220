@@ -15,4 +15,4 @@
 		H.AdjustHallucinate(rand(50 SECONDS, 100 SECONDS))
 
 /datum/event/mass_hallucination/announce()
-	GLOB.minor_announcement.Announce("[station_name()] проходит через радиационное поле низкой интенсивности. Возможно появление галлюцинаций, но не более.Attention")
+	GLOB.minor_announcement.Announce("[station_name()] проходит через радиационное поле низкой интенсивности. Возможно появление галлюцинаций, но не более.")
