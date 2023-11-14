@@ -5,6 +5,15 @@
 /obj/item/card/id/guest
 	skinable = FALSE
 
+/obj/item/card/id/data
+	skinable = FALSE
+
+/obj/item/card/id/away
+	skinable = FALSE
+
+/obj/item/card/id/thunderdome
+	skinable = FALSE
+
 /obj/item/card/id/attackby(obj/item/item as obj, mob/user as mob, params)
 	. = ..()
 	if(istype(item, /obj/item/id_skin))
