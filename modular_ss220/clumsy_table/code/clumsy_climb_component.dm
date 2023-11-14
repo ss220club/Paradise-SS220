@@ -80,3 +80,5 @@
 		item_to_throw.pixel_y = rand(0, 10)
 		item_to_throw.force /= force_mod
 		item_to_throw.throwforce /= force_mod
+
+	qdel(src)
