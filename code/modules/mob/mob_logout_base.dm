@@ -19,6 +19,8 @@
 			if(mentorcounter[1] == 0) // No active mentors
 				GLOB.discord_manager.send2discord_simple(DISCORD_WEBHOOK_MENTOR, "[key_name(src)] logged out - 0 active mentors, [mentorcounter[2]] non-mentor staff, [mentorcounter[3]] inactive mentors.")
 
+	reserve_queue_slot() // SS220 addition
+
 	..()
 	update_morgue()
 	return 1

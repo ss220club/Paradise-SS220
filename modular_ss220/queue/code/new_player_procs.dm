@@ -22,9 +22,9 @@
 	return FALSE
 
 
-/mob/Logout()
-	if(client?.ckey in SSqueue.queue_bypass_list)
-		addtimer(CALLBACK(SSqueue, TYPE_PROC_REF(/datum/controller/subsystem/queue, reserve_queue_slot), client.ckey), GLOB.configuration.overflow.reservation_time)
+/client/proc/reserve_queue_slot()
+	if(ckey in SSqueue.queue_bypass_list)
+		addtimer(CALLBACK(SSqueue, TYPE_PROC_REF(/datum/controller/subsystem/queue, reserve_queue_slot), ckey), GLOB.configuration.overflow.reservation_time)
 
 		. = ..()
 
