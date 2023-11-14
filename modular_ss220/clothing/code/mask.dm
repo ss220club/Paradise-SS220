@@ -56,7 +56,7 @@
 
 /obj/item/clothing/mask/breath/breathscarf
 	name = "шарф с системой дыхания"
-	desc = "Стильный и инновационный шарф, который не только обогревает вас в холод, но и служит дыхательной маской в экстремальных ситуациях."
+	desc = "Стильный и инновационный шарф, который служит дыхательной маской в экстремальных ситуациях."
 	icon = 'modular_ss220/clothing/icons/mob/mask.dmi'
 	icon_override = 'modular_ss220/clothing/icons/mob/mask.dmi'
 	icon_state = "breathscarf"
