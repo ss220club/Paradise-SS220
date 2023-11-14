@@ -4,7 +4,7 @@
 //////////////////////////////////////
 
 /obj/machinery/driver_button/sm_drop_button
-	name = "\improper экстренный сброс СМ"
+	name = "supermatter launch trigger"
 	desc = "<font color='red'>ВНИМАНИЕ:</font>Сброс кристала суперматерии. Неправомерное использование может привести к тюремному заключению."
 	icon = 'modular_ss220/sm_space_drop/icons/sm_buttons.dmi'
 	icon_state = "button"
@@ -51,26 +51,32 @@
 
 	// Already launched
 	if(launched)
-		to_chat(user, "<span class='warning'>Кнопку уже нажали, процесс выброса СМ запущен.</span>")
+		to_chat(user, "<span class='warning'>Кнопку уже нажали.</span>")
 
 	// Glass present
 	else if(glass)
 		if(user.a_intent == INTENT_HARM)
-			user.custom_emote(EMOTE_VISIBLE, "Разбивает стекло кнопки [src]!")
+			user.custom_emote(EMOTE_VISIBLE, "разбивает стекло[src.name]!")
 			glass = FALSE
 			playsound(src, 'sound/effects/hit_on_shattered_glass.ogg', 100, 1)
 			update_icon()
 		else
-			user.custom_emote(EMOTE_VISIBLE, "Хлопает по стеклу кнопки [src].")
-			to_chat(user, "<span class='warning'>Если вы пытаетесь разбить стекло, вам придется ударить по нему сильнее...</span>")
+			user.custom_emote(EMOTE_VISIBLE, "дружески похлопывает по [src.name].")
+			to_chat(user, "<span_warning>Если вы пытаетесь разбить стекло, вам придется ударить по нему сильнее...</span>")
 	// Must be !glass and !launched
 	else
-		user.custom_emote(EMOTE_VISIBLE, "Нажиамает кнопку сброса [src]!")
-		visible_message("<span class='notice'>Кнопка громко щелкает.</span>")
+		user.custom_emote(EMOTE_VISIBLE, "нажемает кнопку сброса [src.name]!")
+		visible_message("<span_notice>Кнопка громко щелкает.</span>")
 		launch_sequence()
 		playsound(src, pick('modular_ss220/sm_space_drop/sound/button.ogg','modular_ss220/sm_space_drop/sound/button1.ogg','modular_ss220/sm_space_drop/sound/button2.ogg','modular_ss220/sm_space_drop/sound/button3.ogg','modular_ss220/sm_space_drop/sound/button4.ogg'), 100, 1)
 		update_icon()
 
+	if(SSticker && SSticker.current_state == GAME_STATE_PLAYING)
+		var/area/area = get_area(src)
+		if(area)
+			message_admins("Supermatter crystal reset activated(<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>[area.name]</a>)")
+			log_game("Supermatter crystal reset activated([area.name])")
+			investigate_log("<font color='red'>delete</font> at ([area.name])","SM")
 
 /obj/machinery/driver_button/sm_drop_button/launch_sequence()
 	if(launched)
