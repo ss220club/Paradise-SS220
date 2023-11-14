@@ -358,10 +358,10 @@
 			character.loc = pick(GLOB.syndicateofficer)
 		else
 			character.forceMove(pick(GLOB.aroomwarp))
-		join_message = "прибыл"
+		join_message = "прибыл[character.gender == FEMALE ? "а" : ""]"
 	else
 		character.forceMove(pick(GLOB.latejoin))
-		join_message = "прибыл на станцию"
+		join_message = "прибыл[character.gender == FEMALE ? "а" : ""] на станцию"
 
 	character.lastarea = get_area(loc)
 	// Moving wheelchair if they have one
