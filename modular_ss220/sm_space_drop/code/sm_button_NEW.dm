@@ -51,7 +51,7 @@
 
 	// Already launched
 	if(launched)
-		to_chat(user, "<span class='warning'>Кнопку уже нажали.</span>")
+		to_chat(user, span_warning("Кнопку уже нажали"))
 
 	// Glass present
 	else if(glass)
@@ -74,9 +74,8 @@
 	if(SSticker && SSticker.current_state == GAME_STATE_PLAYING)
 		var/area/area = get_area(src)
 		if(area)
-			message_admins("Supermatter crystal reset activated(<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>[area.name]</a>)")
-			log_game("Supermatter crystal reset activated([area.name])")
-			investigate_log("<font color='red'>active</font> at ([area.name])","supermatter")
+			message_admins("Supermatter Crystal has been launched to space by [key_name_admin(user)] [ADMIN_JMP(src)].")
+			investigate_log("has been launched to space at ([area.name]) by [key_name(user)].","supermatter")
 
 /obj/machinery/driver_button/sm_drop_button/launch_sequence()
 	if(launched)
