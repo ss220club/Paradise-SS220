@@ -55,7 +55,7 @@
 /obj/item/id_skin
 	name = "\improper наклейка на карту"
 	desc = "Этим можно изменить внешний вид своей карты! Покажи службе безопасности какой ты стильный."
-	icon = 'modular_ss220/donor/icons/id_skins.dmi'
+	icon = 'modular_ss220/objects/icons/id_skins.dmi'
 	icon_state = ""
 	var/pronoun_name = "наклейку"
 	var/info = "На ней наклейка."
@@ -123,11 +123,11 @@
 	pronoun_name = "золотую наклейку"
 	info = "На ней золотая наклейка."
 
-/obj/item/id_skin/nanotrasen
-	name = "\improper наклейка на карту Nanotrasen"
-	icon_state = "nanotrasen"
-	pronoun_name = "наклейку Nanotrasen"
-	info = "На ней наклейка Nanotrasen."
+/obj/item/id_skin/business
+	name = "\improper бизнесменская наклейка на карту"
+	icon_state = "business"
+	pronoun_name = "бизнесменскую наклейку"
+	info = "На ней бизнесменская наклейка."
 
 /obj/item/id_skin/lifetime
 	name = "\improper стильная наклейка на карту"
