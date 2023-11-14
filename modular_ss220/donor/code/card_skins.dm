@@ -68,32 +68,40 @@
 	info = "На ней голо-наклейка."
 	var/list/color_list = list("Красный", "Зелёный", "Синий", "Жёлтый", "Оранжевый", "Фиолетовый", "Голубой", "Циановый", "Аквамариновый", "Розовый")
 
+/obj/item/id_skin/colored/shiny
+	name = "\improper металлическая голо-наклейка"
+	icon_state = "colored_shiny"
+
 /obj/item/id_skin/colored/attack_self(mob/living/user as mob)
-	var/choice = input(user,"Какой цвет предпочитаете?") in list("Выбрать предустановленный", "Выбрать вручную")
+	var/choice = input(user, "Какой цвет предпочитаете?", "Выбор цвета") as null|anything in list("Выбрать предустановленный", "Выбрать вручную")
+	if(!choice)
+		return
 	switch(choice)
 		if("Выбрать предустановленный")
-			choice = input(user,"Выберите цвет") in color_list
+			choice = input(user, "Выберите цвет", "Выбор цвета") as null|anything in color_list
+			if(!choice)
+				return
 			switch(choice)
 				if("Красный")
-					color = COLOR_RED_LIGHT
+					color = LIGHT_COLOR_RED
 				if("Зелёный")
-					color = COLOR_GREEN
+					color = LIGHT_COLOR_GREEN
 				if("Синий")
-					color = COLOR_CYAN_BLUE
+					color = LIGHT_COLOR_LIGHTBLUE
 				if("Жёлтый")
-					color = COLOR_YELLOW
+					color = LIGHT_COLOR_HOLY_MAGIC
 				if("Оранжевый")
-					color = COLOR_SUN
+					color = LIGHT_COLOR_ORANGE
 				if("Фиолетовый")
-					color = COLOR_VIOLET
+					color = LIGHT_COLOR_LAVENDER
 				if("Голубой")
-					color = COLOR_BABY_BLUE
+					color = LIGHT_COLOR_LIGHT_CYAN
 				if("Циановый")
-					color = COLOR_CYAN
+					color = LIGHT_COLOR_CYAN
 				if("Аквамариновый")
-					color = COLOR_CRYSTAL
+					color = LIGHT_COLOR_BLUEGREEN
 				if("Розовый")
-					color = COLOR_PINK
+					color = LIGHT_COLOR_PINK
 		if("Выбрать вручную")
 			color = input(user,"Выберите цвет") as color
 
