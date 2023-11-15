@@ -78,8 +78,8 @@
 		item_to_throw.throw_at(target = thrown_target, range = 1, speed = 1)
 		item_to_throw.force *= force_mod
 		item_to_throw.throwforce *= force_mod //no killing using shards :lul:
-		pixel_x = rand(-10, 10)
-		pixel_y = rand(-4, 16)
+		item_to_throw.pixel_x = rand(-10, 10)
+		item_to_throw.pixel_y = rand(-4, 16)
 		item_to_throw.force /= force_mod
 		item_to_throw.throwforce /= force_mod
 
