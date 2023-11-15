@@ -12,7 +12,7 @@
 	icon_state = "contraband3"
 
 /obj/structure/sign/poster/contraband/lady
-	name = "Соблазнительная Красноволосая Красотка"
+	name = "Соблазнительная Красотка"
 	desc = "На плакате изображена крайне сексуальная девушка."
 	icon = 'modular_ss220/objects/icons/posters.dmi'
 	icon_state = "contraband4"
