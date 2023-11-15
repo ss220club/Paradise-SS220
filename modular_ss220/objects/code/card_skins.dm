@@ -120,12 +120,6 @@
 /obj/item/id_skin/colored/attack_self(mob/living as mob)
 	change_color()
 
-/obj/item/id_skin/prisoner
-	name = "\improper тюремная наклейка на карту"
-	icon_state = "prisoner"
-	pronoun_name = "тюремную наклейку"
-	info = "На ней тюремная наклейка."
-
 /obj/item/id_skin/silver
 	name = "\improper серебрянная наклейка на карту"
 	icon_state = "silver"
@@ -217,4 +211,14 @@
 	info = "Кажется будто она светится."
 
 /obj/item/id_skin/neon/colored/attack_self(mob/living as mob)
+	change_color()
+
+/obj/item/id_skin/snake
+	name = "\improper бегущая наклейка на карту"
+	desc = "Она что-то загружает?"
+	icon_state = "snake"
+	pronoun_name = "бегущуюнаклейку"
+	info = "Бегает и бегает..."
+
+/obj/item/id_skin/snake/attack_self(mob/living as mob)
 	change_color()
