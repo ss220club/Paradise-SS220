@@ -127,9 +127,9 @@
 	info = "На ней серебрянная наклейка."
 
 /obj/item/id_skin/silver/colored
-	name = "\improper металлическая голо-наклейка"
-	desc = "Голографическая наклейка на карту, изготовленная из специального материала, похожего на металл. Вы можете выбрать цвет который она примет."
-	pronoun_name = "металлическую голо-наклейку"
+	name = "\improper серебрянная голо-наклейка"
+	desc = "Голографическая наклейка на карту, изготовленная из специального материала, похожего на серебро. Вы можете выбрать цвет который она примет."
+	pronoun_name = "серебрянную голо-наклейку"
 	icon_state = "colored_shiny"
 	info = "На ней металлическая голо-наклейка."
 
@@ -138,36 +138,59 @@
 
 /obj/item/id_skin/gold
 	name = "\improper золотая наклейка на карту"
+	desc = "Можно продать какому-то дураку за баснословные деньги. Ой..."
 	icon_state = "gold"
 	pronoun_name = "золотую наклейку"
 	info = "На ней золотая наклейка."
 
 /obj/item/id_skin/business
 	name = "\improper бизнесменская наклейка на карту"
+	desc = "Осталось раздобыть портмоне и стильный костюм."
 	icon_state = "business"
 	pronoun_name = "бизнесменскую наклейку"
 	info = "На ней бизнесменская наклейка."
 
 /obj/item/id_skin/lifetime
 	name = "\improper стильная наклейка на карту"
+	desc = "Ничего особенного, но что-то в этом есть..."
 	icon_state = "lifetime"
 	pronoun_name = "стильную наклейку"
 	info = "На ней стильная наклейка."
 
 /obj/item/id_skin/ussp
 	name = "\improper коммунистическая наклейка на карту"
+	desc = "Партия гордится вами! Возьмите своя миска-рис в ближайшем баре."
 	icon_state = "ussp"
 	pronoun_name = "коммунистическую наклейку"
 	info = "На ней коммунистическая наклейка."
 
 /obj/item/id_skin/clown
 	name = "\improper клоунская наклейка на карту"
+	desc = "HONK!"
 	icon_state = "clown"
 	pronoun_name = "клоунскую наклейку"
 	info = "На ней клоунская наклейка. HONK!"
 
+/obj/item/id_skin/neon
+	name = "\improper неоновая наклейка на карту"
+	desc = "Неоновая наклейка в цианово-розовых цветах."
+	icon_state = "neon"
+	pronoun_name = "неоновую наклейку"
+	info = "Кажется будто она светится."
+
+/obj/item/id_skin/neon/colored
+	name = "\improper неоновая голо-наклейка на карту"
+	desc = "Какая же она яркая... Ещё и цвета меняет!"
+	icon_state = "colored_neon"
+	pronoun_name = "неоновую наклейку"
+	info = "Кажется будто она светится."
+
+/obj/item/id_skin/neon/colored/attack_self(mob/living as mob)
+	change_color()
+
 /obj/item/id_skin/rainbow
 	name = "\improper радужная наклейка на карту"
+	desc = "Переливается всеми цветами радуги!"
 	icon_state = "rainbow"
 	pronoun_name = "радужную наклейку"
 	info = "На ней радужная наклейка. Одобряемо."
@@ -181,43 +204,24 @@
 
 /obj/item/id_skin/kitty
 	name = "\improper кото-клейка на карту"
-	desc = "Прекрасная наклейка, которая делает вашу карту похожей на котика."
+	desc = "Прекрасная наклейка, которая делает вашу карту похожей на котика. UwU."
 	icon_state = "kitty"
 	pronoun_name = "кото-клейку"
 	info = "Так и хочется погладить, жаль это всего-лишь наклейка..."
 
 /obj/item/id_skin/kitty/colored
-	name = "\improper цветная кото-клейка на карту"
+	name = "\improper голо-кото-клейка на карту"
 	desc = "Прекрасная наклейка, которая делает вашу карту похожей на котика. Эта может менять цвет."
 	icon_state = "colored_kitty"
-	pronoun_name = "кото-клейку"
-	info = "Так и хочется погладить, жаль это всего-лишь наклейка..."
 
 /obj/item/id_skin/kitty/colored/attack_self(mob/living as mob)
-	change_color()
-
-/obj/item/id_skin/neon
-	name = "\improper неоновая наклейка на карту"
-	desc = "Неоновая наклейка в цианово-розовых цветах."
-	icon_state = "neon"
-	pronoun_name = "неоновую наклейку"
-	info = "Кажется будто она светится."
-
-/obj/item/id_skin/neon/colored
-	name = "\improper цветная неоновая наклейка на карту"
-	desc = "Какая же она яркая... Ещё и цвета меняет!"
-	icon_state = "colored_neon"
-	pronoun_name = "неоновую наклейку"
-	info = "Кажется будто она светится."
-
-/obj/item/id_skin/neon/colored/attack_self(mob/living as mob)
 	change_color()
 
 /obj/item/id_skin/snake
 	name = "\improper бегущая наклейка на карту"
 	desc = "Она что-то загружает?"
 	icon_state = "snake"
-	pronoun_name = "бегущуюнаклейку"
+	pronoun_name = "бегущую наклейку"
 	info = "Бегает и бегает..."
 
 /obj/item/id_skin/snake/attack_self(mob/living as mob)
