@@ -32,6 +32,7 @@
 /obj/structure/sign/poster/contraband/wanted
 	name = "Вотер Потассиумович"
 	desc = "На плакате вы видите: лысый, черноглазый мужчина, лет 30, и его разыскивают на просторах всего космоса. Что он сделал, чтобы его так разыскивали..."
+	icon = 'modular_ss220/objects/icons/posters.dmi'
 	icon_state = "contraband7"
 
 // Legit
