@@ -231,24 +231,19 @@
 /datum/supply_packs/misc/id_skins
 	name = "Наклейки на карточку"
 	containertype = /obj/structure/closet/crate/plastic
-	contains = list(/obj/item/beach_ball/dodgeball,
-					/obj/item/beach_ball/dodgeball,
-					/obj/item/gun/energy/laser/tag/red,
-					/obj/item/gun/energy/laser/tag/red,
-					/obj/item/gun/energy/laser/tag/red,
-					/obj/item/gun/energy/laser/tag/blue,
-					/obj/item/gun/energy/laser/tag/blue,
-					/obj/item/gun/energy/laser/tag/blue,
-					/obj/item/clothing/suit/redtag,
-					/obj/item/clothing/suit/redtag,
-					/obj/item/clothing/suit/redtag,
-					/obj/item/clothing/suit/bluetag,
-					/obj/item/clothing/suit/bluetag,
-					/obj/item/clothing/suit/bluetag,
-					/obj/item/clothing/head/helmet/redtaghelm,
-					/obj/item/clothing/head/helmet/bluetaghelm)
+	contains = list(
+		/obj/effect/spawner/random_spawners/id_skins,
+		/obj/effect/spawner/random_spawners/id_skins,
+		/obj/effect/spawner/random_spawners/id_skins,
+		/obj/effect/spawner/random_spawners/id_skins,
+		/obj/effect/spawner/random_spawners/id_skins,
+		/obj/effect/spawner/random_spawners/id_skins,
+		/obj/effect/spawner/random_spawners/id_skins,
+		/obj/effect/spawner/random_spawners/id_skins,
+		/obj/effect/spawner/random_spawners/id_skins,
+		/obj/effect/spawner/random_spawners/id_skins,)
 	cost = 2000
-	containername = "laser tag crate"
+	containername = "ящик с наклейками"
 
 // Spawner
 /obj/effect/spawner/random_spawners/id_skins
