@@ -141,6 +141,7 @@
 	info = "На ней голо-наклейка."
 
 /obj/item/id_skin/colored/Initialize(mapload)
+	. = ..()
 	update_icon_state()
 
 /obj/item/id_skin/colored/attack_self(mob/living as mob)
@@ -160,6 +161,7 @@
 	info = "На ней металлическая голо-наклейка."
 
 /obj/item/id_skin/silver/colored/Initialize(mapload)
+	. = ..()
 	update_icon_state()
 
 /obj/item/id_skin/silver/colored/attack_self(mob/living as mob)
@@ -215,6 +217,7 @@
 	info = "Кажется будто она светится."
 
 /obj/item/id_skin/neon/colored/Initialize(mapload)
+	. = ..()
 	update_icon_state()
 
 /obj/item/id_skin/neon/colored/attack_self(mob/living as mob)
@@ -247,6 +250,7 @@
 	icon_state = "colored_kitty"
 
 /obj/item/id_skin/kitty/colored/Initialize(mapload)
+	. = ..()
 	update_icon_state()
 
 /obj/item/id_skin/kitty/colored/attack_self(mob/living as mob)
@@ -260,6 +264,7 @@
 	info = "Бегает и бегает..."
 
 /obj/item/id_skin/snake/Initialize(mapload)
+	. = ..()
 	update_icon_state()
 
 /obj/item/id_skin/snake/attack_self(mob/living as mob)
