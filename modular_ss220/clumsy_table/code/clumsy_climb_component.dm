@@ -39,10 +39,10 @@
 	if(!user.throwing)
 		max_thrown_objects = max_thrown_objects_low
 
-	items_throw(user)
+	throw_items(user)
 
 
-/datum/component/clumsy_climb/proc/items_throw(mob/living/user)
+/datum/component/clumsy_climb/proc/throw_items(mob/living/user)
 	if(!user)
 		return
 
@@ -78,8 +78,8 @@
 		item_to_throw.throw_at(target = thrown_target, range = 1, speed = 1)
 		item_to_throw.force *= force_mod
 		item_to_throw.throwforce *= force_mod //no killing using shards :lul:
-		item_to_throw.pixel_x = rand(-6, 6)
-		item_to_throw.pixel_y = rand(0, 10)
+		pixel_x = rand(-10, 10)
+		pixel_y = rand(-4, 16)
 		item_to_throw.force /= force_mod
 		item_to_throw.throwforce /= force_mod
 
