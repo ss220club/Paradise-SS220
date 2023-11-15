@@ -201,3 +201,20 @@
 
 /obj/item/id_skin/kitty/colored/attack_self(mob/living as mob)
 	change_color()
+
+/obj/item/id_skin/neon
+	name = "\improper неоновая наклейка на карту"
+	desc = "Неоновая наклейка в цианово-розовых цветах."
+	icon_state = "neon"
+	pronoun_name = "неоновую наклейку"
+	info = "Кажется будто она светится."
+
+/obj/item/id_skin/neon/colored
+	name = "\improper цветная неоновая наклейка на карту"
+	desc = "Какая же она яркая... Ещё и цвета меняет!"
+	icon_state = "colored_neon"
+	pronoun_name = "неоновую наклейку"
+	info = "Кажется будто она светится."
+
+/obj/item/id_skin/neon/colored/attack_self(mob/living as mob)
+	change_color()
