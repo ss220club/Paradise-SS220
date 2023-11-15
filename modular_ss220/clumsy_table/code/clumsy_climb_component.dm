@@ -23,7 +23,9 @@
 
 /datum/component/clumsy_climb/proc/cross(atom/table, mob/living/user)
 	SIGNAL_HANDLER
+	INVOKE_ASYNC(src, PROC_REF(try_clumsy), table, user)
 
+/datum/component/clumsy_climb/proc/try_clumsy(atom/table, mob/living/user)
 	if(!table.contents)
 		return
 
@@ -37,10 +39,10 @@
 	if(!user.throwing)
 		max_thrown_objects = max_thrown_objects_low
 
-	clumsy_stuff(user)
+	items_throw(user)
 
 
-/datum/component/clumsy_climb/proc/clumsy_stuff(mob/living/user)
+/datum/component/clumsy_climb/proc/items_throw(mob/living/user)
 	if(!user)
 		return
 
