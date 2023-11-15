@@ -77,6 +77,12 @@
 	var/info = "На ней наклейка."
 	var/list/color_list = list("Красный", "Зелёный", "Синий", "Жёлтый", "Оранжевый", "Фиолетовый", "Голубой", "Циановый", "Аквамариновый", "Розовый")
 
+
+/obj/item/id_skin/Initialize(mapload)
+	. = ..()
+	pixel_y = rand(-5, 5)
+	pixel_x = rand(-5, 5)
+
 /obj/item/id_skin/proc/change_color()
 	var/choice = input(usr, "Какой цвет предпочитаете?", "Выбор цвета") as null|anything in list("Выбрать предустановленный", "Выбрать вручную")
 	if(!choice)
