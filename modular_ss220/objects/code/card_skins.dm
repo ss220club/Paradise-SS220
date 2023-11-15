@@ -226,3 +226,48 @@
 
 /obj/item/id_skin/snake/attack_self(mob/living as mob)
 	change_color()
+
+// Supply Crate
+/datum/supply_packs/misc/id_skins
+	name = "Наклейки на карточку"
+	containertype = /obj/structure/closet/crate/plastic
+	contains = list(/obj/item/beach_ball/dodgeball,
+					/obj/item/beach_ball/dodgeball,
+					/obj/item/gun/energy/laser/tag/red,
+					/obj/item/gun/energy/laser/tag/red,
+					/obj/item/gun/energy/laser/tag/red,
+					/obj/item/gun/energy/laser/tag/blue,
+					/obj/item/gun/energy/laser/tag/blue,
+					/obj/item/gun/energy/laser/tag/blue,
+					/obj/item/clothing/suit/redtag,
+					/obj/item/clothing/suit/redtag,
+					/obj/item/clothing/suit/redtag,
+					/obj/item/clothing/suit/bluetag,
+					/obj/item/clothing/suit/bluetag,
+					/obj/item/clothing/suit/bluetag,
+					/obj/item/clothing/head/helmet/redtaghelm,
+					/obj/item/clothing/head/helmet/bluetaghelm)
+	cost = 2000
+	containername = "laser tag crate"
+
+// Spawner
+/obj/effect/spawner/random_spawners/id_skins
+	name = "random ID skins"
+	icon = 'modular_ss220/maps220/icons/spawner_icons.dmi'
+	icon_state = "ID_Random"
+	result = list(
+	/obj/item/id_skin/colored = 1,
+	/obj/item/id_skin/silver/colored = 1,
+	/obj/item/id_skin/silver = 1,
+	/obj/item/id_skin/gold = 1,
+	/obj/item/id_skin/business = 1,
+	/obj/item/id_skin/lifetime = 1,
+	/obj/item/id_skin/ussp = 1,
+	/obj/item/id_skin/clown = 1,
+	/obj/item/id_skin/neon = 1,
+	/obj/item/id_skin/neon/colored = 1,
+	/obj/item/id_skin/rainbow = 1,
+	/obj/item/id_skin/space = 1,
+	/obj/item/id_skin/kitty = 1,
+	/obj/item/id_skin/kitty/colored = 1,
+	/obj/item/id_skin/snake = 1)
