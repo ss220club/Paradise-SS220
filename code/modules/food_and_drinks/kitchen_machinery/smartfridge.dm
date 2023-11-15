@@ -4,7 +4,7 @@
   * Stores items of a specified type.
   */
 /obj/machinery/smartfridge
-	name = "\improper SmartFridge"
+	name = "\improper умный холодильник"
 	icon = 'icons/obj/vending.dmi'
 	icon_state = "smartfridge"
 	layer = 2.9
@@ -181,11 +181,11 @@
 		SStgui.update_uis(src)
 		return
 	if(stat & (BROKEN|NOPOWER))
-		to_chat(user, "<span class='notice'>\The [src] is unpowered and useless.</span>")
+		to_chat(user, "<span class='notice'>[src] обесточен и бесполезен.</span>")
 		return
 
 	if(load(O, user))
-		user.visible_message("<span class='notice'>[user] has added \the [O] to \the [src].</span>", "<span class='notice'>You add \the [O] to \the [src].</span>")
+		user.visible_message("<span class='notice'>[user] положил [O] в [src].</span>", "<span class='notice'>Вы положили [O] в [src].</span>")
 		SStgui.update_uis(src)
 		update_icon(UPDATE_OVERLAYS)
 	else if(istype(O, /obj/item/storage/bag) || istype(O, /obj/item/storage/box))
@@ -195,14 +195,14 @@
 			if(load(G, user))
 				items_loaded++
 		if(items_loaded)
-			user.visible_message("<span class='notice'>[user] loads \the [src] with \the [P].</span>", "<span class='notice'>You load \the [src] with \the [P].</span>")
+			user.visible_message("<span class='notice'>[user] выложил всё из [P] в [src].</span>", "<span class='notice'>Вы выложили всё из [P] в [src].</span>")
 			SStgui.update_uis(src)
 			update_icon(UPDATE_OVERLAYS)
 		var/failed = length(P.contents)
 		if(failed)
-			to_chat(user, "<span class='notice'>[failed] item\s [failed == 1 ? "is" : "are"] refused.</span>")
+			to_chat(user, "<span class='notice'>[failed] [failed == 1 ? "предмет" : "предметы"] отклонены.</span>")
 	else if(!istype(O, /obj/item/card/emag))
-		to_chat(user, "<span class='notice'>\The [src] smartly refuses [O].</span>")
+		to_chat(user, "<span class='notice'>[src] умно отказывается от [O].</span>")
 		return TRUE
 
 /obj/machinery/smartfridge/attack_ai(mob/user)
@@ -227,12 +227,12 @@
 	if(!istype(over_object, /obj/item/storage/pill_bottle)) //Only pill bottles, please
 		return
 	if(stat & (BROKEN|NOPOWER))
-		to_chat(user, "<span class='notice'>\The [src] is unpowered and useless.</span>")
+		to_chat(user, "<span class='notice'>[src] обесточен и бесполезен.</span>")
 		return TRUE
 
 	var/obj/item/storage/box/pillbottles/P = over_object
 	if(!length(P.contents))
-		to_chat(user, "<span class='notice'>\The [P] is empty.</span>")
+		to_chat(user, "<span class='notice'>[P] пуста.</span>")
 		return TRUE
 
 	var/items_loaded = 0
@@ -240,11 +240,11 @@
 		if(load(G, user))
 			items_loaded++
 	if(items_loaded)
-		user.visible_message("<span class='notice'>[user] empties \the [P] into \the [src].</span>", "<span class='notice'>You empty \the [P] into \the [src].</span>")
+		user.visible_message("<span class='notice'>[user] опустошает [P] в [src].</span>", "<span class='notice'>Вы опустошаете [P] в [src].</span>")
 		update_icon(UPDATE_OVERLAYS)
 	var/failed = length(P.contents)
 	if(failed)
-		to_chat(user, "<span class='notice'>[failed] item\s [failed == 1 ? "is" : "are"] refused.</span>")
+		to_chat(user, "<span class='notice'>[failed] [failed == 1 ? "предмет" : "предметы"] отклонены.</span>")
 	return TRUE
 
 /obj/machinery/smartfridge/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = TRUE, datum/tgui/master_ui = null, datum/ui_state/state = GLOB.default_state)
@@ -286,7 +286,7 @@
 	switch(action)
 		if("vend")
 			if(is_secure && !emagged && scan_id && !allowed(usr)) //secure fridge check
-				to_chat(usr, "<span class='warning'>Access denied.</span>")
+				to_chat(usr, "<span class='warning'>Доступ запрещен.</span>")
 				return FALSE
 
 			var/index = text2num(params["index"])
@@ -330,7 +330,7 @@
 /obj/machinery/smartfridge/proc/load(obj/I, mob/user)
 	if(accept_check(I))
 		if(length(contents) >= max_n_of_items)
-			to_chat(user, "<span class='notice'>\The [src] is full.</span>")
+			to_chat(user, "<span class='notice'>[src] полон.</span>")
 			return FALSE
 		else
 			if(isstorage(I.loc))
@@ -343,7 +343,7 @@
 				var/mob/M = I.loc
 				if(M.get_active_hand() == I)
 					if(!M.drop_item())
-						to_chat(user, "<span class='warning'>\The [I] is stuck to you!</span>")
+						to_chat(user, "<span class='warning'>Вы не можете отпустить [I].</span>")
 						return FALSE
 				else
 					M.unEquip(I)
@@ -378,7 +378,7 @@
 		return FALSE
 
 	INVOKE_ASYNC(throw_item, TYPE_PROC_REF(/atom/movable, throw_at), target, 16, 3, src)
-	visible_message("<span class='warning'>[src] launches [throw_item.name] at [target.name]!</span>")
+	visible_message("<span class='warning'>[src] выстреливает [throw_item.name] в [target.name]!</span>")
 	return TRUE
 
 /**
@@ -402,7 +402,7 @@
 
 /obj/machinery/smartfridge/secure/emag_act(mob/user)
 	emagged = TRUE
-	to_chat(user, "<span class='notice'>You short out the product lock on \the [src].</span>")
+	to_chat(user, "<span class='notice'>Вы замыкаете замок на [src].</span>")
 
 /obj/machinery/smartfridge/secure/emp_act(severity)
 	if(!emagged && prob(40 / severity))
@@ -410,8 +410,8 @@
 		emagged = TRUE
 
 /obj/machinery/smartfridge/food
-	name = "\improper Food Storage"
-	desc = "A fridge for storing and keeping your food cold."
+	name = "\improper Хранилище продуктов питания"
+	desc = "Холодильник для хранения и сохранения продуктов в холодном состоянии."
 
 /obj/machinery/smartfridge/food/Initialize(mapload)
 	. = ..()
@@ -437,8 +437,8 @@
   * Formerly known as MegaSeed Servitor, but renamed to avoid confusion with the [vending machine][/obj/machinery/economy/vending/hydroseeds].
   */
 /obj/machinery/smartfridge/seeds
-	name = "\improper Seed Storage"
-	desc = "When you need seeds fast!"
+	name = "\improper Хранилище семян"
+	desc = "Когда срочно нужны семена!"
 	icon = 'icons/obj/vending.dmi'
 	icon_state = "seeds"
 	board_type = /obj/machinery/smartfridge/seeds
@@ -455,8 +455,8 @@
   * Variant of the [Smart Fridge][/obj/machinery/smartfridge] that holds food and drinks in a mobile form
   */
 /obj/machinery/smartfridge/foodcart
-	name = "food and drink cart"
-	desc = "A portable cart for hawking your food and drink wares around the station"
+	name = "тележка с едой и напитками"
+	desc = "Переносная тележка для продажи еды и напитков по станции."
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "foodcart"
 	anchored = FALSE
@@ -496,8 +496,8 @@
   *
   */
 /obj/machinery/smartfridge/secure/circuits
-	name = "\improper Circuit Board Storage"
-	desc = "A storage unit for circuits."
+	name = "\improper Хранилище печатных плат"
+	desc = "Хранилище для печатных плат"
 	icon_state = "circuits"
 	icon_lightmask = "circuits"
 	visible_contents = TRUE
@@ -522,8 +522,8 @@
 			fill_level = 3
 
 /obj/machinery/smartfridge/secure/circuits/aiupload
-	name = "\improper AI Laws Storage"
-	desc = "A storage unit filled with circuits to be uploaded to an Artificial Intelligence."
+	name = "\improper Хранилище законов ИИ"
+	desc = "Хранилище, заполненное платами для загрузки в искусственный интеллект."
 	board_type = /obj/machinery/smartfridge/secure/circuits/aiupload
 
 /obj/machinery/smartfridge/secure/circuits/aiupload/Initialize(mapload)
@@ -531,7 +531,7 @@
 	req_access_txt = "[ACCESS_AI_UPLOAD]"
 
 /obj/machinery/smartfridge/secure/circuits/aiupload/experimental
-	name = "\improper Experimental Laws Storage"
+	name = "\improper Хранилище экспериментальных законов"
 	starting_items = list(
 		/obj/item/aiModule/cctv = 1,
 		/obj/item/aiModule/hippocratic = 1,
@@ -547,7 +547,7 @@
 	req_access_txt = "[ACCESS_RD]"
 
 /obj/machinery/smartfridge/secure/circuits/aiupload/highrisk
-	name = "\improper High-Risk Laws Storage"
+	name = "\improper Хранилище особо ценных законов"
 	starting_items = list(
 		/obj/item/aiModule/freeform = 1,
 		/obj/item/aiModule/freeformcore = 1,
@@ -568,8 +568,8 @@
   * Medical variant of the [Smart Fridge][/obj/machinery/smartfridge].
   */
 /obj/machinery/smartfridge/medbay
-	name = "\improper Refrigerated Medicine Storage"
-	desc = "A refrigerated storage unit for storing medicine and chemicals."
+	name = "\improper Медицинская холодильная камера"
+	desc = "Холодильная камера для хранения медикаментов и химикатов."
 	icon_state = "smartfridge" //To fix the icon in the map editor.
 	board_type = /obj/machinery/smartfridge/medbay
 
@@ -589,8 +589,8 @@
   * Secure, Xenobiology variant of the [Smart Fridge][/obj/machinery/smartfridge].
   */
 /obj/machinery/smartfridge/secure/extract
-	name = "\improper Slime Extract Storage"
-	desc = "A refrigerated storage unit for slime extracts"
+	name = "\improper Хранилище экстракта слизи"
+	desc = "Холодильная камера для хранения экстракта слизи"
 	board_type = /obj/machinery/smartfridge/secure/extract
 
 /obj/machinery/smartfridge/secure/extract/Initialize(mapload)
@@ -606,8 +606,8 @@
   * Secure, Medical variant of the [Smart Fridge][/obj/machinery/smartfridge].
   */
 /obj/machinery/smartfridge/secure/medbay
-	name = "\improper Secure Refrigerated Medicine Storage"
-	desc = "A refrigerated storage unit for storing medicine and chemicals."
+	name = "\improper Защищённая медицинская холодильная камера"
+	desc = "Холодильная камера для хранения медикаментов и химикатов."
 	icon_state = "smartfridge" //To fix the icon in the map editor.
 	req_one_access_txt = "5;33"
 	board_type = /obj/machinery/smartfridge/secure/medbay
@@ -628,8 +628,8 @@
   * Secure, Chemistry variant of the [Smart Fridge][/obj/machinery/smartfridge].
   */
 /obj/machinery/smartfridge/secure/chemistry
-	name = "\improper Smart Chemical Storage"
-	desc = "A refrigerated storage unit for medicine and chemical storage."
+	name = "\improper Умное хранилище химикатов"
+	desc = "Холодильная камера для хранения медикаментов и химикатов."
 	icon_state = "smartfridge" //To fix the icon in the map editor.
 	board_type = /obj/machinery/smartfridge/secure/chemistry
 
@@ -677,8 +677,8 @@
   * Disk variant of the [Smart Fridge][/obj/machinery/smartfridge].
   */
 /obj/machinery/smartfridge/disks
-	name = "disk compartmentalizer"
-	desc = "A machine capable of storing a variety of disks. Denoted by most as the DSU (disk storage unit)."
+	name = "разделитель дисков"
+	desc = "Машина, способная хранить множество дисков. Обозначается большинством как ДЗУ (дисковое запоминающее устройство)."
 	icon_state = "disktoaster"
 	icon_lightmask = "disktoaster"
 	pass_flags = PASSTABLE
@@ -704,8 +704,8 @@
 		if(4 to INFINITY)
 			fill_level = 4
 /obj/machinery/smartfridge/id
-	name = "identification card compartmentalizer"
-	desc = "A machine capable of storing identification cards and PDAs. It's great for lost and terminated cards."
+	name = "разделитель ID-карт"
+	desc = "Машина, способная хранить ID-карты и КПК. Она отлично подходит для потерянных и аннулированных ID-карт."
 	icon_state = "idbox"
 	icon_lightmask = TRUE
 	pass_flags = PASSTABLE
@@ -726,8 +726,8 @@
   *
   */
 /obj/machinery/smartfridge/secure/chemistry/virology
-	name = "\improper Smart Virus Storage"
-	desc = "A refrigerated storage unit for volatile sample storage."
+	name = "\improper Умное хранилище вирусов"
+	desc = "Холодильная камера для хранения летучих образцов."
 	board_type = /obj/machinery/smartfridge/secure/chemistry/virology
 	icon_addon = "smartfridge_virology"
 
@@ -786,8 +786,8 @@
   * Drink variant of the [Smart Fridge][/obj/machinery/smartfridge].
   */
 /obj/machinery/smartfridge/drinks
-	name = "\improper Drink Showcase"
-	desc = "A refrigerated storage unit for tasty tasty alcohol."
+	name = "\improper Витрина с напитками"
+	desc = "Холодильная камера для хранения вкусного алкоголя."
 	board_type = /obj/machinery/smartfridge/drinks
 
 /obj/machinery/smartfridge/drinks/Initialize(mapload)
@@ -805,8 +805,8 @@
   * Doesn't have components.
   */
 /obj/machinery/smartfridge/drying_rack
-	name = "drying rack"
-	desc = "A wooden contraption, used to dry plant products, food and leather."
+	name = "сушилка"
+	desc = "Деревянное приспособление, используемое для сушки растительных продуктов, продуктов питания и кожи."
 	icon = 'icons/obj/hydroponics/equipment.dmi'
 	icon_state = "drying_rack"
 	requires_power = FALSE

@@ -30,18 +30,18 @@
 /obj/machinery/processor/examine(mob/user)
 	. = ..()
 	if(!anchored)
-		. += "<span class='notice'>Alt-click to rotate it.</span>"
+		. += "<span class='notice'>Alt-click чтобы повернуть.</span>"
 	else
-		. += "<span class='notice'>It is secured in place.</span>"
+		. += "<span class='notice'>Закреплён на месте.</span>"
 
 /obj/machinery/processor/AltClick(mob/user)
 	if(user.incapacitated())
-		to_chat(user, "<span class='warning'>You can't do that right now!</span>")
+		to_chat(user, "<span class='warning'>Вы не можете сейчас это сделать!</span>")
 		return
 	if(!Adjacent(user))
 		return
 	if(anchored)
-		to_chat(user, "<span class='warning'>[src] is secured in place!</span>")
+		to_chat(user, "<span class='warning'>[src] закреплён на месте!</span>")
 		return
 	setDir(turn(dir, 90))
 
@@ -67,7 +67,7 @@
 	if(!P)
 		return
 
-	visible_message("<span class='notice'>[picked_slime] is sucked into [src].</span>")
+	visible_message("<span class='notice'>[picked_slime] засосало в [src].</span>")
 	picked_slime.forceMove(src)
 
 //RECIPE DATUMS
@@ -138,7 +138,7 @@
 	var/C = S.cores
 	if(S.stat != DEAD)
 		S.forceMove(processor.drop_location())
-		S.visible_message("<span class='notice'>[S] crawls free of the processor!</span>")
+		S.visible_message("<span class='notice'>[S] вылез из кухонного комбайна!</span>")
 		return
 	for(var/i in 1 to (C+processor.rating_amount-1))
 		new S.coretype(processor.drop_location())
@@ -153,9 +153,9 @@
 	var/mob/living/carbon/human/monkey/O = what
 	if(O.client) //grief-proof
 		O.loc = loc
-		O.visible_message("<span class='notice'>Suddenly [O] jumps out from the processor!</span>", \
-				"<span class='notice'>You jump out of \the [src].</span>", \
-				"<span class='notice'>You hear a chimp.</span>")
+		O.visible_message("<span class='notice'>Внезапно [O] выскакивает из кухонного комбайна!</span>", \
+				"<span class='notice'>Вы выпрыгиваете из [src].</span>", \
+				"<span class='notice'>Вы слышите обезьяну.</span>")
 		return
 	var/obj/item/reagent_containers/glass/bucket/bucket_of_blood = new(loc)
 	var/datum/reagent/blood/B = new()
@@ -186,7 +186,7 @@
 /obj/machinery/processor/attackby(obj/item/O, mob/user, params)
 
 	if(processing)
-		to_chat(user, "<span class='warning'>\the [src] is already processing something!</span>")
+		to_chat(user, "<span class='warning'>[src] уже что-то обрабатывает!</span>")
 		return 1
 
 	if(default_deconstruction_screwdriver(user, "processor_open", "processor", O))
@@ -209,11 +209,11 @@
 	var/datum/food_processor_process/P = select_recipe(what)
 
 	if(!P)
-		to_chat(user, "<span class='warning'>That probably won't blend.</span>")
+		to_chat(user, "<span class='warning'>Кухонный комбайн не может это обработать.</span>")
 		return 1
 
-	user.visible_message("<span class='notice'>\the [user] puts \the [what] into \the [src].</span>", \
-		"<span class='notice'>You put \the [what] into \the [src].")
+	user.visible_message("<span class='notice'>[user] кладёт [what] в [src].</span>", \
+		"<span class='notice'>Вы положили [what] в [src].")
 
 	user.drop_item()
 
@@ -225,24 +225,24 @@
 		return
 
 	if(processing)
-		to_chat(user, "<span class='warning'>\the [src] is already processing something!</span>")
+		to_chat(user, "<span class='warning'>[src] уже что-то обрабатывает!</span>")
 		return 1
 
 	if(contents.len == 0)
-		to_chat(user, "<span class='warning'>\the [src] is empty.</span>")
+		to_chat(user, "<span class='warning'>[src] пуст.</span>")
 		return 1
 	processing = TRUE
 	update_icon(UPDATE_ICON_STATE)
-	user.visible_message("[user] turns on [src].", \
-		"<span class='notice'>You turn on [src].</span>", \
-		"<span class='italics'>You hear a food processor.</span>")
+	user.visible_message("[user] включает [src].", \
+		"<span class='notice'>Вы включаете [src].</span>", \
+		"<span class='italics'>Вы слышите кухонный комбайн.</span>")
 	playsound(loc, 'sound/machines/blender.ogg', 50, 1)
 	use_power(500)
 	var/total_time = 0
 	for(var/O in contents)
 		var/datum/food_processor_process/P = select_recipe(O)
 		if(!P)
-			log_debug("The [O] in processor([src]) does not have a suitable recipe, but it was somehow put inside of the processor anyways.")
+			log_debug("[O] в кухонном комбайне([src]) не имеет подходящего рецепта, но предмет все равно каким-то образом был помещен внутрь кухонного комбайна.")
 			continue
 		total_time += P.time
 	sleep(total_time / rating_speed)
@@ -250,12 +250,12 @@
 	for(var/O in contents)
 		var/datum/food_processor_process/P = select_recipe(O)
 		if(!P)
-			log_debug("The [O] in processor([src]) does not have a suitable recipe, but it was somehow put inside of the processor anyways.")
+			log_debug("[O] в кухонном комбайне([src]) не имеет подходящего рецепта, но предмет все равно каким-то образом был помещен внутрь кухонного комбайна.")
 			continue
 		P.process_food(loc, O, src)
 	processing = FALSE
 	update_icon(UPDATE_ICON_STATE)
 
-	visible_message("<span class='notice'>\the [src] has finished processing.</span>", \
-		"<span class='notice'>\the [src] has finished processing.</span>", \
-		"<span class='notice'>You hear a food processor stopping.</span>")
+	visible_message("<span class='notice'>[src] закончил обработку.</span>", \
+		"<span class='notice'>[src] закончил обработку.</span>", \
+		"<span class='notice'>Вы слышите, как остановился кухонный комбайн.</span>")
