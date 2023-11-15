@@ -228,20 +228,26 @@
 	change_color()
 
 // Supply Crate
-/datum/supply_packs/misc/id_skins
+/datum/supply_packs/misc/randomised/id_skins
 	name = "Наклейки на карточку"
 	containertype = /obj/structure/closet/crate/plastic
+	num_contained = 10
 	contains = list(
-		/obj/effect/spawner/random_spawners/id_skins,
-		/obj/effect/spawner/random_spawners/id_skins,
-		/obj/effect/spawner/random_spawners/id_skins,
-		/obj/effect/spawner/random_spawners/id_skins,
-		/obj/effect/spawner/random_spawners/id_skins,
-		/obj/effect/spawner/random_spawners/id_skins,
-		/obj/effect/spawner/random_spawners/id_skins,
-		/obj/effect/spawner/random_spawners/id_skins,
-		/obj/effect/spawner/random_spawners/id_skins,
-		/obj/effect/spawner/random_spawners/id_skins,)
+		/obj/item/id_skin/colored,
+		/obj/item/id_skin/silver/colored,
+		/obj/item/id_skin/silver,
+		/obj/item/id_skin/gold,
+		/obj/item/id_skin/business,
+		/obj/item/id_skin/lifetime,
+		/obj/item/id_skin/ussp,
+		/obj/item/id_skin/clown,
+		/obj/item/id_skin/neon,
+		/obj/item/id_skin/neon/colored,
+		/obj/item/id_skin/rainbow,
+		/obj/item/id_skin/space,
+		/obj/item/id_skin/kitty,
+		/obj/item/id_skin/kitty/colored,
+		/obj/item/id_skin/snake)
 	cost = 2000
 	containername = "ящик с наклейками"
 
