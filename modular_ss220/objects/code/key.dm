@@ -1,6 +1,7 @@
 #define ACCESS_VACANT_STORE 401
 
 /obj/item/door_remote/key
+	desc = "Обычный немного ржавый ключ"
 	icon = 'modular_ss220/objects/icons/key.dmi'
 	icon_state = "key"
 	/// Are you already using the key?
