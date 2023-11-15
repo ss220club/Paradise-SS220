@@ -271,3 +271,25 @@
 	/obj/item/id_skin/kitty = 1,
 	/obj/item/id_skin/kitty/colored = 1,
 	/obj/item/id_skin/snake = 1)
+
+/obj/effect/spawner/random_spawners/id_skins/no_chance
+	name = "random ID skins"
+	icon = 'modular_ss220/maps220/icons/spawner_icons.dmi'
+	icon_state = "ID_Random"
+	result = list(
+	/datum/nothing = 80,
+	/obj/item/id_skin/colored = 1,
+	/obj/item/id_skin/silver/colored = 1,
+	/obj/item/id_skin/silver = 1,
+	/obj/item/id_skin/gold = 1,
+	/obj/item/id_skin/business = 1,
+	/obj/item/id_skin/lifetime = 1,
+	/obj/item/id_skin/ussp = 1,
+	/obj/item/id_skin/clown = 1,
+	/obj/item/id_skin/neon = 1,
+	/obj/item/id_skin/neon/colored = 1,
+	/obj/item/id_skin/rainbow = 1,
+	/obj/item/id_skin/space = 1,
+	/obj/item/id_skin/kitty = 1,
+	/obj/item/id_skin/kitty/colored = 1,
+	/obj/item/id_skin/snake = 1)
