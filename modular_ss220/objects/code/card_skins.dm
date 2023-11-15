@@ -19,23 +19,27 @@
 	if(istype(item, /obj/item/id_skin))
 		if(skin_applied)
 			to_chat(usr, span_warning("На карте уже есть наклейка, сначала соскребите её!"))
-			return
+			return FALSE
+
 		if(!skinable)
 			to_chat(usr, span_warning("Наклейка не подходит для [src]!"))
-			return
+			return FALSE
+
 		to_chat(user, span_notice("Вы начинаете наносить наклейку на карту."))
-		if(do_after(usr, 2 SECONDS, target = src, progress = TRUE, allow_moving = TRUE))
-			var/obj/item/id_skin/skin = item
-			var/mutable_appearance/card_skin = mutable_appearance(skin.icon, skin.icon_state)
-			card_skin.color = skin.color
-			to_chat(user, span_notice("Вы наклеили [skin.pronoun_name] на [src]."))
-			desc += "<br>[skin.info]"
-			skin_applied = item
-			user.drop_item()
-			item.forceMove(src)
-			skin_applied = item
-			add_overlay(card_skin)
-			return
+		if(!do_after(usr, 2 SECONDS, target = src, progress = TRUE, allow_moving = TRUE))
+			return FALSE
+
+		var/obj/item/id_skin/skin = item
+		var/mutable_appearance/card_skin = mutable_appearance(skin.icon, skin.icon_state)
+		card_skin.color = skin.color
+		to_chat(user, span_notice("Вы наклеили [skin.pronoun_name] на [src]."))
+		desc += "<br>[skin.info]"
+		skin_applied = item
+		user.drop_item()
+		item.forceMove(src)
+		skin_applied = item
+		add_overlay(card_skin)
+		return TRUE
 
 /obj/item/card/id/AltClick(mob/user)
 	remove_skin()
@@ -77,11 +81,24 @@
 	var/info = "На ней наклейка."
 	var/list/color_list = list("Красный", "Зелёный", "Синий", "Жёлтый", "Оранжевый", "Фиолетовый", "Голубой", "Циановый", "Аквамариновый", "Розовый")
 
-
 /obj/item/id_skin/Initialize(mapload)
 	. = ..()
 	pixel_y = rand(-5, 5)
 	pixel_x = rand(-5, 5)
+
+/obj/item/id_skin/update_icon_state()
+	if(!color)
+		color = pick(
+			LIGHT_COLOR_RED,
+			LIGHT_COLOR_GREEN,
+			LIGHT_COLOR_LIGHTBLUE,
+			LIGHT_COLOR_HOLY_MAGIC,
+			LIGHT_COLOR_ORANGE,
+			LIGHT_COLOR_LAVENDER,
+			LIGHT_COLOR_LIGHT_CYAN,
+			LIGHT_COLOR_CYAN,
+			LIGHT_COLOR_BLUEGREEN,
+			LIGHT_COLOR_PINK)
 
 /obj/item/id_skin/proc/change_color()
 	var/choice = input(usr, "Какой цвет предпочитаете?", "Выбор цвета") as null|anything in list("Выбрать предустановленный", "Выбрать вручную")
@@ -123,6 +140,9 @@
 	pronoun_name = "голо-наклейку"
 	info = "На ней голо-наклейка."
 
+/obj/item/id_skin/colored/Initialize(mapload)
+	update_icon_state()
+
 /obj/item/id_skin/colored/attack_self(mob/living as mob)
 	change_color()
 
@@ -138,6 +158,9 @@
 	pronoun_name = "серебрянную голо-наклейку"
 	icon_state = "colored_shiny"
 	info = "На ней металлическая голо-наклейка."
+
+/obj/item/id_skin/silver/colored/Initialize(mapload)
+	update_icon_state()
 
 /obj/item/id_skin/silver/colored/attack_self(mob/living as mob)
 	change_color()
@@ -191,6 +214,9 @@
 	pronoun_name = "неоновую наклейку"
 	info = "Кажется будто она светится."
 
+/obj/item/id_skin/neon/colored/Initialize(mapload)
+	update_icon_state()
+
 /obj/item/id_skin/neon/colored/attack_self(mob/living as mob)
 	change_color()
 
@@ -220,6 +246,9 @@
 	desc = "Прекрасная наклейка, которая делает вашу карту похожей на котика. Эта может менять цвет."
 	icon_state = "colored_kitty"
 
+/obj/item/id_skin/kitty/colored/Initialize(mapload)
+	update_icon_state()
+
 /obj/item/id_skin/kitty/colored/attack_self(mob/living as mob)
 	change_color()
 
@@ -229,6 +258,9 @@
 	icon_state = "snake"
 	pronoun_name = "бегущую наклейку"
 	info = "Бегает и бегает..."
+
+/obj/item/id_skin/snake/Initialize(mapload)
+	update_icon_state()
 
 /obj/item/id_skin/snake/attack_self(mob/living as mob)
 	change_color()
@@ -240,6 +272,12 @@
 	num_contained = 10
 	contains = list(
 		/obj/item/id_skin/colored,
+		/obj/item/id_skin/colored,
+		/obj/item/id_skin/colored,
+		/obj/item/id_skin/colored,
+		/obj/item/id_skin/colored,
+		/obj/item/id_skin/silver/colored,
+		/obj/item/id_skin/silver/colored,
 		/obj/item/id_skin/silver/colored,
 		/obj/item/id_skin/silver,
 		/obj/item/id_skin/gold,
@@ -263,7 +301,7 @@
 	icon = 'modular_ss220/maps220/icons/spawner_icons.dmi'
 	icon_state = "ID_Random"
 	result = list(
-	/obj/item/id_skin/colored = 1,
+	/obj/item/id_skin/colored = 10,
 	/obj/item/id_skin/silver/colored = 1,
 	/obj/item/id_skin/silver = 1,
 	/obj/item/id_skin/gold = 1,
@@ -282,7 +320,7 @@
 /obj/effect/spawner/random_spawners/id_skins/no_chance
 	result = list(
 	/datum/nothing = 80,
-	/obj/item/id_skin/colored = 1,
+	/obj/item/id_skin/colored = 10,
 	/obj/item/id_skin/silver/colored = 1,
 	/obj/item/id_skin/silver = 1,
 	/obj/item/id_skin/gold = 1,
