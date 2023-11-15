@@ -247,7 +247,7 @@
 
 // Spawner
 /obj/effect/spawner/random_spawners/id_skins
-	name = "random ID skins"
+	name = "Случайная наклейка на карту"
 	icon = 'modular_ss220/maps220/icons/spawner_icons.dmi'
 	icon_state = "ID_Random"
 	result = list(
@@ -268,9 +268,6 @@
 	/obj/item/id_skin/snake = 1)
 
 /obj/effect/spawner/random_spawners/id_skins/no_chance
-	name = "random ID skins"
-	icon = 'modular_ss220/maps220/icons/spawner_icons.dmi'
-	icon_state = "ID_Random"
 	result = list(
 	/datum/nothing = 80,
 	/obj/item/id_skin/colored = 1,
