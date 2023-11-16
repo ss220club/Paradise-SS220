@@ -42,33 +42,30 @@
 		return TRUE
 
 /obj/item/card/id/AltClick(mob/user)
-	remove_skin()
-
-/obj/item/card/id/verb/remove_skin()
-	set name = "Соскрести наклейку"
-	set category = "Object"
-	set src in range(0)
-
-	if(usr.stat || HAS_TRAIT(usr, TRAIT_UI_BLOCKED) || usr.restrained())
+	if(usr.stat || usr.restrained())
+		to_chat(usr, span_warning("У вас нет возможности снять наклейку!"))
 		return
 
 	if(skin_applied != null)
 		if(usr.a_intent == INTENT_HARM)
 			to_chat(usr, span_warning("Вы срываете наклейку с карты!"))
-			src.overlays.Cut()
 			playsound(src.loc, 'sound/items/poster_ripped.ogg', 50, 1)
 			skin_applied = null
 			desc = initial(desc)
+			src.overlays.Cut()
 		else if(usr.a_intent == INTENT_HELP)
 			to_chat(usr, span_notice("Вы начинаете аккуратно снимать наклейку с карты."))
-			if(do_after(usr, 5 SECONDS, target = src, progress = TRUE))
-				to_chat(usr, span_notice("Вы сняли наклейку с карты."))
+			if(!do_after(usr, 5 SECONDS, target = src, progress = TRUE))
+				return FALSE
+
+			to_chat(usr, span_notice("Вы сняли наклейку с карты."))
+			if(!usr.get_active_hand() && Adjacent(usr))
+				usr.put_in_hands(skin_applied)
+			else
 				skin_applied.forceMove(get_turf(src))
-				if(!usr.get_active_hand() && Adjacent(usr))
-					usr.put_in_hands(skin_applied)
-				skin_applied = null
-				desc = initial(desc)
-				src.overlays.Cut()
+			skin_applied = null
+			desc = initial(desc)
+			src.overlays.Cut()
 	else
 		to_chat(usr, span_warning("На карте нет наклейки!"))
 
