@@ -1,5 +1,12 @@
 import { useBackend, useLocalState } from '../backend';
-import { Button, Section, Flex, Input, Slider, ProgressBar } from '../components';
+import {
+  Button,
+  Section,
+  Flex,
+  Input,
+  Slider,
+  ProgressBar,
+} from '../components';
 import { Window } from '../layouts';
 import { filter, sortBy } from 'common/collections';
 import { FlexItem } from '../components/Flex';
@@ -56,11 +63,7 @@ export const Photocopier220 = (props, context) => {
                   Заряд тонера:
                 </Flex.Item>
                 <Flex.Item width="50%" mt={0.5}>
-                  <ProgressBar
-                    maxValue={30}
-                    minValue={0}
-                    value={data.toner}
-                  />
+                  <ProgressBar maxValue={30} minValue={0} value={data.toner} />
                 </Flex.Item>
               </Flex>
               <Flex>
@@ -133,73 +136,81 @@ export const Photocopier220 = (props, context) => {
                 <Flex.Item mr="10px" mt={1.2} color="grey">
                   Количество:
                 </Flex.Item>
-                  <Slider
-                    ml={3.25}
-                    mt={0.75}
-                    animated
-                    minValue={1}
-                    maxValue={maxcopies}
-                    value={copies}
-                    onChange={(e, value) =>
-                      act('copies', {
-                        new: value,
-                      })
-                    }
-                  />
+                <Slider
+                  ml={3.25}
+                  mt={0.75}
+                  animated
+                  minValue={1}
+                  maxValue={maxcopies}
+                  value={copies}
+                  onChange={(e, value) =>
+                    act('copies', {
+                      new: value,
+                    })
+                  }
+                />
               </Flex>
             </Section>
-            <Section title="Бюрократия">
-              <Flex>
-                <Flex.Item mr={2} color="grey">
-                  Форма:
-                </Flex.Item>
-                <FlexItem bold>
-                  {data.form_id === '' ? 'Не выбрана' : data.form_id}
-                </FlexItem>
-              </Flex>
-              <Flex direction="column" mt={2}>
-                <Flex.Item >
-                  <Button
-                    mb={1}
-                    fluid
-                    icon="chevron-right"
-                    content="Все формы"
-                    selected={data.category === '' ? 'selected' : null}
-                    onClick={() =>
-                      act('choose_category', {
-                        category: null,
-                      })
-                    }
-                  />
-                </Flex.Item>
-                {categories.map((category) => (
-                <Flex.Item key={category}>
-                  <Button
-                    mb={1}
-                    fluid
-                    key={category}
-                    icon="chevron-right"
-                    content={category}
-                    selected={data.category === category ? 'selected' : null}
-                    onClick={() =>
-                      act('choose_category', {
-                        category: category,
+            <Flex.Item className="Layout__content--flexColumn" height="355px">
+              <Section title="Бюрократия" flexGrow="1">
+                <Flex>
+                  <Flex.Item mr={2} color="grey">
+                    Форма:
+                  </Flex.Item>
+                  <FlexItem bold>
+                    {data.form_id === '' ? 'Не выбрана' : data.form_id}
+                  </FlexItem>
+                </Flex>
+                <Flex direction="column" mt={2}>
+                  <Flex.Item>
+                    <Button
+                      mb={1}
+                      mt={0.5}
+                      fluid
+                      icon="chevron-right"
+                      content="Все формы"
+                      selected={data.category === '' ? 'selected' : null}
+                      onClick={() =>
+                        act('choose_category', {
+                          category: null,
                         })
                       }
                     />
                   </Flex.Item>
-                ))}
-              </Flex>
-            </Section>
+                  {categories.map((category) => (
+                    <Flex.Item key={category}>
+                      <Button
+                        mb={1}
+                        fluid
+                        key={category}
+                        icon="chevron-right"
+                        content={category}
+                        selected={
+                          data.category === category ? 'selected' : null
+                        }
+                        onClick={() =>
+                          act('choose_category', {
+                            category: category,
+                          })
+                        }
+                      />
+                    </Flex.Item>
+                  ))}
+                </Flex>
+              </Section>
+            </Flex.Item>
           </Flex.Item>
           <Flex.Item basis="65%" className="Layout__content--flexColumn">
-            <Section title={data.category === '' ? 'Все формы' : data.category} flexGrow="1">
+            <Section
+              title={data.category === '' ? 'Все формы' : data.category}
+              flexGrow="1"
+            >
               <Input
                 fluid
                 placeholder="Поиск формы"
                 onInput={(e, value) => setSearchText(value)}
               />
-              <Flex direction="column" mt={1.5} >
+              <Flex direction="column" mt={1.6} wrap="wrap">
                 {category.map((form) => (
                   <Flex.Item key={form.path}>
                     <Button
@@ -207,7 +218,6 @@ export const Photocopier220 = (props, context) => {
                       fluid
                       key={form.path}
                       content={form.id + ': ' + form.altername.trimLongStr(37)}
-                      tooltip={form.id + ': ' + form.altername}
                       selected={data.form_id === form.id ? 'selected' : null}
                       onClick={() =>
                         act('choose_form', {
