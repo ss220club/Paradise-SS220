@@ -8,7 +8,7 @@
 
 	log_debug("Try redirect [ckey] to queue server")
 
-	var/result = world.Export("[GLOB.configuration.overflow.overflow_server_location]?ping")
+	var/result = world.Export("[GLOB.configuration.overflow.overflow_server_location]?ping", null, TRUE)
 
 	log_debug("Ping queue server result [result]")
 
