@@ -22,7 +22,3 @@
 				return FALSE
 		if(title in GLOB.Jobs_tittles_SS220)
 			return FALSE
-
-	return .
-
-
