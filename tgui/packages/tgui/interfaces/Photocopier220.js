@@ -1,5 +1,5 @@
 import { useBackend, useLocalState } from '../backend';
-import { Button, Section, Flex, Input } from '../components';
+import { Button, Section, Flex, Input, Slider, ProgressBar } from '../components';
 import { Window } from '../layouts';
 import { filter, sortBy } from 'common/collections';
 import { FlexItem } from '../components/Flex';
@@ -22,6 +22,8 @@ const selectForms = (forms, searchText = '') => {
 export const Photocopier220 = (props, context) => {
   const { act, data } = useBackend(context);
 
+  const { copies, maxcopies } = data;
+
   const [searchText, setSearchText] = useLocalState(context, 'searchText', '');
 
   const forms = selectForms(
@@ -34,6 +36,7 @@ export const Photocopier220 = (props, context) => {
       categories.push(form.category);
     }
   }
+  const [number, setNumber] = useLocalState(context, 'number', 0);
 
   let category;
   if (data.category === '') {
@@ -46,22 +49,22 @@ export const Photocopier220 = (props, context) => {
     <Window theme={data.ui_theme}>
       <Window.Content scrollable display="flex">
         <Flex direction="row" spacing={1}>
-          <Flex.Item width={24} shrink={0}>
+          <Flex.Item basis="35%">
             <Section title="Статус">
               <Flex>
-                <Flex.Item mr="20px" color="grey">
+                <Flex.Item width="50%" mt={0.8} color="grey">
                   Заряд тонера:
                 </Flex.Item>
-                <Flex.Item
-                  mr="5px"
-                  color={data.toner > 0 ? 'good' : 'bad'}
-                  bold
-                >
-                  {data.toner}
+                <Flex.Item width="50%" mt={0.5}>
+                  <ProgressBar
+                    maxValue={30}
+                    minValue={0}
+                    value={data.toner}
+                  />
                 </Flex.Item>
               </Flex>
               <Flex>
-                <Flex.Item width="100%" mt="8px">
+                <Flex.Item width="100%" mt={2}>
                   <Button
                     fluid
                     textAlign="center"
@@ -91,7 +94,7 @@ export const Photocopier220 = (props, context) => {
             </Section>
             <Section title="Управление">
               <Flex>
-                <Flex.Item width="60%" mr="3px">
+                <Flex.Item grow={1} basis={0} mr="2px">
                   <Button
                     fluid
                     textAlign="center"
@@ -101,7 +104,7 @@ export const Photocopier220 = (props, context) => {
                     onClick={() => act('copy')}
                   />
                 </Flex.Item>
-                <Flex.Item width="40%" mr="3px">
+                <Flex.Item grow={1} basis={0} ml="2px">
                   <Button
                     fluid
                     textAlign="center"
@@ -127,37 +130,27 @@ export const Photocopier220 = (props, context) => {
                 </Flex.Item>
               </Flex>
               <Flex>
-                <Flex.Item mr="10px" mt="10px" color="grey">
+                <Flex.Item mr="10px" mt={1.2} color="grey">
                   Количество:
                 </Flex.Item>
-                <Flex.Item mr="15px" mt="10px">
-                  {data.copynumber}
-                </Flex.Item>
-                <Flex.Item mr="3px" mt="8px">
-                  <Button
-                    fluid
-                    icon="minus"
-                    textAlign="center"
-                    disabled={data.copynumber === 1}
-                    content=""
-                    onClick={() => act('minus')}
+                  <Slider
+                    ml={3.25}
+                    mt={0.75}
+                    animated
+                    minValue={1}
+                    maxValue={maxcopies}
+                    value={copies}
+                    onChange={(e, value) =>
+                      act('copies', {
+                        new: value,
+                      })
+                    }
                   />
-                </Flex.Item>
-                <Flex.Item mr="3px" mt="8px">
-                  <Button
-                    fluid
-                    icon="plus"
-                    textAlign="center"
-                    disabled={data.copynumber >= data.toner}
-                    content=""
-                    onClick={() => act('add')}
-                  />
-                </Flex.Item>
               </Flex>
             </Section>
             <Section title="Бюрократия">
               <Flex>
-                <Flex.Item mr="20px" color="grey">
+                <Flex.Item mr={2} color="grey">
                   Форма:
                 </Flex.Item>
                 <FlexItem bold>
@@ -165,8 +158,9 @@ export const Photocopier220 = (props, context) => {
                 </FlexItem>
               </Flex>
               <Flex direction="column" mt={2}>
-                <Flex.Item>
+                <Flex.Item >
                   <Button
+                    mb={1}
                     fluid
                     icon="chevron-right"
                     content="Все формы"
@@ -176,44 +170,43 @@ export const Photocopier220 = (props, context) => {
                         category: null,
                       })
                     }
-                    mb={1}
                   />
                 </Flex.Item>
                 {categories.map((category) => (
-                  <Flex.Item key={category}>
-                    <Button
-                      fluid
-                      key={category}
-                      icon="chevron-right"
-                      content={category}
-                      selected={data.category === category ? 'selected' : null}
-                      onClick={() =>
-                        act('choose_category', {
-                          category: category,
+                <Flex.Item key={category}>
+                  <Button
+                    mb={1}
+                    fluid
+                    key={category}
+                    icon="chevron-right"
+                    content={category}
+                    selected={data.category === category ? 'selected' : null}
+                    onClick={() =>
+                      act('choose_category', {
+                        category: category,
                         })
                       }
-                      mb={1}
                     />
                   </Flex.Item>
                 ))}
               </Flex>
             </Section>
           </Flex.Item>
-          <Flex.Item width={35}>
-            <Section title={data.category === '' ? 'Все формы' : data.category}>
+          <Flex.Item basis="65%" className="Layout__content--flexColumn">
+            <Section title={data.category === '' ? 'Все формы' : data.category} flexGrow="1">
               <Input
                 fluid
-                mb={1}
                 placeholder="Поиск формы"
                 onInput={(e, value) => setSearchText(value)}
               />
-              <Flex direction="column" mt={2}>
+              <Flex direction="column" mt={1.5} >
                 {category.map((form) => (
                   <Flex.Item key={form.path}>
                     <Button
+                      mb={1}
                       fluid
                       key={form.path}
-                      content={form.id + ': ' + form.altername.trimLongStr(27)}
+                      content={form.id + ': ' + form.altername.trimLongStr(37)}
                       tooltip={form.id + ': ' + form.altername}
                       selected={data.form_id === form.id ? 'selected' : null}
                       onClick={() =>
@@ -222,7 +215,6 @@ export const Photocopier220 = (props, context) => {
                           id: form.id,
                         })
                       }
-                      mb={1}
                     />
                   </Flex.Item>
                 ))}
