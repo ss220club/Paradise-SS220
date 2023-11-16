@@ -2,7 +2,7 @@
 
 /datum/vote
 	/// Person who started the vote
-	var/initiator = "серверу"
+	var/initiator = "сервер"
 	/// world.time the vote started at
 	var/started_time
 	/// The question being asked
@@ -110,8 +110,8 @@
 				to_chat(world, "<span class='interface'><b><code>[res]</code> выигрывает голосование.</b></span>")
 				return res
 
-			to_chat(world, "<span class='interface'>Победитель голосования ([sanitize(res)]) не является правильным выбором? Какого чёрта?</span>")
-			stack_trace("Голосование типа [type] завершилось недопустимым ответом. Ответом был [sanitize(res)], выбором был [json_encode(choices)]")
+			to_chat(world, "<span class='interface'>Победитель голосования ([sanitize(res)]) не является допустимым выбором? Какого чёрта?</span>")
+			stack_trace("Голосование типа [type] завершилось недопустимым ответом. Ответом был [sanitize(res)], вариантами были: [json_encode(choices)]")
 			return null
 
 
