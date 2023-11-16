@@ -379,8 +379,7 @@
 	. = ..()	//calls mob.Login()
 
 	// SS220 addition start
-	if(!queue_check())
-		return null
+	queue_check()
 	// SS220 addition end
 
 	mob.update_client_colour(0) // Activate colourblind mode if they have one set
