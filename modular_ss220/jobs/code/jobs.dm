@@ -17,8 +17,8 @@
 	. = ..()
 
 	if(hidden_from_job_prefs)
-		for(var/job_tittle in GLOB.Jobs_tittles_SS220)
-			if(job_tittle in alt_titles)
+		for(var/job_title in GLOB.Jobs_tittles_SS220)
+			if(job_title in alt_titles)
 				return FALSE
 		if(title in GLOB.Jobs_tittles_SS220)
 			return FALSE
