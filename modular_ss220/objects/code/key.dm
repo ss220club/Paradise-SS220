@@ -1,7 +1,7 @@
 #define ACCESS_VACANT_STORE 401
 
 /obj/item/door_remote/key
-	desc = "Обычный немного ржавый ключ"
+	desc = "Обычный немного ржавый ключ."
 	icon = 'modular_ss220/objects/icons/key.dmi'
 	icon_state = "key"
 	/// Are you already using the key?
@@ -14,27 +14,30 @@
 /obj/item/door_remote/key/attack_self(mob/user)
 	return
 
-/obj/item/door_remote/key/afterattack(obj/machinery/door/airlock/attacked_airlock, mob/user)
+/obj/item/door_remote/key/afterattack(obj/machinery/door/airlock/attacked_airlock, mob/user, proximity)
+	if(!proximity)
+		return
+
 	if(!istype(attacked_airlock))
 		return
 
 	if(HAS_TRAIT(attacked_airlock, TRAIT_CMAGGED))
-		to_chat(user, "<span class='danger'>[src] не хочет вставлятся в панель доступа [attacked_airlock], тут повсюду слизь!</span>")
+		to_chat(user, span_danger ("[src] не хочет вставлятся в панель доступа [attacked_airlock], тут повсюду слизь!"))
 		return
 
 	if(attacked_airlock.is_special)
-		to_chat(user, "<span class='danger'>[src] не может поместится в панель доступа [attacked_airlock]!</span>")
+		to_chat(user, span_danger ("[src] не может поместится в панель доступа [attacked_airlock]!"))
 		return
 
 	if(!attacked_airlock.arePowerSystemsOn())
-		to_chat(user, "<span class='danger'>[attacked_airlock] без питания!</span>")
+		to_chat(user, span_danger ("[attacked_airlock] без питания!"))
 		return
 
 	if(busy)
-		to_chat(user, "<span class='warning'>Ты уже используешь [src] на панели доступа [attacked_airlock]!</span>")
+		to_chat(user, span_warning ("Ты уже используешь [src] на панели доступа [attacked_airlock]!"))
 		return
 
-	playsound(src, 'sound/items/keyring_unlock.ogg', 10)
+	playsound(src, 'sound/items/keyring_unlock.ogg', 50)
 	attacked_airlock.add_fingerprint(user)
 
 	busy = TRUE
@@ -44,7 +47,7 @@
 	busy = FALSE
 
 	if(!attacked_airlock.check_access(ID))
-		to_chat(user, "<span class='danger'>[src] похоже не подходит к панели доступа [attacked_airlock]!</span>")
+		to_chat(user, span_danger ("[src] похоже не подходит к панели доступа [attacked_airlock]!"))
 		return
 
 	if(!attacked_airlock.density)
@@ -88,7 +91,7 @@
 	additional_access = list(ACCESS_HEADS)
 
 /obj/item/door_remote/key/vacant
-	name = "\improper Ключ от свободного офиса"
+	name = "\improper ключ от свободного офиса"
 	desc = "Выкидной ключ темно-синего цвета."
 	icon_state = "closed"
 	/// key ready to use?
@@ -99,13 +102,13 @@
 	if(cooldown > world.time)
 		return
 	if(!ready)
-		to_chat(user, "<span class='warning'>Ты вытаскиваешь ключ!</span>")
+		to_chat(user, span_warning ("Ты вытаскиваешь ключ!"))
 		flick("opens", src)
 		icon_state = "open"
 		ready = TRUE
 		cooldown = world.time + 2 SECONDS
 	else
-		to_chat(user, "<span class='warning'>Ты складываешь ключ!</span>")
+		to_chat(user,  span_warning ("Ты складываешь ключ!"))
 		flick("closes", src)
 		icon_state = "closed"
 		ready = FALSE
@@ -113,12 +116,12 @@
 
 /obj/item/door_remote/key/vacant/afterattack(obj/machinery/door/airlock/attacked_airlock, mob/user)
 	if(!ready)
-		to_chat(user, "<span class='danger'>Сперва нужно вытащить ключ!</span>")
+		to_chat(user, span_danger ("Сперва нужно вытащить ключ!"))
 		return
 	. = ..()
 
 /obj/item/storage/box/keys
-	name = "Коробка с ключами"
+	name = "коробка с ключами"
 	desc = "Коробка с ключами к отделам. Имеют неполный доступ к шлюзам."
 
 /obj/item/storage/box/keys/populate_contents()
