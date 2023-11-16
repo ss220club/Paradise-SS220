@@ -124,9 +124,11 @@
 	switch(choice)
 		if("Выбрать предустановленный")
 			choice = input(usr, "Выберите цвет", "Выбор цвета") as null|anything in color_list
-			if(!color_list[choice])
+			var/color_to_set = color_list[choice]
+			if(!color_to_set)
 				return
-			color = color_list[choice]
+
+			color = color_to_set
 
 		if("Выбрать вручную")
 			color = input(usr,"Выберите цвет") as color
