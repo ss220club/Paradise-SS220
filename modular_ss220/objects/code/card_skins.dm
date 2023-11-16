@@ -19,28 +19,7 @@
 	if(!istype(item, /obj/item/id_skin))
 		return .
 
-	if(skin_applied)
-		to_chat(usr, span_warning("На карте уже есть наклейка, сначала соскребите её!"))
-		return FALSE
-
-	if(!skinable)
-		to_chat(usr, span_warning("Наклейка не подходит для [src]!"))
-		return FALSE
-
-	to_chat(user, span_notice("Вы начинаете наносить наклейку на карту."))
-	if(!do_after(usr, 2 SECONDS, target = src, progress = TRUE, allow_moving = TRUE))
-		return FALSE
-
-	var/obj/item/id_skin/skin = item
-	var/mutable_appearance/card_skin = mutable_appearance(skin.icon, skin.icon_state)
-	card_skin.color = skin.color
-	to_chat(user, span_notice("Вы наклеили [skin.pronoun_name] на [src]."))
-	desc += "<br>[skin.info]"
-	user.drop_item()
-	item.forceMove(src)
-	skin_applied = item
-	add_overlay(card_skin)
-	return TRUE
+	return apply_skin(item, user)
 
 /obj/item/card/id/examine(mob/user)
 	. = ..()
@@ -72,6 +51,30 @@
 		else
 			skin_applied.forceMove(get_turf(user))
 		remove_skin()
+
+
+/obj/item/card/id/proc/apply_skin(obj/item/id_skin/skin, mob/user)
+	if(skin_applied)
+		to_chat(usr, span_warning("На карте уже есть наклейка, сначала соскребите её!"))
+		return FALSE
+
+	if(!skinable)
+		to_chat(usr, span_warning("Наклейка не подходит для [src]!"))
+		return FALSE
+
+	to_chat(user, span_notice("Вы начинаете наносить наклейку на карту."))
+	if(!do_after(user, 2 SECONDS, target = src, progress = TRUE, allow_moving = TRUE))
+		return FALSE
+
+	var/mutable_appearance/card_skin = mutable_appearance(skin.icon, skin.icon_state)
+	card_skin.color = skin.color
+	to_chat(user, span_notice("Вы наклеили [skin.pronoun_name] на [src]."))
+	desc += "<br>[skin.info]"
+	user.drop_item()
+	skin.forceMove(src)
+	skin_applied = skin
+	add_overlay(card_skin)
+	return TRUE
 
 /obj/item/card/id/proc/remove_skin()
 	qdel(skin_applied)
