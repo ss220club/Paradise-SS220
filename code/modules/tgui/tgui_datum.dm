@@ -68,7 +68,7 @@
 	src.interface = interface
 
 	if(title)
-		src.title = sanitize(title)
+		src.title = capitalize(sanitize(title, list("\proper"="", "\improper"="")))
 	if(width)
 		src.width = width
 	if(height)

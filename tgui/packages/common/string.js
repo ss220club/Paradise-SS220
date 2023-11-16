@@ -113,7 +113,7 @@ export const toTitleCase = (str) => {
     'To',
     'With',
   ];
-  let currentStr = str.replace(/([A-Za-z0-9А-Яа-я]+[^\s-]*) */g, (str) => {
+  let currentStr = str.replace(/([^\W_]+[^\s-]*) */g, (str) => {
     return str.charAt(0).toUpperCase() + str.substr(1).toLowerCase();
   });
   for (let word of WORDS_LOWER) {
