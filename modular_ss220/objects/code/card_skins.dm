@@ -14,7 +14,7 @@
 /obj/item/card/id/thunderdome
 	skinable = FALSE
 
-/obj/item/card/id/attackby(obj/item/item as obj, mob/user as mob, params)
+/obj/item/card/id/attackby(obj/item/item, mob/user, params)
 	. = ..()
 	if(istype(item, /obj/item/id_skin))
 		if(skin_applied)
@@ -42,28 +42,28 @@
 		return TRUE
 
 /obj/item/card/id/AltClick(mob/user)
-	if(usr.stat || usr.restrained())
-		to_chat(usr, span_warning("У вас нет возможности снять наклейку!"))
+	if(user.stat || user.restrained())
+		to_chat(user, span_warning("У вас нет возможности снять наклейку!"))
 		return
 
 	if(skin_applied != null)
-		if(usr.a_intent == INTENT_HARM)
-			to_chat(usr, span_warning("Вы срываете наклейку с карты!"))
-			playsound(src.loc, 'sound/items/poster_ripped.ogg', 50, 1)
+		if(user.a_intent == INTENT_HARM)
+			to_chat(user, span_warning("Вы срываете наклейку с карты!"))
+			playsound(user.loc, 'sound/items/poster_ripped.ogg', 50, 1)
 			remove_skin()
 		else
-			to_chat(usr, span_notice("Вы начинаете аккуратно снимать наклейку с карты."))
-			if(!do_after(usr, 5 SECONDS, target = src, progress = TRUE))
+			to_chat(user, span_notice("Вы начинаете аккуратно снимать наклейку с карты."))
+			if(!do_after(user, 5 SECONDS, target = src, progress = TRUE))
 				return FALSE
 
-			to_chat(usr, span_notice("Вы сняли наклейку с карты."))
-			if(!usr.get_active_hand() && Adjacent(usr))
-				usr.put_in_hands(skin_applied)
+			to_chat(user, span_notice("Вы сняли наклейку с карты."))
+			if(!user.get_active_hand() && Adjacent(user))
+				user.put_in_hands(skin_applied)
 			else
-				skin_applied.forceMove(get_turf(src))
+				skin_applied.forceMove(get_turf(user))
 			remove_skin()
 	else
-		to_chat(usr, span_warning("На карте нет наклейки!"))
+		to_chat(user, span_warning("На карте нет наклейки!"))
 
 /obj/item/card/id/proc/remove_skin()
 	skin_applied = null
