@@ -2,7 +2,7 @@
 
 /datum/vote
 	/// Person who started the vote
-	var/initiator = "серверу"
+	var/initiator = "сервер"
 	/// world.time the vote started at
 	var/started_time
 	/// The question being asked
