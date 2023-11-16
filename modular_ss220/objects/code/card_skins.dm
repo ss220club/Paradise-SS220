@@ -51,7 +51,7 @@
 			to_chat(usr, span_warning("Вы срываете наклейку с карты!"))
 			playsound(src.loc, 'sound/items/poster_ripped.ogg', 50, 1)
 			remove_skin()
-		else if(usr.a_intent == INTENT_HELP)
+		else
 			to_chat(usr, span_notice("Вы начинаете аккуратно снимать наклейку с карты."))
 			if(!do_after(usr, 5 SECONDS, target = src, progress = TRUE))
 				return FALSE
