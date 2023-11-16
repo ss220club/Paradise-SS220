@@ -4983,7 +4983,6 @@
 	name = "Cell 3"
 	},
 /obj/machinery/door/firedoor,
-/obj/item/radio/intercom/directional/east,
 /obj/machinery/door/poddoor/preopen{
 	id_tag = "Secure Gate";
 	name = "Security Blast Door"
@@ -6228,7 +6227,6 @@
 	id = "Cell 4";
 	name = "Cell 4"
 	},
-/obj/item/radio/intercom/directional/east,
 /obj/machinery/door/poddoor/preopen{
 	id_tag = "Secure Gate";
 	name = "Security Blast Door"
@@ -11546,7 +11544,6 @@
 	pixel_y = 30
 	},
 /obj/item/reagent_containers/food/drinks/britcup{
-	initialized = 1;
 	list_reagents = list("tea"=15);
 	pixel_x = 4;
 	pixel_y = 2
@@ -32218,7 +32215,6 @@
 	},
 /obj/machinery/light/directional/south,
 /obj/item/reagent_containers/food/drinks/britcup{
-	initialized = 1;
 	list_reagents = list("tea"=15);
 	pixel_x = 4;
 	pixel_y = 2
@@ -48260,18 +48256,15 @@
 /obj/structure/table/glass/reinforced/plastitanium,
 /obj/item/reagent_containers/food/drinks/bottle/vodka/badminka{
 	pixel_y = 12;
-	pixel_x = 6;
-	initialized = 1
+	pixel_x = 6
 	},
 /obj/item/reagent_containers/food/drinks/drinkingglass/shotglass{
 	pixel_y = 8;
-	pixel_x = -1;
-	initialized = 1
+	pixel_x = -1
 	},
 /obj/item/reagent_containers/food/drinks/drinkingglass/shotglass{
 	pixel_y = 2;
-	pixel_x = -1;
-	initialized = 1
+	pixel_x = -1
 	},
 /obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/plasteel{
@@ -56915,8 +56908,7 @@
 	},
 /obj/item/reagent_containers/food/snacks/grown/banana{
 	pixel_x = -4;
-	pixel_y = -6;
-	initialized = 1
+	pixel_y = -6
 	},
 /obj/item/bikehorn{
 	pixel_y = 4;
@@ -67459,8 +67451,7 @@
 	},
 /obj/item/reagent_containers/food/drinks/bottle/holywater{
 	pixel_y = 4;
-	pixel_x = -8;
-	initialized = 1
+	pixel_x = -8
 	},
 /obj/structure/sign/poster/official/random/north,
 /obj/effect/decal/cleanable/dust,
@@ -70067,6 +70058,16 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/station/science/hallway)
+"mCW" = (
+/obj/structure/chair/stool{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/random/hampter,
+/turf/simulated/floor/plasteel{
+	icon_state = "grimy"
+	},
+/area/station/maintenance/fpmaint2)
 "mDs" = (
 /obj/machinery/light/small/directional/east,
 /obj/structure/cable{
@@ -72839,6 +72840,12 @@
 	},
 /turf/simulated/floor/carpet,
 /area/station/command/office/hop)
+"nDi" = (
+/obj/structure/bed,
+/obj/machinery/light/small/directional/east,
+/obj/random/hampter,
+/turf/simulated/floor/plating,
+/area/station/maintenance/fore)
 "nDq" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -97935,6 +97942,7 @@
 /obj/structure/bed,
 /obj/item/bedsheet/black,
 /obj/effect/spawner/random_spawners/cobweb_right_rare,
+/obj/random/hampter,
 /turf/simulated/floor/carpet/royalblack,
 /area/station/maintenance/apmaint)
 "wOf" = (
@@ -118106,7 +118114,7 @@ aII
 aDC
 aEK
 aFX
-aHk
+mCW
 aHl
 aKW
 aDD
@@ -124341,7 +124349,7 @@ reE
 qyy
 gwb
 xab
-ryN
+cgQ
 cgQ
 jQI
 wsD
@@ -139166,7 +139174,7 @@ nCV
 ifJ
 dEI
 atG
-apY
+nDi
 arS
 aqc
 auZ
