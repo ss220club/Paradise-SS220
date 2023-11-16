@@ -74,10 +74,10 @@
 		remove_skin()
 
 /obj/item/card/id/proc/remove_skin()
+	qdel(skin_applied)
 	skin_applied = null
 	desc = initial(desc)
 	overlays.Cut()
-	qdel(skin_applied)
 
 /obj/item/id_skin
 	name = "\improper наклейка на карту"
