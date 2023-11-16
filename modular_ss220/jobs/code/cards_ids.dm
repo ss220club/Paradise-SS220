@@ -1,5 +1,6 @@
 // Для отрисовки ХУД'ов.
 GLOBAL_LIST_INIT(Jobs_SS220, list("intern", "cadet", "trainee", "student"))
+GLOBAL_LIST_INIT(Jobs_tittles_SS220, list("Intern", "Security Cadet", "Trainee Engineer", "Student Scientist"))
 
 /proc/get_all_medical_novice_tittles()
 	return list("Intern", "Medical Assistant", "Student Medical Doctor")
