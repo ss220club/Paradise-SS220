@@ -22,11 +22,9 @@
 	return FALSE
 
 
-/client/proc/reserve_queue_slot()
+/mob/proc/reserve_queue_slot()
 	if(ckey in SSqueue.queue_bypass_list)
 		addtimer(CALLBACK(SSqueue, TYPE_PROC_REF(/datum/controller/subsystem/queue, reserve_queue_slot), ckey), GLOB.configuration.overflow.reservation_time)
-
-		. = ..()
 
 
 /datum/controller/subsystem/queue/proc/reserve_queue_slot(reserved_ckey)
