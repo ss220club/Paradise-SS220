@@ -63,7 +63,7 @@ export const Photocopier220 = (props, context) => {
                   Заряд тонера:
                 </Flex.Item>
                 <Flex.Item width="50%" mt={0.5}>
-                  <ProgressBar maxValue={30} minValue={0} value={data.toner} />
+                  <ProgressBar minValue={0} maxValue={30} value={data.toner} />
                 </Flex.Item>
               </Flex>
               <Flex>
@@ -169,7 +169,7 @@ export const Photocopier220 = (props, context) => {
                       fluid
                       icon="chevron-right"
                       content="Все формы"
-                      selected={data.category === '' ? 'selected' : null}
+                      selected={!data.category}
                       onClick={() =>
                         act('choose_category', {
                           category: null,
