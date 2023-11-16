@@ -38,7 +38,7 @@
 	if(user.a_intent == INTENT_HARM)
 		to_chat(user, span_warning("Вы срываете наклейку с карты!"))
 		playsound(user.loc, 'sound/items/poster_ripped.ogg', 50, 1)
-		remove_skin()
+		remove_skin(delete = TRUE)
 	else
 		to_chat(user, span_notice("Вы начинаете аккуратно снимать наклейку с карты."))
 		if(!do_after(user, 5 SECONDS, target = src, progress = TRUE))
@@ -51,7 +51,6 @@
 		else
 			skin_applied.forceMove(get_turf(user))
 		remove_skin()
-
 
 /obj/item/card/id/proc/apply_skin(obj/item/id_skin/skin, mob/user)
 	if(skin_applied)
@@ -76,8 +75,9 @@
 	add_overlay(card_skin)
 	return TRUE
 
-/obj/item/card/id/proc/remove_skin()
-	qdel(skin_applied)
+/obj/item/card/id/proc/remove_skin(delete = FALSE)
+	if(delete)
+		qdel(skin_applied)
 	skin_applied = null
 	desc = initial(desc)
 	overlays.Cut()
