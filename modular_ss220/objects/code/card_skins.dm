@@ -50,9 +50,7 @@
 		if(usr.a_intent == INTENT_HARM)
 			to_chat(usr, span_warning("Вы срываете наклейку с карты!"))
 			playsound(src.loc, 'sound/items/poster_ripped.ogg', 50, 1)
-			skin_applied = null
-			desc = initial(desc)
-			src.overlays.Cut()
+			remove_skin()
 		else if(usr.a_intent == INTENT_HELP)
 			to_chat(usr, span_notice("Вы начинаете аккуратно снимать наклейку с карты."))
 			if(!do_after(usr, 5 SECONDS, target = src, progress = TRUE))
@@ -63,11 +61,14 @@
 				usr.put_in_hands(skin_applied)
 			else
 				skin_applied.forceMove(get_turf(src))
-			skin_applied = null
-			desc = initial(desc)
-			src.overlays.Cut()
+			remove_skin()
 	else
 		to_chat(usr, span_warning("На карте нет наклейки!"))
+
+/obj/item/card/id/proc/remove_skin()
+	skin_applied = null
+	desc = initial(desc)
+	src.overlays.Cut()
 
 /obj/item/id_skin
 	name = "\improper наклейка на карту"
