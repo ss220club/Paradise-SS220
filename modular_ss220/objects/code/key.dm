@@ -90,36 +90,6 @@
 	icon_state = "com"
 	additional_access = list(ACCESS_HEADS)
 
-/obj/item/door_remote/key/vacant
-	name = "\proper ключ от свободного офиса"
-	desc = "Выкидной ключ темно-синего цвета."
-	icon_state = "closed"
-	/// key ready to use?
-	var/ready = FALSE
-	additional_access = list (ACCESS_VACANT_STORE)
-
-/obj/item/door_remote/key/vacant/attack_self(mob/user)
-	if(cooldown > world.time)
-		return
-	if(!ready)
-		to_chat(user, span_warning ("Ты вытаскиваешь ключ!"))
-		flick("opens", src)
-		icon_state = "open"
-		ready = TRUE
-		cooldown = world.time + 2 SECONDS
-	else
-		to_chat(user,  span_warning ("Ты складываешь ключ!"))
-		flick("closes", src)
-		icon_state = "closed"
-		ready = FALSE
-		cooldown = world.time + 2 SECONDS
-
-/obj/item/door_remote/key/vacant/afterattack(obj/machinery/door/airlock/attacked_airlock, mob/user)
-	if(!ready)
-		to_chat(user, span_danger ("Сперва нужно вытащить ключ!"))
-		return
-	. = ..()
-
 /obj/item/storage/box/keys
 	name = "коробка с ключами"
 	desc = "Коробка с ключами к отделам. Имеют неполный доступ к шлюзам."
