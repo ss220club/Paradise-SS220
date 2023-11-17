@@ -89,17 +89,6 @@
 	icon_state = ""
 	var/pronoun_name = "наклейку"
 	var/info = "На ней наклейка."
-	var/static/list/color_list = list(
-		"Красный" = LIGHT_COLOR_RED,
-		"Зелёный" = LIGHT_COLOR_GREEN,
-		"Синий" = LIGHT_COLOR_LIGHTBLUE,
-		"Жёлтый" = LIGHT_COLOR_HOLY_MAGIC,
-		"Оранжевый" = LIGHT_COLOR_ORANGE,
-		"Фиолетовый" = LIGHT_COLOR_LAVENDER,
-		"Голубой" = LIGHT_COLOR_LIGHT_CYAN,
-		"Циановый" = LIGHT_COLOR_CYAN,
-		"Аквамариновый" = LIGHT_COLOR_BLUEGREEN,
-		"Розовый" = LIGHT_COLOR_PINK)
 
 /obj/item/id_skin/Initialize(mapload)
 	. = ..()
@@ -112,6 +101,17 @@
 	icon_state = "colored"
 	pronoun_name = "голо-наклейку"
 	info = "На ней голо-наклейка."
+	var/static/list/color_list = list(
+		"Красный" = LIGHT_COLOR_RED,
+		"Зелёный" = LIGHT_COLOR_GREEN,
+		"Синий" = LIGHT_COLOR_LIGHTBLUE,
+		"Жёлтый" = LIGHT_COLOR_HOLY_MAGIC,
+		"Оранжевый" = LIGHT_COLOR_ORANGE,
+		"Фиолетовый" = LIGHT_COLOR_LAVENDER,
+		"Голубой" = LIGHT_COLOR_LIGHT_CYAN,
+		"Циановый" = LIGHT_COLOR_CYAN,
+		"Аквамариновый" = LIGHT_COLOR_BLUEGREEN,
+		"Розовый" = LIGHT_COLOR_PINK)
 
 /obj/item/id_skin/colored/Initialize(mapload)
 	. = ..()
