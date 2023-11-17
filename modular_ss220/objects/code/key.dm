@@ -1,4 +1,3 @@
-#define ACCESS_VACANT_STORE 401
 
 /obj/item/door_remote/key
 	desc = "Обычный немного ржавый ключ."
@@ -109,5 +108,4 @@
 	new /obj/item/door_remote/key/command(src)
 	new /obj/item/door_remote/key/medical(src)
 	new /obj/item/door_remote/key/medical(src)
-	new /obj/item/door_remote/key/vacant(src)
-	new /obj/item/door_remote/key/vacant(src)
+
