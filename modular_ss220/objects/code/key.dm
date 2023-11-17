@@ -21,11 +21,11 @@
 		return
 
 	if(HAS_TRAIT(attacked_airlock, TRAIT_CMAGGED))
-		to_chat(user, span_danger ("[src] не хочет вставлятся в панель доступа [attacked_airlock], тут повсюду слизь!"))
+		to_chat(user, span_danger ("[src] не вставляется в панель доступа [attacked_airlock], тут повсюду слизь!"))
 		return
 
 	if(attacked_airlock.is_special)
-		to_chat(user, span_danger ("[src] не может поместится в панель доступа [attacked_airlock]!"))
+		to_chat(user, span_danger ("[src] не помещается в панель доступа [attacked_airlock]!"))
 		return
 
 	if(!attacked_airlock.arePowerSystemsOn())
