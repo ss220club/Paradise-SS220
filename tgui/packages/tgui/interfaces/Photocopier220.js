@@ -218,7 +218,7 @@ export const Photocopier220 = (props, context) => {
                       fluid
                       key={form.path}
                       content={form.id + ': ' + form.altername.trimLongStr(37)}
-                      selected={data.form_id === form.id ? 'selected' : null}
+                      selected={data.form_id === form.id}
                       onClick={() =>
                         act('choose_form', {
                           path: form.path,
