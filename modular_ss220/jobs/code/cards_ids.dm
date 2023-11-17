@@ -61,30 +61,29 @@ GLOBAL_LIST_INIT(Jobs_novice_titles_SS220, list("Intern", "Security Cadet", "Tra
 /obj/machinery/computer/card/ui_act(action, params)
 	var/is_alt_title_rewrite = FALSE
 	var/job_alt_tittle
-	switch(action)
-		if("assign") // transfer to a new job
-			if(!modify)
+	if(action == "assign") // transfer to a new job
+		if(!modify)
+			return
+
+		job_alt_tittle = params["assign_target"]
+		if(job_alt_tittle in GLOB.Jobs_novice_titles_SS220)
+			//for fast find job without check all jobs (!!!for alt_titles job with icon like novice roles!!!)
+			var/list/dictionary = list(
+				"Intern" = /datum/job/doctor,
+				"Security Cadet" = /datum/job/officer,
+				"Trainee Engineer" = /datum/job/engineer,
+				"Student Scientist" = /datum/job/scientist,
+			)
+			var/job_type = dictionary[job_alt_tittle]
+			var/datum/job/job
+			if(!job_type)	// gatto
 				return
+			job = new job_type
 
-			job_alt_tittle = params["assign_target"]
-			if(job_alt_tittle in GLOB.Jobs_novice_titles_SS220)
-				//for fast find job without check all jobs (!!!for alt_titles job with icon like novice roles!!!)
-				var/list/dictionary = list(
-					"Intern" = /datum/job/doctor,
-					"Security Cadet" = /datum/job/officer,
-					"Trainee Engineer" = /datum/job/engineer,
-					"Student Scientist" = /datum/job/scientist,
-				)
-				var/job_type = dictionary[job_alt_tittle]
-				var/datum/job/job
-				if(!job_type)	// gatto
-					return
-				job = new job_type
-
-				if(job && length(job.alt_titles) && (job_alt_tittle in job.alt_titles))
-					params["assign_target"] = job.title
-					is_alt_title_rewrite = TRUE
-					qdel(job)
+			if(job && length(job.alt_titles) && (job_alt_tittle in job.alt_titles))
+				params["assign_target"] = job.title
+				is_alt_title_rewrite = TRUE
+				qdel(job)
 
 	. = ..()
 
