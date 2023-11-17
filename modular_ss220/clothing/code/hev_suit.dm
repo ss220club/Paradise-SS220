@@ -19,7 +19,7 @@
 		/obj/item/tank/internals/emergency_oxygen,
 		/obj/item/tank/internals/plasmaman,
 		/obj/item/gun/energy,
-		/obj/item/gun/projectile
+		/obj/item/gun/projectile,
 		/obj/item/crowbar,
 	)
 	slowdown = 0.25
