@@ -19,19 +19,19 @@
 		return
 
 	if(HAS_TRAIT(attacked_airlock, TRAIT_CMAGGED))
-		to_chat(user, span_danger ("[src] не вставляется в панель доступа [attacked_airlock], тут повсюду слизь!"))
+		to_chat(user, span_danger("[src] не вставляется в панель доступа [attacked_airlock], тут повсюду слизь!"))
 		return
 
 	if(attacked_airlock.is_special)
-		to_chat(user, span_danger ("[src] не помещается в панель доступа [attacked_airlock]!"))
+		to_chat(user, span_danger("[src] не помещается в панель доступа [attacked_airlock]!"))
 		return
 
 	if(!attacked_airlock.arePowerSystemsOn())
-		to_chat(user, span_danger ("[attacked_airlock] без питания!"))
+		to_chat(user, span_danger("[attacked_airlock] без питания!"))
 		return
 
 	if(busy)
-		to_chat(user, span_warning ("Ты уже используешь [src] на панели доступа [attacked_airlock]!"))
+		to_chat(user, span_warning("Ты уже используешь [src] на панели доступа [attacked_airlock]!"))
 		return
 
 	playsound(src, 'sound/items/keyring_unlock.ogg', 50)
@@ -44,7 +44,7 @@
 	busy = FALSE
 
 	if(!attacked_airlock.check_access(ID))
-		to_chat(user, span_danger ("[src] похоже не подходит к панели доступа [attacked_airlock]!"))
+		to_chat(user, span_danger("[src] похоже не подходит к панели доступа [attacked_airlock]!"))
 		return
 
 	if(!attacked_airlock.density)
@@ -55,32 +55,32 @@
 /obj/item/door_remote/key/engineer
 	name = "\proper ключ от инженерного отдела"
 	icon_state = "eng"
-	additional_access = list (ACCESS_ENGINE,ACCESS_CONSTRUCTION)
+	additional_access = list(ACCESS_ENGINE,ACCESS_CONSTRUCTION)
 
 /obj/item/door_remote/key/medical
 	name = "\proper ключ от медицинского отдела"
 	icon_state = "med"
-	additional_access = list (ACCESS_MEDICAL)
+	additional_access = list(ACCESS_MEDICAL)
 
 /obj/item/door_remote/key/supply
 	name = "\proper ключ от отдела снабжения"
 	icon_state = "supply"
-	additional_access = list (ACCESS_CARGO, ACCESS_MINING)
+	additional_access = list(ACCESS_CARGO, ACCESS_MINING)
 
 /obj/item/door_remote/key/rnd
 	name = "\proper ключ от отдела исследований"
 	icon_state = "rnd"
-	additional_access = list (ACCESS_RESEARCH)
+	additional_access = list(ACCESS_RESEARCH)
 
 /obj/item/door_remote/key/sec
 	name = "\proper ключ от отдела службы безопасности"
 	icon_state = "sec"
-	additional_access = list (ACCESS_SEC_DOORS)
+	additional_access = list(ACCESS_SEC_DOORS)
 
 /obj/item/door_remote/key/service
 	name = "\proper ключ от отдела сервиса"
 	icon_state = "service"
-	additional_access = list (ACCESS_KITCHEN, ACCESS_BAR, ACCESS_HYDROPONICS, ACCESS_JANITOR)
+	additional_access = list(ACCESS_KITCHEN, ACCESS_BAR, ACCESS_HYDROPONICS, ACCESS_JANITOR)
 
 /obj/item/door_remote/key/command
 	name = "\proper ключ командования"
