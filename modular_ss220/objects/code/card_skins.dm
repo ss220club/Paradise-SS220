@@ -37,7 +37,7 @@
 
 	if(user.a_intent == INTENT_HARM)
 		to_chat(user, span_warning("Вы срываете наклейку с карты!"))
-		playsound(user.loc, 'sound/items/poster_ripped.ogg', 50, 1)
+		playsound(user.loc, 'sound/items/poster_ripped.ogg', 50, TRUE)
 		remove_skin(delete = TRUE)
 	else
 		to_chat(user, span_notice("Вы начинаете аккуратно снимать наклейку с карты."))
