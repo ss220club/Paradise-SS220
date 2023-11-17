@@ -75,7 +75,7 @@
 /obj/item/door_remote/key/sec
 	name = "\proper ключ от отдела службы безопасности"
 	icon_state = "sec"
-	additional_access = list (ACCESS_SECURITY)
+	additional_access = list (ACCESS_SEC_DOORS)
 
 /obj/item/door_remote/key/service
 	name = "\proper ключ от отдела сервиса"
