@@ -5,8 +5,6 @@
 	icon_state = "key"
 	/// Are you already using the key?
 	var/busy = FALSE
-	/// This prevents spamming the key.
-	var/cooldown = 0
 	/// How fast does the key open an airlock.
 	var/hack_speed = 1 SECONDS
 
