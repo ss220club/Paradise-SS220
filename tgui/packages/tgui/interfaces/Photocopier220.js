@@ -185,9 +185,7 @@ export const Photocopier220 = (props, context) => {
                         key={category}
                         icon="chevron-right"
                         content={category}
-                        selected={
-                          data.category === category ? 'selected' : null
-                        }
+                        selected={data.category === category}
                         onClick={() =>
                           act('choose_category', {
                             category: category,
@@ -202,7 +200,7 @@ export const Photocopier220 = (props, context) => {
           </Flex.Item>
           <Flex.Item basis="65%" className="Layout__content--flexColumn">
             <Section
-              title={data.category === '' ? 'Все формы' : data.category}
+              title={data.category || 'Все формы'}
               flexGrow="1"
             >
               <Input
