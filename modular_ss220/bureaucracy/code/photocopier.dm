@@ -1,4 +1,5 @@
 /obj/machinery/photocopier
+	toner = 30
 	/// Selected form's category
 	var/category = ""
 	/// Selected form's id
