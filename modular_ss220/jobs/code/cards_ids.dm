@@ -81,7 +81,7 @@ GLOBAL_LIST_INIT(Jobs_novice_titles_SS220, list("Intern", "Security Cadet", "Tra
 					return
 				job = new job_type
 
-				if(job && length(job.alt_titles) && (job_alt_tittle in job.alt_titles))
+				if(length(job.alt_titles) && (job_alt_tittle in job.alt_titles))
 					params["assign_target"] = job.title
 					is_alt_title_rewrite = TRUE
 					qdel(job)
