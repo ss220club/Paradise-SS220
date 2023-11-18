@@ -163,6 +163,12 @@
 	donator_tier = 3
 	cost = 2
 
+/datum/gear/donor/id_decal_missing
+	display_name = "Чёрно-розовая наклейка на карту"
+	path = /obj/item/id_skin/missing
+	donator_tier = 3
+	cost = 2
+
 /datum/gear/donor/id_decal_rainbow
 	display_name = "Радужная наклейка на карту"
 	path = /obj/item/id_skin/rainbow
@@ -190,5 +196,11 @@
 /datum/gear/donor/id_decal_snake
 	display_name = "Бегущая наклейка на карту"
 	path = /obj/item/id_skin/colored/snake
+	donator_tier = 4
+	cost = 3
+
+/datum/gear/donor/id_decal_magic
+	display_name = "Магическая наклейка на карту"
+	path = /obj/item/id_skin/magic
 	donator_tier = 4
 	cost = 3

@@ -198,6 +198,13 @@
 	pronoun_name = "неоновую наклейку"
 	info = "Кажется будто она светится."
 
+/obj/item/id_skin/missing
+	name = "\improper чёрно-розовая наклейка на карту"
+	desc = "Текстура пропала..."
+	icon_state = "missing"
+	pronoun_name = "чёрно-розовую наклейку"
+	info = "А где?"
+
 /obj/item/id_skin/rainbow
 	name = "\improper радужная наклейка на карту"
 	desc = "Переливается всеми цветами радуги!"
@@ -231,6 +238,13 @@
 	pronoun_name = "бегущую наклейку"
 	info = "Бегает и бегает..."
 
+/obj/item/id_skin/magic
+	name = "\improper магическая наклейка на карту"
+	desc = "EI NATH!"
+	icon_state = "magic"
+	pronoun_name = "магическую наклейку"
+	info = "Кто-то до сих пор девственник..."
+
 // Supply Crate
 /datum/supply_packs/misc/randomised/id_skins
 	name = "Наклейки на карточку"
@@ -253,11 +267,13 @@
 		/obj/item/id_skin/clown,
 		/obj/item/id_skin/neon,
 		/obj/item/id_skin/colored/neon,
+		/obj/item/id_skin/missing,
 		/obj/item/id_skin/rainbow,
 		/obj/item/id_skin/space,
 		/obj/item/id_skin/kitty,
 		/obj/item/id_skin/colored/kitty,
-		/obj/item/id_skin/colored/snake)
+		/obj/item/id_skin/colored/snake,
+		/obj/item/id_skin/magic)
 	cost = 2000
 	containername = "ящик с наклейками"
 
@@ -277,11 +293,13 @@
 	/obj/item/id_skin/clown = 1,
 	/obj/item/id_skin/neon = 1,
 	/obj/item/id_skin/colored/neon = 1,
+	/obj/item/id_skin/missing = 1,
 	/obj/item/id_skin/rainbow = 1,
 	/obj/item/id_skin/space = 1,
 	/obj/item/id_skin/kitty = 1,
 	/obj/item/id_skin/colored/kitty = 1,
-	/obj/item/id_skin/colored/snake = 1)
+	/obj/item/id_skin/colored/snake = 1,
+	/obj/item/id_skin/magic = 1)
 
 /obj/effect/spawner/random_spawners/id_skins/no_chance
 	result = list(
@@ -296,8 +314,10 @@
 	/obj/item/id_skin/clown = 1,
 	/obj/item/id_skin/neon = 1,
 	/obj/item/id_skin/colored/neon = 1,
+	/obj/item/id_skin/missing = 1,
 	/obj/item/id_skin/rainbow = 1,
 	/obj/item/id_skin/space = 1,
 	/obj/item/id_skin/kitty = 1,
 	/obj/item/id_skin/colored/kitty = 1,
-	/obj/item/id_skin/colored/snake = 1)
+	/obj/item/id_skin/colored/snake = 1,
+	/obj/item/id_skin/magic = 1)
