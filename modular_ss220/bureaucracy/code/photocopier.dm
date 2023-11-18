@@ -11,7 +11,7 @@
 	/// Selected form's datum
 	var/datum/bureaucratic_form/form
 	/// Printing sound
-	var/print_sound = 'sound/goonstation/machines/printer_dotmatrix.ogg'
+	var/print_sound = 'modular_ss220/bureaucracy/sound/print.ogg'
 
 /obj/machinery/photocopier/Initialize(mapload)
 	. = ..()
@@ -19,26 +19,14 @@
 
 /obj/machinery/photocopier/attack_ai(mob/user)
 	add_hiddenprint(user)
-	parse_forms(user)
 	ui_interact(user)
-	return attack_hand(user)
 
 /obj/machinery/photocopier/attack_ghost(mob/user)
-	if(user.can_advanced_admin_interact())
-		ui_interact(user)
-	return attack_hand(user)
-
-/obj/machinery/photocopier/attack_hand(mob/user)
-	if(..())
-		return TRUE
-
-	user.set_machine(src)
-	parse_forms(user)
 	ui_interact(user)
 
 /obj/machinery/photocopier/ui_act(action, list/params)
 	. = ..()
-	if(.)
+	if(isnull(..()))
 		return
 
 	switch(action)
@@ -61,7 +49,7 @@
 /obj/machinery/photocopier/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = FALSE, datum/tgui/master_ui = null, datum/ui_state/state = GLOB.default_state)
 	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
 	if(!ui)
-		ui = new(user, src, ui_key, "Photocopier220", name, 650, 635, master_ui, state)
+		ui = new(user, src, ui_key, "Photocopier220", "Ксерокс", 650, 635, master_ui, state)
 		ui.open()
 
 /obj/machinery/photocopier/ui_data(mob/user)
@@ -69,7 +57,6 @@
 		parse_forms(user)
 
 	var/list/data = list()
-
 	data["isAI"] = issilicon(user)
 	data["copies"] = copies
 	data["maxcopies"] = maxcopies
@@ -77,34 +64,25 @@
 	data["copyitem"] = (copyitem ? copyitem.name : null)
 	data["folder"] = (folder ? folder.name : null)
 	data["mob"] = (copymob ? copymob.name : null)
-	data["files"] = list()
 	data["form"] = form
 	data["category"] = category
 	data["form_id"] = form_id
 	data["forms"] = forms
-
-	if(LAZYLEN(saved_documents))
-		for(var/obj/item/O in saved_documents)
-			var/list/document_data = list(
-				name = O.name,
-				uid = O.UID()
-			)
-			data["files"] += list(document_data)
 	return data
 
 /obj/machinery/photocopier/proc/parse_forms(mob/user)
 	var/list/access = user.get_access()
 	forms.Cut()
 	for(var/path in GLOB.bureaucratic_forms)
-		var/datum/bureaucratic_form/F = GLOB.bureaucratic_forms[path]
-		var/req_access = F.req_access
+		var/datum/bureaucratic_form/paper_form = GLOB.bureaucratic_forms[path]
+		var/req_access = paper_form.req_access
 		if(req_access && !(req_access in access))
 			continue
 		var/form[0]
-		form["path"] = F.type
-		form["id"] = F.id
-		form["altername"] = F.altername
-		form["category"] = F.category
+		form["path"] = paper_form.type
+		form["id"] = paper_form.id
+		form["altername"] = paper_form.altername
+		form["category"] = paper_form.category
 		forms.Add(list(form))
 
 /obj/machinery/photocopier/proc/print_form(datum/bureaucratic_form/form)
