@@ -90,7 +90,7 @@
 	item_state = "jacket_syndie"
 
 /obj/item/clothing/suit/space/deathsquad/officer/field
-	name = "Полевая форма Офицера Флота NanoTrasen"
+	name = "Полевая форма Офицера Флота Nanotrasen"
 	desc = "Парадный плащ, разработанный в качестве массового варианта формы Верховного Главнокомандующего. У этой униформы нет тех же защитных свойств, что и у оригинала, но она все ещё является довольно удобным и стильным предметом гардероба."
 	icon = 'modular_ss220/clothing/icons/object/suits.dmi'
 	icon_state = "ntsc_uniform"
