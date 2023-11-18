@@ -1,4 +1,4 @@
-#define PHOTOCOPIER_DELAY 4 SECONDS
+#define PHOTOCOPIER_DELAY 5 SECONDS
 
 /obj/machinery/photocopier
 	toner = 30
@@ -26,7 +26,7 @@
 
 /obj/machinery/photocopier/ui_act(action, list/params)
 	. = ..()
-	if(isnull(..()))
+	if(.)
 		return
 
 	switch(action)
