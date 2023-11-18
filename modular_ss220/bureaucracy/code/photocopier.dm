@@ -19,6 +19,7 @@
 
 /obj/machinery/photocopier/attack_ai(mob/user)
 	add_hiddenprint(user)
+	parse_forms(user)
 	ui_interact(user)
 
 /obj/machinery/photocopier/attack_ghost(mob/user)
