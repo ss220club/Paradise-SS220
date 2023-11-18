@@ -1,3 +1,5 @@
+#define PHOTOCOPIER_DELAY 4 SECONDS
+
 /obj/machinery/photocopier
 	toner = 30
 	/// Selected form's category
@@ -45,8 +47,6 @@
 				if(toner <= 0)
 					break
 				print_form(form)
-				use_power(active_power_consumption)
-				sleep(15)
 			. = TRUE
 		if("choose_form")
 			form = GLOB.bureaucratic_forms[params["path"]]
@@ -108,9 +108,19 @@
 		forms.Add(list(form))
 
 /obj/machinery/photocopier/proc/print_form(datum/bureaucratic_form/form)
-	playsound(loc, print_sound, 25, TRUE)
+	if(copying)
+		visible_message(span_notice("[src] работает, проявите терпение."))
+		return FALSE
+
 	toner--
-	if(toner <= 0)
-		visible_message("<span class='notice'>На [src] мигает красная лампочка. Похоже, закончился тонер.</span>")
+	copying = TRUE
+	playsound(loc, print_sound, 30)
+	use_power(active_power_consumption)
+	sleep(PHOTOCOPIER_DELAY)
 	var/obj/item/paper/paper = new(loc)
+	paper.pixel_x = rand(-10, 10)
+	paper.pixel_y = rand(-10, 10)
 	form.apply_to_paper(paper, usr)
+	copying = FALSE
+
+#undef PHOTOCOPIER_DELAY

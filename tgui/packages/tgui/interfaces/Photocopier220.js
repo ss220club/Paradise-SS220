@@ -97,7 +97,7 @@ export const Photocopier220 = (props, context) => {
             </Section>
             <Section title="Управление">
               <Flex>
-                <Flex.Item grow={1} basis={0} mr="2px">
+                <Flex.Item grow={1} mr="2px">
                   <Button
                     fluid
                     textAlign="center"
@@ -107,7 +107,7 @@ export const Photocopier220 = (props, context) => {
                     onClick={() => act('copy')}
                   />
                 </Flex.Item>
-                <Flex.Item grow={1} basis={0} ml="2px">
+                <Flex.Item grow={1} ml="2px">
                   <Button
                     fluid
                     textAlign="center"
@@ -117,20 +117,18 @@ export const Photocopier220 = (props, context) => {
                     onClick={() => act('print_form')}
                   />
                 </Flex.Item>
-              </Flex>
-              <Flex>
-                <Flex.Item width="100%" mr="5px">
-                  {!!data.isAI && (
+                {!!data.isAI && (
+                  <Flex.Item grow={1} ml="4px">
                     <Button
                       fluid
                       textAlign="center"
                       icon="terminal"
                       disabled={data.toner < 5}
-                      content="Фото из БД"
+                      content="Фото"
                       onClick={() => act('ai_pic')}
                     />
-                  )}
-                </Flex.Item>
+                  </Flex.Item>
+                )}
               </Flex>
               <Flex>
                 <Flex.Item mr="10px" mt={1.2} color="grey">
@@ -199,10 +197,7 @@ export const Photocopier220 = (props, context) => {
             </Flex.Item>
           </Flex.Item>
           <Flex.Item basis="65%" className="Layout__content--flexColumn">
-            <Section
-              title={data.category || 'Все формы'}
-              flexGrow="1"
-            >
+            <Section title={data.category || 'Все формы'} flexGrow="1">
               <Input
                 fluid
                 placeholder="Поиск формы"
