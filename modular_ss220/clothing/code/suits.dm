@@ -96,7 +96,6 @@
 	icon_state = "ntsc_uniform"
 	icon_override = 'modular_ss220/clothing/icons/mob/suits.dmi'
 	item_state = "ntsc_uniform"
-	armor = list("melee" = 30, "bullet" = 50, "laser" = 30,"energy" = 15, "bomb" = 30, "bio" = 30, "rad" = 30, "fire" = 60, "acid" = 75)
 
 /obj/item/clothing/suit/hooded/vi_arcane
 	name = "куртка Вай"

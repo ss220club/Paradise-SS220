@@ -97,10 +97,11 @@
 ///Nanotrasen Field Officer
 
 /datum/outfit/job/ntnavyofficer/field
-	name = "Nanotrasen Field Officer"
+	name = "Nanotrasen Navy Field Officer"
 
 	gloves = /obj/item/clothing/gloves/combat
 	suit = /obj/item/clothing/suit/space/deathsquad/officer/field
+	head = /obj/item/clothing/head/helmet/space/deathsquad/beret/field
 	l_pocket = /obj/item/melee/baseball_bat/homerun/central_command
 
 	implants = list(
@@ -113,7 +114,6 @@
 		/obj/item/organ/internal/eyes/cybernetic/thermals/hardened
 	)
 
-
 /datum/outfit/job/ntnavyofficer/field/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	. = ..()
 	if(visualsOnly)
@@ -121,7 +121,9 @@
 	H.mind.offstation_role = TRUE
 	var/obj/item/card/id/I = H.wear_id
 	if(istype(I))
-		apply_to_card(I, H, get_centcom_access("Nanotrasen Navy Officer"), "Nanotrasen Field Officer")
+		apply_to_card(I, H, get_centcom_access("Nanotrasen Navy Officer"), "Nanotrasen Navy Field Officer")
 	I.assignment = "Nanotrasen Navy Officer"
 	H.sec_hud_set_ID()
 
+/obj/item/clothing/head/helmet/space/deathsquad/beret/field
+	icon_state = "beret_centcom_officer"
