@@ -139,26 +139,26 @@ GLOBAL_LIST_INIT(bureaucratic_forms, list())
 	text = "<font face=\"Verdana\" color=black><center><font size=\"4\"><B>Основная информация</B></font></center><BR>Я, <span class=\"paper_field\"></span>, в должности – <span class=\"paper_field\"></span>, запрашиваю право на распространение вируса среди экипажа станции.<BR><table></td><tr><td>Название вируса:<td><span class=\"paper_field\"></span><BR></td><tr><td>Задачи вируса:<td><span class=\"paper_field\"></span><BR></td><tr><td>Лечение:<td><span class=\"paper_field\"></span><BR></td><tr><td>Вакцина была произведена<BR> и в данный момент находится:<td><span class=\"paper_field\"></span><BR></td></tr></table><BR><HR><BR><center><font size=\"4\"><B>Подписи и штампы</B></font></center><BR><table></td><tr><td>Подпись вирусолога:<td><span class=\"paper_field\"></span><BR></td><tr><td>Подпись глав. Врача:<td><span class=\"paper_field\"></span><BR></td></tr></td><tr><td>Подпись капитана:<td><span class=\"paper_field\"></span><BR></td></tr></table><hr><small>*Производитель вируса несет полную ответственность за его распространение, изолирование и лечение<br>*При возникновении опасных или смертельных побочных эффектов у членов экипажа, производитель должен незамедлительно предоставить вакцину, от данного вируса.</small></font>"
 	footer = footer_signstamp
 
-//Исследовательский отдел
+//Отдел исследований
 /datum/bureaucratic_form/NT_RND_01
 	name = "Форма NT-RND-01"
 	id = "NT-RND-01"
 	altername = "Отчет о странном предмете"
-	category = "Исследовательский отдел"
+	category = "Отдел исследований"
 	text = "<font face=\"Verdana\" color=black><BR>Название предмета: <span class=\"paper_field\"></span><BR>Тип предмета: <span class=\"paper_field\"></span><BR>Строение: <span class=\"paper_field\"></span><BR>Особенности и функционал: <span class=\"paper_field\"></span><BR>Дополнительная информация: <span class=\"paper_field\"></span><BR><HR><BR><center><font size=\"4\"><B>Подписи и штампы</B></font></center><BR>Подпись производившего осмотр: <span class=\"paper_field\"></span><BR><HR><I><font size = \"1\">*В дополнительной информации, рекомендуется указать остальную информацию о предмете, любое взаимодействие с ним, модификации, итоговый вариант после модификации.</I></font></font>"
 
 /datum/bureaucratic_form/NT_RND_02
 	name = "Форма NT-RND-02"
 	id = "NT-RND-02"
 	altername = "Заявление на киберизацию"
-	category = "Исследовательский отдел"
+	category = "Отдел исследований"
 	text = "<font face=\"Verdana\" color=black>⠀⠀⠀ Я, <span class=\"paper_field\"></span>, в должности <span class=\"paper_field\"></span>, самовольно подтверждаю согласие на проведение киберизации.<BR>⠀⠀⠀ Я полностью доверяю работнику <span class=\"paper_field\"></span> в должности – <span class=\"paper_field\"></span>. Я хорошо осведомлен о рисках, связанных как с операцией, так и с киберизацией, и понимаю, что Nanotrasen не несет ответственности, если эти процедуры вызовут боль, заражение или иные случаи летального характера.<BR><HR><BR><center><font size=\"4\"><B>Подписи и штампы</B></font></center><BR>Подпись заявителя: <span class=\"paper_field\"></span><BR>Подпись уполномоченного: <span class=\"paper_field\"></span><BR><HR><font size = \"1\">*Если член экипажа мертв, данный документ нету необходимости создавать.<BR>*Если член экипажа жив, данный документ сохраняется только у уполномоченного лица.<BR>*Данный документ может использоваться как для создания киборгов, так и для ИИ<font size = \"1\"></font>"
 
 /datum/bureaucratic_form/NT_RND_03
 	name = "Форма NT-RND-03"
 	id = "NT-RND-03"
 	altername = "Заявление на получение и установку импланта"
-	category = "Исследовательский отдел"
+	category = "Отдел исследований"
 	text = "<font face=\"Verdana\" color=black><center><font size=\"4\"><B>Заявление</B></font></center><BR><table></td><tr><td>Имя заявителя:<BR><font size = \"1\">Полностью и без ошибок</font><td><span class=\"paper_field\"></span><BR></td><tr><td>Номер аккаунта заявителя:<BR><font size = \"1\">Эта информация есть в ваших заметках</font><td><span class=\"paper_field\"></span><BR></td><tr><td>Текущая должность:<BR><font size = \"1\">Указано на ID карте</font><td><span class=\"paper_field\"></span><BR></td><tr><td>Требуемый имплантат:<BR><font size = \"1\">Может требовать дополнительного согласования</font><td><span class=\"paper_field\"></span><BR></td><tr><td>Причина:<BR><font size = \"1\">Объясните свои намерения</font><BR><span class=\"paper_field\"></span><BR><BR></td></tr></table><BR><HR><BR><center><font size=\"4\"><B>Подписи и штампы</B></font></center><BR><table></td><tr><td>Дата и время:<td><span class=\"paper_field\"></span><BR></td><tr><td>Подпись заявителя:<td><span class=\"paper_field\"></span><BR></td><tr><td>Подпись Руководителя Исследований:<td><span class=\"paper_field\"></span><BR></td><tr><td>Подпись выполняющего установку имплантата:<td><span class=\"paper_field\"></span><BR></td></tr></table></font>"
 
 // Общие формы
@@ -443,7 +443,7 @@ GLOBAL_LIST_INIT(bureaucratic_forms, list())
 	name = "Форма NT-COM-00"
 	id = "NT-COM-00"
 	altername = "Общая форма ЦК"
-	category = "Центральное командование"
+	category = "Формы ЦК"
 	from = "Административная станция Nanotrasen &#34;Trurl&#34;"
 	notice = "Перед заполнением прочтите от начала до конца | Высокий приоритет"
 	confidential = TRUE
@@ -455,7 +455,7 @@ GLOBAL_LIST_INIT(bureaucratic_forms, list())
 	name = "Форма NT-COM-01"
 	id = "NT-COM-01"
 	altername = "Запрос отчёта общего состояния станции"
-	category = "Центральное командование"
+	category = "Формы ЦК"
 	from = "Административная станция Nanotrasen &#34;Trurl&#34;"
 	notice = "Перед заполнением прочтите от начала до конца | Высокий приоритет"
 	confidential = TRUE
@@ -467,7 +467,7 @@ GLOBAL_LIST_INIT(bureaucratic_forms, list())
 	name = "Форма NT-COM-02"
 	id = "NT-COM-02"
 	altername = "Запрос отчёта состояния трудовых активов станции"
-	category = "Центральное командование"
+	category = "Формы ЦК"
 	from = "Административная станция Nanotrasen &#34;Trurl&#34;"
 	notice = "Перед заполнением прочтите от начала до конца | Высокий приоритет"
 	confidential = TRUE
@@ -479,7 +479,7 @@ GLOBAL_LIST_INIT(bureaucratic_forms, list())
 	name = "Форма NT-COM-03"
 	id = "NT-COM-03"
 	altername = "Запрос отчёта криминального статуса станции"
-	category = "Центральное командование"
+	category = "Формы ЦК"
 	from = "Административная станция Nanotrasen &#34;Trurl&#34;"
 	notice = "Перед заполнением прочтите от начала до конца | Высокий приоритет"
 	confidential = TRUE
@@ -494,7 +494,7 @@ GLOBAL_LIST_INIT(bureaucratic_forms, list())
 	name = "Форма NT-COM-04"
 	id = "NT-COM-04"
 	altername = "Запрос отчёта здравоохранения станции"
-	category = "Центральное командование"
+	category = "Формы ЦК"
 	from = "Административная станция Nanotrasen &#34;Trurl&#34;"
 	notice = "Перед заполнением прочтите от начала до конца | Высокий приоритет"
 	confidential = TRUE
@@ -506,7 +506,7 @@ GLOBAL_LIST_INIT(bureaucratic_forms, list())
 	name = "Форма NT-COM-05"
 	id = "NT-COM-05"
 	altername = "Запрос отчёта научно-технического прогресса станции"
-	category = "Центральное командование"
+	category = "Формы ЦК"
 	from = "Административная станция Nanotrasen &#34;Trurl&#34;"
 	notice = "Перед заполнением прочтите от начала до конца | Высокий приоритет"
 	confidential = TRUE
@@ -518,7 +518,7 @@ GLOBAL_LIST_INIT(bureaucratic_forms, list())
 	name = "Форма NT-COM-06"
 	id = "NT-COM-06"
 	altername = "Запрос отчёта инженерного обеспечения станции"
-	category = "Центральное командование"
+	category = "Формы ЦК"
 	from = "Административная станция Nanotrasen &#34;Trurl&#34;"
 	notice = "Перед заполнением прочтите от начала до конца | Высокий приоритет"
 	confidential = TRUE
@@ -530,7 +530,7 @@ GLOBAL_LIST_INIT(bureaucratic_forms, list())
 	name = "Форма NT-COM-07"
 	id = "NT-COM-07"
 	altername = "Запрос отчёта статуса снабжения станции "
-	category = "Центральное командование"
+	category = "Формы ЦК"
 	from = "Административная станция Nanotrasen &#34;Trurl&#34;"
 	notice = "Перед заполнением прочтите от начала до конца | Высокий приоритет"
 	confidential = TRUE

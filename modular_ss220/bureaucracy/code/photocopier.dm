@@ -24,6 +24,10 @@
 /obj/machinery/photocopier/attack_ghost(mob/user)
 	ui_interact(user)
 
+/obj/machinery/photocopier/attack_hand(mob/user)
+	. = ..()
+	parse_forms(user)
+
 /obj/machinery/photocopier/ui_act(action, list/params)
 	. = ..()
 	if(isnull(.))
@@ -49,7 +53,7 @@
 /obj/machinery/photocopier/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = FALSE, datum/tgui/master_ui = null, datum/ui_state/state = GLOB.default_state)
 	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
 	if(!ui)
-		ui = new(user, src, ui_key, "Photocopier220", "Ксерокс", 650, 635, master_ui, state)
+		ui = new(user, src, ui_key, "Photocopier220", "Ксерокс", 550, 635, master_ui, state)
 		ui.open()
 
 /obj/machinery/photocopier/ui_data(mob/user)
@@ -92,7 +96,7 @@
 
 	toner--
 	copying = TRUE
-	playsound(loc, print_sound, 30)
+	playsound(loc, print_sound, 50)
 	use_power(active_power_consumption)
 	sleep(PHOTOCOPIER_DELAY)
 	var/obj/item/paper/paper = new(loc)

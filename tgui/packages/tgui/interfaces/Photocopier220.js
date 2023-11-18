@@ -56,7 +56,7 @@ export const Photocopier220 = (props, context) => {
     <Window theme={data.ui_theme}>
       <Window.Content scrollable display="flex">
         <Flex direction="row" spacing={1}>
-          <Flex.Item basis="35%">
+          <Flex.Item basis="40%">
             <Section title="Статус">
               <Flex>
                 <Flex.Item width="50%" mt={0.8} color="grey">
@@ -97,17 +97,7 @@ export const Photocopier220 = (props, context) => {
             </Section>
             <Section title="Управление">
               <Flex>
-                <Flex.Item grow={1} mr="2px">
-                  <Button
-                    fluid
-                    textAlign="center"
-                    icon="clone"
-                    content="Копия"
-                    disabled={data.toner === 0 || (!data.copyitem && !data.mob)}
-                    onClick={() => act('copy')}
-                  />
-                </Flex.Item>
-                <Flex.Item grow={1} ml="2px">
+                <Flex.Item grow={1} width="100%">
                   <Button
                     fluid
                     textAlign="center"
@@ -118,29 +108,57 @@ export const Photocopier220 = (props, context) => {
                   />
                 </Flex.Item>
                 {!!data.isAI && (
-                  <Flex.Item grow={1} ml="4px">
+                  <Flex.Item grow={1} width="100%" ml="5px">
                     <Button
                       fluid
                       textAlign="center"
-                      icon="terminal"
+                      icon="camera"
                       disabled={data.toner < 5}
                       content="Фото"
+                      tooltip="Распечатать фото с Базы Данных"
+                      tooltipPosition="right"
                       onClick={() => act('ai_pic')}
                     />
                   </Flex.Item>
                 )}
               </Flex>
               <Flex>
-                <Flex.Item mr="10px" mt={1.2} color="grey">
+                <Flex.Item grow={1} width="100%" mt="3px">
+                  <Button
+                    fluid
+                    textAlign="center"
+                    icon="clone"
+                    content="Копия"
+                    disabled={data.toner === 0 || (!data.copyitem && !data.mob)}
+                    onClick={() => act('copy')}
+                  />
+                </Flex.Item>
+                {!!data.isAI && (
+                  <Flex.Item grow={1} width="100%" ml="5px" mt="3px">
+                    <Button
+                      fluid
+                      textAlign="center"
+                      icon="terminal"
+                      content="Текст"
+                      tooltip="Распечатать свой текст"
+                      tooltipPosition="right"
+                      disabled={data.toner === 0}
+                      onClick={() => act('ai_text')}
+                    />
+                  </Flex.Item>
+                )}
+              </Flex>
+              <Flex>
+                <Flex.Item mr={4.5} mt={1.2} color="grey">
                   Количество:
                 </Flex.Item>
                 <Slider
-                  ml={3.25}
                   mt={0.75}
                   animated
                   minValue={1}
                   maxValue={maxcopies}
                   value={copies}
+                  stepPixelSize={10}
                   onChange={(e, value) =>
                     act('copies', {
                       new: value,
@@ -149,17 +167,17 @@ export const Photocopier220 = (props, context) => {
                 />
               </Flex>
             </Section>
-            <Flex.Item className="Layout__content--flexColumn" height="355px">
+            <Flex.Item className="Layout__content--flexColumn" height="330px">
               <Section title="Бюрократия" flexGrow="1">
                 <Flex>
-                  <Flex.Item mr={2} color="grey">
+                  <Flex.Item mr={2} mt={0.1} color="grey">
                     Форма:
                   </Flex.Item>
                   <FlexItem bold>
                     {data.form_id === '' ? 'Не выбрана' : data.form_id}
                   </FlexItem>
                 </Flex>
-                <Flex direction="column" mt={2}>
+                <Flex direction="column" mt={2.1}>
                   <Flex.Item>
                     <Button
                       mb={1}
@@ -196,7 +214,7 @@ export const Photocopier220 = (props, context) => {
               </Section>
             </Flex.Item>
           </Flex.Item>
-          <Flex.Item basis="65%" className="Layout__content--flexColumn">
+          <Flex.Item basis="60%" className="Layout__content--flexColumn">
             <Section title={data.category || 'Все формы'} flexGrow="1">
               <Input
                 fluid
@@ -210,7 +228,7 @@ export const Photocopier220 = (props, context) => {
                       mb={1}
                       fluid
                       key={form.path}
-                      content={form.id + ': ' + form.altername.trimLongStr(37)}
+                      content={form.altername.trimLongStr(37)}
                       selected={data.form_id === form.id}
                       onClick={() =>
                         act('choose_form', {
