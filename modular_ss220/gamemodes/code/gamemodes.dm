@@ -17,5 +17,3 @@
 /datum/game_mode/vampire/New()
 	. = ..()
 	protected_jobs |= "Security Cadet"
-
-
