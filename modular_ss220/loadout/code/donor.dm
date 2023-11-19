@@ -121,7 +121,7 @@
 	donator_tier = 3
 	cost = 2
 
-/datum/gear/donor/id_decal_gold
+/datum/gear/donor/id_decal_gold_skin
 	display_name = "Золотая наклейка на карту"
 	path = /obj/item/id_skin/gold
 	donator_tier = 3
