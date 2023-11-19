@@ -205,7 +205,7 @@
 	donator_tier = 4
 	cost = 3
 
-/datum/gear/donor/id_decal_kitty_colored
+/datum/gear/donor/id_decal_anime
 	display_name = "Анимешная наклейка на карту"
 	path = /obj/item/id_skin/cursedmiku
 	donator_tier = 4
@@ -223,7 +223,7 @@
 	donator_tier = 4
 	cost = 3
 
-/datum/gear/donor/id_decal_magic
+/datum/gear/donor/id_decal_terminal
 	display_name = "Наклейка на карту в виде терминала "
 	path = /obj/item/id_skin/terminal
 	donator_tier = 4
