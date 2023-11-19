@@ -2,7 +2,7 @@ import git
 import json
 import re
 import os
-BUILD_PATH = "../../"
+BUILD_PATH = "./"
 
 allowPathsRegexp = re.compile('^code/.*')
 
