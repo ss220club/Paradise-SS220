@@ -245,6 +245,13 @@
 	desc = "Прекрасная наклейка, которая делает вашу карту похожей на котика. Эта может менять цвет."
 	icon_state = "colored_kitty"
 
+/obj/item/id_skin/cursedmiku
+	name = "\improper аниме наклейка на карту"
+	desc = "Kawaii!!!"
+	icon_state = "cursedmiku"
+	pronoun_name = "кото-клейку"
+	info = "На ней анимешная наклейка. AYAYA!"
+
 /obj/item/id_skin/colored/snake
 	name = "\improper бегущая наклейка на карту"
 	desc = "Она что-то загружает?"
@@ -260,7 +267,7 @@
 	info = "Кто-то до сих пор девственник..."
 
 /obj/item/id_skin/terminal
-	name = "\improper магическая наклейка на карту"
+	name = "\improper наклейка на карту в виде терминала"
 	desc = "HACKERMAN."
 	icon_state = "terminal"
 	pronoun_name = "наклейку в виде терминала"
@@ -295,6 +302,7 @@
 		/obj/item/id_skin/space,
 		/obj/item/id_skin/kitty,
 		/obj/item/id_skin/colored/kitty,
+		/obj/item/id_skin/cursedmiku,
 		/obj/item/id_skin/colored/snake,
 		/obj/item/id_skin/magic,
 		/obj/item/id_skin/terminal)
@@ -324,6 +332,7 @@
 	/obj/item/id_skin/space = 1,
 	/obj/item/id_skin/kitty = 1,
 	/obj/item/id_skin/colored/kitty = 1,
+	/obj/item/id_skin/cursedmiku = 1,
 	/obj/item/id_skin/colored/snake = 1,
 	/obj/item/id_skin/magic = 1,
 	/obj/item/id_skin/terminal = 1)
@@ -348,6 +357,7 @@
 	/obj/item/id_skin/space = 1,
 	/obj/item/id_skin/kitty = 1,
 	/obj/item/id_skin/colored/kitty = 1,
+	/obj/item/id_skin/cursedmiku = 1,
 	/obj/item/id_skin/colored/snake = 1,
 	/obj/item/id_skin/magic = 1,
 	/obj/item/id_skin/terminal = 1)
