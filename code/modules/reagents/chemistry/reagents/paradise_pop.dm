@@ -95,16 +95,16 @@
 
 /datum/reagent/consumable/drink/blackeye_brew/on_mob_life(mob/living/M)
 	if(prob(25))
-		var/list/tider_talk = list("I OWN THIS STATION NOW, I JUST BOUGHT IT.",
-									"SECRET TECHNIQUE: TOOLBOX TO THE FACE!",
-									"SECRET TECHNIQUE: PLASMA CANISTER FIRE!",
-									"SECRET TECHNIQUE: TABLE AND DISPOSAL!",
+		var/list/tider_talk = list("ЭТО ТЕПЕРЬ МОЯ СТАНЦИЯ, Я ЕЁ ТОЛЬКО ЧТО КУПИЛ.",
+									"СЕКРЕТНАЯ ТЕХНИКА: ТУЛБОКСОМ ПО РОЖЕ!",
+									"СЕКРЕТНАЯ ТЕХНИКА: ПОДПАЛИТЬ КАНИСТРУ ПЛАЗМЫ!",
+									"СЕКРЕТНАЯ ТЕХНИКА: НА СТОЛ И В МУСОРКУ!",
 									// Borers got removed but the below reference stays because its hilarious
-									"[pick("MY BROTHER", " MY DOG", "MY BEST FRIEND", "THE BORER", "GEORGE MELONS", "BADMINS")] DID IT!",
-									";s WHATS SPACE LAW?!",
-									"I BOUGHT THESE GLOVES, NOT STEAL THEM",
-									"THIS DOOR WAS SHOCKED WHEN I GOT HERE",
-									"ANIMALS ARE NOT CREW")
+									"ЭТО СДЕЛАЛ [pick("МОЙ БРАТ", "МОЙ ПЁС", "МОЙ ЛУЧШИЙ ДРУГ", "БОРЕР", "ДЖОРДЖ МЕЛЛОНС", "БЭДМИН" "ПУНПУН")]!",
+									";s ЧТО ТАКОЕ КОСМОЗАКОН?!",
+									"Я КУПИЛ ЭТИ ПЕРЧАТКИ, НЕ УКРАЛ!!!",
+									"ЭТА ДВЕРЬ УЖЕ БИЛАСЬ ТОКОМ КОГДА Я ПРИШЁЛ",
+									"ЖИВОТНЫЕ НЕ ЧЛЕНЫ ЭКИПАЖА")
 		M.say(pick(tider_talk))
 	return ..()
 
