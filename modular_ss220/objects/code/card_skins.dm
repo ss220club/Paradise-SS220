@@ -209,7 +209,7 @@
 	name = "\improper Уиджи наклейка на карту"
 	desc = "Ходят легенты, что тот кто наклеит это на карту, может общаться с духами..."
 	icon_state = "ouija"
-	pronoun_name = "чёрно-розовую наклейку"
+	pronoun_name = "наклейку в виде доски Уиджи"
 	info = "Умеет ли он общаться с призраками?"
 
 /obj/item/id_skin/paradise
@@ -249,7 +249,7 @@
 	name = "\improper аниме наклейка на карту"
 	desc = "Kawaii!!!"
 	icon_state = "cursedmiku"
-	pronoun_name = "кото-клейку"
+	pronoun_name = "анимешную наклейку"
 	info = "На ней анимешная наклейка. AYAYA!"
 
 /obj/item/id_skin/colored/snake
