@@ -205,6 +205,20 @@
 	pronoun_name = "чёрно-розовую наклейку"
 	info = "А где?"
 
+/obj/item/id_skin/ouija
+	name = "\improper Уиджи наклейка на карту"
+	desc = "Ходят легенты, что тот кто наклеит это на карту, может общаться с духами..."
+	icon_state = "ouija"
+	pronoun_name = "чёрно-розовую наклейку"
+	info = "Умеет ли он общаться с призраками?"
+
+/obj/item/id_skin/paradise
+	name = "\improper пляжная наклейка на карту"
+	desc = "Хола!"
+	icon_state = "paradise"
+	pronoun_name = "пляжную наклейку"
+	info = "На ней пляжная наклейка."
+
 /obj/item/id_skin/rainbow
 	name = "\improper радужная наклейка на карту"
 	desc = "Переливается всеми цветами радуги!"
@@ -245,6 +259,13 @@
 	pronoun_name = "магическую наклейку"
 	info = "Кто-то до сих пор девственник..."
 
+/obj/item/id_skin/terminal
+	name = "\improper магическая наклейка на карту"
+	desc = "HACKERMAN."
+	icon_state = "terminal"
+	pronoun_name = "наклейку в виде терминала"
+	info = "Эта карта похожа на терминал."
+
 // Supply Crate
 /datum/supply_packs/misc/randomised/id_skins
 	name = "Наклейки на карточку"
@@ -268,12 +289,15 @@
 		/obj/item/id_skin/neon,
 		/obj/item/id_skin/colored/neon,
 		/obj/item/id_skin/missing,
+		/obj/item/id_skin/ouija,
+		/obj/item/id_skin/paradise,
 		/obj/item/id_skin/rainbow,
 		/obj/item/id_skin/space,
 		/obj/item/id_skin/kitty,
 		/obj/item/id_skin/colored/kitty,
 		/obj/item/id_skin/colored/snake,
-		/obj/item/id_skin/magic)
+		/obj/item/id_skin/magic,
+		/obj/item/id_skin/terminal)
 	cost = 2000
 	containername = "ящик с наклейками"
 
@@ -294,12 +318,15 @@
 	/obj/item/id_skin/neon = 1,
 	/obj/item/id_skin/colored/neon = 1,
 	/obj/item/id_skin/missing = 1,
+	/obj/item/id_skin/ouija = 1,
+	/obj/item/id_skin/paradise = 1,
 	/obj/item/id_skin/rainbow = 1,
 	/obj/item/id_skin/space = 1,
 	/obj/item/id_skin/kitty = 1,
 	/obj/item/id_skin/colored/kitty = 1,
 	/obj/item/id_skin/colored/snake = 1,
-	/obj/item/id_skin/magic = 1)
+	/obj/item/id_skin/magic = 1,
+	/obj/item/id_skin/terminal = 1)
 
 /obj/effect/spawner/random_spawners/id_skins/no_chance
 	result = list(
@@ -315,9 +342,12 @@
 	/obj/item/id_skin/neon = 1,
 	/obj/item/id_skin/colored/neon = 1,
 	/obj/item/id_skin/missing = 1,
+	/obj/item/id_skin/ouija = 1,
+	/obj/item/id_skin/paradise = 1,
 	/obj/item/id_skin/rainbow = 1,
 	/obj/item/id_skin/space = 1,
 	/obj/item/id_skin/kitty = 1,
 	/obj/item/id_skin/colored/kitty = 1,
 	/obj/item/id_skin/colored/snake = 1,
-	/obj/item/id_skin/magic = 1)
+	/obj/item/id_skin/magic = 1,
+	/obj/item/id_skin/terminal = 1)

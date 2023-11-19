@@ -169,6 +169,18 @@
 	donator_tier = 3
 	cost = 2
 
+/datum/gear/donor/id_decal_paradise
+	display_name = "Paradise наклейка на карту"
+	path = /obj/item/id_skin/paradise
+	donator_tier = 3
+	cost = 2
+
+/datum/gear/donor/id_decal_ouija
+	display_name = "Уиджи наклейка на карту"
+	path = /obj/item/id_skin/ouija
+	donator_tier = 3
+	cost = 2
+
 /datum/gear/donor/id_decal_rainbow
 	display_name = "Радужная наклейка на карту"
 	path = /obj/item/id_skin/rainbow
@@ -202,5 +214,11 @@
 /datum/gear/donor/id_decal_magic
 	display_name = "Магическая наклейка на карту"
 	path = /obj/item/id_skin/magic
+	donator_tier = 4
+	cost = 3
+
+/datum/gear/donor/id_decal_magic
+	display_name = "Наклейка в виде терминала на карту"
+	path = /obj/item/id_skin/terminal
 	donator_tier = 4
 	cost = 3
