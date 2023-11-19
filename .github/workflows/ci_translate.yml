@@ -37,7 +37,7 @@ jobs:
 
       - name: Apply PR translation
         run: |
-          git diff origin/translate..${{ github.sha }} | git apply
+          git diff ..${{ github.sha }} | git apply
 
       - name: 'Generate Translation'
         run: |
