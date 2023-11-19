@@ -922,6 +922,7 @@
 		'modular_ss220/aesthetics_sounds/sound/mobs/zombies/hzv13.ogg',
 		'modular_ss220/aesthetics_sounds/sound/mobs/zombies/hzv14.ogg',
 	)
+	del_on_death = TRUE
 
 //Bullsquid
 /mob/living/simple_animal/hostile/blackmesa/xen/bullsquid
@@ -1032,8 +1033,8 @@
 	ranged_message = "fires"
 	taunt_chance = 100
 	turns_per_move = 3
-	maxHealth = 130
-	health = 130
+	maxHealth = 100
+	health = 100
 	speed = 2
 	ranged = TRUE
 	dodging = TRUE
@@ -1068,8 +1069,8 @@
 	bound_height = 32
 	bound_width = 32
 	icon_dead = "bullsquid_dead"
-	maxHealth = 3000
-	health = 3000
+	maxHealth = 2500
+	health = 2500
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	universal_speak = TRUE
 	projectilesound = 'sound/weapons/lasercannonfire.ogg'
