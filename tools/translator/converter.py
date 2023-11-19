@@ -63,7 +63,7 @@ for item in filtered:
     if originLen != replaceLen:
         print("Changes not equals")
         print(item)
-        exit()
+        exit(1)
 
     file = {"path": item["file"], "replaces": []}
 
