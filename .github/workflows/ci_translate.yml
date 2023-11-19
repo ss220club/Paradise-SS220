@@ -33,11 +33,11 @@ jobs:
 
       - name: Create temporary branch
         run: |
-          git checkout -b translate_tmp ${{ github.sha }}^
+          git checkout -b translate_tmp origin/translate
 
       - name: Apply PR translation
         run: |
-          git diff ${{ github.sha }}^..${{ github.sha }} | git apply
+          git diff origin/translate..${{ github.sha }} | git apply
 
       - name: 'Generate Translation'
         run: |
