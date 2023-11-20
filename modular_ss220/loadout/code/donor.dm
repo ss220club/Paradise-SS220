@@ -109,7 +109,7 @@
 	path = /obj/item/id_skin/colored
 	cost = 2
 
-/datum/gear/donor/id_decal_colored
+/datum/gear/donor/id_decal_donut
 	display_name = "Пончиковая наклейка на карту"
 	path = /obj/item/id_skin/donut
 	cost = 2
