@@ -109,6 +109,11 @@
 	path = /obj/item/id_skin/colored
 	cost = 2
 
+/datum/gear/donor/id_decal_colored
+	display_name = "Пончиковая наклейка на карту"
+	path = /obj/item/id_skin/donut
+	cost = 2
+
 /datum/gear/donor/id_decal_silver_colored
 	display_name = "Серебрянная наклейка на карту (Голографическая)"
 	path = /obj/item/id_skin/colored/silver

@@ -136,6 +136,12 @@
 		if("Выбрать вручную")
 			color = input(usr,"Выберите цвет") as color
 
+/obj/item/id_skin/donut
+	name = "\improper пончиковая наклейка на карту"
+	icon_state = "donut"
+	pronoun_name = "пончиковую наклейку"
+	info = "На ней пончиковая наклейка. С глазурью!"
+
 /obj/item/id_skin/silver
 	name = "\improper серебрянная наклейка на карту"
 	icon_state = "silver"
@@ -284,6 +290,11 @@
 		/obj/item/id_skin/colored,
 		/obj/item/id_skin/colored,
 		/obj/item/id_skin/colored,
+		/obj/item/id_skin/donut,
+		/obj/item/id_skin/donut,
+		/obj/item/id_skin/donut,
+		/obj/item/id_skin/donut,
+		/obj/item/id_skin/donut,
 		/obj/item/id_skin/colored/silver,
 		/obj/item/id_skin/colored/silver,
 		/obj/item/id_skin/colored/silver,
@@ -316,7 +327,8 @@
 	icon_state = "ID_Random"
 	result = list(
 	/obj/item/id_skin/colored = 10,
-	/obj/item/id_skin/colored/silver = 1,
+	/obj/item/id_skin/donut = 10,
+	/obj/item/id_skin/colored/silver = 5,
 	/obj/item/id_skin/silver = 1,
 	/obj/item/id_skin/gold = 1,
 	/obj/item/id_skin/business = 1,
@@ -341,7 +353,8 @@
 	result = list(
 	/datum/nothing = 80,
 	/obj/item/id_skin/colored = 10,
-	/obj/item/id_skin/colored/silver = 1,
+	/obj/item/id_skin/donut = 10,
+	/obj/item/id_skin/colored/silver = 5,
 	/obj/item/id_skin/silver = 1,
 	/obj/item/id_skin/gold = 1,
 	/obj/item/id_skin/business = 1,
