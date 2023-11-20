@@ -65534,7 +65534,6 @@
 /turf/simulated/floor/wood/oak,
 /area/station/command/office/captain/bedroom)
 "jKd" = (
-/obj/machinery/power/apc/directional/east,
 /obj/machinery/photocopier,
 /turf/simulated/floor/wood/fancy/cherry,
 /area/station/legal/lawoffice)
@@ -85140,11 +85139,6 @@
 	},
 /area/station/security/storage)
 "qeW" = (
-/obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2"
-	},
-/obj/machinery/power/apc/directional/north,
 /obj/machinery/flasher/portable,
 /turf/simulated/floor/plasteel{
 	dir = 1;
@@ -85670,6 +85664,11 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
 	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/starboard)
@@ -93680,11 +93679,6 @@
 	dir = 4
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
-/obj/structure/cable{
 	d1 = 2;
 	d2 = 8;
 	icon_state = "2-8"
@@ -100681,13 +100675,19 @@
 /area/station/legal/lawoffice)
 "veB" = (
 /obj/structure/table/wood,
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
 /obj/item/reagent_containers/food/snacks/grown/poppy/geranium,
 /obj/item/soap/deluxe,
+/obj/machinery/power/apc{
+	cell_type = 25000;
+	dir = 4;
+	name = "Courtroom";
+	pixel_x = 24;
+	shock_proof = 1
+	},
+/obj/structure/cable{
+	d2 = 8;
+	icon_state = "0-8"
+	},
 /turf/simulated/floor/wood/fancy,
 /area/station/public/sleep_female)
 "veF" = (
@@ -101436,6 +101436,17 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/item/stack/sheet/wood,
 /obj/effect/decal/cleanable/dust,
+/obj/structure/cable{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/obj/machinery/power/apc{
+	cell_type = 25000;
+	dir = 4;
+	name = "Courtroom";
+	pixel_x = 24;
+	shock_proof = 1
+	},
 /turf/simulated/floor/wood/oak,
 /area/station/maintenance/starboard)
 "vsc" = (
@@ -109029,11 +109040,6 @@
 /area/station/maintenance/old_kitchen)
 "xRI" = (
 /obj/structure/table/wood,
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
 /obj/item/flashlight/lamp/green{
 	pixel_y = 4;
 	pixel_x = 6;
@@ -109046,6 +109052,17 @@
 /obj/item/lighter/zippo{
 	pixel_x = -5;
 	pixel_y = 2
+	},
+/obj/machinery/power/apc{
+	cell_type = 25000;
+	dir = 4;
+	name = "Courtroom";
+	pixel_x = 24;
+	shock_proof = 1
+	},
+/obj/structure/cable{
+	d2 = 8;
+	icon_state = "0-8"
 	},
 /turf/simulated/floor/wood/fancy,
 /area/station/public/sleep_male)
