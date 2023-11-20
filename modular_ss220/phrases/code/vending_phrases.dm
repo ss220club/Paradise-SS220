@@ -28,8 +28,6 @@
 		"",
 	)
 
-
-
 /obj/machinery/economy/vending/cigarette/Initialize(mapload)
 	. = ..()
 	slogan_list |= list(
