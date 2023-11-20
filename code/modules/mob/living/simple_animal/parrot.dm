@@ -38,10 +38,10 @@
 	faction = list("neutral", "jungle")
 
 	var/list/clean_speak = list(
-		"Hi",
-		"Hello!",
-		"Cracker?",
-		"BAWWWWK george mellons griffing me"
+		"Хай",
+		"Привет!",
+		"Крекер?",
+		"БВАААК джордж меллонс гриффит меня"
 	)
 	speak_emote = list("squawks", "says", "yells")
 	emote_hear = list("squawks", "bawks")
@@ -161,9 +161,9 @@
 					if(ears)
 						if(stat == CONSCIOUS) //DEAD PARROTS SHOULD NOT SPEAK (i hate that this is done in topic)
 							if(length(available_channels))
-								say("[pick(available_channels)]BAWWWWWK LEAVE THE HEADSET BAWKKKKK!")
+								say("[pick(available_channels)]БВАААК ОСТАВТЕ НАУШНИК БВАААК!")
 							else
-								say("BAWWWWWK LEAVE THE HEADSET BAWKKKKK!")
+								say("БВАААК ОСТАВТЕ НАУШНИК БВАААК!")
 						ears.forceMove(loc)
 						ears = null
 						update_speak()
