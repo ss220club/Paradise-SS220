@@ -59,7 +59,7 @@
 				update_flags |= M.adjustCloneLoss(-0.5*REAGENTS_EFFECT_MULTIPLIER, FALSE)
 			if(5)
 				update_flags |= M.adjustBrainLoss(-1*REAGENTS_EFFECT_MULTIPLIER, FALSE)
-		to_chat(M, "<span class='notice'>Вы чувствуете себя слегка помолодевшим!</span>")
+		to_chat(M, "<span class='notice'>Вы чувствуете себя немного моложе!</span>")
 	return ..() | update_flags
 
 //Berry Banned 2: This one is tasty and toxic. Deals toxin damage and MAYBE plays the "BWOINK!" sound if it kills someone?
@@ -76,7 +76,7 @@
 	if(prob(50))
 		update_flags |= M.adjustToxLoss(2*REAGENTS_EFFECT_MULTIPLIER, FALSE)		//double strength of poison berry juice alone, because it's concentrated (this is equal to the damage of normal toxin, less often)
 	if(prob(10))
-		to_chat(M, "<span class='notice'>Вы чувствуете себя слегка помолодевшим!</span>")		//meta this!
+		to_chat(M, "<span class='notice'>Вы чувствуете себя немного моложе!</span>")		//meta this!
 	return ..() | update_flags
 
 /datum/reagent/consumable/drink/berry_banned2/on_mob_death(mob/living/M)
@@ -98,9 +98,9 @@
 		var/list/tider_talk = list("ЭТО ТЕПЕРЬ МОЯ СТАНЦИЯ, Я ЕЁ ТОЛЬКО ЧТО КУПИЛ.",
 									"СЕКРЕТНАЯ ТЕХНИКА: ТУЛБОКСОМ ПО РОЖЕ!",
 									"СЕКРЕТНАЯ ТЕХНИКА: ПОДПАЛИТЬ КАНИСТРУ ПЛАЗМЫ!",
-									"СЕКРЕТНАЯ ТЕХНИКА: НА СТОЛ И В МУСОРКУ!",
+									"СЕКРЕТНАЯ ТЕХНИКА: ОБ СТОЛ И В МУСОРКУ!",
 									// Borers got removed but the below reference stays because its hilarious
-									"ЭТО СДЕЛАЛ [pick("МОЙ БРАТ", "МОЙ ПЁС", "МОЙ ЛУЧШИЙ ДРУГ", "БОРЕР", "ДЖОРДЖ МЕЛЛОНС", "БЭДМИН", "ПУНПУН")]!",
+									"ЭТО СДЕЛАЛ [pick("МОЙ БРАТ", "МОЙ ПЁС", "МОЙ ЛУЧШИЙ ДРУГ", "БОРЕР", "ДЖОРДЖ МЕЛЛОНС", "ПЕДАЛЬ", "ПУНПУН")]!",
 									";s ЧТО ТАКОЕ КОСМОЗАКОН?!",
 									"Я КУПИЛ ЭТИ ПЕРЧАТКИ, НЕ УКРАЛ!!!",
 									"ЭТА ДВЕРЬ УЖЕ БИЛАСЬ ТОКОМ КОГДА Я ПРИШЁЛ",
