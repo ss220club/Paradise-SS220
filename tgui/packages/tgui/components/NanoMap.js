@@ -3,7 +3,6 @@ import { Box, Icon, Tooltip, Button } from '.';
 import { useBackend } from '../backend';
 import { LabeledList } from './LabeledList';
 import { Slider } from './Slider';
-import { getBoundingBox } from './ByondUi';
 
 const pauseEvent = (e) => {
   if (e.stopPropagation) {
@@ -22,7 +21,7 @@ export class NanoMap extends Component {
     super(props);
 
     // Auto center based on window size
-    const Xcenter = 0;
+    const Xcenter = window.innerWidth / 2 - 256;
     const Ycenter = window.innerHeight / 2 - 256;
 
     this.state = {
