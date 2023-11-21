@@ -803,6 +803,14 @@
 /obj/effect/spawner/random_spawners/blood_often,
 /turf/simulated/floor/plasteel,
 /area/awaymission/black_mesa/entrance_lobby)
+"beK" = (
+/obj/machinery/door/poddoor{
+	id_tag = "nihi"
+	},
+/turf/simulated/floor/vault{
+	icon_state = "alienvault"
+	},
+/area/awaymission/black_mesa/xen/nihilanth_arena)
 "bfq" = (
 /obj/effect/turf_decal/siding/trimline/blue/corner{
 	alpha = 130
@@ -3857,7 +3865,9 @@
 /turf/simulated/floor/plating/asteroid,
 /area/awaymission/black_mesa/hecu_zone_towards_facility)
 "eSd" = (
-/obj/machinery/door/poddoor,
+/obj/machinery/door/poddoor{
+	id_tag = "nihi"
+	},
 /turf/simulated/floor/plasteel/dark{
 	icon_state = "blackfull"
 	},
@@ -4084,7 +4094,9 @@
 /turf/simulated/floor/plating/xen,
 /area/awaymission/black_mesa/xen/acid_lake_hallway)
 "fiv" = (
-/obj/machinery/door/poddoor,
+/obj/machinery/door/poddoor{
+	id_tag = "nihi"
+	},
 /turf/simulated/wall/indestructible/rock/mineral,
 /area/awaymission/black_mesa/black_ops_downstairs_atrium)
 "fiA" = (
@@ -6724,7 +6736,9 @@
 	},
 /area/awaymission/black_mesa/gas_emitter_chamber)
 "iFR" = (
-/obj/machinery/door/poddoor,
+/obj/machinery/door/poddoor{
+	id_tag = "nihi"
+	},
 /turf/simulated/wall/indestructible/rock/mineral,
 /area/awaymission/black_mesa/black_ops_hall)
 "iHf" = (
@@ -6853,6 +6867,15 @@
 /obj/structure/alien/xenoweeds,
 /turf/simulated/floor/plating,
 /area/awaymission/black_mesa/equipment_room)
+"iOK" = (
+/obj/machinery/door_control/shutter/east{
+	id = "nihi";
+	req_access = list (271)
+	},
+/turf/simulated/floor/vault{
+	icon_state = "alienvault"
+	},
+/area/awaymission/black_mesa/xen/nihilanth_arena)
 "iOX" = (
 /obj/effect/landmark/awaymissions/black_mesa/random_mob_placer/vortigaunt_hostile,
 /turf/simulated/floor/wood/fancy/cherry,
@@ -7257,7 +7280,9 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/black_mesa/security_outpost)
 "jlK" = (
-/obj/machinery/door/poddoor,
+/obj/machinery/door/poddoor{
+	id_tag = "nihi"
+	},
 /turf/simulated/wall/indestructible/rock/mineral,
 /area/awaymission/black_mesa/entrance)
 "jlT" = (
@@ -10843,7 +10868,9 @@
 /turf/simulated/floor/beach/away/blackmesa/electric,
 /area/awaymission/black_mesa/employee_dorm_room)
 "nKq" = (
-/obj/machinery/door/poddoor,
+/obj/machinery/door/poddoor{
+	id_tag = "nihi"
+	},
 /turf/simulated/floor/plasteel/smooth,
 /area/awaymission/black_mesa/deep_sci_hall)
 "nKw" = (
@@ -12658,7 +12685,9 @@
 /turf/simulated/floor/engine,
 /area/awaymission/black_mesa/hecu_zone_test_chambers)
 "pWi" = (
-/obj/machinery/door/poddoor,
+/obj/machinery/door/poddoor{
+	id_tag = "nihi"
+	},
 /turf/simulated/floor/plating,
 /area/awaymission/black_mesa/tram_room)
 "pWE" = (
@@ -13091,7 +13120,9 @@
 /turf/simulated/floor/plasteel/smooth,
 /area/awaymission/black_mesa/lambda_teleporter)
 "qAE" = (
-/obj/machinery/door/poddoor,
+/obj/machinery/door/poddoor{
+	id_tag = "nihi"
+	},
 /turf/simulated/floor/plasteel/stairs/left{
 	dir = 4
 	},
@@ -14709,6 +14740,9 @@
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/awaymission/black_mesa/hecu_zone_camp)
+"swB" = (
+/turf/simulated/wall/indestructible/fakeglass/brass,
+/area/awaymission/black_mesa/xen/nihilanth_arena)
 "sxP" = (
 /obj/machinery/porta_turret/syndicate/black_mesa,
 /turf/simulated/floor/plasteel/dark{
@@ -18388,6 +18422,15 @@
 /obj/structure/flora/biolumini,
 /turf/simulated/floor/plating/xen,
 /area/awaymission/black_mesa/xen/freeman_arena)
+"xfO" = (
+/obj/machinery/door_control/shutter/west{
+	id = "nihi";
+	req_access = list (271)
+	},
+/turf/simulated/floor/vault{
+	icon_state = "alienvault"
+	},
+/area/awaymission/black_mesa/xen/nihilanth_arena)
 "xgX" = (
 /obj/structure/railing/corner,
 /turf/simulated/floor/plasteel/dark{
@@ -63444,7 +63487,7 @@ fzo
 qVd
 fzo
 fzo
-fzo
+iOK
 fzo
 mnL
 fzo
@@ -63699,12 +63742,12 @@ fzo
 fzo
 qVd
 fzo
-fzo
-fzo
-fzo
-fzo
+swB
 mnL
-fzo
+mnL
+beK
+mnL
+mnL
 fzo
 fzo
 fzo
@@ -63956,11 +63999,11 @@ fzo
 qVd
 fzo
 fzo
+swB
+qVd
+qVd
 fzo
-fzo
-fzo
-fzo
-fzo
+qVd
 mnL
 fzo
 fzo
@@ -64207,16 +64250,16 @@ fzo
 fzo
 fzo
 fzo
+qVd
+qVd
+qVd
+fzo
+fzo
+fzo
+swB
 pXU
 sqa
 vfW
-fzo
-fzo
-fzo
-fzo
-fzo
-fzo
-fzo
 fzo
 mnL
 fzo
@@ -64464,17 +64507,17 @@ qVd
 qVd
 tce
 qVd
+qVd
+qVd
+qVd
+qVd
+qVd
+qVd
+swB
 uJh
 dQy
 dOs
-qVd
-qVd
-qVd
-qVd
-qVd
-qVd
-qVd
-qVd
+fzo
 mnL
 qVd
 qVd
@@ -64721,16 +64764,16 @@ fzo
 fzo
 fzo
 fzo
+qVd
+qVd
+qVd
+fzo
+fzo
+fzo
+swB
 auq
 tgn
 oPu
-fzo
-fzo
-fzo
-fzo
-fzo
-fzo
-fzo
 fzo
 mnL
 fzo
@@ -64984,11 +65027,11 @@ fzo
 qVd
 fzo
 fzo
+swB
+qVd
+qVd
 fzo
-fzo
-fzo
-fzo
-fzo
+qVd
 mnL
 fzo
 fzo
@@ -65241,12 +65284,12 @@ fzo
 fzo
 qVd
 fzo
-fzo
-fzo
-fzo
-fzo
+swB
 mnL
-fzo
+mnL
+beK
+mnL
+mnL
 fzo
 fzo
 fzo
@@ -65500,7 +65543,7 @@ fzo
 qVd
 fzo
 fzo
-fzo
+xfO
 fzo
 mnL
 fzo
