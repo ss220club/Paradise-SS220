@@ -26,8 +26,8 @@ export class NanoMap extends Component {
     const Ycenter = window.innerHeight / 2 - 256;
 
     this.state = {
-      offsetX: Xcenter,
-      offsetY: Ycenter,
+      offsetX: 128,
+      offsetY: 48,
       transform: 'none',
       dragging: false,
       originX: null,
@@ -80,22 +80,10 @@ export class NanoMap extends Component {
     this.handleZoom = (_e, value) => {
       this.setState((state) => {
         const newZoom = Math.min(Math.max(value, 1), 8);
-        const zoomDiff = newZoom / state.zoom;
-        if (zoomDiff === 1) {
-          return;
-        }
-
+        let zoomDiff = (newZoom - state.zoom) * 1.5;
         state.zoom = newZoom;
-
-        const container = document.getElementsByClassName('NanoMap__container');
-        if (container.length) {
-          const bounds = getBoundingBox(container[0]);
-          const currentCenterX = bounds.size[0] / 2 - state.offsetX;
-          const currentCenterY = bounds.size[1] / 2 - state.offsetY;
-          state.offsetX += currentCenterX - currentCenterX * zoomDiff;
-          state.offsetY += currentCenterY - currentCenterY * zoomDiff;
-        }
-
+        state.offsetX = state.offsetX - 262 * zoomDiff;
+        state.offsetY = state.offsetY - 256 * zoomDiff;
         if (props.onZoom) {
           props.onZoom(state.zoom);
         }
@@ -145,8 +133,8 @@ export class NanoMap extends Component {
   }
 }
 
-const NanoMapMarker = (props) => {
-  const { x, y, zoom = 1, icon, tooltip, color, onClick, size = 6 } = props;
+const NanoMapMarker = (props, context) => {
+  const { x, y, zoom = 1, icon, tooltip, color } = props;
   const rx = x * 2 * zoom - zoom - 3;
   const ry = y * 2 * zoom - zoom - 3;
   return (
@@ -157,14 +145,36 @@ const NanoMapMarker = (props) => {
         lineHeight="0"
         bottom={ry + 'px'}
         left={rx + 'px'}
-        onClick={onClick}
       >
-        <Icon name={icon} color={color} fontSize={size + 'px'} />
+        <Icon name={icon} color={color} fontSize="6px" />
         <Tooltip content={tooltip} />
       </Box>
     </div>
   );
 };
+
+NanoMap.Marker = NanoMapMarker;
+
+const NanoMapZoomer = (props, context) => {
+  return (
+    <Box className="NanoMap__zoomer">
+      <LabeledList>
+        <LabeledList.Item label="Zoom">
+          <Slider
+            minValue="1"
+            maxValue="8"
+            stepPixelSize="10"
+            format={(v) => v + 'x'}
+            value={props.zoom}
+            onDrag={(e, v) => props.onZoom(e, v)}
+          />
+        </LabeledList.Item>
+      </LabeledList>
+    </Box>
+  );
+};
+
+NanoMap.Zoomer = NanoMapZoomer;
 
 let ActiveButton;
 class NanoButton extends Component {
@@ -192,7 +202,6 @@ class NanoButton extends Component {
   render() {
     let rx = this.props.x * 2 * this.props.zoom - this.props.zoom - 3;
     let ry = this.props.y * 2 * this.props.zoom - this.props.zoom - 3;
-
     return (
       <Button
         key={this.props.key}
@@ -211,25 +220,3 @@ class NanoButton extends Component {
   }
 }
 NanoMap.NanoButton = NanoButton;
-NanoMap.Marker = NanoMapMarker;
-
-const NanoMapZoomer = (props) => {
-  return (
-    <Box className="NanoMap__zoomer">
-      <LabeledList>
-        <LabeledList.Item label="Zoom">
-          <Slider
-            minValue="1"
-            maxValue="8"
-            stepPixelSize="10"
-            format={(v) => v + 'x'}
-            value={props.zoom}
-            onDrag={(e, v) => props.onZoom(e, v)}
-          />
-        </LabeledList.Item>
-      </LabeledList>
-    </Box>
-  );
-};
-
-NanoMap.Zoomer = NanoMapZoomer;
