@@ -30,7 +30,7 @@ STI KALY - blind
 	switch(stage)
 		if(2)
 			if(prob(0.5))
-				affected_mob.say(pick("You shall not pass!", "Expeliarmus!", "By Merlins beard!", "Feel the power of the Dark Side!"))
+				affected_mob.say(pick("ТЫ!!! НЕ ПРОЙ-ДЁШЬ!!!", "Экспеллиармус!", "Мерлинова борода!", "Почувствуй силу тёмной стороны!"))
 			if(prob(0.5))
 				to_chat(affected_mob, "<span class='danger'>You feel [pick("that you don't have enough mana", "that the winds of magic are gone", "an urge to summon familiar")].</span>")
 
