@@ -72,6 +72,7 @@ export const Photocopier220 = (props, context) => {
                     fluid
                     textAlign="center"
                     disabled={!data.copyitem && !data.mob}
+                    icon={data.copyitem || data.mob ? 'eject' : 'times'}
                     content={
                       data.copyitem
                         ? data.copyitem
@@ -89,6 +90,7 @@ export const Photocopier220 = (props, context) => {
                     fluid
                     textAlign="center"
                     disabled={!data.folder}
+                    icon={data.folder ? 'eject' : 'times'}
                     content={data.folder ? data.folder : 'Слот для папки'}
                     onClick={() => act('removefolder')}
                   />
@@ -101,7 +103,7 @@ export const Photocopier220 = (props, context) => {
                   <Button
                     fluid
                     textAlign="center"
-                    icon="file"
+                    icon="print"
                     disabled={data.toner === 0 || data.form === null}
                     content="Печать"
                     onClick={() => act('print_form')}
@@ -112,7 +114,7 @@ export const Photocopier220 = (props, context) => {
                     <Button
                       fluid
                       textAlign="center"
-                      icon="camera"
+                      icon="image"
                       disabled={data.toner < 5}
                       content="Фото"
                       tooltip="Распечатать фото с Базы Данных"
@@ -127,7 +129,7 @@ export const Photocopier220 = (props, context) => {
                   <Button
                     fluid
                     textAlign="center"
-                    icon="clone"
+                    icon="copy"
                     content="Копия"
                     disabled={data.toner === 0 || (!data.copyitem && !data.mob)}
                     onClick={() => act('copy')}
@@ -138,7 +140,7 @@ export const Photocopier220 = (props, context) => {
                     <Button
                       fluid
                       textAlign="center"
-                      icon="terminal"
+                      icon="i-cursor"
                       content="Текст"
                       tooltip="Распечатать свой текст"
                       tooltipPosition="right"
