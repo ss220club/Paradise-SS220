@@ -785,6 +785,7 @@
 	alpha = 130
 	},
 /obj/structure/alien/xenoweeds,
+/obj/structure/railing,
 /turf/simulated/floor/plasteel/smooth,
 /area/awaymission/black_mesa/genetics_elevator)
 "bcK" = (
@@ -803,14 +804,6 @@
 /obj/effect/spawner/random_spawners/blood_often,
 /turf/simulated/floor/plasteel,
 /area/awaymission/black_mesa/entrance_lobby)
-"beK" = (
-/obj/machinery/door/poddoor{
-	id_tag = "nihi"
-	},
-/turf/simulated/floor/vault{
-	icon_state = "alienvault"
-	},
-/area/awaymission/black_mesa/xen/nihilanth_arena)
 "bfq" = (
 /obj/effect/turf_decal/siding/trimline/blue/corner{
 	alpha = 130
@@ -959,6 +952,15 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/black_mesa/hecu_zone_external_sec)
+"bry" = (
+/obj/machinery/door_control/shutter/west{
+	id = "nihi";
+	req_access = list (271)
+	},
+/turf/simulated/floor/vault{
+	icon_state = "alienvault"
+	},
+/area/awaymission/black_mesa/xen/nihilanth_arena)
 "bsg" = (
 /obj/structure/urinal{
 	pixel_y = 32
@@ -5912,9 +5914,6 @@
 	alpha = 130;
 	dir = 8
 	},
-/obj/structure/railing{
-	dir = 1
-	},
 /turf/simulated/floor/plasteel/smooth,
 /area/awaymission/black_mesa/genetics_elevator)
 "hwZ" = (
@@ -6498,6 +6497,9 @@
 	dir = 2
 	},
 /obj/structure/alien/xenoweeds,
+/obj/structure/railing/corner{
+	dir = 8
+	},
 /turf/simulated/floor/plasteel/smooth,
 /area/awaymission/black_mesa/genetics_elevator)
 "ipA" = (
@@ -6867,15 +6869,6 @@
 /obj/structure/alien/xenoweeds,
 /turf/simulated/floor/plating,
 /area/awaymission/black_mesa/equipment_room)
-"iOK" = (
-/obj/machinery/door_control/shutter/east{
-	id = "nihi";
-	req_access = list (271)
-	},
-/turf/simulated/floor/vault{
-	icon_state = "alienvault"
-	},
-/area/awaymission/black_mesa/xen/nihilanth_arena)
 "iOX" = (
 /obj/effect/landmark/awaymissions/black_mesa/random_mob_placer/vortigaunt_hostile,
 /turf/simulated/floor/wood/fancy/cherry,
@@ -9774,6 +9767,15 @@
 /obj/structure/flora/tree/dead,
 /turf/simulated/floor/plating/xen,
 /area/awaymission/black_mesa/xen/vortigaunt_village_nihilanth)
+"mpu" = (
+/obj/machinery/door_control/shutter/east{
+	id = "nihi";
+	req_access = list (271)
+	},
+/turf/simulated/floor/vault{
+	icon_state = "alienvault"
+	},
+/area/awaymission/black_mesa/xen/nihilanth_arena)
 "mpE" = (
 /turf/simulated/floor/beach/away/coastline/xen,
 /area/awaymission/black_mesa/xen/lost_camp_hallway)
@@ -13128,16 +13130,8 @@
 	},
 /area/awaymission/black_mesa/high_security_hallway)
 "qAN" = (
-/obj/effect/turf_decal/siding/trimline/blue{
-	alpha = 130;
-	dir = 4
-	},
-/obj/structure/railing{
-	dir = 1
-	},
-/obj/structure/alien/xenoweeds,
-/turf/simulated/floor/plasteel/smooth,
-/area/awaymission/black_mesa/genetics_elevator)
+/turf/simulated/wall/indestructible/fakeglass/brass,
+/area/awaymission/black_mesa/xen/nihilanth_arena)
 "qBd" = (
 /obj/machinery/light/directional/east,
 /turf/simulated/floor/plasteel,
@@ -14740,9 +14734,6 @@
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/awaymission/black_mesa/hecu_zone_camp)
-"swB" = (
-/turf/simulated/wall/indestructible/fakeglass/brass,
-/area/awaymission/black_mesa/xen/nihilanth_arena)
 "sxP" = (
 /obj/machinery/porta_turret/syndicate/black_mesa,
 /turf/simulated/floor/plasteel/dark{
@@ -15788,6 +15779,7 @@
 	alpha = 130;
 	dir = 8
 	},
+/obj/structure/railing,
 /turf/simulated/floor/plasteel/smooth,
 /area/awaymission/black_mesa/genetics_elevator)
 "tSC" = (
@@ -17443,6 +17435,14 @@
 /obj/machinery/light_construct/directional/east,
 /turf/simulated/floor/catwalk,
 /area/awaymission/black_mesa/scientist_hall)
+"vXa" = (
+/obj/effect/turf_decal/siding/trimline/blue{
+	alpha = 130;
+	dir = 2
+	},
+/obj/structure/railing/corner,
+/turf/simulated/floor/plasteel/smooth,
+/area/awaymission/black_mesa/genetics_elevator)
 "vYx" = (
 /obj/machinery/light/directional/south,
 /obj/effect/spawner/random_spawners/blood_often,
@@ -18151,6 +18151,14 @@
 /obj/effect/spawner/random_spawners/blood_often,
 /turf/simulated/floor/plasteel,
 /area/awaymission/black_mesa/cryo_hallway)
+"wQB" = (
+/obj/machinery/door/poddoor{
+	id_tag = "nihi"
+	},
+/turf/simulated/floor/vault{
+	icon_state = "alienvault"
+	},
+/area/awaymission/black_mesa/xen/nihilanth_arena)
 "wRn" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -18422,15 +18430,6 @@
 /obj/structure/flora/biolumini,
 /turf/simulated/floor/plating/xen,
 /area/awaymission/black_mesa/xen/freeman_arena)
-"xfO" = (
-/obj/machinery/door_control/shutter/west{
-	id = "nihi";
-	req_access = list (271)
-	},
-/turf/simulated/floor/vault{
-	icon_state = "alienvault"
-	},
-/area/awaymission/black_mesa/xen/nihilanth_arena)
 "xgX" = (
 /obj/structure/railing/corner,
 /turf/simulated/floor/plasteel/dark{
@@ -32048,7 +32047,7 @@ pDM
 pDM
 pDM
 pDM
-fNS
+sOI
 sOI
 sOI
 sOI
@@ -32305,7 +32304,7 @@ nsl
 pDM
 pDM
 pDM
-fNS
+sOI
 sOI
 sOI
 sOI
@@ -32318,7 +32317,7 @@ yai
 yai
 plT
 plT
-rXP
+sOI
 sOI
 sOI
 sOI
@@ -32562,7 +32561,7 @@ nsl
 pDM
 pDM
 pDM
-fNS
+sOI
 sOI
 sOI
 sOI
@@ -32575,8 +32574,8 @@ sOI
 sOI
 sOI
 plT
-uHp
 plT
+sOI
 sOI
 sOI
 sOI
@@ -32819,7 +32818,6 @@ tpH
 pDM
 pDM
 pDM
-fNS
 sOI
 sOI
 sOI
@@ -32831,10 +32829,11 @@ sOI
 sOI
 sOI
 sOI
-sOI
+plT
+plT
 rXP
 sOI
-sOI
+plT
 sOI
 sOI
 sOI
@@ -33076,7 +33075,7 @@ nsl
 pDM
 pDM
 pDM
-fNS
+sOI
 sOI
 sOI
 qZK
@@ -33088,9 +33087,9 @@ sOI
 sOI
 sOI
 sOI
-sOI
-rXP
-sOI
+plT
+uHp
+plT
 sOI
 sOI
 sOI
@@ -33333,7 +33332,6 @@ nsl
 pDM
 pDM
 pDM
-fNS
 sOI
 sOI
 sOI
@@ -33344,10 +33342,11 @@ sOI
 sOI
 sOI
 sOI
+sOI
+plT
 sOI
 rXP
-rXP
-rXP
+sOI
 sOI
 sOI
 sOI
@@ -33590,7 +33589,7 @@ nsl
 pDM
 pDM
 pDM
-fNS
+sOI
 sOI
 sOI
 cKM
@@ -33846,8 +33845,8 @@ nsl
 nNc
 pDM
 pDM
-sOI
-sOI
+pDM
+pDM
 sOI
 sOI
 sOI
@@ -34103,8 +34102,8 @@ eZR
 nsl
 pDM
 pDM
-sOI
-sOI
+pDM
+pDM
 qZK
 sOI
 sOI
@@ -34127,8 +34126,8 @@ sOI
 sOI
 sOI
 sOI
-sOI
 plT
+sOI
 sOI
 sOI
 sOI
@@ -34359,9 +34358,9 @@ nsl
 nsl
 nsl
 nsl
+nsl
 pDM
-sOI
-sOI
+pDM
 sOI
 sOI
 sOI
@@ -34615,16 +34614,17 @@ ecz
 kbO
 cre
 cre
+nsl
+nsl
 btH
 sIx
 sOI
 sOI
 sOI
 sOI
-sOI
+plT
 rXP
 sOI
-sOI
 rXP
 rXP
 rXP
@@ -34636,13 +34636,12 @@ rXP
 rXP
 rXP
 rXP
-rXP
-rXP
-sOI
 sOI
 rXP
 sOI
 plT
+plT
+sOI
 sOI
 sOI
 sOI
@@ -34872,6 +34871,8 @@ cre
 tmH
 iUm
 cre
+nsl
+nsl
 cre
 dyn
 sOI
@@ -34880,8 +34881,6 @@ sOI
 sOI
 plT
 uHp
-rXP
-rXP
 rXP
 rXP
 rXP
@@ -34895,10 +34894,10 @@ rXP
 rXP
 rXP
 rXP
-rXP
-rXP
 uHp
 plT
+sOI
+sOI
 sOI
 sOI
 sOI
@@ -35129,32 +35128,32 @@ cre
 cre
 cre
 gVN
+nsl
+nsl
 cre
 sIx
 sOI
 sOI
 sOI
-sOI
-sOI
-rXP
-sOI
+plT
 sOI
 rXP
-rXP
-rXP
-rXP
-rXP
-rXP
-rXP
-rXP
-rXP
-rXP
-rXP
-rXP
-rXP
 sOI
+rXP
+rXP
+rXP
+rXP
+rXP
+rXP
+rXP
+rXP
+rXP
+rXP
+rXP
 sOI
 plT
+sOI
+sOI
 sOI
 sOI
 sOI
@@ -35387,6 +35386,8 @@ nsl
 nsl
 nsl
 nsl
+nsl
+nsl
 pDM
 xFq
 sOI
@@ -35394,8 +35395,6 @@ sOI
 sOI
 plT
 plT
-sOI
-sOI
 sOI
 sOI
 rXP
@@ -35409,9 +35408,9 @@ rXP
 rXP
 sOI
 sOI
-sOI
-sOI
 plT
+sOI
+sOI
 sOI
 sOI
 sOI
@@ -35644,9 +35643,9 @@ nsl
 nsl
 nsl
 nsl
+nsl
 pDM
-sOI
-sOI
+pDM
 sOI
 sOI
 qwU
@@ -35903,7 +35902,7 @@ nsl
 pDM
 pDM
 pDM
-sOI
+pDM
 sOI
 qZK
 cKM
@@ -36160,7 +36159,7 @@ nsl
 pDM
 pDM
 pDM
-sOI
+pDM
 sOI
 sOI
 wnd
@@ -36428,10 +36427,10 @@ sOI
 sOI
 sOI
 sOI
+plT
 sOI
 rXP
-rXP
-rXP
+sOI
 sOI
 sOI
 sOI
@@ -36686,8 +36685,8 @@ sOI
 sOI
 sOI
 sOI
-sOI
-rXP
+plT
+uHp
 sOI
 sOI
 sOI
@@ -36930,7 +36929,7 @@ nsl
 nsl
 pDM
 pDM
-uvv
+pDM
 sOI
 yai
 yai
@@ -36944,10 +36943,10 @@ qZK
 sOI
 sOI
 sOI
-rXP
+plT
+plT
 sOI
-sOI
-sOI
+plT
 sOI
 sOI
 sOI
@@ -37200,8 +37199,8 @@ sOI
 sOI
 sOI
 sOI
-plT
-uHp
+sOI
+sOI
 sOI
 sOI
 plT
@@ -37458,11 +37457,11 @@ sOI
 sOI
 sOI
 sOI
-plT
 sOI
 sOI
 plT
 plT
+sOI
 plT
 uvv
 sOI
@@ -37712,7 +37711,7 @@ sOI
 sOI
 sOI
 sOI
-plT
+sOI
 sOI
 sOI
 sOI
@@ -63487,7 +63486,7 @@ fzo
 qVd
 fzo
 fzo
-iOK
+mpu
 fzo
 mnL
 fzo
@@ -63742,10 +63741,10 @@ fzo
 fzo
 qVd
 fzo
-swB
+qAN
 mnL
 mnL
-beK
+wQB
 mnL
 mnL
 fzo
@@ -63999,7 +63998,7 @@ fzo
 qVd
 fzo
 fzo
-swB
+qAN
 qVd
 qVd
 fzo
@@ -64256,7 +64255,7 @@ qVd
 fzo
 fzo
 fzo
-swB
+qAN
 pXU
 sqa
 vfW
@@ -64513,7 +64512,7 @@ qVd
 qVd
 qVd
 qVd
-swB
+qAN
 uJh
 dQy
 dOs
@@ -64770,7 +64769,7 @@ qVd
 fzo
 fzo
 fzo
-swB
+qAN
 auq
 tgn
 oPu
@@ -65027,7 +65026,7 @@ fzo
 qVd
 fzo
 fzo
-swB
+qAN
 qVd
 qVd
 fzo
@@ -65284,10 +65283,10 @@ fzo
 fzo
 qVd
 fzo
-swB
+qAN
 mnL
 mnL
-beK
+wQB
 mnL
 mnL
 fzo
@@ -65543,7 +65542,7 @@ fzo
 qVd
 fzo
 fzo
-xfO
+bry
 fzo
 mnL
 fzo
@@ -69020,7 +69019,7 @@ lsT
 lsT
 lsT
 iUg
-bnL
+vXa
 lsT
 lsT
 lsT
@@ -70049,7 +70048,7 @@ uNn
 lsT
 hSO
 bcx
-qAN
+cGq
 cGq
 ggn
 cGq
@@ -73612,7 +73611,7 @@ vQr
 aXl
 krZ
 aXl
-aXl
+oIv
 aXl
 itY
 aXl
@@ -74381,7 +74380,7 @@ gtN
 syu
 gxB
 aXl
-oIv
+aXl
 dfu
 nmK
 oWV
