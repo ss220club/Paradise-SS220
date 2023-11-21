@@ -1087,7 +1087,7 @@
 	status_flags = NONE
 	del_on_death = TRUE
 	wander = TRUE
-	loot = list(/obj/effect/gibspawner/xeno, /obj/item/stack/ore/bluespace_crystal/refined = 30, obj/item/card/id/xen_key, /obj/item/gun/energy/wormhole_projector)
+	loot = list(/obj/effect/gibspawner/xeno, /obj/item/stack/ore/bluespace_crystal/refined = 30, /obj/item/card/id/xen_key, /obj/item/gun/energy/wormhole_projector)
 	flying = TRUE
 
 /obj/item/card/id/xen_key
