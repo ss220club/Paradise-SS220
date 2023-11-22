@@ -88,7 +88,7 @@ GLOBAL_LIST_INIT(bureaucratic_forms, list())
 	category = "Главы станции"
 	text = "<font face=\"Verdana\" color=black><BR>Цель станции: <span class=\"paper_field\"></span><BR>Статус цели: <span class=\"paper_field\"></span><BR>Общее состояние станции: <span class=\"paper_field\"></span><BR>Активные угрозы: <span class=\"paper_field\"></span><BR>Оценка работы экипажа: <span class=\"paper_field\"></span><BR>Дополнительные замечания: <span class=\"paper_field\"></span><BR><HR><BR><center><font size=\"4\"><B>Подписи и штампы</B></font></center>Должность уполномоченного лица: <span class=\"paper_field\"></span><BR>Подпись уполномоченного лица: <span class=\"paper_field\"></span><HR><font size = \"1\"><I>*Данное сообщение должно сообщить вам о состоянии цели, установленной Центральным командованием Nanotrasen для ИСН &#34;Керберос&#34;. Убедительная просьба внимательно прочитать данное сообщение для вынесения наиболее эффективных указаний для последующей деятельности станции.<BR>*Данный документ считается официальным только при наличии подписи уполномоченного лица и соответствующего его должности штампа. В случае отсутствия любого из указанных элементов данный документ не является официальным и рекомендуется его удалить с любого информационного носителя. <BR>ОТКАЗ ОТ ОТВЕТСТВЕННОСТИ: Корпорация Nanotrasen не несёт ответственности, если данный документ не попал в руки первоначального предполагаемого получателя. Однако, корпорация Nanotrasen запрещает использование любой имеющейся в данном документе информации третьими лицами и сообщает, что это преследуется по закону, даже если информация в данном документе не является достоверной. <center></font>"
 
-//Медицинский Отдел
+// Медицинский Отдел
 
 /datum/bureaucratic_form/NT_MD_01
 	name = "Форма NT-MD-01"
@@ -130,7 +130,7 @@ GLOBAL_LIST_INIT(bureaucratic_forms, list())
 	text = "<font face=\"Verdana\" color=black><BR>Пациент: <span class=\"paper_field\"></span><BR>Раздражители: <span class=\"paper_field\"></span><BR>Симптомы и побочные действия: <span class=\"paper_field\"></span><BR>Дополнительная информация: <span class=\"paper_field\"></span><BR><HR><BR><center><font size=\"4\"><B>Подписи и штампы</B></font></center><BR>Подпись психолога: <span class=\"paper_field\"></span><BR>Время обследования: <span class=\"paper_field\"></span><BR><HR><I><font size = \"1\">*Данный документ подлежит ксерокопированию, для сохранения в архиве уполномоченных лиц, и выдаче пациенту</I></font></font>"
 	footer = footer_signstamp
 
-//Мед-без нумерации
+// Мед-без нумерации
 /datum/bureaucratic_form/NT_MD_VRR
 	name = "Форма NT-MD-VRR"
 	id = "NT-MD-VRR"
@@ -139,7 +139,7 @@ GLOBAL_LIST_INIT(bureaucratic_forms, list())
 	text = "<font face=\"Verdana\" color=black><center><font size=\"4\"><B>Основная информация</B></font></center><BR>Я, <span class=\"paper_field\"></span>, в должности – <span class=\"paper_field\"></span>, запрашиваю право на распространение вируса среди экипажа станции.<BR><table></td><tr><td>Название вируса:<td><span class=\"paper_field\"></span><BR></td><tr><td>Задачи вируса:<td><span class=\"paper_field\"></span><BR></td><tr><td>Лечение:<td><span class=\"paper_field\"></span><BR></td><tr><td>Вакцина была произведена<BR> и в данный момент находится:<td><span class=\"paper_field\"></span><BR></td></tr></table><BR><HR><BR><center><font size=\"4\"><B>Подписи и штампы</B></font></center><BR><table></td><tr><td>Подпись вирусолога:<td><span class=\"paper_field\"></span><BR></td><tr><td>Подпись глав. Врача:<td><span class=\"paper_field\"></span><BR></td></tr></td><tr><td>Подпись капитана:<td><span class=\"paper_field\"></span><BR></td></tr></table><hr><small>*Производитель вируса несет полную ответственность за его распространение, изолирование и лечение<br>*При возникновении опасных или смертельных побочных эффектов у членов экипажа, производитель должен незамедлительно предоставить вакцину, от данного вируса.</small></font>"
 	footer = footer_signstamp
 
-//Отдел исследований
+// Отдел исследований
 /datum/bureaucratic_form/NT_RND_01
 	name = "Форма NT-RND-01"
 	id = "NT-RND-01"
@@ -438,7 +438,6 @@ GLOBAL_LIST_INIT(bureaucratic_forms, list())
 	footer = footer_confidential
 
 // Центральное командование
-
 /datum/bureaucratic_form/NT_COM_00
 	name = "Форма NT-COM-00"
 	id = "NT-COM-00"
