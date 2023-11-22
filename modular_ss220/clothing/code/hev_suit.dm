@@ -126,25 +126,24 @@
 	SIGNAL_HANDLER
 	if(!(flags & emagged))
 		var/static/list/cancel_messages = list(
-			"You find it difficult to talk with the suit crushing your voicebox...",
-			"Your voicebox feels crushed with this suit on, making vocalization impossible...",
-			"You try to talk, but the suit restricts your throat..."
+			"Вам трудно говорить, когда костюм туго сдавливает ваше горло...",
+			"Ваши связки ощущаются сдавленными, что пресекает любую попытку выдавить хоть какой-то звук...",
+			"Вы пытаетесь что-то сказать, но костюм сдавливает вам гортань..."
 		)
 
 		speech_args[SPEECH_MESSAGE] = "..."
-
 		to_chat(source, span_warning(pick(cancel_messages)))
 
 //Fire
 /obj/item/clothing/suit/space/hev/proc/handle_ignite(mob/living)
 	SIGNAL_HANDLER
-	SOUND_BEEP ('modular_ss220/aesthetics_sounds/sound/hev/beep_3.ogg')
+	SOUND_BEEP('modular_ss220/aesthetics_sounds/sound/hev/beep_3.ogg')
 	add_queue('modular_ss220/aesthetics_sounds/sound/hev/heat.ogg', 3 SECONDS)
 
 //Shock
 /obj/item/clothing/suit/space/hev/proc/handle_shock(mob/living)
 	SIGNAL_HANDLER
-	SOUND_BEEP ('modular_ss220/aesthetics_sounds/sound/hev/beep_3.ogg')
+	SOUND_BEEP('modular_ss220/aesthetics_sounds/sound/hev/beep_3.ogg')
 	add_queue('modular_ss220/aesthetics_sounds/sound/hev/shok.ogg', 3 SECONDS)
 
 //Helmet
