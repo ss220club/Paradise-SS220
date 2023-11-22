@@ -664,7 +664,7 @@
 
 /mob/living/simple_animal/hostile/blackmesa/Aggro()
 	if(alert_sounds)
-		if(!(world.time <= alert_cooldown_time))
+		if(!(world.time > alert_cooldown_time))
 			playsound(src, pick(alert_sounds), 70)
 			alert_cooldown_time = world.time + alert_cooldown
 //Humans
@@ -1110,14 +1110,14 @@
 
 /mob/living/simple_animal/hostile/blackmesa/xen/nihilanth/Aggro()
 	. = ..()
-	if(!(world.time <= alert_cooldown_time))
+	if(!(world.time > alert_cooldown_time))
 		alert_cooldown_time = world.time + alert_cooldown
 		switch(health)
 			if(0 to 999)
 				playsound(src, pick(list('modular_ss220/aesthetics_sounds/sound/mobs/nihilanth/nihilanth_pain01.ogg', 'modular_ss220/aesthetics_sounds/sound/mobs/nihilanth/nihilanth_freeeemmaan01.ogg')), 100)
-			if(1000 to 2999)
+			if(1000 to 1499)
 				playsound(src, pick(list('modular_ss220/aesthetics_sounds/sound/mobs/nihilanth/nihilanth_youalldie01.ogg', 'modular_ss220/aesthetics_sounds/sound/mobs/nihilanth/nihilanth_foryouhewaits01.ogg')), 100)
-			if(3000 to 6000)
+			if(1500 to 1999)
 				playsound(src, pick(list('modular_ss220/aesthetics_sounds/sound/mobs/nihilanth/nihilanth_whathavedone01.ogg', 'modular_ss220/aesthetics_sounds/sound/mobs/nihilanth/nihilanth_deceiveyou01.ogg')), 100)
 			else
 				playsound(src, pick(list('modular_ss220/aesthetics_sounds/sound/mobs/nihilanth/nihilanth_thetruth01.ogg', 'modular_ss220/aesthetics_sounds/sound/mobs/nihilanth/nihilanth_iamthelast01.ogg')), 100)

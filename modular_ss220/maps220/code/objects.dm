@@ -671,42 +671,6 @@
 	new /obj/item/grenade/xen_crystal(get_turf(src))
 	return ..()
 
-//Gate acces
-/obj/machinery/gateway/centeraway/acces
-	req_access = list(ACCESS_AWAY01)
-
-/obj/machinery/gateway/centeraway/attack_hand(mob/user as mob)
-	check_access()
-	if(!ready)
-		detect()
-		return
-	if(!active)
-		toggleon(user)
-		return
-	toggleoff()
-
-/obj/machinery/gateway/centeraway/acces/check_access(obj/item/card/id/I, list/access_list)
-	..()
-	if(!istype(access_list))
-		return TRUE
-	if(!access_list.len) //no requirements
-		return TRUE
-	if(istype(I, /obj/item/pda))
-		var/obj/item/pda/pda = I
-		I = pda.id
-	if(!istype(I) || !I.access) //not ID or no access
-		return FALSE
-	if(access_list==ACCESS_AWAY01)
-		for(var/req in access_list)
-			if(!(req in I.access)) //doesn't have this access
-				return FALSE
-	else if(access_list==ACCESS_AWAY01)
-		for(var/req in access_list)
-			if(req in I.access)
-				return TRUE
-	return TRUE
-
-
 //Porta turrets
 /obj/machinery/porta_turret/syndicate/black_mesa
 	faction = "xen"

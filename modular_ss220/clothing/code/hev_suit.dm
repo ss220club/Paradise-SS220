@@ -98,36 +98,32 @@
 /obj/item/clothing/suit/space/hev/equipped(mob/M, slot)
 	..()
 	if(slot == SLOT_HUD_OUTER_SUIT && iscarbon(M))
-		for(var/k in funny_signals)
-			RegisterSignal(M, k, funny_signals[k])
-			add_queue('modular_ss220/aesthetics_sounds/sound/hev/blip.ogg',2 SECONDS,purge_queue=TRUE)
+		for(var/voice in funny_signals)
+			RegisterSignal(M, voice, funny_signals[voice])
+			add_queue('modular_ss220/aesthetics_sounds/sound/hev/blip.ogg', 2 SECONDS, purge_queue=TRUE)
 			owner = M
-			add_queue('modular_ss220/aesthetics_sounds/sound/hev/01_hev_logon.ogg',11 SECONDS)
-			add_queue('modular_ss220/aesthetics_sounds/sound/hev/03_atmospherics_on.ogg',6 SECONDS)
-			add_queue('modular_ss220/aesthetics_sounds/sound/hev/08_communications_on.ogg',5 SECONDS)
-			add_queue('modular_ss220/aesthetics_sounds/sound/hev/04_vitalsigns_on.ogg',5 SECONDS)
-			add_queue('modular_ss220/aesthetics_sounds/sound/hev/09_safe_day.ogg',8 SECONDS)
+			add_queue('modular_ss220/aesthetics_sounds/sound/hev/01_hev_logon.ogg', 11 SECONDS)
+			add_queue('modular_ss220/aesthetics_sounds/sound/hev/03_atmospherics_on.ogg', 6 SECONDS)
+			add_queue('modular_ss220/aesthetics_sounds/sound/hev/08_communications_on.ogg', 5 SECONDS)
+			add_queue('modular_ss220/aesthetics_sounds/sound/hev/04_vitalsigns_on.ogg', 5 SECONDS)
+			add_queue('modular_ss220/aesthetics_sounds/sound/hev/09_safe_day.ogg', 8 SECONDS)
 	else
-		for(var/k in funny_signals)
-			UnregisterSignal(M, k)
+		for(var/voice in funny_signals)
+			UnregisterSignal(M, voice)
 
 /obj/item/clothing/suit/space/hev/dropped(mob/M)
 	..()
-	for(var/k in funny_signals)
-		UnregisterSignal(M, k)
+	for(var/voice in funny_signals)
+		UnregisterSignal(M, voice)
 
 //Death
 /obj/item/clothing/suit/space/hev/proc/handle_death(gibbed)
-
 	SIGNAL_HANDLER
-
 	add_queue('modular_ss220/aesthetics_sounds/sound/hev/death.ogg', 5 SECONDS, purge_queue=TRUE)
 
 //Mute
 /obj/item/clothing/suit/space/hev/proc/handle_speech(datum/source, mob/speech_args)
-
 	SIGNAL_HANDLER
-
 	if(!(flags & emagged))
 		var/static/list/cancel_messages = list(
 			"You find it difficult to talk with the suit crushing your voicebox...",
@@ -141,71 +137,15 @@
 
 //Fire
 /obj/item/clothing/suit/space/hev/proc/handle_ignite(mob/living)
-
 	SIGNAL_HANDLER
-
 	SOUND_BEEP ('modular_ss220/aesthetics_sounds/sound/hev/beep_3.ogg')
-	add_queue('modular_ss220/aesthetics_sounds/sound/hev/heat.ogg',3 SECONDS)
+	add_queue('modular_ss220/aesthetics_sounds/sound/hev/heat.ogg', 3 SECONDS)
 
 //Shock
 /obj/item/clothing/suit/space/hev/proc/handle_shock(mob/living)
-
 	SIGNAL_HANDLER
-
 	SOUND_BEEP ('modular_ss220/aesthetics_sounds/sound/hev/beep_3.ogg')
-	add_queue('modular_ss220/aesthetics_sounds/sound/hev/shok.ogg',3 SECONDS)
-
-// //Morphine
-// /obj/item/clothing/suit/space/hev/proc/administer_morphine()
-// 	if(!owner.reagents)
-// 		return
-// 	if(!COOLDOWN_FINISHED(src, next_morphine))
-// 		return
-
-// 	if((flags & emagged) && emag_doses_left < 0)
-// 		owner.reagents.add_reagent(/datum/reagent/medicine/morphine, 2)
-// 		SOUND_BEEP('modular_ss220/aesthetics_sounds/sound/hev/beep_3.ogg')
-// 		add_queue('modular_ss220/aesthetics_sounds/sound/hev/morphine_shot.ogg',2 SECONDS)
-// 	else
-// 		owner.reagents.add_reagent(/datum/reagent/medicine/stimulants, 5)
-// 		SOUND_BEEP('modular_ss220/aesthetics_sounds/sound/hev/beep_3.ogg')
-// 		add_queue('modular_ss220/aesthetics_sounds/sound/hev/wound_sterilized.ogg',2 SECONDS)
-// 		emag_doses_left--
-// 		if(emag_doses_left <= 0)
-// 			to_chat(owner, span_warning("\The [name] seems to have run out of stimulants..."))
-
-// 	COOLDOWN_START(src, next_morphine, MORPHINE_INJECTION_DELAY)
-// 	return TRUE
-
-// /obj/item/clothing/suit/space/hev/proc/handle_damage(mob/M, damage, damagetype, def_zone)
-
-// 	var/health_percent = owner.health / owner.maxHealth
-
-// 	if(!COOLDOWN_FINISHED(src, next_damage_notify))
-// 		return
-
-// 	if(damage < 5 || owner.maxHealth <= 0)
-// 		return
-
-// 	for(var/k in funny_signals)
-// 		RegisterSignal(M, k, funny_signals[k])
-// 		if(health_percent > 0.50 && !prob(damage * 4))
-// 			switch(health_percent)
-// 				if(0.76 to INFINITY)
-// 					return
-// 				if(0.51 to 0.75)
-// 					SOUND_BEEP('modular_ss220/aesthetics_sounds/sound/hev/beep_2.ogg')
-// 					add_queue('modular_ss220/aesthetics_sounds/sound/hev/health_dropping2.ogg',2 SECONDS)
-// 					COOLDOWN_START(src, next_damage_notify, 5 SECONDS)
-// 				if(0.26 to 0.50)
-// 					SOUND_BEEP('modular_ss220/aesthetics_sounds/sound/hev/beep_3.ogg')
-// 					add_queue('modular_ss220/aesthetics_sounds/sound/hev/health_critical.ogg',3 SECONDS)
-// 					COOLDOWN_START(src, next_damage_notify, 5 SECONDS)
-// 				else
-// 					SOUND_BEEP('modular_ss220/aesthetics_sounds/sound/hev/beep_3.ogg')
-// 					add_queue('modular_ss220/aesthetics_sounds/sound/hev/near_death.ogg',3 SECONDS)
-// 					COOLDOWN_START(src, next_damage_notify, 5 SECONDS)
-// 					administer_morphine()
+	add_queue('modular_ss220/aesthetics_sounds/sound/hev/shok.ogg', 3 SECONDS)
 
 //Helmet
 /obj/item/clothing/head/helmet/hev_helmet
