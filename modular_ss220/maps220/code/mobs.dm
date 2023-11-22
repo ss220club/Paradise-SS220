@@ -1066,6 +1066,7 @@
 	icon_living = "nihilanth"
 	pixel_x = -32
 	speed = 3
+	move_to_delay = 3.3
 	bound_height = 32
 	bound_width = 32
 	icon_dead = "bullsquid_dead"
