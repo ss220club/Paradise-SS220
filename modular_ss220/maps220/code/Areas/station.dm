@@ -5,7 +5,7 @@
 /area/station/security/podpilot
 	name = "\improper Pod Pilot Bay"
 	icon_state = "security"
-	
+
 /area/station/bridge/checkpoint
 	name = "\improper Command Checkpoint"
 
@@ -41,7 +41,7 @@
 
 /area/station/engineering/mechanic
 	name = "\improper Pod Mechanic Bay"
-	icon_state = "engi"	
+	icon_state = "engi"
 
 /area/station/engineering/atmos/storage
 	name = "\improper Atmospherics Storage"
@@ -57,7 +57,7 @@
 
 /area/station/public/vacant_store
 	name = "\improper Vacant Store"
-	icon_state = "vacantoffice"
+	icon_state = "vacantstore"
 
 /area/station/maintenance/dormitory_maintenance
 	name = "\improper Dormitory Maintenance"
