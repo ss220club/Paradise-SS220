@@ -681,8 +681,8 @@
 	speed = 0
 	stat_attack = UNCONSCIOUS
 	robust_searching = 1
-	maxHealth = 150
-	health = 150
+	maxHealth = 110
+	health = 110
 	harm_intent_damage = 5
 	melee_damage_lower = 10
 	melee_damage_upper = 15
@@ -741,8 +741,8 @@
 	turns_per_move = 5
 	speed = 0
 	robust_searching = 1
-	maxHealth = 100
-	health = 100
+	maxHealth = 80
+	health = 80
 	harm_intent_damage = 5
 	melee_damage_lower = 10
 	melee_damage_upper = 10
@@ -794,8 +794,8 @@
 	speed = -0.5
 	stat_attack = UNCONSCIOUS
 	robust_searching = 1
-	maxHealth = 200
-	health = 200
+	maxHealth = 150
+	health = 150
 	harm_intent_damage = 15
 	melee_damage_lower = 20
 	melee_damage_upper = 25
@@ -847,8 +847,8 @@
 	icon = 'modular_ss220/maps220/icons/simple_human.dmi'
 	icon_state = "zombie"
 	icon_living = "zombie"
-	maxHealth = 110
-	health = 110
+	maxHealth = 100
+	health = 100
 	mob_biotypes = list(MOB_ORGANIC, MOB_BEAST)
 	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
 	icon_dead = "zombie_dead"
@@ -884,8 +884,8 @@
 	desc = "About that brain I owed ya!"
 	icon_state = "security_zombie"
 	icon_living = "security_zombie"
-	maxHealth = 140 // Armor!
-	health = 140
+	maxHealth = 120 // Armor!
+	health = 120
 	loot = list(/obj/effect/gibspawner/human)
 	del_on_death = TRUE
 
@@ -894,8 +894,8 @@
 	desc = "MY. ASS. IS. DEAD."
 	icon_state = "hecu_zombie"
 	icon_living = "hecu_zombie"
-	maxHealth = 190 // More armor!
-	health = 190
+	maxHealth = 150 // More armor!
+	health = 150
 	loot = list(/obj/effect/gibspawner/human)
 	del_on_death = TRUE
 
@@ -904,8 +904,8 @@
 	desc = "User death... surpassed."
 	icon_state = "hev_zombie"
 	icon_living = "hev_zombie"
-	maxHealth = 250
-	health = 250
+	maxHealth = 200
+	health = 200
 	alert_sounds = list(
 		'modular_ss220/aesthetics_sounds/sound/mobs/zombies/hzv1.ogg',
 		'modular_ss220/aesthetics_sounds/sound/mobs/zombies/hzv2.ogg',
@@ -1066,7 +1066,7 @@
 	icon_living = "nihilanth"
 	pixel_x = -32
 	speed = 3
-	move_to_delay = 3.3
+	move_to_delay = 3.5
 	bound_height = 32
 	bound_width = 32
 	icon_dead = "bullsquid_dead"

@@ -675,7 +675,7 @@
 /obj/machinery/porta_turret/syndicate/black_mesa
 	faction = "xen"
 	lethal = TRUE
-	max_integrity = 120
+	max_integrity = 70
 	projectile = /obj/item/projectile/beam/emitter
 	eprojectile = /obj/item/projectile/beam/emitter
 	shot_sound = 'sound/weapons/laser.ogg'
@@ -689,7 +689,7 @@
 
 /obj/machinery/porta_turret/syndicate/black_mesa/heavy
 	name = "Heavy Defence Turret"
-	max_integrity = 200
+	max_integrity = 120
 	projectile = /obj/item/projectile/beam/laser/heavylaser
 	eprojectile = /obj/item/projectile/beam/laser/heavylaser
 	shot_sound = 'sound/weapons/lasercannonfire.ogg'
@@ -713,3 +713,9 @@
 	for(var/mob/living/iterating_mob in loc)
 		iterating_mob.heal_overall_damage(heal_amount, heal_amount)
 		playsound(src, 'sound/effects/slosh.ogg', 100)
+
+// hev suit storage
+/obj/machinery/suit_storage_unit/hev_suit
+	name = "HEV suit storage unit"
+	helmet_type = /obj/item/clothing/head/helmet/hev_helmet
+	suit_type = /obj/item/clothing/suit/space/hev
