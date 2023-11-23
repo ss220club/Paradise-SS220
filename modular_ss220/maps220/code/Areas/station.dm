@@ -57,6 +57,7 @@
 
 /area/station/public/vacant_store
 	name = "\improper Vacant Store"
+	icon = 'modular_ss220/maps220/icons/areas.dmi'
 	icon_state = "vacantstore"
 
 /area/station/maintenance/dormitory_maintenance
