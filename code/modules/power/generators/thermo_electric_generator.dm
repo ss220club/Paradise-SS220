@@ -193,7 +193,6 @@
 	. = TRUE
 	if(!default_unfasten_wrench(user, I, 0))
 		return
-	anchored = !anchored
 	if(!anchored)
 		disconnect()
 		power_change()
