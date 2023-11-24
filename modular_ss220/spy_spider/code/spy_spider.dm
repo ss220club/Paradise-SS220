@@ -30,7 +30,7 @@
 	return TRUE
 
 /obj/item/radio/receive_range(freq, level)
-	if(syndiekey && !(freq in SSradio.syndicate_blacklist))
+	if(syndiekey && (freq in SSradio.syndicate_blacklist))
 		return -1
 	. = ..()
 
