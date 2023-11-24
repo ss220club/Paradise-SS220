@@ -167,3 +167,16 @@
 /obj/structure/fluff/tram_rail/anchor
 	name = "tram rail anchor"
 	icon_state = "anchor"
+
+//Light emitter
+/obj/effect/light_emitter/colored
+	set_cap = 1
+	icon = 'modular_ss220/maps220/icons/mapping_helpers.dmi'
+	icon_state = "sunlight_helper"
+	layer = 10
+
+/obj/effect/light_emitter/colored/dark_purple
+	light_color = "#53254d"
+
+/obj/effect/light_emitter/colored/lime
+	light_color = "#6AFF00"
