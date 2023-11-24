@@ -1,3 +1,22 @@
+/obj/structure/sign/poster/randomise(base_type)
+	var/list/poster_types = subtypesof(base_type)
+	var/list/approved_types = list()
+	for(var/t in poster_types)
+		var/obj/structure/sign/poster/T = t
+		if(initial(T.icon_state) && !initial(T.never_random))
+			approved_types |= T
+
+	var/obj/structure/sign/poster/selected = pick(approved_types)
+
+	name = initial(selected.name)
+	desc = initial(selected.desc)
+	icon = initial(selected.icon)
+	icon_state = initial(selected.icon_state)
+	poster_item_name = initial(selected.poster_item_name)
+	poster_item_desc = initial(selected.poster_item_desc)
+	poster_item_icon_state = initial(selected.poster_item_icon_state)
+	ruined = initial(selected.ruined)
+
 // Contraband
 /obj/structure/sign/poster/contraband/fun_police
 	icon = 'modular_ss220/objects/icons/posters.dmi'
