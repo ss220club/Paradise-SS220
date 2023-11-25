@@ -18,6 +18,10 @@
 
 	. = ..()
 
+GLOBAL_LIST_INIT(card_skins_ss220, list(
+	"intern", "student", "trainee", "cadet",
+))
+
 /obj/item/card/id/medical/intern
 	name = "Intern ID"
 	registered_name = "Intern"

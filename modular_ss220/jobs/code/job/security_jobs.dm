@@ -42,6 +42,9 @@
 		if("Security Graduate")
 			head = /obj/item/clothing/head/beret/sec
 
+/datum/job/officer
+	alt_titles = list("Security Trainer")
+
 /datum/outfit/job/officer/pre_equip(mob/living/carbon/human/H, visualsOnly)
 	. = ..()
 	if(H.gender == FEMALE)
