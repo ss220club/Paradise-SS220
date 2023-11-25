@@ -257,6 +257,7 @@
 	icon = 'modular_ss220/dunes_map/icons/door.dmi'
 	overlays_file = null
 	assemblytype = null
+	smoothing_groups = list(SMOOTH_GROUP_SIMULATED_TURFS, SMOOTH_GROUP_WALLS, SMOOTH_GROUP_REINFORCED_WALLS)
 	normal_integrity = INDESTRUCTIBLE
 	doorDeni = null
 	boltUp = null

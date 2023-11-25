@@ -75,7 +75,7 @@
 	ambientsounds = RUINS_SOUNDS
 
 /area/awaymission/arrakis/cave
-	name = "\improper Пустыня - Пещера"
+	name = "\improper Пустыня - Скалы"
 	dynamic_lighting = DYNAMIC_LIGHTING_FORCED
 	icon_state = "space_near"
 	ambientsounds = DESERT_SOUNDS_ROCK
@@ -84,18 +84,6 @@
 	name = "\improper Пустыня - Пещера"
 
 /area/awaymission/arrakis/cave/cave1
-	name = "\improper Пустыня - Пещера"
-
-/area/awaymission/arrakis/cave/cave2
-	name = "\improper Пустыня - Пещера"
-
-/area/awaymission/arrakis/cave/cave3
-	name = "\improper Пустыня - Пещера"
-
-/area/awaymission/arrakis/cave/cave4
-	name = "\improper Пустыня - Пещера"
-
-/area/awaymission/arrakis/cave/cave5
 	name = "\improper Пустыня - Пещера"
 
 /area/awaymission/arrakis/bunker
