@@ -1,19 +1,25 @@
+#define DUNE_TEMPERATURE 350 // Жарко пиздец - 76 градусов
+#define DUNE_COLD 300 // Можно остыть
+
 /turf/simulated/floor/brick
 	name = "brick floor"
 	icon = 'modular_ss220/dunes_map/icons/desert.dmi'
 	icon_state = "brick"
+	temperature = DUNE_TEMPERATURE
+	planetary_atmos = TRUE
 	baseturf = /turf/simulated/floor/indestructible/dune_sand
 
 /turf/simulated/floor/indestructible/dune_sand
 	name = "dune sand"
 	icon = 'modular_ss220/dunes_map/icons/desert.dmi'
 	icon_state = "sand"
-	temperature = 325
+	temperature = DUNE_TEMPERATURE
 	planetary_atmos = TRUE
 	footstep = FOOTSTEP_SAND
 	barefootstep = FOOTSTEP_SAND
 	clawfootstep = FOOTSTEP_SAND
 	heavyfootstep = FOOTSTEP_SAND
+	smoothing_groups = list(SMOOTH_GROUP_FLOOR)
 	var/environment_type = "sand"
 	var/obj/item/stack/digResult = /obj/item/stack/ore/glass
 	var/floor_variance = 5
@@ -105,20 +111,36 @@
 			ChangeTurf(/turf/simulated/floor/plating, keep_icon = FALSE)
 		else
 			ChangeTurf(Z.turf_type, keep_icon = FALSE)
-		playsound(src, 'sound/weapons/Genhit.ogg', 50, 1)
+		playsound(src, 'sound/weapons/Genhit.ogg', 50, TRUE)
+
+/turf/simulated/floor/indestructible/dune_sand/dark
+	color = "gray"
+	smoothing_groups = null
+
+/turf/simulated/floor/indestructible/dune_sand/cold
+	temperature = DUNE_COLD
 
 /turf/simulated/floor/indestructible/dune_sand/smooth
 	icon = 'modular_ss220/dunes_map/icons/sand_smooth.dmi'
 	icon_state = "sand-0"
-	smoothing_flags = SMOOTH_BITMASK | SMOOTH_BORDER
-	canSmoothWith = list(/turf/simulated/floor/indestructible/dune_sand, /turf/simulated/floor/indestructible/dune_sand/smooth)
+	base_icon_state = "sand"
+	smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = list(SMOOTH_GROUP_FLOOR)
+	canSmoothWith = list(SMOOTH_GROUP_FLOOR)
+
+/turf/simulated/floor/indestructible/dune_sand/smooth/cold
+	temperature = DUNE_COLD
 
 /turf/simulated/floor/indestructible/dune_sand/dug
 	name = "sand dug"
 	icon_state = "sand_dug"
 
+/turf/simulated/floor/indestructible/dune_sand/dug/cold
+	temperature = DUNE_COLD
+
 /turf/simulated/floor/beach/water/desert_water
 	icon = 'modular_ss220/dunes_map/icons/desert.dmi'
+	temperature = DUNE_TEMPERATURE
 	baseturf = /turf/simulated/floor/beach/water/desert_water
 
 /turf/simulated/wall/indestructible/rock/mineral/dune_rock
@@ -127,3 +149,4 @@
 
 /turf/simulated/floor/chasm/dune
 	icon = 'modular_ss220/dunes_map/icons/chasm.dmi'
+	temperature = DUNE_TEMPERATURE
