@@ -306,7 +306,7 @@ disable_ambient_noise = false
 # Enable this if you want to disable the popup alert for people on the same CID
 disable_cid_warning_popup = false
 # Amount of loadout points people should get
-base_loadout_points = 5
+base_loadout_points = 4
 # Respawnability loss penalty if you cryo below this threshold (Minutes)
 cryo_penalty_period = 30
 # Enable twitter emojis in OOC?
@@ -565,6 +565,11 @@ player_reroute_cap = 0
 overflow_server = "byond://yourdomain.com:1111"
 # List of ckeys who will not get rerouted to the overflow server
 overflow_whitelist = ["keyhere", "anotherhere"]
+
+# SS220 addition
+# Slot saving  time for client reconnection (in seconds)
+reservation_time = 10
+
 
 
 ################################################################
@@ -866,6 +871,8 @@ enabled_away_missions = [
 tts_enabled = false
 # If enabled, what token does it use for API
 tts_token_silero = ""
+# api url for your tts provider
+tts_api_url_silero = "http://you.tts.provider.com:port/endpoint"
 # Are the audio files saved after usage
 tts_cache_enabled = false
 # What CPU threads are used for ffmpeg. Example valid values: "0-3" or "1,4-7"
