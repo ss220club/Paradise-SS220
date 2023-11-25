@@ -177,6 +177,5 @@
 	name = "\improper Бункер - ???"
 	icon = 'icons/turf/areas.dmi'
 	icon_state = "purple"
-	requires_power = FALSE
 	ambientsounds = DESERT_SOUNDS_SECRET
 	lightswitch = FALSE
