@@ -348,6 +348,9 @@
 		if(SHUTTLE_IDLE, SHUTTLE_IGNITING)
 			destination = S
 			mode = SHUTTLE_IGNITING
+			var/hyperspace_sound = sound('sound/effects/hyperspace_begin.ogg')
+			for(var/area/shuttle/escape/E in world)
+				SEND_SOUND(E, hyperspace_sound)
 			setTimer(ignitionTime)
 
 //recall the shuttle to where it was previously
@@ -364,6 +367,9 @@
 //			return
 	var/obj/docking_port/stationary/S0 = get_docked()
 	var/obj/docking_port/stationary/S1 = findTransitDock()
+	var/hyperspace_progress_sound = sound('sound/effects/hyperspace_progress.ogg')
+	for(var/area/shuttle/escape/E in world)
+		SEND_SOUND(E, hyperspace_progress_sound)
 	if(S1)
 		if(dock(S1, null, TRUE))
 			WARNING("shuttle \"[id]\" could not enter transit space. Docked at [S0 ? S0.id : "null"]. Transit dock [S1 ? S1.id : "null"].")
@@ -697,6 +703,9 @@
 					return
 			if(SHUTTLE_IGNITING)
 				mode = SHUTTLE_CALL
+				var/hyperspace_progress_sound = sound('sound/effects/hyperspace_progress.ogg')
+				for(var/area/shuttle/escape/E in world)
+					SEND_SOUND(E, hyperspace_progress_sound)
 				setTimer(callTime)
 				enterTransit()
 				return

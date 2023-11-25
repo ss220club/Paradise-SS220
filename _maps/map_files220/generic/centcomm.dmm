@@ -4789,6 +4789,18 @@
 	icon_state = "brownoldfull"
 	},
 /area/syndicate_mothership/jail)
+"doJ" = (
+/obj/docking_port/stationary/transit{
+	dwidth = 11;
+	height = 18;
+	id = "dunes_transit";
+	name = "emergency centcom in transit";
+	turf_type = /turf/space/transit/north;
+	width = 29;
+	dir = 4
+	},
+/turf/space,
+/area/space/centcomm)
 "doZ" = (
 /obj/item/reagent_containers/food/drinks/bottle/goldschlager,
 /obj/structure/table/wood/fancy/black,
@@ -21501,7 +21513,7 @@
 /turf/simulated/floor/carpet,
 /area/centcom/ss220/evac)
 "oOM" = (
-/obj/machinery/computer/emergency_shuttle,
+/obj/machinery/computer/shuttle/dunes,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "darkblue"
@@ -29621,24 +29633,20 @@
 /turf/simulated/floor/carpet/black,
 /area/ghost_bar)
 "uzJ" = (
-/obj/docking_port/mobile/emergency{
-	dwidth = 11;
-	height = 18;
-	width = 29
-	},
 /obj/machinery/door/airlock/titanium{
 	aiControlDisabled = 1;
 	hackProof = 1;
 	id_tag = "s_docking_airlock";
 	name = "Shuttle Hatch"
 	},
-/obj/docking_port/stationary{
-	dir = 4;
+/obj/docking_port/mobile{
 	dwidth = 11;
 	height = 18;
-	id = "emergency_away";
+	id = "dunes";
 	name = "emergency centcom";
-	width = 29
+	width = 29;
+	dir = 4;
+	ignitionTime = 40
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/escape)
@@ -79520,7 +79528,7 @@ adJ
 adJ
 adJ
 adJ
-adJ
+doJ
 adJ
 adJ
 adJ
