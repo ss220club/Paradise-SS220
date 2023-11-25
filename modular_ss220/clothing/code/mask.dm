@@ -53,16 +53,14 @@
 
 /datum/outfit/job/chef
 	mask = /obj/item/clothing/mask/fakemoustache/chef
-
-<<<<<<< HEAD
-/obj/item/clothing/mask/gas/red_gas
+	/obj/item/clothing/mask/gas/red_gas
 	name = "ПРС-1"
 	desc = "Модульный противогаз, предназначен в основном для совместного использования с имплантироваными кибер лёгкими."
 	icon = 'modular_ss220/clothing/icons/object/masks.dmi'
 	icon_state = "red_gas"
 	icon_override = 'modular_ss220/clothing/icons/mob/masks.dmi'
 	item_state = "red_gas"
-=======
+
 /obj/item/clothing/mask/breath/breathscarf
 	name = "шарф с системой дыхания"
 	desc = "Стильный и инновационный шарф, который служит дыхательной маской в экстремальных ситуациях."
@@ -70,4 +68,3 @@
 	icon_override = 'modular_ss220/clothing/icons/mob/mask.dmi'
 	icon_state = "breathscarf"
 	item_state = "breathscarf"
->>>>>>> afa91354b5f02712fd9b071e48fe2fe708633f0d

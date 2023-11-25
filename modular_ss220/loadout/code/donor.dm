@@ -57,13 +57,11 @@
 	path = /obj/item/clothing/suit/hooded/vi_arcane
 	donator_tier = 3
 	cost = 2
-
-<<<<<<< HEAD
 /datum/gear/donor/red_gas
 	display_name = "ПРС-1"
 	path = /obj/item/clothing/mask/red_gas
 	donator_tier = 2
-=======
+
 /datum/gear/donor/wallet
 	display_name = "Бумажник"
 	path = /obj/item/storage/wallet
@@ -243,5 +241,4 @@
 /datum/gear/donor/breathscarf
 	display_name = "Шарф с системой дыхания"
 	path = /obj/item/clothing/mask/breath/breathscarf
->>>>>>> afa91354b5f02712fd9b071e48fe2fe708633f0d
 	cost = 2
