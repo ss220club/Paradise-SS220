@@ -1,5 +1,4 @@
-#define DUNE_TEMPERATURE 375 // Жарко пиздец - 76 градусов
-#define DUNE_COLD 300 // Можно остыть
+#define DUNE_TEMPERATURE 365 // Жарко пиздец
 
 /turf/simulated/floor/brick
 	name = "brick floor"
@@ -7,7 +6,6 @@
 	icon_state = "brick"
 	temperature = DUNE_TEMPERATURE
 	planetary_atmos = TRUE
-	baseturf = /turf/simulated/floor/indestructible/dune_sand
 
 /turf/simulated/floor/indestructible/dune_sand
 	name = "dune sand"
@@ -118,7 +116,8 @@
 	smoothing_groups = null
 
 /turf/simulated/floor/indestructible/dune_sand/cold
-	temperature = DUNE_COLD
+	temperature = T20C
+	baseturf = /turf/simulated/floor/indestructible/dune_sand/dug/cold
 
 /turf/simulated/floor/indestructible/dune_sand/smooth
 	icon = 'modular_ss220/dunes_map/icons/sand_smooth.dmi'
@@ -129,14 +128,18 @@
 	canSmoothWith = list(SMOOTH_GROUP_FLOOR)
 
 /turf/simulated/floor/indestructible/dune_sand/smooth/cold
-	temperature = DUNE_COLD
+	color = "#E6E6E6"
+	temperature = T20C
+	baseturf = /turf/simulated/floor/indestructible/dune_sand/dug/cold
 
 /turf/simulated/floor/indestructible/dune_sand/dug
 	name = "sand dug"
 	icon_state = "sand_dug"
 
 /turf/simulated/floor/indestructible/dune_sand/dug/cold
-	temperature = DUNE_COLD
+	color = "#E6E6E6"
+	temperature = T20C
+	baseturf = /turf/simulated/floor/indestructible/dune_sand/dug/cold
 
 /turf/simulated/floor/beach/water/desert_water
 	icon = 'modular_ss220/dunes_map/icons/desert.dmi'
@@ -147,6 +150,6 @@
 	name = "dune rock"
 	color = "#D9742B"
 
-/turf/simulated/floor/chasm/dune
+/turf/simulated/floor/chasm/straight_down/dune
 	icon = 'modular_ss220/dunes_map/icons/chasm.dmi'
 	temperature = DUNE_TEMPERATURE

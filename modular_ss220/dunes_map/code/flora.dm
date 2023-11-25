@@ -37,8 +37,6 @@
 /obj/structure/flora/tree/desert/joshua/Initialize(mapload)
 	. = ..()
 	icon_state = pick("joshua_1","joshua_2","joshua_3","joshua_4")
-	pixel_x = rand(-5, 5)
-	pixel_y = rand(-5, 5)
 
 /obj/structure/flora/tree/desert/dead
 	icon = 'modular_ss220/dunes_map/icons/desert_tree.dmi'
