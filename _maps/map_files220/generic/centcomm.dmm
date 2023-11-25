@@ -3300,10 +3300,8 @@
 	},
 /area/syndicate_mothership/elite_squad)
 "cnB" = (
-/obj/structure/table/reinforced,
-/obj/item/clothing/gloves/color/latex/nitrile,
-/obj/item/clothing/mask/breath,
 /obj/item/radio/intercom/directional/south,
+/obj/machinery/sleeper,
 /turf/simulated/floor/plasteel{
 	icon_state = "cmo"
 	},
@@ -4919,9 +4917,8 @@
 /turf/simulated/floor/plasteel/freezer,
 /area/ninja/holding)
 "dsw" = (
-/obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/drinks/mug/med,
 /obj/machinery/light/directional/west,
+/obj/machinery/optable,
 /turf/simulated/floor/plasteel{
 	icon_state = "cmo"
 	},
@@ -10108,6 +10105,9 @@
 	pixel_y = 4
 	},
 /obj/machinery/light/small/directional/south,
+/obj/item/storage/firstaid/machine{
+	pixel_y = 7
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "bot"
 	},
@@ -12837,6 +12837,7 @@
 "ivP" = (
 /obj/structure/extinguisher_cabinet/directional/east,
 /obj/machinery/light/small/directional/east,
+/obj/structure/closet/crate/freezer/iv_storage,
 /turf/simulated/floor/plasteel{
 	dir = 6;
 	icon_state = "whiteblue"
@@ -15018,10 +15019,11 @@
 	},
 /area/syndicate_mothership)
 "khr" = (
-/obj/structure/table/reinforced,
-/obj/item/storage/backpack/medic,
-/obj/item/storage/belt/medical,
 /obj/machinery/light/directional/south,
+/obj/structure/table/tray,
+/obj/item/storage/firstaid/surgery{
+	pixel_y = 8
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "cmo"
 	},
@@ -19729,16 +19731,7 @@
 	},
 /area/centcom/ss220/evac)
 "nyC" = (
-/obj/structure/table/reinforced,
-/obj/item/storage/firstaid/o2{
-	pixel_x = -3;
-	pixel_y = -3
-	},
-/obj/item/storage/firstaid/regular,
-/obj/item/storage/firstaid/regular{
-	pixel_x = 3;
-	pixel_y = 3
-	},
+/obj/machinery/bodyscanner,
 /turf/simulated/floor/plasteel{
 	dir = 5;
 	icon_state = "whiteblue"
@@ -21867,6 +21860,14 @@
 /obj/effect/landmark/spawner/late/crew,
 /turf/simulated/floor/carpet/arcade,
 /area/centcom/ss220/general)
+"pac" = (
+/obj/machinery/computer/operating{
+	dir = 4
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "whiteblue"
+	},
+/area/shuttle/escape)
 "pag" = (
 /obj/item/implanter/adrenalin{
 	pixel_x = 12;
@@ -24430,7 +24431,38 @@
 	},
 /area/syndicate_mothership/control)
 "qTt" = (
-/obj/item/flag/med,
+/obj/structure/closet/crate/medical,
+/obj/item/organ/internal/eyes/cybernetic,
+/obj/item/organ/internal/eyes/cybernetic,
+/obj/item/organ/internal/eyes/cybernetic,
+/obj/item/organ/internal/eyes/cybernetic,
+/obj/item/organ/internal/eyes/cybernetic,
+/obj/item/organ/internal/eyes/cybernetic,
+/obj/item/organ/internal/eyes/cybernetic,
+/obj/item/organ/internal/eyes/cybernetic,
+/obj/item/organ/internal/eyes/cybernetic,
+/obj/item/organ/internal/eyes/cybernetic,
+/obj/item/organ/internal/ears/cybernetic,
+/obj/item/organ/internal/ears/cybernetic,
+/obj/item/organ/internal/ears/cybernetic,
+/obj/item/organ/internal/ears/cybernetic,
+/obj/item/organ/internal/ears/cybernetic,
+/obj/item/organ/internal/ears/cybernetic,
+/obj/item/organ/internal/ears/cybernetic,
+/obj/item/organ/internal/ears/cybernetic,
+/obj/item/organ/internal/ears/cybernetic,
+/obj/item/organ/internal/ears/cybernetic,
+/obj/item/organ/internal/heart/cybernetic,
+/obj/item/organ/internal/heart/cybernetic,
+/obj/item/organ/internal/heart/cybernetic,
+/obj/item/organ/internal/heart/cybernetic,
+/obj/item/organ/internal/heart/cybernetic,
+/obj/item/organ/internal/kidneys/cybernetic,
+/obj/item/organ/internal/kidneys/cybernetic,
+/obj/item/organ/internal/kidneys/cybernetic,
+/obj/item/organ/internal/lungs/cybernetic,
+/obj/item/organ/internal/lungs/cybernetic,
+/obj/item/organ/internal/lungs/cybernetic,
 /turf/simulated/floor/plasteel{
 	icon_state = "cmo"
 	},
@@ -24935,8 +24967,7 @@
 	},
 /area/centcom/ss220/medbay)
 "rmy" = (
-/obj/structure/bed/roller,
-/obj/machinery/iv_drip,
+/obj/machinery/bodyscanner,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "whiteblue"
@@ -26745,6 +26776,19 @@
 	name = "emergency in transit";
 	width = 24
 	},
+/obj/docking_port/stationary{
+	dir = 4;
+	dwidth = 11;
+	height = 18;
+	id = "emergency_away";
+	name = "emergency centcom";
+	width = 29
+	},
+/obj/docking_port/mobile/emergency{
+	dwidth = 11;
+	height = 18;
+	width = 29
+	},
 /turf/space/transit,
 /area/space/centcomm)
 "swL" = (
@@ -27639,10 +27683,7 @@
 /turf/simulated/floor/wood/fancy/cherry,
 /area/centcom/ss220/admin2)
 "tcq" = (
-/obj/structure/table/reinforced,
-/obj/item/reagent_containers/iv_bag/blood/random,
-/obj/item/reagent_containers/iv_bag/blood/random,
-/obj/item/reagent_containers/iv_bag/blood/random,
+/obj/structure/closet/crate/freezer/iv_storage,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "whiteblue"
@@ -27653,8 +27694,18 @@
 /turf/simulated/floor/wood/oak,
 /area/centcom/ss220/bar)
 "tcQ" = (
-/obj/machinery/sleeper{
-	dir = 4
+/obj/structure/table/reinforced,
+/obj/item/roller{
+	pixel_y = 4
+	},
+/obj/item/roller{
+	pixel_y = 8
+	},
+/obj/item/roller{
+	pixel_y = 12
+	},
+/obj/item/roller{
+	pixel_y = 16
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "cmo"
@@ -28588,6 +28639,12 @@
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/jail)
+"tKR" = (
+/obj/machinery/economy/vending/medical,
+/turf/simulated/floor/plasteel{
+	icon_state = "cmo"
+	},
+/area/shuttle/escape)
 "tKS" = (
 /obj/structure/window/reinforced,
 /turf/simulated/floor/plasteel{
@@ -29503,7 +29560,12 @@
 /turf/simulated/floor/carpet/black,
 /area/centcom/ss220/general)
 "utc" = (
-/obj/structure/bed/roller,
+/obj/structure/closet/crate/medical,
+/obj/item/storage/box/monkeycubes,
+/obj/item/storage/box/monkeycubes/farwacubes,
+/obj/item/storage/box/monkeycubes/neaeracubes,
+/obj/item/storage/box/monkeycubes/stokcubes,
+/obj/item/storage/box/monkeycubes/wolpincubes,
 /turf/simulated/floor/plasteel{
 	icon_state = "cmo"
 	},
@@ -33789,6 +33851,25 @@
 /obj/item/dice/d20,
 /turf/simulated/floor/carpet/black,
 /area/trader_station/sol)
+"xlt" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/firstaid/fire{
+	pixel_y = 8
+	},
+/obj/item/storage/firstaid/fire{
+	pixel_y = 6
+	},
+/obj/item/storage/firstaid/brute{
+	pixel_y = 4
+	},
+/obj/item/storage/firstaid/brute{
+	pixel_y = 2
+	},
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "whiteblue"
+	},
+/area/shuttle/escape)
 "xlO" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Бар";
@@ -64414,10 +64495,10 @@ ivH
 oCU
 snC
 tcQ
-hGl
+xlt
 pgS
 pgS
-qIX
+pac
 dsw
 khr
 snC
@@ -64669,14 +64750,14 @@ oyM
 oyM
 oyM
 cqV
-qRj
-yim
+snC
+tKR
 hGl
 pgS
 pgS
 qIX
 yim
-utc
+qTt
 eRG
 uAZ
 pTW
@@ -65189,7 +65270,7 @@ ivP
 rmy
 tcq
 nyC
-qTt
+yim
 cnB
 snC
 uAZ
