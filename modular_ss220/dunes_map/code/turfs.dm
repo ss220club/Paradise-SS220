@@ -1,4 +1,4 @@
-#define DUNE_TEMPERATURE 350 // Жарко пиздец - 76 градусов
+#define DUNE_TEMPERATURE 375 // Жарко пиздец - 76 градусов
 #define DUNE_COLD 300 // Можно остыть
 
 /turf/simulated/floor/brick
