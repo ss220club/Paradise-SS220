@@ -1441,7 +1441,7 @@
 	},
 /area/awaymission/caves/build/reqpower_build)
 "gL" = (
-/obj/effect/spawner/random_spawners/grille_often,
+/obj/structure/grille,
 /obj/effect/decal/cleanable/glass,
 /obj/item/shard{
 	icon_state = "small";
@@ -1869,7 +1869,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/caves/build/reqpower_build)
 "iQ" = (
-/obj/effect/spawner/random_spawners/grille_often,
+/obj/structure/grille,
 /obj/effect/decal/cleanable/glass,
 /obj/item/shard{
 	pixel_x = 9
@@ -2220,7 +2220,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/caves/build/reqpower_build)
 "kI" = (
-/obj/effect/spawner/random_spawners/grille_often,
+/obj/structure/grille,
 /obj/item/shard{
 	icon_state = "medium";
 	pixel_x = -5;
@@ -2890,9 +2890,7 @@
 	},
 /area/awaymission/caves/build/reqpower_build)
 "oi" = (
-/obj/mecha/working/ripley{
-	obj_integrity = 40
-	},
+/obj/structure/mecha_wreckage/ripley,
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/awaymission/caves)
 "om" = (
@@ -2912,8 +2910,7 @@
 /area/awaymission/caves)
 "oq" = (
 /obj/item/gun/energy/kinetic_accelerator,
-/obj/effect/landmark/damageturf,
-/turf/simulated/floor/plating/lavaland_air,
+/turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/awaymission/caves)
 "or" = (
 /obj/structure/closet/walllocker/firelocker/south,
@@ -3216,6 +3213,7 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
+/obj/item/paper/caves/pacman,
 /turf/simulated/floor/plating,
 /area/awaymission/caves/build/reqpower_build)
 "qe" = (
@@ -4101,11 +4099,9 @@
 	},
 /area/awaymission/caves/build/reqpower_build)
 "uO" = (
-/mob/living/simple_animal/hostile/skeleton/deadwizard{
-	wander = 0
-	},
 /obj/structure/stone_tile/slab,
 /obj/structure/stone_tile/slab,
+/mob/living/simple_animal/hostile/deadwizard,
 /turf/simulated/floor/engine/cult/lavaland_air{
 	planetary_atmos = 1
 	},
@@ -5734,14 +5730,14 @@
 	},
 /area/awaymission/caves)
 "Dw" = (
-/obj/structure{
-	icon_state = "holopad_open";
-	icon = 'icons/obj/stationobjs.dmi';
-	desc = "Holopad for long-distance communication.";
-	name = "holopad"
-	},
-/obj/effect/spawner/random_spawners/dirt_often,
 /obj/machinery/light/small/directional/west,
+/obj/machinery/constructable_frame/machine_frame,
+/obj/item/stack/cable_coil{
+	amount = 5
+	},
+/obj/item/stock_parts/capacitor/adv,
+/obj/item/circuitboard/holopad,
+/obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "dark"
@@ -5777,6 +5773,11 @@
 	icon_state = "darkredalt"
 	},
 /area/awaymission/caves/build/reqpower_build)
+"DQ" = (
+/obj/structure/grille/broken,
+/obj/effect/decal/cleanable/glass,
+/turf/simulated/floor/plating/lavaland_air,
+/area/awaymission/caves)
 "DR" = (
 /obj/structure/stone_tile/slab/cracked{
 	icon_state = "cracked_surrounding1";
@@ -5946,6 +5947,11 @@
 /turf/simulated/floor/plasteel/lavaland_air{
 	icon_state = "dark"
 	},
+/area/awaymission/caves/build)
+"EE" = (
+/obj/structure/grille,
+/obj/effect/decal/cleanable/glass,
+/turf/simulated/floor/plating/lavaland_air,
 /area/awaymission/caves/build)
 "EG" = (
 /obj/structure/bookcase/random,
@@ -6570,6 +6576,7 @@
 /area/awaymission/caves/build)
 "HQ" = (
 /obj/effect/spawner/window/reinforced/plasma/grilled,
+/obj/effect/mapping_helpers/damaged_window,
 /turf/simulated/floor/plating,
 /area/awaymission/caves/build/reqpower_build)
 "HR" = (
@@ -6617,7 +6624,7 @@
 	},
 /area/awaymission/caves)
 "HY" = (
-/obj/effect/spawner/random_spawners/grille_often,
+/obj/structure/grille/broken,
 /obj/effect/decal/cleanable/glass,
 /turf/simulated/floor/plating/lavaland_air,
 /area/awaymission/caves/build)
@@ -7014,7 +7021,7 @@
 	},
 /area/awaymission/caves/build/reqpower_build)
 "JY" = (
-/obj/effect/spawner/random_spawners/grille_often,
+/obj/structure/grille/broken,
 /obj/effect/decal/cleanable/glass,
 /turf/simulated/floor/plating,
 /area/awaymission/caves/build/reqpower_build)
@@ -7105,7 +7112,6 @@
 /obj/structure/table,
 /obj/random/toolbox,
 /obj/random/tool,
-/obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/plating,
 /area/awaymission/caves/build/reqpower_build)
 "Kw" = (
@@ -7723,7 +7729,7 @@
 /turf/simulated/floor/wood/oak,
 /area/awaymission/caves/build/reqpower_build)
 "Og" = (
-/obj/effect/spawner/random_spawners/grille_often,
+/obj/structure/grille,
 /turf/simulated/floor/plating,
 /area/awaymission/caves)
 "Oi" = (
@@ -7820,6 +7826,7 @@
 /obj/machinery/door/poddoor/preopen{
 	id_tag = "cave4_blast2"
 	},
+/obj/effect/mapping_helpers/damaged_window,
 /turf/simulated/floor/plating,
 /area/awaymission/caves/build/reqpower_build)
 "OM" = (
@@ -7872,7 +7879,7 @@
 	},
 /area/awaymission/caves/build/reqpower_build)
 "Pb" = (
-/obj/effect/spawner/random_spawners/grille_often,
+/obj/structure/grille/broken,
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/awaymission/caves)
 "Pd" = (
@@ -7928,7 +7935,7 @@
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/awaymission/caves)
 "Pn" = (
-/obj/effect/spawner/random_spawners/grille_often,
+/obj/structure/grille/broken,
 /obj/item/shard{
 	pixel_x = 9
 	},
@@ -8760,7 +8767,7 @@
 	},
 /area/awaymission/caves/build/reqpower_build)
 "TG" = (
-/obj/effect/spawner/random_spawners/grille_often,
+/obj/structure/grille/broken,
 /obj/effect/decal/cleanable/glass/plasma,
 /obj/machinery/door/poddoor/preopen{
 	id_tag = "cave4_blast2"
@@ -8792,7 +8799,7 @@
 /turf/simulated/floor/wood/lavaland_air,
 /area/awaymission/caves)
 "TQ" = (
-/obj/effect/spawner/random_spawners/grille_often,
+/obj/structure/grille,
 /turf/simulated/floor/plating,
 /area/awaymission/caves/build/reqpower_build)
 "TU" = (
@@ -9541,7 +9548,7 @@
 	},
 /area/awaymission/caves)
 "Xi" = (
-/obj/effect/spawner/random_spawners/grille_often,
+/obj/structure/grille,
 /obj/effect/decal/cleanable/glass,
 /turf/simulated/floor/plating/lavaland_air,
 /area/awaymission/caves)
@@ -9733,7 +9740,7 @@
 /turf/simulated/floor/wood/lavaland_air,
 /area/awaymission/caves)
 "XZ" = (
-/obj/effect/spawner/random_spawners/grille_often,
+/obj/structure/grille/broken,
 /turf/simulated/floor/plating/lavaland_air,
 /area/awaymission/caves)
 "Ya" = (
@@ -9767,6 +9774,10 @@
 	icon_state = "wood-broken6"
 	},
 /area/awaymission/caves)
+"Yf" = (
+/obj/structure/grille/broken,
+/turf/simulated/floor/plating,
+/area/awaymission/caves/build/reqpower_build)
 "Yi" = (
 /obj/machinery/door_control/shutter/north{
 	pixel_x = 8;
@@ -15001,7 +15012,7 @@ BH
 BH
 TK
 ZJ
-ZJ
+Xq
 ZJ
 Aq
 BH
@@ -15465,7 +15476,7 @@ BH
 BH
 BH
 Aq
-BH
+ZJ
 ZJ
 BH
 BH
@@ -15698,7 +15709,7 @@ BH
 BH
 BH
 ZJ
-ZJ
+pL
 BH
 BH
 BH
@@ -16393,7 +16404,7 @@ BH
 BH
 BH
 BH
-ZJ
+pL
 ZJ
 ZJ
 ZJ
@@ -16625,14 +16636,14 @@ BH
 BH
 BH
 ZJ
+Xq
+BH
+BH
+BH
+BH
 BH
 BH
 ZJ
-ZJ
-BH
-BH
-BH
-BH
 BH
 BH
 BH
@@ -16775,9 +16786,9 @@ kD
 VD
 ZJ
 Pb
-Pb
-Pb
-Pb
+mc
+mc
+mc
 TK
 TK
 TK
@@ -16859,12 +16870,12 @@ BH
 ZJ
 ZJ
 ZJ
+BH
+BH
+BH
+BH
 ZJ
-BH
-BH
-BH
-BH
-BH
+ZJ
 BH
 BH
 BH
@@ -17010,7 +17021,7 @@ ZJ
 ZJ
 ZJ
 Pb
-Pb
+mc
 TK
 TK
 TK
@@ -17097,7 +17108,7 @@ BH
 BH
 BH
 BH
-BH
+ZJ
 BH
 BH
 BH
@@ -17944,7 +17955,7 @@ NJ
 tW
 gq
 kG
-Pb
+mc
 ZJ
 TK
 TK
@@ -18176,7 +18187,7 @@ ts
 tW
 tW
 kG
-Pb
+mc
 ZJ
 ZJ
 ZJ
@@ -18268,7 +18279,7 @@ BH
 BH
 ZJ
 ZJ
-BH
+ZJ
 ZJ
 BH
 BH
@@ -18499,13 +18510,13 @@ ZJ
 BH
 BH
 ZJ
+ZJ
+ZJ
+ZJ
+ZJ
 BH
-ZJ
-ZJ
-ZJ
 BH
 BH
-ZJ
 ZJ
 LU
 LU
@@ -18733,7 +18744,7 @@ ZJ
 nx
 ZJ
 ZJ
-BH
+ZJ
 ZJ
 BH
 ZJ
@@ -19789,7 +19800,7 @@ ao
 ZN
 CU
 qx
-HY
+EE
 rp
 kD
 NY
@@ -20004,10 +20015,10 @@ TK
 cF
 kD
 aV
+mc
 Pb
-Pb
-Pb
-fO
+mc
+mc
 TK
 TK
 ZJ
@@ -20236,7 +20247,7 @@ TK
 cF
 kD
 NY
-Pb
+mc
 TK
 TK
 TK
@@ -24179,7 +24190,7 @@ ai
 MY
 UH
 nh
-XZ
+bt
 bO
 bO
 bO
@@ -24196,7 +24207,7 @@ Ki
 bO
 sq
 Os
-XZ
+bt
 pm
 ZJ
 ZJ
@@ -24411,7 +24422,7 @@ Qo
 UH
 HD
 aV
-XZ
+bt
 bO
 EI
 ZJ
@@ -26303,7 +26314,7 @@ bO
 bO
 bO
 ZJ
-oq
+aV
 UM
 FR
 WR
@@ -33498,7 +33509,7 @@ bO
 ZJ
 aV
 va
-Pb
+mc
 TK
 TK
 bO
@@ -33730,7 +33741,7 @@ ZJ
 ZJ
 ZJ
 ZJ
-Pb
+mc
 TK
 TK
 bO
@@ -35120,7 +35131,7 @@ kD
 kD
 zJ
 ZJ
-Xi
+DQ
 ZJ
 ZJ
 TK
@@ -35262,7 +35273,7 @@ aH
 TQ
 yW
 tQ
-TQ
+Yf
 tQ
 lD
 lD
@@ -37346,7 +37357,7 @@ LU
 lD
 ZG
 lD
-TQ
+Yf
 ug
 ek
 tQ
@@ -37497,8 +37508,8 @@ BH
 BH
 BH
 BH
-ZJ
-Xq
+BH
+BH
 BH
 BH
 BH
@@ -37728,10 +37739,10 @@ BH
 BH
 BH
 BH
-nx
-ZJ
-ZJ
-ZJ
+BH
+BH
+BH
+BH
 BH
 BH
 BH
@@ -37959,11 +37970,11 @@ BH
 BH
 mz
 ZJ
-ZJ
-ZJ
-Xq
-ZJ
-Aq
+BH
+BH
+BH
+BH
+BH
 BH
 BH
 BH
@@ -38195,9 +38206,9 @@ ZJ
 Xq
 ZJ
 BH
-ZJ
-ZJ
-ZJ
+BH
+BH
+BH
 BH
 BH
 BH
@@ -39297,7 +39308,7 @@ ZJ
 TK
 TK
 ZJ
-Pb
+mc
 TK
 TK
 TK
@@ -39588,7 +39599,7 @@ ZJ
 ZJ
 ZJ
 mz
-ZJ
+BH
 BH
 BH
 ZJ
@@ -39820,7 +39831,7 @@ mz
 mz
 ET
 BH
-ZJ
+BH
 BH
 ZJ
 ZJ
@@ -40222,7 +40233,7 @@ TK
 TK
 TK
 TK
-Pb
+mc
 Ew
 TK
 TK
@@ -40453,7 +40464,7 @@ TK
 TK
 TK
 TK
-Pb
+mc
 ZJ
 ZJ
 ZJ
@@ -40684,7 +40695,7 @@ bO
 bO
 TK
 TK
-Pb
+mc
 Hm
 Ca
 aV
@@ -40752,7 +40763,7 @@ ZJ
 Xq
 Xq
 BH
-Xq
+BH
 ZJ
 BH
 BH
@@ -41223,8 +41234,8 @@ Xq
 mf
 BH
 BH
-nx
-Xq
+BH
+BH
 BH
 BH
 BH
@@ -41451,9 +41462,9 @@ mz
 BH
 ZJ
 Xq
-ZJ
-ZJ
-ZJ
+BH
+BH
+BH
 BH
 BH
 BH
@@ -41683,15 +41694,15 @@ mz
 BH
 Xq
 BH
-ZJ
-Xq
+BH
+vI
 BH
 BH
 BH
 BH
 BH
-ZJ
-Xq
+BH
+BH
 Xq
 mz
 DR
@@ -41761,7 +41772,7 @@ BH
 BH
 BH
 BH
-XZ
+bt
 au
 oB
 Yx
@@ -42597,8 +42608,8 @@ BH
 BH
 ET
 ZJ
-mf
-ZJ
+BH
+BH
 vI
 nx
 OK
@@ -42927,7 +42938,7 @@ rX
 bM
 WD
 xf
-TQ
+Yf
 TQ
 as
 lD
@@ -42961,7 +42972,7 @@ TK
 TK
 TK
 ZJ
-ZJ
+oq
 TK
 TK
 TK
@@ -43855,8 +43866,8 @@ nG
 yO
 Rk
 as
-TQ
-TQ
+Yf
+Yf
 dP
 TQ
 as
@@ -50459,7 +50470,7 @@ BH
 BH
 BH
 BH
-LU
+BH
 BH
 BH
 BH
@@ -50688,7 +50699,7 @@ BH
 BH
 BH
 BH
-BH
+LU
 BH
 BH
 BH
@@ -50918,7 +50929,7 @@ LU
 LU
 BH
 BH
-BH
+LU
 LU
 LU
 LU
@@ -51149,9 +51160,9 @@ LU
 LU
 LU
 BH
-BH
-BH
-BH
+LU
+LU
+LU
 LU
 LU
 LU
@@ -51381,10 +51392,10 @@ LU
 BH
 BH
 BH
+LU
 BH
 BH
-BH
-BH
+LU
 LU
 BH
 BH

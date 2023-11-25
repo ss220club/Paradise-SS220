@@ -69,7 +69,11 @@
 					/obj/item/camera_film,
 					/obj/item/paper,
 					/obj/item/photo,
-					/obj/item/toy/plushie)
+					/obj/item/toy/plushie,
+					/obj/item/disk/data,
+					/obj/item/disk/design_disk,
+					/obj/item/disk/plantgene,
+					)
 
 /obj/item/gripper/nuclear
 	name = "Nuclear gripper"
@@ -105,7 +109,7 @@
 	if(!gripped_item)
 		return
 	gripped_item.tool_act(user, tool, tool_type)
-	if (QDELETED(gripped_item)) // if item was dissasembled we need to clear the pointer
+	if(QDELETED(gripped_item)) // if item was dissasembled we need to clear the pointer
 		drop_gripped_item(TRUE) // silent = TRUE to prevent "You drop X" message from appearing without actually dropping anything
 
 /obj/item/gripper/attackby(obj/item/weapon, mob/user, params)
@@ -265,3 +269,11 @@
 	// The gripper is special because it has a normal item inside that we can drop.
 	// All robot inventory items have NODROP, so they should return FALSE.
 	return module_gripper_drop()
+
+/obj/machinery/reagentgrinder/attack_ai(mob/user)
+	add_hiddenprint(user)
+	return attack_hand(user)
+
+/obj/structure/morgue/attack_ai(mob/user)
+	add_hiddenprint(user)
+	return attack_hand(user)

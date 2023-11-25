@@ -7,7 +7,7 @@
 /obj/item/clothing/mask/equipped(mob/M, slot)
 	. = ..()
 
-	if ((slot & SLOT_HUD_WEAR_MASK) && modifies_speech)
+	if((slot & SLOT_HUD_WEAR_MASK) && modifies_speech)
 		RegisterSignal(M, COMSIG_MOB_SAY, PROC_REF(handle_speech))
 	else
 		UnregisterSignal(M, COMSIG_MOB_SAY)
@@ -54,6 +54,7 @@
 /datum/outfit/job/chef
 	mask = /obj/item/clothing/mask/fakemoustache/chef
 
+<<<<<<< HEAD
 /obj/item/clothing/mask/gas/red_gas
 	name = "ПРС-1"
 	desc = "Модульный противогаз, предназначен в основном для совместного использования с имплантироваными кибер лёгкими."
@@ -61,3 +62,12 @@
 	icon_state = "red_gas"
 	icon_override = 'modular_ss220/clothing/icons/mob/masks.dmi'
 	item_state = "red_gas"
+=======
+/obj/item/clothing/mask/breath/breathscarf
+	name = "шарф с системой дыхания"
+	desc = "Стильный и инновационный шарф, который служит дыхательной маской в экстремальных ситуациях."
+	icon = 'modular_ss220/clothing/icons/object/masks.dmi'
+	icon_override = 'modular_ss220/clothing/icons/mob/mask.dmi'
+	icon_state = "breathscarf"
+	item_state = "breathscarf"
+>>>>>>> afa91354b5f02712fd9b071e48fe2fe708633f0d
