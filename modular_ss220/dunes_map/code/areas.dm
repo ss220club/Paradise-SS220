@@ -7,6 +7,8 @@
 	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
 	there_can_be_many = TRUE
 	nad_allowed = TRUE
+	min_ambience_cooldown = 3 MINUTES
+	max_ambience_cooldown = 3 MINUTES
 
 /area/awaymission/arrakis/outside
 	name = "\improper Пустыня - Дюны"
@@ -17,6 +19,8 @@
 	name = "\improper Пустыня - Прибытие"
 	icon_state = "awaycontent1"
 	ambientsounds = DESERT_SOUNDS_START
+	min_ambience_cooldown = 5 MINUTES
+	max_ambience_cooldown = 5 MINUTES
 
 /area/awaymission/arrakis/outside/outside2
 	name = "\improper Пустыня - Дюны"
