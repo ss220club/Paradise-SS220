@@ -53,3 +53,18 @@
 
 /datum/outfit/job/chef
 	mask = /obj/item/clothing/mask/fakemoustache/chef
+
+/obj/item/clothing/mask/red_gas
+	name = "ПРС-1"
+	desc = "Модульный противогаз, предназначен в основном для совместного использования с имплантироваными кибер лёгкими."
+	icon = 'modular_ss220/clothing/icons/object/masks.dmi'
+	icon_state = "red_gas"
+	icon_override = 'modular_ss220/clothing/icons/mob/masks.dmi'
+	item_state = "red_gas"
+	flags = BLOCK_GAS_SMOKE_EFFECT | AIRTIGHT
+	flags_inv = HIDEEARS|HIDEEYES|HIDEFACE
+	flags_cover = MASKCOVERSMOUTH | MASKCOVERSEYES
+	w_class = WEIGHT_CLASS_NORMAL
+	gas_transfer_coefficient = 0.01
+	permeability_coefficient = 0.01
+	resistance_flags = NONE

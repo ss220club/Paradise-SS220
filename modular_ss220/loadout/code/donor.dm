@@ -57,3 +57,9 @@
 	path = /obj/item/clothing/suit/hooded/vi_arcane
 	donator_tier = 3
 	cost = 2
+
+/datum/gear/donor/red_gas
+	display_name = "ПРС-1"
+	path = /obj/item/clothing/mask/red_gas
+	donator_tier = 2
+	cost = 2
