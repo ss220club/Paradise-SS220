@@ -1,14 +1,3 @@
-/obj/machinery/economy/vending/medidrobe/Initialize(mapload)
-	. = ..()
-	products |= list(
-		/obj/item/clothing/under/rank/medical/doctor/intern = 5,
-		/obj/item/clothing/under/rank/medical/doctor/intern/skirt = 5,
-		/obj/item/clothing/under/rank/medical/doctor/intern/assistant = 5,
-		/obj/item/clothing/under/rank/medical/doctor/intern/assistant/skirt = 5,
-		/obj/item/clothing/head/surgery/green/light = 5,
-		/obj/item/clothing/under/rank/medical/scrubs/green/light = 5,
-	)
-
 // Others
 /datum/uplink_item/jobspecific/viral_injector/New()
 	. = ..()
