@@ -1,11 +1,12 @@
-// Others
+// others
+/obj/item/envelope/medical/Initialize(mapload)
+	. = ..()
+	job_list |= GLOB.medical_positions_ss220
+
 /datum/uplink_item/jobspecific/viral_injector/New()
 	. = ..()
 	job |= GLOB.medical_positions_ss220
 
-/obj/item/envelope/medical/Initialize(mapload)
-	. = ..()
-	job_list |= GLOB.medical_positions_ss220
 
 // loadout
 /datum/gear/accessory/stethoscope/New()
