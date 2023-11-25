@@ -14,10 +14,11 @@
 	jobtype = /datum/job/engineer/trainee
 
 	uniform = /obj/item/clothing/under/rank/engineering/engineer/trainee
+	suit = /obj/item/clothing/suit/storage/hazardvest
 	belt = /obj/item/storage/belt/utility/full
 	shoes = /obj/item/clothing/shoes/workboots
 	gloves = /obj/item/clothing/gloves/color/orange
-	head = /obj/item/clothing/head/hardhat
+	head = /obj/item/clothing/head/hardhat/orange
 	l_ear = /obj/item/radio/headset/headset_eng
 	id = /obj/item/card/id/engineering/trainee
 	l_pocket = /obj/item/t_scanner
