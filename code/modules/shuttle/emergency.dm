@@ -419,7 +419,7 @@
 				for(var/obj/docking_port/mobile/pod/M in SSshuttle.mobile)
 					M.dock(SSshuttle.getDock("[M.id]_away"))
 
-				var/hyperspace_end_sound = sound('modular_ss220/aesthetics_sounds/sound/shuttle/hyperspace_end_new.ogg')
+				var/hyperspace_end_sound = sound('modular_ss220/aesthetics_sounds/sound/shuttle/hyperspace_end_new.ogg') //SS220 EDIT
 				for(var/area/shuttle/escape/E in world)
 					SEND_SOUND(E, hyperspace_end_sound)
 
