@@ -7833,15 +7833,15 @@
 /area/station/supply/qm)
 "aIi" = (
 /obj/structure/table,
-/obj/item/reagent_containers/food/pill/patch{
-	pixel_x = -4
-	},
-/obj/item/reagent_containers/food/pill/patch,
-/obj/item/reagent_containers/food/pill/patch{
-	pixel_x = 4
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dust,
+/obj/item/reagent_containers/patch/nicotine{
+	pixel_x = -6
+	},
+/obj/item/reagent_containers/patch/nicotine,
+/obj/item/reagent_containers/patch/nicotine{
+	pixel_x = 6
+	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/fsmaint)
 "aIj" = (
@@ -22665,14 +22665,6 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dust,
 /obj/effect/decal/cleanable/glass,
-/obj/item/reagent_containers/food/pill/salbutamol{
-	pixel_x = 3;
-	pixel_y = 3
-	},
-/obj/item/reagent_containers/food/pill/salbutamol{
-	pixel_x = -6;
-	pixel_y = 8
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
@@ -31838,18 +31830,14 @@
 /turf/simulated/floor/plasteel/dark,
 /area/station/public/fitness)
 "czf" = (
-/obj/item/reagent_containers/food/pill/mutadone,
-/obj/item/reagent_containers/food/pill/mutadone{
-	pixel_x = 9;
-	pixel_y = 2
-	},
-/obj/item/reagent_containers/food/pill/mutadone{
-	pixel_y = 5;
-	pixel_x = -7
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dust,
 /obj/structure/table/glass,
+/obj/item/reagent_containers/pill/salbutamol,
+/obj/item/reagent_containers/pill/salbutamol{
+	pixel_x = 6;
+	pixel_y = 8
+	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/fsmaint)
 "czi" = (
@@ -48210,6 +48198,10 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dust,
 /obj/effect/spawner/random_spawners/blood_maybe,
+/obj/item/reagent_containers/pill/salbutamol{
+	pixel_x = -6;
+	pixel_y = 8
+	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/fsmaint)
 "eez" = (
@@ -51483,12 +51475,6 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/station/science/storage)
-"fih" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dust,
-/obj/item/reagent_containers/food/pill/salbutamol,
-/turf/simulated/floor/plating,
-/area/station/maintenance/fsmaint)
 "fim" = (
 /turf/simulated/floor/plasteel{
 	dir = 5;
@@ -53391,10 +53377,6 @@
 	},
 /area/station/science/research)
 "fPh" = (
-/obj/item/reagent_containers/food/pill/epinephrine{
-	pixel_x = 18;
-	pixel_y = 15
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dust,
 /obj/effect/spawner/random_spawners/blood_maybe,
@@ -54976,21 +54958,13 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/starboard)
 "gnO" = (
-/obj/merge_conflict_marker{
-	name = "Merge Conflict Marker: <<<"
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table/wood,
+/obj/item/storage/bag/dice{
+	pixel_y = 2
 	},
-/obj/merge_conflict_marker{
-	name = "Merge Conflict Marker: ---"
-	},
-/obj/structure/table,
-/obj/item/storage/bag/dice,
-/obj/item/deck/cards,
-/obj/machinery/atmospherics/unary/outlet_injector/on,
-/obj/merge_conflict_marker{
-	name = "Merge Conflict Marker: >>>"
-	},
-/turf/space,
-/area/space)
+/turf/simulated/floor/plating,
+/area/station/maintenance/starboard)
 "goo" = (
 /obj/structure/chair/office/light{
 	dir = 1;
@@ -62346,10 +62320,6 @@
 /turf/simulated/floor/plasteel/dark,
 /area/station/security/armory/secure)
 "iFe" = (
-/obj/item/reagent_containers/food/pill/epinephrine{
-	pixel_x = 8;
-	pixel_y = -4
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dust,
 /obj/structure/table/glass,
@@ -74521,15 +74491,6 @@
 "mAy" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dust,
-/obj/item/reagent_containers/food/pill/mannitol{
-	pixel_x = -4;
-	pixel_y = 4
-	},
-/obj/item/reagent_containers/food/pill/mannitol,
-/obj/item/reagent_containers/food/pill/mannitol{
-	pixel_x = 7;
-	pixel_y = 9
-	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "whitegreen"
@@ -101033,23 +100994,10 @@
 	},
 /area/station/security/permabrig)
 "uWh" = (
-/obj/merge_conflict_marker{
-	name = "Merge Conflict Marker: <<<"
-	},
 /obj/effect/spawner/window/reinforced/grilled,
 /obj/structure/cable{
 	d2 = 2;
 	icon_state = "0-2"
-	},
-/obj/merge_conflict_marker{
-	name = "Merge Conflict Marker: ---"
-	},
-/obj/structure/table/wood,
-/obj/item/storage/bag/dice{
-	pixel_y = 2
-	},
-/obj/merge_conflict_marker{
-	name = "Merge Conflict Marker: >>>"
 	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/starboard)
@@ -105135,18 +105083,6 @@
 /turf/simulated/floor/plasteel,
 /area/station/engineering/control)
 "woQ" = (
-/obj/item/reagent_containers/food/pill/patch/nicotine{
-	pixel_x = 4;
-	pixel_y = 6
-	},
-/obj/item/reagent_containers/food/pill/patch/nicotine{
-	pixel_x = 4;
-	pixel_y = -6
-	},
-/obj/item/reagent_containers/food/pill/patch/nicotine{
-	pixel_x = -8;
-	pixel_y = 8
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dust,
 /obj/effect/spawner/random_spawners/blood_maybe,
@@ -107018,10 +106954,6 @@
 	},
 /area/station/maintenance/fore2)
 "wWd" = (
-/obj/item/reagent_containers/food/pill/epinephrine{
-	pixel_x = -9;
-	pixel_y = -10
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dust,
 /obj/effect/spawner/random_spawners/blood_maybe,
@@ -109205,7 +109137,6 @@
 /area/station/maintenance/medmaint)
 "xGG" = (
 /obj/structure/table,
-/obj/item/storage/pill_bottle/dice,
 /obj/machinery/atmospherics/unary/outlet_injector/on,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/carpet,
@@ -156458,7 +156389,7 @@ aZu
 hQt
 nOe
 wUM
-fih
+tpP
 ocd
 wWd
 gRm
@@ -162709,7 +162640,7 @@ cJz
 aOM
 oNd
 gnH
-hhF
+gnO
 ltA
 wcI
 dXu
@@ -170362,7 +170293,7 @@ aaa
 aaa
 aaa
 aaa
-gnO
+aaa
 aaa
 aaa
 aaa
