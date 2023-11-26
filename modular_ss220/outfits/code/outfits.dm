@@ -127,3 +127,59 @@
 
 /obj/item/clothing/head/helmet/space/deathsquad/beret/field
 	icon_state = "beret_centcom_officer"
+
+
+//event outfits
+/datum/outfit/scavenger
+	name = "scavenger"
+
+	uniform = /obj/item/clothing/under/color/random
+	shoes = /obj/item/clothing/shoes/jackboots
+	suit = /obj/item/clothing/suit/jacket/random
+	head = /obj/item/clothing/head/soft/random
+	mask = /obj/item/clothing/mask/bandana/random
+	id = /obj/item/card/id
+	back = /obj/item/storage/backpack
+	backpack_contents = list(
+		/obj/item/storage/box/survival = 1,
+		/obj/item/flashlight = 1
+		/obj/item/reagent_containers/food/drinks/bottle/random_drink = 1
+	)
+
+
+
+/datum/outfit/scavenger/post_equip(mob/living/carbon/human/H, visualsOnly)
+	. = ..()
+	if(visualsOnly)
+		return
+	var/obj/item/card/id/I = H.wear_id
+	if(istype(I))
+		apply_to_card(I, H, list(ACCESS_MAINT_TUNNELS), "Scavenger")
+
+/obj/item/clothing/mask/bandana/random/Initialize(mapload)
+	. = ..()
+	var/obj/item/clothing/mask/bandana/C = pick(subtypesof(/obj/item/clothing/mask/bandana))
+	name = initial(C.name)
+	icon_state = initial(C.icon_state)
+	item_state = initial(C.item_state)
+	item_color = initial(C.item_color)
+
+/obj/item/clothing/suit/jacket/random/Initialize(mapload)
+	. = ..()
+	var/obj/item/clothing/suit/jacket/C = pick(subtypesof(/obj/item/clothing/suit/jacket))
+	name = initial(C.name)
+	icon_state = initial(C.icon_state)
+	item_state = initial(C.item_state)
+	item_color = initial(C.item_color)
+
+/obj/item/clothing/head/soft/random/Initialize(mapload)
+	. = ..()
+	var/obj/item/clothing/head/soft/C = pick(subtypesof(/obj/item/clothing/head/soft))
+	name = initial(C.name)
+	icon_state = initial(C.icon_state)
+	item_state = initial(C.item_state)
+	item_color = initial(C.item_color)
+
+
+
+
