@@ -367,10 +367,11 @@
 	layer = 4
 	},
 /obj/machinery/door_control/normal/north{
-	id = "dune_secret"
+	id = "dune_secret";
+	color = "red"
 	},
 /obj/structure/sign/nuke{
-	pixel_y = 30
+	pixel_y = 32
 	},
 /turf/simulated/floor/carpet,
 /area/awaymission/arrakis/bunker/bridge)
@@ -1899,6 +1900,9 @@
 /area/awaymission/arrakis/bunker/medbay)
 "afh" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/poster/contraband/lady{
+	pixel_y = 32
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "freezerfloor"
 	},
@@ -2722,7 +2726,9 @@
 	pixel_x = 28
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/item/soap/deluxe,
+/obj/item/soap/deluxe{
+	pixel_y = -4
+	},
 /obj/item/reagent_containers/glass/bucket{
 	pixel_y = 11;
 	pixel_x = -5
@@ -6838,6 +6844,9 @@
 "asc" = (
 /obj/effect/decal/cleanable/dust,
 /obj/machinery/light/directional/south,
+/obj/item/kirbyplants{
+	icon_state = "plant-2"
+	},
 /turf/simulated/floor/wood,
 /area/awaymission/arrakis/bunker/bridge)
 "ase" = (
@@ -14682,6 +14691,10 @@
 /area/awaymission/arrakis/bunker/kitchen)
 "aPH" = (
 /obj/structure/table/glass/reinforced,
+/obj/item/reagent_containers/food/drinks/mug/cap{
+	pixel_y = 4;
+	layer = 3.1
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -18591,6 +18604,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/item/kirbyplants,
 /turf/simulated/floor/wood,
 /area/awaymission/arrakis/bunker/bridge)
 "bBb" = (
@@ -18944,7 +18958,7 @@
 /area/awaymission/arrakis/cave/cave)
 "cgU" = (
 /obj/structure/flora/ash/rock/style_2,
-/turf/simulated/floor/engine/cult,
+/turf/simulated/floor/engine/cult/dune,
 /area/awaymission/arrakis/cave)
 "ckk" = (
 /obj/structure/flora/rock/pile,
@@ -19308,6 +19322,11 @@
 	icon_state = "dark"
 	},
 /area/awaymission/arrakis/bunker/brig)
+"cNA" = (
+/obj/effect/decal/cleanable/dust,
+/obj/item/kirbyplants/dead,
+/turf/simulated/floor/wood,
+/area/awaymission/arrakis/bunker/bridge)
 "cOp" = (
 /obj/structure/flora/rock/pile,
 /turf/simulated/floor/indestructible/dune_sand/smooth,
@@ -21844,7 +21863,7 @@
 /area/awaymission/arrakis/outside/outside5)
 "gls" = (
 /obj/structure/flora/rock/pile,
-/turf/simulated/floor/engine/cult,
+/turf/simulated/floor/engine/cult/dune,
 /area/awaymission/arrakis/cave)
 "gom" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
@@ -22919,7 +22938,7 @@
 	color = "#e0ac7b";
 	name = "ржавые перила"
 	},
-/turf/simulated/floor/engine/cult,
+/turf/simulated/floor/engine/cult/dune,
 /area/awaymission/arrakis/cave)
 "hCQ" = (
 /obj/effect/turf_decal/sand/plating,
@@ -23409,7 +23428,7 @@
 	},
 /area/awaymission/arrakis/bunker/rnd)
 "iqq" = (
-/turf/simulated/floor/chasm,
+/turf/simulated/floor/chasm/straight_down/dune,
 /area/awaymission/arrakis/cave)
 "iqS" = (
 /obj/machinery/flasher/portable,
@@ -23601,7 +23620,7 @@
 	color = "#e0ac7b";
 	name = "ржавые перила"
 	},
-/turf/simulated/floor/engine/cult,
+/turf/simulated/floor/engine/cult/dune,
 /area/awaymission/arrakis/cave)
 "iEj" = (
 /obj/effect/decal/cleanable/dirt,
@@ -24154,7 +24173,10 @@
 	},
 /area/awaymission/arrakis/outside/podhangars)
 "jvD" = (
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/indestructible/dune_sand{
+	icon = 'icons/turf/floors.dmi';
+	icon_state = "bcircuit"
+	},
 /area/awaymission/arrakis/cave)
 "jwn" = (
 /obj/effect/decal/cleanable/dust,
@@ -24263,7 +24285,7 @@
 /area/awaymission/arrakis/bunker/hallway)
 "jEl" = (
 /obj/structure/flora/rock/pile/icy,
-/turf/simulated/floor/engine/cult,
+/turf/simulated/floor/engine/cult/dune,
 /area/awaymission/arrakis/cave)
 "jHc" = (
 /obj/machinery/door/airlock/security/glass{
@@ -24310,7 +24332,7 @@
 	color = "#e0ac7b";
 	name = "ржавые перила"
 	},
-/turf/simulated/floor/engine/cult,
+/turf/simulated/floor/engine/cult/dune,
 /area/awaymission/arrakis/cave)
 "jIG" = (
 /obj/effect/decal/cleanable/dust,
@@ -25884,6 +25906,15 @@
 	},
 /turf/simulated/floor/wood/fancy/oak,
 /area/awaymission/arrakis/bunker/bedrooms)
+"mDX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/toilet/material/gold/nt{
+	dir = 4
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "freezerfloor"
+	},
+/area/awaymission/arrakis/bunker/bridge)
 "mEv" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 4
@@ -26162,7 +26193,7 @@
 	name = "ржавые перила";
 	color = "#e0ac7b"
 	},
-/turf/simulated/floor/engine/cult,
+/turf/simulated/floor/engine/cult/dune,
 /area/awaymission/arrakis/cave)
 "mSB" = (
 /obj/effect/turf_decal/sand/plating,
@@ -26347,7 +26378,7 @@
 /area/awaymission/arrakis/bunker/brig)
 "ncW" = (
 /obj/structure/flora/ash/rock/style_3,
-/turf/simulated/floor/engine/cult,
+/turf/simulated/floor/engine/cult/dune,
 /area/awaymission/arrakis/cave)
 "ndc" = (
 /obj/effect/decal/cleanable/dirt,
@@ -26600,7 +26631,7 @@
 /area/awaymission/arrakis/bunker/rnd)
 "nyG" = (
 /obj/structure/flora/ash/rock/style_4,
-/turf/simulated/floor/engine/cult,
+/turf/simulated/floor/engine/cult/dune,
 /area/awaymission/arrakis/cave)
 "nzN" = (
 /obj/effect/decal/cleanable/dust,
@@ -28242,6 +28273,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/item/kirbyplants,
 /turf/simulated/floor/wood,
 /area/awaymission/arrakis/bunker/bridge)
 "pBa" = (
@@ -28760,7 +28792,7 @@
 	name = "ржавые перила";
 	color = "#e0ac7b"
 	},
-/turf/simulated/floor/engine/cult,
+/turf/simulated/floor/engine/cult/dune,
 /area/awaymission/arrakis/cave)
 "qml" = (
 /obj/effect/decal/cleanable/dust,
@@ -28864,7 +28896,7 @@
 	color = "#e0ac7b";
 	name = "ржавые перила"
 	},
-/turf/simulated/floor/engine/cult,
+/turf/simulated/floor/engine/cult/dune,
 /area/awaymission/arrakis/cave)
 "qtA" = (
 /obj/machinery/door/airlock/research/glass{
@@ -28964,8 +28996,12 @@
 	icon_state = "grimy"
 	},
 /area/awaymission/arrakis/bunker/brig)
+"qBz" = (
+/obj/structure/sink/puddle/kolodec,
+/turf/simulated/floor/indestructible/dune_sand,
+/area/awaymission/arrakis/outside/mining_town)
 "qCe" = (
-/turf/simulated/floor/plating/lava/smooth,
+/turf/simulated/floor/plating/lava/smooth/dune,
 /area/awaymission/arrakis/cave)
 "qCf" = (
 /obj/machinery/conveyor/east,
@@ -29015,6 +29051,13 @@
 	icon_state = "white"
 	},
 /area/awaymission/arrakis/bunker/cryo)
+"qFd" = (
+/obj/effect/decal/cleanable/dust,
+/obj/item/kirbyplants{
+	icon_state = "plant-3"
+	},
+/turf/simulated/floor/wood,
+/area/awaymission/arrakis/bunker/bridge)
 "qGD" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/unary/vent_pump/on{
@@ -29820,7 +29863,7 @@
 	},
 /area/awaymission/arrakis/bunker/brig)
 "rLB" = (
-/turf/simulated/floor/engine/cult,
+/turf/simulated/floor/engine/cult/dune,
 /area/awaymission/arrakis/cave)
 "rMs" = (
 /obj/effect/turf_decal/siding/wood{
@@ -32320,7 +32363,10 @@
 	},
 /area/awaymission/arrakis/bunker/brig)
 "vOh" = (
-/turf/simulated/floor/redgrid,
+/turf/simulated/floor/indestructible/dune_sand{
+	icon = 'icons/turf/floors.dmi';
+	icon_state = "rcircuit"
+	},
 /area/awaymission/arrakis/cave)
 "vPF" = (
 /obj/effect/decal/cleanable/dirt,
@@ -32514,7 +32560,7 @@
 /area/awaymission/arrakis/bunker)
 "vXn" = (
 /obj/structure/flora/ash/rock/style_random,
-/turf/simulated/floor/engine/cult,
+/turf/simulated/floor/engine/cult/dune,
 /area/awaymission/arrakis/cave)
 "vYh" = (
 /obj/machinery/door/airlock/security/glass{
@@ -33572,7 +33618,7 @@
 /area/awaymission/arrakis/cave)
 "xKr" = (
 /obj/structure/flora/rock,
-/turf/simulated/floor/engine/cult,
+/turf/simulated/floor/engine/cult/dune,
 /area/awaymission/arrakis/cave)
 "xMp" = (
 /obj/effect/decal/cleanable/dirt,
@@ -40843,7 +40889,7 @@ ajI
 apx
 aVh
 aLo
-afh
+mDX
 aLo
 aSt
 anD
@@ -43161,7 +43207,7 @@ aHF
 aHF
 aqt
 pAF
-aPy
+qFd
 amB
 ayO
 ayO
@@ -43675,7 +43721,7 @@ anl
 anl
 aqt
 pAF
-aPy
+cNA
 amB
 ayO
 ayO
@@ -43736,7 +43782,7 @@ aIg
 aIg
 aIg
 aIg
-aIg
+qBz
 aIg
 aIg
 aYs

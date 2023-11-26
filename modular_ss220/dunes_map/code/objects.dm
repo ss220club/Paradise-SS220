@@ -62,3 +62,18 @@
 				continue
 			to_chat(H, "<span class='warning'>Как же воняет...</span>")
 			H.fakevomit()
+
+/obj/structure/sink/kolodec
+	name = "\improper колодец"
+	desc = "Главное не упасть..."
+	icon = 'modular_ss220/dunes_map/icons/kolodec.dmi'
+	icon_state = "kolodec"
+	density = TRUE
+	layer = ABOVE_ALL_MOB_LAYER
+
+/obj/structure/sink/kolodec/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/largetransparency)
+
+/obj/structure/sink/kolodec/MouseDrop_T(atom/movable/AM)
+	. = ..()
