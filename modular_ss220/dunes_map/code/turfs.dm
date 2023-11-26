@@ -153,3 +153,17 @@
 /turf/simulated/floor/chasm/straight_down/dune
 	icon = 'modular_ss220/dunes_map/icons/chasm.dmi'
 	temperature = DUNE_TEMPERATURE
+
+/turf/simulated/floor/plating/lava/smooth/dune
+	icon = 'modular_ss220/dunes_map/icons/lava.dmi'
+	planetary_atmos = TRUE
+	temperature = DUNE_TEMPERATURE
+
+/turf/simulated/floor/engine/cult/dune
+	icon_state = "cult"
+	temperature = DUNE_TEMPERATURE
+	planetary_atmos = TRUE
+
+/turf/simulated/floor/indestructible/dune
+	temperature = DUNE_TEMPERATURE
+	planetary_atmos = TRUE
