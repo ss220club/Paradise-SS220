@@ -70,10 +70,33 @@
 	icon_state = "kolodec"
 	density = TRUE
 	layer = ABOVE_ALL_MOB_LAYER
+	var/drop_x = 1
+	var/drop_y = 1
+	var/drop_z = -1
 
 /obj/structure/sink/kolodec/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/largetransparency)
 
 /obj/structure/sink/kolodec/MouseDrop_T(atom/movable/AM)
-	. = ..()
+	. = 0
+	if(!do_after(AM, 50 SECONDS))
+		return
+	var/thing_to_check = src
+	if(AM)
+		thing_to_check = list(AM)
+	for(var/thing in thing_to_check)
+		. = 1
+		INVOKE_ASYNC(src, PROC_REF(drop), thing)
+
+/obj/structure/sink/kolodec/proc/drop(atom/movable/AM)
+	//Make sure the item is still there after our sleep
+	var/turf/T = locate(drop_x, drop_y, drop_z)
+	if(T)
+		AM.visible_message("<span class='boldwarning'>[AM] falls into [src]!</span>", "<span class='userdanger'>GAH! Ah... where are you?</span>")
+		T.visible_message("<span class='boldwarning'>[AM] falls from above!</span>")
+		AM.forceMove(T)
+		if(isliving(AM))
+			var/mob/living/L = AM
+			L.Weaken(10 SECONDS)
+			L.adjustBruteLoss(30)
