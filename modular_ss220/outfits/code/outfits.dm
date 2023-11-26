@@ -142,9 +142,8 @@
 	back = /obj/item/storage/backpack
 	backpack_contents = list(
 		/obj/item/storage/box/survival = 1,
-		/obj/item/flashlight = 1
-		/obj/item/reagent_containers/food/drinks/bottle/random_drink = 1
-	)
+		/obj/item/flashlight = 1,
+		/obj/item/reagent_containers/food/drinks/bottle/random_drink = 1)
 
 
 
