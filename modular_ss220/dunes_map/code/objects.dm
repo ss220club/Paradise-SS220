@@ -80,8 +80,9 @@
 
 /obj/structure/sink/kolodec/MouseDrop_T(atom/movable/AM)
 	. = 0
-	if(!do_after(AM, 50 SECONDS))
+	if(!do_after(AM, 1 SECONDS, target = src))
 		return
+	AM.forceMove(src)
 	var/thing_to_check = src
 	if(AM)
 		thing_to_check = list(AM)
@@ -90,13 +91,35 @@
 		INVOKE_ASYNC(src, PROC_REF(drop), thing)
 
 /obj/structure/sink/kolodec/proc/drop(atom/movable/AM)
+	if(iscarbon(AM))
+		playsound(AM.loc, 'modular_ss220/aesthetics_sounds/sound/wilhelm_scream.ogg', 50)
+
+	if(!AM || QDELETED(AM))
+		return
+	AM.visible_message("<span class='boldwarning'>[AM] falls into [src]!</span>", "<span class='userdanger'>You stumble and stare into an abyss before you. It stares back, and you fall \
+	into the enveloping dark.</span>")
+	if(isliving(AM))
+		var/mob/living/L = AM
+		L.notransform = TRUE
+		L.Weaken(20 SECONDS)
+	animate(AM, transform = matrix() - matrix(), alpha = 0, color = rgb(0, 0, 0), time = 10)
+	for(var/i in 1 to 5)
+		//Make sure the item is still there after our sleep
+		if(!AM || QDELETED(AM))
+			return
+		AM.pixel_y--
+		sleep(2)
+
 	//Make sure the item is still there after our sleep
-	var/turf/T = locate(drop_x, drop_y, drop_z)
-	if(T)
-		AM.visible_message("<span class='boldwarning'>[AM] falls into [src]!</span>", "<span class='userdanger'>GAH! Ah... where are you?</span>")
-		T.visible_message("<span class='boldwarning'>[AM] falls from above!</span>")
-		AM.forceMove(T)
-		if(isliving(AM))
-			var/mob/living/L = AM
-			L.Weaken(10 SECONDS)
-			L.adjustBruteLoss(30)
+	if(!AM || QDELETED(AM))
+		return
+
+	if(isliving(AM))
+		var/mob/living/fallen_mob = AM
+		fallen_mob.notransform = FALSE
+		if(fallen_mob.stat != DEAD)
+			fallen_mob.adjustBruteLoss(500) //crunch from long fall, want it to be like legion in damage
+		return
+	for(var/mob/M in AM.contents)
+		M.forceMove(src)
+	qdel(AM)

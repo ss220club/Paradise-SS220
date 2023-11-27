@@ -619,17 +619,6 @@
 	can_rotate = 0
 	resistance_flags = UNACIDABLE
 
-/obj/structure/sink/puddle/attack_hand(mob/M as mob)
-	icon_state = "puddle-splash"
-	..()
-	icon_state = "puddle"
-
-/obj/structure/sink/puddle/attackby(obj/item/O as obj, mob/user as mob, params)
-	icon_state = "puddle-splash"
-	..()
-	icon_state = "puddle"
-
-
 //////////////////////////////////
 //		Bathroom Fixture Items	//
 //////////////////////////////////

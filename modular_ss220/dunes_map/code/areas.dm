@@ -88,7 +88,7 @@
 	name = "\improper Пустыня - Пещера"
 
 /area/awaymission/arrakis/cave/cave1
-	name = "\improper Пустыня - Пещера"
+	name = "\improper Пустыня - Здание"
 
 /area/awaymission/arrakis/bunker
 	name = "\improper Пустыня - Вход в бункер"

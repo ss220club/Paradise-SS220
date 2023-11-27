@@ -501,6 +501,9 @@
 /obj/machinery/power/apc/empty_charge
 	start_charge = 0
 
+/obj/machinery/power/apc/empty_charge/south
+	pixel_y = -24
+
 /obj/machinery/power/apc/empty_charge/north
 	pixel_y = 24
 	dir = 1
