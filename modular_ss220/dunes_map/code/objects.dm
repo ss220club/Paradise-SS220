@@ -82,7 +82,7 @@
 	. = 0
 	if(!do_after(AM, 1 SECONDS, target = src))
 		return
-	AM.forceMove(src)
+	AM.forceMove(src.loc)
 	var/thing_to_check = src
 	if(AM)
 		thing_to_check = list(AM)
