@@ -90,7 +90,7 @@
 
 /obj/item/clothing/accessory/cloak/nanotrasen_representative
 	name = "nanotrasen representative's cloak"
-	desc = "Worn by a NanoTrasen representative. A faint whisper of denunciation can be heard from under the cloak."
+	desc = "Worn by a Nanotrasen representative. A faint whisper of denunciation can be heard from under the cloak."
 	icon = 'modular_ss220/clothing/icons/object/cloaks.dmi'
 	icon_state = "ntrcloak"
 	icon_override = 'modular_ss220/clothing/icons/mob/cloaks.dmi'
