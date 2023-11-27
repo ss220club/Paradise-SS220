@@ -68,10 +68,7 @@
 	src.interface = interface
 
 	if(title)
-		if(findtext_char(title, regex(@"[А-Яа-я]")))
-			src.title = capitalize(sanitize(title, list("\proper"="", "\improper"="")))
-		else
-			src.title = sanitize(title)
+		src.title = sanitize(title)
 	if(width)
 		src.width = width
 	if(height)
