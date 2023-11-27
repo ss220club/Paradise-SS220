@@ -715,6 +715,9 @@
 /obj/structure/chair/office{
 	dir = 1
 	},
+/obj/effect/mapping_helpers/airlock/polarized{
+	id = "iaa"
+	},
 /turf/simulated/floor/plasteel/grimy,
 /area/station/security/detective)
 "afJ" = (
@@ -17445,10 +17448,10 @@
 /obj/effect/mapping_helpers/airlock/access/any/security/doors,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/multi_tile/security/glass,
 /obj/effect/mapping_helpers/airlock/polarized{
 	id = "cellprivacy"
 	},
-/obj/machinery/door/airlock/multi_tile/security/glass,
 /turf/simulated/floor/plasteel/dark,
 /area/station/security/processing)
 "bxK" = (
@@ -21414,6 +21417,9 @@
 	d1 = 2;
 	d2 = 8;
 	icon_state = "2-8"
+	},
+/obj/effect/mapping_helpers/airlock/polarized{
+	id = "iaa"
 	},
 /turf/simulated/floor/plasteel/grimy,
 /area/station/security/detective)
@@ -52778,6 +52784,9 @@
 /area/station/security/prison/cell_block/A)
 "fDB" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/effect/mapping_helpers/airlock/polarized{
+	id = "iaa"
+	},
 /turf/simulated/floor/plasteel/grimy,
 /area/station/security/detective)
 "fDM" = (
@@ -77010,7 +77019,9 @@
 /turf/simulated/wall/r_wall,
 /area/station/security/permabrig)
 "nra" = (
-/obj/machinery/door/airlock/public/glass,
+/obj/machinery/door/airlock/public/glass{
+	name = "Holodeck Door"
+	},
 /turf/simulated/floor/plasteel,
 /area/station/public/fitness)
 "nri" = (
@@ -81324,7 +81335,9 @@
 /turf/simulated/floor/plasteel/dark,
 /area/station/hallway/primary/starboard)
 "oHG" = (
-/obj/machinery/door/airlock/public/glass,
+/obj/machinery/door/airlock/public/glass{
+	name = "Holodeck Door"
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/public/fitness)
 "oHK" = (
@@ -88265,7 +88278,9 @@
 	},
 /area/station/security/checkpoint/south)
 "qSo" = (
-/obj/machinery/door/airlock/public/glass,
+/obj/machinery/door/airlock/public/glass{
+	name = "Holodeck Door"
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/public/locker)
 "qSp" = (
@@ -100088,9 +100103,9 @@
 /area/station/maintenance/medmaint)
 "uKC" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/multi_tile/supply,
 /obj/effect/mapping_helpers/airlock/access/all/supply/general,
 /obj/effect/mapping_helpers/airlock/autoname,
+/obj/machinery/door/airlock/multi_tile/supply/glass,
 /turf/simulated/floor/plasteel,
 /area/station/supply/office)
 "uKF" = (
@@ -100254,7 +100269,9 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/door/airlock/public,
+/obj/machinery/door/airlock/public/glass{
+	name = "Holodeck Control Room"
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/public/fitness)
 "uMS" = (
