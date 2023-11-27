@@ -982,7 +982,7 @@
 	icon_state = "Cola_Machine"
 	icon_lightmask = "Cola_Machine"
 	icon_panel = "thin_vendor"
-	slogan_list = list("Роб+аст с+офтдринкс: крепче, чем тулбоксом по голове!")
+	slogan_list = list("Робаст Софтдринкс: крепче, чем тулбоксом по голове!")
 	ads_list = list("Освежает!",
 					"Надеюсь, вас одолела жажда!",
 					"Продано больше миллиона бутылок!",
