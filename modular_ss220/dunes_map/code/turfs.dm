@@ -116,6 +116,7 @@
 	smoothing_groups = null
 
 /turf/simulated/floor/indestructible/dune_sand/cold
+	color = "#E6E6E6"
 	temperature = T20C
 	baseturf = /turf/simulated/floor/indestructible/dune_sand/dug/cold
 
@@ -167,3 +168,5 @@
 /turf/simulated/floor/indestructible/dune
 	temperature = DUNE_TEMPERATURE
 	planetary_atmos = TRUE
+
+#undef DUNE_TEMPERATURE
