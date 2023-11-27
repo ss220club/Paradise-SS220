@@ -9,6 +9,7 @@
 /obj/item/clothing/suit/mantle/armor/captain_black/Initialize(mapload)
 	. = ..()
 	desc = "Носится верховным лидером станции [station_name()]."
+
 /obj/item/clothing/accessory/cloak
 	name = "grey cloak"
 	desc = "It's a cloak that can be worn around your neck in a pretty dull color."
@@ -88,7 +89,7 @@
 	item_state = "hopcloak"
 
 /obj/item/clothing/accessory/cloak/nanotrasen_representative
-	name = "NanoTrasen Representative's cloak"
+	name = "nanotrasen representative's cloak"
 	desc = "Worn by a NanoTrasen representative. A faint whisper of denunciation can be heard from under the cloak."
 	icon = 'modular_ss220/clothing/icons/object/cloaks.dmi'
 	icon_state = "ntrcloak"
@@ -96,7 +97,7 @@
 	item_state = "htrcloak"
 
 /obj/item/clothing/accessory/cloak/blueshield
-	name = "Blueshield's cloak"
+	name = "blueshield's cloak"
 	desc = "Worn by a Blueshield officer, that faithfully defends its goals."
 	icon = 'modular_ss220/clothing/icons/object/cloaks.dmi'
 	icon_state = "blueshieldcloak"
