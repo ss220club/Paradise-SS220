@@ -1,15 +1,15 @@
 /datum/job/scientist/New()
 	. = ..()
-	alt_titles |= get_all_science_novice_tittles()
+	alt_titles |= get_all_science_novice_titles()
 
 /datum/station_department/science/New()
 	. = ..()
-	department_roles |= get_all_science_novice_tittles()
+	department_roles |= get_all_science_novice_titles()
 
 /datum/outfit/job/scientist/pre_equip(mob/living/carbon/human/H, visualsOnly)
 	. = ..()
 	if(H.mind && H.mind.role_alt_title)
-		if(H.mind.role_alt_title in get_all_science_novice_tittles())
+		if(H.mind.role_alt_title in get_all_science_novice_titles())
 			uniform = /obj/item/clothing/under/rank/scientist/student
 			if(H.gender == FEMALE)
 				uniform = /obj/item/clothing/under/rank/scientist/student/skirt
@@ -20,3 +20,8 @@
 				uniform = /obj/item/clothing/under/rank/scientist/student/assistant
 				if(H.gender == FEMALE)
 					uniform = /obj/item/clothing/under/rank/scientist/student/assistant/skirt
+
+// Identification jobs for console
+/datum/job/scientist/student
+	title = "Student Scientist"
+	hidden_from_job_prefs = TRUE
