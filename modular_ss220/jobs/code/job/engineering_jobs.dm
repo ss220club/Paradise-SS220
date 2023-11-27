@@ -1,8 +1,8 @@
 /datum/job/engineer/trainee
 	title = "Trainee Engineer"
 	flag = JOB_TRAINEE
-	total_positions = 2
-	spawn_positions = 4
+	total_positions = 0
+	spawn_positions = 3
 	//selection_color = "#dbd6c4"
 	alt_titles = list("Engineer Assistant", "Technical Assistant", "Engineer Student", "Technical Student", "Technical Trainee")
 	exp_map = list(EXP_TYPE_CREW = NOVICE_JOB_MINUTES)

@@ -1,8 +1,8 @@
 /datum/job/doctor/intern
 	title = "Intern"
 	flag = JOB_INTERN
-	total_positions = 2
-	spawn_positions = 4
+	total_positions = 0
+	spawn_positions = 3
 	//selection_color = "#ebe2e3"
 	alt_titles = list("Medical Assistant", "Student Medical Doctor")
 	exp_map = list(EXP_TYPE_CREW = NOVICE_JOB_MINUTES)

@@ -1,7 +1,7 @@
 /datum/job/scientist/student
 	title = "Student Scientist"
 	flag = JOB_STUDENT
-	total_positions = 2
+	total_positions = 0
 	spawn_positions = 4
 	//selection_color = "#ece5ec"
 	alt_titles = list("Scientist Assistant", "Scientist Pregraduate", "Scientist Graduate", "Scientist Postgraduate")
