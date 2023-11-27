@@ -234,8 +234,8 @@
 		SStgui.update_uis(src)
 		return
 
-	if(isrobot(user))
-		return
+	//if(isrobot(user)) // SS220 EDIT
+	// 	return
 
 	if((istype(I, /obj/item/reagent_containers/glass) || istype(I, /obj/item/reagent_containers/food/drinks)) && user.a_intent != INTENT_HARM)
 		if(panel_open)
@@ -294,14 +294,7 @@
 
 /obj/machinery/chem_dispenser/wrench_act(mob/user, obj/item/I)
 	. = TRUE
-	if(!I.use_tool(src, user, 4 SECONDS, volume = I.tool_volume))
-		return
-	if(anchored)
-		anchored = FALSE
-		WRENCH_UNANCHOR_MESSAGE
-	else if(!anchored)
-		anchored = TRUE
-		WRENCH_ANCHOR_MESSAGE
+	default_unfasten_wrench(user, I, 4 SECONDS)
 
 /obj/machinery/chem_dispenser/attack_ai(mob/user)
 	return attack_hand(user)
