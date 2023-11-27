@@ -860,7 +860,6 @@
 	melee_damage_lower = 15
 	melee_damage_upper = 21
 	attack_sound = 'modular_ss220/mobs/sound/creatures/zombie_attack.ogg'
-	gold_core_spawnable = HOSTILE_SPAWN
 	alert_cooldown_time = 8 SECONDS
 	alert_sounds = list(
 		'modular_ss220/mobs/sound/creatures/zombie_idle1.ogg',,
