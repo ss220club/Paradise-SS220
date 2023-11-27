@@ -60,7 +60,8 @@
 /turf/simulated/wall/r_wall,
 /area/station/maintenance/starboard2)
 "abV" = (
-/obj/machinery/economy/vending/security,
+/obj/structure/table/reinforced,
+/obj/machinery/recharger,
 /turf/simulated/floor/plasteel{
 	dir = 9;
 	icon_state = "darkred"
@@ -12046,8 +12047,14 @@
 	},
 /area/station/supply/office)
 "baZ" = (
-/obj/machinery/recharge_station,
 /obj/effect/turf_decal/delivery/hollow,
+/obj/structure/table/reinforced,
+/obj/item/eftpos{
+	pixel_x = 6
+	},
+/obj/item/eftpos{
+	pixel_x = -6
+	},
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "red"
@@ -21912,13 +21919,18 @@
 /turf/simulated/floor/wood/oak,
 /area/station/command/office/captain)
 "bNi" = (
-/obj/structure/table,
-/obj/item/flashlight/lamp{
-	pixel_y = 10
+/obj/effect/turf_decal/delivery/red/hollow,
+/obj/structure/chair{
+	dir = 4
 	},
-/obj/item/book/manual/wiki/security_space_law,
-/turf/simulated/floor/plasteel,
-/area/station/security/processing)
+/obj/effect/landmark/start/security_officer,
+/obj/structure/sign/poster/official/random/west,
+/obj/structure/table/reinforced,
+/turf/simulated/floor/plasteel{
+	dir = 8;
+	icon_state = "darkred"
+	},
+/area/station/security/main)
 "bNj" = (
 /obj/structure/chair/office/dark{
 	dir = 8
@@ -32265,12 +32277,7 @@
 	pixel_x = -8
 	},
 /obj/effect/turf_decal/delivery/hollow,
-/obj/item/eftpos{
-	pixel_x = -6
-	},
-/obj/item/eftpos{
-	pixel_x = 6
-	},
+/obj/item/book/manual/wiki/security_space_law,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "red"
@@ -71752,6 +71759,7 @@
 	c_tag = "Brig Briefing Room";
 	dir = 4
 	},
+/obj/structure/table/reinforced,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "darkred"
@@ -79469,8 +79477,8 @@
 /turf/simulated/floor/plasteel,
 /area/station/engineering/controlroom)
 "oav" = (
-/obj/machinery/economy/vending/security,
 /obj/effect/turf_decal/delivery/hollow,
+/obj/machinery/recharge_station,
 /turf/simulated/floor/plasteel{
 	dir = 5;
 	icon_state = "red"
@@ -158566,7 +158574,7 @@ nxy
 yhT
 cDq
 ifS
-bNi
+sFp
 nfX
 nfX
 bxJ
@@ -165001,7 +165009,7 @@ lhQ
 aWB
 bjR
 lDS
-bjR
+bNi
 iBF
 cIa
 smZ
