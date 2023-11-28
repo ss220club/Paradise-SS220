@@ -53,4 +53,4 @@ GLOBAL_LIST_INIT(card_skins_ss220, list(
 
 /obj/item/card/id/syndicate/Initialize()
 	. = ..()
-	appearances |= list("intern", "cadet",)
+	appearances |= GLOB.card_skins_ss220
