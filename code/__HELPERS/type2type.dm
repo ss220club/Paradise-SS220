@@ -209,6 +209,14 @@
 			return 'icons/mob/screen_white.dmi'
 		if("Midnight")
 			return 'icons/mob/screen_midnight.dmi'
+		if("Vaporwave")
+			return 'modular_ss220/aesthetics/skin/icons/screen_vaporwave.dmi'
+		if("Detective")
+			return 'modular_ss220/aesthetics/skin/icons/screen_detective.dmi'
+		if("Trasen")
+			return 'modular_ss220/aesthetics/skin/icons/screen_trasenknox.dmi'
+		if("Clockwork")
+			return 'modular_ss220/aesthetics/skin/icons/screen_clockwork.dmi'
 
 //colour formats
 /proc/rgb2hsl(red, green, blue)

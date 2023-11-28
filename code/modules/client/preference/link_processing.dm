@@ -950,6 +950,16 @@
 							UI_style = "Operative"
 						if("White")
 							UI_style = "White"
+						// SS220 ADDITION START
+						if("Vaporwave")
+							UI_style = "Vaporwave"
+						if("Detective")
+							UI_style = "Detective"
+						if("Trasen")
+							UI_style = "Trasen"
+						if("Clockwork")
+							UI_style = "Clockwork"
+						// SS220 ADDITION END
 
 					if(ishuman(usr)) //mid-round preference changes, for aesthetics
 						var/mob/living/carbon/human/H = usr
