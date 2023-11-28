@@ -217,6 +217,8 @@
 			return 'modular_ss220/aesthetics/skin/icons/screen_trasenknox.dmi'
 		if("Clockwork")
 			return 'modular_ss220/aesthetics/skin/icons/screen_clockwork.dmi'
+		else
+			return 'icons/mob/screen_midnight.dmi'
 
 //colour formats
 /proc/rgb2hsl(red, green, blue)
