@@ -42,10 +42,7 @@
 		if("Security Graduate")
 			head = /obj/item/clothing/head/beret/sec
 
-/datum/job/officer/New()
-	. = ..()
-	if(!length(alt_titles))	// изначально все списки у ОФФов пусты, но вдруг они захотят добавить свои варианты.
-		alt_titles = list()
+/datum/job/officer
 	alt_titles = list("Security Trainer", "Junior Security Officer")
 
 /datum/outfit/job/officer/pre_equip(mob/living/carbon/human/H, visualsOnly)

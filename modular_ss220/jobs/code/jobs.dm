@@ -72,5 +72,5 @@
 	return FALSE
 
 // OFFICIAL parameters: 17 / HOS, Bart / 400 / 700
-/datum/character_save/SetChoices(mob/user, limit = 18, list/splitJobs = list("Head of Security", "Bartender"), widthPerColumn = 400, height = 700)
+/datum/character_save/SetChoices(mob/user, limit = 18, list/splitJobs = list("Head of Security", "Bartender"), widthPerColumn = 430, height = 700)
 	. = ..()
