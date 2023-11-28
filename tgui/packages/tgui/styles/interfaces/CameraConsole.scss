@@ -2,7 +2,7 @@ $color-background: rgba(0, 0, 0, 0.33) !default;
 
 .CameraConsole__left {
   position: absolute;
-  top: 0;
+  top: 25px;
   bottom: 0;
   left: 0;
   width: 220px;
@@ -51,4 +51,13 @@ $color-background: rgba(0, 0, 0, 0.33) !default;
   .NoticeBox {
     margin-top: calc(50% - 24px);
   }
+}
+
+.CameraConsole__right_map {
+  position: relative;
+  display: flex;
+  flex: 1;
+  height: 90%;
+  flex-direction: column;
+  background-color: $color-background;
 }

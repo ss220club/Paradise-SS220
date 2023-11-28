@@ -32,6 +32,9 @@
 # - url_configuration
 # - voting_configuration
 
+# SS220 CONFIGS
+# - gateway_configuration
+# - tts_configuration
 
 ################################################################
 
@@ -144,7 +147,7 @@ ipc_screens = [
 # Enable/disable the database on a whole
 sql_enabled = false
 # SQL version. If this is a mismatch, round start will be delayed
-sql_version = 53
+sql_version = 532205
 # SQL server address. Can be an IP or DNS name
 sql_address = "127.0.0.1"
 # SQL server port
@@ -193,6 +196,8 @@ mentor_role_id = ""
 # Forward all ahelps to the discord? If disabled, ahelps are only forwarded if admins are AFK/Offline
 forward_all_ahelps = true
 
+
+new_round_waiting_role_id = ""
 
 ################################################################
 
@@ -303,7 +308,7 @@ disable_ambient_noise = false
 # Enable this if you want to disable the popup alert for people on the same CID
 disable_cid_warning_popup = false
 # Amount of loadout points people should get
-base_loadout_points = 5
+base_loadout_points = 4
 # Respawnability loss penalty if you cryo below this threshold (Minutes)
 cryo_penalty_period = 30
 # Enable twitter emojis in OOC?
@@ -563,6 +568,11 @@ overflow_server = "byond://yourdomain.com:1111"
 # List of ckeys who will not get rerouted to the overflow server
 overflow_whitelist = ["keyhere", "anotherhere"]
 
+# SS220 addition
+# Slot saving  time for client reconnection (in seconds)
+reservation_time = 10
+
+
 
 ################################################################
 
@@ -625,6 +635,14 @@ active_space_ruins = [
 	"_maps/map_files/RandomRuins/SpaceRuins/voyager.dmm",
 	"_maps/map_files/RandomRuins/SpaceRuins/wreckedcargoship.dmm",
 	"_maps/map_files/RandomRuins/SpaceRuins/abandoned_engi_sat.dmm",
+	"_maps/map_files220/RandomRuins/SpaceRuins/mechtransport_new.dmm",
+	"_maps/map_files220/RandomRuins/SpaceRuins/destroyed_infiltrator.dmm",
+	"_maps/map_files220/RandomRuins/SpaceRuins/transit_bar.dmm",
+	"_maps/map_files220/RandomRuins/SpaceRuins/infected_ship.dmm",
+	"_maps/map_files220/RandomRuins/SpaceRuins/convoy_ambush.dmm",
+	"_maps/map_files220/RandomRuins/SpaceRuins/voxraiders_1.dmm",
+	"_maps/map_files220/RandomRuins/SpaceRuins/spacehotel.dmm",
+
 
 	### The following ruins are based from past pre-spawned Zlevel content ###
 	"_maps/map_files/RandomRuins/SpaceRuins/abandonedtele.dmm",
@@ -642,7 +660,7 @@ active_space_ruins = [
 	# The following is the white ship ruin. Its force-spawned and is required to stop SSshuttle runtiming on startup
 	# Its also important incase a white-ship console is ever built midround
 	# DO NOT DISABLE THIS UNLESS YOU HAVE A GOOD REASON
-	"_maps/map_files/RandomRuins/SpaceRuins/whiteship.dmm",
+	"_maps/map_files220/RandomRuins/SpaceRuins/whiteship.dmm",
 
 	# The following is a force-spawned ruin consisting mostly of empty space with a shuttle docking port for the free golem shuttle
 	# Disabling it will lead to the free golem shuttle sometimes being stuck on lavaland.
@@ -687,9 +705,10 @@ active_lava_ruins = [
 	"_maps/map_files/RandomRuins/LavaRuins/lavaland_surface_survivalpod.dmm",
 	"_maps/map_files/RandomRuins/LavaRuins/lavaland_surface_ufo_crash.dmm",
 	"_maps/map_files/RandomRuins/LavaRuins/lavaland_surface_xeno_nest.dmm",
+	"_maps/map_files220/RandomRuins/LavaRuins/scp_facility.dmm",
 ]
 # Budget for lavaland ruins. A higher number means more will spawn
-lavaland_ruin_budget = 60
+lavaland_ruin_budget = 100
 
 
 ################################################################
@@ -822,3 +841,53 @@ map_vote_day_types = [
 ################################################################
 
 # Congratulations. You reached the end. heres a cookie.
+
+# And some SS220 configs ratge.
+
+################################################################
+
+
+[gateway_configuration]
+# This section contains everything relating to the ingame gateway (away mission) system.
+
+# Do we want to enable this at all? Disable for faster load times in testing
+enable_away_mission = false
+# Delay (in deciseconds) before the gateway is usable
+away_mission_delay = 0
+# List of all enabled away missions. Comment out an entry to disable it.
+enabled_away_missions = [
+	"_maps/map_files220/RandomZLevels/beach.dmm",
+	"_maps/map_files220/RandomZLevels/wildwest.dmm",
+	"_maps/map_files220/RandomZLevels/blackmarketpackers.dmm",
+	"_maps/map_files220/RandomZLevels/gate_lizard.dmm",
+	"_maps/map_files220/RandomZLevels/caves.dmm",
+	"_maps/map_files220/RandomZLevels/blackmesa.dmm",
+]
+
+
+################################################################
+
+[tts_configuration]
+# This section contains all settings relating to the TTS system
+
+# Is TTS enabled
+tts_enabled = false
+# If enabled, what token does it use for API
+tts_token_silero = ""
+# api url for your tts provider
+tts_api_url_silero = "http://you.tts.provider.com:port/endpoint"
+# Are the audio files saved after usage
+tts_cache_enabled = false
+# What CPU threads are used for ffmpeg. Example valid values: "0-3" or "1,4-7"
+ffmpeg_cpuaffinity = ""
+
+
+################################################################
+
+[ss220_misc_configuration]
+# This section contains everything that should be in general_configuration
+
+# Force discord verification
+force_discord_verification = false
+
+################################################################

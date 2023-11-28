@@ -326,7 +326,7 @@
 				if("metadata")
 					var/new_metadata = input(user, "Enter any information you'd like others to see, such as Roleplay-preferences:", "Game Preference" , active_character.metadata)  as message|null
 					if(new_metadata)
-						active_character.metadata = sanitize(copytext(new_metadata,1,MAX_MESSAGE_LEN))
+						active_character.metadata = sanitize(copytext_char(new_metadata,1,MAX_MESSAGE_LEN))	// SS220 EDIT - ORIGINAL: copytext
 
 				if("b_type")
 					var/new_b_type = tgui_input_list(user, "Choose your character's blood-type", "Character Preference", list( "A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"))
@@ -720,6 +720,16 @@
 						msg = html_encode(msg)
 
 						active_character.flavor_text = msg
+
+				// SS220 ADDITION START
+				if("tts_seed")
+					var/datum/ui_module/tts_seeds_explorer/explorer = explorer_users[user]
+					if(!explorer)
+						explorer = new()
+						explorer_users[user] = explorer
+					explorer.ui_interact(user)
+					return
+				// SS220 ADDITION END
 
 				if("limbs")
 					var/valid_limbs = list("Left Leg", "Right Leg", "Left Arm", "Right Arm", "Left Foot", "Right Foot", "Left Hand", "Right Hand")
@@ -1174,7 +1184,7 @@
 									"CLEAR" = "Center"
 								)
 
-								new_key = key_map[new_key] || new_key
+								new_key = convert_ru_key_to_en_key(key_map[new_key] || new_key) // SS220 EDIT
 
 								var/full_key
 								switch(new_key)

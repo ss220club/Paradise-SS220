@@ -157,6 +157,9 @@
 			ready = FALSE
 			return FALSE
 
+		if(!check_tts_seed_ready()) // SS220 ADDITION
+			return FALSE
+
 		ready = !ready
 		new_player_panel_proc()
 
@@ -228,6 +231,9 @@
 			return
 		if(!can_use_species(src, client.prefs.active_character.species))
 			to_chat(src, alert("You are currently not whitelisted to play [client.prefs.active_character.species]."))
+			return FALSE
+
+		if(!check_tts_seed_ready()) // SS220 ADDITION
 			return FALSE
 
 		LateChoices()
@@ -445,7 +451,7 @@
 	var/mins = (mills % 36000) / 600
 	var/hours = mills / 36000
 
-	var/dat = "<html><body><center>"
+	var/dat = "<html><meta charset='utf-8'><body><center>"
 	dat += "Round Duration: [round(hours)]h [round(mins)]m<br>"
 	dat += "<b>The station alert level is: [SSsecurity_level.get_colored_current_security_level_name()]</b><br>"
 
