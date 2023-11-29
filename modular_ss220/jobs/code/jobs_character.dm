@@ -29,15 +29,24 @@
 /datum/character_save/update_preview_icon(for_observer=0)
 	. = ..()
 
-	// qdel(preview_icon_front)
-	// qdel(preview_icon_side)
-	// qdel(preview_icon)
+	var/icon/clothes_s = null
+
+	if(clothes_s)
+		preview_icon.Blend(clothes_s, ICON_OVERLAY)
+
+	preview_icon_front = new(preview_icon, dir = SOUTH)
+	preview_icon_side = new(preview_icon, dir = WEST)
+
+	qdel(clothes_s)
+
+
+/datum/character_save/proc/get_clothes_icon()
+	var/icon/clothes_s = null
 
 	var/g = ""
 	if(gender == FEMALE)
 		g = "f"
 
-	var/icon/clothes_s = null
 
 	if(job_medsci_high)
 		switch(job_medsci_high)
@@ -66,6 +75,7 @@
 						clothes_s.Blend(new /icon('icons/mob/clothing/back.dmi', "satchel-med"), ICON_OVERLAY)
 					if(4)
 						clothes_s.Blend(new /icon('icons/mob/clothing/back.dmi', "satchel"), ICON_OVERLAY)
+
 
 	else if(job_engsec_high)
 		switch(job_engsec_high)
@@ -101,10 +111,18 @@
 					if(4)
 						clothes_s.Blend(new /icon('icons/mob/clothing/back.dmi', "satchel"), ICON_OVERLAY)
 
-	if(clothes_s)
-		preview_icon.Blend(clothes_s, ICON_OVERLAY)
 
-	preview_icon_front = new(preview_icon, dir = SOUTH)
-	preview_icon_side = new(preview_icon, dir = WEST)
+	else if(job_support_high)
+		switch(job_support_high)
+			if(JOB_BARBER)
+				clothes_s = new /icon('icons/obj/clothing/under/civilian.dmi', "barber")
+				clothes_s.Blend(new /icon('icons/mob/clothing/feet.dmi', "black"), ICON_UNDERLAY)
+				if(backbag == 2)
+					clothes_s.Blend(new /icon('icons/mob/clothing/back.dmi', "backpack"), ICON_OVERLAY)
+				else if(backbag == 3 || backbag == 4)
+					clothes_s.Blend(new /icon('icons/mob/clothing/back.dmi', "satchel"), ICON_OVERLAY)
 
-	qdel(clothes_s)
+
+
+
+	return clothes_s
