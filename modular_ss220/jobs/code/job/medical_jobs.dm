@@ -43,7 +43,7 @@
 			head = /obj/item/clothing/head/surgery/green/light
 			uniform = /obj/item/clothing/under/rank/medical/scrubs/green/light
 
-/datum/outfit/job/pre_equip(mob/living/carbon/human/H, visualsOnly)
+/datum/outfit/job/doctor/pre_equip(mob/living/carbon/human/H, visualsOnly)
 	. = ..()
 	if(H.gender == FEMALE)
 		uniform = /obj/item/clothing/under/rank/medical/doctor/skirt
