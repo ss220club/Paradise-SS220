@@ -123,3 +123,12 @@
 	for(var/mob/M in AM.contents)
 		M.forceMove(src)
 	qdel(AM)
+
+/obj/machinery/power/port_gen/pacman/wood
+	sheet_path = /obj/item/stack/sheet/wood
+	sheet_name = "Wooden Planks"
+	time_per_sheet = 25 // same power output, but a 50 sheet stack will last 2 hours at max safe power
+	max_sheets = 50
+	power_gen = 5000
+	max_power_output = 1
+	max_safe_output = 1

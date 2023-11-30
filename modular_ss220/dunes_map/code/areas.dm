@@ -89,6 +89,8 @@
 
 /area/awaymission/arrakis/cave/cave1
 	name = "\improper Пустыня - Здание"
+	requires_power = TRUE
+	always_unpowered = FALSE
 
 /area/awaymission/arrakis/bunker
 	name = "\improper Пустыня - Вход в бункер"
