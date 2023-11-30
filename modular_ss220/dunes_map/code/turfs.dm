@@ -153,8 +153,10 @@
 	name = "dune rock"
 	color = "#D9742B"
 
-/turf/simulated/floor/chasm/straight_down/dune
+/turf/simulated/floor/chasm/straight_down/lava_land_surface/dune
 	icon = 'modular_ss220/dunes_map/icons/chasm.dmi'
+	oxygen = 21.8366
+	nitrogen = 82.1472
 	temperature = DUNE_TEMPERATURE
 
 /turf/simulated/floor/plating/lava/smooth/dune
