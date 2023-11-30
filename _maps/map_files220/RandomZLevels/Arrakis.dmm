@@ -18588,11 +18588,6 @@
 /obj/effect/mapping_helpers/light,
 /turf/simulated/floor/indestructible/dune_sand/smooth,
 /area/awaymission/arrakis/outside/outside2)
-"bsv" = (
-/obj/structure/table/wood/poker,
-/obj/item/deck/cards/black,
-/turf/simulated/floor/wood/fancy/oak,
-/area/awaymission/arrakis/cave/cave1)
 "bth" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
@@ -21746,6 +21741,11 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/arrakis/bunker/engie)
+"fnN" = (
+/obj/structure/table/wood/poker,
+/obj/item/deck/cards/black,
+/turf/simulated/floor/wood/fancy/oak,
+/area/awaymission/arrakis/cave/cave1)
 "fnS" = (
 /obj/effect/mapping_helpers/light,
 /turf/simulated/floor/indestructible/dune_sand/smooth,
@@ -25540,7 +25540,7 @@
 /area/awaymission/arrakis/cave/cave1)
 "jYe" = (
 /obj/structure/mineral_door/wood,
-/turf/simulated/wall/indestructible/wood,
+/turf/simulated/wall/mineral/wood/nonmetal,
 /area/awaymission/arrakis/cave/cave1)
 "jYh" = (
 /obj/effect/decal/cleanable/dirt,
@@ -25931,7 +25931,7 @@
 /area/awaymission/arrakis/bunker/brig)
 "kLC" = (
 /obj/effect/decal/cleanable/dust,
-/turf/simulated/wall/indestructible/wood,
+/turf/simulated/wall/mineral/wood/nonmetal,
 /area/awaymission/arrakis/cave/cave1)
 "kLT" = (
 /obj/effect/decal/cleanable/dust,
@@ -26693,6 +26693,16 @@
 	icon_state = "darkred"
 	},
 /area/awaymission/arrakis/bunker/brig)
+"lIH" = (
+/obj/structure/rack/skeletal_bar,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/cell_charger{
+	pixel_y = 6
+	},
+/turf/simulated/floor/brick{
+	temperature = 293.15
+	},
+/area/awaymission/arrakis/cave/cave1)
 "lIO" = (
 /obj/effect/turf_decal/sand/plating,
 /obj/structure/railing{
@@ -26777,6 +26787,11 @@
 	icon_state = "dark"
 	},
 /area/awaymission/arrakis/bunker/hydro)
+"lUe" = (
+/obj/structure/table/wood/poker,
+/obj/item/deck/cards/doublecards,
+/turf/simulated/floor/wood/fancy/oak,
+/area/awaymission/arrakis/cave/cave1)
 "lUD" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -29534,7 +29549,7 @@
 	},
 /area/awaymission/arrakis/cave/cave1)
 "paM" = (
-/turf/simulated/wall/indestructible/wood,
+/turf/simulated/wall/mineral/wood/nonmetal,
 /area/awaymission/arrakis/cave/cave1)
 "pbq" = (
 /obj/effect/decal/cleanable/dirt,
@@ -29672,16 +29687,6 @@
 	icon_state = "freezerfloor"
 	},
 /area/awaymission/arrakis/bunker/kitchen)
-"pjf" = (
-/obj/structure/rack/skeletal_bar,
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/cell_charger{
-	pixel_y = 6
-	},
-/turf/simulated/floor/brick{
-	temperature = 293.15
-	},
-/area/awaymission/arrakis/cave/cave1)
 "pnp" = (
 /obj/effect/decal/cleanable/dust,
 /obj/structure/disposalpipe/segment{
@@ -30860,12 +30865,6 @@
 /obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/engine,
 /area/awaymission/arrakis/outside/mining_storage_outpost)
-"qCh" = (
-/obj/item/reagent_containers/glass/bucket/wooden{
-	pixel_y = 3
-	},
-/turf/simulated/floor/indestructible/dune_sand/smooth,
-/area/awaymission/arrakis/outside/mining_town)
 "qCN" = (
 /obj/structure/extinguisher_cabinet/directional/west,
 /obj/structure/closet/crate/freezer,
@@ -35457,11 +35456,6 @@
 	},
 /turf/simulated/floor/wood/oak,
 /area/awaymission/arrakis/cave/cave1)
-"wEl" = (
-/obj/structure/table/wood/poker,
-/obj/item/deck/cards/doublecards,
-/turf/simulated/floor/wood/fancy/oak,
-/area/awaymission/arrakis/cave/cave1)
 "wFj" = (
 /obj/effect/decal/cleanable/dust,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -36267,6 +36261,12 @@
 "xMu" = (
 /obj/effect/mapping_helpers/light,
 /turf/simulated/floor/chasm/straight_down/dune,
+/area/awaymission/arrakis/outside/mining_town)
+"xMF" = (
+/obj/item/reagent_containers/glass/bucket/wooden{
+	pixel_y = 3
+	},
+/turf/simulated/floor/indestructible/dune_sand/smooth,
 /area/awaymission/arrakis/outside/mining_town)
 "xNN" = (
 /obj/structure/railing{
@@ -39249,7 +39249,7 @@ lQf
 lQf
 qbO
 paM
-qCh
+xMF
 aYs
 paM
 kyS
@@ -41030,7 +41030,7 @@ mLM
 fUg
 fWF
 cGD
-bsv
+fnN
 wOG
 cGD
 cGD
@@ -41288,7 +41288,7 @@ gsF
 pYM
 cGD
 rXv
-wEl
+lUe
 cGD
 cGD
 wwK
@@ -43096,7 +43096,7 @@ aYs
 oGI
 aIg
 aIg
-qCh
+xMF
 fWq
 xDS
 xDS
@@ -50324,7 +50324,7 @@ aIg
 aIg
 aYs
 aNv
-pjf
+lIH
 bBh
 mru
 aNv
