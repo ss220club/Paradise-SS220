@@ -56,7 +56,7 @@
 
 /obj/item/clothing/mask/gas/red_gas
 	name = "ПРС-1"
-	desc = "Модульный противогаз, предназначен в основном для совместного использования с имплантироваными кибер лёгкими."
+	desc = "Модульный противогаз с защитой глаз от погодных условий."
 	icon = 'modular_ss220/clothing/icons/object/masks.dmi'
 	icon_state = "red_gas"
 	icon_override = 'modular_ss220/clothing/icons/mob/mask.dmi'
