@@ -20,7 +20,7 @@
 	exp_map = list(EXP_TYPE_MEDICAL = 1200)
 	blacklisted_disabilities = list(DISABILITY_FLAG_BLIND, DISABILITY_FLAG_DEAF, DISABILITY_FLAG_MUTE, DISABILITY_FLAG_DIZZY)
 	outfit = /datum/outfit/job/cmo
-	important_information = "Эта роль требует, чтобы вы координировали работу отдела. От вас требуется знание Стандартных Рабочих Процедур (Медицинских), базовых должностных обязанностей, и действовать профессионально (ролеплей)."
+	important_information = "Эта роль требует, чтобы вы координировали работу отдела. От вас требуется знание Стандартных Рабочих Процедур (Медицинских), базовых должностных обязанностей и профессиональных действий."
 
 /datum/outfit/job/cmo
 	name = "Chief Medical Officer"

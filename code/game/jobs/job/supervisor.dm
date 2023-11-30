@@ -16,7 +16,7 @@
 	exp_map = list(EXP_TYPE_COMMAND = 1200)
 	blacklisted_disabilities = list(DISABILITY_FLAG_BLIND, DISABILITY_FLAG_DEAF, DISABILITY_FLAG_MUTE, DISABILITY_FLAG_DIZZY, DISABILITY_FLAG_NERVOUS, DISABILITY_FLAG_LISP)
 	outfit = /datum/outfit/job/captain
-	important_information = "Эта роль требует, чтобы вы координировали работу отделов. От вас требуется знание Стандартных Рабочих Процедур (Командования), базовых должностных обязанностей, и действовать профессионально (ролеплей)."
+	important_information = "Эта роль требует, чтобы вы координировали работу отделов. От вас требуется знание Стандартных Рабочих Процедур (Командования), базовых должностных обязанностей и профессиональных действий."
 
 /datum/job/captain/get_access()
 	return get_all_accesses()
@@ -84,7 +84,7 @@
 						ACCESS_CLOWN, ACCESS_MIME, ACCESS_HOP, ACCESS_RC_ANNOUNCE, ACCESS_KEYCARD_AUTH, ACCESS_EXPEDITION, ACCESS_WEAPONS, ACCESS_MINERAL_STOREROOM)
 	blacklisted_disabilities = list(DISABILITY_FLAG_BLIND, DISABILITY_FLAG_DEAF, DISABILITY_FLAG_MUTE, DISABILITY_FLAG_DIZZY , DISABILITY_FLAG_NERVOUS, DISABILITY_FLAG_LISP)
 	outfit = /datum/outfit/job/hop
-	important_information = "Эта роль требует, чтобы вы координировали работу отдела. От вас требуется знание Стандартных Рабочих Процедур (Сервис), базовых должностных обязанностей, и действовать профессионально (ролеплей)."
+	important_information = "Эта роль требует, чтобы вы координировали работу отдела. От вас требуется знание Стандартных Рабочих Процедур (Сервис), базовых должностных обязанностей и профессиональных действий."
 
 /datum/outfit/job/hop
 	name = "Head of Personnel"

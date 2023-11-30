@@ -116,7 +116,7 @@
 	blacklisted_disabilities = list(DISABILITY_FLAG_BLIND, DISABILITY_FLAG_DEAF, DISABILITY_FLAG_MUTE, DISABILITY_FLAG_DIZZY)
 	missing_limbs_allowed = FALSE
 	outfit = /datum/outfit/job/detective
-	important_information = "Отслеживайте, исследуйте и выглядите при этом круто."
+	important_information = "Расследуйте, исследуйте и выглядите при этом круто."
 
 /datum/outfit/job/detective
 	name = "Detective"
@@ -174,7 +174,7 @@
 	blacklisted_disabilities = list(DISABILITY_FLAG_BLIND, DISABILITY_FLAG_DEAF, DISABILITY_FLAG_MUTE, DISABILITY_FLAG_DIZZY)
 	missing_limbs_allowed = FALSE
 	outfit = /datum/outfit/job/officer
-	important_information = "Космический Закон - это закон, а не рекомендация."
+	important_information = "Космический Закон - это необходимость, а не рекомендация."
 
 /datum/outfit/job/officer
 	name = "Security Officer"
