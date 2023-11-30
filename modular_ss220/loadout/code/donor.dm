@@ -57,6 +57,7 @@
 	path = /obj/item/clothing/suit/hooded/vi_arcane
 	donator_tier = 3
 	cost = 2
+
 /datum/gear/donor/wallet
 	display_name = "Бумажник"
 	path = /obj/item/storage/wallet
