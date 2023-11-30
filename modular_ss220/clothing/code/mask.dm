@@ -53,6 +53,7 @@
 
 /datum/outfit/job/chef
 	mask = /obj/item/clothing/mask/fakemoustache/chef
+
 /obj/item/clothing/mask/gas/red_gas
 	name = "ПРС-1"
 	desc = "Модульный противогаз, предназначен в основном для совместного использования с имплантироваными кибер лёгкими."
