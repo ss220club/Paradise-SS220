@@ -142,10 +142,12 @@
 	temperature = T20C
 	baseturf = /turf/simulated/floor/indestructible/dune_sand/dug/cold
 
-/turf/simulated/floor/beach/water/desert_water
+/turf/simulated/floor/beach/away/water/desert_water
 	icon = 'modular_ss220/dunes_map/icons/desert.dmi'
+	icon_state = "water"
 	temperature = DUNE_TEMPERATURE
-	baseturf = /turf/simulated/floor/beach/water/desert_water
+	baseturf = /turf/simulated/floor/beach/away/water/desert_water
+	water_overlay_image = null
 
 /turf/simulated/wall/indestructible/rock/mineral/dune_rock
 	name = "dune rock"
