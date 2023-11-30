@@ -13411,7 +13411,16 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/fpmaint)
 "aXI" = (
+/obj/machinery/light/small/directional/west,
 /obj/structure/table/glass,
+/obj/item/reagent_containers/spray/pestspray{
+	pixel_x = -6;
+	pixel_y = 9
+	},
+/obj/item/reagent_containers/spray/plantbgone{
+	pixel_y = 4;
+	pixel_x = 4
+	},
 /turf/simulated/floor/plasteel,
 /area/station/hallway/secondary/garden)
 "aXL" = (
@@ -13888,9 +13897,9 @@
 	},
 /area/station/command/vault)
 "aZj" = (
-/obj/machinery/light/small/directional/west,
 /obj/structure/table/glass,
 /obj/item/cultivator,
+/obj/item/shovel/spade,
 /obj/item/hatchet,
 /obj/item/crowbar,
 /obj/item/plant_analyzer,
@@ -14989,7 +14998,13 @@
 /turf/simulated/floor/wood/oak,
 /area/station/service/clown)
 "bdu" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/table/glass,
+/obj/item/cultivator,
+/obj/item/shovel/spade,
+/obj/item/hatchet,
+/obj/item/crowbar,
+/obj/item/plant_analyzer,
+/obj/item/reagent_containers/glass/bucket,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "green"
@@ -15022,10 +15037,12 @@
 /area/station/hallway/primary/central/north)
 "bdx" = (
 /obj/structure/table/glass,
-/obj/item/reagent_containers/spray/plantbgone,
-/obj/item/reagent_containers/spray/pestspray,
-/obj/item/reagent_containers/glass/bottle/nutrient/ez,
-/obj/item/reagent_containers/glass/bottle/nutrient/rh,
+/obj/item/reagent_containers/glass/bottle/nutrient/ez{
+	pixel_x = 4
+	},
+/obj/item/reagent_containers/glass/bottle/nutrient/rh{
+	pixel_x = -4
+	},
 /obj/machinery/light/directional/east,
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -15902,13 +15919,8 @@
 	},
 /area/station/service/expedition)
 "bgM" = (
-/obj/structure/table/glass,
-/obj/item/hatchet,
-/obj/item/cultivator,
-/obj/item/crowbar,
-/obj/item/plant_analyzer,
-/obj/item/reagent_containers/glass/bucket,
 /obj/machinery/firealarm/directional/west,
+/obj/structure/reagent_dispensers/watertank,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "green"
