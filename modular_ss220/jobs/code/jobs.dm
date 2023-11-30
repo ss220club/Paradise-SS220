@@ -3,12 +3,14 @@
 	var/list/job_radio_dict = list()
 	for(var/i in (GLOB.medical_positions_ss220 + get_all_medical_alt_titles_ss220()))
 		job_radio_dict.Add(list("[i]" = "medradio"))
-	for(var/i in (GLOB.security_positions_ss220 + get_all_security_alt_titles_ss220()))
+	for(var/i in (GLOB.security_positions_ss220 + get_all_security_alt_titles_ss220() + GLOB.security_donor_jobs))
 		job_radio_dict.Add(list("[i]" = "secradio"))
 	for(var/i in (GLOB.engineering_positions_ss220 + get_all_engineering_alt_titles_ss220()))
 		job_radio_dict.Add(list("[i]" = "engradio"))
 	for(var/i in (GLOB.science_positions_ss220 + get_all_science_alt_titles_ss220()))
 		job_radio_dict.Add(list("[i]" = "scirradio"))
+	for(var/i in (GLOB.service_donor_jobs))
+		job_radio_dict.Add(list("[i]" = "srvradio"))
 
 	all_jobs |= job_radio_dict
 
@@ -64,10 +66,10 @@
 
 /datum/job/proc/check_hidden_from_job_prefs()
 	if(hidden_from_job_prefs)
-		for(var/job_title in GLOB.jobs_positions_ss220)
+		for(var/job_title in GLOB.all_jobs_ss220)
 			if(job_title in alt_titles)
 				return TRUE
-		if(title in GLOB.jobs_positions_ss220)
+		if(title in GLOB.all_jobs_ss220)
 			return TRUE
 	return FALSE
 

@@ -1,6 +1,6 @@
 /obj/machinery/computer/arcade/recruiter/Initialize(mapload)
 	. = ..()
-	jobs |= GLOB.jobs_positions_ss220 + get_all_alt_titles_ss220()
+	jobs |= GLOB.all_jobs_ss220 + get_all_alt_titles_ss220()
 	incorrect_jobs |= list(
 		"Medical Sasistant", "Shitcurity Cadet", "Traneer Enginer", "Assistant Captain", "Engineer Cadet",
 		"Traine Engener", "Intarn", "Entern", "Student Directar", "Head of Scientest", "Junior Codet"

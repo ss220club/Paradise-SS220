@@ -465,15 +465,22 @@ SUBSYSTEM_DEF(jobs)
 	if(!H)
 		return null
 
+	// // SS220 ADD - START - Pick donor jobs
+	// if(H.mind.role_alt_title in GLOB.all_donor_jobs)
+	// 	rank = H.mind.role_alt_title
+	// // SS220 ADD - START - Pick donor jobs
+
 	var/datum/job/job = GetJob(rank)
 
 	H.job = rank
+
+	// if(job) job.before_spawn(H, joined_late)	// SS220 ADD - Jobs relate module
 
 	if(!joined_late)
 		var/turf/T = null
 		var/obj/S = null
 		for(var/obj/effect/landmark/start/sloc in GLOB.landmarks_list)
-			if(sloc.name != rank && sloc.name != job.relate_job)	// SS220 EDIT - Novice Jobs - Jobs relate module
+			if(sloc.name != rank && sloc.name != job.relate_job)	// SS220 EDIT - Jobs relate module
 				continue
 			if(locate(/mob/living) in sloc.loc)
 				continue
