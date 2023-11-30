@@ -237,6 +237,7 @@
 	display_name = "Шарф с системой дыхания"
 	path = /obj/item/clothing/mask/breath/breathscarf
 	cost = 2
+
 /datum/gear/donor/red_gas
 	display_name = "ПРС-1"
 	path = /obj/item/clothing/mask/gas/red_gas
