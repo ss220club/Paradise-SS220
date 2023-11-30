@@ -1,13 +1,13 @@
 
-#define DEPARTMENT_ENGINEERING	"Engineering"
-#define DEPARTMENT_MEDICAL		"Medical"
-#define DEPARTMENT_SCIENCE		"Science"
-#define DEPARTMENT_SUPPLY		"Supply"
-#define DEPARTMENT_SERVICE		"Service"
-#define DEPARTMENT_SECURITY		"Security"
+#define DEPARTMENT_ENGINEERING	"инженерного"
+#define DEPARTMENT_MEDICAL		"медицинского"
+#define DEPARTMENT_SCIENCE		"научного"
+#define DEPARTMENT_SUPPLY		"снабженческого"
+#define DEPARTMENT_SERVICE		"сервисного"
+#define DEPARTMENT_SECURITY		"охранного"
 #define DEPARTMENT_ASSISTANT	"Assistant" // Does not have a corresponding bitflag
 #define DEPARTMENT_SILICON		"Silicon" // Does not have a corresponding bitflag
-#define DEPARTMENT_COMMAND		"Command"
+#define DEPARTMENT_COMMAND		"командного"
 
 #define DEP_FLAG_SUPPLY			(1<<0)
 #define DEP_FLAG_SERVICE		(1<<1)
