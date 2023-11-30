@@ -14,8 +14,8 @@ GLOBAL_LIST_INIT(security_positions_ss220, list(
 	"Security Cadet",
 ))
 
-GLOBAL_LIST_INIT(jobs_positions_ss220, (list() + (
-	medical_positions_ss220 + science_positions_ss220 + engineering_positions_ss220 + security_positions_ss220)))
+GLOBAL_LIST_INIT(all_jobs_ss220, (list() + (
+	medical_positions_ss220 + science_positions_ss220 + engineering_positions_ss220 + security_positions_ss220 + all_donor_jobs)))
 
 /proc/get_alt_titles(list/positions)
 	var/list/all_titles = list()
@@ -39,3 +39,4 @@ GLOBAL_LIST_INIT(jobs_positions_ss220, (list() + (
 
 /proc/get_all_alt_titles_ss220()
 	return get_all_medical_alt_titles_ss220() + get_all_security_alt_titles_ss220() + get_all_engineering_alt_titles_ss220() + get_all_science_alt_titles_ss220()
+

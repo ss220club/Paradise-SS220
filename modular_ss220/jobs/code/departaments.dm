@@ -12,4 +12,12 @@
 
 /datum/station_department/security/New()
 	. = ..()
-	department_roles |= GLOB.security_positions_ss220 + get_all_security_alt_titles_ss220()
+	department_roles |= GLOB.security_positions_ss220 + get_all_security_alt_titles_ss220() + GLOB.security_donor_jobs
+
+/datum/station_department/service/New()
+	. = ..()
+	department_roles |= GLOB.service_donor_jobs
+
+
+
+

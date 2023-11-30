@@ -1,7 +1,7 @@
 /mob/living/carbon/human/sec_hud_set_ID()
 	var/image/holder = hud_list[ID_HUD]
 	holder.icon = 'icons/mob/hud/sechud.dmi'
-	if(wear_id && (wear_id.get_job_name() in GLOB.jobs_positions_ss220))
+	if(wear_id && (wear_id.get_job_name() in GLOB.all_jobs_ss220))
 		holder.icon = 'modular_ss220/jobs/icons/hud.dmi'
 	. = ..()
 
@@ -9,7 +9,7 @@
 	var/assignmentName = get_ID_assignment(if_no_id = "Unknown")
 	var/rankName = get_ID_rank(if_no_id = "Unknown")
 
-	var/list/titles = GLOB.jobs_positions_ss220
+	var/list/titles = GLOB.all_jobs_ss220
 
 	if(assignmentName in titles) //Check if the job has a hud icon
 		return assignmentName

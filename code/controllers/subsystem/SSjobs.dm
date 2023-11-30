@@ -469,6 +469,11 @@ SUBSYSTEM_DEF(jobs)
 	if(!H)
 		return null
 
+	// // SS220 ADD - START - Pick donor jobs
+	// if(H.mind.role_alt_title in GLOB.all_donor_jobs)
+	// 	rank = H.mind.role_alt_title
+	// // SS220 ADD - START - Pick donor jobs
+
 	var/datum/job/job = GetJob(rank)
 
 	H.job = rank
