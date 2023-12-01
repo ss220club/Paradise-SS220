@@ -16,15 +16,13 @@
 // ====================================
 //			JOBCAT_SUPPORT
 // Начинаются с JOB_EXPLORER (1<<14),
-// берем чуть-чуть "больше" на случай если ОФФы что-то добавят еще.
+// Смещаем, если ОФФы добавляют что-то еще
 
-
-
-#define JOB_DONOR_TIER_1		(1<<21)
-#define JOB_DONOR_TIER_2		(1<<22)
-#define JOB_DONOR_TIER_3		(1<<23)
-#define JOB_DONOR_TIER_4		(1<<24)
-#define JOB_DONOR_TIER_5		(1<<25)
+#define JOB_DONOR_TIER_1		(1<<15)
+#define JOB_DONOR_TIER_2		(1<<16)
+#define JOB_DONOR_TIER_3		(1<<17)
+#define JOB_DONOR_TIER_4		(1<<18)
+#define JOB_DONOR_TIER_5		(1<<19)
 
 
 
