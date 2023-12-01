@@ -236,5 +236,5 @@
 
 /datum/gear/donor/breathscarf
 	display_name = "Шарф с системой дыхания"
-	path = /obj/item/clothing/mask/breath/breathscarf
+	path = /obj/item/clothing/mask/gas/breathscarf
 	cost = 2
