@@ -76,3 +76,32 @@
 // OFFICIAL parameters: 17 / HOS, Bart / 400 / 700
 /datum/character_save/SetChoices(mob/user, limit = 18, list/splitJobs = list("Head of Security", "Bartender"), widthPerColumn = 450, height = 700)
 	. = ..()
+
+// Делаем "обходку" для профессий выбранных через job.alt_titles (например DONOR)
+/datum/controller/subsystem/jobs/EquipRank(mob/living/carbon/human/H, rank, joined_late = 0) // Equip and put them in an area
+	if(!H)
+		return null
+
+	if(!H.mind.role_alt_title)
+		var/new_alt_title = get_random_alt_title(H.mind.assigned_role)
+		if(new_alt_title)
+			H.mind.role_alt_title = new_alt_title
+
+	if(H.mind.role_alt_title in GLOB.all_donor_jobs)
+		rank = H.mind.role_alt_title
+
+	. = ..(H, rank, joined_late)
+
+/datum/controller/subsystem/jobs/proc/get_random_alt_title(assigned_role)
+	switch(assigned_role)
+		if("Т1 должность")
+			return pick(GLOB.donor_tier_1_jobs)
+		if("Т2 должность")
+			return pick(GLOB.donor_tier_2_jobs)
+		if("Т3 должность")
+			return pick(GLOB.donor_tier_3_jobs)
+		if("Т4 должность")
+			return pick(GLOB.donor_tier_4_jobs)
+		if("Т5 должность")
+			return pick(GLOB.donor_tier_5_jobs)
+	return FALSE
