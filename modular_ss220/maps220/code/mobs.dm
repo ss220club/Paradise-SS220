@@ -664,7 +664,7 @@
 
 /mob/living/simple_animal/hostile/blackmesa/Aggro()
 	if(alert_sounds)
-		if(!(world.time > alert_cooldown_time))
+		if(world.time > alert_cooldown_time)
 			playsound(src, pick(alert_sounds), 70)
 			alert_cooldown_time = world.time + alert_cooldown
 //Humans
