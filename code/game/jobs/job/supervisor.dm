@@ -133,7 +133,7 @@
 						ACCESS_CLOWN, ACCESS_MIME, ACCESS_RC_ANNOUNCE, ACCESS_KEYCARD_AUTH, ACCESS_EXPEDITION, ACCESS_WEAPONS, ACCESS_NTREP)
 	blacklisted_disabilities = list(DISABILITY_FLAG_DEAF, DISABILITY_FLAG_MUTE, DISABILITY_FLAG_NERVOUS, DISABILITY_FLAG_LISP)
 	outfit = /datum/outfit/job/nanotrasenrep
-	important_information = "Эта роль требует, чтобы вы консультировали командование по стандартным рабочим процедурам, цепочке командования и отчитывались перед Центральным командованием по различным вопросам. От вас требуется действовать так, как подобает человеку, представляющему Nanotrasen."
+	important_information = "Эта роль требует, чтобы вы консультировали командование по Стандартным Рабочим Процедурам, цепочке командования и отчитывались перед Центральным командованием по различным вопросам. От вас требуется действовать так, как подобает человеку, представляющему Nanotrasen."
 
 /datum/outfit/job/nanotrasenrep
 	name = "Nanotrasen Representative"
@@ -224,7 +224,7 @@
 	minimal_access = list(ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_BRIG, ACCESS_COURT, ACCESS_MAINT_TUNNELS, ACCESS_LAWYER, ACCESS_MAGISTRATE, ACCESS_HEADS, ACCESS_RC_ANNOUNCE)
 	blacklisted_disabilities = list(DISABILITY_FLAG_DEAF, DISABILITY_FLAG_MUTE, DISABILITY_FLAG_NERVOUS, DISABILITY_FLAG_LISP)
 	outfit = /datum/outfit/job/judge
-	important_information = "Эта роль требует от вас курировать юридические вопросы и принимать важные решения о вынесении приговоров. От вас требуется обладать обширными знаниями в области космического закона и охранного СРП, действовать только в рамках закона, а не за его пределами."
+	important_information = "Эта роль требует от вас курировать юридические вопросы и принимать важные решения о вынесении приговоров. От вас требуется обладать обширными знаниями в области Космического Закона и охранного СРП, действовать только в рамках закона, а не за его пределами."
 
 /datum/outfit/job/judge
 	name = "Magistrate"
@@ -266,7 +266,7 @@
 	exp_map = list(EXP_TYPE_CREW = 600)
 	blacklisted_disabilities = list(DISABILITY_FLAG_DEAF, DISABILITY_FLAG_MUTE, DISABILITY_FLAG_NERVOUS, DISABILITY_FLAG_LISP)
 	outfit = /datum/outfit/job/lawyer
-	important_information = "Ваша работа заключается в решении вопросов, касающихся стандартных рабочих процедур. Вы не отвечаете за вопросы космического закона и не можете его отменять. Вы не являетесь адвокатом заключенных."
+	important_information = "Ваша работа заключается в решении вопросов, касающихся Стандартных Рабочих Процедур. Вы не отвечаете за вопросы Космического Закона и не можете его отменять. Вы не являетесь адвокатом заключенных."
 
 /datum/outfit/job/lawyer
 	name = "Internal Affairs Agent"
