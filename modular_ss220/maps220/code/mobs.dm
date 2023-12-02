@@ -687,8 +687,8 @@
 	speed = 0
 	stat_attack = UNCONSCIOUS
 	robust_searching = 1
-	maxHealth = 110
-	health = 110
+	maxHealth = 90
+	health = 90
 	harm_intent_damage = 5
 	melee_damage_lower = 10
 	melee_damage_upper = 15
@@ -747,8 +747,8 @@
 	turns_per_move = 5
 	speed = 0
 	robust_searching = 1
-	maxHealth = 80
-	health = 80
+	maxHealth = 70
+	health = 70
 	harm_intent_damage = 5
 	melee_damage_lower = 10
 	melee_damage_upper = 10
@@ -853,8 +853,8 @@
 	icon = 'modular_ss220/maps220/icons/simple_human.dmi'
 	icon_state = "zombie"
 	icon_living = "zombie"
-	maxHealth = 100
-	health = 100
+	maxHealth = 70
+	health = 70
 	mob_biotypes = list(MOB_ORGANIC, MOB_BEAST)
 	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
 	icon_dead = "zombie_dead"
@@ -889,8 +889,8 @@
 	desc = "About that brain I owed ya!"
 	icon_state = "security_zombie"
 	icon_living = "security_zombie"
-	maxHealth = 120 // Armor!
-	health = 120
+	maxHealth = 100 // Armor!
+	health = 100
 	loot = list(/obj/effect/gibspawner/human)
 
 /mob/living/simple_animal/hostile/blackmesa/xen/headcrab_zombie/hecu
@@ -898,8 +898,8 @@
 	desc = "MY. ASS. IS. DEAD."
 	icon_state = "hecu_zombie"
 	icon_living = "hecu_zombie"
-	maxHealth = 150 // More armor!
-	health = 150
+	maxHealth = 130 // More armor!
+	health = 130
 	loot = list(/obj/effect/gibspawner/human)
 
 /mob/living/simple_animal/hostile/blackmesa/xen/headcrab_zombie/hev
@@ -907,8 +907,8 @@
 	desc = "User death... surpassed."
 	icon_state = "hev_zombie"
 	icon_living = "hev_zombie"
-	maxHealth = 200
-	health = 200
+	maxHealth = 160
+	health = 160
 	alert_sounds = list(
 		'modular_ss220/aesthetics_sounds/sound/mobs/zombies/hzv1.ogg',
 		'modular_ss220/aesthetics_sounds/sound/mobs/zombies/hzv2.ogg',
@@ -1038,8 +1038,8 @@
 	ranged_message = "fires"
 	taunt_chance = 100
 	turns_per_move = 3
-	maxHealth = 100
-	health = 100
+	maxHealth = 80
+	health = 80
 	speed = 2
 	ranged = TRUE
 	dodging = TRUE
@@ -1077,8 +1077,8 @@
 	bound_height = 32
 	bound_width = 32
 	icon_dead = "bullsquid_dead"
-	maxHealth = 2500
-	health = 2500
+	maxHealth = 2000
+	health = 2000
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	universal_speak = TRUE
 	projectilesound = 'sound/weapons/lasercannonfire.ogg'
@@ -1120,11 +1120,11 @@
 	if(!(world.time > alert_cooldown_time))
 		alert_cooldown_time = world.time + alert_cooldown
 		switch(health)
-			if(0 to 999)
+			if(0 to 499)
 				playsound(src, pick(list('modular_ss220/aesthetics_sounds/sound/mobs/nihilanth/nihilanth_pain01.ogg', 'modular_ss220/aesthetics_sounds/sound/mobs/nihilanth/nihilanth_freeeemmaan01.ogg')), 100)
-			if(1000 to 1499)
+			if(500 to 999)
 				playsound(src, pick(list('modular_ss220/aesthetics_sounds/sound/mobs/nihilanth/nihilanth_youalldie01.ogg', 'modular_ss220/aesthetics_sounds/sound/mobs/nihilanth/nihilanth_foryouhewaits01.ogg')), 100)
-			if(1500 to 1999)
+			if(1000 to 1999)
 				playsound(src, pick(list('modular_ss220/aesthetics_sounds/sound/mobs/nihilanth/nihilanth_whathavedone01.ogg', 'modular_ss220/aesthetics_sounds/sound/mobs/nihilanth/nihilanth_deceiveyou01.ogg')), 100)
 			else
 				playsound(src, pick(list('modular_ss220/aesthetics_sounds/sound/mobs/nihilanth/nihilanth_thetruth01.ogg', 'modular_ss220/aesthetics_sounds/sound/mobs/nihilanth/nihilanth_iamthelast01.ogg')), 100)
