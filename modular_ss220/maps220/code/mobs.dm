@@ -662,6 +662,12 @@
 	var/alert_cooldown = 3 SECONDS
 	var/alert_cooldown_time
 
+
+/mob/living/simple_animal/hostile/blackmesa/Initialize(mapload)
+	. = ..()
+	add_language("Sol Common")
+	default_language = GLOB.all_languages["Sol Common"]
+
 /mob/living/simple_animal/hostile/blackmesa/Aggro()
 	if(alert_sounds)
 		if(world.time > alert_cooldown_time)
@@ -855,7 +861,7 @@
 	speak_chance = 1
 	speak_emote = list("growls")
 	speed = 1
-	move_to_delay = 3.5
+	move_to_delay = 3.8
 	emote_taunt = list("growls", "snarls", "grumbles")
 	taunt_chance = 100
 	melee_damage_lower = 15
@@ -877,7 +883,6 @@
 	icon_state = "scientist_zombie"
 	icon_living = "scientist_zombie"
 	loot = list(/obj/effect/gibspawner/human)
-	del_on_death = TRUE
 
 /mob/living/simple_animal/hostile/blackmesa/xen/headcrab_zombie/guard
 	name = "zombified guard"
@@ -887,7 +892,6 @@
 	maxHealth = 120 // Armor!
 	health = 120
 	loot = list(/obj/effect/gibspawner/human)
-	del_on_death = TRUE
 
 /mob/living/simple_animal/hostile/blackmesa/xen/headcrab_zombie/hecu
 	name = "zombified marine"
@@ -897,7 +901,6 @@
 	maxHealth = 150 // More armor!
 	health = 150
 	loot = list(/obj/effect/gibspawner/human)
-	del_on_death = TRUE
 
 /mob/living/simple_animal/hostile/blackmesa/xen/headcrab_zombie/hev
 	name = "zombified hazardous environment specialist"
@@ -922,7 +925,7 @@
 		'modular_ss220/aesthetics_sounds/sound/mobs/zombies/hzv13.ogg',
 		'modular_ss220/aesthetics_sounds/sound/mobs/zombies/hzv14.ogg',
 	)
-	del_on_death = TRUE
+
 
 //Bullsquid
 /mob/living/simple_animal/hostile/blackmesa/xen/bullsquid
@@ -946,6 +949,7 @@
 	melee_damage_lower = 15
 	melee_damage_upper = 15
 	ranged = TRUE
+	del_on_death = FALSE
 	retreat_distance = 5
 	minimum_distance = 5
 	dodging = TRUE
@@ -1000,6 +1004,7 @@
 	melee_damage_lower = 20
 	melee_damage_upper = 20
 	rapid_melee = 2
+	del_on_death = FALSE
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/monstermeat/xenomeat = 3)
 	attack_sound = 'sound/weapons/bite.ogg'
 	gold_core_spawnable = HOSTILE_SPAWN
@@ -1038,6 +1043,7 @@
 	speed = 2
 	ranged = TRUE
 	dodging = TRUE
+	del_on_death = FALSE
 	harm_intent_damage = 15
 	melee_damage_lower = 10
 	melee_damage_upper = 10
@@ -1087,7 +1093,6 @@
 	attacktext = "lathes"
 	attack_sound = 'sound/weapons/punch1.ogg'
 	status_flags = NONE
-	del_on_death = TRUE
 	wander = TRUE
 	loot = list(/obj/effect/gibspawner/xeno, /obj/item/stack/ore/bluespace_crystal/refined = 30, /obj/item/card/id/xen_key, /obj/item/gun/energy/wormhole_projector)
 	flying = TRUE
