@@ -854,7 +854,8 @@
 	icon_dead = "zombie_dead"
 	speak_chance = 1
 	speak_emote = list("growls")
-	speed = 1.8
+	speed = 1
+	move_to_delay = 3.5
 	emote_taunt = list("growls", "snarls", "grumbles")
 	taunt_chance = 100
 	melee_damage_lower = 15
