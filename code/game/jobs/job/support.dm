@@ -343,7 +343,7 @@
 	active = FALSE
 	background_icon_state = "bg_default"
 	UpdateButtonIcon()
-	to_chat(H, "<span class='notice'>Вы сосредоточились и теперь можете регулярно использовать оружие.</span>")
+	to_chat(H, "<span class='notice'>Вы сосредоточились и теперь можете эффективно пользоваться оружием.</span>")
 
 /datum/job/mime
 	title = "Mime"
