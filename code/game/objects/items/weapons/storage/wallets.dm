@@ -32,6 +32,7 @@
 	slot_flags = SLOT_FLAG_ID
 
 	var/obj/item/card/id/front_id = null
+	var/photo_overlay = "photo"		//edit ss220
 
 	// allows for clicking of stuff on our person/on the ground to put in the wallet, so easy to stick your ID in your wallet
 	use_to_pickup = TRUE
@@ -69,7 +70,7 @@
 		return
 	. += mutable_appearance(front_id.icon, front_id.icon_state)
 	. += front_id.overlays
-	. += mutable_appearance(icon, "wallet_overlay")
+	. += mutable_appearance(icon, "[icon_state]_overlay")		//edit ss220
 
 	// fuck yeah, ass photo in my wallet
 	var/obj/item/photo/photo = locate(/obj/item/photo) in contents
@@ -79,12 +80,12 @@
 	MA.pixel_x = 11
 	MA.pixel_y = 1
 	. += MA
-	. += mutable_appearance(icon, "photo_overlay")
+	. += mutable_appearance(icon, "[photo_overlay]_overlay")		//edit ss220
 
 /obj/item/storage/wallet/update_name(updates)
 	. = ..()
 	if(front_id)
-		name = "wallet displaying [front_id]"
+		name = "[name] displaying [front_id]"		//edit ss220
 	else
 		name = initial(name)
 
