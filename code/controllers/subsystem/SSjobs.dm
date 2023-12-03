@@ -636,7 +636,7 @@ SUBSYSTEM_DEF(jobs)
 		if(!department_account)
 			return
 
-		remembered_info += "Как руководитель отдела, вы имеете доступ к денежному счету вашего отдела через НаноБанк вашего КПК или банкоматы на станции<br>"
+		remembered_info += "<b>Как руководитель отдела, вы имеете доступ к денежному счету вашего отдела через НаноБанк вашего КПК или банкоматы на станции<br>"
 		remembered_info += "<b>Номер аккаунта [department.department_name] отдела:</b> #[department_account.account_number]<br>"
 		remembered_info += "<b>Пин-код аккаунта [department.department_name] отдела:</b> [department_account.account_pin]<br>"
 		remembered_info += "<b>Средства вашего отдела:</b> $[department_account.credit_balance]<br>"
