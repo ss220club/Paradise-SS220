@@ -4,7 +4,7 @@
 	department_flag = JOBCAT_ENGSEC
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "Официальными лицами Nanotrasen"
+	supervisors = "Официальными лицами Нанотрейзен"
 	department_head = list("Nanotrasen Navy Officer")
 	selection_color = "#ccccff"
 	req_admin_notify = 1
@@ -133,7 +133,7 @@
 						ACCESS_CLOWN, ACCESS_MIME, ACCESS_RC_ANNOUNCE, ACCESS_KEYCARD_AUTH, ACCESS_EXPEDITION, ACCESS_WEAPONS, ACCESS_NTREP)
 	blacklisted_disabilities = list(DISABILITY_FLAG_DEAF, DISABILITY_FLAG_MUTE, DISABILITY_FLAG_NERVOUS, DISABILITY_FLAG_LISP)
 	outfit = /datum/outfit/job/nanotrasenrep
-	important_information = "Эта роль требует, чтобы вы консультировали командование по Стандартным Рабочим Процедурам, цепочке командования и отчитывались перед Центральным командованием по различным вопросам. От вас требуется действовать так, как подобает человеку, представляющему Nanotrasen."
+	important_information = "Эта роль требует, чтобы вы консультировали командование по Стандартным Рабочим Процедурам, цепочке командования и отчитывались перед Центральным Командованием по различным вопросам. От вас требуется действовать так, как подобает лицу, представляющему Нанотрейзен."
 
 /datum/outfit/job/nanotrasenrep
 	name = "Nanotrasen Representative"
@@ -159,7 +159,7 @@
 	department_flag = JOBCAT_ENGSEC
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "представителем Nanotrasen"
+	supervisors = "представителем Нанотрейзен"
 	department_head = list("Captain")
 	selection_color = "#ddddff"
 	req_admin_notify = TRUE
@@ -207,7 +207,7 @@
 	department_flag = JOBCAT_ENGSEC
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "верховным судом Nanotrasen"
+	supervisors = "верховным судом Нанотрейзен"
 	department_head = list("Captain")
 	selection_color = "#ddddff"
 	req_admin_notify = TRUE
