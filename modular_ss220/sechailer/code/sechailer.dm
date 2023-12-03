@@ -8,7 +8,7 @@ GLOBAL_LIST_EMPTY(sechailers)
 	use_itemicon = FALSE
 
 /obj/item/clothing/mask/gas/sechailer
-	var/obj/item/radio/radio // For engineering alerts.
+	var/obj/item/radio/radio // For dispatch to work
 	var/dispatch_cooldown = 25 SECONDS
 	var/is_on_cooldown = FALSE
 	var/is_emped = FALSE
@@ -40,9 +40,9 @@ GLOBAL_LIST_EMPTY(sechailers)
 	radio.follow_target = src
 
 /obj/item/clothing/mask/gas/sechailer/proc/dispatch(mob/user)
-	var/area/A = get_location_name(src, TRUE) // get_location_name works better as affected says
+	var/area/A = get_location_name(src, TRUE) // get_location_name works better as Affected says
 	var/list/options = list()
-	// Just hardcoded for now!
+	// Just hardcoded for now (never will be updated, lol)
 	for(var/option in list(
 		"502 (Убийство)",
 		"101 (Сопротивление Аресту)",
@@ -55,19 +55,38 @@ GLOBAL_LIST_EMPTY(sechailers)
 
 	if(!message)
 		return
-	if(is_on_cooldown == TRUE && is_emped == FALSE) // If on cooldown
-		to_chat(user, span_notice("Ожидайте. Система оповещения перезаряжается, примерное время восстановления: [dispatch_cooldown / 10] секунд."))
-		return
-	if(is_on_cooldown == TRUE && is_emped == TRUE) // If emped
-		to_chat(user, span_notice("Ожидайте. Система оповещения в защитном режиме, примерное время восстановления: [dispatch_cooldown / 10] секунд."))
+	if(is_on_cooldown)
+		var/cooldown_info = "Ожидайте. Система оповещения "
+		if(is_emped)
+			cooldown_info += "в защитном режиме, "
+		else
+			cooldown_info += "перезаряжается, "
+		// Cooldown not updating realtime, and i don't want to rewrite it just for the sake of it
+		cooldown_info += "примерное время восстановления: [dispatch_cooldown / 10] секунд."
+		to_chat(user, span_notice(cooldown_info))
 		return
 
 	radio.autosay("Центр, Код [message], офицер [user] запрашивает помощь в [A].", "Система Оповещения", "Security", list(z))
 	is_on_cooldown = TRUE
 	addtimer(CALLBACK(src, PROC_REF(reboot)), dispatch_cooldown)
+	// This code if fucking hell, but it works as intended
 	for(var/atom/movable/hailer in GLOB.sechailers)
+		var/security_channel_found = FALSE
 		if(hailer.loc && ismob(hailer.loc))
-			playsound(hailer.loc, 'modular_ss220/sechailer/sound/dispatch_please_respond.ogg', 55, FALSE)
+			// Check if mob has a radio, then check if the radio has the right channels
+			for(var/obj/item/radio/my_radio in user.contents)
+				for(var/chan in 1 to length(my_radio.channels))
+					var/channel_name = my_radio.channels[chan]
+					if(channel_name == "Security")
+						security_channel_found = TRUE
+						break
+
+			if(security_channel_found)
+				playsound(hailer.loc, 'modular_ss220/sechailer/sound/dispatch_please_respond.ogg', 55, FALSE)
+				break
+			else
+				to_chat(user, span_warning("Внимание: Невозможно установить соединение с каналом службы безопасности, требуется подключение!"))
+				playsound(hailer.loc, 'modular_ss220/sechailer/sound/radio_static.ogg', 30, TRUE)
 
 /obj/item/clothing/mask/gas/sechailer/proc/reboot()
 	is_on_cooldown = FALSE
