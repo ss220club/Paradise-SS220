@@ -605,7 +605,7 @@ SUBSYSTEM_DEF(jobs)
 	H.mind.store_memory("<b>Ваш номер аккаунта:</b> #[account.account_number]<br><b>Ваш пин-код от аккаунта:</b> [account.account_pin]")
 	H.mind.set_initial_account(account)
 
-	to_chat(H, "<span class='boldnotice'>Как сотрудник Nanotrasen, вы будете получать зарплату в размере $[account.payday_amount] кредитов каждые 30 минут</span>")
+	to_chat(H, "<span class='boldnotice'>Как сотрудник Нанотрейзен, вы будете получать зарплату в размере $[account.payday_amount] кредитов каждые 30 минут</span>")
 	to_chat(H, "<span class='boldnotice'>Ваш номер аккаунта: [account.account_number], ваш пин-код от аккаунта: [account.account_pin]</span>")
 
 	if(!job) //if their job datum is null (looking at you ERTs...), we don't need to do anything past this point
