@@ -4,7 +4,7 @@
 	department_flag = JOBCAT_ENGSEC
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "Официальными лицами Nanotrasen"
+	supervisors = "Официальными лицами Нанотрейзен"
 	department_head = list("Nanotrasen Navy Officer")
 	selection_color = "#ccccff"
 	req_admin_notify = 1
