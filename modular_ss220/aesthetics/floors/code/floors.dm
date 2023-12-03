@@ -1,7 +1,13 @@
 /turf/simulated/floor
 	icon = 'modular_ss220/aesthetics/floors/icons/floors.dmi'
 
+/turf/simulated/floor/plasteel/dark
+	icon_state = "dark"
+
 // WOODEN FLOORS
+/turf/simulated/floor/wood
+	icon = 'modular_ss220/aesthetics/floors/icons/wooden.dmi'
+
 /turf/simulated/floor/wood/oak
 	icon_state = "wood-oak"
 	floor_tile = /obj/item/stack/tile/wood/oak
