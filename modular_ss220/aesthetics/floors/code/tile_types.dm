@@ -2,9 +2,6 @@
 	icon = 'modular_ss220/aesthetics/floors/icons/tiles.dmi'
 
 // WOOD
-/obj/item/stack/tile
-	icon = 'modular_ss220/aesthetics/floors/icons/tiles.dmi'
-
 /obj/item/stack/tile/wood/oak
 	name = "oak wood floor tiles"
 	singular_name = "oak wood floor tile"
