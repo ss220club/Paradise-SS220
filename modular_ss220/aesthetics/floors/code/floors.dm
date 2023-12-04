@@ -4,6 +4,9 @@
 /turf/simulated/floor/plasteel/dark
 	icon_state = "dark"
 
+/turf/simulated/floor/mech_bay_recharge_floor
+	icon = 'modular_ss220/aesthetics/floors/icons/floors.dmi'
+
 // WOODEN FLOORS
 /turf/simulated/floor/wood
 	icon = 'modular_ss220/aesthetics/floors/icons/wooden.dmi'
