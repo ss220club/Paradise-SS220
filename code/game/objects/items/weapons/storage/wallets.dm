@@ -84,7 +84,7 @@
 /obj/item/storage/wallet/update_name(updates)
 	. = ..()
 	if(front_id)
-		name = "[name] displaying [front_id]"		// SS220 EDIT
+		name = "wallet displaying [front_id]"
 	else
 		name = initial(name)
 

@@ -13,6 +13,13 @@
 	icon = 'modular_ss220/clothing/icons/object/wallets.dmi'
 	icon_state = "wallet_USSP_1"
 	photo_overlay = "photo_USSP"
+	storage_slots = 5
+
+/datum/prize_item/wallet_USSP_1
+	name = "Настоящий кошелёк СССП!"
+	desc = "Красота"
+	typepath = /obj/item/storage/wallet/wallet_USSP_1
+	cost = 35
 
 /obj/item/storage/wallet/wallet_USSP_2
 	name = "leather wallet USSP"
