@@ -68,3 +68,15 @@
 	client.prefs.save_preferences(src)
 	lighting_alpha = client.prefs.ghost_darkness_level
 	update_sight()
+
+/mob/dead/observer/dead_tele()
+	set category = "Ghost"
+	set name = "Teleport"
+	set desc= "Teleport to a location"
+
+	if(!isobserver(usr))
+		to_chat(usr, "Ты ещё не мёртв!")
+		return
+
+	var/target = tgui_input_list(usr, "Куда телепортируемся?", "Телепортация", SSmapping.ghostteleportlocs)
+	teleport(SSmapping.ghostteleportlocs[target])
