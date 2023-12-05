@@ -1,5 +1,6 @@
 /obj/item/storage/wallet
 	var/photo_overlay = "photo"
+
 /obj/item/storage/wallet/wallet_NT
 	name = "leather wallet NT"
 	desc = "Ваш кошелек настолько шикарен, что с ним вы выглядите просто потрясающе."
