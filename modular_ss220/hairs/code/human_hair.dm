@@ -336,7 +336,7 @@
 /datum/sprite_accessory/hair/fringetail
 	species_allowed = list("Human", "Slime People", "Tajaran", "Vulpkanin")
 
-/datum/sprite_accessory/hair/mahdrills"
+/datum/sprite_accessory/hair/mahdrills
 	species_allowed = list("Human", "Slime People", "Tajaran", "Vulpkanin")
 
 /datum/sprite_accessory/hair/familyman
