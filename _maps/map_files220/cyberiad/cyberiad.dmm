@@ -54276,7 +54276,7 @@
 /obj/effect/turf_decal/arrows/black{
 	dir = 8
 	},
-/obj/machinery/door/poddoor/shutters/preopen{
+/obj/machinery/door/poddoor/shutters/window/preopen{
 	dir = 8;
 	id_tag = "hopqueue";
 	name = "Privacy Shutters"
@@ -64752,7 +64752,7 @@
 /obj/machinery/door/airlock/medical/glass{
 	name = "Isolator"
 	},
-/obj/machinery/door/poddoor/shutters/preopen{
+/obj/machinery/door/poddoor/shutters/window/preopen{
 	dir = 1;
 	id_tag = "durka2";
 	layer = 4
@@ -69724,7 +69724,7 @@
 /obj/item/reagent_containers/glass/beaker/waterbottle/large{
 	pixel_x = 7
 	},
-/obj/machinery/door/poddoor/shutters/preopen{
+/obj/machinery/door/poddoor/shutters/window/preopen{
 	dir = 1;
 	id_tag = "durka2";
 	layer = 4
@@ -76973,7 +76973,7 @@
 /obj/effect/turf_decal/arrows/black{
 	dir = 4
 	},
-/obj/machinery/door/poddoor/shutters/preopen{
+/obj/machinery/door/poddoor/shutters/window/preopen{
 	dir = 8;
 	id_tag = "hopqueue";
 	name = "Privacy Shutters"
@@ -78677,14 +78677,14 @@
 /obj/machinery/door/airlock/medical/glass{
 	name = "Isolator"
 	},
-/obj/machinery/door/poddoor/shutters/preopen{
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/effect/mapping_helpers/airlock/access/any/medical/psychology,
+/obj/machinery/door/poddoor/shutters/window/preopen{
 	dir = 1;
 	id_tag = "durka1";
 	layer = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/effect/mapping_helpers/airlock/access/any/medical/psychology,
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -78987,11 +78987,6 @@
 	},
 /area/station/engineering/atmos)
 "pTa" = (
-/obj/machinery/door/poddoor/shutters/preopen{
-	dir = 1;
-	id_tag = "durka1";
-	layer = 4
-	},
 /obj/structure/table/reinforced,
 /obj/machinery/door/window/reinforced/normal{
 	name = "Secure Desk"
@@ -79002,6 +78997,11 @@
 	},
 /obj/effect/mapping_helpers/airlock/windoor/access/any/medical/psychology{
 	dir = 1
+	},
+/obj/machinery/door/poddoor/shutters/window/preopen{
+	dir = 1;
+	id_tag = "durka1";
+	layer = 4
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
