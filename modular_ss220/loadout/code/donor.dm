@@ -241,5 +241,5 @@
 
 /datum/gear/donor/red_gas
 	display_name = "ПРС-1"
-	path = /obj/item/clothing/mask/gas/red_gas
+	path = /obj/item/clothing/mask/breath/red_gas
 	donator_tier = 2
