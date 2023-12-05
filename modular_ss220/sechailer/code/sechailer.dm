@@ -66,7 +66,6 @@ GLOBAL_LIST_EMPTY(sechailers)
 		to_chat(user, span_notice(cooldown_info))
 		return
 
-	radio.autosay("Центр, Код [message], офицер [user] запрашивает помощь в [A].", "Система Оповещения", "Security", list(z))
 	is_on_cooldown = TRUE
 	addtimer(CALLBACK(src, PROC_REF(reboot)), dispatch_cooldown)
 	// This code if fucking hell, but it works as intended
@@ -77,11 +76,12 @@ GLOBAL_LIST_EMPTY(sechailers)
 			for(var/obj/item/radio/my_radio in user.contents)
 				for(var/chan in 1 to length(my_radio.channels))
 					var/channel_name = my_radio.channels[chan]
-					if(channel_name == "Security")
+					if(channel_name == DEPARTMENT_SECURITY)
 						security_channel_found = TRUE
 						break
 
 			if(security_channel_found)
+				radio.autosay("Центр, Код [message], офицер [user] запрашивает помощь в [A].", "Система Оповещения", DEPARTMENT_SECURITY, list(z))
 				playsound(hailer.loc, 'modular_ss220/sechailer/sound/dispatch_please_respond.ogg', 55, FALSE)
 				break
 			else
