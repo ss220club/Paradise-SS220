@@ -54,7 +54,7 @@
 /datum/outfit/job/chef
 	mask = /obj/item/clothing/mask/fakemoustache/chef
 
-/obj/item/clothing/mask/gas/red_gas
+/obj/item/clothing/mask/breath/red_gas
 	name = "ПРС-1"
 	desc = "Модульный противогаз с защитой глаз от внешней среды."
 	icon = 'modular_ss220/clothing/icons/object/masks.dmi'
