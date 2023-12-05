@@ -43,7 +43,7 @@
 		return
 	if(ishuman(user))
 		var/mob/living/carbon/human/human_user = user
-		var/dat = {"<meta charset="UTF-8">"}
+		var/dat = {"<meta charset="UTF-8">"} // SS220 ADDITION
 		pages = 0
 		switch(screen)
 			if(SCREEN_COVER) //Cover
