@@ -3,7 +3,7 @@
 	flag = 0
 	department_flag = JOBCAT_SUPPORT
 	total_positions = -1
-	spawn_positions = -1
+	spawn_positions = 5
 	job_department_flags = DEP_FLAG_SERVICE
 	supervisors = "the head of personnel"
 	department_head = list("Head of Personnel")
@@ -12,11 +12,10 @@
 	minimal_access = list(ACCESS_MAINT_TUNNELS)
 	alt_titles = null
 	outfit = /datum/outfit/job/donor
-	hidden_from_job_prefs = TRUE
+	hidden_from_job_prefs = FALSE
 	relate_job = "Assistant"
 	var/ru_title
 	var/donator_tier = 0
-	// !!!! ???? сделать alt_titles всплывающее окно с выбором assigned на карту раундстартово?
 
 /datum/outfit/job/donor
 	name = "Donor"
@@ -24,21 +23,14 @@
 
 	uniform = /obj/item/clothing/under/color/random
 	shoes = /obj/item/clothing/shoes/black
+	pda = /obj/item/pda
 	id = /obj/item/card/id/assistant
-
-	// uniform = /obj/item/clothing/under/rank/civilian/janitor
-	// shoes = /obj/item/clothing/shoes/black
-	// l_ear = /obj/item/radio/headset/headset_service
-	// id = /obj/item/card/id/janitor
-	// pda = /obj/item/pda/janitor
-	// r_pocket = /obj/item/door_remote/janikeyring
 
 // ====================================
 // Пустышки для выбора роли
 /datum/job/donor/tier_1
 	title = "Т1 должность"
 	flag = JOB_DONOR_TIER_1
-	hidden_from_job_prefs = FALSE
 	donator_tier = 1
 
 /datum/job/donor/tier_1/New()
@@ -49,7 +41,6 @@
 /datum/job/donor/tier_2
 	title = "Т2 должность"
 	flag = JOB_DONOR_TIER_2
-	hidden_from_job_prefs = FALSE
 	donator_tier = 2
 
 /datum/job/donor/tier_2/New()
@@ -60,7 +51,6 @@
 /datum/job/donor/tier_3
 	title = "Т3 должность"
 	flag = JOB_DONOR_TIER_3
-	hidden_from_job_prefs = FALSE
 	donator_tier = 3
 
 /datum/job/donor/tier_3/New()
@@ -71,7 +61,6 @@
 /datum/job/donor/tier_4
 	title = "Т4 должность"
 	flag = JOB_DONOR_TIER_4
-	hidden_from_job_prefs = FALSE
 	donator_tier = 4
 
 /datum/job/donor/tier_4/New()
@@ -82,7 +71,6 @@
 /datum/job/donor/tier_5
 	title = "Т5 должность"
 	flag = JOB_DONOR_TIER_5
-	hidden_from_job_prefs = FALSE
 	donator_tier = 5
 
 /datum/job/donor/tier_5/New()

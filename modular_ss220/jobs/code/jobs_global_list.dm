@@ -56,7 +56,7 @@ GLOBAL_LIST_INIT(donor_tier_4_jobs, list(
 ))
 
 GLOBAL_LIST_INIT(donor_tier_5_jobs, list(
-	"VIP guest",	// VIP гость
+	"VIP Corporate Guest",	// VIP гость
 	"Banker",	// Банкир
 	"Security Clown",	// Клоун Службы Безопасности
 ))
@@ -103,6 +103,9 @@ GLOBAL_LIST_INIT(all_jobs_ss220, (list() + (
 /proc/get_all_science_alt_titles_ss220()
 	return get_alt_titles(GLOB.science_positions_ss220)
 
+/proc/get_all_donor_alt_titles_ss220()
+	return get_alt_titles(GLOB.all_donor_jobs)
+
 /proc/get_all_alt_titles_ss220()
-	return get_all_medical_alt_titles_ss220() + get_all_security_alt_titles_ss220() + get_all_engineering_alt_titles_ss220() + get_all_science_alt_titles_ss220()
+	return get_all_medical_alt_titles_ss220() + get_all_security_alt_titles_ss220() + get_all_engineering_alt_titles_ss220() + get_all_science_alt_titles_ss220() + get_all_donor_alt_titles_ss220()
 

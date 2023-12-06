@@ -519,7 +519,7 @@ SUBSYSTEM_DEF(jobs)
 			H = new_mob
 
 	if(job && H)
-		job.after_spawn(H)
+		job.after_spawn(H, joined_late)	// SS220 EDIT - jobs - prisoner spawn
 
 		//Gives glasses to the vision impaired
 		if(HAS_TRAIT(H, TRAIT_NEARSIGHT))

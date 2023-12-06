@@ -16,7 +16,7 @@
 
 /datum/station_department/service/New()
 	. = ..()
-	department_roles |= GLOB.service_donor_jobs
+	department_roles |= GLOB.service_donor_jobs + get_all_donor_alt_titles_ss220()
 
 
 
