@@ -123,7 +123,7 @@
 /obj/item/storage/box/legal_loot/populate_contents()
 	// "увеличиваем" шансы на выпадение коллекционного хлама
 	possible_type_loot |= subtypesof(/obj/item/toy) + subtypesof(/obj/item/clothing/head/collectable) + subtypesof(/obj/item/poster) + subtypesof(/obj/item/storage/fancy/cigarettes) + subtypesof(/obj/item/lighter/zippo) + subtypesof(/obj/item/id_skin)
-	for(var/i in loot_amount)
+	for(var/i in 1 to loot_amount)
 		var/loot_type = pick(possible_type_loot)
 		new loot_type(src)
 

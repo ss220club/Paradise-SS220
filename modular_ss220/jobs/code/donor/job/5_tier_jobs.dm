@@ -1,8 +1,8 @@
 /datum/job/donor/vip_guest
 	title = "VIP Corporate Guest"
 	ru_title = "VIP Гость"
-	relate_job = "Vip"
 	alt_titles = list("VIP Персона", "VIP Гость NT", "VIP Персона NT", "Гость Корпорации NT")
+	relate_job = "Vip"
 	access = list(ACCESS_MAINT_TUNNELS, ACCESS_LIBRARY, ACCESS_HEADS, ACCESS_RC_ANNOUNCE, ACCESS_EVA)
 	minimal_access = list(ACCESS_MAINT_TUNNELS, ACCESS_LIBRARY, ACCESS_HEADS, ACCESS_RC_ANNOUNCE, ACCESS_EVA)
 	hidden_from_job_prefs = TRUE
@@ -38,8 +38,8 @@
 /datum/job/donor/banker
 	title = "Banker"
 	ru_title = "Банкир"
-	relate_job = "Vip"
 	alt_titles = list("Корпорат", "Бизнесмен", "Банкир NT", "Корпорат NT", "Бизнесмен NT")
+	relate_job = "Vip"
 	access = list(ACCESS_MAINT_TUNNELS, ACCESS_LIBRARY, ACCESS_EVA)
 	minimal_access = list(ACCESS_MAINT_TUNNELS, ACCESS_LIBRARY, ACCESS_EVA)
 	hidden_from_job_prefs = TRUE
@@ -83,12 +83,12 @@
 	title = "Security Clown"
 	//ru_title = "Клоун Службы Безопасности" // чтобы скрываться среди СБ-ух при поиске
 	alt_titles = list("Clown Warden", "Clown Detective", "Honkective", "Honkden", "Clown Cadet", "Клоун Службы Безопасности", "Клоун-Детектив", "Клоун-Смотритель", "Хонкектив", "Клоун Кадет")
+	relate_job = "Security Officer"
 	supervisors = "the head of security"
 	department_head = list("Head of Security")
 	job_department_flags = DEP_FLAG_SECURITY
 	access = list(ACCESS_CLOWN, ACCESS_THEATRE, ACCESS_MAINT_TUNNELS, ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_BRIG, ACCESS_COURT)
 	minimal_access = list(ACCESS_CLOWN, ACCESS_THEATRE, ACCESS_MAINT_TUNNELS, ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_BRIG, ACCESS_COURT)
-	relate_job = "Security Officer"
 	hidden_from_job_prefs = TRUE
 	outfit = /datum/outfit/job/donor/seclown
 	important_information = "Ваша должность нацелена на свободный РП-отыгрыш и не разрешает нарушать правила сервера. \

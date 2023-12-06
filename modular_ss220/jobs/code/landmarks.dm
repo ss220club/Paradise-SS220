@@ -3,7 +3,8 @@
 	name = "Prisoner"
 	icon_state = "prisoner"
 
-/obj/effect/landmark/start/prisoner/arrive
+/obj/effect/landmark/spawner/prisoner
+	icon = 'modular_ss220/jobs/icons/landmarks.dmi'
 	name = "Prisoner_arrive"
 	icon_state = "prisoner_arrive"
 
