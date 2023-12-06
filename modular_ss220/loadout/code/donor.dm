@@ -63,6 +63,16 @@
 	path = /obj/item/storage/wallet
 	cost = 12
 
+/datum/gear/donor/Wallet_NT
+	display_name = "Бумажник NT"
+	path = /obj/item/storage/wallet/wallet_NT
+	cost = 12
+
+/datum/gear/donor/Wallet_USSP
+	display_name = "Бумажник СССП"
+	path = /obj/item/storage/wallet/wallet_USSP_2
+	cost = 12
+
 /datum/gear/donor/firefirstaid
 	display_name = "Набор первой медицинской помощи от премиальной страховки"
 	path = /obj/item/storage/firstaid/regular/donor
@@ -248,6 +258,16 @@
 	path = /obj/item/id_skin/terminal
 	donator_tier = 4
 	cost = 4
+
+/datum/gear/donor/breathscarf
+	display_name = "Шарф с системой дыхания"
+	path = /obj/item/clothing/mask/breath/breathscarf
+	cost = 2
+
+/datum/gear/donor/red_gas
+	display_name = "ПРС-1"
+	path = /obj/item/clothing/mask/breath/red_gas
+	donator_tier = 2
 
 /datum/gear/donor/id_decal_boykisser
 	display_name = "BoyKisser наклейка на карту"
