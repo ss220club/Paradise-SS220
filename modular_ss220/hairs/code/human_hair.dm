@@ -62,7 +62,6 @@
 
 /datum/sprite_accessory/hair/pompadour
 	species_allowed = list("Human", "Slime People", "Tajaran", "Vulpkanin")
-	glasses_over = 1
 
 /datum/sprite_accessory/hair/quiff
 	species_allowed = list("Human", "Slime People", "Tajaran", "Vulpkanin")
