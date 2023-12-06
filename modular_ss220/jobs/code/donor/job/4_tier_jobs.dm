@@ -2,6 +2,8 @@
 	title = "Adjutant"
 	ru_title = "Адъютант"
 	relate_job = "Internal Affairs Agent"
+	supervisors = "the head of personel and captain"
+	department_head = list("Head of Personnel", "Captain")
 	access = list(ACCESS_LIBRARY, ACCESS_HEADS, ACCESS_EVA, ACCESS_LAWYER, ACCESS_COURT, ACCESS_SEC_DOORS, ACCESS_MAINT_TUNNELS, ACCESS_RESEARCH, ACCESS_MEDICAL, ACCESS_CONSTRUCTION, ACCESS_MAILSORTING)
 	minimal_access = list(ACCESS_LIBRARY, ACCESS_HEADS, ACCESS_EVA, ACCESS_LAWYER, ACCESS_COURT, ACCESS_SEC_DOORS, ACCESS_MAINT_TUNNELS, ACCESS_RESEARCH, ACCESS_MEDICAL, ACCESS_CONSTRUCTION, ACCESS_MAILSORTING)
 	hidden_from_job_prefs = TRUE
@@ -138,7 +140,6 @@
 	glasses = /obj/item/clothing/glasses/sunglasses
 	gloves = /obj/item/clothing/gloves/color/white
 	shoes = /obj/item/clothing/shoes/centcom
-	//l_ear = /obj/item/radio/headset/ert
 	l_pocket = /obj/item/melee/classic_baton/telescopic
 	box = /obj/item/storage/box/responseteam
 	id = /obj/item/card/id/representative_tsf
@@ -152,6 +153,12 @@
 	implants = list(/obj/item/implant/mindshield,
 		/obj/item/implant/death_alarm
 	)
+
+/datum/outfit/job/donor/representative_tsf/post_equip(mob/living/carbon/human/H, visualsOnly)
+	. = ..()
+	if(visualsOnly)
+		return
+	H.add_language("Tradeband")
 
 
 /datum/job/donor/representative_ussp
@@ -196,11 +203,17 @@
 		/obj/item/implant/death_alarm
 	)
 
+/datum/outfit/job/donor/representative_ussp/post_equip(mob/living/carbon/human/H, visualsOnly)
+	. = ..()
+	if(visualsOnly)
+		return
+	H.add_language("Neo-Russkiya")
+
+
 /datum/job/donor/dealer
 	title = "Dealer"
 	ru_title = "Независимый Торговец"
 	alt_titles = list("Торговец", "Барахольщик", "Меценат", "Коммерсант")
-	relate_job = "Dealer"
 	access = list(ACCESS_MAINT_TUNNELS, ACCESS_LIBRARY, ACCESS_RC_ANNOUNCE, ACCESS_MAILSORTING, ACCESS_CARGO, ACCESS_MINT, ACCESS_MINERAL_STOREROOM, ACCESS_CONSTRUCTION)
 	minimal_access = list(ACCESS_MAINT_TUNNELS, ACCESS_LIBRARY, ACCESS_RC_ANNOUNCE, ACCESS_CARGO, ACCESS_MAILSORTING, ACCESS_MINERAL_STOREROOM, ACCESS_CONSTRUCTION)
 	hidden_from_job_prefs = TRUE
@@ -232,7 +245,7 @@
 		/obj/item/eftpos = 1,
 		/obj/item/hand_labeler = 1,
 		/obj/item/hand_labeler_refill = 1,
-		/obj/item/storage/box/legal_loot/amount_20 = 1,
+		/obj/item/storage/box/legal_loot/amount_30 = 1,
 	)
 
 /datum/outfit/job/donor/dealer/pre_equip(mob/living/carbon/human/H, visualsOnly)
@@ -252,3 +265,9 @@
 	backpack_contents |= list(
 		/obj/item/storage/box/legal_loot/amount_15 = 1,
 	)
+
+/datum/outfit/job/donor/dealer/post_equip(mob/living/carbon/human/H, visualsOnly)
+	. = ..()
+	if(visualsOnly)
+		return
+	H.add_language("Tradeband")

@@ -1,9 +1,9 @@
 /datum/job/donor
 	title = "Donor" // он тут быть не должен. Но если педали вдруг выдадут, то пускай хотя бы так
 	flag = 0
-	department_flag = JOBCAT_SUPPORT
 	total_positions = -1
-	spawn_positions = 5
+	spawn_positions = -1
+	department_flag = JOBCAT_SUPPORT
 	job_department_flags = DEP_FLAG_SERVICE
 	supervisors = "the head of personnel"
 	department_head = list("Head of Personnel")
@@ -12,8 +12,7 @@
 	minimal_access = list(ACCESS_MAINT_TUNNELS)
 	alt_titles = null
 	outfit = /datum/outfit/job/donor
-	hidden_from_job_prefs = FALSE
-	relate_job = "Assistant"
+	hidden_from_job_prefs = TRUE
 	var/ru_title
 	var/donator_tier = 0
 
@@ -29,8 +28,9 @@
 // ====================================
 // Пустышки для выбора роли
 /datum/job/donor/tier_1
-	title = "Т1 должность"
+	title = "Т1 должность"	// Должность связана с bad_ranks /datum/controller/subsystem/jobs в этом модуле, если меняете, то там измените тоже.
 	flag = JOB_DONOR_TIER_1
+	hidden_from_job_prefs = FALSE
 	donator_tier = 1
 
 /datum/job/donor/tier_1/New()
@@ -41,6 +41,7 @@
 /datum/job/donor/tier_2
 	title = "Т2 должность"
 	flag = JOB_DONOR_TIER_2
+	hidden_from_job_prefs = FALSE
 	donator_tier = 2
 
 /datum/job/donor/tier_2/New()
@@ -51,6 +52,7 @@
 /datum/job/donor/tier_3
 	title = "Т3 должность"
 	flag = JOB_DONOR_TIER_3
+	hidden_from_job_prefs = FALSE
 	donator_tier = 3
 
 /datum/job/donor/tier_3/New()
@@ -61,6 +63,7 @@
 /datum/job/donor/tier_4
 	title = "Т4 должность"
 	flag = JOB_DONOR_TIER_4
+	hidden_from_job_prefs = FALSE
 	donator_tier = 4
 
 /datum/job/donor/tier_4/New()
@@ -71,13 +74,12 @@
 /datum/job/donor/tier_5
 	title = "Т5 должность"
 	flag = JOB_DONOR_TIER_5
+	hidden_from_job_prefs = FALSE
 	donator_tier = 5
 
 /datum/job/donor/tier_5/New()
 	. = ..()
 	alt_titles = GLOB.donor_tier_5_jobs
-
-
 
 
 // ====================================
@@ -98,11 +100,13 @@
 	var/list/all_alt_titles = get_all_titles()
 	if(!all_alt_titles)
 		return
-	var/alt_title = tgui_input_list(H,"Выберите название вашей должности.","Специальная должность", all_alt_titles)
-	if(alt_title)
-		H.mind.role_alt_title = alt_title
-		id.assignment = alt_title
-		id.UpdateName()
+
+	spawn() // запускаем независимо, чтобы не задерживать инициализацию сервера (!!!ИНАЧЕ РАУНД НЕ БУДЕТ ЗАПУСКАТЬСЯ!!!)
+		var/alt_title = tgui_input_list(H,"Выберите название вашей должности.","Специальная должность", all_alt_titles)
+		if(alt_title)
+			H.mind.role_alt_title = alt_title
+			id.assignment = alt_title
+			id.UpdateName()
 
 /datum/job/donor/proc/get_all_titles()
 	var/list/all_alt_titles = list()

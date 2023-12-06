@@ -159,7 +159,7 @@ GLOBAL_LIST_INIT(card_skins_ss220, list(
 
 /obj/item/card/id/uncertain
 	name = "Uncertain ID"
-	access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS, ACCESS_MEDICAL, ACCESS_CONSTRUCTION)
+	access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS, ACCESS_CONSTRUCTION)
 	icon = 'modular_ss220/aesthetics/better_ids/icons/better_ids.dmi'
 	icon_state = "uncertain"
 

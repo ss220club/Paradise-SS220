@@ -39,6 +39,7 @@
 /datum/job/donor/tourist_tsf
 	title = "Tourist TSF"
 	ru_title = "Турист ТСФ"
+	relate_job = "Assistant"
 	access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS)
 	minimal_access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS)
 	hidden_from_job_prefs = TRUE
@@ -66,12 +67,18 @@
 	backpack_contents = list(
 		/obj/item/clothing/under/pants/shorts/blue  = 1,
 	)
-	///obj/item/radio/headset/ert/alt/solgov
 
+
+/datum/outfit/job/donor/tourist_tsf/post_equip(mob/living/carbon/human/H, visualsOnly)
+	. = ..()
+	if(visualsOnly)
+		return
+	H.add_language("Tradeband")
 
 /datum/job/donor/tourist_ussp
 	title = "Tourist USSP"
 	ru_title = "Турист СССП"
+	relate_job = "Assistant"
 	access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS)
 	minimal_access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS)
 	hidden_from_job_prefs = TRUE
@@ -101,16 +108,21 @@
 		/obj/item/clothing/under/pants/shorts/red = 1,
 		/obj/item/clothing/head/ushanka = 1,
 	)
-	///obj/item/radio/headset/soviet
+
+/datum/outfit/job/donor/tourist_ussp/post_equip(mob/living/carbon/human/H, visualsOnly)
+	. = ..()
+	if(visualsOnly)
+		return
+	H.add_language("Neo-Russkiya")
 
 
 /datum/job/donor/manager_janitor
 	title = "Manager Janitor"
 	ru_title = "Менеджер по Клинингу"
-	access = list(ACCESS_JANITOR, ACCESS_MAINT_TUNNELS, ACCESS_EXTERNAL_AIRLOCKS, ACCESS_MEDICAL)
-	minimal_access = list(ACCESS_JANITOR, ACCESS_MAINT_TUNNELS, ACCESS_EXTERNAL_AIRLOCKS, ACCESS_MEDICAL)
 	alt_titles = list("Ловец Крыс", "Уборщик I-разряда", "Уборщик II-разряда", "Уборщик III-разряда", "Уборщик IV-разряда", "Уборщик V-разряда")
 	relate_job = "Janitor"
+	access = list(ACCESS_JANITOR, ACCESS_MAINT_TUNNELS, ACCESS_EXTERNAL_AIRLOCKS, ACCESS_MEDICAL)
+	minimal_access = list(ACCESS_JANITOR, ACCESS_MAINT_TUNNELS, ACCESS_EXTERNAL_AIRLOCKS, ACCESS_MEDICAL)
 	hidden_from_job_prefs = TRUE
 	outfit = /datum/outfit/job/donor/manager_janitor
 	important_information = "Ваша должность нацелена на свободный РП-отыгрыш и не разрешает нарушать правила сервера. \
@@ -123,7 +135,7 @@
 
 	uniform = /obj/item/clothing/under/rank/civilian/janitor
 	suit = /obj/item/clothing/suit/apron/overalls
-	shoes = /obj/item/clothing/shoes/galoshes/dry/lightweight
+	shoes = /obj/item/clothing/shoes/galoshes/dry
 	gloves = /obj/item/clothing/gloves/color/purple
 	mask = /obj/item/clothing/mask/bandana/purple
 	head = /obj/item/clothing/head/soft/purple
@@ -143,6 +155,7 @@
 	title = "Apprentice"
 	ru_title = "Подмастерье"
 	alt_titles = list("Ассистент-Механик", "Ассистент I-го разряда", "Ассистент II-го разряда", "Ассистент III-го разряда", "Ассистент IV-го разряда", "Ассистент V-го разряда")
+	relate_job = "Assistant"
 	access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS, ACCESS_CONSTRUCTION, ACCESS_MINERAL_STOREROOM)
 	minimal_access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS, ACCESS_CONSTRUCTION, ACCESS_MINERAL_STOREROOM)
 	hidden_from_job_prefs = TRUE
@@ -178,9 +191,9 @@
 	title = "Guard"
 	ru_title = "Охранник Шестерочки"
 	alt_titles = list("Сторож Сервиса", "Охранник Сервиса", "Вышибала Сервиса")
+	relate_job = "Bar"
 	access = list(ACCESS_MAINT_TUNNELS, ACCESS_BAR, ACCESS_KITCHEN, ACCESS_HYDROPONICS, ACCESS_LIBRARY)
 	minimal_access = list(ACCESS_MAINT_TUNNELS, ACCESS_BAR, ACCESS_KITCHEN, ACCESS_HYDROPONICS, ACCESS_LIBRARY)
-	relate_job = "Bar"
 	hidden_from_job_prefs = TRUE
 	outfit = /datum/outfit/job/donor/guard
 	important_information = "Ваша должность нацелена на свободный РП-отыгрыш и не разрешает нарушать правила сервера. \
@@ -209,6 +222,7 @@
 /datum/job/donor/migrant
 	title = "Migrant"
 	ru_title = "Мигрант"
+	relate_job = "Assistant"
 	access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS)
 	minimal_access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS)
 	hidden_from_job_prefs = TRUE
@@ -243,8 +257,8 @@
 	title = "Uncertain"
 	ru_title = "Забытый Ассистент"
 	alt_titles = list("Безработный", "Свободный Ассистент", "Отрабатыващий Ассистент", "Ассистент Технических Тоннелей")
-	access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS, ACCESS_MEDICAL, ACCESS_CONSTRUCTION)
-	minimal_access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS, ACCESS_MEDICAL, ACCESS_CONSTRUCTION)
+	access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS, ACCESS_CONSTRUCTION)
+	minimal_access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS, ACCESS_CONSTRUCTION)
 	hidden_from_job_prefs = TRUE
 	outfit = /datum/outfit/job/donor/uncertain
 	important_information = "Ваша должность нацелена на свободный РП-отыгрыш и не разрешает нарушать правила сервера. \

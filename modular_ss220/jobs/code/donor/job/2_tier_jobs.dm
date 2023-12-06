@@ -25,6 +25,7 @@
 /datum/job/donor/bath
 	title = "Bath"
 	ru_title = "Банщик"
+	relate_job = "Assistant"
 	access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS)
 	minimal_access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS)
 	hidden_from_job_prefs = TRUE
@@ -135,7 +136,7 @@
 
 	uniform = /obj/item/clothing/under/suit/victsuit
 	suit = /obj/item/clothing/suit/hooded/monk
-	shoes = /obj/item/clothing/shoes/black
+	shoes = /obj/item/clothing/shoes/sandal
 	r_hand = /obj/item/storage/bag/garment/chaplain
 	l_ear = /obj/item/radio/headset/headset_service
 	pda = /obj/item/pda/chaplain
@@ -147,6 +148,8 @@
 	ru_title = "Курьер"
 	alt_titles = list("Почтальон", "Доставщик")
 	relate_job = "Cargo Technician"
+	supervisors = "the head of personnel and quartermaster"
+	department_head = list("Head of Personnel", "Quartermaster")
 	access = list(ACCESS_MAINT_TUNNELS, ACCESS_MAILSORTING, ACCESS_CARGO, ACCESS_MINT, ACCESS_MINERAL_STOREROOM)
 	minimal_access = list(ACCESS_MAINT_TUNNELS, ACCESS_CARGO, ACCESS_MAILSORTING, ACCESS_MINERAL_STOREROOM)
 	hidden_from_job_prefs = TRUE
@@ -265,7 +268,7 @@
 		/obj/item/paper = 4,
 		/obj/item/storage/fancy/crayons = 1,
 		/obj/item/pen/fancy = 1,
-		/obj/item/toy/crayon/rainbow = 1
+		/obj/item/toy/crayon/rainbow = 1,
 		/obj/item/painter = 1,
 	)
 

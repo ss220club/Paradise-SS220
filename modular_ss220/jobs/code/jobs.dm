@@ -77,10 +77,24 @@
 /datum/character_save/SetChoices(mob/user, limit = 18, list/splitJobs = list("Head of Security", "Bartender"), widthPerColumn = 450, height = 700)
 	. = ..()
 
+
+// /datum/controller/subsystem/jobs
+// 	var/list/bad_ranks = list("Т1 должность", "Т2 должность", "Т3 должность", "Т4 должность", "Т5 должность")
+
+// /datum/controller/subsystem/jobs/New()
+// 	. = ..()
+// 	for(var/i in 1 to 5)
+// 		bad_ranks.Add("T[i] должность")
+
 // Делаем "обходку" для профессий выбранных через job.alt_titles (например DONOR)
 /datum/controller/subsystem/jobs/EquipRank(mob/living/carbon/human/H, rank, joined_late = 0) // Equip and put them in an area
 	if(!H)
 		return null
+
+	var/list/bad_ranks = list("Т1 должность", "Т2 должность", "Т3 должность", "Т4 должность", "Т5 должность")
+	if(rank in bad_ranks) // Random pick jobs
+		var/datum/job/job = GetJob(rank)
+		rank = pick(job.alt_titles)
 
 	if(!H.mind.role_alt_title)
 		var/new_alt_title = get_random_alt_title(H.mind.assigned_role)

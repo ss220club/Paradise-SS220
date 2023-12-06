@@ -23,6 +23,11 @@
 	uniform = /obj/item/clothing/under/color/orange/prison
 	shoes = /obj/item/clothing/shoes/orange
 	id = /obj/item/card/id/prisoner
+	pda = null
+	box = null
+	backpack = null
+	satchel = null
+	dufflebag = null
 
 /datum/outfit/job/donor/prisoner/pre_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	. = ..()
@@ -32,10 +37,11 @@
 			uniform = /obj/item/clothing/under/misc/pj/blue
 
 /datum/job/donor/prisoner/after_spawn(mob/living/carbon/human/H, joined_late = FALSE)
-	. = ..()
 	if(!joined_late || !H)
-		return
+		return ..()
 
-	for(var/obj/effect/landmark/start/prisoner/arrive/landmark_loc in GLOB.landmarks_list)
+	for(var/obj/effect/landmark/spawner/prisoner/landmark_loc in GLOB.landmarks_list)
 		H.forceMove(get_turf(landmark_loc))
 		break
+
+	. = ..()	// сначала отправляем, а уже потом "даем выбрать должность"

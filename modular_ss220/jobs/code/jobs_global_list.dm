@@ -56,7 +56,7 @@ GLOBAL_LIST_INIT(donor_tier_4_jobs, list(
 ))
 
 GLOBAL_LIST_INIT(donor_tier_5_jobs, list(
-	"VIP Corporate Guest",	// VIP гость
+	"VIP Corporate Guest",	// VIP гость - Важно! Это НЕ админский VIP Guest с ЦК.
 	"Banker",	// Банкир
 	"Security Clown",	// Клоун Службы Безопасности
 ))
