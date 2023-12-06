@@ -174,6 +174,9 @@
 	backpack_contents = list(
 		/obj/item/eftpos = 1,
 		/obj/item/clipboard = 1,
+		/obj/item/reagent_containers/spray/pepper = 1,
+		/obj/item/reagent_containers/spray/pestspray = 1,
+		/obj/item/reagent_containers/spray/plantbgone = 1,
 	)
 
 	backpack = /obj/item/storage/backpack/industrial

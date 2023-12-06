@@ -134,3 +134,35 @@
 	backpack = /obj/item/storage/backpack/clown
 	satchel = /obj/item/storage/backpack/clown
 	dufflebag = /obj/item/storage/backpack/duffel/clown
+
+/datum/job/donor/seclown/make_alt_title(mob/living/carbon/human/H)
+	if(H.mind)
+		H.real_name
+		var/clown_name = pick(GLOB.clown_names)
+		var/newname = clean_input("Выберите имя для вашего Клоуна Службы Безопасности.", "Изменение Имени", clown_name, H)
+		if(newname)
+			H.rename_character(H.real_name, newname)
+		else
+			H.rename_character(H.real_name, clown_name)
+
+	. = ..()
+
+/datum/outfit/job/donor/seclown/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+	. = ..()
+	if(visualsOnly)
+		return
+
+	if(ismachineperson(H))
+		var/obj/item/organ/internal/cyberimp/brain/clown_voice/implant = new
+		implant.insert(H)
+
+	H.dna.SetSEState(GLOB.clumsyblock, TRUE)
+	singlemutcheck(H, GLOB.clumsyblock, MUTCHK_FORCED)
+	H.dna.default_blocks.Add(GLOB.clumsyblock)
+	if(!ismachineperson(H))
+		H.dna.SetSEState(GLOB.comicblock, TRUE)
+		singlemutcheck(H, GLOB.comicblock, MUTCHK_FORCED)
+		H.dna.default_blocks.Add(GLOB.comicblock)
+	H.check_mutations = TRUE
+	H.add_language("Clownish")
+	H.AddComponent(/datum/component/slippery, H, 8 SECONDS, 100, 0, FALSE, TRUE, "slip", TRUE)

@@ -1,20 +1,3 @@
-/datum/nttc_configuration/New()
-	. = ..()
-	var/list/job_radio_dict = list()
-	for(var/i in (GLOB.medical_positions_ss220 + get_all_medical_alt_titles_ss220()))
-		job_radio_dict.Add(list("[i]" = "medradio"))
-	for(var/i in (GLOB.security_positions_ss220 + get_all_security_alt_titles_ss220() + GLOB.security_donor_jobs))
-		job_radio_dict.Add(list("[i]" = "secradio"))
-	for(var/i in (GLOB.engineering_positions_ss220 + get_all_engineering_alt_titles_ss220()))
-		job_radio_dict.Add(list("[i]" = "engradio"))
-	for(var/i in (GLOB.science_positions_ss220 + get_all_science_alt_titles_ss220()))
-		job_radio_dict.Add(list("[i]" = "scirradio"))
-	for(var/i in (GLOB.service_donor_jobs + get_all_donor_alt_titles_ss220()))
-		job_radio_dict.Add(list("[i]" = "srvradio"))
-
-	all_jobs |= job_radio_dict
-
-
 // =======================================
 // relate jobs for relate job slots
 // =======================================
@@ -43,6 +26,10 @@
 	relate_job = "Security Cadet"
 /datum/job/officer/cadet
 	relate_job = "Security Officer"
+
+// ==============================
+// PROCS
+// ==============================
 
 /datum/job/is_position_available()
 	if(job_banned_gamemode)
@@ -73,17 +60,18 @@
 			return TRUE
 	return FALSE
 
-// OFFICIAL parameters: 17 / HOS, Bart / 400 / 700
-/datum/character_save/SetChoices(mob/user, limit = 18, list/splitJobs = list("Head of Security", "Bartender"), widthPerColumn = 450, height = 700)
-	. = ..()
-
 // Делаем "обходку" для профессий выбранных через job.alt_titles (например DONOR)
 /datum/controller/subsystem/jobs/EquipRank(mob/living/carbon/human/H, rank, joined_late = 0) // Equip and put them in an area
 	if(!H)
 		return null
 
-	var/list/bad_ranks = get_donor_ranks_for_choose()
-	if((rank in bad_ranks)) // Random pick jobs
+	rank = get_rank_ss220(H, rank)
+
+	. = ..(H, rank, joined_late)
+
+/datum/controller/subsystem/jobs/proc/get_rank_ss220(mob/living/carbon/human/H, rank)
+	var/list/bad_ranks = get_donor_ranks_for_choose()		// !!!!! проверить и с чистым RANK
+	if(H.mind.role_alt_title in bad_ranks) // Random pick jobs
 		var/datum/job/job = GetJob(rank)
 		rank = pick(job.alt_titles)
 		H.mind.role_alt_title = rank
@@ -91,4 +79,4 @@
 	else if(H.mind.role_alt_title in GLOB.all_donor_jobs)
 		rank = H.mind.role_alt_title
 
-	. = ..(H, rank, joined_late)
+	return rank
