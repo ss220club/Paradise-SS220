@@ -20,6 +20,9 @@
 
 GLOBAL_LIST_INIT(card_skins_ss220, list(
 	"intern", "student", "trainee", "cadet",	// novice
+))
+
+GLOBAL_LIST_INIT(card_skins_donor_ss220, list(
 	"barber", "bath", "casino", "waiter", "acolyte", "courier", "wrestler", "painter", "musician", "actor",			// 2 tier
 	"administrator", "touristtsf", "touristussp", "managerjanitor", "apprentice", "guard", "migrant", "uncertain",	// 3 tier
 	"adjutant", "butler", "maid", "representativetsf", "representativeussp", "dealer", // 4 tier
@@ -28,7 +31,7 @@ GLOBAL_LIST_INIT(card_skins_ss220, list(
 
 /obj/item/card/id/syndicate/Initialize()
 	. = ..()
-	appearances |= GLOB.card_skins_ss220
+	appearances |= GLOB.card_skins_ss220 + GLOB.card_skins_donor_ss220
 
 /obj/item/card/id/medical/intern
 	name = "Intern ID"

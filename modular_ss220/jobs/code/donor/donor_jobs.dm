@@ -86,28 +86,33 @@
 // Переводим должность и предлагаем взять альтернативную должность
 /datum/job/donor/after_spawn(mob/living/carbon/human/H)
 	. = ..()
-	INVOKE_ASYNC(src, PROC_REF(choose_alt_title), H)
+	INVOKE_ASYNC(src, PROC_REF(make_alt_title), H)
 
-/datum/job/donor/proc/choose_alt_title(mob/living/carbon/human/H)
+/datum/job/donor/proc/make_alt_title(mob/living/carbon/human/H)
+	choose_id_assignment(H)
+	for(var/datum/data/record/R in GLOB.data_core.general)
+		if(R && H.real_name == R.fields["name"])
+			R.fields["real_rank"] = H.mind.role_alt_title
+			R.fields["rank"] = H.wear_id.get_ID_assignment()
+			break
+
+/datum/job/donor/proc/choose_id_assignment(mob/living/carbon/human/H)
 	var/obj/item/card/id/id = H.wear_id
 
-	if(ru_title && !length(alt_titles))
-		H.mind.role_alt_title = ru_title
-		if(id)
-			id.assignment = ru_title
-			id.UpdateName()
+	if(ru_title && !length(alt_titles) && id)
+		id.assignment = ru_title
+		id.UpdateName()
 		return
 
 	var/list/all_alt_titles = get_all_titles()
 	if(!all_alt_titles)
 		return
 
-	var/alt_title = tgui_input_list(H,"Выберите название вашей должности.","Специальная должность", all_alt_titles)
-	if(alt_title)
-		H.mind.role_alt_title = alt_title
-		if(id)
-			id.assignment = alt_title
-			id.UpdateName()
+	var/time_minutes = 5
+	var/alt_title = tgui_input_list(H, "Выберите название вашей должности. Если вы не выберете в течении [time_minutes] минут, то будет установлена стандартная должность.", "Специальная должность", all_alt_titles, time_minutes MINUTES)
+	if(alt_title && id)
+		id.assignment = alt_title
+		id.UpdateName()
 
 /datum/job/donor/proc/get_all_titles()
 	var/list/all_alt_titles = list()

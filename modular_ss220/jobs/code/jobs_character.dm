@@ -22,6 +22,9 @@
 	H.update_action_buttons_icon()
 	return FALSE
 
+// OFFICIAL parameters: 17 / HOS, Bart / 400 / 700
+/datum/character_save/SetChoices(mob/user, limit = 18, list/splitJobs = list("Head of Security", "Bartender"), widthPerColumn = 450, height = 700)
+	. = ..()
 
 // это копипаст мерзопакости. Я не буду рефакторить это в модуле, я шо, ебанутый?
 // Оно работает и ладно. И я не буду этот комментарий на английский переводить.
