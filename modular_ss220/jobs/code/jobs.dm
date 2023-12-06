@@ -9,7 +9,7 @@
 		job_radio_dict.Add(list("[i]" = "engradio"))
 	for(var/i in (GLOB.science_positions_ss220 + get_all_science_alt_titles_ss220()))
 		job_radio_dict.Add(list("[i]" = "scirradio"))
-	for(var/i in (GLOB.service_donor_jobs))
+	for(var/i in (GLOB.service_donor_jobs + get_all_donor_alt_titles_ss220()))
 		job_radio_dict.Add(list("[i]" = "srvradio"))
 
 	all_jobs |= job_radio_dict

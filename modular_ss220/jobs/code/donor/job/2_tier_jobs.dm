@@ -1,7 +1,12 @@
 /datum/job/donor/barber
 	title = "Barber"
 	ru_title = "Парикмахер"
+	access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS)
+	minimal_access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS)
+	hidden_from_job_prefs = TRUE
 	outfit = /datum/outfit/job/donor/barber
+	important_information = "Ваша должность нацелена на свободный РП-отыгрыш и не разрешает нарушать правила сервера. \
+	\nВы ПАРИКМАХЕР. Данная роль нацелена для наведения красоты на головах людей через добровольные начинания."
 
 /datum/outfit/job/donor/barber
 	name = "Парикмахер"
@@ -10,6 +15,8 @@
 	uniform = /obj/item/clothing/under/rank/civilian/barber
 	shoes = /obj/item/clothing/shoes/laceup
 	head = /obj/item/clothing/head/boaterhat
+	l_ear = /obj/item/radio/headset/headset_service
+	id = /obj/item/card/id/barber
 	backpack_contents = list(
 		/obj/item/storage/box/barber = 1,
 	)
@@ -18,7 +25,12 @@
 /datum/job/donor/bath
 	title = "Bath"
 	ru_title = "Банщик"
+	access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS)
+	minimal_access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS)
+	hidden_from_job_prefs = TRUE
 	outfit = /datum/outfit/job/donor/bath
+	important_information = "Ваша должность нацелена на свободный РП-отыгрыш и не разрешает нарушать правила сервера. \
+	\nВы БАНЩИК. Данная роль нацелена для создания душной атмосферы в замкнутых помещениях, РП-разговоров, встреч."
 
 /datum/outfit/job/donor/bath
 	name = "Банщик"
@@ -28,6 +40,8 @@
 	suit = /obj/item/clothing/suit/mantle
 	shoes = /obj/item/clothing/shoes/sandal
 	glasses = /obj/item/clothing/glasses/goggles
+	l_ear = /obj/item/radio/headset/headset_service
+	id = /obj/item/card/id/bath
 	backpack_contents = list(
 		/obj/item/clothing/under/pants/white = 5,
 		/obj/item/clothing/head/beanie = 1,
@@ -45,7 +59,13 @@
 /datum/job/donor/casino
 	title = "Casino"
 	ru_title = "Крупье"
+	relate_job = "Bar"
+	access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS, ACCESS_THEATRE, ACCESS_HYDROPONICS, ACCESS_BAR)
+	minimal_access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS, ACCESS_THEATRE, ACCESS_HYDROPONICS, ACCESS_BAR)
+	hidden_from_job_prefs = TRUE
 	outfit = /datum/outfit/job/donor/casino
+	important_information = "Ваша должность нацелена на свободный РП-отыгрыш и не разрешает нарушать правила сервера. \
+	\nВы КРУПЬЕ. Данная роль нацелена на отыгрыш работника казино. Раздача карт, азарт - всё это ваша стезя. Организуйте свое лучшее казино."
 
 /datum/outfit/job/donor/casino
 	name = "Крупье"
@@ -55,6 +75,9 @@
 	suit = /obj/item/clothing/suit/storage/iaa/purplejacket
 	shoes = /obj/item/clothing/shoes/laceup
 	belt = /obj/item/storage/belt/fannypack/purple
+	l_ear = /obj/item/radio/headset/headset_service
+	pda = /obj/item/pda/bar
+	id = /obj/item/card/id/casino
 	backpack_contents = list(
 		/obj/item/storage/bag/money = 1,
 		/obj/item/coin/twoheaded = 1,
@@ -67,8 +90,13 @@
 /datum/job/donor/waiter
 	title = "Waiter"
 	ru_title = "Официант"
+	relate_job = "Bar"
+	access = list(ACCESS_MAINT_TUNNELS, ACCESS_THEATRE, ACCESS_HYDROPONICS, ACCESS_BAR, ACCESS_KITCHEN)
+	minimal_access = list(ACCESS_MAINT_TUNNELS, ACCESS_THEATRE, ACCESS_HYDROPONICS, ACCESS_BAR, ACCESS_KITCHEN)
+	hidden_from_job_prefs = TRUE
 	outfit = /datum/outfit/job/donor/waiter
-	relate_job = "Chef"
+	important_information = "Ваша должность нацелена на свободный РП-отыгрыш и не разрешает нарушать правила сервера. \
+	\nВы ОФИЦИАНТ. Данная роль нацелена на принеси-подай-иди-не мешай. Обеспечьте атмосферу настоящего ресторана."
 
 /datum/outfit/job/donor/waiter
 	name = "Официант"
@@ -79,6 +107,9 @@
 	shoes = /obj/item/clothing/shoes/laceup
 	head = /obj/item/clothing/head/fez
 	belt = /obj/item/storage/belt/fannypack/blue
+	l_ear = /obj/item/radio/headset/headset_service
+	pda = /obj/item/pda/chef
+	id = /obj/item/card/id/waiter
 	backpack_contents = list(
 		/obj/item/eftpos = 1,
 		/obj/item/clipboard = 1,
@@ -89,8 +120,14 @@
 /datum/job/donor/acolyte
 	title = "Acolyte"
 	ru_title = "Послушник"
-	outfit = /datum/outfit/job/donor/acolyte
 	relate_job = "Chaplain"
+	access = list(ACCESS_CHAPEL_OFFICE, ACCESS_MAINT_TUNNELS)
+	minimal_access = list(ACCESS_CHAPEL_OFFICE, ACCESS_MAINT_TUNNELS)
+	hidden_from_job_prefs = TRUE
+	outfit = /datum/outfit/job/donor/acolyte
+	important_information = "Ваша должность нацелена на свободный РП-отыгрыш и не разрешает нарушать правила сервера. \
+	\nВы ПОСЛУШНИК. Данная роль нацелена на богослужение и помощь священнику. Несите слово священника, он ваш пастырь. \
+	Вы не обладаете такими же способностями как священник, вы не можете освящать воду, но вы можете помочь тому, кто наделен этим даром!"
 
 /datum/outfit/job/donor/acolyte
 	name = "Послушник"
@@ -100,13 +137,22 @@
 	suit = /obj/item/clothing/suit/hooded/monk
 	shoes = /obj/item/clothing/shoes/black
 	r_hand = /obj/item/storage/bag/garment/chaplain
+	l_ear = /obj/item/radio/headset/headset_service
+	pda = /obj/item/pda/chaplain
+	id = /obj/item/card/id/acolyte
 
 
 /datum/job/donor/courier
 	title = "Courier"
 	ru_title = "Курьер"
 	alt_titles = list("Почтальон", "Доставщик")
+	relate_job = "Cargo Technician"
+	access = list(ACCESS_MAINT_TUNNELS, ACCESS_MAILSORTING, ACCESS_CARGO, ACCESS_MINT, ACCESS_MINERAL_STOREROOM)
+	minimal_access = list(ACCESS_MAINT_TUNNELS, ACCESS_CARGO, ACCESS_MAILSORTING, ACCESS_MINERAL_STOREROOM)
+	hidden_from_job_prefs = TRUE
 	outfit = /datum/outfit/job/donor/courier
+	important_information = "Ваша должность нацелена на свободный РП-отыгрыш и не разрешает нарушать правила сервера. \
+	\nВы КУРЬЕР. Данная роль нацелена на доставку товаров от одного отдела до другого. Ваше призвание - доставлять ресурсы от отдела до отдела или еду от самого ШЕФа."
 
 /datum/outfit/job/donor/courier
 	name = "Курьер"
@@ -118,6 +164,10 @@
 	r_hand = /obj/item/mail_scanner
 	belt = /obj/item/storage/belt/fannypack/orange
 	r_pocket = /obj/item/storage/bag/mail
+	l_ear = /obj/item/radio/headset/headset_service
+	r_ear = /obj/item/radio/headset/headset_cargo
+	pda = /obj/item/pda/cargo
+	id = /obj/item/card/id/courier
 	backpack_contents = list(
 		/obj/item/eftpos = 1,
 		/obj/item/clipboard = 1,
@@ -141,8 +191,14 @@
 /datum/job/donor/wrestler
 	title = "Wrestler"
 	ru_title = "Борец"
-	outfit = /datum/outfit/job/donor/wrestler
 	alt_titles = list("Рефери", "Тренер", "Боксёр")
+	relate_job = "Art"
+	access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS, ACCESS_THEATRE, ACCESS_RC_ANNOUNCE)
+	minimal_access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS, ACCESS_THEATRE, ACCESS_RC_ANNOUNCE)
+	hidden_from_job_prefs = TRUE
+	outfit = /datum/outfit/job/donor/wrestler
+	important_information = "Ваша должность нацелена на свободный РП-отыгрыш и не разрешает нарушать правила сервера. \
+	\nВы БОРЕЦ. Данная роль нацелена на дружественные соревнования. Найдите этот дух соревнования среди экипажа и обеспечьте зрелища!"
 
 /datum/outfit/job/donor/wrestler
 	name = "Борец"
@@ -153,7 +209,9 @@
 	shoes = /obj/item/clothing/shoes/sandal
 	belt = /obj/item/storage/belt/fannypack/blue
 	gloves = /obj/item/clothing/gloves/fingerless
-
+	l_ear = /obj/item/radio/headset/headset_service
+	pda = /obj/item/pda/librarian
+	id = /obj/item/card/id/wrestler
 	backpack_contents = list(
 		/obj/item/clothing/gloves/boxing = 1,
 		/obj/item/clothing/gloves/boxing/green = 1,
@@ -176,8 +234,15 @@
 /datum/job/donor/painter
 	title = "Painter"
 	ru_title = "Художник"
-	outfit = /datum/outfit/job/donor/painter
 	alt_titles = list("Художник", "Творец", "Искуствовед", "Пейзажист", "Фотореалист")
+	relate_job = "Art"
+	access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS, ACCESS_THEATRE)
+	minimal_access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS, ACCESS_THEATRE)
+	hidden_from_job_prefs = TRUE
+	outfit = /datum/outfit/job/donor/painter
+	important_information = "Ваша должность нацелена на свободный РП-отыгрыш и не разрешает нарушать правила сервера. \
+	\nВы ХУДОЖНИК. Данная роль нацелена на демонстрацию вашей тонкой натуры. Найдите себе красильщик полов, создайте искусство! \
+	Возможно вы захотите наложить инсталяцию посреди мостика?"
 
 /datum/outfit/job/donor/painter
 	name = "Художник"
@@ -188,6 +253,8 @@
 	shoes = /obj/item/clothing/shoes/white
 	head = /obj/item/clothing/head/beret/white
 	glasses = /obj/item/clothing/glasses/regular/hipster
+	l_ear = /obj/item/radio/headset/headset_service
+	id = /obj/item/card/id/painter
 	backpack_contents = list(
 		/obj/item/stack/cable_coil/random = 1,
 		/obj/item/camera = 1,
@@ -199,12 +266,19 @@
 		/obj/item/storage/fancy/crayons = 1,
 		/obj/item/pen/fancy = 1,
 		/obj/item/toy/crayon/rainbow = 1
+		/obj/item/painter = 1,
 	)
 
 /datum/job/donor/musican
 	title = "Musician"
 	ru_title = "Музыкант"
+	relate_job = "Art"
+	access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS, ACCESS_THEATRE)
+	minimal_access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS, ACCESS_THEATRE)
+	hidden_from_job_prefs = TRUE
 	outfit = /datum/outfit/job/donor/musican
+	important_information = "Ваша должность нацелена на свободный РП-отыгрыш и не разрешает нарушать правила сервера. \
+	\nВы МУЗЫКАНТ. Данная роль нацелена на создание музыкальной атмосферы. Приласкайте уши экипажа."
 
 /datum/outfit/job/donor/musican
 	name = "Музыкант"
@@ -213,10 +287,10 @@
 	uniform = /obj/item/clothing/under/costume/singerb
 	shoes = /obj/item/clothing/shoes/singerb
 	gloves = /obj/item/clothing/gloves/color/white
+	l_ear = /obj/item/radio/headset/headset_service
 	r_ear = /obj/item/clothing/ears/headphones
 	glasses = /obj/item/clothing/glasses/regular/hipster
-	pda = /obj/item/pda
-	id = /obj/item/card/id
+	id = /obj/item/card/id/musican
 	backpack_contents = list(
 		/obj/item/flashlight = 1,
 		/obj/item/instrument/violin = 1,
@@ -233,8 +307,15 @@
 /datum/job/donor/actor
 	title = "Actor"
 	ru_title = "Актер"
-	alt_titles = list("Артист", "Стендапер", "Комедиант", "Эстрадный Актер")
+	alt_titles = list("Артист", "Стендапер", "Комедиант", "Эстрадный Артист")
+	relate_job = "Art"
+	access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS, ACCESS_THEATRE)
+	minimal_access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS, ACCESS_THEATRE)
+	hidden_from_job_prefs = TRUE
 	outfit = /datum/outfit/job/donor/actor
+	important_information = "Ваша должность нацелена на свободный РП-отыгрыш и не разрешает нарушать правила сервера. \
+	\nВы АКТЕР. Данная роль нацелена на ваше актерское мастерство. Сами вы им стали или ваши родители вас на это натолкнули, \
+	но вы связаны со сценой. Устройте шоу, пригласите гостей! Попробуйте устроить совместное представление с другими актерами, клоуном и мимом."
 
 /datum/outfit/job/donor/actor
 	name = "Актер"
@@ -245,6 +326,8 @@
 	head = /obj/item/clothing/head/bowlerhat
 	gloves = /obj/item/clothing/gloves/color/white
 	glasses = /obj/item/clothing/glasses/regular
+	l_ear = /obj/item/radio/headset/headset_service
+	id = /obj/item/card/id/actor
 	backpack_contents = list(
 		/obj/item/clothing/under/rank/procedure/iaa/purple = 1,
 		/obj/item/clothing/suit/storage/iaa/purplejacket = 1,
@@ -268,7 +351,7 @@
 			if("Комедиант")
 				uniform = /obj/item/clothing/under/costume/jester
 				head = /obj/item/clothing/head/jester
-			if("Эстрадный Актер")
+			if("Эстрадный Артист")
 				uniform = /obj/item/clothing/under/suit/victsuit/redblk
 				suit = /obj/item/clothing/suit/draculacoat
 				if(H.gender == FEMALE)

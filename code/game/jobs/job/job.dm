@@ -73,7 +73,7 @@
 	var/job_banned_gamemode = FALSE
 
 //Only override this proc
-/datum/job/proc/after_spawn(mob/living/carbon/human/H)
+/datum/job/proc/after_spawn(mob/living/carbon/human/H, joined_late = FALSE)	// SS220 EDIT - jobs - prisoner spawn
 
 /datum/job/proc/announce(mob/living/carbon/human/H)
 
