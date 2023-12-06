@@ -469,8 +469,6 @@ SUBSYSTEM_DEF(jobs)
 
 	H.job = rank
 
-	// if(job) job.before_spawn(H, joined_late)	// SS220 ADD - Jobs relate module
-
 	if(!joined_late)
 		var/turf/T = null
 		var/obj/S = null
