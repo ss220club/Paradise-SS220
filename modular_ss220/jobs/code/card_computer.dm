@@ -5,8 +5,8 @@
 		if(modify && scan && !target_dept)
 			var/list/list_skins = GLOB.card_skins_ss220 + (is_centcom() ? GLOB.card_skins_donor_ss220 : list())
 			data["card_skins"] |= format_card_skins(list_skins)
-			data["jobs_security"] = GLOB.service_positions - (is_centcom() ? GLOB.security_donor_jobs : list())
-			data["jobs_service"] = GLOB.service_positions - (is_centcom() ? GLOB.service_donor_jobs : list())
+			data["jobs_security"] |= is_centcom() ? GLOB.security_donor_jobs : list()
+			data["jobs_service"] |= is_centcom() ? GLOB.service_donor_jobs : list()
 
 	return data
 
