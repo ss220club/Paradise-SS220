@@ -141,7 +141,6 @@
 
 /datum/sprite_accessory/hair/cia
 	species_allowed = list("Human", "Slime People", "Tajaran", "Vulpkanin")
-	glasses_over = 1
 
 /datum/sprite_accessory/hair/mulder
 	species_allowed = list("Human", "Slime People", "Tajaran", "Vulpkanin")
