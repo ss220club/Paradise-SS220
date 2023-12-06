@@ -29,7 +29,7 @@
 /datum/character_save/update_preview_icon(for_observer=0)
 	. = ..()
 
-	var/icon/clothes_s = null
+	var/icon/clothes_s = get_clothes_icon()
 
 	if(clothes_s)
 		preview_icon.Blend(clothes_s, ICON_OVERLAY)
@@ -46,7 +46,6 @@
 	var/g = ""
 	if(gender == FEMALE)
 		g = "f"
-
 
 	if(job_medsci_high)
 		switch(job_medsci_high)
@@ -114,15 +113,60 @@
 
 	else if(job_support_high)
 		switch(job_support_high)
-			if(JOB_BARBER)
-				clothes_s = new /icon('icons/obj/clothing/under/civilian.dmi', "barber")
-				clothes_s.Blend(new /icon('icons/mob/clothing/feet.dmi', "black"), ICON_UNDERLAY)
+			if(JOB_DONOR_TIER_1)
+				if(prob(95))
+					clothes_s = new /icon('icons/mob/clothing/under/color.dmi', "prisoner_s")
+				else
+					clothes_s = new /icon('icons/mob/clothing/under/color.dmi', "prisoner_d_s")
+				clothes_s.Blend(new /icon('icons/mob/clothing/feet.dmi', "orange"), ICON_UNDERLAY)
+
+			if(JOB_DONOR_TIER_2)
+				clothes_s = new /icon('icons/mob/clothing/under/civilian.dmi', "barber_s")
+				clothes_s.Blend(new /icon('icons/mob/clothing/feet.dmi', "laceups"), ICON_UNDERLAY)
+				if(prob(70))
+					clothes_s.Blend(new /icon('icons/mob/clothing/head.dmi', "boater_hat"), ICON_OVERLAY)
 				if(backbag == 2)
 					clothes_s.Blend(new /icon('icons/mob/clothing/back.dmi', "backpack"), ICON_OVERLAY)
 				else if(backbag == 3 || backbag == 4)
 					clothes_s.Blend(new /icon('icons/mob/clothing/back.dmi', "satchel"), ICON_OVERLAY)
 
+			if(JOB_DONOR_TIER_3)
+				if(prob(50))
+					clothes_s = new /icon('icons/mob/clothing/under/procedure.dmi', "iaa_s")
+				else
+					clothes_s = new /icon('icons/mob/clothing/under/misc.dmi', "waiter_s")
+				clothes_s.Blend(new /icon('icons/mob/clothing/feet.dmi', "laceups"), ICON_UNDERLAY)
+				if(prob(70))
+					clothes_s.Blend(new /icon('icons/mob/clothing/head.dmi', "fez"), ICON_OVERLAY)
+				if(backbag == 2)
+					clothes_s.Blend(new /icon('icons/mob/clothing/back.dmi', "backpack"), ICON_OVERLAY)
+				else if(backbag == 3 || backbag == 4)
+					clothes_s.Blend(new /icon('icons/mob/clothing/back.dmi', "satchel"), ICON_OVERLAY)
 
+			if(JOB_DONOR_TIER_4)
+				clothes_s = new /icon('icons/mob/clothing/under/procedure.dmi', "lawyer_black[g ? "_skirt" : ""]_s")
+				clothes_s.Blend(new /icon('icons/mob/clothing/feet.dmi', "laceups"), ICON_UNDERLAY)
+				if(prob(10))
+					clothes_s.Blend(new /icon('icons/mob/clothing/eyes.dmi', "monocle"), ICON_OVERLAY)
+				if(prob(70))
+					clothes_s.Blend(new /icon('icons/mob/clothing/head.dmi', "beaver_hat"), ICON_OVERLAY)
+				if(backbag == 2)
+					clothes_s.Blend(new /icon('icons/mob/clothing/back.dmi', "backpack"), ICON_OVERLAY)
+				else if(backbag == 3 || backbag == 4)
+					clothes_s.Blend(new /icon('icons/mob/clothing/back.dmi', "satchel"), ICON_OVERLAY)
 
+			if(JOB_DONOR_TIER_5)
+				clothes_s = new /icon('icons/mob/clothing/under/procedure.dmi', "ntrep[g ? "_skirt" : ""]_s")
+				if(prob(70))
+					clothes_s.Blend(new /icon('icons/mob/clothing/suit.dmi', "suitjacket_black_open"), ICON_OVERLAY)
+				clothes_s.Blend(new /icon('icons/mob/clothing/feet.dmi', "laceups"), ICON_UNDERLAY)
+				if(prob(70))
+					clothes_s.Blend(new /icon('icons/mob/clothing/eyes.dmi', "monocle"), ICON_OVERLAY)
+				if(prob(70))
+					clothes_s.Blend(new /icon('icons/mob/clothing/head.dmi', "tophat"), ICON_OVERLAY)
+				if(backbag == 2)
+					clothes_s.Blend(new /icon('icons/mob/clothing/back.dmi', "backpack"), ICON_OVERLAY)
+				else if(backbag == 3 || backbag == 4)
+					clothes_s.Blend(new /icon('icons/mob/clothing/back.dmi', "satchel"), ICON_OVERLAY)
 
 	return clothes_s

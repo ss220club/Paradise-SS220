@@ -176,6 +176,9 @@
 		/obj/item/clipboard = 1,
 	)
 
+	backpack = /obj/item/storage/backpack/industrial
+	satchel = /obj/item/storage/backpack/satchel_eng
+	dufflebag = /obj/item/storage/backpack/duffel/engineering
 
 
 /datum/outfit/job/donor/courier/pre_equip(mob/living/carbon/human/H, visualsOnly)
