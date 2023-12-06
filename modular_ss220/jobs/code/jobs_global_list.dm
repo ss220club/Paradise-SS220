@@ -75,6 +75,9 @@ GLOBAL_LIST_INIT(restricted_jobs_ss220, security_positions_ss220 + (
 	donor_tier_4_jobs + donor_tier_5_jobs
 ))
 
+// for choose donor ranks
+/proc/get_donor_ranks_for_choose()
+	return list("Т1 должность", "Т2 должность", "Т3 должность", "Т4 должность", "Т5 должность", "Donor")
 
 // ===================== ALL JOBS =====================
 
@@ -108,4 +111,3 @@ GLOBAL_LIST_INIT(all_jobs_ss220, (list() + (
 
 /proc/get_all_alt_titles_ss220()
 	return get_all_medical_alt_titles_ss220() + get_all_security_alt_titles_ss220() + get_all_engineering_alt_titles_ss220() + get_all_science_alt_titles_ss220() + get_all_donor_alt_titles_ss220()
-

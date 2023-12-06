@@ -2000,6 +2000,9 @@
 			if(job.hidden_from_job_prefs)
 				continue
 
+			if(!job.is_donor_allowed(user.client))	// SS220 ADD - DONOR JOBS
+				continue
+
 			index += 1
 			if((index >= limit) || (job.title in splitJobs))
 				if((index < limit) && (lastJob != null))
