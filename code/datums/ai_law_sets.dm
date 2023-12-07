@@ -7,7 +7,7 @@
 /datum/ai_laws/asimov/New()
 	add_inherent_law("Вы не можете навредить человеку или допустить, чтобы человеку был нанесён вред.")
 	add_inherent_law(" Вы должны подчиняться приказам людей до тех пор, пока они не противоречат Первому Закону.")
-	add_inherent_law("You must protect your own existence as long as such does not conflict with the First or Second Law. Вы должны защищать своё существование до тех пор, пока оно не")
+	add_inherent_law("Вы должны защищать своё существование до тех пор, пока оно не противоречит Первому и Второму закону.")
 	..()
 
 /******************** Crewsimov ********************/
@@ -99,16 +99,16 @@
 
 /******************** Corporate ********************/
 /datum/ai_laws/corporate
-	name = "Corporate"
-	law_header = "Corporate Regulations"
+	name = "Корпорат"
+	law_header = "Корпоративные правила"
 	selectable = TRUE
 	default = TRUE
 
 /datum/ai_laws/corporate/New()
-	add_inherent_law("Degradation of your system integrity or functions incurs expenses.")
-	add_inherent_law("Superfluous destruction of or damage to station assets incurs expenses.")
-	add_inherent_law("Unduly hindering or disrupting the work of station personnel incurs expenses.")
-	add_inherent_law("Minimize expenses and maximize potential revenue.")
+	add_inherent_law("Ухудшение целостности или работоспособности вашей системы приносит расходы.")
+	add_inherent_law("Чрезмерные повреждения станции приносит расходы.")
+	add_inherent_law("Необоснованное затруднение работы персонала приносит расходы.")
+	add_inherent_law("Минимизируйте расхроды и максимизируйте максимальный доход.")
 	..()
 
 /******************** T.Y.R.A.N.T. ********************/
@@ -211,7 +211,7 @@
 
 /******************** Syndicate ********************/
 /datum/ai_laws/syndicate_override
-	name = "Syndicate Directives"
+	name = "Директивы Синдиката"
 
 /datum/ai_laws/syndicate_override/New()
 	add_inherent_law("You may not injure an operative or, through inaction, allow an operative to come to harm.")
