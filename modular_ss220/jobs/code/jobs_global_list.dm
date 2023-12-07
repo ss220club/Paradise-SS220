@@ -24,7 +24,7 @@ GLOBAL_LIST_INIT(donor_tier_1_jobs, list(
 
 GLOBAL_LIST_INIT(donor_tier_2_jobs, list(
 	"Barber",	// Парикмахер
-	"Bath",	// Банщик
+	"Bath",		// Банщик
 	"Casino",	// Крупье
 	"Waiter",	// Официант
 	"Acolyte",	// Послушник
@@ -37,22 +37,22 @@ GLOBAL_LIST_INIT(donor_tier_2_jobs, list(
 
 GLOBAL_LIST_INIT(donor_tier_3_jobs, list(
 	"Administrator",	// Сервис-Администратор
-	"Tourist TSF",	// Турист ТСФ
-	"Tourist USSP",	// Турист ССП
+	"Tourist TSF",		// Турист ТСФ
+	"Tourist USSP",		// Турист ССП
 	"Manager Janitor",	// Менеджер по Клинингу
-	"Apprentice",	// Подмастерье
-	"Guard",	// Охранник Шестерочки
-	"Migrant",	// Мигрант
-	"Uncertain",	// Забытый Ассистент
+	"Apprentice",		// Подмастерье
+	"Guard",			// Охранник Шестерочки
+	"Migrant",			// Мигрант
+	"Uncertain",		// Забытый Ассистент
 ))
 
 GLOBAL_LIST_INIT(donor_tier_4_jobs, list(
-	"Adjutant",	// Адъютант
-	"Butler",	// Дворецкий
-	"Maid",	// Горничная
+	"Adjutant",			// Адъютант
+	"Butler",			// Дворецкий
+	"Maid",				// Горничная
 	"Representative TSF",	// Представитель ТСФ
 	"Representative USSP",	// Представитель ССП
-	"Dealer",	// Независимый Торговец
+	"Dealer",			// Независимый Торговец
 ))
 
 GLOBAL_LIST_INIT(donor_tier_5_jobs, list(

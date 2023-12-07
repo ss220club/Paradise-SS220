@@ -148,7 +148,7 @@
 	ru_title = "Курьер"
 	alt_titles = list("Почтальон", "Доставщик")
 	relate_job = "Cargo Technician"
-	supervisors = "the head of personnel and quartermaster"
+	supervisors = "главой персонала и квартирмейстером"
 	department_head = list("Head of Personnel", "Quartermaster")
 	access = list(ACCESS_MAINT_TUNNELS, ACCESS_MAILSORTING, ACCESS_CARGO, ACCESS_MINT, ACCESS_MINERAL_STOREROOM)
 	minimal_access = list(ACCESS_MAINT_TUNNELS, ACCESS_CARGO, ACCESS_MAILSORTING, ACCESS_MINERAL_STOREROOM)
@@ -243,7 +243,7 @@
 /datum/job/donor/painter
 	title = "Painter"
 	ru_title = "Художник"
-	alt_titles = list("Художник", "Творец", "Искуствовед", "Пейзажист", "Фотореалист")
+	alt_titles = list("Художник", "Творец", "Искусствовед", "Пейзажист", "Фотореалист")
 	relate_job = "Art"
 	access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS, ACCESS_THEATRE)
 	minimal_access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS, ACCESS_THEATRE)
@@ -277,6 +277,7 @@
 		/obj/item/toy/crayon/rainbow = 1,
 		/obj/item/painter = 1,
 	)
+
 
 /datum/job/donor/musican
 	title = "Musician"
