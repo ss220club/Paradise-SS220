@@ -238,7 +238,6 @@
 	)
 
 
-
 /datum/job/donor/painter
 	title = "Painter"
 	ru_title = "Художник"
