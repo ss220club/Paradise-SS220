@@ -17,7 +17,7 @@
 	outfit = /datum/outfit/job/donor/prisoner
 
 /datum/outfit/job/donor/prisoner
-	name = "Заключенный"
+	name = "Prisoner"
 	jobtype = /datum/job/donor/prisoner
 
 	uniform = /obj/item/clothing/under/color/orange/prison

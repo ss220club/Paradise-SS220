@@ -9,7 +9,7 @@
 	\nВы ПАРИКМАХЕР. Данная роль нацелена для наведения красоты на головах людей через добровольные начинания."
 
 /datum/outfit/job/donor/barber
-	name = "Парикмахер"
+	name = "Barber"
 	jobtype = /datum/job/donor/barber
 
 	uniform = /obj/item/clothing/under/rank/civilian/barber
@@ -34,7 +34,7 @@
 	\nВы БАНЩИК. Данная роль нацелена для создания душной атмосферы в замкнутых помещениях, РП-разговоров, встреч."
 
 /datum/outfit/job/donor/bath
-	name = "Банщик"
+	name = "Bath"
 	jobtype = /datum/job/donor/bath
 
 	uniform = /obj/item/clothing/under/costume/pirate_rags
@@ -69,7 +69,7 @@
 	\nВы КРУПЬЕ. Данная роль нацелена на отыгрыш работника казино. Раздача карт, азарт - всё это ваша стезя. Организуйте свое лучшее казино."
 
 /datum/outfit/job/donor/casino
-	name = "Крупье"
+	name = "Casino"
 	jobtype = /datum/job/donor/casino
 
 	uniform = /obj/item/clothing/under/rank/procedure/iaa/purple
@@ -100,7 +100,7 @@
 	\nВы ОФИЦИАНТ. Данная роль нацелена на принеси-подай-иди-не мешай. Обеспечьте атмосферу настоящего ресторана."
 
 /datum/outfit/job/donor/waiter
-	name = "Официант"
+	name = "Waiter"
 	jobtype = /datum/job/donor/waiter
 
 	uniform = /obj/item/clothing/under/misc/waiter
@@ -131,7 +131,7 @@
 	Вы не обладаете такими же способностями как священник, вы не можете освящать воду, но вы можете помочь тому, кто наделен этим даром!"
 
 /datum/outfit/job/donor/acolyte
-	name = "Послушник"
+	name = "Acolyte"
 	jobtype = /datum/job/donor/acolyte
 
 	uniform = /obj/item/clothing/under/suit/victsuit
@@ -143,7 +143,7 @@
 	id = /obj/item/card/id/acolyte
 
 
-/datum/job/donor/courier
+/datum/job/donor/deliverer
 	title = "Deliverer"
 	ru_title = "Доставщик"
 	relate_job = "Cargo Technician"
@@ -152,13 +152,13 @@
 	access = list(ACCESS_MAINT_TUNNELS, ACCESS_MAILSORTING, ACCESS_CARGO, ACCESS_MINT, ACCESS_MINERAL_STOREROOM)
 	minimal_access = list(ACCESS_MAINT_TUNNELS, ACCESS_CARGO, ACCESS_MAILSORTING, ACCESS_MINERAL_STOREROOM)
 	hidden_from_job_prefs = TRUE
-	outfit = /datum/outfit/job/donor/courier
+	outfit = /datum/outfit/job/donor/deliverer
 	important_information = "Ваша должность нацелена на свободный РП-отыгрыш и не разрешает нарушать правила сервера. \
 	\nВы ДОСТАВЩИК. Данная роль нацелена на доставку товаров от одного отдела до другого. Ваше призвание - доставлять ресурсы от отдела до отдела или еду от самого ШЕФа."
 
-/datum/outfit/job/donor/courier
-	name = "Курьер"
-	jobtype = /datum/job/donor/courier
+/datum/outfit/job/donor/deliverer
+	name = "Deliverer"
+	jobtype = /datum/job/donor/deliverer
 
 	uniform = /obj/item/clothing/under/misc/overalls
 	shoes = /obj/item/clothing/shoes/workboots
@@ -183,7 +183,7 @@
 	dufflebag = /obj/item/storage/backpack/duffel/engineering
 
 
-/datum/outfit/job/donor/courier/pre_equip(mob/living/carbon/human/H, visualsOnly)
+/datum/outfit/job/donor/deliverer/pre_equip(mob/living/carbon/human/H, visualsOnly)
 	. = ..()
 	if(H.mind && H.mind.role_alt_title)
 		switch(H.mind.role_alt_title)
@@ -209,7 +209,7 @@
 	\nВы БОРЕЦ. Данная роль нацелена на дружественные соревнования. Найдите этот дух соревнования среди экипажа и обеспечьте зрелища!"
 
 /datum/outfit/job/donor/wrestler
-	name = "Борец"
+	name = "Wrestler"
 	jobtype = /datum/job/donor/wrestler
 
 	uniform = /obj/item/clothing/under/pants/classicjeans
@@ -253,7 +253,7 @@
 	Возможно вы захотите наложить инсталяцию посреди мостика?"
 
 /datum/outfit/job/donor/painter
-	name = "Художник"
+	name = "Painter"
 	jobtype = /datum/job/donor/painter
 
 	uniform = /obj/item/clothing/under/misc/sl_suit
@@ -290,7 +290,7 @@
 	\nВы МУЗЫКАНТ. Данная роль нацелена на создание музыкальной атмосферы. Приласкайте уши экипажа."
 
 /datum/outfit/job/donor/musican
-	name = "Музыкант"
+	name = "Musician"
 	jobtype = /datum/job/donor/musican
 
 	uniform = /obj/item/clothing/under/costume/singerb
@@ -327,7 +327,7 @@
 	но вы связаны со сценой. Устройте шоу, пригласите гостей! Попробуйте устроить совместное представление с другими актерами, клоуном и мимом."
 
 /datum/outfit/job/donor/actor
-	name = "Актер"
+	name = "Actor"
 	jobtype = /datum/job/donor/actor
 
 	uniform = /obj/item/clothing/under/rank/procedure/lawyer/red
@@ -345,7 +345,7 @@
 		/obj/item/clothing/head/cuban_hat = 1,
 	)
 
-/datum/outfit/job/donor/courier/pre_equip(mob/living/carbon/human/H, visualsOnly)
+/datum/outfit/job/donor/deliverer/pre_equip(mob/living/carbon/human/H, visualsOnly)
 	. = ..()
 	if(H.gender == FEMALE)
 		uniform = /obj/item/clothing/under/rank/procedure/lawyer/red/skirt

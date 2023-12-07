@@ -15,7 +15,7 @@
 	\nВы не являетесь АВД или НТР'ом и можете не исполнять их обязанности. Но вы можете работать сообща с Юридическим Отделом."
 
 /datum/outfit/job/donor/adjutant
-	name = "Адъютант"
+	name = "Adjutant"
 	jobtype = /datum/job/donor/adjutant
 
 	uniform = /obj/item/clothing/under/rank/procedure/iaa/blue
@@ -55,7 +55,7 @@
 	\nВы ДВОРЕЦКИЙ. Данная роль нацелена на обеспечение глав в удовлетворении физических потребностей, а мостик в чистоте."
 
 /datum/outfit/job/donor/butler
-	name = "Дворецкий"
+	name = "Butler"
 	jobtype = /datum/job/donor/butler
 
 	uniform = /obj/item/clothing/under/rank/procedure/lawyer/black
@@ -92,7 +92,7 @@
 	\nВы ГОРНИЧНАЯ. Данная роль нацелена на обеспечение глав в удовлетворении физических потребностей, а мостик в чистоте."
 
 /datum/outfit/job/donor/maid
-	name = "Горничная"
+	name = "Maid"
 	jobtype = /datum/job/donor/maid
 
 	uniform = /obj/item/clothing/under/costume/janimaid
@@ -131,7 +131,7 @@
 	"
 
 /datum/outfit/job/donor/representative_tsf
-	name = "Представитель ТСФ"
+	name = "Representative TSF"
 	jobtype = /datum/job/donor/representative_tsf
 
 	uniform = /obj/item/clothing/under/solgov/rep
@@ -178,7 +178,7 @@
 	"
 
 /datum/outfit/job/donor/representative_ussp
-	name = "Представитель СССП"
+	name = "Representative USSP"
 	jobtype = /datum/job/donor/representative_ussp
 
 	uniform = /obj/item/clothing/under/new_soviet/sovietofficer
@@ -212,8 +212,8 @@
 
 /datum/job/donor/dealer
 	title = "Dealer"
-	ru_title = "Независимый Торговец"
-	alt_titles = list("Торговец", "Барахольщик", "Меценат", "Коммерсант")
+	ru_title = "Торговец"
+	alt_titles = list("Независимый Торговец", "Сдельщик", "Барахольщик", "Меценат", "Коммерсант")
 	access = list(ACCESS_MAINT_TUNNELS, ACCESS_LIBRARY, ACCESS_RC_ANNOUNCE, ACCESS_MAILSORTING, ACCESS_CARGO, ACCESS_MINT, ACCESS_MINERAL_STOREROOM, ACCESS_CONSTRUCTION)
 	minimal_access = list(ACCESS_MAINT_TUNNELS, ACCESS_LIBRARY, ACCESS_RC_ANNOUNCE, ACCESS_CARGO, ACCESS_MAILSORTING, ACCESS_MINERAL_STOREROOM, ACCESS_CONSTRUCTION)
 	hidden_from_job_prefs = TRUE
@@ -225,7 +225,7 @@
 	\nВам выдан личный EFTPOS для снятия средств с карт."
 
 /datum/outfit/job/donor/dealer
-	name = "Независимый Торговец"
+	name = "Dealer"
 	jobtype = /datum/job/donor/dealer
 
 	uniform = /obj/item/clothing/under/suit/black
@@ -252,7 +252,7 @@
 	. = ..()
 	if(H.mind && H.mind.role_alt_title)
 		switch(H.mind.role_alt_title)
-			if("Торговец", "Барахольщик")
+			if("Сдельщик", "Независимый Торговец", "Барахольщик")
 				uniform = /obj/item/clothing/under/color/brown
 				suit = /obj/item/clothing/suit/pirate_brown
 				shoes = /obj/item/clothing/shoes/cowboy
