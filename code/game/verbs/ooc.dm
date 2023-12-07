@@ -39,19 +39,19 @@ GLOBAL_VAR_INIT(admin_ooc_colour, "#b82e00")
 		return
 
 	if(!(prefs.toggles & PREFTOGGLE_CHAT_OOC))
-		to_chat(src, "<span class='danger'>You have OOC muted.</span>")
+		to_chat(src, "<span class='danger'>Вы замутили ООС-чат.</span>")
 		return
 
 	if(!check_rights(R_ADMIN|R_MOD,0))
 		if(!GLOB.ooc_enabled)
-			to_chat(src, "<span class='danger'>OOC is globally muted.</span>")
+			to_chat(src, "<span class='danger'>ООС-чат выключен на сервере..</span>")
 			return
 		if(handle_spam_prevention(msg, MUTE_OOC, OOC_COOLDOWN))
 			return
 		if(findtext(msg, "byond://"))
-			to_chat(src, "<B>Advertising other servers is not allowed.</B>")
-			log_admin("[key_name(src)] has attempted to advertise in OOC: [msg]")
-			message_admins("[key_name_admin(src)] has attempted to advertise in OOC: [msg]")
+			to_chat(src, "<B>Реклама других серверов запрещена.</B>")
+			log_admin("[key_name(src)] попытался прорекламировать в ООС: [msg]")
+			message_admins("[key_name_admin(src)] попытался прорекламировать в ООС: [msg]")
 			return
 
 	log_ooc(msg, src)
@@ -108,9 +108,9 @@ GLOBAL_VAR_INIT(admin_ooc_colour, "#b82e00")
 /proc/toggle_ooc()
 	GLOB.ooc_enabled = (!GLOB.ooc_enabled)
 	if(GLOB.ooc_enabled)
-		to_chat(world, "<B>The OOC channel has been globally enabled!</B>")
+		to_chat(world, "<B>ООС-чат был глобально включён!</B>")
 	else
-		to_chat(world, "<B>The OOC channel has been globally disabled!</B>")
+		to_chat(world, "<B>ООС-чат был глобально выключен!</B>")
 
 /proc/auto_toggle_ooc(on)
 	if(GLOB.configuration.general.auto_disable_ooc && GLOB.ooc_enabled != on)

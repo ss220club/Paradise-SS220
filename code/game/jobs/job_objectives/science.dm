@@ -4,8 +4,8 @@
 
 // MAXIMUM SCIENCE
 /datum/job_objective/further_research
-	objective_name = "Perform Research for Nanotrasen"
-	description = "Utilize the facilities on this research installation to increase half the station's research levels above level 2, have cargo ship the research to centcomm in crates."
+	objective_name = "Проводите исследования для NanoTrasen"
+	description = "Используйте устройства в научном отделе для улучшения половины технологий станции выше второго уровня. Также требуется отправить исследования в ящике на ЦК."
 	gives_payout = TRUE
 	completion_payment = 150
 
@@ -24,8 +24,8 @@
 
 //Cyborgs
 /datum/job_objective/make_cyborg
-	objective_name = "Construct Additional Cyborgs"
-	description = "Construct at least one cyborg for the station to increase workplace productivity"
+	objective_name = "Постройка дополнительных киборгов"
+	description = "Постройте как минимум одного киборга для увеличения производительности станции."
 	gives_payout = TRUE
 	completion_payment = 100
 
@@ -34,8 +34,8 @@
 
 //RIPLEY's
 /datum/job_objective/make_ripley
-	objective_name = "Construct a Ripley Mech"
-	description = "Construct a Ripley Mech for station usage"
+	objective_name = "Постройте меха Рипли"
+	description = "Постройте меха Рипли для использования на станции."
 	gives_payout = TRUE
 	completion_payment = 200
 

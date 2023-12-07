@@ -1,10 +1,10 @@
 /client/verb/randomtip()
 	set category = "OOC"
-	set name = "Give Random Tip"
-	set desc = "Shows you a random tip"
+	set name = "Рандомная подсказка"
+	set desc = "Даёт рандомную подсказку"
 
 	var/m
-	
+
 	var/list/randomtips = file2list("strings/tips.txt")
 	var/list/memetips = file2list("strings/sillytips.txt")
 	if(randomtips.len && prob(95))
