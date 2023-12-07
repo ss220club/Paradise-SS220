@@ -144,7 +144,7 @@
 
 
 /datum/job/donor/courier
-	title = "Delivery"
+	title = "Deliverer"
 	ru_title = "Доставщик"
 	alt_titles = list("Почтальон", "Доставщик", "Курьер")
 	relate_job = "Cargo Technician"
