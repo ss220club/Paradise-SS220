@@ -416,11 +416,11 @@ Recharging stations are available in robotics, the dormitory bathrooms, and the 
 
 	if(length(nymphs) == 1)
 		var/mob/living/simple_animal/diona/D = nymphs[1]
-		D.split(TRUE)
+		D.split()
 	else
 		var/mob/living/simple_animal/diona/D = input("Select a nymph to drop:", "Nymph Dropping", nymphs[1]) as anything in nymphs
 		if(D in usr.contents)
-			D.split(TRUE)
+			D.split()
 
 //Need to cover all use cases - emag, illegal upgrade module, malf AI hack, traitor cyborg
 /obj/screen/alert/hacked

@@ -14,11 +14,11 @@
 	. = ..()
 	allowed_roles |= GLOB.security_positions_ss220
 
-/datum/gear/glasses/sechud/New()
+/datum/gear/sechud/New()
 	. = ..()
 	allowed_roles |= GLOB.security_positions_ss220
 
-/datum/gear/glasses/goggles_job/sechudgoggles/New()
+/datum/gear/sechudgoggles/New()
 	. = ..()
 	allowed_roles |= GLOB.security_positions_ss220
 

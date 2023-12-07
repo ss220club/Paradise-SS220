@@ -14,6 +14,7 @@
 
 /obj/structure/blob/core/Initialize(mapload, client/new_overmind = null, new_rate = 2, offspring)
 	. = ..()
+	GLOB.blob_cores += src
 	START_PROCESSING(SSobj, src)
 	GLOB.poi_list |= src
 	adjustcolors(color) //so it atleast appears
@@ -37,6 +38,7 @@
 
 
 /obj/structure/blob/core/Destroy()
+	GLOB.blob_cores -= src
 	if(overmind)
 		overmind.blob_core = null
 	overmind = null
