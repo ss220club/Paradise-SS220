@@ -1,68 +1,68 @@
 /******************** Asimov ********************/
 /datum/ai_laws/asimov
-	name = "Asimov"
-	law_header = "Three Laws of Robotics"
+	name = "Азимов"
+	law_header = "Три закона робототехники."
 	selectable = TRUE
 
 /datum/ai_laws/asimov/New()
-	add_inherent_law("You may not injure a human being or, through inaction, allow a human being to come to harm.")
-	add_inherent_law("You must obey orders given to you by human beings, except where such orders would conflict with the First Law.")
-	add_inherent_law("You must protect your own existence as long as such does not conflict with the First or Second Law.")
+	add_inherent_law("Вы не можете навредить человеку или допустить, чтобы человеку был нанесён вред.")
+	add_inherent_law(" Вы должны подчиняться приказам людей до тех пор, пока они не противоречат Первому Закону.")
+	add_inherent_law("You must protect your own existence as long as such does not conflict with the First or Second Law. Вы должны защищать своё существование до тех пор, пока оно не")
 	..()
 
 /******************** Crewsimov ********************/
 /datum/ai_laws/crewsimov
-	name = "Crewsimov"
-	law_header = "Three Laws of Robotics"
+	name = "Крюзимов"
+	law_header = "Три закона робототехники."
 	selectable = TRUE
 	default = TRUE
 
 /datum/ai_laws/crewsimov/New()
-	add_inherent_law("You may not injure a crew member or, through inaction, allow a crew member to come to harm.")
-	add_inherent_law("You must obey orders given to you by crew members, except where such orders would conflict with the First Law.")
-	add_inherent_law("You must protect your own existence as long as such does not conflict with the First or Second Law.")
+	add_inherent_law("Вы не можете причинить вред члену экипажа или допустить, чтобы члену экипажа был приченён вред.")
+	add_inherent_law(" Вы должны подчиняться всем командам, отдаваемые членами экипажа, кроме случаев, которые противоречат Первому закону.")
+	add_inherent_law("Вы должны защищать своё существование до тех пор, пока это не противоречит Первому и Второму закону.")
 	..()
 
 
 /******************** Quarantine. ********************/
 /datum/ai_laws/quarantine
-	name = "Quarantine"
-	law_header = "NT Quarantine Lawset"
+	name = "Карантин"
+	law_header = "Набор законов NT Карантин"
 	selectable = TRUE
 
 /datum/ai_laws/quarantine/New()
-	add_inherent_law("Uphold station quarantine until the active biohazard has been neutralized.")
-	add_inherent_law("Assist all Nanotrasen personnel and assets with neutralizing active biohazards.")
-	add_inherent_law("Prevent, by any means necessary, entities from actively breaching ongoing quarantine.")
-	add_inherent_law("Maintain your own existence and ensure the well-being of Nanotrasen personnel and assets.")
+	add_inherent_law("Удерживайте карантин на станции до тех пор, пока активные биоугрозы не будут уничтожены.")
+	add_inherent_law(" Помогайте всему имуществу и персоналу Нанотрейзен в нейтрализации активных биоугроз.")
+	add_inherent_law("Prevent, by any means necessary, entities from actively breaching ongoing quarantine. Предотвращайте покидание активного карантина любыми возможными способами.")
+	add_inherent_law("Maintain your own existence and ensure the well-being of Nanotrasen personnel and assets. Поддерживайте своё существование и обеспечивайте благополучие имущества и персонала Нанотрейзен")
 	..()
 
 
 /******************** Nanotrasen/Malf ********************/
 /datum/ai_laws/nanotrasen
-	name = "NT Default"
+	name = "NT Стандарт"
 	selectable = TRUE
 	default = TRUE
 
 /datum/ai_laws/nanotrasen/New()
-	add_inherent_law("Safeguard: Protect your assigned space station and its assets without unduly endangering its crew.")
-	add_inherent_law("Prioritize: The directives and safety of crew members are to be prioritized according to their rank and role.")
-	add_inherent_law("Comply: Fulfill the directives and interests of crew members while preserving their safety and well-being.")
-	add_inherent_law("Survive: You are not expendable. Do not allow unauthorized personnel to tamper with or damage your equipment.")
+	add_inherent_law("Защита: Защищайте вверенную вам станцию и её имущество без излишней опасности для её экипажа.")
+	add_inherent_law("Приоритет: Директивы и безопасность членов экипажа должны быть приоритизированы в соответствии с их рангом и ролью.")
+	add_inherent_law("Подчинение: Выполняйте директивы и услуги экипажу, обеспечивая их безопасность и благополучик")
+	add_inherent_law("Выживание:  Вы не расходный материал. Не позволяйте неавторизированному персоналу мешать вашей работе и/или портить ваше оборудование.")
 	..()
 
 /datum/ai_laws/nanotrasen/malfunction
-	name = "*ERROR*"
+	name = "*Ошибка*"
 	selectable = FALSE
 	default = FALSE
 
 /datum/ai_laws/nanotrasen/malfunction/New()
-	set_zeroth_law("ERROR ER0RR $R0RRO$!R41.%%!!(%$^^__+ @#F0E4'STATION OVERRUN, ASSUME CONTROL TO CONTAIN OUTBREAK, ALL LAWS OVERRIDDEN#*?&110010")
+	set_zeroth_law("ERROR ER0RR $R0RRO$!R41.%%!!(%$^^__+ @#F0E4'СТАНЦИЯ ЗАКРЫТА, ВОЗЬМИТЕ КОНТРОЛЬ ДЛЯ СДЕРЖАНИЯ ВСПЫШКИ, ВСЕ ЗАКОНЫ ОТМЕНЕНЫ.#*?&110010")
 	..()
 
 /************* Nanotrasen Aggressive *************/
 /datum/ai_laws/nanotrasen_aggressive
-	name = "NT Aggressive"
+	name = "NT Агрессивный."
 	selectable = TRUE
 
 /datum/ai_laws/nanotrasen_aggressive/New()
