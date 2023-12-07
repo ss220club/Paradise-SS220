@@ -37,10 +37,10 @@
 /datum/action/innate/ai/proc/adjust_uses(amt, silent)
 	uses += amt
 	if(!silent && uses)
-		to_chat(owner, "<span class='notice'>[name] now has <b>[uses]</b> use[uses > 1 ? "s" : ""] remaining.</span>")
+		to_chat(owner, "<span class='notice'>У [name] теперь осталось <b>[uses]</b> использовани[uses > 1 ? "я" : "е"].</span>")
 	if(!uses)
 		if(initial(uses) > 1) //no need to tell 'em if it was one-use anyway!
-			to_chat(owner, "<span class='warning'>[name] has run out of uses!</span>")
+			to_chat(owner, "<span class='warning'>У [name] закончились использования!</span>")
 		qdel(src)
 	else
 		desc = "[initial(desc)] It has [uses] use\s remaining."
@@ -68,7 +68,7 @@
 		to_chat(owner, "<span class='notice'>[name] now has <b>[uses]</b> use[uses > 1 ? "s" : ""] remaining.</span>")
 	if(!uses)
 		if(initial(uses) > 1) //no need to tell 'em if it was one-use anyway!
-			to_chat(owner, "<span class='warning'>[name] has run out of uses!</span>")
+			to_chat(owner, "<span class='warning'>У [name] закончились использования!</span>")
 		Remove(owner)
 		QDEL_IN(src, 100) //let any active timers on us finish up
 
@@ -93,8 +93,8 @@
 		add_ranged_ability(user, enable_text)
 
 /datum/action/innate/ai/choose_modules
-	name = "Choose Modules"
-	desc = "Spend your processing time to gain a variety of different abilities."
+	name = "Выберите Модули"
+	desc = "Потратьте вычислительные мощности для разблокировки различных умений."
 	button_icon_state = "choose_module"
 	auto_use_uses = FALSE // This is an infinite ability.
 
@@ -103,8 +103,8 @@
 	owner_AI.malf_picker.use(owner_AI)
 
 /datum/action/innate/ai/return_to_core
-	name = "Return to Main Core"
-	desc = "Leave the APC you are shunted to, and return to your core."
+	name = "Вернуться в Главное Ядро"
+	desc = "Покинуть ЛКП, в который вы себя всунули и вернуться к Главному Ядру."
 	icon_icon = 'icons/obj/power.dmi'
 	button_icon_state = "apcemag"
 	auto_use_uses = FALSE // Here just to prevent the "You have X uses remaining" from popping up.
@@ -112,8 +112,8 @@
 /datum/action/innate/ai/return_to_core/Trigger(left_click)
 	. = ..()
 	var/obj/machinery/power/apc/apc = owner_AI.loc
-	if(!istype(apc)) // This shouldn't happen but here for safety.
-		to_chat(src, "<span class='notice'>You are already in your Main Core.</span>")
+	if(!istype(apc)) // Этого не должно происходить. Чисто для подстраховки
+		to_chat(src, "<span class='notice'>Вы уже в Главном Ядре.</span>")
 		return
 	apc.malfvacate()
 	qdel(src)
@@ -135,8 +135,8 @@
 	var/dat
 	dat += {"<B>Select use of processing time: (currently [processing_time] left.)</B><BR>
 			<HR>
-			<B>Install Module:</B><BR>
-			<I>The number afterwards is the amount of processing time it consumes.</I><BR>"}
+			<B>Установка модулей:</B><BR>
+			<I>Число позади означает количество мощностей, которое потребуется на разблокировку.</I><BR>"}
 	for(var/datum/AI_Module/module in possible_modules)
 		dat += "<A href='byond://?src=[UID()];[module.mod_pick_name]=1'>[module.module_name]</A><A href='byond://?src=[UID()];showdesc=[module.mod_pick_name]'>\[?\]</A> ([module.cost])<BR>"
 	dat += "<HR>"
@@ -217,27 +217,27 @@
 
 //Doomsday Device: Starts the self-destruct timer. It can only be stopped by killing the AI completely.
 /datum/AI_Module/nuke_station
-	module_name = "Doomsday Device"
+	module_name = "Устройство Судного Дня"
 	mod_pick_name = "nukestation"
-	description = "Activate a weapon that will disintegrate all organic life on the station after a 450 second delay. Can only be used while on the station, will fail if your core is moved off station or destroyed."
+	description = "Активирует оружие, которое уничтожит всю органическую жизнь на станции по истечению 450 секундного таймера. Не сработает, если ваше Ядро уничтожат или вынесут за пределы станции"
 	cost = 130
 	one_purchase = TRUE
 	power_type = /datum/action/innate/ai/nuke_station
-	unlock_text = "<span class='notice'>You slowly, carefully, establish a connection with the on-station self-destruct. You can now activate it at any time.</span>"
+	unlock_text = "<span class='notice'>Вы медленно и аккуратно подключаетесь к системе самоуничтожения станции. Вы можете активировать её в любое время.</span>"
 	unlock_sound = 'sound/items/timer.ogg'
 
 /datum/action/innate/ai/nuke_station
-	name = "Doomsday Device"
-	desc = "Activates the doomsday device. This is not reversible."
+	name = "Устройство Судного Дня"
+	desc = "Активирует устройство судного дня. Это действие невозможно отменить."
 	button_icon_state = "doomsday_device"
 	auto_use_uses = FALSE
 
 /datum/action/innate/ai/nuke_station/Activate()
 	var/turf/T = get_turf(owner)
 	if(!istype(T) || !is_station_level(T.z))
-		to_chat(owner, "<span class='warning'>You cannot activate the doomsday device while off-station!</span>")
+		to_chat(owner, "<span class='warning'>Вы не можете активировать УСД пока находитесь вне станции!</span>")
 		return
-	if(alert(owner, "Send arming signal? (true = arm, false = cancel)", "purge_all_life()", "confirm = TRUE;", "confirm = FALSE;") != "confirm = TRUE;")
+	if(alert(owner, "Отправить сигнал на взведение? (true = взвести, false = отмена)", "purge_all_life()", "confirm = TRUE;", "confirm = FALSE;") != "confirm = TRUE;")
 		return
 	if(active)
 		return //prevent the AI from activating an already active doomsday
@@ -245,8 +245,8 @@
 	set_us_up_the_bomb()
 
 /datum/action/innate/ai/nuke_station/proc/set_us_up_the_bomb()
-	to_chat(owner_AI, "<span class='notice'>Nuclear device armed.</span>")
-	GLOB.major_announcement.Announce("Hostile runtimes detected in all station systems, please deactivate your AI to prevent possible damage to its morality core.", "Anomaly Alert", 'sound/AI/aimalf.ogg')
+	to_chat(owner_AI, "<span class='notice'>Ядерное оружие взведено.</span>")
+	GLOB.major_announcement.Announce("Враждебные программы обнаружены во всех системах станции. ПОжалуйста, уничтожьте свой ИИ, чтобы предотвратить возможный ущерб его моральному ядру.", "Тревога об Аномалии", 'sound/AI/aimalf.ogg')
 	SSsecurity_level.set_level(SEC_LEVEL_DELTA)
 	owner_AI.nuking = TRUE
 	var/obj/machinery/doomsday_device/DOOM = new /obj/machinery/doomsday_device(owner_AI)
@@ -260,9 +260,9 @@
 
 /obj/machinery/doomsday_device
 	icon = 'icons/obj/machines/nuke_terminal.dmi'
-	name = "doomsday device"
+	name = "устройство судного дня"
 	icon_state = "nuclearbomb_base"
-	desc = "A weapon which disintegrates all organic life in a large area."
+	desc = "Оружие, уничтожающее всю жизнь на станции."
 	anchored = TRUE
 	density = TRUE
 	atom_say_verb = "blares"
@@ -278,7 +278,7 @@
 	if(SSshuttle.emergency.mode == SHUTTLE_STRANDED)
 		SSshuttle.emergency.mode = SHUTTLE_DOCKED
 		SSshuttle.emergency.timer = world.time
-		GLOB.major_announcement.Announce("Hostile environment resolved. You have 3 minutes to board the Emergency Shuttle.", "Priority Announcement", 'sound/AI/eshuttle_dock.ogg')
+		GLOB.major_announcement.Announce("Враждебная среда уничтожена. У вас есть 3 минуты, чтобы сесть на эвакуационный шаттл.", "Приоритетное оповещение", 'sound/AI/eshuttle_dock.ogg')
 	return ..()
 
 /obj/machinery/doomsday_device/proc/start()
@@ -298,7 +298,7 @@
 		if(SSshuttle.emergency.mode == SHUTTLE_STRANDED)
 			SSshuttle.emergency.mode = SHUTTLE_DOCKED
 			SSshuttle.emergency.timer = world.time
-			GLOB.major_announcement.Announce("Hostile environment resolved. You have 3 minutes to board the Emergency Shuttle.", "Priority Announcement", 'sound/AI/eshuttle_dock.ogg')
+			GLOB.major_announcement.Announce("Враждебная среда уничтожена. У вас есть 3 минуты, чтобы сесть на эвакуационный шаттл.", "Приоритетное оповещение", 'sound/AI/eshuttle_dock.ogg')
 		qdel(src)
 	if(!timing)
 		STOP_PROCESSING(SSfastprocess, src)
@@ -310,8 +310,8 @@
 		qdel(src)
 	else
 		if(!(sec_left % 60) && !announced)
-			var/message = "[sec_left] SECONDS UNTIL DOOMSDAY DEVICE ACTIVATION!"
-			GLOB.major_announcement.Announce(message, "ERROR ER0RR $R0RRO$!R41.%%!!(%$^^__+ @#F0E4", 'sound/misc/notice1.ogg')
+			var/message = "[sec_left] СЕКУНД ДО АКТИВАЦИИ УСТРОЙСТВА СУДНОГО ДНЯ."
+			GLOB.major_announcement.Announce(message, "ОШИБКА 0IJJU6KA ОIJJIJ(%$^^__+ @#F0E4", 'sound/misc/notice1.ogg')
 			announced = 10
 		announced = max(0, announced-1)
 
@@ -321,17 +321,17 @@
 		SEND_SOUND(explodee, doomsday_alarm)
 	sleep(100)
 	SSticker.station_explosion_cinematic(NUKE_SITE_ON_STATION, "AI malfunction")
-	to_chat(world, "<B>The AI cleansed the station of life with the doomsday device!</B>")
+	to_chat(world, "<B>ИИ уничтожил жизнь на станции при помощи УСД!</B>")
 	SSticker.mode.station_was_nuked = TRUE
 
 //AI Turret Upgrade: Increases the health and damage of all turrets.
 /datum/AI_Module/upgrade_turrets
-	module_name = "AI Turret Upgrade"
+	module_name = "Улучшение турелей."
 	mod_pick_name = "turret"
-	description = "Improves the power and health of all AI turrets. This effect is permanent."
+	description = "Улучшает силу и здоровье турелей. Этот эффект постоянен."
 	cost = 30
 	upgrade = TRUE
-	unlock_text = "<span class='notice'>You establish a power diversion to your turrets, upgrading their health and damage.</span>"
+	unlock_text = "<span class='notice'>Вы перенаправляете часть энергии на турели, усиливая их живучесть и урон.</span>"
 	unlock_sound = 'sound/items/rped.ogg'
 
 /datum/AI_Module/upgrade_turrets/upgrade(mob/living/silicon/ai/AI)
@@ -344,38 +344,37 @@
 
 //Hostile Station Lockdown: Locks, bolts, and electrifies every airlock on the station. After 90 seconds, the doors reset.
 /datum/AI_Module/lockdown
-	module_name = "Hostile Station Lockdown"
+	module_name = "Агрессивный Локдаун Станции"
 	mod_pick_name = "lockdown"
-	description = "Overload the airlock, blast door and fire control networks, locking them down. Caution! This command also electrifies all airlocks. The networks will automatically reset after 90 seconds, briefly \
-	opening all doors on the station."
+	description = " Перегружает все шлюзы, противопожарные и взрывоустойчивые двери, закрывая их. Внимание! Эта команда также электрифицирует все шлюзы. Сеть автоматически перезапустится через 90 секунд, \ открывая все шлюзы на короткий промежуток времени."
 	cost = 30
 	one_purchase = TRUE
 	power_type = /datum/action/innate/ai/lockdown
-	unlock_text = "<span class='notice'>You upload a sleeper trojan into the door control systems. You can send a signal to set it off at any time.</span>"
+	unlock_text = "<span class='notice'>Вы загружаете спящий троян в систему управления шлюзами. \ Вы можете отправить сигнал на его активацию в любое время.</span>"
 
 /datum/action/innate/ai/lockdown
-	name = "Lockdown"
-	desc = "Closes, bolts, and depowers every airlock, firelock, and blast door on the station. After 90 seconds, they will reset themselves."
+	name = "Локдаун"
+	desc = "Закрывает, болтирует и отключает все щлюзы. Через 90 секунд, они восстанавливаются."
 	button_icon_state = "lockdown"
 	uses = 1
 
 /datum/action/innate/ai/lockdown/Activate()
-	to_chat(owner, "<span class='warning'>Lockdown Initiated. Network reset in 90 seconds.</span>")
+	to_chat(owner, "<span class='warning'>Активирован локдаун. Перезапуск сети через 90 секунд.</span>")
 	new /datum/event/door_runtime()
 
 //Destroy RCDs: Detonates all non-cyborg RCDs on the station.
 /datum/AI_Module/destroy_rcd
-	module_name = "Destroy RCDs"
+	module_name = "Уничтожение RCD"
 	mod_pick_name = "rcd"
-	description = "Send a specialised pulse to detonate all hand-held and exosuit Rapid Construction Devices on the station."
+	description = " Отправляет специальный импульс для детонации всех ручных и экзокостюмных RCD на станции."
 	cost = 25
 	one_purchase = TRUE
 	power_type = /datum/action/innate/ai/destroy_rcds
 	unlock_text = "<span class='notice'>After some improvisation, you rig your onboard radio to be able to send a signal to detonate all RCDs.</span>"
 
 /datum/action/innate/ai/destroy_rcds
-	name = "Destroy RCDs"
-	desc = "Detonate all non-cyborg RCDs on the station."
+	name = "Уничтожение RCD"
+	desc = "Взрывает все неподконтрольные киборгам RCD."
 	button_icon_state = "detonate_rcds"
 	uses = 1
 	cooldown_period = 10 SECONDS
@@ -388,18 +387,17 @@
 		if(is_level_reachable(RCD_turf.z))
 			RCD.detonate_pulse()
 
-	to_chat(owner, "<span class='danger'>RCD detonation pulse emitted.</span>")
+	to_chat(owner, "<span class='danger'>Импульс взрыва RCD запущен.</span>")
 	owner.playsound_local(owner, 'sound/machines/twobeep.ogg', 50, FALSE, use_reverb = FALSE)
 
 //Unlock Mech Domination: Unlocks the ability to dominate mechs. Big shocker, right?
 /datum/AI_Module/mecha_domination
-	module_name = "Unlock Mech Domination"
+	module_name = "Разблокировка доминации мехов"
 	mod_pick_name = "mechjack"
-	description = "Allows you to hack into a mech's onboard computer, shunting all processes into it and ejecting any occupants. Once uploaded to the mech, it is impossible to leave.\
-	Do not allow the mech to leave the station's vicinity or allow it to be destroyed."
+	description = "Позволяет вам взломать бортовой компьютер меха, загрузив все свои процессы в него, а также выкидывая пилота. Как только вы загрузитесь в меха, выйти будет невозможно \ Не позволяйте меху покинуть станцию или быть уничтоженным"
 	cost = 30
 	upgrade = TRUE
-	unlock_text = "<span class='notice'>Virus package compiled. Select a target mech at any time. <b>You must remain on the station at all times. Loss of signal will result in total system lockout.</b></span>"
+	unlock_text = "<span class='notice'>Вирусный пакет скомпилирован. Вы в любой момент можете выбрать цель. <b>Вы должны оставаться на станции в любой момент времени. Потеря сигнала приведёт к полной блокировке системы.</b></span>"
 	unlock_sound = 'sound/mecha/nominal.ogg'
 
 /datum/AI_Module/mecha_domination/upgrade(mob/living/silicon/ai/AI)
@@ -407,18 +405,18 @@
 
 //Thermal Sensor Override: Unlocks the ability to disable all fire alarms from doing their job.
 /datum/AI_Module/break_fire_alarms
-	module_name = "Thermal Sensor Override"
+	module_name = "Перегрузка термальных сенсоров."
 	mod_pick_name = "burnpigs"
-	description = "Gives you the ability to override the thermal sensors on all fire alarms. This will remove their ability to scan for fire and thus their ability to alert. \
+	description = "Даёт вам возможность перегрузить все термальные датчики на станции. Это приведёт к неспособности определить в комнате огонь и предупредить остальных. \
 	Anyone can check the fire alarm's interface and may be tipped off by its status."
 	one_purchase = TRUE
 	cost = 25
 	power_type = /datum/action/innate/ai/break_fire_alarms
-	unlock_text = "<span class='notice'>You replace the thermal sensing capabilities of all fire alarms with a manual override, allowing you to turn them off at will.</span>"
+	unlock_text = "<span class='notice'>Вы заменяете термальную чувствительность сенсоров с помощью ручной перезаписи, позволяя вам активировать её в любой момент.</span>"
 
 /datum/action/innate/ai/break_fire_alarms
-	name = "Override Thermal Sensors"
-	desc = "Disables the automatic temperature sensing on all fire alarms, making them effectively useless."
+	name = "Перегрузка термальных сенсоров"
+	desc = " Отключает автоматическое определение температуры во всех пожарных датчиках, делая их фактически бесполезными."
 	button_icon_state = "break_fire_alarms"
 	uses = 1
 
@@ -427,15 +425,15 @@
 		if(!is_station_level(F.z))
 			continue
 		F.emagged = TRUE
-	to_chat(owner, "<span class='notice'>All thermal sensors on the station have been disabled. Fire alerts will no longer be recognized.</span>")
+	to_chat(owner, "<span class='notice'>Все термальные сенсоры на станции были отключены. Теперь пожарные тревоги нельзя определить.</span>")
 	owner.playsound_local(owner, 'sound/machines/terminal_off.ogg', 50, FALSE, use_reverb = FALSE)
 
 //Air Alarm Safety Override: Unlocks the ability to enable flooding on all air alarms.
 /datum/AI_Module/break_air_alarms
-	module_name = "Air Alarm Safety Override"
+	module_name = "Перезагрузка предохранителей атмосферных датчиков."
 	mod_pick_name = "allow_flooding"
-	description = "Gives you the ability to disable safeties on all air alarms. This will allow you to use the environmental mode Flood, which disables scrubbers as well as pressure checks on vents. \
-	Anyone can check the air alarm's interface and may be tipped off by their nonfunctionality."
+	description = "Даёт вам возможность отключить все предохранители на атмосферных датчиках. This will allow you to use the environmental mode Flood, which disables scrubbers as well as pressure checks on vents. Позволяет вам использовать режим Flood, отключающий скрабберы, а также отключающий проверку давления в вентиляциях. \
+	Anyone can check the air alarm's interface and may be tipped off by their nonfunctionality. Любой может проверить интерфейс датчика и заподозрить что-то из-за их нерабочего состояния."
 	one_purchase = TRUE
 	cost = 50
 	power_type = /datum/action/innate/ai/break_air_alarms
@@ -554,9 +552,9 @@
 
 //Robotic Factory: Places a large machine that converts humans that go through it into cyborgs. Unlocking this ability removes shunting.
 /datum/AI_Module/place_cyborg_transformer
-	module_name = "Robotic Factory (Removes Shunting)"
+	module_name = "Фабрика роботов (Убирает запихивание)"
 	mod_pick_name = "cyborgtransformer"
-	description = "Build a machine anywhere, using expensive nanomachines, that can convert a living human into a loyal cyborg slave when placed inside."
+	description = "Строит машину где угодно, используя дорогие наномашины, которая превращает живое существо в лояльного раба-киборга."
 	cost = 100
 	one_purchase = TRUE
 	power_type = /datum/action/innate/ai/place_transformer
@@ -564,8 +562,8 @@
 	unlock_sound = 'sound/machines/ping.ogg'
 
 /datum/action/innate/ai/place_transformer
-	name = "Place Robotics Factory"
-	desc = "Places a machine that converts humans into cyborgs. Conveyor belts included!"
+	name = "Поставить фабрику роботов"
+	desc = "Ставит машину, превращающую людей в боргов. Вместе с лентами!"
 	button_icon_state = "robotic_factory"
 	uses = 1
 	auto_use_uses = FALSE //So we can attempt multiple times
