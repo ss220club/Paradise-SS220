@@ -39,7 +39,7 @@ GLOBAL_LIST_INIT(donor_tier_3_jobs, list(
 	"Administrator",	// Сервис-Администратор
 	"Tourist TSF",		// Турист ТСФ
 	"Tourist USSP",		// Турист ССП
-	"Manager Janitor",	// Менеджер по Клинингу
+	"Cleaning Manager",	// Менеджер по Клинингу
 	"Apprentice",		// Подмастерье
 	"Guard",			// Охранник Шестерочки
 	"Migrant",			// Мигрант
