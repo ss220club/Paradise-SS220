@@ -70,7 +70,7 @@
 	. = ..(H, rank, joined_late)
 
 /datum/controller/subsystem/jobs/proc/get_rank_ss220(mob/living/carbon/human/H, rank)
-	var/list/bad_ranks = get_donor_ranks_for_choose()		// !!!!! проверить и с чистым RANK
+	var/list/bad_ranks = get_donor_ranks_for_choose()
 	if(H.mind.role_alt_title in bad_ranks) // Random pick jobs
 		var/datum/job/job = GetJob(rank)
 		rank = pick(job.alt_titles)
