@@ -14,7 +14,7 @@
 	Вы помощник, ассистент, консультант, наблюдатель, организатор."
 
 /datum/outfit/job/donor/administrator
-	name = "Сервис-Администратор"
+	name = "Administrator"
 	jobtype = /datum/job/donor/administrator
 
 	uniform = /obj/item/clothing/under/rank/procedure/iaa
@@ -54,7 +54,7 @@
 	"
 
 /datum/outfit/job/donor/tourist_tsf
-	name = "Турист ТСФ"
+	name = "Tourist TSF"
 	jobtype = /datum/job/donor/tourist_tsf
 
 	uniform = /obj/item/clothing/under/solgov
@@ -93,7 +93,7 @@
 
 
 /datum/outfit/job/donor/tourist_ussp
-	name = "Турист СССП"
+	name = "Tourist USSP"
 	jobtype = /datum/job/donor/tourist_ussp
 
 	uniform = /obj/item/clothing/under/new_soviet
@@ -130,7 +130,7 @@
 	Вы тот кто отделяет станцию от хаоса и обеспечивает порядок. Вы - настоящая действующая сила на этой станции."
 
 /datum/outfit/job/donor/manager_janitor
-	name = "Менеджер по Клинингу"
+	name = "Cleaning Manager"
 	jobtype = /datum/job/donor/manager_janitor
 
 	uniform = /obj/item/clothing/under/rank/civilian/janitor
@@ -165,7 +165,7 @@
 	Но серые комбинезоны и тулбоксы так и манят вас..."
 
 /datum/outfit/job/donor/apprentice
-	name = "Подмастерье"
+	name = "Apprentice"
 	jobtype = /datum/job/donor/apprentice
 
 	uniform = /obj/item/clothing/under/color/grey
@@ -202,7 +202,7 @@
 	\nВы НЕ являетесь службой безопасности, данная роль не дает вам полномочия охотиться за антагонистами."
 
 /datum/outfit/job/donor/guard
-	name = "Охранник"
+	name = "Guard"
 	jobtype = /datum/job/donor/guard
 
 	uniform = /obj/item/clothing/under/rank/civilian/bartender
@@ -232,7 +232,7 @@
 	Присмотритесь к этой корпорации. Возможно здесь вы захотите жить и работать?"
 
 /datum/outfit/job/donor/migrant
-	name = "Мигрант"
+	name = "Migrant"
 	jobtype = /datum/job/donor/migrant
 
 	uniform = /obj/item/clothing/under/costume/pirate_rags
@@ -255,8 +255,8 @@
 
 /datum/job/donor/uncertain
 	title = "Uncertain"
-	ru_title = "Забытый Ассистент"
-	alt_titles = list("Безработный", "Свободный Ассистент", "Отрабатыващий Ассистент", "Ассистент Технических Тоннелей")
+	ru_title = "Безработный"
+	alt_titles = list("Безработный Ассистент", "Свободный Ассистент", "Отрабатыващий Ассистент", "Ассистент Технических Тоннелей")
 	access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS, ACCESS_CONSTRUCTION)
 	minimal_access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS, ACCESS_CONSTRUCTION)
 	hidden_from_job_prefs = TRUE
@@ -267,7 +267,7 @@
 	Но суть всего этого одна - вы были брошены и занимаетесь собственным выживанием."
 
 /datum/outfit/job/donor/uncertain
-	name = "Забытый Ассистент"
+	name = "Uncertain"
 	jobtype = /datum/job/donor/uncertain
 
 	uniform = /obj/item/clothing/under/costume/kilt

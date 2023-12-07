@@ -12,7 +12,7 @@
 	вы являетесь одним из любимцев корпорации Нанотрейзен. Чем вы занимаетесь? А какая разница. Вы очень важная персона."
 
 /datum/outfit/job/donor/vip_guest
-	name = "VIP Гость"
+	name = "VIP Corporate Guest"
 	jobtype = /datum/job/donor/vip_guest
 
 	uniform = /obj/item/clothing/under/suit/really_black
@@ -49,7 +49,7 @@
 	Корпорация Нанотрейзен не против, ведь вы приносите для неё деньги. Так за работу!"
 
 /datum/outfit/job/donor/banker
-	name = "Банкир"
+	name = "Banker"
 	jobtype = /datum/job/donor/banker
 
 	uniform = /obj/item/clothing/under/suit/really_black
@@ -82,7 +82,7 @@
 /datum/job/donor/seclown
 	title = "Security Clown"
 	ru_title = "Клоун Службы Безопасности"
-	alt_titles = list("Клоун Службы Безопасности", "Клоун-Детектив", "Клоун-Смотритель", "Хонкектив", "Клоун Кадет")
+	alt_titles = list("Клоун Службы Безопасности", "Клоун-Детектив", "Клоун-Смотритель", "Хонкектив", "Клоун Кадет", "Security Clown")
 	relate_job = "Security Officer"
 	supervisors = "the head of security"
 	department_head = list("Head of Security")
