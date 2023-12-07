@@ -61,7 +61,7 @@
 		if("Custom")
 			new_darkness = input(usr, "Введите новое значение (0 - 255). Больше - темнее.", "Pick Darkness") as null|num
 
-	if(new_darkness == null)
+	if(isnull(new_darkness))
 		return
 
 	client.prefs.ghost_darkness_level = new_darkness
