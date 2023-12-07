@@ -117,7 +117,7 @@
 
 
 /datum/job/donor/manager_janitor
-	title = "Manager Janitor"
+	title = "Cleaning Manager"
 	ru_title = "Менеджер по Клинингу"
 	alt_titles = list("Ловец Крыс", "Уборщик I-разряда", "Уборщик II-разряда", "Уборщик III-разряда", "Уборщик IV-разряда", "Уборщик V-разряда")
 	relate_job = "Janitor"
