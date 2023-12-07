@@ -146,7 +146,6 @@
 /datum/job/donor/courier
 	title = "Deliverer"
 	ru_title = "Доставщик"
-	alt_titles = list("Почтальон", "Доставщик", "Курьер")
 	relate_job = "Cargo Technician"
 	supervisors = "главой персонала и квартирмейстером"
 	department_head = list("Head of Personnel", "Quartermaster")
