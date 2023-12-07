@@ -8,6 +8,7 @@
 			data["jobs_security"] = GLOB.active_security_positions - (is_centcom() ? list() : GLOB.security_donor_jobs)
 			data["jobs_service"] = GLOB.service_positions - (is_centcom() ? list() : GLOB.service_donor_jobs)
 			data["jobs_supply"] = GLOB.supply_positions - (is_centcom() ? list() : GLOB.supply_donor_jobs)
+			data["jobs_assistant"] = GLOB.assistant_positions - (is_centcom() ? list() : GLOB.assistant_donor_jobs)
 
 	return data
 
