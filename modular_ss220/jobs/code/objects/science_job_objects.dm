@@ -17,7 +17,7 @@
 	. = ..()
 	allowed_roles |= GLOB.science_positions_ss220
 
-/datum/gear/glasses/goggles_job/diaghudgoggles/New()
+/datum/gear/diaghudgoggles/New()
 	. = ..()
 	allowed_roles |= GLOB.science_positions_ss220
 

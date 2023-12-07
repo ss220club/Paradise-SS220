@@ -1,3 +1,5 @@
+GLOBAL_LIST_EMPTY(limb_icon_cache)
+
 /obj/item/organ/external/proc/compile_icon()
 	// I do this so the head's overlays don't get obliterated
 	for(var/child_i in child_icons)

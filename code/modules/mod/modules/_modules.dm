@@ -53,8 +53,7 @@
 		"Grey" = 'icons/mob/clothing/modsuit/species/grey_mod_modules.dmi',
 		"Vulpkanin" = 'icons/mob/clothing/modsuit/species/modules_vulp.dmi',
 		"Tajaran" = 'icons/mob/clothing/modsuit/species/modules_taj.dmi',
-		"Unathi" = 'icons/mob/clothing/modsuit/species/modules_unathi.dmi',
-		"Vox" = 'icons/mob/clothing/modsuit/species/modules_vox.dmi'
+		"Unathi" = 'icons/mob/clothing/modsuit/species/modules_unathi.dmi'
 		)
 
 /obj/item/mod/module/Initialize(mapload)

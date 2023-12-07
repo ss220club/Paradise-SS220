@@ -94,7 +94,7 @@
 		L.ghostize()
 		if(isbrain(L))
 			// diediedie
-			var/mob/living/brain/B = L
+			var/mob/living/carbon/brain/B = L
 			if(isitem(B.loc))
 				qdel(B.loc)
 			if(B && B.container)

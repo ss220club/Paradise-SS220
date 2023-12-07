@@ -16,5 +16,3 @@
 	var/webmap_url
 	/// Is this map voteable?
 	var/voteable = TRUE
-	/// Minimum amount of players required for this map to be eligible in random map picks.
-	var/min_players_random = 0
