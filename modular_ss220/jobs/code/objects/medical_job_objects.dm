@@ -17,7 +17,7 @@
 	. = ..()
 	allowed_roles |= GLOB.medical_positions_ss220
 
-/datum/gear/glasses/goggles_job/medhudgoggles/New()
+/datum/gear/medhudgoggles/New()
 	. = ..()
 	allowed_roles |= GLOB.medical_positions_ss220
 

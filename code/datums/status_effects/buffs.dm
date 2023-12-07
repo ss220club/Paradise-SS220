@@ -257,9 +257,7 @@
 
 /datum/status_effect/force_shield
 	id = "forceshield"
-	alert_type = null
-	status_type = STATUS_EFFECT_REFRESH
-	duration = 5 SECONDS
+	duration = 4 SECONDS
 	tick_interval = 0
 	var/mutable_appearance/shield
 

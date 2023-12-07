@@ -132,8 +132,8 @@
 	new /obj/item/gun/projectile/revolver/capgun(src)
 
 /obj/item/storage/backpack/mime
-	name = "Pierre the Panda"
-	desc = "A backpack modelled after Pierre the Panda - the official mascot for the Université du Mime."
+	name = "Parcel Parceaux"
+	desc = "A silent backpack made for those silent workers. Silence Co."
 	icon_state = "mimepack"
 	item_state = "mimepack"
 

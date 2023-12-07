@@ -89,9 +89,9 @@
 /datum/outfit/job/hop
 	name = "Head of Personnel"
 	jobtype = /datum/job/hop
-	uniform = /obj/item/clothing/under/rank/civilian/hop
+	uniform = /obj/item/clothing/under/rank/civilian/head_of_personnel
 	shoes = /obj/item/clothing/shoes/brown
-	head = /obj/item/clothing/head/hop
+	head = /obj/item/clothing/head/hopcap
 	glasses = /obj/item/clothing/glasses/hud/skills/sunglasses
 	l_ear = /obj/item/radio/headset/heads/hop
 	id = /obj/item/card/id/hop

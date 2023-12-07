@@ -232,7 +232,7 @@
 /datum/emote/living/carbon/yawn
 	message = "зевает."
 	muzzled_noises = list("устало", "медленно", "сонно")
-	emote_type = EMOTE_AUDIBLE | EMOTE_MOUTH
+	emote_type = EMOTE_AUDIBLE | EMOTE_MOUTH | EMOTE_SOUND
 
 /datum/emote/living/carbon/exhale
 	message = "выдыхает."
@@ -503,31 +503,31 @@
 /// Brain Emotes ///
 ///////////////////
 
-/datum/emote/living/brain/alarm
+/datum/emote/living/carbon/brain/alarm
 	message = "подает сигнал тревоги."
 	self_message = "Вы подаете сигнал тревоги."
 
-/datum/emote/living/brain/alert
+/datum/emote/living/carbon/brain/alert
 	message = "издаёт страдальческий звук."
 	self_message = "Вы издаёте страдальческий звук."
 
-/datum/emote/living/brain/notice
+/datum/emote/living/carbon/brain/notice
 	message = "воспроизводит громкий звук."
 	self_message = "Вы воспроизводите громкий звук."
 
-/datum/emote/living/brain/flash
+/datum/emote/living/carbon/brain/flash
 	message = "начинает быстро мигать лампочками!"
 
-/datum/emote/living/brain/whistle
+/datum/emote/living/carbon/brain/whistle
 	message = "свистит."
 	self_message = "Вы свистите."
-	emote_type = EMOTE_AUDIBLE | EMOTE_MOUTH
+	emote_type = EMOTE_AUDIBLE | EMOTE_MOUTH | EMOTE_SOUND
 	sound = "modular_ss220/emotes/audio/whistle.ogg"
 
-/datum/emote/living/brain/beep
+/datum/emote/living/carbon/brain/beep
 	message = "бипает."
 	self_message = "Вы бипаете."
 
-/datum/emote/living/brain/boop
+/datum/emote/living/carbon/brain/boop
 	message = "бупает."
 	self_message = "вы бупаете."
