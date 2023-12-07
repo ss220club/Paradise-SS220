@@ -28,7 +28,7 @@ GLOBAL_LIST_INIT(donor_tier_2_jobs, list(
 	"Casino",	// Крупье
 	"Waiter",	// Официант
 	"Acolyte",	// Послушник
-	"Delivery",	// Курьер
+	"Deliverer",	// Курьер
 	"Wrestler",	// Боксёр, Рефери
 	"Painter",	// Художник
 	"Musician",	// Музыкант
@@ -78,7 +78,7 @@ GLOBAL_LIST_INIT(assistant_donor_jobs, list(
 ))
 
 GLOBAL_LIST_INIT(supply_donor_jobs, list(
-	"Delivery",
+	"Deliverer",
 ))
 
 GLOBAL_LIST_INIT(all_donor_jobs, donor_tier_1_jobs + donor_tier_2_jobs + donor_tier_3_jobs + donor_tier_4_jobs + donor_tier_5_jobs)
