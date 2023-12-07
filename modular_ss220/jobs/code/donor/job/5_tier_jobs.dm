@@ -82,7 +82,7 @@
 /datum/job/donor/seclown
 	title = "Security Clown"
 	ru_title = "Клоун Службы Безопасности"
-	alt_titles = list("Клоун Службы Безопасности", "Клоун-Детектив", "Клоун-Смотритель", "Хонкектив", "Клоун Кадет", "Security Clown")
+	alt_titles = list("Клоун Службы Безопасности", "Клоун-Детектив", "Клоун-Смотритель", "Хонкектив", "Клоун Кадет")
 	relate_job = "Security Officer"
 	supervisors = "the head of security"
 	department_head = list("Head of Security")
