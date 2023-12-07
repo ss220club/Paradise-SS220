@@ -144,9 +144,9 @@
 
 
 /datum/job/donor/courier
-	title = "Courier"
-	ru_title = "Курьер"
-	alt_titles = list("Почтальон", "Доставщик")
+	title = "Delivery"
+	ru_title = "Доставщик"
+	alt_titles = list("Почтальон", "Доставщик", "Курьер")
 	relate_job = "Cargo Technician"
 	supervisors = "главой персонала и квартирмейстером"
 	department_head = list("Head of Personnel", "Quartermaster")
@@ -155,7 +155,7 @@
 	hidden_from_job_prefs = TRUE
 	outfit = /datum/outfit/job/donor/courier
 	important_information = "Ваша должность нацелена на свободный РП-отыгрыш и не разрешает нарушать правила сервера. \
-	\nВы КУРЬЕР. Данная роль нацелена на доставку товаров от одного отдела до другого. Ваше призвание - доставлять ресурсы от отдела до отдела или еду от самого ШЕФа."
+	\nВы ДОСТАВЩИК. Данная роль нацелена на доставку товаров от одного отдела до другого. Ваше призвание - доставлять ресурсы от отдела до отдела или еду от самого ШЕФа."
 
 /datum/outfit/job/donor/courier
 	name = "Курьер"
