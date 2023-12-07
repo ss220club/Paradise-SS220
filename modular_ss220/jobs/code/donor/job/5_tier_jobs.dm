@@ -137,7 +137,6 @@
 
 /datum/job/donor/seclown/make_alt_title(mob/living/carbon/human/H)
 	if(H.mind)
-		H.real_name
 		var/clown_name = pick(GLOB.clown_names)
 		var/newname = clean_input("Выберите имя для вашего Клоуна Службы Безопасности.", "Изменение Имени", clown_name, H)
 		if(newname)
