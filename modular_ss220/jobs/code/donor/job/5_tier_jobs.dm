@@ -84,7 +84,7 @@
 	ru_title = "Клоун Службы Безопасности"
 	alt_titles = list("Клоун Службы Безопасности", "Клоун-Детектив", "Клоун-Смотритель", "Хонкектив", "Клоун Кадет")
 	relate_job = "Security Officer"
-	supervisors = "the head of security"
+	supervisors = "главой службы безопасности"
 	department_head = list("Head of Security")
 	job_department_flags = DEP_FLAG_SECURITY
 	access = list(ACCESS_CLOWN, ACCESS_THEATRE, ACCESS_MAINT_TUNNELS, ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_BRIG, ACCESS_COURT)
