@@ -6,13 +6,13 @@
 #define CHALLENGE_SHUTTLE_DELAY 18000 //30 minutes, so the ops have at least 10 minutes before the shuttle is callable. Gives the nuke ops at least 15 minutes before shuttle arrive.
 
 /obj/item/nuclear_challenge
-	name = "Declaration of War (Challenge Mode)"
+	name = "Объявление войны"
 	icon = 'icons/obj/device.dmi'
 	icon_state = "gangtool-red"
 	item_state = "walkietalkie"
-	desc = "Use to send a declaration of hostilities to the target, delaying your shuttle departure for 20 minutes while they prepare for your assault. \
-	Such a brazen move will attract the attention of powerful benefactors within the Syndicate, who will supply your team with a massive amount of bonus telecrystals. \
-	Must be used within ten minutes, or your benefactors will lose interest."
+	desc = "Используйте для объявления враждебности цели, задерживая ваш шаттл на 20 минут для того, чтобы они подготовили к вашему приходу \
+	Такой дерзкий ход привлечёт внимание влиятельных предпринимателей внутри Синдиката. Они снабдят вашу команду большим бонусом к ТК. \
+	Должно быть использовано в течении 10 минут, иначе предприниматели потеряют интерес."
 	var/declaring_war = FALSE
 	var/total_tc = 0 //Total amount of telecrystals shared between nuke ops
 
@@ -21,13 +21,13 @@
 		return
 
 	declaring_war = TRUE
-	var/are_you_sure = alert(user, "Consult your team carefully before you declare war on [station_name()]. Are you sure you want to alert the enemy crew? You have [-round((world.time-SSticker.round_start_time - CHALLENGE_TIME_LIMIT)/10)] seconds to decide.", "Declare war?", "Yes", "No")
+	var/are_you_sure = alert(user, "Проконсультируйтесь с командой перед объявлением войны [station_name()]. Вы уверены, что хотите предупредить вражеский экипаж? У вас есть ещё [-round((world.time-SSticker.round_start_time - CHALLENGE_TIME_LIMIT)/10)] секунд для принятия решения.", "Объявить войну?", "Да", "Нет")
 	declaring_war = FALSE
 
 	if(!check_allowed(user))
 		return
 
-	if(are_you_sure == "No")
+	if(are_you_sure == "Нет")
 		to_chat(user, "On second thought, the element of surprise isn't so bad after all.")
 		return
 
