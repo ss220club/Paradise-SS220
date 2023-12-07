@@ -5,7 +5,7 @@
 
 /obj/effect/landmark/spawner/prisoner
 	icon = 'modular_ss220/jobs/icons/landmarks.dmi'
-	name = "Prisoner_arrive"
+	name = "Prisoner Arrive"
 	icon_state = "prisoner_arrive"
 
 /obj/effect/landmark/start/bar
