@@ -28,6 +28,7 @@
 		/obj/item/stack/spacecash/c10000 = 1,
 		/obj/item/implanter/death_alarm = 1,
 		/obj/item/lighter/zippo/engraved = 1,
+		/obj/item/clothing/mask/cigarette/cigar/havana = 6,
 	)
 
 	implants = list(/obj/item/implant/mindshield,
@@ -55,6 +56,7 @@
 	uniform = /obj/item/clothing/under/suit/really_black
 	suit = /obj/item/clothing/suit/victcoat
 	glasses = /obj/item/clothing/glasses/monocle
+	mask = /obj/item/clothing/mask/cigarette/pipe
 	gloves = /obj/item/clothing/gloves/color/white
 	shoes = /obj/item/clothing/shoes/centcom
 	head = /obj/item/clothing/head/fedora
@@ -72,6 +74,7 @@
 		/obj/item/implanter/death_alarm = 1,
 		/obj/item/lighter/zippo/engraved = 1,
 		/obj/item/clothing/under/rank/procedure/lawyer/black = 1,
+		/obj/item/clothing/mask/cigarette/cigar/havana = 6,
 	)
 
 	implants = list(/obj/item/implant/mindshield,
