@@ -54,6 +54,8 @@
 /obj/item/gun/energy/laser/awaymission_aeg/rnd/mk2/attack_self(mob/living/user)
 	var/msg_for_all = span_warning("[user.name] усердно давит на рычаг зарядки [src], но он не поддается!")
 	var/msg_for_user = span_notice("Вы пытаетесь надавить на рычаг зарядки [src], но он заблокирован.")
+	var/msg_recharge_all = span_notice("[user.name] усердно давит на рычаг зарядки [src]...")
+	var/msg_recharge_user = span_notice("Вы со всей силы давите на рычаг зарядки [src], пытаясь зарядить её...")
 
 	if(!is_away_level(loc.z))
 		user.visible_message(msg_for_all, msg_for_user)
