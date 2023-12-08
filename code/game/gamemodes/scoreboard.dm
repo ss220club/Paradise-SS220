@@ -123,7 +123,7 @@ GLOBAL_VAR(scoreboard) // Variable to save the scoreboard string once it's been 
 				total_antagonists[role] += ": [M.name]([M.key])"
 
 	// Now print them all into the log!
-	log_game("Antagonists at round end were...")
+	log_game("Антагонистами были...")
 	for(var/I in total_antagonists)
 		log_game("[I]s[total_antagonists[I]].")
 
@@ -285,13 +285,13 @@ GLOBAL_VAR(scoreboard) // Variable to save the scoreboard string once it's been 
 
 	var/score_rating = "The Aristocrats!"
 	switch(crewscore)
-		if(-INFINITY to SINGULARITY_DESERVES_BETTER) score_rating = 				"Even the Singularity Deserves Better"
-		if(SINGULARITY_DESERVES_BETTER+1 to SINGULARITY_FODDER) score_rating = 		"Singularity Fodder"
-		if(SINGULARITY_FODDER+1 to ALL_FIRED) score_rating = 						"You're All Fired"
-		if(ALL_FIRED+1 to WASTE_OF_OXYGEN) score_rating = 							"A Waste of Perfectly Good Oxygen"
-		if(WASTE_OF_OXYGEN+1 to HEAP_OF_SCUM) score_rating = 						"A Wretched Heap of Scum and Incompetence"
-		if(HEAP_OF_SCUM+1 to LAB_MONKEYS) score_rating = 							"Outclassed by Lab Monkeys"
-		if(LAB_MONKEYS+1 to UNDESIREABLES) score_rating = 							"The Undesirables"
+		if(-INFINITY to SINGULARITY_DESERVES_BETTER) score_rating = 				"Даже после Сингулярности было бы лучше"
+		if(SINGULARITY_DESERVES_BETTER+1 to SINGULARITY_FODDER) score_rating = 		"Вами только Сингулярность кормить"
+		if(SINGULARITY_FODDER+1 to ALL_FIRED) score_rating = 						"Вы все УВОЛЕНЫ"
+		if(ALL_FIRED+1 to WASTE_OF_OXYGEN) score_rating = 							"Трата Прекрасного Кислорда"
+		if(WASTE_OF_OXYGEN+1 to HEAP_OF_SCUM) score_rating = 						"Жалкая кучка неумёк и подонов"
+		if(HEAP_OF_SCUM+1 to LAB_MONKEYS) score_rating = 							"Лабораторные мартыхи были бы лучше Вас"
+		if(LAB_MONKEYS+1 to UNDESIREABLES) score_rating = 							"Недостойные"
 		if(UNDESIREABLES+1 to SERVANTS_OF_SCIENCE-1) score_rating = 				"Ambivalently Average"
 		if(SERVANTS_OF_SCIENCE to GOOD_BUNCH-1) score_rating = 						"Skillful Servants of Science"
 		if(GOOD_BUNCH to MACHINE_THIRTEEN-1) score_rating = 						"Best of a Good Bunch"

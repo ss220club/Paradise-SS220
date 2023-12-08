@@ -167,15 +167,15 @@
 	var/phrases = jointext(GLOB.syndicate_code_phrase, ", ")
 	var/responses = jointext(GLOB.syndicate_code_response, ", ")
 	var/list/messages = list()
-	messages.Add("<u><b>The Syndicate have provided you with the following codewords to identify fellow agents:</b></u>")
-	messages.Add("<span class='bold body'>Code Phrase: <span class='codephrases'>[phrases]</span></span>")
-	messages.Add("<span class='bold body'>Code Response: <span class='coderesponses'>[responses]</span></span>")
+	messages.Add("<u><b>Синдикат передал вам формулировки для определения агентов:</b></u>")
+	messages.Add("<span class='bold body'>Кодовые Фразы: <span class='codephrases'>[phrases]</span></span>")
+	messages.Add("<span class='bold body'>Кодовые Ответы: <span class='coderesponses'>[responses]</span></span>")
 
 	antag_memory += "<b>Code Phrase</b>: <span class='red'>[phrases]</span><br>"
 	antag_memory += "<b>Code Response</b>: <span class='red'>[responses]</span><br>"
 
-	messages.Add("Use the codewords during regular conversation to identify other agents. Proceed with caution, however, as everyone is a potential foe.")
-	messages.Add("<b><font color=red>You memorize the codewords, allowing you to recognize them when heard.</font></b>")
+	messages.Add("Используйте формулировки в повседневной речи для определение агентов. Но будьте осторожны, ведь каждый человек - потенциальный враг.")
+	messages.Add("<b><font color=red>Вы запоминаете формулировки, определяя их в речи.</font></b>")
 
 	traitor_mob.client.chatOutput?.notify_syndicate_codes()
 	return messages
@@ -185,9 +185,9 @@
  */
 /datum/antagonist/traitor/proc/add_law_zero()
 	var/mob/living/silicon/ai/killer = owner.current
-	killer.set_zeroth_law("Accomplish your objectives at all costs.", "Accomplish your AI's objectives at all costs.")
+	killer.set_zeroth_law("Выполните свои задачи любой ценой.", "Выполните задачи вашего ИИ любой ценой.")
 	killer.set_syndie_radio()
-	to_chat(killer, "Your radio has been upgraded! Use :t to speak on an encrypted channel with Syndicate Agents!")
+	to_chat(killer, "Ваша гарнитура была улучшена! Используйте :е для общения по зашифрованному каналу с другими агентами!")
 	killer.add_malf_picker()
 
 /**
@@ -225,8 +225,8 @@
 		target_radio.hidden_uplink = T
 		T.uplink_owner = "[traitor_mob.key]"
 		target_radio.traitor_frequency = freq
-		to_chat(traitor_mob, "<span class='notice'>The Syndicate have cunningly disguised a Syndicate Uplink as your [R.name]. Simply dial the frequency [format_frequency(freq)] to unlock its hidden features.</span>")
-		antag_memory += "<B>Radio Freq:</B> [format_frequency(freq)] ([R.name])."
+		to_chat(traitor_mob, "<span class='notice'>Синдкат умело замаскировал ваш Аплинк в виде [R.name]. Просто наберите частоту [format_frequency(freq)] для открытия скрытого функционала.</span>")
+		antag_memory += "<B>Частота в радио:</B> [format_frequency(freq)] ([R.name])."
 		return TRUE
 
 	else if(istype(R, /obj/item/pda))
@@ -239,8 +239,8 @@
 		var/obj/item/pda/P = R
 		P.lock_code = pda_pass
 
-		to_chat(traitor_mob, "<span class='notice'>The Syndicate have cunningly disguised a Syndicate Uplink as your [R.name]. Simply enter the code \"[pda_pass]\" into the ringtone select to unlock its hidden features.</span>")
-		antag_memory += "<B>Uplink Passcode:</B> [pda_pass] ([R.name]."
+		to_chat(traitor_mob, "<span class='notice'>Синдкат умело замаскировал ваш Аплинк в виде [R.name]. Просто введие код \"[pda_pass]\" в рингтон для открытия скрытого функционала.</span>")
+		antag_memory += "<B>Пароль Аплинка:</B> [pda_pass] ([R.name]."
 		return TRUE
 	return FALSE
 
