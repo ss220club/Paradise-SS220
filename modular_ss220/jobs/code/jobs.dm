@@ -69,6 +69,14 @@
 
 	. = ..(H, rank, joined_late)
 
+/datum/controller/subsystem/jobs/EquipRank(mob/living/carbon/human/H, rank, joined_late = 0) // Equip and put them in an area
+	if(!H)
+		return null
+
+	rank = H.mind.role_alt_title
+
+	. = ..(H, rank, joined_late)
+
 /datum/controller/subsystem/jobs/proc/get_rank_ss220(mob/living/carbon/human/H, rank)
 	var/list/bad_ranks = get_donor_ranks_for_choose()
 	if(H.mind.role_alt_title in bad_ranks) // Random pick jobs
