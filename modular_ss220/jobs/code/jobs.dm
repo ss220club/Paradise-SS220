@@ -61,7 +61,7 @@
 	return FALSE
 
 // Делаем "обходку" для профессий выбранных через job.alt_titles (например DONOR)
-/datum/controller/subsystem/jobs/EquipRank(mob/living/carbon/human/H, rank, joined_late = 0) // Equip and put them in an area
+/datum/controller/subsystem/jobs/AssignRank(mob/living/carbon/human/H, rank, joined_late = 0) // Equip and put them in an area
 	if(!H)
 		return null
 
