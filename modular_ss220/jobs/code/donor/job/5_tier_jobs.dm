@@ -105,9 +105,9 @@
 	jobtype = /datum/job/donor/seclown
 
 	uniform = /obj/item/clothing/under/rank/civilian/clown
-	suit = /obj/item/clothing/suit/armor/vest/warden
+	suit = /obj/item/clothing/suit/armor/vest/security
 	shoes = /obj/item/clothing/shoes/clown_shoes
-	head = /obj/item/clothing/head/officer
+	head = /obj/item/clothing/head/helmet
 	mask = /obj/item/clothing/mask/gas/clown_hat
 	gloves = /obj/item/clothing/gloves/color/red
 	l_pocket = /obj/item/bikehorn
@@ -134,6 +134,19 @@
 	backpack = /obj/item/storage/backpack/clown
 	satchel = /obj/item/storage/backpack/clown
 	dufflebag = /obj/item/storage/backpack/duffel/clown
+
+/datum/outfit/job/donor/dealer/pre_equip(mob/living/carbon/human/H, visualsOnly)
+	. = ..()
+	if(H.mind && H.mind.role_alt_title)
+		switch(H.mind.role_alt_title)
+			if("Клоун-Детектив", "Хонкектив")
+				suit = /obj/item/clothing/suit/storage/det_suit
+				head = /obj/item/clothing/head/det_hat
+			if("Клоун-Смотритель")
+				suit = /obj/item/clothing/suit/armor/vest/warden
+				head = /obj/item/clothing/head/officer
+			if("Клоун-Кадет")
+				head = /obj/item/clothing/head/soft/sec
 
 /datum/job/donor/seclown/make_alt_title(mob/living/carbon/human/H)
 	if(H.mind)
