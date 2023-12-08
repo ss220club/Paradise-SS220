@@ -73,7 +73,8 @@
 	if(!H)
 		return null
 
-	rank = H.mind.role_alt_title
+	if(H.mind.role_alt_title in GLOB.all_donor_jobs)
+		rank = H.mind.role_alt_title
 
 	. = ..(H, rank, joined_late)
 
