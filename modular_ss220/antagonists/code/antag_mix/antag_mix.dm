@@ -93,7 +93,7 @@
 	var/budget_left = budget
 	var/list/picked_scenarios = list()
 	while(budget_left > 0)
-		if(!length(drafted_scenarios) || current_antag_fraction >= max_antag_fraction)
+		if(!length(drafted_scenarios) || (current_antag_fraction >= max_antag_fraction))
 			break
 
 		var/datum/antag_scenario/picked_scenario = pickweight(drafted_scenarios)
@@ -102,7 +102,7 @@
 			continue
 
 		var/added_antag_fraction = min(length(picked_scenario.candidates), picked_scenario.get_antag_cap(players_ready_amount)) / players_ready_amount
-		if(!added_antag_fraction || added_antag_fraction + current_antag_fraction > max_antag_fraction)
+		if(!added_antag_fraction || (added_antag_fraction + current_antag_fraction > max_antag_fraction))
 			drafted_scenarios.Remove(picked_scenario)
 			continue
 
@@ -110,6 +110,7 @@
 		current_antag_fraction += added_antag_fraction
 
 		picked_scenarios[picked_scenario] += 1
+		message_admins("Picked: [picked_scenario.name], times: [picked_scenarios[picked_scenario]]")
 
 	if(!length(picked_scenarios))
 		message_admins("No antag scenarios were picked. Let another game mode roll.")
@@ -127,6 +128,7 @@
 	return TRUE
 
 /datum/game_mode/antag_mix/proc/spend_budget(budget_to_spend)
+	message_admins("Spent budget: [budget_to_spend]")
 	budget = max(0, budget - budget_to_spend)
 
 

@@ -41,6 +41,7 @@
 			max_teams++
 			continue
 
+		message_admins("Picked team of: [json_encode(members)]")
 		picked_teams += list(members)
 
 	return length(picked_teams) - teams_before > 0
@@ -51,6 +52,7 @@
 		if(!length(team_members))
 			continue
 
+		message_admins("Creating team of [json_encode(team_members)]")
 		var/datum/team/new_team = new antag_team(team_members, FALSE)
 		for(var/datum/mind/team_member as anything in new_team.members)
 			team_member.add_antag_datum(antag_datum, new_team)
