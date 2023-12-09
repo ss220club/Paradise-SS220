@@ -80,13 +80,6 @@
 		"Unathi" = 'icons/mob/clothing/modsuit/species/modsuits_younahthee.dmi'
 		)
 
-/// MODsuits, trade-off between armor and utility
-/obj/item/mod
-	name = "Base MOD"
-	desc = "You should not see this, yell at a coder!"
-	icon = 'modular_ss220/clothing/icons/object/mod_clothings.dmi'// figure out how to work with 2 of these
-	icon_override = 'modular_ss220/clothing/icons/object/mod_clothings.dmi'
-
 /obj/item/mod/control
 	name = "MOD control unit"
 	desc = "The control unit of a Modular Outerwear Device, a powered suit that protects against various environments."
