@@ -11,7 +11,7 @@
 	if(!ispath(antag_team))
 		error("'antag_team' in '[type]' team antag scenario is '[antag_team]' which is invalid.")
 
-	var/max_teams = floor(get_total_antag_cap(population) / team_size)
+	var/max_teams = FLOOR((get_total_antag_cap(population) / team_size), 1)
 	message_admins("Max teams: [max_teams]")
 	if(!max_teams)
 		return FALSE

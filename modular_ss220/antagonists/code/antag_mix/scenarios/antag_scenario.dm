@@ -138,7 +138,7 @@
 	if(isnum(antag_cap))
 		return antag_cap
 
-	return floor(population / (antag_cap["denominator"] || 1)) + (antag_cap["offset"] || 0)
+	return FLOOR(population / (antag_cap["denominator"] || 1), 1) + (antag_cap["offset"] || 0)
 
 /**
  * Gets antag cap per this scenario, but taking `scaled_times` into calculation.
