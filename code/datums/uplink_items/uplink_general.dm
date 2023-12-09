@@ -46,12 +46,12 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 		if(A.cost >= 100)
 			discount *= 0.5 // If the item costs 100TC or more, it's only 25% off.
 		A.cost = max(round(A.cost * (1-discount)),1)
-		A.category = "Снаряжение со скидкой"
+		A.category = "Discounted Gear"
 		A.name += " ([round(((initial(A.cost)-A.cost)/initial(A.cost))*100)]% off!)"
 		A.job = null // If you get a job specific item selected, actually lets you buy it in the discount section
 		A.species = null //same as above for species speific items
 		A.reference = "DIS[newreference]"
-		A.desc += " Лимит - [A.limited_stock] на аплинк. Обычно стоит [initial(A.cost)] ТК."
+		A.desc += " Limit of [A.limited_stock] per uplink. Normally costs [initial(A.cost)] TC."
 		A.surplus = 0 // stops the surplus crate potentially giving out a bit too much
 		A.item = I.item
 		newreference++
@@ -68,7 +68,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 /datum/uplink_item
 	var/name = "item name"
 	var/category = "item category"
-	var/desc = "Описание предмета"
+	var/desc = "Item Description"
 	var/reference = null
 	var/item = null
 	var/cost = 0
@@ -93,7 +93,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 	if(hijack_only && !(usr.mind.special_role == SPECIAL_ROLE_NUKEOPS))//nukies get items that regular traitors only get with hijack. If a hijack-only item is not for nukies, then exclude it via the gamemode list.
 		if(!(locate(/datum/objective/hijack) in usr.mind.get_all_objectives()) && U.uplink_type != UPLINK_TYPE_ADMIN)
-			to_chat(usr, "<span class='warning'>Синдикат выдаст эти очень опасные предметы только агентам с целью на угон шаттла.</span>")
+			to_chat(usr, "<span class='warning'>The Syndicate will only issue this extremely dangerous item to agents assigned the Hijack objective.</span>")
 			return
 
 	U.uses -= max(cost, 0)
@@ -133,14 +133,14 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 			return // Failed to spawn, or we handled it with special spawning
 		if(limited_stock > 0)
 			limited_stock--
-			log_game("[key_name(user)] купил [name]. Цена [name] была снижена до [cost].")
+			log_game("[key_name(user)] purchased [name]. [name] was discounted to [cost].")
 			if(!user.mind.special_role)
-				message_admins("[key_name_admin(user)] купил [name] (по сниженой цене [cost]), не будучи антагонистом")
+				message_admins("[key_name_admin(user)] purchased [name] (discounted to [cost]), as a non antagonist.")
 
 		else
-			log_game("[key_name(user)] купил [name].")
+			log_game("[key_name(user)] purchased [name].")
 			if(!user.mind.special_role)
-				message_admins("[key_name_admin(user)] купил [name], не будучи антагонистом.")
+				message_admins("[key_name_admin(user)] purchased [name], as a non antagonist.")
 
 		if(istype(I, /obj/item/storage/box) && length(I.contents))
 			for(var/atom/o in I)
@@ -163,44 +163,44 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 //Discounts (dynamically filled above)
 
 /datum/uplink_item/discounts
-	category = "Снаряжение со скидкой"
+	category = "Discounted Gear"
 
 // DANGEROUS WEAPONS
 
 /datum/uplink_item/dangerous
-	category = "Очень заметное и опасное оружие"
+	category = "Highly Visible and Dangerous Weapons"
 
 /datum/uplink_item/dangerous/pistol
-	name = "Пистолетный набор FK-69"
+	name = "FK-69 Pistol Kit"
 	reference = "SPI"
-	desc = "Коробка, содержащая маленький, легко скрываемый пистолет и 2 магазина на 8 патронов 10мм. Совместим с глушителями."
+	desc = "A box containing a small, easily concealable handgun and two eight-round magazines chambered in 10mm auto rounds. Compatible with suppressors."
 	item = /obj/item/storage/box/syndie_kit/stechkin
 	cost = 20
 
 /datum/uplink_item/dangerous/revolver
-	name = "Револьвер .357 Синдиката"
+	name = "Syndicate .357 Revolver"
 	reference = "SR"
-	desc = "Простой револьвер Синдиката, стрелящий патронами .357 Magnum и имеет 7 патронов. Поставляется с запасным зарядником"
+	desc = "A brutally simple syndicate revolver that fires .357 Magnum cartridges and has 7 chambers. Comes with a spare speed loader."
 	item = /obj/item/storage/box/syndie_kit/revolver
 	cost = 65
 	surplus = 50
 
 /datum/uplink_item/dangerous/rapid
-	name = "Перчатки Северной Звезды"
-	desc = " Эти перчатки помогают бить, пихать, хватать, помогать и бить людей быстрее. Не увеличивает скорость атаки оружия. Совместим с боевыми искусствами."
+	name = "Gloves of the North Star"
+	desc = "These gloves let the user help, shove, grab, and punch people very fast. Does not improve weapon attack speed. Can be combined with martial arts for a deadly weapon."
 	reference = "RPGD"
 	item = /obj/item/clothing/gloves/fingerless/rapid
 	cost = 40
 
 /datum/uplink_item/dangerous/sword
-	name = "Энергетический меч"
-	desc = "Энергетический меч - холодное оружие с клинком из чистой энергии. В выключенном состоянии помещается в карман. Активация производит громкий характерный звук."
+	name = "Energy Sword"
+	desc = "The energy sword is an edged weapon with a blade of pure energy. The sword is small enough to be pocketed when inactive. Activating it produces a loud, distinctive noise."
 	reference = "ES"
 	item = /obj/item/melee/energy/sword/saber
 	cost = 40
 
 /datum/uplink_item/dangerous/powerfist
-	name = "Силовая перчатка"
+	name = "Power Fist"
 	desc = "The power-fist is a metal gauntlet with a built-in piston-ram powered by an external gas supply. \
 		Upon hitting a target, the piston-ram will extend forward to make contact for some serious damage. \
 		Using a wrench on the piston valve will allow you to tweak the amount of gas used per punch to \
