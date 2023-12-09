@@ -150,3 +150,21 @@
 
 /obj/item/storage/box/legal_loot/amount_50
 	loot_amount = 50
+
+// HONK Rifle //
+/obj/item/gun/energy/clown
+	icon_state = "honkrifle"
+	item_state = "honkrifle"
+	icon = 'modular_ss220/jobs/icons/custom_gun/custom_guns.dmi'
+	lefthand_file = 'modular_ss220/jobs/icons/custom_gun/mob/custom_guns_lefthand.dmi'
+	righthand_file = 'modular_ss220/jobs/icons/custom_gun/mob/custom_guns_righthand.dmi'
+
+/obj/item/gun/energy/clown/security
+	name = "ХОНК-ружье офицера"
+	desc = "Личное оружие клоуна офицера. Смертоносное для ментального состояния каждого на ком было применено. Запрещено конвенкцией НТ 12 раз. Разрешено конвенкцией советов клоунов 13 раз. На рукояти выгривирован \"HONK\" и нацарапаны пару зачернутых черточек."
+	icon_state = "honkrifle_security"
+	item_state = "honkrifle_security"
+
+/obj/item/gun/energy/clown/security/warden
+	name = "Личное ХОНК-ружье смотрителя"
+	desc = "Личное смертоносное оружие клоуна-смотрителя, выданное за заслуги перед НТ и \[ДАННЫЕ ХОНКНУТЫ\]. Ходят слухи что это один из первых экземпляров произведенных во время войны мимов и клоунов на родной планете клоунов."

@@ -114,7 +114,7 @@
 	mask = /obj/item/clothing/mask/gas/clown_hat
 	gloves = /obj/item/clothing/gloves/color/red
 	l_pocket = /obj/item/bikehorn
-	suit_store = /obj/item/gun/energy/clown
+	suit_store = /obj/item/gun/energy/clown/security
 	l_ear = /obj/item/radio/headset/headset_service
 	r_ear = /obj/item/radio/headset/headset_sec/alt
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
@@ -148,6 +148,7 @@
 			if("Клоун-Смотритель")
 				suit = /obj/item/clothing/suit/armor/vest/warden
 				head = /obj/item/clothing/head/officer
+				suit_store = /obj/item/gun/energy/clown/security/warden
 			if("Клоун-Кадет")
 				head = /obj/item/clothing/head/soft/sec
 
