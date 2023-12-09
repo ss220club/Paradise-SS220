@@ -23,8 +23,8 @@ GLOBAL_LIST_INIT(card_skins_ss220, list(
 ))
 
 GLOBAL_LIST_INIT(card_skins_donor_ss220, list(
-	"barber", "bath", "casino", "waiter", "acolyte", "courier", "wrestler", "painter", "musician", "actor",			// 2 tier
-	"administrator", "touristtsf", "touristussp", "managerjanitor", "apprentice", "guard", "migrant", "uncertain",	// 3 tier
+	"barber", "bath", "casino", "waiter", "acolyte", "deliverer", "wrestler", "painter", "musician", "actor",			// 2 tier
+	"administrator", "touristtsf", "touristussp", "cliningmanajer", "apprentice", "guard", "migrant", "uncertain",	// 3 tier
 	"adjutant", "butler", "maid", "representativetsf", "representativeussp", "dealer", // 4 tier
 	"vipcorporateguest", "banker", "securityclown",	// 5 tier
 ))
@@ -89,10 +89,10 @@ GLOBAL_LIST_INIT(card_skins_donor_ss220, list(
 	icon_state = "acolyte"
 
 /obj/item/card/id/courier
-	name = "Courier ID"
+	name = "Deliverer ID"
 	access = list(ACCESS_MAINT_TUNNELS, ACCESS_MAILSORTING, ACCESS_CARGO, ACCESS_MINT, ACCESS_MINERAL_STOREROOM)
 	icon = 'modular_ss220/aesthetics/better_ids/icons/better_ids.dmi'
-	icon_state = "courier"
+	icon_state = "deliverer"
 
 /obj/item/card/id/wrestler
 	name = "Wrestler ID"
@@ -136,11 +136,11 @@ GLOBAL_LIST_INIT(card_skins_donor_ss220, list(
 	icon = 'modular_ss220/aesthetics/better_ids/icons/better_ids.dmi'
 	icon_state = "touristussp"
 
-/obj/item/card/id/manager_janitor
-	name = "Manager Janitor ID"
+/obj/item/card/id/cleaning_manager
+	name = "Clining Manager ID"
 	access = list(ACCESS_JANITOR, ACCESS_MAINT_TUNNELS, ACCESS_EXTERNAL_AIRLOCKS, ACCESS_MEDICAL)
 	icon = 'modular_ss220/aesthetics/better_ids/icons/better_ids.dmi'
-	icon_state = "managerjanitor"
+	icon_state = "cleaningmanager"
 
 /obj/item/card/id/apprentice
 	name = "Apprentice ID"

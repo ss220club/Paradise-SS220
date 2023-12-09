@@ -109,7 +109,7 @@
 	H.add_language("Neo-Russkiya")
 
 
-/datum/job/donor/manager_janitor
+/datum/job/donor/cleaning_manager
 	title = "Cleaning Manager"
 	ru_title = "Менеджер по Клинингу"
 	alt_titles = list("Ловец Крыс", "Уборщик I-разряда", "Уборщик II-разряда", "Уборщик III-разряда", "Уборщик IV-разряда", "Уборщик V-разряда")
@@ -117,14 +117,14 @@
 	access = list(ACCESS_JANITOR, ACCESS_MAINT_TUNNELS, ACCESS_EXTERNAL_AIRLOCKS, ACCESS_MEDICAL)
 	minimal_access = list(ACCESS_JANITOR, ACCESS_MAINT_TUNNELS, ACCESS_EXTERNAL_AIRLOCKS, ACCESS_MEDICAL)
 	hidden_from_job_prefs = TRUE
-	outfit = /datum/outfit/job/donor/manager_janitor
+	outfit = /datum/outfit/job/donor/cleaning_manager
 	important_information = "Ваша должность нацелена на свободный РП-отыгрыш и не разрешает нарушать правила сервера. \
 	\nВы Менеджер по Клинингу. Вы уборщик этой станции и должны следить за чистотой на ней. Вы давно на этой работе и снабжены лучшим снаряжением для идеальной работы. \
 	Вы тот кто отделяет станцию от хаоса и обеспечивает порядок. Вы - настоящая действующая сила на этой станции."
 
-/datum/outfit/job/donor/manager_janitor
+/datum/outfit/job/donor/cleaning_manager
 	name = "Cleaning Manager"
-	jobtype = /datum/job/donor/manager_janitor
+	jobtype = /datum/job/donor/cleaning_manager
 
 	uniform = /obj/item/clothing/under/rank/civilian/janitor
 	suit = /obj/item/clothing/suit/apron/overalls
@@ -136,7 +136,7 @@
 	r_pocket = /obj/item/door_remote/janikeyring
 	l_ear = /obj/item/radio/headset/headset_service
 	pda = /obj/item/pda/janitor
-	id = /obj/item/card/id/manager_janitor
+	id = /obj/item/card/id/cleaning_manager
 	backpack_contents = list(
 		/obj/item/clothing/head/beret/purple_normal = 1,
 		/obj/item/clothing/suit/storage/iaa/purplejacket = 1,
