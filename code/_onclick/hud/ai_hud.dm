@@ -2,7 +2,7 @@
 	icon = 'icons/mob/screen_ai.dmi'
 
 /obj/screen/ai/aicore
-	name = "AI core"
+	name = "Ядро ИИ"
 	icon_state = "ai_core"
 
 /obj/screen/ai/aicore/Click()
@@ -11,16 +11,16 @@
 		AI.view_core()
 
 /obj/screen/ai/camera_list
-	name = "Show Camera List"
+	name = "Показать список камер"
 	icon_state = "camera"
 
 /obj/screen/ai/camera_list/Click()
 	var/mob/living/silicon/ai/AI = usr
-	var/camera = input(AI, "Choose which camera you want to view", "Cameras") as null|anything in AI.get_camera_list()
+	var/camera = input(AI, "Выберите с какой камеры вы хотите посмотреть", "Камеры") as null|anything in AI.get_camera_list()
 	AI.ai_camera_list(camera)
 
 /obj/screen/ai/camera_track
-	name = "Track With Camera"
+	name = "Отслеживать"
 	icon_state = "track"
 
 /obj/screen/ai/camera_track/Click()
@@ -31,7 +31,7 @@
 			AI.ai_camera_track(target_name)
 
 /obj/screen/ai/camera_light
-	name = "Toggle Camera Light"
+	name = "Включить свет в камерах"
 	icon_state = "camera_light"
 
 /obj/screen/ai/camera_light/Click()
@@ -40,7 +40,7 @@
 		AI.toggle_camera_light()
 
 /obj/screen/ai/crew_monitor
-	name = "Crew Monitoring Console"
+	name = "Консоль отслеживания экипажа"
 	icon_state = "crew_monitor"
 
 /obj/screen/ai/crew_monitor/Click()
@@ -49,7 +49,7 @@
 		AI.subsystem_crew_monitor()
 
 /obj/screen/ai/crew_manifest
-	name = "Crew Manifest"
+	name = "Манифест экипажа"
 	icon_state = "manifest"
 
 /obj/screen/ai/crew_manifest/Click()
@@ -58,7 +58,7 @@
 		AI.ai_roster()
 
 /obj/screen/ai/alerts
-	name = "Show Alerts"
+	name = "Показать тревоги"
 	icon_state = "alerts"
 
 /obj/screen/ai/alerts/Click()
@@ -67,7 +67,7 @@
 		AI.ai_alerts()
 
 /obj/screen/ai/announcement
-	name = "Make Announcement"
+	name = "Сделать оповещение"
 	icon_state = "announcement"
 
 /obj/screen/ai/announcement/Click()
@@ -75,7 +75,7 @@
 	AI.announcement()
 
 /obj/screen/ai/call_shuttle
-	name = "Call Emergency Shuttle"
+	name = "Вызвать Эвакуационный шаттл"
 	icon_state = "call_shuttle"
 
 /obj/screen/ai/call_shuttle/Click()
@@ -84,7 +84,7 @@
 		AI.ai_call_shuttle()
 
 /obj/screen/ai/state_laws
-	name = "Law Manager"
+	name = "Управление законами"
 	icon_state = "state_laws"
 
 /obj/screen/ai/state_laws/Click()
@@ -93,7 +93,7 @@
 		AI.subsystem_law_manager()
 
 /obj/screen/ai/pda_msg_send
-	name = "PDA - Send Message"
+	name = "PDA - отправить сообщение"
 	icon_state = "pda_send"
 
 /obj/screen/ai/pda_msg_send/Click()
@@ -102,7 +102,7 @@
 		AI.aiPDA.cmd_send_pdamesg()
 
 /obj/screen/ai/pda_msg_show
-	name = "PDA - Show Message Log"
+	name = "PDA - показать лог сообщений"
 	icon_state = "pda_receive"
 
 /obj/screen/ai/pda_msg_show/Click()
@@ -111,7 +111,7 @@
 		AI.aiPDA.cmd_show_message_log()
 
 /obj/screen/ai/image_take
-	name = "Take Image"
+	name = "Сфотографировать"
 	icon_state = "take_picture"
 
 /obj/screen/ai/image_take/Click()
@@ -120,7 +120,7 @@
 		AI.aiCamera.toggle_camera_mode()
 
 /obj/screen/ai/image_view
-	name = "View Images"
+	name = "Показать фотографии"
 	icon_state = "view_images"
 
 /obj/screen/ai/image_view/Click()
@@ -129,7 +129,7 @@
 		AI.aiCamera.viewpictures()
 
 /obj/screen/ai/sensors
-	name = "Toggle Sensor Augmentation"
+	name = "Включить аугментации сенсоров"
 	icon_state = "ai_sensor"
 
 /obj/screen/ai/sensors/Click()

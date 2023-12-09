@@ -9,7 +9,7 @@
 	if(message_mode)
 		used_radios += radio
 		if(!is_component_functioning("radio"))
-			to_chat(src, "<span class='warning'>Your radio isn't functional at this time.</span>")
+			to_chat(src, "<span class='warning'>Ваше радио в данный момент не функционирует.</span>")
 			return 0
 		if(message_mode == "general")
 			message_mode = null
@@ -24,7 +24,7 @@
 	else if(message_mode)
 		used_radios += aiRadio
 		if(aiRadio.disabledAi || aiRestorePowerRoutine || stat)
-			to_chat(src, "<span class='danger'>System Error - Transceiver Disabled.</span>")
+			to_chat(src, "<span class='danger'>Системная ошибка: Приёмник отключен.</span>")
 			return 0
 		if(message_mode == "general")
 			message_mode = null

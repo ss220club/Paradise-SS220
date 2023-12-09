@@ -1,5 +1,5 @@
 /datum/ui_module/law_manager
-	name = "Law manager"
+	name = "Упралвение законами"
 	var/ion_law	= "IonLaw"
 	var/zeroth_law = "ZerothLaw"
 	var/inherent_law = "InherentLaw"

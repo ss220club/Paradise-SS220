@@ -26,10 +26,10 @@
 	if(!istype(malf))
 		return
 	if(istype(malf.loc, /obj/machinery/power/apc)) // Already in an APC
-		to_chat(malf, "<span class='warning'>You must evacuate your current APC first!</span>")
+		to_chat(malf, "<span class='warning'>Сначала вы должны покинуть текущий APC!</span>")
 		return
 	if(!malf.can_shunt)
-		to_chat(malf, "<span class='warning'>You cannot shunt!</span>")
+		to_chat(malf, "<span class='warning'>Вы не можете спрятаться!</span>")
 		return
 	if(!is_station_level(z))
 		return
@@ -68,7 +68,7 @@
 					if((A.stat != DEAD) && A.nuking)
 						point.the_disk = A //The pinpointer tracks the AI back into its core.
 	else
-		to_chat(occupier, "<span class='danger'>Primary core damaged, unable to return core processes.</span>")
+		to_chat(occupier, "<span class='danger'>Главное ядро повреждено, возврат к нему невозможен.</span>")
 		if(forced)
 			occupier.loc = loc
 			occupier.death()

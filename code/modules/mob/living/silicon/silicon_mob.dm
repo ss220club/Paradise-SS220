@@ -115,19 +115,19 @@
 		var/list/msg = list("--- ")
 
 		if(alarm_types_show["Burglar"])
-			msg += "BURGLAR: [alarm_types_show["Burglar"]] alarms detected. - "
+			msg += "ПРОНИКНОВЕНИЕ: Обнаружено [alarm_types_show["Burglar"]] тревог. - "
 
 		if(alarm_types_show["Motion"])
-			msg += "MOTION: [alarm_types_show["Motion"]] alarms detected. - "
+			msg += "ДВИЖЕНИЕ: Обнаружено [alarm_types_show["Motion"]] тревог. - "
 
 		if(alarm_types_show["Fire"])
-			msg += "FIRE: [alarm_types_show["Fire"]] alarms detected. - "
+			msg += "ПОЖАР: Обнаружено [alarm_types_show["Fire"]] тревог. - "
 
 		if(alarm_types_show["Atmosphere"])
-			msg += "ATMOSPHERE: [alarm_types_show["Atmosphere"]] alarms detected. - "
+			msg += "АТМОСФЕРА: Обнаружено [alarm_types_show["Atmosphere"]] тревог. - "
 
 		if(alarm_types_show["Power"])
-			msg += "POWER: [alarm_types_show["Power"]] alarms detected. - "
+			msg += "ЭНЕРГИЯ: Обнаружено [alarm_types_show["Power"]] тревог. - "
 
 		msg += "<A href=?src=[UID()];showalerts=1'>\[Show Alerts\]</a>"
 		var/msg_text = msg.Join("")
@@ -141,16 +141,16 @@
 		var/list/msg = list("--- ")
 
 		if(alarm_types_clear["Motion"])
-			msg += "MOTION: [alarm_types_clear["Motion"]] alarms cleared. - "
+			msg += "ДВИЖЕНИЕ: Нейтрализовано [alarm_types_clear["Motion"]] тревог. - "
 
 		if(alarm_types_clear["Fire"])
-			msg += "FIRE: [alarm_types_clear["Fire"]] alarms cleared. - "
+			msg += "ПОЖАР: Нейтрализовано [alarm_types_clear["Fire"]] тревог. - "
 
 		if(alarm_types_clear["Atmosphere"])
-			msg += "ATMOSPHERE: [alarm_types_clear["Atmosphere"]] alarms cleared. - "
+			msg += "АТМОСФЕРА: Нейтрализовано [alarm_types_clear["Atmosphere"]] тревог. - "
 
 		if(alarm_types_clear["Power"])
-			msg += "POWER: [alarm_types_clear["Power"]] alarms cleared. - "
+			msg += "ЭНЕРГИЯ: Нейтрализовано [alarm_types_clear["Power"]] тревог. - "
 
 		msg += "<A href=?src=[UID()];showalerts=1'>\[Show Alerts\]</a>"
 
@@ -215,16 +215,16 @@
 		return
 	. = TRUE
 	if(!getBruteLoss())
-		to_chat(user, "<span class='notice'>Nothing to fix!</span>")
+		to_chat(user, "<span class='notice'>Нечего чинить!</span>")
 		return
 	else if(!getBruteLoss(TRUE))
-		to_chat(user, "<span class='warning'>The damaged components are beyond saving!</span>")
+		to_chat(user, "<span class='warning'>повреждённые компоненты не спасти!</span>")
 		return
 	if(!I.use_tool(src, user, volume = I.tool_volume))
 		return
 	adjustBruteLoss(-30)
 	add_fingerprint(user)
-	user.visible_message("<span class='alert'>[user] patches some dents on [src] with [I].</span>")
+	user.visible_message("<span class='alert'>[user] чинит вмятины на [src] с помощью [I].</span>")
 
 
 /mob/living/silicon/bullet_act(obj/item/projectile/Proj)
@@ -275,9 +275,9 @@
 // this function shows the health of the pAI in the Status panel
 /mob/living/silicon/proc/show_system_integrity()
 	if(!src.stat)
-		stat(null, text("System integrity: [round((health/maxHealth)*100)]%"))
+		stat(null, text("Целостность системы: [round((health/maxHealth)*100)]%"))
 	else
-		stat(null, text("Systems nonfunctional"))
+		stat(null, text("Система сломана"))
 
 
 // This adds the basic clock, shuttle recall timer, and malf_ai info to all silicon lifeforms
@@ -369,11 +369,11 @@
 
 
 /mob/living/silicon/proc/toggle_sensor_mode()
-	to_chat(src, "<span class='notice'>Please select sensor type.</span>")
-	var/static/list/sensor_choices = list("Security" = image(icon = 'icons/obj/clothing/glasses.dmi', icon_state = "securityhud"),
-							"Medical" = image(icon = 'icons/obj/clothing/glasses.dmi', icon_state = "healthhud"),
-							"Diagnostic" = image(icon = 'icons/obj/clothing/glasses.dmi', icon_state = "diagnostichud"),
-							"None" = image(icon = 'icons/mob/screen_gen.dmi', icon_state = "x"))
+	to_chat(src, "<span class='notice'>Пожалуйста, выберите тип сенсоров.</span>")
+	var/static/list/sensor_choices = list("Безопасность" = image(icon = 'icons/obj/clothing/glasses.dmi', icon_state = "securityhud"),
+							"Медицинский" = image(icon = 'icons/obj/clothing/glasses.dmi', icon_state = "healthhud"),
+							"Диагностический" = image(icon = 'icons/obj/clothing/glasses.dmi', icon_state = "diagnostichud"),
+							"Нет" = image(icon = 'icons/mob/screen_gen.dmi', icon_state = "x"))
 	var/user_loc
 	if(isAI(src))
 		var/mob/living/silicon/ai/eyeloc = src
@@ -387,15 +387,15 @@
 	switch(sensor_type)
 		if("Security")
 			add_sec_hud()
-			to_chat(src, "<span class='notice'>Security records overlay enabled.</span>")
+			to_chat(src, "<span class='notice'>Включён монитор Службы безопасности.</span>")
 		if("Medical")
 			add_med_hud()
-			to_chat(src, "<span class='notice'>Life signs monitor overlay enabled.</span>")
+			to_chat(src, "<span class='notice'>Включён монитор жизненных показателей.</span>")
 		if("Diagnostic")
 			add_diag_hud()
-			to_chat(src, "<span class='notice'>Robotics diagnostic overlay enabled.</span>")
+			to_chat(src, "<span class='notice'>Включён диагностический монитор.</span>")
 		if("None")
-			to_chat(src, "Sensor augmentations disabled.")
+			to_chat(src, "Сенсорные аугментации выключены.")
 
 /mob/living/silicon/adjustToxLoss(amount)
 	return STATUS_UPDATE_NONE

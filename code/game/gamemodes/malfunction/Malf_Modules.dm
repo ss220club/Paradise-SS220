@@ -481,7 +481,7 @@
 /obj/effect/proc_holder/ranged_ai/overload_machine
 	active = FALSE
 	ranged_mousepointer = 'icons/effects/cult_target.dmi'
-	enable_text = "<span class='notice'>You tap into the station's powernet. Click on a machine to detonate it, or use the ability again to cancel.</span>"
+	enable_text = "<span class='notice'>Вы подключаетесь к энергосети станции. Кликните на машину для её подрыва, или используйте способность повторно для отмены.</span>"
 	disable_text = "<span class='notice'>You release your hold on the powernet.</span>"
 
 /obj/effect/proc_holder/ranged_ai/overload_machine/InterceptClickOn(mob/living/caller, params, obj/machinery/target)
@@ -499,9 +499,9 @@
 
 	ranged_ability_user.playsound_local(ranged_ability_user, "sparks", 50, FALSE, use_reverb = FALSE)
 	attached_action.adjust_uses(-1)
-	target.audible_message("<span class='italics'>You hear a loud electrical buzzing sound coming from [target]!</span>")
+	target.audible_message("<span class='italics'>Вы слышите громкое жужжание, исходящее из [target]!</span>")
 	addtimer(CALLBACK(attached_action, TYPE_PROC_REF(/datum/action/innate/ai/ranged/overload_machine, detonate_machine), target), 50) //kaboom!
-	remove_ranged_ability(ranged_ability_user, "<span class='warning'>Overloading machine circuitry...</span>")
+	remove_ranged_ability(ranged_ability_user, "<span class='warning'>Перезагружаем платы машины...</span>")
 	return TRUE
 
 
@@ -512,7 +512,7 @@
 	description = "Перезаписывает программный код машины, заставляя её восстать и атаковать всех, кроме других машин. 4 использования."
 	cost = 30
 	power_type = /datum/action/innate/ai/ranged/override_machine
-	unlock_text = "<span class='notice'>You procure a virus from the Space Dark Web and distribute it to the station's machines.</span>"
+	unlock_text = "<span class='notice'>Вы находите вирус в Space Dark Web и распространяете его на все машины.</span>"
 
 /datum/action/innate/ai/ranged/override_machine
 	name = "Перезапись машины"
@@ -529,7 +529,7 @@
 	active = FALSE
 	ranged_mousepointer = 'icons/effects/override_machine_target.dmi'
 	enable_text = "<span class='notice'>Вы подключаетесь к энергосети станции. Кликните на машину чтобы оживить её, или используйте способность ещё раз для отмены.</span>"
-	disable_text = "<span class='notice'>You release your hold on the powernet.</span>"
+	disable_text = "<span class='notice'>Вы отключаетесь от энергосети.</span>"
 
 /obj/effect/proc_holder/ranged_ai/override_machine/InterceptClickOn(mob/living/caller, params, obj/machinery/target)
 	if(..())
@@ -546,9 +546,9 @@
 
 	ranged_ability_user.playsound_local(ranged_ability_user, 'sound/misc/interference.ogg', 50, FALSE, use_reverb = FALSE)
 	attached_action.adjust_uses(-1)
-	target.audible_message("<span class='userdanger'>Вы слышите громкий шум, исходящий из [target]!</span>")
+	target.audible_message("<span class='userdanger'>Вы слышите громкое жужжание, исходящее из [target]!</span>")
 	addtimer(CALLBACK(attached_action, TYPE_PROC_REF(/datum/action/innate/ai/ranged/override_machine, animate_machine), target), 50) //kabeep!
-	remove_ranged_ability(ranged_ability_user, "<span class='danger'>Sending override signal...</span>")
+	remove_ranged_ability(ranged_ability_user, "<span class='danger'>Отправка сигнала перезаписи...</span>")
 	return TRUE
 
 
@@ -611,11 +611,11 @@
 			success = FALSE
 		var/datum/camerachunk/C = GLOB.cameranet.getCameraChunk(T.x, T.y, T.z)
 		if(!C.visibleTurfs[T])
-			alert_msg = "You don't have camera vision of this location!"
+			alert_msg = "У вас нет камер в той местности!"
 			success = FALSE
 		for(var/atom/movable/AM in T.contents)
 			if(AM.density)
-				alert_msg = "That area must be clear of objects!"
+				alert_msg = "Место должны быть свободным от объектов!"
 				success = FALSE
 		var/image/I = action.turfOverlays[n]
 		I.loc = T
@@ -630,7 +630,7 @@
 /datum/AI_Module/blackout
 	module_name = "Блэкаут"
 	mod_pick_name = "blackout"
-	description = "Пытается перегрузить световые схемы на станции, уничтожая некоторые лампы. Три использования."
+	description = "Перезагружает световые схемы на станции, уничтожая некоторые лампы. Три использования."
 	cost = 15
 	power_type = /datum/action/innate/ai/blackout
 	unlock_text = "<span class='notice'>Вы подключаетесь к энергосети станции, направляя излишек энергии на освещение.</span>"
@@ -663,8 +663,8 @@
 	unlock_text = "<span class='notice'>You deploy nanomachines to the cameranet.</span>"
 
 /datum/action/innate/ai/reactivate_cameras
-	name = "Reactivate Cameras"
-	desc = "Reactivates disabled cameras across the station; remaining uses can be used later."
+	name = "Реактивация камер"
+	desc = "Реактивирует отключенные камеры на станции; оставшиеся использования могут быть потрачены позже."
 	button_icon_state = "reactivate_cameras"
 	uses = 10
 	auto_use_uses = FALSE
@@ -697,7 +697,7 @@
 	one_purchase = TRUE
 	cost = 35 //Decent price for omniscience!
 	upgrade = TRUE
-	unlock_text = "<span class='notice'>OTA firmware distribution complete! Камер улучшено: CAMSUPGRADED. Система усиления света включена.</span>"
+	unlock_text = "<span class='notice'>Распространение ПО по воздуху завершено! Камер улучшено: CAMSUPGRADED. Система усиления света включена.</span>"
 	unlock_sound = 'sound/items/rped.ogg'
 
 /datum/AI_Module/upgrade_cameras/upgrade(mob/living/silicon/ai/AI)
@@ -769,7 +769,7 @@
 			continue
 		R.module.malfhacked = TRUE
 		R.module.rebuild_modules()
-		to_chat(R, "<span class='notice'>New firmware downloaded. Emitter is now online.</span>")
+		to_chat(R, "<span class='notice'>Новое ПО установлено. Эмиттеры включены.</span>")
 
 /datum/AI_Module/repair_cyborg
 	module_name = "Починка Киборгов"
@@ -777,7 +777,7 @@
 	description = "Вызывает энергетический всплеск в целевом киборге, перезагружая и чиня большинство его систем. Требуется два использования на киборгах со сломанной бронёй."
 	cost = 20
 	power_type = /datum/action/innate/ai/ranged/repair_cyborg
-	unlock_text = "<span class='notice'>TLB exception on load: Error pointing to address 0000001H, Proceed with execution anywa- SURGE protocols installed, welcome to open APC!</span>"
+	unlock_text = "<span class='notice'>TLB exception on load: Ошибка указания адреса 0000001H, Продолжайте с осто- установлены протоколы ВСПЛЕСК, добро пожаловать в открытый APC!</span>"
 	unlock_sound = 'sound/items/rped.ogg'
 
 /datum/action/innate/ai/ranged/repair_cyborg
@@ -798,8 +798,8 @@
 /obj/effect/proc_holder/ranged_ai/repair_cyborg
 	active = FALSE
 	ranged_mousepointer = 'icons/effects/overload_machine_target.dmi'
-	enable_text = "<span class='notice'>Call to address 0FFFFFFF in APC logic thread, awaiting user response.</span>"
-	disable_text = "<span class='notice'>APC logic thread restarting...</span>"
+	enable_text = "<span class='notice'>Вызов адреса 0FFFFFFF в поточной логике APC, Ожидается ответ пользователя.</span>"
+	disable_text = "<span class='notice'>Перезапуск поточной логики APC...</span>"
 	var/is_active = FALSE
 
 /obj/effect/proc_holder/ranged_ai/repair_cyborg/InterceptClickOn(mob/living/caller, params, mob/living/silicon/robot/robot_target)
@@ -809,22 +809,22 @@
 		remove_ranged_ability()
 		return
 	if(!istype(robot_target))
-		to_chat(ranged_ability_user, "<span class='warning'>You can only repair robots with this ability!</span>")
+		to_chat(ranged_ability_user, "<span class='warning'>Вы можете чинить только роботов!</span>")
 		return
 	if(is_active)
-		to_chat(ranged_ability_user, "<span class='warning'>You can only repair one robot at a time!</span>")
+		to_chat(ranged_ability_user, "<span class='warning'>Вы можете чинить только одного робота за раз!</span>")
 		return
 	is_active = TRUE
 	ranged_ability_user.playsound_local(ranged_ability_user, "sparks", 50, FALSE, use_reverb = FALSE)
 	var/datum/action/innate/ai/ranged/repair_cyborg/actual_action = attached_action
 	actual_action.adjust_uses(-1)
-	robot_target.audible_message("<span class='italics'>You hear a loud electrical buzzing sound coming from [robot_target]!</span>")
+	robot_target.audible_message("<span class='italics'>Вы слышите электрическое жужжание, исходящее от [robot_target]!</span>")
 	if(!do_mob(caller, robot_target, 10 SECONDS))
 		is_active = FALSE
 		return
 	is_active = FALSE
 	actual_action.fix_borg(robot_target)
-	remove_ranged_ability(ranged_ability_user, "<span class='warning'>Киборг[robot_target] успешно перезапущен.</span>")
+	remove_ranged_ability(ranged_ability_user, "<span class='warning'>Киборг [robot_target] успешно перезапущен.</span>")
 	return TRUE
 
 /datum/AI_Module/core_tilt
@@ -835,7 +835,7 @@
 	one_purchase = FALSE
 	power_type = /datum/action/innate/ai/ranged/core_tilt
 	unlock_sound = 'sound/effects/bang.ogg'
-	unlock_text = "<span class='notice'>Вы получили возможность использовать перемещаться и давить всё на своём пути.</span>"
+	unlock_text = "<span class='notice'>Вы получили возможность перемещаться и давить всё на своём пути.</span>"
 
 /datum/action/innate/ai/ranged/core_tilt
 	name = "Перекатиться"
@@ -848,8 +848,8 @@
 /obj/effect/proc_holder/ranged_ai/roll_over
 	active = FALSE
 	ranged_mousepointer = 'icons/effects/cult_target.dmi'
-	enable_text = "<span class='notice'>Your inner servos shift as you prepare to roll around. Click adjacent tiles to roll into them!</span>"
-	disable_text = "<span class='notice'>You disengage your rolling protocols.</span>"
+	enable_text = "<span class='notice'>Ваши приводы перемещаются, пока вы готовитесь к перекату. Кликните по смежной клетке, чтобы переместиться в неё!</span>"
+	disable_text = "<span class='notice'>Вы отключаете свои протоколы перемещения.</span>"
 	COOLDOWN_DECLARE(time_til_next_tilt)
 	/// How long does it take us to roll?
 	var/roll_over_time = MALF_AI_ROLL_TIME
@@ -866,7 +866,7 @@
 		remove_ranged_ability()
 		return
 	if(!COOLDOWN_FINISHED(src, time_til_next_tilt))
-		to_chat(ranged_ability_user, "<span class='warning'>Your rolling capacitors are still powering back up!</span>")
+		to_chat(ranged_ability_user, "<span class='warning'>Конденсаторы в приводе всё ещё перезаряжаются!</span>")
 		return
 
 	var/turf/target = get_turf(target_atom)
@@ -874,7 +874,7 @@
 		return
 
 	if(target == get_turf(ranged_ability_user))
-		to_chat(ranged_ability_user, "<span class='warning'>You can't roll over on yourself!</span>")
+		to_chat(ranged_ability_user, "<span class='warning'>Вы не можете вкатиться в себя!</span>")
 		return
 
 	var/picked_dir = get_dir(caller, target)
@@ -884,10 +884,10 @@
 	var/turf/temp_target = get_step(ranged_ability_user, picked_dir)
 
 	new /obj/effect/temp_visual/single_user/ai_telegraph(temp_target, ranged_ability_user)
-	ranged_ability_user.visible_message("<span class='danger'>[ranged_ability_user] seems to be winding up!</span>")
+	ranged_ability_user.visible_message("<span class='danger'>[ranged_ability_user] кажется заряжается...</span>")
 	addtimer(CALLBACK(src, PROC_REF(do_roll_over), caller, picked_dir), MALF_AI_ROLL_TIME)
 
-	to_chat(ranged_ability_user, "<span class='warning'>Overloading machine circuitry...</span>")
+	to_chat(ranged_ability_user, "<span class='warning'>Перегружаем платы...</span>")
 
 	COOLDOWN_START(src, time_til_next_tilt, roll_over_cooldown)
 
