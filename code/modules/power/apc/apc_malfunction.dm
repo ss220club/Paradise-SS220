@@ -10,12 +10,12 @@
 	if(get_malf_status(malf) != APC_MALF_NOT_HACKED)
 		return
 	if(malf.malfhacking)
-		to_chat(malf, "You are already hacking an APC.")
+		to_chat(malf, "Вы уже взламываете APC.")
 		return
 	if(constructed)
-		to_chat(malf, "<span class='warning'>This APC was only recently constructed, and is not fully linked to station systems. Hacking it would be pointless.</span>")
+		to_chat(malf, "<span class='warning'>Этот APC построили недавно и он не полностью подключился к сети. Его взлом будет бесполезен.</span>")
 		return
-	to_chat(malf, "Beginning override of APC systems. This takes some time, and you can only hack one APC at a time.")
+	to_chat(malf, "Начинается перезапись систем APC. Это займёт какое-то время, и вы можете взламывать только один APC за раз.")
 	malf.malfhack = src
 	malf.malfhacking = addtimer(CALLBACK(malf, TYPE_PROC_REF(/mob/living/silicon/ai, malfhacked), src), 600, TIMER_STOPPABLE)
 	var/obj/screen/alert/hackingapc/A

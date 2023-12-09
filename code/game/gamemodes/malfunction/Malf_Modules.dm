@@ -223,7 +223,7 @@
 	cost = 130
 	one_purchase = TRUE
 	power_type = /datum/action/innate/ai/nuke_station
-	unlock_text = "<span class='notice'>You slowly, carefully, establish a connection with the on-station self-destruct. You can now activate it at any time.</span>"
+	unlock_text = "<span class='notice'>Вы аккуратно подключаетесь к системе самоуничтожения станции. Вы можете запустить её в любой момент.</span>"
 	unlock_sound = 'sound/items/timer.ogg'
 
 /datum/action/innate/ai/nuke_station
@@ -235,7 +235,7 @@
 /datum/action/innate/ai/nuke_station/Activate()
 	var/turf/T = get_turf(owner)
 	if(!istype(T) || !is_station_level(T.z))
-		to_chat(owner, "<span class='warning'>You cannot activate the doomsday device while off-station!</span>")
+		to_chat(owner, "<span class='warning'>Вы не можете активировать устройство судного дня вне станции!</span>")
 		return
 	if(alert(owner, "Отправить сигнал для взведения? (true = arm, false = cancel)", "purge_all_life()", "confirm = TRUE;", "confirm = FALSE;") != "confirm = TRUE;")
 		return
@@ -528,7 +528,7 @@
 /obj/effect/proc_holder/ranged_ai/override_machine
 	active = FALSE
 	ranged_mousepointer = 'icons/effects/override_machine_target.dmi'
-	enable_text = "<span class='notice'>You tap into the station's powernet. Click on a machine to animate it, or use the ability again to cancel.</span>"
+	enable_text = "<span class='notice'>Вы подключаетесь к энергосети станции. Кликните на машину чтобы оживить её, или используйте способность ещё раз для отмены.</span>"
 	disable_text = "<span class='notice'>You release your hold on the powernet.</span>"
 
 /obj/effect/proc_holder/ranged_ai/override_machine/InterceptClickOn(mob/living/caller, params, obj/machinery/target)
@@ -538,15 +538,15 @@
 		remove_ranged_ability()
 		return
 	if(!istype(target))
-		to_chat(ranged_ability_user, "<span class='warning'>You can only animate machines!</span>")
+		to_chat(ranged_ability_user, "<span class='warning'>Вы можете оживлять только машины!</span>")
 		return
 	if(target.flags_2 & NO_MALF_EFFECT_2)
-		to_chat(ranged_ability_user, "<span class='warning'>That machine can't be overridden!</span>")
+		to_chat(ranged_ability_user, "<span class='warning'>Эта машине не может быть оживлена!</span>")
 		return
 
 	ranged_ability_user.playsound_local(ranged_ability_user, 'sound/misc/interference.ogg', 50, FALSE, use_reverb = FALSE)
 	attached_action.adjust_uses(-1)
-	target.audible_message("<span class='userdanger'>You hear a loud electrical buzzing sound coming from [target]!</span>")
+	target.audible_message("<span class='userdanger'>Вы слышите громкий шум, исходящий из [target]!</span>")
 	addtimer(CALLBACK(attached_action, TYPE_PROC_REF(/datum/action/innate/ai/ranged/override_machine, animate_machine), target), 50) //kabeep!
 	remove_ranged_ability(ranged_ability_user, "<span class='danger'>Sending override signal...</span>")
 	return TRUE
@@ -581,7 +581,7 @@
 	if(!owner_AI.can_place_transformer(src))
 		return
 	active = TRUE
-	if(alert(owner, "Are you sure you want to place the machine here?", "Are you sure?", "Yes", "No") == "No")
+	if(alert(owner, "Вы точно хотите поставить машину тут?", "Вы уверены?", "Да", "Нет") == "Нет")
 		active = FALSE
 		return
 	if(!owner_AI.can_place_transformer(src))
@@ -591,7 +591,7 @@
 	new /obj/machinery/transformer(T, owner_AI)
 	playsound(T, 'sound/effects/phasein.ogg', 100, 1)
 	owner_AI.can_shunt = FALSE
-	to_chat(owner, "<span class='warning'>You are no longer able to shunt your core to APCs.</span>")
+	to_chat(owner, "<span class='warning'>Вы больше не можете спрятать свои процессы в APC.</span>")
 	adjust_uses(-1)
 
 /mob/living/silicon/ai/proc/remove_transformer_image(client/C, image/I, turf/T)
@@ -603,7 +603,7 @@
 		return
 	var/turf/middle = get_turf(eyeobj)
 	var/list/turfs = list(middle, locate(middle.x - 1, middle.y, middle.z), locate(middle.x + 1, middle.y, middle.z))
-	var/alert_msg = "There isn't enough room! Make sure you are placing the machine in a clear area and on a floor."
+	var/alert_msg = "Недостаточно места! Убедитесь, что вы ставите машину на чистом полу."
 	var/success = TRUE
 	for(var/n in 1 to 3) //We have to do this instead of iterating normally because of how overlay images are handled
 		var/turf/T = turfs[n]
