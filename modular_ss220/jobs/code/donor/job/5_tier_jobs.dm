@@ -107,7 +107,7 @@
 	name = "Security Clown"
 	jobtype = /datum/job/donor/seclown
 
-	uniform = /obj/item/clothing/under/rank/civilian/clown
+	uniform = /obj/item/clothing/under/rank/security/officer/clown
 	suit = /obj/item/clothing/suit/armor/vest/security
 	shoes = /obj/item/clothing/shoes/clown_shoes
 	head = /obj/item/clothing/head/helmet
