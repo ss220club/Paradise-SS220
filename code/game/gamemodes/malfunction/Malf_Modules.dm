@@ -452,7 +452,7 @@
 		if(!is_station_level(AA.z))
 			continue
 		AA.emagged = TRUE
-	to_chat(owner, "<span class='notice'>Все предохранители на атмосферных датчиках были сброшены. Теперь Вы можете использовать режим Flood на них.")
+	to_chat(owner, "<span class='notice'>Все предохранители на атмосферных датчиках были сброшены. Теперь Вы можете использовать режим Flood на них..")
 	owner.playsound_local(owner, 'sound/machines/terminal_off.ogg', 50, FALSE, use_reverb = FALSE)
 
 
