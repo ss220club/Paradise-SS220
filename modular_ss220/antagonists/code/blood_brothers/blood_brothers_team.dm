@@ -64,7 +64,7 @@
 
 /datum/team/blood_brothers_team/proc/pick_meeting_area()
 	PRIVATE_PROC(TRUE)
-	var/chosen_meeting_area = pick_n_take(meeting_areas)
+	var/chosen_meeting_area = pick(meeting_areas)
 	if(istext(chosen_meeting_area))
 		meeting_area = chosen_meeting_area
 
