@@ -10,8 +10,8 @@ GLOBAL_LIST_EMPTY(sechailers)
 /obj/item/clothing/mask/gas/sechailer
 	var/obj/item/radio/radio // For dispatch to work
 	var/dispatch_cooldown = 25 SECONDS
-	var/is_on_cooldown = FALSE
-	var/is_emped = FALSE
+	var/on_cooldown = FALSE
+	var/emped = FALSE
 	var/static/list/available_dispatch_messages = list(
         "502 (Убийство)",
         "101 (Сопротивление Аресту)",
@@ -53,18 +53,18 @@ GLOBAL_LIST_EMPTY(sechailers)
 
 	if(!message)
 		return
-	if(is_on_cooldown)
-		var/cooldown_info = "Ожидайте. Система оповещения "
-		if(is_emped)
+	if(on_cooldown)
+		var/list/cooldown_info = list("Ожидайте. Система оповещения ")
+		if(emped)
 			cooldown_info += "в защитном режиме, "
 		else
 			cooldown_info += "перезаряжается, "
 		// Cooldown not updating realtime, and i don't want to rewrite it just for the sake of it
 		cooldown_info += "примерное время восстановления: [dispatch_cooldown / 10] секунд."
-		to_chat(user, span_notice(cooldown_info))
+		to_chat(user, span_notice(cooldown_info.Join()))
 		return
 
-	is_on_cooldown = TRUE
+	on_cooldown = TRUE
 	addtimer(CALLBACK(src, PROC_REF(reboot)), dispatch_cooldown)
 	// This code if fucking hell, but it works as intended
 	for(var/atom/movable/hailer in GLOB.sechailers)
@@ -87,8 +87,8 @@ GLOBAL_LIST_EMPTY(sechailers)
 			playsound(hailer.loc, 'modular_ss220/sechailer/sound/radio_static.ogg', 30, TRUE)
 
 /obj/item/clothing/mask/gas/sechailer/proc/reboot()
-	is_on_cooldown = FALSE
-	is_emped = FALSE
+	on_cooldown = FALSE
+	emped = FALSE
 
 /obj/item/clothing/mask/gas/sechailer/ui_action_click(mob/user, actiontype)
 	. = ..()
@@ -96,10 +96,10 @@ GLOBAL_LIST_EMPTY(sechailers)
 		dispatch(user)
 
 /obj/item/clothing/mask/gas/sechailer/emp_act(severity)
-	if(is_on_cooldown)
+	if(on_cooldown)
 		return
-	is_on_cooldown = TRUE
-	is_emped = TRUE
+	on_cooldown = TRUE
+	emped = TRUE
 	addtimer(CALLBACK(src, PROC_REF(reboot)), dispatch_cooldown)
 	if(ishuman(loc))
 		var/mob/living/carbon/human/user = loc
