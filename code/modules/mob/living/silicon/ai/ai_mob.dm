@@ -1003,175 +1003,175 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 			custom_hologram = TRUE
 
 	var/input
-	switch(alert("Would you like to select a hologram based on a crew member, an animal, or switch to a unique avatar?",,"Crew Member","Unique","Animal"))
-		if("Crew Member")
+	switch(alert("Вы хотели бы голограмму на основе члена экипажа, животного или переключиться на уникальный аватар?",,"Член Экипажа","Уникальное","Животное"))
+		if("Член Экипажа")
 			var/personnel_list[] = list()
 
 			for(var/datum/data/record/t in GLOB.data_core.general)//Look in data core general.
 				personnel_list["[t.fields["name"]]: [t.fields["rank"]]"] = t.fields["photo"]//Pull names, rank, and id photo.
 
 			if(personnel_list.len)
-				input = input("Select a crew member:") as null|anything in personnel_list
+				input = input("Выберите члена Экипажа:") as null|anything in personnel_list
 				var/icon/character_icon = personnel_list[input]
 				if(character_icon)
 					qdel(holo_icon)//Clear old icon so we're not storing it in memory.
 					holo_icon = getHologramIcon(icon(character_icon))
 			else
-				alert("No suitable records found. Aborting.")
+				alert("Подходящих записей не найдено. Отмена.")
 
-		if("Animal")
+		if("Животное")
 			var/icon_list[] = list(
-			"Bear",
-			"Carp",
-			"Chicken",
-			"Corgi",
-			"Cow",
-			"Crab",
-			"Deer",
-			"Fox",
-			"Goat",
-			"Goose",
-			"Kitten",
-			"Kitten2",
-			"Pig",
-			"Poly",
-			"Pug",
-			"Seal",
-			"Spider",
-			"Turkey",
-			"Shantak",
-			"Bunny",
-			"Hellhound",
-			"Lightgeist",
-			"Cockroach",
-			"Mecha-Cat",
-			"Mecha-Fairy",
-			"Mecha-Fox",
-			"Mecha-Monkey",
-			"Mecha-Mouse",
-			"Mecha-Snake",
-			"Roller-Mouse",
-			"Roller-Monkey"
+			"Медвед",
+			"Капп",
+			"Курица",
+			"Корги",
+			"Корова",
+			"Краб",
+			"Олень",
+			"Лиса",
+			"Коза",
+			"Гусь",
+			"Котёнок",
+			"Котёнок2",
+			"Свинья",
+			"Поли",
+			"Мопс",
+			"Тюлень",
+			"Паук",
+			"Индюк",
+			"Шантак",
+			"Кролик",
+			"Адская гончая",
+			"Лайтгейст",
+			"Таракан",
+			"Меха-Кот",
+			"Меха-Фея",
+			"Меха-Лиса",
+			"Меха-Обезьяна",
+			"Меха-Мышь",
+			"Меха-Снейк",
+			"Роллер-Мышь",
+			"Роллер-Обезьяна"
 			)
 
-			input = input("Please select a hologram:") as null|anything in icon_list
+			input = input("Пожалуйста, выберите голограмму:") as null|anything in icon_list
 			if(input)
 				qdel(holo_icon)
 				switch(input)
-					if("Bear")
+					if("Медведь")
 						holo_icon = getHologramIcon(icon('icons/mob/animal.dmi',"bear"))
-					if("Carp")
+					if("Карп")
 						holo_icon = getHologramIcon(icon('icons/mob/animal.dmi',"carp"))
-					if("Chicken")
+					if("Курица")
 						holo_icon = getHologramIcon(icon('icons/mob/animal.dmi',"chicken_brown"))
-					if("Corgi")
+					if("Когри")
 						holo_icon = getHologramIcon(icon('icons/mob/animal.dmi',"corgi"))
-					if("Cow")
+					if("Корова")
 						holo_icon = getHologramIcon(icon('icons/mob/animal.dmi',"cow"))
-					if("Crab")
+					if("Краб")
 						holo_icon = getHologramIcon(icon('icons/mob/animal.dmi',"crab"))
-					if("Deer")
+					if("Олень")
 						holo_icon = getHologramIcon(icon('icons/mob/animal.dmi',"deer"))
-					if("Fox")
+					if("Лиса")
 						holo_icon = getHologramIcon(icon('icons/mob/pets.dmi',"fox"))
-					if("Goat")
+					if("Коза")
 						holo_icon = getHologramIcon(icon('icons/mob/animal.dmi',"goat"))
-					if("Goose")
+					if("Гусь")
 						holo_icon = getHologramIcon(icon('icons/mob/animal.dmi',"goose"))
-					if("Kitten")
+					if("Котёнок")
 						holo_icon = getHologramIcon(icon('icons/mob/pets.dmi',"cat"))
-					if("Kitten2")
+					if("Котёнок2")
 						holo_icon = getHologramIcon(icon('icons/mob/pets.dmi',"cat2"))
-					if("Pig")
+					if("Свинья")
 						holo_icon = getHologramIcon(icon('icons/mob/animal.dmi',"pig"))
-					if("Poly")
+					if("Поли")
 						holo_icon = getHologramIcon(icon('icons/mob/animal.dmi',"parrot_fly"))
-					if("Pug")
+					if("Мопс")
 						holo_icon = getHologramIcon(icon('icons/mob/pets.dmi',"pug"))
-					if("Seal")
+					if("Тюлень")
 						holo_icon = getHologramIcon(icon('icons/mob/animal.dmi',"seal"))
-					if("Spider")
+					if("Паук")
 						holo_icon = getHologramIcon(icon('icons/mob/animal.dmi',"guard"))
-					if("Turkey")
+					if("Индюк")
 						holo_icon = getHologramIcon(icon('icons/mob/animal.dmi',"turkey"))
-					if("Shantak")
+					if("Шантак")
 						holo_icon = getHologramIcon(icon('icons/mob/animal.dmi',"shantak"))
-					if("Bunny")
+					if("Кролик")
 						holo_icon = getHologramIcon(icon('icons/mob/animal.dmi',"m_bunny"))
-					if("Hellhound")
+					if("Адская гончая")
 						holo_icon = getHologramIcon(icon('icons/mob/animal.dmi',"hellhound"))
-					if("Lightgeist")
+					if("Лайтгейст")
 						holo_icon = getHologramIcon(icon('icons/mob/animal.dmi',"lightgeist"))
-					if("Cockroach")
+					if("Таракан")
 						holo_icon = getHologramIcon(icon('icons/mob/animal.dmi',"cockroach"))
-					if("Mecha-Cat")
+					if("Меха-Кот")
 						holo_icon = getHologramIcon(icon('icons/mob/pai.dmi',"cat"))
-					if("Mecha-Fairy")
+					if("Меха-Фея")
 						holo_icon = getHologramIcon(icon('icons/mob/pai.dmi',"fairy"))
-					if("Mecha-Fox")
+					if("Меха-Лиса")
 						holo_icon = getHologramIcon(icon('icons/mob/pai.dmi',"fox"))
-					if("Mecha-Monkey")
+					if("Меха-Обезьяна")
 						holo_icon = getHologramIcon(icon('icons/mob/pai.dmi',"monkey"))
-					if("Mecha-Mouse")
+					if("Меха-Мышь")
 						holo_icon = getHologramIcon(icon('icons/mob/pai.dmi',"mouse"))
-					if("Mecha-Snake")
+					if("Меха-Змея")
 						holo_icon = getHologramIcon(icon('icons/mob/pai.dmi',"snake"))
-					if("Roller-Mouse")
+					if("Роллер-Мышь")
 						holo_icon = getHologramIcon(icon('icons/mob/robots.dmi',"mk2"))
-					if("Roller-Monkey")
+					if("Роллер-Обезьяна")
 						holo_icon = getHologramIcon(icon('icons/mob/robots.dmi',"mk3"))
 
 		else
 			var/icon_list[] = list(
-			"default",
-			"floating face",
-			"xeno queen",
+			"Стандартная",
+			"Летающее лицо",
+			"Королева Ксено",
 			"eldritch",
-			"ancient machine",
-			"angel",
-			"borb",
-			"biggest fan",
-			"cloudkat",
-			"donut",
-			"frost phoenix",
+			"Древняя машина",
+			"Ангел",
+			"Борб",
+			"Самый большой фен",
+			"Клаудкэт",
+			"Пончик",
+			"Морозный феникс",
 			"engi bot",
-			"drone",
-			"boxbot"
+			"Дрон",
+			"БоксБот"
 			)
 			if(custom_hologram) //insert custom hologram
 				icon_list.Add("custom")
 
-			input = input("Please select a hologram:") as null|anything in icon_list
+			input = input("Пожалуйста выберите голограмму:") as null|anything in icon_list
 			if(input)
 				qdel(holo_icon)
 				switch(input)
-					if("default")
+					if("Стандартная")
 						holo_icon = getHologramIcon(icon('icons/mob/ai.dmi',"holo1"))
-					if("floating face")
+					if("Летающее лицо")
 						holo_icon = getHologramIcon(icon('icons/mob/ai.dmi',"holo2"))
-					if("xeno queen")
+					if("Королева Ксено")
 						holo_icon = getHologramIcon(icon('icons/mob/ai.dmi',"holo3"))
 					if("eldritch")
 						holo_icon = getHologramIcon(icon('icons/mob/ai.dmi',"holo4"))
-					if("angel")
+					if("Ангел")
 						holo_icon = getHologramIcon(icon('icons/mob/ai.dmi',"holo-angel"))
 					if("borb")
 						holo_icon = getHologramIcon(icon('icons/mob/ai.dmi',"holo-borb"))
-					if("biggest fan")
+					if("Самый большой фен")
 						holo_icon = getHologramIcon(icon('icons/mob/ai.dmi',"holo-biggestfan"))
-					if("cloudkat")
+					if("Клаудкэт")
 						holo_icon = getHologramIcon(icon('icons/mob/ai.dmi',"holo-cloudkat"))
-					if("donut")
+					if("Пончик")
 						holo_icon = getHologramIcon(icon('icons/mob/ai.dmi',"holo-donut"))
-					if("frost phoenix")
+					if("Морозный феникс")
 						holo_icon = getHologramIcon(icon('icons/mob/ai.dmi',"holo-frostphoenix"))
 					if("engi bot")
 						holo_icon = getHologramIcon(icon('icons/mob/hivebot.dmi',"EngBot"))
-					if("drone")
+					if("Дрон")
 						holo_icon = getHologramIcon(icon('icons/mob/animal.dmi',"drone0"))
-					if("boxbot")
+					if("БоксБот")
 						holo_icon = getHologramIcon(icon('icons/mob/pai.dmi',"boxbot"))
-					if("ancient machine")
+					if("Древняя машина")
 						holo_icon = getHologramIcon(icon('icons/mob/ancient_machine.dmi', "ancient_machine"))
 					if("custom")
 						if("[ckey]-ai-holo" in icon_states('icons/mob/custom_synthetic/custom-synthetic.dmi'))
@@ -1186,8 +1186,8 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 
 //Toggles the luminosity and applies it by re-entereing the camera.
 /mob/living/silicon/ai/proc/toggle_camera_light()
-	set name = "Toggle Camera Lights"
-	set desc = "Toggles the lights on the cameras throughout the station."
+	set name = "Переключить свет в камерах"
+	set desc = "Переключает свет в камерах на станции."
 	set category = "AI Commands"
 
 	if(stat != CONSCIOUS)
@@ -1196,7 +1196,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 	camera_light_on = !camera_light_on
 
 	if(!camera_light_on)
-		to_chat(src, "Camera lights deactivated.")
+		to_chat(src, "Свет в камерах выключен.")
 
 		for(var/obj/machinery/camera/C in lit_cameras)
 			C.set_light(0)
@@ -1206,31 +1206,31 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 
 	light_cameras()
 
-	to_chat(src, "Camera lights activated.")
+	to_chat(src, "Свет в камерах включен.")
 
 /mob/living/silicon/ai/proc/set_syndie_radio()
 	if(aiRadio)
 		aiRadio.make_syndie()
 
 /mob/living/silicon/ai/proc/sensor_mode()
-	set name = "Set Sensor Augmentation"
+	set name = "Переключить аугментацию сенсоров"
 	set desc = "Augment visual feed with internal sensor overlays."
 	set category = "AI Commands"
 	toggle_sensor_mode()
 
 /mob/living/silicon/ai/proc/arrivals_announcement()
-	set name = "Toggle Arrivals Announcer"
+	set name = "Переключить оповещение о прибытии"
 	set desc = "Change whether or not you wish to announce arrivals."
 	set category = "AI Commands"
 	announce_arrivals = !announce_arrivals
-	to_chat(usr, "Arrivals announcement system [announce_arrivals ? "enabled" : "disabled"]")
+	to_chat(usr, "Система оповещения о прибытии: [announce_arrivals ? "enabled" : "disabled"]")
 
 /mob/living/silicon/ai/proc/change_arrival_message()
-	set name = "Set Arrival Message"
+	set name = "Поставить сообщение о прибытии"
 	set desc = "Change the message that's transmitted when a new crew member arrives on station."
 	set category = "AI Commands"
 
-	var/newmsg = clean_input("What would you like the arrival message to be? List of options: $name, $rank, $species, $gender, $age", "Change Arrival Message", arrivalmsg)
+	var/newmsg = clean_input("Каким бы вы хотели видеть новое сообщение? Список вариантов: $name, $rank, $species, $gender, $age", "Поменять сообщение о прибытии", arrivalmsg)
 	if(!newmsg)
 		return
 	newmsg = html_decode(newmsg) // This feels a bit redundant, but sanitisation is (probably) important.
@@ -1265,19 +1265,19 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 /mob/living/silicon/ai/attackby(obj/item/W, mob/user, params)
 	if(istype(W, /obj/item/wrench))
 		if(anchored)
-			user.visible_message("<span class='notice'>\The [user] starts to unbolt \the [src] from the plating...</span>")
+			user.visible_message("<span class='notice'>[user] начинает откручивать [src] от пола...</span>")
 			if(!do_after(user, 40 * W.toolspeed, target = src))
-				user.visible_message("<span class='notice'>\The [user] decides not to unbolt \the [src].</span>")
+				user.visible_message("<span class='notice'>[user] решает не откручиать [src].</span>")
 				return
-			user.visible_message("<span class='notice'>\The [user] finishes unfastening \the [src]!</span>")
+			user.visible_message("<span class='notice'> [user] открутил от пола [src]!</span>")
 			anchored = FALSE
 			return
 		else
-			user.visible_message("<span class='notice'>\The [user] starts to bolt \the [src] to the plating...</span>")
+			user.visible_message("<span class='notice'>\The [user] начинает прикручивать [src] к полу...</span>")
 			if(!do_after(user, 40 * W.toolspeed, target = src))
-				user.visible_message("<span class='notice'>\The [user] decides not to bolt \the [src].</span>")
+				user.visible_message("<span class='notice'>\The [user] решает не прикручивать [src].</span>")
 				return
-			user.visible_message("<span class='notice'>\The [user] finishes fastening down \the [src]!</span>")
+			user.visible_message("<span class='notice'>\The [user] прикрутил [src]!</span>")
 			anchored = TRUE
 			return
 	else
@@ -1371,7 +1371,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 	var/message = combine_message(message_pieces, verb, M)
 	var/name_used = M.GetVoice()
 	//This communication is imperfect because the holopad "filters" voices and is only designed to connect to the master only.
-	var/rendered = "<i><span class='game say'>Relayed Speech: <span class='name'>[name_used]</span> [message]</span></i>"
+	var/rendered = "<i><span class='game say'>Переданная речь: <span class='name'>[name_used]</span> [message]</span></i>"
 	if(client?.prefs.toggles2 & PREFTOGGLE_2_RUNECHAT)
 		var/message_clean = combine_message(message_pieces, null, M)
 		create_chat_message(locateUID(M.runechat_msg_location), message_clean)
@@ -1383,10 +1383,10 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 	clear_alert("hackingapc")
 
 	if(!istype(apc) || QDELETED(apc) || apc.stat & BROKEN)
-		to_chat(src, "<span class='danger'>Hack aborted. The designated APC no longer exists on the power network.</span>")
+		to_chat(src, "<span class='danger'>Взлом отменён. Обозначенный APC больше не существует на системах электроэнергии.</span>")
 		SEND_SOUND(src, sound('sound/machines/buzz-two.ogg'))
 	else if(apc.aidisabled)
-		to_chat(src, "<span class='danger'>Hack aborted. [apc] is no longer responding to our systems.</span>")
+		to_chat(src, "<span class='danger'>Взлом отменён. [apc] не отвечает нашим системам.</span>")
 		SEND_SOUND(src, sound('sound/machines/buzz-sigh.ogg'))
 	else
 		malf_picker.processing_time += 15
@@ -1396,12 +1396,12 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 		apc.locked = TRUE
 
 		SEND_SOUND(src, sound('sound/machines/ding.ogg'))
-		to_chat(src, "Hack complete. [apc] is now under your exclusive control.")
+		to_chat(src, "Взлом завершен. [apc] теперь под вашем контролем.")
 		apc.update_icon()
 
 /mob/living/silicon/ai/proc/add_malf_picker()
-	to_chat(src, "In the top right corner of the screen you will find the Malfunctions tab, where you can purchase various abilities, from upgraded surveillance to station ending doomsday devices.")
-	to_chat(src, "You are also capable of hacking APCs, which grants you more points to spend on your Malfunction powers. The drawback is that a hacked APC will give you away if spotted by the crew. Hacking an APC takes 60 seconds.")
+	to_chat(src, "В левом верхнем углу вы видите вкладку 'Выбор модулей', в которой вы можете покупать различные улучшения, от улучшенной слежки до Устройства Судного Дня, уничтожающего станцию.") // Не ебу почему изначально был указан правый угол, всегда же в левом находился.
+	to_chat(src, "Вы также можете взламывать APC, что даст вам больше очков на покупку сбойных сил. Недостаток в том, что взломанный APC выдаст вас, если его увидит экипаж. Взлом APC занимает 60 секунд.")
 	view_core() //A BYOND bug requires you to be viewing your core before your verbs update
 	malf_picker = new /datum/module_picker
 	modules_action = new(malf_picker)
@@ -1440,19 +1440,19 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 				A = D
 
 		if(istype(A))
-			switch(alert(src, "Do you want to open \the [A] for [target]?", "Doorknob_v2a.exe", "Yes", "No"))
-				if("Yes")
+			switch(alert(src, "Вы хотите открыть \the [A] для [target]?", "ДвернаяРучка_v2a.exe", "Да", "Нет")) //Ну тупо рили дверная ручка
+				if("Да")
 					if(!A.density)
-						to_chat(src, "<span class='notice'>[A] was already opened.</span>")
+						to_chat(src, "<span class='notice'>Шлюз в [A] уже был открыт.</span>")
 					else if(A.open_close(src))
-						to_chat(src, "<span class='notice'>You open \the [A] for [target].</span>")
+						to_chat(src, "<span class='notice'>Вы открываете \the [A] для [target].</span>")
 				else
-					to_chat(src, "<span class='warning'>You deny the request.</span>")
+					to_chat(src, "<span class='warning'>Вы отклоняете запрос.</span>")
 		else
-			to_chat(src, "<span class='warning'>Unable to locate an airlock near [target].</span>")
+			to_chat(src, "<span class='warning'>Невозможно найти шлюз рядом с [target].</span>")
 
 	else
-		to_chat(src, "<span class='warning'>Target is not on or near any active cameras on the station.</span>")
+		to_chat(src, "<span class='warning'>Цели нет рядом ни с одной активной камерой на станции.</span>")
 
 /mob/living/silicon/ai/proc/camera_visibility(mob/camera/aiEye/moved_eye)
 	GLOB.cameranet.visibility(moved_eye, client, all_eyes)
@@ -1506,16 +1506,16 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 	var/datum/component/ducttape/ducttapecomponent = card.GetComponent(/datum/component/ducttape)
 	if(!ducttapecomponent)
 		return
-	to_chat(src, "<span class='notice'>The tiny fan that could begins to work against the tape to remove it.</span>")
+	to_chat(src, "<span class='notice'>The tiny fan that could begins to work against the tape to remove it.</span>") //Что это такое? Кто-нибудь шарит?
 	if(!do_after(src, 2 MINUTES, target = card))
 		return
-	to_chat(src, "<span class='notice'>The tiny in built fan finally removes the tape!</span>")
+	to_chat(src, "<span class='notice'>Маленький встроенный фен наконец-то вытаскивает плёнку!</span>")
 	ducttapecomponent.remove_tape(card, src)
 
 //Stores the location of the AI to the value of stored_locations associated with location_number.
 /mob/living/silicon/ai/proc/store_location(location_number)
-	if(!isturf(eyeobj.loc)) //i.e., inside a mech or other shenanigans
-		to_chat(src, "<span class='warning'>You can't set a location here!</span>")
+	if(!isturf(eyeobj.loc)) //к примеру, в мехе или ещё чего
+		to_chat(src, "<span class='warning'>Вы не можете поставить место тут!</span>")
 		return FALSE
 
 	stored_locations[location_number] = eyeobj.loc

@@ -272,7 +272,7 @@
 	return 0
 
 
-// this function shows the health of the pAI in the Status panel
+// Функия показывает здоровье пИИ на панели Статуса.
 /mob/living/silicon/proc/show_system_integrity()
 	if(!src.stat)
 		stat(null, text("Целостность системы: [round((health/maxHealth)*100)]%"))
@@ -385,16 +385,16 @@
 		return
 	remove_med_sec_hud()
 	switch(sensor_type)
-		if("Security")
+		if("Записи судимостей")
 			add_sec_hud()
 			to_chat(src, "<span class='notice'>Включён монитор Службы безопасности.</span>")
-		if("Medical")
+		if("Медицинские записи")
 			add_med_hud()
 			to_chat(src, "<span class='notice'>Включён монитор жизненных показателей.</span>")
-		if("Diagnostic")
+		if("Диагностика")
 			add_diag_hud()
 			to_chat(src, "<span class='notice'>Включён диагностический монитор.</span>")
-		if("None")
+		if("Никакой")
 			to_chat(src, "Сенсорные аугментации выключены.")
 
 /mob/living/silicon/adjustToxLoss(amount)
