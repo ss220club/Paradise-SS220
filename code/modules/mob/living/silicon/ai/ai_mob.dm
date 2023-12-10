@@ -1287,32 +1287,32 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 	return
 
 /mob/living/silicon/ai/proc/control_integrated_radio()
-	set name = "Radio Settings"
+	set name = "Настройки гарнитуры"
 	set desc = "Allows you to change settings of your radio."
 	set category = "AI Commands"
 
 	if(check_unable(AI_CHECK_RADIO))
 		return
 
-	to_chat(src, "Accessing Subspace Transceiver control...")
+	to_chat(src, "Получаем контроль над передатчиком...")
 	if(aiRadio)
 		aiRadio.interact(src)
 
 
 /mob/living/silicon/ai/proc/check_unable(flags = 0)
 	if(stat == DEAD)
-		to_chat(src, "<span class='warning'>You are dead!</span>")
+		to_chat(src, "<span class='warning'>Вы мертвы!</span>")
 		return TRUE
 
 	if(lacks_power())
-		to_chat(src, "<span class='warning'>Power systems failure!</span>")
+		to_chat(src, "<span class='warning'>Ошибка систем питания!</span>")
 		return TRUE
 
 	if((flags & AI_CHECK_WIRELESS) && control_disabled)
-		to_chat(src, "<span class='warning'>Wireless control is disabled!</span>")
+		to_chat(src, "<span class='warning'>Дистанционное управление отключено</span>")
 		return TRUE
 	if((flags & AI_CHECK_RADIO) && aiRadio.disabledAi)
-		to_chat(src, "<span class='warning'>System Error - Transceiver Disabled!</span>")
+		to_chat(src, "<span class='warning'>Системная ошибка - Приёмпередатчик отключён!</span>")
 		return TRUE
 	return FALSE
 
@@ -1324,11 +1324,11 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 		return
 	if(interaction == AI_TRANS_TO_CARD)//The only possible interaction. Upload AI mob to a card.
 		if(!mind)
-			to_chat(user, "<span class='warning'>No intelligence patterns detected.</span>")//No more magical carding of empty cores, AI RETURN TO BODY!!!11
+			to_chat(user, "<span class='warning'>ИИ не обнаружено.</span>")//No more magical carding of empty cores, AI RETURN TO BODY!!!11
 			return
 
 		if(stat != DEAD)
-			to_chat(user, "<span class='notice'>Beginning active intelligence transfer: please wait.</span>")
+			to_chat(user, "<span class='notice'>Начинается перенос сознания: Пожалуйста, ожидайте...</span>")
 
 			if(!do_after_once(user, 5 SECONDS, target = src) || !Adjacent(user))
 				to_chat(user, "<span class='warning'>Intelligence transfer aborted.</span>")
@@ -1341,8 +1341,8 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 		if(GetComponent(/datum/component/ducttape))
 			QDEL_NULL(builtInCamera)
 		forceMove(card) //Throw AI into the card.
-		to_chat(src, "You have been downloaded to a mobile storage device. Remote device connection severed.")
-		to_chat(user, "<span class='boldnotice'>Transfer successful</span>: [name] ([rand(1000,9999)].exe) removed from host terminal and stored within local memory.")
+		to_chat(src, "Вас загрузили на портативное устройство. Удалённое подключение к устройствам разорвано.")
+		to_chat(user, "<span class='boldnotice'>Передача успешна</span>: [name] ([rand(1000,9999)].exe) удалён из терминала и перемещён в локальное хранилище.")
 
 /mob/living/silicon/ai/can_buckle()
 	return FALSE
@@ -1440,7 +1440,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 				A = D
 
 		if(istype(A))
-			switch(alert(src, "Вы хотите открыть \the [A] для [target]?", "ДвернаяРучка_v2a.exe", "Да", "Нет")) //Ну тупо рили дверная ручка
+			switch(alert(src, "Вы хотите открыть \ [A] для [target]?", "ДвернаяРучка_v2a.exe", "Да", "Нет")) //Ну тупо рили дверная ручка
 				if("Да")
 					if(!A.density)
 						to_chat(src, "<span class='notice'>Шлюз в [A] уже был открыт.</span>")
