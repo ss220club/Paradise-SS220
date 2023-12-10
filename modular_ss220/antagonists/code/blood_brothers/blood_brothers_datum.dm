@@ -22,7 +22,7 @@
 
 /datum/antagonist/blood_brother/greet()
 	. = ..()
-	SEND_SOUND(owner.current, sound('sound/ambience/antag/tatoralert.ogg'))
+	SEND_SOUND(owner.current, sound('modular_ss220/antagonists/sound/ambience/antag/blood_bothers_intro.ogg'))
 
 	. += {"Вы ненавидите Нанотрейзен, корпорация дала вам достаточно поводов для этого.
 			Лучшую возможность бороться с ней предоставляет Синдикат, так что вы со своим напарником, разделяющим подобные чувства, связались с ними, чтобы вступить в их ряды.
