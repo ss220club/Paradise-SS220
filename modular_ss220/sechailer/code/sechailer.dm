@@ -13,11 +13,11 @@ GLOBAL_LIST_EMPTY(sechailers)
 	var/on_cooldown = FALSE
 	var/emped = FALSE
 	var/static/list/available_dispatch_messages = list(
-        "502 (Убийство)",
-        "101 (Сопротивление Аресту)",
-        "308 (Вторжение)",
-        "305 (Мятеж)",
-        "402 (Нападение на Офицера)")
+		"502 (Убийство)",
+		"101 (Сопротивление Аресту)",
+		"308 (Вторжение)",
+		"305 (Мятеж)",
+		"402 (Нападение на Офицера)")
 	actions_types = list(/datum/action/item_action/dispatch, /datum/action/item_action/halt, /datum/action/item_action/adjust, /datum/action/item_action/selectphrase)
 
 /obj/item/clothing/mask/gas/sechailer/hos
