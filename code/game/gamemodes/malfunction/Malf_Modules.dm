@@ -407,7 +407,7 @@
 
 //Thermal Sensor Override: Unlocks the ability to disable all fire alarms from doing their job.
 /datum/AI_Module/break_fire_alarms
-	module_name = "Thermal Sensor Override"
+	module_name = "Перезагрузка термальных датчиков"
 	mod_pick_name = "burnpigs"
 	description = "Даёт вам возможность отключения термальных сенсоров на всех пожарных датчиках. Это уберёт возможность проверки на огонь и, соответственно, возможность предупредить других \
 	Любое существо может проверить интерфейс датчика и заподозрить что-то по его статусу."
@@ -432,18 +432,18 @@
 
 //Air Alarm Safety Override: Unlocks the ability to enable flooding on all air alarms.
 /datum/AI_Module/break_air_alarms
-	module_name = "Air Alarm Safety Override"
+	module_name = "Перезагрузка атмосферных датчиков"
 	mod_pick_name = "allow_flooding"
-	description = "Gives you the ability to disable safeties on all air alarms. This will allow you to use the environmental mode Flood, which disables scrubbers as well as pressure checks on vents. \
+	description = "Даёт вам возможность отключить предохранители атмосферных датчиков. Это позволит вам использовать режим Flood, отключающий скрабберы и проверку давления в вентиляции. \
 	Anyone can check the air alarm's interface and may be tipped off by their nonfunctionality."
 	one_purchase = TRUE
 	cost = 50
 	power_type = /datum/action/innate/ai/break_air_alarms
-	unlock_text = "<span class='notice'>You remove the safety overrides on all air alarms, but you leave the confirm prompts open. You can hit 'Yes' at any time... you bastard.</span>"
+	unlock_text = "<span class='notice'>Вы убираете предохранители с атмосферных датчиков, но оставляете окно с подтверждением открытым. Ты можешь нажать 'Да' в любой момент... Ублюдок.</span>"
 
 /datum/action/innate/ai/break_air_alarms
-	name = "Override Air Alarm Safeties"
-	desc = "Enables the Flood setting on all air alarms."
+	name = "Перезагрузка атмосферных датчиков"
+	desc = "Включает режим Flood на всех атмосферных датчиках."
 	button_icon_state = "break_air_alarms"
 	uses = 1
 
@@ -452,7 +452,7 @@
 		if(!is_station_level(AA.z))
 			continue
 		AA.emagged = TRUE
-	to_chat(owner, "<span class='notice'>All air alarm safeties on the station have been overridden. Air alarms may now use the Flood environmental mode.")
+	to_chat(owner, "<span class='notice'>Все предохранители на атмосферных датчиках были сброшены. Теперь Вы можете использовать режим Flood на них.")
 	owner.playsound_local(owner, 'sound/machines/terminal_off.ogg', 50, FALSE, use_reverb = FALSE)
 
 
