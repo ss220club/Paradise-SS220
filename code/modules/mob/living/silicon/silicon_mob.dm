@@ -193,8 +193,8 @@
 			take_organ_damage(10)
 			Stun(6 SECONDS)
 	flash_eyes(affect_silicon = 1)
-	to_chat(src, "<span class='danger'>*BZZZT*</span>")
-	to_chat(src, "<span class='warning'>Warning: Electromagnetic pulse detected.</span>")
+	to_chat(src, "<span class='danger'>*БЗЗЗЗЗ*</span>")
+	to_chat(src, "<span class='warning'>Внимание: Обнаружен электромагнитный импульс.</span>")
 
 
 /mob/living/silicon/proc/damage_mob(brute = 0, fire = 0, tox = 0)
@@ -202,7 +202,7 @@
 
 /mob/living/silicon/can_inject(mob/user, error_msg, target_zone, penetrate_thick)
 	if(error_msg)
-		to_chat(user, "<span class='alert'>[p_their(TRUE)] outer shell is too tough.</span>")
+		to_chat(user, "<span class='alert'>[p_their(TRUE)] Внешняя оболочка слишком толстая.</span>")
 	return FALSE
 
 /mob/living/silicon/IsAdvancedToolUser()
@@ -218,7 +218,7 @@
 		to_chat(user, "<span class='notice'>Нечего чинить!</span>")
 		return
 	else if(!getBruteLoss(TRUE))
-		to_chat(user, "<span class='warning'>повреждённые компоненты не спасти!</span>")
+		to_chat(user, "<span class='warning'>Повреждённые компоненты уже не спасти!</span>")
 		return
 	if(!I.use_tool(src, user, volume = I.tool_volume))
 		return
@@ -370,10 +370,10 @@
 
 /mob/living/silicon/proc/toggle_sensor_mode()
 	to_chat(src, "<span class='notice'>Пожалуйста, выберите тип сенсоров.</span>")
-	var/static/list/sensor_choices = list("Безопасность" = image(icon = 'icons/obj/clothing/glasses.dmi', icon_state = "securityhud"),
-							"Медицинский" = image(icon = 'icons/obj/clothing/glasses.dmi', icon_state = "healthhud"),
-							"Диагностический" = image(icon = 'icons/obj/clothing/glasses.dmi', icon_state = "diagnostichud"),
-							"Нет" = image(icon = 'icons/mob/screen_gen.dmi', icon_state = "x"))
+	var/static/list/sensor_choices = list("Записи судимостей" = image(icon = 'icons/obj/clothing/glasses.dmi', icon_state = "securityhud"),
+							"Медицинские записи" = image(icon = 'icons/obj/clothing/glasses.dmi', icon_state = "healthhud"),
+							"Диагностика" = image(icon = 'icons/obj/clothing/glasses.dmi', icon_state = "diagnostichud"),
+							"Никакой" = image(icon = 'icons/mob/screen_gen.dmi', icon_state = "x"))
 	var/user_loc
 	if(isAI(src))
 		var/mob/living/silicon/ai/eyeloc = src
