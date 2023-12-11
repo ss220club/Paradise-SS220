@@ -152,7 +152,7 @@
 			if("Клоун Кадет")
 				head = /obj/item/clothing/head/soft/sec
 
-/datum/job/donor/seclown/make_alt_title(mob/living/carbon/human/H)
+/datum/job/donor/seclown/after_donor_spawn(mob/living/carbon/human/H)
 	if(H.mind)
 		var/clown_name = pick(GLOB.clown_names)
 		var/newname = clean_input("Выберите имя для вашего Клоуна Службы Безопасности.", "Изменение Имени", clown_name, H)

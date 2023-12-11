@@ -96,9 +96,9 @@
 // Переводим должность и предлагаем взять альтернативную должность
 /datum/job/donor/after_spawn(mob/living/carbon/human/H)
 	. = ..()
-	INVOKE_ASYNC(src, PROC_REF(make_alt_title), H)
+	INVOKE_ASYNC(src, PROC_REF(after_donor_spawn), H)
 
-/datum/job/donor/proc/make_alt_title(mob/living/carbon/human/H)
+/datum/job/donor/proc/after_donor_spawn(mob/living/carbon/human/H)
 	choose_id_assignment(H)
 	for(var/datum/data/record/R in GLOB.data_core.general)
 		if(R && H.real_name == R.fields["name"])
