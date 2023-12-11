@@ -49,7 +49,7 @@
  * Calculates amount of `credits` that will spent on antag scenarios, that are available.
 */
 /datum/game_mode/antag_mix/proc/calculate_budget(ready_players_amount)
-	return ready_players_amount * budget_multiplier * 10
+	return ready_players_amount * budget_multiplier
 
 
 /**
