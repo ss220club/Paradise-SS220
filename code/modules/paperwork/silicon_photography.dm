@@ -88,63 +88,63 @@
 
 /obj/item/camera/siliconcam/proc/camera_mode_off()
 	src.in_camera_mode = 0
-	to_chat(usr, "<B>Camera Mode deactivated</B>")
+	to_chat(usr, "<B>Режим камеры деактивирован</B>")
 
 /obj/item/camera/siliconcam/proc/camera_mode_on()
 	src.in_camera_mode = 1
-	to_chat(usr, "<B>Camera Mode activated</B>")
+	to_chat(usr, "<B>Режим камеры активирован</B>")
 
 /obj/item/camera/siliconcam/ai_camera/printpicture(mob/user, datum/picture/P)
 	injectaialbum(P)
-	to_chat(usr, "<span class='unconscious'>Image recorded</span>")
+	to_chat(usr, "<span class='unconscious'>Снимок записан.</span>")
 
 /obj/item/camera/siliconcam/robot_camera/printpicture(mob/user, datum/picture/P)
 	injectmasteralbum(P)
 
 /obj/item/camera/siliconcam/ai_camera/verb/take_image()
-	set category = "AI Commands"
-	set name = "Take Image"
-	set desc = "Takes an image"
+	set category = "Команды ИИ"
+	set name = "Сфотографировать"
+	set desc = "Делает снимок"
 	set src in usr
 
 	toggle_camera_mode()
 
 /obj/item/camera/siliconcam/ai_camera/verb/view_images()
-	set category = "AI Commands"
-	set name = "View Images"
-	set desc = "View images"
+	set category = "Команды ИИ"
+	set name = "Посмотреть снимки"
+	set desc = "Просматриват снимки"
 	set src in usr
 
 	viewpictures()
 
 /obj/item/camera/siliconcam/ai_camera/verb/delete_images()
-	set category = "AI Commands"
-	set name = "Delete Image"
-	set desc = "Delete image"
+	set category = "Команды ИИ"
+	set name = "Удалить снимок"
+	set desc = "Удаляет снимок"
 	set src in usr
 
 	deletepicture(src)
 
 /obj/item/camera/siliconcam/robot_camera/verb/take_image()
-	set category ="Robot Commands"
-	set name = "Take Image"
-	set desc = "Takes an image"
+	set category ="Команды роботов"
+	set name = "Сфотографировать"
+	set desc = "Делает снимок"
 	set src in usr
 
 	toggle_camera_mode()
 
 /obj/item/camera/siliconcam/robot_camera/verb/view_images()
-	set category ="Robot Commands"
-	set name = "View Images"
-	set desc = "View images"
+	set category ="Команды роботов"
+	set name = "Посмотреть снимки"
+	set desc = "Показывает снимки"
 	set src in usr
 
 	viewpictures()
 
 /obj/item/camera/siliconcam/robot_camera/verb/delete_images()
-	set category = "Robot Commands"
-	set name = "Delete Image"
-	set desc = "Delete a local image"
+	set category = "Команды роботов"
+	set name = "Удалить снимок"
+	set desc = "Удаляет снимки"
 	set src in usr
 
 	// Explicitly only allow deletion from the local camera

@@ -3,7 +3,7 @@
 	May be returned in the future by offs (because it's commented in code\modules\mob)
 */
 /mob/verb/abandon_mob()
-	set name = "Respawn"
+	set name = "Возрождение"
 	set category = "OOC"
 
 	if(!GLOB.configuration.general.respawn_enabled)
@@ -39,8 +39,8 @@
 
 // Pick darkness list
 /mob/dead/observer/pick_darkness()
-	set name = "Pick Darkness"
-	set desc = "Choose how much darkness you want to see."
+	set name = "Яркость"
+	set desc = "Выберите, насколько ярко вы видите."
 	set category = "Ghost"
 
 	if(!client)
@@ -71,8 +71,8 @@
 
 /mob/dead/observer/dead_tele()
 	set category = "Ghost"
-	set name = "Teleport"
-	set desc= "Teleport to a location"
+	set name = "Телепорт"
+	set desc= "Телепортирует вас к месту"
 
 	if(!isobserver(usr))
 		to_chat(usr, "Ты ещё не мёртв!")

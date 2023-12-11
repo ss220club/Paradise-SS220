@@ -30,7 +30,7 @@
 
 
 /mob/living/silicon/ai/proc/ai_camera_list(camera in get_camera_list())
-	set category = "AI Commands"
+	set category = "Команды ИИ"
 	set name = "Show Camera List"
 
 	if(src.stat == 2)
@@ -89,7 +89,7 @@
 	return targets
 
 /mob/living/silicon/ai/proc/ai_camera_track(target_name in trackable_mobs())
-	set category = "AI Commands"
+	set category = "Команды ИИ"
 	set name = "Track With Camera"
 	set desc = "Select who you would like to track."
 
