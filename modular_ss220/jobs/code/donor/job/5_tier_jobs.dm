@@ -25,7 +25,7 @@
 	box = /obj/item/storage/box/engineer
 	id = /obj/item/card/id/vip_guest
 	backpack_contents = list(
-		/obj/item/stack/spacecash/c10000 = 1,
+		/obj/item/stack/spacecash/c1000 = 2,
 		/obj/item/implanter/death_alarm = 1,
 		/obj/item/lighter/zippo/engraved = 1,
 		/obj/item/clothing/mask/cigarette/cigar/havana = 6,
@@ -67,9 +67,7 @@
 	box = /obj/item/storage/box/engineer
 	id = /obj/item/card/id/banker
 	backpack_contents = list(
-		//15k
-		/obj/item/stack/spacecash/c10000 = 1,
-		/obj/item/stack/spacecash/c1000 = 5,
+		/obj/item/stack/spacecash/c1000 = 3,
 
 		/obj/item/implanter/death_alarm = 1,
 		/obj/item/lighter/zippo/engraved = 1,
