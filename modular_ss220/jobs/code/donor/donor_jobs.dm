@@ -139,6 +139,4 @@
 /datum/job/donor/is_donor_allowed(client/C)
 	if(!C)
 		return FALSE // No client
-	if(donator_tier > C.donator_level)	// Tier check
-		return FALSE
-	return TRUE
+	return C.is_donor_allowed(donator_tier)
