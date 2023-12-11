@@ -31,8 +31,8 @@
 	title = "Т1 должность"
 	flag = JOB_DONOR_TIER_1
 	hidden_from_job_prefs = FALSE
-	total_positions = 5
-	spawn_positions = 5
+	total_positions = 3
+	spawn_positions = 3
 	donator_tier = 1
 
 /datum/job/donor/tier_1/New()
