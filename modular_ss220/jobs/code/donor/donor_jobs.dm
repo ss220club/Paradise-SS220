@@ -44,8 +44,8 @@
 	title = "Т2 должность"
 	flag = JOB_DONOR_TIER_2
 	hidden_from_job_prefs = FALSE
-	total_positions = 8
-	spawn_positions = 5
+	total_positions = 3
+	spawn_positions = 3
 	donator_tier = 2
 
 /datum/job/donor/tier_2/New()
@@ -57,8 +57,8 @@
 	title = "Т3 должность"
 	flag = JOB_DONOR_TIER_3
 	hidden_from_job_prefs = FALSE
-	total_positions = 8
-	spawn_positions = 5
+	total_positions = 3
+	spawn_positions = 3
 	donator_tier = 3
 
 /datum/job/donor/tier_3/New()
@@ -70,8 +70,8 @@
 	title = "Т4 должность"
 	flag = JOB_DONOR_TIER_4
 	hidden_from_job_prefs = FALSE
-	total_positions = 4
-	spawn_positions = 4
+	total_positions = 2
+	spawn_positions = 2
 	donator_tier = 4
 
 /datum/job/donor/tier_4/New()
@@ -83,8 +83,8 @@
 	title = "Т5 должность"
 	flag = JOB_DONOR_TIER_5
 	hidden_from_job_prefs = FALSE
-	total_positions = 3
-	spawn_positions = 3
+	total_positions = 1
+	spawn_positions = 1
 	donator_tier = 5
 
 /datum/job/donor/tier_5/New()
