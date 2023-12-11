@@ -933,6 +933,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 	var/old_network = network
 	network = input(U, "Какую сеть вы хотите посмотреть?") as null|anything in cameralist
 
+
 	if(check_unable())
 		return
 
@@ -1011,6 +1012,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 				personnel_list["[t.fields["name"]]: [t.fields["rank"]]"] = t.fields["photo"]//Pull names, rank, and id photo.
 
 			if(personnel_list.len)
+
 				input = input("Выберите члена Экипажа:") as null|anything in personnel_list
 				var/icon/character_icon = personnel_list[input]
 				if(character_icon)
@@ -1140,7 +1142,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 			)
 			if(custom_hologram) //insert custom hologram
 				icon_list.Add("custom")
-
+        
 			input = input("Пожалуйста выберите голограмму:") as null|anything in icon_list
 			if(input)
 				qdel(holo_icon)
