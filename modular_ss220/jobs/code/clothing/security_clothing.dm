@@ -27,11 +27,11 @@
 	item_color = "sec_ass_f"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
 
-
 /obj/item/clothing/under/rank/security/officer/clown
 	name = "security clown suit"
 	icon = 'modular_ss220/jobs/icons/clothing/uniforms.dmi'
 	icon_override = 'modular_ss220/jobs/icons/clothing/mob/uniform.dmi'
+	sprite_sheets = null
 	desc = "<i>'HONK THE LAW!'</i>"
 	icon_state = "security_clown_s"
 	item_color = "security_clown"
