@@ -558,7 +558,6 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 
 /mob/living/silicon/ai/proc/ai_announcement_text()
 	set category = "Команды ИИ"
-	set name = "Make Station Announcement"
 	set name = "Сделать станционное оповещение"
 
 	if(check_unable(AI_CHECK_WIRELESS | AI_CHECK_RADIO))
