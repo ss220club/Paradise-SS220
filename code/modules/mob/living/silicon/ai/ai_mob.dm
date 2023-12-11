@@ -559,15 +559,16 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 /mob/living/silicon/ai/proc/ai_announcement_text()
 	set category = "Команды ИИ"
 	set name = "Make Station Announcement"
+	set name = "Сделать станционное оповещение"
 
 	if(check_unable(AI_CHECK_WIRELESS | AI_CHECK_RADIO))
 		return
 
 	if(world.time < next_text_announcement)
-		to_chat(src, "<span class='warning'>Please allow one minute to pass between announcements.</span>")
+		to_chat(src, "<span class='warning'>Подождите минуту перед отправкой следующего уведомления.</span>")
 		return
 
-	var/input = input(usr, "Please write a message to announce to the station crew.", "A.I. Announcement") as message|null
+	var/input = input(usr, "Пожалуйста, напишите, о чём бы вы хотели уведомить членов экипажа", "Оповещение ИИ") as message|null
 	if(!input)
 		return
 
@@ -845,7 +846,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 		return
 
 	if(Bot.calling_ai && Bot.calling_ai != src) //Prevents an override if another AI is controlling this bot.
-		to_chat(src, "<span class='danger'>Ошибка интерфейса. Юнит уже испольщуется.</span>")
+		to_chat(src, "<span class='danger'>Ошибка интерфейса. Юнит уже используется.</span>")
 		return
 
 	Bot.call_bot(src, waypoint)
@@ -883,7 +884,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 			return
 		if(origin.z != z)
 			return
-		queueAlarm("--- [class] тревога в [A.name] была устранена.", class, 0)
+		queueAlarm("--- Тревога класса [class] в [A.name] была устранена.", class, 0)
 		if(viewalerts)
 			ai_alerts()
 
@@ -965,7 +966,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 		return
 
 	var/list/ai_emotions = list("Очень счастлив", "Счастлив", "Нейтрален", "Неуверен", "Запутан", "Грустен", "БЭС", "Пустой", "Проблемы?", "Круто", "Фейспалм", "Друг-компьютер")
-	var/emote = input("Please, select a status!", "AI Status", null, null) in ai_emotions
+	var/emote = input("Пожалуйста, выберите эмоцию!", "Эмоция ИИ", null, null) in ai_emotions
 
 	if(check_unable())
 		return
@@ -1142,7 +1143,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 			)
 			if(custom_hologram) //insert custom hologram
 				icon_list.Add("custom")
-        
+
 			input = input("Пожалуйста выберите голограмму:") as null|anything in icon_list
 			if(input)
 				qdel(holo_icon)

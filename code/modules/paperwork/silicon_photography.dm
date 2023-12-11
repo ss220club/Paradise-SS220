@@ -43,11 +43,11 @@
 	var/list/nametemp = list()
 	var/find
 	if(cam.aipictures.len == 0)
-		to_chat(usr, "<span class='userdanger'>No images saved</span>")
+		to_chat(usr, "<span class='userdanger'>Нет сохранённых снимков</span>")
 		return
 	for(var/datum/picture/t in cam.aipictures)
 		nametemp += t.fields["name"]
-	find = tgui_input_list(usr, "Select image (numbered in order taken)", "Pick Image", nametemp)
+	find = tgui_input_list(usr, "Выберите снимок (Ниже - сняты позже)", "Выберите фото", nametemp)
 
 	for(var/datum/picture/q in cam.aipictures)
 		if(q.fields["name"] == find)
@@ -88,11 +88,11 @@
 
 /obj/item/camera/siliconcam/proc/camera_mode_off()
 	src.in_camera_mode = 0
-	to_chat(usr, "<B>Режим камеры деактивирован</B>")
+	to_chat(usr, "<B>Камера выключена</B>")
 
 /obj/item/camera/siliconcam/proc/camera_mode_on()
 	src.in_camera_mode = 1
-	to_chat(usr, "<B>Режим камеры активирован</B>")
+	to_chat(usr, "<B>Камера включена</B>")
 
 /obj/item/camera/siliconcam/ai_camera/printpicture(mob/user, datum/picture/P)
 	injectaialbum(P)
@@ -103,7 +103,7 @@
 
 /obj/item/camera/siliconcam/ai_camera/verb/take_image()
 	set category = "Команды ИИ"
-	set name = "Сфотографировать"
+	set name = "Сделать снимок"
 	set desc = "Делает снимок"
 	set src in usr
 
@@ -112,7 +112,7 @@
 /obj/item/camera/siliconcam/ai_camera/verb/view_images()
 	set category = "Команды ИИ"
 	set name = "Посмотреть снимки"
-	set desc = "Просматриват снимки"
+	set desc = "Показывает снимки"
 	set src in usr
 
 	viewpictures()
