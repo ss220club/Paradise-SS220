@@ -138,7 +138,7 @@
 	satchel = /obj/item/storage/backpack/clown
 	dufflebag = /obj/item/storage/backpack/duffel/clown
 
-/datum/outfit/job/donor/dealer/pre_equip(mob/living/carbon/human/H, visualsOnly)
+/datum/outfit/job/donor/seclown/pre_equip(mob/living/carbon/human/H, visualsOnly)
 	. = ..()
 	if(H.mind && H.mind.role_alt_title)
 		switch(H.mind.role_alt_title)
@@ -149,7 +149,7 @@
 				suit = /obj/item/clothing/suit/armor/vest/warden
 				head = /obj/item/clothing/head/officer
 				suit_store = /obj/item/gun/energy/clown/security/warden
-			if("Клоун-Кадет")
+			if("Клоун Кадет")
 				head = /obj/item/clothing/head/soft/sec
 
 /datum/job/donor/seclown/make_alt_title(mob/living/carbon/human/H)
@@ -182,3 +182,21 @@
 	H.check_mutations = TRUE
 	H.add_language("Clownish")
 	H.AddComponent(/datum/component/slippery, H, 8 SECONDS, 100, 0, FALSE, TRUE, "slip", TRUE)
+
+/datum/job/donor/seclown/after_assignment_equip(mob/living/carbon/human/H, assignment)
+	switch(assignment)
+		if("Клоун-Детектив", "Хонкектив")
+			if(H.wear_suit)
+				H.equip_to_slot(new /obj/item/clothing/suit/storage/det_suit, SLOT_HUD_OUTER_SUIT)
+			if(H.head)
+				H.equip_to_slot(new /obj/item/clothing/head/det_hat, SLOT_HUD_HEAD)
+		if("Клоун-Смотритель")
+			if(H.wear_suit)
+				H.equip_to_slot(new /obj/item/clothing/suit/armor/vest/warden, SLOT_HUD_OUTER_SUIT)
+			if(H.head)
+				H.equip_to_slot(new /obj/item/clothing/head/officer, SLOT_HUD_HEAD)
+			if(H.s_store)
+				H.equip_to_slot(new /obj/item/gun/energy/clown/security/warden, SLOT_HUD_SUIT_STORE)
+		if("Клоун Кадет")
+			if(H.head)
+				H.equip_to_slot(new /obj/item/clothing/head/soft/sec, SLOT_HUD_HEAD)

@@ -112,6 +112,7 @@
 	if(ru_title && !length(alt_titles) && id)
 		id.assignment = ru_title
 		id.UpdateName()
+		after_assignment_equip(H, id.assignment)
 		return
 
 	var/list/all_alt_titles = get_all_titles()
@@ -123,6 +124,11 @@
 	if(alt_title && id)
 		id.assignment = alt_title
 		id.UpdateName()
+		after_assignment_equip(H, id.assignment)
+
+/// Одеваем после выбора роли. Временное решение пока как положено не сделаю модульные джобки при выборе в преференсах
+/datum/job/donor/proc/after_assignment_equip(mob/living/carbon/human/H, assignment)
+	return
 
 /datum/job/donor/proc/get_all_titles()
 	var/list/all_alt_titles = list()

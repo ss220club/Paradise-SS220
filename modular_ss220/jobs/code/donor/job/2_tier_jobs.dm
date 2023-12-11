@@ -183,17 +183,17 @@
 	dufflebag = /obj/item/storage/backpack/duffel/engineering
 
 
-/datum/outfit/job/donor/deliverer/pre_equip(mob/living/carbon/human/H, visualsOnly)
-	. = ..()
-	if(H.mind && H.mind.role_alt_title)
-		switch(H.mind.role_alt_title)
-			if("Почтальон")
-				uniform = /obj/item/clothing/under/misc/mailman
-				shoes = /obj/item/clothing/shoes/laceup
-				head = /obj/item/clothing/head/mailman
-			if("Доставщик")
-				uniform = /obj/item/clothing/under/rank/cargo/deliveryboy
-				head = /obj/item/clothing/head/soft/deliverysoft
+// /datum/outfit/job/donor/deliverer/pre_equip(mob/living/carbon/human/H, visualsOnly)
+// 	. = ..()
+// 	if(H.mind && H.mind.role_alt_title)
+// 		switch(H.mind.role_alt_title)
+// 			if("Почтальон")
+// 				uniform = /obj/item/clothing/under/misc/mailman
+// 				shoes = /obj/item/clothing/shoes/laceup
+// 				head = /obj/item/clothing/head/mailman
+// 			if("Доставщик")
+// 				uniform = /obj/item/clothing/under/rank/cargo/deliveryboy
+// 				head = /obj/item/clothing/head/soft/deliverysoft
 
 
 /datum/job/donor/wrestler
@@ -344,7 +344,7 @@
 		/obj/item/clothing/head/cuban_hat = 1,
 	)
 
-/datum/outfit/job/donor/deliverer/pre_equip(mob/living/carbon/human/H, visualsOnly)
+/datum/outfit/job/donor/actor/pre_equip(mob/living/carbon/human/H, visualsOnly)
 	. = ..()
 	if(H.gender == FEMALE)
 		uniform = /obj/item/clothing/under/rank/procedure/lawyer/red/skirt
@@ -365,3 +365,26 @@
 				if(H.gender == FEMALE)
 					uniform = /obj/item/clothing/under/dress/redeveninggown
 
+/datum/job/donor/actor/after_assignment_equip(mob/living/carbon/human/H, assignment)
+	switch(assignment)
+		if("Артист")
+			if(H.w_uniform)
+				H.equip_to_slot(new /obj/item/clothing/under/suit/victsuit/red, SLOT_HUD_JUMPSUIT)
+			if(H.gender == FEMALE)
+				if(H.w_uniform)
+					H.equip_to_slot(new /obj/item/clothing/under/dress/victdress/red, SLOT_HUD_JUMPSUIT)
+				if(H.wear_suit)
+					H.equip_to_slot(new /obj/item/clothing/suit/victcoat/red, SLOT_HUD_OUTER_SUIT)
+		if("Комедиант")
+			if(H.w_uniform)
+				H.equip_to_slot(new /obj/item/clothing/under/costume/jester, SLOT_HUD_JUMPSUIT)
+			if(H.head)
+				H.equip_to_slot(new /obj/item/clothing/head/jester, SLOT_HUD_HEAD)
+		if("Эстрадный Артист")
+			if(H.w_uniform)
+				H.equip_to_slot(new /obj/item/clothing/under/suit/victsuit/redblk, SLOT_HUD_JUMPSUIT)
+			if(H.wear_suit)
+				H.equip_to_slot(new /obj/item/clothing/suit/draculacoat, SLOT_HUD_OUTER_SUIT)
+			if(H.gender == FEMALE)
+				if(H.w_uniform)
+					H.equip_to_slot(new /obj/item/clothing/under/dress/redeveninggown, SLOT_HUD_JUMPSUIT)
