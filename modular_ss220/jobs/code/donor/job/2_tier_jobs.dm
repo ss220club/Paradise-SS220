@@ -25,7 +25,7 @@
 /datum/job/donor/bath
 	title = "Bath"
 	ru_title = "Банщик"
-	relate_job = "Assistant"
+	relate_job = "Bath"
 	access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS)
 	minimal_access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS)
 	hidden_from_job_prefs = TRUE
