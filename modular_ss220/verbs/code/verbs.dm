@@ -39,7 +39,7 @@
 
 // Pick darkness list
 /mob/dead/observer/pick_darkness()
-	set name = "Яркость"
+	set name = "Pick Darkness"
 	set desc = "Выберите, насколько ярко вы видите."
 	set category = "Ghost"
 
@@ -71,7 +71,7 @@
 
 /mob/dead/observer/dead_tele()
 	set category = "Ghost"
-	set name = "Телепорт"
+	set name = "Teleport"
 	set desc= "Телепортирует вас к месту"
 
 	if(!isobserver(usr))
