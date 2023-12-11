@@ -252,6 +252,20 @@
 				head = /obj/item/clothing/head/cowboyhat
 				gloves = /obj/item/clothing/gloves/color/brown
 
+/datum/job/donor/dealer/after_assignment_equip(mob/living/carbon/human/H, assignment)
+	switch(assignment)
+		if("Сдельщик", "Независимый Торговец", "Барахольщик")
+			if(H.w_uniform)
+				H.equip_to_slot(new /obj/item/clothing/under/color/brown, SLOT_HUD_JUMPSUIT)
+			if(H.wear_suit)
+				H.equip_to_slot(new /obj/item/clothing/suit/pirate_brown, SLOT_HUD_OUTER_SUIT)
+			if(H.head)
+				H.equip_to_slot(new/obj/item/clothing/head/cowboyhat, SLOT_HUD_HEAD)
+			if(H.shoes)
+				H.equip_to_slot(new /obj/item/clothing/shoes/cowboy, SLOT_HUD_SHOES)
+			if(H.gloves)
+				H.equip_to_slot(new /obj/item/clothing/gloves/color/brown, SLOT_HUD_GLOVES)
+
 // Тоже добавляем ТСФ торгашам коллекционки
 /datum/outfit/admin/sol_trader/New()
 	. = ..()
