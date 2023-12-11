@@ -120,7 +120,6 @@
 		alert(admin, "Second brother wasn't made into `Blood Brother` for some reason. Try again.")
 		return TRUE
 
-	message_admins("[key_name_admin(admin)] made [key_name_admin(first_brother)] and [key_name_admin(second_brother)] into blood brothers.")
 	log_admin("[key_name(admin)] made [key_name(first_brother)] and [key_name(second_brother)] into blood brothers.")
 	return TRUE
 

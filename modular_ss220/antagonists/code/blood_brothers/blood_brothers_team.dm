@@ -79,7 +79,6 @@
 
 /datum/team/blood_brothers_team/proc/forge_objectives()
 	PRIVATE_PROC(TRUE)
-	message_admins("Forging [objectives_amount] objectives")
 	var/is_hijacker = prob(hijack_probability)
 	for(var/i in 1 to (objectives_amount - is_hijacker))
 		forge_single_objective()
@@ -93,12 +92,8 @@
 		Если хотя бы один из вас не удовлетворяет условиям - задание будет провалено для всех!
 		"}))
 
-	for(var/datum/objective/objective in objective_holder.objectives)
-		message_admins(json_encode(objective))
-
 /datum/team/blood_brothers_team/proc/forge_single_objective()
 	PRIVATE_PROC(TRUE)
-	message_admins("Forging single objective")
 	if(prob(10) && length(active_ais()))
 		add_team_objective(new /datum/objective/destroy)
 	else

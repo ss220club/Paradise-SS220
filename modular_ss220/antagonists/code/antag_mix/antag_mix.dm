@@ -21,13 +21,15 @@
 
 	var/list/mob/new_player/ready_players = get_ready_players()
 	var/ready_players_amount = length(ready_players)
+	log_antag_mix("Trying to start round with [ready_players_amount] ready players")
+	log_antag_mix("Max antagonist fraction is '[max_antag_fraction]'")
 
 	var/list/datum/antag_scenario/acceptable_scenarios = initialize_acceptable_scenarios(possible_scenarios, ready_players_amount)
 	if(!length(acceptable_scenarios))
 		return FALSE
 
 	budget = calculate_budget(ready_players_amount)
-	message_admins("Roundstart budget: [budget]")
+	log_antag_mix("Roundstart budget: [budget]")
 	return pick_scenarios(draft_scenarios(acceptable_scenarios, ready_players), ready_players_amount)
 
 
@@ -47,7 +49,7 @@
  * Calculates amount of `credits` that will spent on antag scenarios, that are available.
 */
 /datum/game_mode/antag_mix/proc/calculate_budget(ready_players_amount)
-	return ready_players_amount * budget_multiplier
+	return ready_players_amount * budget_multiplier * 10
 
 
 /**
@@ -110,26 +112,25 @@
 		current_antag_fraction += added_antag_fraction
 
 		picked_scenarios[picked_scenario] += 1
-		message_admins("Picked: [picked_scenario.name], times: [picked_scenarios[picked_scenario]]")
+		log_antag_mix("Scenario '[picked_scenario.name]' with: cost '[picked_scenario.cost]', weight '[picked_scenario.weight]' was picked [picked_scenarios[picked_scenario]] times")
+		log_antag_mix("Antagonist fraction is '[current_antag_fraction]'")
 
 	if(!length(picked_scenarios))
-		message_admins("No antag scenarios were picked. Let another game mode roll.")
+		log_antag_mix("No antag scenarios were picked. Let another game mode roll.")
 		return FALSE
-
-	message_admins("Antag mix budget left: [budget_left]")
 
 	for(var/picked_scenario in picked_scenarios)
 		spend_budget(pre_execute_scenario(picked_scenario, picked_scenarios[picked_scenario] - 1, players_ready_amount))
 
 	if(budget != budget_left && current_antag_fraction < max_antag_fraction && length(drafted_scenarios))
-		message_admins("Some of the picked scenarios failed pre execution, try to pick scenarios from leftovers")
+		log_antag_mix("Some of the picked scenarios failed pre execution, try to pick scenarios from leftovers")
 		return pick_scenarios(drafted_scenarios, players_ready_amount, current_antag_fraction)
 
 	return TRUE
 
 /datum/game_mode/antag_mix/proc/spend_budget(budget_to_spend)
-	message_admins("Spent budget: [budget_to_spend]")
 	budget = max(0, budget - budget_to_spend)
+	log_antag_mix("Budget spent: [budget_to_spend], budget left: [budget]")
 
 
 /datum/game_mode/antag_mix/proc/pre_execute_scenario(datum/antag_scenario/scenario_to_pre_execute, scaled_times, players_ready_amount)
@@ -140,6 +141,7 @@
 
 	scenario_to_pre_execute.scaled_times = scaled_times
 	if(!scenario_to_pre_execute.pre_execute(players_ready_amount))
+		log_antag_mix("Scenario '[scenario_to_pre_execute.name]' failed to pre execute")
 		return 0
 
 	executed_scenarios |= scenario_to_pre_execute
@@ -147,7 +149,6 @@
 
 
 /datum/game_mode/antag_mix/proc/draft_scenarios(list/datum/antag_scenario/scenarios_to_pick_from, list/mob/new_player/ready_players)
-	message_admins("Drafting scenarios: [json_encode(scenarios_to_pick_from)]")
 	if(!length(scenarios_to_pick_from) || !length(ready_players))
 		return
 
@@ -162,7 +163,6 @@
 			continue
 
 		drafted_scenarios[scenario] = scenario.weight
-
-	message_admins("Drafted scenarios: [json_encode(drafted_scenarios)]")
+		log_antag_mix("Scenario: '[scenario.name]' with weight: '[scenario.weight]' was drafted")
 
 	return drafted_scenarios

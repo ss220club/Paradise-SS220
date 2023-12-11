@@ -60,7 +60,6 @@
 		return
 
 	var/params = GLOB.configuration.antag_mix_gamemode.params_by_scenario[config_tag]
-	message_admins(json_encode(params))
 	if(!islist(params))
 		return
 
@@ -115,7 +114,6 @@
 			continue
 
 		var/datum/mind/chosen_mind = chosen.mind
-		message_admins("[chosen_mind.name] picked to [name]")
 		assigned |= chosen_mind
 		chosen_mind.special_role = antag_special_role
 		chosen_mind.restricted_roles |= restricted_roles
@@ -128,7 +126,6 @@
 */
 /datum/antag_scenario/proc/execute()
 	for(var/datum/mind/assignee as anything in assigned)
-		message_admins("[assignee.name] made into antag")
 		assignee.add_antag_datum(antag_datum)
 
 	return TRUE
