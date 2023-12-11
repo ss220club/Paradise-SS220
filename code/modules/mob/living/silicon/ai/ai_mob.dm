@@ -392,7 +392,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 		"Монохром",
 		"Синий",
 		"Клоун",
-		"Перевёрнут",
+		"Перевернут",
 		"Текст",
 		"Улыбка",
 		"Злой",
@@ -413,7 +413,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 		"НТ2",
 		"Радуга",
 		"Ангел",
-		"Линия сердца",
+		"Кардиограмма",
 		"Аид",
 		"Гелиос",
 		"Синдикот Мяу",
@@ -422,7 +422,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 		"Мурика",
 		"Шаткий",
 		"Глитчман",
-		"Дом",
+		"Хаус",
 		"База данных",
 		"Чужие",
 		"Тигр",
@@ -433,7 +433,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 		"Сыр",
 		"Радужный слайм",
 		"Пустой пончик",
-		"Ожог NAD",
+		"Горение",
 		"Борб",
 		"Пчела",
 		"Катамари"
@@ -451,7 +451,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 			icon_state = "[ckey]-ai"
 		if("Клоун")
 			icon_state = "ai-clown"
-		if("Монохромный")
+		if("Монохром")
 			icon_state = "ai-mono"
 		if("Перевернут")
 			icon_state = "ai-u"
@@ -495,7 +495,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 			icon_state = "ai-rainbow"
 		if("Ангел")
 			icon_state = "ai-angel"
-		if("Линия сердца")
+		if("Кардиограмма")
 			icon_state = "ai-heartline"
 		if("Аид")
 			icon_state = "ai-hades"
@@ -513,7 +513,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 			icon_state = "ai-fuzz"
 		if("Глитчман")
 			icon_state = "ai-glitchman"
-		if("Дом")
+		if("Хаус")
 			icon_state = "ai-house"
 		if("База данных")
 			icon_state = "ai-database"
@@ -860,7 +860,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 	if(O)
 		var/obj/machinery/camera/C = locateUID(O[1])
 		if(O.len == 1 && !QDELETED(C) && C.can_use())
-			queueAlarm("--- [class] тревога обнаружена в [A.name]! (<A HREF=?src=[UID()];switchcamera=[O[1]]>[C.c_tag]</A>)", class)
+			queueAlarm("--- Тревога [class]  обнаружена в [A.name]! (<A HREF=?src=[UID()];switchcamera=[O[1]]>[C.c_tag]</A>)", class)
 		else if(O && O.len)
 			var/foo = 0
 			var/dat2 = ""
@@ -869,11 +869,11 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 				if(!QDELETED(I))
 					dat2 += "[(!foo) ? "" : " | "]<A HREF=?src=[UID()];switchcamera=[thing]>[I.c_tag]</A>" //I'm not fixing this shit...
 					foo = 1
-			queueAlarm(text ("--- [] alarm detected in []! ([])", class, A.name, dat2), class)
+			queueAlarm(text ("--- Тревога типа [] обнаружена в []! ([])", class, A.name, dat2), class)
 		else
-			queueAlarm(text("--- [] alarm detected in []! (No Camera)", class, A.name), class)
+			queueAlarm(text("--- Тревога типа[]  обнаружена в []! (No Camera)", class, A.name), class)
 	else
-		queueAlarm(text("--- [] alarm detected in []! (No Camera)", class, A.name), class)
+		queueAlarm(text("--- Тревога типа [] обнаружена в []! (No Camera)", class, A.name), class)
 	if(viewalerts)
 		ai_alerts()
 
@@ -883,7 +883,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 			return
 		if(origin.z != z)
 			return
-		queueAlarm("--- Тревога класса [class] в [A.name] была устранена.", class, 0)
+		queueAlarm("--- Тревога типа [class] в [A.name] была устранена.", class, 0)
 		if(viewalerts)
 			ai_alerts()
 
@@ -964,7 +964,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 	if(check_unable())
 		return
 
-	var/list/ai_emotions = list("Очень счастлив", "Счастлив", "Нейтрален", "Неуверен", "Запутан", "Грустен", "БЭС", "Пустой", "Проблемы?", "Круто", "Фейспалм", "Друг-компьютер")
+	var/list/ai_emotions = list("Very Happy", "Happy", "Neutral", "Unsure", "Confused", "Sad", "BSOD", "Blank", "Problems?", "Cool", "Facepalm", "Friend Computer")
 	var/emote = input("Пожалуйста, выберите эмоцию!", "Эмоция ИИ", null, null) in ai_emotions
 
 	if(check_unable())
