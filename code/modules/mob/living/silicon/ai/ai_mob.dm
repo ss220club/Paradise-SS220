@@ -1022,7 +1022,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 		if("Животное")
 			var/icon_list[] = list(
 			"Медвед",
-			"Капп",
+			"Карп",
 			"Курица",
 			"Корги",
 			"Корова",
@@ -1214,7 +1214,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 
 /mob/living/silicon/ai/proc/sensor_mode()
 	set name = "Переключить аугментацию сенсоров"
-	set desc = "Augment visual feed with internal sensor overlays."
+	set desc = "Аугментирует визуальный поток с помощью оверлеев."
 	set category = "Команды ИИ"
 	toggle_sensor_mode()
 
@@ -1223,20 +1223,20 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 	set desc = "Change whether or not you wish to announce arrivals."
 	set category = "Команды ИИ"
 	announce_arrivals = !announce_arrivals
-	to_chat(usr, "Система оповещения о прибытии: [announce_arrivals ? "enabled" : "disabled"]")
+	to_chat(usr, "Система оповещения о прибытии: [announce_arrivals ? "включена" : "отключена"]")
 
 /mob/living/silicon/ai/proc/change_arrival_message()
 	set name = "Поставить сообщение о прибытии"
 	set desc = "Change the message that's transmitted when a new crew member arrives on station."
 	set category = "Команды ИИ"
 
-	var/newmsg = clean_input("Каким бы вы хотели видеть новое сообщение? Список вариантов: $name, $rank, $species, $gender, $age", "Поменять сообщение о прибытии", arrivalmsg)
+	var/newmsg = clean_input("Каким бы вы хотели видеть новое сообщение? Список переменных: $name, $rank, $species, $gender, $age", "Поменять сообщение о прибытии", arrivalmsg)
 	if(!newmsg)
 		return
 	newmsg = html_decode(newmsg) // This feels a bit redundant, but sanitisation is (probably) important.
 	if(newmsg != arrivalmsg)
 		arrivalmsg = newmsg
-		to_chat(usr, "The arrival message has been successfully changed.")
+		to_chat(usr, "Сообщение о прибытии было изменено.")
 
 // Handled camera lighting, when toggled.
 // It will get the nearest camera from the eyeobj, lighting it.
