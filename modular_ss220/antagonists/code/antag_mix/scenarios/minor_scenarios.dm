@@ -12,6 +12,7 @@
 	candidates_required = 1
 	restricted_roles = list("Cyborg")
 	protected_roles = list(
+		"Security Cadet",
 		"Security Officer",
 		"Warden",
 		"Detective",
@@ -40,6 +41,7 @@
 	candidates_required = 1
 	restricted_roles = list("Cyborg", "AI")
 	protected_roles = list(
+		"Security Cadet",
 		"Security Officer",
 		"Warden",
 		"Detective",
@@ -69,6 +71,7 @@
 	candidates_required = 1
 	restricted_roles = list("Cyborg", "AI", "Chaplain")
 	protected_roles = list(
+		"Security Cadet",
 		"Security Officer",
 		"Warden",
 		"Detective",
@@ -100,6 +103,7 @@
 	team_size = 2
 	restricted_roles = list("Cyborg", "AI")
 	protected_roles = list(
+		"Security Cadet",
 		"Security Officer",
 		"Warden",
 		"Detective",
