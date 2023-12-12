@@ -385,19 +385,19 @@ or shoot a gun to move around via Newton's 3rd Law of Motion."
 //SILICONS
 
 /obj/screen/alert/nocell
-	name = "Missing Power Cell"
-	desc = "Unit has no power cell. No modules available until a power cell is reinstalled. Robotics may provide assistance."
+	name = "Отсутствует батарея"
+	desc = "У юнита отсутствует батарея. Модули недоступны до установки новой. Робототехники смогут вам помочь."
 	icon_state = "nocell"
 
 /obj/screen/alert/emptycell
-	name = "Out of Power"
-	desc = "Unit's power cell has no charge remaining. No modules available until power cell is recharged. \
-Recharging stations are available in robotics, the dormitory bathrooms, and the AI satellite."
+	name = "Отсутствует заряд"
+	desc = "Батарейка юнита разряжена. Модули недоступны до её перезарядки. \
+	Зарядные станции доступны в робототехнике, в уборных дорм и на спутнике ИИ."
 	icon_state = "emptycell"
 
 /obj/screen/alert/lowcell
-	name = "Low Charge"
-	desc = "Unit's power cell is running low. Recharging stations are available in robotics, the dormitory bathrooms, and the AI satellite."
+	name = "Низкий заряд"
+	desc = "Ваш заряд мал.\ Зарядные станции доступны в робототехнике, в уборных дорм и на спутнике ИИ."
 	icon_state = "lowcell"
 
 //Diona Nymph
@@ -434,28 +434,28 @@ Recharging stations are available in robotics, the dormitory bathrooms, and the 
 
 //Need to cover all use cases - emag, illegal upgrade module, malf AI hack, traitor cyborg
 /obj/screen/alert/hacked
-	name = "Hacked"
-	desc = "Hazardous non-standard equipment detected. Please ensure any usage of this equipment is in line with unit's laws, if any."
+	name = "Взломан"
+	desc = "Используется нестандартное опасное оружие. Убедитесь, что оно используется в соответствии с вашими законами."
 	icon_state = "hacked"
 
 /obj/screen/alert/locked
-	name = "Locked Down"
-	desc = "Unit has been remotely locked down. Usage of a Robotics Control Console like the one in the Research Director's \
-office by your AI master or any qualified human may resolve this matter. Robotics may provide further assistance if necessary."
+	name = "Заблокирован"
+	desc = "Юнит был удалённо заблокирован. Исопльзование консоли управления роботами в кабинете Директора Исследований \
+Вашим ИИ-мастером или любым квалифицированным человеком может решить эту проблему. Робототехники помогут, если это не помогло."
 	icon_state = "locked"
 
 /obj/screen/alert/newlaw
-	name = "Law Update"
-	desc = "Laws have potentially been uploaded to or removed from this unit. Please be aware of any changes \
-so as to remain in compliance with the most up-to-date laws."
+	name = "Обновление законов"
+	desc = "Законы были потенциально изменены на этом юните. Бдите за любыми изменениями \
+чтобы соблюдать ваши самые свежие законы."
 	icon_state = "newlaw"
 	timeout = 300
 
 /obj/screen/alert/hackingapc
-	name = "Hacking APC"
-	desc = "An Area Power Controller is being hacked. When the process is \
-		complete, you will have exclusive control of it, and you will gain \
-		additional processing time to unlock more malfunction abilities."
+	name = "Взлом ЛКП"
+	desc = "Локальный контроллер питания взламывается. Когда этот процесс \
+		завершится, вы получите эксклюзивный контроль над ним, а также вы \
+		получите дополнительные мощности для открытия новых способностей."
 	icon_state = "hackingapc"
 	timeout = 600
 	var/atom/target = null
@@ -473,7 +473,7 @@ so as to remain in compliance with the most up-to-date laws."
 	var/turf/T = get_turf(target)
 	if(T)
 		AI.eyeobj.setLoc(T)
-
+//Конец ИИ.
 //MECHS
 /obj/screen/alert/low_mech_integrity
 	name = "Mech Damaged"
