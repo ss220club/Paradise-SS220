@@ -176,7 +176,5 @@
 			candidates.Remove(candidate)
 			continue
 
-		for(var/job in restricted_roles)
-			if(candidate_mind.assigned_role == job)
-				candidates.Remove(candidate)
-				break
+		if(candidate_mind.assigned_role in restricted_roles)
+			candidates.Remove(candidate)
