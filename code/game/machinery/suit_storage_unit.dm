@@ -598,8 +598,8 @@
 /obj/machinery/suit_storage_unit/ui_state(mob/user)
 	return GLOB.default_state
 
-/obj/machinery/suit_storage_unit/ui_interact(mob/user, datum/tgui/ui = null, force_open = FALSE)
-	ui = SStgui.try_update_ui(user, src, ui, force_open)
+/obj/machinery/suit_storage_unit/ui_interact(mob/user, datum/tgui/ui = null)
+	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "SuitStorage", name)
 		ui.set_autoupdate(FALSE)
