@@ -165,3 +165,6 @@
 		log_antag_mix("Scenario: '[scenario.name]' with weight: '[scenario.weight]' was drafted")
 
 	return drafted_scenarios
+
+/datum/game_mode/antag_mix/proc/log_antag_mix(text)
+	log_debug("\[ANTAG MIX\] [text]")
