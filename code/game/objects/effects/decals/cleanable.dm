@@ -105,6 +105,9 @@
 		plane = GAME_PLANE // so they can be seen above walls
 
 /obj/effect/decal/cleanable/Destroy()
+	var/datum/atom_hud/data/janitor/jani_hud = GLOB.huds[DATA_HUD_JANITOR]
+	jani_hud.remove_from_hud(src)
+
 	if(smoothing_flags)
 		QUEUE_SMOOTH_NEIGHBORS(src)
 	return ..()
