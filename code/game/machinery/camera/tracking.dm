@@ -31,10 +31,10 @@
 
 /mob/living/silicon/ai/proc/ai_camera_list(camera in get_camera_list())
 	set category = "Команды ИИ"
-	set name = "Show Camera List"
+	set name = "Показать список камер"
 
 	if(src.stat == 2)
-		to_chat(src, "You can't list the cameras because you are dead!")
+		to_chat(src, "Вам недоступен список камер по причине своей смерти!")
 		return
 
 	if(!camera || camera == "Cancel")
@@ -90,11 +90,11 @@
 
 /mob/living/silicon/ai/proc/ai_camera_track(target_name in trackable_mobs())
 	set category = "Команды ИИ"
-	set name = "Track With Camera"
-	set desc = "Select who you would like to track."
+	set name = "Отслеживать"
+	set desc = "Выберите, кого вы хотите отслеживать."
 
 	if(src.stat == DEAD)
-		to_chat(src, "You can't track with camera because you are dead!")
+		to_chat(src, "Вы не можете отслеживать по причине своей смерти!")
 		return
 	if(!target_name)
 		return
@@ -107,7 +107,7 @@
 	if(!cameraFollow)
 		return
 
-	to_chat(src, "Follow camera mode [forced ? "terminated" : "ended"].")
+	to_chat(src, "Режим слежки [forced ? "закрыт" : "отключен"].")
 	cameraFollow = null
 
 /mob/living/silicon/ai/proc/ai_actual_track(mob/living/target)
@@ -118,22 +118,22 @@
 	U.cameraFollow = target
 	U.tracking = TRUE
 
-	to_chat(U, "<span class='notice'>Attempting to track [target.get_visible_name()]...</span>")
+	to_chat(U, "<span class='notice'>Пытаемся отследить [target.get_visible_name()]...</span>")
 	sleep(min(30, get_dist(target, U.eyeobj) / 4))
 	spawn(15) //give the AI a grace period to stop moving.
 		U.tracking = FALSE
 
 	if(target.is_jammed())
-		to_chat(U, "<span class='warning'>Unable to track [target.get_visible_name()]...</span>")
+		to_chat(U, "<span class='warning'>Невозможно отследить [target.get_visible_name()]...</span>")
 		U.cameraFollow = null
 		return
 
 	if(!target || !target.can_track(usr))
-		to_chat(U, "<span class='warning'>Target is not near any active cameras.</span>")
+		to_chat(U, "<span class='warning'>Цель вне зоны покрытия камер.</span>")
 		U.cameraFollow = null
 		return
 
-	to_chat(U, "<span class='notice'>Now tracking [target.get_visible_name()] on camera.</span>")
+	to_chat(U, "<span class='notice'>Отслеживаем по камерам [target.get_visible_name()].</span>")
 
 	var/cameraticks = 0
 	spawn(0)
