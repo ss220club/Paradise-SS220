@@ -65,7 +65,6 @@
 
 	return ready_players
 
-
 /**
  * Creates actual scenario datums from `inited_scenario_paths`.
 */
