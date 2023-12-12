@@ -52,6 +52,8 @@
 
 
 /obj/screen/text/blurb/proc/get_text_style()
+	PRIVATE_PROC(TRUE)
+
 	return {"\
 		font-family: [font_family], [initial(font_family)]; \
 		-dm-text-outline: [text_outline_width] [text_outline_color]; \
@@ -125,6 +127,8 @@
 
 
 /datum/controller/subsystem/ticker/proc/show_server_restart_blurb(reason)
+	PRIVATE_PROC(TRUE)
+
 	if(!length(GLOB.clients))
 		return
 
