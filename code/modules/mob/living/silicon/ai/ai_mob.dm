@@ -245,12 +245,12 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 	return aiRadio
 
 /mob/living/silicon/ai/proc/on_mob_init()
-	to_chat(src, "<B>You are playing the station's AI. The AI cannot move, but can interact with many objects while viewing them (through cameras).</B>")
-	to_chat(src, "<B>To look at other parts of the station, click on yourself to get a camera menu.</B>")
-	to_chat(src, "<B>While observing through a camera, you can use most (networked) devices which you can see, such as computers, APCs, intercoms, doors, etc.</B>")
-	to_chat(src, "To use something, simply click on it.")
-	to_chat(src, "Use say :b to speak to your cyborgs through binary. Use say :h to speak from an active holopad.")
-	to_chat(src, "For department channels, use the following say commands:")
+	to_chat(src, "<B>Вы играете за станционный ИИ. ИИ не может двигаться, но может взаимодействовать с большим количеством предметов просто смотря на них(через камеры).</B>")
+	to_chat(src, "<B>Чтобы смотреть на разные части станции, кликните на кнопку вызова списка камер.</B>")
+	to_chat(src, "<B>Пока вы наблюдаете через камеры, вы можете взаимодействовать с большинством (подключенных) устройств, такие как компьютеры, ЛКП, интеркомы, двери и так далее.</B>")
+	to_chat(src, "Чтобы использовать что-то, просто клкните на это.")
+	to_chat(src, "Используйте :и чтобы общаться с киборгами через бинарный канал. Используйте :р для общения через активный голопад.")
+	to_chat(src, "Для каналов отделов, используйте следующие команды:")
 
 	var/radio_text = ""
 	for(var/i = 1 to aiRadio.channels.len)
@@ -263,7 +263,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 	to_chat(src, radio_text)
 
 	show_laws()
-	to_chat(src, "<b>These laws may be changed by other players, or by you being the traitor.</b>")
+	to_chat(src, "<b>Эти законы могут быть изменены другими игроками или Вами при игре за предателя.</b>")
 
 	job = "AI"
 
@@ -303,12 +303,12 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 							dat2 += "[(dat2 == "") ? "" : " | "]<A HREF=?src=[UID()];switchcamera=[cam]>[I.c_tag]</A>"
 					dat += "-- [area_name] ([(dat2 != "") ? dat2 : "No Camera"])"
 				else
-					dat += "-- [area_name] (No Camera)"
+					dat += "-- [area_name] (Нет камеры)"
 				if(sources.len > 1)
-					dat += "- [length(sources)] sources"
+					dat += "- [length(sources)] источников"
 				dat += "</NOBR><BR>\n"
 		if(!L.len)
-			dat += "-- All Systems Nominal<BR>\n"
+			dat += "-- Все системы в норме<BR>\n"
 		dat += "<BR>\n"
 
 	viewalerts = TRUE
@@ -316,19 +316,19 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 	src << browse(dat_text, "window=aialerts&can_close=0")
 
 /mob/living/silicon/ai/proc/show_borg_info()
-	stat(null, "Connected cyborgs: [connected_robots.len]")
+	stat(null, "Подключенные киборги: [connected_robots.len]")
 	for(var/thing in connected_robots)
 		var/mob/living/silicon/robot/R = thing
-		var/robot_status = "Nominal"
+		var/robot_status = "Норма"
 		if(R.stat || !R.client)
-			robot_status = "OFFLINE"
+			robot_status = "ОТКЛЮЧЕН"
 		else if(!R.cell || R.cell.charge <= 0)
-			robot_status = "DEPOWERED"
+			robot_status = "РАЗРЯЖЕН"
 		// Name, Health, Battery, Module, Area, and Status! Everything an AI wants to know about its borgies!
 		var/area/A = get_area(R)
 		var/area_name = A ? sanitize(A.name) : "Unknown"
-		stat(null, "[R.name] | S.Integrity: [R.health]% | Cell: [R.cell ? "[R.cell.charge] / [R.cell.maxcharge]" : "Empty"] | \
-		Module: [R.designation] | Loc: [area_name] | Status: [robot_status]")
+		stat(null, "[R.name] | Целостность: [R.health]% | Заряд: [R.cell ? "[R.cell.charge] / [R.cell.maxcharge]" : "Empty"] | \
+		Модуль: [R.designation] | Место: [area_name] | Статус: [robot_status]")
 
 /mob/living/silicon/ai/rename_character(oldname, newname)
 	if(!..(oldname, newname))
@@ -389,57 +389,57 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 			custom_sprite = TRUE
 
 	var/display_choices = list(
-		"Монохром",
-		"Синий",
-		"Клоун",
-		"Перевернут",
-		"Текст",
-		"Улыбка",
-		"Злой",
-		"Дорф",
-		"Матрица",
-		"Благославение",
-		"Фаерволл",
-		"Зелёный",
-		"Красный",
-		"Помехи",
-		"Триумвират",
-		"Триумвират с помехами",
-		"Красный Октябрь",
-		"Блёстки",
+		"Monochrome",
+		"Blue",
+		"Clown",
+		"Inverted",
+		"Text",
+		"Smiley",
+		"Angry",
+		"Dorf",
+		"Matrix",
+		"Bliss",
+		"Firewall",
+		"Green",
+		"Red",
+		"Static",
+		"Triumvirate",
+		"Triumvirate Static",
+		"Red October",
+		"Sparkles",
 		"ANIMA",
-		"Президент",
-		"НТ",
-		"НТ2",
-		"Радуга",
-		"Ангел",
-		"Кардиограмма",
-		"Аид",
-		"Гелиос",
-		"Синдикот Мяу",
-		"Слишком глубоко",
-		"Наёмник",
-		"Мурика",
-		"Шаткий",
-		"Глитчман",
-		"Хаус",
-		"База данных",
-		"Чужие",
-		"Тигр",
-		"Лис",
-		"Вокс",
-		"Ящер",
-		"Тёмная материя",
-		"Сыр",
-		"Радужный слайм",
-		"Пустой пончик",
-		"Горение",
-		"Борб",
-		"Пчела",
-		"Катамари"
+		"President",
+		"NT",
+		"NT2",
+		"Rainbow",
+		"Angel",
+		"Heartline",
+		"Hades",
+		"Helios",
+		"Syndicat Meow",
+		"Too Deep",
+		"Goon",
+		"Murica",
+		"Fuzzy",
+		"Glitchman",
+		"House",
+		"Database",
+		"Alien",
+		"Tiger",
+		"Fox",
+		"Vox",
+		"Lizard",
+		"Dark Matter",
+		"Cheese",
+		"Rainbow Slime",
+		"Void Donut",
+		"NAD Burn",
+		"Borb",
+		"Bee",
+		"Catamari"
 		)
 	if(custom_sprite)
-		display_choices += "Кастомный"
+		display_choices += "Custom"
 
 		//if(icon_state == initial(icon_state))
 	var/icontype = ""
@@ -449,99 +449,99 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 		if("Кастомный")
 			icon = 'icons/mob/custom_synthetic/custom-synthetic.dmi'	//set this here so we can use the custom_sprite
 			icon_state = "[ckey]-ai"
-		if("Клоун")
+		if("Clown")
 			icon_state = "ai-clown"
-		if("Монохром")
+		if("Monochrome")
 			icon_state = "ai-mono"
-		if("Перевернут")
+		if("Inverted")
 			icon_state = "ai-u"
-		if("Фаерволл")
+		if("Firewall")
 			icon_state = "ai-magma"
-		if("Зелёный")
+		if("Green")
 			icon_state = "ai-weird"
-		if("Красный")
+		if("Red")
 			icon_state = "ai-red"
-		if("Помехи")
+		if("Static")
 			icon_state = "ai-static"
-		if("Текст")
+		if("Text")
 			icon_state = "ai-text"
-		if("Улыбка")
+		if("Smiley")
 			icon_state = "ai-smiley"
-		if("Матрица")
+		if("Matrix")
 			icon_state = "ai-matrix"
-		if("Злой")
+		if("Angry")
 			icon_state = "ai-angryface"
-		if("Дорф")
+		if("Dorf")
 			icon_state = "ai-dorf"
-		if("Благославение")
+		if("Bliss")
 			icon_state = "ai-bliss"
-		if("Триумвират")
+		if("Triumvirate")
 			icon_state = "ai-triumvirate"
-		if("Триумвират с помехами")
+		if("Triumvirate Static")
 			icon_state = "ai-triumvirate-malf"
-		if("Красный октябрь")
+		if("Red October")
 			icon_state = "ai-redoctober"
-		if("Блёстки")
+		if("Sparkles")
 			icon_state = "ai-sparkles"
 		if("ANIMA")
 			icon_state = "ai-anima"
-		if("Президент")
+		if("President")
 			icon_state = "ai-president"
-		if("НТ")
+		if("NT")
 			icon_state = "ai-nt"
-		if("НТ2")
+		if("NT2")
 			icon_state = "ai-nanotrasen"
-		if("Радуга")
+		if("Rainbow")
 			icon_state = "ai-rainbow"
-		if("Ангел")
+		if("Angel")
 			icon_state = "ai-angel"
-		if("Кардиограмма")
+		if("Heartline")
 			icon_state = "ai-heartline"
-		if("Аид")
+		if("Hades")
 			icon_state = "ai-hades"
-		if("Гелиос")
+		if("Helious")
 			icon_state = "ai-helios"
-		if("Синдикот Мяу")
+		if("Syndicat Meow")
 			icon_state = "ai-syndicatmeow"
-		if("Слишком глубоко")
+		if("Too Deep")
 			icon_state = "ai-toodeep"
-		if("Наёмник")
+		if("Goon")
 			icon_state = "ai-goon"
-		if("Мурика")
+		if("Murica")
 			icon_state = "ai-murica"
-		if("Шаткий")
+		if("Fuzzy")
 			icon_state = "ai-fuzz"
 		if("Глитчман")
 			icon_state = "ai-glitchman"
 		if("Хаус")
 			icon_state = "ai-house"
-		if("База данных")
+		if("Database")
 			icon_state = "ai-database"
-		if("Чужие")
+		if("Alien")
 			icon_state = "ai-alien"
-		if("Тигр")
+		if("Tiger")
 			icon_state = "ai-tiger"
-		if("Лис")
+		if("Fox")
 			icon_state = "ai-fox"
-		if("Вокс")
+		if("Vox")
 			icon_state = "ai-vox"
-		if("Ящер")
+		if("Lizard")
 			icon_state = "ai-liz"
-		if("Тёмная материя")
+		if("Dark Matter")
 			icon_state = "ai-darkmatter"
-		if("Сыр")
+		if("Cheese")
 			icon_state = "ai-cheese"
-		if("Радужный слайм")
+		if("Rainbow Slime")
 			icon_state = "ai-rainbowslime"
-		if("Пустой пончик")
+		if("Void Donut")
 			icon_state = "ai-voiddonut"
-		if("Ожог NAD")
+		if("NAD Burn")
 			icon_state = "ai-nadburn"
-		if("Борб")
+		if("Borb")
 			icon_state = "ai-borb"
-		if("Пчела")
+		if("Bee")
 			icon_state = "ai-bee"
-		if("Катамари")
+		if("Catamari")
 			icon_state = "ai-catamari"
 		else
 			icon_state = "ai"
@@ -800,7 +800,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 /mob/living/silicon/ai/proc/botcall()
 	set category = "Команды ИИ"
 	set name = "Доступ к контролю роботов"
-	set desc = "Wirelessly control various automatic robots."
+	set desc = "Удалённый контроль различных роботов."
 	if(stat == 2)
 		to_chat(src, "<span class='danger'>Критическая ошибка. Система отключена.</span>")
 		return
@@ -860,7 +860,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 	if(O)
 		var/obj/machinery/camera/C = locateUID(O[1])
 		if(O.len == 1 && !QDELETED(C) && C.can_use())
-			queueAlarm("--- Тревога [class]  обнаружена в [A.name]! (<A HREF=?src=[UID()];switchcamera=[O[1]]>[C.c_tag]</A>)", class)
+			queueAlarm("--- Тревога типа [class]  обнаружена в [A.name]! (<A HREF=?src=[UID()];switchcamera=[O[1]]>[C.c_tag]</A>)", class)
 		else if(O && O.len)
 			var/foo = 0
 			var/dat2 = ""
@@ -1004,7 +1004,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 			custom_hologram = TRUE
 
 	var/input
-	switch(alert("Вы хотели бы голограмму на основе члена экипажа, животного или переключиться на уникальный аватар?",,"Член Экипажа","Уникальное","Животное"))
+	switch(alert("Вы хотели бы голограмму на основе члена экипажа, животного или переключиться на уникальный аватар?",,"Crew Member","Уникальное","Животное"))
 		if("Член Экипажа")
 			var/personnel_list[] = list()
 
@@ -1021,124 +1021,124 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 			else
 				alert("Подходящих записей не найдено. Отмена.")
 
-		if("Животное")
+		if("Animal")
 			var/icon_list[] = list(
-			"Медвед",
-			"Карп",
-			"Курица",
-			"Корги",
-			"Корова",
-			"Краб",
-			"Олень",
-			"Лиса",
-			"Коза",
-			"Гусь",
-			"Котёнок",
-			"Котёнок2",
-			"Свинья",
-			"Поли",
-			"Мопс",
-			"Тюлень",
-			"Паук",
-			"Индюк",
-			"Шантак",
-			"Кролик",
-			"Адская гончая",
-			"Лайтгейст",
-			"Таракан",
-			"Меха-Кот",
-			"Меха-Фея",
-			"Меха-Лиса",
-			"Меха-Обезьяна",
-			"Меха-Мышь",
-			"Меха-Снейк",
-			"Роллер-Мышь",
-			"Роллер-Обезьяна"
+			"Bear",
+			"Carp",
+			"Chicken",
+			"Corgi",
+			"Cow",
+			"Crab",
+			"Deer",
+			"Fox",
+			"Goat",
+			"Goose",
+			"Kitten",
+			"Kitten22",
+			"Pig",
+			"Poly",
+			"Pug",
+			"Seal",
+			"Spider",
+			"Turkey",
+			"Shantak",
+			"Bear",
+			"Hellhound",
+			"Lightgeist",
+			"Cockroach",
+			"Mecha-Cat",
+			"Mecha-Fairy",
+			"Mecha-Fox",
+			"Mecha-Monkey",
+			"Mecha-Mouse",
+			"Mecha-Snake",
+			"Roller-Mouse",
+			"Roller-Monkey"
 			)
 
 			input = input("Пожалуйста, выберите голограмму:") as null|anything in icon_list
 			if(input)
 				qdel(holo_icon)
 				switch(input)
-					if("Медведь")
+					if("bear")
 						holo_icon = getHologramIcon(icon('icons/mob/animal.dmi',"bear"))
-					if("Карп")
+					if("Carp")
 						holo_icon = getHologramIcon(icon('icons/mob/animal.dmi',"carp"))
-					if("Курица")
+					if("Chicken")
 						holo_icon = getHologramIcon(icon('icons/mob/animal.dmi',"chicken_brown"))
-					if("Когри")
+					if("Corgi")
 						holo_icon = getHologramIcon(icon('icons/mob/animal.dmi',"corgi"))
-					if("Корова")
+					if("Cow")
 						holo_icon = getHologramIcon(icon('icons/mob/animal.dmi',"cow"))
-					if("Краб")
+					if("Crab")
 						holo_icon = getHologramIcon(icon('icons/mob/animal.dmi',"crab"))
-					if("Олень")
+					if("Deer")
 						holo_icon = getHologramIcon(icon('icons/mob/animal.dmi',"deer"))
-					if("Лиса")
+					if("Fox")
 						holo_icon = getHologramIcon(icon('icons/mob/pets.dmi',"fox"))
-					if("Коза")
+					if("Goat")
 						holo_icon = getHologramIcon(icon('icons/mob/animal.dmi',"goat"))
-					if("Гусь")
+					if("Goose")
 						holo_icon = getHologramIcon(icon('icons/mob/animal.dmi',"goose"))
-					if("Котёнок")
+					if("Kitten")
 						holo_icon = getHologramIcon(icon('icons/mob/pets.dmi',"cat"))
-					if("Котёнок2")
+					if("Kitten2")
 						holo_icon = getHologramIcon(icon('icons/mob/pets.dmi',"cat2"))
-					if("Свинья")
+					if("Pig")
 						holo_icon = getHologramIcon(icon('icons/mob/animal.dmi',"pig"))
-					if("Поли")
+					if("Poly")
 						holo_icon = getHologramIcon(icon('icons/mob/animal.dmi',"parrot_fly"))
-					if("Мопс")
+					if("Pug")
 						holo_icon = getHologramIcon(icon('icons/mob/pets.dmi',"pug"))
-					if("Тюлень")
+					if("Seal")
 						holo_icon = getHologramIcon(icon('icons/mob/animal.dmi',"seal"))
-					if("Паук")
+					if("Spider")
 						holo_icon = getHologramIcon(icon('icons/mob/animal.dmi',"guard"))
-					if("Индюк")
+					if("Turkey")
 						holo_icon = getHologramIcon(icon('icons/mob/animal.dmi',"turkey"))
-					if("Шантак")
+					if("Shantak")
 						holo_icon = getHologramIcon(icon('icons/mob/animal.dmi',"shantak"))
-					if("Кролик")
+					if("Bunny")
 						holo_icon = getHologramIcon(icon('icons/mob/animal.dmi',"m_bunny"))
-					if("Адская гончая")
+					if("Hellhound")
 						holo_icon = getHologramIcon(icon('icons/mob/animal.dmi',"hellhound"))
-					if("Лайтгейст")
+					if("Lightgeist")
 						holo_icon = getHologramIcon(icon('icons/mob/animal.dmi',"lightgeist"))
-					if("Таракан")
+					if("Cockroach")
 						holo_icon = getHologramIcon(icon('icons/mob/animal.dmi',"cockroach"))
-					if("Меха-Кот")
+					if("Mecha-Cat")
 						holo_icon = getHologramIcon(icon('icons/mob/pai.dmi',"cat"))
-					if("Меха-Фея")
+					if("Mecha-Fairy")
 						holo_icon = getHologramIcon(icon('icons/mob/pai.dmi',"fairy"))
-					if("Меха-Лиса")
+					if("Mecha-Fox")
 						holo_icon = getHologramIcon(icon('icons/mob/pai.dmi',"fox"))
-					if("Меха-Обезьяна")
+					if("Mecha-Monkey")
 						holo_icon = getHologramIcon(icon('icons/mob/pai.dmi',"monkey"))
-					if("Меха-Мышь")
+					if("Mecha-Mouse")
 						holo_icon = getHologramIcon(icon('icons/mob/pai.dmi',"mouse"))
-					if("Меха-Змея")
+					if("Mecha-Snake")
 						holo_icon = getHologramIcon(icon('icons/mob/pai.dmi',"snake"))
-					if("Роллер-Мышь")
+					if("Roller-Mice")
 						holo_icon = getHologramIcon(icon('icons/mob/robots.dmi',"mk2"))
-					if("Роллер-Обезьяна")
+					if("Roller-Monkey")
 						holo_icon = getHologramIcon(icon('icons/mob/robots.dmi',"mk3"))
 
 		else
 			var/icon_list[] = list(
-			"Стандартная",
-			"Летающее лицо",
-			"Королева Ксено",
+			"default",
+			"floating face",
+			"xeno queen",
 			"eldritch",
-			"Древняя машина",
-			"Ангел",
-			"Борб",
-			"Самый большой фен",
-			"Клаудкэт",
-			"Пончик",
-			"Морозный феникс",
+			"ancient machine",
+			"angel",
+			"borb",
+			"biggest fan",
+			"cloudkat",
+			"donut",
+			"frost phoenix",
 			"engi bot",
-			"Дрон",
-			"БоксБот"
+			"drone",
+			"boxbot"
 			)
 			if(custom_hologram) //insert custom hologram
 				icon_list.Add("custom")
@@ -1147,33 +1147,33 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 			if(input)
 				qdel(holo_icon)
 				switch(input)
-					if("Стандартная")
+					if("default")
 						holo_icon = getHologramIcon(icon('icons/mob/ai.dmi',"holo1"))
-					if("Летающее лицо")
+					if("floating face")
 						holo_icon = getHologramIcon(icon('icons/mob/ai.dmi',"holo2"))
-					if("Королева Ксено")
+					if("xeno queen")
 						holo_icon = getHologramIcon(icon('icons/mob/ai.dmi',"holo3"))
 					if("eldritch")
 						holo_icon = getHologramIcon(icon('icons/mob/ai.dmi',"holo4"))
-					if("Ангел")
+					if("angel")
 						holo_icon = getHologramIcon(icon('icons/mob/ai.dmi',"holo-angel"))
 					if("borb")
 						holo_icon = getHologramIcon(icon('icons/mob/ai.dmi',"holo-borb"))
-					if("Самый большой фен")
+					if("biggest fan")
 						holo_icon = getHologramIcon(icon('icons/mob/ai.dmi',"holo-biggestfan"))
-					if("Клаудкэт")
+					if("cloudkat")
 						holo_icon = getHologramIcon(icon('icons/mob/ai.dmi',"holo-cloudkat"))
-					if("Пончик")
+					if("donut")
 						holo_icon = getHologramIcon(icon('icons/mob/ai.dmi',"holo-donut"))
-					if("Морозный феникс")
+					if("frost phoenix")
 						holo_icon = getHologramIcon(icon('icons/mob/ai.dmi',"holo-frostphoenix"))
 					if("engi bot")
 						holo_icon = getHologramIcon(icon('icons/mob/hivebot.dmi',"EngBot"))
-					if("Дрон")
+					if("drone")
 						holo_icon = getHologramIcon(icon('icons/mob/animal.dmi',"drone0"))
-					if("БоксБот")
+					if("boxbot")
 						holo_icon = getHologramIcon(icon('icons/mob/pai.dmi',"boxbot"))
-					if("Древняя машина")
+					if("ancient machine")
 						holo_icon = getHologramIcon(icon('icons/mob/ancient_machine.dmi', "ancient_machine"))
 					if("custom")
 						if("[ckey]-ai-holo" in icon_states('icons/mob/custom_synthetic/custom-synthetic.dmi'))
