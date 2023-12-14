@@ -96,7 +96,7 @@
 	var/obj/machinery/hologram/holopad/T = current
 	if(istype(T) && T.masters[src])
 		var/rendered = "<span class='game say'><span class='name'>[name]</span> <span class='message'>[message]</span></span>"
-		to_chat(src, "<i><span class='game say'>Передано действие голопада, <span class='name'>[real_name]</span> <span class='message'>[message]</span></span></i>")
+		to_chat(src, "<i><span class='game say'>Голопад передал действие, <span class='name'>[real_name]</span> <span class='message'>[message]</span></span></i>")
 
 		for(var/mob/M in viewers(T.loc))
 			M.show_message(rendered, EMOTE_VISIBLE)

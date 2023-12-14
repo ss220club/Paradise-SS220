@@ -246,7 +246,7 @@
 
 /datum/action/innate/ai/nuke_station/proc/set_us_up_the_bomb()
 	to_chat(owner_AI, "<span class='notice'>Ядерное оружие взведено.</span>")
-	GLOB.major_announcement.Announce("Враждебные программы обнаружены во всех системах станции. ПОжалуйста, уничтожьте свой ИИ, чтобы предотвратить возможный ущерб его моральному ядру.", "Тревога об Аномалии", 'sound/AI/aimalf.ogg')
+	GLOB.major_announcement.Announce("Враждебные программы обнаружены во всех системах станции. Пожалуйста, уничтожьте свой ИИ, чтобы предотвратить возможный ущерб его моральному ядру.", "Тревога об Аномалии", 'sound/AI/aimalf.ogg')
 	SSsecurity_level.set_level(SEC_LEVEL_DELTA)
 	owner_AI.nuking = TRUE
 	var/obj/machinery/doomsday_device/DOOM = new /obj/machinery/doomsday_device(owner_AI)
@@ -326,7 +326,7 @@
 
 //AI Turret Upgrade: Increases the health and damage of all turrets.
 /datum/AI_Module/upgrade_turrets
-	module_name = "Улучшение турелей."
+	module_name = "Улучшение турелей"
 	mod_pick_name = "turret"
 	description = "Улучшает силу и здоровье турелей. Этот эффект постоянен."
 	cost = 30
@@ -346,7 +346,8 @@
 /datum/AI_Module/lockdown
 	module_name = "Агрессивный Локдаун Станции"
 	mod_pick_name = "lockdown"
-	description = " Перегружает все шлюзы, противопожарные и взрывоустойчивые двери, закрывая их. Внимание! Эта команда также электрифицирует все шлюзы. Сеть автоматически перезапустится через 90 секунд, \ открывая все шлюзы на короткий промежуток времени."
+	description = "Перегружает все шлюзы, противопожарные и взрывоустойчивые двери, закрывая их. Внимание! Эта команда также электрифицирует все шлюзы. Сеть автоматически перезапустится через 90 секунд \
+	 открывая все шлюзы на короткий промежуток времени.
 	cost = 30
 	one_purchase = TRUE
 	power_type = /datum/action/innate/ai/lockdown
@@ -354,7 +355,7 @@
 
 /datum/action/innate/ai/lockdown
 	name = "Локдаун"
-	desc = "Закрывает, болтирует и отключает все щлюзы. Через 90 секунд, они восстанавливаются."
+	desc = "Закрывает, болтирует и отключает все шлюзы. Через 90 секунд, они восстанавливаются."
 	button_icon_state = "lockdown"
 	uses = 1
 
@@ -394,7 +395,8 @@
 /datum/AI_Module/mecha_domination
 	module_name = "Разблокировка доминации мехов"
 	mod_pick_name = "mechjack"
-	description = "Позволяет вам взломать бортовой компьютер меха, загрузив все свои процессы в него, а также выкидывая пилота. Как только вы загрузитесь в меха, выйти будет невозможно \ Не позволяйте меху покинуть станцию или быть уничтоженным"
+	description = "Позволяет вам взломать бортовой компьютер меха, загрузив все свои процессы в него, а также выкидывая пилота. Как только вы загрузитесь в меха, выйти будет невозможно \
+	 Не позволяйте меху покинуть станцию или быть уничтоженным" // А тут какого-то хуя перекинулось
 	cost = 30
 	upgrade = TRUE
 	unlock_text = "<span class='notice'>Вирусный пакет скомпилирован. Вы в любой момент можете выбрать цель. <b>Вы должны оставаться на станции в любой момент времени. Потеря сигнала приведёт к полной блокировке системы.</b></span>"
@@ -432,12 +434,12 @@
 /datum/AI_Module/break_air_alarms
 	module_name = "Перезагрузка предохранителей атмосферных датчиков."
 	mod_pick_name = "allow_flooding"
-	description = "Даёт вам возможность отключить все предохранители на атмосферных датчиках. This will allow you to use the environmental mode Flood, which disables scrubbers as well as pressure checks on vents. Позволяет вам использовать режим Flood, отключающий скрабберы, а также отключающий проверку давления в вентиляциях. \
+	description = "Даёт вам возможность отключить все предохранители на атмосферных датчиках. Позволяет вам использовать режим Flood, отключающий скрабберы, а также отключающий проверку давления в вентиляциях. \
 	Любой может проверить интерфейс датчика и заподозрить что-то из-за их нерабочего состояния."
 	one_purchase = TRUE
 	cost = 50
 	power_type = /datum/action/innate/ai/break_air_alarms
-	unlock_text = "<span class='notice'>You remove the safety overrides on all air alarms, but you leave the confirm prompts open. You can hit 'Yes' at any time... you bastard.</span>"
+	unlock_text = "<span class='notice'>Вы убираете предохранители с атмосферных датчиков, но оставляете окно подтверждения открытым. Вы можете нажать 'Да' в любой момент... ублюдок.</span>"
 
 /datum/action/innate/ai/break_air_alarms
 	name = "Перезагрузка атмосферных датчиков"
@@ -450,7 +452,7 @@
 		if(!is_station_level(AA.z))
 			continue
 		AA.emagged = TRUE
-	to_chat(owner, "<span class='notice'>All air alarm safeties on the station have been overridden. Air alarms may now use the Flood environmental mode.")
+	to_chat(owner, "<span class='notice'>Предохранители атмосферных датчиков отключены. Теперь у них открыт режим Flood.</span>")
 	owner.playsound_local(owner, 'sound/machines/terminal_off.ogg', 50, FALSE, use_reverb = FALSE)
 
 
@@ -558,7 +560,7 @@
 	cost = 100
 	one_purchase = TRUE
 	power_type = /datum/action/innate/ai/place_transformer
-	unlock_text = "<span class='notice'>Вы подгатавливаете фабрику к установке.</span>"
+	unlock_text = "<span class='notice'>Вы подготавливаете фабрику к установке.</span>"
 	unlock_sound = 'sound/machines/ping.ogg'
 
 /datum/action/innate/ai/place_transformer
@@ -609,7 +611,7 @@
 			success = FALSE
 		var/datum/camerachunk/C = GLOB.cameranet.getCameraChunk(T.x, T.y, T.z)
 		if(!C.visibleTurfs[T])
-			alert_msg = "У вас нет покрытия камер в этой локации"
+			alert_msg = "У вас нет покрытия камер в этой локации!"
 			success = FALSE
 		for(var/atom/movable/AM in T.contents)
 			if(AM.density)
@@ -628,7 +630,7 @@
 /datum/AI_Module/blackout
 	module_name = "Блэкаут"
 	mod_pick_name = "blackout"
-	description = "Попытка перегрузить световые схемы станции, выводя из строя некоторые лампы. Три использования"
+	description = "Попытка перегрузить световые схемы станции, выводя из строя некоторые лампы. Три использования."
 	cost = 15
 	power_type = /datum/action/innate/ai/blackout
 	unlock_text = "<span class='notice'>Вы подключаетесь к энергосети станции и направляете избыток энергии на освещение.</span>"
