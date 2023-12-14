@@ -4834,4 +4834,9 @@
 	category = TTS_CATEGORY_WOW
 	gender = TTS_GENDER_MALE
 
+/datum/tts_seed/silero/livsy
+	name = "Livsy"
+	value = "Treasure_Island_Livsy"
+	category = TTS_CATEGORY_TREASURE_ISLAND
+	gender = TTS_GENDER_MALE
 
