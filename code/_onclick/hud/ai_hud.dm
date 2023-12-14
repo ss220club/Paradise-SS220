@@ -31,7 +31,7 @@
 			AI.ai_camera_track(target_name)
 
 /obj/screen/ai/camera_light
-	name = "Включить свет в камерах"
+	name = "Переключить свет в камерах"
 	icon_state = "camera_light"
 
 /obj/screen/ai/camera_light/Click()
@@ -111,7 +111,7 @@
 		AI.aiPDA.cmd_show_message_log()
 
 /obj/screen/ai/image_take
-	name = "Сфотографировать"
+	name = "Сделать снимок"
 	icon_state = "take_picture"
 
 /obj/screen/ai/image_take/Click()

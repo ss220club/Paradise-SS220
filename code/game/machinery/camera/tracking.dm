@@ -107,7 +107,7 @@
 	if(!cameraFollow)
 		return
 
-	to_chat(src, "Режим преследования [forced ? "уничтожен" : "закончился"].")
+	to_chat(src, "Режим преследования [forced ? "отключён" : "закончился"].")
 	cameraFollow = null
 
 /mob/living/silicon/ai/proc/ai_actual_track(mob/living/target)
@@ -129,7 +129,7 @@
 		return
 
 	if(!target || !target.can_track(usr))
-		to_chat(U, "<span class='warning'>Target is not near any active cameras.</span>")
+		to_chat(U, "<span class='warning'>Цель находится вне зоны покрытия камер.</span>")
 		U.cameraFollow = null
 		return
 

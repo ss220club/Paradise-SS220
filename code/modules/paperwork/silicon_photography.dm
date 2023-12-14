@@ -34,7 +34,7 @@
 
 	else
 		injectaialbum(P)
-		to_chat(usr, "<span class='unconscious'>Image recorded</span>")
+		to_chat(usr, "<span class='unconscious'>Снимок сохранён</span>")
 
 /obj/item/camera/siliconcam/proc/selectpicture(obj/item/camera/siliconcam/cam)
 	if(!cam)
@@ -43,11 +43,11 @@
 	var/list/nametemp = list()
 	var/find
 	if(cam.aipictures.len == 0)
-		to_chat(usr, "<span class='userdanger'>No images saved</span>")
+		to_chat(usr, "<span class='userdanger'>Нет сохранённых снимков</span>")
 		return
 	for(var/datum/picture/t in cam.aipictures)
 		nametemp += t.fields["name"]
-	find = tgui_input_list(usr, "Select image (numbered in order taken)", "Pick Image", nametemp)
+	find = tgui_input_list(usr, "Выберите снимок (пронумерованы в порядке получения)", "Выбор снимка", nametemp)
 
 	for(var/datum/picture/q in cam.aipictures)
 		if(q.fields["name"] == find)
@@ -88,7 +88,7 @@
 
 /obj/item/camera/siliconcam/proc/camera_mode_off()
 	src.in_camera_mode = 0
-	to_chat(usr, "<B>Режим фотоаппарата деактивирован </B>")
+	to_chat(usr, "<B>Режим фотоаппарата деактивирован</B>")
 
 /obj/item/camera/siliconcam/proc/camera_mode_on()
 	src.in_camera_mode = 1

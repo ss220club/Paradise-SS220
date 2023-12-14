@@ -81,7 +81,7 @@
 			create_chat_message(H, message)
 		for(var/mob/M in hearers(T.loc))//The location is the object, default distance.
 			M.hear_holopad_talk(message_pieces, verb, src, H)
-		to_chat(src, "<i><span class='game say'>Голопад передал, <span class='name'>[real_name]</span> [combine_message(message_pieces, verb, src)]</span></i>")
+		to_chat(src, "<i><span class='game say'>Переданная речь, <span class='name'>[real_name]</span> [combine_message(message_pieces, verb, src)]</span></i>")
 	else
 		to_chat(src, "Нет подключённого голопада.")
 		return
@@ -96,7 +96,7 @@
 	var/obj/machinery/hologram/holopad/T = current
 	if(istype(T) && T.masters[src])
 		var/rendered = "<span class='game say'><span class='name'>[name]</span> <span class='message'>[message]</span></span>"
-		to_chat(src, "<i><span class='game say'>Голопад передал действие, <span class='name'>[real_name]</span> <span class='message'>[message]</span></span></i>")
+		to_chat(src, "<i><span class='game say'>Переданное действие, <span class='name'>[real_name]</span> <span class='message'>[message]</span></span></i>")
 
 		for(var/mob/M in viewers(T.loc))
 			M.show_message(rendered, EMOTE_VISIBLE)
