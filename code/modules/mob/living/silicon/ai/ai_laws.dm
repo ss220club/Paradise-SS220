@@ -23,5 +23,5 @@
 
 /mob/living/silicon/ai/proc/ai_checklaws()
 	set category = "Команды ИИ"
-	set name = "State Laws"
+	set name = "Показать законы"
 	subsystem_law_manager()

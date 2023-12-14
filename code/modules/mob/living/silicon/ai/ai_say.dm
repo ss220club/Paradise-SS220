@@ -139,7 +139,7 @@ GLOBAL_VAR_INIT(announcing_vox, 0) // Stores the time of the last announcement
 
 	GLOB.announcing_vox = world.time + VOX_DELAY
 
-	log_game("[key_name(src)] made a vocal announcement: [message].")
+	log_game("[key_name(src)] сделал звуковое оповещение: [message].")
 	message_admins("[key_name_admin(src)] made a vocal announcement: [message].")
 
 	for(var/word in words)

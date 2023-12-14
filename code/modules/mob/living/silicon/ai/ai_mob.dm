@@ -245,12 +245,12 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 	return aiRadio
 
 /mob/living/silicon/ai/proc/on_mob_init()
-	to_chat(src, "<B>You are playing the station's AI. The AI cannot move, but can interact with many objects while viewing them (through cameras).</B>")
-	to_chat(src, "<B>To look at other parts of the station, click on yourself to get a camera menu.</B>")
-	to_chat(src, "<B>While observing through a camera, you can use most (networked) devices which you can see, such as computers, APCs, intercoms, doors, etc.</B>")
-	to_chat(src, "To use something, simply click on it.")
-	to_chat(src, "Use say :b to speak to your cyborgs through binary. Use say :h to speak from an active holopad.")
-	to_chat(src, "For department channels, use the following say commands:")
+	to_chat(src, "<B>Вы играете за станционный ИИ. ИИ не может передвигаться, но может взаимодействовать с большим количеством объектов просто смотря на них (через камеры).</B>")
+	to_chat(src, "<B>Чтобы осматривать другие части станции, кликните на 'Переключение сети'.</B>")
+	to_chat(src, "<B>Пока вы смотрите через камеры, вы можете взаимодействовать с большинством (подключённых) видимых устройств по типу компьютеров, ЛКП, интеркомов, дверей и так далее.</B>")
+	to_chat(src, "Чтобы использовать что-то, просто кликните по предмету.")
+	to_chat(src, "Используйте :b (:и) для общения с киборгами. Используйте :h (:р) для общения через активный голопад.")
+	to_chat(src, "Для каналов отделов используйте:")
 
 	var/radio_text = ""
 	for(var/i = 1 to aiRadio.channels.len)
@@ -263,7 +263,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 	to_chat(src, radio_text)
 
 	show_laws()
-	to_chat(src, "<b>These laws may be changed by other players, or by you being the traitor.</b>")
+	to_chat(src, "<b>Эти законы могут быть изменены другими игроками или Вами при игре за предателя.</b>")
 
 	job = "AI"
 
@@ -276,8 +276,8 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 		show_borg_info()
 
 /mob/living/silicon/ai/proc/ai_alerts()
-	var/list/dat = list("<HEAD><TITLE>Current Station Alerts</TITLE><META HTTP-EQUIV='Refresh' CONTENT='10'></HEAD><BODY>\n")
-	dat += "<A HREF='?src=[UID()];mach_close=aialerts'>Close</A><BR><BR>"
+	var/list/dat = list("<HEAD><TITLE>Текущие тревоги на станции</TITLE><META HTTP-EQUIV='Обновить' CONTENT='10'></HEAD><BODY>\n")
+	dat += "<A HREF='?src=[UID()];mach_close=aialerts'>Закрыть</A><BR><BR>"
 	var/list/list/temp_alarm_list = GLOB.alarm_manager.alarms.Copy()
 	for(var/cat in temp_alarm_list)
 		if(!(cat in alarms_listend_for))
@@ -301,14 +301,14 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 						var/obj/machinery/camera/I = locateUID(cam)
 						if(!QDELETED(I))
 							dat2 += "[(dat2 == "") ? "" : " | "]<A HREF=?src=[UID()];switchcamera=[cam]>[I.c_tag]</A>"
-					dat += "-- [area_name] ([(dat2 != "") ? dat2 : "No Camera"])"
+					dat += "-- [area_name] ([(dat2 != "") ? dat2 : "Нет камеры"])"
 				else
-					dat += "-- [area_name] (No Camera)"
+					dat += "-- [area_name] (Нет камеры)"
 				if(sources.len > 1)
-					dat += "- [length(sources)] sources"
+					dat += "- [length(sources)] источников"
 				dat += "</NOBR><BR>\n"
 		if(!L.len)
-			dat += "-- All Systems Nominal<BR>\n"
+			dat += "-- Все системы в норме<BR>\n"
 		dat += "<BR>\n"
 
 	viewalerts = TRUE
@@ -316,19 +316,19 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 	src << browse(dat_text, "window=aialerts&can_close=0")
 
 /mob/living/silicon/ai/proc/show_borg_info()
-	stat(null, "Connected cyborgs: [connected_robots.len]")
+	stat(null, "Подключённые киборги: [connected_robots.len]")
 	for(var/thing in connected_robots)
 		var/mob/living/silicon/robot/R = thing
-		var/robot_status = "Nominal"
+		var/robot_status = "Нормально"
 		if(R.stat || !R.client)
-			robot_status = "OFFLINE"
+			robot_status = "СЛОМАН"
 		else if(!R.cell || R.cell.charge <= 0)
-			robot_status = "DEPOWERED"
+			robot_status = "ОТКЛЮЧЁН"
 		// Name, Health, Battery, Module, Area, and Status! Everything an AI wants to know about its borgies!
 		var/area/A = get_area(R)
 		var/area_name = A ? sanitize(A.name) : "Unknown"
-		stat(null, "[R.name] | S.Integrity: [R.health]% | Cell: [R.cell ? "[R.cell.charge] / [R.cell.maxcharge]" : "Empty"] | \
-		Module: [R.designation] | Loc: [area_name] | Status: [robot_status]")
+		stat(null, "[R.name] | Целостнсоть: [R.health]% | Заряд: [R.cell ? "[R.cell.charge] / [R.cell.maxcharge]" : "N/A"] | \
+		Модуль: [R.designation] | Место: [area_name] | Статус: [robot_status]")
 
 /mob/living/silicon/ai/rename_character(oldname, newname)
 	if(!..(oldname, newname))
@@ -381,7 +381,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 
 /mob/living/silicon/ai/proc/pick_icon()
 	set category = "Команды ИИ"
-	set name = "Set AI Core Display"
+	set name = "Поставить дисплей ядра ИИ"
 	if(stat || aiRestorePowerRoutine)
 		return
 	if(!custom_sprite) //Check to see if custom sprite time, checking the appopriate file to change a var
@@ -443,7 +443,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 
 		//if(icon_state == initial(icon_state))
 	var/icontype = ""
-	icontype = input("Select an icon!", "AI", null, null) in display_choices
+	icontype = input("Выберите иконку!", "ИИ", null, null) in display_choices
 	icon = 'icons/mob/ai.dmi'	//reset this in case we were on a custom sprite and want to change to a standard one
 	switch(icontype)
 		if("Custom")
@@ -552,13 +552,13 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 
 // this verb lets the ai see the stations manifest
 /mob/living/silicon/ai/proc/ai_roster()
-	set name = "Show Crew Manifest"
+	set name = "Показать манифест"
 	set category = "Команды ИИ"
 	show_station_manifest()
 
 /mob/living/silicon/ai/proc/ai_announcement_text()
 	set category = "Команды ИИ"
-	set name = "Make Station Announcement"
+	set name = "Сделать станционное оповещение"
 
 	if(check_unable(AI_CHECK_WIRELESS | AI_CHECK_RADIO))
 		return
@@ -567,7 +567,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 		to_chat(src, "<span class='warning'>Please allow one minute to pass between announcements.</span>")
 		return
 
-	var/input = input(usr, "Please write a message to announce to the station crew.", "A.I. Announcement") as message|null
+	var/input = input(usr, "Напишите сообщение для экипажа.", "Оповещение ИИ") as message|null
 	if(!input)
 		return
 
@@ -578,13 +578,13 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 	next_text_announcement = world.time + TEXT_ANNOUNCEMENT_COOLDOWN
 
 /mob/living/silicon/ai/proc/ai_call_shuttle()
-	set name = "Call Emergency Shuttle"
+	set name = "Вызов эвакуационного шаттла"
 	set category = "Команды ИИ"
 
 	if(check_unable(AI_CHECK_WIRELESS))
 		return
 
-	var/input = input("Please enter the reason for calling the shuttle.", "Shuttle Call Reason.") as null|message
+	var/input = input("Пожалуйста, напишите причину для вызова шаттла.", "Причина вызова Шаттла.") as null|message
 	if(!input || stat)
 		return
 
@@ -596,18 +596,18 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 	return
 
 /mob/living/silicon/ai/proc/ai_cancel_call()
-	set name = "Recall Emergency Shuttle"
+	set name = "Отзыв эвакуационного шаттла"
 	set category = "Команды ИИ"
 
 	if(check_unable(AI_CHECK_WIRELESS))
 		return
 
-	var/confirm = alert("Are you sure you want to recall the shuttle?", "Confirm Shuttle Recall", "Yes", "No")
+	var/confirm = alert("Вы уверены, что хотите отозвать шаттл?", "Потверждение отзыва шаттла", "Да", "Нет")
 
 	if(check_unable(AI_CHECK_WIRELESS))
 		return
 
-	if(confirm == "Yes")
+	if(confirm == "Да")
 		cancel_call_proc(src)
 
 /mob/living/silicon/ai/cancel_camera()
@@ -615,7 +615,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 
 /mob/living/silicon/ai/verb/toggle_anchor()
 	set category = "Команды ИИ"
-	set name = "Toggle Floor Bolts"
+	set name = "Переключить прикручивание к полу"
 
 	if(!isturf(loc)) // if their location isn't a turf
 		return // stop
@@ -625,12 +625,12 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 	else
 		anchored = TRUE
 
-	to_chat(src, "[anchored ? "<b>You are now anchored.</b>" : "<b>You are now unanchored.</b>"]")
+	to_chat(src, "[anchored ? "<b>Вы теперь прикручены.</b>" : "<b> Вы теперь откручены.</b>"]")
 
 
 /mob/living/silicon/ai/proc/announcement()
-	set name = "Announcement"
-	set desc = "Create a vocal announcement by typing in the available words to create a sentence."
+	set name = "Оповещение"
+	set desc = "Сделайте звуковое оповещение посредством слияния слов в предложения."
 	set category = "Команды ИИ"
 
 	if(check_unable(AI_CHECK_WIRELESS | AI_CHECK_RADIO))
@@ -704,7 +704,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 			if(H)
 				H.attack_ai(src) //may as well recycle
 			else
-				to_chat(src, "<span class='notice'>Unable to locate the holopad.</span>")
+				to_chat(src, "<span class='notice'>Невозможно обнаружить голопад.</span>")
 
 	if(href_list["say_word"])
 		play_vox_word(href_list["say_word"], null, src)
@@ -715,7 +715,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 		if(istype(target) && target.can_track())
 			ai_actual_track(target)
 		else
-			to_chat(src, "<span class='warning'>Target is not on or near any active cameras on the station.</span>")
+			to_chat(src, "<span class='warning'>Цель находится вне зоны камер.</span>")
 		return
 
 	if(href_list["trackbot"])
@@ -723,7 +723,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 		if(istype(target))
 			ai_actual_track(target)
 		else
-			to_chat(src, "<span class='warning'>Target is not on or near any active cameras on the station.</span>")
+			to_chat(src, "<span class='warning'>Цель находится вне зоны камер.</span>")
 		return
 
 	if(href_list["callbot"]) //Command a bot to move to a selected location.
@@ -731,7 +731,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 		if(!Bot || Bot.remote_disabled || control_disabled)
 			return //True if there is no bot found, the bot is manually emagged, or the AI is carded with wireless off.
 		waypoint_mode = TRUE
-		to_chat(src, "<span class='notice'>Set your waypoint by clicking on a valid location free of obstructions.</span>")
+		to_chat(src, "<span class='notice'>Поставьте беспрепятственную точку назначения.</span>")
 		return
 
 	if(href_list["interface"]) //Remotely connect to a bot!
@@ -761,16 +761,16 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 			return
 
 		if(controlled_mech)
-			to_chat(src, "<span class='warning'>You are already loaded into an onboard computer!</span>")
+			to_chat(src, "<span class='warning'>Вы уже загружены в портативный компьютер!</span>")
 			return
 		if(!GLOB.cameranet.checkCameraVis(M))
-			to_chat(src, "<span class='warning'>Exosuit is no longer near active cameras.</span>")
+			to_chat(src, "<span class='warning'>Экзокостюм больше не в зоне камер.</span>")
 			return
 		if(lacks_power())
-			to_chat(src, "<span class='warning'>You're depowered!</span>")
+			to_chat(src, "<span class='warning'>Вы разряжены!</span>")
 			return
 		if(!isturf(loc))
-			to_chat(src, "<span class='warning'>You aren't in your core!</span>")
+			to_chat(src, "<span class='warning'>Вы не в ядре!</span>")
 			return
 		if(M)
 			M.transfer_ai(AI_MECH_HACK, src, usr) //Called om the mech itself.
@@ -811,21 +811,21 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 	var/d
 	var/area/bot_area
 	d += "<A HREF=?src=[UID()];botrefresh=\ref[Bot]>Query network status</A><br>"
-	d += "<table width='100%'><tr><td width='40%'><h3>Name</h3></td><td width='20%'><h3>Status</h3></td><td width='30%'><h3>Location</h3></td><td width='10%'><h3>Control</h3></td></tr>"
+	d += "<table width='100%'><tr><td width='40%'><h3>Имя</h3></td><td width='20%'><h3>Статус</h3></td><td width='30%'><h3>Место</h3></td><td width='10%'><h3>Control</h3></td></tr>"
 
 	for(var/mob/living/simple_animal/bot/Bot in GLOB.bots_list)
 		if(is_ai_allowed(Bot.z) && !Bot.remote_disabled) //Only non-emagged bots on the allowed Z-level are detected!
 			bot_area = get_area(Bot)
 			d += "<tr><td width='30%'>[Bot.hacked ? "<span class='bad'>(!) </span>[Bot.name]" : Bot.name] ([Bot.model])</td>"
 			//If the bot is on, it will display the bot's current mode status. If the bot is not mode, it will just report "Idle". "Inactive if it is not on at all.
-			d += "<td width='20%'>[Bot.on ? "[Bot.mode ? "<span class='average'>[ Bot.mode_name[Bot.mode] ]</span>": "<span class='good'>Idle</span>"]" : "<span class='bad'>Inactive</span>"]</td>"
+			d += "<td width='20%'>[Bot.on ? "[Bot.mode ? "<span class='average'>[ Bot.mode_name[Bot.mode] ]</span>": "<span class='good'>Idle</span>"]" : "<span class='bad'>Неактивен</span>"]</td>"
 			d += "<td width='30%'>[bot_area.name]</td>"
 			d += "<td width='10%'><A HREF=?src=[UID()];interface=\ref[Bot]>Interface</A></td>"
 			d += "<td width='10%'><A HREF=?src=[UID()];callbot=\ref[Bot]>Call</A></td>"
 			d += "</tr>"
 			d = format_text(d)
 
-	var/datum/browser/popup = new(src, "botcall", "Remote Robot Control", 700, 400)
+	var/datum/browser/popup = new(src, "botcall", "Удалённое управление роботами", 700, 400)
 	popup.set_content(d)
 	popup.open()
 
@@ -845,7 +845,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 		return
 
 	if(Bot.calling_ai && Bot.calling_ai != src) //Prevents an override if another AI is controlling this bot.
-		to_chat(src, "<span class='danger'>Ошибка интерфейса. Юнит уже используется.</span>")
+		to_chat(src, "<span class='danger'>Ошибка интерфейса. Бот уже используется.</span>")
 		return
 
 	Bot.call_bot(src, waypoint)
@@ -860,7 +860,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 	if(O)
 		var/obj/machinery/camera/C = locateUID(O[1])
 		if(O.len == 1 && !QDELETED(C) && C.can_use())
-			queueAlarm("--- Обнаружена тревога типа [class] в [A.name]! (<A HREF=?src=[UID()];switchcamera=[O[1]]>[C.c_tag]</A>)", class)
+			queueAlarm("--- Тревога типа [class] обнаружена в [A.name]! (<A HREF=?src=[UID()];switchcamera=[O[1]]>[C.c_tag]</A>)", class)
 		else if(O && O.len)
 			var/foo = 0
 			var/dat2 = ""
@@ -869,11 +869,11 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 				if(!QDELETED(I))
 					dat2 += "[(!foo) ? "" : " | "]<A HREF=?src=[UID()];switchcamera=[thing]>[I.c_tag]</A>" //I'm not fixing this shit...
 					foo = 1
-			queueAlarm(text ("--- [] alarm detected in []! ([])", class, A.name, dat2), class)
+			queueAlarm(text ("--- Тревога типа [] обнаружена в []! ([])", class, A.name, dat2), class)
 		else
-			queueAlarm(text("--- [] alarm detected in []! (No Camera)", class, A.name), class)
+			queueAlarm(text("--- Тревога типа [] обнаружена в []! (Нет камеры)", class, A.name), class)
 	else
-		queueAlarm(text("--- [] alarm detected in []! (No Camera)", class, A.name), class)
+		queueAlarm(text("--- Тревога типа [] обнаружена в []! (Нет камеры)", class, A.name), class)
 	if(viewalerts)
 		ai_alerts()
 
