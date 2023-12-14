@@ -22,23 +22,23 @@
 				impersonating = I
 				jobname = impersonating.get_assignment()
 			else
-				jobname = "Unknown"
+				jobname = "Неизвестный"
 		else
 			jobname = H.get_assignment()
 
 	else if(iscarbon(speaker)) // Nonhuman carbon mob
-		jobname = "No ID"
+		jobname = "Без ID"
 	else if(isAI(speaker))
-		jobname = "AI"
+		jobname = "ИИ"
 	else if(isrobot(speaker))
-		jobname = "Cyborg"
+		jobname = "Киборг"
 	else if(ispAI(speaker))
-		jobname = "Personal AI"
+		jobname = "Персональный ИИ"
 	else if(isAutoAnnouncer(speaker))
 		var/mob/living/automatedannouncer/AA = speaker
 		jobname = AA.role
 	else
-		jobname = "Unknown"
+		jobname = "Неизвестно"
 
 	var/track = ""
 	var/mob/mob_to_track = null
@@ -70,16 +70,16 @@ GLOBAL_VAR_INIT(announcing_vox, 0) // Stores the time of the last announcement
 #define VOX_PATH "sound/vox_fem/"
 
 /mob/living/silicon/ai/verb/announcement_help()
-	set name = "Announcement Help"
-	set desc = "Display a list of vocal words to announce to the crew."
-	set category = "AI Commands"
+	set name = "Помощь в оповещениях"
+	set desc = "Показывает список слов для оповещения экипажа."
+	set category = "Команды ИИ"
 
 	var/list/dat = list()
 
-	dat += "Here is a list of words you can type into the 'Announcement' button to create sentences to vocally announce to everyone on the same level at you.<BR> \
-	<UL><LI>You can also click on the word to preview it.</LI>\
-	<LI>You can only say 30 words for every announcement.</LI>\
-	<LI>Do not use punctuation as you would normally, if you want a pause you can use the full stop and comma characters by separating them with spaces, like so: 'Alpha . Test , Bravo'.</LI></UL>\
+	dat += "Вот список слов, которые вы можете вписать в 'Оповещение' для создания предложений для звукового оповещения экипажа на том же Z-уровне, что и вы.<BR> \
+	<UL><LI>Вы можете также кликать на слова для предпросмотра.</LI>\
+	<LI>Вы можете использовать не более 30 слов в одном оповещении.</LI>\
+	<LI>Не используйте пунктуацию как обычно, если вы хотите поставить паузу, используйте точку или запятую, отделяя их пробелами, как пример: 'Alpha . Test , Bravo'.</LI></UL>\
 	<font class='bad'>WARNING:</font><BR>Misuse of the announcement system will get you job banned.<HR>"
 
 	// Show alert and voice sounds separately
@@ -90,7 +90,7 @@ GLOBAL_VAR_INIT(announcing_vox, 0) // Stores the time of the last announcement
 
 	var/string_dat = dat.Join("")
 
-	var/datum/browser/popup = new(src, "announce_help", "Announcement Help", 500, 400)
+	var/datum/browser/popup = new(src, "announce_help", "Помощь в оповещеиях", 500, 400)
 	popup.set_content(string_dat)
 	popup.open()
 
@@ -106,10 +106,10 @@ GLOBAL_VAR_INIT(announcing_vox, 0) // Stores the time of the last announcement
 		return
 
 	if(GLOB.announcing_vox > world.time)
-		to_chat(src, "<span class='warning'>Please wait [round((GLOB.announcing_vox - world.time) / 10)] seconds.</span>")
+		to_chat(src, "<span class='warning'>Пожалуйста подождите ещё [round((GLOB.announcing_vox - world.time) / 10)] секунд.</span>")
 		return
 
-	var/message = clean_input("WARNING: Misuse of this verb can result in you being job banned. More help is available in 'Announcement Help'", "Announcement", last_announcement, src)
+	var/message = clean_input("Внимание: Неправильное использование этой системы может привести к джоббану. Для справки обращайтесь к 'Помощи в оповещениях'", "Оповещение", last_announcement, src)
 
 	last_announcement = message
 
@@ -134,7 +134,7 @@ GLOBAL_VAR_INIT(announcing_vox, 0) // Stores the time of the last announcement
 			incorrect_words += word
 
 	if(incorrect_words.len)
-		to_chat(src, "<span class='warning'>These words are not available on the announcement system: [english_list(incorrect_words)].</span>")
+		to_chat(src, "<span class='warning'>Эти слова недоступны в системе оповещений: [english_list(incorrect_words)].</span>")
 		return
 
 	GLOB.announcing_vox = world.time + VOX_DELAY
@@ -151,7 +151,7 @@ GLOBAL_VAR_INIT(announcing_vox, 0) // Stores the time of the last announcement
 /mob/living/silicon/ai/proc/ai_voice_announcement_to_text(words)
 	var/words_string = jointext(words, " ")
 	// Don't go through .Announce because we need to filter by clients which have TTS enabled
-	var/formatted_message = announcer.Format(words_string, "A.I. Announcement")
+	var/formatted_message = announcer.Format(words_string, "Оповещение ИИ")
 
 	var/announce_sound = sound('sound/misc/notice2.ogg')
 	for(var/player in GLOB.player_list)
