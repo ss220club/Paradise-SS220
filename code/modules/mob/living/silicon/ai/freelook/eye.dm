@@ -106,7 +106,7 @@
 // Return to the Core.
 /mob/living/silicon/ai/proc/core()
 	set category = "Команды ИИ"
-	set name = "AI Core"
+	set name = "Ядро ИИ"
 
 	view_core()
 
