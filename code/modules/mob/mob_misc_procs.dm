@@ -661,11 +661,11 @@
 
 		for(var/i=1,i<=3,i++)	//we get 3 attempts to pick a suitable name.
 			if(force)
-				newname = clean_input("Pick a new name.", "Name Change", oldname, src)
+				newname = clean_input("Выберите новое имя.", "Смена имении", oldname, src)
 			else
-				newname = clean_input("You are a [role]. Would you like to change your name to something else? (You have 3 minutes to select a new name.)", "Name Change", oldname, src)
+				newname = clean_input("Вы - [role]. Хотели бы вы сменить своё имя? (У вас есть 3 минуты на выбор имени.)", "Смена имени", oldname, src)
 			if(((world.time - time_passed) > 1800) && !force)
-				alert(src, "Unfortunately, more than 3 minutes have passed for selecting your name. If you are a robot, use the Namepick verb; otherwise, adminhelp.", "Name Change")
+				alert(src, "К сожалению, прошло более трёх минут для выбора имени. Если вы робот, используйте верб Namepick; в иных случаях, adminhelp.", "Смена имени")
 				return	//took too long
 			newname = reject_bad_name(newname,allow_numbers)	//returns null if the name doesn't meet some basic requirements. Tidies up a few other things like bad-characters.
 
