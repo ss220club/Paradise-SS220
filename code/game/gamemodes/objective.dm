@@ -149,13 +149,13 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 	return isbrain(target_current) || istype(target_current, /mob/living/simple_animal/spiderbot)
 
 /datum/objective/assassinate
-	name = "Assassinate"
+	name = "Убийство"
 	martyr_compatible = 1
 
 /datum/objective/assassinate/find_target(list/target_blacklist)
 	..()
 	if(target && target.current)
-		explanation_text = "Assassinate [target.current.real_name], the [target.assigned_role]."
+		explanation_text = "Убейте [target.current.real_name], [target.assigned_role]."
 	else
 		explanation_text = "Free Objective"
 	return target
@@ -385,10 +385,10 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 	return FALSE
 
 /datum/objective/block
-	name = "Silicon hijack"
-	explanation_text = "Hijack the shuttle with no loyalist Nanotrasen crew on board and free. \
-	Syndicate agents, other enemies of Nanotrasen, cyborgs, pets, and cuffed/restrained hostages may be allowed on the shuttle alive. \
-	Using the doomsday device successfully is also an option."
+	name = "Угон за силиконов"
+	explanation_text = "Угоните шаттл без лояльного к Нанотрейзен экипажа на борту. \
+	Агенты Синдиката, другие враги корпорации, киборги, питомцы и закованные в наручники/кандалы заложники разрешены живыми на шаттле. \
+	Успешное использование устройства судного дня также выполняет цель."
 	martyr_compatible = 1
 	needs_target = FALSE
 
@@ -506,8 +506,8 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 	return FALSE
 
 /datum/objective/survive
-	name = "Survive"
-	explanation_text = "Stay alive until the end."
+	name = "Выживание"
+	explanation_text = "Оставайтесь в живых до самого конца."
 	needs_target = FALSE
 
 /datum/objective/survive/check_completion()
