@@ -167,15 +167,15 @@
 	var/phrases = jointext(GLOB.syndicate_code_phrase, ", ")
 	var/responses = jointext(GLOB.syndicate_code_response, ", ")
 	var/list/messages = list()
-	messages.Add("<u><b>The Syndicate have provided you with the following codewords to identify fellow agents:</b></u>")
-	messages.Add("<span class='bold body'>Code Phrase: <span class='codephrases'>[phrases]</span></span>")
-	messages.Add("<span class='bold body'>Code Response: <span class='coderesponses'>[responses]</span></span>")
+	messages.Add("<u><b>Синдикат предоставил вам следующие формулировки для идентификации агентов:</b></u>")
+	messages.Add("<span class='bold body'>Кодовые фразы: <span class='codephrases'>[phrases]</span></span>")
+	messages.Add("<span class='bold body'>Кодовые ответы: <span class='coderesponses'>[responses]</span></span>")
 
-	antag_memory += "<b>Code Phrase</b>: <span class='red'>[phrases]</span><br>"
-	antag_memory += "<b>Code Response</b>: <span class='red'>[responses]</span><br>"
+	antag_memory += "<b>Кодовые фразы</b>: <span class='red'>[phrases]</span><br>"
+	antag_memory += "<b>Кодовые ответы</b>: <span class='red'>[responses]</span><br>"
 
-	messages.Add("Use the codewords during regular conversation to identify other agents. Proceed with caution, however, as everyone is a potential foe.")
-	messages.Add("<b><font color=red>You memorize the codewords, allowing you to recognize them when heard.</font></b>")
+	messages.Add("Используйте эти слова для идентификации других агентов. Действуйте аккуратно, поскольку каждый человек - потенциальный враг.")
+	messages.Add("<b><font color=red>Вы запоминаете кодовые формулировки, определяя их в речи.</font></b>")
 
 	traitor_mob.client.chatOutput?.notify_syndicate_codes()
 	return messages
@@ -185,9 +185,9 @@
  */
 /datum/antagonist/traitor/proc/add_law_zero()
 	var/mob/living/silicon/ai/killer = owner.current
-	killer.set_zeroth_law("Accomplish your objectives at all costs.", "Accomplish your AI's objectives at all costs.")
+	killer.set_zeroth_law("Выполните свои цели любой ценой", "Выполните задачи вашего ИИ любой ценой.")
 	killer.set_syndie_radio()
-	to_chat(killer, "Your radio has been upgraded! Use :t to speak on an encrypted channel with Syndicate Agents!")
+	to_chat(killer, "Ваша гарнитура была улучшена! Исползуйте :t (:е) для общения по зашифорванному каналу с другими агентами синдиката")
 	killer.add_malf_picker()
 
 /**
