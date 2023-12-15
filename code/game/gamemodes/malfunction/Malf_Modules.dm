@@ -133,7 +133,7 @@
 
 /datum/module_picker/proc/use(mob/user)
 	var/dat
-	dat += {"<B>Select use of processing time: (currently [processing_time] left.)</B><BR>
+	dat += {"<B>Выберите, куда потратить мощности: (сейчас имеется [processing_time] единиц.)</B><BR>
 			<HR>
 			<B>Установка модулей:</B><BR>
 			<I>Число позади означает количество мощностей, которое потребуется на разблокировку.</I><BR>"}
@@ -407,7 +407,7 @@
 
 //Thermal Sensor Override: Unlocks the ability to disable all fire alarms from doing their job.
 /datum/AI_Module/break_fire_alarms
-	module_name = "Перегрузка термальных сенсоров."
+	module_name = "Перегрузка термальных сенсоров"
 	mod_pick_name = "burnpigs"
 	description = "Даёт вам возможность перегрузить все термальные датчики на станции. Это приведёт к неспособности определить в комнате огонь и предупредить остальных. \
 	Кто угодно может проверить датчики и заподозрить что-то неладное."
@@ -432,7 +432,7 @@
 
 //Air Alarm Safety Override: Unlocks the ability to enable flooding on all air alarms.
 /datum/AI_Module/break_air_alarms
-	module_name = "Перезагрузка предохранителей атмосферных датчиков."
+	module_name = "Перезагрузка предохранителей атмосферных датчиков"
 	mod_pick_name = "allow_flooding"
 	description = "Даёт вам возможность отключить все предохранители на атмосферных датчиках. Позволяет вам использовать режим Flood, отключающий скрабберы, а также отключающий проверку давления в вентиляциях. \
 	Любой может проверить интерфейс датчика и заподозрить что-то из-за их нерабочего состояния."

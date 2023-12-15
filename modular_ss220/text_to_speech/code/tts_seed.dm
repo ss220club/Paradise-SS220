@@ -56,9 +56,9 @@
 	ert_member.change_voice(src.mob)
 
 /mob/living/silicon/verb/synth_change_voice()
-	set name = "Change Voice"
+	set name = "Смена голоса"
 	set desc = "Express yourself!"
-	set category = "Subsystems"
+	set category = "Подсистемы"
 	change_voice()
 
 /**

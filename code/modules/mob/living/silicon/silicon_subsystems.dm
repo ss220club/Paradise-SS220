@@ -59,8 +59,8 @@
 *	Atmos Control	*
 ********************/
 /mob/living/silicon/proc/subsystem_atmos_control()
-	set category = "Subsystems"
-	set name = "Atmospherics Control"
+	set category = "Подсистемы"
+	set name = "Контроль атмосферы"
 
 	atmos_control.ui_interact(usr, state = GLOB.self_state)
 
@@ -68,16 +68,16 @@
 *	Crew Monitor	*
 ********************/
 /mob/living/silicon/proc/subsystem_crew_monitor()
-	set category = "Subsystems"
-	set name = "Crew Monitor"
+	set category = "Подсистемы"
+	set name = "Монитор экипажа"
 	crew_monitor.ui_interact(usr, state = GLOB.self_state)
 
 /****************
 *	Law Manager	*
 ****************/
 /mob/living/silicon/proc/subsystem_law_manager()
-	set name = "Law Manager"
-	set category = "Subsystems"
+	set name = "Управление законами"
+	set category = "Подсистемы"
 
 	law_manager.ui_interact(usr, state = GLOB.conscious_state)
 
@@ -85,8 +85,8 @@
 *	Power Monitor	*
 ********************/
 /mob/living/silicon/proc/subsystem_power_monitor()
-	set category = "Subsystems"
-	set name = "Power Monitor"
+	set category = "Подсистемы"
+	set name = "Монитор питания"
 
 	power_monitor.ui_interact(usr, state = GLOB.self_state)
 
