@@ -14,6 +14,17 @@
 	dir = 9
 	},
 /area/awaymission/black_mesa/xen/acid_lake_hallway)
+"abg" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/plasteel/smooth{
+	icon_state = "smooth_large"
+	},
+/area/awaymission/black_mesa/lambda_teleporter)
 "abp" = (
 /obj/structure/fence/door,
 /turf/simulated/floor/plating,
@@ -22,6 +33,14 @@
 /obj/item/trash/disk,
 /turf/simulated/floor/wood,
 /area/awaymission/black_mesa/employee_dorm_room)
+"abJ" = (
+/obj/structure/railing{
+	dir = 6
+	},
+/turf/simulated/floor/vault{
+	icon_state = "alienvault"
+	},
+/area/awaymission/black_mesa/xen/nihilanth_arena)
 "acN" = (
 /obj/item/chair{
 	dir = 4
@@ -151,12 +170,6 @@
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/awaymission/black_mesa/hecu_zone_camp)
-"amJ" = (
-/obj/structure/chair/office/dark{
-	dir = 4
-	},
-/turf/simulated/floor/plasteel/smooth,
-/area/awaymission/black_mesa/lambda_teleporter)
 "amU" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/decal/cleanable/blood/old,
@@ -247,6 +260,17 @@
 	},
 /turf/simulated/floor/plasteel/smooth,
 /area/awaymission/black_mesa/deep_sci_turret)
+"arB" = (
+/obj/structure/railing/corner{
+	dir = 4
+	},
+/obj/structure/marker_beacon/spotlight/jade{
+	icon_state = "markerolive-on"
+	},
+/turf/simulated/floor/vault{
+	icon_state = "alienvault"
+	},
+/area/awaymission/black_mesa/xen/nihilanth_arena)
 "ato" = (
 /turf/simulated/floor/beach/away/coastline/xen,
 /area/awaymission/black_mesa/xen/freeman_hallway)
@@ -273,11 +297,8 @@
 	},
 /area/awaymission/black_mesa/xen/acid_lake_hallway)
 "auq" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 6
-	},
-/obj/structure/railing{
-	dir = 6
+/obj/machinery/door/poddoor{
+	id_tag = "teleporter_catwalk"
 	},
 /turf/simulated/floor/plasteel/smooth,
 /area/awaymission/black_mesa/lambda_teleporter)
@@ -296,6 +317,12 @@
 /obj/structure/alien/xenoweeds,
 /turf/simulated/floor/plasteel,
 /area/awaymission/black_mesa/entrance_large_office)
+"auM" = (
+/obj/effect/landmark/awaymissions/black_mesa/random_mob_placer/xen,
+/turf/simulated/floor/plasteel/smooth{
+	icon_state = "smooth_large"
+	},
+/area/awaymission/black_mesa/high_security_hallway)
 "avn" = (
 /obj/machinery/door/airlock/science,
 /turf/simulated/floor/plasteel/dark{
@@ -337,12 +364,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel/smooth,
 /area/awaymission/black_mesa/deep_sci_storage)
-"axV" = (
-/obj/effect/landmark/awaymissions/black_mesa/random_mob_placer/xen,
-/turf/simulated/floor/plasteel/smooth{
-	icon_state = "smooth_large"
-	},
-/area/awaymission/black_mesa/high_security_hallway)
 "ayA" = (
 /obj/effect/turf_decal/siding/trimline/blue{
 	alpha = 130;
@@ -684,10 +705,10 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/black_mesa/entrance_lobby)
 "aVB" = (
-/obj/machinery/door/airlock/multi_tile/glass,
 /obj/structure/barricade/wooden/crude{
 	layer = 4
 	},
+/obj/machinery/door/airlock/silver,
 /turf/simulated/floor/plasteel/smooth,
 /area/awaymission/black_mesa/hecu_zone_external_hall)
 "aVR" = (
@@ -697,13 +718,6 @@
 	icon_state = "smooth_large"
 	},
 /area/awaymission/black_mesa/black_ops_hall)
-"aVT" = (
-/obj/structure/flora/rock/pile,
-/obj/effect/landmark/damageturf,
-/turf/simulated/floor/plasteel/smooth{
-	icon_state = "smooth_large"
-	},
-/area/awaymission/black_mesa/high_security_hallway)
 "aVW" = (
 /obj/structure/fluff/tram_rail,
 /obj/structure/fluff/tram_rail{
@@ -970,10 +984,11 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/black_mesa/hecu_zone_external_sec)
 "bry" = (
-/turf/simulated/floor/plasteel/smooth{
-	icon_state = "smooth_large"
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
 	},
-/area/awaymission/black_mesa/black_ops_hall)
+/turf/simulated/floor/engine,
+/area/awaymission/black_mesa/black_ops_server)
 "bsg" = (
 /obj/structure/urinal{
 	pixel_y = 32
@@ -1250,6 +1265,15 @@
 /obj/effect/light_emitter/colored/dark_purple,
 /turf/simulated/floor/plating/xen,
 /area/awaymission/black_mesa/xen/freeman_arena)
+"bJg" = (
+/obj/effect/bump_teleporter{
+	id = "short2";
+	id_target = "short1"
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "elevatorshaft"
+	},
+/area/awaymission/black_mesa/science_internal)
 "bJi" = (
 /obj/structure{
 	icon = 'icons/obj/machines/telecomms.dmi';
@@ -1290,6 +1314,12 @@
 	icon_state = "dark"
 	},
 /area/awaymission/black_mesa/science_labs)
+"bJQ" = (
+/obj/effect/turf_decal/caution/stand_clear,
+/turf/simulated/floor/plasteel/smooth{
+	icon_state = "smooth_large"
+	},
+/area/awaymission/black_mesa/lambda_teleporter)
 "bKD" = (
 /obj/machinery/light/directional/west,
 /obj/effect/decal/cleanable/blood,
@@ -1392,15 +1422,6 @@
 /obj/item/clothing/mask/gas,
 /turf/simulated/floor/plasteel/smooth,
 /area/awaymission/black_mesa/deep_sci_chem)
-"bNj" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 9
-	},
-/obj/structure/railing{
-	dir = 9
-	},
-/turf/simulated/floor/plasteel/smooth,
-/area/awaymission/black_mesa/lambda_teleporter)
 "bNp" = (
 /obj/structure{
 	icon = 'icons/obj/machines/telecomms.dmi';
@@ -1563,6 +1584,15 @@
 /mob/living/simple_animal/hostile/alien/maid,
 /turf/simulated/floor/plasteel/smooth,
 /area/awaymission/black_mesa/high_security_surgery)
+"bVM" = (
+/obj/structure/railing,
+/obj/structure/marker_beacon/spotlight/jade{
+	icon_state = "markerolive-on"
+	},
+/turf/simulated/floor/vault{
+	icon_state = "alienvault"
+	},
+/area/awaymission/black_mesa/xen/nihilanth_arena)
 "bWn" = (
 /obj/structure/railing/corner{
 	dir = 1
@@ -2011,11 +2041,6 @@
 /obj/item/reagent_containers/glass/beaker/large,
 /turf/simulated/floor/plasteel/smooth,
 /area/awaymission/black_mesa/deep_sci_chem)
-"cyX" = (
-/obj/structure/alien/xenoweeds,
-/obj/structure/alien/xenoweeds,
-/turf/simulated/floor/plasteel/smooth,
-/area/awaymission/black_mesa/lambda_teleporter)
 "czn" = (
 /obj/structure/railing{
 	dir = 4
@@ -2084,12 +2109,12 @@
 /turf/simulated/floor/plasteel/smooth,
 /area/awaymission/black_mesa/genetics_elevator)
 "cCS" = (
-/obj/machinery/gateway{
-	dir = 1
+/obj/structure/table/reinforced,
+/obj/structure/railing{
+	dir = 4
 	},
-/turf/simulated/floor/plasteel/smooth{
-	icon_state = "smooth_large"
-	},
+/obj/item/assembly/signaler/anomaly/bluespace,
+/turf/simulated/floor/plasteel/smooth,
 /area/awaymission/black_mesa/lambda_teleporter)
 "cDl" = (
 /obj/structure/closet/crate/can,
@@ -2157,6 +2182,15 @@
 	icon_state = "dark"
 	},
 /area/awaymission/black_mesa/resonant_chamber)
+"cIm" = (
+/obj/structure/railing/corner,
+/obj/structure/railing/corner{
+	dir = 4
+	},
+/turf/simulated/floor/vault{
+	icon_state = "alienvault"
+	},
+/area/awaymission/black_mesa/xen/nihilanth_arena)
 "cIK" = (
 /obj/structure/chair/office/dark,
 /obj/machinery/light/directional/east,
@@ -2199,12 +2233,10 @@
 /turf/simulated/floor/plating/xen,
 /area/awaymission/black_mesa/xen/freeman_arena)
 "cLr" = (
-/obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2
-	},
 /obj/structure/barricade/wooden{
 	layer = 4
 	},
+/obj/machinery/door/airlock/silver,
 /turf/simulated/floor/plasteel/smooth,
 /area/awaymission/black_mesa/hecu_zone_atrium)
 "cLx" = (
@@ -2343,14 +2375,6 @@
 /obj/effect/baseturf_helper/asteroid,
 /turf/simulated/wall/indestructible/rock/mineral,
 /area/awaymission/black_mesa/hecu_zone_camp)
-"cUO" = (
-/obj/structure/railing/corner{
-	dir = 8
-	},
-/turf/simulated/floor/vault{
-	icon_state = "alienvault"
-	},
-/area/awaymission/black_mesa/xen/nihilanth_arena)
 "cUU" = (
 /obj/machinery/economy/vending/cola/red,
 /turf/simulated/floor/plasteel,
@@ -2482,19 +2506,9 @@
 	icon_state = "dark"
 	},
 /area/awaymission/black_mesa/resonant_chamber)
-"daC" = (
-/obj/machinery/computer{
-	icon_state = "tcstation";
-	icon_screen = "tcstation_broken";
-	icon_keyboard = null
-	},
-/turf/simulated/floor/plasteel/smooth,
-/area/awaymission/black_mesa/lambda_teleporter)
 "daR" = (
-/obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2
-	},
 /obj/effect/mapping_helpers/airlock/locked,
+/obj/machinery/door/airlock/silver,
 /turf/simulated/floor/plasteel/smooth,
 /area/awaymission/black_mesa/cryo_room)
 "dbQ" = (
@@ -2692,6 +2706,17 @@
 /obj/structure/alien/xenoweeds,
 /turf/simulated/floor/plasteel/smooth,
 /area/awaymission/black_mesa/entrance_internal_hall)
+"doU" = (
+/obj/structure/railing{
+	dir = 10
+	},
+/obj/structure/marker_beacon/spotlight/jade{
+	icon_state = "markerolive-on"
+	},
+/turf/simulated/floor/vault{
+	icon_state = "alienvault"
+	},
+/area/awaymission/black_mesa/xen/nihilanth_arena)
 "doV" = (
 /obj/machinery/light/directional/north,
 /obj/effect/decal/cleanable/blood,
@@ -2767,6 +2792,12 @@
 "dto" = (
 /turf/simulated/floor/plating,
 /area/awaymission/black_mesa/dorm_tunnel)
+"dtG" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/turf/simulated/floor/engine,
+/area/awaymission/black_mesa/black_ops_server)
 "dua" = (
 /obj/structure/reagent_dispensers/water_cooler,
 /obj/effect/turf_decal/siding/blue{
@@ -2791,20 +2822,20 @@
 /obj/structure/extinguisher_cabinet/directional/south,
 /turf/simulated/floor/plasteel/smooth,
 /area/awaymission/black_mesa/cryo_room)
+"duU" = (
+/obj/machinery/gateway{
+	dir = 1
+	},
+/turf/simulated/floor/plasteel/smooth{
+	icon_state = "smooth_large"
+	},
+/area/awaymission/black_mesa/lambda_teleporter)
 "dvg" = (
 /obj/effect/decal/cleanable/blood/old,
 /turf/simulated/floor/plasteel/dark{
 	icon_state = "dark"
 	},
 /area/awaymission/black_mesa/high_security_surgery)
-"dvn" = (
-/obj/structure/railing{
-	dir = 9
-	},
-/turf/simulated/floor/vault{
-	icon_state = "alienvault"
-	},
-/area/awaymission/black_mesa/xen/nihilanth_arena)
 "dvJ" = (
 /obj/structure/table,
 /obj/item/folder/red,
@@ -2907,17 +2938,12 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/black_mesa/security_outpost)
-"dCg" = (
-/obj/structure/railing/corner{
-	dir = 4
+"dCJ" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
 	},
-/obj/structure/marker_beacon/spotlight/jade{
-	icon_state = "markerolive-on"
-	},
-/turf/simulated/floor/vault{
-	icon_state = "alienvault"
-	},
-/area/awaymission/black_mesa/xen/nihilanth_arena)
+/turf/simulated/floor/engine,
+/area/awaymission/black_mesa/black_ops_server)
 "dDc" = (
 /obj/structure/table,
 /obj/item/razor,
@@ -3103,10 +3129,17 @@
 /turf/simulated/floor/plasteel/stairs/right,
 /area/awaymission/black_mesa/entrance_internal_hall)
 "dOs" = (
-/turf/simulated/floor/plasteel/smooth{
-	icon_state = "smooth_large"
+/obj/machinery/computer{
+	dir = 8;
+	icon_state = "broken";
+	icon_screen = "broken";
+	icon_keyboard = "generic_key_broken"
 	},
-/area/awaymission/black_mesa/high_security_emitter)
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/plasteel/smooth,
+/area/awaymission/black_mesa/lambda_teleporter)
 "dOt" = (
 /turf/simulated/floor/beach/away/coastline/beachcorner/xen{
 	dir = 8
@@ -3131,12 +3164,11 @@
 /turf/simulated/floor/plasteel/smooth,
 /area/awaymission/black_mesa/black_ops_hall)
 "dQy" = (
-/turf/simulated/floor/chasm/straight_down/lava_land_surface/normal_air{
-	light_color = null;
-	light_range = 0;
-	light_power = 0
+/obj/effect/decal/cleanable/blood,
+/turf/simulated/floor/plasteel/smooth{
+	icon_state = "smooth_large"
 	},
-/area/awaymission/black_mesa/xen/nihilanth_arena)
+/area/awaymission/black_mesa/high_security_hallway)
 "dRB" = (
 /turf/simulated/floor/beach/away/coastline/xen{
 	dir = 10
@@ -3293,14 +3325,6 @@
 /obj/structure/largecrate,
 /turf/simulated/floor/plating/asteroid,
 /area/awaymission/black_mesa/hecu_zone_towards_facility)
-"ebo" = (
-/obj/structure/railing{
-	dir = 4
-	},
-/turf/simulated/floor/vault{
-	icon_state = "alienvault"
-	},
-/area/awaymission/black_mesa/xen/nihilanth_arena)
 "ebE" = (
 /obj/structure/closet/crate/can,
 /obj/machinery/light/directional/north,
@@ -3309,15 +3333,6 @@
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/awaymission/black_mesa/hecu_zone_camp)
-"ebN" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 10
-	},
-/obj/structure/railing{
-	dir = 10
-	},
-/turf/simulated/floor/plasteel/smooth,
-/area/awaymission/black_mesa/lambda_teleporter)
 "ebZ" = (
 /obj/machinery/light/directional/south,
 /turf/simulated/floor/plasteel/smooth,
@@ -3486,17 +3501,24 @@
 	dir = 1
 	},
 /area/awaymission/black_mesa/resonant_chamber)
-"elG" = (
-/obj/structure/rack,
-/obj/item/melee/classic_baton,
-/obj/item/shield/riot,
-/turf/simulated/floor/wood,
-/area/awaymission/black_mesa/employee_dorm_room)
+"ely" = (
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/plasteel/smooth{
+	icon_state = "smooth_large"
+	},
+/area/awaymission/black_mesa/high_security_hallway)
 "elN" = (
 /obj/structure/closet/crate/secure/weapon,
 /obj/effect/turf_decal/stripes/line,
 /turf/simulated/floor/plasteel/dark,
 /area/awaymission/black_mesa/hecu_zone_camp)
+"elT" = (
+/obj/structure/flora/rock/pile,
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/plasteel/smooth{
+	icon_state = "smooth_large"
+	},
+/area/awaymission/black_mesa/high_security_hallway)
 "elV" = (
 /obj/structure/alien/xenoweeds,
 /obj/structure/flora/biolumini/flower/weaklight,
@@ -3505,10 +3527,8 @@
 	},
 /area/awaymission/black_mesa/scientist_hall)
 "ema" = (
-/obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2
-	},
 /obj/effect/mapping_helpers/airlock/locked,
+/obj/machinery/door/airlock/silver,
 /turf/simulated/floor/plasteel,
 /area/awaymission/black_mesa/black_ops_entrance)
 "emO" = (
@@ -3622,11 +3642,6 @@
 	},
 /turf/simulated/floor/catwalk,
 /area/awaymission/black_mesa/xen/entering_zone)
-"euj" = (
-/obj/structure/rack/gunrack,
-/obj/item/shield/riot,
-/turf/simulated/floor/plasteel/smooth,
-/area/awaymission/black_mesa/black_ops_armory)
 "eup" = (
 /obj/machinery/door/poddoor/preopen,
 /obj/structure/fluff/tram_rail,
@@ -3670,6 +3685,12 @@
 /obj/item/reagent_containers/food/snacks/xenomeatbreadslice,
 /turf/simulated/floor/wood/fancy/cherry,
 /area/awaymission/black_mesa/xen/vortigaunt_village)
+"ewU" = (
+/obj/structure/railing,
+/turf/simulated/floor/plasteel{
+	icon_state = "elevatorshaft"
+	},
+/area/awaymission/black_mesa/science_internal)
 "exq" = (
 /obj/effect/gibspawner/human,
 /turf/simulated/floor/plasteel/smooth,
@@ -3755,18 +3776,6 @@
 /obj/effect/landmark/awaymissions/black_mesa/random_mob_placer,
 /turf/simulated/floor/engine,
 /area/awaymission/black_mesa/hecu_zone_test_chambers)
-"eFG" = (
-/obj/machinery/gateway{
-	dir = 10
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/obj/structure/railing{
-	dir = 8
-	},
-/turf/simulated/floor/plasteel/smooth,
-/area/awaymission/black_mesa/lambda_teleporter)
 "eFJ" = (
 /obj/structure/table/wood,
 /turf/simulated/floor/wood/fancy/cherry,
@@ -3882,6 +3891,17 @@
 /obj/structure/spacevine/xen,
 /turf/simulated/floor/plating/xen,
 /area/awaymission/black_mesa/xen/vortigaunt_village)
+"eLG" = (
+/obj/structure/railing{
+	dir = 5
+	},
+/obj/structure/marker_beacon/spotlight/jade{
+	icon_state = "markerolive-on"
+	},
+/turf/simulated/floor/vault{
+	icon_state = "alienvault"
+	},
+/area/awaymission/black_mesa/xen/nihilanth_arena)
 "eMm" = (
 /obj/effect/spawner/window/reinforced/grilled,
 /obj/structure/cable{
@@ -3937,12 +3957,6 @@
 /obj/item/clothing/under/costume/maid,
 /turf/simulated/floor/plasteel,
 /area/awaymission/black_mesa/high_security_surgery)
-"ePJ" = (
-/obj/structure/railing,
-/turf/simulated/floor/plasteel{
-	icon_state = "elevatorshaft"
-	},
-/area/awaymission/black_mesa/science_internal)
 "ePY" = (
 /obj/effect/spawner/window/reinforced/grilled,
 /obj/structure/cable{
@@ -4026,11 +4040,11 @@
 	},
 /area/awaymission/black_mesa/xen/entering_zone)
 "eUk" = (
-/obj/effect/decal/cleanable/blood,
-/turf/simulated/floor/plasteel/smooth{
-	icon_state = "smooth_large"
+/obj/structure/chair/office/dark{
+	dir = 4
 	},
-/area/awaymission/black_mesa/high_security_hallway)
+/turf/simulated/floor/plasteel/smooth,
+/area/awaymission/black_mesa/lambda_teleporter)
 "eUy" = (
 /obj/machinery/atmospherics/portable/canister/toxins,
 /obj/structure/alien/xenoweeds,
@@ -4051,6 +4065,19 @@
 /obj/structure/blob/normal,
 /turf/simulated/floor/engine,
 /area/awaymission/black_mesa/hecu_zone_test_chambers)
+"eXe" = (
+/obj/machinery/door/poddoor{
+	id_tag = "biolabs"
+	},
+/obj/structure/alien/xenoweeds,
+/turf/simulated/floor/plasteel,
+/area/awaymission/black_mesa/entrance_lobby)
+"eXj" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
+	},
+/turf/simulated/floor/engine,
+/area/awaymission/black_mesa/black_ops_server)
 "eXs" = (
 /turf/simulated/floor/catwalk,
 /area/awaymission/black_mesa/entrance_internal_hall)
@@ -4063,10 +4090,14 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/black_mesa/black_ops_downstairs_atrium)
 "eXP" = (
-/turf/simulated/floor/plasteel/smooth{
-	icon_state = "smooth_large"
+/obj/structure/table/reinforced,
+/obj/structure/railing{
+	dir = 4
 	},
-/area/awaymission/black_mesa/black_ops_server)
+/obj/item/paper/researchnotes,
+/obj/item/pen,
+/turf/simulated/floor/plasteel/smooth,
+/area/awaymission/black_mesa/lambda_teleporter)
 "eYb" = (
 /obj/structure/railing{
 	dir = 8
@@ -4269,13 +4300,6 @@
 /obj/effect/landmark/awaymissions/black_mesa/random_mob_placer/xen/zombie,
 /turf/simulated/floor/plating/ironsand,
 /area/awaymission/black_mesa/hecu_zone_towards_facility)
-"fkN" = (
-/obj/effect/decal/cleanable/blood,
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel/smooth{
-	icon_state = "smooth_large"
-	},
-/area/awaymission/black_mesa/high_security_hallway)
 "flK" = (
 /obj/structure/flora/rock,
 /obj/effect/landmark/damageturf,
@@ -4349,21 +4373,6 @@
 /obj/effect/landmark/awaymissions/black_mesa/random_mob_placer/xen/zombie,
 /turf/simulated/floor/plating,
 /area/awaymission/black_mesa/employee_dorm_room)
-"fqI" = (
-/obj/item/ammo_box/magazine/m556{
-	pixel_x = 3;
-	pixel_y = 3
-	},
-/obj/structure/rack,
-/obj/item/ammo_box/magazine/m556,
-/turf/simulated/floor/plasteel/dark,
-/area/awaymission/black_mesa/xen/lost_camp)
-"fqX" = (
-/obj/machinery/gateway,
-/turf/simulated/floor/plasteel/smooth{
-	icon_state = "smooth_large"
-	},
-/area/awaymission/black_mesa/lambda_teleporter)
 "fra" = (
 /turf/simulated/floor/beach/away/water/deep/xen,
 /area/awaymission/black_mesa/xen/freeman_hallway)
@@ -4423,23 +4432,6 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/black_mesa/hecu_zone_infirmary)
-"fva" = (
-/obj/structure/railing{
-	dir = 10
-	},
-/turf/simulated/floor/vault{
-	icon_state = "alienvault"
-	},
-/area/awaymission/black_mesa/xen/nihilanth_arena)
-"fvl" = (
-/obj/effect/bump_teleporter{
-	id = "short1";
-	id_target = "short2"
-	},
-/turf/simulated/floor/plasteel{
-	icon_state = "elevatorshaft"
-	},
-/area/awaymission/black_mesa/entrance_lobby)
 "fvE" = (
 /obj/item/ammo_box/magazine/wt550m9,
 /turf/simulated/floor/plating/dirt/xen_dirt,
@@ -4602,16 +4594,6 @@
 /obj/structure/chair/office/dark,
 /turf/simulated/floor/plasteel,
 /area/awaymission/black_mesa/black_ops_science_room)
-"fGs" = (
-/obj/effect/bump_teleporter/lambda{
-	id = "lambda_xen2";
-	id_target = "lambda2";
-	color = "lime"
-	},
-/turf/simulated/floor/vault{
-	icon_state = "alienvault"
-	},
-/area/awaymission/black_mesa/xen/nihilanth_arena)
 "fGE" = (
 /obj/effect/mob_spawn/human/corpse/damaged,
 /obj/effect/decal/cleanable/blood/old,
@@ -4687,17 +4669,6 @@
 /obj/effect/decal/cleanable/blood/old,
 /turf/simulated/floor/plasteel,
 /area/awaymission/black_mesa/entrance_lobby)
-"fMx" = (
-/obj/structure/railing{
-	dir = 10
-	},
-/obj/structure/marker_beacon/spotlight/jade{
-	icon_state = "markerolive-on"
-	},
-/turf/simulated/floor/vault{
-	icon_state = "alienvault"
-	},
-/area/awaymission/black_mesa/xen/nihilanth_arena)
 "fMy" = (
 /obj/machinery/iv_drip,
 /obj/effect/decal/cleanable/blood,
@@ -4761,13 +4732,10 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/black_mesa/high_security_surgery)
 "fPn" = (
-/obj/structure/railing{
-	dir = 6
-	},
-/turf/simulated/floor/vault{
-	icon_state = "alienvault"
-	},
-/area/awaymission/black_mesa/xen/nihilanth_arena)
+/obj/structure/railing,
+/obj/structure/alien/xenoweeds,
+/turf/simulated/floor/bluegrid,
+/area/awaymission/black_mesa/lambda_teleporter)
 "fPp" = (
 /obj/structure/table,
 /obj/item/storage/box/donkpockets/empty,
@@ -4777,9 +4745,12 @@
 /turf/simulated/floor/plasteel/dark,
 /area/awaymission/black_mesa/hecu_zone_camp)
 "fPX" = (
-/obj/effect/spawner/window/reinforced/grilled,
-/turf/simulated/floor/plating,
-/area/awaymission/black_mesa/lambda_teleporter)
+/turf/simulated/floor/chasm/straight_down/lava_land_surface/normal_air{
+	light_color = null;
+	light_range = 0;
+	light_power = 0
+	},
+/area/awaymission/black_mesa/xen/nihilanth_arena)
 "fQr" = (
 /obj/effect/landmark/awaymissions/black_mesa/random_mob_placer,
 /obj/effect/decal/cleanable/blood,
@@ -4836,6 +4807,12 @@
 	icon_state = "smooth_large"
 	},
 /area/awaymission/black_mesa/gas_emitter_chamber)
+"fTd" = (
+/obj/machinery/light/directional/north,
+/turf/simulated/floor/plasteel/smooth{
+	icon_state = "smooth_large"
+	},
+/area/awaymission/black_mesa/lambda_teleporter)
 "fUM" = (
 /obj/structure/table,
 /obj/item/paper,
@@ -4962,12 +4939,6 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/black_mesa/science_labs)
-"gbV" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 4
-	},
-/turf/simulated/floor/engine,
-/area/awaymission/black_mesa/black_ops_server)
 "gbW" = (
 /obj/machinery/light/directional/east,
 /turf/simulated/floor/plasteel/smooth,
@@ -5097,15 +5068,6 @@
 /obj/effect/turf_decal/stripes/line,
 /turf/simulated/floor/plasteel/smooth,
 /area/awaymission/black_mesa/gas_emitter_chamber)
-"glD" = (
-/obj/structure/railing/corner,
-/obj/structure/railing/corner{
-	dir = 4
-	},
-/turf/simulated/floor/vault{
-	icon_state = "alienvault"
-	},
-/area/awaymission/black_mesa/xen/nihilanth_arena)
 "gmt" = (
 /obj/structure/table,
 /obj/item/tape/black_mesa/second_eas,
@@ -5144,11 +5106,6 @@
 /obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/plasteel,
 /area/awaymission/black_mesa/security_outpost)
-"gnT" = (
-/obj/structure/railing,
-/obj/structure/alien/xenoweeds,
-/turf/simulated/floor/bluegrid,
-/area/awaymission/black_mesa/lambda_teleporter)
 "gnZ" = (
 /obj/structure/chair/office/dark{
 	dir = 1
@@ -5245,6 +5202,15 @@
 /obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/plasteel/smooth,
 /area/awaymission/black_mesa/genetics_elevator)
+"gtA" = (
+/obj/effect/bump_teleporter{
+	id = "short1";
+	id_target = "short2"
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "elevatorshaft"
+	},
+/area/awaymission/black_mesa/entrance_lobby)
 "gtN" = (
 /turf/simulated/floor/catwalk,
 /area/awaymission/black_mesa/science_internal)
@@ -5340,15 +5306,6 @@
 	},
 /turf/simulated/floor/plasteel/smooth,
 /area/awaymission/black_mesa/deep_sci_chem)
-"gxH" = (
-/obj/structure/table/reinforced,
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/item/paper/researchnotes,
-/obj/item/pen,
-/turf/simulated/floor/plasteel/smooth,
-/area/awaymission/black_mesa/lambda_teleporter)
 "gxJ" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -5368,10 +5325,6 @@
 	icon_state = "dark"
 	},
 /area/awaymission/black_mesa/science_labs)
-"gyb" = (
-/obj/structure/filingcabinet/chestdrawer,
-/turf/simulated/floor/plasteel/smooth,
-/area/awaymission/black_mesa/lambda_teleporter)
 "gyi" = (
 /obj/structure/table,
 /obj/item/folder/red{
@@ -5490,18 +5443,6 @@
 	},
 /turf/simulated/wall/indestructible/riveted,
 /area/awaymission/black_mesa/security_outpost)
-"gGu" = (
-/obj/machinery/gateway{
-	dir = 9
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/obj/structure/railing{
-	dir = 8
-	},
-/turf/simulated/floor/plasteel/smooth,
-/area/awaymission/black_mesa/lambda_teleporter)
 "gHa" = (
 /obj/machinery/light/directional/north,
 /turf/simulated/floor/plasteel/smooth,
@@ -5534,6 +5475,11 @@
 "gHV" = (
 /turf/simulated/floor/plasteel/smooth,
 /area/awaymission/black_mesa/black_ops_hall)
+"gIk" = (
+/obj/machinery/light/directional/south,
+/obj/structure/alien/xenoweeds,
+/turf/simulated/floor/plasteel/smooth,
+/area/awaymission/black_mesa/lambda_teleporter)
 "gJm" = (
 /obj/effect/landmark/awaymissions/black_mesa/random_mob_placer,
 /turf/simulated/floor/catwalk,
@@ -5696,6 +5642,13 @@
 	icon_state = "smooth_large"
 	},
 /area/awaymission/black_mesa/scientist_hall)
+"gTY" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/plasteel/smooth{
+	icon_state = "smooth_large"
+	},
+/area/awaymission/black_mesa/high_security_hallway)
 "gUm" = (
 /obj/effect/gibspawner/human,
 /obj/effect/decal/cleanable/blood,
@@ -5721,6 +5674,10 @@
 /obj/structure/flora/biolumini/lamp/weaklight,
 /turf/simulated/floor/plasteel/smooth,
 /area/awaymission/black_mesa/entrance_internal_hall)
+"gVz" = (
+/obj/machinery/door/airlock/silver,
+/turf/simulated/floor/plasteel,
+/area/awaymission/black_mesa/black_ops_entrance)
 "gVN" = (
 /obj/structure/stone_tile/surrounding_tile/cracked{
 	dir = 5
@@ -5986,6 +5943,17 @@
 /obj/machinery/door/airlock/titanium,
 /turf/simulated/floor/mineral/titanium,
 /area/awaymission/black_mesa/entrance)
+"hlW" = (
+/obj/structure/railing/corner{
+	dir = 1
+	},
+/obj/structure/marker_beacon/spotlight/jade{
+	icon_state = "markerolive-on"
+	},
+/turf/simulated/floor/vault{
+	icon_state = "alienvault"
+	},
+/area/awaymission/black_mesa/xen/nihilanth_arena)
 "hmn" = (
 /obj/structure/table/wood,
 /obj/item/tank_brush,
@@ -6007,6 +5975,7 @@
 /obj/structure/barricade/wooden/crude{
 	layer = 4
 	},
+/obj/machinery/door/airlock/silver,
 /turf/simulated/floor/plasteel/smooth,
 /area/awaymission/black_mesa/hecu_zone_atrium)
 "hov" = (
@@ -6045,6 +6014,11 @@
 	icon_state = "smooth_large"
 	},
 /area/awaymission/black_mesa/deep_sci_hall)
+"hrb" = (
+/obj/structure/alien/xenoweeds,
+/obj/structure/alien/xenoweeds,
+/turf/simulated/floor/plasteel/smooth,
+/area/awaymission/black_mesa/lambda_teleporter)
 "hrd" = (
 /turf/simulated/floor/catwalk,
 /area/awaymission/black_mesa/high_security_hallway)
@@ -6185,31 +6159,15 @@
 /obj/structure/alien/xenoweeds,
 /turf/simulated/floor/plating,
 /area/awaymission/black_mesa/xen/lost_camp)
+"hDA" = (
+/obj/effect/spawner/window/reinforced/grilled,
+/turf/simulated/floor/plating,
+/area/awaymission/black_mesa/lambda_teleporter)
 "hDG" = (
 /obj/effect/mapping_helpers/airlock/locked,
 /obj/machinery/door/airlock/highsecurity,
 /turf/simulated/floor/plasteel/smooth,
 /area/awaymission/black_mesa/high_security_hallway)
-"hEA" = (
-/obj/effect/turf_decal/arrows{
-	dir = 1
-	},
-/turf/simulated/floor/plasteel/dark{
-	icon_state = "dark"
-	},
-/area/awaymission/black_mesa/science_internal)
-"hEI" = (
-/obj/structure/railing,
-/turf/simulated/floor/vault{
-	icon_state = "alienvault"
-	},
-/area/awaymission/black_mesa/xen/nihilanth_arena)
-"hEM" = (
-/obj/machinery/door/poddoor{
-	id_tag = "teleporter_catwalk"
-	},
-/turf/simulated/floor/plasteel/smooth,
-/area/awaymission/black_mesa/lambda_teleporter)
 "hER" = (
 /obj/structure/rack,
 /obj/item/assembly/shock_kit,
@@ -6514,10 +6472,6 @@
 	icon_state = "smooth_large"
 	},
 /area/awaymission/black_mesa/gas_emitter_chamber)
-"iar" = (
-/obj/effect/turf_decal/stripes/line,
-/turf/simulated/floor/engine,
-/area/awaymission/black_mesa/black_ops_server)
 "iaA" = (
 /obj/structure/chair/office/dark{
 	dir = 1
@@ -6582,7 +6536,7 @@
 /turf/simulated/floor/plasteel/smooth{
 	icon_state = "smooth_large"
 	},
-/area/awaymission/black_mesa/high_security_hallway)
+/area/awaymission/black_mesa/black_ops_server)
 "igU" = (
 /obj/item/storage/box,
 /obj/effect/decal/cleanable/dirt,
@@ -6693,12 +6647,6 @@
 "imX" = (
 /turf/simulated/wall/indestructible/riveted,
 /area/awaymission/black_mesa/genetics)
-"ina" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 9
-	},
-/turf/simulated/floor/engine,
-/area/awaymission/black_mesa/black_ops_server)
 "inc" = (
 /turf/simulated/floor/plating/xen,
 /area/awaymission/black_mesa/xen/nihilanth_computer)
@@ -6867,9 +6815,7 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/black_mesa/entrance_large_office)
 "iDd" = (
-/obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2
-	},
+/obj/machinery/door/airlock/silver,
 /turf/simulated/floor/plasteel/smooth,
 /area/awaymission/black_mesa/cryo_storage)
 "iDh" = (
@@ -6888,6 +6834,15 @@
 	icon_state = "dark"
 	},
 /area/awaymission/black_mesa/security_outpost)
+"iEa" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/obj/structure/railing{
+	dir = 6
+	},
+/turf/simulated/floor/plasteel/smooth,
+/area/awaymission/black_mesa/lambda_teleporter)
 "iEm" = (
 /obj/effect/turf_decal/siding/blue{
 	dir = 10
@@ -7021,12 +6976,6 @@
 	dir = 9
 	},
 /area/awaymission/black_mesa/xen/entering_zone)
-"iLn" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/turf/simulated/floor/engine,
-/area/awaymission/black_mesa/black_ops_server)
 "iLR" = (
 /obj/machinery/light/directional/north,
 /obj/structure/chair/office{
@@ -7053,15 +7002,6 @@
 	light_power = 0
 	},
 /area/awaymission/black_mesa/lambda_teleporter)
-"iNk" = (
-/obj/structure/railing/corner,
-/obj/structure/marker_beacon/spotlight/jade{
-	icon_state = "markerolive-on"
-	},
-/turf/simulated/floor/vault{
-	icon_state = "alienvault"
-	},
-/area/awaymission/black_mesa/xen/nihilanth_arena)
 "iNC" = (
 /obj/structure/lattice/catwalk/mining,
 /obj/structure/railing{
@@ -7333,26 +7273,6 @@
 /obj/structure/flora/biolumini/flower,
 /turf/simulated/floor/plating/dirt/xen_dirt,
 /area/awaymission/black_mesa/xen/freeman_hallway)
-"jdD" = (
-/obj/structure/railing{
-	dir = 8
-	},
-/turf/simulated/floor/vault{
-	icon_state = "alienvault"
-	},
-/area/awaymission/black_mesa/xen/nihilanth_arena)
-"jfJ" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 5
-	},
-/turf/simulated/floor/engine,
-/area/awaymission/black_mesa/black_ops_server)
-"jfR" = (
-/obj/machinery/light/directional/south,
-/turf/simulated/floor/plasteel/smooth{
-	icon_state = "smooth_large"
-	},
-/area/awaymission/black_mesa/lambda_teleporter)
 "jfT" = (
 /obj/effect/baseturf_helper{
 	baseturf = /turf/simulated/floor/plating/xen
@@ -7391,17 +7311,23 @@
 /obj/effect/decal/cleanable/glass,
 /turf/simulated/floor/plating,
 /area/awaymission/black_mesa/black_ops_entrance)
-"jgN" = (
+"jgM" = (
+/obj/structure/railing,
 /obj/structure/railing{
-	dir = 5
-	},
-/obj/structure/marker_beacon/spotlight/jade{
-	icon_state = "markerolive-on"
+	dir = 1
 	},
 /turf/simulated/floor/vault{
 	icon_state = "alienvault"
 	},
 /area/awaymission/black_mesa/xen/nihilanth_arena)
+"jgN" = (
+/obj/effect/turf_decal/arrows{
+	dir = 1
+	},
+/turf/simulated/floor/plasteel/dark{
+	icon_state = "dark"
+	},
+/area/awaymission/black_mesa/science_internal)
 "jhc" = (
 /obj/machinery/door/airlock/maintenance,
 /obj/structure/barricade/wooden/crude{
@@ -7434,11 +7360,6 @@
 /obj/structure/flora/biolumini/flower/weaklight,
 /turf/simulated/floor/plating/xen,
 /area/awaymission/black_mesa/xen/village_hallway)
-"jid" = (
-/turf/simulated/floor/plasteel/stairs{
-	dir = 4
-	},
-/area/awaymission/black_mesa/lambda_teleporter)
 "jif" = (
 /obj/structure/fence{
 	dir = 4
@@ -7652,6 +7573,12 @@
 	icon_state = "dark"
 	},
 /area/awaymission/black_mesa/entrance_lobby)
+"juF" = (
+/obj/effect/turf_decal/caution,
+/turf/simulated/floor/plasteel/smooth{
+	icon_state = "smooth_large"
+	},
+/area/awaymission/black_mesa/lambda_teleporter)
 "jva" = (
 /turf/simulated/floor/beach/away/coastline/beachcorner/xen{
 	dir = 4
@@ -7756,11 +7683,6 @@
 /obj/structure/alien/xenoweeds,
 /turf/simulated/floor/plasteel/stairs/right,
 /area/awaymission/black_mesa/entrance_internal_hall)
-"jCR" = (
-/obj/structure/table,
-/obj/item/reagent_containers/hypospray/autoinjector/stimulants,
-/turf/simulated/floor/plasteel/dark,
-/area/awaymission/black_mesa/xen/lost_camp)
 "jCX" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -7781,6 +7703,17 @@
 /obj/machinery/light/directional/east,
 /turf/simulated/floor/plating/ironsand,
 /area/awaymission/black_mesa/hecu_zone_towards_facility)
+"jFi" = (
+/obj/structure/railing{
+	dir = 9
+	},
+/obj/structure/marker_beacon/spotlight/jade{
+	icon_state = "markerolive-on"
+	},
+/turf/simulated/floor/vault{
+	icon_state = "alienvault"
+	},
+/area/awaymission/black_mesa/xen/nihilanth_arena)
 "jFC" = (
 /obj/structure/table,
 /obj/item/phone,
@@ -7897,6 +7830,12 @@
 /obj/structure/alien/xenoweeds,
 /turf/simulated/floor/plasteel,
 /area/awaymission/black_mesa/science_labs)
+"jJQ" = (
+/obj/machinery/light/directional/east,
+/turf/simulated/floor/plasteel/smooth{
+	icon_state = "smooth_large"
+	},
+/area/awaymission/black_mesa/lambda_teleporter)
 "jKh" = (
 /obj/structure/flora/rock/pile,
 /obj/effect/landmark/damageturf,
@@ -8390,18 +8329,6 @@
 /obj/item/reagent_containers/food/drinks/bottle/vodka,
 /turf/simulated/floor/plating,
 /area/awaymission/black_mesa/security_outpost)
-"kqr" = (
-/obj/machinery/gateway{
-	dir = 5
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 4
-	},
-/obj/structure/railing{
-	dir = 4
-	},
-/turf/simulated/floor/plasteel/smooth,
-/area/awaymission/black_mesa/lambda_teleporter)
 "kqI" = (
 /obj/machinery/light/directional/north,
 /obj/structure/alien/xenoweeds,
@@ -8580,6 +8507,14 @@
 /obj/machinery/light/directional/south,
 /turf/simulated/floor/plasteel,
 /area/awaymission/black_mesa/security_outpost)
+"kCm" = (
+/obj/machinery/computer{
+	icon_state = "tcstation";
+	icon_screen = "tcstation_broken";
+	icon_keyboard = null
+	},
+/turf/simulated/floor/plasteel/smooth,
+/area/awaymission/black_mesa/lambda_teleporter)
 "kCx" = (
 /obj/machinery/atmospherics/unary/tank/carbon_dioxide,
 /turf/simulated/floor/plasteel,
@@ -8664,6 +8599,20 @@
 /obj/item/clothing/accessory/armband/cargo,
 /turf/simulated/floor/plasteel/dark,
 /area/awaymission/black_mesa/hecu_zone_camp)
+"kIT" = (
+/obj/machinery/gateway{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/plasteel/smooth{
+	icon_state = "smooth_large"
+	},
+/area/awaymission/black_mesa/lambda_teleporter)
 "kIW" = (
 /obj/machinery/door/airlock/multi_tile/glass,
 /turf/simulated/floor/plasteel/smooth,
@@ -8706,14 +8655,6 @@
 /obj/machinery/light/directional/east,
 /turf/simulated/floor/plasteel/smooth,
 /area/awaymission/black_mesa/deep_sci_medbay)
-"kLG" = (
-/obj/structure/barricade/wooden{
-	layer = 4
-	},
-/turf/simulated/floor/plasteel/smooth{
-	icon_state = "smooth_large"
-	},
-/area/awaymission/black_mesa/high_security_hallway)
 "kLL" = (
 /turf/simulated/floor/beach/away/coastline/xen{
 	dir = 10
@@ -8864,6 +8805,14 @@
 	icon_state = "brown"
 	},
 /area/awaymission/black_mesa/cryo_hallway)
+"kTi" = (
+/obj/structure/barricade/wooden{
+	layer = 4
+	},
+/turf/simulated/floor/plasteel/smooth{
+	icon_state = "smooth_large"
+	},
+/area/awaymission/black_mesa/high_security_hallway)
 "kTv" = (
 /obj/structure/bed/mattress/dirty,
 /turf/simulated/floor/plating/ironsand,
@@ -8950,12 +8899,6 @@
 /obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/plating/asteroid,
 /area/awaymission/black_mesa/hecu_zone_camp)
-"lab" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 6
-	},
-/turf/simulated/floor/engine,
-/area/awaymission/black_mesa/black_ops_server)
 "lam" = (
 /turf/simulated/wall/indestructible/riveted,
 /area/awaymission/black_mesa/tram_room)
@@ -9038,15 +8981,6 @@
 /obj/structure/alien/xenoweeds,
 /turf/simulated/floor/plasteel,
 /area/awaymission/black_mesa/entrance_lobby)
-"leH" = (
-/obj/machinery/computer{
-	dir = 8
-	},
-/obj/structure/railing{
-	dir = 6
-	},
-/turf/simulated/floor/plasteel/smooth,
-/area/awaymission/black_mesa/lambda_teleporter)
 "leY" = (
 /obj/machinery/status_display{
 	pixel_y = 32
@@ -9153,12 +9087,6 @@
 /obj/effect/landmark/damageturf,
 /turf/simulated/floor/plasteel,
 /area/awaymission/black_mesa/employee_dorm_room)
-"lnu" = (
-/obj/effect/turf_decal/caution,
-/turf/simulated/floor/plasteel/smooth{
-	icon_state = "smooth_large"
-	},
-/area/awaymission/black_mesa/lambda_teleporter)
 "lnI" = (
 /obj/structure/table,
 /obj/item/folder/red{
@@ -9175,17 +9103,6 @@
 /obj/effect/light_emitter/colored/dark_purple,
 /turf/simulated/floor/plating/dirt/xen_dirt,
 /area/awaymission/black_mesa/xen/freeman_puzzle)
-"loe" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/obj/structure/railing{
-	dir = 1
-	},
-/turf/simulated/floor/plasteel/smooth{
-	icon_state = "smooth_large"
-	},
-/area/awaymission/black_mesa/lambda_teleporter)
 "loB" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -9260,6 +9177,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/awaymission/black_mesa/entrance_tunnel)
+"lsm" = (
+/obj/structure/filingcabinet/chestdrawer,
+/turf/simulated/floor/plasteel/smooth,
+/area/awaymission/black_mesa/lambda_teleporter)
 "lsT" = (
 /turf/simulated/wall/indestructible/riveted,
 /area/awaymission/black_mesa/genetics_elevator)
@@ -9672,17 +9593,6 @@
 	icon_state = "dark"
 	},
 /area/awaymission/black_mesa/equipment_room)
-"lQX" = (
-/obj/structure/railing{
-	dir = 6
-	},
-/obj/structure/marker_beacon/spotlight/jade{
-	icon_state = "markerolive-on"
-	},
-/turf/simulated/floor/vault{
-	icon_state = "alienvault"
-	},
-/area/awaymission/black_mesa/xen/nihilanth_arena)
 "lRc" = (
 /obj/structure/closet/crate/can,
 /obj/effect/turf_decal/stripes/line,
@@ -9706,18 +9616,6 @@
 	light_power = 0
 	},
 /area/awaymission/black_mesa/lambda_teleporter)
-"lRI" = (
-/obj/machinery/computer{
-	dir = 8;
-	icon_state = "broken";
-	icon_screen = "broken";
-	icon_keyboard = "generic_key_broken"
-	},
-/obj/structure/railing{
-	dir = 4
-	},
-/turf/simulated/floor/plasteel/smooth,
-/area/awaymission/black_mesa/lambda_teleporter)
 "lRP" = (
 /obj/machinery/computer,
 /obj/structure/alien/xenoweeds,
@@ -9734,6 +9632,17 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel/dark,
 /area/awaymission/black_mesa/xen/lost_camp)
+"lTV" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/marker_beacon/spotlight/jade{
+	icon_state = "markerolive-on"
+	},
+/turf/simulated/floor/vault{
+	icon_state = "alienvault"
+	},
+/area/awaymission/black_mesa/xen/nihilanth_arena)
 "lUo" = (
 /obj/effect/turf_decal/siding/trimline/brown{
 	alpha = 130;
@@ -9905,6 +9814,18 @@
 /obj/structure/sign/greencross,
 /turf/simulated/wall/indestructible/riveted,
 /area/awaymission/black_mesa/hecu_zone_external_hall)
+"meC" = (
+/obj/machinery/gateway{
+	dir = 10
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/plasteel/smooth,
+/area/awaymission/black_mesa/lambda_teleporter)
 "mfO" = (
 /obj/machinery/door/airlock/command,
 /turf/simulated/floor/plasteel/dark{
@@ -10035,6 +9956,14 @@
 	},
 /turf/simulated/wall/indestructible/rock/mineral,
 /area/awaymission/black_mesa/equipment_room)
+"mmi" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/vault{
+	icon_state = "alienvault"
+	},
+/area/awaymission/black_mesa/xen/nihilanth_arena)
 "mna" = (
 /obj/effect/landmark/awaymissions/black_mesa/random_mob_placer/xen/zombie,
 /turf/simulated/floor/plasteel,
@@ -10140,6 +10069,12 @@
 	icon_state = "dark"
 	},
 /area/awaymission/black_mesa/entrance_lobby)
+"mvP" = (
+/obj/machinery/gateway,
+/turf/simulated/floor/plasteel/smooth{
+	icon_state = "smooth_large"
+	},
+/area/awaymission/black_mesa/lambda_teleporter)
 "mwb" = (
 /obj/machinery/light/directional/north,
 /obj/structure/lattice/catwalk/mining,
@@ -10170,6 +10105,11 @@
 /obj/structure/sink/puddle/healing,
 /turf/simulated/floor/plating/xen,
 /area/awaymission/black_mesa/xen/acid_lake_hallway)
+"mxl" = (
+/obj/structure/rack/gunrack,
+/obj/item/shield/riot,
+/turf/simulated/floor/plasteel/smooth,
+/area/awaymission/black_mesa/black_ops_armory)
 "mxS" = (
 /obj/structure/table/abductor,
 /turf/simulated/floor/vault{
@@ -10202,6 +10142,11 @@
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/awaymission/black_mesa/hecu_zone_camp)
+"mAV" = (
+/obj/item/gun/projectile/automatic/m90,
+/obj/structure/rack/gunrack,
+/turf/simulated/floor/plasteel/dark,
+/area/awaymission/black_mesa/xen/lost_camp)
 "mAW" = (
 /obj/effect/turf_decal/siding/trimline/brown{
 	alpha = 130
@@ -10257,11 +10202,6 @@
 /obj/structure/alien/xenoweeds,
 /turf/simulated/floor/plasteel/smooth,
 /area/awaymission/black_mesa/entrance_internal_hall)
-"mDx" = (
-/obj/machinery/light/directional/south,
-/obj/structure/alien/xenoweeds,
-/turf/simulated/floor/plasteel/smooth,
-/area/awaymission/black_mesa/lambda_teleporter)
 "mDy" = (
 /obj/structure/alien/xenoweeds,
 /turf/simulated/floor/plasteel/dark{
@@ -10317,9 +10257,7 @@
 /turf/simulated/floor/plating/xen,
 /area/awaymission/black_mesa/xen/freeman_hallway)
 "mIR" = (
-/obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2
-	},
+/obj/machinery/door/airlock/silver,
 /turf/simulated/floor/plasteel/dark{
 	icon_state = "dark"
 	},
@@ -10364,6 +10302,13 @@
 "mKs" = (
 /obj/effect/landmark/awaymissions/black_mesa/random_mob_placer/xen,
 /turf/simulated/floor/plasteel/smooth,
+/area/awaymission/black_mesa/lambda_teleporter)
+"mLU" = (
+/obj/structure/railing/corner{
+	dir = 1
+	},
+/obj/structure/alien/xenoweeds,
+/turf/simulated/floor/bluegrid,
 /area/awaymission/black_mesa/lambda_teleporter)
 "mLZ" = (
 /obj/structure/alien/xenoweeds,
@@ -10568,13 +10513,6 @@
 /obj/item/grenade/plastic/c4,
 /turf/simulated/floor/plasteel,
 /area/awaymission/black_mesa/high_security_sec_point)
-"mVI" = (
-/obj/structure/railing/corner{
-	dir = 1
-	},
-/obj/structure/alien/xenoweeds,
-/turf/simulated/floor/bluegrid,
-/area/awaymission/black_mesa/lambda_teleporter)
 "mVL" = (
 /obj/structure/table,
 /obj/item/paper,
@@ -10588,17 +10526,6 @@
 "mWo" = (
 /turf/simulated/wall/indestructible/riveted,
 /area/awaymission/black_mesa/security_outpost)
-"mWt" = (
-/obj/structure/railing/corner{
-	dir = 8
-	},
-/obj/structure/marker_beacon/spotlight/jade{
-	icon_state = "markerolive-on"
-	},
-/turf/simulated/floor/vault{
-	icon_state = "alienvault"
-	},
-/area/awaymission/black_mesa/xen/nihilanth_arena)
 "mWu" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -10609,6 +10536,18 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/black_mesa/science_labs)
+"mWD" = (
+/obj/machinery/gateway{
+	dir = 6
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/plasteel/smooth,
+/area/awaymission/black_mesa/lambda_teleporter)
 "mXa" = (
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/plasteel/smooth,
@@ -10841,14 +10780,10 @@
 /turf/simulated/floor/plasteel/dark,
 /area/awaymission/black_mesa/xen/lost_camp)
 "njT" = (
-/obj/structure/railing,
-/obj/structure/marker_beacon/spotlight/jade{
-	icon_state = "markerolive-on"
+/turf/simulated/floor/plasteel/smooth{
+	icon_state = "smooth_large"
 	},
-/turf/simulated/floor/vault{
-	icon_state = "alienvault"
-	},
-/area/awaymission/black_mesa/xen/nihilanth_arena)
+/area/awaymission/black_mesa/black_ops_hall)
 "njV" = (
 /obj/machinery/door/window/reinforced/normal{
 	dir = 8
@@ -10890,6 +10825,15 @@
 /obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/plasteel,
 /area/awaymission/black_mesa/employee_dorm_room)
+"nnQ" = (
+/obj/structure/railing/corner,
+/obj/structure/marker_beacon/spotlight/jade{
+	icon_state = "markerolive-on"
+	},
+/turf/simulated/floor/vault{
+	icon_state = "alienvault"
+	},
+/area/awaymission/black_mesa/xen/nihilanth_arena)
 "nof" = (
 /obj/structure/closet/crate/secure/weapon,
 /obj/effect/turf_decal/stripes/line{
@@ -10973,6 +10917,15 @@
 "nsl" = (
 /turf/simulated/floor/plating/xen,
 /area/awaymission/black_mesa/xen/freeman_puzzle)
+"nsu" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
+/obj/structure/railing{
+	dir = 10
+	},
+/turf/simulated/floor/plasteel/smooth,
+/area/awaymission/black_mesa/lambda_teleporter)
 "nts" = (
 /obj/effect/turf_decal/siding/trimline/blue{
 	alpha = 130;
@@ -11140,25 +11093,21 @@
 /turf/simulated/floor/plating/dirt/xen_dirt,
 /area/awaymission/black_mesa/xen/freeman_puzzle)
 "nEp" = (
-/obj/item/gun/projectile/automatic/m90,
-/obj/structure/rack/gunrack,
-/turf/simulated/floor/plasteel/dark,
-/area/awaymission/black_mesa/xen/lost_camp)
+/obj/effect/bump_teleporter/lambda{
+	id = "lambda_xen2";
+	id_target = "lambda2";
+	color = "lime"
+	},
+/turf/simulated/floor/vault{
+	icon_state = "alienvault"
+	},
+/area/awaymission/black_mesa/xen/nihilanth_arena)
 "nEy" = (
 /obj/effect/baseturf_helper{
 	baseturf = /turf/simulated/floor/plating
 	},
 /turf/simulated/wall/indestructible/rock/mineral,
 /area/awaymission/black_mesa/genetics)
-"nEK" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 5
-	},
-/obj/structure/railing{
-	dir = 5
-	},
-/turf/simulated/floor/plasteel/smooth,
-/area/awaymission/black_mesa/lambda_teleporter)
 "nFf" = (
 /obj/machinery/atmospherics/portable/canister/nitrogen,
 /obj/structure/alien/xenoweeds,
@@ -11219,11 +11168,6 @@
 	icon_state = "brownfull"
 	},
 /area/awaymission/black_mesa/hecu_zone_bathroom)
-"nIW" = (
-/obj/machinery/light/directional/west,
-/obj/structure/alien/xenoweeds,
-/turf/simulated/floor/plasteel/smooth,
-/area/awaymission/black_mesa/lambda_teleporter)
 "nKj" = (
 /obj/structure/extinguisher_cabinet/directional/west,
 /turf/simulated/floor/beach/away/blackmesa/electric,
@@ -11551,6 +11495,12 @@
 /obj/item/clothing/head/helmet/material,
 /turf/simulated/floor/plasteel,
 /area/awaymission/black_mesa/high_security_sec_point)
+"oeG" = (
+/obj/machinery/light/directional/south,
+/turf/simulated/floor/plasteel/smooth{
+	icon_state = "smooth_large"
+	},
+/area/awaymission/black_mesa/lambda_teleporter)
 "oeI" = (
 /obj/structure/fence,
 /turf/simulated/floor/plasteel/dark{
@@ -11594,14 +11544,6 @@
 	icon_state = "smooth_large"
 	},
 /area/awaymission/black_mesa/genetics_elevator)
-"ohP" = (
-/obj/structure/railing{
-	dir = 1
-	},
-/turf/simulated/floor/vault{
-	icon_state = "alienvault"
-	},
-/area/awaymission/black_mesa/xen/nihilanth_arena)
 "oih" = (
 /obj/structure/inflatable{
 	opacity = 1;
@@ -11678,6 +11620,20 @@
 	dir = 4
 	},
 /area/awaymission/black_mesa/xen/entering_zone)
+"onu" = (
+/obj/machinery/gateway{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/plasteel/smooth{
+	icon_state = "smooth_large"
+	},
+/area/awaymission/black_mesa/lambda_teleporter)
 "onB" = (
 /obj/effect/turf_decal/siding/trimline/green{
 	alpha = 130;
@@ -11791,6 +11747,14 @@
 /obj/machinery/light/directional/south,
 /turf/simulated/floor/plasteel,
 /area/awaymission/black_mesa/black_ops_entrance)
+"otn" = (
+/obj/structure/railing{
+	dir = 10
+	},
+/turf/simulated/floor/vault{
+	icon_state = "alienvault"
+	},
+/area/awaymission/black_mesa/xen/nihilanth_arena)
 "ouD" = (
 /obj/structure/reagent_dispensers/water_cooler,
 /turf/simulated/floor/plasteel/smooth,
@@ -11886,6 +11850,17 @@
 	icon_state = "elevatorshaft"
 	},
 /area/awaymission/black_mesa/cryo_room)
+"oAo" = (
+/obj/structure/railing{
+	dir = 6
+	},
+/obj/structure/marker_beacon/spotlight/jade{
+	icon_state = "markerolive-on"
+	},
+/turf/simulated/floor/vault{
+	icon_state = "alienvault"
+	},
+/area/awaymission/black_mesa/xen/nihilanth_arena)
 "oAA" = (
 /obj/effect/landmark/awaymissions/black_mesa/random_mob_placer/vortigaunt_hostile,
 /turf/simulated/floor/plating/xen,
@@ -12030,15 +12005,10 @@
 /turf/simulated/floor/plasteel/smooth,
 /area/awaymission/black_mesa/deep_sci_chem)
 "oIv" = (
-/obj/structure/alien/xenoweeds,
-/obj/effect/bump_teleporter{
-	id = "short1";
-	id_target = "short2"
+/turf/simulated/floor/plasteel/smooth{
+	icon_state = "smooth_large"
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "elevatorshaft"
-	},
-/area/awaymission/black_mesa/entrance_lobby)
+/area/awaymission/black_mesa/high_security_hallway)
 "oIM" = (
 /obj/machinery/atmospherics/unary/tank/oxygen_agent_b,
 /turf/simulated/floor/plasteel,
@@ -12157,7 +12127,6 @@
 /turf/simulated/floor/plating,
 /area/awaymission/black_mesa/tram_room)
 "oPu" = (
-/obj/effect/turf_decal/caution/stand_clear,
 /turf/simulated/floor/plasteel/smooth{
 	icon_state = "smooth_large"
 	},
@@ -12587,6 +12556,21 @@
 	},
 /turf/simulated/floor/plating/dirt/xen_dirt,
 /area/awaymission/black_mesa/xen/nihilanth_computer)
+"psu" = (
+/obj/structure/closet,
+/obj/item/clothing/glasses/meson/fluff/book_berner_1,
+/obj/item/clothing/suit/storage/labcoat,
+/turf/simulated/floor/plasteel/smooth,
+/area/awaymission/black_mesa/lambda_teleporter)
+"psA" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
+	},
+/obj/structure/railing{
+	dir = 5
+	},
+/turf/simulated/floor/plasteel/smooth,
+/area/awaymission/black_mesa/lambda_teleporter)
 "ptr" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel/smooth{
@@ -12630,18 +12614,6 @@
 /obj/machinery/door/airlock/science/glass,
 /turf/simulated/floor/plasteel/smooth,
 /area/awaymission/black_mesa/high_security_surgery)
-"pwj" = (
-/obj/machinery/gateway{
-	dir = 6
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 4
-	},
-/obj/structure/railing{
-	dir = 4
-	},
-/turf/simulated/floor/plasteel/smooth,
-/area/awaymission/black_mesa/lambda_teleporter)
 "pwk" = (
 /obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/plasteel/smooth{
@@ -12680,17 +12652,6 @@
 /obj/effect/landmark/damageturf,
 /turf/simulated/floor/plasteel/smooth,
 /area/awaymission/black_mesa/high_security_servers)
-"pxv" = (
-/obj/structure/railing{
-	dir = 1
-	},
-/obj/structure/marker_beacon/spotlight/jade{
-	icon_state = "markerolive-on"
-	},
-/turf/simulated/floor/vault{
-	icon_state = "alienvault"
-	},
-/area/awaymission/black_mesa/xen/nihilanth_arena)
 "pxF" = (
 /obj/structure/inflatable,
 /obj/structure/inflatable,
@@ -12739,6 +12700,11 @@
 /obj/effect/landmark/awaymissions/black_mesa/random_mob_placer/xen,
 /turf/simulated/floor/plasteel/smooth,
 /area/awaymission/black_mesa/deep_sci_storage)
+"pzV" = (
+/obj/structure/table,
+/obj/item/reagent_containers/hypospray/autoinjector/stimulants,
+/turf/simulated/floor/plasteel/dark,
+/area/awaymission/black_mesa/xen/lost_camp)
 "pAA" = (
 /obj/machinery/light/directional/west,
 /obj/structure/largecrate,
@@ -12818,6 +12784,11 @@
 /obj/effect/landmark/awaymissions/black_mesa/random_mob_placer/scientist_zombie,
 /turf/simulated/floor/plasteel,
 /area/awaymission/black_mesa/high_security_surgery)
+"pHZ" = (
+/obj/machinery/light/directional/east,
+/obj/structure/alien/xenoweeds,
+/turf/simulated/floor/plasteel/smooth,
+/area/awaymission/black_mesa/lambda_teleporter)
 "pIu" = (
 /turf/simulated/floor/plasteel,
 /area/awaymission/black_mesa/black_ops_science_room)
@@ -13085,13 +13056,18 @@
 /turf/simulated/floor/plating,
 /area/awaymission/black_mesa/hecu_zone_external_hall)
 "pXU" = (
-/obj/structure/railing/corner{
-	dir = 4
+/obj/structure{
+	icon = 'icons/obj/machines/telecomms.dmi';
+	icon_state = "hub";
+	name = "server";
+	density = 1;
+	anchored = 1
 	},
-/turf/simulated/floor/vault{
-	icon_state = "alienvault"
+/obj/structure/railing{
+	dir = 5
 	},
-/area/awaymission/black_mesa/xen/nihilanth_arena)
+/turf/simulated/floor/plasteel/smooth,
+/area/awaymission/black_mesa/lambda_teleporter)
 "pYv" = (
 /obj/structure/table,
 /obj/structure{
@@ -13129,14 +13105,6 @@
 /obj/effect/landmark/awaymissions/black_mesa/random_mob_placer/xen/zombie,
 /turf/simulated/floor/plating,
 /area/awaymission/black_mesa/hecu_zone_tunnel)
-"qdf" = (
-/obj/machinery/door/poddoor{
-	id_tag = "biolabs"
-	},
-/turf/simulated/floor/plasteel/dark{
-	icon_state = "dark"
-	},
-/area/awaymission/black_mesa/science_internal)
 "qdV" = (
 /obj/machinery/light/directional/south,
 /turf/simulated/floor/plasteel/smooth,
@@ -13183,6 +13151,11 @@
 /obj/structure/closet/crate/wooden/wooden_crate,
 /turf/simulated/floor/plasteel/smooth,
 /area/awaymission/black_mesa/deep_sci_feesh)
+"qhe" = (
+/turf/simulated/floor/plasteel/stairs{
+	dir = 4
+	},
+/area/awaymission/black_mesa/lambda_teleporter)
 "qhG" = (
 /obj/effect/decal/remains/human,
 /obj/effect/decal/cleanable/blood/old,
@@ -13313,6 +13286,12 @@
 /obj/item/ammo_box/magazine/enforcer/lethal,
 /turf/simulated/floor/wood,
 /area/awaymission/black_mesa/employee_dorm_room)
+"qpA" = (
+/obj/structure/railing,
+/turf/simulated/floor/vault{
+	icon_state = "alienvault"
+	},
+/area/awaymission/black_mesa/xen/nihilanth_arena)
 "qpL" = (
 /obj/machinery/light/directional/west,
 /turf/simulated/floor/plasteel,
@@ -13408,17 +13387,6 @@
 /obj/effect/light_emitter/colored/lime,
 /turf/simulated/floor/plating/xen,
 /area/awaymission/black_mesa/xen/vortigaunt_village_nihilanth)
-"qvh" = (
-/obj/structure/railing{
-	dir = 9
-	},
-/obj/structure/marker_beacon/spotlight/jade{
-	icon_state = "markerolive-on"
-	},
-/turf/simulated/floor/vault{
-	icon_state = "alienvault"
-	},
-/area/awaymission/black_mesa/xen/nihilanth_arena)
 "qvj" = (
 /obj/structure/bonfire/lit,
 /turf/simulated/floor/plating/dirt/xen_dirt,
@@ -13454,12 +13422,6 @@
 	icon_state = "green"
 	},
 /area/awaymission/black_mesa/entrance_internal_hall)
-"qxM" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 10
-	},
-/turf/simulated/floor/engine,
-/area/awaymission/black_mesa/black_ops_server)
 "qxN" = (
 /obj/item/chair,
 /obj/effect/mob_spawn/human/corpse/scientist{
@@ -13513,13 +13475,10 @@
 	},
 /area/awaymission/black_mesa/high_security_hallway)
 "qAN" = (
-/obj/structure/alien/xenoweeds,
-/obj/effect/bump_teleporter{
-	id = "lambda_xen";
-	density = 0
+/turf/simulated/floor/plasteel/smooth{
+	icon_state = "smooth_large"
 	},
-/turf/simulated/floor/engine,
-/area/awaymission/black_mesa/lambda_teleporter)
+/area/awaymission/black_mesa/high_security_emitter)
 "qBd" = (
 /obj/machinery/light/directional/east,
 /turf/simulated/floor/plasteel,
@@ -13869,6 +13828,14 @@
 	},
 /turf/simulated/floor/catwalk,
 /area/awaymission/black_mesa/resonant_chamber)
+"qSj" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/vault{
+	icon_state = "alienvault"
+	},
+/area/awaymission/black_mesa/xen/nihilanth_arena)
 "qTf" = (
 /obj/structure/table,
 /obj/item/paper_bin,
@@ -13879,6 +13846,14 @@
 /obj/machinery/light/directional/west,
 /turf/simulated/floor/plasteel/dark,
 /area/awaymission/black_mesa/xen/lost_camp)
+"qTY" = (
+/obj/machinery/door/poddoor{
+	id_tag = "teleporter"
+	},
+/turf/simulated/floor/plasteel/smooth{
+	icon_state = "smooth_large"
+	},
+/area/awaymission/black_mesa/black_ops_hall)
 "qUm" = (
 /obj/machinery/computer,
 /turf/simulated/floor/plasteel,
@@ -13936,6 +13911,10 @@
 /obj/effect/mapping_helpers/airlock/locked,
 /turf/simulated/floor/plasteel,
 /area/awaymission/black_mesa/black_ops_entrance)
+"qXF" = (
+/obj/effect/landmark/awaymissions/black_mesa/random_mob_placer/blackops,
+/turf/simulated/floor/plasteel/smooth,
+/area/awaymission/black_mesa/black_ops_hall)
 "qYR" = (
 /obj/structure/table/wood,
 /turf/simulated/floor/wood/fancy/cherry,
@@ -13954,14 +13933,6 @@
 /obj/effect/light_emitter/colored/lime,
 /turf/simulated/floor/plating/xen,
 /area/awaymission/black_mesa/xen/freeman_arena)
-"qZf" = (
-/obj/structure/railing{
-	dir = 5
-	},
-/turf/simulated/floor/vault{
-	icon_state = "alienvault"
-	},
-/area/awaymission/black_mesa/xen/nihilanth_arena)
 "qZh" = (
 /obj/item/stack/sheet/mineral/sandbags{
 	amount = 10
@@ -14278,17 +14249,6 @@
 /obj/machinery/atmospherics/portable/pump,
 /turf/simulated/floor/plasteel,
 /area/awaymission/black_mesa/science_labs)
-"rxn" = (
-/obj/structure/railing/corner{
-	dir = 1
-	},
-/obj/structure/marker_beacon/spotlight/jade{
-	icon_state = "markerolive-on"
-	},
-/turf/simulated/floor/vault{
-	icon_state = "alienvault"
-	},
-/area/awaymission/black_mesa/xen/nihilanth_arena)
 "rxp" = (
 /obj/machinery/power/emitter{
 	dir = 1;
@@ -14300,15 +14260,6 @@
 /obj/effect/gibspawner/human,
 /turf/simulated/floor/plasteel/smooth,
 /area/awaymission/black_mesa/deep_sci_medbay)
-"ryo" = (
-/obj/structure/railing,
-/obj/structure/railing{
-	dir = 1
-	},
-/turf/simulated/floor/vault{
-	icon_state = "alienvault"
-	},
-/area/awaymission/black_mesa/xen/nihilanth_arena)
 "ryp" = (
 /obj/structure/table,
 /obj/machinery/syndicatebomb/training,
@@ -14319,6 +14270,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/awaymission/black_mesa/xen/acid_lake_building)
+"rzD" = (
+/obj/effect/landmark/awaymissions/black_mesa/random_mob_placer,
+/turf/simulated/floor/plasteel/smooth{
+	icon_state = "smooth_large"
+	},
+/area/awaymission/black_mesa/high_security_hallway)
 "rzE" = (
 /obj/effect/gibspawner/human,
 /turf/simulated/floor/plasteel/freezer,
@@ -14468,11 +14425,6 @@
 	},
 /turf/simulated/floor/catwalk,
 /area/awaymission/black_mesa/black_ops_button)
-"rGi" = (
-/obj/machinery/light/directional/east,
-/obj/structure/alien/xenoweeds,
-/turf/simulated/floor/plasteel/smooth,
-/area/awaymission/black_mesa/lambda_teleporter)
 "rGj" = (
 /obj/effect/turf_decal/siding/blue{
 	dir = 5
@@ -14499,20 +14451,6 @@
 	icon_state = "dark"
 	},
 /area/awaymission/black_mesa/tram_room)
-"rIX" = (
-/obj/machinery/light/directional/north,
-/turf/simulated/floor/plasteel/smooth{
-	icon_state = "smooth_large"
-	},
-/area/awaymission/black_mesa/lambda_teleporter)
-"rJb" = (
-/obj/machinery/door/poddoor{
-	id_tag = "teleporter"
-	},
-/turf/simulated/floor/plasteel/smooth{
-	icon_state = "smooth_large"
-	},
-/area/awaymission/black_mesa/black_ops_hall)
 "rJm" = (
 /turf/simulated/floor/catwalk,
 /area/awaymission/black_mesa/xen/acid_lake)
@@ -14522,6 +14460,15 @@
 	icon_state = "alienvault"
 	},
 /area/awaymission/black_mesa/xen/nihilanth_hallway)
+"rJw" = (
+/obj/machinery/gateway/centeraway{
+	calibrated = 0;
+	requires_power = 0
+	},
+/turf/simulated/floor/plasteel/smooth{
+	icon_state = "smooth_large"
+	},
+/area/awaymission/black_mesa/lambda_teleporter)
 "rJI" = (
 /obj/machinery/light/directional/east,
 /turf/simulated/floor/plasteel/smooth,
@@ -14677,6 +14624,12 @@
 /obj/item/reagent_containers/food/snacks/beans,
 /turf/simulated/floor/plating/xen,
 /area/awaymission/black_mesa/xen/vortigaunt_village)
+"rSK" = (
+/obj/structure/railing,
+/turf/simulated/floor/plasteel{
+	icon_state = "elevatorshaft"
+	},
+/area/awaymission/black_mesa/entrance_lobby)
 "rSN" = (
 /obj/structure/spacevine/xen,
 /turf/simulated/floor/beach/away/coastline/xen{
@@ -15031,19 +14984,24 @@
 	},
 /area/awaymission/black_mesa/high_security_surgery)
 "sqa" = (
-/obj/machinery/gateway{
-	dir = 4
+/obj/structure/railing/corner{
+	dir = 8
 	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 4
+/obj/structure/marker_beacon/spotlight/jade{
+	icon_state = "markerolive-on"
 	},
+/turf/simulated/floor/vault{
+	icon_state = "alienvault"
+	},
+/area/awaymission/black_mesa/xen/nihilanth_arena)
+"sqd" = (
 /obj/structure/railing{
-	dir = 4
+	dir = 5
 	},
-/turf/simulated/floor/plasteel/smooth{
-	icon_state = "smooth_large"
+/turf/simulated/floor/vault{
+	icon_state = "alienvault"
 	},
-/area/awaymission/black_mesa/lambda_teleporter)
+/area/awaymission/black_mesa/xen/nihilanth_arena)
 "sqh" = (
 /obj/structure/table,
 /obj/item/gun/energy/lasercannon,
@@ -15174,6 +15132,14 @@
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/awaymission/black_mesa/hecu_zone_camp)
+"swI" = (
+/obj/structure/railing/corner{
+	dir = 1
+	},
+/turf/simulated/floor/vault{
+	icon_state = "alienvault"
+	},
+/area/awaymission/black_mesa/xen/nihilanth_arena)
 "sxP" = (
 /obj/machinery/porta_turret/syndicate/black_mesa,
 /turf/simulated/floor/plasteel/dark{
@@ -15504,6 +15470,16 @@
 /obj/effect/landmark/awaymissions/black_mesa/random_mob_placer/hecu,
 /turf/simulated/floor/plasteel/white,
 /area/awaymission/black_mesa/hecu_zone_camp)
+"sSC" = (
+/obj/structure/alien/xenoweeds,
+/obj/effect/bump_teleporter{
+	id = "short1";
+	id_target = "short2"
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "elevatorshaft"
+	},
+/area/awaymission/black_mesa/entrance_lobby)
 "sSW" = (
 /obj/structure/closet/body_bag{
 	opened = 1
@@ -15617,9 +15593,7 @@
 /turf/simulated/floor/wood/fancy/cherry,
 /area/awaymission/black_mesa/xen/freeman_arena)
 "tbG" = (
-/obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2
-	},
+/obj/machinery/door/airlock/silver,
 /turf/simulated/floor/plasteel/smooth,
 /area/awaymission/black_mesa/deep_sci_turret)
 "tbR" = (
@@ -15677,10 +15651,13 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/black_mesa/entrance_lobby)
 "tgn" = (
-/turf/simulated/floor/plasteel/smooth{
-	icon_state = "smooth_large"
+/obj/machinery/door/poddoor{
+	id_tag = "biolabs"
 	},
-/area/awaymission/black_mesa/lambda_teleporter)
+/turf/simulated/floor/plasteel/dark{
+	icon_state = "dark"
+	},
+/area/awaymission/black_mesa/science_internal)
 "tgE" = (
 /obj/effect/baseturf_helper{
 	baseturf = /turf/simulated/floor/plating
@@ -15787,6 +15764,12 @@
 	},
 /turf/simulated/wall/indestructible/rock/mineral,
 /area/awaymission/black_mesa/deep_sci_hall)
+"toJ" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/simulated/floor/engine,
+/area/awaymission/black_mesa/black_ops_server)
 "tpy" = (
 /obj/effect/turf_decal/siding/trimline/blue/corner{
 	alpha = 130;
@@ -15938,6 +15921,15 @@
 /obj/item/paper,
 /turf/simulated/floor/plasteel,
 /area/awaymission/black_mesa/hecu_zone_atrium)
+"tzp" = (
+/obj/machinery/computer{
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 6
+	},
+/turf/simulated/floor/plasteel/smooth,
+/area/awaymission/black_mesa/lambda_teleporter)
 "tBP" = (
 /obj/structure{
 	icon = 'icons/obj/machines/telecomms.dmi';
@@ -16074,12 +16066,6 @@
 	},
 /turf/simulated/wall/indestructible/rock/mineral,
 /area/awaymission/black_mesa/science_labs)
-"tIg" = (
-/obj/machinery/light/directional/east,
-/turf/simulated/floor/plasteel/smooth{
-	icon_state = "smooth_large"
-	},
-/area/awaymission/black_mesa/lambda_teleporter)
 "tIM" = (
 /obj/effect/landmark/damageturf,
 /turf/simulated/floor/plasteel/stairs/right{
@@ -16136,6 +16122,17 @@
 /obj/machinery/atmospherics/unary/tank/oxygen,
 /turf/simulated/floor/plasteel,
 /area/awaymission/black_mesa/science_labs)
+"tLp" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/marker_beacon/spotlight/jade{
+	icon_state = "markerolive-on"
+	},
+/turf/simulated/floor/vault{
+	icon_state = "alienvault"
+	},
+/area/awaymission/black_mesa/xen/nihilanth_arena)
 "tLK" = (
 /obj/structure/sign/xeno_warning_mining{
 	pixel_y = 32
@@ -16147,6 +16144,14 @@
 /obj/item/ammo_box/magazine/enforcer/lethal,
 /turf/simulated/floor/carpet/blue,
 /area/awaymission/black_mesa/high_security_hallway)
+"tMt" = (
+/obj/structure/railing/corner{
+	dir = 4
+	},
+/turf/simulated/floor/vault{
+	icon_state = "alienvault"
+	},
+/area/awaymission/black_mesa/xen/nihilanth_arena)
 "tMu" = (
 /obj/structure/mineral_door/wood,
 /turf/simulated/floor/wood/fancy/cherry,
@@ -16161,6 +16166,14 @@
 /obj/machinery/suit_storage_unit/hev_suit,
 /turf/simulated/floor/plating,
 /area/awaymission/black_mesa/equipment_room)
+"tNI" = (
+/obj/structure/railing{
+	dir = 9
+	},
+/turf/simulated/floor/vault{
+	icon_state = "alienvault"
+	},
+/area/awaymission/black_mesa/xen/nihilanth_arena)
 "tNJ" = (
 /obj/structure/closet/body_bag{
 	opened = 1
@@ -16546,6 +16559,10 @@
 /obj/machinery/light/directional/east,
 /turf/simulated/floor/plasteel,
 /area/awaymission/black_mesa/black_ops_entrance)
+"usc" = (
+/obj/machinery/door/airlock/silver,
+/turf/simulated/floor/plasteel/smooth,
+/area/awaymission/black_mesa/cryo_room)
 "usu" = (
 /obj/structure/mineral_door/xen,
 /turf/simulated/floor/vault{
@@ -16835,17 +16852,11 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/black_mesa/black_ops_entrance)
 "uJh" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel/smooth{
-	icon_state = "smooth_large"
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
 	},
-/area/awaymission/black_mesa/high_security_hallway)
-"uKn" = (
-/obj/effect/landmark/damageturf,
-/turf/simulated/floor/plasteel/smooth{
-	icon_state = "smooth_large"
-	},
-/area/awaymission/black_mesa/high_security_hallway)
+/turf/simulated/floor/engine,
+/area/awaymission/black_mesa/black_ops_server)
 "uKC" = (
 /obj/effect/turf_decal/arrows,
 /turf/simulated/floor/mineral/titanium,
@@ -16927,13 +16938,6 @@
 /obj/structure/flora/biolumini,
 /turf/simulated/floor/plating/xen,
 /area/awaymission/black_mesa/xen/lost_camp_hallway)
-"uNz" = (
-/obj/machinery/door/poddoor{
-	id_tag = "biolabs"
-	},
-/obj/structure/alien/xenoweeds,
-/turf/simulated/floor/plasteel,
-/area/awaymission/black_mesa/entrance_lobby)
 "uNK" = (
 /obj/effect/landmark/awaymissions/black_mesa/random_mob_placer/scientist_zombie,
 /turf/simulated/floor/plasteel,
@@ -16988,6 +16992,15 @@
 "uPC" = (
 /turf/simulated/wall/indestructible/riveted,
 /area/awaymission/black_mesa/scientist_hall)
+"uQA" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/obj/structure/railing{
+	dir = 9
+	},
+/turf/simulated/floor/plasteel/smooth,
+/area/awaymission/black_mesa/lambda_teleporter)
 "uRe" = (
 /obj/structure/filingcabinet,
 /turf/simulated/floor/plasteel,
@@ -17051,6 +17064,18 @@
 	light_range = 0;
 	light_power = 0
 	},
+/area/awaymission/black_mesa/lambda_teleporter)
+"uTc" = (
+/obj/machinery/gateway{
+	dir = 9
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/plasteel/smooth,
 /area/awaymission/black_mesa/lambda_teleporter)
 "uTs" = (
 /obj/machinery/suit_storage_unit/hev_suit,
@@ -17238,16 +17263,10 @@
 /turf/simulated/wall/indestructible/riveted,
 /area/awaymission/black_mesa/black_ops_button)
 "vfW" = (
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/structure/marker_beacon/spotlight/jade{
-	icon_state = "markerolive-on"
-	},
-/turf/simulated/floor/vault{
-	icon_state = "alienvault"
-	},
-/area/awaymission/black_mesa/xen/nihilanth_arena)
+/obj/machinery/light/directional/west,
+/obj/structure/alien/xenoweeds,
+/turf/simulated/floor/plasteel/smooth,
+/area/awaymission/black_mesa/lambda_teleporter)
 "vfY" = (
 /turf/simulated/floor/plasteel/smooth,
 /area/awaymission/black_mesa/hecu_zone_external_sec)
@@ -17262,12 +17281,16 @@
 /obj/structure/alien/xenoweeds,
 /turf/simulated/floor/plasteel,
 /area/awaymission/black_mesa/science_decon_room)
-"vgX" = (
-/obj/structure/table/reinforced,
+"vhg" = (
+/obj/machinery/gateway{
+	dir = 5
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
 /obj/structure/railing{
 	dir = 4
 	},
-/obj/item/assembly/signaler/anomaly/bluespace,
 /turf/simulated/floor/plasteel/smooth,
 /area/awaymission/black_mesa/lambda_teleporter)
 "vhh" = (
@@ -17311,6 +17334,10 @@
 	light_power = 0
 	},
 /area/awaymission/black_mesa/entrance)
+"vjh" = (
+/obj/effect/turf_decal/stripes/line,
+/turf/simulated/floor/engine,
+/area/awaymission/black_mesa/black_ops_server)
 "vjm" = (
 /obj/effect/turf_decal/siding/trimline/blue/corner{
 	alpha = 130;
@@ -17686,6 +17713,14 @@
 "vKJ" = (
 /turf/simulated/floor/plasteel,
 /area/awaymission/black_mesa/cryo_hallway)
+"vLm" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/vault{
+	icon_state = "alienvault"
+	},
+/area/awaymission/black_mesa/xen/nihilanth_arena)
 "vLL" = (
 /obj/machinery/door/airlock/science,
 /turf/simulated/floor/plasteel,
@@ -17854,20 +17889,6 @@
 /obj/machinery/light_construct/directional/west,
 /turf/simulated/floor/plasteel/stairs/left,
 /area/awaymission/black_mesa/entrance_internal_hall)
-"vVV" = (
-/obj/machinery/gateway{
-	dir = 8
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/obj/structure/railing{
-	dir = 8
-	},
-/turf/simulated/floor/plasteel/smooth{
-	icon_state = "smooth_large"
-	},
-/area/awaymission/black_mesa/lambda_teleporter)
 "vVX" = (
 /turf/simulated/floor/beach/away/coastline/beachcorner/xen{
 	dir = 4
@@ -17902,12 +17923,6 @@
 /obj/item/stack/medical/splint,
 /turf/simulated/floor/plasteel,
 /area/awaymission/black_mesa/hecu_zone_infirmary)
-"vZB" = (
-/obj/structure/railing/corner,
-/turf/simulated/floor/vault{
-	icon_state = "alienvault"
-	},
-/area/awaymission/black_mesa/xen/nihilanth_arena)
 "vZQ" = (
 /obj/machinery/light/directional/north,
 /turf/simulated/floor/bluegrid,
@@ -18016,20 +18031,23 @@
 "wgI" = (
 /turf/simulated/floor/plasteel/smooth,
 /area/awaymission/black_mesa/hecu_zone_test_chambers)
+"whR" = (
+/obj/structure/railing/corner,
+/turf/simulated/floor/vault{
+	icon_state = "alienvault"
+	},
+/area/awaymission/black_mesa/xen/nihilanth_arena)
 "whU" = (
 /obj/machinery/light/directional/north,
 /obj/effect/landmark/awaymissions/black_mesa/random_mob_placer/xen,
 /turf/simulated/floor/plasteel,
 /area/awaymission/black_mesa/security_outpost)
 "wic" = (
-/obj/machinery/door/airlock/multi_tile/glass{
-	dir = 2
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/plasteel/smooth{
+	icon_state = "smooth_large"
 	},
-/obj/structure/barricade/wooden/crude{
-	layer = 4
-	},
-/turf/simulated/floor/plasteel/smooth,
-/area/awaymission/black_mesa/hecu_zone_atrium)
+/area/awaymission/black_mesa/high_security_hallway)
 "wit" = (
 /obj/effect/spawner/window/reinforced/plasma/grilled,
 /obj/effect/mapping_helpers/damaged_window,
@@ -18067,12 +18085,6 @@
 /obj/machinery/light/directional/north,
 /turf/simulated/floor/plasteel,
 /area/awaymission/black_mesa/hecu_zone_infirmary)
-"wlP" = (
-/obj/structure/railing,
-/turf/simulated/floor/plasteel{
-	icon_state = "elevatorshaft"
-	},
-/area/awaymission/black_mesa/entrance_lobby)
 "wlV" = (
 /obj/effect/turf_decal/siding/red,
 /obj/effect/mob_spawn/human/corpse/doctor{
@@ -18462,14 +18474,13 @@
 	},
 /area/awaymission/black_mesa/security_outpost)
 "wKi" = (
-/obj/effect/bump_teleporter{
-	id = "short2";
-	id_target = "short1"
+/obj/structure/railing/corner{
+	dir = 8
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "elevatorshaft"
+/turf/simulated/floor/vault{
+	icon_state = "alienvault"
 	},
-/area/awaymission/black_mesa/science_internal)
+/area/awaymission/black_mesa/xen/nihilanth_arena)
 "wKw" = (
 /turf/simulated/floor/plasteel/smooth,
 /area/awaymission/black_mesa/cryo_hallway)
@@ -18869,12 +18880,6 @@
 /obj/structure/flora/biolumini,
 /turf/simulated/floor/plating/xen,
 /area/awaymission/black_mesa/xen/freeman_arena)
-"xgh" = (
-/obj/structure/closet,
-/obj/item/clothing/glasses/meson/fluff/book_berner_1,
-/obj/item/clothing/suit/storage/labcoat,
-/turf/simulated/floor/plasteel/smooth,
-/area/awaymission/black_mesa/lambda_teleporter)
 "xgX" = (
 /obj/structure/railing/corner,
 /turf/simulated/floor/plasteel/dark{
@@ -18896,19 +18901,6 @@
 "xjh" = (
 /turf/simulated/floor/beach/away/coastline/beachcorner/xen,
 /area/awaymission/black_mesa/xen/entering_zone)
-"xkB" = (
-/obj/structure{
-	icon = 'icons/obj/machines/telecomms.dmi';
-	icon_state = "hub";
-	name = "server";
-	density = 1;
-	anchored = 1
-	},
-/obj/structure/railing{
-	dir = 5
-	},
-/turf/simulated/floor/plasteel/smooth,
-/area/awaymission/black_mesa/lambda_teleporter)
 "xlH" = (
 /turf/simulated/floor/beach/away/coastline/xen/edge_drop{
 	dir = 1
@@ -19020,11 +19012,13 @@
 /turf/simulated/floor/plasteel/smooth,
 /area/awaymission/black_mesa/deep_sci_storage)
 "xqH" = (
-/obj/structure/barricade/wooden/crude{
-	layer = 4
+/obj/structure/alien/xenoweeds,
+/obj/effect/bump_teleporter{
+	id = "lambda_xen";
+	density = 0
 	},
-/turf/simulated/floor/plasteel/smooth,
-/area/awaymission/black_mesa/hecu_zone_external_hall)
+/turf/simulated/floor/engine,
+/area/awaymission/black_mesa/lambda_teleporter)
 "xqQ" = (
 /turf/simulated/floor/catwalk,
 /area/awaymission/black_mesa/scientist_hall)
@@ -19175,6 +19169,12 @@
 /obj/structure/marker_beacon/dock_marker/collision,
 /turf/simulated/floor/plating/xen,
 /area/awaymission/black_mesa/xen/freeman_puzzle)
+"xBB" = (
+/obj/structure/rack,
+/obj/item/melee/classic_baton,
+/obj/item/shield/riot,
+/turf/simulated/floor/wood,
+/area/awaymission/black_mesa/employee_dorm_room)
 "xBS" = (
 /obj/machinery/light/directional/east,
 /turf/simulated/floor/plasteel/smooth,
@@ -19489,15 +19489,6 @@
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/awaymission/black_mesa/hecu_zone_camp)
-"xXJ" = (
-/obj/machinery/gateway/centeraway{
-	calibrated = 0;
-	requires_power = 0
-	},
-/turf/simulated/floor/plasteel/smooth{
-	icon_state = "smooth_large"
-	},
-/area/awaymission/black_mesa/lambda_teleporter)
 "xYg" = (
 /obj/structure/table,
 /turf/simulated/floor/plasteel,
@@ -19535,14 +19526,6 @@
 /obj/machinery/light_construct/directional/north,
 /turf/simulated/floor/plasteel/smooth,
 /area/awaymission/black_mesa/hecu_zone_external_hall)
-"xZd" = (
-/obj/structure/railing/corner{
-	dir = 1
-	},
-/turf/simulated/floor/vault{
-	icon_state = "alienvault"
-	},
-/area/awaymission/black_mesa/xen/nihilanth_arena)
 "xZh" = (
 /obj/machinery/economy/vending/snack/free,
 /turf/simulated/floor/plasteel/smooth,
@@ -19630,12 +19613,6 @@
 	light_power = 0
 	},
 /area/awaymission/black_mesa/entrance)
-"yep" = (
-/obj/effect/landmark/awaymissions/black_mesa/random_mob_placer,
-/turf/simulated/floor/plasteel/smooth{
-	icon_state = "smooth_large"
-	},
-/area/awaymission/black_mesa/high_security_hallway)
 "yeI" = (
 /obj/effect/baseturf_helper{
 	baseturf = /turf/simulated/floor/plating
@@ -19683,6 +19660,15 @@
 /obj/structure/alien/xenoweeds,
 /turf/simulated/floor/plasteel,
 /area/awaymission/black_mesa/entrance_lobby)
+"yim" = (
+/obj/item/ammo_box/magazine/m556{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/structure/rack,
+/obj/item/ammo_box/magazine/m556,
+/turf/simulated/floor/plasteel/dark,
+/area/awaymission/black_mesa/xen/lost_camp)
 "yiA" = (
 /obj/structure/stone_tile/surrounding/cracked{
 	dir = 8
@@ -26997,7 +26983,7 @@ oKV
 dNw
 lDK
 oqn
-jCR
+pzV
 hWk
 vVn
 dNw
@@ -27256,7 +27242,7 @@ vVn
 hWk
 hWk
 rCN
-nEp
+mAV
 nqe
 oKV
 oKV
@@ -27513,7 +27499,7 @@ vVn
 vVn
 hWk
 hWk
-nEp
+mAV
 nqe
 oKV
 oKV
@@ -27770,7 +27756,7 @@ hWk
 rCN
 qhG
 rCN
-fqI
+yim
 nqe
 oKV
 oKV
@@ -28027,7 +28013,7 @@ kkT
 rCN
 vVn
 hWk
-fqI
+yim
 dNw
 oKV
 oKV
@@ -45359,7 +45345,7 @@ eJa
 pZY
 uVv
 qpe
-elG
+xBB
 eJa
 cBU
 cBU
@@ -47365,9 +47351,9 @@ cBU
 awq
 awq
 awq
-gyb
-xgh
-daC
+lsm
+psu
+kCm
 awq
 awq
 awq
@@ -47879,9 +47865,9 @@ cBU
 awq
 pNr
 pNr
-amJ
+eUk
 pNr
-amJ
+eUk
 pNr
 pNr
 awq
@@ -48134,13 +48120,13 @@ cBU
 cBU
 cBU
 awq
-jid
-xkB
-gxH
-vgX
-lRI
-leH
-jid
+qhe
+pXU
+eXP
+cCS
+dOs
+tzp
+qhe
 awq
 cBU
 cBU
@@ -48391,13 +48377,13 @@ cBU
 cBU
 cBU
 awq
-rIX
-tgn
-tgn
+fTd
 oPu
-tgn
-tgn
-jfR
+oPu
+bJQ
+oPu
+oPu
+oeG
 awq
 cBU
 cBU
@@ -48648,13 +48634,13 @@ cBU
 cBU
 cBU
 awq
-tgn
-bNj
-gGu
-vVV
-eFG
-ebN
-tgn
+oPu
+uQA
+uTc
+kIT
+meC
+nsu
+oPu
 awq
 cBU
 cBU
@@ -48905,13 +48891,13 @@ cBU
 cBU
 cBU
 awq
-tgn
-loe
-cCS
-xXJ
-fqX
-lnu
-tgn
+oPu
+abg
+duU
+rJw
+mvP
+juF
+oPu
 awq
 cBU
 cBU
@@ -49162,13 +49148,13 @@ cBU
 cBU
 cBU
 awq
-tgn
-nEK
-kqr
-sqa
-pwj
-auq
-tgn
+oPu
+psA
+vhg
+onu
+mWD
+iEa
+oPu
 awq
 cBU
 cBU
@@ -49419,13 +49405,13 @@ cBU
 cBU
 cBU
 awq
-tgn
-tIg
-tgn
 oPu
-tgn
-tIg
-tgn
+jJQ
+oPu
+bJQ
+oPu
+jJQ
+oPu
 awq
 cBU
 cBU
@@ -49676,13 +49662,13 @@ cBU
 cBU
 awq
 awq
-hEM
+auq
 awq
-fPX
-fPX
-fPX
+hDA
+hDA
+hDA
 awq
-hEM
+auq
 awq
 awq
 cBU
@@ -49938,7 +49924,7 @@ hGp
 ofW
 oZD
 ofW
-nIW
+vfW
 pNr
 awq
 awq
@@ -50450,7 +50436,7 @@ jzI
 jzI
 jzI
 jzI
-qAN
+xqH
 pig
 jzI
 jzI
@@ -53272,7 +53258,7 @@ pNr
 jzI
 jzI
 pig
-gnT
+fPn
 uSx
 uSx
 uSx
@@ -53539,7 +53525,7 @@ uSx
 uSx
 uSx
 jaA
-mVI
+mLU
 pig
 jzI
 jzI
@@ -53782,7 +53768,7 @@ cBU
 cBU
 cBU
 awq
-cyX
+hrb
 nYY
 pig
 jzI
@@ -54056,7 +54042,7 @@ jzI
 pig
 jzI
 jzI
-mDx
+gIk
 awq
 cBU
 cBU
@@ -54824,7 +54810,7 @@ jzI
 jzI
 nYY
 nYY
-rGi
+pHZ
 awq
 awq
 cBU
@@ -55078,7 +55064,7 @@ gbW
 pNr
 pNr
 nYY
-rGi
+pHZ
 nYY
 awq
 awq
@@ -55303,9 +55289,9 @@ soY
 soY
 hAu
 hVz
-nCQ
 cLr
-nCQ
+cLr
+cLr
 cLr
 hVz
 uGD
@@ -56332,9 +56318,9 @@ naK
 naK
 hVz
 hns
-wic
 hns
-wic
+hns
+hns
 hVz
 naK
 naK
@@ -59112,7 +59098,7 @@ jgF
 cgL
 gCB
 gCB
-sCY
+gVz
 ema
 gCB
 gCB
@@ -60213,7 +60199,7 @@ nlz
 nlz
 nlz
 nlz
-cWS
+tbG
 tbG
 nlz
 nlz
@@ -61710,7 +61696,7 @@ wgI
 wgI
 wgI
 wgI
-xqH
+aVB
 sQr
 sQr
 exq
@@ -62362,7 +62348,7 @@ kCO
 kCO
 kCO
 kCO
-rei
+mIR
 mIR
 kCO
 kCO
@@ -65432,7 +65418,7 @@ xZT
 xZT
 xZT
 xZT
-pOl
+usc
 daR
 xZT
 xZT
@@ -65609,8 +65595,8 @@ hiy
 hiy
 lmV
 dNg
-eUk
-igy
+dQy
+oIv
 nXH
 lmV
 lmV
@@ -65858,19 +65844,19 @@ uNL
 uNL
 fQV
 uUV
-igy
-igy
-uJh
-uJh
-uJh
-igy
-igy
-uJh
-uJh
-igy
-igy
-igy
-yep
+oIv
+oIv
+wic
+wic
+wic
+oIv
+oIv
+wic
+wic
+oIv
+oIv
+oIv
+rzD
 lmV
 ewG
 cBU
@@ -66118,16 +66104,16 @@ bun
 dYH
 lmV
 lmV
-igy
-igy
-igy
+oIv
+oIv
+oIv
 yke
 lmV
 hiy
-uJh
+wic
 mga
 lmV
-igy
+oIv
 lmV
 ewG
 cBU
@@ -66376,15 +66362,15 @@ egW
 spz
 xcI
 lCF
-dOs
-dOs
+qAN
+qAN
 xcI
 xcI
 iHf
 kzE
 xcI
 lmV
-igy
+oIv
 qdV
 ewG
 cBU
@@ -66475,7 +66461,7 @@ cXr
 cXr
 cXr
 cXr
-owu
+iDd
 iDd
 cXr
 cXr
@@ -66632,16 +66618,16 @@ bwu
 bwu
 klD
 gMF
-dOs
-dOs
-dOs
+qAN
+qAN
+qAN
 bwu
 spz
 fsq
 fsq
 xcI
 lmV
-eUk
+dQy
 hiy
 ewG
 cBU
@@ -66769,15 +66755,15 @@ fzo
 fzo
 qVd
 fzo
-vZB
-ebo
-ebo
-vfW
-glD
-vfW
-ebo
-ebo
-pXU
+whR
+vLm
+vLm
+lTV
+cIm
+lTV
+vLm
+vLm
+tMt
 fzo
 qVd
 fzo
@@ -67025,17 +67011,17 @@ qVd
 fzo
 fzo
 fzo
-iNk
-fPn
-dQy
-dQy
-dQy
-ryo
-dQy
-dQy
-dQy
-qZf
-dCg
+nnQ
+abJ
+fPX
+fPX
+fPX
+jgM
+fPX
+fPX
+fPX
+sqd
+arB
 fzo
 fzo
 fzo
@@ -67155,7 +67141,7 @@ dsN
 szv
 xcI
 lmV
-fkN
+gTY
 hiy
 ewG
 cBU
@@ -67282,17 +67268,17 @@ fzo
 qVd
 fzo
 fzo
-hEI
-dQy
-dQy
-dQy
-dQy
-ryo
-dQy
-dQy
-dQy
-dQy
-ohP
+qpA
+fPX
+fPX
+fPX
+fPX
+jgM
+fPX
+fPX
+fPX
+fPX
+mmi
 fzo
 fzo
 qVd
@@ -67539,17 +67525,17 @@ fzo
 fzo
 qVd
 fzo
-hEI
-dQy
-dQy
-dQy
-dQy
-ryo
-dQy
-dQy
-dQy
-dQy
-ohP
+qpA
+fPX
+fPX
+fPX
+fPX
+jgM
+fPX
+fPX
+fPX
+fPX
+mmi
 fzo
 qVd
 fzo
@@ -67669,7 +67655,7 @@ aLs
 fsq
 xcI
 lmV
-uJh
+wic
 mJo
 ewG
 cBU
@@ -67796,17 +67782,17 @@ fzo
 fzo
 fzo
 qVd
-hEI
-dQy
-dQy
-dQy
-qvh
-cUO
-fMx
-dQy
-dQy
-dQy
-ohP
+qpA
+fPX
+fPX
+fPX
+jFi
+wKi
+doU
+fPX
+fPX
+fPX
+mmi
 qVd
 fzo
 fzo
@@ -67926,7 +67912,7 @@ qUm
 qSe
 xcI
 xYx
-uJh
+wic
 lmV
 ewG
 cBU
@@ -68053,17 +68039,17 @@ qVd
 qVd
 qVd
 qVd
-njT
-dQy
-dQy
-dQy
-ohP
-fGs
-hEI
-dQy
-dQy
-dQy
-pxv
+bVM
+fPX
+fPX
+fPX
+mmi
+nEp
+qpA
+fPX
+fPX
+fPX
+tLp
 qVd
 qVd
 qVd
@@ -68183,7 +68169,7 @@ fsq
 fsq
 xcI
 hiy
-uJh
+wic
 qdV
 ewG
 cBU
@@ -68310,17 +68296,17 @@ fzo
 fzo
 fzo
 qVd
-hEI
-dQy
-dQy
-dQy
-jgN
-ebo
-lQX
-dQy
-dQy
-dQy
-ohP
+qpA
+fPX
+fPX
+fPX
+eLG
+vLm
+oAo
+fPX
+fPX
+fPX
+mmi
 qVd
 fzo
 fzo
@@ -68440,7 +68426,7 @@ xcI
 xcI
 xcI
 mga
-uJh
+wic
 hiy
 ewG
 cBU
@@ -68567,17 +68553,17 @@ fzo
 fzo
 qVd
 fzo
-hEI
-dQy
-dQy
-dQy
-dQy
-dQy
-dQy
-dQy
-dQy
-dQy
-ohP
+qpA
+fPX
+fPX
+fPX
+fPX
+fPX
+fPX
+fPX
+fPX
+fPX
+mmi
 fzo
 qVd
 fzo
@@ -68697,7 +68683,7 @@ nXH
 lmV
 lmV
 hiy
-uJh
+wic
 lmV
 ewG
 cBU
@@ -68824,17 +68810,17 @@ fzo
 qVd
 fzo
 fzo
-hEI
-dQy
-dQy
-dQy
-dQy
-dQy
-dQy
-dQy
-dQy
-dQy
-ohP
+qpA
+fPX
+fPX
+fPX
+fPX
+fPX
+fPX
+fPX
+fPX
+fPX
+mmi
 fzo
 fzo
 qVd
@@ -68930,31 +68916,31 @@ dsF
 dsF
 fyd
 faM
-kLG
-kLG
-igy
-eUk
-igy
-igy
-igy
-igy
-igy
-igy
-igy
-igy
-yep
-igy
-igy
-igy
-igy
+kTi
+kTi
+oIv
+dQy
+oIv
+oIv
+oIv
+oIv
+oIv
+oIv
+oIv
+oIv
+rzD
+oIv
+oIv
+oIv
+oIv
 sxR
-igy
-igy
-igy
-eUk
-igy
-uJh
-uJh
+oIv
+oIv
+oIv
+dQy
+oIv
+wic
+wic
 hiy
 ewG
 cBU
@@ -69081,17 +69067,17 @@ qVd
 fzo
 fzo
 fzo
-mWt
-fva
-dQy
-dQy
-dQy
-dQy
-dQy
-dQy
-dQy
-dvn
-rxn
+sqa
+otn
+fPX
+fPX
+fPX
+fPX
+fPX
+fPX
+fPX
+tNI
+hlW
 fzo
 fzo
 fzo
@@ -69207,11 +69193,11 @@ lmV
 bEs
 lmV
 lmV
-igy
+oIv
 dYH
 lmV
 dWi
-eUk
+dQy
 lmV
 ewG
 cBU
@@ -69339,15 +69325,15 @@ fzo
 fzo
 qVd
 fzo
-cUO
-jdD
-fva
-dQy
-dQy
-dQy
-dvn
-jdD
-xZd
+wKi
+qSj
+otn
+fPX
+fPX
+fPX
+tNI
+qSj
+swI
 fzo
 qVd
 fzo
@@ -69464,11 +69450,11 @@ ewG
 ewG
 ewG
 ewG
-igy
-aVT
+oIv
+elT
 ewG
 mJo
-axV
+auM
 lmV
 ewG
 ewG
@@ -69598,11 +69584,11 @@ fzo
 fzo
 fzo
 fzo
-mWt
-jdD
-jdD
-jdD
-rxn
+sqa
+qSj
+qSj
+qSj
+hlW
 fzo
 fzo
 fzo
@@ -69725,7 +69711,7 @@ vNJ
 tIM
 ewG
 lmV
-igy
+oIv
 qdV
 ewG
 qEt
@@ -69982,8 +69968,8 @@ nSk
 seT
 ewG
 hiy
-eUk
-aVT
+dQy
+elT
 hDG
 lmV
 ttW
@@ -70239,7 +70225,7 @@ oHU
 uNL
 ewG
 xTU
-igy
+oIv
 bun
 ewG
 qEt
@@ -70753,7 +70739,7 @@ uNL
 uNL
 ewG
 bun
-uKn
+ely
 dYH
 ewG
 axd
@@ -72611,9 +72597,9 @@ cBU
 cBU
 cBU
 vfs
-wlP
-fvl
-uNz
+rSK
+gtA
+eXe
 eHZ
 sNi
 qNR
@@ -72868,9 +72854,9 @@ cBU
 cBU
 cBU
 vfs
-wlP
-oIv
-uNz
+rSK
+sSC
+eXe
 eHZ
 omX
 qNR
@@ -78145,7 +78131,7 @@ cBU
 cBU
 cBU
 nvH
-euj
+mxl
 pUJ
 dFZ
 pUJ
@@ -79908,7 +79894,7 @@ eXO
 eXO
 rfZ
 eXO
-eXO
+coA
 eXO
 eXO
 eXO
@@ -80183,7 +80169,7 @@ gJY
 aDv
 aDv
 tkT
-gHV
+qXF
 gHV
 tkT
 tkT
@@ -80700,14 +80686,14 @@ bmb
 gHV
 gHV
 aVR
-bry
-bry
-bry
-bry
-bry
-bry
-bry
-rJb
+njT
+njT
+njT
+njT
+njT
+njT
+njT
+qTY
 dPL
 bLK
 bLK
@@ -80938,7 +80924,7 @@ rfZ
 eXO
 eXO
 eXO
-coA
+eXO
 eXO
 tQE
 aDv
@@ -80957,14 +80943,14 @@ bmb
 gHV
 gHV
 dZy
-bry
-bry
-bry
-bry
-bry
-bry
-bry
-rJb
+njT
+njT
+njT
+njT
+njT
+njT
+njT
+qTY
 dPL
 bLK
 bLK
@@ -81261,10 +81247,10 @@ cBU
 cBU
 cBU
 vqb
-ePJ
-wKi
-qdf
-hEA
+ewU
+bJg
+tgn
+jgN
 gtN
 liq
 tGy
@@ -81518,10 +81504,10 @@ cBU
 cBU
 cBU
 vqb
-ePJ
-wKi
-qdf
-hEA
+ewU
+bJg
+tgn
+jgN
 gtN
 liq
 bLE
@@ -81962,11 +81948,11 @@ cBU
 hvc
 hvc
 hvc
+hvc
 eXO
 eXO
 eXO
-eXO
-eXO
+hvc
 hvc
 hvc
 hvc
@@ -83010,20 +82996,20 @@ cBU
 cBU
 cBU
 oMw
-eXP
-eXP
+igy
+igy
 oyK
-eXP
-eXP
-eXP
+igy
+igy
+igy
 pwu
 pwu
-eXP
-eXP
-eXP
+igy
+igy
+igy
 oyK
-eXP
-eXP
+igy
+igy
 oMw
 cBU
 cBU
@@ -83267,20 +83253,20 @@ cBU
 cBU
 cBU
 oMw
-eXP
-ina
+igy
+dtG
 mkw
-qxM
+uJh
 txn
 lqS
 pwu
 prG
 fpC
 txn
-ina
+dtG
 mkw
-qxM
-eXP
+uJh
+igy
 oMw
 cBU
 cBU
@@ -83524,20 +83510,20 @@ cBU
 cBU
 cBU
 oMw
-eXP
-iLn
+igy
+dCJ
 ueW
-iar
+vjh
 txn
 wOK
 pwu
 pwu
 tqR
 txn
-iLn
+dCJ
 ueW
-iar
-eXP
+vjh
+igy
 oMw
 cBU
 cBU
@@ -83781,20 +83767,20 @@ cBU
 cBU
 cBU
 oMw
-eXP
-jfJ
-gbV
-lab
+igy
+eXj
+toJ
+bry
 txn
 mzl
 pwu
 pwu
 tqR
 txn
-jfJ
-gbV
-lab
-eXP
+eXj
+toJ
+bry
+igy
 oMw
 cBU
 cBU
@@ -84038,20 +84024,20 @@ cBU
 cBU
 cBU
 oMw
-eXP
-eXP
+igy
+igy
 rbO
-eXP
-eXP
-eXP
+igy
+igy
+igy
 pwu
 pwu
-eXP
-eXP
-eXP
+igy
+igy
+igy
 rbO
-eXP
-eXP
+igy
+igy
 oMw
 cBU
 cBU
