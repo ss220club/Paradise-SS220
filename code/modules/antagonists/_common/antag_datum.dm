@@ -42,19 +42,30 @@ GLOBAL_LIST_EMPTY(antagonists)
 
 /datum/antagonist/Destroy(force, ...)
 	qdel(objective_holder)
-	remove_owner_from_gamemode()
 	GLOB.antagonists -= src
+	if(!QDELETED(owner))
+		detach_from_owner()
+
+	return ..()
+
+/**
+ * Removes owner's dependencies on this antag datum.
+ * For example: removal of antag datum from owner's `antag_datums`, antag datum related teams etc.
+ * If your `/datum/antagonist`  subtype adds more dependencies on `owner` - they should be cleared there.
+ */
+/datum/antagonist/proc/detach_from_owner()
+	SHOULD_CALL_PARENT(TRUE)
+
+	remove_owner_from_gamemode()
 	if(!silent)
 		farewell()
 	remove_innate_effects()
 	antag_memory = null
 	var/datum/team/team = get_team()
 	team?.remove_member(owner)
-	if(owner)
-		LAZYREMOVE(owner.antag_datums, src)
+	LAZYREMOVE(owner.antag_datums, src)
 	restore_last_hud_and_role()
 	owner = null
-	return ..()
 
 /**
  * Adds the owner to their respective gamemode's list. For example `SSticker.mode.traitors |= owner`.
@@ -125,12 +136,16 @@ GLOBAL_LIST_EMPTY(antagonists)
  */
 /datum/antagonist/proc/remove_innate_effects(mob/living/mob_override)
 	SHOULD_CALL_PARENT(TRUE)
-	var/mob/living/L = mob_override || owner.current
+
+	var/mob/living/remove_effects_from = mob_override || owner?.current
+	if(!remove_effects_from)
+		return
+
 	if(antag_hud_type && antag_hud_name)
-		remove_antag_hud(L)
+		remove_antag_hud(remove_effects_from)
 	// If `mob_override` exists it means we're only transferring this datum, we don't need to show the clown any text.
-	handle_clown_mutation(L, mob_override ? null : clown_removal_text)
-	return L
+	handle_clown_mutation(remove_effects_from, mob_override ? null : clown_removal_text)
+	return remove_effects_from
 
 /**
  * Adds this datum's antag hud to `antag_mob`.
