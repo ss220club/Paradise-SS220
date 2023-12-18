@@ -336,11 +336,10 @@
 	message_postfix = ", грозно смотря на %t."
 	message_param = EMOTE_PARAM_USE_POSTFIX
 	species_type_whitelist_typecache = list(/datum/species/unathi)
-	emote_type = EMOTE_AUDIBLE
+	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
 	volume = 75
 	audio_cooldown = 3 SECONDS
 	sound = 'modular_ss220/emotes/audio/unathi/whip_short_unathi.ogg'
-
 
 /datum/emote/living/carbon/human/whip/whip_l
 	key = "whips"
