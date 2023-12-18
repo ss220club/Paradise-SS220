@@ -425,7 +425,7 @@
 	name = "Шевелить усики"
 
 /datum/emote/living/carbon/human/whip
-	name = "Хлестать хвостом"
+	name = "Ударять хвостом"
 
 /datum/emote/living/carbon/human/whip/whip_l
-	name = "Ударять хвостом"
+	name = "Хлестать хвостом"
