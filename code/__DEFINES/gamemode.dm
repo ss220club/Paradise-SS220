@@ -53,9 +53,6 @@
 #define SPECIAL_ROLE_XENOMORPH_SENTINEL "Xenomorph Sentinel"
 #define SPECIAL_ROLE_XENOMORPH_LARVA "Xenomorph Larva"
 #define SPECIAL_ROLE_EVENTMISC "Event Role"
-// SS220 EDIT - START
-#define SPECIAL_ROLE_BLOOD_BROTHER "Blood Brother"
-// SS220 EDIT - END
 
 // Constants used by code which checks the status of nuclear blasts during a
 // round, regardless of original game mode, e.g. setting the ending cinematic.

@@ -39,9 +39,6 @@
 #define ROLE_EVENTMISC			"eventmisc"
 #define ROLE_GHOST				"ghost role"
 #define ROLE_ELITE				"lavaland elite"
-// SS220 EDIT - START
-#define ROLE_BLOOD_BROTHER "blood brother"
-// SS220 EDIT - END
 
 // Misc jobban categories
 #define ROLEBAN_AHUD			"AntagHUD"
