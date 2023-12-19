@@ -1,3 +1,13 @@
+/datum/mind/proc/memory_edit_blood_brother()
+	. = _memory_edit_header("blood brother")
+	if(has_antag_datum(/datum/antagonist/blood_brother))
+		. += "<b><font color='red'>BLOOD BROTHER</font></b>|<a href='?src=[UID()];blood_brother=clear'>Remove</a>"
+	else
+		. += "<a href='?src=[UID()];blood_brother=make'>Make Blood Brother</a>"
+
+	. += _memory_edit_role_enabled(ROLE_BLOOD_BROTHER)
+
+
 /datum/mind/proc/clear_antag_datum(datum/antagonist/antag_datum_to_clear)
 	if(!has_antag_datum(antag_datum_to_clear))
 		return
