@@ -465,6 +465,17 @@
 	else
 		. += "mindslave|<b>NO</b>"
 
+// SS220 EDIT - START
+/datum/mind/proc/memory_edit_blood_brother()
+	. = _memory_edit_header("blood brother")
+	if(has_antag_datum(/datum/antagonist/blood_brother))
+		. += "<b><font color='red'>BLOOD BROTHER</font></b>|<a href='?src=[UID()];blood_brother=clear'>Remove</a>"
+	else
+		. += "<a href='?src=[UID()];blood_brother=make'>Make Blood Brother</a>"
+
+	. += _memory_edit_role_enabled(ROLE_BLOOD_BROTHER)
+// SS220 EDIT - END
+
 /datum/mind/proc/memory_edit_silicon()
 	. = "<i><b>Silicon</b></i>: "
 	var/mob/living/silicon/robot/robot = current
@@ -535,6 +546,9 @@
 	sections["eventmisc"] = memory_edit_eventmisc(H)
 	/** TRAITOR ***/
 	sections["traitor"] = memory_edit_traitor()
+	// SS220 EDIT - START
+	sections["blood_brother"] = memory_edit_blood_brother()
+	// SS220 EDIT - END
 	if(!issilicon(current))
 		/** CULT ***/
 		sections["cult"] = memory_edit_cult(H)
