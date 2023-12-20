@@ -58,6 +58,7 @@
 #define ANTAG_HUD_BLOB 21
 // SS220 EDIT - START
 #define ANTAG_HUD_BLOOD_BROTHER 22
+#define ANTAG_HUD_VOX_RAIDER 23
 // SS220 EDIT - END
 
 // Notification action types
