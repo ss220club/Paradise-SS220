@@ -124,6 +124,12 @@
 	donator_tier = 2
 	cost = 1
 
+/datum/gear/donor/driver
+	display_name = "Driver jacket."
+	path = /obj/item/clothing/suit/jacket/driver
+	donator_tier = 2
+	cost = 1
+
 // ID Skins
 /datum/gear/donor/id_decal_colored
 	display_name = "Наклейка на карту (Голографическая)"
@@ -275,8 +281,3 @@
 	donator_tier = 4
 	cost = 5
 
-/datum/gear/donor/driver
-	display_name = "Driver jacket."
-	path = /obj/item/clothing/suit/jacket/driver
-	donator_tier = 2
-	cost = 1
