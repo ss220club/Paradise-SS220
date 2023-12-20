@@ -280,4 +280,3 @@
 	path = /obj/item/id_skin/boykisser
 	donator_tier = 4
 	cost = 5
-
