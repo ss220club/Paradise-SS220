@@ -3,6 +3,8 @@ SUBSYSTEM_DEF(credits)
 	runlevels = RUNLEVEL_POSTGAME
 	flags = SS_NO_FIRE
 
+	var/datum/cinematic/credits/current_cinematic
+
 	var/datum/credits/end_titles
 	var/title_music = ""
 
@@ -25,7 +27,7 @@ SUBSYSTEM_DEF(credits)
 
 	title_music = end_titles.soundtrack
 
-	play_cinematic(cinematic_type, world)
+	current_cinematic = play_cinematic(cinematic_type, world)
 
 /datum/controller/subsystem/credits/proc/roll_credits_for_clients(list/clients)
 	end_titles.roll_credits_for_clients(clients)
@@ -35,4 +37,5 @@ SUBSYSTEM_DEF(credits)
 		return
 
 	for(var/credit in client.credits)
+		client.screen -= credit
 		QDEL_NULL(credit)
