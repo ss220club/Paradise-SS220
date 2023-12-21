@@ -109,6 +109,7 @@
 	desc = "Превосходная новогодняя ёлка. Кажется под ней нескончаемый запас подарков!"
 	unlimited = TRUE
 
+// Рождество
 /datum/holiday/xmas/celebrate()
 	for(var/obj/machinery/light/lights in GLOB.machines)
 		lights.brightness_color = "#FFE6D9"
@@ -141,3 +142,10 @@
 	spawn(60 SECONDS)
 		var/datum/supply_packs/misc/snow_machine/xmas = SSeconomy.supply_packs["[/datum/supply_packs/misc/snow_machine]"]
 		xmas.special = FALSE
+
+// Новый год
+/datum/holiday/celebrate()
+	for(var/obj/structure/window/full/reinforced/rwindows in world)
+		rwindows.edge_overlay_file = 'modular_ss220/events/icons/xmaslights.dmi'
+	for(var/obj/structure/window/full/plasmareinforced/rplasma in world)
+		rplasma.edge_overlay_file = 'modular_ss220/events/icons/xmaslights.dmi'
