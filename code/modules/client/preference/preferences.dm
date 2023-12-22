@@ -390,8 +390,8 @@ GLOBAL_LIST_INIT(special_role_times, list( //minimum age (in days) for accounts 
 
 			var/datum/species/myspecies = GLOB.all_species[active_character.species]
 			if(!isnull(myspecies))
-				dat += "<h2>Species Information</h2>"
-				dat += "<br><b>Species Description:</b> [myspecies.blurb]<br>"
+				dat += "<h2>Информация о расе</h2>"
+				dat += "<br><b>Описание расы:</b> [myspecies.blurb]<br>"
 
 			dat += "</td></tr></table>"
 

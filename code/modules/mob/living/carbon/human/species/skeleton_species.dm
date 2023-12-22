@@ -3,7 +3,7 @@
 	name = "Ancient Skeleton"
 	name_plural = "Ancient Skeletons"
 
-	blurb = "Spoopy and scary."
+	blurb = "Жуткие и страшные."
 
 	icobase = 'icons/mob/human_races/r_skeleton.dmi'
 
