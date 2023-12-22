@@ -60,13 +60,13 @@
 	var/obj/screen/credit/logo/logo = screen_credits[1]
 	logo.rollem()
 
-/datum/credits/proc/start_rolling_credit_item(list/clients, credit_item)
+/datum/credits/proc/start_rolling_credit_item(list/client/clients, credit_item)
 	var/obj/screen/credit/title = new(null, credit_item, clients)
 	screen_credits += title
 
 	title.rollem()
 
-/datum/credits/proc/clear_credits_for_clients(list/clients)
+/datum/credits/proc/clear_credits_for_clients(list/client/clients)
 	screen_credits.Cut()
 
 	for(var/client/client in clients)

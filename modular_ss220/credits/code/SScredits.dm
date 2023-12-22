@@ -29,7 +29,7 @@ SUBSYSTEM_DEF(credits)
 
 	current_cinematic = play_cinematic(cinematic_type, world)
 
-/datum/controller/subsystem/credits/proc/roll_credits_for_clients(list/clients)
+/datum/controller/subsystem/credits/proc/roll_credits_for_clients(list/client/clients)
 	end_titles.roll_credits_for_clients(clients)
 
 /datum/controller/subsystem/credits/proc/clear_credits(client/client)
@@ -38,4 +38,5 @@ SUBSYSTEM_DEF(credits)
 
 	for(var/credit in client.credits)
 		client.screen -= credit
-		QDEL_NULL(credit)
+
+	client.credits.Cut()
