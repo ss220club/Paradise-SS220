@@ -2885,6 +2885,9 @@
 "ati" = (
 /obj/machinery/light/small/directional/east,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/table/reinforced,
+/obj/item/reagent_containers/iv_bag/blood/random,
+/obj/item/reagent_containers/food/drinks/bottle/vodka,
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -33698,9 +33701,9 @@
 "coy" = (
 /obj/machinery/economy/vending/wallmed/directional/north,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	icon_state = "white"
-	},
+/obj/effect/spawner/lootdrop/trash,
+/obj/effect/landmark/burnturf,
+/turf/simulated/floor/plating,
 /area/station/maintenance/aft)
 "coz" = (
 /obj/machinery/light/directional/west,
@@ -43593,9 +43596,7 @@
 /obj/item/bedsheet/medical,
 /obj/machinery/light_construct/directional/north,
 /obj/structure/sign/poster/contraband/random/north,
-/turf/simulated/floor/plasteel{
-	icon_state = "white"
-	},
+/turf/simulated/floor/plating,
 /area/station/maintenance/aft)
 "daM" = (
 /obj/machinery/economy/vending/medical,
@@ -56766,6 +56767,12 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos/distribution)
+"iHU" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/effect/spawner/lootdrop/trash,
+/turf/simulated/floor/plating,
+/area/station/maintenance/aft)
 "iIf" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -61016,6 +61023,10 @@
 	icon_state = "darkgreycheck"
 	},
 /area/station/command/office/rd)
+"kLM" = (
+/obj/effect/decal/cleanable/fungus,
+/turf/simulated/wall,
+/area/station/maintenance/aft)
 "kLT" = (
 /obj/machinery/shower{
 	dir = 8
@@ -63335,6 +63346,7 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
+/obj/effect/landmark/burnturf,
 /turf/simulated/floor/plasteel{
 	icon_state = "neutralcorner"
 	},
@@ -64337,6 +64349,14 @@
 	icon_state = "dark"
 	},
 /area/station/security/armory/secure)
+"mfh" = (
+/obj/effect/spawner/lootdrop{
+	icon_state = "grille";
+	loot = list(/obj/structure/grille=8,/obj/structure/grille/broken=2);
+	name = "normal or broken grille spawner"
+	},
+/turf/simulated/floor/plating,
+/area/station/maintenance/aft)
 "mfm" = (
 /obj/structure/chair/comfy/beige{
 	dir = 4
@@ -71472,6 +71492,10 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/station/hallway/primary/aft)
+"pAW" = (
+/obj/effect/landmark/burnturf,
+/turf/simulated/floor/plating,
+/area/station/maintenance/aft)
 "pBl" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -79918,9 +79942,8 @@
 "twN" = (
 /obj/machinery/economy/vending/wallmed/directional/east,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel{
-	icon_state = "white"
-	},
+/obj/effect/landmark/burnturf,
+/turf/simulated/floor/plating,
 /area/station/maintenance/aft)
 "txp" = (
 /obj/effect/turf_decal/delivery/white/hollow,
@@ -81519,10 +81542,10 @@
 "uqN" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/crate/medical,
-/obj/effect/spawner/lootdrop/maintenance,
-/turf/simulated/floor/plasteel{
-	icon_state = "white"
-	},
+/obj/item/surgicaldrill,
+/obj/effect/spawner/lootdrop/maintenance/two,
+/obj/effect/landmark/burnturf,
+/turf/simulated/floor/plating,
 /area/station/maintenance/aft)
 "urv" = (
 /obj/effect/spawner/window/reinforced/grilled,
@@ -108445,11 +108468,11 @@ cvb
 bLH
 dgG
 bZU
+mfh
 chy
-chy
 bZU
 bZU
-bZU
+kLM
 wsq
 cwO
 cfc
@@ -108706,8 +108729,8 @@ wFW
 chy
 bZU
 muB
-chy
-chy
+pAW
+pAW
 cwO
 bZU
 cRc
@@ -108963,8 +108986,8 @@ eyo
 chy
 bZU
 eyo
-chy
-chy
+pAW
+vCt
 xxL
 eJG
 czw
@@ -109221,7 +109244,7 @@ ctP
 ctP
 ctP
 muB
-chy
+pAW
 cvk
 dBh
 chy
@@ -110506,7 +110529,7 @@ lrA
 mXx
 ctP
 bZU
-bZU
+kLM
 chy
 kZG
 bZU
@@ -111275,7 +111298,7 @@ cEY
 daL
 asI
 cMG
-uMx
+iHU
 uMx
 lyD
 bgZ
