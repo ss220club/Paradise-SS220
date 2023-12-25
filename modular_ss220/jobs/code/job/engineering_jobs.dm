@@ -55,12 +55,12 @@
 	if(H.gender == FEMALE)
 		uniform = /obj/item/clothing/under/rank/engineering/engineer/skirt
 
+/datum/job/chief_engineer
+	exp_map = list(EXP_TYPE_ENGINEERING = (1200 + NOVICE_JOB_MINUTES))
 
-/datum/job/engineer/New()
-	. = ..()
-	change_exp(EXP_TYPE_CREW, EXP_TYPE_ENGINEERING)
+/datum/job/engineer
+	exp_map = list(EXP_TYPE_ENGINEERING = (300 + NOVICE_JOB_MINUTES))
 
-/datum/job/atmos/New()
-	. = ..()
-	change_exp(EXP_TYPE_CREW, EXP_TYPE_ENGINEERING)
+/datum/job/atmos
+	exp_map = list(EXP_TYPE_ENGINEERING = (300 + NOVICE_JOB_MINUTES))
 

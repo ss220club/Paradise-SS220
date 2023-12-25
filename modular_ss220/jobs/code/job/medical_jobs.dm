@@ -48,31 +48,27 @@
 	if(H.gender == FEMALE)
 		uniform = /obj/item/clothing/under/rank/medical/doctor/skirt
 
-/datum/job/doctor/New()
-	. = ..()
-	change_exp(EXP_TYPE_CREW, EXP_TYPE_MEDICAL)
+/datum/job/cmo
+	exp_map = list(EXP_TYPE_MEDICAL = (1200 + NOVICE_JOB_MINUTES))
 
-/datum/job/coroner/New()
-	. = ..()
-	change_exp(EXP_TYPE_CREW, EXP_TYPE_MEDICAL)
+/datum/job/doctor
+	exp_map = list(EXP_TYPE_MEDICAL = (300 + NOVICE_JOB_MINUTES))
 
-/datum/job/chemist/New()
-	. = ..()
-	change_exp(EXP_TYPE_CREW, EXP_TYPE_MEDICAL)
+/datum/job/coroner
+	exp_map = list(EXP_TYPE_MEDICAL = (180 + NOVICE_JOB_MINUTES))
 
-/datum/job/geneticist/New()
-	. = ..()
-	change_exp(EXP_TYPE_CREW, EXP_TYPE_MEDICAL)
+/datum/job/chemist
+	exp_map = list(EXP_TYPE_MEDICAL = (300 + NOVICE_JOB_MINUTES))
 
-/datum/job/virologist/New()
-	. = ..()
-	change_exp(EXP_TYPE_CREW, EXP_TYPE_MEDICAL)
+/datum/job/geneticist
+	exp_map = list(EXP_TYPE_MEDICAL = (300 + NOVICE_JOB_MINUTES))
 
-/datum/job/psychiatrist/New()
-	. = ..()
-	change_exp(EXP_TYPE_CREW, EXP_TYPE_MEDICAL)
+/datum/job/virologist
+	exp_map = list(EXP_TYPE_MEDICAL = (300 + NOVICE_JOB_MINUTES))
 
-/datum/job/paramedic/New()
-	. = ..()
-	change_exp(EXP_TYPE_CREW, EXP_TYPE_MEDICAL)
+/datum/job/psychiatrist
+	exp_map = list(EXP_TYPE_MEDICAL = NOVICE_JOB_MINUTES)
+
+/datum/job/paramedic
+	exp_map = list(EXP_TYPE_MEDICAL = (180 + NOVICE_JOB_MINUTES))
 

@@ -74,7 +74,3 @@
 // OFFICIAL parameters: 17 / HOS, Bart / 400 / 700
 /datum/character_save/SetChoices(mob/user, limit = 18, list/splitJobs = list("Head of Security", "Bartender"), widthPerColumn = 450, height = 700)
 	. = ..()
-
-/datum/job/proc/change_exp(exp_type, new_exp_type)
-	exp_map[exp_type] += NOVICE_JOB_MINUTES
-	exp_map.Add(list("[new_exp_type]" = NOVICE_JOB_MINUTES))
