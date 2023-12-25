@@ -40,3 +40,12 @@
 	. = ..()
 	if(H.gender == FEMALE)
 		uniform = /obj/item/clothing/under/rank/rnd/scientist/skirt
+
+/datum/job/scientist/New()
+	. = ..()
+	change_exp(EXP_TYPE_CREW, EXP_TYPE_SCIENCE)
+
+/datum/job/roboticist/New()
+	. = ..()
+	change_exp(EXP_TYPE_CREW, EXP_TYPE_SCIENCE)
+

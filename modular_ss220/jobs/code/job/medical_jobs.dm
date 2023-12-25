@@ -47,3 +47,32 @@
 	. = ..()
 	if(H.gender == FEMALE)
 		uniform = /obj/item/clothing/under/rank/medical/doctor/skirt
+
+/datum/job/doctor/New()
+	. = ..()
+	change_exp(EXP_TYPE_CREW, EXP_TYPE_MEDICAL)
+
+/datum/job/coroner/New()
+	. = ..()
+	change_exp(EXP_TYPE_CREW, EXP_TYPE_MEDICAL)
+
+/datum/job/chemist/New()
+	. = ..()
+	change_exp(EXP_TYPE_CREW, EXP_TYPE_MEDICAL)
+
+/datum/job/geneticist/New()
+	. = ..()
+	change_exp(EXP_TYPE_CREW, EXP_TYPE_MEDICAL)
+
+/datum/job/virologist/New()
+	. = ..()
+	change_exp(EXP_TYPE_CREW, EXP_TYPE_MEDICAL)
+
+/datum/job/psychiatrist/New()
+	. = ..()
+	change_exp(EXP_TYPE_CREW, EXP_TYPE_MEDICAL)
+
+/datum/job/paramedic/New()
+	. = ..()
+	change_exp(EXP_TYPE_CREW, EXP_TYPE_MEDICAL)
+
