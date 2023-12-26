@@ -1,5 +1,7 @@
 #define COMSIG_SUBSYSTEM_POST_INITIALIZE "post_initialize"
 
+GLOBAL_LIST_EMPTY(possible_gifts)
+
 /datum/controller/subsystem/holiday/Initialize()
 	. = ..()
 	SEND_SIGNAL(src, COMSIG_SUBSYSTEM_POST_INITIALIZE)
@@ -10,7 +12,6 @@
 	icon = 'icons/mob/screen_gen.dmi'
 	icon_state = "x2"
 	layer = LOW_LANDMARK_LAYER
-	var/fail_count = 0
 	/// Christmas tree, no presents included.
 	var/christmas_tree = /obj/structure/flora/tree/pine/xmas
 	/// Christmas tree, presents included.
@@ -41,19 +42,16 @@
 	name = "\improper новогодний подарок"
 	desc = "Подарок! Что же тут..."
 
-/obj/item/a_gift/anything/attack_self(mob/M as mob)
-	var/static/list/obj/item/possible_gifts = null
+/obj/item/a_gift/anything/attack_self(mob/M)
+	if(!GLOB.possible_gifts.len)
+		var/list/gift_types_list = subtypesof(/obj/item)
+		for(var/thing in gift_types_list)
+			var/obj/item/item = thing
+			if((!initial(item.icon_state)) || (!initial(item.item_state)) || (initial(item.flags) & (ABSTRACT | NODROP)) || (initial(item.w_class) > 6))
+				gift_types_list -= thing
+			GLOB.possible_gifts = gift_types_list
 
-	if(isnull(possible_gifts))
-		possible_gifts = list()
-		for(var/type in subtypesof(/obj/item))
-			var/obj/item/thing = type
-			if(!initial(thing.icon_state))
-				continue
-
-			possible_gifts += type
-
-	var/something = pick(possible_gifts)
+	var/something = pick(GLOB.possible_gifts)
 	var/obj/item/gift = new something(M)
 	M.unEquip(src, TRUE)
 	M.put_in_hands(gift)
@@ -144,8 +142,18 @@
 		xmas.special = FALSE
 
 // Новый год
-/datum/holiday/celebrate()
+/datum/holiday/new_year/celebrate()
 	for(var/obj/structure/window/full/reinforced/rwindows in world)
 		rwindows.edge_overlay_file = 'modular_ss220/events/icons/xmaslights.dmi'
 	for(var/obj/structure/window/full/plasmareinforced/rplasma in world)
 		rplasma.edge_overlay_file = 'modular_ss220/events/icons/xmaslights.dmi'
+
+/obj/structure/window/full/reinforced/update_overlays()
+	. = ..()
+	if(NEW_YEAR in SSholiday.holidays)
+		underlays += emissive_appearance(edge_overlay_file, "[smoothing_junction]_lightmask")
+		
+/obj/structure/window/full/plasmareinforced/update_overlays()
+	. = ..()
+	if(NEW_YEAR in SSholiday.holidays)
+		underlays += emissive_appearance(edge_overlay_file, "[smoothing_junction]_lightmask")
