@@ -20,16 +20,16 @@
 		tts_seeds = SStts220.tts_seeds_names
 	else
 		tts_seeds = SStts220.get_available_seeds(src)
+	var/datum/character_save/active_character = user?.client?.prefs.active_character
 	var/new_tts_seed
-	if(user.client && user.client.prefs.active_character.tts_seed && (user.gender == user.client.prefs.active_character.gender))
-		if(alert(user || src, "Оставляем голос вашего персонажа [user.client.prefs.active_character.real_name]?", "Выбор голоса", "Нет", "Да") ==  "Да")
-			new_tts_seed = user.client.prefs.active_character.tts_seed
+	if(active_character.tts_seed && (user.gender == active_character.gender))
+		if(alert(user || src, "Оставляем голос вашего персонажа [active_character.real_name]?", "Выбор голоса", "Нет", "Да") ==  "Да")
+			new_tts_seed =active_character.tts_seed
 	if(!new_tts_seed)
 		var/tts_gender = get_converted_tts_seed_gender(user.gender)
-		//new_tts_seed = tgui_input_list(user, "Меняем голос?", "Преобразуем голос", SStts220.tts_list_names_gender[tts_gender], timeout = 60 SECONDS)
 		new_tts_seed = input(user, "Выберите голос вашего персонажа", "Преобразуем голос") as null|anything in SStts220.tts_list_names_gender[tts_gender]
-	if(!new_tts_seed)
-		return null
+		if(!new_tts_seed)
+			return null
 	if(!silent_target && ismob(src) && src != user)
 		INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(tts_cast), null, src, tts_test_str, new_tts_seed, FALSE)
 	if(user)
@@ -78,6 +78,8 @@
 /atom/proc/get_random_tts_seed_gender()
 	var/tts_choice = pick_tts_seed_gender(gender)
 	var/datum/tts_seed/seed = SStts220.tts_seeds[tts_choice]
+	if(!seed)
+		return null
 	return seed.name
 
 /**

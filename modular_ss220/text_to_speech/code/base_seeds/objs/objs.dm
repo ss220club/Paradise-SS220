@@ -20,6 +20,6 @@
 	. = ..()
 	options |= list("Voice TTS")
 
-/obj/structure/mirror/magic/proc/tts_choose(choice, mob/living/carbon/human/H)
+/obj/structure/mirror/magic/proc/tts_choose(choice, mob/living/carbon/human/human_to_update)
 	if(choice == "Voice TTS")
-		H.change_voice(H)
+		human_to_update.change_voice(human_to_update)
