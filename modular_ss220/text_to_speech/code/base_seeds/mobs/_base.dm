@@ -1,11 +1,6 @@
 //Fallback values for TTS voices
 
-/mob/living/carbon/Initialize()
-	. = ..()
-	if(!tts_seed)
-		tts_seed = get_random_tts_seed_gender()
-
-/mob/living/silicon/Initialize()
+/mob/living/Initialize()
 	. = ..()
 	if(!tts_seed)
 		tts_seed = get_random_tts_seed_gender()
