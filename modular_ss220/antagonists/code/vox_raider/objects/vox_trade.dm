@@ -1,10 +1,12 @@
 /obj/machinery/vox_trader
 	name = "Расчичетчикик"
-	desc = "Приемная и расчетная машина для ценностей. Проста также как еда воксов."
+	desc = "Приемная и расчетная связная машина для ценностей. Проста также как еда воксов."
 	// icon = 'icons/obj/recycling.dmi'
 	// icon_state = "grinder-o0"
 	icon = 'modular_ss220/antagonists/icons/trader_machine.dmi'
-	icon_state = "pad-idle"
+	icon_state = "trader-idle"
+	max_integrity = 5000
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	anchored = TRUE
 	density = FALSE
 
@@ -70,11 +72,9 @@
 	valuable_access_list += get_region_accesses(REGION_COMMAND) + get_all_centcom_access() + get_all_syndicate_access() + get_all_misc_access()
 
 /obj/machinery/vox_trader/attack_hand(mob/user)
-	if(issilicon(user))
-		return
-	add_fingerprint(user)
 	if(!check_usable(user))
 		return
+	add_fingerprint(user)
 	INVOKE_ASYNC(src, PROC_REF(do_trade, user))
 
 /obj/machinery/vox_trader/attacked_by(obj/item/I, mob/living/user)
@@ -89,6 +89,9 @@
 
 /obj/machinery/vox_trader/proc/check_usable(mob/user)
 	. = FALSE
+
+	if(issilicon(user))
+		return
 
 	if(!isvox(user))
 		to_chat(user, span_notice("Вы осматриваете [src] и не понимаете как оно работает и куда сувать свои пальцы..."))
@@ -157,7 +160,10 @@
 	playsound(get_turf(src), 'sound/weapons/contractorbatonhit.ogg', 25, TRUE)
 
 	var/values_sum = get_value(user, items_list, TRUE)
-	atom_say(span_greenannounce("Расчет окончен. [values_sum > 2000 ? "Крайне ценно!" : "Ценно!"] Ваша доля [values_sum]"))
+	if(values_sum > 100)
+		atom_say(span_greenannounce("Расчет окончен. [values_sum > 2000 ? "Крайне ценно!" : "Ценно!"] Ваша доля [values_sum]"))
+	else
+		atom_say(span_notice("Расчет окончен. Вы бы еще консервных банок насобирали! Ваша доля [values_sum]"))
 
 /obj/machinery/vox_trader/proc/get_value(mob/user, list/items_list, is_need_grading = FALSE)
 	var/values_sum = 0
