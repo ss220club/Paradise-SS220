@@ -4855,7 +4855,7 @@
 	name = "Полицейский(СП)"
 	value = "slovo_patsana_cop"
 	category = TTS_CATEGORY_BOYS_WORD
-	gender = TTS_GENDER_MALE
+	gender = TTS_GENDER_FEMALE
 
 /datum/tts_seed/silero/sp_main
 	name = "Главный герой(СП)"
