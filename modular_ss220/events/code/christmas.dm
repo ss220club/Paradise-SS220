@@ -109,17 +109,25 @@ GLOBAL_LIST_EMPTY(possible_gifts)
 
 // Рождество
 /datum/holiday/xmas/celebrate()
+	// Новогоднее освещение
+	for(var/obj/machinery/light/lights in GLOB.machines)
+		lights.brightness_color = "#FFE6D9"
+		lights.nightshift_light_color = "#FFC399"
+	// Гурлянды
 	for(var/obj/structure/window/full/reinforced/rwindows in world)
 		rwindows.edge_overlay_file = 'modular_ss220/events/icons/xmaslights.dmi'
 	for(var/obj/structure/window/full/plasmareinforced/rplasma in world)
 		rplasma.edge_overlay_file = 'modular_ss220/events/icons/xmaslights.dmi'
-	for(var/obj/machinery/light/lights in GLOB.machines)
-		lights.brightness_color = "#FFE6D9"
-		lights.nightshift_light_color = "#FFC399"
-	for(var/mob/living/simple_animal/pet/dog/corgi/Ian/Ian in GLOB.mob_list)
-		Ian.place_on_head(new /obj/item/clothing/head/helmet/space/santahat)
+	for(var/turf/simulated/wall/indestructible/fakeglass/fakeglass in world)
+		fakeglass.edge_overlay_file = 'modular_ss220/events/icons/xmaslights.dmi'
+	// Новогодний цвет окон
 	for(var/obj/structure/window/windows in world)
 		windows.color = "#6CA66C"
+	for(var/obj/machinery/door/window/windoor in world)
+		windoor.color = "#6CA66C"
+	for(var/turf/simulated/wall/indestructible/fakeglass/fakeglass in world)
+		fakeglass.color = "#6CA66C"
+	// Их не красить
 	for(var/obj/structure/window/full/plasmabasic/plasma in world)
 		plasma.color = null
 	for(var/obj/structure/window/full/plasmareinforced/rplasma in world)
@@ -128,15 +136,19 @@ GLOBAL_LIST_EMPTY(possible_gifts)
 		shuttle.color = null
 	for(var/obj/structure/window/full/plastitanium/syndie in world)
 		syndie.color = null
-	for(var/obj/machinery/door/window/windoor in world)
-		windoor.color = "#6CA66C"
+	// Лучший подарок для лучшего экипажа
 	for(var/obj/structure/reagent_dispensers/beerkeg/nuke/beernuke in world)
 		beernuke.icon = 'modular_ss220/events/icons/nuclearbomb.dmi'
 	for(var/obj/machinery/nuclearbomb/nuke in world)
 		nuke.icon = 'modular_ss220/events/icons/nuclearbomb.dmi'
+	// Новогодние цветочки (И снеговик)
 	for(var/obj/item/kirbyplants/plants in world)
 		plants.icon = 'modular_ss220/events/icons/xmas.dmi'
 		plants.icon_state = "plant-[rand(1,9)]"
+	// Шляпа Иану
+	for(var/mob/living/simple_animal/pet/dog/corgi/Ian/Ian in GLOB.mob_list)
+		Ian.place_on_head(new /obj/item/clothing/head/helmet/space/santahat)
+	// Снеговик в крафт
 	for(var/datum/crafting_recipe/snowman/S in GLOB.crafting_recipes)
 		S.always_available = TRUE
 		break
@@ -145,12 +157,18 @@ GLOBAL_LIST_EMPTY(possible_gifts)
 		var/datum/supply_packs/misc/snow_machine/xmas = SSeconomy.supply_packs["[/datum/supply_packs/misc/snow_machine]"]
 		xmas.special = FALSE
 
+// Световые маски на гурлянды, красивое в темноте
 /obj/structure/window/full/reinforced/update_overlays()
 	. = ..()
 	if(CHRISTMAS in SSholiday.holidays)
 		underlays += emissive_appearance(edge_overlay_file, "[smoothing_junction]_lightmask")
 		
 /obj/structure/window/full/plasmareinforced/update_overlays()
+	. = ..()
+	if(CHRISTMAS in SSholiday.holidays)
+		underlays += emissive_appearance(edge_overlay_file, "[smoothing_junction]_lightmask")
+
+/turf/simulated/wall/indestructible/fakeglass/update_overlays()
 	. = ..()
 	if(CHRISTMAS in SSholiday.holidays)
 		underlays += emissive_appearance(edge_overlay_file, "[smoothing_junction]_lightmask")
