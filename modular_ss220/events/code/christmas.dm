@@ -109,6 +109,10 @@ GLOBAL_LIST_EMPTY(possible_gifts)
 
 // Рождество
 /datum/holiday/xmas/celebrate()
+	for(var/obj/structure/window/full/reinforced/rwindows in world)
+		rwindows.edge_overlay_file = 'modular_ss220/events/icons/xmaslights.dmi'
+	for(var/obj/structure/window/full/plasmareinforced/rplasma in world)
+		rplasma.edge_overlay_file = 'modular_ss220/events/icons/xmaslights.dmi'
 	for(var/obj/machinery/light/lights in GLOB.machines)
 		lights.brightness_color = "#FFE6D9"
 		lights.nightshift_light_color = "#FFC399"
@@ -141,19 +145,12 @@ GLOBAL_LIST_EMPTY(possible_gifts)
 		var/datum/supply_packs/misc/snow_machine/xmas = SSeconomy.supply_packs["[/datum/supply_packs/misc/snow_machine]"]
 		xmas.special = FALSE
 
-// Новый год
-/datum/holiday/new_year/celebrate()
-	for(var/obj/structure/window/full/reinforced/rwindows in world)
-		rwindows.edge_overlay_file = 'modular_ss220/events/icons/xmaslights.dmi'
-	for(var/obj/structure/window/full/plasmareinforced/rplasma in world)
-		rplasma.edge_overlay_file = 'modular_ss220/events/icons/xmaslights.dmi'
-
 /obj/structure/window/full/reinforced/update_overlays()
 	. = ..()
-	if(NEW_YEAR in SSholiday.holidays)
+	if(CHRISTMAS in SSholiday.holidays)
 		underlays += emissive_appearance(edge_overlay_file, "[smoothing_junction]_lightmask")
 		
 /obj/structure/window/full/plasmareinforced/update_overlays()
 	. = ..()
-	if(NEW_YEAR in SSholiday.holidays)
+	if(CHRISTMAS in SSholiday.holidays)
 		underlays += emissive_appearance(edge_overlay_file, "[smoothing_junction]_lightmask")
