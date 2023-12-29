@@ -12,39 +12,44 @@
 	if(..())
 		playsound(src, src.trigger_sound, 40, 1)
 
-// basic class for other custom bears
-// code requires every subtype of /mob/living/simple_animal to be a real mob that can spawn so this one will be just one of those
-/mob/living/simple_animal/hostile/bear/brown
-	name = "Бурый медведь"
+/mob/living/simple_animal/hostile/bear/custom
+	name = "Медведь"
 	desc = "Не такой уж и плюшевый"
 	icon = 'modular_ss220/mobs/icons/mob/animal.dmi'
 	icon_state = "brownbear"
 	icon_living = "brownbear"
 	icon_dead = "brownbear_dead"
 	icon_gib = "brownbear_gib"
+	gold_core_spawnable = NO_SPAWN
 
-/mob/living/simple_animal/hostile/bear/brown/Move()
+/mob/living/simple_animal/hostile/bear/custom/Move()
 	. = ..()
 	if(stat == DEAD)
 		return
 
 	icon_state = icon_living
 
-/mob/living/simple_animal/hostile/bear/brown/snow
+/mob/living/simple_animal/hostile/bear/custom/brown
+	name = "Бурый медведь"
+	gold_core_spawnable = HOSTILE_SPAWN
+
+/mob/living/simple_animal/hostile/bear/custom/snow
 	name = "Снежный медведь"
 	desc = "Не любит гостей в своей берлоге."
 	icon_state = "snowbear"
 	icon_living = "snowbear"
 	icon_dead = "snowbear_dead"
 	icon_gib = "snowbear_gib"
+	gold_core_spawnable = HOSTILE_SPAWN
 
-/mob/living/simple_animal/hostile/bear/brown/combat
+/mob/living/simple_animal/hostile/bear/custom/combat
 	name = "Боевой медведь"
 	desc = "Боевая машина для убийств."
 	icon_state = "combatbear"
 	icon_living = "combatbear"
 	icon_dead = "combatbear_dead"
 	icon_gib = "combatbear_gib"
+	gold_core_spawnable = HOSTILE_SPAWN
 
 	maxHealth = 200
 	health = 200
