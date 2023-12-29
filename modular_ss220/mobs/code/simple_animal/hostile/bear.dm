@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/bear
-	name = "космический медведь"
+	name = "Космический медведь"
 	desc = "Вам не нужно быть быстрее медведя, вам нужно быть быстрее напарников."
 	blood_volume = BLOOD_VOLUME_NORMAL
 	attacktext = "терзает"
@@ -12,12 +12,10 @@
 	if(..())
 		playsound(src, src.trigger_sound, 40, 1)
 
-// /mob/living/simple_animal/hostile/bear/Move()
-// 			icon_state = "[icon_living]"
-// 			icon_state = "[icon_living]floor"
-
+// basic class for other custom bears
+// code requires every subtype of /mob/living/simple_animal to be a real mob that can spawn so this one will be just one of those
 /mob/living/simple_animal/hostile/bear/brown
-	name = "бурый медведь"
+	name = "Бурый медведь"
 	desc = "Не такой уж и плюшевый"
 	icon = 'modular_ss220/mobs/icons/mob/animal.dmi'
 	icon_state = "brownbear"
@@ -25,19 +23,24 @@
 	icon_dead = "brownbear_dead"
 	icon_gib = "brownbear_gib"
 
-/mob/living/simple_animal/hostile/bear/snow
-	name = "снежный медведь"
+/mob/living/simple_animal/hostile/bear/brown/Move()
+	. = ..()
+	if(stat == DEAD)
+		return
+
+	icon_state = icon_living
+
+/mob/living/simple_animal/hostile/bear/brown/snow
+	name = "Снежный медведь"
 	desc = "Не любит гостей в своей берлоге."
-	icon = 'modular_ss220/mobs/icons/mob/animal.dmi'
 	icon_state = "snowbear"
 	icon_living = "snowbear"
 	icon_dead = "snowbear_dead"
 	icon_gib = "snowbear_gib"
 
-/mob/living/simple_animal/hostile/bear/combat
-	name = "боевой медведь"
+/mob/living/simple_animal/hostile/bear/brown/combat
+	name = "Боевой медведь"
 	desc = "Боевая машина для убийств."
-	icon = 'modular_ss220/mobs/icons/mob/animal.dmi'
 	icon_state = "combatbear"
 	icon_living = "combatbear"
 	icon_dead = "combatbear_dead"
@@ -47,7 +50,7 @@
 	health = 200
 	obj_damage = 80
 	melee_damage_lower = 30
-	melee_damage_upper = 80
+	melee_damage_upper = 80 // кто-то вообще думал о балансе, хоть иногда?
 
 	speed = 2
 	blood_volume = BLOOD_VOLUME_NORMAL
