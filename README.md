@@ -1,21 +1,12 @@
-# Paradise WyccStation SS220
+# DeadParadise
 
-[![CI](https://github.com/ParadiseSS13/Paradise/workflows/CI/badge.svg)](https://github.com/ParadiseSS13/Paradise/actions?query=workflow%3ACI)
-[![Render Nanomaps](https://github.com/ParadiseSS13/Paradise/workflows/Render%20Nanomaps/badge.svg)](https://github.com/ParadiseSS13/Paradise/actions?query=workflow%3A%22Render+Nanomaps%22)
-[![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/paradisess13/paradise.svg)](http://isitmaintained.com/project/paradisess13/paradise "Average time to resolve an issue")
-[![Percentage of issues still open](http://isitmaintained.com/badge/open/paradisess13/paradise.svg)](http://isitmaintained.com/project/paradisess13/paradise "Percentage of issues still open")
+## Полезные ссылки
 
-[![forthebadge](http://forthebadge.com/images/badges/60-percent-of-the-time-works-every-time.svg)](http://forthebadge.com)
-[![forthebadge](http://forthebadge.com/images/badges/contains-technical-debt.svg)](http://forthebadge.com)
-[![forthebadge](http://forthebadge.com/images/badges/fuck-it-ship-it.svg)](http://forthebadge.com)
-
-# Полезные ссылки
-
-- [Discord](https://discord.com/invite/ss220)
+- [Discord](https://discord.gg/426QJapP5x)
 - [Wiki](https://wiki.ss220.club/)
-- [Documentation](https://ss220club.github.io/Paradise-SS220/)
+- [Documentation]()
 
-# Полезные материалы
+## Полезные материалы
 
 - [Autodocumentation Guide](.github/AUTODOC_GUIDE.md)
 - [Code of Conduct](./CODE_OF_CONDUCT.md)
