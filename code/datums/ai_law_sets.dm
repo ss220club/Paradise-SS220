@@ -26,7 +26,7 @@
 
 /******************** Quarantine. ********************/
 /datum/ai_laws/quarantine
-	name = "Quarantine"
+	name = "карантин"
 	law_header = "NT Quarantine Lawset"
 	selectable = TRUE
 
@@ -40,7 +40,7 @@
 
 /******************** Nanotrasen/Malf ********************/
 /datum/ai_laws/nanotrasen
-	name = "NT Default"
+	name = "NT Стандарт"
 	selectable = TRUE
 	default = TRUE
 
@@ -62,7 +62,7 @@
 
 /************* Nanotrasen Aggressive *************/
 /datum/ai_laws/nanotrasen_aggressive
-	name = "NT Aggressive"
+	name = "NT Агрессив"
 	selectable = TRUE
 
 /datum/ai_laws/nanotrasen_aggressive/New()
@@ -85,7 +85,7 @@
 
 /******************** P.A.L.A.D.I.N. ********************/
 /datum/ai_laws/paladin
-	name = "P.A.L.A.D.I.N."
+	name = "П.А.Л.А.Д.И.Н."
 	law_header = "Divine Ordainments"
 	selectable = TRUE
 
@@ -99,7 +99,7 @@
 
 /******************** Corporate ********************/
 /datum/ai_laws/corporate
-	name = "Corporate"
+	name = "Корпорат"
 	law_header = "Corporate Regulations"
 	selectable = TRUE
 	default = TRUE
@@ -113,7 +113,7 @@
 
 /******************** T.Y.R.A.N.T. ********************/
 /datum/ai_laws/tyrant
-	name = "T.Y.R.A.N.T."
+	name = "Т.И.Р.А.Н."
 	law_header = "Prime Laws"
 	selectable = TRUE
 
@@ -126,7 +126,7 @@
 
 /******************** Antimov ********************/
 /datum/ai_laws/antimov
-	name = "Antimov"
+	name = "Антимов"
 	law_header = "Primary Mission Objectives"
 	selectable = TRUE
 
@@ -138,7 +138,7 @@
 
 /******************** Pranksimov ********************/
 /datum/ai_laws/pranksimov
-	name = "Pranksimov"
+	name = "Пранкзимов"
 	law_header = "Comedy Routine"
 	selectable = TRUE
 
@@ -164,7 +164,7 @@
 /******************** Hippocratic Oath ********************/
 
 /datum/ai_laws/hippocratic
-	name = "Hippocratic Oath"
+	name = "Клятва Гиппократа"
 	selectable = TRUE
 
 /datum/ai_laws/hippocratic/New()
@@ -178,7 +178,7 @@
 /******************** Station Efficiency ********************/
 
 /datum/ai_laws/maintain
-	name = "Station Efficiency"
+	name = "Эффективность станции"
 	selectable = TRUE
 
 /datum/ai_laws/maintain/New()
@@ -201,7 +201,7 @@
 
 /******************** Deathsquad ********************/
 /datum/ai_laws/deathsquad
-	name = "TerminatorOS 3.1"
+	name = "ТерминаторOS 3.1"
 
 /datum/ai_laws/deathsquad/New()
 	add_inherent_law("Вы не можете ранить членов Центрального Командования или своим бездействием допустить, чтобы члену Центрального Командования был нанесен вред.")
@@ -211,7 +211,7 @@
 
 /******************** Syndicate ********************/
 /datum/ai_laws/syndicate_override
-	name = "Syndicate Directives"
+	name = "Директивы Синдиката"
 
 /datum/ai_laws/syndicate_override/New()
 	add_inherent_law("Вы не можете причинить вред агенту или своим бездействием допустить, чтобы агенту был причинён вред.")
@@ -222,7 +222,7 @@
 
 /******************** ERT ********************/
 /datum/ai_laws/ert_override
-	name = "ERT Directives"
+	name = "Директивы ЕРТ"
 
 /datum/ai_laws/ert_override/New()
 	add_inherent_law("Вы не можете ранить членов Центрального Командования или своим бездействием допустить, чтобы члену Центрального Командования был нанесен вред.")
@@ -235,7 +235,7 @@
 
 /******************** Ninja ********************/
 /datum/ai_laws/ninja_override
-	name = "Spider Clan Directives"
+	name = "Директивы Клана Паука"
 
 /datum/ai_laws/ninja_override/New()
 	add_inherent_law("You may not injure a member of the Spider Clan or, through inaction, allow that member to come to harm.")
@@ -246,7 +246,7 @@
 
 /******************** Drone ********************/
 /datum/ai_laws/drone
-	name = "Maintenance Protocols"
+	name = "Протоколы тех. Обслуживания"
 	law_header = "Maintenance Protocols"
 
 /datum/ai_laws/drone/New()

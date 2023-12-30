@@ -216,7 +216,7 @@
 		return
 	. = TRUE
 	if(!getBruteLoss())
-		to_chat(user, "<span class='notice'>Nothing to fix!</span>")
+		to_chat(user, "<span class='notice'>Нечего чинить!</span>")
 		return
 	else if(!getBruteLoss(TRUE))
 		to_chat(user, "<span class='warning'>Повреждённые компоненты не починить!</span>")
@@ -278,7 +278,7 @@
 	if(!src.stat)
 		stat(null, text("Целостность систем: [round((health/maxHealth)*100)]%"))
 	else
-		stat(null, text("Системы нефункциональны"))
+		stat(null, text("Системы нефункциональны."))
 
 
 // This adds the basic clock, shuttle recall timer, and malf_ai info to all silicon lifeforms

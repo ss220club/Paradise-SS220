@@ -1328,7 +1328,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 			return
 
 		if(stat != DEAD)
-			to_chat(user, "<span class='notice'>Начинается передача активного разума: пожалуйста, ожидайте.</span>")
+			to_chat(user, "<span class='notice'>Начинается загрузка активного разума: пожалуйста, ожидайте.</span>")
 
 			if(!do_after_once(user, 5 SECONDS, target = src) || !Adjacent(user))
 				to_chat(user, "<span class='warning'>Перенос сознания отменён.</span>")
@@ -1342,7 +1342,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 			QDEL_NULL(builtInCamera)
 		forceMove(card) //Throw AI into the card.
 		to_chat(src, "Вас загрузили на портативное устройство. Удалённое соединение с устройствами разорвано.")
-		to_chat(user, "<span class='boldnotice'>Передача успешна</span>: [name] ([rand(1000,9999)].exe) удалён из терминала и перенесён в память устройства.")
+		to_chat(user, "<span class='boldnotice'>Загрузка успешна</span>: [name] ([rand(1000,9999)].exe) удалён из терминала и перенесён в память устройства.")
 
 /mob/living/silicon/ai/can_buckle()
 	return FALSE

@@ -104,7 +104,7 @@
 
 /datum/action/innate/ai/return_to_core
 	name = "Вернуться в Главное Ядро"
-	desc = "Покинуть ЛКП, в который вы себя всунули и вернуться к Главному Ядру."
+	desc = "Покинуть APC, в который вы себя всунули и вернуться к Главному Ядру."
 	icon_icon = 'icons/obj/power.dmi'
 	button_icon_state = "apcemag"
 	auto_use_uses = FALSE // Here just to prevent the "You have X uses remaining" from popping up.
@@ -407,7 +407,7 @@
 
 //Thermal Sensor Override: Unlocks the ability to disable all fire alarms from doing their job.
 /datum/AI_Module/break_fire_alarms
-	module_name = "Перегрузка термальных сенсоров"
+	module_name = "Перегрузка датчиков температуры"
 	mod_pick_name = "burnpigs"
 	description = "Даёт вам возможность перегрузить все термальные датчики на станции. Это приведёт к неспособности определить в комнате огонь и предупредить остальных. \
 	Кто угодно может проверить датчики и заподозрить что-то неладное."
@@ -417,7 +417,7 @@
 	unlock_text = "<span class='notice'>Вы заменяете термальную чувствительность сенсоров с помощью ручной перезаписи, позволяя вам активировать её в любой момент.</span>"
 
 /datum/action/innate/ai/break_fire_alarms
-	name = "Перегрузка термальных сенсоров"
+	name = "Перегрузка датчиков температуры"
 	desc = "Отключает автоматическое определение температуры во всех пожарных датчиках, делая их фактически бесполезными."
 	button_icon_state = "break_fire_alarms"
 	uses = 1
@@ -432,7 +432,7 @@
 
 //Air Alarm Safety Override: Unlocks the ability to enable flooding on all air alarms.
 /datum/AI_Module/break_air_alarms
-	module_name = "Перезагрузка предохранителей атмосферных датчиков"
+	module_name = "Перезагрузка атмосферных датчиков"
 	mod_pick_name = "allow_flooding"
 	description = "Даёт вам возможность отключить все предохранители на атмосферных датчиках. Позволяет вам использовать режим Flood, отключающий скрабберы, а также отключающий проверку давления в вентиляциях. \
 	Любой может проверить интерфейс датчика и заподозрить что-то из-за их нерабочего состояния."
@@ -463,7 +463,7 @@
 	description = "Перегревает машину, вызывая небольшой взрыв и уничтожая её. Два использования за покупку."
 	cost = 20
 	power_type = /datum/action/innate/ai/ranged/overload_machine
-	unlock_text = "<span class='notice'>You enable the ability for the station's APCs to direct intense energy into machinery.</span>"
+	unlock_text = "<span class='notice'>Вы получаете способность направлять энергию из APC напрямую в машинерию.</span>"
 
 /datum/action/innate/ai/ranged/overload_machine
 	name = "Перезагрузка машины"

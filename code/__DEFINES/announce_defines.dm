@@ -5,4 +5,4 @@
 #define ANNOUNCE_KIND_SECURITY	"Оповещение безопасности"
 #define ANNOUNCE_KIND_MAJOR		"Оповещение с NAS Трурль"
 #define ANNOUNCE_KIND_EVENT		"Оповещение с NAS Трурль"  // Intentionally the same as above
-#define ANNOUNCE_KIND_AI		"Оповещение ИИ"
+#define ANNOUNCE_KIND_AI		"Оповещение И.И."

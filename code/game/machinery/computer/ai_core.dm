@@ -1,7 +1,7 @@
 /obj/structure/AIcore
 	density = TRUE
 	anchored = FALSE
-	name = "AI core"
+	name = "Ядро ИИ"
 	icon = 'icons/mob/AI.dmi'
 	icon_state = "0"
 	max_integrity = 500
@@ -23,7 +23,7 @@
 				if(!user.drop_item())
 					return
 				playsound(loc, P.usesound, 50, 1)
-				to_chat(user, "<span class='notice'>You place the circuit board inside the frame.</span>")
+				to_chat(user, "<span class='notice'>Вы вставляете плату в раму.</span>")
 				update_icon(UPDATE_ICON_STATE)
 				state = CIRCUIT_CORE
 				P.forceMove(src)
@@ -34,26 +34,26 @@
 				var/obj/item/stack/cable_coil/C = P
 				if(C.get_amount() >= 5)
 					playsound(loc, 'sound/items/deconstruct.ogg', 50, 1)
-					to_chat(user, "<span class='notice'>You start to add cables to the frame...</span>")
+					to_chat(user, "<span class='notice'>вы добавляете кабелей к раме...</span>")
 					if(do_after(user, 20, target = src) && state == SCREWED_CORE && C.use(5))
-						to_chat(user, "<span class='notice'>You add cables to the frame.</span>")
+						to_chat(user, "<span class='notice'>Вы добавили кабелей к раме.</span>")
 						state = CABLED_CORE
 						update_icon(UPDATE_ICON_STATE)
 				else
-					to_chat(user, "<span class='warning'>You need five lengths of cable to wire the AI core!</span>")
+					to_chat(user, "<span class='warning'>Вам нужно 5 кабелей для вставки проводки в ядро ИИ!</span>")
 				return
 		if(CABLED_CORE)
 			if(istype(P, /obj/item/stack/sheet/rglass))
 				var/obj/item/stack/sheet/rglass/G = P
 				if(G.get_amount() >= 2)
 					playsound(loc, 'sound/items/deconstruct.ogg', 50, 1)
-					to_chat(user, "<span class='notice'>You start to put in the glass panel...</span>")
+					to_chat(user, "<span class='notice'>Вы ставите стеклянную панель...</span>")
 					if(do_after(user, 20, target = src) && state == CABLED_CORE && G.use(2))
-						to_chat(user, "<span class='notice'>You put in the glass panel.</span>")
+						to_chat(user, "<span class='notice'>Вы вставили стеклянную панель.</span>")
 						state = GLASS_CORE
 						update_icon(UPDATE_ICON_STATE)
 				else
-					to_chat(user, "<span class='warning'>You need two sheets of reinforced glass to insert them into the AI core!</span>")
+					to_chat(user, "<span class='warning'>Вам нужно два листа укрепленного стекла для вставки в ядро ИИ!</span>")
 				return
 
 			if(istype(P, /obj/item/aiModule/purge))
@@ -168,7 +168,7 @@
 			log_game("[key_name(usr)] has completed an AI core in [R]: [COORD(loc)].")
 			to_chat(user, "<span class='notice'>You connect the monitor.</span>")
 			if(!brain)
-				var/open_for_latejoin = alert(user, "Would you like this core to be open for latejoining AIs?", "Latejoin", "Yes", "Yes", "No") == "Yes"
+				var/open_for_latejoin = alert(user, "Вы хотите, чтобы это ядро было доступно из лобби игры?", "Latejoin", "Да", "Да", "Нет") == "Да"
 				var/obj/structure/AIcore/deactivated/D = new(loc)
 				if(open_for_latejoin)
 					GLOB.empty_playable_ai_cores += D
@@ -179,11 +179,11 @@
 
 				var/mob/living/silicon/ai/A = new /mob/living/silicon/ai(loc, laws, brain)
 				if(A) //if there's no brain, the mob is deleted and a structure/AIcore is created
-					A.rename_self("AI", 1)
+					A.rename_self("ИИ", 1)
 			SSblackbox.record_feedback("amount", "ais_created", 1)
 			qdel(src)
 		if(AI_READY_CORE)
-			to_chat(user, "<span class='notice'>You disconnect the monitor.</span>")
+			to_chat(user, "<span class='notice'>Вы отключаете монитор.</span>")
 			state = GLASS_CORE
 	update_icon(UPDATE_ICON_STATE)
 
@@ -195,9 +195,9 @@
 	if(!I.use_tool(src, user, 0, volume = I.tool_volume))
 		return
 	if(brain)
-		to_chat(user, "<span class='warning'>Get that [brain.name] out of there first!</span>")
+		to_chat(user, "<span class='warning'> Значала вытащите [brain.name] !</span>")
 	else
-		to_chat(user, "<span class='notice'>You remove the cables.</span>")
+		to_chat(user, "<span class='notice'>Вы убираете проводку.</span>")
 		state = SCREWED_CORE
 		update_icon(UPDATE_ICON_STATE)
 		var/obj/item/stack/cable_coil/A = new /obj/item/stack/cable_coil( loc )
@@ -244,12 +244,12 @@
 		return
 	WELDER_ATTEMPT_WELD_MESSAGE
 	if(I.use_tool(src, user, 20, volume = I.tool_volume))
-		to_chat(user, "<span class='notice'>You deconstruct the frame.</span>")
+		to_chat(user, "<span class='notice'>Вы разбираете раму.</span>")
 		new /obj/item/stack/sheet/plasteel(drop_location(), 4)
 		qdel(src)
 
 /obj/structure/AIcore/deactivated
-	name = "inactive AI"
+	name = "Неактивный ИИ"
 	icon_state = "ai-empty"
 	anchored = TRUE
 	state = AI_READY_CORE

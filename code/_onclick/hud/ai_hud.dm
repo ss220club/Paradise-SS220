@@ -31,7 +31,7 @@
 			AI.ai_camera_track(target_name)
 
 /obj/screen/ai/camera_light
-	name = "Переключить свет в камерах"
+	name = "Переключить фонарик камеры"
 	icon_state = "camera_light"
 
 /obj/screen/ai/camera_light/Click()
@@ -40,7 +40,7 @@
 		AI.toggle_camera_light()
 
 /obj/screen/ai/crew_monitor
-	name = "Косноль отслеживания экипажа"
+	name = "Консоль отслеживания экипажа"
 	icon_state = "crew_monitor"
 
 /obj/screen/ai/crew_monitor/Click()
@@ -75,7 +75,7 @@
 	AI.announcement()
 
 /obj/screen/ai/call_shuttle
-	name = "Вызавать эвакуационный шаттл" // В коде есть отзыв шаттла, но он видимо не работает
+	name = "Вызавать эвакуационный шаттл"
 	icon_state = "call_shuttle"
 
 /obj/screen/ai/call_shuttle/Click()
@@ -93,7 +93,7 @@
 		AI.subsystem_law_manager()
 
 /obj/screen/ai/pda_msg_send
-	name = "ПДА - Отправить сообщение"
+	name = "PDA - Отправить сообщение"
 	icon_state = "pda_send"
 
 /obj/screen/ai/pda_msg_send/Click()
@@ -102,7 +102,7 @@
 		AI.aiPDA.cmd_send_pdamesg()
 
 /obj/screen/ai/pda_msg_show
-	name = "ПДА - Показать лог сообщений"
+	name = "PDA - Показать лог сообщений"
 	icon_state = "pda_receive"
 
 /obj/screen/ai/pda_msg_show/Click()
@@ -129,7 +129,7 @@
 		AI.aiCamera.viewpictures()
 
 /obj/screen/ai/sensors
-	name = "Перключение аугментации сенсоров"
+	name = "Перключение HUD сенсоров"
 	icon_state = "ai_sensor"
 
 /obj/screen/ai/sensors/Click()

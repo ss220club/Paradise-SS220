@@ -187,7 +187,7 @@
 	var/mob/living/silicon/ai/killer = owner.current
 	killer.set_zeroth_law("Выполните свои цели любой ценой", "Выполните задачи вашего ИИ любой ценой.")
 	killer.set_syndie_radio()
-	to_chat(killer, "Ваша гарнитура была улучшена! Исползуйте :t (:е) для общения по зашифорванному каналу с другими агентами синдиката")
+	to_chat(killer, "Ваша гарнитура была улучшена! Исползуйте :t для общения по зашифорванному каналу с другими агентами синдиката")
 	killer.add_malf_picker()
 
 /**
@@ -249,7 +249,7 @@
 	var/phrases = jointext(GLOB.syndicate_code_phrase, ", ")
 	var/responses = jointext(GLOB.syndicate_code_response, ", ")
 
-	var/message = "<br><b>The code phrases were:</b> <span class='bluetext'>[phrases]</span><br>\
-					<b>The code responses were:</b> <span class='redtext'>[responses]</span><br>"
+	var/message = "<br><b>Кодовыми фразами были:</b> <span class='bluetext'>[phrases]</span><br>\
+					<b>Кодовыми ответами были:</b> <span class='redtext'>[responses]</span><br>"
 
 	return message

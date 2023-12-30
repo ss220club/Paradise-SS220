@@ -60,7 +60,7 @@
 ********************/
 /mob/living/silicon/proc/subsystem_atmos_control()
 	set category = "Подсистемы"
-	set name = "Контроль атмосферы"
+	set name = "Менеджер атмосферы"
 
 	atmos_control.ui_interact(usr, state = GLOB.self_state)
 
@@ -76,7 +76,7 @@
 *	Law Manager	*
 ****************/
 /mob/living/silicon/proc/subsystem_law_manager()
-	set name = "Управление законами"
+	set name = "Менеджер законов"
 	set category = "Подсистемы"
 
 	law_manager.ui_interact(usr, state = GLOB.conscious_state)

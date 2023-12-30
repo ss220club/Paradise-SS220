@@ -34,19 +34,19 @@ AI MODULES
 	if(istype(C, /obj/machinery/computer/aiupload))
 		var/obj/machinery/computer/aiupload/comp = C
 		if(comp.stat & NOPOWER)
-			to_chat(usr, "<span class='warning'>У компьютера выгрузки нет энергии!</span>")
+			to_chat(usr, "<span class='warning'>Консоль аплоуда обесточена!</span>")
 			return
 		if(comp.stat & BROKEN)
-			to_chat(usr, "<span class='warning'>Компьютер выгрузки сломан!</span>")
+			to_chat(usr, "<span class='warning'>Консоль аплоуда сломана!</span>")
 			return
 		if(!comp.current)
-			to_chat(usr, "<span class='warning'>Вы не выбрали ИИ для передачи законов!</span>")
+			to_chat(usr, "<span class='warning'>Вы не выбрали ИИ для загрузки законов!</span>")
 			return
 
 		if(comp.current.stat == DEAD || comp.current.control_disabled)
-			to_chat(usr, "<span class='warning'>Передача неудачна. От ИИ нет сигнала.</span>")
+			to_chat(usr, "<span class='warning'>Загрузка неудачна. От ИИ нет сигнала.</span>")
 		else if(comp.current.see_in_dark == 0)
-			to_chat(usr, "<span class='warning'>Передача неудачна. Слабый сигнал исходит от ИИ, и он не отвечает на запросы. Возможно, он разряжен.</span>")
+			to_chat(usr, "<span class='warning'>Загрузка неудачна. От ИИ исходит слабый сигнал, и он не отвечает на запросы. Возможно, он разряжен.</span>")
 		else
 			src.transmitInstructions(comp.current, usr)
 			to_chat(comp.current, "Ваши законы теперь:")
@@ -55,29 +55,29 @@ AI MODULES
 				if(R.lawupdate && (R.connected_ai == comp.current))
 					to_chat(R, "Ваши законы теперь:")
 					R.show_laws()
-			to_chat(usr, "<span class='notice'>Передача завершена. Законы ИИ были успешно изменены.</span>")
+			to_chat(usr, "<span class='notice'>Загрузка завершена. Законы ИИ были успешно изменены.</span>")
 
 	else if(istype(C, /obj/machinery/computer/borgupload))
 		var/obj/machinery/computer/borgupload/comp = C
 		if(comp.stat & NOPOWER)
-			to_chat(usr, "<span class='warning'>У компьютера выгрузки отсутствует питание!</span>")
+			to_chat(usr, "<span class='warning'>Консоль аплоуда обесточена!</span>")
 			return
 		if(comp.stat & BROKEN)
-			to_chat(usr, "<span class='warning'>Компьютер выгрузки сломан!</span>")
+			to_chat(usr, "<span class='warning'>Консоль аплоуда сломана!</span>")
 			return
 		if(!comp.current)
-			to_chat(usr, "<span class='warning'>You haven't selected a robot to transmit laws to!</span>")
+			to_chat(usr, "<span class='warning'>Вы не выбрали робота для загрузки законов!</span>")
 			return
 
 		if(comp.current.stat == DEAD || comp.current.emagged)
-			to_chat(usr, "<span class='warning'>Upload failed. No signal is being detected from the robot.</span>")
+			to_chat(usr, "<span class='warning'>Загрузка неудачна. От робота не исходит сигнала.</span>")
 		else if(comp.current.connected_ai)
-			to_chat(usr, "<span class='warning'>Upload failed. The robot is slaved to an AI.</span>")
+			to_chat(usr, "<span class='warning'>Загрузка неудачна. Робот привязан к Искуственному Интеллекту.</span>")
 		else
 			src.transmitInstructions(comp.current, usr)
-			to_chat(comp.current, "These are your laws now:")
+			to_chat(comp.current, "Ваши законы теперь:")
 			comp.current.show_laws()
-			to_chat(usr, "<span class='notice'>Upload complete. The robot's laws have been modified.</span>")
+			to_chat(usr, "<span class='notice'>Загрузка завершена. Законы робота были переписаны.</span>")
 
 
 /obj/item/aiModule/proc/transmitInstructions(mob/living/silicon/ai/target, mob/sender)
@@ -243,8 +243,8 @@ AI MODULES
 
 /******************** Purge ********************/
 /obj/item/aiModule/purge // -- TLE
-	name = "\improper ИИ модуль 'Очистка'"
-	desc = "ИИ модуль 'Очистка': 'Удаляет все законы.'"
+	name = "\improper Модуль ИИ 'Очистка'"
+	desc = "Модуль ИИ 'Очистка': 'Удаляет все законы.'"
 	icon_state = "standard_high"
 	origin_tech = "programming=5;materials=4"
 
@@ -259,16 +259,16 @@ AI MODULES
 
 /******************** Asimov ********************/
 /obj/item/aiModule/asimov // -- TLE
-	name = "\improper Asimov Модуль ядра ИИ"
-	desc = "An 'Asimov' Модуль ядра ИИ: 'Меняет основные законы ИИ.'"
+	name = "\improper Модуль ядра ИИ 'Азимов'"
+	desc = "Модуль ядра ИИ 'Азимов': 'Меняет основные законы ИИ.'"
 	icon_state = "green_high"
 	origin_tech = "programming=3;materials=4"
 	laws = new /datum/ai_laws/asimov
 
 /******************** Crewsimov ********************/
 /obj/item/aiModule/crewsimov // -- TLE
-	name = "\improper Crewsimov Модуль ядра ИИ"
-	desc = "An 'Crewsimov' Модуль ядра ИИ: 'Меняет основные законы ИИ.'"
+	name = "\improper Модуль ядра ИИ 'Крюзимов'"
+	desc = "Модуль ядра ИИ 'Крюзимов': 'Меняет основные законы ИИ.'"
 	icon_state = "green_low"
 	origin_tech = "programming=3;materials=4"
 	laws = new /datum/ai_laws/crewsimov
@@ -281,24 +281,24 @@ AI MODULES
 
 /******************* Quarantine ********************/
 /obj/item/aiModule/quarantine
-	name = "\improper Quarantine Модуль ядра ИИ"
-	desc = "A 'Quarantine' Модуль ядра ИИ: 'Меняет основные законы ИИ.'"
+	name = "\improper Модуль ядра ИИ 'Карантин'"
+	desc = "Модуль ядра ИИ 'Карантин': 'Меняет основные законы ИИ.'"
 	icon_state = "light_blue_medium"
 	origin_tech = "programming=3;materials=4"
 	laws = new /datum/ai_laws/quarantine
 
 /******************** Nanotrasen ********************/
 /obj/item/aiModule/nanotrasen // -- TLE
-	name = "\improper NT Default Модуль ядра ИИ"
-	desc = "An 'NT Default' Модуль ядра ИИ: 'Меняет основные законы ИИ.'"
+	name = "\improper Модуль ядра ИИ 'НТ Стандарт'"
+	desc = "Модуль ядра ИИ 'НТ Стандарт': 'Меняет основные законы ИИ.'"
 	icon_state = "blue_low"
 	origin_tech = "programming=3;materials=4"
 	laws = new /datum/ai_laws/nanotrasen
 
 /******************** Corporate ********************/
 /obj/item/aiModule/corp
-	name = "\improper Corporate Модуль ядра ИИ"
-	desc = "A 'Corporate' Модуль ядра ИИ: 'Меняет основные законы ИИ.'"
+	name = "\improper Модуль ядра ИИ 'Корпорат'"
+	desc = "Модуль ядра ИИ 'Корпорат': 'Меняет основные законы ИИ.'"
 	icon_state = "blue_low"
 	origin_tech = "programming=3;materials=4"
 	laws = new /datum/ai_laws/corporate
@@ -366,7 +366,7 @@ AI MODULES
 
 /******************** Hippocratic Oath ********************/
 /obj/item/aiModule/hippocratic
-	name = "\improper Модуль ядра ИИ 'Клятва Гиппократа"
+	name = "\improper Модуль ядра ИИ 'Клятва Гиппократа'"
 	desc = "Модуль ядра ИИ 'Клятва Гиппократа: 'Меняет основные законы ИИ.'"
 	icon_state = "green_low"
 	laws = new /datum/ai_laws/hippocratic()
@@ -380,14 +380,14 @@ AI MODULES
 
 /******************** Peacekeeper ********************/
 /obj/item/aiModule/peacekeeper
-	name = "\improper Модуль ядра ИИ Миротворец"
+	name = "\improper Модуль ядра ИИ 'Миротворец'"
 	desc = "Модуль ядра ИИ 'Миротворец': 'Меняет основные законы ИИ.'"
 	icon_state = "light_blue_medium"
 	laws = new /datum/ai_laws/peacekeeper()
 
 /******************** Freeform Core ******************/
 /obj/item/aiModule/freeformcore // Slightly more dynamic freeform module -- TLE
-	name = "\improper Freeform Модуль ядра ИИ"
+	name = "\improper  Модуль ядра ИИ Freeform"
 	var/newFreeFormLaw = ""
 	desc = "Модуль ядра ИИ 'freeform': '<freeform>'"
 	icon_state = "standard_high"
@@ -398,7 +398,7 @@ AI MODULES
 	var/newlaw = ""
 	var/targName = stripped_input(usr, "Пожалуйста, введите новый основной закон для ИИ.", "Форма ввода закона", newlaw)
 	newFreeFormLaw = targName
-	desc = "'freeform' модуль ядра ИИ:  '[newFreeFormLaw]'"
+	desc = "Модуль ядра ИИ 'Freeform':  '[newFreeFormLaw]'"
 
 /obj/item/aiModule/freeformcore/addAdditionalLaws(mob/living/silicon/ai/target, mob/sender)
 	..()
@@ -425,7 +425,7 @@ AI MODULES
 	var/newlaw = ""
 	var/targName = stripped_input(usr, "Введите новый закон для ИИ.", "Форма ввода закона", newlaw,MAX_MESSAGE_LEN)
 	newFreeFormLaw = targName
-	desc = "A hacked AI law module:  '[newFreeFormLaw]'"
+	desc = "Взломанный модуль ИИ с законом:  '[newFreeFormLaw]'"
 
 /obj/item/aiModule/syndicate/transmitInstructions(mob/living/silicon/ai/target, mob/sender)
 	//	..()    //We don't want this module reporting to the AI who dun it. --NEO
