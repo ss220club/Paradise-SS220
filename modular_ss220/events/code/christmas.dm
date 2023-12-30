@@ -75,9 +75,12 @@ GLOBAL_LIST_EMPTY(possible_gifts)
 /obj/structure/flora/tree/pine/xmas/presents
 	icon_state = "xmas_tree_presents"
 	desc = "Превосходная новогодняя ёлка. Под ней подарки!"
-	var/gift_type = /obj/item/a_gift/anything
+	var/gift_type = /obj/item/a_gift
 	var/unlimited = FALSE
 	var/static/list/took_presents // Shared between all xmas trees
+
+/obj/structure/flora/tree/pine/xmas/presents/anything
+	gift_type = /obj/item/a_gift/anything
 
 /obj/structure/flora/tree/pine/xmas/presents/Initialize(mapload)
 	. = ..()
@@ -105,6 +108,10 @@ GLOBAL_LIST_EMPTY(possible_gifts)
 
 /obj/structure/flora/tree/pine/xmas/presents/unlimited
 	desc = "Превосходная новогодняя ёлка. Кажется под ней нескончаемый запас подарков!"
+	unlimited = TRUE
+
+/obj/structure/flora/tree/pine/xmas/presents/anything/unlimited
+	desc = "Превосходная новогодняя ёлка. Кажется под ней нескончаемый запас полностью случайных подарков!"
 	unlimited = TRUE
 
 // Рождество
