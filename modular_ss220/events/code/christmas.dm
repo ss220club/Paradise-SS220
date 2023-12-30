@@ -1,0 +1,136 @@
+#define COMSIG_SUBSYSTEM_POST_INITIALIZE "post_initialize"
+
+/datum/controller/subsystem/holiday/Initialize()
+	. = ..()
+	SEND_SIGNAL(src, COMSIG_SUBSYSTEM_POST_INITIALIZE)
+
+// Landmark for tree
+/obj/effect/spawner/xmastree
+	name = "christmas tree spawner"
+	icon = 'icons/mob/screen_gen.dmi'
+	icon_state = "x2"
+	layer = LOW_LANDMARK_LAYER
+	var/fail_count = 0
+	/// Christmas tree, no presents included.
+	var/christmas_tree = /obj/structure/flora/tree/pine/xmas
+	/// Christmas tree, presents included.
+	var/presents_tree = /obj/structure/flora/tree/pine/xmas/presents
+
+/obj/effect/spawner/xmastree/Initialize(mapload)
+	. = ..()
+	if(!SSholiday.initialized)
+		RegisterSignal(SSholiday, COMSIG_SUBSYSTEM_POST_INITIALIZE, PROC_REF(place_tree))
+	else
+		place_tree()
+
+/obj/effect/spawner/xmastree/proc/place_tree()
+	if(NEW_YEAR in SSholiday.holidays)
+		new presents_tree(get_turf(src))
+	else if(CHRISTMAS in SSholiday.holidays)
+		new christmas_tree(get_turf(src))
+	return qdel(src)
+
+// Gift
+/obj/item/a_gift/anything
+	name = "\improper новогодний подарок"
+	desc = "Подарок! Что же тут..."
+
+/obj/item/a_gift/anything/attack_self(mob/M as mob)
+	var/static/list/obj/item/possible_gifts = null
+
+	if(isnull(possible_gifts))
+		possible_gifts = list()
+		for(var/type in subtypesof(/obj/item))
+			var/obj/item/thing = type
+			if(!initial(thing.icon_state))
+				continue
+
+			possible_gifts += type
+
+	var/something = pick(possible_gifts)
+	var/obj/item/gift = new something(M)
+	M.unEquip(src, TRUE)
+	M.put_in_hands(gift)
+	gift.add_fingerprint(M)
+	playsound(loc, 'sound/items/poster_ripped.ogg', 100, TRUE)
+	qdel(src)
+	return
+
+// Xmas Tree
+/obj/structure/flora/tree/pine/xmas
+	name = "\improper новогодняя ёлка"
+	desc = "Превосходная новогодняя ёлка."
+	icon = 'modular_ss220/events/icons/xmas.dmi'
+	icon_state = "xmas_tree"
+	pixel_x = 0
+	resistance_flags = INDESTRUCTIBLE // Protected by the christmas spirit
+
+/obj/structure/flora/tree/pine/xmas/Initialize(mapload)
+	. = ..()
+	icon_state = initial(icon_state)
+
+/obj/structure/flora/tree/pine/xmas/presents
+	icon_state = "xmas_tree_presents"
+	desc = "Превосходная новогодняя ёлка. Под ней подарки!"
+	pixel_x = 0
+	var/gift_type = /obj/item/a_gift/anything
+	var/unlimited = FALSE
+	var/static/list/took_presents // Shared between all xmas trees
+
+/obj/structure/flora/tree/pine/xmas/presents/Initialize(mapload)
+	. = ..()
+	if(!took_presents)
+		took_presents = list()
+
+/obj/structure/flora/tree/pine/xmas/presents/attack_hand(mob/living/user, list/modifiers)
+	. = ..()
+	if(.)
+		return
+	if(!user.ckey)
+		return
+
+	if(took_presents[user.ckey] && !unlimited)
+		to_chat(user, span_warning("Ты не видишь подарка со своим именем."))
+		return
+
+	to_chat(user, span_notice("Немного покопавшись, ты нашёл подарок со своим именем."))
+
+	if(!unlimited)
+		took_presents[user.ckey] = TRUE
+
+	var/obj/item/G = new gift_type(src)
+	user.put_in_hands(G)
+
+/obj/structure/flora/tree/pine/xmas/presents/unlimited
+	desc = "Превосходная новогодняя ёлка. Кажется под ней нескончаемый запас подарков!"
+	unlimited = TRUE
+
+/obj/structure/festivus
+	name = "\improper праздничный стержень"
+	desc = "Во время прошлогодних «Силовых подвигов» директор по исследованиям смог засунуть этот неподвижный стержень в горшок."
+	icon = 'modular_ss220/events/icons/xmas.dmi'
+	icon_state = "festivus_pole"
+
+/obj/structure/festivus/anchored
+	name = "\improper вбитый стержень"
+	desc = "Настоящий подвиг, почти такой же, как в прошлом году."
+	icon_state = "anchored_rod"
+	anchored = TRUE
+
+/datum/holiday/xmas/celebrate()
+	for(var/obj/machinery/light/lights in GLOB.machines)
+		lights.brightness_color = "#FFE6D9"
+		lights.nightshift_light_color = "#FFC399"
+	for(var/mob/living/simple_animal/pet/dog/corgi/Ian/Ian in GLOB.mob_list)
+		Ian.place_on_head(new /obj/item/clothing/head/helmet/space/santahat)
+	for(var/obj/structure/window/windows in world)
+		windows.color = "#6CA66C"
+	for(var/obj/machinery/door/window/windoor in world)
+		windoor.color = "#6CA66C"
+	for(var/datum/crafting_recipe/snowman/S in GLOB.crafting_recipes)
+		S.always_available = TRUE
+		break
+	//The following spawn is necessary as both the timer and the shuttle systems initialise after the events system does, so we can't add stuff to the shuttle system as it doesn't exist yet and we can't use a timer
+	spawn(60 SECONDS)
+		var/datum/supply_packs/misc/snow_machine/xmas = SSeconomy.supply_packs["[/datum/supply_packs/misc/snow_machine]"]
+		xmas.special = FALSE
