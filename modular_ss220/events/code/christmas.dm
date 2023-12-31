@@ -31,6 +31,12 @@
 	return qdel(src)
 
 // Gift
+/obj/item/gift
+	icon = 'modular_ss220/events/icons/xmas.dmi'
+
+/obj/item/a_gift
+	icon = 'modular_ss220/events/icons/xmas.dmi'
+
 /obj/item/a_gift/anything
 	name = "\improper новогодний подарок"
 	desc = "Подарок! Что же тут..."
@@ -60,9 +66,8 @@
 /obj/structure/flora/tree/pine/xmas
 	name = "\improper новогодняя ёлка"
 	desc = "Превосходная новогодняя ёлка."
-	icon = 'modular_ss220/events/icons/xmas.dmi'
+	icon = 'modular_ss220/events/icons/xmastree.dmi'
 	icon_state = "xmas_tree"
-	pixel_x = 0
 	resistance_flags = INDESTRUCTIBLE // Protected by the christmas spirit
 
 /obj/structure/flora/tree/pine/xmas/Initialize(mapload)
@@ -72,7 +77,6 @@
 /obj/structure/flora/tree/pine/xmas/presents
 	icon_state = "xmas_tree_presents"
 	desc = "Превосходная новогодняя ёлка. Под ней подарки!"
-	pixel_x = 0
 	var/gift_type = /obj/item/a_gift/anything
 	var/unlimited = FALSE
 	var/static/list/took_presents // Shared between all xmas trees
@@ -105,18 +109,6 @@
 	desc = "Превосходная новогодняя ёлка. Кажется под ней нескончаемый запас подарков!"
 	unlimited = TRUE
 
-/obj/structure/festivus
-	name = "\improper праздничный стержень"
-	desc = "Во время прошлогодних «Силовых подвигов» директор по исследованиям смог засунуть этот неподвижный стержень в горшок."
-	icon = 'modular_ss220/events/icons/xmas.dmi'
-	icon_state = "festivus_pole"
-
-/obj/structure/festivus/anchored
-	name = "\improper вбитый стержень"
-	desc = "Настоящий подвиг, почти такой же, как в прошлом году."
-	icon_state = "anchored_rod"
-	anchored = TRUE
-
 /datum/holiday/xmas/celebrate()
 	for(var/obj/machinery/light/lights in GLOB.machines)
 		lights.brightness_color = "#FFE6D9"
@@ -125,8 +117,23 @@
 		Ian.place_on_head(new /obj/item/clothing/head/helmet/space/santahat)
 	for(var/obj/structure/window/windows in world)
 		windows.color = "#6CA66C"
+	for(var/obj/structure/window/full/plasmabasic/plasma in world)
+		plasma.color = null
+	for(var/obj/structure/window/full/plasmareinforced/rplasma in world)
+		rplasma.color = null
+	for(var/obj/structure/window/full/shuttle/shuttle in world)
+		shuttle.color = null
+	for(var/obj/structure/window/full/plastitanium/syndie in world)
+		syndie.color = null
 	for(var/obj/machinery/door/window/windoor in world)
 		windoor.color = "#6CA66C"
+	for(var/obj/structure/reagent_dispensers/beerkeg/nuke/beernuke in world)
+		beernuke.icon = 'modular_ss220/events/icons/nuclearbomb.dmi'
+	for(var/obj/machinery/nuclearbomb/nuke in world)
+		nuke.icon = 'modular_ss220/events/icons/nuclearbomb.dmi'
+	for(var/obj/item/kirbyplants/plants in world)
+		plants.icon = 'modular_ss220/events/icons/xmas.dmi'
+		plants.icon_state = "plant-[rand(1,9)]"
 	for(var/datum/crafting_recipe/snowman/S in GLOB.crafting_recipes)
 		S.always_available = TRUE
 		break
