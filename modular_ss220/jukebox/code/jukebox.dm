@@ -555,10 +555,7 @@
 	if(stat & BROKEN)
 		icon_state = "[initial(icon_state)]_broken"
 		return
-	if(active)
-		icon_state = "[initial(icon_state)]-active"
-	else
-		icon_state = "[initial(icon_state)]_anchored"
+	icon_state = "[initial(icon_state)][active ? "-active" : "_anchored"]"
 
 /obj/machinery/jukebox/drum_red/attackby(obj/item/O, mob/user, params)
 	if(!active && !(resistance_flags & INDESTRUCTIBLE))
