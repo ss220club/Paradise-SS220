@@ -555,22 +555,29 @@
 	if(stat & BROKEN)
 		icon_state = "[initial(icon_state)]_broken"
 		return
-	icon_state = "[initial(icon_state)][active ? "-active" : "_anchored"]"
+	icon_state = "[initial(icon_state)]"
+
+	if(active)
+		icon_state = "[initial(icon_state)]-active"
+	else if(anchored)
+		icon_state = "[initial(icon_state)]_anchored"
 
 /obj/machinery/jukebox/drum_red/attackby(obj/item/O, mob/user, params)
-	if(!active && !(resistance_flags & INDESTRUCTIBLE))
-		if(iswrench(O))
-			if(!anchored && !isinspace())
-				to_chat(user, span_notice("You secure [src] to the floor."))
-				anchored = TRUE
-				icon_state = "[initial(icon_state)]_anchored"
-			else if(anchored)
-				to_chat(user, span_notice("You unsecure and disconnect [src]."))
-				anchored = FALSE
-				icon_state = "[initial(icon_state)]"
-			playsound(src, 'sound/items/deconstruct.ogg', 50, 1)
-			return
+	if(active || (resistance_flags & INDESTRUCTIBLE))
+		return
+
+	if(!iswrench(O))
 		return ..()
+
+	if(!anchored && !isinspace())
+		to_chat(user, span_notice("You secure [src] to the floor."))
+		anchored = TRUE
+		update_icon()
+	else if(anchored)
+		to_chat(user, span_notice("You unsecure and disconnect [src]."))
+		anchored = FALSE
+		update_icon()
+	playsound(src, 'sound/items/deconstruct.ogg', 50, 1)
 
 /obj/machinery/jukebox/drum_red/drum_yellow
 	name = "\improper желтый барабан"
