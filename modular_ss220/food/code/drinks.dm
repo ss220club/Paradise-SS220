@@ -70,6 +70,7 @@
 	. = ..()
 	if(prob(10))
 		M.emote("airguitar")
+
 /datum/chemical_reaction/soundhand
 	name = "Soundhand"
 	id = "soundhand"
