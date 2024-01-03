@@ -1,14 +1,3 @@
-/datum/team/get_member_ckeys()
-	var/list/member_ckeys = list()
-	for(var/datum/mind/member as anything in members)
-		if(!member.current)
-			continue
-
-		member_ckeys += member.current.ckey
-
-	return member_ckeys
-
-
 /datum/team/vox_raiders_team
 	name = "vox raiders"
 	antag_datum_type = /datum/antagonist/vox_raider

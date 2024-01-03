@@ -28,7 +28,7 @@
 	var/collected_access_list = list()
 	var/collected_tech_dict = list()
 
-	var/list = special_precious_objects_list = list(
+	var/list/special_precious_objects_list = list(
 		/obj/item/areaeditor/blueprints/ce,
 		/obj/item/disk/nuclear,
 		/obj/item/clothing/suit/armor/reactive,
@@ -72,10 +72,8 @@
 	valuable_access_list += get_region_accesses(REGION_COMMAND) + get_all_centcom_access() + get_all_syndicate_access() + get_all_misc_access()
 
 /obj/machinery/vox_trader/attack_hand(mob/user)
-	if(!check_usable(user))
-		return
-	add_fingerprint(user)
-	INVOKE_ASYNC(src, PROC_REF(do_trade, user))
+	if(!try_trade(user))
+		. = ..()
 
 /obj/machinery/vox_trader/attacked_by(obj/item/I, mob/living/user)
 	. = ..()
@@ -110,16 +108,23 @@
 /obj/machinery/vox_trader/proc/sparks()
 	do_sparks(5, 1, get_turf(src))
 
-/obj/machinery/vox_trader/proc/do_trade(mob/user)
+/obj/machinery/vox_trader/proc/try_trade(mob/user)
+	if(!check_usable(user))
+		return FALSE
+
+	add_fingerprint(user)
+
 	playsound(get_turf(src), 'sound/weapons/flash.ogg', 25, 1)
 	is_trading_now = TRUE
-
 	sparks()
-	wait(cooldown)	// кулдаун чтобы не спамили нажатиями и звук успел проиграться
 
+	addtimer(CALLBACK(src, PROC_REF(do_trade), user), cooldown)
+	return TRUE
+
+/obj/machinery/vox_trader/proc/do_trade(mob/user)
 	var/list/items_list = get_turf(src)
 
-	if(!length(items))
+	if(!length(items_list))
 		sparks()
 		is_trading_now = FALSE
 		angry_count++
@@ -149,9 +154,11 @@
 	angry_count = 0
 	atom_say(span_notice("Вами довольны. Начат пересчет ценностей, ожидайте."))
 
-	var/cooldown_items_time = length(items) * cooldown_for_each_item
-	wait(cooldown_items_time)	// делаем вид что происходит пересчет
+	// делаем вид что происходит пересчет
+	var/cooldown_items_time = length(items_list) * cooldown_for_each_item
+	addtimer(CALLBACK(src, PROC_REF(do_trade), user, items_list), cooldown_items_time)
 
+/obj/machinery/vox_trader/proc/make_cash(mob/user, list/items_list)
 	if(!src || QDELETED(src))
 		is_trading_now = FALSE
 		return
@@ -164,6 +171,8 @@
 		atom_say(span_greenannounce("Расчет окончен. [values_sum > 2000 ? "Крайне ценно!" : "Ценно!"] Ваша доля [values_sum]"))
 	else
 		atom_say(span_notice("Расчет окончен. Вы бы еще консервных банок насобирали! Ваша доля [values_sum]"))
+
+	new /obj/item/stack/vox_cash(src, values_sum)
 
 /obj/machinery/vox_trader/proc/get_value(mob/user, list/items_list, is_need_grading = FALSE)
 	var/values_sum = 0
@@ -181,19 +190,14 @@
 		if(I.anchored)
 			continue
 
-		if(!isspacecash()) // воксам не нужны деньги мяса.
+		if(!isspacecash(I)) // воксам не нужны деньги мяса.
 			continue
 
 		var/temp_values_sum = 0
 
 		// целостность объекта
 		if(I.obj_integrity > 0)
-			temp_values_sum += round((I.obj_integrity / I.max_integrity) * integrity_mult)
-
-		// бонус за весомость
-		if(I.w_class)
-			temp_values_sum += I.w_class * weight_mult
-			is_weight = TRUE
+			temp_values_sum += round((I.obj_integrity / I.max_integrity) * integrity_reward)
 
 		if(length(I.armor))
 			var/temp_val = 0
@@ -226,7 +230,7 @@
 						is_tech_unique = TRUE
 				else
 					temp_values_sum += unique_tech_level_reward * tech_list[tech]
-					collected_tech_dict.Add(list(tech = tech_list[tech]))
+					collected_tech_dict += list(tech = tech_list[tech])
 					is_tech_unique = TRUE
 				if(tech in valuable_tech_list)
 					temp_mult = tech_list[tech]
@@ -258,18 +262,21 @@
 					is_access_unique = TRUE
 				else
 					temp_values_sum += value_access_reward
-				accepted_access.Add(access)
+				accepted_access += access
 
 		if(isitem(I))
 			var/temp_value = 0
 			var/obj/item/item = I
 			temp_value += temp_values_sum / item.toolspeed
-			if(I.max_heat_protection_temperature)
-				temp_value += I.max_heat_protection_temperature / temp_div
-			if(I.siemens_coefficient)
-				temp_value += electroprotect_reward * (1 - I.siemens_coefficient)
-			if(I.permeability_coefficient)
-				temp_value += permeability_reward * (1 - I.permeability_coefficient)
+			if(item.max_heat_protection_temperature)
+				temp_value += item.max_heat_protection_temperature / temp_div
+			if(item.siemens_coefficient)
+				temp_value += electroprotect_reward * (1 - item.siemens_coefficient)
+			if(item.permeability_coefficient)
+				temp_value += permeability_reward * (1 - item.permeability_coefficient)
+			if(item.w_class)
+				temp_value += item.w_class * weight_mult
+				is_weight = TRUE
 			temp_values_sum += round(temp_value)
 
 		for(var/datum/theft_objective/objective in highrisk_list)
@@ -311,7 +318,7 @@
 	if(accepted_access)
 		addition_text += span_boldnotice("\nОценка не имеющихся доступов: \n")
 		for(var/access in accepted_access)
-			addition_text += span_notice("[get_access_desc(A)]; ")
+			addition_text += span_notice("[get_access_desc(access)]; ")
 		if(is_access_unique)
 			addition_text += span_good("\nИмеются ценные доступы. Очень ценно!")
 	if(is_weight)
@@ -327,7 +334,7 @@
 	if(addition_text != "")
 		to_chat(user, addition_text)
 
- 	// Деноминируем кикикридиты и забираем небольшой процент в семью.
+ 	// Деноминируем кикиридиты и забираем небольшой процент в семью.
 	values_sum /= 10				// деноминируем
 	values_sum -= values_sum % 10	// забираем процентик
 	return round(values_sum)
@@ -341,5 +348,5 @@
 			return
 		precious_value = raider.precious_value
 	if(value >= precious_value)
-		precious_collected_names_list.Add(I.name)
+		precious_collected_names_list += I.name
 		precious_collected_value += value

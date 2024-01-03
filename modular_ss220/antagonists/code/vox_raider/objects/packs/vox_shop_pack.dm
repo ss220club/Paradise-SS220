@@ -1,10 +1,12 @@
 /datum/vox_pack
 	var/name = "DEBUG Vox Pack"
 	var/desc = "Описание отсутствует. Сообщите разработчику."
-	var/cost = 0
+	var/reference = null
+	var/cost = -1	// -1 = hide
 	var/amount
+	var/category
 	var/list/contains = list()
-	/// name = icon
+
 	var/list/ui_manifest = list()
 
 /datum/vox_pack/New()
@@ -13,9 +15,9 @@
 		if(!path)
 			continue
 		var/atom/movable/AM = path
-		ui_manifest += list("[initial(AM.name)]" = initial(AM.item_color))
+		ui_manifest += "<big>[bicon(AM)]</big> [initial(AM.name)]"	// !!!! проверяем отобразится ли иконка
 
-/datum/supply_packs/proc/create_package(turf/spawn_location)
+/datum/vox_pack/proc/create_package(turf/spawn_location, mob/user, put_in_hands = TRUE)
 	var/list/items_list = list()
 	for(var/typepath in contains)
 		if(!typepath)

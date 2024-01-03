@@ -23,21 +23,20 @@
 	. = ..()
 	SEND_SOUND(owner.current, sound('modular_ss220/antagonists/sound/ambience/antag/vox_raiders_intro.ogg'))
 
-	. += {"Вы ненавидите Нанотрейзен, корпорация дала вам достаточно поводов для этого.
-			Лучшую возможность бороться с ней предоставляет Синдикат, так что вы со своим напарником, разделяющим подобные чувства, связались с ними, чтобы вступить в их ряды.
-			Теперь вы кровные братья и вы готовы сделать все ради общей цели."}
+	. += {"Вы Вокс-Рейдер, вы и ваша стая нашли станцию Нанотрейзен имеющую ценности.
+		Раздобудьте эти ценности любым доступным способом: торговлей, кражей, договорами.
+		Главное помните, не допустите своей гибели или гибели членов стаи. Ценные блестяшки не стоят мертвого собрата.
+		\nВы можете заказывать товары и снаряжение в Киконсолк Закиказов.
+		\nСдавайте ценности в Расчичетчикик.
+		\nКовчег выделил вам товары которые могут потенциально заинтересовать экипаж станции.
+		Разумеется не за бесплатно, выберите что вам действительно нужно и закажите это."}
 
 	var/raider_names = get_raider_names_text()
 	if(raider_names)
-		. += "Оберегай и кооперируйся с братьями: <b>[raider_names]</b>. Ведь только вместе вы сможете добиться успеха!"
-		antag_memory += "<b>Ваши братья</b>: [raider_names]<br>"
+		. += "Оберегай собратьев и помогай стае: <b>[raider_names]</b>. Только стая важна!"
+		antag_memory += "<b>Ваша стая:</b>: [raider_names]<br>"
 
-	var/meeting_area = get_meeting_area()
-	if(meeting_area)
-		. += "Встреть их в назначенном месте:  <b>[meeting_area]</b>"
-		antag_memory += "<b>Место встречи</b>: [meeting_area]<br>"
-
-	. += "Слава Синдикату!"
+	. += "Нужно больше ценностей!"
 
 /datum/antagonist/vox_raider/create_team(datum/team/vox_raiders_team/team)
 	if(!istype(team))
@@ -57,14 +56,6 @@
 		return ""
 
 	return team.get_raider_names_text(owner)
-
-/datum/antagonist/vox_raider/proc/get_meeting_area()
-	PRIVATE_PROC(TRUE)
-	var/datum/team/vox_raiders_team/team = get_team()
-	if(!istype(team))
-		return ""
-
-	return team.meeting_area
 
 /datum/antagonist/vox_raider/proc/admin_add(admin, datum/mind/new_antag)
 	if(!new_antag)
@@ -97,11 +88,12 @@
 		choices["[mind_to_check.name]([alive_living_mob.ckey])"] = mind_to_check
 
 	if(!length(choices))
-		alert(admin, "No candidates for second vox raider found.")
+		alert(admin, "Нет кандитатов для создания команды.")
 		return FALSE
 
 	sortTim(choices, GLOBAL_PROC_REF(cmp_text_asc))
-	var/choice = tgui_input_list(admin, "Choose the vox raider.", "raider", choices)
+
+	var/choice = tgui_input_list(admin, "Выберите кандидата, если вы завершили выбор, то закройте окно.", "Добавить нового вокс рейдера", choices)
 	if(!choice)
 		return FALSE
 
@@ -119,7 +111,7 @@
 		alert(admin, "Second raider wasn't made into `vox raider` for some reason. Try again.")
 		return TRUE
 
-	log_admin("[key_name(admin)] made [key_name(first_raider)] and [key_name(second_raider)] into vox raiders.")
+	log_admin("[key_name(admin)] made vox raiders.")
 	return TRUE
 
 /datum/antagonist/vox_raider/proc/add_to_existing_vox_raiders_team(admin, datum/mind/raider_to_add)
@@ -144,3 +136,10 @@
 
 
 	return !isnull(raider_to_add.add_antag_datum(src, chosen_team))
+
+/datum/antagonist/vox_raider/proc/equip_vox_raider(visualsOnly = FALSE)
+	if(!isvox(owner.current))
+		return
+	var/mob/living/carbon/human/H = owner.current
+	if(owner.current)
+		H.equipOutfit(/datum/outfit/admin/vox, visualsOnly)

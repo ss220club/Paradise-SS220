@@ -1,3 +1,7 @@
+/obj/item/clothing/shoes/roman/vox
+	name = "vox sandals"
+	desc = "Синтетические обертки подходящие для большинства типов ног."
+
 /obj/item/clothing/shoes/magboots/vox
 	name = "vox magclaws"
 	desc = "Тяжелые бронированные налапочники для когтистых лап причудливой формы."
@@ -22,9 +26,20 @@
 	strip_delay = 10 SECONDS
 	slowdown_active = SHOES_SLOWDOWN+0.5
 
+/obj/item/clothing/shoes/magboots/vox/heavy
+	name = "vox heavy magclaws"
+	desc = "Тяжелые бронированные налапочники для когтистых лап причудливой формы для ведения боевых действий и защит нижних конечностей от всевозможных угроз."
+	item_state = "boots-vox-heavy"
+	icon_state = "boots-vox-heavy"
+	body_parts_covered = FEET|LEGS
+	permeability_coefficient = 0.01
+	armor = list(MELEE = 115, BULLET = 50, LASER = 75, ENERGY = 50, BOMB = 200, RAD = 200, FIRE = 450, ACID = 200)
+	strip_delay = 14 SECONDS
+	slowdown_active = SHOES_SLOWDOWN+2
+
 /obj/item/clothing/shoes/magboots/vox/scout
 	name = "vox scout magclaws"
 	desc = "Легкие налапочники для когтистых лап причудливой формы с продвинутым сцеплением с поверхностью для ускорение передвижения."
 	item_state = "boots-vox-combat"
 	icon_state = "boots-vox-combat"
-	slowdown_active = -2
+	slowdown_active = -2	// !!! проверить и выставить -1 если много или броне.

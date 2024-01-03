@@ -22,9 +22,8 @@
 	for(var/mob/new_player/P in GLOB.player_list)
 		if(P.client && P.ready)
 			num++
-	if(num >= dynamic_player)
-		precious_amount += round((num / dynamic_player) * dynamic_amount)
-		update_explanation_text()
+	precious_amount += round((num / dynamic_player) * dynamic_amount)
+	update_explanation_text()
 	return precious_amount
 
 /datum/objective/raider_steal/check_completion()
@@ -56,12 +55,12 @@
 
 /datum/objective/raider_entirety_steal/proc/generate_value_goal()
 	var/num = 1
+	var/precious_amount
 	for(var/mob/new_player/P in GLOB.player_list)
 		if(P.client && P.ready)
 			num++
-	if(num >= dynamic_player)
-		precious_amount += num * dynamic_value
-		update_explanation_text()
+	precious_amount += num * dynamic_value
+	update_explanation_text()
 	return precious_amount
 
 /datum/objective/raider_entirety_steal/check_completion()
@@ -70,7 +69,7 @@
 		if(precious_value <= trader.precious_collected_value)
 			value_sum += trader.precious_collected_value
 	if(precious_value <= value_sum)
-			return TRUE
+		return TRUE
 	return FALSE
 
 
@@ -111,7 +110,7 @@
 			for(var/tech in trader.collected_tech_dict)
 				if(trader.collected_tech_dict[tech] >= tech_min_level)
 					count++
-			if(count < tech_amount)
-			return TRUE
+			if(count >= tech_amount)
+				return TRUE
 	return FALSE
 
