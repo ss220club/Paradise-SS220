@@ -545,6 +545,7 @@
 				dance(M)
 
 //Drum
+
 /obj/machinery/jukebox/drum_red
 	name = "\improper красный барабан"
 	desc = "Крутые барабаны от какой-то группы."
@@ -577,6 +578,7 @@
 		to_chat(user, span_notice("You unsecure and disconnect [src]."))
 		anchored = FALSE
 		update_icon()
+
 	playsound(src, 'sound/items/deconstruct.ogg', 50, 1)
 
 /obj/machinery/jukebox/drum_red/drum_yellow
