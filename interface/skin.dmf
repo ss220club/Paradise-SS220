@@ -2,29 +2,54 @@ macro "default"
 
 
 menu "menu"
-	elem
+	elem 
 		name = "&Файл"
-	elem
+		command = ""
+		saved-params = "is-checked"
+	elem 
 		name = "&Быстрый скриншот"
 		command = ".screenshot auto"
 		category = "&Файл"
-	elem
+		saved-params = "is-checked"
+	elem 
 		name = "&Сохранить скриншот как..."
 		command = ".screenshot"
 		category = "&Файл"
+		saved-params = "is-checked"
 	elem "reconnectbutton"
 		name = "&Переподключиться"
 		command = ".reconnect"
 		category = "&Файл"
-	elem
+		saved-params = "is-checked"
+	elem 
 		name = "&Выход"
 		command = ".quit"
 		category = "&Файл"
-	elem
+		saved-params = "is-checked"
+	elem 
 		name = "&Вид"
-	elem
+		command = ""
+		saved-params = "is-checked"
+	elem 
 		name = "&Размер"
+		command = ""
 		category = "&Вид"
+		saved-params = "is-checked"
+	elem 
+		name = "&Масштабирование"
+		command = ""
+		category = "&Вид"
+		saved-params = "is-checked"
+	elem "textmode"
+		name = "&Текстовый режим"
+		command = ".winset \"menu.textmode.is-checked=true?paramapwindow.map.text-mode=true:paramapwindow.map.text-mode=false\""
+		category = "&Вид"
+		can-check = true
+		saved-params = "is-checked"
+	elem 
+		name = "&Размер"
+		command = ""
+		saved-params = "is-checked"
 	elem "stretch"
 		name = "&Растянуть"
 		command = ".winset \"paramapwindow.map.icon-size=0\""
@@ -32,145 +57,182 @@ menu "menu"
 		is-checked = true
 		can-check = true
 		group = "size"
+		saved-params = "is-checked"
 	elem "icon128"
 		name = "&128x128 (4x)"
 		command = ".winset \"paramapwindow.map.icon-size=128\""
 		category = "&Размер"
 		can-check = true
 		group = "size"
+		saved-params = "is-checked"
 	elem "icon112"
 		name = "&112x112 (3.5x)"
 		command = ".winset \"paramapwindow.map.icon-size=112\""
 		category = "&Размер"
 		can-check = true
 		group = "size"
+		saved-params = "is-checked"
 	elem "icon96"
 		name = "&96x96 (3x)"
 		command = ".winset \"paramapwindow.map.icon-size=96\""
 		category = "&Размер"
 		can-check = true
 		group = "size"
+		saved-params = "is-checked"
 	elem "icon80"
 		name = "&80x80 (2.5x)"
 		command = ".winset \"paramapwindow.map.icon-size=80\""
 		category = "&Размер"
 		can-check = true
 		group = "size"
+		saved-params = "is-checked"
 	elem "icon64"
 		name = "&64x64 (2x)"
 		command = ".winset \"paramapwindow.map.icon-size=64\""
 		category = "&Размер"
 		can-check = true
 		group = "size"
+		saved-params = "is-checked"
 	elem "icon48"
 		name = "&48x48 (1.5x)"
 		command = ".winset \"paramapwindow.map.icon-size=48\""
 		category = "&Размер"
 		can-check = true
 		group = "size"
+		saved-params = "is-checked"
 	elem "icon32"
 		name = "&32x32"
 		command = ".winset \"paramapwindow.map.icon-size=32\""
 		category = "&Размер"
 		can-check = true
 		group = "size"
-	elem
+		saved-params = "is-checked"
+	elem 
 		name = "&Масштабирование"
-		category = "&Вид"
+		command = ""
+		saved-params = "is-checked"
 	elem "NN"
 		name = "&По соседним пикселям"
 		command = ".winset \"paramapwindow.map.zoom-mode=distort\""
 		category = "&Масштабирование"
-		can-check = true
 		is-checked = true
+		can-check = true
 		group = "scale"
+		saved-params = "is-checked"
 	elem "PS"
 		name = "&Точечный отбор"
 		command = ".winset \"paramapwindow.map.zoom-mode=normal\""
 		category = "&Масштабирование"
 		can-check = true
 		group = "scale"
+		saved-params = "is-checked"
 	elem "BL"
 		name = "&Билинейное"
 		command = ".winset \"paramapwindow.map.zoom-mode=blur\""
 		category = "&Масштабирование"
 		can-check = true
 		group = "scale"
-	elem "textmode"
-		name = "&Текстовый режим"
-		command = ".winset \"menu.textmode.is-checked=true?paramapwindow.map.text-mode=true:paramapwindow.map.text-mode=false\""
-		category = "&Вид"
-		can-check = true
-	elem
+		saved-params = "is-checked"
+	elem 
 		name = "&Опции"
-	elem
+		command = ""
+		saved-params = "is-checked"
+	elem 
 		name = "&Открыть микшер"
 		command = "Open-Volume-Mixer"
 		category = "&Опции"
+		saved-params = "is-checked"
 	elem "statusbar"
 		name = "&Показывать статус бар"
-		category = "&Опции"
-		can-check = true
-		is-checked = true
-		saved-params = "is-checked"
 		command = ".winset \"menu.statusbar.is-checked=true?paramapwindow.status_bar.is-visible=true:paramapwindow.status_bar.is-visible=false\""
-	elem
+		category = "&Опции"
+		is-checked = true
+		can-check = true
+		saved-params = "is-checked"
+	elem 
 		name = "&Помощь"
-	elem
+		command = ""
+		saved-params = "is-checked"
+	elem 
 		name = "&Admin help"
 		command = "adminhelp"
 		category = "&Помощь"
+		saved-params = "is-checked"
 
 
 window "mainwindow"
 	elem "mainwindow"
 		type = MAIN
+		pos = 0,0
 		size = 640x440
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		background-color = none
 		is-default = true
 		saved-params = "pos;size;is-minimized;is-maximized"
-		title = "SS220 | WyccStation (Paradise)"
+		title = "DeadParadise | First [RU] [MRP]"
 		statusbar = false
 		is-maximized = true
-		icon = 'icons\\ss220.png'
+		icon = 'icons\\dparadise.png'
 		macro = "default"
 		menu = "menu"
+		outer-size = 1382x784
+		inner-size = 1366x725
 	elem "asset_cache_browser"
 		type = BROWSER
+		pos = 0,0
 		size = 200x200
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		background-color = none
 		is-visible = false
+		saved-params = ""
 	elem "mainvsplit"
 		type = CHILD
-		size = 0x0
+		pos = 0,0
+		size = 1366x725
 		anchor1 = 0,0
 		anchor2 = 100,100
+		background-color = none
 		saved-params = "splitter"
 		left = "paramapwindow"
 		right = "rpane"
 		is-vert = true
 	elem "tooltip"
 		type = BROWSER
+		pos = 0,0
 		size = 999x999
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		background-color = none
 		is-visible = false
+		saved-params = ""
 
 window "paramapwindow"
 	elem "paramapwindow"
 		type = MAIN
+		pos = 281,0
 		size = 640x480
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		background-color = none
+		saved-params = "pos;size;is-minimized;is-maximized"
 		is-pane = true
+		outer-size = 656x538
+		inner-size = 640x499
 		on-status = ".winset \"status_bar.text=[[*]]\" "
 	elem "map"
 		type = MAP
+		pos = 0,0
 		size = 640x480
 		anchor1 = 0,0
 		anchor2 = 100,100
-		font-family = "Arial"
 		font-size = 7
-		text-color = none
 		is-default = true
 		saved-params = "icon-size;zoom-mode"
-		zoom-mode = "distort"
-		style = ".center { text-align: center; } .maptext { font-family: 'MS Serif'; font-size: 7px; -dm-text-outline: 1px black; color: white; line-height: 1.1; } .small { font-family: 'Small Fonts'; font-size: 6px; } .big { font-size: 8px; } .reallybig { font-size: 8px; } .extremelybig { font-size: 8px; } .clown { color: #FF69Bf;} .tajaran {color: #803B56;} .skrell {color: #00CED1;} .solcom {color: #22228B;} .com_srus {color: #7c4848;} .zombie\t{color: #ff0000;} .soghun {color: #228B22;} .vox {color: #AA00AA;} .diona {color: #804000; font-weight: bold;} .trinary {color: #727272;} .kidan {color: #664205;} .slime {color: #0077AA;} .drask {color: #a3d4eb;} .vulpkanin {color: #B97A57;} .abductor {color: #800080; font-style: italic;} .his_grace { color: #15D512; } .hypnophrase { color: #0d0d0d; font-weight: bold; } .yell { font-weight: bold; }" .italics { font-family: 'Small Fonts'; }"
+		zoom-mode = distort
 		on-show = ".winset \"menu.statusbar.is-checked=true?paramapwindow.status_bar.is-visible=true:paramapwindow.status_bar.is-visible=false\""
+		style = ".center { text-align: center; } .maptext { font-family: 'MS Serif'; font-size: 7px; -dm-text-outline: 1px black; color: white; line-height: 1.1; } .small { font-family: 'Small Fonts'; font-size: 6px; } .big { font-size: 8px; } .reallybig { font-size: 8px; } .extremelybig { font-size: 8px; } .clown { color: #FF69Bf;} .tajaran {color: #803B56;} .skrell {color: #00CED1;} .solcom {color: #22228B;} .com_srus {color: #7c4848;} .zombie\t{color: #ff0000;} .soghun {color: #228B22;} .vox {color: #AA00AA;} .diona {color: #804000; font-weight: bold;} .trinary {color: #727272;} .kidan {color: #664205;} .slime {color: #0077AA;} .drask {color: #a3d4eb;} .vulpkanin {color: #B97A57;} .abductor {color: #800080; font-style: italic;} .his_grace { color: #15D512; } .hypnophrase { color: #0d0d0d; font-weight: bold; } .yell { font-weight: bold; }"
 	elem "title_browser"
 		type = BROWSER
 		pos = 0,0
@@ -181,8 +243,6 @@ window "paramapwindow"
 		is-visible = false
 		is-disabled = true
 		saved-params = ""
-		auto-format = false
-		style = ".center { text-align: center; } .maptext { font-family: 'Grand9K Pixel'; font-size: 6pt; -dm-text-outline: 1px black; color: white; line-height: 1.0; } .command_headset { font-weight: bold; } .small { font-family: 'TinyUnicode'; font-size: 12pt; line-height: 0.75; } .big { font-size: 8pt; } .reallybig { font-size: 8pt; } .extremelybig { font-size: 8pt; } .greentext { color: #00FF00; font-size: 6pt; } .redtext { color: #FF0000; font-size: 6pt; } .clown { color: #FF69BF; font-weight: bold; } .his_grace { color: #15D512; } .hypnophrase { color: #0d0d0d; font-weight: bold; } .yell { font-weight: bold; } .italics { font-family: 'TinyUnicode'; font-size: 12pt; line-height: 0.75; }"
 	elem "status_bar"
 		type = LABEL
 		pos = 0,464
@@ -192,17 +252,22 @@ window "paramapwindow"
 		text-color = #ffffff
 		background-color = #222222
 		border = line
+		saved-params = ""
 		text = ""
 		align = left
 
 window "outputwindow"
 	elem "outputwindow"
 		type = MAIN
-		pos = 0,0
+		pos = 281,0
 		size = 637x480
 		anchor1 = 0,0
 		anchor2 = 100,100
+		background-color = none
+		saved-params = "pos;size;is-minimized;is-maximized"
 		is-pane = true
+		outer-size = 653x538
+		inner-size = 637x499
 	elem "input"
 		type = INPUT
 		pos = 3,456
@@ -219,6 +284,8 @@ window "outputwindow"
 		size = 80x20
 		anchor1 = 100,100
 		anchor2 = -1,-1
+		background-color = none
+		saved-params = "is-checked"
 		text = "Чат"
 		command = ".winset \"saybutton.is-checked=true?input.command=\"!say \\\"\" macrobutton.is-checked=false:input.command=\"\"saybutton.is-checked=true?mebutton.is-checked=false\""
 		button-type = pushbox
@@ -228,6 +295,8 @@ window "outputwindow"
 		size = 80x20
 		anchor1 = 100,100
 		anchor2 = -1,-1
+		background-color = none
+		saved-params = "is-checked"
 		text = "Действие"
 		command = ".winset \"mebutton.is-checked=true ? input.command=\"!me \\\"\" : input.command=\"\"mebutton.is-checked=true ? saybutton.is-checked=false\"\"mebutton.is-checked=true ? oocbutton.is-checked=false\""
 		button-type = pushbox
@@ -239,20 +308,27 @@ window "outputwindow"
 		anchor2 = 100,100
 		background-color = #ffffff
 		is-disabled = true
+		saved-params = ""
 
 window "rpane"
 	elem "rpane"
 		type = MAIN
-		pos = 0,0
-		size = 0x0
+		pos = 281,0
+		size = 812x480
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		is-pane = true
+		outer-size = 828x519
+		inner-size = 812x480
 	elem "rpanewindow"
 		type = CHILD
 		pos = 0,27
-		size = 0x0
+		size = 812x480
 		anchor1 = 0,0
 		anchor2 = 100,100
+		background-color = none
 		saved-params = "splitter"
 		left = "infowindow"
 		right = "outputwindow"
@@ -261,64 +337,96 @@ window "rpane"
 		type = BUTTON
 		pos = 3,7
 		size = 40x16
-		is-checked = true
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		background-color = none
 		saved-params = "is-checked"
 		text = "Инфо"
 		command = ".winset \"rpanewindow.top=infowindow\""
+		is-checked = true
 		group = "rpanemode"
 		button-type = pushbox
 	elem "wikib"
 		type = BUTTON
 		pos = 48,7
 		size = 50x16
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		background-color = none
+		saved-params = "is-checked"
 		text = "Вики"
 		command = "wiki"
 	elem "rulesb"
 		type = BUTTON
 		pos = 99,7
 		size = 60x16
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		background-color = none
+		saved-params = "is-checked"
 		text = "Правила"
 		command = "rules"
 	elem "githubb"
 		type = BUTTON
 		pos = 160,7
 		size = 50x16
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		background-color = none
+		saved-params = "is-checked"
 		text = "GitHub"
 		command = "github"
 	elem "webmap"
 		type = BUTTON
 		pos = 211,7
 		size = 50x16
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		background-color = none
+		saved-params = "is-checked"
 		text = "Карта"
 		command = "webmap"
 	elem "discordb"
 		type = BUTTON
 		pos = 266,7
 		size = 60x16
+		anchor1 = -1,-1
+		anchor2 = -1,-1
 		font-style = "bold"
 		text-color = #ffffff
 		background-color = #7289da
+		saved-params = "is-checked"
 		text = "Discord"
 		command = "discord"
 	elem "donate"
 		type = BUTTON
 		pos = 327,7
 		size = 60x16
+		anchor1 = -1,-1
+		anchor2 = -1,-1
 		font-style = "bold"
 		text-color = #ffffff
 		background-color = #ef642b
+		saved-params = "is-checked"
 		text = "Бусти"
 		command = "Donate"
 	elem "changelog"
 		type = BUTTON
 		pos = 393,7
 		size = 70x16
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		background-color = none
+		saved-params = "is-checked"
 		text = "Чейнджлог"
 		command = "Changelog"
 	elem "fullscreenb"
 		type = BUTTON
 		pos = 469,7
 		size = 70x16
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		background-color = none
 		saved-params = "is-checked"
 		text = "Fullscreen"
 		command = "fullscreen"
@@ -326,15 +434,24 @@ window "rpane"
 window "infowindow"
 	elem "infowindow"
 		type = MAIN
-		pos = 0,0
-		size = 0x0
+		pos = 124,98
+		size = 607x439
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		background-color = none
+		saved-params = "pos;size;is-minimized;is-maximized"
 		is-pane = true
+		outer-size = 623x478
+		inner-size = 607x439
 	elem "info"
 		type = INFO
 		pos = 0,0
-		size = 0x0
+		size = 607x439
 		anchor1 = 0,0
 		anchor2 = 100,100
 		is-default = true
+		saved-params = ""
 		highlight-color = #00aa00
+		tab-background-color = none
 		on-show = ".winset \"rpane.infob.is-checked=true?rpane.rpanewindow.top=infowindow:rpane.rpanewindow.top=\""
+
