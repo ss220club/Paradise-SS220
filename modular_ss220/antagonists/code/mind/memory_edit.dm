@@ -17,9 +17,18 @@
 			if("clear")
 				clear_antag_datum(/datum/antagonist/blood_brother)
 			if("make")
-				var/datum/antagonist/blood_brother/brother_antag_datum = new
-				if(!brother_antag_datum.admin_add(usr, src))
-					qdel(brother_antag_datum)
+				var/datum/antagonist/blood_brother/antag_datum = new
+				if(!antag_datum.admin_add(usr, src))
+					qdel(antag_datum)
+
+	if(href_list["vox_raider"])
+		switch(href_list["vox_raider"])
+			if("clear")
+				clear_antag_datum(/datum/antagonist/vox_raider)
+			if("make")
+				var/datum/antagonist/vox_raider/antag_datum = new
+				if(!antag_datum.admin_add(usr, src))
+					qdel(antag_datum)
 
 	. = ..()
 

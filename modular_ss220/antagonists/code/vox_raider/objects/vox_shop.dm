@@ -21,7 +21,7 @@
 	. = ..()
 	generate_packs_list()
 
-/obj/machinery/vox_shop/generate_packs_list()
+/obj/machinery/vox_shop/proc/generate_packs_list()
 	packs_list = subtypesof(/datum/vox_pack)
 
 	for(var/pack_type in packs_list)

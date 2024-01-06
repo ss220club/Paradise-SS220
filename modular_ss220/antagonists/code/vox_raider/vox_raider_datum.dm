@@ -1,6 +1,3 @@
-/datum/game_mode
-	var/list/datum/mind/vox_raiders = list()
-
 /datum/antagonist/vox_raider
 	name = "vox raider"
 	roundend_category = "vox raiders"
@@ -8,8 +5,6 @@
 	special_role = SPECIAL_ROLE_VOX_RAIDER
 	antag_hud_name = "hudvoxraider"
 	antag_hud_type = ANTAG_HUD_VOX_RAIDER
-	clown_gain_text = {"Ты очень много тренировался, чтобы наконец-то вступить в Синдикат, даже твоя клоунская натура не сможет помешать.
-						Ты уверенно владеешь всем оружием."}
 	wiki_page_name = "vox_raiders"
 	var/datum/team/vox_raiders_team/raiders_team = null
 

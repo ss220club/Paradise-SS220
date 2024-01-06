@@ -7,6 +7,8 @@
 	var/max_antag_fraction = 1
 	/// How much budget has left
 	var/budget = 0
+	/// Scenarious for choose
+	var/list/datum/antag_scenario/list_scenarios = list()
 	/// List of scenarios chosen on `pre_setup` stage, and which will be applied on `post_setup`
 	var/list/datum/antag_scenario/executed_scenarios = list()
 
@@ -14,10 +16,11 @@
 /datum/game_mode/antag_mix/New()
 	. = ..()
 	apply_configuration()
+	list_scenarios = subtypesof(/datum/antag_scenario)
 
 
 /datum/game_mode/antag_mix/pre_setup()
-	var/list/datum/antag_scenario/possible_scenarios = subtypesof(/datum/antag_scenario)
+	var/list/datum/antag_scenario/possible_scenarios = list_scenarios
 
 	var/list/mob/new_player/ready_players = get_ready_players()
 	var/ready_players_amount = length(ready_players)

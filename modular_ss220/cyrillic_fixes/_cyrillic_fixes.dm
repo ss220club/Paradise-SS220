@@ -65,6 +65,10 @@
 		":З" = "AI Private",	"#З" = "AI Private",	"№З" = "AI Private",	".З" = "AI Private",
 		":Ё" = "cords",			"#Ё" = "cords",			"№Ё" = "cords",			".Ё" = "cords",
 
+	// modular_ss220/antagonists/code/antagonist_radio.dm
+		":М" = "VoxCom",		"#М" = "VoxCom",		"№М" = "VoxCom",		".М" = "VoxCom",
+		":м" = "VoxCom",		"#м" = "VoxCom",		"№м" = "VoxCom",		".м" = "VoxCom",
+
 	// Russian symbols no case
 		// None yet.
 

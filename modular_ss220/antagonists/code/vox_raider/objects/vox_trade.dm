@@ -201,12 +201,15 @@
 
 		if(length(I.armor))
 			var/temp_val = 0
-			for(var/param in I.armor)
-				var/temp_param = I.armor[param] == INFINITY ? 500 : I.armor[param]
+			var/list/armor_list = I.armor.getList()
+			for(var/param in armor_list)
+				var/param_value = armor_list[param] == INFINITY ? 500 : armor_list[param]
+				if(param_value == 0)
+					continue
 				var/div = 1
 				if(param in list(FIRE, ACID))
 					div = armor_div	// избегаем легких очков за часто встречаемые свойства.
-				temp_val += div > 1 ? round(temp_val / div) : temp_val
+				temp_val += div > 1 ? round(param_value / div) : temp_val
 			if(temp_val)
 				temp_values_sum += temp_val
 				is_equip = TRUE
@@ -343,10 +346,15 @@
 	if(!user)
 		return
 	if(!precious_value)
-		var/datum/antagonist/vox_raider/raider = user.mind?.has_antag_datum(/datum/antagonist/vox_raider)
-		if(!raider)
+		var/list/objectives = user.mind?.get_all_objectives()
+		if(!length(objectives))
 			return
-		precious_value = raider.precious_value
+		var/datum/objective/raider_steal/objective = locate() in objectives
+		precious_value = objective.precious_value
 	if(value >= precious_value)
 		precious_collected_names_list += I.name
 		precious_collected_value += value
+
+		// var/datum/antagonist/vox_raider/raider = user.mind?.has_antag_datum(/datum/antagonist/vox_raider)
+		// if(!raider)
+		// 	return

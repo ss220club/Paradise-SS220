@@ -40,6 +40,17 @@
 	/// List of players that were drafted to be antagonists of this scenario
 	var/list/datum/mind/assigned = list()
 
+	/// Is the antagonist chosen from the station's crew?
+	var/is_crew_antag = TRUE
+	/// Spawn antagonist at landmark name
+	var/obj/effect/landmark/spawner/landmark_type = /obj/effect/landmark/spawner/rev
+	/// What species can be used for the antagonist
+	var/list/possible_species = list("Human")
+	/// Recommended species at prefs to increase the chance of getting a role for RP-experienced players
+	var/list/recommended_species_active_pref
+	/// Multiplication modifier that increases the chance of landing by N times
+	var/recommended_species_mod = 0
+
 /datum/antag_scenario/New()
 	if(abstract)
 		stack_trace("Instantiation of abstract antag scenarios is prohibited.")
@@ -105,6 +116,8 @@
 		if(!length(candidates))
 			break
 
+		modif_chance_recommended_species()
+
 		var/mob/new_player/chosen = pick_n_take(candidates)
 
 		// We will check if something bad happened with candidates here.
@@ -118,8 +131,10 @@
 		chosen_mind.special_role = antag_special_role
 		chosen_mind.restricted_roles |= restricted_roles
 
-	return length(assigned) - assigned_before > 0
+	if(!try_create_characters())
+		return FALSE
 
+	return length(assigned) - assigned_before > 0
 /**
  * Called in `post_setup`, which means that all players already have jobs. Here antags should receive everything they need.
  * Can fail here, but there is nothing we can do on this stage - all players already have their jobs.
@@ -178,3 +193,65 @@
 
 		if(candidate_mind.assigned_role in restricted_roles)
 			candidates.Remove(candidate)
+
+/**
+ * Сreate characters if the antagonist is not from the crew.
+*/
+/datum/antag_scenario/proc/try_create_characters()
+	if(is_crew_antag)
+		return FALSE
+
+	if(!length(assigned))
+		return FALSE
+
+	var/list/landmarks = list()
+	for(var/obj/effect/landmark/landmark in GLOB.landmarks_list)
+		if(!istype(landmark, landmark_type))
+			continue
+		landmarks.Add(landmark)
+
+	if(!length(landmarks))
+		for(var/obj/effect/landmark/spawner/late/landmark in GLOB.landmarks_list)
+			landmarks.Add(landmark)
+
+	if(!length(landmarks))
+		return FALSE
+
+	var/list/temp_landmarks = list()
+	for(var/datum/mind/mind in assigned)
+		if(!length(temp_landmarks))
+			temp_landmarks = landmarks
+		var/picked_landmark = pick(temp_landmarks)
+		temp_landmarks.Remove(picked_landmark)
+		var/turf/loc_spawn = get_turf(picked_landmark)
+		make_character(mind, loc_spawn)
+
+	return TRUE
+
+/**
+ * Сreate characters if the antagonist is not from the crew.
+*/
+/datum/antag_scenario/proc/make_character(datum/mind/mind, turf/loc_spawn)
+	var/picked_species = pick(possible_species)
+	var/datum/antagonist/temp_antag_datum = locate(antag_datum) in mind.antag_datums
+	temp_antag_datum.create_mob(loc_spawn, TRUE, picked_species, possible_species)
+
+/**
+ * Recommended species increase the chance of getting a role for RP-experienced players
+*/
+/datum/antag_scenario/proc/modif_chance_recommended_species()
+	if(!length(candidates))
+		return
+
+	if(!recommended_species_mod)
+		return
+
+	if(!length(recommended_species_active_pref))
+		return
+
+	for(var/mob/new_player/candidate in candidates)
+		var/list/datum/character_save/characters = candidate.client.prefs.character_saves
+		for(var/datum/character_save/character in characters)
+			if(character.species in recommended_species_active_pref)
+				for(var/j in recommended_species_mod)
+					candidates.Add(candidate)

@@ -117,18 +117,3 @@
 		"Special Operations Officer",
 		"Syndicate Officer",
 		"Solar Federation General")
-
-/datum/antag_scenario/team/vox_raiders
-	name = "Vox Raider"
-	config_tag = "vox_raiders"
-	abstract = FALSE
-	antag_role = ROLE_VOX_RAIDER
-	antag_special_role = SPECIAL_ROLE_VOX_RAIDER
-	antag_datum = /datum/antagonist/vox_raider
-	antag_team = /datum/team/vox_raiders_team
-	required_players = 20
-	cost = 20
-	weight = 1
-	antag_cap = 4
-	candidates_required = 4
-	team_size = 4

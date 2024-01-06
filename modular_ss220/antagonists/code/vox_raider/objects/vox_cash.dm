@@ -2,7 +2,7 @@
 	name = "Кикиридиты"
 	desc = "Криптографический чип доступа к адресам транзакций рассчетных средств воксов."
 	icon = 'modular_ss220/antagonists/icons/trader_machine.dmi'
-	icon_state = "vox_cash"
+	icon_state = "vox_key"
 	hitsound = "swing_hit"
 	force = 1
 	throwforce = 1
