@@ -21,6 +21,7 @@
 	dispensable_reagents |= "schnaps"
 	dispensable_reagents |= "bitter"
 	dispensable_reagents |= "sheridan"
+	dispensable_reagents |= "bluecuracao"
 	. = ..()
 
 /obj/item/handheld_chem_dispenser/booze/Initialize(mapload)
@@ -31,6 +32,7 @@
 	dispensable_reagents |= "schnaps"
 	dispensable_reagents |= "bitter"
 	dispensable_reagents |= "sheridan"
+	dispensable_reagents |= "bluecuracao"
 	. = ..()
 
 /datum/reagent/consumable/ethanol/sambuka
@@ -1284,17 +1286,6 @@
 	drink_name = "Trans-Siberian express"
 	drink_desc = "From Vladivostok to delirium tremens in a day."
 	taste_description = "terrible infrastructure"
-
-/datum/reagent/consumable/ethanol/trans_siberian_express/on_mob_life(mob/living/M)
-	. = ..()
-	var/datum/language/rus_lang = GLOB.all_languages["Neo-Russkiya"]
-	if((rus_lang in M.languages))
-		if(M.default_language != rus_lang)
-			M.default_language = rus_lang
-		if(volume < 0.4)
-			M.default_language = null //reset language we were speaking
-		return
-	else
 
 /datum/chemical_reaction/trans_siberian_express
 	name = "Trans-Siberian Express"
