@@ -820,7 +820,7 @@
 	if(prob(50))
 		M.say(pick("NEEIIGGGHHHH!", "NEEEIIIIGHH!", "NEIIIGGHH!", "HAAWWWWW!", "HAAAWWW!"))
 
-datum/chemical_reaction/horse_neck
+/datum/chemical_reaction/horse_neck
 	name = "Horse Neck"
 	id = "horse_neck"
 	result = "horse_neck"
