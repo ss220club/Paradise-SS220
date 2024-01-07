@@ -146,16 +146,7 @@
 	name = "vox mercenary laminar scout vest"
 	desc = "Компактный и мобильный костюм сформированный из лёгких пластин и за счет их особого размещения, увеличивает погашение импульсов перенаправляя их в ускорение носителя, но взамен теряя значимые защитные свойства. "
 	armor = list(MELEE = 20, BULLET = 20, LASER = 10, ENERGY = 40, BOMB = 40, RAD = 20, FIRE = 20, ACID = 20)
-
-/obj/item/clothing/suit/armor/vox_merc/laminar/scout/equipped(mob/living/user, slot)
-	..()
-	if(isvox(user) && slot == SLOT_HUD_OUTER_SUIT)
-		ADD_TRAIT(user, TRAIT_GOTTAGOFAST, "laminararmor[UID()]")
-
-/obj/item/clothing/suit/armor/vox_merc/laminar/scout/dropped(mob/user)
-	. = ..()
-	if(user)
-		REMOVE_TRAIT(user, TRAIT_GOTTAGOFAST, "laminararmor[UID()]")
+	slowdown = -0.25
 
 
 // Stealth

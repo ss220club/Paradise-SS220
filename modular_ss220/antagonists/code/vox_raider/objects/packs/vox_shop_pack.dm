@@ -15,7 +15,8 @@
 		if(!path)
 			continue
 		var/atom/movable/AM = path
-		ui_manifest += "<big>[bicon(AM)]</big> [initial(AM.name)]"	// !!!! проверяем отобразится ли иконка
+		var/icon/I = icon(initial(AM.icon), initial(AM.icon_state))
+		ui_manifest += "<big>[bicon(I)]</big> [initial(AM.name)]"	// !!!! проверяем отобразится ли иконка
 
 /datum/vox_pack/proc/create_package(turf/spawn_location, mob/user, put_in_hands = TRUE)
 	var/list/items_list = list()

@@ -18,3 +18,17 @@
 	possible_species = list("Vox")
 	recommended_species_active_pref = list("Vox")
 	recommended_species_mod = 3
+
+/datum/antag_scenario/team/vox_raiders/equip_character(datum/mind/mind)
+	mind.current.equipOutfit(/datum/outfit/vox)
+	mind.current.faction = list("Vox")
+	mind.offstation_role = TRUE
+
+
+
+
+// !!!!!!!!! ВРЕМЯНКА ДЛЯ ТЕСТА
+/datum/antag_scenario/team/vox_raiders/New()
+	. = ..()
+	required_players = 0
+

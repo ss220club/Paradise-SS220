@@ -15,6 +15,9 @@
 	armor = list(MELEE = 15, BULLET = 15, LASER = 15, ENERGY = 15, BOMB = 50, RAD = 0, FIRE = 115, ACID = 50)
 	strip_delay = 7 SECONDS
 	resistance_flags = NONE
+	slowdown = 0
+	slowdown_passive = 0
+	slowdown_active = 1
 
 /obj/item/clothing/shoes/magboots/vox/combat
 	name = "vox combat magclaws"
@@ -35,11 +38,13 @@
 	permeability_coefficient = 0.01
 	armor = list(MELEE = 115, BULLET = 50, LASER = 75, ENERGY = 50, BOMB = 200, RAD = 200, FIRE = 450, ACID = 200)
 	strip_delay = 14 SECONDS
-	slowdown_active = SHOES_SLOWDOWN+2
+	slowdown_passive = SHOES_SLOWDOWN+1
+	slowdown_active = SHOES_SLOWDOWN+3
 
 /obj/item/clothing/shoes/magboots/vox/scout
 	name = "vox scout magclaws"
 	desc = "Легкие налапочники для когтистых лап причудливой формы с продвинутым сцеплением с поверхностью для ускорение передвижения."
 	item_state = "boots-vox-combat"
 	icon_state = "boots-vox-combat"
-	slowdown_active = -2	// !!! проверить и выставить -1 если много или броне.
+	slowdown_passive = -0.25
+	slowdown_active = 0

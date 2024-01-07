@@ -131,15 +131,15 @@
 		chosen_mind.special_role = antag_special_role
 		chosen_mind.restricted_roles |= restricted_roles
 
-	if(!try_create_characters())
-		return FALSE
-
 	return length(assigned) - assigned_before > 0
 /**
  * Called in `post_setup`, which means that all players already have jobs. Here antags should receive everything they need.
  * Can fail here, but there is nothing we can do on this stage - all players already have their jobs.
 */
 /datum/antag_scenario/proc/execute()
+	if(!is_crew_antag && !try_create_characters())
+		return FALSE
+
 	for(var/datum/mind/assignee as anything in assigned)
 		assignee.add_antag_datum(antag_datum)
 
@@ -225,6 +225,7 @@
 		temp_landmarks.Remove(picked_landmark)
 		var/turf/loc_spawn = get_turf(picked_landmark)
 		make_character(mind, loc_spawn)
+		equip_character(mind)
 
 	return TRUE
 
@@ -236,6 +237,8 @@
 	var/datum/antagonist/temp_antag_datum = locate(antag_datum) in mind.antag_datums
 	temp_antag_datum.create_mob(loc_spawn, TRUE, picked_species, possible_species)
 
+/datum/antag_scenario/proc/equip_character(datum/mind/mind)
+	return TRUE
 /**
  * Recommended species increase the chance of getting a role for RP-experienced players
 */

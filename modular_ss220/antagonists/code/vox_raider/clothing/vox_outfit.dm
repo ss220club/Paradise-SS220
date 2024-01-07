@@ -1,5 +1,5 @@
 // Outfit
-/datum/outfit/admin/vox
+/datum/outfit/vox
 	name = "Vox Clothing"
 	uniform = /obj/item/clothing/under/vox/jumpsuit
 	gloves = /obj/item/clothing/gloves/vox
@@ -19,7 +19,7 @@
 		/obj/item/clothing/head/helmet/space/vox/pressure = 1,
 	)
 
-/datum/outfit/admin/vox/pre_equip(mob/living/carbon/human/H, visualsOnly)
+/datum/outfit/vox/pre_equip(mob/living/carbon/human/H, visualsOnly)
 	. = ..()
 	var/choosen = rand(1, 8)
 	switch(choosen)
@@ -46,7 +46,7 @@
 		if(prob(25))
 			back = /obj/item/storage/backpack/duffel/vox
 
-/datum/outfit/admin/vox/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+/datum/outfit/vox/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	. = ..()
 	if(visualsOnly)
 		return
@@ -55,7 +55,88 @@
 	if(istype(I))
 		apply_to_card(I, H, get_all_accesses(), "Vox Raider", "syndie")
 
-/datum/outfit/admin/vox/carapace
+	H.internal = H.r_pocket
+	H.update_action_buttons_icon()
+
+
+// ==================== Raiders ====================
+/datum/outfit/vox/raider
+	name = "vox raider"
+	suit = /obj/item/clothing/suit/space/hardsuit/vox
+	suit_store = /obj/item/tank/internals/emergency_oxygen/double/vox
+	gloves = /obj/item/clothing/gloves/color/yellow/vox
+	shoes = /obj/item/clothing/shoes/magboots/vox
+	l_ear = /obj/item/radio/headset/vox/alt
+
+/datum/outfit/vox/raider/trooper
+	name = "vox raider trooper"
+	suit = /obj/item/clothing/suit/space/hardsuit/vox/trooper
+	shoes = /obj/item/clothing/shoes/magboots/vox/combat
+
+/datum/outfit/vox/raider/scout
+	name = "vox raider scout"
+	suit = /obj/item/clothing/suit/space/hardsuit/vox/scout
+	shoes = /obj/item/clothing/shoes/magboots/vox/scout
+
+/datum/outfit/vox/raider/medic
+	name = "vox raider medic"
+	suit = /obj/item/clothing/suit/space/hardsuit/vox/medic
+
+/datum/outfit/vox/raider/mechanic
+	name = "vox raider mechanic"
+	suit = /obj/item/clothing/suit/space/hardsuit/vox/mechanic
+	shoes = /obj/item/clothing/shoes/magboots/vox/heavy
+
+/datum/outfit/vox/raider/heavy
+	name = "vox raider heavy"
+	suit = /obj/item/clothing/suit/space/hardsuit/vox/heavy
+	shoes = /obj/item/clothing/shoes/magboots/vox/heavy
+
+
+// ==================== Mercenaries ====================
+/datum/outfit/vox/merc
+	name = "vox mercenary"
+	suit = /obj/item/clothing/suit/armor/vox_merc
+	head = /obj/item/clothing/head/helmet/vox_merc
+	gloves = /obj/item/clothing/gloves/color/yellow/vox
+	shoes = /obj/item/clothing/shoes/magboots/vox
+	l_ear = /obj/item/radio/headset/vox/alt
+
+/datum/outfit/vox/merc/storm
+	name = "vox mercenary stormtrooper"
+	suit = /obj/item/clothing/suit/armor/vox_merc/stormtrooper
+	head = /obj/item/clothing/head/helmet/vox_merc/stormtrooper
+	shoes = /obj/item/clothing/shoes/magboots/vox/combat
+
+/datum/outfit/vox/merc/fieldmedic
+	name = "vox mercenary field medic"
+	suit = /obj/item/clothing/suit/armor/vox_merc/fieldmedic
+	head = /obj/item/clothing/head/helmet/vox_merc/fieldmedic
+
+/datum/outfit/vox/merc/bomber
+	name = "vox mercenary bomber"
+	suit = /obj/item/clothing/suit/armor/vox_merc/bomber
+	head = /obj/item/clothing/head/helmet/vox_merc/bomber
+	shoes = /obj/item/clothing/shoes/magboots/vox/heavy
+
+/datum/outfit/vox/merc/laminar
+	name = "vox mercenary laminar"
+	suit = /obj/item/clothing/suit/armor/vox_merc/laminar
+	head = /obj/item/clothing/head/helmet/vox_merc/laminar
+
+/datum/outfit/vox/merc/laminar/scout
+	name = "vox mercenary laminar scout"
+	suit = /obj/item/clothing/suit/armor/vox_merc/laminar/scout
+	shoes = /obj/item/clothing/shoes/magboots/vox/scout
+
+/datum/outfit/vox/merc/stealth
+	name = "vox mercenary stealth"
+	suit = /obj/item/clothing/suit/armor/vox_merc/stealth
+	head = /obj/item/clothing/head/helmet/vox_merc/stealth
+
+
+// ==================== Other ====================
+/datum/outfit/vox/carapace
 	name = "Vox Carapace"
 	uniform = /obj/item/clothing/suit/hooded/vox_robes
 	suit = /obj/item/clothing/suit/space/vox/carapace
@@ -66,84 +147,7 @@
 	glasses = /obj/item/clothing/glasses/thermal/monocle
 	l_ear = /obj/item/radio/headset/vox/alt
 
-
-/datum/outfit/admin/vox/carapace/pre_equip(mob/living/carbon/human/H, visualsOnly)
+/datum/outfit/vox/carapace/pre_equip(mob/living/carbon/human/H, visualsOnly)
 	. = ..()
 	uniform = /obj/item/clothing/suit/hooded/vox_robes
 	back = /obj/item/storage/backpack/vox
-
-
-// ==================== Raiders ====================
-/datum/outfit/admin/vox/raider
-	name = "vox raider"
-	suit = /obj/item/clothing/suit/space/hardsuit/vox
-	suit_store = /obj/item/tank/internals/emergency_oxygen/double/vox
-	gloves = /obj/item/clothing/gloves/color/yellow/vox
-	shoes = /obj/item/clothing/shoes/magboots/vox
-	l_ear = /obj/item/radio/headset/vox/alt
-
-/datum/outfit/admin/vox/raider/trooper
-	name = "vox raider trooper"
-	suit = /obj/item/clothing/suit/space/hardsuit/vox/trooper
-	shoes = /obj/item/clothing/shoes/magboots/vox/combat
-
-/datum/outfit/admin/vox/raider/scout
-	name = "vox raider scout"
-	suit = /obj/item/clothing/suit/space/hardsuit/vox/scout
-	shoes = /obj/item/clothing/shoes/magboots/vox/scout
-
-/datum/outfit/admin/vox/raider/medic
-	name = "vox raider medic"
-	suit = /obj/item/clothing/suit/space/hardsuit/vox/medic
-
-/datum/outfit/admin/vox/raider/mechanic
-	name = "vox raider mechanic"
-	suit = /obj/item/clothing/suit/space/hardsuit/vox/mechanic
-	shoes = /obj/item/clothing/shoes/magboots/vox/heavy
-
-/datum/outfit/admin/vox/raider/heavy
-	name = "vox raider heavy"
-	suit = /obj/item/clothing/suit/space/hardsuit/vox/heavy
-	shoes = /obj/item/clothing/shoes/magboots/vox/heavy
-
-
-// ==================== Mercenaries ====================
-/datum/outfit/admin/vox/merc
-	name = "vox mercenary"
-	suit = /obj/item/clothing/suit/armor/vox_merc
-	head = /obj/item/clothing/head/helmet/vox_merc
-	gloves = /obj/item/clothing/gloves/color/yellow/vox
-	shoes = /obj/item/clothing/shoes/magboots/vox
-	l_ear = /obj/item/radio/headset/vox/alt
-
-/datum/outfit/admin/vox/merc/storm
-	name = "vox mercenary stormtrooper"
-	suit = /obj/item/clothing/suit/armor/vox_merc/stormtrooper
-	head = /obj/item/clothing/head/helmet/vox_merc/stormtrooper
-	shoes = /obj/item/clothing/shoes/magboots/vox/combat
-
-/datum/outfit/admin/vox/merc/fieldmedic
-	name = "vox mercenary field medic"
-	suit = /obj/item/clothing/suit/armor/vox_merc/fieldmedic
-	head = /obj/item/clothing/head/helmet/vox_merc/fieldmedic
-
-/datum/outfit/admin/vox/merc/bomber
-	name = "vox mercenary bomber"
-	suit = /obj/item/clothing/suit/armor/vox_merc/bomber
-	head = /obj/item/clothing/head/helmet/vox_merc/bomber
-	shoes = /obj/item/clothing/shoes/magboots/vox/heavy
-
-/datum/outfit/admin/vox/merc/laminar
-	name = "vox mercenary laminar"
-	suit = /obj/item/clothing/suit/armor/vox_merc/laminar
-	head = /obj/item/clothing/head/helmet/vox_merc/laminar
-
-/datum/outfit/admin/vox/merc/laminar/scout
-	name = "vox mercenary laminar scout"
-	suit = /obj/item/clothing/suit/armor/vox_merc/laminar/scout
-	shoes = /obj/item/clothing/shoes/magboots/vox/scout
-
-/datum/outfit/admin/vox/merc/stealth
-	name = "vox mercenary stealth"
-	suit = /obj/item/clothing/suit/armor/vox_merc/stealth
-	head = /obj/item/clothing/head/helmet/vox_merc/stealth

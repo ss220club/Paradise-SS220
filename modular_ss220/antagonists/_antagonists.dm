@@ -16,6 +16,6 @@
 	)
 
 	GLOB.department_radio_keys |= list(
-		":V" = "VoxCom",	"#V" = "VoxCom",		".V" = "VoxCom",
-		":v" = "VoxCom",	"#v" = "VoxCom",		".v" = "VoxCom",
+		":VR" = "VoxCom",	"#VR" = "VoxCom",		".VR" = "VoxCom",
+		":vr" = "VoxCom",	"#vr" = "VoxCom",		".vr" = "VoxCom",
 	)

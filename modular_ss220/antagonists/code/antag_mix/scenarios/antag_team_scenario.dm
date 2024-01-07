@@ -44,9 +44,6 @@
 		message_admins("Picked team of: [json_encode(members)]")
 		picked_teams += list(members)
 
-	if(!try_create_characters())
-		return FALSE
-
 	return length(picked_teams) - teams_before > 0
 
 
