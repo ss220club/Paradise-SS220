@@ -24,7 +24,7 @@
 	else if(message_mode)
 		used_radios += aiRadio
 		if(aiRadio.disabledAi || aiRestorePowerRoutine || stat)
-			to_chat(src, "<span class='danger'>Системная ошибка - Приёмпередатчик отключен.</span>")
+			to_chat(src, "<span class='danger'>Системная ошибка - Передатчик отключен.</span>")
 			return 0
 		if(message_mode == "general")
 			message_mode = null

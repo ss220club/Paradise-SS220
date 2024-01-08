@@ -225,7 +225,7 @@
 		return
 	adjustBruteLoss(-30)
 	add_fingerprint(user)
-	user.visible_message("<span class='alert'>[user] латает некоторые вмятитны на [src] с помощью [I].</span>")
+	user.visible_message("<span class='alert'>[user] латает некоторые вмятины на [src] с помощью [I].</span>")
 
 
 /mob/living/silicon/bullet_act(obj/item/projectile/Proj)

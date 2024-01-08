@@ -249,7 +249,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 	to_chat(src, "<B>Чтобы осматривать другие части станции, кликните на 'Переключение сети'.</B>")
 	to_chat(src, "<B>Пока вы смотрите через камеры, вы можете взаимодействовать с большинством (подключённых) видимых устройств по типу компьютеров, ЛКП, интеркомов, дверей и так далее.</B>")
 	to_chat(src, "Чтобы использовать что-то, просто кликните по предмету.")
-	to_chat(src, "Используйте :b (:и) для общения с киборгами. Используйте :h (:р) для общения через активный голопад.")
+	to_chat(src, "Используйте :b для общения с киборгами. Используйте :h для общения через активный голопад.")
 	to_chat(src, "Для каналов отделов используйте:")
 
 	var/radio_text = ""
@@ -263,7 +263,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 	to_chat(src, radio_text)
 
 	show_laws()
-	to_chat(src, "<b>Эти законы могут быть изменены другими игроками или Вами при игре за предателя.</b>")
+	to_chat(src, "<b>Эти законы могут быть изменены другими игроками или вами при игре за предателя.</b>")
 
 	job = "AI"
 
@@ -319,7 +319,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 	stat(null, "Подключённые киборги: [connected_robots.len]")
 	for(var/thing in connected_robots)
 		var/mob/living/silicon/robot/R = thing
-		var/robot_status = "Нормально"
+		var/robot_status = "Исправен"
 		if(R.stat || !R.client)
 			robot_status = "СЛОМАН"
 		else if(!R.cell || R.cell.charge <= 0)
@@ -327,7 +327,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 		// Name, Health, Battery, Module, Area, and Status! Everything an AI wants to know about its borgies!
 		var/area/A = get_area(R)
 		var/area_name = A ? sanitize(A.name) : "Unknown"
-		stat(null, "[R.name] | Целостнсоть: [R.health]% | Заряд: [R.cell ? "[R.cell.charge] / [R.cell.maxcharge]" : "N/A"] | \
+		stat(null, "[R.name] | Целостность: [R.health]% | Заряд: [R.cell ? "[R.cell.charge] / [R.cell.maxcharge]" : "N/A"] | \
 		Модуль: [R.designation] | Место: [area_name] | Статус: [robot_status]")
 
 /mob/living/silicon/ai/rename_character(oldname, newname)
@@ -338,7 +338,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 		announcer.author = name
 
 		if(eyeobj)
-			eyeobj.name = "[newname] (AI Eye)"
+			eyeobj.name = "[newname] (Глаз ИИ)"
 
 		// Set ai pda name
 		if(aiPDA)
@@ -964,7 +964,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 		return
 
 	var/list/ai_emotions = list("Very Happy", "Happy", "Neutral", "Unsure", "Confused", "Sad", "BSOD", "Blank", "Problems?", "Awesome", "Facepalm", "Friend Computer")
-	var/emote = input("Please, select a status!", "AI Status", null, null) in ai_emotions
+	var/emote = input("Пожалуйста, выберите эмоцию!", "Эмоция ИИ", null, null) in ai_emotions
 
 	if(check_unable())
 		return
@@ -1003,7 +1003,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 			custom_hologram = TRUE
 
 	var/input
-	switch(alert("Вы хотите выбрать голограмму на основе члена экипажа, животного или переключиться на уникальный аватар?",,"Crew Member","Unique","Animal"))
+	switch(alert("Хотите выбрать голограмму на основе члена экипажа, животного или переключиться на уникальный аватар?",,"Crew Member","Unique","Animal"))
 		if("Crew Member")
 			var/personnel_list[] = list()
 
@@ -1294,7 +1294,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 	if(check_unable(AI_CHECK_RADIO))
 		return
 
-	to_chat(src, "Получаем доступ к настройкам приёмпередатчика...")
+	to_chat(src, "Получаем доступ к настройкам передатчика...")
 	if(aiRadio)
 		aiRadio.interact(src)
 
@@ -1312,7 +1312,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 		to_chat(src, "<span class='warning'>Удалённое управление отключено!</span>")
 		return TRUE
 	if((flags & AI_CHECK_RADIO) && aiRadio.disabledAi)
-		to_chat(src, "<span class='warning'>Системная ошибка: Приёмпередатчик отключён!</span>")
+		to_chat(src, "<span class='warning'>Системная ошибка: Передатчик отключён!</span>")
 		return TRUE
 	return FALSE
 

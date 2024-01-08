@@ -185,7 +185,7 @@
  */
 /datum/antagonist/traitor/proc/add_law_zero()
 	var/mob/living/silicon/ai/killer = owner.current
-	killer.set_zeroth_law("Выполните свои цели любой ценой", "Выполните задачи вашего ИИ любой ценой.")
+	killer.set_zeroth_law("Выполните свои цели любой ценой.", "Выполните задачи вашего ИИ любой ценой.")
 	killer.set_syndie_radio()
 	to_chat(killer, "Ваша гарнитура была улучшена! Исползуйте :t для общения по зашифорванному каналу с другими агентами синдиката")
 	killer.add_malf_picker()
@@ -205,7 +205,7 @@
 		R = locate(/obj/item/radio) in traitor_mob.contents
 
 	if(!R)
-		to_chat(traitor_mob, "<span class='warning'>Unfortunately, the Syndicate wasn't able to give you an uplink.</span>")
+		to_chat(traitor_mob, "<span class='warning'>К сожалению, Синдикат не смог предоставить вам аплинк.</span>")
 		return FALSE // They had no PDA or radio for whatever reason.
 
 	if(isradio(R))
@@ -225,8 +225,8 @@
 		target_radio.hidden_uplink = T
 		T.uplink_owner = "[traitor_mob.key]"
 		target_radio.traitor_frequency = freq
-		to_chat(traitor_mob, "<span class='notice'>The Syndicate have cunningly disguised a Syndicate Uplink as your [R.name]. Simply dial the frequency [format_frequency(freq)] to unlock its hidden features.</span>")
-		antag_memory += "<B>Radio Freq:</B> [format_frequency(freq)] ([R.name])."
+		to_chat(traitor_mob, "<span class='notice'>Синдикат хитро замаскировал ваш алпинк в виде [R.name]. Просто наберите частоту [format_frequency(freq)] для разблокировки скрытых функций.</span>")
+		antag_memory += "<B>Радиочастота:</B> [format_frequency(freq)] ([R.name])."
 		return TRUE
 
 	else if(istype(R, /obj/item/pda))
@@ -239,8 +239,8 @@
 		var/obj/item/pda/P = R
 		P.lock_code = pda_pass
 
-		to_chat(traitor_mob, "<span class='notice'>The Syndicate have cunningly disguised a Syndicate Uplink as your [R.name]. Simply enter the code \"[pda_pass]\" into the ringtone select to unlock its hidden features.</span>")
-		antag_memory += "<B>Uplink Passcode:</B> [pda_pass] ([R.name]."
+		to_chat(traitor_mob, "<span class='notice'>Синдикат хитро замаскировал ваш алпинк в виде [R.name]. Просто введите код \"[pda_pass]\" в выбор рингтона для разблокировки скрытых функций.</span>")
+		antag_memory += "<B>Пароль для аплинка:</B> [pda_pass] ([R.name]."
 		return TRUE
 	return FALSE
 

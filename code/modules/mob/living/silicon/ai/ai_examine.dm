@@ -2,19 +2,19 @@
 	. = ..()
 	var/msg = "<span class='info'>"
 	if(src.stat == DEAD)
-		msg += "<span class='deadsay'>Оно выглядит отключённым.</span>\n"
+		msg += "<span class='deadsay'>Выглядит отключённым.</span>\n"
 	else
 		msg += "<span class='warning'>"
 		if(src.getBruteLoss())
 			if(src.getBruteLoss() < 30)
-				msg += "Оно выглядит слегка помятым.\n"
+				msg += "Выглядит слегка помятым.\n"
 			else
-				msg += "<B>Оно выглядит очень помятым!</B>\n"
+				msg += "<B>Выглядит очень помятым!</B>\n"
 		if(src.getFireLoss())
 			if(src.getFireLoss() < 30)
-				msg += "Оно выглядит слегка поджаренным.\n"
+				msg += "Выглядит слегка обугленным.\n"
 			else
-				msg += "<B>Его оболочка расплавлена и искажена от тепла!</B>\n"
+				msg += "<B>Оболочка расплавлена и искажена от тепла!</B>\n"
 		if(src.stat == UNCONSCIOUS)
 			msg += "Оно не отвечает и высвечивает текст: \"RUNTIME: Перегрузка сенсоров, стэк 26/3\".\n"
 		if(!shunted && !client)

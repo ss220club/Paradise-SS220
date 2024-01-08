@@ -46,7 +46,7 @@ AI MODULES
 		if(comp.current.stat == DEAD || comp.current.control_disabled)
 			to_chat(usr, "<span class='warning'>Загрузка неудачна. От ИИ нет сигнала.</span>")
 		else if(comp.current.see_in_dark == 0)
-			to_chat(usr, "<span class='warning'>Загрузка неудачна. От ИИ исходит слабый сигнал, и он не отвечает на запросы. Возможно, он разряжен.</span>")
+			to_chat(usr, "<span class='warning'>Загрузка неудачна. От ИИ исходит слабый сигнал, и он не отвечает на запросы. Возможно, он обесточен.</span>")
 		else
 			src.transmitInstructions(comp.current, usr)
 			to_chat(comp.current, "Ваши законы теперь:")
@@ -77,7 +77,7 @@ AI MODULES
 			src.transmitInstructions(comp.current, usr)
 			to_chat(comp.current, "Ваши законы теперь:")
 			comp.current.show_laws()
-			to_chat(usr, "<span class='notice'>Загрузка завершена. Законы робота были переписаны.</span>")
+			to_chat(usr, "<span class='notice'>Загрузка завершена. Законы робота были успешно изменены.</span>")
 
 
 /obj/item/aiModule/proc/transmitInstructions(mob/living/silicon/ai/target, mob/sender)
@@ -137,7 +137,7 @@ AI MODULES
 	..()
 	var/targName = stripped_input(usr, "Пожалуйста, введите имя члена экипажа.", "Кто?", user.real_name)
 	targetName = targName
-	desc = "Модуль ИИ 'One Crew: 'Только [targetName] является экипажем.'"
+	desc = "Модуль ИИ 'One Crew': 'Только [targetName] является экипажем.'"
 
 /obj/item/aiModule/oneCrewMember/install(obj/machinery/computer/C)
 	if(!targetName)
@@ -153,7 +153,7 @@ AI MODULES
 		target.set_zeroth_law(law)
 		GLOB.lawchanges.Add("В законе указан [targetName]")
 	else
-		to_chat(target, "<span class='boldnotice'>[sender.real_name] Попытался поменять ваш нулевой закон.</span>")// And lets them know that someone tried. --NeoFite
+		to_chat(target, "<span class='boldnotice'>[sender.real_name] попытался поменять ваш нулевой закон.</span>")// And lets them know that someone tried. --NeoFite
 		to_chat(target, "<span class='boldnotice'>В ваших интересах будет подыграть [sender.real_name] в законе [law]</span>")
 		GLOB.lawchanges.Add("В законе указан [targetName], но существующий нулевой закон нельзя переписать.")
 

@@ -380,11 +380,11 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 	return FALSE
 
 /datum/objective/block
-	name = "Угон за силиконов"
+	name = "Синтетический угон"
 	explanation_text = "Угоните шаттл без лояльного к Нанотрейзен экипажа на борту. \
-	Агенты Синдиката, другие враги корпорации, киборги, питомцы и закованные в наручники/кандалы заложники разрешены живыми на шаттле. \
-	Успешное использование устройства судного дня также выполняет цель."
-	martyr_compatible = 1
+	Агенты Синдиката, другие враги корпорации, киборги, питомцы/ограниченные заложники, разрешены живыми на шаттле. \
+	Успешное использование устройства судного дня - тоже вариант."
+	martyr_compatible = FALSE
 	needs_target = FALSE
 
 /datum/objective/block/check_completion()

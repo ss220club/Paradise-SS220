@@ -103,7 +103,7 @@
 			break
 
 	if(!can_state)
-		to_chat(src, "<span class='danger'>[method]: Невозможно объявить законы. Метод коммуникации недоступен.</span>")
+		to_chat(src, "<span class='danger'>[method]: Невозможно объявить законы. Способ к коммуникации недоступен.</span>")
 	stating_laws[prefix] = 0
 
 /mob/living/silicon/proc/statelaw(law)
