@@ -818,6 +818,11 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
+/obj/structure/cable/yellow{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "yellow"
 	},
@@ -3169,13 +3174,8 @@
 /turf/space,
 /area/space/nearstation)
 "auq" = (
-/obj/structure/cable/yellow{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
-/turf/simulated/floor/plasteel,
-/area/station/engineering/break_room)
+/turf/simulated/wall/r_wall,
+/area/station/engineering/ai_transit_tube)
 "aus" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -8911,10 +8911,11 @@
 "aPw" = (
 /obj/structure/table,
 /obj/machinery/requests_console{
-	department = "Cargo Bay";
-	departmentType = 2;
-	name = "Cargo Requests Console";
-	pixel_y = 30
+	department = "Quartermaster's Desk";
+	departmentType = 5;
+	name = "Quartermaster Requests Console";
+	pixel_y = 30;
+	announcementConsole = 1
 	},
 /obj/machinery/photocopier/faxmachine/longrange{
 	pixel_y = 4;
@@ -15338,7 +15339,7 @@
 	dir = 8;
 	icon_state = "darkbluecorners"
 	},
-/area/station/engineering/break_room)
+/area/station/engineering/ai_transit_tube)
 "bik" = (
 /obj/structure/cable/yellow{
 	d1 = 1;
@@ -16562,7 +16563,7 @@
 /turf/simulated/floor/plasteel{
 	icon_state = "darkbluecorners"
 	},
-/area/station/engineering/break_room)
+/area/station/engineering/ai_transit_tube)
 "blA" = (
 /obj/machinery/atmospherics/pipe/simple/visible/purple,
 /turf/simulated/floor/plating,
@@ -17077,9 +17078,7 @@
 /obj/item/storage/photo_album{
 	pixel_y = -4
 	},
-/obj/item/camera{
-	pixel_y = 4
-	},
+/obj/item/camera,
 /obj/item/radio/intercom/private{
 	pixel_x = -28
 	},
@@ -19137,7 +19136,7 @@
 	dir = 8;
 	icon_state = "darkbluecorners"
 	},
-/area/station/engineering/break_room)
+/area/station/engineering/ai_transit_tube)
 "bsE" = (
 /obj/machinery/light/small/directional/south,
 /obj/vehicle/janicart,
@@ -19182,7 +19181,7 @@
 	dir = 4;
 	icon_state = "darkbluecorners"
 	},
-/area/station/engineering/break_room)
+/area/station/engineering/ai_transit_tube)
 "bsK" = (
 /turf/simulated/wall/mineral/titanium,
 /area/shuttle/pod_4)
@@ -20942,7 +20941,7 @@
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
-/area/station/engineering/break_room)
+/area/station/engineering/ai_transit_tube)
 "bxy" = (
 /obj/machinery/hologram/holopad,
 /obj/structure/cable/yellow{
@@ -45666,7 +45665,7 @@
 	dir = 4;
 	icon_state = "darkbluecorners"
 	},
-/area/station/engineering/break_room)
+/area/station/engineering/ai_transit_tube)
 "dJx" = (
 /obj/structure/filingcabinet,
 /turf/simulated/floor/plasteel{
@@ -49154,7 +49153,7 @@
 	dir = 8;
 	icon_state = "darkbluecorners"
 	},
-/area/station/engineering/break_room)
+/area/station/engineering/ai_transit_tube)
 "fqX" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -51303,7 +51302,7 @@
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
-/area/station/engineering/break_room)
+/area/station/engineering/ai_transit_tube)
 "gpV" = (
 /obj/machinery/door/window/classic/normal{
 	name = "Mass Driver Door";
@@ -53278,7 +53277,7 @@
 	dir = 4;
 	icon_state = "darkbluecorners"
 	},
-/area/station/engineering/break_room)
+/area/station/engineering/ai_transit_tube)
 "hkF" = (
 /turf/simulated/wall/mineral/titanium,
 /area/shuttle/pod_2)
@@ -54250,7 +54249,7 @@
 /turf/simulated/floor/plasteel{
 	icon_state = "darkbluecorners"
 	},
-/area/station/engineering/break_room)
+/area/station/engineering/ai_transit_tube)
 "hED" = (
 /obj/effect/landmark/start/doctor,
 /turf/simulated/floor/plasteel{
@@ -56001,10 +56000,7 @@
 /obj/structure/table/reinforced,
 /obj/item/scalpel,
 /obj/item/autopsy_scanner,
-/obj/item/camera/autopsy{
-	pixel_x = -2;
-	pixel_y = -2
-	},
+/obj/item/camera/autopsy,
 /obj/structure/window/reinforced{
 	dir = 4
 	},
@@ -61694,6 +61690,16 @@
 	dir = 10
 	},
 /obj/effect/turf_decal/stripes/line,
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/obj/structure/cable/yellow{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "yellow"
 	},
@@ -63659,11 +63665,6 @@
 	dir = 4
 	},
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
-/obj/structure/cable/yellow{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
@@ -65102,7 +65103,7 @@
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
-/area/station/engineering/break_room)
+/area/station/engineering/ai_transit_tube)
 "mBn" = (
 /turf/simulated/floor/plating/airless,
 /area/station/engineering/solar/starboard)
@@ -66006,9 +66007,9 @@
 	dir = 4
 	},
 /obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
 	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/break_room)
@@ -66333,7 +66334,7 @@
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
-/area/station/engineering/break_room)
+/area/station/engineering/ai_transit_tube)
 "ncC" = (
 /obj/structure/table/reinforced,
 /obj/machinery/door/window/classic/normal{
@@ -69580,11 +69581,16 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "darkbluecorners"
 	},
-/area/station/engineering/break_room)
+/area/station/engineering/ai_transit_tube)
 "oMn" = (
 /obj/structure/cable/yellow{
 	d1 = 1;
@@ -71657,11 +71663,6 @@
 /obj/machinery/atmospherics/pipe/simple/visible/yellow{
 	dir = 5
 	},
-/obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/break_room)
 "pKs" = (
@@ -72876,7 +72877,7 @@
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
-/area/station/engineering/break_room)
+/area/station/engineering/ai_transit_tube)
 "qkD" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 4
@@ -74479,7 +74480,7 @@
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
-/area/station/engineering/break_room)
+/area/station/engineering/ai_transit_tube)
 "rab" = (
 /obj/structure/cable/yellow{
 	d1 = 4;
@@ -77094,7 +77095,7 @@
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
-/area/station/engineering/break_room)
+/area/station/engineering/ai_transit_tube)
 "slT" = (
 /obj/structure/cable/yellow{
 	d1 = 4;
@@ -79607,12 +79608,7 @@
 /obj/structure/rack,
 /obj/item/hand_labeler,
 /obj/item/folder/red,
-/obj/item/camera{
-	desc = "A one use - polaroid camera. 30 photos left.";
-	name = "detective's camera";
-	pixel_x = -2;
-	pixel_y = 3
-	},
+/obj/item/camera/detective,
 /obj/item/taperecorder{
 	pixel_x = -1
 	},
@@ -80285,7 +80281,7 @@
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
-/area/station/engineering/break_room)
+/area/station/engineering/ai_transit_tube)
 "tOF" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -82327,10 +82323,15 @@
 	id_tag = "transittube";
 	name = "Transit Tube Blast Door"
 	},
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
-/area/station/engineering/break_room)
+/area/station/engineering/ai_transit_tube)
 "uRO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plasteel{
@@ -87372,7 +87373,7 @@
 	dir = 8;
 	icon_state = "darkbluecorners"
 	},
-/area/station/engineering/break_room)
+/area/station/engineering/ai_transit_tube)
 "xrS" = (
 /obj/structure/chair/office/light{
 	dir = 8
@@ -87611,11 +87612,13 @@
 	dir = 5
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/power/apc/directional/west,
+/obj/structure/cable/yellow,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "darkbluecorners"
 	},
-/area/station/engineering/break_room)
+/area/station/engineering/ai_transit_tube)
 "xyc" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -132146,7 +132149,7 @@ bjN
 bjN
 bnt
 xrx
-auq
+bpn
 lQJ
 gYM
 hHE
@@ -132405,12 +132408,12 @@ nmh
 aLw
 pKi
 aiE
-bnt
-bnt
-bnt
-bnt
-bnt
-bnt
+auq
+auq
+auq
+auq
+auq
+auq
 iRu
 mpP
 skc
@@ -132919,7 +132922,7 @@ bnt
 xYR
 nCm
 tyW
-bnt
+auq
 hkm
 tNQ
 mAZ
@@ -133180,7 +133183,7 @@ wUa
 bsI
 bxx
 bly
-bnt
+auq
 qZz
 iRu
 fmo
@@ -133437,7 +133440,7 @@ wUa
 dIn
 sls
 hEA
-bnt
+auq
 ncA
 iRu
 yif
@@ -133694,7 +133697,7 @@ sTM
 jKS
 aXO
 aXO
-bnt
+auq
 qkC
 iRu
 ciD
