@@ -742,26 +742,6 @@
 	result_amount = 10
 	mix_sound = 'sound/goonstation/misc/drinkfizz.ogg'
 
-/datum/reagent/consumable/ethanol/daiquiri
-	name = "Daiquiri"
-	id = "daiquiri"
-	description = "Just try, try again for me! With the headshot power of a Daiquiri!"
-	color = "#b6b6b6"
-	alcohol_perc = 0.4
-	drink_icon = "daiquiri"
-	drinking_glass_icon = 'modular_ss220/food/icons/drinks.dmi'
-	drink_name = "Daiquiri"
-	drink_desc = "Just try, try again for me! With the headshot power of a Daiquiri!"
-	taste_description = "headshot"
-
-/datum/chemical_reaction/daiquiri
-	name = "Daiquiri"
-	id = "daiquiri"
-	result = "daiquiri"
-	required_reagents = list("rum" = 3, "limejuice" = 2, "sugar" = 1)
-	result_amount = 6
-	mix_sound = 'sound/goonstation/misc/drinkfizz.ogg'
-
 /datum/reagent/consumable/ethanol/tuxedo
 	name = "Tuxedo"
 	id = "tuxedo"
@@ -1072,6 +1052,28 @@
 	result = "monako"
 	required_reagents = list("gin" = 1, "lemonjuice" = 1, "limejuice" = 1, "berryjuice" = 1, "sodiumchloride" = 1 )
 	result_amount = 5
+	mix_sound = 'sound/goonstation/misc/drinkfizz.ogg'
+
+/datum/reagent/consumable/ethanol/irishcarbomb
+	name = "Irish Car Bomb"
+	id = "irishcarbomb"
+	description = "Mmm, tastes like chocolate cake..."
+	reagent_state = LIQUID
+	color = "#2E6671" // rgb: 46, 102, 113
+	alcohol_perc = 0.3
+	dizzy_adj = 10 SECONDS
+	drink_icon = "irishcarbomb"
+	drinking_glass_icon = 'modular_ss220/food/icons/drinks.dmi'
+	drink_name = "Irish Car Bomb"
+	drink_desc = "An irish car bomb."
+	taste_description = "troubles"
+
+/datum/chemical_reaction/irishcarbomb
+	name = "Irish Car Bomb"
+	id = "irishcarbomb"
+	result = "irishcarbomb"
+	required_reagents = list("ale" = 1, "irishcream" = 1)
+	result_amount = 2
 	mix_sound = 'sound/goonstation/misc/drinkfizz.ogg'
 
 /datum/reagent/consumable/ethanol/irishempbomb
