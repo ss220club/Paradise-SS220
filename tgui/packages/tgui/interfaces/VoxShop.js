@@ -14,13 +14,12 @@ const PickTab = (index) => {
       return <ItemsPage />;
     case 2:
       return <CartPage />;
-    case 3:
-      return <MedicalPage />; // !!!!!!!! МЕДИЦИНСКАЯ СТРАНИЦА С ДАННЫМИ ЖИЗНЕОБЕСПЕЧЕНИЯ ВСЕХ ВОКСОВ
+    // case 3:
+    //  return <MedicalPage />; // !!!!!!!! МЕДИЦИНСКАЯ СТРАНИЦА С ДАННЫМИ ЖИЗНЕОБЕСПЕЧЕНИЯ ВСЕХ ВОКСОВ
     default:
       return 'ОШИБКА, СООБЩИТЕ РАЗРАБОТЧИКУ';
   }
 };
-
 
 export const VoxShop = (props, context) => {
   const { act, data } = useBackend(context);
@@ -33,7 +32,6 @@ export const VoxShop = (props, context) => {
       <ComplexModal />
       <Window.Content scrollable>
         <Tabs>
-
           <Tabs.Tab
             key="PurchasePage"
             selected={tabIndex === 0}
@@ -44,7 +42,6 @@ export const VoxShop = (props, context) => {
           >
             Торговля
           </Tabs.Tab>
-
 
           <Tabs.Tab
             key="Cart"
@@ -58,8 +55,6 @@ export const VoxShop = (props, context) => {
             {cart && cart.length ? '(' + cart.length + ')' : ''}
           </Tabs.Tab>
 
-
-
           <Tabs.Tab
             key="Medical"
             selected={tabIndex === 2}
@@ -71,8 +66,6 @@ export const VoxShop = (props, context) => {
             Жизнеобеспечение
           </Tabs.Tab>
 
-
-
           <Tabs.Tab
             key="GetCash"
             // This cant ever be selected. Its just a close button.
@@ -81,16 +74,12 @@ export const VoxShop = (props, context) => {
           >
             Выгрузить Кикиридиты
           </Tabs.Tab>
-
         </Tabs>
         {PickTab(tabIndex)}
-
       </Window.Content>
     </Window>
   );
 };
-
-
 
 // ================== ITEMS PAGE ==================
 
@@ -110,17 +99,14 @@ const ItemsPage = (_properties, context) => {
     <Section
       title={'Средства: ' + cash + 'Кикиридитов'}
       buttons={
-        <Fragment>
-          <Button.Checkbox
-            content="Описание"
-            checked={showDesc}
-            onClick={() => setShowDesc(!showDesc)}
-          />
-        </Fragment>
+        <Button.Checkbox
+          content="Описание"
+          checked={showDesc}
+          onClick={() => setShowDesc(!showDesc)}
+        />
       }
     >
       <Flex>
-
         <FlexItem>
           <Tabs vertical>
             {cats.map((c) => (
@@ -146,19 +132,13 @@ const ItemsPage = (_properties, context) => {
             />
           ))}
         </Flex.Item>
-
       </Flex>
     </Section>
-);
+  );
 };
 
-
 const ShopItem = (props, context) => {
-  const {
-    i,
-    showDecription = 1,
-    buttons = <ShopItemButtons i={i} />,
-  } = props;
+  const { i, contents, showDecription = 1, buttons = <ShopItemButtons i={i} /> } = props;
 
   return (
     <Section
@@ -168,7 +148,7 @@ const ShopItem = (props, context) => {
       buttons={buttons}
       stretchContents
     >
-      {showDecription ? <Box italic>{decodeHtmlEntities(i.desc)}</Box> : null}
+      {showDecription ? <Box italic>{decodeHtmlEntities(i.desc) + "\n" + contents}</Box> : null}
     </Section>
   );
 };
@@ -179,28 +159,21 @@ const ShopItemButtons = (props, context) => {
   const { cash } = data;
 
   return (
-    <Fragment>
-      <Button
-        icon="shopping-cart"
-        content={
-          'Купить (' + i.cost + 'Кикиридитов)'
-        }
-        color={i.hijack_only === 1 && 'red'}
-        tooltip="Добавить в корзину."
-        tooltipPosition="left"
-        onClick={() =>
-          act('add_to_cart', {
-            item: i.obj_path,
-          })
-        }
-        disabled={i.cost > cash}
-      />
-
-    </Fragment>
+    <Button
+      icon="shopping-cart"
+      content={'Купить (' + i.cost + 'Кикиридитов)'}
+      color={i.hijack_only === 1 && 'red'}
+      tooltip="Добавить в корзину."
+      tooltipPosition="left"
+      onClick={() =>
+        act('add_to_cart', {
+          item: i.obj_path,
+        })
+      }
+      disabled={i.cost > cash}
+    />
   );
 };
-
-
 
 // ================== CART PAGE ==================
 
@@ -211,52 +184,47 @@ const CartPage = (_properties, context) => {
   const [showDesc, setShowDesc] = useLocalState(context, 'showDesc', 0);
 
   return (
-    <Fragment>
-      <Section
-        title={'Средства: ' + cash + 'Кикиридитов'}
-        buttons={
-          <Fragment>
-            <Button.Checkbox
-              content="Описание"
-              checked={showDesc}
-              onClick={() => setShowDesc(!showDesc)}
+    <Section
+      title={'Средства: ' + cash + 'Кикиридитов'}
+      buttons={
+        <Fragment>
+          <Button.Checkbox
+            content="Описание"
+            checked={showDesc}
+            onClick={() => setShowDesc(!showDesc)}
+          />
+          <Button
+            content="Очистить"
+            icon="trash"
+            onClick={() => act('empty_cart')}
+            disabled={!cart}
+          />
+          <Button
+            content={'Оплатить (' + cart_price + ' Кикиридитов)'}
+            icon="shopping-cart"
+            onClick={() => act('purchase_cart')}
+            disabled={!cart || cart_price > cash}
+          />
+        </Fragment>
+      }
+    >
+      <Flex.Item grow={1} basis={0}>
+        {cart ? (
+          cart.map((i) => (
+            <ShopItem
+              i={i}
+              showDecription={showDesc}
+              key={decodeHtmlEntities(i.name)}
+              buttons={<CartButtons i={i} />}
             />
-            <Button
-              content="Очистить"
-              icon="trash"
-              onClick={() => act('empty_cart')}
-              disabled={!cart}
-            />
-            <Button
-              content={'Оплатить (' + cart_price + ' Кикиридитов)'}
-              icon="shopping-cart"
-              onClick={() => act('purchase_cart')}
-              disabled={!cart || cart_price > cash}
-            />
-          </Fragment>
-        }
-      >
-
-        <Flex.Item grow={1} basis={0}>
-          {cart ? (
-            cart.map((i) => (
-              <ShopItem
-                i={i}
-                showDecription={showDesc}
-                key={decodeHtmlEntities(i.name)}
-                buttons={<CartButtons i={i} />}
-              />
-            ))
-          ) : (
-            <Box italic>Список выбранных товаров пуст!</Box>
-          )}
-        </Flex.Item>
-
-      </Section>
-    </Fragment>
+          ))
+        ) : (
+          <Box italic>Список выбранных товаров пуст!</Box>
+        )}
+      </Flex.Item>
+    </Section>
   );
 };
-
 
 const CartButtons = (props, context) => {
   const { act, data } = useBackend(context);
@@ -317,10 +285,8 @@ const CartButtons = (props, context) => {
   );
 };
 
-
-
 // ================== MEDICAL PAGE ==================
-
+/*
 const MedicalPage = (_properties, context) => {
   const { act, data } = useBackend(context);
   const crew = sortBy((cm) => cm.name)(data.crewmembers || []);
@@ -400,3 +366,4 @@ const MedicalPage = (_properties, context) => {
     </Box>
   );
 };
+*/

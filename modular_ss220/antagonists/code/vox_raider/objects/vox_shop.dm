@@ -216,7 +216,10 @@
 			"category" = pack.category,
 			"amount" = cart_list[reference]))
 
-/obj/machinery/vox_shop/proc/remove_from_cart(item_reference) // i want to make it eventually remove all instances
+		// !!!!!!!!!! разобраться в ошибке с неправильно заносящимися items
+		// заношу я как supply_pack, а в .js как в uplink_item
+
+/obj/machinery/vox_shop/proc/remove_from_cart(item_reference)
 	LAZYREMOVE(cart_list, item_reference)
 	generate_tgui_cart(TRUE)
 
