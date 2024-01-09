@@ -222,10 +222,7 @@
 /datum/reagent/consumable/ethanol/black_blood/reaction_mob(mob/living/M, method, volume)
 	. = ..()
 	if(prob(50))
-		M.say(pick("Fuu ma'jin!", "Sas'so c'arta forbici!", \
-		 "Ta'gh fara'qha fel d'amar det!", "Kla'atu barada nikt'o!", \
-		  "Fel'th Dol Ab'orod!", "In'totum Lig'abis!", "Ethra p'ni dedol!", \
-		   "Ditans Gut'ura Inpulsa!", "O bidai nabora se'sma!"))
+		M.say(pick("Fuu ma'jin!", "Sas'so c'arta forbici!", "Ta'gh fara'qha fel d'amar det!", "Kla'atu barada nikt'o!", "Fel'th Dol Ab'orod!", "In'totum Lig'abis!", "Ethra p'ni dedol!", "Ditans Gut'ura Inpulsa!", "O bidai nabora se'sma!"))
 
 /datum/chemical_reaction/black_blood
 	name = "Black Blood"
