@@ -764,7 +764,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 			to_chat(src, "<span class='warning'>Вы уже загружены в портативный компьютер!</span>")
 			return
 		if(!GLOB.cameranet.checkCameraVis(M))
-			to_chat(src, "<span class='warning'>Экзокостюм больше не в зоне камер.</span>")
+			to_chat(src, "<span class='warning'>Экзокостюм больше не в зоне покрытия камер.</span>")
 			return
 		if(lacks_power())
 			to_chat(src, "<span class='warning'>Вы разряжены!</span>")

@@ -84,7 +84,7 @@
 		AI.ai_call_shuttle()
 
 /obj/screen/ai/state_laws
-	name = "Управление законами"
+	name = "Менеджер законов"
 	icon_state = "state_laws"
 
 /obj/screen/ai/state_laws/Click()

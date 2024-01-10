@@ -46,14 +46,14 @@
 		return FALSE
 	var/turf/T = get_turf(current)
 	if(!atoms_share_level(T, src))//off Z level
-		to_chat(user, "<span class='danger'>Не возможно подключиться: Вы слишком далеко от целевого силикона!</span>")
+		to_chat(user, "<span class='danger'>Невозможно подключиться: Вы слишком далеко от выбранного силикона!</span>")
 		return FALSE
 	return TRUE
 
 /// applies ion-like laws into either the inherent law or true ion law positions due to an emag'd AI upload being used
 /obj/machinery/computer/aiupload/proc/apply_emag_laws(mob/user)
 	if(world.time < cooldown) //if the cooldown isnt over
-		to_chat(user, "<span class='danger'>Программа, кажется, зависла. Ей потребуется некоторое время на обработку.</span>")
+		to_chat(user, "<span class='danger'>Программа выглядит зависшей. Ей потребуется некоторое время на обработку.</span>")
 		return
 	do_sparks(5, TRUE, src)
 	found_laws = length(current.laws.inherent_laws)
@@ -136,7 +136,7 @@
 			return
 		var/turf/T = get_turf(current)
 		if(!atoms_share_level(T, src))
-			to_chat(user, "<span class='danger'>Не удалось установить связь с киборгом</span>: Вы слишком далеко от целевого синтетика!")
+			to_chat(user, "<span class='danger'>Не удалось установить связь с киборгом</span>: Вы слишком далеко от выбранного синтетика!")
 			return
 		module.install(src)
 		return
@@ -154,7 +154,7 @@
 	src.current = freeborg()
 
 	if(!src.current)
-		to_chat(usr, "Свободных киборгов не выбрано.")
+		to_chat(usr, "Свободных киборгов не обнаружено.")
 	else
 		to_chat(usr, "[src.current.name] выбран для смены законов.")
 	return

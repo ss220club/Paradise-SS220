@@ -34,7 +34,7 @@
 	set name = "Показать список камер"
 
 	if(src.stat == 2)
-		to_chat(src, "Вы не можете посмотреть список камер, поскольку вы мерты!")
+		to_chat(src, "Вы не можете посмотреть список камер, поскольку мертвы!")
 		return
 
 	if(!camera || camera == "Cancel")
@@ -91,7 +91,7 @@
 /mob/living/silicon/ai/proc/ai_camera_track(target_name in trackable_mobs())
 	set category = "Команды ИИ"
 	set name = "Отслеживать"
-	set desc = "Выберите, кого вы хотите отслеживать."
+	set desc = "Выберите, за кем вы хотите следить."
 
 	if(src.stat == DEAD)
 		to_chat(src, "Вы не можете отслеживать по причине своей смерти!")
@@ -107,7 +107,7 @@
 	if(!cameraFollow)
 		return
 
-	to_chat(src, "Режим преследования [forced ? "отключён" : "закончился"].")
+	to_chat(src, "Режим слежения [forced ? "прерван" : "завершен"].")
 	cameraFollow = null
 
 /mob/living/silicon/ai/proc/ai_actual_track(mob/living/target)
@@ -133,7 +133,7 @@
 		U.cameraFollow = null
 		return
 
-	to_chat(U, "<span class='notice'>Теперь отслеживаем [target.get_visible_name()].</span>")
+	to_chat(U, "<span class='notice'>Следим за [target.get_visible_name()] на камерах.</span>")
 
 	var/cameraticks = 0
 	spawn(0)
@@ -144,11 +144,11 @@
 			if(!target.can_track(usr))
 				U.tracking = TRUE
 				if(!cameraticks)
-					to_chat(U, "<span class='warning'>Цель находится вне активных камер. Попытка перехвата...</span>")
+					to_chat(U, "<span class='warning'>Цель находится вне активных камер. Попытка обнаружения...</span>")
 				cameraticks++
 				if(cameraticks > 9)
 					U.cameraFollow = null
-					to_chat(U, "<span class='warning'>Перехват невозможен, отменяем отслеживание...</span>")
+					to_chat(U, "<span class='warning'>Наблюдение невозможно, прерываем слежение...</span>")
 					U.tracking = FALSE
 					return
 				else
