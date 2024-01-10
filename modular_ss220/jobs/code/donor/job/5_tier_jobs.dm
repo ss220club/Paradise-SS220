@@ -31,7 +31,7 @@
 		/obj/item/clothing/mask/cigarette/cigar/havana = 6,
 	)
 
-	implants = list(/obj/item/implant/mindshield,
+	bio_chips = list(/obj/item/implant/mindshield,
 		/obj/item/implant/death_alarm
 	)
 
@@ -75,7 +75,7 @@
 		/obj/item/clothing/mask/cigarette/cigar/havana = 6,
 	)
 
-	implants = list(/obj/item/implant/mindshield,
+	bio_chips = list(/obj/item/implant/mindshield,
 		/obj/item/implant/death_alarm
 	)
 
@@ -130,7 +130,7 @@
 		/obj/item/restraints/handcuffs/toy = 1,
 	)
 
-	implants = list(/obj/item/implant/sad_trombone, /obj/item/implant/mindshield)
+	bio_chips = list(/obj/item/implant/sad_trombone, /obj/item/implant/mindshield)
 
 	backpack = /obj/item/storage/backpack/clown
 	satchel = /obj/item/storage/backpack/clown
