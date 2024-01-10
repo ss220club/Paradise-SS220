@@ -38,7 +38,7 @@
 		/obj/item/clipboard = 1,
 		/obj/item/clothing/under/rank/procedure/lawyer/blue = 1,
 		)
-	implants = list(/obj/item/implant/mindshield)
+	bio_chips = list(/obj/item/implant/mindshield)
 	satchel = /obj/item/storage/backpack/satchel_sec
 	dufflebag = /obj/item/storage/backpack/duffel/security
 
@@ -146,7 +146,7 @@
 		/obj/item/clothing/under/pants/shorts/blue  = 1,
 	)
 
-	implants = list(/obj/item/implant/mindshield,
+	bio_chips = list(/obj/item/implant/mindshield,
 		/obj/item/implant/death_alarm
 	)
 
@@ -192,7 +192,7 @@
 		/obj/item/clothing/head/ushanka = 1,
 	)
 
-	implants = list(/obj/item/implant/mindshield,
+	bio_chips = list(/obj/item/implant/mindshield,
 		/obj/item/implant/death_alarm
 	)
 
