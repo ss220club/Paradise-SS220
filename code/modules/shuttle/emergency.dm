@@ -287,8 +287,8 @@
 	else
 		SSshuttle.emergencyLastCallLoc = null
 	GLOB.major_announcement.Announce(
-		"Эвакуационный шаттл был отозван".[SSshuttle.emergencyLastCallLoc ? " Отзыв сигнала отслежен. Результаты можно просмотреть на любой коммуникационной консоли." : "" ]",
-		new_title = "Priority Announcement",
+		"Эвакуационный шаттл был отозван.[SSshuttle.emergencyLastCallLoc ? " Отзыв сигнала отслежен. Результаты можно просмотреть на любой коммуникационной консоли." : "" ]",
+		new_title = "Приоритетное оповещение.",
 		new_sound = sound('sound/AI/eshuttle_recall.ogg')
 	)
 
