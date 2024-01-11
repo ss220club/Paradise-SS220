@@ -192,7 +192,7 @@
 		/obj/item/clothing/head/ushanka = 1,
 	)
 
-	bio_chips = list(/obj/item/implant/mindshield,
+	bio_chips = list(/obj/item/bio_chip/mindshield,
 		/obj/item/bio_chip/death_alarm
 	)
 
