@@ -929,7 +929,7 @@
 				if("hear_adminhelps")
 					sound ^= SOUND_ADMINHELP
 				if("ui")
-					var/new_UI_style = tgui_input_list(user, "Choose your UI style", "UI style", list("Midnight", "Plasmafire", "Retro", "Slimecore", "Operative", "White", "Vaporwave", "Detective", "Trasenknox", "Clockwork")) // SS220 ADDITIONS "Vaporwave, Detective, Trasenknox, Clockwork"
+					var/new_UI_style = tgui_input_list(user, "Choose your UI style", "UI style", list("Midnight", "Plasmafire", "Retro", "Slimecore", "Operative", "White", "Vaporwave", "Detective", "Trasenknox", "Clockwork")) // SS220 EDIT "Vaporwave, Detective, Trasenknox, Clockwork"
 					if(!new_UI_style)
 						return
 					switch(new_UI_style)
@@ -945,7 +945,7 @@
 							UI_style = "Operative"
 						if("White")
 							UI_style = "White"
-						// SS220 EDIT - ADDITION START
+						// SS220 ADDITION - START
 						if("Vaporwave")
 							UI_style = "Vaporwave"
 						if("Detective")
@@ -954,7 +954,7 @@
 							UI_style = "Trasenknox"
 						if("Clockwork")
 							UI_style = "Clockwork"
-						// SS220 EDIT - ADDITION END
+						// SS220 ADDITION - END
 
 					if(ishuman(usr)) //mid-round preference changes, for aesthetics
 						var/mob/living/carbon/human/H = usr
