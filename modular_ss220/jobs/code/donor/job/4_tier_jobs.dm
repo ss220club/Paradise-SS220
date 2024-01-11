@@ -38,7 +38,7 @@
 		/obj/item/clipboard = 1,
 		/obj/item/clothing/under/rank/procedure/lawyer/blue = 1,
 		)
-	bio_chips = list(/obj/item/implant/mindshield)
+	bio_chips = list(/obj/item/bio_chip/mindshield)
 	satchel = /obj/item/storage/backpack/satchel_sec
 	dufflebag = /obj/item/storage/backpack/duffel/security
 
@@ -140,14 +140,14 @@
 	box = /obj/item/storage/box/responseteam
 	id = /obj/item/card/id/representative_tsf
 	backpack_contents = list(
-		/obj/item/implanter/death_alarm = 1,
+		/obj/item/bio_chip_implanter/death_alarm = 1,
 		/obj/item/lighter/zippo/blue = 1,
 		/obj/item/storage/fancy/cigarettes/cigpack_robustgold = 1,
 		/obj/item/clothing/under/pants/shorts/blue  = 1,
 	)
 
-	bio_chips = list(/obj/item/implant/mindshield,
-		/obj/item/implant/death_alarm
+	bio_chips = list(/obj/item/bio_chip/mindshield,
+		/obj/item/bio_chip/death_alarm
 	)
 
 /datum/outfit/job/donor/representative_tsf/post_equip(mob/living/carbon/human/H, visualsOnly)
@@ -185,7 +185,7 @@
 	id = /obj/item/card/id/representative_ussp
 	box = /obj/item/storage/box/responseteam
 	backpack_contents = list(
-		/obj/item/implanter/death_alarm = 1,
+		/obj/item/bio_chip_implanter/death_alarm = 1,
 		/obj/item/lighter/zippo/engraved = 1,
 		/obj/item/storage/fancy/cigarettes/cigpack_robustgold = 1,
 		/obj/item/clothing/under/pants/shorts/red = 1,
@@ -193,7 +193,7 @@
 	)
 
 	bio_chips = list(/obj/item/implant/mindshield,
-		/obj/item/implant/death_alarm
+		/obj/item/bio_chip/death_alarm
 	)
 
 /datum/outfit/job/donor/representative_ussp/post_equip(mob/living/carbon/human/H, visualsOnly)
