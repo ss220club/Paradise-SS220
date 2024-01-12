@@ -11,12 +11,20 @@
 		return 1
 
 	toggle_tint()
-	icon_state= "polarizer-turning_on"
-	addtimer(CALLBACK(src, PROC_REF(update_windowtint_icon)), 0.5 SECONDS)
 
-	if(!active)
-		icon_state= "polarizer-turning_off"
-		addtimer(CALLBACK(src, PROC_REF(update_windowtint_icon)), 0.5 SECONDS)
+/obj/machinery/button/windowtint/toggle_tint()
+	..()
+	if(!range)
+		for(var/obj/machinery/button/windowtint/B in button_area)
+			if (B.range || B.id)
+				continue
+			B.animate_windowtint()
+	else
+		animate_windowtint()
+
+/obj/machinery/button/windowtint/proc/animate_windowtint()
+	icon_state = active ? "polarizer-turning_on" : "polarizer-turning_off"
+	addtimer(CALLBACK(src, PROC_REF(update_windowtint_icon)), 0.5 SECONDS)
 
 /obj/machinery/button/windowtint/proc/update_windowtint_icon()
 	icon_state = "polarizer-[active]"
