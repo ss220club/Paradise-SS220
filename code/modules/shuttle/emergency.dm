@@ -77,20 +77,20 @@
 					if(auth_need - authorized.len > 0)
 						message_admins("[key_name_admin(user)] has authorized early shuttle launch.")
 						log_game("[key_name(user)] has authorized early shuttle launch in ([x], [y], [z]).")
-						GLOB.minor_announcement.Announce("[auth_need - authorized.len] more authorization(s) needed until shuttle is launched early")
+						GLOB.minor_announcement.Announce("[auth_need - authorized.len] авторизаций(-я) необходимо для досрочного запуска шаттла.")
 					else
 						message_admins("[key_name_admin(user)] has launched the emergency shuttle [seconds] seconds before launch.")
 						log_game("[key_name(user)] has launched the emergency shuttle in ([x], [y], [z]) [seconds] seconds before launch.")
-						GLOB.minor_announcement.Announce("The emergency shuttle will launch in 10 seconds")
+						GLOB.minor_announcement.Announce("Эвакуационный шаттл отправляется через 10 секунд.")
 						SSshuttle.emergency.setTimer(100)
 
 			if("Repeal")
 				if(authorized.Remove(W:registered_name))
-					GLOB.minor_announcement.Announce("[auth_need - authorized.len] authorizations needed until shuttle is launched early")
+					GLOB.minor_announcement.Announce("[auth_need - authorized.len] авторизаций(-я) необходимо для досрочного запуска шаттла.")
 
 			if("Abort")
 				if(authorized.len)
-					GLOB.minor_announcement.Announce("All authorizations to launch the shuttle early have been revoked.")
+					GLOB.minor_announcement.Announce("Все авторизации на досрочный запуск шаттла были отозваны.")
 					authorized.Cut()
 
 /obj/machinery/computer/emergency_shuttle/emag_act(mob/user)
@@ -98,7 +98,7 @@
 		var/time = SSshuttle.emergency.timeLeft()
 		message_admins("[key_name_admin(user)] has emagged the emergency shuttle: [time] seconds before launch.")
 		log_game("[key_name(user)] has emagged the emergency shuttle in ([x], [y], [z]): [time] seconds before launch.")
-		GLOB.minor_announcement.Announce("The emergency shuttle will launch in 10 seconds", "SYSTEM ERROR:")
+		GLOB.minor_announcement.Announce("Эвакуационный шаттл отправляется через 10 секунд.", "СИСТЕМНАЯ ОШИБКА:")
 		SSshuttle.emergency.setTimer(100)
 		emagged = TRUE
 
@@ -262,13 +262,13 @@
 	if(canRecall)
 		GLOB.major_announcement.Announce(
 			GLOB.major_announcement.Announce("Был вызван эвакуационный шаттл. [redAlert ? "Красный уровень угрозы подтверждён: отправлен приоритетный шаттл. " : "" ]Он прибудет в течение [timeLeft(600)] минут.[reason][SSshuttle.emergencyLastCallLoc ? "\n\nВызов шаттла отслежен. Результаты можно посмотреть на любой консоли связи." : "" ]"),
-			new_title = "Приоритетное оповещение",
+			new_title = "Приоритетное оповещение.",
 			new_sound = sound('sound/AI/eshuttle_call.ogg')
 		)
 	else
 		GLOB.major_announcement.Announce(
 			"Был вызван эвакуационный шаттл. [redAlert ? "Красный уровень угрозы подтверждён: отправлен приоритетный шаттл. " : "" ]Он прибудет в течение [timeLeft(600)] минут.[reason]",
-			new_title = "Приоритетное оповещение",
+			new_title = "Приоритетное оповещение.",
 			new_sound = sound('sound/AI/cshuttle.ogg')
 		)
 
@@ -287,8 +287,8 @@
 	else
 		SSshuttle.emergencyLastCallLoc = null
 	GLOB.major_announcement.Announce(
-		"The emergency shuttle has been recalled.[SSshuttle.emergencyLastCallLoc ? " Recall signal traced. Results can be viewed on any communications console." : "" ]",
-		new_title = "Priority Announcement",
+		"Эвакуационный шаттл был отозван.[SSshuttle.emergencyLastCallLoc ? " Отзыв сигнала отслежен. Результаты можно просмотреть на любой коммуникационной консоли." : "" ]",
+		new_title = "Приоритетное оповещение.",
 		new_sound = sound('sound/AI/eshuttle_recall.ogg')
 	)
 
@@ -362,14 +362,14 @@
 				timer = world.time
 				if(canRecall)
 					GLOB.major_announcement.Announce(
-						"The emergency shuttle has docked with the station. You have [timeLeft(600)] minutes to board the emergency shuttle.",
-						new_title = "Priority Announcement",
+						"Эвакуационный шаттл пристыковался со станцией. У вас есть [timeLeft(600)] минут(-ы) чтобы прибыть на борт эвакуационного шаттла.",
+						new_title = "Приоритетное оповещение.",
 						new_sound = sound('sound/AI/eshuttle_dock.ogg')
 					)
 				else
 					GLOB.major_announcement.Announce(
-						"The crew transfer shuttle has docked with the station. You have [timeLeft(600)] minutes to board the crew transfer shuttle.",
-						new_title = "Priority Announcement",
+						"Транспортный шаттл пристыковался со станцией. У вас есть [timeLeft(600)] минут(-ы) чтобы прибыть на борт транспортного шаттла.",
+						new_title = "Приоритетное оповещение.",
 						new_sound = sound('sound/AI/cshuttle_dock.ogg')
 					)
 /*
@@ -384,7 +384,7 @@
 
 			if(time_left <= 0 && length(SSshuttle.hostile_environments))
 				GLOB.major_announcement.Announce(
-					"Hostile environment detected. Departure has been postponed indefinitely pending conflict resolution.",
+					"Обнаружено враждебное окружение. Отлет отложен на неопределенный срок до решения возникшей проблемы.",
 					new_title = "Priority Announcement"
 				)
 				sound_played = 0
@@ -409,7 +409,7 @@
 				mode = SHUTTLE_ESCAPE
 				timer = world.time
 				GLOB.major_announcement.Announce(
-					"The Emergency Shuttle has left the station. Estimate [timeLeft(600)] minutes until the shuttle docks at Central Command.",
+					"Эвакуационный шаттл покинул станцию. Расчетное время прибытия на Центральное Командование: [timeLeft(600)] минут(-ы).",
 					new_title = "Priority Announcement"
 				)
 
@@ -429,7 +429,7 @@
 				if(is_hijacked())
 					destination_dock = "emergency_syndicate"
 					GLOB.major_announcement.Announce(
-						"Corruption detected in shuttle navigation protocols. Please contact your supervisor.",
+						"Обнаружен сбой в навигационных протоколах. Пожалуйста, свяжитесь с руководством.",
 						new_title = "Priority Announcement"
 					)
 
