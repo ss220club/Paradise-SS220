@@ -30,7 +30,7 @@
 	if(prob(1))
 		var/turf/simulated/T = get_turf(M)
 		goonchem_vortex(T, TRUE, 0, TRUE) // Ignore the 0 volume
-		to_chat(M, "<span class='notice'>You briefly feel super-massive, like a black hole. Probably just your imagination...</span>")
+		to_chat(M, "<span class='notice'>Вы на мгновение чувствуете себя сверхтяжёлым, как чёрная дыра. Возможно, это просто ваше воображение...</span>")
 	return ..()
 
 //Berry Banned: This one is tasty and safe to drink, might have a low chance of healing a random damage type?
@@ -59,7 +59,7 @@
 				update_flags |= M.adjustCloneLoss(-0.5*REAGENTS_EFFECT_MULTIPLIER, FALSE)
 			if(5)
 				update_flags |= M.adjustBrainLoss(-1*REAGENTS_EFFECT_MULTIPLIER, FALSE)
-		to_chat(M, "<span class='notice'>You feel slightly rejuvinated!</span>")
+		to_chat(M, "<span class='notice'>Вы чувствуете себя немного моложе!</span>")
 	return ..() | update_flags
 
 //Berry Banned 2: This one is tasty and toxic. Deals toxin damage and MAYBE plays the "BWOINK!" sound if it kills someone?
@@ -76,14 +76,14 @@
 	if(prob(50))
 		update_flags |= M.adjustToxLoss(2*REAGENTS_EFFECT_MULTIPLIER, FALSE)		//double strength of poison berry juice alone, because it's concentrated (this is equal to the damage of normal toxin, less often)
 	if(prob(10))
-		to_chat(M, "<span class='notice'>You feel slightly rejuvinated!</span>")		//meta this!
+		to_chat(M, "<span class='notice'>Вы чувствуете себя немного моложе!</span>")		//meta this!
 	return ..() | update_flags
 
 /datum/reagent/consumable/drink/berry_banned2/on_mob_death(mob/living/M)
 	SEND_SOUND(M, sound('sound/effects/adminhelp.ogg', 0, 1, 0, 25))
 	to_chat(M,
 		type = MESSAGE_TYPE_ADMINPM,
-		html = chat_box_red("<span class='adminhelp'>PM from-<b>Administrator</b>: BWOINK!</span>"),
+		html = chat_box_red("<span class='adminhelp'>ЛС от-<b>Administrator</b>: БВОНЬК!</span>"),
 		confidential = TRUE)
 	..()
 
@@ -98,16 +98,16 @@
 
 /datum/reagent/consumable/drink/blackeye_brew/on_mob_life(mob/living/M)
 	if(prob(25))
-		var/list/tider_talk = list("I OWN THIS STATION NOW, I JUST BOUGHT IT.",
-									"SECRET TECHNIQUE: TOOLBOX TO THE FACE!",
-									"SECRET TECHNIQUE: PLASMA CANISTER FIRE!",
-									"SECRET TECHNIQUE: TABLE AND DISPOSAL!",
+		var/list/tider_talk = list("ЭТО ТЕПЕРЬ МОЯ СТАНЦИЯ, Я ЕЁ ТОЛЬКО ЧТО КУПИЛ.",
+									"СЕКРЕТНАЯ ТЕХНИКА: ТУЛБОКСОМ ПО РОЖЕ!",
+									"СЕКРЕТНАЯ ТЕХНИКА: ПОДПАЛИТЬ КАНИСТРУ ПЛАЗМЫ!",
+									"СЕКРЕТНАЯ ТЕХНИКА: ОБ СТОЛ И В МУСОРКУ!",
 									// Borers got removed but the below reference stays because its hilarious
-									"[pick("MY BROTHER", " MY DOG", "MY BEST FRIEND", "THE BORER", "GEORGE MELONS", "BADMINS")] DID IT!",
-									";s WHATS SPACE LAW?!",
-									"I BOUGHT THESE GLOVES, NOT STEAL THEM",
-									"THIS DOOR WAS SHOCKED WHEN I GOT HERE",
-									"ANIMALS ARE NOT CREW")
+									"ЭТО СДЕЛАЛ [pick("МОЙ БРАТ", "МОЙ ПЁС", "МОЙ ЛУЧШИЙ ДРУГ", "БОРЕР", "ДЖОРДЖ МЕЛЛОНС", "ПЕДАЛЬ", "ПУНПУН")]!",
+									";s ЧТО ТАКОЕ КОСМОЗАКОН?!",
+									"Я КУПИЛ ЭТИ ПЕРЧАТКИ, НЕ УКРАЛ!!!",
+									"ЭТА ДВЕРЬ УЖЕ БИЛАСЬ ТОКОМ КОГДА Я ПРИШЁЛ",
+									"ЖИВОТНЫЕ НЕ ЧЛЕНЫ ЭКИПАЖА")
 		M.say(pick(tider_talk))
 	return ..()
 
