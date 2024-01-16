@@ -294,7 +294,6 @@
 	var/turf/T = get_turf(src)
 	if(!T || !is_station_level(T.z))
 		GLOB.major_announcement.Announce("УСТРОЙСТВО СУДНОГО ДНЯ ВНЕ ЗОНЫ ДЕЙСТВИЯ СТАНЦИИ, ОТКЛЮЧЕНИЕ.", "ОШИБКА 0IJJU6KA ОIJJIJ(%$^^__+ @#F0E4", 'sound/misc/notice1.ogg')
-
 		SSshuttle.clearHostileEnvironment(src)
 		if(SSshuttle.emergency.mode == SHUTTLE_STRANDED)
 			SSshuttle.emergency.mode = SHUTTLE_DOCKED
