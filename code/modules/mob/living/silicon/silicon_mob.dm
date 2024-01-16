@@ -280,13 +280,13 @@
 	if(!src.stat)
 		stat(null, text("Целостность систем: [round((health/maxHealth)*100)]%"))
 	else
-		stat(null, text("Системы нефункциональны."))
+		stat(null, text("Системы не функциональны."))
 
 
 // This adds the basic clock, shuttle recall timer, and malf_ai info to all silicon lifeforms
 /mob/living/silicon/Stat()
 	..()
-	if(statpanel("Статус"))
+	if(statpanel("Status"))
 		show_stat_emergency_shuttle_eta()
 		show_system_integrity()
 
@@ -378,26 +378,26 @@
 
 /mob/living/silicon/proc/toggle_sensor_mode()
 	to_chat(src, "<span class='notice'>Выберите тип сенсора.</span>")
-	var/static/list/sensor_choices = list("Судимости" = image(icon = 'icons/obj/clothing/glasses.dmi', icon_state = "securityhud"),
-							"Медицина" = image(icon = 'icons/obj/clothing/glasses.dmi', icon_state = "healthhud"),
+	var/static/list/sensor_choices = list("Служба Безопасности" = image(icon = 'icons/obj/clothing/glasses.dmi', icon_state = "securityhud"),
+							"Медицинский" = image(icon = 'icons/obj/clothing/glasses.dmi', icon_state = "healthhud"),
 							"Диагностика" = image(icon = 'icons/obj/clothing/glasses.dmi', icon_state = "diagnostichud"),
-							"Уборка" = image(icon = 'icons/obj/clothing/glasses.dmi', icon_state = "janihud"),
+							"Уборщик" = image(icon = 'icons/obj/clothing/glasses.dmi', icon_state = "janihud"),
 							"Нет" = image(icon = 'icons/mob/screen_gen.dmi', icon_state = "x"))
 	var/sensor_type = show_radial_menu(src, src, sensor_choices)
 	if(!sensor_type)
 		return
 	remove_med_sec_hud()
 	switch(sensor_type)
-		if("Судимости")
+		if("Служба Безопасности")
 			add_sec_hud()
-			to_chat(src, "<span class='notice'>Включён оверлей судимостей.</span>")
-		if("Медицина")
+			to_chat(src, "<span class='notice'>Включён оверлей Службы Безопасности.</span>")
+		if("Медицинский")
 			add_med_hud()
 			to_chat(src, "<span class='notice'>Включен оверлей жизненных показателей.</span>")
 		if("Диагностика")
 			add_diag_hud()
 			to_chat(src, "<span class='notice'>Включён диагностический оверлей.</span>")
-		if("Уборка")
+		if("Уборщик")
 			add_jani_hud()
 			to_chat(src, "<span class='notice'>Включён оверлей грязи для уборки.</span>")
 		if("Нет")

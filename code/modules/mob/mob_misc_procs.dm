@@ -660,7 +660,7 @@
 
 		for(var/i=1,i<=3,i++)	//we get 3 attempts to pick a suitable name.
 			if(force)
-				newname = clean_input("Выберите новое имя.", "Смена имении", oldname, src)
+				newname = clean_input("Выберите новое имя.", "Смена имени", oldname, src)
 			else
 				newname = clean_input("Вы - [role]. Хотели бы вы сменить своё имя? (У вас есть 3 минуты на выбор имени.)", "Смена имени", oldname, src)
 			if(((world.time - time_passed) > 1800) && !force)

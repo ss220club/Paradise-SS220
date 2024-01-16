@@ -136,7 +136,7 @@
 			return
 		var/turf/T = get_turf(current)
 		if(!atoms_share_level(T, src))
-			to_chat(user, "<span class='danger'>Не удалось установить связь с киборгом</span>: Вы слишком далеко от выбранного синтетика!")
+			to_chat(user, "<span class='danger'>Не удалось установить связь</span>: Вы слишком далеко от выбранного синтетика!")
 			return
 		module.install(src)
 		return
@@ -154,7 +154,7 @@
 	src.current = freeborg()
 
 	if(!src.current)
-		to_chat(usr, "Свободных киборгов не обнаружено.")
+		to_chat(usr, "Свободных боргов не обнаружено.")
 	else
 		to_chat(usr, "[src.current.name] выбран для смены законов.")
 	return

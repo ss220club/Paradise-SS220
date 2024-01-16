@@ -129,7 +129,7 @@
 		AI.aiCamera.viewpictures()
 
 /obj/screen/ai/sensors
-	name = "Перключение HUD сенсоров"
+	name = "Переключение HUD сенсоров"
 	icon_state = "ai_sensor"
 
 /obj/screen/ai/sensors/Click()

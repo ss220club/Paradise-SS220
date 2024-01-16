@@ -70,7 +70,7 @@ GLOBAL_VAR_INIT(announcing_vox, 0) // Stores the time of the last announcement
 #define VOX_PATH "sound/vox_fem/"
 
 /mob/living/silicon/ai/verb/announcement_help()
-	set name = "Помощь в оповещениях"
+	set name = "Справочник оповещений"
 	set desc = "Показывает список слов для оповещения экипажа."
 	set category = "Команды ИИ"
 
@@ -90,7 +90,7 @@ GLOBAL_VAR_INIT(announcing_vox, 0) // Stores the time of the last announcement
 
 	var/string_dat = dat.Join("")
 
-	var/datum/browser/popup = new(src, "announce_help", "Помощь в оповещеиях", 500, 400)
+	var/datum/browser/popup = new(src, "announce_help", "Справочник оповещений", 500, 400)
 	popup.set_content(string_dat)
 	popup.open()
 
@@ -106,10 +106,10 @@ GLOBAL_VAR_INIT(announcing_vox, 0) // Stores the time of the last announcement
 		return
 
 	if(GLOB.announcing_vox > world.time)
-		to_chat(src, "<span class='warning'>Пожалуйста подождите ещё [round((GLOB.announcing_vox - world.time) / 10)] секунд.</span>")
+		to_chat(src, "<span class='warning'>Пожалуйста подождите [round((GLOB.announcing_vox - world.time) / 10)] секунд.</span>")
 		return
 
-	var/message = clean_input("Внимание: Неправильное использование этой системы может привести к джоббану. Для справки обращайтесь к 'Помощи в оповещениях'", "Оповещение", last_announcement, src)
+	var/message = clean_input("Внимание: Неправильное использование этой системы может привести к джоббану. Для справки обращайтесь к 'Справочнику оповещений'", "Оповещение", last_announcement, src)
 
 	last_announcement = message
 

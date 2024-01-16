@@ -249,7 +249,7 @@
 		qdel(src)
 
 /obj/structure/AIcore/deactivated
-	name = "Неактивный ИИ"
+	name = "неактивный ИИ"
 	icon_state = "ai-empty"
 	anchored = TRUE
 	state = AI_READY_CORE

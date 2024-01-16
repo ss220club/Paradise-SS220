@@ -26,7 +26,7 @@
 
 /******************** Quarantine. ********************/
 /datum/ai_laws/quarantine
-	name = "карантин"
+	name = "Карантин"
 	law_header = "NT Quarantine Lawset"
 	selectable = TRUE
 
