@@ -316,12 +316,14 @@
 
 
 /obj/machinery/power/bluespace_tap/connect_to_network()
-	..()
-	update_icon()
+	. = ..()
+	if(.)
+		update_icon()
 
 /obj/machinery/power/bluespace_tap/disconnect_from_network()
-	..()
-	update_icon()
+	. = ..()
+	if(.)
+		update_icon()
 
 /obj/machinery/power/bluespace_tap/Destroy()
 	QDEL_LIST_CONTENTS(fillers)
@@ -399,7 +401,7 @@
 		input_level--
 		update_icon()
 	if(prob(input_level - safe_levels + (emagged * 5)))	//at dangerous levels, start doing freaky shit. prob with values less than 0 treat it as 0
-		GLOB.major_announcement.Announce("Unexpected power spike during Bluespace Harvester Operation. Extra-dimensional intruder alert. Expected location: [get_area(src).name]. [emagged ? "DANGER: Emergency shutdown failed! Please proceed with manual shutdown." : "Emergency shutdown initiated."]", "Bluespace Harvester Malfunction", 'sound/AI/harvester.ogg')
+		GLOB.major_announcement.Announce("Произошел непредвиденный скачок напряжения во время работы Блюспейс-сборщика. Обнаружено внепространственное вторжение! Ожидаемое местоположение: [get_area(src).name]. [emagged ? "ОПАСНОСТЬ: Аварийное отключение не удалось! Пожалуйста, перейдите к ручному отключению." : "Начато аварийное отключение."]", "ВНИМАНИЕ: Обнаружена неисправность Блюспейс-сборщика!", 'sound/AI/harvester.ogg')
 		if(!emagged)
 			input_level = 0	//emergency shutdown unless we're sabotaged
 			desired_level = 0

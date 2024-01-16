@@ -246,7 +246,7 @@
 
 /datum/action/innate/ai/nuke_station/proc/set_us_up_the_bomb()
 	to_chat(owner_AI, "<span class='notice'>Ядерное оружие взведено.</span>")
-	GLOB.major_announcement.Announce("Враждебные программы обнаружены во всех системах станции. Пожалуйста, уничтожьте свой ИИ, чтобы предотвратить возможный ущерб его моральному ядру.", "Тревога об Аномалии", 'sound/AI/aimalf.ogg')
+	GLOB.major_announcement.Announce("Во всех системах станций обнаружены вредоносные процессы. Пожалуйста, уничтожьте свой ИИ, чтобы предотвратить возможный ущерб его моральному ядру.", "ВНИМАНИЕ: Обнаружена аномалия.", 'sound/AI/aimalf.ogg')
 	SSsecurity_level.set_level(SEC_LEVEL_DELTA)
 	owner_AI.nuking = TRUE
 	var/obj/machinery/doomsday_device/DOOM = new /obj/machinery/doomsday_device(owner_AI)
@@ -278,7 +278,8 @@
 	if(SSshuttle.emergency.mode == SHUTTLE_STRANDED)
 		SSshuttle.emergency.mode = SHUTTLE_DOCKED
 		SSshuttle.emergency.timer = world.time
-		GLOB.major_announcement.Announce("Враждебная среда уничтожена. У вас есть 3 минуты, чтобы сесть на эвакуационный шаттл.", "Приоритетное оповещение", 'sound/AI/eshuttle_dock.ogg')
+		GLOB.major_announcement.Announce("Враждебная среда нейтрализована. У вас есть 3 минуты, чтобы прибыть на борт эвакуационного шаттла.", "Приоритетное оповещение", 'sound/AI/eshuttle_dock.ogg')
+
 	return ..()
 
 /obj/machinery/doomsday_device/proc/start()
@@ -293,12 +294,13 @@
 /obj/machinery/doomsday_device/process()
 	var/turf/T = get_turf(src)
 	if(!T || !is_station_level(T.z))
-		GLOB.major_announcement.Announce("УСТРОЙСТВО СУДНОГО ДНЯ ВНЕ ЗОНЫ ПОРАЖЕНИЯ, ОТМЕНА", "ОШИБКА 0IJJU6KA ОIJJIJ(%$^^__+ @#F0E4", 'sound/misc/notice1.ogg')
+		GLOB.major_announcement.Announce("УСТРОЙСТВО СУДНОГО ДНЯ ВНЕ ЗОНЫ ДЕЙСТВИЯ СТАНЦИИ, ОТКЛЮЧЕНИЕ.", "ОШИБКА 0IJJU6KA ОIJJIJ(%$^^__+ @#F0E4", 'sound/misc/notice1.ogg')
+
 		SSshuttle.clearHostileEnvironment(src)
 		if(SSshuttle.emergency.mode == SHUTTLE_STRANDED)
 			SSshuttle.emergency.mode = SHUTTLE_DOCKED
 			SSshuttle.emergency.timer = world.time
-			GLOB.major_announcement.Announce("Враждебная среда уничтожена. У вас есть 3 минуты, чтобы сесть на эвакуационный шаттл.", "Приоритетное оповещение", 'sound/AI/eshuttle_dock.ogg')
+			GLOB.major_announcement.Announce("Враждебное окружение нейтрализовано. У вас есть 3 минуты, чтобы прибыть на борт эвакуационного шаттла.", "Приоритетное оповещение.", 'sound/AI/eshuttle_dock.ogg')
 		qdel(src)
 	if(!timing)
 		STOP_PROCESSING(SSfastprocess, src)
