@@ -276,8 +276,8 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 		show_borg_info()
 
 /mob/living/silicon/ai/proc/ai_alerts()
-	var/list/dat = list("<HEAD><TITLE>Текущие тревоги на станции</TITLE><META HTTP-EQUIV='Обновить' CONTENT='10'></HEAD><BODY>\n")
-	dat += "<A HREF='?src=[UID()];mach_close=aialerts'>Закрыть</A><BR><BR>"
+	var/list/dat = list("<HEAD><TITLE>Current Station Alerts</TITLE><META HTTP-EQUIV='Refresh' CONTENT='10'></HEAD><BODY>\n")
+	dat += "<A HREF='?src=[UID()];mach_close=aialerts'>Close</A><BR><BR>"
 	var/list/list/temp_alarm_list = GLOB.alarm_manager.alarms.Copy()
 	for(var/cat in temp_alarm_list)
 		if(!(cat in alarms_listend_for))
@@ -301,14 +301,14 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 						var/obj/machinery/camera/I = locateUID(cam)
 						if(!QDELETED(I))
 							dat2 += "[(dat2 == "") ? "" : " | "]<A HREF=?src=[UID()];switchcamera=[cam]>[I.c_tag]</A>"
-					dat += "-- [area_name] ([(dat2 != "") ? dat2 : "Нет камеры"])"
+					dat += "-- [area_name] ([(dat2 != "") ? dat2 : "No Camera"])"
 				else
-					dat += "-- [area_name] (Нет камеры)"
+					dat += "-- [area_name] (No Camera)"
 				if(sources.len > 1)
-					dat += "- [length(sources)] источников"
+					dat += "- [length(sources)] sources"
 				dat += "</NOBR><BR>\n"
 		if(!L.len)
-			dat += "-- Все системы в норме<BR>\n"
+			dat += "-- All Systems Nominal<BR>\n"
 		dat += "<BR>\n"
 
 	viewalerts = TRUE
@@ -764,7 +764,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 			to_chat(src, "<span class='warning'>Вы уже загружены в портативный компьютер!</span>")
 			return
 		if(!GLOB.cameranet.checkCameraVis(M))
-			to_chat(src, "<span class='warning'>Экзокостюм больше не в зоне покрытия камер.</span>")
+			to_chat(src, "<span class='warning'>Экзокостюм больше не в зоне камер.</span>")
 			return
 		if(lacks_power())
 			to_chat(src, "<span class='warning'>Вы разряжены!</span>")
@@ -917,7 +917,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 		return
 
 	if(usr.stat == 2)
-		to_chat(usr, "Мы не можете сменить сеть камер поскольку вы мертвы!")
+		to_chat(usr, "Вы не можете сменить сеть камер поскольку вы мертвы!")
 		return
 
 	var/mob/living/silicon/ai/U = usr
