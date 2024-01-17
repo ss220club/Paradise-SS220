@@ -1,8 +1,8 @@
 #define AIUPLOAD_EMAG_COOLDOWN 60 SECONDS
 
 /obj/machinery/computer/aiupload
-	name = "\improper AI upload console"
-	desc = "Used to upload laws to the AI."
+	name = "\improper Консоль аплоуда ИИ"
+	desc = "Используется для загрузки законов в ИИ."
 	icon_screen = "command"
 	icon_keyboard = "med_key"
 	circuit = /obj/item/circuitboard/aiupload
@@ -42,18 +42,18 @@
 /// checks to ensure there is a selected AI, and that it is on the same Z level
 /obj/machinery/computer/aiupload/proc/check_valid_selection(mob/user)
 	if(!current)//no AI selected
-		to_chat(user, "<span class='danger'>No AI selected. Please choose a target before proceeding with upload.</span>")
+		to_chat(user, "<span class='danger'>Не выбран ИИ. Пожалуйста, выберите его перед загрузкой законов.</span>")
 		return FALSE
 	var/turf/T = get_turf(current)
 	if(!atoms_share_level(T, src))//off Z level
-		to_chat(user, "<span class='danger'>Unable to establish a connection: You're too far away from the target silicon!</span>")
+		to_chat(user, "<span class='danger'>Невозможно подключиться: Вы слишком далеко от выбранного силикона!</span>")
 		return FALSE
 	return TRUE
 
 /// applies ion-like laws into either the inherent law or true ion law positions due to an emag'd AI upload being used
 /obj/machinery/computer/aiupload/proc/apply_emag_laws(mob/user)
 	if(world.time < cooldown) //if the cooldown isnt over
-		to_chat(user, "<span class='danger'>The program seems to have frozen. It will need some time to process.</span>")
+		to_chat(user, "<span class='danger'>Программа выглядит зависшей. Ей потребуется некоторое время на обработку.</span>")
 		return
 	do_sparks(5, TRUE, src)
 	found_laws = length(current.laws.inherent_laws)
@@ -100,18 +100,18 @@
 
 /obj/machinery/computer/aiupload/attack_hand(mob/user as mob)
 	if(src.stat & NOPOWER)
-		to_chat(usr, "The upload computer has no power!")
+		to_chat(usr, "Консоль аплоуда обесточена!")
 		return
 	if(src.stat & BROKEN)
-		to_chat(usr, "The upload computer is broken!")
+		to_chat(usr, "Консоль аплоуда сломана!")
 		return
 
 	src.current = select_active_ai(user)
 
 	if(!src.current)
-		to_chat(usr, "No active AIs detected.")
+		to_chat(usr, "Активных ИИ не обнаружено.")
 	else
-		to_chat(usr, "[src.current.name] selected for law changes.")
+		to_chat(usr, "[src.current.name] выбран для смены законов.")
 	return
 
 /obj/machinery/computer/aiupload/attack_ghost(user as mob)
@@ -121,8 +121,8 @@
 
 // Why is this not a subtype
 /obj/machinery/computer/borgupload
-	name = "cyborg upload console"
-	desc = "Used to upload laws to Cyborgs."
+	name = "Консоль аплоуда киборгов"
+	desc = "Используется для загрузки законов в киборгов."
 	icon_screen = "command"
 	icon_keyboard = "med_key"
 	circuit = /obj/item/circuitboard/borgupload
@@ -132,11 +132,11 @@
 /obj/machinery/computer/borgupload/attackby(obj/item/aiModule/module as obj, mob/user as mob, params)
 	if(istype(module, /obj/item/aiModule))
 		if(!current)//no borg selected
-			to_chat(user, "<span class='danger'>No borg selected. Please chose a target before proceeding with upload.")
+			to_chat(user, "<span class='danger'>Киборг не выбран. Пожалуйста, выберите цель для загрузки законов")
 			return
 		var/turf/T = get_turf(current)
 		if(!atoms_share_level(T, src))
-			to_chat(user, "<span class='danger'>Unable to establish a connection</span>: You're too far away from the target silicon!")
+			to_chat(user, "<span class='danger'>Не удалось установить связь</span>: Вы слишком далеко от выбранного синтетика!")
 			return
 		module.install(src)
 		return
@@ -145,18 +145,18 @@
 
 /obj/machinery/computer/borgupload/attack_hand(mob/user as mob)
 	if(src.stat & NOPOWER)
-		to_chat(usr, "The upload computer has no power!")
+		to_chat(usr, "Консоль аплоуда обесточена!")
 		return
 	if(src.stat & BROKEN)
-		to_chat(usr, "The upload computer is broken!")
+		to_chat(usr, "Консоль аплоуда сломана!")
 		return
 
 	src.current = freeborg()
 
 	if(!src.current)
-		to_chat(usr, "No free cyborgs detected.")
+		to_chat(usr, "Свободных боргов не обнаружено.")
 	else
-		to_chat(usr, "[src.current.name] selected for law changes.")
+		to_chat(usr, "[src.current.name] выбран для смены законов.")
 	return
 
 /obj/machinery/computer/borgupload/attack_ghost(user as mob)
