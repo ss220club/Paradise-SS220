@@ -1,10 +1,10 @@
 // Atmos
 /area/station/engineering/atmos
-	name = "Atmospherics"
+	name = "Атмосферный Отдел"
 	icon_state = "atmos"
 
 /area/station/engineering/atmos/control
-	name = "Atmospherics Control Room"
+	name = "Комната Контроля Атмосферы"
 	icon_state = "atmosctrl"
 
 /area/station/engineering/atmos/distribution
