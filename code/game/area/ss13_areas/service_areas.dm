@@ -1,34 +1,34 @@
 /area/station/service/cafeteria
-	name = "\improper Cafe"
+	name = "\improper Кафетерий"
 	icon_state = "cafeteria"
 
 
 /area/station/service/kitchen
-	name = "\improper Kitchen"
+	name = "\improper Кухня"
 	icon_state = "kitchen"
 
 /area/station/service/bar
-	name = "\improper Bar"
+	name = "\improper Бар"
 	icon_state = "bar"
 	sound_environment = SOUND_AREA_WOODFLOOR
 
 /area/station/service/bar/atrium
-	name = "Atrium"
+	name = "Атриум"
 	icon_state = "bar"
 
 /area/station/service/theatre
-	name = "\improper Theatre"
+	name = "\improper Театр"
 	icon_state = "Theatre"
 	sound_environment = SOUND_AREA_WOODFLOOR
 
 
 /area/station/service/library
-	name = "\improper Library"
+	name = "\improper Библиотека"
 	icon_state = "library"
 	sound_environment = SOUND_AREA_LARGE_SOFTFLOOR
 
 /area/station/service/chapel
-	name = "\improper Chapel"
+	name = "\improper Церковь"
 	icon_state = "chapel"
 	ambientsounds = HOLY_SOUNDS
 	is_haunted = TRUE
@@ -36,11 +36,11 @@
 	valid_territory = FALSE
 
 /area/station/service/chapel/office
-	name = "\improper Chapel Office"
+	name = "\improper Офис Священника"
 	icon_state = "chapeloffice"
 
 /area/station/service/clown
-	name = "\improper Clown's Office"
+	name = "\improper Офис Клоуна"
 	icon_state = "clown_office"
 
 /area/station/service/clown/secret
@@ -48,25 +48,25 @@
 	requires_power = FALSE
 
 /area/station/service/mime
-	name = "\improper Mime's Office"
+	name = "\improper Офис Мима"
 	icon_state = "mime_office"
 
 /area/station/service/barber
-	name = "\improper Barber Shop"
+	name = "\improper Парикмахерская"
 	icon_state = "barber"
 
 /area/station/service/janitor
-	name = "\improper Custodial Closet"
+	name = "\improper Офис Уборщика"
 	icon_state = "janitor"
 	sound_environment = SOUND_AREA_SMALL_ENCLOSED
 
 /area/station/service/hydroponics
-	name = "Hydroponics"
+	name = "Гидропоника"
 	icon_state = "hydro"
 	sound_environment = SOUND_AREA_STANDARD_STATION
 
 /area/station/service/expedition
-	name = "\improper Expedition room"
+	name = "\improper Комната Экспедиции"
 	icon_state = "expedition"
 	ambientsounds = ENGINEERING_SOUNDS
 	sound_environment = SOUND_AREA_STANDARD_STATION

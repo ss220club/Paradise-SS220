@@ -6,125 +6,125 @@
 	sound_environment = SOUND_AREA_TUNNEL_ENCLOSED
 
 /area/station/maintenance/atmos_control
-	name = "Atmospherics Maintenance"
+	name = "Технические Тоннели Атмоса"
 	icon_state = "fpmaint"
 
 /area/station/maintenance/engimaint
-	name = "Engineering Maintenance"
+	name = "Технические Тоннели Инженерии"
 	icon_state = "engimaint"
 
 /area/station/maintenance/medmaint
-	name = "Medical Maintenance"
+	name = "Технические Тоннели Медицинского Отдела"
 	icon_state = "medmaint"
 
 /area/station/maintenance/fpmaint
-	name = "Fore-Port Maintenance"
+	name = "Технические Тоннели Носовой Части. Порт"
 	icon_state = "fpmaint"
 
 /area/station/maintenance/fpmaint2
-	name = "Fore-Port Secondary Maintenance"
+	name = "Второстепенные Технические Тоннели Носовой Части. Порт"
 	icon_state = "fpmaint"
 
 /area/station/maintenance/fsmaint
-	name = "Fore-Starboard Maintenance"
+	name = "Технические Тоннели Носовой Части. Правый Борт"
 	icon_state = "fsmaint"
 
 /area/station/maintenance/fsmaint2
-	name = "Fore-Starboard Secondary Maintenance"
+	name = "Второстепенные Технические Тоннели Носовой Части. Правый Борт"
 	icon_state = "fsmaint"
 
 /area/station/maintenance/asmaint
-	name = "Aft-Starboard Maintenance"
+	name = "Технические Тоннели Кормовой части. Правый Борт"
 	icon_state = "asmaint"
 
 /area/station/maintenance/asmaint2
-	name = "Aft-Starboard Secondary Maintenance"
+	name = "Второстепенные Технические Тоннели Кормовой части. Правый Борт"
 	icon_state = "asmaint"
 
 /area/station/maintenance/apmaint
-	name = "Aft-Port Maintenance"
+	name = "Технические Тоннели Кормовой части. Порт"
 	icon_state = "apmaint"
 
 /area/station/maintenance/apmaint2
-	name = "Aft-Port Secondary Maintenance"
+	name = "Второстепенные Технические Тоннели Кормовой части. Порт"
 	icon_state = "apmaint"
 
 /area/station/maintenance/maintcentral
-	name = "Central Maintenance"
+	name = "Центральные Технические Тоннели"
 	icon_state = "maintcentral"
 
 /area/station/maintenance/maintcentral2
-	name = "Central Secondary Maintenance"
+	name = "Второстепенные Технические Тоннели"
 	icon_state = "maintcentral"
 
 /area/station/maintenance/fore
-	name = "Fore Maintenance"
+	name = "Технические Тоннели Носовой Части"
 	icon_state = "fmaint"
 
 /area/station/maintenance/fore2
-	name = "Fore Secondary Maintenance"
+	name = "Второстепенные Технические Тоннели Носовой Части"
 	icon_state = "fmaint"
 
 /area/station/maintenance/aft
-	name = "Aft Maintenance"
+	name = "Технические Тоннели Кормы"
 	icon_state = "amaint"
 
 /area/station/maintenance/aft2
-	name = "Aft Secondary Maintenance"
+	name = "Второстепенные Технические Тоннели Кормы"
 	icon_state = "amaint"
 
 /area/station/maintenance/starboard
-	name = "Starboard Maintenance"
+	name = "Технические Тоннели Правого Борта"
 	icon_state = "smaint"
 
 /area/station/maintenance/starboard2
-	name = "Starboard Secondary Maintenance"
+	name = "Второстепенные Технические Тоннели Правого Борта"
 	icon_state = "smaint"
 
 /area/station/maintenance/port
-	name = "Port Maintenance"
+	name = "Технические Тоннели Порта"
 	icon_state = "pmaint"
 
 /area/station/maintenance/port2
-	name = "Port Secondary Maintenance"
+	name = "Второстепенные Технические Тоннели Порта"
 	icon_state = "pmaint"
 
 /area/station/maintenance/storage
-	name = "Atmospherics Maintenance"
+	name = "Технические Тоннели Турбины"
 	icon_state = "atmosmaint"
 
 /area/station/maintenance/incinerator
-	name = "\improper Incinerator"
+	name = "\improper Мусоросжигатель
 	icon_state = "incin"
 
 /area/station/maintenance/turbine
-	name = "\improper Turbine"
+	name = "\improper Турбина"
 	icon_state = "turbine"
 
 /area/station/maintenance/disposal
-	name = "Waste Disposal"
+	name = "Комната Утилизации"
 	icon_state = "disposals"
 
 /area/station/maintenance/genetics
-	name = "Genetics Maintenance"
+	name = "Старая Комната Генетики"
 	icon_state = "asmaint"
 
 /area/station/maintenance/electrical
-	name = "Electrical Maintenance"
+	name = "Старая Комната Электрооборудования"
 	icon_state = "elect"
 
 /area/station/maintenance/abandonedbar
-	name = "Maintenance Bar"
+	name = "Старый Бар"
 	icon_state = "oldbar"
 	apc_starts_off = TRUE
 
 /area/station/maintenance/library
-	name = "Abandoned Library"
+	name = "Старая Библиотека"
 	icon_state = "library"
 	apc_starts_off = TRUE
 
 /area/station/maintenance/theatre
-	name = "\improper Abandoned Theatre"
+	name = "\improper Старый Театр"
 	icon_state = "Theatre"
 	sound_environment = SOUND_AREA_WOODFLOOR
 
@@ -134,7 +134,7 @@
 	apc_starts_off = TRUE
 
 /area/station/maintenance/electrical_shop
-	name ="Electronics Den"
+	name ="Электроника Дэна"
 	icon_state = "elect"
 
 /area/station/maintenance/gambling_den
@@ -142,15 +142,15 @@
 	icon_state = "yellow"
 
 /area/station/maintenance/consarea
-	name = "Alternate Construction Area"
+	name = "Альтернативная Зона Строительства"
 	icon_state = "construction"
 
 /area/station/maintenance/auxsolarport
-	name = "\improper Fore Port Solar Maintenance"
+	name = "\improper Солнечные Панели Носовой Части. Порт."
 	icon_state = "FPctrl"
 
 /area/station/maintenance/starboardsolar
-	name = "\improper Starboard Solar Maintenance"
+	name = "\improper Солнечные Панели Кормы. Правый Борт"
 	icon_state = "ASctrl"
 
 /area/station/maintenance/starboardsolar/aft
@@ -158,20 +158,20 @@
 	icon_state = "ASctrl"
 
 /area/station/maintenance/portsolar
-	name = "\improper Aft Port Solar Maintenance"
+	name = "\improper Солнечные Панели Кормы. Порт"
 	icon_state = "APctrl"
 
 /area/station/maintenance/auxsolarstarboard
-	name = "\improper Fore Starboard Solar Maintenance"
+	name = "\improper Солнечные Панели Носовой части. Правый Борт"
 	icon_state = "FSctrl"
 
 /area/station/maintenance/assembly_line //Derelict Assembly Line
-	name = "\improper Assembly Line"
+	name = "\improper Комната Сборочной Линии"
 	icon_state = "ass_line"
 	apc_starts_off = TRUE
 
 /area/station/maintenance/abandoned_garden
-	name = "\improper Abandoned Garden"
+	name = "\improper Старый Сад"
 	icon_state = "hydro"
 	sound_environment = SOUND_AREA_SMALL_ENCLOSED
 

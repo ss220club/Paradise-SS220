@@ -13,7 +13,7 @@
 	sound_environment = SOUND_AREA_SMALL_ENCLOSED
 
 /area/station/turret_protected/ai
-	name = "\improper AI Chamber"
+	name = "\improper Ядро ИИ"
 	icon_state = "ai_chamber"
 	ambientsounds = list('sound/ambience/ambitech.ogg', 'sound/ambience/ambitech2.ogg', 'sound/ambience/ambiatmos.ogg', 'sound/ambience/ambiatmos2.ogg')
 
@@ -23,7 +23,7 @@
 	sound_environment = SOUND_ENVIRONMENT_ROOM
 
 /area/station/aisat
-	name = "\improper AI Satellite Exterior"
+	name = "\improper Внешняя Комната Спутника ИИ"
 	icon_state = "ai"
 
 /area/station/aisat/entrance
@@ -35,16 +35,16 @@
 	icon_state = "ai"
 
 /area/station/aisat/atmos
-	name = "\improper AI Satellite Atmospherics"
+	name = "\improper Атмосферная Комната Спутника ИИ"
 
 /area/station/aisat/hall
-	name = "\improper AI Satellite Hallway"
+	name = "\improper Коридор Спутника ИИ"
 
 /area/station/aisat/service
-	name = "\improper AI Satellite Service"
+	name = "\improper Сервисная Комната Спутника ИИ"
 
 /area/station/turret_protected/aisat/interior
-	name = "\improper AI Satellite Antechamber"
+	name = "\improper Фойе Спутника ИИ"
 	icon_state = "ai"
 	sound_environment = SOUND_AREA_LARGE_ENCLOSED
 
@@ -58,7 +58,7 @@
 											'sound/ambience/ambitech2.ogg', 'sound/ambience/ambitech3.ogg', 'sound/ambience/ambimystery.ogg')
 
 /area/station/telecomms/chamber
-	name = "\improper Telecoms Central Compartment"
+	name = "\improper Центральное Отделение Телекоммуникаций"
 	icon_state = "tcomms"
 
 // These areas are needed for MetaStation's AI sat

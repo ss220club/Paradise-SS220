@@ -4,15 +4,15 @@
 	sound_environment = SOUND_AREA_STANDARD_STATION
 
 /area/station/security/main
-	name = "\improper Security Office"
+	name = "\improper Офис СБ"
 	icon_state = "securityoffice"
 
 /area/station/security/lobby
-	name = "\improper Security Lobby"
+	name = "\improper Лобби СБ"
 	icon_state = "securitylobby"
 
 /area/station/security/brig
-	name = "\improper Brig"
+	name = "\improper Бриг"
 	icon_state = "brig"
 
 /area/station/security/brig/prison_break()
@@ -24,13 +24,13 @@
 	..()
 
 /area/station/security/permabrig
-	name = "\improper Prison Wing"
+	name = "\improper Тюремное Крыло"
 	icon_state = "sec_prison_perma"
 	fast_despawn = TRUE
 	can_get_auto_cryod = FALSE
 
 /area/station/security/prison
-	name = "\improper Prison Wing"
+	name = "\improper Тюремное Крыло"
 	icon_state = "sec_prison"
 	can_get_auto_cryod = FALSE
 
@@ -44,38 +44,38 @@
 	..()
 
 /area/station/security/prison/cell_block
-	name = "\improper Prison Cell Block"
+	name = "\improper Тюремный Блок"
 	icon_state = "brig"
 
 /area/station/security/prison/cell_block/A
-	name = "\improper Prison Cell Block A"
+	name = "\improper Тюремный Блок А"
 	icon_state = "brigcella"
 
 /area/station/security/prison/cell_block/B
-	name = "\improper Prison Cell Block B"
+	name = "\improper Тюремный Блок Б"
 	icon_state = "brigcellb"
 
 /area/station/security/prison/cell_block/C
-	name = "\improper Prison Cell Block C"
+	name = "\improper Тюремный Блок В"
 	icon_state = "brig"
 
 /area/station/security/execution
-	name = "Execution"
+	name = "Комната Казни"
 	icon_state = "execution"
 	can_get_auto_cryod = FALSE
 
 /area/station/security/processing
-	name = "Prisoner Processing"
+	name = "Процедурная СБ"
 	icon_state = "prisonerprocessing"
 	can_get_auto_cryod = FALSE
 
 /area/station/security/interrogation
-	name = "Interrogation"
+	name = "Допросная"
 	icon_state = "interrogation"
 	can_get_auto_cryod = FALSE
 
 /area/station/security/storage
-	name = "Security Equipment Storage"
+	name = "Склад Снаряжения СБ"
 	icon_state = "securityequipmentstorage"
 
 /area/station/security/interrogation/observation
@@ -84,30 +84,30 @@
 	can_get_auto_cryod = FALSE
 
 /area/station/security/evidence
-	name = "\improper Evidence Room"
+	name = "\improper Комната Хранения Улик"
 	icon_state = "evidence"
 
 /area/station/security/prisonlockers
-	name = "\improper Prisoner Lockers"
+	name = "\improper Комната Шкафов Заключенных"
 	icon_state = "sec_prison_lockers"
 	can_get_auto_cryod = FALSE
 
 /area/station/security/prisonershuttle
-	name = "\improper Security Prisoner Shuttle"
+	name = "\improper Челнок СБ Для Заключенных"
 	icon_state = "security"
 	can_get_auto_cryod = FALSE
 
 /area/station/security/warden
-	name = "\improper Warden's Office"
+	name = "\improper Офис Смотрителя"
 	icon_state = "Warden"
 	sound_environment = SOUND_AREA_SMALL_SOFTFLOOR
 
 /area/station/security/armory
-	name = "\improper Armory"
+	name = "\improper Оружейная"
 	icon_state = "armory"
 
 /area/station/security/armory/secure
-	name = "\improper Secure Armory"
+	name = "\improper Защищенная Оружейная"
 	icon_state = "secarmory"
 
 /area/station/security/securehallway
@@ -115,12 +115,12 @@
 	icon_state = "securehall"
 
 /area/station/security/detective
-	name = "\improper Detective's Office"
+	name = "\improper Офис Детектива"
 	icon_state = "detective"
 	ambientsounds = list('sound/ambience/ambidet1.ogg', 'sound/ambience/ambidet2.ogg')
 
 /area/station/security/range
-	name = "\improper Firing Range"
+	name = "\improper Стрельбище"
 	icon_state = "firingrange"
 
 // Checkpoints
