@@ -1,7 +1,7 @@
 /datum/action/innate/cult/blood_magic //Blood magic handles the creation of blood spells (formerly talismans)
-	name = "Prepare Blood Magic"
+	name = "Подготовить Магию Крови"
 	button_icon_state = "carve"
-	desc = "Prepare blood magic by carving runes into your flesh. This is easier with an <b>empowering rune</b>."
+	desc = "Подготовьте Магию Крови путём высечения рун на вашем теле. Это сделать проще с помощью <b>руны усиления</b>."
 	var/list/spells = list()
 	var/channeling = FALSE
 
@@ -35,11 +35,11 @@
 		break
 	if(length(spells) >= limit)
 		if(rune)
-			to_chat(owner, "<span class='cultitalic'>You cannot store more than [MAX_BLOODCHARGE] spell\s. <b>Pick a spell to remove.</b></span>")
-			remove_spell("You cannot store more than [MAX_BLOODCHARGE] spell\s, pick a spell to remove.")
+			to_chat(owner, "<span class='cultitalic'>Вы не можете хранить более [MAX_BLOODCHARGE] заклинаний. <b>Выберите заклинание для удаления.</b></span>")
+			remove_spell("Вы не можете хранить более [MAX_BLOODCHARGE] заклинаний, выберите заклинание для удаления.")
 		else
-			to_chat(owner, "<span class='cultitalic'>You cannot store more than [RUNELESS_MAX_BLOODCHARGE] spell\s without an empowering rune! <b>Pick a spell to remove.</b></span>")
-			remove_spell("You cannot store more than [RUNELESS_MAX_BLOODCHARGE] spell\s without an empowering rune, pick a spell to remove.")
+			to_chat(owner, "<span class='cultitalic'>Вы не можете хранить более [RUNELESS_MAX_BLOODCHARGE] spell\s без руны усиления! <b>выберите заклинание для удаления.</b></span>")
+			remove_spell("Вы не можете хранить более [RUNELESS_MAX_BLOODCHARGE] заклинаний без руны усиления, выберите заклинание для удаления.")
 		return
 	var/entered_spell_name
 	var/datum/action/innate/cult/blood_spell/BS
@@ -50,9 +50,9 @@
 		var/cult_name = initial(J.name)
 		possible_spells[cult_name] = J
 	if(length(spells))
-		possible_spells += "(REMOVE SPELL)"
-	entered_spell_name = tgui_input_list(owner, "Pick a blood spell to prepare...", "Spell Choices", possible_spells)
-	if(entered_spell_name == "(REMOVE SPELL)")
+		possible_spells += "(УДАЛИТЬ ЗАКЛИНАНИЕ)"
+	entered_spell_name = tgui_input_list(owner, "Выберите заклинание для подготовки...", "Выбор Заклинаний", possible_spells)
+	if(entered_spell_name == "(УДАЛИТЬ ЗАКЛИНАНИЕ)")
 		remove_spell()
 		return
 	BS = possible_spells[entered_spell_name]
@@ -61,7 +61,7 @@
 
 	if(!channeling)
 		channeling = TRUE
-		to_chat(owner, "<span class='cultitalic'>You begin to carve unnatural symbols into your flesh!</span>")
+		to_chat(owner, "<span class='cultitalic'>Вы начинаете высекать неестественные символы на теле!</span>")
 	else
 		to_chat(owner, "<span class='warning'>You are already invoking blood magic!</span>")
 		return
@@ -76,32 +76,32 @@
 		var/datum/action/innate/cult/blood_spell/new_spell = new BS(owner)
 		spells += new_spell
 		new_spell.Grant(owner, src)
-		to_chat(owner, "<span class='cult'>Your wounds glow with power, you have prepared a [new_spell.name] invocation!</span>")
+		to_chat(owner, "<span class='cult'>Ваши раны сияют мощью, вы подготовили заклинание [new_spell.name]!</span>")
 		SSblackbox.record_feedback("tally", "cult_spells_prepared", 1, "[new_spell.name]")
 	channeling = FALSE
 
 /datum/action/innate/cult/blood_magic/proc/remove_spell()
-	var/nullify_spell = tgui_input_list(owner, "Pick a spell to remove", "Current Spells", spells)
+	var/nullify_spell = tgui_input_list(owner, "Выберите заклинание для удаления", "Текущие заклинания", spells)
 	if(nullify_spell)
 		qdel(nullify_spell)
 
 /datum/action/innate/cult/blood_spell //The next generation of talismans, handles storage/creation of blood magic
-	name = "Blood Magic"
+	name = "Магия Крови"
 	button_icon_state = "telerune"
-	desc = "Fear the Old Blood."
+	desc = "Бойся старой крови..."
 	var/charges = 1
 	var/magic_path = null
 	var/obj/item/melee/blood_magic/hand_magic
 	var/datum/action/innate/cult/blood_magic/all_magic
 	var/base_desc //To allow for updating tooltips
-	var/invocation = "Hoi there something's wrong!"
+	var/invocation = "Эй, что-то пошло не так!"
 	var/health_cost = 0
 
 /datum/action/innate/cult/blood_spell/Grant(mob/living/owner, datum/action/innate/cult/blood_magic/BM)
 	if(health_cost)
-		desc += "<br>Deals <u>[health_cost] damage</u> to your arm per use."
+		desc += "<br>Наносит <u>[health_cost] урона</u> руке при использовании."
 	base_desc = desc
-	desc += "<br><b><u>Has [charges] use\s remaining</u></b>."
+	desc += "<br><b><u>Осталось [charges] зарядов.</u></b>."
 	all_magic = BM
 	button.ordered = FALSE
 	..()
@@ -132,9 +132,9 @@
 			if(!owner.put_in_hands(hand_magic))
 				qdel(hand_magic)
 				hand_magic = null
-				to_chat(owner, "<span class='warning'>You have no empty hand for invoking blood magic!</span>")
+				to_chat(owner, "<span class='warning'>Ваша рука должна быть пустой для подготовки Магии Крови!</span>")
 				return
-			to_chat(owner, "<span class='cultitalic'>Your wounds glow as you invoke the [name].</span>")
+			to_chat(owner, "<span class='cultitalic'>Ваши раны сияют в то время, как вы подготовили [name].</span>")
 
 		else // If the spell is active, and you clicked on the button for it
 			qdel(hand_magic)
@@ -143,22 +143,22 @@
 //the spell list
 
 /datum/action/innate/cult/blood_spell/stun
-	name = "Stun"
-	desc = "Will knock down and mute a victim on contact. Strike them with a cult blade to complete the invocation, stunning them and extending the mute."
+	name = "Оглушение"
+	desc = "Ослабит и обеззвучит жертву. Ударьте её кинжалом культа, полностью оглушая и продлевая её беззвучие."
 	button_icon_state = "stun"
 	magic_path = /obj/item/melee/blood_magic/stun
 	health_cost = 10
 
 /datum/action/innate/cult/blood_spell/teleport
-	name = "Teleport"
-	desc = "Empowers your hand to teleport yourself or another cultist to a teleport rune on contact."
+	name = "Телепорт"
+	desc = "Усиливает вашу руку, позволяя вам телепортировать себя или другого культиста на руну Телепорта."
 	button_icon_state = "teleport"
 	magic_path = /obj/item/melee/blood_magic/teleport
 	health_cost = 7
 
 /datum/action/innate/cult/blood_spell/emp
-	name = "Electromagnetic Pulse"
-	desc = "Releases an Electromagnetic Pulse, affecting nearby non-cultists. <b>The pulse will still affect you.</b>"
+	name = "Электромагнитный импульс"
+	desc = "Выпускает ЭМИ, который будет воздействовать на ближайших некультистов. <b>Импульс будет воздействовать и на вас.</b>"
 	button_icon_state = "emp"
 	health_cost = 10
 	invocation = "Ta'gh fara'qha fel d'amar det!"
@@ -177,14 +177,14 @@
 					oof = TRUE
 					break
 		if(oof)
-			to_chat(owner, "<span class='userdanger'>You get the feeling this is a bad idea.</span>")
+			to_chat(owner, "<span class='userdanger'>Вы чувствуете, что это плохая затея.</span>")
 	..()
 
 /datum/action/innate/cult/blood_spell/emp/Activate()
 	if(owner.holy_check())
 		return
-	owner.visible_message("<span class='warning'>[owner]'s body flashes a bright blue!</span>", \
-						"<span class='cultitalic'>You speak the cursed words, channeling an electromagnetic pulse from your body.</span>")
+	owner.visible_message("<span class='warning'>Тело [owner] мигает ярко-синим цветом!</span>", \
+						"<span class='cultitalic'>Вы произносите проклятые слова, выпуская электромагнитный импульс из тела.</span>")
 	owner.emp_act(2)
 	INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(empulse), owner, 2, 5, TRUE, "cult")
 	owner.whisper(invocation)
@@ -193,22 +193,22 @@
 		qdel(src)
 
 /datum/action/innate/cult/blood_spell/shackles
-	name = "Shadow Shackles"
-	desc = "Empowers your hand to start handcuffing victim on contact, and mute them if successful."
+	name = "Теневые оковы"
+	desc = "Позволяет вам заковать жертву при касании и обеззвучить их при успехе."
 	button_icon_state = "shackles"
 	charges = 4
 	magic_path = /obj/item/melee/blood_magic/shackles
 
 /datum/action/innate/cult/blood_spell/construction
-	name = "Twisted Construction"
-	desc = "Empowers your hand to corrupt certain metalic objects.<br><u>Converts:</u><br>Plasteel into runed metal<br>50 metal into a construct shell<br>Cyborg shells into construct shells<br>Airlocks into brittle runed airlocks after a delay (harm intent)"
+	name = "Искаженное строительство"
+	desc = "Позволяет вашей руке искажать определённые металлические конструкции.<br><u>Превращает:</u><br>Плассталь в рунический металл<br>50 металла в оболочку конструкта<br>Cyborg Оболочки киборгов в оболочки конструктов<br>Шлюзы в хрупкие рунические после небольшой задержки (интент харм)"
 	button_icon_state = "transmute"
 	magic_path = "/obj/item/melee/blood_magic/construction"
 	health_cost = 12
 
 /datum/action/innate/cult/blood_spell/dagger
-	name = "Summon Dagger"
-	desc = "Summon a ritual dagger, necessary to scribe runes."
+	name = "Призыв кинжала"
+	desc = "Призывает ритуальный кинжал, необходимый для начертания рун."
 	button_icon_state = "cult_dagger"
 
 /datum/action/innate/cult/blood_spell/dagger/New()
@@ -218,30 +218,30 @@
 
 /datum/action/innate/cult/blood_spell/dagger/Activate()
 	var/turf/T = get_turf(owner)
-	owner.visible_message("<span class='warning'>[owner]'s hand glows red for a moment.</span>", \
-						"<span class='cultitalic'>Red light begins to shimmer and take form within your hand!</span>")
+	owner.visible_message("<span class='warning'>Рука [owner] на мгновение мигает красным.</span>", \
+						"<span class='cultitalic'>Красный свет начинает мерцать и обретать форму в вашей руке!</span>")
 	var/obj/item/melee/cultblade/dagger/O = new(T)
 	if(owner.put_in_hands(O))
-		to_chat(owner, "<span class='warning'>A [O.name] appears in your hand!</span>")
+		to_chat(owner, "<span class='warning'>[O.name] появляется в вашей руке!</span>")
 	else
-		owner.visible_message("<span class='warning'>A [O.name] appears at [owner]'s feet!</span>", \
-							"<span class='cultitalic'>A [O.name] materializes at your feet.</span>")
+		owner.visible_message("<span class='warning'>[O.name] появляется у ног [owner]!</span>", \
+							"<span class='cultitalic'>[O.name] материализуется у ваших ног.</span>")
 	playsound(owner, 'sound/magic/cult_spell.ogg', 25, TRUE, SOUND_RANGE_SET(4))
 	charges--
 	desc = base_desc
-	desc += "<br><b><u>Has [charges] use\s remaining</u></b>."
+	desc += "<br><b><u>Осталось [charges] заряд(-ов)</u></b>."
 	if(charges <= 0)
 		qdel(src)
 
 /datum/action/innate/cult/blood_spell/equipment
-	name = "Summon Equipment"
-	desc = "Empowers your hand to summon combat gear onto a cultist you touch, including cult armor into open slots, a cult bola, and a cult sword."
+	name = "Призыв снаряжения"
+	desc = "Позволяет призвать боевое снаряжение на культиста при касании, включая броню культа в открытые слоты, болу культа и меч культа."
 	button_icon_state = "equip"
 	magic_path = /obj/item/melee/blood_magic/armor
 
 /datum/action/innate/cult/blood_spell/horror
-	name = "Hallucinations"
-	desc = "Gives hallucinations to a target at range. A silent and invisible spell."
+	name = "Галлюцинации"
+	desc = "Даёт жертве на расстоянии галлюцинации. Тихое и невидимое заклинание."
 	button_icon_state = "horror"
 	var/obj/effect/proc_holder/horror/PH
 	charges = 4
@@ -274,9 +274,9 @@
 
 /obj/effect/proc_holder/horror/proc/toggle(mob/user)
 	if(active)
-		remove_ranged_ability(user, "<span class='cult'>You dispel the magic...</span>")
+		remove_ranged_ability(user, "<span class='cult'>Вы рассеиваете магию...</span>")
 	else
-		add_ranged_ability(user, "<span class='cult'>You prepare to horrify a target...</span>")
+		add_ranged_ability(user, "<span class='cult'>Вы готовитесь напугать жертву...</span>")
 
 /obj/effect/proc_holder/horror/InterceptClickOn(mob/living/user, params, atom/target)
 	if(..())
@@ -296,16 +296,16 @@
 		H.Hallucinate(120 SECONDS)
 		attached_action.charges--
 		attached_action.desc = attached_action.base_desc
-		attached_action.desc += "<br><b><u>Has [attached_action.charges] use\s remaining</u></b>."
+		attached_action.desc += "<br><b><u> Осталось [attached_action.charges] заряд(-ов)</u></b>."
 		attached_action.UpdateButtonIcon()
-		user.ranged_ability.remove_ranged_ability(user, "<span class='cult'><b>[H] has been cursed with living nightmares!</b></span>")
+		user.ranged_ability.remove_ranged_ability(user, "<span class='cult'><b>[H] был проклят живыми кошмарами!</b></span>")
 		if(attached_action.charges <= 0)
-			to_chat(ranged_ability_user, "<span class='cult'>You have exhausted the spell's power!</span>")
+			to_chat(ranged_ability_user, "<span class='cult'>Вы истощили силу заклинания!</span>")
 			qdel(src)
 
 /datum/action/innate/cult/blood_spell/veiling
-	name = "Conceal Presence"
-	desc = "Alternates between hiding and revealing nearby cult structures, cult airlocks and runes."
+	name = "Сокрытие присутствия"
+	desc = "Переключается между сокрытием и показом ближайших построек, рун и шлюзов культа."
 	invocation = "Kla'atu barada nikt'o!"
 	button_icon_state = "veiling"
 	charges = 10
@@ -315,8 +315,8 @@
 	if(owner.holy_check())
 		return
 	if(!revealing) // Hiding stuff
-		owner.visible_message("<span class='warning'>Thin grey dust falls from [owner]'s hand!</span>", \
-		"<span class='cultitalic'>You invoke the veiling spell, hiding nearby runes and cult structures.</span>")
+		owner.visible_message("<span class='warning'>Тонкая серая пыль сыпится из руки [owner]!</span>", \
+		"<span class='cultitalic'>Вы используете заклинания сокрытия, скрывая руны, постройки и шлюзы культа.</span>")
 		charges--
 		if(!SSticker.mode.cult_risen || !SSticker.mode.cult_ascendant)
 			playsound(owner, 'sound/magic/smoke.ogg', 25, TRUE, SOUND_RANGE_SET(4)) // If Cult is risen/ascendant.
@@ -330,8 +330,8 @@
 		button_icon_state = "revealing"
 
 	else // Unhiding stuff
-		owner.visible_message("<span class='warning'>A flash of light shines from [owner]'s hand!</span>", \
-		"<span class='cultitalic'>You invoke the counterspell, revealing nearby runes and cult structures.</span>")
+		owner.visible_message("<span class='warning'>Из руки [owner] светит красная вспышка!</span>", \
+		"<span class='cultitalic'>Вы используете контрзаклинание, проявляя все руны, постройки и шлюзы культа.</span>")
 		charges--
 		owner.whisper(invocation)
 		if(!SSticker.mode.cult_risen || !SSticker.mode.cult_ascendant)
@@ -345,7 +345,7 @@
 		button_icon_state = "veiling"
 	if(charges <= 0)
 		qdel(src)
-	desc = "[revealing ? "Reveals" : "Conceals"] nearby cult structures, airlocks, and runes."
+	desc = "[revealing ? "Показывает" : "Скрывает"] ближайшие постройки, шлюзы и руны культа."
 	desc += "<br><b><u>Has [charges] use\s remaining</u></b>."
 	UpdateButtonIcon()
 
@@ -397,7 +397,7 @@
 			source.hand_magic = null
 			source.charges = uses
 			source.desc = source.base_desc
-			source.desc += "<br><b><u>Has [uses] use\s remaining</u></b>."
+			source.desc += "<br><b><u>Осталось [uses] заряд(-ов)</u></b>."
 			source.UpdateButtonIcon()
 	return ..()
 
@@ -425,15 +425,15 @@
 		qdel(src)
 	else if(source)
 		source.desc = source.base_desc
-		source.desc += "<br><b><u>Has [uses] use\s remaining</u></b>."
+		source.desc += "<br><b><u>Осталось [uses] заряд(-ов)</u></b>."
 		source.UpdateButtonIcon()
 
 //The spell effects
 
 //stun
 /obj/item/melee/blood_magic/stun
-	name = "Stunning Aura"
-	desc = "Will knock down and mute a victim on contact. Strike them with a cult blade to complete the invocation, stunning them and extending the mute."
+	name = "Аура Ослабления"
+	desc = "Оглушит и обеззвучит жертву при касании. Ударьте их клинком культа для завершения заклинания, ."
 	color = RUNE_COLOR_RED
 	invocation = "Fuu ma'jin!"
 
@@ -445,17 +445,17 @@
 		return
 	if(user.holy_check())
 		return
-	user.visible_message("<span class='warning'>[user] holds up [user.p_their()] hand, which explodes in a flash of red light!</span>", \
-							"<span class='cultitalic'>You attempt to stun [L] with the spell!</span>")
+	user.visible_message("<span class='warning'>[user] сдерживает их руку, в которой взрывается с красной вспышкой!</span>", \
+							"<span class='cultitalic'>Вы пытаетесь оглушить [L] с помощью заклинания!</span>")
 
 	user.mob_light(LIGHT_COLOR_BLOOD_MAGIC, 3, _duration = 2)
 
 	var/obj/item/nullrod/N = locate() in target
 	if(N)
-		target.visible_message("<span class='warning'>[target]'s holy weapon absorbs the red light!</span>", \
-							"<span class='userdanger'>Your holy weapon absorbs the blinding light!</span>")
+		target.visible_message("<span class='warning'>Святое оружие [target] поглощает красный свет!</span>", \
+							"<span class='userdanger'>Ваше святое оружие поглощает красный свет!</span>")
 	else
-		to_chat(user, "<span class='cultitalic'>In a brilliant flash of red, [L] falls to the ground!</span>")
+		to_chat(user, "<span class='cultitalic'>Со вспышкой красного света, [L] падает на землю!</span>")
 
 		L.KnockDown(10 SECONDS)
 		L.adjustStaminaLoss(60)
@@ -470,7 +470,7 @@
 			C.Stuttering(16 SECONDS)
 			C.CultSlur(20 SECONDS)
 			C.Jitter(16 SECONDS)
-			to_chat(user, "<span class='boldnotice'>Stun mark applied! Stab them with a dagger, sword or blood spear to stun them fully!</span>")
+			to_chat(user, "<span class='boldnotice'>Метка оглушения применена! Ударьте цель кинжалом, мечом или кровавым копьём для их полного оглушения!</span>")
 	user.do_attack_animation(target)
 	uses--
 	..()
@@ -478,9 +478,9 @@
 
 //Teleportation
 /obj/item/melee/blood_magic/teleport
-	name = "Teleporting Aura"
+	name = "Аура Телепорта"
 	color = RUNE_COLOR_TELEPORT
-	desc = "Will teleport a cultist to a teleport rune on contact."
+	desc = "Телепортирует вас или культиста на руну телепорта."
 	invocation = "Sas'so c'arta forbici!"
 
 /obj/item/melee/blood_magic/teleport/afterattack(atom/target, mob/living/carbon/user, proximity)
@@ -491,7 +491,7 @@
 	var/list/duplicaterunecount = list()
 	var/atom/movable/teleportee
 	if(!iscultist(target) || !proximity)
-		to_chat(user, "<span class='warning'>You can only teleport adjacent cultists with this spell!</span>")
+		to_chat(user, "<span class='warning'>Вы можете телепортировать только рядомстоящих культистов!</span>")
 		return
 	if(user != target) // So that the teleport effect shows on the correct mob
 		teleportee = target
@@ -510,21 +510,21 @@
 		potential_runes[resultkey] = T
 
 	if(!length(potential_runes))
-		to_chat(user, "<span class='warning'>There are no valid runes to teleport to!</span>")
+		to_chat(user, "<span class='warning'>Нет валидных рун для телепорта!</span>")
 		log_game("Teleport spell failed - no other teleport runes")
 		return
 	if(!is_level_reachable(user.z))
-		to_chat(user, "<span class='cultitalic'>You are too far away from the station to teleport!</span>")
+		to_chat(user, "<span class='cultitalic'>Вы слишком далеко от станции для телепорта!</span>")
 		log_game("Teleport spell failed - user in away mission")
 		return
 
-	var/input_rune_key = tgui_input_list(user, "Choose a rune to teleport to", "Rune to Teleport to", potential_runes) //we know what key they picked
+	var/input_rune_key = tgui_input_list(user, "Выберите руну для телепорта", "Руна для телепорта", potential_runes) //we know what key they picked
 	var/obj/effect/rune/teleport/actual_selected_rune = potential_runes[input_rune_key] //what rune does that key correspond to?
 	if(QDELETED(src) || !user || user.l_hand != src && user.r_hand != src || user.incapacitated() || !actual_selected_rune)
 		return
 
 	if(HAS_TRAIT(user, TRAIT_FLOORED))
-		to_chat(user, "<span class='cultitalic'>You cannot cast this spell while knocked down!</span>")
+		to_chat(user, "<span class='cultitalic'>Использование заклинание во время оглушения невозможно!</span>")
 		return
 
 	uses--
