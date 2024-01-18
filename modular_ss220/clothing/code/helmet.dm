@@ -36,10 +36,3 @@
 /obj/item/clothing/head/helmet/bike_helmet/replica
 	desc = "Крутой шлем. На вид хлипкий..."
 	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
-
-/obj/item/clothing/head/caphat/beret_black
-	name = "чёрный капитанский берет"
-	desc = "Хорошо быть королём."
-	icon = 'modular_ss220/clothing/icons/object/hats.dmi'
-	icon_state = "cap_beret_black"
-	icon_override = 'modular_ss220/clothing/icons/mob/hats.dmi'
