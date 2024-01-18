@@ -12,13 +12,13 @@
 
 //Comms
 /datum/action/innate/cult/comm
-	name = "Сообщение"
-	desc = "Прошепчите слова, которые услышат все культисты.<br><b>Внимание:</b>Ближайшие некультисты всё равно вас услышат."
+	name = "Communion"
+	desc = "Whispered words that all cultists can hear.<br><b>Warning:</b>Nearby non-cultists can still hear you."
 	button_icon_state = "cult_comms"
 	check_flags = AB_CHECK_CONSCIOUS
 
 /datum/action/innate/cult/comm/Activate()
-	var/input = stripped_input(usr, "Пожалуйста, напишите сообщения для аколитов.", "Голос Крови", "")
+	var/input = stripped_input(usr, "Please choose a message to tell to the other acolytes.", "Voice of Blood", "")
 	if(!input || !IsAvailable())
 		return
 	cultist_commune(usr, input)

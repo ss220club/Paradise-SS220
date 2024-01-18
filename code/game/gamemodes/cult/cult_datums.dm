@@ -7,10 +7,10 @@
 	var/construct_glow = LIGHT_COLOR_BLOOD_MAGIC
 
 	//God Entity
-	var/entity_name = "Нар'Си"
-	var/entity_title1 = "Тёмный Бог" // На доработку
-	var/entity_title2 = "Тот, кто видит"
-	var/entity_title3 = "Геометр Крови"
+	var/entity_name = "Nar'Sie"
+	var/entity_title1 = "The Dark One"
+	var/entity_title2 = "The One Who Sees"
+	var/entity_title3 = "The Geometer of Blood"
 	var/entity_icon_state = "narsie"
 	var/entity_spawn_animation = "narsie_spawn_anim"
 
@@ -21,12 +21,12 @@
 	var/artificer_dead_state = "shade_dead"
 
 	//Behemoth Construct
-	var/behemoth_name = "Чудище"
+	var/behemoth_name = "Behemoth"
 	var/behemoth_icon_state = "behemoth"
 	var/behemoth_dead_state = "shade_dead"
 
 	//Wraith Construct
-	var/wraith_name = "Призрак"
+	var/wraith_name = "Wraith"
 	var/wraith_icon_state = "floating"
 	var/wraith_dead_state = "shade_dead"
 	var/wraith_jaunt_out_animation = "phase_shift"
@@ -43,7 +43,7 @@
 	var/harvester_dead_state = "shade_dead"
 
 	//Shade Spirit
-	var/shade_name = "Тень"
+	var/shade_name = "Shade"
 	var/shade_icon_state = "shade2"
 	var/shade_dead_state = "shade_dead"
 
@@ -86,10 +86,10 @@
 	sword_icon = "hell_blade"
 	construct_glow = LIGHT_COLOR_FIRE
 
-	entity_name = "Ха'Рин"
-	entity_title1 = "Горящий"
-	entity_title2 = "Тот, Кто Поглащаен"
-	entity_title3 = "Предвестник Огня"
+	entity_name = "Kha'Rin"
+	entity_title1 = "The Burning One"
+	entity_title2 = "The One Who Consumes"
+	entity_title3 = "The Harbinger of Fire"
 	entity_icon_state = "kha'rin"
 	entity_spawn_animation = "kha'rin_spawn_anim"
 
@@ -146,10 +146,10 @@
 	sword_icon = "death_blade"
 	construct_glow = LIGHT_COLOR_DARKRED
 
-	entity_name = "Жнец"
-	entity_title1 = "Тихий"
-	entity_title2 = "Тот, кто вызывает"
-	entity_title3 = "Паромщик забвения"
+	entity_name = "The Reaper"
+	entity_title1 = "The Silent One"
+	entity_title2 = "The One Who Beckons"
+	entity_title3 = "The Ferryman of Oblivion"
 	entity_icon_state = "reaper"
 	entity_spawn_animation = "reaper_spawn_anim"
 
