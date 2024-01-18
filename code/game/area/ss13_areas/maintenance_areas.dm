@@ -18,35 +18,35 @@
 	icon_state = "medmaint"
 
 /area/station/maintenance/fpmaint
-	name = "Технические Тоннели Носовой Части. Порт"
+	name = "Северо-Западные Технические Тоннели"
 	icon_state = "fpmaint"
 
 /area/station/maintenance/fpmaint2
-	name = "Второстепенные Технические Тоннели Носовой Части. Порт"
+	name = "Второстепенные Северо-Западные Технические Тоннели"
 	icon_state = "fpmaint"
 
 /area/station/maintenance/fsmaint
-	name = "Технические Тоннели Носовой Части. Правый Борт"
+	name = "Северо-Восточные Технические Тоннели "
 	icon_state = "fsmaint"
 
 /area/station/maintenance/fsmaint2
-	name = "Второстепенные Технические Тоннели Носовой Части. Правый Борт"
+	name = "Второстепенные Северо-Восточные Технические Тоннели"
 	icon_state = "fsmaint"
 
 /area/station/maintenance/asmaint
-	name = "Технические Тоннели Кормовой части. Правый Борт"
+	name = "Юго-Восточные Технические Тоннели"
 	icon_state = "asmaint"
 
 /area/station/maintenance/asmaint2
-	name = "Второстепенные Технические Тоннели Кормовой части. Правый Борт"
+	name = "Второстепенные Юго-Восточные Технические Тоннели"
 	icon_state = "asmaint"
 
 /area/station/maintenance/apmaint
-	name = "Технические Тоннели Кормовой части. Порт"
+	name = "Юго-Западные Технические Тоннели"
 	icon_state = "apmaint"
 
 /area/station/maintenance/apmaint2
-	name = "Второстепенные Технические Тоннели Кормовой части. Порт"
+	name = "Второстепенные Юго-Западные Технические Тоннели"
 	icon_state = "apmaint"
 
 /area/station/maintenance/maintcentral
@@ -54,39 +54,39 @@
 	icon_state = "maintcentral"
 
 /area/station/maintenance/maintcentral2
-	name = "Второстепенные Технические Тоннели"
+	name = "Второстепенные Центральные Технические Тоннели"
 	icon_state = "maintcentral"
 
 /area/station/maintenance/fore
-	name = "Технические Тоннели Носовой Части"
+	name = "Северные Технические Тоннели"
 	icon_state = "fmaint"
 
 /area/station/maintenance/fore2
-	name = "Второстепенные Технические Тоннели Носовой Части"
+	name = "Второстепенные Северные Технические Тоннели"
 	icon_state = "fmaint"
 
 /area/station/maintenance/aft
-	name = "Технические Тоннели Кормы"
+	name = "Южные Технические Тоннели"
 	icon_state = "amaint"
 
 /area/station/maintenance/aft2
-	name = "Второстепенные Технические Тоннели Кормы"
+	name = "Второстепенные Южные Технические Тоннели"
 	icon_state = "amaint"
 
 /area/station/maintenance/starboard
-	name = "Технические Тоннели Правого Борта"
+	name = "Восточные Технические Тоннели"
 	icon_state = "smaint"
 
 /area/station/maintenance/starboard2
-	name = "Второстепенные Технические Тоннели Правого Борта"
+	name = "Второстепенные Восточные Технические Тоннели"
 	icon_state = "smaint"
 
 /area/station/maintenance/port
-	name = "Технические Тоннели Порта"
+	name = "Западные Технические Тоннели"
 	icon_state = "pmaint"
 
 /area/station/maintenance/port2
-	name = "Второстепенные Технические Тоннели Порта"
+	name = "Второстепенные Западные Технические Тоннели"
 	icon_state = "pmaint"
 
 /area/station/maintenance/storage
@@ -146,11 +146,11 @@
 	icon_state = "construction"
 
 /area/station/maintenance/auxsolarport
-	name = "\improper Солнечные Панели Носовой Части. Порт."
+	name = "\improper Северо-Восточные Солнечные Панели"
 	icon_state = "FPctrl"
 
 /area/station/maintenance/starboardsolar
-	name = "\improper Солнечные Панели Кормы. Правый Борт"
+	name = "\improper Юго-Восточные Солнечные Панели"
 	icon_state = "ASctrl"
 
 /area/station/maintenance/starboardsolar/aft
@@ -158,11 +158,11 @@
 	icon_state = "ASctrl"
 
 /area/station/maintenance/portsolar
-	name = "\improper Солнечные Панели Кормы. Порт"
+	name = "\improper Юго-Западные Солнечные Панели"
 	icon_state = "APctrl"
 
 /area/station/maintenance/auxsolarstarboard
-	name = "\improper Солнечные Панели Носовой части. Правый Борт"
+	name = "\improper Северо-Восточные Солнечные Панели"
 	icon_state = "FSctrl"
 
 /area/station/maintenance/assembly_line //Derelict Assembly Line

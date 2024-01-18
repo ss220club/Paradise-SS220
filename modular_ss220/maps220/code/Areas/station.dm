@@ -1,26 +1,26 @@
 /* Station */
 /area/station/security/checkpoint/south
-	name = "\improper Escape Security Checkpoint"
+	name = "\improper Южный Контрольно-Пропускной Пункт СБ"
 
 /area/station/security/podpilot
 	name = "\improper Pod Pilot Bay"
 	icon_state = "security"
 
 /area/station/bridge/checkpoint
-	name = "\improper Command Checkpoint"
+	name = "\improper Контрольно-Пропускной Пункт Командования"
 
 /area/station/bridge/checkpoint/north
-	name = "\improper North Command Checkpoint"
+	name = "\improper Северный Контрольно-Пропускной Пункт Командования"
 
 /area/station/bridge/checkpoint/south
-	name = "\improper South Command Checkpoint"
+	name = "\improper Южный Контрольно-Пропускной Пункт Командования"
 
 /area/station/engineering/hallway
-	name = "\improper Engineering Hallway"
+	name = "\improper Коридор Инженерного Отдела"
 	icon_state = "engine_hallway"
 
 /area/station/engineering/dronefabricator
-	name = "\improper Engineering Drone Fabricator Room"
+	name = "\improper Комната Изготовления Дронов"
 	icon_state = "engi"
 
 /area/station/engineering/emergency
@@ -28,52 +28,52 @@
 	icon_state = "emergencystorage"
 
 /area/station/engineering/supermatter_room
-	name = "\improper Supermatter Room"
+	name = "\improper Комната Суперматерии"
 	icon_state = "engi"
 
 /area/station/engineering/utility
-	name = "\improper Engineering Utility Room"
+	name = "\improper Инженерная Подсобка"
 	icon_state = "engimaint"
 
 /area/station/engineering/mechanic
-	name = "\improper Pod Mechanic Bay"
+	name = "\improper Гараж Под Механика"
 	icon_state = "engi"
 
 /area/station/engineering/atmos/storage
-	name = "\improper Atmospherics Storage"
+	name = "\improper Хранилище Атмосферного Отдела"
 	icon_state = "atmos"
 
 /area/station/supply/abandoned_boxroom
-	name = "\improper Abandoned Boxroom"
+	name = "\improper Заброшенное Складское Помещение"
 	icon_state = "cargobay"
 
 /area/station/public/pool
-	name = "\improper Pool"
+	name = "\improper Бассейн"
 	icon_state = "dorms"
 
 /area/station/public/vacant_store
-	name = "\improper Vacant Store"
+	name = "\improper Вакантный Офис"
 	icon = 'modular_ss220/maps220/icons/areas.dmi'
 	icon_state = "vacantstore"
 
 /area/station/maintenance/dormitory_maintenance
-	name = "\improper Dormitory Maintenance"
+	name = "\improper Технические Тоннели Дормиториев"
 	icon_state = "smaint"
 
 /area/station/maintenance/old_kitchen
-	name = "\improper Old Kitchen"
+	name = "\improper Старая Кухня"
 	icon_state = "kitchen"
 
 /area/station/maintenance/old_detective
-	name = "\improper Old Detective Office"
+	name = "\improper Старый офис Детектива"
 	icon_state = "detective"
 
 /area/station/maintenance/virology_maint
-	name = "\improper Virology Maintenance Construction Area"
+	name = "\improper Технические Тоннели Вирусологии. Строительная Зона"
 	icon_state = "smaint"
 
 /area/station/hallway/secondary/exit/maintenance
-	name = "\improper Abandoned Escape Shuttle Hallway"
+	name = "\improper Заброшенный Коридор Эвакуационного Шаттла"
 	icon_state = "escape"
 
 /* CentCom */
