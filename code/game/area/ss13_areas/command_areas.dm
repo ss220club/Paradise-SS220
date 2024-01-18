@@ -2,70 +2,70 @@
 //Command
 
 /area/station/command/bridge
-	name = "\improper Мостик"
+	name = "\proper Мостик"
 	icon_state = "bridge"
 	ambientsounds = list('sound/ambience/signal.ogg')
 	sound_environment = SOUND_AREA_STANDARD_STATION
 
 /area/station/command/meeting_room
-	name = "\improper Конференц-Зал Командования"
+	name = "\proper Конференц-Зал Командования"
 	icon_state = "meeting"
 	sound_environment = SOUND_AREA_MEDIUM_SOFTFLOOR
 
 /area/station/command/office/captain
-	name = "\improper Офис Капитана"
+	name = "\proper Офис Капитана"
 	icon_state = "captainoffice"
 	sound_environment = SOUND_AREA_WOODFLOOR
 
 /area/station/command/office/captain/bedroom
-	name = "\improper Спальня Капитана"
+	name = "\proper Спальня Капитана"
 	icon_state = "captain"
 
 /area/station/command/office/hop
-	name = "\improper Кабинет Главы Персонала"
+	name = "\proper Кабинет Главы Персонала"
 	icon_state = "hop"
 
 /area/station/command/office/rd
-	name = "\improper Кабинет Директора Исследований"
+	name = "\proper Кабинет Директора Исследований"
 	icon_state = "rd"
 
 /area/station/command/office/ce
-	name = "\improper Кабинет Главного Инженера"
+	name = "\proper Кабинет Главного Инженера"
 	icon_state = "ce"
 
 /area/station/command/office/hos
-	name = "\improper Кабинет Главы Службы Безопасности"
+	name = "\proper Кабинет Главы Службы Безопасности"
 	icon_state = "hos"
 
 /area/station/command/office/cmo
-	name = "\improper Кабинет Главного Врача"
+	name = "\proper Кабинет Главного Врача"
 	icon_state = "CMO"
 
 /area/station/command/office/ntrep
-	name = "\improper Кабинет Представителя НТ"
+	name = "\proper Кабинет Представителя НТ"
 	icon_state = "ntrep"
 
 /area/station/command/office/blueshield
-	name = "\improper Кабинет Синего Щита"
+	name = "\proper Кабинет Синего Щита"
 	icon_state = "blueshield"
 
 /area/station/command/teleporter
-	name = "\improper Телепортерная"
+	name = "\proper Телепортерная"
 	icon_state = "teleporter"
 	ambientsounds = ENGINEERING_SOUNDS
 
 /area/station/command/gateway
-	name = "\improper Гейт"
+	name = "\proper Гейт"
 	icon_state = "gateway"
 	ambientsounds = ENGINEERING_SOUNDS
 	sound_environment = SOUND_AREA_STANDARD_STATION
 
 /area/station/command/vault
-	name = "\improper Хранилище"
+	name = "\proper Хранилище"
 	icon_state = "nuke_storage"
 
 /area/station/command/server
-	name = "\improper Messaging Server Room"
+	name = "\proper Messaging Server Room"
 	icon_state = "server"
 	sound_environment = SOUND_AREA_STANDARD_STATION
 

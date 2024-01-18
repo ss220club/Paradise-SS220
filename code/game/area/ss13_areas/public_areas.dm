@@ -8,72 +8,72 @@
 	sound_environment = SOUND_AREA_STANDARD_STATION
 
 /area/station/hallway/primary/fore
-	name = "\improper Основной Северный Коридор"
+	name = "\proper Основной Северный Коридор"
 	icon_state = "hallF"
 
 /area/station/hallway/primary/fore/west
-	name = "\improper Северо-Западный Коридор"
+	name = "\proper Северо-Западный Коридор"
 
 /area/station/hallway/primary/fore/east
-	name = "\improper Северо-Восточный Коридор"
+	name = "\proper Северо-Восточный Коридор"
 
 /area/station/hallway/primary/fore/north
-	name = "\improper Северный Коридор"
+	name = "\proper Северный Коридор"
 
 /area/station/hallway/primary/fore/south
-	name = "\improper Северо-Южный Коридор"
+	name = "\proper Северо-Южный Коридор"
 
 /area/station/hallway/primary/starboard
-	name = "\improper Основной Восточный Коридор"
+	name = "\proper Основной Восточный Коридор"
 	icon_state = "hallS"
 
 /area/station/hallway/primary/starboard/west
-	name = "\improper Восточно-Западный Коридор"
+	name = "\proper Восточно-Западный Коридор"
 
 /area/station/hallway/primary/starboard/east
-	name = "\improper Восточный Коридор"
+	name = "\proper Восточный Коридор"
 
 /area/station/hallway/primary/starboard/north
-	name = "\improper Восточно-Северный Коридор"
+	name = "\proper Восточно-Северный Коридор"
 
 /area/station/hallway/primary/starboard/south
-	name = "\improper Восточно-Южный Коридор"
+	name = "\proper Восточно-Южный Коридор"
 
 /area/station/hallway/primary/aft
-	name = "\improper Основной Южный Коридор"
+	name = "\proper Основной Южный Коридор"
 	icon_state = "hallA"
 
 /area/station/hallway/primary/aft/west
-	name = "\improper Южно-Западный Коридор"
+	name = "\proper Южно-Западный Коридор"
 
 /area/station/hallway/primary/aft/east
-	name = "\improper Южно-Восточный Коридор"
+	name = "\proper Южно-Восточный Коридор"
 
 /area/station/hallway/primary/aft/north
-	name = "\improper Южно-Северный Коридор"
+	name = "\proper Южно-Северный Коридор"
 
 /area/station/hallway/primary/aft/south
-	name = "\improper Южный Коридор"
+	name = "\proper Южный Коридор"
 
 
 /area/station/hallway/primary/port
-	name = "\improper Основной Западный Коридор"
+	name = "\proper Основной Западный Коридор"
 	icon_state = "hallP"
 
 /area/station/hallway/primary/port/west
-	name = "\improper Западный Коридор"
+	name = "\proper Западный Коридор"
 
 /area/station/hallway/primary/port/east
-	name = "\improper Западно-Восточный Коридор"
+	name = "\proper Западно-Восточный Коридор"
 
 /area/station/hallway/primary/port/north
-	name = "\improper Западно-Северный Коридор"
+	name = "\proper Западно-Северный Коридор"
 
 /area/station/hallway/primary/port/south
-	name = "\improper Западно-Южный Коридор"
+	name = "\proper Западно-Южный Коридор"
 
 /area/station/hallway/primary/central
-	name = "\improper Центральный Основной Коридор"
+	name = "\proper Центральный Основной Коридор"
 	icon_state = "hallC"
 
 /area/station/hallway/primary/central/north
@@ -117,15 +117,15 @@
 	name = "Command-Engineering Bridge"
 
 /area/station/hallway/secondary/exit
-	name = "\improper Коридор Эвакуационного Шаттла"
+	name = "\proper Коридор Эвакуационного Шаттла"
 	icon_state = "escape"
 
 /area/station/hallway/secondary/garden
-	name = "\improper Сад"
+	name = "\proper Сад"
 	icon_state = "garden"
 
 /area/station/hallway/secondary/entry
-	name = "\improper Коридор Шаттла Прибытия"
+	name = "\proper Коридор Шаттла Прибытия"
 	icon_state = "entry"
 
 /area/station/hallway/secondary/entry/north
@@ -133,83 +133,83 @@
 /area/station/hallway/secondary/entry/south
 
 /area/station/hallway/secondary/entry/lounge
-	name = "\improper Зал Прибытия"
+	name = "\proper Зал Прибытия"
 
 /area/station/hallway/secondary/bridge
-	name = "\improper Коридор Командования"
+	name = "\proper Коридор Командования"
 	icon_state = "hallC"
 // Other public areas
 
 
 /area/station/public/dorms
-	name = "\improper Дормитории"
+	name = "\proper Дормитории"
 	icon_state = "dorms"
 	sound_environment = SOUND_AREA_STANDARD_STATION
 
 
 /area/crew_quarters/toilet/aux
-	name = "\improper Auxiliary Toilets"
+	name = "\proper Auxiliary Toilets"
 
 /area/station/public/sleep
-	name = "\improper Криохранилище Дормиторий"
+	name = "\proper Криохранилище Дормиторий"
 	icon_state = "Sleep"
 	valid_territory = FALSE
 
 /area/station/public/sleep/secondary
-	name = "\improper Secondary Cryogenic Dormitories"
+	name = "\proper Secondary Cryogenic Dormitories"
 	icon_state = "Sleep"
 
 /area/station/public/sleep_male
-	name = "\improper Male Dorm"
+	name = "\proper Male Dorm"
 	icon_state = "Sleep"
 
 /area/station/public/sleep_female
-	name = "\improper Female Dorm"
+	name = "\proper Female Dorm"
 	icon_state = "Sleep"
 
 /area/station/public/locker
-	name = "\improper Раздевалка"
+	name = "\proper Раздевалка"
 	icon_state = "locker"
 
 /area/station/public/toilet
-	name = "\improper Туалеты Дормиториев"
+	name = "\proper Туалеты Дормиториев"
 	icon_state = "toilet"
 	sound_environment = SOUND_AREA_SMALL_ENCLOSED
 
 /area/station/public/toilet/male
-	name = "\improper Male Toilets"
+	name = "\proper Male Toilets"
 
 /area/station/public/toilet/female
-	name = "\improper Female Toilets"
+	name = "\proper Female Toilets"
 
 /area/station/public/toilet/unisex
-	name = "\improper Unisex Restroom"
+	name = "\proper Unisex Restroom"
 
 /area/station/public/toilet/lockerroom
-	name = "\improper Locker Toilets"
+	name = "\proper Locker Toilets"
 
 /area/station/public/fitness
-	name = "\improper Комната Для Фитнеса"
+	name = "\proper Комната Для Фитнеса"
 	icon_state = "fitness"
 
 /area/station/public/arcade
-	name = "\improper Аркада"
+	name = "\proper Аркада"
 	icon_state = "arcade"
 
 /area/station/public/mrchangs
-	name = "\improper Забегаловка Мистера Чанга"
+	name = "\proper Забегаловка Мистера Чанга"
 	icon_state = "changs"
 
 /area/station/public/clothing
-	name = "\improper Магазин Одежды"
+	name = "\proper Магазин Одежды"
 	icon_state = "Theatre"
 
 /area/station/public/pet_store
-	name = "\improper Магазин Питомцев"
+	name = "\proper Магазин Питомцев"
 	icon_state = "pet_store"
 
 /area/station/public/vacant_office
-	name = "\improper Вакантный Офис"
+	name = "\proper Вакантный Офис"
 	icon_state = "vacantoffice"
 
 /area/station/public/vacant_office/secondary
@@ -247,10 +247,10 @@
 	icon_state = "office_supplies"
 
 /area/station/public/recreation
-	name = "\improper Recreation Area"
+	name = "\proper Recreation Area"
 
 /area/station/public/construction
-	name = "\improper Зона Для Строительства"
+	name = "\proper Зона Для Строительства"
 	icon_state = "construction"
 	ambientsounds = ENGINEERING_SOUNDS
 	sound_environment = SOUND_AREA_STANDARD_STATION

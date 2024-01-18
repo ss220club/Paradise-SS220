@@ -1,144 +1,144 @@
 /* Station */
 /area/station/security/checkpoint/south
-	name = "\improper Южный Контрольно-Пропускной Пункт СБ"
+	name = "\proper Южный Контрольно-Пропускной Пункт СБ"
 
 /area/station/security/podpilot
-	name = "\improper Pod Pilot Bay"
+	name = "\proper Pod Pilot Bay"
 	icon_state = "security"
 
 /area/station/bridge/checkpoint
-	name = "\improper Контрольно-Пропускной Пункт Командования"
+	name = "\proper Контрольно-Пропускной Пункт Командования"
 
 /area/station/bridge/checkpoint/north
-	name = "\improper Северный Контрольно-Пропускной Пункт Командования"
+	name = "\proper Северный Контрольно-Пропускной Пункт Командования"
 
 /area/station/bridge/checkpoint/south
-	name = "\improper Южный Контрольно-Пропускной Пункт Командования"
+	name = "\proper Южный Контрольно-Пропускной Пункт Командования"
 
 /area/station/engineering/hallway
-	name = "\improper Коридор Инженерного Отдела"
+	name = "\proper Коридор Инженерного Отдела"
 	icon_state = "engine_hallway"
 
 /area/station/engineering/dronefabricator
-	name = "\improper Комната Изготовления Дронов"
+	name = "\proper Комната Изготовления Дронов"
 	icon_state = "engi"
 
 /area/station/engineering/emergency
-	name = "\improper Engineering Emergency Supplies"
+	name = "\proper Engineering Emergency Supplies"
 	icon_state = "emergencystorage"
 
 /area/station/engineering/supermatter_room
-	name = "\improper Комната Суперматерии"
+	name = "\proper Комната Суперматерии"
 	icon_state = "engi"
 
 /area/station/engineering/utility
-	name = "\improper Инженерная Подсобка"
+	name = "\proper Инженерная Подсобка"
 	icon_state = "engimaint"
 
 /area/station/engineering/mechanic
-	name = "\improper Гараж Под Механика"
+	name = "\proper Гараж Под Механика"
 	icon_state = "engi"
 
 /area/station/engineering/atmos/storage
-	name = "\improper Хранилище Атмосферного Отдела"
+	name = "\proper Хранилище Атмосферного Отдела"
 	icon_state = "atmos"
 
 /area/station/supply/abandoned_boxroom
-	name = "\improper Заброшенное Складское Помещение"
+	name = "\proper Заброшенное Складское Помещение"
 	icon_state = "cargobay"
 
 /area/station/public/pool
-	name = "\improper Бассейн"
+	name = "\proper Бассейн"
 	icon_state = "dorms"
 
 /area/station/public/vacant_store
-	name = "\improper Вакантный Офис"
+	name = "\proper Вакантный Офис"
 	icon = 'modular_ss220/maps220/icons/areas.dmi'
 	icon_state = "vacantstore"
 
 /area/station/maintenance/dormitory_maintenance
-	name = "\improper Технические Тоннели Дормиториев"
+	name = "\proper Технические Тоннели Дормиториев"
 	icon_state = "smaint"
 
 /area/station/maintenance/old_kitchen
-	name = "\improper Старая Кухня"
+	name = "\proper Старая Кухня"
 	icon_state = "kitchen"
 
 /area/station/maintenance/old_detective
-	name = "\improper Старый офис Детектива"
+	name = "\proper Старый офис Детектива"
 	icon_state = "detective"
 
 /area/station/maintenance/virology_maint
-	name = "\improper Технические Тоннели Вирусологии. Строительная Зона"
+	name = "\proper Технические Тоннели Вирусологии. Строительная Зона"
 	icon_state = "smaint"
 
 /area/station/hallway/secondary/exit/maintenance
-	name = "\improper Заброшенный Коридор Эвакуационного Шаттла"
+	name = "\proper Заброшенный Коридор Эвакуационного Шаттла"
 	icon_state = "escape"
 
 /* CentCom */
 /area/centcom/ss220
-	name = "\improper ЦК"
+	name = "\proper ЦК"
 	icon_state = "centcom"
 	requires_power = FALSE
 	dynamic_lighting = DYNAMIC_LIGHTING_FORCED
 	nad_allowed = TRUE
 
 /area/centcom/ss220/evac
-	name = "\improper ЦК - Эвакуационный шаттл"
+	name = "\proper ЦК - Эвакуационный шаттл"
 	icon_state = "centcom_evac"
 
 /area/centcom/ss220/park
-	name = "\improper ЦК - Парк"
+	name = "\proper ЦК - Парк"
 	icon_state = "centcom"
 
 /area/centcom/ss220/bar
-	name = "\improper ЦК - Бар"
+	name = "\proper ЦК - Бар"
 	icon_state = "centcom"
 
 /area/centcom/ss220/general
-	name = "\improper ЦК - Зона персонала"
+	name = "\proper ЦК - Зона персонала"
 	icon_state = "centcom"
 
 /area/centcom/ss220/supply
-	name = "\improper ЦК - Доставка"
+	name = "\proper ЦК - Доставка"
 	icon_state = "centcom_supply"
 
 /area/centcom/ss220/admin1
-	name = "\improper ЦК - Коридоры ЦК"
+	name = "\proper ЦК - Коридоры ЦК"
 	icon_state ="centcom"
 
 /area/centcom/ss220/admin2
-	name = "\improper ЦК - Офисы"
+	name = "\proper ЦК - Офисы"
 	icon_state = "centcom"
 
 /area/centcom/ss220/admin3
-	name = "\improper ЦК - ОБР"
+	name = "\proper ЦК - ОБР"
 	icon_state = "centcom_specops"
 
 /area/centcom/ss220/medbay
-	name = "\improper ЦК - Лазарет"
+	name = "\proper ЦК - Лазарет"
 	icon_state = "centcom"
 
 /area/centcom/ss220/court
-	name = "\improper ЦК - Зал суда"
+	name = "\proper ЦК - Зал суда"
 	icon_state = "centcom"
 
 /area/centcom/ss220/library
-	name = "\improper ЦК - Библиотека"
+	name = "\proper ЦК - Библиотека"
 	icon_state = "centcom"
 
 /area/centcom/ss220/command
-	name = "\improper ЦК - Командный центр"
+	name = "\proper ЦК - Командный центр"
 	icon_state = "centcom_ctrl"
 
 /area/centcom/ss220/jail
-	name = "\improper ЦК - Тюрьма"
+	name = "\proper ЦК - Тюрьма"
 	icon_state = "centcom"
 
 /* Syndicate Base - Mothership */
 /area/syndicate_mothership
-	name = "\improper Syndicate Forward Base"
+	name = "\proper Syndicate Forward Base"
 	icon = 'modular_ss220/maps220/icons/areas.dmi'
 	icon_state = "syndie-ship"
 	requires_power = FALSE
@@ -147,26 +147,26 @@
 	ambientsounds = HIGHSEC_SOUNDS
 
 /area/syndicate_mothership/outside
-	name = "\improper Syndicate Controlled Territory"
+	name = "\proper Syndicate Controlled Territory"
 	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
 	icon_state = "syndie-outside"
 
 /area/syndicate_mothership/control
-	name = "\improper Syndicate Control Room"
+	name = "\proper Syndicate Control Room"
 	icon_state = "syndie-control"
 
 /area/syndicate_mothership/elite_squad
-	name = "\improper Syndicate Elite Squad"
+	name = "\proper Syndicate Elite Squad"
 	icon_state = "syndie-elite"
 
 /area/syndicate_mothership/infteam
-	name = "\improper Syndicate Infiltrators"
+	name = "\proper Syndicate Infiltrators"
 	icon_state = "syndie-infiltrator"
 
 /area/syndicate_mothership/jail
-	name = "\improper Syndicate Jail"
+	name = "\proper Syndicate Jail"
 	icon_state = "syndie-jail"
 
 /area/syndicate_mothership/cargo
-	name = "\improper Syndicate Cargo"
+	name = "\proper Syndicate Cargo"
 	icon_state = "syndie-cargo"
