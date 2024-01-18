@@ -1,6 +1,6 @@
 /obj/item/storage/belt/chef/apron
 	name = "фартук"
-	desc = "Удобный фартук."
+	desc = "Фартук с широкими карманами. Такому обзавидуется любой мясник."
 	icon = 'modular_ss220/clothing/icons/object/accessories.dmi'
 	icon_state = "apron"
 	item_state = "apron"
@@ -28,6 +28,5 @@
 
 /obj/item/storage/belt/chef/apron/red
 	name = "красный фартук"
-	desc = "Удобный фартук. Красненький."
 	icon_state = "apron_red"
 	item_state = "apron_red"

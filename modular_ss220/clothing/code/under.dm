@@ -20,6 +20,7 @@
 
 /obj/item/clothing/under/rank/civilian/chef/red
 	name = "chef's red uniform"
+	desc = "Униформа повара с пуговицами на одну сторону."
 	icon = 'modular_ss220/clothing/icons/object/under.dmi'
 	icon_state = "chef_red"
 	item_color = "chef_red"

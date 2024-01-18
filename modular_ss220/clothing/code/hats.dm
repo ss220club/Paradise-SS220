@@ -39,6 +39,7 @@
 
 /obj/item/clothing/head/chefhat/red
 	name = "chef's red hat"
+	desc = "Красный поварской колпак, для тех, кто хочет показать что он тут настоящий босс кухни."
 	icon = 'modular_ss220/clothing/icons/object/hats.dmi'
 	icon_state = "chef_red"
 	sprite_sheets = list(
