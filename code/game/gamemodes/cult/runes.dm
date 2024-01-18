@@ -69,11 +69,11 @@ To draw a rune, use a ritual dagger.
 /obj/effect/rune/examine(mob/user)
 	. = ..()
 	if(iscultist(user) || user.stat == DEAD) //If they're a cultist or a ghost, tell them the effects
-		. += "<b>Name:</b> [cultist_name]"
-		. += "<b>Effects:</b> [capitalize(cultist_desc)]"
-		. += "<b>Required Acolytes:</b> [req_cultists]"
+		. += "<b>Название:</b> [cultist_name]"
+		. += "<b>Эффекты:</b> [capitalize(cultist_desc)]"
+		. += "<b>Необходимое количество культистов:</b> [req_cultists]"
 		if(req_keyword && keyword)
-			. += "<b>Keyword:</b> <span class='cultitalic'>[keyword]</span>"
+			. += "<b>Название:</b> <span class='cultitalic'>[keyword]</span>"
 
 /obj/effect/rune/attackby(obj/I, mob/user, params)
 	if(istype(I, /obj/item/melee/cultblade/dagger) && iscultist(user))
@@ -81,23 +81,23 @@ To draw a rune, use a ritual dagger.
 		if(istype(src, /obj/effect/rune/teleport))
 			var/obj/effect/rune/teleport/T = src // Can't erase telerunes if they have a portal open
 			if(T.inner_portal || T.outer_portal)
-				to_chat(user, "<span class='warning'>The portal needs to close first!</span>")
+				to_chat(user, "<span class='warning'>Сначала порталу надо закрыться!</span>")
 				return
 
 		// Everything else
 		var/obj/item/melee/cultblade/dagger/D = I
-		user.visible_message("<span class='warning'>[user] begins to erase [src] with [I].</span>")
+		user.visible_message("<span class='warning'>[user] начинает стирать [src] с помощью [I].</span>")
 		if(do_after(user, initial(scribe_delay) * D.scribe_multiplier, target = src))
-			to_chat(user, "<span class='notice'>You carefully erase the [lowertext(cultist_name)] rune.</span>")
+			to_chat(user, "<span class='notice'>Вы аккуратно начинаете стирать [lowertext(cultist_name)] руну.</span>")
 			qdel(src)
 		return
 	if(istype(I, /obj/item/nullrod))
 		if(iscultist(user))//cultist..what are doing..cultist..staph...
 			user.drop_item()
-			user.visible_message("<span class='warning'>[I] suddenly glows with a white light, forcing [user] to drop it in pain!</span>", \
-			"<span class='danger'>[I] suddenly glows with a white light that sears your hand, forcing you to drop it!</span>") // TODO: Make this actually burn your hand
+			user.visible_message("<span class='warning'>[I] внезапно начинает светиться белым светом, заставляя [user] выбросить [I] в агонии!</span>", \
+			"<span class='danger'>[I] внезапно начинает светиться белым светом, который портит вашу руку, заставляя вас выбросить предмет!</span>") // TODO: Make this actually burn your hand
 			return
-		to_chat(user,"<span class='danger'>You disrupt the magic of [src] with [I].</span>")
+		to_chat(user,"<span class='danger'>Вы прерывете магию [src] с помощью [I].</span>")
 		qdel(src)
 		return
 	return ..()
@@ -105,7 +105,7 @@ To draw a rune, use a ritual dagger.
 /obj/effect/rune/attack_hand(mob/living/user)
 	user.Move_Pulled(src) // So that you can still drag things onto runes
 	if(!iscultist(user))
-		to_chat(user, "<span class='warning'>You aren't able to understand the words of [src].</span>")
+		to_chat(user, "<span class='warning'>Вы не можете понять слов из [src].</span>")
 		return
 	var/list/invokers = can_invoke(user)
 	if(length(invokers) >= req_cultists)
@@ -118,22 +118,22 @@ To draw a rune, use a ritual dagger.
 		if(construct_invoke || !iscultist(M)) //if you're not a cult construct we want the normal fail message
 			attack_hand(M)
 		else
-			to_chat(M, "<span class='warning'>You are unable to invoke the rune!</span>")
+			to_chat(M, "<span class='warning'>Вы не можете использовать эту руну!</span>")
 
 /obj/effect/rune/cult_conceal() //for concealing spell
-	visible_message("<span class='danger'>[src] fades away.</span>")
+	visible_message("<span class='danger'>[src] угасает.</span>")
 	invisibility = INVISIBILITY_HIDDEN_RUNES
 	alpha = 100 //To help ghosts distinguish hidden runes
 
 /obj/effect/rune/cult_reveal() //for revealing spell
 	invisibility = initial(invisibility)
-	visible_message("<span class='danger'>[src] suddenly appears!</span>")
+	visible_message("<span class='danger'>[src] внезапно появляется!</span>")
 	alpha = initial(alpha)
 
 /obj/effect/rune/is_cleanable()
 	return TRUE
 
-/obj/effect/rune/cleaning_act(mob/user, atom/cleaner, cleanspeed = 5 SECONDS, text_verb = "scrub out", text_description = " with [cleaner].")
+/obj/effect/rune/cleaning_act(mob/user, atom/cleaner, cleanspeed = 5 SECONDS, text_verb = "стирает", text_description = " с помощью [cleaner].")
 	if(issimulatedturf(loc))
 		var/turf/simulated/T = get_turf(src)
 		T.cleaning_act(user, cleaner, cleanspeed = cleanspeed, text_verb = text_verb, text_description = text_description, text_targetname = name) //Strings are deliberately "A = A" to avoid overrides
@@ -256,7 +256,7 @@ structure_check() searches for nearby cultist structures required for the invoca
 	..()
 	for(var/M in invokers)
 		var/mob/living/L = M
-		to_chat(L, "<span class='cultitalic'><b>You feel your life force draining. [SSticker.cultdat.entity_title3] is displeased.</b></span>")
+		to_chat(L, "<span class='cultitalic'><b>Вы чувствуете угасание своих жизненных сил. [SSticker.cultdat.entity_title3] недоволен.</b></span>")
 	qdel(src)
 
 /mob/proc/null_rod_check() //The null rod, if equipped, will protect the holder from the effects of most runes
@@ -267,8 +267,8 @@ structure_check() searches for nearby cultist structures required for the invoca
 
 //Rite of Enlightenment: Converts a normal crewmember to the cult, or offer them as sacrifice if cant be converted.
 /obj/effect/rune/convert
-	cultist_name = "Offer"
-	cultist_desc = "offers non-cultists on top of it to the Dark One, either converting or sacrificing them. Sacrifices with a soul will result in a captured soulshard. This can be done with brains as well."
+	cultist_name = "Предложение"
+	cultist_desc = "Предлагайте некультистов на данную руну вашему Божеству, конвертируя или принося их в жертву. Жертвы существ с душой приведёт к появлению осколка души. Это можно сделать также с мозгами."
 	invocation = "Mah'weyh pleggh at e'ntrath!"
 	icon_state = "offering"
 	req_cultists = 1
@@ -338,9 +338,9 @@ structure_check() searches for nearby cultist structures required for the invoca
 								"<span class='cultlarge'><i>AAAAAAAAAAAAAA-</i></span>")
 		SSticker.mode.add_cultist(convertee.mind)
 		convertee.mind.special_role = "Cultist"
-		to_chat(convertee, "<span class='cultitalic'><b>Your blood pulses. Your head throbs. The world goes red. All at once you are aware of a horrible, horrible, truth. The veil of reality has been ripped away \
-		and something evil takes root.</b></span>")
-		to_chat(convertee, "<span class='cultitalic'><b>Assist your new compatriots in their dark dealings. Your goal is theirs, and theirs is yours. You serve [SSticker.cultdat.entity_title3] above all else. Bring it back.\
+		to_chat(convertee, "<span class='cultitalic'><b>Кровь пульсирует. Голова болит. Мир становится красным. В мгновение вы осознаёте ужасную, кошмарную правду. Завеса реальности была сорвана \
+		и что-то зловещее пустило корни.</b></span>")
+		to_chat(convertee, "<span class='cultitalic'><b>Помогите вашим собратьям в их тёмных делах. Ваша цель - их цель, а их цель - ваша. Вы служете [SSticker.cultdat.entity_title3] превыше всего. Верните его в материальный мир.\
 		</b></span>")
 
 		if(ishuman(convertee))
@@ -352,11 +352,11 @@ structure_check() searches for nearby cultist structures required for the invoca
 				H.adjustBruteLoss(-(brutedamage * 0.9), robotic = TRUE)
 				H.adjustFireLoss(-(burndamage * 0.9), robotic = TRUE)
 				if(ismachineperson(H))
-					H.visible_message("<span class='warning'>A dark force repairs [convertee]!</span>",
-					"<span class='cultitalic'>Your damage has been repaired. Now spread the blood to others.</span>")
+					H.visible_message("<span class='warning'>Тёмные силы чинят [convertee]!</span>",
+					"<span class='cultitalic'>Ваш урон был исцелён. Теперь пускайте кровь других.</span>")
 				else
-					H.visible_message("<span class='warning'>[convertee]'s wounds heal and close!</span>",
-					"<span class='cultitalic'>Your wounds have been healed. Now spread the blood to others.</span>")
+					H.visible_message("<span class='warning'>Раны [convertee] затягиваются и исцеляются!</span>",
+					"<span class='cultitalic'>Ваши раны исцелены. Теперь пускайте кровь другим.</span>")
 					for(var/obj/item/organ/external/E in H.bodyparts)
 						E.mend_fracture()
 						E.fix_internal_bleeding()
@@ -369,9 +369,9 @@ structure_check() searches for nearby cultist structures required for the invoca
 
 			var/obj/item/melee/cultblade/dagger/D = new(get_turf(src))
 			if(H.equip_to_slot_if_possible(D, SLOT_HUD_IN_BACKPACK, FALSE, TRUE))
-				to_chat(H, "<span class='cultlarge'>You have a dagger in your backpack. Use it to do [SSticker.cultdat.entity_title1]'s bidding. </span>")
+				to_chat(H, "<span class='cultlarge'>У вас в рюкзаке есть кинжал. Используйте его для исполнения воли [SSticker.cultdat.entity_title1]. </span>")
 			else
-				to_chat(H, "<span class='cultlarge'>There is a dagger on the floor. Use it to do [SSticker.cultdat.entity_title1]'s bidding.</span>")
+				to_chat(H, "<span class='cultlarge'>Кинжал лежит на полу. Используйте его для исполнения воли [SSticker.cultdat.entity_title1].</span>")
 
 /obj/effect/rune/convert/proc/do_sacrifice(mob/living/offering, list/invokers)
 	var/mob/living/user = invokers[1] //the first invoker is always the user
@@ -379,7 +379,7 @@ structure_check() searches for nearby cultist structures required for the invoca
 	if(offering.stat != DEAD || (offering.mind && is_sacrifice_target(offering.mind))) //Requires three people to sacrifice living targets/sacrifice objective
 		if(length(invokers) < 3)
 			for(var/M in invokers)
-				to_chat(M, "<span class='cultitalic'>[offering] is too greatly linked to the world! You need three acolytes!</span>")
+				to_chat(M, "<span class='cultitalic'>[offering] слишком сильно связана с миром! Вам нужны 3 культиста!</span>")
 			fail_invoke()
 			log_game("Sacrifice rune failed - not enough acolytes and target is living")
 			return
@@ -406,18 +406,18 @@ structure_check() searches for nearby cultist structures required for the invoca
 	new /obj/effect/temp_visual/cult/sac(loc)
 	for(var/M in invokers)
 		if(sacrifice_fulfilled)
-			to_chat(M, "<span class='cultlarge'>\"Yes! This is the one I desire! You have done well.\"</span>")
+			to_chat(M, "<span class='cultlarge'>\"Да! Это тот, кого я хочу! Ты хорошо поработал.\"</span>")
 			if(!SSticker.cultdat.mirror_shields_active) // Only show once
-				to_chat(M, "<span class='cultitalic'>You are now able to construct mirror shields inside the daemon forge.</span>")
+				to_chat(M, "<span class='cultitalic'>Вы теперь можете сделать зеркальные щиты в печи.</span>")
 				SSticker.cultdat.mirror_shields_active = TRUE
 		else
 			if(ishuman(offering) && offering.mind?.offstation_role && offering.mind.special_role != SPECIAL_ROLE_ERT) //If you try it on a ghost role, you get nothing
-				to_chat(M, "<span class='cultlarge'>\"This soul is of no use to either of us.\"</span>")
+				to_chat(M, "<span class='cultlarge'>\"Эта душа бесполезна нам обоим.\"</span>")
 				worthless = TRUE
 			else if(ishuman(offering) || isrobot(offering))
-				to_chat(M, "<span class='cultlarge'>\"I accept this sacrifice.\"</span>")
+				to_chat(M, "<span class='cultlarge'>\"Я принимаю эту жертву.\"</span>")
 			else
-				to_chat(M, "<span class='cultlarge'>\"I accept this meager sacrifice.\"</span>")
+				to_chat(M, "<span class='cultlarge'>\"Я принимаю эту никчёмную жертву.\"</span>")
 	playsound(offering, 'sound/misc/demon_consume.ogg', 100, TRUE, SOUND_RANGE_SET(10))
 
 	if(((ishuman(offering) || isrobot(offering) || isbrain(offering)) && offering.mind) && !worthless)
@@ -436,8 +436,8 @@ structure_check() searches for nearby cultist structures required for the invoca
 	return TRUE
 
 /obj/effect/rune/teleport
-	cultist_name = "Teleport"
-	cultist_desc = "warps everything above it to another chosen teleport rune."
+	cultist_name = "Телепорт"
+	cultist_desc = "перемещает всё, что находится на ней на другую руну телепортации."
 	invocation = "Sas'so c'arta forbici!"
 	icon_state = "teleport"
 	req_keyword = TRUE
@@ -478,18 +478,18 @@ structure_check() searches for nearby cultist structures required for the invoca
 			potential_runes[resultkey] = R
 
 	if(!length(potential_runes))
-		to_chat(user, "<span class='warning'>There are no valid runes to teleport to!</span>")
+		to_chat(user, "<span class='warning'>Нет доступных рун телепортации!</span>")
 		log_game("Teleport rune failed - no other teleport runes")
 		fail_invoke()
 		return
 
 	if(!is_level_reachable(user.z))
-		to_chat(user, "<span class='cultitalic'>You are too far away from the station to teleport!</span>")
+		to_chat(user, "<span class='cultitalic'>Вы слишком далеко от станции для телепортации!</span>")
 		log_game("Teleport rune failed - user in away mission")
 		fail_invoke()
 		return
 
-	var/input_rune_key = input(user, "Choose a rune to teleport to.", "Rune to Teleport to") as null|anything in potential_runes //we know what key they picked
+	var/input_rune_key = input(user, "Выберите руну для телепортации.", "Руна Телепорта") as null|anything in potential_runes //we know what key they picked
 	var/obj/effect/rune/teleport/actual_selected_rune = potential_runes[input_rune_key] //what rune does that key correspond to?
 	if(QDELETED(src) || QDELETED(actual_selected_rune) ||!Adjacent(user) || user.incapacitated())
 		fail_invoke()
@@ -522,7 +522,7 @@ structure_check() searches for nearby cultist structures required for the invoca
 		else if(!is_station_level(z) || istype(get_area(src), /area/space))
 			actual_selected_rune.handle_portal("space", T)
 		user.visible_message("<span class='warning'>There is a sharp crack of inrushing air, and everything above the rune disappears!</span>",
-							"<span class='cult'>You[moveuser ? "r vision blurs, and you suddenly appear somewhere else":" send everything above the rune away"].</span>")
+							"<span class='cult'>You[moveuser ? " чувствуете замыленность зрения, после чего понимаете, что оказались в другом месте!":" отправляете всё на руне в другое место"].</span>")
 		if(moveuser)
 			user.forceMove(target)
 	else
@@ -537,19 +537,19 @@ structure_check() searches for nearby cultist structures required for the invoca
 
 	if(portal_type == "space")
 		light_color = color
-		desc += "<br><span class='boldwarning'>A tear in reality reveals a black void interspersed with dots of light... something recently teleported here from space.</span><br>"
+		desc += "<br><span class='boldwarning'>Разрыв в реальности открывает тёмную пустоту с пересмежными точками света... что-то недавно было телепортировано сюда из космоса.</span><br>"
 
 		// Space base near the station
 		if(is_station_level(origin.z))
-			desc += "<u><span class='warning'>The void feels like it's trying to pull you to the [dir2text(get_dir(T, origin))], near the station!</span></u>"
+			desc += "<u><span class='warning'>Бездна пытается потянуть вас к [dir2text(get_dir(T, origin))], не далеко от станции!</span></u>"
 		// Space base on another Z-level
 		else
-			desc += "<u><span class='warning'>The void feels like it's trying to pull you to the [dir2text(get_dir(T, origin))], in the direction of space sector [origin.z]!</span></u>"
+			desc += "<u><span class='warning'>Бездна пытается потянуть вас к [dir2text(get_dir(T, origin))], в направлении [origin.z] сектора космоса!</span></u>"
 
 	else
 		inner_portal.icon_state = "lava"
 		light_color = LIGHT_COLOR_FIRE
-		desc += "<br><span class='boldwarning'>A tear in reality reveals a coursing river of lava... something recently teleported here from the Lavaland Mines!</span>"
+		desc += "<br><span class='boldwarning'>Разрыв в реальности показывает текучую реку лавы... что-то было недавно телепортировано сюда с шахт Лаваленда!</span>"
 
 	outer_portal = new(T, 60 SECONDS, color)
 	light_range = 4
@@ -566,8 +566,8 @@ structure_check() searches for nearby cultist structures required for the invoca
 
 //Rune of Empowering : Enables carrying 4 blood spells, greatly reduce blood cost
 /obj/effect/rune/empower
-	cultist_name = "Empower"
-	cultist_desc = "allows cultists to prepare greater amounts of blood magic at far less of a cost."
+	cultist_name = "Усиление"
+	cultist_desc = "позволяет культистам подготовить большее количество заклинани за куда меньшую стоимость."
 	invocation = "H'drak v'loso, mir'kanas verbot!"
 	icon_state = "empower"
 	construct_invoke = FALSE
@@ -580,8 +580,8 @@ structure_check() searches for nearby cultist structures required for the invoca
 
 //Rite of Resurrection: Requires a dead or inactive cultist. When reviving the dead, you can only perform one revival for every three sacrifices your cult has carried out.
 /obj/effect/rune/raise_dead
-	cultist_name = "Revive"
-	cultist_desc = "requires a dead, alive, mindless, or inactive cultist placed upon the rune. For each three bodies sacrificed to the dark patron, one body will be mended and their mind awoken. Mending living cultist requires two cultists at the rune"
+	cultist_name = "Возрождение"
+	cultist_desc = "требует нахождение мёртвого, живого, неактивного культиста или культиста без разума на руне. За каждые три жертвы тёмному божеству, одно тело может быть исцелено, а их разум оживлён. исцеление живых существ требует двух культистов возле руны"
 	invocation = "Pasnar val'keriam usinar. Savrae ines amutan. Yam'toth remium il'tarat!" //Depends on the name of the user - see below
 	icon_state = "revive"
 	var/static/sacrifices_used = -SOULS_TO_REVIVE // Cultists get one "free" revive
@@ -590,13 +590,13 @@ structure_check() searches for nearby cultist structures required for the invoca
 /obj/effect/rune/raise_dead/examine(mob/user)
 	. = ..()
 	if(iscultist(user) || user.stat == DEAD)
-		. += "<b>Sacrifices unrewarded:</b><span class='cultitalic'> [length(GLOB.sacrificed) - sacrifices_used]</span>"
-		. += "<b>Sacrifice cost per ressurection:</b><span class='cultitalic> [SOULS_TO_REVIVE]</span>"
+		. += "<b>Невознаграждённые жертвы:</b><span class='cultitalic'> [length(GLOB.sacrificed) - sacrifices_used]</span>"
+		. += "<b>Количество жертв на одно воскрешение:</b><span class='cultitalic> [SOULS_TO_REVIVE]</span>"
 
 /obj/effect/rune/raise_dead/proc/revive_alive(mob/living/target)
-	target.visible_message("<span class='warning'>Dark magic begins to surround [target], regenerating their body.</span>")
+	target.visible_message("<span class='warning'>Тёмная магия окружает [target], восстанавливая их тело.</span>")
 	if(!do_after(target, 10 SECONDS, FALSE, target, allow_moving = FALSE, progress = TRUE))
-		target.visible_message("<span class='warning'>Dark magic silently disappears.</span>")
+		target.visible_message("<span class='warning'>Тёмная магия бесшумно расстворяется.</span>")
 		return FALSE
 	target.revive()
 	return TRUE
@@ -618,7 +618,7 @@ structure_check() searches for nearby cultist structures required for the invoca
 	var/diff = length(GLOB.sacrificed) - SOULS_TO_REVIVE - sacrifices_used
 	var/revived_from_dead = FALSE
 	if(diff < 0)
-		to_chat(user, "<span class='cult'>Your cult must carry out [abs(diff)] more sacrifice\s before it can revive another cultist!</span>")
+		to_chat(user, "<span class='cult'>Ваш культ должен принести ещё [abs(diff)] [diff = 1 : "у","ы"] перед воскрешением очередного культиста!</span>")
 		fail_invoke()
 		return
 	for(var/mob/living/M in T.contents)
@@ -626,12 +626,12 @@ structure_check() searches for nearby cultist structures required for the invoca
 			continue
 		potential_revive_mobs |= M
 	if(!length(potential_revive_mobs))
-		to_chat(user, "<span class='cultitalic'>There are no cultists on the rune!</span>")
+		to_chat(user, "<span class='cultitalic'>На руне нет культистов!</span>")
 		log_game("Raise Dead rune failed - no cultists to revive")
 		fail_invoke()
 		return
 	if(length(potential_revive_mobs) > 1)
-		mob_to_revive = input(user, "Choose a cultist to revive.", "Cultist to Revive") as null|anything in potential_revive_mobs
+		mob_to_revive = input(user, "Выберите культиста для оживления.", "Оживление Культиста") as null|anything in potential_revive_mobs
 	else // If there's only one, no need for a menu
 		mob_to_revive = potential_revive_mobs[1]
 	if(!validness_checks(mob_to_revive, user))
@@ -639,7 +639,7 @@ structure_check() searches for nearby cultist structures required for the invoca
 		return
 
 	if(mob_to_revive.stat != DEAD && length(invokers) < 2)
-		to_chat(user, "<span class='cultitalic'>You need at least two cultists to heal cultist!</span>")
+		to_chat(user, "<span class='cultitalic'>Вам нужно 2 культиста для исцеления живого культиста!</span>")
 		log_game("Raise Dead rune failed - not enough cultists to heal alive")
 		fail_invoke()
 		return
@@ -658,11 +658,11 @@ structure_check() searches for nearby cultist structures required for the invoca
 
 	if(!mob_to_revive.get_ghost() && (!mob_to_revive.client || mob_to_revive.client.is_afk()))
 		set waitfor = FALSE
-		to_chat(user, "<span class='cult'>[mob_to_revive] was revived, but their mind is lost! Seeking a lost soul to replace it.</span>")
-		var/list/mob/dead/observer/candidates = SSghost_spawns.poll_candidates("Would you like to play as a revived Cultist?", ROLE_CULTIST, TRUE, poll_time = 20 SECONDS, source = /obj/item/melee/cultblade/dagger)
+		to_chat(user, "<span class='cult'>[mob_to_revive] был возрождён, но их разум был утерян! Ищем потерянные души для замены.</span>")
+		var/list/mob/dead/observer/candidates = SSghost_spawns.poll_candidates("Хотите сыграть за возрождённого культиста?", ROLE_CULTIST, TRUE, poll_time = 20 SECONDS, source = /obj/item/melee/cultblade/dagger)
 		if(length(candidates) && !QDELETED(mob_to_revive))
 			var/mob/dead/observer/C = pick(candidates)
-			to_chat(mob_to_revive, "<span class='biggerdanger'>Your physical form has been taken over by another soul due to your inactivity! Ahelp if you wish to regain your form.</span>")
+			to_chat(mob_to_revive, "<span class='biggerdanger'>Вашу физическую форму занял другой игрок из-за вашей неактивности! Пишите админхелп для восстановления своей формы.</span>")
 			message_admins("[key_name_admin(C)] has taken control of ([key_name_admin(mob_to_revive)]) to replace an AFK player.")
 			mob_to_revive.ghostize(FALSE)
 			mob_to_revive.key = C.key
@@ -671,14 +671,14 @@ structure_check() searches for nearby cultist structures required for the invoca
 			fail_invoke()
 			return
 	if(!revived_from_dead)
-		mob_to_revive.visible_message("<span class='warning'>[mob_to_revive] draws in a huge breath, red light shining from [mob_to_revive.p_their()] eyes.</span>", \
-								"<span class='cultlarge'>All your injuries are now gone!</span>")
+		mob_to_revive.visible_message("<span class='warning'>[mob_to_revive] делает глубокий вдох, из глаз [mob_to_revive.p_their()] исходит красный свет.</span>", \
+								"<span class='cultlarge'>Все ваши ранения больше не проблема!</span>")
 		rune_in_use = FALSE
 		return
 	SEND_SOUND(mob_to_revive, sound('sound/ambience/antag/bloodcult.ogg'))
-	to_chat(mob_to_revive, "<span class='cultlarge'>\"PASNAR SAVRAE YAM'TOTH. Arise.\"</span>")
-	mob_to_revive.visible_message("<span class='warning'>[mob_to_revive] draws in a huge breath, red light shining from [mob_to_revive.p_their()] eyes.</span>", \
-								"<span class='cultlarge'>You awaken suddenly from the void. You're alive!</span>")
+	to_chat(mob_to_revive, "<span class='cultlarge'>\"PASNAR SAVRAE YAM'TOTH. Восстань.\"</span>")
+	mob_to_revive.visible_message("<span class='warning'>[mob_to_revive] делает глубокий вдох, из глаз [mob_to_revive.p_their()] исходит красный свет.</span>", \
+								"<span class='cultlarge'>Вы просыпаетесь из бездны. Вы живы!</span>")
 	rune_in_use = FALSE
 
 /obj/effect/rune/raise_dead/proc/validness_checks(mob/living/target_mob, mob/living/user)
@@ -692,7 +692,7 @@ structure_check() searches for nearby cultist structures required for the invoca
 		return FALSE
 	var/turf/T = get_turf(src)
 	if(target_mob.loc != T)
-		to_chat(user, "<span class='cultitalic'>The cultist to revive has been moved!</span>")
+		to_chat(user, "<span class='cultitalic'>Культист для оживления был перемещён!</span>")
 		log_game("Raise Dead rune failed - revival target moved")
 		return FALSE
 	return TRUE

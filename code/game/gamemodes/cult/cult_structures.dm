@@ -10,8 +10,8 @@
 
 //Noncult As we may have this on maps
 /obj/structure/cult/altar
-	name = "Altar"
-	desc = "A bloodstained altar."
+	name = "Алтарь"
+	desc = "Окровавленный алтарь."
 	icon_state = "altar"
 
 /obj/structure/cult/forge
@@ -22,8 +22,8 @@
 	light_color = LIGHT_COLOR_LAVA
 
 /obj/structure/cult/pylon
-	name = "Pylon"
-	desc = "A floating crystal that hums with an unearthly energy."
+	name = "Пилон"
+	desc = "Левитирующий кристалл, источающий внеземную энергию."
 	icon_state = "pylon"
 	light_range = 1.5
 	light_color = LIGHT_COLOR_RED
@@ -32,7 +32,7 @@
 /obj/structure/cult/functional
 	max_integrity = 100
 	var/cooldowntime = 0
-	var/death_message = "<span class='danger'>The structure falls apart.</span>" //The message shown when the structure is destroyed
+	var/death_message = "<span class='danger'>Структура разваливается.</span>" //The message shown when the structure is destroyed
 	var/death_sound = 'sound/items/bikehorn.ogg'
 	var/heathen_message = "You're a huge nerd, go away. Also, a coder forgot to put a message here."
 	var/selection_title = "Oops"
@@ -49,15 +49,15 @@
 /obj/structure/cult/functional/examine(mob/user)
 	. = ..()
 	if(iscultist(user) && cooldowntime > world.time)
-		. += "<span class='cultitalic'>The magic in [src] is weak, it will be ready to use again in [get_ETA()].</span>"
-	. += "<span class='notice'>[src] is [anchored ? "":"not "]secured to the floor.</span>"
+		. += "<span class='cultitalic'>Магия в [src] слаба, им можно будет воспользоваться снова [get_ETA()].</span>"
+	. += "<span class='notice'>[src] [anchored ? "":"не "]прикреплено к полу.</span>"
 
 /obj/structure/cult/functional/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/melee/cultblade/dagger) && iscultist(user))
 		if(user.holy_check())
 			return
 		anchored = !anchored
-		to_chat(user, "<span class='notice'>You [anchored ? "":"un"]secure [src] [anchored ? "to":"from"] the floor.</span>")
+		to_chat(user, "<span class='notice'>Вы [anchored ? "при":"от"]крепляете [src] [anchored ? "к":"от"] пол[anchored ? "у":"а"] .</span>")
 		if(!anchored)
 			icon_state = SSticker.cultdat?.get_icon("[initial(icon_state)]_off")
 		else
@@ -70,16 +70,16 @@
 		to_chat(user, "[heathen_message]")
 		return
 	if(invisibility)
-		to_chat(user, "<span class='cultitalic'>The magic in [src] is being channeled into Redspace, reveal the structure first!</span>")
+		to_chat(user, "<span class='cultitalic'>Магия в [src] направляется в Рэдспейс, сначала проявите структуру!</span>")
 		return
 	if(HAS_TRAIT(user, TRAIT_HULK))
-		to_chat(user, "<span class='danger'>You cannot seem to manipulate this structure with your bulky hands!</span>")
+		to_chat(user, "<span class='danger'>Невозможна манипуляция с этим при помощи рук Халка!</span>")
 		return
 	if(!anchored)
-		to_chat(user, "<span class='cultitalic'>You need to anchor [src] to the floor with a dagger first.</span>")
+		to_chat(user, "<span class='cultitalic'>Сначала прикрепите [src] к полу с помощью кинжала.</span>")
 		return
 	if(cooldowntime > world.time)
-		to_chat(user, "<span class='cultitalic'>The magic in [src] is weak, it will be ready to use again in [get_ETA()].</span>")
+		to_chat(user, "<span class='cultitalic'>Магия в [src] слаба, им можно будет воспользоваться через [get_ETA()].</span>")
 		return
 
 
@@ -110,10 +110,10 @@
 	var/seconds = round(time * 0.1, 1)
 	var/message
 	if(minutes)
-		message = "[minutes] minute\s"
+		message = "[minutes] минут(-ы)"
 		seconds = seconds - (60 * minutes)
 	if(seconds) // To avoid '2 minutes, 0 seconds.'
-		message += "[minutes ? ", " : ""][seconds] second\s"
+		message += "[minutes ? ", " : ""][seconds] секунд"
 	return message
 
 /obj/structure/cult/functional/cult_conceal()
@@ -128,25 +128,25 @@
 /obj/structure/cult/functional/cult_reveal()
 	density = initial(density)
 	invisibility = 0
-	visible_message("<span class='danger'>[src] suddenly appears!</span>")
+	visible_message("<span class='danger'>[src] неожиданно появляется!</span>")
 	alpha = initial(alpha)
 	light_range = initial(light_range)
 	light_power = initial(light_power)
 	update_light()
 
 /obj/structure/cult/functional/altar
-	name = "altar"
-	desc = "A bloodstained altar dedicated to a cult."
+	name = "Алтарь"
+	desc = "Окровавленный алтарь, предназначенный культу."
 	icon_state = "altar"
 	max_integrity = 150 //Sturdy
-	death_message = "<span class='danger'>The altar breaks into splinters, releasing a cascade of spirits into the air!</span>"
+	death_message = "<span class='danger'>Алтарь ломается на трещины, выпуская каскад душ!</span>"
 	death_sound = 'sound/effects/altar_break.ogg'
 	heathen_message = "<span class='warning'>There is a foreboding aura to the altar and you want nothing to do with it.</span>"
 	selection_prompt = "You study the rituals on the altar..."
 	selection_title = "Altar"
-	creation_message = "<span class='cultitalic'>You kneel before the altar and your faith is rewarded with a %ITEM%!</span>"
-	choosable_items = list("Eldritch Whetstone" = /obj/item/whetstone/cult, "Flask of Unholy Water" = /obj/item/reagent_containers/food/drinks/bottle/unholywater,
-							"Construct Shell" = /obj/structure/constructshell)
+	creation_message = "<span class='cultitalic'>Вы склоняетесь перед алтарём и ваша вера вознаграждается %ITEM%!</span>"
+	choosable_items = list("Eldritch Whetstone" = /obj/item/whetstone/cult, "Фляга с нечестивой водой" = /obj/item/reagent_containers/food/drinks/bottle/unholywater,
+							"Оболочка конструкта" = /obj/structure/constructshell)
 
 /obj/structure/cult/functional/altar/Initialize(mapload)
 	. = ..()
@@ -160,13 +160,13 @@
 	light_range = 2
 	light_color = LIGHT_COLOR_LAVA
 	max_integrity = 300 //Made of metal
-	death_message = "<span class='danger'>The forge falls apart, its lava cooling and winking away!</span>"
+	death_message = "<span class='danger'>Печь разваливается на части, её лава остывает и исчезает!</span>"
 	death_sound = 'sound/effects/forge_destroy.ogg'
-	heathen_message = "<span class='warning'>Your hand feels like it's melting off as you try to touch the forge.</span>"
+	heathen_message = "<span class='warning'>Вы чувствуете, что ваша рука как будто плавится при попытке прикоснуться к ней печи.</span>"
 	selection_prompt = "You study the schematics etched on the forge..."
 	selection_title = "Forge"
-	creation_message = "<span class='cultitalic'>You work the forge as dark knowledge guides your hands, creating a %ITEM%!</span>"
-	choosable_items = list("Shielded Robe" = /obj/item/clothing/suit/hooded/cultrobes/cult_shield, "Flagellant's Robe" = /obj/item/clothing/suit/hooded/cultrobes/flagellant_robe)
+	creation_message = "<span class='cultitalic'>Вы работате в печи, направляемые тёмными знаниями, и создаёте %ITEM%!</span>"
+	choosable_items = list("Защищённая роба" = /obj/item/clothing/suit/hooded/cultrobes/cult_shield, "Роба Флагелланта" = /obj/item/clothing/suit/hooded/cultrobes/flagellant_robe)
 
 /obj/structure/cult/functional/forge/get_choosable_items()
 	. = ..()
@@ -186,19 +186,19 @@
 		if(!iscarbon(G.affecting))
 			return FALSE
 		if(G.affecting == LAVA_PROOF)
-			to_chat(user, "<span class='warning'>[G.affecting] is immune to lava!</span>")
+			to_chat(user, "<span class='warning'>[G.affecting] имуннен к лаве!</span>")
 			return FALSE
 		if(G.affecting.stat == DEAD)
-			to_chat(user, "<span class='warning'>[G.affecting] is dead!</span>")
+			to_chat(user, "<span class='warning'>[G.affecting] мёртв!</span>")
 			return FALSE
 		var/mob/living/carbon/human/C = G.affecting
 		var/obj/item/organ/external/head/head = C.get_organ("head")
 		if(!head)
-			to_chat(user, "<span class='warning'>[C] has no head!</span>")
+			to_chat(user, "<span class='warning'>У [C] нет головы!</span>")
 			return FALSE
 
-		C.visible_message("<span class='danger'>[user] dunks [C]'s face into [src]'s lava!</span>",
-						"<span class='userdanger'>[user] dunks your face into [src]'s lava!</span>")
+		C.visible_message("<span class='danger'>[user] погружает лицо [C] в лаву из [src]!</span>",
+						"<span class='userdanger'>[user] погружает ваше лицо в лаву из [src]!</span>")
 		C.emote("scream")
 		C.apply_damage(30, BURN, "head") // 30 fire damage because it's FUCKING LAVA
 		head.disfigure() // Your face is unrecognizable because it's FUCKING LAVA
@@ -219,13 +219,13 @@ GLOBAL_LIST_INIT(blacklisted_pylon_turfs, typecacheof(list(
 	)))
 
 /obj/structure/cult/functional/pylon
-	name = "pylon"
-	desc = "A floating crystal that slowly heals those faithful to a cult."
+	name = "Пилон"
+	desc = "Левитирующий кристалл, медленно исцеляющих уверовавших в культ."
 	icon_state = "pylon"
 	light_range = 1.5
 	light_color = LIGHT_COLOR_RED
 	max_integrity = 50 //Very fragile
-	death_message = "<span class='danger'>The pylon's crystal vibrates and glows fiercely before violently shattering!</span>"
+	death_message = "<span class='danger'>Кристалл пилона вибрирует и яростно светится перед тем, как разлететься на куски!</span>"
 	death_sound = 'sound/effects/pylon_shatter.ogg'
 
 	var/heal_delay = 30
@@ -305,16 +305,16 @@ GLOBAL_LIST_INIT(blacklisted_pylon_turfs, typecacheof(list(
 				last_corrupt = world.time + corrupt_delay * 2
 
 /obj/structure/cult/functional/archives
-	name = "archives"
-	desc = "A desk covered in arcane manuscripts and tomes in unknown languages. Looking at the text makes your skin crawl."
+	name = "Архивы"
+	desc = "Стол с манускриптами и томами на неизвестном языке. От взгляда на текст мурашки бегут по коже."
 	icon_state = "archives"
 	light_range = 1.5
 	light_color = LIGHT_COLOR_FIRE
 	max_integrity = 125 //Slightly sturdy
 	death_message = "<span class='danger'>The desk breaks apart, its books falling to the floor.</span>"
 	death_sound = 'sound/effects/wood_break.ogg'
-	heathen_message = "<span class='cultlarge'>What do you hope to seek?</span>"
-	selection_prompt = "You flip through the black pages of the archives..."
+	heathen_message = "<span class='cultlarge'>Что вы надеетесь найти?</span>"
+	selection_prompt = "Вы пролистывете черные страницы архивов..."
 	selection_title = "Archives"
 	creation_message = "<span class='cultitalic'>You invoke the dark magic of the tomes creating a %ITEM%!</span>"
 	choosable_items = list("Shuttle Curse" = /obj/item/shuttle_curse, "Zealot's Blindfold" = /obj/item/clothing/glasses/hud/health/night/cultblind,
