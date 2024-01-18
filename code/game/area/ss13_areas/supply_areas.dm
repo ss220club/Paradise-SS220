@@ -23,7 +23,7 @@
 	sound_environment = SOUND_AREA_LARGE_ENCLOSED
 
 /area/station/supply/qm
-	name = "\improper Офис Квартермейстера"
+	name = "\improper Офис Квартирмейстера"
 	icon_state = "qm"
 
 /area/station/supply/miningdock
@@ -35,5 +35,5 @@
 	icon_state = "green"
 
 /area/station/supply/mechbay
-	name = "\improper Мех Отсек Шахты"
+	name = "\improper Мех. Отсек Шахты"
 	icon_state = "yellow"

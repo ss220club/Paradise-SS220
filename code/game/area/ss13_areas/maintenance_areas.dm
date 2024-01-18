@@ -94,7 +94,7 @@
 	icon_state = "atmosmaint"
 
 /area/station/maintenance/incinerator
-	name = "\improper Мусоросжигатель
+	name = "\improper Мусоросжигатель"
 	icon_state = "incin"
 
 /area/station/maintenance/turbine

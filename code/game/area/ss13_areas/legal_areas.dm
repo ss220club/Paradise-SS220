@@ -4,7 +4,7 @@
 	icon_state = "courtroom"
 
 /area/station/legal/lawoffice
-	name = "\improper Офис Юриста"
+	name = "\improper Юридический Отдел"
 	icon_state = "law"
 	sound_environment = SOUND_AREA_SMALL_SOFTFLOOR
 

@@ -13,7 +13,7 @@
 	sound_environment = SOUND_AREA_SMALL_ENCLOSED
 
 /area/station/turret_protected/ai
-	name = "\improper Ядро ИИ"
+	name = "\improper Зона Содержания ИИ"
 	icon_state = "ai_chamber"
 	ambientsounds = list('sound/ambience/ambitech.ogg', 'sound/ambience/ambitech2.ogg', 'sound/ambience/ambiatmos.ogg', 'sound/ambience/ambiatmos2.ogg')
 

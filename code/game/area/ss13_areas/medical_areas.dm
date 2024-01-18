@@ -19,11 +19,11 @@
 	icon_state = "medbay"
 
 /area/station/medical/storage
-	name = "Хранилище Медбея"
+	name = "Хранилище Медицинского Отдела"
 	icon_state = "medbaystorage"
 
 /area/station/medical/reception
-	name = "\improper Ресепшен Медбея"
+	name = "\improper Ресепшен Медицинского Отдела"
 	icon_state = "medbaylobby"
 
 /area/station/medical/psych
@@ -31,7 +31,7 @@
 	icon_state = "medbaypsych"
 
 /area/station/medical/break_room
-	name = "\improper Комната Отдыха Медбея"
+	name = "\improper Комната Отдыха Медицинского Отдела"
 	icon_state = "medbaybreak"
 
 /area/station/medical/patients_rooms
@@ -40,7 +40,7 @@
 	sound_environment = SOUND_AREA_SMALL_SOFTFLOOR
 
 /area/station/medical/ward
-	name = "\improper Комната ожидания Медбея"
+	name = "\improper Комната ожидания Медицинского Отдела"
 	icon_state = "patientsward"
 
 /area/station/medical/isolation/a
@@ -60,7 +60,7 @@
 	icon_state = "medbayisoaccess"
 
 /area/station/medical/coldroom
-	name = "Холодильник Медбея"
+	name = "Морозильная Камера Медицинского Отдела"
 	icon_state = "coldroom"
 
 
@@ -108,7 +108,7 @@
 	icon_state = "cryo"
 
 /area/station/medical/exam_room
-	name = "\improper Комната Осмотра Медбея"
+	name = "\improper Комната Осмотра Медицинского Отдела"
 	icon_state = "exam_room"
 
 /area/station/medical/cloning

@@ -8,7 +8,7 @@
 	sound_environment = SOUND_AREA_STANDARD_STATION
 
 /area/station/command/meeting_room
-	name = "\improper Конференц Зал Командования"
+	name = "\improper Конференц-Зал Командования"
 	icon_state = "meeting"
 	sound_environment = SOUND_AREA_MEDIUM_SOFTFLOOR
 
@@ -70,7 +70,7 @@
 	sound_environment = SOUND_AREA_STANDARD_STATION
 
 /area/station/command/customs
-	name = "Таможня"
+	name = "Контрольно-Пропускной Пункт Командования"
 	icon_state = "checkpoint1"
 
 /area/station/command/customs2

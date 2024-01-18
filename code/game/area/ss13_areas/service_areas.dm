@@ -56,7 +56,7 @@
 	icon_state = "barber"
 
 /area/station/service/janitor
-	name = "\improper Офис Уборщика"
+	name = "\improper Каморка Уборщика"
 	icon_state = "janitor"
 	sound_environment = SOUND_AREA_SMALL_ENCLOSED
 

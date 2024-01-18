@@ -26,7 +26,7 @@
 	icon_state = "engine_control"
 
 /area/station/engineering/break_room
-	name = "\improper Инженерное Фойе"
+	name = "\improper Фойе Инженерного Отдела"
 	icon_state = "engibreak"
 	sound_environment = SOUND_AREA_SMALL_ENCLOSED
 
@@ -62,7 +62,7 @@
 	icon_state = "engine"
 
 /area/station/engineering/engine/supermatter
-	name = "\improper Двигатель Супер Материи"
+	name = "\improper Двигатель Суперматерии"
 	sound_environment = SOUND_AREA_SMALL_ENCLOSED
 
 //Solars

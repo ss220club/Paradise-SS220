@@ -15,7 +15,7 @@
 // Experimentor
 
 /area/station/science/explab
-	name = "\improper Лаболатория E.X.P.E.R.I-MENTOR"
+	name = "\improper Лаборатория E.X.P.E.R.I-MENTOR"
 	icon_state = "scilab"
 
 /area/station/science/explab/chamber
@@ -31,7 +31,7 @@
 	icon_state = "scibreak"
 
 /area/station/science/genetics
-	name = "\improper Лаболатория Генетики"
+	name = "\improper Лаборатория Генетики"
 	icon_state = "genetics"
 
 
@@ -51,7 +51,7 @@
 	icon_state = "scilab"
 
 /area/station/science/xenobiology
-	name = "\improper Лаболатория Ксенобиологии"
+	name = "\improper Лаборатория Ксенобиологии"
 	icon_state = "xenobio"
 	xenobiology_compatible = TRUE
 
@@ -93,5 +93,5 @@
 	icon_state = "server"
 
 /area/station/science/server/coldroom
-	name = "\improper Холодильник Серверной Комнаты"
+	name = "\improper Холодильная Камера Серверной"
 	icon_state = "servercold"

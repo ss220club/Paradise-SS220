@@ -8,69 +8,69 @@
 	sound_environment = SOUND_AREA_STANDARD_STATION
 
 /area/station/hallway/primary/fore
-	name = "\improper Основной Коридор"
+	name = "\improper Основной Северный Коридор"
 	icon_state = "hallF"
 
 /area/station/hallway/primary/fore/west
-	name = "\improper Основной Западный Коридор"
+	name = "\improper Северо-Западный Коридор"
 
 /area/station/hallway/primary/fore/east
-	name = "\improper Основной Восточный Коридор"
+	name = "\improper Северо-Восточный Коридор"
 
 /area/station/hallway/primary/fore/north
-	name = "\improper Основной Северный Коридор"
+	name = "\improper Северный Коридор"
 
 /area/station/hallway/primary/fore/south
-	name = "\improper Основной Восточный Коридор"
+	name = "\improper Северо-Южный Коридор"
 
 /area/station/hallway/primary/starboard
-	name = "\improper Основной Коридор Правого Борта"
+	name = "\improper Основной Восточный Коридор"
 	icon_state = "hallS"
 
 /area/station/hallway/primary/starboard/west
-	name = "\improper Starboard West Hallway"
+	name = "\improper Восточно-Западный Коридор"
 
 /area/station/hallway/primary/starboard/east
-	name = "\improper Starboard East Hallway"
+	name = "\improper Восточный Коридор"
 
 /area/station/hallway/primary/starboard/north
-	name = "\improper Starboard North Hallway"
+	name = "\improper Восточно-Северный Коридор"
 
 /area/station/hallway/primary/starboard/south
-	name = "\improper Starboard South Hallway"
+	name = "\improper Восточно-Южный Коридор"
 
 /area/station/hallway/primary/aft
-	name = "\improper Основной Коридор Кормы"
+	name = "\improper Основной Южный Коридор"
 	icon_state = "hallA"
 
 /area/station/hallway/primary/aft/west
-	name = "\improper Aft West Hallway"
+	name = "\improper Южно-Западный Коридор"
 
 /area/station/hallway/primary/aft/east
-	name = "\improper Aft East Hallway"
+	name = "\improper Южно-Восточный Коридор"
 
 /area/station/hallway/primary/aft/north
-	name = "\improper Aft North Hallway"
+	name = "\improper Южно-Северный Коридор"
 
 /area/station/hallway/primary/aft/south
-	name = "\improper Aft South Hallway"
+	name = "\improper Южный Коридор"
 
 
 /area/station/hallway/primary/port
-	name = "\improper Основной Коридор Порта"
+	name = "\improper Основной Западный Коридор"
 	icon_state = "hallP"
 
 /area/station/hallway/primary/port/west
-	name = "\improper Port West Hallway"
+	name = "\improper Западный Коридор"
 
 /area/station/hallway/primary/port/east
-	name = "\improper Port East Hallway"
+	name = "\improper Западно-Восточный Коридор"
 
 /area/station/hallway/primary/port/north
-	name = "\improper Port North Hallway"
+	name = "\improper Западно-Северный Коридор"
 
 /area/station/hallway/primary/port/south
-	name = "\improper Port South Hallway"
+	name = "\improper Западно-Южный Коридор"
 
 /area/station/hallway/primary/central
 	name = "\improper Центральный Основной Коридор"
@@ -197,7 +197,7 @@
 	icon_state = "arcade"
 
 /area/station/public/mrchangs
-	name = "\improper Офис Мистера Чанга"
+	name = "\improper Забегаловка Мистера Чанга"
 	icon_state = "changs"
 
 /area/station/public/clothing
