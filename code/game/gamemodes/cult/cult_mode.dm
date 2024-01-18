@@ -88,7 +88,7 @@
 		cult_mind.add_mind_objective(/datum/objective/servecult)
 
 		if(cult_mind.assigned_role == "Clown")
-			to_chat(cult_mind.current, "<span class='cultitalic'>A dark power has allowed you to overcome your clownish nature, letting you wield weapons without harming yourself.</span>")
+			to_chat(cult_mind.current, "<span class='cultitalic'>Тёмная сила позволила вам перебороть свою клоунскую натуру, позволяя вам пользоваться оружием без риска пораниться.</span>")
 			cult_mind.current.dna.SetSEState(GLOB.clumsyblock, FALSE)
 			singlemutcheck(cult_mind.current, GLOB.clumsyblock, MUTCHK_FORCED)
 			var/datum/action/innate/toggle_clumsy/A = new
@@ -97,7 +97,7 @@
 		add_cult_actions(cult_mind)
 		update_cult_icons_added(cult_mind)
 		cult_objs.study(cult_mind.current)
-		to_chat(cult_mind.current, "<span class='motd'>For more information, check the wiki page: ([GLOB.configuration.url.wiki_url]/index.php/Cultist)</span>")
+		to_chat(cult_mind.current, "<span class='motd'>Для большей информации, проконсультруйтесь со страницей на вики: ([GLOB.configuration.url.wiki_url]/index.php/Cultist)</span>")
 	cult_threshold_check()
 	addtimer(CALLBACK(src, PROC_REF(cult_threshold_check)), 2 MINUTES) // Check again in 2 minutes for latejoiners
 	..()
@@ -108,7 +108,7 @@
 	. += cult_give_item(/obj/item/melee/cultblade/dagger, H)
 	if(metal)
 		. += cult_give_item(/obj/item/stack/sheet/runed_metal/ten, H)
-	to_chat(H, "<span class='cult'>These will help you start the cult on this station. Use them well, and remember - you are not the only one.</span>")
+	to_chat(H, "<span class='cult'>Это вам поможет начать культ на станции. Используйте их с умом, и помните - вы не единственный.</span>")
 
 /datum/game_mode/proc/cult_give_item(obj/item/item_path, mob/living/carbon/human/H)
 	var/list/slots = list(
@@ -119,10 +119,10 @@
 	var/item_name = initial(item_path.name)
 	var/where = H.equip_in_one_of_slots(T, slots)
 	if(!where)
-		to_chat(H, "<span class='userdanger'>Unfortunately, you weren't able to get a [item_name]. This is very bad and you should adminhelp immediately (press F1).</span>")
+		to_chat(H, "<span class='userdanger'>К сожалению, вы не смогли получить [item_name]. Это очень плохо и вы должны немедленно написать админтикет (F1 -> adminhelp).</span>")
 		return FALSE
 	else
-		to_chat(H, "<span class='danger'>You have a [item_name] in your [where].</span>")
+		to_chat(H, "<span class='danger'>У вас есть [item_name] в вашем [where].</span>")
 		return TRUE
 
 
@@ -140,13 +140,13 @@
 		cult_mind.special_role = SPECIAL_ROLE_CULTIST
 
 		if(cult_mind.assigned_role == "Clown")
-			to_chat(cult_mind.current, "<span class='cultitalic'>A dark power has allowed you to overcome your clownish nature, letting you wield weapons without harming yourself.</span>")
+			to_chat(cult_mind.current, "<span class='cultitalic'>Тёмная сила позволила вам перебороть свою клоунскую натуру, позволяя вам пользоваться оружием без риска пораниться.</span>")
 			cult_mind.current.dna.SetSEState(GLOB.clumsyblock, FALSE)
 			singlemutcheck(cult_mind.current, GLOB.clumsyblock, MUTCHK_FORCED)
 			var/datum/action/innate/toggle_clumsy/A = new
 			A.Grant(cult_mind.current)
 		SEND_SOUND(cult_mind.current, sound('sound/ambience/antag/bloodcult.ogg'))
-		cult_mind.current.create_attack_log("<span class='danger'>Has been converted to the cult!</span>")
+		cult_mind.current.create_attack_log("<span class='danger'>Был обращён в культ!</span>")
 		cult_mind.current.create_log(CONVERSION_LOG, "Converted to the cult")
 
 		if(jobban_isbanned(cult_mind.current, ROLE_CULTIST) || jobban_isbanned(cult_mind.current, ROLE_SYNDICATE))
@@ -193,16 +193,16 @@
 				if(is_type_in_list(I, CULT_CLOTHING))
 					H.unEquip(I)
 		if(cult_mind.assigned_role == "Clown")
-			to_chat(H, "<span class='sans'>You are free of the dark power suppressing your clownish nature. You are clumsy again! Honk!</span>")
+			to_chat(H, "<span class='sans'>Вы свободны от тёмных сил, сдерживающие вашу клоунскую натуру. Вы снова неуклюжи! Хонк!</span>")
 			H.dna.SetSEState(GLOB.clumsyblock, TRUE)
 			singlemutcheck(H, GLOB.clumsyblock, MUTCHK_FORCED)
 			for(var/datum/action/innate/toggle_clumsy/A in H.actions)
 				A.Remove(H)
-		cult_mind.current.create_log(CONVERSION_LOG, "Deconverted from the cult")
+		cult_mind.current.create_log(CONVERSION_LOG, "Деконвертирован")
 	check_cult_size()
 	if(show_message)
 		cultist.visible_message("<span class='cult'>[cultist] looks like [cultist.p_they()] just reverted to [cultist.p_their()] old faith!</span>",
-		"<span class='userdanger'>An unfamiliar white light flashes through your mind, cleansing the taint of [SSticker.cultdat ? SSticker.cultdat.entity_title1 : "Nar'Sie"] and the memories of your time as their servant with it.</span>")
+		"<span class='userdanger'>Незнакомый белый свет светит в ваш разум, очищая его от следов [SSticker.cultdat ? SSticker.cultdat.entity_title1 : "Нар'Си"] и вместе с этим ваши воспоминания как её слуга.</span>")
 
 /datum/game_mode/proc/add_cult_immunity(mob/living/target)
 	ADD_TRAIT(target, TRAIT_CULT_IMMUNITY, CULT_TRAIT)
@@ -279,7 +279,7 @@
 		if(!ishuman(M.current))
 			continue
 		SEND_SOUND(M.current, sound('sound/hallucinations/i_see_you2.ogg'))
-		to_chat(M.current, "<span class='cultlarge'>The veil weakens as your cult grows, your eyes begin to glow...</span>")
+		to_chat(M.current, "<span class='cultlarge'>Завеса слабеет, культ растёт, ваши глаза начинают светиться...</span>")
 		addtimer(CALLBACK(src, PROC_REF(rise), M.current), 20 SECONDS)
 
 
@@ -289,9 +289,9 @@
 		if(!ishuman(M.current))
 			continue
 		SEND_SOUND(M.current, sound('sound/hallucinations/im_here1.ogg'))
-		to_chat(M.current, "<span class='cultlarge'>Your cult is ascendant and the red harvest approaches - you cannot hide your true nature for much longer!</span>")
+		to_chat(M.current, "<span class='cultlarge'>Ваш культ вознёсся и приближается красная жатва. Вы больше не можете скрывать вашу истинную сущность!</span>")
 		addtimer(CALLBACK(src, PROC_REF(ascend), M.current), 20 SECONDS)
-	GLOB.major_announcement.Announce("Picking up extradimensional activity related to the Cult of [SSticker.cultdat ? SSticker.cultdat.entity_name : "Nar'Sie"] from your station. Data suggests that about [ascend_percent * 100]% of the station has been converted. Security staff are authorized to use lethal force freely against cultists. Non-security staff should be prepared to defend themselves and their work areas from hostile cultists. Self defense permits non-security staff to use lethal force as a last resort, but non-security staff should be defending their work areas, not hunting down cultists. Dead crewmembers must be revived and deconverted once the situation is under control.", "Central Command Higher Dimensional Affairs", 'sound/AI/commandreport.ogg')
+	GLOB.major_announcement.Announce("Замечена паранормальная активность, связанная с культом [SSticker.cultdat ? SSticker.cultdat.entity_name : "Нар'Си"], с вашей станции. Данные предполагают, что как минимум [ascend_percent * 100] процентов экипажа станции была конвертирована. Служба безопасности имеет полное право использовать летальную силу против культистов. Остальной экипаж должен готовиться к обороне себя и своей рабочей зоны от враждебных культистов. Самооборона разрешает экипажу использовать летальную силу в качестве крайней меры, но он должен приоритизировать защиту своей рабочей зоны, а не охоту на культистов. Мёртвые члены экипажа должны быть возрождены и деконвертированы как только ситуация стабилизируется.", "Отдел ЦК по Делам Высших Измерений", 'sound/AI/commandreport.ogg')
 
 /datum/game_mode/proc/cult_fall()
 	cult_ascendant = FALSE
@@ -299,16 +299,16 @@
 		if(!ishuman(M.current))
 			continue
 		SEND_SOUND(M.current, sound('sound/hallucinations/wail.ogg'))
-		to_chat(M.current, "<span class='cultlarge'>The veil repairs itself, your power grows weaker...</span>")
+		to_chat(M.current, "<span class='cultlarge'>Завеса восстанавливается, мощь культа падает...</span>")
 		addtimer(CALLBACK(src, PROC_REF(descend), M.current), 20 SECONDS)
-	GLOB.major_announcement.Announce("Paranormal activity has returned to minimal levels. \
-									Security staff should minimize lethal force against cultists, using non-lethals where possible. \
-									All dead cultists should be taken to medbay or robotics for immediate revival and deconversion. \
-									Non-security staff may defend themselves, but should prioritize leaving any areas with cultists and reporting the cultists to security. \
-									Self defense permits non-security staff to use lethal force as a last resort. Hunting down cultists may make you liable for a manslaughter charge. \
-									Any access granted in response to the paranormal threat should be reset. \
-									Any and all security gear that was handed out should be returned. Finally, all weapons (including improvised) should be removed from the crew.",
-									"Central Command Higher Dimensional Affairs", 'sound/AI/commandreport.ogg')
+	GLOB.major_announcement.Announce("Паранормальная активность вернулась к минимальному уровню. \
+									Служба безопасности должна минимизировать летальную силу по культистам, по возможности используя нелетальную силу. \
+									Все мёртвые культисты должны быть доставлены в медицинский отдел или робототехнику для немедленного воскрешения и деконвертации. \
+									Остальной экипаж имеет право на самозащиту, но они должны приоритизровать покидание зон с культистами и докладам о них службе безопасности. \
+									Самооборона позволяет экипажу использовать летальную силу как крайнюю меру. За охоту на культистов служба безопасности может посадить вас за массовое убийство. \
+									Все доступы, полученные во время паранормальной активности, должны быть отозваны. \
+									Любое выданное снаряжение должно быть возвращено. И последнее, всё оружие (в том числе самодельное) должно быть изъято у экипажа.",
+									"Отдел ЦК по Делам Высших Измерений", 'sound/AI/commandreport.ogg')
 
 /datum/game_mode/proc/rise(cultist)
 	if(!ishuman(cultist) || !iscultist(cultist))
@@ -334,7 +334,7 @@
 	var/mob/living/carbon/human/H = cultist
 	new /obj/effect/temp_visual/cult/sparks(get_turf(H), H.dir)
 	H.update_halo_layer()
-	to_chat(cultist, "<span class='userdanger'>The halo above your head shatters!</span>")
+	to_chat(cultist, "<span class='userdanger'>Нимб над вашей головой рассыпается!</span>")
 	playsound(cultist, "shatter", 50, TRUE)
 
 /datum/game_mode/proc/update_cult_icons_added(datum/mind/cult_mind)
@@ -366,28 +366,28 @@
 /datum/game_mode/cult/declare_completion()
 	if(cult_objs.cult_status == NARSIE_HAS_RISEN)
 		SSticker.mode_result = "cult win - cult win"
-		to_chat(world, "<span class='danger'> <FONT size = 3>The cult wins! It has succeeded in summoning [SSticker.cultdat.entity_name]!</FONT></span>")
+		to_chat(world, "<span class='danger'> <FONT size = 3>Культ одерживает победу! Им удалось вызвать божество [SSticker.cultdat.entity_name]!</FONT></span>")
 	else if(cult_objs.cult_status == NARSIE_HAS_FALLEN)
 		SSticker.mode_result = "cult draw - narsie died, nobody wins"
-		to_chat(world, "<span class='danger'> <FONT size = 3>Nobody wins! [SSticker.cultdat.entity_name] was summoned, but banished!</FONT></span>")
+		to_chat(world, "<span class='danger'> <FONT size = 3>Никто не выигрывает! [SSticker.cultdat.entity_name] было вызвано, но испарилось!</FONT></span>")
 	else
 		SSticker.mode_result = "cult loss - staff stopped the cult"
-		to_chat(world, "<span class='warning'> <FONT size = 3>The staff managed to stop the cult!</FONT></span>")
+		to_chat(world, "<span class='warning'> <FONT size = 3>Экипажу удалось одолеть культ!</FONT></span>")
 
 	var/list/endtext = list()
-	endtext += "<br><b>The cultists' objectives were:</b>"
+	endtext += "<br><b>Цели культа были:</b>"
 	for(var/datum/objective/obj in cult_objs.presummon_objs)
 		endtext += "<br>[obj.explanation_text] - "
 		if(!obj.check_completion())
-			endtext += "<font color='red'>Fail.</font>"
+			endtext += "<font color='red'>Провал.</font>"
 		else
-			endtext += "<font color='green'><B>Success!</B></font>"
+			endtext += "<font color='green'><B>Успех!</B></font>"
 	if(cult_objs.cult_status >= NARSIE_NEEDS_SUMMONING)
 		endtext += "<br>[cult_objs.obj_summon.explanation_text] - "
 		if(!cult_objs.obj_summon.check_completion())
-			endtext+= "<font color='red'>Fail.</font>"
+			endtext+= "<font color='red'>Провал.</font>"
 		else
-			endtext += "<font color='green'><B>Success!</B></font>"
+			endtext += "<font color='green'><B>Успех!</B></font>"
 
 	to_chat(world, endtext.Join(""))
 	..()
