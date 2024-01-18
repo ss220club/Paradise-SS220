@@ -12,8 +12,8 @@
 	..()
 
 /obj/item/melee/cultblade
-	name = "cult blade"
-	desc = "An arcane weapon wielded by the followers of a cult."
+	name = "клинок культа"
+	desc = "Древнее оружие, используемое последователями культа."
 	icon = 'icons/obj/cult.dmi'
 	icon_state = "blood_blade"
 	item_state = "blood_blade"
@@ -22,7 +22,7 @@
 	throwforce = 10
 	sharp = TRUE
 	hitsound = 'sound/weapons/bladeslice.ogg'
-	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+	attack_verb = list("атаковал", "порезал", "ударил", "sliced", "порвал", "разорвал", "нарезад", "разрезал")
 	sprite_sheets_inhand = list("Skrell" = 'icons/mob/clothing/species/skrell/held.dmi') // To stop skrell stabbing themselves in the head
 
 /obj/item/melee/cultblade/New()
@@ -33,14 +33,14 @@
 
 /obj/item/melee/cultblade/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>This blade is a powerful weapon, capable of severing limbs easily. Nonbelievers are unable to use this weapon. Striking a nonbeliever after downing them with your cult magic will stun them completely.</span>"
+	. += "<span class='notice'>Этот клинок - грозное оружие, способное легко отрезать конечности. Неверующие не могут использовать это оружие. Удар по неверующему после использования на них магии культа полностью оглушит их.</span>"
 
 /obj/item/melee/cultblade/attack(mob/living/target, mob/living/carbon/human/user)
 	if(!iscultist(user))
 		user.Weaken(10 SECONDS)
 		user.unEquip(src, 1)
-		user.visible_message("<span class='warning'>A powerful force shoves [user] away from [target]!</span>",
-							"<span class='cultlarge'>\"You shouldn't play with sharp things. You'll poke someone's eye out.\"</span>")
+		user.visible_message("<span class='warning'>Мощная сила отталкивает [user] от [target]!</span>",
+							"<span class='cultlarge'>\"Тебе не стоит играть с острыми предметами. Ты выколешь кому-то глаза.\"</span>")
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
 			H.apply_damage(rand(force/2, force), BRUTE, pick("l_arm", "r_arm"))
@@ -56,18 +56,18 @@
 /obj/item/melee/cultblade/pickup(mob/living/user)
 	. = ..()
 	if(!iscultist(user))
-		to_chat(user, "<span class='cultlarge'>\"I wouldn't advise that.\"</span>")
-		to_chat(user, "<span class='warning'>An overwhelming sense of nausea overpowers you!</span>")
+		to_chat(user, "<span class='cultlarge'>\"Я бы не советовал так делать.\"</span>")
+		to_chat(user, "<span class='warning'>Непреодолимое чувство тошноты одолевает вас!</span>")
 		user.Confused(20 SECONDS)
 		user.Jitter(12 SECONDS)
 
 	if(HAS_TRAIT(user, TRAIT_HULK))
-		to_chat(user, "<span class='danger'>You can't seem to hold the blade properly!</span>")
+		to_chat(user, "<span class='danger'>Вы не можете понять, как правильно держать клинок!</span>")
 		user.unEquip(src, TRUE)
 
 /obj/item/restraints/legcuffs/bola/cult
-	name = "runed bola"
-	desc = "A strong bola, bound with dark magic. Throw it to trip and slow your victim. Will not hit fellow cultists."
+	name = "руническая бола"
+	desc = "Сильная бола, связанная тёмной магией. Бросьте её, чтобы запутать и замедлить жертву. Не попадёт по соратникам-культистам."
 	icon_state = "bola_cult"
 	item_state = "bola_cult"
 	breakouttime = 45
@@ -75,20 +75,20 @@
 
 /obj/item/restraints/legcuffs/bola/cult/throw_at(atom/target, range, speed, mob/thrower, spin, diagonals_first, datum/callback/callback)
 	if(thrower && !iscultist(thrower)) // A couple of objs actually proc throw_at, so we need to make sure that yes, we got tossed by a person before trying to send a message
-		thrower.visible_message("<span class='danger'>The bola glows, and boomarangs back at [thrower]!</span>")
+		thrower.visible_message("<span class='danger'>Бола светится, отскакивая обратно в [thrower]!</span>")
 		throw_impact(thrower)
 	. = ..()
 
 /obj/item/restraints/legcuffs/bola/cult/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
 	if(iscultist(hit_atom))
-		hit_atom.visible_message("<span class='warning'>[src] bounces off of [hit_atom], as if repelled by an unseen force!</span>")
+		hit_atom.visible_message("<span class='warning'>[src] отскакивает от [hit_atom], как если бы она отталкивалась невидимой силой!</span>")
 		return
 	. = ..()
 
 /obj/item/clothing/head/hooded/culthood
-	name = "cult hood"
+	name = "капюшон культа"
 	icon_state = "culthood"
-	desc = "A hood worn by the followers of a cult."
+	desc = "капюшон, носимый последователями культа."
 	flags = BLOCKHAIR
 	flags_inv = HIDEFACE
 	flags_cover = HEADCOVERSEYES
@@ -103,8 +103,8 @@
 
 
 /obj/item/clothing/suit/hooded/cultrobes
-	name = "cult robes"
-	desc = "A set of armored robes worn by the followers of a cult."
+	name = "роба культа"
+	desc = "набор бронированных роб, которые носят последователи культа."
 	icon_state = "cultrobes"
 	item_state = "cultrobes"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
@@ -129,10 +129,10 @@
 	sprite_sheets = list("Vox" = 'icons/mob/clothing/species/vox/head.dmi')
 
 /obj/item/clothing/suit/space/cult
-	name = "cult armor"
+	name = "Броня культа"
 	icon_state = "cult_armour"
 	item_state = "cult_armour"
-	desc = "A bulky suit of armor, bristling with spikes. It looks space proof."
+	desc = "Громоздкий доспех с шипами. Выглядит как защита от космоса."
 	w_class = WEIGHT_CLASS_NORMAL
 	allowed = list(/obj/item/tome, /obj/item/melee/cultblade, /obj/item/tank/internals)
 	slowdown = 1
@@ -141,7 +141,7 @@
 	sprite_sheets = list("Vox" = 'icons/mob/clothing/species/vox/suit.dmi')
 
 /obj/item/clothing/suit/hooded/cultrobes/cult_shield
-	name = "empowered cultist robes"
+	name = "усиленная роба культа"
 	desc = "An empowered garb which creates a powerful shield around the user."
 	icon_state = "cult_armour"
 	item_state = "cult_armour"
@@ -155,7 +155,7 @@
 	var/shield_on = "shield-cult"
 
 /obj/item/clothing/head/hooded/cult_hoodie
-	name = "empowered cultist hood"
+	name = "усиленный капюшон культа"
 	desc = "An empowered garb which creates a powerful shield around the user."
 	icon_state = "cult_hoodalt"
 	armor = list(MELEE = 35, BULLET = 20, LASER = 35, ENERGY = 10, BOMB = 15, RAD = 0, FIRE = 5, ACID = 5)
@@ -168,15 +168,15 @@
 /obj/item/clothing/suit/hooded/cultrobes/cult_shield/equipped(mob/living/user, slot)
 	..()
 	if(!iscultist(user)) // Todo: Make this only happen when actually equipped to the correct slot. (For all cult items)
-		to_chat(user, "<span class='cultlarge'>\"I wouldn't advise that.\"</span>")
-		to_chat(user, "<span class='warning'>An overwhelming sense of nausea overpowers you!</span>")
+		to_chat(user, "<span class='cultlarge'>\"Я бы не советовал так делать.\"</span>")
+		to_chat(user, "<span class='warning'>Непреодолимое чувство тошноты одолевает вас!</span>")
 		user.unEquip(src, 1)
 		user.Confused(20 SECONDS)
 		user.Weaken(10 SECONDS)
 
 /obj/item/clothing/suit/hooded/cultrobes/cult_shield/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
 	if(current_charges && !owner.holy_check())
-		owner.visible_message("<span class='danger'>[attack_text] is deflected in a burst of blood-red sparks!</span>")
+		owner.visible_message("<span class='danger'>[attack_text] отражён с всплеском кроваво-красных искр!</span>")
 		current_charges--
 		playsound(loc, "sparks", 100, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 		new /obj/effect/temp_visual/cult/sparks(get_turf(owner))
@@ -185,7 +185,7 @@
 			if(P.shield_buster)
 				current_charges = 0 //Change it to remove 3 charges if it ever has its max shield limit increased above 3.
 		if(!current_charges)
-			owner.visible_message("<span class='danger'>The runed shield around [owner] suddenly disappears!</span>")
+			owner.visible_message("<span class='danger'>Рунический щит вокруг [owner] внезапно исчезает!</span>")
 			shield_state = "broken"
 			owner.update_inv_wear_suit()
 		return TRUE
