@@ -223,9 +223,10 @@
 						if(can_use_species(user, _species))
 							new_species += _species
 
-					active_character.species = tgui_input_list(user, "Please select a species", "Character Generation", sortList(new_species))
-					if(!active_character.species)
+					var/new_active_character_species = tgui_input_list(user, "Please select a species", "Character Generation", sortList(new_species))
+					if(!new_active_character_species)
 						return
+					active_character.species = new_active_character_species
 					var/datum/species/NS = GLOB.all_species[active_character.species]
 					if(!istype(NS)) //The species was invalid. Notify the user and fail out.
 						active_character.species = prev_species
@@ -311,9 +312,10 @@
 						if(!(lang.flags & RESTRICTED))
 							new_languages += lang.name
 
-					active_character.language = tgui_input_list(user, "Please select a secondary language", "Character Generation", sortList(new_languages))
-					if(!active_character.language)
+					var/new_active_character_language = tgui_input_list(user, "Please select a secondary language", "Character Generation", sortList(new_languages))
+					if(!new_active_character_language)
 						return
+					active_character.language = new_active_character_language
 
 				if("autohiss_mode")
 					if(S.autohiss_basic_map)
@@ -927,7 +929,7 @@
 				if("hear_adminhelps")
 					sound ^= SOUND_ADMINHELP
 				if("ui")
-					var/new_UI_style = tgui_input_list(user, "Choose your UI style", "UI style", list("Midnight", "Plasmafire", "Retro", "Slimecore", "Operative", "White"))
+					var/new_UI_style = tgui_input_list(user, "Choose your UI style", "UI style", list("Midnight", "Plasmafire", "Retro", "Slimecore", "Operative", "White", "Vaporwave", "Detective", "Trasenknox", "Clockwork")) // SS220 EDIT "Vaporwave, Detective, Trasenknox, Clockwork"
 					if(!new_UI_style)
 						return
 					switch(new_UI_style)
@@ -943,16 +945,16 @@
 							UI_style = "Operative"
 						if("White")
 							UI_style = "White"
-						// SS220 ADDITION START
+						// SS220 ADDITION - START
 						if("Vaporwave")
 							UI_style = "Vaporwave"
 						if("Detective")
 							UI_style = "Detective"
-						if("Trasen")
-							UI_style = "Trasen"
+						if("Trasenknox")
+							UI_style = "Trasenknox"
 						if("Clockwork")
 							UI_style = "Clockwork"
-						// SS220 ADDITION END
+						// SS220 ADDITION - END
 
 					if(ishuman(usr)) //mid-round preference changes, for aesthetics
 						var/mob/living/carbon/human/H = usr
