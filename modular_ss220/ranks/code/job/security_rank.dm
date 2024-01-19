@@ -1,16 +1,20 @@
-
-/datum/job/officer/New()
+// Security
+/datum/job/officer/equip(mob/living/carbon/human/H, visualsOnly, announce)
 	. = ..()
-	backpack_contents |= /obj/item/clothing/accessory/rank/sec
+	var/accessory = new /obj/item/clothing/accessory/rank/sec(H)
+	H.equip_or_collect(accessory, SLOT_HUD_IN_BACKPACK)
 
-/datum/job/detective/New()
+/datum/job/detective/equip(mob/living/carbon/human/H, visualsOnly, announce)
 	. = ..()
-	backpack_contents |= /obj/item/clothing/accessory/rank/sec
+	var/accessory = new /obj/item/clothing/accessory/rank/sec/detective(H)
+	H.equip_or_collect(accessory, SLOT_HUD_IN_BACKPACK)
 
-/datum/job/warden/New()
+/datum/job/warden/equip(mob/living/carbon/human/H, visualsOnly, announce)
 	. = ..()
-	backpack_contents |= /obj/item/clothing/accessory/rank/sec/officer
+	var/accessory = new /obj/item/clothing/accessory/rank/sec/warden(H)
+	H.equip_or_collect(accessory, SLOT_HUD_IN_BACKPACK)
 
-/datum/job/hos/New()
+/datum/job/hos/equip(mob/living/carbon/human/H, visualsOnly, announce)
 	. = ..()
-	backpack_contents |= /obj/item/clothing/accessory/rank/sec/officer
+	var/accessory = new /obj/item/clothing/accessory/rank/sec/officer(H)
+	H.equip_or_collect(accessory, SLOT_HUD_IN_BACKPACK)

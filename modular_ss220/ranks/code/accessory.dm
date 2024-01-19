@@ -6,6 +6,7 @@
 	name = "голографические погоны"
 	desc = "Погоны выдаваемые при выслуге лет. Наденьте их и каждый увидит ваше звание."
 	icon = 'modular_ss220/ranks/icons/clothing/attachments.dmi'
+	icon_override = 'modular_ss220/ranks/icons/clothing/mob/attachments_overlay.dmi'
 	icon_state = "holobadge"
 	item_state = ""	//no inhands
 	item_color = "holobadge"
@@ -23,63 +24,77 @@
 	. = ..()
 	inv_overlay = image("icon" = 'modular_ss220/ranks/icons/clothing/mob/attachments_overlay.dmi', "icon_state" = "[item_color? "[item_color]" : "[icon_state]"]")
 	if(!length(rank_exp_order_dict) || !(length(exp_types)))
-		QDEL(src)
+		qdel(src)
+	if(ishuman(loc))
+		var/mob/living/carbon/human/H = loc
+		owner = H.mind
+		get_rank_name(H)
 
 
 // ============= Attach&Pick =============
-/obj/item/clothing/accessory/rank/pickup(mob/living/user)
+
+/obj/item/clothing/under/attach_accessory(obj/item/clothing/accessory/A, mob/user, unequip = FALSE)
+	if(!istype(A, /obj/item/clothing/accessory/rank))
+		return FALSE
+	var/obj/item/clothing/accessory/rank/attachment = A
+	if(!attachment.check_allowed_to_attach(user))
+		to_chat(user, span_warning("При приближении к цели, [src.name] деактивируется!"))
+		return FALSE
 	. = ..()
-	check_allowed_to_attach(user)
 
-/obj/item/clothing/accessory/on_attached(obj/item/clothing/under/S, mob/user as mob)
+/obj/item/clothing/accessory/rank/attack(mob/living/carbon/human/H, mob/living/user)
+	. = TRUE
+	if(!check_allowed_to_attach(H))
+		to_chat(user, span_warning("При приближении к [H], [src.name] деактивируется!"))
+		return FALSE
 	. = ..()
-	if(!check_allowed_to_attach(user))
-		return
 
-	saved_real_name = user.real_name
-	user.rename_character(M.real_name, get_rank_name(user))
-
-/obj/item/clothing/accessory/on_removed(mob/user)
-	. = ..()
-	user.rename_character(M.real_name, saved_real_name)
-
+// Clothing equip at human
 /obj/item/clothing/accessory/rank/attached_equip(mob/user)
-	. = ..()
-	if(!check_allowed_to_attach(user))
-		return
-
 	saved_real_name = user.real_name
-	user.rename_character(M.real_name, get_rank_name(user))
+	user.rename_character(user.real_name, get_rank_name(user))
 
-/obj/item/clothing/accessory/rank/attached_unequip(mob/user)
 	. = ..()
-	user.rename_character(M.real_name, saved_real_name)
+
+// Clothing drop from human
+/obj/item/clothing/accessory/rank/attached_unequip(mob/user)
+	user.rename_character(user.real_name, saved_real_name)
+
+	. = ..()
+
+/obj/item/clothing/accessory/rank/on_attached(obj/item/clothing/under/S, mob/user as mob)
+	attached_equip(user)
+	. = ..()
+
+/obj/item/clothing/accessory/rank/on_removed(mob/user)
+	attached_unequip(user)
+	. = ..()
 
 /obj/item/clothing/accessory/rank/proc/check_allowed_to_attach(mob/user)
-	if(user.mind)
+	if(!user.mind)
 		to_chat(user, span_warning("[src.name] слетели с [user], не зафиксировав в нём отклика разума."))
 		return FALSE
+
 	if(!owner)
 		owner = user.mind
-		to_chat(user, span_notice("[src.name] привязались к [user]."))
+		return TRUE
+
 	if(user.mind == owner)
 		return TRUE
-	to_chat(user, span_warning("[src.name] слетели!"))
-	user.Confused(2 SECONDS)
-	user.Jitter(1 SECONDS)
-	if(has_suit)
-		has_suit.detach_accessory(src, null)
-	return FALSE
 
+	return FALSE
 
 // ============= Initial Name =============
 /obj/item/clothing/accessory/rank/proc/get_rank_name(mob/user)
 	var/exp_sum = 0
+	var/datum/job/job_req
+	if(add_job_req_exp)
+		job_req = SSjobs.GetJob(user.job)
 	var/list/play_records = params2list(user.client.prefs.exp)
 	for(var/exp_type in exp_types)
 		if(!(exp_type in play_records))
 			continue
-		exp_sum += text2num(play_records[exp_type])
+		exp_sum += text2num(play_records[exp_type]) - (job_req ? job_req.exp_map[exp_type] : 0)
 
 	var/choosen_rank
 	for(var/rank in rank_exp_order_dict)
