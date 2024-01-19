@@ -243,7 +243,7 @@
 	icon_state = "emergencystorage"
 
 /area/station/public/storage/office
-	name = "Канцелярские Принадлежности"
+	name = "Комната Канцелярских Принадлежностей"
 	icon_state = "office_supplies"
 
 /area/station/public/recreation
