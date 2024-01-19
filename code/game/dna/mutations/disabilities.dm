@@ -14,8 +14,8 @@
 
 /datum/mutation/disability/hallucinate
 	name = "Hallucinate"
-	activation_messages = list("Your mind says 'Hello'.")
-	deactivation_messages = list("Sanity returns. Or does it?")
+	activation_messages = list("Ваш разум говорит 'Привет'.")
+	deactivation_messages = list("Рассудок возвращается. Или нет?")
 	instability = -GENE_INSTABILITY_MODERATE
 
 /datum/mutation/disability/hallucinate/New()
@@ -28,8 +28,8 @@
 
 /datum/mutation/disability/epilepsy
 	name = "Epilepsy"
-	activation_messages = list("You get a headache.")
-	deactivation_messages = list("Your headache is gone, at last.")
+	activation_messages = list("Вы чувствуете головную боль.")
+	deactivation_messages = list("Ваша головная боль наконец-то прошла.")
 	instability = -GENE_INSTABILITY_MODERATE
 
 /datum/mutation/disability/epilepsy/New()
@@ -38,14 +38,14 @@
 
 /datum/mutation/disability/epilepsy/on_life(mob/living/carbon/human/H)
 	if((prob(1) && !H.IsParalyzed()))
-		H.visible_message("<span class='danger'>[H] starts having a seizure!</span>","<span class='alert'>You have a seizure!</span>")
+		H.visible_message("<span class='danger'>[H] Начинается приступ!</span>","<span class='alert'>У вас начался приступ!</span>")
 		H.Paralyse(20 SECONDS)
 		H.Jitter(2000 SECONDS)
 
 /datum/mutation/disability/cough
 	name = "Coughing"
-	activation_messages = list("You start coughing.")
-	deactivation_messages = list("Your throat stops aching.")
+	activation_messages = list("Вы начинаете кашлять.")
+	deactivation_messages = list("Ваше горло перестаёт болеть.")
 	instability = -GENE_INSTABILITY_MINOR
 
 /datum/mutation/disability/cough/New()
@@ -59,8 +59,8 @@
 
 /datum/mutation/disability/clumsy
 	name = "Clumsiness"
-	activation_messages = list("You feel lightheaded.")
-	deactivation_messages = list("You regain some control of your movements")
+	activation_messages = list("Вы чувствуете головокружение.")
+	deactivation_messages = list("К вам возвращается контроль над вашими движениями.")
 	instability = -GENE_INSTABILITY_MINOR
 	traits_to_add = list(TRAIT_CLUMSY)
 
@@ -70,8 +70,8 @@
 
 /datum/mutation/disability/tourettes
 	name = "Tourettes"
-	activation_messages = list("You twitch.")
-	deactivation_messages = list("Your mouth tastes like soap.")
+	activation_messages = list("Вы дёргаетесь.")
+	deactivation_messages = list("Ваш рот на вкус как мыло.")
 
 /datum/mutation/disability/tourettes/New()
 	..()
@@ -93,8 +93,8 @@
 
 /datum/mutation/disability/nervousness
 	name = "Nervousness"
-	activation_messages = list("You feel nervous.")
-	deactivation_messages = list("You feel much calmer.")
+	activation_messages = list("Вы чувствуете нервозность.")
+	deactivation_messages = list("Вы чувствуете себя гораздно спокойнее.")
 
 /datum/mutation/disability/nervousness/New()
 	..()
@@ -106,8 +106,8 @@
 
 /datum/mutation/disability/blindness
 	name = "Blindness"
-	activation_messages = list("You can't seem to see anything.")
-	deactivation_messages = list("You can see now, in case you didn't notice...")
+	activation_messages = list("Вы ничего не можете увидеть.")
+	deactivation_messages = list("Теперь вы можете видеть, если вы этого не заметили...")
 	instability = -GENE_INSTABILITY_MAJOR
 	traits_to_add = list(TRAIT_BLIND)
 
@@ -126,8 +126,8 @@
 
 /datum/mutation/disability/colourblindness
 	name = "Colourblindness"
-	activation_messages = list("You feel a peculiar prickling in your eyes while your perception of colour changes.")
-	deactivation_messages = list("Your eyes tingle unsettlingly, though everything seems to become a lot more colourful.")
+	activation_messages = list("Вы чувствуете странное покалывание в глазах, в то время как ваше восприятие цвета меняется.")
+	deactivation_messages = list("Ваши глаза неприятно пощипывает, но все вокруг кажется более красочным.")
 	instability = -GENE_INSTABILITY_MODERATE
 	traits_to_add = list(TRAIT_COLORBLIND)
 
@@ -151,8 +151,8 @@
 
 /datum/mutation/disability/deaf
 	name = "Deafness"
-	activation_messages = list("It's kinda quiet.")
-	deactivation_messages = list("You can hear again!")
+	activation_messages = list("Здесь как-то тихо.")
+	deactivation_messages = list("Вы снова можете слышать!")
 	instability = -GENE_INSTABILITY_MAJOR
 	traits_to_add = list(TRAIT_DEAF)
 
@@ -162,8 +162,8 @@
 
 /datum/mutation/disability/nearsighted
 	name = "Nearsightedness"
-	activation_messages = list("Your eyes feel weird...")
-	deactivation_messages = list("You can see clearly now")
+	activation_messages = list("Ваши глаза чувствуют себя странно...")
+	deactivation_messages = list("Теперь вы можете четко видеть")
 	instability = -GENE_INSTABILITY_MODERATE
 	traits_to_add = list(TRAIT_NEARSIGHT)
 
@@ -181,9 +181,9 @@
 
 /datum/mutation/disability/lisp
 	name = "Lisp"
-	desc = "I wonder wath thith doeth."
-	activation_messages = list("Thomething doethn't feel right.")
-	deactivation_messages = list("You now feel able to pronounce consonants.")
+	desc = "Интересно, как это происходит?"
+	activation_messages = list("Что-то здесь не так.")
+	deactivation_messages = list("Теперь вы чувствуете в себе силы произносить согласные звуки.")
 
 /datum/mutation/disability/lisp/New()
 	..()
@@ -194,9 +194,9 @@
 
 /datum/mutation/disability/comic
 	name = "Comic"
-	desc = "This will only bring death and destruction."
-	activation_messages = list("<span class='sans'>Uh oh!</span>")
-	deactivation_messages = list("Well thank god that's over with.")
+	desc = "Это принесет только смерть и разрушение."
+	activation_messages = list("<span class='sans'>Упс!</span>")
+	deactivation_messages = list("Ну, слава богу, с этим покончено.")
 	traits_to_add = list(TRAIT_COMIC_SANS)
 
 /datum/mutation/disability/comic/New()
@@ -205,9 +205,9 @@
 
 /datum/mutation/disability/wingdings
 	name = "Alien Voice"
-	desc = "Garbles the subject's voice into an incomprehensible speech."
-	activation_messages = list("<span class='wingdings'>Your vocal cords feel alien.</span>")
-	deactivation_messages = list("Your vocal cords no longer feel alien.")
+	desc = "Загрязняет голос субъекта, превращая его в непонятную речь."
+	activation_messages = list("<span class='wingdings'>Ваши голосовые связки кажутся чужими</span>")
+	deactivation_messages = list("Ваши голосовые связки перестали казаться чужыми.")
 	instability = -GENE_INSTABILITY_MINOR
 	traits_to_add = list(TRAIT_WINGDINGS)
 
@@ -238,9 +238,9 @@
 // WAS: /datum/bioEffect/mute
 /datum/mutation/disability/mute
 	name = "Mute"
-	desc = "Completely shuts down the speech center of the subject's brain."
-	activation_messages = list("You feel unable to express yourself at all.")
-	deactivation_messages = list("You feel able to speak freely again.")
+	desc = "Полностью отключает речевой центр мозга испытуемого."
+	activation_messages = list("Вы чувствуете неспособность выражать свои мысли.")
+	deactivation_messages = list("Вы чувсствуете, что снова можете говорить.")
 	instability = -GENE_INSTABILITY_MODERATE
 	traits_to_add = list(TRAIT_MUTE)
 
@@ -257,9 +257,9 @@
 
 /datum/mutation/disability/radioactive
 	name = "Radioactive"
-	desc = "The subject suffers from constant radiation sickness and causes the same on nearby organics."
-	activation_messages = list("You feel a strange sickness permeate your whole body.")
-	deactivation_messages = list("You no longer feel awful and sick all over.")
+	desc = "Объект страдает от постоянной лучевой болезни и вызывает такую же у близлежащей органики."
+	activation_messages = list("Вы чувствуете, как все тело охватывает странное недомогание")
+	deactivation_messages = list("Вы больше не чувствуете себя ужасно больным.")
 	instability = -GENE_INSTABILITY_MAJOR
 
 /datum/mutation/disability/radioactive/New()
@@ -289,9 +289,9 @@
 // WAS: /datum/bioEffect/fat
 /datum/mutation/disability/fat
 	name = "Obesity"
-	desc = "Greatly slows the subject's metabolism, enabling greater buildup of lipid tissue."
-	activation_messages = list("You feel blubbery and lethargic!")
-	deactivation_messages = list("You feel fit!")
+	desc = "Сильно замедляет метаболизм, способствуя большему накоплению липидной ткани."
+	activation_messages = list("Вы ощущаете себя пузатым и вялым!")
+	deactivation_messages = list("Вы ощущаете себя в хорошей форме!")
 	instability = -GENE_INSTABILITY_MINOR
 	traits_to_add = list(TRAIT_SLOWDIGESTION)
 
@@ -302,9 +302,9 @@
 // WAS: /datum/bioEffect/chav
 /datum/mutation/disability/speech/chav
 	name = "Chav"
-	desc = "Forces the language center of the subject's brain to construct sentences in a more rudimentary manner."
-	activation_messages = list("Ye feel like a rite prat like, innit?")
-	deactivation_messages = list("You no longer feel like being rude and sassy.")
+	desc = "Заставляет языковой центр мозга испытуемого строить предложения в более примитивной манере."
+	activation_messages = list("Ты чувствуешь себя настоящим придурком, не так ли?")
+	deactivation_messages = list("Тебе больше не хочется быть грубым и нахальным.")
 	traits_to_add = list(TRAIT_CHAV)
 	//List of swappable words. Normal word first, chav word second.
 	var/static/list/chavlinks = list(
@@ -387,9 +387,9 @@
 // WAS: /datum/bioEffect/swedish
 /datum/mutation/disability/speech/swedish
 	name = "Swedish"
-	desc = "Forces the language center of the subject's brain to construct sentences in a vaguely norse manner."
-	activation_messages = list("You feel Swedish, however that works.")
-	deactivation_messages = list("The feeling of Swedishness passes.")
+	desc = "Заставляет языковой центр мозга субъекта формировать предложения своеобразным образом, напоминающим древнескандинавский стиль."
+	activation_messages = list("Вы чувствуете себя шведом, как бы это не звучало.")
+	deactivation_messages = list("Ощущение шведскости проходит.")
 
 /datum/mutation/disability/speech/swedish/New()
 	..()
@@ -415,9 +415,9 @@
 // WAS: /datum/bioEffect/unintelligable
 /datum/mutation/disability/unintelligable
 	name = "Unintelligable"
-	desc = "Heavily corrupts the part of the brain responsible for forming spoken sentences."
-	activation_messages = list("You can't seem to form any coherent thoughts!")
-	deactivation_messages = list("Your mind feels more clear.")
+	desc = "Сильно портит часть мозга, ответственную за формирование устных предложений."
+	activation_messages = list("Кажется, ты не можешь сформулировать ни одной связной мысли!")
+	deactivation_messages = list("Ваш разум становится более ясным.")
 	instability = -GENE_INSTABILITY_MINOR
 
 /datum/mutation/disability/unintelligable/New()
@@ -455,9 +455,9 @@
 /datum/mutation/disability/strong
 	// pretty sure this doesn't do jack shit, putting it here until it does
 	name = "Strong"
-	desc = "Enhances the subject's ability to build and retain heavy muscles."
-	activation_messages = list("You feel buff!")
-	deactivation_messages = list("You feel wimpy and weak.")
+	desc = "Усиливает способность субъекта формировать и сохранять крупные мышцы."
+	activation_messages = list("Ты чувствуешь себя бодрее!")
+	deactivation_messages = list("Вы чувствуете себя слабым и немощным.")
 
 /datum/mutation/disability/strong/New()
 	..()
@@ -466,9 +466,9 @@
 // WAS: /datum/bioEffect/horns
 /datum/mutation/disability/horns
 	name = "Horns"
-	desc = "Enables the growth of a compacted keratin formation on the subject's head."
-	activation_messages = list("A pair of horns erupt from your head.")
-	deactivation_messages = list("Your horns crumble away into nothing.")
+	desc = "Позволяет формировать компактное кератиновое образование на голове субъекта."
+	activation_messages = list("Из твоей головы вырывается пара рогов.")
+	deactivation_messages = list("Ваши рога рассыпаются в прах.")
 
 /datum/mutation/disability/horns/New()
 	..()
@@ -479,9 +479,9 @@
 
 /datum/mutation/grant_spell/immolate
 	name = "Incendiary Mitochondria"
-	desc = "The subject becomes able to convert excess cellular energy into thermal energy."
-	activation_messages = list("You suddenly feel rather hot.")
-	deactivation_messages = list("You no longer feel uncomfortably hot.")
+	desc = "Субъект становится способным преобразовывать избыточную клеточную энергию в тепловую энергию."
+	activation_messages = list("Вам внезапно стало очень жарко.")
+	deactivation_messages = list("Вы больше не чувствуете дискомфорта от жары.")
 	spelltype = /obj/effect/proc_holder/spell/immolate
 
 /datum/mutation/grant_spell/immolate/New()
@@ -490,7 +490,7 @@
 
 /obj/effect/proc_holder/spell/immolate
 	name = "Incendiary Mitochondria"
-	desc = "The subject becomes able to convert excess cellular energy into thermal energy."
+	desc = "Субъект приобретает способность преобразовывать избыточную клеточную энергию в тепловую."
 	panel = "Abilities"
 
 	base_cooldown = 600
@@ -514,9 +514,9 @@
 
 /datum/mutation/disability/speech/loud
 	name = "Loud"
-	desc = "Forces the speaking centre of the subjects brain to yell every sentence."
-	activation_messages = list("YOU FEEL LIKE YELLING!")
-	deactivation_messages = list("You feel like being quiet..")
+	desc = "Заставляет речевой центр мозга испытуемого выкрикивать каждое предложение."
+	activation_messages = list("ВАМ ХОЧЕТСЯ КРИЧАТЬ!")
+	deactivation_messages = list("Вам хочется побыть в тишине...")
 
 /datum/mutation/disability/speech/loud/New()
 	..()
@@ -532,9 +532,9 @@
 
 /datum/mutation/disability/dizzy
 	name = "Dizzy"
-	desc = "Causes the cerebellum to shut down in some places."
-	activation_messages = list("You feel very dizzy...")
-	deactivation_messages = list("You regain your balance.")
+	desc = "Вызывает отключение функций мозжечка в некоторых местах."
+	activation_messages = list("Вы чувствуете сильное головокружение...")
+	deactivation_messages = list("Вы вновь обретаете равновесие.")
 	instability = -GENE_INSTABILITY_MINOR
 
 /datum/mutation/disability/dizzy/New()

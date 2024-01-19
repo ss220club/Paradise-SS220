@@ -4,8 +4,8 @@
 
 /datum/mutation/nobreath
 	name = "No Breathing"
-	activation_messages = list("You feel no need to breathe.")
-	deactivation_messages = list("You feel the need to breathe, once more.")
+	activation_messages = list("Вы не чувствуете необходимости в дыхании.")
+	deactivation_messages = list("Вы снова чувствуете необходимость в дыхании.")
 	instability = GENE_INSTABILITY_MODERATE
 	traits_to_add = list(TRAIT_NOBREATH)
 	activation_prob = 25
@@ -17,8 +17,8 @@
 
 /datum/mutation/regenerate
 	name = "Regenerate"
-	activation_messages = list("Your wounds start healing.")
-	deactivation_messages = list("Your regenerative powers feel like they've vanished.")
+	activation_messages = list("Ваши раны начинают затягиваться.")
+	deactivation_messages = list("Ваши способности к регенерации словно испарились.")
 	instability = GENE_INSTABILITY_MINOR
 
 /datum/mutation/regenerate/New()
@@ -35,8 +35,8 @@
 
 /datum/mutation/heat_resist
 	name = "Heat Resistance"
-	activation_messages = list("Your skin is icy to the touch.")
-	deactivation_messages = list("Your skin no longer feels icy to the touch.")
+	activation_messages = list("Ваша кожа кажется ледяной на ощупь.")
+	deactivation_messages = list("Ваша кожа больше не кажется ледяной на ощупь.")
 	instability = GENE_INSTABILITY_MODERATE
 	traits_to_add = list(TRAIT_RESISTHEAT, TRAIT_RESISTHIGHPRESSURE)
 
@@ -49,8 +49,8 @@
 
 /datum/mutation/cold_resist
 	name = "Cold Resistance"
-	activation_messages = list("Your body is filled with warmth.")
-	deactivation_messages = list("Your body is no longer filled with warmth.")
+	activation_messages = list("Ваше тело наполняется теплом.")
+	deactivation_messages = list("Ваше тело больше не наполняется теплом.")
 	instability = GENE_INSTABILITY_MODERATE
 	traits_to_add = list(TRAIT_RESISTCOLD, TRAIT_RESISTLOWPRESSURE)
 
@@ -63,8 +63,8 @@
 
 /datum/mutation/noprints
 	name = "No Prints"
-	activation_messages = list("Your fingers feel numb.")
-	deactivation_messages = list("Your fingers no longer feel numb.")
+	activation_messages = list("Ваши пальцы немеют.")
+	deactivation_messages = list("Ваши пальцы больше не ощущаются онемевшими.")
 	instability = GENE_INSTABILITY_MINOR
 	traits_to_add = list(TRAIT_NOFINGERPRINTS)
 
@@ -74,8 +74,8 @@
 
 /datum/mutation/noshock
 	name = "Shock Immunity"
-	activation_messages = list("Your skin feels dry and unreactive.")
-	deactivation_messages = list("Your skin no longer feels dry and unreactive.")
+	activation_messages = list("Ваша кожа кажется сухой и вялой.")
+	deactivation_messages = list("Ваша кожа больше не кажется сухой и вялой.")
 	instability = GENE_INSTABILITY_MODERATE
 	traits_to_add = list(TRAIT_SHOCKIMMUNE)
 
@@ -85,8 +85,8 @@
 
 /datum/mutation/midget
 	name = "Midget"
-	activation_messages = list("Everything around you seems bigger now...")
-	deactivation_messages = list("Everything around you seems to shrink...")
+	activation_messages = list("Все вокруг кажется больше...")
+	deactivation_messages = list("Все вокруг словно уменьшилось...")
 	instability = GENE_INSTABILITY_MINOR
 	traits_to_add = list(TRAIT_DWARF)
 
@@ -109,8 +109,8 @@
 // OLD HULK BEHAVIOR
 /datum/mutation/hulk
 	name = "Hulk"
-	activation_messages = list("Your muscles hurt.")
-	deactivation_messages = list("Your muscles shrink.")
+	activation_messages = list("Ваши мышцы болят.")
+	deactivation_messages = list("Ваши мышцы сокращаются.")
 	instability = GENE_INSTABILITY_MAJOR
 	traits_to_add = list(TRAIT_HULK, TRAIT_CHUNKYFINGERS)
 	activation_prob = 15
@@ -139,12 +139,12 @@
 		M.update_mutations()		//update our mutation overlays
 		M.update_body()
 		M.status_flags |= CANSTUN | CANWEAKEN | CANPARALYSE | CANPUSH //temporary fix until the problem can be solved.
-		to_chat(M, "<span class='danger'>You suddenly feel very weak.</span>")
+		to_chat(M, "<span class='danger'>Вы внезапно ощутили сильную слабость.</span>")
 
 /datum/mutation/tk
 	name = "Telekenesis"
-	activation_messages = list("You feel smarter.")
-	deactivation_messages = list("You feel dumber.")
+	activation_messages = list("Вы чувствуете себя умнее.")
+	deactivation_messages = list("Вы чувствуете себя глупее.")
 	instability = GENE_INSTABILITY_MAJOR
 	traits_to_add = list(TRAIT_TELEKINESIS)
 	activation_prob = 15
@@ -161,8 +161,8 @@
 // WAS: /datum/bioEffect/alcres
 /datum/mutation/sober
 	name = "Sober"
-	activation_messages = list("You feel unusually sober.")
-	deactivation_messages = list("You feel like you could use a stiff drink.")
+	activation_messages = list("Вы чувствуете себя необычно трезвым.")
+	deactivation_messages = list("Вы чувствуете, что вам не помешает выпить чего-нибудь крепкого.")
 
 	traits_to_add = list(TRAIT_ALCOHOL_TOLERANCE)
 
@@ -173,9 +173,9 @@
 //WAS: /datum/bioEffect/psychic_resist
 /datum/mutation/psychic_resist
 	name = "Psy-Resist"
-	desc = "Boosts efficiency in sectors of the brain commonly associated with meta-mental energies."
-	activation_messages = list("Your mind feels closed.")
-	deactivation_messages = list("You feel oddly exposed.")
+	desc = "Повышает эффективность работы участков мозга, обычно связанных с метаментальной энергией."
+	activation_messages = list("Ваш разум кажется закрытым.")
+	deactivation_messages = list("Вы чувствуете себя непривычно беззащитным.")
 
 /datum/mutation/psychic_resist/New()
 	..()
@@ -202,9 +202,9 @@
 // WAS: /datum/bioEffect/darkcloak
 /datum/mutation/stealth/darkcloak
 	name = "Cloak of Darkness"
-	desc = "Enables the subject to bend low levels of light around themselves, creating a cloaking effect."
-	activation_messages = list("You begin to fade into the shadows.")
-	deactivation_messages = list("You become fully visible.")
+	desc = "Позволяет субъекту излучать вокруг себя низкий уровень света, создавая эффект маскировки."
+	activation_messages = list("Вы начинаете исчезать в тени.")
+	deactivation_messages = list("Вы становитесь полностью видимыми.")
 	activation_prob = 25
 
 /datum/mutation/stealth/darkcloak/New()
@@ -228,9 +228,9 @@
 //WAS: /datum/bioEffect/chameleon
 /datum/mutation/stealth/chameleon
 	name = "Chameleon"
-	desc = "The subject becomes able to subtly alter light patterns to become invisible, as long as they remain still."
-	activation_messages = list("You feel one with your surroundings.")
-	deactivation_messages = list("You feel oddly visible.")
+	desc = "Субъект получает возможность тонко изменять световые потоки, чтобы становиться невидимым, пока он стоит на месте."
+	activation_messages = list("Вы ощущаете единство с окружающим миром.")
+	deactivation_messages = list("Вы чувствуете себя необычно заметным.")
 	activation_prob = 25
 
 /datum/mutation/stealth/chameleon/New()
@@ -267,9 +267,9 @@
 // WAS: /datum/bioEffect/cryokinesis
 /datum/mutation/grant_spell/cryo
 	name = "Cryokinesis"
-	desc = "Allows the subject to lower the body temperature of others."
-	activation_messages = list("You notice a strange cold tingle in your fingertips.")
-	deactivation_messages = list("Your fingers feel warmer.")
+	desc = "Позволяет субъекту снизить температуру тела других людей."
+	activation_messages = list("Вы чувствуете необычное холодное покалывание на кончиках пальцев..")
+	deactivation_messages = list("Ваши пальцы становятся теплее.")
 	instability = GENE_INSTABILITY_MODERATE
 	spelltype = /obj/effect/proc_holder/spell/cryokinesis
 
@@ -279,7 +279,7 @@
 
 /obj/effect/proc_holder/spell/cryokinesis
 	name = "Cryokinesis"
-	desc = "Drops the bodytemperature of another person."
+	desc = "Понижает температуру тела другого человека."
 	panel = "Abilities"
 
 	base_cooldown = 1200
@@ -287,8 +287,8 @@
 	clothes_req = FALSE
 	stat_allowed = CONSCIOUS
 
-	selection_activated_message		= "<span class='notice'>Your mind grow cold. Click on a target to cast the spell.</span>"
-	selection_deactivated_message	= "<span class='notice'>Your mind returns to normal.</span>"
+	selection_activated_message		= "<span class='notice'>Твой разум становится холодным. Нажмите на цель, чтобы применить заклинание.</span>"
+	selection_deactivated_message	= "<span class='notice'>Ваш разум возвращается в норму.</span>"
 	invocation_type = "none"
 	var/list/compatible_mobs = list(/mob/living/carbon/human)
 
@@ -308,7 +308,7 @@
 	var/mob/living/carbon/C = targets[1]
 
 	if(HAS_TRAIT(C, TRAIT_RESISTCOLD))
-		C.visible_message("<span class='warning'>A cloud of fine ice crystals engulfs [C.name], but disappears almost instantly!</span>")
+		C.visible_message("<span class='warning'>Туча мелких ледяных кристаллов окутывает [C.name], но мгновенно исчезает!</span>")
 		return
 	var/handle_suit = FALSE
 	if(ishuman(C))
@@ -317,11 +317,11 @@
 			if(istype(H.wear_suit, /obj/item/clothing/suit/space))
 				handle_suit = TRUE
 				if(H.internal)
-					H.visible_message("<span class='warning'>[user] sprays a cloud of fine ice crystals, engulfing [H]!</span>",
-										"<span class='notice'>[user] sprays a cloud of fine ice crystals over your [H.head]'s visor.</span>")
+					H.visible_message("<span class='warning'>[user] распыляет облако мелких кристаллов льда, окутывая [H]!</span>",
+										"<span class='notice'>[user] распыляет облако мелких кристаллов льда над вашей [H.head].</span>")
 				else
-					H.visible_message("<span class='warning'>[user] sprays a cloud of fine ice crystals engulfing, [H]!</span>",
-										"<span class='warning'>[user] sprays a cloud of fine ice crystals cover your [H.head]'s visor and make it into your air vents!.</span>")
+					H.visible_message("<span class='warning'>[user] распыляет облако мелких кристаллов льда, окутывая [H]!</span>",
+										"<span class='warning'>[user] распыляет облако мелких ледяных кристаллов, покрывающих вашу [H.head] и попадающих в вентиляцию!.</span>")
 
 					H.bodytemperature = max(0, H.bodytemperature - 100)
 				add_attack_logs(user, C, "Cryokinesis")
@@ -329,7 +329,7 @@
 		C.bodytemperature = max(0, C.bodytemperature - 200)
 		C.ExtinguishMob()
 
-		C.visible_message("<span class='warning'>[user] sprays a cloud of fine ice crystals, engulfing [C]!</span>")
+		C.visible_message("<span class='warning'>[user] распыляет облако мелких кристаллов льда, окутывая, [C]!</span>")
 		add_attack_logs(user, C, "Cryokinesis- NO SUIT/INTERNALS")
 
 ///////////////////////////////////////////////////////////////////////////////////////////
@@ -337,9 +337,9 @@
 // WAS: /datum/bioEffect/mattereater
 /datum/mutation/grant_spell/mattereater
 	name = "Matter Eater"
-	desc = "Allows the subject to eat just about anything without harm."
-	activation_messages = list("You feel hungry.")
-	deactivation_messages = list("You don't feel quite so hungry anymore.")
+	desc = "Позволяет субъекту употреблять почти любую пищу без вреда себе."
+	activation_messages = list("Вы ощущаете себя голодным.")
+	deactivation_messages = list("Вы больше не ощущаете себя голодным..")
 	instability = GENE_INSTABILITY_MINOR
 
 	spelltype=/obj/effect/proc_holder/spell/eat
@@ -350,7 +350,7 @@
 
 /obj/effect/proc_holder/spell/eat
 	name = "Eat"
-	desc = "Eat just about anything!"
+	desc = "Ешь почти что угодно!"
 	panel = "Abilities"
 
 	base_cooldown = 300
@@ -373,7 +373,7 @@
 		var/mob/living/carbon/C = user
 		if((C.head && (C.head.flags_cover & HEADCOVERSMOUTH)) || (C.wear_mask && (C.wear_mask.flags_cover & MASKCOVERSMOUTH) && !C.wear_mask.up))
 			if(show_message)
-				to_chat(C, "<span class='warning'>Your mouth is covered, preventing you from eating!</span>")
+				to_chat(C, "<span class='warning'>Твой рот закрыт, тебе не удастся поесть!</span>")
 			can_eat = FALSE
 	return can_eat
 
@@ -395,7 +395,7 @@
 
 /obj/effect/proc_holder/spell/eat/cast(list/targets, mob/user = usr)
 	if(!targets.len)
-		to_chat(user, "<span class='notice'>No target found in range.</span>")
+		to_chat(user, "<span class='notice'>Цель не обнаружена в пределах действия.</span>")
 		return
 
 	var/atom/movable/the_item = targets[1]
@@ -403,28 +403,28 @@
 		var/mob/living/carbon/human/H = the_item
 		var/obj/item/organ/external/limb = H.get_organ(user.zone_selected)
 		if(!istype(limb))
-			to_chat(user, "<span class='warning'>You can't eat this part of them!</span>")
+			to_chat(user, "<span class='warning'>Ты не можешь съесть эту часть их тела!</span>")
 			revert_cast()
 			return FALSE
 		if(istype(limb,/obj/item/organ/external/head))
 			// Bullshit, but prevents being unable to clone someone.
-			to_chat(user, "<span class='warning'>You try to put \the [limb] in your mouth, but [the_item.p_their()] ears tickle your throat!</span>")
+			to_chat(user, "<span class='warning'>Ты пытаешься положить\the [limb]  в свой рот, но [the_item.p_their()] уши щекочут тебе горло!</span>")
 			revert_cast()
 			return FALSE
 		if(istype(limb,/obj/item/organ/external/chest))
 			// Bullshit, but prevents being able to instagib someone.
-			to_chat(user, "<span class='warning'>You try to put [the_item.p_their()] [limb] in your mouth, but it's too big to fit!</span>")
+			to_chat(user, "<span class='warning'>Ты пытаешься положить [the_item.p_their()] [limb] в рот, но он слишком велик, чтобы влезть!</span>")
 			revert_cast()
 			return FALSE
-		user.visible_message("<span class='danger'>[user] begins stuffing [the_item]'s [limb.name] into [user.p_their()] gaping maw!</span>")
+		user.visible_message("<span class='danger'>[user] начинает напихивать [the_item]'s [limb.name] в [user.p_their()] открытый рот!</span>")
 		var/oldloc = H.loc
 		if(!do_mob(user,H,EAT_MOB_DELAY))
-			to_chat(user, "<span class='danger'>You were interrupted before you could eat [the_item]!</span>")
+			to_chat(user, "<span class='danger'>!Тебя прервали, прежде чем ты мог съесть [the_item]!</span>")
 		else
 			if(!limb || !H)
 				return
 			if(H.loc != oldloc)
-				to_chat(user, "<span class='danger'>\The [limb] moved away from your mouth!</span>")
+				to_chat(user, "<span class='danger'>\The [limb] отошел от твоего рта!</span>")
 				return
 			user.visible_message("<span class='danger'>[user] [pick("chomps","bites")] off [the_item]'s [limb]!</span>")
 			playsound(user.loc, 'sound/items/eatfood.ogg', 50, 0)
@@ -441,10 +441,10 @@
 //WAS: /datum/bioEffect/jumpy
 /datum/mutation/grant_spell/jumpy
 	name = "Jumpy"
-	desc = "Allows the subject to leap great distances."
+	desc = "Позволяет субъекту прыгать на большие расстояния."
 	//cooldown = 30
-	activation_messages = list("Your leg muscles feel taut and strong.")
-	deactivation_messages = list("Your leg muscles shrink back to normal.")
+	activation_messages = list("Ваши мышцы на ногах становятся упругими и сильными.")
+	deactivation_messages = list("Мышцы ваших ног сокращаются до нормального состояния.")
 	instability = GENE_INSTABILITY_MINOR
 
 	spelltype =/obj/effect/proc_holder/spell/leap
@@ -455,7 +455,7 @@
 
 /obj/effect/proc_holder/spell/leap
 	name = "Jump"
-	desc = "Leap great distances!"
+	desc = "Прыгай на большие расстояния!"
 	panel = "Abilities"
 
 	base_cooldown = 60
@@ -472,7 +472,7 @@
 /obj/effect/proc_holder/spell/leap/cast(list/targets, mob/living/user = usr)
 	var/failure = FALSE
 	if(ismob(user.loc) || IS_HORIZONTAL(user) || user.IsStunned() || user.buckled || user.stat)
-		to_chat(user, "<span class='warning'>You can't jump right now!</span>")
+		to_chat(user, "<span class='warning'>В данный момент ты не можешь прыгать!</span>")
 		return
 
 	if(isturf(user.loc))
@@ -484,13 +484,13 @@
 					else
 						M.stop_pulling()
 
-		user.visible_message("<span class='danger'>[user.name]</b> takes a huge leap!</span>")
+		user.visible_message("<span class='danger'>[user.name]</b> делает огромный прыжок!</span>")
 		playsound(user.loc, 'sound/weapons/thudswoosh.ogg', 50, 1)
 		if(failure)
 			user.Weaken(10 SECONDS)
-			user.visible_message("<span class='warning'>[user] attempts to leap away but is slammed back down to the ground!</span>",
-								"<span class='warning'>You attempt to leap away but are suddenly slammed back down to the ground!</span>",
-								"<span class='notice'>You hear the flexing of powerful muscles and suddenly a crash as a body hits the floor.</span>")
+			user.visible_message("<span class='warning'>пытается отпрыгнуть, но его сбивает обратно на землю!</span>",
+								"<span class='warning'>Ты пытаешься отпрыгнуть, но внезапно тебя сбивает обратно на землю!</span>",
+								"<span class='notice'>Ты слышишь скрип сильных мышц, и внезапно раздается грохот, когда тело ударяется о пол.</span>")
 			return FALSE
 		var/prevLayer = user.layer
 		var/prevFlying = user.flying
@@ -505,7 +505,7 @@
 		user.flying = prevFlying
 
 		if(HAS_TRAIT(user, TRAIT_FAT) && prob(66))
-			user.visible_message("<span class='danger'>[user.name]</b> crashes due to [user.p_their()] heavy weight!</span>")
+			user.visible_message("<span class='danger'>[user.name]</b> разбивается из-за [user.p_their()] большого веса!</span>")
 			//playsound(user.loc, 'zhit.wav', 50, 1)
 			user.AdjustWeakened(20 SECONDS)
 			user.AdjustStunned(10 SECONDS)
@@ -514,10 +514,10 @@
 
 	if(isobj(user.loc))
 		var/obj/container = user.loc
-		to_chat(user, "<span class='warning'>You leap and slam your head against the inside of [container]! Ouch!</span>")
+		to_chat(user, "<span class='warning'>Ты прыгаешь и ударяешь головой внутри Ouch!</span>")
 		user.AdjustParalysis(6 SECONDS)
 		user.AdjustWeakened(10 SECONDS)
-		container.visible_message("<span class='danger'>[user.loc]</b> emits a loud thump and rattles a bit.</span>")
+		container.visible_message("<span class='danger'>[user.loc]</b> издает громкий гул и трясется немного.</span>")
 		playsound(user.loc, 'sound/effects/bang.ogg', 50, 1)
 		var/wiggle = 6
 		while(wiggle > 0)
@@ -534,12 +534,12 @@
 
 /datum/mutation/grant_spell/polymorph
 	name = "Polymorphism"
-	desc = "Enables the subject to reconfigure their appearance to mimic that of others."
+	desc = "Позволяет субъекту переформировать свой внешний вид, имитируя внешность других."
 
 	spelltype =/obj/effect/proc_holder/spell/polymorph
 	//cooldown = 1800
-	activation_messages = list("You don't feel entirely like yourself somehow.")
-	deactivation_messages = list("You feel secure in your identity.")
+	activation_messages = list("Вы как-то не совсем похожи на себя..")
+	deactivation_messages = list("Вы чувствуете себя уверенным в своей личности.")
 	instability = GENE_INSTABILITY_MODERATE
 
 /datum/mutation/grant_spell/polymorph/New()
@@ -548,15 +548,15 @@
 
 /obj/effect/proc_holder/spell/polymorph
 	name = "Polymorph"
-	desc = "Mimic the appearance of others!"
+	desc = "Имитируй внешность других!"
 	panel = "Abilities"
 	base_cooldown = 1800
 
 	clothes_req = FALSE
 	stat_allowed = CONSCIOUS
 
-	selection_activated_message		= "<span class='notice'>You body becomes unstable. Click on a target to cast transform into them.</span>"
-	selection_deactivated_message	= "<span class='notice'>Your body calms down again.</span>"
+	selection_activated_message		= "<span class='notice'>Твое тело становится нестабильным. Щелкни по цели, чтобы превратиться в нее.</span>"
+	selection_deactivated_message	= "<span class='notice'>Твое тело снова успокаивается.</span>"
 
 	invocation_type = "none"
 
@@ -588,11 +588,11 @@
 // WAS: /datum/bioEffect/empath
 /datum/mutation/grant_spell/empath
 	name = "Empathic Thought"
-	desc = "The subject becomes able to read the minds of others for certain information."
+	desc = "Субъект становится способным читать мысли других для получения определенной информации."
 
 	spelltype = /obj/effect/proc_holder/spell/empath
-	activation_messages = list("You suddenly notice more about others than you did before.")
-	deactivation_messages = list("You no longer feel able to sense intentions.")
+	activation_messages = list("Вы внезапно начинаете замечать в других больше, чем замечали раньше.")
+	deactivation_messages = list("Вы больше не чувствуете себя способным улавливать чужие намерения.")
 	instability = GENE_INSTABILITY_MINOR
 
 /datum/mutation/grant_spell/empath/New()
@@ -601,7 +601,7 @@
 
 /obj/effect/proc_holder/spell/empath
 	name = "Read Mind"
-	desc = "Read the minds of others for information."
+	desc = "Читай мысли других для получения информации."
 	base_cooldown = 180
 	clothes_req = FALSE
 	human_req = TRUE
@@ -619,21 +619,21 @@
 /obj/effect/proc_holder/spell/empath/cast(list/targets, mob/user = usr)
 	for(var/mob/living/carbon/M in targets)
 		if(!iscarbon(M))
-			to_chat(user, "<span class='warning'>You may only use this on other organic beings.</span>")
+			to_chat(user, "<span class='warning'>Ты можешь использовать это только на других органических существах.</span>")
 			return
 
 		if(M.dna?.GetSEState(GLOB.psyresistblock))
-			to_chat(user, "<span class='warning'>You can't see into [M.name]'s mind at all!</span>")
+			to_chat(user, "<span class='warning'>Ты вообще не можешь видеть в разум [M.name]'s</span>")
 			return
 
 		if(M.stat == 2)
-			to_chat(user, "<span class='warning'>[M.name] is dead and cannot have [M.p_their()] mind read.</span>")
+			to_chat(user, "<span class='warning'>[M.name]  мёртв и невозможно прочитать мысли [M.p_their()]</span>")
 			return
 		if(M.health < 0)
-			to_chat(user, "<span class='warning'>[M.name] is dying, and [M.p_their()] thoughts are too scrambled to read.</span>")
+			to_chat(user, "<span class='warning'>[M.name]  умирает, и мысли [M.p_their()] слишком запутаны, чтобы их прочесть.</span>")
 			return
 
-		to_chat(user, "<span class='notice'>Mind Reading of <b>[M.name]:</b></span>")
+		to_chat(user, "<span class='notice'>Чтение мыслей <b>[M.name]:</b></span>")
 
 		var/pain_condition = M.health / M.maxHealth
 		// lower health means more pain
@@ -651,33 +651,33 @@
 
 		switch(pain_condition)
 			if(0.81 to INFINITY)
-				to_chat(user, "<span class='notice'><b>Condition</b>: [M.name] feels good.</span>")
+				to_chat(user, "<span class='notice'><b>Состояние</b>: [M.name] чувствует себя хорошо.</span>")
 			if(0.61 to 0.8)
-				to_chat(user, "<span class='notice'><b>Condition</b>: [M.name] is suffering mild pain.</span>")
+				to_chat(user, "<span class='notice'><b>Состояние</b>: [M.name] испытывает легкую боль.</span>")
 			if(0.41 to 0.6)
-				to_chat(user, "<span class='notice'><b>Condition</b>: [M.name] is suffering significant pain.</span>")
+				to_chat(user, "<span class='notice'><b>Состояние</b>: [M.name] испытывает значительную боль.</span>")
 			if(0.21 to 0.4)
-				to_chat(user, "<span class='notice'><b>Condition</b>: [M.name] is suffering severe pain.</span>")
+				to_chat(user, "<span class='notice'><b>Состояние</b>: [M.name] испытывает сильную боль.</span>")
 			else
-				to_chat(user, "<span class='notice'><b>Condition</b>: [M.name] is suffering excruciating pain.</span>")
-				thoughts = "haunted by [M.p_their()] own mortality"
+				to_chat(user, "<span class='notice'><b>Состояние</b>: [M.name] испытывает невыносимую боль.</span>")
+				thoughts = "Терзается от своей собственной смертности [M.p_their()]"
 
 		switch(M.a_intent)
 			if(INTENT_HELP)
-				to_chat(user, "<span class='notice'><b>Mood</b>: You sense benevolent thoughts from [M.name].</span>")
+				to_chat(user, "<span class='notice'><b>Настроение</b>: Ты чувствуешь осторожные мысли от [M.name].</span>")
 			if(INTENT_DISARM)
-				to_chat(user, "<span class='notice'><b>Mood</b>: You sense cautious thoughts from [M.name].</span>")
+				to_chat(user, "<span class='notice'><b>Настроение</b>: Ты чувствуешь осторожные мысли от [M.name].</span>")
 			if(INTENT_GRAB)
-				to_chat(user, "<span class='notice'><b>Mood</b>: You sense hostile thoughts from [M.name].</span>")
+				to_chat(user, "<span class='notice'><b>Настроение</b>: Ты чувствуешь враждебные мысли от [M.name].</span>")
 			if(INTENT_HARM)
-				to_chat(user, "<span class='notice'><b>Mood</b>: You sense cruel thoughts from [M.name].</span>")
+				to_chat(user, "<span class='notice'><b>Настроение</b>: Ты чувствуешь жестокие мысли от [M.name].</span>")
 				for(var/mob/living/L in view(7,M))
 					if(L == M)
 						continue
-					thoughts = "thinking about punching [L.name]"
+					thoughts = "Думаю о том, чтобы ударить [L.name]"
 					break
 			else
-				to_chat(user, "<span class='notice'><b>Mood</b>: You sense strange thoughts from [M.name].</span>")
+				to_chat(user, "<span class='notice'><b>Настроение</b>: Ты чувствуешь странные мысли от [M.name].</span>")
 
 		if(ishuman(M))
 			var/numbers[0]
@@ -686,22 +686,22 @@
 				numbers += H.mind.initial_account.account_number
 				numbers += H.mind.initial_account.account_pin
 			if(numbers.len>0)
-				to_chat(user, "<span class='notice'><b>Numbers</b>: You sense the number[numbers.len>1?"s":""] [english_list(numbers)] [numbers.len>1?"are":"is"] important to [M.name].</span>")
-		to_chat(user, "<span class='notice'><b>Thoughts</b>: [M.name] is currently [thoughts].</span>")
+				to_chat(user, "<span class='notice'><b>Числа</b>: Ты чувствуешь, что число[numbers.len>1?"s":""] [english_list(numbers)] [numbers.len>1?"важны":"важно"] для [M.name].</span>")
+		to_chat(user, "<span class='notice'><b>Мысли</b>: [M.name] в данный момент [thoughts].</span>")
 
 		if(M.dna?.GetSEState(GLOB.empathblock))
-			to_chat(M, "<span class='warning'>You sense [user.name] reading your mind.</span>")
+			to_chat(M, "<span class='warning'>Ты чувствуешь, что [user.name] читает твои мысли.</span>")
 		else if(prob(5) || M.mind?.assigned_role=="Chaplain")
-			to_chat(M, "<span class='warning'>You sense someone intruding upon your thoughts...</span>")
+			to_chat(M, "<span class='warning'>Ты чувствуешь, как кто-то вторгается в твои мысли...</span>")
 
 ///////////////////Vanilla Morph////////////////////////////////////
 
 /datum/mutation/grant_spell/morph
 	name = "Morphism"
-	desc = "Enables the subject to reconfigure their appearance to that of any human."
+	desc = "Позволяет субъекту переформировать свой внешний вид в облик любого человека."
 	spelltype =/obj/effect/proc_holder/spell/morph
-	activation_messages = list("Your body feels like it can alter its appearance.")
-	deactivation_messages = list("Your body doesn't feel capable of altering its appearance.")
+	activation_messages = list("Ваше тело чувствует, что может изменить свою внешность.")
+	deactivation_messages = list("Ваше тело не чувствует себя способным изменить свою внешность.")
 	instability = GENE_INSTABILITY_MINOR
 
 /datum/mutation/grant_spell/morph/New()
@@ -710,7 +710,7 @@
 
 /obj/effect/proc_holder/spell/morph
 	name = "Morph"
-	desc = "Mimic the appearance of your choice!"
+	desc = "Имитируй внешность по своему выбору!"
 	panel = "Abilities"
 	base_cooldown = 1800
 
@@ -728,13 +728,13 @@
 		return
 
 	if(ismob(user.loc))
-		to_chat(user, "<span class='warning'>You can't change your appearance right now!</span>")
+		to_chat(user, "<span class='warning'>В данный момент ты не можешь изменить свой внешний вид!</span>")
 		return
 	var/mob/living/carbon/human/M = user
 	var/obj/item/organ/external/head/head_organ = M.get_organ("head")
 	var/obj/item/organ/internal/eyes/eyes_organ = M.get_int_organ(/obj/item/organ/internal/eyes)
 
-	var/new_gender = alert(user, "Please select gender.", "Character Generation", "Male", "Female")
+	var/new_gender = alert(user, "Пожалуйста, выберите пол.", "Создание персонажа", "Мужской", "Женсекий")
 	if(new_gender)
 		if(new_gender == "Male")
 			M.change_gender(MALE)
@@ -742,7 +742,7 @@
 			M.change_gender(FEMALE)
 
 	if(eyes_organ)
-		var/new_eyes = input("Please select eye color.", "Character Generation", eyes_organ.eye_color) as null|color
+		var/new_eyes = input("Пожалуйста, выберите цвет глаз.", "Создание персонажа", eyes_organ.eye_color) as null|color
 		if(new_eyes)
 			M.change_eye_color(new_eyes)
 
@@ -750,53 +750,53 @@
 		//Alt heads.
 		if(head_organ.dna.species.bodyflags & HAS_ALT_HEADS)
 			var/list/valid_alt_heads = M.generate_valid_alt_heads()
-			var/new_alt_head = input("Please select alternate head", "Character Generation", head_organ.alt_head) as null|anything in valid_alt_heads
+			var/new_alt_head = input("Пожалуйста, выберите альтернативную голову", "Создание персонажа", head_organ.alt_head) as null|anything in valid_alt_heads
 			if(new_alt_head)
 				M.change_alt_head(new_alt_head)
 
 		// hair
 		var/list/valid_hairstyles = M.generate_valid_hairstyles()
-		var/new_style = input("Please select hair style", "Character Generation", head_organ.h_style) as null|anything in valid_hairstyles
+		var/new_style = input("Пожалуйста, выберите стиль прически", "Создание персонажа", head_organ.h_style) as null|anything in valid_hairstyles
 
 		// if new style selected (not cancel)
 		if(new_style)
 			M.change_hair(new_style)
 
-		var/new_hair = input("Please select hair color.", "Character Generation", head_organ.hair_colour) as null|color
+		var/new_hair = input("Пожалуйста, выберите цвет волос.", "Создание персонажа", head_organ.hair_colour) as null|color
 		if(new_hair)
 			M.change_hair_color(new_hair)
 
 		var/datum/sprite_accessory/hair_style = GLOB.hair_styles_public_list[head_organ.h_style]
 		if(hair_style.secondary_theme && !hair_style.no_sec_colour)
-			new_hair = input("Please select secondary hair color.", "Character Generation", head_organ.sec_hair_colour) as null|color
+			new_hair = input("Пожалуйста, выберите второй цвет волос.", "Создание персонажа", head_organ.sec_hair_colour) as null|color
 			if(new_hair)
 				M.change_hair_color(new_hair, TRUE)
 
 		// facial hair
 		var/list/valid_facial_hairstyles = M.generate_valid_facial_hairstyles()
-		new_style = input("Please select facial style", "Character Generation", head_organ.f_style) as null|anything in valid_facial_hairstyles
+		new_style = input("Пожалуйста, выберите растительность на лице", "Создание персонажа", head_organ.f_style) as null|anything in valid_facial_hairstyles
 
 		if(new_style)
 			M.change_facial_hair(new_style)
 
-		var/new_facial = input("Please select facial hair color.", "Character Generation", head_organ.facial_colour) as null|color
+		var/new_facial = input("Пожалуйста, выберите цвет растительности на лице.", "Создание персонажа", head_organ.facial_colour) as null|color
 		if(new_facial)
 			M.change_facial_hair_color(new_facial)
 
 		var/datum/sprite_accessory/facial_hair_style = GLOB.facial_hair_styles_list[head_organ.f_style]
 		if(facial_hair_style.secondary_theme && !facial_hair_style.no_sec_colour)
-			new_facial = input("Please select secondary facial hair color.", "Character Generation", head_organ.sec_facial_colour) as null|color
+			new_facial = input("Пожалуйста, выберите второй цвет растительности на лице.", "Создание персонажа", head_organ.sec_facial_colour) as null|color
 			if(new_facial)
 				M.change_facial_hair_color(new_facial, TRUE)
 
 		//Head accessory.
 		if(head_organ.dna.species.bodyflags & HAS_HEAD_ACCESSORY)
 			var/list/valid_head_accessories = M.generate_valid_head_accessories()
-			var/new_head_accessory = input("Please select head accessory style", "Character Generation", head_organ.ha_style) as null|anything in valid_head_accessories
+			var/new_head_accessory = input("Пожалуйста, выберите стиль аксессуаров для головы", "Создание персонажа", head_organ.ha_style) as null|anything in valid_head_accessories
 			if(new_head_accessory)
 				M.change_head_accessory(new_head_accessory)
 
-			var/new_head_accessory_colour = input("Please select head accessory colour.", "Character Generation", head_organ.headacc_colour) as null|color
+			var/new_head_accessory_colour = input("Пожалуйста, выберите цвет аксессуаров для головы.", "Создание персонажа", head_organ.headacc_colour) as null|color
 			if(new_head_accessory_colour)
 				M.change_head_accessory_color(new_head_accessory_colour)
 
@@ -805,7 +805,7 @@
 	if((M.dna.species.tail && M.dna.species.bodyflags & (HAS_TAIL)) || (M.dna.species.wing && M.dna.species.bodyflags & (HAS_WING)))
 		var/list/valid_body_accessories = M.generate_valid_body_accessories()
 		if(valid_body_accessories.len > 1) //By default valid_body_accessories will always have at the very least a 'none' entry populating the list, even if the user's species is not present in any of the list items.
-			var/new_body_accessory = input("Please select body accessory style", "Character Generation", M.body_accessory) as null|anything in valid_body_accessories
+			var/new_body_accessory = input("Пожалуйста, выберите стиль аксессуаров для тела", "Создание персонажа", M.body_accessory) as null|anything in valid_body_accessories
 			if(new_body_accessory)
 				M.change_body_accessory(new_body_accessory)
 
@@ -813,38 +813,38 @@
 		//Head markings.
 		if(M.dna.species.bodyflags & HAS_HEAD_MARKINGS)
 			var/list/valid_head_markings = M.generate_valid_markings("head")
-			var/new_marking = input("Please select head marking style", "Character Generation", M.m_styles["head"]) as null|anything in valid_head_markings
+			var/new_marking = input("Пожалуйста, выберите стиль окраса головы", "Создание персонажа", M.m_styles["head"]) as null|anything in valid_head_markings
 			if(new_marking)
 				M.change_markings(new_marking, "head")
 
-			var/new_marking_colour = input("Please select head marking colour.", "Character Generation", M.m_colours["head"]) as null|color
+			var/new_marking_colour = input("Пожалуйста, выберите цвет окраса головы.", "Создание персонажа", M.m_colours["head"]) as null|color
 			if(new_marking_colour)
 				M.change_marking_color(new_marking_colour, "head")
 
 	//Body markings.
 	if(M.dna.species.bodyflags & HAS_BODY_MARKINGS)
 		var/list/valid_body_markings = M.generate_valid_markings("body")
-		var/new_marking = input("Please select body marking style", "Character Generation", M.m_styles["body"]) as null|anything in valid_body_markings
+		var/new_marking = input("Пожалуйста, выберите стиль окраса тела", "Создание персонажа", M.m_styles["body"]) as null|anything in valid_body_markings
 		if(new_marking)
 			M.change_markings(new_marking, "body")
 
-		var/new_marking_colour = input("Please select body marking colour.", "Character Generation", M.m_colours["body"]) as null|color
+		var/new_marking_colour = input("Пожалуйста, выберите цвет окраса тела.", "Создание персонажа", M.m_colours["body"]) as null|color
 		if(new_marking_colour)
 			M.change_marking_color(new_marking_colour, "body")
 	//Tail markings.
 	if(M.dna.species.bodyflags & HAS_TAIL_MARKINGS)
 		var/list/valid_tail_markings = M.generate_valid_markings("tail")
-		var/new_marking = input("Please select tail marking style", "Character Generation", M.m_styles["tail"]) as null|anything in valid_tail_markings
+		var/new_marking = input("Пожалуйста, выберите стиль окраса хвоста", "Создание персонажа", M.m_styles["tail"]) as null|anything in valid_tail_markings
 		if(new_marking)
 			M.change_markings(new_marking, "tail")
 
-		var/new_marking_colour = input("Please select tail marking colour.", "Character Generation", M.m_colours["tail"]) as null|color
+		var/new_marking_colour = input("Пожалуйста, выберите цвет окраска хвоста.", "Создание персонажа", M.m_colours["tail"]) as null|color
 		if(new_marking_colour)
 			M.change_marking_color(new_marking_colour, "tail")
 
 	//Skin tone.
 	if(M.dna.species.bodyflags & HAS_SKIN_TONE)
-		var/new_tone = input("Please select skin tone level: 1-220 (1=albino, 35=caucasian, 150=black, 220='very' black)", "Character Generation", M.s_tone) as null|text
+		var/new_tone = input("Пожалуйста, выберите тон кожи: 1-220 (1=альбинос, 35=кавказец, 150=черный, 220='очень' черный)", "Создание персонажа", M.s_tone) as null|text
 		if(!new_tone)
 			new_tone = 35
 		else
@@ -859,7 +859,7 @@
 				prompt += ", "
 		prompt += ")"
 
-		var/new_tone = input(prompt, "Character Generation", M.s_tone) as null|text
+		var/new_tone = input(prompt, "Создание персонажа", M.s_tone) as null|text
 		if(!new_tone)
 			new_tone = 0
 		else
@@ -868,18 +868,18 @@
 
 	//Skin colour.
 	if(M.dna.species.bodyflags & HAS_SKIN_COLOR)
-		var/new_body_colour = input("Please select body colour.", "Character Generation", M.skin_colour) as null|color
+		var/new_body_colour = input("Пожалуйста, выберите окраску тела.", "Создание персонажа", M.skin_colour) as null|color
 		if(new_body_colour)
 			M.change_skin_color(new_body_colour)
 
 	M.update_dna()
 
-	M.visible_message("<span class='notice'>[M] morphs and changes [M.p_their()] appearance!</span>", "<span class='notice'>You change your appearance!</span>", "<span class='warning'>Oh, god!  What the hell was that?  It sounded like flesh getting squished and bone ground into a different shape!</span>")
+	M.visible_message("<span class='notice'>[M] меняется и изменяет свой внешний вид, [M.p_their()] внешность!</span>", "<span class='notice'>Ты меняешь свой внешний вид!</span>", "<span class='warning'>О боже! Что это было? Похоже, что плоть сжимается и кости превращаются в другую форму!</span>")
 
 /datum/mutation/grant_spell/remotetalk
 	name = "Telepathy"
-	activation_messages = list("You feel you can project your thoughts.")
-	deactivation_messages = list("You no longer feel you can project your thoughts.")
+	activation_messages = list("Вы чувствуете, что можете проецировать свои мысли.")
+	deactivation_messages = list("Вы больше не чувствуете, что можете проецировать свои мысли.")
 	instability = GENE_INSTABILITY_MINOR
 
 	spelltype =/obj/effect/proc_holder/spell/remotetalk
@@ -900,7 +900,7 @@
 
 /obj/effect/proc_holder/spell/remotetalk
 	name = "Project Mind"
-	desc = "Make people understand your thoughts!"
+	desc = "Заставьте людей понять ваши мысли!"
 	base_cooldown = 0
 
 	clothes_req = FALSE
@@ -916,9 +916,9 @@
 	if(!ishuman(user))
 		return
 	if(user.mind?.miming) // Dont let mimes telepathically talk
-		to_chat(user,"<span class='warning'>You can't communicate without breaking your vow of silence.</span>")
+		to_chat(user,"<span class='warning'>Ты не можешь общаться, не нарушив своего обета молчания.</span>")
 		return
-	var/say = input("What do you wish to say") as text|null
+	var/say = input("Что ты хочешь сказать?") as text|null
 	if(!say || usr.stat)
 		return
 	say = strip_html(say)
@@ -928,16 +928,16 @@
 		log_say("(TPATH to [key_name(target)]) [say]", user)
 		user.create_log(SAY_LOG, "Telepathically said '[say]' using [src]", target)
 		if(target.dna?.GetSEState(GLOB.remotetalkblock))
-			target.show_message("<span class='abductor'>You hear [user.real_name]'s voice: [say]</span>")
+			target.show_message("<span class='abductor'>Ты слышишь голос [user.real_name]: [say]</span>")
 		else
-			target.show_message("<span class='abductor'>You hear a voice that seems to echo around the room: [say]</span>")
-		user.show_message("<span class='abductor'>You project your mind into [(target in user.get_visible_mobs()) ? target.name : "the unknown entity"]: [say]</span>")
+			target.show_message("<span class='abductor'>Ты слышишь голос, который кажется эхом, наполняющим комнату: [say]</span>")
+		user.show_message("<span class='abductor'>Ты направляешь свой разум на [(target in user.get_visible_mobs()) ? target.name : "неизвестное существо"]: [say]</span>")
 		for(var/mob/dead/observer/G in GLOB.player_list)
-			G.show_message("<i>Telepathic message from <b>[user]</b> ([ghost_follow_link(user, ghost=G)]) to <b>[target]</b> ([ghost_follow_link(target, ghost=G)]): [say]</i>")
+			G.show_message("<i>Телепатическое сообщение от <b>[user]</b> ([ghost_follow_link(user, ghost=G)]) для <b>[target]</b> ([ghost_follow_link(target, ghost=G)]): [say]</i>")
 
 /obj/effect/proc_holder/spell/mindscan
 	name = "Scan Mind"
-	desc = "Offer people a chance to share their thoughts!"
+	desc = "Предложите людям возможность поделиться своими мыслями!"
 	base_cooldown = 0
 	clothes_req = FALSE
 	stat_allowed = CONSCIOUS
@@ -952,10 +952,10 @@
 	if(!ishuman(user))
 		return
 	for(var/mob/living/target in targets)
-		var/message = "You feel your mind expand briefly... (Click to send a message.)"
+		var/message = "Вы чувствуете, как ваш разум ненадолго расширяется... (Нажмите, чтобы отправить сообщение.)"
 		if(target.dna?.GetSEState(GLOB.remotetalkblock))
-			message = "You feel [user.real_name] request a response from you... (Click here to project mind.)"
-		user.show_message("<span class='abductor'>You offer your mind to [(target in user.get_visible_mobs()) ? target.name : "the unknown entity"].</span>")
+			message = "Вы чувствуете, что [user.real_name] запрашивает у вас ответ... (Нажмите здесь, чтобы спроецировать мысли.)"
+		user.show_message("<span class='abductor'>Вы предлагаете свой разум [(target in user.get_visible_mobs()) ? target.name : "неизвестное существо"].</span>")
 		target.show_message("<span class='abductor'><A href='?src=[UID()];target=[target.UID()];user=[user.UID()]'>[message]</a></span>")
 		available_targets += target
 		addtimer(CALLBACK(src, PROC_REF(removeAvailability), target), 100)
@@ -964,7 +964,7 @@
 	if(target in available_targets)
 		available_targets -= target
 		if(!(target in available_targets))
-			target.show_message("<span class='abductor'>You feel the sensation fade...</span>")
+			target.show_message("<span class='abductor'>Вы чувствуете, как ощущение исчезает...</span>")
 
 /obj/effect/proc_holder/spell/mindscan/Topic(href, href_list)
 	var/mob/living/user
@@ -998,8 +998,8 @@
 
 /datum/mutation/grant_spell/remoteview
 	name = "Remote Viewing"
-	activation_messages = list("Your mind can see things from afar.")
-	deactivation_messages = list("Your mind can no longer can see things from afar.")
+	activation_messages = list("Ваш разум может видеть вещи издалека.")
+	deactivation_messages = list("Ваш разум больше не может видеть вещи издалека.")
 	instability = GENE_INSTABILITY_MINOR
 
 	spelltype =/obj/effect/proc_holder/spell/remoteview
@@ -1017,7 +1017,7 @@
 
 /obj/effect/proc_holder/spell/remoteview
 	name = "Remote View"
-	desc = "Spy on people from any range!"
+	desc = "Шпионьте за людьми с любого расстояния!"
 	base_cooldown = 100
 
 	clothes_req = FALSE
@@ -1039,7 +1039,7 @@
 	var/mob/target
 
 	if(istype(H.l_hand, /obj/item/tk_grab) || istype(H.r_hand, /obj/item/tk_grab))
-		to_chat(H, "<span class='warning'>Your mind is too busy with that telekinetic grab.</span>")
+		to_chat(H, "<span class='warning'>Ваш разум слишком занят телекинетическим захватом.</span>")
 		H.remoteview_target = null
 		H.reset_perspective()
 		return
@@ -1061,8 +1061,8 @@
 
 /datum/mutation/meson_vision
 	name = "Meson Vision"
-	activation_messages = list("More information seems to reach your eyes...")
-	deactivation_messages = list("The amount of information reaching your eyes fades...")
+	activation_messages = list("Кажется, что больше информации попадает в ваши глаза...")
+	deactivation_messages = list("Количество информации, попадающей в глаза, уменьшается...")
 	instability = GENE_INSTABILITY_MINOR
 	traits_to_add = list(TRAIT_MESON_VISION)
 
@@ -1080,8 +1080,8 @@
 
 /datum/mutation/night_vision
 	name = "Night Vision"
-	activation_messages = list("Were the lights always that bright?")
-	deactivation_messages = list("The ambient light level returns to normal...")
+	activation_messages = list("Освещение всегда было настолько ярким?")
+	deactivation_messages = list("Уровень освещения возвращается к норме...")
 	instability = GENE_INSTABILITY_MODERATE
 	traits_to_add = list(TRAIT_NIGHT_VISION)
 
@@ -1105,8 +1105,8 @@
 
 /datum/mutation/flash_protection
 	name = "Flash Protection"
-	activation_messages = list("You stop noticing the glare from lights...")
-	deactivation_messages = list("Lights begin glaring again...")
+	activation_messages = list("Вы перестаете замечать блики от ламп...")
+	deactivation_messages = list("Свет снова начинает мерцать...")
 	instability = GENE_INSTABILITY_MINOR
 	traits_to_add = list(TRAIT_FLASH_PROTECTION)
 
