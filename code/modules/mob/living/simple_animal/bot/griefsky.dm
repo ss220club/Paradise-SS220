@@ -92,7 +92,7 @@
 	if(declare_arrests)
 		var/area/location = get_area(src)
 		if(!spam_flag)
-			speak("Back away! I will deal with this level [threat] swine <b>[C]</b> in [location] myself!.", radio_channel)
+			speak("Назад! Я сам разберусь с свиньей <b>[C]</b> с уровнем угрозы [threat] в [location]!.", radio_channel)
 			spam_flag = 1
 			addtimer(CALLBACK(src, PROC_REF(spam_flag_false)), 100) //to avoid spamming comms of sec for each hit
 			visible_message("[src] flails his swords and cuts [C]!")
@@ -138,7 +138,7 @@
 							frustration = 0
 				else
 					back_to_idle()
-					speak("You fool")
+					speak("Болван и неудачник.")
 			else
 				back_to_idle()
 
@@ -169,7 +169,7 @@
 		else if(threatlevel >= 4)
 			target = C
 			oldtarget_name = C.name
-			speak("You are a bold one")
+			speak("Смелый дохуя?")
 			playsound(src,'sound/weapons/saberon.ogg',50,TRUE,-1)
 			visible_message("[src] ignites his energy swords!")
 			icon_state = "griefsky-c"

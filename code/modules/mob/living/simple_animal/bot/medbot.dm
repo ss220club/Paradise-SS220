@@ -270,7 +270,7 @@
 /mob/living/simple_animal/bot/medbot/process_scan(mob/living/carbon/human/H)
 	if(buckled)
 		if((last_warning + 300) < world.time)
-			speak("<span class='danger'>Movement restrained! Unit on standby!</span>")
+			speak("<span class='danger'>Движение ограничено! Юнит в режиме ожидания!</span>")
 			playsound(loc, 'sound/machines/buzz-two.ogg', 50, FALSE)
 			last_warning = world.time
 		return
@@ -283,7 +283,7 @@
 	if(assess_patient(H))
 		last_found = world.time
 		if((last_newpatient_speak + 300) < world.time) //Don't spam these messages!
-			var/list/messagevoice = list("Hey, [H.name]! Hold on, I'm coming." = 'sound/voice/mcoming.ogg', "Wait [H.name]! I want to help!" = 'sound/voice/mhelp.ogg', "[H.name], you appear to be injured!" = 'sound/voice/minjured.ogg')
+			var/list/messagevoice = list("Эй, [H.name]! Подождите, я сейчас прибуду." = 'sound/voice/mcoming.ogg', "[H.name], стойте! Я хочу помочь!" = 'sound/voice/mhelp.ogg', "[H.name], кажется, Вы ранены!" = 'sound/voice/minjured.ogg')
 			var/message = pick(messagevoice)
 			speak(message)
 			playsound(loc, messagevoice[message], 50, FALSE)
@@ -560,7 +560,7 @@
 	if(syndicate_aligned)
 		return
 	var/area/location = get_area(src)
-	speak("Medical emergency! [crit_patient ? "<b>[crit_patient]</b>" : "A patient"] is in critical condition at [location]!", radio_channel)
+	speak("Внимание, требуется медицинская помощь! [crit_patient ? "<b>[crit_patient]</b>" : "Пострадавший"] в критическом состоянии в [location]!", radio_channel)
 	declare_cooldown = TRUE
 	spawn(200) //Twenty seconds
 		declare_cooldown = FALSE
