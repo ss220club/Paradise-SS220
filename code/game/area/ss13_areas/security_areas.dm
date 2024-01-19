@@ -4,15 +4,15 @@
 	sound_environment = SOUND_AREA_STANDARD_STATION
 
 /area/station/security/main
-	name = "\improper Офис СБ"
+	name = "Офис Службы Безопасности"
 	icon_state = "securityoffice"
 
 /area/station/security/lobby
-	name = "\improper Лобби СБ"
+	name = "Лобби Службы Безопасности"
 	icon_state = "securitylobby"
 
 /area/station/security/brig
-	name = "\improper Бриг"
+	name = "Бриг"
 	icon_state = "brig"
 
 /area/station/security/brig/prison_break()
@@ -24,13 +24,13 @@
 	..()
 
 /area/station/security/permabrig
-	name = "\improper Тюремное Крыло"
+	name = "Тюремное Крыло. Пермабриг"
 	icon_state = "sec_prison_perma"
 	fast_despawn = TRUE
 	can_get_auto_cryod = FALSE
 
 /area/station/security/prison
-	name = "\improper Тюремное Крыло"
+	name = "Тюремное Крыло"
 	icon_state = "sec_prison"
 	can_get_auto_cryod = FALSE
 
@@ -44,19 +44,19 @@
 	..()
 
 /area/station/security/prison/cell_block
-	name = "\improper Тюремный Блок"
+	name = "Тюремный Блок"
 	icon_state = "brig"
 
 /area/station/security/prison/cell_block/A
-	name = "\improper Тюремный Блок А"
+	name = "Тюремный Блок А"
 	icon_state = "brigcella"
 
 /area/station/security/prison/cell_block/B
-	name = "\improper Тюремный Блок Б"
+	name = "Тюремный Блок Б"
 	icon_state = "brigcellb"
 
 /area/station/security/prison/cell_block/C
-	name = "\improper Тюремный Блок В"
+	name = "Тюремный Блок В"
 	icon_state = "brig"
 
 /area/station/security/execution
@@ -65,7 +65,7 @@
 	can_get_auto_cryod = FALSE
 
 /area/station/security/processing
-	name = "Процедурная СБ"
+	name = "Процедурная Службы Безопасности"
 	icon_state = "prisonerprocessing"
 	can_get_auto_cryod = FALSE
 
@@ -75,81 +75,81 @@
 	can_get_auto_cryod = FALSE
 
 /area/station/security/storage
-	name = "Склад Снаряжения СБ"
+	name = "Склад Снаряжения Службы Безопасности"
 	icon_state = "securityequipmentstorage"
 
 /area/station/security/interrogation/observation
-	name = "Interrogation Observation"
+	name = "Просматриваемая Допросная"
 	icon_state = "security"
 	can_get_auto_cryod = FALSE
 
 /area/station/security/evidence
-	name = "\improper Комната Хранения Улик"
+	name = "Комната Хранения Улик"
 	icon_state = "evidence"
 
 /area/station/security/prisonlockers
-	name = "\improper Комната Шкафов Заключенных"
+	name = "Комната Шкафов Заключенных"
 	icon_state = "sec_prison_lockers"
 	can_get_auto_cryod = FALSE
 
 /area/station/security/prisonershuttle
-	name = "\improper Челнок СБ Для Заключенных"
+	name = "Челнок Службы Безопасности Для Заключенных"
 	icon_state = "security"
 	can_get_auto_cryod = FALSE
 
 /area/station/security/warden
-	name = "\improper Офис Смотрителя"
+	name = "Офис Смотрителя"
 	icon_state = "Warden"
 	sound_environment = SOUND_AREA_SMALL_SOFTFLOOR
 
 /area/station/security/armory
-	name = "\improper Оружейная"
+	name = "Оружейная"
 	icon_state = "armory"
 
 /area/station/security/armory/secure
-	name = "\improper Защищенная Оружейная"
+	name = "Защищенная Оружейная"
 	icon_state = "secarmory"
 
 /area/station/security/securehallway
-	name = "\improper Brig Secure Hallway"
+	name = "Защищенный Коридор Брига"
 	icon_state = "securehall"
 
 /area/station/security/detective
-	name = "\improper Офис Детектива"
+	name = "Офис Детектива"
 	icon_state = "detective"
 	ambientsounds = list('sound/ambience/ambidet1.ogg', 'sound/ambience/ambidet2.ogg')
 
 /area/station/security/range
-	name = "\improper Стрельбище"
+	name = "Стрельбище"
 	icon_state = "firingrange"
 
 // Checkpoints
 
 /area/station/security/checkpoint
-	name = "\improper Security Checkpoint"
+	name = "Контрольно-Пропускной Пункт Службы Безопасности"
 	icon_state = "checkpoint1"
 
 /area/station/security/checkpoint/secondary
-	name = "\improper Security Checkpoint"
+	name = "Дополнительный Контрольно-Пропускной Пункт Службы Безопасности"
 	icon_state = "checkpoint1"
 
 /area/station/security/checkpoint/supply
-	name = "Security Post - Cargo Bay"
+	name = "Контрольно-Пропускной Пункт Службы Безопасности - Отдел Карго"
 	icon_state = "checkpoint1"
 
 /area/station/security/checkpoint/engineering
-	name = "Security Post - Engineering"
+	name = "Контрольно-Пропускной Пункт Службы Безопасности - Инженерный Отдел"
 	icon_state = "checkpoint1"
 
 /area/station/security/checkpoint/medical
-	name = "Security Post - Medbay"
+	name = "Контрольно-Пропускной Пункт Службы Безопасности - Медицинский Отдел"
 	icon_state = "checkpoint1"
 
 /area/station/security/checkpoint/science
-	name = "Security Post - Science"
+	name = "Контрольно-Пропускной Пункт Службы Безопасности - РНД"
 	icon_state = "checkpoint1"
 
 // Solitary
 /area/station/security/permasolitary
-	name = "Solitary Confinement"
+	name = "Одиночная Камера"
 	icon_state = "solitary"

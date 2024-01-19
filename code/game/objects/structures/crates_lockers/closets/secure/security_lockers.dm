@@ -134,7 +134,7 @@
 	new /obj/item/storage/bag/garment/blueshield(src)
 
 /obj/structure/closet/secure_closet/ntrep
-	name = "\improper Nanotrasen Representative's locker"
+	name = "Nanotrasen Representative's locker"
 	req_access = list(ACCESS_NTREP)
 	icon_state = "ntr"
 	open_door_sprite = "hop_door"
@@ -255,7 +255,7 @@
 		. += "\nOwned by [prisoner_id.registered_name]."
 
 /obj/structure/closet/secure_closet/magistrate
-	name = "\improper Magistrate's locker"
+	name = "Magistrate's locker"
 	req_access = list(ACCESS_MAGISTRATE)
 	icon_state = "magi"
 	open_door_sprite = "chaplain_door"

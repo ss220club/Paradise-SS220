@@ -1,33 +1,33 @@
 
 /area/station/supply
-	name = "\improper Quartermasters"
+	name = "Квартирмейстер"
 	icon_state = "quart"
 	sound_environment = SOUND_AREA_STANDARD_STATION
 
 /area/station/supply/lobby
-	name = "\improper Лобби Карго"
+	name = "Лобби Карго"
 	icon_state = "cargooffice"
 
 /area/station/supply/sorting
-	name = "\improper Офис Доставки"
+	name = "Офис Доставки"
 	icon_state = "cargobay"
 	sound_environment = SOUND_AREA_STANDARD_STATION
 
 /area/station/supply/office
-	name = "\improper Офис Карго"
+	name = "Офис Карго"
 	icon_state = "cargooffice"
 
 /area/station/supply/storage
-	name = "\improper Грузовой Отсек"
+	name = "Грузовой Отсек"
 	icon_state = "cargobay"
 	sound_environment = SOUND_AREA_LARGE_ENCLOSED
 
 /area/station/supply/qm
-	name = "\improper Офис Квартирмейстера"
+	name = "Офис Квартирмейстера"
 	icon_state = "qm"
 
 /area/station/supply/miningdock
-	name = "\improper Шахтный Док"
+	name = "Шахтный Док"
 	icon_state = "mining"
 
 /area/station/supply/miningstorage
@@ -35,5 +35,5 @@
 	icon_state = "green"
 
 /area/station/supply/mechbay
-	name = "\improper Мех. Отсек Шахты"
+	name = "Мех. Отсек Шахты"
 	icon_state = "yellow"

@@ -2,70 +2,70 @@
 //Command
 
 /area/station/command/bridge
-	name = "\proper Мостик"
+	name = "Мостик"
 	icon_state = "bridge"
 	ambientsounds = list('sound/ambience/signal.ogg')
 	sound_environment = SOUND_AREA_STANDARD_STATION
 
 /area/station/command/meeting_room
-	name = "\proper Конференц-Зал Командования"
+	name = "Конференц-Зал Командования"
 	icon_state = "meeting"
 	sound_environment = SOUND_AREA_MEDIUM_SOFTFLOOR
 
 /area/station/command/office/captain
-	name = "\proper Офис Капитана"
+	name = "Офис Капитана"
 	icon_state = "captainoffice"
 	sound_environment = SOUND_AREA_WOODFLOOR
 
 /area/station/command/office/captain/bedroom
-	name = "\proper Спальня Капитана"
+	name = "Спальня Капитана"
 	icon_state = "captain"
 
 /area/station/command/office/hop
-	name = "\proper Кабинет Главы Персонала"
+	name = "Кабинет Главы Персонала"
 	icon_state = "hop"
 
 /area/station/command/office/rd
-	name = "\proper Кабинет Директора Исследований"
+	name = "Кабинет Директора Исследований"
 	icon_state = "rd"
 
 /area/station/command/office/ce
-	name = "\proper Кабинет Главного Инженера"
+	name = "Кабинет Главного Инженера"
 	icon_state = "ce"
 
 /area/station/command/office/hos
-	name = "\proper Кабинет Главы Службы Безопасности"
+	name = "Кабинет Главы Службы Безопасности"
 	icon_state = "hos"
 
 /area/station/command/office/cmo
-	name = "\proper Кабинет Главного Врача"
+	name = "Кабинет Главного Врача"
 	icon_state = "CMO"
 
 /area/station/command/office/ntrep
-	name = "\proper Кабинет Представителя НТ"
+	name = "Кабинет Представителя НТ"
 	icon_state = "ntrep"
 
 /area/station/command/office/blueshield
-	name = "\proper Кабинет Синего Щита"
+	name = "Кабинет Синего Щита"
 	icon_state = "blueshield"
 
 /area/station/command/teleporter
-	name = "\proper Телепортерная"
+	name = "Телепортерная"
 	icon_state = "teleporter"
 	ambientsounds = ENGINEERING_SOUNDS
 
 /area/station/command/gateway
-	name = "\proper Гейт"
+	name = "Гейт"
 	icon_state = "gateway"
 	ambientsounds = ENGINEERING_SOUNDS
 	sound_environment = SOUND_AREA_STANDARD_STATION
 
 /area/station/command/vault
-	name = "\proper Хранилище"
+	name = "Хранилище"
 	icon_state = "nuke_storage"
 
 /area/station/command/server
-	name = "\proper Messaging Server Room"
+	name = "Комната Сервера Мессенджера"
 	icon_state = "server"
 	sound_environment = SOUND_AREA_STANDARD_STATION
 
@@ -74,5 +74,5 @@
 	icon_state = "checkpoint1"
 
 /area/station/command/customs2
-	name = "Customs"
+	name = "Дополнительный Контрольно-Пропускной Пункт Командования"
 	icon_state = "security"

@@ -1,25 +1,25 @@
 // Robotics areas
 
 /area/station/science/robotics
-	name = "\improper Робототехника"
+	name = "Робототехника"
 	icon_state = "robo"
 
 /area/station/science/robotics/chargebay
-	name = "\improper Мех. Отсек"
+	name = "Мех. Отсек РНД"
 	icon_state = "mechbay"
 
 /area/station/science/robotics/showroom
-	name = "\improper Robotics Showroom"
+	name = "Салон Робототехники"
 	icon_state = "showroom"
 
 // Experimentor
 
 /area/station/science/explab
-	name = "\improper Лаборатория E.X.P.E.R.I-MENTOR"
+	name = "Лаборатория E.X.P.E.R.I-MENTOR"
 	icon_state = "scilab"
 
 /area/station/science/explab/chamber
-	name = "\improper Камера E.X.P.E.R.I-MENTOR"
+	name = "Камера E.X.P.E.R.I-MENTOR"
 	icon_state = "scitest"
 
 /area/station/science/research
@@ -27,11 +27,11 @@
 	icon_state = "sci"
 
 /area/station/science/break_room
-	name = "\improper Комната Отдыха РНД"
+	name = "Комната Отдыха РНД"
 	icon_state = "scibreak"
 
 /area/station/science/genetics
-	name = "\improper Лаборатория Генетики"
+	name = "Лаборатория Генетики"
 	icon_state = "genetics"
 
 
@@ -43,55 +43,55 @@
 	icon_state = "rnd"
 
 /area/station/science/hallway
-	name = "\improper Коридор РНД"
+	name = "Коридор РНД"
 	icon_state = "sci"
 
 /area/station/science/supermatter
-	name = "\improper Supermatter Lab"
+	name = "Лаборатория Суперматерии"
 	icon_state = "scilab"
 
 /area/station/science/xenobiology
-	name = "\improper Лаборатория Ксенобиологии"
+	name = "Лаборатория Ксенобиологии"
 	icon_state = "xenobio"
 	xenobiology_compatible = TRUE
 
 /area/station/science/xenobiology/xenoflora_storage
-	name = "Xenoflora Storage"
+	name = "Хранилище Ксенофлоры"
 	icon_state = "scilab"
 
 /area/station/science/xenobiology/xenoflora
-	name = "\improper Xenoflora Lab"
+	name = "Лаборатория Ксенофлоры"
 	icon_state = "scilab"
 
 /area/station/science/storage
-	name = "\improper Хранилище Токсинов РНД"
+	name = "Хранилище Токсинов РНД"
 	icon_state = "toxstorage"
 
 /area/station/science/toxins/test
-	name = "\improper Тестовая Комната Токиснов РНД"
+	name = "Тестовая Комната Токиснов РНД"
 	icon_state = "toxtest"
 	valid_territory = FALSE
 
 /area/station/science/toxins/mixing
-	name = "\improper Комната Смешивания Токсинов РНД"
+	name = "Комната Смешивания Токсинов РНД"
 	icon_state = "toxmix"
 
 /area/station/science/toxins/launch
-	name = "\improper Комната Запуска Токсинов РНД"
+	name = "Комната Запуска Токсинов РНД"
 	icon_state = "toxlaunch"
 
 /area/station/science/misc_lab
-	name = "\improper Комната Химии РНД"
+	name = "Лаборатория Химии РНД"
 	icon_state = "scichem"
 
 /area/station/science/test_chamber
-	name = "\improper Камера Химии РНД"
+	name = "Камера Химии РНД"
 	icon_state = "scitest"
 
 /area/station/science/server
-	name = "\improper Серверная Комната"
+	name = "Серверная Комната"
 	icon_state = "server"
 
 /area/station/science/server/coldroom
-	name = "\improper Холодильная Камера Серверной"
+	name = "Холодильная Камера Серверной"
 	icon_state = "servercold"

@@ -6,41 +6,41 @@
 	max_ambience_cooldown = 180 SECONDS
 
 /area/station/medical/medbay
-	name = "\improper Медицинский Отдел"
+	name = "Медицинский Отдел"
 	icon_state = "medbay"
 
 //Medbay is a large area, these additional areas help level out APC load.
 /area/station/medical/medbay2
-	name = "\improper Медицинский Отдел"
+	name = "Медицинский Отдел"
 	icon_state = "medbay"
 
 /area/station/medical/medbay3
-	name = "\improper Медицинский Отдел"
+	name = "Медицинский Отдел"
 	icon_state = "medbay"
 
 /area/station/medical/storage
-	name = "Хранилище Медицинского Отдела"
+	name = "Склад Медицинского Отдела"
 	icon_state = "medbaystorage"
 
 /area/station/medical/reception
-	name = "\improper Ресепшен Медицинского Отдела"
+	name = "Ресепшен Медицинского Отдела"
 	icon_state = "medbaylobby"
 
 /area/station/medical/psych
-	name = "\improper Комната Психолога"
+	name = "Офис Психолога"
 	icon_state = "medbaypsych"
 
 /area/station/medical/break_room
-	name = "\improper Комната Отдыха Медицинского Отдела"
+	name = "Комната Отдыха Медицинского Отдела"
 	icon_state = "medbaybreak"
 
 /area/station/medical/patients_rooms
-	name = "\improper Комнаты Пациентов"
+	name = "Комнаты Пациентов"
 	icon_state = "patients"
 	sound_environment = SOUND_AREA_SMALL_SOFTFLOOR
 
 /area/station/medical/ward
-	name = "\improper Комната ожидания Медицинского Отдела"
+	name = "Комната Ожидания Медицинского Отдела"
 	icon_state = "patientsward"
 
 /area/station/medical/isolation/a
@@ -56,7 +56,7 @@
 	icon_state = "medbayisoc"
 
 /area/station/medical/isolation
-	name = "Isolation Access"
+	name = "Зона Изоляции"
 	icon_state = "medbayisoaccess"
 
 /area/station/medical/coldroom
@@ -65,7 +65,7 @@
 
 
 /area/station/medical/storage/secondary
-	name = "Medical Secondary Storage"
+	name = "Дополнительный Склад Медицинского Отдела"
 	icon_state = "medbaysecstorage"
 
 /area/station/medical/virology
@@ -73,34 +73,34 @@
 	icon_state = "virology"
 
 /area/station/medical/virology/lab
-	name = "\improper Лаборатория Вирусологии"
+	name = "Лаборатория Вирусологии"
 	icon_state = "virology"
 
 /area/station/medical/morgue
-	name = "\improper Морг"
+	name = "Морг"
 	icon_state = "morgue"
 	ambientsounds = SPOOKY_SOUNDS
 	is_haunted = TRUE
 	sound_environment = SOUND_AREA_SMALL_ENCLOSED
 
 /area/station/medical/chemistry
-	name = "Химия"
+	name = "Химическая Лаборатория Медицинского Отдела"
 	icon_state = "chem"
 
 /area/station/medical/surgery
-	name = "\improper Surgery"
+	name = "Операционное Отделение"
 	icon_state = "surgery"
 
 /area/station/medical/surgery/primary
-	name = "Первая Хирургия"
+	name = "Первая Операционная"
 	icon_state = "surgery1"
 
 /area/station/medical/surgery/secondary
-	name = "Вторая Хирургия"
+	name = "Вторая Операционная"
 	icon_state = "surgery2"
 
 /area/station/medical/surgery/observation
-	name = "Surgery Observation"
+	name = "Комната Оперативного Наблюдения"
 	icon_state = "surgery"
 
 /area/station/medical/cryo
@@ -108,17 +108,17 @@
 	icon_state = "cryo"
 
 /area/station/medical/exam_room
-	name = "\improper Комната Осмотра Медицинского Отдела"
+	name = "Комната Осмотра Медицинского Отдела"
 	icon_state = "exam_room"
 
 /area/station/medical/cloning
-	name = "\improper Лаборатория Клонирования"
+	name = "Лаборатория Клонирования"
 	icon_state = "cloning"
 
 /area/station/medical/sleeper
-	name = "\improper Центр Медицинского Лечения"
+	name = "Центр Медицинского Лечения"
 	icon_state = "exam_room"
 
 /area/station/medical/paramedic
-	name = "Парамедик"
+	name = "Офис Парамедик"
 	icon_state = "paramedic"

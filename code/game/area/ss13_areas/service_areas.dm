@@ -1,14 +1,14 @@
 /area/station/service/cafeteria
-	name = "\improper Кафетерий"
+	name = "Кафетерий"
 	icon_state = "cafeteria"
 
 
 /area/station/service/kitchen
-	name = "\improper Кухня"
+	name = "Кухня"
 	icon_state = "kitchen"
 
 /area/station/service/bar
-	name = "\improper Бар"
+	name = "Бар"
 	icon_state = "bar"
 	sound_environment = SOUND_AREA_WOODFLOOR
 
@@ -17,18 +17,18 @@
 	icon_state = "bar"
 
 /area/station/service/theatre
-	name = "\improper Театр"
+	name = "Театр"
 	icon_state = "Theatre"
 	sound_environment = SOUND_AREA_WOODFLOOR
 
 
 /area/station/service/library
-	name = "\improper Библиотека"
+	name = "Библиотека"
 	icon_state = "library"
 	sound_environment = SOUND_AREA_LARGE_SOFTFLOOR
 
 /area/station/service/chapel
-	name = "\improper Церковь"
+	name = "Церковь"
 	icon_state = "chapel"
 	ambientsounds = HOLY_SOUNDS
 	is_haunted = TRUE
@@ -36,27 +36,27 @@
 	valid_territory = FALSE
 
 /area/station/service/chapel/office
-	name = "\improper Офис Священника"
+	name = "Офис Священника"
 	icon_state = "chapeloffice"
 
 /area/station/service/clown
-	name = "\improper Офис Клоуна"
+	name = "Офис Клоуна"
 	icon_state = "clown_office"
 
 /area/station/service/clown/secret
-	name = "\improper Top Secret Clown HQ"
+	name = "Сверхсекретная Штаб-Квартира Клоуна"
 	requires_power = FALSE
 
 /area/station/service/mime
-	name = "\improper Офис Мима"
+	name = "Офис Мима"
 	icon_state = "mime_office"
 
 /area/station/service/barber
-	name = "\improper Парикмахерская"
+	name = "Парикмахерская"
 	icon_state = "barber"
 
 /area/station/service/janitor
-	name = "\improper Каморка Уборщика"
+	name = "Каморка Уборщика"
 	icon_state = "janitor"
 	sound_environment = SOUND_AREA_SMALL_ENCLOSED
 
@@ -66,7 +66,7 @@
 	sound_environment = SOUND_AREA_STANDARD_STATION
 
 /area/station/service/expedition
-	name = "\improper Комната Экспедиции"
+	name = "Комната Экспедиции"
 	icon_state = "expedition"
 	ambientsounds = ENGINEERING_SOUNDS
 	sound_environment = SOUND_AREA_STANDARD_STATION

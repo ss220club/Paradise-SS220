@@ -26,7 +26,7 @@
 	icon_state = "fpmaint"
 
 /area/station/maintenance/fsmaint
-	name = "Северо-Восточные Технические Тоннели "
+	name = "Северо-Восточные Технические Тоннели"
 	icon_state = "fsmaint"
 
 /area/station/maintenance/fsmaint2
@@ -94,11 +94,11 @@
 	icon_state = "atmosmaint"
 
 /area/station/maintenance/incinerator
-	name = "\improper Мусоросжигатель"
+	name = "Мусоросжигатель"
 	icon_state = "incin"
 
 /area/station/maintenance/turbine
-	name = "\improper Турбина"
+	name = "Турбина"
 	icon_state = "turbine"
 
 /area/station/maintenance/disposal
@@ -106,39 +106,39 @@
 	icon_state = "disposals"
 
 /area/station/maintenance/genetics
-	name = "Старая Комната Генетики"
+	name = "Технические Тоннели Генетики"
 	icon_state = "asmaint"
 
 /area/station/maintenance/electrical
-	name = "Старая Комната Электрооборудования"
+	name = "Необслуживаемое Помещение Электрооборудования"
 	icon_state = "elect"
 
 /area/station/maintenance/abandonedbar
-	name = "Старый Бар"
+	name = "Заброшенный Бар"
 	icon_state = "oldbar"
 	apc_starts_off = TRUE
 
 /area/station/maintenance/library
-	name = "Старая Библиотека"
+	name = "Заброшенная Библиотека"
 	icon_state = "library"
 	apc_starts_off = TRUE
 
 /area/station/maintenance/theatre
-	name = "\improper Старый Театр"
+	name = "Заброшеный Театр"
 	icon_state = "Theatre"
 	sound_environment = SOUND_AREA_WOODFLOOR
 
 /area/station/maintenance/spacehut
-	name = "Space Hut"
+	name = "Космическая Хата"
 	icon_state = "spacehut"
 	apc_starts_off = TRUE
 
 /area/station/maintenance/electrical_shop
-	name ="Электроника Дэна"
+	name ="Уголок Электроники"
 	icon_state = "elect"
 
 /area/station/maintenance/gambling_den
-	name = "Gambling Den"
+	name = "Игровой Зал"
 	icon_state = "yellow"
 
 /area/station/maintenance/consarea
@@ -146,41 +146,41 @@
 	icon_state = "construction"
 
 /area/station/maintenance/auxsolarport
-	name = "\improper Северо-Восточные Солнечные Панели"
+	name = "Северо-Восточные Солнечные Панели"
 	icon_state = "FPctrl"
 
 /area/station/maintenance/starboardsolar
-	name = "\improper Юго-Восточные Солнечные Панели"
+	name = "Юго-Восточные Солнечные Панели"
 	icon_state = "ASctrl"
 
 /area/station/maintenance/starboardsolar/aft
-	name = "\improper Aft Starboard Solar Maintenance"
+	name = "Юго-Восточные Солнечные Панели"
 	icon_state = "ASctrl"
 
 /area/station/maintenance/portsolar
-	name = "\improper Юго-Западные Солнечные Панели"
+	name = "Юго-Западные Солнечные Панели"
 	icon_state = "APctrl"
 
 /area/station/maintenance/auxsolarstarboard
-	name = "\improper Северо-Восточные Солнечные Панели"
+	name = "Северо-Восточные Солнечные Панели"
 	icon_state = "FSctrl"
 
 /area/station/maintenance/assembly_line //Derelict Assembly Line
-	name = "\improper Комната Сборочной Линии"
+	name = "Комната Сборочной Линии"
 	icon_state = "ass_line"
 	apc_starts_off = TRUE
 
 /area/station/maintenance/abandoned_garden
-	name = "\improper Старый Сад"
+	name = "Заброшенный Сад"
 	icon_state = "hydro"
 	sound_environment = SOUND_AREA_SMALL_ENCLOSED
 
 /area/station/maintenance/xenobio_north
-	name = "Xenobiology North Maintenance"
+	name = "Северные Технические Тоннели Ксенобиологии"
 	icon_state = "xenobio_north_maint"
 
 /area/station/maintenance/xenobio_south
-	name = "Xenobiology South Maintenance"
+	name = "Южные Технические Тоннели Ксенобиологии"
 	icon_state = "xenobio_south_maint"
 
 

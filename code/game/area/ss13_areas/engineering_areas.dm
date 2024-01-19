@@ -8,7 +8,7 @@
 	icon_state = "atmosctrl"
 
 /area/station/engineering/atmos/distribution
-	name = "Atmospherics Distribution Loop"
+	name = "Распределительный Контур Атмосферии"
 	icon_state = "atmos"
 
 // general engineering
@@ -17,7 +17,7 @@
 	sound_environment = SOUND_AREA_LARGE_ENCLOSED
 
 /area/station/engineering/smes
-	name = "\improper Инженерные СМЕСы"
+	name = "Инженерные СМЕСы"
 	icon_state = "engine_smes"
 	dynamic_lighting = DYNAMIC_LIGHTING_FORCED
 
@@ -26,12 +26,12 @@
 	icon_state = "engine_control"
 
 /area/station/engineering/break_room
-	name = "\improper Фойе Инженерного Отдела"
+	name = "Фойе Инженерного Отдела"
 	icon_state = "engibreak"
 	sound_environment = SOUND_AREA_SMALL_ENCLOSED
 
 /area/station/engineering/break_room/secondary
-	name = "\improper Secondary Engineering Foyer"
+	name = "Второе Фойе Инженерного Отдела"
 
 /area/station/engineering/equipmentstorage
 	name = "Инженерный Склад Снаряжения"
@@ -39,30 +39,30 @@
 	sound_environment = SOUND_AREA_SMALL_ENCLOSED
 
 /area/station/engineering/hardsuitstorage
-	name = "\improper Инженерный Склад ВКД"
+	name = "Инженерный Склад ВКД"
 	icon_state = "engi"
 
 /area/station/engineering/controlroom
-	name = "\improper Инженерная Комната Управления"
+	name = "Инженерная Комната Управления"
 	icon_state = "engine_monitoring"
 
 /area/station/engineering/gravitygenerator
-	name = "\improper Генератор Гравитации"
+	name = "Генератор Гравитации"
 	icon_state = "gravgen"
 
 /area/station/engineering/ai_transit_tube
-	name = "\improper Транзитная Труба Спутника ИИ"
+	name = "Транзитная Труба Спутника ИИ"
 	icon_state = "ai"
 	sound_environment = SOUND_AREA_SMALL_ENCLOSED
 
 // engine areas
 
 /area/station/engineering/engine
-	name = "\improper Engine"
+	name = "Двигатель"
 	icon_state = "engine"
 
 /area/station/engineering/engine/supermatter
-	name = "\improper Двигатель Суперматерии"
+	name = "Двигатель Суперматерии"
 	sound_environment = SOUND_AREA_SMALL_ENCLOSED
 
 //Solars
@@ -75,31 +75,31 @@
 	sound_environment = SOUND_AREA_SPACE
 
 /area/station/engineering/solar/auxport
-	name = "\improper Fore Port Solar Array"
+	name = "Северо-Западные Солнечные Панели"
 	icon_state = "FPsolars"
 
 /area/station/engineering/solar/auxstarboard
-	name = "\improper Fore Starboard Solar Array"
+	name = "Северо-Восточные Солнечные Панели"
 	icon_state = "FSsolars"
 
 /area/station/engineering/solar/fore
-	name = "\improper Fore Solar Array"
+	name = "Северные Солнечные Панели"
 	icon_state = "yellow"
 
 /area/station/engineering/solar/aft
-	name = "\improper Aft Solar Array"
+	name = "Южные Солнечные Панели"
 	icon_state = "aft"
 
 /area/station/engineering/solar/starboard
-	name = "\improper Starboard Solar Array"
+	name = "Восточные Солнечные Панели"
 	icon_state = "ASsolars"
 
 /area/station/engineering/solar/starboard/aft
-	name = "\improper Aft Starboard Solar Array"
+	name = "Южно-Восточные Солнечные Панели"
 	icon_state = "ASsolars"
 
 /area/station/engineering/solar/port
-	name = "\improper Aft Port Solar Array"
+	name = "Южно-Западные Солнечные Панели"
 	icon_state = "APsolars"
 
 /area/station/engineering/secure_storage

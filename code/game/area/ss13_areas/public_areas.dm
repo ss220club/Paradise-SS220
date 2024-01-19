@@ -8,72 +8,72 @@
 	sound_environment = SOUND_AREA_STANDARD_STATION
 
 /area/station/hallway/primary/fore
-	name = "\proper Основной Северный Коридор"
+	name = "Основной Северный Коридор"
 	icon_state = "hallF"
 
 /area/station/hallway/primary/fore/west
-	name = "\proper Северо-Западный Коридор"
+	name = "Северо-Западный Коридор"
 
 /area/station/hallway/primary/fore/east
-	name = "\proper Северо-Восточный Коридор"
+	name = "Северо-Восточный Коридор"
 
 /area/station/hallway/primary/fore/north
-	name = "\proper Северный Коридор"
+	name = "Северный Коридор"
 
 /area/station/hallway/primary/fore/south
-	name = "\proper Северо-Южный Коридор"
+	name = "Северо-Южный Коридор"
 
 /area/station/hallway/primary/starboard
-	name = "\proper Основной Восточный Коридор"
+	name = "Основной Восточный Коридор"
 	icon_state = "hallS"
 
 /area/station/hallway/primary/starboard/west
-	name = "\proper Восточно-Западный Коридор"
+	name = "Восточно-Западный Коридор"
 
 /area/station/hallway/primary/starboard/east
-	name = "\proper Восточный Коридор"
+	name = "Восточный Коридор"
 
 /area/station/hallway/primary/starboard/north
-	name = "\proper Восточно-Северный Коридор"
+	name = "Восточно-Северный Коридор"
 
 /area/station/hallway/primary/starboard/south
-	name = "\proper Восточно-Южный Коридор"
+	name = "Восточно-Южный Коридор"
 
 /area/station/hallway/primary/aft
-	name = "\proper Основной Южный Коридор"
+	name = "Основной Южный Коридор"
 	icon_state = "hallA"
 
 /area/station/hallway/primary/aft/west
-	name = "\proper Южно-Западный Коридор"
+	name = "Южно-Западный Коридор"
 
 /area/station/hallway/primary/aft/east
-	name = "\proper Южно-Восточный Коридор"
+	name = "Южно-Восточный Коридор"
 
 /area/station/hallway/primary/aft/north
-	name = "\proper Южно-Северный Коридор"
+	name = "Южно-Северный Коридор"
 
 /area/station/hallway/primary/aft/south
-	name = "\proper Южный Коридор"
+	name = "Южный Коридор"
 
 
 /area/station/hallway/primary/port
-	name = "\proper Основной Западный Коридор"
+	name = "Основной Западный Коридор"
 	icon_state = "hallP"
 
 /area/station/hallway/primary/port/west
-	name = "\proper Западный Коридор"
+	name = "Западный Коридор"
 
 /area/station/hallway/primary/port/east
-	name = "\proper Западно-Восточный Коридор"
+	name = "Западно-Восточный Коридор"
 
 /area/station/hallway/primary/port/north
-	name = "\proper Западно-Северный Коридор"
+	name = "Западно-Северный Коридор"
 
 /area/station/hallway/primary/port/south
-	name = "\proper Западно-Южный Коридор"
+	name = "Западно-Южный Коридор"
 
 /area/station/hallway/primary/central
-	name = "\proper Центральный Основной Коридор"
+	name = "Центральный Основной Коридор"
 	icon_state = "hallC"
 
 /area/station/hallway/primary/central/north
@@ -117,15 +117,15 @@
 	name = "Command-Engineering Bridge"
 
 /area/station/hallway/secondary/exit
-	name = "\proper Коридор Эвакуационного Шаттла"
+	name = "Коридор Эвакуационного Шаттла"
 	icon_state = "escape"
 
 /area/station/hallway/secondary/garden
-	name = "\proper Сад"
+	name = "Сад"
 	icon_state = "garden"
 
 /area/station/hallway/secondary/entry
-	name = "\proper Коридор Шаттла Прибытия"
+	name = "Коридор Шаттла Прибытия"
 	icon_state = "entry"
 
 /area/station/hallway/secondary/entry/north
@@ -133,83 +133,83 @@
 /area/station/hallway/secondary/entry/south
 
 /area/station/hallway/secondary/entry/lounge
-	name = "\proper Зал Прибытия"
+	name = "Зал Прибытия"
 
 /area/station/hallway/secondary/bridge
-	name = "\proper Коридор Командования"
+	name = "Коридор Командования"
 	icon_state = "hallC"
 // Other public areas
 
 
 /area/station/public/dorms
-	name = "\proper Дормитории"
+	name = "Дормитории"
 	icon_state = "dorms"
 	sound_environment = SOUND_AREA_STANDARD_STATION
 
 
 /area/crew_quarters/toilet/aux
-	name = "\proper Auxiliary Toilets"
+	name = "Вспомогательные Туалеты"
 
 /area/station/public/sleep
-	name = "\proper Криохранилище Дормиторий"
+	name = "Криохранилище Дормитория"
 	icon_state = "Sleep"
 	valid_territory = FALSE
 
 /area/station/public/sleep/secondary
-	name = "\proper Secondary Cryogenic Dormitories"
+	name = "Вторичное Криохранилище Дормитория"
 	icon_state = "Sleep"
 
 /area/station/public/sleep_male
-	name = "\proper Male Dorm"
+	name = "Мужские Дормитории"
 	icon_state = "Sleep"
 
 /area/station/public/sleep_female
-	name = "\proper Female Dorm"
+	name = "Женские Дормитории"
 	icon_state = "Sleep"
 
 /area/station/public/locker
-	name = "\proper Раздевалка"
+	name = "Раздевалка"
 	icon_state = "locker"
 
 /area/station/public/toilet
-	name = "\proper Туалеты Дормиториев"
+	name = "Туалеты Дормиторий"
 	icon_state = "toilet"
 	sound_environment = SOUND_AREA_SMALL_ENCLOSED
 
 /area/station/public/toilet/male
-	name = "\proper Male Toilets"
+	name = "Мужские Туалеты"
 
 /area/station/public/toilet/female
-	name = "\proper Female Toilets"
+	name = "Женские Туалеты"
 
 /area/station/public/toilet/unisex
-	name = "\proper Unisex Restroom"
+	name = "Общие Туалеты"
 
 /area/station/public/toilet/lockerroom
-	name = "\proper Locker Toilets"
+	name = "Туалеты Раздевалки"
 
 /area/station/public/fitness
-	name = "\proper Комната Для Фитнеса"
+	name = "Фитнес-Зал"
 	icon_state = "fitness"
 
 /area/station/public/arcade
-	name = "\proper Аркада"
+	name = "Аркаданый Зал"
 	icon_state = "arcade"
 
 /area/station/public/mrchangs
-	name = "\proper Забегаловка Мистера Чанга"
+	name = "Забегаловка Мистера Чанга"
 	icon_state = "changs"
 
 /area/station/public/clothing
-	name = "\proper Магазин Одежды"
+	name = "Магазин Одежды"
 	icon_state = "Theatre"
 
 /area/station/public/pet_store
-	name = "\proper Магазин Питомцев"
+	name = "Зоомагазин"
 	icon_state = "pet_store"
 
 /area/station/public/vacant_office
-	name = "\proper Вакантный Офис"
+	name = "Вакантный Офис"
 	icon_state = "vacantoffice"
 
 /area/station/public/vacant_office/secondary
@@ -227,30 +227,30 @@
 	icon_state = "primarystorage"
 
 /area/station/public/storage/autolathe
-	name = "Autolathe Storage"
+	name = "Хранилище Автолата"
 	icon_state = "storage"
 
 /area/station/public/storage/art
-	name = "Art Supply Storage"
+	name = "Хранилище Художественных Принадлежностей"
 	icon_state = "storage"
 
 /area/station/public/storage/emergency
-	name = "Starboard Emergency Storage"
+	name = "Восточное Аварийное Хранилище"
 	icon_state = "emergencystorage"
 
 /area/station/public/storage/emergency/port
-	name = "Port Emergency Storage"
+	name = "Западное Аварийное Хранилище"
 	icon_state = "emergencystorage"
 
 /area/station/public/storage/office
-	name = "Office Supplies"
+	name = "Канцелярские Принадлежности"
 	icon_state = "office_supplies"
 
 /area/station/public/recreation
-	name = "\proper Recreation Area"
+	name = "Зона Отдыха"
 
 /area/station/public/construction
-	name = "\proper Зона Для Строительства"
+	name = "Зона Для Строительства"
 	icon_state = "construction"
 	ambientsounds = ENGINEERING_SOUNDS
 	sound_environment = SOUND_AREA_STANDARD_STATION
