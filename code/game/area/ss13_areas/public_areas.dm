@@ -168,7 +168,7 @@
 	icon_state = "Sleep"
 
 /area/station/public/locker
-	name = "Раздевалка"
+	name = "Бытовое Помещение"
 	icon_state = "locker"
 
 /area/station/public/toilet
@@ -186,7 +186,7 @@
 	name = "Общие Туалеты"
 
 /area/station/public/toilet/lockerroom
-	name = "Туалеты Раздевалки"
+	name = "Бытовые Туалеты"
 
 /area/station/public/fitness
 	name = "Фитнес-Зал"
