@@ -17,16 +17,15 @@ Verbs related to getting fucking jacked, bro
 	key_third_person = "pushups"
 	//message = "пытается отжаться!"
 	hands_use_check = TRUE
-	emote_type = EMOTE_VISIBLE | EMOTE_FORCE_NO_RUNECHAT  // don't need an emote to see that
+	emote_type = EMOTE_VISIBLE | EMOTE_FORCE_NO_RUNECHAT  // Don't need an emote to see that
 	mob_type_allowed_typecache = list(/mob/living, /mob/dead/observer)
 	mob_type_blacklist_typecache = list(/mob/living/brain, /mob/camera, /mob/living/silicon/ai)
 	mob_type_ignore_stat_typecache = list(/mob/dead/observer)
 	var/stamina_border_max = 95 // 100 - стаминакрит сбрасывающий анимацию
-	var/oxy_border_max = 175
+	var/oxy_border_max = 150
 	var/staminaloss_per_pushup = 5
 	var/physical_job_mod = 5
-	var/pushap_div = 4 // деление чтобы игроки могли в общем счете сделать больше АЧЖУМАНИЙ
-
+	var/pushap_div = 3 // Деление чтобы игроки могли в общем счете сделать больше АЧЖУМАНИЙ
 
 /datum/emote/pushup/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
@@ -40,17 +39,9 @@ Verbs related to getting fucking jacked, bro
 	if(!can_do_pushup(user))
 		return
 
-
-	//user.set_face_dir(WEST)
 	var/mob/living/L
 	if(isliving(user))
 		L = user
-		//if(L.dir == EAST)
-		// if(LYING_DOWN LEFT)
-		// if(L.)
-		// set_lying_angle(270)
-		// lying_angle
-
 		// In BYOND-angles 0 is NORTH, 90 is EAST, 180 is SOUTH and 270 is WEST.
 		if(L.lying_prev == 90)
 			L.forced_look = EAST
@@ -58,10 +49,18 @@ Verbs related to getting fucking jacked, bro
 			L.forced_look = WEST
 	user.visible_message(span_notice("[user] принял упор лежа."), span_notice("Вы приняли упор лежа."), span_notice("Вы слышите шорох."))
 
-	var/choice = tgui_input_list(user, "Отжимание с каким упором?", "Отжимания", list("На ноги и руки", "На колени", "На одной руке", "С хлопком", "На одной руке с хлопком"), 60 SECONDS)
+	var/choise_list = list(
+		"На ноги и руки",
+		"На колени",
+		"На одной руке",
+		"На ноги и руки с хлопком",
+		"На одной руке с хлопком",
+		"На ноги и руки, медленный",
+		"На ноги и руки, очень медленный")
+	var/choice = tgui_input_list(user, "Отжимание с каким упором?", "Отжимания", choise_list, 60 SECONDS)
 	switch(choice)
 		if("На ноги и руки")
-			user.visible_message(span_notice("[user] перенес свой вес на руки и ноги."), span_notice("Вы переносите свой вес на руки и ноги"), span_notice("Вы слышите шорох."))
+			user.visible_message(span_notice("[user] перенес свой вес на руки и ноги."), span_notice("Вы переносите свой вес на руки и ноги."), span_notice("Вы слышите шорох."))
 			execute_pushups(user, intentional)
 		if("На колени")
 			user.visible_message(span_notice("[user] переносит свой вес на колени. Жалкое зрелище."), span_notice("Вы сместили вес на колени. СЛАБАК!"), span_notice("Вы слышите шорох."))
@@ -69,13 +68,18 @@ Verbs related to getting fucking jacked, bro
 		if("На одной руке")
 			user.visible_message(span_boldnotice("[user] перенес свой вес на ОДНУ РУКУ! Мощно!"), span_boldnotice("Вы переносите свой вес на одну руку. Сильно!"), span_notice("Вы слышите шорох."))
 			execute_pushups(user, intentional, one_arm = TRUE)
-		if("С хлопком")
+		if("На ноги и руки с хлопком")
 			user.visible_message(span_boldnotice("[user] перенес свой вес на руки и ноги и приготовился для хлопков! Стильно!"), span_boldnotice("Вы переносите свой вес на руки и ноги и приготовились для хлопков. Стильно!"), span_notice("Вы слышите шорох."))
 			execute_pushups(user, intentional, clap = TRUE)
 		if("На одной руке с хлопком")
 			user.visible_message(span_boldnotice("[user] перенес свой вес на ОДНУ РУКУ и приготовил вторую для ХЛОПКА! НЕВЕРОЯТНО!"), span_boldnotice("Вы переносите свой вес на одну руку, а вторую приготовили для хлопка. Невероятно!"), span_notice("Вы слышите шорох."))
 			execute_pushups(user, intentional, clap = TRUE, one_arm = TRUE)
-
+		if("На ноги и руки, медленный")
+			user.visible_message(span_boldnotice("[user] перенес свой вес на ОДНУ РУКУ и приготовил вторую для ХЛОПКА! НЕВЕРОЯТНО!"), span_boldnotice("Вы переносите свой вес на одну руку, а вторую приготовили для хлопка. Невероятно!"), span_notice("Вы слышите шорох."))
+			execute_pushups(user, intentional, time_div = 2)
+		if("На ноги и руки, очень медленный")
+			user.visible_message(span_boldnotice("[user] перенес свой вес на ОДНУ РУКУ и приготовил вторую для ХЛОПКА! НЕВЕРОЯТНО!"), span_boldnotice("Вы переносите свой вес на одну руку, а вторую приготовили для хлопка. Невероятно!"), span_notice("Вы слышите шорох."))
+			execute_pushups(user, intentional, time_div = 4)
 		else
 			if(L)
 				L.clear_forced_look(quiet = TRUE)
@@ -83,13 +87,13 @@ Verbs related to getting fucking jacked, bro
 	if(L)
 		L.clear_forced_look(quiet = TRUE)
 
-/datum/emote/pushup/proc/execute_pushups(mob/user, intentional, on_knees = FALSE, one_arm = FALSE, clap = FALSE)
+/datum/emote/pushup/proc/execute_pushups(mob/user, intentional, time_div = 1, on_knees = FALSE, one_arm = FALSE, clap = FALSE)
 	if(!can_do_pushup(user))
 		return
 
 	user.PrepareForPushupAnimation()
 
-	if(isobserver(user))	// госты тоже хотят отжиматься!
+	if(isobserver(user))	// Госты тоже хотят отжиматься!
 		user.PushupAnimation()
 		return
 
@@ -103,9 +107,9 @@ Verbs related to getting fucking jacked, bro
 		if(!can_do_pushup(user))
 			return
 		currentloss = L.getStaminaLoss() + L.getOxyLoss()
-		pushup_value = calculate_valueloss_per_pushup(user, on_knees, one_arm, clap)
-		var/time_div = 1 - round(L.getOxyLoss() / 300, 0.05)
-		if(!user.PushupAnimation(time_div))
+		pushup_value = calculate_valueloss_per_pushup(user, on_knees, one_arm, clap) / time_div
+		var/temp_time_div = (1 - round(L.getOxyLoss()  / 300, 0.05)) / time_div
+		if(!user.PushupAnimation(temp_time_div))
 			user.visible_message(span_notice("[user] прекратил отжиматься."), span_notice("Вы прекратили отжиматься."), span_notice("Вы слишите шорох."))
 			return
 		pushups_in_a_row++
@@ -126,7 +130,7 @@ Verbs related to getting fucking jacked, bro
 				return
 
 /atom/proc/PrepareForPushupAnimation()
-	var/matrix/matrix = matrix() //all this to make their face actually face the floor... sigh... I hate resting code
+	var/matrix/matrix = matrix() // All this to make their face actually face the floor... sigh... I hate resting code
 	switch(dir)
 		if(WEST)
 			matrix.Turn(270)
@@ -145,11 +149,11 @@ Verbs related to getting fucking jacked, bro
 	var/delay = 0.6 SECONDS / time_div
 	var/time_low = 0.2 SECONDS / time_div
 	var/time_hight = 0.8 SECONDS / time_div
-	animate(src, pixel_y = target_y, time = time_hight, easing = QUAD_EASING) //down to the floor
+	animate(src, pixel_y = target_y, time = time_hight, easing = QUAD_EASING) // Down to the floor
 	if(!do_after(src, delay, TRUE))
 		animate(src, pixel_y = 0, time = time_low, easing = QUAD_EASING)
 		return FALSE
-	animate(src, pixel_y = 0, time = time_hight, easing = QUAD_EASING) //back up
+	animate(src, pixel_y = 0, time = time_hight, easing = QUAD_EASING) // Back up
 	if(!do_after(src, delay, TRUE))
 		animate(src, pixel_y = 0, time = time_low, easing = QUAD_EASING)
 		return FALSE
@@ -195,8 +199,8 @@ Verbs related to getting fucking jacked, bro
 
 
 /datum/emote/pushup/proc/calculate_valueloss_per_pushup(mob/living/user, on_knees = FALSE, one_arm = FALSE, clap = FALSE)
-	//humans have 120 stamina
-	//default loss per pushup = 5 stamina
+	// Humans have 120 stamina
+	// Default loss per pushup = 5 stamina
 	if(ismachineperson(user) || isskeleton(user))
 		return 0
 
