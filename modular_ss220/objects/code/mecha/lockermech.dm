@@ -8,10 +8,10 @@
 	max_integrity = 100 // Its made of scraps
 	lights_power = 5
 	step_in = 4 // Same speed as a Ripley, for now.
-	var/fast_pressure_step_in = 2 //step_in while in normal pressure conditions
-	var/slow_pressure_step_in = 4 //step_in while in better pressure conditions
+	var/fast_pressure_step_in = 2 // step_in while in normal pressure conditions
+	var/slow_pressure_step_in = 4 // step_in while in better pressure conditions
 	armor = list(melee = 20, bullet = 10, laser = 10, energy = 0, bomb = 10, rad = 0, fire = 70, acid = 60)
-	internal_damage_threshold = 30 //Its got shitty durability
+	internal_damage_threshold = 30 // Its got shitty durability
 	max_equip = 2 // You only have two arms and the control system is shitty
 	wreckage = /obj/structure/mecha_wreckage/lockermech
 	var/list/cargo = new
@@ -31,25 +31,15 @@
 
 /obj/mecha/lockermech/Move()
 	. = ..()
-	if(.)
-		collect_ore()
 	update_pressure()
-
-/obj/mecha/lockermech/proc/collect_ore()
-	if(locate(/obj/item/mecha_parts/mecha_equipment/hydraulic_clamp/lockermech) in equipment)
-		var/obj/structure/ore_box/ore_box = locate(/obj/structure/ore_box) in cargo
-		if(ore_box)
-			for(var/obj/item/stack/ore/ore in range(1, src))
-				if(ore.Adjacent(src) && ((get_dir(src, ore) & dir) || ore.loc == loc)) // We can reach it and it's in front of us? grab it!
-					ore.forceMove(ore_box)
 
 /obj/mecha/lockermech/proc/update_pressure()
 	if(thrusters_active)
 		return // Don't calculate this if they have thrusters on, this is calculated right after domove because of course it is
 
-	var/turf/T = get_turf(loc)
+	var/turf/target_turf = get_turf(loc)
 
-	if(lavaland_equipment_pressure_check(T))
+	if(lavaland_equipment_pressure_check(target_turf))
 		step_in = fast_pressure_step_in
 		for(var/obj/item/mecha_parts/mecha_equipment/drill/lockermech/drill in equipment)
 			drill.equip_cooldown = initial(drill.equip_cooldown)/2
@@ -58,8 +48,8 @@
 		for(var/obj/item/mecha_parts/mecha_equipment/drill/lockermech/drill in equipment)
 			drill.equip_cooldown = initial(drill.equip_cooldown)
 
-/obj/mecha/lockermech/Exit(atom/movable/O)
-	if(O in cargo)
+/obj/mecha/lockermech/Exit(atom/movable/object)
+	if(object in cargo)
 		return FALSE
 	return ..()
 
@@ -67,8 +57,8 @@
 	var/output = ..()
 	output += "<b>Cargo Compartment Contents:</b><div style=\"margin-left: 15px;\">"
 	if(length(cargo))
-		for(var/obj/O in cargo)
-			output += "<a href='?src=[UID()];drop_from_cargo=\ref[O]'>Unload</a> : [O]<br>"
+		for(var/obj/object in cargo)
+			output += "<a href='?src=[UID()];drop_from_cargo=\ref[object]'>Unload</a> : [object]<br>"
 	else
 		output += "Nothing"
 	output += "</div>"
@@ -77,31 +67,31 @@
 /obj/mecha/lockermech/Topic(href, href_list)
 	..()
 	if(href_list["drop_from_cargo"])
-		var/obj/O = locate(href_list["drop_from_cargo"])
-		if(O && (O in cargo))
-			occupant_message("<span class='notice'>You unload [O].</span>")
-			O.loc = get_turf(src)
-			cargo -= O
-			var/turf/T = get_turf(O)
-			if(T)
-				T.Entered(O)
-			log_message("Unloaded [O]. Cargo compartment capacity: [cargo_capacity - length(cargo)]")
+		var/obj/object = locate(href_list["drop_from_cargo"])
+		if(object && (object in cargo))
+			occupant_message("<span class='notice'>You unload [object].</span>")
+			object.loc = get_turf(src)
+			cargo -= object
+			var/turf/target_turf = get_turf(object)
+			if(target_turf)
+				target_turf.Entered(object)
+			log_message("Unloaded [object]. Cargo compartment capacity: [cargo_capacity - length(cargo)]")
 	return
 
 /obj/mecha/lockermech/Destroy()
-	for(var/atom/movable/A in cargo)
-		A.forceMove(loc)
-		step_rand(A)
+	for(var/atom/movable/thing in cargo)
+		thing.forceMove(loc)
+		step_rand(thing)
 	cargo.Cut()
 	return ..()
 
 /obj/mecha/lockermech/ex_act(severity)
 	..()
-	for(var/X in cargo)
-		var/obj/O = X
+	for(var/thing in cargo)
+		var/obj/object = thing
 		if(prob(30 / severity))
-			cargo -= O
-			O.forceMove(drop_location())
+			cargo -= object
+			object.forceMove(drop_location())
 
 /obj/mecha/lockermech/emag_act(mob/user)
 	if(!emagged)
