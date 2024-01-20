@@ -104,8 +104,8 @@ Verbs related to getting fucking jacked, bro
 			return
 		currentloss = L.getStaminaLoss() + L.getOxyLoss()
 		pushup_value = calculate_valueloss_per_pushup(user, on_knees, one_arm, clap)
-		var/time_mod = 1 - round(L.getOxyLoss() / 300, 0.05)
-		if(!user.PushupAnimation(time_mod))
+		var/time_div = 1 - round(L.getOxyLoss() / 300, 0.05)
+		if(!user.PushupAnimation(time_div))
 			user.visible_message(span_notice("[user] прекратил отжиматься."), span_notice("Вы прекратили отжиматься."), span_notice("Вы слишите шорох."))
 			return
 		pushups_in_a_row++
@@ -140,11 +140,11 @@ Verbs related to getting fucking jacked, bro
 				dir = WEST
 				matrix.Turn(270)
 
-/atom/proc/PushupAnimation(time_mod = 1)
+/atom/proc/PushupAnimation(time_div = 1)
 	var/target_y = -5
-	var/delay = 0.6 SECONDS * time_mod
-	var/time_low = 0.2 SECONDS * time_mod
-	var/time_hight = 0.8 SECONDS * time_mod
+	var/delay = 0.6 SECONDS / time_div
+	var/time_low = 0.2 SECONDS / time_div
+	var/time_hight = 0.8 SECONDS / time_div
 	animate(src, pixel_y = target_y, time = time_hight, easing = QUAD_EASING) //down to the floor
 	if(!do_after(src, delay, TRUE))
 		animate(src, pixel_y = 0, time = time_low, easing = QUAD_EASING)
