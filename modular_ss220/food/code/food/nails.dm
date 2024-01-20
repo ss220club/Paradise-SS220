@@ -36,8 +36,6 @@
 		user.vomit(lost_nutrition = 0, blood = 15, should_confuse = FALSE)
 		user.emote("scream")
 
-	return ..()
-
 /datum/food_processor_process/nails
 	input = /obj/item/stack/rods
 	output = /obj/item/nails
