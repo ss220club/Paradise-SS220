@@ -1,6 +1,8 @@
 // Security
 /datum/job/officer/equip(mob/living/carbon/human/H, visualsOnly, announce)
 	. = ..()
+	if(flag == JOB_CADET)
+		return
 	var/accessory = new /obj/item/clothing/accessory/rank/sec(H)
 	H.equip_or_collect(accessory, SLOT_HUD_IN_BACKPACK)
 

@@ -25,8 +25,8 @@ Verbs related to getting fucking jacked, bro
 	var/staminaloss_per_pushup = 5 // дефолтное значение без модификаторов
 
 	var/stamina_border_max = 95 // 100 - стаминакрит сбрасывающий анимацию
-	var/oxy_border_max = 150
-	var/brute_border = 50 // С какого уровня наносится урон
+	var/oxy_border_max = 130
+	var/brute_border = 50 // С какого кол-ва отжиманий начнет наносить урон
 
 	var/list/physical_job_exp_types = list(EXP_TYPE_SECURITY, EXP_TYPE_SUPPLY, EXP_TYPE_ENGINEERING)
 	var/physical_job_mod = 5 // Модификатор за опыт на профу физической направленности
@@ -170,6 +170,8 @@ Verbs related to getting fucking jacked, bro
 	return TRUE
 
 /datum/emote/pushup/proc/can_do_pushup(mob/user)
+	if(!user.mind || !user.client)
+		return FALSE
 	if(isobserver(user))
 		return TRUE
 

@@ -31,12 +31,11 @@
 
 // ============= Attach&Pick =============
 /obj/item/clothing/under/attach_accessory(obj/item/clothing/accessory/A, mob/user, unequip = FALSE)
-	if(!istype(A, /obj/item/clothing/accessory/rank))
-		return FALSE
-	var/obj/item/clothing/accessory/rank/attachment = A
-	if(!attachment.check_allowed_to_attach(user))
-		to_chat(user, span_warning("При приближении к цели, [src.name] деактивируется!"))
-		return FALSE
+	if(istype(A, /obj/item/clothing/accessory/rank))
+		var/obj/item/clothing/accessory/rank/attachment = A
+		if(!attachment.check_allowed_to_attach(user))
+			to_chat(user, span_warning("При приближении к цели, [src.name] деактивируется!"))
+			return FALSE
 	. = ..()
 
 /obj/item/clothing/accessory/rank/attack(mob/living/carbon/human/H, mob/living/user)
