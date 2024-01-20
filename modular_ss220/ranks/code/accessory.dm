@@ -90,7 +90,7 @@
 	for(var/exp_type in exp_types)
 		if(!(exp_type in play_records))
 			continue
-		exp_sum += text2num(play_records[exp_type]) - (job_req ? job_req.exp_map[exp_type] : 0) / 60 // Конвертируем из минус в часы
+		exp_sum += (text2num(play_records[exp_type]) - (job_req ? job_req.exp_map[exp_type] : 0)) / 60 // Конвертируем из минус в часы
 
 	var/choosen_rank
 	for(var/rank in rank_exp_order_dict)
