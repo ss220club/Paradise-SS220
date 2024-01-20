@@ -1,7 +1,6 @@
 // =================================
 // Воинские и офицерские звания
 // =================================
-
 // Officer
 /obj/item/clothing/accessory/rank/sec
 	icon_state = "holobadge_rank"
