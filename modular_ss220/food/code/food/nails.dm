@@ -18,7 +18,7 @@
 /obj/item/reagent_containers/food/snacks/nails/On_Consume(mob/living/carbon/human/user)
 	. = ..()
 	to_chat(user, "<span class='warning'>Ты чувствуешь адскую боль во рту!</span>")
-	playsound(user, "bonebreak", 60, TRUE)
+	playsound(user.loc, "bonebreak", 60, TRUE)
 	user.apply_damage(5, BRUTE, "head")
 
 	switch(rand(1, 3))
