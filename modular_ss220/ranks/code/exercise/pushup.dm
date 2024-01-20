@@ -21,11 +21,18 @@ Verbs related to getting fucking jacked, bro
 	mob_type_allowed_typecache = list(/mob/living, /mob/dead/observer)
 	mob_type_blacklist_typecache = list(/mob/living/brain, /mob/camera, /mob/living/silicon/ai)
 	mob_type_ignore_stat_typecache = list(/mob/dead/observer)
+
+	var/staminaloss_per_pushup = 5 // дефолтное значение без модификаторов
+
 	var/stamina_border_max = 95 // 100 - стаминакрит сбрасывающий анимацию
 	var/oxy_border_max = 150
-	var/staminaloss_per_pushup = 5
-	var/physical_job_mod = 5
+	var/brute_border = 50 // С какого уровня наносится урон
+
+	var/list/physical_job_exp_types = list(EXP_TYPE_SECURITY, EXP_TYPE_SUPPLY, EXP_TYPE_ENGINEERING)
+	var/physical_job_mod = 5 // Модификатор за опыт на профу физической направленности
+
 	var/pushap_div = 3 // Деление чтобы игроки могли в общем счете сделать больше АЧЖУМАНИЙ
+	var/pushap_difficulty_level = 30 // Каждые N отжиманий усложняем
 
 /datum/emote/pushup/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
@@ -107,7 +114,7 @@ Verbs related to getting fucking jacked, bro
 		if(!can_do_pushup(user))
 			return
 		currentloss = L.getStaminaLoss() + L.getOxyLoss()
-		pushup_value = calculate_valueloss_per_pushup(user, on_knees, one_arm, clap) / time_div
+		pushup_value = calculate_valueloss_per_pushup(user, pushups_in_a_row, on_knees, one_arm, clap) / time_div
 		var/temp_time_div = (1 - round(L.getOxyLoss()  / 300, 0.05)) / time_div
 		if(!user.PushupAnimation(temp_time_div))
 			user.visible_message(span_notice("[user] прекратил отжиматься."), span_notice("Вы прекратили отжиматься."), span_notice("Вы слишите шорох."))
@@ -122,12 +129,15 @@ Verbs related to getting fucking jacked, bro
 
 		if((L.getStaminaLoss() + pushup_value) < stamina_border_max)
 			L.adjustStaminaLoss(pushup_value)
-		else
-			L.setStaminaLoss(stamina_border_max)
-			L.adjustOxyLoss(pushup_value)
-			if(currentloss >= borderloss)
-				to_chat(user, span_warning("Вы обессиленные падаете на пол..."))
-				return
+			continue
+
+		L.setStaminaLoss(stamina_border_max)
+		L.adjustOxyLoss(pushup_value)
+		if(pushups_in_a_row >= brute_border)
+			L.adjustBruteLoss(min(1, pushup_value))
+		if(currentloss >= borderloss)
+			to_chat(user, span_warning("Вы обессиленные падаете на пол..."))
+			return
 
 /atom/proc/PrepareForPushupAnimation()
 	var/matrix/matrix = matrix() // All this to make their face actually face the floor... sigh... I hate resting code
@@ -198,7 +208,7 @@ Verbs related to getting fucking jacked, bro
 	return TRUE
 
 
-/datum/emote/pushup/proc/calculate_valueloss_per_pushup(mob/living/user, on_knees = FALSE, one_arm = FALSE, clap = FALSE)
+/datum/emote/pushup/proc/calculate_valueloss_per_pushup(mob/living/user, pushups_in_a_row = 0, on_knees = FALSE, one_arm = FALSE, clap = FALSE)
 	// Humans have 120 stamina
 	// Default loss per pushup = 5 stamina
 	if(ismachineperson(user) || isskeleton(user))
@@ -230,7 +240,6 @@ Verbs related to getting fucking jacked, bro
 	if(H.back)
 		valueloss += 0.5
 
-	var/list/physical_job_exp_types = list(EXP_TYPE_SECURITY, EXP_TYPE_SUPPLY, EXP_TYPE_ENGINEERING)
 	var/is_physical_job = FALSE
 	var/list/exp_types = is_physical_job ? physical_job_exp_types : list(EXP_TYPE_CREW)
 
@@ -279,6 +288,8 @@ Verbs related to getting fucking jacked, bro
 		else
 			valueloss -= 5
 
+	valueloss += (pushups_in_a_row + 1) / pushap_difficulty_level	// усложняем
+
 	if(valueloss <= 0)
 		valueloss = 1
 
@@ -295,6 +306,7 @@ Verbs related to getting fucking jacked, bro
 		valueloss /= 3
 	if(isdiona(user))
 		valueloss /= 5
+
 
 	return max(0.1, valueloss / pushap_div)
 
