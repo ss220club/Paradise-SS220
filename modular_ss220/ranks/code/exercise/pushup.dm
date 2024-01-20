@@ -199,11 +199,9 @@ Verbs related to getting fucking jacked, bro
 		valueloss -= 2
 	if(one_arm)
 		valueloss += 4
-	if(valueloss <= 0)
-		valueloss = 1
 
 	if(!ishuman(user))
-		return valueloss
+		return max(1, valueloss)
 
 	var/mob/living/carbon/human/H = user
 
@@ -240,7 +238,8 @@ Verbs related to getting fucking jacked, bro
 		BODY_ZONE_R_LEG,
 		)
 	for(var/zone in extremities)
-		if(H.get_limb_by_name(zone).is_robotic())
+		var/obj/item/organ/limb = H.get_limb_by_name(zone)
+		if(limb.is_robotic())
 			valueloss -= 1
 
 	switch(exp_sum)
@@ -260,6 +259,9 @@ Verbs related to getting fucking jacked, bro
 			valueloss -= 4
 		else
 			valueloss -= 5
+
+	if(valueloss <= 0)
+		valueloss = 1
 
 	if(on_knees)
 		valueloss /= 1.5
