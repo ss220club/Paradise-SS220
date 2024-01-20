@@ -1,7 +1,6 @@
 // =================================
 // Звания наблюдателей за станцией
 // =================================
-
 // BlueShield
 /obj/item/clothing/accessory/rank/blueshield
 	icon_state = "holobadge_rank_officer"

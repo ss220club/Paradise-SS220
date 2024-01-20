@@ -30,9 +30,7 @@
 		owner = H.mind
 		get_rank_name(H)
 
-
 // ============= Attach&Pick =============
-
 /obj/item/clothing/under/attach_accessory(obj/item/clothing/accessory/A, mob/user, unequip = FALSE)
 	if(!istype(A, /obj/item/clothing/accessory/rank))
 		return FALSE
