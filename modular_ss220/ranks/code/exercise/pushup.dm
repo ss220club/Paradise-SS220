@@ -246,7 +246,7 @@ Verbs related to getting fucking jacked, bro
 	else
 		for(var/exp_type in job.exp_map)
 			if(!(exp_type in exp_types))
-				exp_sum += text2num(play_records[exp_type])
+				exp_sum += text2num(play_records[exp_type]) / 60 // Конвертируем из минут в часы
 	if(is_physical_job)
 		exp_sum *= physical_job_mod
 
