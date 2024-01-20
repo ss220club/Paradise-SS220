@@ -7,17 +7,17 @@
 	icon = 'modular_ss220/ranks/icons/clothing/attachments.dmi'
 	icon_override = 'modular_ss220/ranks/icons/clothing/mob/attachments_overlay.dmi'
 	icon_state = "holobadge"
-	item_state = ""	//no inhands
+	item_state = "" // No inhands
 	item_color = "holobadge"
 	slot_flags = SLOT_FLAG_TIE
 	w_class = WEIGHT_CLASS_TINY
 	slot = ACCESSORY_SLOT_DECOR
-	allow_duplicates = FALSE 	// Allow accessories of the same type.
+	allow_duplicates = FALSE // Allow accessories of the same type.
 	var/datum/mind/owner
 	var/saved_real_name
 	var/list/exp_types
 	var/add_job_req_exp = FALSE
-	var/list/rank_exp_order_dict	// Rank and exp map hours from which it will be awarded
+	var/list/rank_exp_order_dict // Rank and exp map hours from which it will be awarded
 
 /obj/item/clothing/accessory/rank/Initialize(mapload)
 	. = ..()
