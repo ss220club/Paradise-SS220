@@ -774,7 +774,7 @@ Pass a positive integer as an argument to override a bot's default speed.
 
 			mode = BOT_SUMMON
 			calc_summon_path()
-			speak("Реагирование.", radio_channel)
+			speak("Запрос принят. Выполняю.", radio_channel)
 
 	return TRUE
 
