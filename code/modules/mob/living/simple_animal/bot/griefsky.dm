@@ -92,7 +92,7 @@
 	if(declare_arrests)
 		var/area/location = get_area(src)
 		if(!spam_flag)
-			speak("Назад! Я сам разберусь с свиньей <b>[C]</b> с уровнем угрозы [threat] в [location]!.", radio_channel)
+			speak("Назад! Я сам разберусь со свиньей <b>[C]</b> с уровнем угрозы [threat] в [location]!.", radio_channel)
 			spam_flag = 1
 			addtimer(CALLBACK(src, PROC_REF(spam_flag_false)), 100) //to avoid spamming comms of sec for each hit
 			visible_message("[src] flails his swords and cuts [C]!")
