@@ -3,15 +3,6 @@ Verbs related to getting fucking jacked, bro
 Порт и небольшой рефактор с дополнениями отжиманий с CM + прикручивание зависимости от часов
 */
 
-/mob/living/carbon/human/verb/emote_pushup()
-	set name = "○ Отжимания"
-	set category = "Эмоции"
-	emote("pushup", intentional = TRUE)
-
-/datum/keybinding/emote/pushup
-	linked_emote = /datum/emote/pushup
-	name = "Отжимания"
-
 /datum/emote/pushup
 	key = "pushup"
 	key_third_person = "pushups"

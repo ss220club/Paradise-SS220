@@ -120,6 +120,11 @@
 	set category = "Эмоции"
 	emote("slap", intentional = TRUE)
 
+/mob/living/carbon/human/verb/emote_pushup()
+	set name = "○ Отжимания"
+	set category = "Эмоции"
+	emote("pushup", intentional = TRUE)
+
 /// ME Emotes ///
 /mob/living/carbon/human/verb/emote_scratch()
 	set name = "◦ Почесаться "

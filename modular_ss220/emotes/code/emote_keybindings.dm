@@ -49,3 +49,7 @@
 /datum/keybinding/emote/carbon/human/whip
 	linked_emote = /datum/emote/living/carbon/human/whip
 	name = "Ударять хвостом"
+
+/datum/keybinding/emote/pushup
+	linked_emote = /datum/emote/pushup
+	name = "Отжимания"
