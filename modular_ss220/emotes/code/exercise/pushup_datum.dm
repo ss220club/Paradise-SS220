@@ -18,12 +18,12 @@
 	var/message_oxy_every_value = 20
 
 	// Значение определяющее выпадение в списке на выбор
-	var/can_non_humans_do = TRUE	// Для животных и гостов
+	var/can_non_humans_do = TRUE // Для животных и гостов
 
 	// Значения модификаторов используемых в рассчетах
-	var/staminaloss_per_pushup = 5 	// Начальное значение проходящее через модификаторы
-	var/difficulty_mod = 1			// Чем больше - тем сложнее, умножаем
-	var/time_mod = 1 				// Чем больше - тем медленнее
+	var/staminaloss_per_pushup = 5 // Начальное значение проходящее через модификаторы
+	var/difficulty_mod = 1 // Чем больше - тем сложнее, умножаем
+	var/time_mod = 1 // Чем больше - тем медленнее
 
 	// Звуки воспроизводимые при каждом отжимании
 	var/sounds
@@ -36,19 +36,19 @@
 	var/physical_job_mod = 10 // Модификатор за опыт на профу физической направленности
 
 	// Корректировки
-	var/const/stamina_border_max = 95 	// 100 - стаминакрит сбрасывающий анимацию
-	var/const/oxy_border_max = 120		// 130 - оксикрит
-	var/const/pushap_div = 1 			// Больше значение - больше ачжуманий смогут сделать
+	var/const/stamina_border_max = 95 // 100 - стаминакрит сбрасывающий анимацию
+	var/const/oxy_border_max = 120 // 130 - оксикрит
+	var/const/pushap_div = 1 // Больше значение - больше ачжуманий смогут сделать
 
 	// Усложнители против абуза химикатов и прочего
-	var/pushap_difficulty_level = 30 			// Каждые N отжиманий усложняем
-	var/pushap_difficulty_level_valueloss = 1 	// На сколько усложняем
-	var/brute_border = 50 		// С какого кол-ва отжиманий начнет наносить урон
+	var/pushap_difficulty_level = 30 // Каждые N отжиманий усложняем
+	var/pushap_difficulty_level_valueloss = 1 // На сколько усложняем
+	var/brute_border = 50 // С какого кол-ва отжиманий начнет наносить урон
 
 	// Внутренне изменяемые параметры
 	var/datum/emote/emote
 	var/mob/user
-	var/pushups_in_a_row = 0	// Сделано отжиманий подряд
+	var/pushups_in_a_row = 0 // Сделано отжиманий подряд
 
 /datum/pushup/New(datum/emote/emote_parent, mob/user_parent)
 	. = ..()
@@ -63,7 +63,7 @@
 	clear_pushup_animation()
 
 /datum/pushup/proc/execute()
-	if(isobserver(user))	// Госты тоже хотят отжиматься!
+	if(isobserver(user)) // Госты тоже хотят отжиматься!
 		pushup_animation()
 		return
 

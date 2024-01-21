@@ -8,7 +8,7 @@ Verbs related to getting fucking jacked, bro
 	key_third_person = "pushups"
 	//message = "пытается отжаться!"
 	hands_use_check = TRUE
-	emote_type = EMOTE_VISIBLE | EMOTE_FORCE_NO_RUNECHAT  // Don't need an emote to see that
+	emote_type = EMOTE_VISIBLE | EMOTE_FORCE_NO_RUNECHAT // Don't need an emote to see that
 	mob_type_allowed_typecache = list(/mob/living, /mob/dead/observer)
 	mob_type_blacklist_typecache = list(/mob/living/brain, /mob/camera, /mob/living/silicon/ai)
 	mob_type_ignore_stat_typecache = list(/mob/dead/observer)
