@@ -12,8 +12,8 @@
 	..()
 
 /obj/item/melee/cultblade
-	name = "cult blade"
-	desc = "An arcane weapon wielded by the followers of a cult."
+	name = "клинок культа"
+	desc = "Магическое оружие, носимое последователями культа."
 	icon = 'icons/obj/cult.dmi'
 	icon_state = "blood_blade"
 	item_state = "blood_blade"
@@ -33,14 +33,14 @@
 
 /obj/item/melee/cultblade/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>This blade is a powerful weapon, capable of severing limbs easily. Nonbelievers are unable to use this weapon. Striking a nonbeliever after downing them with your cult magic will stun them completely.</span>"
+	. += "<span class='notice'>Этот клинок очень мощный, способный в лёгкую отрезать конечности. Неверующие не могут использовать данное оружие. Удар по неверующему во время их ослабления с помощью Магией Крови полностью оглушит их.</span>"
 
 /obj/item/melee/cultblade/attack(mob/living/target, mob/living/carbon/human/user)
 	if(!iscultist(user))
 		user.Weaken(10 SECONDS)
 		user.unEquip(src, 1)
-		user.visible_message("<span class='warning'>A powerful force shoves [user] away from [target]!</span>",
-							"<span class='cultlarge'>\"You shouldn't play with sharp things. You'll poke someone's eye out.\"</span>")
+		user.visible_message("<span class='warning'>Мощная сила отталкивает [user] от [target]!</span>",
+							"<span class='cultlarge'>\"Тебе не стоит играть с острыми предметами, можешь вырезать чьи-то глаза ненароком.\"</span>")
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
 			H.apply_damage(rand(force/2, force), BRUTE, pick("l_arm", "r_arm"))
@@ -56,8 +56,8 @@
 /obj/item/melee/cultblade/pickup(mob/living/user)
 	. = ..()
 	if(!iscultist(user))
-		to_chat(user, "<span class='cultlarge'>\"I wouldn't advise that.\"</span>")
-		to_chat(user, "<span class='warning'>An overwhelming sense of nausea overpowers you!</span>")
+		to_chat(user, "<span class='cultlarge'>\"Я бы не советовал.\"</span>")
+		to_chat(user, "<span class='warning'>Непреодолимое чувство тошноты овладевает вами!</span>")
 		user.Confused(20 SECONDS)
 		user.Jitter(12 SECONDS)
 
@@ -66,8 +66,8 @@
 		user.unEquip(src, TRUE)
 
 /obj/item/restraints/legcuffs/bola/cult
-	name = "runed bola"
-	desc = "A strong bola, bound with dark magic. Throw it to trip and slow your victim. Will not hit fellow cultists."
+	name = "руническая бола"
+	desc = "Сильная бола, связанная тёмной магией. Киньте её для замедления и опрокидывания жертвы. Не будет задевать соратников-культистов."
 	icon_state = "bola_cult"
 	item_state = "bola_cult"
 	breakouttime = 45
@@ -75,20 +75,20 @@
 
 /obj/item/restraints/legcuffs/bola/cult/throw_at(atom/target, range, speed, mob/thrower, spin, diagonals_first, datum/callback/callback)
 	if(thrower && !iscultist(thrower)) // A couple of objs actually proc throw_at, so we need to make sure that yes, we got tossed by a person before trying to send a message
-		thrower.visible_message("<span class='danger'>The bola glows, and boomarangs back at [thrower]!</span>")
+		thrower.visible_message("<span class='danger'>Бола светится и отскакивает обратно в [thrower]!</span>")
 		throw_impact(thrower)
 	. = ..()
 
 /obj/item/restraints/legcuffs/bola/cult/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
 	if(iscultist(hit_atom))
-		hit_atom.visible_message("<span class='warning'>[src] bounces off of [hit_atom], as if repelled by an unseen force!</span>")
+		hit_atom.visible_message("<span class='warning'>[src] отскакивает от [hit_atom], будто отталкиваемый невидимой силой!</span>")
 		return
 	. = ..()
 
 /obj/item/clothing/head/hooded/culthood
-	name = "cult hood"
+	name = "капюшон культиста"
 	icon_state = "culthood"
-	desc = "A hood worn by the followers of a cult."
+	desc = "капюшон, носимый последователями культа."
 	flags = BLOCKHAIR
 	flags_inv = HIDEFACE
 	flags_cover = HEADCOVERSEYES
@@ -103,8 +103,8 @@
 
 
 /obj/item/clothing/suit/hooded/cultrobes
-	name = "cult robes"
-	desc = "A set of armored robes worn by the followers of a cult."
+	name = "роба культа"
+	desc = "набор бронированной робы, носимые последователями культа."
 	icon_state = "cultrobes"
 	item_state = "cultrobes"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
@@ -120,7 +120,7 @@
 	hoodtype = /obj/item/clothing/head/hooded/culthood/alt
 
 /obj/item/clothing/head/helmet/space/cult
-	name = "cult helmet"
+	name = "шлем культа"
 	desc = "A space worthy helmet used by the followers of a cult."
 	icon_state = "cult_helmet"
 	item_state = "cult_helmet"
@@ -129,7 +129,7 @@
 	sprite_sheets = list("Vox" = 'icons/mob/clothing/species/vox/head.dmi')
 
 /obj/item/clothing/suit/space/cult
-	name = "cult armor"
+	name = "броня культа"
 	icon_state = "cult_armour"
 	item_state = "cult_armour"
 	desc = "A bulky suit of armor, bristling with spikes. It looks space proof."
@@ -141,8 +141,8 @@
 	sprite_sheets = list("Vox" = 'icons/mob/clothing/species/vox/suit.dmi')
 
 /obj/item/clothing/suit/hooded/cultrobes/cult_shield
-	name = "empowered cultist robes"
-	desc = "An empowered garb which creates a powerful shield around the user."
+	name = "усиленная роба культиста"
+	desc = "Усиленное одеяние, создающее щит вокруг носителя."
 	icon_state = "cult_armour"
 	item_state = "cult_armour"
 	w_class = WEIGHT_CLASS_BULKY
@@ -155,8 +155,8 @@
 	var/shield_on = "shield-cult"
 
 /obj/item/clothing/head/hooded/cult_hoodie
-	name = "empowered cultist hood"
-	desc = "An empowered garb which creates a powerful shield around the user."
+	name = "Усиленный капюшон культиста"
+	desc = "Усиленное одеяние, создающее щит вокруг носителя."
 	icon_state = "cult_hoodalt"
 	armor = list(MELEE = 35, BULLET = 20, LASER = 35, ENERGY = 10, BOMB = 15, RAD = 0, FIRE = 5, ACID = 5)
 	body_parts_covered = HEAD
@@ -168,7 +168,7 @@
 /obj/item/clothing/suit/hooded/cultrobes/cult_shield/equipped(mob/living/user, slot)
 	..()
 	if(!iscultist(user)) // Todo: Make this only happen when actually equipped to the correct slot. (For all cult items)
-		to_chat(user, "<span class='cultlarge'>\"I wouldn't advise that.\"</span>")
+		to_chat(user, "<span class='cultlarge'>\"Я бы не советовал.\"</span>")
 		to_chat(user, "<span class='warning'>An overwhelming sense of nausea overpowers you!</span>")
 		user.unEquip(src, 1)
 		user.Confused(20 SECONDS)
