@@ -73,7 +73,7 @@
 		return
 
 	var/obj/cargo_to_unload = locateUID(href_list["drop_from_cargo"])
-	if(!cargo_to_unload|| !(cargo_to_unloadin cargo))
+	if(!cargo_to_unload || !(cargo_to_unload in cargo))
 		return
 
 	occupant_message("<span class='notice'>You unload [cargo_to_unload].</span>")
