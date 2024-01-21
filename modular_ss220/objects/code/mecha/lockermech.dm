@@ -8,12 +8,12 @@
 	max_integrity = 100 // Its made of scraps
 	lights_power = 5
 	step_in = 4 // Same speed as a Ripley, for now.
-	var/fast_pressure_step_in = 2 // step_in while in normal pressure conditions
-	var/slow_pressure_step_in = 4 // step_in while in better pressure conditions
 	armor = list(melee = 20, bullet = 10, laser = 10, energy = 0, bomb = 10, rad = 0, fire = 70, acid = 60)
 	internal_damage_threshold = 30 // Its got shitty durability
 	max_equip = 2 // You only have two arms and the control system is shitty
 	wreckage = /obj/structure/mecha_wreckage/lockermech
+	var/fast_pressure_step_in = 2 // step_in while in normal pressure conditions
+	var/slow_pressure_step_in = 4 // step_in while in better pressure conditions
 	var/list/cargo
 	var/cargo_capacity = 5 // You can fit a few things in this locker but not much.
 
@@ -67,19 +67,19 @@
 	return output
 
 /obj/mecha/lockermech/Topic(href, href_list)
-	..()
+	. = ..()
 	LAZYINITLIST(cargo)
-	if(href_list["drop_from_cargo"])
-		var/obj/object = locate(href_list["drop_from_cargo"])
-		if(object && (object in cargo))
-			occupant_message("<span class='notice'>You unload [object].</span>")
-			object.loc = get_turf(src)
-			cargo -= object
-			var/turf/target_turf = get_turf(object)
-			if(target_turf)
-				target_turf.Entered(object)
-			log_message("Unloaded [object]. Cargo compartment capacity: [cargo_capacity - length(cargo)]")
-	return
+	if(!href_list["drop_from_cargo"])
+		return
+
+	var/obj/cargo_to_unload = locateUID(href_list["drop_from_cargo"])
+	if(!cargo_to_unload|| !(cargo_to_unloadin cargo))
+		return
+
+	occupant_message("<span class='notice'>You unload [cargo_to_unload].</span>")
+	cargo_to_unload.forceMove(get_turf(src))
+	cargo -= cargo_to_unload
+	log_message("Unloaded [cargo_to_unload]. Cargo compartment capacity: [cargo_capacity - length(cargo)]")
 
 /obj/mecha/lockermech/Destroy()
 	LAZYINITLIST(cargo)
@@ -158,7 +158,7 @@
 	force = 10 // Its not very strong
 	drill_delay = 15
 
-/obj/item/mecha_parts/mecha_equipment/drill/lockermech/can_attach(obj/mecha/M as obj)
+/obj/item/mecha_parts/mecha_equipment/drill/lockermech/can_attach(obj/mecha/M)
 	return istype(M, /obj/mecha/lockermech) && M.equipment.len < M.max_equip
 
 /obj/item/mecha_parts/mecha_equipment/hydraulic_clamp/lockermech
@@ -167,5 +167,5 @@
 	equip_cooldown = 25
 	dam_force = 10
 
-/obj/item/mecha_parts/mecha_equipment/hydraulic_clamp/lockermech/can_attach(obj/mecha/M as obj)
+/obj/item/mecha_parts/mecha_equipment/hydraulic_clamp/lockermech/can_attach(obj/mecha/M)
 	return istype(M, /obj/mecha/lockermech) && M.equipment.len < M.max_equip
