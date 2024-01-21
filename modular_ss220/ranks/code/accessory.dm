@@ -90,7 +90,7 @@
 
 /obj/item/clothing/accessory/rank/proc/make_owner(mob/user)
 	owner = user.mind
-	desc = "[initial(desc)]\nИдентификатор принадлежности: [get_rank_name(user)]"
+	desc = "[initial(desc)] [get_rank_name(user)]"
 
 // ============= Initial Name =============
 /obj/item/clothing/accessory/rank/proc/get_rank_name(mob/user)
