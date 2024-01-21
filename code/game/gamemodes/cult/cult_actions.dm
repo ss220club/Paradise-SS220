@@ -86,7 +86,7 @@
 
 //Objectives
 /datum/action/innate/cult/check_progress
-	name = "Изучить Завесу"
+	name = "Изучение Завесы"
 	button_icon_state = "tome"
 	desc = "Проверьте текущую цель и прогресс культа."
 	check_flags = AB_CHECK_CONSCIOUS
