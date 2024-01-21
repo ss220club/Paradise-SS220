@@ -305,7 +305,7 @@
 
 	if(!patient)
 		if(!shut_up && prob(1))
-			var/list/messagevoice = list("Radar, put a mask on!" = 'sound/voice/mradar.ogg', "There's always a catch, and I'm the best there is." = 'sound/voice/mcatch.ogg', "I knew it, I should've been a plastic surgeon." = 'sound/voice/msurgeon.ogg', "What kind of medbay is this? Everyone's dropping like flies." = 'sound/voice/mflies.ogg', "Delicious!" = 'sound/voice/mdelicious.ogg')
+			var/list/messagevoice = list("Радар, надень маску!" = 'sound/voice/mradar.ogg', "Всегда есть подвох, но со мной тебе нечего бояться!" = 'sound/voice/mcatch.ogg', "Я так и знал! Нужно было учиться на пластического хирурга." = 'sound/voice/msurgeon.ogg', "Что это за медицинский отдел такой? Все мрут как мухи!" = 'sound/voice/mflies.ogg', "Великолепно!" = 'sound/voice/mdelicious.ogg')
 			var/message = pick(messagevoice)
 			speak(message)
 			playsound(loc, messagevoice[message], 50, FALSE)
@@ -450,7 +450,7 @@
 		return
 
 	if(C.stat == DEAD || HAS_TRAIT(C, TRAIT_FAKEDEATH))
-		var/list/messagevoice = list("No! Stay with me!" = 'sound/voice/mno.ogg', "Live, damnit! LIVE!" = 'sound/voice/mlive.ogg', "I...I've never lost a patient before. Not today, I mean." = 'sound/voice/mlost.ogg')
+		var/list/messagevoice = list("Нет! Не бросай меня!" = 'sound/voice/mno.ogg', "Живи, черт возьми, ЖИВИ!" = 'sound/voice/mlive.ogg', "Я... я никогда раньше не терял пациентов. Сегодня, то есть." = 'sound/voice/mlost.ogg')
 		var/message = pick(messagevoice)
 		speak(message)
 		playsound(loc, messagevoice[message], 50, FALSE)
@@ -468,7 +468,7 @@
 		reagent_id = select_medication(C, beaker_injection)
 
 	if(!reagent_id) //If they don't need any of that they're probably cured!
-		var/list/messagevoice = list("All patched up!" = 'sound/voice/mpatchedup.ogg', "An apple a day keeps me away." = 'sound/voice/mapple.ogg', "Feel better soon!" = 'sound/voice/mfeelbetter.ogg')
+		var/list/messagevoice = list("Как новенький!" = 'sound/voice/mpatchedup.ogg', "Яблочко на ужин, и врач не нужен!" = 'sound/voice/mapple.ogg', "Поправляйтесь!" = 'sound/voice/mfeelbetter.ogg')
 		var/message = pick(messagevoice)
 		speak(message)
 		playsound(loc, messagevoice[message], 50, FALSE)
