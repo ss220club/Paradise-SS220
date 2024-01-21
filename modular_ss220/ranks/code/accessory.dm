@@ -37,7 +37,7 @@
 
 // Clothing equip at human
 /obj/item/clothing/accessory/rank/attached_equip(mob/user)
-	if(user.mind == owner)
+	if(user && user.mind == owner)
 		var/new_name = get_rank_name(user)
 		saved_real_name = user.real_name
 		user.rename_character(user.real_name, new_name)
@@ -50,7 +50,7 @@
 
 // Clothing drop from human
 /obj/item/clothing/accessory/rank/attached_unequip(mob/user)
-	if(user.mind == owner)
+	if(user && user.mind == owner)
 		user.rename_character(user.real_name, saved_real_name)
 	. = ..()
 
