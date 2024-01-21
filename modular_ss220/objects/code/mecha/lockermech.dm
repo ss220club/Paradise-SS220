@@ -57,7 +57,7 @@
 /obj/mecha/lockermech/get_stats_part()
 	LAZYINITLIST(cargo)
 	var/output = ..()
-	output += "<b>Cargo Compartment Contents:</b><div style=\"margin-left: 15px;\">"
+	output += "<b>Cargo Compartment Contents:</b><div style='margin-left: 15px;'>"
 	if(length(cargo))
 		for(var/obj/object in cargo)
 			output += "<a href='?src=[UID()];drop_from_cargo=\ref[object]'>Unload</a> : [object]<br>"
