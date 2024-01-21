@@ -699,7 +699,7 @@ Pass a positive integer as an argument to override a bot's default speed.
 	else
 		auto_patrol = FALSE
 		mode = BOT_IDLE
-		speak("Отключение режима патрулирования.")
+		speak("Отключен режим патрулирования.")
 
 /mob/living/simple_animal/bot/proc/get_next_patrol_target()
 	// search the beacon list for the next target in the list.
