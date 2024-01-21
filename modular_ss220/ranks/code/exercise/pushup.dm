@@ -203,7 +203,7 @@ Verbs related to getting fucking jacked, bro
 		for(var/zone in extremities)
 			if(!H.get_limb_by_name(zone))
 				to_chat(user, span_warning("У вас недостаток конечностей! Как вы собрались отжиматься?!"))
-			        return FALSE
+				return FALSE
 
 	return TRUE
 

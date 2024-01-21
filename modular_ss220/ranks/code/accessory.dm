@@ -3,7 +3,7 @@
 // =================================
 /obj/item/clothing/accessory/rank
 	name = "голографические погоны"
-	desc = "Погоны выдаваемые при выслуге лет. Наденьте их и каждый увидит ваше звание."
+	desc = "Погоны выдаваемые при выслуге лет. Наденьте их и каждый увидит ваше звание. \nИдентификатор принадлежности:"
 	icon = 'modular_ss220/ranks/icons/clothing/attachments.dmi'
 	icon_override = 'modular_ss220/ranks/icons/clothing/mob/attachments_overlay.dmi'
 	icon_state = "holobadge"
@@ -26,37 +26,36 @@
 		qdel(src)
 	if(ishuman(loc))
 		var/mob/living/carbon/human/H = loc
-		owner = H.mind
+		make_owner(H)
 		get_rank_name(H)
 
 // ============= Attach&Pick =============
 /obj/item/clothing/under/attach_accessory(obj/item/clothing/accessory/A, mob/user, unequip = FALSE)
 	if(istype(A, /obj/item/clothing/accessory/rank))
 		var/obj/item/clothing/accessory/rank/attachment = A
-		if(!attachment.check_allowed_to_attach(user))
-			to_chat(user, span_warning("При приближении к цели, [src.name] деактивируется!"))
+		if(!attachment.check_allowed_to_attach(user, src))
 			return FALSE
-	. = ..()
-
-/obj/item/clothing/accessory/rank/attack(mob/living/carbon/human/H, mob/living/user)
-	. = TRUE
-	if(!check_allowed_to_attach(H))
-		to_chat(user, span_warning("При приближении к [H], [src.name] деактивируется!"))
-		return FALSE
 	. = ..()
 
 // Clothing equip at human
 /obj/item/clothing/accessory/rank/attached_equip(mob/user)
-	saved_real_name = user.real_name
-	user.rename_character(user.real_name, get_rank_name(user))
-
+	if(user == owner)
+		var/new_name = get_rank_name(user)
+		saved_real_name = user.real_name
+		user.rename_character(user.real_name, new_name)
+	else if(has_suit)
+		to_chat(user, span_warning("[src.name] не признали в вас владельца и слетели."))
+		has_suit.detach_accessory(src, null)
+		user.unEquip(src)
+		return FALSE
 	. = ..()
 
 // Clothing drop from human
 /obj/item/clothing/accessory/rank/attached_unequip(mob/user)
-	user.rename_character(user.real_name, saved_real_name)
-
+	if(user == owner)
+		user.rename_character(user.real_name, saved_real_name)
 	. = ..()
+
 
 /obj/item/clothing/accessory/rank/on_attached(obj/item/clothing/under/S, mob/user as mob)
 	attached_equip(user)
@@ -66,19 +65,34 @@
 	attached_unequip(user)
 	. = ..()
 
-/obj/item/clothing/accessory/rank/proc/check_allowed_to_attach(mob/user)
+/obj/item/clothing/accessory/rank/proc/check_allowed_to_attach(mob/user, obj/item/clothing/under/uniform)
+	if(!ishuman(loc))
+		to_chat(user, span_warning("[src.name] не фиксируют признаков жизни и деактивируются!"))
+		return FALSE
+
+	var/mob/living/carbon/human/H = user
+	if(H.w_uniform != uniform)
+		to_chat(user, span_warning("[src.name] не фиксируют признаков жизни и деактивируются!"))
+		return FALSE
+
 	if(!user.mind)
 		to_chat(user, span_warning("[src.name] слетели с [user], не зафиксировав в нём отклика разума."))
 		return FALSE
 
-	if(!owner)
-		owner = user.mind
-		return TRUE
-
 	if(user.mind == owner)
 		return TRUE
 
+	if(!owner)
+		to_chat(user, span_warning("[src.name] привязан к [user]."))
+		make_owner(user)
+		return TRUE
+
+	to_chat(user, span_warning("При приближении к цели, [src.name] деактивируется!"))
 	return FALSE
+
+/obj/item/clothing/accessory/rank/proc/make_owner(mob/user)
+	owner = user.mind
+	desc = "[initial(desc)]\nИдентификатор принадлежности: [get_rank_name(user)]"
 
 // ============= Initial Name =============
 /obj/item/clothing/accessory/rank/proc/get_rank_name(mob/user)
@@ -100,5 +114,4 @@
 			break
 
 	var/rank_name = "[choosen_rank] [user.real_name]"
-	name = "[initial(name)] [rank_name]"
 	return rank_name
