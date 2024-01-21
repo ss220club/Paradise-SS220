@@ -138,7 +138,7 @@
 							frustration = 0
 				else
 					back_to_idle()
-					speak("Болван и неудачник.")
+					speak("Неудачник.")
 			else
 				back_to_idle()
 
