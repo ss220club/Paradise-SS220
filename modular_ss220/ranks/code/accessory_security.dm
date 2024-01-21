@@ -3,6 +3,7 @@
 // =================================
 // Officer
 /obj/item/clothing/accessory/rank/sec
+	name = "голографические погоны офицера"
 	icon_state = "holobadge_rank"
 	item_state = "gold_id"
 	item_color = "holobadge_rank"
@@ -26,6 +27,7 @@
 
 // Detective
 /obj/item/clothing/accessory/rank/sec/detective
+	name = "голографические погоны детектива"
 	add_job_req_exp = TRUE
 	rank_exp_order_dict = list(
 		"Рядовой" = 0,
@@ -46,6 +48,7 @@
 
 // Warden
 /obj/item/clothing/accessory/rank/sec/warden
+	name = "голографические погоны смотрителя"
 	icon_state = "holobadge_rank_officer"
 	item_color = "holobadge_rank_officer"
 	add_job_req_exp = TRUE
@@ -71,6 +74,7 @@
 
 // HOS
 /obj/item/clothing/accessory/rank/sec/officer
+	name = "голографические погоны старшего офицера"
 	icon_state = "holobadge_rank_officer"
 	item_color = "holobadge_rank_officer"
 	exp_types = list(EXP_TYPE_SECURITY, EXP_TYPE_COMMAND)
@@ -90,6 +94,7 @@
 
 // Special for spawns
 /obj/item/clothing/accessory/rank/sec/officer/supreme
+	name = "голографические погоны высшего командования"
 	rank_exp_order_dict = list(
 		"Подполковник" = 0,
 		"Полковник" = 25,
