@@ -332,19 +332,8 @@ Verbs related to getting fucking jacked, bro
 
 /datum/emote/pushup/proc/clap_pushup(mob/user, intentional)
 	var/clap_sound = pick(
-		'modular_ss220/ranks/sounds/claps/clap1.ogg',
-		'modular_ss220/ranks/sounds/claps/clap2.ogg',
-		'modular_ss220/ranks/sounds/claps/clap3.ogg',
-		'modular_ss220/ranks/sounds/claps/clap4.ogg',
-		'modular_ss220/ranks/sounds/claps/clap5.ogg',
-		'modular_ss220/ranks/sounds/claps/clap6.ogg',
-		'modular_ss220/ranks/sounds/claps/clap7.ogg',
-		'modular_ss220/ranks/sounds/claps/clap8.ogg',
-		'modular_ss220/ranks/sounds/claps/clap9.ogg',
-		'modular_ss220/ranks/sounds/claps/clap10.ogg',
-		'modular_ss220/ranks/sounds/claps/clap11.ogg',
-		'modular_ss220/ranks/sounds/claps/clap12.ogg',
-		'modular_ss220/ranks/sounds/claps/clap13.ogg',
-		'modular_ss220/ranks/sounds/claps/clap14.ogg',
+		'modular_ss220/emotes/audio/claps/clap1.ogg',
+		'modular_ss220/emotes/audio/claps/clap2.ogg',
+		'modular_ss220/emotes/audio/claps/clap3.ogg',
 		)
 	play_sound_effect(user, intentional, clap_sound, get_volume(user))
