@@ -22,11 +22,11 @@
 /obj/item/clothing/accessory/rank/single/enlisted/corporal
 	rank_name = "Ефрейтор"
 /obj/item/clothing/accessory/rank/single/enlisted/sergeant/lance
-	rank_name = "Мл.Сержант"
+	rank_name = "Мл. Сержант"
 /obj/item/clothing/accessory/rank/single/enlisted/sergeant
 	rank_name = "Сержант"
 /obj/item/clothing/accessory/rank/single/enlisted/sergeant/senior
-	rank_name = "Ст.Сержант"
+	rank_name = "Ст. Сержант"
 /obj/item/clothing/accessory/rank/single/enlisted/sergeant/major
 	rank_name = "Старшина"
 
@@ -38,13 +38,13 @@
 /obj/item/clothing/accessory/rank/single/officer/prapor
 	rank_name = "Прапорщик"
 /obj/item/clothing/accessory/rank/single/officer/prapor/senior
-	rank_name = "Ст.Прапорщик"
+	rank_name = "Ст. Прапорщик"
 /obj/item/clothing/accessory/rank/single/officer/lieutenant/sub
-	rank_name = "Мл.Лейтенант"
+	rank_name = "Мл. Лейтенант"
 /obj/item/clothing/accessory/rank/single/officer/lieutenant
 	rank_name = "Лейтенант"
 /obj/item/clothing/accessory/rank/single/officer/lieutenant/senior
-	rank_name = "Ст.Лейтенант"
+	rank_name = "Ст. Лейтенант"
 /obj/item/clothing/accessory/rank/single/officer/captain
 	rank_name = "Капитан"
 /obj/item/clothing/accessory/rank/single/officer/major
