@@ -306,7 +306,7 @@ GLOBAL_LIST_EMPTY(ert_request_messages)
 /datum/response_team/proc/announce_team()
 	if(silent)
 		return
-	GLOB.major_announcement.Announce("Внимание, [station_name()]. Мы направляем команду высококвалифицированных ассистентов для оказания помощи(?) вам. Ожидайте.", "ОБР в пути.")
+	GLOB.major_announcement.Announce("Внимание, [station_name()]. Мы направляем команду высококвалифицированных ассистентов для оказания помощи(?). Ожидайте.", "ОБР в пути.")
 
 // -- AMBER TEAM --
 
