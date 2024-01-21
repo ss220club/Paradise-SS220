@@ -90,7 +90,7 @@
 	return ..()
 
 /obj/mecha/lockermech/ex_act(severity)
-	..()
+	. = ..()
 	LAZYINITLIST(cargo)
 	for(var/thing in cargo)
 		var/obj/object = thing
