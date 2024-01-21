@@ -22,8 +22,6 @@
 /obj/item/clothing/accessory/rank/Initialize(mapload)
 	. = ..()
 	inv_overlay = image("icon" = 'modular_ss220/ranks/icons/clothing/mob/attachments_overlay.dmi', "icon_state" = "[item_color? "[item_color]" : "[icon_state]"]")
-	if(!length(rank_exp_order_dict) || !(length(exp_types)))
-		qdel(src)
 	if(ishuman(loc))
 		var/mob/living/carbon/human/H = loc
 		make_owner(H)
@@ -39,7 +37,7 @@
 
 // Clothing equip at human
 /obj/item/clothing/accessory/rank/attached_equip(mob/user)
-	if(user == owner)
+	if(user.mind == owner)
 		var/new_name = get_rank_name(user)
 		saved_real_name = user.real_name
 		user.rename_character(user.real_name, new_name)
@@ -52,7 +50,7 @@
 
 // Clothing drop from human
 /obj/item/clothing/accessory/rank/attached_unequip(mob/user)
-	if(user == owner)
+	if(user.mind == owner)
 		user.rename_character(user.real_name, saved_real_name)
 	. = ..()
 
