@@ -14,7 +14,7 @@
 	internal_damage_threshold = 30 // Its got shitty durability
 	max_equip = 2 // You only have two arms and the control system is shitty
 	wreckage = /obj/structure/mecha_wreckage/lockermech
-	var/list/cargo = new
+	var/list/cargo
 	var/cargo_capacity = 5 // You can fit a few things in this locker but not much.
 
 /obj/mecha/lockermech/go_out()
@@ -49,11 +49,13 @@
 			drill.equip_cooldown = initial(drill.equip_cooldown)
 
 /obj/mecha/lockermech/Exit(atom/movable/object)
+	LAZYINITLIST(cargo)
 	if(object in cargo)
 		return FALSE
 	return ..()
 
 /obj/mecha/lockermech/get_stats_part()
+	LAZYINITLIST(cargo)
 	var/output = ..()
 	output += "<b>Cargo Compartment Contents:</b><div style=\"margin-left: 15px;\">"
 	if(length(cargo))
@@ -66,6 +68,7 @@
 
 /obj/mecha/lockermech/Topic(href, href_list)
 	..()
+	LAZYINITLIST(cargo)
 	if(href_list["drop_from_cargo"])
 		var/obj/object = locate(href_list["drop_from_cargo"])
 		if(object && (object in cargo))
@@ -79,6 +82,7 @@
 	return
 
 /obj/mecha/lockermech/Destroy()
+	LAZYINITLIST(cargo)
 	for(var/atom/movable/thing in cargo)
 		thing.forceMove(loc)
 		step_rand(thing)
@@ -87,6 +91,7 @@
 
 /obj/mecha/lockermech/ex_act(severity)
 	..()
+	LAZYINITLIST(cargo)
 	for(var/thing in cargo)
 		var/obj/object = thing
 		if(prob(30 / severity))
