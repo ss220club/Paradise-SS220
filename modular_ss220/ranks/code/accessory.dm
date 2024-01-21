@@ -54,7 +54,6 @@
 		user.rename_character(user.real_name, saved_real_name)
 	. = ..()
 
-
 /obj/item/clothing/accessory/rank/on_attached(obj/item/clothing/under/S, mob/user as mob)
 	attached_equip(user)
 	. = ..()
@@ -91,6 +90,7 @@
 /obj/item/clothing/accessory/rank/proc/make_owner(mob/user)
 	owner = user.mind
 	desc = "[initial(desc)] [get_rank_name(user)]"
+
 
 // ============= Initial Name =============
 /obj/item/clothing/accessory/rank/proc/get_rank_name(mob/user)
