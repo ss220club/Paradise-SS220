@@ -645,7 +645,7 @@ Pass a positive integer as an argument to override a bot's default speed.
 	if(patrol_target) // has patrol target
 		INVOKE_ASYNC(src, PROC_REF(target_patrol))
 	else // no patrol target, so need a new one
-		speak("Включение режима патрулирования.")
+		speak("Включен режим патрулирования.")
 		find_patrol_target()
 		tries++
 
