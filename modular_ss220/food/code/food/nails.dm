@@ -32,7 +32,7 @@
 	if(prob(30))
 		user.emote("scream")
 
-	if(prob(10) && do_after(user, 5 SECONDS, needhand = FALSE, target = user, progress = FALSE, allow_moving = TRUE) )
+	if(prob(10) && do_after(user, 5 SECONDS, needhand = FALSE, target = user, progress = FALSE, allow_moving = TRUE))
 		user.vomit(lost_nutrition = 0, blood = 15, should_confuse = FALSE)
 		user.emote("scream")
 
