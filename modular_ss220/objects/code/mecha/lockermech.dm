@@ -59,8 +59,8 @@
 	var/output = ..()
 	output += "<b>Cargo Compartment Contents:</b><div style='margin-left: 15px;'>"
 	if(length(cargo))
-		for(var/obj/object in cargo)
-			output += "<a href='?src=[UID()];drop_from_cargo=\ref[object]'>Unload</a> : [object]<br>"
+		for(var/obj/cargo_item as anything in cargo)
+			output += "<a href='?src=[UID()];drop_from_cargo=[cargo_item.UID()]'>Unload</a> : [cargo_item]<br>"
 	else
 		output += "Nothing"
 	output += "</div>"
