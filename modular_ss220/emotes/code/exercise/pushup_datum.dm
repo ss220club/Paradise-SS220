@@ -47,7 +47,7 @@
 	var/brute_border = 50 // С какого кол-ва отжиманий начнет наносить урон
 
 	// Внутренне изменяемые параметры
-	var/datum/emote/emote
+	var/datum/emote/pushup/emote
 	var/mob/user
 	var/pushups_in_a_row = 0 // Сделано отжиманий подряд
 
@@ -57,7 +57,7 @@
 	emote = linked_emote
 
 /datum/pushup/proc/try_execute()
-	if(!can_do_pushup())
+	if(!emote.can_do_pushup())
 		return
 	prepare_for_pushup_animation()
 	execute()
@@ -74,7 +74,7 @@
 	var/oxy_border = will_do_more_due_to_oxy_damage ? oxy_border_max : 0
 	var/borderloss = stamina_border_max + oxy_border
 	while(currentloss < borderloss)
-		if(!can_do_pushup())
+		if(!emote.can_do_pushup())
 			return
 		currentloss = L.getStaminaLoss() + L.getOxyLoss()
 		pushup_value = calculate_valueloss_per_pushup() / time_mod
@@ -103,55 +103,6 @@
 	if(length(sounds))
 		return pick(sounds)
 	return FALSE
-
-/datum/pushup/proc/can_do_pushup()
-	if(!user.mind || !user.client)
-		return FALSE
-	if(isobserver(user))
-		return TRUE
-
-	var/mob/living/L = user
-
-	if(L.incapacitated())
-		to_chat(user, span_warning("Вы не в форме!"))
-		return FALSE
-	if(!L.resting || L.buckled)
-		to_chat(user, span_warning("Вы не в том положении для отжиманий! Лягте на пол!"))
-		return FALSE
-
-	var/turf/user_turf = get_turf(user)
-	if(!user_turf)
-		to_chat(user, span_warning("Не на что опереться!"))
-		return FALSE
-	if(length(user_turf.contents) >= 10)
-		to_chat(user, span_warning("Пол захламлен, неудобно!"))
-		return FALSE
-	for(var/atom/A in user_turf.contents)
-		if(isliving(A) && A != user) // antierp
-			var/mob/living/target = A
-			if(target.body_position == LYING_DOWN)
-				to_chat(user, span_warning("Кто-то подо мной мешает мне сделать отжимание!"))
-				return FALSE
-
-	if(ishuman(user))
-		var/mob/living/carbon/human/H = user
-		var/list/extremities = list(
-			BODY_ZONE_L_ARM,
-			BODY_ZONE_R_ARM,
-			BODY_ZONE_L_LEG,
-			BODY_ZONE_R_LEG,
-			BODY_ZONE_PRECISE_L_HAND,
-			BODY_ZONE_PRECISE_R_HAND,
-			BODY_ZONE_PRECISE_L_FOOT,
-			BODY_ZONE_PRECISE_R_FOOT,
-			)
-		for(var/zone in extremities)
-			if(!H.get_limb_by_name(zone))
-				to_chat(user, span_warning("У вас недостаток конечностей! Как вы собрались отжиматься?!"))
-				return FALSE
-
-	return TRUE
-
 
 /datum/pushup/proc/calculate_valueloss_per_pushup()
 	// Humans have 120 stamina
