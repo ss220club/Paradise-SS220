@@ -186,7 +186,7 @@
 /datum/pushup/proc/pushap_stopped()
 	user.visible_message(
 		span_boldnotice("[user] прекратил отжиматься, отжавшись [pushups_in_a_row] раз."),
-		span_boldnotice("Вы прекратили отжиматься, отжавшись[pushups_in_a_row] раз."),
+		span_boldnotice("Вы прекратили отжиматься, отжавшись [pushups_in_a_row] раз."),
 		blind_message)
 
 /datum/pushup/proc/pushap_count()
