@@ -31,7 +31,7 @@
 	message_pushup = "с хлопком"
 	can_non_humans_do = FALSE
 	is_bold_message = TRUE
-	staminaloss_per_pushup = 15
+	staminaloss_per_pushup = 10
 	sounds = list(
 		'modular_ss220/emotes/audio/claps/clap1.ogg',
 		'modular_ss220/emotes/audio/claps/clap2.ogg',
@@ -50,7 +50,7 @@
 	self_message = "Вы переносите свой вес на одну руку, а вторую приготовили для хлопка. Невероятно!"
 	message_pushup = "на одной руке с хлопком"
 	is_bold_message = TRUE
-	staminaloss_per_pushup = 15
+	staminaloss_per_pushup = 10
 	difficulty_mod = 2
 
 /datum/pushup/correct/slow
@@ -69,14 +69,14 @@
 /datum/pushup/correct/fast
 	name = "На ноги и руки - быстрый"
 	message_pushup = "быстро"
-	difficulty_mod = 1.25
+	difficulty_mod = 1.1
 	time_mod = 0.6
 	split_message = 2
 
 /datum/pushup/correct/fast/very
 	name = "На ноги и руки - очень быстрый"
 	message_pushup = "крайне быстро"
-	difficulty_mod = 2
+	difficulty_mod = 1.2
 	time_mod = 0.3
 	split_message = 5
 
