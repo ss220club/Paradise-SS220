@@ -185,8 +185,8 @@
 
 /datum/pushup/proc/pushap_stopped()
 	user.visible_message(
-		span_boldnotice("[user] прекратил отжиматься. Отжался [pushups_in_a_row] раз."),
-		span_boldnotice("Вы прекратили отжиматься. Отжались [pushups_in_a_row] раз."),
+		span_boldnotice("[user] прекратил отжиматься, отжавшись [pushups_in_a_row] раз."),
+		span_boldnotice("Вы прекратили отжиматься, отжавшись[pushups_in_a_row] раз."),
 		blind_message)
 
 /datum/pushup/proc/pushap_count()
@@ -200,7 +200,7 @@
 
 	var/mob/living/L = user
 	var/pushup_text = get_pushup_message_addition(L)
-	var/temp_message = "[user] отжимается[pushup_text] - [pushups_in_a_row] раз!"
+	var/temp_message = "[user] отжимается[pushup_text]!"
 	var/temp_self_message = "Вы отжимаетесь[pushup_text] - [pushups_in_a_row] раз!"
 	user.visible_message(
 		is_bold_message ? span_boldnotice(temp_message) : span_notice(temp_message),
