@@ -201,7 +201,7 @@
 	var/mob/living/L = user
 	var/pushup_text = get_pushup_message_addition(L)
 	var/temp_message = "[user] отжимается[pushup_text]!"
-	var/temp_self_message = "Вы отжимаетесь[pushup_text] - [pushups_in_a_row] раз!"
+	var/temp_self_message = "Вы отжимаетесь[pushup_text]!"
 	user.visible_message(
 		is_bold_message ? span_boldnotice(temp_message) : span_notice(temp_message),
 		is_bold_message ? span_boldnotice(temp_self_message) : span_notice(temp_self_message),
