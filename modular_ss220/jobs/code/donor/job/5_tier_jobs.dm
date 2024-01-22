@@ -119,12 +119,12 @@
 	pda = /obj/item/pda/clown
 	id = /obj/item/card/id/seclown
 	backpack_contents = list(
-		/obj/item/reagent_containers/food/snacks/grown/banana = 1,
+		/obj/item/food/snacks/grown/banana = 1,
 		/obj/item/stamp/clown = 1,
 		/obj/item/toy/crayon/rainbow = 1,
 		/obj/item/storage/fancy/crayons = 1,
 		/obj/item/reagent_containers/spray/waterflower = 1,
-		/obj/item/reagent_containers/food/drinks/bottle/bottleofbanana = 1,
+		/obj/item/reagent_containers/drinks/bottle/bottleofbanana = 1,
 		/obj/item/instrument/bikehorn = 1,
 		/obj/item/flash = 1,
 		/obj/item/restraints/handcuffs/toy = 1,
