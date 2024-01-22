@@ -155,7 +155,7 @@
 	var/list/play_records = params2list(H.client.prefs.exp)
 
 	// Берем немного суммы часов за экипаж, отдаляя их от персонала занимающейся физической работой
-	var/exp_sum = play_records[EXP_TYPE_CREW] / no_physical_job_div
+	var/exp_sum = text2num(play_records[EXP_TYPE_CREW]) / no_physical_job_div
 	if(job)
 		for(var/exp_type in job.exp_map)
 			if(!(exp_type in exp_types))
