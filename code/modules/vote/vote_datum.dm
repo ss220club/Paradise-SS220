@@ -199,5 +199,5 @@
 			if(params["target"] in choices)
 				voted[usr.ckey] = params["target"]
 			else
-				message_admins("<span class='boldannounce'>\[EXPLOIT]</span> Пользователь [key_name_admin(usr)] подделал голосование в панели!")
+				message_admins("<span class='boldannounceooc'>\[EXPLOIT]</span> Пользователь [key_name_admin(usr)] подделал голосование в панели!")
 
