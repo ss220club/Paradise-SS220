@@ -799,7 +799,7 @@
 
 /obj/effect/portal/cult
 	name = "Древний портал"
-	desc = "Злой портал, сделанный из тёмной магии. Удивительно стабилен."
+	desc = "Злой портал, сделанный из тёмной магии. На удивление стабилен."
 	icon_state = "portal1"
 	failchance = 0
 	precision = FALSE
@@ -824,7 +824,7 @@
 
 /obj/effect/cult_portal_exit
 	name = "eldritch rift"
-	desc = "Точно выхода из какого-то портала. Будьте начеку, из него может выйти ещё что-то."
+	desc = "Точка выхода из какого-то портала. Будьте начеку, из него может выйти ещё что-то."
 	icon = 'icons/obj/biomass.dmi'
 	icon_state = "rift"
 	color = "red"
