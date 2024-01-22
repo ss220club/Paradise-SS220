@@ -98,7 +98,7 @@
 		if(pushups_in_a_row >= brute_border)
 			L.adjustBruteLoss(min(1, pushup_value))
 		if(currentloss >= borderloss)
-			to_chat(user, span_warning("Вы обессиленные падаете на пол..."))
+			to_chat(user, span_warning("Вы обессиленные падаете на пол, отжавшись [pushups_in_a_row] раз..."))
 			return
 
 /datum/pushup/proc/get_sound()
@@ -185,8 +185,8 @@
 
 /datum/pushup/proc/pushap_stopped()
 	user.visible_message(
-		span_boldnotice("[user] прекратил отжиматься."),
-		span_boldnotice("Вы прекратили отжиматься."),
+		span_boldnotice("[user] прекратил отжиматься. Отжался [pushups_in_a_row] раз."),
+		span_boldnotice("Вы прекратили отжиматься. Отжались [pushups_in_a_row] раз."),
 		blind_message)
 
 /datum/pushup/proc/pushap_count()
