@@ -261,7 +261,7 @@
 		SSshuttle.emergencyLastCallLoc = null
 	if(canRecall)
 		GLOB.major_announcement.Announce(
-			GLOB.major_announcement.Announce("Был вызван эвакуационный шаттл. [redAlert ? "Красный уровень угрозы подтверждён: отправлен приоритетный шаттл. " : "" ]Он прибудет в течение [timeLeft(600)] минут.[reason][SSshuttle.emergencyLastCallLoc ? "\n\nВызов шаттла отслежен. Результаты можно посмотреть на любой консоли связи." : "" ]"),
+			GLOB.major_announcement.Announce("Был вызван эвакуационный шаттл. [redAlert ? "Красный уровень угрозы подтверждён: отправлен приоритетный шаттл. " : "" ]Он прибудет в течение [timeLeft(600)] минут.[reason][SSshuttle.emergencyLastCallLoc ? "\n\nВызов шаттла отслежен. Результаты можно просмотреть на любой коммуникационной консоли." : "" ]"),
 			new_title = "Приоритетное оповещение.",
 			new_sound = sound('sound/AI/eshuttle_call.ogg')
 		)
@@ -287,7 +287,7 @@
 	else
 		SSshuttle.emergencyLastCallLoc = null
 	GLOB.major_announcement.Announce(
-		"Эвакуационный шаттл был отозван.[SSshuttle.emergencyLastCallLoc ? " Отзыв сигнала отслежен. Результаты можно просмотреть на любой коммуникационной консоли." : "" ]",
+		"Эвакуационный шаттл был отозван.[SSshuttle.emergencyLastCallLoc ? " Отзыв шаттла отслежен. Результаты можно просмотреть на любой коммуникационной консоли." : "" ]",
 		new_title = "Приоритетное оповещение.",
 		new_sound = sound('sound/AI/eshuttle_recall.ogg')
 	)
@@ -385,7 +385,7 @@
 			if(time_left <= 0 && length(SSshuttle.hostile_environments))
 				GLOB.major_announcement.Announce(
 					"Обнаружено враждебное окружение. Отлет отложен на неопределенный срок до решения возникшей проблемы.",
-					new_title = "Priority Announcement"
+					new_title = "Приоритетное оповещение."
 				)
 				sound_played = 0
 				mode = SHUTTLE_STRANDED
@@ -410,7 +410,7 @@
 				timer = world.time
 				GLOB.major_announcement.Announce(
 					"Эвакуационный шаттл покинул станцию. Расчетное время прибытия на Центральное Командование: [timeLeft(600)] минут(-ы).",
-					new_title = "Priority Announcement"
+					new_title = "Приоритетное оповещение."
 				)
 
 		if(SHUTTLE_ESCAPE)
@@ -430,7 +430,7 @@
 					destination_dock = "emergency_syndicate"
 					GLOB.major_announcement.Announce(
 						"Обнаружен сбой в навигационных протоколах. Пожалуйста, свяжитесь с руководством.",
-						new_title = "Priority Announcement"
+						new_title = "Приоритетное оповещение."
 					)
 
 				dock_id(destination_dock)

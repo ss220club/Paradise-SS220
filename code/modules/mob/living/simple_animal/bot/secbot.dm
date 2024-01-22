@@ -264,7 +264,7 @@
 	add_attack_logs(src, C, "batoned")
 	if(declare_arrests)
 		var/area/location = get_area(src)
-		speak("[arrest_type ? "Detaining" : "Arresting"] level [threat] scumbag <b>[C]</b> in [location].", radio_channel)
+		speak("Внимание, проводится [arrest_type ? "задержание" : "арест"] преступного отродья <b>[C]</b> с уровнем угрозы [threat] в [location]!", radio_channel)
 	C.visible_message("<span class='danger'>[src] has [harmbaton ? "beaten" : "stunned"] [C]!</span>",\
 							"<span class='userdanger'>[src] has [harmbaton ? "beaten" : "stunned"] you!</span>")
 
@@ -410,7 +410,7 @@
 		else if(threatlevel >= 4)
 			target = C
 			oldtarget_name = C.name
-			speak("Level [threatlevel] infraction alert!")
+			speak("Внимание, обнаружена угроза уровня [threatlevel]!")
 			playsound(loc, pick('sound/voice/bcriminal.ogg', 'sound/voice/bjustice.ogg', 'sound/voice/bfreeze.ogg'), 50, 0)
 			visible_message("<b>[src]</b> points at [C.name]!")
 			mode = BOT_HUNT
