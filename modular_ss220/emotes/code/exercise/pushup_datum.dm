@@ -123,8 +123,8 @@
 	if(!user_turf)
 		to_chat(user, span_warning("Не на что опереться!"))
 		return FALSE
-	if(length(user_turf.contents) >= 5)
-		to_chat(user, span_warning("Пол захламлен!"))
+	if(length(user_turf.contents) >= 10)
+		to_chat(user, span_warning("Пол захламлен, неудобно!"))
 		return FALSE
 	for(var/atom/A in user_turf.contents)
 		if(isliving(A) && A != user) // antierp

@@ -12,6 +12,7 @@ Verbs related to getting fucking jacked, bro
 	mob_type_allowed_typecache = list(/mob/living, /mob/dead/observer)
 	mob_type_blacklist_typecache = list(/mob/living/brain, /mob/camera, /mob/living/silicon/ai)
 	mob_type_ignore_stat_typecache = list(/mob/dead/observer)
+	cooldown = 3 SECONDS
 
 /datum/emote/pushup/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
@@ -22,6 +23,9 @@ Verbs related to getting fucking jacked, bro
 	if(!isliving(user))
 		return
 	var/mob/living/L = user
+	if(L.getStaminaLoss() > 0)
+		to_chat(user, span_warning("Вы уставший! Передохните."))
+		return
 	if(L.incapacitated())
 		return
 	if(!L.resting || L.buckled)
