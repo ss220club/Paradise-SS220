@@ -37,6 +37,7 @@
 	name = "На ноги и руки с хлопком - быстрый"
 	difficulty_mod = 1.25
 	time_mod = 0.6
+	split_message = 5
 
 /datum/pushup/clap/one_arm
 	name = "На одной руке с хлопком"
@@ -52,6 +53,7 @@
 	message_pushup = "медленно"
 	difficulty_mod = 0.8
 	time_mod = 2
+	split_message = 5
 
 /datum/pushup/correct/slow/very
 	name = "На ноги и руки - очень медленный"
@@ -64,9 +66,20 @@
 	message_pushup = "быстро"
 	difficulty_mod = 1.25
 	time_mod = 0.6
+	split_message = 10
 
 /datum/pushup/correct/fast/very
 	name = "На ноги и руки - очень быстрый"
 	message_pushup = "крайне быстро"
 	difficulty_mod = 2
 	time_mod = 0.3
+	split_message = 15
+
+/datum/pushup/correct/foot
+	name = "На ступнях"
+	message = "переносит свой вес на ступни и убрал руки за спину! КАК ОН ЭТО ДЕЛАЕТ?!"
+	self_message = "Вы сместили вес на ступни и убрали руки. ЭТО БУДЕТ НЕВОЗМОЖНО!"
+	message_pushup = "на ступнях и без рук"
+	staminaloss_per_pushup = 30
+	difficulty_mod = 10
+	is_bold_message = TRUE

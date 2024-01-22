@@ -5,6 +5,7 @@
 	var/blind_message = "Вы слышите шорох."
 	var/message_pushup = ""
 	var/is_bold_message = FALSE // Выделяем наше сообщение
+	var/split_message = 1 // Отображение сообщений каждые N раз, защита от спама
 
 	// Сообщения когда начинаем задыхаться
 	var/message_oxy_grade = list(
@@ -33,7 +34,7 @@
 
 	// Ранговая зависимость
 	var/list/physical_job_exp_types = list(EXP_TYPE_SECURITY, EXP_TYPE_SUPPLY, EXP_TYPE_ENGINEERING)
-	var/physical_job_mod = 10 // Модификатор за опыт на профу физической направленности
+	var/no_physical_job_div = 10 // Делитель опыта НЕ физических проф
 
 	// Корректировки
 	var/const/stamina_border_max = 95 // 100 - стаминакрит сбрасывающий анимацию
@@ -50,10 +51,10 @@
 	var/mob/user
 	var/pushups_in_a_row = 0 // Сделано отжиманий подряд
 
-/datum/pushup/New(datum/emote/emote_parent, mob/user_parent)
+/datum/pushup/New(datum/emote/linked_emote, mob/linked_user)
 	. = ..()
-	user = user_parent
-	emote = emote_parent
+	user = linked_user
+	emote = linked_emote
 
 /datum/pushup/proc/try_execute()
 	if(!can_do_pushup())
@@ -111,11 +112,25 @@
 	var/mob/living/L = user
 
 	if(L.incapacitated())
+		to_chat(user, span_warning("Вы не в форме!"))
 		return FALSE
 	if(!L.resting || L.buckled)
+		to_chat(user, span_warning("Вы не в том положении для отжиманий! Лягте на пол!"))
 		return FALSE
-	if(!isturf(user.loc))
+
+	var/turf/user_turf = get_turf(user)
+	if(!user_turf)
+		to_chat(user, span_warning("Не на что опереться!"))
 		return FALSE
+	if(length(user_turf.contents) >= 5)
+		to_chat(user, span_warning("Пол захламлен!"))
+		return FALSE
+	for(var/atom/A in user_turf.contents)
+		if(isliving(A) && A != user) // antierp
+			var/mob/living/target = A
+			if(target.body_position == LYING_DOWN)
+				to_chat(user, span_warning("Кто-то подо мной мешает мне сделать отжимание!"))
+				return FALSE
 
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
@@ -184,14 +199,18 @@
 			is_physical_job = TRUE
 			break
 	var/list/play_records = params2list(H.client.prefs.exp)
+
+	// !!!!!!! ДЛЯ ТЕСТА
+	play_records[EXP_TYPE_CREW] = 421*60
+	play_records[EXP_TYPE_SECURITY] = 121*60
+
 	// Берем немного суммы часов за экипаж, отдаляя их от персонала занимающейся физической работой
-	var/exp_sum = play_records[EXP_TYPE_CREW] / physical_job_mod / 60
+	var/exp_sum = play_records[EXP_TYPE_CREW] / no_physical_job_div
 	if(job)
 		for(var/exp_type in job.exp_map)
 			if(!(exp_type in exp_types))
-				exp_sum += text2num(play_records[exp_type]) / 60 // Конвертируем из минут в часы
-	if(is_physical_job)
-		exp_sum *= physical_job_mod
+				exp_sum += text2num(play_records[exp_type])
+	exp_sum /= 60 // Конвертируем из минут в часы
 
 	valueloss += staminaloss_per_pushup - exp_sum / 100
 
@@ -222,6 +241,12 @@
 
 /datum/pushup/proc/pushap_count()
 	pushups_in_a_row++
+
+	if(!ishuman(user)) // антиспам
+		return
+	var/split_count = pushups_in_a_row / split_message
+	if(!(split_count == round(split_count)))
+		return
 
 	var/mob/living/L = user
 	var/pushup_text = get_pushup_message_addition(L)
