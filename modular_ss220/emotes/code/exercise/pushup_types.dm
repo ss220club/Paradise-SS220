@@ -71,14 +71,14 @@
 	message_pushup = "быстро"
 	difficulty_mod = 1.25
 	time_mod = 0.6
-	split_message = 10
+	split_message = 2
 
 /datum/pushup/correct/fast/very
 	name = "На ноги и руки - очень быстрый"
 	message_pushup = "крайне быстро"
 	difficulty_mod = 2
 	time_mod = 0.3
-	split_message = 15
+	split_message = 5
 
 /datum/pushup/correct/foot
 	name = "На ступнях"
