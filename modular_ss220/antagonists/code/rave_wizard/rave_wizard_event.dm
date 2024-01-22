@@ -21,6 +21,7 @@
 		new_character.mind.make_rave_wizard()
 		// This puts them at the wizard spawn, worry not
 		new_character.equip_to_slot_or_del(new /obj/item/reagent_containers/food/drinks/mugwort(new_wizard), SLOT_HUD_IN_BACKPACK)
+		new_character.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses, SLOT_HUD_GLASSES)
 		populate_magivends()
 		// The first wiznerd can get their mugwort from the wizard's den, new ones will also need mugwort!
 		dust_if_respawnable(new_wizard)
@@ -67,6 +68,8 @@
 		SSticker.mode.forge_rave_wizard_objectives(src)
 		SSticker.mode.greet_rave_wizard(src)
 		SSticker.mode.update_wiz_icons_added(src)
+		SSticker.mode.name_wizard(src)
+
 
 /datum/game_mode/proc/greet_rave_wizard(datum/mind/wizard, you_are=1)
 	addtimer(CALLBACK(wizard.current, TYPE_PROC_REF(/mob, playsound_local), null, 'sound/ambience/antag/ragesmages.ogg', 100, 0), 30)
