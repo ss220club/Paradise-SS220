@@ -117,9 +117,10 @@
 
 
 /datum/vote/proc/announce(start_text)
-	to_chat(world, {"<font color='purple'><b>[start_text]</b>
-		<a href='?src=[SSvote.UID()];vote=open'>Нажмите здесь или введите <code>Vote</code>, чтобы оставить голос.</a>
-		У вас [GLOB.configuration.vote.vote_time / 10] секунд на выбор.</font>"})
+	to_chat(world, chat_box_purple(
+		"<span><font color='purple'><b>[start_text]</b></br></br>\
+		<a href='?src=[SSvote.UID()];vote=open'>Нажмите здесь или введите <code>Vote</code>, чтобы оставить голос.</a></br>\
+		У вас [GLOB.configuration.vote.vote_time / 10] секунд на выбор.</span>"))
 	SEND_SOUND(world, sound('sound/ambience/alarm4.ogg'))
 
 
@@ -149,10 +150,13 @@
 /*
 	UI STUFFS
 */
-/datum/vote/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = FALSE, datum/tgui/master_ui = null, datum/ui_state/state = GLOB.always_state)
-	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
+/datum/vote/ui_state(mob/user)
+	return GLOB.always_state
+
+/datum/vote/ui_interact(mob/user, datum/tgui/ui = null)
+	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, ui_key, "VotePanel", "Панель голосования", 400, 500, master_ui, state)
+		ui = new(user, src, "VotePanel", "Панель голосования")
 		ui.open()
 
 /datum/vote/ui_data(mob/user)
