@@ -236,11 +236,11 @@
 	belt = /obj/item/storage/belt/fannypack/orange
 	id = /obj/item/card/id/migrant
 	backpack_contents = list(
-		/obj/item/reagent_containers/food/drinks/bottle/tequila = 1,
-		/obj/item/reagent_containers/food/snacks/taco = 6,
-		/obj/item/reagent_containers/food/snacks/nachos = 3,
-		/obj/item/reagent_containers/food/snacks/cheesenachos = 3,
-		/obj/item/reagent_containers/food/snacks/cubannachos = 3,
+		/obj/item/reagent_containers/drinks/bottle/tequila = 1,
+		/obj/item/food/snacks/taco = 6,
+		/obj/item/food/snacks/nachos = 3,
+		/obj/item/food/snacks/cheesenachos = 3,
+		/obj/item/food/snacks/cubannachos = 3,
 		/obj/item/clothing/suit/poncho/red = 1,
 		/obj/item/clothing/suit/poncho/green = 1,
 		)
@@ -273,10 +273,10 @@
 	pda = /obj/item/pda/librarian
 	id = /obj/item/card/id/uncertain
 	backpack_contents = list(
-		/obj/item/reagent_containers/food/drinks/bottle/vodka = 1,
+		/obj/item/reagent_containers/drinks/bottle/vodka = 1,
 		/obj/item/storage/fancy/cigarettes/cigpack_random = 2,
-		/obj/item/reagent_containers/food/snacks/doshik = 3,
-		/obj/item/reagent_containers/food/snacks/doshik_spicy = 3,
+		/obj/item/food/snacks/doshik = 3,
+		/obj/item/food/snacks/doshik_spicy = 3,
 		/obj/item/clothing/suit/mantle/old = 1,
 		/obj/item/clothing/head/flatcap = 1,
 		/obj/item/clothing/suit/browntrenchcoat = 1,
