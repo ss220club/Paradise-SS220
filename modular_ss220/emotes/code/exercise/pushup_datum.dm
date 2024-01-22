@@ -57,7 +57,7 @@
 	emote = linked_emote
 
 /datum/pushup/proc/try_execute()
-	if(!emote.can_do_pushup())
+	if(!emote.can_do_pushup(user))
 		return
 	prepare_for_pushup_animation()
 	execute()
@@ -74,10 +74,12 @@
 	var/oxy_border = will_do_more_due_to_oxy_damage ? oxy_border_max : 0
 	var/borderloss = stamina_border_max + oxy_border
 	while(currentloss < borderloss)
-		if(!emote.can_do_pushup())
+		if(!emote.can_do_pushup(user))
 			return
 		currentloss = L.getStaminaLoss() + L.getOxyLoss()
 		pushup_value = calculate_valueloss_per_pushup() / time_mod
+		if(pushup_value >= stamina_border_max)
+			pushup_value = stamina_border_max + 1
 		var/temp_time_mod = L.getOxyLoss() / 100 + time_mod
 		if(!pushup_animation(temp_time_mod))
 			pushap_stopped(user)
@@ -87,7 +89,7 @@
 		if(sounds)
 			emote.play_sound_effect(user, intentional, get_sound(), volume)
 
-		if((L.getStaminaLoss() + pushup_value) < stamina_border_max)
+		if((L.getStaminaLoss() + pushup_value) <= stamina_border_max)
 			L.adjustStaminaLoss(pushup_value)
 			continue
 
