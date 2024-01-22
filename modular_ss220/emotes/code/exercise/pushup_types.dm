@@ -3,6 +3,10 @@
 	message = "перенес свой вес на руки и ноги."
 	self_message = "Вы переносите свой вес на руки и ноги."
 
+/datum/pushup/correct/safety
+	name = "На ноги и руки - безопасный"
+	will_do_more_due_to_oxy_damage = FALSE
+
 /datum/pushup/knees
 	name = "На колени"
 	message = "переносит свой вес на колени. Жалкое зрелище."
@@ -83,3 +87,5 @@
 	staminaloss_per_pushup = 30
 	difficulty_mod = 10
 	is_bold_message = TRUE
+	will_do_more_due_to_oxy_damage = FALSE
+	can_non_humans_do = FALSE

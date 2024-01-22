@@ -18,8 +18,9 @@
 	)
 	var/message_oxy_every_value = 20
 
-	// Значение определяющее выпадение в списке на выбор
-	var/can_non_humans_do = TRUE // Для животных и гостов
+	// Ограничители
+	var/can_non_humans_do = TRUE // Отображение в списке для животных и гостов
+	var/will_do_more_due_to_oxy_damage = TRUE // Сделает ли больше за счет урона по дыханию
 
 	// Значения модификаторов используемых в рассчетах
 	var/staminaloss_per_pushup = 5 // Начальное значение проходящее через модификаторы
@@ -31,7 +32,6 @@
 	var/volume = 50
 	var/intentional = FALSE
 
-
 	// Ранговая зависимость
 	var/list/physical_job_exp_types = list(EXP_TYPE_SECURITY, EXP_TYPE_SUPPLY, EXP_TYPE_ENGINEERING)
 	var/no_physical_job_div = 10 // Делитель опыта НЕ физических проф
@@ -39,7 +39,7 @@
 	// Корректировки
 	var/const/stamina_border_max = 95 // 100 - стаминакрит сбрасывающий анимацию
 	var/const/oxy_border_max = 120 // 130 - оксикрит
-	var/const/pushap_div = 1 // Больше значение - больше ачжуманий смогут сделать
+	var/const/pushap_div = 2 // Больше значение - больше ачжуманий смогут сделать
 
 	// Усложнители против абуза химикатов и прочего
 	var/pushap_difficulty_level = 30 // Каждые N отжиманий усложняем
@@ -71,7 +71,8 @@
 	var/mob/living/L = user
 	var/pushup_value
 	var/currentloss = L.getStaminaLoss() + L.getOxyLoss()
-	var/borderloss = stamina_border_max + oxy_border_max
+	var/oxy_border = will_do_more_due_to_oxy_damage ? oxy_border_max : 0
+	var/borderloss = stamina_border_max + oxy_border
 	while(currentloss < borderloss)
 		if(!can_do_pushup())
 			return
@@ -199,10 +200,6 @@
 			is_physical_job = TRUE
 			break
 	var/list/play_records = params2list(H.client.prefs.exp)
-
-	// !!!!!!! ДЛЯ ТЕСТА
-	play_records[EXP_TYPE_CREW] = 421*60
-	play_records[EXP_TYPE_SECURITY] = 121*60
 
 	// Берем немного суммы часов за экипаж, отдаляя их от персонала занимающейся физической работой
 	var/exp_sum = play_records[EXP_TYPE_CREW] / no_physical_job_div
