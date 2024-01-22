@@ -79,7 +79,7 @@
 		currentloss = L.getStaminaLoss() + L.getOxyLoss()
 		pushup_value = calculate_valueloss_per_pushup() / time_mod
 		if(pushup_value >= stamina_border_max)
-			pushup_value = stamina_border_max + 1
+			pushup_value = stamina_border_max + 5
 		var/temp_time_mod = L.getOxyLoss() / 100 + time_mod
 		if(!pushup_animation(temp_time_mod))
 			pushap_stopped(user)

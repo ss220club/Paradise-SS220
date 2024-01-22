@@ -12,6 +12,7 @@
 	message = "переносит свой вес на колени. Жалкое зрелище."
 	self_message = "Вы сместили вес на колени. СЛАБАК!"
 	message_pushup = "на коленях"
+	can_non_humans_do = FALSE
 	difficulty_mod = 0.6
 
 /datum/pushup/one_arm
