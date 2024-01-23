@@ -1,11 +1,13 @@
-/datum/exercise/normal
+/datum/exercise/easy
 	name = "Упражняться"
 	will_do_more_due_to_oxy_damage = FALSE
 	brute_border = 250
 	exercise_div = 10
 	split_message = 10
 
-/datum/exercise/warmup
+/datum/exercise/easy/normal
+
+/datum/exercise/easy/warmup
 	name = "Разомнуться"
 	message = "приготовился разминаться."
 	self_message = "Вы готовитесь разминаться."
@@ -21,12 +23,10 @@
 	message_self_do = "Вы разминаетесь"
 	message_end = "Вы достаточно разомнулись."
 
-	will_do_more_due_to_oxy_damage = FALSE
 	brute_border = 500
 	exercise_div = 10
-	split_message = 10
 
-/datum/exercise/stretch
+/datum/exercise/easy/stretch
 	name = "Потянуться"
 	message = "приготовился потягиваться."
 	self_message = "Вы готовитесь потягиваться."
@@ -42,7 +42,5 @@
 	message_self_do = "Вы потягиваетесь"
 	message_end = "Вы достаточно потянулись."
 
-	will_do_more_due_to_oxy_damage = FALSE
 	brute_border = 200
 	exercise_div = 7
-	split_message = 10

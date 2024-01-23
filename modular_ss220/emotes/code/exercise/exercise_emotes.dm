@@ -9,7 +9,7 @@
 	mob_type_ignore_stat_typecache = list(/mob/dead/observer)
 	cooldown = 3 SECONDS
 
-	var/subtypes_types = /datum/exercise
+	var/subtypes_types = /datum/exercise/easy
 
 	var/message_prepare = "начал упражнение."
 	var/message_self_prepare = "Вы начали упражнение."
