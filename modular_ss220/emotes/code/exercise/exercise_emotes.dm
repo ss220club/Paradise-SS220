@@ -1,6 +1,6 @@
 /datum/emote/exercise
-	key = "exercise_base"
-	key_third_person = "exercises_base"
+	key = "exercise"
+	key_third_person = "exercises"
 	// message = "упражняется!"
 	hands_use_check = TRUE
 	emote_type = EMOTE_VISIBLE | EMOTE_FORCE_NO_RUNECHAT // Don't need an emote to see that
@@ -76,7 +76,7 @@
 		to_chat(user, span_warning("Вы не в форме!"))
 		return FALSE
 	if(is_need_lying && (!L.resting || L.buckled))
-		to_chat(user, span_warning("Вы не в неправильной позе! Ложитесь!"))
+		to_chat(user, span_warning("Вы не в неправильном положении! Ложитесь!"))
 		return FALSE
 
 	var/turf/user_turf = get_turf(user)

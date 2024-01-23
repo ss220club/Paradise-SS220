@@ -23,8 +23,8 @@
 
 /datum/exercise/squat
 	name = "ДЕБАГ ПРЮСЕУДАНИЯ (Вы не должны это видеть)"
-	message = "согнулся в коленя."
-	self_message = "Вы сгобаетесь в коленях."
+	message = "согнулся в коленях."
+	self_message = "Вы сгибаетесь в коленях."
 	blind_message = "Вы слышите шорох."
 	message_exercise = ""
 
@@ -80,7 +80,7 @@
 	name = "На цыпочках"
 	message = "сгибается в коленях и ступнями встает на цыпочки! Как напряглись его икры!"
 	self_message = "Вы согнулись в коленях и встали на цыпочки. Как же я хорош!"
-	message_exercise = "на цыпочказ"
+	message_exercise = "на цыпочках"
 	staminaloss_per_exercise = 10
 	difficulty_mod = 3
 	is_bold_message = TRUE

@@ -121,6 +121,11 @@
 	emote("slap", intentional = TRUE)
 
 /// Exercise Emotes ///
+/mob/living/carbon/human/verb/emote_exercise()
+	set name = "⚝ Упражнения"
+	set category = "Эмоции"
+	emote("exercise", intentional = TRUE)
+
 /mob/living/carbon/human/verb/emote_pushup()
 	set name = "⚝ Отжимания"
 	set category = "Эмоции"

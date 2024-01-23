@@ -50,10 +50,14 @@
 	linked_emote = /datum/emote/living/carbon/human/whip
 	name = "Ударять хвостом"
 
-/datum/keybinding/emote/exercise/pushup
-	linked_emote = /datum/emote/exercise/pushup
-	name = "Отжимания"
+/datum/keybinding/emote/exercise
+	linked_emote = /datum/emote/exercise
+	name = "Упражнения"
 
 /datum/keybinding/emote/exercise/squat
 	linked_emote = /datum/emote/exercise/squat
-	name = "Приседание"
+	name = "Приседания"
+
+/datum/keybinding/emote/exercise/pushup
+	linked_emote = /datum/emote/exercise/pushup
+	name = "Отжимания"
