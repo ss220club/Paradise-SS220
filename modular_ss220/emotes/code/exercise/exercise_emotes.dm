@@ -76,7 +76,7 @@
 		to_chat(user, span_warning("Вы не в форме!"))
 		return FALSE
 	if(is_need_lying && (!L.resting || L.buckled))
-		to_chat(user, span_warning("Вы не в неправильном положении! Ложитесь!"))
+		to_chat(user, span_warning("Вы в неправильном положении! Ложитесь!"))
 		return FALSE
 
 	var/turf/user_turf = get_turf(user)
