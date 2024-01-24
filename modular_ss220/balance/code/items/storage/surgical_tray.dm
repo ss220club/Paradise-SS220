@@ -1,8 +1,7 @@
 /obj/item/storage/surgical_tray/Initialize(mapload)
 	. = ..()
 
-	for(var/item in contents)
-		qdel(item)
+	QDEL_LIST_CONTENTS(contents)
 
 	new /obj/item/scalpel(src)
 	new /obj/item/cautery(src)
