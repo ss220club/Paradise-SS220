@@ -5,17 +5,22 @@
 	icon = 'modular_ss220/objects/icons/mech.dmi'
 	icon_state = "lockermech"
 	initial_icon = "lockermech"
-	max_integrity = 100 // Its made of scraps
+	// It's made of scraps
+	max_integrity = 100
 	lights_power = 5
-	step_in = 4 // Same speed as a Ripley, for now.
+	// Same speed as Ripley
+	step_in = 4
 	armor = list(melee = 20, bullet = 10, laser = 10, energy = 0, bomb = 10, rad = 0, fire = 70, acid = 60)
-	internal_damage_threshold = 30 // Its got shitty durability
-	max_equip = 2 // You only have two arms and the control system is shitty
+	internal_damage_threshold = 30
+	max_equip = 2
 	wreckage = /obj/structure/mecha_wreckage/lockermech
-	var/fast_pressure_step_in = 2 // step_in while in normal pressure conditions
-	var/slow_pressure_step_in = 4 // step_in while in better pressure conditions
+	/// step_in while in normal pressure conditions
+	var/fast_pressure_step_in = 2
+	/// step_in while in better pressure conditions
+	var/slow_pressure_step_in = 4
 	var/list/cargo
-	var/cargo_capacity = 5 // You can fit a few things in this locker but not much.
+	/// You can fit a few things in this locker but not much.
+	var/cargo_capacity = 5
 
 /obj/mecha/lockermech/go_out()
 	..()
