@@ -171,6 +171,7 @@
 		user.Confused(20 SECONDS)
 		user.Weaken(10 SECONDS)
 
+
 /obj/item/clothing/suit/hooded/cultrobes/cult_shield/setup_shielding()
 	AddComponent(/datum/component/shielded, recharge_start_delay = 0 SECONDS, shield_icon_file = 'icons/effects/cult_effects.dmi', shield_icon = "shield-cult", run_hit_callback = CALLBACK(src, PROC_REF(shield_damaged)))
 
@@ -247,7 +248,7 @@
 		to_chat(user, "<span class='notice'>[src] крошится в пепел.</span>")
 		qdel(src)
 
-/obj/item/reagent_containers/food/drinks/bottle/unholywater
+/obj/item/reagent_containers/drinks/bottle/unholywater
 	name = "Фляга нечестивой воды"
 	desc = "Токсин для неверующих; эта вода освежает верующих культа."
 	icon_state = "holyflask"
