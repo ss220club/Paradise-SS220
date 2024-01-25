@@ -2,8 +2,8 @@
 #define CULT_SLAUGHTER "slaughter"
 
 /obj/item/melee/cultblade/dagger
-	name = "ritual dagger"
-	desc = "A strange dagger said to be used by sinister groups for \"preparing\" a corpse before sacrificing it to their dark gods."
+	name = "ритуальный нож"
+	desc = "Странный нож, используемый зловещими групами для \"подготовки\" тела перед жертвоприношением смоим тёмным богам."
 	icon_state = "blood_dagger"
 	item_state = "blood_dagger"
 	w_class = WEIGHT_CLASS_SMALL
@@ -29,20 +29,20 @@
 /obj/item/melee/cultblade/dagger/examine(mob/user)
 	. = ..()
 	if(iscultist(user) || user.stat == DEAD)
-		. += "<span class='cult'>A dagger gifted by [SSticker.cultdat.entity_title3]. Allows the scribing of runes and access to the knowledge archives of the cult of [SSticker.cultdat.entity_name].</span>"
-		. += "<span class='cultitalic'>Striking another cultist with it will purge holy water from them.</span>"
-		. += "<span class='cultitalic'>Striking a noncultist will tear their flesh, additionally, if you recently downed them with cult magic it will stun them completely.</span>"
+		. += "<span class='cult'>Нож, подаренный вам [SSticker.cultdat.entity_title3]. Даёт возможность чертить руны и получить знания из Архивов культа [SSticker.cultdat.entity_name].</span>"
+		. += "<span class='cultitalic'>Атакуя культистов, вы уберёте святую воду из них.</span>"
+		. += "<span class='cultitalic'>Атакуя неверных, вы разорвёте их плоть. Дополнительно, если вы их недавно ослабили Магией Крови, удар их полностью оглушит.</span>"
 
 /obj/item/melee/cultblade/dagger/attack(mob/living/M, mob/living/user)
 	if(iscultist(M))
 		if(M.reagents && M.reagents.has_reagent("holywater")) //allows cultists to be rescued from the clutches of ordained religion
 			if(M == user) // Targeting yourself
-				to_chat(user, "<span class='warning'>You can't remove holy water from yourself!</span>")
+				to_chat(user, "<span class='warning'>Вы не можете извлечь святую воду из себя!</span>")
 			else // Targeting someone else
-				to_chat(user, "<span class='cult'>You remove the taint from [M].</span>")
-				to_chat(M, "<span class='cult'>[user] removes the taint from your body.</span>")
+				to_chat(user, "<span class='cult'>Вы убираете порчу из тела [M].</span>")
+				to_chat(M, "<span class='cult'>[user] убирает порчу из вашего тела.</span>")
 				M.reagents.del_reagent("holywater")
-				add_attack_logs(user, M, "Hit with [src], removing the holy water from them")
+				add_attack_logs(user, M, "ударил [src], выводя из них святую воду.")
 		return FALSE
 	else
 		var/datum/status_effect/cult_stun_mark/S = M.has_status_effect(STATUS_EFFECT_CULT_STUN)
@@ -52,7 +52,7 @@
 
 /obj/item/melee/cultblade/dagger/attack_self(mob/user)
 	if(!iscultist(user))
-		to_chat(user, "<span class='warning'>[src] is covered in unintelligible shapes and markings.</span>")
+		to_chat(user, "<span class='warning'>[src] покрыт непонятными надписями и знаками.</span>")
 		return
 	scribe_rune(user)
 
@@ -60,25 +60,25 @@
 	var/datum/game_mode/gamemode = SSticker.mode
 
 	if(gamemode.cult_objs.cult_status < NARSIE_NEEDS_SUMMONING)
-		to_chat(user, "<span class='cultitalic'><b>[SSticker.cultdat.entity_name]</b> is not ready to be summoned yet!</span>")
+		to_chat(user, "<span class='cultitalic'><b>[SSticker.cultdat.entity_name]</b> Ещё не готов к призыву!</span>")
 		return FALSE
 	if(gamemode.cult_objs.cult_status == NARSIE_HAS_RISEN)
-		to_chat(user, "<span class='cultlarge'>\"I am already here. There is no need to try to summon me now.\"</span>")
+		to_chat(user, "<span class='cultlarge'>\"Я уже здесь. Нет нужды меня призывать.\"</span>")
 		return FALSE
 
 	var/list/summon_areas = gamemode.cult_objs.obj_summon.summon_spots
 	if(!(A in summon_areas))
-		to_chat(user, "<span class='cultlarge'>[SSticker.cultdat.entity_name] can only be summoned where the veil is weak - in [english_list(summon_areas)]!</span>")
+		to_chat(user, "<span class='cultlarge'>[SSticker.cultdat.entity_name] может быть призван в местах с слабой Завесой - в [english_list(summon_areas)]!</span>")
 		return FALSE
-	var/confirm_final = alert(user, "This is the FINAL step to summon your deities power, it is a long, painful ritual and the crew will be alerted to your presence AND your location!",
-	"Are you prepared for the final battle?", "My life for [SSticker.cultdat.entity_name]!", "No")
+	var/confirm_final = alert(user, "Это ПОСЛЕДНИЙ шаг по призыву божества. Это долгий и мучительный ритуал, а экипаж будет уведомлён о вашем присутствии И вашем местоположении!",
+	"Вы готовы к финальной битве?", "Жизнь за [SSticker.cultdat.entity_name]!", "Нет")
 	if(user)
-		if(confirm_final == "No" || confirm_final == null)
-			to_chat(user, "<span class='cultitalic'><b>You decide to prepare further before scribing the rune.</b></span>")
+		if(confirm_final == "Нет" || confirm_final == null)
+			to_chat(user, "<span class='cultitalic'><b>Вы решаете лучше подготовиться перед начертанием руны.</b></span>")
 			return FALSE
 		else
 			if(locate(/obj/effect/rune) in range(1, user))
-				to_chat(user, "<span class='cultlarge'>You need a space cleared of runes before you can summon [SSticker.cultdat.entity_title1]!</span>")
+				to_chat(user, "<span class='cultlarge'>Вам нужно очищенное от рун пространство для призыва [SSticker.cultdat.entity_title1]!</span>")
 				return FALSE
 			else
 				return TRUE
@@ -87,14 +87,14 @@
 	if(!src || !user || loc != user || user.incapacitated())
 		return FALSE
 	if(drawing_rune)
-		to_chat(user, "<span class='warning'>You're already drawing a rune!</span>")
+		to_chat(user, "<span class='warning'>Вы уже чертите руну!</span>")
 		return FALSE
 
 	var/turf/T = get_turf(user)
 	if(isspaceturf(T))
 		return FALSE
 	if((locate(/obj/effect/rune) in T) || (locate(/obj/effect/rune/narsie) in range(1, T)))
-		to_chat(user, "<span class='warning'>There's already a rune here!</span>")
+		to_chat(user, "<span class='warning'>Здесь уже расположена руна!</span>")
 		return FALSE
 	return TRUE
 
@@ -116,7 +116,7 @@
 	if(!length(possible_runes))
 		return
 
-	var/chosen_rune = tgui_input_list(user, "Choose a rite to scribe.", "Sigils of Power", possible_runes)
+	var/chosen_rune = tgui_input_list(user, "Выберите руну для начертания.", "Сигилы Силы", possible_runes)
 	if(!chosen_rune)
 		return
 	var/obj/effect/rune/rune = possible_runes[chosen_rune]
@@ -124,7 +124,7 @@
 	if(rune == /obj/effect/rune/narsie)
 		narsie_rune = TRUE
 	if(initial(rune.req_keyword))
-		keyword = stripped_input(user, "Please enter a keyword for the rune.", "Enter Keyword")
+		keyword = stripped_input(user, "Напишите название для руны.", "Введите название")
 		if(!keyword)
 			return
 
@@ -138,12 +138,12 @@
 	var/datum/game_mode/gamemode = SSticker.mode
 	if(ispath(rune, /obj/effect/rune/summon))
 		if(!is_station_level(runeturf.z) || istype(A, /area/space))
-			to_chat(user, "<span class='cultitalic'>The veil is not weak enough here to summon a cultist, you must be on station!</span>")
+			to_chat(user, "<span class='cultitalic'>Завеса слаба для призыва культиста, вы должны находиться на станции!</span>")
 			return
 
 	if(ispath(rune, /obj/effect/rune/teleport))
 		if(!is_level_reachable(user.z))
-			to_chat(user, "<span class='cultitalic'>You are too far away from the station to teleport!</span>")
+			to_chat(user, "<span class='cultitalic'>Вы слишком далеко от станции для телепортации!</span>")
 			return
 
 	var/old_color = user.color // we'll temporarily redden the user for better feedback to fellow cultists. Store this to revert them back.
@@ -152,7 +152,7 @@
 			return // don't do shit
 		var/list/summon_areas = gamemode.cult_objs.obj_summon.summon_spots
 		if(!(A in summon_areas)) // Check again to make sure they didn't move
-			to_chat(user, "<span class='cultlarge'>The ritual can only begin where the veil is weak - in [english_list(summon_areas)]!</span>")
+			to_chat(user, "<span class='cultlarge'>Ритуал может быть начат только  - in [english_list(summon_areas)]!</span>")
 			return
 		GLOB.major_announcement.Announce("Образы древнего богоподобного существа соединяются воединно в [A.map_name] из неизвестного измерения. Прервите ритуал любой ценой, пока станция не была уничтожена! Действие космических законов и стандартных рабочих процедур приостановлено. Всему экипажу - ликвидировать культистов на месте.", "Отдел по делам Высших Измерений.", 'sound/AI/spanomalies.ogg')
 		for(var/I in spiral_range_turfs(1, user, 1))
