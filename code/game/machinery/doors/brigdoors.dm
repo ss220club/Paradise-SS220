@@ -80,13 +80,13 @@
 	var/datum/data/record/R = find_security_record("name", occupant)
 
 	var/timetext = seconds_to_time(timetoset / 10)
-	var/announcetext = "Задержанный [occupant] ([prisoner_drank]) был заключен под стражу на [timetext], за преступление: '[crimes]'. \
+	var/announcetext = "Задержанный [occupant] ([prisoner_drank]) был помещен в камеру заключения на [timetext], за преступление: '[crimes]'. \
 	Ответственный офицер: [usr.name].[R ? "" : " Запись о задержанном не найдена, требуется обновление записи вручную."]"
 	Radio.autosay(announcetext, name, "Security")
 
 	// Notify the actual criminal being brigged. This is a QOL thing to ensure they always know the charges against them.
 	// Announcing it on radio isn't enough, as they're unlikely to have sec radio.
-	notify_prisoner("Вы были заключены под стражу на [timetext], за преступление: '[crimes]'.")
+	notify_prisoner("Вы были заключены в камеру заключения на [timetext], за преступление: '[crimes]'.")
 
 	if(prisoner_trank != "unknown" && prisoner_trank != "Assistant")
 		SSjobs.notify_dept_head(prisoner_trank, announcetext)
