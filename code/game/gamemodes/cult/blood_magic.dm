@@ -700,6 +700,7 @@
 	if(user.holy_check())
 		return
 	if(proximity_flag)
+
 		// Veil Shifter
 		if(istype(target, /obj/item/cult_shift))
 			var/obj/item/cult_shift/S = target
