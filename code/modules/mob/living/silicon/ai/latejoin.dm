@@ -14,7 +14,7 @@ GLOBAL_LIST_EMPTY(empty_playable_ai_cores)
 /mob/living/silicon/ai/proc/cryo_AI()
 	var/dead_aicore = new /obj/structure/AIcore/deactivated(loc)
 	GLOB.empty_playable_ai_cores += dead_aicore
-	GLOB.global_announcer.autosay("[src] был перемещён в хранилище ИИ.", "Наблюдатель за ИИ", follow_target_override = dead_aicore)
+	GLOB.global_announcer.autosay("[src] был перемещён в хранилище ИИ.", "Система Надзора за ИИ", follow_target_override = dead_aicore)
 
 	//Handle job slot/tater cleanup.
 	var/job = mind.assigned_role

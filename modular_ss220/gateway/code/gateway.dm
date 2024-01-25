@@ -267,12 +267,12 @@ GLOBAL_DATUM_INIT(the_gateway, /obj/machinery/gateway/centerstation, null)
 	else
 		for(var/mob/living/L in AM.contents)
 			if(exilecheck(L))
-				atom_say("Rejecting [AM]: Exile bio-chip detected in contained lifeform.")
+				atom_say("Объект отвергнут: Обнаружен биочип изгнанника в жизнеспособной форме.")
 				return
 	if(AM.has_buckled_mobs())
 		for(var/mob/living/L in AM.buckled_mobs)
 			if(exilecheck(L))
-				atom_say("Rejecting [AM]: Exile bio-chip detected in close proximity lifeform.")
+				atom_say("Объект отвергнут: Обнаружен биочип изгнанника в непосредственной близости от жизнеспособной формы.")
 				return
 	AM.forceMove(get_step(stationgate.loc, SOUTH))
 	AM.setDir(SOUTH)
