@@ -1,5 +1,5 @@
 /datum/cult_info
-	var/name = "Cult of Nar'Sie"
+	var/name = "Культ Нар'Си"
 	var/theme = "blood"
 	var/tome_icon = "tome"
 	var/dagger_icon = "blood_dagger"
@@ -7,43 +7,43 @@
 	var/construct_glow = LIGHT_COLOR_BLOOD_MAGIC
 
 	//God Entity
-	var/entity_name = "Nar'Sie"
+	var/entity_name = "Нар'Си"
 	var/entity_title1 = "The Dark One"
-	var/entity_title2 = "The One Who Sees"
-	var/entity_title3 = "The Geometer of Blood"
+	var/entity_title2 = "Всевидящий"
+	var/entity_title3 = "Геометр Крови"
 	var/entity_icon_state = "narsie"
 	var/entity_spawn_animation = "narsie_spawn_anim"
 
 
 	//Builder Construct
-	var/artificer_name = "Artificer"
+	var/artificer_name = "Созидатель"
 	var/artificer_icon_state = "artificer"
 	var/artificer_dead_state = "shade_dead"
 
 	//Behemoth Construct
-	var/behemoth_name = "Behemoth"
+	var/behemoth_name = "Чудище"
 	var/behemoth_icon_state = "behemoth"
 	var/behemoth_dead_state = "shade_dead"
 
 	//Wraith Construct
-	var/wraith_name = "Wraith"
+	var/wraith_name = "Призрак"
 	var/wraith_icon_state = "floating"
 	var/wraith_dead_state = "shade_dead"
 	var/wraith_jaunt_out_animation = "phase_shift"
 	var/wraith_jaunt_in_animation = "phase_shift2"
 
 	//Armored Construct
-	var/juggernaut_name = "Juggernaut"
+	var/juggernaut_name = "Джаггернаут"
 	var/juggernaut_icon_state = "behemoth"
 	var/juggernaut_dead_state = "shade_dead"
 
 	//Harvester Construct
-	var/harvester_name = "Harvester"
+	var/harvester_name = "Собиратель"
 	var/harvester_icon_state = "harvester"
 	var/harvester_dead_state = "shade_dead"
 
 	//Shade Spirit
-	var/shade_name = "Shade"
+	var/shade_name = "Тень"
 	var/shade_icon_state = "shade2"
 	var/shade_dead_state = "shade_dead"
 
@@ -79,17 +79,17 @@
 
 
 /datum/cult_info/fire
-	name = "Cult of Kha'Rin"
+	name = "Культ Ха'Рин"
 	theme = "fire"
 	tome_icon = "helltome"
 	dagger_icon = "hell_dagger"
 	sword_icon = "hell_blade"
 	construct_glow = LIGHT_COLOR_FIRE
 
-	entity_name = "Kha'Rin"
-	entity_title1 = "The Burning One"
-	entity_title2 = "The One Who Consumes"
-	entity_title3 = "The Harbinger of Fire"
+	entity_name = "Ха'Рин"
+	entity_title1 = "Горящий"
+	entity_title2 = "Поглотитель"
+	entity_title3 = "Предвестник Огня"
 	entity_icon_state = "kha'rin"
 	entity_spawn_animation = "kha'rin_spawn_anim"
 
@@ -139,17 +139,17 @@
 	airlock_unruned_overlays_file = 'icons/obj/doors/airlocks/cult/unruned/hell-overlays.dmi'
 
 /datum/cult_info/death
-	name = "Cult of Mortality"
+	name = "Культ Смертности"
 	theme = "death"
 	tome_icon = "deathtome"
 	dagger_icon = "death_dagger"
 	sword_icon = "death_blade"
 	construct_glow = LIGHT_COLOR_DARKRED
 
-	entity_name = "The Reaper"
-	entity_title1 = "The Silent One"
+	entity_name = "Жнец"
+	entity_title1 = "Тихий"
 	entity_title2 = "The One Who Beckons"
-	entity_title3 = "The Ferryman of Oblivion"
+	entity_title3 = "Паромщик Забвения"
 	entity_icon_state = "reaper"
 	entity_spawn_animation = "reaper_spawn_anim"
 
