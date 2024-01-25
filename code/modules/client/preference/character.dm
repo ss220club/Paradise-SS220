@@ -532,15 +532,15 @@
 	autohiss_mode	= sanitize_integer(autohiss_mode, 0, 2, initial(autohiss_mode))
 
 	alternate_option = sanitize_integer(alternate_option, 0, 2, initial(alternate_option))
-	job_support_high = sanitize_integer(job_support_high, 0, 65535, initial(job_support_high))
-	job_support_med = sanitize_integer(job_support_med, 0, 65535, initial(job_support_med))
-	job_support_low = sanitize_integer(job_support_low, 0, 65535, initial(job_support_low))
-	job_medsci_high = sanitize_integer(job_medsci_high, 0, 65535, initial(job_medsci_high))
-	job_medsci_med = sanitize_integer(job_medsci_med, 0, 65535, initial(job_medsci_med))
-	job_medsci_low = sanitize_integer(job_medsci_low, 0, 65535, initial(job_medsci_low))
-	job_engsec_high = sanitize_integer(job_engsec_high, 0, 65535, initial(job_engsec_high))
-	job_engsec_med = sanitize_integer(job_engsec_med, 0, 65535, initial(job_engsec_med))
-	job_engsec_low = sanitize_integer(job_engsec_low, 0, 65535, initial(job_engsec_low))
+	job_support_high = sanitize_integer(job_support_high, 0, JOBCAT_SUPPORT_LAST, initial(job_support_high)) // SS220 EDIT - jobs.defines.dm
+	job_support_med = sanitize_integer(job_support_med, 0, JOBCAT_SUPPORT_LAST, initial(job_support_med)) // SS220 EDIT - jobs.defines.dm
+	job_support_low = sanitize_integer(job_support_low, 0, JOBCAT_SUPPORT_LAST, initial(job_support_low)) // SS220 EDIT - jobs.defines.dm
+	job_medsci_high = sanitize_integer(job_medsci_high, 0, JOBCAT_MEDSCI_LAST, initial(job_medsci_high)) // SS220 EDIT - jobs.defines.dm
+	job_medsci_med = sanitize_integer(job_medsci_med, 0, JOBCAT_MEDSCI_LAST, initial(job_medsci_med)) // SS220 EDIT - jobs.defines.dm
+	job_medsci_low = sanitize_integer(job_medsci_low, 0, JOBCAT_MEDSCI_LAST, initial(job_medsci_low)) // SS220 EDIT - jobs.defines.dm
+	job_engsec_high = sanitize_integer(job_engsec_high, 0, JOBCAT_ENGSEC_LAST, initial(job_engsec_high)) // SS220 EDIT - jobs.defines.dm
+	job_engsec_med = sanitize_integer(job_engsec_med, 0, JOBCAT_ENGSEC_LAST, initial(job_engsec_med)) // SS220 EDIT - jobs.defines.dm
+	job_engsec_low = sanitize_integer(job_engsec_low, 0, JOBCAT_ENGSEC_LAST, initial(job_engsec_low)) // SS220 EDIT - jobs.defines.dm
 	disabilities = sanitize_integer(disabilities, 0, 65535, initial(disabilities))
 
 	socks			= sanitize_text(socks, initial(socks))
