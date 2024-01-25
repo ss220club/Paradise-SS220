@@ -152,7 +152,7 @@
 			return // don't do shit
 		var/list/summon_areas = gamemode.cult_objs.obj_summon.summon_spots
 		if(!(A in summon_areas)) // Check again to make sure they didn't move
-			to_chat(user, "<span class='cultlarge'>Ритуал может быть начат только  - in [english_list(summon_areas)]!</span>")
+			to_chat(user, "<span class='cultlarge'>Ритуал может быть начат только в местах со слабой завесой - in [english_list(summon_areas)]!</span>")
 			return
 		GLOB.major_announcement.Announce("Образы древнего богоподобного существа соединяются воединно в [A.map_name] из неизвестного измерения. Прервите ритуал любой ценой, пока станция не была уничтожена! Действие космических законов и стандартных рабочих процедур приостановлено. Всему экипажу - ликвидировать культистов на месте.", "Отдел по делам Высших Измерений.", 'sound/AI/spanomalies.ogg')
 		for(var/I in spiral_range_turfs(1, user, 1))
@@ -166,11 +166,11 @@
 	H.cult_self_harm(initial(rune.scribe_damage))
 	var/others_message
 	if(!narsie_rune)
-		others_message = "<span class='warning'>[user] cuts [user.p_their()] body and begins writing in [user.p_their()] own blood!</span>"
+		others_message = "<span class='warning'>[user] разрезает своё тело и начинает чертить своей кровью!</span>"
 	else
-		others_message = "<span class='biggerdanger'>[user] cuts [user.p_their()] body and begins writing something particularly ominous in [user.p_their()] own blood!</span>"
+		others_message = "<span class='biggerdanger'>[user] разрезает своё тело и начинает чертить что-то особенно зловещее своей кровью!</span>"
 	user.visible_message(others_message,
-		"<span class='cultitalic'>You slice open your body and begin drawing a sigil of [SSticker.cultdat.entity_title3].</span>")
+		"<span class='cultitalic'>Вы разрезаете своё тело и начинаете чертить сигил [SSticker.cultdat.entity_title3].</span>")
 
 	drawing_rune = TRUE // Only one at a time
 	var/scribe_successful = do_after(user, initial(rune.scribe_delay) * scribe_multiplier, target = runeturf)
@@ -183,8 +183,8 @@
 	if(!scribe_successful)
 		return
 
-	user.visible_message("<span class='warning'>[user] creates a strange circle in [user.p_their()] own blood.</span>",
-						"<span class='cultitalic'>You finish drawing the arcane markings of [SSticker.cultdat.entity_title3].</span>")
+	user.visible_message("<span class='warning'>[user] создаёт странный круг с помощью своей крови.</span>",
+						"<span class='cultitalic'>Вы заканчиваете начертание древних меток [SSticker.cultdat.entity_title3].</span>")
 
 	var/obj/effect/rune/R = new rune(runeturf, keyword)
 	if(narsie_rune)
