@@ -88,7 +88,7 @@
 		cult_mind.add_mind_objective(/datum/objective/servecult)
 
 		if(cult_mind.assigned_role == "Clown")
-			to_chat(cult_mind.current, "<span class='cultitalic'>A dark power has allowed you to overcome your clownish nature, letting you wield weapons without harming yourself.</span>")
+			to_chat(cult_mind.current, "<span class='cultitalic'>Тёмная сила позволила вам перебороть свою клоунскую натуру, позволяя вам использовать оружие без риска пораниться.</span>")
 			cult_mind.current.dna.SetSEState(GLOB.clumsyblock, FALSE)
 			singlemutcheck(cult_mind.current, GLOB.clumsyblock, MUTCHK_FORCED)
 			var/datum/action/innate/toggle_clumsy/A = new
@@ -97,7 +97,7 @@
 		add_cult_actions(cult_mind)
 		update_cult_icons_added(cult_mind)
 		cult_objs.study(cult_mind.current)
-		to_chat(cult_mind.current, "<span class='motd'>For more information, check the wiki page: ([GLOB.configuration.url.wiki_url]/index.php/Cultist)</span>")
+		to_chat(cult_mind.current, "<span class='motd'>Для большей информацией, проконсультируйтесь с Вики: ([GLOB.configuration.url.wiki_url]/index.php/Cultist)</span>")
 	cult_threshold_check()
 	addtimer(CALLBACK(src, PROC_REF(cult_threshold_check)), 2 MINUTES) // Check again in 2 minutes for latejoiners
 	..()
@@ -108,7 +108,7 @@
 	. += cult_give_item(/obj/item/melee/cultblade/dagger, H)
 	if(metal)
 		. += cult_give_item(/obj/item/stack/sheet/runed_metal/ten, H)
-	to_chat(H, "<span class='cult'>These will help you start the cult on this station. Use them well, and remember - you are not the only one.</span>")
+	to_chat(H, "<span class='cult'>Эти вещи помогут вам в зачатии культа на станции. Используйте их с умом и помните - вы не единственный.</span>")
 
 /datum/game_mode/proc/cult_give_item(obj/item/item_path, mob/living/carbon/human/H)
 	var/list/slots = list(
@@ -122,7 +122,7 @@
 		to_chat(H, "<span class='userdanger'>Unfortunately, you weren't able to get a [item_name]. This is very bad and you should adminhelp immediately (press F1).</span>")
 		return FALSE
 	else
-		to_chat(H, "<span class='danger'>You have a [item_name] in your [where].</span>")
+		to_chat(H, "<span class='danger'>В вашем [where] находится [item_name].</span>")
 		return TRUE
 
 
@@ -140,7 +140,7 @@
 		cult_mind.special_role = SPECIAL_ROLE_CULTIST
 
 		if(cult_mind.assigned_role == "Clown")
-			to_chat(cult_mind.current, "<span class='cultitalic'>A dark power has allowed you to overcome your clownish nature, letting you wield weapons without harming yourself.</span>")
+			to_chat(cult_mind.current, "<span class='cultitalic'>Тёмная сила позволила вам перебороть свою клоунскую натуру, позволяя вам использовать оружие без риска пораниться.</span>")
 			cult_mind.current.dna.SetSEState(GLOB.clumsyblock, FALSE)
 			singlemutcheck(cult_mind.current, GLOB.clumsyblock, MUTCHK_FORCED)
 			var/datum/action/innate/toggle_clumsy/A = new
@@ -163,7 +163,7 @@
 				ascend(cult_mind.current)
 		check_cult_size()
 		cult_objs.study(cult_mind.current)
-		to_chat(cult_mind.current, "<span class='motd'>For more information, check the wiki page: ([GLOB.configuration.url.wiki_url]/index.php/Cultist)</span>")
+		to_chat(cult_mind.current, "<span class='motd'>Для большей информацией, проконсультируйтесь с Вики: ([GLOB.configuration.url.wiki_url]/index.php/Cultist)</span>")
 		RegisterSignal(cult_mind.current, COMSIG_MOB_STATCHANGE, PROC_REF(cultist_stat_change))
 		return TRUE
 
@@ -194,7 +194,7 @@
 				if(is_type_in_list(I, CULT_CLOTHING))
 					H.unEquip(I)
 		if(cult_mind.assigned_role == "Clown")
-			to_chat(H, "<span class='sans'>You are free of the dark power suppressing your clownish nature. You are clumsy again! Honk!</span>")
+			to_chat(H, "<span class='sans'>Вы свободны от тёмных сил, сдержвивавших вашу клоунскую натуру. Вы снова неуклюжий! Хонк!</span>")
 			H.dna.SetSEState(GLOB.clumsyblock, TRUE)
 			singlemutcheck(H, GLOB.clumsyblock, MUTCHK_FORCED)
 			for(var/datum/action/innate/toggle_clumsy/A in H.actions)
@@ -202,8 +202,8 @@
 		cult_mind.current.create_log(CONVERSION_LOG, "Deconverted from the cult")
 	check_cult_size()
 	if(show_message)
-		cultist.visible_message("<span class='cult'>[cultist] looks like [cultist.p_they()] just reverted to [cultist.p_their()] old faith!</span>",
-		"<span class='userdanger'>An unfamiliar white light flashes through your mind, cleansing the taint of [SSticker.cultdat ? SSticker.cultdat.entity_title1 : "Nar'Sie"] and the memories of your time as their servant with it.</span>")
+		cultist.visible_message("<span class='cult'> Похоже, что [cultist] был обращён в прежнюю веру!</span>",
+		"<span class='userdanger'>Незнакомый свет проносится сквозь ваш разум, очищая скверну от [SSticker.cultdat ? SSticker.cultdat.entity_title1 : "Нар'Си"] и память о служении ей вместе с ним.</span>")
 	UnregisterSignal(cult_mind.current, COMSIG_MOB_STATCHANGE)
 
 /datum/game_mode/proc/add_cult_immunity(mob/living/target)

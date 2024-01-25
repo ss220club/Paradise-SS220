@@ -33,7 +33,7 @@
 			to_chat(M, "<span class='cult'>Завеса слаба! Мы можем призвать [SSticker.cultdat ? SSticker.cultdat.entity_title3 : "The Dark One"]!</span>")
 			to_chat(M, "<span class='cult'>Текущая цель: [obj_summon.explanation_text]</span>")
 		if(NARSIE_HAS_RISEN)
-			to_chat(M, "<span class='cultlarge'>\"I am here.\"</span>")
+			to_chat(M, "<span class='cultlarge'>\"Я здесь.\"</span>")
 			to_chat(M, "<span class='cult'>Текущая цель:</span> <span class='cultlarge'>\"Кормите меня.\"</span>")
 		if(NARSIE_HAS_FALLEN)
 			to_chat(M, "<span class='cultlarge'>[SSticker.cultdat ? SSticker.cultdat.entity_name : "The Dark One"] был изгнан!</span>")
