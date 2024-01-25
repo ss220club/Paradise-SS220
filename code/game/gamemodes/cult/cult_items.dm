@@ -166,7 +166,7 @@
 	..()
 	if(!iscultist(user)) // Todo: Make this only happen when actually equipped to the correct slot. (For all cult items)
 		to_chat(user, "<span class='cultlarge'>\"Я бы не советовал.\"</span>")
-		to_chat(user, "<span class='warning'>An overwhelming sense of nausea overpowers you!</span>")
+		to_chat(user, "<span class='warning'>Непреодолимое чувство тошноты овладевает вами!</span>")
 		user.unEquip(src, 1)
 		user.Confused(20 SECONDS)
 		user.Weaken(10 SECONDS)
@@ -177,14 +177,14 @@
 
 /// A proc for callback when the shield breaks, since cult robes are stupid and have different effects
 /obj/item/clothing/suit/hooded/cultrobes/cult_shield/proc/shield_damaged(mob/living/wearer, attack_text, new_current_charges)
-	wearer.visible_message("<span class='danger'>[attack_text] is deflected in a burst of blood-red sparks!</span>")
+	wearer.visible_message("<span class='danger'>[attack_text] был отражён со всплеском кровавокрасных вспышек!</span>")
 	new /obj/effect/temp_visual/cult/sparks(get_turf(wearer))
 	if(new_current_charges == 0)
-		wearer.visible_message("<span class='danger'>The runed shield around [wearer] suddenly disappears!</span>")
+		wearer.visible_message("<span class='danger'>Рунический щит вокруг [wearer] внезапно исчез!</span>")
 
 /obj/item/clothing/suit/hooded/cultrobes/flagellant_robe
-	name = "flagellant's robes"
-	desc = "Blood-soaked robes infused with dark magic; allows the user to move at inhuman speeds, but at the cost of increased damage."
+	name = "Роба флагелланта"
+	desc = "Окровавленная роба, пропитанная тёмной магией; позволяет носителю двигаться с нечеловеческой скоростью, но взамен носитель получает увеличенный урон."
 	icon_state = "flagellantrobe"
 	item_state = "flagellantrobe"
 	flags_inv = HIDEJUMPSUIT
@@ -202,8 +202,8 @@
 /obj/item/clothing/suit/hooded/cultrobes/flagellant_robe/equipped(mob/living/user, slot)
 	..()
 	if(!iscultist(user))
-		to_chat(user, "<span class='cultlarge'>\"I wouldn't advise that.\"</span>")
-		to_chat(user, "<span class='warning'>An overwhelming sense of nausea overpowers you!</span>")
+		to_chat(user, "<span class='cultlarge'>\"Я бы не советовал.\"</span>")
+		to_chat(user, "<span class='warning'>Непреодолимое чувство тошноты овладевает вами!</span>")
 		user.unEquip(src, 1)
 		user.Confused(20 SECONDS)
 		user.Weaken(10 SECONDS)
@@ -216,8 +216,8 @@
 		REMOVE_TRAIT(user, TRAIT_GOTTAGOFAST, "cultrobes[UID()]")
 
 /obj/item/clothing/head/hooded/flagellant_hood
-	name = "flagellant's robes"
-	desc = "Blood-soaked garb infused with dark magic; allows the user to move at inhuman speeds, but at the cost of increased damage."
+	name = "Роба флагелланта"
+	desc = "Окровавленная роба, пропитанная тёмной магией; позволяет носителю двигаться с нечеловеческой скоростью, но взамен носитель получает увеличенный урон."
 	icon_state = "flagellanthood"
 	item_state = "flagellanthood"
 	flags = BLOCKHAIR
@@ -231,8 +231,8 @@
 		)
 
 /obj/item/whetstone/cult
-	name = "eldritch whetstone"
-	desc = "A block, empowered by dark magic. Sharp weapons will be enhanced when used on the stone."
+	name = "Точильный камень древних"
+	desc = "блок, усиленный тёмной магией. Острое оружие будет усилено при использовании на камне."
 	icon_state = "cult_sharpener"
 	increment = 5
 	max = 40
@@ -245,7 +245,7 @@
 /obj/item/whetstone/cult/attackby(obj/item/I, mob/user, params)
 	..()
 	if(used)
-		to_chat(user, "<span class='notice'>[src] crumbles to ashes.</span>")
+		to_chat(user, "<span class='notice'>[src] крошится в пепел.</span>")
 		qdel(src)
 
 /obj/item/reagent_containers/drinks/bottle/unholywater
@@ -256,8 +256,8 @@
 	list_reagents = list("unholywater" = 40)
 
 /obj/item/clothing/glasses/hud/health/night/cultblind
-	name = "zealot's blindfold"
-	desc = "May the master guide you through the darkness and shield you from the light."
+	name = "Повязка фанатика"
+	desc = "Позволяет мастеру направлять вас во тьме и оберегает от света."
 	icon_state = "blindfold"
 	item_state = "blindfold"
 	see_in_dark = 8
@@ -269,15 +269,15 @@
 /obj/item/clothing/glasses/hud/health/night/cultblind/equipped(mob/living/user, slot)
 	..()
 	if(!iscultist(user))
-		to_chat(user, "<span class='cultlarge'>\"You want to be blind, do you?\"</span>")
+		to_chat(user, "<span class='cultlarge'>\"Ты хочешь ослепнуть, не так ли?\"</span>")
 		user.unEquip(src, 1)
 		user.Confused(60 SECONDS)
 		user.Weaken(10 SECONDS)
 		user.EyeBlind(60 SECONDS)
 
 /obj/item/shuttle_curse
-	name = "cursed orb"
-	desc = "You peer within this smokey orb and glimpse terrible fates befalling the escape shuttle."
+	name = "Проклятая сфера"
+	desc = "Вы заглядываете в дымчатую сферу и видите ужасные судьбы, постигшие спасательный шаттл."
 	icon = 'icons/obj/cult.dmi'
 	icon_state ="shuttlecurse"
 	var/global/curselimit = 0
@@ -286,20 +286,20 @@
 	if(!iscultist(user))
 		user.unEquip(src, 1)
 		user.Weaken(10 SECONDS)
-		to_chat(user, "<span class='warning'>A powerful force shoves you away from [src]!</span>")
+		to_chat(user, "<span class='warning'>Мощная сила отталкивает вас от [src]!</span>")
 		return
 	if(curselimit > 1)
-		to_chat(user, "<span class='notice'>We have exhausted our ability to curse the shuttle.</span>")
+		to_chat(user, "<span class='notice'>Мы исчерпали возможность проклясть эвакуационный шаттл.</span>")
 		return
 	if(locate(/obj/singularity/narsie) in GLOB.poi_list || locate(/mob/living/simple_animal/demon/slaughter/cult) in GLOB.mob_list)
-		to_chat(user, "<span class='danger'>Nar'Sie or her avatars are already on this plane, there is no delaying the end of all things.</span>")
+		to_chat(user, "<span class='danger'>Нар'Си или её аватары уже в этом мире, нельзя отсрочить конец всего сущего.</span>")
 		return
 
 	if(SSshuttle.emergency.mode == SHUTTLE_CALL)
 		var/cursetime = 3 MINUTES
 		var/timer = SSshuttle.emergency.timeLeft(1) + cursetime
 		SSshuttle.emergency.setTimer(timer)
-		to_chat(user,"<span class='danger'>You shatter the orb! A dark essence spirals into the air, then disappears.</span>")
+		to_chat(user,"<span class='danger'>Вы разбиваете сферу!Тёмная эссенция закручивается в спираль, затем исчезает.</span>")
 		playsound(user.loc, 'sound/effects/glassbr1.ogg', 50, TRUE)
 		curselimit++
 		var/message = pick(CULT_CURSES)
@@ -307,8 +307,8 @@
 		qdel(src)
 
 /obj/item/cult_shift
-	name = "veil shifter"
-	desc = "This relic teleports you forward by a medium distance."
+	name = "Сдвигатель завесы"
+	desc = "Эта реликвия позволяет вам телепортироваться вперед на среднюю дистанцию."
 	icon = 'icons/obj/cult.dmi'
 	icon_state ="shifter"
 	var/uses = 4
@@ -316,9 +316,9 @@
 /obj/item/cult_shift/examine(mob/user)
 	. = ..()
 	if(uses)
-		. += "<span class='cult'>It has [uses] use\s remaining.</span>"
+		. += "<span class='cult'>Остал[uses > 1 ? "ся" : "ось"] [uses] use[uses > 1 ? "ов" : ""].</span>"
 	else
-		. += "<span class='cult'>It seems drained.</span>"
+		. += "<span class='cult'>Кажется исчерпанным.</span>"
 
 /obj/item/cult_shift/proc/handle_teleport_grab(turf/T, mob/user)
 	var/mob/living/carbon/C = user
@@ -332,12 +332,12 @@
 /obj/item/cult_shift/attack_self(mob/user)
 
 	if(!uses || !iscarbon(user))
-		to_chat(user, "<span class='warning'>[src] is dull and unmoving in your hands.</span>")
+		to_chat(user, "<span class='warning'>[src] пуст и не двигается в ваших руках.</span>")
 		return
 	if(!iscultist(user))
 		user.unEquip(src, TRUE)
 		step(src, pick(GLOB.alldirs))
-		to_chat(user, "<span class='warning'>[src] flickers out of your hands, too eager to move!</span>")
+		to_chat(user, "<span class='warning'>[src] выскакивает из ваших рук, чрезмерно хотя сместиться!</span>")
 		return
 	if(user.holy_check())
 		return
@@ -375,10 +375,10 @@
 		playsound(destination, "sparks", 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 
 	else
-		to_chat(C, "<span class='danger'>The veil cannot be torn here!</span>")
+		to_chat(C, "<span class='danger'>Завеса не может быть разорвана тут!</span>")
 
 /obj/item/melee/cultblade/ghost
-	name = "eldritch sword"
+	name = "Меч древних"
 	force = 15
 	flags = NODROP | DROPDEL
 
@@ -386,8 +386,8 @@
 	flags = NODROP | DROPDEL
 
 /obj/item/clothing/suit/cultrobesghost
-	name = "ghostly cult robes"
-	desc = "A set of ethereal armored robes worn by the undead followers of a cult."
+	name = "Призрачная роба культиста"
+	desc = "Набор эфемерной бронированной робы, носимая нежитью культа."
 	icon_state = "cultrobesalt"
 	item_state = "cultrobesalt"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
@@ -404,7 +404,7 @@
 	flags = NODROP | DROPDEL
 
 /datum/outfit/ghost_cultist
-	name = "Cultist Ghost"
+	name = "Призрак культист"
 
 	uniform = /obj/item/clothing/under/color/black/ghost
 	suit = /obj/item/clothing/suit/cultrobesghost
@@ -413,8 +413,8 @@
 	r_hand = /obj/item/melee/cultblade/ghost
 
 /obj/item/shield/mirror
-	name = "mirror shield"
-	desc = "An infamous shield used by eldritch sects to confuse and disorient their enemies."
+	name = "зеркальный щит"
+	desc = "Печально известный щит, используемый древними сектами для запутывания и дизориентации врагов."
 	icon = 'icons/obj/cult.dmi'
 	lefthand_file = 'icons/mob/inhands/items_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items_righthand.dmi'
@@ -462,7 +462,7 @@
 /obj/item/shield/mirror/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
 	// Incase they get one by some magic
 	if(!SSticker.cultdat.mirror_shields_active)
-		to_chat(owner, "<span class='warning'>This shield is powerless! You must perform the required sacrifice to empower it!</span>")
+		to_chat(owner, "<span class='warning'>Этот щит бессилен! Вы должны провести необходимую жертву для его усиления!</span>")
 		return
 
 	if(iscultist(owner) && !owner.holy_check()) // Cultist holding the shield
@@ -484,7 +484,7 @@
 
 			if(prob(shatter_chance) || P.shield_buster)
 				var/turf/T = get_turf(owner)
-				T.visible_message("<span class='warning'>The sheer force from [P] shatters the mirror shield!</span>")
+				T.visible_message("<span class='warning'>Чистая сила от [P] разбивает зеркальный щит!</span>")
 				new /obj/effect/temp_visual/cult/sparks(T)
 				playsound(T, 'sound/effects/glassbr3.ogg', 100)
 				owner.Weaken(6 SECONDS)
@@ -521,7 +521,7 @@
 		else
 			H.Copy_Parent(user, 100, 20, 5)
 			H.GiveTarget(user)
-			to_chat(user, "<span class='danger'>[src] betrays you!</span>")
+			to_chat(user, "<span class='danger'>[src] предаёт вас!</span>")
 	else
 		var/mob/living/simple_animal/hostile/illusion/escape/cult/E = new(user.loc)
 		E.Copy_Parent(user, 70, 10)
@@ -534,9 +534,9 @@
 	else if(isliving(loc))
 		var/mob/living/holder = loc
 		if(iscultist(holder))
-			to_chat(holder, "<span class='cultitalic'>The shield's illusions are back at full strength!</span>")
+			to_chat(holder, "<span class='cultitalic'>Иллюзии щита заряжены в полную силу!</span>")
 		else
-			to_chat(holder, "<span class='warning'>[src] vibrates slightly, and starts glowing.")
+			to_chat(holder, "<span class='warning'>[src] слегка вибрирует и начинает светиться.")
 
 /obj/item/shield/mirror/IsReflect()
 	if(prob(reflect_chance))
@@ -548,8 +548,8 @@
 	return FALSE
 
 /obj/item/cult_spear
-	name = "blood halberd"
-	desc = "A sickening spear composed entirely of crystallized blood. Will stun people who have been recently marked if the spear is wielded."
+	name = "Кровавая алебарда"
+	desc = "Тошнотворное копье, состоящее полностью из кристаллизированной крови. Будет оглушать недавно помеченных людей, если копьё находится в руках."
 	icon = 'icons/obj/cult.dmi'
 	lefthand_file = 'icons/mob/inhands/weapons_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons_righthand.dmi'
@@ -560,7 +560,7 @@
 	throwforce = 30
 	throw_speed = 2
 	armour_penetration_percentage = 50
-	attack_verb = list("attacked", "impaled", "stabbed", "torn", "gored")
+	attack_verb = list("атаковал", "проткнул", "воткнул", "разорвал", "выпотрошил")
 	sharp = TRUE
 	no_spin_thrown = TRUE
 	hitsound = 'sound/weapons/bladeslice.ogg'
@@ -587,9 +587,9 @@
 		if(iscultist(L))
 			playsound(src, 'sound/weapons/throwtap.ogg', 50)
 			if(!L.restrained() && L.put_in_active_hand(src))
-				L.visible_message("<span class='warning'>[L] catches [src] out of the air!</span>")
+				L.visible_message("<span class='warning'>[L] ловит [src] из ниоткуда!</span>")
 			else
-				L.visible_message("<span class='warning'>[src] bounces off of [L], as if repelled by an unseen force!</span>")
+				L.visible_message("<span class='warning'>[src] отскакивает от [L], как будто отталкиваемый невидимой силой!</span>")
 		else if(!..())
 			if(L.null_rod_check())
 				return
@@ -629,8 +629,8 @@
 		S.trigger()
 
 /datum/action/innate/cult/spear
-	name = "Bloody Bond"
-	desc = "Call the blood spear back to your hand!"
+	name = "Кровавая связь"
+	desc = "Призовите кровавую алебарду обратно в руку!"
 	background_icon_state = "bg_cult"
 	button_icon_state = "bloodspear"
 	var/obj/item/cult_spear/spear
@@ -646,18 +646,18 @@
 	var/ST = get_turf(spear)
 	var/OT = get_turf(owner)
 	if(get_dist(OT, ST) > 10)
-		to_chat(owner,"<span class='warning'>The spear is too far away!</span>")
+		to_chat(owner,"<span class='warning'>Копьё слишком далеко!</span>")
 	else
 		cooldown = world.time + 20
 		if(isliving(spear.loc))
 			var/mob/living/L = spear.loc
 			L.unEquip(spear)
-			L.visible_message("<span class='warning'>An unseen force pulls the blood spear from [L]'s hands!</span>")
+			L.visible_message("<span class='warning'>Невидимая сила тянет копьё из рук [L]!</span>")
 		spear.throw_at(owner, 10, 2, null, dodgeable = FALSE)
 
 /obj/item/gun/projectile/shotgun/boltaction/enchanted/arcane_barrage/blood
-	name = "blood bolt barrage"
-	desc = "Blood for blood."
+	name = "Снаряд Кровавого Шквала"
+	desc = "Кровь за кровь."
 	item_state = "disintegrate"
 	lefthand_file = 'icons/mob/inhands/items_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items_righthand.dmi'
@@ -681,7 +681,7 @@
 	muzzle_flash_effect = /obj/effect/temp_visual/emp/cult
 
 /obj/item/projectile/magic/arcane_barrage/blood
-	name = "blood bolt"
+	name = "кровавый шквал"
 	icon_state = "blood_bolt"
 	damage_type = BRUTE
 	impact_effect_type = /obj/effect/temp_visual/dir_setting/bloodsplatter
@@ -703,18 +703,18 @@
 	..()
 
 /obj/item/blood_orb
-	name = "orb of blood"
+	name = "кровавая сфера"
 	icon = 'icons/obj/cult.dmi'
 	icon_state = "summoning_orb"
 	item_state = "summoning_orb"
-	desc = "It's an orb of crystalized blood. Can be used to transfer blood between cultists."
+	desc = "Сфера кристализованной крови. Может быть использована для передачи крови между культистами."
 	var/blood = 50
 
 /obj/item/portal_amulet
 	name = "reality sunderer"
 	icon = 'icons/obj/cult.dmi'
 	icon_state = "amulet"
-	desc = "Some amulet made out of metal, bluespace crystals, and blood. Allows cultists to open portals over teleport runes, destroying the rune in the process."
+	desc = "Некий амулет, сделанный из металла, блюспейс кристаллов и крови. Позволяет культистам ставить порталы к рунам телепорта, уничтожая руну в процессе."
 	w_class = WEIGHT_CLASS_SMALL
 
 
@@ -724,8 +724,8 @@
 		if(!iscarbon(user))
 			return
 		var/mob/living/carbon/M = user
-		to_chat(M, "<span class='cultlarge'>\"So, you want to explore space?\"</span>")
-		to_chat(M, "<span class='warning'>Space flashes around you as you are moved somewhere else!</span>")
+		to_chat(M, "<span class='cultlarge'>\"Ну что, хочешь исследовать космос?\"</span>")
+		to_chat(M, "<span class='warning'>Космос мерцает вокруг вас, и вы оказываетесь в другом месте!</span>")
 		M.Confused(20 SECONDS)
 		M.flash_eyes(override_blindness_check = TRUE)
 		M.EyeBlind(20 SECONDS)
@@ -735,10 +735,10 @@
 
 	if(istype(O, /obj/effect/rune))
 		if(!istype(O, /obj/effect/rune/teleport))
-			to_chat(user, "<span class='warning'>[src] only works on teleport runes.</span>")
+			to_chat(user, "<span class='warning'>[src] только работает на рунах телепорта.</span>")
 			return
 		if(!proximity)
-			to_chat(user, "<span class='warning'>You are too far away from the teleport rune.</span>")
+			to_chat(user, "<span class='warning'>Слишком далеко от руны телепорта.</span>")
 			return
 		var/obj/effect/rune/teleport/R = O
 		attempt_portal(R, user)
@@ -763,14 +763,14 @@
 		potential_runes[result_key] = target
 
 	if(!length(potential_runes))
-		to_chat(user, "<span class='warning'>There are no valid runes to teleport to!</span>")
+		to_chat(user, "<span class='warning'>Нет валидных рун для телепорта!</span>")
 		return
 
 	if(!is_level_reachable(user.z))
-		to_chat(user, "<span class='cultitalic'>You are not in the right dimension!</span>")
+		to_chat(user, "<span class='cultitalic'>Вы не в правильном измерении!</span>")
 		return
 
-	var/input_rune_key = tgui_input_list(user, "Choose a rune to make a portal to", "Rune to make a portal to", potential_runes) //we know what key they picked
+	var/input_rune_key = tgui_input_list(user, "Выберите руну для постановки портала", "Портал до руны", potential_runes) //we know what key they picked
 	var/obj/effect/rune/teleport/actual_selected_rune = potential_runes[input_rune_key] //what rune does that key correspond to?
 	if(QDELETED(R) || QDELETED(actual_selected_rune) || !Adjacent(user) || user.incapacitated())
 		return
@@ -780,14 +780,14 @@
 	else if(!is_station_level(R.z) || istype(get_area(src), /area/space))
 		actual_selected_rune.handle_portal("space", T)
 	new /obj/effect/portal/cult(get_turf(R), get_turf(actual_selected_rune), src, 4 MINUTES)
-	to_chat(user, "<span class='cultitalic'>You use the magic of the amulet to turn [R] into a portal.</span>")
+	to_chat(user, "<span class='cultitalic'>Вы используете амулет для превращения [R] в портал.</span>")
 	playsound(src, 'sound/magic/cult_spell.ogg', 100, TRUE)
 	qdel(R)
 	qdel(src)
 
 /obj/effect/portal/cult
-	name = "eldritch portal"
-	desc = "An evil portal made by dark magics. Surprisingly stable."
+	name = "Древний портал"
+	desc = "Злой портал, сделанный из тёмной магии. Удивительно стабилен."
 	icon_state = "portal1"
 	failchance = 0
 	precision = FALSE
@@ -800,7 +800,7 @@
 
 /obj/effect/portal/cult/attackby(obj/I, mob/user, params)
 	if(istype(I, /obj/item/melee/cultblade/dagger) && iscultist(user) || istype(I, /obj/item/nullrod) && HAS_MIND_TRAIT(user, TRAIT_HOLY))
-		to_chat(user, "<span class='notice'>You close the portal with your [I].</span>")
+		to_chat(user, "<span class='notice'>Вы закрываете портал с помощью [I].</span>")
 		playsound(src, 'sound/magic/magic_missile.ogg', 100, TRUE)
 		qdel(src)
 		return
@@ -812,7 +812,7 @@
 
 /obj/effect/cult_portal_exit
 	name = "eldritch rift"
-	desc = "An exit point for some cult portal. Be on guard, more things may come out of it"
+	desc = "Точно выхода из какого-то портала. Будьте начеку, из него может выйти ещё что-то."
 	icon = 'icons/obj/biomass.dmi'
 	icon_state = "rift"
 	color = "red"
