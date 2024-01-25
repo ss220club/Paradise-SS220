@@ -21,23 +21,23 @@
 
 	switch(cult_status)
 		if(NARSIE_IS_ASLEEP)
-			to_chat(M, "<span class='cult'>[SSticker.cultdat ? SSticker.cultdat.entity_name : "The Dark One"] is asleep.</span>")
+			to_chat(M, "<span class='cult'>[SSticker.cultdat ? SSticker.cultdat.entity_name : "The Dark One"] в спячке.</span>")
 		if(NARSIE_DEMANDS_SACRIFICE)
 			if(!length(presummon_objs))
 				to_chat(M, "<span class='danger'>Error: No objectives in sacrifice list. Something went wrong. Oof.</span>")
 			else
 				var/datum/objective/sacrifice/current_obj = presummon_objs[length(presummon_objs)] //get the last obj in the list, ie the current one
-				to_chat(M, "<span class='cult'>The Veil needs to be weakened before we are able to summon [SSticker.cultdat ? SSticker.cultdat.entity_title1 : "The Dark One"].</span>")
-				to_chat(M, "<span class='cult'>Current goal: [current_obj.explanation_text]</span>")
+				to_chat(M, "<span class='cult'>Завеса должна быть ослаблена перед призывом [SSticker.cultdat ? SSticker.cultdat.entity_title1 : "The Dark One"].</span>")
+				to_chat(M, "<span class='cult'>Текущая цель: [current_obj.explanation_text]</span>")
 		if(NARSIE_NEEDS_SUMMONING)
-			to_chat(M, "<span class='cult'>The Veil is weak! We can summon [SSticker.cultdat ? SSticker.cultdat.entity_title3 : "The Dark One"]!</span>")
-			to_chat(M, "<span class='cult'>Current goal: [obj_summon.explanation_text]</span>")
+			to_chat(M, "<span class='cult'>Завеса слаба! Мы можем призвать [SSticker.cultdat ? SSticker.cultdat.entity_title3 : "The Dark One"]!</span>")
+			to_chat(M, "<span class='cult'>Текущая цель: [obj_summon.explanation_text]</span>")
 		if(NARSIE_HAS_RISEN)
 			to_chat(M, "<span class='cultlarge'>\"I am here.\"</span>")
-			to_chat(M, "<span class='cult'>Current goal:</span> <span class='cultlarge'>\"Feed me.\"</span>")
+			to_chat(M, "<span class='cult'>Текущая цель:</span> <span class='cultlarge'>\"Кормите меня.\"</span>")
 		if(NARSIE_HAS_FALLEN)
-			to_chat(M, "<span class='cultlarge'>[SSticker.cultdat ? SSticker.cultdat.entity_name : "The Dark One"] has been banished!</span>")
-			to_chat(M, "<span class='cult'>Current goal: Slaughter the unbelievers!</span>")
+			to_chat(M, "<span class='cultlarge'>[SSticker.cultdat ? SSticker.cultdat.entity_name : "The Dark One"] был изгнан!</span>")
+			to_chat(M, "<span class='cult'>Текущая цель: Slaughter the unbelievers!</span>")
 		else
 			to_chat(M, "<span class='danger'>Error: Cult objective status currently unknown. Something went wrong. Oof.</span>")
 
@@ -47,17 +47,17 @@
 		var/rise = SSticker.mode.rise_number - total_cult
 		var/ascend = SSticker.mode.ascend_number - total_cult
 
-		var/overview = "<span class='cultitalic'><br><b>Current cult members: [total_cult]"
+		var/overview = "<span class='cultitalic'><br><b>Количество членов культа: [total_cult]"
 		if(!SSticker.mode.cult_ascendant)
 			if(rise > 0)
-				overview += " | Conversions until Rise: [rise]"
+				overview += " | Конвертаций до подъёма: [rise]"
 			else if(ascend > 0)
-				overview += " | Conversions until Ascension: [ascend]"
+				overview += " | Конвертаций до вознесения: [ascend]"
 		to_chat(M, "[overview]</b></span>")
 
 		if(cult[2]) // If there are any constructs, separate them out
-			to_chat(M, "<span class='cultitalic'><b>Cultists:</b> [cult[1]]")
-			to_chat(M, "<span class='cultitalic'><b>Constructs:</b> [cult[2]]")
+			to_chat(M, "<span class='cultitalic'><b>Культистов:</b> [cult[1]]")
+			to_chat(M, "<span class='cultitalic'><b>Конструктов:</b> [cult[2]]")
 
 
 /datum/cult_objectives/proc/current_sac_objective() //Return the current sacrifice objective datum, if any
@@ -79,7 +79,7 @@
 	if(current_obj.find_target())
 		for(var/datum/mind/cult_mind in SSticker.mode.cult)
 			if(cult_mind && cult_mind.current)
-				to_chat(cult_mind.current, "<span class='danger'>[SSticker.cultdat.entity_name]</span> murmurs, <span class='cultlarge'>Our goal is beyond your reach. Sacrifice [current_obj.target] instead...</span>")
+				to_chat(cult_mind.current, "<span class='danger'>[SSticker.cultdat.entity_name]</span> murmurs, <span class='cultlarge'>Наша цель вне досягаемости. Взамен принесите в жертву [current_obj.target]...</span>")
 		return TRUE
 	return FALSE
 
@@ -95,8 +95,8 @@
 			presummon_objs += obj_sac
 			for(var/datum/mind/cult_mind in SSticker.mode.cult)
 				if(cult_mind && cult_mind.current)
-					to_chat(cult_mind.current, "<span class='cult'>You and your acolytes have made progress, but there is more to do still before [SSticker.cultdat ? SSticker.cultdat.entity_title1 : "The Dark One"] can be summoned!</span>")
-					to_chat(cult_mind.current, "<span class='cult'>Current goal: [obj_sac.explanation_text]</span>")
+					to_chat(cult_mind.current, "<span class='cult'>Вы и ваши соратники добились успехов, но требуется сделать ещё многое перед призывом [SSticker.cultdat ? SSticker.cultdat.entity_title1 : "The Dark One"]!</span>")
+					to_chat(cult_mind.current, "<span class='cult'>Текущая цель: [obj_sac.explanation_text]</span>")
 		else
 			ready_to_summon()
 
@@ -104,8 +104,8 @@
 	cult_status = NARSIE_NEEDS_SUMMONING
 	for(var/datum/mind/cult_mind in SSticker.mode.cult)
 		if(cult_mind && cult_mind.current)
-			to_chat(cult_mind.current, "<span class='cult'>You and your acolytes have succeeded in preparing the station for the ultimate ritual!</span>")
-			to_chat(cult_mind.current, "<span class='cult'>Current goal: [obj_summon.explanation_text]</span>")
+			to_chat(cult_mind.current, "<span class='cult'>Вы и ваши соратники сумели подготовить станцию к заключающему ритуалу!</span>")
+			to_chat(cult_mind.current, "<span class='cult'>Текущая цель: [obj_summon.explanation_text]</span>")
 
 /datum/cult_objectives/proc/succesful_summon()
 	cult_status = NARSIE_HAS_RISEN
@@ -181,8 +181,8 @@
 		if(valid_spot)
 			summon_spots += summon
 		sanity++
-	explanation_text = "Summon [SSticker.cultdat ? SSticker.cultdat.entity_name : "your god"] by invoking the rune 'Tear Veil' with 9 cultists, constructs, or summoned ghosts on it.\
-	\nThe summoning can only be accomplished in [english_list(summon_spots)] - where the veil is weak enough for the ritual to begin."
+	explanation_text = "Призовите [SSticker.cultdat ? SSticker.cultdat.entity_name : "ваше Божество"] при помощи руны 'Tear Veil' c 9 культистами, конструктами или призванными призраками на ней.\
+	\nПризыв может быть исполнен только в [english_list(summon_spots)] - там завеса достаточно слаба для начала ритуала."
 
 
 /datum/objective/eldergod/check_completion()

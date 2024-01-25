@@ -290,7 +290,7 @@
 		if(!ishuman(M.current))
 			continue
 		SEND_SOUND(M.current, sound('sound/hallucinations/i_see_you2.ogg'))
-		to_chat(M.current, "<span class='cultlarge'>The veil weakens as your cult grows, your eyes begin to glow...</span>")
+		to_chat(M.current, "<span class='cultlarge'>Завеса слабеет при росте культа, а ваши глаза начинают светиться...</span>")
 		addtimer(CALLBACK(src, PROC_REF(rise), M.current), 20 SECONDS)
 
 
@@ -300,7 +300,7 @@
 		if(!ishuman(M.current))
 			continue
 		SEND_SOUND(M.current, sound('sound/hallucinations/im_here1.ogg'))
-		to_chat(M.current, "<span class='cultlarge'>Your cult is ascendant and the red harvest approaches - you cannot hide your true nature for much longer!</span>")
+		to_chat(M.current, "<span class='cultlarge'>Культ вознёсся и кровавая жатва близка - вы больше не можете скрывать свою истинную сущность!</span>")
 		addtimer(CALLBACK(src, PROC_REF(ascend), M.current), 20 SECONDS)
 	GLOB.major_announcement.Announce("Обнаружение внепространственной активности, связанной с Культом [SSticker.cultdat ? SSticker.cultdat.entity_name : "Нар'Си"] на вашей станции. Данные свидетельствуют о том, что около [ascend_percent * 100]% экипажа станции было порабощено. Сотрудники службы безопасности имеют право беспрепятственно применять летальную силу против культистов. Сотрудники, не относящиеся к службе безопасности, должны быть готовы защищать себя и свои рабочие места от враждебно настроенных культистов. Самооборона предоставляет сотрудникам, не относящимся к службе безопасности, право применять летальную силу в качестве крайней меры для защиты себя и своего отдела, но не позволяет им вести охоту на членов культа. Погибшие члены экипажа должны быть реанимированы и деконвертированы, как только ситуация будет взята под контроль.", "Отдел по делам Высших Измерений.", 'sound/AI/commandreport.ogg')
 
@@ -310,7 +310,7 @@
 		if(!ishuman(M.current))
 			continue
 		SEND_SOUND(M.current, sound('sound/hallucinations/wail.ogg'))
-		to_chat(M.current, "<span class='cultlarge'>The veil repairs itself, your power grows weaker...</span>")
+		to_chat(M.current, "<span class='cultlarge'>Завеса исцеляется, а ваша мощь слабеет...</span>")
 		addtimer(CALLBACK(src, PROC_REF(descend), M.current), 20 SECONDS)
 	GLOB.major_announcement.Announce("Паранормальная активность вернулась к минимальному уровню. \
 									Сотрудники службы безопасности должны свести к минимуму применение летальной силы против культистов, используя, по возможности, нелетальные средства. \
@@ -345,7 +345,7 @@
 	var/mob/living/carbon/human/H = cultist
 	new /obj/effect/temp_visual/cult/sparks(get_turf(H), H.dir)
 	H.update_halo_layer()
-	to_chat(cultist, "<span class='userdanger'>The halo above your head shatters!</span>")
+	to_chat(cultist, "<span class='userdanger'>Нимб над головой рассыпается!</span>")
 	playsound(cultist, "shatter", 50, TRUE)
 
 /datum/game_mode/proc/update_cult_icons_added(datum/mind/cult_mind)
@@ -377,28 +377,28 @@
 /datum/game_mode/cult/declare_completion()
 	if(cult_objs.cult_status == NARSIE_HAS_RISEN)
 		SSticker.mode_result = "cult win - cult win"
-		to_chat(world, "<span class='danger'> <FONT size = 3>The cult wins! It has succeeded in summoning [SSticker.cultdat.entity_name]!</FONT></span>")
+		to_chat(world, "<span class='danger'> <FONT size = 3>Победа культа! Ему удалось призвать [SSticker.cultdat.entity_name]!</FONT></span>")
 	else if(cult_objs.cult_status == NARSIE_HAS_FALLEN)
 		SSticker.mode_result = "cult draw - narsie died, nobody wins"
-		to_chat(world, "<span class='danger'> <FONT size = 3>Nobody wins! [SSticker.cultdat.entity_name] was summoned, but banished!</FONT></span>")
+		to_chat(world, "<span class='danger'> <FONT size = 3>Ничья! [SSticker.cultdat.entity_name] был призван, но исчез!</FONT></span>")
 	else
 		SSticker.mode_result = "cult loss - staff stopped the cult"
-		to_chat(world, "<span class='warning'> <FONT size = 3>The staff managed to stop the cult!</FONT></span>")
+		to_chat(world, "<span class='warning'> <FONT size = 3>Экипажу удалось остановить культ!</FONT></span>")
 
 	var/list/endtext = list()
-	endtext += "<br><b>The cultists' objectives were:</b>"
+	endtext += "<br><b>Цели культа были:</b>"
 	for(var/datum/objective/obj in cult_objs.presummon_objs)
 		endtext += "<br>[obj.explanation_text] - "
 		if(!obj.check_completion())
-			endtext += "<font color='red'>Fail.</font>"
+			endtext += "<font color='red'>Провал.</font>"
 		else
-			endtext += "<font color='green'><B>Success!</B></font>"
+			endtext += "<font color='green'><B>Успех!</B></font>"
 	if(cult_objs.cult_status >= NARSIE_NEEDS_SUMMONING)
 		endtext += "<br>[cult_objs.obj_summon.explanation_text] - "
 		if(!cult_objs.obj_summon.check_completion())
-			endtext+= "<font color='red'>Fail.</font>"
+			endtext+= "<font color='red'>Провал.</font>"
 		else
-			endtext += "<font color='green'><B>Success!</B></font>"
+			endtext += "<font color='green'><B>Успех!</B></font>"
 
 	to_chat(world, endtext.Join(""))
 	..()
