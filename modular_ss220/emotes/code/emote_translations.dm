@@ -53,11 +53,11 @@
 	message = "несет чепуху."
 
 /datum/emote/living/quiver
-	message = "дрожит."
+	message = "трепещет."
 
 /datum/emote/living/frown
-	message = "хмурится."
-	message_param = "хмурится, смотря на %t."
+	message = "смотрит в недоумении."
+	message_param = "смотрит в недоумении на %t."
 
 /datum/emote/living/gag
 	message = "выворачивает содержимое желудка."
@@ -73,6 +73,9 @@
 
 /datum/emote/living/grimace
 	message = "корчит рожицу."
+
+/datum/emote/living/jump
+	message = "прыгает!"
 
 /datum/emote/living/look
 	message = "смотрит."
@@ -92,7 +95,7 @@
 	message = "надувает губы."
 
 /datum/emote/living/shake
-	message = "трясет головой."
+	message = "мотает головой."
 
 /datum/emote/living/shiver
 	message = "дрожит."
@@ -103,7 +106,7 @@
 	emote_type = EMOTE_AUDIBLE | EMOTE_MOUTH
 
 /datum/emote/living/sigh/happy
-	message = "Удовлетворённо вздыхает."
+	message = "удовлетворённо вздыхает."
 	message_mime = "кажется, удовлетворенно вздыхает"
 	muzzled_noises = list("расслабленный", "довольный")
 
@@ -143,7 +146,7 @@
 	message_robot = "проверяет приводы."
 
 /datum/emote/living/sulk
-	message = "печально опускает руки."
+	message = "сердится."
 
 /datum/emote/living/sway
 	message = "качается на месте."
@@ -287,8 +290,8 @@
 	message_param = "приподнимает бровь на %t."
 
 /datum/emote/living/carbon/human/wince
-	message = "морщиться."
-	message_param = "морщиться на %t."
+	message = "морщится."
+	message_param = "морщится от вида %t."
 
 /datum/emote/living/carbon/human/squint
 	message = "прищуривается."
@@ -321,8 +324,8 @@
 	message_param = "кивает, обращаясь к %t."
 
 /datum/emote/living/carbon/human/shake
-	message = "трясет головой."
-	message_param = "трясет головой, обращяясь к %t."
+	message = "мотает головой."
+	message_param = "мотает головой, обращяясь к %t."
 
 /datum/emote/living/carbon/human/pale
 	message = "на секунду бледнеет."
@@ -340,7 +343,10 @@
 
 /datum/emote/living/carbon/human/johnny
 	message = "затягивается сигаретой и выдыхает дым в форме своего имени."
-	message_param = "тупо"
+	message_param = null
+
+/datum/emote/living/carbon/twirl
+	message = "Вертит что-то в руке."
 
 /datum/emote/living/carbon/human/sneeze
 	message = "чихает."
@@ -392,7 +398,7 @@
 	message_param = "ревет на %t!"
 
 /datum/emote/living/carbon/human/monkey/roll
-	message = "кружится."
+	message = "катится."
 
 /datum/emote/living/carbon/human/monkey/scratch
 	message = "чешется."
@@ -401,13 +407,13 @@
 	message = "машет хвостом."
 
 /datum/emote/living/carbon/human/flap
-	message = "хлопает крыльями."
+	message = "двигает крыльями."
 
 /datum/emote/living/carbon/human/flutter
-	message = "зло хлопает крыльями."
+	message = "машет крыльями."
 
-/datum/emote/living/carbon/human/flutter
-	message = "трепещет крыльями."
+/datum/emote/living/carbon/human/aflap
+	message = "машет крыльями агрессивно!"
 
 /datum/emote/living/carbon/human/quill
 	message = "шелестят перьями."
@@ -444,6 +450,10 @@
 	message_param = "шипит на %t."
 	muzzled_noises = list("слабое шипение")
 	emote_type = EMOTE_VISIBLE | EMOTE_MOUTH | EMOTE_AUDIBLE
+
+/datum/emote/living/carbon/human/hiss/tajaran
+	message_mime = "беззвучно шипит."
+	species_type_whitelist_typecache = list(/datum/species/tajaran)
 
 /datum/emote/living/carbon/human/creak
 	message = "скрипит."
@@ -482,6 +492,15 @@
 	message = "хлюпает."
 	message_param = "хлюпает на %t."
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/slime/bubble
+	message = "булькает."
+	message_param = "булькает на %t."
+
+/datum/emote/living/carbon/human/slime/pop
+	message = "издает хлопающий звук."
+	message_param = "издает хлопающий звук на %t."
+	message_mime = "беззвучно хлопает ртом."
 
 /////////////////////
 /// Alien Emotes ///
