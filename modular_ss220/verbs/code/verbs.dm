@@ -1,22 +1,56 @@
 /*
-	Respawn to OOC
+	Respawn
 	May be returned in the future by offs (because it's commented in code\modules\mob)
 */
+/datum/configuration_section/ss220_misc_configuration
+	/// Respawn delay in minutes before one may respawn as a crew member
+	var/respawn_delay = 20
+
+/datum/configuration_section/ss220_misc_configuration/load_data(list/data)
+	. = ..()
+	CONFIG_LOAD_NUM(respawn_delay, data["respawn_delay"])
+
+/// Respawn verb
 /mob/verb/abandon_mob()
 	set name = "Respawn"
 	set category = "OOC"
 
 	if(!GLOB.configuration.general.respawn_enabled)
-		to_chat(usr, "<span class='warning'>Respawning is disabled.</span>")
+		to_chat(usr, span_warning("Respawning is disabled."))
 		return
 
 	if(stat != DEAD || !SSticker)
-		to_chat(usr, "<span class='boldnotice'>You must be dead to use this!</span>")
+		to_chat(usr, span_boldnotice("You must be dead to use this!"))
+		return
+
+	var/deathtime = world.time - src.timeofdeath
+	if(isobserver(src))
+		var/mob/dead/observer/G = src
+		if(G.antagHUD)
+			to_chat(usr, span_warning("Upon using the antagHUD you forfeited the ability to latejoin the round."))
+			return
+
+	var/deathtimeminutes = round(deathtime / 600)
+	var/pluralcheck = "minute"
+	if(deathtimeminutes == 0)
+		pluralcheck = ""
+	else if(deathtimeminutes == 1)
+		pluralcheck = "[deathtimeminutes] minute and"
+	else if(deathtimeminutes > 1)
+		pluralcheck = "[deathtimeminutes] minutes and"
+	var/deathtimeseconds = round((deathtime - deathtimeminutes * 600) / 10,1)
+
+	if(deathtimeminutes < GLOB.configuration.ss220_misc.respawn_delay)
+		to_chat(usr, span_notice("You have been dead for[pluralcheck] [deathtimeseconds] second\s."))
+		to_chat(usr, span_warning("You must wait [GLOB.configuration.ss220_misc.respawn_delay] minutes to respawn!"))
+		return
+
+	if(alert("Are you sure you want to respawn?", "Respawn", "Yes", "No") != "Yes")
 		return
 
 	log_game("[key_name(usr)] has respawned.")
 
-	to_chat(usr, "<span class='boldnotice'>Make sure to play a different character, and please roleplay correctly!</span>")
+	to_chat(usr, span_boldnotice("Make sure to play a different character, and please roleplay correctly!"))
 
 	if(!client)
 		log_game("[key_name(usr)] respawn failed due to disconnect.")
@@ -37,7 +71,7 @@
 	M.key = key
 	return
 
-// Pick darkness list
+/// Pick darkness list
 /mob/dead/observer/pick_darkness()
 	set name = "Pick Darkness"
 	set desc = "Choose how much darkness you want to see."
