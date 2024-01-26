@@ -538,26 +538,19 @@ SUBSYSTEM_DEF(tts220)
 			return sanitized_messages_cache[hash]
 		sanitized_messages_cache_miss++
 	. = message
-	to_chat(usr, .)
 	. = trim(.)
-	to_chat(usr, .)
 	var/static/regex/punctuation_check = new(@"[.,?!]\Z")
 	if(!punctuation_check.Find(.))
 		. += "."
-	to_chat(usr, .)
 	var/static/regex/html_tags = new(@"<[^>]*>", "g")
 	. = html_tags.Replace(., "")
 	. = html_decode(.)
-	to_chat(usr, .)
 	var/static/regex/forbidden_symbols = new(@"[^a-zA-Z0-9а-яА-ЯёЁ,!?+./ \r\n\t:—()-]", "g")
 	. = forbidden_symbols.Replace(., "")
-	to_chat(usr, .)
 	var/static/regex/acronyms = new(@"(?<![a-zA-Zа-яёА-ЯЁ])[a-zA-Zа-яёА-ЯЁ]+?(?![a-zA-Zа-яёА-ЯЁ])", "gm")
 	. = replacetext_char(., acronyms, /proc/tts_acronym_replacer)
-	to_chat(usr, .)
 	for(var/job in tts_job_replacements)
 		. = replacetext_char(., job, tts_job_replacements[job])
-	to_chat(usr, .)
 	. = rustg_ss220_latin_to_cyrillic(.)
 
 	var/static/regex/decimals = new(@"-?\d+\.\d+", "g")
