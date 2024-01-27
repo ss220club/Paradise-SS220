@@ -20,7 +20,7 @@
 
 /datum/keybinding/emote/carbon/human/rumble
 	linked_emote = /datum/emote/living/carbon/human/rumble
-	name = EMOTE_SPECIFIC_RUMBLE
+	name = EMOTE_HUMAN_RUMBLE
 
 /datum/keybinding/emote/carbon/human/threat
 	linked_emote = /datum/emote/living/carbon/human/threat

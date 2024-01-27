@@ -170,7 +170,7 @@
 	name = EMOTE_CARBON_KISS
 
 /datum/keybinding/emote/carbon/wave
-	name = EMOTE_WAVE
+	name = EMOTE_CARBON_WAVE
 
 /datum/keybinding/emote/carbon/yawn
 	name = EMOTE_CARBON_YAWN
@@ -263,7 +263,7 @@
 	name = EMOTE_HUMAN_GASP
 
 /datum/keybinding/emote/carbon/human/shake
-	name = EMOTE_SHAKE
+	name = EMOTE_HUMAN_SHAKE
 
 /datum/keybinding/emote/carbon/human/pale
 	name = EMOTE_HUMAN_PALE
@@ -281,7 +281,7 @@
 	name = EMOTE_HUMAN_SHRUG
 
 /datum/keybinding/emote/carbon/human/sniff
-	name = EMOTE_SNIFF
+	name = EMOTE_HUMAN_SNIFF
 
 /datum/keybinding/emote/carbon/human/johnny
 	name = EMOTE_HUMAN_JOHNNY
@@ -329,58 +329,58 @@
 	name = EMOTE_HUMAN_AFLAP
 
 /datum/keybinding/emote/carbon/human/quill
-	name = EMOTE_SPECIFIC_QUILL
+	name = EMOTE_HUMAN_QUILL
 
 /datum/keybinding/emote/carbon/human/warble
-	name = EMOTE_SPECIFIC_WARBLE
+	name = EMOTE_HUMAN_WARBLE
 
 /datum/keybinding/emote/carbon/human/clack
-	name = EMOTE_SPECIFIC_CLACK
+	name = EMOTE_HUMAN_CLACK
 
 /datum/keybinding/emote/carbon/human/clack/click
-	name = EMOTE_SPECIFIC_CLICK
+	name = EMOTE_HUMAN_CLICK
 
 /datum/keybinding/emote/carbon/human/drask_talk/drone
-	name = EMOTE_SPECIFIC_DRONE
+	name = EMOTE_HUMAN_DRONE + " (драск)"
 
 /datum/keybinding/emote/carbon/human/drask_talk/hum
-	name = EMOTE_SPECIFIC_HUM
+	name = EMOTE_HUMAN_HUM + " (драск)"
 
 /datum/keybinding/emote/carbon/human/drask_talk/rumble
-	name = EMOTE_SPECIFIC_RUMBLE
+	name = EMOTE_HUMAN_RUMBLE + " (драск)"
 
 /datum/keybinding/emote/carbon/human/hiss
-	name = EMOTE_SPECIFIC_HISS
+	name = EMOTE_HUMAN_HISS
 
 /datum/keybinding/emote/carbon/human/hiss/tajaran
-	name = EMOTE_SPECIFIC_HISS + " (таяр)"
+	name = EMOTE_HUMAN_HISS + " (таяр)"
 
 /datum/keybinding/emote/carbon/human/creak
-	name = EMOTE_SPECIFIC_CREAK
+	name = EMOTE_HUMAN_CREAK
 
 /datum/keybinding/emote/carbon/human/slime/squish
-	name = EMOTE_SPECIFIC_SQUISH
+	name = EMOTE_HUMAN_SQUISH
 
 /datum/keybinding/emote/carbon/human/squint
 	name = EMOTE_HUMAN_SQUINT
 
 /datum/keybinding/emote/carbon/human/bubble
-	name = EMOTE_SPECIFIC_BUBBLE
+	name = EMOTE_HUMAN_BUBBLE
 
 /datum/keybinding/emote/carbon/human/pop
-	name = EMOTE_SPECIFIC_POP
+	name = EMOTE_HUMAN_POP
 
 /datum/keybinding/emote/carbon/human/howl
-	name = EMOTE_SPECIFIC_HOWL
+	name = EMOTE_HUMAN_HOWL
 
 /datum/keybinding/emote/carbon/human/growl
-	name = EMOTE_SPECIFIC_GROWL
+	name = EMOTE_HUMAN_GROWL
 
 /datum/keybinding/emote/carbon/human/rattle
-	name = EMOTE_SPECIFIC_RATTLE
+	name = EMOTE_HUMAN_RATTLE
 
 /datum/keybinding/emote/carbon/human/monkey/gnarl
-	name = EMOTE_HUMAN_ROAR + " (мартышка)"
+	name = EMOTE_HUMAN_GNARL + " (мартышка)"
 
 /datum/keybinding/emote/carbon/human/monkey/roll
 	name = EMOTE_HUMAN_ROLL + " (мартышка)"
@@ -428,34 +428,34 @@
 	name = EMOTE_SILICON_HALT
 
 /datum/keybinding/emote/simple_animal/diona_chirp
-	name = EMOTE_SPECIFIC_CHIRP + " (нимфа)"
+	name = EMOTE_ANIMAL_CHIRP + " (нимфа)"
 
 /datum/keybinding/emote/simple_animal/gorilla_ooga
-	name = EMOTE_SPECIFIC_OOGA + " (горилла)"
+	name = EMOTE_ANIMAL_OOGA + " (горилла)"
 
 /datum/keybinding/emote/simple_animal/pet/dog/bark
-	name = EMOTE_SPECIFIC_BARK + " (пёс)"
+	name = EMOTE_ANIMAL_BARK + " (пёс)"
 
 /datum/keybinding/emote/simple_animal/pet/dog/yelp
-	name = EMOTE_SPECIFIC_YELP + " (пёс)"
+	name = EMOTE_ANIMAL_YELP + " (пёс)"
 
 /datum/keybinding/emote/simple_animal/pet/dog/growl
-	name = EMOTE_SPECIFIC_GROWL + " (пёс)"
+	name = EMOTE_ANIMAL_GROWL + " (пёс)"
 
 /datum/keybinding/emote/simple_animal/mouse/squeak
-	name = EMOTE_SPECIFIC_SQUEAK + " (мышь)"
+	name = EMOTE_ANIMAL_SQUEAK + " (мышь)"
 
 /datum/keybinding/emote/simple_animal/pet/cat/meow
-	name = EMOTE_SPECIFIC_MEOW + " (кот)"
+	name = EMOTE_ANIMAL_MEOW + " (кот)"
 
 /datum/keybinding/emote/simple_animal/pet/cat/hiss
-	name = EMOTE_SPECIFIC_HISS + " (кот)"
+	name = EMOTE_ANIMAL_HISS + " (кот)"
 
 /datum/keybinding/emote/simple_animal/pet/cat/purr
-	name = EMOTE_SPECIFIC_PURR + " (кот)"
+	name = EMOTE_ANIMAL_PURR + " (кот)"
 
 /datum/keybinding/emote/simple_animal/pet/cat/sit
-	name = EMOTE_SIT + " (кот)"
+	name = EMOTE_ANIMAL_SIT + " (кот)"
 
 /datum/keybinding/custom
 	default_emote_text = "Введите текст вашей эмоции"

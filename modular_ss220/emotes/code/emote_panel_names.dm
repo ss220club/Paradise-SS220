@@ -135,7 +135,7 @@
 	name = EMOTE_TWITCHS
 
 /datum/emote/living/carbon/wave
-	name = EMOTE_WAVE
+	name = EMOTE_CARBON_WAVE
 
 /datum/emote/living/whimper
 	name = EMOTE_WHIMPER
@@ -194,9 +194,6 @@
 
 /datum/emote/living/carbon/moan
 	name = EMOTE_CARBON_MOAN
-
-/datum/emote/living/carbon/roll
-	name = EMOTE_CARBON_ROLL
 
 /datum/emote/living/carbon/sign
 	name = EMOTE_CARBON_SIGN
@@ -390,19 +387,19 @@
 /// Species specific
 
 /datum/emote/living/carbon/human/howl
-	name = EMOTE_SPECIFIC_HOWL
+	name = EMOTE_HUMAN_HOWL
 
 /datum/emote/living/carbon/human/growl
-	name = EMOTE_SPECIFIC_GROWL
+	name = EMOTE_HUMAN_GROWL
 
 /datum/emote/living/carbon/human/slime/squish
-	name = EMOTE_SPECIFIC_SQUISH
+	name = EMOTE_HUMAN_SQUISH
 
 /datum/emote/living/carbon/human/slime/bubble
-	name = EMOTE_SPECIFIC_BUBBLE
+	name = EMOTE_HUMAN_BUBBLE
 
 /datum/emote/living/carbon/human/slime/pop
-	name = EMOTE_SPECIFIC_POP
+	name = EMOTE_HUMAN_POP
 
 /// New Emotes
 
@@ -425,7 +422,7 @@
 	name = EMOTE_HUMAN_ROAR
 
 /datum/emote/living/carbon/human/rumble
-	name = EMOTE_SPECIFIC_RUMBLE
+	name = EMOTE_HUMAN_RUMBLE
 
 /datum/emote/living/carbon/human/threat
 	name = EMOTE_HUMAN_THREAT

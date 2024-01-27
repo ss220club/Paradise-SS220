@@ -50,7 +50,7 @@
 	emote("sneeze", intentional = TRUE)
 
 /mob/living/carbon/human/verb/emote_sniff()
-	set name = "▷ " + EMOTE_SNIFF + " "
+	set name = "▷ " + EMOTE_HUMAN_SNIFF + " "
 	set category = "Эмоции"
 	emote("sniff", intentional = TRUE)
 
@@ -187,7 +187,7 @@
 	emote("grin", intentional = TRUE)
 
 /mob/living/carbon/human/verb/emote_shake()
-	set name = "◦ " + EMOTE_SHAKE + " "
+	set name = "◦ " + EMOTE_HUMAN_SHAKE + " "
 	set category = "Эмоции"
 	emote("shake", intentional = TRUE)
 
@@ -303,12 +303,12 @@
 	emote("swag", intentional = TRUE)
 
 /mob/living/carbon/human/proc/emote_howl()
-	set name = "< " + EMOTE_SPECIFIC_HOWL + " >"
+	set name = "< " + EMOTE_HUMAN_HOWL + " >"
 	set category = "Эмоции"
 	emote("howl", intentional = TRUE)
 
 /mob/living/carbon/human/proc/emote_growl()
-	set name = "< " + EMOTE_SPECIFIC_GROWL + " >"
+	set name = "< " + EMOTE_HUMAN_GROWL + " >"
 	set category = "Эмоции"
 	emote("growl", intentional = TRUE)
 
@@ -348,47 +348,47 @@
 	emote("whips", intentional = TRUE)
 
 /mob/living/carbon/human/proc/emote_rumble()
-	set name = "< " + EMOTE_SPECIFIC_RUMBLE + " >"
+	set name = "< " + EMOTE_HUMAN_RUMBLE + " >"
 	set category = "Эмоции"
 	emote("rumble", intentional = TRUE)
 
 /mob/living/carbon/human/proc/emote_unathi_hiss()
-	set name = "< " + EMOTE_SPECIFIC_HISS + " >"
+	set name = "< " + EMOTE_HUMAN_HISS + " >"
 	set category = "Эмоции"
 	emote("uhiss", intentional = TRUE)
 
 /mob/living/carbon/human/proc/emote_quill()
-	set name = "< " + EMOTE_SPECIFIC_QUILL + " >"
+	set name = "< " + EMOTE_HUMAN_QUILL + " >"
 	set category = "Эмоции"
 	emote("quill", intentional = TRUE)
 
 /mob/living/carbon/human/proc/emote_creak()
-	set name = "< " + EMOTE_SPECIFIC_CREAK + " >"
+	set name = "< " + EMOTE_HUMAN_CREAK + " >"
 	set category = "Эмоции"
 	emote("creak", intentional = TRUE)
 
 /mob/living/carbon/human/proc/emote_warble()
-	set name = "< " + EMOTE_SPECIFIC_WARBLE + " >"
+	set name = "< " + EMOTE_HUMAN_WARBLE + " >"
 	set category = "Эмоции"
 	emote("warble", intentional = TRUE)
 
 /mob/living/carbon/human/proc/emote_click()
-	set name = "< " + EMOTE_SPECIFIC_CLICK + " >"
+	set name = "< " + EMOTE_HUMAN_CLICK + " >"
 	set category = "Эмоции"
 	emote("click", intentional = TRUE)
 
 /mob/living/carbon/human/proc/emote_clack()
-	set name = "< " + EMOTE_SPECIFIC_CLACK + " >"
+	set name = "< " + EMOTE_HUMAN_CLACK + " >"
 	set category = "Эмоции"
 	emote("clack", intentional = TRUE)
 
 /mob/living/carbon/human/proc/emote_hum()
-	set name = "< " + EMOTE_SPECIFIC_HUM + " >"
+	set name = "< " + EMOTE_HUMAN_HUM + " >"
 	set category = "Эмоции"
 	emote("hum", intentional = TRUE)
 
 /mob/living/carbon/human/proc/emote_squish()
-	set name = "< " + EMOTE_SPECIFIC_SQUISH + " >"
+	set name = "< " + EMOTE_HUMAN_SQUISH + " >"
 	set category = "Эмоции"
 	emote("squish", intentional = TRUE)
 
@@ -433,7 +433,7 @@
 	emote("wiggles", intentional = TRUE)
 
 /mob/living/carbon/human/verb/emote_wave()
-	set name = "◦ " + EMOTE_WAVE + " "
+	set name = "◦ " + EMOTE_CARBON_WAVE + " "
 	set category = "Эмоции"
 	emote("wave", intentional = TRUE)
 
