@@ -134,8 +134,8 @@
 #define EMOTE_SILICON_BOOP "Бупнуть"
 #define EMOTE_SILICON_YES "Положительно"
 #define EMOTE_SILICON_NO "Отрицательно"
-#define EMOTE_SILICON_LAW "Law"
-#define EMOTE_SILICON_HALT "Halt"
+#define EMOTE_SILICON_LAW "Удостоверяющий штрихкод"
+#define EMOTE_SILICON_HALT "Ни с места"
 
 /// Species specific
 #define EMOTE_SPECIFIC_HISS "Шипеть"
@@ -158,6 +158,8 @@
 #define EMOTE_SPECIFIC_POP "Хлопать ртом"
 #define EMOTE_SPECIFIC_RATTLE "Греметь"
 #define EMOTE_SPECIFIC_YELP "Визжать"
+#define EMOTE_SPECIFIC_CHIRP "Стрекотать"
+#define EMOTE_SPECIFIC_OOGA "Уга буга"
 
 /// New Emotes
 #define EMOTE_HUMAN_WHISTLE "Свистеть"

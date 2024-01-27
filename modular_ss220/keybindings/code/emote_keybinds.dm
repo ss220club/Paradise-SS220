@@ -200,6 +200,7 @@
 	name = EMOTE_ALIEN_HISS
 
 /datum/keybinding/emote/carbon/alien/humanoid/gnarl
+	name = EMOTE_ALIEN_GNARL
 
 /datum/keybinding/emote/carbon/brain/alarm
 	name = EMOTE_BRAIN_ALARM
@@ -248,9 +249,6 @@
 
 /datum/keybinding/emote/carbon/human/wince
 	name = EMOTE_HUMAN_WINCE
-
-/datum/keybinding/emote/carbon/human/wince
-	name = EMOTE_HUMAN_SQUINT
 
 /datum/keybinding/emote/carbon/human/mumble
 	name = EMOTE_HUMAN_MUMBLE
@@ -363,10 +361,13 @@
 /datum/keybinding/emote/carbon/human/slime/squish
 	name = EMOTE_SPECIFIC_SQUISH
 
-/datum/keybinding/emote/carbon/human/slime/bubble
+/datum/keybinding/emote/carbon/human/squint
+	name = EMOTE_HUMAN_SQUINT
+
+/datum/keybinding/emote/carbon/human/bubble
 	name = EMOTE_SPECIFIC_BUBBLE
 
-/datum/keybinding/emote/carbon/human/slime/pop
+/datum/keybinding/emote/carbon/human/pop
 	name = EMOTE_SPECIFIC_POP
 
 /datum/keybinding/emote/carbon/human/howl
@@ -427,8 +428,10 @@
 	name = EMOTE_SILICON_HALT
 
 /datum/keybinding/emote/simple_animal/diona_chirp
+	name = EMOTE_SPECIFIC_CHIRP + " (нимфа)"
 
 /datum/keybinding/emote/simple_animal/gorilla_ooga
+	name = EMOTE_SPECIFIC_OOGA + " (горилла)"
 
 /datum/keybinding/emote/simple_animal/pet/dog/bark
 	name = EMOTE_SPECIFIC_BARK + " (пёс)"

@@ -277,7 +277,7 @@
 /datum/emote/living/carbon/human/flutter
 	name = EMOTE_HUMAN_FLUTTER
 
-/datum/emote/living/carbon/human/aflap
+/datum/emote/living/carbon/human/flap/aflap
 	name = EMOTE_HUMAN_AFLAP
 
 /datum/emote/living/carbon/human/gasp

@@ -187,7 +187,6 @@
 	message = "моргает."
 
 /datum/emote/living/carbon/blink_r
-	key = "blink_r"
 	message = "быстро моргает."
 
 /datum/emote/living/carbon/chuckle
@@ -263,6 +262,18 @@
 
 /datum/emote/living/carbon/faint
 	message = "падает в обморок."
+
+//////////////////////
+/// Silicon Emotes ///
+////////////////////
+
+/datum/emote/living/silicon/law
+	message = "показывает свой удостоверяющий штрихкод."
+	message_param = "показывает %t свой удостоверяющий штрихкод."
+
+/datum/emote/living/silicon/halt
+	message = "проигрывает \"НИ С МЕСТА!\" из своих динамиков."
+	message_param = "приказывает %t НЕ ДВИГАТЬСЯ."
 
 /////////////////////
 /// Human Emotes ///
@@ -412,7 +423,7 @@
 /datum/emote/living/carbon/human/flutter
 	message = "машет крыльями."
 
-/datum/emote/living/carbon/human/aflap
+/datum/emote/living/carbon/human/flap/aflap
 	message = "машет крыльями агрессивно!"
 
 /datum/emote/living/carbon/human/quill
