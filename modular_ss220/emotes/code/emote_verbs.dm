@@ -100,11 +100,6 @@
 	set category = "Эмоции"
 	emote("highfive", intentional = TRUE)
 
-/mob/living/carbon/human/verb/emote_dap()
-	set name = "○ " + EMOTE_HUMAN_DAP + " "
-	set category = "Эмоции"
-	emote("dap", intentional = TRUE)
-
 /mob/living/carbon/human/verb/emote_handshake()
 	set name = "○ " + EMOTE_HUMAN_HANDSHAKE + " "
 	set category = "Эмоции"
@@ -165,11 +160,6 @@
 	set name = "◦ " + EMOTE_FROWN + " "
 	set category = "Эмоции"
 	emote("frown", intentional = TRUE)
-
-/mob/living/carbon/human/verb/emote_scowl()
-	set name = "◦ " + EMOTE_CARBON_SCOWL + " "
-	set category = "Эмоции"
-	emote("scowl", intentional = TRUE)
 
 /mob/living/carbon/human/verb/emote_glare()
 	set name = "◦ " + EMOTE_GLARE + " "
@@ -473,6 +463,11 @@
 	set name = "▷ " + EMOTE_DEATHGASP + " "
 	set category = "Эмоции"
 	emote("deathgasp", intentional = TRUE)
+
+/mob/living/carbon/human/verb/emote_dap()
+	set name = "○ " + EMOTE_HUMAN_DAP + " "
+	set category = "Эмоции"
+	emote("dap", intentional = TRUE)
 
 /mob/living/carbon/human/verb/emote_point()
 	set name = "◦ " + EMOTE_POINT + " " // Куда блять показывать...
