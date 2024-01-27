@@ -49,7 +49,7 @@
 /client/verb/fix_title_screen()
 	set name = "Fix Lobby Screen"
 	set desc = "Lobbyscreen broke? Press this."
-	set category = "OOC"
+	set category = "Special Verbs"
 
 	if(istype(mob, /mob/new_player))
 		mob.show_title_screen()

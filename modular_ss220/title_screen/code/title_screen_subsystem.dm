@@ -9,8 +9,8 @@
 	var/current_notice
 	/// The preamble html that includes all styling and layout.
 	var/title_html
-	/// The list of possible title screens to rotate through, as file path texts.
-	var/title_screens = list()
+	/// The list of possible title screens to rotate through, as: title_screen_name -> title_screen_path
+	var/list/title_screens = list()
 
 /datum/controller/subsystem/title/Initialize()
 	if(!fexists("config/title_html.txt"))
@@ -19,17 +19,7 @@
 	else
 		title_html = file2text("config/title_html.txt")
 
-	var/list/local_title_screens = list()
-	for(var/screen in flist(TITLE_SCREENS_LOCATION))
-		var/list/screen_name_parts = splittext(screen, "+")
-		if((LAZYLEN(screen_name_parts) == 1 && (screen_name_parts[1] != "exclude" && screen_name_parts[1] != "blank.png")))
-			local_title_screens += screen
-
-	for(var/title_screen in local_title_screens)
-		var/file_path = "[TITLE_SCREENS_LOCATION][title_screen]"
-		ASSERT(fexists(file_path))
-		title_screens += fcopy_rsc(file_path)
-
+	load_title_screens()
 	change_title_screen()
 
 /datum/controller/subsystem/title/Recover()
@@ -37,6 +27,52 @@
 	current_notice = SStitle.current_notice
 	title_html = SStitle.title_html
 	title_screens = SStitle.title_screens
+
+/**
+ * Iterates over all files in `TITLE_SCREENS_LOCATION` and loads all valid title screens to `title_screens` var.
+ */
+/datum/controller/subsystem/title/proc/load_title_screens()
+	var/list/valid_title_screens = list()
+	for(var/screen in flist(TITLE_SCREENS_LOCATION))
+		if(validate_title_screen(screen))
+			valid_title_screens += screen
+
+	for(var/title_screen_name in valid_title_screens)
+		var/file_path = "[TITLE_SCREENS_LOCATION][title_screen_name]"
+		ASSERT(fexists(file_path))
+		title_screens[title_screen_name] = fcopy_rsc(file_path)
+
+/**
+ * Checks wheter passed title is valid
+ * Currently validates extension and checks whether it's special image like default title screen etc.
+ */
+/datum/controller/subsystem/title/proc/validate_title_screen(title_screen_to_validate)
+	var/static/list/title_screens_to_ignore = list("blank.png", DEFAULT_TITLE_SCREEN_IMAGE)
+	if(title_screen_to_validate in title_screens_to_ignore)
+		return FALSE
+
+	var/list/name_parts = splittext(title_screen_to_validate, ".")
+	if(length(name_parts) < 2)
+		return FALSE
+
+	var/static/list/supported_extensions = list("gif", "jpg", "jpeg","png", "svg")
+	var/extension = name_parts[length(name_parts)]
+	return (extension in supported_extensions)
+
+/**
+ * Returns the list of all loaded title screens, if no title screens present, tries to load them.
+ */
+/datum/controller/subsystem/title/proc/get_title_screens()
+	if(!length(title_screens))
+		load_title_screens()
+
+	return title_screens.Copy()
+
+/**
+ * Returns current title screen or if null, default one.
+ */
+/datum/controller/subsystem/title/proc/get_current_title_screen()
+	return current_title_screen || DEFAULT_TITLE_SCREEN_IMAGE
 
 /**
  * Show the title screen to all new players.
@@ -59,7 +95,7 @@
 	if(new_screen)
 		current_title_screen = new_screen
 	else
-		if(LAZYLEN(title_screens))
+		if(length(title_screens))
 			current_title_screen = pick(title_screens)
 		else
 			current_title_screen = DEFAULT_TITLE_SCREEN_IMAGE
