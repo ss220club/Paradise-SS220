@@ -531,4 +531,3 @@
 /datum/emote/living/brain/boop
 	message = "бупает."
 	self_message = "вы бупаете."
-	
