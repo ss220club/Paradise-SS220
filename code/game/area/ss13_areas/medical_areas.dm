@@ -35,7 +35,7 @@
 	icon_state = "medbaybreak"
 
 /area/station/medical/patients_rooms
-	name = "Комнаты Пациентов"
+	name = "Палаты Пациентов"
 	icon_state = "patients"
 	sound_environment = SOUND_AREA_SMALL_SOFTFLOOR
 
@@ -120,5 +120,5 @@
 	icon_state = "exam_room"
 
 /area/station/medical/paramedic
-	name = "Офис Парамедик"
+	name = "Офис Парамедика"
 	icon_state = "paramedic"

@@ -44,13 +44,13 @@
 	icon_state = "hallA"
 
 /area/station/hallway/primary/aft/west
-	name = "Южно-Западный Коридор"
+	name = "Юго-Западный Коридор"
 
 /area/station/hallway/primary/aft/east
-	name = "Южно-Восточный Коридор"
+	name = "Юго-Восточный Коридор"
 
 /area/station/hallway/primary/aft/north
-	name = "Южно-Северный Коридор"
+	name = "Юго-Северный Коридор"
 
 /area/station/hallway/primary/aft/south
 	name = "Южный Коридор"
@@ -209,7 +209,7 @@
 	icon_state = "pet_store"
 
 /area/station/public/vacant_office
-	name = "Вакантный Офис"
+	name = "Свободный Офис"
 	icon_state = "vacantoffice"
 
 /area/station/public/vacant_office/secondary

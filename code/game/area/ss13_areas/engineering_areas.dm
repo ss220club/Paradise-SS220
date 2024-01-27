@@ -8,7 +8,7 @@
 	icon_state = "atmosctrl"
 
 /area/station/engineering/atmos/distribution
-	name = "Распределительный Контур Атмосферии"
+	name = "Атмосферный Распределительный Контур"
 	icon_state = "atmos"
 
 // general engineering
@@ -31,7 +31,7 @@
 	sound_environment = SOUND_AREA_SMALL_ENCLOSED
 
 /area/station/engineering/break_room/secondary
-	name = "Второе Фойе Инженерного Отдела"
+	name = "Дополнительное Фойе Инженерного Отдела"
 
 /area/station/engineering/equipmentstorage
 	name = "Инженерный Склад Снаряжения"
@@ -95,11 +95,11 @@
 	icon_state = "ASsolars"
 
 /area/station/engineering/solar/starboard/aft
-	name = "Южно-Восточные Солнечные Панели"
+	name = "Юго-Восточные Солнечные Панели"
 	icon_state = "ASsolars"
 
 /area/station/engineering/solar/port
-	name = "Южно-Западные Солнечные Панели"
+	name = "Юго-Западные Солнечные Панели"
 	icon_state = "APsolars"
 
 /area/station/engineering/secure_storage

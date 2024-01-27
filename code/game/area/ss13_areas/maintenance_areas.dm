@@ -22,7 +22,7 @@
 	icon_state = "fpmaint"
 
 /area/station/maintenance/fpmaint2
-	name = "Второстепенные Северо-Западные Технические Тоннели"
+	name = "Вспомогательные Северо-Западные Технические Тоннели"
 	icon_state = "fpmaint"
 
 /area/station/maintenance/fsmaint
@@ -30,7 +30,7 @@
 	icon_state = "fsmaint"
 
 /area/station/maintenance/fsmaint2
-	name = "Второстепенные Северо-Восточные Технические Тоннели"
+	name = "Вспомогательные Северо-Восточные Технические Тоннели"
 	icon_state = "fsmaint"
 
 /area/station/maintenance/asmaint
@@ -38,7 +38,7 @@
 	icon_state = "asmaint"
 
 /area/station/maintenance/asmaint2
-	name = "Второстепенные Юго-Восточные Технические Тоннели"
+	name = "Вспомогательные Юго-Восточные Технические Тоннели"
 	icon_state = "asmaint"
 
 /area/station/maintenance/apmaint
@@ -46,7 +46,7 @@
 	icon_state = "apmaint"
 
 /area/station/maintenance/apmaint2
-	name = "Второстепенные Юго-Западные Технические Тоннели"
+	name = "Вспомогательные Юго-Западные Технические Тоннели"
 	icon_state = "apmaint"
 
 /area/station/maintenance/maintcentral
@@ -54,7 +54,7 @@
 	icon_state = "maintcentral"
 
 /area/station/maintenance/maintcentral2
-	name = "Второстепенные Центральные Технические Тоннели"
+	name = "Вспомогательные Центральные Технические Тоннели"
 	icon_state = "maintcentral"
 
 /area/station/maintenance/fore
@@ -62,7 +62,7 @@
 	icon_state = "fmaint"
 
 /area/station/maintenance/fore2
-	name = "Второстепенные Северные Технические Тоннели"
+	name = "Вспомогательные Северные Технические Тоннели"
 	icon_state = "fmaint"
 
 /area/station/maintenance/aft
@@ -70,7 +70,7 @@
 	icon_state = "amaint"
 
 /area/station/maintenance/aft2
-	name = "Второстепенные Южные Технические Тоннели"
+	name = "Вспомогательные Южные Технические Тоннели"
 	icon_state = "amaint"
 
 /area/station/maintenance/starboard
@@ -78,7 +78,7 @@
 	icon_state = "smaint"
 
 /area/station/maintenance/starboard2
-	name = "Второстепенные Восточные Технические Тоннели"
+	name = "Вспомогательные Восточные Технические Тоннели"
 	icon_state = "smaint"
 
 /area/station/maintenance/port
@@ -86,7 +86,7 @@
 	icon_state = "pmaint"
 
 /area/station/maintenance/port2
-	name = "Второстепенные Западные Технические Тоннели"
+	name = "Вспомогательные Западные Технические Тоннели"
 	icon_state = "pmaint"
 
 /area/station/maintenance/storage

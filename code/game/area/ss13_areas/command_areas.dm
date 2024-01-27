@@ -18,7 +18,7 @@
 	sound_environment = SOUND_AREA_WOODFLOOR
 
 /area/station/command/office/captain/bedroom
-	name = "Спальня Капитана"
+	name = "Каюта Капитана"
 	icon_state = "captain"
 
 /area/station/command/office/hop
@@ -65,7 +65,7 @@
 	icon_state = "nuke_storage"
 
 /area/station/command/server
-	name = "Комната Сервера Мессенджера"
+	name = "Серверная Комната Обработки Сообщений"
 	icon_state = "server"
 	sound_environment = SOUND_AREA_STANDARD_STATION
 
