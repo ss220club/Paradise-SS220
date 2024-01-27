@@ -16,7 +16,9 @@
 			var/file = input(usr) as icon|null
 			if(!file)
 				return
-			SStitle.change_title_screen(file)
+
+			message_admins("Custom title Screen: [file]")
+			// SStitle.change_title_screen(file)
 		if("Reset")
 			SStitle.change_title_screen()
 		if("Cancel")
@@ -52,9 +54,9 @@
 	set category = "Special Verbs"
 
 	if(istype(mob, /mob/new_player))
-		mob.show_title_screen()
+		SStitle.current_title_screen.show_to(mob)
 	else
-		mob.hide_title_screen()
+		SStitle.current_title_screen.hide_from(mob)
 
 /**
  * An admin debug command that enables you to change the HTML on the go.

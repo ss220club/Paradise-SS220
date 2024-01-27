@@ -1,4 +1,5 @@
-#define DEFAULT_TITLE_SCREEN_IMAGE "default.gif"
+#define DEFAULT_TITLE_SCREEN_IMAGE_NAME "default.gif"
+#define DEFAULT_TITLE_SCREEN_IMAGE_PATH 'modular_ss220/title_screen/icons/default.gif'
 
 #define DEFAULT_TITLE_HTML {"
 	<html>
