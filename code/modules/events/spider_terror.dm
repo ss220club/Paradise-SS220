@@ -14,7 +14,7 @@
 	announceWhen = 240
 	var/poulation_factor = 1.5 // higher - lesser spawnpoints
 	var/spawncount = 0 // amount of spawned spiders
-	var/spawnpoints = 9 // weihgt points
+	var/spawnpoints = TS_POINTS_GREEN // weihgt points
 	var/successSpawn = FALSE	//So we don't make a command report if nothing gets spawned.
 	//lists for mathcing spiders and their weights
 	var/list/spider_types = list("TERROR_GREEN" = TERROR_GREEN, "TERROR_WHITE" = TERROR_WHITE, "TERROR_PRINCESS" = TERROR_PRINCESS, "TERROR_PRINCE" = TERROR_PRINCE, "TERROR_QUEEN" = TERROR_QUEEN)
