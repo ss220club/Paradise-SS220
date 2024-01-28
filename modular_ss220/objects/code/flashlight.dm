@@ -1,6 +1,4 @@
 /obj/item/flashlight/shadowlight
-	name = "flashlight"
-	desc = "A hand-held emergency light."
 	icon = 'modular_ss220/objects/icons/lighting.dmi'
 	icon_state = "shadowlight"
 	item_state = "shadowlight"
