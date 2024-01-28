@@ -5,4 +5,4 @@
 			Практически не работает на ярком свету "
 	reference = "SHAD"
 	item = /obj/item/flashlight/shadowlight
- 	cost = 20
+	cost = 20
