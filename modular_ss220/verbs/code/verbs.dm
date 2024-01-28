@@ -23,7 +23,7 @@
 		to_chat(usr, span_boldnotice("You must be dead to use this!"))
 		return
 
-	var/deathtime = world.time - src.timeofdeath
+	var/deathtime = world.time - timeofdeath
 	if(isobserver(src))
 		var/mob/dead/observer/G = src
 		if(G.antagHUD)
