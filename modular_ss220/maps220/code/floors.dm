@@ -112,6 +112,21 @@
 	layer = GRASS_UNDER_LAYER
 	transform = null
 
+/turf/simulated/floor/grass/sakura
+	name = "sakura grass"
+	icon = 'modular_ss220/maps220/icons/grass_sakura.dmi'
+	icon_state = "grass"
+	base_icon_state = "grass"
+	baseturf = /turf/simulated/floor/indestructible/grass/sakura
+	smoothing_groups = list(SMOOTH_GROUP_TURF, SMOOTH_GROUP_GRASS, SMOOTH_GROUP_JUNGLE_GRASS)
+
+/turf/simulated/floor/grass/sakura/no_creep
+	smoothing_flags = null
+	smoothing_groups = null
+	canSmoothWith = null
+	layer = GRASS_UNDER_LAYER
+	transform = null
+
 /turf/simulated/floor/indestructible/grass/remove_plating(mob/user)
 	return
 
