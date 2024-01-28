@@ -125,7 +125,7 @@
 	item_path = /obj/item/melee/touch_attack/fake_disintegrate  // EI-NATH!
 
 /datum/status_effect/high_five/dap/get_missed_message()
-	return "не находит никого, кто мог бы совершить крутое рукопожатие и, к сожалению, жмет руку сам себе. Позорище."
+	return "не находит никого, кто мог бы совершить крутое рукопожатие и, к сожалению, жмет руку лишь себе. Позорище."
 
 /datum/status_effect/high_five/handshake
 	id = "handshake"
