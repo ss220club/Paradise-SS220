@@ -13,28 +13,18 @@
 /datum/event/spider_terror
 	announceWhen = 240
 	var/poulation_factor = 1.5 // higher - lesser spawnpoints
-	var/spawncount = 0 // amount of spawned spiders
+	spawncount = 0 // amount of spawned spiders
 	var/spawnpoints = TS_POINTS_GREEN // weihgt points
-	var/successSpawn = FALSE	//So we don't make a command report if nothing gets spawned.
 	//lists for mathcing spiders and their weights
 	var/list/spider_types = list("TERROR_GREEN" = TERROR_GREEN, "TERROR_WHITE" = TERROR_WHITE, "TERROR_PRINCESS" = TERROR_PRINCESS, "TERROR_PRINCE" = TERROR_PRINCE, "TERROR_QUEEN" = TERROR_QUEEN)
 	var/list/spider_costs = list("TERROR_GREEN" = TS_POINTS_GREEN, "TERROR_WHITE" = TS_POINTS_WHITE, "TERROR_PRINCESS" = TS_POINTS_PRINCESS, "TERROR_PRINCE" = TS_POINTS_PRINCE, "TERROR_QUEEN" = TS_POINTS_QUEEN)
 	var/list/spider_counts = list("TERROR_GREEN" = 0, "TERROR_WHITE" = 0, "TERROR_PRINCESS" = 0, "TERROR_PRINCE" = 0, "TERROR_QUEEN" = 0)
 
-/datum/event/spider_terror/setup()
-	announceWhen = rand(announceWhen, announceWhen + 30)
-
-/datum/event/spider_terror/announce(false_alarm)
-	if(successSpawn || false_alarm)
-		GLOB.major_announcement.Announce("Confirmed outbreak of level 3-S biohazard aboard [station_name()]. All personnel must contain the outbreak.", "Biohazard Alert", 'sound/effects/siren-spooky.ogg', new_sound2 = 'sound/AI/outbreak3.ogg')
-	else
-		log_and_message_admins("Warning: Could not spawn any mobs for event Terror Spiders")
-
 /datum/event/spider_terror/start()
 	// It is necessary to wrap this to avoid the event triggering repeatedly.
-	INVOKE_ASYNC(src, PROC_REF(wrappedstart))
+	INVOKE_ASYNC(src, PROC_REF(wrappedstart_new))
 
-/datum/event/spider_terror/proc/wrappedstart()
+/datum/event/spider_terror/proc/wrappedstart_new()
 	var/list/candidates = SSghost_spawns.poll_candidates("Do you want to play as a terror spider?", null, TRUE, source = /mob/living/simple_animal/hostile/poison/terror_spider) // questionable
 	var/max_spiders = length(candidates)
 	log_debug("where is [max_spiders] candidates")
@@ -76,12 +66,12 @@
 		vents = get_valid_vent_spawns(unwelded_only = FALSE, min_network_size = 0)
 
 	log_debug("where is awailible [length(vents)] vents")
-
+	log_debug("spawncount is:  [spawncount] vents")
 	while(spawncount && length(vents) && length(candidates))
 		for(var/spider_id in spider_counts)
 			var/spider_type = spider_types[spider_id]
 			var/spider_count = spider_counts[spider_id]
-
+			log_debug("entering inner while cycle")
 			while(spider_count > 0 && length(candidates))
 				var/obj/vent = pick_n_take(vents)
 				var/mob/living/simple_animal/hostile/poison/terror_spider/S = new spider_type(vent.loc)
