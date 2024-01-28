@@ -279,7 +279,7 @@
 /datum/emote/living/carbon/human/sniff
 	key = "sniff"
 	key_third_person = "sniff"
-	message = "нюхает."
+	message = "шмыгает носом."
 	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/human/johnny

@@ -283,7 +283,7 @@
 /datum/emote/living/sniff
 	key = "sniff"
 	key_third_person = "sniffs"
-	message = "нюхает."
+	message = "шмыгает носом."
 	emote_type = EMOTE_AUDIBLE
 	unintentional_stat_allowed = UNCONSCIOUS
 
