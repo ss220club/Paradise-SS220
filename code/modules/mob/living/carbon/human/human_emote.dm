@@ -359,9 +359,9 @@
 	else
 		smacking_hand = new /obj/item/slapper(user)
 	if(user.put_in_hands(smacking_hand))
-		to_chat(user, "<span class='notice'>Вы готовы шлепнуть ладонью.</span>")
+		to_chat(user, "<span class='notice'>Вы готовы давать пощёчины.</span>")
 	else
-		to_chat(user, "<span class='warning'>В текущем положении шлепнуть не получится.</span>")
+		to_chat(user, "<span class='warning'>В текущем положении дать пощёчину не получится.</span>")
 
 /datum/emote/living/carbon/human/wink
 	key = "wink"

@@ -86,8 +86,8 @@
 /datum/emote/living/carbon/kiss
 	key = "kiss"
 	key_third_person = "kisses"
-	message = "Посылает воздушный поцелуй."
-	message_param = "Посылает воздушный поцелуй %t!"
+	message = "посылает воздушный поцелуй."
+	message_param = "посылает воздушный поцелуй %t!"
 	muzzled_noises = list("чмокающий")
 
 /datum/emote/living/carbon/wave

@@ -266,7 +266,7 @@
 /datum/emote/living/sit
 	key = "sit"
 	key_third_person = "sits"
-	message = "sits down."
+	message = "садится."
 
 /datum/emote/living/smile
 	key = "smile"

@@ -51,7 +51,7 @@
 	else
 		user.do_attack_animation(the_table)
 		playsound(get_turf(the_table), 'sound/effects/tableslam.ogg', 40, TRUE)
-		user.visible_message("<span class='notice'>[user] бьёт [user.p_their()] ладонью по [the_table].</span>", "<span class='notice'>Вы бьёте ладонью [the_table].</span>")
+		user.visible_message("<span class='notice'>[user] бьёт [user.p_their()] ладонью по [the_table].</span>", "<span class='notice'>Вы бьёте ладонью по [the_table].</span>")
 		table_smacks_left--
 		if(table_smacks_left <= 0)
 			qdel(src)

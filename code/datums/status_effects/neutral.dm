@@ -55,7 +55,7 @@
 	/// Message displayed when normal people perform this together
 	var/success = "дают пять!"
 	/// Message displayed when this status effect is applied.
-	var/request = "Ожидает пятюню."
+	var/request = "ожидает пятюню."
 	/// Item to be shown in the pop-up balloon.
 	var/obj/item/item_path = /obj/item/latexballon
 	/// Sound effect played when this emote is completed.
@@ -107,7 +107,7 @@
 /datum/status_effect/high_five/proc/get_missed_message()
 	var/list/missed_highfive_messages = list(
 		"опускает руку, неловкая ситуация...",
-		", похоже, неловко машет непонятно кому.",
+		"неловко машет непонятно кому.",
 		"от стыда прикладывает руку прямо себе на лоб.",
 		"от души дает пять в воздух.",
 		"стыдливо даёт пять самому себе перед тем, как смахнуть слезу.",
@@ -125,7 +125,7 @@
 	item_path = /obj/item/melee/touch_attack/fake_disintegrate  // EI-NATH!
 
 /datum/status_effect/high_five/dap/get_missed_message()
-	return ", к сожалению, не находит никого, кто мог бы совершить крутое рукопожатие, и жмет руку сам себе. Позорище."
+	return "не находит никого, кто мог бы совершить крутое рукопожатие и, к сожалению, жмет руку сам себе. Позорище."
 
 /datum/status_effect/high_five/handshake
 	id = "handshake"
