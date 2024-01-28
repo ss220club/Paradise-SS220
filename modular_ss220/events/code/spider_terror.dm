@@ -21,6 +21,7 @@
 	var/list/spider_counts = list("TERROR_GREEN" = 0, "TERROR_WHITE" = 0, "TERROR_PRINCESS" = 0, "TERROR_PRINCE" = 0, "TERROR_QUEEN" = 0)
 
 /datum/event/spider_terror/start()
+	spawncount = 0 // yeah, still not 0
 	// It is necessary to wrap this to avoid the event triggering repeatedly.
 	INVOKE_ASYNC(src, PROC_REF(wrappedstart_new))
 
@@ -42,7 +43,7 @@
 			spider_counts[chosen_spider_id] += 1
 			spawnpoints -= cost
 			spawncount += 1
-			log_debug("spider adde into pool: [chosen_spider_id]")
+			log_debug("spider added into pool: [chosen_spider_id]")
 			log_debug("where is [spawnpoints] available spawnpoints now")
 
 		if(spawnpoints >= TS_POINTS_GREEN)
@@ -54,7 +55,6 @@
 		if(spawncount >= max_spiders)
 
 			break // over candidates limit break
-	log_debug("spider list is done: [spider_counts]")
 	log_debug("selected [spawncount] spider(s)")
 	return spider_counts
 
