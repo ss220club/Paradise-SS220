@@ -62,7 +62,7 @@
 /obj/item/slapper/parry
 	desc = "Именно так настоящие мужчины побеждают в боях."
 	force = 5
-	attack_verb = list("даёт пощёчину", "бьёт тыльной стороной ладони", "щёлкает", "дезориентирует")
+	attack_verb = list("даёт пощёчину", "бьёт тыльной стороной ладони", "шлепает", "дезориентирует")
 	table_smacks_left = 10 //Much more smackitude
 
 /obj/item/slapper/parry/Initialize(mapload)
