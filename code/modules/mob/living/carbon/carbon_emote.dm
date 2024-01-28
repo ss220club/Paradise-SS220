@@ -76,7 +76,7 @@
 	key_third_person = "inhales"
 	message = "вдыхает."
 	emote_type = EMOTE_AUDIBLE | EMOTE_MOUTH
-	muzzled_noises = list("хриплые")
+	muzzled_noises = list("хриплый")
 
 /datum/emote/living/carbon/inhale/sharp
 	key = "inhale_s"

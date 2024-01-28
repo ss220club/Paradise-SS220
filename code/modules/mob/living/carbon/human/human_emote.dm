@@ -90,7 +90,7 @@
 	key = "cry"
 	key_third_person = "cries"
 	message = "плачет."
-	muzzled_noises = list("слабо", "жалко", "грустно")
+	muzzled_noises = list("слабый", "жалкий", "грустный")
 	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/human/eyebrow
@@ -130,7 +130,7 @@
 	message = "ворчит!"
 	message_mime = "как будто ворчит!"
 	message_postfix = "на %t!"
-	muzzled_noises = list("беспокойно")
+	muzzled_noises = list("беспокойный")
 	emote_type = EMOTE_AUDIBLE | EMOTE_MOUTH
 
 /datum/emote/living/carbon/human/hug
@@ -160,7 +160,7 @@
 	message = "кричит!"
 	message_mime = "как будто кричит!"
 	message_postfix = "на %t!"
-	muzzled_noises = list("очень громко")
+	muzzled_noises = list("очень громкий")
 	emote_type = EMOTE_AUDIBLE | EMOTE_MOUTH
 	only_forced_audio = FALSE
 	vary = TRUE
@@ -332,7 +332,7 @@
 	key = "sneeze"
 	key_third_person = "sneezes"
 	message = "чихает."
-	muzzled_noises = list("странно", "резко")
+	muzzled_noises = list("странный", "резкий")
 	emote_type = EMOTE_AUDIBLE | EMOTE_MOUTH
 	volume = 70
 
@@ -666,7 +666,7 @@
 	age_based = TRUE
 	// Credit to Jamius (freesound.org) for the sound.
 	sound = "sound/effects/unathihiss.ogg"
-	muzzled_noises = list("weak hissing")
+	muzzled_noises = list("тихий шипящий")
 
 /datum/emote/living/carbon/human/creak
 	key = "creak"
@@ -739,7 +739,7 @@
 	emote_type = EMOTE_AUDIBLE | EMOTE_MOUTH
 	age_based = TRUE
 	sound = "sound/goonstation/voice/howl.ogg"
-	muzzled_noises = list("very loud")
+	muzzled_noises = list("очень громкий")
 	volume = 100
 	cooldown = 10 SECONDS
 
@@ -752,7 +752,7 @@
 	species_type_whitelist_typecache = list(/datum/species/vulpkanin)
 	sound = "growls"  // what the fuck why is this just top level
 	volume = 80
-	muzzled_noises = list("раздражённо")
+	muzzled_noises = list("грозный")
 	emote_type = EMOTE_AUDIBLE | EMOTE_MOUTH
 
 /datum/emote/living/carbon/human/hiss/tajaran
@@ -760,7 +760,7 @@
 	species_type_whitelist_typecache = list(/datum/species/tajaran)
 	sound = "sound/effects/tajaranhiss.ogg"
 	volume = 80
-	muzzled_noises = list("irritated")
+	muzzled_noises = list("злобный")
 	// catHisses1.wav by Zabuhailo. Edited.
 	// https://freesound.org/people/Zabuhailo/sounds/146963/
 

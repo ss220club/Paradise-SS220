@@ -31,7 +31,7 @@
 	message = "отрыгивает."
 	message_mime = "довольно противно открывает рот."
 	emote_type = EMOTE_AUDIBLE
-	muzzled_noises = list("странные")
+	muzzled_noises = list("странный")
 
 /datum/emote/living/choke
 	key = "choke"
@@ -39,7 +39,7 @@
 	message = "подавился!"
 	message_mime = "отчаянно хватается за горло!"
 	emote_type = EMOTE_AUDIBLE
-	muzzled_noises = list("рвотные", "громкие")
+	muzzled_noises = list("рвотный", "громкий")
 
 /datum/emote/living/collapse
 	key = "collapse"
@@ -253,7 +253,7 @@
 	key_third_person = "sighs"
 	message = "вздыхает."
 	message_mime = "беззвучно вздыхает."
-	muzzled_noises = list("weak")
+	muzzled_noises = list("слабый")
 	emote_type = EMOTE_AUDIBLE | EMOTE_MOUTH
 
 /datum/emote/living/sigh/happy
@@ -261,7 +261,7 @@
 	key_third_person = "hsighs"
 	message = "удовлетворённо вздыхает."
 	message_mime = "кажется, удовлетворённо вздыхает"
-	muzzled_noises = list("расслабленные", "довольные")
+	muzzled_noises = list("расслабленный", "довольный")
 
 /datum/emote/living/sit
 	key = "sit"
@@ -380,7 +380,7 @@
 	message = "хнычет."
 	message_mime = "кажется, задет."
 	emote_type = EMOTE_AUDIBLE | EMOTE_MOUTH
-	muzzled_noises = list("слабые", "жалкие")
+	muzzled_noises = list("слабый", "жалкий")
 
 /datum/emote/living/wsmile
 	key = "wsmile"
