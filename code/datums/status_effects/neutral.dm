@@ -129,7 +129,7 @@
 
 /datum/status_effect/high_five/handshake
 	id = "handshake"
-	critical_success = "ЭПИЧЕСКИ пожимают руки!"
+	critical_success = "ЭПИЧНО пожимают друг другу руки!"
 	success = "пожимают руки!"
 	request = "ожидает рукопожатие!"
 	sound_effect = "sound/weapons/thudswoosh.ogg"
