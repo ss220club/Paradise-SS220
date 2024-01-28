@@ -300,7 +300,7 @@
 	if(user.mind?.miming)
 		msg = "затягивается сигаретой и выдыхает дым в форме \"[target.name]\"."
 	else
-		msg = "says, \"[target.name], please. They had a family.\" [user] takes a drag from a cigarette and blows [user.p_their()] name out in smoke."
+		msg = "говорит, \"[target.name], пожалуйста. У них была семья.\" [user] затягивается сигаретой и выдыхает дым в форме своего имени."
 	return msg
 
 /datum/emote/living/carbon/human/johnny/run_emote(mob/user, params, type_override, intentional)
