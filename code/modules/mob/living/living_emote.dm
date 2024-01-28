@@ -76,10 +76,10 @@
 	message = "цепенеет и расслабляется, взгляд становится пустым и безжизненным..."
 	message_alien = "цепенеет и расслабляется, взгляд становится пустым и безжизненным..."
 	message_robot = "на мгновение вздрагивает и замирает, глаза медленно темнеют."
-	message_AI = "скрипит, экран мерцает, пока системы медленно выключаются."
+	message_AI = "скрипит, мерцая экраном, пока системы медленно выключаются."
 	message_alien = "издает ослабевающий крик, зеленая кровь пузырится из пасти..."
 	message_larva = "с тошнотворным шипением выдыхает воздух и падает на пол..."
-	message_monkey = "издаёт слабый звон, когда падает и перестаёт двигаться..."
+	message_monkey = "издаёт слабый звон, падает и перестаёт двигаться..."
 	message_simple = "перестаёт двигаться..."
 
 	mob_type_blacklist_typecache = list(
@@ -205,7 +205,7 @@
 		var/mob/living/carbon/human/H = user
 		if(!H.has_left_hand() && !H.has_right_hand())
 			if(H.get_num_legs() != 0)
-				message_param = "пытается показывать на %t ногой."
+				message_param = "пытается указать ногой на %t."
 			else
 				// nugget
 				message_param = "<span class='userdanger>ударяется головой о землю</span>, пытаясь двигаться в направлении %t."
@@ -385,7 +385,7 @@
 /datum/emote/living/wsmile
 	key = "wsmile"
 	key_third_person = "wsmiles"
-	message = "слабо улыбается."
+	message = "сдержанно улыбается."
 
 /datum/emote/living/custom
 	key = "me"

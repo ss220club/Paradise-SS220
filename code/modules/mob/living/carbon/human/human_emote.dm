@@ -576,7 +576,7 @@
 /datum/emote/living/carbon/human/flap/angry
 	key = "aflap"
 	key_third_person = "aflaps"
-	message = "машет крыльями АГРЕССИВНО!"
+	message = "АГРЕССИВНО машет крыльями!"
 
 /datum/emote/living/carbon/human/flutter
 	key = "flutter"

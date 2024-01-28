@@ -86,7 +86,7 @@
 	var/list/base_keys = list()
 	var/list/all_keys = list()
 	var/list/species_emotes = list()
-	var/list/message = list("Доступные, можете их использовать с помощью \"*emote\": ")
+	var/list/message = list("Доступные эмоции, можете их использовать с помощью \"*emote\": ")
 
 	var/mob/living/carbon/human/H = user
 	for(var/key in GLOB.emote_list)

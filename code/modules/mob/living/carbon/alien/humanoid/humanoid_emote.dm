@@ -7,8 +7,8 @@
 /datum/emote/living/carbon/alien/humanoid/roar
 	key = "roar"
 	key_third_person = "roars"
-	message = "ревёт!"
-	message_param = "ревёт на %t!"
+	message = "рычит!"
+	message_param = "рычит на %t!"
 	emote_type = EMOTE_AUDIBLE | EMOTE_MOUTH
 	sound = "sound/voice/hiss5.ogg"
 	volume = 80
