@@ -43,7 +43,7 @@
 #define EMOTE_TWITCH 				"Сильно дёргаться"
 #define EMOTE_TWITCHS 				"Дёргаться"
 #define EMOTE_WHIMPER 				"Хныкать"
-#define EMOTE_WSMILE 				"Слабо улыбнуться"
+#define EMOTE_WSMILE 				"Сдержанно улыбнуться"
 
 /// Human Emotes
 #define EMOTE_HUMAN_AIRGUITAR 		"Воображаемая гитара"
