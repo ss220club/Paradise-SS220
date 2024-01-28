@@ -3,7 +3,7 @@
 	name = "Южный Контрольно-Пропускной Пункт Службы Безопасности"
 
 /area/station/security/podpilot
-	name = "Гараж Под Пилота Службы Безопасности"
+	name = "Гараж Под-пилота Службы Безопасности"
 	icon_state = "security"
 
 /area/station/bridge/checkpoint
