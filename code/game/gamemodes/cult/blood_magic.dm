@@ -1,5 +1,5 @@
 /datum/action/innate/cult/blood_magic //Blood magic handles the creation of blood spells (formerly talismans)
-	name = "Подготовить Магию Крови"
+	name = "Prepare Blood Magic \n(Подготовить Магию Крови)"
 	button_icon_state = "carve"
 	desc = "Подготовьте Магию Крови путём высечения рун на вашем теле. Это сделать проще с помощью <b>руны усиления</b>."
 	var/list/spells = list()
@@ -38,7 +38,7 @@
 			to_chat(owner, "<span class='cultitalic'>Вы не можете хранить более [MAX_BLOODCHARGE] заклинаний. <b>Выберите заклинание для удаления.</b></span>")
 			remove_spell("Вы не можете хранить более [MAX_BLOODCHARGE] заклинаний, выберите заклинание для удаления.")
 		else
-			to_chat(owner, "<span class='cultitalic'>Вы не можете хранить более [RUNELESS_MAX_BLOODCHARGE] spell\s без руны усиления! <b>выберите заклинание для удаления.</b></span>")
+			to_chat(owner, "<span class='cultitalic'>Вы не можете хранить более [RUNELESS_MAX_BLOODCHARGE] заклинаний без руны усиления! <b>Выберите заклинание для удаления.</b></span>")
 			remove_spell("Вы не можете хранить более [RUNELESS_MAX_BLOODCHARGE] заклинаний без руны усиления, выберите заклинание для удаления.")
 		return
 	var/entered_spell_name
@@ -143,7 +143,7 @@
 //the spell list
 
 /datum/action/innate/cult/blood_spell/stun
-	name = "Оглушение"
+	name = "Stun (Оглушение)"
 	desc = "Ослабит и обеззвучит жертву. Ударьте её кинжалом культа, полностью оглушая и продлевая её беззвучие."
 	button_icon_state = "stun"
 	magic_path = /obj/item/melee/blood_magic/stun
@@ -193,21 +193,21 @@
 		qdel(src)
 
 /datum/action/innate/cult/blood_spell/shackles
-	name = "Теневые оковы"
+	name = "Shadow Shackles (Теневые оковы)"
 	desc = "Позволяет вам заковать жертву при касании и обеззвучить их при успехе."
 	button_icon_state = "shackles"
 	charges = 4
 	magic_path = /obj/item/melee/blood_magic/shackles
 
 /datum/action/innate/cult/blood_spell/construction
-	name = "Искаженное строительство"
+	name = "Twitsted Construction (Искаженное строительство)"
 	desc = "Позволяет вашей руке искажать определённые металлические конструкции.<br><u>Превращает:</u><br>Плассталь в рунический металл<br>50 металла в оболочку конструкта<br>Cyborg Оболочки киборгов в оболочки конструктов<br>Шлюзы в хрупкие рунические после небольшой задержки (интент харм)"
 	button_icon_state = "transmute"
 	magic_path = "/obj/item/melee/blood_magic/construction"
 	health_cost = 12
 
 /datum/action/innate/cult/blood_spell/dagger
-	name = "Призыв кинжала"
+	name = "Summon Dagger (Призыв кинжала)"
 	desc = "Призывает ритуальный кинжал, необходимый для начертания рун."
 	button_icon_state = "cult_dagger"
 
@@ -234,13 +234,13 @@
 		qdel(src)
 
 /datum/action/innate/cult/blood_spell/equipment
-	name = "Призыв снаряжения"
+	name = "Summon Equipment (Призыв снаряжения)"
 	desc = "Позволяет призвать боевое снаряжение на культиста при касании, включая броню культа в открытые слоты, болу культа и меч культа."
 	button_icon_state = "equip"
 	magic_path = /obj/item/melee/blood_magic/armor
 
 /datum/action/innate/cult/blood_spell/horror
-	name = "Галлюцинации"
+	name = "Hallucinations (Галлюцинации)"
 	desc = "Даёт жертве на расстоянии галлюцинации. Тихое и невидимое заклинание."
 	button_icon_state = "horror"
 	var/obj/effect/proc_holder/horror/PH
@@ -304,7 +304,7 @@
 			qdel(src)
 
 /datum/action/innate/cult/blood_spell/veiling
-	name = "Сокрытие присутствия"
+	name = "Conceal Presence (Сокрытие присутствия)"
 	desc = "Переключается между сокрытием и показом ближайших построек, рун и шлюзов культа."
 	invocation = "Kla'atu barada nikt'o!"
 	button_icon_state = "veiling"
@@ -432,7 +432,7 @@
 
 //stun
 /obj/item/melee/blood_magic/stun
-	name = "аура Ослабления"
+	name = "stunning aura"
 	desc = "Оглушит и обеззвучит жертву при касании. Ударьте их клинком культа для завершения заклинания, ."
 	color = RUNE_COLOR_RED
 	invocation = "Fuu ma'jin!"
@@ -478,7 +478,7 @@
 
 //Teleportation
 /obj/item/melee/blood_magic/teleport
-	name = "аура Телепорта"
+	name = "teleport aura"
 	color = RUNE_COLOR_TELEPORT
 	desc = "Телепортирует вас или культиста на руну телепорта."
 	invocation = "Sas'so c'arta forbici!"
@@ -550,7 +550,7 @@
 
 //Shackles
 /obj/item/melee/blood_magic/shackles
-	name = "аура сковывания"
+	name = "shackling aura"
 	desc = "Начнёт заковывать жертву в оковы и обеззвучит жертву на небольшой промежуток времени при успехе."
 	invocation = "In'totum Lig'abis!"
 	color = "#000000" // black
@@ -589,7 +589,7 @@
 
 
 /obj/item/restraints/handcuffs/energy/cult //For the shackling spell
-	name = "теневые оковы"
+	name = "shadow shackles"
 	desc = "Оковы, связывающие ваши запястья зловещей магией."
 	trashtype = /obj/item/restraints/handcuffs/energy/used
 	flags = DROPDEL
@@ -602,7 +602,7 @@
 
 //Construction: Converts 50 metal to a construct shell, plasteel to runed metal, or an airlock to brittle runed airlock
 /obj/item/melee/blood_magic/construction
-	name = "искажённая аура"
+	name = "twisted aura"
 	desc = "Искажает определённые металлические конструкции при касании."
 	invocation = "Ethra p'ni dedol!"
 	color = "#000000" // black

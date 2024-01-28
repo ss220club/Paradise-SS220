@@ -247,7 +247,7 @@ structure_check() searches for nearby cultist structures required for the invoca
 
 //Malformed Rune: This forms if a rune is not drawn correctly. Invoking it does nothing but hurt the user.
 /obj/effect/rune/malformed
-	cultist_name = "Искажённая"
+	cultist_name = "Malformed"
 	cultist_desc = "Бесмыссленная тарабарщина. Использование этой руны ни к чему хорошему не приведёт."
 	invocation = "Ra'sha yoka!"
 	invoke_damage = 30
@@ -267,7 +267,7 @@ structure_check() searches for nearby cultist structures required for the invoca
 
 //Rite of Enlightenment: Converts a normal crewmember to the cult, or offer them as sacrifice if cant be converted.
 /obj/effect/rune/convert
-	cultist_name = "Подношение"
+	cultist_name = "Offer (Подношение)"
 	cultist_desc = "Предлагайте неверующих вашему Божеству, конвертируя или принося их в жертву. Жертвы с душами приведут к появлению камня с захваченной душой. Это также может быть сделано с мозгами."
 	invocation = "Mah'weyh pleggh at e'ntrath!"
 	icon_state = "offering"
@@ -436,7 +436,7 @@ structure_check() searches for nearby cultist structures required for the invoca
 	return TRUE
 
 /obj/effect/rune/teleport
-	cultist_name = "Телепорт"
+	cultist_name = "Teleport (Телепорт)"
 	cultist_desc = "Перемещает всё, что находится поверх руны, на другую руну телепорта."
 	invocation = "Sas'so c'arta forbici!"
 	icon_state = "teleport"
@@ -566,7 +566,7 @@ structure_check() searches for nearby cultist structures required for the invoca
 
 //Rune of Empowering : Enables carrying 4 blood spells, greatly reduce blood cost
 /obj/effect/rune/empower
-	cultist_name = "Усиление"
+	cultist_name = "Empower (Усиление)"
 	cultist_desc = "Позволяет культистам подготовить большее количество заклинаний за куда меньшую цену."
 	invocation = "H'drak v'loso, mir'kanas verbot!"
 	icon_state = "empower"
@@ -706,7 +706,7 @@ structure_check() searches for nearby cultist structures required for the invoca
 
 //Rite of the Corporeal Shield: When invoked, becomes solid and cannot be passed. Invoke again to undo.
 /obj/effect/rune/wall
-	cultist_name = "Барьер"
+	cultist_name = "Barrier (Барьер)"
 	cultist_desc = "При исползовании создаёт стену для преграждения пути. Can be destroyed by brute force. Can be invoked again to reverse this."
 	invocation = "Khari'd! Eske'te tannin!"
 	icon_state = "barrier"
@@ -739,7 +739,7 @@ structure_check() searches for nearby cultist structures required for the invoca
 
 //Rite of Joined Souls: Summons a single cultist.
 /obj/effect/rune/summon
-	cultist_name = "Призыв культиста"
+	cultist_name = "Summon Cultist (Призыв культист)"
 	cultist_desc = "Телепортирует одного культиста к руне. <b><i>(Нельзя телепортировать связанных культистов!)</b></i>"
 	invocation = "N'ath reth sh'yro eth d'rekkathnor!"
 	req_cultists = 2
@@ -800,7 +800,7 @@ structure_check() searches for nearby cultist structures required for the invoca
   * If the cultists channeling the rune move away or are stunned at any point, the rune is deleted. So it can be countered pretty easily with flashbangs.
   */
 /obj/effect/rune/blood_boil
-	cultist_name = "Кипячение крови"
+	cultist_name = "Boil Blood (Кипячение крови)"
 	cultist_desc = "кипятит кровь всех неверующих, которые видят руну, быстро нанося огромные повреждения. Требуется два аколита для использования руны."
 	invocation = "Dedo ol'btoh!"
 	icon_state = "blood_boil"
@@ -881,7 +881,7 @@ structure_check() searches for nearby cultist structures required for the invoca
 		qdel(src)
 
 /obj/effect/rune/manifest
-	cultist_name = "Мир духов"
+	cultist_name = "Spirit Realm (Мир духов)"
 	cultist_desc = "manifests a spirit servant of the Dark One and allows you to ascend as a spirit yourself. The invoker must not move from atop the rune, and will take damage for each summoned spirit."
 	invocation = "Gal'h'rfikk harfrandid mud'gib!" //how the fuck do you pronounce this
 	icon_state = "spirit_realm"
@@ -913,8 +913,8 @@ structure_check() searches for nearby cultist structures required for the invoca
 		log_game("Manifest rune failed - user is a ghost")
 		return
 
-	var/choice = alert(user, "Вы открываете соединение к миру духов...", null, "Призыв призрака культа", "Ascend as a Dark Spirit", "Cancel")
-	if(choice == "Summon a Cult Ghost")
+	var/choice = alert(user, "Вы открываете соединение к миру духов...", null, "Призыв призрака культа", "Вознесение как Тёмный Дух", "Отмена")
+	if(choice == "Призыв призрака культа")
 		if(!is_station_level(z) || istype(get_area(src), /area/space))
 			to_chat(user, "<span class='cultitalic'>Завеса здесь недостаточно слаба, вы должны быть на станции!</span>")
 			fail_invoke()
@@ -932,7 +932,7 @@ structure_check() searches for nearby cultist structures required for the invoca
 			return list()
 		summon_ghosts(user, T)
 
-	else if(choice == "Ascend as a Dark Spirit")
+	else if(choice == "Вознесение как Тёмный Дух")
 		ghostify(user, T)
 
 
@@ -972,18 +972,18 @@ structure_check() searches for nearby cultist structures required for the invoca
 
 	var/obj/machinery/shield/cult/weak/shield = new(T)
 	SSticker.mode.add_cultist(new_human.mind, 0)
-	to_chat(new_human, "<span class='cultlarge'>You are a servant of the [SSticker.cultdat.entity_title3]. You have been made semi-corporeal by the cult of [SSticker.cultdat.entity_name], and you are to serve them at all costs.</span>")
+	to_chat(new_human, "<span class='cultlarge'>Вы - служитель [SSticker.cultdat.entity_title3]. Вы стали призрачным благодаря культу [SSticker.cultdat.entity_name], и Вы служете им во что бы то ни стало.</span>")
 
 	while(!QDELETED(src) && !QDELETED(user) && !QDELETED(new_human) && (user in T))
 		if(new_human.InCritical())
-			to_chat(user, "<span class='cultitalic'>You feel your connection to [new_human.real_name] severs as they are destroyed.</span>")
+			to_chat(user, "<span class='cultitalic'>Вы ощущаете потерю контакта с [new_human.real_name] поскольку они были уничтожены.</span>")
 			if(ghost)
-				to_chat(ghost, "<span class='cultitalic'>You feel your connection to [new_human.real_name] severs as they are destroyed.</span>")
+				to_chat(ghost, "<span class='cultitalic'>Вы чувствуете потерю контакта с [new_human.real_name] поскольку они были уничтожены.</span>")
 			break
 		if(user.stat || user.health <= 40)
-			to_chat(user, "<span class='cultitalic'>Your body can no longer sustain the connection, and your link to the spirit realm fades.</span>")
+			to_chat(user, "<span class='cultitalic'>Ваше тело более не способно поддерживать связь, и ваша связь с миром духов угасает.</span>")
 			if(ghost)
-				to_chat(ghost, "<span class='cultitalic'>Your body is damaged and your connection to the spirit realm weakens, any ghost you may have manifested are destroyed.</span>")
+				to_chat(ghost, "<span class='cultitalic'>Ваше тело повреждено и оно не способно поддерживать связь, любые призванные вами призраки были уничтожены.</span>")
 			break
 		user.apply_damage(0.1, BRUTE)
 		user.apply_damage(0.1, BURN)
@@ -993,7 +993,7 @@ structure_check() searches for nearby cultist structures required for the invoca
 	ghosts--
 	if(new_human)
 		new_human.visible_message("<span class='warning'>[new_human] внезапно превращается в пепел и кости.</span>",
-								"<span class='cultlarge'>Your link to the world fades. Your form breaks apart.</span>")
+								"<span class='cultlarge'>Ваша связь с миром угасает. Ваша форма распадается на части.</span>")
 		for(var/obj/item/I in new_human.get_all_slots())
 			new_human.unEquip(I)
 		SSticker.mode.remove_cultist(new_human.mind, FALSE)
@@ -1003,7 +1003,7 @@ structure_check() searches for nearby cultist structures required for the invoca
 	ADD_TRAIT(user, SCRYING, CULT_TRAIT)
 	user.add_atom_colour(RUNE_COLOR_DARKRED, ADMIN_COLOUR_PRIORITY)
 	user.visible_message("<span class='warning'>[user] застывает словно статуя, светясь неестественно красным светом.</span>",
-					"<span class='cult'>You see what lies beyond. Всё раскрыто. В этой форме вы осознаете, что ваш голос гремит над всеми остальными.</span>")
+					"<span class='cult'>Вы видите всё, что за пределами. Всё раскрыто. В этой форме вы осознаете, что ваш голос гремит над всеми остальными.</span>")
 	ghost = user.ghostize(TRUE)
 	var/datum/action/innate/cult/comm/spirit/CM = new
 	var/datum/action/innate/cult/check_progress/V = new
@@ -1015,8 +1015,8 @@ structure_check() searches for nearby cultist structures required for the invoca
 	//GM.Grant(ghost)
 	while(!QDELETED(user))
 		if(user.key || QDELETED(src))
-			user.visible_message("<span class='warning'>[user] slowly relaxes, the glow around [user.p_them()] dimming.</span>",
-								"<span class='danger'>You are re-united with your physical form. [src] releases its hold over you.</span>")
+			user.visible_message("<span class='warning'>[user] медленно расслабляется, свечение вокруг них угасает.</span>",
+								"<span class='danger'>Вы едины со свой физической формой. [src] ослабевает хватку на вас.</span>")
 			user.Weaken(6 SECONDS)
 			break
 		if(user.health <= 10)
@@ -1039,7 +1039,7 @@ structure_check() searches for nearby cultist structures required for the invoca
 
 //Ritual of Dimensional Rending: Calls forth the avatar of Nar'Sie upon the station.
 /obj/effect/rune/narsie
-	cultist_name = "Разрыв завесы"
+	cultist_name = "Tear Veil (Разрыв Завесы)"
 	cultist_desc = "разрывает пространственный барьер, призывая ваше Божество."
 	invocation = "TOK-LYR RQA-NAP G'OLT-ULOFT!!"
 	req_cultists = 9
@@ -1099,9 +1099,9 @@ structure_check() searches for nearby cultist structures required for the invoca
 
 /obj/effect/rune/narsie/attackby(obj/I, mob/user, params)	//Since the narsie rune takes a long time to make, add logging to removal.
 	if((istype(I, /obj/item/melee/cultblade/dagger) && iscultist(user)))
-		log_game("Руна Призыва НарСи была стёрта [key_name(user)] с помощью ринуального клинка")
-		message_admins("[key_name_admin(user)] удалил руну Нар'Си ритуальным клинком")
+		log_game("[key_name(user)] erased a Narsie rune with a null rod")
+		message_admins("[key_name_admin(user)] erased a Narsie rune with a null rod")
 	if(istype(I, /obj/item/nullrod))	//Begone foul magiks. You cannot hinder me.
-		log_game("Руна Призыва НарСи была стёрта [key_name(user)] с помощью нулевого стержня")
+		log_game("[key_name(user)] erased a Narsie rune with a null rod")
 		message_admins("[key_name_admin(user)] erased a Narsie rune with a null rod")
 	return ..()

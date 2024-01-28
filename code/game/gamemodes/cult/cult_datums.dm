@@ -16,34 +16,34 @@
 
 
 	//Builder Construct
-	var/artificer_name = "Созидатель"
+	var/artificer_name = "Artificer"
 	var/artificer_icon_state = "artificer"
 	var/artificer_dead_state = "shade_dead"
 
 	//Behemoth Construct
-	var/behemoth_name = "Чудовище"
+	var/behemoth_name = "Behemoth"
 	var/behemoth_icon_state = "behemoth"
 	var/behemoth_dead_state = "shade_dead"
 
 	//Wraith Construct
-	var/wraith_name = "Призрак"
+	var/wraith_name = "Wraith"
 	var/wraith_icon_state = "floating"
 	var/wraith_dead_state = "shade_dead"
 	var/wraith_jaunt_out_animation = "phase_shift"
 	var/wraith_jaunt_in_animation = "phase_shift2"
 
 	//Armored Construct
-	var/juggernaut_name = "Джаггернаут"
+	var/juggernaut_name = "Juggernaut"
 	var/juggernaut_icon_state = "behemoth"
 	var/juggernaut_dead_state = "shade_dead"
 
 	//Harvester Construct
-	var/harvester_name = "Собиратель"
+	var/harvester_name = "Harvester"
 	var/harvester_icon_state = "harvester"
 	var/harvester_dead_state = "shade_dead"
 
 	//Shade Spirit
-	var/shade_name = "Тень"
+	var/shade_name = "Shade"
 	var/shade_icon_state = "shade2"
 	var/shade_dead_state = "shade_dead"
 
