@@ -51,7 +51,7 @@
 	alert_type = null
 	status_type = STATUS_EFFECT_REFRESH
 	/// Message displayed when wizards perform this together
-	var/critical_success = "дают пять ЭПИЧЕСКИ!"
+	var/critical_success = "ЭПИЧНО дают пять!"
 	/// Message displayed when normal people perform this together
 	var/success = "дают пять!"
 	/// Message displayed when this status effect is applied.
