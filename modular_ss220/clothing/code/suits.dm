@@ -203,8 +203,6 @@
 		"Vulpkanin" 		= 	'modular_ss220/clothing/icons/mob/suits.dmi',
 		)
 
-//brazenly add to orders in cargo
-
 /datum/supply_packs/misc/soundhand
 	name = "Soundhand Fan Crate"
 	contains = list(/obj/item/clothing/suit/storage/soundhand_black_jacket,
