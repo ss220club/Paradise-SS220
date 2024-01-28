@@ -6,22 +6,21 @@
 	/// The current title screen being displayed, as `/datum/asset_cache_item`
 	var/datum/asset_cache_item/screen_image
 
-/datum/title_screen/New(title_html, notice, screen_image_file_name, screen_image_file)
+/datum/title_screen/New(title_html = DEFAULT_TITLE_HTML, notice, screen_image_file)
 	src.title_html = title_html
 	src.notice = notice
-	set_screen_image(screen_image_file_name, screen_image_file)
+	set_screen_image(screen_image_file)
 
-/datum/title_screen/proc/set_screen_image(screen_image_file_name, screen_image_file)
+/datum/title_screen/proc/set_screen_image(screen_image_file)
+	if(!screen_image_file)
+		return
+
 	if(!isfile(screen_image_file))
 		screen_image_file = fcopy_rsc(screen_image_file)
 
-	screen_image = SSassets.transport.register_asset(screen_image_file_name, screen_image_file)
+	screen_image = SSassets.transport.register_asset("[screen_image_file]", screen_image_file)
 
 /datum/title_screen/proc/show_to(client/viewer)
-	if(ismob(viewer))
-		var/mob/viewer_mob = viewer
-		viewer = viewer_mob.client
-
 	if(!viewer)
 		return
 
@@ -31,20 +30,20 @@
 	var/datum/asset/lobby_asset = get_asset_datum(/datum/asset/simple/lobby_fonts)
 	lobby_asset.send(viewer)
 
-	SSassets.transport.send_assets(viewer, screen_image)
+	SSassets.transport.send_assets(viewer, screen_image.name)
 
 	viewer << browse(get_title_html(), "window=title_browser")
 
 /datum/title_screen/proc/hide_from(client/viewer)
-	if(client?.mob)
-		winset(client, "title_browser", "is-disabled=true;is-visible=false")
-		winset(client, "status_bar", "is-visible=true")
+	if(viewer?.mob)
+		winset(viewer, "title_browser", "is-disabled=true;is-visible=false")
+		winset(viewer, "status_bar", "is-visible=true")
 
 /**
  * Get the HTML of title screen.
  */
 /datum/title_screen/proc/get_title_html()
-	var/list/html = list()
+	var/list/html = list(title_html)
 
 	var/screen_image_url = SSassets.transport.get_asset_url(asset_cache_item = screen_image)
 	if(screen_image_url)
