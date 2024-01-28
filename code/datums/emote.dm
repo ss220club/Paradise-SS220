@@ -218,7 +218,7 @@
 		else if((emote_type & EMOTE_AUDIBLE) && !user.mind?.miming)
 			user.audible_message(displayed_msg, deaf_message = "<span class='emote'>Вы видите, как <b>[user]</b> [msg]</span>")
 		else
-			user.visible_message(displayed_msg, blind_message = "<span class='emote'>Вы слишите, как кто-то [msg]</span>")
+			user.visible_message(displayed_msg, blind_message = "<span class='emote'>Вы слышите, как кто-то [msg]</span>")
 
 		if(!((emote_type & EMOTE_FORCE_NO_RUNECHAT) || suppressed) && !isobserver(user))
 			runechat_emote(user, msg)
