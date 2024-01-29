@@ -86,7 +86,7 @@
 	icon_state = "tcomms"
 
 /area/mine/outpost/custodial
-	name = "Складское Помещение Шахтерского Аванпоста"
+	name = "Подсобка Шахтерского Аванпоста"
 	icon_state = "janitor"
 
 /area/mine/outpost/engineering // basically engi and atmos combined. I'm keeping it as "engineering" code wise, but "Life Support" sounds cooler in-game
@@ -191,4 +191,4 @@
 	icon_state = "danger"
 
 /area/lavaland/surface/outdoors/explored
-	name = "Лаваленд Трудового Лагеря"
+	name = "Трудовой Лагерь Лаваленда"
