@@ -3,7 +3,7 @@
 	desc = "Опавшие листья сакуры"
 	density = FALSE
 	layer = TURF_DECAL_LAYER
-	icon = 'modular_ss220/flora/icons/sakura.dmi'
+	icon = 'modular_ss220/objects/icons/sakura.dmi'
 	icon_state = "leaves_on_ground"
 
 // нужен метод, который позволяет поджечь листвую => декаль должен исчезнуть. Это он?

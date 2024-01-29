@@ -1,7 +1,7 @@
 /datum/modpack/objects
 	name = "Объекты"
 	desc = "В основном включает в себя портированные объекты и всякие мелочи, которым не нужен отдельный модпак."
-	author = "dj-34"
+	author = "dj-34, The-main-answer-42"
 
 // Maybe it would be better, if i didn't make it modular, because i can't change order in the recipe list :catDespair:
 /datum/modpack/objects/initialize()

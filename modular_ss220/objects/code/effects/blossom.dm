@@ -1,7 +1,7 @@
 /obj/effect/blossom
 	name = "Цветение сакуры"
 	desc = "Метель из лепестков сакуры"
-	icon = 'modular_ss220/flora/icons/sakura.dmi'
+	icon = 'modular_ss220/objects/icons/sakura.dmi'
 	icon_state = "blossom_less"
 	pixel_y = 10
 	layer = 9.1

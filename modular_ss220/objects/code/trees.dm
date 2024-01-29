@@ -1,7 +1,7 @@
 /obj/structure/flora/tree/sakura
 	name = "Сакура"
 	desc = "Зимняя вишня в цвету. Красота!"
-	icon = 'modular_ss220/flora/icons/sakura.dmi'
+	icon = 'modular_ss220/objects/icons/sakura.dmi'
 	icon_state = "cherry_blossom_1"
 	pixel_y = 10
 
