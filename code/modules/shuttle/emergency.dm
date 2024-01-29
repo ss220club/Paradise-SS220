@@ -109,7 +109,7 @@
 	if(hijack_announce)
 		announce_hijack_stage()
 	hijack_last_stage_increase = world.time
-	atom_say("Navigational protocol error! Rebooting systems.")
+	atom_say("Ошибка навигационных протоколов! Перезагрузка систем.")
 	if(shuttle.mode == SHUTTLE_ESCAPE)
 		if(shuttle.hijack_status == HIJACKED)
 			shuttle.setTimer(hijack_completion_flight_time_set)
@@ -140,11 +140,11 @@
 		to_chat(user, "<span class='warning'>The emergency shuttle is already loaded with a corrupt navigational payload. What more do you want from it?</span>")
 		return
 	if(hijack_last_stage_increase >= world.time - hijack_stage_cooldown)
-		atom_say("ACCESS DENIED: Console is temporarily on security lockdown. Please try again.")
+		atom_say("ДОСТУП ЗАПРЕЩЕН: Консоль временно заблокирована. Пожалуйста, попробуйте еще раз.")
 		return
 	hijack_hacking = TRUE
 	to_chat(user, "<span class='userdanger'>You [SSshuttle.emergency.hijack_status == NOT_BEGUN ? "begin" : "continue"] to override [src]'s navigational protocols.</span>")
-	atom_say("Software override initiated.")
+	atom_say("Инициировано программное переопределение.")
 	playsound(src, 'sound/machines/terminal_on.ogg', 100, FALSE)
 	var/turf/console_hijack_turf = get_turf(src)
 	message_admins("[src] is being overridden for hijack by [ADMIN_LOOKUPFLW(user)] in [ADMIN_VERBOSEJMP(console_hijack_turf)]")

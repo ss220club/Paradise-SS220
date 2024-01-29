@@ -700,6 +700,18 @@
 	if(user.holy_check())
 		return
 	if(proximity_flag)
+		// Shielded suit
+		if(istype(target, /obj/item/clothing/suit/hooded/cultrobes/cult_shield))
+			var/datum/component/shielded/shield = target.GetComponent(/datum/component/shielded)
+			if(shield.current_charges >= 3)
+				to_chat(user, "<span class='warning'>[target] is already at full charge!</span>")
+				return
+			uses--
+			to_chat(user, "<span class='warning'>You empower [target] with blood, recharging its shields!</span>")
+			playsound(user, 'sound/magic/cult_spell.ogg', 25, TRUE, SOUND_RANGE_SET(7))
+			shield.current_charges = 3
+			user.update_appearance(UPDATE_ICON)
+			return ..()
 
 		// Veil Shifter
 		if(istype(target, /obj/item/cult_shift))

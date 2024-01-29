@@ -361,7 +361,7 @@
 				if(pay_with_account(account, order.object.get_cost(), "[pack.name] Crate Purchase", "Cargo Requests Console", user, account_database.vendor_account))
 					SSeconomy.process_supply_order(order, TRUE) //send 'er back through
 					return TRUE
-				atom_say("ERROR: Account tied to order cannot pay, auto-denying order")
+				atom_say("ОШИБКА: Счет, связанный с заказом, не может быть использован для оплаты. Заказ автоматически отклонен.")
 				SSeconomy.request_list -= order //just remove order at this poin
 			else
 				return TRUE
@@ -382,7 +382,7 @@
 					investigate_log("| [key_name(user)] has authorized an order for [pack.name]. Remaining Cargo Balance: [cargo_account.credit_balance].", "cargo")
 					SSblackbox.record_feedback("tally", "cargo_shuttle_order", 1, pack.name)
 				else
-					atom_say("ERROR: Account tied to order cannot pay, auto-denying order")
+					atom_say("ОШИБКА: Счет, связанный с заказом, не может быть использован для оплаты. Заказ автоматически отклонен.")
 					SSeconomy.request_list -= order
 		break
 
