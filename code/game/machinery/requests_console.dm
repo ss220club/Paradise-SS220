@@ -243,9 +243,9 @@ GLOBAL_LIST_EMPTY(allRequestConsoles)
 				else if(recipient in SUPPLY_ROLES)
 					radiochannel = "Supply"
 				message_log.Add(list(list("Message sent to [recipient] at [station_time_timestamp()]", "[message]")))
-				Radio.autosay("Alert; a new requests console message received for [recipient] from [department]", null, "[radiochannel]")
+				Radio.autosay("Оповещение: получено новое сообщение с консоли запросов для [recipient] от [department]", null, "[radiochannel]")
 			else
-				atom_say("No server detected!")
+				atom_say("Сервер не обнаружен!")
 
 		//Handle screen switching
 		if("setScreen")
@@ -271,11 +271,11 @@ GLOBAL_LIST_EMPTY(allRequestConsoles)
 		if("printLabel")
 			var/error_message
 			if(!ship_tag_index)
-				error_message = "Please select a destination."
+				error_message = "Пожалуйста, выберите пункт назначения."
 			else if(!msgVerified)
-				error_message = "Please verify shipper ID."
+				error_message = "Пожалуйста, проверьте ID отправителя."
 			else if(world.time < print_cooldown)
-				error_message = "Please allow the printer time to prepare the next shipping label."
+				error_message = "Пожалуйста, дайте принтеру время на подготовку следующей транспортировочной маркировки."
 			if(error_message)
 				atom_say("[error_message]")
 				return
