@@ -146,7 +146,7 @@
 	icon_state = "construction"
 
 /area/station/maintenance/auxsolarport
-	name = "Северо-Восточные Солнечные Панели"
+	name = "Северо-Западные Солнечные Панели"
 	icon_state = "FPctrl"
 
 /area/station/maintenance/starboardsolar
