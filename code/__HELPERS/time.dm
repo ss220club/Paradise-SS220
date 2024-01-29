@@ -108,7 +108,7 @@
 /proc/seconds_to_time(seconds as num)
 	var/numSeconds = seconds % 60
 	var/numMinutes = (seconds - numSeconds) / 60
-	return "[numMinutes] [numMinutes > 1 ? "минуты" : "минут"] и [numSeconds] секунд"
+	return "[numMinutes] [(numMinutes % 10) != 1 ? "минут(ы)" : "минута"] и [numSeconds] секунд"
 
 /// Take a value in seconds and makes it display like a clock. Hours are stripped. (mm:ss)
 /proc/seconds_to_clock(seconds as num)
