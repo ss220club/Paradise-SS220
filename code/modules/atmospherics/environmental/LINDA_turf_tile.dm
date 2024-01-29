@@ -272,21 +272,21 @@
 		SSair.remove_from_active(src)
 
 // SS220 EDIT - START
-/turf/simulated/proc/handle_space(var/turf/space/space_turf)
+/turf/simulated/proc/handle_space(turf/space/space_turf)
 	var/list/unchecked_turfs = GetAtmosAdjacentTurfs()
 	var/list/checked_turfs = list()
 	while (unchecked_turfs.len)
 		var/turf/current_turf = unchecked_turfs[1]
 		var/list/connected_turfs = current_turf.GetAtmosAdjacentTurfs()
-		if (checked_turfs.len < 30)
+		if(checked_turfs.len < 30)
 			for (var/turf/simulated/turf in connected_turfs)
-				if (!unchecked_turfs.Find(turf) && !checked_turfs.Find(turf))
+				if(!unchecked_turfs.Find(turf) && !checked_turfs.Find(turf))
 					unchecked_turfs.Add(connected_turfs)
 		checked_turfs.Add(current_turf)
 		unchecked_turfs.Remove(current_turf)
 	decompression(checked_turfs, space_turf)
 
-/turf/simulated/proc/decompression(var/list/turfs, var/turf/space/space_turf, var/turn = 0)
+/turf/simulated/proc/decompression(list/turfs, turf/space/space_turf, turn = 0)
 	for (var/turf/simulated/turf in turfs)
 		var/difference = turf.air.total_moles() / 2
 
@@ -301,7 +301,7 @@
 
 		if(difference)
 			var/decompression_direction = get_dir(turf, get_step_towards(turf, space_turf))
-			if (!decompression_direction)
+			if(!decompression_direction)
 				decompression_direction = get_dir(turf, space_turf)
 			turf.consider_pressure_difference(src, difference, decompression_direction)
 // SS220 EDIT - END
