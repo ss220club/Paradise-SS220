@@ -181,7 +181,7 @@
 	max_ambience_cooldown = 220 SECONDS
 
 /area/lavaland/surface/outdoors
-	name = "Просторы Лаваленда"
+	name = "Пустоши Лаваленда"
 	outdoors = TRUE
 
 /area/lavaland/surface/outdoors/unexplored //monsters and ruins spawn here
