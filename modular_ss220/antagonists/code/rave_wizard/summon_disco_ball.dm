@@ -12,11 +12,17 @@
 	action_icon_state = "no_state"
 	action_background_icon_state = "summon_disco"
 	action_icon = 'modular_ss220/antagonists/icons/rave.dmi'
+	var/obj/machinery/jukebox/disco/anchored/indestructible/our_disco
 
 /obj/effect/proc_holder/spell/aoe/conjure/summon_disco/cast(list/targets, mob/living/user = usr)
-	..()
-	//for(var/obj/machinery/disco/our_disco in summoned_objects)
-
+	if(!our_disco)
+		var/list/summoned_items = ..()
+		if(summoned_items)
+			our_disco = summoned_items[1]
+	else
+		playsound(get_turf(src), cast_sound, 50, 1)
+		our_disco.forceMove(user.loc)
+		playsound(get_turf(user), cast_sound, 50,1)
 
 /datum/spellbook_entry/summon_disco
 	name = "Summon Disco Ball"
