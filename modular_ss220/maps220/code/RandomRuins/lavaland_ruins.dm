@@ -20,3 +20,21 @@
 	suffix = "scp_facility.dmm"
 	cost = 20 // Бесконечная пицца
 	allow_duplicates = FALSE
+
+/datum/map_template/ruin/lavaland/cheesus_temple
+	name = "Церковь Чизуса."
+	id = "cheesus_temple"
+	description = "Перемещенная в результате БС аномалии церковь Чизуза."
+	prefix = "_maps/map_files220/RandomRuins/LavaRuins/"
+	suffix = "cheesus_temple.dmm"
+	cost = 20 // имеется книга призыва сыра
+	always_place = FALSE
+
+/datum/map_template/ruin/lavaland/ash_old
+	name = "Заброшенный лагерь эшей"
+	id = "ash_old"
+	description = "Старый, заброшенный лагерь Эшей."
+	prefix = "_maps/map_files220/RandomRuins/LavaRuins/"
+	suffix = "ash_old.dmm"
+	cost = 25 // В себе имеет платы консоли заключенных и хим раздратчик, так же пнв модуль
+	always_place = FALSE
