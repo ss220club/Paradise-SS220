@@ -4,7 +4,7 @@
 	GLOB.minor_announcement.Announce("Вредоносное программное обеспечение обнаружено в системе контроля шл+юзов. Задействованы протоколы изоляции. Пожалуйста, сохраняйте спокойствие.", "ВНИМАНИЕ: Уязвимость сети.", 'sound/AI/door_runtimes.ogg')
 
 /datum/event/door_runtime/start()
-	for(var/obj/machinery/door/D in GLOB.airlocks)
+	for(var/obj/machinery/door/D as anything in SSmachines.get_machinery_of_type(/obj/machinery/door))
 		if(!is_station_level(D.z))
 			continue
 		INVOKE_ASYNC(D, TYPE_PROC_REF(/obj/machinery/door, hostile_lockdown))

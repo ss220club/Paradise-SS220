@@ -31,8 +31,7 @@
 		/area/station/engineering/engine/supermatter,
 		/area/station/turret_protected/ai)
 	GLOB.minor_announcement.Announce("Обнаружен сбой питания в сети [station_name()]. Все ЛКП были разряжены. Вероятен отказ генератора гравитации.", "ВНИМАНИЕ: Отказ системы питания.", 'sound/AI/attention.ogg')
-	for(var/thing in GLOB.apcs)
-		var/obj/machinery/power/apc/A = thing
+	for(var/obj/machinery/power/apc/A as anything in SSmachines.get_machinery_of_type(/obj/machinery/power/apc))
 		var/area/current_area = get_area(A)
 		if((current_area.type in skipped_areas_apc) || !is_station_level(A.z))
 			continue
@@ -52,8 +51,7 @@
 		GLOB.minor_announcement.Announce("Зафиксирована перегрузка энергосети станции [station_name()]. Инженерному отделу надлежит проверить все замкнувшие ЛКП.", "ВНИМАНИЕ: Сбой системы питания.", 'sound/AI/power_overload.ogg')
 	// break APC_BREAK_PROBABILITY% of all of the APCs on the station
 	var/affected_apc_count = 0
-	for(var/thing in GLOB.apcs)
-		var/obj/machinery/power/apc/A = thing
+	for(var/obj/machinery/power/apc/A as anything in SSmachines.get_machinery_of_type(/obj/machinery/power/apc))
 		var/area/current_area = get_area(A)
 		if((current_area.type in skipped_areas_apc) || !is_station_level(A.z))
 			continue
@@ -68,8 +66,7 @@
 		if(announce)
 			GLOB.minor_announcement.Announce("Все исправные ЛКП на \the [station_name()] были успешно заряжены", "Системы электропитания.", 'sound/AI/power_restore.ogg')
 		var/affected_apc_count = 0
-		for(var/thing in GLOB.apcs)
-			var/obj/machinery/power/apc/A = thing
+		for(var/obj/machinery/power/apc/A as anything in SSmachines.get_machinery_of_type(/obj/machinery/power/apc))
 			var/area/current_area = get_area(A)
 			if(!is_station_level(A.z))
 				continue
@@ -81,8 +78,7 @@
 	if(power_type == 1)	//Repair without charging
 		if(announce)
 			GLOB.minor_announcement.Announce("Все ЛКП на \the [station_name()] были восстановлены.", "Системы электропитания.", 'sound/AI/power_restore.ogg')
-		for(var/thing in GLOB.apcs)
-			var/obj/machinery/power/apc/A = thing
+		for(var/obj/machinery/power/apc/A as anything in SSmachines.get_machinery_of_type(/obj/machinery/power/apc))
 			var/area/current_area = get_area(A)
 			if(!is_station_level(A.z))
 				continue
@@ -93,8 +89,7 @@
 		if(announce)
 			GLOB.minor_announcement.Announce("Все ЛКП на \the [station_name()] были восстановлены и заряжены. Приносим извенения за неудобства.", "Системы электропитания.", 'sound/AI/power_restore.ogg')
 		// repair the APCs and recharge them
-		for(var/thing in GLOB.apcs)
-			var/obj/machinery/power/apc/A = thing
+		for(var/obj/machinery/power/apc/A as anything in SSmachines.get_machinery_of_type(/obj/machinery/power/apc))
 			var/area/current_area = get_area(A)
 			if(!is_station_level(A.z))
 				continue
@@ -107,7 +102,7 @@
 	if(announce)
 		GLOB.minor_announcement.Announce("Все СМЕСы на \the [station_name()] были заряжены. Приносим извенения за неудобства.", "Системы электропитания.", 'sound/AI/power_restore.ogg')
 	// fix all of the SMESs
-	for(var/obj/machinery/power/smes/S in GLOB.machines)
+	for(var/obj/machinery/power/smes/S as anything in SSmachines.get_machinery_of_type(/obj/machinery/power/smes))
 		if(!is_station_level(S.z))
 			continue
 		S.charge = S.capacity

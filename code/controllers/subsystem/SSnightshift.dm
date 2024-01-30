@@ -55,8 +55,7 @@ SUBSYSTEM_DEF(nightshift)
 			announce("Добрый вечер, экипаж. Для снижения энергопотребления и стимуляции циркадных ритмов некоторых видов, освещение на борту станции переведено в ночной режим.")
 		else
 			announce("Доброе утро, экипаж. В связи с наступлением дневного времени освещение на борту станции переведено в дневной режим.")
-	for(var/A in GLOB.apcs)
-		var/obj/machinery/power/apc/APC = A
+	for(var/obj/machinery/power/apc/APC as anything in SSmachines.get_machinery_of_type(/obj/machinery/power/apc))
 		if(is_station_level(APC.z))
 			APC.set_nightshift(active)
 			CHECK_TICK

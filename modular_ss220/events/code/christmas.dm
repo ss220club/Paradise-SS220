@@ -117,7 +117,7 @@ GLOBAL_LIST_EMPTY(possible_gifts)
 // Рождество
 /datum/holiday/xmas/celebrate()
 	// Новогоднее освещение
-	for(var/obj/machinery/light/lights in GLOB.machines)
+	for(var/obj/machinery/light/lights as anything in SSmachines.get_machinery_of_type(/obj/machinery/light))
 		lights.brightness_color = "#FFE6D9"
 		lights.nightshift_light_color = "#FFC399"
 	// Гурлянды
@@ -169,7 +169,7 @@ GLOBAL_LIST_EMPTY(possible_gifts)
 	. = ..()
 	if(CHRISTMAS in SSholiday.holidays)
 		underlays += emissive_appearance(edge_overlay_file, "[smoothing_junction]_lightmask")
-		
+
 /obj/structure/window/full/plasmareinforced/update_overlays()
 	. = ..()
 	if(CHRISTMAS in SSholiday.holidays)

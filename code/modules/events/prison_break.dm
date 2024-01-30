@@ -40,14 +40,14 @@
 		GLOB.minor_announcement.Announce("[pick("Вирус `Gr3y.T1d3`","Вредоносный троян")] обнаружен в подсистеме [(eventDept == "Security")? "заключения":"безопасности"] на [station_name()]. Немедленно обеспечьте безопасность всех затронутых отсеков. Рекомендуется вмешательство ИИ станции.", "ВНИМАНИЕ: Аварийное оповещение [eventDept].")
 
 /datum/event/prison_break/start()
-	for(var/area/A in world)
+	for(var/area/A in GLOB.all_areas)
 		if(is_type_in_list(A,areaType) && !is_type_in_list(A,areaNotType))
 			areas += A
 
 	if(areas && areas.len > 0)
 		var/my_department = "[station_name()] firewall subroutines"
 		var/rc_message = "An unknown malicious program has been detected in the [english_list(areaName)] lighting and airlock control systems at [station_time_timestamp()]. Systems will be fully compromised within approximately three minutes. Direct intervention is required immediately.<br>"
-		for(var/obj/machinery/message_server/MS in GLOB.machines)
+		for(var/obj/machinery/message_server/MS as anything in SSmachines.get_machinery_of_type(/obj/machinery/message_server))
 			MS.send_rc_message("Engineering", my_department, rc_message, "", "", 2)
 		for(var/mob/living/silicon/ai/A in GLOB.player_list)
 			to_chat(A, "<span class='danger'>Malicious program detected in the [english_list(areaName)] lighting and airlock control systems by [my_department].</span>")
