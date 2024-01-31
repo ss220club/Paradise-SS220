@@ -106,7 +106,7 @@
 
 /datum/mutation/disability/blindness
 	name = "Blindness"
-	activation_messages = list("Вы ничего не можете увидеть.")
+	activation_messages = list("Кто-то выключил свет?")
 	deactivation_messages = list("Теперь вы можете видеть, если вы этого не заметили...")
 	instability = -GENE_INSTABILITY_MAJOR
 	traits_to_add = list(TRAIT_BLIND)
