@@ -413,7 +413,7 @@
 			return FALSE
 		if(istype(limb,/obj/item/organ/external/chest))
 			// Bullshit, but prevents being able to instagib someone.
-			to_chat(user, "<span class='warning'>Ты пытаешься положить [the_item.p_their()] [limb] в рот, но он слишком велик, чтобы влезть!</span>")
+			to_chat(user, "<span class='warning'>Ты пытаешься положить [limb] [the_item] в рот, но он слишком велик, чтобы влезть!</span>")
 			revert_cast()
 			return FALSE
 		user.visible_message("<span class='danger'>[user] начинает напихивать [the_item]'s [limb.name] в [user.p_their()] открытый рот!</span>")
