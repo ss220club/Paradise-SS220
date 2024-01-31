@@ -16,10 +16,11 @@
 // + не нашёл звука шелеста листьев, подставил звук копания земли
 /obj/effect/decal/sakura_leaves/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/cultivator))
+		var/obj/item/shovel/S // так нужно, чтобы обращаться к звуку лопаты ниже
 		var/obj/item/cultivator/C = I
 		user.visible_message("<span class='notice'>[user] is clearing leaves from the ground [src]...</span>", "<span class='notice'>You begin clearing leaves from the ground [src]...</span>", "<span class='warning'>You hear a sound of leaves rustling.</span>")
-		playsound(src, /obj/item/shovel.usesound, 50, 1)
-		if(!do_after(user, 50 * I.toolspeed, target = src))
+		playsound(src, S.usesound, 50, 1)
+		if(!do_after(user, 50 * C.toolspeed, target = src))
 			return
 		user.visible_message("<span class='notice'>[user] clears leaves from the ground [src]!</span>", "<span class='notice'>You clear  from the ground [src]!</span>")
 		qdel(src)

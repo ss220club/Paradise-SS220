@@ -22,11 +22,17 @@
 	return ..()
 
 // нужен метод, который удаляет анимацию, если родительское дерево было уничтожено
+/obj/effect/blossom/proc/delete_blossom(turf/T)
 
 // нужен метод, который спавнит в тайле дерева /obj/effect/decal/sakura_leaves,
 // если анимация цветения была активной хотя бы 5 минут
 // + в тайле ещё нет декали sakura_leaves
 // + тайл на является /turf/simulated/floor/grass/sakura
+/obj/effect/blossom/proc/make_sakura_leaves(turf/T)
+	if(!locate(/obj/effect/decal/sakura_leaves, T) && !locate(/turf/simulated/floor/grass/sakura, T))
+		return
+	addtimer(CALLBACK(src, PROC_REF(delete_blossom)), 5 MINUTES)
+	new /obj/effect/decal/sakura_leaves(T, src)
 
 // нужен метод, который превращает тайл под анимацией в /turf/simulated/floor/grass/sakura,
 // если а) анимация работала 15 минут, б) тайл под анимацией - это grass или jungle grass
