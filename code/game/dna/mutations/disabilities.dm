@@ -181,7 +181,7 @@
 
 /datum/mutation/disability/lisp
 	name = "Lisp"
-	desc = "Интересно, как это происходит?"
+	desc = "Интерешно, как это проишходит?"
 	activation_messages = list("Что-то здесь не так.")
 	deactivation_messages = list("Теперь вы чувствуете в себе силы произносить согласные звуки.")
 
