@@ -82,9 +82,8 @@ SUBSYSTEM_DEF(air)
 	if(length(active_turfs))
 		throw_error_on_active_roundstart_turfs()
 
-	var/list/atmospheric_machinery = SSmachines.get_machinery_of_type(/obj/machinery/atmospherics)
-	setup_atmos_machinery(atmospheric_machinery)
-	setup_pipenets(atmospheric_machinery)
+	setup_atmos_machinery()
+	setup_pipenets()
 
 	for(var/obj/machinery/atmospherics/A in machinery_to_construct)
 		A.initialize_atmos_network()
@@ -351,10 +350,10 @@ SUBSYSTEM_DEF(air)
 			ET.excited = 1
 			. += ET
 
-/datum/controller/subsystem/air/proc/setup_atmos_machinery(list/machines_to_init)
+/datum/controller/subsystem/air/proc/setup_atmos_machinery()
 	var/watch = start_watch()
 	log_startup_progress("Initializing atmospherics machinery...")
-	var/count = _setup_atmos_machinery(machines_to_init)
+	var/count = _setup_atmos_machinery(SSmachines.get_machinery_of_type(/obj/machinery/atmospherics))
 	log_startup_progress("Initialized [count] atmospherics machines in [stop_watch(watch)]s.")
 
 // this underscored variant is so that we can have a means of late initing
@@ -372,15 +371,15 @@ SUBSYSTEM_DEF(air)
 /datum/controller/subsystem/air/proc/setup_pipenets(list/pipes)
 	var/watch = start_watch()
 	log_startup_progress("Initializing pipe networks...")
-	var/count = _setup_pipenets(pipes)
+	var/count = _setup_pipenets(SSmachines.get_machinery_of_type(/obj/machinery/atmospherics))
 	log_startup_progress("Initialized [count] pipenets in [stop_watch(watch)]s.")
 
 // An underscored wrapper that exists for the same reason
 // the machine init wrapper does
 /datum/controller/subsystem/air/proc/_setup_pipenets(list/pipes)
 	var/count = 0
-	for(var/obj/machinery/atmospherics/machine in pipes)
-		machine.build_network()
+	for(var/obj/machinery/atmospherics/pipe in pipes)
+		pipe.build_network()
 		count++
 	return count
 
