@@ -38,7 +38,7 @@
 
 /datum/mutation/disability/epilepsy/on_life(mob/living/carbon/human/H)
 	if((prob(1) && !H.IsParalyzed()))
-		H.visible_message("<span class='danger'>[H] Начинается приступ!</span>","<span class='alert'>У вас начался приступ!</span>")
+		H.visible_message("<span class='danger'>У [H] начинается приступ!</span>","<span class='alert'>У вас начался приступ!</span>")
 		H.Paralyse(20 SECONDS)
 		H.Jitter(2000 SECONDS)
 
