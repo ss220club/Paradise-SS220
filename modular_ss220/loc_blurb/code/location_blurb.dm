@@ -39,7 +39,7 @@
 	else
 		viewers = list(viewers)
 
-	for(var/client/viewer as anything in viewers)
+	for(var/client/viewer in viewers)
 		viewer.screen += src
 
 	appear()
@@ -96,7 +96,7 @@
 /obj/screen/text/blurb/proc/remove_from_viewers(list/client/viewers)
 	PRIVATE_PROC(TRUE)
 
-	for(var/client/viewer as anything in viewers)
+	for(var/client/viewer in viewers)
 		viewer.screen -= src
 
 	qdel(src)
