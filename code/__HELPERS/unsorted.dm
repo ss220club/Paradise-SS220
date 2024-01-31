@@ -689,7 +689,7 @@ Returns 1 if the chain up to the area contains the given typepath
 //Returns: all the areas in the world
 /proc/return_areas()
 	var/list/area/areas = list()
-	for(var/area/A in GLOB.all_areas)
+	for(var/area/A as anything in GLOB.all_areas)
 		areas += A
 	return areas
 

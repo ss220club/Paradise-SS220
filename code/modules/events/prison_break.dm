@@ -40,7 +40,7 @@
 		GLOB.minor_announcement.Announce("[pick("Вирус `Gr3y.T1d3`","Вредоносный троян")] обнаружен в подсистеме [(eventDept == "Security")? "заключения":"безопасности"] на [station_name()]. Немедленно обеспечьте безопасность всех затронутых отсеков. Рекомендуется вмешательство ИИ станции.", "ВНИМАНИЕ: Аварийное оповещение [eventDept].")
 
 /datum/event/prison_break/start()
-	for(var/area/A in GLOB.all_areas)
+	for(var/area/A as anything in GLOB.all_areas)
 		if(is_type_in_list(A,areaType) && !is_type_in_list(A,areaNotType))
 			areas += A
 

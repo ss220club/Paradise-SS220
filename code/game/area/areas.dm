@@ -79,6 +79,7 @@
 	var/area/area_limited_icon_smoothing
 
 /area/New(loc, ...)
+	GLOB.all_areas += src // SS220 - ADD
 	if(!there_can_be_many) // Has to be done in New else the maploader will fuck up and find subtypes for the parent
 		GLOB.all_unique_areas[type] = src
 	..()
@@ -88,7 +89,7 @@
 	if(is_station_level(z))
 		RegisterSignal(SSsecurity_level, COMSIG_SECURITY_LEVEL_CHANGED, PROC_REF(on_security_level_update))
 
-	GLOB.all_areas += src
+	// GLOB.all_areas += src SS220 REMOVE
 	icon_state = ""
 	layer = AREA_LAYER
 	uid = ++global_uid

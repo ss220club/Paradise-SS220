@@ -13,7 +13,7 @@
 
 /datum/event/headcrabs/start()
 	var/list/availableareas = list()
-	for(var/area/station/maintenance/A in world)
+	for(var/area/station/maintenance/A in GLOB.all_areas)
 		availableareas += A
 	var/area/randomarea = pick(availableareas)
 	var/list/turf/simulated/floor/turfs = list()

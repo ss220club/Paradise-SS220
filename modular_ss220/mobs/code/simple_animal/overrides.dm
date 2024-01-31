@@ -68,7 +68,7 @@
 	death_sound = 'modular_ss220/mobs/sound/creatures/legion_death.ogg'
 
 /mob/living/simple_animal/hostile/megafauna/legion/death(gibbed)
-	for(var/area/lavaland/L in world)
+	for(var/area/lavaland/L in GLOB.all_areas)
 		SEND_SOUND(L, sound('modular_ss220/mobs/sound/creatures/legion_death_far.ogg'))
 	. = ..()
 
