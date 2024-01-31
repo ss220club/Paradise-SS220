@@ -403,7 +403,7 @@
 		var/mob/living/carbon/human/H = the_item
 		var/obj/item/organ/external/limb = H.get_organ(user.zone_selected)
 		if(!istype(limb))
-			to_chat(user, "<span class='warning'>Ты не можешь съесть эту часть их тела!</span>")
+			to_chat(user, "<span class='warning'>Ты не можешь съесть эту часть тела!</span>")
 			revert_cast()
 			return FALSE
 		if(istype(limb,/obj/item/organ/external/head))
