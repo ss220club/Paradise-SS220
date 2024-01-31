@@ -388,7 +388,7 @@
 /datum/mutation/disability/speech/swedish
 	name = "Swedish"
 	desc = "Заставляет языковой центр мозга субъекта формировать предложения своеобразным образом, напоминающим древнескандинавский стиль."
-	activation_messages = list("Вы чувствуете себя шведом, как бы это не звучало.")
+	activation_messages = list("Ты чувствуешь себя по-шведски, как бы это не звучало.")
 	deactivation_messages = list("Ощущение шведскости проходит.")
 
 /datum/mutation/disability/speech/swedish/New()
