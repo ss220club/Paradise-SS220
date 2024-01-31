@@ -15,7 +15,7 @@
 	set name = "Respawn"
 	set category = "OOC"
 
-	if(!GLOB.configuration.general.respawn_enabled && !check_rights(R_ADMIN|R_MENTOR))
+	if(!GLOB.configuration.general.respawn_enabled && !check_rights(R_ADMIN))
 		to_chat(usr, span_warning("Respawning is disabled."))
 		return
 
@@ -26,7 +26,7 @@
 	var/deathtime = world.time - timeofdeath
 	if(isobserver(src))
 		var/mob/dead/observer/G = src
-		if(!HAS_TRAIT(G, TRAIT_RESPAWNABLE) && !check_rights(R_ADMIN|R_MENTOR))
+		if(!HAS_TRAIT(G, TRAIT_RESPAWNABLE) && !check_rights(R_ADMIN))
 			to_chat(usr, span_warning("You currently do not have respawnability!"))
 			return
 
@@ -40,7 +40,7 @@
 		pluralcheck = "[deathtimeminutes] minutes and"
 	var/deathtimeseconds = round((deathtime - deathtimeminutes * 600) / 10,1)
 
-	if(deathtimeminutes < GLOB.configuration.ss220_misc.respawn_delay && !check_rights(R_ADMIN|R_MENTOR))
+	if(deathtimeminutes < GLOB.configuration.ss220_misc.respawn_delay && !check_rights(R_ADMIN))
 		to_chat(usr, span_notice("You have been dead for[pluralcheck] [deathtimeseconds] second\s."))
 		to_chat(usr, span_warning("You must wait [GLOB.configuration.ss220_misc.respawn_delay] minutes to respawn!"))
 		return
