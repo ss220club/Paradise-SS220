@@ -24,7 +24,7 @@
 /datum/map_template/ruin/lavaland/cheesus_temple
 	name = "Церковь Чизуса."
 	id = "cheesus_temple"
-	description = "Перенесенная в результате БС аномалии церковь Чизуза."
+	description = "Перенесённая в результате БС аномалии церковь Чизуза."
 	prefix = "_maps/map_files220/RandomRuins/LavaRuins/"
 	suffix = "cheesus_temple.dmm"
 	cost = 20 // имеется книга призыва сыра
