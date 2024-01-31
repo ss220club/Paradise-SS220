@@ -59,7 +59,7 @@
 
 /datum/mutation/disability/clumsy
 	name = "Clumsiness"
-	activation_messages = list("Вы чувствуете головокружение.")
+	activation_messages = list("Вы чувствуете легкомысленность.")
 	deactivation_messages = list("К вам возвращается контроль над вашими движениями.")
 	instability = -GENE_INSTABILITY_MINOR
 	traits_to_add = list(TRAIT_CLUMSY)
