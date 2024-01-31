@@ -93,7 +93,7 @@
 
 /datum/mutation/disability/nervousness
 	name = "Nervousness"
-	activation_messages = list("Вы чувствуете нервозность.")
+	activation_messages = list("Вы начинаете нервничать.")
 	deactivation_messages = list("Вы чувствуете себя гораздно спокойнее.")
 
 /datum/mutation/disability/nervousness/New()
