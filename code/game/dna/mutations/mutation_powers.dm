@@ -287,7 +287,7 @@
 	clothes_req = FALSE
 	stat_allowed = CONSCIOUS
 
-	selection_activated_message		= "<span class='notice'>Твой разум становится холодным. Нажмите на цель, чтобы применить заклинание.</span>"
+	selection_activated_message		= "<span class='notice'>Твой разум становится холодным. Нажмите на цель, чтобы применить способность.</span>"
 	selection_deactivated_message	= "<span class='notice'>Ваш разум возвращается в норму.</span>"
 	invocation_type = "none"
 	var/list/compatible_mobs = list(/mob/living/carbon/human)
