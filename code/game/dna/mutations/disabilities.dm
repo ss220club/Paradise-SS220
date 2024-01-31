@@ -162,7 +162,7 @@
 
 /datum/mutation/disability/nearsighted
 	name = "Nearsightedness"
-	activation_messages = list("Ваши глаза чувствуют себя странно...")
+	activation_messages = list("Всё вокруг стало мутным...")
 	deactivation_messages = list("Теперь вы можете четко видеть")
 	instability = -GENE_INSTABILITY_MODERATE
 	traits_to_add = list(TRAIT_NEARSIGHT)
