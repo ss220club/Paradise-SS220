@@ -3,13 +3,14 @@
 	desc = "Классический музыкальный автомат."
 	icon = 'modular_ss220/jukebox/icons/jukebox.dmi'
 	icon_state = "jukebox"
+	base_icon_state = "jukebox"
 	atom_say_verb =  "states"
+	anchored = TRUE
 	density = TRUE
 	idle_power_consumption = 10
 	active_power_consumption = 100
 	max_integrity = 200
 	integrity_failure = 100
-	req_access = list(ACCESS_BAR)
 	/// Cooldown between "Error" sound effects being played
 	COOLDOWN_DECLARE(jukebox_error_cd)
 	/// Cooldown between being allowed to play another song
@@ -18,18 +19,20 @@
 	var/song_timerid
 	/// The actual music player datum that handles the music
 	var/datum/jukebox/music_player
+	/// From which folder to load music
+	var/music_folder = "config/jukebox_music/sounds/"
 
 /obj/machinery/jukebox/Initialize(mapload)
 	. = ..()
-	music_player = new(src)
+	music_player = new(src, music_folder)
 
 /obj/machinery/jukebox/Destroy()
 	stop_music()
 	QDEL_NULL(music_player)
 	return ..()
 
-/obj/machinery/disco/wrench_act(mob/user, obj/item/tool)
-	if(music_player.active_song_sound)
+/obj/machinery/jukebox/wrench_act(mob/user, obj/item/tool)
+	if(music_player.active_song_sound || (resistance_flags & INDESTRUCTIBLE))
 		return
 	. = TRUE
 	if(!tool.use_tool(src, user, 0, volume = tool.tool_volume))
@@ -43,10 +46,10 @@
 	playsound(src, 'sound/items/deconstruct.ogg', 50, 1)
 
 /obj/machinery/jukebox/update_icon_state()
-	if(stat & (BROKEN|NOPOWER))
-		icon_state = "[icon_state]-broken"
+	if(stat & (BROKEN))
+		icon_state = "[base_icon_state]_broken"
 	else
-		icon_state = "[icon_state][music_player.active_song_sound ? "-active" : null]"
+		icon_state = "[base_icon_state][music_player.active_song_sound ? "-active" : null]"
 
 /obj/machinery/jukebox/update_overlays()
 	. = ..()
@@ -141,7 +144,7 @@
 
 	music_player.start_music()
 	change_power_mode(ACTIVE_POWER_USE)
-	update_appearance(UPDATE_ICON_STATE)
+	update_icon()
 	if(!music_player.sound_loops)
 		song_timerid = addtimer(CALLBACK(src, PROC_REF(stop_music)), music_player.selection.song_length, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_DELETE_ME)
 	return TRUE
@@ -154,14 +157,11 @@
 
 	if(!QDELING(src))
 		COOLDOWN_START(src, jukebox_song_cd, 10 SECONDS)
-		playsound(src,'sound/machines/terminal_off.ogg',50,TRUE)
+		playsound(src,'sound/machines/terminal_off.ogg', 50, TRUE)
 		change_power_mode(IDLE_POWER_USE)
-		update_appearance(UPDATE_ICON_STATE)
+		update_icon()
 	return TRUE
 
 /obj/machinery/jukebox/process()
 	if(!is_operational())
 		stop_music()
-
-/obj/machinery/jukebox/disco/anchored/indestructible
-	anchored = TRUE

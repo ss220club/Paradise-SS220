@@ -31,7 +31,7 @@
 
 	/// Volume of the songs played. Also serves as the max volume.
 	/// Do not set directly, use set_new_volume() instead.
-	VAR_PROTECTED/volume = 50
+	VAR_PROTECTED/volume = 100
 
 	/// Range at which the sound plays to players, can also be a view "XxY" string
 	VAR_PROTECTED/sound_range
@@ -42,14 +42,17 @@
 	/// Whether the music loops when done.
 	/// If FALSE, you must handle ending music yourself.
 	var/sound_loops = FALSE
+	/// Path to music folder
+	var/songs_path
 
-/datum/jukebox/New(atom/new_parent)
+/datum/jukebox/New(atom/new_parent, songs_path)
 	if(!ismovable(new_parent) && !isturf(new_parent))
 		stack_trace("[type] created on non-turf or non-movable: [new_parent ? "[new_parent] ([new_parent.type])" : "null"])")
 		qdel(src)
 		return
 
 	parent = new_parent
+	src.songs_path = songs_path
 
 	if(isnull(sound_range))
 		sound_range = world.view
@@ -98,10 +101,10 @@
 	var/static/list/config_songs
 	if(isnull(config_songs))
 		config_songs = list()
-		var/list/tracks = flist("config/jukebox_music/sounds/")
+		var/list/tracks = flist(songs_path)
 		for(var/track_file in tracks)
 			var/datum/track/new_track = new()
-			new_track.song_path = file("config/jukebox_music/sounds/[track_file]")
+			new_track.song_path = file("[songs_path + track_file]")
 			var/list/track_data = splittext(track_file, "+")
 			if(length(track_data) != 3)
 				continue
