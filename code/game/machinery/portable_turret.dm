@@ -71,7 +71,8 @@
 	var/initial_eprojectile = null
 	/// What non-lethal mode projectile with the turret start with?
 	var/initial_projectile = null
-
+	/// Assoc of targets, currently processed by turret targeting system as `target_priority => list(targets)`
+	var/list/targets_being_processed
 
 /obj/machinery/porta_turret/Initialize(mapload)
 	. = ..()
@@ -86,9 +87,12 @@
 	spark_system.attach(src)
 
 	setup()
+	AddComponent(/datum/component/proximity_monitor, scan_range)
 
 /obj/machinery/porta_turret/Destroy()
 	QDEL_NULL(spark_system)
+	if(targets_being_processed)
+		targets_being_processed = null
 	return ..()
 
 /obj/machinery/porta_turret/centcom/Initialize(mapload)
@@ -98,109 +102,32 @@
 	req_access = list(ACCESS_CENT_SPECOPS)
 	one_access = FALSE
 
-/obj/machinery/porta_turret/proc/setup()
-	var/obj/item/gun/energy/E = new installation	//All energy-based weapons are applicable
-	var/obj/item/ammo_casing/shottype = E.ammo_type[1]
+/obj/machinery/porta_turret/process()
+	if(!enabled || (stat & (NOPOWER|BROKEN)))
+		if(!always_up)
+			pop_down()
+		return
 
-	projectile = shottype.projectile_type
-	eprojectile = projectile
-	shot_sound = shottype.fire_sound
-	eshot_sound = shot_sound
+	if(!LAZYLEN(targets_being_processed))
+		return
 
-	weapon_setup(installation)
+	if(process_targets(LAZYACCESS(targets_being_processed, TURRET_PRIMARY_TARGET), TURRET_PRIMARY_TARGET))
+		return
 
-/obj/machinery/porta_turret/proc/weapon_setup(guntype)
-	switch(guntype)
-		if(/obj/item/gun/energy/laser/practice)
-			lethal_is_configurable = FALSE
-			iconholder = 1
-			eprojectile = /obj/item/projectile/beam
+	if(process_targets(LAZYACCESS(targets_being_processed, TURRET_SECONDARY_TARGET), TURRET_SECONDARY_TARGET))
+		return
 
-		if(/obj/item/gun/energy/laser/retro)
-			iconholder = 1
+	pop_down()
 
-		if(/obj/item/gun/energy/laser/captain)
-			iconholder = 1
+/obj/machinery/porta_turret/HasProximity(atom/movable/AM)
+	add_target(AM)
 
-		if(/obj/item/gun/energy/lasercannon)
-			iconholder = 1
+/obj/machinery/porta_turret/on_assess_perp(mob/living/carbon/human/perp)
+	if((check_access || attacked) && !allowed(perp))
+		//if the turret has been attacked or is angry, target all non-authorized personnel, see req_access
+		return 10
 
-		if(/obj/item/gun/energy/taser)
-			lethal_is_configurable = FALSE
-			eprojectile = /obj/item/projectile/beam
-			eshot_sound = 'sound/weapons/laser.ogg'
-
-		if(/obj/item/gun/energy/gun)
-			eprojectile = /obj/item/projectile/beam	//If it has, going to kill mode
-			eshot_sound = 'sound/weapons/laser.ogg'
-			egun = 1
-
-		if(/obj/item/gun/energy/gun/nuclear)
-			eprojectile = /obj/item/projectile/beam	//If it has, going to kill mode
-			eshot_sound = 'sound/weapons/laser.ogg'
-			egun = 1
-
-		if(/obj/item/gun/energy/gun/turret)
-			eprojectile = /obj/item/projectile/beam	//If it has, going to copypaste mode
-			eshot_sound = 'sound/weapons/laser.ogg'
-			egun = 1
-
-		if(/obj/item/gun/energy/pulse/turret)
-			eprojectile = /obj/item/projectile/beam/pulse/hitscan
-			eshot_sound = 'sound/weapons/pulse.ogg'
-	if(initial_eprojectile)
-		eprojectile = initial_eprojectile
-	if(initial_projectile)
-		projectile = initial_projectile
-
-GLOBAL_LIST_EMPTY(turret_icons)
-/obj/machinery/porta_turret/update_icon_state()
-	if(!GLOB.turret_icons)
-		GLOB.turret_icons = list()
-		GLOB.turret_icons["open"] = image(icon, "openTurretCover")
-
-	underlays.Cut()
-	underlays += GLOB.turret_icons["open"]
-
-	if(stat & BROKEN)
-		icon_state = "destroyed_target_prism"
-	else if(raised || raising)
-		if(has_power() && enabled)
-			if(iconholder)
-				//lasers have a orange icon
-				icon_state = "orange_target_prism"
-			else
-				//almost everything has a blue icon
-				icon_state = "target_prism"
-		else
-			icon_state = "grey_target_prism"
-	else
-		icon_state = "turretCover"
-
-/obj/machinery/porta_turret/proc/HasController()
-	var/area/A = get_area(src)
-	return A && A.turret_controls.len > 0
-
-/obj/machinery/porta_turret/proc/access_is_configurable()
-	return targetting_is_configurable && !HasController()
-
-/obj/machinery/porta_turret/proc/isLocked(mob/user)
-	if(HasController())
-		return TRUE
-	if(isrobot(user) || isAI(user))
-		if(ailock)
-			to_chat(user, "<span class='notice'>There seems to be a firewall preventing you from accessing this device.</span>")
-			return TRUE
-		else
-			return FALSE
-	if(isobserver(user))
-		if(user.can_admin_interact())
-			return FALSE
-		else
-			return TRUE
-	if(locked)
-		return TRUE
-	return FALSE
+	return ..()
 
 /obj/machinery/porta_turret/attack_ai(mob/user)
 	ui_interact(user)
@@ -503,69 +430,163 @@ GLOBAL_LIST_EMPTY(turret_icons)
 		spark_system.start()	//creates some sparks because they look cool
 	update_icon(UPDATE_ICON_STATE)
 
-/obj/machinery/porta_turret/process()
-	//the main machinery process
+/obj/machinery/porta_turret/proc/setup()
+	var/obj/item/gun/energy/E = new installation	//All energy-based weapons are applicable
+	var/obj/item/ammo_casing/shottype = E.ammo_type[1]
 
-	if(stat & (NOPOWER|BROKEN))
-		if(!always_up)
-			//if the turret has no power or is broken, make the turret pop down if it hasn't already
-			pop_down()
+	projectile = shottype.projectile_type
+	eprojectile = projectile
+	shot_sound = shottype.fire_sound
+	eshot_sound = shot_sound
+
+	weapon_setup(installation)
+
+/obj/machinery/porta_turret/proc/weapon_setup(guntype)
+	switch(guntype)
+		if(/obj/item/gun/energy/laser/practice)
+			lethal_is_configurable = FALSE
+			iconholder = 1
+			eprojectile = /obj/item/projectile/beam
+
+		if(/obj/item/gun/energy/laser/retro)
+			iconholder = 1
+
+		if(/obj/item/gun/energy/laser/captain)
+			iconholder = 1
+
+		if(/obj/item/gun/energy/lasercannon)
+			iconholder = 1
+
+		if(/obj/item/gun/energy/taser)
+			lethal_is_configurable = FALSE
+			eprojectile = /obj/item/projectile/beam
+			eshot_sound = 'sound/weapons/laser.ogg'
+
+		if(/obj/item/gun/energy/gun)
+			eprojectile = /obj/item/projectile/beam	//If it has, going to kill mode
+			eshot_sound = 'sound/weapons/laser.ogg'
+			egun = 1
+
+		if(/obj/item/gun/energy/gun/nuclear)
+			eprojectile = /obj/item/projectile/beam	//If it has, going to kill mode
+			eshot_sound = 'sound/weapons/laser.ogg'
+			egun = 1
+
+		if(/obj/item/gun/energy/gun/turret)
+			eprojectile = /obj/item/projectile/beam	//If it has, going to copypaste mode
+			eshot_sound = 'sound/weapons/laser.ogg'
+			egun = 1
+
+		if(/obj/item/gun/energy/pulse/turret)
+			eprojectile = /obj/item/projectile/beam/pulse/hitscan
+			eshot_sound = 'sound/weapons/pulse.ogg'
+	if(initial_eprojectile)
+		eprojectile = initial_eprojectile
+	if(initial_projectile)
+		projectile = initial_projectile
+
+GLOBAL_LIST_EMPTY(turret_icons)
+/obj/machinery/porta_turret/update_icon_state()
+	if(!GLOB.turret_icons)
+		GLOB.turret_icons = list()
+		GLOB.turret_icons["open"] = image(icon, "openTurretCover")
+
+	underlays.Cut()
+	underlays += GLOB.turret_icons["open"]
+
+	if(stat & BROKEN)
+		icon_state = "destroyed_target_prism"
+	else if(raised || raising)
+		if(has_power() && enabled)
+			if(iconholder)
+				//lasers have a orange icon
+				icon_state = "orange_target_prism"
+			else
+				//almost everything has a blue icon
+				icon_state = "target_prism"
+		else
+			icon_state = "grey_target_prism"
+	else
+		icon_state = "turretCover"
+
+/obj/machinery/porta_turret/proc/HasController()
+	var/area/A = get_area(src)
+	return A && A.turret_controls.len > 0
+
+/obj/machinery/porta_turret/proc/access_is_configurable()
+	return targetting_is_configurable && !HasController()
+
+/obj/machinery/porta_turret/proc/isLocked(mob/user)
+	if(HasController())
+		return TRUE
+	if(isrobot(user) || isAI(user))
+		if(ailock)
+			to_chat(user, "<span class='notice'>There seems to be a firewall preventing you from accessing this device.</span>")
+			return TRUE
+		else
+			return FALSE
+	if(isobserver(user))
+		if(user.can_admin_interact())
+			return FALSE
+		else
+			return TRUE
+	if(locked)
+		return TRUE
+	return FALSE
+
+/obj/machinery/porta_turret/proc/add_target(atom/movable/new_target)
+	var/static/list/valid_targets_typecache = typecacheof(list(/obj/mecha, /obj/vehicle, /mob/living, /obj/structure/blob))
+	if(!is_type_in_typecache(new_target, valid_targets_typecache))
 		return
 
-	if(!enabled)
-		if(!always_up)
-			//if the turret is off, make it pop down
-			pop_down()
-		return
+	var/list/targets_to_add = list()
+	if(ismecha(new_target))
+		var/obj/mecha/mecha_target = new_target
+		targets_to_add += mecha_target.occupant
 
-	var/list/targets = list()			//list of primary targets
-	var/list/secondarytargets = list()	//targets that are least important
-	var/static/things_to_scan = typecacheof(list(/obj/mecha, /obj/vehicle, /mob/living, /obj/structure/blob))
+	else if(isvehicle(new_target))
+		for(var/mob/buckled_mob as anything in new_target.buckled_mobs)
+			targets_to_add += buckled_mob
 
-	for(var/A in typecache_filter_list(view(scan_range, src), things_to_scan))
-		var/atom/AA = A
+	else
+		targets_to_add += new_target
 
-		if(AA.invisibility > SEE_INVISIBLE_LIVING) //Let's not do typechecks and stuff on invisible things
+	for(var/atom/movable/target as anything in targets_to_add)
+		var/target_priority = asses_target(target)
+		if(!target_priority || target_priority == TURRET_NOT_TARGET)
 			continue
 
-		if(ismecha(A))
-			var/obj/mecha/ME = A
-			assess_and_assign(ME.occupant, targets, secondarytargets)
+		LAZYDISTINCTADDASSOC(targets_being_processed, target_priority, target)
 
-		else if(istype(A, /obj/vehicle))
-			var/obj/vehicle/T = A
-			if(T.has_buckled_mobs())
-				for(var/m in T.buckled_mobs)
-					var/mob/living/buckled_mob = m
-					assess_and_assign(buckled_mob, targets, secondarytargets)
+/obj/machinery/porta_turret/proc/process_targets(list/targets_to_process, priority)
+	if(!length(targets_to_process) || !priority)
+		return FALSE
 
-		else
-			// Handles living and obj cases
-			assess_and_assign(A, targets, secondarytargets)
+	var/list/filtered_targets = list()
+	for(var/atom/movable/target as anything in targets_to_process)
+		if(get_dist(target, src) > scan_range)
+			LAZYREMOVEASSOC(targets_being_processed, priority, target)
+			continue
 
-	if(!tryToShootAt(targets))
-		if(!tryToShootAt(secondarytargets)) // if no valid targets, go for secondary targets
-			if(!always_up)
-				pop_down() // no valid targets, close the cover
+		if(is_valid_target(target))
+			filtered_targets += target
+
+	return try_to_shoot_at(filtered_targets)
+
+/obj/machinery/porta_turret/proc/is_valid_target(atom/movable/target_to_check)
+	return target_to_check.invisibility <= SEE_INVISIBLE_LIVING && can_see(src, target_to_check, scan_range)
 
 /obj/machinery/porta_turret/proc/in_faction(mob/living/target)
-	if(!(faction in target.faction))
-		return 0
-	return 1
+	return faction in target.faction
 
-/obj/machinery/porta_turret/proc/assess_and_assign(atom/movable/AM, list/targets, list/secondarytargets)
-	var/target_priority
-	if(isliving(AM))
-		target_priority = assess_living(AM)
-	else if(isobj(AM))
-		target_priority = assess_obj(AM)
+/obj/machinery/porta_turret/proc/asses_target(atom/movable/target_to_asses)
+	if(isliving(target_to_asses))
+		return assess_living(target_to_asses)
+	else if(isobj(target_to_asses))
+		return assess_obj(target_to_asses)
 	else
-		CRASH("A non-living and non-obj atom (name:[AM], type:[AM.type]) was considered for turret assessment.")
-	switch(target_priority)
-		if(TURRET_PRIORITY_TARGET)
-			targets += AM
-		if(TURRET_SECONDARY_TARGET)
-			secondarytargets += AM
+		stack_trace("A non-living and non-obj atom (name:[target_to_asses], type:[target_to_asses.type]) was considered for turret assessment.")
+		return TURRET_NOT_TARGET
 
 /obj/machinery/porta_turret/proc/pre_assess_checks(atom/movable/AM)
 	if(!AM)
@@ -587,13 +608,13 @@ GLOBAL_LIST_EMPTY(turret_icons)
 		return TURRET_NOT_TARGET
 
 	if(!emagged && !syndicate && (issilicon(L) || isbot(L)))
-		return (check_borgs && isrobot(L)) ? TURRET_PRIORITY_TARGET : TURRET_NOT_TARGET
+		return (check_borgs && isrobot(L)) ? TURRET_PRIMARY_TARGET : TURRET_NOT_TARGET
 
 	if(L.stat && !emagged)		//if the perp is dead/dying, no need to bother really
 		return TURRET_NOT_TARGET	//move onto next potential victim!
 
 	if(emagged)		// If emagged not even the dead get a rest
-		return L.stat ? TURRET_SECONDARY_TARGET : TURRET_PRIORITY_TARGET
+		return L.stat ? TURRET_SECONDARY_TARGET : TURRET_PRIMARY_TARGET
 
 	if(in_faction(L))
 		return TURRET_NOT_TARGET
@@ -601,7 +622,7 @@ GLOBAL_LIST_EMPTY(turret_icons)
 	if(check_synth)	//If it's set to attack all non-silicons, target them!
 		if(IS_HORIZONTAL(L))
 			return TURRET_SECONDARY_TARGET
-		return TURRET_PRIORITY_TARGET
+		return TURRET_PRIMARY_TARGET
 
 	if(iscuffed(L)) // If the target is handcuffed, leave it alone
 		return TURRET_NOT_TARGET
@@ -610,7 +631,7 @@ GLOBAL_LIST_EMPTY(turret_icons)
 		return check_anomalies ? TURRET_SECONDARY_TARGET : TURRET_NOT_TARGET
 
 	if(isalien(L)) // Xenos are dangerous
-		return check_anomalies ? TURRET_PRIORITY_TARGET	: TURRET_NOT_TARGET
+		return check_anomalies ? TURRET_PRIMARY_TARGET	: TURRET_NOT_TARGET
 
 	if(ishuman(L))	//if the target is a human, analyze threat level
 		if(assess_perp(L, check_access, check_weapons, check_records, check_arrest) < 4)
@@ -622,7 +643,7 @@ GLOBAL_LIST_EMPTY(turret_icons)
 		else
 			return TURRET_NOT_TARGET
 
-	return TURRET_PRIORITY_TARGET	//if the perp has passed all previous tests, congrats, it is now a "shoot-me!" nominee
+	return TURRET_PRIMARY_TARGET	//if the perp has passed all previous tests, congrats, it is now a "shoot-me!" nominee
 
 /obj/machinery/porta_turret/proc/assess_obj(obj/O)
 	if(pre_assess_checks(O) == TURRET_PREASSESS_INVALID)
@@ -633,15 +654,27 @@ GLOBAL_LIST_EMPTY(turret_icons)
 
 	return TURRET_NOT_TARGET
 
-/obj/machinery/porta_turret/proc/tryToShootAt(list/mob/living/targets)
-	if(targets.len && last_target && (last_target in targets) && target(last_target))
-		return 1
+/obj/machinery/porta_turret/proc/try_to_shoot_at(list/targets)
+	while(length(targets))
+		var/target_to_shoot_at = pick_target_to_shoot_at(targets)
+		if(!target_to_shoot_at)
+			return FALSE
 
-	while(targets.len > 0)
-		var/mob/living/M = pick(targets)
-		targets -= M
-		if(target(M))
-			return 1
+		if(target(target_to_shoot_at))
+			return TRUE
+		else
+			targets -= target_to_shoot_at
+
+	return FALSE
+
+/obj/machinery/porta_turret/proc/pick_target_to_shoot_at(list/targets)
+	if(!length(targets))
+		return null
+
+	if(last_target && (last_target in targets))
+		return last_target
+
+	return pick(targets)
 
 /obj/machinery/porta_turret/proc/check_pop_up()
 	/// Whitelist to determine what objects can be put over turrets while letting them deploy
@@ -708,13 +741,6 @@ GLOBAL_LIST_EMPTY(turret_icons)
 	set_angle(0)
 	update_icon(UPDATE_ICON_STATE)
 
-/obj/machinery/porta_turret/on_assess_perp(mob/living/carbon/human/perp)
-	if((check_access || attacked) && !allowed(perp))
-		//if the turret has been attacked or is angry, target all non-authorized personnel, see req_access
-		return 10
-
-	return ..()
-
 /obj/machinery/porta_turret/proc/set_raised_raising(is_raised, is_raising)
 	raised = is_raised
 	raising = is_raising
@@ -722,15 +748,18 @@ GLOBAL_LIST_EMPTY(turret_icons)
 
 /obj/machinery/porta_turret/proc/target(mob/living/target)
 	if(disabled)
-		return
-	if(target)
-		last_target = target
-		if(has_cover)
-			check_pop_up()				//pop the turret up if it's not already up.
-		// Set angle
-		set_angle(get_angle(src, target))
-		shootAt(target)
-		return TRUE
+		return FALSE
+
+	if(!target)
+		return FALSE
+
+	last_target = target
+	if(has_cover)
+		check_pop_up()
+
+	set_angle(get_angle(src, target))
+	shootAt(target)
+	return TRUE
 
 /obj/machinery/porta_turret/proc/shootAt(mob/living/target)
 	if(!raised && has_cover) //the turret has to be raised in order to fire - makes sense, right?
@@ -1187,10 +1216,11 @@ GLOBAL_LIST_EMPTY(turret_icons)
 	var/icon_state_active = "syndieturret1"
 	var/icon_state_destroyed = "syndieturret2"
 
-/obj/machinery/porta_turret/inflatable_turret/assess_and_assign(atom/movable/AM, list/targets, list/secondarytargets)
-	if(AM.UID() == owner_uid)
-		return
-	. = ..()
+/obj/machinery/porta_turret/inflatable_turret/is_valid_target(atom/movable/target_to_check)
+	if(target_to_check.UID() == owner_uid)
+		return FALSE
+
+	return ..()
 
 /obj/machinery/porta_turret/inflatable_turret/setup()
 	return
