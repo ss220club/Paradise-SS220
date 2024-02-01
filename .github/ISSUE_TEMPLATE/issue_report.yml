@@ -12,8 +12,8 @@
 #
 name: "Issue Report"
 #title: "[Bug]: " | if you want to have a have it automatically say [Bug] when they start the form
-description: "File an issue report to make us aware of a bug or issue."
-#labels: [Bug] | Auto labels the post, as we do not use this, commenting out, purely as reference
+description: "Доложите о проблемах или багах, что бы мы могли ех исправить."
+#labels: "Баг"
 
 body:
   - type: markdown
@@ -25,8 +25,6 @@ body:
     attributes:
       label: BYOND Version
       description: "На какой версии BYOND встретился баг.(Если уверены, что не связано - можно пропустить.)"
-    validations:
-      required: false
 
   - type: textarea
     id: description
