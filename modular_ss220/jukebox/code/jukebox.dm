@@ -162,6 +162,9 @@
 		update_icon()
 	return TRUE
 
-/obj/machinery/jukebox/process()
-	if(!is_operational())
-		stop_music()
+/obj/machinery/jukebox/obj_break()
+	if(stat & BROKEN)
+		return
+	stat |= BROKEN
+	idle_power_consumption = 0
+	stop_music()

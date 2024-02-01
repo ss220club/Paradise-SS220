@@ -45,14 +45,14 @@
 	/// Path to music folder
 	var/songs_path
 
-/datum/jukebox/New(atom/new_parent, songs_path)
+/datum/jukebox/New(atom/new_parent, new_songs_path)
 	if(!ismovable(new_parent) && !isturf(new_parent))
 		stack_trace("[type] created on non-turf or non-movable: [new_parent ? "[new_parent] ([new_parent.type])" : "null"])")
 		qdel(src)
 		return
 
 	parent = new_parent
-	src.songs_path = songs_path
+	songs_path = new_songs_path
 
 	if(isnull(sound_range))
 		sound_range = world.view

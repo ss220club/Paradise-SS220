@@ -18,32 +18,31 @@
 /obj/machinery/jukebox/drum_red
 	name = "\improper красный барабан"
 	desc = "Крутые барабаны от какой-то группы."
-	icon_state = "drum_red"
+	icon_state = "drum_red_unanchored"
 	base_icon_state = "drum_red"
 	anchored = FALSE
 	music_folder = "config/jukebox_music/drum_music/"
 
 /obj/machinery/jukebox/drum_red/wrench_act()
 	. = ..()
-	icon_state = "[base_icon_state][anchored ? "_anchored" : null]"
+	icon_state = "[base_icon_state][anchored ? null : "_unanchored"]"
 
 /obj/machinery/jukebox/drum_red/update_icon_state()
 	if(stat & (BROKEN))
 		icon_state = "[base_icon_state]_broken"
 	else
-		icon_state = "[base_icon_state]_anchored[music_player.active_song_sound ? "-active" : null]"
+		icon_state = "[base_icon_state][music_player.active_song_sound ? "-active" : null]"
 
 /obj/machinery/jukebox/drum_red/drum_yellow
 	name = "\improper желтый барабан"
-	icon_state = "drum_yellow"
+	icon_state = "drum_yellow_unanchored"
 	base_icon_state = "drum_yellow"
 
 /obj/machinery/jukebox/drum_red/drum_blue
 	name = "\improper синий барабан"
-	icon_state = "drum_blue"
+	icon_state = "drum_blue_unanchored"
 	base_icon_state = "drum_blue"
 
 /datum/supply_packs/misc/bigband/New()
 	. = ..()
-
 	contains |= /obj/machinery/jukebox/drum_red
