@@ -57,8 +57,8 @@
 	if(isnull(sound_range))
 		sound_range = world.view
 		var/list/worldviewsize = getviewsize(sound_range)
-		x_cutoff = ceil(worldviewsize[1] * 1.25 / 2) // * 1.25 gives us some extra range to fade out with
-		z_cutoff = ceil(worldviewsize[2] * 1.25 / 2) // and / 2 is because world view is the whole screen, and we want the centre
+		x_cutoff = CEILING((worldviewsize[1] * 1.25) / 2, 1) // * 1.25 gives us some extra range to fade out with
+		z_cutoff = CEILING((worldviewsize[2] * 1.25) / 2, 1) // and / 2 is because world view is the whole screen, and we want the centre
 
 	if(requires_range_check)
 		var/static/list/connections = list(COMSIG_ATOM_ENTERED = PROC_REF(check_new_listener))
@@ -153,8 +153,8 @@
 		return
 	sound_range = new_range
 	var/list/worldviewsize = getviewsize(sound_range)
-	x_cutoff = ceil(worldviewsize[1] / 2)
-	z_cutoff = ceil(worldviewsize[2] / 2)
+	x_cutoff = CEILING(worldviewsize[1] / 2, 1)
+	z_cutoff = CEILING(worldviewsize[2] / 2, 1)
 	update_all()
 
 /**
