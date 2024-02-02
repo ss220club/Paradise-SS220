@@ -47,7 +47,7 @@
 
 // В /SetChoices() определяем нужно ли пользователю создавать дополнительную кнопку
 /datum/character_save/proc/check_available_extra_job_prefs(client/C)
-	if(C.donator_tier)
+	if(C.donator_level)
 		return TRUE
 	return FALSE
 
