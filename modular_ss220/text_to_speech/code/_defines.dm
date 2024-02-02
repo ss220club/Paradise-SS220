@@ -70,3 +70,4 @@
 		"Капитан, вы уверены что хотите назначить клоуна на должность главы персонала?",\
 	)
 
+#define COMSIG_ATOM_CHANGE_TTS_SEED "atom_change_tts_seed"
