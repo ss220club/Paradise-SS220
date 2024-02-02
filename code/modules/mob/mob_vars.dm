@@ -252,3 +252,9 @@
 	var/next_click_modifier = 1
 	/// Tracks the open UIs that a mob has, used in TGUI for various things, such as updating UIs
 	var/list/open_uis = list()
+
+	///Allows a datum to intercept all click calls this mob is the so
+	var/datum/click_intercept
+
+	///List of datums that this has which make use of MouseMove()
+	var/list/mousemove_intercept_objects

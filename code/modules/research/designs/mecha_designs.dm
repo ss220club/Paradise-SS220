@@ -196,3 +196,14 @@
 	materials = list(MAT_GLASS = 1000)
 	build_path = /obj/item/circuitboard/mecha/reticence/targeting
 	category = list("Exosuit Modules")
+
+// Pod
+/datum/design/spacepod_main
+	name = "Circuit Design (Space Pod Mainboard)"
+	desc = "Allows for the construction of a spacepod mainboard."
+	id = "spacepod_main"
+	req_tech = list("programming" = 1) //RMNZ: Change req_tech
+	build_type = IMPRINTER
+	materials = list(MAT_GLASS = 1000)
+	build_path = /obj/item/circuitboard/mecha/pod
+	category = list("Exosuit Modules")
