@@ -35,6 +35,8 @@
 
 /mob/hear_say(list/message_pieces, verb, italics, mob/speaker, sound/speech_sound, sound_vol, sound_frequency, use_voice)
 	. = ..()
+	if(!client)
+		return
 	if(!can_hear())
 		return
 
@@ -45,6 +47,8 @@
 
 /mob/hear_radio(list/message_pieces, verb = "says", part_a, part_b, mob/speaker = null, hard_to_hear = 0, vname = "", atom/follow_target, check_name_against)
 	. = ..()
+	if(!client)
+		return
 	if(!can_hear())
 		return
 
@@ -55,6 +59,8 @@
 
 /mob/hear_holopad_talk(list/message_pieces, verb, mob/speaker, obj/effect/overlay/holo_pad_hologram/H)
 	. = ..()
+	if(!client)
+		return
 	if(!can_hear())
 		return
 	var/message_tts = combine_message_tts(message_pieces, speaker)
@@ -78,8 +84,14 @@
 
 /atom/atom_say(message)
 	. = ..()
-	if(!message || !src.get_tts_seed())
+	if(!message)
 		return
-	var/tts_seed = src.get_tts_seed()
+	var/tts_seed
 	for(var/mob/M in get_mobs_in_view(7, src))
+		if(!M.client)
+			continue
+		if(!tts_seed)
+			tts_seed = src.get_tts_seed()
+		if(!tts_seed)
+			return
 		INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(tts_cast), src, M, message, tts_seed, TRUE)

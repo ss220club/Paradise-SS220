@@ -4,11 +4,9 @@
 
 /datum/component/tts_component/RegisterWithParent()
 	RegisterSignal(parent, COMSIG_ATOM_CHANGE_TTS_SEED, PROC_REF(change_tts_seed))
-	RegisterSignal(parent, COMSIG_ATOM_GET_TTS_SEED, PROC_REF(return_tts_seed))
 
 /datum/component/tts_component/UnregisterFromParent()
 	UnregisterSignal(parent, COMSIG_ATOM_CHANGE_TTS_SEED)
-	UnregisterSignal(parent, COMSIG_ATOM_GET_TTS_SEED)
 
 /datum/component/tts_component/Initialize(new_tts_seed)
 	. = ..()
@@ -98,6 +96,18 @@
 
 // Component usage
 
+/client/view_var_Topic(href, href_list, hsrc)
+	. = ..()
+	if(href_list["changetts"])
+		if(!check_rights(R_ADMIN))
+			return
+		var/atom/A = locateUID(href_list["changetts"])
+		A.change_tts_seed()
+
+/atom/vv_get_dropdown()
+	. = ..()
+	.["Change TTS"] = "?_src_=vars;changetts=[UID()]"
+
 /atom/proc/add_tts_component()
 	return
 
@@ -105,10 +115,17 @@
 	. = ..()
 	add_tts_component()
 
+// TODO: Do it better?
 /atom/proc/get_tts_seed()
-	return SEND_SIGNAL(src, COMSIG_ATOM_GET_TTS_SEED)
+	var/datum/component/tts_component/tts_component = GetComponent(/datum/component/tts_component)
+	if(tts_component)
+		return tts_component.tts_seed
 
 /atom/proc/change_tts_seed(mob/chooser, override, fancy_voice_input_tgui)
+	if(!get_tts_seed())
+		if(alert(chooser, "Отсутствует TTS компонент. Создать?", "Изменение TTS", "Да", "Нет") == "Нет")
+			return
+		AddComponent(/datum/component/tts_component, "Angel")
 	SEND_SIGNAL(src, COMSIG_ATOM_CHANGE_TTS_SEED, chooser, override, fancy_voice_input_tgui)
 
 /client/create_response_team_part_1(new_gender, new_species, role, turf/spawn_location)

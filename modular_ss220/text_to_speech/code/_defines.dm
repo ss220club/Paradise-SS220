@@ -71,4 +71,3 @@
 	)
 
 #define COMSIG_ATOM_CHANGE_TTS_SEED "atom_change_tts_seed"
-#define COMSIG_ATOM_GET_TTS_SEED "atom_get_tts_seed"
