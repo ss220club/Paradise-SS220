@@ -4,4 +4,4 @@
 		var/effect = SOUND_EFFECT_MEGAPHONE
 		if(isrobot(user))
 			effect = SOUND_EFFECT_MEGAPHONE_ROBOT
-		INVOKE_ASYNC(GLOBAL_PROC, /proc/tts_cast, user, M, message, user.tts_seed, FALSE, effect)
+		INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(tts_cast), user, M, message, user.get_tts_seed(), FALSE, effect)

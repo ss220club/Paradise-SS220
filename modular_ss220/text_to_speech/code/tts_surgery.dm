@@ -41,7 +41,7 @@
 	var/obj/item/organ/external/head/head = target.get_organ(target_zone)
 	user.visible_message(span_warning("[user]'s hand slips, tearing [target_vocal] in [target]'s throat with [tool]!"), \
 						span_warning("Your hand slips, tearing [target_vocal] in [target]'s throat with [tool]!"))
-	target.tts_seed = SStts220.get_random_seed(target)
+	target.AddComponent(/datum/component/tts_component, SStts220.get_random_seed(target))
 	target.apply_damage(10, BRUTE, head, sharp = TRUE)
 	return FALSE
 

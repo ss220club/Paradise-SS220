@@ -14,7 +14,7 @@
 /datum/character_save/copy_to(mob/living/carbon/human/character)
 	. = ..()
 	if(tts_seed)
-		character.tts_seed = tts_seed
+		character.AddComponent(/datum/component/tts_component, tts_seed)
 		character.dna.tts_seed_dna = tts_seed
 
 /datum/ui_module/tts_seeds_explorer

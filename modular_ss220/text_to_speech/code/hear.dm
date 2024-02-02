@@ -29,7 +29,6 @@
 		msg += (piece + " ")
 	return trim(msg)
 
-
 /mob/combine_message(list/message_pieces, verb, mob/speaker, always_stars)
 	. = ..()
 	return replace_characters(., list("+"))
@@ -42,7 +41,7 @@
 	var/message_tts = combine_message_tts(message_pieces, speaker)
 	var/effect = isrobot(speaker) ? SOUND_EFFECT_ROBOT : SOUND_EFFECT_NONE
 	var/traits = TTS_TRAIT_RATE_FASTER
-	INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(tts_cast), speaker, src, message_tts, speaker.tts_seed, TRUE, effect, traits)
+	INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(tts_cast), speaker, src, message_tts, speaker.get_tts_seed(), TRUE, effect, traits)
 
 /mob/hear_radio(list/message_pieces, verb = "says", part_a, part_b, mob/speaker = null, hard_to_hear = 0, vname = "", atom/follow_target, check_name_against)
 	. = ..()
@@ -52,7 +51,7 @@
 	if(src != speaker || isrobot(src) || isAI(src))
 		var/effect = isrobot(speaker) ? SOUND_EFFECT_RADIO_ROBOT : SOUND_EFFECT_RADIO
 		var/message_tts = combine_message_tts(message_pieces, speaker, always_stars = hard_to_hear)
-		INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(tts_cast), src, src, message_tts, speaker.tts_seed, FALSE, effect, null, null, 'modular_ss220/text_to_speech/code/sound/radio_chatter.ogg')
+		INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(tts_cast), src, src, message_tts, speaker.get_tts_seed(), FALSE, effect, null, null, 'modular_ss220/text_to_speech/code/sound/radio_chatter.ogg')
 
 /mob/hear_holopad_talk(list/message_pieces, verb, mob/speaker, obj/effect/overlay/holo_pad_hologram/H)
 	. = ..()
@@ -60,13 +59,13 @@
 		return
 	var/message_tts = combine_message_tts(message_pieces, speaker)
 	var/effect = isrobot(speaker) ? SOUND_EFFECT_RADIO_ROBOT : SOUND_EFFECT_RADIO
-	INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(tts_cast), H, src, message_tts, speaker.tts_seed, TRUE, effect)
+	INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(tts_cast), H, src, message_tts, speaker.get_tts_seed(), TRUE, effect)
 
 /datum/announcer/Message(message, garbled_message, receivers, garbled_receivers)
 	var/tts_seed = "Glados"
 	if(GLOB.ai_list.len)
 		var/mob/living/silicon/ai/AI = pick(GLOB.ai_list)
-		tts_seed = AI.tts_seed
+		tts_seed = AI.get_tts_seed()
 	var/message_tts = message
 	var/garbled_message_tts = garbled_message
 	message = replace_characters(message, list("+"))
@@ -77,3 +76,10 @@
 	for(var/mob/M in garbled_receivers)
 		INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(tts_cast), null, M, garbled_message_tts, tts_seed, FALSE, SOUND_EFFECT_NONE, TTS_TRAIT_RATE_MEDIUM)
 
+/atom/atom_say(message)
+	. = ..()
+	if(!message || !src.get_tts_seed())
+		return
+	var/tts_seed = src.get_tts_seed()
+	for(var/mob/M in get_mobs_in_view(7, src))
+		INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(tts_cast), src, M, message, tts_seed, TRUE)

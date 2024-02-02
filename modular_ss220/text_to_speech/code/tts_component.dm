@@ -4,9 +4,11 @@
 
 /datum/component/tts_component/RegisterWithParent()
 	RegisterSignal(parent, COMSIG_ATOM_CHANGE_TTS_SEED, PROC_REF(change_tts_seed))
+	RegisterSignal(parent, COMSIG_ATOM_GET_TTS_SEED, PROC_REF(return_tts_seed))
 
 /datum/component/tts_component/UnregisterFromParent()
 	UnregisterSignal(parent, COMSIG_ATOM_CHANGE_TTS_SEED)
+	UnregisterSignal(parent, COMSIG_ATOM_GET_TTS_SEED)
 
 /datum/component/tts_component/Initialize(new_tts_seed)
 	. = ..()
@@ -15,6 +17,10 @@
 	tts_seed = new_tts_seed
 	if(!tts_seed)
 		tts_seed = get_random_tts_seed_by_gender()
+
+/datum/component/tts_component/proc/return_tts_seed()
+	SIGNAL_HANDLER
+	return tts_seed
 
 /datum/component/tts_component/proc/select_tts_seed(mob/chooser, silent_target = FALSE, override = FALSE, fancy_voice_input_tgui = FALSE)
 	if(!chooser)
@@ -61,8 +67,8 @@
 	return new_tts_seed
 
 /datum/component/tts_component/proc/change_tts_seed(mob/chooser, override = FALSE, fancy_voice_input_tgui = FALSE)
-	SIGNAL_HANDLER
-	//set waitfor = FALSE
+	SIGNAL_HANDLER_DOES_SLEEP
+	set waitfor = FALSE
 	var/new_tts_seed = select_tts_seed(chooser = chooser, override = override, fancy_voice_input_tgui = fancy_voice_input_tgui)
 	if(!new_tts_seed)
 		return null
@@ -98,6 +104,9 @@
 /atom/Initialize(mapload, ...)
 	. = ..()
 	add_tts_component()
+
+/atom/proc/get_tts_seed()
+	return SEND_SIGNAL(src, COMSIG_ATOM_GET_TTS_SEED)
 
 /atom/proc/change_tts_seed(mob/chooser, override, fancy_voice_input_tgui)
 	SEND_SIGNAL(src, COMSIG_ATOM_CHANGE_TTS_SEED, chooser, override, fancy_voice_input_tgui)

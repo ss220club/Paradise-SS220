@@ -9,4 +9,4 @@
 
 /mob/living/carbon/human/change_dna(datum/dna/new_dna, include_species_change, keep_flavor_text)
 	. = ..()
-	tts_seed = dna.tts_seed_dna
+	AddComponent(/datum/component/tts_component, dna.tts_seed_dna)
