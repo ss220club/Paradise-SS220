@@ -216,6 +216,15 @@
 		if(V)
 			stat("Total Blood", "[V.bloodtotal]")
 			stat("Usable Blood", "[V.bloodusable]")
+	if(istype(loc, /obj/spacepod)) // Spacepods!
+		var/obj/spacepod/S = loc
+		// If we want numbers instead of percents
+		// [S.cell ? "[round(S.cell.charge,0.1)]/[S.cell.maxcharge] KJ" : "NONE"]
+		stat(null, "Spacepod Charge: [S.cell ? "[round((S.cell.charge / S.cell.maxcharge) * 100, 0.1)]%" : "No cell detected"]")
+		// Same here
+		// [round((S.obj_integrity / S.max_integrity) * 100, 0.1)]
+		stat(null, "Spacepod Integrity: [!S.obj_integrity ? "0" : "[round(S.obj_integrity,0.1)]/[S.max_integrity]"]")
+		stat(null, "Spacepod Velocity: [round(sqrt(S.velocity_x*S.velocity_x+S.velocity_y*S.velocity_y), 0.1)] m/s")
 
 /mob/living/carbon/human/ex_act(severity)
 	if(status_flags & GODMODE)

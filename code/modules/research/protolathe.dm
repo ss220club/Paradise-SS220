@@ -22,7 +22,8 @@ Note: Must be placed west/left of and R&D console to function.
 		"Miscellaneous",
 		"Power",
 		"Stock Parts",
-		"Weapons"
+		"Weapons",
+		"Spacepod Designs"
 	)
 
 /obj/machinery/r_n_d/protolathe/Initialize(mapload)

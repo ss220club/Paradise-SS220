@@ -16,6 +16,13 @@ GLOBAL_LIST_INIT(rod_recipes, list (
 		new /datum/stack_recipe("chainlink fence door", /obj/structure/fence/door, 10, time = 1 SECONDS, one_per_turf = TRUE, on_floor = TRUE),
 		new /datum/stack_recipe("chainlink fence end", /obj/structure/fence/end, 3, time = 1 SECONDS, one_per_turf = TRUE, on_floor = TRUE),
 		)),
+	null,
+	new /datum/stack_recipe_list("octagon spacepod...", list(
+		new /datum/stack_recipe("aft starboard pod frame", /obj/item/pod_parts/pod_frame/aft_starboard, 15, time = 1 SECONDS, one_per_turf = TRUE, on_floor = TRUE),
+		new /datum/stack_recipe("aft port pod frame", /obj/item/pod_parts/pod_frame/aft_port, 15, time = 1 SECONDS, one_per_turf = TRUE, on_floor = TRUE),
+		new /datum/stack_recipe("fore port pod frame", /obj/item/pod_parts/pod_frame/fore_port, 15, time = 1 SECONDS, one_per_turf = TRUE, on_floor = TRUE),
+		new /datum/stack_recipe("fore starboard pod frame", /obj/item/pod_parts/pod_frame/fore_starboard, 15, time = 1 SECONDS, one_per_turf = TRUE, on_floor = TRUE),
+		)),
 	))
 
 /obj/item/stack/rods
