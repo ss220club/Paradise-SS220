@@ -177,7 +177,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		pilot = M
 		LAZYOR(M.mousemove_intercept_objects, src)
 		M.click_intercept = src
-		// GrantActions(M)
+		GrantActions(M)
 		// addverbs(M)
 	else if(passengers.len < max_passengers)
 		passengers += M
