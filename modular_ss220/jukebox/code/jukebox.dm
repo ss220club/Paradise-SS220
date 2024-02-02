@@ -158,7 +158,7 @@
 	music_player.startTime = 0
 
 	if(!QDELING(src))
-		COOLDOWN_START(src, jukebox_song_cd, 10 SECONDS)
+		COOLDOWN_START(src, jukebox_song_cd, 5 SECONDS)
 		playsound(src,'sound/machines/terminal_off.ogg', 50, TRUE)
 		change_power_mode(IDLE_POWER_USE)
 		update_icon()

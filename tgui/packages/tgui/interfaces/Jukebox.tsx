@@ -49,12 +49,14 @@ export const Jukebox = (props, context) => {
   const song_selected: Song | undefined = songs.find(
     (song) => song.name === track_selected
   );
+
   const formatTime = (seconds) => {
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = seconds % 60;
     const formattedTime = `${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
     return formattedTime;
   };
+
   const trackTimer = (
     <Box textAlign="center">
       {active
@@ -104,7 +106,7 @@ export const Jukebox = (props, context) => {
                   <Stack.Item>
                     <ProgressBar.Countdown
                       start={startTime}
-                      current={worldTime - startTime}
+                      current={!looping ? worldTime : endTime}
                       end={endTime}
                     >
                       {trackTimer}
@@ -159,14 +161,21 @@ export const Jukebox = (props, context) => {
                     mr={1}
                     ml={1}
                     size={2}
-                    color={volume >= 25 ? 'red' : 'green'}
+                    color={
+                      volume <= 25
+                        ? 'green'
+                        : volume <= 50
+                          ? ''
+                          : volume <= 75
+                            ? 'orange'
+                            : 'red'
+                    }
                     value={volume}
                     unit="%"
                     minValue={0}
                     maxValue={100}
                     step={1}
                     stepPixelSize={5}
-                    disabled={active}
                     onDrag={(e, value) =>
                       act('set_volume', {
                         volume: value,
