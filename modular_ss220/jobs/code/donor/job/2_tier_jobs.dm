@@ -1,9 +1,15 @@
 /datum/job/donor/barber
 	title = "Barber"
+	flag = JOB_BARBER
+	total_positions = 1
+	spawn_positions = 1
 	ru_title = "Парикмахер"
+	alt_titles = list("Парикмахер", "Стилист", "Хозяин Студии Красоты", "Визажист", "Куафёр", "Цирюльник", "Брадобрей")
 	access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS)
 	minimal_access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS)
-	hidden_from_job_prefs = TRUE
+	selection_color = "#558758"
+	hidden_from_job_prefs = FALSE
+	donator_tier = 2
 	outfit = /datum/outfit/job/donor/barber
 	important_information = "Ваша должность нацелена на свободный РП-отыгрыш и не разрешает нарушать правила сервера. \
 	\nВы ПАРИКМАХЕР. Данная роль нацелена для наведения красоты на головах людей через добровольные начинания."
@@ -24,11 +30,17 @@
 
 /datum/job/donor/bath
 	title = "Bath"
+	flag = JOB_BATH
+	total_positions = 1
+	spawn_positions = 1
 	ru_title = "Банщик"
+	alt_titles = list("Банщик", "Хозяин Бани", "Парильщик", "Пармейстер")
 	relate_job = "Bath"
 	access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS)
 	minimal_access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS)
-	hidden_from_job_prefs = TRUE
+	selection_color = "#558758"
+	hidden_from_job_prefs = FALSE
+	donator_tier = 2
 	outfit = /datum/outfit/job/donor/bath
 	important_information = "Ваша должность нацелена на свободный РП-отыгрыш и не разрешает нарушать правила сервера. \
 	\nВы БАНЩИК. Данная роль нацелена для создания душной атмосферы в замкнутых помещениях, РП-разговоров, встреч."
@@ -59,11 +71,17 @@
 
 /datum/job/donor/casino
 	title = "Casino"
+	flag = JOB_CASINO
+	total_positions = 3
+	spawn_positions = 3
 	ru_title = "Крупье"
 	relate_job = "Bar"
+	alt_titles = list("Крупье", "Дилер", "Слот-Ассистент", "Пит-Босс", )
 	access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS, ACCESS_THEATRE, ACCESS_HYDROPONICS, ACCESS_BAR)
 	minimal_access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS, ACCESS_THEATRE, ACCESS_HYDROPONICS, ACCESS_BAR)
-	hidden_from_job_prefs = TRUE
+	selection_color = "#558758"
+	hidden_from_job_prefs = FALSE
+	donator_tier = 2
 	outfit = /datum/outfit/job/donor/casino
 	important_information = "Ваша должность нацелена на свободный РП-отыгрыш и не разрешает нарушать правила сервера. \
 	\nВы КРУПЬЕ. Данная роль нацелена на отыгрыш работника казино. Раздача карт, азарт - всё это ваша стезя. Организуйте свое лучшее казино."
@@ -90,11 +108,17 @@
 
 /datum/job/donor/waiter
 	title = "Waiter"
+	flag = JOB_WAITER
+	total_positions = 3
+	spawn_positions = 3
 	ru_title = "Официант"
 	relate_job = "Bar"
+	alt_titles = list("Официант", "Хост Сервиса")
 	access = list(ACCESS_MAINT_TUNNELS, ACCESS_THEATRE, ACCESS_HYDROPONICS, ACCESS_BAR, ACCESS_KITCHEN)
 	minimal_access = list(ACCESS_MAINT_TUNNELS, ACCESS_THEATRE, ACCESS_HYDROPONICS, ACCESS_BAR, ACCESS_KITCHEN)
-	hidden_from_job_prefs = TRUE
+	selection_color = "#558758"
+	hidden_from_job_prefs = FALSE
+	donator_tier = 2
 	outfit = /datum/outfit/job/donor/waiter
 	important_information = "Ваша должность нацелена на свободный РП-отыгрыш и не разрешает нарушать правила сервера. \
 	\nВы ОФИЦИАНТ. Данная роль нацелена на принеси-подай-иди-не мешай. Обеспечьте атмосферу настоящего ресторана."
@@ -120,11 +144,17 @@
 
 /datum/job/donor/acolyte
 	title = "Acolyte"
+	flag = JOB_ACOLYTE
+	total_positions = 5
+	spawn_positions = 5
 	ru_title = "Послушник"
+	alt_titles = list("Послушник", "Монах", "Приспешник", "Последователь", "Обрядчик")
 	relate_job = "Chaplain"
 	access = list(ACCESS_CHAPEL_OFFICE, ACCESS_MAINT_TUNNELS)
 	minimal_access = list(ACCESS_CHAPEL_OFFICE, ACCESS_MAINT_TUNNELS)
-	hidden_from_job_prefs = TRUE
+	selection_color = "#558758"
+	hidden_from_job_prefs = FALSE
+	donator_tier = 2
 	outfit = /datum/outfit/job/donor/acolyte
 	important_information = "Ваша должность нацелена на свободный РП-отыгрыш и не разрешает нарушать правила сервера. \
 	\nВы ПОСЛУШНИК. Данная роль нацелена на богослужение и помощь священнику. Несите слово священника, он ваш пастырь. \
@@ -145,13 +175,19 @@
 
 /datum/job/donor/deliverer
 	title = "Deliverer"
+	flag = JOB_DELIVERER
+	total_positions = 1
+	spawn_positions = 1
 	ru_title = "Доставщик"
+	alt_titles = list("Доставщик", "Почтальон", "Переносчик")
 	relate_job = "Cargo Technician"
 	supervisors = "главой персонала и квартирмейстером"
 	department_head = list("Head of Personnel", "Quartermaster")
 	access = list(ACCESS_MAINT_TUNNELS, ACCESS_MAILSORTING, ACCESS_CARGO, ACCESS_MINT, ACCESS_MINERAL_STOREROOM)
 	minimal_access = list(ACCESS_MAINT_TUNNELS, ACCESS_CARGO, ACCESS_MAILSORTING, ACCESS_MINERAL_STOREROOM)
-	hidden_from_job_prefs = TRUE
+	selection_color = "#558758"
+	hidden_from_job_prefs = FALSE
+	donator_tier = 2
 	outfit = /datum/outfit/job/donor/deliverer
 	important_information = "Ваша должность нацелена на свободный РП-отыгрыш и не разрешает нарушать правила сервера. \
 	\nВы ДОСТАВЩИК. Данная роль нацелена на доставку товаров от одного отдела до другого. Ваше призвание - доставлять ресурсы от отдела до отдела или еду от самого ШЕФа."
@@ -183,27 +219,32 @@
 	dufflebag = /obj/item/storage/backpack/duffel/engineering
 
 
-// /datum/outfit/job/donor/deliverer/pre_equip(mob/living/carbon/human/H, visualsOnly)
-// 	. = ..()
-// 	if(H.mind && H.mind.role_alt_title)
-// 		switch(H.mind.role_alt_title)
-// 			if("Почтальон")
-// 				uniform = /obj/item/clothing/under/misc/mailman
-// 				shoes = /obj/item/clothing/shoes/laceup
-// 				head = /obj/item/clothing/head/mailman
-// 			if("Доставщик")
-// 				uniform = /obj/item/clothing/under/rank/cargo/deliveryboy
-// 				head = /obj/item/clothing/head/soft/deliverysoft
+/datum/outfit/job/donor/deliverer/pre_equip(mob/living/carbon/human/H, visualsOnly)
+	. = ..()
+	if(H.mind && H.mind.role_alt_title)
+		switch(H.mind.role_alt_title)
+			if("Почтальон")
+				uniform = /obj/item/clothing/under/misc/mailman
+				shoes = /obj/item/clothing/shoes/laceup
+				head = /obj/item/clothing/head/mailman
+			if("Доставщик")
+				uniform = /obj/item/clothing/under/rank/cargo/deliveryboy
+				head = /obj/item/clothing/head/soft/deliverysoft
 
 
 /datum/job/donor/wrestler
 	title = "Wrestler"
+	flag = JOB_BOXER
+	total_positions = 4
+	spawn_positions = 4
 	ru_title = "Борец"
-	alt_titles = list("Рефери", "Тренер", "Боксёр")
+	alt_titles = list("Борец", "Рефери", "Тренер", "Боксёр", "Спортсмен")
 	relate_job = "Art"
 	access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS, ACCESS_THEATRE, ACCESS_RC_ANNOUNCE)
 	minimal_access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS, ACCESS_THEATRE, ACCESS_RC_ANNOUNCE)
-	hidden_from_job_prefs = TRUE
+	selection_color = "#558758"
+	hidden_from_job_prefs = FALSE
+	donator_tier = 2
 	outfit = /datum/outfit/job/donor/wrestler
 	important_information = "Ваша должность нацелена на свободный РП-отыгрыш и не разрешает нарушать правила сервера. \
 	\nВы БОРЕЦ. Данная роль нацелена на дружественные соревнования. Найдите этот дух соревнования среди экипажа и обеспечьте зрелища!"
@@ -240,12 +281,17 @@
 
 /datum/job/donor/painter
 	title = "Painter"
+	flag = JOB_PAINTER
+	total_positions = 1
+	spawn_positions = 1
 	ru_title = "Художник"
-	alt_titles = list("Художник", "Творец", "Искусствовед", "Пейзажист", "Фотореалист")
+	alt_titles = list("Художник", "Творец", "Искусствовед", "Пейзажист", "Фотореалист", "Перфоманс-Артист")
 	relate_job = "Art"
 	access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS, ACCESS_THEATRE)
 	minimal_access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS, ACCESS_THEATRE)
-	hidden_from_job_prefs = TRUE
+	selection_color = "#558758"
+	hidden_from_job_prefs = FALSE
+	donator_tier = 2
 	outfit = /datum/outfit/job/donor/painter
 	important_information = "Ваша должность нацелена на свободный РП-отыгрыш и не разрешает нарушать правила сервера. \
 	\nВы ХУДОЖНИК. Данная роль нацелена на демонстрацию вашей тонкой натуры. Найдите себе красильщик полов, создайте искусство! \
@@ -279,11 +325,17 @@
 
 /datum/job/donor/musican
 	title = "Musician"
+	flag = JOB_MUSICIAN
+	total_positions = 1
+	spawn_positions = 1
 	ru_title = "Музыкант"
+	alt_titles = list("Музыкант", "Маэстро", "Гитарист", "Барабанщик", "Пианист", "Волынщик", "Скрипач", "Скоморох", "Саксофонист", "Солист", "Певец", "Гастролер")
 	relate_job = "Art"
 	access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS, ACCESS_THEATRE)
 	minimal_access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS, ACCESS_THEATRE)
-	hidden_from_job_prefs = TRUE
+	selection_color = "#558758"
+	hidden_from_job_prefs = FALSE
+	donator_tier = 2
 	outfit = /datum/outfit/job/donor/musican
 	important_information = "Ваша должность нацелена на свободный РП-отыгрыш и не разрешает нарушать правила сервера. \
 	\nВы МУЗЫКАНТ. Данная роль нацелена на создание музыкальной атмосферы. Приласкайте уши экипажа."
@@ -314,12 +366,17 @@
 
 /datum/job/donor/actor
 	title = "Actor"
+	flag = JOB_ACTOR
+	total_positions = 5
+	spawn_positions = 5
 	ru_title = "Актер"
-	alt_titles = list("Артист", "Стендапер", "Комедиант", "Эстрадный Артист")
+	alt_titles = list("Актер", "Артист", "Стендапер", "Комедиант", "Эстрадный Артист")
 	relate_job = "Art"
 	access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS, ACCESS_THEATRE)
 	minimal_access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS, ACCESS_THEATRE)
-	hidden_from_job_prefs = TRUE
+	selection_color = "#558758"
+	hidden_from_job_prefs = FALSE
+	donator_tier = 2
 	outfit = /datum/outfit/job/donor/actor
 	important_information = "Ваша должность нацелена на свободный РП-отыгрыш и не разрешает нарушать правила сервера. \
 	\nВы АКТЕР. Данная роль нацелена на ваше актерское мастерство. Сами вы им стали или ваши родители вас на это натолкнули, \
@@ -364,27 +421,3 @@
 				suit = /obj/item/clothing/suit/draculacoat
 				if(H.gender == FEMALE)
 					uniform = /obj/item/clothing/under/dress/redeveninggown
-
-/datum/job/donor/actor/after_assignment_equip(mob/living/carbon/human/H, assignment)
-	switch(assignment)
-		if("Артист")
-			if(H.w_uniform)
-				H.equip_to_slot(new /obj/item/clothing/under/suit/victsuit/red, SLOT_HUD_JUMPSUIT)
-			if(H.gender == FEMALE)
-				if(H.w_uniform)
-					H.equip_to_slot(new /obj/item/clothing/under/dress/victdress/red, SLOT_HUD_JUMPSUIT)
-				if(H.wear_suit)
-					H.equip_to_slot(new /obj/item/clothing/suit/victcoat/red, SLOT_HUD_OUTER_SUIT)
-		if("Комедиант")
-			if(H.w_uniform)
-				H.equip_to_slot(new /obj/item/clothing/under/costume/jester, SLOT_HUD_JUMPSUIT)
-			if(H.head)
-				H.equip_to_slot(new /obj/item/clothing/head/jester, SLOT_HUD_HEAD)
-		if("Эстрадный Артист")
-			if(H.w_uniform)
-				H.equip_to_slot(new /obj/item/clothing/under/suit/victsuit/redblk, SLOT_HUD_JUMPSUIT)
-			if(H.wear_suit)
-				H.equip_to_slot(new /obj/item/clothing/suit/draculacoat, SLOT_HUD_OUTER_SUIT)
-			if(H.gender == FEMALE)
-				if(H.w_uniform)
-					H.equip_to_slot(new /obj/item/clothing/under/dress/redeveninggown, SLOT_HUD_JUMPSUIT)

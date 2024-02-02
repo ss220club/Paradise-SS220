@@ -1,10 +1,16 @@
 /datum/job/donor/administrator
 	title = "Administrator"
+	flag = JOB_ADMINISTRATOR
+	total_positions = 1
+	spawn_positions = 1
 	ru_title = "Сервис-Администратор"
+	alt_titles = list("Сервис-Администратор", "Сервис-Управитель", "Помпадур", "Сервис-Менеджер")
 	relate_job = "Bar"
 	access = list(ACCESS_THEATRE, ACCESS_LIBRARY, ACCESS_BAR, ACCESS_KITCHEN, ACCESS_HYDROPONICS, ACCESS_MINERAL_STOREROOM, ACCESS_JANITOR)
 	minimal_access = list(ACCESS_THEATRE, ACCESS_LIBRARY, ACCESS_BAR, ACCESS_KITCHEN, ACCESS_HYDROPONICS, ACCESS_MINERAL_STOREROOM, ACCESS_JANITOR)
-	hidden_from_job_prefs = TRUE
+	selection_color = "#63979a"
+	hidden_from_job_prefs = FALSE
+	donator_tier = 3
 	outfit = /datum/outfit/job/donor/administrator
 	important_information = "Ваша должность нацелена на свободный РП-отыгрыш и не разрешает нарушать правила сервера. \
 	\nВы АДМИНИСТРАТОР. Данная роль нацелена для налаживания работы в Отделе Обслуживания. Наладьте производство, \
@@ -38,11 +44,15 @@
 
 /datum/job/donor/tourist_tsf
 	title = "Tourist TSF"
+	flag = JOB_TOURIST_TSF
 	ru_title = "Турист ТСФ"
+	alt_titles = list("Турист ТСФ", "Посетитель ТСФ")
 	relate_job = "Assistant"
 	access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS)
 	minimal_access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS)
-	hidden_from_job_prefs = TRUE
+	selection_color = "#63979a"
+	hidden_from_job_prefs = FALSE
+	donator_tier = 3
 	outfit = /datum/outfit/job/donor/tourist_tsf
 	important_information = "Ваша должность нацелена на свободный РП-отыгрыш и не разрешает нарушать правила сервера. \
 	\nВы ТУРИСТ ТСФ. Вы прибыли сюда для отдыха и возможно для подработок. На вас по прежнему действует КЗ НТ, не смотря на то \
@@ -73,11 +83,15 @@
 
 /datum/job/donor/tourist_ussp
 	title = "Tourist USSP"
+	flag = JOB_TOURIST_USSP
 	ru_title = "Турист СССП"
+	alt_titles = list("Турист СССП", "Посетитель СССП")
 	relate_job = "Assistant"
 	access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS)
 	minimal_access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS)
-	hidden_from_job_prefs = TRUE
+	selection_color = "#63979a"
+	hidden_from_job_prefs = FALSE
+	donator_tier = 3
 	outfit = /datum/outfit/job/donor/tourist_ussp
 	important_information = "Ваша должность нацелена на свободный РП-отыгрыш и не разрешает нарушать правила сервера. \
 	\nВы ТУРИСТ СССП. Вы прибыли сюда для отдыха и возможно для подработок. На вас по прежнему действует КЗ НТ, не смотря на то \
@@ -111,12 +125,17 @@
 
 /datum/job/donor/cleaning_manager
 	title = "Cleaning Manager"
+	flag = JOB_MANAGER_JANITOR
+	total_positions = 2
+	spawn_positions = 2
 	ru_title = "Менеджер по Клинингу"
-	alt_titles = list("Ловец Крыс", "Уборщик I-разряда", "Уборщик II-разряда", "Уборщик III-разряда", "Уборщик IV-разряда", "Уборщик V-разряда")
+	alt_titles = list("Менеджер по Клинингу", "Ловец Крыс", "Уборщик I-разряда", "Уборщик II-разряда", "Уборщик III-разряда", "Уборщик IV-разряда", "Уборщик V-разряда")
 	relate_job = "Janitor"
 	access = list(ACCESS_JANITOR, ACCESS_MAINT_TUNNELS, ACCESS_EXTERNAL_AIRLOCKS, ACCESS_MEDICAL)
 	minimal_access = list(ACCESS_JANITOR, ACCESS_MAINT_TUNNELS, ACCESS_EXTERNAL_AIRLOCKS, ACCESS_MEDICAL)
-	hidden_from_job_prefs = TRUE
+	selection_color = "#63979a"
+	hidden_from_job_prefs = FALSE
+	donator_tier = 3
 	outfit = /datum/outfit/job/donor/cleaning_manager
 	important_information = "Ваша должность нацелена на свободный РП-отыгрыш и не разрешает нарушать правила сервера. \
 	\nВы Менеджер по Клинингу. Вы уборщик этой станции и должны следить за чистотой на ней. Вы давно на этой работе и снабжены лучшим снаряжением для идеальной работы. \
@@ -146,12 +165,17 @@
 
 /datum/job/donor/apprentice
 	title = "Apprentice"
+	flag = JOB_APPRENTICE
+	total_positions = 3
+	spawn_positions = 3
 	ru_title = "Подмастерье"
-	alt_titles = list("Ассистент-Механик", "Ассистент I-го разряда", "Ассистент II-го разряда", "Ассистент III-го разряда", "Ассистент IV-го разряда", "Ассистент V-го разряда")
+	alt_titles = list("Подмастерье", "Ассистент-Механик", "Ассистент I-го разряда", "Ассистент II-го разряда", "Ассистент III-го разряда", "Ассистент IV-го разряда", "Ассистент V-го разряда")
 	relate_job = "Assistant"
 	access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS, ACCESS_CONSTRUCTION, ACCESS_MINERAL_STOREROOM)
 	minimal_access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS, ACCESS_CONSTRUCTION, ACCESS_MINERAL_STOREROOM)
-	hidden_from_job_prefs = TRUE
+	selection_color = "#63979a"
+	hidden_from_job_prefs = FALSE
+	donator_tier = 3
 	outfit = /datum/outfit/job/donor/apprentice
 	important_information = "Ваша должность нацелена на свободный РП-отыгрыш и не разрешает нарушать правила сервера. \
 	\nВы ПОДМАСТЕРЬЕ. Вы ассистент с полномочиями для работы на станции. Построить свою мастерскую или заняться другим полезным для станции и вас делом - ваша стезя. \
@@ -182,12 +206,17 @@
 
 /datum/job/donor/guard
 	title = "Guard"
+	flag = JOB_GUARD
+	total_positions = 1
+	spawn_positions = 1
 	ru_title = "Охранник"
-	alt_titles = list("Сторож Сервиса", "Охранник Сервиса", "Вышибала Сервиса")
+	alt_titles = list("Охранник", "Сторож Сервиса", "Охранник Сервиса", "Вышибала Сервиса")
 	relate_job = "Bar"
 	access = list(ACCESS_MAINT_TUNNELS, ACCESS_BAR, ACCESS_KITCHEN, ACCESS_HYDROPONICS, ACCESS_LIBRARY)
 	minimal_access = list(ACCESS_MAINT_TUNNELS, ACCESS_BAR, ACCESS_KITCHEN, ACCESS_HYDROPONICS, ACCESS_LIBRARY)
-	hidden_from_job_prefs = TRUE
+	selection_color = "#63979a"
+	hidden_from_job_prefs = FALSE
+	donator_tier = 3
 	outfit = /datum/outfit/job/donor/guard
 	important_information = "Ваша должность нацелена на свободный РП-отыгрыш и не разрешает нарушать правила сервера. \
 	\nВы ОХРАННИК. Данная роль нацелена на обеспечение порядка в баре и на кухне. Вы то что отдаляет кухню от хаоса и пьяных ассистентов. \
@@ -214,11 +243,15 @@
 
 /datum/job/donor/migrant
 	title = "Migrant"
+	flag = JOB_MIGRANT
 	ru_title = "Мигрант"
+	alt_titles = list("Мигрант")
 	relate_job = "Assistant"
 	access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS)
 	minimal_access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS)
-	hidden_from_job_prefs = TRUE
+	selection_color = "#63979a"
+	hidden_from_job_prefs = FALSE
+	donator_tier = 3
 	outfit = /datum/outfit/job/donor/migrant
 	important_information = "Ваша должность нацелена на свободный РП-отыгрыш и не разрешает нарушать правила сервера. \
 	\nВы МИГРАНТ. Сами вы прибыли на эту станцию или так вынудили обстоятельства, но вы теперь тут. \
@@ -248,11 +281,14 @@
 
 /datum/job/donor/uncertain
 	title = "Uncertain"
+	flag = JOB_UNCERTAIN
 	ru_title = "Безработный"
-	alt_titles = list("Безработный Ассистент", "Свободный Ассистент", "Отрабатыващий Ассистент", "Ассистент Технических Тоннелей")
+	alt_titles = list("Безработный", "Безработный Ассистент", "Свободный Ассистент", "Отрабатыващий Ассистент", "Ассистент Технических Тоннелей")
 	access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS, ACCESS_CONSTRUCTION)
 	minimal_access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS, ACCESS_CONSTRUCTION)
-	hidden_from_job_prefs = TRUE
+	selection_color = "#63979a"
+	hidden_from_job_prefs = FALSE
+	donator_tier = 3
 	outfit = /datum/outfit/job/donor/uncertain
 	important_information = "Ваша должность нацелена на свободный РП-отыгрыш и не разрешает нарушать правила сервера. \
 	\nВы БЕЗРАБОТНЫЙ. Данная роль нацелена на бездумное брождение по техническим тоннелям. Вас когда-то оставили без работы, \

@@ -22,9 +22,34 @@
 	H.update_action_buttons_icon()
 	return FALSE
 
+/datum/character_save
+	var/extra_jobs_check = FALSE
+
 // OFFICIAL parameters: 17 / HOS, Bart / 400 / 700
 /datum/character_save/SetChoices(mob/user, limit = 18, list/splitJobs = list("Head of Security", "Bartender"), widthPerColumn = 450, height = 700)
 	. = ..()
+
+/datum/character_save/proc/get_split_extra_jobs()
+	return list("Administrator", "Adjutant", "VIP Corporate Guest")
+
+/datum/preferences/process_link(mob/user, list/href_list)
+	if(!user)
+		return
+
+	if(href_list["preference"] == "job")
+		switch(href_list["task"])
+			if("extra_job")
+				active_character.extra_jobs_check = !active_character.extra_jobs_check
+				active_character.SetChoices(user)
+				message_admins("Меняем extra_jobs_check на [active_character.extra_jobs_check]")
+				return TRUE
+	. = ..()
+
+// В /SetChoices() определяем нужно ли пользователю создавать дополнительную кнопку
+/datum/character_save/proc/check_available_extra_job_prefs(client/C)
+	if(C.donator_tier)
+		return TRUE
+	return FALSE
 
 // это копипаст мерзопакости. Я не буду рефакторить это в модуле, я шо, ебанутый?
 // Оно работает и ладно. И я не буду этот комментарий на английский переводить.
@@ -116,14 +141,14 @@
 
 	else if(job_support_high)
 		switch(job_support_high)
-			if(JOB_DONOR_TIER_1)
+			if(JOB_PRISON)
 				if(prob(95))
 					clothes_s = new /icon('icons/mob/clothing/under/color.dmi', "prisoner_s")
 				else
 					clothes_s = new /icon('icons/mob/clothing/under/color.dmi', "prisoner_d_s")
 				clothes_s.Blend(new /icon('icons/mob/clothing/feet.dmi', "orange"), ICON_UNDERLAY)
 
-			if(JOB_DONOR_TIER_2)
+			if(JOB_BARBER, JOB_BATH, JOB_CASINO, JOB_WAITER, JOB_ACOLYTE, JOB_DELIVERER, JOB_BOXER, JOB_PAINTER, JOB_MUSICIAN, JOB_ACTOR)
 				clothes_s = new /icon('icons/mob/clothing/under/civilian.dmi', "barber_s")
 				clothes_s.Blend(new /icon('icons/mob/clothing/feet.dmi', "laceups"), ICON_UNDERLAY)
 				if(prob(70))
@@ -133,7 +158,7 @@
 				else if(backbag == 3 || backbag == 4)
 					clothes_s.Blend(new /icon('icons/mob/clothing/back.dmi', "satchel"), ICON_OVERLAY)
 
-			if(JOB_DONOR_TIER_3)
+			if(JOB_ADMINISTRATOR, JOB_TOURIST_TSF, JOB_TOURIST_USSP, JOB_MANAGER_JANITOR, JOB_APPRENTICE, JOB_GUARD, JOB_MIGRANT, JOB_UNCERTAIN)
 				if(prob(50))
 					clothes_s = new /icon('icons/mob/clothing/under/procedure.dmi', "iaa_s")
 				else
@@ -146,7 +171,7 @@
 				else if(backbag == 3 || backbag == 4)
 					clothes_s.Blend(new /icon('icons/mob/clothing/back.dmi', "satchel"), ICON_OVERLAY)
 
-			if(JOB_DONOR_TIER_4)
+			if(JOB_ADJUTANT, JOB_BUTLER, JOB_MAID, JOB_REPRESENTATIVE_TSF, JOB_REPRESENTATIVE_USSP, JOB_DEALER)
 				clothes_s = new /icon('icons/mob/clothing/under/procedure.dmi', "lawyer_black[g ? "_skirt" : ""]_s")
 				clothes_s.Blend(new /icon('icons/mob/clothing/feet.dmi', "laceups"), ICON_UNDERLAY)
 				if(prob(10))
@@ -158,7 +183,7 @@
 				else if(backbag == 3 || backbag == 4)
 					clothes_s.Blend(new /icon('icons/mob/clothing/back.dmi', "satchel"), ICON_OVERLAY)
 
-			if(JOB_DONOR_TIER_5)
+			if(JOB_VIP_GUEST, JOB_BANKER)
 				clothes_s = new /icon('icons/mob/clothing/under/procedure.dmi', "ntrep[g ? "_skirt" : ""]_s")
 				if(prob(70))
 					clothes_s.Blend(new /icon('icons/mob/clothing/suit.dmi', "suitjacket_black_open"), ICON_OVERLAY)
@@ -172,4 +197,32 @@
 				else if(backbag == 3 || backbag == 4)
 					clothes_s.Blend(new /icon('icons/mob/clothing/back.dmi', "satchel"), ICON_OVERLAY)
 
+			if(JOB_SECURITY_CLOWN)
+				clothes_s = new /icon('modular_ss220/jobs/icons/clothing/mob/uniform.dmi', "security_clown_s")
+				clothes_s.Blend(new /icon('icons/mob/clothing/mask.dmi', "clown"), ICON_UNDERLAY)
+				clothes_s.Blend(new /icon('icons/mob/clothing/feet.dmi', "clown"), ICON_UNDERLAY)
+				if(prob(25))
+					clothes_s.Blend(new /icon('icons/mob/clothing/suit.dmi', "detective"), ICON_OVERLAY)
+					clothes_s.Blend(new /icon('icons/mob/clothing/head.dmi', "detective"), ICON_OVERLAY)
+				else if(prob(25))
+					clothes_s.Blend(new /icon('icons/mob/clothing/suit.dmi', "warden_jacket"), ICON_OVERLAY)
+					clothes_s.Blend(new /icon('icons/mob/clothing/head.dmi', "sechat"), ICON_OVERLAY)
+				else if(prob(50))
+					clothes_s.Blend(new /icon('icons/mob/clothing/suit.dmi', "armor"), ICON_OVERLAY)
+					clothes_s.Blend(new /icon('icons/mob/clothing/head.dmi', "redsoft"), ICON_OVERLAY)
+				if(backbag == 2)
+					clothes_s.Blend(new /icon('icons/mob/clothing/back.dmi', "clownpack"), ICON_OVERLAY)
+				else if(backbag == 3 || backbag == 4)
+					clothes_s.Blend(new /icon('icons/mob/clothing/back.dmi', "satchel-clown"), ICON_OVERLAY)
+
 	return clothes_s
+
+// Костыли с датумами для выставления должностей
+/datum/character_save/proc/get_datum_last_support()
+	return JOBCAT_LAST_SUPPORT
+
+/datum/character_save/proc/get_datum_last_engsec()
+	return JOBCAT_LAST_ENGSEC
+
+/datum/character_save/proc/get_datum_last_medsci()
+	return JOBCAT_LAST_MEDSCI

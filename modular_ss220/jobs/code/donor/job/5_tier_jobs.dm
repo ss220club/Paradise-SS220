@@ -1,11 +1,14 @@
 /datum/job/donor/vip_guest
 	title = "VIP Corporate Guest"
+	flag = JOB_VIP_GUEST
 	ru_title = "VIP Гость"
-	alt_titles = list("VIP Персона", "VIP Гость NT", "VIP Персона NT", "Гость Корпорации NT")
+	alt_titles = list("VIP Гость", "VIP Персона", "VIP Гость NT", "VIP Персона NT", "Гость Корпорации NT")
 	relate_job = "Vip"
 	access = list(ACCESS_MAINT_TUNNELS, ACCESS_LIBRARY, ACCESS_HEADS, ACCESS_RC_ANNOUNCE, ACCESS_EVA)
 	minimal_access = list(ACCESS_MAINT_TUNNELS, ACCESS_LIBRARY, ACCESS_HEADS, ACCESS_RC_ANNOUNCE, ACCESS_EVA)
-	hidden_from_job_prefs = TRUE
+	selection_color = "#9d679d"
+	hidden_from_job_prefs = FALSE
+	donator_tier = 5
 	outfit = /datum/outfit/job/donor/vip_guest
 	important_information = "Ваша должность нацелена на свободный РП-отыгрыш и не разрешает нарушать правила сервера. \
 	\nВы ВИП ПЕРСОНА. Данная роль нацелена на ваше пребывания на станции в качестве особого гостя. К вам особое отношение, \
@@ -38,12 +41,15 @@
 
 /datum/job/donor/banker
 	title = "Banker"
+	flag = JOB_BANKER
 	ru_title = "Банкир"
-	alt_titles = list("Корпорат", "Бизнесмен", "Банкир NT", "Корпорат NT", "Бизнесмен NT")
+	alt_titles = list("Банкир", "Независимый Банкир", "Корпорат", "Бизнесмен", "Банкир NT", "Корпорат NT", "Бизнесмен NT")
 	relate_job = "Vip"
 	access = list(ACCESS_MAINT_TUNNELS, ACCESS_LIBRARY, ACCESS_EVA)
 	minimal_access = list(ACCESS_MAINT_TUNNELS, ACCESS_LIBRARY, ACCESS_EVA)
-	hidden_from_job_prefs = TRUE
+	selection_color = "#9d679d"
+	hidden_from_job_prefs = FALSE
+	donator_tier = 5
 	outfit = /datum/outfit/job/donor/banker
 	important_information = "Ваша должность нацелена на свободный РП-отыгрыш и не разрешает нарушать правила сервера. \
 	\nВы БАНКИР. Вы крайне богаты и нацелены открыть здесь свое дело. Банк, мастерские, возможно нанять собственных работников. \
@@ -82,6 +88,9 @@
 
 /datum/job/donor/seclown
 	title = "Security Clown"
+	flag = JOB_SECURITY_CLOWN
+	total_positions = 1
+	spawn_positions = 1
 	ru_title = "Клоун Службы Безопасности"
 	alt_titles = list("Клоун Службы Безопасности", "Клоун-Детектив", "Клоун-Смотритель", "Хонкектив", "Клоун Кадет")
 	relate_job = "Security Officer"
@@ -90,7 +99,9 @@
 	job_department_flags = DEP_FLAG_SECURITY
 	access = list(ACCESS_CLOWN, ACCESS_THEATRE, ACCESS_MAINT_TUNNELS, ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_BRIG, ACCESS_COURT)
 	minimal_access = list(ACCESS_CLOWN, ACCESS_THEATRE, ACCESS_MAINT_TUNNELS, ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_BRIG, ACCESS_COURT)
-	hidden_from_job_prefs = TRUE
+	selection_color = "#9d679d"
+	hidden_from_job_prefs = FALSE
+	donator_tier = 5
 	outfit = /datum/outfit/job/donor/seclown
 	important_information = "Ваша должность нацелена на свободный РП-отыгрыш и не разрешает нарушать правила сервера. \
 	\nВы КЛОУН СЛУЖБЫ БЕЗОПАСНОСТИ. Данная роль нацелена на обеспечения сотрудников службы безопасности ментальным здоровьем и \
@@ -138,7 +149,9 @@
 
 /datum/outfit/job/donor/seclown/pre_equip(mob/living/carbon/human/H, visualsOnly)
 	. = ..()
-	if(H.mind && H.mind.role_alt_title)
+	if(!H.mind)
+		return
+	if(H.mind.role_alt_title)
 		switch(H.mind.role_alt_title)
 			if("Клоун-Детектив", "Хонкектив")
 				suit = /obj/item/clothing/suit/storage/det_suit
@@ -149,17 +162,6 @@
 				suit_store = /obj/item/gun/energy/clown/security/warden
 			if("Клоун Кадет")
 				head = /obj/item/clothing/head/soft/sec
-
-/datum/job/donor/seclown/after_donor_spawn(mob/living/carbon/human/H)
-	if(H.mind)
-		var/clown_name = pick(GLOB.clown_names)
-		var/newname = clean_input("Выберите имя для вашего Клоуна Службы Безопасности.", "Изменение Имени", clown_name, H)
-		if(newname)
-			H.rename_character(H.real_name, newname)
-		else
-			H.rename_character(H.real_name, clown_name)
-
-	. = ..()
 
 /datum/outfit/job/donor/seclown/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	. = ..()
@@ -181,20 +183,10 @@
 	H.add_language("Clownish")
 	H.AddComponent(/datum/component/slippery, H, 8 SECONDS, 100, 0, FALSE, TRUE, "slip", TRUE)
 
-/datum/job/donor/seclown/after_assignment_equip(mob/living/carbon/human/H, assignment)
-	switch(assignment)
-		if("Клоун-Детектив", "Хонкектив")
-			if(H.wear_suit)
-				H.equip_to_slot(new /obj/item/clothing/suit/storage/det_suit, SLOT_HUD_OUTER_SUIT)
-			if(H.head)
-				H.equip_to_slot(new /obj/item/clothing/head/det_hat, SLOT_HUD_HEAD)
-		if("Клоун-Смотритель")
-			if(H.wear_suit)
-				H.equip_to_slot(new /obj/item/clothing/suit/armor/vest/warden, SLOT_HUD_OUTER_SUIT)
-			if(H.head)
-				H.equip_to_slot(new /obj/item/clothing/head/officer, SLOT_HUD_HEAD)
-			if(H.s_store)
-				H.equip_to_slot(new /obj/item/gun/energy/clown/security/warden, SLOT_HUD_SUIT_STORE)
-		if("Клоун Кадет")
-			if(H.head)
-				H.equip_to_slot(new /obj/item/clothing/head/soft/sec, SLOT_HUD_HEAD)
+	var/clown_name = pick(GLOB.clown_names)
+	var/newname = clean_input("Выберите имя для вашего Клоуна Службы Безопасности.", "Изменение Имени", clown_name, H)
+	if(newname)
+		H.rename_character(H.real_name, newname)
+	else
+		H.rename_character(H.real_name, clown_name)
+

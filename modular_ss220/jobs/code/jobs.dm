@@ -6,6 +6,7 @@
 
 /datum/job
 	var/relate_job // for novice role and etc
+	var/is_extra_job = FALSE	// Special Jobs Window
 
 /datum/job/doctor
 	relate_job = "Intern"

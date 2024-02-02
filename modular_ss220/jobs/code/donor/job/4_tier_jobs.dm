@@ -1,12 +1,18 @@
 /datum/job/donor/adjutant
 	title = "Adjutant"
+	flag = JOB_ADJUTANT
+	total_positions = 1
+	spawn_positions = 1
 	ru_title = "Адъютант"
+	alt_titles = list("Адъютант")
 	relate_job = "Internal Affairs Agent"
 	supervisors = "главой персонала и капитаном"
 	department_head = list("Head of Personnel", "Captain")
 	access = list(ACCESS_LIBRARY, ACCESS_HEADS, ACCESS_EVA, ACCESS_LAWYER, ACCESS_COURT, ACCESS_SEC_DOORS, ACCESS_MAINT_TUNNELS, ACCESS_RESEARCH, ACCESS_MEDICAL, ACCESS_CONSTRUCTION, ACCESS_MAILSORTING)
 	minimal_access = list(ACCESS_LIBRARY, ACCESS_HEADS, ACCESS_EVA, ACCESS_LAWYER, ACCESS_COURT, ACCESS_SEC_DOORS, ACCESS_MAINT_TUNNELS, ACCESS_RESEARCH, ACCESS_MEDICAL, ACCESS_CONSTRUCTION, ACCESS_MAILSORTING)
-	hidden_from_job_prefs = TRUE
+	selection_color = "#717097"
+	hidden_from_job_prefs = FALSE
+	donator_tier = 4
 	outfit = /datum/outfit/job/donor/adjutant
 	important_information = "Ваша должность нацелена на свободный РП-отыгрыш и не разрешает нарушать правила сервера. \
 	\nВы Адъютант. Данная роль нацелена на помощь главам в соблюдении их СРП и заполнении бумаг. \
@@ -45,11 +51,17 @@
 
 /datum/job/donor/butler
 	title = "Butler"
+	flag = JOB_BUTLER
+	total_positions = 1
+	spawn_positions = 1
 	ru_title = "Дворецкий"
+	alt_titles = list("Дворецкий")
 	relate_job = "Vip"
 	access = list(ACCESS_MAINT_TUNNELS, ACCESS_LIBRARY, ACCESS_HEADS, ACCESS_EVA, ACCESS_LAWYER)
 	minimal_access = list(ACCESS_MAINT_TUNNELS, ACCESS_LIBRARY, ACCESS_HEADS, ACCESS_EVA, ACCESS_LAWYER)
-	hidden_from_job_prefs = TRUE
+	selection_color = "#717097"
+	hidden_from_job_prefs = FALSE
+	donator_tier = 4
 	outfit = /datum/outfit/job/donor/butler
 	important_information = "Ваша должность нацелена на свободный РП-отыгрыш и не разрешает нарушать правила сервера. \
 	\nВы ДВОРЕЦКИЙ. Данная роль нацелена на обеспечение глав в удовлетворении физических потребностей, а мостик в чистоте."
@@ -82,11 +94,17 @@
 
 /datum/job/donor/maid
 	title = "Maid"
+	flag = JOB_MAID
+	total_positions = 1
+	spawn_positions = 1
 	ru_title = "Горничная"
+	alt_titles = list("Горничная")
 	relate_job = "Vip"
 	access = list(ACCESS_MAINT_TUNNELS, ACCESS_LIBRARY, ACCESS_HEADS, ACCESS_EVA, ACCESS_LAWYER)
 	minimal_access = list(ACCESS_MAINT_TUNNELS, ACCESS_LIBRARY, ACCESS_HEADS, ACCESS_EVA, ACCESS_LAWYER)
-	hidden_from_job_prefs = TRUE
+	selection_color = "#717097"
+	hidden_from_job_prefs = FALSE
+	donator_tier = 4
 	outfit = /datum/outfit/job/donor/maid
 	important_information = "Ваша должность нацелена на свободный РП-отыгрыш и не разрешает нарушать правила сервера. \
 	\nВы ГОРНИЧНАЯ. Данная роль нацелена на обеспечение глав в удовлетворении физических потребностей, а мостик в чистоте."
@@ -115,11 +133,17 @@
 
 /datum/job/donor/representative_tsf
 	title = "Representative TSF"
+	flag = JOB_REPRESENTATIVE_TSF
+	total_positions = 1
+	spawn_positions = 1
 	ru_title = "Представитель ТСФ"
+	alt_titles = list("Представитель ТСФ", "Дипломат ТСФ", "Публицист ТСФ")
 	relate_job = "Vip"
 	access = list(ACCESS_MAINT_TUNNELS, ACCESS_LIBRARY, ACCESS_HEADS, ACCESS_RC_ANNOUNCE, ACCESS_EVA)
 	minimal_access = list(ACCESS_MAINT_TUNNELS, ACCESS_LIBRARY, ACCESS_HEADS, ACCESS_RC_ANNOUNCE, ACCESS_EVA)
-	hidden_from_job_prefs = TRUE
+	selection_color = "#717097"
+	hidden_from_job_prefs = FALSE
+	donator_tier = 4
 	outfit = /datum/outfit/job/donor/representative_tsf
 	important_information = "Ваша должность нацелена на свободный РП-отыгрыш и не разрешает нарушать правила сервера. \
 	\nВы ПРЕДСТАВИТЕЛЬ ТСФ. Вы прибыли сюда для отдыха и возможно для переговоров. На вас по прежнему действует КЗ НТ, не смотря на то \
@@ -159,11 +183,17 @@
 
 /datum/job/donor/representative_ussp
 	title = "Representative USSP"
+	flag = JOB_REPRESENTATIVE_USSP
+	total_positions = 1
+	spawn_positions = 1
 	ru_title = "Представитель СССП"
+	alt_titles = list("Представитель СССП", "Дипломат СССП", "Пресс-Секретарь СССП")
 	relate_job = "Vip"
 	access = list(ACCESS_MAINT_TUNNELS, ACCESS_LIBRARY, ACCESS_HEADS, ACCESS_RC_ANNOUNCE, ACCESS_EVA)
 	minimal_access = list(ACCESS_MAINT_TUNNELS, ACCESS_LIBRARY, ACCESS_HEADS, ACCESS_RC_ANNOUNCE, ACCESS_EVA)
-	hidden_from_job_prefs = TRUE
+	selection_color = "#717097"
+	hidden_from_job_prefs = FALSE
+	donator_tier = 4
 	outfit = /datum/outfit/job/donor/representative_ussp
 	important_information = "Ваша должность нацелена на свободный РП-отыгрыш и не разрешает нарушать правила сервера. \
 	\nВы ПРЕДСТАВИТЕЛЬ СССП. Вы прибыли сюда для отдыха и возможно для переговоров. На вас по прежнему действует КЗ НТ, не смотря на то \
@@ -205,11 +235,16 @@
 
 /datum/job/donor/dealer
 	title = "Dealer"
+	flag = JOB_DEALER
+	total_positions = 2
+	spawn_positions = 2
 	ru_title = "Торговец"
-	alt_titles = list("Независимый Торговец", "Сдельщик", "Барахольщик", "Меценат", "Коммерсант")
+	alt_titles = list("Торговец", "Независимый Торговец", "Сдельщик", "Барахольщик", "Меценат", "Коммерсант")
 	access = list(ACCESS_MAINT_TUNNELS, ACCESS_LIBRARY, ACCESS_RC_ANNOUNCE, ACCESS_MAILSORTING, ACCESS_CARGO, ACCESS_MINT, ACCESS_MINERAL_STOREROOM, ACCESS_CONSTRUCTION)
 	minimal_access = list(ACCESS_MAINT_TUNNELS, ACCESS_LIBRARY, ACCESS_RC_ANNOUNCE, ACCESS_CARGO, ACCESS_MAILSORTING, ACCESS_MINERAL_STOREROOM, ACCESS_CONSTRUCTION)
-	hidden_from_job_prefs = TRUE
+	selection_color = "#717097"
+	hidden_from_job_prefs = FALSE
+	donator_tier = 4
 	outfit = /datum/outfit/job/donor/dealer
 	important_information = "Ваша должность нацелена на свободный РП-отыгрыш и не разрешает нарушать правила сервера. \
 	\nВы ТОРГОВЕЦ. Данная роль нацелена на продажу всячины, хлама и вещей экипажу. Обустройте себе торговую точку или продавайте всё из ширмы. \
@@ -251,20 +286,6 @@
 				shoes = /obj/item/clothing/shoes/cowboy
 				head = /obj/item/clothing/head/cowboyhat
 				gloves = /obj/item/clothing/gloves/color/brown
-
-/datum/job/donor/dealer/after_assignment_equip(mob/living/carbon/human/H, assignment)
-	switch(assignment)
-		if("Сдельщик", "Независимый Торговец", "Барахольщик")
-			if(H.w_uniform)
-				H.equip_to_slot(new /obj/item/clothing/under/color/brown, SLOT_HUD_JUMPSUIT)
-			if(H.wear_suit)
-				H.equip_to_slot(new /obj/item/clothing/suit/pirate_brown, SLOT_HUD_OUTER_SUIT)
-			if(H.head)
-				H.equip_to_slot(new/obj/item/clothing/head/cowboyhat, SLOT_HUD_HEAD)
-			if(H.shoes)
-				H.equip_to_slot(new /obj/item/clothing/shoes/cowboy, SLOT_HUD_SHOES)
-			if(H.gloves)
-				H.equip_to_slot(new /obj/item/clothing/gloves/color/brown, SLOT_HUD_GLOVES)
 
 // Тоже добавляем ТСФ торгашам коллекционки
 /datum/outfit/admin/sol_trader/New()
