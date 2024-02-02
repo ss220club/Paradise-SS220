@@ -696,6 +696,8 @@
 ///If the lazy list is currently initialized find item I in list L
 #define LAZYIN(L, I) (L && (I in L))
 
+#define LAZYOR(L, I) if(!L) { L = list(); } L |= I;
+
 //same, but returns nothing and acts on list in place
 /proc/shuffle_inplace(list/L)
 	if(!L)

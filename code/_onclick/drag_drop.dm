@@ -48,3 +48,16 @@ to inform the game this action was expected and its fine
 */
 /atom/proc/MouseDrop_T(atom/dropping, mob/user, params) // return TRUE if you want to prevent us click the object after it
 	return
+
+/client/MouseMove(object,location,control,params)
+	mouseParams = params
+	mouse_location_ref = location
+	mouse_object_ref = object
+	mouseControlObject = control
+	if(mob && LAZYLEN(mob.mousemove_intercept_objects))
+		for(var/datum/D in mob.mousemove_intercept_objects)
+			D.onMouseMove(object, location, control, params)
+	..()
+
+/datum/proc/onMouseMove(object, location, control, params)
+	return
