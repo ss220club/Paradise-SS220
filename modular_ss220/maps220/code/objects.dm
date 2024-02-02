@@ -580,7 +580,6 @@
 	/// How many shields we have protecting us
 	var/shield_count = 0
 	faction = list("xen")
-	tts_seed = "Vortiger"
 	gold_core_spawnable = NO_SPAWN
 	del_on_death = TRUE
 

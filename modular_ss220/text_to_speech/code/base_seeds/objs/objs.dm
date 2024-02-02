@@ -1,20 +1,20 @@
-/obj/machinery
-	tts_seed = "Glados"
+/obj/machinery/add_tts_component()
+	AddComponent(/datum/component/tts_component, "Glados")
 
-/obj/machinery/computer
-	tts_seed = null
+/obj/machinery/computer/add_tts_component()
+	return
 
-/obj/machinery/autolathe
-	tts_seed = null
+/obj/machinery/autolathe/add_tts_component()
+	return
 
-/obj/machinery/mecha_part_fabricator
-	tts_seed = null
+/obj/machinery/mecha_part_fabricator/add_tts_component()
+	return
 
-/obj/item/taperecorder
-	tts_seed = "Xenia"
+/obj/item/taperecorder/add_tts_component()
+	AddComponent(/datum/component/tts_component, "Xenia")
 
-/obj/item/ttsdevice
-	tts_seed = "Xenia"
+/obj/item/ttsdevice/add_tts_component()
+	AddComponent(/datum/component/tts_component, "Xenia")
 
 /obj/structure/mirror/magic/Initialize(mapload, newdir, building)
 	. = ..()

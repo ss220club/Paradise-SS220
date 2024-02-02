@@ -1,5 +1,4 @@
 /mob/living/simple_animal/lizard
-	tts_seed = "Ladyvashj"
 	death_sound = 'modular_ss220/mobs/sound/creatures/lizard_death.ogg'
 
 /mob/living/simple_animal/lizard/axolotl
