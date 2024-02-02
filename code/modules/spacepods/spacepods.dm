@@ -181,6 +181,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		// addverbs(M)
 	else if(passengers.len < max_passengers)
 		passengers += M
+		GrantActions(M)
 	else
 		return FALSE
 	GrantActions(M) // Passengers have buttons now
