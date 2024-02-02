@@ -121,8 +121,8 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	var/list/params_list = params2list(params)
 	if(target == src || istype(target, /atom/movable/screen) || (target && (target in user.get_contents())) || user != pilot || params_list["shift"] || params_list["alt"] || params_list["ctrl"])
 		return FALSE
-	if(weapon)
-		weapon.fire_weapons(target)
+	// if(weapon) // RMNZ: As i said, weapons don't work for now
+	// 	weapon.fire_weapons(target)
 	return TRUE
 
 /obj/spacepod/proc/enter_pod(mob/living/user)
@@ -611,8 +611,8 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		if(obj_integrity <= max_integrity / 4)
 			. += image(icon='goon/icons/obj/spacepods/2x2.dmi', icon_state="pod_fire")
 
-	if(weapon && weapon.overlay_icon_state)
-		. += image(icon=weapon.overlay_icon,icon_state=weapon.overlay_icon_state)
+	// if(weapon && weapon.overlay_icon_state) // RMNZ: Weapons don't work for now!
+	// 	. += image(icon=weapon.overlay_icon,icon_state=weapon.overlay_icon_state)
 
 	light_color = icon_light_color[icon_state] || LIGHT_COLOR_WHITE
 

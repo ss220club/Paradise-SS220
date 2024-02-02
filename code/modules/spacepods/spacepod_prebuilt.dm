@@ -23,9 +23,10 @@
 	icon_state = "pod_mil"
 	locked = TRUE
 	armor_type = /obj/item/pod_parts/armor/security
-	equipment_types = list(/obj/item/spacepod_equipment/weaponry/disabler,
+	equipment_types = list(
+		// /obj/item/spacepod_equipment/weaponry/disabler, //RMNZ: Weapons don't work for now!
 		/obj/item/spacepod_equipment/lock/keyed/sec,
-		/obj/item/spacepod_equipment/tracker,
+		// /obj/item/spacepod_equipment/tracker, //RMNZ: And this too!
 		/obj/item/spacepod_equipment/cargo/chair)
 
 // adminbus spacepod for jousting events
@@ -34,7 +35,8 @@
 	icon_state = "pod_mil"
 	armor_type = /obj/item/pod_parts/armor/security
 	cell_type = /obj/item/stock_parts/cell/infinite
-	equipment_types = list(/obj/item/spacepod_equipment/weaponry/laser,
+	equipment_types = list(
+		// /obj/item/spacepod_equipment/weaponry/laser, //RMNZ: Weapons don't work for now!
 		/obj/item/spacepod_equipment/cargo/chair,
 		/obj/item/spacepod_equipment/cargo/chair)
 
