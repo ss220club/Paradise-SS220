@@ -77,11 +77,11 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	var/lights = 0
 	var/lights_power = 6
 	var/static/list/icon_light_color = list("pod_civ" = LIGHT_COLOR_WHITE, \
-									 "pod_mil" = "#BBF093", \
-									 "pod_synd" = LIGHT_COLOR_RED, \
-									 "pod_gold" = LIGHT_COLOR_WHITE, \
-									 "pod_black" = "#3B8FE5", \
-									 "pod_industrial" = "#CCCC00")
+									"pod_mil" = "#BBF093", \
+									"pod_synd" = LIGHT_COLOR_RED, \
+									"pod_gold" = LIGHT_COLOR_WHITE, \
+									"pod_black" = "#3B8FE5", \
+									"pod_industrial" = "#CCCC00")
 
 	var/bump_impulse = 0.6
 	var/bounce_factor = 0.2 // how much of our velocity to keep on collision

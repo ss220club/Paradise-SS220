@@ -926,6 +926,7 @@
 		var/obj/mecha/M = loc
 		loc_temp =  M.return_temperature()
 
+	#define isspacepod(A) (istype(A, /obj/spacepod)) // RMNZ: Temporary solution for testmerge. Should be in is_helpers
 	else if(isspacepod(loc))
 		var/obj/spacepod/S = loc
 		loc_temp = S.return_temperature()
