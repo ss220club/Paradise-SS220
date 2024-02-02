@@ -130,8 +130,7 @@
  * Returns
  * * A list of UI data
  */
-/datum/jukebox/proc/get_ui_data()
-	var/list/data = list()
+/datum/jukebox/proc/get_ui_data(list/data)
 	var/list/songs_data = list()
 	for(var/song_name in songs)
 		var/datum/track/one_song = songs[song_name]

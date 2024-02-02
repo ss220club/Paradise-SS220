@@ -1,5 +1,5 @@
 /obj/machinery/jukebox
-	name = "\improper музыкальный автомат"
+	name = "\proper музыкальный автомат"
 	desc = "Классический музыкальный автомат."
 	icon = 'modular_ss220/jukebox/icons/jukebox.dmi'
 	icon_state = "jukebox"
@@ -11,12 +11,17 @@
 	active_power_consumption = 100
 	max_integrity = 200
 	integrity_failure = 100
+	req_access = list(ACCESS_BAR)
 	/// Cooldown between "Error" sound effects being played
 	COOLDOWN_DECLARE(jukebox_error_cd)
 	/// Cooldown between being allowed to play another song
 	COOLDOWN_DECLARE(jukebox_song_cd)
 	/// TimerID to when the current song ends
 	var/song_timerid
+	/// Does Jukebox require coin?
+	var/need_coin = FALSE
+	/// Inserted coin for payment
+	var/obj/item/coin/payment
 	/// The actual music player datum that handles the music
 	var/datum/jukebox/music_player
 	/// From which folder to load music
@@ -28,6 +33,7 @@
 
 /obj/machinery/jukebox/Destroy()
 	stop_music()
+	QDEL_NULL(payment)
 	QDEL_NULL(music_player)
 	return ..()
 
@@ -69,14 +75,30 @@
 		to_chat(user, span_warning("Это устройство должно быть закреплено гаечным ключом!"))
 		return
 	if(!allowed(user))
-		to_chat(user,span_warning("Ошибка: Отказано в доступе."))
+		to_chat(user, span_warning("Ошибка: Отказано в доступе."))
 		user.playsound_local(src, 'sound/misc/compiler-failure.ogg', 25, TRUE)
 		return
 	if(!length(music_player.songs))
-		to_chat(user,span_warning("Ошибка: Для вашей станции не было авторизовано ни одной музыкальной композиции. Обратитесь к Центральному командованию с просьбой решить эту проблему."))
+		to_chat(user, span_warning("Ошибка: Для вашей станции не было авторизовано ни одной музыкальной композиции. Обратитесь к Центральному командованию с просьбой решить эту проблему."))
 		user.playsound_local(src, 'sound/misc/compiler-failure.ogg', 25, TRUE)
 		return
 	ui_interact(user)
+
+/obj/machinery/jukebox/attackby(obj/item/item, mob/user, params)
+	if(!istype(item, /obj/item/coin))
+		to_chat(user, span_warning("[item] нельзя вставить в [src]!"))
+		return
+	if(payment)
+		to_chat(user, span_info("Монетка уже вставлена."))
+		return
+	if(!user.drop_item())
+		to_chat(user, span_warning("Монетка выскользнула с вашей руки!"))
+		return
+	item.forceMove(src)
+	payment = item
+	to_chat(user, "<span class='notice'>Вы вставили [item] в музыкальный автомат.</span>")
+	ui_interact(user)
+	add_fingerprint(user)
 
 /obj/machinery/jukebox/ui_state(mob/user)
 	return GLOB.default_state
@@ -88,7 +110,13 @@
 		ui.open()
 
 /obj/machinery/jukebox/ui_data(mob/user)
-	return music_player.get_ui_data()
+	var/list/data = ..()
+	music_player.get_ui_data(data)
+
+	data["need_coin"] = need_coin
+	data["payment"] = payment
+
+	return data
 
 /obj/machinery/jukebox/ui_act(action, list/params)
 	. = ..()
@@ -156,6 +184,7 @@
 	music_player.unlisten_all()
 	music_player.endTime = 0
 	music_player.startTime = 0
+	QDEL_NULL(payment)
 
 	if(!QDELING(src))
 		COOLDOWN_START(src, jukebox_song_cd, 5 SECONDS)

@@ -1,8 +1,9 @@
 /obj/machinery/jukebox/bar
-	req_access = list(ACCESS_BAR)
+	need_coin = TRUE
+	req_access = null
 
 /obj/machinery/jukebox/disco
-	name = "\improper танцевальный диско-шар - тип IV"
+	name = "\proper танцевальный диско-шар - тип IV"
 	desc = "Первые три прототипа были сняты с производства после инцидентов с массовыми жертвами."
 	icon_state = "disco"
 	base_icon_state = "disco"
@@ -42,7 +43,7 @@
 
 // Drums
 /obj/machinery/jukebox/drum_red
-	name = "\improper красный барабан"
+	name = "\proper красный барабан"
 	desc = "Крутые барабаны от какой-то группы."
 	icon_state = "drum_red_unanchored"
 	base_icon_state = "drum_red"
@@ -60,12 +61,12 @@
 		icon_state = "[base_icon_state][music_player.active_song_sound ? "-active" : null]"
 
 /obj/machinery/jukebox/drum_red/drum_yellow
-	name = "\improper желтый барабан"
+	name = "\proper желтый барабан"
 	icon_state = "drum_yellow_unanchored"
 	base_icon_state = "drum_yellow"
 
 /obj/machinery/jukebox/drum_red/drum_blue
-	name = "\improper синий барабан"
+	name = "\proper синий барабан"
 	icon_state = "drum_blue_unanchored"
 	base_icon_state = "drum_blue"
 

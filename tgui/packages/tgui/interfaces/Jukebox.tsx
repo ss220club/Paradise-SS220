@@ -24,11 +24,13 @@ type Song = {
 type Data = {
   active: BooleanLike;
   looping: BooleanLike;
+  need_coin: BooleanLike;
   volume: number;
   startTime: number;
   endTime: number;
   worldTime: number;
   track_selected: string | null;
+  payment: string | null;
   songs: Song[];
 };
 
@@ -43,6 +45,7 @@ export const Jukebox = (props, context) => {
     startTime,
     endTime,
     worldTime,
+    need_coin,
   } = data;
 
   const songs_sorted: Song[] = flow([sortBy((song: Song) => song.name)])(songs);
@@ -72,6 +75,7 @@ export const Jukebox = (props, context) => {
 
   return (
     <Window width={350} height={435} title="Музыкальный автомат">
+      <NoCoin />
       <Window.Content>
         <Stack fill vertical>
           <Stack>
@@ -97,7 +101,12 @@ export const Jukebox = (props, context) => {
                         fluid
                         icon={'undo'}
                         content="Повтор"
-                        disabled={active}
+                        disabled={active || need_coin}
+                        tooltip={
+                          need_coin
+                            ? 'Вы не можете включить повтор за монетку'
+                            : null
+                        }
                         checked={looping}
                         onClick={() => act('loop', { looping: !looping })}
                       />
@@ -219,6 +228,20 @@ const OnMusic = (props, context) => {
       <Icon name="music" size="3" color="gray" mr={1} />
       <Box color="label" bold mt={1}>
         Играет музыка
+      </Box>
+    </Dimmer>
+  ) : null;
+};
+
+const NoCoin = (props, context) => {
+  const { act, data } = useBackend<Data>(context);
+  const { payment, need_coin } = data;
+
+  return !payment && need_coin ? (
+    <Dimmer textAlign="center">
+      <Icon name="coins" size="6" color="gold" mr={1} />
+      <Box color="label" bold mt={5} fontSize={2}>
+        Вставьте монетку
       </Box>
     </Dimmer>
   ) : null;
