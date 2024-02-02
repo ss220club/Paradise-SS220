@@ -1178,7 +1178,7 @@
 	icon_state = "wizard_box"
 
 /obj/item/storage/box/wizard/hardsuit/populate_contents()
-	new /obj/item/clothing/suit/space/hardsuit/shielded/wizard(src)
+	new /obj/item/clothing/suit/space/hardsuit/wizard(src)
 	new /obj/item/clothing/shoes/magboots/wizard(src)
 
 /obj/item/storage/box/breaching
@@ -1226,7 +1226,7 @@
 /obj/item/storage/box/foam_grenades
 	name = "foam grenades box"
 	desc = "A box full of foam grenades."
-	icon_state = "flashbang"
+	icon_state = "flashbang_box"
 
 /obj/item/storage/box/foam_grenades/populate_contents()
 	for(var/I in 1 to 7)

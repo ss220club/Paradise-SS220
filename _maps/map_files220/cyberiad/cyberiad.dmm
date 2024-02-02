@@ -3270,11 +3270,16 @@
 "aoL" = (
 /obj/structure/table,
 /obj/item/taperecorder,
-/obj/machinery/light_switch/west,
 /obj/item/radio/intercom/department/security{
 	pixel_y = 22
 	},
 /obj/machinery/light/directional/north,
+/obj/machinery/requests_console{
+	department = "Security";
+	departmentType = 5;
+	name = "Security Requests Console";
+	pixel_x = -30
+	},
 /turf/simulated/floor/plasteel,
 /area/station/security/main)
 "aoM" = (
@@ -5010,9 +5015,11 @@
 	dir = 4
 	},
 /obj/machinery/light/directional/west,
-/obj/machinery/button/windowtint/west{
-	id = "Processing";
-	req_one_access_txt = "63"
+/obj/machinery/requests_console{
+	department = "Security";
+	departmentType = 5;
+	name = "Security Requests Console";
+	pixel_x = -30
 	},
 /turf/simulated/floor/plasteel,
 /area/station/security/processing)
@@ -5037,6 +5044,10 @@
 "auW" = (
 /obj/machinery/power/apc/directional/east,
 /obj/structure/cable,
+/obj/machinery/button/windowtint/south{
+	id = "Processing";
+	req_one_access_txt = "63"
+	},
 /turf/simulated/floor/plasteel,
 /area/station/security/processing)
 "auX" = (
@@ -31370,7 +31381,7 @@
 /area/station/medical/morgue)
 "cvU" = (
 /obj/structure/table/tray,
-/obj/item/storage/firstaid/surgery{
+/obj/item/storage/surgical_tray{
 	pixel_y = 8
 	},
 /turf/simulated/floor/plasteel{
@@ -36985,6 +36996,7 @@
 /obj/structure/chair/wheelchair{
 	dir = 4
 	},
+/obj/item/radio/intercom/directional/west,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "whitegreen"
@@ -58047,7 +58059,7 @@
 /area/station/maintenance/port)
 "ieC" = (
 /obj/structure/table/tray,
-/obj/item/storage/firstaid/surgery{
+/obj/item/storage/surgical_tray{
 	pixel_y = 8
 	},
 /turf/simulated/floor/plasteel{
@@ -58806,6 +58818,7 @@
 /obj/machinery/camera{
 	c_tag = "Virology Airlock"
 	},
+/obj/item/radio/intercom/directional/north,
 /turf/simulated/floor/plasteel{
 	dir = 5;
 	icon_state = "whitegreen"
@@ -60349,6 +60362,17 @@
 /obj/item/seeds/corn,
 /turf/simulated/floor/grass,
 /area/station/security/permabrig)
+"iZR" = (
+/obj/machinery/requests_console{
+	department = "Security";
+	departmentType = 5;
+	name = "Security Requests Console";
+	pixel_y = -30
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "darkredcorners"
+	},
+/area/station/security/brig)
 "iZV" = (
 /obj/effect/spawner/random_spawners/grille_often,
 /obj/effect/decal/cleanable/dirt,
@@ -61747,7 +61771,7 @@
 /area/station/maintenance/aft)
 "jBJ" = (
 /obj/structure/table/tray,
-/obj/item/storage/firstaid/surgery{
+/obj/item/storage/surgical_tray{
 	pixel_y = 8
 	},
 /turf/simulated/floor/plasteel{
@@ -81922,6 +81946,7 @@
 	},
 /obj/effect/landmark/start/security_officer,
 /obj/machinery/light/directional/south,
+/obj/machinery/light_switch/south,
 /turf/simulated/floor/plasteel,
 /area/station/security/main)
 "qQO" = (
@@ -90263,7 +90288,7 @@
 /area/station/security/permabrig)
 "tXI" = (
 /obj/structure/table/tray,
-/obj/item/storage/firstaid/surgery{
+/obj/item/storage/surgical_tray{
 	pixel_y = 8
 	},
 /turf/simulated/floor/plasteel{
@@ -97293,6 +97318,7 @@
 	pixel_y = 4
 	},
 /obj/structure/table/glass,
+/obj/item/radio/intercom/directional/east,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "whitegreen"
@@ -130386,7 +130412,7 @@ ojV
 alT
 rHa
 tgF
-akY
+iZR
 auc
 ujD
 kSz
