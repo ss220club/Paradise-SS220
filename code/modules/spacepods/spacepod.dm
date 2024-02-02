@@ -90,7 +90,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 /obj/spacepod/Initialize(mapload)
 	. = ..()
 	GLOB.spacepods_list += src
-	START_PROCESSING(SSspacepods, src)
+	START_PROCESSING(SSspacepod, src)
 	cabin_air = new
 	cabin_air.temperature = T20C
 	cabin_air.volume = 200
