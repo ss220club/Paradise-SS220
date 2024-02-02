@@ -74,10 +74,6 @@
 	if(!anchored)
 		to_chat(user, span_warning("Это устройство должно быть закреплено гаечным ключом!"))
 		return
-	if(!allowed(user))
-		to_chat(user, span_warning("Ошибка: Отказано в доступе."))
-		user.playsound_local(src, 'sound/misc/compiler-failure.ogg', 25, TRUE)
-		return
 	if(!length(music_player.songs))
 		to_chat(user, span_warning("Ошибка: Для вашей станции не было авторизовано ни одной музыкальной композиции. Обратитесь к Центральному командованию с просьбой решить эту проблему."))
 		user.playsound_local(src, 'sound/misc/compiler-failure.ogg', 25, TRUE)
@@ -85,20 +81,26 @@
 	ui_interact(user)
 
 /obj/machinery/jukebox/attackby(obj/item/item, mob/user, params)
-	if(!istype(item, /obj/item/coin))
-		to_chat(user, span_warning("[item] нельзя вставить в [src]!"))
-		return
-	if(payment)
-		to_chat(user, span_info("Монетка уже вставлена."))
-		return
-	if(!user.drop_item())
-		to_chat(user, span_warning("Монетка выскользнула с вашей руки!"))
-		return
-	item.forceMove(src)
-	payment = item
-	to_chat(user, "<span class='notice'>Вы вставили [item] в музыкальный автомат.</span>")
-	ui_interact(user)
-	add_fingerprint(user)
+	if(istype(item, /obj/item/coin))
+		if(payment)
+			to_chat(user, span_info("Монетка уже вставлена."))
+			return
+		if(!user.drop_item())
+			to_chat(user, span_warning("Монетка выскользнула с вашей руки!"))
+			return
+		item.forceMove(src)
+		payment = item
+		to_chat(user, "<span class='notice'>Вы вставили [item] в музыкальный автомат.</span>")
+		ui_interact(user)
+		add_fingerprint(user)
+	if(item.GetID())
+		if(allowed(user))
+			need_coin = !need_coin
+			to_chat(user, span_notice("Вы [need_coin ? "вернули" : "сняли"] ограничения [need_coin ? "в" : "с"] [src]."))
+		else
+			to_chat(user, span_warning("Access denied."))
+			return
+
 
 /obj/machinery/jukebox/ui_state(mob/user)
 	return GLOB.default_state

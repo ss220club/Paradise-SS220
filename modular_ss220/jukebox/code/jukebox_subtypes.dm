@@ -1,6 +1,5 @@
 /obj/machinery/jukebox/bar
 	need_coin = TRUE
-	req_access = null
 
 /obj/machinery/jukebox/disco
 	name = "\proper танцевальный диско-шар - тип IV"
