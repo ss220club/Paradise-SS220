@@ -5,8 +5,8 @@
 
 // RMNZ: Maybe performance issues?
 
-PROCESSING_SUBSYSTEM_DEF(spacepods)
-	name = "Spacepods"
+PROCESSING_SUBSYSTEM_DEF(spacepod)
+	name = "Spacepod"
 	wait = 0.075
 	stat_tag = "SP"
 	offline_implications = "Spacepods will no longer process. Shuttle call recommended."
