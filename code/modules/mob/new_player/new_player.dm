@@ -154,8 +154,10 @@
 			ready = FALSE
 			return FALSE
 
-		if(!check_tts_seed_ready()) // SS220 ADDITION
+		// SS220 ADDITION START - TTS220
+		if(!check_tts_seed_ready())
 			return FALSE
+		// SS220 ADDITION END
 
 		ready = !ready
 		new_player_panel_proc()
@@ -233,7 +235,7 @@
 			to_chat(src, alert("You are currently not whitelisted to play [client.prefs.active_character.species]."))
 			return FALSE
 
-		if(!check_tts_seed_ready()) // SS220 ADDITION
+		if(!check_tts_seed_ready()) // SS220 ADDITION - TTS
 			return FALSE
 
 		LateChoices()
