@@ -1,4 +1,5 @@
 /datum/component/tts_component
+	dupe_mode = COMPONENT_DUPE_UNIQUE
 	var/tts_seed
 
 /datum/component/tts_component/RegisterWithParent()
@@ -12,6 +13,8 @@
 	if(!isatom(parent))
 		return COMPONENT_INCOMPATIBLE
 	tts_seed = new_tts_seed
+	if(!tts_seed)
+		tts_seed = get_random_tts_seed_by_gender()
 
 /datum/component/tts_component/proc/select_tts_seed(mob/chooser, silent_target = FALSE, override = FALSE, fancy_voice_input_tgui = FALSE)
 	if(!chooser)
@@ -33,7 +36,7 @@
 				return new_tts_seed
 
 	var/tts_seeds
-	var/tts_gender = get_converted_tts_seed_gender(being_changed.gender)
+	var/tts_gender = get_converted_tts_seed_gender()
 	var/list/tts_seeds_by_gender = SStts220.tts_seeds_by_gender[tts_gender]
 	if(check_rights(R_ADMIN, FALSE, chooser) || override || !ismob(being_changed))
 		tts_seeds = tts_seeds_by_gender
@@ -69,8 +72,17 @@
 	tts_seed = new_tts_seed
 	return new_tts_seed
 
-/datum/component/tts_component/proc/get_converted_tts_seed_gender(gender_to_convert = gender)
-	switch(gender_to_convert)
+/datum/component/tts_component/proc/get_random_tts_seed_by_gender()
+	var/tts_gender = get_converted_tts_seed_gender()
+	var/tts_random = pick(SStts220.tts_seeds_by_gender[tts_gender])
+	var/datum/tts_seed/seed = SStts220.tts_seeds[tts_random]
+	if(!seed)
+		return null
+	return seed.name
+
+/datum/component/tts_component/proc/get_converted_tts_seed_gender()
+	var/atom/being_changed = parent
+	switch(being_changed.gender)
 		if(MALE)
 			return TTS_GENDER_MALE
 		if(FEMALE)
@@ -78,30 +90,17 @@
 		else
 			return TTS_GENDER_ANY
 
+// Component usage
+
+/atom/proc/add_tts_component()
+	return
+
+/atom/Initialize(mapload, ...)
+	. = ..()
+	add_tts_component()
+
 /atom/proc/change_tts_seed(mob/chooser, override, fancy_voice_input_tgui)
 	SEND_SIGNAL(src, COMSIG_ATOM_CHANGE_TTS_SEED, chooser, override, fancy_voice_input_tgui)
-
-/datum/component/tts_component/proc/pick_tts_seed_gender()
-	var/tts_gender = get_converted_tts_seed_gender()
-	return pick(SStts220.tts_seeds_by_gender[tts_gender])
-
-/datum/component/tts_component/proc/get_random_tts_seed_gender()
-	var/tts_choice = pick_tts_seed_gender(gender)
-	var/datum/tts_seed/seed = SStts220.tts_seeds[tts_choice]
-	if(!seed)
-		return null
-	return seed.name
-
-/atom/proc/pick_tts_seed_gender()
-	var/tts_gender = get_converted_tts_seed_gender()
-	return pick(SStts220.tts_seeds_by_gender[tts_gender])
-
-/atom/proc/get_random_tts_seed_gender()
-	var/tts_choice = pick_tts_seed_gender(gender)
-	var/datum/tts_seed/seed = SStts220.tts_seeds[tts_choice]
-	if(!seed)
-		return null
-	return seed.name
 
 /client/create_response_team_part_1(new_gender, new_species, role, turf/spawn_location)
 	. = ..()
