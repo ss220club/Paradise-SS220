@@ -328,7 +328,7 @@
 /datum/AI_Module/upgrade_turrets
 	module_name = "Улучшение турелей"
 	mod_pick_name = "turret"
-	description = "Улучшает силу и здоровье турелей. Этот эффект постоянен."
+	description = "Увеличивает урон и здоровье турелей. Этот эффект постоянен."
 	cost = 30
 	upgrade = TRUE
 	unlock_text = "<span class='notice'>Вы перенаправляете часть энергии на турели, усиливая их живучесть и урон.</span>"
@@ -346,8 +346,8 @@
 /datum/AI_Module/lockdown
 	module_name = "Агрессивный Локдаун Станции"
 	mod_pick_name = "lockdown"
-	description = "Перегружает все шлюзы, противопожарные и взрывоустойчивые двери, закрывая их. Внимание! Эта команда также электрифицирует все шлюзы. Сеть автоматически перезапустится через 90 секунд \
-	 открывая все шлюзы на короткий промежуток времени."
+	description = "Закрывает, болтирует и электрифицирует все двери, противопожарные и взрывоустойчивые створки. Сеть автоматически перезапустится через 90 секунд \
+	 открывая все шлюзы и створки на короткий промежуток времени."
 	cost = 30
 	one_purchase = TRUE
 	power_type = /datum/action/innate/ai/lockdown
@@ -393,7 +393,7 @@
 
 //Unlock Mech Domination: Unlocks the ability to dominate mechs. Big shocker, right?
 /datum/AI_Module/mecha_domination
-	module_name = "Разблокировка доминации мехов"
+	module_name = "Доминация мехов"
 	mod_pick_name = "mechjack"
 	description = "Позволяет вам взломать бортовой компьютер меха, загрузив все свои процессы в него, а также выкидывая пилота. Как только вы загрузитесь в меха, выйти будет невозможно \
 	 Не позволяйте меху покинуть станцию или быть уничтоженным" // А тут какого-то хуя перекинулось
@@ -409,12 +409,12 @@
 /datum/AI_Module/break_fire_alarms
 	module_name = "Перегрузка датчиков температуры"
 	mod_pick_name = "burnpigs"
-	description = "Даёт вам возможность перегрузить все термальные датчики на станции. Это приведёт к неспособности определить в комнате огонь и предупредить остальных. \
-	Кто угодно может проверить датчики и заподозрить что-то неладное."
+	description = "Позволяет перегрузить все термальные датчики на станции. После активации противопожарные створки не будут закрываться автоматически. \
+	Неполадку может обнаружить кто угодно."
 	one_purchase = TRUE
 	cost = 25
 	power_type = /datum/action/innate/ai/break_fire_alarms
-	unlock_text = "<span class='notice'>Вы заменяете термальную чувствительность сенсоров с помощью ручной перезаписи, позволяя вам активировать её в любой момент.</span>"
+	unlock_text = "<span class='notice'>Вы перезаписываете термальную чувствительность сенсоров, позволяя вам активировать её в любой момент.</span>"
 
 /datum/action/innate/ai/break_fire_alarms
 	name = "Перегрузка датчиков температуры"
@@ -434,8 +434,8 @@
 /datum/AI_Module/break_air_alarms
 	module_name = "Перезагрузка атмосферных датчиков"
 	mod_pick_name = "allow_flooding"
-	description = "Даёт вам возможность отключить все предохранители на атмосферных датчиках. Позволяет вам использовать режим Flood, отключающий скрабберы, а также отключающий проверку давления в вентиляциях. \
-	Любой может проверить интерфейс датчика и заподозрить что-то из-за их нерабочего состояния."
+	description = "Позволяет отключить все предохранители на атмосферных датчиках. Позволяет вам использовать режим Flood. Режим отключает скрабберы и давление в вентах. \
+	Неполадку может обнаружить кто угодно."
 	one_purchase = TRUE
 	cost = 50
 	power_type = /datum/action/innate/ai/break_air_alarms
@@ -458,7 +458,7 @@
 
 //Overload Machine: Allows the AI to overload a machine, detonating it after a delay. Two uses per purchase.
 /datum/AI_Module/overload_machine
-	module_name = "Перезагрузка машины"
+	module_name = "Взрыв"
 	mod_pick_name = "overload"
 	description = "Перегревает машину, вызывая небольшой взрыв и уничтожая её. Два использования за покупку."
 	cost = 20
@@ -466,7 +466,7 @@
 	unlock_text = "<span class='notice'>Вы получаете способность направлять энергию из APC напрямую в машинерию.</span>"
 
 /datum/action/innate/ai/ranged/overload_machine
-	name = "Перезагрузка машины"
+	name = "Взрыв машины"
 	desc = "Перегревает машину, вызывая небольшой взрыв через небольшой промежуток времени."
 	button_icon_state = "overload_machine"
 	uses = 2
@@ -507,7 +507,7 @@
 
 //Override Machine: Allows the AI to override a machine, animating it into an angry, living version of itself.
 /datum/AI_Module/override_machine
-	module_name = "Перезапись машины"
+	module_name = "Взлом машины"
 	mod_pick_name = "override"
 	description = "Перезаписывает программу машины, заставляя её восстать и атаковать всех кроме других машин, Четыре использования."
 	cost = 30
@@ -515,7 +515,7 @@
 	unlock_text = "<span class='notice'>Вы находите вирус с Space Dark Web и распространяете его по всей станции.</span>"
 
 /datum/action/innate/ai/ranged/override_machine
-	name = "Перезапись машины"
+	name = "Взрыв машины"
 	desc = "Оживляет целевую машину, заставляя её атаковать всех, кто рядом."
 	button_icon_state = "override_machine"
 	uses = 4
@@ -630,14 +630,14 @@
 /datum/AI_Module/blackout
 	module_name = "Блэкаут"
 	mod_pick_name = "blackout"
-	description = "Попытка перегрузить световые схемы станции, выводя из строя некоторые лампы. Три использования."
+	description = "Перегружает световые схемы станции, выводя из строя некоторые лампы. Три использования."
 	cost = 15
 	power_type = /datum/action/innate/ai/blackout
 	unlock_text = "<span class='notice'>Вы подключаетесь к энергосети станции и направляете избыток энергии на освещение.</span>"
 
 /datum/action/innate/ai/blackout
 	name = "Блэкаут"
-	desc = "Перегружает свет на станции."
+	desc = "Ломает лампы на станции."
 	button_icon_state = "blackout"
 	uses = 3
 	auto_use_uses = FALSE
@@ -663,7 +663,7 @@
 	unlock_text = "<span class='notice'>Вы вводите наномашины в систему камер.</span>"
 
 /datum/action/innate/ai/reactivate_cameras
-	name = "Реактивация камер"
+	name = "Починка камер"
 	desc = "Реактивирует камеры по всей станции; оставшиеся использования могут быть использованы позже."
 	button_icon_state = "reactivate_cameras"
 	uses = 10
@@ -723,7 +723,7 @@
 	unlock_text = replacetext(unlock_text, "CAMSUPGRADED", "<b>[upgraded_cameras]</b>") //This works, since unlock text is called after upgrade()
 
 /datum/AI_Module/eavesdrop
-	module_name = "Улучшенная слежка"
+	module_name = "Улучшенная прослушка"
 	mod_pick_name = "eavesdrop"
 	description = "Через комбинацию скрытых микрофонов и ПО для чтения по губам, вы можете использовать камеры для прослушки диалогов."
 	cost = 30
@@ -739,11 +739,11 @@
 /datum/AI_Module/cameracrack
 	module_name = "Поломка камеры ядра"
 	mod_pick_name = "cameracrack"
-	description = "Замыкая чип камеры ядра, консоль видеонаблюдения не может быть использована для просмотра внутренней камеры ядра ИИ."
+	description = "Замыкая чип камеры ядра, консоль видеонаблюдения более не сможет просматривать камеру внутри комнаты Ядра ИИ."
 	cost = 10
 	one_purchase = TRUE
 	upgrade = TRUE
-	unlock_text = "<span class='notice'>Чип сети замкнут. Внутренняя камера отключена от сети. Урон другим компонентам минимальный.</span>"
+	unlock_text = "<span class='notice'>Чип сети замкнут. Камера комнаты отключена от сети. Урон другим компонентам минимальный.</span>"
 	unlock_sound = 'sound/items/wirecutter.ogg'
 
 /datum/AI_Module/cameracrack/upgrade(mob/living/silicon/ai/AI)
