@@ -154,6 +154,8 @@
 		deltimer(song_timerid)
 
 	music_player.unlisten_all()
+	music_player.endTime = 0
+	music_player.startTime = 0
 
 	if(!QDELING(src))
 		COOLDOWN_START(src, jukebox_song_cd, 10 SECONDS)

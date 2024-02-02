@@ -44,6 +44,10 @@
 	var/sound_loops = FALSE
 	/// Path to music folder
 	var/songs_path
+	/// Music start time
+	var/startTime = 0
+	/// Music end time
+	var/endTime = 0
 
 /datum/jukebox/New(atom/new_parent, new_songs_path)
 	if(!ismovable(new_parent) && !isturf(new_parent))
@@ -133,7 +137,7 @@
 		var/datum/track/one_song = songs[song_name]
 		UNTYPED_LIST_ADD(songs_data, list( \
 			"name" = song_name, \
-			"length" = DisplayTimeText(one_song.song_length), \
+			"length" = round(one_song.song_length / 10, 1), \
 			"beat" = one_song.song_beat, \
 		))
 
@@ -142,6 +146,9 @@
 	data["track_selected"] = selection?.song_name
 	data["looping"] = sound_loops
 	data["volume"] = volume
+	data["startTime"] = startTime
+	data["endTime"] = endTime
+	data["worldTime"] = world.time
 	return data
 
 /**
@@ -200,6 +207,10 @@
 /datum/jukebox/proc/start_music()
 	for(var/mob/nearby in hearers(sound_range, parent))
 		register_listener(nearby)
+	startTime = world.time
+	for(var/song_name in songs)
+		var/datum/track/one_song = songs[song_name]
+		endTime = startTime + one_song.song_length
 
 /// Helper to get all mobs currently, ACTIVELY listening to the jukebox.
 /datum/jukebox/proc/get_active_listeners()
