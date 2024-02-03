@@ -39,7 +39,7 @@
 
 // Проверка после начала раунда
 /mob/new_player/IsJobAvailable(rank)
-	if(rank in get_donor_ranks_for_choose())
+	if(rank in GLOB.all_donor_jobs)
 		var/datum/job/job = SSjobs.GetJob(rank)
 		if(!job)
 			return FALSE

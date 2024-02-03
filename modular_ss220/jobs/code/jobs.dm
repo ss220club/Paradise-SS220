@@ -60,33 +60,3 @@
 		if(title in GLOB.all_jobs_ss220)
 			return TRUE
 	return FALSE
-
-// Делаем "обходку" для профессий выбранных через job.alt_titles (например DONOR)
-/datum/controller/subsystem/jobs/AssignRank(mob/living/carbon/human/H, rank, joined_late = 0) // Equip and put them in an area
-	if(!H)
-		return null
-
-	rank = get_rank_ss220(H, rank)
-
-	. = ..(H, rank, joined_late)
-
-/datum/controller/subsystem/jobs/EquipRank(mob/living/carbon/human/H, rank, joined_late = 0) // Equip and put them in an area
-	if(!H)
-		return null
-
-	if(H.mind.role_alt_title in GLOB.all_donor_jobs)
-		rank = H.mind.role_alt_title
-
-	. = ..(H, rank, joined_late)
-
-/datum/controller/subsystem/jobs/proc/get_rank_ss220(mob/living/carbon/human/H, rank)
-	var/list/bad_ranks = get_donor_ranks_for_choose()
-	if(H.mind.role_alt_title in bad_ranks) // Random pick jobs
-		var/datum/job/job = GetJob(rank)
-		rank = pick(job.alt_titles)
-		H.mind.role_alt_title = rank
-	// Make rank from current choosen title
-	else if(H.mind.role_alt_title in GLOB.all_donor_jobs)
-		rank = H.mind.role_alt_title
-
-	return rank

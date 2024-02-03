@@ -31,7 +31,7 @@
 
 	// Убираем JOB'ки из консоли ГП, если она не ЦКшная.
 	for(var/i in formatted)
-		if(i["title"] in get_donor_ranks_for_choose())
+		if(i["title"] == "Donor") // Это "родитель для наследования", его не должно быть тут
 			formatted.Remove(list(i))
 		if(is_centcom())
 			continue
