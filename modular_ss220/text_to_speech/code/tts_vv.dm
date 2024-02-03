@@ -4,7 +4,7 @@
 		if(!check_rights(R_ADMIN))
 			return
 		var/atom/A = locateUID(href_list["changetts"])
-		A.change_tts_seed(src.mob)
+		A.change_tts_seed(src.mob, TRUE, TRUE)
 
 /atom/vv_get_dropdown()
 	. = ..()

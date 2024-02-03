@@ -11,7 +11,7 @@
 	if(tts_component)
 		return tts_component.tts_seed
 
-/atom/proc/change_tts_seed(mob/chooser, override, fancy_voice_input_tgui = TRUE)
+/atom/proc/change_tts_seed(mob/chooser, override, fancy_voice_input_tgui = FALSE)
 	if(!get_tts_seed())
 		if(alert(chooser, "Отсутствует TTS компонент. Создать?", "Изменение TTS", "Да", "Нет") == "Нет")
 			return
