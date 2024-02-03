@@ -458,7 +458,7 @@
 
 //Overload Machine: Allows the AI to overload a machine, detonating it after a delay. Two uses per purchase.
 /datum/AI_Module/overload_machine
-	module_name = "Взрыв"
+	module_name = "Взрыв машины"
 	mod_pick_name = "overload"
 	description = "Перегревает машину, вызывая небольшой взрыв и уничтожая её. Два использования за покупку."
 	cost = 20
