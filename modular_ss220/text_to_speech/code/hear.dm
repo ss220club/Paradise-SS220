@@ -83,7 +83,6 @@
 	. = ..()
 	if(!message)
 		return
-	var/tts_seed
 	for(var/mob/M in get_mobs_in_view(7, src))
 		if(!M.client)
 			continue
