@@ -3,7 +3,7 @@
 	var/tts_seed
 
 /datum/component/tts_component/RegisterWithParent()
-	RegisterSignal(parent, COMSIG_ATOM_CHANGE_TTS_SEED, PROC_REF(change_tts_seed))
+	RegisterSignal(parent, COMSIG_ATOM_CHANGE_TTS_SEED, PROC_REF(tts_seed_change))
 	RegisterSignal(parent, COMSIG_ATOM_CAST_TTS, PROC_REF(cast_tts))
 
 /datum/component/tts_component/UnregisterFromParent()
@@ -66,17 +66,13 @@
 
 	return new_tts_seed
 
-/datum/component/tts_component/proc/change_tts_seed(atom/being_changed, mob/chooser, override = FALSE, fancy_voice_input_tgui = FALSE)
+/datum/component/tts_component/proc/tts_seed_change(atom/being_changed, mob/chooser, override = FALSE, fancy_voice_input_tgui = FALSE)
 	SIGNAL_HANDLER_DOES_SLEEP
 	set waitfor = FALSE
 	var/new_tts_seed = select_tts_seed(chooser = chooser, override = override, fancy_voice_input_tgui = fancy_voice_input_tgui)
 	if(!new_tts_seed)
 		return null
-	return update_tts_seed(new_tts_seed)
-
-/datum/component/tts_component/proc/update_tts_seed(new_tts_seed)
 	tts_seed = new_tts_seed
-	return new_tts_seed
 
 /datum/component/tts_component/proc/get_random_tts_seed_by_gender()
 	var/tts_gender = get_converted_tts_seed_gender()
