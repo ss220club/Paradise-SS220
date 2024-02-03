@@ -31,7 +31,7 @@
 
 	// Убираем JOB'ки из консоли ГП, если она не ЦКшная.
 	for(var/i in formatted)
-		if(i["title"] == "Donor") // Это "родитель для наследования", его не должно быть тут
+		if(i["title"] in GLOB.jobs_excluded_from_selection)
 			formatted.Remove(list(i))
 		if(is_centcom())
 			continue

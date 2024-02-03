@@ -43,6 +43,8 @@
 		var/datum/job/job = SSjobs.GetJob(rank)
 		if(!job)
 			return FALSE
+		if(job.title in GLOB.jobs_excluded_from_selection)
+			return FALSE
 		if(!job.is_donor_allowed(client))
 			return FALSE
 	. = ..()
