@@ -158,10 +158,12 @@
 
 		if("set_volume")
 			var/new_volume = params["volume"]
-			if(new_volume == "reset" || new_volume == "max")
-				music_player.set_volume_to_max()
+			if(new_volume == "reset")
+				music_player.reset_volume()
 			else if(new_volume == "min")
 				music_player.set_new_volume(0)
+			else if(new_volume == "max")
+				music_player.set_volume_to_max()
 			else if(isnum(text2num(new_volume)))
 				music_player.set_new_volume(text2num(new_volume))
 			return TRUE

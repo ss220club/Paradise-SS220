@@ -27,6 +27,7 @@ type Data = {
   need_coin: BooleanLike;
   advanced_admin: BooleanLike;
   volume: number;
+  max_volume: number;
   startTime: number;
   endTime: number;
   worldTime: number;
@@ -42,6 +43,7 @@ export const Jukebox = (props, context) => {
     looping,
     track_selected,
     volume,
+    max_volume,
     songs,
     startTime,
     endTime,
@@ -56,6 +58,10 @@ export const Jukebox = (props, context) => {
   const song_selected: Song | undefined = songs.find(
     (song) => song.name === track_selected
   );
+  const totalTracks = songs_sorted.length;
+  const selectedTrackNumber = song_selected
+    ? songs_sorted.findIndex((song) => song.name === song_selected.name) + 1
+    : 0;
 
   const formatTime = (seconds) => {
     const minutes = Math.floor(seconds / 60);
@@ -134,7 +140,6 @@ export const Jukebox = (props, context) => {
                 <Stack fill mb={1.5}>
                   <Stack.Item grow m={0}>
                     <Button
-                      fluid
                       color="transparent"
                       icon="fast-backward"
                       onClick={() =>
@@ -146,7 +151,6 @@ export const Jukebox = (props, context) => {
                   </Stack.Item>
                   <Stack.Item m={0}>
                     <Button
-                      fluid
                       color="transparent"
                       icon="undo"
                       onClick={() =>
@@ -158,7 +162,6 @@ export const Jukebox = (props, context) => {
                   </Stack.Item>
                   <Stack.Item grow m={0} textAlign="right">
                     <Button
-                      fluid
                       color="transparent"
                       icon="fast-forward"
                       onClick={() =>
@@ -186,7 +189,7 @@ export const Jukebox = (props, context) => {
                     value={volume}
                     unit="%"
                     minValue={0}
-                    maxValue={100}
+                    maxValue={max_volume}
                     step={1}
                     stepPixelSize={5}
                     onDrag={(e, value) =>
@@ -201,14 +204,38 @@ export const Jukebox = (props, context) => {
             </Stack.Item>
           </Stack>
           <Stack.Item grow textAlign="center">
-            <Section fill scrollable title="Доступные треки">
+            <Section
+              fill
+              scrollable
+              title="Доступные треки"
+              buttons={
+                <Button
+                  bold
+                  icon="random"
+                  color="transparent"
+                  content={`${selectedTrackNumber}/${totalTracks}`}
+                  tooltip="Выбрать случайный трек"
+                  tooltipPosition="top-end"
+                  onClick={() => {
+                    const randomIndex = Math.floor(Math.random() * totalTracks);
+                    const randomTrack = songs_sorted[randomIndex];
+                    act('select_track', { track: randomTrack.name });
+                  }}
+                />
+              }
+            >
               {songs_sorted.map((song) => (
                 <Stack.Item key={song.name} mb={0.5} textAlign="left">
                   <Button
                     fluid
                     selected={song_selected.name === song.name}
                     color="translucent"
-                    content={song.name}
+                    content={
+                      <Stack fill>
+                        <Stack.Item grow>{song.name}</Stack.Item>
+                        <Stack.Item>{formatTime(song.length)}</Stack.Item>
+                      </Stack>
+                    }
                     onClick={() => {
                       act('select_track', { track: song.name });
                     }}
@@ -226,8 +253,8 @@ export const Jukebox = (props, context) => {
 const OnMusic = () => {
   return (
     <Dimmer textAlign="center">
-      <Icon name="music" size="3" color="gray" mr={1} />
-      <Box color="label" bold mt={1}>
+      <Icon name="music" size="3" color="gray" mb={1} />
+      <Box color="label" bold>
         Играет музыка
       </Box>
     </Dimmer>

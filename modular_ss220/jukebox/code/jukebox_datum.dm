@@ -29,9 +29,11 @@
 	/// Assoc list of all mobs listening to the jukebox to their sound status.
 	VAR_PRIVATE/list/mob/listeners = list()
 
-	/// Volume of the songs played. Also serves as the max volume.
+	/// Volume of the songs played.
 	/// Do not set directly, use set_new_volume() instead.
-	VAR_PROTECTED/volume = 100
+	VAR_PROTECTED/volume = 50
+	/// Max possible to set volume.
+	VAR_PROTECTED/max_volume = 100
 
 	/// Range at which the sound plays to players, can also be a view "XxY" string
 	VAR_PROTECTED/sound_range
@@ -145,6 +147,7 @@
 	data["track_selected"] = selection?.song_name
 	data["looping"] = sound_loops
 	data["volume"] = volume
+	data["max_volume"] = max_volume
 	data["startTime"] = startTime
 	data["endTime"] = endTime
 	data["worldTime"] = world.time
@@ -168,7 +171,7 @@
  * Then updates any mobs listening to it.
  */
 /datum/jukebox/proc/set_new_volume(new_vol)
-	new_vol = clamp(new_vol, 0, initial(volume))
+	new_vol = clamp(new_vol, 0, max_volume)
 	if(volume == new_vol)
 		return
 	volume = new_vol
@@ -177,8 +180,12 @@
 	active_song_sound.volume = volume
 	update_all()
 
-/// Sets volume to the maximum possible value, the initial volume value.
+/// Sets volume to the maximum possible value.
 /datum/jukebox/proc/set_volume_to_max()
+	set_new_volume(max_volume)
+
+/// Reset volume to the initial value.
+/datum/jukebox/proc/reset_volume()
 	set_new_volume(initial(volume))
 
 /**
