@@ -106,24 +106,21 @@
 
 #undef MAX_SAVE_SLOTS_SS220
 
-/client/proc/is_donor_allowed(donator_tier)
+/client/proc/is_donor_allowed(required_donator_level)
 	// ================================================
 	// Отключено по просьбе АСМЫ, педали и разрабы более не могут получить доступ к донату
 	// ================================================
 	// switch(donator_level)
 	// 	if(LITTLE_WORKER_TIER)
-	// 		if(donator_tier > LITTLE_WORKER_LEVEL)
+	// 		if(required_donator_level > LITTLE_WORKER_LEVEL)
 	// 			return FALSE
 	// 	if(BIG_WORKER_TIER)
-	// 		if(donator_tier > BIG_WORKER_LEVEL)
+	// 		if(required_donator_level > BIG_WORKER_LEVEL)
 	// 			return FALSE
 	// 	else
-	// 		if(donator_tier > donator_level)	// Tier check
+	// 		if(required_donator_level > donator_level)	// Tier check
 	// 			return FALSE
 	// ================================================
 
 	// запрет педалям, разрешение донатерам
-	if(donator_tier > donator_level || donator_level > DONATOR_LEVEL_MAX)
-		return FALSE
-
-	return TRUE
+	return required_donator_level <= donator_level
