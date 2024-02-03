@@ -41,9 +41,7 @@
 		return
 
 	var/message_tts = combine_message_tts(message_pieces, speaker)
-	var/effect = isrobot(speaker) ? SOUND_EFFECT_ROBOT : SOUND_EFFECT_NONE
-	var/traits = TTS_TRAIT_RATE_FASTER
-	INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(tts_cast), speaker, src, message_tts, speaker.get_tts_seed(), TRUE, effect, traits)
+	SEND_SIGNAL(speaker, COMSIG_ATOM_CAST_TTS, src, message_tts, speaker, TRUE)
 
 /mob/hear_radio(list/message_pieces, verb = "says", part_a, part_b, mob/speaker = null, hard_to_hear = 0, vname = "", atom/follow_target, check_name_against)
 	. = ..()
@@ -53,9 +51,9 @@
 		return
 
 	if(src != speaker || isrobot(src) || isAI(src))
-		var/effect = isrobot(speaker) ? SOUND_EFFECT_RADIO_ROBOT : SOUND_EFFECT_RADIO
 		var/message_tts = combine_message_tts(message_pieces, speaker, always_stars = hard_to_hear)
-		INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(tts_cast), src, src, message_tts, speaker.get_tts_seed(), FALSE, effect, null, null, 'modular_ss220/text_to_speech/code/sound/radio_chatter.ogg')
+		var/postSFX = 'modular_ss220/text_to_speech/code/sound/radio_chatter.ogg'
+		SEND_SIGNAL(speaker, COMSIG_ATOM_CAST_TTS, src, message_tts, src, FALSE, SOUND_EFFECT_RADIO, null, null, postSFX)
 
 /mob/hear_holopad_talk(list/message_pieces, verb, mob/speaker, obj/effect/overlay/holo_pad_hologram/H)
 	. = ..()
@@ -64,8 +62,7 @@
 	if(!can_hear())
 		return
 	var/message_tts = combine_message_tts(message_pieces, speaker)
-	var/effect = isrobot(speaker) ? SOUND_EFFECT_RADIO_ROBOT : SOUND_EFFECT_RADIO
-	INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(tts_cast), H, src, message_tts, speaker.get_tts_seed(), TRUE, effect)
+	SEND_SIGNAL(speaker, COMSIG_ATOM_CAST_TTS, src, message_tts, H, TRUE, SOUND_EFFECT_RADIO)
 
 /datum/announcer/Message(message, garbled_message, receivers, garbled_receivers)
 	var/tts_seed = "Glados"
@@ -90,8 +87,4 @@
 	for(var/mob/M in get_mobs_in_view(7, src))
 		if(!M.client)
 			continue
-		if(!tts_seed)
-			tts_seed = src.get_tts_seed()
-		if(!tts_seed)
-			return
-		INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(tts_cast), src, M, message, tts_seed, TRUE)
+		SEND_SIGNAL(src, COMSIG_ATOM_CAST_TTS, M, message, src)

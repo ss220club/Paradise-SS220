@@ -70,4 +70,7 @@
 		"Капитан, вы уверены что хотите назначить клоуна на должность главы персонала?",\
 	)
 
+//from base of atom/change_tts_seed(): (mob/chooser, override, fancy_voice_input_tgui)
 #define COMSIG_ATOM_CHANGE_TTS_SEED "atom_change_tts_seed"
+//called for tts_component: (atom/speaker, mob/listener, message, atom/location, is_local, effect, traits, preSFX, postSFX )
+#define COMSIG_ATOM_CAST_TTS "atom_cast_tts"

@@ -4,9 +4,11 @@
 
 /datum/component/tts_component/RegisterWithParent()
 	RegisterSignal(parent, COMSIG_ATOM_CHANGE_TTS_SEED, PROC_REF(change_tts_seed))
+	RegisterSignal(parent, COMSIG_ATOM_CAST_TTS, PROC_REF(cast_tts))
 
 /datum/component/tts_component/UnregisterFromParent()
 	UnregisterSignal(parent, COMSIG_ATOM_CHANGE_TTS_SEED)
+	UnregisterSignal(parent, COMSIG_ATOM_CAST_TTS)
 
 /datum/component/tts_component/Initialize(new_tts_seed)
 	. = ..()
@@ -94,39 +96,33 @@
 		else
 			return TTS_GENDER_ANY
 
+/datum/component/tts_component/proc/get_effect(effect)
+	. = effect
+	switch(.)
+		if(SOUND_EFFECT_NONE)
+			if(isrobot(parent))
+				return SOUND_EFFECT_ROBOT
+		if(SOUND_EFFECT_RADIO)
+			if(isrobot(parent))
+				return SOUND_EFFECT_RADIO_ROBOT
+		if(SOUND_EFFECT_MEGAPHONE)
+			if(isrobot(parent))
+				return SOUND_EFFECT_MEGAPHONE_ROBOT
+	return .
+
+/datum/component/tts_component/proc/cast_tts(atom/speaker, mob/listener, message, atom/location, is_local = TRUE, effect = SOUND_EFFECT_NONE, traits = TTS_TRAIT_RATE_FASTER, preSFX, postSFX )
+	SIGNAL_HANDLER
+
+	if(!message)
+		return
+	if(!(listener?.client))
+		return
+
+	effect = get_effect(effect)
+
+	INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(tts_cast), location, listener, message, tts_seed, is_local, effect, traits, preSFX, postSFX)
+
 // Component usage
-
-/client/view_var_Topic(href, href_list, hsrc)
-	. = ..()
-	if(href_list["changetts"])
-		if(!check_rights(R_ADMIN))
-			return
-		var/atom/A = locateUID(href_list["changetts"])
-		A.change_tts_seed()
-
-/atom/vv_get_dropdown()
-	. = ..()
-	.["Change TTS"] = "?_src_=vars;changetts=[UID()]"
-
-/atom/proc/add_tts_component()
-	return
-
-/atom/Initialize(mapload, ...)
-	. = ..()
-	add_tts_component()
-
-// TODO: Do it better?
-/atom/proc/get_tts_seed()
-	var/datum/component/tts_component/tts_component = GetComponent(/datum/component/tts_component)
-	if(tts_component)
-		return tts_component.tts_seed
-
-/atom/proc/change_tts_seed(mob/chooser, override, fancy_voice_input_tgui)
-	if(!get_tts_seed())
-		if(alert(chooser, "Отсутствует TTS компонент. Создать?", "Изменение TTS", "Да", "Нет") == "Нет")
-			return
-		AddComponent(/datum/component/tts_component, "Angel")
-	SEND_SIGNAL(src, COMSIG_ATOM_CHANGE_TTS_SEED, chooser, override, fancy_voice_input_tgui)
 
 /client/create_response_team_part_1(new_gender, new_species, role, turf/spawn_location)
 	. = ..()
