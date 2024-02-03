@@ -663,7 +663,7 @@
 	unlock_text = "<span class='notice'>Вы вводите наномашины в систему камер.</span>"
 
 /datum/action/innate/ai/reactivate_cameras
-	name = "Починка камер"
+	name = "Перезапуск камер"
 	desc = "Реактивирует камеры по всей станции; оставшиеся использования могут быть использованы позже."
 	button_icon_state = "reactivate_cameras"
 	uses = 10
