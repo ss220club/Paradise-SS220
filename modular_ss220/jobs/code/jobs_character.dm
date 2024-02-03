@@ -41,7 +41,6 @@
 			if("extra_job")
 				active_character.extra_jobs_check = !active_character.extra_jobs_check
 				active_character.SetChoices(user)
-				message_admins("Меняем extra_jobs_check на [active_character.extra_jobs_check]")
 				return TRUE
 	. = ..()
 
