@@ -35,30 +35,29 @@
 	/// Max possible to set volume.
 	VAR_PROTECTED/max_volume = 100
 
-	/// Range at which the sound plays to players, can also be a view "XxY" string
+	/// Range at which the sound plays to players, can also be a view "XxY" string.
 	VAR_PROTECTED/sound_range
-	/// How far away horizontally from the jukebox can you be before you stop hearing it
+	/// How far away horizontally from the jukebox can you be before you stop hearing it.
 	VAR_PRIVATE/x_cutoff
-	/// How far away vertically from the jukebox can you be before you stop hearing it
+	/// How far away vertically from the jukebox can you be before you stop hearing it.
 	VAR_PRIVATE/z_cutoff
+
 	/// Whether the music loops when done.
-	/// If FALSE, you must handle ending music yourself.
 	var/sound_loops = FALSE
-	/// Path to music folder. Used in New() proc.
-	var/songs_path
-	/// Music start time
+	/// Path to music folder.
+	var/songs_path = "config/jukebox_music/sounds/"
+	/// Music start time.
 	var/startTime = 0
-	/// Music end time
+	/// Music end time.
 	var/endTime = 0
 
-/datum/jukebox/New(atom/new_parent, new_songs_path)
+/datum/jukebox/New(atom/new_parent)
 	if(!ismovable(new_parent) && !isturf(new_parent))
 		stack_trace("[type] created on non-turf or non-movable: [new_parent ? "[new_parent] ([new_parent.type])" : "null"])")
 		qdel(src)
 		return
 
 	parent = new_parent
-	songs_path = new_songs_path
 
 	if(isnull(sound_range))
 		sound_range = world.view

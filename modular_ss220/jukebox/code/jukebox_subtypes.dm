@@ -47,7 +47,6 @@
 	icon_state = "drum_red_unanchored"
 	base_icon_state = "drum_red"
 	anchored = FALSE
-	music_folder = "config/jukebox_music/drum_music/"
 
 /obj/machinery/jukebox/drum_red/wrench_act()
 	. = ..()

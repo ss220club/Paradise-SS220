@@ -24,12 +24,10 @@
 	var/obj/item/coin/payment
 	/// The actual music player datum that handles the music
 	var/datum/jukebox/music_player
-	/// From which folder to load music
-	var/music_folder = "config/jukebox_music/sounds/"
 
 /obj/machinery/jukebox/Initialize(mapload)
 	. = ..()
-	music_player = new(src, music_folder)
+	music_player = new(src)
 
 /obj/machinery/jukebox/Destroy()
 	stop_music()
