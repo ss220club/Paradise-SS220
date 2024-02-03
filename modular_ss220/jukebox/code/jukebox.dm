@@ -67,10 +67,6 @@
 		underlays += emissive_appearance(icon, "[icon_state]_lightmask")
 
 /obj/machinery/jukebox/attack_hand(mob/user)
-	if(..())
-		return
-	if(isobserver(user))
-		return
 	if(!anchored)
 		to_chat(user, span_warning("Это устройство должно быть закреплено гаечным ключом!"))
 		return
@@ -79,6 +75,10 @@
 		user.playsound_local(src, 'sound/misc/compiler-failure.ogg', 25, TRUE)
 		return
 	ui_interact(user)
+
+/obj/machinery/jukebox/attack_ghost(mob/user)
+	if(anchored)
+		return ui_interact(user)
 
 /obj/machinery/jukebox/attackby(obj/item/item, mob/user, params)
 	if(istype(item, /obj/item/coin))
@@ -91,6 +91,7 @@
 		item.forceMove(src)
 		payment = item
 		to_chat(user, "<span class='notice'>Вы вставили [item] в музыкальный автомат.</span>")
+		playsound(src, 'modular_ss220/aesthetics_sounds/sound/coin_accept.ogg', 50, TRUE)
 		ui_interact(user)
 		add_fingerprint(user)
 	if(item.GetID())
@@ -117,6 +118,7 @@
 
 	data["need_coin"] = need_coin
 	data["payment"] = payment
+	data["advanced_admin"] = user.can_advanced_admin_interact()
 
 	return data
 
@@ -129,8 +131,8 @@
 		if("toggle")
 			if(isnull(music_player.active_song_sound))
 				if(!COOLDOWN_FINISHED(src, jukebox_song_cd))
-					to_chat(usr, span_warning("Error: The device is still resetting from the last activation, \
-						it will be ready again in [DisplayTimeText(COOLDOWN_TIMELEFT(src, jukebox_song_cd))]."))
+					to_chat(usr, span_warning("Ошибка: Устройство перезагружается после предыдущего трека, \
+						Оно будет готово через [DisplayTimeText(COOLDOWN_TIMELEFT(src, jukebox_song_cd))]."))
 					if(COOLDOWN_FINISHED(src, jukebox_error_cd))
 						playsound(src, 'sound/misc/compiler-failure.ogg', 33, TRUE)
 						COOLDOWN_START(src, jukebox_error_cd, 15 SECONDS)
@@ -144,7 +146,7 @@
 
 		if("select_track")
 			if(!isnull(music_player.active_song_sound))
-				to_chat(usr, span_warning("Error: You cannot change the song until the current one is over."))
+				to_chat(usr, span_warning("Ошибка: Вы не можете сменить трек, пока не закончится текущий."))
 				return TRUE
 
 			var/datum/track/new_song = music_player.songs[params["track"]]

@@ -42,7 +42,7 @@
 	/// Whether the music loops when done.
 	/// If FALSE, you must handle ending music yourself.
 	var/sound_loops = FALSE
-	/// Path to music folder
+	/// Path to music folder. Used in New() proc.
 	var/songs_path
 	/// Music start time
 	var/startTime = 0
