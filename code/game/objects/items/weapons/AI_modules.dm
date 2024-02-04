@@ -358,7 +358,7 @@ AI MODULES
 	name = "\improper Pranksimov Модуль ядра ИИ"
 	desc = "A 'Pranksimov' Модуль ядра ИИ: 'Меняет основные законы ИИ.'"
 	icon_state = "pranksimov"
-	origin_tech = "programming=3;syndicate=2"
+	origin_tech = "programming=3;syndicate=1"
 	laws = new /datum/ai_laws/pranksimov()
 
 /******************** NT Aggressive ********************/
