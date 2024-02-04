@@ -275,7 +275,7 @@
 /turf/simulated/proc/handle_space(turf/space/space_turf)
 	var/list/unchecked_turfs = GetAtmosAdjacentTurfs()
 	var/list/checked_turfs = list()
-	while (unchecked_turfs.len)
+	while(unchecked_turfs.len)
 		var/turf/current_turf = unchecked_turfs[1]
 		var/list/connected_turfs = current_turf.GetAtmosAdjacentTurfs()
 		if(checked_turfs.len < 30)
