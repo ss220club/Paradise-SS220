@@ -1,5 +1,5 @@
 /datum/dna
-	var/tts_seed_dna
+	var/datum/tts_seed/tts_seed_dna
 
 /datum/dna/Clone()
 	. = ..()

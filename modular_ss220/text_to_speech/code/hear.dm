@@ -1,3 +1,5 @@
+GLOBAL_DATUM_INIT(default_announcer, /datum/tts_seed, new /datum/tts_seed/silero/glados)
+
 /mob/proc/combine_message_tts(list/message_pieces, mob/speaker, always_stars = FALSE)
 	var/iteration_count = 0
 	var/msg = ""
@@ -65,7 +67,7 @@
 	SEND_SIGNAL(speaker, COMSIG_ATOM_CAST_TTS, src, message_tts, H, TRUE, SOUND_EFFECT_RADIO)
 
 /datum/announcer/Message(message, garbled_message, receivers, garbled_receivers)
-	var/tts_seed = "Glados"
+	var/datum/tts_seed/tts_seed = SStts220.tts_seeds[GLOB.default_announcer.name]
 	if(GLOB.ai_list.len)
 		var/mob/living/silicon/ai/AI = pick(GLOB.ai_list)
 		tts_seed = AI.get_tts_seed()

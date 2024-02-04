@@ -1,6 +1,5 @@
 /datum/component/tts_component
-	dupe_mode = COMPONENT_DUPE_UNIQUE
-	var/tts_seed
+	var/datum/tts_seed/tts_seed
 
 /datum/component/tts_component/RegisterWithParent()
 	RegisterSignal(parent, COMSIG_ATOM_CHANGE_TTS_SEED, PROC_REF(tts_seed_change))
@@ -10,11 +9,12 @@
 	UnregisterSignal(parent, COMSIG_ATOM_CHANGE_TTS_SEED)
 	UnregisterSignal(parent, COMSIG_ATOM_CAST_TTS)
 
-/datum/component/tts_component/Initialize(new_tts_seed)
+/datum/component/tts_component/Initialize(datum/tts_seed/new_tts_seed)
 	. = ..()
 	if(!isatom(parent))
 		return COMPONENT_INCOMPATIBLE
-	tts_seed = new_tts_seed
+	if(istype(new_tts_seed))
+		tts_seed = new_tts_seed
 	if(!tts_seed)
 		tts_seed = get_random_tts_seed_by_gender()
 
@@ -31,13 +31,16 @@
 
 	var/atom/being_changed = parent
 	var/static/tts_test_str = "Так звучит мой голос."
-	var/new_tts_seed
+	var/datum/tts_seed/new_tts_seed
 
 	if(chooser == being_changed)
 		var/datum/character_save/active_character = chooser.client?.prefs.active_character
 		if(being_changed.gender == active_character.gender)
 			if(alert(chooser, "Оставляем голос вашего персонажа [active_character.real_name] - [active_character.tts_seed]?", "Выбор голоса", "Нет", "Да") ==  "Да")
-				new_tts_seed = active_character.tts_seed
+				if(!SStts220.tts_seeds[active_character.tts_seed])
+					to_chat(chooser, span_warning("Отсутствует tts_seed для значения \"[active_character.tts_seed]\". Текущий голос - [tts_seed.name]"))
+					return null
+				new_tts_seed = SStts220.tts_seeds[active_character.tts_seed]
 				INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(tts_cast), null, chooser, tts_test_str, new_tts_seed, FALSE)
 				return new_tts_seed
 
@@ -49,14 +52,16 @@
 	else
 		tts_seeds = tts_seeds_by_gender && SStts220.get_available_seeds(being_changed) // && for lists means intersection
 
+	var/new_tts_seed_key
 	if(fancy_voice_input_tgui)
-		new_tts_seed = tgui_input_list(chooser, "Выберите голос персонажа", "Преобразуем голос", tts_seeds)
+		new_tts_seed_key = tgui_input_list(chooser, "Выберите голос персонажа", "Преобразуем голос", tts_seeds)
 	else
-		new_tts_seed = input(chooser, "Выберите голос персонажа", "Преобразуем голос") as null|anything in tts_seeds
-
-	if(!new_tts_seed)
-		to_chat(chooser, span_warning("Что-то пошло не так с выбором голоса. Текущий голос - [tts_seed]"))
+		new_tts_seed_key = input(chooser, "Выберите голос персонажа", "Преобразуем голос") as null|anything in tts_seed
+	if(!new_tts_seed_key || !SStts220.tts_seeds[new_tts_seed_key])
+		to_chat(chooser, span_warning("Что-то пошло не так с выбором голоса. Текущий голос - [tts_seed.name]"))
 		return null
+
+	new_tts_seed = SStts220.tts_seeds[new_tts_seed_key]
 
 	if(!silent_target && being_changed != chooser && ismob(being_changed))
 		INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(tts_cast), null, being_changed, tts_test_str, new_tts_seed, FALSE)
@@ -69,7 +74,7 @@
 /datum/component/tts_component/proc/tts_seed_change(atom/being_changed, mob/chooser, override = FALSE, fancy_voice_input_tgui = FALSE)
 	SIGNAL_HANDLER_DOES_SLEEP
 	set waitfor = FALSE
-	var/new_tts_seed = select_tts_seed(chooser = chooser, override = override, fancy_voice_input_tgui = fancy_voice_input_tgui)
+	var/datum/tts_seed/new_tts_seed = select_tts_seed(chooser = chooser, override = override, fancy_voice_input_tgui = fancy_voice_input_tgui)
 	if(!new_tts_seed)
 		return null
 	tts_seed = new_tts_seed
@@ -80,7 +85,7 @@
 	var/datum/tts_seed/seed = SStts220.tts_seeds[tts_random]
 	if(!seed)
 		return null
-	return seed.name
+	return seed
 
 /datum/component/tts_component/proc/get_converted_tts_seed_gender()
 	var/atom/being_changed = parent
