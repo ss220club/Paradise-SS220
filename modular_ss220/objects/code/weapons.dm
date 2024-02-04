@@ -234,3 +234,77 @@
 	if(on)
 		homerun_ready = TRUE
 	. = ..()
+
+//Pneuma rifle
+/obj/item/gun/projectile/automatic/pneumaticweapon
+	name = "Пневморужье"
+	desc = "Стандартное пневморужье"
+	icon_state = "mini-uzi"  // исправить
+	//item_state = "wt550"  // исправить
+	w_class = WEIGHT_CLASS_NORMAL
+	mag_type = /obj/item/ammo_box/magazine/pneuma
+	magazine = new /obj/item/ammo_box/magazine/pneuma/pepper
+	fire_sound = 'modular_ss220/objects/sound/weapons/gunshots/gunshot_pneumatic.ogg'
+	magin_sound = 'sound/weapons/gun_interactions/batrifle_magin.ogg'
+	magout_sound = 'sound/weapons/gun_interactions/batrifle_magout.ogg'
+	fire_delay = 2
+	can_suppress = FALSE
+	burst_size = 1
+
+/obj/item/gun/projectile/automatic/pneumaticweapon/process_chamber(eject_casing = 0, empty_chamber = 1)
+	..(eject_casing, empty_chamber)
+
+/obj/item/gun/projectile/automatic/pneumaticweapon/update_icon_state()
+
+/obj/item/ammo_box/magazine/pneuma
+	name = "магазин пневморужья"
+	desc = "Наполняется шариками с реагентом."
+	caliber = "pneumatic"
+	icon_state = "uzi9mm" // исправить
+	//materials = list()
+	ammo_type = /obj/item/ammo_casing/pneuma
+	max_ammo = 12
+	multiload = 0
+	//multi_sprite_step = 1 // see: /obj/item/ammo_box/update_icon()
+
+/obj/item/ammo_casing/pneuma
+	name = "шарик с веществом"
+	desc = "Шарик с неизвестным веществом."
+	caliber = "pneumatic"
+	casing_drop_sound = null
+	projectile_type = /obj/item/projectile/bullet/pneumaball
+	muzzle_flash_strength = null
+	harmful = FALSE
+
+/obj/item/projectile/bullet/pneumaball
+	name = "пневматический шарик"
+
+/obj/item/projectile/bullet/pneumaball/New()
+	..()
+	create_reagents(30)
+	reagents.set_reacting(FALSE)
+
+/obj/item/projectile/bullet/pneumaball/on_hit(atom/target, blocked = 0)
+	..(target, blocked)
+	if (!iscarbon(target))
+		return
+	var/mob/living/carbon/H = target
+	reagents.reaction(H)
+	reagents.set_reacting(TRUE)
+	reagents.handle_reactions()
+
+// Боеприпасы для перцового типа пневморужья
+/obj/item/ammo_box/magazine/pneuma/pepper
+	ammo_type = /obj/item/ammo_casing/pneuma/pepper
+
+/obj/item/ammo_casing/pneuma/pepper
+	desc = "Шарик с капсаицином."
+	projectile_type = /obj/item/projectile/bullet/pneumaball/pepper
+
+/obj/item/projectile/bullet/pneumaball/pepper
+	stamina = 7
+	damage = 1
+
+/obj/item/projectile/bullet/pneumaball/pepper/New()
+	..()
+	reagents.add_reagent("condensedcapsaicin", 30)
