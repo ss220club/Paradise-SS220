@@ -1,4 +1,6 @@
 #define MAGIVENDS_PRODUCTS_REFILL_VALUE 20
+#define WIZARD_GREETING ("<span class='danger'>Вы — маг рейва!</span>")
+#define WIZARD_WIKI ("<span class='motd'>На вики-странице доступна более подробная информация: ([GLOB.configuration.url.wiki_url]/index.php/Wizard)</span>")
 
 /datum/event/rave_wizard
 
@@ -66,7 +68,7 @@
 		SSticker.mode.equip_wizard(current)
 		for(var/obj/item/spellbook/S in current.contents)
 			S.op = 0
-		INVOKE_ASYNC(SSticker.mode, TYPE_PROC_REF(/datum/game_mode/wizard, name_rave_wizard), current)
+		INVOKE_ASYNC(SSticker.mode, TYPE_PROC_REF(/datum/game_mode/wizard, name_wizard), current)
 		SSticker.mode.forge_rave_wizard_objectives(src)
 		SSticker.mode.greet_rave_wizard(src)
 		SSticker.mode.update_wiz_icons_added(src)
@@ -76,31 +78,15 @@
 	addtimer(CALLBACK(wizard.current, TYPE_PROC_REF(/mob, playsound_local), null, 'sound/ambience/antag/ragesmages.ogg', 100, 0), 30)
 	var/list/messages = list()
 	if(you_are)
-		messages.Add("<span class='danger'>Вы — маг рейва!</span>")
-	messages.Add("<b>Космическая Федерация Магов дала вам следующие задания:</b>")
+		messages.Add(WIZARD_GREETING)
 
 	messages.Add(wizard.prepare_announce_objectives(title = FALSE))
-	messages.Add("<span class='motd'>На вики-странице доступна более подробная информация: ([GLOB.configuration.url.wiki_url]/index.php/Wizard)</span>")
+	messages.Add(WIZARD_WIKI)
 	to_chat(wizard.current, chat_box_red(messages.Join("<br>")))
 	wizard.current.create_log(MISC_LOG, "[wizard.current] was made into a wizard")
 
 /datum/game_mode/proc/forge_rave_wizard_objectives(datum/mind/wizard)
 	wizard.add_mind_objective(/datum/objective/wizrave)
-
-/datum/game_mode/proc/name_rave_wizard(mob/living/carbon/human/wizard_mob)
-	//Allows the wizard to choose a custom name or go with a random one. Spawn 0 so it does not lag the round starting.
-	var/wizard_name_first = pick(GLOB.wizard_first)
-	var/wizard_name_second = pick(GLOB.wizard_second)
-	var/randomname = "[wizard_name_first] [wizard_name_second]"
-	var/newname = sanitize(copytext_char(input(wizard_mob, "You are the Space Wizard. Would you like to change your name to something else?", "Name change", randomname) as null|text,1,MAX_NAME_LEN)) // SS220 EDIT - ORIGINAL: copytext
-
-	if(!newname)
-		newname = randomname
-
-	wizard_mob.real_name = newname
-	wizard_mob.name = newname
-	if(wizard_mob.mind)
-		wizard_mob.mind.name = newname
 
 /datum/objective/wizrave
 	explanation_text = "Устройте вечеринку, о которой потомки будут слагать легенды."
@@ -112,4 +98,5 @@
 	available_events += list(new /datum/event_meta(EVENT_LEVEL_MAJOR, "Rave Wizard", /datum/event/rave_wizard, 10, is_one_shot = TRUE))
 
 #undef MAGIVENDS_PRODUCTS_REFILL_VALUE
-
+#undef WIZARD_GREETING
+#undef WIZARD_WIKI

@@ -12,40 +12,44 @@
 /obj/effect/timestop/dancing
 	name = "Dancing field"
 	desc = "Feel the heat"
-	icon = 'icons/effects/160x160.dmi' //TODO change to other effect
-	icon_state = "time"
-
-/obj/effect/timestop/dancing/New()
-	..()
-	for(var/mob/living/M in GLOB.player_list)
-		for(var/obj/effect/proc_holder/spell/aoe/conjure/timestop/dance/D in M.mind.spell_list) //conjurer is immune
-			immune |= M
+	icon_state = "no_state"
+	var/sound_type = list('modular_ss220/antagonists/sound/music1.mp3',
+						'modular_ss220/antagonists/sound/music2.mp3',
+						'modular_ss220/antagonists/sound/music3.mp3',
+						'modular_ss220/antagonists/sound/music4.mp3',
+						'modular_ss220/antagonists/sound/music5.mp3',
+						'modular_ss220/antagonists/sound/music6.mp3')
 
 /obj/effect/timestop/dancing/timestop()
-	playsound(get_turf(src), 'modular_ss220/antagonists/sound/dancing_field.mp3', 100, 1, -1)
+	playsound(get_turf(src), pick(sound_type), 100, 1, -1)
 
 	for(var/i in 1 to duration-1)
 		for(var/A in orange (freezerange, loc))
 			if(isliving(A))
-				var/mob/living/M = A
-				if(M in immune)
+				var/mob/living/dancestoped_mob = A
+				if(dancestoped_mob in immune)
 					continue
-				M.notransform = TRUE
-				M.anchored = TRUE
-				M.apply_status_effect(STATUS_EFFECT_PACIFIED)
-				M.emote(pick(list("dance","spin","flip")))
-				if(ishostile(M))
-					var/mob/living/simple_animal/hostile/H = M
+				dancestoped_mob.notransform = TRUE
+				dancestoped_mob.anchored = TRUE
+				if(ishostile(dancestoped_mob))
+					var/mob/living/simple_animal/hostile/H = dancestoped_mob
 					H.AIStatus = AI_OFF
 					H.LoseTarget()
-				stopped_atoms |= M
-
+				if(prob(50))
+					dancestoped_mob.emote(pick(list("spin","dance")))
+				if(prob(20))
+					dancestoped_mob.emote("flip")
+				stopped_atoms |= dancestoped_mob
 
 		for(var/mob/living/M in stopped_atoms)
 			if(get_dist(get_turf(M),get_turf(src)) > freezerange) //If they lagged/ran past the timestop somehow, just ignore them
 				unfreeze_mob(M)
 				stopped_atoms -= M
 		sleep(1)
+	for(var/mob/living/M in stopped_atoms)
+		unfreeze_mob(M)
+	qdel(src)
+	return
 
 /datum/spellbook_entry/dancestop
 	name = "Dance Stop"

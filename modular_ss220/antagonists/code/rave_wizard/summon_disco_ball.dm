@@ -8,7 +8,6 @@
 	summon_amt = 1
 	aoe_range = 0
 	level_max = 0 //cannot be improved
-	summon_lifespan = 400 SECONDS
 	action_icon_state = "no_state"
 	action_background_icon_state = "summon_disco"
 	action_icon = 'modular_ss220/antagonists/icons/rave.dmi'
@@ -17,7 +16,7 @@
 /obj/effect/proc_holder/spell/aoe/conjure/summon_disco/cast(list/targets, mob/living/user = usr)
 	if(!our_disco)
 		var/list/summoned_items = ..()
-		if(summoned_items)
+		if(summoned_items || summoned_items.len > 0)
 			our_disco = summoned_items[1]
 	else
 		playsound(get_turf(src), cast_sound, 50, 1)
