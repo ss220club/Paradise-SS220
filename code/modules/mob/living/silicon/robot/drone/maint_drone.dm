@@ -410,7 +410,7 @@
 		return FALSE // Pretty damn hard to path through space
 
 	var/turf/target
-	for(var/obj/machinery/drone_fabricator/DF in GLOB.machines)
+	for(var/obj/machinery/drone_fabricator/DF as anything in SSmachines.get_machinery_of_type(/obj/machinery/drone_fabricator))
 		if(DF.z != z)
 			continue
 		target = get_turf(DF)
