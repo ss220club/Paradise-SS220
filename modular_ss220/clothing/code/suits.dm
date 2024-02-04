@@ -210,3 +210,13 @@
 					/obj/item/clothing/suit/storage/soundhand_brown_jacket)
 	cost = 600
 	containername = "soundhand fan crate"
+
+/obj/item/clothing/suit/armor/vest/security
+	var/unique_reskin = FALSE //allows one-time reskinning
+	unique_reskin = TRUE
+	var/list/options = list()
+
+/obj/item/clothing/suit/armor/vest/security/Initialize(mapload)
+	. = ..()
+	options["Default"] = "armor"
+	options["Small"] = "sarmor"
