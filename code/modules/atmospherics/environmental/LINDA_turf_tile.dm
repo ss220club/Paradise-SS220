@@ -279,7 +279,7 @@
 		var/turf/current_turf = unchecked_turfs[1]
 		var/list/connected_turfs = current_turf.GetAtmosAdjacentTurfs()
 		if(checked_turfs.len < 30)
-			for (var/turf/simulated/turf in connected_turfs)
+			for(var/turf/simulated/turf in connected_turfs)
 				if(!unchecked_turfs.Find(turf) && !checked_turfs.Find(turf))
 					unchecked_turfs.Add(connected_turfs)
 		checked_turfs.Add(current_turf)
