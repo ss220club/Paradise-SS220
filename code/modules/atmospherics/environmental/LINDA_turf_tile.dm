@@ -287,7 +287,7 @@
 	decompression(checked_turfs, space_turf)
 
 /turf/simulated/proc/decompression(list/turfs, turf/space/space_turf, turn = 0)
-	for (var/turf/simulated/turf in turfs)
+	for(var/turf/simulated/turf in turfs)
 		var/difference = turf.air.total_moles() / 2
 
 		turf.air.oxygen /= 2
