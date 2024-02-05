@@ -1,5 +1,6 @@
 /datum/job/donor/vip_guest
 	title = "VIP Corporate Guest"
+	department_flag = JOBCAT_ENGSEC
 	flag = JOB_VIP_GUEST
 	ru_title = "VIP Гость"
 	alt_titles = list("VIP Гость", "VIP Персона", "VIP Гость NT", "VIP Персона NT", "Гость Корпорации NT")
@@ -41,6 +42,7 @@
 
 /datum/job/donor/banker
 	title = "Banker"
+	department_flag = JOBCAT_ENGSEC
 	flag = JOB_BANKER
 	ru_title = "Банкир"
 	alt_titles = list("Банкир", "Независимый Банкир", "Корпорат", "Бизнесмен", "Банкир NT", "Корпорат NT", "Бизнесмен NT")
@@ -88,6 +90,7 @@
 
 /datum/job/donor/seclown
 	title = "Security Clown"
+	department_flag = JOBCAT_ENGSEC
 	flag = JOB_SECURITY_CLOWN
 	total_positions = 1
 	spawn_positions = 1

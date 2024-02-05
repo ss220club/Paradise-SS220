@@ -1,5 +1,6 @@
 /datum/job/donor/adjutant
 	title = "Adjutant"
+	department_flag = JOBCAT_MEDSCI
 	flag = JOB_ADJUTANT
 	total_positions = 1
 	spawn_positions = 1
@@ -48,9 +49,10 @@
 	satchel = /obj/item/storage/backpack/satchel_sec
 	dufflebag = /obj/item/storage/backpack/duffel/security
 
-
+/*
 /datum/job/donor/butler
 	title = "Butler"
+	department_flag = JOBCAT_MEDSCI
 	flag = JOB_BUTLER
 	total_positions = 1
 	spawn_positions = 1
@@ -90,10 +92,11 @@
 		/obj/item/clothing/suit/storage/iaa/blackjacket = 1,
 		/obj/item/clothing/suit/chef/classic = 1,
 		)
-
+*/
 
 /datum/job/donor/maid
 	title = "Maid"
+	department_flag = JOBCAT_MEDSCI
 	flag = JOB_MAID
 	total_positions = 1
 	spawn_positions = 1
@@ -133,6 +136,7 @@
 
 /datum/job/donor/representative_tsf
 	title = "Representative TSF"
+	department_flag = JOBCAT_ENGSEC
 	flag = JOB_REPRESENTATIVE_TSF
 	total_positions = 1
 	spawn_positions = 1
@@ -183,6 +187,7 @@
 
 /datum/job/donor/representative_ussp
 	title = "Representative USSP"
+	department_flag = JOBCAT_ENGSEC
 	flag = JOB_REPRESENTATIVE_USSP
 	total_positions = 1
 	spawn_positions = 1
@@ -235,6 +240,7 @@
 
 /datum/job/donor/dealer
 	title = "Dealer"
+	department_flag = JOBCAT_ENGSEC
 	flag = JOB_DEALER
 	total_positions = 2
 	spawn_positions = 2

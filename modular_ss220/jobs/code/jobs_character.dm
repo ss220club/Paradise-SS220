@@ -102,6 +102,32 @@
 					if(4)
 						clothes_s.Blend(new /icon('icons/mob/clothing/back.dmi', "satchel"), ICON_OVERLAY)
 
+			if(JOB_ACTOR, JOB_ADMINISTRATOR, JOB_TOURIST_TSF, JOB_TOURIST_USSP, JOB_MANAGER_JANITOR, /* JOB_APPRENTICE, */ JOB_GUARD, JOB_MIGRANT, JOB_UNCERTAIN)
+				if(prob(50))
+					clothes_s = new /icon('icons/mob/clothing/under/procedure.dmi', "iaa_s")
+				else
+					clothes_s = new /icon('icons/mob/clothing/under/misc.dmi', "waiter_s")
+				clothes_s.Blend(new /icon('icons/mob/clothing/feet.dmi', "laceups"), ICON_UNDERLAY)
+				if(prob(70))
+					clothes_s.Blend(new /icon('icons/mob/clothing/head.dmi', "fez"), ICON_OVERLAY)
+				if(backbag == 2)
+					clothes_s.Blend(new /icon('icons/mob/clothing/back.dmi', "backpack"), ICON_OVERLAY)
+				else if(backbag == 3 || backbag == 4)
+					clothes_s.Blend(new /icon('icons/mob/clothing/back.dmi', "satchel"), ICON_OVERLAY)
+
+
+			if(JOB_ADJUTANT, /* JOB_BUTLER, */ JOB_MAID)
+				clothes_s = new /icon('icons/mob/clothing/under/procedure.dmi', "lawyer_black[g ? "_skirt" : ""]_s")
+				clothes_s.Blend(new /icon('icons/mob/clothing/feet.dmi', "laceups"), ICON_UNDERLAY)
+				if(prob(10))
+					clothes_s.Blend(new /icon('icons/mob/clothing/eyes.dmi', "monocle"), ICON_OVERLAY)
+				if(prob(70))
+					clothes_s.Blend(new /icon('icons/mob/clothing/head.dmi', "beaver_hat"), ICON_OVERLAY)
+				if(backbag == 2)
+					clothes_s.Blend(new /icon('icons/mob/clothing/back.dmi', "backpack"), ICON_OVERLAY)
+				else if(backbag == 3 || backbag == 4)
+					clothes_s.Blend(new /icon('icons/mob/clothing/back.dmi', "satchel"), ICON_OVERLAY)
+
 
 	else if(job_engsec_high)
 		switch(job_engsec_high)
@@ -137,40 +163,7 @@
 					if(4)
 						clothes_s.Blend(new /icon('icons/mob/clothing/back.dmi', "satchel"), ICON_OVERLAY)
 
-
-	else if(job_support_high)
-		switch(job_support_high)
-			if(JOB_PRISON)
-				if(prob(95))
-					clothes_s = new /icon('icons/mob/clothing/under/color.dmi', "prisoner_s")
-				else
-					clothes_s = new /icon('icons/mob/clothing/under/color.dmi', "prisoner_d_s")
-				clothes_s.Blend(new /icon('icons/mob/clothing/feet.dmi', "orange"), ICON_UNDERLAY)
-
-			if(JOB_BARBER, JOB_BATH, JOB_CASINO, JOB_WAITER, JOB_ACOLYTE, JOB_DELIVERER, JOB_BOXER, JOB_PAINTER, JOB_MUSICIAN, JOB_ACTOR)
-				clothes_s = new /icon('icons/mob/clothing/under/civilian.dmi', "barber_s")
-				clothes_s.Blend(new /icon('icons/mob/clothing/feet.dmi', "laceups"), ICON_UNDERLAY)
-				if(prob(70))
-					clothes_s.Blend(new /icon('icons/mob/clothing/head.dmi', "boater_hat"), ICON_OVERLAY)
-				if(backbag == 2)
-					clothes_s.Blend(new /icon('icons/mob/clothing/back.dmi', "backpack"), ICON_OVERLAY)
-				else if(backbag == 3 || backbag == 4)
-					clothes_s.Blend(new /icon('icons/mob/clothing/back.dmi', "satchel"), ICON_OVERLAY)
-
-			if(JOB_ADMINISTRATOR, JOB_TOURIST_TSF, JOB_TOURIST_USSP, JOB_MANAGER_JANITOR, JOB_APPRENTICE, JOB_GUARD, JOB_MIGRANT, JOB_UNCERTAIN)
-				if(prob(50))
-					clothes_s = new /icon('icons/mob/clothing/under/procedure.dmi', "iaa_s")
-				else
-					clothes_s = new /icon('icons/mob/clothing/under/misc.dmi', "waiter_s")
-				clothes_s.Blend(new /icon('icons/mob/clothing/feet.dmi', "laceups"), ICON_UNDERLAY)
-				if(prob(70))
-					clothes_s.Blend(new /icon('icons/mob/clothing/head.dmi', "fez"), ICON_OVERLAY)
-				if(backbag == 2)
-					clothes_s.Blend(new /icon('icons/mob/clothing/back.dmi', "backpack"), ICON_OVERLAY)
-				else if(backbag == 3 || backbag == 4)
-					clothes_s.Blend(new /icon('icons/mob/clothing/back.dmi', "satchel"), ICON_OVERLAY)
-
-			if(JOB_ADJUTANT, JOB_BUTLER, JOB_MAID, JOB_REPRESENTATIVE_TSF, JOB_REPRESENTATIVE_USSP, JOB_DEALER)
+			if(JOB_REPRESENTATIVE_TSF, JOB_REPRESENTATIVE_USSP, JOB_DEALER)
 				clothes_s = new /icon('icons/mob/clothing/under/procedure.dmi', "lawyer_black[g ? "_skirt" : ""]_s")
 				clothes_s.Blend(new /icon('icons/mob/clothing/feet.dmi', "laceups"), ICON_UNDERLAY)
 				if(prob(10))
@@ -213,6 +206,26 @@
 					clothes_s.Blend(new /icon('icons/mob/clothing/back.dmi', "clownpack"), ICON_OVERLAY)
 				else if(backbag == 3 || backbag == 4)
 					clothes_s.Blend(new /icon('icons/mob/clothing/back.dmi', "satchel-clown"), ICON_OVERLAY)
+
+
+	else if(job_support_high)
+		switch(job_support_high)
+			if(JOB_PRISON)
+				if(prob(95))
+					clothes_s = new /icon('icons/mob/clothing/under/color.dmi', "prisoner_s")
+				else
+					clothes_s = new /icon('icons/mob/clothing/under/color.dmi', "prisoner_d_s")
+				clothes_s.Blend(new /icon('icons/mob/clothing/feet.dmi', "orange"), ICON_UNDERLAY)
+
+			if(JOB_BARBER, JOB_BATH, JOB_CASINO, JOB_WAITER, JOB_ACOLYTE, JOB_DELIVERER, JOB_BOXER, /* JOB_PAINTER, */ JOB_MUSICIAN)
+				clothes_s = new /icon('icons/mob/clothing/under/civilian.dmi', "barber_s")
+				clothes_s.Blend(new /icon('icons/mob/clothing/feet.dmi', "laceups"), ICON_UNDERLAY)
+				if(prob(70))
+					clothes_s.Blend(new /icon('icons/mob/clothing/head.dmi', "boater_hat"), ICON_OVERLAY)
+				if(backbag == 2)
+					clothes_s.Blend(new /icon('icons/mob/clothing/back.dmi', "backpack"), ICON_OVERLAY)
+				else if(backbag == 3 || backbag == 4)
+					clothes_s.Blend(new /icon('icons/mob/clothing/back.dmi', "satchel"), ICON_OVERLAY)
 
 	return clothes_s
 

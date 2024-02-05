@@ -1,5 +1,6 @@
 /datum/job/donor/administrator
 	title = "Administrator"
+	department_flag = JOBCAT_MEDSCI
 	flag = JOB_ADMINISTRATOR
 	total_positions = 1
 	spawn_positions = 1
@@ -44,6 +45,7 @@
 
 /datum/job/donor/tourist_tsf
 	title = "Tourist TSF"
+	department_flag = JOBCAT_MEDSCI
 	flag = JOB_TOURIST_TSF
 	ru_title = "Турист ТСФ"
 	alt_titles = list("Турист ТСФ", "Посетитель ТСФ")
@@ -83,6 +85,7 @@
 
 /datum/job/donor/tourist_ussp
 	title = "Tourist USSP"
+	department_flag = JOBCAT_MEDSCI
 	flag = JOB_TOURIST_USSP
 	ru_title = "Турист СССП"
 	alt_titles = list("Турист СССП", "Посетитель СССП")
@@ -125,6 +128,7 @@
 
 /datum/job/donor/cleaning_manager
 	title = "Cleaning Manager"
+	department_flag = JOBCAT_MEDSCI
 	flag = JOB_MANAGER_JANITOR
 	total_positions = 2
 	spawn_positions = 2
@@ -162,9 +166,10 @@
 		/obj/item/clipboard = 1,
 	)
 
-
+/*
 /datum/job/donor/apprentice
 	title = "Apprentice"
+	department_flag = JOBCAT_MEDSCI
 	flag = JOB_APPRENTICE
 	total_positions = 3
 	spawn_positions = 3
@@ -202,10 +207,11 @@
 		/obj/item/clothing/under/pants/shorts/grey = 1,
 		/obj/item/clothing/under/misc/assistantformal = 1,
 	)
-
+*/
 
 /datum/job/donor/guard
 	title = "Guard"
+	department_flag = JOBCAT_MEDSCI
 	flag = JOB_GUARD
 	total_positions = 1
 	spawn_positions = 1
@@ -243,6 +249,7 @@
 
 /datum/job/donor/migrant
 	title = "Migrant"
+	department_flag = JOBCAT_MEDSCI
 	flag = JOB_MIGRANT
 	ru_title = "Мигрант"
 	alt_titles = list("Мигрант")
@@ -281,6 +288,7 @@
 
 /datum/job/donor/uncertain
 	title = "Uncertain"
+	department_flag = JOBCAT_MEDSCI
 	flag = JOB_UNCERTAIN
 	ru_title = "Безработный"
 	alt_titles = list("Безработный", "Безработный Ассистент", "Свободный Ассистент", "Отрабатыващий Ассистент", "Ассистент Технических Тоннелей")

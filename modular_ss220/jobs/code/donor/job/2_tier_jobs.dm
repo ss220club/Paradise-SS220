@@ -1,5 +1,6 @@
 /datum/job/donor/barber
 	title = "Barber"
+	department_flag = JOBCAT_SUPPORT
 	flag = JOB_BARBER
 	total_positions = 1
 	spawn_positions = 1
@@ -30,6 +31,7 @@
 
 /datum/job/donor/bath
 	title = "Bath"
+	department_flag = JOBCAT_SUPPORT
 	flag = JOB_BATH
 	total_positions = 1
 	spawn_positions = 1
@@ -71,6 +73,7 @@
 
 /datum/job/donor/casino
 	title = "Casino"
+	department_flag = JOBCAT_SUPPORT
 	flag = JOB_CASINO
 	total_positions = 3
 	spawn_positions = 3
@@ -108,6 +111,7 @@
 
 /datum/job/donor/waiter
 	title = "Waiter"
+	department_flag = JOBCAT_SUPPORT
 	flag = JOB_WAITER
 	total_positions = 3
 	spawn_positions = 3
@@ -144,6 +148,7 @@
 
 /datum/job/donor/acolyte
 	title = "Acolyte"
+	department_flag = JOBCAT_SUPPORT
 	flag = JOB_ACOLYTE
 	total_positions = 5
 	spawn_positions = 5
@@ -175,6 +180,7 @@
 
 /datum/job/donor/deliverer
 	title = "Deliverer"
+	department_flag = JOBCAT_SUPPORT
 	flag = JOB_DELIVERER
 	total_positions = 1
 	spawn_positions = 1
@@ -234,6 +240,7 @@
 
 /datum/job/donor/wrestler
 	title = "Wrestler"
+	department_flag = JOBCAT_SUPPORT
 	flag = JOB_BOXER
 	total_positions = 4
 	spawn_positions = 4
@@ -278,9 +285,10 @@
 		/obj/item/storage/belt/fannypack/red = 1,
 	)
 
-
+/*
 /datum/job/donor/painter
 	title = "Painter"
+	department_flag = JOBCAT_SUPPORT
 	flag = JOB_PAINTER
 	total_positions = 1
 	spawn_positions = 1
@@ -321,10 +329,12 @@
 		/obj/item/toy/crayon/rainbow = 1,
 		/obj/item/painter = 1,
 	)
+*/
 
 
 /datum/job/donor/musican
 	title = "Musician"
+	department_flag = JOBCAT_SUPPORT
 	flag = JOB_MUSICIAN
 	total_positions = 1
 	spawn_positions = 1
@@ -366,6 +376,7 @@
 
 /datum/job/donor/actor
 	title = "Actor"
+	department_flag = JOBCAT_MEDSCI
 	flag = JOB_ACTOR
 	total_positions = 5
 	spawn_positions = 5
