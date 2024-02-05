@@ -1,7 +1,7 @@
 //Uncategorized mobs
 
 /mob/living/silicon/ai/add_tts_component()
-	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/glados)
+	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/glados, TTS_TRAIT_ROBOTIZE)
 
 /obj/item/nullrod/scythe/talking/add_tts_component()
 	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/sylvanas)
@@ -13,10 +13,10 @@
 	return
 
 /mob/living/simple_animal/bot/mulebot/add_tts_component()
-	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/training_robot)
+	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/training_robot, TTS_TRAIT_ROBOTIZE)
 
 /mob/living/simple_animal/bot/honkbot/add_tts_component()
-	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/training_robot)
+	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/training_robot, TTS_TRAIT_ROBOTIZE)
 
 /mob/living/simple_animal/slime/add_tts_component()
 	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/chen)
