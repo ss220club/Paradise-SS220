@@ -16,41 +16,41 @@
 	set category = "OOC"
 
 	if(!GLOB.configuration.general.respawn_enabled && !check_rights(R_ADMIN))
-		to_chat(usr, span_warning("Respawning is disabled."))
+		to_chat(usr, span_warning("Возрождение отключено."))
 		return
 
 	if(stat != DEAD || !SSticker)
-		to_chat(usr, span_boldnotice("You must be dead to use this!"))
+		to_chat(usr, span_boldnotice("Вы должны быть мертвы чтобы возродиться!"))
 		return
 
 	var/deathtime = world.time - timeofdeath
 	if(isobserver(src))
 		var/mob/dead/observer/G = src
 		if(!HAS_TRAIT(G, TRAIT_RESPAWNABLE) && !check_rights(R_ADMIN))
-			to_chat(usr, span_warning("You currently do not have respawnability!"))
+			to_chat(usr, span_warning("У Вас сейчас нет возможности возрождения!"))
 			return
 
 	var/deathtimeminutes = round(deathtime / 600)
-	var/pluralcheck = "minute"
+	var/pluralcheck = "минут"
 	if(deathtimeminutes == 0)
 		pluralcheck = ""
 	else if(deathtimeminutes == 1)
-		pluralcheck = "[deathtimeminutes] minute and"
+		pluralcheck = "[deathtimeminutes] минута и"
 	else if(deathtimeminutes > 1)
-		pluralcheck = "[deathtimeminutes] minutes and"
+		pluralcheck = "[deathtimeminutes] минут(-ы) и"
 	var/deathtimeseconds = round((deathtime - deathtimeminutes * 600) / 10,1)
 
 	if(deathtimeminutes < GLOB.configuration.ss220_misc.respawn_delay && !check_rights(R_ADMIN))
-		to_chat(usr, span_notice("You have been dead for[pluralcheck] [deathtimeseconds] second\s."))
-		to_chat(usr, span_warning("You must wait [GLOB.configuration.ss220_misc.respawn_delay] minutes to respawn!"))
+		to_chat(usr, span_notice("Вы мертвы[pluralcheck] [deathtimeseconds] секунд(-ы)."))
+		to_chat(usr, span_warning("Вы должны подождать ещё [GLOB.configuration.ss220_misc.respawn_delay] минут чтобы возродиться!"))
 		return
 
-	if(alert("Are you sure you want to respawn?", "Respawn", "Yes", "No") != "Yes")
+	if(alert("Вы уверен что хотите возродиться?", "Возрождение", "Да", "Нет") != "Да")
 		return
 
 	log_game("[key_name(usr)] has respawned.")
 
-	to_chat(usr, span_boldnotice("Make sure to play a different character, and please roleplay correctly!"))
+	to_chat(usr, span_boldnotice("Убедитесь, что Вы играете другим персонажем, и, пожалуйста, отыгрывайте корректно!"))
 
 	if(!client)
 		log_game("[key_name(usr)] respawn failed due to disconnect.")
