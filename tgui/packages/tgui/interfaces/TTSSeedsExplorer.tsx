@@ -14,7 +14,7 @@ import {
 } from '../components';
 import { Window } from '../layouts';
 
-type Seeds = {
+type Seed = {
   name: string;
   category: string;
   gender: string;
@@ -22,7 +22,7 @@ type Seeds = {
   required_donator_level: number;
 };
 
-type Providers = {
+type Provider = {
   name: string;
   is_enabled: BooleanLike;
 };
@@ -32,8 +32,8 @@ type TTSData = {
   character_gender: string;
   selected_seed: string | null;
   phrases: string[];
-  providers: Providers[];
-  seeds: Seeds[];
+  providers: Provider[];
+  seeds: Seed[];
 };
 
 const donatorTiers = {
