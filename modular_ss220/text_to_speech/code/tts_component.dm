@@ -132,12 +132,47 @@
 
 	if(!message)
 		return
-	if(!(listener?.client))
+	if(!(listener?.client) || !listener.can_hear())
 		return
+	if(islist(message))
+		if(!ismob(speaker))
+			return
+		message = combine_message_tts(message, speaker, listener)
+	if(effect == SOUND_EFFECT_RADIO)
+		if(parent == speaker && !(isrobot(parent) || isAI(parent)))
+			return
 
 	effect = get_effect(effect)
 
 	INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(tts_cast), location, listener, message, tts_seed, is_local, effect, traits, preSFX, postSFX)
+
+/datum/component/tts_component/proc/combine_message_tts(list/message_pieces, mob/speaker, mob/listener)
+	var/iteration_count = 0
+	var/msg = ""
+	for(var/datum/multilingual_say_piece/say_piece in message_pieces)
+		iteration_count++
+		var/piece = say_piece.message
+		if(piece == "")
+			continue
+
+		if(say_piece.speaking?.flags & INNATE) // TTS should not read emotes like "laughts"
+			return ""
+
+		if(iteration_count == 1)
+			piece = capitalize(piece)
+
+		if(!listener.say_understands(speaker, say_piece.speaking))
+			if(isanimal(speaker))
+				var/mob/living/simple_animal/S = speaker
+				if(!LAZYLEN(S.speak))
+					continue
+				piece = pick(S.speak)
+			else if(say_piece.speaking)
+				piece = say_piece.speaking.scramble(piece)
+			else
+				continue
+		msg += (piece + " ")
+	return trim(msg)
 
 /datum/component/tts_component/proc/tts_trait_add(atom/user, trait)
 	SIGNAL_HANDLER
