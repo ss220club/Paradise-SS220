@@ -1,5 +1,5 @@
 /obj/machinery/add_tts_component()
-	AddComponent(/datum/component/tts_component, "Glados")
+	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/glados)
 
 /obj/machinery/computer/add_tts_component()
 	return
@@ -11,10 +11,10 @@
 	return
 
 /obj/item/taperecorder/add_tts_component()
-	AddComponent(/datum/component/tts_component, "Xenia")
+	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/xenia)
 
 /obj/item/ttsdevice/add_tts_component()
-	AddComponent(/datum/component/tts_component, "Xenia")
+	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/xenia)
 
 /obj/structure/mirror/magic/Initialize(mapload, newdir, building)
 	. = ..()

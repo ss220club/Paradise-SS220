@@ -10,13 +10,16 @@
 	UnregisterSignal(parent, COMSIG_ATOM_CAST_TTS)
 
 /datum/component/tts_component/Initialize(datum/tts_seed/new_tts_seed)
-	. = ..()
 	if(!isatom(parent))
 		return COMPONENT_INCOMPATIBLE
+	if(ispath(new_tts_seed) && SStts220.tts_seeds[initial(new_tts_seed.name)])
+		new_tts_seed = SStts220.tts_seeds[initial(new_tts_seed.name)]
 	if(istype(new_tts_seed))
 		tts_seed = new_tts_seed
 	if(!tts_seed)
 		tts_seed = get_random_tts_seed_by_gender()
+	if(!tts_seed) // Something went terribly wrong
+		return COMPONENT_INCOMPATIBLE
 
 /datum/component/tts_component/proc/return_tts_seed()
 	SIGNAL_HANDLER

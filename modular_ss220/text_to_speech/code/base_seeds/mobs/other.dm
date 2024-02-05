@@ -1,115 +1,115 @@
 //Uncategorized mobs
 
 /mob/living/silicon/ai/add_tts_component()
-	AddComponent(/datum/component/tts_component, "Glados")
+	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/glados)
 
 /obj/item/nullrod/scythe/talking/add_tts_component()
-	AddComponent(/datum/component/tts_component, "Sylvanas")
+	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/sylvanas)
 
 /mob/living/simple_animal/shade/add_tts_component()
-	AddComponent(/datum/component/tts_component, "Kelthuzad")
+	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/kelthuzad)
 
 /mob/living/simple_animal/bot/add_tts_component()
 	return
 
 /mob/living/simple_animal/bot/mulebot/add_tts_component()
-	AddComponent(/datum/component/tts_component, "Training_robot")
+	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/training_robot)
 
 /mob/living/simple_animal/bot/honkbot/add_tts_component()
-	AddComponent(/datum/component/tts_component, "Training_robot")
+	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/training_robot)
 
 /mob/living/simple_animal/slime/add_tts_component()
-	AddComponent(/datum/component/tts_component, "Chen")
+	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/chen)
 
 /mob/living/carbon/human/species/monkey/add_tts_component()
-	AddComponent(/datum/component/tts_component, "Sniper")
+	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/sniper)
 
 /mob/living/carbon/human/species/monkey/punpun/add_tts_component()
-	AddComponent(/datum/component/tts_component, "Chen")
+	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/chen)
 
 // Friendly
 
 /mob/living/simple_animal/frog/add_tts_component()
-	AddComponent(/datum/component/tts_component, "pantheon")
+	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/pantheon)
 
 /mob/living/simple_animal/lizard/add_tts_component()
-	AddComponent(/datum/component/tts_component, "Ladyvashj")
+	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/ladyvashj)
 
 /mob/living/simple_animal/mouse/add_tts_component()
-	AddComponent(/datum/component/tts_component, "Gyro")
+	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/gyro)
 
 /mob/living/simple_animal/mouse/white/add_tts_component()
-	AddComponent(/datum/component/tts_component, "Meepo")
+	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/meepo)
 
 /mob/living/simple_animal/mouse/brown/add_tts_component()
-	AddComponent(/datum/component/tts_component, "Clockwerk")
+	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/clockwerk)
 
 /mob/living/simple_animal/mouse/brown/Tom/add_tts_component()
-	AddComponent(/datum/component/tts_component, "Arthas")
+	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/arthas)
 
 /mob/living/simple_animal/mouse/fluff/clockwork/add_tts_component()
-	AddComponent(/datum/component/tts_component, "Clockwerk")
+	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/clockwerk)
 
 /mob/living/simple_animal/mouse/hamster/add_tts_component()
-	AddComponent(/datum/component/tts_component, "Gyro")
+	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/gyro)
 
 /mob/living/simple_animal/mouse/hamster/baby/add_tts_component()
-	AddComponent(/datum/component/tts_component, "Meepo")
+	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/meepo)
 
 /mob/living/simple_animal/hostile/retaliate/goat/add_tts_component()
-	AddComponent(/datum/component/tts_component, "Muradin")
+	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/muradin)
 
 /mob/living/simple_animal/cow/add_tts_component()
-	AddComponent(/datum/component/tts_component, "Cairne")
+	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/cairne)
 
 /mob/living/simple_animal/chicken/add_tts_component()
-	AddComponent(/datum/component/tts_component, "Windranger")
+	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/windranger)
 
 /mob/living/simple_animal/chick/add_tts_component()
-	AddComponent(/datum/component/tts_component, "Meepo")
+	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/meepo)
 
 /mob/living/simple_animal/cock/add_tts_component()
-	AddComponent(/datum/component/tts_component, "pantheon")
+	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/pantheon)
 
 /mob/living/simple_animal/pig/add_tts_component()
-	AddComponent(/datum/component/tts_component, "Anubarak")
+	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/anubarak)
 
 /mob/living/simple_animal/seal/add_tts_component()
-	AddComponent(/datum/component/tts_component, "Narrator")
+	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/narrator)
 
 /mob/living/simple_animal/moth/add_tts_component()
-	AddComponent(/datum/component/tts_component, "Tychus")
+	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/tychus)
 
 /mob/living/simple_animal/mothroach/add_tts_component()
-	AddComponent(/datum/component/tts_component, "Tychus")
+	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/tychus)
 
 /mob/living/simple_animal/possum/add_tts_component()
-	AddComponent(/datum/component/tts_component, "Clockwerk")
+	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/clockwerk)
 
 /mob/living/simple_animal/snail/add_tts_component()
-	AddComponent(/datum/component/tts_component, "Ladyvashj")
+	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/ladyvashj)
 
 /mob/living/simple_animal/turtle/add_tts_component()
-	AddComponent(/datum/component/tts_component, "Ladyvashj")
+	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/ladyvashj)
 
 // Hostile
 /mob/living/simple_animal/hostile/poison_snake/add_tts_component()
-	AddComponent(/datum/component/tts_component, "Ladyvashj")
+	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/ladyvashj)
 
 /mob/living/simple_animal/hostile/abomination/add_tts_component()
-	AddComponent(/datum/component/tts_component, "Anubarak")
+	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/anubarak)
 
 /mob/living/simple_animal/hostile/clown/mutant/add_tts_component()
-	AddComponent(/datum/component/tts_component, "Kleiner")
+	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/kleiner)
 
 /mob/living/simple_animal/hostile/deadwizard/add_tts_component()
-	AddComponent(/datum/component/tts_component, "Abaddon")
+	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/abaddon)
 
 /mob/living/simple_animal/hostile/lizard/add_tts_component()
-	AddComponent(/datum/component/tts_component, "Shaker")
+	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/shaker)
 
 /mob/living/simple_animal/hostile/retaliate/poison/snake/add_tts_component()
-	AddComponent(/datum/component/tts_component, "Ladyvashj")
+	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/ladyvashj)
 
 /mob/living/simple_animal/hostile/blackmesa/xen/add_tts_component()
-	AddComponent(/datum/component/tts_component, "Vortiger")
+	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/vort)
