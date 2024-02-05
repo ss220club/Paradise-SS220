@@ -235,12 +235,15 @@
 		homerun_ready = TRUE
 	. = ..()
 
-//Pneuma rifle
-/obj/item/gun/projectile/automatic/pneumaticweapon
+//Pneumagun
+/obj/item/gun/projectile/automatic/pneumaticgun
 	name = "Пневморужье"
 	desc = "Стандартное пневморужье"
-	icon_state = "mini-uzi"  // исправить
-	//item_state = "wt550"  // исправить
+	lefthand_file = 'modular_ss220/objects/icons/inhands/guns_lefthand.dmi'
+	righthand_file = 'modular_ss220/objects/icons/inhands/guns_righthand.dmi'
+	icon = 'modular_ss220/objects/icons/guns.dmi'
+	icon_state = "pneumagun"
+	item_state = "pneumagun"
 	w_class = WEIGHT_CLASS_NORMAL
 	mag_type = /obj/item/ammo_box/magazine/pneuma
 	magazine = new /obj/item/ammo_box/magazine/pneuma/pepper
@@ -250,26 +253,38 @@
 	fire_delay = 2
 	can_suppress = FALSE
 	burst_size = 1
+	actions_types = list()
 
-/obj/item/gun/projectile/automatic/pneumaticweapon/process_chamber(eject_casing = 0, empty_chamber = 1)
+/obj/item/gun/projectile/automatic/pneumaticgun/Initialize(mapload)
+	. = ..()
+	update_icon()
+
+/obj/item/gun/projectile/automatic/pneumaticgun/process_chamber(eject_casing = 0, empty_chamber = 1)
 	..(eject_casing, empty_chamber)
 
-/obj/item/gun/projectile/automatic/pneumaticweapon/update_icon_state()
+/obj/item/gun/projectile/automatic/pneumaticgun/update_icon_state()
+	var/obj/item/ammo_box/magazine/pneuma/M = magazine
+	icon_state = "pneumagun[M ? "[M.col]" : ""]"
+	item_state = icon_state
 
+//Базовые боеприпасы для пневморужья
 /obj/item/ammo_box/magazine/pneuma
 	name = "магазин пневморужья"
 	desc = "Наполняется шариками с реагентом."
 	caliber = "pneumatic"
-	icon_state = "uzi9mm" // исправить
-	//materials = list()
+	var/col = "_g"  // Цвет магазина (необходим для выбора скина)
+	icon = 'modular_ss220/objects/icons/ammo.dmi'
+	icon_state = "pneumamag_g"
 	ammo_type = /obj/item/ammo_casing/pneuma
 	max_ammo = 12
 	multiload = 0
 	//multi_sprite_step = 1 // see: /obj/item/ammo_box/update_icon()
 
 /obj/item/ammo_casing/pneuma
-	name = "шарик с веществом"
-	desc = "Шарик с неизвестным веществом."
+	name = "пневматический шарик"
+	desc = "Пустой пневматический шарик."
+	icon = 'modular_ss220/objects/icons/ammo.dmi'
+	icon_state = "pneumaball_g"
 	caliber = "pneumatic"
 	casing_drop_sound = null
 	projectile_type = /obj/item/projectile/bullet/pneumaball
@@ -278,6 +293,10 @@
 
 /obj/item/projectile/bullet/pneumaball
 	name = "пневматический шарик"
+	icon = 'modular_ss220/objects/icons/ammo.dmi'
+	icon_state = "pneumaball_g"
+	stamina = 7
+	damage = 1
 
 /obj/item/projectile/bullet/pneumaball/New()
 	..()
@@ -296,14 +315,16 @@
 // Боеприпасы для перцового типа пневморужья
 /obj/item/ammo_box/magazine/pneuma/pepper
 	ammo_type = /obj/item/ammo_casing/pneuma/pepper
+	col = "_r"
+	icon_state = "pneumamag_r"
 
 /obj/item/ammo_casing/pneuma/pepper
-	desc = "Шарик с капсаицином."
+	desc = "Шарик с капсаицином. Эффективно подходит для задержания преступников, не носящих очки."
 	projectile_type = /obj/item/projectile/bullet/pneumaball/pepper
+	icon_state = "pneumaball_r"
 
 /obj/item/projectile/bullet/pneumaball/pepper
-	stamina = 7
-	damage = 1
+	icon_state = "pneumaball_r"
 
 /obj/item/projectile/bullet/pneumaball/pepper/New()
 	..()
