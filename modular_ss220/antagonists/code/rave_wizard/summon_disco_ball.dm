@@ -26,6 +26,5 @@
 /datum/spellbook_entry/summon_disco
 	name = "Summon Disco Ball"
 	spell_type = /obj/effect/proc_holder/spell/aoe/conjure/summon_disco
-	cost = 3
-	category = "Offensive"
-
+	cost = 1
+	category = "Rave"

@@ -1,6 +1,8 @@
+#define SPELLBOOK_AVAILABLE_POINTS 4
 #define MAGIVENDS_PRODUCTS_REFILL_VALUE 20
 #define WIZARD_GREETING ("<span class='danger'>Вы — маг рейва!</span>")
 #define WIZARD_WIKI ("<span class='motd'>На вики-странице доступна более подробная информация: ([GLOB.configuration.url.wiki_url]/index.php/Wizard)</span>")
+#define RAVE_WIZARD_EVENT_WEIGHT 5
 
 /datum/event/rave_wizard
 
@@ -46,7 +48,6 @@
 	return new_character
 
 /datum/event/rave_wizard/proc/populate_magivends()
-	// Makes magivends PLENTIFUL
 	for(var/obj/machinery/economy/vending/magivend/magic in GLOB.machines)
 		for(var/key in magic.products)
 			magic.products[key] = MAGIVENDS_PRODUCTS_REFILL_VALUE // and so, there was prosperity for mages everywhere
@@ -66,16 +67,34 @@
 			current.loc = pick(GLOB.wizardstart)
 
 		SSticker.mode.equip_wizard(current)
+		src.learn_rave_spells()
 		for(var/obj/item/spellbook/S in current.contents)
 			S.op = 0
-		INVOKE_ASYNC(SSticker.mode, TYPE_PROC_REF(/datum/game_mode/wizard, name_wizard), current)
+			S.remove_harmful_spells_and_items()
+			S.uses = SPELLBOOK_AVAILABLE_POINTS
 		SSticker.mode.forge_rave_wizard_objectives(src)
 		SSticker.mode.greet_rave_wizard(src)
 		SSticker.mode.update_wiz_icons_added(src)
+		SSticker.mode.name_wizard(current)
 
+/datum/mind/proc/learn_rave_spells()
+	var/spell_paths = list(/obj/effect/proc_holder/spell/projectile/beer_missile,
+							/obj/effect/proc_holder/spell/aoe/conjure/timestop/dance,
+							/obj/effect/proc_holder/spell/great_revelry,
+							/obj/effect/proc_holder/spell/touch/rocker,
+							/obj/effect/proc_holder/spell/aoe/conjure/summon_disco)
+	for(var/spell_path in spell_paths)
+		var/S = new spell_path
+		src.AddSpell(S)
+
+/obj/item/spellbook/proc/remove_harmful_spells_and_items()
+	src.main_categories -= "Magical Items"
+	src.main_categories -= "Loadouts"
+	src.spell_categories -= "Offensive"
+	src.spell_categories -= "Rituals"
 
 /datum/game_mode/proc/greet_rave_wizard(datum/mind/wizard, you_are=1)
-	addtimer(CALLBACK(wizard.current, TYPE_PROC_REF(/mob, playsound_local), null, 'sound/ambience/antag/ragesmages.ogg', 100, 0), 30)
+	SEND_SOUND(wizard.current, sound('sound/ambience/antag/ragesmages.ogg'))
 	var/list/messages = list()
 	if(you_are)
 		messages.Add(WIZARD_GREETING)
@@ -95,8 +114,12 @@
 
 /datum/event_container/major/New()
 	. = ..()
-	available_events += list(new /datum/event_meta(EVENT_LEVEL_MAJOR, "Rave Wizard", /datum/event/rave_wizard, 10, is_one_shot = TRUE))
+	var/datum/event_meta/nothing_event = available_events[1]
+	nothing_event.weight -= RAVE_WIZARD_EVENT_WEIGHT
+	available_events += list(new /datum/event_meta(EVENT_LEVEL_MAJOR, "Rave Wizard", /datum/event/rave_wizard, RAVE_WIZARD_EVENT_WEIGHT, is_one_shot = TRUE))
 
 #undef MAGIVENDS_PRODUCTS_REFILL_VALUE
 #undef WIZARD_GREETING
 #undef WIZARD_WIKI
+#undef SPELLBOOK_AVAILABLE_POINTS
+#undef RAVE_WIZARD_EVENT_WEIGHT

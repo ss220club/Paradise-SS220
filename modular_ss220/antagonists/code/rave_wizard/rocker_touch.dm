@@ -1,13 +1,13 @@
 #define DRUGS_AMOUNT_INJECTED_BY_TUMOR 20
 #define ALCOHOL_AMOUNT_INJECTED_BY_TUMOR 20
+
 /obj/effect/proc_holder/spell/touch/rocker
 	name = "Rocker Touch"
-	desc = "Description"
+	desc = "Teach those foolish suits how to spend time in style"
 	hand_path = /obj/item/melee/touch_attack/rocker
 	school = "transmutation"
 	base_cooldown = 30 SECONDS
 	clothes_req = TRUE
-	cooldown_min = 100 //50 deciseconds reduction per rank
 	action_icon_state = "no_state"
 	action_background_icon_state = "curse"
 	action_icon = 'modular_ss220/antagonists/icons/rave.dmi'
@@ -23,7 +23,7 @@
 /datum/spellbook_entry/rocker_curse
 	name = "Alcoholism curse"
 	spell_type = /obj/effect/proc_holder/spell/touch/rocker
-	category = "Defensive"
+	category = "Rave"
 	cost = 1
 
 /obj/item/melee/touch_attack/rocker/afterattack(atom/target, mob/living/carbon/user, proximity)
@@ -78,10 +78,6 @@
 	shoes = /obj/item/clothing/shoes/jackboots/nodrop
 	suit = /obj/item/clothing/suit/leathercoat/nodrop
 	r_hand = /obj/item/instrument/eguitar
-
-/datum/outfit/rocker_cursed/pre_equip(mob/living/carbon/human/H, visualsOnly)
-
-	H.drop_r_hand()
 
 /obj/item/clothing/under/color/black/nodrop
 	flags = NODROP

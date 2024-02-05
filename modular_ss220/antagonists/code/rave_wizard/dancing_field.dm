@@ -6,13 +6,13 @@
 	action_background_icon_state = "dance_field"
 	action_icon = 'modular_ss220/antagonists/icons/rave.dmi'
 	summon_lifespan = 100
-
 	summon_type = list(/obj/effect/timestop/dancing/wizard)
 
 /obj/effect/timestop/dancing
 	name = "Dancing field"
 	desc = "Feel the heat"
-	icon_state = "no_state"
+	icon = 'icons/effects/160x160.dmi'
+	icon_state = "singularity_s5"
 	var/sound_type = list('modular_ss220/antagonists/sound/music1.mp3',
 						'modular_ss220/antagonists/sound/music2.mp3',
 						'modular_ss220/antagonists/sound/music3.mp3',
@@ -22,7 +22,6 @@
 
 /obj/effect/timestop/dancing/timestop()
 	playsound(get_turf(src), pick(sound_type), 100, 1, -1)
-
 	for(var/i in 1 to duration-1)
 		for(var/A in orange (freezerange, loc))
 			if(isliving(A))
@@ -40,7 +39,6 @@
 				if(prob(20))
 					dancestoped_mob.emote("flip")
 				stopped_atoms |= dancestoped_mob
-
 		for(var/mob/living/M in stopped_atoms)
 			if(get_dist(get_turf(M),get_turf(src)) > freezerange) //If they lagged/ran past the timestop somehow, just ignore them
 				unfreeze_mob(M)
@@ -54,7 +52,7 @@
 /datum/spellbook_entry/dancestop
 	name = "Dance Stop"
 	spell_type = /obj/effect/proc_holder/spell/aoe/conjure/timestop/dance
-	category = "Defensive"
+	category = "Rave"
 
 /obj/effect/timestop/dancing/wizard
 	duration = 100
