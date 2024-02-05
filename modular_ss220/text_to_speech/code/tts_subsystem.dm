@@ -325,6 +325,8 @@ SUBSYSTEM_DEF(tts220)
 		return
 	if(isnull(listener) || !listener.client)
 		return
+	if(ispath(tts_seed) && SStts220.tts_seeds[initial(tts_seed.name)])
+		tts_seed = SStts220.tts_seeds[initial(tts_seed.name)]
 	if(!istype(tts_seed))
 		return
 
