@@ -11,8 +11,8 @@
 /obj/effect/timestop/dancing
 	name = "Dancing field"
 	desc = "Feel the heat"
-	icon = 'icons/effects/160x160.dmi'
-	icon_state = "singularity_s5"
+	icon = 'modular_ss220/antagonists/icons/160x160.dmi'
+	icon_state = "dancing_ball"
 	var/sound_type = list('modular_ss220/antagonists/sound/music1.mp3',
 						'modular_ss220/antagonists/sound/music2.mp3',
 						'modular_ss220/antagonists/sound/music3.mp3',

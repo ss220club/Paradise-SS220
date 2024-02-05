@@ -26,7 +26,7 @@
 		var/mob/living/carbon/human/new_character = makeBody(new_wizard)
 		new_character.mind.make_rave_wizard()
 		// This puts them at the wizard spawn, worry not
-		new_character.equip_to_slot_or_del(new /obj/item/reagent_containers/food/drinks/mugwort(new_wizard), SLOT_HUD_IN_BACKPACK)
+		new_character.equip_to_slot_or_del(new /obj/item/reagent_containers/drinks/mugwort(new_wizard), SLOT_HUD_IN_BACKPACK)
 		new_character.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses, SLOT_HUD_GLASSES)
 		populate_magivends()
 		// The first wiznerd can get their mugwort from the wizard's den, new ones will also need mugwort!

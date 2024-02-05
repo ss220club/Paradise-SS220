@@ -17,7 +17,7 @@
 					/obj/item/reagent_containers/drinks/bottle/hcider,
 					/obj/item/reagent_containers/drinks/bottle/fernet)
 	action_icon_state = "no_state"
-	action_background_icon_state = "magic_beer"
+	action_background_icon_state = "revelry"
 	action_icon = 'modular_ss220/antagonists/icons/rave.dmi'
 
 /obj/effect/proc_holder/spell/great_revelry/create_new_targeting()
@@ -33,7 +33,7 @@
 		if(iswizard(H) || H?.mind.offstation_role)
 			return
 		var/alcohol_type = pick(beverages)
-		var/obj/item/reagent_containers/food/drinks/bottle/B = new alcohol_type(get_turf(H))
+		var/obj/item/reagent_containers/drinks/bottle/B = new alcohol_type(get_turf(H))
 		playsound(get_turf(H),'modular_ss220/antagonists/sound/beer_can_open.mp3', 50, TRUE)
 		H.drop_item() //drops item in active hand
 		var/in_hand = H.put_in_hands(B)

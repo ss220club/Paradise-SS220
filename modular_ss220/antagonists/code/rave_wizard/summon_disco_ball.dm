@@ -2,7 +2,7 @@
 	name = "Summon Disco Ball"
 	desc = "Summons a disco ball"
 	base_cooldown = 400 SECONDS
-	summon_type = list(/obj/machinery/jukebox/disco/anchored/indestructible)
+	summon_type = list(/obj/machinery/jukebox/disco/indestructible)
 	invocation = "YRTAP SELDEN"
 	invocation_type = "shout"
 	summon_amt = 1
@@ -11,7 +11,7 @@
 	action_icon_state = "no_state"
 	action_background_icon_state = "summon_disco"
 	action_icon = 'modular_ss220/antagonists/icons/rave.dmi'
-	var/obj/machinery/jukebox/disco/anchored/indestructible/our_disco
+	var/obj/machinery/jukebox/disco/indestructible/our_disco
 
 /obj/effect/proc_holder/spell/aoe/conjure/summon_disco/cast(list/targets, mob/living/user = usr)
 	if(!our_disco)
