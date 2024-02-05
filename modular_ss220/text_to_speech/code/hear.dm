@@ -38,6 +38,4 @@ GLOBAL_DATUM_INIT(default_announcer, /datum/tts_seed, new /datum/tts_seed/silero
 	if(!message)
 		return
 	for(var/mob/M in get_mobs_in_view(7, src))
-		if(!M.client)
-			continue
 		SEND_SIGNAL(src, COMSIG_ATOM_TTS_CAST, M, message, src)
