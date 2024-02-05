@@ -37,6 +37,6 @@
 	description = "Старый, заброшенный лагерь Эшей."
 	prefix = "_maps/map_files220/RandomRuins/LavaRuins/"
 	suffix = "ash_old.dmm"
-	cost = 25 // В себе имеет платы консоли заключенных и хим раздратчик, так же пнв модуль
+	cost = 10 // В себе имеет платы консоли заключенных и хим раздратчик, так же пнв модуль
 	always_place = FALSE
 	allow_duplicates = FALSE
