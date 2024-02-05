@@ -9,7 +9,7 @@
 	invocation_type = "none"
 	cooldown_min = 100 //50 deciseconds reduction per rank
 	nonabstract_req = TRUE
-	var/beverages = list(/obj/item/reagent_containers/food/drinks/bottle/vodka,
+	var/list/beverages = list(/obj/item/reagent_containers/food/drinks/bottle/vodka,
 					/obj/item/reagent_containers/food/drinks/bottle/whiskey,
 					/obj/item/reagent_containers/food/drinks/bottle/tequila,
 					/obj/item/reagent_containers/food/drinks/bottle/absinthe/premium,
