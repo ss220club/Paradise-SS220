@@ -9,13 +9,13 @@
 	invocation_type = "none"
 	cooldown_min = 100 //50 deciseconds reduction per rank
 	nonabstract_req = TRUE
-	var/list/beverages = list(/obj/item/reagent_containers/food/drinks/bottle/vodka,
-					/obj/item/reagent_containers/food/drinks/bottle/whiskey,
-					/obj/item/reagent_containers/food/drinks/bottle/tequila,
-					/obj/item/reagent_containers/food/drinks/bottle/absinthe/premium,
-					/obj/item/reagent_containers/food/drinks/bottle/absinthe,
-					/obj/item/reagent_containers/food/drinks/bottle/hcider,
-					/obj/item/reagent_containers/food/drinks/bottle/fernet)
+	var/list/beverages = list(/obj/item/reagent_containers/drinks/bottle/vodka,
+					/obj/item/reagent_containers/drinks/bottle/whiskey,
+					/obj/item/reagent_containers/drinks/bottle/tequila,
+					/obj/item/reagent_containers/drinks/bottle/absinthe/premium,
+					/obj/item/reagent_containers/drinks/bottle/absinthe,
+					/obj/item/reagent_containers/drinks/bottle/hcider,
+					/obj/item/reagent_containers/drinks/bottle/fernet)
 	action_icon_state = "no_state"
 	action_background_icon_state = "magic_beer"
 	action_icon = 'modular_ss220/antagonists/icons/rave.dmi'
