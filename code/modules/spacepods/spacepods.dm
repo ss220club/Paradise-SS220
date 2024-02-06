@@ -542,13 +542,13 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 //////  Movement procs  //////
 //////////////////////////////
 
-/obj/spacepod/onMouseMove(object,location,control,params)
-	if(!pilot || !pilot.client || pilot.incapacitated())
+/obj/spacepod/onMouseMove(object, location, control, params)
+	if(!pilot || !pilot.client || pilot.incapacitated() || params == null)
 		return // I don't know what's going on.
-	var/list/params_list = params2list(params)
-	var/sl_list = splittext(params_list["screen-loc"],",")
-	var/sl_x_list = splittext(sl_list[1], ":")
-	var/sl_y_list = splittext(sl_list[2], ":")
+	var/list/params_list = params2list(params) // icon-x, icon-y, screen-loc
+	var/sl_list = splittext(params_list["screen-loc"],",") // get only screen-loc
+	var/sl_x_list = splittext(sl_list[1], ":") // sl-x[1] = tile, sl-x[2] = pixel on tile
+	var/sl_y_list = splittext(sl_list[2], ":") // sl-y[1] = tile, sl-y[2] = pixel on tile
 	var/view_list = isnum(pilot.client.view) ? list("[pilot.client.view*2+1]","[pilot.client.view*2+1]") : splittext(pilot.client.view, "x")
 	var/dx = text2num(sl_x_list[1]) + (text2num(sl_x_list[2]) / world.icon_size) - 1 - text2num(view_list[1]) / 2
 	var/dy = text2num(sl_y_list[1]) + (text2num(sl_y_list[2]) / world.icon_size) - 1 - text2num(view_list[2]) / 2

@@ -49,7 +49,7 @@ to inform the game this action was expected and its fine
 /atom/proc/MouseDrop_T(atom/dropping, mob/user, params) // return TRUE if you want to prevent us click the object after it
 	return
 
-/client/MouseMove(object,location,control,params)
+/client/MouseMove(object, location, control, params)
 	mouseParams = params
 	mouse_location_ref = location
 	mouse_object_ref = object
