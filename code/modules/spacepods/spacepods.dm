@@ -70,8 +70,9 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 
 	var/brakes = TRUE
 	var/user_thrust_dir = 0
-	var/forward_maxthrust = 6
-	var/backward_maxthrust = 3
+	// Spacepod speed
+	var/forward_maxthrust = 2
+	var/backward_maxthrust = 1
 	var/side_maxthrust = 1
 
 	var/lights = 0
