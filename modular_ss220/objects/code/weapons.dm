@@ -264,14 +264,14 @@
 	on = !on
 
 	if(on)
-		to_chat(user, span_userdanger("Вы разложили [src.name]"))
+		to_chat(user, span_userdanger("Вы разложили [src]"))
 		item_state = item_state_on
 		icon_state = icon_state_on
 		w_class = WEIGHT_CLASS_SMALL
 		force = force_on
 		attack_verb = attack_verb_on
 	else
-		to_chat(user, span_notice("Вы сложили [src.name]."))
+		to_chat(user, span_notice("Вы сложили [src]."))
 		item_state = initial(item_state)
 		icon_state = initial(icon_state)
 		w_class = initial(w_class)
