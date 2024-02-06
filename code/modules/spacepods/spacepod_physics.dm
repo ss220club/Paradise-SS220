@@ -255,7 +255,7 @@
 		M.apply_damage(bump_velocity * 2)
 		take_damage(bump_velocity, BRUTE, MELEE, FALSE)
 		playsound(M.loc, "swing_hit", 1000, 1, -1)
-		M.KnockOut()
+		M.KnockOut() // RMNZ: Knockout WAY too long
 		M.visible_message("<span class='warning'>The force of the impact knocks [M] down!</span>", "<span class='userdanger'>The force of the impact knocks you down!</span>")
 		add_attack_logs(pilot, M, "impacted", src, "with velocity of [bump_velocity]")
 	return ..()

@@ -129,7 +129,8 @@
 	after_rotation.Invoke(user,rotation_type)
 
 /datum/component/simple_rotation/proc/default_can_user_rotate(mob/living/user, rotation_type)
-	//RMNZ: Check if be_close needed or not
+	//RMNZ: Check if be_close needed or not (NO_DEXTERY isn't used in this build it seems)
+	// if(!istype(user) || !user.canUseTopic(parent, BE_CLOSE, NO_DEXTERY))
 	if(!istype(user) || !user.can_use(parent))
 		return FALSE
 	return TRUE

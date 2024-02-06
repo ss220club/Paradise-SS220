@@ -26,7 +26,7 @@
 	equipment_types = list(
 		// /obj/item/spacepod_equipment/weaponry/disabler, //RMNZ: Weapons don't work for now!
 		/obj/item/spacepod_equipment/lock/keyed/sec,
-		// /obj/item/spacepod_equipment/tracker, //RMNZ: And this too!
+		// /obj/item/spacepod_equipment/tracker, //RMNZ: Tracker doesn't have purpose!
 		/obj/item/spacepod_equipment/cargo/chair)
 
 // adminbus spacepod for jousting events
