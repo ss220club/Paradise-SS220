@@ -321,3 +321,9 @@
 	icon_state = "artist"
 	item_state = "artist"
 	item_color = "artist"
+/obj/item/clothing/under/rank/santa
+	desc = "It looks like new year suit."
+	name = "new year suit"
+	icon_state = "dedmoroz_s"
+	item_state = "dedmoroz_s"
+	item_color = "dedmoroz"

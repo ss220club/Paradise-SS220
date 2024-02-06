@@ -79,3 +79,10 @@
 	throw_speed = 1
 	throw_range = 5
 	w_class = WEIGHT_CLASS_SMALL
+
+/obj/item/twohanded/staff/frost_staff
+	name = "santa staff"
+	desc = "HO HO HO!"
+	icon = 'icons/obj/wizard.dmi'
+	icon_state = "frost_staff"
+	item_state = "frost_staff"

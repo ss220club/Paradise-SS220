@@ -303,3 +303,9 @@
 	desc = "Red cap for people who want show who`s really boss of this kitchen"
 	item_state = "redchefcap"
 	icon_state = "redchefcap"
+
+/obj/item/clothing/head/santhat
+	name = "new year hat"
+	desc = "Red newyear_hat TEEEEST"
+	item_state = "red_furhat"
+	icon_state = "red_furhat"
