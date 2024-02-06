@@ -278,7 +278,6 @@
 	ammo_type = /obj/item/ammo_casing/pneuma
 	max_ammo = 12
 	multiload = 0
-	//multi_sprite_step = 1 // see: /obj/item/ammo_box/update_icon()
 
 /obj/item/ammo_casing/pneuma
 	name = "пневматический шарик"
