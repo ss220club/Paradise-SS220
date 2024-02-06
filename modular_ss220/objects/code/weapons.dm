@@ -300,7 +300,7 @@
 
 /obj/item/projectile/bullet/pneumaball/New()
 	..()
-	create_reagents(30)
+	create_reagents(15)
 	reagents.set_reacting(FALSE)
 
 /obj/item/projectile/bullet/pneumaball/on_hit(atom/target, blocked = 0)
@@ -328,7 +328,7 @@
 
 /obj/item/projectile/bullet/pneumaball/pepper/New()
 	..()
-	reagents.add_reagent("condensedcapsaicin", 30)
+	reagents.add_reagent("condensedcapsaicin", 15)
 
 /datum/supply_packs/security/armory/pneumagun
 	name = "Pneumatic Pepper Rifles Crate"
