@@ -329,3 +329,20 @@
 /obj/item/projectile/bullet/pneumaball/pepper/New()
 	..()
 	reagents.add_reagent("condensedcapsaicin", 30)
+
+/datum/supply_packs/security/armory/pneumagun
+	name = "Pneumatic Pepper Rifles Crate"
+	contains = list(/obj/item/gun/projectile/automatic/pneumaticgun,
+					/obj/item/gun/projectile/automatic/pneumaticgun,
+					/obj/item/ammo_box/magazine/pneuma/pepper,
+					/obj/item/ammo_box/magazine/pneuma/pepper)
+	cost = 500
+	containername = "pneumatic pepper rifles pack"
+
+/datum/supply_packs/security/armory/beretta
+	name = "Pneumatic Pepper Rifle Ammunition Crate"
+	contains = list(/obj/item/ammo_box/magazine/pneuma/pepper,
+					/obj/item/ammo_box/magazine/pneuma/pepper,
+					/obj/item/ammo_box/magazine/pneuma/pepper)
+	cost = 250
+	containername = "pneumatic pepper ammunition pack"
