@@ -30,7 +30,6 @@
 	this 4-part loop, starting from any part of the frame, can determine if all the parts are properly in place and aligned
 	it also checks that each part is unique, and that all the parts are there for the spacepod itself
 	*/
-	//RMNZ: Addition of new pods
 	var/neededparts = list(/obj/item/pod_parts/pod_frame/aft_port, /obj/item/pod_parts/pod_frame/aft_starboard, /obj/item/pod_parts/pod_frame/fore_port, /obj/item/pod_parts/pod_frame/fore_starboard)
 	var/turf/T
 	var/obj/item/pod_parts/pod_frame/linked

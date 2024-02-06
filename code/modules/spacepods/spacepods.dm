@@ -130,7 +130,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 	if(user.stat != CONSCIOUS)
 		return FALSE
 
-	if(locked) // RMNZ: You also check your health on this
+	if(locked) // RMNZ: You also show health of your mob in chat
 		to_chat(user, "<span class='warning'>[src]'s doors are locked!</span>")
 		return FALSE
 
@@ -466,7 +466,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 				target_dir = SOUTH
 			if(270)
 				target_dir = WEST
-		//RMNZ: Addition of new pods 2
+		//RMNZ: Count this for addition of new pods (?)
 		var/list/frame_piece_types = list(/obj/item/pod_parts/pod_frame/aft_port, /obj/item/pod_parts/pod_frame/aft_starboard, /obj/item/pod_parts/pod_frame/fore_port, /obj/item/pod_parts/pod_frame/fore_starboard)
 		var/obj/item/pod_parts/pod_frame/current_piece = null
 		var/turf/CT = get_turf(src)
