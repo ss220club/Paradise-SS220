@@ -9,7 +9,7 @@
 	invocation_type = "none"
 	cooldown_min = 100 //50 deciseconds reduction per rank
 	nonabstract_req = TRUE
-	var/list/beverages = list(/obj/item/reagent_containers/drinks/bottle/vodka,
+	var/beverages = list(/obj/item/reagent_containers/drinks/bottle/vodka,
 					/obj/item/reagent_containers/drinks/bottle/whiskey,
 					/obj/item/reagent_containers/drinks/bottle/tequila,
 					/obj/item/reagent_containers/drinks/bottle/absinthe/premium,
@@ -27,17 +27,20 @@
 	for(var/mob/living/carbon/human/H in GLOB.player_list)
 		var/turf/T = get_turf(H)
 		if(T && is_away_level(T.z))
-			return
-		if(H.stat == DEAD || H?.client)
+			continue
+		if(H.stat == DEAD || !(H.client))
 			return
 		if(iswizard(H) || H?.mind.offstation_role)
 			return
-		var/alcohol_type = pick(beverages)
-		var/obj/item/reagent_containers/drinks/bottle/B = new alcohol_type(get_turf(H))
-		playsound(get_turf(H),'modular_ss220/antagonists/sound/beer_can_open.mp3', 50, TRUE)
-		H.drop_item() //drops item in active hand
-		var/in_hand = H.put_in_hands(B)
-		to_chat(H, "<span class='warning'>\A [B] appears [in_hand ? "in your hand" : "at your feet"]!</span>")
+		H.drop_item()
+		give_alcohol(H)
+
+
+/obj/effect/proc_holder/spell/great_revelry/proc/give_alcohol(mob/living/carbon/human/H)
+	var/bottle_type = pick(beverages)
+	var/obj/item/bottle = new bottle_type(get_turf(H))
+	playsound(get_turf(H),'modular_ss220/antagonists/sound/beer_can_open.ogg', 50, TRUE)
+	H.put_in_hands(bottle)
 
 /datum/spellbook_entry/great_revelry
 	name = "Ritual of Great Revelry"

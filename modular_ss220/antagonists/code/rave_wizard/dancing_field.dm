@@ -19,6 +19,8 @@
 						'modular_ss220/antagonists/sound/music4.mp3',
 						'modular_ss220/antagonists/sound/music5.mp3',
 						'modular_ss220/antagonists/sound/music6.mp3')
+	var/dance_probability = 60
+	var/flip_probability = 30
 
 /obj/effect/timestop/dancing/timestop()
 	playsound(get_turf(src), pick(sound_type), 100, 1, -1)
@@ -34,9 +36,9 @@
 					var/mob/living/simple_animal/hostile/H = dancestoped_mob
 					H.AIStatus = AI_OFF
 					H.LoseTarget()
-				if(prob(50))
+				if(prob(dance_probability))
 					dancestoped_mob.emote(pick(list("spin","dance")))
-				if(prob(20))
+				if(prob(flip_probability))
 					dancestoped_mob.emote("flip")
 				stopped_atoms |= dancestoped_mob
 		for(var/mob/living/M in stopped_atoms)

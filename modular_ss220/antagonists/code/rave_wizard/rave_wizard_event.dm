@@ -1,6 +1,5 @@
 #define SPELLBOOK_AVAILABLE_POINTS 4
 #define MAGIVENDS_PRODUCTS_REFILL_VALUE 20
-#define WIZARD_GREETING ("<span class='danger'>Вы — маг рейва!</span>")
 #define WIZARD_WIKI ("<span class='motd'>На вики-странице доступна более подробная информация: ([GLOB.configuration.url.wiki_url]/index.php/Wizard)</span>")
 #define RAVE_WIZARD_EVENT_WEIGHT 5
 
@@ -88,16 +87,16 @@
 		src.AddSpell(S)
 
 /obj/item/spellbook/proc/remove_harmful_spells_and_items()
-	src.main_categories -= "Magical Items"
-	src.main_categories -= "Loadouts"
-	src.spell_categories -= "Offensive"
-	src.spell_categories -= "Rituals"
+	main_categories -= "Magical Items"
+	main_categories -= "Loadouts"
+	spell_categories -= "Offensive"
+	spell_categories -= "Rituals"
 
-/datum/game_mode/proc/greet_rave_wizard(datum/mind/wizard, you_are=1)
+/datum/game_mode/proc/greet_rave_wizard(datum/mind/wizard, you_are=TRUE)
 	SEND_SOUND(wizard.current, sound('sound/ambience/antag/ragesmages.ogg'))
 	var/list/messages = list()
 	if(you_are)
-		messages.Add(WIZARD_GREETING)
+		messages.Add(span_danger("Вы — маг рейва!"))
 
 	messages.Add(wizard.prepare_announce_objectives(title = FALSE))
 	messages.Add(WIZARD_WIKI)
@@ -119,7 +118,6 @@
 	available_events += list(new /datum/event_meta(EVENT_LEVEL_MAJOR, "Rave Wizard", /datum/event/rave_wizard, RAVE_WIZARD_EVENT_WEIGHT, is_one_shot = TRUE))
 
 #undef MAGIVENDS_PRODUCTS_REFILL_VALUE
-#undef WIZARD_GREETING
 #undef WIZARD_WIKI
 #undef SPELLBOOK_AVAILABLE_POINTS
 #undef RAVE_WIZARD_EVENT_WEIGHT
