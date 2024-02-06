@@ -305,7 +305,7 @@
 
 /obj/item/projectile/bullet/pneumaball/on_hit(atom/target, blocked = 0)
 	..(target, blocked)
-	if (!iscarbon(target))
+	if(!iscarbon(target))
 		return
 	var/mob/living/carbon/H = target
 	reagents.reaction(H)
