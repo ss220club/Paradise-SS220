@@ -44,7 +44,7 @@
 /datum/map_template/ruin/lavaland/old_avanpost
 	name = "Заброшенный аванпост"
 	id = "old_avanpost"
-	description = "Старый заброшенный аванпост. Его постигла участь разлома лаваленда."
+	description = "Старый заброшенный аванпост. Его постигла участь разлома Лаваленда."
 	prefix = "_maps/map_files220/RandomRuins/LavaRuins/"
 	suffix = "old_avanpost.dmm"
 	cost = 15 // на базе в сейфе есть ЕКА
