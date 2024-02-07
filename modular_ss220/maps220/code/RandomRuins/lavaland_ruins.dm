@@ -47,6 +47,6 @@
 	description = "Старый заброшенный аванпост. Его постигла участь разлома лаваленда."
 	prefix = "_maps/map_files220/RandomRuins/LavaRuins/"
 	suffix = "old_avanpost.dmm"
-	cost = 5
+	cost = 15 // на базе в сейфе есть ЕКА
 	allow_duplicates = FALSE
 	always_place = FALSE
