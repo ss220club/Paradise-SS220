@@ -106,6 +106,8 @@ GLOBAL_LIST_INIT(all_jobs_ss220, (list() + (
 	var/list/all_titles = list()
 	for(var/rank in positions)
 		var/datum/job/job = SSjobs.GetJob(rank)
+		if(!job)
+			continue
 		if(length(job.alt_titles))
 			all_titles |= job.alt_titles
 	return all_titles
