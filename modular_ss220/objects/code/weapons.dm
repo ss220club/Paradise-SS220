@@ -254,9 +254,6 @@
 	burst_size = 1
 	actions_types = list()
 
-/obj/item/gun/projectile/automatic/pneumaticgun/Initialize(mapload)
-	. = ..()
-	update_icon()
 
 /obj/item/gun/projectile/automatic/pneumaticgun/process_chamber(eject_casing = 0, empty_chamber = 1)
 	..(eject_casing, empty_chamber)
