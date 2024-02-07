@@ -50,7 +50,7 @@
 
 	log_game("[key_name(usr)] has respawned.")
 
-	to_chat(usr, span_boldnotice("Убедитесь, что Вы играете другим персонажем, и, пожалуйста, отыгрывайте корректно!"))
+	to_chat(usr, span_boldnotice("Убедитесь, что Вы играете другим персонажем, и пожалуйста, отыгрывайте корректно!"))
 
 	if(!client)
 		log_game("[key_name(usr)] respawn failed due to disconnect.")
