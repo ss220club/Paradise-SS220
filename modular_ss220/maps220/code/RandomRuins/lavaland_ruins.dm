@@ -41,12 +41,12 @@
 	always_place = FALSE
 	allow_duplicates = FALSE
 
-/datum/map_template/ruin/lavaland/old_avanpost
+/datum/map_template/ruin/lavaland/old_outpost
 	name = "Заброшенный аванпост"
-	id = "old_avanpost"
+	id = "old_outpost"
 	description = "Старый заброшенный аванпост. Его постигла участь разлома Лаваленда."
 	prefix = "_maps/map_files220/RandomRuins/LavaRuins/"
-	suffix = "old_avanpost.dmm"
+	suffix = "old_outpost.dmm"
 	cost = 15 // на базе в сейфе есть ЕКА
 	allow_duplicates = FALSE
 	always_place = FALSE
