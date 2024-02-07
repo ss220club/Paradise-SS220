@@ -27,7 +27,7 @@
 	description = "Перенесённая в результате БС аномалии церковь Чизуза."
 	prefix = "_maps/map_files220/RandomRuins/LavaRuins/"
 	suffix = "cheesus_temple.dmm"
-	cost = 20 // имеется книга призыва сыра
+	cost = 20 // Имеется книга призыва сыра
 	always_place = FALSE
 	allow_duplicates = FALSE
 
