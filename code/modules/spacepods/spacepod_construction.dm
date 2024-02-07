@@ -140,7 +140,6 @@
 				. = TRUE
 				W.play_tool_sound(src)
 				construction_state--
-				// RMNZ: Test this. Should be five metal sheets to construct
 				var/obj/item/stack/sheet/metal/M = new
 				M.amount = 5
 				M.forceMove(loc)

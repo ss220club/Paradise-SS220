@@ -13,6 +13,9 @@
 /atom/proc/Adjacent(atom/neighbor) // basic inheritance, unused
 	return 0
 
+/atom/proc/AdjacentByNeighbor(atom/movable/neighbor)
+	return 0
+
 // Not a sane use of the function and (for now) indicative of an error elsewhere
 /area/Adjacent(atom/neighbor)
 	CRASH("Call to /area/Adjacent(), unimplemented proc")
@@ -68,6 +71,14 @@
 	if(!isturf(loc)) return 0
 	for(var/turf/T in locs)
 		if(isnull(T)) continue
+		if(T.Adjacent(neighbor,src)) return 1
+	return 0
+
+// RMNZ: Added different adjacent check for spacepods?
+/atom/movable/AdjacentByNeighbor(atom/movable/neighbor)
+	if(neighbor == loc) return 1
+	if(!isturf(loc)) return 0
+	for(var/turf/T in neighbor.locs)
 		if(T.Adjacent(neighbor,src)) return 1
 	return 0
 

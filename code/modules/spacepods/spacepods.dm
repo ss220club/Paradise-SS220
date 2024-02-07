@@ -663,7 +663,7 @@ GLOBAL_LIST_INIT(spacepods_list, list())
 		if(internal_tank)
 			to_chat(user, "<span class='warning'>[src] already has an internaltank!</span>")
 			return
-		if(!A.Adjacent(src))
+		if(!A.AdjacentByNeighbor(src))
 			to_chat(user, "<span class='warning'>The canister is not close enough!</span>")
 			return
 		if(hatch_open)
