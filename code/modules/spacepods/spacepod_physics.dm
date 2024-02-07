@@ -51,7 +51,7 @@
 			var/datum/gas_mixture/env = T.return_air()
 			if(env)
 				var/pressure = env.return_pressure()
-				drag += velocity_mag * pressure * 0.0001 // 1 atmosphere should shave off 1% of velocity per tile
+				drag += velocity_mag * pressure * 0.002 // 1 atmosphere should shave off 20% of velocity per tile
 		if(velocity_mag > 20)
 			drag = max(drag, (velocity_mag - 20) / time)
 		if(drag)
@@ -222,42 +222,42 @@
 		velocity_x -= bump_impulse
 	return ..()
 
-/obj/spacepod/Bump(atom/A)
+/obj/spacepod/Bump(atom/Atom)
 	var/bump_velocity = 0
 	if(dir & (NORTH|SOUTH))
 		bump_velocity = abs(velocity_y) + (abs(velocity_x) / 15)
 	else
 		bump_velocity = abs(velocity_x) + (abs(velocity_y) / 15)
-	if(istype(A, /obj/machinery/door/airlock)) // try to open doors
-		var/obj/machinery/door/D = A
-		if(!D.operating)
-			if(D.allowed(D.requiresID() ? pilot : null))
+	if(istype(Atom, /obj/machinery/door/airlock)) // try to open doors
+		var/obj/machinery/door/Door = Atom
+		if(!Door.operating)
+			if(Door.allowed(Door.requiresID() ? pilot : null))
 				spawn(0)
-					D.open()
+					Door.open()
 			else
-				D.do_animate("deny")
-	var/atom/movable/AM = A
-	if(istype(AM) && !AM.anchored && bump_velocity > 1)
-		step(AM, dir)
+				Door.do_animate("deny")
+	var/atom/movable/MovableAtom = Atom
+	if(istype(MovableAtom) && !MovableAtom.anchored && bump_velocity > 1)
+		step(MovableAtom, dir)
 	// if a bump is that fast then it's not a bump. It's a collision.
-	if(bump_velocity > 10 && !ismob(A))
+	if(bump_velocity > 10 && !ismob(Atom))
 		var/strength = bump_velocity / 10
 		strength = strength * strength
 		strength = min(strength, 5) // don't want the explosions *too* big
 		// wew lad, might wanna slow down there
-		explosion(A, -1, round((strength - 1) / 2), round(strength))
-		message_admins("[key_name_admin(pilot)] has impacted a spacepod into [A] with velocity [bump_velocity]")
+		explosion(Atom, -1, round((strength - 1) / 2), round(strength))
+		message_admins("[key_name_admin(pilot)] has impacted a spacepod into [Atom] with velocity [bump_velocity]")
 		take_damage(strength*10, BRUTE, MELEE, TRUE)
-		log_game("[key_name(pilot)] has impacted a spacepod into [A] with velocity [bump_velocity]")
+		log_game("[key_name(pilot)] has impacted a spacepod into [Atom] with velocity [bump_velocity]")
 		visible_message("<span class='danger'>The force of the impact causes a shockwave</span>")
-	else if(isliving(A) && bump_velocity > 5)
-		var/mob/living/M = A
-		M.apply_damage(bump_velocity * 2)
+	else if(isliving(Atom) && bump_velocity > 5)
+		var/mob/living/Mob = Atom
+		Mob.apply_damage(bump_velocity * 2)
 		take_damage(bump_velocity, BRUTE, MELEE, FALSE)
-		playsound(M.loc, "swing_hit", 1000, 1, -1)
-		M.KnockOut() // RMNZ: Knockout WAY too long
-		M.visible_message("<span class='warning'>The force of the impact knocks [M] down!</span>", "<span class='userdanger'>The force of the impact knocks you down!</span>")
-		add_attack_logs(pilot, M, "impacted", src, "with velocity of [bump_velocity]")
+		playsound(Mob.loc, "swing_hit", 1000, 1, -1)
+		Mob.KnockOut() // RMNZ: Knockout WAY too long / Sometimes (?)
+		Mob.visible_message("<span class='warning'>The force of the impact knocks [Mob] down!</span>", "<span class='userdanger'>The force of the impact knocks you down!</span>")
+		add_attack_logs(pilot, Mob, "impacted", src, "with velocity of [bump_velocity]")
 	return ..()
 
 /obj/spacepod/proc/fire_projectiles(proj_type, target) // if spacepods of other sizes are added override this or something
