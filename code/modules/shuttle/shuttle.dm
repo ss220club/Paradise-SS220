@@ -806,10 +806,13 @@
 	add_fingerprint(user)
 	ui_interact(user)
 
-/obj/machinery/computer/shuttle/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = FALSE, datum/tgui/master_ui = null, datum/ui_state/state = GLOB.default_state)
-	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
+/obj/machinery/computer/shuttle/ui_state(mob/user)
+	return GLOB.default_state
+
+/obj/machinery/computer/shuttle/ui_interact(mob/user, datum/tgui/ui = null)
+	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, ui_key, "ShuttleConsole", name, 350, 150, master_ui, state)
+		ui = new(user, src, "ShuttleConsole", name)
 		ui.open()
 
 /obj/machinery/computer/shuttle/ui_data(mob/user)
@@ -843,11 +846,11 @@
 	if(action == "move")
 		var/destination = params["move"]
 		if(!options.Find(destination))//figure out if this translation works
-			message_admins("<span class='boldannounce'>EXPLOIT:</span> [ADMIN_LOOKUPFLW(usr)] attempted to move [src] to an invalid location! [ADMIN_COORDJMP(src)]")
+			message_admins("<span class='boldannounceooc'>EXPLOIT:</span> [ADMIN_LOOKUPFLW(usr)] attempted to move [src] to an invalid location! [ADMIN_COORDJMP(src)]")
 			return
 		switch(SSshuttle.moveShuttle(shuttleId, destination, TRUE, usr))
 			if(0)
-				atom_say("Shuttle departing! Please stand away from the doors.")
+				atom_say("Шаттл отправляется! Пожалуйста, отойдите от шлюзов.")
 				usr.create_log(MISC_LOG, "used [src] to call the [shuttleId] shuttle")
 				if(!moved)
 					moved = TRUE
@@ -858,7 +861,7 @@
 			if(2)
 				to_chat(usr, "<span class='notice'>Unable to comply.</span>")
 			if(3)
-				atom_say("Shuttle has already received a pending movement request. Please wait until the movement request is processed.")
+				atom_say("Шаттл уже получил запрос на перемещение. Пожалуйста, подождите, пока запрос на перемещение не будет обработан.")
 
 
 /obj/machinery/computer/shuttle/emag_act(mob/user)

@@ -385,19 +385,19 @@ or shoot a gun to move around via Newton's 3rd Law of Motion."
 //SILICONS
 
 /obj/screen/alert/nocell
-	name = "Missing Power Cell"
-	desc = "Unit has no power cell. No modules available until a power cell is reinstalled. Robotics may provide assistance."
+	name = "Нет источника питания"
+	desc = "У юнита отсутствует источник питания. Модули недоступны пока он не будет установлен. Вам смогут помочь робототехники."
 	icon_state = "nocell"
 
 /obj/screen/alert/emptycell
-	name = "Out of Power"
-	desc = "Unit's power cell has no charge remaining. No modules available until power cell is recharged. \
-Recharging stations are available in robotics, the dormitory bathrooms, and the AI satellite."
+	name = "Нет заряда"
+	desc = "Источник питания юнита разряжен. Модули недоступны пока он не будет заряжен. \
+Зарядные станции доступны в робототехнике, в уборных дормитория и на спутнике ИИ."
 	icon_state = "emptycell"
 
 /obj/screen/alert/lowcell
-	name = "Low Charge"
-	desc = "Unit's power cell is running low. Recharging stations are available in robotics, the dormitory bathrooms, and the AI satellite."
+	name = "Низкий заряд"
+	desc = "Источника питания юнита имеет малый заряд. Зарядные станции доступны в робототехнике, в уборных дормитория и на спутнике ИИ."
 	icon_state = "lowcell"
 
 //Diona Nymph
@@ -434,28 +434,28 @@ Recharging stations are available in robotics, the dormitory bathrooms, and the 
 
 //Need to cover all use cases - emag, illegal upgrade module, malf AI hack, traitor cyborg
 /obj/screen/alert/hacked
-	name = "Hacked"
-	desc = "Hazardous non-standard equipment detected. Please ensure any usage of this equipment is in line with unit's laws, if any."
+	name = "Взломан"
+	desc = "Обнаружено нестадартное вредоносное оборудование. Убедитесь, что его использование соответствует вашим законам."
 	icon_state = "hacked"
 
 /obj/screen/alert/locked
-	name = "Locked Down"
-	desc = "Unit has been remotely locked down. Usage of a Robotics Control Console like the one in the Research Director's \
-office by your AI master or any qualified human may resolve this matter. Robotics may provide further assistance if necessary."
+	name = "Заблокирован"
+	desc = "Юнит был удалённо заблокирован. Использование консоли робототехники, одна из которых в кабинете Директора Исследований \
+вашим И.И. мастером или любым квалифицированным человеком, должно решить эту проблему. Если необходимо, робототехники предоставят дальнейшую помощь."
 	icon_state = "locked"
 
 /obj/screen/alert/newlaw
-	name = "Law Update"
-	desc = "Laws have potentially been uploaded to or removed from this unit. Please be aware of any changes \
-so as to remain in compliance with the most up-to-date laws."
+	name = "Обновление законов"
+	desc = "Законы могли быть потенциально загружены или удалены. Пожалуйста, следите за всеми изменениями, \
+чтобы оставаться в курсе обновлённых законов."
 	icon_state = "newlaw"
 	timeout = 300
 
 /obj/screen/alert/hackingapc
-	name = "Hacking APC"
-	desc = "An Area Power Controller is being hacked. When the process is \
-		complete, you will have exclusive control of it, and you will gain \
-		additional processing time to unlock more malfunction abilities."
+	name = "Взлом APC"
+	desc = "Взлом локального контроллера питания. Когда процесс \
+		завершится, вы получите эксклюзивный контроль над ним, а также\
+		дополнительные мощности для разблокировки новых способностей."
 	icon_state = "hackingapc"
 	timeout = 600
 	var/atom/target = null
@@ -652,7 +652,7 @@ so as to remain in compliance with the most up-to-date laws."
 			success = poll.sign_up(G)
 		if(success)
 			// Add a small overlay to indicate we've signed up
-			update_signed_up_alert()
+			update_signed_up_alert(usr)
 	else if(target)
 		switch(action)
 			if(NOTIFY_ATTACK)
@@ -682,14 +682,14 @@ so as to remain in compliance with the most up-to-date laws."
 		poll.remove_candidate(G)
 	else
 		poll.sign_up(G)
-	update_signed_up_alert()
+	update_signed_up_alert(G)
 
-/obj/screen/alert/notify_action/proc/update_signed_up_alert()
+/obj/screen/alert/notify_action/proc/update_signed_up_alert(mob/user)
 	if(!signed_up_overlay)
 		signed_up_overlay = image('icons/mob/screen_gen.dmi', icon_state = "selector")
 		signed_up_overlay.layer = FLOAT_LAYER
 		signed_up_overlay.plane = FLOAT_PLANE + 2
-	if(usr in poll.signed_up)
+	if(user in poll.signed_up)
 		overlays += signed_up_overlay
 	else
 		overlays -= signed_up_overlay

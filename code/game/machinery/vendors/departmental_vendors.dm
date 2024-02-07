@@ -100,13 +100,13 @@
 					/obj/item/kitchen/knife = 3,
 					/obj/item/kitchen/rollingpin = 2,
 					/obj/item/kitchen/sushimat = 3,
-					/obj/item/reagent_containers/food/drinks/drinkingglass = 8,
+					/obj/item/reagent_containers/drinks/drinkingglass = 8,
 					/obj/item/clothing/suit/chef/classic = 2,
 					/obj/item/storage/belt/chef = 2,
-					/obj/item/reagent_containers/food/condiment/pack/ketchup = 5,
-					/obj/item/reagent_containers/food/condiment/pack/hotsauce = 5,
-					/obj/item/reagent_containers/food/condiment/saltshaker =5,
-					/obj/item/reagent_containers/food/condiment/peppermill =5,
+					/obj/item/reagent_containers/condiment/pack/ketchup = 5,
+					/obj/item/reagent_containers/condiment/pack/hotsauce = 5,
+					/obj/item/reagent_containers/condiment/saltshaker =5,
+					/obj/item/reagent_containers/condiment/peppermill =5,
 					/obj/item/whetstone = 2,
 					/obj/item/mixing_bowl = 10,
 					/obj/item/kitchen/mould/bear = 1,
@@ -127,14 +127,14 @@
 /obj/machinery/economy/vending/hydronutrients
 	name = "\improper NutriMax"
 	desc = "A plant nutrients vendor."
-	slogan_list = list("Aren't you glad you don't have to fertilize the natural way?",
-					"Now with 50% less stink!","Plants are people too!")
+	slogan_list = list("Вам не надо удобрять почву естественным путём — разве это не чудесно?",
+					"Теперь на 50% меньше вони!","Растения тоже люди!")
 
-	ads_list = list("We like plants!",
-					"Don't you want some?",
-					"The greenest thumbs ever.",
-					"We like big plants.",
-					"Soft soil...")
+	ads_list = list("Мы любим растения!",
+					"Может сами примете?",
+					"Самые зелёные кнопки на свете.",
+					"Мы любим большие растения.",
+					"Мягкая почва...")
 
 	icon_state = "nutri"
 	icon_deny = "nutri_deny"
@@ -159,14 +159,14 @@
 /obj/machinery/economy/vending/hydroseeds
 	name = "\improper MegaSeed Servitor"
 	desc = "When you need seeds fast!"
-	slogan_list = list("THIS'S WHERE TH' SEEDS LIVE! GIT YOU SOME!",
-					"Hands down the best seed selection on the station!",
-					"Also certain mushroom varieties available, more for experts! Get certified today!")
+	slogan_list = list("ЗДЕСЬ ЖИВУТ СЕМЕНА! ВОЗЬМИТЕ СЕБЕ НЕМНОГО!",
+					"Лучший выбор семян на станции!",
+					"Доступны разнообразные сорта грибов для специалистов! Станьте им уже сегодня!")
 
-	ads_list = list("We like plants!",
-					"Grow some crops!",
-					"Grow, baby, growww!",
-					"Aw h'yeah son!")
+	ads_list = list("Мы любим растения!",
+					"Вырасти урожай!",
+					"Расти, малыш, расти-и-и-и!",
+					"Ды-а, сына!")
 
 	icon_state = "seeds"
 	icon_lightmask = "seeds"
@@ -280,7 +280,8 @@
 
 	contraband = list(/obj/item/reagent_containers/syringe/insulin = 4,
 					/obj/item/reagent_containers/glass/bottle/sulfonal = 1,
-					/obj/item/reagent_containers/glass/bottle/pancuronium = 1)
+					/obj/item/reagent_containers/glass/bottle/pancuronium = 1,
+					/obj/item/food/snacks/candy/sucker = 2)
 
 	armor = list(MELEE = 50, BULLET = 20, LASER = 20, ENERGY = 20, BOMB = 0, RAD = 0, FIRE = 100, ACID = 70)
 	resistance_flags = FIRE_PROOF
@@ -328,7 +329,7 @@
 					/obj/item/grenade/flashbang = 4,
 					/obj/item/flash = 5,
 					/obj/item/reagent_containers/spray/pepper = 5,
-					/obj/item/reagent_containers/food/snacks/donut = 12,
+					/obj/item/food/snacks/donut = 12,
 					/obj/item/storage/box/evidence = 6,
 					/obj/item/flashlight/seclite = 4,
 					/obj/item/restraints/legcuffs/bola/energy = 7,
@@ -340,5 +341,5 @@
 					/obj/item/hailer = 5)
 
 	refill_canister = /obj/item/vending_refill/security
-	prices = list(/obj/item/reagent_containers/food/snacks/donut = 40,
+	prices = list(/obj/item/food/snacks/donut = 40,
 				/obj/item/storage/fancy/donut_box = 200) //Bulk discount

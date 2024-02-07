@@ -46,7 +46,7 @@
 	return attack_hand(user)
 
 /obj/machinery/photocopier/attack_ghost(mob/user)
-	return attack_hand(user)
+	ui_interact(user)
 
 /obj/machinery/photocopier/attack_hand(mob/user)
 	if(..())
@@ -236,7 +236,7 @@
 
 	else if(check_mob())
 		to_chat(copymob, "<span class='notice'>You feel a slight pressure on your ass.</span>")
-		atom_say("Attention: Unable to remove large object!")
+		atom_say("Внимание: Невозможно удалить крупный объект!")
 
 /obj/machinery/photocopier/proc/remove_folder()
 	if(copying)
@@ -351,7 +351,7 @@
 	LAZYADD(saved_documents, O)
 	copying = FALSE
 	playsound(loc, 'sound/machines/ping.ogg', 50, FALSE)
-	atom_say("Document successfully scanned!")
+	atom_say("Документ удачно отсканирован!")
 
 /obj/machinery/photocopier/proc/delete_file(uid)
 	var/document = locateUID(uid)
@@ -365,10 +365,13 @@
 		copy(document, scancopy = TRUE)
 
 
-/obj/machinery/photocopier/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = FALSE, datum/tgui/master_ui = null, datum/ui_state/state = GLOB.default_state)
-	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
+/obj/machinery/photocopier/ui_state(mob/user)
+	return GLOB.default_state
+
+/obj/machinery/photocopier/ui_interact(mob/user, datum/tgui/ui = null)
+	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, ui_key, "Photocopier", name, 402, 368, master_ui, state)
+		ui = new(user, src, "Photocopier", name)
 		ui.open()
 
 /obj/machinery/photocopier/ui_data(mob/user)
@@ -542,7 +545,7 @@
 		visible_message("<span class='notice'>[copyitem] is shoved out of the way by [copymob]!</span>")
 		copyitem = null
 	playsound(loc, 'sound/machines/ping.ogg', 50, FALSE)
-	atom_say("Attention: Posterior Placed on Printing Plaque!")
+	atom_say("Внимание: Обнаружена задница на печатном полотне!")
 	SStgui.update_uis(src)
 	return TRUE
 

@@ -624,8 +624,8 @@ GLOBAL_LIST_INIT(slot_equipment_priority, list( \
 
 /mob/proc/run_examinate(atom/A)
 	if(!has_vision(information_only = TRUE) && !isobserver(src))
-		to_chat(src, chat_box_regular("<span class='notice'>Something is there but you can't see it.</span>"))
-		return 1
+		to_chat(src, chat_box_regular("<span class='notice'>Something is there but you can't see it.</span>"), MESSAGE_TYPE_INFO, confidential = TRUE)
+		return TRUE
 
 	face_atom(A)
 	if(!client)
@@ -647,7 +647,7 @@ GLOBAL_LIST_INIT(slot_equipment_priority, list( \
 		result = A.examine(src)
 		client.recent_examines[ref_to_atom] = world.time + EXAMINE_MORE_WINDOW // set to when we should not examine something
 
-	to_chat(src, chat_box_examine(result.Join("\n")))
+	to_chat(src, chat_box_examine(result.Join("\n")), MESSAGE_TYPE_INFO, confidential = TRUE)
 
 /mob/proc/ret_grab(obj/effect/list_container/mobl/L as obj, flag)
 	if((!istype(l_hand, /obj/item/grab) && !istype(r_hand, /obj/item/grab)))
@@ -964,7 +964,7 @@ GLOBAL_LIST_INIT(slot_equipment_priority, list( \
 	if(!Adjacent(usr))
 		return
 	if(IsFrozen(src) && !is_admin(usr))
-		to_chat(usr, "<span class='boldannounce'>Interacting with admin-frozen players is not permitted.</span>")
+		to_chat(usr, "<span class='boldannounceic'>Interacting with admin-frozen players is not permitted.</span>")
 		return
 	if(isLivingSSD(src) && M.client && M.client.send_ssd_warning(src))
 		return
@@ -1008,13 +1008,13 @@ GLOBAL_LIST_INIT(slot_equipment_priority, list( \
 	show_stat_turf_contents()
 
 	if(statpanel("Status"))
-		stat(null, "Round ID: [GLOB.round_id ? GLOB.round_id : "NULL"]")
-		stat(null, "Map: [SSmapping.map_datum.fluff_name]")
+		stat(null, "Номер раунда: [GLOB.round_id ? GLOB.round_id : "NULL"]")
+		stat(null, "Карта: [SSmapping.map_datum.fluff_name]")
 		if(SSmapping.next_map)
-			stat(null, "Next Map: [SSmapping.next_map.fluff_name]")
+			stat(null, "Следующая карта: [SSmapping.next_map.fluff_name]")
 		if(SSticker)
 			show_stat_station_time()
-		stat(null, "Players Connected: [length(GLOB.clients)]")
+		stat(null, "Игроков подключено: [length(GLOB.clients)]")
 
 	if(length(mob_spell_list))
 		for(var/obj/effect/proc_holder/spell/S in mob_spell_list)
@@ -1080,9 +1080,9 @@ GLOBAL_LIST_INIT(slot_equipment_priority, list( \
 
 // this function displays the station time in the status panel
 /mob/proc/show_stat_station_time()
-	stat(null, "Server Uptime: [worldtime2text()]")
-	stat(null, "Round Time: [ROUND_TIME ? time2text(ROUND_TIME, "hh:mm:ss") : "N/A"]")
-	stat(null, "Station Time: [station_time_timestamp()]")
+	stat(null, "Время работы сервера: [worldtime2text()]")
+	stat(null, "Длительность раунда: [ROUND_TIME ? time2text(ROUND_TIME, "hh:mm:ss") : "N/A"]")
+	stat(null, "Станционное время: [station_time_timestamp()]")
 	stat(null, "Time Dilation: [round(SStime_track.time_dilation_current,1)]% " + \
 				"AVG:([round(SStime_track.time_dilation_avg_fast,1)]%, " + \
 				"[round(SStime_track.time_dilation_avg,1)]%, " + \

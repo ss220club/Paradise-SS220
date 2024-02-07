@@ -27,6 +27,7 @@
 		/area/station/security/brig,
 		/area/shuttle,
 		/area/survivalpod, //although survivalpods are off-station, creating one on station no longer protects pods on station from the rad storm
+		/area/syndicate_depot/core, // exterior of depot still dangerous, gotta be inside
 		/area/ruin, //Let us not completely kill space explorers.
 		/area/station/command/server
 	)
@@ -72,10 +73,10 @@
 
 	status_alarm(FALSE)
 	if(!pre_maint_all_access)
-		GLOB.minor_announcement.Announce("The radiation threat has passed. Please return to your workplaces. Door access resetting momentarily.", "Anomaly Alert")
+		GLOB.minor_announcement.Announce("Радиационная угроза миновала. Пожалуйста, вернитесь на свои рабочие места. Доступы восстановлены.", "ВНИМАНИЕ: Радиационная опасность.")
 		addtimer(CALLBACK(SSweather, GLOBAL_PROC_REF(revoke_maint_all_access)), 10 SECONDS) // Bit of time to get out / break into somewhere.
 	else
-		GLOB.minor_announcement.Announce("The radiation threat has passed. Please return to your workplaces.", "Anomaly Alert")
+		GLOB.minor_announcement.Announce("Радиационная угроза миновала. Пожалуйста, вернитесь на свои рабочие места.", "ВНИМАНИЕ: Радиационная опасность.")
 
 /datum/weather/rad_storm/proc/status_alarm(active)	//Makes the status displays show the radiation warning for those who missed the announcement.
 	if(active)

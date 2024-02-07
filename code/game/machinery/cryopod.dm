@@ -58,10 +58,13 @@
 	add_fingerprint(user)
 	ui_interact(user)
 
-/obj/machinery/computer/cryopod/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = FALSE, datum/tgui/master_ui = null, datum/ui_state/state = GLOB.default_state)
-	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
+/obj/machinery/computer/cryopod/ui_state(mob/user)
+	return GLOB.default_state
+
+/obj/machinery/computer/cryopod/ui_interact(mob/user, datum/tgui/ui = null)
+	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, ui_key, "CryopodConsole", name, 400, 480)
+		ui = new(user, src, "CryopodConsole", name)
 		ui.open()
 
 /obj/machinery/computer/cryopod/ui_data(mob/user)
@@ -182,7 +185,7 @@
 	dir = WEST
 	base_icon_state = "bodyscanner-open"
 	var/occupied_icon_state = "bodyscanner"
-	var/on_store_message = "has entered long-term storage."
+	var/on_store_message = "был помещен в долгосрочное хранилище."
 	var/on_store_name = "Cryogenic Oversight"
 	var/on_enter_occupant_message = "You feel cool air surround you. You go numb as your senses turn inward."
 	var/allow_occupant_types = list(/mob/living/carbon/human)
@@ -388,13 +391,13 @@
 	if(GLOB.PDA_Manifest.len)
 		GLOB.PDA_Manifest.Cut()
 	for(var/datum/data/record/R in GLOB.data_core.medical)
-		if((R.fields["name"] == occupant.real_name))
+		if(R.fields["name"] == occupant.real_name)
 			qdel(R)
 	for(var/datum/data/record/T in GLOB.data_core.security)
-		if((T.fields["name"] == occupant.real_name))
+		if(T.fields["name"] == occupant.real_name)
 			qdel(T)
 	for(var/datum/data/record/G in GLOB.data_core.general)
-		if((G.fields["name"] == occupant.real_name))
+		if(G.fields["name"] == occupant.real_name)
 			announce_rank = G.fields["rank"]
 			qdel(G)
 
@@ -631,9 +634,9 @@
 	icon_state = "pod_0"
 	base_icon_state = "pod_0"
 	occupied_icon_state = "pod_1"
-	on_store_message = "has entered robotic storage."
+	on_store_message = "был помещён в роботическое хранилище."
 	on_store_name = "Robotic Storage Oversight"
-	on_enter_occupant_message = "The storage unit broadcasts a sleep signal to you. Your systems start to shut down, and you enter low-power mode."
+	on_enter_occupant_message = "Юнит хранилища посылает вам сигнал сна. Ваши системы отключаются и вы переходите на режим энергосбережения"
 	console_type = /obj/machinery/computer/cryopod/robot
 	allow_occupant_types = list(/mob/living/silicon/robot)
 	disallow_occupant_types = list(/mob/living/silicon/robot/drone)

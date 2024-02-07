@@ -86,10 +86,13 @@
 		return TRUE
 	ui_interact(user)
 
-/obj/machinery/keycard_auth/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = TRUE, datum/tgui/master_ui = null, datum/ui_state/state = GLOB.default_state)
-	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
+/obj/machinery/keycard_auth/ui_state(mob/user)
+	return GLOB.physical_state
+
+/obj/machinery/keycard_auth/ui_interact(mob/user, datum/tgui/ui = null)
+	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, ui_key, "KeycardAuth", name, 540, 300, master_ui, state)
+		ui = new(user, src, "KeycardAuth", name)
 		ui.open()
 
 
@@ -183,10 +186,10 @@
 			revoke_station_all_access()
 		if("Emergency Response Team")
 			if(is_ert_blocked())
-				atom_say("All Emergency Response Teams are dispatched and can not be called at this time.")
+				atom_say("ОБР недоступен и не может быть вызван в данный момент.")
 				return
-			atom_say("ERT request transmitted!")
-			GLOB.command_announcer.autosay("ERT request transmitted. Reason: [ert_reason]", name, follow_target_override = src)
+			atom_say("Запрос ОБР отправлен!")
+			GLOB.command_announcer.autosay("Отправлен запрос ОБР. Причина запроса: [ert_reason].", name, follow_target_override = src)
 			print_centcom_report(ert_reason, station_time_timestamp() + " ERT Request")
 			SSblackbox.record_feedback("nested tally", "keycard_auths", 1, list("ert", "called"))
 
@@ -222,7 +225,7 @@ GLOBAL_VAR_INIT(station_all_access, 0)
 		for(var/obj/machinery/door/airlock/D in A)
 			D.emergency = 1
 			D.update_icon()
-	GLOB.minor_announcement.Announce("Access restrictions on maintenance and external airlocks have been removed.")
+	GLOB.minor_announcement.Announce("Ограничения на доступ к техническим и внешним шлюзам были сняты.")
 	GLOB.maint_all_access = 1
 	SSblackbox.record_feedback("nested tally", "keycard_auths", 1, list("emergency maintenance access", "enabled"))
 
@@ -231,7 +234,7 @@ GLOBAL_VAR_INIT(station_all_access, 0)
 		for(var/obj/machinery/door/airlock/D in A)
 			D.emergency = 0
 			D.update_icon()
-	GLOB.minor_announcement.Announce("Access restrictions on maintenance and external airlocks have been re-added.")
+	GLOB.minor_announcement.Announce("Ограничения на доступ к техническим и внешним шлюзам были восстановлены.")
 	GLOB.maint_all_access = 0
 	SSblackbox.record_feedback("nested tally", "keycard_auths", 1, list("emergency maintenance access", "disabled"))
 
@@ -240,7 +243,7 @@ GLOBAL_VAR_INIT(station_all_access, 0)
 		if(is_station_level(D.z))
 			D.emergency = 1
 			D.update_icon()
-	GLOB.minor_announcement.Announce("Access restrictions on all station airlocks have been removed due to an ongoing crisis. Trespassing laws still apply unless ordered otherwise by Command staff.")
+	GLOB.minor_announcement.Announce("Ограничения доступа ко всем шлюзам станции были сняты в связи с текущим чрезвычайным положением. Законы о незаконном проникновении по-прежнему действуют, если командование не распорядится иначе.")
 	GLOB.station_all_access = 1
 	SSblackbox.record_feedback("nested tally", "keycard_auths", 1, list("emergency station access", "enabled"))
 
@@ -249,6 +252,6 @@ GLOBAL_VAR_INIT(station_all_access, 0)
 		if(is_station_level(D.z))
 			D.emergency = 0
 			D.update_icon()
-	GLOB.minor_announcement.Announce("Access restrictions on all station airlocks have been re-added. Seek station AI or a colleague's assistance if you are stuck.")
+	GLOB.minor_announcement.Announce("Ограничения доступа ко всем шлюзам станции были восстановлены. Обратитесь за помощью к ИИ станции или к коллегам, если вы оказались в затруднительном положении.")
 	GLOB.station_all_access = 0
 	SSblackbox.record_feedback("nested tally", "keycard_auths", 1, list("emergency station access", "disabled"))

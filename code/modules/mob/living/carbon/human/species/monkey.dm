@@ -1,7 +1,7 @@
 /datum/species/monkey
 	name = "Monkey"
 	name_plural = "Monkeys"
-	blurb = "Ook."
+	blurb = "У-у-у!"
 
 	icobase = 'icons/mob/human_races/monkeys/r_monkey.dmi'
 	damage_overlays = 'icons/mob/human_races/masks/dam_monkey.dmi'
@@ -64,7 +64,7 @@
 	..()
 	H.real_name = "[lowertext(name)] ([rand(100,999)])"
 	H.name = H.real_name
-	H.butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/monkey = 5)
+	H.butcher_results = list(/obj/item/food/snacks/meat/monkey = 5)
 
 /datum/species/monkey/handle_dna(mob/living/carbon/human/H, remove)
 	..()

@@ -193,7 +193,6 @@ GLOBAL_LIST_EMPTY(holopads)
 	var/area/area = get_area(src)
 	var/datum/browser/popup = new(user, "holopad", "[area] holopad", 400, 300)
 	popup.set_content(dat)
-	popup.set_title_image(user.browse_rsc_icon(icon, icon_state))
 	popup.open()
 
 /obj/machinery/hologram/holopad/Topic(href, href_list)
@@ -293,7 +292,7 @@ GLOBAL_LIST_EMPTY(holopads)
 		var/datum/holocall/HC = I
 		//Sanity check and skip if no longer valid call
 		if(!HC.Check())
-			atom_say("Call was terminated at remote terminal.")
+			atom_say("Вызов был прерван удаленно.")
 			continue
 
 		if(HC.connected_holopad != src)

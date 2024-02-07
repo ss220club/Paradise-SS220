@@ -10,12 +10,12 @@
 // Not a comprehensive list: Further PRs should add appropriate items here.
 // Meat as usual, monstermeat covers goliath, xeno, spider, bear meat
 GLOBAL_LIST_INIT(cloner_biomass_items, list(\
-/obj/item/reagent_containers/food/snacks/meat,\
-/obj/item/reagent_containers/food/snacks/monstermeat,
-/obj/item/reagent_containers/food/snacks/carpmeat,
-/obj/item/reagent_containers/food/snacks/salmonmeat,
-/obj/item/reagent_containers/food/snacks/catfishmeat,
-/obj/item/reagent_containers/food/snacks/tofurkey))
+/obj/item/food/snacks/meat,\
+/obj/item/food/snacks/monstermeat,
+/obj/item/food/snacks/carpmeat,
+/obj/item/food/snacks/salmonmeat,
+/obj/item/food/snacks/catfishmeat,
+/obj/item/food/snacks/tofurkey))
 
 #define MINIMUM_HEAL_LEVEL 40
 #define CLONE_INITIAL_DAMAGE 190
@@ -319,7 +319,7 @@ GLOBAL_LIST_INIT(cloner_biomass_items, list(\
 
 	else if((occupant) && (occupant.loc == src))
 		if((occupant.stat == DEAD) || (occupant.suiciding))  //Autoeject corpses and suiciding dudes.
-			announce_radio_message("The cloning of <b>[occupant]</b> has been aborted due to unrecoverable tissue failure.")
+			announce_radio_message("Клонирование <b>[occupant]</b> было прервано из-за неустранимого разрушения тканей.")
 			go_out()
 			connected_message("Clone Rejected: Deceased.")
 
@@ -355,7 +355,7 @@ GLOBAL_LIST_INIT(cloner_biomass_items, list(\
 
 		else if((occupant.cloneloss <= (100 - heal_level)))
 			connected_message("Cloning Process Complete.")
-			announce_radio_message("The cloning cycle of <b>[occupant]</b> is complete.")
+			announce_radio_message("Цикл клонирования <b>[occupant]</b> завершен.")
 			go_out()
 
 	else if((!occupant) || (occupant.loc != src))
@@ -377,7 +377,7 @@ GLOBAL_LIST_INIT(cloner_biomass_items, list(\
 			return
 		else
 			connected_message("Authorized Ejection")
-			announce_radio_message("An authorized ejection of [(occupant) ? occupant.real_name : "the malfunctioning pod"] has occurred")
+			announce_radio_message("Внимание, произошло экстренное извлечение [(occupant) ? occupant.real_name : "неисправной капсулы"].")
 			to_chat(user, "<span class='notice'>You force an emergency ejection.</span>")
 			go_out()
 

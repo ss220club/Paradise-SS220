@@ -558,6 +558,19 @@
 	/// Maximum weight class of an item in the suit storage slot.
 	var/max_suit_w = WEIGHT_CLASS_BULKY
 
+/obj/item/clothing/suit/Initialize(mapload)
+	. = ..()
+	setup_shielding()
+
+/**
+ * Wrapper proc to apply shielding through AddComponent().
+ * Called in /obj/item/clothing/Initialize().
+ * Override with an AddComponent(/datum/component/shielded, args) call containing the desired shield statistics.
+ * See /datum/component/shielded documentation for a description of the arguments
+ **/
+/obj/item/clothing/suit/proc/setup_shielding()
+	return
+
 //Proc that opens and closes jackets.
 /obj/item/clothing/suit/proc/adjustsuit(mob/user)
 	if(ignore_suitadjust)
@@ -731,7 +744,7 @@
 	var/mob/living/carbon/human/H = user
 	if(H.get_item_by_slot(SLOT_HUD_JUMPSUIT) == src)
 		for(var/obj/item/clothing/accessory/A in accessories)
-			A.attached_unequip()
+			A.attached_unequip(user) // SS220 EDIT - FIX
 
 /obj/item/clothing/under/equipped(mob/user, slot, initial)
 	..()
@@ -739,7 +752,7 @@
 		return
 	if(slot == SLOT_HUD_JUMPSUIT)
 		for(var/obj/item/clothing/accessory/A in accessories)
-			A.attached_equip()
+			A.attached_equip(user) // SS220 EDIT - FIX
 
 /*
   * # can_attach_accessory

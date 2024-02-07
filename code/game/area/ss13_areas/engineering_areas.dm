@@ -88,11 +88,11 @@
 
 /area/station/engineering/solar/aft
 	name = "Южные Солнечные Панели"
-	icon_state = "aft"
+	icon_state = "Asolars"
 
 /area/station/engineering/solar/starboard
 	name = "Восточные Солнечные Панели"
-	icon_state = "ASsolars"
+	icon_state = "Ssolars"
 
 /area/station/engineering/solar/starboard/aft
 	name = "Юго-Восточные Солнечные Панели"

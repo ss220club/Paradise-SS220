@@ -156,8 +156,10 @@
 			user.visible_message("[user] places [src] against [user.p_their()] chest and listens attentively.", "You place [src] against your chest...")
 		else
 			user.visible_message("[user] places \the [src] against [M]'s chest and listens attentively.", "You place \the [src] against [M]'s chest...")
-		var/obj/item/organ/internal/H = M.get_int_organ(/obj/item/organ/internal/heart)
-		var/obj/item/organ/internal/L = M.get_int_organ(/obj/item/organ/internal/lungs)
+		var/datum/organ/heart/heart_datum = M.get_int_organ_datum(ORGAN_DATUM_HEART)
+		var/obj/item/organ/internal/H = heart_datum.linked_organ
+		var/datum/organ/lungs/lung_datum = M.get_int_organ_datum(ORGAN_DATUM_LUNGS)
+		var/obj/item/organ/internal/L = lung_datum.linked_organ
 		if(M.pulse && (H || (L && !HAS_TRAIT(M, TRAIT_NOBREATH))))
 			var/color = "notice"
 			if(H)
@@ -223,7 +225,7 @@
 		return
 	if(!is_station_level(user.z))
 		return
-	GLOB.global_announcer.autosay("[H] has been rewarded [src] by [user]!", "Medal Announcer", channel = channel, follow_target_override = src)
+	GLOB.global_announcer.autosay("[user] награждает [H] [src]!", "Оповещение О Награждении", channel = channel, follow_target_override = src)
 	channel = null
 
 // GOLD (awarded by centcom)

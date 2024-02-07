@@ -11,10 +11,13 @@
 	/// The below is a toggle for if sec cyborgs are enabled or not
 	var/cyborg_security = FALSE
 
-/datum/ui_module/ert_manager/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = FALSE, datum/tgui/master_ui = null, datum/ui_state/state = GLOB.admin_state)
-	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
+/datum/ui_module/ert_manager/ui_state(mob/user)
+	return GLOB.admin_state
+
+/datum/ui_module/ert_manager/ui_interact(mob/user, datum/tgui/ui = null)
+	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, ui_key, "ERTManager", name, 350, 540, master_ui, state)
+		ui = new(user, src, "ERTManager", name)
 		ui.autoupdate = TRUE
 		ui.open()
 
@@ -96,7 +99,7 @@
 			if(cyborg_slots > 0)
 				slots_list += "cyborg: [cyborg_slots]"
 
-			var/silenced = text2bool(params["silent"])
+			var/silenced = (params["silent"])
 			D.silent = silenced
 
 			var/slot_text = english_list(slots_list)
@@ -104,7 +107,7 @@
 			message_admins("[key_name_admin(usr)] dispatched a [silenced ? "silent " : ""][ert_type] ERT. Slots: [slot_text]", 1)
 			log_admin("[key_name(usr)] dispatched a [silenced ? "silent " : ""][ert_type] ERT. Slots: [slot_text]")
 			if(!silenced)
-				GLOB.major_announcement.Announce("Attention, [station_name()]. We are attempting to assemble an ERT. Standby.", "ERT Protocol Activated")
+				GLOB.major_announcement.Announce("Внимание, [station_name()]. Мы рассматриваем возможность отправки ОБР, ожидайте.", "ВНИМАНИЕ: Активирован протокол ОБР.")
 			trigger_armed_response_team(D, commander_slots, security_slots, medical_slots, engineering_slots, janitor_slots, paranormal_slots, cyborg_slots, cyborg_security)
 
 		if("view_player_panel")
@@ -112,9 +115,9 @@
 
 		if("deny_ert")
 			GLOB.ert_request_answered = TRUE
-			var/message = "[station_name()], we are unfortunately unable to send you an Emergency Response Team at this time."
+			var/message = "[station_name()], к сожалению, в данный момент мы не можем выслать вам ОБР."
 			if(params["reason"])
 				message += " Your ERT request has been denied for the following reasons:\n\n[params["reason"]]"
-			GLOB.major_announcement.Announce(message, "ERT Unavailable")
+			GLOB.major_announcement.Announce(message, "ОБР недоступно")
 		else
 			return FALSE
