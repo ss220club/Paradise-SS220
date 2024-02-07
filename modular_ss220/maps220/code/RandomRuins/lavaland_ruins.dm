@@ -32,7 +32,7 @@
 	allow_duplicates = FALSE
 
 /datum/map_template/ruin/lavaland/ash_old
-	name = "Заброшенный лагерь эшей"
+	name = "Заброшенный лагерь Эшей"
 	id = "ash_old"
 	description = "Старый, заброшенный лагерь Эшей."
 	prefix = "_maps/map_files220/RandomRuins/LavaRuins/"
