@@ -74,7 +74,7 @@
 	cost = 12
 
 /datum/gear/donor/Wallet_WYCI
-	display_name = "Бумажник WYCI"
+	display_name = "Бумажник W.Y.C.I."
 	path = /obj/item/storage/wallet/wallet_wyci
 	cost = 12
 
