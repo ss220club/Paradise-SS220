@@ -40,3 +40,13 @@
 	cost = 10 // В себе имеет платы консоли заключенных и хим раздратчик, так же пнв модуль
 	always_place = FALSE
 	allow_duplicates = FALSE
+
+/datum/map_template/ruin/lavaland/old_avanpost
+	name = "Заброшенный аванпост"
+	id = "old_avanpost"
+	description = "Старый заброшенный аванпост. Его постигла участь разлома лаваленда."
+	prefix = "_maps/map_files220/RandomRuins/LavaRuins/"
+	suffix = "old_avanpost.dmm"
+	cost = 5
+	allow_duplicates = FALSE
+	always_place = FALSE
