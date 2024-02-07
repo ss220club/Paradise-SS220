@@ -81,7 +81,7 @@
 
 /datum/reagent/consumable/drink/berry_banned2/on_mob_death(mob/living/M)
 	SEND_SOUND(M, sound('sound/effects/adminhelp.ogg', 0, 1, 0, 25))
-	to_chat(M, chat_box_red("<span class='adminhelp'>ЛС от <b>Администратор</b>: БВОНЬК!</span>"))
+	to_chat(M, chat_box_red("<span class='adminhelp'>ЛС от <b>Администратор</b>: БВОНЬК!</span>"), MESSAGE_TYPE_ADMINPM, confidential = TRUE)
 	..()
 
 //Blackeye Brew: Chance to make the drinker say greytider-themed things like "I thought clown was valid!"
@@ -101,7 +101,7 @@
 									"СЕКРЕТНАЯ ТЕХНИКА: ОБ СТОЛ И В МУСОРКУ!",
 									// Borers got removed but the below reference stays because its hilarious
 									"ЭТО СДЕЛАЛ [pick("МОЙ БРАТ", "МОЙ ПЁС", "МОЙ ЛУЧШИЙ ДРУГ", "БОРЕР", "ДЖОРДЖ МЕЛЛОНС", "ПЕДАЛЬ", "ПУНПУН")]!",
-									";s ЧТО ТАКОЕ КОСМОЗАКОН?!",
+									"; ЧТО ТАКОЕ КОСМОЗАКОН?!",
 									"Я КУПИЛ ЭТИ ПЕРЧАТКИ, НЕ УКРАЛ!!!",
 									"ЭТА ДВЕРЬ УЖЕ БИЛАСЬ ТОКОМ КОГДА Я ПРИШЁЛ",
 									"ЖИВОТНЫЕ НЕ ЧЛЕНЫ ЭКИПАЖА")

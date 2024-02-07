@@ -117,10 +117,13 @@ GLOBAL_LIST_EMPTY(fax_blacklist)
 		return TRUE
 	return FALSE
 
-/obj/machinery/photocopier/faxmachine/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = TRUE, datum/tgui/master_ui = null, datum/ui_state/state = GLOB.default_state)
-	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
+/obj/machinery/photocopier/faxmachine/ui_state(mob/user)
+	return GLOB.default_state
+
+/obj/machinery/photocopier/faxmachine/ui_interact(mob/user, datum/tgui/ui = null)
+	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, ui_key, "FaxMachine",  name, 540, 300, master_ui, state)
+		ui = new(user, src, "FaxMachine",  name)
 		ui.open()
 
 /obj/machinery/photocopier/faxmachine/ui_data(mob/user)
@@ -198,7 +201,7 @@ GLOBAL_LIST_EMPTY(fax_blacklist)
 		if("rename") // rename the item that is currently in the fax machine
 			if(copyitem)
 				var/n_name = sanitize(copytext_char(input(usr, "What would you like to label the fax?", "Fax Labelling", copyitem.name)  as text, 1, MAX_MESSAGE_LEN))	// SS220 EDIT - ORIGINAL: copytext
-				if((copyitem && copyitem.loc == src && usr.stat == 0))
+				if(copyitem && copyitem.loc == src && usr.stat == 0)
 					if(istype(copyitem, /obj/item/paper))
 						copyitem.name = "[(n_name ? "[n_name]" : initial(copyitem.name))]"
 						copyitem.desc = "This is a paper titled '" + copyitem.name + "'."

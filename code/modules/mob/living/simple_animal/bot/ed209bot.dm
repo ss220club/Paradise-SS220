@@ -102,10 +102,13 @@
 /mob/living/simple_animal/bot/ed209/show_controls(mob/user)
 	ui_interact(user)
 
-/mob/living/simple_animal/bot/ed209/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = TRUE, datum/tgui/master_ui = null, datum/ui_state/state = GLOB.default_state)
-	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
+/mob/living/simple_animal/bot/ed209/ui_state(mob/user)
+	return GLOB.default_state
+
+/mob/living/simple_animal/bot/ed209/ui_interact(mob/user, datum/tgui/ui = null)
+	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, ui_key, "BotSecurity", name, 500, 500)
+		ui = new(user, src, "BotSecurity", name)
 		ui.open()
 
 /mob/living/simple_animal/bot/ed209/ui_data(mob/user)
@@ -356,7 +359,7 @@
 		else if(threatlevel >= 4)
 			target = C
 			oldtarget_name = C.name
-			speak("Level [threatlevel] infraction alert!")
+			speak("Внимание, обнаружена угроза уровня [threatlevel]!")
 			playsound(loc, pick('sound/voice/ed209_20sec.ogg', 'sound/voice/edplaceholder.ogg'), 50, 0)
 			visible_message("<b>[src]</b> points at [C.name]!")
 			mode = BOT_HUNT
@@ -435,7 +438,7 @@
 	lastfired = world.time
 	var/turf/T = loc
 	var/atom/U = (istype(target, /atom/movable) ? target.loc : target)
-	if((!U || !T))
+	if(!U || !T)
 		return
 	while(!isturf(U))
 		U = U.loc
@@ -501,11 +504,11 @@
 /mob/living/simple_animal/bot/ed209/bullet_act(obj/item/projectile/Proj)
 	if(!disabled)
 		var/lasertag_check = 0
-		if((lasercolor == "b"))
+		if(lasercolor == "b")
 			if(istype(Proj, /obj/item/projectile/beam/lasertag/redtag))
 				lasertag_check++
 
-		else if((lasercolor == "r"))
+		else if(lasercolor == "r")
 			if(istype(Proj, /obj/item/projectile/beam/lasertag/bluetag))
 				lasertag_check++
 
@@ -564,14 +567,14 @@
 	addtimer(VARSET_CALLBACK(src, icon_state, "[lasercolor]ed209[on]"), 2)
 	var/threat = C.assess_threat(src)
 	C.SetStuttering(10 SECONDS)
-	C.adjustStaminaLoss(60)
+	C.apply_damage(60, STAMINA)
 	baton_delayed = TRUE
 	C.apply_status_effect(STATUS_EFFECT_DELAYED, 2.5 SECONDS, CALLBACK(C, TYPE_PROC_REF(/mob/living/, KnockDown), 10 SECONDS), COMSIG_LIVING_CLEAR_STUNS)
 	addtimer(VARSET_CALLBACK(src, baton_delayed, FALSE), BATON_COOLDOWN)
 	add_attack_logs(src, C, "batoned")
 	if(declare_arrests)
 		var/area/location = get_area(src)
-		speak("[arrest_type ? "Detaining" : "Arresting"] level [threat] scumbag <b>[C]</b> in [location].", radio_channel)
+		speak("Внимание, проводится [arrest_type ? "задержание" : "арест"] преступного отродья <b>[C]</b> с уровнем угрозы [threat] в [location]!", radio_channel)
 	C.visible_message("<span class='danger'>[src] has stunned [C]!</span>",\
 							"<span class='userdanger'>[src] has stunned you!</span>")
 

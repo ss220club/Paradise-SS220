@@ -73,10 +73,13 @@
 /mob/living/simple_animal/bot/floorbot/show_controls(mob/user)
 	ui_interact(user)
 
-/mob/living/simple_animal/bot/floorbot/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = TRUE, datum/tgui/master_ui = null, datum/ui_state/state = GLOB.default_state)
-	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
+/mob/living/simple_animal/bot/floorbot/ui_state(mob/user)
+	return GLOB.default_state
+
+/mob/living/simple_animal/bot/floorbot/ui_interact(mob/user, datum/tgui/ui = null)
+	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, ui_key, "BotFloor", name, 500, 520)
+		ui = new(user, src, "BotFloor", name)
 		ui.open()
 
 /mob/living/simple_animal/bot/floorbot/ui_data(mob/user)
@@ -256,7 +259,7 @@
 
 /mob/living/simple_animal/bot/floorbot/proc/nag() //Annoy everyone on the channel to refill us!
 	if(!nagged)
-		speak("Requesting refill [MAX_AMOUNT - amount] at <b>[get_area(src)]</b>!", radio_channel)
+		speak("Запрос пополнения на [MAX_AMOUNT - amount] в <b>[get_area(src)]</b>!", radio_channel)
 		nagged = TRUE
 
 /mob/living/simple_animal/bot/floorbot/proc/is_hull_breach(turf/t) //Ignore space tiles not considered part of a structure, also ignores shuttle docking areas.

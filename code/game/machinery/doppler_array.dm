@@ -74,12 +74,12 @@ GLOBAL_LIST_EMPTY(doppler_arrays)
 
 /obj/machinery/doppler_array/proc/print_explosive_logs(mob/user)
 	if(!logged_explosions.len)
-		atom_say("No logs currently stored in internal database.")
+		atom_say("В данный момент отчеты во внутренней базе данных отсутствуют.")
 		return
 	if(active_timers)
 		to_chat(user, "<span class='notice'>[src] is already printing something, please wait.</span>")
 		return
-	atom_say("Printing explosive log. Standby...")
+	atom_say("Распечатка отчета. Ожидайте...")
 	addtimer(CALLBACK(src, PROC_REF(print)), 50)
 
 /obj/machinery/doppler_array/proc/print()
@@ -163,10 +163,13 @@ GLOBAL_LIST_EMPTY(doppler_arrays)
 	else
 		stat |= NOPOWER
 
-/obj/machinery/doppler_array/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = FALSE, datum/tgui/master_ui = null, datum/ui_state/state = GLOB.default_state)
-	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
+/obj/machinery/doppler_array/ui_state(mob/user)
+	return GLOB.default_state
+
+/obj/machinery/doppler_array/ui_interact(mob/user, datum/tgui/ui = null)
+	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, ui_key, "TachyonArray", name, 500, 600, master_ui, state)
+		ui = new(user, src, "TachyonArray", name)
 		ui.open()
 
 /obj/machinery/doppler_array/ui_data(mob/user)

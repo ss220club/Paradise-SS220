@@ -129,10 +129,13 @@
 	UnregisterSignal(authenticated_account, COMSIG_PARENT_QDELETING)
 	authenticated_account = null
 
-/obj/machinery/economy/atm/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = FALSE, datum/tgui/master_ui = null, datum/ui_state/state = GLOB.default_state)
-	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
+/obj/machinery/economy/atm/ui_state(mob/user)
+	return GLOB.default_state
+
+/obj/machinery/economy/atm/ui_interact(mob/user, datum/tgui/ui = null)
+	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, ui_key, "ATM", name, 550, 650)
+		ui = new(user, src, "ATM", name)
 		ui.open()
 
 /obj/machinery/economy/atm/ui_data(mob/user)
@@ -227,7 +230,7 @@
 		RegisterSignal(authenticated_account, COMSIG_PARENT_QDELETING, PROC_REF(clear_account))
 		if(HAS_TRAIT(src, TRAIT_CMAGGED))
 			var/shoutname = uppertext(user_account.account_name)
-			atom_say("HELLO '[shoutname]'! YOU'VE SUCCESSFULLY LOGGED IN WITH ACCOUNT NUMBER '[user_account.account_number]' AND PIN NUMBER '[user_account.account_pin]'! HAVE A PARADISE DAY!")
+			atom_say("ЗДРАВСТВУЙТЕ, '[shoutname]'! ВЫ УСПЕШНО АВТОРИЗОВАНЫ С НОМЕРОМ АККАУНТА '[user_account.account_number]' И ПИН-КОДОМ '[user_account.account_pin]'! ЖЕЛАЕМ ВАМ ДНЯ КАК В РАЮ!")
 			playsound(loc, 'sound/machines/honkbot_evil_laugh.ogg', 25, TRUE, ignore_walls = FALSE)
 		return TRUE
 

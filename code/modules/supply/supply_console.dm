@@ -182,12 +182,15 @@
 		orders += list(order_data)
 	return orders
 
-/obj/machinery/computer/supplycomp/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = FALSE, datum/tgui/master_ui = null, datum/ui_state/state = GLOB.default_state)
+/obj/machinery/computer/supplycomp/ui_state(mob/user)
+	return GLOB.default_state
+
+/obj/machinery/computer/supplycomp/ui_interact(mob/user, datum/tgui/ui = null)
 	if(!cargo_account || !account_database)
 		reconnect_database()
-	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
+	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, ui_key, "CargoConsole", name, 900, 800, master_ui, state)
+		ui = new(user, src, "CargoConsole", name)
 		ui.open()
 
 /obj/machinery/computer/supplycomp/ui_data(mob/user)
@@ -252,7 +255,7 @@
 				visible_message("<b>[src]</b>'s monitor flashes, \"[world.time - reqtime] seconds remaining until another requisition form may be printed.\"")
 				return
 			var/amount = 1
-			if(params["multiple"] == "1") // 1 is a string here. DO NOT MAKE THIS A BOOLEAN YOU DORK
+			if(params["multiple"])
 				var/num_input = input(user, "Amount", "How many crates? ([MULTIPLE_CRATE_MAX] Max)") as null|num
 				if(!num_input || (!is_public && !is_authorized(user)) || ..()) // Make sure they dont walk away
 					return
@@ -358,7 +361,7 @@
 				if(pay_with_account(account, order.object.get_cost(), "[pack.name] Crate Purchase", "Cargo Requests Console", user, account_database.vendor_account))
 					SSeconomy.process_supply_order(order, TRUE) //send 'er back through
 					return TRUE
-				atom_say("ERROR: Account tied to order cannot pay, auto-denying order")
+				atom_say("ОШИБКА: Счет, связанный с заказом, не может быть использован для оплаты. Заказ автоматически отклонен.")
 				SSeconomy.request_list -= order //just remove order at this poin
 			else
 				return TRUE
@@ -379,7 +382,7 @@
 					investigate_log("| [key_name(user)] has authorized an order for [pack.name]. Remaining Cargo Balance: [cargo_account.credit_balance].", "cargo")
 					SSblackbox.record_feedback("tally", "cargo_shuttle_order", 1, pack.name)
 				else
-					atom_say("ERROR: Account tied to order cannot pay, auto-denying order")
+					atom_say("ОШИБКА: Счет, связанный с заказом, не может быть использован для оплаты. Заказ автоматически отклонен.")
 					SSeconomy.request_list -= order
 		break
 

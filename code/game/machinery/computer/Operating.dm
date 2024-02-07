@@ -59,10 +59,13 @@
 	add_fingerprint(user)
 	ui_interact(user)
 
-/obj/machinery/computer/operating/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = FALSE, datum/tgui/master_ui = null, datum/ui_state/state = GLOB.default_state)
-	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
+/obj/machinery/computer/operating/ui_state(mob/user)
+	return GLOB.default_state
+
+/obj/machinery/computer/operating/ui_interact(mob/user, datum/tgui/ui = null)
+	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, ui_key, "OperatingComputer", "Patient Monitor", 650, 455, master_ui, state)
+		ui = new(user, src, "OperatingComputer", "Patient Monitor")
 		ui.open()
 
 /obj/machinery/computer/operating/ui_data(mob/user)
@@ -196,20 +199,20 @@
 	var/isNewPatient = (table.patient != currentPatient) //Is this a new Patient?
 
 	if(table.patient.stat == DEAD || HAS_TRAIT(table.patient, TRAIT_FAKEDEATH))
-		patientStatus = "Dead"
+		patientStatus = "Отсутствует пульс"
 	else if(table.patient.stat == CONSCIOUS)
-		patientStatus = "Awake"
+		patientStatus = "В сознании"
 	else if(table.patient.stat == UNCONSCIOUS)
-		patientStatus = "Asleep"
+		patientStatus = "Без сознания"
 
 	if(isNewPatient)
-		atom_say("New patient detected, loading stats")
+		atom_say("Обнаружен пациент, загрузка данных.")
 		var/blood_type_msg
 		if(ishuman(table.patient))
 			blood_type_msg = table.patient.dna.blood_type
 		else
-			blood_type_msg = "\[ERROR: UNKNOWN\]"
-		atom_say("[table.patient], [blood_type_msg] blood, [patientStatus]")
+			blood_type_msg = "\[ОШИБКА: НЕИЗВЕСТНО\]"
+		atom_say("Пациент [table.patient], группа крови [blood_type_msg], статус пациента: [patientStatus].")
 		SStgui.update_uis(src)
 		patientStatusHolder = table.patient.stat
 		currentPatient = table.patient
@@ -223,5 +226,5 @@
 		if(healthAnnounce && table.patient.health <= healthAlarm)
 			atom_say("[round(table.patient.health)]")
 		if(table.patient.stat != patientStatusHolder)
-			atom_say("Patient is now [patientStatus]")
+			atom_say("Статус пациента: [patientStatus].")
 			patientStatusHolder = table.patient.stat
