@@ -266,7 +266,7 @@
 	icon_state = "pneumagun[M ? "[M.col]" : ""]"
 	item_state = icon_state
 
-//Базовые боеприпасы для пневморужья
+// Базовые боеприпасы для пневморужья
 /obj/item/ammo_box/magazine/pneuma
 	name = "магазин пневморужья"
 	desc = "Наполняется шариками с реагентом."
