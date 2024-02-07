@@ -1,67 +1,85 @@
 /obj/machinery/computer/atmos_alert
-	name = "atmospheric alert computer"
-	desc = "Used to access the station's atmospheric sensors."
-	circuit = /obj/item/circuitboard/atmos_alert
-	icon_keyboard = "atmos_key"
+	name = "atmospheric alert console"
+	desc = "Used to monitor the station's air alarms."
+	circuit = /obj/item/circuitboard/computer/atmos_alert
 	icon_screen = "alert:0"
+	icon_keyboard = "atmos_key"
 	light_color = LIGHT_COLOR_CYAN
-	// List of alarms and their state in areas. This is sent to TGUI
-	var/list/alarm_cache
 
-/obj/machinery/computer/atmos_alert/Initialize(mapload)
+	var/list/priority_alarms = list()
+	var/list/minor_alarms = list()
+
+/obj/machinery/computer/atmos_alert/ui_interact(mob/user, datum/tgui/ui)
 	. = ..()
-	alarm_cache = list()
-	alarm_cache["minor"] = list()
-	alarm_cache["priority"] = list()
-
-/obj/machinery/computer/atmos_alert/process()
-	// This is relatively cheap because the areas list is pretty small
-	for(var/area/A as anything in GLOB.all_areas)
-		if(!A.master_air_alarm)
-			continue // No alarm
-		if(A.master_air_alarm.z != z)
-			continue // Not on our z-level
-		if(!A.master_air_alarm.report_danger_level)
-			continue
-
-		switch(A.atmosalm)
-			if(ATMOS_ALARM_DANGER)
-				alarm_cache["priority"] |= A.name
-				alarm_cache["minor"] -= A.name
-			if(ATMOS_ALARM_WARNING)
-				alarm_cache["priority"] -= A.name
-				alarm_cache["minor"] |= A.name
-			else
-				alarm_cache["priority"] -= A.name
-				alarm_cache["minor"] -= A.name
-
-	update_icon()
-
-/obj/machinery/computer/atmos_alert/attack_hand(mob/user)
-	ui_interact(user)
-
-/obj/machinery/computer/atmos_alert/ui_state(mob/user)
-	return GLOB.default_state
-
-/obj/machinery/computer/atmos_alert/ui_interact(mob/user, datum/tgui/ui = null)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "AtmosAlertConsole", name)
 		ui.open()
 
 /obj/machinery/computer/atmos_alert/ui_data(mob/user)
-	return alarm_cache
+	var/list/data = list()
 
-/obj/machinery/computer/atmos_alert/update_icon_state()
-	if(!length(alarm_cache)) // This happens if were mid init
-		icon_screen = "alert:0"
-		return ..()
+	data["priority"] = list()
+	for(var/zone in priority_alarms)
+		data["priority"] += zone
+	data["minor"] = list()
+	for(var/zone in minor_alarms)
+		data["minor"] += zone
 
+	return data
 
-	if(length(alarm_cache["priority"]))
-		icon_screen = "alert:2"
-	else if(length(alarm_cache["minor"]))
-		icon_screen = "alert:1"
-	else
-		icon_screen = "alert:0"
-	..()
+/obj/machinery/computer/atmos_alert/ui_act(action, params)
+	. = ..()
+	if(.)
+		return
+
+	switch(action)
+		if("clear")
+			var/zone = params["zone"]
+			if(zone in priority_alarms)
+				to_chat(usr, span_notice("Priority alarm for [zone] cleared."))
+				priority_alarms -= zone
+				. = TRUE
+			if(zone in minor_alarms)
+				to_chat(usr, span_notice("Minor alarm for [zone] cleared."))
+				minor_alarms -= zone
+				. = TRUE
+	update_appearance()
+
+/obj/machinery/computer/atmos_alert/process()
+	. = ..()
+	if (!.)
+		return FALSE
+
+	var/alarm_count = priority_alarms.len + minor_alarms.len
+
+	priority_alarms.Cut()
+	minor_alarms.Cut()
+
+	for (var/obj/machinery/airalarm/air_alarm as anything in GLOB.air_alarms)
+		if (air_alarm.z != z)
+			continue
+
+		switch (air_alarm.danger_level)
+			if (AIR_ALARM_ALERT_NONE)
+				continue
+			if (AIR_ALARM_ALERT_WARNING)
+				minor_alarms += get_area_name(air_alarm, format_text = TRUE)
+			if (AIR_ALARM_ALERT_HAZARD)
+				priority_alarms += get_area_name(air_alarm, format_text = TRUE)
+
+	// Either we got new alarms, or we have no alarms anymore
+	if ((alarm_count == 0) != (minor_alarms.len + priority_alarms.len == 0))
+		update_appearance(UPDATE_ICON)
+
+	return TRUE
+
+/obj/machinery/computer/atmos_alert/update_overlays()
+	. = ..()
+	if(machine_stat & (NOPOWER|BROKEN))
+		return
+	if(priority_alarms.len)
+		. += "alert:2"
+		return
+	if(minor_alarms.len)
+		. += "alert:1"

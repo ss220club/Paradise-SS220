@@ -1,128 +1,144 @@
-#define ALWAYS_IN_GRAVITY 2
-
 /obj/effect/decal/cleanable
-	///when Initialized() its icon_state will be chosen from this list
-	var/list/random_icon_states = list()
+	gender = PLURAL
+	layer = FLOOR_CLEAN_LAYER
+	var/list/random_icon_states = null
+	///I'm sorry but cleanable/blood code is ass, and so is blood_DNA
+	var/blood_state = ""
 	///0-100, amount of blood in this decal, used for making footprints and affecting the alpha of bloody footprints
 	var/bloodiness = 0
-	///when another of the same type is made on the same tile will they merge --- YES=TRUE; NO=FLASE
+	///When two of these are on a same tile or do we need to merge them into just one?
 	var/mergeable_decal = TRUE
-	///prevents Ambient Occlusion effects around it ; Set to GAME_PLANE in Initialize() if on a wall
-	plane = FLOOR_PLANE
-	///for blood n vomit in zero G --- IN GRAVITY=TRUE; NO GRAVITY=FALSE
-	var/gravity_check = TRUE
-	hud_possible = list(JANI_HUD)
+	var/beauty = 0
+	///The type of cleaning required to clean the decal. See __DEFINES/cleaning.dm for the options
+	var/clean_type = CLEAN_TYPE_LIGHT_DECAL
+	///The reagent this decal holds. Leave blank for none.
+	var/datum/reagent/decal_reagent
+	///The amount of reagent this decal holds, if decal_reagent is defined
+	var/reagent_amount = 0
+
+/// Creates a cleanable decal on a turf
+/// Use this if your decal is one of one, and thus we should not spawn it if it's there already
+/// Returns either the existing cleanable, the one we created, or null if we can't spawn on that turf
+/turf/proc/spawn_unique_cleanable(obj/effect/decal/cleanable/cleanable_type)
+	// There is no need to spam unique cleanables, they don't stack and it just chews cpu
+	var/obj/effect/decal/cleanable/existing = locate(cleanable_type) in src
+	if(existing)
+		return existing
+	return new cleanable_type(src)
+
+/obj/effect/decal/cleanable/Initialize(mapload, list/datum/disease/diseases)
+	. = ..()
+	if (random_icon_states && (icon_state == initial(icon_state)) && length(random_icon_states) > 0)
+		icon_state = pick(random_icon_states)
+	create_reagents(300)
+	if(decal_reagent)
+		reagents.add_reagent(decal_reagent, reagent_amount)
+	if(loc && isturf(loc))
+		for(var/obj/effect/decal/cleanable/C in loc)
+			if(C != src && C.type == type && !QDELETED(C))
+				if (replace_decal(C))
+					handle_merge_decal(C)
+					return INITIALIZE_HINT_QDEL
+
+	if(LAZYLEN(diseases))
+		var/list/datum/disease/diseases_to_add = list()
+		for(var/datum/disease/D in diseases)
+			if(D.spread_flags & DISEASE_SPREAD_CONTACT_FLUIDS)
+				diseases_to_add += D
+		if(LAZYLEN(diseases_to_add))
+			AddComponent(/datum/component/infective, diseases_to_add)
+
+	AddElement(/datum/element/beauty, beauty)
+
+	var/turf/T = get_turf(src)
+	if(T && is_station_level(T.z))
+		SSblackbox.record_feedback("tally", "station_mess_created", 1, name)
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_ENTERED = PROC_REF(on_entered),
+	)
+	AddElement(/datum/element/connect_loc, loc_connections)
+
+/obj/effect/decal/cleanable/Destroy()
+	var/turf/T = get_turf(src)
+	if(T && is_station_level(T.z))
+		SSblackbox.record_feedback("tally", "station_mess_destroyed", 1, name)
+	return ..()
 
 /obj/effect/decal/cleanable/proc/replace_decal(obj/effect/decal/cleanable/C) // Returns true if we should give up in favor of the pre-existing decal
 	if(mergeable_decal)
 		return TRUE
 
-/obj/effect/decal/cleanable/cleaning_act(mob/user, atom/cleaner, cleanspeed = 5 SECONDS, text_verb = "scrub out", text_description = " with [cleaner].")
-	if(issimulatedturf(loc))
-		var/turf/simulated/T = get_turf(src)
-		T.cleaning_act(user, cleaner, cleanspeed = cleanspeed, text_verb = text_verb, text_description = text_description, text_targetname = name) //Strings are deliberately "A = A" to avoid overrides
-		return
+/obj/effect/decal/cleanable/attackby(obj/item/W, mob/user, params)
+	if((istype(W, /obj/item/reagent_containers/cup) && !istype(W, /obj/item/reagent_containers/cup/rag)) || istype(W, /obj/item/reagent_containers/cup/glass))
+		if(src.reagents && W.reagents)
+			. = 1 //so the containers don't splash their content on the src while scooping.
+			if(!src.reagents.total_volume)
+				to_chat(user, span_notice("[src] isn't thick enough to scoop up!"))
+				return
+			if(W.reagents.total_volume >= W.reagents.maximum_volume)
+				to_chat(user, span_notice("[W] is full!"))
+				return
+			to_chat(user, span_notice("You scoop up [src] into [W]!"))
+			reagents.trans_to(W, reagents.total_volume, transferred_by = user)
+			if(!reagents.total_volume) //scooped up all of it
+				qdel(src)
+				return
+	if(W.get_temperature()) //todo: make heating a reagent holder proc
+		if(istype(W, /obj/item/clothing/mask/cigarette))
+			return
+		else
+			var/hotness = W.get_temperature()
+			reagents.expose_temperature(hotness)
+			to_chat(user, span_notice("You heat [name] with [W]!"))
 	else
-		..()
+		return ..()
+
+/obj/effect/decal/cleanable/fire_act(exposed_temperature, exposed_volume)
+	if(reagents)
+		reagents.expose_temperature(exposed_temperature)
+	..()
+
 
 //Add "bloodiness" of this blood's type, to the human's shoes
 //This is on /cleanable because fuck this ancient mess
-/obj/effect/decal/cleanable/blood/Crossed(atom/movable/O)
-	..()
+/obj/effect/decal/cleanable/proc/on_entered(datum/source, atom/movable/AM)
+	SIGNAL_HANDLER
+	if(iscarbon(AM) && blood_state && bloodiness >= 40)
+		SEND_SIGNAL(AM, COMSIG_STEP_ON_BLOOD, src)
+		update_appearance()
 
-	if(!ishuman(O))
-		return
-
-	if(!gravity_check && ishuman(O))
-		bloodyify_human(O)
-
-	if(!off_floor)
-		var/mob/living/carbon/human/H = O
-		var/obj/item/organ/external/l_foot = H.get_organ("l_foot")
-		var/obj/item/organ/external/r_foot = H.get_organ("r_foot")
-		var/hasfeet = TRUE
-		if(IS_HORIZONTAL(H) && !H.buckled) //Make people bloody if they're lying down and move into blood
-			if(bloodiness > 0 && length(blood_DNA))
-				H.add_blood(H.blood_DNA, basecolor)
-		if(!l_foot && !r_foot)
-			hasfeet = FALSE
-		if(H.shoes && blood_state && bloodiness)
-			var/obj/item/clothing/shoes/S = H.shoes
-			var/add_blood = 0
-			if(bloodiness >= BLOOD_GAIN_PER_STEP)
-				add_blood = BLOOD_GAIN_PER_STEP
-			else
-				add_blood = bloodiness
-			bloodiness -= add_blood
-			S.bloody_shoes[blood_state] = min(MAX_SHOE_BLOODINESS, S.bloody_shoes[blood_state] + add_blood)
-			S.bloody_shoes[BLOOD_BASE_ALPHA] = BLOODY_FOOTPRINT_BASE_ALPHA * (alpha/255)
-			if(blood_DNA && blood_DNA.len)
-				S.add_blood(H.blood_DNA, basecolor)
-			S.blood_state = blood_state
-			S.blood_color = basecolor
-			update_icon()
-			H.update_inv_shoes()
-		else if(hasfeet && blood_state && bloodiness)//Or feet
-			var/add_blood = 0
-			if(bloodiness >= BLOOD_GAIN_PER_STEP)
-				add_blood = BLOOD_GAIN_PER_STEP
-			else
-				add_blood = bloodiness
-			bloodiness -= add_blood
-			H.bloody_feet[blood_state] = min(MAX_SHOE_BLOODINESS, H.bloody_feet[blood_state] + add_blood)
-			H.bloody_feet[BLOOD_BASE_ALPHA] = BLOODY_FOOTPRINT_BASE_ALPHA * (alpha/255)
-			if(!H.feet_blood_DNA)
-				H.feet_blood_DNA = list()
-			H.blood_state = blood_state
-			H.feet_blood_DNA |= blood_DNA.Copy()
-			H.feet_blood_color = basecolor
-			update_icon()
-			H.update_inv_shoes()
-
-/obj/effect/decal/cleanable/proc/can_bloodcrawl_in()
-	return FALSE
-
-/obj/effect/decal/cleanable/is_cleanable()
-	return TRUE
-
-/obj/effect/decal/cleanable/Initialize(mapload)
+/obj/effect/decal/cleanable/wash(clean_types)
 	. = ..()
-	var/datum/atom_hud/data/janitor/jani_hud = GLOB.huds[DATA_HUD_JANITOR]
-	prepare_huds()
-	jani_hud.add_to_hud(src)
-	jani_hud_set_sign()
-	if(try_merging_decal())
+	if (. || (clean_types & clean_type))
+		qdel(src)
 		return TRUE
-	if(random_icon_states && length(src.random_icon_states) > 0)
-		src.icon_state = pick(src.random_icon_states)
-	if(smoothing_flags)
-		QUEUE_SMOOTH(src)
-		QUEUE_SMOOTH_NEIGHBORS(src)
-	if(iswallturf(loc) && plane == FLOOR_PLANE)
-		plane = GAME_PLANE // so they can be seen above walls
+	return .
 
-/obj/effect/decal/cleanable/Destroy()
-	if(smoothing_flags)
-		QUEUE_SMOOTH_NEIGHBORS(src)
-	var/datum/atom_hud/data/janitor/jani_hud = GLOB.huds[DATA_HUD_JANITOR]
-	jani_hud.remove_from_hud(src)
-	return ..()
+/**
+ * Checks if this decal is a valid decal that can be blood crawled in.
+ */
+/obj/effect/decal/cleanable/proc/can_bloodcrawl_in()
+	if((blood_state != BLOOD_STATE_OIL) && (blood_state != BLOOD_STATE_NOT_BLOODY))
+		return bloodiness
 
-/obj/effect/decal/cleanable/proc/try_merging_decal(turf/T)
-	if(!T)
-		T = loc
-	if(isturf(T))
-		for(var/obj/effect/decal/cleanable/C in T)
-			if(C != src && C.type == type && !QDELETED(C))
-				if(C.gravity_check && replace_decal(C))
-					qdel(src)
-					return TRUE
 	return FALSE
 
-/obj/effect/decal/cleanable/proc/check_gravity(turf/T)
-	if(isnull(T))
-		T = get_turf(src)
-	if(gravity_check != ALWAYS_IN_GRAVITY)
-		gravity_check = has_gravity(src, T)
+/**
+ * Gets the color associated with the any blood present on this decal. If there is no blood, returns null.
+ */
+/obj/effect/decal/cleanable/proc/get_blood_color()
+	switch(blood_state)
+		if(BLOOD_STATE_HUMAN)
+			return rgb(149, 10, 10)
+		if(BLOOD_STATE_XENO)
+			return rgb(43, 186, 0)
+		if(BLOOD_STATE_OIL)
+			return rgb(22, 22, 22)
 
-#undef ALWAYS_IN_GRAVITY
+	return null
+
+/obj/effect/decal/cleanable/proc/handle_merge_decal(obj/effect/decal/cleanable/merger)
+	if(!merger)
+		return
+	if(merger.reagents && reagents)
+		reagents.trans_to(merger, reagents.total_volume)

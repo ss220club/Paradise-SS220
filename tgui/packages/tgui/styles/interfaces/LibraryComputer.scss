@@ -1,29 +1,11 @@
-@use '../base.scss';
-@use '../colors.scss';
-@use '../functions.scss' as *;
-
-.Library__Booklist {
-  tr > td {
-    text-align: center;
-  }
-
-  tr:not(:first-child) {
-    height: 24px;
-    line-height: 24px;
-
-    transition: background-color 50ms;
-    &:hover,
-    &:focus {
-      background-color: rgba(base.$color-bg, 1);
-    }
-  }
+.LibraryComputer__CultNonsense {
+  font-size: 28px;
+  width: 100%;
+  font-family: copperplate;
+  height: 100%;
 }
 
-.Library__SearchContainer {
-  background-color: rgba(base.$color-bg, 0.5);
-  tr {
-    td:first-child {
-      width: 60%;
-    }
-  }
+.LibraryComputer__CultText {
+  font-family: copperplate;
+  font-size: 20px;
 }

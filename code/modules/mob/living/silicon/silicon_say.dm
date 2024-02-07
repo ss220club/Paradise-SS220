@@ -1,119 +1,80 @@
-/mob/living/silicon/handle_message_mode(message_mode, list/message_pieces, verb, used_radios)
-	log_say(multilingual_to_message(message_pieces), src)
-	if(..())
-		return 1
+/mob/living/proc/robot_talk(message)
+	log_talk(message, LOG_SAY, tag="binary")
 
-/mob/living/silicon/robot/handle_message_mode(message_mode, list/message_pieces, verb, used_radios)
-	if(..())
-		return 1
-	if(message_mode)
-		used_radios += radio
-		if(!is_component_functioning("radio"))
-			to_chat(src, "<span class='warning'>Your radio isn't functional at this time.</span>")
-			return 0
-		if(message_mode == "general")
-			message_mode = null
-		return radio.talk_into(src,message_pieces,message_mode,verb)
+	var/designation = "Default Cyborg"
+	var/spans = list(SPAN_ROBOT)
 
-/mob/living/silicon/ai/handle_message_mode(message_mode, list/message_pieces, verb, used_radios)
-	if(..())
-		return 1
-	if(message_mode == "department")
-		used_radios += aiRadio
-		return holopad_talk(message_pieces, verb)
-	else if(message_mode)
-		used_radios += aiRadio
-		if(aiRadio.disabledAi || aiRestorePowerRoutine || stat)
-			to_chat(src, "<span class='danger'>System Error - Transceiver Disabled.</span>")
-			return 0
-		if(message_mode == "general")
-			message_mode = null
-		return aiRadio.talk_into(src, message_pieces, message_mode, verb)
+	if(issilicon(src))
+		var/mob/living/silicon/player = src
+		designation = trim_left(player.designation + " " + player.job)
 
-/mob/living/silicon/pai/handle_message_mode(message_mode, list/message_pieces, verb, used_radios)
-	if(..())
-		return 1
-	else if(message_mode == "whisper")
-		whisper_say(message_pieces)
-		return 1
-	else if(message_mode)
-		if(message_mode == "general")
-			message_mode = null
-		used_radios += radio
-		return radio.talk_into(src, message_pieces, message_mode, verb)
+	if(isAI(src))
+		// AIs are loud and ugly
+		spans |= SPAN_COMMAND
 
-/mob/living/silicon/say_quote(text)
-	var/ending = copytext(text, length(text))
+	var/quoted_message = say_quote(
+		message,
+		spans
+	)
 
-	if(ending == "?")
-		return speak_query
-	else if(ending == "!")
-		return speak_exclamation
+	for(var/mob/M in GLOB.player_list)
+		if(M.binarycheck())
+			if(isAI(M))
+				to_chat(
+					M,
+					span_binarysay("\
+						Robotic Talk, \
+						<a href='?src=[REF(M)];track=[html_encode(name)]'>[span_name("[name] ([designation])")]</a> \
+						<span class='message'>[quoted_message]</span>\
+					"),
+					avoid_highlighting = src == M
+				)
+			else
+				to_chat(
+					M,
+					span_binarysay("\
+						Robotic Talk, \
+						[span_name("[name]")] <span class='message'>[quoted_message]</span>\
+					"),
+					avoid_highlighting = src == M
+				)
 
-	return speak_statement
+		if(isobserver(M))
+			var/following = src
 
-#define IS_AI 1
-#define IS_ROBOT 2
-#define IS_PAI 3
+			// If the AI talks on binary chat, we still want to follow
+			// its camera eye, like if it talked on the radio
 
-/mob/living/silicon/say_understands(other, datum/language/speaking = null)
-	//These only pertain to common. Languages are handled by mob/say_understands()
-	if(!speaking)
-		if(iscarbon(other))
-			return 1
-		if(issilicon(other))
-			return 1
-		if(isbot(other))
-			return 1
-		if(isbrain(other))
-			return 1
-	return ..()
+			if(isAI(src))
+				var/mob/living/silicon/ai/ai = src
+				following = ai.eyeobj
 
-//For holopads only. Usable by AI.
-/mob/living/silicon/ai/proc/holopad_talk(list/message_pieces, verb)
-	log_say("(HPAD) [multilingual_to_message(message_pieces)]", src)
+			var/follow_link = FOLLOW_LINK(M, following)
 
-	var/obj/machinery/hologram/holopad/T = current
-	if(istype(T) && T.masters[src])
-		var/obj/effect/overlay/holo_pad_hologram/H = T.masters[src]
-		if((client?.prefs.toggles2 & PREFTOGGLE_2_RUNECHAT) && can_hear())
-			var/message = combine_message(message_pieces, null, src)
-			create_chat_message(H, message)
-		for(var/mob/M in hearers(T.loc))//The location is the object, default distance.
-			M.hear_holopad_talk(message_pieces, verb, src, H)
-		to_chat(src, "<i><span class='game say'>Holopad transmitted, <span class='name'>[real_name]</span> [combine_message(message_pieces, verb, src)]</span></i>")
-	else
-		to_chat(src, "No holopad connected.")
+			to_chat(
+				M,
+				span_binarysay("\
+					[follow_link] \
+					Robotic Talk, \
+					[span_name("[name]")] <span class='message'>[quoted_message]</span>\
+				"),
+				avoid_highlighting = src == M
+			)
+
+/mob/living/silicon/binarycheck()
+	return TRUE
+
+/mob/living/silicon/radio(message, list/message_mods = list(), list/spans, language)
+	. = ..()
+	if(.)
 		return
-	return 1
+	if(message_mods[MODE_HEADSET])
+		if(radio)
+			radio.talk_into(src, message, , spans, language, message_mods)
+		return REDUCE_RANGE
+	else if(message_mods[RADIO_EXTENSION] in GLOB.radiochannels)
+		if(radio)
+			radio.talk_into(src, message, message_mods[RADIO_EXTENSION], spans, language, message_mods)
+			return ITALICS | REDUCE_RANGE
 
-/mob/living/silicon/ai/proc/holopad_emote(message) //This is called when the AI uses the 'me' verb while using a holopad.
-	message = trim(message)
-
-	if(!message)
-		return
-
-	var/obj/machinery/hologram/holopad/T = current
-	if(istype(T) && T.masters[src])
-		var/rendered = "<span class='game say'><span class='name'>[name]</span> <span class='message'>[message]</span></span>"
-		to_chat(src, "<i><span class='game say'>Holopad action relayed, <span class='name'>[real_name]</span> <span class='message'>[message]</span></span></i>")
-
-		for(var/mob/M in viewers(T.loc))
-			M.show_message(rendered, EMOTE_VISIBLE)
-
-		log_emote("(HPAD) [message]", src)
-	else //This shouldn't occur, but better safe then sorry.
-		to_chat(src, "No holopad connected.")
-		return
-	return 1
-
-/mob/living/silicon/ai/emote(act, type, message, intentional = TRUE, force_silence = FALSE)
-	var/obj/machinery/hologram/holopad/T = current
-	if(istype(T) && T.masters[src])//Is the AI using a holopad?
-		holopad_emote(message)
-	else //Emote normally, then.
-		..()
-
-#undef IS_AI
-#undef IS_ROBOT
-#undef IS_PAI
+	return FALSE

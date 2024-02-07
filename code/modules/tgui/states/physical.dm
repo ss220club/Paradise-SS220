@@ -19,9 +19,6 @@ GLOBAL_DATUM_INIT(physical_state, /datum/ui_state/physical, new)
 /mob/proc/physical_can_use_topic(src_object)
 	return UI_CLOSE
 
-/mob/living/simple_animal/demon/pulse_demon/physical_can_use_topic(src_object)
-	return UI_UPDATE
-
 /mob/living/physical_can_use_topic(src_object)
 	return shared_living_ui_distance(src_object)
 
@@ -31,8 +28,6 @@ GLOBAL_DATUM_INIT(physical_state, /datum/ui_state/physical, new)
 /mob/living/silicon/ai/physical_can_use_topic(src_object)
 	return UI_UPDATE // AIs are not physical.
 
-/mob/living/simple_animal/revenant/physical_can_use_topic(src_object)
-	return UI_UPDATE
 
 /**
  * tgui state: physical_obscured_state
@@ -58,4 +53,3 @@ GLOBAL_DATUM_INIT(physical_obscured_state, /datum/ui_state/physical_obscured_sta
 
 /mob/living/silicon/ai/physical_obscured_can_use_topic(src_object)
 	return UI_UPDATE // AIs are not physical.
-

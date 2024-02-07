@@ -1,18 +1,22 @@
-//temporary visual effects
+///temporary visual effects
 /obj/effect/temp_visual
 	icon_state = "nothing"
+	anchored = TRUE
 	layer = ABOVE_MOB_LAYER
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	var/duration = 10 //in deciseconds
+	///time, in deciseconds, that this object will exist
+	var/duration = 10
+	///if true, will pick a random direction when created.
 	var/randomdir = TRUE
+	///id of the deletion timer
 	var/timerid
 
 /obj/effect/temp_visual/Initialize(mapload)
 	. = ..()
 	if(randomdir)
-		setDir(pick(GLOB.cardinal))
+		setDir(pick(GLOB.cardinals))
 
-	timerid = QDEL_IN(src, duration)
+	timerid = QDEL_IN_STOPPABLE(src, duration)
 
 /obj/effect/temp_visual/Destroy()
 	. = ..()
@@ -24,9 +28,6 @@
 /obj/effect/temp_visual/singularity_pull()
 	return
 
-/obj/effect/temp_visual/ex_act()
-	return
-
 /obj/effect/temp_visual/dir_setting
 	randomdir = FALSE
 
@@ -35,12 +36,4 @@
 		setDir(set_dir)
 	. = ..()
 
-/obj/effect/temp_visual/target_angled
-	randomdir = FALSE
 
-/obj/effect/temp_visual/target_angled/Initialize(mapload, atom/target)
-	. = ..()
-	if(target)
-		var/matrix/M = new
-		M.Turn(get_angle(src, target))
-		transform = M

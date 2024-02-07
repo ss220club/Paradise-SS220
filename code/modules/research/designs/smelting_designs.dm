@@ -1,55 +1,85 @@
 ///////SMELTABLE ALLOYS///////
 
-/datum/design/smelter
-	build_type = SMELTER
-
-/datum/design/smelter/plasteel_alloy
+/datum/design/plasteel_alloy
 	name = "Plasteel"
-	desc = "Plasma + Iron"
 	id = "plasteel"
-	materials = list(MAT_METAL = MINERAL_MATERIAL_AMOUNT, MAT_PLASMA = MINERAL_MATERIAL_AMOUNT)
+	build_type = SMELTER | PROTOLATHE | AWAY_LATHE
+	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT, /datum/material/plasma = SHEET_MATERIAL_AMOUNT)
 	build_path = /obj/item/stack/sheet/plasteel
-	category = list("initial")
+	category = list(
+		RND_CATEGORY_CONSTRUCTION + RND_SUBCATEGORY_CONSTRUCTION_MATERIALS
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_CARGO | DEPARTMENT_BITFLAG_SCIENCE | DEPARTMENT_BITFLAG_ENGINEERING
+	maxstack = 50
 
-/datum/design/smelter/plastitanium_alloy
+/datum/design/plastitanium_alloy
 	name = "Plastitanium"
-	desc = "Plasma + Titanium"
 	id = "plastitanium"
-	materials = list(MAT_TITANIUM = MINERAL_MATERIAL_AMOUNT, MAT_PLASMA = MINERAL_MATERIAL_AMOUNT)
+	build_type = SMELTER | PROTOLATHE | AWAY_LATHE
+	materials = list(/datum/material/titanium = SHEET_MATERIAL_AMOUNT, /datum/material/plasma = SHEET_MATERIAL_AMOUNT)
 	build_path = /obj/item/stack/sheet/mineral/plastitanium
-	category = list("initial")
+	category = list(
+		RND_CATEGORY_CONSTRUCTION + RND_SUBCATEGORY_CONSTRUCTION_MATERIALS
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_CARGO | DEPARTMENT_BITFLAG_SCIENCE | DEPARTMENT_BITFLAG_ENGINEERING
+	maxstack = 50
 
-/datum/design/smelter/plaglass_alloy
+/datum/design/plaglass_alloy
 	name = "Plasma Glass"
-	desc = "Plasma + Glass"
 	id = "plasmaglass"
-	materials = list(MAT_PLASMA = MINERAL_MATERIAL_AMOUNT, MAT_GLASS = MINERAL_MATERIAL_AMOUNT)
+	build_type = SMELTER | PROTOLATHE | AWAY_LATHE
+	materials = list(/datum/material/plasma = SHEET_MATERIAL_AMOUNT * 0.5, /datum/material/glass = SHEET_MATERIAL_AMOUNT)
 	build_path = /obj/item/stack/sheet/plasmaglass
-	category = list("initial")
+	category = list(
+		RND_CATEGORY_CONSTRUCTION + RND_SUBCATEGORY_CONSTRUCTION_MATERIALS
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_CARGO | DEPARTMENT_BITFLAG_SCIENCE | DEPARTMENT_BITFLAG_ENGINEERING
+	maxstack = 50
 
-/datum/design/smelter/titaniumglass_alloy
+/datum/design/plasmarglass_alloy
+	name = "Reinforced Plasma Glass"
+	id = "plasmareinforcedglass"
+	build_type = SMELTER | PROTOLATHE | AWAY_LATHE
+	materials = list(/datum/material/plasma = SHEET_MATERIAL_AMOUNT * 0.5, /datum/material/iron = SHEET_MATERIAL_AMOUNT * 0.5,  /datum/material/glass = SHEET_MATERIAL_AMOUNT)
+	build_path = /obj/item/stack/sheet/plasmarglass
+	category = list(
+		RND_CATEGORY_CONSTRUCTION + RND_SUBCATEGORY_CONSTRUCTION_MATERIALS
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_CARGO | DEPARTMENT_BITFLAG_SCIENCE | DEPARTMENT_BITFLAG_ENGINEERING
+	maxstack = 50
+
+/datum/design/titaniumglass_alloy
 	name = "Titanium Glass"
-	desc = "Titanium + Glass"
 	id = "titaniumglass"
-	materials = list(MAT_TITANIUM = MINERAL_MATERIAL_AMOUNT, MAT_GLASS = MINERAL_MATERIAL_AMOUNT)
+	build_type = SMELTER | PROTOLATHE | AWAY_LATHE
+	materials = list(/datum/material/titanium = SHEET_MATERIAL_AMOUNT * 0.5, /datum/material/glass = SHEET_MATERIAL_AMOUNT)
 	build_path = /obj/item/stack/sheet/titaniumglass
-	category = list("initial")
+	category = list(
+		RND_CATEGORY_CONSTRUCTION + RND_SUBCATEGORY_CONSTRUCTION_MATERIALS
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_CARGO | DEPARTMENT_BITFLAG_SCIENCE | DEPARTMENT_BITFLAG_ENGINEERING
+	maxstack = 50
 
-/datum/design/smelter/plastitaniumglass_alloy
+/datum/design/plastitaniumglass_alloy
 	name = "Plastitanium Glass"
-	desc = "Plasma + Titanium + Glass"
 	id = "plastitaniumglass"
-	materials = list(MAT_PLASMA = MINERAL_MATERIAL_AMOUNT, MAT_TITANIUM = MINERAL_MATERIAL_AMOUNT, MAT_GLASS = MINERAL_MATERIAL_AMOUNT)
+	build_type = SMELTER | PROTOLATHE | AWAY_LATHE
+	materials = list(/datum/material/plasma = SHEET_MATERIAL_AMOUNT * 0.5, /datum/material/titanium = SHEET_MATERIAL_AMOUNT * 0.5, /datum/material/glass = SHEET_MATERIAL_AMOUNT)
 	build_path = /obj/item/stack/sheet/plastitaniumglass
-	category = list("initial")
+	category = list(
+		RND_CATEGORY_CONSTRUCTION + RND_SUBCATEGORY_CONSTRUCTION_MATERIALS
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_CARGO | DEPARTMENT_BITFLAG_SCIENCE | DEPARTMENT_BITFLAG_ENGINEERING
+	maxstack = 50
 
-/datum/design/smelter/alienalloy
+/datum/design/alienalloy
 	name = "Alien Alloy"
 	desc = "A sheet of reverse-engineered alien alloy."
 	id = "alienalloy"
-	req_tech = list("abductor" = 1, "materials" = 7, "plasmatech" = 2)
-	build_type = PROTOLATHE | SMELTER
-	materials = list(MAT_METAL = MINERAL_MATERIAL_AMOUNT * 2, MAT_PLASMA = MINERAL_MATERIAL_AMOUNT * 2)
+	build_type = SMELTER | PROTOLATHE | AWAY_LATHE
+	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT*2, /datum/material/plasma = SHEET_MATERIAL_AMOUNT*2)
 	build_path = /obj/item/stack/sheet/mineral/abductor
-	category = list("Stock Parts")
-	lathe_time_factor = 5
+	category = list(
+		RND_CATEGORY_CONSTRUCTION + RND_SUBCATEGORY_CONSTRUCTION_MATERIALS
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_CARGO | DEPARTMENT_BITFLAG_SCIENCE | DEPARTMENT_BITFLAG_ENGINEERING

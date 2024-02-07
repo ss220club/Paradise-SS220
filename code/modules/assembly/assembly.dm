@@ -1,149 +1,163 @@
-#define WIRE_RECEIVE		(1<<0)	//Allows pulse(0) to call Activate()
-#define WIRE_PULSE			(1<<1)	//Allows pulse(0) to act on the holder
-#define WIRE_PULSE_SPECIAL	(1<<2)	//Allows pulse(0) to act on the holders special assembly
-#define WIRE_RADIO_RECEIVE	(1<<3)	//Allows pulse(1) to call Activate()
-#define WIRE_RADIO_PULSE	(1<<4)	//Allows pulse(1) to send a radio message
 
 /obj/item/assembly
 	name = "assembly"
 	desc = "A small electronic device that should never exist."
-	icon = 'icons/obj/assemblies/new_assemblies.dmi'
+	icon = 'icons/obj/devices/new_assemblies.dmi'
 	icon_state = ""
-	flags = CONDUCT
+	obj_flags = CONDUCTS_ELECTRICITY
 	w_class = WEIGHT_CLASS_SMALL
-	materials = list(MAT_METAL = 100)
+	custom_materials = list(/datum/material/iron=SMALL_MATERIAL_AMOUNT)
 	throwforce = 2
 	throw_speed = 3
-	throw_range = 10
-	origin_tech = "magnets=1;engineering=1"
-	toolspeed = 1
-	usesound = 'sound/items/deconstruct.ogg'
+	throw_range = 7
 	drop_sound = 'sound/items/handling/component_drop.ogg'
-	pickup_sound =  'sound/items/handling/component_pickup.ogg'
+	pickup_sound = 'sound/items/handling/component_pickup.ogg'
 
-	var/bomb_name = "bomb" // used for naming bombs / mines
-
+	/**
+	 * Set to true if the device has different icons for each position.
+	 * This will prevent things such as visible lasers from facing the incorrect direction when transformed by assembly_holder's update_appearance()
+	 */
+	var/is_position_sensitive = FALSE
+	/// Flags related to this assembly. See [assemblies.dm]
+	var/assembly_flags = NONE
 	var/secured = TRUE
 	var/list/attached_overlays = null
 	var/obj/item/assembly_holder/holder = null
-	var/cooldown = FALSE //To prevent spam
-	var/wires = WIRE_RECEIVE | WIRE_PULSE
-	var/datum/wires/connected = null // currently only used by timer/signaler
-
-/obj/item/assembly/proc/activate()									//What the device does when turned on
-	return
-
-/obj/item/assembly/proc/pulsed(radio = FALSE)						//Called when another assembly acts on this one, var/radio will determine where it came from for wire calcs
-	return
-
-/obj/item/assembly/proc/toggle_secure()								//Code that has to happen when the assembly is un\secured goes here
-	return
-
-/obj/item/assembly/proc/attach_assembly(obj/A, mob/user)	//Called when an assembly is attacked by another
-	return
-
-/obj/item/assembly/proc/process_cooldown()							//Called via spawn(10) to have it count down the cooldown var
-	return
-
-/obj/item/assembly/proc/holder_movement()							//Called when the holder is moved
-	return
-
-/obj/item/assembly/interact(mob/user)					//Called when attack_self is called
-	return
-
-/obj/item/assembly/process_cooldown()
-	cooldown--
-	if(cooldown <= 0)
-		return FALSE
-	addtimer(CALLBACK(src, PROC_REF(process_cooldown)), 10)
-	return TRUE
+	var/attachable = FALSE // can this be attached to wires
+	var/datum/wires/connected = null
+	var/next_activate = 0 //When we're next allowed to activate - for spam control
 
 /obj/item/assembly/Destroy()
-	if(istype(loc, /obj/item/assembly_holder) || istype(holder))
-		var/obj/item/assembly_holder/A = loc
-		if(A.a_left == src)
-			A.a_left = null
-		else if(A.a_right == src)
-			A.a_right = null
-		holder = null
+	holder = null
 	return ..()
 
-/obj/item/assembly/pulsed(radio = FALSE)
-	if(holder && (wires & WIRE_RECEIVE))
-		activate()
-	if(radio && (wires & WIRE_RADIO_RECEIVE))
-		activate()
-	return TRUE
+/obj/item/assembly/get_part_rating()
+	return 1
 
-//Called when this device attempts to act on another device, var/radio determines if it was sent via radio or direct
-/obj/item/assembly/proc/pulse(radio = FALSE)
-	if(connected && wires)
-		connected.pulse_assembly(src)
-		return TRUE
-	if(holder && (wires & WIRE_PULSE))
-		holder.process_activation(src, 1, 0)
-	if(holder && (wires & WIRE_PULSE_SPECIAL))
-		holder.process_activation(src, 0, 1)
-	if(istype(loc, /obj/item/grenade)) // This is a hack.  Todo: Manage this better -Sayu
-		var/obj/item/grenade/G = loc
-		G.prime()                // Adios, muchachos
-	return TRUE
+/**
+ * on_attach: Called when attached to a holder, wiring datum, or other special assembly
+ *
+ * Will also be called if the assembly holder is attached to a plasma (internals) tank or welding fuel (dispenser) tank.
+ */
+/obj/item/assembly/proc/on_attach()
+	if(!holder && connected)
+		holder = connected.holder
 
-/obj/item/assembly/activate()
-	if(!secured || cooldown > 0)
+/**
+ * on_detach: Called when removed from an assembly holder or wiring datum
+ */
+/obj/item/assembly/proc/on_detach()
+	if(connected)
+		connected = null
+	if(!holder)
 		return FALSE
-	cooldown = 2
-	addtimer(CALLBACK(src, PROC_REF(process_cooldown)), 10)
+	forceMove(holder.drop_location())
+	holder = null
 	return TRUE
 
-/obj/item/assembly/toggle_secure()
+/**
+ * holder_movement: Called when the assembly's holder detects movement
+ */
+/obj/item/assembly/proc/holder_movement()
+	if(!holder)
+		return FALSE
+	setDir(holder.dir)
+	return TRUE
+
+/obj/item/assembly/proc/is_secured(mob/user)
+	if(!secured)
+		to_chat(user, span_warning("The [name] is unsecured!"))
+		return FALSE
+	return TRUE
+
+/**
+ * Pulsed: This device was pulsed by another device
+ *
+ * * pulser: Who triggered the pulse
+ */
+/obj/item/assembly/proc/pulsed(mob/pulser)
+	INVOKE_ASYNC(src, PROC_REF(activate), pulser)
+	SEND_SIGNAL(src, COMSIG_ASSEMBLY_PULSED)
+	return TRUE
+
+/**
+ * Pulse: This device is emitting a pulse to act on another device
+ */
+/obj/item/assembly/proc/pulse()
+	// if we have connected wires and are a pulsing assembly, pulse it
+	if(connected)
+		connected.pulse_assembly(src)
+	// otherwise if we're attached to a holder, process the activation of it with our flags
+	else if(holder)
+		holder.process_activation(src)
+	return TRUE
+
+/// What the device does when turned on
+/obj/item/assembly/proc/activate(mob/activator)
+	if(QDELETED(src) || !secured || (next_activate > world.time))
+		return FALSE
+	next_activate = world.time + 30
+	return TRUE
+
+/obj/item/assembly/proc/toggle_secure()
 	secured = !secured
-	update_icon()
+	update_appearance()
 	return secured
 
-/obj/item/assembly/attach_assembly(obj/item/assembly/A, mob/user)
-	holder = new /obj/item/assembly_holder(get_turf(src))
-	if(holder.attach(A, src, user))
-		to_chat(user, "<span class='notice'>You attach [A] to [src]!</span>")
-		user.put_in_active_hand(holder)
-		return TRUE
-	return FALSE
+// This is overwritten so that clumsy people can set off mousetraps even when in a holder.
+// We are not going deeper than that however (won't set off if in a tank bomb or anything with wires)
+// That would need to be added to all parent objects, or a signal created, whatever.
+// Anyway this return check prevents you from picking up every assembly inside the holder at once.
+/obj/item/assembly/attack_hand(mob/living/user, list/modifiers)
+	if(holder || connected)
+		return
+	. = ..()
 
-/obj/item/assembly/attackby(obj/item/W, mob/user, params)
-	if(isassembly(W))
-		var/obj/item/assembly/A = W
-		if(!A.secured && !secured)
-			attach_assembly(A, user)
+/obj/item/assembly/attackby(obj/item/attacking_item, mob/user, params)
+	if(isassembly(attacking_item))
+		var/obj/item/assembly/new_assembly = attacking_item
+		// Check both our's and their's assembly flags to see if either should not duplicate
+		// If so, and we match types, don't create a holder - block it
+		if(((new_assembly.assembly_flags|assembly_flags) & ASSEMBLY_NO_DUPLICATES) && istype(new_assembly, type))
+			balloon_alert(user, "can't attach another of that!")
+			return
+		if(new_assembly.secured || secured)
+			balloon_alert(user, "both devices not attachable!")
+			return
+
+		holder = new /obj/item/assembly_holder(drop_location())
+		holder.assemble(src, new_assembly, user)
+		holder.balloon_alert(user, "parts combined")
+		return
+
+	if(istype(attacking_item, /obj/item/assembly_holder))
+		var/obj/item/assembly_holder/added_to_holder = attacking_item
+		added_to_holder.try_add_assembly(src, user)
 		return
 
 	return ..()
 
-/obj/item/assembly/screwdriver_act(mob/user, obj/item/I)
-	. = TRUE
-	if(!I.use_tool(src, user, 0, volume = I.tool_volume))
-		return
+/obj/item/assembly/screwdriver_act(mob/living/user, obj/item/I)
+	if(..())
+		return TRUE
 	if(toggle_secure())
-		to_chat(user, "<span class='notice'>[src] is ready!</span>")
+		to_chat(user, span_notice("\The [src] is ready!"))
 	else
-		to_chat(user, "<span class='notice'>[src] can now be attached!</span>")
-
-/obj/item/assembly/process()
-	STOP_PROCESSING(SSobj, src)
+		to_chat(user, span_notice("\The [src] can now be attached!"))
+	add_fingerprint(user)
+	return TRUE
 
 /obj/item/assembly/examine(mob/user)
 	. = ..()
-	if(in_range(src, user) || loc == user)
-		if(secured)
-			. += "[src] is ready!"
-		else
-			. += "[src] can be attached!"
+	. += span_notice("\The [src] [secured? "is secured and ready to be used!" : "can be attached to other things."]")
 
-/obj/item/assembly/attack_self(mob/user)
-	if(!user)
-		return
-	user.set_machine(src)
-	interact(user)
-	return TRUE
+/obj/item/assembly/ui_host(mob/user)
+	// In order, return:
+	// - The conencted wiring datum's owner, or
+	// - The thing your assembly holder is attached to, or
+	// - the assembly holder itself, or
+	// - us
+	return connected?.holder || holder?.master || holder || src
 
-/obj/item/assembly/interact(mob/user)
-	return
+/obj/item/assembly/ui_state(mob/user)
+	return GLOB.hands_state

@@ -6,69 +6,163 @@
 
 //These are synced with the Database, if you change the values of the defines
 //then you MUST update the database!
-// If you're adding a new role, remember to update modules/admin/topic.dm, so admins can dish out
-// justice if someone's abusing your role
-#define ROLE_SYNDICATE			"Syndicate"
-#define ROLE_TRAITOR			"traitor"
-#define ROLE_OPERATIVE			"operative"
-#define ROLE_CHANGELING			"changeling"
-#define ROLE_WIZARD				"wizard"
-#define ROLE_REV				"revolutionary"
-#define ROLE_ALIEN				"xenomorph"
-#define ROLE_PAI				"pAI"
-#define ROLE_CULTIST			"cultist"
-#define ROLE_BLOB				"blob"
-#define ROLE_MONKEY				"monkey"
-#define ROLE_GANG				"gangster"
-#define ROLE_ABDUCTOR			"abductor"
-#define ROLE_REVENANT			"revenant"
-#define ROLE_HOG_GOD			"hand of god: god" // We're prolly gonna port this one day or another
-#define ROLE_HOG_CULTIST		"hand of god: cultist"
-#define ROLE_TRADER				"trader"
-#define ROLE_VAMPIRE			"vampire"
-// Role tags for EVERYONE!
-#define ROLE_DEMON				"demon"
-#define ROLE_SENTIENT			"sentient animal"
-#define ROLE_GUARDIAN			"guardian"
-#define ROLE_MORPH				"morph"
-#define ROLE_ERT				"emergency response team"
-#define ROLE_NYMPH				"Dionaea"
-#define ROLE_TSPIDER			"terror spider"
-#define ROLE_DRONE				"drone"
-#define ROLE_DEATHSQUAD			"deathsquad"
-#define ROLE_EVENTMISC			"eventmisc"
-#define ROLE_GHOST				"ghost role"
-#define ROLE_ELITE				"lavaland elite"
 
-// Misc jobban categories
-#define ROLEBAN_AHUD			"AntagHUD"
-#define ROLEBAN_RECORDS			"Records"
+// Roundstart roles
+#define ROLE_BROTHER "Blood Brother"
+#define ROLE_CHANGELING "Changeling"
+#define ROLE_CULTIST "Cultist"
+#define ROLE_HERETIC "Heretic"
+#define ROLE_MALF "Malf AI"
+#define ROLE_OPERATIVE "Operative"
+#define ROLE_TRAITOR "Traitor"
+#define ROLE_WIZARD "Wizard"
 
-//Missing assignment means it's not a gamemode specific role, IT'S NOT A BUG OR ERROR.
-//The gamemode specific ones are just so the gamemodes can query whether a player is old enough
-//(in game days played) to play that role
+// Midround roles
+#define ROLE_ABDUCTOR "Abductor"
+#define ROLE_ALIEN "Xenomorph"
+#define ROLE_BLOB "Blob"
+#define ROLE_BLOB_INFECTION "Blob Infection"
+#define ROLE_CHANGELING_MIDROUND "Changeling (Midround)"
+#define ROLE_FUGITIVE "Fugitive"
+#define ROLE_LONE_OPERATIVE "Lone Operative"
+#define ROLE_MALF_MIDROUND "Malf AI (Midround)"
+#define ROLE_NIGHTMARE "Nightmare"
+#define ROLE_NINJA "Space Ninja"
+#define ROLE_OBSESSED "Obsessed"
+#define ROLE_OPERATIVE_MIDROUND "Operative (Midround)"
+#define ROLE_PARADOX_CLONE "Paradox Clone"
+#define ROLE_REV_HEAD "Head Revolutionary"
+#define ROLE_SENTIENT_DISEASE "Sentient Disease"
+#define ROLE_SLEEPER_AGENT "Syndicate Sleeper Agent"
+#define ROLE_SPACE_DRAGON "Space Dragon"
+#define ROLE_SPIDER "Spider"
+#define ROLE_WIZARD_MIDROUND "Wizard (Midround)"
+
+// Latejoin roles
+#define ROLE_HERETIC_SMUGGLER "Heretic Smuggler"
+#define ROLE_PROVOCATEUR "Provocateur"
+#define ROLE_STOWAWAY_CHANGELING "Stowaway Changeling"
+#define ROLE_SYNDICATE_INFILTRATOR "Syndicate Infiltrator"
+
+// Other roles
+#define ROLE_ANOMALY_GHOST "Ectoplasmic Anomaly Ghost"
+#define ROLE_BRAINWASHED "Brainwashed Victim"
+#define ROLE_DEATHSQUAD "Deathsquad"
+#define ROLE_DRONE "Drone"
+#define ROLE_EMAGGED_BOT "Malfunctioning Bot"
+#define ROLE_HIVE "Hivemind Host" //Role removed, left here for safety.
+#define ROLE_HYPNOTIZED "Hypnotized Victim"
+#define ROLE_LAVALAND "Lavaland"
+#define ROLE_LAZARUS_BAD "Slaved Revived Mob"
+#define ROLE_LAZARUS_GOOD "Friendly Revived Mob"
+#define ROLE_MIND_TRANSFER "Mind Transfer Potion"
+#define ROLE_MONKEY_HELMET "Monkey Mind Magnification Helmet"
+#define ROLE_OVERTHROW "Syndicate Mutineer" //Role removed, left here for safety.
+#define ROLE_PAI "pAI"
+#define ROLE_POSIBRAIN "Posibrain"
+#define ROLE_PYROCLASTIC_SLIME "Pyroclastic Anomaly Slime"
+#define ROLE_REV "Revolutionary"
+#define ROLE_REVENANT "Revenant"
+#define ROLE_SENTIENCE "Sentience Potion Spawn"
+#define ROLE_SYNDICATE "Syndicate"
+
+#define ROLE_CLOWN_OPERATIVE "Clown Operative"
+#define ROLE_FREE_GOLEM "Free Golem"
+#define ROLE_MORPH "Morph"
+#define ROLE_NUCLEAR_OPERATIVE "Nuclear Operative"
+#define ROLE_POSITRONIC_BRAIN "Positronic Brain"
+#define ROLE_SANTA "Santa"
+#define ROLE_SERVANT_GOLEM "Servant Golem"
+#define ROLE_SLAUGHTER_DEMON "Slaughter Demon"
+#define ROLE_WIZARD_APPRENTICE "apprentice"
+#define ROLE_SYNDICATE_MONKEY "Syndicate Monkey Agent"
+#define ROLE_CONTRACTOR_SUPPORT "Contractor Support Unit"
+
+//Spawner roles
+#define ROLE_ANCIENT_CREW "Ancient Crew"
+#define ROLE_ASHWALKER "Ash Walker"
+#define ROLE_BATTLECRUISER_CAPTAIN "Battlecruiser Captain"
+#define ROLE_BATTLECRUISER_CREW "Battlecruiser Crew"
+#define ROLE_BEACH_BUM "Beach Bum"
+#define ROLE_BOT "Bot"
+#define ROLE_DERELICT_DRONE "Derelict Drone"
+#define ROLE_ESCAPED_PRISONER "Escaped Prisoner"
+#define ROLE_EXILE "Exile"
+#define ROLE_FUGITIVE_HUNTER "Fugitive Hunter"
+#define ROLE_GHOST_ROLE "Ghost Role"
+#define ROLE_HERMIT "Hermit"
+#define ROLE_HOTEL_STAFF "Hotel Staff"
+#define ROLE_LAVALAND_SYNDICATE "Lavaland Syndicate"
+#define ROLE_LIFEBRINGER "Lifebringer"
+#define ROLE_MAINTENANCE_DRONE "Maintenance Drone"
+#define ROLE_SKELETON "Skeleton"
+#define ROLE_SPACE_BAR_PATRON "Space Bar Patron"
+#define ROLE_SPACE_BARTENDER "Space Bartender"
+#define ROLE_SPACE_DOCTOR "Space Doctor"
+#define ROLE_SPACE_PIRATE "Space Pirate"
+#define ROLE_SPACE_SYNDICATE "Space Syndicate"
+#define ROLE_SYNDICATE_CYBERSUN "Cybersun Space Syndicate" //Ghost role syndi from Forgottenship ruin
+#define ROLE_SYNDICATE_CYBERSUN_CAPTAIN "Cybersun Space Syndicate Captain" //Forgottenship captain syndie
+#define ROLE_SYNDICATE_DRONE "Syndicate Drone"
+#define ROLE_VENUSHUMANTRAP "Venus Human Trap"
+#define ROLE_ZOMBIE "Zombie"
+
+// Virtual dom related
+#define ROLE_GLITCH "Glitch" // the parent type of all vdom roles
+#define ROLE_CYBER_POLICE "Cyber Police"
+#define ROLE_CYBER_TAC "Cyber Tac"
+#define ROLE_NETGUARDIAN "NetGuardian Prime"
+
+/// This defines the antagonists you can operate with in the settings.
+/// Keys are the antagonist, values are the number of days since the player's
+/// first connection in order to play.
 GLOBAL_LIST_INIT(special_roles, list(
-	ROLE_ABDUCTOR = /datum/game_mode/abduction, 		// Abductor
-	ROLE_BLOB, 											// Blob
-	ROLE_CHANGELING = /datum/game_mode/changeling, 		// Changeling
-	ROLE_CULTIST = /datum/game_mode/cult, 				// Cultist
-	ROLE_GUARDIAN, 										// Guardian
-	ROLE_MORPH, 										// Morph
-	ROLE_OPERATIVE = /datum/game_mode/nuclear, 			// Operative
-	ROLE_PAI, 											// PAI
-	ROLE_REVENANT, 										// Revenant
-	ROLE_REV = /datum/game_mode/revolution, 			// Revolutionary
-	ROLE_SENTIENT, 										// Sentient animal
-	ROLE_DEMON, 										// Slaguther demon
-	ROLE_ELITE,											// Lavaland Elite
-	ROLE_TRADER, 										// Trader
-	ROLE_TRAITOR = /datum/game_mode/traitor, 			// Traitor
-	ROLE_VAMPIRE = /datum/game_mode/vampire, 			// Vampire
-	ROLE_ALIEN, 										// Xenomorph
-	ROLE_WIZARD = /datum/game_mode/wizard 				// Wizard
-	// UNUSED/BROKEN ANTAGS
-//	ROLE_HOG_GOD = /datum/game_mode/hand_of_god,
-//	ROLE_HOG_CULTIST = /datum/game_mode/hand_of_god,
-//	ROLE_MONKEY = /datum/game_mode/monkey, Sooner or later these are going to get ported
-//	ROLE_GANG = /datum/game_mode/gang
+	// Roundstart
+	ROLE_BROTHER = 0,
+	ROLE_CHANGELING = 0,
+	ROLE_CLOWN_OPERATIVE = 14,
+	ROLE_CULTIST = 14,
+	ROLE_HERETIC = 0,
+	ROLE_MALF = 0,
+	ROLE_OPERATIVE = 14,
+	ROLE_REV_HEAD = 14,
+	ROLE_TRAITOR = 0,
+	ROLE_WIZARD = 14,
+
+	// Midround
+	ROLE_ABDUCTOR = 0,
+	ROLE_ALIEN = 0,
+	ROLE_BLOB = 0,
+	ROLE_BLOB_INFECTION = 0,
+	ROLE_CHANGELING_MIDROUND = 0,
+	ROLE_FUGITIVE = 0,
+	ROLE_LONE_OPERATIVE = 14,
+	ROLE_MALF_MIDROUND = 0,
+	ROLE_NIGHTMARE = 0,
+	ROLE_NINJA = 0,
+	ROLE_OBSESSED = 0,
+	ROLE_OPERATIVE_MIDROUND = 14,
+	ROLE_PARADOX_CLONE = 0,
+	ROLE_REVENANT = 0,
+	ROLE_SENTIENT_DISEASE = 0,
+	ROLE_SLEEPER_AGENT = 0,
+	ROLE_SPACE_DRAGON = 0,
+	ROLE_SPIDER = 0,
+	ROLE_WIZARD_MIDROUND = 14,
+
+	// Latejoin
+	ROLE_HERETIC_SMUGGLER = 0,
+	ROLE_PROVOCATEUR = 14,
+	ROLE_SYNDICATE_INFILTRATOR = 0,
+	ROLE_STOWAWAY_CHANGELING = 0,
+
+	// I'm not too sure why these are here, but they're not moving.
+	ROLE_GLITCH = 0,
+	ROLE_PAI = 0,
+	ROLE_SENTIENCE = 0,
 ))
+
+//Job defines for what happens when you fail to qualify for any job during job selection
+#define BEOVERFLOW 1
+#define BERANDOMJOB 2
+#define RETURNTOLOBBY 3

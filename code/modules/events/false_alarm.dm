@@ -1,43 +1,69 @@
-/datum/event/falsealarm
-	announceWhen	= 0
-	endWhen			= 1
-	var/static/list/possible_event_types = list(
-		/datum/event/alien_infestation,
-		/datum/event/apc_overload,
-		/datum/event/apc_short,
-		/datum/event/blob,
-		/datum/event/brand_intelligence,
-		/datum/event/bureaucratic_error,
-		/datum/event/communications_blackout,
-		/datum/event/electrical_storm,
-		/datum/event/immovable_rod,
-		/datum/event/infestation,
-		/datum/event/ion_storm,
-		/datum/event/mass_hallucination,
-		/datum/event/meteor_wave,
-		/datum/event/prison_break,
-		/datum/event/rogue_drone,
-		/datum/event/solar_flare,
-		/datum/event/spider_infestation,
-		/datum/event/tear,
-		/datum/event/traders,
-		/datum/event/vent_clog
-	) + subtypesof(/datum/event/anomaly) + subtypesof(/datum/event/carp_migration)
+/datum/round_event_control/falsealarm
+	name = "False Alarm"
+	typepath = /datum/round_event/falsealarm
+	weight = 20
+	max_occurrences = 5
+	category = EVENT_CATEGORY_BUREAUCRATIC
+	description = "Fakes an event announcement."
+	admin_setup = list(/datum/event_admin_setup/listed_options/false_alarm)
 
-	var/datum/event/working_event
-
-/datum/event/falsealarm/start()
+/datum/round_event_control/falsealarm/can_spawn_event(players_amt, allow_magic = FALSE)
 	. = ..()
-	var/datum/event/working_event_type = pick(possible_event_types)
-	working_event = new working_event_type(skeleton = TRUE)
-	log_debug("False alarm selecting [working_event] to imitate")
+	if(!.)
+		return .
 
-/datum/event/falsealarm/announce()
-	if(working_event.fake_announce())
+	if(!length(gather_false_events()))
+		return FALSE
+	return TRUE
+
+/datum/round_event/falsealarm
+	announce_when = 0
+	end_when = 1
+	fakeable = FALSE
+	/// Admin's pick of fake event (wow! you picked blob!! you're so creative and smart!)
+	var/forced_type
+
+/datum/round_event/falsealarm/announce(fake)
+	if(fake) //What are you doing
 		return
-	working_event.announce(TRUE)
-	message_admins("False Alarm: [working_event]")
-	kill()
+	var/players_amt = get_active_player_count(alive_check = 1, afk_check = 1, human_check = 1)
 
-/datum/event/falsealarm/end()
-	QDEL_NULL(working_event)
+	var/events_list = gather_false_events(players_amt)
+	var/datum/round_event_control/event_control
+	if(forced_type)
+		event_control = forced_type
+	else
+		event_control = pick(events_list)
+	if(event_control)
+		var/datum/round_event/Event = new event_control.typepath()
+		message_admins("False Alarm: [Event]")
+		Event.kill() //do not process this event - no starts, no ticks, no ends
+		Event.announce(TRUE) //just announce it like it's happening
+
+/proc/gather_false_events(players_amt)
+	. = list()
+	for(var/datum/round_event_control/E in SSevents.control)
+		if(istype(E, /datum/round_event_control/falsealarm))
+			continue
+		if(!E.can_spawn_event(players_amt))
+			continue
+
+		var/datum/round_event/event = E.typepath
+		if(!initial(event.fakeable))
+			continue
+		. += E
+
+/datum/event_admin_setup/listed_options/false_alarm
+	normal_run_option = "Random Fake Event"
+
+/datum/event_admin_setup/listed_options/false_alarm/get_list()
+	var/list/possible_types = list()
+	for(var/datum/round_event_control/event_control in SSevents.control)
+		var/datum/round_event/event = event_control.typepath
+		if(!initial(event.fakeable))
+			continue
+		possible_types += event_control
+	return possible_types
+
+/datum/event_admin_setup/listed_options/false_alarm/apply_to_event(datum/round_event/falsealarm/event)
+	event.forced_type = chosen

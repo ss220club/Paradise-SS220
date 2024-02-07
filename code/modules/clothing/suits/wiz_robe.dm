@@ -1,231 +1,235 @@
 /obj/item/clothing/head/wizard
 	name = "wizard hat"
 	desc = "Strange-looking hat-wear that most certainly belongs to a real magic user."
+	icon = 'icons/obj/clothing/head/wizard.dmi'
+	worn_icon = 'icons/mob/clothing/head/wizard.dmi'
 	icon_state = "wizard"
-	gas_transfer_coefficient = 0.01 // IT'S MAGICAL OKAY JEEZ +1 TO NOT DIE
-	permeability_coefficient = 0.01
-	armor = list(MELEE = 20, BULLET = 10, LASER = 10, ENERGY = 10, BOMB = 10, RAD = 10, FIRE = INFINITY, ACID = INFINITY)
-	resistance_flags = FIRE_PROOF | ACID_PROOF
-	//Not given any special protective value since the magic robes are full-body protection --NEO
+	inhand_icon_state = "wizhat"
+	armor_type = /datum/armor/head_wizard
 	strip_delay = 50
-	put_on_delay = 50
-	magical = TRUE
+	equip_delay_other = 50
+	clothing_flags = SNUG_FIT | CASTING_CLOTHES
+	resistance_flags = FIRE_PROOF | ACID_PROOF
 	dog_fashion = /datum/dog_fashion/head/blue_wizard
+
+/datum/armor/head_wizard
+	melee = 30
+	bullet = 20
+	laser = 20
+	energy = 30
+	bomb = 20
+	bio = 100
+	fire = 100
+	acid = 100
+	wound = 20
 
 /obj/item/clothing/head/wizard/red
 	name = "red wizard hat"
-	desc = "Strange-looking, red, hat-wear that most certainly belongs to a real magic user."
+	desc = "Strange-looking red hat-wear that most certainly belongs to a real magic user."
 	icon_state = "redwizard"
 	dog_fashion = /datum/dog_fashion/head/red_wizard
+
+/obj/item/clothing/head/wizard/yellow
+	name = "yellow wizard hat"
+	desc = "Strange-looking yellow hat-wear that most certainly belongs to a powerful magic user."
+	icon_state = "yellowwizard"
+	dog_fashion = null
 
 /obj/item/clothing/head/wizard/black
 	name = "black wizard hat"
 	desc = "Strange-looking black hat-wear that most certainly belongs to a real skeleton. Spooky."
 	icon_state = "blackwizard"
-	dog_fashion = /datum/dog_fashion/head/black_wizard
-
-/obj/item/clothing/head/wizard/clown
-	name = "purple wizard hat"
-	desc = "Strange-looking purple hat-wear that most certainly belongs to a real magic user."
-	icon_state = "wizhatclown"
-	item_state = "wizhatclown" // cheating
 	dog_fashion = null
-
-/obj/item/clothing/head/wizard/mime
-	name = "magical beret"
-	desc = "A magical red beret."
-	icon_state = "wizhatmime"
-	item_state = "wizhatmime"
-	dog_fashion = null
-	sprite_sheets = list(
-		"Vox" = 'icons/mob/clothing/species/vox/head.dmi',
-		"Drask" = 'icons/mob/clothing/species/drask/head.dmi',
-		"Grey" = 'icons/mob/clothing/species/grey/head.dmi'
-		)
 
 /obj/item/clothing/head/wizard/fake
 	name = "wizard hat"
 	desc = "It has WIZZARD written across it in sequins. Comes with a cool beard."
 	icon_state = "wizard-fake"
-	gas_transfer_coefficient = 1
-	permeability_coefficient = 1
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, RAD = 0, FIRE = 0, ACID = 0)
-	magical = FALSE
+	armor_type = /datum/armor/none
 	resistance_flags = FLAMMABLE
 	dog_fashion = /datum/dog_fashion/head/blue_wizard
-	sprite_sheets = list(
-		"Vox" = 'icons/mob/clothing/species/vox/head.dmi'
-		)
-
 
 /obj/item/clothing/head/wizard/marisa
 	name = "witch hat"
-	desc = "Strange-looking hat-wear, makes you want to cast fireballs."
-	icon_state = "marisa"
-	dog_fashion = /datum/dog_fashion/head/wizard/marisa
+	desc = "Strange-looking hat-wear. Makes you want to cast fireballs."
+	icon_state = "witch_hat"
+	greyscale_colors = "#343640#e0cab8#e0cab8"
+	greyscale_config = /datum/greyscale_config/witch_hat
+	greyscale_config_worn = /datum/greyscale_config/witch_hat/worn
+	flags_1 = IS_PLAYER_COLORABLE_1
+	dog_fashion = null
+
+/obj/item/clothing/head/wizard/tape
+	name = "tape hat"
+	desc = "A magically attuned hat made exclusively from duct tape. You can barely see."
+	icon_state = "tapehat"
+	inhand_icon_state = "tapehat"
+	dog_fashion = null
+	worn_y_offset = 6
+	body_parts_covered = HEAD //this used to also cover HAIR, but that was never valid code as HAIR is not actually a body_part define!
+	flags_inv = HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
 
 /obj/item/clothing/head/wizard/magus
-	name = "magus helm"
-	desc = "A mysterious helmet that hums with an unearthly power"
+	name = "\improper Magus helm"
+	desc = "A mysterious helmet that hums with an unearthly power."
 	icon_state = "magus"
-	item_state = "magus"
-	dog_fashion = /datum/dog_fashion/head/wizard/magus
-	sprite_sheets = list(
-		"Vox" = 'icons/mob/clothing/species/vox/head.dmi'
-		)
-
-/obj/item/clothing/head/wizard/amp
-	name = "psychic amplifier"
-	desc = "A crown-of-thorns psychic amplifier. Kind of looks like a tiara having sex with an industrial robot."
-	icon_state = "amp"
+	inhand_icon_state = null
 	dog_fashion = null
+
+/obj/item/clothing/head/wizard/santa
+	name = "Santa's hat"
+	desc = "Ho ho ho. Merrry X-mas!"
+	icon_state = "santahat"
+	inhand_icon_state = "santahat"
+	flags_inv = HIDEHAIR|HIDEFACIALHAIR
+	dog_fashion = null
+
+/obj/item/clothing/head/wizard/hood
+	name = "wizard hood"
+	icon_state = "wizhood"
 
 /obj/item/clothing/suit/wizrobe
 	name = "wizard robe"
 	desc = "A magnificent, gem-lined robe that seems to radiate power."
+	icon = 'icons/obj/clothing/suits/wizard.dmi'
 	icon_state = "wizard"
-	item_state = "wizrobe"
-	gas_transfer_coefficient = 0.01
-	permeability_coefficient = 0.01
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
-	armor = list(MELEE = 20, BULLET = 10, LASER = 10, ENERGY = 10, BOMB = 10, RAD = 10, FIRE = INFINITY, ACID = INFINITY)
-	allowed = list(/obj/item/teleportation_scroll, /obj/item/gun/magic/staff, /obj/item/melee/ghost_sword, /obj/item/lava_staff, /obj/item/hierophant_club)
-	max_suit_w = WEIGHT_CLASS_HUGE
+	worn_icon = 'icons/mob/clothing/suits/wizard.dmi'
+	inhand_icon_state = "wizrobe"
+	body_parts_covered = CHEST|GROIN|ARMS|LEGS
+	armor_type = /datum/armor/suit_wizrobe
+	allowed = list(/obj/item/teleportation_scroll, /obj/item/highfrequencyblade/wizard)
 	flags_inv = HIDEJUMPSUIT
 	strip_delay = 50
-	put_on_delay = 50
+	equip_delay_other = 50
+	clothing_flags = CASTING_CLOTHES
 	resistance_flags = FIRE_PROOF | ACID_PROOF
-	magical = TRUE
+
+/datum/armor/suit_wizrobe
+	melee = 30
+	bullet = 20
+	laser = 20
+	energy = 30
+	bomb = 20
+	bio = 100
+	fire = 100
+	acid = 100
+	wound = 20
 
 /obj/item/clothing/suit/wizrobe/red
 	name = "red wizard robe"
-	desc = "A magnificent, red, gem-lined robe that seems to radiate power."
+	desc = "A magnificent red gem-lined robe that seems to radiate power."
 	icon_state = "redwizard"
-	item_state = "redwizrobe"
+	inhand_icon_state = null
+
+/obj/item/clothing/suit/wizrobe/yellow
+	name = "yellow wizard robe"
+	desc = "A magnificent yellow gem-lined robe that seems to radiate power."
+	icon_state = "yellowwizard"
+	inhand_icon_state = null
 
 /obj/item/clothing/suit/wizrobe/black
 	name = "black wizard robe"
 	desc = "An unnerving black gem-lined robe that reeks of death and decay."
 	icon_state = "blackwizard"
-	item_state = "blackwizrobe"
-
-/obj/item/clothing/suit/wizrobe/clown
-	name = "clown robe"
-	desc = "A set of armoured robes that seem to radiate a dark power. That, and bad fashion decisions."
-	icon_state = "wizzclown"
-	item_state = "wizzclown"
-
-/obj/item/clothing/suit/wizrobe/mime
-	name = "mime robe"
-	desc = "Red, black, and white robes. There is not much else to say about them."
-	icon_state = "wizzmime"
-	item_state = "wizzmime"
-	sprite_sheets = list(
-		"Vox" = 'icons/mob/clothing/species/vox/suit.dmi',
-		"Drask" = 'icons/mob/clothing/species/drask/suit.dmi',
-		"Grey" = 'icons/mob/clothing/species/grey/suit.dmi'
-		)
+	inhand_icon_state = null
 
 /obj/item/clothing/suit/wizrobe/marisa
 	name = "witch robe"
 	desc = "Magic is all about the spell power, ZE!"
 	icon_state = "marisa"
-	item_state = "marisarobe"
+	inhand_icon_state = null
+
+/obj/item/clothing/suit/wizrobe/tape
+	name = "tape robe"
+	desc = "A fine robe made from magically attuned duct tape."
+	icon_state = "taperobe"
+	inhand_icon_state = "taperobe"
 
 /obj/item/clothing/suit/wizrobe/magusblue
-	name = "magus robe"
-	desc = "A set of armoured robes that seem to radiate a dark power"
+	name = "\improper Magus robe"
+	desc = "A set of armored robes that seem to radiate a dark power."
 	icon_state = "magusblue"
-	item_state = "magusblue"
+	inhand_icon_state = null
 
 /obj/item/clothing/suit/wizrobe/magusred
-	name = "magus robe"
-	desc = "A set of armoured robes that seem to radiate a dark power"
+	name = "\improper Magus robe"
+	desc = "A set of armored robes that seem to radiate a dark power."
 	icon_state = "magusred"
-	item_state = "magusred"
+	inhand_icon_state = null
 
-/obj/item/clothing/suit/wizrobe/psypurple
-	name = "purple robes"
-	desc = "Heavy, royal purple robes threaded with psychic amplifiers and weird, bulbous lenses. Do not machine wash."
-	icon_state = "psyamp"
-	item_state = "psyamp"
+/obj/item/clothing/suit/wizrobe/santa
+	name = "Santa's suit"
+	desc = "Festive!"
+	icon_state = "santa"
+	inhand_icon_state = "santa"
 
 /obj/item/clothing/suit/wizrobe/fake
 	name = "wizard robe"
-	desc = "A rather dull, blue robe meant to mimick real wizard robes."
+	desc = "A rather dull blue robe meant to mimic real wizard robes."
 	icon_state = "wizard-fake"
-	item_state = "wizrobe"
-	gas_transfer_coefficient = 1
-	permeability_coefficient = 1
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, RAD = 0, FIRE = 0, ACID = 0)
+	inhand_icon_state = "wizrobe"
+	armor_type = /datum/armor/none
 	resistance_flags = FLAMMABLE
-	magical = FALSE
 
 /obj/item/clothing/head/wizard/marisa/fake
 	name = "witch hat"
-	desc = "Strange-looking hat-wear, makes you want to cast fireballs."
-	icon_state = "marisa"
-	gas_transfer_coefficient = 1
-	permeability_coefficient = 1
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, RAD = 0, FIRE = 0, ACID = 0)
+	armor_type = /datum/armor/none
 	resistance_flags = FLAMMABLE
-	magical = FALSE
+
+/obj/item/clothing/head/wizard/tape/fake
+	name = "tape hat"
+	desc = "A hat designed exclusively from duct tape. You can barely see."
+	armor_type = /datum/armor/none
+	resistance_flags = FLAMMABLE
 
 /obj/item/clothing/suit/wizrobe/marisa/fake
 	name = "witch robe"
 	desc = "Magic is all about the spell power, ZE!"
 	icon_state = "marisa"
-	item_state = "marisarobe"
-	gas_transfer_coefficient = 1
-	permeability_coefficient = 1
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, RAD = 0, FIRE = 0, ACID = 0)
+	inhand_icon_state = null
+	armor_type = /datum/armor/none
 	resistance_flags = FLAMMABLE
-	magical = FALSE
 
-//Shielded Armour
+/obj/item/clothing/suit/wizrobe/tape/fake
+	name = "tape robe"
+	desc = "An outfit designed exclusively from duct tape. It was hard to put on."
+	armor_type = /datum/armor/none
+	resistance_flags = FLAMMABLE
 
-/obj/item/clothing/suit/space/hardsuit/wizard
-	name = "battlemage armor"
-	desc = "Not all wizards are afraid of getting up close and personal."
-	icon_state = "hardsuit-wiz"
-	item_state = "wiz_hardsuit"
-	min_cold_protection_temperature = SPACE_SUIT_MIN_TEMP_PROTECT
-	max_heat_protection_temperature = SPACE_SUIT_MAX_TEMP_PROTECT
-	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/wizard
-	armor = list(MELEE = 35, BULLET = 50, LASER = 20, ENERGY = 10, BOMB = 25, RAD = 50, FIRE = INFINITY, ACID = INFINITY)
-	slowdown = 0
-	resistance_flags = FIRE_PROOF | ACID_PROOF
-	magical = TRUE
+/obj/item/clothing/suit/wizrobe/paper
+	name = "papier-mache robe" // no non-latin characters!
+	desc = "A robe held together by various bits of clear-tape and paste."
+	icon_state = "wizard-paper"
+	inhand_icon_state = null
+	var/robe_charge = TRUE
+	actions_types = list(/datum/action/item_action/stickmen)
 
-/obj/item/clothing/suit/space/hardsuit/wizard/setup_shielding()
-	AddComponent(/datum/component/shielded, max_charges = 15, recharge_start_delay = 0 SECONDS)
 
-/obj/item/clothing/suit/space/hardsuit/wizard/arch
-	desc = "For the arch wizard in need of additional protection."
-	min_cold_protection_temperature = SPACE_SUIT_MIN_TEMP_PROTECT
-	max_heat_protection_temperature = SPACE_SUIT_MAX_TEMP_PROTECT
-	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/wizard/arch
+/obj/item/clothing/suit/wizrobe/paper/ui_action_click(mob/user, action)
+	stickmen()
 
-/obj/item/clothing/suit/space/hardsuit/wizard/arch/setup_shielding()
-	AddComponent(/datum/component/shielded, max_charges = 15, recharge_start_delay = 1 SECONDS, charge_increment_delay = 1 SECONDS)
 
-/obj/item/clothing/head/helmet/space/hardsuit/wizard
-	name = "battlemage helmet"
-	desc = "A suitably impressive helmet."
-	icon_state = "hardsuit0-wiz"
-	item_state = "wiz_helm"
-	item_color = "wiz"
-	min_cold_protection_temperature = SPACE_SUIT_MIN_TEMP_PROTECT
-	max_heat_protection_temperature = SPACE_SUIT_MAX_TEMP_PROTECT
-	armor = list(MELEE = 35, BULLET = 50, LASER = 20, ENERGY = 10, BOMB = 25, RAD = 50, FIRE = INFINITY, ACID = INFINITY)
-	actions_types = list() //No inbuilt light
-	resistance_flags = FIRE_PROOF | ACID_PROOF
-	magical = TRUE
+/obj/item/clothing/suit/wizrobe/paper/verb/stickmen()
+	set category = "Object"
+	set name = "Summon Stick Minions"
+	if(!isliving(usr))
+		return
+	if(!robe_charge)
+		to_chat(usr, span_warning("The robe's internal magic supply is still recharging!"))
+		return
 
-/obj/item/clothing/head/helmet/space/hardsuit/wizard/attack_self(mob/user)
-	return
+	usr.say("Rise, my creation! Off your page into this realm!", forced = "stickman summoning")
+	playsound(loc, 'sound/magic/summon_magic.ogg', 50, TRUE, TRUE)
+	var/mob/living/M = new /mob/living/basic/stickman/lesser(get_turf(usr))
+	M.faction += list("[REF(usr)]")
+	robe_charge = FALSE
+	sleep(3 SECONDS)
+	robe_charge = TRUE
+	to_chat(usr, span_notice("The robe hums, its internal magic supply restored."))
 
-/obj/item/clothing/head/helmet/space/hardsuit/wizard/arch
-	desc = "A truly protective helmet."
-	min_cold_protection_temperature = SPACE_HELM_MIN_TEMP_PROTECT
-	max_heat_protection_temperature = SPACE_HELM_MAX_TEMP_PROTECT
+// The actual code for this is handled in the shielded component, see [/datum/component/shielded/proc/check_recharge_rune]
+/obj/item/wizard_armour_charge
+	name = "battlemage shield charges"
+	desc = "A powerful rune that will increase the number of hits a suit of battlemage armour can take before failing.."
+	icon = 'icons/effects/anomalies.dmi'
+	icon_state = "flux"

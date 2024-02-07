@@ -1,24 +1,39 @@
 /obj/item/mod/construction
-	desc = "A part used in MOD construction. You could insert it into a MOD shell."
+	desc = "A part used in MOD construction."
 	icon = 'icons/obj/clothing/modsuit/mod_construction.dmi'
-	icon_state = "rack_parts"
+	inhand_icon_state = "rack_parts"
 
 /obj/item/mod/construction/helmet
 	name = "MOD helmet"
-	desc = "You could insert it into a MOD shell."
 	icon_state = "helmet"
+
+/obj/item/mod/construction/helmet/examine(mob/user)
+	. = ..()
+	. += span_notice("You could insert it into a <b>MOD shell</b>...")
 
 /obj/item/mod/construction/chestplate
 	name = "MOD chestplate"
 	icon_state = "chestplate"
 
+/obj/item/mod/construction/chestplate/examine(mob/user)
+	. = ..()
+	. += span_notice("You could insert it into a <b>MOD shell</b>...")
+
 /obj/item/mod/construction/gauntlets
 	name = "MOD gauntlets"
 	icon_state = "gauntlets"
 
+/obj/item/mod/construction/gauntlets/examine(mob/user)
+	. = ..()
+	. += span_notice("You could insert these into a <b>MOD shell</b>...")
+
 /obj/item/mod/construction/boots
 	name = "MOD boots"
 	icon_state = "boots"
+
+/obj/item/mod/construction/boots/examine(mob/user)
+	. = ..()
+	. += span_notice("You could insert these into a <b>MOD shell</b>...")
 
 /obj/item/mod/construction/broken_core
 	name = "broken MOD core"
@@ -27,20 +42,47 @@
 
 /obj/item/mod/construction/broken_core/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>You could repair it with a <b>screwdriver</b>...</span>"
+	. += span_notice("You could repair it with a <b>screwdriver</b>...")
 
 /obj/item/mod/construction/broken_core/screwdriver_act(mob/living/user, obj/item/tool)
 	. = ..()
+	balloon_alert(user, "repairing...")
 	if(!tool.use_tool(src, user, 5 SECONDS, volume = 30))
+		balloon_alert(user, "interrupted!")
 		return
 	new /obj/item/mod/core/standard(drop_location())
+	qdel(src)
+
+/obj/item/mod/construction/lavalandcore
+	name = "plasma flower"
+	icon_state = "plasma-flower"
+	desc = "A strange flower from the desolate wastes of lavaland. It pulses with a bright purple glow.  \
+		Its shape is remarkably similar to that of a MOD core."
+	light_system = MOVABLE_LIGHT
+	light_color = "#cc00cc"
+	light_range = 2
+
+/obj/item/mod/construction/lavalandcore/examine(mob/user)
+	. = ..()
+	. += span_notice("You could probably attach some <b>wires</b> to it...")
+
+/obj/item/mod/construction/lavalandcore/attackby(obj/item/weapon, mob/user, params)
+	if(!istype(weapon, /obj/item/stack/cable_coil))
+		return ..()
+	if(!weapon.tool_start_check(user, amount=2))
+		return
+	balloon_alert(user, "installing wires...")
+	if(!weapon.use_tool(src, user, 5 SECONDS, amount = 2, volume = 30))
+		balloon_alert(user, "interrupted!")
+		return
+	new /obj/item/mod/core/plasma/lavaland(drop_location())
 	qdel(src)
 
 /obj/item/mod/construction/plating
 	name = "MOD external plating"
 	desc = "External plating used to finish a MOD control unit."
 	icon_state = "standard-plating"
-	var/datum/mod_theme/theme = /datum/mod_theme/standard
+	var/datum/mod_theme/theme = /datum/mod_theme
 
 /obj/item/mod/construction/plating/Initialize(mapload)
 	. = ..()
@@ -60,20 +102,9 @@
 
 /obj/item/mod/construction/plating/security
 	theme = /datum/mod_theme/security
+
 /obj/item/mod/construction/plating/cosmohonk
 	theme = /datum/mod_theme/cosmohonk
-
-/obj/item/mod/construction/plating/rescue //I want to add a way to get the rarer modsuit types, that is limited. A low chance for traders to have plating for it seems interesting
-	theme = /datum/mod_theme/rescue
-
-/obj/item/mod/construction/plating/safeguard //Continued from above, none of these are steal objectives, and only the CE or RD one comes pre-installed with modules. You are getting the protection / speed / looks of these hardsuits, but no special modules.
-	theme = /datum/mod_theme/safeguard
-
-/obj/item/mod/construction/plating/advanced //This may be a bad idea. I think this is an interesting idea. And you still need robotics to build it, and traders can charge as much for it as they want. Also with ones like the CE modsuit, it is the flagship mod. That means it is sold a lot.
-	theme = /datum/mod_theme/advanced
-
-/obj/item/mod/construction/plating/research //Don't think people will want the RD one though, it is as slow as shit. Anyway, here it is. Surely this will not end poorly.
-	theme = /datum/mod_theme/research
 
 #define START_STEP "start"
 #define CORE_STEP "core"
@@ -87,19 +118,19 @@
 
 /obj/item/mod/construction/shell
 	name = "MOD shell"
-	desc = "A MOD shell."
 	icon_state = "mod-construction_start"
+	desc = "A MOD shell."
 	var/obj/item/core
 	var/obj/item/helmet
 	var/obj/item/chestplate
 	var/obj/item/gauntlets
 	var/obj/item/boots
-	var/construction_step = START_STEP
+	var/step = START_STEP
 
 /obj/item/mod/construction/shell/examine(mob/user)
 	. = ..()
 	var/display_text
-	switch(construction_step)
+	switch(step)
 		if(START_STEP)
 			display_text = "It looks like it's missing a <b>MOD core</b>..."
 		if(CORE_STEP)
@@ -118,136 +149,129 @@
 			display_text = "The assembly seems <b>loose</b>..."
 		if(SCREWED_ASSEMBLY_STEP)
 			display_text = "All it's missing is <b>external plating</b>..."
-	. += "<span class='notice'>[display_text]</span>"
+	. += span_notice(display_text)
 
 /obj/item/mod/construction/shell/attackby(obj/item/part, mob/user, params)
 	. = ..()
-	switch(construction_step)
+	switch(step)
 		if(START_STEP)
 			if(!istype(part, /obj/item/mod/core))
 				return
-			if(!user.drop_item())
-				to_chat(user, "<span class='warning'>[part] is stuck to you and cannot be placed into [src].</span>")
+			if(!user.transferItemToLoc(part, src))
+				balloon_alert(user, "core stuck to your hand!")
 				return
 			playsound(src, 'sound/machines/click.ogg', 30, TRUE)
-			to_chat(user, "<span class='notice'>Core inserted.</span>")
+			balloon_alert(user, "core inserted")
 			core = part
-			core.forceMove(src)
-			construction_step = CORE_STEP
+			step = CORE_STEP
 		if(CORE_STEP)
 			if(part.tool_behaviour == TOOL_SCREWDRIVER) //Construct
-				if(part.use_tool(src, user, 0, volume = 30))
-					to_chat(user, "<span class='notice'>Core screwed.</span>")
-				construction_step = SCREWED_CORE_STEP
+				if(part.use_tool(src, user, 0, volume=30))
+					balloon_alert(user, "core screwed")
+				step = SCREWED_CORE_STEP
 			else if(part.tool_behaviour == TOOL_CROWBAR) //Deconstruct
-				if(part.use_tool(src, user, 0, volume = 30))
+				if(part.use_tool(src, user, 0, volume=30))
 					core.forceMove(drop_location())
-					to_chat(user, "<span class='notice'>Core removed.</span>")
-				construction_step = START_STEP
+					balloon_alert(user, "core taken out")
+				step = START_STEP
 		if(SCREWED_CORE_STEP)
 			if(istype(part, /obj/item/mod/construction/helmet)) //Construct
-				if(!user.drop_item())
-					to_chat(user, "<span class='warning'>[part] is stuck to you and cannot be placed into [src].</span>")
+				if(!user.transferItemToLoc(part, src))
+					balloon_alert(user, "helmet stuck to your hand!")
 					return
 				playsound(src, 'sound/machines/click.ogg', 30, TRUE)
-				to_chat(user, "<span class='notice'>Helmet added.</span>")
+				balloon_alert(user, "helmet added")
 				helmet = part
-				helmet.forceMove(src)
-				construction_step = HELMET_STEP
+				step = HELMET_STEP
 			else if(part.tool_behaviour == TOOL_SCREWDRIVER) //Deconstruct
-				if(part.use_tool(src, user, 0, volume = 30))
-					to_chat(user, "<span class='notice'>Core unscrewed.</span>")
-					construction_step = CORE_STEP
+				if(part.use_tool(src, user, 0, volume=30))
+					balloon_alert(user, "core unscrewed")
+					step = CORE_STEP
 		if(HELMET_STEP)
 			if(istype(part, /obj/item/mod/construction/chestplate)) //Construct
-				if(!user.drop_item())
-					to_chat(user, "<span class='warning'>[part] is stuck to you and cannot be placed into [src].</span>")
+				if(!user.transferItemToLoc(part, src))
+					balloon_alert(user, "chestplate stuck to your hand!")
 					return
 				playsound(src, 'sound/machines/click.ogg', 30, TRUE)
-				to_chat(user, "<span class='notice'>Chestplate added.</span>")
-				forceMove(src)
+				balloon_alert(user, "chestplate added")
 				chestplate = part
-				chestplate.forceMove(src)
-				construction_step = CHESTPLATE_STEP
+				step = CHESTPLATE_STEP
 			else if(part.tool_behaviour == TOOL_CROWBAR) //Deconstruct
-				if(part.use_tool(src, user, 0, volume = 30))
+				if(part.use_tool(src, user, 0, volume=30))
 					helmet.forceMove(drop_location())
-					to_chat(user, "<span class='notice'>Helmet removed.</span>")
+					balloon_alert(user, "helmet removed")
 					helmet = null
-					construction_step = SCREWED_CORE_STEP
+					step = SCREWED_CORE_STEP
 		if(CHESTPLATE_STEP)
 			if(istype(part, /obj/item/mod/construction/gauntlets)) //Construct
-				if(!user.drop_item())
-					to_chat(user, "<span class='warning'>[part] is stuck to you and cannot be placed into [src].</span>")
+				if(!user.transferItemToLoc(part, src))
+					balloon_alert(user, "gauntlets stuck to your hand!")
 					return
 				playsound(src, 'sound/machines/click.ogg', 30, TRUE)
-				to_chat(user, "<span class='notice'>Gauntlets added.</span>")
+				balloon_alert(user, "gauntlets added")
 				gauntlets = part
-				gauntlets.forceMove(src)
-				construction_step = GAUNTLETS_STEP
+				step = GAUNTLETS_STEP
 			else if(part.tool_behaviour == TOOL_CROWBAR) //Deconstruct
-				if(part.use_tool(src, user, 0, volume = 30))
+				if(part.use_tool(src, user, 0, volume=30))
 					chestplate.forceMove(drop_location())
-					to_chat(user, "<span class='notice'>Chestplate removed.</span>")
+					balloon_alert(user, "chestplate removed")
 					chestplate = null
-					construction_step = HELMET_STEP
+					step = HELMET_STEP
 		if(GAUNTLETS_STEP)
 			if(istype(part, /obj/item/mod/construction/boots)) //Construct
-				if(!user.drop_item())
-					to_chat(user, "<span class='warning'>[part] is stuck to you and cannot be placed into [src].</span>")
+				if(!user.transferItemToLoc(part, src))
+					balloon_alert(user, "boots added")
 					return
 				playsound(src, 'sound/machines/click.ogg', 30, TRUE)
-				to_chat(user, "<span class='notice'>Boots added.</span>")
+				balloon_alert(user, "fit [part.name]")
 				boots = part
-				boots.forceMove(src)
-				construction_step = BOOTS_STEP
+				step = BOOTS_STEP
 			else if(part.tool_behaviour == TOOL_CROWBAR) //Deconstruct
-				if(part.use_tool(src, user, 0, volume = 30))
+				if(part.use_tool(src, user, 0, volume=30))
 					gauntlets.forceMove(drop_location())
-					to_chat(user, "<span class='notice'>Gauntlets removed.</span>")
+					balloon_alert(user, "gauntlets removed")
 					gauntlets = null
-					construction_step = CHESTPLATE_STEP
+					step = CHESTPLATE_STEP
 		if(BOOTS_STEP)
 			if(part.tool_behaviour == TOOL_WRENCH) //Construct
-				if(part.use_tool(src, user, 0, volume = 30))
-					to_chat(user, "<span class='notice'>Assembly secured.</span>")
-					construction_step = WRENCHED_ASSEMBLY_STEP
+				if(part.use_tool(src, user, 0, volume=30))
+					balloon_alert(user, "assembly secured")
+					step = WRENCHED_ASSEMBLY_STEP
 			else if(part.tool_behaviour == TOOL_CROWBAR) //Deconstruct
-				if(part.use_tool(src, user, 0, volume = 30))
+				if(part.use_tool(src, user, 0, volume=30))
 					boots.forceMove(drop_location())
-					to_chat(user, "<span class='notice'>Boots removed.</span>")
+					balloon_alert(user, "boots removed")
 					boots = null
-					construction_step = GAUNTLETS_STEP
+					step = GAUNTLETS_STEP
 		if(WRENCHED_ASSEMBLY_STEP)
 			if(part.tool_behaviour == TOOL_SCREWDRIVER) //Construct
-				if(part.use_tool(src, user, 0, volume = 30))
-					to_chat(user, "<span class='notice'>Assembly screwed.</span>")
-					construction_step = SCREWED_ASSEMBLY_STEP
+				if(part.use_tool(src, user, 0, volume=30))
+					balloon_alert(user, "assembly screwed")
+					step = SCREWED_ASSEMBLY_STEP
 			else if(part.tool_behaviour == TOOL_WRENCH) //Deconstruct
-				if(part.use_tool(src, user, 0, volume = 30))
-					to_chat(user, "<span class='notice'>Assembly unsecured.</span>")
-					construction_step = BOOTS_STEP
+				if(part.use_tool(src, user, 0, volume=30))
+					balloon_alert(user, "assembly unsecured")
+					step = BOOTS_STEP
 		if(SCREWED_ASSEMBLY_STEP)
 			if(istype(part, /obj/item/mod/construction/plating)) //Construct
 				var/obj/item/mod/construction/plating/external_plating = part
-				if(!user.drop_item())
+				if(!user.transferItemToLoc(part, src))
 					return
 				playsound(src, 'sound/machines/click.ogg', 30, TRUE)
 				var/obj/item/mod = new /obj/item/mod/control(drop_location(), external_plating.theme, null, core)
 				core = null
-				qdel(external_plating)
 				qdel(src)
 				user.put_in_hands(mod)
-				to_chat(user, "<span class='notice'>Suit finished!</span>")
+				mod.balloon_alert(user, "suit finished")
 			else if(part.tool_behaviour == TOOL_SCREWDRIVER) //Construct
-				if(part.use_tool(src, user, 0, volume = 30))
-					to_chat(user, "<span class='notice'>Assembly unscrewed.</span>")
-					construction_step = SCREWED_ASSEMBLY_STEP
+				if(part.use_tool(src, user, 0, volume=30))
+					balloon_alert(user, "assembly unscrewed")
+					step = SCREWED_ASSEMBLY_STEP
 	update_icon_state()
 
 /obj/item/mod/construction/shell/update_icon_state()
 	. = ..()
-	icon_state = "mod-construction_[construction_step]"
+	icon_state = "mod-construction_[step]"
 
 /obj/item/mod/construction/shell/Destroy()
 	QDEL_NULL(core)
@@ -257,18 +281,18 @@
 	QDEL_NULL(boots)
 	return ..()
 
-/obj/item/mod/construction/shell/handle_atom_del(atom/deleted_atom)
-	if(deleted_atom == core)
+/obj/item/mod/construction/shell/Exited(atom/movable/gone, direction)
+	. = ..()
+	if(gone == core)
 		core = null
-	if(deleted_atom == helmet)
+	if(gone == helmet)
 		helmet = null
-	if(deleted_atom == chestplate)
+	if(gone == chestplate)
 		chestplate = null
-	if(deleted_atom == gauntlets)
+	if(gone == gauntlets)
 		gauntlets = null
-	if(deleted_atom == boots)
+	if(gone == boots)
 		boots = null
-	return ..()
 
 #undef START_STEP
 #undef CORE_STEP

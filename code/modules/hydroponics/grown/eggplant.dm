@@ -5,25 +5,23 @@
 	icon_state = "seed-eggplant"
 	species = "eggplant"
 	plantname = "Eggplants"
-	product = /obj/item/food/snacks/grown/eggplant
+	product = /obj/item/food/grown/eggplant
 	yield = 2
 	potency = 20
-	growing_icon = 'icons/obj/hydroponics/growing_vegetables.dmi'
+	growing_icon = 'icons/obj/service/hydroponics/growing_vegetables.dmi'
 	icon_grow = "eggplant-grow"
 	icon_dead = "eggplant-dead"
 	genes = list(/datum/plant_gene/trait/repeated_harvest)
 	mutatelist = list(/obj/item/seeds/eggplant/eggy)
-	reagents_add = list("vitamin" = 0.04, "plantmatter" = 0.1)
+	reagents_add = list(/datum/reagent/consumable/nutriment/vitamin = 0.04, /datum/reagent/consumable/nutriment = 0.1)
 
-/obj/item/food/snacks/grown/eggplant
+/obj/item/food/grown/eggplant
 	seed = /obj/item/seeds/eggplant
 	name = "eggplant"
 	desc = "Maybe there's a chicken inside?"
 	icon_state = "eggplant"
-	filling_color = "#800080"
-	bitesize_mod = 2
-	tastes = list("eggplant" = 1)
-	wine_power = 0.2
+	foodtypes = FRUIT
+	wine_power = 20
 
 // Egg-Plant
 /obj/item/seeds/eggplant/eggy
@@ -32,19 +30,17 @@
 	icon_state = "seed-eggy"
 	species = "eggy"
 	plantname = "Egg-Plants"
-	product = /obj/item/food/snacks/grown/shell/eggy
+	product = /obj/item/food/grown/shell/eggy
 	lifespan = 75
 	production = 12
-	mutatelist = list()
-	reagents_add = list("nutriment" = 0.1)
+	mutatelist = null
+	reagents_add = list(/datum/reagent/consumable/nutriment = 0.1)
 
-/obj/item/food/snacks/grown/shell/eggy
+/obj/item/food/grown/shell/eggy
 	seed = /obj/item/seeds/eggplant/eggy
-	name = "Egg-plant"
+	name = "egg-plant"
 	desc = "There MUST be a chicken inside."
 	icon_state = "eggyplant"
-	trash = /obj/item/food/snacks/egg
-	filling_color = "#F8F8FF"
-	bitesize_mod = 2
-	tastes = list("egg-plant" = 1)
-	distill_reagent = "eggnog"
+	trash_type = /obj/item/food/egg
+	foodtypes = MEAT
+	distill_reagent = /datum/reagent/consumable/ethanol/eggnog

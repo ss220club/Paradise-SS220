@@ -3,6 +3,7 @@
  */
 
 /datum/component/shielded
+	dupe_mode = COMPONENT_DUPE_UNIQUE
 	/// The person currently wearing us
 	var/mob/living/wearer
 	/// How many charges we can have max, and how many we start with
@@ -33,8 +34,6 @@
 	COOLDOWN_DECLARE(charge_add_cd)
 	/// A callback for the sparks/message that play when a charge is used, see [/datum/component/shielded/proc/default_run_hit_callback]
 	var/datum/callback/on_hit_effects
-	///The visual effect
-	var/mutable_appearance/shield
 
 /datum/component/shielded/Initialize(max_charges = 3, recharge_start_delay = 20 SECONDS, charge_increment_delay = 1 SECONDS, charge_recovery = 1, lose_multiple_charges = FALSE, show_charge_as_alpha = FALSE, recharge_path = null, starting_charges = null, shield_icon_file = 'icons/effects/effects.dmi', shield_icon = "shield-old", shield_inhand = FALSE, run_hit_callback)
 	if(!isitem(parent) || max_charges <= 0)
@@ -58,7 +57,7 @@
 	if(recharge_start_delay)
 		START_PROCESSING(SSdcs, src)
 
-/datum/component/shielded/Destroy(force, silent)
+/datum/component/shielded/Destroy(force)
 	if(wearer)
 		shield_icon = "broken"
 		UnregisterSignal(wearer, COMSIG_ATOM_UPDATE_OVERLAYS)
@@ -71,6 +70,7 @@
 	RegisterSignal(parent, COMSIG_ITEM_EQUIPPED, PROC_REF(on_equipped))
 	RegisterSignal(parent, COMSIG_ITEM_DROPPED, PROC_REF(lost_wearer))
 	RegisterSignal(parent, COMSIG_ITEM_HIT_REACT, PROC_REF(on_hit_react))
+	RegisterSignal(parent, COMSIG_ATOM_ATTACKBY, PROC_REF(check_recharge_rune))
 	var/atom/shield = parent
 	if(ismob(shield.loc))
 		var/mob/holder = shield.loc
@@ -79,7 +79,7 @@
 		set_wearer(holder)
 
 /datum/component/shielded/UnregisterFromParent()
-	UnregisterSignal(parent, list(COMSIG_ITEM_EQUIPPED, COMSIG_ITEM_DROPPED, COMSIG_ITEM_HIT_REACT))
+	UnregisterSignal(parent, list(COMSIG_ITEM_EQUIPPED, COMSIG_ITEM_DROPPED, COMSIG_ITEM_HIT_REACT, COMSIG_ATOM_ATTACKBY))
 	var/atom/shield = parent
 	if(shield.loc == wearer)
 		lost_wearer(src, wearer)
@@ -111,7 +111,7 @@
 /datum/component/shielded/proc/on_equipped(datum/source, mob/user, slot)
 	SIGNAL_HANDLER
 
-	if((slot == SLOT_HUD_LEFT_HAND || slot == SLOT_HUD_RIGHT_HAND) && !shield_inhand)
+	if((slot & ITEM_SLOT_HANDS) && !shield_inhand)
 		lost_wearer(source, user)
 		return
 	set_wearer(user)
@@ -121,57 +121,52 @@
 	SIGNAL_HANDLER
 
 	if(wearer)
-		UnregisterSignal(wearer, list(COMSIG_ATOM_UPDATE_OVERLAYS, COMSIG_PARENT_QDELETING))
-		wearer.cut_overlay(shield)
+		UnregisterSignal(wearer, list(COMSIG_ATOM_UPDATE_OVERLAYS, COMSIG_QDELETING))
 		wearer.update_appearance(UPDATE_ICON)
 		wearer = null
 
 /datum/component/shielded/proc/set_wearer(mob/user)
+	if(wearer == user)
+		return
+	if(!isnull(wearer))
+		CRASH("[type] called set_wearer with [user] but [wearer] was already the wearer!")
+
 	wearer = user
 	RegisterSignal(wearer, COMSIG_ATOM_UPDATE_OVERLAYS, PROC_REF(on_update_overlays))
-	RegisterSignal(wearer, COMSIG_PARENT_QDELETING, PROC_REF(lost_wearer))
+	RegisterSignal(wearer, COMSIG_QDELETING, PROC_REF(lost_wearer))
 	if(current_charges)
 		wearer.update_appearance(UPDATE_ICON)
 
 /// Used to draw the shield overlay on the wearer
-/datum/component/shielded/proc/on_update_overlays(atom/parent_atom)
+/datum/component/shielded/proc/on_update_overlays(atom/parent_atom, list/overlays)
 	SIGNAL_HANDLER
-	wearer.cut_overlay(shield)
-	var/mutable_appearance/shield_appearance = mutable_appearance(shield_icon_file, (current_charges > 0 ? shield_icon : "broken"), MOB_LAYER + 0.01)
+
+	var/mutable_appearance/shield_appearance = mutable_appearance(shield_icon_file, (current_charges > 0 ? shield_icon : "broken"), MOB_SHIELD_LAYER)
 	if(show_charge_as_alpha)
 		shield_appearance.alpha = (current_charges/max_charges)*255
-	wearer.add_overlay(shield_appearance)
-	shield = shield_appearance
+	overlays += shield_appearance
 
 /**
  * This proc fires when we're hit, and is responsible for checking if we're charged, then deducting one + returning that we're blocking if so.
  * It then runs the callback in [/datum/component/shielded/var/on_hit_effects] which handles the messages/sparks (so the visuals)
  */
-/datum/component/shielded/proc/on_hit_react(datum/source, mob/living/carbon/human/owner, atom/movable/hitby, damage, attack_type)
+/datum/component/shielded/proc/on_hit_react(datum/source, mob/living/carbon/human/owner, atom/movable/hitby, attack_text, final_block_chance, damage, attack_type, damage_type)
 	SIGNAL_HANDLER
 
 	COOLDOWN_START(src, recently_hit_cd, recharge_start_delay)
 
 	if(current_charges <= 0)
 		return
-	. = COMPONENT_BLOCK_SUCCESSFUL
+	. = COMPONENT_HIT_REACTION_BLOCK
 
 	var/charge_loss = 1 // how many charges do we lose
 
-	if(istype(hitby, /obj/item/projectile))
-		var/obj/item/projectile/P = hitby
-		if(P.shield_buster)
-			charge_loss = 3
-			if(lose_multiple_charges)
-				charge_loss = damage //Double dip if health based instead
-
 	if(lose_multiple_charges) // if the shield has health like damage we'll lose charges equal to the damage of the hit
-		charge_loss += damage
+		charge_loss = damage
 
 	adjust_charge(-charge_loss)
-	wearer.update_appearance(UPDATE_ICON)
 
-	INVOKE_ASYNC(src, PROC_REF(actually_run_hit_callback), owner, hitby, current_charges)
+	INVOKE_ASYNC(src, PROC_REF(actually_run_hit_callback), owner, attack_text, current_charges)
 
 	if(!recharge_start_delay) // if recharge_start_delay is 0, we don't recharge
 		return
@@ -185,7 +180,17 @@
 /// Default on_hit proc, since cult robes are stupid and have different descriptions/sparks
 /datum/component/shielded/proc/default_run_hit_callback(mob/living/owner, attack_text, current_charges)
 	do_sparks(2, TRUE, owner)
-	owner.visible_message("<span class='danger'>[owner]'s shields deflect [attack_text] in a shower of sparks!</span>")
+	owner.visible_message(span_danger("[owner]'s shields deflect [attack_text] in a shower of sparks!"))
 	if(current_charges <= 0)
-		owner.visible_message("<span class='warning'>[owner]'s shield overloads!</span>")
+		owner.visible_message(span_warning("[owner]'s shield overloads!"))
 
+/datum/component/shielded/proc/check_recharge_rune(datum/source, obj/item/recharge_rune, mob/living/user)
+	SIGNAL_HANDLER
+
+	if(!istype(recharge_rune, recharge_path))
+		return
+	. = COMPONENT_NO_AFTERATTACK
+
+	adjust_charge(charge_recovery)
+	to_chat(user, span_notice("You charge \the [parent]. It can now absorb [current_charges] hits."))
+	qdel(recharge_rune)

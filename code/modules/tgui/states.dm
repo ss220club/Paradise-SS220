@@ -1,4 +1,4 @@
-/**
+/*!
  * Base state and helpers for states. Just does some sanity checks,
  * implement a proper state for in-depth checks.
  *
@@ -24,7 +24,7 @@
 
 	if(isobserver(user))
 		// If they turn on ghost AI control, admins can always interact.
-		if(user.can_admin_interact())
+		if(isAdminGhostAI(user))
 			. = max(., UI_INTERACTIVE)
 
 		// Regular ghosts can always at least view if in range.
@@ -61,9 +61,9 @@
  */
 /mob/proc/shared_ui_interaction(src_object)
 	// Close UIs if mindless.
-	if(!client)
+	if(!client && !HAS_TRAIT(src, TRAIT_PRESERVE_UI_WITHOUT_CLIENT))
 		return UI_CLOSE
-	// Disable UIs if unconcious.
+	// Disable UIs if unconscious.
 	else if(stat)
 		return UI_DISABLED
 	// Update UIs if incapicitated but concious.
@@ -71,33 +71,26 @@
 		return UI_UPDATE
 	return UI_INTERACTIVE
 
+/mob/living/shared_ui_interaction(src_object)
+	. = ..()
+	var/obj/item/object = src_object
+	if(!(mobility_flags & MOBILITY_UI) && !(object.interaction_flags_atom & INTERACT_ATOM_IGNORE_MOBILITY) && . == UI_INTERACTIVE)
+		return UI_UPDATE
+
 /mob/living/silicon/ai/shared_ui_interaction(src_object)
 	// Disable UIs if the AI is unpowered.
-	if(lacks_power() && !apc_override)
+	if(apc_override == src_object) //allows AI to (eventually) use the interface for their own APC even when out of power
+		return UI_INTERACTIVE
+	if(lacks_power())
 		return UI_DISABLED
 	return ..()
 
 /mob/living/silicon/robot/shared_ui_interaction(src_object)
-	// Disable UIs if the Borg is unpowered or locked.
-	if(!cell || cell.charge <= 0 || lockcharge)
+	// Disable UIs if the object isn't installed in the borg AND the borg is either locked, has a dead cell, or no cell.
+	var/atom/device = src_object
+	if((istype(device) && device.loc != src) && (!cell || cell.charge <= 0 || lockcharge))
 		return UI_DISABLED
 	return ..()
-
-/**
- * public
- *
- * Check the distance for a living mob.
- * Really only used for checks outside the context of a mob.
- * Otherwise, use shared_living_ui_distance().
- *
- * required src_object The object which owns the UI.
- * required user mob The mob who opened/is using the UI.
- *
- * return UI_state The state of the UI.
- */
-/atom/proc/contents_ui_distance(src_object, mob/living/user)
-	// Just call this mob's check.
-	return user.shared_living_ui_distance(src_object)
 
 /**
  * public
@@ -108,7 +101,7 @@
  *
  * return UI_state The state of the UI.
  */
-/mob/living/proc/shared_living_ui_distance(atom/movable/src_object, viewcheck = TRUE)
+/mob/living/proc/shared_living_ui_distance(atom/movable/src_object, viewcheck = TRUE, allow_tk = TRUE)
 	// If the object is obscured, close it.
 	if(viewcheck && !(src_object in view(src)))
 		return UI_CLOSE
@@ -125,7 +118,7 @@
 	// Otherwise, we got nothing.
 	return UI_CLOSE
 
-/mob/living/carbon/human/shared_living_ui_distance(atom/movable/src_object, viewcheck)
-	if(HAS_TRAIT(src, TRAIT_TELEKINESIS) && (get_dist(src, src_object) <= 2))
+/mob/living/carbon/human/shared_living_ui_distance(atom/movable/src_object, viewcheck = TRUE, allow_tk = TRUE)
+	if(allow_tk && dna.check_mutation(/datum/mutation/human/telekinesis) && tkMaxRangeCheck(src, src_object))
 		return UI_INTERACTIVE
 	return ..()

@@ -2,34 +2,36 @@
 /obj/item/mod
 	name = "Base MOD"
 	desc = "You should not see this, yell at a coder!"
-	icon = 'icons/obj/clothing/modsuit/mod_clothing.dmi'// figure out how to work with 2 of these
-	icon_override = 'icons/mob/clothing/modsuit/mod_clothing.dmi'
+	icon = 'icons/obj/clothing/modsuit/mod_clothing.dmi'
+	worn_icon = 'icons/mob/clothing/modsuit/mod_clothing.dmi'
 
 /obj/item/mod/control
 	name = "MOD control unit"
 	desc = "The control unit of a Modular Outerwear Device, a powered suit that protects against various environments."
 	icon_state = "standard-control"
-	icon_state = "mod_control"
-	item_state = "mod_control"
+	inhand_icon_state = "mod_control"
 	base_icon_state = "control"
 	w_class = WEIGHT_CLASS_BULKY
-	slot_flags = SLOT_FLAG_BACK
+	slot_flags = ITEM_SLOT_BACK
 	strip_delay = 10 SECONDS
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, RAD = 0, FIRE = 0, ACID = 0)
+	armor_type = /datum/armor/none
 	actions_types = list(
 		/datum/action/item_action/mod/deploy,
 		/datum/action/item_action/mod/activate,
 		/datum/action/item_action/mod/panel,
 		/datum/action/item_action/mod/module,
+		/datum/action/item_action/mod/deploy/ai,
+		/datum/action/item_action/mod/activate/ai,
+		/datum/action/item_action/mod/panel/ai,
+		/datum/action/item_action/mod/module/ai,
 	)
 	resistance_flags = NONE
 	max_heat_protection_temperature = SPACE_SUIT_MAX_TEMP_PROTECT
 	min_cold_protection_temperature = SPACE_SUIT_MIN_TEMP_PROTECT
 	siemens_coefficient = 0.5
-	var/datum/wires/mod/wires
-
+	alternate_worn_layer = HANDS_LAYER+0.1 //we want it to go above generally everything, but not hands
 	/// The MOD's theme, decides on some stuff like armor and statistics.
-	var/datum/mod_theme/theme = /datum/mod_theme/standard
+	var/datum/mod_theme/theme = /datum/mod_theme
 	/// Looks of the MOD.
 	var/skin = "standard"
 	/// Theme of the MOD TGUI
@@ -45,7 +47,7 @@
 	/// If the suit is currently activating/deactivating.
 	var/activating = FALSE
 	/// How long the MOD is electrified for.
-	var/seconds_electrified = 0
+	var/seconds_electrified = MACHINE_NOT_ELECTRIFIED
 	/// If the suit interface is broken.
 	var/interface_break = FALSE
 	/// How much module complexity can this MOD carry.
@@ -80,36 +82,23 @@
 	var/list/modules = list()
 	/// Currently used module.
 	var/obj/item/mod/module/selected_module
+	/// AI or pAI mob inhabiting the MOD.
+	var/mob/living/silicon/ai_assistant
+	/// The MODlink datum, letting us call people from the suit.
+	var/datum/mod_link/mod_link
+	/// The starting MODlink frequency, overridden on subtypes that want it to be something.
+	var/starting_frequency = null
+	/// Delay between moves as AI.
+	var/static/movedelay = 0
+	/// Cooldown for AI moves.
+	COOLDOWN_DECLARE(cooldown_mod_move)
 	/// Person wearing the MODsuit.
 	var/mob/living/carbon/human/wearer
-	/// Internal storage in a modsuit
-	var/obj/item/storage/backpack/modstorage/bag
-	/// Is it EMP proof?
-	var/emp_proof = FALSE
-	/// List of overlays the mod has. Needs to be cut onremoval / module deactivation
-	var/list/mod_overlays = list()
-	/// Is the jetpack on so we should make ion effects?
-	var/jetpack_active = FALSE
-
-/obj/item/mod/control/serialize()
-	var/list/data = ..()
-	var/list/modules_list = list()
-	for(var/obj/item/mod/module/mod as anything in modules)
-		modules_list.Add(list(mod.serialize()))
-	data["modules"] = modules_list
-	return data
-
-/obj/item/mod/control/deserialize(list/data)
-	if(data["modules"])
-		for(var/old_mods in modules)
-			uninstall(old_mods, deleting = TRUE)
-		for(var/obj/item/mod/module/module as anything in data["modules"])
-			module = list_to_object(module, src)
-			install(module)
-	..()
 
 /obj/item/mod/control/Initialize(mapload, datum/mod_theme/new_theme, new_skin, obj/item/mod/core/new_core)
 	. = ..()
+	if(!movedelay)
+		movedelay = CONFIG_GET(number/movedelay/run_delay)
 	if(new_theme)
 		theme = new_theme
 	theme = GLOB.mod_themes[theme]
@@ -117,10 +106,11 @@
 	extended_desc = theme.extended_desc
 	slowdown_inactive = theme.slowdown_inactive
 	slowdown_active = theme.slowdown_active
+	activation_step_time = theme.activation_step_time
 	complexity_max = theme.complexity_max
 	ui_theme = theme.ui_theme
 	charge_drain = theme.charge_drain
-	wires = new/datum/wires/mod(src)
+	set_wires(new /datum/wires/mod(src))
 	if(length(req_access))
 		locked = TRUE
 	new_core?.install(src)
@@ -137,111 +127,151 @@
 	for(var/obj/item/part as anything in all_parts)
 		part.name = "[theme.name] [part.name]"
 		part.desc = "[part.desc] [theme.desc]"
-		part.armor = part.armor.attachArmor(theme.armor_type_2.armor)
+		part.set_armor(theme.armor_type)
 		part.resistance_flags = theme.resistance_flags
-		part.flags |= theme.atom_flags //flags like initialization or admin spawning are here, so we cant set, have to add
+		part.flags_1 |= theme.atom_flags //flags like initialization or admin spawning are here, so we cant set, have to add
 		part.heat_protection = NONE
 		part.cold_protection = NONE
 		part.max_heat_protection_temperature = theme.max_heat_protection_temperature
 		part.min_cold_protection_temperature = theme.min_cold_protection_temperature
 		part.siemens_coefficient = theme.siemens_coefficient
 	for(var/obj/item/part as anything in mod_parts)
-		RegisterSignal(part, COMSIG_OBJ_DECONSTRUCT, PROC_REF(on_part_destruction)) //look into
-		RegisterSignal(part, COMSIG_PARENT_QDELETING, PROC_REF(on_part_deletion))
+		RegisterSignal(part, COMSIG_ATOM_DESTRUCTION, PROC_REF(on_part_destruction))
+		RegisterSignal(part, COMSIG_QDELETING, PROC_REF(on_part_deletion))
 	set_mod_skin(new_skin || theme.default_skin)
 	update_speed()
 	RegisterSignal(src, COMSIG_ATOM_EXITED, PROC_REF(on_exit))
+	RegisterSignal(src, COMSIG_SPEED_POTION_APPLIED, PROC_REF(on_potion))
 	for(var/obj/item/mod/module/module as anything in theme.inbuilt_modules)
 		module = new module(src)
 		install(module)
+	START_PROCESSING(SSobj, src)
 
 /obj/item/mod/control/Destroy()
-	if(active)
-		STOP_PROCESSING(SSobj, src)
+	STOP_PROCESSING(SSobj, src)
 	for(var/obj/item/mod/module/module as anything in modules)
 		uninstall(module, deleting = TRUE)
 	for(var/obj/item/part as anything in mod_parts)
 		overslotting_parts -= part
+	var/atom/deleting_atom
 	if(!QDELETED(helmet))
-		mod_parts -= helmet
-		QDEL_NULL(helmet)
+		deleting_atom = helmet
+		helmet = null
+		mod_parts -= deleting_atom
+		qdel(deleting_atom)
 	if(!QDELETED(chestplate))
-		mod_parts -= chestplate
-		QDEL_NULL(chestplate)
+		deleting_atom = chestplate
+		chestplate = null
+		mod_parts -= deleting_atom
+		qdel(deleting_atom)
 	if(!QDELETED(gauntlets))
-		mod_parts -= gauntlets
-		QDEL_NULL(gauntlets)
+		deleting_atom = gauntlets
+		gauntlets = null
+		mod_parts -= deleting_atom
+		qdel(deleting_atom)
 	if(!QDELETED(boots))
-		mod_parts -= boots
-		QDEL_NULL(boots)
+		deleting_atom = boots
+		boots = null
+		mod_parts -= deleting_atom
+		qdel(deleting_atom)
 	if(core)
 		QDEL_NULL(core)
 	QDEL_NULL(wires)
-	wearer = null
-	selected_module = null
-	bag = null
-	modules = null
+	QDEL_NULL(mod_link)
 	return ..()
 
+/obj/item/mod/control/atom_destruction(damage_flag)
+	for(var/obj/item/mod/module/module as anything in modules)
+		uninstall(module)
+	for(var/obj/item/part as anything in mod_parts)
+		if(!overslotting_parts[part])
+			continue
+		var/obj/item/overslot = overslotting_parts[part]
+		overslot.forceMove(drop_location())
+		overslotting_parts[part] = null
+	if(ai_assistant)
+		if(ispAI(ai_assistant))
+			INVOKE_ASYNC(src, PROC_REF(remove_pai), /* user = */ null, /* forced = */ TRUE) // async to appease spaceman DMM because the branch we don't run has a do_after
+		else
+			for(var/datum/action/action as anything in actions)
+				if(action.owner == ai_assistant)
+					action.Remove(ai_assistant)
+			new /obj/item/mod/ai_minicard(drop_location(), ai_assistant)
+	return ..()
 
 /obj/item/mod/control/examine(mob/user)
 	. = ..()
 	if(active)
-		. += "Charge: [core ? "[get_charge_percent()]%" : "No core"]."
-		. += "Selected module: [selected_module || "None"]."
+		. += span_notice("Charge: [core ? "[get_charge_percent()]%" : "No core"].")
+		. += span_notice("Selected module: [selected_module || "None"].")
 	if(!open && !active)
 		if(!wearer)
-			. += "You could equip it to turn it on."
-		. += "You could open the cover with a <b>screwdriver</b>."
+			. += span_notice("You could equip it to turn it on.")
+		. += span_notice("You could open the cover with a <b>screwdriver</b>.")
 	else if(open)
-		. += "You could close the cover with a <b>screwdriver</b>."
-		. += "You could use <b>modules</b> on it to install them."
-		. += "You could remove modules with a <b>crowbar</b>."
-		. += "You could update the access lock with an <b>ID</b>."
-		. += "You could access the wire panel with a <b>wire tool</b>."
+		. += span_notice("You could close the cover with a <b>screwdriver</b>.")
+		. += span_notice("You could use <b>modules</b> on it to install them.")
+		. += span_notice("You could remove modules with a <b>crowbar</b>.")
+		. += span_notice("You could update the access lock with an <b>ID</b>.")
+		. += span_notice("You could access the wire panel with a <b>wire tool</b>.")
 		if(core)
-			. += "You could remove [core] with a <b>wrench</b>."
+			. += span_notice("You could remove [core] with a <b>wrench</b>.")
 		else
-			. += "You could use a <b>MOD core</b> on it to install one."
+			. += span_notice("You could use a <b>MOD core</b> on it to install one.")
+		if(isnull(ai_assistant))
+			. += span_notice("You could install an AI or pAI using their <b>storage card</b>.")
+		else if(isAI(ai_assistant))
+			. += span_notice("You could remove [ai_assistant] with an <b>intellicard</b>.")
+	. += span_notice("You could copy/set link frequency with a <b>multitool</b>.")
+	. += span_notice("<i>You could examine it more thoroughly...</i>")
 
 /obj/item/mod/control/examine_more(mob/user)
 	. = ..()
 	. += "<i>[extended_desc]</i>"
 
-/obj/item/mod/control/process()
-	if(seconds_electrified > 0)
+/obj/item/mod/control/process(seconds_per_tick)
+	if(seconds_electrified > MACHINE_NOT_ELECTRIFIED)
 		seconds_electrified--
-	if(get_charge() <= 10 && active && !activating) //Sometimes we get power being funky, this should fix it.
+	if(mod_link.link_call)
+		subtract_charge((DEFAULT_CHARGE_DRAIN * 0.25) * seconds_per_tick)
+	if(!active)
+		return
+	if(!get_charge() && active && !activating)
 		power_off()
-		return PROCESS_KILL
+		return
 	var/malfunctioning_charge_drain = 0
 	if(malfunctioning)
-		malfunctioning_charge_drain = rand(1, 20)
-	subtract_charge((charge_drain + malfunctioning_charge_drain))
+		malfunctioning_charge_drain = rand(1,20)
+	subtract_charge((charge_drain + malfunctioning_charge_drain) * seconds_per_tick)
 	update_charge_alert()
 	for(var/obj/item/mod/module/module as anything in modules)
-		if(malfunctioning && module.active && prob(5))
+		if(malfunctioning && module.active && SPT_PROB(5, seconds_per_tick))
 			module.on_deactivation(display_message = TRUE)
-		module.on_process()
+		module.on_process(seconds_per_tick)
 
 /obj/item/mod/control/equipped(mob/user, slot)
 	..()
-	if(slot == SLOT_HUD_BACK)
+	if(slot & slot_flags)
 		set_wearer(user)
 	else if(wearer)
 		unset_wearer()
 
+/obj/item/mod/control/dropped(mob/user)
+	. = ..()
+	if(!wearer)
+		return
+	clean_up()
 
 /obj/item/mod/control/item_action_slot_check(slot)
-	if(slot == SLOT_HUD_BACK)
+	if(slot & slot_flags)
 		return TRUE
 
-/obj/item/mod/control/on_mob_move(direction, mob/user)
-	if(!jetpack_active)
-		return
-	var/turf/T = get_step(src, GetOppositeDir(direction))
-	if(!has_gravity(T))
-		new /obj/effect/particle_effect/ion_trails(T, direction)
+// Grant pinned actions to pin owners, gives AI pinned actions to the AI and not the wearer
+/obj/item/mod/control/grant_action_to_bearer(datum/action/action)
+	if (!istype(action, /datum/action/item_action/mod/pinnable))
+		return ..()
+	var/datum/action/item_action/mod/pinnable/pinned = action
+	give_item_action(action, pinned.pinner, slot_flags)
 
 /obj/item/mod/control/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change = TRUE)
 	. = ..()
@@ -249,35 +279,28 @@
 		return
 	clean_up()
 
+/obj/item/mod/control/allow_attack_hand_drop(mob/user)
+	if(user != wearer)
+		return ..()
+	for(var/obj/item/part as anything in mod_parts)
+		if(part.loc != src)
+			balloon_alert(user, "retract parts first!")
+			playsound(src, 'sound/machines/scanbuzz.ogg', 25, FALSE, SILENCED_SOUND_EXTRARANGE)
+			return FALSE
+
 /obj/item/mod/control/MouseDrop(atom/over_object)
-	if(iscarbon(usr))
-		var/mob/M = usr
-		if(get_dist(usr, src) > 1) //1 as we want to access it if beside the user
+	if(usr != wearer || !istype(over_object, /atom/movable/screen/inventory/hand))
+		return ..()
+	for(var/obj/item/part as anything in mod_parts)
+		if(part.loc != src)
+			balloon_alert(wearer, "retract parts first!")
+			playsound(src, 'sound/machines/scanbuzz.ogg', 25, FALSE, SILENCED_SOUND_EXTRARANGE)
 			return
-
-		if(!over_object)
-			return
-
-		if(ismecha(M.loc))
-			return
-
-		if(!M.restrained() && !M.stat)
-			playsound(loc, "rustle", 50, TRUE, -5)
-
-			if(istype(over_object, /obj/screen/inventory/hand))
-				for(var/obj/item/part as anything in mod_parts)
-					if(part.loc != src)
-						to_chat(wearer, "<span class='warning'>Retract parts first!</span>")
-						playsound(src, 'sound/machines/scanbuzz.ogg', 25, FALSE, SILENCED_SOUND_EXTRARANGE)
-						return
-				if(!M.unEquip(src, silent = TRUE))
-					return
-				M.put_in_active_hand(src)
-			else if(bag)
-				bag.forceMove(usr)
-				bag.show_to(usr)
-
-			add_fingerprint(M)
+	if(!wearer.incapacitated())
+		var/atom/movable/screen/inventory/hand/ui_hand = over_object
+		if(wearer.putItemFromInventoryInHandIfPossible(src, ui_hand.held_index))
+			add_fingerprint(usr)
+			return ..()
 
 /obj/item/mod/control/wrench_act(mob/living/user, obj/item/wrench)
 	if(..())
@@ -286,48 +309,50 @@
 		return TRUE
 	if(open)
 		if(!core)
-			to_chat(user, "<span class='warning'>There is no core!</span>")
+			balloon_alert(user, "no core!")
 			return TRUE
+		balloon_alert(user, "removing core...")
 		wrench.play_tool_sound(src, 100)
 		if(!wrench.use_tool(src, user, 3 SECONDS) || !open)
-			return TRUE
-		if(!core)
+			balloon_alert(user, "interrupted!")
 			return TRUE
 		wrench.play_tool_sound(src, 100)
+		balloon_alert(user, "core removed")
 		core.forceMove(drop_location())
 		update_charge_alert()
 		return TRUE
 	return ..()
 
 /obj/item/mod/control/screwdriver_act(mob/living/user, obj/item/screwdriver)
-	if(..())
+	. = ..()
+	if(.)
 		return TRUE
-	if(active || activating || locate(/mob/living/silicon/ai) in src)
-		to_chat(user, "<span class='warning'>Deactivate the suit first!</span>")
+	if(active || activating || ai_controller)
+		balloon_alert(user, "deactivate suit first!")
 		playsound(src, 'sound/machines/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 		return FALSE
-	to_chat(user, "<span class='notice'>[open ? "Closing" : "Opening"] cover...</span>")
+	balloon_alert(user, "[open ? "closing" : "opening"] cover...")
 	screwdriver.play_tool_sound(src, 100)
 	if(screwdriver.use_tool(src, user, 1 SECONDS))
 		if(active || activating)
-			to_chat(user, "<span class='warning'>Deactivate the suit first!</span>")
+			balloon_alert(user, "deactivate suit first!")
 		screwdriver.play_tool_sound(src, 100)
-		to_chat(user, "<span class='notice'>Cover [open ? "closed" : "opened"]</span>")
+		balloon_alert(user, "cover [open ? "closed" : "opened"]")
 		open = !open
+	else
+		balloon_alert(user, "interrupted!")
 	return TRUE
 
 /obj/item/mod/control/crowbar_act(mob/living/user, obj/item/crowbar)
 	. = ..()
 	if(!open)
-		to_chat(user, "<span class='warning'>Open the cover first!</span>")
+		balloon_alert(user, "open the cover first!")
 		playsound(src, 'sound/machines/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 		return FALSE
 	if(!allowed(user))
-		to_chat(user, "<span class='warning'>Insufficient access!</span>")
+		balloon_alert(user, "insufficient access!")
 		playsound(src, 'sound/machines/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 		return
-	if(seconds_electrified && get_charge() && shock(user))
-		return FALSE
 	if(SEND_SIGNAL(src, COMSIG_MOD_MODULE_REMOVAL, user) & MOD_CANCEL_REMOVAL)
 		playsound(src, 'sound/machines/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 		return FALSE
@@ -337,7 +362,7 @@
 			if(!module.removable)
 				continue
 			removable_modules += module
-		var/obj/item/mod/module/module_to_remove = tgui_input_list(user, "Which module do you want to pry out?", "Module Removal", removable_modules)
+		var/obj/item/mod/module/module_to_remove = tgui_input_list(user, "Which module to remove?", "Module Removal", removable_modules)
 		if(!module_to_remove?.mod)
 			return FALSE
 		uninstall(module_to_remove)
@@ -345,14 +370,20 @@
 		crowbar.play_tool_sound(src, 100)
 		SEND_SIGNAL(src, COMSIG_MOD_MODULE_REMOVED, user)
 		return TRUE
-	to_chat(user, "<span class='warning'>No modules!</span>")
+	balloon_alert(user, "no modules!")
 	playsound(src, 'sound/machines/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 	return FALSE
 
 /obj/item/mod/control/attackby(obj/item/attacking_item, mob/living/user, params)
+	if(istype(attacking_item, /obj/item/pai_card))
+		if(!open)
+			balloon_alert(user, "open the cover first!")
+			return FALSE
+		insert_pai(user, attacking_item)
+		return TRUE
 	if(istype(attacking_item, /obj/item/mod/module))
 		if(!open)
-			to_chat(user, "<span class='warning'>Open the cover first!</span>")
+			balloon_alert(user, "open the cover first!")
 			playsound(src, 'sound/machines/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 			return FALSE
 		install(attacking_item, user)
@@ -360,73 +391,26 @@
 		return TRUE
 	else if(istype(attacking_item, /obj/item/mod/core))
 		if(!open)
-			to_chat(user, "<span class='warning'>Open the cover first!</span>")
+			balloon_alert(user, "open the cover first!")
 			playsound(src, 'sound/machines/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 			return FALSE
 		if(core)
-			to_chat(user, "<span class='warning'>Core already installed!</span>")
+			balloon_alert(user, "core already installed!")
 			playsound(src, 'sound/machines/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 			return FALSE
 		var/obj/item/mod/core/attacking_core = attacking_item
-		playsound(src, 'sound/machines/click.ogg', 50, TRUE, SILENCED_SOUND_EXTRARANGE)
-		user.drop_item()
 		attacking_core.install(src)
+		balloon_alert(user, "core installed")
+		playsound(src, 'sound/machines/click.ogg', 50, TRUE, SILENCED_SOUND_EXTRARANGE)
 		update_charge_alert()
 		return TRUE
-	else if(istype(attacking_item, /obj/item/multitool) && open)
-		if(seconds_electrified && get_charge() && shock(user))
-			return TRUE
-		wires.Interact(user)
+	else if(is_wire_tool(attacking_item) && open)
+		wires.interact(user)
 		return TRUE
 	else if(open && attacking_item.GetID())
 		update_access(user, attacking_item.GetID())
 		return TRUE
-	else if(istype(attacking_item, /obj/item/stock_parts/cell))
-		if(!core)
-			to_chat(user, "<span class='warning'>There is no core installed!</span>")
-			playsound(src, 'sound/machines/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
-			return FALSE
-		core.on_attackby(attacking_item, user, params)
-	else if(istype(attacking_item, /obj/item/stack/ore/plasma) || istype(attacking_item, /obj/item/stack/sheet/mineral/plasma))
-		if(!core)
-			to_chat(user, "<span class='warning'>There is no core installed!</span>")
-			playsound(src, 'sound/machines/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
-			return FALSE
-		core.on_attackby(attacking_item, user, params)
-	else if(istype(attacking_item, /obj/item/mod/skin_applier))
-		return ..()
-	else if(bag && istype(attacking_item))
-		bag.forceMove(user)
-		bag.attackby(attacking_item, user, params)
-
 	return ..()
-
-/obj/item/mod/control/attack_hand(mob/living/carbon/user)
-	if(!iscarbon(user))
-		return
-	if(loc == user && user.back && user.back == src)
-		if(bag)
-			bag.forceMove(user)
-			bag.show_to(user)
-	else
-		..()
-
-/obj/item/mod/control/AltClick(mob/user)
-	. = ..()
-	if(ishuman(user) && Adjacent(user) && !user.incapacitated(FALSE, TRUE) && bag)
-		bag.forceMove(user)
-		bag.show_to(user)
-		playsound(loc, "rustle", 50, TRUE, -5)
-		add_fingerprint(user)
-
-/obj/item/mod/control/proc/can_be_inserted(I, stop_messages)
-	if(bag)
-		return bag.can_be_inserted(I, stop_messages)
-	return FALSE
-
-/obj/item/mod/control/proc/handle_item_insertion(I, prevent_warning)
-	if(bag)
-		bag.handle_item_insertion(I, prevent_warning)
 
 /obj/item/mod/control/get_cell()
 	if(!open)
@@ -437,42 +421,39 @@
 	return cell
 
 /obj/item/mod/control/GetAccess()
-	if(locate(/mob/living/silicon/ai) in src)
+	if(ai_controller)
 		return req_access.Copy()
-	return ..()
+	else
+		return ..()
 
-/obj/item/mod/control/emag_act(mob/user)
+/obj/item/mod/control/emag_act(mob/user, obj/item/card/emag/emag_card)
 	locked = !locked
-	to_chat(user, "<span class='warning'>Suit access [locked ? "locked" : "unlocked"]")
+	balloon_alert(user, "suit access [locked ? "locked" : "unlocked"]")
+	return TRUE
 
 /obj/item/mod/control/emp_act(severity)
 	. = ..()
 	if(!active || !wearer)
 		return
-	to_chat(wearer, "<span class='warning'>[severity > 1 ? "Light" : "Strong"] electromagnetic pulse detected!")
-	if(emp_proof)
+	to_chat(wearer, span_notice("[severity > 1 ? "Light" : "Strong"] electromagnetic pulse detected!"))
+	if(. & EMP_PROTECT_CONTENTS)
 		return
 	selected_module?.on_deactivation(display_message = TRUE)
-	wearer.apply_damage(10 / severity, BURN, spread_damage = TRUE) //Test this with ion shotguns.
-	to_chat(wearer, "<span class='danger'>You feel [src] heat up from the EMP, burning you slightly!")
+	wearer.apply_damage(5 / severity, BURN, spread_damage=TRUE)
+	to_chat(wearer, span_danger("You feel [src] heat up from the EMP, burning you slightly."))
 	if(wearer.stat < UNCONSCIOUS && prob(10))
 		wearer.emote("scream")
-	core.emp_act(severity)
-	if(prob(50 / severity))
-		wires.emp_pulse() //3 wires get pulsed. Dangerous to a mod user.
-	for(var/obj/item/mod/module/holster/H in modules)
-		H.holstered?.emp_act(severity)
-	if(bag)
-		bag.emp_act(severity)
 
+/obj/item/mod/control/visual_equipped(mob/user, slot, initial = FALSE)
+	if(slot & slot_flags)
+		set_wearer(user)
 
-/obj/item/mod/control/dropped(mob/user)
+/obj/item/mod/control/on_outfit_equip(mob/living/carbon/human/outfit_wearer, visuals_only, item_slot)
 	. = ..()
-	if(!wearer)
-		return
-	clean_up()
-	update_mod_overlays(TRUE)
-	if(active && !toggle_activate(force_deactivate = TRUE))
+	quick_activation()
+
+/obj/item/mod/control/doStrip(mob/stripper, mob/owner)
+	if(active && !toggle_activate(stripper, force_deactivate = TRUE))
 		return
 	for(var/obj/item/part as anything in mod_parts)
 		if(part.loc == src)
@@ -485,22 +466,20 @@
 	return ..()
 
 /obj/item/mod/control/proc/set_wearer(mob/living/carbon/human/user)
-	if(wearer == user)
+	if (wearer == user)
 		// This should also not happen.
 		// This path is hit when equipping an outfit with visualsOnly, but only sometimes, and this eventually gets called twice.
 		// I'm not sure this proc should ever be being called by visualsOnly, but it is,
 		// and this was an emergency patch.
 		return
-	else if(!isnull(wearer))
+	else if (!isnull(wearer))
 		stack_trace("set_wearer() was called with a new wearer without unset_wearer() being called")
 
 	wearer = user
 	SEND_SIGNAL(src, COMSIG_MOD_WEARER_SET, wearer)
 	RegisterSignal(wearer, COMSIG_ATOM_EXITED, PROC_REF(on_exit))
+	RegisterSignal(wearer, COMSIG_SPECIES_GAIN, PROC_REF(on_species_gain))
 	update_charge_alert()
-	for(var/obj/item/clothing/C in mod_parts)
-		C.refit_for_species(wearer.dna.species.sprite_sheet_name)
-	update_mod_overlays()
 	for(var/obj/item/mod/module/module as anything in modules)
 		module.on_equip()
 
@@ -508,7 +487,7 @@
 	for(var/obj/item/mod/module/module as anything in modules)
 		module.on_unequip()
 	UnregisterSignal(wearer, list(COMSIG_ATOM_EXITED, COMSIG_SPECIES_GAIN))
-	wearer.clear_alert("mod_charge")
+	wearer.clear_alert(ALERT_MODSUIT_CHARGE)
 	SEND_SIGNAL(src, COMSIG_MOD_WEARER_UNSET, wearer)
 	wearer = null
 
@@ -524,9 +503,20 @@
 		retract(null, part)
 	if(active)
 		finish_activation(on = FALSE)
+		mod_link?.end_call()
 	var/mob/old_wearer = wearer
 	unset_wearer()
-	old_wearer.drop_item()
+	old_wearer.temporarilyRemoveItemFromInventory(src)
+
+/obj/item/mod/control/proc/on_species_gain(datum/source, datum/species/new_species, datum/species/old_species)
+	SIGNAL_HANDLER
+
+	var/list/all_parts = mod_parts + src
+	for(var/obj/item/part in all_parts)
+		if(!(new_species.no_equip_flags & part.slot_flags) || is_type_in_list(new_species, part.species_exception))
+			continue
+		forceMove(drop_location())
+		return
 
 /obj/item/mod/control/proc/quick_module(mob/user)
 	if(!length(modules))
@@ -536,7 +526,7 @@
 	for(var/obj/item/mod/module/module as anything in modules)
 		if(module.module_type == MODULE_PASSIVE)
 			continue
-		display_names[module.name] = module
+		display_names[module.name] = REF(module)
 		var/image/module_image = image(icon = module.icon, icon_state = module.icon_state)
 		if(module == selected_module)
 			module_image.underlays += image(icon = 'icons/hud/radial.dmi', icon_state = "module_selected")
@@ -548,11 +538,15 @@
 	if(!length(items))
 		return
 	var/radial_anchor = src
-	var/pick = show_radial_menu(user, radial_anchor, items, custom_check = FALSE, require_near = TRUE)
+	if(istype(user.loc, /obj/effect/dummy/phased_mob))
+		radial_anchor = get_turf(user.loc) //they're phased out via some module, anchor the radial on the turf so it may still display
+	var/pick = show_radial_menu(user, radial_anchor, items, custom_check = FALSE, require_near = TRUE, tooltips = TRUE)
 	if(!pick)
 		return
 	var/module_reference = display_names[pick]
-	var/obj/item/mod/module/picked_module = module_reference
+	var/obj/item/mod/module/picked_module = locate(module_reference) in modules
+	if(!istype(picked_module))
+		return
 	picked_module.on_select()
 
 /obj/item/mod/control/proc/shock(mob/living/user)
@@ -560,38 +554,34 @@
 		return FALSE
 	do_sparks(5, TRUE, src)
 	var/check_range = TRUE
-	return electrocute_mob(user, get_charge_source(), src, 1, check_range)
+	return electrocute_mob(user, get_charge_source(), src, 0.7, check_range)
 
 /obj/item/mod/control/proc/install(obj/item/mod/module/new_module, mob/user)
 	for(var/obj/item/mod/module/old_module as anything in modules)
 		if(is_type_in_list(new_module, old_module.incompatible_modules) || is_type_in_list(old_module, new_module.incompatible_modules))
 			if(user)
-				to_chat(user, "<span class='warning'>[new_module] incompatible with [old_module]!")
+				balloon_alert(user, "[new_module] incompatible with [old_module]!")
 				playsound(src, 'sound/machines/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 			return
 	var/complexity_with_module = complexity
 	complexity_with_module += new_module.complexity
 	if(complexity_with_module > complexity_max)
 		if(user)
-			to_chat(user, "<span class='warning'>[new_module] would make [src] too complex!")
+			balloon_alert(user, "[new_module] would make [src] too complex!")
 			playsound(src, 'sound/machines/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 		return
-	if(user)
-		if(!user.drop_item())
-			to_chat(user, "<span class='warning'>[new_module] is stuck to your hand!</span>")
-			playsound(src, 'sound/machines/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
-			return
 	new_module.forceMove(src)
 	modules += new_module
 	complexity += new_module.complexity
 	new_module.mod = src
+	new_module.RegisterSignal(src, COMSIG_ITEM_GET_WORN_OVERLAYS, TYPE_PROC_REF(/obj/item/mod/module, add_module_overlay))
 	new_module.on_install()
 	if(wearer)
 		new_module.on_equip()
 	if(active)
 		new_module.on_suit_activation()
 	if(user)
-		to_chat(user, "<span class='notice'>[new_module] added!")
+		balloon_alert(user, "[new_module] added")
 		playsound(src, 'sound/machines/click.ogg', 50, TRUE, SILENCED_SOUND_EXTRARANGE)
 
 /obj/item/mod/control/proc/uninstall(obj/item/mod/module/old_module, deleting = FALSE)
@@ -603,28 +593,22 @@
 		old_module.on_suit_deactivation(deleting = deleting)
 		if(old_module.active)
 			old_module.on_deactivation(display_message = !deleting, deleting = deleting)
+	old_module.UnregisterSignal(src, COMSIG_ITEM_GET_WORN_OVERLAYS)
 	old_module.on_uninstall(deleting = deleting)
 	QDEL_LIST_ASSOC_VAL(old_module.pinned_to)
 	old_module.mod = null
 
+/// Intended for callbacks, don't use normally, just get wearer by itself.
+/obj/item/mod/control/proc/get_wearer()
+	return wearer
+
 /obj/item/mod/control/proc/update_access(mob/user, obj/item/card/id/card)
 	if(!allowed(user))
-		to_chat(user, "<span class='warning'>Insufficient access!")
+		balloon_alert(user, "insufficient access!")
 		playsound(src, 'sound/machines/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 		return
 	req_access = card.access.Copy()
-	to_chat(user, "<span class='notice'>Access updated!")
-
-/obj/item/mod/control/proc/update_mod_overlays(full_removal = FALSE)
-	if(!wearer)
-		return
-	for(var/I in mod_overlays)
-		wearer.cut_overlay(I)
-		mod_overlays -= I
-	if(full_removal)
-		return
-	for(var/obj/item/mod/module/M in modules)
-		M.add_module_overlay(wearer)
+	balloon_alert(user, "access updated")
 
 /obj/item/mod/control/proc/get_charge_source()
 	return core?.charge_source()
@@ -636,7 +620,7 @@
 	return core?.max_charge_amount() || 1 //avoid dividing by 0
 
 /obj/item/mod/control/proc/get_charge_percent()
-	return ((get_charge() / get_max_charge()) * 100)
+	return ROUND_UP((get_charge() / get_max_charge()) * 100)
 
 /obj/item/mod/control/proc/add_charge(amount)
 	return core?.add_charge(amount) || FALSE
@@ -651,7 +635,7 @@
 	if(!wearer)
 		return
 	if(!core)
-		wearer.throw_alert("mod_charge", /obj/screen/alert/nocell)
+		wearer.throw_alert(ALERT_MODSUIT_CHARGE, /atom/movable/screen/alert/nocore)
 		return
 	core.update_charge_alert()
 
@@ -659,9 +643,10 @@
 	var/list/all_parts = mod_parts + src
 	for(var/obj/item/part as anything in all_parts)
 		part.slowdown = (active ? slowdown_active : slowdown_inactive) / length(all_parts)
+	wearer?.update_equipment_speed_mods()
 
 /obj/item/mod/control/proc/power_off()
-	to_chat(wearer, "<span class='warning'>Power cells depleted!")
+	balloon_alert(wearer, "no power!")
 	toggle_activate(wearer, force_deactivate = TRUE)
 
 /obj/item/mod/control/proc/set_mod_color(new_color)
@@ -676,9 +661,12 @@
 		CRASH("[src] tried to set skin while active!")
 	skin = new_skin
 	var/list/used_skin = theme.skins[new_skin]
+	if(used_skin[CONTROL_LAYER])
+		alternate_worn_layer = used_skin[CONTROL_LAYER]
 	var/list/skin_updating = mod_parts + src
 	for(var/obj/item/part as anything in skin_updating)
 		part.icon = used_skin[MOD_ICON_OVERRIDE] || 'icons/obj/clothing/modsuit/mod_clothing.dmi'
+		part.worn_icon = used_skin[MOD_WORN_ICON_OVERRIDE] || 'icons/mob/clothing/modsuit/mod_clothing.dmi'
 		part.icon_state = "[skin]-[part.base_icon_state]"
 	for(var/obj/item/clothing/part as anything in mod_parts)
 		var/used_category
@@ -691,12 +679,14 @@
 		if(part == boots)
 			used_category = BOOTS_FLAGS
 		var/list/category = used_skin[used_category]
-		part.flags = category[UNSEALED_CLOTHING] || NONE
+		part.clothing_flags = category[UNSEALED_CLOTHING] || NONE
 		part.visor_flags = category[SEALED_CLOTHING] || NONE
 		part.flags_inv = category[UNSEALED_INVISIBILITY] || NONE
 		part.visor_flags_inv = category[SEALED_INVISIBILITY] || NONE
 		part.flags_cover = category[UNSEALED_COVER] || NONE
 		part.visor_flags_cover = category[SEALED_COVER] || NONE
+		part.alternate_worn_layer = category[UNSEALED_LAYER]
+		mod_parts[part] = part.alternate_worn_layer
 		if(!category[CAN_OVERSLOT])
 			if(overslotting_parts[part])
 				var/obj/item/overslot = overslotting_parts[part]
@@ -724,7 +714,7 @@
 		if(!wearer)
 			part.forceMove(src)
 			return
-		retract(wearer, part, TRUE)
+		retract(wearer, part)
 		if(active)
 			INVOKE_ASYNC(src, PROC_REF(toggle_activate), wearer, TRUE)
 
@@ -737,14 +727,7 @@
 		overslotting_parts[part] = null
 	if(QDELETED(src))
 		return
-	obj_destruction(damage_flag)
-
-/obj/item/mod/control/proc/on_overslot_exit(datum/source, atom/movable/overslot, direction)
-	SIGNAL_HANDLER
-
-	if(overslot != overslotting_parts[source])
-		return
-	overslotting_parts[source] = null
+	atom_destruction(damage_flag)
 
 /obj/item/mod/control/proc/on_part_deletion(obj/item/part) //the part doesnt count as being qdeleted, so our destroying does an infinite loop, fix later
 	SIGNAL_HANDLER
@@ -753,19 +736,34 @@
 		return
 	qdel(src)
 
+/obj/item/mod/control/proc/on_overslot_exit(datum/source, atom/movable/overslot, direction)
+	SIGNAL_HANDLER
 
-/obj/item/mod/control/water_act(volume, temperature, source, method)
-	if(HAS_TRAIT(src, TRAIT_OIL_SLICKED)) //Overide base to work right
-		slowdown_active = theme.slowdown_active
-		slowdown_inactive = theme.slowdown_inactive
-		update_speed()
-		remove_atom_colour(FIXED_COLOUR_PRIORITY)
-		REMOVE_TRAIT(src, TRAIT_OIL_SLICKED, "potion")
-		if(ishuman(loc))
-			var/mob/living/carbon/human/H = loc
-			H.regenerate_icons()
+	if(overslot != overslotting_parts[source])
+		return
+	overslotting_parts[source] = null
 
-/obj/item/mod/control/extinguish_light(force)
-	. = ..()
-	for(var/obj/item/mod/module/module as anything in modules)
-		module.extinguish_light(force)
+/obj/item/mod/control/proc/on_potion(atom/movable/source, obj/item/slimepotion/speed/speed_potion, mob/living/user)
+	SIGNAL_HANDLER
+
+	if(slowdown_inactive <= 0)
+		to_chat(user, span_warning("[src] has already been coated with red, that's as fast as it'll go!"))
+		return SPEED_POTION_STOP
+	if(active)
+		to_chat(user, span_warning("It's too dangerous to smear [speed_potion] on [src] while it's active!"))
+		return SPEED_POTION_STOP
+	to_chat(user, span_notice("You slather the red gunk over [src], making it faster."))
+	set_mod_color("#FF0000")
+	slowdown_inactive = 0
+	slowdown_active = 0
+	update_speed()
+	qdel(speed_potion)
+	return SPEED_POTION_STOP
+
+/// Disables the mod link frequency attached to this unit.
+/obj/item/mod/control/proc/disable_modlink()
+	if(isnull(mod_link))
+		return
+
+	mod_link.end_call()
+	mod_link.frequency = null

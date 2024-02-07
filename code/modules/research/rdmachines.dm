@@ -1,70 +1,137 @@
+
 //All devices that link into the R&D console fall into thise type for easy identification and some shared procs.
 
 
-/obj/machinery/r_n_d
+/obj/machinery/rnd
 	name = "R&D Device"
 	icon = 'icons/obj/machines/research.dmi'
 	density = TRUE
-	anchored = TRUE
+	use_power = IDLE_POWER_USE
 	var/busy = FALSE
-	var/obj/machinery/computer/rdconsole/linked_console
-	var/obj/item/loaded_item = null
-	var/datum/component/material_container/materials	//Store for hyper speed!
-	var/efficiency_coeff = 1
-	var/list/categories = list()
+	var/hacked = FALSE
+	var/console_link = TRUE //allow console link.
+	var/disabled = FALSE
+	/// Ref to global science techweb.
+	var/datum/techweb/stored_research
+	///The item loaded inside the machine, used by experimentors and destructive analyzers only.
+	var/obj/item/loaded_item
 
-/obj/machinery/r_n_d/Initialize(mapload)
+/obj/machinery/rnd/proc/reset_busy()
+	busy = FALSE
+
+/obj/machinery/rnd/Initialize(mapload)
 	. = ..()
-	materials = AddComponent(/datum/component/material_container, list(MAT_METAL, MAT_GLASS, MAT_SILVER, MAT_GOLD, MAT_DIAMOND, MAT_PLASMA, MAT_URANIUM, MAT_BANANIUM, MAT_TRANQUILLITE, MAT_TITANIUM, MAT_BLUESPACE, MAT_PLASTIC), 0, TRUE, /obj/item/stack, CALLBACK(src, PROC_REF(is_insertion_ready)), CALLBACK(src, PROC_REF(AfterMaterialInsert)))
-	materials.precise_insertion = TRUE
+	set_wires(new /datum/wires/rnd(src))
 
-/obj/machinery/r_n_d/Destroy()
-	if(loaded_item)
-		loaded_item.forceMove(get_turf(src))
-		loaded_item = null
-	linked_console = null
-	materials = null
+/obj/machinery/rnd/LateInitialize()
+	. = ..()
+	if(!CONFIG_GET(flag/no_default_techweb_link) && !stored_research)
+		CONNECT_TO_RND_SERVER_ROUNDSTART(stored_research, src)
+	if(stored_research)
+		on_connected_techweb()
+
+/obj/machinery/rnd/Destroy()
+	if(stored_research)
+		log_research("[src] disconnected from techweb [stored_research] (destroyed).")
+		stored_research = null
+	QDEL_NULL(wires)
 	return ..()
 
-//whether the machine can have an item inserted in its current state.
-/obj/machinery/r_n_d/proc/is_insertion_ready(mob/user)
+///Called when attempting to connect the machine to a techweb, forgetting the old.
+/obj/machinery/rnd/proc/connect_techweb(datum/techweb/new_techweb)
+	if(stored_research)
+		log_research("[src] disconnected from techweb [stored_research] when connected to [new_techweb].")
+	stored_research = new_techweb
+	if(!isnull(stored_research))
+		on_connected_techweb()
+
+///Called post-connection to a new techweb.
+/obj/machinery/rnd/proc/on_connected_techweb()
+	SHOULD_CALL_PARENT(FALSE)
+
+/obj/machinery/rnd/proc/shock(mob/user, prb)
+	if(machine_stat & (BROKEN|NOPOWER)) // unpowered, no shock
+		return FALSE
+	if(!prob(prb))
+		return FALSE
+	do_sparks(5, TRUE, src)
+	if (electrocute_mob(user, get_area(src), src, 0.7, TRUE))
+		return TRUE
+	else
+		return FALSE
+
+/obj/machinery/rnd/crowbar_act(mob/living/user, obj/item/tool)
+	return default_deconstruction_crowbar(tool)
+
+/obj/machinery/rnd/crowbar_act_secondary(mob/living/user, obj/item/tool)
+	return default_deconstruction_crowbar(tool)
+
+/obj/machinery/rnd/screwdriver_act(mob/living/user, obj/item/tool)
+	return default_deconstruction_screwdriver(user, "[initial(icon_state)]_t", initial(icon_state), tool)
+
+/obj/machinery/rnd/screwdriver_act_secondary(mob/living/user, obj/item/tool)
+	return default_deconstruction_screwdriver(user, "[initial(icon_state)]_t", initial(icon_state), tool)
+
+/obj/machinery/rnd/multitool_act(mob/living/user, obj/item/multitool/tool)
 	if(panel_open)
-		to_chat(user, "<span class='warning'>You can't load [src] while it's opened!</span>")
-		return FALSE
+		wires.interact(user)
+		return TRUE
+	if(!QDELETED(tool.buffer) && istype(tool.buffer, /datum/techweb))
+		connect_techweb(tool.buffer)
+		return TRUE
+	return FALSE
 
-	if(!linked_console)
-		to_chat(user, "<span class='warning'>[src] must be linked to an R&D console first!</span>")
-		return FALSE
+/obj/machinery/rnd/multitool_act_secondary(mob/living/user, obj/item/tool)
+	if(panel_open)
+		wires.interact(user)
+		return TRUE
 
+/obj/machinery/rnd/wirecutter_act(mob/living/user, obj/item/tool)
+	if(panel_open)
+		wires.interact(user)
+		return TRUE
+
+/obj/machinery/rnd/wirecutter_act_secondary(mob/living/user, obj/item/tool)
+	if(panel_open)
+		wires.interact(user)
+		return TRUE
+
+//whether the machine can have an item inserted in its current state.
+/obj/machinery/rnd/proc/is_insertion_ready(mob/user)
+	if(panel_open)
+		balloon_alert(user, "panel open!")
+		return FALSE
+	if(disabled)
+		balloon_alert(user, "belts disabled!")
+		return FALSE
 	if(busy)
-		to_chat(user, "<span class='warning'>[src] is busy right now.</span>")
+		balloon_alert(user, "still busy!")
 		return FALSE
-
-	if(stat & BROKEN)
-		to_chat(user, "<span class='warning'>[src] is broken.</span>")
+	if(machine_stat & BROKEN)
+		balloon_alert(user, "machine broken!")
 		return FALSE
-
-	if(stat & NOPOWER)
-		to_chat(user, "<span class='warning'>[src] has no power.</span>")
+	if(machine_stat & NOPOWER)
+		balloon_alert(user, "no power!")
 		return FALSE
-
 	if(loaded_item)
-		to_chat(user, "<span class='warning'>[src] is already loaded.</span>")
+		balloon_alert(user, "item already loaded!")
 		return FALSE
-
 	return TRUE
 
-/obj/machinery/r_n_d/proc/AfterMaterialInsert(type_inserted, id_inserted, amount_inserted)
+//we eject the loaded item when deconstructing the machine
+/obj/machinery/rnd/on_deconstruction()
+	if(loaded_item)
+		loaded_item.forceMove(drop_location())
+	..()
+
+/obj/machinery/rnd/proc/AfterMaterialInsert(item_inserted, id_inserted, amount_inserted)
 	var/stack_name
-	if(ispath(type_inserted, /obj/item/stack/ore/bluespace_crystal))
+	if(istype(item_inserted, /obj/item/stack/ore/bluespace_crystal))
 		stack_name = "bluespace"
-		use_power(MINERAL_MATERIAL_AMOUNT / 10)
+		use_power(SHEET_MATERIAL_AMOUNT / 10)
 	else
-		var/obj/item/stack/S = type_inserted
-		stack_name = initial(S.name)
-		use_power(min(1000, (amount_inserted / 100)))
+		var/obj/item/stack/S = item_inserted
+		stack_name = S.name
+		use_power(min(active_power_usage, (amount_inserted / 100)))
 	add_overlay("protolathe_[stack_name]")
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, cut_overlay), "protolathe_[stack_name]"), 10)
-
-/obj/machinery/r_n_d/proc/check_mat(datum/design/being_built, M)
-	return 0 // number of copies of design beign_built you can make with material M

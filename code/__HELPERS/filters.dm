@@ -22,15 +22,16 @@ GLOBAL_LIST_INIT(master_filter_info, list(
 			"size" = 1
 		)
 	),
-	/* Not supported because making a proper matrix editor on the frontend would be a huge dick pain.
-		Uncomment if you ever implement it
+	// Not implemented, but if this isn't uncommented some windows will just error
+	// Needs either a proper matrix editor, or just a hook to our existing one 
+	// Issue is filterrific assumes variables will have the same value type if they share the same name, which this violates
+	// Gotta refactor this sometime
 	"color" = list(
 		"defaults" = list(
 			"color" = matrix(),
 			"space" = FILTER_COLOR_RGB
 		)
 	),
-	*/
 	"displace" = list(
 		"defaults" = list(
 			"x" = 0,
@@ -137,10 +138,9 @@ GLOBAL_LIST_INIT(master_filter_info, list(
 ))
 
 #undef ICON_NOT_SET
-/*
- * Helpers to generate lists for filter helpers
- * This is the only practical way of writing these that actually produces sane lists
- */
+
+//Helpers to generate lists for filter helpers
+//This is the only practical way of writing these that actually produces sane lists
 /proc/alpha_mask_filter(x, y, icon/icon, render_source, flags)
 	. = list("type" = "alpha")
 	if(!isnull(x))
@@ -302,10 +302,10 @@ GLOBAL_LIST_INIT(master_filter_info, list(
 		var/Y
 		var/rsq
 		do
-			X = 60 * rand() - 30
-			Y = 60 * rand() - 30
-			rsq = X * X + Y * Y
-		while(rsq < 100 || rsq > 900) // Yeah let's just loop infinitely due to bad luck what's the worst that could happen?
+			X = 60*rand() - 30
+			Y = 60*rand() - 30
+			rsq = X*X + Y*Y
+		while(rsq<100 || rsq>900) // Yeah let's just loop infinitely due to bad luck what's the worst that could happen?
 		var/random_roll = rand()
 		in_atom.add_filter("wibbly-[i]", 5, wave_filter(x = X, y = Y, size = rand() * 2.5 + 0.5, offset = random_roll))
 		var/filter = in_atom.get_filter("wibbly-[i]")
@@ -318,8 +318,3 @@ GLOBAL_LIST_INIT(master_filter_info, list(
 		filter = in_atom.get_filter("wibbly-[i]")
 		animate(filter)
 		in_atom.remove_filter("wibbly-[i]")
-
-/// Used to create rays on an item. Make sure to removefilter("rays") when done with it
-/atom/proc/ray_filter_helper(_priority = 1, _size = 40, _color = "#FFFFFF", _factor = 6, _density = 20, _y = 0)
-	add_filter(name = "ray", priority = _priority, params = list(type = "rays", size = _size, color = _color , factor = _factor, density = _density, y = _y))
-

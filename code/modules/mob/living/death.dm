@@ -1,113 +1,141 @@
-//This is the proc for gibbing a mob. Cannot gib ghosts.
-//added different sort of gibs and animations. N
-/mob/living/gib()
-	if(!death(TRUE) && stat != DEAD)
-		return FALSE
-	// hide and freeze for the GC
-	notransform = TRUE
-	icon = null
-	invisibility = 101
+/**
+ * Blow up the mob into giblets
+ *
+ * drop_bitflags: (see code/__DEFINES/blood.dm)
+ * * DROP_BRAIN - Gibbed mob will drop a brain
+ * * DROP_ORGANS - Gibbed mob will drop organs
+ * * DROP_BODYPARTS - Gibbed mob will drop bodyparts (arms, legs, etc.)
+ * * DROP_ITEMS - Gibbed mob will drop carried items (otherwise they get deleted)
+ * * DROP_ALL_REMAINS - Gibbed mob will drop everything
+**/
+/mob/living/proc/gib(drop_bitflags=NONE)
+	var/prev_lying = lying_angle
+	spawn_gibs(drop_bitflags)
 
-	playsound(src.loc, 'sound/goonstation/effects/gib.ogg', 50, 1)
-	gibs(loc, dna)
-	QDEL_IN(src, 0)
-	return TRUE
+	if(!prev_lying)
+		gib_animation()
 
-//This is the proc for turning a mob into ash. Mostly a copy of gib code (above).
-//Originally created for wizard disintegrate. I've removed the virus code since it's irrelevant here.
-//Dusting robots does not eject the MMI, so it's a bit more powerful than gib() /N
-/mob/living/dust()
-	if(!death(TRUE) && stat != DEAD)
-		return FALSE
+	if(stat != DEAD)
+		death(TRUE)
+
+	ghostize()
+	spill_organs(drop_bitflags)
+
+	if(drop_bitflags & DROP_BODYPARTS)
+		spread_bodyparts(drop_bitflags)
+
+	SEND_SIGNAL(src, COMSIG_LIVING_GIBBED, drop_bitflags)
+	qdel(src)
+
+/mob/living/proc/gib_animation()
+	return
+
+/**
+ * Spawn bloody gib mess on the floor
+ *
+ * drop_bitflags: (see code/__DEFINES/blood.dm)
+ * * DROP_BODYPARTS - Gibs will spawn with bodypart limbs present
+**/
+/mob/living/proc/spawn_gibs(drop_bitflags=NONE)
+	new /obj/effect/gibspawner/generic(drop_location(), src, get_static_viruses())
+
+/**
+ * Drops a mob's organs on the floor
+ *
+ * drop_bitflags: (see code/__DEFINES/blood.dm)
+ * * DROP_BRAIN - Mob will drop a brain
+ * * DROP_ORGANS - Mob will drop organs
+ * * DROP_BODYPARTS - Mob will drop bodyparts (arms, legs, etc.)
+ * * DROP_ALL_REMAINS - Mob will drop everything
+**/
+/mob/living/proc/spill_organs(drop_bitflags=NONE)
+	return
+
+/**
+ * Launches all bodyparts away from the mob
+ *
+ * drop_bitflags: (see code/__DEFINES/blood.dm)
+ * * DROP_BRAIN - Detaches the head from the mob and launches it away from the body
+**/
+/mob/living/proc/spread_bodyparts(drop_bitflags=NONE)
+	return
+
+/**
+ * This is the proc for turning a mob into ash.
+ * Dusting robots does not eject the MMI, so it's a bit more powerful than gib()
+ *
+ * Arguments:
+ * * just_ash - If TRUE, ash will spawn where the mob was, as opposed to remains
+ * * drop_items - Should the mob drop their items before dusting?
+ * * force - Should this mob be FORCABLY dusted?
+*/
+/mob/living/proc/dust(just_ash, drop_items, force)
+	if(body_position == STANDING_UP)
+		// keep us upright so the animation fits.
+		ADD_TRAIT(src, TRAIT_FORCED_STANDING, TRAIT_GENERIC)
+	death(TRUE)
+
+	if(drop_items)
+		unequip_everything()
+
+	if(buckled)
+		buckled.unbuckle_mob(src, force = TRUE)
+
+	dust_animation()
+	spawn_dust(just_ash)
+	ghostize()
+	QDEL_IN(src,5) // since this is sometimes called in the middle of movement, allow half a second for movement to finish, ghosting to happen and animation to play. Looks much nicer and doesn't cause multiple runtimes.
+
+/mob/living/proc/dust_animation()
+	return
+
+/mob/living/proc/spawn_dust(just_ash = FALSE)
 	new /obj/effect/decal/cleanable/ash(loc)
-	// hide and freeze them while they get GC'd
-	notransform = TRUE
-	icon = null
-	invisibility = 101
-	QDEL_IN(src, 0)
-	return TRUE
 
-/mob/living/melt()
-	if(!death(TRUE) && stat != DEAD)
+/*
+ * Called when the mob dies. Can also be called manually to kill a mob.
+ *
+ * Arguments:
+ * * gibbed - Was the mob gibbed?
+*/
+/mob/living/proc/death(gibbed)
+	if(stat == DEAD)
 		return FALSE
-	// hide and freeze them while they get GC'd
-	notransform = TRUE
-	icon = null
-	invisibility = 101
-	QDEL_IN(src, 0)
-	return TRUE
 
-/mob/living/proc/can_die()
-	return !(stat == DEAD || (status_flags & GODMODE))
-
-// Returns true if mob transitioned from live to dead
-// Do a check with `can_die` beforehand if you need to do any
-// handling before `stat` is set
-/mob/living/death(gibbed)
-	if(!can_die())
-		// Whew! Good thing I'm indestructible! (or already dead)
-		return FALSE
+	if(!gibbed && (death_sound || death_message))
+		INVOKE_ASYNC(src, TYPE_PROC_REF(/mob, emote), "deathgasp")
 
 	set_stat(DEAD)
-	..()
-
+	unset_machine()
 	timeofdeath = world.time
-	create_log(ATTACK_LOG, "died[gibbed ? " (Gibbed)": ""]")
-
-	SetDizzy(0)
-	SetJitter(0)
-	SetLoseBreath(0)
-
-	if(!gibbed && deathgasp_on_death)
-		emote("deathgasp")
-
-	if(mind && suiciding)
-		mind.suicided = TRUE
+	station_timestamp_timeofdeath = station_time_timestamp()
+	var/turf/death_turf = get_turf(src)
+	var/area/death_area = get_area(src)
+	// Display a death message if the mob is a player mob (has an active mind)
+	var/player_mob_check = mind && mind.name && mind.active
+	// and, display a death message if the area allows it (or if they're in nullspace)
+	var/valid_area_check = !death_area || !(death_area.area_flags & NO_DEATH_MESSAGE)
+	if(player_mob_check && valid_area_check)
+		deadchat_broadcast(" has died at <b>[get_area_name(death_turf)]</b>.", "<b>[mind.name]</b>", follow_target = src, turf_target = death_turf, message_type=DEADCHAT_DEATHRATTLE)
+		if(SSlag_switch.measures[DISABLE_DEAD_KEYLOOP] && !client?.holder)
+			to_chat(src, span_deadsay(span_big("Observer freelook is disabled.\nPlease use Orbit, Teleport, and Jump to look around.")))
+			ghostize(TRUE)
+	set_disgust(0)
+	SetSleeping(0, 0)
 	reset_perspective(null)
-	hud_used?.reload_fullscreen()
-	update_sight()
-	update_action_buttons_icon()
-	ADD_TRAIT(src, TRAIT_FLOORED, STAT_TRAIT)
-	ADD_TRAIT(src, TRAIT_HANDS_BLOCKED, STAT_TRAIT) // immobilized is superfluous as moving when dead ghosts you.
+	reload_fullscreen()
+	update_mob_action_buttons()
 	update_damage_hud()
 	update_health_hud()
 	med_hud_set_health()
 	med_hud_set_status()
+	stop_pulling()
 
-	GLOB.alive_mob_list -= src
-	GLOB.dead_mob_list += src
-	if(mind)
-		mind.store_memory("Time of death: [station_time_timestamp("hh:mm:ss", timeofdeath)]", 0)
-		ADD_TRAIT(src, TRAIT_RESPAWNABLE, GHOSTED)
+	SEND_SIGNAL(src, COMSIG_LIVING_DEATH, gibbed)
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_MOB_DEATH, src, gibbed)
 
-		if(mind.name && !isbrain(src)) // !isbrain() is to stop it from being called twice
-			var/turf/T = get_turf(src)
-			var/area_name = get_area_name(T)
-			for(var/P in GLOB.dead_mob_list)
-				var/mob/M = P
-				if((M.client?.prefs.toggles2 & PREFTOGGLE_2_DEATHMESSAGE) && (isobserver(M) || M.stat == DEAD))
-					to_chat(M, "<span class='deadsay'><b>[mind.name]</b> has died at <b>[area_name]</b>. (<a href='?src=[M.UID()];jump=\ref[T]'>JMP</a>)</span>")
+	if (client)
+		client.move_delay = initial(client.move_delay)
+		client.player_details.time_of_death = timeofdeath
 
-	if(SSticker && SSticker.mode)
-		SSticker.mode.check_win()
-
-	// u no we dead
 	return TRUE
-
-/mob/living/proc/delayed_gib(inflate_at_end = FALSE)
-	visible_message("<span class='danger'><b>[src]</b> starts convulsing violently!</span>", "You feel as if your body is tearing itself apart!")
-	Weaken(30 SECONDS)
-	do_jitter_animation(1000, -1) // jitter until they are gibbed
-	addtimer(CALLBACK(src, inflate_at_end ? PROC_REF(quick_explode_gib) : PROC_REF(gib)), rand(2 SECONDS, 10 SECONDS))
-
-/mob/living/proc/inflate_gib() // Plays an animation that makes mobs appear to inflate before finally gibbing
-	addtimer(CALLBACK(src, PROC_REF(gib), null, null, TRUE, TRUE), 2.5 SECONDS)
-	var/matrix/M = transform
-	M.Scale(1.8, 1.2)
-	animate(src, time = 40, transform = M, easing = SINE_EASING)
-
-/mob/living/proc/quick_explode_gib()
-	addtimer(CALLBACK(src, PROC_REF(gib), null, null, TRUE, TRUE), 0.1 SECONDS)
-	var/matrix/M = transform
-	M.Scale(1.8, 1.2)
-	animate(src, time = 1, transform = M, easing = SINE_EASING)

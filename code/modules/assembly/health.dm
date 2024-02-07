@@ -1,25 +1,31 @@
-#define MAX_HEALTH_ACTIVATE 0
-#define MIN_HEALTH_ACTIVATE -150
-
 /obj/item/assembly/health
 	name = "health sensor"
 	desc = "Used for scanning and monitoring health."
 	icon_state = "health"
-	materials = list(MAT_METAL=800, MAT_GLASS=200)
-	origin_tech = "magnets=1;biotech=1"
+	custom_materials = list(/datum/material/iron=SMALL_MATERIAL_AMOUNT*8, /datum/material/glass=SMALL_MATERIAL_AMOUNT * 2)
+	attachable = TRUE
 
-	/// Are we scanning our user's health?
 	var/scanning = FALSE
-	/// Our user's health
-	var/user_health
-	/// The health amount on which to activate
-	var/alarm_health = MAX_HEALTH_ACTIVATE
+	var/health_scan
+	var/alarm_health = HEALTH_THRESHOLD_CRIT
+
+/obj/item/assembly/health/examine(mob/user)
+	. = ..()
+	. += "Use it in hand to turn it off/on and Alt-click to swap between \"detect death\" mode and \"detect critical state\" mode."
+	. += "[src.scanning ? "The sensor is on and you can see [health_scan] displayed on the screen" : "The sensor is off"]."
+
+/obj/item/assembly/health/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
+	. = ..()
+	if(iscarbon(old_loc))
+		UnregisterSignal(old_loc, COMSIG_MOB_GET_STATUS_TAB_ITEMS)
+	if(iscarbon(loc))
+		RegisterSignal(loc, COMSIG_MOB_GET_STATUS_TAB_ITEMS, PROC_REF(get_status_tab_item))
 
 /obj/item/assembly/health/activate()
 	if(!..())
 		return FALSE//Cooldown check
 	toggle_scan()
-	return FALSE
+	return TRUE
 
 /obj/item/assembly/health/toggle_secure()
 	secured = !secured
@@ -27,85 +33,65 @@
 		START_PROCESSING(SSobj, src)
 	else
 		scanning = FALSE
-		user_health = null // Clear out the user data, we're no longer scanning
 		STOP_PROCESSING(SSobj, src)
-	update_icon()
+	update_appearance()
 	return secured
 
+/obj/item/assembly/health/AltClick(mob/living/user)
+	if(!can_interact(user))
+		return
+
+	if(alarm_health == HEALTH_THRESHOLD_CRIT)
+		alarm_health = HEALTH_THRESHOLD_DEAD
+		to_chat(user, span_notice("You toggle [src] to \"detect death\" mode."))
+	else
+		alarm_health = HEALTH_THRESHOLD_CRIT
+		to_chat(user, span_notice("You toggle [src] to \"detect critical state\" mode."))
+
 /obj/item/assembly/health/process()
+	//not ready yet
 	if(!scanning || !secured)
-		STOP_PROCESSING(SSobj, src) // It should never reach here, but if it somehow does stop processing
 		return
 
-	var/atom/A = src
-	if(connected && connected.holder)
-		A = connected.holder
+	//look for a mob in either our location or in the connected holder
+	var/atom/object = src
+	if(connected?.holder)
+		object = connected.holder
+	while(!ismob(object))
+		object = object.loc
+		if(isnull(object)) //we went too far
+			return
 
-	for(A, A && !ismob(A), A = A.loc); // For A, check A exists and that its not a mob, if these are both true then set A to A.loc and repeat
-	// like get_turf(), but for mobs.
-
-	if(!isliving(A))
-		user_health = null // We aint on a living thing, remove the previous data
+	//only do the pulse if we are within alarm thresholds
+	var/mob/living/target_mob = object
+	health_scan = target_mob.health
+	if(health_scan > alarm_health)
 		return
 
-	var/mob/living/M = A
-	user_health = M.health
-	if(user_health <= alarm_health) // Its a health detector, not a death detector
-		pulse()
-		audible_message("[bicon(src)] *beep* *beep*")
-		toggle_scan()
-
-/obj/item/assembly/health/pickup(mob/user)
-	..()
-	ADD_TRAIT(user, TRAIT_CAN_VIEW_HEALTH, "HEALTH[UID()]")
-
-/obj/item/gps/dropped(mob/user, silent)
-	REMOVE_TRAIT(user, TRAIT_CAN_VIEW_HEALTH, "HEALTH[UID()]")
-	return ..()
+	//do the pulse & the scan
+	pulse()
+	audible_message("<span class='infoplain'>[icon2html(src, hearers(src))] *beep* *beep* *beep*</span>")
+	playsound(src, 'sound/machines/triple_beep.ogg', ASSEMBLY_BEEP_VOLUME, TRUE)
+	toggle_scan()
 
 /obj/item/assembly/health/proc/toggle_scan()
 	if(!secured)
-		return FALSE
+		return 0
 	scanning = !scanning
 	if(scanning)
 		START_PROCESSING(SSobj, src)
 	else
-		user_health = null // Clear out the user data, we're no longer scanning
 		STOP_PROCESSING(SSobj, src)
+	return
 
 /obj/item/assembly/health/attack_self(mob/user)
-	ui_interact(user)
+	. = ..()
+	if (secured)
+		balloon_alert(user, "scanning [scanning ? "disabled" : "enabled"]")
+	else
+		balloon_alert(user, "secure it first!")
+	toggle_scan()
 
-/obj/item/assembly/health/ui_state(mob/user)
-	return GLOB.deep_inventory_state
-
-/obj/item/assembly/health/ui_interact(mob/user, datum/tgui/ui = null)
-	ui = SStgui.try_update_ui(user, src, ui)
-	if(!ui)
-		ui = new(user, src, "HealthSensor", name)
-		ui.open()
-
-/obj/item/assembly/health/ui_data(mob/user)
-	var/list/data = list()
-	data["on"] = scanning
-	data["alarm_health"] = alarm_health
-	data["user_health"] = user_health
-	data["maxHealth"] = MAX_HEALTH_ACTIVATE
-	data["minHealth"] = MIN_HEALTH_ACTIVATE
-	return data
-
-/obj/item/assembly/health/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
-	if(..())
-		return
-
-	. = TRUE
-
-	switch(action)
-		if("scan_toggle")
-			toggle_scan()
-
-		if("alarm_health")
-			alarm_health = clamp(text2num(params["alarm_health"]), MIN_HEALTH_ACTIVATE, MAX_HEALTH_ACTIVATE)
-
-#undef MAX_HEALTH_ACTIVATE
-#undef MIN_HEALTH_ACTIVATE
+/obj/item/assembly/health/proc/get_status_tab_item(mob/living/carbon/source, list/items)
+	SIGNAL_HANDLER
+	items += "Health: [round((source.health / source.maxHealth) * 100)]%"

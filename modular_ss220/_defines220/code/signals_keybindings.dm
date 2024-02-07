@@ -1,1 +1,0 @@
-#define COMSIG_KB_ACTIVATED (1<<0)

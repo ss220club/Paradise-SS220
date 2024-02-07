@@ -34,7 +34,7 @@
 	/// T-ray scan range.
 	var/range = 4
 
-/obj/item/mod/module/t_ray/on_active_process()
+/obj/item/mod/module/t_ray/on_active_process(seconds_per_tick)
 	t_ray_scan(mod.wearer, 0.8 SECONDS, range)
 
 ///Magnetic Stability - Gives the user a slowdown but makes them negate gravity and be immune to slips.
@@ -48,50 +48,34 @@
 	module_type = MODULE_TOGGLE
 	complexity = 2
 	active_power_cost = DEFAULT_CHARGE_DRAIN * 0.5
-	incompatible_modules = list(/obj/item/mod/module/magboot)
+	incompatible_modules = list(/obj/item/mod/module/magboot, /obj/item/mod/module/atrocinator)
 	cooldown_time = 0.5 SECONDS
 	/// Slowdown added onto the suit.
 	var/slowdown_active = 0.5
+	/// A list of traits to add to the wearer when we're active (see: Magboots)
+	var/list/active_traits = list(TRAIT_NO_SLIP_WATER, TRAIT_NO_SLIP_ICE, TRAIT_NO_SLIP_SLIDE, TRAIT_NEGATES_GRAVITY)
 
 /obj/item/mod/module/magboot/on_activation()
 	. = ..()
 	if(!.)
 		return
-	ADD_TRAIT(mod.wearer, TRAIT_NOSLIP, UID())
+	mod.wearer.add_traits(active_traits, MOD_TRAIT)
 	mod.slowdown += slowdown_active
-	ADD_TRAIT(mod.wearer, TRAIT_MAGPULSE, "magbooted")
+	mod.wearer.update_equipment_speed_mods()
 
 /obj/item/mod/module/magboot/on_deactivation(display_message = TRUE, deleting = FALSE)
 	. = ..()
 	if(!.)
 		return
-	REMOVE_TRAIT(mod.wearer, TRAIT_NOSLIP, UID())
+	mod.wearer.remove_traits(active_traits, MOD_TRAIT)
 	mod.slowdown -= slowdown_active
-	REMOVE_TRAIT(mod.wearer, TRAIT_MAGPULSE, "magbooted")
+	mod.wearer.update_equipment_speed_mods()
 
 /obj/item/mod/module/magboot/advanced
 	name = "MOD advanced magnetic stability module"
 	removable = FALSE
 	complexity = 0
 	slowdown_active = 0
-
-///Radiation Protection - Gives the user rad info in the ui, currently
-/obj/item/mod/module/rad_protection
-	name = "MOD radiation detector module"
-	desc = "A protoype module that improves the sensors on the modsuit to detect radiation on the user. \
-	Currently due to time restraints and a lack of lead on lavaland, it does not have a built in geiger counter or radiation protection."
-	icon_state = "radshield"
-	complexity = 0 //I'm setting this to zero for now due to it not currently increasing radiaiton armor. If we add giger counter / additional rad protecion to this, it should be 2. We denied radiation potions before, so this should NOT give full rad immunity on a engi modsuit
-	idle_power_cost = DEFAULT_CHARGE_DRAIN * 0.1 //Lowered from 0.3 due to no protection.
-	incompatible_modules = list(/obj/item/mod/module/rad_protection)
-	tgui_id = "rad_counter"
-
-/obj/item/mod/module/rad_protection/add_ui_data()
-	. = ..()
-	.["userradiated"] = mod.wearer?.radiation || 0
-	.["usertoxins"] = mod.wearer?.getToxLoss() || 0
-	.["usermaxtoxins"] = mod.wearer?.getMaxHealth() || 0
-
 
 ///Emergency Tether - Shoots a grappling hook projectile in 0g that throws the user towards it.
 /obj/item/mod/module/tether
@@ -101,15 +85,15 @@
 		these are only capable of working in zero-gravity environments, a blessing to some Engineers."
 	icon_state = "tether"
 	module_type = MODULE_ACTIVE
-	complexity = 1
+	complexity = 2
 	use_power_cost = DEFAULT_CHARGE_DRAIN
 	incompatible_modules = list(/obj/item/mod/module/tether)
-	cooldown_time = 4 SECONDS
+	cooldown_time = 1.5 SECONDS
 
 /obj/item/mod/module/tether/on_use()
-	if(has_gravity(get_turf(src)))
-		to_chat(mod.wearer, "<span class='warning'>Too much gravity to use the tether!</span>")
-		playsound(src, 'sound/weapons/gun_interactions/dry_fire.ogg', 25, TRUE)
+	if(mod.wearer.has_gravity(get_turf(src)))
+		balloon_alert(mod.wearer, "too much gravity!")
+		playsound(src, 'sound/weapons/gun/general/dry_fire.ogg', 25, TRUE)
 		return FALSE
 	return ..()
 
@@ -117,146 +101,138 @@
 	. = ..()
 	if(!.)
 		return
-	var/obj/item/projectile/tether = new /obj/item/projectile/tether(get_turf(mod.wearer))
-	tether.original = target
+	var/obj/projectile/tether = new /obj/projectile/tether(mod.wearer.loc)
+	tether.preparePixelProjectile(target, mod.wearer)
 	tether.firer = mod.wearer
-	tether.preparePixelProjectile(target, get_turf(target), mod.wearer)
-	tether.fire()
 	playsound(src, 'sound/weapons/batonextend.ogg', 25, TRUE)
-	INVOKE_ASYNC(tether, TYPE_PROC_REF(/obj/item/projectile/tether, make_chain))
+	INVOKE_ASYNC(tether, TYPE_PROC_REF(/obj/projectile, fire))
 	drain_power(use_power_cost)
 
-/obj/item/projectile/tether
+/obj/projectile/tether
 	name = "tether"
 	icon_state = "tether_projectile"
 	icon = 'icons/obj/clothing/modsuit/mod_modules.dmi'
-	speed = 2
-	damage = 5
-	range = 15
+	damage = 0
+	range = 10
 	hitsound = 'sound/weapons/batonextend.ogg'
 	hitsound_wall = 'sound/weapons/batonextend.ogg'
+	suppressed = SUPPRESSED_VERY
+	hit_threshhold = LATTICE_LAYER
+	/// Reference to the beam following the projectile.
+	var/line
 
-/obj/item/projectile/tether/proc/make_chain()
+/obj/projectile/tether/fire(setAngle)
 	if(firer)
-		chain = Beam(firer, icon_state = "line", icon = 'icons/obj/clothing/modsuit/mod_modules.dmi', time = 10 SECONDS, maxdistance = 15)
-
-/obj/item/projectile/tether/on_hit(atom/target)
-	. = ..()
-	if(firer && isliving(firer))
-		var/mob/living/L = firer
-		L.apply_status_effect(STATUS_EFFECT_IMPACT_IMMUNE)
-		L.throw_at(target, 15, 1, L, FALSE, FALSE, callback = CALLBACK(L, TYPE_PROC_REF(/mob/living, remove_status_effect), STATUS_EFFECT_IMPACT_IMMUNE), block_movement = FALSE)
-
-/obj/item/projectile/tether/Destroy()
-	QDEL_NULL(chain)
+		line = firer.Beam(src, "line", 'icons/obj/clothing/modsuit/mod_modules.dmi', emissive = FALSE)
 	return ..()
 
-/// Atmos water tank module
+/obj/projectile/tether/on_hit(atom/target, blocked = 0, pierce_hit)
+	. = ..()
+	if(firer)
+		firer.throw_at(target, 10, 1, firer, FALSE, FALSE, null, MOVE_FORCE_NORMAL, TRUE)
 
-/obj/item/mod/module/firefighting_tank
-	name = "MOD firefighting tank"
-	desc = "A refrigerated and pressurized module tank with an extinguisher nozzle, intended to fight fires. Swaps between extinguisher, nanofrost launcher, and metal foam dispenser for breaches. Nanofrost converts plasma in the air to nitrogen, but only if it is combusting at the time."
-	icon_state = "firefighting_tank"
+/obj/projectile/tether/Destroy()
+	QDEL_NULL(line)
+	return ..()
+
+///Radiation Protection - Protects the user from radiation, gives them a geiger counter and rad info in the panel.
+/obj/item/mod/module/rad_protection
+	name = "MOD radiation protection module"
+	desc = "A module utilizing polymers and reflective shielding to protect the user against ionizing radiation; \
+		a common danger in space. This comes with software to notify the wearer that they're even in a radioactive area, \
+		giving a voice to an otherwise silent killer."
+	icon_state = "radshield"
+	complexity = 2
+	idle_power_cost = DEFAULT_CHARGE_DRAIN * 0.3
+	incompatible_modules = list(/obj/item/mod/module/rad_protection)
+	tgui_id = "rad_counter"
+	/// Radiation threat level being perceived.
+	var/perceived_threat_level
+
+/obj/item/mod/module/rad_protection/on_suit_activation()
+	AddComponent(/datum/component/geiger_sound)
+	ADD_TRAIT(mod.wearer, TRAIT_BYPASS_EARLY_IRRADIATED_CHECK, MOD_TRAIT)
+	RegisterSignal(mod.wearer, COMSIG_IN_RANGE_OF_IRRADIATION, PROC_REF(on_pre_potential_irradiation))
+	for(var/obj/item/part in mod.mod_parts)
+		ADD_TRAIT(part, TRAIT_RADIATION_PROTECTED_CLOTHING, MOD_TRAIT)
+
+/obj/item/mod/module/rad_protection/on_suit_deactivation(deleting = FALSE)
+	qdel(GetComponent(/datum/component/geiger_sound))
+	REMOVE_TRAIT(mod.wearer, TRAIT_BYPASS_EARLY_IRRADIATED_CHECK, MOD_TRAIT)
+	UnregisterSignal(mod.wearer, COMSIG_IN_RANGE_OF_IRRADIATION)
+	for(var/obj/item/part in mod.mod_parts)
+		REMOVE_TRAIT(part, TRAIT_RADIATION_PROTECTED_CLOTHING, MOD_TRAIT)
+
+/obj/item/mod/module/rad_protection/add_ui_data()
+	. = ..()
+	.["is_user_irradiated"] = mod.wearer ? HAS_TRAIT(mod.wearer, TRAIT_IRRADIATED) : FALSE
+	.["background_radiation_level"] = perceived_threat_level
+	.["health_max"] = mod.wearer?.getMaxHealth() || 0
+	.["loss_tox"] = mod.wearer?.getToxLoss() || 0
+
+/obj/item/mod/module/rad_protection/proc/on_pre_potential_irradiation(datum/source, datum/radiation_pulse_information/pulse_information, insulation_to_target)
+	SIGNAL_HANDLER
+
+	perceived_threat_level = get_perceived_radiation_danger(pulse_information, insulation_to_target)
+	addtimer(VARSET_CALLBACK(src, perceived_threat_level, null), TIME_WITHOUT_RADIATION_BEFORE_RESET, TIMER_UNIQUE | TIMER_OVERRIDE)
+
+///Constructor - Lets you build quicker and create RCD holograms.
+/obj/item/mod/module/constructor
+	name = "MOD constructor module"
+	desc = "This module entirely occupies the wearer's forearm, notably causing conflict with \
+		advanced arm servos meant to carry crewmembers. However, it functions as an \
+		extremely advanced construction hologram scanner, as well as containing the \
+		latest engineering schematics combined with inbuilt memory to help the user build walls."
+	icon_state = "constructor"
+	module_type = MODULE_USABLE
+	complexity = 2
+	idle_power_cost = DEFAULT_CHARGE_DRAIN * 0.2
+	use_power_cost = DEFAULT_CHARGE_DRAIN * 2
+	incompatible_modules = list(/obj/item/mod/module/constructor, /obj/item/mod/module/quick_carry)
+	cooldown_time = 11 SECONDS
+
+/obj/item/mod/module/constructor/on_suit_activation()
+	ADD_TRAIT(mod.wearer, TRAIT_QUICK_BUILD, MOD_TRAIT)
+
+/obj/item/mod/module/constructor/on_suit_deactivation(deleting = FALSE)
+	REMOVE_TRAIT(mod.wearer, TRAIT_QUICK_BUILD, MOD_TRAIT)
+
+/obj/item/mod/module/constructor/on_use()
+	. = ..()
+	if(!.)
+		return
+	rcd_scan(src, fade_time = 10 SECONDS)
+	drain_power(use_power_cost)
+
+///Mister - Sprays water over an area.
+/obj/item/mod/module/mister
+	name = "MOD water mister module"
+	desc = "A module containing a mister, able to spray it over areas."
+	icon_state = "mister"
 	module_type = MODULE_ACTIVE
 	complexity = 2
-	active_power_cost = DEFAULT_CHARGE_DRAIN * 3
-	device = /obj/item/extinguisher/mini/mod
+	active_power_cost = DEFAULT_CHARGE_DRAIN * 0.3
+	device = /obj/item/reagent_containers/spray/mister
+	incompatible_modules = list(/obj/item/mod/module/mister)
+	cooldown_time = 0.5 SECONDS
+	/// Volume of our reagent holder.
+	var/volume = 500
 
-#define EXTINGUISHER 0
-#define NANOFROST 1
-#define METAL_FOAM 2
+/obj/item/mod/module/mister/Initialize(mapload)
+	create_reagents(volume, OPENCONTAINER)
+	return ..()
 
-/obj/item/extinguisher/mini/mod
-	name = "modsuit extinguisher nozzle"
-	desc = "A heavy duty nozzle attached to a modsuit's internal tank."
-	icon = 'icons/obj/watertank.dmi'
-	icon_state = "atmos_nozzle_1"
-	item_state = "nozzleatmos"
-	safety = 0
-	max_water = 500
-	precision = 1
-	cooling_power = 5
-	w_class = WEIGHT_CLASS_HUGE
-	flags = NODROP // Necessary to ensure that the nozzle and tank never seperate
-	var/nozzle_mode = EXTINGUISHER
-	var/metal_synthesis_charge = 5
-	COOLDOWN_DECLARE(nanofrost_cooldown)
+///Resin Mister - Sprays resin over an area.
+/obj/item/mod/module/mister/atmos
+	name = "MOD resin mister module"
+	desc = "An atmospheric resin mister, able to fix up areas quickly."
+	device = /obj/item/extinguisher/mini/nozzle/mod
+	volume = 250
 
-/obj/item/extinguisher/mini/mod/attack_self(mob/user)
-	switch(nozzle_mode)
-		if(EXTINGUISHER)
-			nozzle_mode = NANOFROST
-			to_chat(user, "<span class='notice'>Swapped to nanofrost launcher.</span>")
-		if(NANOFROST)
-			nozzle_mode = METAL_FOAM
-			to_chat(user, "<span class='notice'>Swapped to metal foam synthesizer.</span>")
-		if(METAL_FOAM)
-			nozzle_mode = EXTINGUISHER
-			to_chat(user, "<span class='notice'>Swapped to water extinguisher.</span>")
-	update_icon(UPDATE_ICON_STATE)
-
-/obj/item/extinguisher/mini/mod/update_icon_state()
-	switch(nozzle_mode)
-		if(EXTINGUISHER)
-			icon_state = "atmos_nozzle_1"
-		if(NANOFROST)
-			icon_state = "atmos_nozzle_2"
-		if(METAL_FOAM)
-			icon_state = "atmos_nozzle_3"
-
-/obj/item/extinguisher/mini/mod/examine(mob/user)
+/obj/item/mod/module/mister/atmos/Initialize(mapload)
 	. = ..()
-	switch(nozzle_mode)
-		if(EXTINGUISHER)
-			. += "<span class='notice'>[src] is currently set to extinguishing mode.</span>"
-		if(NANOFROST)
-			. += "<span class='notice'>[src] is currently set to nanofrost mode.</span>"
-		if(METAL_FOAM)
-			. += "<span class='notice'>[src] is currently set to metal foam mode.</span>"
+	reagents.add_reagent(/datum/reagent/water, volume)
 
-/obj/item/extinguisher/mini/mod/afterattack(atom/target, mob/user)
-	var/is_adjacent = user.Adjacent(target)
-	if(is_adjacent && AttemptRefill(target, user))
-		return
-	switch(nozzle_mode)
-		if(EXTINGUISHER)
-			..()
-
-		if(NANOFROST)
-			if(reagents.total_volume < 100)
-				to_chat(user, "<span class='warning'>You need at least 100 units of water to use the nanofrost launcher!</span>")
-				return
-			if(!COOLDOWN_FINISHED(src, nanofrost_cooldown))
-				to_chat(user, "<span class='warning'>Nanofrost launcher is still recharging.</span>")
-				return
-			COOLDOWN_START(src, nanofrost_cooldown, 10 SECONDS)
-			reagents.remove_any(100)
-			var/obj/effect/nanofrost_container/A = new /obj/effect/nanofrost_container(get_turf(src))
-			log_game("[key_name(user)] used Nanofrost at [get_area(user)] ([user.x], [user.y], [user.z]).")
-			playsound(src, 'sound/items/syringeproj.ogg', 40, 1)
-			for(var/counter in 1 to 5)
-				step_towards(A, target)
-				sleep(2)
-			A.Smoke()
-
-		if(METAL_FOAM)
-			if(!is_adjacent|| !isturf(target))
-				return
-			if(metal_synthesis_charge <= 0)
-				to_chat(user, "<span class='warning'>Metal foam mix is still being synthesized.</span>")
-				return
-			if(reagents.total_volume < 10)
-				to_chat(user, "<span class='warning'>You need at least 10 units of water to use the metal foam synthesizer!</span>")
-				return
-			var/obj/effect/particle_effect/foam/F = new/obj/effect/particle_effect/foam(get_turf(target), 1)
-			F.amount = 0
-			reagents.remove_any(10)
-			metal_synthesis_charge--
-			addtimer(CALLBACK(src, PROC_REF(decrease_metal_charge)), 5 SECONDS)
-
-/obj/item/extinguisher/mini/mod/proc/decrease_metal_charge()
-		metal_synthesis_charge++
-
-#undef EXTINGUISHER
-#undef NANOFROST
-#undef METAL_FOAM
+/obj/item/extinguisher/mini/nozzle/mod
+	name = "MOD atmospheric mister"
+	desc = "An atmospheric resin mister with three modes, mounted as a module."

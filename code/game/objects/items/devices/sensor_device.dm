@@ -1,26 +1,16 @@
 /obj/item/sensor_device
-	name = "handheld crew monitor"
+	name = "handheld crew monitor" //Thanks to Gun Hog for the name!
 	desc = "A miniature machine that tracks suit sensors across the station."
-	icon = 'icons/obj/device.dmi'
+	icon = 'icons/obj/devices/scanner.dmi'
 	icon_state = "scanner"
+	inhand_icon_state = "electronic"
+	worn_icon_state = "electronic"
+	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'
 	w_class = WEIGHT_CLASS_SMALL
-	slot_flags = SLOT_FLAG_BELT
-	origin_tech = "programming=3;materials=3;magnets=3"
-	var/datum/ui_module/crew_monitor/crew_monitor
+	slot_flags = ITEM_SLOT_BELT
+	custom_price = PAYCHECK_CREW * 5
+	custom_premium_price = PAYCHECK_CREW * 6
 
-/obj/item/sensor_device/New()
-	..()
-	crew_monitor = new(src)
-
-/obj/item/sensor_device/Destroy()
-	QDEL_NULL(crew_monitor)
-	return ..()
-
-/obj/item/sensor_device/attack_self(mob/user as mob)
-	ui_interact(user)
-
-/obj/item/sensor_device/ui_state(mob/user)
-	return GLOB.default_state
-
-/obj/item/sensor_device/ui_interact(mob/user, datum/tgui/ui = null)
-	crew_monitor.ui_interact(user, ui)
+/obj/item/sensor_device/attack_self(mob/user)
+	GLOB.crewmonitor.show(user,src) //Proc already exists, just had to call it

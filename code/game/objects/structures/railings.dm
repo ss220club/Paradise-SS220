@@ -1,203 +1,188 @@
 /obj/structure/railing
 	name = "railing"
 	desc = "Basic railing meant to protect idiots like you from falling."
-	icon = 'icons/obj/fence.dmi'
+	icon = 'icons/obj/railings.dmi'
 	icon_state = "railing"
+	flags_1 = ON_BORDER_1
+	obj_flags = CAN_BE_HIT | BLOCKS_CONSTRUCTION_DIR
 	density = TRUE
 	anchored = TRUE
-	pass_flags = LETPASSTHROW
-	climbable = TRUE
+	pass_flags_self = LETPASSTHROW|PASSSTRUCTURE
 	layer = ABOVE_MOB_LAYER
-	flags = ON_BORDER
-	var/currently_climbed = FALSE
-	var/mover_dir = null
+	/// armor is a little bit less than a grille. max_integrity about half that of a grille.
+	armor_type = /datum/armor/structure_railing
+	max_integrity = 25
 
-/obj/structure/railing/get_climb_text()
-	return "<span class='info'>You can <b>Click-Drag</b> yourself to [src] to climb over it after a short delay.</span>"
+	var/climbable = TRUE
+	///Initial direction of the railing.
+	var/ini_dir
+	///item released when deconstructed
+	var/item_deconstruct = /obj/item/stack/rods
+
+/datum/armor/structure_railing
+	melee = 35
+	bullet = 50
+	laser = 50
+	energy = 100
+	bomb = 10
 
 /obj/structure/railing/corner //aesthetic corner sharp edges hurt oof ouch
 	icon_state = "railing_corner"
 	density = FALSE
 	climbable = FALSE
 
-/obj/structure/railing/cap //aestetic "end" for railing
-	icon_state = "railing_cap"
-	density = FALSE
-	climbable = FALSE
+/obj/structure/railing/corner/end //end of a segment of railing without making a loop
+	icon_state = "railing_end"
 
-/obj/structure/railing/cap/normal
-	icon_state = "railing_cap_normal"
+/obj/structure/railing/corner/end/flip //same as above but flipped around
+	icon_state = "railing_end_flip"
 
-/obj/structure/railing/cap/reversed
-	icon_state = "railing_cap_reversed"
+/obj/structure/railing/Initialize(mapload)
+	. = ..()
+	ini_dir = dir
+	if(climbable)
+		AddElement(/datum/element/climbable)
+
+	if(density && flags_1 & ON_BORDER_1) // blocks normal movement from and to the direction it's facing.
+		var/static/list/loc_connections = list(
+			COMSIG_ATOM_EXIT = PROC_REF(on_exit),
+		)
+		AddElement(/datum/element/connect_loc, loc_connections)
+
+	var/static/list/tool_behaviors = list(
+		TOOL_WELDER = list(
+			SCREENTIP_CONTEXT_LMB = "Repair",
+		),
+		TOOL_WRENCH = list(
+			SCREENTIP_CONTEXT_LMB = "Anchor/Unanchor",
+		),
+		TOOL_WIRECUTTER = list(
+			SCREENTIP_CONTEXT_LMB = "Deconstruct",
+		),
+	)
+	AddElement(/datum/element/contextual_screentip_tools, tool_behaviors)
+
+	AddComponent(/datum/component/simple_rotation, ROTATION_NEEDS_ROOM)
+
+/obj/structure/railing/examine(mob/user)
+	. = ..()
+	if(anchored == TRUE)
+		. += span_notice("The railing is <b>bolted</b> to the floor.")
+	else
+		. += span_notice("The railing is <i>unbolted</i> from the floor and can be deconstructed with <b>wirecutters</b>.")
 
 /obj/structure/railing/attackby(obj/item/I, mob/living/user, params)
 	..()
 	add_fingerprint(user)
 
-/obj/structure/railing/attack_animal(mob/living/simple_animal/M)
-	. = ..()
-	if(. && M.environment_smash >= ENVIRONMENT_SMASH_WALLS)
-		deconstruct(FALSE)
-		M.visible_message("<span class='danger'>[M] tears apart [src]!</span>", "<span class='notice'>You tear apart [src]!</span>")
+	if(I.tool_behaviour == TOOL_WELDER && !user.combat_mode)
+		if(atom_integrity < max_integrity)
+			if(!I.tool_start_check(user, amount=1))
+				return
 
+			to_chat(user, span_notice("You begin repairing [src]..."))
+			if(I.use_tool(src, user, 40, volume=50))
+				atom_integrity = max_integrity
+				to_chat(user, span_notice("You repair [src]."))
+		else
+			to_chat(user, span_warning("[src] is already in good condition!"))
+		return
 
-/obj/structure/railing/welder_act(mob/living/user, obj/item/I)
-	if(user.intent != INTENT_HELP)
-		return
-	if(obj_integrity >= max_integrity)
-		to_chat(user, "<span class='warning'>[src] is already in good condition!</span>")
-		return
-	if(!I.tool_start_check(user, amount = 0))
-		return
-	to_chat(user, "<span class='notice'>You begin repairing [src]...</span>")
-	if(I.use_tool(src, user, 40, volume = 50))
-		obj_integrity = max_integrity
-		to_chat(user, "<span class='notice'>You repair [src].</span>")
+/obj/structure/railing/AltClick(mob/user)
+	return ..() // This hotkey is BLACKLISTED since it's used by /datum/component/simple_rotation
 
 /obj/structure/railing/wirecutter_act(mob/living/user, obj/item/I)
-	if(anchored)
-		return
-	to_chat(user, "<span class='warning'>You cut apart the railing.</span>")
+	. = ..()
+	to_chat(user, span_warning("You cut apart the railing."))
 	I.play_tool_sound(src, 100)
 	deconstruct()
 	return TRUE
 
 /obj/structure/railing/deconstruct(disassembled)
-	if(!(flags & NODECONSTRUCT))
-		var/obj/item/stack/rods/rod = new /obj/item/stack/rods(drop_location(), 3)
-		transfer_fingerprints_to(rod)
+	if((obj_flags & NO_DECONSTRUCTION))
+		return ..()
+	var/rods_to_make = istype(src,/obj/structure/railing/corner) ? 1 : 2
+	var/obj/rod = new item_deconstruct(drop_location(), rods_to_make)
+	transfer_fingerprints_to(rod)
 	return ..()
 
 ///Implements behaviour that makes it possible to unanchor the railing.
 /obj/structure/railing/wrench_act(mob/living/user, obj/item/I)
-	if(flags & NODECONSTRUCT)
-		return
-	to_chat(user, "<span class='notice'>You begin to [anchored ? "unfasten the railing from":"fasten the railing to"] the floor...</span>")
-	if(I.use_tool(src, user, volume = 75, extra_checks = CALLBACK(src, PROC_REF(check_anchored), anchored)))
-		anchored = !anchored
-		to_chat(user, "<span class='notice'>You [anchored ? "fasten the railing to":"unfasten the railing from"] the floor.</span>")
-	return TRUE
-
-/obj/structure/railing/corner/CanPass()
-	return TRUE
-
-/obj/structure/railing/corner/CanPathfindPass(obj/item/card/id/ID, to_dir, caller, no_id = FALSE)
-	return TRUE
-
-/obj/structure/railing/corner/CheckExit()
-	return TRUE
-
-/obj/structure/railing/cap/CanPass()
-	return TRUE
-
-/obj/structure/railing/cap/CanPathfindPass(obj/item/card/id/ID, to_dir, caller, no_id = FALSE)
-	return TRUE
-
-/obj/structure/railing/cap/CheckExit()
-	return TRUE
-
-/obj/structure/railing/CanPass(atom/movable/mover, turf/target)
-	if(istype(mover) && mover.checkpass(PASSFENCE))
-		return TRUE
-	if(istype(mover, /obj/item/projectile))
-		return TRUE
-	if(ismob(mover))
-		var/mob/living/M = mover
-		if(M.flying || (istype(M) && IS_HORIZONTAL(M) && HAS_TRAIT(M, TRAIT_CONTORTED_BODY)))
-			return TRUE
-	if(mover.throwing)
-		return TRUE
-	mover_dir = get_dir(loc, target)
-	//Due to how the other check is done, it would always return density for ordinal directions no matter what
-	if(ordinal_direction_check(mover_dir))
-		return FALSE
-	if(mover_dir != dir)
-		return density
-	return FALSE
-
-/obj/structure/railing/CanPathfindPass(obj/item/card/id/ID, to_dir, caller, no_id = FALSE)
-	if(to_dir == dir)
-		return FALSE
-	if(ordinal_direction_check(to_dir))
-		return FALSE
-
-	return TRUE
-
-/obj/structure/railing/CheckExit(atom/movable/O, target)
-	var/mob/living/M = O
-	if(istype(O) && O.checkpass(PASSFENCE))
-		return TRUE
-	if(istype(O, /obj/item/projectile))
-		return TRUE
-	if(istype(M))
-		if(M.flying || M.floating || (IS_HORIZONTAL(M) && HAS_TRAIT(M, TRAIT_CONTORTED_BODY)))
-			return TRUE
-	if(O.throwing)
-		return TRUE
-	if(O.move_force >= MOVE_FORCE_EXTREMELY_STRONG)
-		return TRUE
-	if(currently_climbed)
-		return TRUE
-	mover_dir = get_dir(O.loc, target)
-	if(mover_dir == dir)
-		return FALSE
-	if(ordinal_direction_check(mover_dir))
-		return FALSE
-	return TRUE
-
-// Checks if the direction the mob is trying to move towards would be blocked by a corner railing
-/obj/structure/railing/proc/ordinal_direction_check(check_dir)
-	switch(dir)
-		if(NORTHEAST)
-			if(check_dir == NORTH || check_dir == EAST)
-				return TRUE
-		if(SOUTHEAST)
-			if(check_dir == SOUTH || check_dir == EAST)
-				return TRUE
-		if(NORTHWEST)
-			if(check_dir == NORTH || check_dir == WEST)
-				return TRUE
-		if(SOUTHWEST)
-			if(check_dir == SOUTH || check_dir == WEST)
-				return TRUE
-	return FALSE
-
-/obj/structure/railing/do_climb(mob/living/user)
-	var/initial_mob_loc = get_turf(user)
 	. = ..()
-	if(.)
-		currently_climbed = TRUE
-		if(initial_mob_loc != get_turf(src)) // If we are on the railing, we want to move in the same dir as the railing. Otherwise we get put on the railing
-			currently_climbed = FALSE
-			return
-		user.Move(get_step(user, dir), TRUE)
-		currently_climbed = FALSE
-
-/obj/structure/railing/proc/can_be_rotated(mob/user)
-	if(anchored)
-		to_chat(user, "<span class='warning'>[src] cannot be rotated while it is fastened to the floor!</span>")
-		return FALSE
-
-	var/target_dir = turn(dir, -45)
-
-	if(!valid_window_location(loc, target_dir)) //Expanded to include rails, as well!
-		to_chat(user, "<span class='warning'>[src] cannot be rotated in that direction!</span>")
-		return FALSE
+	if(obj_flags & NO_DECONSTRUCTION)
+		return
+	to_chat(user, span_notice("You begin to [anchored ? "unfasten the railing from":"fasten the railing to"] the floor..."))
+	if(I.use_tool(src, user, volume = 75, extra_checks = CALLBACK(src, PROC_REF(check_anchored), anchored)))
+		set_anchored(!anchored)
+		to_chat(user, span_notice("You [anchored ? "fasten the railing to":"unfasten the railing from"] the floor."))
 	return TRUE
+
+/obj/structure/railing/CanPass(atom/movable/mover, border_dir)
+	. = ..()
+	if(border_dir & dir)
+		return . || mover.throwing || (mover.movement_type & MOVETYPES_NOT_TOUCHING_GROUND)
+	return TRUE
+
+/obj/structure/railing/CanAStarPass(to_dir, datum/can_pass_info/pass_info)
+	if(!(to_dir & dir))
+		return TRUE
+	return ..()
+
+/obj/structure/railing/proc/on_exit(datum/source, atom/movable/leaving, direction)
+	SIGNAL_HANDLER
+
+	if(leaving == src)
+		return // Let's not block ourselves.
+
+	if(!(direction & dir))
+		return
+
+	if (!density)
+		return
+
+	if (leaving.throwing)
+		return
+
+	if (leaving.movement_type & (PHASING|MOVETYPES_NOT_TOUCHING_GROUND))
+		return
+
+	if (leaving.move_force >= MOVE_FORCE_EXTREMELY_STRONG)
+		return
+
+	leaving.Bump(src)
+	return COMPONENT_ATOM_BLOCK_EXIT
 
 /obj/structure/railing/proc/check_anchored(checked_anchored)
 	if(anchored == checked_anchored)
 		return TRUE
 
-/obj/structure/railing/proc/after_rotation(mob/user)
-	add_fingerprint(user)
 
-/obj/structure/railing/AltClick(mob/user)
-	if(user.incapacitated())
-		to_chat(user, "<span class='warning'>You can't do that right now!</span>")
-		return
-	if(!Adjacent(user))
-		return
-	if(can_be_rotated(user))
-		setDir(turn(dir, 45))
+/obj/structure/railing/wooden_fence
+	name = "wooden fence"
+	desc = "wooden fence meant to keep animals in."
+	icon = 'icons/obj/structures.dmi'
+	icon_state = "wooden_railing"
+	item_deconstruct = /obj/item/stack/sheet/mineral/wood
+	layer = ABOVE_MOB_LAYER
+
+/obj/structure/railing/wooden_fence/Initialize(mapload)
+	. = ..()
+	RegisterSignal(src, COMSIG_ATOM_DIR_CHANGE, PROC_REF(on_change_layer))
+	adjust_dir_layer(dir)
+
+/obj/structure/railing/wooden_fence/proc/on_change_layer(datum/source, old_dir, new_dir)
+	SIGNAL_HANDLER
+	adjust_dir_layer(new_dir)
+
+/obj/structure/railing/wooden_fence/proc/adjust_dir_layer(direction)
+	var/new_layer = (direction & NORTH) ? MOB_LAYER : ABOVE_MOB_LAYER
+	layer = new_layer
+
+
+/obj/structure/railing/corner/end/wooden_fence
+	icon = 'icons/obj/structures.dmi'
+	icon_state = "wooden_railing_corner"
+
+/obj/structure/railing/corner/end/flip/wooden_fence
+	icon = 'icons/obj/structures.dmi'
+	icon_state = "wooden_railing_corner_flipped"

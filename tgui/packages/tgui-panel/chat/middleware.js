@@ -4,27 +4,27 @@
  * @license MIT
  */
 
-import DOMPurify from 'dompurify';
 import { storage } from 'common/storage';
+import DOMPurify from 'dompurify';
+
 import {
-  loadSettings,
-  updateSettings,
   addHighlightSetting,
+  loadSettings,
   removeHighlightSetting,
   updateHighlightSetting,
+  updateSettings,
 } from '../settings/actions';
 import { selectSettings } from '../settings/selectors';
 import {
   addChatPage,
   changeChatPage,
   changeScrollTracking,
-  clearChat,
   loadChat,
   rebuildChat,
-  toggleAcceptedType,
-  updateMessageCount,
   removeChatPage,
   saveChatToDisk,
+  toggleAcceptedType,
+  updateMessageCount,
 } from './actions';
 import { MAX_PERSISTED_MESSAGES, MESSAGE_SAVE_INTERVAL } from './constants';
 import { createMessage, serializeMessage } from './model';
@@ -38,7 +38,7 @@ const saveChatToStorage = async (store) => {
   const state = selectChat(store.getState());
   const fromIndex = Math.max(
     0,
-    chatRenderer.messages.length - MAX_PERSISTED_MESSAGES
+    chatRenderer.messages.length - MAX_PERSISTED_MESSAGES,
   );
   const messages = chatRenderer.messages
     .slice(fromIndex)
@@ -94,7 +94,9 @@ export const chatMiddleware = (store) => {
   chatRenderer.events.on('scrollTrackingChanged', (scrollTracking) => {
     store.dispatch(changeScrollTracking(scrollTracking));
   });
-  setInterval(() => saveChatToStorage(store), MESSAGE_SAVE_INTERVAL);
+  setInterval(() => {
+    saveChatToStorage(store);
+  }, MESSAGE_SAVE_INTERVAL);
   return (next) => (action) => {
     const { type, payload } = action;
     if (!initialized) {
@@ -130,8 +132,7 @@ export const chatMiddleware = (store) => {
             requesting < sequence;
             requesting++
           ) {
-            // requested_sequences.push(requesting); in origin, but that calls error
-            sequences_requested.push(requesting);
+            requested_sequences.push(requesting);
             Byond.sendMessage('chat/resend', requesting);
           }
         }
@@ -163,6 +164,7 @@ export const chatMiddleware = (store) => {
       chatRenderer.rebuildChat();
       return next(action);
     }
+
     if (
       type === updateSettings.type ||
       type === loadSettings.type ||
@@ -174,7 +176,7 @@ export const chatMiddleware = (store) => {
       const settings = selectSettings(store.getState());
       chatRenderer.setHighlight(
         settings.highlightSettings,
-        settings.highlightSettingById
+        settings.highlightSettingById,
       );
 
       return;
@@ -186,10 +188,6 @@ export const chatMiddleware = (store) => {
     }
     if (type === saveChatToDisk.type) {
       chatRenderer.saveToDisk();
-      return;
-    }
-    if (type === clearChat.type) {
-      chatRenderer.clearChat();
       return;
     }
     return next(action);

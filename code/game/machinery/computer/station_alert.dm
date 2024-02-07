@@ -1,91 +1,45 @@
-
 /obj/machinery/computer/station_alert
 	name = "station alert console"
 	desc = "Used to access the station's automated alert system."
-	icon_keyboard = "tech_key"
 	icon_screen = "alert:0"
+	icon_keyboard = "atmos_key"
+	circuit = /obj/item/circuitboard/computer/stationalert
 	light_color = LIGHT_COLOR_CYAN
-	circuit = /obj/item/circuitboard/stationalert_engineering
-	var/list/alarms_listend_for = list("Fire", "Atmosphere", "Power")
+	/// Station alert datum for showing alerts UI
+	var/datum/station_alert/alert_control
 
 /obj/machinery/computer/station_alert/Initialize(mapload)
+	alert_control = new(src, list(ALARM_ATMOS, ALARM_FIRE, ALARM_POWER), list(z), title = name)
+	RegisterSignals(alert_control.listener, list(COMSIG_ALARM_LISTENER_TRIGGERED, COMSIG_ALARM_LISTENER_CLEARED), PROC_REF(update_alarm_display))
+	return ..()
+
+/obj/machinery/computer/station_alert/Destroy()
+	QDEL_NULL(alert_control)
+	return ..()
+
+/obj/machinery/computer/station_alert/ui_interact(mob/user)
 	. = ..()
-	RegisterSignal(GLOB.alarm_manager, COMSIG_TRIGGERED_ALARM, PROC_REF(alarm_triggered))
-	RegisterSignal(GLOB.alarm_manager, COMSIG_CANCELLED_ALARM, PROC_REF(alarm_cancelled))
+	alert_control.ui_interact(user)
 
-
-/obj/machinery/computer/station_alert/attack_ai(mob/user)
-	add_fingerprint(user)
-	if(stat & (BROKEN|NOPOWER))
-		return
-	ui_interact(user)
-
-/obj/machinery/computer/station_alert/attack_hand(mob/user)
-	add_fingerprint(user)
-	if(stat & (BROKEN|NOPOWER))
-		return
-	ui_interact(user)
-
-/obj/machinery/computer/station_alert/ui_state(mob/user)
-	return GLOB.default_state
-
-/obj/machinery/computer/station_alert/ui_interact(mob/user, datum/tgui/ui = null)
-	ui = SStgui.try_update_ui(user, src, ui)
-	if(!ui)
-		ui = new(user, src, "StationAlertConsole", name)
-		ui.open()
-
-/obj/machinery/computer/station_alert/ui_data(mob/user)
-	var/list/data = list()
-
-	data["alarms"] = list()
-	for(var/class in GLOB.alarm_manager.alarms)
-		if(!(class in alarms_listend_for))
-			continue
-		data["alarms"][class] = list()
-		for(var/area in GLOB.alarm_manager.alarms[class])
-			for(var/thing in GLOB.alarm_manager.alarms[class][area][3])
-				var/atom/A = locateUID(thing)
-				if(atoms_share_level(A, src))
-					data["alarms"][class] += area
-
-	return data
-
-/obj/machinery/computer/station_alert/proc/alarm_triggered(src, class, area/A, list/O, obj/alarmsource)
-	if(!(class in alarms_listend_for))
-		return
-	if(alarmsource.z != z)
-		return
-	if(stat & (BROKEN))
-		return
-	update_icon()
-
-/obj/machinery/computer/station_alert/proc/alarm_cancelled(src, class, area/A, obj/origin, cleared)
-	if(!(class in alarms_listend_for))
-		return
-	if(origin.z != z)
-		return
-	if(stat & (BROKEN))
-		return
-	update_icon()
-
-/obj/machinery/computer/station_alert/update_icon_state()
-	var/active_alarms = FALSE
-	var/list/list/temp_alarm_list = GLOB.alarm_manager.alarms.Copy()
-	for(var/cat in temp_alarm_list)
-		if(!(cat in alarms_listend_for))
-			continue
-		var/list/list/L = temp_alarm_list[cat].Copy()
-		for(var/alarm in L)
-			var/list/list/alm = L[alarm].Copy()
-			var/list/list/sources = alm[3].Copy()
-			for(var/thing in sources)
-				var/atom/A = locateUID(thing)
-				if(A && A.z != z)
-					L -= alarm
-		if(length(L))
-			active_alarms = TRUE
-	if(active_alarms)
-		icon_screen = "alert:2"
+/obj/machinery/computer/station_alert/on_set_machine_stat(old_value)
+	if(machine_stat & BROKEN)
+		alert_control.listener.prevent_alarm_changes()
 	else
-		icon_screen = "alert:0"
+		alert_control.listener.allow_alarm_changes()
+
+/obj/machinery/computer/station_alert/update_overlays()
+	. = ..()
+	if(machine_stat & (NOPOWER|BROKEN))
+		return
+	if(length(alert_control.listener.alarms))
+		. += "alert:2"
+
+/**
+ * Signal handler for calling an icon update in case an alarm is added or cleared
+ *
+ * Arguments:
+ * * source The datum source of the signal
+ */
+/obj/machinery/computer/station_alert/proc/update_alarm_display(datum/source)
+	SIGNAL_HANDLER
+	update_icon()

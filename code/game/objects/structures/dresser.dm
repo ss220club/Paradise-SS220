@@ -1,75 +1,62 @@
 /obj/structure/dresser
 	name = "dresser"
 	desc = "A nicely-crafted wooden dresser. It's filled with lots of undies."
-	icon = 'icons/obj/stationobjs.dmi'
+	icon = 'icons/obj/fluff/general.dmi'
 	icon_state = "dresser"
+	resistance_flags = FLAMMABLE
 	density = TRUE
 	anchored = TRUE
 
-/obj/structure/dresser/attack_hand(mob/user as mob)
+/obj/structure/dresser/attackby(obj/item/I, mob/user, params)
+	if(I.tool_behaviour == TOOL_WRENCH)
+		to_chat(user, span_notice("You begin to [anchored ? "unwrench" : "wrench"] [src]."))
+		if(I.use_tool(src, user, 20, volume=50))
+			to_chat(user, span_notice("You successfully [anchored ? "unwrench" : "wrench"] [src]."))
+			set_anchored(!anchored)
+	else
+		return ..()
+
+/obj/structure/dresser/deconstruct(disassembled = TRUE)
+	if(!(obj_flags & NO_DECONSTRUCTION))
+		new /obj/item/stack/sheet/mineral/wood(drop_location(), 10)
+	qdel(src)
+
+/obj/structure/dresser/attack_hand(mob/user, list/modifiers)
+	. = ..()
+	if(.)
+		return
 	if(!Adjacent(user))//no tele-grooming
 		return
-	if(ishuman(user) && anchored)
-		var/mob/living/carbon/human/H = user
-
-		var/choice = tgui_input_list(user, "Underwear, Undershirt, or Socks?", "Changing", list("Underwear","Undershirt","Socks"))
-
-		if(!Adjacent(user))
-			return
-		switch(choice)
-			if("Underwear")
-				var/list/valid_underwear = list()
-				for(var/underwear in GLOB.underwear_list)
-					var/datum/sprite_accessory/S = GLOB.underwear_list[underwear]
-					if(!(H.dna.species.name in S.species_allowed))
-						continue
-					valid_underwear[underwear] = GLOB.underwear_list[underwear]
-				var/new_underwear = tgui_input_list(user, "Choose your underwear:", "Changing", valid_underwear)
-				if(new_underwear)
-					H.underwear = new_underwear
-
-			if("Undershirt")
-				var/list/valid_undershirts = list()
-				for(var/undershirt in GLOB.undershirt_list)
-					var/datum/sprite_accessory/S = GLOB.undershirt_list[undershirt]
-					if(!(H.dna.species.name in S.species_allowed))
-						continue
-					valid_undershirts[undershirt] = GLOB.undershirt_list[undershirt]
-				var/new_undershirt = tgui_input_list(user, "Choose your undershirt:", "Changing", valid_undershirts)
-				if(new_undershirt)
-					H.undershirt = new_undershirt
-
-			if("Socks")
-				var/list/valid_sockstyles = list()
-				for(var/sockstyle in GLOB.socks_list)
-					var/datum/sprite_accessory/S = GLOB.socks_list[sockstyle]
-					if(!(H.dna.species.name in S.species_allowed))
-						continue
-					valid_sockstyles[sockstyle] = GLOB.socks_list[sockstyle]
-				var/new_socks = tgui_input_list(user, "Choose your socks:", "Changing", valid_sockstyles)
-				if(new_socks)
-					H.socks = new_socks
-
-		add_fingerprint(H)
-		H.update_body()
-
-
-/obj/structure/dresser/crowbar_act(mob/user, obj/item/I)
-	. = TRUE
-	if(!I.use_tool(src, user, 0))
+	if(!ishuman(user))
 		return
-	TOOL_ATTEMPT_DISMANTLE_MESSAGE
-	if(I.use_tool(src, user, 50, volume = I.tool_volume))
-		TOOL_DISMANTLE_SUCCESS_MESSAGE
-		deconstruct(disassembled = TRUE)
+	var/mob/living/carbon/human/dressing_human = user
+	if(HAS_TRAIT(dressing_human, TRAIT_NO_UNDERWEAR))
+		to_chat(dressing_human, span_warning("You are not capable of wearing underwear."))
+		return
 
-/obj/structure/dresser/wrench_act(mob/user, obj/item/I)
-	. = TRUE
-	default_unfasten_wrench(user, I, time = 20)
+	var/choice = tgui_input_list(user, "Underwear, Undershirt, or Socks?", "Changing", list("Underwear","Underwear Color","Undershirt","Socks"))
+	if(isnull(choice))
+		return
 
-/obj/structure/dresser/deconstruct(disassembled = FALSE)
-	var/mat_drop = 15
-	if(disassembled)
-		mat_drop = 30
-	new /obj/item/stack/sheet/wood(drop_location(), mat_drop)
-	..()
+	if(!Adjacent(user))
+		return
+	switch(choice)
+		if("Underwear")
+			var/new_undies = tgui_input_list(user, "Select your underwear", "Changing", GLOB.underwear_list)
+			if(new_undies)
+				dressing_human.underwear = new_undies
+		if("Underwear Color")
+			var/new_underwear_color = input(dressing_human, "Choose your underwear color", "Underwear Color", dressing_human.underwear_color) as color|null
+			if(new_underwear_color)
+				dressing_human.underwear_color = sanitize_hexcolor(new_underwear_color)
+		if("Undershirt")
+			var/new_undershirt = tgui_input_list(user, "Select your undershirt", "Changing", GLOB.undershirt_list)
+			if(new_undershirt)
+				dressing_human.undershirt = new_undershirt
+		if("Socks")
+			var/new_socks = tgui_input_list(user, "Select your socks", "Changing", GLOB.socks_list)
+			if(new_socks)
+				dressing_human.socks = new_socks
+
+	add_fingerprint(dressing_human)
+	dressing_human.update_body()

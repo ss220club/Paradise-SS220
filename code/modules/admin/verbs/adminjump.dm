@@ -1,205 +1,181 @@
-/client/proc/jump_to()
-	set name = "Jump to..."
-	set desc = "Area, Mob, Key or Coordinate"
-	set category = "Admin"
-	var/list/choices = list("Area", "Mob", "Key", "Coordinates")
-
-	if(!check_rights(R_ADMIN))
+/client/proc/jumptoarea(area/A in get_sorted_areas())
+	set name = "Jump to Area"
+	set desc = "Area to jump to"
+	set category = "Admin.Game"
+	if(!src.holder)
+		to_chat(src, "Only administrators may use this command.", confidential = TRUE)
 		return
 
-	var/chosen = input(src, null, "Jump to...") as null|anything in choices
-	if(!chosen)
-		return
-
-	var/jumping // Thing to jump to
-	switch(chosen)
-		if("Area")
-			jumping = input(src, "Area to jump to", "Jump to Area") as null|anything in return_sorted_areas()
-			if(jumping)
-				return jumptoarea(jumping)
-		if("Mob")
-			jumping = input(src, "Mob to jump to", "Jump to Mob") as null|anything in GLOB.mob_list
-			if(jumping)
-				return jumptomob(jumping)
-		if("Key")
-			jumping = input(src, "Key to jump to", "Jump to Key") as null|anything in sortKey(GLOB.clients)
-			if(jumping)
-				return jumptokey(jumping)
-		if("Coordinates")
-			var/x = input(src, "X Coordinate", "Jump to Coordinates") as null|num
-			if(!x)
-				return
-			var/y = input(src, "Y Coordinate", "Jump to Coordinates") as null|num
-			if(!y)
-				return
-			var/z = input(src, "Z Coordinate", "Jump to Coordinates") as null|num
-			if(!z)
-				return
-			return jumptocoord(x, y, z)
-
-
-/client/proc/jumptoarea(area/A)
-	if(!A || !check_rights(R_ADMIN))
+	if(!A)
 		return
 
 	var/list/turfs = list()
-	for(var/turf/T in A)
-		if(T.density)
-			continue
-		if(locate(/obj/structure/grille) in T) // Quick check to not spawn in windows
-			continue
-		turfs += T
+	for (var/list/zlevel_turfs as anything in A.get_zlevel_turf_lists())
+		for (var/turf/area_turf as anything in zlevel_turfs)
+			if(!area_turf.density)
+				turfs.Add(area_turf)
 
-	var/turf/T = safepick(turfs)
-	if(!T)
-		to_chat(src, "Nowhere to jump to!")
+	if(length(turfs))
+		var/turf/T = pick(turfs)
+		usr.forceMove(T)
+		log_admin("[key_name(usr)] jumped to [AREACOORD(T)]")
+		message_admins("[key_name_admin(usr)] jumped to [AREACOORD(T)]")
+		BLACKBOX_LOG_ADMIN_VERB("Jump To Area")
+	else
+		to_chat(src, "Nowhere to jump to!", confidential = TRUE)
 		return
 
-	if(isobj(usr.loc))
-		var/obj/O = usr.loc
-		O.force_eject_occupant(usr)
-
-	admin_forcemove(usr, T)
-	log_admin("[key_name(usr)] jumped to [A]")
-	if(!isobserver(usr))
-		message_admins("[key_name_admin(usr)] jumped to [A]")
-	SSblackbox.record_feedback("tally", "admin_verb", 1, "Jump To Area") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/jumptoturf(turf/T in world)
-	set name = "\[Admin\] Jump to Turf"
-	set category = null
-
-	if(!check_rights(R_ADMIN))
+	set name = "Jump to Turf"
+	set category = "Admin.Game"
+	if(!src.holder)
+		to_chat(src, "Only administrators may use this command.", confidential = TRUE)
 		return
 
-	if(isobj(usr.loc))
-		var/obj/O = usr.loc
-		O.force_eject_occupant(usr)
-	log_admin("[key_name(usr)] jumped to [T.x], [T.y], [T.z] in [T.loc]")
-	if(!isobserver(usr))
-		message_admins("[key_name_admin(usr)] jumped to [T.x], [T.y], [T.z] in [T.loc]", 1)
-	admin_forcemove(usr, T)
-	SSblackbox.record_feedback("tally", "admin_verb", 1, "Jump To Turf") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	log_admin("[key_name(usr)] jumped to [AREACOORD(T)]")
+	message_admins("[key_name_admin(usr)] jumped to [AREACOORD(T)]")
+	usr.forceMove(T)
+	BLACKBOX_LOG_ADMIN_VERB("Jump To Turf")
 	return
 
-/client/proc/jumptomob(mob/M)
+/client/proc/jumptomob(mob/M in GLOB.mob_list)
+	set category = "Admin.Game"
 	set name = "Jump to Mob"
-	if(!M || !check_rights(R_ADMIN))
+
+	if(!src.holder)
+		to_chat(src, "Only administrators may use this command.", confidential = TRUE)
 		return
 
 	log_admin("[key_name(usr)] jumped to [key_name(M)]")
-	if(!isobserver(usr))
-		message_admins("[key_name_admin(usr)] jumped to [key_name_admin(M)]", 1)
-	if(isobj(usr.loc))
-		var/obj/O = usr.loc
-		O.force_eject_occupant(usr)
+	message_admins("[key_name_admin(usr)] jumped to [ADMIN_LOOKUPFLW(M)] at [AREACOORD(M)]")
 	if(src.mob)
 		var/mob/A = src.mob
 		var/turf/T = get_turf(M)
 		if(T && isturf(T))
-			SSblackbox.record_feedback("tally", "admin_verb", 1, "Jump To Mob") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-			admin_forcemove(A, M.loc)
+			BLACKBOX_LOG_ADMIN_VERB("Jump To Mob")
+			A.forceMove(M.loc)
 		else
-			to_chat(A, "This mob is not located in the game world.")
+			to_chat(A, "This mob is not located in the game world.", confidential = TRUE)
 
 /client/proc/jumptocoord(tx as num, ty as num, tz as num)
-	if(!isobserver(usr) && !check_rights(R_ADMIN)) // Only admins can jump without being a ghost
+	set category = "Admin.Game"
+	set name = "Jump to Coordinate"
+
+	if (!holder)
+		to_chat(src, "Only administrators may use this command.", confidential = TRUE)
 		return
 
-	var/turf/T = locate(tx, ty, tz)
-	if(T)
-		if(isobj(usr.loc))
-			var/obj/O = usr.loc
-			O.force_eject_occupant(usr)
-		admin_forcemove(usr, T)
-		if(isobserver(usr))
-			var/mob/dead/observer/O = usr
-			O.ManualFollow(T)
-		SSblackbox.record_feedback("tally", "admin_verb", 1, "Jump To Coordinate") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-	if(!isobserver(usr))
-		message_admins("[key_name_admin(usr)] jumped to coordinates [tx], [ty], [tz]")
+	if(src.mob)
+		var/mob/A = src.mob
+		var/turf/T = locate(tx,ty,tz)
+		A.forceMove(T)
+		BLACKBOX_LOG_ADMIN_VERB("Jump To Coordiate")
+	message_admins("[key_name_admin(usr)] jumped to coordinates [tx], [ty], [tz]")
 
-/client/proc/jumptokey(client/C)
-	if(!C?.mob || !check_rights(R_ADMIN))
-		return
-	var/mob/M = C.mob
-	log_admin("[key_name(usr)] jumped to [key_name(M)]")
-	if(!isobserver(usr))
-		message_admins("[key_name_admin(usr)] jumped to [key_name_admin(M)]", 1)
-	if(isobj(usr.loc))
-		var/obj/O = usr.loc
-		O.force_eject_occupant(usr)
-	admin_forcemove(usr, M.loc)
+/client/proc/jumptokey()
+	set category = "Admin.Game"
+	set name = "Jump to Key"
 
-	SSblackbox.record_feedback("tally", "admin_verb", 1, "Jump To Key") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-/client/proc/Getmob(mob/M in GLOB.mob_list)
-	set category = null
-	set name = "\[Admin\] Get Mob"
-	set desc = "Mob to teleport"
-
-	if(!check_rights(R_ADMIN))
-		return
-
-	log_admin("[key_name(usr)] teleported [key_name(M)]")
-	message_admins("[key_name_admin(usr)] teleported [key_name_admin(M)]", 1)
-
-	if(isobj(M.loc))
-		var/obj/O = M.loc
-		O.force_eject_occupant(M)
-	admin_forcemove(M, get_turf(usr))
-	SSblackbox.record_feedback("tally", "admin_verb", 1, "Get Mob") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-/client/proc/Getkey()
-	set category = null
-	set name = "\[Admin\] Get Key"
-	set desc = "Key to teleport"
-
-	if(!check_rights(R_ADMIN))
+	if(!src.holder)
+		to_chat(src, "Only administrators may use this command.", confidential = TRUE)
 		return
 
 	var/list/keys = list()
 	for(var/mob/M in GLOB.player_list)
 		keys += M.client
-	var/selection = input("Please, select a player!", "Admin Jumping", null, null) as null|anything in sortKey(keys)
+	var/client/selection = input("Please, select a player!", "Admin Jumping", null, null) as null|anything in sort_key(keys)
+	if(!selection)
+		to_chat(src, "No keys found.", confidential = TRUE)
+		return
+	var/mob/M = selection.mob
+	log_admin("[key_name(usr)] jumped to [key_name(M)]")
+	message_admins("[key_name_admin(usr)] jumped to [ADMIN_LOOKUPFLW(M)]")
+
+	usr.forceMove(M.loc)
+
+	BLACKBOX_LOG_ADMIN_VERB("Jump To Key")
+
+/client/proc/Getmob(mob/M in GLOB.mob_list - GLOB.dummy_mob_list)
+	set category = "Admin.Game"
+	set name = "Get Mob"
+	set desc = "Mob to teleport"
+	if(!src.holder)
+		to_chat(src, "Only administrators may use this command.", confidential = TRUE)
+		return
+
+	var/atom/loc = get_turf(usr)
+	M.admin_teleport(loc)
+	BLACKBOX_LOG_ADMIN_VERB("Get Mob")
+
+
+/// Proc to hook user-enacted teleporting behavior and keep logging of the event.
+/atom/movable/proc/admin_teleport(atom/new_location)
+	if(isnull(new_location))
+		log_admin("[key_name(usr)] teleported [key_name(src)] to nullspace")
+		moveToNullspace()
+	else
+		var/turf/location = get_turf(new_location)
+		log_admin("[key_name(usr)] teleported [key_name(src)] to [AREACOORD(location)]")
+		forceMove(new_location)
+
+/mob/admin_teleport(atom/new_location)
+	var/turf/location = get_turf(new_location)
+	var/msg = "[key_name_admin(usr)] teleported [ADMIN_LOOKUPFLW(src)] to [isnull(new_location) ? "nullspace" : ADMIN_VERBOSEJMP(location)]"
+	message_admins(msg)
+	admin_ticket_log(src, msg)
+	return ..()
+
+
+/client/proc/Getkey()
+	set category = "Admin.Game"
+	set name = "Get Key"
+	set desc = "Key to teleport"
+
+	if(!src.holder)
+		to_chat(src, "Only administrators may use this command.", confidential = TRUE)
+		return
+
+	var/list/keys = list()
+	for(var/mob/M in GLOB.player_list)
+		keys += M.client
+	var/client/selection = input("Please, select a player!", "Admin Jumping", null, null) as null|anything in sort_key(keys)
 	if(!selection)
 		return
-	var/mob/M = selection:mob
+	var/mob/M = selection.mob
 
 	if(!M)
 		return
 	log_admin("[key_name(usr)] teleported [key_name(M)]")
-	message_admins("[key_name_admin(usr)] teleported [key_name(M)]", 1)
+	var/msg = "[key_name_admin(usr)] teleported [ADMIN_LOOKUPFLW(M)]"
+	message_admins(msg)
+	admin_ticket_log(M, msg)
 	if(M)
-		if(isobj(M.loc))
-			var/obj/O = M.loc
-			O.force_eject_occupant(M)
-		admin_forcemove(M, get_turf(usr))
-		admin_forcemove(usr, M.loc)
-		SSblackbox.record_feedback("tally", "admin_verb", 1, "Get Key") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+		M.forceMove(get_turf(usr))
+		usr.forceMove(M.loc)
+		BLACKBOX_LOG_ADMIN_VERB("Get Key")
 
-/client/proc/sendmob(mob/M in GLOB.mob_list)
-	set category = "Admin"
+/client/proc/sendmob(mob/jumper in sort_mobs())
+	set category = "Admin.Game"
 	set name = "Send Mob"
-
-	if(!check_rights(R_ADMIN))
+	if(!src.holder)
+		to_chat(src, "Only administrators may use this command.", confidential = TRUE)
 		return
-
-	var/area/A = input(usr, "Pick an area.", "Pick an area") as null|anything in return_sorted_areas()
-	if(!A)
+	var/list/sorted_areas = get_sorted_areas()
+	if(!length(sorted_areas))
+		to_chat(src, "No areas found.", confidential = TRUE)
 		return
-
-	if(isobj(M.loc))
-		var/obj/O = M.loc
-		O.force_eject_occupant(M)
-	admin_forcemove(M, pick(get_area_turfs(A)))
-	SSblackbox.record_feedback("tally", "admin_verb", 1, "Send Mob") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-	log_admin("[key_name(usr)] teleported [key_name(M)] to [A]")
-	message_admins("[key_name_admin(usr)] teleported [key_name_admin(M)] to [A]", 1)
-
-/proc/admin_forcemove(mob/mover, atom/newloc)
-	mover.forceMove(newloc)
-	mover.on_forcemove(newloc)
-
-/mob/proc/on_forcemove(atom/newloc)
-	return
+	var/area/target_area = tgui_input_list(src, "Pick an area", "Send Mob", sorted_areas)
+	if(isnull(target_area))
+		return
+	if(!istype(target_area))
+		return
+	var/list/turfs = get_area_turfs(target_area)
+	if(length(turfs) && jumper.forceMove(pick(turfs)))
+		log_admin("[key_name(usr)] teleported [key_name(jumper)] to [AREACOORD(jumper)]")
+		var/msg = "[key_name_admin(usr)] teleported [ADMIN_LOOKUPFLW(jumper)] to [AREACOORD(jumper)]"
+		message_admins(msg)
+		admin_ticket_log(jumper, msg)
+	else
+		to_chat(src, "Failed to move mob to a valid location.", confidential = TRUE)
+	BLACKBOX_LOG_ADMIN_VERB("Send Mob")

@@ -1,25 +1,23 @@
 /datum/action/changeling/digitalcamo
 	name = "Digital Camouflage"
 	desc = "By evolving the ability to distort our form and proportions, we defeat common algorithms used to detect lifeforms on cameras."
-	helptext = "We cannot be tracked by camera while using this skill."
+	helptext = "We cannot be tracked by camera or seen by AI units while using this skill. However, humans looking at us will find us... uncanny."
 	button_icon_state = "digital_camo"
-	dna_cost = 2
-	power_type = CHANGELING_PURCHASABLE_POWER
-	category = /datum/changeling_power_category/utility
+	dna_cost = 1
+	active = FALSE
 
-/datum/action/changeling/digitalcamo/Remove(mob/M)
-	REMOVE_TRAIT(M, TRAIT_AI_UNTRACKABLE, CHANGELING_TRAIT)
-	..()
-
-//Prevents AIs tracking you.
+//Prevents AIs tracking you but makes you easily detectable to the human-eye.
 /datum/action/changeling/digitalcamo/sting_action(mob/user)
-	if(HAS_TRAIT_FROM(user, TRAIT_AI_UNTRACKABLE, CHANGELING_TRAIT))
-		REMOVE_TRAIT(user, TRAIT_AI_UNTRACKABLE, CHANGELING_TRAIT)
-		user.set_invisible(INVISIBILITY_MINIMUM)
-		to_chat(user, "<span class='notice'>We return to normal.</span>")
+	..()
+	if(active)
+		to_chat(user, span_notice("We return to normal."))
+		user.RemoveElement(/datum/element/digitalcamo)
 	else
-		ADD_TRAIT(user, TRAIT_AI_UNTRACKABLE, CHANGELING_TRAIT)
-		to_chat(user, "<span class='notice'>We distort our form to prevent AI-tracking.</span>")
-		user.set_invisible(SEE_INVISIBLE_LIVING)
-	SSblackbox.record_feedback("nested tally", "changeling_powers", 1, list("[name]"))
+		to_chat(user, span_notice("We distort our form to hide from the AI."))
+		user.AddElement(/datum/element/digitalcamo)
+	active = !active
 	return TRUE
+
+/datum/action/changeling/digitalcamo/Remove(mob/user)
+	user.RemoveElement(/datum/element/digitalcamo)
+	..()

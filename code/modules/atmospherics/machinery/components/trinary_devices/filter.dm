@@ -1,240 +1,359 @@
+/obj/machinery/atmospherics/components/trinary/filter
+	icon_state = "filter_off-0"
+	density = FALSE
 
-/// Nothing will be filtered.
-#define FILTER_NOTHING -1
-/// Plasma, and Oxygen Agent B.
-#define FILTER_TOXINS 0
-/// Oxygen only.
-#define FILTER_OXYGEN 1
-/// Nitrogen only.
-#define FILTER_NITROGEN 2
-/// Carbon dioxide only.
-#define FILTER_CO2 3
-/// Nitrous oxide only.
-#define FILTER_N2O 4
-
-/obj/machinery/atmospherics/trinary/filter
 	name = "gas filter"
-	icon = 'icons/atmos/filter.dmi'
-	icon_state = "map"
+	desc = "Very useful for filtering gasses."
+
 	can_unwrench = TRUE
+	construction_type = /obj/item/pipe/trinary/flippable
+	pipe_state = "filter"
 
-	target_pressure = ONE_ATMOSPHERE
-	/// The type of gas we want to filter. Valid values that go here are from the `FILTER` defines at the top of the file.
-	var/filter_type = FILTER_TOXINS
-	/// A list of available filter options. Used with `ui_data`.
-	var/list/filter_list = list(
-		"Nothing" = FILTER_NOTHING,
-		"Plasma" = FILTER_TOXINS,
-		"O2" = FILTER_OXYGEN,
-		"N2" = FILTER_NITROGEN,
-		"CO2" = FILTER_CO2,
-		"N2O" = FILTER_N2O
-	)
+	///Rate of transfer of the gases to the outputs
+	var/transfer_rate = MAX_TRANSFER_RATE
+	///What gases are we filtering, by typepath
+	var/list/filter_type = list()
 
-// So we can CtrlClick without triggering the anchored message.
-/obj/machinery/atmospherics/trinary/filter/can_be_pulled(user, grab_state, force, show_message)
-	return FALSE
+/obj/machinery/atmospherics/components/trinary/filter/Initialize(mapload)
+	. = ..()
+	register_context()
 
-/obj/machinery/atmospherics/trinary/filter/CtrlClick(mob/living/user)
-	if(can_use_shortcut(user))
-		toggle(user)
-		investigate_log("was turned [on ? "on" : "off"] by [key_name(user)]", "atmos")
+/obj/machinery/atmospherics/components/trinary/filter/add_context(atom/source, list/context, obj/item/held_item, mob/user)
+	. = ..()
+	context[SCREENTIP_CONTEXT_CTRL_LMB] = "Turn [on ? "off" : "on"]"
+	context[SCREENTIP_CONTEXT_ALT_LMB] = "Maximize transfer rate"
+	return CONTEXTUAL_SCREENTIP_SET
+
+/obj/machinery/atmospherics/components/trinary/filter/CtrlClick(mob/user)
+	if(can_interact(user))
+		on = !on
+		balloon_alert(user, "turned [on ? "on" : "off"]")
+		investigate_log("was turned [on ? "on" : "off"] by [key_name(user)]", INVESTIGATE_ATMOS)
+		update_appearance()
 	return ..()
 
-/obj/machinery/atmospherics/trinary/filter/AICtrlClick(mob/living/silicon/user)
-	toggle(user)
-	investigate_log("was turned [on ? "on" : "off"] by [key_name(user)]", "atmos")
+/obj/machinery/atmospherics/components/trinary/filter/AltClick(mob/user)
+	if(can_interact(user))
+		transfer_rate = MAX_TRANSFER_RATE
+		investigate_log("was set to [transfer_rate] L/s by [key_name(user)]", INVESTIGATE_ATMOS)
+		balloon_alert(user, "volume output set to [transfer_rate] L/s")
+		update_appearance()
+	return ..()
 
-/obj/machinery/atmospherics/trinary/filter/AltClick(mob/living/user)
-	if(can_use_shortcut(user))
-		set_max(user)
-		investigate_log("was set to [target_pressure] kPa by [key_name(user)]", "atmos")
+/obj/machinery/atmospherics/components/trinary/filter/update_overlays()
+	. = ..()
+	for(var/direction in GLOB.cardinals)
+		if(!(direction & initialize_directions))
+			continue
 
-/obj/machinery/atmospherics/trinary/filter/AIAltClick(mob/living/silicon/user)
-	set_max(user)
-	investigate_log("was set to [target_pressure] kPa by [key_name(user)]", "atmos")
+		. += get_pipe_image(icon, "cap", direction, pipe_color, piping_layer, TRUE)
 
-/obj/machinery/atmospherics/trinary/filter/flipped
-	icon_state = "mmap"
-	flipped = TRUE
+/obj/machinery/atmospherics/components/trinary/filter/update_icon_nopipes()
+	var/on_state = on && nodes[1] && nodes[2] && nodes[3] && is_operational
+	icon_state = "filter_[on_state ? "on" : "off"]-[set_overlay_offset(piping_layer)][flipped ? "_f" : ""]"
 
-/obj/machinery/atmospherics/trinary/filter/update_icon_state()
-	if(flipped)
-		icon_state = "m"
-	else
-		icon_state = ""
-
-	if(!has_power())
-		icon_state += "off"
-	else if(node2 && node3 && node1)
-		icon_state += on ? "on" : "off"
-	else
-		icon_state += "off"
-		on = FALSE
-
-/obj/machinery/atmospherics/trinary/filter/update_underlays()
-	if(..())
-		underlays.Cut()
-		var/turf/T = get_turf(src)
-		if(!istype(T))
-			return
-
-		add_underlay(T, node1, turn(dir, -180))
-
-		if(flipped)
-			add_underlay(T, node2, turn(dir, 90))
-		else
-			add_underlay(T, node2, turn(dir, -90))
-
-		add_underlay(T, node3, dir)
-
-/obj/machinery/atmospherics/trinary/filter/power_change()
-	if(!..())
-		return
-	update_icon()
-
-/obj/machinery/atmospherics/trinary/filter/process_atmos()
+/obj/machinery/atmospherics/components/trinary/filter/process_atmos()
 	..()
-	if(!on)
-		return 0
+	if(!on || !(nodes[1] && nodes[2] && nodes[3]) || !is_operational)
+		return
 
-	var/output_starting_pressure = air3.return_pressure()
+	//Early return
+	var/datum/gas_mixture/air1 = airs[1]
+	if(!air1 || air1.temperature <= 0)
+		return
 
-	if(output_starting_pressure >= target_pressure || air2.return_pressure() >= target_pressure)
-		//No need to mix if target is already full!
-		return 1
+	var/datum/gas_mixture/air2 = airs[2]
+	var/datum/gas_mixture/air3 = airs[3]
 
-	//Calculate necessary moles to transfer using PV=nRT
+	var/transfer_ratio = transfer_rate / air1.volume
 
-	var/pressure_delta = target_pressure - output_starting_pressure
-	var/transfer_moles
+	if(transfer_ratio <= 0)
+		return
 
-	if(air1.temperature > 0)
-		transfer_moles = pressure_delta*air3.volume/(air1.temperature * R_IDEAL_GAS_EQUATION)
+	// Attempt to transfer the gas.
 
-	//Actually transfer the gas
+	// If the main output is full, we try to send filtered output to the side port (air2).
+	// If the side output is full, we try to send the non-filtered gases to the main output port (air3).
+	// Any gas that can't be moved due to its destination being too full is sent back to the input (air1).
 
-	if(transfer_moles > 0)
-		var/datum/gas_mixture/removed = air1.remove(transfer_moles)
+	var/side_output_full = air2.return_pressure() >= MAX_OUTPUT_PRESSURE
+	var/main_output_full = air3.return_pressure() >= MAX_OUTPUT_PRESSURE
 
-		if(!removed)
-			return
+	// If both output ports are full, there's nothing we can do. Don't bother removing anything from the input.
+	if (side_output_full && main_output_full)
+		return
+
+	var/datum/gas_mixture/removed = air1.remove_ratio(transfer_ratio)
+
+	if(!removed || !removed.total_moles())
+		return
+
+	var/filtering = TRUE
+	if(!filter_type.len)
+		filtering = FALSE
+
+	// Process if we have a filter set.
+	// If no filter is set, we just try to forward everything to air3 to avoid gas being outright lost.
+	if(filtering)
 		var/datum/gas_mixture/filtered_out = new
-		filtered_out.temperature = removed.temperature
 
-		switch(filter_type)
-			if(FILTER_TOXINS)
-				filtered_out.toxins = removed.toxins
-				removed.toxins = 0
+		for(var/gas in removed.gases & filter_type)
+			var/datum/gas_mixture/removing = removed.remove_specific_ratio(gas, 1)
+			if(removing)
+				filtered_out.merge(removing)
+		// Send things to the side output if we can, return them to the input if we can't.
+		// This means that other gases continue to flow to the main output if the side output is blocked.
+		if (side_output_full)
+			air1.merge(filtered_out)
+		else
+			air2.merge(filtered_out)
+		// Make sure we don't send any now-empty gas entries to the main output
+		removed.garbage_collect()
 
-				filtered_out.agent_b = removed.agent_b
-				removed.agent_b = 0
-
-			if(FILTER_OXYGEN)
-				filtered_out.oxygen = removed.oxygen
-				removed.oxygen = 0
-
-			if(FILTER_NITROGEN)
-				filtered_out.nitrogen = removed.nitrogen
-				removed.nitrogen = 0
-
-			if(FILTER_CO2)
-				filtered_out.carbon_dioxide = removed.carbon_dioxide
-				removed.carbon_dioxide = 0
-
-			if(FILTER_N2O)
-				filtered_out.sleeping_agent = removed.sleeping_agent
-				removed.sleeping_agent = 0
-			else
-				filtered_out = null
-
-
-		air2.merge(filtered_out)
+	// Send things to the main output if we can, return them to the input if we can't.
+	// This lets filtered gases continue to flow to the side output in a manner consistent with the main output behavior.
+	if (main_output_full)
+		air1.merge(removed)
+	else
 		air3.merge(removed)
 
-	parent2.update = 1
+	update_parents()
 
-	parent3.update = 1
-
-	parent1.update = 1
-
-	return 1
-
-/obj/machinery/atmospherics/trinary/filter/attack_ghost(mob/user)
-	ui_interact(user)
-
-/obj/machinery/atmospherics/trinary/filter/attack_hand(mob/user)
-	if(..())
-		return
-
-	if(!allowed(user))
-		to_chat(user, "<span class='alert'>Access denied.</span>")
-		return
-
-	add_fingerprint(user)
-	ui_interact(user)
-
-/obj/machinery/atmospherics/trinary/filter/ui_state(mob/user)
-	return GLOB.default_state
-
-/obj/machinery/atmospherics/trinary/filter/ui_interact(mob/user, datum/tgui/ui = null)
+/obj/machinery/atmospherics/components/trinary/filter/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "AtmosFilter", name)
 		ui.open()
 
-/obj/machinery/atmospherics/trinary/filter/ui_data(mob/user)
-	var/list/data = list(
-		"on" = on,
-		"pressure" = round(target_pressure),
-		"max_pressure" = round(MAX_OUTPUT_PRESSURE),
-		"filter_type" = filter_type
-	)
-	data["filter_type_list"] = list()
-	for(var/label in filter_list)
-		data["filter_type_list"] += list(list("label" = label, "gas_type" = filter_list[label]))
+/obj/machinery/atmospherics/components/trinary/filter/ui_data()
+	var/data = list()
+	data["on"] = on
+	data["rate"] = round(transfer_rate)
+	data["max_rate"] = round(MAX_TRANSFER_RATE)
+
+	data["filter_types"] = list()
+	for(var/path in GLOB.meta_gas_info)
+		var/list/gas = GLOB.meta_gas_info[path]
+		data["filter_types"] += list(list("gas_id" = gas[META_GAS_ID], "enabled" = (path in filter_type)))
 
 	return data
 
-/obj/machinery/atmospherics/trinary/filter/ui_act(action, list/params)
-	if(..())
+/obj/machinery/atmospherics/components/trinary/filter/ui_act(action, params)
+	. = ..()
+	if(.)
 		return
-
 	switch(action)
 		if("power")
-			toggle()
-			investigate_log("was turned [on ? "on" : "off"] by [key_name(usr)]", "atmos")
-			return TRUE
-
-		if("set_filter")
-			filter_type = text2num(params["filter"])
-			investigate_log("was set to filter [filter_type] by [key_name(usr)]", "atmos")
-			return TRUE
-
-		if("max_pressure")
-			target_pressure = MAX_OUTPUT_PRESSURE
+			on = !on
+			investigate_log("was turned [on ? "on" : "off"] by [key_name(usr)]", INVESTIGATE_ATMOS)
 			. = TRUE
-
-		if("min_pressure")
-			target_pressure = 0
+		if("rate")
+			var/rate = params["rate"]
+			if(rate == "max")
+				rate = MAX_TRANSFER_RATE
+				. = TRUE
+			else if(text2num(rate) != null)
+				rate = text2num(rate)
+				. = TRUE
+			if(.)
+				transfer_rate = clamp(rate, 0, MAX_TRANSFER_RATE)
+				investigate_log("was set to [transfer_rate] L/s by [key_name(usr)]", INVESTIGATE_ATMOS)
+		if("toggle_filter")
+			if(!gas_id2path(params["val"]))
+				return TRUE
+			filter_type ^= gas_id2path(params["val"])
+			var/change
+			if(gas_id2path(params["val"]) in filter_type)
+				change = "added"
+			else
+				change = "removed"
+			var/gas_name = GLOB.meta_gas_info[gas_id2path(params["val"])][META_GAS_NAME]
+			usr.investigate_log("[change] [gas_name] from the filter type.", INVESTIGATE_ATMOS)
 			. = TRUE
+	update_appearance()
 
-		if("custom_pressure")
-			target_pressure = clamp(text2num(params["pressure"]), 0, MAX_OUTPUT_PRESSURE)
-			. = TRUE
-	if(.)
-		investigate_log("was set to [target_pressure] kPa by [key_name(usr)]", "atmos")
+/obj/machinery/atmospherics/components/trinary/filter/can_unwrench(mob/user)
+	. = ..()
+	if(. && on && is_operational)
+		balloon_alert(user, "turn off!")
+		return FALSE
 
-/obj/machinery/atmospherics/trinary/filter/attackby(obj/item/W, mob/user, params)
-	if(is_pen(W))
-		rename_interactive(user, W)
-		return
-	else
-		return ..()
+// mapping
 
-#undef FILTER_NOTHING
-#undef FILTER_TOXINS
-#undef FILTER_OXYGEN
-#undef FILTER_NITROGEN
-#undef FILTER_CO2
-#undef FILTER_N2O
+/obj/machinery/atmospherics/components/trinary/filter/layer2
+	piping_layer = 2
+	icon_state = "filter_off_map-2"
+/obj/machinery/atmospherics/components/trinary/filter/layer4
+	piping_layer = 4
+	icon_state = "filter_off_map-4"
+
+/obj/machinery/atmospherics/components/trinary/filter/on
+	on = TRUE
+	icon_state = "filter_on-0"
+
+/obj/machinery/atmospherics/components/trinary/filter/on/layer2
+	piping_layer = 2
+	icon_state = "filter_on_map-2"
+/obj/machinery/atmospherics/components/trinary/filter/on/layer4
+	piping_layer = 4
+	icon_state = "filter_on_map-4"
+
+/obj/machinery/atmospherics/components/trinary/filter/flipped
+	icon_state = "filter_off-0_f"
+	flipped = TRUE
+
+/obj/machinery/atmospherics/components/trinary/filter/flipped/layer2
+	piping_layer = 2
+	icon_state = "filter_off_f_map-2"
+/obj/machinery/atmospherics/components/trinary/filter/flipped/layer4
+	piping_layer = 4
+	icon_state = "filter_off_f_map-4"
+
+/obj/machinery/atmospherics/components/trinary/filter/flipped/on
+	on = TRUE
+	icon_state = "filter_on-0_f"
+
+/obj/machinery/atmospherics/components/trinary/filter/flipped/on/layer2
+	piping_layer = 2
+	icon_state = "filter_on_f_map-2"
+/obj/machinery/atmospherics/components/trinary/filter/flipped/on/layer4
+	piping_layer = 4
+	icon_state = "filter_on_f_map-4"
+
+/obj/machinery/atmospherics/components/trinary/filter/atmos //Used for atmos waste loops
+	on = TRUE
+	icon_state = "filter_on-0"
+/obj/machinery/atmospherics/components/trinary/filter/atmos/n2
+	name = "nitrogen filter"
+	filter_type = list(/datum/gas/nitrogen)
+/obj/machinery/atmospherics/components/trinary/filter/atmos/o2
+	name = "oxygen filter"
+	filter_type = list(/datum/gas/oxygen)
+/obj/machinery/atmospherics/components/trinary/filter/atmos/co2
+	name = "carbon dioxide filter"
+	filter_type = list(/datum/gas/carbon_dioxide)
+/obj/machinery/atmospherics/components/trinary/filter/atmos/n2o
+	name = "nitrous oxide filter"
+	filter_type = list(/datum/gas/nitrous_oxide)
+/obj/machinery/atmospherics/components/trinary/filter/atmos/plasma
+	name = "plasma filter"
+	filter_type = list(/datum/gas/plasma)
+/obj/machinery/atmospherics/components/trinary/filter/atmos/bz
+	name = "bz filter"
+	filter_type = list(/datum/gas/bz)
+/obj/machinery/atmospherics/components/trinary/filter/atmos/freon
+	name = "freon filter"
+	filter_type = list(/datum/gas/freon)
+/obj/machinery/atmospherics/components/trinary/filter/atmos/halon
+	name = "halon filter"
+	filter_type = list(/datum/gas/halon)
+/obj/machinery/atmospherics/components/trinary/filter/atmos/healium
+	name = "healium filter"
+	filter_type = list(/datum/gas/healium)
+/obj/machinery/atmospherics/components/trinary/filter/atmos/h2
+	name = "hydrogen filter"
+	filter_type = list(/datum/gas/hydrogen)
+/obj/machinery/atmospherics/components/trinary/filter/atmos/hypernoblium
+	name = "hypernoblium filter"
+	filter_type = list(/datum/gas/hypernoblium)
+/obj/machinery/atmospherics/components/trinary/filter/atmos/miasma
+	name = "miasma filter"
+	filter_type = list(/datum/gas/miasma)
+/obj/machinery/atmospherics/components/trinary/filter/atmos/no2
+	name = "nitrium filter"
+	filter_type = list(/datum/gas/nitrium)
+/obj/machinery/atmospherics/components/trinary/filter/atmos/pluoxium
+	name = "pluoxium filter"
+	filter_type = list(/datum/gas/pluoxium)
+/obj/machinery/atmospherics/components/trinary/filter/atmos/proto_nitrate
+	name = "proto-nitrate filter"
+	filter_type = list(/datum/gas/proto_nitrate)
+/obj/machinery/atmospherics/components/trinary/filter/atmos/tritium
+	name = "tritium filter"
+	filter_type = list(/datum/gas/tritium)
+/obj/machinery/atmospherics/components/trinary/filter/atmos/h2o
+	name = "water vapor filter"
+	filter_type = list(/datum/gas/water_vapor)
+/obj/machinery/atmospherics/components/trinary/filter/atmos/zauker
+	name = "zauker filter"
+	filter_type = list(/datum/gas/zauker)
+
+/obj/machinery/atmospherics/components/trinary/filter/atmos/helium
+	name = "helium filter"
+	filter_type = list(/datum/gas/helium)
+
+/obj/machinery/atmospherics/components/trinary/filter/atmos/antinoblium
+	name = "antinoblium filter"
+	filter_type = list(/datum/gas/antinoblium)
+
+/obj/machinery/atmospherics/components/trinary/filter/atmos/flipped //This feels wrong, I know
+	icon_state = "filter_on-0_f"
+	flipped = TRUE
+/obj/machinery/atmospherics/components/trinary/filter/atmos/flipped/n2
+	name = "nitrogen filter"
+	filter_type = list(/datum/gas/nitrogen)
+/obj/machinery/atmospherics/components/trinary/filter/atmos/flipped/o2
+	name = "oxygen filter"
+	filter_type = list(/datum/gas/oxygen)
+/obj/machinery/atmospherics/components/trinary/filter/atmos/flipped/co2
+	name = "carbon dioxide filter"
+	filter_type = list(/datum/gas/carbon_dioxide)
+/obj/machinery/atmospherics/components/trinary/filter/atmos/flipped/n2o
+	name = "nitrous oxide filter"
+	filter_type = list(/datum/gas/nitrous_oxide)
+/obj/machinery/atmospherics/components/trinary/filter/atmos/flipped/plasma
+	name = "plasma filter"
+	filter_type = list(/datum/gas/plasma)
+/obj/machinery/atmospherics/components/trinary/filter/atmos/flipped/bz
+	name = "bz filter"
+	filter_type = list(/datum/gas/bz)
+/obj/machinery/atmospherics/components/trinary/filter/atmos/flipped/freon
+	name = "freon filter"
+	filter_type = list(/datum/gas/freon)
+/obj/machinery/atmospherics/components/trinary/filter/atmos/flipped/halon
+	name = "halon filter"
+	filter_type = list(/datum/gas/halon)
+/obj/machinery/atmospherics/components/trinary/filter/atmos/flipped/healium
+	name = "healium filter"
+	filter_type = list(/datum/gas/healium)
+/obj/machinery/atmospherics/components/trinary/filter/atmos/flipped/h2
+	name = "hydrogen filter"
+	filter_type = list(/datum/gas/hydrogen)
+/obj/machinery/atmospherics/components/trinary/filter/atmos/flipped/hypernoblium
+	name = "hypernoblium filter"
+	filter_type = list(/datum/gas/hypernoblium)
+/obj/machinery/atmospherics/components/trinary/filter/atmos/flipped/miasma
+	name = "miasma filter"
+	filter_type = list(/datum/gas/miasma)
+/obj/machinery/atmospherics/components/trinary/filter/atmos/flipped/no2
+	name = "nitrium filter"
+	filter_type = list(/datum/gas/nitrium)
+/obj/machinery/atmospherics/components/trinary/filter/atmos/flipped/pluoxium
+	name = "pluoxium filter"
+	filter_type = list(/datum/gas/pluoxium)
+/obj/machinery/atmospherics/components/trinary/filter/atmos/flipped/proto_nitrate
+	name = "proto-nitrate filter"
+	filter_type = list(/datum/gas/proto_nitrate)
+/obj/machinery/atmospherics/components/trinary/filter/atmos/flipped/tritium
+	name = "tritium filter"
+	filter_type = list(/datum/gas/tritium)
+/obj/machinery/atmospherics/components/trinary/filter/atmos/flipped/h2o
+	name = "water vapor filter"
+	filter_type = list(/datum/gas/water_vapor)
+/obj/machinery/atmospherics/components/trinary/filter/atmos/flipped/zauker
+	name = "zauker filter"
+	filter_type = list(/datum/gas/zauker)
+/obj/machinery/atmospherics/components/trinary/filter/atmos/flipped/helium
+	name = "helium filter"
+	filter_type = list(/datum/gas/helium)
+/obj/machinery/atmospherics/components/trinary/filter/atmos/flipped/antinoblium
+	name = "antinoblium filter"
+	filter_type = list(/datum/gas/antinoblium)
+
+// These two filter types have critical_machine flagged to on and thus causes the area they are in to be exempt from the Grid Check event.
+
+/obj/machinery/atmospherics/components/trinary/filter/critical
+	critical_machine = TRUE
+
+/obj/machinery/atmospherics/components/trinary/filter/flipped/critical
+	critical_machine = TRUE

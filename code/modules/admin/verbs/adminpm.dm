@@ -1,431 +1,796 @@
-//allows right clicking mobs to send an admin PM to their client, forwards the selected mob's client to cmd_admin_pm
-/client/proc/cmd_admin_pm_context(mob/M as mob in GLOB.mob_list)
+#define EXTERNALREPLYCOUNT 2
+#define EXTERNAL_PM_USER "IRCKEY"
+
+// HEY FUCKO, IMPORTANT NOTE!
+// This file, and pretty much everything that directly handles ahelps, is VERY important
+// An admin pm dropping by coding error is disastorus, because it gives no feedback to admins, so they think they're being ignored
+// It is imparitive that this does not happen. Therefore, runtimes are not allowed in this file
+// Additionally, any runtimes here would cause admin tickets to leak into the runtime logs
+// This is less of a big deal, but still bad
+//
+// In service of this goal of NO RUNTIMES then, we make ABSOLUTELY sure to never trust the nullness of a value
+// That's why variables are so separated from logic here. It's not a good pattern typically, but it helps make assumptions clear here
+// We also make SURE to fail loud, IE: if something stops the message from reaching the recipient, the sender HAS to know
+// If you "refactor" this to make it "cleaner" I will send you to hell
+
+/// Allows right clicking mobs to send an admin PM to their client, forwards the selected mob's client to cmd_admin_pm
+/client/proc/cmd_admin_pm_context(mob/M in GLOB.mob_list)
 	set category = null
-	set name = "\[Admin\] Admin PM Mob"
-	if(!check_rights(R_ADMIN|R_MENTOR))
+	set name = "Admin PM Mob"
+	if(!holder)
+		to_chat(src,
+			type = MESSAGE_TYPE_ADMINPM,
+			html = span_danger("Error: Admin-PM-Context: Only administrators may use this command."),
+			confidential = TRUE)
 		return
-	if(!ismob(M) || !M.client)
+	if(!ismob(M))
+		to_chat(src,
+			type = MESSAGE_TYPE_ADMINPM,
+			html = span_danger("Error: Admin-PM-Context: Target mob is not a mob, somehow."),
+			confidential = TRUE)
 		return
-	cmd_admin_pm(M.client,null)
-	SSblackbox.record_feedback("tally", "admin_verb", 1, "Admin PM Mob") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	cmd_admin_pm(M.client, null)
+	BLACKBOX_LOG_ADMIN_VERB("Admin PM Mob")
 
-
-//shows a list of clients we could send PMs to, then forwards our choice to cmd_admin_pm
+/// Shows a list of clients we could send PMs to, then forwards our choice to cmd_admin_pm
 /client/proc/cmd_admin_pm_panel()
 	set category = "Admin"
-	set name = "Admin PM Name"
-	if(!check_rights(R_ADMIN|R_MENTOR))
+	set name = "Admin PM"
+	if(!holder)
+		to_chat(src,
+			type = MESSAGE_TYPE_ADMINPM,
+			html = span_danger("Error: Admin-PM-Panel: Only administrators may use this command."),
+			confidential = TRUE)
 		return
-	var/list/client/targets[0]
-	for(var/client/T)
-		if(T.mob)
-			if(isnewplayer(T.mob))
-				targets["(New Player) - [T]"] = T
-			else if(isobserver(T.mob))
-				targets["[T.mob.name](Ghost) - [T]"] = T
-			else
-				targets["[T.mob.real_name](as [T.mob.name]) - [T]"] = T
-		else
-			targets["(No Mob) - [T]"] = T
-	var/list/sorted = sortList(targets)
-	var/target = input(src,"To whom shall we send a message?","Admin PM",null) as null|anything in sorted|null
-	if(!target)
-		return
-	cmd_admin_pm(targets[target],null)
-	SSblackbox.record_feedback("tally", "admin_verb", 1, "Admin PM Name") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-//shows a list of clients we could send PMs to, then forwards our choice to cmd_admin_pm
-/client/proc/cmd_admin_pm_by_key_panel()
-	set category = "Admin"
-	set name = "Admin PM Key"
-	if(!check_rights(R_ADMIN|R_MENTOR))
-		return
-	var/list/client/targets[0]
-	for(var/client/T)
-		if(T.mob)
-			if(isnewplayer(T.mob))
-				targets["[T] - (New Player)"] = T
-			else if(isobserver(T.mob))
-				targets["[T] - [T.mob.name](Ghost)"] = T
-			else
-				targets["[T] - [T.mob.real_name](as [T.mob.name])"] = T
+	var/list/targets = list()
+	for(var/client/client in GLOB.clients)
+		var/nametag = ""
+		var/mob/lad = client.mob
+		var/mob_name = lad?.name
+		var/real_mob_name = lad?.real_name
+		if(!lad)
+			nametag = "(No Mob)"
+		else if(isnewplayer(lad))
+			nametag = "(New Player)"
+		else if(isobserver(lad))
+			nametag = "[mob_name](Ghost)"
 		else
-			targets["(No Mob) - [T]"] = T
-	var/list/sorted = sortList(targets)
-	var/target = input(src,"To whom shall we send a message?","Admin PM",null) as null|anything in sorted
-	if(!target)
-		return
-	cmd_admin_pm(targets[target],null)
-	SSblackbox.record_feedback("tally", "admin_verb", 1, "Admin PM Key") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+			nametag = "[real_mob_name](as [mob_name])"
+		targets["[nametag] - [client]"] = client
 
+	var/target = input(src,"To whom shall we send a message?", "Admin PM", null) as null|anything in sort_list(targets)
+	if (isnull(target))
+		return
+	cmd_admin_pm(targets[target], null)
+	BLACKBOX_LOG_ADMIN_VERB("Admin PM")
+
+/// Replys to some existing ahelp, reply to whom, which can be a client or ckey
+/client/proc/cmd_ahelp_reply(whom)
+	if(IsAdminAdvancedProcCall())
+		return FALSE
+
+	if(prefs.muted & MUTE_ADMINHELP)
+		to_chat(src,
+			type = MESSAGE_TYPE_ADMINPM,
+			html = span_danger("Error: Admin-PM-Reply: You are unable to use admin PM-s (muted)."),
+			confidential = TRUE)
+		return
+
+	// We use the ckey here rather then keeping the client to ensure resistance to client logouts mid execution
+	if(istype(whom, /client))
+		var/client/boi = whom
+		whom = boi.ckey
+
+	var/ambiguious_recipient = disambiguate_client(whom)
+	if(!istype(ambiguious_recipient, /client))
+		if(holder)
+			to_chat(src,
+				type = MESSAGE_TYPE_ADMINPM,
+				html = span_danger("Error: Admin-PM-Reply: Client not found."),
+				confidential = TRUE)
+		return
+
+	// Existing client case
+	var/client/recipient = ambiguious_recipient
+
+	// The ticket our recipient is using
+	var/datum/admin_help/recipient_ticket = recipient?.current_ticket
+	// Any past interactions with the recipient ticket
+	var/datum/admin_help/recipient_interactions = recipient_ticket?.ticket_interactions
+	// Any opening interactions with the recipient ticket, IE: interactions started before the ticket first receives a response
+	var/datum/admin_help/opening_interactions = recipient_ticket?.opening_responders
+	// Our recipient's admin holder, if one exists
+	var/datum/admins/recipient_holder = recipient?.holder
+	// The ckey of our recipient
+	var/recipient_ckey = recipient?.ckey
+	// Our recipient's fake key, if they are faking their ckey
+	var/recipient_fake_key = recipient_holder?.fakekey
+	// Our ckey, with our mob's name if one exists, formatted with a reply link
+	var/our_linked_name = key_name_admin(src)
+	// The recipient's ckey, formatted with a reply link
+	var/recipient_linked_ckey = key_name_admin(recipient, FALSE)
+	// The recipient's ckey, formatted slightly with html
+	var/formatted_recipient_ckey = key_name(recipient, FALSE, FALSE)
+
+	var/message_prompt = "Message:"
+	if(recipient_ticket)
+		message_admins("[our_linked_name] has started replying to [recipient_linked_ckey]'s admin help.")
+		// If none's interacted with the ticket yet
+		if(length(recipient_interactions) == 1)
+			if(length(opening_interactions)) // Inform the admin that they aren't the first
+				var/printable_interators = english_list(opening_interactions)
+				SEND_SOUND(src, sound('sound/machines/buzz-sigh.ogg', volume=30))
+				message_prompt += "\n\n**This ticket is already being responded to by: [printable_interators]**"
+			// add the admin who is currently responding to the list of people responding
+			LAZYADD(recipient_ticket.opening_responders, src)
+
+	var/request = "Private message to"
+	if(recipient_fake_key)
+		request = "[request] an Administrator."
+	else
+		request = "[request] [formatted_recipient_ckey]."
+
+	var/message = input(src, message_prompt, request) as message|null
+
+	if(recipient_ticket)
+		LAZYREMOVE(recipient_ticket.opening_responders, src)
+
+	if (!message)
+		message_admins("[our_linked_name] has cancelled their reply to [recipient_linked_ckey]'s admin help.")
+		return
+
+	if(!recipient) //We lost the client during input, disconnected or relogged.
+		if(GLOB.directory[recipient_ckey]) // Client has reconnected, lets try to recover
+			whom = GLOB.directory[recipient_ckey]
+		else
+			to_chat(src,
+				type = MESSAGE_TYPE_ADMINPM,
+				html = span_danger("Error: Admin-PM-Reply: Client not found."),
+				confidential = TRUE)
+			to_chat(src,
+				type = MESSAGE_TYPE_ADMINPM,
+				html = "[span_danger("<b>Message not sent:</b>")]<br>[message]",
+				confidential = TRUE)
+			if(recipient_ticket)
+				recipient_ticket.AddInteraction("<b>No client found, message not sent:</b><br>[message]")
+			return
+	cmd_admin_pm(whom, message)
 
 //takes input from cmd_admin_pm_context, cmd_admin_pm_panel or /client/Topic and sends them a PM.
-//Fetching a message if needed. src is the sender and C is the target client
-/client/proc/cmd_admin_pm(whom, msg, type = "PM")
-	if(check_mute(ckey, MUTE_ADMINHELP))
-		to_chat(src, "<span class='danger'>Error: Private-Message: You are unable to use PM-s (muted).</span>")
+//Fetching a message if needed.
+//whom here is a client, a ckey, or [EXTERNAL_PM_USER] if this is from tgs. message is the default message to send
+/client/proc/cmd_admin_pm(whom, message)
+	if(prefs.muted & MUTE_ADMINHELP)
+		to_chat(src,
+			type = MESSAGE_TYPE_ADMINPM,
+			html = span_danger("Error: Admin-PM: You are unable to use admin PM-s (muted)."),
+			confidential = TRUE)
 		return
 
-	var/client/C
-	if(istext(whom))
-		C = get_client_by_ckey(whom)
-	else if(isclient(whom))
-		C = whom
-
-	if(!C)
-		if(holder)
-			to_chat(src, "<span class='danger'>Error: Private-Message: Client not found.</span>")
-		else
-			adminhelp(msg)	//admin we are replying to left. adminhelp instead
+	if(!holder && !current_ticket) //no ticket? https://www.youtube.com/watch?v=iHSPf6x1Fdo
+		to_chat(src,
+			type = MESSAGE_TYPE_ADMINPM,
+			html = span_danger("You can no longer reply to this ticket, please open another one by using the Adminhelp verb if need be."),
+			confidential = TRUE)
+		to_chat(src,
+			type = MESSAGE_TYPE_ADMINPM,
+			html = span_notice("Message: [message]"),
+			confidential = TRUE)
 		return
 
-	/*if(C && C.last_pm_recieved + config.simultaneous_pm_warning_timeout > world.time && holder)
-		//send a warning to admins, but have a delay popup for mods
-		if(holder.rights & R_ADMIN)
-			to_chat(src, "<span class='danger'>Simultaneous PMs warning:</span> that player has been PM'd in the last [config.simultaneous_pm_warning_timeout / 10] seconds by: [C.ckey_last_pm]")
-		else
-			if(alert("That player has been PM'd in the last [config.simultaneous_pm_warning_timeout / 10] seconds by: [C.ckey_last_pm]","Simultaneous PMs warning","Continue","Cancel") == "Cancel")
-				return*/
+	// We use the ckey here rather then keeping the client to ensure resistance to client logouts mid execution
+	if(istype(whom, /client))
+		var/client/boi = whom
+		whom = boi.ckey
 
-	//get message text, limit it's length.and clean/escape html
-	if(!msg)
-		set_typing(C, TRUE)
-		msg = clean_input("Message:", "Private message to [holder ? key_name(C, FALSE) : key_name_hidden(C, FALSE)]", , src)
-		set_typing(C, FALSE)
+	var/message_to_send = request_adminpm_message(disambiguate_client(whom), message)
+	if(!message_to_send)
+		return
+
+	if(!sends_adminpm_message(disambiguate_client(whom), message_to_send))
+		return
+
+	notify_adminpm_message(disambiguate_client(whom), message_to_send)
+
+
+/// Requests an admin pm message to send
+/// message_target here can be either [EXTERNAL_PM_USER], indicating that this message is intended for some external chat channel
+/// or a /client, which we will then store info about to ensure logout -> logins are protected as expected
+/// Accepts an optional existing message, which will be used in place of asking the recipient assuming all other conditions are met
+/// Returns the message to send or null if no message is found
+/// Sleeps
+/client/proc/request_adminpm_message(ambiguious_recipient, existing_message = null)
+	if(IsAdminAdvancedProcCall())
+		return null
+
+	if(ambiguious_recipient == EXTERNAL_PM_USER)
+		if(!externalreplyamount) //to prevent people from spamming irc/discord
+			to_chat(src,
+				type = MESSAGE_TYPE_ADMINPM,
+				html = span_danger("Error: Admin-PM-Message: External reply cap hit."),
+				confidential = TRUE)
+			return null
+		var/msg = ""
+		if(existing_message)
+			msg = existing_message
+		else
+			msg = input(src,"Message:", "Private message to Administrator") as message|null
 
 		if(!msg)
-			return
-		if(!C)
-			if(holder)
-				to_chat(src, "<span class='danger'>Error: Admin-PM: Client not found.</span>")
-			else
-				adminhelp(msg)	//admin we are replying to has vanished, adminhelp instead
-			return
+			to_chat(src,
+				type = MESSAGE_TYPE_ADMINPM,
+				html = span_danger("Error: Admin-PM-Message: No message input."),
+				confidential = TRUE)
+			return null
 
-	if(handle_spam_prevention(msg, MUTE_ADMINHELP, OOC_COOLDOWN))
+		if(holder)
+			to_chat(src,
+				type = MESSAGE_TYPE_ADMINPM,
+				html = span_danger("Error: Admin-PM-Message: Use the admin IRC/Discord channel, nerd."),
+				confidential = TRUE)
+			return null
+		return msg
+
+	if(!istype(ambiguious_recipient, /client))
+		to_chat(src,
+			type = MESSAGE_TYPE_ADMINPM,
+			html = span_danger("Error: Admin-PM-Message: Client not found."),
+			confidential = TRUE)
+		return null
+
+	var/client/recipient = ambiguious_recipient
+	// Stored in case client is deleted between this and after the message is input
+	var/recipient_ckey = recipient?.ckey
+	// Stored in case client is deleted between this and after the message is input
+	var/datum/admin_help/recipient_ticket = recipient?.current_ticket
+	// Our current active ticket
+	var/datum/admin_help/our_ticket = current_ticket
+	// If our recipient is an admin, this is their admins datum
+	var/datum/admins/recipient_holder = recipient?.holder
+	// If our recipient has a fake name, this is it
+	var/recipient_fake_key = recipient_holder?.fakekey
+	// Just the recipient's ckey, formatted for htmlifying stuff
+	var/recipient_print_key = key_name(recipient, FALSE, FALSE)
+
+	// The message we intend on returning
+	var/msg = ""
+	if(existing_message)
+		msg = existing_message
+	else
+		var/request = "Private message to"
+		if(recipient_fake_key)
+			request = "[request] an Administrator."
+		else
+			request = "[request] [recipient_print_key]."
+		//get message text, limit it's length.and clean/escape html
+		msg = input(src,"Message:", request) as message|null
+		msg = trim(msg)
+
+	if(!msg)
+		to_chat(src,
+			type = MESSAGE_TYPE_ADMINPM,
+			html = span_danger("Error: Admin-PM-Message: No message input."),
+			confidential = TRUE)
+		return null
+
+	if(recipient)
+		return msg
+	// Client has disappeared due to logout
+	if(GLOB.directory[recipient_ckey]) // Client has reconnected, lets try to recover
+		recipient = GLOB.directory[recipient_ckey]
+		return msg
+
+	// We don't tell standard users if a ticket drops because admins have a way to actually see
+	// Past tickets, and well, admins are the ones who might ban you if you ignore them
+	if(holder)
+		to_chat(src,
+			type = MESSAGE_TYPE_ADMINPM,
+			html = span_danger("Error: Admin-PM-Message: Client not found."),
+			confidential = TRUE)
+		to_chat(src,
+			type = MESSAGE_TYPE_ADMINPM,
+			html = "[span_danger("<b>Message not sent:</b>")]<br>[msg]",
+			confidential = TRUE)
+		if(recipient_ticket)
+			recipient_ticket.AddInteraction("<b>No client found, message not sent:</b><br>[msg]")
+		return null
+	if(our_ticket)
+		our_ticket.MessageNoRecipient(msg)
+	return null
+
+/// Sends a pm message via the tickets system
+/// message_target here can be either [EXTERNAL_PM_USER], indicating that this message is intended for some external chat channel
+/// or a /client, in which case we send in the standard form
+/// send_message is the raw message to send, it will be filtered and treated to ensure we do not break any text handling
+/// Returns FALSE if the send failed, TRUE otherwise
+/client/proc/sends_adminpm_message(ambiguious_recipient, send_message)
+	if(IsAdminAdvancedProcCall())
+		return FALSE
+
+	send_message = adminpm_filter_text(ambiguious_recipient, send_message)
+	if(!send_message)
+		return null
+
+	if (handle_spam_prevention(send_message, MUTE_ADMINHELP))
+		// handle_spam_prevention does its own "hey buddy ya fucker up here's what happen"
+		return FALSE
+
+	var/raw_message = send_message
+
+	if(holder)
+		send_message = emoji_parse(send_message)
+
+	var/keyword_parsed_msg = keywords_lookup(send_message)
+	// Stores a bit of html with our ckey, name, and a linkified string to click and rely to us with
+	var/name_key_with_link = key_name(src, TRUE, TRUE)
+
+	if(ambiguious_recipient == EXTERNAL_PM_USER)
+		var/datum/admin_help/new_admin_help = admin_ticket_log(src,
+			"<font color='red'>Reply PM from-<b>[name_key_with_link]</b> to <i>External</i>: [keyword_parsed_msg]</font>",
+			player_message = "<font color='red'>Reply PM from-<b>[name_key_with_link]</b> to <i>External</i>: [send_message]</font>")
+
+		new_admin_help.reply_to_admins_notification(raw_message)
+
+		var/new_help_id = new_admin_help?.id
+
+		externalreplyamount--
+
+		var/category = "Reply: [ckey]"
+		if(new_admin_help)
+			category = "#[new_help_id] [category]"
+
+		send2adminchat(category, raw_message)
+		return TRUE
+
+	if(!istype(ambiguious_recipient, /client))
+		to_chat(src,
+			type = MESSAGE_TYPE_ADMINPM,
+			html = span_danger("Error: Admin-PM-Send: Client not found."),
+			confidential = TRUE)
+		return FALSE
+
+	var/client/recipient = ambiguious_recipient
+	var/datum/admins/recipient_holder = recipient.holder
+	var/datum/admins/our_holder = holder
+
+	// The sound preferences of the recipient, at least that's how we'll be using it here
+	var/sound_prefs = recipient?.prefs?.toggles
+	// Stores a bit of html that contains the ckey of the recipient, its mob's name if any exist, and a link to reply to them with
+	var/their_name_with_link = key_name(recipient, TRUE, TRUE)
+	// Stores a bit of html with our ckey highlighted as a reply link
+	var/link_to_us = key_name(src, TRUE, FALSE)
+	// Stores a bit of html with outhe ckey of the recipientr highlighted as a reply link
+	var/link_to_their = key_name(recipient, TRUE, FALSE)
+	// Our ckey
+	var/our_ckey = ckey
+	// Recipient ckey
+	var/recip_ckey = recipient?.ckey
+	// Our current ticket, can (supposedly) be null here
+	var/datum/admin_help/ticket = current_ticket
+	// The recipient's current ticket, could in theory? maybe? be null here
+	var/datum/admin_help/recipient_ticket = recipient?.current_ticket
+	// I use -1 as a default for both of these
+	// Our ticket ID
+	var/ticket_id = ticket?.id
+	// The recipient's ticket id
+	var/recipient_ticket_id = recipient_ticket?.id
+
+	// If we should do a full on boink, so with the text and extra flair and everything
+	// We want to always do this so long as WE are an admin, and we're messaging the "loser" of the converstation
+	var/full_boink = FALSE
+	// Only admins can perform boinks
+	if(our_holder)
+		full_boink = TRUE
+	// Tickets will only generate for the non admin/admin being boinked. This check is to ensure boinked admins don't send the same
+	// ADMINISTRAITOR PRIVATE MESSAGE text to their boinker every time they respond
+	if(recipient_holder && ticket)
+		full_boink = FALSE
+
+	// If we're gonna boink em, do it now
+	// It is worth noting this will always generate the target a ticket if they don't already have one (tickets will generate if a player ahelps automatically, outside this logic)
+	// So past this point, because of our block above here, we can be reasonably guarenteed that the user will have a ticket
+	if(full_boink)
+		// Do BIG RED TEXT
+		var/already_logged = FALSE
+		// Full boinks will always be done to players, so we are not guarenteed that they won't have a ticket
+		if(!recipient_ticket)
+			new /datum/admin_help(send_message, recipient, TRUE)
+			already_logged = TRUE
+			// This action mutates our existing cached ticket information, so we recache
+			ticket = current_ticket
+			recipient_ticket = recipient?.current_ticket
+			ticket_id = ticket?.id
+			recipient_ticket_id = recipient_ticket?.id
+			SSblackbox.LogAhelp(recipient_ticket_id, "Ticket Opened", send_message, recipient.ckey, src.ckey)
+
+		to_chat(recipient,
+			type = MESSAGE_TYPE_ADMINPM,
+			html = "<font color='red' size='4'><b>-- Administrator private message --</b></font>",
+			confidential = TRUE)
+
+		recipient.receive_ahelp(
+			link_to_us,
+			span_linkify(send_message),
+		)
+
+		to_chat(recipient,
+			type = MESSAGE_TYPE_ADMINPM,
+			html = span_adminsay("<i>Click on the administrator's name to reply.</i>"),
+			confidential = TRUE)
+		to_chat(src,
+			type = MESSAGE_TYPE_ADMINPM,
+			html = span_notice("Admin PM to-<b>[their_name_with_link]</b>: [span_linkify(send_message)]"),
+			confidential = TRUE)
+
+		admin_ticket_log(recipient,
+			"<font color='purple'>PM From [name_key_with_link]: [keyword_parsed_msg]</font>",
+			log_in_blackbox = FALSE,
+			player_message = "<font color='purple'>PM From [link_to_us]: [send_message]</font>")
+
+		if(!already_logged) //Reply to an existing ticket
+			SSblackbox.LogAhelp(recipient_ticket_id, "Reply", send_message, recip_ckey, our_ckey)
+
+		//always play non-admin recipients the adminhelp sound
+		SEND_SOUND(recipient, sound('sound/effects/adminhelp.ogg'))
+		return TRUE
+
+	// Ok if we're here, either this message is for an admin, or someone somehow figured out how to send a new message as a player
+	// First case well, first
+	if(!our_holder && !recipient_holder) //neither are admins
+		if(!ticket)
+			to_chat(src,
+				type = MESSAGE_TYPE_ADMINPM,
+				html = span_danger("Error: Admin-PM-Send: Non-admin to non-admin PM communication is forbidden."),
+				confidential = TRUE)
+			to_chat(src,
+				type = MESSAGE_TYPE_ADMINPM,
+				html = "[span_danger("<b>Message not sent:</b>")]<br>[send_message]",
+				confidential = TRUE)
+			return FALSE
+		ticket.MessageNoRecipient(send_message)
+		return TRUE
+
+	// Ok by this point the recipient has to be an admin, and this is either an admin on admin event, or a player replying to an admin
+
+	// You're replying to a ticket that is closed. Bad move. You must have started replying before the close, and then got input()'d
+	// Lets be nice and pass this off to a new ticket, as we recomend above
+	if(!ticket)
+		to_chat(src,
+			type = MESSAGE_TYPE_ADMINPM,
+			html = span_danger("Error: Admin-PM-Send: Attempted to send a reply to a closed ticket."),
+			confidential = TRUE)
+		to_chat(src,
+			type = MESSAGE_TYPE_ADMINPM,
+			html = span_notice("Relaying message to a new admin help."),
+			confidential = TRUE)
+		GLOB.admin_help_ui_handler.perform_adminhelp(src, raw_message, FALSE)
+		return FALSE
+
+	// Let's play some music for the admin, only if they want it tho
+	if(sound_prefs & SOUND_ADMINHELP)
+		SEND_SOUND(recipient, sound('sound/effects/adminhelp.ogg'))
+
+	SEND_SIGNAL(ticket, COMSIG_ADMIN_HELP_REPLIED)
+
+	// Admin on admin violence first
+	if(our_holder)
+		recipient.receive_ahelp(
+			name_key_with_link,
+			span_linkify(keyword_parsed_msg),
+			"danger",
+		)
+
+		to_chat(src,
+			type = MESSAGE_TYPE_ADMINPM,
+			html = span_notice("Admin PM to-<b>[their_name_with_link]</b>: [span_linkify(keyword_parsed_msg)]"),
+			confidential = TRUE)
+
+		//omg this is dumb, just fill in both their logs
+		var/interaction_message = "<font color='purple'>PM from-<b>[name_key_with_link]</b> to-<b>[their_name_with_link]</b>: [keyword_parsed_msg]</font>"
+		var/player_interaction_message = "<font color='purple'>PM from-<b>[link_to_us]</b> to-<b>[link_to_their]</b>: [send_message]</font>"
+		admin_ticket_log(src,
+			interaction_message,
+			log_in_blackbox = FALSE,
+			player_message = player_interaction_message)
+		if(recipient != src) //reeee
+			admin_ticket_log(recipient,
+				interaction_message,
+				log_in_blackbox = FALSE,
+				player_message = player_interaction_message)
+
+		SSblackbox.LogAhelp(ticket_id, "Reply", send_message, recip_ckey, our_ckey)
+		return TRUE
+
+	// This is us (a player) trying to talk to the recipient (an admin)
+	var/replymsg = "Reply PM from-<b>[name_key_with_link]</b>: [span_linkify(keyword_parsed_msg)]"
+	var/player_replymsg = "Reply PM from-<b>[link_to_us]</b>: [span_linkify(send_message)]"
+	admin_ticket_log(src,
+		"<font color='red'>[replymsg]</font>",
+		log_in_blackbox = FALSE,
+		player_message = player_replymsg)
+	to_chat(recipient,
+		type = MESSAGE_TYPE_ADMINPM,
+		html = span_danger("[replymsg]"),
+		confidential = TRUE)
+
+	ticket.reply_to_admins_notification(send_message)
+	SSblackbox.LogAhelp(ticket_id, "Reply", send_message, recip_ckey, our_ckey)
+
+	return TRUE
+
+/// Notifies all admins about the existance of an admin pm, then logs the pm
+/// message_target here can be either [EXTERNAL_PM_USER], indicating that this message is intended for some external chat channel
+/// or a /client, in which case we send in the standard form
+/// log_message is the raw message to send, it will be filtered and treated to ensure we do not break any text handling
+/client/proc/notify_adminpm_message(ambiguious_recipient, log_message)
+	if(IsAdminAdvancedProcCall())
+		return
+
+	// First we filter, because these procs can be called by anyone with debug, and I don't trust that check
+	// gotta make sure none's fucking about
+	log_message = adminpm_filter_text(ambiguious_recipient, log_message)
+	if(!log_message)
+		return
+
+	var/raw_message = log_message
+
+	if(holder)
+		log_message = emoji_parse(log_message)
+
+	var/keyword_parsed_msg = keywords_lookup(log_message)
+	// Shows our ckey and the name of any mob we might be possessing
+	var/our_name = key_name(src)
+	// Shows our ckey/name embedded inside a clickable link to reply to this message
+	var/our_linked_ckey = key_name(src, TRUE, FALSE)
+	// Our current active ticket
+	var/datum/admin_help/ticket = current_ticket
+	// Our current ticket id, if one exists
+	var/ticket_id = ticket?.id
+
+	if(ambiguious_recipient == EXTERNAL_PM_USER)
+		// Guard against the possibility of a null, since it'll runtime and spit out the contents of what should be a private ticket.
+		if(ticket)
+			log_admin_private("PM: Ticket #[ticket_id]: [our_name]->External: [sanitize_text(trim(raw_message))]")
+		else
+			log_admin_private("PM: [our_name]->External: [sanitize_text(trim(raw_message))]")
+		for(var/client/lad in GLOB.admins)
+			to_chat(lad,
+				type = MESSAGE_TYPE_ADMINPM,
+				html = span_notice("<B>PM: [our_linked_ckey]-&gt;External:</B> [keyword_parsed_msg]"),
+				confidential = TRUE)
+		return
+	if(!istype(ambiguious_recipient, /client))
+		to_chat(src,
+			type = MESSAGE_TYPE_ADMINPM,
+			html = span_danger("Error: Admin-PM-Notify: Client not found."),
+			confidential = TRUE)
+		return
+
+	var/client/recipient = ambiguious_recipient
+	// The key of our recipient
+	var/recipient_key = recipient?.key
+	// Shows the recipient's ckey and the name of any mob it might be possessing
+	var/recipient_name = key_name(recipient)
+	// Shows the recipient's ckey/name embedded inside a clickable link to reply to this message
+	var/recipient_linked_ckey = key_name(recipient, TRUE, FALSE)
+
+	window_flash(recipient, ignorepref = TRUE)
+	if(ticket)
+		log_admin_private("PM: Ticket #[ticket_id]: [our_name]->[recipient_name]: [sanitize_text(trim(raw_message))]")
+	else
+		log_admin_private("PM: [our_name]->[recipient_name]: [sanitize_text(trim(raw_message))]")
+	//we don't use message_admins here because the sender/receiver might get it too
+	for(var/client/lad in GLOB.admins)
+		if(lad.key == key || lad.key == recipient_key) //check to make sure client/lad isn't the sender or recipient
+			continue
+		to_chat(lad,
+			type = MESSAGE_TYPE_ADMINPM,
+			html = span_notice("<B>PM: [our_linked_ckey]-&gt;[recipient_linked_ckey]:</B> [keyword_parsed_msg]") ,
+			confidential = TRUE)
+
+/// Accepts a message and an ambiguious recipient (some sort of client representative, or [EXTERNAL_PM_USER])
+/// Returns the filtered message if it passes all checks, or null if the send fails
+/client/proc/adminpm_filter_text(ambiguious_recipient, message)
+	if(prefs.muted & MUTE_ADMINHELP)
+		to_chat(src,
+			type = MESSAGE_TYPE_ADMINPM,
+			html = span_danger("Error: Admin-PM-Filter: You are unable to use admin PM-s (muted)."),
+			confidential = TRUE)
 		return
 
 	//clean the message if it's not sent by a high-rank admin
-	if(!check_rights(R_SERVER|R_DEBUG,0))
-		msg = sanitize_simple(copytext_char(msg,1,MAX_MESSAGE_LEN))	// SS220 EDIT - ORIGINAL: copytext
-		if(!msg)
+	if(!check_rights(R_SERVER|R_DEBUG, 0) || ambiguious_recipient == EXTERNAL_PM_USER)//no sending html to the poor bots
+		message = sanitize(copytext_char(message, 1, MAX_MESSAGE_LEN))
+		if(!message)
+			to_chat(src,
+				type = MESSAGE_TYPE_ADMINPM,
+				html = span_danger("Error: Admin-PM-Filter: Your message contained only HTML, it's been sanitized away and the message disregarded."),
+				confidential = TRUE)
 			return
+	return message
+
+#define TGS_AHELP_USAGE "Usage: ticket <close|resolve|icissue|reject|reopen \[ticket #\]|list>"
+/proc/TgsPm(target, message, sender)
+	var/requested_ckey = ckey(target)
+	var/ambiguious_target = disambiguate_client(requested_ckey)
+
+	var/client/recipient
+	// This might seem like hiding a failure condition, but we want to be able to send commands to the ticket without the client being logged in
+	if(istype(ambiguious_target, /client))
+		recipient = ambiguious_target
+
+	// The ticket we want to talk about here. Either the target's active ticket, or the last one it had
+	var/datum/admin_help/ticket
+	if(recipient)
+		ticket = recipient.current_ticket
 	else
-		msg = admin_pencode_to_html(msg)
+		GLOB.ahelp_tickets.CKey2ActiveTicket(requested_ckey)
+	// The ticket's id
+	var/ticket_id = ticket?.id
 
-	var/recieve_span = "playerreply"
-	var/send_pm_type = " "
-	var/recieve_pm_type = "Player"
+	var/compliant_msg = trim(lowertext(message))
+	var/tgs_tagged = "[sender](TGS/External)"
+	var/list/splits = splittext(compliant_msg, " ")
+	var/split_size = length(splits)
 
+	if(split_size && splits[1] == "ticket")
+		if(split_size < 2)
+			return TGS_AHELP_USAGE
+		switch(splits[2])
+			if("close")
+				if(ticket)
+					ticket.Close(tgs_tagged)
+					return "Ticket #[ticket_id] successfully closed"
+			if("resolve")
+				if(ticket)
+					ticket.Resolve(tgs_tagged)
+					return "Ticket #[ticket_id] successfully resolved"
+			if("icissue")
+				if(ticket)
+					ticket.ICIssue(tgs_tagged)
+					return "Ticket #[ticket_id] successfully marked as IC issue"
+			if("reject")
+				if(ticket)
+					ticket.Reject(tgs_tagged)
+					return "Ticket #[ticket_id] successfully rejected"
+			if("reopen")
+				if(ticket)
+					return "Error: [target] already has ticket #[ticket_id] open"
+				var/ticket_num
+				// If the passed in command actually has a ticket id arg
+				if(split_size >= 3)
+					ticket_num = text2num(splits[3])
 
-	if(holder)
-		//mod PMs are maroon
-		//PMs sent from admins and mods display their rank
-		if(holder)
-			if(check_rights(R_MOD|R_MENTOR,0) && !check_rights(R_ADMIN,0))
-				recieve_span = "mentorhelp"
+				if(isnull(ticket_num))
+					return "Error: No/Invalid ticket id specified. [TGS_AHELP_USAGE]"
+
+				// The active ticket we're trying to reopen, if one exists
+				var/datum/admin_help/active_ticket = GLOB.ahelp_tickets.TicketByID(ticket_num)
+				// The ckey of the player to be targeted BY the ticket
+				// Not the initiator all the time
+				var/boinked_ckey = active_ticket?.initiator_ckey
+
+				if(!active_ticket)
+					return "Error: Ticket #[ticket_num] not found"
+				if(boinked_ckey != target)
+					return "Error: Ticket #[ticket_num] belongs to [boinked_ckey]"
+
+				active_ticket.Reopen()
+				return "Ticket #[ticket_num] successfully reopened"
+			if("list")
+				var/list/tickets = GLOB.ahelp_tickets.TicketsByCKey(target)
+				var/tickets_length = length(tickets)
+
+				if(!tickets_length)
+					return "None"
+				var/list/printable_tickets = list()
+				for(var/datum/admin_help/iterated_ticket in tickets)
+					// The id of the iterated adminhelp
+					var/iterated_id = iterated_ticket?.id
+					var/text = ""
+					if(iterated_ticket == ticket)
+						text += "Active: "
+					text += "#[iterated_id]"
+					printable_tickets += text
+				return printable_tickets.Join(", ")
 			else
-				recieve_span = "adminhelp"
-			send_pm_type = holder.rank + " "
-			recieve_pm_type = holder.rank
+				return TGS_AHELP_USAGE
+		return "Error: Ticket could not be found"
 
-	else if(!C.holder)
-		to_chat(src, "<span class='danger'>Error: Admin-PM: Non-admin to non-admin PM communication is forbidden.</span>")
-		return
+	// Now that we've handled command processing, we can actually send messages to the client
+	if(!recipient)
+		return "Error: No client"
 
-	var/recieve_message = ""
-
-	pm_tracker.add_message(C, src, msg, mob)
-	C.pm_tracker.add_message(src, src, msg, C.mob)
-
-	if(holder && !C.holder)
-		recieve_message = "<span class='[recieve_span]' size='3'>-- Click the [recieve_pm_type]'s name to reply --</span>\n"
-		if(C.adminhelped)
-			window_flash(C)
-			to_chat(C, recieve_message)
-			C.adminhelped = 0
-
-		//AdminPM popup for ApocStation and anybody else who wants to use it. Set it with POPUP_ADMIN_PM in config.txt ~Carn
-		if(GLOB.configuration.general.popup_admin_pm)
-			spawn(0)	//so we don't hold the caller proc up
-				var/sender = src
-				var/sendername = key
-				var/reply = clean_input(msg,"[recieve_pm_type] [type] from-[sendername]", "", C)		//show message and await a reply
-				if(C && reply)
-					if(sender)
-						C.cmd_admin_pm(sender,reply)										//sender is still about, let's reply to them
-					else
-						adminhelp(reply)													//sender has left, adminhelp instead
-				return
-
-
-	var/emoji_msg = "<span class='emoji_enabled'>[msg]</span>"
-	recieve_message = chat_box_red("<span class='[recieve_span]'>[type] from-<b>[recieve_pm_type] [C.holder ? key_name(src, TRUE, type) : key_name_hidden(src, TRUE, type)]</b>:<br><br>[emoji_msg]</span>")
-	to_chat(C, recieve_message)
-	var/ping_link = check_rights(R_ADMIN, 0, mob) ? "(<a href='?src=[pm_tracker.UID()];ping=[C.key]'>PING</a>)" : ""
-	var/window_link = "(<a href='?src=[pm_tracker.UID()];newtitle=[C.key]'>WINDOW</a>)"
-	var/alert_link = check_rights(R_ADMIN, FALSE, mob) ? " (<a href='?src=[pm_tracker.UID()];adminalert=[C.mob.UID()]'>ALERT</a>)" : ""
-	to_chat(src, "<span class='pmsend'>[send_pm_type][type] to-<b>[holder ? key_name(C, TRUE, type) : key_name_hidden(C, TRUE, type)]</b>: [emoji_msg]</span> [ping_link] [window_link][alert_link]")
-
-	/*if(holder && !C.holder)
-		C.last_pm_recieved = world.time
-		C.ckey_last_pm = ckey*/
-
-	//play the recieving admin the adminhelp sound (if they have them enabled)
-	//non-admins always hear the sound, as they cannot toggle it
-	if((!C.holder) || (C.prefs.sound & SOUND_ADMINHELP))
-		SEND_SOUND(C, sound('sound/effects/adminhelp.ogg'))
-
-	log_admin("PM: [key_name(src)]->[key_name(C)]: [msg]")
-	//we don't use message_admins here because the sender/receiver might get it too
-	for(var/client/X in GLOB.admins)
-		//check client/X is an admin and isn't the sender or recipient
-		if(X == C || X == src)
-			continue
-		if(X.key != key && X.key != C.key)
-			switch(type)
-				if("Mentorhelp")
-					if(check_rights(R_ADMIN|R_MOD|R_MENTOR, 0, X.mob))
-						to_chat(X, "<span class='mentorhelp'>[type]: [key_name(src, TRUE, type)]-&gt;[key_name(C, TRUE, type)]: [emoji_msg]</span>", type = MESSAGE_TYPE_MENTORCHAT)
-				if("Adminhelp")
-					if(check_rights(R_ADMIN|R_MOD, 0, X.mob))
-						to_chat(X, "<span class='adminhelp'>[type]: [key_name(src, TRUE, type)]-&gt;[key_name(C, TRUE, type)]: [emoji_msg]</span>", type = MESSAGE_TYPE_ADMINCHAT)
-				else
-					if(check_rights(R_ADMIN|R_MOD, 0, X.mob))
-						to_chat(X, "<span class='boldnotice'>[type]: [key_name(src, TRUE, type)]-&gt;[key_name(C, TRUE, type)]: [emoji_msg]</span>", type = MESSAGE_TYPE_ADMINCHAT)
-
-	//Check if the mob being PM'd has any open admin tickets.
-	var/tickets = list()
-	if(type == "Mentorhelp")
-		tickets = SSmentor_tickets.checkForTicket(C)
+	var/adminname
+	if(CONFIG_GET(flag/show_irc_name))
+		adminname = tgs_tagged
 	else
-		tickets = SStickets.checkForTicket(C)
-	if(tickets)
-		for(var/datum/ticket/i in tickets)
-			i.addResponse(src, msg) // Add this response to their open tickets.
-		return
-	if(type == "Mentorhelp")
-		if(check_rights(R_ADMIN|R_MOD|R_MENTOR, 0, C.mob)) //Is the person being pm'd an admin? If so we check if the pm'er has open tickets
-			tickets = SSmentor_tickets.checkForTicket(src)
-	else // Ahelp
-		if(check_rights(R_ADMIN|R_MOD, 0, C.mob)) //Is the person being pm'd an admin? If so we check if the pm'er has open tickets
-			tickets = SStickets.checkForTicket(src)
+		adminname = "Administrator"
 
-	if(tickets)
-		for(var/datum/ticket/i in tickets)
-			i.addResponse(src, msg)
-		return
+	var/stealthkey = GetTgsStealthKey()
 
-/client/proc/cmd_admin_discord_pm()
-	if(check_mute(ckey, MUTE_ADMINHELP))
-		to_chat(src, "<span class='danger'>Error: Private-Message: You are unable to use PMs (muted).</span>")
-		return
+	message = sanitize(copytext_char(message, 1, MAX_MESSAGE_LEN))
+	message = emoji_parse(message)
 
-	if(last_discord_pm_time > world.time)
-		to_chat(usr, "<span class='warning'>Please wait [(last_discord_pm_time - world.time)/10] seconds, or for a reply, before sending another PM to Discord.</span>")
-		return
+	if(!message)
+		return "Error: No message"
 
-	// We only allow PMs once every 10 seconds, othewrise the channel can get spammed very quickly
-	last_discord_pm_time = world.time + 10 SECONDS
+	// The ckey of our recipient, with a reply link, and their mob if one exists
+	var/recipient_name_linked = key_name_admin(recipient)
+	// The ckey of our recipient, with their mob if one exists. No link
+	var/recipient_name = key_name_admin(recipient)
 
-	var/msg = clean_input("Message:", "Private message to admins on Discord / 400 character limit", , src)
+	message_admins("External message from [sender] to [recipient_name_linked] : [message]")
+	log_admin_private("External PM: [sender] -> [recipient_name] : [message]")
 
-	if(!msg)
-		return
+	to_chat(recipient,
+		type = MESSAGE_TYPE_ADMINPM,
+		html = "<font color='red' size='4'><b>-- Administrator private message --</b></font>",
+		confidential = TRUE)
 
-	sanitize(msg)
+	recipient.receive_ahelp(
+		"<a href='?priv_msg=[stealthkey]'>[adminname]</a>",
+		message,
+	)
 
-	if(length(msg) > 400) // Dont want them super spamming
-		to_chat(src, "<span class='warning'>Your message was not sent because it was more then 400 characters find your message below for ease of copy/pasting</span>")
-		to_chat(src, "<span class='notice'>[msg]</span>")
-		return
+	to_chat(recipient,
+		type = MESSAGE_TYPE_ADMINPM,
+		html = span_adminsay("<i>Click on the administrator's name to reply.</i>"),
+		confidential = TRUE)
 
-	GLOB.discord_manager.send2discord_simple(DISCORD_WEBHOOK_ADMIN, "PM from [key_name(src)]: [html_decode(msg)]")
+	admin_ticket_log(recipient, "<font color='purple'>PM From [tgs_tagged]: [message]</font>", log_in_blackbox = FALSE)
 
-	to_chat(src, "<span class='pmsend'>PM to-<b>Discord Admins</b>: [msg]</span>", MESSAGE_TYPE_ADMINPM, confidential = TRUE)
+	window_flash(recipient, ignorepref = TRUE)
+	// Nullcheck because we run a winset in window flash and I do not trust byond
+	if(recipient)
+		//always play non-admin recipients the adminhelp sound
+		SEND_SOUND(recipient, 'sound/effects/adminhelp.ogg')
 
-	log_admin("PM: [key_name(src)]->Discord: [msg]")
-	for(var/client/X in GLOB.admins)
-		if(X == src)
-			continue
-		if(check_rights(R_ADMIN, 0, X.mob))
-			to_chat(X, "<span class='pmsend'><b>PM: [key_name_admin(src)]-&gt;Discord Admins:</b> <span class='notice'>[msg]</span></span>")
+		recipient.externalreplyamount = EXTERNALREPLYCOUNT
+	return "Message Successful"
 
-/client/verb/open_pms_ui()
-	set name = "My PMs"
-	set category = "OOC"
-	pm_tracker.show_ui(usr)
+/// Gets TGS's stealth key, generates one if none is found
+/proc/GetTgsStealthKey()
+	var/static/tgsStealthKey
+	if(tgsStealthKey)
+		return tgsStealthKey
 
-/client/proc/set_typing(client/target, value)
-	if(!target)
-		return
-	var/datum/pm_convo/convo = target.pm_tracker.pms[key]
-	if(!convo)
-		return
-	convo.typing = value
-	if(target.pm_tracker.open && target.pm_tracker.current_title == key)
-		target.pm_tracker.show_ui(target.mob)
+	tgsStealthKey = generateStealthCkey()
+	GLOB.stealthminID[EXTERNAL_PM_USER] = tgsStealthKey
+	return tgsStealthKey
 
-/datum/pm_tracker
-	var/current_title = ""
-	var/open = FALSE
-	var/list/datum/pm_convo/pms = list()
-	var/show_archived = FALSE
-	var/window_id = "pms_window"
-	var/forced = FALSE
+/// Takes an argument which could be either a ckey, /client, or IRC marker, and returns a client if possible
+/// Returns [EXTERNAL_PM_USER] if an IRC marker is detected
+/// Otherwise returns null
+/proc/disambiguate_client(whom)
+	if(istype(whom, /client))
+		return whom
 
-/datum/pm_convo
-	var/list/messages = list()
-	var/archived = FALSE
-	var/client/client
-	var/read = FALSE
-	var/typing = FALSE
+	if(!istext(whom) || !(length(whom) >= 1))
+		return null
 
-/datum/pm_convo/New(client/C)
-	client = C
+	var/searching_ckey = whom
+	if(whom[1] == "@")
+		searching_ckey = findTrueKey(whom)
 
-/datum/pm_convo/proc/add(client/sender, message)
-	messages.Add("[sender]: [message]")
-	archived = FALSE
-	read = FALSE
+	if(searching_ckey == EXTERNAL_PM_USER)
+		return EXTERNAL_PM_USER
 
-/datum/pm_tracker/proc/add_message(client/title, client/sender, message, mob/user)
-	if(!pms[title.key])
-		pms[title.key] = new /datum/pm_convo(title)
-	else if(!pms[title.key].client)
-		// If they DCed earlier, we need to add the client reference back
-		pms[title.key].client = title
-	pms[title.key].add(sender, message)
+	return GLOB.directory[searching_ckey]
 
-	if(!open)
-		// The next time the window's opened, it'll be open to the most recent message
-		current_title = title.key
-		return
+/client/proc/receive_ahelp(reply_to, message, span_class = "adminsay")
+	to_chat(
+		src,
+		type = MESSAGE_TYPE_ADMINPM,
+		html = "<span class='[span_class]'>Admin PM from-<b>[reply_to]</b>: [message]</span>",
+		confidential = TRUE,
+	)
 
-	// If it's already opened, it'll refresh
-	show_ui(user)
+	current_ticket?.player_replied = FALSE
 
-/datum/pm_tracker/proc/show_ui(mob/user)
-	var/dat = ""
+	SEND_SIGNAL(src, COMSIG_ADMIN_HELP_RECEIVED, message)
 
-	// If it was forced open, make them use a special close button that alerts admins to closure
-	if(forced)
-		dat += "<div style='float: right'><big><a href='?src=[UID()];altclose=1'>Close</a></big></div>"
-
-	dat += "<a href='?src=[UID()];refresh=1'>Refresh</a>"
-	dat += "<a href='?src=[UID()];showarchived=1'>[show_archived ? "Hide" : "Show"] Archived</a>"
-	dat += "<br>"
-	for(var/title in pms)
-		if(pms[title].archived && !show_archived)
-			continue
-		var/label = "[title]"
-		var/class = ""
-		if(title == current_title)
-			label = "<b>[label]</b>"
-			class = "linkOn"
-		else if(!pms[title].read)
-			label = "<i>*[label]</i>"
-		dat += "<a class='[class]' href='?src=[UID()];newtitle=[title]'>[label]</a>"
-
-	var/datum/pm_convo/convo = pms[current_title]
-	var/datum/browser/popup = new(user, window_id, "Messages", 1000, 600, src)
-
-	if(forced) // Lockout the normal close button, force the UI one
-		popup.set_window_options("can_close=0")
-
-	if(convo)
-		popup.add_head_content(@{"<script type='text/javascript'>
-			window.onload = function () {
-				var msgs = document.getElementById('msgs');
-				msgs.scrollTop = msgs.scrollHeight;
-			}
-			</script>"})
-		convo.read = TRUE
-		dat += "<h2>[check_rights(R_ADMIN, FALSE, user) ? fancy_title(current_title) : current_title]</h2>"
-		dat += "<h4>"
-		dat += "<div id='msgs' style='width:950px; border: 3px solid; overflow-y: scroll; height: 350px;'>"
-		dat += "<table>"
-
-		for(var/message in convo.messages)
-			dat += "<tr><td>[message]</td></tr>"
-
-		dat += "</table>"
-		dat += "</div>"
-		if(convo.typing)
-			dat += "<i><span class='typing'>[current_title] is typing</span></i>"
-		dat += "<br>"
-		dat += "</h4>"
-		dat += "<a href='?src=[UID()];reply=[current_title]'>Reply</a>"
-		dat += "<a href='?src=[UID()];archive=[current_title]'>[convo.archived ? "Unarchive" : "Archive"]</a>"
-		if(check_rights(R_ADMIN, FALSE, user))
-			dat += "<a href='?src=[UID()];ping=[current_title]'>Ping</a>"
-
-	popup.set_content(dat)
-	popup.open()
-	open = TRUE
-
-/datum/pm_tracker/proc/fancy_title(title)
-	var/client/C = pms[title].client || update_client(title)
-	if(!C)
-		return "[title] (Disconnected)"
-	return "[key_name(C, FALSE)] ([ADMIN_QUE(C.mob,"?")]) ([ADMIN_PP(C.mob,"PP")]) ([ADMIN_VV(C.mob,"VV")]) ([ADMIN_TP(C.mob,"TP")]) ([ADMIN_SM(C.mob,"SM")]) ([admin_jump_link(C.mob)]) ([ADMIN_ALERT(C.mob,"SEND ALERT")])"
-
-/datum/pm_tracker/proc/update_client(title)
-	var/client/C = GLOB.directory[ckey(title)]
-	if(C)
-		pms[title].client = C
-		return C
-	return null
-
-/datum/pm_tracker/Topic(href, href_list)
-	if(href_list["archive"])
-		pms[href_list["archive"]].archived = !pms[href_list["archive"]].archived
-		show_ui(usr)
-		return
-
-	if(href_list["refresh"])
-		show_ui(usr)
-		return
-
-	if(href_list["altclose"])
-		message_admins("[key_name_admin(usr)] closed a force-opened PM window")
-		usr << browse(null, "window=[window_id]")
-		open = FALSE
-		forced = FALSE
-		return
-
-	if(href_list["newtitle"])
-		current_title = href_list["newtitle"]
-		show_ui(usr)
-		return
-
-	if(href_list["adminalert"])
-		if(!check_rights(R_ADMIN))
-			return
-
-		var/mob/about_to_be_banned = locateUID(href_list["adminalert"])
-		usr.client.cmd_admin_alert_message(about_to_be_banned)
-
-	if(href_list["ping"])
-		var/client/C = pms[href_list["ping"]].client
-		if(C)
-			C.pm_tracker.current_title = usr.key
-			C.pm_tracker.forced = TRUE // We forced it open
-			window_flash(C)
-			C.pm_tracker.show_ui(C.mob)
-			to_chat(usr, "<span class='notice'>Forced open [C]'s messages window.</span>")
-		return
-
-	if(href_list["reply"])
-		usr.client.cmd_admin_pm(ckey(href_list["reply"]), null)
-		show_ui(usr)
-		return
-
-	if(href_list["showarchived"])
-		show_archived = !show_archived
-		show_ui(usr)
-		return
-
-	if(href_list["close"])
-		open = FALSE
-		return
+#undef EXTERNAL_PM_USER
+#undef EXTERNALREPLYCOUNT
+#undef TGS_AHELP_USAGE

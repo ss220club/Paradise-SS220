@@ -7,11 +7,11 @@
 		return COMPONENT_INCOMPATIBLE
 
 	var/static/list/default_lines = list(
-		"CentComm's profligacy frays another thread.",
+		"CentCom's profligacy frays another thread.",
 		"Another tug at the weave.",
 		"Who knows when the stresses will finally shatter the form?",
 		"Even now a light shines through the cracks.",
-		"CentComm once more twists knowledge beyond its authority.",
+		"CentCom once more twists knowledge beyond its authority.",
 		"There is an uncertain air in the mansus.",
 		)
 	say_lines = text || default_lines
@@ -19,5 +19,7 @@
 	RegisterSignal(SSdcs, COMSIG_GLOB_VAR_EDIT, PROC_REF(var_edit_react))
 
 /datum/component/edit_complainer/proc/var_edit_react(datum/source, list/arguments)
+	SIGNAL_HANDLER
+
 	var/atom/movable/master = parent
-	master.atom_say(pick(say_lines))
+	master.say(pick(say_lines))

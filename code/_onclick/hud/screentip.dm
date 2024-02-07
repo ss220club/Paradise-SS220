@@ -1,18 +1,21 @@
-/obj/screen/screentip
+/atom/movable/screen/screentip
 	icon = null
+	icon_state = null
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	screen_loc = "TOP,LEFT"
 	maptext_height = 480
 	maptext_width = 480
-	maptext_y = -50
 	maptext = ""
+	layer = SCREENTIP_LAYER //Added to make screentips appear above action buttons (and other /atom/movable/screen objects)
 
-/obj/screen/screentip/Initialize(mapload, _hud)
+/atom/movable/screen/screentip/Initialize(mapload, datum/hud/hud_owner)
 	. = ..()
-	hud = _hud
 	update_view()
 
-/obj/screen/screentip/proc/update_view(datum/source)
-	if(!hud) //Might not have been initialized by now
+/atom/movable/screen/screentip/proc/update_view(datum/source)
+	SIGNAL_HANDLER
+	if(!hud || !hud.mymob.canon_client?.view_size) //Might not have been initialized by now
 		return
-	maptext_width = getviewsize(hud.mymob.client.view)[1] * world.icon_size
+	maptext_width = view_to_pixels(hud.mymob.canon_client.view_size.getView())[1]
+
+

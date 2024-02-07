@@ -1,4 +1,4 @@
-import { Button, Stack } from 'tgui/components';
+import { Button } from 'tgui/components';
 
 let url: string | null = null;
 
@@ -16,29 +16,24 @@ export const ReconnectButton = () => {
     return null;
   }
   return (
-    <Stack>
-      <Stack.Item>
-        <Button
-          fluid
-          icon="history"
-          color="white"
-          content="Reconnect"
-          onClick={() => {
-            Byond.command('.reconnect');
-          }}
-        />
-      </Stack.Item>
-      <Stack.Item>
-        <Button
-          icon="power-off"
-          color="white"
-          tooltip="Restart game"
-          tooltipPosition="top-end"
-          onClick={() => {
-            Byond.command('.quit');
-          }}
-        />
-      </Stack.Item>
-    </Stack>
+    <>
+      <Button
+        color="white"
+        onClick={() => {
+          Byond.command('.reconnect');
+        }}
+      >
+        Reconnect
+      </Button>
+      <Button
+        color="white"
+        onClick={() => {
+          location.href = `byond://${url}`;
+          Byond.command('.quit');
+        }}
+      >
+        Relaunch game
+      </Button>
+    </>
   );
 };

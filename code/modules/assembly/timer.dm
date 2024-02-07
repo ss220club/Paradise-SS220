@@ -2,31 +2,46 @@
 	name = "timer"
 	desc = "Used to time things. Works well with contraptions which has to count down. Tick tock."
 	icon_state = "timer"
-	materials = list(MAT_METAL=500, MAT_GLASS=50)
-	origin_tech = "magnets=1;engineering=1"
-
-	secured = FALSE
-
-	bomb_name = "time bomb"
+	custom_materials = list(/datum/material/iron=SMALL_MATERIAL_AMOUNT*5, /datum/material/glass=SMALL_MATERIAL_AMOUNT*0.5)
+	attachable = TRUE
+	drop_sound = 'sound/items/handling/component_drop.ogg'
+	pickup_sound = 'sound/items/handling/component_pickup.ogg'
 
 	var/timing = FALSE
 	var/time = 10
-	var/repeat = FALSE
-	var/set_time = 10
+	var/saved_time = 10
+	var/loop = FALSE
+	var/hearing_range = 3
+
+/obj/item/assembly/timer/suicide_act(mob/living/user)
+	user.visible_message(span_suicide("[user] looks at the timer and decides [user.p_their()] fate! It looks like [user.p_theyre()] going to commit suicide!"))
+	activate()//doesnt rely on timer_end to prevent weird metas where one person can control the timer and therefore someone's life. (maybe that should be how it works...)
+	addtimer(CALLBACK(src, PROC_REF(manual_suicide), user), time SECONDS)//kill yourself once the time runs out
+	return MANUAL_SUICIDE
+
+/obj/item/assembly/timer/proc/manual_suicide(mob/living/user)
+	user.visible_message(span_suicide("[user]'s time is up!"))
+	user.adjustOxyLoss(200)
+	user.death(FALSE)
+
+/obj/item/assembly/timer/Initialize(mapload)
+	. = ..()
+	START_PROCESSING(SSobj, src)
+
+/obj/item/assembly/timer/Destroy()
+	STOP_PROCESSING(SSobj, src)
+	. = ..()
 
 /obj/item/assembly/timer/examine(mob/user)
 	. = ..()
-	if(timing)
-		. += "The timer is counting down from [time]!"
-	else
-		. += "The timer is set for [time] seconds."
+	. += span_notice("The timer is [timing ? "counting down from [time]":"set for [time] seconds"].")
 
 /obj/item/assembly/timer/activate()
 	if(!..())
 		return FALSE//Cooldown check
 	timing = !timing
-	update_icon()
-	return FALSE
+	update_appearance()
+	return TRUE
 
 /obj/item/assembly/timer/toggle_secure()
 	secured = !secured
@@ -35,25 +50,31 @@
 	else
 		timing = FALSE
 		STOP_PROCESSING(SSobj, src)
-	update_icon()
+	update_appearance()
 	return secured
 
 /obj/item/assembly/timer/proc/timer_end()
-	if(!secured || cooldown > 0)
-		return FALSE
-	cooldown = 2
-	pulse(FALSE)
-	if(loc)
-		loc.visible_message("[bicon(src)] *beep* *beep*", "*beep* *beep*")
-	addtimer(CALLBACK(src, PROC_REF(process_cooldown)), 10)
+	if(secured && next_activate <= world.time)
+		pulse()
+		audible_message(span_infoplain("[icon2html(src, hearers(src))] *beep* *beep* *beep*"), null, hearing_range)
+		for(var/mob/hearing_mob in get_hearers_in_view(hearing_range, src))
+			hearing_mob.playsound_local(get_turf(src), 'sound/machines/triple_beep.ogg', ASSEMBLY_BEEP_VOLUME, TRUE)
+	if(loop)
+		timing = TRUE
+	update_appearance()
 
-/obj/item/assembly/timer/process()
-	if(timing && (time > 0))
-		time -= 2 // 2 seconds per process()
-	if(timing && time <= 0)
-		timing = repeat
+/obj/item/assembly/timer/process(seconds_per_tick)
+	if(!timing)
+		return
+	time -= seconds_per_tick
+	if(time <= 0)
+		timing = FALSE
 		timer_end()
-		time = set_time
+		time = saved_time
+
+/obj/item/assembly/timer/update_appearance()
+	. = ..()
+	holder?.update_appearance()
 
 /obj/item/assembly/timer/update_overlays()
 	. = ..()
@@ -61,68 +82,45 @@
 	if(timing)
 		. += "timer_timing"
 		attached_overlays += "timer_timing"
-	if(holder)
-		holder.update_icon()
 
-/obj/item/assembly/timer/interact(mob/user as mob)//TODO: Have this use the wires
-	if(!secured)
-		user.show_message("<span class='warning'>[src] is unsecured!</span>")
-		return FALSE
-	var/second = time % 60
-	var/minute = (time - second) / 60
-	var/set_second = set_time % 60
-	var/set_minute = (set_time - set_second) / 60
-	if(second < 10) second = "0[second]"
-	if(set_second < 10) set_second = "0[set_second]"
+/obj/item/assembly/timer/ui_status(mob/user)
+	if(is_secured(user))
+		return ..()
+	return UI_CLOSE
 
-	var/dat = {"
-	<TT>
-		<center><h2>Timing Unit</h2>
-		[minute]:[second] <a href='?src=[UID()];time=1'>[timing?"Stop":"Start"]</a> <a href='?src=[UID()];reset=1'>Reset</a><br>
-		Repeat: <a href='?src=[UID()];repeat=1'>[repeat?"On":"Off"]</a><br>
-		Timer set for
-		<A href='?src=[UID()];tp=-30'>-</A> <A href='?src=[UID()];tp=-1'>-</A> [set_minute]:[set_second] <A href='?src=[UID()];tp=1'>+</A> <A href='?src=[UID()];tp=30'>+</A>
-		</center>
-	</TT>
-	<BR><BR>
-	<A href='?src=[UID()];refresh=1'>Refresh</A>
-	<BR><BR>
-	<A href='?src=[UID()];close=1'>Close</A>"}
-	var/datum/browser/popup = new(user, "timer", name, 400, 400)
-	popup.set_content(dat)
-	popup.open(0)
-	onclose(user, "timer")
+/obj/item/assembly/timer/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "Timer", name)
+		ui.open()
 
-/obj/item/assembly/timer/Topic(href, href_list)
-	..()
-	if(usr.incapacitated() || !in_range(loc, usr))
-		usr << browse(null, "window=timer")
-		onclose(usr, "timer")
+/obj/item/assembly/timer/ui_data(mob/user)
+	var/list/data = list()
+	data["seconds"] = round(time % 60)
+	data["minutes"] = round((time - data["seconds"]) / 60)
+	data["timing"] = timing
+	data["loop"] = loop
+	return data
+
+/obj/item/assembly/timer/ui_act(action, params)
+	. = ..()
+	if(.)
 		return
 
-	if(href_list["time"])
-		timing = !timing
-		if(timing && istype(holder, /obj/item/transfer_valve))
-			investigate_log("[key_name(usr)] activated [src] attachment for [loc]", INVESTIGATE_BOMB)
-			add_attack_logs(usr, holder, "activated [src] attachment on", ATKLOG_FEW)
-			log_game("[key_name(usr)] activated [src] attachment for [loc]")
-		update_icon()
-	if(href_list["reset"])
-		time = set_time
-
-	if(href_list["repeat"])
-		repeat = !repeat
-
-	if(href_list["tp"])
-		var/tp = text2num(href_list["tp"])
-		set_time += tp
-		set_time = min(max(round(set_time), 6), 600)
-		if(!timing)
-			time = set_time
-
-	if(href_list["close"])
-		usr << browse(null, "window=timer")
-		return
-
-	if(usr)
-		attack_self(usr)
+	switch(action)
+		if("time")
+			timing = !timing
+			if(timing && istype(holder, /obj/item/transfer_valve))
+				log_bomber(usr, "activated a", src, "attachment on [holder]")
+			update_appearance()
+			. = TRUE
+		if("repeat")
+			loop = !loop
+			. = TRUE
+		if("input")
+			var/value = text2num(params["adjust"])
+			if(value)
+				value = round(time + value)
+				time = clamp(value, 1, 600)
+				saved_time = time
+				. = TRUE

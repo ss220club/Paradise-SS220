@@ -1,137 +1,117 @@
-/obj/machinery/atmospherics/binary/passive_gate
-	//Tries to achieve target pressure at output (like a normal pump) except
-	//	Uses no power but can not transfer gases from a low pressure area to a high pressure area
-	icon = 'icons/atmos/passive_gate.dmi'
-	icon_state = "map"
+/*
 
+Passive gate is similar to the regular pump except:
+* It doesn't require power
+* Can not transfer low pressure to higher pressure (so it's more like a valve where you can control the flow)
+* Passes gas when output pressure lower than target pressure
+
+*/
+
+/obj/machinery/atmospherics/components/binary/passive_gate
+	icon_state = "passgate_map-3"
 	name = "passive gate"
-	desc = "A one-way air valve that does not require power"
-
+	desc = "A one-way air valve that does not require power. Passes gas when the output pressure is lower than the target pressure."
 	can_unwrench = TRUE
+	shift_underlay_only = FALSE
+	interaction_flags_machine = INTERACT_MACHINE_OFFLINE | INTERACT_MACHINE_WIRES_IF_OPEN | INTERACT_MACHINE_ALLOW_SILICON | INTERACT_MACHINE_OPEN_SILICON
+	construction_type = /obj/item/pipe/directional
+	pipe_state = "passivegate"
+	use_power = NO_POWER_USE
+	///Set the target pressure the component should arrive to
+	var/target_pressure = ONE_ATMOSPHERE
 
-	target_pressure = ONE_ATMOSPHERE
+/obj/machinery/atmospherics/components/binary/passive_gate/Initialize(mapload)
+	. = ..()
+	register_context()
 
-	var/id = null
+/obj/machinery/atmospherics/components/binary/passive_gate/add_context(atom/source, list/context, obj/item/held_item, mob/user)
+	. = ..()
+	context[SCREENTIP_CONTEXT_CTRL_LMB] = "Turn [on ? "off" : "on"]"
+	context[SCREENTIP_CONTEXT_ALT_LMB] = "Maximize target pressure"
+	return CONTEXTUAL_SCREENTIP_SET
 
-/obj/machinery/atmospherics/binary/volume_pump/can_be_pulled(user, grab_state, force, show_message)
-	return FALSE
-
-/obj/machinery/atmospherics/binary/passive_gate/CtrlClick(mob/living/user)
-	if(can_use_shortcut(user))
-		toggle(user)
-		investigate_log("was turned [on ? "on" : "off"] by [key_name(user)]", "atmos")
+/obj/machinery/atmospherics/components/binary/passive_gate/CtrlClick(mob/user)
+	if(can_interact(user))
+		on = !on
+		balloon_alert(user, "turned [on ? "on" : "off"]")
+		investigate_log("was turned [on ? "on" : "off"] by [key_name(user)]", INVESTIGATE_ATMOS)
+		update_appearance()
 	return ..()
 
-/obj/machinery/atmospherics/binary/passive_gate/examine(mob/user)
-	. = ..()
-	. += "<span class='notice'>This is a one-way regulator, allowing gas to flow only at a specific pressure and flow rate. If the light is green, gas is flowing.</span>"
+/obj/machinery/atmospherics/components/binary/passive_gate/AltClick(mob/user)
+	if(can_interact(user))
+		target_pressure = MAX_OUTPUT_PRESSURE
+		investigate_log("was set to [target_pressure] kPa by [key_name(user)]", INVESTIGATE_ATMOS)
+		balloon_alert(user, "pressure output set to [target_pressure] kPa")
+		update_appearance()
+	return ..()
 
-/obj/machinery/atmospherics/binary/passive_gate/update_icon_state()
-	icon_state = "[on ? "on" : "off"]"
+/obj/machinery/atmospherics/components/binary/passive_gate/update_icon_nopipes()
+	cut_overlays()
+	icon_state = "passgate_off-[set_overlay_offset(piping_layer)]"
+	if(on)
+		add_overlay(get_pipe_image(icon, "passgate_on-[set_overlay_offset(piping_layer)]"))
 
-/obj/machinery/atmospherics/binary/passive_gate/update_underlays()
-	if(..())
-		underlays.Cut()
-		var/turf/T = get_turf(src)
-		if(!istype(T))
-			return
-		add_underlay(T, node1, turn(dir, 180))
-		add_underlay(T, node2, dir)
-
-/obj/machinery/atmospherics/binary/passive_gate/process_atmos()
-	..()
+/obj/machinery/atmospherics/components/binary/passive_gate/process_atmos()
 	if(!on)
-		return 0
-
-	var/output_starting_pressure = air2.return_pressure()
-	var/input_starting_pressure = air1.return_pressure()
-
-	if(output_starting_pressure >= min(target_pressure,input_starting_pressure - 10))
-		//No need to pump gas if target is already reached or input pressure is too low
-		//Need at least 10 KPa difference to overcome friction in the mechanism
-		return 1
-
-	if(target_pressure >= input_starting_pressure - 10)
-		//Gas will not pump if the input pressure is lower than the target
-		return 1
-
-	//Calculate necessary moles to transfer using PV = nRT
-	if((air1.total_moles() > 0) && (air1.temperature > 0))
-		var/pressure_delta = min(target_pressure - output_starting_pressure, (input_starting_pressure - output_starting_pressure) / 2)
-		//Can not have a pressure delta that would cause output_pressure > input_pressure
-
-		var/transfer_moles = pressure_delta * air2.volume/(air1.temperature * R_IDEAL_GAS_EQUATION)
-
-		//Actually transfer the gas
-		var/datum/gas_mixture/removed = air1.remove(transfer_moles)
-		air2.merge(removed)
-
-		parent1.update = 1
-
-		parent2.update = 1
-	return 1
-
-/obj/machinery/atmospherics/binary/passive_gate/attack_hand(mob/user)
-	if(..())
 		return
 
-	if(!allowed(user))
-		to_chat(user, "<span class='alert'>Access denied.</span>")
+	var/datum/gas_mixture/air1 = airs[1]
+	var/datum/gas_mixture/air2 = airs[2]
+	if(air1.release_gas_to(air2, target_pressure))
+		update_parents()
+
+/obj/machinery/atmospherics/components/binary/passive_gate/relaymove(mob/living/user, direction)
+	if(!on || direction != dir)
 		return
+	. = ..()
 
-	add_fingerprint(user)
-	ui_interact(user)
-
-/obj/machinery/atmospherics/binary/passive_gate/attack_ghost(mob/user)
-	ui_interact(user)
-
-/obj/machinery/atmospherics/binary/passive_gate/ui_state(mob/user)
-	return GLOB.default_state
-
-/obj/machinery/atmospherics/binary/passive_gate/ui_interact(mob/user, datum/tgui/ui = null)
+/obj/machinery/atmospherics/components/binary/passive_gate/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "AtmosPump", name)
 		ui.open()
 
-/obj/machinery/atmospherics/binary/passive_gate/ui_data(mob/user)
-	var/list/data = list(
-		"on" = on,
-		"rate" = round(target_pressure),
-		"max_rate" = MAX_OUTPUT_PRESSURE,
-		"gas_unit" = "kPa",
-		"step" = 10 // This is for the TGUI <NumberInput> step. It's here since multiple pumps share the same UI, but need different values.
-	)
+/obj/machinery/atmospherics/components/binary/passive_gate/ui_data()
+	var/data = list()
+	data["on"] = on
+	data["pressure"] = round(target_pressure)
+	data["max_pressure"] = round(MAX_OUTPUT_PRESSURE)
 	return data
 
-/obj/machinery/atmospherics/binary/passive_gate/ui_act(action, list/params)
-	if(..())
+/obj/machinery/atmospherics/components/binary/passive_gate/ui_act(action, params)
+	. = ..()
+	if(.)
 		return
-
 	switch(action)
 		if("power")
-			toggle()
-			investigate_log("was turned [on ? "on" : "off"] by [key_name(usr)]", "atmos")
-			return TRUE
-
-		if("max_rate")
-			target_pressure = MAX_OUTPUT_PRESSURE
+			on = !on
+			investigate_log("was turned [on ? "on" : "off"] by [key_name(usr)]", INVESTIGATE_ATMOS)
 			. = TRUE
+		if("pressure")
+			var/pressure = params["pressure"]
+			if(pressure == "max")
+				pressure = MAX_OUTPUT_PRESSURE
+				. = TRUE
+			else if(text2num(pressure) != null)
+				pressure = text2num(pressure)
+				. = TRUE
+			if(.)
+				target_pressure = clamp(pressure, 0, ONE_ATMOSPHERE*100)
+				investigate_log("was set to [target_pressure] kPa by [key_name(usr)]", INVESTIGATE_ATMOS)
+	update_appearance()
 
-		if("min_rate")
-			target_pressure = 0
-			. = TRUE
+/obj/machinery/atmospherics/components/binary/passive_gate/can_unwrench(mob/user)
+	. = ..()
+	if(. && on)
+		to_chat(user, span_warning("You cannot unwrench [src], turn it off first!"))
+		return FALSE
 
-		if("custom_rate")
-			target_pressure = clamp(text2num(params["rate"]), 0 , MAX_OUTPUT_PRESSURE)
-			. = TRUE
-	if(.)
-		investigate_log("was set to [target_pressure] kPa by [key_name(usr)]", "atmos")
 
-/obj/machinery/atmospherics/binary/passive_gate/attackby(obj/item/W, mob/user, params)
-	if(!istype(W, /obj/item/wrench))
-		return ..()
-	if(on)
-		to_chat(user, "<span class='alert'>You cannot unwrench this [src], turn it off first.</span>")
-		return 1
-	return ..()
+/obj/machinery/atmospherics/components/binary/passive_gate/layer2
+	piping_layer = 2
+	icon_state = "passgate_map-2"
+
+/obj/machinery/atmospherics/components/binary/passive_gate/layer4
+	piping_layer = 4
+	icon_state = "passgate_map-4"

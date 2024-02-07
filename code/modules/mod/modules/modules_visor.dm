@@ -11,8 +11,8 @@
 	cooldown_time = 0.5 SECONDS
 	/// The HUD type given by the visor.
 	var/hud_type
-	/// The trait given by the visor.
-	var/visor_trait = list()
+	/// The traits given by the visor.
+	var/list/visor_traits = list()
 
 /obj/item/mod/module/visor/on_activation()
 	. = ..()
@@ -20,9 +20,9 @@
 		return
 	if(hud_type)
 		var/datum/atom_hud/hud = GLOB.huds[hud_type]
-		hud.add_hud_to(mod.wearer)
-	if(length(visor_trait))
-		ADD_TRAIT(mod.wearer, visor_trait, MODSUIT_TRAIT)
+		hud.show_to(mod.wearer)
+	if(length(visor_traits))
+		mod.wearer.add_traits(visor_traits, MOD_TRAIT)
 	mod.wearer.update_sight()
 
 /obj/item/mod/module/visor/on_deactivation(display_message = TRUE, deleting = FALSE)
@@ -31,9 +31,9 @@
 		return
 	if(hud_type)
 		var/datum/atom_hud/hud = GLOB.huds[hud_type]
-		hud.remove_hud_from(mod.wearer)
-	if(length(visor_trait))
-		REMOVE_TRAIT(mod.wearer, visor_trait, MODSUIT_TRAIT)
+		hud.hide_from(mod.wearer)
+	if(length(visor_traits))
+		mod.wearer.remove_traits(visor_traits, MOD_TRAIT)
 	mod.wearer.update_sight()
 
 //Medical Visor - Gives you a medical HUD.
@@ -44,6 +44,7 @@
 		access data such as patient files in a convenient readout. They say these also let you see behind you."
 	icon_state = "medhud_visor"
 	hud_type = DATA_HUD_MEDICAL_ADVANCED
+	visor_traits = list(TRAIT_MEDICAL_HUD)
 
 //Diagnostic Visor - Gives you a diagnostic HUD.
 /obj/item/mod/module/visor/diaghud
@@ -53,6 +54,7 @@
 		and integrity of such. They say these also let you see behind you."
 	icon_state = "diaghud_visor"
 	hud_type = DATA_HUD_DIAGNOSTIC_ADVANCED
+	visor_traits = list(TRAIT_DIAGNOSTIC_HUD)
 
 //Security Visor - Gives you a security HUD.
 /obj/item/mod/module/visor/sechud
@@ -62,6 +64,7 @@
 		and generally know who to shoot. They say these also let you see behind you."
 	icon_state = "sechud_visor"
 	hud_type = DATA_HUD_SECURITY_ADVANCED
+	visor_traits = list(TRAIT_SECURITY_HUD)
 
 //Meson Visor - Gives you meson vision.
 /obj/item/mod/module/visor/meson
@@ -70,7 +73,7 @@
 		technology, used by construction workers and miners across the galaxy to see basic structural and terrain layouts \
 		through walls, regardless of lighting conditions. They say these also let you see behind you."
 	icon_state = "meson_visor"
-	visor_trait = TRAIT_MESON_VISION
+	visor_traits = list(TRAIT_MESON_VISION, TRAIT_MADNESS_IMMUNE)
 
 //Thermal Visor - Gives you thermal vision.
 /obj/item/mod/module/visor/thermal
@@ -79,8 +82,7 @@
 		the thermal radiation output of objects near the user. While it can detect the heat output of even something as \
 		small as a rodent, it still produces irritating red overlay. They say these also let you see behind you."
 	icon_state = "thermal_visor"
-	origin_tech = "combat=6;engineering=6;syndicate=2"
-	visor_trait = TRAIT_THERMAL_VISION
+	visor_traits = list(TRAIT_THERMAL_VISION)
 
 //Night Visor - Gives you night vision.
 /obj/item/mod/module/visor/night
@@ -89,5 +91,4 @@
 		this allows the user to perceive their surroundings while in complete darkness, enhancing the view by tenfold; \
 		yet brightening everything into a spooky green glow. They say these also let you see behind you."
 	icon_state = "night_visor"
-	origin_tech = "combat=5;engineering=5;syndicate=1"
-	visor_trait = TRAIT_NIGHT_VISION
+	visor_traits = list(TRAIT_TRUE_NIGHT_VISION)

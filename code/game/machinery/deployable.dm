@@ -6,10 +6,6 @@
 #define WOOD 2
 #define SAND 3
 
-#define DROPWALL_UPTIME 1 MINUTES
-
-#define AUTO "automatic"
-
 //Barricades/cover
 
 /obj/structure/barricade
@@ -20,90 +16,84 @@
 	max_integrity = 100
 	var/proj_pass_rate = 50 //How many projectiles will pass the cover. Lower means stronger cover
 	var/bar_material = METAL
-	var/drop_amount = 3
-	var/stacktype = /obj/item/stack/sheet/metal
-	/// This variable is used to allow projectiles to always shoot through a barrier from a certain direction
-	var/directional_blockage = FALSE
-	//The list of directions to block a projectile from
-	var/list/directional_list = list()
 
 /obj/structure/barricade/deconstruct(disassembled = TRUE)
-	if(!(flags & NODECONSTRUCT))
+	if(!(obj_flags & NO_DECONSTRUCTION))
 		make_debris()
 	qdel(src)
 
 /obj/structure/barricade/proc/make_debris()
-	if(stacktype)
-		new stacktype(get_turf(src), drop_amount)
+	return
 
-/obj/structure/barricade/welder_act(mob/user, obj/item/I)
-	if(bar_material != METAL)
-		return
-	if(obj_integrity >= max_integrity)
-		to_chat(user, "<span class='notice'>[src] does not need repairs.</span>")
-		return
-	if(user.a_intent == INTENT_HARM)
-		return
-	if(!I.tool_use_check(user, 0))
-		return
-	WELDER_ATTEMPT_REPAIR_MESSAGE
-	if(I.use_tool(src, user, 40, volume = I.tool_volume))
-		WELDER_REPAIR_SUCCESS_MESSAGE
-		obj_integrity = clamp(obj_integrity + 20, 0, max_integrity)
-		update_icon()
-	return TRUE
+/obj/structure/barricade/attackby(obj/item/I, mob/living/user, params)
+	if(I.tool_behaviour == TOOL_WELDER && !user.combat_mode && bar_material == METAL)
+		if(atom_integrity < max_integrity)
+			if(!I.tool_start_check(user, amount=1))
+				return
 
-/obj/structure/barricade/CanPass(atom/movable/mover, turf/target)//So bullets will fly over and stuff.
+			to_chat(user, span_notice("You begin repairing [src]..."))
+			if(I.use_tool(src, user, 40, volume=40))
+				atom_integrity = clamp(atom_integrity + 20, 0, max_integrity)
+	else
+		return ..()
+
+/obj/structure/barricade/CanAllowThrough(atom/movable/mover, border_dir)//So bullets will fly over and stuff.
+	. = ..()
 	if(locate(/obj/structure/barricade) in get_turf(mover))
 		return TRUE
-	else if(istype(mover, /obj/item/projectile))
+	else if(isprojectile(mover))
 		if(!anchored)
 			return TRUE
-		var/obj/item/projectile/proj = mover
-		if(directional_blockage)
-			if(one_eighty_check(mover))
-				return FALSE
+		var/obj/projectile/proj = mover
 		if(proj.firer && Adjacent(proj.firer))
 			return TRUE
 		if(prob(proj_pass_rate))
 			return TRUE
 		return FALSE
-	if(isitem(mover)) //thrown items with the dropwall
-		if(directional_blockage)
-			if(one_eighty_check(mover))
-				return FALSE
-	return !density
-
-/obj/structure/barricade/proc/one_eighty_check(atom/movable/mover)
-	return turn(mover.dir, 180) in directional_list
 
 /////BARRICADE TYPES///////
-
 /obj/structure/barricade/wooden
 	name = "wooden barricade"
 	desc = "This space is blocked off by a wooden barricade."
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "woodenbarricade"
+	resistance_flags = FLAMMABLE
 	bar_material = WOOD
-	stacktype = /obj/item/stack/sheet/wood
+	var/drop_amount = 3
 
+/obj/structure/barricade/wooden/Initialize(mapload)
+	. = ..()
+
+	var/static/list/tool_behaviors = list(TOOL_CROWBAR = list(SCREENTIP_CONTEXT_LMB = "Deconstruct"))
+	AddElement(/datum/element/contextual_screentip_tools, tool_behaviors)
+	register_context()
 
 /obj/structure/barricade/wooden/attackby(obj/item/I, mob/user)
-	if(istype(I,/obj/item/stack/sheet/wood))
-		var/obj/item/stack/sheet/wood/W = I
-		if(W.get_amount() < 5)
-			to_chat(user, "<span class='warning'>You need at least five wooden planks to make a wall!</span>")
+	if(istype(I,/obj/item/stack/sheet/mineral/wood))
+		var/obj/item/stack/sheet/mineral/wood/W = I
+		if(W.amount < 5)
+			to_chat(user, span_warning("You need at least five wooden planks to make a wall!"))
 			return
 		else
-			to_chat(user, "<span class='notice'>You start adding [I] to [src]...</span>")
-			if(do_after(user, 50, target = src))
-				if(!W.use(5))
-					return
+			to_chat(user, span_notice("You start adding [I] to [src]..."))
+			playsound(src, 'sound/items/hammering_wood.ogg', 50, vary = TRUE)
+			if(do_after(user, 50, target=src))
+				W.use(5)
 				var/turf/T = get_turf(src)
-				T.ChangeTurf(/turf/simulated/wall/mineral/wood/nonmetal)
+				T.place_on_top(/turf/closed/wall/mineral/wood/nonmetal)
 				qdel(src)
-			return //return is need to prevent people from exploiting zero-hit cooldowns with the do_after here
+				return
 	return ..()
+
+/obj/structure/barricade/wooden/crowbar_act(mob/living/user, obj/item/tool)
+	balloon_alert(user, "deconstructing barricade...")
+	if(!tool.use_tool(src, user, 2 SECONDS, volume=50))
+		return
+	balloon_alert(user, "barricade deconstructed")
+	tool.play_tool_sound(src)
+	new /obj/item/stack/sheet/mineral/wood(get_turf(src), drop_amount)
+	qdel(src)
+	return ITEM_INTERACT_SUCCESS
 
 /obj/structure/barricade/wooden/crude
 	name = "crude plank barricade"
@@ -112,11 +102,15 @@
 	drop_amount = 1
 	max_integrity = 50
 	proj_pass_rate = 65
+	layer = SIGN_LAYER
 
 /obj/structure/barricade/wooden/crude/snow
 	desc = "This space is blocked off by a crude assortment of planks. It seems to be covered in a layer of snow."
 	icon_state = "woodenbarricade-snow-old"
 	max_integrity = 75
+
+/obj/structure/barricade/wooden/make_debris()
+	new /obj/item/stack/sheet/mineral/wood(get_turf(src), drop_amount)
 
 /obj/structure/barricade/sandbags
 	name = "sandbags"
@@ -126,27 +120,39 @@
 	base_icon_state = "sandbags"
 	max_integrity = 280
 	proj_pass_rate = 20
-	pass_flags = LETPASSTHROW
+	pass_flags_self = LETPASSTHROW
 	bar_material = SAND
-	climbable = TRUE
 	smoothing_flags = SMOOTH_BITMASK
-	smoothing_groups = list(SMOOTH_GROUP_SANDBAGS)
-	canSmoothWith = list(SMOOTH_GROUP_SANDBAGS, SMOOTH_GROUP_WALLS, SMOOTH_GROUP_SECURITY_BARRICADE)
-	stacktype = null
+	smoothing_groups = SMOOTH_GROUP_SANDBAGS
+	canSmoothWith = SMOOTH_GROUP_SANDBAGS + SMOOTH_GROUP_SECURITY_BARRICADE + SMOOTH_GROUP_WALLS
+
+/obj/structure/barricade/sandbags/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/climbable)
+	AddElement(/datum/element/elevation, pixel_shift = 12)
 
 /obj/structure/barricade/security
 	name = "security barrier"
 	desc = "A deployable barrier. Provides good cover in fire fights."
-	icon = 'icons/obj/objects.dmi'
+	icon = 'icons/obj/structures.dmi'
 	icon_state = "barrier0"
 	density = FALSE
 	anchored = FALSE
 	max_integrity = 180
 	proj_pass_rate = 20
-	armor = list(melee = 10, bullet = 50, laser = 50, energy = 50, bomb = 10, rad = 100, fire = 10, acid = 0)
-	stacktype = null
+	armor_type = /datum/armor/barricade_security
+
 	var/deploy_time = 40
 	var/deploy_message = TRUE
+
+
+/datum/armor/barricade_security
+	melee = 10
+	bullet = 50
+	laser = 50
+	energy = 50
+	bomb = 10
+	fire = 10
 
 /obj/structure/barricade/security/Initialize(mapload)
 	. = ..()
@@ -154,27 +160,27 @@
 
 /obj/structure/barricade/security/proc/deploy()
 	icon_state = "barrier1"
-	density = TRUE
-	anchored = TRUE
+	set_density(TRUE)
+	set_anchored(TRUE)
 	if(deploy_message)
-		visible_message("<span class='warning'>[src] deploys!</span>")
+		visible_message(span_warning("[src] deploys!"))
 
 
 /obj/item/grenade/barrier
 	name = "barrier grenade"
 	desc = "Instant cover."
-	icon = 'icons/obj/grenade.dmi'
+	icon = 'icons/obj/weapons/grenade.dmi'
 	icon_state = "wallbang"
-	item_state = "flashbang"
+	inhand_icon_state = "flashbang"
 	actions_types = list(/datum/action/item_action/toggle_barrier_spread)
 	var/mode = SINGLE
 
 /obj/item/grenade/barrier/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>Alt-click to toggle modes.</span>"
+	. += span_notice("Alt-click to toggle modes.")
 
 /obj/item/grenade/barrier/AltClick(mob/living/carbon/user)
-	if(!istype(user) || !user.Adjacent(src) || user.incapacitated())
+	if(!istype(user) || !user.can_perform_action(src))
 		return
 	toggle_mode(user)
 
@@ -187,279 +193,49 @@
 		if(HORIZONTAL)
 			mode = SINGLE
 
-	to_chat(user, "[src] is now in [mode] mode.")
+	to_chat(user, span_notice("[src] is now in [mode] mode."))
 
-/obj/item/grenade/barrier/prime()
-	new /obj/structure/barricade/security(get_turf(loc))
+/obj/item/grenade/barrier/detonate(mob/living/lanced_by)
+	. = ..()
+	if(!.)
+		return
+
+	new /obj/structure/barricade/security(get_turf(src.loc))
 	switch(mode)
 		if(VERTICAL)
-			var/target_turf = get_step(src, NORTH)
-			if(!(is_blocked_turf(target_turf)))
+			var/turf/target_turf = get_step(src, NORTH)
+			if(!target_turf.is_blocked_turf())
 				new /obj/structure/barricade/security(target_turf)
 
-			var/target_turf2 = get_step(src, SOUTH)
-			if(!(is_blocked_turf(target_turf2)))
+			var/turf/target_turf2 = get_step(src, SOUTH)
+			if(!target_turf2.is_blocked_turf())
 				new /obj/structure/barricade/security(target_turf2)
 		if(HORIZONTAL)
-			var/target_turf = get_step(src, EAST)
-			if(!(is_blocked_turf(target_turf)))
+			var/turf/target_turf = get_step(src, EAST)
+			if(!target_turf.is_blocked_turf())
 				new /obj/structure/barricade/security(target_turf)
 
-			var/target_turf2 = get_step(src, WEST)
-			if(!(is_blocked_turf(target_turf2)))
+			var/turf/target_turf2 = get_step(src, WEST)
+			if(!target_turf2.is_blocked_turf())
 				new /obj/structure/barricade/security(target_turf2)
 	qdel(src)
 
 /obj/item/grenade/barrier/ui_action_click(mob/user)
 	toggle_mode(user)
 
+/obj/item/deployable_turret_folded
+	name = "folded heavy machine gun"
+	desc = "A folded and unloaded heavy machine gun, ready to be deployed and used."
+	icon = 'icons/obj/weapons/turrets.dmi'
+	icon_state = "folded_hmg"
+	inhand_icon_state = "folded_hmg"
+	max_integrity = 250
+	w_class = WEIGHT_CLASS_BULKY
+	slot_flags = ITEM_SLOT_BACK
 
-/obj/structure/barricade/mime
-	name = "floor"
-	desc = "Is... this a floor?"
-	icon = 'icons/effects/water.dmi'
-	icon_state = "wet_floor_static"
-	stacktype = /obj/item/stack/sheet/mineral/tranquillite
-
-/obj/structure/barricade/mime/mrcd
-	stacktype = null
-
-/obj/structure/barricade/dropwall
-	name = "dropwall"
-	desc = "A temporary deployable energy shield powered by a generator. Breaking the generator will destroy all the shields connected to it."
-	icon = 'icons/obj/dropwall.dmi'
-	icon_state = "dropwall_dead" //sprite chosen in init
-	armor = list(MELEE = 0, BULLET = 50, LASER = 50, ENERGY = 50, BOMB = 10, RAD = 100, FIRE = 10, ACID = 0) // Copied from the security barrier, but no melee armor
-	density = FALSE
-	directional_blockage = TRUE
-	proj_pass_rate = 100 //don't worry about it, covered by directional blockage.
-	stacktype = null
-	/// This variable is used to tell the shield to ping it's owner when it is broke.
-	var/core_shield = FALSE
-	/// This variable is to tell the shield what it's source is.
-	var/obj/structure/dropwall_generator/source = null
-	explosion_block = 8 //should be enough for a potasium water nade that isn't a maxcap. If you stand next to a maxcap with this however, it will end poorly
-
-/obj/structure/barricade/dropwall/Initialize(mapload, owner, core, dir_1, dir_2)
+/obj/item/deployable_turret_folded/Initialize(mapload)
 	. = ..()
-	source = owner
-	core_shield = core
-	directional_list += dir_1
-	directional_list += dir_2
-	if(dir_2)
-		icon_state = "[dir2text(dir_1 + dir_2)]"
-	else
-		icon_state = "[dir2text(dir_1)]"
-
-/obj/structure/barricade/dropwall/Destroy()
-	if(core_shield)
-		source.protected = FALSE
-	source = null
-	return ..()
-
-/obj/structure/barricade/dropwall/emp_act(severity)
-	..()
-	take_damage(40 / severity, BRUTE) //chances are the EMP will also hit the generator, we don't want it to double up too heavily
-
-/obj/structure/barricade/dropwall/bullet_act(obj/item/projectile/P)
-	if(P.shield_buster)
-		qdel(src)
-	else
-		return ..()
-
-/obj/item/grenade/barrier/dropwall
-	name = "dropwall shield generator"
-	desc = "This generator designed by Shellguard Munitions's spartan division is used to deploy a temporary cover that blocks projectiles and explosions from a direction, while allowing projectiles to pass freely from behind."
-	actions_types = list(/datum/action/item_action/toggle_barrier_spread)
-	icon = 'icons/obj/dropwall.dmi'
-	icon_state = "dropwall"
-	item_state = "grenade"
-	mode = AUTO
-	var/generator_type = /obj/structure/dropwall_generator
-	var/uptime = DROPWALL_UPTIME
-	/// If this is true we do not arm again, due to the sleep
-	var/deployed = FALSE
-	/// Mob who armed it. Needed for the get_dir proc
-	var/armer
-
-/obj/item/grenade/barrier/dropwall/toggle_mode(mob/user)
-	switch(mode)
-		if(AUTO)
-			mode = NORTH
-		if(NORTH)
-			mode = EAST
-		if(EAST)
-			mode = SOUTH
-		if(SOUTH)
-			mode = WEST
-		if(WEST)
-			mode = AUTO
-
-	to_chat(user, "[src] is now in [mode == AUTO ? mode : dir2text(mode)] mode.")
-
-/obj/item/grenade/barrier/dropwall/attack_self(mob/user)
-	. = ..()
-	armer = user
-
-
-/obj/item/grenade/barrier/dropwall/end_throw()
-	if(active)
-		addtimer(CALLBACK(src, PROC_REF(prime)), 1) //Wait for the throw to fully end
-
-/obj/item/grenade/barrier/dropwall/prime()
-	if(deployed)
-		return
-	if(mode == AUTO)
-		mode = angle2dir_cardinal(get_angle(armer, get_turf(src)))
-	new generator_type(get_turf(loc), mode, uptime)
-	deployed = TRUE
-	armer = null
-	qdel(src)
-
-/obj/structure/dropwall_generator
-	name = "deployed dropwall shield generator"
-	desc = "This generator designed by Shellguard Munitions's spartan division is used to deploy a temporary cover that blocks projectiles and explosions from a direction, while allowing projectiles to pass freely from behind."
-	icon = 'icons/obj/dropwall.dmi'
-	icon_state = "dropwall_deployed"
-	max_integrity = 25 // 2 shots
-	var/list/connected_shields = list()
-	/// This variable is used to prevent damage to it's core shield when it is up.
-	var/protected = FALSE
-	///The core shield that protects the generator
-	var/obj/structure/barricade/dropwall/core_shield = null
-	/// The type of dropwall
-	var/barricade_type = /obj/structure/barricade/dropwall
-
-/obj/structure/dropwall_generator/Initialize(mapload, direction, uptime)
-	. = ..()
-	if(direction)
-		deploy(direction, uptime)
-
-/obj/structure/dropwall_generator/Destroy()
-	QDEL_LIST_CONTENTS(connected_shields)
-	core_shield = null
-	return ..()
-
-/obj/structure/dropwall_generator/proc/deploy(direction, uptime)
-	anchored = TRUE
-	protected = TRUE
-	addtimer(CALLBACK(src, PROC_REF(power_out)), uptime)
-	timer_overlay_proc(uptime/10)
-
-	connected_shields += new barricade_type(get_turf(loc), src, TRUE, direction)
-	core_shield = connected_shields[1]
-
-	var/dir_left = turn(direction, -90)
-	var/dir_right = turn(direction, 90)
-	var/target_turf = get_step(src, dir_left)
-	if(!is_blocked_turf(target_turf))
-		connected_shields += new barricade_type(target_turf, src, FALSE, direction, dir_left)
-
-	var/target_turf2 = get_step(src, dir_right)
-	if(!is_blocked_turf(target_turf2))
-		connected_shields += new barricade_type(target_turf2, src, FALSE, direction, dir_right)
-
-
-/obj/structure/dropwall_generator/attacked_by(obj/item/I, mob/living/user) //No, you can not just go up to the generator and whack it. Central shield needs to go down first.
-	if(protected)
-		visible_message("<span class='warning'>[src]'s shield absorbs the blow!</span>")
-		core_shield.take_damage(I.force, I.damtype, MELEE, TRUE)
-	else
-		return ..()
-
-/obj/structure/dropwall_generator/bullet_act(obj/item/projectile/P)
-	if(!protected)
-		return ..()
-	else
-		visible_message("<span class='warning'>[src]'s shield absorbs the blow!</span>")
-		core_shield.take_damage(P.damage, P.damage_type, P.flag)
-
-/obj/structure/dropwall_generator/emp_act(severity)
-	..()
-	if(protected)
-		for(var/obj/structure/barricade/dropwall/O in connected_shields)
-			O.emp_act(severity)
-	else
-		qdel(src)
-
-/obj/structure/dropwall_generator/ex_act(severity)
-	if(protected && severity > 1) //We would throw the explosion at the shield, but it is already getting hit
-		return
-	qdel(src)
-
-/obj/structure/dropwall_generator/proc/power_out()
-	visible_message("<span class='warning'>[src] runs out of power, causing its shields to fail!</span>")
-	new /obj/item/used_dropwall(get_turf(src))
-	qdel(src)
-
-/obj/structure/dropwall_generator/proc/timer_overlay_proc(uptime) // This proc will make the timer on the generator tick down like a clock, over 12 equally sized portions (12 times over 12 seconds, every second by default)
-	var/cycle = DROPWALL_UPTIME + 1 - uptime
-	add_overlay("[cycle]")
-	if(cycle != 1)
-		cut_overlay("[(cycle - 1)]")
-	if(cycle < 12)
-		addtimer(CALLBACK(src, PROC_REF(timer_overlay_proc), uptime - 1), DROPWALL_UPTIME / 12 SECONDS)
-
-
-/obj/item/used_dropwall
-	name = "broken dropwall generator"
-	desc = "This dropwall has ran out of charge, but some materials could possibly be reclaimed."
-	icon = 'icons/obj/dropwall.dmi'
-	icon_state = "dropwall_dead"
-	item_state = "grenade"
-	materials = list(MAT_METAL = 500, MAT_GLASS = 300) //plasma burned up for power or something, plus not that much to reclaim
-
-
-/obj/item/storage/box/syndie_kit/dropwall
-	name = "dropwall generator box"
-
-/obj/item/storage/box/syndie_kit/dropwall/populate_contents()
-	for(var/I in 1 to 5)
-		new /obj/item/grenade/barrier/dropwall(src)
-
-/obj/item/grenade/barrier/dropwall/firewall
-	name = "firewall shield generator"
-	generator_type = /obj/structure/dropwall_generator/firewall
-
-/obj/structure/dropwall_generator/firewall
-	name = "deployed firewall shield generator"
-	barricade_type = /obj/structure/barricade/dropwall/firewall
-
-/obj/structure/barricade/dropwall/firewall
-
-/obj/structure/barricade/dropwall/firewall/Initialize(mapload, owner, core, dir_1, dir_2)
-	. = ..()
-	var/target_matrix = list(
-		2, 0, 0, 0,
-		0, 1, 0, 0,
-		2, 0, 0, 0,
-		0, 0, 0, 1
-	)
-	color = target_matrix
-
-/obj/structure/barricade/dropwall/firewall/Crossed(atom/movable/AM, oldloc)
-	. = ..()
-	if(!istype(AM, /obj/item/projectile))
-		return
-	var/obj/item/projectile/P = AM
-	P.immolate ++
-
-/obj/item/grenade/turret
-	name = "Pop-Up Turret grenade"
-	desc = "Inflates into a Pop-Up turret, shoots everyone on sight who wasn't the primer."
-	icon = 'icons/obj/grenade.dmi'
-	icon_state = "wallbang"
-	item_state = "flashbang"
-	var/owner_uid
-
-/obj/item/grenade/turret/attack_self(mob/user)
-	owner_uid = user.UID()
-	return ..()
-
-/obj/item/grenade/turret/prime()
-	var/obj/machinery/porta_turret/inflatable_turret/turret = new(get_turf(loc))
-	turret.owner_uid = owner_uid
-	qdel(src)
+	AddComponent(/datum/component/deployable, 5 SECONDS, /obj/machinery/deployable_turret/hmg)
 
 #undef SINGLE
 #undef VERTICAL
@@ -468,8 +244,3 @@
 #undef METAL
 #undef WOOD
 #undef SAND
-
-
-#undef DROPWALL_UPTIME
-
-#undef AUTO

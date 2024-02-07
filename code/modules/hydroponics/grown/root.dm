@@ -5,43 +5,41 @@
 	icon_state = "seed-carrot"
 	species = "carrot"
 	plantname = "Carrots"
-	product = /obj/item/food/snacks/grown/carrot
+	product = /obj/item/food/grown/carrot
 	maturation = 10
 	production = 1
 	yield = 5
+	instability = 15
 	growthstages = 3
-	growing_icon = 'icons/obj/hydroponics/growing_vegetables.dmi'
+	growing_icon = 'icons/obj/service/hydroponics/growing_vegetables.dmi'
 	mutatelist = list(/obj/item/seeds/carrot/parsnip)
-	reagents_add = list("oculine" = 0.25, "vitamin" = 0.04, "plantmatter" = 0.05)
+	reagents_add = list(/datum/reagent/medicine/oculine = 0.25, /datum/reagent/consumable/nutriment/vitamin = 0.04, /datum/reagent/consumable/nutriment = 0.05)
 
-/obj/item/food/snacks/grown/carrot
+/obj/item/food/grown/carrot
 	seed = /obj/item/seeds/carrot
 	name = "carrot"
 	desc = "It's good for the eyes!"
 	icon_state = "carrot"
-	filling_color = "#FFA500"
-	bitesize_mod = 2
-	tastes = list("carrot" = 1)
-	wine_power = 0.3
+	bite_consumption_mod = 2
+	foodtypes = VEGETABLES
+	juice_typepath = /datum/reagent/consumable/carrotjuice
+	wine_power = 30
 
-/obj/item/food/snacks/grown/carrot/wedges
-	name = "carrot wedges"
-	desc = "Slices of neatly cut carrot."
-	icon_state = "carrot_wedges"
-	filling_color = "#FFA500"
-	bitesize_mod = 2
-
-/obj/item/food/snacks/grown/carrot/attackby(obj/item/I, mob/user, params)
-	if(is_sharp(I))
-		to_chat(user, "<span class='notice'>You sharpen the carrot into a shiv with [I].</span>")
-		var/obj/item/kitchen/knife/shiv/carrot/Shiv = new ()
-		if(!remove_item_from_storage(user))
-			user.unEquip(src)
-		user.put_in_hands(Shiv)
+/obj/item/food/grown/carrot/attackby(obj/item/I, mob/user, params)
+	if(I.get_sharpness())
+		var/carrot_blade
+		var/carrot_sword_chance = (max(0, seed.potency - 50) / 50)
+		if (prob(carrot_sword_chance))
+			carrot_blade = new /obj/item/claymore/carrot
+			to_chat(user, span_notice("You sharpen the carrot into a sword with [I]."))
+		else
+			carrot_blade = new /obj/item/knife/shiv/carrot
+			to_chat(user, span_notice("You sharpen the carrot into a shiv with [I]."))
+		remove_item_from_storage(user)
 		qdel(src)
+		user.put_in_hands(carrot_blade)
 	else
 		return ..()
-
 
 // Parsnip
 /obj/item/seeds/carrot/parsnip
@@ -50,46 +48,46 @@
 	icon_state = "seed-parsnip"
 	species = "parsnip"
 	plantname = "Parsnip"
-	product = /obj/item/food/snacks/grown/parsnip
+	product = /obj/item/food/grown/parsnip
 	icon_dead = "carrot-dead"
-	mutatelist = list()
-	reagents_add = list("vitamin" = 0.05, "plantmatter" = 0.05)
+	mutatelist = null
+	reagents_add = list(/datum/reagent/consumable/nutriment/vitamin = 0.05, /datum/reagent/consumable/nutriment = 0.05, /datum/reagent/aluminium = 0.05)
 
-/obj/item/food/snacks/grown/parsnip
+/obj/item/food/grown/parsnip
 	seed = /obj/item/seeds/carrot/parsnip
 	name = "parsnip"
 	desc = "Closely related to carrots."
 	icon_state = "parsnip"
-	bitesize_mod = 2
-	tastes = list("parsnip" = 1)
-	wine_power = 0.35
+	foodtypes = VEGETABLES
+	juice_typepath = /datum/reagent/consumable/parsnipjuice
+	wine_power = 35
 
 
 // White-Beet
 /obj/item/seeds/whitebeet
-	name = "pack of white beet seeds"
+	name = "pack of white-beet seeds"
 	desc = "These seeds grow into sugary beet producing plants."
 	icon_state = "seed-whitebeet"
 	species = "whitebeet"
-	plantname = "White Beet Plants"
-	product = /obj/item/food/snacks/grown/whitebeet
+	plantname = "White-Beet Plants"
+	product = /obj/item/food/grown/whitebeet
 	lifespan = 60
 	endurance = 50
 	yield = 6
-	growing_icon = 'icons/obj/hydroponics/growing_vegetables.dmi'
+	instability = 10
+	growing_icon = 'icons/obj/service/hydroponics/growing_vegetables.dmi'
 	icon_dead = "whitebeet-dead"
 	mutatelist = list(/obj/item/seeds/redbeet)
-	reagents_add = list("vitamin" = 0.04, "sugar" = 0.2, "plantmatter" = 0.05)
+	reagents_add = list(/datum/reagent/consumable/nutriment/vitamin = 0.04, /datum/reagent/consumable/sugar = 0.2, /datum/reagent/consumable/nutriment = 0.05)
 
-/obj/item/food/snacks/grown/whitebeet
+/obj/item/food/grown/whitebeet
 	seed = /obj/item/seeds/whitebeet
-	name = "white beet"
-	desc = "You can't beat white beet."
+	name = "white-beet"
+	desc = "You can't beat white-beet."
 	icon_state = "whitebeet"
-	filling_color = "#F4A460"
-	bitesize_mod = 2
-	tastes = list("white beet" = 1)
-	wine_power = 0.4
+	bite_consumption_mod = 3
+	foodtypes = VEGETABLES
+	wine_power = 40
 
 // Red Beet
 /obj/item/seeds/redbeet
@@ -97,21 +95,23 @@
 	desc = "These seeds grow into red beet producing plants."
 	icon_state = "seed-redbeet"
 	species = "redbeet"
-	plantname = "Red Beet Plants"
-	product = /obj/item/food/snacks/grown/redbeet
+	plantname = "Red-Beet Plants"
+	product = /obj/item/food/grown/redbeet
 	lifespan = 60
 	endurance = 50
-	yield = 6
-	growing_icon = 'icons/obj/hydroponics/growing_vegetables.dmi'
+	yield = 5
+	instability = 15
+	growing_icon = 'icons/obj/service/hydroponics/growing_vegetables.dmi'
 	icon_dead = "whitebeet-dead"
 	genes = list(/datum/plant_gene/trait/maxchem)
-	reagents_add = list("vitamin" = 0.05, "plantmatter" = 0.05)
+	reagents_add = list(/datum/reagent/consumable/nutriment/vitamin = 0.05, /datum/reagent/consumable/nutriment = 0.05)
+	graft_gene = /datum/plant_gene/trait/maxchem
 
-/obj/item/food/snacks/grown/redbeet
+/obj/item/food/grown/redbeet
 	seed = /obj/item/seeds/redbeet
 	name = "red beet"
 	desc = "You can't beat red beet."
 	icon_state = "redbeet"
-	tastes = list("red beet" = 1)
-	bitesize_mod = 2
-	wine_power = 0.6
+	bite_consumption_mod = 2
+	foodtypes = VEGETABLES
+	wine_power = 60

@@ -1,198 +1,390 @@
+/// Basic machine used to paint PDAs and re-trim ID cards.
 /obj/machinery/pdapainter
-	name = "PDA painter"
-	desc = "A PDA painting machine. To use, simply insert your PDA and choose the desired preset paint scheme."
-	icon = 'icons/obj/pda.dmi'
+	name = "\improper Tablet & ID Painter"
+	desc = "A painting machine that can be used to paint PDAs and trim IDs. To use, simply insert the item and choose the desired preset."
+	icon = 'icons/obj/machines/pda.dmi'
 	icon_state = "pdapainter"
+	base_icon_state = "pdapainter"
 	density = TRUE
-	anchored = TRUE
 	max_integrity = 200
-	var/obj/item/pda/storedpda = null
-	/// List of possible PDA colors to choose from
-	var/list/colorlist = list()
-	/// The preview to show of what the new paint will look like
-	var/preview_icon_state = "pda"
-	/// Cache of the icon state of the currently inserted PDA
-	var/cached_icon_state
+	integrity_failure = 0.5
+	/// Current ID card inserted into the machine.
+	var/obj/item/card/id/stored_id_card = null
+	/// Current PDA inserted into the machine.
+	var/obj/item/modular_computer/pda/stored_pda = null
+	/// A blacklist of PDA types that we should not be able to paint.
+	var/static/list/pda_type_blacklist = list(
+		/obj/item/modular_computer/pda/heads,
+		/obj/item/modular_computer/pda/clear,
+		/obj/item/modular_computer/pda/syndicate,
+		/obj/item/modular_computer/pda/chameleon,
+		/obj/item/modular_computer/pda/chameleon/broken)
+	/// A list of the PDA types that this machine can currently paint.
+	var/list/pda_types = list()
+	/// A list of the card trims that this machine can currently imprint onto a card.
+	var/list/card_trims = list()
+	/// Set to a region define (REGION_SECURITY for example) to create a departmental variant, limited to departmental options. If null, this is unrestricted.
+	var/target_dept
 
 /obj/machinery/pdapainter/update_icon_state()
-	if(stat & BROKEN)
-		icon_state = "[initial(icon_state)]-broken"
-		return
-	if(has_power())
-		icon_state = initial(icon_state)
-	else
-		icon_state = "[initial(icon_state)]-off"
+	if(machine_stat & BROKEN)
+		icon_state = "[base_icon_state]-broken"
+		return ..()
+	icon_state = "[base_icon_state][powered() ? null : "-off"]"
+	return ..()
 
 /obj/machinery/pdapainter/update_overlays()
 	. = ..()
-	if(stat & BROKEN)
+
+	if(machine_stat & BROKEN)
 		return
-	if(storedpda)
+
+	if(stored_pda || stored_id_card)
 		. += "[initial(icon_state)]-closed"
 
 /obj/machinery/pdapainter/Initialize(mapload)
 	. = ..()
-	var/blocked = list(
-		/obj/item/pda/silicon,
-		/obj/item/pda/silicon/ai,
-		/obj/item/pda/silicon/robot,
-		/obj/item/pda/silicon/pai,
-		/obj/item/pda/heads,
-		/obj/item/pda/clear,
-		/obj/item/pda/syndicate,
-		/obj/item/pda/chameleon,
-		/obj/item/pda/chameleon/broken
-	)
 
-	for(var/thing in typesof(/obj/item/pda) - blocked)
-		var/obj/item/pda/P = thing
+	if(!target_dept)
+		pda_types = SSid_access.station_pda_templates.Copy()
+		card_trims = SSid_access.station_job_templates.Copy()
+		return
 
-		// Icon state for TGUI, only select the first frame
-		var/pda_icon_state = "[icon2base64(icon(initial(P.icon), initial(P.icon_state), frame = 1))]"
-		colorlist[initial(P.icon_state)] = list(pda_icon_state, initial(P.desc))
+	// Cache the manager list, then check through each manager.
+	// If we get a region match, add their trim templates and PDA paths to our lists.
+	var/list/manager_cache = SSid_access.sub_department_managers_tgui
+	for(var/access_txt in manager_cache)
+		var/list/manager_info = manager_cache[access_txt]
+		var/list/manager_regions = manager_info["regions"]
+		if(target_dept in manager_regions)
+			var/list/pda_list = manager_info["pdas"]
+			var/list/trim_list = manager_info["templates"]
+			pda_types |= pda_list
+			card_trims |= trim_list
 
 /obj/machinery/pdapainter/Destroy()
-	on_pda_qdel()
-	QDEL_NULL(storedpda)
+	QDEL_NULL(stored_pda)
+	QDEL_NULL(stored_id_card)
 	return ..()
 
 /obj/machinery/pdapainter/on_deconstruction()
-	if(storedpda)
-		storedpda.forceMove(loc)
-		storedpda = null
+	// Don't use ejection procs as we're gonna be destroyed anyway, so no need to update icons or anything.
+	if(stored_pda)
+		stored_pda.forceMove(loc)
+		stored_pda = null
+	if(stored_id_card)
+		stored_id_card.forceMove(loc)
+		stored_id_card = null
 
-/obj/machinery/pdapainter/ex_act(severity)
-	if(storedpda)
-		storedpda.ex_act(severity)
-	..()
+/obj/machinery/pdapainter/contents_explosion(severity, target)
+	switch(severity)
+		if(EXPLODE_DEVASTATE)
+			if(stored_pda)
+				SSexplosions.high_mov_atom += stored_pda
+			if(stored_id_card)
+				SSexplosions.high_mov_atom += stored_id_card
+		if(EXPLODE_HEAVY)
+			if(stored_pda)
+				SSexplosions.med_mov_atom += stored_pda
+			if(stored_id_card)
+				SSexplosions.med_mov_atom += stored_id_card
+		if(EXPLODE_LIGHT)
+			if(stored_pda)
+				SSexplosions.low_mov_atom += stored_pda
+			if(stored_id_card)
+				SSexplosions.low_mov_atom += stored_id_card
 
-/obj/machinery/pdapainter/handle_atom_del(atom/A)
-	if(A == storedpda)
-		storedpda = null
-		update_icon()
+/obj/machinery/pdapainter/Exited(atom/movable/gone, direction)
+	. = ..()
+	if(gone == stored_pda)
+		stored_pda = null
+		update_appearance(UPDATE_ICON)
+	if(gone == stored_id_card)
+		stored_id_card = null
+		update_appearance(UPDATE_ICON)
 
-/obj/machinery/pdapainter/attackby(obj/item/I, mob/user, params)
-	if(default_unfasten_wrench(user, I))
+/obj/machinery/pdapainter/wrench_act(mob/living/user, obj/item/tool)
+	. = ..()
+	if(default_unfasten_wrench(user, tool))
 		power_change()
-		return
-	if(istype(I, /obj/item/pda))
-		insertpda(user)
-	else
+	return ITEM_INTERACT_SUCCESS
+
+/obj/machinery/pdapainter/attackby(obj/item/O, mob/living/user, params)
+	if(machine_stat & BROKEN)
+		if(O.tool_behaviour == TOOL_WELDER && !user.combat_mode)
+			if(!O.tool_start_check(user, amount=1))
+				return
+			user.visible_message(span_notice("[user] is repairing [src]."), \
+							span_notice("You begin repairing [src]..."), \
+							span_hear("You hear welding."))
+			if(O.use_tool(src, user, 40, volume=50))
+				if(!(machine_stat & BROKEN))
+					return
+				to_chat(user, span_notice("You repair [src]."))
+				set_machine_stat(machine_stat & ~BROKEN)
+				atom_integrity = max_integrity
+				update_appearance(UPDATE_ICON)
+			return
 		return ..()
 
-/obj/machinery/pdapainter/welder_act(mob/user, obj/item/I)
-	. = TRUE
-	if(!I.tool_use_check(user, 0))
+	// Chameleon checks first so they can exit the logic early if they're detected.
+	if(istype(O, /obj/item/card/id/advanced/chameleon))
+		to_chat(user, span_warning("The machine rejects your [O]. This ID card does not appear to be compatible with the PDA Painter."))
 		return
-	default_welder_repair(user, I)
 
-/obj/machinery/pdapainter/deconstruct(disassembled = TRUE)
-	if(!(flags & NODECONSTRUCT))
-		if(!(stat & BROKEN))
-			stat |= BROKEN
-			update_icon()
+	if(istype(O, /obj/item/modular_computer/pda))
+		insert_pda(O, user)
+		return
 
-/obj/machinery/pdapainter/attack_hand(mob/user)
-	if(..())
-		return TRUE
+	if(isidcard(O))
+		if(stored_id_card)
+			to_chat(user, span_warning("There is already an ID card inside!"))
+			return
 
-	ui_interact(user)
+		if(!user.transferItemToLoc(O, src))
+			return
 
-/obj/machinery/pdapainter/ui_interact(mob/user, datum/tgui/ui, datum/ui_state/state)
+		stored_id_card = O
+		O.add_fingerprint(user)
+		update_appearance(UPDATE_ICON)
+		return
+
+	return ..()
+
+/obj/machinery/pdapainter/attack_hand_secondary(mob/user, list/modifiers)
+	. = ..()
+	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
+		return
+	if(stored_pda)
+		eject_pda(user)
+	else
+		eject_id_card(user)
+	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+
+/**
+ * Insert a PDA into the machine.
+ *
+ * Will swap PDAs if one is already inside. Attempts to put the PDA into the user's hands if possible.
+ * Returns TRUE on success, FALSE otherwise.
+ * Arguments:
+ * * new_pda - The PDA to insert.
+ * * user - The user to try and eject the PDA into the hands of.
+ */
+/obj/machinery/pdapainter/proc/insert_pda(obj/item/modular_computer/pda/new_pda, mob/living/user)
+	if(!istype(new_pda))
+		return FALSE
+
+	if(user && !user.transferItemToLoc(new_pda, src))
+		return FALSE
+	else
+		new_pda.forceMove(src)
+
+	if(stored_pda)
+		eject_pda(user)
+
+	stored_pda = new_pda
+	new_pda.add_fingerprint(user)
+	update_icon()
+	return TRUE
+
+/**
+ * Eject the stored PDA into the user's hands if possible, otherwise on the floor.
+ *
+ * Arguments:
+ * * user - The user to try and eject the PDA into the hands of.
+ */
+/obj/machinery/pdapainter/proc/eject_pda(mob/living/user)
+	if(stored_pda)
+		if(user && !issilicon(user) && in_range(src, user))
+			user.put_in_hands(stored_pda)
+		else
+			stored_pda.forceMove(drop_location())
+
+		stored_pda = null
+		update_icon()
+
+/**
+ * Insert an ID card into the machine.
+ *
+ * Will swap ID cards if one is already inside. Attempts to put the card into the user's hands if possible.
+ * Returns TRUE on success, FALSE otherwise.
+ * Arguments:
+ * * new_id_card - The ID card to insert.
+ * * user - The user to try and eject the PDA into the hands of.
+ */
+/obj/machinery/pdapainter/proc/insert_id_card(obj/item/card/id/new_id_card, mob/living/user)
+	if(!istype(new_id_card))
+		return FALSE
+
+	if(user && !user.transferItemToLoc(new_id_card, src))
+		return FALSE
+	else
+		new_id_card.forceMove(src)
+
+	if(stored_id_card)
+		eject_id_card(user)
+
+	stored_id_card = new_id_card
+	new_id_card.add_fingerprint(user)
+	update_icon()
+	return TRUE
+
+/**
+ * Eject the stored ID card into the user's hands if possible, otherwise on the floor.
+ *
+ * Arguments:
+ * * user - The user to try and eject the ID card into the hands of.
+ */
+/obj/machinery/pdapainter/proc/eject_id_card(mob/living/user)
+	if(stored_id_card)
+		GLOB.manifest.modify(stored_id_card.registered_name, stored_id_card.assignment, stored_id_card.get_trim_assignment())
+		if(user && !issilicon(user) && in_range(src, user))
+			user.put_in_hands(stored_id_card)
+		else
+			stored_id_card.forceMove(drop_location())
+
+		stored_id_card = null
+		update_appearance(UPDATE_ICON)
+
+/obj/machinery/pdapainter/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "PdaPainter", "PDA Painter")
+		ui = new(user, src, "PaintingMachine", name)
 		ui.open()
 
 /obj/machinery/pdapainter/ui_data(mob/user)
-	var/list/data = list()
-	data["has_pda"] = storedpda ? TRUE : FALSE
-	if(storedpda)
-		data["current_appearance"] = cached_icon_state
+	var/data = list()
 
-		var/icon/preview_sprite = icon(storedpda.icon, preview_icon_state, frame = 1)
-		data["preview_appearance"] = icon2base64(preview_sprite)
+	if(stored_pda)
+		data["hasPDA"] = TRUE
+		data["pdaName"] = stored_pda.name
+	else
+		data["hasPDA"] = FALSE
+		data["pdaName"] = null
+
+	if(stored_id_card)
+		data["hasID"] = TRUE
+		data["idName"] = stored_id_card.name
+	else
+		data["hasID"] = FALSE
+		data["idName"] = null
 
 	return data
 
 /obj/machinery/pdapainter/ui_static_data(mob/user)
-	var/list/data = list()
-	data["pda_colors"] = colorlist
+	var/data = list()
+
+	data["pdaTypes"] = pda_types
+	data["cardTrims"] = card_trims
+
 	return data
 
-/obj/machinery/pdapainter/ui_act(action, params, datum/tgui/ui)
-	if(..())
+/obj/machinery/pdapainter/ui_act(action, params)
+	. = ..()
+	if(.)
 		return
-
-	. = TRUE
 
 	switch(action)
-		if("insert_pda")
-			insertpda(ui.user)
 		if("eject_pda")
-			ejectpda(ui.user)
-		if("choose_pda")
-			preview_icon_state = params["selectedPda"]
-		if("paint_pda")
-			paintpda()
+			if((machine_stat & BROKEN))
+				return TRUE
 
-	if(.)
-		add_fingerprint(ui.user)
+			var/obj/item/held_item = usr.get_active_held_item()
+			if(istype(held_item, /obj/item/modular_computer/pda))
+				// If we successfully inserted, we've ejected the old item. Return early.
+				if(insert_pda(held_item, usr))
+					return TRUE
+			// If we did not successfully insert, try to eject.
+			if(stored_pda)
+				eject_pda(usr)
+				return TRUE
 
-/obj/machinery/pdapainter/proc/insertpda(mob/user)
-	if(storedpda)
-		to_chat(user, "There is already a PDA inside.")
-		return
-	if(!ishuman(user))
-		return
+			return TRUE
+		if("eject_card")
+			if((machine_stat & BROKEN))
+				return TRUE
 
-	var/obj/item/pda/P = user.get_active_hand()
+			var/obj/item/held_item = usr.get_active_held_item()
+			if(isidcard(held_item))
+				// If we successfully inserted, we've ejected the old item. Return early.
+				if(insert_id_card(held_item, usr))
+					return TRUE
+			// If we did not successfully insert, try to eject.
+			if(stored_id_card)
+				eject_id_card(usr)
+				return TRUE
 
-	if(istype(P))
-		if(user.drop_item())
-			storedpda = P
-			RegisterSignal(P, COMSIG_PARENT_QDELETING, PROC_REF(on_pda_qdel))
-			P.forceMove(src)
-			P.add_fingerprint(usr)
-			update_icon()
-			update_pda_cache()
+			return TRUE
+		if("trim_pda")
+			if((machine_stat & BROKEN) || !stored_pda)
+				return TRUE
 
-/obj/machinery/pdapainter/proc/ejectpda(mob/user)
-	if(!storedpda)
-		to_chat(usr, "<span class='notice'>[src] is empty.</span>")
-		return
-	storedpda.forceMove(get_turf(src))
-	if(ishuman(user))
-		var/mob/living/carbon/human/H = user
-		H.put_in_hands(storedpda)
+			var/selection = params["selection"]
+			var/obj/item/modular_computer/pda/pda_path = /obj/item/modular_computer/pda
 
-	UnregisterSignal(storedpda, COMSIG_PARENT_QDELETING)
-	storedpda = null
-	update_icon()
+			for(var/path in pda_types)
+				if(pda_types[path] == selection)
+					pda_path = path
+					break
 
-/obj/machinery/pdapainter/proc/paintpda()
-	if(storedpda)
-		storedpda.icon_state = preview_icon_state
-		storedpda.desc = colorlist[preview_icon_state][2]
-		playsound(loc, 'sound/effects/spray.ogg', 5, 1, 5)
-		update_pda_cache()
+			if(initial(pda_path.greyscale_config) && initial(pda_path.greyscale_colors))
+				stored_pda.set_greyscale(initial(pda_path.greyscale_colors), initial(pda_path.greyscale_config))
+			else
+				stored_pda.icon = initial(pda_path.icon)
+			stored_pda.icon_state = initial(pda_path.icon_state)
+			stored_pda.desc = initial(pda_path.desc)
 
-/obj/machinery/pdapainter/proc/update_pda_cache()
-	if(!storedpda)
-		cached_icon_state = null
-		return
-	var/icon/pda_sprite = icon(storedpda.icon, storedpda.icon_state, frame = 1)
-	cached_icon_state = icon2base64(pda_sprite)
-	SStgui.update_uis(src)
+			return TRUE
+		if("reset_pda")
+			if((machine_stat & BROKEN) || !stored_pda)
+				return TRUE
 
-/obj/machinery/pdapainter/proc/on_pda_qdel()
-	if(!storedpda)
-		return
-	UnregisterSignal(storedpda, COMSIG_PARENT_QDELETING)
-	storedpda = null
-	update_icon()
+			stored_pda.reset_imprint()
+			return TRUE
+		if("trim_card")
+			if((machine_stat & BROKEN) || !stored_id_card)
+				return TRUE
 
-/obj/machinery/pdapainter/power_change()
-	if(!..())
-		return
-	update_icon()
+			var/selection = params["selection"]
+			for(var/path in card_trims)
+				if(!(card_trims[path] == selection))
+					continue
+
+				if(SSid_access.apply_trim_to_card(stored_id_card, path, copy_access = FALSE))
+					return TRUE
+
+				to_chat(usr, span_warning("The trim you selected could not be added to \the [stored_id_card]. You will need a rarer ID card to imprint that trim data."))
+
+			return TRUE
+		if("reset_card")
+			if((machine_stat & BROKEN) || !stored_id_card)
+				return TRUE
+
+			stored_id_card.clear_account()
+
+			return TRUE
+
+/// Security departmental variant. Limited to PDAs defined in the SSid_access.sub_department_managers_tgui data structure.
+/obj/machinery/pdapainter/security
+	name = "\improper Security PDA & ID Painter"
+	target_dept = REGION_SECURITY
+
+/// Medical departmental variant. Limited to PDAs defined in the SSid_access.sub_department_managers_tgui data structure.
+/obj/machinery/pdapainter/medbay
+	name = "\improper Medbay PDA & ID Painter"
+	target_dept = REGION_MEDBAY
+
+/// Science departmental variant. Limited to PDAs defined in the SSid_access.sub_department_managers_tgui data structure.
+/obj/machinery/pdapainter/research
+	name = "\improper Research PDA & ID Painter"
+	target_dept = REGION_RESEARCH
+
+/// Engineering departmental variant. Limited to PDAs defined in the SSid_access.sub_department_managers_tgui data structure.
+/obj/machinery/pdapainter/engineering
+	name = "\improper Engineering PDA & ID Painter"
+	target_dept = REGION_ENGINEERING
+
+/// Supply departmental variant. Limited to PDAs defined in the SSid_access.sub_department_managers_tgui data structure.
+/obj/machinery/pdapainter/supply
+	name = "\improper Supply PDA & ID Painter"
+	target_dept = REGION_SUPPLY

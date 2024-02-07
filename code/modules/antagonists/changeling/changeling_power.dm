@@ -1,105 +1,110 @@
-
-// Defines below to be used with the `power_type` var.
-/// Denotes that this power is free and should be given to all changelings by default.
-#define CHANGELING_INNATE_POWER			1
-/// Denotes that this power can only be obtained by purchasing it.
-#define CHANGELING_PURCHASABLE_POWER	2
-/// Denotes that this power can not be obtained normally. Primarily used for base types such as [/datum/action/changeling/weapon].
-#define CHANGELING_UNOBTAINABLE_POWER	3
+/*
+ * Don't use the apostrophe in name or desc. Causes script errors.//probably no longer true
+ */
 
 /datum/action/changeling
-	name = "Prototype Sting"
-	desc = "" // Fluff
+	name = "Prototype Sting - Debug button, ahelp this"
 	background_icon_state = "bg_changeling"
-	/// A reference to the changeling's changeling antag datum.
-	var/datum/antagonist/changeling/cling
-	/// Datum path used to determine the location and name of the power in changeling evolution menu UI
-	var/datum/changeling_power_category/category
-	/// Determines whether the power is always given to the changeling or if it must be purchased.
-	var/power_type = CHANGELING_UNOBTAINABLE_POWER
-	/// A description of what the power does.
+	overlay_icon_state = "bg_changeling_border"
+	button_icon = 'icons/mob/actions/actions_changeling.dmi'
+	/// Details displayed in fine print within the changling emporium
 	var/helptext = ""
-	/// Chemical cost to use this power.
+	/// How many changeling chems it costs to use
 	var/chemical_cost = 0
-	/// The cost of purchasing the power.
-	var/dna_cost = 0
-	/// The amount of victims the changeling needs to absorb before they can use this power. Changelings always start with a value of 1.
+	/**
+	 * Cost of the ability in dna points, negative values are not valid
+	 *
+	 * Special numbers include [CHANGELING_POWER_INNATE], which are given to changeling for free without bring prompted
+	 * and [CHANGELING_POWER_UNOBTAINABLE], which are not available for purchase in the changeling emporium
+	 */
+	var/dna_cost = CHANGELING_POWER_UNOBTAINABLE
+	/// Amount of dna needed to use this ability. Note, changelings always have atleast 1
 	var/req_dna = 0
-	/// If you need to be in human form to activate this power.
+	/// If you need to be humanoid to use this ability (disincludes monkeys)
 	var/req_human = FALSE
-	/// What `stat` value the changeling needs to have to use this power. Will be CONSCIOUS, UNCONSCIOUS or DEAD.
+	/// Similar to req_dna, but only gained from absorbing, not DNA sting
+	var/req_absorbs = 0
+	/// Maximum stat before the ability is blocked.
+	/// For example, `UNCONSCIOUS` prevents it from being used when in hard crit or dead,
+	/// while `DEAD` allows the ability to be used on any stat values.
 	var/req_stat = CONSCIOUS
-	/// If this power is active or not. Used for toggleable abilities.
+	/// usable when the changeling is in death coma
+	var/ignores_fakedeath = FALSE
+	/// used by a few powers that toggle
 	var/active = FALSE
-	/// If this power can be used while the changeling has the `TRAIT_FAKE_DEATH` trait.
-	var/bypass_fake_death = FALSE
 
 /*
- * Changeling code relies on on_purchase to grant powers.
- * The same goes for Remove(). if you override Remove(), call parent or else your power wont be removed on respec
+changeling code now relies on on_purchase to grant powers.
+if you override it, MAKE SURE you call parent or it will not be usable
+the same goes for Remove(). if you override Remove(), call parent or else your power won't be removed on respec
+*/
+
+/datum/action/changeling/proc/on_purchase(mob/user, is_respec)
+	Grant(user)//how powers are added rather than the checks in mob.dm
+
+/datum/action/changeling/Trigger(trigger_flags)
+	var/mob/user = owner
+	if(!user || !user.mind || !user.mind.has_antag_datum(/datum/antagonist/changeling))
+		return
+	try_to_sting(user)
+
+/**
+ *Contrary to the name, this proc isn't just used by changeling stings. It handles the activation of the action and the deducation of its cost.
+ *The order of the proc chain is:
+ *can_sting(). Should this fail, the process gets aborted early.
+ *sting_action(). This proc usually handles the actual effect of the action.
+ *Should sting_action succeed the following will be done:
+ *sting_feedback(). Produces feedback on the performed action. Don't ask me why this isn't handled in sting_action()
+ *The deduction of the cost of this power.
+ *Returns TRUE on a successful activation.
  */
-/datum/action/changeling/proc/on_purchase(mob/user, datum/antagonist/changeling/C)
-	SHOULD_CALL_PARENT(TRUE)
-	if(!user || !user.mind || !C)
-		qdel(src)
-		return
-	cling = C
-	Grant(user)
-	return TRUE
-
-/datum/action/changeling/Destroy(force, ...)
-	cling.acquired_powers -= src
-	cling = null
-	return ..()
-
-/datum/action/changeling/Trigger(left_click)
-	try_to_sting(owner)
-
-/datum/action/changeling/proc/try_to_sting(mob/user, mob/target)
-	user.changeNext_click(5)
+/datum/action/changeling/proc/try_to_sting(mob/living/user, mob/living/target)
 	if(!can_sting(user, target))
-		return
+		return FALSE
+	var/datum/antagonist/changeling/changeling = user.mind.has_antag_datum(/datum/antagonist/changeling)
 	if(sting_action(user, target))
 		sting_feedback(user, target)
-		take_chemical_cost()
-
-/datum/action/changeling/proc/sting_action(mob/user, mob/target)
+		changeling.adjust_chemicals(-chemical_cost)
+		user.changeNext_move(CLICK_CD_MELEE)
+		return TRUE
 	return FALSE
 
-/datum/action/changeling/proc/sting_feedback(mob/user, mob/target)
-	return FALSE
-
-/datum/action/changeling/proc/take_chemical_cost()
-	cling.chem_charges -= chemical_cost
-	cling.update_chem_charges_ui()
-
-/datum/action/changeling/proc/can_sting(mob/user, mob/target)
+/datum/action/changeling/proc/sting_action(mob/living/user, mob/living/target)
 	SHOULD_CALL_PARENT(TRUE)
-	if(req_human && (!ishuman(user) || issmall(user)))
-		to_chat(user, "<span class='warning'>We cannot do that in this form!</span>")
+	SSblackbox.record_feedback("nested tally", "changeling_powers", 1, list("[name]"))
+	return FALSE
+
+/datum/action/changeling/proc/sting_feedback(mob/living/user, mob/living/target)
+	return FALSE
+
+// Fairly important to remember to return 1 on success >.< // Return TRUE not 1 >.<
+/datum/action/changeling/proc/can_sting(mob/living/user, mob/living/target)
+	if(!can_be_used_by(user))
 		return FALSE
-	if(cling.chem_charges < chemical_cost)
-		to_chat(user, "<span class='warning'>We require at least [chemical_cost] unit\s of chemicals to do that!</span>")
+	var/datum/antagonist/changeling/changeling = user.mind.has_antag_datum(/datum/antagonist/changeling)
+	if(changeling.chem_charges < chemical_cost)
+		user.balloon_alert(user, "needs [chemical_cost] chemicals!")
 		return FALSE
-	if(cling.absorbed_count < req_dna)
-		to_chat(user, "<span class='warning'>We require at least [req_dna] sample\s of compatible DNA.</span>")
+	if(changeling.absorbed_count < req_dna)
+		user.balloon_alert(user, "needs [req_dna] dna sample\s!")
+		return FALSE
+	if(changeling.true_absorbs < req_absorbs)
+		user.balloon_alert(user, "needs [req_absorbs] absorption\s!")
 		return FALSE
 	if(req_stat < user.stat)
-		to_chat(user, "<span class='warning'>We are incapacitated.</span>")
+		user.balloon_alert(user, "incapacitated!")
 		return FALSE
-	if(HAS_TRAIT(user, TRAIT_FAKEDEATH) && !bypass_fake_death)
-		to_chat(user, "<span class='warning'>We are incapacitated.</span>")
+	if(HAS_TRAIT(user, TRAIT_DEATHCOMA) && !ignores_fakedeath)
+		user.balloon_alert(user, "playing dead!")
 		return FALSE
 	return TRUE
 
-// Transform the target to the chosen dna. Used in transform.dm and tiny_prick.dm (handy for changes since it's the same thing done twice)
-/datum/action/changeling/proc/transform_dna(mob/living/carbon/human/H, datum/dna/D)
-	var/internals_on = H.internal
-	if(!D)
-		return
-	var/changes_species = TRUE
-	if(H.dna.species.name == D.species.name)
-		changes_species = FALSE
-	H.change_dna(D, changes_species)
-	if(internals_on)
-		H.internal = internals_on
+/datum/action/changeling/proc/can_be_used_by(mob/living/user)
+	if(QDELETED(user))
+		return FALSE
+	if(!ishuman(user))
+		return FALSE
+	if(req_human && ismonkey(user))
+		user.balloon_alert(user, "become human!")
+		return FALSE
+	return TRUE

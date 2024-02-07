@@ -1,98 +1,95 @@
 /obj/item/electropack
 	name = "electropack"
 	desc = "Dance my monkeys! DANCE!!!"
-	icon = 'icons/obj/radio.dmi'
+	icon = 'icons/obj/devices/tool.dmi'
 	icon_state = "electropack0"
-	item_state = "electropack"
-	flags = CONDUCT
-	slot_flags = SLOT_FLAG_BACK
+	inhand_icon_state = "electropack"
+	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'
+	obj_flags = CONDUCTS_ELECTRICITY
+	slot_flags = ITEM_SLOT_BACK
 	w_class = WEIGHT_CLASS_HUGE
-	materials = list(MAT_METAL = 10000, MAT_GLASS = 2500)
-	/// The integrated signaler
-	var/obj/item/assembly/signaler/electropack/integrated_signaler
+	custom_materials = list(/datum/material/iron=SHEET_MATERIAL_AMOUNT *5, /datum/material/glass=SHEET_MATERIAL_AMOUNT * 1.25)
+
+	var/on = TRUE
+	var/code = 2
+	var/frequency = FREQ_ELECTROPACK
+	var/shock_cooldown = FALSE
 
 /obj/item/electropack/Initialize(mapload)
 	. = ..()
-	integrated_signaler = new /obj/item/assembly/signaler/electropack(src, src) // Loc and the integrated one
+	set_frequency(frequency)
 
 /obj/item/electropack/Destroy()
-	integrated_signaler.owning_pack = null
-	QDEL_NULL(integrated_signaler)
-
-	if(istype(loc, /obj/item/assembly/shock_kit))
-		var/obj/item/assembly/shock_kit/S = loc
-		if(S.part1 == src)
-			S.part1 = null
-
-		else if(S.part2 == src)
-			S.part2 = null
-
-		master = null
-
+	SSradio.remove_object(src, frequency)
 	return ..()
 
-/obj/item/electropack/attack_hand(mob/user)
-	if(src == user.back)
-		to_chat(user, "<span class='notice'>You need help taking this off!</span>")
-		return FALSE
+/obj/item/electropack/suicide_act(mob/living/user)
+	user.visible_message(span_suicide("[user] hooks [user.p_them()]self to the electropack and spams the trigger! It looks like [user.p_theyre()] trying to commit suicide!"))
+	return FIRELOSS
 
-	..()
-
-/obj/item/electropack/attack_self(mob/user)
-	ui_interact(user)
+//ATTACK HAND IGNORING PARENT RETURN VALUE
+/obj/item/electropack/attack_hand(mob/user, list/modifiers)
+	if(iscarbon(user))
+		var/mob/living/carbon/C = user
+		if(src == C.back)
+			to_chat(user, span_warning("You need help taking this off!"))
+			return
+	return ..()
 
 /obj/item/electropack/attackby(obj/item/W, mob/user, params)
-	..()
-
 	if(istype(W, /obj/item/clothing/head/helmet))
 		var/obj/item/assembly/shock_kit/A = new /obj/item/assembly/shock_kit(user)
-		A.icon = 'icons/obj/assemblies.dmi'
+		A.icon = 'icons/obj/devices/assemblies.dmi'
 
-		if(!user.unEquip(W))
-			to_chat(user, "<span class='notice'>\the [W] is stuck to your hand, you cannot attach it to \the [src]!</span>")
+		if(!user.transferItemToLoc(W, A))
+			to_chat(user, span_warning("[W] is stuck to your hand, you cannot attach it to [src]!"))
 			return
-
-		W.loc = A
 		W.master = A
-		A.part1 = W
+		A.helmet_part = W
 
-		user.unEquip(src)
-		loc = A
+		user.transferItemToLoc(src, A, TRUE)
 		master = A
-		A.part2 = src
+		A.electropack_part = src
 
 		user.put_in_hands(A)
 		A.add_fingerprint(user)
-		if(src.flags & NODROP)
-			A.flags |= NODROP
+	else
+		return ..()
 
+/obj/item/electropack/receive_signal(datum/signal/signal)
+	if(!signal || signal.data["code"] != code)
+		return
+	if(isliving(loc) && on)
+		if(shock_cooldown)
+			return
+		shock_cooldown = TRUE
+		addtimer(VARSET_CALLBACK(src, shock_cooldown, FALSE), 100)
+		var/mob/living/L = loc
+		step(L, pick(GLOB.cardinals))
 
-/obj/item/electropack/proc/handle_shock()
-	if(istype(master, /obj/item/assembly/shock_kit))
-		var/obj/item/assembly/shock_kit/SK = master
-		SK.shock_invoke()
+		to_chat(L, span_danger("You feel a sharp shock!"))
+		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
+		s.set_up(3, 1, L)
+		s.start()
 
-	if(isliving(loc))
-		var/mob/living/M = loc
-		var/turf/T = M.loc
-		if(isturf(T))
-			if(!M.moved_recently && M.last_move)
-				M.moved_recently = 1
-				step(M, M.last_move)
-				sleep(50)
-				if(M)
-					M.moved_recently = 0
+		L.Paralyze(100)
 
-		to_chat(M, "<span class='danger'>You feel a sharp shock!</span>")
-		do_sparks(3, 1, M)
+	if(master)
+		if(isassembly(master))
+			var/obj/item/assembly/master_as_assembly = master
+			master_as_assembly.pulsed()
+		master.receive_signal()
 
-		M.Weaken(10 SECONDS)
+/obj/item/electropack/proc/set_frequency(new_frequency)
+	SSradio.remove_object(src, frequency)
+	frequency = new_frequency
+	SSradio.add_object(src, frequency, RADIO_SIGNALER)
 
-// This should honestly just proxy the UI to the internal signaler
 /obj/item/electropack/ui_state(mob/user)
-	return GLOB.inventory_state
+	return GLOB.hands_state
 
-/obj/item/electropack/ui_interact(mob/user, datum/tgui/ui = null)
+/obj/item/electropack/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "Electropack", name)
@@ -100,65 +97,39 @@
 
 /obj/item/electropack/ui_data(mob/user)
 	var/list/data = list()
-	data["power"] = integrated_signaler.receiving
-	data["frequency"] = integrated_signaler.frequency
-	data["code"] = integrated_signaler.code
-	data["minFrequency"] = PUBLIC_LOW_FREQ
-	data["maxFrequency"] = PUBLIC_HIGH_FREQ
+	data["power"] = on
+	data["frequency"] = frequency
+	data["code"] = code
+	data["minFrequency"] = MIN_FREE_FREQ
+	data["maxFrequency"] = MAX_FREE_FREQ
 	return data
 
-/obj/item/electropack/ui_act(action, list/params)
-	if(..())
+/obj/item/electropack/ui_act(action, params)
+	. = ..()
+	if(.)
 		return
-
-	. = TRUE
 
 	switch(action)
 		if("power")
-			integrated_signaler.receiving = !integrated_signaler.receiving
-
+			on = !on
+			icon_state = "electropack[on]"
+			. = TRUE
 		if("freq")
-			var/value = params["freq"]
+			var/value = unformat_frequency(params["freq"])
 			if(value)
-				integrated_signaler.frequency = sanitize_frequency(value)
-			else
-				. = FALSE
-
+				frequency = sanitize_frequency(value, TRUE)
+				set_frequency(frequency)
+				. = TRUE
 		if("code")
 			var/value = text2num(params["code"])
 			if(value)
 				value = round(value)
-				integrated_signaler.code = clamp(value, 1, 100)
-			else
-				. = FALSE
-
+				code = clamp(value, 1, 100)
+				. = TRUE
 		if("reset")
 			if(params["reset"] == "freq")
-				integrated_signaler.frequency = initial(integrated_signaler.frequency)
+				frequency = initial(frequency)
+				. = TRUE
 			else if(params["reset"] == "code")
-				integrated_signaler.code = initial(integrated_signaler.code)
-			else
-				. = FALSE
-
-	if(.)
-		add_fingerprint(usr)
-
-// Electropack signaller type
-/obj/item/assembly/signaler/electropack
-	frequency = AIRLOCK_FREQ
-	code = 2
-	receiving = TRUE
-
-	var/obj/item/electropack/owning_pack
-
-/obj/item/assembly/signaler/electropack/Initialize(mapload, holding_electropack)
-	. = ..()
-	owning_pack = holding_electropack
-
-/obj/item/assembly/signaler/electropack/signal_callback()
-	if(owning_pack)
-		owning_pack.handle_shock()
-
-/obj/item/assembly/signaler/electropack/Destroy()
-	owning_pack = null
-	return ..()
+				code = initial(code)
+				. = TRUE

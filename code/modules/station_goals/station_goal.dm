@@ -1,19 +1,14 @@
-//TODO
-// Admin button to override with your own
-// Sabotage objective for tators
-// Multiple goals with less impact but more department focused
-
 /datum/station_goal
 	var/name = "Generic Goal"
 	var/weight = 1 //In case of multiple goals later.
 	var/required_crew = 10
-	var/list/gamemode_blacklist = list()
+	var/requires_space = FALSE
 	var/completed = FALSE
 	var/report_message = "Complete this goal."
 
 /datum/station_goal/proc/send_report()
-	GLOB.minor_announcement.Announce("Priority Nanotrasen directive received. Project \"[name]\" details inbound.", "Incoming Priority Message", 'sound/AI/commandreport.ogg')
-	print_command_report(get_report(), "Nanotrasen Directive [pick(GLOB.phonetic_alphabet)] \Roman[rand(1,50)]", FALSE)
+	priority_announce("Priority Nanotrasen directive received. Project \"[name]\" details inbound.", "Incoming Priority Message", SSstation.announcer.get_rand_report_sound())
+	print_command_report(get_report(),"Nanotrasen Directive [pick(GLOB.phonetic_alphabet)] \Roman[rand(1,50)]", announce=FALSE)
 	on_report()
 
 /datum/station_goal/proc/on_report()
@@ -26,20 +21,15 @@
 /datum/station_goal/proc/check_completion()
 	return completed
 
-/datum/station_goal/proc/print_result()
+/datum/station_goal/proc/get_result()
 	if(check_completion())
-		to_chat(world, "<b>Station Goal</b>: [name]:  <span class='greenannounce'>Completed!</span>")
+		return "<li>[name] : [span_greentext("Completed!")]</li>"
 	else
-		to_chat(world, "<b>Station Goal</b>: [name]: <span class='boldannounceic'>Failed!</span>")
-
-/datum/station_goal/Destroy()
-	SSticker.mode.station_goals -= src
-	. = ..()
+		return "<li>[name] : [span_redtext("Failed!")]</li>"
 
 /datum/station_goal/Topic(href, href_list)
 	..()
-
-	if(!check_rights(R_EVENT))
+	if(!check_rights(R_ADMIN) || !usr.client.holder.CheckAdminHref(href, href_list))
 		return
 
 	if(href_list["announce"])
@@ -47,3 +37,15 @@
 		send_report()
 	else if(href_list["remove"])
 		qdel(src)
+
+/datum/station_goal/New()
+	if(type in SSstation.goals_by_type)
+		stack_trace("Creating a new station_goal of type [type] when one already exists in SSstation.goals_by_type this is not supported anywhere. I trust you tho")
+	else
+		SSstation.goals_by_type[type] = src
+	return ..()
+
+/datum/station_goal/Destroy(force)
+	if(SSstation.goals_by_type[type] == src)
+		SSstation.goals_by_type -= type
+	return ..()

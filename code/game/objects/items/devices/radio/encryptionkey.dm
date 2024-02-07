@@ -1,187 +1,202 @@
-
 /obj/item/encryptionkey
-	name = "Standard Encryption Key"
-	desc = "An encyption key for a radio headset. Contains cypherkeys."
-	icon = 'icons/obj/radio.dmi'
-	icon_state = "cypherkey"
-	item_state = ""
+	name = "standard encryption key"
+	desc = "An encryption key for a radio headset."
+	icon = 'icons/obj/devices/circuitry_n_data.dmi'
+	icon_state = "cypherkey_basic"
 	w_class = WEIGHT_CLASS_TINY
-	origin_tech = "engineering=2;bluespace=1"
+	/// Can this radio key access the binary radio channel?
 	var/translate_binary = FALSE
-	var/translate_hive = FALSE
+	/// Decrypts Syndicate radio transmissions.
 	var/syndie = FALSE
-	var/change_voice = FALSE
+	/// If true, the radio can say/hear on the special CentCom channel.
+	var/independent = FALSE
+	/// What channels does this encryption key grant to the parent headset.
 	var/list/channels = list()
+	var/datum/language/translated_language
+	greyscale_config = /datum/greyscale_config/encryptionkey_basic
+	greyscale_colors = "#820a16#3758c4"
 
+/obj/item/encryptionkey/examine(mob/user)
+	. = ..()
+	if(LAZYLEN(channels) || translate_binary)
+		var/list/examine_text_list = list()
+		for(var/i in channels)
+			examine_text_list += "[GLOB.channel_tokens[i]] - [lowertext(i)]"
 
-/obj/item/encryptionkey/attackby(obj/item/W as obj, mob/user as mob, params)
+		if(translate_binary)
+			examine_text_list += "[GLOB.channel_tokens[MODE_BINARY]] - [MODE_BINARY]"
+
+		. += span_notice("It can access the following channels; [jointext(examine_text_list, ", ")].")
+	else
+		. += span_warning("Has no special codes in it. You should probably tell a coder!")
 
 /obj/item/encryptionkey/syndicate
 	name = "syndicate encryption key"
-	icon_state = "syn_cypherkey"
-	channels = list("Syndicate" = 1)
-	origin_tech = "syndicate=1;engineering=3;bluespace=2"
-	syndie = TRUE //Signifies that it de-crypts Syndicate transmissions
-	change_voice = TRUE
-	var/fake_name = "Agent ALERT_A_CODER"
-	var/static/list/fakename_list
-
-/obj/item/encryptionkey/syndicate/Initialize()
-	if(!LAZYLEN(fakename_list))
-		fakename_list = GLOB.html_colors.Copy()
-	. = ..()
-	if(change_voice)
-		fake_name = "Agent [pick_n_take(fakename_list)]"
-
-/obj/item/encryptionkey/syndicate/nukeops
-	change_voice = FALSE
-
-/obj/item/encryptionkey/syndteam
-	name = "syndicate encryption key"
-	icon_state = "syn_cypherkey"
-	channels = list("SyndTeam" = 1, "Syndicate" = 1)
-	origin_tech = "syndicate=4"
-	syndie = TRUE //Signifies that it de-crypts Syndicate transmissions
-
-/obj/item/encryptionkey/soviet
-	name = "soviet encryption key"
-	icon_state = "cypherkey"
-	channels = list("Special Ops" = 1)
-	origin_tech = "syndicate=4"
+	icon_state = "cypherkey_syndicate"
+	channels = list(RADIO_CHANNEL_SYNDICATE = 1)
+	syndie = TRUE
+	greyscale_config = /datum/greyscale_config/encryptionkey_syndicate
+	greyscale_colors = "#171717#990000"
 
 /obj/item/encryptionkey/binary
 	name = "binary translator key"
-	desc = "An encryption key for a radio headset. To access the binary channel, use :+."
-	icon_state = "bin_cypherkey"
+	icon_state = "cypherkey_basic"
 	translate_binary = TRUE
-	origin_tech = "syndicate=3;engineering=4;bluespace=3"
+	translated_language = /datum/language/machine
+	greyscale_config = /datum/greyscale_config/encryptionkey_basic
+	greyscale_colors = "#24a157#3758c4"
 
 /obj/item/encryptionkey/headset_sec
-	name = "Security Radio Encryption Key"
-	icon_state = "sec_cypherkey"
-	channels = list("Security" = 1)
-
-/obj/item/encryptionkey/headset_iaa
-	name = "IAA Radio Encryption Key"
-	icon_state = "sec_cypherkey"
-	channels = list("Security" = 1, "Procedure" = 1)
+	name = "security radio encryption key"
+	icon_state = "cypherkey_security"
+	channels = list(RADIO_CHANNEL_SECURITY = 1)
+	greyscale_config = /datum/greyscale_config/encryptionkey_security
+	greyscale_colors = "#820a16#280b1a"
 
 /obj/item/encryptionkey/headset_eng
-	name = "Engineering Radio Encryption Key"
-	icon_state = "eng_cypherkey"
-	channels = list("Engineering" = 1)
+	name = "engineering radio encryption key"
+	icon_state = "cypherkey_engineering"
+	channels = list(RADIO_CHANNEL_ENGINEERING = 1)
+	greyscale_config = /datum/greyscale_config/encryptionkey_engineering
+	greyscale_colors = "#f8d860#dca01b"
 
 /obj/item/encryptionkey/headset_rob
-	name = "Robotics Radio Encryption Key"
-	icon_state = "rob_cypherkey"
-	channels = list("Engineering" = 1, "Science" = 1)
+	name = "robotics radio encryption key"
+	icon_state = "cypherkey_engineering"
+	channels = list(RADIO_CHANNEL_SCIENCE = 1, RADIO_CHANNEL_ENGINEERING = 1)
+	greyscale_config = /datum/greyscale_config/encryptionkey_engineering
+	greyscale_colors = "#793a80#dca01b"
 
 /obj/item/encryptionkey/headset_med
-	name = "Medical Radio Encryption Key"
-	icon_state = "med_cypherkey"
-	channels = list("Medical" = 1)
-
-/obj/item/encryptionkey/headset_med/para
-	name = "Paramedic Radio Encryption Key"
-	icon_state = "para_cypherkey"
-	channels = list("Medical" = 1, "Supply" = 0)
+	name = "medical radio encryption key"
+	icon_state = "cypherkey_medical"
+	channels = list(RADIO_CHANNEL_MEDICAL = 1)
+	greyscale_config = /datum/greyscale_config/encryptionkey_medical
+	greyscale_colors = "#ebebeb#69abd1"
 
 /obj/item/encryptionkey/headset_sci
-	name = "Science Radio Encryption Key"
-	icon_state = "sci_cypherkey"
-	channels = list("Science" = 1)
+	name = "science radio encryption key"
+	icon_state = "cypherkey_research"
+	channels = list(RADIO_CHANNEL_SCIENCE = 1)
+	greyscale_config = /datum/greyscale_config/encryptionkey_research
+	greyscale_colors = "#793a80#bc4a9b"
 
 /obj/item/encryptionkey/headset_medsci
-	name = "Medical Research Radio Encryption Key"
-	icon_state = "medsci_cypherkey"
-	channels = list("Medical" = 1, "Science" = 1)
+	name = "medical research radio encryption key"
+	icon_state = "cypherkey_medical"
+	channels = list(RADIO_CHANNEL_SCIENCE = 1, RADIO_CHANNEL_MEDICAL = 1)
+	greyscale_config = /datum/greyscale_config/encryptionkey_medical
+	greyscale_colors = "#ebebeb#9d1de8"
+
+/obj/item/encryptionkey/headset_srvsec
+	name = "law and order radio encryption key"
+	icon_state = "cypherkey_service"
+	channels = list(RADIO_CHANNEL_SERVICE = 1, RADIO_CHANNEL_SECURITY = 1)
+	greyscale_config = /datum/greyscale_config/encryptionkey_service
+	greyscale_colors = "#820a16#3bca5a"
+
+/obj/item/encryptionkey/headset_srvmed
+	name = "psychology radio encryption key"
+	icon_state = "cypherkey_service"
+	channels = list(RADIO_CHANNEL_MEDICAL = 1, RADIO_CHANNEL_SERVICE = 1)
+	greyscale_config = /datum/greyscale_config/encryptionkey_service
+	greyscale_colors = "#ebebeb#3bca5a"
 
 /obj/item/encryptionkey/headset_com
-	name = "Command Radio Encryption Key"
-	icon_state = "com_cypherkey"
-	channels = list("Command" = 1)
+	name = "command radio encryption key"
+	icon_state = "cypherkey_cube"
+	channels = list(RADIO_CHANNEL_COMMAND = 1)
+	greyscale_config = /datum/greyscale_config/encryptionkey_cube
+	greyscale_colors = "#2b2793#67a552"
 
 /obj/item/encryptionkey/heads/captain
-	name = "Captain's Encryption Key"
-	icon_state = "cap_cypherkey"
-	channels = list("Command" = 1, "Security" = 1, "Engineering" = 0, "Science" = 0, "Medical" = 0, "Supply" = 0, "Service" = 0, "Procedure" = 1)
+	name = "\proper the captain's encryption key"
+	icon_state = "cypherkey_cube"
+	channels = list(RADIO_CHANNEL_COMMAND = 1, RADIO_CHANNEL_SECURITY = 1, RADIO_CHANNEL_ENGINEERING = 0, RADIO_CHANNEL_SCIENCE = 0, RADIO_CHANNEL_MEDICAL = 0, RADIO_CHANNEL_SUPPLY = 0, RADIO_CHANNEL_SERVICE = 0)
+	greyscale_config = /datum/greyscale_config/encryptionkey_cube
+	greyscale_colors = "#2b2793#dca01b"
 
 /obj/item/encryptionkey/heads/rd
-	name = "Research Director's Encryption Key"
-	icon_state = "rd_cypherkey"
-	channels = list("Science" = 1, "Command" = 1)
+	name = "\proper the research director's encryption key"
+	icon_state = "cypherkey_research"
+	channels = list(RADIO_CHANNEL_SCIENCE = 1, RADIO_CHANNEL_COMMAND = 1)
+	greyscale_config = /datum/greyscale_config/encryptionkey_research
+	greyscale_colors = "#bc4a9b#793a80"
 
 /obj/item/encryptionkey/heads/hos
-	name = "Head of Security's Encryption Key"
-	icon_state = "hos_cypherkey"
-	channels = list("Security" = 1, "Command" = 1)
+	name = "\proper the head of security's encryption key"
+	icon_state = "cypherkey_security"
+	channels = list(RADIO_CHANNEL_SECURITY = 1, RADIO_CHANNEL_COMMAND = 1)
+	greyscale_config = /datum/greyscale_config/encryptionkey_security
+	greyscale_colors = "#280b1a#820a16"
 
 /obj/item/encryptionkey/heads/ce
-	name = "Chief Engineer's Encryption Key"
-	icon_state = "ce_cypherkey"
-	channels = list("Engineering" = 1, "Command" = 1)
+	name = "\proper the chief engineer's encryption key"
+	icon_state = "cypherkey_engineering"
+	channels = list(RADIO_CHANNEL_ENGINEERING = 1, RADIO_CHANNEL_COMMAND = 1)
+	greyscale_config = /datum/greyscale_config/encryptionkey_engineering
+	greyscale_colors = "#dca01b#f8d860"
 
 /obj/item/encryptionkey/heads/cmo
-	name = "Chief Medical Officer's Encryption Key"
-	icon_state = "cmo_cypherkey"
-	channels = list("Medical" = 1, "Command" = 1)
+	name = "\proper the chief medical officer's encryption key"
+	icon_state = "cypherkey_medical"
+	channels = list(RADIO_CHANNEL_MEDICAL = 1, RADIO_CHANNEL_COMMAND = 1)
+	greyscale_config = /datum/greyscale_config/encryptionkey_medical
+	greyscale_colors = "#ebebeb#2b2793"
 
 /obj/item/encryptionkey/heads/hop
-	name = "Head of Personnel's Encryption Key"
-	icon_state = "hop_cypherkey"
-	channels = list("Service" = 1, "Security" = 0, "Command" = 1)
+	name = "\proper the head of personnel's encryption key"
+	icon_state = "cypherkey_cube"
+	channels = list(RADIO_CHANNEL_SERVICE = 1, RADIO_CHANNEL_COMMAND = 1)
+	greyscale_config = /datum/greyscale_config/encryptionkey_cube
+	greyscale_colors = "#2b2793#c2c1c9"
 
 /obj/item/encryptionkey/heads/qm
-	name = "Quartermaster's Encryption Key"
-	icon_state = "qm_cypherkey"
-	channels = list("Supply" = 1, "Command" = 1)
+	name = "\proper the quartermaster's encryption key"
+	icon_state = "cypherkey_cargo"
+	channels = list(RADIO_CHANNEL_SUPPLY = 1, RADIO_CHANNEL_COMMAND = 1)
+	greyscale_config = /datum/greyscale_config/encryptionkey_cargo
+	greyscale_colors = "#49241a#dca01b"
 
-/obj/item/encryptionkey/heads/ntrep
-	name = "Nanotrasen Representative's Encryption Key"
-	icon_state = "com_cypherkey"
-	channels = list("Command" = 1, "Security" = 0, "Engineering" = 0, "Science" = 0, "Medical" = 0, "Supply" = 0, "Service" = 0, "Procedure" = 1)
-
-/obj/item/encryptionkey/heads/magistrate
-	name = "Magistrate's Encryption Key"
-	icon_state = "com_cypherkey"
-	channels = list("Command" = 1, "Security" = 1, "Procedure" = 1)
-
-/obj/item/encryptionkey/heads/blueshield
-	name = "Blueshield's Encryption Key"
-	icon_state = "com_cypherkey"
-	channels = list("Command" = 1, "Security" = 1)
-
-/*
-/obj/item/encryptionkey/headset_mine
-	name = "Mining Radio Encryption Key"
-	icon_state = "mine_cypherkey"
-	channels = list("Mining" = 1)
-
-/obj/item/encryptionkey/heads/qm
-	name = "Quartermaster's Encryption Key"
-	icon_state = "qm_cypherkey"
-	channels = list("Cargo" = 1, "Mining" = 1)
-*/
 /obj/item/encryptionkey/headset_cargo
-	name = "Supply Radio Encryption Key"
-	icon_state = "cargo_cypherkey"
-	channels = list("Supply" = 1)
+	name = "supply radio encryption key"
+	icon_state = "cypherkey_cargo"
+	channels = list(RADIO_CHANNEL_SUPPLY = 1)
+	greyscale_config = /datum/greyscale_config/encryptionkey_cargo
+	greyscale_colors = "#49241a#7b3f2e"
+
+/obj/item/encryptionkey/headset_mining
+	name = "mining radio encryption key"
+	icon_state = "cypherkey_cargo"
+	channels = list(RADIO_CHANNEL_SUPPLY = 1, RADIO_CHANNEL_SCIENCE = 1)
+	greyscale_config = /datum/greyscale_config/encryptionkey_cargo
+	greyscale_colors = "#49241a#bc4a9b"
 
 /obj/item/encryptionkey/headset_service
-	name = "Service Radio Encryption Key"
-	icon_state = "srv_cypherkey"
-	channels = list("Service" = 1)
+	name = "service radio encryption key"
+	icon_state = "cypherkey_service"
+	channels = list(RADIO_CHANNEL_SERVICE = 1)
+	greyscale_config = /datum/greyscale_config/encryptionkey_service
+	greyscale_colors = "#3758c4#3bca5a"
 
-/obj/item/encryptionkey/ert
-	name = "Nanotrasen ERT Radio Encryption Key"
-	channels = list("Response Team" = 1, "Science" = 1, "Command" = 1, "Medical" = 1, "Engineering" = 1, "Security" = 1, "Supply" = 1, "Service" = 1, "Procedure" = 1)
+/obj/item/encryptionkey/headset_cent
+	name = "\improper CentCom radio encryption key"
+	icon_state = "cypherkey_centcom"
+	independent = TRUE
+	channels = list(RADIO_CHANNEL_CENTCOM = 1)
+	greyscale_config = /datum/greyscale_config/encryptionkey_centcom
+	greyscale_colors = "#24a157#dca01b"
 
-/obj/item/encryptionkey/centcom
-	name = "Centcom Radio Encryption Key"
-	channels = list("Response Team" = 1, "Special Ops" = 1, "Science" = 1, "Command" = 1, "Medical" = 1, "Engineering" = 1, "Security" = 1, "Supply" = 1, "Service" = 1, "Procedure" = 1)
+/obj/item/encryptionkey/ai //ported from NT, this goes 'inside' the AI.
+	channels = list(RADIO_CHANNEL_COMMAND = 1, RADIO_CHANNEL_SECURITY = 1, RADIO_CHANNEL_ENGINEERING = 1, RADIO_CHANNEL_SCIENCE = 1, RADIO_CHANNEL_MEDICAL = 1, RADIO_CHANNEL_SUPPLY = 1, RADIO_CHANNEL_SERVICE = 1, RADIO_CHANNEL_AI_PRIVATE = 1)
 
-/obj/item/encryptionkey/heads/ai_integrated //ported from bay, this goes 'inside' the AI.
-	name = "AI Integrated Encryption Key"
-	desc = "Integrated encryption key"
-	icon_state = "cap_cypherkey"
-	channels = list("Command" = 1, "Security" = 1, "Engineering" = 1, "Science" = 1, "Medical" = 1, "Supply" = 1, "Service" = 1, "AI Private" = 1, "Procedure" = 1)
+/obj/item/encryptionkey/ai/evil //ported from NT, this goes 'inside' the AI.
+	name = "syndicate binary encryption key"
+	icon_state = "cypherkey_syndicate"
+	channels = list(RADIO_CHANNEL_SYNDICATE = 1)
+	syndie = TRUE
+	greyscale_config = /datum/greyscale_config/encryptionkey_syndicate
+	greyscale_colors = "#171717#990000"
+
+/obj/item/encryptionkey/secbot
+	channels = list(RADIO_CHANNEL_AI_PRIVATE = 1, RADIO_CHANNEL_SECURITY = 1)

@@ -5,6 +5,7 @@
  */
 
 import * as keycodes from 'common/keycodes';
+
 import { globalEvents, KeyEvent } from './events';
 import { createLogger } from './logging';
 
@@ -25,10 +26,14 @@ const hotKeysAcquired = [
   keycodes.KEY_DOWN,
   keycodes.KEY_LEFT,
   keycodes.KEY_RIGHT,
+  keycodes.KEY_F5,
 ];
 
 // State of passed-through keys.
 const keyState: Record<string, boolean> = {};
+
+// Custom listeners for key events
+const keyListeners: ((key: KeyEvent) => void)[] = [];
 
 /**
  * Converts a browser keycode to BYOND keycode.
@@ -47,7 +52,8 @@ const keyCodeToByond = (keyCode: number) => {
   if (keyCode === 40) return 'South';
   if (keyCode === 45) return 'Insert';
   if (keyCode === 46) return 'Delete';
-  if ((keyCode >= 48 && keyCode <= 57) || (keyCode >= 65 && keyCode <= 90)) {
+  // prettier-ignore
+  if (keyCode >= 48 && keyCode <= 57 || keyCode >= 65 && keyCode <= 90) {
     return String.fromCharCode(keyCode);
   }
   if (keyCode >= 96 && keyCode <= 105) {
@@ -67,7 +73,7 @@ const keyCodeToByond = (keyCode: number) => {
  */
 const handlePassthrough = (key: KeyEvent) => {
   const keyString = String(key);
-  // Support reloading with Ctrl+R and Ctrl+F5
+  // In addition to F5, support reloading with Ctrl+R and Ctrl+F5
   if (keyString === 'Ctrl+F5' || keyString === 'Ctrl+R') {
     location.reload();
     return;
@@ -77,17 +83,13 @@ const handlePassthrough = (key: KeyEvent) => {
     return;
   }
   // NOTE: Alt modifier is pretty bad and sticky in IE11.
+  // prettier-ignore
   if (
-    key.event.defaultPrevented ||
-    key.isModifierKey() ||
-    hotKeysAcquired.includes(key.code)
+    key.event.defaultPrevented
+    || key.isModifierKey()
+    || hotKeysAcquired.includes(key.code)
   ) {
     return;
-  }
-  if (keyString === 'F5') {
-    // Hacky prevention of F5 reloading
-    key.event.preventDefault();
-    key.event.returnValue = false;
   }
   const byondKeyCode = keyCodeToByond(key.code);
   if (!byondKeyCode) {
@@ -99,17 +101,17 @@ const handlePassthrough = (key: KeyEvent) => {
     logger.debug('macro', macro);
     return Byond.command(macro);
   }
-  // Key_Down
+  // KeyDown
   if (key.isDown() && !keyState[byondKeyCode]) {
     keyState[byondKeyCode] = true;
-    const command = `Key_Down "${byondKeyCode}"`;
+    const command = `KeyDown "${byondKeyCode}"`;
     logger.debug(command);
     return Byond.command(command);
   }
-  // Key_Up
+  // KeyUp
   if (key.isUp() && keyState[byondKeyCode]) {
     keyState[byondKeyCode] = false;
-    const command = `Key_Up "${byondKeyCode}"`;
+    const command = `KeyUp "${byondKeyCode}"`;
     logger.debug(command);
     return Byond.command(command);
   }
@@ -138,7 +140,7 @@ export const releaseHeldKeys = () => {
     if (keyState[byondKeyCode]) {
       keyState[byondKeyCode] = false;
       logger.log(`releasing key "${byondKeyCode}"`);
-      Byond.command(`Key_Up "${byondKeyCode}"`);
+      Byond.command(`KeyUp "${byondKeyCode}"`);
     }
   }
 };
@@ -169,8 +171,10 @@ export const setupHotKeys = () => {
     }
     // Insert macros
     const escapedQuotRegex = /\\"/g;
-    const unescape = (str: string) =>
-      str.substring(1, str.length - 1).replace(escapedQuotRegex, '"');
+    // prettier-ignore
+    const unescape = (str: string) => str
+      .substring(1, str.length - 1)
+      .replace(escapedQuotRegex, '"');
     for (let ref of Object.keys(groupedByRef)) {
       const macro = groupedByRef[ref];
       const byondKeyName = unescape(macro.name);
@@ -183,6 +187,35 @@ export const setupHotKeys = () => {
     releaseHeldKeys();
   });
   globalEvents.on('key', (key: KeyEvent) => {
+    for (const keyListener of keyListeners) {
+      keyListener(key);
+    }
     handlePassthrough(key);
   });
+};
+
+/**
+ * Registers for any key events, such as key down or key up.
+ * This should be preferred over directly connecting to keydown/keyup
+ * as it lets tgui prevent the key from reaching BYOND.
+ *
+ * If using in a component, prefer KeyListener, which automatically handles
+ * stopping listening when unmounting.
+ *
+ * @param callback The function to call whenever a key event occurs
+ * @returns A callback to stop listening
+ */
+export const listenForKeyEvents = (callback: (key: KeyEvent) => void) => {
+  keyListeners.push(callback);
+
+  let removed = false;
+
+  return () => {
+    if (removed) {
+      return;
+    }
+
+    removed = true;
+    keyListeners.splice(keyListeners.indexOf(callback), 1);
+  };
 };

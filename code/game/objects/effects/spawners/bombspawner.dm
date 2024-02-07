@@ -1,65 +1,122 @@
+/**
+ * Spawns a TTV.
+ *
+ */
 /obj/effect/spawner/newbomb
 	name = "bomb"
-	icon = 'icons/mob/screen_gen.dmi'
+	icon = 'icons/hud/screen_gen.dmi'
 	icon_state = "x"
-	var/btype = 0 // 0=radio, 1=prox, 2=time
-	var/btemp1 = 1500
-	var/btemp2 = 1000	// tank temperatures
+	/* Gasmixes for tank_one and tank_two of the ttv respectively.
+	 * Populated on /obj/effect/spawner/newbomb/Initialize, depopulated right after by the children procs.
+	 */
+	var/datum/gas_mixture/first_gasmix
+	var/datum/gas_mixture/second_gasmix
 
-/obj/effect/spawner/newbomb/timer
-	btype = 2
+/**
+ * The part of code that actually spawns the bomb. Always call the parent's initialize first for subtypes of these.
+ *
+ * Arguments:
+ * * assembly - An assembly typepath to add to the ttv.
+ */
+/obj/effect/spawner/newbomb/Initialize(mapload, assembly = null)
+	. = ..()
+	var/obj/item/transfer_valve/ttv = new(loc)
+	ttv.tank_one = new /obj/item/tank/internals/plasma (ttv)
+	ttv.tank_two = new /obj/item/tank/internals/oxygen (ttv)
+	first_gasmix = ttv.tank_one.return_air()
+	second_gasmix = ttv.tank_two.return_air()
+	first_gasmix.remove_ratio(1)
+	second_gasmix.remove_ratio(1)
+	if(ispath(assembly, /obj/item/assembly))
+		var/obj/item/assembly/newassembly = new assembly (ttv)
+		ttv.attached_device = newassembly
+		newassembly.on_attach()
+		newassembly.holder = ttv
+	ttv.update_appearance()
 
-/obj/effect/spawner/newbomb/timer/syndicate
-	btemp1 = 150
-	btemp2 = 20
+/obj/effect/spawner/newbomb/proc/calculate_pressure(datum/gas_mixture/gasmix, pressure)
+	return pressure * gasmix.volume/(R_IDEAL_GAS_EQUATION*gasmix.temperature)
 
-/obj/effect/spawner/newbomb/proximity
-	btype = 1
+/obj/effect/spawner/newbomb/plasma
 
-/obj/effect/spawner/newbomb/radio
-	btype = 0
+/obj/effect/spawner/newbomb/plasma/Initialize(mapload)
+	. = ..()
+	if(!first_gasmix || !second_gasmix)
+		return
 
+	first_gasmix.temperature = 1413
+	second_gasmix.temperature = 141.3
 
-/obj/effect/spawner/newbomb/New()
-	..()
+	first_gasmix.assert_gas(/datum/gas/plasma)
+	second_gasmix.assert_gas(/datum/gas/oxygen)
 
-	var/obj/item/transfer_valve/V = new(src.loc)
-	var/obj/item/tank/internals/plasma/PT = new(V)
-	var/obj/item/tank/internals/oxygen/OT = new(V)
+	first_gasmix.gases[/datum/gas/plasma][MOLES] = calculate_pressure(first_gasmix, TANK_LEAK_PRESSURE - 1)
+	second_gasmix.gases[/datum/gas/oxygen][MOLES] = calculate_pressure(second_gasmix, TANK_LEAK_PRESSURE - 1)
 
-	V.tank_one = PT
-	V.tank_two = OT
+/obj/effect/spawner/newbomb/tritium
 
-	PT.master = V
-	OT.master = V
+/obj/effect/spawner/newbomb/tritium/Initialize(mapload, obj/item/assembly)
+	. = ..()
+	if(!first_gasmix || !second_gasmix)
+		return
 
-	PT.air_contents.temperature = btemp1 + T0C
-	OT.air_contents.temperature = btemp2 + T0C
+	first_gasmix.temperature = 8000
+	second_gasmix.temperature = 43
 
-	var/obj/item/assembly/S
+	first_gasmix.assert_gas(/datum/gas/plasma)
+	second_gasmix.assert_gas(/datum/gas/oxygen)
+	second_gasmix.assert_gas(/datum/gas/tritium)
 
-	switch(src.btype)
-		// radio
-		if(0)
+	first_gasmix.gases[/datum/gas/plasma][MOLES] = calculate_pressure(first_gasmix, TANK_LEAK_PRESSURE - 1)
+	second_gasmix.gases[/datum/gas/oxygen][MOLES] = 0.67 * calculate_pressure(second_gasmix, TANK_LEAK_PRESSURE - 1)
+	second_gasmix.gases[/datum/gas/tritium][MOLES] = 0.33 * calculate_pressure(second_gasmix, TANK_LEAK_PRESSURE - 1)
 
-			S = new/obj/item/assembly/signaler(V)
+/obj/effect/spawner/newbomb/isolated_tritium
 
-		// proximity
-		if(1)
+/obj/effect/spawner/newbomb/isolated_tritium/Initialize(mapload)
+	. = ..()
+	if(!first_gasmix || !second_gasmix)
+		return
 
-			S = new/obj/item/assembly/prox_sensor(V)
+	first_gasmix.temperature = FIRE_MINIMUM_TEMPERATURE_TO_EXIST + 1
+	second_gasmix.temperature = FIRE_MINIMUM_TEMPERATURE_TO_EXIST + 1
 
-		// timer
-		if(2)
+	first_gasmix.assert_gas(/datum/gas/hypernoblium)
+	first_gasmix.assert_gas(/datum/gas/tritium)
+	second_gasmix.assert_gas(/datum/gas/oxygen)
 
-			S = new/obj/item/assembly/timer(V)
+	first_gasmix.gases[/datum/gas/hypernoblium][MOLES] = REACTION_OPPRESSION_THRESHOLD - 0.01
+	first_gasmix.gases[/datum/gas/tritium][MOLES] = 0.5 * calculate_pressure(first_gasmix, TANK_LEAK_PRESSURE - 1)
+	second_gasmix.gases[/datum/gas/oxygen][MOLES] = calculate_pressure(second_gasmix, TANK_LEAK_PRESSURE-1)
 
+/obj/effect/spawner/newbomb/noblium
 
-	V.attached_device = S
+/obj/effect/spawner/newbomb/noblium/Initialize(mapload)
+	. = ..()
+	if(!first_gasmix || !second_gasmix)
+		return
 
-	S.holder = V
-	S.toggle_secure()
+	first_gasmix.temperature = 2.7
+	second_gasmix.temperature = 2.7
 
-	V.update_icon()
+	first_gasmix.assert_gas(/datum/gas/nitrogen)
+	second_gasmix.assert_gas(/datum/gas/tritium)
 
-	qdel(src)
+	first_gasmix.gases[/datum/gas/nitrogen][MOLES] = calculate_pressure(first_gasmix, TANK_LEAK_PRESSURE - 1)
+	second_gasmix.gases[/datum/gas/tritium][MOLES] = calculate_pressure(second_gasmix, TANK_LEAK_PRESSURE - 1)
+
+/obj/effect/spawner/newbomb/pressure
+
+/obj/effect/spawner/newbomb/pressure/Initialize(mapload)
+	. = ..()
+	if(!first_gasmix || !second_gasmix)
+		return
+
+	first_gasmix.temperature = 20000
+	second_gasmix.temperature = 2.7
+
+	first_gasmix.assert_gas(/datum/gas/hypernoblium)
+	second_gasmix.assert_gas(/datum/gas/tritium)
+
+	first_gasmix.gases[/datum/gas/hypernoblium][MOLES] = calculate_pressure(first_gasmix, TANK_LEAK_PRESSURE - 1)
+	second_gasmix.gases[/datum/gas/tritium][MOLES] = calculate_pressure(second_gasmix, TANK_LEAK_PRESSURE - 1)

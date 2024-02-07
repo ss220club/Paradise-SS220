@@ -7,183 +7,179 @@
 */
 
 /mob/living/silicon/robot/ClickOn(atom/A, params)
-	if(client?.click_intercept)
-		client.click_intercept.InterceptClickOn(src, params, A)
+	if(world.time <= next_click)
+		return
+	next_click = world.time + 1
+
+	if(check_click_intercept(params,A))
 		return
 
-	if(next_click > world.time)
-		return
-	changeNext_click(1)
-
-	if(is_ventcrawling(src)) // To stop drones interacting with anything while ventcrawling
-		return
-	if(stat == DEAD || lockcharge || IsWeakened() || IsStunned() || IsParalyzed() || low_power_mode)
+	if(stat || (lockcharge) || IsParalyzed() || IsStun())
 		return
 
 	var/list/modifiers = params2list(params)
-	if(modifiers["shift"] && modifiers["ctrl"])
-		CtrlShiftClickOn(A)
-		return
-	if(modifiers["shift"] && modifiers["alt"])
-		AltShiftClickOn(A)
-		return
-	if(modifiers["middle"] && modifiers["ctrl"])
-		CtrlMiddleClickOn(A)
-		return
-	if(modifiers["shift"] && modifiers["middle"])
-		ShiftMiddleClickOn(A)
-		return
-	if(modifiers["middle"])
-		MiddleClickOn(A)
-		return
-	if(modifiers["shift"])
+	if(LAZYACCESS(modifiers, SHIFT_CLICK))
+		if(LAZYACCESS(modifiers, CTRL_CLICK))
+			CtrlShiftClickOn(A)
+			return
+		if(LAZYACCESS(modifiers, MIDDLE_CLICK))
+			ShiftMiddleClickOn(A)
+			return
 		ShiftClickOn(A)
 		return
-	if(modifiers["alt"]) // alt and alt-gr (rightalt)
+	if(LAZYACCESS(modifiers, MIDDLE_CLICK))
+		MiddleClickOn(A, params)
+		return
+	if(LAZYACCESS(modifiers, ALT_CLICK)) // alt and alt-gr (rightalt)
 		AltClickOn(A)
 		return
-	if(modifiers["ctrl"])
+	if(LAZYACCESS(modifiers, CTRL_CLICK))
 		CtrlClickOn(A)
 		return
-
-	if(incapacitated())
-		return
+	if(LAZYACCESS(modifiers, RIGHT_CLICK) && !module_active)
+		var/secondary_result = A.attack_robot_secondary(src, modifiers)
+		if(secondary_result == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN || secondary_result == SECONDARY_ATTACK_CONTINUE_CHAIN)
+			return
+		else if (secondary_result != SECONDARY_ATTACK_CALL_NORMAL)
+			CRASH("attack_robot_secondary did not return a SECONDARY_ATTACK_* define.")
 
 	if(next_move >= world.time)
 		return
 
 	face_atom(A) // change direction to face what you clicked on
 
-	if(aiCamera)
-		if(aiCamera.in_camera_mode)
-			aiCamera.camera_mode_off()
-			if(is_component_functioning("camera"))
-				aiCamera.captureimage(A, usr)
-			else
-				to_chat(src, "<span class='userdanger'>Your camera isn't functional.</span>")
-			return
+	var/obj/item/W = get_active_held_item()
 
-	/*
-	cyborg restrained() currently does nothing
-	if(restrained())
-		RestrainedClickOn(A)
-		return
-	*/
-
-	var/obj/item/W = get_active_hand()
-
-	// Cyborgs have no range-checking unless there is item use
-	if(!W)
-		A.add_hiddenprint(src)
+	if(!W && get_dist(src,A) <= interaction_range)
 		A.attack_robot(src)
 		return
 
-	// buckled cannot prevent machine interlinking but stops arm movement
-	if(buckled)
-		return
+	if(W)
+		if(incapacitated())
+			return
 
-	if(W == A)
-		W.attack_self(src)
-		return
+		//while buckled, you can still connect to and control things like doors, but you can't use your modules
+		if(buckled)
+			to_chat(src, span_warning("You can't use modules while buckled to [buckled]!"))
+			return
 
-	// cyborgs are prohibited from using storage items so we can I think safely remove (A.loc in contents)
-	if(A == loc || (A in loc) || (A in contents))
-		W.melee_attack_chain(src, A, params)
-		return
+		//if your "hands" are blocked you shouldn't be able to use modules
+		if(HAS_TRAIT(src, TRAIT_HANDS_BLOCKED))
+			return
 
-	if(!isturf(loc))
-		return
+		if(W == A)
+			W.attack_self(src)
+			return
 
-	// cyborgs are prohibited from using storage items so we can I think safely remove (A.loc && isturf(A.loc.loc))
-	if(isturf(A) || isturf(A.loc))
-		if(A.Adjacent(src)) // see adjacent.dm
+		// cyborgs are prohibited from using storage items so we can I think safely remove (A.loc in contents)
+		if(A == loc || (A in loc) || (A in contents))
 			W.melee_attack_chain(src, A, params)
 			return
-		else
-			W.afterattack(A, src, 0, params)
+
+		if(!isturf(loc))
 			return
-	return
 
-//Ctrl+Middle click cycles through modules
-/mob/living/silicon/robot/proc/CtrlMiddleClickOn(atom/A)
-	cycle_modules()
-	return
-
-//Middle click points
-/mob/living/silicon/robot/MiddleClickOn(atom/A)
-	if(isdrone(src))
-		// Drones cannot point.
-		return
-	pointed(A)
-	return
+		// cyborgs are prohibited from using storage items so we can I think safely remove (A.loc && isturf(A.loc.loc))
+		if(CanReach(A,W))
+			W.melee_attack_chain(src, A, params)
+			return
+		if(isturf(A) || isturf(A.loc))
+			W.afterattack(A, src, 0, params)
 
 //Give cyborgs hotkey clicks without breaking existing uses of hotkey clicks
 // for non-doors/apcs
-/mob/living/silicon/robot/ShiftClickOn(atom/A)
-	A.BorgShiftClick(src)
-/mob/living/silicon/robot/CtrlClickOn(atom/A)
-	A.BorgCtrlClick(src)
-/mob/living/silicon/robot/AltClickOn(atom/A)
-	A.BorgAltClick(src)
-/mob/living/silicon/robot/CtrlShiftClickOn(atom/A)
-	A.BorgCtrlShiftClick(src)
-/mob/living/silicon/robot/AltShiftClickOn(atom/A)
-	A.BorgAltShiftClick(src)
-/mob/living/silicon/robot/ShiftMiddleClickOn(atom/A)
-	A.BorgShiftMiddleClick(src)
+/mob/living/silicon/robot/CtrlShiftClickOn(atom/target)
+	target.BorgCtrlShiftClick(src)
 
-/atom/proc/BorgShiftClick(mob/user)
-	if(user.client && user.client.eye == user)
-		user.examinate(src)
-	return
+/mob/living/silicon/robot/ShiftClickOn(atom/target)
+	target.BorgShiftClick(src)
 
-/atom/proc/BorgCtrlClick(mob/living/silicon/robot/user) //forward to human click if not overriden
+/mob/living/silicon/robot/CtrlClickOn(atom/target)
+	target.BorgCtrlClick(src)
+
+/mob/living/silicon/robot/AltClickOn(atom/target)
+	target.BorgAltClick(src)
+
+/atom/proc/BorgCtrlShiftClick(mob/living/silicon/robot/user) //forward to human click if not overridden
+	CtrlShiftClick(user)
+
+/obj/machinery/door/airlock/BorgCtrlShiftClick(mob/living/silicon/robot/user) // Sets/Unsets Emergency Access Override Forwards to AI code.
+	if(get_dist(src, user) <= user.interaction_range && !(user.control_disabled))
+		AICtrlShiftClick(user)
+	else
+		..()
+
+/atom/proc/BorgShiftClick(mob/living/silicon/robot/user) //forward to human click if not overridden
+	ShiftClick(user)
+
+/obj/machinery/door/airlock/BorgShiftClick(mob/living/silicon/robot/user)  // Opens and closes doors! Forwards to AI code.
+	if(get_dist(src, user) <= user.interaction_range && !(user.control_disabled))
+		AIShiftClick(user)
+	else
+		..()
+
+
+/atom/proc/BorgCtrlClick(mob/living/silicon/robot/user) //forward to human click if not overridden
 	CtrlClick(user)
+
+/obj/machinery/door/airlock/BorgCtrlClick(mob/living/silicon/robot/user) // Bolts doors. Forwards to AI code.
+	if(get_dist(src, user) <= user.interaction_range && !(user.control_disabled))
+		AICtrlClick(user)
+	else
+		..()
+
+/obj/machinery/power/apc/BorgCtrlClick(mob/living/silicon/robot/user) // turns off/on APCs. Forwards to AI code.
+	if(get_dist(src, user) <= user.interaction_range && !(user.control_disabled))
+		AICtrlClick(user)
+	else
+		..()
+
+/obj/machinery/power/apc/BorgCtrlShiftClick(mob/living/silicon/robot/user)
+	if(get_dist(src, user) <= user.interaction_range && !(user.control_disabled))
+		AICtrlShiftClick(user)
+	else
+		..()
+
+/obj/machinery/power/apc/BorgShiftClick(mob/living/silicon/robot/user)
+	if(get_dist(src, user) <= user.interaction_range && !(user.control_disabled))
+		AIShiftClick(user)
+	else
+		..()
+
+/obj/machinery/power/apc/BorgAltClick(mob/living/silicon/robot/user)
+	if(get_dist(src, user) <= user.interaction_range && !(user.control_disabled))
+		AIAltClick(user)
+	else
+		..()
+
+
+/obj/machinery/power/apc/attack_robot_secondary(mob/living/silicon/user, list/modifiers)
+	if(get_dist(src, user) <= user.interaction_range && !(user.control_disabled))
+		return attack_ai_secondary(user, modifiers)
+	else
+		..()
+
+/obj/machinery/turretid/BorgCtrlClick(mob/living/silicon/robot/user) //turret control on/off. Forwards to AI code.
+	if(get_dist(src, user) <= user.interaction_range && !(user.control_disabled))
+		AICtrlClick(user)
+	else
+		..()
 
 /atom/proc/BorgAltClick(mob/living/silicon/robot/user)
 	AltClick(user)
 	return
 
-/atom/proc/BorgCtrlShiftClick(mob/user) // Examines
-	if(user.client && user.client.eye == user)
-		user.examinate(src)
-	return
-
-/atom/proc/BorgAltShiftClick()
-	return
-
-/atom/proc/BorgShiftMiddleClick()
-	return
-
-// AIRLOCKS
-
-/obj/machinery/door/airlock/BorgShiftClick(mob/living/silicon/robot/user)  // Opens and closes doors! Forwards to AI code.
-	AIShiftClick(user)
-
-/obj/machinery/door/airlock/BorgCtrlClick(mob/living/silicon/robot/user) // Bolts doors. Forwards to AI code.
-	AICtrlClick(user)
-
 /obj/machinery/door/airlock/BorgAltClick(mob/living/silicon/robot/user) // Eletrifies doors. Forwards to AI code.
-	AIAltClick(user)
-
-/obj/machinery/door/airlock/BorgAltShiftClick(mob/living/silicon/robot/user)  // Enables emergency override on doors! Forwards to AI code.
-	AIAltShiftClick(user)
-
-/obj/machinery/door/airlock/BorgShiftMiddleClick(mob/living/silicon/robot/user)  //Toggles door timing. Forwards to AI code.
-	AIShiftMiddleClick(user)
-
-// APC
-
-/obj/machinery/power/apc/BorgCtrlClick(mob/living/silicon/robot/user) // turns off/on APCs. Forwards to AI code.
-	AICtrlClick(user)
-
-// TURRETCONTROL
-
-/obj/machinery/turretid/BorgCtrlClick(mob/living/silicon/robot/user) //turret control on/off. Forwards to AI code.
-	AICtrlClick(user)
+	if(get_dist(src, user) <= user.interaction_range && !(user.control_disabled))
+		AIAltClick(user)
+	else
+		..()
 
 /obj/machinery/turretid/BorgAltClick(mob/living/silicon/robot/user) //turret lethal on/off. Forwards to AI code.
-	AIAltClick(user)
+	if(get_dist(src, user) <= user.interaction_range && !(user.control_disabled))
+		AIAltClick(user)
+	else
+		..()
 
 /*
 	As with AI, these are not used in click code,
@@ -193,12 +189,30 @@
 	clicks, you can do so here, but you will have to
 	change attack_robot() above to the proper function
 */
-/mob/living/silicon/robot/UnarmedAttack(atom/A)
+/mob/living/silicon/robot/UnarmedAttack(atom/A, proximity_flag, list/modifiers)
+	if(!can_unarmed_attack())
+		return
 	A.attack_robot(src)
 
-/mob/living/silicon/robot/RangedAttack(atom/A, params)
+/mob/living/silicon/robot/RangedAttack(atom/A)
 	A.attack_robot(src)
 
 /atom/proc/attack_robot(mob/user)
+	if (SEND_SIGNAL(src, COMSIG_ATOM_ATTACK_ROBOT, user) & COMPONENT_CANCEL_ATTACK_CHAIN)
+		return
+
 	attack_ai(user)
 	return
+
+/**
+ * What happens when the cyborg without active module holds right-click on an item. Returns a SECONDARY_ATTACK_* value.
+ *
+ * Arguments:
+ * * user The mob holding the right click
+ * * modifiers The list of the custom click modifiers
+ */
+/atom/proc/attack_robot_secondary(mob/user, list/modifiers)
+	if (SEND_SIGNAL(src, COMSIG_ATOM_ATTACK_ROBOT_SECONDARY, user) & COMPONENT_CANCEL_ATTACK_CHAIN)
+		return
+
+	return attack_ai_secondary(user, modifiers)

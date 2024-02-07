@@ -22,19 +22,26 @@ $bg-map: colors.$bg-map !default;
   $text-color: if($luminance > 0.4, rgba(0, 0, 0, 1), rgba(255, 255, 255, 1));
 
   transition:
-    color 100ms,
-    background-color 100ms;
+    color 50ms,
+    background-color 50ms;
   background-color: $color;
   color: $text-color;
 
-  &:focus {
+  &:hover {
     transition:
-      color 250ms,
-      background-color 250ms;
+      color 0ms,
+      background-color 0ms;
   }
 
-  &:hover {
-    background-color: lighten($color, 25%);
+  &:focus {
+    transition:
+      color 100ms,
+      background-color 100ms;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: lighten($color, 30%);
     color: $text-color;
   }
 }
@@ -68,6 +75,12 @@ $bg-map: colors.$bg-map !default;
   }
 }
 
+.Button--dropdown {
+  line-height: base.em(16px);
+  height: base.em(22px);
+  padding: 0.2rem 0.5rem;
+}
+
 .Button--hasContent {
   // Add a margin to the icon to keep it separate from the text
   .fa,
@@ -77,17 +90,18 @@ $bg-map: colors.$bg-map !default;
   }
 }
 
-.Button--hasContent.Button--iconRight {
+.Button--hasContent.Button--iconPosition--right {
   .fa,
   .fas,
   .far {
-    margin-right: 0;
-    margin-left: 0.25em;
+    margin-right: 0px;
+    margin-left: 3px;
   }
 }
+
 .Button--ellipsis {
-  overflow: hidden;
   text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .Button--fluid {
@@ -105,10 +119,6 @@ $bg-map: colors.$bg-map !default;
   line-height: 1.333em;
 }
 
-.Button--multiLine {
-  white-space: normal;
-  word-wrap: break-word;
-}
 @each $color-name, $color-value in $bg-map {
   .Button--color--#{$color-name} {
     @include button-color($color-value);
@@ -133,12 +143,6 @@ $bg-map: colors.$bg-map !default;
   color: $color-transparent-text;
 }
 
-.Button--color--translucent {
-  @include button-color(base.$color-bg);
-  background-color: rgba(base.$color-bg, 0.6);
-  color: $color-transparent-text;
-}
-
 .Button--disabled {
   background-color: $color-disabled !important;
 }
@@ -147,8 +151,32 @@ $bg-map: colors.$bg-map !default;
   @include button-color($color-selected);
 }
 
-.Button--modal {
-  float: right;
-  z-index: 1;
-  margin-top: -0.5rem;
+.Button--flex {
+  display: inline-flex; //Inline even for fluid
+  flex-direction: column;
+}
+
+.Button--flex--fluid {
+  width: 100%;
+}
+
+.Button--verticalAlignContent--top {
+  justify-content: flex-start;
+}
+
+.Button--verticalAlignContent--middle {
+  justify-content: center;
+}
+
+.Button--verticalAlignContent--bottom {
+  justify-content: flex-end;
+}
+
+.Button__content {
+  display: block;
+  align-self: stretch;
+}
+
+.Button__textMargin {
+  margin-left: 0.4rem;
 }

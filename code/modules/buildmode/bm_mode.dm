@@ -1,38 +1,46 @@
+/// Corner A area section for buildmode
+#define AREASELECT_CORNERA "corner A"
+/// Corner B area selection for buildmode
+#define AREASELECT_CORNERB "corner B"
+
 /datum/buildmode_mode
 	var/key = "oops"
 
-	var/datum/click_intercept/buildmode/BM
+	var/datum/buildmode/BM
 
+	// would corner selection work better as a component?
 	var/use_corner_selection = FALSE
-	var/processing_selection = FALSE
 	var/list/preview
 	var/turf/cornerA
 	var/turf/cornerB
 
-/datum/buildmode_mode/New(datum/click_intercept/buildmode/newBM)
-	BM = newBM
+/datum/buildmode_mode/New(datum/buildmode/BM)
+	src.BM = BM
 	preview = list()
 	return ..()
 
 /datum/buildmode_mode/Destroy()
-	Reset()
+	cornerA = null
+	cornerB = null
+	QDEL_LIST(preview)
+	preview = null
 	return ..()
 
-/datum/buildmode_mode/proc/enter_mode(datum/click_intercept/buildmode/BM)
+/datum/buildmode_mode/proc/enter_mode(datum/buildmode/BM)
 	return
 
-/datum/buildmode_mode/proc/exit_mode(datum/click_intercept/buildmode/BM)
+/datum/buildmode_mode/proc/exit_mode(datum/buildmode/BM)
 	return
 
 /datum/buildmode_mode/proc/get_button_iconstate()
 	return "buildmode_[key]"
 
-/datum/buildmode_mode/proc/show_help(mob/user)
-	to_chat(user, "<span class='warning'>There is no help defined for this mode, this is a bug.</span>")
+/datum/buildmode_mode/proc/show_help(client/c)
 	CRASH("No help defined, yell at a coder")
 
-/datum/buildmode_mode/proc/change_settings(mob/user)
-	to_chat(user, "<span class='warning'>There is no configuration available for this mode</span>")
+/datum/buildmode_mode/proc/change_settings(client/c)
+	to_chat(c, span_warning("There is no configuration available for this mode"))
+	return
 
 /datum/buildmode_mode/proc/Reset()
 	deselect_region()
@@ -45,43 +53,46 @@
 			overlaystate = "greenOverlay"
 		if(AREASELECT_CORNERB)
 			overlaystate = "blueOverlay"
-	preview += image('icons/turf/overlays.dmi', T, overlaystate)
+
+	var/image/I = image('icons/turf/overlays.dmi', T, overlaystate)
+	SET_PLANE(I, ABOVE_LIGHTING_PLANE, T)
+	preview += I
 	BM.holder.images += preview
 	return T
 
 /datum/buildmode_mode/proc/highlight_region(region)
 	BM.holder.images -= preview
-	for(var/T in region)
-		preview += image('icons/turf/overlays.dmi', T, "redOverlay")
+	for(var/turf/member as anything in region)
+		var/image/I = image('icons/turf/overlays.dmi', member, "redOverlay")
+		SET_PLANE(I, ABOVE_LIGHTING_PLANE, member)
+		preview += I
 	BM.holder.images += preview
 
 /datum/buildmode_mode/proc/deselect_region()
 	BM.holder.images -= preview
-	QDEL_LIST_CONTENTS(preview)
+	preview.Cut()
 	cornerA = null
 	cornerB = null
 
-/datum/buildmode_mode/proc/handle_click(user, params, object)
-	var/list/pa = params2list(params)
-	var/left_click = pa.Find("left")
+/datum/buildmode_mode/proc/handle_click(client/c, params, object)
+	var/list/modifiers = params2list(params)
 	if(use_corner_selection)
-		if(left_click)
+		if(LAZYACCESS(modifiers, LEFT_CLICK))
 			if(!cornerA)
 				cornerA = select_tile(get_turf(object), AREASELECT_CORNERA)
 				return
-			else if(!cornerB)
+			if(cornerA && !cornerB)
 				cornerB = select_tile(get_turf(object), AREASELECT_CORNERB)
-				to_chat(user, "<span class='boldwarning'>Region selected, if you're happy with your selection left click again, otherwise right click.</span>")
+				to_chat(c, span_boldwarning("Region selected, if you're happy with your selection left click again, otherwise right click."))
 				return
-			if(processing_selection)
-				return
-			processing_selection = TRUE
-			handle_selected_region(user, params)
-			processing_selection = FALSE
+			handle_selected_area(c, params)
 			deselect_region()
-		else if(cornerA || cornerB)
-			to_chat(user, "<span class='notice'>Region selection canceled!</span>")
+		else
+			to_chat(c, span_notice("Region selection canceled!"))
 			deselect_region()
-
-/datum/buildmode_mode/proc/handle_selected_region(mob/user, params)
 	return
+
+/datum/buildmode_mode/proc/handle_selected_area(client/c, params)
+
+#undef AREASELECT_CORNERA
+#undef AREASELECT_CORNERB

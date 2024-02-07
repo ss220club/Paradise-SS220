@@ -1,1 +1,0 @@
-#define MODPACK_CHAT_BADGES

@@ -1,5 +1,3 @@
-#define MINER_DASH_RANGE 4
-
 /*
 
 BLOOD-DRUNK MINER
@@ -27,162 +25,135 @@ Difficulty: Medium
 	maxHealth = 900
 	icon_state = "miner"
 	icon_living = "miner"
-	icon = 'icons/mob/lavaland/blood_drunk.dmi'
-	mob_biotypes = MOB_ORGANIC | MOB_HUMANOID
-	light_color = "#E4C7C5"
-	flying = FALSE
+	icon = 'icons/mob/simple/broadMobs.dmi'
+	health_doll_icon = "miner"
+	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
+	light_color = COLOR_LIGHT_GRAYISH_RED
+	movement_type = GROUND
 	speak_emote = list("roars")
 	speed = 3
 	move_to_delay = 3
-	projectiletype = /obj/item/projectile/kinetic/miner
-	projectilesound = 'sound/weapons/kenetic_accel.ogg'
 	ranged = TRUE
-	ranged_cooldown_time = 16
-	pixel_x = -7
-	crusher_loot = list(/obj/item/melee/energy/cleaving_saw, /obj/item/gun/energy/kinetic_accelerator, /obj/item/crusher_trophy/miner_eye)
-	loot = list(/obj/item/melee/energy/cleaving_saw, /obj/item/gun/energy/kinetic_accelerator)
+	ranged_cooldown_time = 1.6 SECONDS
+	rapid_melee = 5 // starts fast because the saw's closed. gets reduced appropriately when extended, see their transform_weapon ability
+	pixel_x = -16
+	base_pixel_x = -16
+	crusher_loot = list(/obj/item/melee/cleaving_saw, /obj/item/gun/energy/recharge/kinetic_accelerator, /obj/item/crusher_trophy/miner_eye)
+	loot = list(/obj/item/melee/cleaving_saw, /obj/item/gun/energy/recharge/kinetic_accelerator)
 	wander = FALSE
 	del_on_death = TRUE
 	blood_volume = BLOOD_VOLUME_NORMAL
-	internal_gps = /obj/item/gps/internal/miner
-	medal_type = BOSS_MEDAL_MINER
-	var/obj/item/melee/energy/cleaving_saw/miner_saw
-	var/time_until_next_transform = 0
-	var/dashing = FALSE
-	var/dash_cooldown = 0
-	var/dash_cooldown_to_use = 1.5 SECONDS
-	var/guidance = FALSE
-	var/transform_stop_attack = FALSE // stops the blood drunk miner from attacking after transforming his weapon until the next attack chain
-	deathmessage = "falls to the ground, decaying into glowing particles."
-	death_sound = "bodyfall"
+	gps_name = "Resonant Signal"
+	achievement_type = /datum/award/achievement/boss/blood_miner_kill
+	crusher_achievement_type = /datum/award/achievement/boss/blood_miner_crusher
+	score_achievement_type = /datum/award/score/blood_miner_score
+	var/obj/item/melee/cleaving_saw/miner/miner_saw
+	death_message = "falls to the ground, decaying into glowing particles."
+	death_sound = SFX_BODYFALL
 	footstep_type = FOOTSTEP_MOB_HEAVY
-	enraged_loot = /obj/item/disk/fauna_research/blood_drunk_miner
-	attack_action_types = list(/datum/action/innate/megafauna_attack/dash,
-							/datum/action/innate/megafauna_attack/kinetic_accelerator,
-							/datum/action/innate/megafauna_attack/transform_weapon)
-
-/obj/item/gps/internal/miner
-	icon_state = null
-	gpstag = "Resonant Signal"
-	desc = "The sweet blood, oh, it sings to me."
-	invisibility = 100
+	move_force = MOVE_FORCE_NORMAL //Miner beeing able to just move structures like bolted doors and glass looks kinda strange
+	/// Does this blood-drunk miner heal slightly while attacking and heal more when gibbing people?
+	var/guidance = FALSE
+	/// Dash ability
+	var/datum/action/cooldown/mob_cooldown/dash/dash
+	/// Kinetic accelerator ability
+	var/datum/action/cooldown/mob_cooldown/projectile_attack/kinetic_accelerator/kinetic_accelerator
+	/// Dash Attack Ability
+	var/datum/action/cooldown/mob_cooldown/dash_attack/dash_attack
+	/// Transform weapon ability
+	var/datum/action/cooldown/mob_cooldown/transform_weapon/transform_weapon
 
 /mob/living/simple_animal/hostile/megafauna/blood_drunk_miner/Initialize(mapload)
 	. = ..()
-	miner_saw = new /obj/item/melee/energy/cleaving_saw/miner(src)
+	miner_saw = new(src)
+	ADD_TRAIT(src, TRAIT_NO_FLOATING_ANIM, INNATE_TRAIT)
 
-/datum/action/innate/megafauna_attack/dash
-	name = "Dash To Target"
-	icon_icon = 'icons/mob/actions/actions.dmi'
-	button_icon_state = "sniper_zoom"
-	chosen_message = "<span class='colossus'>You are now dashing to your target.</span>"
-	chosen_attack_num = 1
+	dash = new /datum/action/cooldown/mob_cooldown/dash
+	kinetic_accelerator = new /datum/action/cooldown/mob_cooldown/projectile_attack/kinetic_accelerator
+	dash_attack = new /datum/action/cooldown/mob_cooldown/dash_attack
+	transform_weapon = new /datum/action/cooldown/mob_cooldown/transform_weapon
+	dash.Grant(src)
+	kinetic_accelerator.Grant(src)
+	dash_attack.Grant(src)
+	transform_weapon.Grant(src)
 
-/datum/action/innate/megafauna_attack/kinetic_accelerator
-	name = "Fire Kinetic Accelerator"
-	icon_icon = 'icons/obj/guns/energy.dmi'
-	button_icon_state = "kineticgun"
-	chosen_message = "<span class='colossus'>You are now shooting your kinetic accelerator.</span>"
-	chosen_attack_num = 2
+	AddComponent(/datum/component/boss_music, 'sound/lavaland/bdm_boss.ogg', 167 SECONDS)
 
-/datum/action/innate/megafauna_attack/transform_weapon
-	name = "Transform Weapon"
-	icon_icon = 'icons/obj/lavaland/artefacts.dmi'
-	button_icon_state = "cleaving_saw"
-	chosen_message = "<span class='colossus'>You are now transforming your weapon.</span>"
-	chosen_attack_num = 3
+/mob/living/simple_animal/hostile/megafauna/blood_drunk_miner/Destroy()
+	dash = null
+	kinetic_accelerator = null
+	dash_attack = null
+	transform_weapon = null
+	return ..()
 
 /mob/living/simple_animal/hostile/megafauna/blood_drunk_miner/OpenFire()
 	if(client)
-		switch(chosen_attack)
-			if(1)
-				dash(target)
-			if(2)
-				shoot_ka()
-			if(3)
-				transform_weapon()
 		return
 
 	Goto(target, move_to_delay, minimum_distance)
-	if(get_dist(src, target) > MINER_DASH_RANGE && dash_cooldown <= world.time)
-		dash_attack()
+	if(get_dist(src, target) > 4 && dash_attack.IsAvailable())
+		dash_attack.Trigger(target = target)
 	else
-		shoot_ka()
-	transform_weapon()
+		kinetic_accelerator.Trigger(target = target)
+	transform_weapon.Trigger(target = target)
 
-/obj/item/melee/energy/cleaving_saw/miner //nerfed saw because it is very murdery
+/obj/item/melee/cleaving_saw/miner //nerfed saw because it is very murdery
 	force = 6
-	force_on = 10
+	open_force = 10
 
-/obj/item/melee/energy/cleaving_saw/miner/attack(mob/living/target, mob/living/carbon/human/user)
-	target.add_stun_absorption("miner", 10, INFINITY)
-	..()
-	target.remove_stun_absorption("miner")
+/obj/item/melee/cleaving_saw/miner/attack(mob/living/target, mob/living/carbon/human/user)
+	target.add_stun_absorption(source = "miner", duration = 1 SECONDS, priority = INFINITY)
+	return ..()
 
-/obj/item/projectile/kinetic/miner
+/obj/projectile/kinetic/miner
 	damage = 20
 	speed = 0.9
 	icon_state = "ka_tracer"
-	range = MINER_DASH_RANGE
+	range = 4
 
-/obj/item/projectile/kinetic/miner/enraged
-	damage = 35
-
-/mob/living/simple_animal/hostile/megafauna/blood_drunk_miner/adjustHealth(amount, updating_health = TRUE)
-	if(!enraged)
-		var/adjustment_amount = amount * 0.1
-		if(world.time + adjustment_amount > next_move)
-			changeNext_move(adjustment_amount) //attacking it interrupts it attacking, but only briefly
+/mob/living/simple_animal/hostile/megafauna/blood_drunk_miner/adjustHealth(amount, updating_health = TRUE, forced = FALSE)
+	var/adjustment_amount = amount * 0.1
+	if(world.time + adjustment_amount > next_move)
+		changeNext_move(adjustment_amount) //attacking it interrupts it attacking, but only briefly
 	. = ..()
 
 /mob/living/simple_animal/hostile/megafauna/blood_drunk_miner/death()
-	if(health > 0)
-		return
-	new /obj/effect/temp_visual/dir_setting/miner_death(loc, dir)
-	return ..()
+	. = ..()
+	if(.)
+		new /obj/effect/temp_visual/dir_setting/miner_death(loc, dir)
 
 /mob/living/simple_animal/hostile/megafauna/blood_drunk_miner/Move(atom/newloc)
-	if(dashing || (newloc && newloc.z == z && (islava(newloc) || ischasm(newloc)))) //we're not stupid!
+	if(newloc && newloc.z == z && (islava(newloc) || ischasm(newloc))) //we're not stupid!
 		return FALSE
 	return ..()
 
-/mob/living/simple_animal/hostile/megafauna/blood_drunk_miner/ex_act(severity)
-	if(dash())
-		return
+/mob/living/simple_animal/hostile/megafauna/blood_drunk_miner/ex_act(severity, target)
+	if(dash.Trigger(target = target))
+		return FALSE
 	return ..()
 
-/mob/living/simple_animal/hostile/megafauna/blood_drunk_miner/MeleeAction(patience = TRUE)
-	transform_stop_attack = FALSE
-	return ..()
-
-/mob/living/simple_animal/hostile/megafauna/blood_drunk_miner/AttackingTarget()
-	if(client)
-		transform_stop_attack = FALSE
-	if(QDELETED(target) || transform_stop_attack)
+/mob/living/simple_animal/hostile/megafauna/blood_drunk_miner/AttackingTarget(atom/attacked_target)
+	if(QDELETED(target))
 		return
 	face_atom(target)
 	if(isliving(target))
-		var/mob/living/L = target
-		if(L.stat == DEAD)
-			visible_message("<span class='danger'>[src] butchers [L]!</span>",
-			"<span class='userdanger'>You butcher [L], restoring your health!</span>")
+		var/mob/living/living_target = target
+		if(living_target.stat == DEAD)
 			if(!is_station_level(z) || client) //NPC monsters won't heal while on station
 				if(guidance)
-					adjustHealth(-L.maxHealth)
+					adjustHealth(-living_target.maxHealth)
 				else
-					adjustHealth(-(L.maxHealth * 0.5))
-			L.gib()
+					adjustHealth(-(living_target.maxHealth * 0.5))
+			devour(living_target)
 			return TRUE
 	changeNext_move(CLICK_CD_MELEE)
 	miner_saw.melee_attack_chain(src, target)
 	if(guidance)
-		adjustHealth(enraged ? -6 : -2)
-	if(prob(50))
-		transform_weapon() //Still follows the normal rules for cooldown between swaps.
+		adjustHealth(-2)
 	return TRUE
 
-/mob/living/simple_animal/hostile/megafauna/blood_drunk_miner/do_attack_animation(atom/A, visual_effect_icon, obj/item/used_item, no_effect)
-	if(!used_item && !isturf(A))
+/mob/living/simple_animal/hostile/megafauna/blood_drunk_miner/do_attack_animation(atom/attacked_atom, visual_effect_icon, obj/item/used_item, no_effect)
+	if(!used_item && !isturf(attacked_atom))
 		used_item = miner_saw
 	..()
 
@@ -191,103 +162,6 @@ Difficulty: Medium
 	. = ..()
 	if(. && target && !targets_the_same)
 		wander = TRUE
-
-/mob/living/simple_animal/hostile/megafauna/blood_drunk_miner/enrage()
-	. = ..()
-	miner_saw = new /obj/item/melee/energy/cleaving_saw(src) //Real saw for real men.
-	dash_cooldown_to_use = 0.5 SECONDS //Becomes a teleporting shit.
-	ranged_cooldown_time = 5 //They got some cooldown mods.
-	projectiletype = /obj/item/projectile/kinetic/miner/enraged
-	maxHealth = 1800
-	health = 1800 //Bit more of a challenge.
-
-/mob/living/simple_animal/hostile/megafauna/blood_drunk_miner/unrage()
-	. = ..()
-	miner_saw = new /obj/item/melee/energy/cleaving_saw/miner(src)
-	dash_cooldown_to_use = initial(dash_cooldown_to_use)
-	ranged_cooldown_time = initial(ranged_cooldown_time)
-	projectiletype = initial(projectiletype)
-	maxHealth = initial(maxHealth)
-	health = initial(health)
-
-/mob/living/simple_animal/hostile/megafauna/blood_drunk_miner/proc/dash_attack()
-	INVOKE_ASYNC(src, PROC_REF(dash), target)
-	shoot_ka()
-
-/mob/living/simple_animal/hostile/megafauna/blood_drunk_miner/proc/shoot_ka()
-	if(ranged_cooldown <= world.time && get_dist(src, target) <= MINER_DASH_RANGE && !Adjacent(target))
-		ranged_cooldown = world.time + ranged_cooldown_time
-		visible_message("<span class='danger'>[src] fires the proto-kinetic accelerator!</span>")
-		face_atom(target)
-		new /obj/effect/temp_visual/dir_setting/firing_effect(loc, dir)
-		Shoot(target)
-		changeNext_move(CLICK_CD_RANGE)
-
-/mob/living/simple_animal/hostile/megafauna/blood_drunk_miner/proc/dash(atom/dash_target)
-	if(world.time < dash_cooldown)
-		return
-	var/list/accessable_turfs = list()
-	var/self_dist_to_target = 0
-	var/turf/own_turf = get_turf(src)
-	if(!QDELETED(dash_target))
-		self_dist_to_target += get_dist(dash_target, own_turf)
-	for(var/turf/O in RANGE_TURFS(MINER_DASH_RANGE, own_turf))
-		if(O.density)
-			continue
-		var/turf_dist_to_target = 0
-		if(!QDELETED(dash_target))
-			turf_dist_to_target += get_dist(dash_target, O)
-		if(get_dist(src, O) >= MINER_DASH_RANGE && turf_dist_to_target <= self_dist_to_target && !islava(O) && !ischasm(O))
-			var/valid = TRUE
-			for(var/turf/T in get_line(own_turf, O))
-				if(is_blocked_turf(T, TRUE))
-					valid = FALSE
-					continue
-			if(valid)
-				accessable_turfs[O] = turf_dist_to_target
-	var/turf/target_turf
-	if(!QDELETED(dash_target))
-		var/closest_dist = MINER_DASH_RANGE
-		for(var/t in accessable_turfs)
-			if(accessable_turfs[t] < closest_dist)
-				closest_dist = accessable_turfs[t]
-		for(var/t in accessable_turfs)
-			if(accessable_turfs[t] != closest_dist)
-				accessable_turfs -= t
-	if(!LAZYLEN(accessable_turfs))
-		return
-	dash_cooldown = world.time + dash_cooldown_to_use
-	target_turf = pick(accessable_turfs)
-	var/turf/step_back_turf = get_step(target_turf, get_cardinal_dir(target_turf, own_turf))
-	var/turf/step_forward_turf = get_step(own_turf, get_cardinal_dir(own_turf, target_turf))
-	new /obj/effect/temp_visual/small_smoke/halfsecond(step_back_turf)
-	new /obj/effect/temp_visual/small_smoke/halfsecond(step_forward_turf)
-	var/obj/effect/temp_visual/decoy/fading/halfsecond/D = new (own_turf, src)
-	forceMove(step_back_turf)
-	playsound(own_turf, 'sound/weapons/punchmiss.ogg', 40, 1, -1)
-	dashing = TRUE
-	alpha = 0
-	animate(src, alpha = 255, time = 5)
-	SLEEP_CHECK_DEATH(2)
-	D.forceMove(step_forward_turf)
-	forceMove(target_turf)
-	playsound(target_turf, 'sound/weapons/punchmiss.ogg', 40, 1, -1)
-	SLEEP_CHECK_DEATH(1)
-	dashing = FALSE
-	return TRUE
-
-/mob/living/simple_animal/hostile/megafauna/blood_drunk_miner/proc/transform_weapon()
-	if(time_until_next_transform <= world.time)
-		miner_saw.transform_cooldown = 0
-		miner_saw.transform_weapon(src, TRUE)
-		if(!miner_saw.active)
-			rapid_melee = 5 // 4 deci cooldown before changes, npcpool subsystem wait is 20, 20/4 = 5
-		else
-			rapid_melee = 3 // same thing but halved (slightly rounded up)
-		transform_stop_attack = TRUE
-		icon_state = "miner[miner_saw.active ? "_transformed":""]"
-		icon_living = "miner[miner_saw.active ? "_transformed":""]"
-		time_until_next_transform = world.time + rand(50, 100)
 
 /obj/effect/temp_visual/dir_setting/miner_death
 	icon_state = "miner_death"
@@ -298,24 +172,33 @@ Difficulty: Medium
 	INVOKE_ASYNC(src, PROC_REF(fade_out))
 
 /obj/effect/temp_visual/dir_setting/miner_death/proc/fade_out()
-	var/matrix/M = new
-	M.Turn(pick(90, 270))
+	var/matrix/our_matrix = new
+	our_matrix.Turn(pick(90, 270))
 	var/final_dir = dir
 	if(dir & (EAST|WEST)) //Facing east or west
 		final_dir = pick(NORTH, SOUTH) //So you fall on your side rather than your face or ass
 
-	animate(src, transform = M, pixel_y = -6, dir = final_dir, time = 2, easing = EASE_IN|EASE_OUT)
-	sleep(5)
+	animate(src, transform = our_matrix, pixel_y = -6, dir = final_dir, time = 2, easing = EASE_IN|EASE_OUT)
+	sleep(0.5 SECONDS)
 	animate(src, color = list("#A7A19E", "#A7A19E", "#A7A19E", list(0, 0, 0)), time = 10, easing = EASE_IN, flags = ANIMATION_PARALLEL)
-	sleep(4)
+	sleep(0.4 SECONDS)
 	animate(src, alpha = 0, time = 6, easing = EASE_OUT, flags = ANIMATION_PARALLEL)
 
 /mob/living/simple_animal/hostile/megafauna/blood_drunk_miner/guidance
 	guidance = TRUE
 
-/mob/living/simple_animal/hostile/megafauna/blood_drunk_miner/hunter/AttackingTarget()
+/mob/living/simple_animal/hostile/megafauna/blood_drunk_miner/hunter/AttackingTarget(atom/attacked_target)
 	. = ..()
-	if(. && prob(enraged ? 40 : 12))
-		INVOKE_ASYNC(src, PROC_REF(dash))
+	if(. && prob(12))
+		INVOKE_ASYNC(dash, TYPE_PROC_REF(/datum/action, Trigger), NONE, target)
 
-#undef MINER_DASH_RANGE
+/mob/living/simple_animal/hostile/megafauna/blood_drunk_miner/doom
+	name = "hostile-environment miner"
+	desc = "A miner destined to hop across dimensions for all eternity, hunting anomalous creatures."
+	speed = 8
+	move_to_delay = 8
+	ranged_cooldown_time = 0.8 SECONDS
+
+/mob/living/simple_animal/hostile/megafauna/blood_drunk_miner/doom/Initialize(mapload)
+	. = ..()
+	dash.cooldown_time = 0.8 SECONDS

@@ -1,205 +1,198 @@
-/mob/camera/blob/create_mob_hud()
-	if(client && !hud_used)
-		hud_used = new /datum/hud/blob_overmind(src)
 
-/obj/screen/blob
-	icon = 'icons/mob/blob.dmi'
+/atom/movable/screen/blob
+	icon = 'icons/hud/blob.dmi'
 
-/obj/screen/blob/MouseEntered(location,control,params)
+/atom/movable/screen/blob/MouseEntered(location,control,params)
 	. = ..()
 	openToolTip(usr,src,params,title = name,content = desc, theme = "blob")
 
-/obj/screen/blob/MouseExited()
+/atom/movable/screen/blob/MouseExited()
 	closeToolTip(usr)
-	return ..()
 
-/obj/screen/blob/BlobHelp
-	icon_state = "ui_help"
-	name = "Blob Help"
-	desc = "Help on playing blob!"
-
-/obj/screen/blob/BlobHelp/Click()
-	if(isovermind(usr))
-		var/mob/camera/blob/B = usr
-		B.blob_help()
-
-/obj/screen/blob/JumpToNode
+/atom/movable/screen/blob/jump_to_node
 	icon_state = "ui_tonode"
 	name = "Jump to Node"
 	desc = "Moves your camera to a selected blob node."
 
-/obj/screen/blob/JumpToNode/Click()
-	if(isovermind(usr))
-		var/mob/camera/blob/B = usr
-		B.jump_to_node()
+/atom/movable/screen/blob/jump_to_node/Click()
+	if(!isovermind(usr))
+		return FALSE
+	var/mob/camera/blob/blob = usr
+	blob.jump_to_node()
 
-/obj/screen/blob/JumpToCore
+/atom/movable/screen/blob/jump_to_core
 	icon_state = "ui_tocore"
 	name = "Jump to Core"
 	desc = "Moves your camera to your blob core."
 
-/obj/screen/blob/JumpToCore/MouseEntered(location,control,params)
-	if(hud && hud.mymob && isovermind(hud.mymob))
-		name = initial(name)
-		desc = initial(desc)
+/atom/movable/screen/blob/jump_to_core/MouseEntered(location,control,params)
+	if(hud?.mymob && isovermind(hud.mymob))
+		var/mob/camera/blob/B = hud.mymob
+		if(!B.placed)
+			name = "Place Blob Core"
+			desc = "Attempt to place your blob core at this location."
+		else
+			name = initial(name)
+			desc = initial(desc)
 	return ..()
 
-/obj/screen/blob/JumpToCore/Click()
-	if(isovermind(usr))
-		var/mob/camera/blob/B = usr
-		B.transport_core()
+/atom/movable/screen/blob/jump_to_core/Click()
+	if(!isovermind(usr))
+		return FALSE
+	var/mob/camera/blob/blob = usr
+	if(!blob.placed)
+		blob.place_blob_core(BLOB_NORMAL_PLACEMENT)
+	blob.transport_core()
 
-/obj/screen/blob/Blobbernaut
+/atom/movable/screen/blob/blobbernaut
 	icon_state = "ui_blobbernaut"
-	name = "Produce Blobbernaut (60)"
-	desc = "Produces a strong, intelligent blobbernaut from a factory blob for 60 resources.<br>The factory blob will be destroyed in the process."
+	// Name and description get given their proper values on Initialize()
+	name = "Produce Blobbernaut (ERROR)"
+	desc = "Produces a strong, smart blobbernaut from a factory blob for (ERROR) resources.<br>The factory blob used will become fragile and unable to produce spores."
 
-/obj/screen/blob/Blobbernaut/Click()
-	if(isovermind(usr))
-		var/mob/camera/blob/B = usr
-		B.create_blobbernaut()
+/atom/movable/screen/blob/blobbernaut/Initialize(mapload, datum/hud/hud_owner)
+	. = ..()
+	name = "Produce Blobbernaut ([BLOBMOB_BLOBBERNAUT_RESOURCE_COST])"
+	desc = "Produces a strong, smart blobbernaut from a factory blob for [BLOBMOB_BLOBBERNAUT_RESOURCE_COST] resources.<br>The factory blob used will become fragile and unable to produce spores."
 
-/obj/screen/blob/StorageBlob
-	icon_state = "ui_storage"
-	name = "Produce Storage Blob (40)"
-	desc = "Produces a storage blob for 40 resources.<br>Storage blobs will raise your max resource cap by 50."
+/atom/movable/screen/blob/blobbernaut/Click()
+	if(!isovermind(usr))
+		return FALSE
+	var/mob/camera/blob/blob = usr
+	blob.create_blobbernaut()
 
-/obj/screen/blob/StorageBlob/Click()
-	if(isovermind(usr))
-		var/mob/camera/blob/B = usr
-		B.create_storage()
-
-/obj/screen/blob/ResourceBlob
+/atom/movable/screen/blob/resource_blob
 	icon_state = "ui_resource"
-	name = "Produce Resource Blob (40)"
-	desc = "Produces a resource blob for 40 resources.<br>Resource blobs will give you resources every few seconds."
+	// Name and description get given their proper values on Initialize()
+	name = "Produce Resource Blob (ERROR)"
+	desc = "Produces a resource blob for ERROR resources.<br>Resource blobs will give you resources every few seconds."
 
-/obj/screen/blob/ResourceBlob/Click()
-	if(isovermind(usr))
-		var/mob/camera/blob/B = usr
-		B.create_resource()
+/atom/movable/screen/blob/resource_blob/Initialize(mapload, datum/hud/hud_owner)
+	. = ..()
+	name = "Produce Resource Blob ([BLOB_STRUCTURE_RESOURCE_COST])"
+	desc = "Produces a resource blob for [BLOB_STRUCTURE_RESOURCE_COST] resources.<br>Resource blobs will give you resources every few seconds."
 
-/obj/screen/blob/NodeBlob
+/atom/movable/screen/blob/resource_blob/Click()
+	if(!isovermind(usr))
+		return FALSE
+	var/mob/camera/blob/blob = usr
+	blob.create_special(BLOB_STRUCTURE_RESOURCE_COST, /obj/structure/blob/special/resource, BLOB_RESOURCE_MIN_DISTANCE, TRUE)
+
+/atom/movable/screen/blob/node_blob
 	icon_state = "ui_node"
-	name = "Produce Node Blob (60)"
-	desc = "Produces a node blob for 60 resources.<br>Node blobs will expand and activate nearby resource and factory blobs."
+	// Name and description get given their proper values on Initialize()
+	name = "Produce Node Blob (ERROR)"
+	desc = "Produces a node blob for ERROR resources.<br>Node blobs will expand and activate nearby resource and factory blobs."
 
-/obj/screen/blob/NodeBlob/Click()
-	if(isovermind(usr))
-		var/mob/camera/blob/B = usr
-		B.create_node()
+/atom/movable/screen/blob/node_blob/Initialize(mapload, datum/hud/hud_owner)
+	. = ..()
+	name = "Produce Node Blob ([BLOB_STRUCTURE_NODE_COST])"
+	desc = "Produces a node blob for [BLOB_STRUCTURE_NODE_COST] resources.<br>Node blobs will expand and activate nearby resource and factory blobs."
 
-/obj/screen/blob/FactoryBlob
+/atom/movable/screen/blob/node_blob/Click()
+	if(!isovermind(usr))
+		return FALSE
+	var/mob/camera/blob/blob = usr
+	blob.create_special(BLOB_STRUCTURE_NODE_COST, /obj/structure/blob/special/node, BLOB_NODE_MIN_DISTANCE, FALSE)
+
+/atom/movable/screen/blob/factory_blob
 	icon_state = "ui_factory"
-	name = "Produce Factory Blob (60)"
-	desc = "Produces a factory blob for 60 resources.<br>Factory blobs will produce spores every few seconds."
+	// Name and description get given their proper values on Initialize()
+	name = "Produce Factory Blob (ERROR)"
+	desc = "Produces a factory blob for ERROR resources.<br>Factory blobs will produce spores every few seconds."
 
-/obj/screen/blob/FactoryBlob/Click()
-	if(isovermind(usr))
-		var/mob/camera/blob/B = usr
-		B.create_factory()
+/atom/movable/screen/blob/factory_blob/Initialize(mapload, datum/hud/hud_owner)
+	. = ..()
+	name = "Produce Factory Blob ([BLOB_STRUCTURE_FACTORY_COST])"
+	desc = "Produces a factory blob for [BLOB_STRUCTURE_FACTORY_COST] resources.<br>Factory blobs will produce spores every few seconds."
 
-/obj/screen/blob/ReadaptChemical
+/atom/movable/screen/blob/factory_blob/Click()
+	if(!isovermind(usr))
+		return FALSE
+	var/mob/camera/blob/blob = usr
+	blob.create_special(BLOB_STRUCTURE_FACTORY_COST, /obj/structure/blob/special/factory, BLOB_FACTORY_MIN_DISTANCE, TRUE)
+
+/atom/movable/screen/blob/readapt_strain
 	icon_state = "ui_chemswap"
-	name = "Readapt Chemical (50)"
-	desc = "Randomly rerolls your chemical for 50 resources."
+	// Description gets given its proper values on Initialize()
+	name = "Readapt Strain"
+	desc = "Allows you to choose a new strain from ERROR random choices for ERROR resources."
 
-/obj/screen/blob/ReadaptChemical/MouseEntered(location,control,params)
-	if(hud && hud.mymob && isovermind(hud.mymob))
-		name = initial(name)
-		desc = initial(desc)
+/atom/movable/screen/blob/readapt_strain/MouseEntered(location,control,params)
+	if(hud?.mymob && isovermind(hud.mymob))
+		var/mob/camera/blob/B = hud.mymob
+		if(B.free_strain_rerolls)
+			name = "[initial(name)] (FREE)"
+			desc = "Randomly rerolls your strain for free."
+		else
+			name = "[initial(name)] ([BLOB_POWER_REROLL_COST])"
+			desc = "Allows you to choose a new strain from [BLOB_POWER_REROLL_CHOICES] random choices for [BLOB_POWER_REROLL_COST] resources."
 	return ..()
 
-/obj/screen/blob/ReadaptChemical/Click()
+/atom/movable/screen/blob/readapt_strain/Click()
 	if(isovermind(usr))
 		var/mob/camera/blob/B = usr
-		B.chemical_reroll()
+		B.strain_reroll()
 
-/obj/screen/blob/RelocateCore
+/atom/movable/screen/blob/relocate_core
 	icon_state = "ui_swap"
-	name = "Relocate Core (80)"
-	desc = "Swaps a node and your core for 80 resources."
+	// Name and description get given their proper values on Initialize()
+	name = "Relocate Core (ERROR)"
+	desc = "Swaps a node and your core for ERROR resources."
 
-/obj/screen/blob/RelocateCore/Click()
+/atom/movable/screen/blob/relocate_core/Initialize(mapload, datum/hud/hud_owner)
+	. = ..()
+	name = "Relocate Core ([BLOB_POWER_RELOCATE_COST])"
+	desc = "Swaps a node and your core for [BLOB_POWER_RELOCATE_COST] resources."
+
+/atom/movable/screen/blob/relocate_core/Click()
 	if(isovermind(usr))
 		var/mob/camera/blob/B = usr
 		B.relocate_core()
 
-/obj/screen/blob/Split
-	icon_state = "ui_split"
-	name = "Split consciousness (100)"
-	desc = "Creates another Blob Overmind at the targeted node. One use only.<br>Offspring are unable to use this ability."
-
-/obj/screen/blob/Split/Click()
-	if(isovermind(usr))
-		var/mob/camera/blob/B = usr
-		B.split_consciousness()
-		if(B.split_used) // Destroys split proc if the split is succesfully used
-			qdel(src)
-
-/datum/hud/blob_overmind/New(mob/user)
+/datum/hud/blob_overmind/New(mob/owner)
 	..()
-	var/obj/screen/using
+	var/atom/movable/screen/using
 
-	blobpwrdisplay = new /obj/screen()
+	blobpwrdisplay = new /atom/movable/screen(null, src)
 	blobpwrdisplay.name = "blob power"
 	blobpwrdisplay.icon_state = "block"
 	blobpwrdisplay.screen_loc = ui_health
 	blobpwrdisplay.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	blobpwrdisplay.layer = ABOVE_HUD_LAYER
-	blobpwrdisplay.plane = ABOVE_HUD_PLANE
-	static_inventory += blobpwrdisplay
+	SET_PLANE_EXPLICIT(blobpwrdisplay, ABOVE_HUD_PLANE, owner)
+	infodisplay += blobpwrdisplay
 
-	blobhealthdisplay = new /obj/screen()
-	blobhealthdisplay.name = "blob health"
-	blobhealthdisplay.icon_state = "block"
-	blobhealthdisplay.screen_loc = ui_internal
-	static_inventory += blobhealthdisplay
+	healths = new /atom/movable/screen/healths/blob(null, src)
+	infodisplay += healths
 
-	using = new /obj/screen/blob/BlobHelp()
-	using.screen_loc = "WEST:6,NORTH:-3"
-	static_inventory += using
-
-	using = new /obj/screen/blob/JumpToNode()
+	using = new /atom/movable/screen/blob/jump_to_node(null, src)
 	using.screen_loc = ui_inventory
 	static_inventory += using
 
-	using = new /obj/screen/blob/JumpToCore()
+	using = new /atom/movable/screen/blob/jump_to_core(null, src)
 	using.screen_loc = ui_zonesel
-	using.hud = src
 	static_inventory += using
 
-	using = new /obj/screen/blob/Blobbernaut()
-	using.screen_loc = ui_id
-	static_inventory += using
-
-	using = new /obj/screen/blob/StorageBlob()
+	using = new /atom/movable/screen/blob/blobbernaut(null, src)
 	using.screen_loc = ui_belt
 	static_inventory += using
 
-	using = new /obj/screen/blob/ResourceBlob()
+	using = new /atom/movable/screen/blob/resource_blob(null, src)
 	using.screen_loc = ui_back
 	static_inventory += using
 
-	using = new /obj/screen/blob/NodeBlob()
-	using.screen_loc = using.screen_loc = ui_rhand
+	using = new /atom/movable/screen/blob/node_blob(null, src)
+	using.screen_loc = ui_hand_position(2)
 	static_inventory += using
 
-	using = new /obj/screen/blob/FactoryBlob()
-	using.screen_loc = using.screen_loc = ui_lhand
+	using = new /atom/movable/screen/blob/factory_blob(null, src)
+	using.screen_loc = ui_hand_position(1)
 	static_inventory += using
 
-	using = new /obj/screen/blob/ReadaptChemical()
+	using = new /atom/movable/screen/blob/readapt_strain(null, src)
 	using.screen_loc = ui_storage1
-	using.hud = src
 	static_inventory += using
 
-	using = new /obj/screen/blob/RelocateCore()
+	using = new /atom/movable/screen/blob/relocate_core(null, src)
 	using.screen_loc = ui_storage2
 	static_inventory += using
-
-	var/mob/camera/blob/B = user
-	if(!B.is_offspring) // Checks if the blob is an offspring, to not create split button if it is
-		using = new /obj/screen/blob/Split()
-		using.screen_loc = ui_acti
-		static_inventory += using

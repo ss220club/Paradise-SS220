@@ -1,15 +1,20 @@
 /datum/map_template/shelter
 	var/shelter_id
 	var/description
-	var/blacklisted_turfs
-	var/whitelisted_turfs
-	var/banned_areas
+	var/list/blacklisted_turfs
+	var/list/whitelisted_turfs
+	var/list/banned_areas
+	var/list/banned_objects
+	has_ceiling = TRUE
+	ceiling_turf = /turf/open/floor/engine/hull
+	ceiling_baseturfs = list(/turf/open/floor/plating)
 
 /datum/map_template/shelter/New()
 	. = ..()
-	blacklisted_turfs = typecacheof(list(/turf/simulated/wall, /turf/simulated/mineral))
+	blacklisted_turfs = typecacheof(/turf/closed)
 	whitelisted_turfs = list()
-	banned_areas = typecacheof(list(/area/shuttle, /area/holodeck/alphadeck))
+	banned_areas = typecacheof(/area/shuttle)
+	banned_objects = list()
 
 /datum/map_template/shelter/proc/check_deploy(turf/deploy_location)
 	var/affected = get_affected_turfs(deploy_location, centered=TRUE)
@@ -24,8 +29,17 @@
 			return SHELTER_DEPLOY_BAD_TURFS
 
 		for(var/obj/O in T)
-			if(O.density && O.anchored)
+			if((O.density && O.anchored) || is_type_in_typecache(O, banned_objects))
 				return SHELTER_DEPLOY_ANCHORED_OBJECTS
+
+	// Check if the shelter sticks out of map borders
+	var/shelter_origin_x = deploy_location.x - round(width/2)
+	if(shelter_origin_x <= 1 || shelter_origin_x+width > world.maxx)
+		return SHELTER_DEPLOY_OUTSIDE_MAP
+	var/shelter_origin_y = deploy_location.y - round(height/2)
+	if(shelter_origin_y <= 1 || shelter_origin_y+height > world.maxy)
+		return SHELTER_DEPLOY_OUTSIDE_MAP
+
 	return SHELTER_DEPLOY_ALLOWED
 
 /datum/map_template/shelter/alpha
@@ -35,22 +49,52 @@
 		built-in navigation, entertainment, medical facilities and a \
 		sleeping area! Order now, and we'll throw in a TINY FAN, \
 		absolutely free!"
-	mappath = "_maps/map_files/templates/shelter_1.dmm"
+	mappath = "_maps/templates/shelter_1.dmm"
 
 /datum/map_template/shelter/alpha/New()
 	. = ..()
-	whitelisted_turfs = typecacheof(/turf/simulated/mineral)
+	whitelisted_turfs = typecacheof(/turf/closed/mineral)
+	banned_objects = typecacheof(/obj/structure/stone_tile)
 
 /datum/map_template/shelter/beta
 	name = "Shelter Beta"
 	shelter_id = "shelter_beta"
-	description = "An extremly luxurious shelter, containing all \
+	description = "An extremely luxurious shelter, containing all \
 		the amenities of home, including carpeted floors, hot and cold \
 		running water, a gourmet three course meal, cooking facilities, \
 		and a deluxe companion to keep you from getting lonely during \
 		an ash storm."
-	mappath = "_maps/map_files/templates/shelter_2.dmm"
+	mappath = "_maps/templates/shelter_2.dmm"
 
 /datum/map_template/shelter/beta/New()
 	. = ..()
-	whitelisted_turfs = typecacheof(/turf/simulated/mineral)
+	whitelisted_turfs = typecacheof(/turf/closed/mineral)
+	banned_objects = typecacheof(/obj/structure/stone_tile)
+
+/datum/map_template/shelter/charlie
+	name = "Shelter Charlie"
+	shelter_id = "shelter_charlie"
+	description = "A luxury elite bar which holds an entire bar \
+		along with two vending machines, tables, and a restroom that \
+		also has a sink. This isn't a survival capsule and so you can \
+		expect that this won't save you if you're bleeding out to \
+		death."
+	mappath = "_maps/templates/shelter_3.dmm"
+
+/datum/map_template/shelter/charlie/New()
+	. = ..()
+	whitelisted_turfs = typecacheof(/turf/closed/mineral)
+	banned_objects = typecacheof(/obj/structure/stone_tile)
+
+/datum/map_template/shelter/toilet
+	name = "Emergency Relief Shelter"
+	shelter_id = "shelter_toilet"
+	description = "A stripped-down emergency shelter focused on providing \
+		only the most essential amenities to unfortunate employees who find \
+		themselves in need far from home."
+	mappath = "_maps/templates/shelter_t.dmm"
+
+/datum/map_template/shelter/toilet/New()
+	. = ..()
+	whitelisted_turfs = typecacheof(/turf/closed/mineral)
+	banned_objects = typecacheof(/obj/structure/stone_tile)

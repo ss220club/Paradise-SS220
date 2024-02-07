@@ -1,140 +1,162 @@
-//Screwdriver
 /obj/item/screwdriver
 	name = "screwdriver"
 	desc = "You can be totally screwy with this."
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "screwdriver_map"
-	belt_icon = "screwdriver"
-	flags = CONDUCT
-	slot_flags = SLOT_FLAG_BELT
+	inhand_icon_state = "screwdriver"
+	worn_icon_state = "screwdriver"
+	belt_icon_state = "screwdriver"
+	lefthand_file = 'icons/mob/inhands/equipment/tools_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/equipment/tools_righthand.dmi'
+	flags_1 = IS_PLAYER_COLORABLE_1
+	obj_flags = CONDUCTS_ELECTRICITY
+	slot_flags = ITEM_SLOT_BELT
 	force = 5
+	demolition_mod = 0.5
 	w_class = WEIGHT_CLASS_TINY
 	throwforce = 5
 	throw_speed = 3
 	throw_range = 5
-	materials = list(MAT_METAL = 350)
-	attack_verb = list("stabbed")
+	custom_materials = list(/datum/material/iron=SMALL_MATERIAL_AMOUNT*0.75)
+	attack_verb_continuous = list("stabs")
+	attack_verb_simple = list("stab")
 	hitsound = 'sound/weapons/bladeslice.ogg'
-	usesound = 'sound/items/screwdriver.ogg'
-	toolspeed = 1
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, RAD = 0, FIRE = 50, ACID = 30)
-	drop_sound = 'sound/items/handling/screwdriver_drop.ogg'
-	pickup_sound =  'sound/items/handling/screwdriver_pickup.ogg'
+	usesound = list('sound/items/screwdriver.ogg', 'sound/items/screwdriver2.ogg')
 	tool_behaviour = TOOL_SCREWDRIVER
-	var/random_color = TRUE //if the screwdriver uses random coloring
+	toolspeed = 1
+	armor_type = /datum/armor/item_screwdriver
+	drop_sound = 'sound/items/handling/screwdriver_drop.ogg'
+	pickup_sound = 'sound/items/handling/screwdriver_pickup.ogg'
+	sharpness = SHARP_POINTY
+	greyscale_config = /datum/greyscale_config/screwdriver
+	greyscale_config_inhand_left = /datum/greyscale_config/screwdriver_inhand_left
+	greyscale_config_inhand_right = /datum/greyscale_config/screwdriver_inhand_right
+	greyscale_config_belt = /datum/greyscale_config/screwdriver_belt
+	/// If the item should be assigned a random color
+	var/random_color = TRUE
+	/// List of possible random colors
+	var/static/list/screwdriver_colors = list(
+		COLOR_TOOL_BLUE,
+		COLOR_TOOL_RED,
+		COLOR_TOOL_PINK,
+		COLOR_TOOL_BROWN,
+		COLOR_TOOL_GREEN,
+		COLOR_TOOL_CYAN,
+		COLOR_TOOL_YELLOW,
+	)
+
+/datum/armor/item_screwdriver
+	fire = 50
+	acid = 30
+
+/obj/item/screwdriver/suicide_act(mob/living/user)
+	user.visible_message(span_suicide("[user] is stabbing [src] into [user.p_their()] [pick("temple", "heart")]! It looks like [user.p_theyre()] trying to commit suicide!"))
+	return BRUTELOSS
 
 /obj/item/screwdriver/Initialize(mapload)
-	. = ..()
-	AddComponent(/datum/component/surgery_initiator/robo)
-
-/obj/item/screwdriver/nuke
-	name = "screwdriver"
-	desc = "A screwdriver with an ultra thin tip."
-	icon_state = "screwdriver_nuke"
-	belt_icon = "screwdriver_nuke"
-	toolspeed = 0.5
-	random_color = FALSE
-
-/obj/item/screwdriver/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is stabbing [src] into [user.p_their()] [pick("temple", "heart")]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
-	return BRUTELOSS
-
-/obj/item/screwdriver/New(loc, param_color = null)
-	..()
 	if(random_color)
-		if(!param_color)
-			param_color = pick("red","blue","pink","brown","green","cyan","yellow")
-		icon_state = "screwdriver_[param_color]"
-		belt_icon = "screwdriver_[param_color]"
-
-	if(prob(75))
-		src.pixel_y = rand(0, 16)
-
-/obj/item/screwdriver/attack(mob/living/carbon/M, mob/living/carbon/user)
-	if(!istype(M) || user.a_intent == INTENT_HELP)
-		return ..()
-	if(user.zone_selected != "eyes" && user.zone_selected != "head")
-		return ..()
-	if(HAS_TRAIT(user, TRAIT_CLUMSY) && prob(50))
-		M = user
-	return eyestab(M,user)
-
-/obj/item/screwdriver/brass
-	name = "brass screwdriver"
-	desc = "A screwdriver made of brass. The handle feels freezing cold."
-	icon_state = "screwdriver_brass"
-	toolspeed = 0.5
-	random_color = FALSE
-	resistance_flags = FIRE_PROOF | ACID_PROOF
-
-/obj/item/screwdriver/cargo
-	name = "cargo screwdriver"
-	desc = "A brownish screwdriver belonging to the supply department. Unfortunately, it can't do all the paperwork for you..."
-	icon_state = "screwdriver_cargo"
-	belt_icon = "screwdriver_cargo"
-	toolspeed = 0.75
-	random_color = FALSE
-
-/obj/item/screwdriver/cargo/suicide_act(mob/living/user)
-
-	if(!user)
-		return
-	user.visible_message("<span class='suicide'>[user] is trying to take [src]'s independence! It looks like [user.p_theyre()] trying to commit suicide!</span>")
-
-	user.Immobilize(10 SECONDS)
-	sleep(2 SECONDS)
-	add_fingerprint(user)
-
-	user.visible_message("<span class='warn'>[src] retaliates viciously!</span>", "<span class='userdanger'>[src] retaliates viciously!</span>")
-	playsound(loc, hitsound, 50, TRUE, -1)
-
-	return BRUTELOSS
+		set_greyscale(colors = list(pick(screwdriver_colors)))
+	. = ..()
+	AddElement(/datum/element/eyestab)
+	AddElement(/datum/element/falling_hazard, damage = force, wound_bonus = wound_bonus, hardhat_safety = TRUE, crushes = FALSE, impact_sound = hitsound)
 
 /obj/item/screwdriver/abductor
 	name = "alien screwdriver"
 	desc = "An ultrasonic screwdriver."
-	icon = 'icons/obj/abductor.dmi'
-	icon_state = "screwdriver"
+	icon = 'icons/obj/antags/abductor.dmi'
+	icon_state = "screwdriver_a"
+	inhand_icon_state = "screwdriver_nuke"
+	custom_materials = list(/datum/material/iron=HALF_SHEET_MATERIAL_AMOUNT*5, /datum/material/silver=SHEET_MATERIAL_AMOUNT*1.25, /datum/material/plasma =HALF_SHEET_MATERIAL_AMOUNT, /datum/material/titanium =SHEET_MATERIAL_AMOUNT, /datum/material/diamond =SHEET_MATERIAL_AMOUNT)
 	usesound = 'sound/items/pshoom.ogg'
 	toolspeed = 0.1
 	random_color = FALSE
+	greyscale_config_inhand_left = null
+	greyscale_config_inhand_right = null
+
+/obj/item/screwdriver/abductor/get_belt_overlay()
+	return mutable_appearance('icons/obj/clothing/belt_overlays.dmi', "screwdriver_alien")
 
 /obj/item/screwdriver/power
 	name = "hand drill"
-	desc = "A simple hand drill with a screwdriver bit attached."
-	icon_state = "drill_screw"
-	item_state = "drill"
-	belt_icon = "hand_drill"
-	materials = list(MAT_METAL=150,MAT_SILVER=50,MAT_TITANIUM=25)
-	origin_tech = "materials=2;engineering=2" //done for balance reasons, making them high value for research, but harder to get
+	desc = "A simple powered hand drill."
+	icon_state = "drill"
+	belt_icon_state = null
+	inhand_icon_state = "drill"
+	worn_icon_state = "drill"
+	lefthand_file = 'icons/mob/inhands/equipment/tools_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/equipment/tools_righthand.dmi'
+	custom_materials = list(/datum/material/iron=SHEET_MATERIAL_AMOUNT*1.75, /datum/material/silver=HALF_SHEET_MATERIAL_AMOUNT * 1.5, /datum/material/titanium=SHEET_MATERIAL_AMOUNT*1.25) //what research value?
 	force = 8 //might or might not be too high, subject to change
 	throwforce = 8
 	throw_speed = 2
 	throw_range = 3//it's heavier than a screw driver/wrench, so it does more damage, but can't be thrown as far
-	attack_verb = list("drilled", "screwed", "jabbed","whacked")
+	attack_verb_continuous = list("drills", "screws", "jabs", "whacks")
+	attack_verb_simple = list("drill", "screw", "jab", "whack")
 	hitsound = 'sound/items/drill_hit.ogg'
 	usesound = 'sound/items/drill_use.ogg'
-	toolspeed = 0.25
 	w_class = WEIGHT_CLASS_NORMAL
+	toolspeed = 0.7
 	random_color = FALSE
+	greyscale_config = null
+	greyscale_config_belt = null
+	greyscale_config_inhand_left = null
+	greyscale_config_inhand_right = null
+
+/obj/item/screwdriver/power/get_all_tool_behaviours()
+	return list(TOOL_SCREWDRIVER, TOOL_WRENCH)
 
 /obj/item/screwdriver/power/Initialize(mapload)
 	. = ..()
-	ADD_TRAIT(src, TRAIT_ADVANCED_SURGICAL, ROUNDSTART_TRAIT)
+	AddComponent( \
+		/datum/component/transforming, \
+		force_on = force, \
+		throwforce_on = throwforce, \
+		hitsound_on = hitsound, \
+		w_class_on = w_class, \
+		clumsy_check = FALSE, \
+		inhand_icon_change = FALSE, \
+	)
+	RegisterSignal(src, COMSIG_TRANSFORMING_ON_TRANSFORM, PROC_REF(on_transform))
 
-/obj/item/screwdriver/power/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is putting [src] to [user.p_their()] temple. It looks like [user.p_theyre()] trying to commit suicide!</span>")
+/*
+ * Signal proc for [COMSIG_TRANSFORMING_ON_TRANSFORM].
+ *
+ * Toggles between crowbar and wirecutters and gives feedback to the user.
+ */
+/obj/item/screwdriver/power/proc/on_transform(obj/item/source, mob/user, active)
+	SIGNAL_HANDLER
+
+	tool_behaviour = (active ? TOOL_WRENCH : TOOL_SCREWDRIVER)
+	if(user)
+		balloon_alert(user, "attached [active ? "bolt bit" : "screw bit"]")
+	playsound(src, 'sound/items/change_drill.ogg', 50, TRUE)
+	return COMPONENT_NO_DEFAULT_MESSAGE
+
+/obj/item/screwdriver/power/examine()
+	. = ..()
+	. += " It's fitted with a [tool_behaviour == TOOL_SCREWDRIVER ? "screw" : "bolt"] bit."
+
+/obj/item/screwdriver/power/suicide_act(mob/living/user)
+	if(tool_behaviour == TOOL_SCREWDRIVER)
+		user.visible_message(span_suicide("[user] is putting [src] to [user.p_their()] temple. It looks like [user.p_theyre()] trying to commit suicide!"))
+	else
+		user.visible_message(span_suicide("[user] is pressing [src] against [user.p_their()] head! It looks like [user.p_theyre()] trying to commit suicide!"))
+	playsound(loc, 'sound/items/drill_use.ogg', 50, TRUE, -1)
 	return BRUTELOSS
 
-/obj/item/screwdriver/power/attack_self(mob/user)
-	playsound(get_turf(user), 'sound/items/change_drill.ogg', 50, 1)
-	var/obj/item/wrench/power/b_drill = new /obj/item/wrench/power
-	to_chat(user, "<span class='notice'>You attach the bolt driver bit to [src].</span>")
-	qdel(src)
-	user.put_in_active_hand(b_drill)
-
 /obj/item/screwdriver/cyborg
-	name = "powered screwdriver"
-	desc = "An electrical screwdriver, designed to be both precise and quick."
+	name = "automated screwdriver"
+	desc = "A powerful automated screwdriver, designed to be both precise and quick."
+	icon = 'icons/obj/items_cyborg.dmi'
+	icon_state = "screwdriver_cyborg"
+	hitsound = 'sound/items/drill_hit.ogg'
 	usesound = 'sound/items/drill_use.ogg'
 	toolspeed = 0.5
+	random_color = FALSE
+
+/obj/item/screwdriver/red
+	random_color = FALSE
+
+/obj/item/screwdriver/red/Initialize(mapload)
+	. = ..()
+	set_greyscale(colors=list(screwdriver_colors["red"]))

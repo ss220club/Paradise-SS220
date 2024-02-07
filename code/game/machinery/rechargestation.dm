@@ -1,238 +1,162 @@
 /obj/machinery/recharge_station
-	name = "cyborg recharging station"
-	icon = 'icons/obj/objects.dmi'
+	name = "recharging station"
+	desc = "This device recharges energy dependent lifeforms, like cyborgs, ethereals and MODsuit users."
+	icon = 'icons/obj/machines/borg_charger.dmi'
 	icon_state = "borgcharger0"
-	density = TRUE
-	anchored = TRUE
-	idle_power_consumption = 5
-	active_power_consumption = 1000
-	/// A reference to the occupant currently sitting inside the recharger.
-	var/mob/occupant = null
-	/// What type of circuit board is required to build this machine.
-	var/circuitboard = /obj/item/circuitboard/cyborgrecharger
-	/// How fast the recharger can give charge to the occupants energy cell. Based on capacitors and the cell the recharger has.
+	density = FALSE
+	req_access = list(ACCESS_ROBOTICS)
+	state_open = TRUE
+	circuit = /obj/item/circuitboard/machine/cyborgrecharger
+	occupant_typecache = list(/mob/living/silicon/robot, /mob/living/carbon/human)
+	processing_flags = NONE
 	var/recharge_speed
-	/// How much nutrition is given to the occupant. Based on capacitors and the cell the recharger has. Only relevent for IPCs.
-	var/recharge_speed_nutrition
-	/// How much the occupant is repaired every cycle. Based on what manipulator the recharger has.
 	var/repairs
-	/// How efficiently the recharger is able to recharge consumable items such as metal, glass, chemicals in sprays, welding tool fuel, etc.
-	var/consumable_recharge_coeff
+	///Whether we're sending iron and glass to a cyborg. Requires Silo connection.
+	var/sendmats = FALSE
+	var/datum/component/remote_materials/materials
 
-/obj/machinery/recharge_station/Destroy()
-	go_out()
-	return ..()
 
 /obj/machinery/recharge_station/Initialize(mapload)
 	. = ..()
-	component_parts = list()
-	component_parts += new /obj/item/circuitboard/cyborgrecharger(null)
-	component_parts += new /obj/item/stock_parts/capacitor(null)
-	component_parts += new /obj/item/stock_parts/capacitor(null)
-	component_parts += new /obj/item/stock_parts/manipulator(null)
-	component_parts += new /obj/item/stock_parts/cell/high(null)
-	RefreshParts()
-	update_icon(UPDATE_ICON_STATE)
 
-/obj/machinery/recharge_station/upgraded/Initialize(mapload)
-	. = ..()
-	component_parts = list()
-	component_parts += new /obj/item/circuitboard/cyborgrecharger(null)
-	component_parts += new /obj/item/stock_parts/capacitor/super(null)
-	component_parts += new /obj/item/stock_parts/capacitor/super(null)
-	component_parts += new /obj/item/stock_parts/manipulator/pico(null)
-	component_parts += new /obj/item/stock_parts/cell/hyper(null)
-	RefreshParts()
+	materials = AddComponent(
+		/datum/component/remote_materials, \
+		mapload, \
+		mat_container_flags = MATCONTAINER_NO_INSERT, \
+	)
+
+	update_appearance()
+	if(is_operational)
+		begin_processing()
+
+	if(!mapload)
+		return
+
+	var/area/my_area = get_area(src)
+	if(!(my_area.type in GLOB.the_station_areas))
+		return
+
+	var/area_name = get_area_name(src, format_text = TRUE)
+	if(area_name in GLOB.roundstart_station_borgcharger_areas)
+		return
+	GLOB.roundstart_station_borgcharger_areas += area_name
 
 /obj/machinery/recharge_station/RefreshParts()
+	. = ..()
 	recharge_speed = 0
-	recharge_speed_nutrition = 0
 	repairs = 0
-	// The recharge_speed can be anywhere from 200 to 3200, depending on the capacitors and the cell.
-	for(var/obj/item/stock_parts/capacitor/C in component_parts)
-		recharge_speed += C.rating * 100
-		recharge_speed_nutrition += C.rating * 10
-	for(var/obj/item/stock_parts/manipulator/M in component_parts)
-		repairs += M.rating - 1
-	for(var/obj/item/stock_parts/cell/C in component_parts)
-		var/multiplier = C.maxcharge / 10000
-		recharge_speed *= multiplier
-		recharge_speed_nutrition *= multiplier
+	for(var/datum/stock_part/capacitor/capacitor in component_parts)
+		recharge_speed += capacitor.tier * 100
+	for(var/datum/stock_part/servo/servo in component_parts)
+		repairs += servo.tier - 1
+	for(var/obj/item/stock_parts/cell/cell in component_parts)
+		recharge_speed *= cell.maxcharge / 10000
 
-	// This coefficient can be anywhere from 1, to 16.
-	consumable_recharge_coeff = max(1, recharge_speed / 200)
+/obj/machinery/recharge_station/examine(mob/user)
+	. = ..()
+	if(in_range(user, src) || isobserver(user))
+		. += span_notice("The status display reads: Recharging <b>[recharge_speed]J</b> per cycle.")
+		if(materials.silo)
+			. += span_notice("The ore silo link indicator is lit, and cyborg restocking can be toggled by <b>Right-Clicking</b> [src].")
+		if(repairs)
+			. += span_notice("[src] has been upgraded to support automatic repairs.")
 
-/obj/machinery/recharge_station/process()
-	if(stat & (NOPOWER|BROKEN))
-		return
+/obj/machinery/recharge_station/on_set_is_operational(old_value)
+	if(old_value) //Turned off
+		end_processing()
+	else //Turned on
+		begin_processing()
 
+
+/obj/machinery/recharge_station/process(seconds_per_tick)
 	if(occupant)
-		process_occupant()
-
-	for(var/mob/M as mob in src) // makes sure that simple mobs don't get stuck inside a sleeper when they resist out of occupant's grasp
-		if(M == occupant)
-			continue
-		else if(!ispulsedemon(M))
-			M.forceMove(src.loc)
+		process_occupant(seconds_per_tick)
 	return 1
 
-/obj/machinery/recharge_station/ex_act(severity)
-	if(occupant)
-		occupant.ex_act(severity)
-	..()
-
-/obj/machinery/recharge_station/handle_atom_del(atom/A)
-	..()
-	if(A == occupant)
-		occupant = null
-		updateUsrDialog()
-		update_icon(UPDATE_ICON_STATE)
-
-/obj/machinery/recharge_station/narsie_act()
-	go_out()
-	new /obj/effect/gibspawner/generic(get_turf(loc)) //I REPLACE YOUR TECHNOLOGY WITH FLESH!
-	qdel(src)
-
-/obj/machinery/recharge_station/Bumped(mob/bumper)
-	if(istype(bumper))
-		move_inside(bumper, bumper)
-
-/obj/machinery/recharge_station/AllowDrop()
-	return FALSE
-
-/obj/machinery/recharge_station/relaymove(mob/user as mob)
-	if(ispulsedemon(user))
-		return
+/obj/machinery/recharge_station/relaymove(mob/living/user, direction)
 	if(user.stat)
 		return
-	go_out()
+	open_machine()
 
 /obj/machinery/recharge_station/emp_act(severity)
-	if(stat & (BROKEN|NOPOWER))
-		..(severity)
-		return
-	if(occupant)
-		occupant.emp_act(severity)
-		go_out()
-	..(severity)
+	. = ..()
+	if(!(machine_stat & (BROKEN|NOPOWER)))
+		if(occupant && !(. & EMP_PROTECT_CONTENTS))
+			occupant.emp_act(severity)
+		if (!(. & EMP_PROTECT_SELF))
+			open_machine()
 
-/obj/machinery/recharge_station/update_icon_state()
-	if(occupant)
-		if(!(stat & (NOPOWER|BROKEN)))
-			icon_state = "borgcharger1"
-		else
-			icon_state = "borgcharger2"
-	else
-		icon_state = "borgcharger0"
+/obj/machinery/recharge_station/attackby(obj/item/P, mob/user, params)
+	if(state_open)
+		if(default_deconstruction_screwdriver(user, "borgdecon2", "borgcharger0", P))
+			return
 
-/obj/machinery/recharge_station/attackby(obj/item/I, mob/user, params)
-	if(exchange_parts(user, I))
+	if(default_pry_open(P, close_after_pry = FALSE, open_density = FALSE, closed_density = TRUE))
 		return
 
-	else
-		return ..()
-
-/obj/machinery/recharge_station/crowbar_act(mob/user, obj/item/I)
-	if(default_deconstruction_crowbar(user, I))
-		return TRUE
-
-/obj/machinery/recharge_station/screwdriver_act(mob/user, obj/item/I)
-	if(occupant)
-		to_chat(user, "<span class='notice'>The maintenance panel is locked.</span>")
-		return TRUE
-	if(default_deconstruction_screwdriver(user, "borgdecon2", "borgcharger0", I))
-		return TRUE
-
-/obj/machinery/recharge_station/proc/process_occupant()
-	SEND_SIGNAL(occupant, COMSIG_PROCESS_BORGCHARGER_OCCUPANT, recharge_speed, repairs)
-	if(isrobot(occupant))
-		var/mob/living/silicon/robot/R = occupant
-		if(R.module)
-			R.module.recharge_consumables(R, consumable_recharge_coeff) // This will handle all of a cyborg's items.
-		if(repairs)
-			R.heal_overall_damage(repairs, repairs)
-		if(R.cell)
-			R.cell.charge = min(R.cell.charge + recharge_speed, R.cell.maxcharge)
-	else if(ishuman(occupant))
-		var/mob/living/carbon/human/H = occupant
-		if(H.get_int_organ(/obj/item/organ/internal/cell))
-			if(H.nutrition < NUTRITION_LEVEL_FULL - 1)
-				H.set_nutrition(min(H.nutrition + recharge_speed_nutrition, NUTRITION_LEVEL_FULL - 1))
-			if(repairs)
-				H.heal_overall_damage(repairs, repairs, TRUE, 0, 1)
-
-
-/obj/machinery/recharge_station/proc/go_out()
-	if(!occupant)
+	if(default_deconstruction_crowbar(P))
 		return
-	occupant.forceMove(loc)
-	occupant = null
-	update_icon(UPDATE_ICON_STATE)
-	change_power_mode(IDLE_POWER_USE)
+	return ..()
 
-/obj/machinery/recharge_station/AltClick(mob/user)
-	if(user.stat || HAS_TRAIT(user, TRAIT_HANDS_BLOCKED) || !Adjacent(user))
+/obj/machinery/recharge_station/attack_ai_secondary(mob/user, list/modifiers)
+	toggle_restock(user)
+	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+
+/obj/machinery/recharge_station/attack_hand_secondary(mob/user, list/modifiers)
+	toggle_restock(user)
+	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+
+/obj/machinery/recharge_station/proc/toggle_restock(mob/user)
+	if(sendmats)
+		sendmats = FALSE
+		say("Restocking from ore silo: disabled.")
 		return
-	go_out()
-
-/obj/machinery/recharge_station/force_eject_occupant(mob/target)
-	go_out()
-
-/obj/machinery/recharge_station/MouseDrop_T(mob/living/target, mob/user)
-	if(!istype(target))
+	if(state_open || !occupant)
 		return
-	INVOKE_ASYNC(src, TYPE_PROC_REF(/obj/machinery/recharge_station, move_inside), user, target)
+	if(!iscyborg(occupant))
+		return
+	if(!materials.silo)
+		say("Error: ore silo connection offline.")
+		return
+	if(materials.on_hold())
+		say("Error: ore silo access denied.")
+		return FALSE
+	sendmats = TRUE
+	say("Restocking from ore silo: enabled.")
+
+/obj/machinery/recharge_station/interact(mob/user)
+	toggle_open()
 	return TRUE
 
-/obj/machinery/recharge_station/proc/move_inside(mob/user, mob/target)
-	if(!user || user.stat)
+/obj/machinery/recharge_station/proc/toggle_open()
+	if(state_open)
+		close_machine(density_to_set = TRUE)
+		toggle_restock() //defaults to enabled
+	else
+		open_machine()
+
+/obj/machinery/recharge_station/open_machine(drop = TRUE, density_to_set = FALSE)
+	. = ..()
+	sendmats = FALSE
+	update_use_power(IDLE_POWER_USE)
+
+/obj/machinery/recharge_station/close_machine(atom/movable/target, density_to_set = TRUE)
+	. = ..()
+	if(occupant)
+		update_use_power(ACTIVE_POWER_USE) //It always tries to charge, even if it can't.
+		add_fingerprint(occupant)
+
+/obj/machinery/recharge_station/update_icon_state()
+	if(!is_operational)
+		icon_state = "borgcharger-u[state_open ? 0 : 1]"
+		return ..()
+	icon_state = "borgcharger[state_open ? 0 : (occupant ? 1 : 2)]"
+	return ..()
+
+/obj/machinery/recharge_station/proc/process_occupant(seconds_per_tick)
+	if(!occupant)
 		return
-
-	if(get_dist(src, user) > 2 || get_dist(target, user) > 1)
-		to_chat(user, "<span class='notice'>[target] is too far away to put inside [src].</span>")
+	var/main_draw = use_power_from_net(recharge_speed * seconds_per_tick, take_any = TRUE) //Pulls directly from the Powernet to dump into the cell
+	if(!main_draw)
 		return
-
-	if(panel_open)
-		to_chat(user, "<span class='warning'>Close the maintenance panel first.</span>")
-		return
-
-	var/can_accept_user
-	if(isrobot(target))
-		var/mob/living/silicon/robot/R = target
-
-		if(R.stat == DEAD)
-			//Whoever had it so that a borg with a dead cell can't enter this thing should be shot. --NEO
-			return
-		if(occupant)
-			to_chat(R, "<span class='warning'>The cell is already occupied!</span>")
-			return
-		if(!R.cell)
-			to_chat(R, "<span class='warning'>Without a power cell, you can't be recharged.</span>")
-			//Make sure they actually HAVE a cell, now that they can get in while powerless. --NEO
-			return
-		can_accept_user = 1
-
-	else if(ishuman(target))
-		var/mob/living/carbon/human/H = target
-
-		if(H.stat == DEAD)
-			return
-		if(occupant)
-			to_chat(H, "<span class='warning'>The cell is already occupied!</span>")
-			return
-		if(!ismodcontrol(H.back))
-			if(!H.get_int_organ(/obj/item/organ/internal/cell))
-				return
-		can_accept_user = 1
-
-	if(!can_accept_user)
-		to_chat(user, "<span class='notice'>Only non-organics may enter the recharger!</span>")
-		return
-
-	target.stop_pulling()
-	target.forceMove(src)
-	occupant = target
-
-	add_fingerprint(user)
-	update_icon(UPDATE_ICON_STATE)
-	change_power_mode(IDLE_POWER_USE)
+	SEND_SIGNAL(occupant, COMSIG_PROCESS_BORGCHARGER_OCCUPANT, main_draw, repairs, sendmats)

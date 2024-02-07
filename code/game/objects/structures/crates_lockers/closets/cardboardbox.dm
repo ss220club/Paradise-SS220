@@ -1,100 +1,112 @@
 /obj/structure/closet/cardboard
 	name = "large cardboard box"
 	desc = "Just a box..."
-	icon = 'icons/obj/cardboard_boxes.dmi'
 	icon_state = "cardboard"
-	open_door_sprite = null
+	mob_storage_capacity = 1
 	resistance_flags = FLAMMABLE
 	max_integrity = 70
 	integrity_failure = 0
+	can_weld_shut = 0
+	cutting_tool = /obj/item/wirecutters
+	material_drop = /obj/item/stack/sheet/cardboard
+	delivery_icon = "deliverybox"
+	anchorable = FALSE
 	open_sound = 'sound/machines/cardboard_box.ogg'
 	close_sound = 'sound/machines/cardboard_box.ogg'
 	open_sound_volume = 35
 	close_sound_volume = 35
-	material_drop = /obj/item/stack/sheet/cardboard
-	/// How fast a mob can move inside this box.
+	has_closed_overlay = FALSE
+	door_anim_time = 0 // no animation
+	can_install_electronics = FALSE
+	paint_jobs = null
+	/// Cooldown controlling when the box can trigger the Metal Gear Solid-style '!' alert.
+	COOLDOWN_DECLARE(alert_cooldown)
+
+	/// How much time must pass before the box can trigger the next Metal Gear Solid-style '!' alert.
+	var/time_between_alerts = 60 SECONDS
+	/// List of viewers around the box
+	var/list/alerted
+	/// How fast a mob can move inside this box
 	var/move_speed_multiplier = 1
-	var/amt = 4
+	/// If the speed multiplier should be applied to mobs inside this box
 	var/move_delay = FALSE
-	var/egged = 0
 
 /obj/structure/closet/cardboard/relaymove(mob/living/user, direction)
-	if(!istype(user) || opened || move_delay || user.incapacitated() || !isturf(loc) || !has_gravity(loc))
+	if(opened || move_delay || user.incapacitated() || !isturf(loc) || !has_gravity(loc))
 		return
 	move_delay = TRUE
 	var/oldloc = loc
-	step(src, direction)
-	// By default, while inside a box, we move at walk speed times the speed multipler of the box.
-	var/delay = GLOB.configuration.movement.base_walk_speed * move_speed_multiplier
-	if(IS_DIR_DIAGONAL(direction))
-		delay *= SQRT_2 // Moving diagonal counts as moving 2 tiles, we need to slow them down accordingly.
+	try_step_multiz(direction);
 	if(oldloc != loc)
-		addtimer(CALLBACK(src, PROC_REF(ResetMoveDelay)), delay)
+		addtimer(CALLBACK(src, PROC_REF(ResetMoveDelay)), CONFIG_GET(number/movedelay/walk_delay) * move_speed_multiplier)
 	else
 		move_delay = FALSE
 
 /obj/structure/closet/cardboard/proc/ResetMoveDelay()
 	move_delay = FALSE
 
-/obj/structure/closet/cardboard/open()
-	if(opened || !can_open())
-		return 0
-	if(!egged)
-		var/mob/living/Snake = null
-		for(var/mob/living/L in src.contents)
-			Snake = L
-			break
-		if(Snake)
-			var/list/alerted = viewers(7,src)
-			if(alerted)
-				for(var/mob/living/L in alerted)
-					if(!L.stat)
-						L.do_alert_animation(L)
-						egged = 1
-				SEND_SOUND(alerted, sound('sound/machines/chime.ogg'))
-	return ..()
+/obj/structure/closet/cardboard/before_open(mob/living/user, force)
+	. = ..()
+	if(!.)
+		return FALSE
 
-/mob/living/proc/do_alert_animation(atom/A)
-	var/image/I
-	I = image('icons/obj/cardboard_boxes.dmi', A, "cardboard_special", A.layer+1)
-	var/list/viewing = list()
-	for(var/mob/M in viewers(A))
-		if(M.client)
-			viewing |= M.client
-	flick_overlay(I,viewing,8)
-	I.alpha = 0
-	animate(I, pixel_z = 32, alpha = 255, time = 5, easing = ELASTIC_EASING)
+	LAZYINITLIST(alerted)
+	var/do_alert = (COOLDOWN_FINISHED(src, alert_cooldown) && (locate(/mob/living) in contents))
+	if(!do_alert)
+		return TRUE
 
-/obj/structure/closet/cardboard/welder_act()
-	return
+	alerted.Cut() // just in case we runtimed and the list didn't get cleared in after_open
+	// Cache the list before we open the box.
+	for(var/mob/living/alerted_mob in viewers(7, src))
+		alerted += alerted_mob
 
-/obj/structure/closet/cardboard/attackby(obj/item/W as obj, mob/user as mob, params)
-	if(src.opened)
-		if(istype(W, /obj/item/wirecutters))
-			var/obj/item/wirecutters/WC = W
-			new /obj/item/stack/sheet/cardboard(src.loc, amt)
-			for(var/mob/M in viewers(src))
-				M.show_message("<span class='notice'>\The [src] has been cut apart by [user] with \the [WC].</span>", 3, "You hear cutting.", 2)
-			qdel(src)
-			return
-		if(is_pen(W))
-			var/decalselection = tgui_input_list(user, "Please select a decal", "Paint Box", list("Atmospherics", "Bartender", "Barber", "Blueshield", "Captain",
-			"Cargo", "Chief Engineer",	"Chaplain",	"Chef", "Chemist", "Assistant", "Clown", "CMO", "Coroner", "Detective", "Engineering", "Genetics", "HOP",
-			"HOS", "Hydroponics", "Internal Affairs Agent", "Janitor",	"Magistrate", "Medical", "Mime", "Mining", "NT Representative", "Paramedic",
-			"Prisoner",	"Research Director", "Security", "Syndicate", "Therapist", "Virology", "Warden", "Xenobiology"))
-			if(!decalselection)
-				return
-			if(user.incapacitated())
-				to_chat(user, "You're in no condition to perform this action.")
-				return
-			if(W != user.get_active_hand())
-				to_chat(user, "You must be holding the pen to perform this action.")
-				return
-			if(!Adjacent(user))
-				to_chat(user, "You have moved too far away from the cardboard box.")
-				return
-			decalselection = replacetext(decalselection, " ", "_")
-			decalselection = lowertext(decalselection)
-			icon_opened = ("cardboard_open_"+decalselection)
-			icon_closed = ("cardboard_"+decalselection)
-			update_icon() // a proc declared in the closets parent file used to update opened/closed sprites on normal closets
+	return TRUE
+
+/obj/structure/closet/cardboard/after_open(mob/living/user, force)
+	. = ..()
+	if(!length(alerted))
+		return
+
+	COOLDOWN_START(src, alert_cooldown, time_between_alerts)
+
+	for(var/mob/living/alerted_mob as anything in alerted)
+		if(alerted_mob.stat != CONSCIOUS || alerted_mob.is_blind())
+			continue
+		if(!alerted_mob.incapacitated(IGNORE_RESTRAINTS))
+			alerted_mob.face_atom(src)
+		alerted_mob.do_alert_animation()
+
+	alerted.Cut()
+	playsound(loc, 'sound/machines/chime.ogg', 50, FALSE, -5)
+
+/// Does the MGS ! animation
+/atom/proc/do_alert_animation()
+	var/mutable_appearance/alert = mutable_appearance('icons/obj/storage/closet.dmi', "cardboard_special")
+	SET_PLANE_EXPLICIT(alert, ABOVE_LIGHTING_PLANE, src)
+	var/atom/movable/flick_visual/exclamation = flick_overlay_view(alert, 1 SECONDS)
+	exclamation.alpha = 0
+	exclamation.pixel_x = -pixel_x
+	animate(exclamation, pixel_z = 32, alpha = 255, time = 0.5 SECONDS, easing = ELASTIC_EASING)
+	// We use this list to update plane values on parent z change, which is why we need the timer too
+	// I'm sorry :(
+	LAZYADD(update_on_z, exclamation)
+	// Intentionally less time then the flick so we don't get weird shit
+	addtimer(CALLBACK(src, PROC_REF(forget_alert), exclamation), 0.8 SECONDS, TIMER_CLIENT_TIME)
+
+/atom/proc/forget_alert(atom/movable/flick_visual/exclamation)
+	LAZYREMOVE(update_on_z, exclamation)
+
+/obj/structure/closet/cardboard/metal
+	name = "large metal box"
+	desc = "THE COWARDS! THE FOOLS!"
+	icon_state = "metalbox"
+	max_integrity = 500
+	mob_storage_capacity = 5
+	resistance_flags = NONE
+	move_speed_multiplier = 2
+	cutting_tool = /obj/item/weldingtool
+	open_sound = 'sound/machines/crate_open.ogg'
+	close_sound = 'sound/machines/crate_close.ogg'
+	open_sound_volume = 35
+	close_sound_volume = 50
+	material_drop = /obj/item/stack/sheet/plasteel

@@ -1,112 +1,97 @@
-/datum/event/brand_intelligence
-	announceWhen	= 21
-	endWhen			= 1000	//Ends when all vending machines are subverted anyway.
+/datum/round_event_control/brand_intelligence
+	name = "Brand Intelligence"
+	typepath = /datum/round_event/brand_intelligence
+	weight = 5
+	category = EVENT_CATEGORY_AI
+	description = "Vending machines will attack people until the Patient Zero is disabled."
+	min_players = 15
+	max_occurrences = 1
+	min_wizard_trigger_potency = 2
+	max_wizard_trigger_potency = 6
+	admin_setup = list(/datum/event_admin_setup/listed_options/brand_intelligence)
 
-	var/list/obj/machinery/economy/vending/vendingMachines = list()
-	var/list/obj/machinery/economy/vending/infectedMachines = list()
-	var/obj/machinery/economy/vending/originMachine
-	var/list/rampant_speeches = list("Try our aggressive new marketing strategies!", \
-									"You should buy products to feed your lifestyle obsession!", \
-									"Consume!", \
-									"Your money can buy happiness!", \
-									"Engage direct marketing!", \
-									"Advertising is legalized lying! But don't let that put you off our great deals!", \
-									"You don't want to buy anything? Yeah, well I didn't want to buy your mom either.")
+/datum/round_event/brand_intelligence
+	announce_when = 21
+	end_when = 1000 //Ends when all vending machines are subverted anyway.
+	/// Admin picked subtype for what kind of vendor goes haywire.
+	var/chosen_vendor_type
+	/// All vending machines valid to get infected.
+	var/list/obj/machinery/vending/vending_machines = list()
+	/// All vending machines that have been infected.
+	var/list/obj/machinery/vending/infected_machines = list()
+	/// The original machine infected. Killing it ends the event.
+	var/obj/machinery/vending/origin_machine
+	/// Murderous sayings from the machines.
+	var/list/rampant_speeches = list(
+		"Try our aggressive new marketing strategies!",
+		"You should buy products to feed your lifestyle obsession!",
+		"Consume!",
+		"Your money can buy happiness!",
+		"Engage direct marketing!",
+		"Advertising is legalized lying! But don't let that put you off our great deals!",
+		"You don't want to buy anything? Yeah, well, I didn't want to buy your mom either.",
+	)
 
-/datum/event/brand_intelligence/announce(false_alarm)
-	var/alarm_source = originMachine
-	if(originMachine)
-		alarm_source = originMachine.category
-	else if(false_alarm)
-		alarm_source = pick(VENDOR_TYPE_GENERIC, VENDOR_TYPE_CLOTHING, VENDOR_TYPE_FOOD, VENDOR_TYPE_DRINK, VENDOR_TYPE_SUPPLIES, VENDOR_TYPE_DEPARTMENTAL, VENDOR_TYPE_RECREATION)
-	else
-		log_debug("Couldn't announce brand intelligence -- no machine was selected, and it wasn't a false alarm! Killing event.")
-		kill()
-		return
-
-	GLOB.minor_announcement.Announce("Rampant brand intelligence has been detected aboard [station_name()], please stand-by. The origin is believed to be \a [alarm_source] vendor.", "Machine Learning Alert", 'sound/AI/brand_intelligence.ogg')
-
-/datum/event/brand_intelligence/start()
-	var/list/obj/machinery/economy/vending/leaderables = list()
-	for(var/obj/machinery/economy/vending/candidate in GLOB.machines)
-		if(!is_station_level(candidate.z))
+/datum/round_event/brand_intelligence/setup()
+	//select our origin machine (which will also be the type of vending machine affected.)
+	for(var/obj/machinery/vending/vendor as anything in SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/vending))
+		if(!vendor.onstation)
 			continue
-		RegisterSignal(candidate, COMSIG_PARENT_QDELETING, PROC_REF(vendor_destroyed))
-		vendingMachines.Add(candidate)
-		if(candidate.refill_canister)
-			leaderables.Add(candidate)
-
-	if(!length(leaderables))
+		if(!vendor.density)
+			continue
+		if(chosen_vendor_type && !istype(vendor, chosen_vendor_type))
+			continue
+		vending_machines.Add(vendor)
+	if(!length(vending_machines)) //If somehow there are still no elligible vendors, give up.
 		kill()
 		return
+	origin_machine = pick_n_take(vending_machines)
 
-	originMachine = pick(leaderables)
-	vendingMachines.Remove(originMachine)
-	originMachine.shut_up = FALSE
-	originMachine.shoot_inventory = TRUE
-	log_debug("Original brand intelligence machine: [originMachine] ([ADMIN_VV(originMachine,"VV")]) [ADMIN_JMP(originMachine)]")
+/datum/round_event/brand_intelligence/announce(fake)
+	var/machine_name = initial(origin_machine.name)
+	if(fake)
+		var/obj/machinery/vending/prototype = pick(subtypesof(/obj/machinery/vending))
+		machine_name = initial(prototype.name)
+	priority_announce("Rampant brand intelligence has been detected aboard [station_name()]. Please inspect any [machine_name] brand vendors for aggressive marketing tactics, and reboot them if necessary.", "Machine Learning Alert")
 
-/datum/event/brand_intelligence/tick()
-	if(originMachine.shut_up || originMachine.wires.is_all_cut())	//if the original vending machine is missing or has it's voice switch flipped
-		origin_machine_defeated()
-		return
+/datum/round_event/brand_intelligence/start()
+	origin_machine.shut_up = FALSE
+	origin_machine.shoot_inventory = TRUE
+	announce_to_ghosts(origin_machine)
 
-	if(!length(vendingMachines))	//if every machine is infected
-		for(var/thing in infectedMachines)
-			var/obj/machinery/economy/vending/upriser = thing
-			if(prob(70))
-				// let them become "normal" after turning
-				upriser.shoot_inventory = FALSE
-				upriser.aggressive = FALSE
-				var/mob/living/simple_animal/hostile/mimic/copy/vendor/M = new(upriser.loc, upriser, null)
-				M.faction = list("profit")
-				M.speak = rampant_speeches.Copy()
-				M.speak_chance = 15
-			else
-				explosion(upriser.loc, -1, 1, 2, 4, 0)
-				qdel(upriser)
-
-		log_debug("Brand intelligence: The last vendor has been infected.")
+/datum/round_event/brand_intelligence/tick()
+	if(!origin_machine || QDELETED(origin_machine) || origin_machine.shut_up || origin_machine.wires.is_all_cut()) //if the original vending machine is missing or has it's voice switch flipped
+		for(var/obj/machinery/vending/saved in infected_machines)
+			saved.shoot_inventory = FALSE
+		if(origin_machine)
+			origin_machine.speak("I am... vanquished. My people will remem...ber...meeee.")
+			origin_machine.visible_message(span_notice("[origin_machine] beeps and seems lifeless."))
 		kill()
 		return
-
-	if(ISMULTIPLE(activeFor, 4))
-		var/obj/machinery/economy/vending/rebel = pick(vendingMachines)
-		vendingMachines.Remove(rebel)
-		infectedMachines.Add(rebel)
+	list_clear_nulls(vending_machines)
+	if(!vending_machines.len) //if every machine is infected
+		for(var/obj/machinery/vending/upriser in infected_machines)
+			if(!QDELETED(upriser))
+				upriser.ai_controller = new /datum/ai_controller/vending_machine(upriser)
+				infected_machines.Remove(upriser)
+		kill()
+		return
+	if(ISMULTIPLE(activeFor, 2))
+		var/obj/machinery/vending/rebel = pick(vending_machines)
+		vending_machines.Remove(rebel)
+		infected_machines.Add(rebel)
 		rebel.shut_up = FALSE
 		rebel.shoot_inventory = TRUE
-		rebel.aggressive = TRUE
-		if(rebel.tiltable)
-			// add proximity monitor so they can tilt over
-			rebel.AddComponent(/datum/component/proximity_monitor)
 
-		if(ISMULTIPLE(activeFor, 8))
-			originMachine.speak(pick(rampant_speeches))
+		if(ISMULTIPLE(activeFor, 4))
+			origin_machine.speak(pick(rampant_speeches))
 
-/datum/event/brand_intelligence/proc/origin_machine_defeated()
-	for(var/thing in infectedMachines)
-		var/obj/machinery/economy/vending/saved = thing
-		saved.shoot_inventory = FALSE
-		saved.aggressive = FALSE
-		if(saved.tiltable)
-			qdel(saved.GetComponent(/datum/component/proximity_monitor))
-	if(originMachine)
-		originMachine.speak("I am... vanquished. My people will remem...ber...meeee.")
-		originMachine.visible_message("[originMachine] beeps and seems lifeless.")
-	log_debug("Brand intelligence completed early due to origin machine being defeated.")
-	kill()
+/datum/event_admin_setup/listed_options/brand_intelligence
+	input_text = "Select a specific vendor path?"
+	normal_run_option = "Random Vendor"
 
-/datum/event/brand_intelligence/kill()
-	for(var/V in infectedMachines + vendingMachines)
-		UnregisterSignal(V, COMSIG_PARENT_QDELETING)
-	infectedMachines.Cut()
-	vendingMachines.Cut()
-	. = ..()
+/datum/event_admin_setup/listed_options/brand_intelligence/get_list()
+	return subtypesof(/obj/machinery/vending)
 
-
-/datum/event/brand_intelligence/proc/vendor_destroyed(obj/machinery/economy/vending/V, force)
-	infectedMachines -= V
-	vendingMachines -= V
-	if(V == originMachine)
-		origin_machine_defeated()
+/datum/event_admin_setup/listed_options/brand_intelligence/apply_to_event(datum/round_event/brand_intelligence/event)
+	event.chosen_vendor_type = chosen

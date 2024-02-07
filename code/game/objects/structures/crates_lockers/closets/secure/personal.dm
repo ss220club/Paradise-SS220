@@ -1,74 +1,52 @@
 /obj/structure/closet/secure_closet/personal
-	desc = "It's a secure locker for personnel. The first card swiped gains control."
+	desc = "It's a secure locker for personnel. The first person to swipe their ID gains control."
 	name = "personal closet"
 	req_access = list(ACCESS_ALL_PERSONAL_LOCKERS)
-	var/registered_name = null
+	card_reader_installed = TRUE
 
-/obj/structure/closet/secure_closet/personal/populate_contents()
+/obj/structure/closet/secure_closet/personal/Initialize(mapload)
+	. = ..()
+	var/static/list/choices
+	if(isnull(choices))
+		choices = list("Personal")
+	access_choices = choices
+
+/obj/structure/closet/secure_closet/personal/can_unlock(mob/living/user, obj/item/card/id/player_id, obj/item/card/id/registered_id)
+	if(isnull(registered_id)) //first time anyone can unlock
+		return TRUE
+	else
+		if(allowed(user)) //players with ACCESS_ALL_PERSONAL_LOCKERS can override your ID
+			return TRUE
+		return player_id == registered_id
+
+/obj/structure/closet/secure_closet/personal/PopulateContents()
+	..()
 	if(prob(50))
-		new /obj/item/storage/backpack/duffel(src)
+		new /obj/item/storage/backpack/duffelbag(src)
 	if(prob(50))
 		new /obj/item/storage/backpack(src)
 	else
-		new /obj/item/storage/backpack/satchel_norm(src)
+		new /obj/item/storage/backpack/satchel(src)
 	new /obj/item/radio/headset( src )
-
 
 /obj/structure/closet/secure_closet/personal/patient
 	name = "patient's closet"
 
-/obj/structure/closet/secure_closet/personal/patient/populate_contents()
+/obj/structure/closet/secure_closet/personal/patient/PopulateContents()
 	new /obj/item/clothing/under/color/white( src )
-	new /obj/item/clothing/shoes/white( src )
+	new /obj/item/clothing/shoes/sneakers/white( src )
 
 /obj/structure/closet/secure_closet/personal/cabinet
 	icon_state = "cabinet"
-	open_door_sprite = "cabinet_door"
 	resistance_flags = FLAMMABLE
 	max_integrity = 70
 	open_sound = 'sound/machines/wooden_closet_open.ogg'
 	close_sound = 'sound/machines/wooden_closet_close.ogg'
 	open_sound_volume = 25
 	close_sound_volume = 50
+	door_anim_time = 0 // no animation
 
-/obj/structure/closet/secure_closet/personal/cabinet/populate_contents()
-	new /obj/item/storage/backpack/satchel/withwallet( src )
+/obj/structure/closet/secure_closet/personal/cabinet/PopulateContents()
+	new /obj/item/storage/backpack/satchel/leather/withwallet( src )
+	new /obj/item/instrument/piano_synth(src)
 	new /obj/item/radio/headset( src )
-
-/obj/structure/closet/secure_closet/personal/attackby(obj/item/W, mob/user, params)
-	if(opened || !istype(W, /obj/item/card/id))
-		return ..()
-
-	if(broken)
-		to_chat(user, "<span class='warning'>It appears to be broken.</span>")
-		return
-
-	if(istype(W, /obj/item/card/id/guest))
-		to_chat(user, "<span class='warning'>Invalid identification card.</span>")
-		return
-
-	var/obj/item/card/id/I = W
-	if(!I || !I.registered_name)
-		return
-
-	if(src == user.loc)
-		to_chat(user, "<span class='notice'>You can't reach the lock from inside.</span>")
-
-	else if(allowed(user) || !registered_name || (istype(I) && (registered_name == I.registered_name)))
-		cut_overlays()
-
-		//they can open all lockers, or nobody owns this, or they own this locker
-		locked = !locked
-		if(locked)
-			add_overlay("locked")
-		else
-			add_overlay("unlocked")
-			icon_state = icon_closed
-			registered_name = null
-			desc = initial(desc)
-
-		if(!registered_name && locked)
-			registered_name = I.registered_name
-			desc = "Owned by [I.registered_name]."
-	else
-		to_chat(user, "<span class='warning'>Access denied.</span>")

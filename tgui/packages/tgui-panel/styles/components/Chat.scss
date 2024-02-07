@@ -4,13 +4,12 @@
  */
 
 @use 'sass:color';
+@use 'sass:math';
 @use '~tgui/styles/base.scss';
 @use '~tgui/styles/colors.scss';
 
 $text-color: #abc6ec !default;
 $color-bg-section: base.$color-bg-section !default;
-$color-bg-reconnect: $color-bg-section !default;
-$color-text-reconnect: colors.$red !default;
 
 .Chat {
   color: $text-color;
@@ -28,7 +27,7 @@ $color-text-reconnect: colors.$red !default;
   vertical-align: middle;
   background-color: crimson;
   border-radius: 10px;
-  transition: font-size 200ms;
+  transition: font-size 200ms ease-out;
 
   &:before {
     content: 'x';
@@ -56,15 +55,15 @@ $color-text-reconnect: colors.$red !default;
     display: inline-block;
     border-radius: 1em;
     padding: 0 0.7em;
-    color: $color-text-reconnect;
-    background-color: $color-bg-reconnect;
+    color: colors.$red;
+    background-color: $color-bg-section;
   }
 
   &:after {
     content: '';
     display: block;
     margin-top: -0.75em;
-    border-bottom: calc(1em / 6) solid colors.$red;
+    border-bottom: math.div(1em, 6) solid colors.$red;
   }
 }
 
@@ -84,7 +83,7 @@ $color-text-reconnect: colors.$red !default;
 
 .ChatMessage--highlighted {
   position: relative;
-  border-left: calc(1em / 6) solid rgba(255, 221, 68);
+  border-left: math.div(1em, 6) solid rgba(255, 221, 68);
   padding-left: 0.5em;
 
   &:after {

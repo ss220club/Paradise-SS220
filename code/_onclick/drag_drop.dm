@@ -1,50 +1,157 @@
 /*
-This function is called every time we cross other turf(i guess) while dragging atom
-It means that while one dragNdrop if you cross multiple turfs this function will be called multiple times
-*/
-/atom/MouseDrag()
-	if(drag_start == 0) // we want to capture only moment of start dragging
-		drag_start = world.time
-
-/*
-This function is exist to check of our current dragNdrop could be just laggy click
-Currently it just checks how long our dragNdrop was. If it was lag, it would be extremely small, otherwise it would be long
-returns
-TRUE if current dragNdrop is lesser than 0.2 sec
-FALSE if not
-*/
-/atom/proc/could_be_click_lag()
-	return world.time - drag_start < 0.2 SECONDS // should be enough to lag
-
-/*
 	MouseDrop:
 
 	Called on the atom you're dragging.  In a lot of circumstances we want to use the
-	recieving object instead, so that's the default action.  This allows you to drag
+	receiving object instead, so that's the default action.  This allows you to drag
 	almost anything into a trash can.
 */
 /atom/MouseDrop(atom/over, src_location, over_location, src_control, over_control, params)
 	if(!usr || !over)
 		return
-	var/lagging = could_be_click_lag()
-	drag_start = 0
-	if(!(istype(over, /obj/screen) || (loc && loc == over.loc)))
-		if(!Adjacent(usr) || !over.Adjacent(usr)) // should stop you from dragging through windows
-			if(lagging)
-				usr.ClickOn(src, params)
-			return
+	if(SEND_SIGNAL(src, COMSIG_MOUSEDROP_ONTO, over, usr) & COMPONENT_NO_MOUSEDROP) //Whatever is receiving will verify themselves for adjacency.
+		return
+	var/proximity_check = usr.client.check_drag_proximity(src, over, src_location, over_location, src_control, over_control, params)
+	if(proximity_check)
+		return proximity_check
 
-	var/datum/callback/mousedrop = new(over, PROC_REF(MouseDrop_T), src, usr, params)
-	var/result = mousedrop.InvokeAsync() // if it gets TRUE in return, we think that all is fine
-	if(!result && lagging)
-		usr.ClickOn(src, params) // if not, we click object
+	if(!Adjacent(usr) || !over.Adjacent(usr))
+		return // should stop you from dragging through windows
 
-/*
-recieve a mousedrop
-called on object which was under the object you dragged and dropped
-return TRUE if you want to prevent us click the object
-actually if you do something in that proc like changing user location or whatever, you expected to return TRUE
-to inform the game this action was expected and its fine
-*/
-/atom/proc/MouseDrop_T(atom/dropping, mob/user, params) // return TRUE if you want to prevent us click the object after it
+	over.MouseDrop_T(src,usr, params)
 	return
+
+/// Handles treating drags as clicks if they're within some conditions
+/// Does some other stuff adjacent to trying to figure out what the user actually "wanted" to click
+/// Returns TRUE if it caused a click, FALSE otherwise
+/client/proc/check_drag_proximity(atom/dragging, atom/over, src_location, over_location, src_control, over_control, params)
+	// We will swap which thing we're trying to check for clickability based off the type
+	// Assertion is if you drag a turf to anything else, you really just wanted to click the anything else
+	// And slightly misseed. I'm not interested in making this game pixel percise, so if it fits our other requirements
+	// Lets just let that through yeah?
+	var/atom/attempt_click = dragging
+	var/atom/click_from = over
+	var/location_to_use = src_location
+	var/control_to_use = src_control
+	if(isturf(attempt_click) && !isturf(over))
+		// swapppp
+		attempt_click = over
+		click_from = dragging
+		location_to_use = over_location
+		control_to_use = over_control
+
+	if(is_drag_clickable(attempt_click, click_from, params))
+		Click(attempt_click, location_to_use, control_to_use, params)
+		return TRUE
+	return FALSE
+
+/// Distance in pixels that we consider "acceptable" from the initial click to the release
+/// Note: this does not account for the position of the object, just where it is on the screen
+#define LENIENCY_DISTANCE 16
+/// Accepted time in seconds between the initial click and drag release
+/// Go higher then this and we just don't care anymore
+#define LENIENCY_TIME (0.1 SECONDS)
+
+/// Does the logic for checking if a drag counts as a click or not
+/// Returns true if it does, false otherwise
+/client/proc/is_drag_clickable(atom/dragging, atom/over, params)
+	if(dragging == over)
+		return TRUE
+	if(world.time - drag_start > LENIENCY_TIME) // Time's up bestie
+		return FALSE
+	if(!get_turf(dragging)) // If it isn't in the world, drop it. This is for things that can move, and we assume hud elements will not have this problem
+		return FALSE
+	// Basically, are you trying to buckle someone down, or drag them onto you?
+	// If so, we know you must be right about what you want
+	if(ismovable(over))
+		var/atom/movable/over_movable = over
+		// The buckle bit will cover most mobs, for stupid reasons. still useful here tho
+		if(over_movable.can_buckle || over_movable == eye)
+			return FALSE
+
+	var/list/modifiers = params2list(params)
+	var/list/old_offsets = screen_loc_to_offset(LAZYACCESS(drag_details, SCREEN_LOC), view)
+	var/list/new_offsets = screen_loc_to_offset(LAZYACCESS(modifiers, SCREEN_LOC), view)
+
+	var/distance = sqrt(((old_offsets[1] - new_offsets[1]) ** 2) + ((old_offsets[2] - new_offsets[2]) ** 2))
+	if(distance > LENIENCY_DISTANCE)
+		return FALSE
+
+	return TRUE
+
+// receive a mousedrop
+/atom/proc/MouseDrop_T(atom/dropping, mob/user, params)
+	SEND_SIGNAL(src, COMSIG_MOUSEDROPPED_ONTO, dropping, user, params)
+
+
+/client/MouseDown(datum/object, location, control, params)
+	if(QDELETED(object)) //Yep, you can click on qdeleted things before they have time to nullspace. Fun.
+		return
+	SEND_SIGNAL(src, COMSIG_CLIENT_MOUSEDOWN, object, location, control, params)
+	if(mouse_down_icon)
+		mouse_pointer_icon = mouse_down_icon
+	var/delay = mob.CanMobAutoclick(object, location, params)
+	if(delay)
+		selected_target[1] = object
+		selected_target[2] = params
+		while(selected_target[1])
+			Click(selected_target[1], location, control, selected_target[2])
+			sleep(delay)
+
+/client/MouseUp(object, location, control, params)
+	if(SEND_SIGNAL(src, COMSIG_CLIENT_MOUSEUP, object, location, control, params) & COMPONENT_CLIENT_MOUSEUP_INTERCEPT)
+		click_intercept_time = world.time
+	if(mouse_up_icon)
+		mouse_pointer_icon = mouse_up_icon
+	selected_target[1] = null
+
+/mob/proc/CanMobAutoclick(object, location, params)
+
+/mob/living/carbon/CanMobAutoclick(atom/object, location, params)
+	if(!object.IsAutoclickable())
+		return
+	var/obj/item/h = get_active_held_item()
+	if(h)
+		. = h.CanItemAutoclick(object, location, params)
+
+/obj/item/proc/CanItemAutoclick(object, location, params)
+
+/atom/proc/IsAutoclickable()
+	return TRUE
+
+/atom/movable/screen/IsAutoclickable()
+	return FALSE
+
+/atom/movable/screen/click_catcher/IsAutoclickable()
+	return TRUE
+
+/client/MouseDrag(src_object,atom/over_object,src_location,over_location,src_control,over_control,params)
+	var/list/modifiers = params2list(params)
+	if (LAZYACCESS(modifiers, MIDDLE_CLICK))
+		if (src_object && src_location != over_location)
+			middragtime = world.time
+			middle_drag_atom_ref = WEAKREF(src_object)
+		else
+			middragtime = 0
+			middle_drag_atom_ref = null
+	if(!drag_start) // If we're just starting to drag
+		drag_start = world.time
+		drag_details = modifiers.Copy()
+	mouseParams = params
+	mouse_location_ref = WEAKREF(over_location)
+	mouse_object_ref = WEAKREF(over_object)
+	if(selected_target[1] && over_object?.IsAutoclickable())
+		selected_target[1] = over_object
+		selected_target[2] = params
+	SEND_SIGNAL(src, COMSIG_CLIENT_MOUSEDRAG, src_object, over_object, src_location, over_location, src_control, over_control, params)
+	return ..()
+
+/client/MouseDrop(atom/src_object, atom/over_object, atom/src_location, atom/over_location, src_control, over_control, params)
+	if (IS_WEAKREF_OF(src_object, middle_drag_atom_ref))
+		middragtime = 0
+		middle_drag_atom_ref = null
+	..()
+	drag_start = 0
+	drag_details = null
+
+#undef LENIENCY_DISTANCE
+#undef LENIENCY_TIME

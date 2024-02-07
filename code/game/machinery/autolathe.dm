@@ -1,524 +1,424 @@
-#define AUTOLATHE_MAIN_MENU		1
-#define AUTOLATHE_CATEGORY_MENU	2
-#define AUTOLATHE_SEARCH_MENU	3
-
 /obj/machinery/autolathe
 	name = "autolathe"
-	desc = "It produces items using metal and glass."
+	desc = "It produces items using iron, glass, plastic and maybe some more."
+	icon = 'icons/obj/machines/lathes.dmi'
 	icon_state = "autolathe"
 	density = TRUE
-	idle_power_consumption = 10
-	active_power_consumption = 100
+	active_power_usage = BASE_MACHINE_ACTIVE_CONSUMPTION * 0.5
+	circuit = /obj/item/circuitboard/machine/autolathe
+	layer = BELOW_OBJ_LAYER
 
-	var/list/queue = list()
-	var/queue_max_len = 12
-	var/turf/BuildTurf
-	anchored = TRUE
-	var/list/L = list()
-	var/list/LL = list()
 	var/hacked = FALSE
 	var/disabled = FALSE
 	var/shocked = FALSE
-	var/hack_wire
-	var/disable_wire
-	var/shock_wire
-
 	var/busy = FALSE
-	var/prod_coeff
-	var/datum/wires/autolathe/wires = null
 
-	var/list/being_built = list()
-	var/datum/research/files
-	var/list/imported = list() // /datum/design.id -> boolean
-	var/list/datum/design/matching_designs
-	var/temp_search
-	var/selected_category
-	var/list/recipiecache = list()
+	/// Coefficient applied to consumed materials. Lower values result in lower material consumption.
+	var/creation_efficiency = 1.6
 
-	var/list/categories = list("Tools", "Electronics", "Construction", "Communication", "Security", "Machinery", "Medical", "Miscellaneous", "Dinnerware", "Imported")
-	var/board_type = /obj/item/circuitboard/autolathe
+	var/datum/design/being_built
+	var/datum/techweb/autounlocking/stored_research
 
-/obj/machinery/autolathe/Initialize()
+	///Designs imported from technology disks that we can print.
+	var/list/imported_designs = list()
+
+	///The container to hold materials
+	var/datum/component/material_container/materials
+
+	///direction we output onto (if 0, on top of us)
+	var/drop_direction = 0
+
+/obj/machinery/autolathe/Initialize(mapload)
+	materials = AddComponent( \
+		/datum/component/material_container, \
+		SSmaterials.materials_by_category[MAT_CATEGORY_ITEM_MATERIAL], \
+		0, \
+		MATCONTAINER_EXAMINE, \
+		container_signals = list(COMSIG_MATCONTAINER_ITEM_CONSUMED = TYPE_PROC_REF(/obj/machinery/autolathe, AfterMaterialInsert)) \
+	)
 	. = ..()
-	AddComponent(/datum/component/material_container, list(MAT_METAL, MAT_GLASS), _show_on_examine=TRUE, _after_insert=CALLBACK(src, PROC_REF(AfterMaterialInsert)))
-	component_parts = list()
-	component_parts += new board_type(null)
-	component_parts += new /obj/item/stock_parts/matter_bin(null)
-	component_parts += new /obj/item/stock_parts/matter_bin(null)
-	component_parts += new /obj/item/stock_parts/matter_bin(null)
-	component_parts += new /obj/item/stock_parts/manipulator(null)
-	component_parts += new /obj/item/stack/sheet/glass(null)
-	RefreshParts()
 
-	RegisterSignal(src, COMSIG_TOOL_ATTACK, PROC_REF(on_tool_attack))
-
-	wires = new(src)
-	files = new /datum/research/autolathe(src)
-	matching_designs = list()
-
-/obj/machinery/autolathe/upgraded/Initialize()
-	. = ..()
-	component_parts = list()
-	component_parts += new board_type(null)
-	component_parts += new /obj/item/stock_parts/matter_bin/super(null)
-	component_parts += new /obj/item/stock_parts/matter_bin/super(null)
-	component_parts += new /obj/item/stock_parts/matter_bin/super(null)
-	component_parts += new /obj/item/stock_parts/manipulator/pico(null)
-	component_parts += new /obj/item/stack/sheet/glass(null)
-	RefreshParts()
-
-/obj/machinery/autolathe/upgraded/gamma/Initialize()
-	. = ..()
-	files = new /datum/research/autolathe/gamma(src)
-	adjust_hacked(TRUE)
+	set_wires(new /datum/wires/autolathe(src))
+	if(!GLOB.autounlock_techwebs[/datum/techweb/autounlocking/autolathe])
+		GLOB.autounlock_techwebs[/datum/techweb/autounlocking/autolathe] = new /datum/techweb/autounlocking/autolathe
+	stored_research = GLOB.autounlock_techwebs[/datum/techweb/autounlocking/autolathe]
 
 /obj/machinery/autolathe/Destroy()
-	SStgui.close_uis(wires)
+	materials = null
 	QDEL_NULL(wires)
-	var/datum/component/material_container/materials = GetComponent(/datum/component/material_container)
-	materials.retrieve_all()
 	return ..()
 
-/obj/machinery/autolathe/proc/on_tool_attack(datum/source, atom/tool, mob/user)
-	SIGNAL_HANDLER
-	var/obj/item/I = tool
-	if(!istype(I))
+/obj/machinery/autolathe/ui_interact(mob/user, datum/tgui/ui)
+	if(!is_operational)
 		return
-	// Allows screwdrivers to be recycled on harm intent
-	if(I.tool_behaviour == TOOL_SCREWDRIVER && user.a_intent == INTENT_HARM)
-		return COMPONENT_CANCEL_TOOLACT
 
-/obj/machinery/autolathe/interact(mob/user)
-	if(shocked && !(stat & NOPOWER))
-		if(shock(user, 50))
-			return
+	if(shocked && !(machine_stat & NOPOWER))
+		shock(user, 50)
 
-	if(panel_open)
-		wires.Interact(user)
-	else if(!disabled)
-		ui_interact(user)
-
-/obj/machinery/autolathe/ui_state(mob/user)
-	return GLOB.default_state
-
-/obj/machinery/autolathe/ui_interact(mob/user, datum/tgui/ui = null)
 	ui = SStgui.try_update_ui(user, src, ui)
+
 	if(!ui)
-		ui = new(user, src, "Autolathe", name)
+		ui = new(user, src, "Autolathe")
 		ui.open()
 
-
 /obj/machinery/autolathe/ui_static_data(mob/user)
-	var/list/data = list()
-	data["categories"] = categories
-	if(!recipiecache.len)
-		var/list/recipes = list()
-		for(var/v in files.known_designs)
-			var/datum/design/D = files.known_designs[v]
-			var/list/cost_list = design_cost_data(D)
-			var/list/matreq = list()
-			for(var/list/x in cost_list)
-				if(!x["amount"])
-					continue
-				if(x["name"] == "metal") // Do not use MAT_METAL or MAT_GLASS here.
-					matreq["metal"] = x["amount"]
-				if(x["name"] == "glass")
-					matreq["glass"] = x["amount"]
-			var/obj/item/I = D.build_path
-			var/maxmult = 1
-			if(ispath(D.build_path, /obj/item/stack))
-				maxmult = D.maxstack
+	var/list/data = materials.ui_static_data()
 
-			var/list/default_categories = D.category
-			var/list/categories = istype(default_categories) ? default_categories.Copy() : list()
+	var/max_available = materials.total_amount()
+	for(var/datum/material/container_mat as anything in materials.materials)
+		var/available = materials.materials[container_mat]
+		if(available)
+			max_available = max(max_available, available)
 
-			if(imported[D.id])
-				categories |= "Imported"
+	data["designs"] = handle_designs(stored_research.researched_designs, max_available)
+	if(imported_designs.len)
+		data["designs"] += handle_designs(imported_designs, max_available)
+	if(hacked)
+		data["designs"] += handle_designs(stored_research.hacked_designs, max_available)
 
-			recipes.Add(list(list(
-				"name" = D.name,
-				"category" = categories,
-				"uid" = D.UID(),
-				"requirements" =  matreq,
-				"hacked" = ("hacked" in categories) ? TRUE : FALSE,
-				"max_multiplier" = maxmult,
-				"image" = "[icon2base64(icon(initial(I.icon), initial(I.icon_state), SOUTH, 1))]"
-			)))
-		recipiecache = recipes
-	data["recipes"] = recipiecache
 	return data
 
 /obj/machinery/autolathe/ui_data(mob/user)
 	var/list/data = list()
-	var/datum/component/material_container/materials = GetComponent(/datum/component/material_container)
-	data["total_amount"] = materials.total_amount
-	data["max_amount"] = materials.max_amount
-	data["fill_percent"] = round((materials.total_amount / materials.max_amount) * 100)
-	data["metal_amount"] = materials.amount(MAT_METAL)
-	data["glass_amount"] = materials.amount(MAT_GLASS)
-	data["busyname"] =  FALSE
-	data["busyamt"] = 1
-	if(length(being_built) > 0)
-		var/datum/design/D = being_built[1]
-		data["busyname"] =  istype(D) && D.name ? D.name : FALSE
-		data["busyamt"] = length(being_built) > 1 ? being_built[2] : 1
-	data["showhacked"] = hacked ? TRUE : FALSE
-	data["buildQueue"] = queue
-	data["buildQueueLen"] = queue.len
+
+	data["materials"] = list()
+	data["materialtotal"] = materials.total_amount()
+	data["materialsmax"] = materials.max_amount
+	data["active"] = busy
+	data["materials"] = materials.ui_data()
+
 	return data
 
-/obj/machinery/autolathe/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
-	if(..())
-		return FALSE
+/obj/machinery/autolathe/proc/handle_designs(list/designs, max_available)
+	var/list/output = list()
 
-	add_fingerprint(usr)
+	var/datum/asset/spritesheet/research_designs/spritesheet = get_asset_datum(/datum/asset/spritesheet/research_designs)
+	var/size32x32 = "[spritesheet.name]32x32"
 
-	. = TRUE
-	switch(action)
-		if("clear_queue")
-			queue = list()
-		if("remove_from_queue")
-			var/index = text2num(params["remove_from_queue"])
-			if(isnum(index) && ISINRANGE(index, 1, queue.len))
-				remove_from_queue(index)
-				to_chat(usr, "<span class='notice'>Removed item from queue.</span>")
-		if("make")
-			BuildTurf = loc
-			var/datum/design/design_last_ordered
-			design_last_ordered = locateUID(params["make"])
-			if(!istype(design_last_ordered))
-				to_chat(usr, "<span class='warning'>Invalid design</span>")
-				return
-			if(!(design_last_ordered.id in files.known_designs))
-				to_chat(usr, "<span class='warning'>Invalid design (not in autolathe's known designs, report this error.)</span>")
-				return
-			var/datum/component/material_container/materials = GetComponent(/datum/component/material_container)
-			var/coeff = get_coeff(design_last_ordered)
-			if(design_last_ordered.materials[MAT_METAL] / coeff > materials.amount(MAT_METAL))
-				to_chat(usr, "<span class='warning'>Invalid design (not enough metal)</span>")
-				return
-			if(design_last_ordered.materials[MAT_GLASS] / coeff > materials.amount(MAT_GLASS))
-				to_chat(usr, "<span class='warning'>Invalid design (not enough glass)</span>")
-				return
-			if(!hacked && ("hacked" in design_last_ordered.category))
-				to_chat(usr, "<span class='warning'>Invalid design (lathe requires hacking)</span>")
-				return
-			//multiplier checks : only stacks can have one and its value is 1, 10 ,25 or max_multiplier
-			var/multiplier = text2num(params["multiplier"])
-			var/max_multiplier = min(design_last_ordered.maxstack, design_last_ordered.materials[MAT_METAL] ?round(materials.amount(MAT_METAL)/design_last_ordered.materials[MAT_METAL]):INFINITY,design_last_ordered.materials[MAT_GLASS]?round(materials.amount(MAT_GLASS)/design_last_ordered.materials[MAT_GLASS]):INFINITY)
-			var/is_stack = ispath(design_last_ordered.build_path, /obj/item/stack)
+	var/max_multiplier = INFINITY
+	for(var/design_id in designs)
+		var/datum/design/design = SSresearch.techweb_design_by_id(design_id)
+		if(design.make_reagent)
+			continue
 
-			if(!is_stack && (multiplier > 1))
-				return
-			if(!(multiplier in list(1, 10, 25, max_multiplier))) //"enough materials ?" is checked in the build proc
-				message_admins("Player [key_name_admin(usr)] attempted to pass invalid multiplier [multiplier] to an autolathe in ui_act. Possible href exploit.")
-				return
-			if((queue.len + 1) < queue_max_len)
-				add_to_queue(design_last_ordered, multiplier)
+		//compute cost & maximum number of printable items
+		max_multiplier = INFINITY
+		var/coeff = (ispath(design.build_path, /obj/item/stack) ? 1 : creation_efficiency)
+		var/list/cost = list()
+		for(var/i in design.materials)
+			var/datum/material/mat = i
+
+			var/design_cost = OPTIMAL_COST(design.materials[i] * coeff)
+			if(istype(mat))
+				cost[mat.name] = design_cost
 			else
-				to_chat(usr, "<span class='warning'>The autolathe queue is full!</span>")
-			if(!busy)
-				busy = TRUE
-				process_queue()
-				busy = FALSE
+				cost[i] = design_cost
 
-/obj/machinery/autolathe/ui_status(mob/user, datum/ui_state/state)
-	. = disabled ? UI_DISABLED : UI_INTERACTIVE
+			var/mat_available
+			if(istype(mat)) //regular mat
+				mat_available = materials.get_material_amount(mat)
+			else //category mat means we can make it from any mat, use largest available mat
+				mat_available = max_available
 
-	return min(..(), .)
+			max_multiplier = min(max_multiplier, 50, round(mat_available / design_cost))
 
-/obj/machinery/autolathe/proc/design_cost_data(datum/design/D)
-	var/list/data = list()
-	var/coeff = get_coeff(D)
-	var/datum/component/material_container/materials = GetComponent(/datum/component/material_container)
-	var/has_metal = 1
-	if(D.materials[MAT_METAL] && (materials.amount(MAT_METAL) < (D.materials[MAT_METAL] / coeff)))
-		has_metal = 0
-	var/has_glass = 1
-	if(D.materials[MAT_GLASS] && (materials.amount(MAT_GLASS) < (D.materials[MAT_GLASS] / coeff)))
-		has_glass = 0
+		//create & send ui data
+		var/icon_size = spritesheet.icon_size_id(design.id)
+		var/list/design_data = list(
+			"name" = design.name,
+			"desc" = design.get_description(),
+			"cost" = cost,
+			"id" = design.id,
+			"categories" = design.category,
+			"icon" = "[icon_size == size32x32 ? "" : "[icon_size] "][design.id]",
+			"constructionTime" = -1,
+			"maxmult" = max_multiplier
+		)
 
-	data[++data.len] = list("name" = "metal", "amount" = D.materials[MAT_METAL] / coeff, "is_red" = !has_metal)
-	data[++data.len] = list("name" = "glass", "amount" = D.materials[MAT_GLASS] / coeff, "is_red" = !has_glass)
+		output += list(design_data)
 
-	return data
+	return output
 
-/obj/machinery/autolathe/proc/queue_data(list/data)
-	var/datum/component/material_container/materials = GetComponent(/datum/component/material_container)
-	var/temp_metal = materials.amount(MAT_METAL)
-	var/temp_glass = materials.amount(MAT_GLASS)
-	data["processing"] = being_built.len ? get_processing_line() : null
-	if(istype(queue) && queue.len)
-		var/list/data_queue = list()
-		for(var/list/L in queue)
-			var/datum/design/D = L[1]
-			var/list/LL = get_design_cost_as_list(D, L[2])
-			data_queue[++data_queue.len] = list("name" = initial(D.name), "can_build" = can_build(D, L[2], temp_metal, temp_glass), "multiplier" = L[2])
-			temp_metal = max(temp_metal - LL[1], 1)
-			temp_glass = max(temp_glass - LL[2], 1)
-		data["queue"] = data_queue
-		data["queue_len"] = data_queue.len
-	else
-		data["queue"] = null
-	return data
+/obj/machinery/autolathe/ui_assets(mob/user)
+	return list(
+		get_asset_datum(/datum/asset/spritesheet/sheetmaterials),
+		get_asset_datum(/datum/asset/spritesheet/research_designs),
+	)
 
-/obj/machinery/autolathe/attackby(obj/item/O, mob/user, params)
-	if(busy)
-		to_chat(user, "<span class='alert'>The autolathe is busy. Please wait for completion of previous operation.</span>")
-		return 1
-	if(exchange_parts(user, O))
+/obj/machinery/autolathe/ui_act(action, list/params, datum/tgui/ui)
+	. = ..()
+	if(.)
 		return
-	if(stat)
-		return 1
 
-	// Disks in general
-	if(istype(O, /obj/item/disk))
-		if(istype(O, /obj/item/disk/design_disk))
-			var/obj/item/disk/design_disk/D = O
-			if(D.blueprint)
-				var/datum/design/design = D.blueprint // READ ONLY!!
+	if(action != "make")
+		stack_trace("unknown autolathe ui_act: [action]")
+		return
 
-				if(design.id in files.known_designs)
-					to_chat(user, "<span class='warning'>This design has already been loaded into the autolathe.</span>")
-					return 1
+	if(disabled)
+		say("Unable to print, voltage mismatch in internal wiring.")
+		return
 
-				if(!files.CanAddDesign2Known(design))
-					to_chat(user, "<span class='warning'>This design is not compatible with the autolathe.</span>")
-					return 1
-				user.visible_message("[user] begins to load \the [O] in \the [src]...",
-					"You begin to load a design from \the [O]...",
-					"You hear the chatter of a floppy drive.")
-				playsound(get_turf(src), 'sound/goonstation/machines/printer_dotmatrix.ogg', 50, 1)
-				busy = TRUE
-				if(do_after(user, 14.4, target = src))
-					imported[design.id] = TRUE
-					files.AddDesign2Known(design)
-					recipiecache = list()
-					SStgui.close_uis(src) // forces all connected users to re-open the TGUI. Imported entries won't show otherwise due to static_data
-				busy = FALSE
-			else
-				to_chat(user, "<span class='warning'>That disk does not have a design on it!</span>")
-			return 1
-		else
-			// So that people who are bad at computers don't shred their disks
-			to_chat(user, "<span class='warning'>This is not the correct type of disk for the autolathe!</span>")
-			return 1
+	if(busy)
+		balloon_alert(ui.user, "busy!")
+		return
+
+	var/turf/target_location = get_step(src, drop_direction)
+	if(isclosedturf(target_location))
+		say("Output path is obstructed by a large object.")
+		return
+
+	var/design_id = params["id"]
+
+	var/valid_design = stored_research.researched_designs[design_id]
+	valid_design ||= stored_research.hacked_designs[design_id]
+	valid_design ||= imported_designs[design_id]
+	if(!valid_design)
+		return
+
+	var/datum/design/design = SSresearch.techweb_design_by_id(design_id)
+	if(isnull(design))
+		stack_trace("got passed an invalid design id: [design_id] and somehow made it past all checks")
+		return
+
+	if(!(design.build_type & AUTOLATHE))
+		return
+
+	var/build_count = text2num(params["multiplier"])
+	if(!build_count)
+		return
+	build_count = clamp(build_count, 1, 50)
+
+	var/list/materials_needed = list()
+	for(var/datum/material/material as anything in design.materials)
+		var/amount_needed = design.materials[material]
+		if(istext(material)) // category
+			var/list/choices = list()
+			for(var/datum/material/valid_candidate as anything in SSmaterials.materials_by_category[material])
+				if(materials.get_material_amount(valid_candidate) < amount_needed)
+					continue
+				choices[valid_candidate.name] = valid_candidate
+			if(!length(choices))
+				say("No valid materials with applicable amounts detected for design.")
+				return
+			var/chosen = tgui_input_list(
+				ui.user,
+				"Select the material to use",
+				"Material Selection",
+				sort_list(choices),
+			)
+			if(isnull(chosen))
+				return // user cancelled
+			material = choices[chosen]
+
+		if(isnull(material))
+			stack_trace("got passed an invalid material id: [material]")
+			return
+		materials_needed[material] = amount_needed
+
+	var/material_cost_coefficient = ispath(design.build_path, /obj/item/stack) ? 1 : creation_efficiency
+	if(!materials.has_materials(materials_needed, material_cost_coefficient, build_count))
+		say("Not enough materials to begin production.")
+		return
+
+	//use power
+	var/total_charge = 0
+	for(var/material in design.materials)
+		total_charge += round(design.materials[material] * material_cost_coefficient * build_count)
+	var/charge_per_item = total_charge / build_count
+
+	var/total_time = (design.construction_time * design.lathe_time_factor * build_count) ** 0.8
+	var/time_per_item = total_time / build_count
+	start_making(design, build_count, time_per_item, material_cost_coefficient, charge_per_item)
+	return TRUE
+
+/// Begins the act of making the given design the given number of items
+/// Does not check or use materials/power/etc
+/obj/machinery/autolathe/proc/start_making(datum/design/design, build_count, build_time_per_item, material_cost_coefficient, charge_per_item)
+	PROTECTED_PROC(TRUE)
+
+	busy = TRUE
+	icon_state = "autolathe_n"
+	update_static_data_for_all_viewers()
+
+	addtimer(CALLBACK(src, PROC_REF(do_make_item), design, material_cost_coefficient, build_time_per_item, charge_per_item, build_count), build_time_per_item)
+
+/// Callback for start_making, actually makes the item
+/// Called using timers started by start_making
+/obj/machinery/autolathe/proc/do_make_item(datum/design/design, material_cost_coefficient, time_per_item, charge_per_item, items_remaining)
+	PROTECTED_PROC(TRUE)
+
+	if(!items_remaining) // how
+		finalize_build()
+		return
+
+	if(!directly_use_power(charge_per_item))
+		say("Unable to continue production, power failure.")
+		finalize_build()
+		return
+
+	var/list/design_materials = design.materials
+	var/is_stack = ispath(design.build_path, /obj/item/stack)
+	if(!materials.has_materials(design_materials, material_cost_coefficient, is_stack ? items_remaining : 1))
+		say("Unable to continue production, missing materials.")
+		return
+	materials.use_materials(design_materials, material_cost_coefficient, is_stack ? items_remaining : 1)
+
+	var/turf/target = get_step(src, drop_direction)
+	if(isclosedturf(target))
+		target = get_turf(src)
+
+	var/atom/movable/created
+	if(is_stack)
+		created = new design.build_path(target, items_remaining)
+	else
+		created = new design.build_path(target)
+		split_materials_uniformly(design_materials, material_cost_coefficient, created)
+
+	created.pixel_x = created.base_pixel_x + rand(-6, 6)
+	created.pixel_y = created.base_pixel_y + rand(-6, 6)
+	created.forceMove(target)
+
+	if(is_stack)
+		items_remaining = 0
+	else
+		items_remaining -= 1
+
+	if(!items_remaining)
+		finalize_build()
+		return
+	addtimer(CALLBACK(src, PROC_REF(do_make_item), design, material_cost_coefficient, time_per_item, items_remaining), time_per_item)
+
+/// Resets the icon state and busy flag
+/// Called at the end of do_make_item's timer loop
+/obj/machinery/autolathe/proc/finalize_build()
+	PROTECTED_PROC(TRUE)
+	icon_state = initial(icon_state)
+	busy = FALSE
+	update_static_data_for_all_viewers()
+
+/obj/machinery/autolathe/crowbar_act(mob/living/user, obj/item/tool)
+	if(default_deconstruction_crowbar(tool))
+		return ITEM_INTERACT_SUCCESS
+
+/obj/machinery/autolathe/screwdriver_act_secondary(mob/living/user, obj/item/tool)
+	if(default_deconstruction_screwdriver(user, "autolathe_t", "autolathe", tool))
+		return ITEM_INTERACT_SUCCESS
+
+/obj/machinery/autolathe/attackby(obj/item/attacking_item, mob/living/user, params)
+	if(user.combat_mode) //so we can hit the machine
+		return ..()
+
+	if(busy)
+		balloon_alert(user, "it's busy!")
+		return TRUE
+
+	if(panel_open && is_wire_tool(attacking_item))
+		wires.interact(user)
+		return TRUE
+
+	if(machine_stat)
+		return TRUE
+
+	if(istype(attacking_item, /obj/item/disk/design_disk))
+		user.visible_message(span_notice("[user] begins to load \the [attacking_item] in \the [src]..."),
+			balloon_alert(user, "uploading design..."),
+			span_hear("You hear the chatter of a floppy drive."))
+		busy = TRUE
+		if(do_after(user, 14.4, target = src))
+			var/obj/item/disk/design_disk/disky = attacking_item
+			var/list/not_imported
+			for(var/datum/design/blueprint as anything in disky.blueprints)
+				if(!blueprint)
+					continue
+				if(blueprint.build_type & AUTOLATHE)
+					imported_designs[blueprint.id] = TRUE
+				else
+					LAZYADD(not_imported, blueprint.name)
+			if(not_imported)
+				to_chat(user, span_warning("The following design[length(not_imported) > 1 ? "s" : ""] couldn't be imported: [english_list(not_imported)]"))
+		busy = FALSE
+		update_static_data_for_all_viewers()
+		return TRUE
+
+	if(panel_open)
+		balloon_alert(user, "close the panel first!")
+		return FALSE
 
 	return ..()
 
-/obj/machinery/autolathe/crowbar_act(mob/user, obj/item/I)
-	if(!panel_open)
-		return
-	if(!I.use_tool(src, user, 0, volume = 0))
-		return
-	. = TRUE
-	if(busy)
-		to_chat(user, "<span class='alert'>The autolathe is busy. Please wait for completion of previous operation.</span>")
-		return
-	if(panel_open)
-		default_deconstruction_crowbar(user, I)
+/obj/machinery/autolathe/proc/AfterMaterialInsert(container, obj/item/item_inserted, last_inserted_id, mats_consumed, amount_inserted, atom/context)
+	SIGNAL_HANDLER
 
-/obj/machinery/autolathe/screwdriver_act(mob/user, obj/item/I)
-	if(!I.use_tool(src, user, 0, volume = 0))
-		return
-	. = TRUE
-	if(busy)
-		to_chat(user, "<span class='alert'>The autolathe is busy. Please wait for completion of previous operation.</span>")
-		return
-	default_deconstruction_screwdriver(user, "autolathe_t", "autolathe", I)
+	flick("autolathe_[item_inserted.has_material_type(/datum/material/glass) ? "r" : "o"]", src)
 
-/obj/machinery/autolathe/wirecutter_act(mob/user, obj/item/I)
-	if(!panel_open)
-		return
-	if(!I.use_tool(src, user, 0, volume = 0))
-		return
-	. = TRUE
-	if(busy)
-		to_chat(user, "<span class='alert'>The autolathe is busy. Please wait for completion of previous operation.</span>")
-		return
-	interact(user)
+	use_power(min(active_power_usage * 0.25, amount_inserted / SHEET_MATERIAL_AMOUNT))
 
-/obj/machinery/autolathe/multitool_act(mob/user, obj/item/I)
-	if(!panel_open)
-		return
-	if(!I.use_tool(src, user, 0, volume = 0))
-		return
-	. = TRUE
-	if(busy)
-		to_chat(user, "<span class='alert'>The autolathe is busy. Please wait for completion of previous operation.</span>")
-		return
-	interact(user)
+	update_static_data_for_all_viewers()
 
-/obj/machinery/autolathe/proc/AfterMaterialInsert(type_inserted, id_inserted, amount_inserted)
-	switch(id_inserted)
-		if(MAT_METAL)
-			flick("autolathe_o", src)//plays metal insertion animation
-		if(MAT_GLASS)
-			flick("autolathe_r", src)//plays glass insertion animation
-	use_power(min(1000, amount_inserted / 100))
-	SStgui.update_uis(src)
-
-/obj/machinery/autolathe/attack_ghost(mob/user)
-	interact(user)
-
-/obj/machinery/autolathe/attack_hand(mob/user)
-	if(..(user, 0))
+/obj/machinery/autolathe/MouseDrop(atom/over, src_location, over_location, src_control, over_control, params)
+	. = ..()
+	if((!issilicon(usr) && !isAdminGhostAI(usr)) && !Adjacent(usr))
 		return
-	interact(user)
+	var/direction = get_dir(src, over_location)
+	if(!direction)
+		return
+	drop_direction = direction
+	balloon_alert(usr, "dropping [dir2text(drop_direction)]")
 
 /obj/machinery/autolathe/RefreshParts()
-	var/tot_rating = 0
-	prod_coeff = 0
-	for(var/obj/item/stock_parts/matter_bin/MB in component_parts)
-		tot_rating += MB.rating
-	tot_rating *= 25000
-	var/datum/component/material_container/materials = GetComponent(/datum/component/material_container)
-	materials.max_amount = tot_rating * 3
-	for(var/obj/item/stock_parts/manipulator/M in component_parts)
-		prod_coeff += M.rating - 1
-	recipiecache = list()
-	SStgui.close_uis(src) // forces all connected users to re-open the TGUI. Imported entries won't show otherwise due to static_data
-
-/obj/machinery/autolathe/proc/get_coeff(datum/design/D)
-	var/coeff = (ispath(D.build_path,/obj/item/stack) ? 1 : 2 ** prod_coeff)//stacks are unaffected by production coefficient
-	return coeff
-
-/obj/machinery/autolathe/proc/build_item(datum/design/D, multiplier)
-	desc = initial(desc)+"\nIt's building \a [initial(D.name)]."
-	var/is_stack = ispath(D.build_path, /obj/item/stack)
-	var/coeff = get_coeff(D)
-	var/datum/component/material_container/materials = GetComponent(/datum/component/material_container)
-	var/metal_cost = D.materials[MAT_METAL]
-	var/glass_cost = D.materials[MAT_GLASS]
-	var/power = max(2000, (metal_cost+glass_cost)*multiplier/5)
-	if(can_build(D, multiplier))
-		being_built = list(D, multiplier)
-		use_power(power)
-		icon_state = "autolathe"
-		flick("autolathe_n",src)
-		if(is_stack)
-			var/list/materials_used = list(MAT_METAL=metal_cost*multiplier, MAT_GLASS=glass_cost*multiplier)
-			materials.use_amount(materials_used)
-		else
-			var/list/materials_used = list(MAT_METAL=metal_cost/coeff, MAT_GLASS=glass_cost/coeff)
-			materials.use_amount(materials_used)
-		SStgui.update_uis(src)
-		sleep(32/coeff)
-		if(is_stack)
-			var/obj/item/stack/S = new D.build_path(BuildTurf)
-			S.amount = multiplier
-		else
-			var/obj/item/new_item = new D.build_path(BuildTurf)
-			new_item.materials[MAT_METAL] /= coeff
-			new_item.materials[MAT_GLASS] /= coeff
-			new_item.pixel_y = rand(-5, 5)
-			new_item.pixel_x = rand(-5, 5)
-	SStgui.update_uis(src)
-	desc = initial(desc)
-
-/obj/machinery/autolathe/proc/can_build(datum/design/D, multiplier = 1, custom_metal, custom_glass)
-	if(D.make_reagents.len)
-		return 0
-
-	var/coeff = get_coeff(D)
-	var/datum/component/material_container/materials = GetComponent(/datum/component/material_container)
-	var/metal_amount = materials.amount(MAT_METAL)
-	if(custom_metal)
-		metal_amount = custom_metal
-	var/glass_amount = materials.amount(MAT_GLASS)
-	if(custom_glass)
-		glass_amount = custom_glass
-
-	if(D.materials[MAT_METAL] && (metal_amount < (multiplier*D.materials[MAT_METAL] / coeff)))
-		return 0
-	if(D.materials[MAT_GLASS] && (glass_amount < (multiplier*D.materials[MAT_GLASS] / coeff)))
-		return 0
-	return 1
-
-/obj/machinery/autolathe/proc/get_design_cost_as_list(datum/design/D, multiplier = 1)
-	var/list/OutputList = list(0,0)
-	var/coeff = get_coeff(D)
-	if(D.materials[MAT_METAL])
-		OutputList[1] = (D.materials[MAT_METAL] / coeff)*multiplier
-	if(D.materials[MAT_GLASS])
-		OutputList[2] = (D.materials[MAT_GLASS] / coeff)*multiplier
-	return OutputList
-
-/obj/machinery/autolathe/proc/get_processing_line()
-	var/datum/design/D = being_built[1]
-	var/multiplier = being_built[2]
-	var/is_stack = (multiplier>1)
-	var/output = "PROCESSING: [initial(D.name)][is_stack?" (x[multiplier])":null]"
-	return output
-
-/obj/machinery/autolathe/proc/add_to_queue(D, multiplier)
-	if(!istype(queue))
-		queue = list()
-	if(D)
-		queue.Add(list(list(D,multiplier)))
-	return queue.len
-
-/obj/machinery/autolathe/proc/remove_from_queue(index)
-	if(!isnum(index) || !istype(queue) || (index<1 || index>queue.len))
-		return 0
-	queue.Cut(index,++index)
-	return 1
-
-/obj/machinery/autolathe/proc/process_queue()
-	var/datum/design/D = queue[1][1]
-	var/multiplier = queue[1][2]
-	if(!D)
-		remove_from_queue(1)
-		if(queue.len)
-			return process_queue()
-		else
-			return
-	while(D)
-		if((stat & (NOPOWER|BROKEN)) || disabled)
-			being_built = new /list()
-			return 0
-		if(!can_build(D, multiplier))
-			visible_message("[bicon(src)] <b>\The [src]</b> beeps, \"Not enough resources. Queue processing terminated.\"")
-			queue = list()
-			being_built = new /list()
-			return 0
-
-		remove_from_queue(1)
-		build_item(D,multiplier)
-		D = listgetindex(listgetindex(queue, 1),1)
-		multiplier = listgetindex(listgetindex(queue,1),2)
-	being_built = new /list()
-
-/obj/machinery/autolathe/proc/adjust_hacked(hack)
-	hacked = hack
-
-	if(hack)
-		for(var/datum/design/D in files.possible_designs)
-			if((D.build_type & AUTOLATHE) && ("hacked" in D.category))
-				files.AddDesign2Known(D)
-	else
-		for(var/datum/design/D in files.known_designs)
-			if("hacked" in D.category)
-				files.known_designs -= D.id
-	SStgui.close_uis(src) // forces all connected users to re-open the TGUI, thus adding/removing hacked entries from lists
-	recipiecache = list()
-
-/obj/machinery/autolathe/proc/check_hacked_callback()
-	if(!wires.is_cut(WIRE_AUTOLATHE_HACK))
-		adjust_hacked(FALSE)
-
-/obj/machinery/autolathe/proc/check_electrified_callback()
-	if(!wires.is_cut(WIRE_ELECTRIFY))
-		shocked = FALSE
-
-/obj/machinery/autolathe/proc/check_disabled_callback()
-	if(!wires.is_cut(WIRE_AUTOLATHE_DISABLE))
-		disabled = FALSE
-
-/obj/machinery/autolathe/syndicate
-	name = "syndicate autolathe"
-	board_type = /obj/item/circuitboard/autolathe/syndi
-
-/obj/machinery/autolathe/syndicate/Initialize()
 	. = ..()
-	files = new /datum/research/autolathe/syndicate(src)
+	var/mat_capacity = 0
+	for(var/datum/stock_part/matter_bin/new_matter_bin in component_parts)
+		mat_capacity += new_matter_bin.tier * (37.5*SHEET_MATERIAL_AMOUNT)
+	materials.max_amount = mat_capacity
+
+	var/efficiency=1.8
+	for(var/datum/stock_part/servo/new_servo in component_parts)
+		efficiency -= new_servo.tier * 0.2
+	creation_efficiency = max(1,efficiency) // creation_efficiency goes 1.6 -> 1.4 -> 1.2 -> 1 per level of servo efficiency
+
+/obj/machinery/autolathe/examine(mob/user)
+	. += ..()
+	if(in_range(user, src) || isobserver(user))
+		. += span_notice("The status display reads: Storing up to <b>[materials.max_amount]</b> material units.<br>Material consumption at <b>[creation_efficiency*100]%</b>.")
+		if(drop_direction)
+			. += span_notice("Currently configured to drop printed objects <b>[dir2text(drop_direction)]</b>.")
+			. += span_notice("<b>Alt-click</b> to reset.")
+		else
+			. += span_notice("<b>Drag towards a direction</b> (while next to it) to change drop direction.")
+
+/obj/machinery/autolathe/AltClick(mob/user)
+	. = ..()
+	if(drop_direction)
+		balloon_alert(user, "drop direction reset")
+		drop_direction = 0
+
+/obj/machinery/autolathe/proc/reset(wire)
+	switch(wire)
+		if(WIRE_HACK)
+			if(!wires.is_cut(wire))
+				adjust_hacked(FALSE)
+		if(WIRE_SHOCK)
+			if(!wires.is_cut(wire))
+				shocked = FALSE
+		if(WIRE_DISABLE)
+			if(!wires.is_cut(wire))
+				disabled = FALSE
+
+/obj/machinery/autolathe/proc/shock(mob/user, prb)
+	if(machine_stat & (BROKEN|NOPOWER)) // unpowered, no shock
+		return FALSE
+	if(!prob(prb))
+		return FALSE
+	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
+	s.set_up(5, 1, src)
+	s.start()
+	return electrocute_mob(user, get_area(src), src, 0.7, TRUE)
+
+/obj/machinery/autolathe/proc/adjust_hacked(state)
+	hacked = state
+	update_static_data_for_all_viewers()
+
+/obj/machinery/autolathe/hacked/Initialize(mapload)
+	. = ..()
+	adjust_hacked(TRUE)

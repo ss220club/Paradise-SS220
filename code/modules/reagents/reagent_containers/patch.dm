@@ -1,76 +1,95 @@
-/obj/item/reagent_containers/patch
-	name = "chemical patch"
+/obj/item/reagent_containers/pill/patch
+	name = "patch"
 	desc = "A chemical patch for touch based applications."
-	icon = 'icons/obj/chemical.dmi'
-	icon_state = "bandaid"
-	item_state = "bandaid"
-	possible_transfer_amounts = null
-	visible_transfer_rate = FALSE
-	volume = 30
-	temperature_min = 270
-	temperature_max = 350
-	var/instant_application = FALSE
-	var/needs_to_apply_reagents = TRUE
+	icon = 'icons/obj/medical/chemical.dmi'
+	icon_state = "bandaid_blank"
+	inhand_icon_state = null
+	possible_transfer_amounts = list()
+	volume = 40
+	apply_type = PATCH
+	apply_method = "apply"
+	self_delay = 30 // three seconds
+	dissolvable = FALSE
 
-/obj/item/reagent_containers/patch/attack(mob/living/carbon/M, mob/user, def_zone)
-	return apply(M, user)
+/obj/item/reagent_containers/pill/patch/attack(mob/living/L, mob/user)
+	if(ishuman(L))
+		var/obj/item/bodypart/affecting = L.get_bodypart(check_zone(user.zone_selected))
+		if(!affecting)
+			to_chat(user, span_warning("The limb is missing!"))
+			return
+		if(!IS_ORGANIC_LIMB(affecting))
+			to_chat(user, span_notice("Medicine won't work on an inorganic limb!"))
+			return
+	..()
 
-/obj/item/reagent_containers/patch/attack_self(mob/user)
-	return apply(user, user)
-
-/obj/item/reagent_containers/patch/proc/apply(mob/living/carbon/M, mob/user)
-	if(!istype(M))
+/obj/item/reagent_containers/pill/patch/canconsume(mob/eater, mob/user)
+	if(!iscarbon(eater))
 		return FALSE
-	if(M.eat(src, user))
-		if(user.get_active_hand() == src)
-			user.drop_item() // Only drop if they're holding the patch directly
-		forceMove(M)
-		LAZYADD(M.processing_patches, src)
-		return TRUE
-	return FALSE
+	return TRUE // Masks were stopping people from "eating" patches. Thanks, inheritance.
 
-/obj/item/reagent_containers/patch/styptic
-	name = "brute patch"
-	desc = "Helps with brute injuries."
+/obj/item/reagent_containers/pill/patch/libital
+	name = "libital patch (brute)"
+	desc = "A pain reliever. Does minor liver damage. Diluted with Granibitaluri."
+	list_reagents = list(/datum/reagent/medicine/c2/libital = 2, /datum/reagent/medicine/granibitaluri = 8) //10 iterations
 	icon_state = "bandaid_brute"
-	instant_application = TRUE
-	list_reagents = list("styptic_powder" = 30)
 
-/obj/item/reagent_containers/patch/styptic/small
-	name = "brute mini-patch"
-	list_reagents = list("styptic_powder" = 15)
-
-/obj/item/reagent_containers/patch/silver_sulf
-	name = "burn patch"
-	desc = "Helps with burn injuries."
+/obj/item/reagent_containers/pill/patch/aiuri
+	name = "aiuri patch (burn)"
+	desc = "Helps with burn injuries. Does minor eye damage. Diluted with Granibitaluri."
+	list_reagents = list(/datum/reagent/medicine/c2/aiuri = 2, /datum/reagent/medicine/granibitaluri = 8)
 	icon_state = "bandaid_burn"
-	instant_application = TRUE
-	list_reagents = list("silver_sulfadiazine" = 30)
 
-/obj/item/reagent_containers/patch/silver_sulf/small
-	name = "burn mini-patch"
-	list_reagents = list("silver_sulfadiazine" = 15)
-
-/obj/item/reagent_containers/patch/synthflesh
+/obj/item/reagent_containers/pill/patch/synthflesh
 	name = "synthflesh patch"
-	desc = "Helps with brute and burn injuries."
-	icon_state = "bandaid_med"
-	instant_application = TRUE
-	list_reagents = list("synthflesh" = 10)
+	desc = "Helps with brute and burn injuries. Slightly toxic."
+	list_reagents = list(/datum/reagent/medicine/c2/synthflesh = 20)
+	icon_state = "bandaid_both"
 
-/obj/item/reagent_containers/patch/nicotine
-	name = "nicotine patch"
-	desc = "Helps temporarily curb the cravings of nicotine dependency."
-	list_reagents = list("nicotine" = 10)
+/obj/item/reagent_containers/pill/patch/ondansetron
+	name = "ondansetron patch"
+	desc = "Alleviates nausea. May cause drowsiness."
+	list_reagents = list(/datum/reagent/medicine/ondansetron = 10)
+	icon_state = "bandaid_toxin"
 
-/obj/item/reagent_containers/patch/jestosterone
-	name = "jestosterone patch"
-	desc = "Helps with brute injuries if the affected person is a clown, otherwise inflicts various annoying effects."
+// Patch styles for chem master
+
+/obj/item/reagent_containers/pill/patch/style
+	icon_state = "bandaid_blank"
+/obj/item/reagent_containers/pill/patch/style/brute
+	icon_state = "bandaid_brute_2"
+/obj/item/reagent_containers/pill/patch/style/burn
+	icon_state = "bandaid_burn_2"
+/obj/item/reagent_containers/pill/patch/style/bruteburn
+	icon_state = "bandaid_both"
+/obj/item/reagent_containers/pill/patch/style/toxin
+	icon_state = "bandaid_toxin_2"
+/obj/item/reagent_containers/pill/patch/style/oxygen
+	icon_state = "bandaid_suffocation_2"
+/obj/item/reagent_containers/pill/patch/style/omni
+	icon_state = "bandaid_mix"
+/obj/item/reagent_containers/pill/patch/style/bruteplus
+	icon_state = "bandaid_brute"
+/obj/item/reagent_containers/pill/patch/style/burnplus
+	icon_state = "bandaid_burn"
+/obj/item/reagent_containers/pill/patch/style/toxinplus
+	icon_state = "bandaid_toxin"
+/obj/item/reagent_containers/pill/patch/style/oxygenplus
+	icon_state = "bandaid_suffocation"
+/obj/item/reagent_containers/pill/patch/style/monkey
+	icon_state = "bandaid_monke"
+/obj/item/reagent_containers/pill/patch/style/clown
 	icon_state = "bandaid_clown"
-	list_reagents = list("jestosterone" = 20)
-
-/obj/item/reagent_containers/patch/perfluorodecalin
-	name = "perfluorodecalin patch"
-	desc = "Incredibly potent respiratory aid drug, may cause shortness of breath if used in large amounts."
-	icon_state = "bandaid_med"
-	list_reagents = list("perfluorodecalin" = 10)
+/obj/item/reagent_containers/pill/patch/style/one
+	icon_state = "bandaid_1"
+/obj/item/reagent_containers/pill/patch/style/two
+	icon_state = "bandaid_2"
+/obj/item/reagent_containers/pill/patch/style/three
+	icon_state = "bandaid_3"
+/obj/item/reagent_containers/pill/patch/style/four
+	icon_state = "bandaid_4"
+/obj/item/reagent_containers/pill/patch/style/exclamation
+	icon_state = "bandaid_exclaimationpoint"
+/obj/item/reagent_containers/pill/patch/style/question
+	icon_state = "bandaid_questionmark"
+/obj/item/reagent_containers/pill/patch/style/colonthree
+	icon_state = "bandaid_colonthree"

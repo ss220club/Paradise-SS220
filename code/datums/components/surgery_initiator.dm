@@ -1,312 +1,356 @@
-
-/**
- * # Surgery Initiator
- *
- * Allows an item to start (or prematurely stop) a surgical operation.
- */
+/// Allows an item to  be used to initiate surgeries.
 /datum/component/surgery_initiator
-	/// If present, this surgery TYPE will be attempted when the item is used.
-	/// Useful for things like limb reattachments that don't need a scalpel.
-	var/datum/surgery/forced_surgery
+	/// The currently selected target that the user is proposing a surgery on
+	var/datum/weakref/surgery_target_ref
 
-	/// If true, the initial step will be cancellable by just using the tool again. Should be FALSE for any tool that actually has a first surgery step.
-	var/can_cancel_before_first = FALSE
+	/// The last user, as a weakref
+	var/datum/weakref/last_user_ref
 
-	/// If true, can be used with a cautery in the off-hand to cancel a surgery.
-	var/can_cancel = TRUE
-
-	/// If true, can start surgery on someone while they're standing up.
-	/// Seeing as how we really don't support this (yet), it's much nicer to selectively enable this if we want it.
-	var/can_start_on_stander = FALSE
-
-	/// Bitfield for the types of surgeries that this can start.
-	/// Note that in cases where organs are missing, this will be ignored.
-	/// Also, note that for anything sharp, SURGERY_INITIATOR_ORGANIC should be set as well.
-	var/valid_starting_types = SURGERY_INITIATOR_ORGANIC
-
-	// Replace any other surgery initiator
-	dupe_type = /datum/component/surgery_initiator
-
-/**
- * Create a new surgery initiating component.
- *
- * Arguments:
- * * forced_surgery - (optional) the surgery that will be started when the parent is used on a mob.
- */
-/datum/component/surgery_initiator/Initialize(datum/surgery/forced_surgery)
+/datum/component/surgery_initiator/Initialize()
 	. = ..()
 	if(!isitem(parent))
 		return COMPONENT_INCOMPATIBLE
 
-	src.forced_surgery = forced_surgery
+	var/obj/item/surgery_tool = parent
+	surgery_tool.item_flags |= ITEM_HAS_CONTEXTUAL_SCREENTIPS
+
+/datum/component/surgery_initiator/Destroy(force)
+	last_user_ref = null
+	surgery_target_ref = null
+
+	return ..()
 
 /datum/component/surgery_initiator/RegisterWithParent()
 	RegisterSignal(parent, COMSIG_ITEM_ATTACK, PROC_REF(initiate_surgery_moment))
-	RegisterSignal(parent, COMSIG_ATOM_UPDATE_SHARPNESS, PROC_REF(on_parent_sharpness_change))
+	RegisterSignal(parent, COMSIG_ITEM_REQUESTING_CONTEXT_FOR_TARGET, PROC_REF(add_item_context))
 
 /datum/component/surgery_initiator/UnregisterFromParent()
-	UnregisterSignal(parent, COMSIG_ITEM_ATTACK)
-	UnregisterSignal(parent, COMSIG_ATOM_UPDATE_SHARPNESS)
+	UnregisterSignal(parent, COMSIG_ITEM_ATTACK, COMSIG_ITEM_REQUESTING_CONTEXT_FOR_TARGET)
+	unregister_signals()
 
-/// Keep tabs on the attached item's sharpness.
-/// This component gets added in atoms when they're made sharp as well.
-/datum/component/surgery_initiator/proc/on_parent_sharpness_change()
-	SIGNAL_HANDLER  // COMSIG_ATOM_UPDATE_SHARPNESS
-	var/obj/item/P = parent
-	if(!P.sharp)
-		RemoveComponent()
-		qdel(src)
+/datum/component/surgery_initiator/proc/unregister_signals()
+	var/mob/living/last_user = last_user_ref?.resolve()
+	if (!isnull(last_user_ref))
+		UnregisterSignal(last_user, COMSIG_MOB_SELECTED_ZONE_SET)
+
+	var/mob/living/surgery_target = surgery_target_ref?.resolve()
+	if (!isnull(surgery_target_ref))
+		UnregisterSignal(surgery_target, COMSIG_MOB_SURGERY_STARTED)
 
 /// Does the surgery initiation.
 /datum/component/surgery_initiator/proc/initiate_surgery_moment(datum/source, atom/target, mob/user)
-	SIGNAL_HANDLER	// COMSIG_ITEM_ATTACK
-	if(!isliving(user))
+	SIGNAL_HANDLER
+	if(!isliving(target))
 		return
-	var/mob/living/L = target
-	if(!user.Adjacent(target))
-		return
-	if(user.a_intent != INTENT_HELP)
-		return
-	if(!IS_HORIZONTAL(L) && !can_start_on_stander)
-		return
-	if(IS_HORIZONTAL(L) && !on_operable_surface(L))
-		return
-	if(iscarbon(target))
-		var/mob/living/carbon/C = target
-		var/obj/item/organ/external/affected = C.get_organ(user.zone_selected)
-		if(affected)
-			if((affected.status & ORGAN_ROBOT) && !(valid_starting_types & SURGERY_INITIATOR_ROBOTIC))
-				return
-			if(!(affected.status & ORGAN_ROBOT) && !(valid_starting_types & SURGERY_INITIATOR_ORGANIC))
-				return
-
-	if(L.has_status_effect(STATUS_EFFECT_SUMMONEDGHOST))
-		to_chat(user, "<span class='notice'>You realise that a ghost probably doesn't have any useful organs.</span>")
-		return //no cult ghost surgery please
 	INVOKE_ASYNC(src, PROC_REF(do_initiate_surgery_moment), target, user)
-	// This signal is actually part of the attack chain, so it needs to return true to stop it
-	return TRUE
+	return COMPONENT_CANCEL_ATTACK_CHAIN
 
-/// Meat and potatoes of starting surgery.
 /datum/component/surgery_initiator/proc/do_initiate_surgery_moment(mob/living/target, mob/user)
 	var/datum/surgery/current_surgery
 
-	// Check if we've already got a surgery on our target zone
 	for(var/i_one in target.surgeries)
 		var/datum/surgery/surgeryloop = i_one
 		if(surgeryloop.location == user.zone_selected)
 			current_surgery = surgeryloop
 			break
 
-	if(!isnull(current_surgery) && !current_surgery.step_in_progress)
-		var/datum/surgery_step/current_step = current_surgery.get_surgery_step()
-		if(current_step.try_op(user, target, user.zone_selected, parent, current_surgery) == SURGERY_INITIATE_SUCCESS)
-			return
-		if(istype(parent, /obj/item/scalpel/laser/manager/debug))
-			return
-		if(attempt_cancel_surgery(current_surgery, target, user))
-			return
-
-	if(!isnull(current_surgery) && current_surgery.step_in_progress)
+	if (!isnull(current_surgery) && !current_surgery.step_in_progress)
+		attempt_cancel_surgery(current_surgery, target, user)
 		return
 
 	var/list/available_surgeries = get_available_surgeries(user, target)
 
-	var/datum/surgery/procedure
-
 	if(!length(available_surgeries))
-		if(IS_HORIZONTAL(target))
-			to_chat(user, "<span class='notice'>There aren't any surgeries you can perform there right now.</span>")
+		if (target.body_position == LYING_DOWN || !(target.mobility_flags & MOBILITY_LIEDOWN))
+			target.balloon_alert(user, "no surgeries available!")
 		else
-			to_chat(user, "<span class='notice'>You can't perform any surgeries there while [target] is standing.</span>")
+			target.balloon_alert(user, "make them lie down!")
+
 		return
 
-	// if we have a surgery that should be performed regardless with this item,
-	// make sure it's available to be done
-	if(forced_surgery)
-		for(var/datum/surgery/S in available_surgeries)
-			if(istype(S, forced_surgery))
-				procedure = S
-				break
-	else
-		procedure = tgui_input_list(user, "Begin which procedure?", "Surgery", available_surgeries)
+	unregister_signals()
 
-	if(!procedure)
-		return
+	last_user_ref = WEAKREF(user)
+	surgery_target_ref = WEAKREF(target)
 
-	return try_choose_surgery(user, target, procedure)
+	RegisterSignal(user, COMSIG_MOB_SELECTED_ZONE_SET, PROC_REF(on_set_selected_zone))
+	RegisterSignal(target, COMSIG_MOB_SURGERY_STARTED, PROC_REF(on_mob_surgery_started))
+
+	ui_interact(user)
 
 /datum/component/surgery_initiator/proc/get_available_surgeries(mob/user, mob/living/target)
 	var/list/available_surgeries = list()
-	for(var/datum/surgery/surgery in GLOB.surgeries_list)
-		if(surgery.abstract && !istype(surgery, forced_surgery))  // no choosing abstract surgeries, though they can be forced
-			continue
-		if(!is_type_in_list(target, surgery.target_mobtypes))
-			continue
-		if(!target.can_run_surgery(surgery, user))
-			continue
 
-		available_surgeries |= surgery
+	var/mob/living/carbon/carbon_target
+	var/obj/item/bodypart/affecting
+	if (iscarbon(target))
+		carbon_target = target
+		affecting = carbon_target.get_bodypart(check_zone(user.zone_selected))
+
+	for(var/datum/surgery/surgery as anything in GLOB.surgeries_list)
+		if(!surgery.possible_locs.Find(user.zone_selected))
+			continue
+		if(affecting)
+			if(!(surgery.surgery_flags & SURGERY_REQUIRE_LIMB))
+				continue
+			if(surgery.requires_bodypart_type && !(affecting.bodytype & surgery.requires_bodypart_type))
+				continue
+			if((surgery.surgery_flags & SURGERY_REQUIRES_REAL_LIMB) && (affecting.bodypart_flags & BODYPART_PSEUDOPART))
+				continue
+		else if(carbon_target && (surgery.surgery_flags & SURGERY_REQUIRE_LIMB)) //mob with no limb in surgery zone when we need a limb
+			continue
+		if(IS_IN_INVALID_SURGICAL_POSITION(target, surgery))
+			continue
+		if(!surgery.can_start(user, target))
+			continue
+		for(var/path in surgery.target_mobtypes)
+			if(istype(target, path))
+				available_surgeries += surgery
+				break
 
 	return available_surgeries
 
 /// Does the surgery de-initiation.
 /datum/component/surgery_initiator/proc/attempt_cancel_surgery(datum/surgery/the_surgery, mob/living/patient, mob/user)
 	var/selected_zone = user.zone_selected
-	/// We haven't even started yet. Any surgery can be cancelled at this point.
-	if(the_surgery.step_number == 1)
+
+	if(the_surgery.status == 1)
 		patient.surgeries -= the_surgery
+		REMOVE_TRAIT(patient, TRAIT_ALLOWED_HONORBOUND_ATTACK, type)
 		user.visible_message(
-			"<span class='notice'>[user] stops the surgery on [patient]'s [parse_zone(selected_zone)] with [parent].</span>",
-			"<span class='notice'>You stop the surgery on [patient]'s [parse_zone(selected_zone)] with [parent].</span>",
+			span_notice("[user] removes [parent] from [patient]'s [parse_zone(selected_zone)]."),
+			span_notice("You remove [parent] from [patient]'s [parse_zone(selected_zone)]."),
 		)
 
+		patient.balloon_alert(user, "stopped work on [parse_zone(selected_zone)]")
+
 		qdel(the_surgery)
+		return
+
+	var/required_tool_type = TOOL_CAUTERY
+	var/obj/item/close_tool = user.get_inactive_held_item()
+	var/is_robotic = the_surgery.requires_bodypart_type == BODYTYPE_ROBOTIC
+	if(is_robotic)
+		required_tool_type = TOOL_SCREWDRIVER
+
+	if(iscyborg(user))
+		close_tool = locate(/obj/item/cautery) in user.held_items
+		if(!close_tool)
+			patient.balloon_alert(user, "need a cautery in an inactive slot to stop the surgery!")
+			return
+	else if(!close_tool || close_tool.tool_behaviour != required_tool_type)
+		patient.balloon_alert(user, "need a [is_robotic ? "screwdriver": "cautery"] in your inactive hand to stop the surgery!")
+		return
+
+	if(the_surgery.operated_bodypart)
+		the_surgery.operated_bodypart.adjustBleedStacks(-5)
+
+	patient.surgeries -= the_surgery
+	REMOVE_TRAIT(patient, TRAIT_ALLOWED_HONORBOUND_ATTACK, ELEMENT_TRAIT(type))
+
+	user.visible_message(
+		span_notice("[user] closes [patient]'s [parse_zone(selected_zone)] with [close_tool] and removes [parent]."),
+		span_notice("You close [patient]'s [parse_zone(selected_zone)] with [close_tool] and remove [parent]."),
+	)
+
+	patient.balloon_alert(user, "closed up [parse_zone(selected_zone)]")
+
+	qdel(the_surgery)
+
+/datum/component/surgery_initiator/proc/on_mob_surgery_started(mob/source, datum/surgery/surgery, surgery_location)
+	SIGNAL_HANDLER
+
+	var/mob/living/last_user = last_user_ref.resolve()
+
+	if (surgery_location != last_user.zone_selected)
+		return
+
+	if (!isnull(last_user))
+		source.balloon_alert(last_user, "someone else started a surgery!")
+
+	ui_close()
+
+/datum/component/surgery_initiator/proc/on_set_selected_zone(mob/source, new_zone)
+	ui_interact(source)
+
+/datum/component/surgery_initiator/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if (!ui)
+		ui = new(user, src, "SurgeryInitiator")
+		ui.open()
+
+/datum/component/surgery_initiator/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if (.)
+		return .
+
+	var/mob/user = usr
+	var/mob/living/surgery_target = surgery_target_ref.resolve()
+
+	if (isnull(surgery_target))
 		return TRUE
 
-	if(!the_surgery.can_cancel)
-		return
-
-	// Don't make a forced surgery implement cancel a surgery.
-	if(istype(the_surgery, forced_surgery))
-		return
-
-	var/obj/item/close_tool
-	var/obj/item/other_hand = user.get_inactive_hand()
-
-	var/is_robotic = !the_surgery.requires_organic_bodypart
-	var/datum/surgery_step/chosen_close_step
-	var/skip_surgery = FALSE  // if true, don't even run an operation, just end the surgery.
-
-	if(!the_surgery.requires_bodypart)
-		// special behavior here; if it doesn't require a bodypart just check if there's a limb there or not.
-		// this is a little bit gross and I do apologize
-		if(iscarbon(patient))
-			var/mob/living/carbon/C = patient
-			var/obj/item/organ/external/affected = C.get_organ(user.zone_selected)
-			if(!affected)
-				skip_surgery = TRUE
-
-		else
-			// uh there's no reason this should be hit but let's be safe LOL
-			skip_surgery = TRUE
-
-	if(!skip_surgery)
-		if(is_robotic)
-			chosen_close_step = new /datum/surgery_step/robotics/external/close_hatch/premature()
-		else
-			chosen_close_step = new /datum/surgery_step/generic/cauterize/premature()
-
-	if(skip_surgery)
-		close_tool = user.get_active_hand()  // sure, just something so that it isn't null
-	else if(isrobot(user))
-		if(!is_robotic)
-			// borgs need to be able to finish surgeries with just the laser scalpel, no special checks here.
-			close_tool = parent
-		else
-			close_tool = locate(/obj/item/crowbar) in user.get_all_slots()
-			if(!close_tool)
-				to_chat(user, "<span class='warning'>You need a prying tool in an inactive slot to stop the surgery!</span>")
+	switch (action)
+		if ("change_zone")
+			var/zone = params["new_zone"]
+			if (!(zone in list(
+				BODY_ZONE_HEAD,
+				BODY_ZONE_CHEST,
+				BODY_ZONE_L_ARM,
+				BODY_ZONE_R_ARM,
+				BODY_ZONE_L_LEG,
+				BODY_ZONE_R_LEG,
+				BODY_ZONE_PRECISE_EYES,
+				BODY_ZONE_PRECISE_MOUTH,
+				BODY_ZONE_PRECISE_GROIN,
+			)))
 				return TRUE
 
-	else if(other_hand)
-		for(var/key in chosen_close_step.allowed_tools)
-			if(ispath(key) && istype(other_hand, key) || other_hand.tool_behaviour == key)
-				close_tool = other_hand
-				break
+			var/atom/movable/screen/zone_sel/zone_selector = user.hud_used?.zone_select
+			zone_selector?.set_selected_zone(zone, user, should_log = FALSE)
 
-	if(!close_tool)
-		to_chat(user, "<span class='warning'>You need a [is_robotic ? "prying": "cauterizing"] tool in your inactive hand to stop the surgery!</span>")
-		return TRUE
+			return TRUE
+		if ("start_surgery")
+			for (var/datum/surgery/surgery as anything in get_available_surgeries(user, surgery_target))
+				if (surgery.name == params["surgery_name"])
+					try_choose_surgery(user, surgery_target, surgery)
+					return TRUE
 
-	if(skip_surgery || chosen_close_step.try_op(user, patient, selected_zone, close_tool, the_surgery) == SURGERY_INITIATE_SUCCESS)
-		// logging in case people wonder why they're cut up inside
-		log_attack(user, patient, "Prematurely finished \a [the_surgery] surgery.")
-		qdel(chosen_close_step)
-		patient.surgeries -= the_surgery
-		qdel(the_surgery)
+/datum/component/surgery_initiator/ui_assets(mob/user)
+	return list(
+		get_asset_datum(/datum/asset/simple/body_zones),
+	)
 
-	// always return TRUE here so we don't continue the surgery chain and try to start a new surgery with our tool.
-	return TRUE
+/datum/component/surgery_initiator/ui_data(mob/user)
+	var/mob/living/surgery_target = surgery_target_ref.resolve()
+
+	var/list/surgeries = list()
+	if (!isnull(surgery_target))
+		for (var/datum/surgery/surgery as anything in get_available_surgeries(user, surgery_target))
+			var/list/surgery_info = list(
+				"name" = surgery.name,
+			)
+
+			if (surgery_needs_exposure(surgery, surgery_target))
+				surgery_info["blocked"] = TRUE
+
+			surgeries += list(surgery_info)
+
+	return list(
+		"selected_zone" = user.zone_selected,
+		"target_name" = surgery_target?.name,
+		"surgeries" = surgeries,
+	)
+
+/datum/component/surgery_initiator/ui_close(mob/user)
+	unregister_signals()
+	surgery_target_ref = null
+
+	return ..()
+
+/datum/component/surgery_initiator/ui_status(mob/user, datum/ui_state/state)
+	var/obj/item/item_parent = parent
+	if (user != item_parent.loc)
+		return UI_CLOSE
+
+	var/mob/living/surgery_target = surgery_target_ref?.resolve()
+	if (isnull(surgery_target))
+		return UI_CLOSE
+
+	if (!can_start_surgery(user, surgery_target))
+		return UI_CLOSE
+
+	return ..()
 
 /datum/component/surgery_initiator/proc/can_start_surgery(mob/user, mob/living/target)
-	if(!user.Adjacent(target))
+	if (!user.Adjacent(target))
 		return FALSE
 
 	// The item was moved somewhere else
-	if(!(parent in user))
-		to_chat(user, "<span class='warning'>You cannot start an operation if you aren't holding the tool anymore.</span>")
+	if (!(parent in user))
 		return FALSE
 
 	// While we were choosing, another surgery was started at the same location
-	for(var/datum/surgery/surgery in target.surgeries)
-		if(surgery.location == user.zone_selected)
-			to_chat(user, "<span class='warning'>There's already another surgery in progress on their [parse_zone(surgery.location)].</span>")
+	for (var/datum/surgery/surgery in target.surgeries)
+		if (surgery.location == user.zone_selected)
 			return FALSE
 
 	return TRUE
 
 /datum/component/surgery_initiator/proc/try_choose_surgery(mob/user, mob/living/target, datum/surgery/surgery)
-	if(!can_start_surgery(user, target))
+	if (!can_start_surgery(user, target))
+		// This could have a more detailed message, but the UI closes when this is true anyway, so
+		// if it ever comes up, it'll be because of lag.
+		target.balloon_alert(user, "can't start the surgery!")
 		return
 
-	var/obj/item/organ/affecting_limb
+	var/obj/item/bodypart/affecting_limb
 
 	var/selected_zone = user.zone_selected
 
-	if(iscarbon(target))
+	if (iscarbon(target))
 		var/mob/living/carbon/carbon_target = target
-		affecting_limb = carbon_target.get_organ(check_zone(selected_zone))
+		affecting_limb = carbon_target.get_bodypart(check_zone(selected_zone))
 
-	if(surgery.requires_bodypart == isnull(affecting_limb))
-		if(surgery.requires_bodypart)
-			to_chat(user, "<span class='warning'>The patient has no [parse_zone(selected_zone)]!</span>")
+	if ((surgery.surgery_flags & SURGERY_REQUIRE_LIMB) == isnull(affecting_limb))
+		if (surgery.surgery_flags & SURGERY_REQUIRE_LIMB)
+			target.balloon_alert(user, "patient has no [parse_zone(selected_zone)]!")
 		else
-			to_chat(user, "<span class='warning'>The patient has \a [parse_zone(selected_zone)]!</span>")
-
+			target.balloon_alert(user, "patient has \a [parse_zone(selected_zone)]!")
 		return
 
-	if(!isnull(affecting_limb) && (surgery.requires_organic_bodypart && affecting_limb.is_robotic()) || (!surgery.requires_organic_bodypart && !affecting_limb.is_robotic()))
-		to_chat(user, "<span class='warning'>That's not the right type of limb for this operation!</span>")
+	if (!isnull(affecting_limb) && surgery.requires_bodypart_type && !(affecting_limb.bodytype & surgery.requires_bodypart_type))
+		target.balloon_alert(user, "not the right type of limb!")
 		return
 
-	if(surgery.lying_required && !on_operable_surface(target))
-		to_chat(user, "<span class='notice'>Patient must be lying down for this operation.</span>")
+	if (IS_IN_INVALID_SURGICAL_POSITION(target, surgery))
+		target.balloon_alert(user, "patient is not lying down!")
 		return
 
-	if(target == user && !surgery.self_operable)
-		to_chat(user, "<span class='notice'>You can't perform that operation on yourself!</span>")
+	if (!surgery.can_start(user, target))
+		target.balloon_alert(user, "can't start the surgery!")
 		return
 
-	if(!surgery.can_start(user, target))
-		to_chat(user, "<span class='warning'>Can't start the surgery!</span>")
+	if (surgery_needs_exposure(surgery, target))
+		target.balloon_alert(user, "expose [target.p_their()] [parse_zone(selected_zone)]!")
 		return
 
-	if(surgery_needs_exposure(surgery, target))
-		to_chat(user, "<span class='warning'>You have to expose [target.p_their()] [parse_zone(selected_zone)] first!</span>")
-		return
+	ui_close()
 
 	var/datum/surgery/procedure = new surgery.type(target, selected_zone, affecting_limb)
+	ADD_TRAIT(target, TRAIT_ALLOWED_HONORBOUND_ATTACK, type)
 
-	show_starting_message(user, target, procedure)
+	target.balloon_alert(user, "starting \"[lowertext(procedure.name)]\"")
 
-	log_attack(user, target, "operated on (OPERATION TYPE: [procedure.name]) (TARGET AREA: [selected_zone])")
-
-/datum/component/surgery_initiator/proc/surgery_needs_exposure(datum/surgery/surgery, mob/living/target)
-	return !surgery.ignore_clothes && !get_location_accessible(target, target.zone_selected)
-
-/// Handle to allow for easily overriding the message shown
-/datum/component/surgery_initiator/proc/show_starting_message(mob/user, mob/living/target, datum/surgery/procedure)
 	user.visible_message(
-		"<span class='notice'>[user] holds [parent] over [target]'s [parse_zone(user.zone_selected)] to prepare for surgery.</span>",
-		"<span class='notice'>You hold [parent] over [target]'s [parse_zone(user.zone_selected)] to prepare for \an [procedure.name].</span>",
+		span_notice("[user] drapes [parent] over [target]'s [parse_zone(selected_zone)] to prepare for surgery."),
+		span_notice("You drape [parent] over [target]'s [parse_zone(selected_zone)] to prepare for \an [procedure.name]."),
 	)
 
-/datum/component/surgery_initiator/limb
-	can_cancel = FALSE  // don't let a leg cancel a surgery
+	log_combat(user, target, "operated on", null, "(OPERATION TYPE: [procedure.name]) (TARGET AREA: [selected_zone])")
 
-/datum/component/surgery_initiator/robo
-	valid_starting_types = SURGERY_INITIATOR_ROBOTIC
+/datum/component/surgery_initiator/proc/surgery_needs_exposure(datum/surgery/surgery, mob/living/target)
+	var/mob/living/user = last_user_ref?.resolve()
+	if (isnull(user))
+		return FALSE
+	if(surgery.surgery_flags & SURGERY_IGNORE_CLOTHES)
+		return FALSE
 
-/datum/component/surgery_initiator/robo/sharp
-	valid_starting_types = SURGERY_INITIATOR_ORGANIC | SURGERY_INITIATOR_ROBOTIC
+	return !get_location_accessible(target, user.zone_selected)
+
+/**
+ * Adds context sensitivy directly to the surgery initator file for screentips
+ * Arguments:
+ * * source - the surgery drapes, cloak, or bedsheet calling surgery initator
+ * * context - Preparing Surgery, the component has a lot of ballon alerts to deal with most contexts
+ * * target - the living target mob you are doing surgery on
+ * * user - refers to user who will see the screentip when the drapes are on a living target
+ */
+/datum/component/surgery_initiator/proc/add_item_context(obj/item/source, list/context, atom/target, mob/living/user,)
+	SIGNAL_HANDLER
+
+	if(!isliving(target))
+		return NONE
+
+	context[SCREENTIP_CONTEXT_LMB] = "Prepare Surgery"
+	return CONTEXTUAL_SCREENTIP_SET

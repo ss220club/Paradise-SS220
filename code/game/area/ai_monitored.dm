@@ -1,39 +1,35 @@
 /area/station/ai_monitored
-	name = "AI Monitored Area"
-	var/list/motioncameras = list()
-	var/list/motionTargets = list()
+	name = "\improper AI Monitored Area"
+	var/list/obj/machinery/camera/motioncameras = list()
+	var/list/datum/weakref/motionTargets = list()
 	sound_environment = SOUND_ENVIRONMENT_ROOM
 
 /area/station/ai_monitored/Initialize(mapload)
 	. = ..()
 	if(mapload)
-		for(var/obj/machinery/camera/M in src)
+		for (var/obj/machinery/camera/M in src)
 			if(M.isMotion())
 				motioncameras.Add(M)
-				M.AddComponent(/datum/component/proximity_monitor)
 				M.set_area_motion(src)
 
-/area/station/ai_monitored/Entered(atom/movable/O)
-	..()
-	if(ismob(O) && length(motioncameras))
+//Only need to use one camera
+
+/area/station/ai_monitored/Entered(atom/movable/arrived, atom/old_loc, list/atom/old_locs)
+	. = ..()
+	if (ismob(arrived) && motioncameras.len)
 		for(var/X in motioncameras)
 			var/obj/machinery/camera/cam = X
-			cam.newTarget(O)
+			cam.newTarget(arrived)
 			return
 
-/area/station/ai_monitored/Exited(atom/movable/O)
+/area/station/ai_monitored/Exited(atom/movable/gone, atom/old_loc, list/atom/old_locs)
 	..()
-	if(ismob(O) && length(motioncameras))
+	if (ismob(gone) && motioncameras.len)
 		for(var/X in motioncameras)
 			var/obj/machinery/camera/cam = X
-			cam.lostTargetRef(O.UID())
+			cam.lostTargetRef(WEAKREF(gone))
 			return
 
-/area/station/ai_monitored/storage/eva
-	name = "EVA Storage"
-	icon_state = "eva"
-	ambientsounds = HIGHSEC_SOUNDS
-
-/area/station/ai_monitored/storage/secure
-	name = "Secure Storage"
-	icon_state = "storage"
+/area/station/ai_monitored/turret_protected/ai/Initialize(mapload)
+	. = ..()
+	src.area_flags |= ABDUCTOR_PROOF

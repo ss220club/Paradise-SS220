@@ -68,8 +68,7 @@ $inner-padding: 0.1em;
   background-color: rgba(255, 255, 255, 0.9);
 }
 
-.Knob__popupValue,
-.Knob__popupValue--right {
+.Knob__popupValue {
   position: absolute;
   top: -2rem;
   right: 50%;
@@ -82,10 +81,6 @@ $inner-padding: 0.1em;
   white-space: nowrap;
 }
 
-.Knob__popupValue--right {
-  top: 0.25rem;
-  right: -50%;
-}
 .Knob__ring {
   position: absolute;
   top: 0;
@@ -124,7 +119,7 @@ $pi: 3.1416;
   stroke-width: 8;
   stroke-linecap: round;
   stroke-dasharray: 100 * $pi;
-  transition: stroke 50ms;
+  transition: stroke 50ms ease-out;
 }
 
 @each $color-name, $color-value in $fg-map {

@@ -3,217 +3,158 @@
 // Data from the seeds carry over to these grown foods
 // ***********************************************************
 
-// Base type. Subtypes are found in /grown dir.
-/obj/item/food/snacks/grown
-	icon = 'icons/obj/hydroponics/harvest.dmi'
-	var/obj/item/seeds/seed = null // type path, gets converted to item on New(). It's safe to assume it's always a seed item.
-	var/plantname = ""
-	var/bitesize_mod = 0 	// If set, bitesize = 1 + round(reagents.total_volume / bitesize_mod)
-	var/splat_type = /obj/effect/decal/cleanable/plant_smudge
-	var/can_distill = TRUE //If FALSE, this object cannot be distilled into an alcohol.
-	var/distill_reagent //If NULL and this object can be distilled, it uses a generic fruit_wine reagent and adjusts its variables.
-	var/wine_flavor //If NULL, this is automatically set to the fruit's flavor. Determines the flavor of the wine if distill_reagent is NULL.
-	var/wine_power = 0.1 //Determines the boozepwr of the wine if distill_reagent is NULL. Uses 0.1 - 1.2 not tg's boozepower (divide by 100) else you'll end up with 1000% proof alcohol!
-	dried_type = -1 // Saves us from having to define each stupid grown's dried_type as itself. If you don't want a plant to be driable (watermelons) set this to null in the time definition.
+// A few defines for use in calculating our plant's bite size.
+/// When calculating bite size, potency is multiplied by this number.
+#define BITE_SIZE_POTENCY_MULTIPLIER 0.05
+/// When calculating bite size, max_volume is multiplied by this number.
+#define BITE_SIZE_VOLUME_MULTIPLIER 0.01
+
+// Base type. Subtypes are found in /grown dir. Lavaland-based subtypes can be found in mining/ash_flora.dm
+/obj/item/food/grown
+	icon = 'icons/obj/service/hydroponics/harvest.dmi'
+	icon_state = "berrypile"
+	worn_icon = 'icons/mob/clothing/head/hydroponics.dmi'
+	name = "fresh produce" // so recipe text doesn't say 'snack'
+	max_volume = PLANT_REAGENT_VOLUME
+	w_class = WEIGHT_CLASS_SMALL
 	resistance_flags = FLAMMABLE
-	origin_tech = "biotech=1"
+	/// type path, gets converted to item on New(). It's safe to assume it's always a seed item.
+	var/obj/item/seeds/seed = null
+	///Name of the plant
+	var/plantname = ""
+	/// The modifier applied to the plant's bite size. If a plant has a large amount of reagents naturally, this should be increased to match.
+	var/bite_consumption_mod = 1
+	/// The typepath made when the plant is splatted with liquid contents.
+	var/splat_type = /obj/effect/decal/cleanable/food/plant_smudge
+	/// If TRUE, this object needs to be dry to be ground up
+	var/dry_grind = FALSE
+	/// If FALSE, this object cannot be distilled into an alcohol.
+	var/can_distill = TRUE
+	/// The reagent this plant distill to. If NULL, it uses a generic fruit_wine reagent and adjusts its variables.
+	var/distill_reagent
+	/// Flavor of the plant's wine if NULL distll_reagent. If NULL, this is automatically set to the fruit's flavor.
+	var/wine_flavor
+	/// Boozepwr of the wine if NULL distill_reagent
+	var/wine_power = 10
+	/// Color of the grown object, for use in coloring greyscale splats.
+	var/filling_color
+	/// If the grown food has an alternative icon state to use in places.
+	var/alt_icon
+	/// Should we pixel offset ourselves at init? for mapping
+	var/offset_at_init = TRUE
 
-/obj/item/food/snacks/grown/Initialize(mapload, obj/item/seeds/new_seed = null)
-	. = ..()
+/obj/item/food/grown/New(loc, obj/item/seeds/new_seed)
+	return ..()
+
+/obj/item/food/grown/Initialize(mapload, obj/item/seeds/new_seed)
 	if(!tastes)
-		tastes = list("[name]" = 1)
+		tastes = list("[name]" = 1) //This happens first else the component already inits
 
-	if(new_seed)
+	if(istype(new_seed))
 		seed = new_seed.Copy()
+
 	else if(ispath(seed))
 		// This is for adminspawn or map-placed growns. They get the default stats of their seed type.
 		seed = new seed()
 		seed.adjust_potency(50-seed.potency)
+	else if(!seed)
+		stack_trace("Grown object created without a seed. WTF")
+		return INITIALIZE_HINT_QDEL
 
-	pixel_x = rand(-5, 5)
-	pixel_y = rand(-5, 5)
+	if(offset_at_init)
+		pixel_x = base_pixel_x + rand(-5, 5)
+		pixel_y = base_pixel_y + rand(-5, 5)
 
-	if(dried_type == -1)
-		dried_type = type
+	make_dryable()
 
-	if(seed)
-		for(var/datum/plant_gene/trait/T in seed.genes)
-			T.on_new(src)
-		seed.prepare_result(src)
-		transform *= TRANSFORM_USING_VARIABLE(seed.potency, 100) + 0.5 //Makes the resulting produce's sprite larger or smaller based on potency!
-		add_juice()
-		if(seed.variant)
-			name += " \[[seed.variant]]"
+	// Go through all traits in their genes and call on_new_plant from them.
+	for(var/datum/plant_gene/trait/trait in seed.genes)
+		trait.on_new_plant(src, loc)
 
-/obj/item/food/snacks/grown/Destroy()
-	QDEL_NULL(seed)
+	// Set our default bitesize: bite size = 1 + (potency * 0.05) * (max_volume * 0.01) * modifier
+	// A 100 potency, non-densified plant = 1 + (5 * 1 * modifier) = 6u bite size
+	// For reference, your average 100 potency tomato has 14u of reagents - So, with no modifier it is eaten in 3 bites
+	bite_consumption = 1 + round(max((seed.potency * BITE_SIZE_POTENCY_MULTIPLIER), 1) * (max_volume * BITE_SIZE_VOLUME_MULTIPLIER) * bite_consumption_mod)
+
+	. = ..() //Only call it here because we want all the genes and shit to be applied before we add edibility. God this code is a mess.
+
+	reagents.clear_reagents()
+	seed.prepare_result(src)
+	transform *= TRANSFORM_USING_VARIABLE(seed.potency, 100) + 0.5 //Makes the resulting produce's sprite larger or smaller based on potency!
+
+/obj/item/food/grown/Destroy()
+	if(isatom(seed))
+		QDEL_NULL(seed)
 	return ..()
 
-/obj/item/food/snacks/grown/proc/add_juice()
-	if(reagents)
-		if(bitesize_mod)
-			bitesize = 1 + round(reagents.total_volume / bitesize_mod)
-		return 1
-	return 0
+/obj/item/food/grown/proc/make_dryable()
+	AddElement(/datum/element/dryable, type)
 
-/obj/item/food/snacks/grown/examine(user)
-	. = ..()
-	if(seed)
-		for(var/datum/plant_gene/trait/T in seed.genes)
-			if(T.examine_line)
-				. += T.examine_line
+/obj/item/food/grown/make_leave_trash()
+	if(trash_type)
+		AddElement(/datum/element/food_trash, trash_type, FOOD_TRASH_OPENABLE, TYPE_PROC_REF(/obj/item/food/grown/, generate_trash))
+	return
 
-/obj/item/food/snacks/grown/attackby(obj/item/O, mob/user, params)
-	..()
-	if(slices_num && slice_path)
-		var/inaccurate = TRUE
-		if(O.sharp)
-			if(istype(O, /obj/item/kitchen/knife) || istype(O, /obj/item/scalpel))
-				inaccurate = FALSE
+/// Generates a piece of trash based on our plant item. Used by [/datum/element/food_trash].
+/// location - Optional. If passed, generates the item at the passed location instead of at src's drop location.
+/obj/item/food/grown/proc/generate_trash(atom/location)
+	// If this is some type of grown thing, we pass a seed arg into its Inititalize()
+	if(ispath(trash_type, /obj/item/grown) || ispath(trash_type, /obj/item/food/grown))
+		return new trash_type(location || drop_location(), seed)
 
-			if(!isturf(loc) || !(locate(/obj/structure/table) in loc) && !(locate(/obj/machinery/optable) in loc) && !(locate(/obj/item/storage/bag/tray) in loc))
-				to_chat(user, "<span class='warning'>You cannot slice [src] here! You need a table or at least a tray to do it.</span>")
-				return TRUE
+	return new trash_type(location || drop_location())
 
-			var/slices_lost = 0
-			if(!inaccurate)
-				user.visible_message("<span class='notice'>[user] slices [src] with [O]!</span>", "<span class='notice'>You slice [src]!</span>")
+/obj/item/food/grown/grind_requirements()
+	if(dry_grind && !HAS_TRAIT(src, TRAIT_DRIED))
+		to_chat(usr, span_warning("[src] needs to be dry before it can be ground up!"))
+		return
+	return TRUE
+
+/// Turns the nutriments and vitamins into the distill reagent or fruit wine
+/obj/item/food/grown/proc/ferment()
+	var/reagent_purity = seed.get_reagent_purity()
+	var/purity_above_base = clamp((reagent_purity - 0.5) * 2, 0, 1)
+	var/quality_min = DRINK_NICE
+	var/quality_max = DRINK_FANTASTIC
+	var/quality = round(LERP(quality_min, quality_max, purity_above_base))
+	for(var/datum/reagent/reagent in reagents.reagent_list)
+		if(!istype(reagent, /datum/reagent/consumable))
+			continue
+		if(distill_reagent)
+			var/data = list()
+			var/datum/reagent/consumable/ethanol/booze = distill_reagent
+			data["quality"] = quality
+			data["boozepwr"] = round(initial(booze.boozepwr) * reagent_purity * 2) // default boozepwr at 50% purity
+			reagents.add_reagent(distill_reagent, reagent.volume, data, added_purity = reagent_purity)
+		else
+			var/data = list()
+			data["names"] = list("[initial(name)]" = 1)
+			data["color"] = filling_color || reagent.color // filling_color is not guaranteed to be set for every plant. try to use it if we have it, otherwise use the reagent's color var
+			data["boozepwr"] = round(wine_power * reagent_purity * 2) // default boozepwr at 50% purity
+			data["quality"] = quality
+			if(wine_flavor)
+				data["tastes"] = list(wine_flavor = 1)
 			else
-				user.visible_message("<span class='notice'>[user] crudely slices [src] with [O]!</span>", "<span class='notice'>You crudely slice [src] with your [O]!</span>")
-				slices_lost = rand(1, min(1, round(slices_num / 2)))
+				data["tastes"] = list(tastes[1] = 1)
+			reagents.add_reagent(/datum/reagent/consumable/ethanol/fruit_wine, reagent.volume, data, added_purity = reagent_purity)
+		reagents.del_reagent(reagent.type)
 
-			var/reagents_per_slice = reagents.total_volume/slices_num
-			for(var/i = 1 to (slices_num - slices_lost))
-				var/obj/slice = new slice_path (loc)
-				reagents.trans_to(slice, reagents_per_slice)
-				slice.pixel_x = rand(-7, 7)
-				slice.pixel_y = rand(-7, 7)
-			qdel(src)
-			return ..()
+/obj/item/food/grown/grind(datum/reagents/target_holder, mob/user)
+	if(on_grind() == -1)
+		return FALSE
 
-	if(istype(O, /obj/item/plant_analyzer))
-		var/msg = "<span class='info'>This is \a <span class='name'>[src].</span>\n"
-		if(seed)
-			msg += seed.get_analyzer_text()
-		var/reag_txt = ""
-		if(seed)
-			for(var/reagent_id in seed.reagents_add)
-				var/datum/reagent/R  = GLOB.chemical_reagents_list[reagent_id]
-				var/amt = reagents.get_reagent_amount(reagent_id)
-				reag_txt += "\n<span class='info'>- [R.name]: [amt]</span>"
+	var/grind_results_num = LAZYLEN(grind_results)
+	if(grind_results_num)
+		var/average_purity = reagents.get_average_purity()
+		var/total_nutriment_amount = reagents.get_reagent_amount(/datum/reagent/consumable/nutriment, type_check = REAGENT_SUB_TYPE)
+		var/single_reagent_amount = grind_results_num > 1 ? round(total_nutriment_amount / grind_results_num, CHEMICAL_QUANTISATION_LEVEL) : total_nutriment_amount
+		reagents.remove_reagent(/datum/reagent/consumable/nutriment, total_nutriment_amount, include_subtypes = TRUE)
+		for(var/reagent in grind_results)
+			reagents.add_reagent(reagent, single_reagent_amount, added_purity = average_purity)
 
-		if(reag_txt)
-			msg += reag_txt
-		to_chat(user, msg)
-	else
-		if(seed)
-			for(var/datum/plant_gene/trait/T in seed.genes)
-				T.on_attackby(src, O, user)
+	if(reagents && target_holder)
+		reagents.trans_to(target_holder, reagents.total_volume, transferred_by = user)
+	return TRUE
 
-
-// Various gene procs
-/obj/item/food/snacks/grown/attack_self(mob/user)
-	if(seed && seed.get_gene(/datum/plant_gene/trait/squash))
-		squash(user)
-	..()
-
-/obj/item/food/snacks/grown/throw_impact(atom/hit_atom)
-	if(!..()) //was it caught by a mob?
-		if(seed)
-			log_action(locateUID(thrownby), hit_atom, "Thrown [src] at")
-			for(var/datum/plant_gene/trait/T in seed.genes)
-				T.on_throw_impact(src, hit_atom)
-			if(seed.get_gene(/datum/plant_gene/trait/squash))
-				squash(hit_atom)
-
-/obj/item/food/snacks/grown/proc/squash(atom/target)
-	var/turf/T = get_turf(target)
-	if(ispath(splat_type, /obj/effect/decal/cleanable/plant_smudge))
-		if(filling_color)
-			var/obj/O = new splat_type(T)
-			O.color = filling_color
-			O.name = "[name] smudge"
-	else if(splat_type)
-		new splat_type(T)
-
-	if(trash)
-		generate_trash(T)
-
-	visible_message("<span class='warning'>[src] has been squashed.</span>","<span class='italics'>You hear a smack.</span>")
-	if(seed)
-		for(var/datum/plant_gene/trait/trait in seed.genes)
-			trait.on_squash(src, target)
-
-	reagents.reaction(T)
-	for(var/A in T)
-		if(reagents)
-			reagents.reaction(A)
-
-	qdel(src)
-
-/obj/item/food/snacks/grown/On_Consume(mob/M, mob/user)
-	if(iscarbon(M))
-		if(seed)
-			for(var/datum/plant_gene/trait/T in seed.genes)
-				T.on_consume(src, M)
-	..()
-
-/obj/item/food/snacks/grown/after_slip(mob/living/carbon/human/H)
-	if(!seed)
-		return
-	for(var/datum/plant_gene/trait/T in seed.genes)
-		T.on_slip(src, H)
-
-// Glow gene procs
-/obj/item/food/snacks/grown/generate_trash(atom/location)
-	if(trash && ispath(trash, /obj/item/grown))
-		. = new trash(location, seed)
-		trash = null
-		return
-	return ..()
-
-/obj/item/food/snacks/grown/decompile_act(obj/item/matter_decompiler/C, mob/user)
-	if(isdrone(user))
-		C.stored_comms["wood"] += 4
-		qdel(src)
-		return TRUE
-	return ..()
-
-// For item-containing growns such as eggy or gatfruit
-/obj/item/food/snacks/grown/shell/attack_self(mob/user)
-	if(!do_after(user, 1.5 SECONDS, target = user))
-		return
-	user.unEquip(src)
-	if(trash)
-		var/obj/item/T = generate_trash()
-		user.put_in_hands(T)
-		to_chat(user, "<span class='notice'>You open [src]\'s shell, revealing \a [T].</span>")
-	qdel(src)
-
-// Diona Nymphs can eat these as well as weeds to gain nutrition.
-/obj/item/food/snacks/grown/attack_animal(mob/living/simple_animal/M)
-	if(isnymph(M))
-		var/mob/living/simple_animal/diona/D = M
-		D.consume(src)
-	else
-		return ..()
-
-/obj/item/food/snacks/grown/proc/log_action(mob/user, atom/target, what_done)
-	var/reagent_str = reagents.log_list()
-	var/genes_str = "No genes"
-	if(seed && length(seed.genes))
-		var/list/plant_gene_names = list()
-		for(var/thing in seed.genes)
-			var/datum/plant_gene/G = thing
-			if(G.dangerous)
-				plant_gene_names += G.name
-		genes_str = english_list(plant_gene_names)
-
-	add_attack_logs(user, target, "[what_done] ([reagent_str] | [genes_str])")
-
-/obj/item/food/snacks/grown/extinguish_light(force = FALSE)
-	if(!force)
-		return
-	if(seed.get_gene(/datum/plant_gene/trait/glow/shadow))
-		return
-	set_light(0)
+#undef BITE_SIZE_POTENCY_MULTIPLIER
+#undef BITE_SIZE_VOLUME_MULTIPLIER

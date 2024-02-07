@@ -51,14 +51,17 @@
 		.wraith .wrap {border-color: #492136;}
 		.wraith .content {border-color: #331726; background-color: #471962;}
 
-		.cult .wrap {border-color: #610002;}
-		.cult .content {color: #0F0B0C; border-color: #A10000; background-color: #4A363B;}
+		.cult .wrap {border-color: #292222;}
+		.cult .content {color: #FF0000; border-color: #4C4343; background-color: #3C3434;}
 
 		.pod .wrap {border-color: #052401;}
 		.pod .content {border-color: #326D29; background-color: #569F4B;}
 
 		.colo-pod .wrap {border-color: #256fb9;}
 		.colo-pod .content {border-color: #000000; background-color: #000000;}
+
+		.hisgrace .wrap {border-color: #7C1414;}
+		.hisgrace .content {color: #15D512; border-color: #9D1414; background-color: #861414;}
 
 		/* TG: Themes */
 		/* ScreenUI */
@@ -74,22 +77,14 @@
 		.slimecore .wrap {border-color: #18640E;}
 		.slimecore .content {color: #6EA161; border-color: #11450B; background-color: #354E35;}
 
-		.operative .wrap {border-color: #1E0101;}
-		.operative .content {color: #FFFFFF; border-color: #750000; background-color: #350000;}
+		.operative .wrap {border-color: #13121b;}
+		.operative .content {color: #b01232; border-color: #13121b; background-color: #282831;}
 
-		/* SS220 ADDITION - START */
-		.clockwork .wrap {border-color: #170800;}
-		.clockwork .content {color: #B18B25; border-color: #000000; background-color: #5F380E;}
-
-		.vaporwave .wrap {border-color: #0c122c;}
-		.vaporwave .content {color: #bc3ce3; border-color: #170c2c; background-color: #1d1a22;}
+		.trasen-knox .wrap {border-color: #998e81;}
+		.trasen-knox .content {color: #3ce375; border-color: #998e81; background-color: #1e1d21;}
 
 		.detective .wrap {border-color: #2c0F0c;}
-		.detective .content {color: #c7b08b; border-color: #2c0F0c; background-color: #221c1a;}
-
-		.trasenknox .wrap {border-color: #998e81;}
-		.trasenknox .content {color: #3ce375; border-color: #998e81; background-color: #1e1d21;}
-		/* SS220 ADDITION - END */
+		.detective .wrap {color: #c7b08b; border-color: #2c0F0c; background-color: #221c1a;}
 
 	</style>
 </head>
@@ -97,7 +92,7 @@
 	<div id="wrap" class="wrap">
 		<div id="content" class="content"></div>
 	</div>
-	<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="jquery.min.js"></script>
 	<script type="text/javascript">
 		var tooltip = {
 			'tileSize': 32,
@@ -263,7 +258,7 @@
 				tooltip.special = special;
 
 				//Go get the map details
-				window.location = 'byond://winget?callback=tooltip.updateCallback;id=paramapwindow.map;property=size,view-size';
+				window.location = 'byond://winget?callback=tooltip.updateCallback;id=mapwindow.map;property=size,view-size';
 			},
 		};
 	</script>

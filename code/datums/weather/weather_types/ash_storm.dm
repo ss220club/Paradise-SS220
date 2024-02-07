@@ -12,119 +12,69 @@
 	weather_duration_upper = 1200
 	weather_overlay = "ash_storm"
 
-	end_message = "<span class='boldannounceic'>The shrieking wind whips away the last of the ash and falls to its usual murmur. It should be safe to go outside now.</span>"
+	end_message = "<span class='boldannounce'>The shrieking wind whips away the last of the ash and falls to its usual murmur. It should be safe to go outside now.</span>"
 	end_duration = 300
 	end_overlay = "light_ash"
 
-	area_type = /area/lavaland/surface/outdoors
-	target_trait = ORE_LEVEL
+	area_type = /area
+	protect_indoors = TRUE
+	target_trait = ZTRAIT_ASHSTORM
 
-	immunity_type = "ash"
+	immunity_type = TRAIT_ASHSTORM_IMMUNE
 
 	probability = 90
 
 	barometer_predictable = TRUE
+	var/list/weak_sounds = list()
+	var/list/strong_sounds = list()
 
-	var/datum/looping_sound/active_outside_ashstorm/sound_ao = new(list(), FALSE, TRUE)
-	var/datum/looping_sound/active_inside_ashstorm/sound_ai = new(list(), FALSE, TRUE)
-	var/datum/looping_sound/weak_outside_ashstorm/sound_wo = new(list(), FALSE, TRUE)
-	var/datum/looping_sound/weak_inside_ashstorm/sound_wi = new(list(), FALSE, TRUE)
-
-/datum/weather/ash_storm/proc/is_shuttle_docked(shuttleId, dockId)
-	var/obj/docking_port/mobile/M = SSshuttle.getShuttle(shuttleId)
-	return M && M.getDockedId() == dockId
-
-/datum/weather/ash_storm/proc/update_eligible_areas()
-	var/list/inside_areas = list()
-	var/list/outside_areas = list()
+/datum/weather/ash_storm/telegraph()
 	var/list/eligible_areas = list()
-	for(var/z in impacted_z_levels)
-		eligible_areas += GLOB.space_manager.areas_in_z["[z]"]
-
-	// Don't play storm audio to shuttles that are not at lavaland
-	var/miningShuttleDocked = is_shuttle_docked("mining", "mining_away")
-	if(!miningShuttleDocked)
-		eligible_areas -= get_areas(/area/shuttle/mining)
-
-	var/laborShuttleDocked = is_shuttle_docked("laborcamp", "laborcamp_away")
-	if(!laborShuttleDocked)
-		eligible_areas -= get_areas(/area/shuttle/siberia)
-
-	var/golemShuttleOnPlanet = is_shuttle_docked("freegolem", "freegolem_lavaland")
-	if(!golemShuttleOnPlanet)
-		eligible_areas -= get_areas(/area/shuttle/freegolem)
-
+	for (var/z in impacted_z_levels)
+		eligible_areas += SSmapping.areas_in_z["[z]"]
 	for(var/i in 1 to eligible_areas.len)
 		var/area/place = eligible_areas[i]
 		if(place.outdoors)
-			outside_areas += place
+			weak_sounds[place] = /datum/looping_sound/weak_outside_ashstorm
+			strong_sounds[place] = /datum/looping_sound/active_outside_ashstorm
 		else
-			inside_areas += place
+			weak_sounds[place] = /datum/looping_sound/weak_inside_ashstorm
+			strong_sounds[place] = /datum/looping_sound/active_inside_ashstorm
 		CHECK_TICK
 
-	sound_ao.output_atoms = outside_areas
-	sound_ai.output_atoms = inside_areas
-	sound_wo.output_atoms = outside_areas
-	sound_wi.output_atoms = inside_areas
-
-/datum/weather/ash_storm/proc/update_audio()
-	switch(stage)
-		if(STARTUP_STAGE)
-			sound_wo.start()
-			sound_wi.start()
-
-		if(MAIN_STAGE)
-			sound_wo.stop()
-			sound_wi.stop()
-
-			sound_ao.start()
-			sound_ai.start()
-
-		if(WIND_DOWN_STAGE)
-			sound_ao.stop()
-			sound_ai.stop()
-
-			sound_wo.start()
-			sound_wi.start()
-
-		if(END_STAGE)
-			sound_wo.stop()
-			sound_wi.stop()
-
-/datum/weather/ash_storm/telegraph()
-	. = ..()
-	update_eligible_areas()
-	update_audio()
+	//We modify this list instead of setting it to weak/stron sounds in order to preserve things that hold a reference to it
+	//It's essentially a playlist for a bunch of components that chose what sound to loop based on the area a player is in
+	GLOB.ash_storm_sounds += weak_sounds
+	return ..()
 
 /datum/weather/ash_storm/start()
-	. = ..()
-	update_audio()
+	GLOB.ash_storm_sounds -= weak_sounds
+	GLOB.ash_storm_sounds += strong_sounds
+	return ..()
 
 /datum/weather/ash_storm/wind_down()
+	GLOB.ash_storm_sounds -= strong_sounds
+	GLOB.ash_storm_sounds += weak_sounds
+	return ..()
+
+/datum/weather/ash_storm/can_weather_act(mob/living/mob_to_check)
 	. = ..()
-	update_audio()
+	if(!. || !ishuman(mob_to_check))
+		return
+	var/mob/living/carbon/human/human_to_check = mob_to_check
+	if(human_to_check.get_thermal_protection() >= FIRE_IMMUNITY_MAX_TEMP_PROTECT)
+		return FALSE
+
+/datum/weather/ash_storm/weather_act(mob/living/victim)
+	victim.adjustFireLoss(4, required_bodytype = BODYTYPE_ORGANIC)
 
 /datum/weather/ash_storm/end()
-	. = ..()
-	update_audio()
-
-/datum/weather/ash_storm/proc/is_ash_immune(atom/L)
-	while(L && !isturf(L))
-		if(ismecha(L)) //Mechs are immune
-			return TRUE
-		if(ishuman(L)) //Are you immune?
-			var/mob/living/carbon/human/H = L
-			var/thermal_protection = H.get_thermal_protection()
-			if(thermal_protection >= FIRE_IMMUNITY_MAX_TEMP_PROTECT)
-				return TRUE
-		L = L.loc //Matryoshka check
-	return FALSE //RIP you
-
-/datum/weather/ash_storm/weather_act(mob/living/L)
-	if(is_ash_immune(L))
-		return
-	L.adjustFireLoss(4)
-
+	GLOB.ash_storm_sounds -= weak_sounds
+	for(var/turf/open/misc/asteroid/basalt/basalt as anything in GLOB.dug_up_basalt)
+		if(!(basalt.loc in impacted_areas) || !(basalt.z in impacted_z_levels))
+			continue
+		basalt.refill_dug()
+	return ..()
 
 //Emberfalls are the result of an ash storm passing by close to the playable area of lavaland. They have a 10% chance to trigger in place of an ash storm.
 /datum/weather/ash_storm/emberfall

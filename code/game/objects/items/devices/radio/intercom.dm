@@ -1,303 +1,224 @@
 /obj/item/radio/intercom
-	name = "station intercom (General)"
-	desc = "Talk through this."
+	name = "station intercom"
+	desc = "A trusty station intercom, ready to spring into action even when the headsets go silent."
+	icon = 'icons/obj/machines/wallmounts.dmi'
 	icon_state = "intercom"
-	layer = ABOVE_WINDOW_LAYER
 	anchored = TRUE
 	w_class = WEIGHT_CLASS_BULKY
 	canhear_range = 2
-	flags = CONDUCT
-	blocks_emissive = FALSE
-	var/circuitry_installed = 1
-	var/buildstage = 0
-	var/custom_name
 	dog_fashion = null
+	unscrewed = FALSE
+	item_flags = NO_BLOOD_ON_ITEM
 
-/obj/item/radio/intercom/custom
-	name = "station intercom (Custom)"
-	custom_name = TRUE
-	broadcasting = FALSE
-	listening = FALSE
+	overlay_speaker_idle = "intercom_s"
+	overlay_speaker_active = "intercom_recieve"
 
-/obj/item/radio/intercom/interrogation
-	name = "station intercom (Interrogation)"
-	custom_name = TRUE
-	frequency  = AIRLOCK_FREQ
+	overlay_mic_idle = "intercom_m"
+	overlay_mic_active = null
 
-/obj/item/radio/intercom/private
-	name = "station intercom (Private)"
-	custom_name = TRUE
-	frequency = AI_FREQ
+	///The icon of intercom while its turned off
+	var/icon_off = "intercom-p"
 
-/obj/item/radio/intercom/command
-	name = "station intercom (Command)"
-	custom_name = TRUE
-	frequency = COMM_FREQ
+/obj/item/radio/intercom/unscrewed
+	unscrewed = TRUE
 
-/obj/item/radio/intercom/specops
-	name = "\improper Special Operations intercom"
-	custom_name = TRUE
-	frequency = ERT_FREQ
+/obj/item/radio/intercom/prison
+	name = "receive-only intercom"
+	desc = "A station intercom. It looks like it has been modified to not broadcast."
+	icon_state = "intercom_prison"
+	icon_off = "intercom_prison-p"
 
-/obj/item/radio/intercom/department
-	canhear_range = 5
-	custom_name = TRUE
-	broadcasting = FALSE
-	listening = TRUE
-
-/obj/item/radio/intercom/department/medbay
-	name = "station intercom (Medbay)"
-	frequency = MED_I_FREQ
-
-/obj/item/radio/intercom/department/security
-	name = "station intercom (Security)"
-	frequency = SEC_I_FREQ
-
-/obj/item/radio/intercom/New(turf/loc, direction, building = 3)
+/obj/item/radio/intercom/prison/Initialize(mapload, ndir, building)
 	. = ..()
-	buildstage = building
-	if(buildstage)
-		update_operating_status()
-	else
-		if(direction)
-			setDir(direction)
-			set_pixel_offsets_from_dir(28, -28, 28, -28)
-		b_stat = TRUE
-		on = FALSE
-	GLOB.global_intercoms.Add(src)
-	update_icon(UPDATE_ICON_STATE | UPDATE_OVERLAYS)
+	wires?.cut(WIRE_TX)
 
-/obj/item/radio/intercom/Initialize()
+/obj/item/radio/intercom/Initialize(mapload, ndir, building)
 	. = ..()
-	if(!custom_name)
-		name = "station intercom (General)"
-
-/obj/item/radio/intercom/department/medbay/New()
-	..()
-	internal_channels = GLOB.default_medbay_channels.Copy()
-
-/obj/item/radio/intercom/department/security/New()
-	..()
-	internal_channels = list(
-		num2text(PUB_FREQ) = list(),
-		num2text(SEC_I_FREQ) = list(ACCESS_SECURITY)
-	)
-
-/obj/item/radio/intercom/syndicate
-	name = "illicit intercom"
-	desc = "Talk through this. Evilly"
-	frequency = SYND_FREQ
-	syndiekey = new /obj/item/encryptionkey/syndicate/nukeops
-
-/obj/item/radio/intercom/syndicate/New()
-	..()
-	internal_channels[num2text(SYND_FREQ)] = list(ACCESS_SYNDICATE)
-
-/obj/item/radio/intercom/pirate
-	name = "pirate radio intercom"
-	desc = "You wouldn't steal a space shuttle. Piracy. It's a crime!"
-
-/obj/item/radio/intercom/pirate/New()
-	..()
-	internal_channels.Cut()
-	internal_channels = list(
-		num2text(PUB_FREQ) = list(),
-		num2text(AI_FREQ)  = list(),
-		num2text(COMM_FREQ)= list(),
-		num2text(ENG_FREQ) = list(),
-		num2text(MED_FREQ) = list(),
-		num2text(MED_I_FREQ)=list(),
-		num2text(SEC_FREQ) = list(),
-		num2text(SEC_I_FREQ)=list(),
-		num2text(SCI_FREQ) = list(),
-		num2text(SUP_FREQ) = list(),
-		num2text(SRV_FREQ) = list()
-	)
+	var/area/current_area = get_area(src)
+	if(!current_area)
+		return
+	RegisterSignal(current_area, COMSIG_AREA_POWER_CHANGE, PROC_REF(AreaPowerCheck))
+	GLOB.intercoms_list += src
+	if(!unscrewed)
+		find_and_hang_on_wall(directional = TRUE, \
+			custom_drop_callback = CALLBACK(src, PROC_REF(knock_down)))
 
 /obj/item/radio/intercom/Destroy()
-	GLOB.global_intercoms.Remove(src)
-	return ..()
-
-/obj/item/radio/intercom/attack_ai(mob/user)
-	add_hiddenprint(user)
-	add_fingerprint(user)
-	attack_self(user)
-
-/obj/item/radio/intercom/attack_hand(mob/user)
-	add_fingerprint(user)
-	attack_self(user)
-
-/obj/item/radio/intercom/receive_range(freq, level)
-	if(!is_listening())
-		return -1
-	if(!(0 in level))
-		var/turf/position = get_turf(src)
-		// TODO: Integrate radio with the space manager
-		if(isnull(position) || !(position.z in level))
-			return -1
-	if(freq in SSradio.ANTAG_FREQS)
-		if(!(syndiekey))
-			return -1//Prevents broadcast of messages over devices lacking the encryption
-
-	return canhear_range
+	. = ..()
+	GLOB.intercoms_list -= src
 
 /obj/item/radio/intercom/examine(mob/user)
 	. = ..()
-	switch(buildstage)
-		if(0)
-			. += "<span class='notice'>The frame is <b>welded</b> to the wall, but missing <i>circuitry</i>.</span>"
-		if(1)
-			. += "<span class='notice'>The speaker needs to be <i>wired</i>, though the board could be <b>pried</b> out.</span>"
-		if(2)
-			. += "<span class='notice'>The intercom is <b>wired</b>, and the maintenance panel is <i>unscrewed</i>.</span>"
-
-/obj/item/radio/intercom/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/stack/tape_roll)) //eww
-		return
-	else if(iscoil(W) && buildstage == 1)
-		var/obj/item/stack/cable_coil/coil = W
-		if(coil.get_amount() < 5)
-			to_chat(user, "<span class='warning'>You need more cable for this!</span>")
-			return
-		if(do_after(user, 10 * coil.toolspeed, target = src) && buildstage == 1)
-			coil.use(5)
-			to_chat(user, "<span class='notice'>You wire \the [src]!</span>")
-			buildstage = 2
-		return 1
-	else if(istype(W,/obj/item/intercom_electronics) && buildstage == 0)
-		playsound(get_turf(src), W.usesound, 50, 1)
-		if(do_after(user, 10 * W.toolspeed, target = src) && buildstage == 0)
-			qdel(W)
-			to_chat(user, "<span class='notice'>You insert \the [W] into \the [src]!</span>")
-			buildstage = 1
-		return 1
+	. += span_notice("Use [MODE_TOKEN_INTERCOM] when nearby to speak into it.")
+	if(!unscrewed)
+		. += span_notice("It's <b>screwed</b> and secured to the wall.")
 	else
-		return ..()
+		. += span_notice("It's <i>unscrewed</i> from the wall, and can be <b>detached</b>.")
 
-/obj/item/radio/intercom/crowbar_act(mob/user, obj/item/I)
-	if(buildstage != 1)
-		return
-	. = TRUE
-	if(!I.tool_use_check(user, 0))
-		return
-	to_chat(user, "<span class='notice'>You begin removing the electronics...</span>")
-	if(!I.use_tool(src, user, 10, volume = I.tool_volume) || buildstage != 1)
-		return
-	new /obj/item/intercom_electronics(get_turf(src))
-	to_chat(user, "<span class='notice'>The circuit board pops out!</span>")
-	buildstage = 0
+	if(anonymize)
+		. += span_notice("Speaking through this intercom will anonymize your voice.")
 
-/obj/item/radio/intercom/screwdriver_act(mob/user, obj/item/I)
-	if(buildstage != 2)
-		return ..()
-	. = TRUE
-	if(!I.tool_use_check(user, 0))
-		return
-	if(!I.use_tool(src, user, 10, volume = I.tool_volume) || buildstage != 2)
-		return
-	update_icon(UPDATE_ICON_STATE)
-	on = TRUE
-	b_stat = FALSE
-	buildstage = 3
-	to_chat(user, "<span class='notice'>You secure the electronics!</span>")
-	update_icon(UPDATE_ICON_STATE)
-	update_operating_status()
-	for(var/i, i<= 5, i++)
-		wires.on_cut(i, 1)
-
-/obj/item/radio/intercom/wirecutter_act(mob/user, obj/item/I)
-	if(!(buildstage == 3 && b_stat && wires.is_all_cut()))
-		return ..()
-	. = TRUE
-	if(!I.use_tool(src, user, 0, volume = I.tool_volume))
-		return
-	WIRECUTTER_SNIP_MESSAGE
-	new /obj/item/stack/cable_coil(get_turf(src),5)
-	on = FALSE
-	b_stat = TRUE
-	buildstage = 1
-	update_icon(UPDATE_ICON_STATE | UPDATE_OVERLAYS)
-	update_operating_status(FALSE)
-
-/obj/item/radio/intercom/welder_act(mob/user, obj/item/I)
-	if(buildstage != 0)
-		return
-	. = TRUE
-	if(!I.tool_use_check(user, 3))
-		return
-	to_chat(user, "<span class='notice'>You start slicing [src] from the wall...</span>")
-	if(I.use_tool(src, user, 10, amount = 3, volume = I.tool_volume))
-		to_chat(user, "<span class='notice'>You cut [src] free from the wall!</span>")
-		new /obj/item/mounted/frame/intercom(get_turf(src))
-		qdel(src)
-
-/obj/item/radio/intercom/update_icon_state()
-	if(!circuitry_installed)
-		icon_state="intercom-frame"
+	if(freqlock == RADIO_FREQENCY_UNLOCKED)
+		if(obj_flags & EMAGGED)
+			. += span_warning("Its frequency lock has been shorted...")
 	else
-		icon_state = "intercom[!on?"-p":""][b_stat ? "-open":""]"
+		. += span_notice("It has a frequency lock set to [frequency/10].")
 
-/obj/item/radio/intercom/update_overlays()
-	. = ..()
-	underlays.Cut()
-
-	if(on && buildstage == 3)
-		underlays += emissive_appearance(icon, "intercom_lightmask")
-
-/obj/item/radio/intercom/proc/update_operating_status(on = TRUE)
-	var/area/current_area = get_area(src)
-	if(!current_area)
-		return
-	if(on)
-		RegisterSignal(current_area.powernet, COMSIG_POWERNET_POWER_CHANGE, PROC_REF(local_powernet_check))
+/obj/item/radio/intercom/screwdriver_act(mob/living/user, obj/item/tool)
+	if(unscrewed)
+		user.visible_message(span_notice("[user] starts tightening [src]'s screws..."), span_notice("You start screwing in [src]..."))
+		if(tool.use_tool(src, user, 30, volume=50))
+			user.visible_message(span_notice("[user] tightens [src]'s screws!"), span_notice("You tighten [src]'s screws."))
+			unscrewed = FALSE
 	else
-		UnregisterSignal(current_area.powernet, COMSIG_POWERNET_POWER_CHANGE)
+		user.visible_message(span_notice("[user] starts loosening [src]'s screws..."), span_notice("You start unscrewing [src]..."))
+		if(tool.use_tool(src, user, 40, volume=50))
+			user.visible_message(span_notice("[user] loosens [src]'s screws!"), span_notice("You unscrew [src], loosening it from the wall."))
+			unscrewed = TRUE
+	return TRUE
+
+/obj/item/radio/intercom/wrench_act(mob/living/user, obj/item/tool)
+	. = TRUE
+	if(!unscrewed)
+		to_chat(user, span_warning("You need to unscrew [src] from the wall first!"))
+		return
+	user.visible_message(span_notice("[user] starts unsecuring [src]..."), span_notice("You start unsecuring [src]..."))
+	tool.play_tool_sound(src)
+	if(tool.use_tool(src, user, 80))
+		user.visible_message(span_notice("[user] unsecures [src]!"), span_notice("You detach [src] from the wall."))
+		playsound(src, 'sound/items/deconstruct.ogg', 50, TRUE)
+		knock_down()
 
 /**
-  * Proc called whenever the intercom's local powernet loses or gains power. Responsible for setting the `on` variable and calling `update_icon()`.
-  *
-  * Normally called after the intercom's local powernet sends the `COMSIG_POWERNET_POWER_CHANGE` signal, but it can also be called directly.
-  * Arguments:
-  *
-  * source - the area that just had a power change.
-  */
-/obj/item/radio/intercom/proc/local_powernet_check(datum/source)
+ * Override attack_tk_grab instead of attack_tk because we actually want attack_tk's
+ * functionality. What we DON'T want is attack_tk_grab attempting to pick up the
+ * intercom as if it was an ordinary item.
+ */
+/obj/item/radio/intercom/attack_tk_grab(mob/user)
+	interact(user)
+	return COMPONENT_CANCEL_ATTACK_CHAIN
+
+
+/obj/item/radio/intercom/attack_ai(mob/user)
+	interact(user)
+
+/obj/item/radio/intercom/attack_hand(mob/user, list/modifiers)
+	. = ..()
+	if(.)
+		return
+	interact(user)
+
+/obj/item/radio/intercom/ui_state(mob/user)
+	return GLOB.default_state
+
+/obj/item/radio/intercom/can_receive(freq, list/levels)
+	if(levels != RADIO_NO_Z_LEVEL_RESTRICTION)
+		var/turf/position = get_turf(src)
+		if(isnull(position) || !(position.z in levels))
+			return FALSE
+
+	if(freq == FREQ_SYNDICATE)
+		if(!(syndie))
+			return FALSE//Prevents broadcast of messages over devices lacking the encryption
+
+	return TRUE
+
+/obj/item/radio/intercom/Hear(message, atom/movable/speaker, message_langs, raw_message, radio_freq, list/spans, list/message_mods = list(), message_range)
+	if(message_mods[RADIO_EXTENSION] == MODE_INTERCOM)
+		return  // Avoid hearing the same thing twice
+	return ..()
+
+/obj/item/radio/intercom/emp_act(severity)
+	. = ..() // Parent call here will set `on` to FALSE.
+	update_appearance()
+
+/obj/item/radio/intercom/end_emp_effect(curremp)
+	. = ..()
+	AreaPowerCheck() // Make sure the area/local APC is powered first before we actually turn back on.
+
+/obj/item/radio/intercom/emag_act(mob/user, obj/item/card/emag/emag_card)
+	. = ..()
+
+	if(obj_flags & EMAGGED)
+		return
+
+	switch(freqlock)
+		// Emagging an intercom with an emaggable lock will remove the lock
+		if(RADIO_FREQENCY_EMAGGABLE_LOCK)
+			balloon_alert(user, "frequency lock cleared")
+			playsound(src, SFX_SPARKS, 75, TRUE, SILENCED_SOUND_EXTRARANGE)
+			freqlock = RADIO_FREQENCY_UNLOCKED
+			obj_flags |= EMAGGED
+			return TRUE
+
+		// A fully locked one will do nothing, as locked is intended to be used for stuff that should never be changed
+		if(RADIO_FREQENCY_LOCKED)
+			balloon_alert(user, "can't override frequency lock!")
+			playsound(src, 'sound/machines/buzz-two.ogg', 50, FALSE, SILENCED_SOUND_EXTRARANGE)
+			return
+
+		// Emagging an unlocked one will do nothing, for now
+		else
+			return
+
+/obj/item/radio/intercom/update_icon_state()
+	icon_state = on ? initial(icon_state) : icon_off
+	return ..()
+
+/**
+ * Proc called whenever the intercom's area loses or gains power. Responsible for setting the `on` variable and calling `update_icon()`.
+ *
+ * Normally called after the intercom's area receives the `COMSIG_AREA_POWER_CHANGE` signal, but it can also be called directly.
+ * Arguments:
+ * * source - the area that just had a power change.
+ */
+/obj/item/radio/intercom/proc/AreaPowerCheck(datum/source)
+	SIGNAL_HANDLER
 	var/area/current_area = get_area(src)
 	if(!current_area)
-		on = FALSE
-		set_light(0)
+		set_on(FALSE)
 	else
-		on = current_area.powernet.has_power(PW_CHANNEL_EQUIPMENT) // set "on" to the equipment power status of our area.
-		set_light(1, LIGHTING_MINIMUM_POWER)
-	update_icon(UPDATE_ICON_STATE | UPDATE_OVERLAYS)
+		set_on(current_area.powered(AREA_USAGE_EQUIP)) // set "on" to the equipment power status of our area.
+	update_appearance()
 
-/obj/item/intercom_electronics
-	name = "intercom electronics"
-	icon = 'icons/obj/doors/door_assembly.dmi'
-	icon_state = "door_electronics"
-	desc = "Looks like a circuit. Probably is."
-	w_class = WEIGHT_CLASS_SMALL
-	materials = list(MAT_METAL = 100, MAT_GLASS = 100)
-	origin_tech = "engineering=2;programming=1"
-	toolspeed = 1
-	usesound = 'sound/items/deconstruct.ogg'
+/**
+ * Called by the wall mount component and reused during the tool deconstruction proc.
+ */
+/obj/item/radio/intercom/proc/knock_down()
+	new/obj/item/wallframe/intercom(get_turf(src))
+	qdel(src)
 
-/obj/item/radio/intercom/locked
-	freqlock = TRUE
-	custom_name = TRUE
+//Created through the autolathe or through deconstructing intercoms. Can be applied to wall to make a new intercom on it!
+/obj/item/wallframe/intercom
+	name = "intercom frame"
+	desc = "A ready-to-go intercom. Just slap it on a wall and screw it in!"
+	icon = 'icons/obj/machines/wallmounts.dmi'
+	icon_state = "intercom"
+	result_path = /obj/item/radio/intercom/unscrewed
+	pixel_shift = 26
+	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 0.75, /datum/material/glass = SMALL_MATERIAL_AMOUNT * 0.25)
 
-/obj/item/radio/intercom/locked/ai_private
-	name = "\improper AI intercom"
-	frequency = AI_FREQ
+MAPPING_DIRECTIONAL_HELPERS(/obj/item/radio/intercom, 27)
 
-/obj/item/radio/intercom/locked/confessional
-	name = "confessional intercom"
-	frequency = 1480
+/obj/item/radio/intercom/chapel
+	name = "Confessional intercom"
+	desc = "Talk through this... to confess your many sins. Conceals your voice, to keep them secret."
+	anonymize = TRUE
+	freqlock = RADIO_FREQENCY_EMAGGABLE_LOCK
 
-/obj/item/radio/intercom/locked/prison
-	name = "\improper prison intercom"
-	desc = "Talk through this. It looks like it has been modified to not broadcast."
+/obj/item/radio/intercom/chapel/Initialize(mapload, ndir, building)
+	. = ..()
+	set_frequency(1481)
+	set_broadcasting(TRUE)
 
-/obj/item/radio/intercom/locked/prison/New()
-	..()
-	wires.cut(WIRE_RADIO_TRANSMIT)
+/obj/item/radio/intercom/command
+	name = "command intercom"
+	desc = "The command's special free-frequency intercom. It's a versatile tool that can be tuned to any frequency, granting you access to channels you're not supposed to be on. Plus, it comes equipped with a built-in voice amplifier for crystal-clear communication."
+	icon_state = "intercom_command"
+	freerange = TRUE
+	command = TRUE
+	icon_off = "intercom_command-p"
+
+MAPPING_DIRECTIONAL_HELPERS(/obj/item/radio/intercom/prison, 27)
+MAPPING_DIRECTIONAL_HELPERS(/obj/item/radio/intercom/chapel, 27)
+MAPPING_DIRECTIONAL_HELPERS(/obj/item/radio/intercom/command, 27)

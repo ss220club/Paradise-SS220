@@ -1,124 +1,147 @@
 // This is to replace the previous datum/disease/alien_embryo for slightly improved handling and maintainability
 // It functions almost identically (see code/datums/diseases/alien_embryo.dm)
-
 /obj/item/organ/internal/body_egg/alien_embryo
 	name = "alien embryo"
-	icon = 'icons/mob/alien.dmi'
+	icon = 'icons/mob/nonhuman-player/alien.dmi'
 	icon_state = "larva0_dead"
+	food_reagents = list(/datum/reagent/consumable/nutriment = 5, /datum/reagent/toxin/acid = 10)
+	///What stage of growth the embryo is at. Developed embryos give the host symptoms suggesting that an embryo is inside them.
 	var/stage = 0
-	var/polling = FALSE
-	///How long it takes for an alien embryo to advance a stage in it's development
-	var/incubation_time_per_stage = 70 SECONDS
-	///The random deviation for how long the incubation period per stage will take, ranging from -15% to +15. NOTE! If you have a better name for this var, I'd love it
-	var/incubation_deviation = 0
-	///Used to keep track of when incubation progressed to the next stage
-	var/last_stage_progress = 0
+	/// Are we bursting out of the poor sucker who's the xeno mom?
+	var/bursting = FALSE
+	/// How long does it take to advance one stage? Growth time * 5 = how long till we make a Larva!
+	var/growth_time = 60 SECONDS
+
+/obj/item/organ/internal/body_egg/alien_embryo/Initialize(mapload)
+	. = ..()
+	advance_embryo_stage()
 
 /obj/item/organ/internal/body_egg/alien_embryo/on_find(mob/living/finder)
 	..()
-	if(stage < 4)
-		to_chat(finder, "It's small and weak, barely the size of a fetus.")
+	if(stage < 5)
+		to_chat(finder, span_notice("It's small and weak, barely the size of a foetus."))
 	else
-		to_chat(finder, "It's grown quite large, and writhes slightly as you look at it.")
-		AttemptGrow(burst_on_success = FALSE)
+		to_chat(finder, span_notice("It's grown quite large, and writhes slightly as you look at it."))
+		if(prob(10))
+			attempt_grow(gib_on_success = FALSE)
 
-/obj/item/organ/internal/body_egg/alien_embryo/prepare_eat()
-	var/obj/S = ..()
-	S.reagents.add_reagent("sacid", 10)
-	return S
+/obj/item/organ/internal/body_egg/alien_embryo/on_life(seconds_per_tick, times_fired)
+	. = ..()
+	if(QDELETED(src) || QDELETED(owner))
+		return
 
-/obj/item/organ/internal/body_egg/alien_embryo/on_life()
 	switch(stage)
-		if(2)
-			if(prob(2))
+		if(3, 4)
+			if(SPT_PROB(1, seconds_per_tick))
 				owner.emote("sneeze")
-			if(prob(2))
+			if(SPT_PROB(1, seconds_per_tick))
 				owner.emote("cough")
-			if(prob(2))
-				to_chat(owner, "<span class='danger'>Your throat feels sore.</span>")
-			if(prob(2))
-				to_chat(owner, "<span class='danger'>Mucous runs down the back of your throat.</span>")
-		if(3)
-			if(prob(2))
+			if(SPT_PROB(1, seconds_per_tick))
+				to_chat(owner, span_danger("Your throat feels sore."))
+			if(SPT_PROB(1, seconds_per_tick))
+				to_chat(owner, span_danger("Mucous runs down the back of your throat."))
+		if(5)
+			if(SPT_PROB(1, seconds_per_tick))
 				owner.emote("sneeze")
-			if(prob(2))
+			if(SPT_PROB(1, seconds_per_tick))
 				owner.emote("cough")
-			if(prob(4))
-				to_chat(owner, "<span class='danger'>Your muscles ache.</span>")
+			if(SPT_PROB(2, seconds_per_tick))
+				to_chat(owner, span_danger("Your muscles ache."))
 				if(prob(20))
-					owner.take_organ_damage(1)
-			if(prob(4))
-				to_chat(owner, "<span class='danger'>Your chest hurts.</span>")
+					owner.take_bodypart_damage(1)
+			if(SPT_PROB(2, seconds_per_tick))
+				to_chat(owner, span_danger("Your stomach hurts."))
 				if(prob(20))
 					owner.adjustToxLoss(1)
-		if(4)
-			to_chat(owner, "<span class='danger'>You feel something tearing its way out of your chest...</span>")
-			owner.adjustToxLoss(10)
+		if(6)
+			to_chat(owner, span_danger("You feel something tearing its way out of your chest..."))
+			owner.adjustToxLoss(5 * seconds_per_tick) // Why is this [TOX]?
+
+/// Controls Xenomorph Embryo growth. If embryo is fully grown (or overgrown), stop the proc. If not, increase the stage by one and if it's not fully grown (stage 6), add a timer to do this proc again after however long the growth time variable is.
+/obj/item/organ/internal/body_egg/alien_embryo/proc/advance_embryo_stage()
+	if(stage >= 6)
+		return
+	stage++
+	if(stage < 6)
+		INVOKE_ASYNC(src, PROC_REF(RefreshInfectionImage))
+		var/slowdown = 1
+		if(!isnull(owner)) // it gestates out of bodies.
+			if(HAS_TRAIT(owner, TRAIT_VIRUS_RESISTANCE))
+				slowdown *= 2 // spaceacillin doubles the time it takes to grow
+			if(owner.has_status_effect(/datum/status_effect/nest_sustenance))
+				slowdown *= 0.80 //egg gestates 20% faster if you're trapped in a nest
+
+		addtimer(CALLBACK(src, PROC_REF(advance_embryo_stage)), growth_time*slowdown)
 
 /obj/item/organ/internal/body_egg/alien_embryo/egg_process()
-	if(stage < 4 && world.time > last_stage_progress + incubation_deviation) ///Time for incubation is increased or decreased by a deviation of 15%, then we check to see if we've passed the threshold to goto our next stage of development
-		stage++
-		RefreshInfectionImage()
-		incubation_deviation = PERCENT_OF(rand(85, 115), incubation_time_per_stage) ///The actual deviation location, and where the magic happens
-		last_stage_progress = world.time
-
-	if(stage == 4)
-		for(var/datum/surgery/S in owner.surgeries)
-			if(S.location == "chest" && S.organ_to_manipulate.open >= ORGAN_ORGANIC_OPEN)
-				AttemptGrow(burst_on_success = FALSE) ///If you managed to get this far, you deserve to be rewarded somewhat
-				return
-		AttemptGrow()
-
-
-
-/obj/item/organ/internal/body_egg/alien_embryo/proc/AttemptGrow(burst_on_success = TRUE)
-	if(!owner || polling)
-		return
-	polling = TRUE
-	spawn()
-		var/list/candidates = SSghost_spawns.poll_candidates("Do you want to play as an alien?", ROLE_ALIEN, FALSE, source = /mob/living/carbon/alien/larva)
-		var/mob/C = null
-
-		// To stop clientless larva, we will check that our host has a client
-		// if we find no ghosts to become the alien. If the host has a client
-		// he will become the alien but if he doesn't then we will set the stage
-		// to 2, so we don't do a process heavy check everytime.
-
-		if(candidates.len)
-			C = pick(candidates)
-		else if(owner.client)
-			C = owner.client
-		else
-			stage = 2 // Let's try again later.
-			polling = FALSE
+	if(stage == 6 && prob(50))
+		for(var/datum/surgery/operations as anything in owner.surgeries)
+			if(operations.location != BODY_ZONE_CHEST)
+				continue
+			if(!istype(operations.get_surgery_step(), /datum/surgery_step/manipulate_organs/internal))
+				continue
+			attempt_grow(gib_on_success = FALSE)
 			return
+		attempt_grow()
 
-		var/overlay = image('icons/mob/alien.dmi', loc = owner, icon_state = "burst_lie")
-		owner.add_overlay(overlay)
+/// Attempt to burst an alien outside of the host, getting a ghost to play as the xeno.
+/obj/item/organ/internal/body_egg/alien_embryo/proc/attempt_grow(gib_on_success = TRUE)
+	if(QDELETED(owner) || bursting)
+		return
 
-		spawn(6)
-			owner.cut_overlay(overlay)
-			var/mob/living/carbon/alien/larva/new_xeno = new(owner.drop_location())
-			new_xeno.key = C.key
-			dust_if_respawnable(C)
-			if(SSticker && SSticker.mode)
-				SSticker.mode.xenos += new_xeno.mind
-			new_xeno.mind.name = new_xeno.name
-			new_xeno.mind.assigned_role = SPECIAL_ROLE_XENOMORPH
-			new_xeno.mind.special_role = SPECIAL_ROLE_XENOMORPH
-			SEND_SOUND(new_xeno, sound('sound/voice/hiss5.ogg'))
-			to_chat(new_xeno, "<span class='motd'>For more information, check the wiki page: ([GLOB.configuration.url.wiki_url]/index.php/Xenomorph)</span>")
+	bursting = TRUE
 
-			if(burst_on_success) //If we burst naturally
-				owner.apply_damage(300, BRUTE, BODY_ZONE_CHEST)
-				owner.bleed(BLOOD_VOLUME_NORMAL)
-				var/obj/item/organ/external/chest = owner.get_organ(BODY_ZONE_CHEST)
-				chest.fracture()
-				chest.droplimb()
-			else //If we are discovered mid-surgery
-				owner.adjustBruteLoss(40)
-			SSblackbox.record_feedback("tally", "alien_growth", 1, "hatched_eggs")
-			qdel(src)
+	var/datum/callback/to_call = CALLBACK(src, PROC_REF(on_poll_concluded), gib_on_success)
+	owner.AddComponent(/datum/component/orbit_poll, \
+		ignore_key = POLL_IGNORE_ALIEN_LARVA, \
+		job_bans = ROLE_ALIEN, \
+		to_call = to_call, \
+		custom_message = "An alien is bursting out of [owner.real_name]", \
+		title = "alien larva" \
+	)
+
+/// Poll has concluded with a suitor
+/obj/item/organ/internal/body_egg/alien_embryo/proc/on_poll_concluded(gib_on_success, mob/dead/observer/ghost)
+	if(QDELETED(owner))
+		return
+
+	if(isnull(ghost))
+		bursting = FALSE
+		stage = 5 // If no ghosts sign up for the Larva, let's regress our growth by one minute, we will try again!
+		addtimer(CALLBACK(src, PROC_REF(advance_embryo_stage)), growth_time)
+		return
+
+	var/mutable_appearance/overlay = mutable_appearance('icons/mob/nonhuman-player/alien.dmi', "burst_lie")
+	owner.add_overlay(overlay)
+
+	var/atom/xeno_loc = get_turf(owner)
+	var/mob/living/carbon/alien/larva/new_xeno = new(xeno_loc)
+	new_xeno.key = ghost.key
+	SEND_SOUND(new_xeno, sound('sound/voice/hiss5.ogg',0,0,0,100)) //To get the player's attention
+	new_xeno.add_traits(list(TRAIT_HANDS_BLOCKED, TRAIT_IMMOBILIZED, TRAIT_NO_TRANSFORM), type) //so we don't move during the bursting animation
+	new_xeno.SetInvisibility(INVISIBILITY_MAXIMUM, id=type)
+
+	sleep(0.6 SECONDS)
+
+	if(QDELETED(src) || QDELETED(owner))
+		qdel(new_xeno)
+		CRASH("AttemptGrow failed due to the early qdeletion of source or owner.")
+
+	if(!isnull(new_xeno))
+		new_xeno.remove_traits(list(TRAIT_HANDS_BLOCKED, TRAIT_IMMOBILIZED, TRAIT_NO_TRANSFORM), type)
+		new_xeno.RemoveInvisibility(type)
+
+	if(gib_on_success)
+		new_xeno.visible_message(span_danger("[new_xeno] bursts out of [owner] in a shower of gore!"), span_userdanger("You exit [owner], your previous host."), span_hear("You hear organic matter ripping and tearing!"))
+		owner.investigate_log("has been gibbed by an alien larva.", INVESTIGATE_DEATHS)
+		owner.gib(DROP_ORGANS|DROP_BODYPARTS)
+	else
+		new_xeno.visible_message(span_danger("[new_xeno] wriggles out of [owner]!"), span_userdanger("You exit [owner], your previous host."))
+		owner.log_message("had an alien larva within them escape (without being gibbed).", LOG_ATTACK, log_globally = FALSE)
+		owner.adjustBruteLoss(40)
+		owner.cut_overlay(overlay)
+	qdel(src)
+
 
 /*----------------------------------------
 Proc: AddInfectionImages(C)
@@ -126,9 +149,8 @@ Des: Adds the infection image to all aliens for this embryo
 ----------------------------------------*/
 /obj/item/organ/internal/body_egg/alien_embryo/AddInfectionImages()
 	for(var/mob/living/carbon/alien/alien in GLOB.player_list)
-		if(alien.client)
-			var/I = image('icons/mob/alien.dmi', loc = owner, icon_state = "infected[stage]")
-			alien.client.images += I
+		var/I = image('icons/mob/nonhuman-player/alien.dmi', loc = owner, icon_state = "infected[stage]")
+		alien.client?.images += I
 
 /*----------------------------------------
 Proc: RemoveInfectionImage(C)
@@ -136,7 +158,7 @@ Des: Removes all images from the mob infected by this embryo
 ----------------------------------------*/
 /obj/item/organ/internal/body_egg/alien_embryo/RemoveInfectionImages()
 	for(var/mob/living/carbon/alien/alien in GLOB.player_list)
-		if(alien.client)
-			for(var/image/I in alien.client.images)
-				if(dd_hasprefix_case(I.icon_state, "infected") && I.loc == owner)
-					qdel(I)
+		for(var/image/I in alien.client?.images)
+			var/searchfor = "infected"
+			if(I.loc == owner && findtext(I.icon_state, searchfor, 1, length(searchfor) + 1))
+				qdel(I)

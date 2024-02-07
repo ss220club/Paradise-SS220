@@ -1,77 +1,301 @@
-//wip wip wup
+
+// Normal Mirrors
+
+#define CHANGE_HAIR "Change Hair"
+#define CHANGE_BEARD "Change Beard"
+
+// Magic Mirrors!
+
+#define CHANGE_RACE "Change Race"
+#define CHANGE_SEX  "Change Sex"
+#define CHANGE_NAME "Change Name"
+#define CHANGE_EYES "Change Eyes"
+
+#define INERT_MIRROR_OPTIONS list(CHANGE_HAIR, CHANGE_BEARD)
+#define PRIDE_MIRROR_OPTIONS list(CHANGE_HAIR, CHANGE_BEARD, CHANGE_RACE, CHANGE_SEX, CHANGE_EYES)
+#define MAGIC_MIRROR_OPTIONS list(CHANGE_HAIR, CHANGE_BEARD, CHANGE_RACE, CHANGE_SEX, CHANGE_EYES, CHANGE_NAME)
+
 /obj/structure/mirror
 	name = "mirror"
 	desc = "Mirror mirror on the wall, who's the most robust of them all?"
 	icon = 'icons/obj/watercloset.dmi'
 	icon_state = "mirror"
+	movement_type = FLOATING
 	density = FALSE
 	anchored = TRUE
+	integrity_failure = 0.5
 	max_integrity = 200
-	integrity_failure = 100
-	var/list/ui_users = list()
+	var/list/mirror_options = INERT_MIRROR_OPTIONS
 
-/obj/structure/mirror/Initialize(mapload, newdir = SOUTH, building = FALSE)
+	///Flags this race must have to be selectable with this type of mirror.
+	var/race_flags = MIRROR_MAGIC
+	///List of all Races that can be chosen, decided by its Initialize.
+	var/list/selectable_races = list()
+
+/obj/structure/mirror/Initialize(mapload)
 	. = ..()
-	if(building)
-		switch(newdir)
-			if(NORTH)
-				pixel_y = -32
-			if(SOUTH)
-				pixel_y = 32
-			if(EAST)
-				pixel_x = -32
-			if(WEST)
-				pixel_x = 32
-	GLOB.mirrors += src
+	update_choices()
 
 /obj/structure/mirror/Destroy()
-	QDEL_LIST_ASSOC_VAL(ui_users)
-	GLOB.mirrors -= src
+	mirror_options = null
+	selectable_races = null
 	return ..()
 
-/obj/structure/mirror/attack_hand(mob/user)
+/obj/structure/mirror/proc/update_choices()
+	for(var/i in mirror_options)
+		mirror_options[i] = icon('icons/hud/radial.dmi', i)
+
+/obj/structure/mirror/Initialize(mapload)
+	. = ..()
+	var/static/list/reflection_filter = alpha_mask_filter(icon = icon('icons/obj/watercloset.dmi', "mirror_mask"))
+	var/static/matrix/reflection_matrix = matrix(0.75, 0, 0, 0, 0.75, 0)
+	var/datum/callback/can_reflect = CALLBACK(src, PROC_REF(can_reflect))
+	var/list/update_signals = list(COMSIG_ATOM_BREAK)
+	AddComponent(/datum/component/reflection, reflection_filter = reflection_filter, reflection_matrix = reflection_matrix, can_reflect = can_reflect, update_signals = update_signals)
+
+/obj/structure/mirror/proc/can_reflect(atom/movable/target)
+	///I'm doing it this way too, because the signal is sent before the broken variable is set to TRUE.
+	if(atom_integrity <= integrity_failure * max_integrity)
+		return FALSE
+	if(broken || !isliving(target) || HAS_TRAIT(target, TRAIT_NO_MIRROR_REFLECTION))
+		return FALSE
+	return TRUE
+
+MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror, 28)
+
+/obj/structure/mirror/Initialize(mapload)
+	. = ..()
+	find_and_hang_on_wall()
+
+/obj/structure/mirror/broken
+	icon_state = "mirror_broke"
+
+/obj/structure/mirror/broken/Initialize(mapload)
+	. = ..()
+	atom_break(null, mapload)
+
+MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror/broken, 28)
+
+/obj/structure/mirror/attack_hand(mob/living/carbon/human/user)
+	. = ..()
+
+	if(. || !ishuman(user) || broken)
+		return TRUE
+
+	if(!istype(src, /obj/structure/mirror/magic) && !user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
+		return TRUE //no tele-grooming (if nonmagical)
+
+	return display_radial_menu(user)
+
+/obj/structure/mirror/proc/display_radial_menu(mob/living/carbon/human/user)
+	var/pick = show_radial_menu(user, src, mirror_options, user, radius = 36, require_near = TRUE)
+	if(!pick)
+		return TRUE //get out
+
+	switch(pick)
+		if(CHANGE_HAIR)
+			change_hair(user)
+		if(CHANGE_BEARD)
+			change_beard(user)
+		if(CHANGE_RACE)
+			change_race(user)
+		if(CHANGE_SEX) // sex: yes
+			change_sex(user)
+		if(CHANGE_NAME)
+			change_name(user)
+		if(CHANGE_EYES)
+			change_eyes(user)
+
+	return display_radial_menu(user)
+
+/obj/structure/mirror/proc/change_beard(mob/living/carbon/human/beard_dresser)
+	if(beard_dresser.physique == FEMALE)
+		if(beard_dresser.facial_hairstyle == "Shaved")
+			balloon_alert(beard_dresser, "nothing to shave!")
+			return TRUE
+		var/shave_beard = tgui_alert(beard_dresser, "Shave your beard?", "Grooming", list("Yes", "No"))
+		if(shave_beard == "Yes")
+			beard_dresser.set_facial_hairstyle("Shaved", update = TRUE)
+		return TRUE
+
+	var/new_style = tgui_input_list(beard_dresser, "Select a facial hairstyle", "Grooming", GLOB.facial_hairstyles_list)
+
+	if(isnull(new_style))
+		return TRUE
+
+	if(HAS_TRAIT(beard_dresser, TRAIT_SHAVED))
+		to_chat(beard_dresser, span_notice("If only growing back facial hair were that easy for you... The reminder makes you feel terrible."))
+		beard_dresser.add_mood_event("bald_hair_day", /datum/mood_event/bald_reminder)
+		return TRUE
+
+	beard_dresser.set_facial_hairstyle(new_style, update = TRUE)
+
+/obj/structure/mirror/proc/change_hair(mob/living/carbon/human/hairdresser)
+	var/new_style = tgui_input_list(hairdresser, "Select a hairstyle", "Grooming", GLOB.hairstyles_list)
+	if(isnull(new_style))
+		return TRUE
+	if(HAS_TRAIT(hairdresser, TRAIT_BALD))
+		to_chat(hairdresser, span_notice("If only growing back hair were that easy for you... The reminder makes you feel terrible."))
+		hairdresser.add_mood_event("bald_hair_day", /datum/mood_event/bald_reminder)
+		return TRUE
+
+	hairdresser.set_hairstyle(new_style, update = TRUE)
+
+/obj/structure/mirror/proc/change_name(mob/living/carbon/human/user)
+	var/newname = sanitize_name(tgui_input_text(user, "Who are we again?", "Name change", user.name, MAX_NAME_LEN), allow_numbers = TRUE) //It's magic so whatever.
+	if(!newname)
+		return TRUE
+	user.real_name = newname
+	user.name = newname
+	if(user.dna)
+		user.dna.real_name = newname
+	if(user.mind)
+		user.mind.name = newname
+
+// Erm ackshually the proper term is species. Get it right??
+/obj/structure/mirror/proc/change_race(mob/living/carbon/human/race_changer)
+	var/racechoice = tgui_input_list(race_changer, "What are we again?", "Race change", selectable_races)
+	if(isnull(racechoice))
+		return TRUE
+
+	var/new_race_path = selectable_races[racechoice]
+	if(!ispath(new_race_path, /datum/species))
+		return TRUE
+
+	var/datum/species/newrace = new new_race_path()
+	var/attributes_desc = newrace.get_physical_attributes()
+
+	var/answer = tgui_alert(race_changer, attributes_desc, "Become a [newrace]?", list("Yes", "No"))
+	if(answer != "Yes")
+		qdel(newrace)
+		change_race(race_changer) // try again
+		return
+
+	race_changer.set_species(newrace, icon_update = FALSE)
+	if(HAS_TRAIT(race_changer, TRAIT_USES_SKINTONES))
+		var/new_s_tone = tgui_input_list(race_changer, "Choose your skin tone", "Race change", GLOB.skin_tones)
+		if(new_s_tone)
+			race_changer.skin_tone = new_s_tone
+			race_changer.dna.update_ui_block(DNA_SKIN_TONE_BLOCK)
+	else if(HAS_TRAIT(race_changer, TRAIT_MUTANT_COLORS) && !HAS_TRAIT(race_changer, TRAIT_FIXED_MUTANT_COLORS))
+		var/new_mutantcolor = input(race_changer, "Choose your skin color:", "Race change", race_changer.dna.features["mcolor"]) as color|null
+		if(new_mutantcolor)
+			var/list/mutant_hsv = rgb2hsv(new_mutantcolor)
+
+			if(mutant_hsv[3] >= 50) // mutantcolors must be bright
+				race_changer.dna.features["mcolor"] = sanitize_hexcolor(new_mutantcolor)
+				race_changer.dna.update_uf_block(DNA_MUTANT_COLOR_BLOCK)
+			else
+				to_chat(race_changer, span_notice("Invalid color. Your color is not bright enough."))
+				return TRUE
+
+	race_changer.update_body(is_creating = TRUE)
+	race_changer.update_mutations_overlay() // no hulk lizard
+
+// possible Genders: MALE, FEMALE, PLURAL, NEUTER
+// possible Physique: MALE, FEMALE
+// saved you a click (many)
+/obj/structure/mirror/proc/change_sex(mob/living/carbon/human/sexy)
+
+	var/chosen_sex = tgui_input_list(sexy, "Become a..", "Confirmation", list("Warlock", "Witch", "Wizard", "Itzard")) // YOU try coming up with the 'it' version of wizard
+
+	switch(chosen_sex)
+		if("Warlock")
+			sexy.gender = MALE
+			to_chat(sexy, span_notice("Man, you feel like a man!"))
+		if("Witch")
+			sexy.gender = FEMALE
+			to_chat(sexy, span_notice("Man, you feel like a woman!"))
+		if("Wizard")
+			sexy.gender = PLURAL
+			to_chat(sexy, span_notice("Woah dude, you feel like a dude!"))
+		if("Itzard")
+			sexy.gender = NEUTER
+			to_chat(sexy, span_notice("Woah dude, you feel like something else!"))
+
+	var/chosen_physique = tgui_input_list(sexy, "Alter your physique as well?", "Confirmation", list("Warlock Physique", "Witch Physique", "Wizards Don't Need Gender"))
+
+	if(chosen_physique && chosen_physique != "Wizards Don't Need Gender")
+		sexy.physique = (chosen_physique == "Warlock Physique") ? MALE : FEMALE
+
+	sexy.dna.update_ui_block(DNA_GENDER_BLOCK)
+	sexy.update_body(is_creating = TRUE) // or else physique won't change properly
+	sexy.update_mutations_overlay() //(hulk male/female)
+	sexy.update_clothing(ITEM_SLOT_ICLOTHING) // update gender shaped clothing
+
+/obj/structure/mirror/proc/change_eyes(mob/living/carbon/human/user)
+	var/new_eye_color = input(user, "Choose your eye color", "Eye Color", user.eye_color_left) as color|null
+	if(isnull(new_eye_color))
+		return TRUE
+	user.eye_color_left = sanitize_hexcolor(new_eye_color)
+	user.eye_color_right = sanitize_hexcolor(new_eye_color)
+	user.dna.update_ui_block(DNA_EYE_COLOR_LEFT_BLOCK)
+	user.dna.update_ui_block(DNA_EYE_COLOR_RIGHT_BLOCK)
+	user.update_body()
+	to_chat(user, span_notice("You gaze at your new eyes with your new eyes. Perfect!"))
+
+/obj/structure/mirror/examine_status(mob/living/carbon/human/user)
 	if(broken)
-		return
+		return list()// no message spam
+	return ..()
 
-	if(ishuman(user))
-		var/datum/ui_module/appearance_changer/AC = ui_users[user]
-		if(!AC)
-			AC = new(src, user)
-			AC.name = "SalonPro Nano-Mirror"
-			AC.flags = APPEARANCE_ALL_BODY
-			ui_users[user] = AC
-		AC.ui_interact(user)
+/obj/structure/mirror/attacked_by(obj/item/I, mob/living/user)
+	if(broken || !istype(user) || !I.force)
+		return ..()
 
-/obj/structure/mirror/obj_break(damage_flag, mapload)
-	if(!broken && !(flags & NODECONSTRUCT))
-		icon_state = "mirror_broke"
-		if(!mapload)
-			playsound(src, "shatter", 70, TRUE)
-		if(desc == initial(desc))
-			desc = "Oh no, seven years of bad luck!"
-		broken = TRUE
-		GLOB.mirrors -= src
+	. = ..()
+	if(broken) // breaking a mirror truly gets you bad luck!
+		to_chat(user, span_warning("A chill runs down your spine as [src] shatters..."))
+		user.AddComponent(/datum/component/omen, incidents_left = 7)
 
-/obj/structure/mirror/screwdriver_act(mob/user, obj/item/I)
-	. = TRUE
-	if(!I.tool_use_check(user, 0))
+/obj/structure/mirror/bullet_act(obj/projectile/P)
+	if(broken || !isliving(P.firer) || !P.damage)
+		return ..()
+
+	. = ..()
+	if(broken) // breaking a mirror truly gets you bad luck!
+		var/mob/living/unlucky_dude = P.firer
+		to_chat(unlucky_dude, span_warning("A chill runs down your spine as [src] shatters..."))
+		unlucky_dude.AddComponent(/datum/component/omen, incidents_left = 7)
+
+/obj/structure/mirror/atom_break(damage_flag, mapload)
+	. = ..()
+	if(broken || (obj_flags & NO_DECONSTRUCTION))
 		return
-	user.visible_message("<span class='notice'>[user] begins to unfasten [src].</span>", "<span class='notice'>You begin to unfasten [src].</span>")
-	if(!I.use_tool(src, user, 30, volume = I.tool_volume))
-		return
-	if(broken)
-		user.visible_message("<span class='notice'>[user] drops the broken shards to the floor.</span>", "<span class='notice'>You drop the broken shards on the floor.</span>")
-		new /obj/item/shard(get_turf(user))
-	else
-		user.visible_message("<span class='notice'>[user] carefully places [src] on the floor.</span>", "<span class='notice'>You carefully place [src] on the floor.</span>")
-		new /obj/item/mounted/mirror(get_turf(user))
-	qdel(src)
+	icon_state = "mirror_broke"
+	if(!mapload)
+		playsound(src, SFX_SHATTER, 70, TRUE)
+	if(desc == initial(desc))
+		desc = "Oh no, seven years of bad luck!"
+	broken = TRUE
 
 /obj/structure/mirror/deconstruct(disassembled = TRUE)
-	if(!(flags & NODECONSTRUCT))
+	if(!(obj_flags & NO_DECONSTRUCTION))
 		if(!disassembled)
-			new /obj/item/shard( src.loc )
+			new /obj/item/shard(loc)
+		else
+			new /obj/item/wallframe/mirror(loc)
 	qdel(src)
+
+/obj/structure/mirror/welder_act(mob/living/user, obj/item/I)
+	..()
+	if(user.combat_mode)
+		return FALSE
+
+	if(!broken)
+		return TRUE
+
+	if(!I.tool_start_check(user, amount=1))
+		return TRUE
+
+	balloon_alert(user, "repairing...")
+	if(I.use_tool(src, user, 10, volume = 50))
+		balloon_alert(user, "repaired")
+		broken = FALSE
+		icon_state = initial(icon_state)
+		desc = initial(desc)
+
+	return TRUE
 
 /obj/structure/mirror/play_attack_sound(damage_amount, damage_type = BRUTE, damage_flag = 0)
 	switch(damage_type)
@@ -80,104 +304,116 @@
 		if(BURN)
 			playsound(src, 'sound/effects/hit_on_shattered_glass.ogg', 70, TRUE)
 
-
-/obj/item/mounted/mirror
+/obj/item/wallframe/mirror
 	name = "mirror"
-	desc = "Some reflective glass ready to be hung on a wall. Don't break it!"
+	desc = "An unmounted mirror. Attach it to a wall to use."
 	icon = 'icons/obj/watercloset.dmi'
 	icon_state = "mirror"
-
-/obj/item/mounted/mirror/do_build(turf/on_wall, mob/user)
-	var/obj/structure/mirror/M = new /obj/structure/mirror(get_turf(user), get_dir(on_wall, user), 1)
-	transfer_prints_to(M, TRUE)
-	qdel(src)
+	custom_materials = list(
+		/datum/material/glass = SHEET_MATERIAL_AMOUNT,
+		/datum/material/silver = SHEET_MATERIAL_AMOUNT,
+	)
+	result_path = /obj/structure/mirror
+	pixel_shift = 28
 
 /obj/structure/mirror/magic
 	name = "magic mirror"
+	desc = "Turn and face the strange... face."
 	icon_state = "magic_mirror"
-	var/options = list("Name", "Body", "Voice")
-	var/organ_warn = FALSE
-	var/actually_magical = TRUE
+	mirror_options = MAGIC_MIRROR_OPTIONS
 
-/obj/structure/mirror/magic/attack_hand(mob/user)
-	if(!ishuman(user) || broken)
+/obj/structure/mirror/magic/Initialize(mapload)
+	. = ..()
+
+	if(length(selectable_races))
 		return
+	for(var/datum/species/species_type as anything in subtypesof(/datum/species))
+		if(initial(species_type.changesource_flags) & race_flags)
+			selectable_races[initial(species_type.name)] = species_type
+	selectable_races = sort_list(selectable_races)
 
-	var/mob/living/carbon/human/H = user
-	var/choice = tgui_input_list(user, "Something to change?", "Magical Grooming", options)
+/obj/structure/mirror/magic/change_beard(mob/living/carbon/human/beard_dresser) // magical mirrors do nothing but give you the damn beard
+	var/new_style = tgui_input_list(beard_dresser, "Select a facial hairstyle", "Grooming", GLOB.facial_hairstyles_list)
+	if(isnull(new_style))
+		return TRUE
+	beard_dresser.set_facial_hairstyle(new_style, update = TRUE)
+	return TRUE
 
-	switch(choice)
-		if("Name")
-			var/newname = copytext(sanitize(input(H, "Who are we again?", "Name change", H.name) as null|text),1,MAX_NAME_LEN)
+//Magic mirrors can change hair color as well
+/obj/structure/mirror/magic/change_hair(mob/living/carbon/human/user)
+	var/hairchoice = tgui_alert(user, "Hairstyle or hair color?", "Change Hair", list("Style", "Color"))
+	if(hairchoice == "Style") //So you just want to use a mirror then?
+		return ..()
 
-			if(!newname)
-				return
-			H.real_name = newname
-			H.name = newname
-			if(H.dna)
-				H.dna.real_name = newname
-			if(H.mind)
-				H.mind.name = newname
+	var/new_hair_color = input(user, "Choose your hair color", "Hair Color", user.hair_color) as color|null
 
-			if(newname)
-				curse(user)
+	if(new_hair_color)
+		user.set_haircolor(sanitize_hexcolor(new_hair_color), update = FALSE)
+		user.dna.update_ui_block(DNA_HAIR_COLOR_BLOCK)
+	if(user.physique == MALE)
+		var/new_face_color = input(user, "Choose your facial hair color", "Hair Color", user.facial_hair_color) as color|null
+		if(new_face_color)
+			user.set_facial_haircolor(sanitize_hexcolor(new_face_color), update = FALSE)
+			user.dna.update_ui_block(DNA_FACIAL_HAIR_COLOR_BLOCK)
+	user.update_body_parts()
 
-		if("Body")
-			if(organ_warn)
-				to_chat(user, "<span class='boldwarning'>Using the mirror will destroy any non biochip implants in you!</span>")
-			var/list/race_list = list("Human", "Tajaran", "Skrell", "Unathi", "Diona", "Vulpkanin", "Nian", "Grey", "Drask")
-			if(actually_magical)
-				race_list = list("Human", "Tajaran", "Skrell", "Unathi", "Diona", "Vulpkanin", "Nian", "Grey", "Drask", "Vox", "Plasmaman", "Kidan")
+/obj/structure/mirror/magic/attack_hand(mob/living/carbon/human/user)
+	. = ..()
+	if(.)
+		return TRUE
 
-			var/datum/ui_module/appearance_changer/AC = ui_users[user]
-			if(!AC)
-				AC = new(src, user)
-				AC.name = "Magic Mirror"
-				AC.flags = APPEARANCE_ALL
-				AC.whitelist = race_list
-				ui_users[user] = AC
-			AC.ui_interact(user)
+	if(HAS_TRAIT(user, TRAIT_ADVANCEDTOOLUSER) && HAS_TRAIT(user, TRAIT_LITERATE))
+		return TRUE
 
-		if("Voice")
-			var/voice_choice = tgui_input_list(user, "Perhaps...", "Voice effects", list("Comic Sans", "Wingdings", "Swedish", "Chav", "Mute"))
-			var/voice_mutation
-			switch(voice_choice)
-				if("Comic Sans")
-					voice_mutation = GLOB.comicblock
-				if("Wingdings")
-					voice_mutation = GLOB.wingdingsblock
-				if("Swedish")
-					voice_mutation = GLOB.swedeblock
-				if("Chav")
-					voice_mutation = GLOB.chavblock
-				if("Mute")
-					voice_mutation = GLOB.muteblock
-			if(voice_mutation)
-				if(H.dna.GetSEState(voice_mutation))
-					H.dna.SetSEState(voice_mutation, FALSE)
-					singlemutcheck(H, voice_mutation, MUTCHK_FORCED)
-				else
-					H.dna.SetSEState(voice_mutation, TRUE)
-					singlemutcheck(H, voice_mutation, MUTCHK_FORCED)
+	to_chat(user, span_alert("You feel quite intelligent."))
+	// Prevents wizards from being soft locked out of everything
+	// If this stays after the species was changed once more, well, the magic mirror did it. It's magic i aint gotta explain shit
+	user.add_traits(list(TRAIT_LITERATE, TRAIT_ADVANCEDTOOLUSER), SPECIES_TRAIT)
+	return TRUE
 
-			if(voice_choice)
-				curse(user)
+/obj/structure/mirror/magic/lesser/Initialize(mapload)
+	// Roundstart species don't have a flag, so it has to be set on Initialize.
+	selectable_races = get_selectable_species().Copy()
+	return ..()
 
-	tts_choose(choice, H) // SS220 ADD
+/obj/structure/mirror/magic/badmin
+	race_flags = MIRROR_BADMIN
 
-/obj/structure/mirror/magic/ui_close(mob/user)
-	curse(user)
+/obj/structure/mirror/magic/pride
+	name = "pride's mirror"
+	desc = "Pride cometh before the..."
+	race_flags = MIRROR_PRIDE
+	mirror_options = PRIDE_MIRROR_OPTIONS
 
-/obj/structure/mirror/magic/attackby(obj/item/I, mob/living/user, params)
-	return
+/obj/structure/mirror/magic/pride/attack_hand(mob/living/carbon/human/user)
+	. = ..()
+	if(.)
+		return TRUE
 
-/obj/structure/mirror/magic/proc/curse(mob/living/user)
-	return
+	user.visible_message(
+		span_bolddanger("The ground splits beneath [user] as [user.p_their()] hand leaves the mirror!"),
+		span_notice("Perfect. Much better! Now <i>nobody</i> will be able to resist yo-"),
+	)
 
-/obj/structure/mirror/magic/nuclear
-	name = "M.A.G.I.C mirror"
-	desc = "The M.A.G.I.C mirror will let you change your species in a flash! Be careful, any implants (not biochips) in you will be destroyed on use."
-	options = list("Body")
-	organ_warn = TRUE
-	actually_magical = FALSE
+	var/turf/user_turf = get_turf(user)
+	var/list/levels = SSmapping.levels_by_trait(ZTRAIT_SPACE_RUINS)
+	var/turf/dest
+	if(length(levels))
+		dest = locate(user_turf.x, user_turf.y, pick(levels))
 
+	user_turf.ChangeTurf(/turf/open/chasm, flags = CHANGETURF_INHERIT_AIR)
+	var/turf/open/chasm/new_chasm = user_turf
+	new_chasm.set_target(dest)
+	new_chasm.drop(user)
+
+#undef CHANGE_HAIR
+#undef CHANGE_BEARD
+
+#undef CHANGE_RACE
+#undef CHANGE_SEX
+#undef CHANGE_NAME
+#undef CHANGE_EYES
+
+#undef INERT_MIRROR_OPTIONS
+#undef PRIDE_MIRROR_OPTIONS
+#undef MAGIC_MIRROR_OPTIONS

@@ -1,4 +1,4 @@
-/**
+/*!
  * External tgui definitions, such as src_object APIs.
  *
  * Copyright (c) 2020 Aleksej Komarov
@@ -28,10 +28,6 @@
  * return list Data to be sent to the UI.
  */
 /datum/proc/ui_data(mob/user)
-	// 1) this is polled several times a second, so sleeping means more running threads, needlessly tanking performance
-	// 2) if you try to sleep, you get fun bugs ranging from BSOD to uninteractable white windows, to windows straight up vanishing.
-	// Just don't.
-	SHOULD_NOT_SLEEP(TRUE)
 	return list() // Not implemented.
 
 /**
@@ -49,7 +45,6 @@
  * return list Statuic Data to be sent to the UI.
  */
 /datum/proc/ui_static_data(mob/user)
-	SHOULD_NOT_SLEEP(TRUE)
 	return list()
 
 /**
@@ -70,15 +65,28 @@
 /**
  * public
  *
+ * Will force an update on static data for all viewers.
+ * Should be done manually whenever something happens to
+ * change static data.
+ */
+/datum/proc/update_static_data_for_all_viewers()
+	for (var/datum/tgui/window as anything in open_uis)
+		window.send_full_update()
+
+/**
+ * public
+ *
  * Called on a UI when the UI receieves a href.
  * Think of this as Topic().
  *
  * required action string The action/button that has been invoked by the user.
  * required params list A list of parameters attached to the button.
  *
- * return bool If the UI should be updated or not.
+ * return bool If the user's input has been handled and the UI should update.
  */
 /datum/proc/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	SHOULD_CALL_PARENT(TRUE)
+	SEND_SIGNAL(src, COMSIG_UI_ACT, usr, action, params)
 	// If UI is not interactive or usr calling Topic is not the UI user, bail.
 	if(!ui || ui.status != UI_INTERACTIVE)
 		return TRUE
@@ -119,28 +127,28 @@
  * Associative list of JSON-encoded shared states that were set by
  * tgui clients.
  */
-/* check_grep:ignore */ /datum/var/list/tgui_shared_states
+/datum/var/list/tgui_shared_states
 
 /**
  * global
  *
  * Tracks open UIs for a user.
  */
-/* check_grep:ignore */ /mob/var/list/tgui_open_uis = list()
+/mob/var/list/tgui_open_uis = list()
 
 /**
  * global
  *
  * Tracks open windows for a user.
  */
-/* check_grep:ignore */ /client/var/list/tgui_windows = list()
+/client/var/list/tgui_windows = list()
 
 /**
  * global
  *
  * TRUE if cache was reloaded by tgui dev server at least once.
  */
-/* check_grep:ignore */ /client/var/tgui_cache_reloaded = FALSE
+/client/var/tgui_cache_reloaded = FALSE
 
 /**
  * public
@@ -149,6 +157,7 @@
  * client/verb/uiclose(), which closes the ui window
  */
 /datum/proc/ui_close(mob/user)
+	SIGNAL_HANDLER
 
 /**
  * verb
@@ -162,7 +171,7 @@
 	// Name the verb, and hide it from the user panel.
 	set name = "uiclose"
 	set hidden = TRUE
-	var/mob/user = src && src.mob
+	var/mob/user = src?.mob
 	if(!user)
 		return
 	// Close all tgui datums based on window_id.
@@ -180,7 +189,11 @@
 	var/type = href_list["type"]
 	// Unconditionally collect tgui logs
 	if(type == "log")
-		log_tgui(usr, href_list["message"])
+		var/context = href_list["window_id"]
+		if (href_list["ns"])
+			context += " ([href_list["ns"]])"
+		log_tgui(usr, href_list["message"],
+			context = context)
 	// Reload all tgui windows
 	if(type == "cacheReloaded")
 		if(!check_rights(R_ADMIN) || usr.client.tgui_cache_reloaded)
@@ -191,7 +204,7 @@
 		var/list/windows = usr.client.tgui_windows
 		for(var/window_id in windows)
 			var/datum/tgui_window/window = windows[window_id]
-			if(window.status == TGUI_WINDOW_READY)
+			if (window.status == TGUI_WINDOW_READY)
 				window.on_message(type, null, href_list)
 		return TRUE
 	// Locate window
@@ -200,18 +213,23 @@
 	if(window_id)
 		window = usr.client.tgui_windows[window_id]
 		if(!window)
-			log_tgui(usr, "Error: Couldn't find the window datum, force closing.")
+			log_tgui(usr,
+				"Error: Couldn't find the window datum, force closing.",
+				context = window_id)
 			SStgui.force_close_window(usr, window_id)
 			return TRUE
+
 	// Decode payload
 	var/payload
 	if(href_list["payload"])
 		var/payload_text = href_list["payload"]
-		if(!rustg_json_is_valid(payload_text))
+
+		if (!rustg_json_is_valid(payload_text))
 			log_tgui(usr, "Error: Invalid JSON")
 			return TRUE
 
 		payload = json_decode(payload_text)
+
 	// Pass message to window
 	if(window)
 		window.on_message(type, payload, href_list)

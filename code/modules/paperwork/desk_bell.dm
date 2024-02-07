@@ -1,94 +1,100 @@
 // A receptionist's bell
 
-/obj/item/desk_bell
+/obj/structure/desk_bell
 	name = "desk bell"
-	desc = "The cornerstone of any customer service job. You feel an unending urge to ring it. It looks like it can be wrenched or screwdrivered."
-	icon = 'icons/obj/bureaucracy.dmi'
+	desc = "The cornerstone of any customer service job. You feel an unending urge to ring it."
+	icon = 'icons/obj/service/bureaucracy.dmi'
 	icon_state = "desk_bell"
+	layer = OBJ_LAYER
+	anchored = FALSE
+	pass_flags = PASSTABLE // Able to place on tables
+	max_integrity = 5000 // To make attacking it not instantly break it
 	/// The amount of times this bell has been rang, used to check the chance it breaks
 	var/times_rang = 0
 	/// Is this bell broken?
 	var/broken_ringer = FALSE
-	/// Holds the time that the bell can next be rang.
-	var/ring_cooldown = 0
+	/// The cooldown for ringing the bell
+	COOLDOWN_DECLARE(ring_cooldown)
 	/// The length of the cooldown. Setting it to 0 will skip all cooldowns alltogether.
-	var/ring_cooldown_length = 0.5 SECONDS // This is here to protect against tinnitus.
+	var/ring_cooldown_length = 0.3 SECONDS // This is here to protect against tinnitus.
 	/// The sound the bell makes
-	var/ring_sound = 'sound/machines/bell.ogg'
+	var/ring_sound = 'sound/machines/microwave/microwave-end.ogg'
 
-/obj/item/desk_bell/attack_hand(mob/living/user)
-	if(in_inventory && ishuman(user))
-		if(!user.get_active_hand())
-			user.put_in_hands(src)
-			return TRUE
-	if(ring_cooldown > world.time || !anchored)
+/obj/structure/desk_bell/Initialize(mapload)
+	. = ..()
+	register_context()
+
+/obj/structure/desk_bell/add_context(atom/source, list/context, obj/item/held_item, mob/user)
+	. = ..()
+
+	if(held_item?.tool_behaviour == TOOL_WRENCH)
+		context[SCREENTIP_CONTEXT_RMB] = "Disassemble"
+		return CONTEXTUAL_SCREENTIP_SET
+
+	if(broken_ringer)
+		if(held_item?.tool_behaviour == TOOL_SCREWDRIVER)
+			context[SCREENTIP_CONTEXT_LMB] = "Fix"
+	else
+		var/click_context = "Ring"
+		if(prob(1))
+			click_context = "Annoy"
+		context[SCREENTIP_CONTEXT_LMB] = click_context
+	return CONTEXTUAL_SCREENTIP_SET
+
+/obj/structure/desk_bell/attack_hand(mob/living/user, list/modifiers)
+	. = ..()
+	if(!COOLDOWN_FINISHED(src, ring_cooldown) && ring_cooldown_length)
 		return TRUE
 	if(!ring_bell(user))
-		to_chat(user, "<span class='notice'>[src] is silent. Some idiot broke it.</span>")
-	ring_cooldown = world.time + ring_cooldown_length
+		to_chat(user, span_notice("[src] is silent. Some idiot broke it."))
+	if(ring_cooldown_length)
+		COOLDOWN_START(src, ring_cooldown, ring_cooldown_length)
 	return TRUE
 
-/obj/item/desk_bell/MouseDrop(atom/over_object)
-	var/mob/M = usr
-	if(HAS_TRAIT(M, TRAIT_HANDS_BLOCKED) || !Adjacent(M) || anchored)
-		return
-	if(!ishuman(M))
-		return
+/obj/structure/desk_bell/attack_paw(mob/user, list/modifiers)
+	return attack_hand(user, modifiers)
 
-	if(over_object == M)
-		if(!remove_item_from_storage(M))
-			M.unEquip(src)
-		M.put_in_hands(src)
-		anchored = FALSE
-
-	add_fingerprint(M)
+/obj/structure/desk_bell/attackby(obj/item/weapon, mob/living/user, params)
+	. = ..()
+	times_rang += weapon.force
+	ring_bell(user)
 
 // Fix the clapper
-/obj/item/desk_bell/screwdriver_act(mob/living/user, obj/item/tool)
-	. = TRUE
+/obj/structure/desk_bell/screwdriver_act(mob/living/user, obj/item/tool)
 	if(broken_ringer)
-		visible_message("<span class='notice'>[user] begins repairing [src]...</span>", "<span class='notice'>You begin repairing [src]...</span>")
+		balloon_alert(user, "repairing...")
 		tool.play_tool_sound(src)
 		if(tool.use_tool(src, user, 5 SECONDS))
-			user.visible_message("<span class='notice'>[user] repairs [src].</span>", "<span class='notice'>You repair [src].</span>")
+			balloon_alert_to_viewers("repaired")
 			playsound(user, 'sound/items/change_drill.ogg', 50, vary = TRUE)
 			broken_ringer = FALSE
 			times_rang = 0
-			return TRUE
+			return ITEM_INTERACT_SUCCESS
 		return FALSE
+	return ..()
 
-// Deconstruct and Anchor
-/obj/item/desk_bell/wrench_act(mob/living/user, obj/item/tool)
-	. = TRUE
-	if(user.a_intent == INTENT_HARM && !in_inventory)
-		visible_message("<span class='notice'>[user] begins taking apart [src]...</span>", "<span class='notice'>You begin taking apart [src]...</span>")
-		if(tool.use_tool(src, user, 5 SECONDS, volume = tool.tool_volume))
-			visible_message("<span class='notice'>[user] takes apart [src].</span>", "<span class='notice'>You take apart [src].</span>")
-			playsound(user, 'sound/items/deconstruct.ogg', 50, vary = TRUE)
-			new /obj/item/stack/sheet/metal(drop_location(), 2)
-			qdel(src)
-			return TRUE
-	if(!in_inventory)
-		if(!anchored)
-			user.visible_message("[user] begins securing [src]...", "You begin securing [src]...")
-			if(!tool.use_tool(src, user, 3 SECONDS, volume = tool.tool_volume))
-				return
-			anchored = TRUE
-		else
-			user.visible_message("[user] begins unsecuring [src]...", "You begin unsecuring [src]...")
-			if(!tool.use_tool(src, user, 3 SECONDS, volume = tool.tool_volume))
-				return
-			anchored = FALSE
-
+// Deconstruct
+/obj/structure/desk_bell/wrench_act_secondary(mob/living/user, obj/item/tool)
+	balloon_alert(user, "taking apart...")
+	tool.play_tool_sound(src)
+	if(tool.use_tool(src, user, 5 SECONDS))
+		balloon_alert(user, "disassembled")
+		playsound(user, 'sound/items/deconstruct.ogg', 50, vary = TRUE)
+		if(!broken_ringer) // Drop 2 if it's not broken.
+			new/obj/item/stack/sheet/iron(drop_location())
+		new/obj/item/stack/sheet/iron(drop_location())
+		qdel(src)
+		return ITEM_INTERACT_SUCCESS
+	return ..()
 
 /// Check if the clapper breaks, and if it does, break it
-/obj/item/desk_bell/proc/check_clapper(mob/living/user)
-	if(prob(times_rang / 50) && ring_cooldown_length)
-		to_chat(user, "<span class='notice'>You hear [src]'s clapper fall off of its hinge. Nice job, you broke it.</span>")
+/obj/structure/desk_bell/proc/check_clapper(mob/living/user)
+	if(((times_rang >= 10000) || prob(times_rang/100)) && ring_cooldown_length)
+		to_chat(user, span_notice("You hear [src]'s clapper fall off of its hinge. Nice job, you broke it."))
 		broken_ringer = TRUE
 
 /// Ring the bell
-/obj/item/desk_bell/proc/ring_bell(mob/living/user)
+/obj/structure/desk_bell/proc/ring_bell(mob/living/user)
 	if(broken_ringer)
 		return FALSE
 	check_clapper(user)
@@ -98,9 +104,23 @@
 	times_rang++
 	return TRUE
 
-/obj/item/desk_bell/get_spooked()
-	if(broken_ringer)
+// A warning to all who enter; the ringing sound STACKS. It won't be deafening because it only goes every decisecond,
+// but I did feel like my ears were going to start bleeding when I tested it with my autoclicker.
+/obj/structure/desk_bell/speed_demon
+	desc = "The cornerstone of any customer service job. This one's been modified for hyper-performance."
+	ring_cooldown_length = 0
+
+/obj/structure/desk_bell/MouseDrop(obj/over_object, src_location, over_location)
+	if(!istype(over_object, /obj/vehicle/ridden/wheelchair))
 		return
-	playsound(src, ring_sound, 70, vary = broken_ringer, extrarange = SHORT_RANGE_SOUND_EXTRARANGE)
-	flick("desk_bell_ring", src)
-	return TRUE
+	if(!Adjacent(over_object) || !Adjacent(usr))
+		return
+	var/obj/vehicle/ridden/wheelchair/target = over_object
+	if(target.bell_attached)
+		usr.balloon_alert(usr, "already has a bell!")
+		return
+	usr.balloon_alert(usr, "attaching bell...")
+	if(!do_after(usr, 0.5 SECONDS))
+		return
+	target.attach_bell(src)
+	return ..()

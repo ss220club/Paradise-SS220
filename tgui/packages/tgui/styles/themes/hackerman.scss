@@ -25,17 +25,21 @@
     '../components/Button.scss',
     $with: (
       'color-default': colors.$primary,
-      'color-disabled': #363636,
+      'color-disabled': #4a6a4a,
       'color-selected': #00ff00
+    )
+  );
+  @include meta.load-css(
+    '../components/Tabs.scss',
+    $with: (
+      'color-default': colors.$primary,
+      'tab-color-selected': #00ff003f,
+      'text-color': #e7e7e7
     )
   );
   @include meta.load-css(
     '../components/Input.scss',
     $with: ('border-color': colors.$primary)
-  );
-  @include meta.load-css(
-    '../components/ProgressBar.scss',
-    $with: ('color-disabled': #363636)
   );
   @include meta.load-css('../components/Modal.scss');
   @include meta.load-css('../components/Section.scss');

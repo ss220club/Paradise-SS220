@@ -1,30 +1,34 @@
+
+///BSA unlocked by head ID swipes
+GLOBAL_VAR_INIT(bsa_unlock, FALSE)
+
 // Crew has to build a bluespace cannon
 // Cargo orders part for high price
 // Requires high amount of power
 // Requires high level stock parts
-
 /datum/station_goal/bluespace_cannon
 	name = "Bluespace Artillery"
 
 /datum/station_goal/bluespace_cannon/get_report()
-	return {"<b>Bluespace Artillery position construction</b><br>
-	Our military presence is inadequate in your sector. We need you to construct a BSA-[rand(1,99)] Artillery position aboard your station.
-	<br><br>
-	Its base parts should be available for shipping by your cargo shuttle.
-	<br>
-	-Nanotrasen Naval Command"}
+	return list(
+		"<blockquote>Our military presence is inadequate in your sector.",
+		"We need you to construct BSA-[rand(1,99)] Artillery position aboard your station.",
+		"",
+		"Base parts are available for shipping via cargo.",
+		"-Nanotrasen Naval Command</blockquote>",
+	).Join("\n")
 
 /datum/station_goal/bluespace_cannon/on_report()
 	//Unlock BSA parts
-	var/datum/supply_packs/misc/station_goal/bsa/P = SSeconomy.supply_packs["[/datum/supply_packs/misc/station_goal/bsa]"]
+	var/datum/supply_pack/engineering/bsa/P = SSshuttle.supply_packs[/datum/supply_pack/engineering/bsa]
 	P.special_enabled = TRUE
 
 /datum/station_goal/bluespace_cannon/check_completion()
 	if(..())
 		return TRUE
-	for(var/obj/machinery/bsa/full/B)
-		if(B && !B.stat && is_station_contact(B.z))
-			return TRUE
+	var/obj/machinery/bsa/full/B = locate()
+	if(B && !B.machine_stat)
+		return TRUE
 	return FALSE
 
 /obj/machinery/bsa
@@ -32,66 +36,78 @@
 	density = TRUE
 	anchored = TRUE
 
+/obj/machinery/bsa/wrench_act(mob/living/user, obj/item/tool)
+	. = ..()
+	default_unfasten_wrench(user, tool, time = 1 SECONDS)
+	return ITEM_INTERACT_SUCCESS
+
 /obj/machinery/bsa/back
 	name = "Bluespace Artillery Generator"
-	desc = "Generates cannon pulse. Needs to be linked with a fusor. "
+	desc = "Generates cannon pulse. Needs to be linked with a fusor."
 	icon_state = "power_box"
 
-/obj/machinery/bsa/back/attackby(obj/item/W, mob/user, params)
-	if(istype(W, /obj/item/multitool))
-		var/obj/item/multitool/M = W
-		M.buffer = src
-		to_chat(user, "<span class='notice'>You store linkage information in [W]'s buffer.</span>")
-	else if(istype(W, /obj/item/wrench))
-		default_unfasten_wrench(user, W, 10)
-		return TRUE
-	else
-		return ..()
+/obj/machinery/bsa/back/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/simple_rotation)
+
+/obj/machinery/bsa/back/multitool_act(mob/living/user, obj/item/I)
+	if(!multitool_check_buffer(user, I)) //make sure it has a data buffer
+		return
+	var/obj/item/multitool/M = I
+	M.set_buffer(src)
+	balloon_alert(user, "saved to multitool buffer")
+	return TRUE
 
 /obj/machinery/bsa/front
 	name = "Bluespace Artillery Bore"
 	desc = "Do not stand in front of cannon during operation. Needs to be linked with a fusor."
 	icon_state = "emitter_center"
 
-/obj/machinery/bsa/front/attackby(obj/item/W, mob/user, params)
-	if(istype(W, /obj/item/multitool))
-		var/obj/item/multitool/M = W
-		M.buffer = src
-		to_chat(user, "<span class='notice'>You store linkage information in [W]'s buffer.</span>")
-	else if(istype(W, /obj/item/wrench))
-		default_unfasten_wrench(user, W, 10)
-		return TRUE
-	else
-		return ..()
+/obj/machinery/bsa/front/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/simple_rotation)
+
+/obj/machinery/bsa/front/multitool_act(mob/living/user, obj/item/I)
+	if(!multitool_check_buffer(user, I)) //make sure it has a data buffer
+		return
+	var/obj/item/multitool/M = I
+	M.set_buffer(src)
+	balloon_alert(user, "saved to multitool buffer")
+	return TRUE
 
 /obj/machinery/bsa/middle
 	name = "Bluespace Artillery Fusor"
-	desc = "Contents classifed by Nanotrasen Naval Command. Needs to be linked with the other BSA parts using multitool."
+	desc = "Contents classified by Nanotrasen Naval Command. Needs to be linked with the other BSA parts using a multitool."
 	icon_state = "fuel_chamber"
-	var/obj/machinery/bsa/back/back
-	var/obj/machinery/bsa/front/front
+	var/datum/weakref/back_ref
+	var/datum/weakref/front_ref
 
-/obj/machinery/bsa/middle/attackby(obj/item/W, mob/user, params)
-	if(istype(W, /obj/item/multitool))
-		var/obj/item/multitool/M = W
-		if(M.buffer)
-			if(istype(M.buffer,/obj/machinery/bsa/back))
-				back = M.buffer
-				M.buffer = null
-				to_chat(user, "<span class='notice'>You link [src] with [back].</span>")
-			else if(istype(M.buffer,/obj/machinery/bsa/front))
-				front = M.buffer
-				M.buffer = null
-				to_chat(user, "<span class='notice'>You link [src] with [front].</span>")
-	else if(istype(W, /obj/item/wrench))
-		default_unfasten_wrench(user, W, 10)
-		return TRUE
+/obj/machinery/bsa/middle/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/simple_rotation)
+
+/obj/machinery/bsa/middle/multitool_act(mob/living/user, obj/item/I)
+	if(!multitool_check_buffer(user, I))
+		return
+	var/obj/item/multitool/M = I
+	if(M.buffer)
+		if(istype(M.buffer, /obj/machinery/bsa/back))
+			back_ref = WEAKREF(M.buffer)
+			to_chat(user, span_notice("You link [src] with [M.buffer]."))
+			M.set_buffer(null)
+		else if(istype(M.buffer, /obj/machinery/bsa/front))
+			front_ref = WEAKREF(M.buffer)
+			to_chat(user, span_notice("You link [src] with [M.buffer]."))
+			M.set_buffer(null)
 	else
-		return ..()
+		to_chat(user, span_warning("[I]'s data buffer is empty!"))
+	return TRUE
 
 /obj/machinery/bsa/middle/proc/check_completion()
+	var/obj/machinery/bsa/front/front = front_ref?.resolve()
+	var/obj/machinery/bsa/back/back = back_ref?.resolve()
 	if(!front || !back)
-		return "No multitool-linked parts detected!"
+		return "No linked parts detected!"
 	if(!front.anchored || !back.anchored || !anchored)
 		return "Linked parts unwrenched!"
 	if(front.y != y || back.y != y || !(front.x > x && back.x < x || front.x < x && back.x > x) || front.z != z || back.z != z)
@@ -101,78 +117,65 @@
 
 /obj/machinery/bsa/middle/proc/has_space()
 	var/cannon_dir = get_cannon_direction()
-	var/x_min
-	var/x_max
+	var/width = 10
+	var/offset
 	switch(cannon_dir)
 		if(EAST)
-			x_min = x - BSA_SIZE_BACK
-			x_max = x + BSA_SIZE_FRONT
+			offset = -4
 		if(WEST)
-			x_min = x + BSA_SIZE_BACK
-			x_max = x - BSA_SIZE_FRONT
+			offset = -6
+		else
+			return FALSE
 
-	for(var/turf/T in block(locate(x_min,y-1,z),locate(x_max,y+1,z)))
+	var/turf/base = get_turf(src)
+	for(var/turf/T as anything in CORNER_BLOCK_OFFSET(base, width, 3, offset, -1))
 		if(T.density || isspaceturf(T))
 			return FALSE
 	return TRUE
 
 /obj/machinery/bsa/middle/proc/get_cannon_direction()
+	var/obj/machinery/bsa/front/front = front_ref?.resolve()
+	var/obj/machinery/bsa/back/back = back_ref?.resolve()
+	if(!front || !back)
+		return
 	if(front.x > x && back.x < x)
 		return EAST
 	else if(front.x < x && back.x > x)
 		return WEST
 
+
 /obj/machinery/bsa/full
 	name = "Bluespace Artillery"
 	desc = "Long range bluespace artillery."
-	icon = 'icons/obj/lavaland/cannon.dmi'
+	icon = 'icons/obj/machines/cannon.dmi'
 	icon_state = "cannon_west"
-
-	var/obj/machinery/computer/bsa_control/controller
-	var/cannon_direction = WEST
-	var/static/image/top_layer = null
+	var/static/mutable_appearance/top_layer
 	var/ex_power = 3
 	var/power_used_per_shot = 2000000 //enough to kil standard apc - todo : make this use wires instead and scale explosion power with it
-	var/last_fire_time = 0 // The time at which the gun was last fired
-	var/reload_cooldown = 600 // The gun's cooldown
-
+	var/ready
 	pixel_y = -32
 	pixel_x = -192
 	bound_width = 352
 	bound_x = -192
+	appearance_flags = LONG_GLIDE //Removes default TILE_BOUND
 
-/obj/machinery/bsa/full/Destroy()
-	if(controller && controller.cannon == src)
-		controller.cannon = null
-		controller = null
-	return ..()
-
-/obj/machinery/bsa/full/east
-	icon_state = "cannon_east"
-	cannon_direction = EAST
-
-/obj/machinery/bsa/full/admin
-	power_used_per_shot = 0
-	reload_cooldown = 100
-
-/obj/machinery/bsa/full/admin/east
-	icon_state = "cannon_east"
-	cannon_direction = EAST
+/obj/machinery/bsa/full/wrench_act(mob/living/user, obj/item/I)
+	return FALSE
 
 /obj/machinery/bsa/full/proc/get_front_turf()
 	switch(dir)
 		if(WEST)
-			return locate(x - 6,y,z)
+			return locate(x - 7,y,z)
 		if(EAST)
-			return locate(x + 4,y,z)
+			return locate(x + 7,y,z)
 	return get_turf(src)
 
 /obj/machinery/bsa/full/proc/get_back_turf()
 	switch(dir)
 		if(WEST)
-			return locate(x + 4,y,z)
+			return locate(x + 5,y,z)
 		if(EAST)
-			return locate(x - 6,y,z)
+			return locate(x - 5,y,z)
 	return get_turf(src)
 
 /obj/machinery/bsa/full/proc/get_target_turf()
@@ -183,232 +186,199 @@
 			return locate(world.maxx,y,z)
 	return get_turf(src)
 
-/obj/machinery/bsa/full/New(loc, direction)
-	..()
-
-	if(direction)
-		cannon_direction = direction
-
+/obj/machinery/bsa/full/Initialize(mapload, cannon_direction = WEST)
+	. = ..()
 	switch(cannon_direction)
 		if(WEST)
-			dir = WEST
-			pixel_x = -192
-			top_layer = image("icons/obj/lavaland/orbital_cannon.dmi", "top_west")
-			top_layer.layer = 4.1
+			setDir(WEST)
 			icon_state = "cannon_west"
 		if(EAST)
-			dir = EAST
-			top_layer = image("icons/obj/lavaland/orbital_cannon.dmi", "top_east")
-			top_layer.layer = 4.1
+			setDir(EAST)
+			pixel_x = -128
+			bound_x = -128
 			icon_state = "cannon_east"
-	overlays += top_layer
-
-/obj/machinery/bsa/full/Initialize(mapload)
-	. = ..()
-	return INITIALIZE_HINT_LATELOAD
-
-/obj/machinery/bsa/full/LateInitialize(mapload)
-	. = ..()
-	reload() // so we don't try and use the powernet before it initializes
-
-
-/obj/machinery/bsa/full/proc/fire(mob/user, turf/bullseye, target)
-	var/turf/point = get_front_turf()
-	for(var/turf/T in get_line(get_step(point,dir),get_target_turf()))
-		T.ex_act(1)
-		for(var/atom/A in T)
-			A.ex_act(1)
-
-	point.Beam(get_target_turf(), icon_state = "bsa_beam", time = 50, maxdistance = world.maxx, beam_type = /obj/effect/ebeam/deadly) //ZZZAP
-	playsound(src, 'sound/machines/bsa_fire.ogg', 100, 1)
-	if(istype(target, /obj/item/gps))
-		var/obj/item/gps/G = target
-		message_admins("[key_name_admin(user)] has launched an artillery strike at GPS named [G.gpstag].")
-
-	else
-		message_admins("[key_name_admin(user)] has launched an artillery strike.")//Admin BSA firing, just targets a room, which the explosion says
-
-	log_admin("[key_name(user)] has launched an artillery strike.") // Line below handles logging the explosion to disk
-	explosion(bullseye,ex_power,ex_power*2,ex_power*4)
-
+	get_layer()
 	reload()
 
+/obj/machinery/bsa/full/proc/get_layer()
+	top_layer = mutable_appearance(icon, layer = ABOVE_MOB_LAYER)
+	switch(dir)
+		if(WEST)
+			top_layer.icon_state = "top_west"
+		if(EAST)
+			top_layer.icon_state = "top_east"
+	add_overlay(top_layer)
+
+/obj/machinery/bsa/full/on_changed_z_level(turf/old_turf, turf/new_turf, same_z_layer, notify_contents)
+	if(same_z_layer)
+		return ..()
+	cut_overlay(top_layer)
+	get_layer()
+	return ..()
+
+/obj/machinery/bsa/full/proc/fire(mob/user, turf/bullseye)
+	reload()
+
+	var/turf/point = get_front_turf()
+	var/turf/target = get_target_turf()
+	var/atom/movable/blocker
+	for(var/T in get_line(get_step(point, dir), target))
+		var/turf/tile = T
+		if(SEND_SIGNAL(tile, COMSIG_ATOM_BSA_BEAM) & COMSIG_ATOM_BLOCKS_BSA_BEAM)
+			blocker = tile
+		else
+			for(var/AM in tile)
+				var/atom/movable/stuff = AM
+				if(SEND_SIGNAL(stuff, COMSIG_ATOM_BSA_BEAM) & COMSIG_ATOM_BLOCKS_BSA_BEAM)
+					blocker = stuff
+					break
+		if(blocker)
+			target = tile
+			break
+		else
+			SSexplosions.highturf += tile //also fucks everything else on the turf
+	point.Beam(target, icon_state = "bsa_beam", time = 5 SECONDS, maxdistance = world.maxx) //ZZZAP
+	new /obj/effect/temp_visual/bsa_splash(point, dir)
+
+	notify_ghosts(
+		"The Bluespace Artillery has been fired!",
+		source = bullseye,
+		header = "KABOOM!",
+	)
+
+	if(!blocker)
+		message_admins("[ADMIN_LOOKUPFLW(user)] has launched a bluespace artillery strike targeting [ADMIN_VERBOSEJMP(bullseye)].")
+		user.log_message("has launched a bluespace artillery strike targeting [AREACOORD(bullseye)].", LOG_GAME)
+		explosion(bullseye, devastation_range = ex_power, heavy_impact_range = ex_power*2, light_impact_range = ex_power*4, explosion_cause = src)
+	else
+		message_admins("[ADMIN_LOOKUPFLW(user)] has launched a bluespace artillery strike targeting [ADMIN_VERBOSEJMP(bullseye)] but it was blocked by [blocker] at [ADMIN_VERBOSEJMP(target)].")
+		user.log_message("has launched a bluespace artillery strike targeting [AREACOORD(bullseye)] but it was blocked by [blocker] at [AREACOORD(target)].", LOG_GAME)
+
+
 /obj/machinery/bsa/full/proc/reload()
+	ready = FALSE
 	use_power(power_used_per_shot)
-	last_fire_time = world.time / 10
+	addtimer(CALLBACK(src,"ready_cannon"),600)
 
-/obj/item/circuitboard/machine/bsa/back
-	board_name = "Bluespace Artillery Generator"
-	icon_state = "command"
-	build_path = /obj/machinery/bsa/back
-	origin_tech = "engineering=2;combat=2;bluespace=2" //No freebies!
-	req_components = list(
-							/obj/item/stock_parts/capacitor/quadratic = 5,
-							/obj/item/stack/cable_coil = 2)
+/obj/machinery/bsa/full/proc/ready_cannon()
+	ready = TRUE
 
-/obj/item/circuitboard/machine/bsa/middle
-	board_name = "Bluespace Artillery Fusor"
-	icon_state = "command"
-	build_path = /obj/machinery/bsa/middle
-	origin_tech = "engineering=2;combat=2;bluespace=2"
-	req_components = list(
-							/obj/item/stack/ore/bluespace_crystal = 20,
-							/obj/item/stack/cable_coil = 2)
+/obj/structure/filler
+	name = "big machinery part"
+	density = TRUE
+	anchored = TRUE
+	invisibility = INVISIBILITY_ABSTRACT
+	var/obj/machinery/parent
 
-/obj/item/circuitboard/machine/bsa/front
-	board_name = "Bluespace Artillery Bore"
-	icon_state = "command"
-	build_path = /obj/machinery/bsa/front
-	origin_tech = "engineering=2;combat=2;bluespace=2"
-	req_components = list(
-							/obj/item/stock_parts/manipulator/femto = 5,
-							/obj/item/stack/cable_coil = 2)
-
-/obj/item/circuitboard/computer/bsa_control
-	board_name = "Bluespace Artillery Controls"
-	icon_state = "command"
-	build_path = /obj/machinery/computer/bsa_control
-	origin_tech = "engineering=2;combat=2;bluespace=2"
+/obj/structure/filler/ex_act()
+	return FALSE
 
 /obj/machinery/computer/bsa_control
-	name = "Bluespace Artillery Control"
-	var/obj/machinery/bsa/full/cannon
-	var/notice
-	var/target
-	power_state = NO_POWER_USE
+	name = "bluespace artillery control"
+	use_power = NO_POWER_USE
 	circuit = /obj/item/circuitboard/computer/bsa_control
 	icon = 'icons/obj/machines/particle_accelerator.dmi'
 	icon_state = "control_boxp"
-	var/icon_state_broken = "control_box"
-	var/icon_state_nopower = "control_boxw"
-	var/icon_state_reloading = "control_boxp1"
-	var/icon_state_active = "control_boxp0"
-	layer = 3.1 // Just above the cannon sprite
+	icon_keyboard = null
+	icon_screen = null
 
+	var/datum/weakref/cannon_ref
+	var/notice
+	var/target
 	var/area_aim = FALSE //should also show areas for targeting
-	var/target_all_areas = FALSE //allows all areas (including admin areas) to be targeted
-
-/obj/machinery/computer/bsa_control/admin
-	area_aim = TRUE
-	target_all_areas = TRUE
-
-/obj/machinery/computer/bsa_control/admin/Initialize()
-	..()
-	if(!cannon)
-		cannon = deploy()
-
-/obj/machinery/computer/bsa_control/Destroy()
-	if(cannon && cannon.controller == src)
-		cannon.controller = null
-		cannon = null
-	return ..()
-
-/obj/machinery/computer/bsa_control/process()
-	..()
-	update_icon(UPDATE_ICON_STATE)
-
-/obj/machinery/computer/bsa_control/update_icon_state()
-	if(stat & BROKEN)
-		icon_state = icon_state_broken
-	else if(stat & NOPOWER)
-		icon_state = icon_state_nopower
-	else if(cannon && (cannon.last_fire_time + cannon.reload_cooldown) > (world.time / 10))
-		icon_state = icon_state_reloading
-	else if(cannon)
-		icon_state = icon_state_active
-	else
-		icon_state = initial(icon_state)
-
-/obj/machinery/computer/bsa_control/update_overlays()
-	return list()
-
-/obj/machinery/computer/bsa_control/attack_hand(mob/user)
-	if(..())
-		return 1
-	ui_interact(user)
 
 /obj/machinery/computer/bsa_control/ui_state(mob/user)
-	return GLOB.default_state
+	return GLOB.physical_state
 
-/obj/machinery/computer/bsa_control/ui_interact(mob/user, datum/tgui/ui = null)
+/obj/machinery/computer/bsa_control/ui_interact(mob/user, datum/tgui/ui)
+	. = ..()
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "BlueSpaceArtilleryControl", name)
+		ui = new(user, src, "BluespaceArtillery", name)
 		ui.open()
 
-/obj/machinery/computer/bsa_control/ui_data(mob/user)
+/obj/machinery/computer/bsa_control/ui_data()
+	var/obj/machinery/bsa/full/cannon = cannon_ref?.resolve()
 	var/list/data = list()
+	data["ready"] = cannon ? cannon.ready : FALSE
 	data["connected"] = cannon
 	data["notice"] = notice
+	data["unlocked"] = GLOB.bsa_unlock
 	if(target)
 		data["target"] = get_target_name()
-	if(cannon)
-		var/reload_cooldown = cannon.reload_cooldown
-		var/last_fire_time = cannon.last_fire_time
-		var/time_to_wait = max(0, round(reload_cooldown - ((world.time / 10) - last_fire_time)))
-		var/minutes = max(0, round(time_to_wait / 60))
-		var/seconds = max(0, time_to_wait - (60 * minutes))
-		var/seconds2 = (seconds < 10) ? "0[seconds]" : seconds
-		data["reloadtime_text"] = "[minutes]:[seconds2]"
-		data["ready"] = minutes == 0 && seconds == 0
-	else
-		data["ready"] = FALSE
 	return data
 
 /obj/machinery/computer/bsa_control/ui_act(action, params)
-	if(..())
+	. = ..()
+	if(.)
 		return
+
 	switch(action)
 		if("build")
-			cannon = deploy()
+			cannon_ref = WEAKREF(deploy())
+			. = TRUE
 		if("fire")
 			fire(usr)
+			. = TRUE
 		if("recalibrate")
 			calibrate(usr)
-	update_icon(UPDATE_ICON_STATE)
-	return TRUE
+			. = TRUE
+	update_appearance()
 
 /obj/machinery/computer/bsa_control/proc/calibrate(mob/user)
+	if(!GLOB.bsa_unlock)
+		return
 	var/list/gps_locators = list()
-	for(var/obj/item/gps/G in GLOB.GPS_list) //nulls on the list somehow
-		gps_locators[G.gpstag] = G
+	for(var/datum/component/gps/G in GLOB.GPS_list) //nulls on the list somehow
+		if(G.tracking)
+			gps_locators[G.gpstag] = G
 
 	var/list/options = gps_locators
 	if(area_aim)
-		options += target_all_areas ? SSmapping.ghostteleportlocs : SSmapping.teleportlocs
-	var/V = input(user,"Select target", "Select target",null) in options|null
-	target = options[V]
+		options += GLOB.teleportlocs
+	var/victim = tgui_input_list(user, "Select target", "Artillery Targeting", options)
+	if(isnull(victim))
+		return
+	if(isnull(options[victim]))
+		return
+	target = options[victim]
+	log_game("[key_name(user)] has aimed the bluespace artillery strike at [target].")
+
 
 /obj/machinery/computer/bsa_control/proc/get_target_name()
-	if(isarea(target))
-		var/area/A = target
-		return A.name
-	else if(istype(target,/obj/item/gps))
-		var/obj/item/gps/G = target
+	if(istype(target, /area))
+		return get_area_name(target, TRUE)
+	else if(istype(target, /datum/component/gps))
+		var/datum/component/gps/G = target
 		return G.gpstag
 
 /obj/machinery/computer/bsa_control/proc/get_impact_turf()
-	if(isarea(target))
+	if(obj_flags & EMAGGED)
+		return get_turf(src)
+	else if(istype(target, /area))
 		return pick(get_area_turfs(target))
-	else if(istype(target,/obj/item/gps))
-		return get_turf(target)
+	else if(istype(target, /datum/component/gps))
+		var/datum/component/gps/G = target
+		return get_turf(G.parent)
 
 /obj/machinery/computer/bsa_control/proc/fire(mob/user)
-	if(!cannon || !target)
+	var/obj/machinery/bsa/full/cannon = cannon_ref?.resolve()
+	if(!cannon)
+		notice = "No Cannon Exists!"
 		return
-	if(cannon.stat)
+	if(cannon.machine_stat)
 		notice = "Cannon unpowered!"
 		return
 	notice = null
-	cannon.fire(user, get_impact_turf(), target)
+	var/turf/target_turf = get_impact_turf()
+	cannon.fire(user, target_turf)
 
-/obj/machinery/computer/bsa_control/proc/deploy()
-	var/obj/machinery/bsa/full/prebuilt = locate() in range(7, src) //In case of adminspawn
+/obj/machinery/computer/bsa_control/proc/deploy(force=FALSE)
+	var/obj/machinery/bsa/full/prebuilt = locate() in range(7) //In case of adminspawn
 	if(prebuilt)
-		prebuilt.controller = src
 		return prebuilt
 
-	var/obj/machinery/bsa/middle/centerpiece = locate() in range(7, src)
+	var/obj/machinery/bsa/middle/centerpiece = locate() in range(7)
 	if(!centerpiece)
 		notice = "No BSA parts detected nearby."
 		return null
@@ -416,12 +386,18 @@
 	if(notice)
 		return null
 	//Totally nanite construction system not an immersion breaking spawning
-	var/datum/effect_system/smoke_spread/s = new
-	s.set_up(4, FALSE, centerpiece)
-	s.start()
+	var/datum/effect_system/fluid_spread/smoke/fourth_wall_guard = new
+	fourth_wall_guard.set_up(4, holder = src, location = get_turf(centerpiece))
+	fourth_wall_guard.start()
 	var/obj/machinery/bsa/full/cannon = new(get_turf(centerpiece),centerpiece.get_cannon_direction())
-	cannon.controller = src
-	qdel(centerpiece.front)
-	qdel(centerpiece.back)
+	QDEL_NULL(centerpiece.front_ref)
+	QDEL_NULL(centerpiece.back_ref)
 	qdel(centerpiece)
 	return cannon
+/obj/machinery/computer/bsa_control/emag_act(mob/user, obj/item/card/emag/emag_card)
+	if(obj_flags & EMAGGED)
+		return FALSE
+	obj_flags |= EMAGGED
+	balloon_alert(user, "rigged to explode")
+	to_chat(user, span_warning("You emag [src] and hear the focusing crystal short out. You get the feeling it wouldn't be wise to stand near [src] when the BSA fires..."))
+	return TRUE

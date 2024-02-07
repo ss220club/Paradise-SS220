@@ -1,58 +1,52 @@
-/*
-//////////////////////////////////////
-Alopecia
-
-	Noticable.
-	Decreases resistance slightly.
-	Reduces stage speed slightly.
-	Transmittable.
-	Intense Level.
-
-BONUS
-	Makes the mob lose hair.
-
-//////////////////////////////////////
+/*Alopecia
+ * No change to stealth
+ * Slight increase to resistance
+ * Increases stage speed
+ * Increases transmissibility
+ * Near critcal level
+ * Bonus: Makes the mob lose hair.
 */
-
 /datum/symptom/shedding
-
 	name = "Alopecia"
-	stealth = -1
-	resistance = -1
-	stage_speed = -1
+	desc = "The virus causes rapid shedding of head and body hair."
+	illness = "Thin Skinned"
+	stealth = 0
+	resistance = 1
+	stage_speed = 2
 	transmittable = 2
 	level = 4
 	severity = 1
+	base_message_chance = 50
+	symptom_delay_min = 45
+	symptom_delay_max = 90
 
-/datum/symptom/shedding/Activate(datum/disease/advance/A)
-	..()
-	if(!prob(SYMPTOM_ACTIVATION_PROB))
+/datum/symptom/shedding/Activate(datum/disease/advance/disease)
+	. = ..()
+	if(!.)
 		return
-	if(!ishuman(A.affected_mob))
-		return
-	var/mob/living/carbon/human/H = A.affected_mob
-	var/obj/item/organ/external/head/head_organ = H.get_organ("head")
-	if(!istype(head_organ))
-		return
-	to_chat(H, "<span class='warning'>[pick("Your scalp itches.", "Your skin feels flakey.")]</span>")
-	if(NO_HAIR in H.dna.species.species_traits)
-		return // Hair can't fall out if you don't have any
-	switch(A.stage)
-		if(3, 4)
-			if(head_organ.h_style != "Bald" && head_organ.h_style != "Balding Hair")
-				to_chat(H, "<span class='warning'>Your hair starts to fall out in clumps...</span>")
-				addtimer(CALLBACK(src, PROC_REF(change_hair), H, head_organ, null, "Balding Hair"), 5 SECONDS)
-		if(5)
-			if((head_organ.f_style != "Shaved") || (head_organ.h_style != "Bald"))
-				to_chat(H, "<span class='warning'>Your hair starts to fall out in clumps...</span>")
-				addtimer(CALLBACK(src, PROC_REF(change_hair), H, head_organ, "Shaved", "Bald"), 5 SECONDS)
 
-/datum/symptom/shedding/proc/change_hair(mob/living/carbon/human/H, obj/item/organ/external/head/head_organ, f_style, h_style)
-	if(!H || !head_organ)
-		return
-	if(f_style)
-		head_organ.f_style = f_style
-		H.update_fhair()
-	if(h_style)
-		head_organ.h_style = h_style
-		H.update_hair()
+	var/mob/living/affected_living = disease.affected_mob
+	if(prob(base_message_chance))
+		to_chat(affected_living, span_warning("[pick("Your scalp itches.", "Your skin feels flaky.")]"))
+	if(ishuman(affected_living))
+		var/mob/living/carbon/human/affected_human = affected_living
+		switch(disease.stage)
+			if(3, 4)
+				if((affected_human.hairstyle == "Bald") && (affected_human.hairstyle != "Balding Hair"))
+					to_chat(affected_human, span_warning("Your hair starts to fall out in clumps..."))
+					addtimer(CALLBACK(src, PROC_REF(baldify), affected_human, FALSE), 5 SECONDS)
+			if(5)
+				if((affected_human.facial_hairstyle != "Shaved") || (affected_human.hairstyle != "Bald"))
+					if(affected_human.hairstyle == "Balding Hair")
+						to_chat(affected_human, span_warning("The little hair you have left starts to fall out in clumps..."))
+					else
+						to_chat(affected_human, span_warning("Your hair starts to fall out in clumps..."))
+					addtimer(CALLBACK(src, PROC_REF(baldify), affected_human, TRUE), 3 SECONDS)
+
+/datum/symptom/shedding/proc/baldify(mob/living/carbon/human/baldie, fully_bald)
+	if(fully_bald)
+		baldie.set_facial_hairstyle("Shaved", update = FALSE)
+		baldie.set_hairstyle("Bald", update = FALSE)
+	else
+		baldie.set_hairstyle("Balding Hair", update = FALSE)
+	baldie.update_body_parts()

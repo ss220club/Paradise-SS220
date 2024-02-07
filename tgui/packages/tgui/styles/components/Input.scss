@@ -3,18 +3,12 @@
  * SPDX-License-Identifier: MIT
  */
 
-@use 'sass:color';
 @use '../base.scss';
 @use '../functions.scss' as *;
 
 $text-color: base.$color-fg !default;
 $background-color: #0a0a0a !default;
 $border-color: #88bfff !default;
-$border-color-disabled: color.adjust(
-  $border-color,
-  $saturation: -100%,
-  $lightness: -25%
-) !default;
 $border-radius: base.$border-radius !default;
 
 .Input {
@@ -26,22 +20,10 @@ $border-radius: base.$border-radius !default;
   border-radius: $border-radius;
   color: $text-color;
   background-color: $background-color;
-  color: #fff;
-  background-color: #000;
-  background-color: rgba(0, 0, 0, 0.75);
   padding: 0 base.em(4px);
   margin-right: base.em(2px);
   line-height: base.em(17px);
   overflow: visible;
-  white-space: nowrap;
-
-  &--disabled {
-    color: #777;
-    border-color: $border-color-disabled;
-    border-color: rgba($border-color-disabled, 0.75);
-    background-color: #333;
-    background-color: rgba(0, 0, 0, 0.25);
-  }
 }
 
 .Input--fluid {
@@ -73,27 +55,6 @@ $border-radius: base.$border-radius !default;
   background-color: transparent;
   color: $text-color;
   color: inherit;
-
-  &:-ms-input-placeholder {
-    font-style: italic;
-    color: #777;
-    color: rgba(255, 255, 255, 0.45);
-  }
-}
-
-.Input__textarea {
-  border: 0;
-  width: calc(100% + 4px);
-  font-size: base.em(12px);
-  line-height: base.em(17px);
-  margin-left: base.em(-4px);
-  font-family: Verdana, sans-serif;
-  background-color: transparent;
-  color: #fff;
-  color: inherit;
-  resize: both;
-  overflow: auto;
-  white-space: pre-wrap;
 
   &:-ms-input-placeholder {
     font-style: italic;

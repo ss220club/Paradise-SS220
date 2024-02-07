@@ -1,7 +1,9 @@
 import { filterMap } from 'common/collections';
 import { exhaustiveCheck } from 'common/exhaustive';
 import { BooleanLike } from 'common/react';
-import { useBackend, useLocalState } from '../backend';
+import { useState } from 'react';
+
+import { useBackend } from '../backend';
 import { Box, Button, Divider, Dropdown, Stack, Tabs } from '../components';
 import { Window } from '../layouts';
 
@@ -28,20 +30,16 @@ enum Tab {
   ViewStationTraits,
 }
 
-const FutureStationTraitsPage = (props, context) => {
-  const { act, data } = useBackend<StationTraitsData>(context);
+const FutureStationTraitsPage = (props) => {
+  const { act, data } = useBackend<StationTraitsData>();
   const { future_station_traits } = data;
 
-  const [selectedTrait, setSelectedTrait] = useLocalState<string | null>(
-    context,
-    'selectedFutureTrait',
-    null
-  );
+  const [selectedTrait, setSelectedTrait] = useState<string | undefined>();
 
   const traitsByName = Object.fromEntries(
     data.valid_station_traits.map((trait) => {
       return [trait.name, trait.path];
-    })
+    }),
   );
 
   const traitNames = Object.keys(traitsByName);
@@ -59,6 +57,7 @@ const FutureStationTraitsPage = (props, context) => {
             width="100%"
           />
         </Stack.Item>
+
         <Stack.Item>
           <Button
             color="green"
@@ -73,7 +72,7 @@ const FutureStationTraitsPage = (props, context) => {
               let newStationTraits = [selectedPath];
               if (future_station_traits) {
                 const selectedTraitPaths = future_station_traits.map(
-                  (trait) => trait.path
+                  (trait) => trait.path,
                 );
 
                 if (selectedTraitPaths.indexOf(selectedPath) !== -1) {
@@ -81,7 +80,7 @@ const FutureStationTraitsPage = (props, context) => {
                 }
 
                 newStationTraits = newStationTraits.concat(
-                  ...selectedTraitPaths
+                  ...selectedTraitPaths,
                 );
               }
 
@@ -94,7 +93,9 @@ const FutureStationTraitsPage = (props, context) => {
           </Button>
         </Stack.Item>
       </Stack>
+
       <Divider />
+
       {Array.isArray(future_station_traits) ? (
         future_station_traits.length > 0 ? (
           <Stack vertical fill>
@@ -102,6 +103,7 @@ const FutureStationTraitsPage = (props, context) => {
               <Stack.Item key={trait.path}>
                 <Stack fill>
                   <Stack.Item grow>{trait.name}</Stack.Item>
+
                   <Stack.Item>
                     <Button
                       color="red"
@@ -116,7 +118,7 @@ const FutureStationTraitsPage = (props, context) => {
                               } else {
                                 return otherTrait.path;
                               }
-                            }
+                            },
                           ),
                         });
                       }}
@@ -129,44 +131,46 @@ const FutureStationTraitsPage = (props, context) => {
             ))}
           </Stack>
         ) : (
-          <Box textAlign="center">
+          <>
             <Box>No station traits will run next round.</Box>
-            <Button
-              mt={1}
-              fluid
-              color="good"
-              icon="times"
-              tooltip="The next round will roll station traits randomly, just like normal"
-              onClick={() => act('clear_future_traits')}
-            >
-              Run Station Traits Normally
-            </Button>
-          </Box>
+
+            <Box>
+              <Button
+                color="red"
+                icon="times"
+                tooltip="The next round will roll station traits randomly, just like normal"
+                onClick={() => act('clear_future_traits')}
+              >
+                Run Station Traits Normally
+              </Button>
+            </Box>
+          </>
         )
       ) : (
-        <Box textAlign="center">
+        <>
           <Box>No future station traits are planned.</Box>
-          <Button
-            mt={1}
-            fluid
-            color="red"
-            icon="times"
-            onClick={() =>
-              act('setup_future_traits', {
-                station_traits: [],
-              })
-            }
-          >
-            Prevent station traits from running next round
-          </Button>
-        </Box>
+
+          <Box>
+            <Button
+              color="red"
+              icon="times"
+              onClick={() =>
+                act('setup_future_traits', {
+                  station_traits: [],
+                })
+              }
+            >
+              Prevent station traits from running next round
+            </Button>
+          </Box>
+        </>
       )}
     </Box>
   );
 };
 
-const ViewStationTraitsPage = (props, context) => {
-  const { act, data } = useBackend<StationTraitsData>(context);
+const ViewStationTraitsPage = (props) => {
+  const { act, data } = useBackend<StationTraitsData>();
 
   return data.current_traits.length > 0 ? (
     <Stack vertical fill>
@@ -174,6 +178,7 @@ const ViewStationTraitsPage = (props, context) => {
         <Stack.Item key={stationTrait.ref}>
           <Stack fill>
             <Stack.Item grow>{stationTrait.name}</Stack.Item>
+
             <Stack.Item>
               <Button.Confirm
                 content="Revert"
@@ -198,16 +203,12 @@ const ViewStationTraitsPage = (props, context) => {
       ))}
     </Stack>
   ) : (
-    <Box textAlign="center">There are no active station traits.</Box>
+    <Box>There are no active station traits.</Box>
   );
 };
 
-export const StationTraitsPanel = (props, context) => {
-  const [currentTab, setCurrentTab] = useLocalState(
-    context,
-    'station_traits_tab',
-    Tab.ViewStationTraits
-  );
+export const StationTraitsPanel = (props) => {
+  const [currentTab, setCurrentTab] = useState(Tab.ViewStationTraits);
 
   let currentPage;
 
@@ -223,33 +224,29 @@ export const StationTraitsPanel = (props, context) => {
   }
 
   return (
-    <Window title="Modify Station Traits" height={350} width={350}>
+    <Window title="Modify Station Traits" height={500} width={500}>
       <Window.Content scrollable>
-        <Stack fill vertical>
-          <Stack.Item>
-            <Tabs>
-              <Tabs.Tab
-                icon="eye"
-                selected={currentTab === Tab.ViewStationTraits}
-                onClick={() => setCurrentTab(Tab.ViewStationTraits)}
-              >
-                View
-              </Tabs.Tab>
+        <Tabs>
+          <Tabs.Tab
+            icon="eye"
+            selected={currentTab === Tab.ViewStationTraits}
+            onClick={() => setCurrentTab(Tab.ViewStationTraits)}
+          >
+            View
+          </Tabs.Tab>
 
-              <Tabs.Tab
-                icon="edit"
-                selected={currentTab === Tab.SetupFutureStationTraits}
-                onClick={() => setCurrentTab(Tab.SetupFutureStationTraits)}
-              >
-                Edit
-              </Tabs.Tab>
-            </Tabs>
-          </Stack.Item>
-          <Stack.Item m={0}>
-            <Divider />
-            {currentPage}
-          </Stack.Item>
-        </Stack>
+          <Tabs.Tab
+            icon="edit"
+            selected={currentTab === Tab.SetupFutureStationTraits}
+            onClick={() => setCurrentTab(Tab.SetupFutureStationTraits)}
+          >
+            Edit
+          </Tabs.Tab>
+        </Tabs>
+
+        <Divider />
+
+        {currentPage}
       </Window.Content>
     </Window>
   );

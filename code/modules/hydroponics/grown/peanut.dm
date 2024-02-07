@@ -1,26 +1,25 @@
-// Peanuts
-/obj/item/seeds/peanuts
+// Peanuts!
+/obj/item/seeds/peanut
 	name = "pack of peanut seeds"
-	desc = "These seeds grow into peanuts."
-	icon_state = "seed-potato"
-	species = "potato"
-	plantname = "Peanut Vines"
-	product = /obj/item/food/snacks/grown/peanuts
-	lifespan = 30
-	maturation = 10
-	production = 1
-	yield = 4
-	growthstages = 4
-	growing_icon = 'icons/obj/hydroponics/growing_vegetables.dmi'
-	icon_grow = "potato-grow"
-	icon_dead = "potato-dead"
-	genes = list(/datum/plant_gene/trait/repeated_harvest)
-	reagents_add = list("plantmatter" = 0.1)
+	desc = "These seeds grow into peanut plants."
+	icon_state = "seed-peanut"
+	species = "peanut"
+	plantname = "Peanut Plant"
+	product = /obj/item/food/grown/peanut
+	lifespan = 55
+	endurance = 35
+	yield = 5
+	growing_icon = 'icons/obj/service/hydroponics/growing.dmi'
+	icon_grow = "peanut-grow"
+	icon_dead = "peanut-dead"
+	genes = list(/datum/plant_gene/trait/one_bite)
+	reagents_add = list(/datum/reagent/consumable/nutriment/vitamin = 0.04, /datum/reagent/consumable/nutriment = 0.1)
 
-/obj/item/food/snacks/grown/peanuts
-	seed = /obj/item/seeds/peanuts
-	name = "patch of peanuts"
-	desc = "Best avoided if you have spess allergies."
-	icon_state = "peanuts"
-	tastes = list("peanut" = 1, "nuttiness" = 1)
-	gender = PLURAL
+/obj/item/food/grown/peanut
+	seed = /obj/item/seeds/peanut
+	name = "peanut"
+	desc = "A tasty pair of groundnuts concealed in a tough shell."
+	icon_state = "peanut"
+	foodtypes = NUTS
+	grind_results = list(/datum/reagent/consumable/peanut_butter = 0)
+	tastes = list("peanuts" = 1)

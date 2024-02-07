@@ -6,57 +6,75 @@
 	icon_state = "console"
 	desc = "Controls a stacking machine... in theory."
 	density = FALSE
-	anchored = TRUE
+	circuit = /obj/item/circuitboard/machine/stacking_unit_console
+	/// Connected stacking machine
 	var/obj/machinery/mineral/stacking_machine/machine
 
 /obj/machinery/mineral/stacking_unit_console/Initialize(mapload)
 	. = ..()
-	for(var/obj/machinery/mineral/stacking_machine/found_machine in range(1, src))
-		machine = found_machine
+	machine = locate(/obj/machinery/mineral/stacking_machine) in view(2, src)
+	if (machine)
 		machine.console = src
-		return
-
-	CRASH("[src] failed to link to a stacking machine!")
 
 /obj/machinery/mineral/stacking_unit_console/Destroy()
 	if(machine)
 		machine.console = null
-	machine = null
+		machine = null
 	return ..()
 
-/obj/machinery/mineral/stacking_unit_console/attack_hand(mob/user)
-	var/obj/item/stack/sheet/s
-	var/dat
+/obj/machinery/mineral/stacking_unit_console/multitool_act(mob/living/user, obj/item/I)
+	if(!multitool_check_buffer(user, I))
+		return
+	var/obj/item/multitool/M = I
+	M.set_buffer(src)
+	balloon_alert(user, "saved to multitool buffer")
+	return TRUE
 
-	if(!machine)
+/obj/machinery/mineral/stacking_unit_console/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "StackingConsole", name)
+		ui.open()
+
+/obj/machinery/mineral/stacking_unit_console/ui_data(mob/user)
+	var/list/data = list()
+	data["machine"] = machine ? TRUE : FALSE
+	data["stacking_amount"] = null
+	data["contents"] = list()
+	if(machine)
+		data["stacking_amount"] = machine.stack_amt
+		data["input_direction"] = dir2text(machine.input_dir)
+		data["output_direction"] = dir2text(machine.output_dir)
+		for(var/stack_type in machine.stack_list)
+			var/obj/item/stack/sheet/stored_sheet = machine.stack_list[stack_type]
+			if(stored_sheet.amount <= 0)
+				continue
+			data["contents"] += list(list(
+				"type" = stored_sheet.type,
+				"name" = capitalize(stored_sheet.name),
+				"amount" = stored_sheet.amount,
+			))
+	return data
+
+/obj/machinery/mineral/stacking_unit_console/ui_act(action, list/params)
+	. = ..()
+	if(.)
 		return
 
-	dat += "<b>Stacking unit console</b><br><br>"
-
-	for(var/O in machine.stack_list)
-		s = machine.stack_list[O]
-		if(s.amount > 0)
-			dat += "[capitalize(s.name)]: [s.amount] <A href='?src=[UID()];release=[s.type]'>Release</A><br>"
-
-	dat += "<br>Stacking: [machine.stack_amt]<br><br>"
-
-	user << browse("[dat]", "window=console_stacking_machine")
-
-/obj/machinery/mineral/stacking_unit_console/Topic(href, href_list)
-	if(..())
-		return
-	usr.set_machine(src)
-	add_fingerprint(usr)
-	if(href_list["release"])
-		if(!(text2path(href_list["release"]) in machine.stack_list))
-			return //someone tried to spawn materials by spoofing hrefs
-		var/obj/item/stack/sheet/inp = machine.stack_list[text2path(href_list["release"])]
-		var/obj/item/stack/sheet/out = new inp.type()
-		out.amount = inp.amount
-		inp.amount = 0
-		machine.unload_mineral(out)
-
-	updateUsrDialog()
+	switch(action)
+		if("release")
+			var/obj/item/stack/sheet/released_type = text2path(params["type"])
+			if(!released_type || !(initial(released_type.merge_type) in machine.stack_list))
+				return //someone tried to spawn materials by spoofing hrefs
+			var/obj/item/stack/sheet/inp = machine.stack_list[initial(released_type.merge_type)]
+			var/obj/item/stack/sheet/out = new inp.type(null, inp.amount)
+			inp.amount = 0
+			machine.unload_mineral(out)
+			return TRUE
+		if("rotate")
+			var/input = text2num(params["input"])
+			machine.rotate(input)
+			return TRUE
 
 /**********************Mineral stacking unit**************************/
 
@@ -67,38 +85,78 @@
 	icon_state = "stacker"
 	desc = "A machine that automatically stacks acquired materials. Controlled by a nearby console."
 	density = TRUE
-	anchored = TRUE
-	var/obj/machinery/mineral/stacking_unit_console/console
-	var/list/stack_list = list() //Key: Type.  Value: Instance of type.
-	var/stack_amt = 50 //ammount to stack before releassing
+	circuit = /obj/item/circuitboard/machine/stacking_machine
 	input_dir = EAST
 	output_dir = WEST
-	speed_process = TRUE
+	var/obj/machinery/mineral/stacking_unit_console/console
+	var/stk_types = list()
+	var/stk_amt = list()
+	var/stack_list[0] //Key: Type. Value: Instance of type.
+	var/stack_amt = 50 //amount to stack before releassing
+	var/datum/component/remote_materials/materials
+	var/force_connect = FALSE
+	///Proximity monitor associated with this atom, needed for proximity checks.
+	var/datum/proximity_monitor/proximity_monitor
+
+/obj/machinery/mineral/stacking_machine/Initialize(mapload)
+	. = ..()
+	proximity_monitor = new(src, 1)
+	materials = AddComponent(
+		/datum/component/remote_materials, \
+		mapload, \
+		FALSE, \
+		(mapload && force_connect) \
+	)
 
 /obj/machinery/mineral/stacking_machine/Destroy()
-	QDEL_LIST_CONTENTS(stack_list)
 	if(console)
 		console.machine = null
-	console = null
+		console = null
+	materials = null
 	return ..()
 
-/obj/machinery/mineral/stacking_machine/process()
-	var/turf/T = get_step(src, input_dir)
-	if(T)
-		for(var/obj/item/stack/sheet/S in T)
-			process_sheet(S)
-			CHECK_TICK
+/obj/machinery/mineral/stacking_machine/HasProximity(atom/movable/AM)
+	if(QDELETED(AM))
+		return
+	if(istype(AM, /obj/item/stack/sheet) && AM.loc == get_step(src, input_dir))
+		process_sheet(AM)
+
+/obj/machinery/mineral/stacking_machine/multitool_act(mob/living/user, obj/item/multitool/M)
+	if(istype(M))
+		if(istype(M.buffer, /obj/machinery/mineral/stacking_unit_console))
+			console = M.buffer
+			console.machine = src
+			to_chat(user, span_notice("You link [src] to the console in [M]'s buffer."))
+			return TRUE
+
+/obj/machinery/mineral/stacking_machine/proc/rotate(input)
+	if (input)
+		input_dir = turn(input_dir, 90)
+	else
+		output_dir = turn(output_dir, 90)
+	if (input_dir == output_dir)
+		rotate(input)
 
 /obj/machinery/mineral/stacking_machine/proc/process_sheet(obj/item/stack/sheet/inp)
-	if(!(inp.type in stack_list)) //It's the first of this sheet added
-		var/obj/item/stack/sheet/s = new inp.type(src,0)
-		s.amount = 0
-		stack_list[inp.type] = s
-	var/obj/item/stack/sheet/storage = stack_list[inp.type]
+	if(QDELETED(inp))
+		return
+
+	// Dump the sheets to the silo if attached
+	if(materials.silo && !materials.on_hold())
+		var/matlist = inp.custom_materials & materials.mat_container.materials
+		if (length(matlist))
+			materials.mat_container.insert_item(inp, context = src)
+			return
+
+	// No silo attached process to internal storage
+	var/key = inp.merge_type
+	var/obj/item/stack/sheet/storage = stack_list[key]
+	if(!storage) //It's the first of this sheet added
+		stack_list[key] = storage = new inp.type(src, 0)
 	storage.amount += inp.amount //Stack the sheets
-	inp.loc = null //Let the old sheet garbage collect
-	while(storage.amount > stack_amt) //Get rid of excessive stackage
-		var/obj/item/stack/sheet/out = new inp.type()
-		out.amount = stack_amt
+	qdel(inp)
+
+	while(storage.amount >= stack_amt) //Get rid of excessive stackage
+		var/obj/item/stack/sheet/out = new inp.type(null, stack_amt)
 		unload_mineral(out)
 		storage.amount -= stack_amt

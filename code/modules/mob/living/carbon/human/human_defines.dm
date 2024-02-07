@@ -1,94 +1,94 @@
+/// Any humanoid (non-Xeno) mob, such as humans, plasmamen, lizards.
 /mob/living/carbon/human
-
-	hud_possible = list(
-		HEALTH_HUD, STATUS_HUD, SPECIALROLE_HUD, // from /mob/living
-		ID_HUD, WANTED_HUD, IMPMINDSHIELD_HUD, IMPCHEM_HUD, IMPTRACK_HUD, GLAND_HUD,
-		DIAG_STAT_HUD, DIAG_HUD // for IPCs
-	)
+	name = "Unknown"
+	real_name = "Unknown"
+	icon = 'icons/mob/human/human.dmi'
+	icon_state = "human_basic"
+	appearance_flags = KEEP_TOGETHER|TILE_BOUND|PIXEL_SCALE|LONG_GLIDE
+	hud_possible = list(HEALTH_HUD,STATUS_HUD,ID_HUD,WANTED_HUD,IMPLOYAL_HUD,IMPSEC_FIRST_HUD,IMPSEC_SECOND_HUD,ANTAG_HUD,GLAND_HUD,SENTIENT_DISEASE_HUD,FAN_HUD)
+	hud_type = /datum/hud/human
 	pressure_resistance = 25
-	mob_biotypes = MOB_ORGANIC | MOB_HUMANOID
-	blocks_emissive = EMISSIVE_BLOCK_UNIQUE
-	//Marking colour and style
-	var/list/m_colours = DEFAULT_MARKING_COLOURS //All colours set to #000000.
-	var/list/m_styles = DEFAULT_MARKING_STYLES //All markings set to None.
+	can_buckle = TRUE
+	buckle_lying = 0
+	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
+	can_be_shoved_into = TRUE
+	initial_language_holder = /datum/language_holder/empty // We get stuff from our species
+	flags_1 = PREVENT_CONTENTS_EXPLOSION_1
 
-	var/s_tone = 0	//Skin tone
+	//Hair colour and style
+	var/hair_color = "#000000"
+	var/hairstyle = "Bald"
 
-	//Skin colour
-	var/skin_colour = "#000000"
+	///Colours used for hair and facial hair gradients.
+	var/list/grad_color
+	///Styles used for hair and facial hair gradients.
+	var/list/grad_style
 
-	var/lip_style = null	//no lipstick by default- arguably misleading, as it could be used for general makeup
-	var/lip_color = "white"
+	//Facial hair colour and style
+	var/facial_hair_color = "#000000"
+	var/facial_hairstyle = "Shaved"
 
-	var/age = 30		//Player's age (pure fluff)
-	/// Players' height (more fluff)
-	var/height = "average height"
-	/// Players physique (even MORE fluff)
-	var/physique = "average"
+	//Eye colour
+	var/eye_color_left = "#000000"
+	var/eye_color_right = "#000000"
+	/// Var used to keep track of a human mob having a heterochromatic right eye. To ensure prefs don't overwrite shit
+	var/eye_color_heterochromatic = FALSE
 
-	var/underwear = "Nude"	//Which underwear the player wants
-	var/undershirt = "Nude"	//Which undershirt the player wants
+	var/skin_tone = "caucasian1" //Skin tone
+
+	var/lip_style = null //no lipstick by default- arguably misleading, as it could be used for general makeup
+	var/lip_color = COLOR_WHITE
+
+	var/age = 30 //Player's age
+
+	/// Which body type to use
+	var/physique = MALE
+
+	//consider updating /mob/living/carbon/human/copy_clothing_prefs() if adding more of these
+	var/underwear = "Nude" //Which underwear the player wants
+	var/underwear_color = "#000000"
+	var/undershirt = "Nude" //Which undershirt the player wants
 	var/socks = "Nude" //Which socks the player wants
-	var/backbag = 2		//Which backpack type the player has chosen. Nothing, Satchel or Backpack.
+	var/backpack = DBACKPACK //Which backpack type the player has chosen.
+	var/jumpsuit_style = PREF_SUIT //suit/skirt
 
 	//Equipment slots
-	var/obj/item/clothing/under/w_uniform = null
-	var/obj/item/clothing/shoes = null
+	var/obj/item/clothing/wear_suit = null
+	var/obj/item/clothing/w_uniform = null
 	var/obj/item/belt = null
-	var/obj/item/clothing/gloves = null
-	var/obj/item/clothing/glasses = null
-	var/obj/item/l_ear = null
-	var/obj/item/r_ear = null
 	var/obj/item/wear_id = null
-	var/obj/item/wear_pda = null
 	var/obj/item/r_store = null
 	var/obj/item/l_store = null
 	var/obj/item/s_store = null
 
-	var/icon/stand_icon = null
-
-	var/voice = ""	//Instead of new say code calling GetVoice() over and over and over, we're just going to ask this variable, which gets updated in Life()
-
-	var/datum/personal_crafting/handcrafting
-
 	var/special_voice = "" // For changing our voice. Used by a symptom.
-
-	var/hand_blood_color
-
-	var/name_override //For temporary visible name changes
 
 	var/datum/physiology/physiology
 
-	var/xylophone = 0 //For the spoooooooky xylophone cooldown
+	var/list/datum/bioware/biowares
 
-	var/mob/remoteview_target = null
-	var/meatleft = 3 //For chef item
-	var/decaylevel = 0 // For rotting bodies
-	var/max_blood = BLOOD_VOLUME_NORMAL // For stuff in the vessel
-	var/bleed_rate = 0
-	var/bleedsuppress = 0 //for stopping bloodloss
+	/// What types of mobs are allowed to ride/buckle to this mob
+	var/static/list/can_ride_typecache = typecacheof(list(
+		/mob/living/basic/parrot,
+		/mob/living/carbon/human,
+		/mob/living/simple_animal/slime,
+	))
+	var/lastpuke = 0
+	var/account_id
 
-	var/check_mutations=0 // Check mutations on next life tick
+	var/hardcore_survival_score = 0
 
-	var/heartbeat = 0
+	/// How many "units of blood" we have on our hands
+	var/blood_in_hands = 0
 
-	/// UID of the person who is giving this mob CPR.
-	var/receiving_cpr_from
+	/// The core temperature of the human compaired to the skin temp of the body
+	var/coretemperature = BODYTEMP_NORMAL
 
-	var/fire_dmi = 'icons/mob/OnFire.dmi'
-	var/fire_sprite = "Standing"
+	///Exposure to damaging heat levels increases stacks, stacks clean over time when temperatures are lower. Stack is consumed to add a wound.
+	var/heat_exposure_stacks = 0
 
-	var/datum/body_accessory/body_accessory = null
-	/// Name of tail image in species effects icon file.
-	var/tail
-	/// Same as tail but wing
-	var/wing
+	/// When an braindead player has their equipment fiddled with, we log that info here for when they come back so they know who took their ID while they were DC'd for 30 seconds
+	var/list/afk_thefts
 
-	var/list/splinted_limbs = list() //limbs we know are splinted
-	var/original_eye_color = "#000000"
-
-	var/list/bodyparts = list()
-	/// map organ names to organs
-	var/list/bodyparts_by_name = list()
-
-	var/temperature_resistance = T0C+75
+	/// Height of the mob
+	VAR_PROTECTED/mob_height = HUMAN_HEIGHT_MEDIUM

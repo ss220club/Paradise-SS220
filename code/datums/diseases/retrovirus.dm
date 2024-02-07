@@ -2,83 +2,87 @@
 	name = "Retrovirus"
 	max_stages = 4
 	spread_text = "Contact"
-	spread_flags = CONTACT_GENERAL
+	spread_flags = DISEASE_SPREAD_BLOOD | DISEASE_SPREAD_CONTACT_SKIN | DISEASE_SPREAD_CONTACT_FLUIDS
 	cure_text = "Rest or an injection of mutadone"
-	cure_chance = 6
+	cure_chance = 3
 	agent = ""
 	viable_mobtypes = list(/mob/living/carbon/human)
 	desc = "A DNA-altering retrovirus that scrambles the structural and unique enzymes of a host constantly."
-	severity = BIOHAZARD
-	permeability_mod = 0.4
-	stage_prob = 2
-	var/SE
-	var/UI
+	severity = DISEASE_SEVERITY_HARMFUL
+	spreading_modifier = 0.4
+	stage_prob = 1
 	var/restcure = 0
-
+	bypasses_immunity = TRUE
 
 /datum/disease/dna_retrovirus/New()
 	..()
 	agent = "Virus class [pick("A","B","C","D","E","F")][pick("A","B","C","D","E","F")]-[rand(50,300)]"
 	if(prob(40))
-		cures = list("mutadone")
+		cures = list(/datum/reagent/medicine/mutadone)
 	else
 		restcure = 1
 
+/datum/disease/dna_retrovirus/Copy()
+	var/datum/disease/dna_retrovirus/D = ..()
+	D.restcure = restcure
+	return D
 
-/datum/disease/dna_retrovirus/stage_act()
-	if(!..())
-		return FALSE
+/datum/disease/dna_retrovirus/stage_act(seconds_per_tick, times_fired)
+	. = ..()
+	if(!.)
+		return
+
 	switch(stage)
 		if(1)
-			if(restcure)
-				if(IS_HORIZONTAL(affected_mob) && prob(30))
-					to_chat(affected_mob, "<span class='notice'>You feel better.</span>")
-					cure()
-					return
-			if(prob(8))
-				to_chat(affected_mob, "<span class='danger'>Your head hurts.</span>")
-			if(prob(9))
-				to_chat(affected_mob, "You feel a tingling sensation in your chest.")
-			if(prob(9))
-				to_chat(affected_mob, "<span class='danger'>You feel angry.</span>")
+			if(SPT_PROB(4, seconds_per_tick))
+				to_chat(affected_mob, span_danger("Your head hurts."))
+			if(SPT_PROB(4.5, seconds_per_tick))
+				to_chat(affected_mob, span_danger("You feel a tingling sensation in your chest."))
+			if(SPT_PROB(4.5, seconds_per_tick))
+				to_chat(affected_mob, span_danger("You feel angry."))
+			if(restcure && affected_mob.body_position == LYING_DOWN && SPT_PROB(16, seconds_per_tick))
+				to_chat(affected_mob, span_notice("You feel better."))
+				cure()
+				return FALSE
 		if(2)
-			if(restcure)
-				if(IS_HORIZONTAL(affected_mob) && prob(20))
-					to_chat(affected_mob, "<span class='notice'>You feel better.</span>")
-					cure()
-					return
-			if(prob(8))
-				to_chat(affected_mob, "<span class='danger'>Your skin feels loose.</span>")
-			if(prob(10))
-				to_chat(affected_mob, "You feel very strange.")
-			if(prob(4))
-				to_chat(affected_mob, "<span class='danger'>You feel a stabbing pain in your head!</span>")
-				affected_mob.Paralyse(4 SECONDS)
-			if(prob(4))
-				to_chat(affected_mob, "<span class='danger'>Your stomach churns.</span>")
+			if(SPT_PROB(4, seconds_per_tick))
+				to_chat(affected_mob, span_danger("Your skin feels loose."))
+			if(SPT_PROB(5, seconds_per_tick))
+				to_chat(affected_mob, span_danger("You feel very strange."))
+			if(SPT_PROB(2, seconds_per_tick))
+				to_chat(affected_mob, span_danger("You feel a stabbing pain in your head!"))
+				affected_mob.Unconscious(40)
+			if(SPT_PROB(2, seconds_per_tick))
+				to_chat(affected_mob, span_danger("Your stomach churns."))
+			if(restcure && affected_mob.body_position == LYING_DOWN && SPT_PROB(10, seconds_per_tick))
+				to_chat(affected_mob, span_notice("You feel better."))
+				cure()
+				return FALSE
 		if(3)
-			if(restcure)
-				if(IS_HORIZONTAL(affected_mob) && prob(20))
-					to_chat(affected_mob, "<span class='notice'>You feel better.</span>")
-					cure()
-					return
-			if(prob(10))
-				to_chat(affected_mob, "<span class='danger'>Your entire body vibrates.</span>")
-
-			if(prob(35))
-				if(prob(50))
-					scramble(1, affected_mob, rand(15, 45))
-				else
-					scramble(0, affected_mob, rand(15, 45))
-
+			if(SPT_PROB(5, seconds_per_tick))
+				to_chat(affected_mob, span_danger("Your entire body vibrates."))
+			if(SPT_PROB(19, seconds_per_tick))
+				switch(rand(1,3))
+					if(1)
+						scramble_dna(affected_mob, 1, 0, 0, rand(15,45))
+					if(2)
+						scramble_dna(affected_mob, 0, 1, 0, rand(15,45))
+					if(3)
+						scramble_dna(affected_mob, 0, 0, 1, rand(15,45))
+			if(restcure && affected_mob.body_position == LYING_DOWN && SPT_PROB(10, seconds_per_tick))
+				to_chat(affected_mob, span_notice("You feel better."))
+				cure()
+				return FALSE
 		if(4)
-			if(restcure)
-				if(IS_HORIZONTAL(affected_mob) && prob(5))
-					to_chat(affected_mob, "<span class='notice'>You feel better.</span>")
-					cure()
-					return
-			if(prob(60))
-				if(prob(50))
-					scramble(1, affected_mob, rand(15, 45))
-				else
-					scramble(0, affected_mob, rand(15, 45))
+			if(SPT_PROB(37, seconds_per_tick))
+				switch(rand(1,3))
+					if(1)
+						scramble_dna(affected_mob, 1, 0, 0, rand(50,75))
+					if(2)
+						scramble_dna(affected_mob, 0, 1, 0, rand(50,75))
+					if(3)
+						scramble_dna(affected_mob, 0, 0, 1, rand(50,75))
+			if(restcure && affected_mob.body_position == LYING_DOWN && SPT_PROB(2.5, seconds_per_tick))
+				to_chat(affected_mob, span_notice("You feel better."))
+				cure()
+				return FALSE

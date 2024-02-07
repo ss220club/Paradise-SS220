@@ -1,205 +1,261 @@
-
 //////////////////////////
 /////Initial Building/////
 //////////////////////////
 
-/proc/makeDatumRefLists()
-	//markings
-	init_sprite_accessory_subtypes(/datum/sprite_accessory/body_markings, GLOB.marking_styles_list)
-	//head accessory
-	init_sprite_accessory_subtypes(/datum/sprite_accessory/head_accessory, GLOB.head_accessory_styles_list)
+/proc/init_sprite_accessories()
 	//hair
-	init_sprite_accessory_subtypes(/datum/sprite_accessory/hair, GLOB.hair_styles_public_list, GLOB.hair_styles_male_list, GLOB.hair_styles_female_list, GLOB.hair_styles_full_list)
-	//hair gradients
-	init_sprite_accessory_subtypes(/datum/sprite_accessory/hair_gradient, GLOB.hair_gradients_list)
+	init_sprite_accessory_subtypes(/datum/sprite_accessory/hair, GLOB.hairstyles_list, GLOB.hairstyles_male_list, GLOB.hairstyles_female_list)
 	//facial hair
-	init_sprite_accessory_subtypes(/datum/sprite_accessory/facial_hair, GLOB.facial_hair_styles_list, GLOB.facial_hair_styles_male_list, GLOB.facial_hair_styles_female_list)
+	init_sprite_accessory_subtypes(/datum/sprite_accessory/facial_hair, GLOB.facial_hairstyles_list, GLOB.facial_hairstyles_male_list, GLOB.facial_hairstyles_female_list)
 	//underwear
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/underwear, GLOB.underwear_list, GLOB.underwear_m, GLOB.underwear_f)
 	//undershirt
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/undershirt, GLOB.undershirt_list, GLOB.undershirt_m, GLOB.undershirt_f)
 	//socks
-	init_sprite_accessory_subtypes(/datum/sprite_accessory/socks, GLOB.socks_list, GLOB.socks_m, GLOB.socks_f)
-	//alt heads
-	init_sprite_accessory_subtypes(/datum/sprite_accessory/alt_heads, GLOB.alt_heads_list)
+	init_sprite_accessory_subtypes(/datum/sprite_accessory/socks, GLOB.socks_list)
+	//bodypart accessories (blizzard intensifies)
+	init_sprite_accessory_subtypes(/datum/sprite_accessory/body_markings, GLOB.body_markings_list)
+	init_sprite_accessory_subtypes(/datum/sprite_accessory/tails/human, GLOB.tails_list_human, add_blank = TRUE)
+	init_sprite_accessory_subtypes(/datum/sprite_accessory/tails/lizard, GLOB.tails_list_lizard, add_blank = TRUE)
+	init_sprite_accessory_subtypes(/datum/sprite_accessory/tails/monkey, GLOB.tails_list_monkey, add_blank = TRUE)
+	init_sprite_accessory_subtypes(/datum/sprite_accessory/snouts, GLOB.snouts_list)
+	init_sprite_accessory_subtypes(/datum/sprite_accessory/horns,GLOB.horns_list)
+	init_sprite_accessory_subtypes(/datum/sprite_accessory/ears, GLOB.ears_list)
+	init_sprite_accessory_subtypes(/datum/sprite_accessory/wings, GLOB.wings_list)
+	init_sprite_accessory_subtypes(/datum/sprite_accessory/wings_open, GLOB.wings_open_list)
+	init_sprite_accessory_subtypes(/datum/sprite_accessory/frills, GLOB.frills_list)
+	init_sprite_accessory_subtypes(/datum/sprite_accessory/spines, GLOB.spines_list)
+	init_sprite_accessory_subtypes(/datum/sprite_accessory/spines_animated, GLOB.animated_spines_list)
+	init_sprite_accessory_subtypes(/datum/sprite_accessory/tail_spines, GLOB.tail_spines_list)
+	init_sprite_accessory_subtypes(/datum/sprite_accessory/legs, GLOB.legs_list)
+	init_sprite_accessory_subtypes(/datum/sprite_accessory/caps, GLOB.caps_list)
+	init_sprite_accessory_subtypes(/datum/sprite_accessory/moth_wings, GLOB.moth_wings_list)
+	init_sprite_accessory_subtypes(/datum/sprite_accessory/moth_antennae, GLOB.moth_antennae_list)
+	init_sprite_accessory_subtypes(/datum/sprite_accessory/moth_markings, GLOB.moth_markings_list)
+	init_sprite_accessory_subtypes(/datum/sprite_accessory/pod_hair, GLOB.pod_hair_list)
 
-	init_subtypes(/datum/surgery_step, GLOB.surgery_steps)
+/// Inits GLOB.species_list. Not using GLOBAL_LIST_INIT b/c it depends on GLOB.string_lists
+/proc/init_species_list()
+	for(var/species_path in subtypesof(/datum/species))
+		var/datum/species/species = new species_path()
+		GLOB.species_list[species.id] = species_path
+	sort_list(GLOB.species_list, GLOBAL_PROC_REF(cmp_typepaths_asc))
 
-	// Different bodies
-	__init_body_accessory(/datum/body_accessory/body)
-	// Different tails
-	__init_body_accessory(/datum/body_accessory/tail)
-	// Different wings
-	__init_body_accessory(/datum/body_accessory/wing)
+/// Inits GLOB.surgeries
+/proc/init_surgeries()
+	var/surgeries = list()
+	for(var/path in subtypesof(/datum/surgery))
+		surgeries += new path()
+	sort_list(surgeries, GLOBAL_PROC_REF(cmp_typepaths_asc))
+	return surgeries
 
-	// Setup species:accessory relations
-	initialize_body_accessory_by_species()
+/// Hair Gradients - Initialise all /datum/sprite_accessory/hair_gradient into an list indexed by gradient-style name
+/proc/init_hair_gradients()
+	for(var/path in subtypesof(/datum/sprite_accessory/gradient))
+		var/datum/sprite_accessory/gradient/gradient = new path()
+		if(gradient.gradient_category  & GRADIENT_APPLIES_TO_HAIR)
+			GLOB.hair_gradients_list[gradient.name] = gradient
+		if(gradient.gradient_category & GRADIENT_APPLIES_TO_FACIAL_HAIR)
+			GLOB.facial_hair_gradients_list[gradient.name] = gradient
 
-	for(var/path in (subtypesof(/datum/surgery)))
-		GLOB.surgeries_list += new path()
+/// Legacy procs that really should be replaced with proper _INIT macros
+/proc/make_datum_reference_lists()
+	// I tried to eliminate this proc but I couldn't untangle their init-order interdependencies -Dominion/Cyberboss
+	init_sprite_accessories()
+	init_species_list()
+	init_hair_gradients()
+	init_keybindings()
+	GLOB.emote_list = init_emote_list() // WHY DOES THIS NEED TO GO HERE? IT JUST INITS DATUMS
+	init_crafting_recipes()
+	init_crafting_recipes_atoms()
 
-	init_datum_subtypes(/datum/job, GLOB.joblist, list(/datum/job/ai, /datum/job/cyborg), "title")
-	init_datum_subtypes(/datum/superheroes, GLOB.all_superheroes, null, "name")
-	init_datum_subtypes(/datum/language, GLOB.all_languages, null, "name")
-
-	// Setup languages
-	for(var/language_name in GLOB.all_languages)
-		var/datum/language/L = GLOB.all_languages[language_name]
-		if(!(L.flags & NONGLOBAL))
-			GLOB.language_keys[":[lowertext(L.key)]"] = L
-			GLOB.language_keys[".[lowertext(L.key)]"] = L
-			GLOB.language_keys["#[lowertext(L.key)]"] = L
-
-	var/rkey = 0
-	for(var/spath in subtypesof(/datum/species))
-		var/datum/species/S = new spath()
-		S.race_key = ++rkey //Used in mob icon caching.
-		GLOB.all_species[S.name] = S
-
-	init_subtypes(/datum/crafting_recipe, GLOB.crafting_recipes)
-
-	//Pipe list building
-	init_subtypes(/datum/pipes, GLOB.construction_pipe_list)
-	for(var/D in GLOB.construction_pipe_list)
-		var/datum/pipes/P = D
-		if(P.rpd_dispensable)
-			GLOB.rpd_pipe_list += list(list("pipe_name" = P.pipe_name, "pipe_id" = P.pipe_id, "pipe_type" = P.pipe_type, "pipe_category" = P.pipe_category, "orientations" = P.orientations, "pipe_icon" = P.pipe_icon, "bendy" = P.bendy))
-
-	// Setup PAI software
-	for(var/type in subtypesof(/datum/pai_software))
-		var/datum/pai_software/P = new type()
-		if(GLOB.pai_software_by_key[P.id])
-			var/datum/pai_software/O = GLOB.pai_software_by_key[P.id]
-			to_chat(world, "<span class='warning'>pAI software module [P.name] has the same key as [O.name]!</span>")
+/// Inits crafting recipe lists
+/proc/init_crafting_recipes(list/crafting_recipes)
+	for(var/path in subtypesof(/datum/crafting_recipe))
+		if(ispath(path, /datum/crafting_recipe/stack))
 			continue
-		GLOB.pai_software_by_key[P.id] = P
+		var/datum/crafting_recipe/recipe = new path()
+		var/is_cooking = (recipe.category in GLOB.crafting_category_food)
+		recipe.reqs = sort_list(recipe.reqs, GLOBAL_PROC_REF(cmp_crafting_req_priority))
+		if(recipe.name != "" && recipe.result)
+			if(is_cooking)
+				GLOB.cooking_recipes += recipe
+			else
+				GLOB.crafting_recipes += recipe
 
-	// Setup loadout gear
-	for(var/geartype in subtypesof(/datum/gear))
-		var/datum/gear/G = geartype
+	var/list/global_stack_recipes = list(
+		/obj/item/stack/sheet/glass = GLOB.glass_recipes,
+		/obj/item/stack/sheet/plasmaglass = GLOB.pglass_recipes,
+		/obj/item/stack/sheet/rglass = GLOB.reinforced_glass_recipes,
+		/obj/item/stack/sheet/plasmarglass = GLOB.prglass_recipes,
+		/obj/item/stack/sheet/animalhide/gondola = GLOB.gondola_recipes,
+		/obj/item/stack/sheet/animalhide/corgi = GLOB.corgi_recipes,
+		/obj/item/stack/sheet/animalhide/monkey = GLOB.monkey_recipes,
+		/obj/item/stack/sheet/animalhide/xeno = GLOB.xeno_recipes,
+		/obj/item/stack/sheet/leather = GLOB.leather_recipes,
+		/obj/item/stack/sheet/sinew = GLOB.sinew_recipes,
+		/obj/item/stack/sheet/animalhide/carp = GLOB.carp_recipes,
+		/obj/item/stack/sheet/mineral/sandstone = GLOB.sandstone_recipes,
+		/obj/item/stack/sheet/mineral/sandbags = GLOB.sandbag_recipes,
+		/obj/item/stack/sheet/mineral/diamond = GLOB.diamond_recipes,
+		/obj/item/stack/sheet/mineral/uranium = GLOB.uranium_recipes,
+		/obj/item/stack/sheet/mineral/plasma = GLOB.plasma_recipes,
+		/obj/item/stack/sheet/mineral/gold = GLOB.gold_recipes,
+		/obj/item/stack/sheet/mineral/silver = GLOB.silver_recipes,
+		/obj/item/stack/sheet/mineral/bananium = GLOB.bananium_recipes,
+		/obj/item/stack/sheet/mineral/titanium = GLOB.titanium_recipes,
+		/obj/item/stack/sheet/mineral/plastitanium = GLOB.plastitanium_recipes,
+		/obj/item/stack/sheet/mineral/snow = GLOB.snow_recipes,
+		/obj/item/stack/sheet/mineral/adamantine = GLOB.adamantine_recipes,
+		/obj/item/stack/sheet/mineral/abductor = GLOB.abductor_recipes,
+		/obj/item/stack/sheet/iron = GLOB.metal_recipes,
+		/obj/item/stack/sheet/plasteel = GLOB.plasteel_recipes,
+		/obj/item/stack/sheet/mineral/wood = GLOB.wood_recipes,
+		/obj/item/stack/sheet/mineral/bamboo = GLOB.bamboo_recipes,
+		/obj/item/stack/sheet/cloth = GLOB.cloth_recipes,
+		/obj/item/stack/sheet/durathread = GLOB.durathread_recipes,
+		/obj/item/stack/sheet/cardboard = GLOB.cardboard_recipes,
+		/obj/item/stack/sheet/bronze = GLOB.bronze_recipes,
+		/obj/item/stack/sheet/plastic = GLOB.plastic_recipes,
+		/obj/item/stack/ore/glass = GLOB.sand_recipes,
+		/obj/item/stack/rods = GLOB.rod_recipes,
+		/obj/item/stack/sheet/runed_metal = GLOB.runed_metal_recipes,
+	)
 
-		var/use_category = initial(G.sort_category)
+	for(var/stack in global_stack_recipes)
+		for(var/stack_recipe in global_stack_recipes[stack])
+			if(istype(stack_recipe, /datum/stack_recipe_list))
+				var/datum/stack_recipe_list/stack_recipe_list = stack_recipe
+				for(var/nested_recipe in stack_recipe_list.recipes)
+					if(!nested_recipe)
+						continue
+					var/datum/crafting_recipe/stack/recipe = new/datum/crafting_recipe/stack(stack, nested_recipe)
+					if(recipe.name != "" && recipe.result)
+						GLOB.crafting_recipes += recipe
+			else
+				if(!stack_recipe)
+					continue
+				var/datum/crafting_recipe/stack/recipe = new/datum/crafting_recipe/stack(stack, stack_recipe)
+				if(recipe.name != "" && recipe.result)
+					GLOB.crafting_recipes += recipe
 
-		if(G == initial(G.main_typepath))
-			continue
+	var/list/material_stack_recipes = list(
+		SSmaterials.base_stack_recipes,
+		SSmaterials.rigid_stack_recipes,
+	)
 
-		if(!initial(G.display_name))
-			stack_trace("Loadout - Missing display name: [G]")
-			continue
-		if(!initial(G.cost))
-			stack_trace("Loadout - Missing cost: [G]")
-			continue
-		if(!initial(G.path))
-			stack_trace("Loadout - Missing path definition: [G]")
-			continue
+	for(var/list/recipe_list in material_stack_recipes)
+		for(var/stack_recipe in recipe_list)
+			var/datum/crafting_recipe/stack/recipe = new/datum/crafting_recipe/stack(/obj/item/stack/sheet/iron, stack_recipe)
+			recipe.steps = list("Use different materials in hand to make an item of that material")
+			GLOB.crafting_recipes += recipe
 
-		if(!GLOB.loadout_categories[use_category])
-			GLOB.loadout_categories[use_category] = new /datum/loadout_category(use_category)
-		var/datum/loadout_category/LC = GLOB.loadout_categories[use_category]
-		GLOB.gear_datums[geartype] = new geartype
-		LC.gear[geartype] = GLOB.gear_datums[geartype]
+/// Inits atoms used in crafting recipes
+/proc/init_crafting_recipes_atoms()
+	var/list/recipe_lists = list(
+		GLOB.crafting_recipes,
+		GLOB.cooking_recipes,
+	)
+	var/list/atom_lists = list(
+		GLOB.crafting_recipes_atoms,
+		GLOB.cooking_recipes_atoms,
+	)
 
-	GLOB.loadout_categories = sortAssoc(GLOB.loadout_categories)
-	for(var/loadout_category in GLOB.loadout_categories)
-		var/datum/loadout_category/LC = GLOB.loadout_categories[loadout_category]
-		LC.gear = sortAssoc(LC.gear)
-
-
-	// Setup a list of robolimbs
-	GLOB.basic_robolimb = new()
-	for(var/limb_type in typesof(/datum/robolimb))
-		var/datum/robolimb/R = new limb_type()
-		GLOB.all_robolimbs[R.company] = R
-		if(R.selectable)
-			GLOB.selectable_robolimbs[R.company] = R
-
-	// Setup world topic handlers
-	for(var/topic_handler_type in subtypesof(/datum/world_topic_handler))
-		var/datum/world_topic_handler/wth = new topic_handler_type()
-		if(!wth.topic_key)
-			stack_trace("[wth.type] has no topic key!")
-			continue
-		if(GLOB.world_topic_handlers[wth.topic_key])
-			stack_trace("[wth.type] has the same topic key as [GLOB.world_topic_handlers[wth.topic_key]]! ([wth.topic_key])")
-			continue
-		GLOB.world_topic_handlers[wth.topic_key] = topic_handler_type
-
-	// Setup client login processors.
-	for(var/processor_type in subtypesof(/datum/client_login_processor))
-		var/datum/client_login_processor/CLP = new processor_type
-		GLOB.client_login_processors += CLP
-	// Sort them by priority, lowest first
-	sortTim(GLOB.client_login_processors, GLOBAL_PROC_REF(cmp_login_processor_priority))
-
-	GLOB.emote_list = init_emote_list()
-
-	// Keybindings
-	for(var/path in subtypesof(/datum/keybinding))
-		var/datum/keybinding/D = path
-		if(initial(D.name))
-			GLOB.keybindings += new path()
-
-	for(var/path in subtypesof(/datum/objective))
-		var/datum/objective/O = path
-		if(isnull(initial(O.name)))
-			continue // These are not valid objectives to add.
-		GLOB.admin_objective_list[initial(O.name)] = path
-
-	for(var/path in subtypesof(/datum/tilt_crit))
-		var/datum/tilt_crit/crit = path
-		if(isnull(initial(crit.name)))
-			continue
-		crit = new path()
-		GLOB.tilt_crits[path] = crit
-
-/* // Uncomment to debug chemical reaction list.
-/client/verb/debug_chemical_list()
-
-	for(var/reaction in GLOB.chemical_reactions_list)
-		. += "GLOB.chemical_reactions_list\[\"[reaction]\"\] = \"[GLOB.chemical_reactions_list[reaction]]\"\n"
-		if(islist(GLOB.chemical_reactions_list[reaction]))
-			var/list/L = GLOB.chemical_reactions_list[reaction]
-			for(var/t in L)
-				. += "    has: [t]\n"
-	to_chat(world, .)
-*/
-
+	for(var/list_index in 1 to length(recipe_lists))
+		var/list/recipe_list = recipe_lists[list_index]
+		var/list/atom_list = atom_lists[list_index]
+		for(var/datum/crafting_recipe/recipe as anything in recipe_list)
+			// Result
+			atom_list |= recipe.result
+			// Ingredients
+			for(var/atom/req_atom as anything in recipe.reqs)
+				atom_list |= req_atom
+			// Catalysts
+			for(var/atom/req_atom as anything in recipe.chem_catalysts)
+				atom_list |= req_atom
+			// Reaction data - required container
+			if(recipe.reaction)
+				var/required_container = initial(recipe.reaction.required_container)
+				if(required_container)
+					atom_list |= required_container
+			// Tools
+			for(var/atom/req_atom as anything in recipe.tool_paths)
+				atom_list |= req_atom
+			// Machinery
+			for(var/atom/req_atom as anything in recipe.machinery)
+				atom_list |= req_atom
+			// Structures
+			for(var/atom/req_atom as anything in recipe.structures)
+				atom_list |= req_atom
 
 //creates every subtype of prototype (excluding prototype) and adds it to list L.
 //if no list/L is provided, one is created.
 /proc/init_subtypes(prototype, list/L)
-	if(!istype(L))	L = list()
+	if(!istype(L))
+		L = list()
 	for(var/path in subtypesof(prototype))
 		L += new path()
 	return L
 
-/proc/init_datum_subtypes(prototype, list/L, list/pexempt, assocvar)
-	if(!istype(L))	L = list()
-	for(var/path in subtypesof(prototype) - pexempt)
-		var/datum/D = new path()
-		if(istype(D))
-			var/assoc
-			if(D.vars["[assocvar]"]) //has the var
-				assoc = D.vars["[assocvar]"] //access value of var
-			if(assoc) //value gotten
-				L["[assoc]"] = D //put in association
+//returns a list of paths to every subtype of prototype (excluding prototype)
+//if no list/L is provided, one is created.
+/proc/init_paths(prototype, list/L)
+	if(!istype(L))
+		L = list()
+		for(var/path in subtypesof(prototype))
+			L+= path
+		return L
+
+/// Functions like init_subtypes, but uses the subtype's path as a key for easy access
+/proc/init_subtypes_w_path_keys(prototype, list/L)
+	if(!istype(L))
+		L = list()
+	for(var/path as anything in subtypesof(prototype))
+		L[path] = new path()
 	return L
 
+/**
+ * Checks if that loc and dir has an item on the wall
+**/
+// Wall mounted machinery which are visually on the wall.
+GLOBAL_LIST_INIT(WALLITEMS_INTERIOR, typecacheof(list(
+	/obj/item/radio/intercom,
+	/obj/structure/secure_safe,
+	/obj/machinery/airalarm,
+	/obj/machinery/bluespace_vendor,
+	/obj/machinery/button,
+	/obj/machinery/computer/security/telescreen,
+	/obj/machinery/computer/security/telescreen/entertainment,
+	/obj/machinery/defibrillator_mount,
+	/obj/machinery/firealarm,
+	/obj/machinery/flasher,
+	/obj/machinery/keycard_auth,
+	/obj/machinery/light_switch,
+	/obj/machinery/newscaster,
+	/obj/machinery/power/apc,
+	/obj/machinery/requests_console,
+	/obj/machinery/status_display,
+	/obj/machinery/ticket_machine,
+	/obj/machinery/turretid,
+	/obj/machinery/barsign,
+	/obj/structure/extinguisher_cabinet,
+	/obj/structure/fireaxecabinet,
+	/obj/structure/mirror,
+	/obj/structure/noticeboard,
+	/obj/structure/reagent_dispensers/wall,
+	/obj/structure/sign,
+	/obj/structure/sign/picture_frame,
+	/obj/structure/sign/poster/contraband/random,
+	/obj/structure/sign/poster/official/random,
+	/obj/structure/sign/poster/random,
+	/obj/structure/urinal,
+)))
 
-/proc/init_emote_list()
-	. = list()
-	for(var/path in subtypesof(/datum/emote))
-		var/datum/emote/E = new path()
-		if(E.key)
-			if(!.[E.key])
-				.[E.key] = list(E)
-			else
-				.[E.key] += E
-		else if(E.message) //Assuming all non-base emotes have this
-			stack_trace("Keyless emote: [E.type]")
-
-		if(E.key_third_person) //This one is optional
-			if(!.[E.key_third_person])
-				.[E.key_third_person] = list(E)
-			else
-				.[E.key_third_person] |= E
+// Wall mounted machinery which are visually coming out of the wall.
+// These do not conflict with machinery which are visually placed on the wall.
+GLOBAL_LIST_INIT(WALLITEMS_EXTERIOR, typecacheof(list(
+	/obj/machinery/camera,
+	/obj/machinery/light,
+	/obj/structure/camera_assembly,
+	/obj/structure/light_construct,
+)))

@@ -1,68 +1,97 @@
 /obj/item/gun/energy/laser
 	name = "laser gun"
-	desc = "A WT-650 'Sentinel' laser carbine manufactured by Warp-Tac Inc. The golden shield of Nanotrasen Security is visible."
+	desc = "A basic energy-based laser gun that fires concentrated beams of light which pass through glass and thin metal."
 	icon_state = "laser"
-	item_state = "laser"
-	w_class = WEIGHT_CLASS_NORMAL
-	materials = list(MAT_METAL=2000)
-	origin_tech = "combat=4;magnets=2"
+	inhand_icon_state = "laser"
+	w_class = WEIGHT_CLASS_BULKY
+	custom_materials = list(/datum/material/iron=SHEET_MATERIAL_AMOUNT)
 	ammo_type = list(/obj/item/ammo_casing/energy/lasergun)
 	ammo_x_offset = 1
-	shaded_charge = TRUE
-	execution_speed = 5 SECONDS
+	shaded_charge = 1
+
+/obj/item/gun/energy/laser/Initialize(mapload)
+	. = ..()
+	// Only actual lasguns can be converted
+	if(type != /obj/item/gun/energy/laser)
+		return
+	var/static/list/slapcraft_recipe_list = list(/datum/crafting_recipe/xraylaser, /datum/crafting_recipe/hellgun, /datum/crafting_recipe/ioncarbine)
+
+	AddComponent(
+		/datum/component/slapcrafting,\
+		slapcraft_recipes = slapcraft_recipe_list,\
+	)
 
 /obj/item/gun/energy/laser/practice
 	name = "practice laser gun"
 	desc = "A modified version of the basic laser gun, this one fires less concentrated energy bolts designed for target practice."
-	origin_tech = "combat=2;magnets=2"
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/practice)
 	clumsy_check = FALSE
-	needs_permit = FALSE
+	item_flags = NONE
+	gun_flags = NOT_A_REAL_GUN
 
 /obj/item/gun/energy/laser/retro
 	name ="retro laser gun"
 	icon_state = "retro"
-	item_state = "retro"
 	desc = "An older model of the basic lasergun, no longer used by Nanotrasen's private security or military forces. Nevertheless, it is still quite deadly and easy to maintain, making it a favorite amongst pirates and other outlaws."
 	ammo_x_offset = 3
+
+/obj/item/gun/energy/laser/carbine
+	name = "laser carbine"
+	desc = "A modified laser gun which can shoot far faster, but each shot is far less damaging."
+	icon_state = "laser_carbine"
+	ammo_type = list(/obj/item/ammo_casing/energy/lasergun/carbine)
+
+/obj/item/gun/energy/laser/carbine/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/automatic_fire, 0.15 SECONDS, allow_akimbo = FALSE)
+
+/obj/item/gun/energy/laser/carbine/practice
+	name = "practice laser carbine"
+	desc = "A modified version of the laser carbine, this one fires even less concentrated energy bolts designed for target practice."
+	ammo_type = list(/obj/item/ammo_casing/energy/lasergun/carbine/practice)
+	clumsy_check = FALSE
+	item_flags = NONE
+	gun_flags = NOT_A_REAL_GUN
+
+/obj/item/gun/energy/laser/retro/old
+	name ="laser gun"
+	icon_state = "retro"
+	desc = "First generation lasergun, developed by Nanotrasen. Suffers from ammo issues but its unique ability to recharge its ammo without the need of a magazine helps compensate. You really hope someone has developed a better lasergun while you were in cryo."
+	ammo_type = list(/obj/item/ammo_casing/energy/lasergun/old)
+	ammo_x_offset = 3
+
+/obj/item/gun/energy/laser/hellgun
+	name ="hellfire laser gun"
+	desc = "A relic of a weapon, built before NT began installing regulators on its laser weaponry. This pattern of laser gun became infamous for the gruesome burn wounds it caused, and was quietly discontinued once it began to affect NT's reputation."
+	icon_state = "hellgun"
+	ammo_type = list(/obj/item/ammo_casing/energy/laser/hellfire)
 
 /obj/item/gun/energy/laser/captain
 	name = "antique laser gun"
 	icon_state = "caplaser"
-	item_state = null
+	w_class = WEIGHT_CLASS_NORMAL
+	inhand_icon_state = null
 	desc = "This is an antique laser gun. All craftsmanship is of the highest quality. It is decorated with assistant leather and chrome. The object menaces with spikes of energy. On the item is an image of Space Station 13. The station is exploding."
 	force = 10
-	origin_tech = null
 	ammo_x_offset = 3
-	selfcharge = TRUE
+	selfcharge = 1
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF
-
-/obj/item/gun/energy/laser/captain/Initialize(mapload, ...)
-	. = ..()
-	RegisterSignal(src, COMSIG_PARENT_QDELETING, PROC_REF(alert_admins_on_destroy))
-
-/obj/item/gun/energy/laser/captain/examine(mob/user)
-	. = ..()
-	. += "<span class='notice'>The power cell of this item slowly recharges on it's own. This caused the station pictured to explode.</span>"
+	flags_1 = PREVENT_CONTENTS_EXPLOSION_1
+	ammo_type = list(/obj/item/ammo_casing/energy/laser/hellfire)
 
 /obj/item/gun/energy/laser/captain/scattershot
 	name = "scatter shot laser rifle"
 	icon_state = "lasercannon"
-	item_state = "laser"
-	desc = "An industrial-grade heavy-duty laser rifle with a modified laser lense to scatter its shot into multiple smaller lasers. The inner-core can self-charge for theorically infinite use."
-	origin_tech = "combat=5;materials=4;powerstorage=4"
+	w_class = WEIGHT_CLASS_BULKY
+	inhand_icon_state = "laser"
+	desc = "An industrial-grade heavy-duty laser rifle with a modified laser lens to scatter its shot into multiple smaller lasers. The inner-core can self-charge for theoretically infinite use."
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/scatter, /obj/item/ammo_casing/energy/laser)
 	shaded_charge = FALSE
 
 /obj/item/gun/energy/laser/cyborg
 	can_charge = FALSE
 	desc = "An energy-based laser gun that draws power from the cyborg's internal energy cell directly. So this is what freedom looks like?"
-	ammo_type = list(/obj/item/ammo_casing/energy/laser/cyborg)
-	origin_tech = null
-
-/obj/item/gun/energy/laser/cyborg/newshot()
-	..()
-	robocharge()
+	use_cyborg_cell = TRUE
 
 /obj/item/gun/energy/laser/cyborg/emp_act()
 	return
@@ -72,227 +101,141 @@
 	desc = "A laser gun equipped with a refraction kit that spreads bolts."
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/scatter, /obj/item/ammo_casing/energy/laser)
 
+/obj/item/gun/energy/laser/scatter/shotty
+	name = "energy shotgun"
+	icon = 'icons/obj/weapons/guns/ballistic.dmi'
+	icon_state = "cshotgun"
+	inhand_icon_state = "shotgun"
+	desc = "A combat shotgun gutted and refitted with an internal laser system. Can switch between taser and scattered disabler shots."
+	shaded_charge = 0
+	pin = /obj/item/firing_pin/implant/mindshield
+	ammo_type = list(/obj/item/ammo_casing/energy/laser/scatter/disabler, /obj/item/ammo_casing/energy/electrode)
+	automatic_charge_overlays = FALSE
+
 ///Laser Cannon
 
 /obj/item/gun/energy/lasercannon
 	name = "accelerator laser cannon"
 	desc = "An advanced laser cannon that does more damage the farther away the target is."
 	icon_state = "lasercannon"
-	item_state = null
+	inhand_icon_state = "laser"
+	worn_icon_state = null
 	w_class = WEIGHT_CLASS_BULKY
 	force = 10
-	flags =  CONDUCT
-	slot_flags = SLOT_FLAG_BACK
-	can_holster = FALSE
-	origin_tech = "combat=4;magnets=4;powerstorage=3"
+	obj_flags = CONDUCTS_ELECTRICITY
+	slot_flags = ITEM_SLOT_BACK
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/accelerator)
+	pin = null
 	ammo_x_offset = 3
-	execution_speed = 8 SECONDS
 
 /obj/item/ammo_casing/energy/laser/accelerator
-	projectile_type = /obj/item/projectile/beam/laser/accelerator
+	projectile_type = /obj/projectile/beam/laser/accelerator
 	select_name = "accelerator"
 	fire_sound = 'sound/weapons/lasercannonfire.ogg'
 
-/obj/item/projectile/beam/laser/accelerator
+/obj/projectile/beam/laser/accelerator
 	name = "accelerator laser"
-	icon_state = "heavylaser"
+	icon_state = "scatterlaser"
 	range = 255
 	damage = 6
 
-/obj/item/projectile/beam/laser/accelerator/Range()
+/obj/projectile/beam/laser/accelerator/Range()
 	..()
-	damage = min(damage+7, 100)
+	damage += 7
+	transform *= 1 + ((damage/7) * 0.2)//20% larger per tile
 
-/obj/item/gun/energy/lasercannon/cyborg
-
-/obj/item/gun/energy/lasercannon/cyborg/newshot()
-	..()
-	robocharge()
-
-/obj/item/gun/energy/lasercannon/cyborg/emp_act()
-	return
-
-/obj/item/gun/energy/lwap
-	name = "LWAP laser sniper"
-	desc = "A highly advanced laser sniper that does more damage the farther away the target is, but fires slowly. Comes with a super advanced scope, which can highlight threats through walls, and pierce one object, after being deployed for a while."
-	icon_state = "esniper"
-	item_state = null
-	w_class = WEIGHT_CLASS_BULKY
-	force = 12
-	flags = CONDUCT
-	slot_flags = SLOT_FLAG_BACK
-	can_holster = FALSE
-	weapon_weight = WEAPON_HEAVY
-	origin_tech = "combat=6;magnets=6;powerstorage=4"
-	ammo_type = list(/obj/item/ammo_casing/energy/laser/sniper, /obj/item/ammo_casing/energy/laser/sniper/pierce)
-	zoomable = TRUE
-	zoom_amt = 7
-	shaded_charge = TRUE
-	/// Is the scope fully online or not?
-	var/scope_active = FALSE
-	var/stored_dir
-	execution_speed = 8 SECONDS
-
-/obj/item/gun/energy/lwap/zoom(mob/living/user, forced_zoom)
-	. = ..()
-	if(!ishuman(user))
-		return
-	var/mob/living/carbon/human/H = user
-	stored_dir = H.dir
-	if(scope_active && !zoomed)
-		select_fire(H)
-		H.remove_status_effect(STATUS_EFFECT_LWAPSCOPE)
-		scope_active = FALSE
-		return
-	if(zoomed && do_after(user, 3 SECONDS, target = src))
-		if(zoomed && !scope_active) //We check after to be sure.
-			scope_active = TRUE
-			to_chat(user, "<b><span class='robot'>SCOPE_CREEPER_[rand(1, 9999)] Online.</span></b>")
-			select_fire(H)
-			H.apply_status_effect(STATUS_EFFECT_LWAPSCOPE, stored_dir)
-		return
-	if(zoomed)
-		zoom(user, FALSE) //Moved while scope was booting, so we unzoom
-
-/obj/item/gun/energy/lwap/on_mob_move(dir, mob/user)
-	if(scope_active)
-		to_chat(user, "<span class='warning'>[src]'s scope is overloaded by movement and shuts down!</span>")
-		zoom(user, FALSE)
-
-/obj/item/gun/energy/lwap/attack_self()
-	return //no manual ammo changing.
-
-/obj/item/ammo_casing/energy/laser/sniper
-	projectile_type = /obj/item/projectile/beam/laser/sniper
-	muzzle_flash_color = LIGHT_COLOR_PINK
-	muzzle_flash_range = MUZZLE_FLASH_RANGE_STRONG
-	muzzle_flash_strength = MUZZLE_FLASH_STRENGTH_STRONG
-	select_name = null
-	fire_sound = 'sound/weapons/marauder.ogg'
-	delay = 5 SECONDS
-
-/obj/item/ammo_casing/energy/laser/sniper/pierce
-	projectile_type = /obj/item/projectile/beam/laser/sniper/pierce
-
-/obj/item/projectile/beam/laser/sniper
-	name = "sniper laser"
-	icon_state = "sniperlaser"
-	range = 255
-	damage = 10
-	speed = 0.75
-	impact_effect_type = /obj/effect/temp_visual/impact_effect/purple_laser
-	forced_accuracy = TRUE
-	var/can_knockdown = TRUE
-
-/obj/item/projectile/beam/laser/sniper/Range()
-	..()
-	damage = min(damage + 5, 100)
-
-/obj/item/projectile/beam/laser/sniper/on_hit(atom/target, blocked = 0, hit_zone)
-	..()
-	var/mob/living/carbon/human/H = target
-	if(istype(H) && damage >= 40 && can_knockdown)
-		H.KnockDown(2 SECONDS * (damage / 10))
-	can_knockdown = FALSE //Projectiles that pierce can not knockdown, no wall knockdowns.
-
-/obj/item/projectile/beam/laser/sniper/pierce
-	forcedodge = 1 // Can pierce one non wall thing.
-	speed = 0.5
-	/// Have we hit an r_wall? If we have, don't pierce it again so we don't become too effective on reinforced locations (AI sat)
-	var/hit_a_r_wall = FALSE
-
-/obj/item/projectile/beam/laser/sniper/pierce/prehit(atom/target)
-	if(istype(target, /turf/simulated/wall/r_wall))
-		if(!hit_a_r_wall)
-			hit_a_r_wall = TRUE
-			if(!forcedodge)
-				forcedodge++
-	else if((isturf(target) || istype(target, /obj/structure/alien/resin)) && !forcedodge)
-		forcedodge++
-	..()
+///X-ray gun
 
 /obj/item/gun/energy/xray
-	name = "xray laser gun"
-	desc = "A high-power laser gun capable of expelling concentrated xray blasts. These blasts will penetrate solid objects, but will decrease in power the longer they have to travel."
+	name = "\improper X-ray laser gun"
+	desc = "A high-power laser gun capable of expelling concentrated X-ray blasts that pass through multiple soft targets and heavier materials."
 	icon_state = "xray"
-	item_state = null
-	shaded_charge = TRUE
-	origin_tech = "combat=6;materials=4;magnets=4;syndicate=1"
-	ammo_type = list(/obj/item/ammo_casing/energy/xray)
-
-/obj/item/gun/energy/immolator
-	name = "immolator laser gun"
-	desc = "A modified laser gun, shooting highly concetrated beams with higher intensity that ignites the target, for the cost of draining more power per shot"
-	icon_state = "immolator"
-	item_state = null
-	ammo_type = list(/obj/item/ammo_casing/energy/immolator)
-	origin_tech = "combat=4;magnets=4;powerstorage=3"
-	shaded_charge = TRUE
-
-/obj/item/gun/energy/immolator/multi
-	name = "multi lens immolator cannon"
-	desc = "A large laser cannon, similar to the Immolator Laser, with toggleable firemodes. It is frequently used by military-like forces through Nanotrasen."
-	icon_state = "multilensimmolator"
-	item_state = null
-	ammo_type = list(/obj/item/ammo_casing/energy/immolator/strong, /obj/item/ammo_casing/energy/immolator/scatter)
-	origin_tech = "combat=5;magnets=5;powerstorage=4"
-
-/obj/item/gun/energy/immolator/multi/update_overlays()
-	. = ..()
-	var/obj/item/ammo_casing/energy/shot = ammo_type[select]
-	var/append = shot.select_name
-	. += image(icon = icon, icon_state = "multilensimmolator-[append]")
-
-/obj/item/gun/energy/immolator/multi/cyborg
-	name = "cyborg immolator cannon"
-	ammo_type = list(/obj/item/ammo_casing/energy/immolator/scatter/cyborg, /obj/item/ammo_casing/energy/immolator/strong/cyborg) // scatter is default, because it is more useful
-
-/obj/item/gun/energy/emitter
-	name = "mobile emitter"
-	desc = "An emitter removed from its base, and attached to a laser cannon frame."
-	icon_state = "emittercannon"
-	item_state = "laser"
 	w_class = WEIGHT_CLASS_BULKY
-	shaded_charge = TRUE
-	can_holster = FALSE
-	origin_tech = "combat=4;magnets=4;powerstorage=3"
-	ammo_type = list(/obj/item/ammo_casing/energy/emitter)
+	inhand_icon_state = null
+	ammo_type = list(/obj/item/ammo_casing/energy/xray)
 	ammo_x_offset = 3
-
-/obj/item/gun/energy/emitter/cyborg
-	name = "mounted emitter"
-	desc = "An emitter built into to your cyborg frame, draining charge from your cell."
-	ammo_type = list(/obj/item/ammo_casing/energy/emitter/cyborg)
-
-/obj/item/gun/energy/emitter/cyborg/newshot()
-	..()
-	robocharge()
-
-/obj/item/gun/energy/emitter/cyborg/emp_act()
-	return
-
-/obj/item/gun/energy/emitter/cyborg/proto
-	ammo_type = list(/obj/item/ammo_casing/energy/emitter/cyborg/proto)
-
 
 ////////Laser Tag////////////////////
 
-/obj/item/gun/energy/laser/tag
+/obj/item/gun/energy/laser/bluetag
 	name = "laser tag gun"
-	desc = "Standard issue weapon of the Imperial Guard"
-	origin_tech = "combat=2;magnets=2"
+	icon_state = "bluetag"
+	desc = "A retro laser gun modified to fire harmless blue beams of light. Sound effects included!"
+	ammo_type = list(/obj/item/ammo_casing/energy/laser/bluetag)
+	item_flags = NONE
 	clumsy_check = FALSE
-	needs_permit = FALSE
+	pin = /obj/item/firing_pin/tag/blue
 	ammo_x_offset = 2
 	selfcharge = TRUE
+	gun_flags = NOT_A_REAL_GUN
 
-/obj/item/gun/energy/laser/tag/blue
-	icon_state = "bluetag"
-	item_state = "bluetag"
-	ammo_type = list(/obj/item/ammo_casing/energy/laser/bluetag)
+/obj/item/gun/energy/laser/bluetag/hitscan
+	ammo_type = list(/obj/item/ammo_casing/energy/laser/bluetag/hitscan)
 
-/obj/item/gun/energy/laser/tag/red
+/obj/item/gun/energy/laser/redtag
+	name = "laser tag gun"
 	icon_state = "redtag"
-	item_state = "redtag"
+	desc = "A retro laser gun modified to fire harmless beams red of light. Sound effects included!"
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/redtag)
+	item_flags = NONE
+	clumsy_check = FALSE
+	pin = /obj/item/firing_pin/tag/red
+	ammo_x_offset = 2
+	selfcharge = TRUE
+	gun_flags = NOT_A_REAL_GUN
+
+/obj/item/gun/energy/laser/redtag/hitscan
+	ammo_type = list(/obj/item/ammo_casing/energy/laser/redtag/hitscan)
+
+//Inferno and Cryo Pistols
+
+/obj/item/gun/energy/laser/thermal //the common parent of these guns, it just shoots hard bullets, somoene might like that?
+	name = "nanite pistol"
+	desc = "A modified handcannon with a metamorphic reserve of decommissioned weaponized nanites. Spit globs of angry robots into the bad guys."
+	icon_state = "infernopistol"
+	inhand_icon_state = null
+	ammo_type = list(/obj/item/ammo_casing/energy/nanite)
+	shaded_charge = TRUE
+	ammo_x_offset = 1
+	obj_flags = UNIQUE_RENAME
+	can_bayonet = TRUE
+	knife_x_offset = 19
+	knife_y_offset = 13
+	w_class = WEIGHT_CLASS_NORMAL
+	dual_wield_spread = 10 //as intended by the coders
+
+/obj/item/gun/energy/laser/thermal/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/empprotection, EMP_PROTECT_SELF|EMP_PROTECT_CONTENTS)
+
+/obj/item/gun/energy/laser/thermal/add_seclight_point()
+	AddComponent(/datum/component/seclite_attachable, \
+		light_overlay_icon = 'icons/obj/weapons/guns/flashlights.dmi', \
+		light_overlay = "flight", \
+		overlay_x = 15, \
+		overlay_y = 9)
+
+/obj/item/gun/energy/laser/thermal/inferno //the magma gun
+	name = "inferno pistol"
+	desc = "A modified handcannon with a metamorphic reserve of decommissioned weaponized nanites. Spit globs of molten angry robots into the bad guys. \
+		While it doesn't manipulate temperature in and of itself, it does cause an violent eruption in anyone who is severely cold."
+	icon_state = "infernopistol"
+	ammo_type = list(/obj/item/ammo_casing/energy/nanite/inferno)
+
+/obj/item/gun/energy/laser/thermal/cryo //the ice gun
+	name = "cryo pistol"
+	desc = "A modified handcannon with a metamorphic reserve of decommissioned weaponized nanites. Spit shards of frozen angry robots into the bad guys. \
+		While it doesn't manipulate temperature in and of itself, it does cause an internal explosion in anyone who is severely hot."
+	icon_state = "cryopistol"
+	ammo_type = list(/obj/item/ammo_casing/energy/nanite/cryo)
+
+// luxury shuttle funnies
+/obj/item/firing_pin/paywall/luxury
+	multi_payment = TRUE
+	owned = TRUE
+	payment_amount = 20
+
+/obj/item/gun/energy/laser/luxurypaywall
+	name = "luxurious laser gun"
+	desc = "A laser gun modified to cost 20 credits to fire. Point towards poor people."
+	pin = /obj/item/firing_pin/paywall/luxury

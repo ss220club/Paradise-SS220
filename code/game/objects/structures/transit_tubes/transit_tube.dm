@@ -1,62 +1,56 @@
 
-// Basic transit tubes. Straight pieces, curved sections,
-//  and basic splits/joins (no routing logic).
-// Mappers: you can use "Generate Instances from Icon-states"
-//  to get the different pieces.
 /obj/structure/transit_tube
 	name = "transit tube"
-	desc = "A pneumatic tube that brings you from here to there."
-	icon = 'icons/obj/pipes/transit_tube.dmi'
+	icon = 'icons/obj/pipes_n_cables/transit_tube.dmi'
 	icon_state = "straight"
+	desc = "A transit tube for moving things around."
 	density = TRUE
-	layer = 3.1
+	layer = LOW_ITEM_LAYER
 	anchored = TRUE
-	var/list/tube_dirs = null
+	pass_flags_self = PASSGLASS
+	var/tube_construction = /obj/structure/c_transit_tube
+	var/list/tube_dirs //list of directions this tube section can connect to.
 	var/exit_delay = 1
 	var/enter_delay = 0
 
-/obj/structure/transit_tube/Initialize(mapload, new_direction)
+/obj/structure/transit_tube/Initialize(mapload, newdirection)
 	. = ..()
-	if(new_direction)
-		setDir(new_direction)
-	// set up our appearance after the initialize in case someone's setting our direction afterwards
-	// (especially for things like admin spawning)
-	addtimer(CALLBACK(src, PROC_REF(setup_appearance)), 1)
-
-/obj/structure/transit_tube/proc/setup_appearance()
+	if(newdirection)
+		setDir(newdirection)
 	init_tube_dirs()
 	update_appearance()
+	AddElement(/datum/element/climbable)
+	AddElement(/datum/element/elevation, pixel_shift = 12)
 
 /obj/structure/transit_tube/Destroy()
 	for(var/obj/structure/transit_tube_pod/P in loc)
-		P.empty_pod()
+		P.deconstruct(FALSE)
 	return ..()
 
-/obj/structure/transit_tube/CanPass(atom/movable/mover, turf/target)
-	if(istype(mover) && mover.checkpass(PASSGLASS))
-		return TRUE
-	return !density
+/obj/structure/transit_tube/singularity_pull(S, current_size)
+	..()
+	if(current_size >= STAGE_FIVE)
+		deconstruct(FALSE)
 
-// When destroyed by explosions, properly handle contents.
-/obj/structure/transit_tube/ex_act(severity)
-	switch(severity)
-		if(EXPLODE_DEVASTATE)
-			for(var/atom/movable/AM in contents)
-				AM.loc = loc
-				AM.ex_act(severity++)
-
-			qdel(src)
-			return
-		if(EXPLODE_HEAVY)
-			if(prob(50))
-				for(var/atom/movable/AM in contents)
-					AM.loc = loc
-					AM.ex_act(severity++)
-
-				qdel(src)
+/obj/structure/transit_tube/attackby(obj/item/W, mob/user, params)
+	if(W.tool_behaviour == TOOL_WRENCH)
+		if(tube_construction)
+			for(var/obj/structure/transit_tube_pod/pod in src.loc)
+				to_chat(user, span_warning("Remove the pod first!"))
 				return
-		if(EXPLODE_LIGHT)
-			return
+			user.visible_message(span_notice("[user] starts to detach \the [src]."), span_notice("You start to detach the [name]..."))
+			if(W.use_tool(src, user, 2 SECONDS, volume=50))
+				to_chat(user, span_notice("You detach the [name]."))
+				var/obj/structure/c_transit_tube/R = new tube_construction(loc)
+				R.setDir(dir)
+				transfer_fingerprints_to(R)
+				R.add_fingerprint(user)
+				qdel(src)
+	else if(W.tool_behaviour == TOOL_CROWBAR)
+		for(var/obj/structure/transit_tube_pod/pod in src.loc)
+			pod.attackby(W, user)
+	else
+		return ..()
 
 // Called to check if a pod should stop upon entering this tube.
 /obj/structure/transit_tube/proc/should_stop_pod(pod, from_dir)
@@ -67,18 +61,10 @@
 	return
 
 
-// Returns a /list of directions this tube section can connect to.
-//  Tubes that have some sort of logic or changing direction might
-//  override it with additional logic.
-/obj/structure/transit_tube/proc/directions()
-	return tube_dirs
-
-
-
 /obj/structure/transit_tube/proc/has_entrance(from_dir)
-	from_dir = turn(from_dir, 180)
+	from_dir = REVERSE_DIR(from_dir)
 
-	for(var/direction in directions())
+	for(var/direction in tube_dirs)
 		if(direction == from_dir)
 			return TRUE
 
@@ -87,7 +73,7 @@
 
 
 /obj/structure/transit_tube/proc/has_exit(in_dir)
-	for(var/direction in directions())
+	for(var/direction in tube_dirs)
 		if(direction == in_dir)
 			return TRUE
 
@@ -102,7 +88,7 @@
 	var/in_dir_cw = turn(in_dir, -45)
 	var/in_dir_ccw = turn(in_dir, 45)
 
-	for(var/direction in directions())
+	for(var/direction in tube_dirs)
 		if(direction == in_dir)
 			return direction
 
@@ -126,28 +112,32 @@
 /obj/structure/transit_tube/proc/enter_delay(pod, to_dir)
 	return enter_delay
 
+
 /obj/structure/transit_tube/proc/init_tube_dirs()
 	switch(dir)
-		if(NORTH, SOUTH)
+		if(NORTH)
 			tube_dirs = list(NORTH, SOUTH)
-		if(EAST, WEST)
+		if(SOUTH)
+			tube_dirs = list(NORTH, SOUTH)
+		if(EAST)
+			tube_dirs = list(EAST, WEST)
+		if(WEST)
 			tube_dirs = list(EAST, WEST)
 
 /obj/structure/transit_tube/update_overlays()
 	. = ..()
-	for(var/direction in directions())
-		if(!IS_DIR_DIAGONAL(direction))
+	for(var/direction in tube_dirs)
+		if(!ISDIAGONALDIR(direction))
 			. += create_tube_overlay(direction)
 			continue
 		if(!(direction & NORTH))
 			continue
 
-		. += create_tube_overlay(direction ^ (NORTH|SOUTH), NORTH)
+		. += create_tube_overlay(direction ^ 3, NORTH)
 		if(direction & EAST)
-			. += create_tube_overlay(direction ^ (EAST|WEST), EAST)
+			. += create_tube_overlay(direction ^ 12, EAST)
 		else
-			. += create_tube_overlay(direction ^ (EAST|WEST), WEST)
-
+			. += create_tube_overlay(direction ^ 12, WEST)
 
 /obj/structure/transit_tube/proc/create_tube_overlay(direction, shift_dir)
 	// We use image() because a mutable appearance will have its dir mirror the parent which sort of fucks up what we're doing here
@@ -176,6 +166,7 @@
 
 /obj/structure/transit_tube/diagonal
 	icon_state = "diagonal"
+	tube_construction = /obj/structure/c_transit_tube/diagonal
 
 /obj/structure/transit_tube/diagonal/init_tube_dirs()
 	switch(dir)
@@ -195,6 +186,7 @@
 /obj/structure/transit_tube/diagonal/crossing
 	density = FALSE
 	icon_state = "diagonal_crossing"
+	tube_construction = /obj/structure/c_transit_tube/diagonal/crossing
 
 //mostly for mapping use
 /obj/structure/transit_tube/diagonal/crossing/topleft
@@ -203,6 +195,7 @@
 
 /obj/structure/transit_tube/curved
 	icon_state = "curved0"
+	tube_construction = /obj/structure/c_transit_tube/curved
 
 /obj/structure/transit_tube/curved/init_tube_dirs()
 	switch(dir)
@@ -217,6 +210,7 @@
 
 /obj/structure/transit_tube/curved/flipped
 	icon_state = "curved1"
+	tube_construction = /obj/structure/c_transit_tube/curved/flipped
 
 /obj/structure/transit_tube/curved/flipped/init_tube_dirs()
 	switch(dir)
@@ -232,6 +226,7 @@
 
 /obj/structure/transit_tube/junction
 	icon_state = "junction0"
+	tube_construction = /obj/structure/c_transit_tube/junction
 
 /obj/structure/transit_tube/junction/init_tube_dirs()
 	switch(dir)
@@ -246,6 +241,7 @@
 
 /obj/structure/transit_tube/junction/flipped
 	icon_state = "junction1"
+	tube_construction = /obj/structure/c_transit_tube/junction/flipped
 
 /obj/structure/transit_tube/junction/flipped/init_tube_dirs()
 	switch(dir)
@@ -261,22 +257,9 @@
 
 /obj/structure/transit_tube/crossing
 	icon_state = "crossing"
+	tube_construction = /obj/structure/c_transit_tube/crossing
 	density = FALSE
 
 //mostly for mapping use
 /obj/structure/transit_tube/crossing/horizontal
 	dir = WEST
-
-// cosmetic "cap" for tubes. Note that tubes can't enter this.
-/obj/structure/transit_tube/cap
-	icon_state = "cap"
-
-/obj/structure/transit_tube/cap/init_tube_dirs()
-	tube_dirs = list(turn(dir, 180))  // back the way we came
-
-/obj/structure/transit_tube/cap/has_entrance(from_dir)
-	return FALSE
-
-/obj/structure/transit_tube/cap/create_tube_overlay()
-	// cap sprites already have overlays
-	return

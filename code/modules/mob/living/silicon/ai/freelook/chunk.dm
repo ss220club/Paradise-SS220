@@ -1,171 +1,180 @@
+#define UPDATE_BUFFER_TIME (2.5 SECONDS)
+
 // CAMERA CHUNK
 //
 // A 16x16 grid of the map with a list of turfs that can be seen, are visible and are dimmed.
 // Allows the AI Eye to stream these chunks and know what it can and cannot see.
 
 /datum/camerachunk
+	///turfs our cameras cant see but are inside our grid. associative list of the form: list(obscured turf = static image on that turf)
 	var/list/obscuredTurfs = list()
+	///turfs our cameras can see inside our grid
 	var/list/visibleTurfs = list()
-	var/list/obscured = list()
-	var/list/active_cameras = list()
-	var/list/inactive_cameras = list()
+	///cameras that can see into our grid
+	///indexed by the z level of the camera
+	var/list/cameras = list()
+	///list of all turfs, associative with that turf's static image
+	///turf -> /image
 	var/list/turfs = list()
+	///camera mobs that can see turfs in our grid
 	var/list/seenby = list()
+	///images currently in use on obscured turfs.
+	var/list/active_static_images = list()
+
 	var/changed = FALSE
-	var/updating = FALSE
 	var/x = 0
 	var/y = 0
-	var/z = 0
+	var/lower_z
+	var/upper_z
 
-/datum/camerachunk/proc/add_camera(obj/machinery/camera/cam)
-	if(active_cameras[cam] || inactive_cameras[cam])
-		return
-	// Register all even though it is active/inactive. Won't get called incorrectly
-	RegisterSignal(cam, COMSIG_CAMERA_OFF, PROC_REF(deactivate_camera), TRUE)
-	RegisterSignal(cam, COMSIG_CAMERA_ON, PROC_REF(activate_camera), TRUE)
-	RegisterSignal(cam, COMSIG_PARENT_QDELETING, PROC_REF(remove_camera), TRUE)
-	RegisterSignal(cam, COMSIG_CAMERA_MOVED, PROC_REF(camera_moved), TRUE)
-	if(cam.can_use())
-		active_cameras[cam] = cam
-	else
-		inactive_cameras[cam] = cam
-
-/datum/camerachunk/proc/camera_moved(obj/machinery/camera/cam, atom/old_loc)
-	var/turf/T = get_turf(cam)
-
-	// Falls outside of the chunk view distance
-	if(T.x + CAMERA_VIEW_DISTANCE < x || T.x - CAMERA_VIEW_DISTANCE >= x + CAMERA_CHUNK_SIZE || T.y + CAMERA_VIEW_DISTANCE < y || T.y - CAMERA_VIEW_DISTANCE >= y + CAMERA_CHUNK_SIZE || T.z != z)
-		remove_camera(cam)
-
-/datum/camerachunk/proc/remove_camera(obj/machinery/camera/cam)
-	UnregisterSignal(cam, list(COMSIG_CAMERA_OFF, COMSIG_CAMERA_ON, COMSIG_PARENT_QDELETING, COMSIG_CAMERA_MOVED))
-	active_cameras -= cam
-	inactive_cameras -= cam
-	SScamera.queue(src)
-
-/datum/camerachunk/proc/activate_camera(obj/machinery/camera/cam)
-	inactive_cameras -= cam
-	active_cameras += cam
-	SScamera.queue(src)
-
-/datum/camerachunk/proc/deactivate_camera(obj/machinery/camera/cam)
-	inactive_cameras += cam
-	active_cameras -= cam
-	SScamera.queue(src)
-
-// Add an AI eye to the chunk, then update if changed.
-/datum/camerachunk/proc/add(mob/camera/aiEye/eye, add_images = TRUE)
-	if(add_images)
-		var/client/client = eye.GetViewerClient()
-		if(client)
-			client.images += obscured
+/// Add an AI eye to the chunk, then update if changed.
+/datum/camerachunk/proc/add(mob/camera/ai_eye/eye)
 	eye.visibleCameraChunks += src
 	seenby += eye
-	RegisterSignal(eye, COMSIG_PARENT_QDELETING, PROC_REF(aiEye_destroyed))
 	if(changed)
-		SScamera.queue(src)
+		update()
 
-/datum/camerachunk/proc/aiEye_destroyed(mob/camera/aiEye/eye)
-	remove(eye, FALSE)
+	var/client/client = eye.GetViewerClient()
+	if(client && eye.use_static)
+		client.images += active_static_images
 
-// Remove an AI eye from the chunk, then update if changed.
-/datum/camerachunk/proc/remove(mob/camera/aiEye/eye, remove_images = TRUE)
-	if(remove_images)
-		var/client/client = eye.GetViewerClient()
-		if(client)
-			client.images -= obscured
+/// Remove an AI eye from the chunk
+/datum/camerachunk/proc/remove(mob/camera/ai_eye/eye, remove_static_with_last_chunk = TRUE)
 	eye.visibleCameraChunks -= src
 	seenby -= eye
-	UnregisterSignal(eye, COMSIG_PARENT_QDELETING)
 
-// Called when a chunk has changed. I.E: A wall was deleted.
+	var/client/client = eye.GetViewerClient()
+	if(client && eye.use_static)
+		client.images -= active_static_images
 
+/// Called when a chunk has changed. I.E: A wall was deleted.
 /datum/camerachunk/proc/visibilityChanged(turf/loc)
 	if(!visibleTurfs[loc])
 		return
 	hasChanged()
 
-// Updates the chunk, makes sure that it doesn't update too much. If the chunk isn't being watched it will
-// instead be flagged to update the next time an AI Eye moves near it.
-
-/datum/camerachunk/proc/hasChanged(update_now = 0)
-	if(update_now)
-		update()
-		SScamera.remove_from_queue(src)
-
-	if(length(seenby))
-		SScamera.queue(src)
+/**
+ * Updates the chunk, makes sure that it doesn't update too much. If the chunk isn't being watched it will
+ * instead be flagged to update the next time an AI Eye moves near it.
+ * update_delay_buffer is used for cameras that are moving around, which are cyborg inbuilt cameras and
+ * mecha onboard cameras. This buffer should be usually lower than UPDATE_BUFFER_TIME because
+ * otherwise a moving camera can run out of its own view before updating static.
+ */
+/datum/camerachunk/proc/hasChanged(update_now = 0, update_delay_buffer = UPDATE_BUFFER_TIME)
+	if(seenby.len || update_now)
+		addtimer(CALLBACK(src, PROC_REF(update)), update_delay_buffer, TIMER_UNIQUE)
 	else
 		changed = TRUE
 
-// The actual updating. It gathers the visible turfs from cameras and puts them into the appropiate lists.
+/// The actual updating. It gathers the visible turfs from cameras and puts them into the appropiate lists.
+/// Accepts an optional partial_update argument, that blocks any calls out to chunks that could affect us, like above or below
+/datum/camerachunk/proc/update(partial_update = FALSE)
+	var/list/updated_visible_turfs = list()
 
-/datum/camerachunk/proc/update()
-	var/list/newVisibleTurfs = list()
+	for(var/z_level in lower_z to upper_z)
+		for(var/obj/machinery/camera/current_camera as anything in cameras["[z_level]"])
+			if(!current_camera || !current_camera.can_use())
+				continue
 
-	for(var/obj/machinery/camera/c as anything in active_cameras)
-		var/turf/point = locate(src.x + (CAMERA_CHUNK_SIZE / 2), src.y + (CAMERA_CHUNK_SIZE / 2), src.z)
-		var/turf/T = get_turf(c)
-		if(get_dist(point, T) > CAMERA_VIEW_DISTANCE + (CAMERA_CHUNK_SIZE / 2))
-			continue // Still needed for Ais who get created on Z level 1 on the spot of the new player
+			var/turf/point = locate(src.x + (CHUNK_SIZE / 2), src.y + (CHUNK_SIZE / 2), z_level)
+			if(get_dist(point, current_camera) > CHUNK_SIZE + (CHUNK_SIZE / 2))
+				continue
 
-		for(var/turf/t in c.can_see())
-			if(turfs[t])
-				newVisibleTurfs[t] = t
+			for(var/turf/vis_turf in current_camera.can_see())
+				if(turfs[vis_turf])
+					updated_visible_turfs[vis_turf] = vis_turf
 
-	var/list/visAdded = newVisibleTurfs - visibleTurfs
-	var/list/visRemoved = visibleTurfs - newVisibleTurfs
+	///new turfs that we couldnt see last update but can now
+	var/list/newly_visible_turfs = updated_visible_turfs - visibleTurfs
+	///turfs that we could see last update but cant see now
+	var/list/newly_obscured_turfs = visibleTurfs - updated_visible_turfs
 
-	visibleTurfs = newVisibleTurfs
-	obscuredTurfs = turfs - newVisibleTurfs
-	var/list/images_to_remove = list()
-	var/list/images_to_add = list()
-	for(var/turf/t as anything in visAdded)
-		if(t.obscured)
-			obscured -= t.obscured
-			images_to_remove += t.obscured
+	for(var/mob/camera/ai_eye/client_eye as anything in seenby)
+		var/client/client = client_eye.ai?.client || client_eye.client
+		if(!client)
+			continue
 
-	for(var/turf/t as anything in visRemoved)
-		if(!t.obscured)
-			t.obscured = image('icons/effects/cameravis.dmi', t, null, BYOND_LIGHTING_LAYER + 0.1)
-			t.obscured.plane = BYOND_LIGHTING_PLANE + 1
-		obscured += t.obscured
-		images_to_add += t.obscured
+		client.images -= active_static_images
 
-	for(var/mob/camera/aiEye/eye as anything in seenby)
-		var/client/client = eye.GetViewerClient()
-		if(client)
-			client.images -= images_to_remove
-			client.images += images_to_add
+	for(var/turf/visible_turf as anything in newly_visible_turfs)
+		var/image/static_image = obscuredTurfs[visible_turf]
+		if(!static_image)
+			continue
+
+		active_static_images -= static_image
+		obscuredTurfs -= visible_turf
+
+	for(var/turf/obscured_turf as anything in newly_obscured_turfs)
+		if(obscuredTurfs[obscured_turf] || istype(obscured_turf, /turf/open/ai_visible))
+			continue
+
+		var/image/static_image = turfs[obscured_turf]
+		if(!static_image)
+			stack_trace("somehow a camera chunk used a turf it didn't contain!!")
+			break
+
+		obscuredTurfs[obscured_turf] = static_image
+		active_static_images += static_image
+	visibleTurfs = updated_visible_turfs
+
 	changed = FALSE
 
-// Create a new camera chunk, since the chunks are made as they are needed.
-/datum/camerachunk/New(loc, x, y, z)
+	for(var/mob/camera/ai_eye/client_eye as anything in seenby)
+		var/client/client = client_eye.ai?.client || client_eye.client
+		if(!client)
+			continue
 
-	// 0xf = 15
-	x &= ~(CAMERA_CHUNK_SIZE - 1)
-	y &= ~(CAMERA_CHUNK_SIZE - 1)
+		client.images += active_static_images
+
+
+/// Create a new camera chunk, since the chunks are made as they are needed.
+/datum/camerachunk/New(x, y, lower_z)
+	x = GET_CHUNK_COORD(x)
+	y = GET_CHUNK_COORD(y)
 
 	src.x = x
 	src.y = y
-	src.z = z
+	src.lower_z = lower_z
+	var/turf/upper_turf = get_highest_turf(locate(x, y, lower_z))
+	src.upper_z = upper_turf.z
 
-	var/half_chunk = CAMERA_CHUNK_SIZE / 2
-	for(var/obj/machinery/camera/c in urange(half_chunk + CAMERA_VIEW_DISTANCE, locate(x + half_chunk, y + half_chunk, z)))
-		add_camera(c)
+	for(var/z_level in lower_z to upper_z)
+		var/list/local_cameras = list()
+		for(var/obj/machinery/camera/camera in urange(CHUNK_SIZE, locate(x + (CHUNK_SIZE / 2), y + (CHUNK_SIZE / 2), z_level)))
+			if(camera.can_use())
+				local_cameras += camera
 
-	for(var/turf/t in block(locate(max(x, 1), max(y, 1), max(z, 1)), locate(min(x + CAMERA_CHUNK_SIZE - 1, world.maxx), min(y + CAMERA_CHUNK_SIZE - 1, world.maxy), z)))
-		turfs[t] = t
+		for(var/mob/living/silicon/sillycone in urange(CHUNK_SIZE, locate(x + (CHUNK_SIZE / 2), y + (CHUNK_SIZE / 2), z_level)))
+			if(sillycone.builtInCamera?.can_use())
+				local_cameras += sillycone.builtInCamera
 
-	for(var/obj/machinery/camera/c as anything in active_cameras)
-		for(var/turf/t in c.can_see())
-			if(turfs[t])
-				visibleTurfs[t] = t
+		for(var/obj/vehicle/sealed/mecha/mech in urange(CHUNK_SIZE, locate(x + (CHUNK_SIZE / 2), y + (CHUNK_SIZE / 2), z_level)))
+			if(mech.chassis_camera?.can_use())
+				local_cameras += mech.chassis_camera
 
-	obscuredTurfs = turfs - visibleTurfs
+		cameras["[z_level]"] = local_cameras
 
-	for(var/turf/t as anything in obscuredTurfs)
-		if(!t.obscured)
-			t.obscured = image('icons/effects/cameravis.dmi', t, "black", BYOND_LIGHTING_LAYER + 0.1)
-			t.obscured.plane = BYOND_LIGHTING_PLANE + 1
-		obscured += t.obscured
+		var/image/mirror_from = GLOB.cameranet.obscured_images[GET_Z_PLANE_OFFSET(z_level) + 1]
+		var/turf/chunk_corner = locate(x, y, z_level)
+		for(var/turf/lad as anything in CORNER_BLOCK(chunk_corner, CHUNK_SIZE, CHUNK_SIZE)) //we use CHUNK_SIZE for width and height here as it handles subtracting 1 from those two parameters by itself
+			var/image/our_image = new /image(mirror_from)
+			our_image.loc = lad
+			turfs[lad] = our_image
+
+		for(var/obj/machinery/camera/camera as anything in local_cameras)
+			if(!camera)
+				continue
+
+			if(!camera.can_use())
+				continue
+
+			for(var/turf/vis_turf in camera.can_see())
+				if(turfs[vis_turf])
+					visibleTurfs[vis_turf] = vis_turf
+
+	for(var/turf/obscured_turf as anything in turfs - visibleTurfs)
+		var/image/new_static = turfs[obscured_turf]
+		active_static_images += new_static
+		obscuredTurfs[obscured_turf] = new_static
+
+#undef UPDATE_BUFFER_TIME

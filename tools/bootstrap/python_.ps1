@@ -31,7 +31,7 @@ $Cache = "$Bootstrap/.cache"
 if ($Env:TG_BOOTSTRAP_CACHE) {
 	$Cache = $Env:TG_BOOTSTRAP_CACHE
 }
-$PythonVersion = ExtractVersion -Path "$Bootstrap/../../_build_dependencies.sh" -Key "PYTHON_VERSION"
+$PythonVersion = ExtractVersion -Path "$Bootstrap/../../dependencies.sh" -Key "PYTHON_VERSION"
 $PythonDir = "$Cache/python-$PythonVersion"
 $PythonExe = "$PythonDir/python.exe"
 $Log = "$Cache/last-command.log"
@@ -49,8 +49,13 @@ if (!(Test-Path $PythonExe -PathType Leaf)) {
 
 	[System.IO.Compression.ZipFile]::ExtractToDirectory($Archive, $PythonDir)
 
+	$PythonVersionArray = $PythonVersion.Split(".")
+	$PythonVersionString = "python$($PythonVersionArray[0])$($PythonVersionArray[1])"
+	Write-Output "Generating PATH descriptor."
+	New-Item "$Cache/$PythonVersionString._pth" | Out-Null
+	Set-Content "$Cache/$PythonVersionString._pth" "$PythonVersionString.zip`n.`n..\..\..`nimport site`n"
 	# Copy a ._pth file without "import site" commented, so pip will work
-	Copy-Item "$Bootstrap/python311._pth" $PythonDir `
+	Copy-Item "$Cache/$PythonVersionString._pth" $PythonDir `
 		-ErrorAction Stop
 
 	Remove-Item $Archive

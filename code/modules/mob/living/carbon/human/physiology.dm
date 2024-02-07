@@ -1,49 +1,43 @@
-/**
- * # physiology datum
- *
- * Datum that stores several modifiers in a way that isn't cleared by changing species
- *
- */
+//Stores several modifiers in a way that isn't cleared by changing species
 /datum/physiology
-	/// % of brute damage taken from all sources
+	/// Multiplier to brute damage received.
+	/// IE: A brute mod of 0.9 = 10% less brute damage.
+	/// Only applies to damage dealt via [apply_damage][/mob/living/proc/apply_damage] unless factored in manually.
 	var/brute_mod = 1
-	/// % of burn damage taken from all sources
+	/// Multiplier to burn damage received
 	var/burn_mod = 1
-	/// % of toxin damage taken from all sources
+	/// Multiplier to toxin damage received
 	var/tox_mod = 1
-	/// % of oxygen damage taken from all sources
+	/// Multiplier to oxygen damage received
 	var/oxy_mod = 1
-	/// % of clone damage taken from all sources
-	var/clone_mod = 1
-	/// % of stamina damage taken from all sources
+	/// Multiplier to stamina damage received
 	var/stamina_mod = 1
-	/// % of brain damage taken from all sources
+	/// Multiplier to brain damage received
 	var/brain_mod = 1
 
-	/// % of brute damage taken from low or high pressure (stacks with brute_mod)
+	/// Multiplier to damage taken from high / low pressure exposure, stacking with the brute modifier
 	var/pressure_mod = 1
-	/// % of burn damage taken from heat (stacks with burn_mod)
+	/// Multiplier to damage taken from high temperature exposure, stacking with the burn modifier
 	var/heat_mod = 1
-	/// % of burn damage taken from cold (stacks with burn_mod)
+	/// Multiplier to damage taken from low temperature exposure, stacking with the toxin modifier
 	var/cold_mod = 1
 
-	/// %damage reduction from all sources
+	/// Flat damage reduction from taking damage
+	/// Unlike the other modifiers, this is not a multiplier.
+	/// IE: DR of 10 = 10% less damage.
 	var/damage_resistance = 0
 
-	/// resistance to shocks
-	var/siemens_coeff = 1
+	var/siemens_coeff = 1 // resistance to shocks
 
-	/// % stun modifier
+	/// Multiplier applied to all incapacitating stuns (knockdown, stun, paralyze, immobilize)
 	var/stun_mod = 1
-	/// % bleeding modifier
-	var/bleed_mod = 1
-	/// internal armor datum
-	var/datum/armor/armor
-	///% of hunger rate taken per tick.
-	var/hunger_mod = 1
-	/// Bonus damage added to melee attacks. NOTE: this is additive rather than multiplicative, trying to multiply this will break things.
-	var/melee_bonus = 0
+	/// Multiplied aplpied to just knockdowns, stacks with above multiplicatively
+	var/knockdown_mod = 1
 
+	var/bleed_mod = 1 // % bleeding modifier
+	var/datum/armor/armor // internal armor datum
+
+	var/hunger_mod = 1 //% of hunger rate taken per tick.
 
 /datum/physiology/New()
 	armor = new
