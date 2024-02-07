@@ -243,7 +243,6 @@
 	righthand_file = 'modular_ss220/objects/icons/inhands/guns_righthand.dmi'
 	icon = 'modular_ss220/objects/icons/guns.dmi'
 	icon_state = "pneumagun"
-	item_state = "pneumagun"
 	w_class = WEIGHT_CLASS_NORMAL
 	mag_type = /obj/item/ammo_box/magazine/pneuma
 	magazine = new /obj/item/ammo_box/magazine/pneuma/pepper
