@@ -19,7 +19,7 @@
 		animate_windowtint()
 		return
 	for(var/obj/machinery/button/windowtint/button in button_area)
-		if (button.range != TINT_CONTROL_RANGE_AREA || (button.id != id && button.id != TINT_CONTROL_GROUP_NONE))
+		if(button.range != TINT_CONTROL_RANGE_AREA || (button.id != id && button.id != TINT_CONTROL_GROUP_NONE))
 			continue
 		button.animate_windowtint()
 
