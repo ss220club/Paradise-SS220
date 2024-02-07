@@ -22,7 +22,7 @@
 	allow_duplicates = FALSE
 
 /datum/map_template/ruin/lavaland/cheesus_temple
-	name = "Церковь Чизуса."
+	name = "Церковь Чизуса"
 	id = "cheesus_temple"
 	description = "Перенесённая в результате БС аномалии церковь Чизуза."
 	prefix = "_maps/map_files220/RandomRuins/LavaRuins/"
