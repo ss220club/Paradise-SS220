@@ -8,6 +8,8 @@
 	force = 5
 	throwforce = 3
 	attack_verb = list("beaten")
+	var/sound_on = 'modular_ss220/objects/sound/weapons/melee/electrostaff/on.ogg'
+	var/hitsound_on = 'modular_ss220/objects/sound/weapons/melee/electrostaff/hit.ogg'
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 50, RAD = 0, FIRE = 80, ACID = 80)
 	/// How many seconds does the knockdown last for?
 	var/knockdown_duration = 15 SECONDS
@@ -27,6 +29,10 @@
 /obj/item/melee/electrostaff/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/two_handed, force_unwielded = force, force_wielded = force, wield_callback = CALLBACK(src, PROC_REF(on_wield)), unwield_callback = CALLBACK(src, PROC_REF(on_unwield)))
+
+/obj/item/melee/electrostaff/loaded/Initialize(mapload) //this one starts with a cell pre-installed.
+	link_new_cell()
+	return ..()
 
 /obj/item/melee/electrostaff/Destroy()
 	if(cell?.loc == src)
@@ -48,7 +54,7 @@
 
 /obj/item/melee/electrostaff/update_icon_state()
 	if(HAS_TRAIT(src, TRAIT_WIELDED))
-		if(cell && cell.charge > 0)
+		if(cell?.charge > 0)
 			icon_state = "[base_icon_state]_active" // Спрайты, исправить, двуруч
 		else
 			icon_state = "[base_icon_state]_nocell" // Спрайты, исправить, двуруч
@@ -124,8 +130,9 @@
 /obj/item/melee/electrostaff/proc/on_wield(obj/item/source, mob/living/carbon/user)
 	if(cell?.charge >= hitcost)
 		turned_on = TRUE
-		to_chat(user, "<span class='notice'>[src] [turned_on ? "включен" : "выключен"].</span>")
-		playsound(src, "sparks", 75, TRUE, -1)
+		to_chat(user, "<span class='notice'>[src] включен.</span>")
+		//playsound(src, "sparks", 75, TRUE, -1)
+		playsound(src, sound_on, 75, TRUE, -1)
 	else
 		if(!cell)
 			to_chat(user, "<span class='warning'>[src] не имеет источника питания!</span>")
@@ -137,7 +144,7 @@
 /obj/item/melee/electrostaff/proc/on_unwield(obj/item/source, mob/living/carbon/user)
 	turned_on = FALSE
 	if(cell?.charge >= hitcost)
-		to_chat(user, "<span class='notice'>[src] [turned_on ? "включен" : "выключен"].</span>")
+		to_chat(user, "<span class='notice'>[src] выключен.</span>")
 		playsound(src, "sparks", 75, TRUE, -1)
 	else
 		if(!cell)
@@ -198,7 +205,8 @@
 			return FALSE
 		H.Confused(15 SECONDS)
 		H.Jitter(15 SECONDS)
-		H.apply_damage(stam_damage, STAMINA)
+		if(user.a_intent == INTENT_HARM)
+			H.apply_damage(stam_damage, STAMINA)
 		H.apply_damage(burn_damage, BURN)
 		H.SetStuttering(15 SECONDS)
 
