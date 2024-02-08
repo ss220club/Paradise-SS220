@@ -44,15 +44,12 @@
 	if(check_hidden_from_job_prefs())
 		return FALSE
 
-	if(relate_job && check_relate_positions())
+	if(relate_job && is_relate_positions && check_relate_positions())
 		return TRUE
 
 	return ..()
 
 /datum/job/proc/check_relate_positions()
-	if(!is_relate_positions)
-		return TRUE
-
 	var/datum/job/temp = SSjobs.GetJob(relate_job)
 	if(!temp)
 		return FALSE
