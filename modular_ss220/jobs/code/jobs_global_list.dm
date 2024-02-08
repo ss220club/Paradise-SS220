@@ -92,7 +92,7 @@ GLOBAL_LIST_INIT(jobs_excluded_from_selection, list("Donor"))
 // ====================== SPECIAL ======================
 // cant be antags
 GLOBAL_LIST_INIT(restricted_jobs_ss220, security_positions_ss220 + (
-	donor_tier_4_jobs + donor_tier_5_jobs
+	donor_tier_4_jobs + donor_tier_5_jobs + jobs_excluded_from_selection
 ))
 
 // ===================== ALL JOBS =====================
