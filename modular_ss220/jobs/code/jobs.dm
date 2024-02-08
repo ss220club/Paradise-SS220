@@ -44,8 +44,8 @@
 	if(check_hidden_from_job_prefs())
 		return FALSE
 
-	if(relate_job && is_relate_positions && check_relate_positions())
-		return TRUE
+	if(relate_job && is_relate_positions)
+		return check_relate_positions()
 
 	return ..()
 
