@@ -6,25 +6,30 @@
 
 /datum/job
 	var/relate_job // for relate positions and landmark
+	var/is_relate_positions = FALSE	// Slots
 	var/is_extra_job = FALSE // Special Jobs Window
 
 /datum/job/doctor
 	relate_job = "Intern"
+	is_relate_positions = TRUE
 /datum/job/doctor/intern
 	relate_job = "Medical Doctor"
 
 /datum/job/scientist
 	relate_job = "Student Scientist"
+	is_relate_positions = TRUE
 /datum/job/scientist/student
 	relate_job = "Scientist"
 
 /datum/job/engineer
 	relate_job = "Trainee Engineer"
+	is_relate_positions = TRUE
 /datum/job/engineer/trainee
 	relate_job = "Station Engineer"
 
 /datum/job/officer
 	relate_job = "Security Cadet"
+	is_relate_positions = TRUE
 /datum/job/officer/cadet
 	relate_job = "Security Officer"
 
@@ -45,6 +50,9 @@
 	return ..()
 
 /datum/job/proc/check_relate_positions()
+	if(!is_relate_positions)
+		return TRUE
+
 	var/datum/job/temp = SSjobs.GetJob(relate_job)
 	if(!temp)
 		return FALSE
