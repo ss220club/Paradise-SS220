@@ -5,8 +5,8 @@
 	return FALSE
 
 /datum/job
-	var/relate_job // for novice role and etc
-	var/is_extra_job = FALSE	// Special Jobs Window
+	var/relate_job // for relate positions and landmark
+	var/is_extra_job = FALSE // Special Jobs Window
 
 /datum/job/doctor
 	relate_job = "Intern"
@@ -39,10 +39,15 @@
 	if(check_hidden_from_job_prefs())
 		return FALSE
 
-	return relate_job ? check_relate_positions() : ..()
+	if(relate_job && check_relate_positions())
+		return TRUE
+
+	return ..()
 
 /datum/job/proc/check_relate_positions()
 	var/datum/job/temp = SSjobs.GetJob(relate_job)
+	if(!temp)
+		return FALSE
 
 	var/current_count_positions = current_positions + temp.current_positions
 	var/total_count_positions = total_positions + temp.total_positions
