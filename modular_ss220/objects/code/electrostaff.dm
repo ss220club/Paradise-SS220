@@ -4,11 +4,14 @@
 	icon = 'icons/obj/baton.dmi'
 	base_icon_state = "stunbaton"
 	icon_state = "stunbaton"
-	slot_flags = SLOT_FLAG_BACK
+	slot_flags = SLOT_FLAG_BACK | SLOT_FLAG_BELT
+	w_class = WEIGHT_CLASS_HUGE
 	force = 5
 	throwforce = 3
-	attack_verb = list("beaten")
+	attack_verb = list("attacked", "beaten")
+	/// What sound plays when its opening
 	var/sound_on = 'modular_ss220/objects/sound/weapons/melee/electrostaff/on.ogg'
+	/// What sound plays when its hiting and turned on
 	var/hitsound_on = 'modular_ss220/objects/sound/weapons/melee/electrostaff/hit.ogg'
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 50, RAD = 0, FIRE = 80, ACID = 80)
 	/// How many seconds does the knockdown last for?
@@ -18,7 +21,7 @@
 	/// Is the baton currently turned on
 	var/turned_on = FALSE
 	/// How much power does it cost to stun someone
-	var/hitcost = 2000
+	var/hitcost = 1500
 	var/obj/item/stock_parts/cell/high/cell = null
 	/// the initial cooldown tracks the time between swings. tracks the world.time when the baton is usable again.
 	var/cooldown = 3.5 SECONDS
@@ -43,18 +46,9 @@
 	user.visible_message("<span class='suicide'>[user] is putting the live [name] in [user.p_their()] mouth! It looks like [user.p_theyre()] trying to commit suicide.</span>")
 	return FIRELOSS
 
-///obj/item/chainsaw/attack_self(mob/user)
-//	if(src == user.get_active_hand()) //update inhands
-//		user.update_inv_l_hand()
-//		user.update_inv_r_hand()
-//	for(var/X in actions)
-//		var/datum/action/A = X
-//		A.UpdateButtonIcon()
-//	update_icon()
-
 /obj/item/melee/electrostaff/update_icon_state()
 	if(HAS_TRAIT(src, TRAIT_WIELDED))
-		if(cell?.charge > 0)
+		if(cell?.charge >= hitcost)
 			icon_state = "[base_icon_state]_active" // Спрайты, исправить, двуруч
 		else
 			icon_state = "[base_icon_state]_nocell" // Спрайты, исправить, двуруч
@@ -74,8 +68,8 @@
 		. += "<span class='notice'>Электропосох заряжен на [round(cell.percent())]%.</span>"
 	else
 		. += "<span class='warning'>В электропосохе отсутствует источник питания.</span>"
-	. += "<span class='notice'>При включении этот предмет обожжет и отправит в отключку любого, по кому попадет, после небольшой задержки. При использовании с намерением причинить вред он также травмирует, даже если он выключен.</span>"
-	. += "<span class='notice'>Этот предмет не имеет внешних разьемов для подзарядки. Используйте отвертку, чтобы получить доступ к внутренней батарейке.</span>"
+	. += "<span class='notice'>При включении этот предмет обожжет и отправит в отключку любого по кому попадет, после небольшой задержки. При использовании с намерением причинить вред он также травмирует, даже если он выключен.</span>"
+	. += "<span class='notice'>Этот предмет не имеет внешних разьемов для подзарядки. Используйте <b>отвертку</b>, чтобы получить доступ к внутренней батарее для ее замены или зарядки.</span>"
 
 /obj/item/melee/electrostaff/get_cell()
 	return cell
@@ -131,7 +125,6 @@
 	if(cell?.charge >= hitcost)
 		turned_on = TRUE
 		to_chat(user, "<span class='notice'>[src] включен.</span>")
-		//playsound(src, "sparks", 75, TRUE, -1)
 		playsound(src, sound_on, 75, TRUE, -1)
 	else
 		if(!cell)
@@ -153,11 +146,6 @@
 			to_chat(user, "<span class='warning'>[src] разряжен.</span>")
 	update_icon()
 	add_fingerprint(user)
-
-///obj/item/melee/electrostaff/throw_impact(mob/living/carbon/human/hit_mob)
-//	. = ..()
-//	if(!. && turned_on && istype(hit_mob))
-//		thrown_electrostaff_stun(hit_mob)
 
 /obj/item/melee/electrostaff/attack(mob/M, mob/living/user)
 	if(turned_on && HAS_TRAIT(user, TRAIT_CLUMSY) && prob(50))
@@ -205,9 +193,9 @@
 			return FALSE
 		H.Confused(15 SECONDS)
 		H.Jitter(15 SECONDS)
+		H.apply_damage(stam_damage, STAMINA)
 		if(user.a_intent == INTENT_HARM)
-			H.apply_damage(stam_damage, STAMINA)
-		H.apply_damage(burn_damage, BURN)
+			H.apply_damage(burn_damage, BURN)
 		H.SetStuttering(15 SECONDS)
 
 	ADD_TRAIT(L, TRAIT_WAS_BATONNED, user_UID) // so one person cannot hit the same person with two separate batons
@@ -222,43 +210,9 @@
 		L.visible_message("<span class='danger'>[user] оглушил [L] при помощи [src]!</span>",
 			"<span class='userdanger'>[L == user ? "Вы оглушили сами себя" : "[user] оглушил вас"] при помощи [src]!</span>")
 		add_attack_logs(user, L, "stunned")
-	playsound(src, 'sound/weapons/egloves.ogg', 50, TRUE, -1)
+	playsound(src, hitsound_on, 50, TRUE, -1)
 	deductcharge(hitcost)
 	return TRUE
-
-/*/obj/item/melee/electrostaff/proc/thrown_electrostaff_stun(mob/living/carbon/human/L)
-	if(cooldown > world.time)
-		return FALSE
-
-	var/user_UID = thrownby
-	var/mob/user = locateUID(thrownby)
-	if(!istype(user) || (user.mind?.martial_art?.no_baton && user.mind?.martial_art?.can_use(user)))
-		return
-
-	if(HAS_TRAIT_FROM(L, TRAIT_WAS_BATONNED, user_UID))
-		return FALSE
-
-	cooldown = world.time + initial(cooldown)
-	if(L.check_shields(src, 0, "[user]'s [name]", MELEE_ATTACK))
-		playsound(L, 'sound/weapons/genhit.ogg', 50, TRUE)
-		return FALSE
-	L.Confused(6 SECONDS)
-	L.Jitter(6 SECONDS)
-	L.apply_damage(40, STAMINA)
-	L.SetStuttering(6 SECONDS)
-
-	ADD_TRAIT(L, TRAIT_WAS_BATONNED, user_UID) // so one person cannot hit the same person with two separate batons
-	addtimer(CALLBACK(src, PROC_REF(electrostaff_delay), L, user_UID), 2 SECONDS)
-
-	SEND_SIGNAL(L, COMSIG_LIVING_MINOR_SHOCK, 33)
-
-	L.lastattacker = user.real_name
-	L.lastattackerckey = user.ckey
-	L.visible_message("<span class='danger'>[src] оглушил [L]!</span>")
-	add_attack_logs(user, L, "stunned")
-	playsound(src, 'sound/weapons/egloves.ogg', 50, TRUE, -1)
-	deductcharge(hitcost)
-	return TRUE*/
 
 /obj/item/melee/electrostaff/proc/electrostaff_delay(mob/living/target, user_UID)
 	REMOVE_TRAIT(target, TRAIT_WAS_BATONNED, user_UID)
