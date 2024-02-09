@@ -6,17 +6,17 @@ GLOBAL_DATUM_INIT(default_announcer, /datum/tts_seed, new /datum/tts_seed/silero
 
 /mob/hear_say(list/message_pieces, verb, italics, mob/speaker, sound/speech_sound, sound_vol, sound_frequency, use_voice)
 	. = ..()
-	SEND_SIGNAL(speaker, COMSIG_ATOM_TTS_CAST, src, message_pieces, speaker, TRUE)
+	speaker.cast_tts(src, message_pieces)
 
 /mob/hear_radio(list/message_pieces, verb, part_a, part_b, mob/speaker, hard_to_hear = 0, vname, atom/follow_target, check_name_against)
 	. = ..()
 	if(hard_to_hear)
 		return
-	SEND_SIGNAL(speaker, COMSIG_ATOM_TTS_CAST, src, message_pieces, src, FALSE, SOUND_EFFECT_RADIO, null, null, 'modular_ss220/text_to_speech/code/sound/radio_chatter.ogg')
+	speaker.cast_tts(src, message_pieces, src, FALSE, SOUND_EFFECT_RADIO, postSFX = 'modular_ss220/text_to_speech/code/sound/radio_chatter.ogg')
 
 /mob/hear_holopad_talk(list/message_pieces, verb, mob/speaker, obj/effect/overlay/holo_pad_hologram/H)
 	. = ..()
-	SEND_SIGNAL(speaker, COMSIG_ATOM_TTS_CAST, src, message_pieces, H, TRUE, SOUND_EFFECT_RADIO)
+	speaker.cast_tts(src, message_pieces, H, TRUE, SOUND_EFFECT_RADIO)
 
 /datum/announcer/Message(message, garbled_message, receivers, garbled_receivers)
 	var/datum/tts_seed/tts_seed = SStts220.tts_seeds[GLOB.default_announcer.name]
@@ -38,4 +38,4 @@ GLOBAL_DATUM_INIT(default_announcer, /datum/tts_seed, new /datum/tts_seed/silero
 	if(!message)
 		return
 	for(var/mob/M in get_mobs_in_view(7, src))
-		SEND_SIGNAL(src, COMSIG_ATOM_TTS_CAST, M, message, src)
+		cast_tts(M, message)

@@ -5,6 +5,9 @@
 	. = ..()
 	add_tts_component()
 
+/atom/proc/cast_tts(mob/listener, message, atom/location, is_local = TRUE, effect = SOUND_EFFECT_NONE, traits = TTS_TRAIT_RATE_FASTER, preSFX, postSFX)
+	SEND_SIGNAL(src, COMSIG_ATOM_TTS_CAST, listener, message, location, is_local, effect, traits, preSFX, postSFX)
+
 // TODO: Do it better?
 /atom/proc/get_tts_seed()
 	var/datum/component/tts_component/tts_component = GetComponent(/datum/component/tts_component)
