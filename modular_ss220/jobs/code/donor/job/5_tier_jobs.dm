@@ -44,6 +44,8 @@
 	title = "Banker"
 	department_flag = JOBCAT_ENGSEC
 	flag = JOB_BANKER
+	total_positions = 2
+	spawn_positions = 2
 	ru_title = "Банкир"
 	alt_titles = list("Банкир", "Независимый Банкир", "Корпорат", "Бизнесмен", "Банкир NT", "Корпорат NT", "Бизнесмен NT")
 	relate_job = "Vip"

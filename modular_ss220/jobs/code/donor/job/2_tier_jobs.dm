@@ -113,8 +113,8 @@
 	title = "Waiter"
 	department_flag = JOBCAT_SUPPORT
 	flag = JOB_WAITER
-	total_positions = 3
-	spawn_positions = 3
+	total_positions = 2
+	spawn_positions = 2
 	ru_title = "Официант"
 	relate_job = "Bar"
 	alt_titles = list("Официант", "Хост Сервиса")
