@@ -101,6 +101,7 @@
 		GLOB.minor_announcement.Announce("Эвакуационный шаттл отправляется через 10 секунд.", "СИСТЕМНАЯ ОШИБКА:")
 		SSshuttle.emergency.setTimer(100)
 		emagged = TRUE
+		return TRUE
 
 
 /obj/machinery/computer/emergency_shuttle/proc/increase_hijack_stage()
