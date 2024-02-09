@@ -127,13 +127,17 @@
 				return SOUND_EFFECT_MEGAPHONE_ROBOT
 	return .
 
-/datum/component/tts_component/proc/cast_tts(atom/speaker, mob/listener, message, atom/location, is_local = TRUE, effect = SOUND_EFFECT_NONE, traits = TTS_TRAIT_RATE_FASTER, preSFX, postSFX )
+/datum/component/tts_component/proc/cast_tts(atom/speaker, mob/listener, message, atom/location, is_local = TRUE, effect = SOUND_EFFECT_NONE, traits = TTS_TRAIT_RATE_FASTER, preSFX, postSFX)
 	SIGNAL_HANDLER
 
 	if(!message)
 		return
 	if(!(listener?.client) || !listener.can_hear())
 		return
+	if(!speaker)
+		speaker = parent
+	if(!location)
+		location = parent
 	if(islist(message))
 		if(!ismob(speaker))
 			return
