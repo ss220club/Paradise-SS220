@@ -165,7 +165,7 @@
 	gloves = /obj/item/clothing/gloves/color/white
 	shoes = /obj/item/clothing/shoes/centcom
 	l_pocket = /obj/item/melee/classic_baton/telescopic
-	box = /obj/item/storage/box/responseteam
+	box = /obj/item/storage/box/survival_mining
 	id = /obj/item/card/id/representative_tsf
 	backpack_contents = list(
 		/obj/item/bio_chip_implanter/death_alarm = 1,
@@ -218,7 +218,7 @@
 	glasses = /obj/item/clothing/glasses/sunglasses
 	l_pocket = /obj/item/melee/classic_baton/telescopic
 	id = /obj/item/card/id/representative_ussp
-	box = /obj/item/storage/box/responseteam
+	box = /obj/item/storage/box/survival_mining
 	backpack_contents = list(
 		/obj/item/bio_chip_implanter/death_alarm = 1,
 		/obj/item/lighter/zippo/engraved = 1,
@@ -272,7 +272,7 @@
 	glasses = /obj/item/clothing/glasses/sunglasses/big
 	gloves = /obj/item/clothing/gloves/color/black
 	l_ear = /obj/item/radio/headset/headset_service
-	box = /obj/item/storage/box/responseteam
+	box = /obj/item/storage/box/survival_mining
 	pda = /obj/item/pda/librarian
 	id = /obj/item/card/id/dealer
 	backpack_contents = list(
