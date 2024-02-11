@@ -27,7 +27,7 @@
 	/// Is the baton currently turned on
 	var/turned_on = FALSE
 	/// How much power does it cost to stun someone
-	var/hitcost = 1500
+	var/hitcost = 1600 // 6 hits to 0 power
 	var/obj/item/stock_parts/cell/high/cell = null
 	/// the initial cooldown tracks the time between swings. tracks the world.time when the baton is usable again.
 	var/cooldown = 3.5 SECONDS
