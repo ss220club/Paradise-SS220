@@ -43,7 +43,7 @@
 			head = /obj/item/clothing/head/beret/sec
 
 /datum/job/officer
-	alt_titles = list("Security Trainer", "Junior Security Officer")
+	alt_titles = list("Security Trainer","Junior Security Officer","Peacekeeper","Security Operative","Civil Protection","Security Agent")
 
 /datum/outfit/job/officer/pre_equip(mob/living/carbon/human/H, visualsOnly)
 	. = ..()
@@ -58,6 +58,7 @@
 
 /datum/job/warden
 	exp_map = list(EXP_TYPE_SECURITY = (900 + NOVICE_CADET_JOB_MINUTES))
+	alt_titles = list("Supervisor","Brig Overwatch","Prison Administrator")
 
 /datum/job/hos
 	exp_map = list(EXP_TYPE_SECURITY = (1200 + NOVICE_CADET_JOB_MINUTES))

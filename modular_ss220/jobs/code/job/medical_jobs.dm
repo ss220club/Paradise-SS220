@@ -56,12 +56,14 @@
 
 /datum/job/coroner
 	exp_map = list(EXP_TYPE_MEDICAL = (180 + NOVICE_JOB_MINUTES))
+	alt_titles = list("Forensic Pathologist","Funeral Director","Medical Examiner","Mortician")
 
 /datum/job/chemist
 	exp_map = list(EXP_TYPE_MEDICAL = (300 + NOVICE_JOB_MINUTES))
 
 /datum/job/geneticist
 	exp_map = list(EXP_TYPE_MEDICAL = (300 + NOVICE_JOB_MINUTES))
+	alt_titles = list("Genetics Researcher")
 
 /datum/job/virologist
 	exp_map = list(EXP_TYPE_MEDICAL = (300 + NOVICE_JOB_MINUTES))
@@ -71,4 +73,4 @@
 
 /datum/job/paramedic
 	exp_map = list(EXP_TYPE_MEDICAL = (180 + NOVICE_JOB_MINUTES))
-
+	alt_titles = list("Field Medic","Emergency Medical Technician","First Responder","Trauma Team Responder")

@@ -7,3 +7,21 @@
 				uniform = /obj/item/clothing/under/rank/civilian/chef/red
 				suit = /obj/item/clothing/suit/chef/red
 				belt = /obj/item/storage/belt/chef/apron/red
+
+/datum/job/bartender
+	alt_titles = list("Barista","Barkeeper")
+
+/datum/job/hydro
+	alt_titles = list("Hydroponicist","Botanical Researcher","Florist","Gardener","Herbalist")
+
+/datum/job/clown
+	alt_titles = list("Joker","Comedian","Jester")
+
+/datum/job/mime
+	alt_titles = list("Pantomimist")
+
+/datum/job/explorer
+	alt_titles = list("Expeditor","Exploration Member","Exploration Medic")
+
+/datum/job/mining
+	alt_titles = list("Spelunker","Prospector","Slayer","Hunter")

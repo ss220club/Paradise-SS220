@@ -63,4 +63,4 @@
 
 /datum/job/atmos
 	exp_map = list(EXP_TYPE_ENGINEERING = (300 + NOVICE_JOB_MINUTES))
-
+	alt_titles = list("Atmospheric Technician","Disposals Technician","Firefighter")

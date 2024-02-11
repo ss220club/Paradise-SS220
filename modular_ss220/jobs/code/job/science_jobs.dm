@@ -49,4 +49,4 @@
 
 /datum/job/roboticist
 	exp_map = list(EXP_TYPE_SCIENCE = (300 + NOVICE_JOB_MINUTES))
-
+	alt_titles = list("Biomechanical Engineer","Mechatronic Engineer","Ripperdoc","Cyberneticist")
