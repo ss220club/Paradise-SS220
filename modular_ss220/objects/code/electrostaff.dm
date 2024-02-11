@@ -1,13 +1,17 @@
 /obj/item/melee/electrostaff
 	name = "электропосох"
 	desc = "Шоковая палка, только более мощная, двуручная и доступная наиболее авторитетным членам силовых структур Nanotrasen. А еще у неё нет тупого конца."
-	icon = 'icons/obj/baton.dmi'
-	base_icon_state = "stunbaton"
-	icon_state = "stunbaton"
-	slot_flags = SLOT_FLAG_BACK | SLOT_FLAG_BELT
+	lefthand_file = 'modular_ss220/objects/icons/inhands/melee_lefthand.dmi'
+	righthand_file = 'modular_ss220/objects/icons/inhands/melee_righthand.dmi'
+	icon = 'modular_ss220/objects/icons/melee.dmi'
+	belt_icon = "stunbaton"
+	var/base_icon = "electrostaff"
+	icon_state = "electrostaff_orange"
+	slot_flags = SLOT_FLAG_BELT
 	w_class = WEIGHT_CLASS_HUGE
-	force = 5
-	throwforce = 3
+	force = 10
+	throwforce = 7
+	origin_tech = "combat=5"
 	attack_verb = list("attacked", "beaten")
 	/// What sound plays when its opening
 	var/sound_on = 'modular_ss220/objects/sound/weapons/melee/electrostaff/on.ogg'
@@ -17,7 +21,9 @@
 	/// How many seconds does the knockdown last for?
 	var/knockdown_duration = 15 SECONDS
 	/// how much stamina damage does this baton do?
-	var/stam_damage = 80 // 2 hits or 1 hit + 2 disabler shots
+	var/stam_damage = 80
+	var/burn_damage = 5
+
 	/// Is the baton currently turned on
 	var/turned_on = FALSE
 	/// How much power does it cost to stun someone
@@ -27,11 +33,21 @@
 	var/cooldown = 3.5 SECONDS
 	/// the time it takes before the target falls over
 	var/knockdown_delay = 2.5 SECONDS
-	var/burn_damage = 10
+
+	/// allows one-time reskinning
+	var/unique_reskin = TRUE
+	/// the skin choice
+	var/current_skin = null
+	var/list/options = list()
 
 /obj/item/melee/electrostaff/Initialize(mapload)
 	. = ..()
+	current_skin = "_orange"
 	AddComponent(/datum/component/two_handed, force_unwielded = force, force_wielded = force, wield_callback = CALLBACK(src, PROC_REF(on_wield)), unwield_callback = CALLBACK(src, PROC_REF(on_unwield)))
+	options["Оранжевое свечение"] = "_orange"
+	options["Красное свечение"] = "_red"
+	options["Фиолетовое свечение"] = "_purple"
+	options["Синее свечение"] = "_blue"
 
 /obj/item/melee/electrostaff/loaded/Initialize(mapload) //this one starts with a cell pre-installed.
 	link_new_cell()
@@ -49,11 +65,17 @@
 /obj/item/melee/electrostaff/update_icon_state()
 	if(HAS_TRAIT(src, TRAIT_WIELDED))
 		if(cell?.charge >= hitcost)
-			icon_state = "[base_icon_state]_active" // Спрайты, исправить, двуруч
+			icon_state = "[base_icon][current_skin]_active"
 		else
-			icon_state = "[base_icon_state]_nocell" // Спрайты, исправить, двуруч
+			if(cell != null)
+				icon_state = "[base_icon][current_skin]1"
+			else
+				icon_state = "[base_icon][current_skin]_nocell1"
 	else
-		icon_state = base_icon_state
+		if(cell != null)
+			icon_state = "[base_icon][current_skin]"
+		else
+			icon_state = "[base_icon][current_skin]_nocell"
 	return ..()
 
 /obj/item/melee/electrostaff/proc/link_new_cell(unlink = FALSE)
@@ -64,21 +86,17 @@
 
 /obj/item/melee/electrostaff/examine(mob/user)
 	. = ..()
+	if(unique_reskin)
+		. += "<span class='notice'>Alt-клик, чтобы изменить скин предмета.</span>"
 	if(cell)
 		. += "<span class='notice'>Электропосох заряжен на [round(cell.percent())]%.</span>"
 	else
 		. += "<span class='warning'>В электропосохе отсутствует источник питания.</span>"
-	. += "<span class='notice'>При включении этот предмет обожжет и отправит в отключку любого по кому попадет, после небольшой задержки. При использовании с намерением причинить вред он также травмирует, даже если он выключен.</span>"
+	. += "<span class='notice'>При включении этот предмет обожжет и отправит в отключку любого по кому попадет, после небольшой задержки. При использовании с намерением причинить вред он также травмирует, даже будучи выключенным.</span>"
 	. += "<span class='notice'>Этот предмет не имеет внешних разьемов для подзарядки. Используйте <b>отвертку</b>, чтобы получить доступ к внутренней батарее для ее замены или зарядки.</span>"
 
 /obj/item/melee/electrostaff/get_cell()
 	return cell
-
-/obj/item/melee/electrostaff/mob_can_equip(mob/user, slot, disable_warning = TRUE)
-	if(turned_on && (slot == SLOT_HUD_BACK))
-		to_chat(user, "<span class='warning'>Вы не можете экипировать [src] пока он активен!</span>")
-		return FALSE
-	return ..(user, slot, disable_warning = TRUE) // call parent but disable warning
 
 /obj/item/melee/electrostaff/proc/deductcharge(amount)
 	if(!cell)
@@ -87,12 +105,11 @@
 	if(cell.rigged)
 		cell = null
 		turned_on = FALSE
-		update_icon(UPDATE_ICON_STATE)
+		update_icon()
 	if(cell.charge < (hitcost)) // If after the deduction the baton doesn't have enough charge for a stun hit it turns off.
 		turned_on = FALSE
 		update_icon()
 		playsound(src, "sparks", 75, TRUE, -1)
-
 
 /obj/item/melee/electrostaff/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/stock_parts/cell))
@@ -120,6 +137,7 @@
 	cell.update_icon()
 	cell = null
 	turned_on = FALSE
+	update_icon(UPDATE_ICON_STATE)
 
 /obj/item/melee/electrostaff/proc/on_wield(obj/item/source, mob/living/carbon/user)
 	if(cell?.charge >= hitcost)
@@ -227,6 +245,66 @@
 		flick("baton_active", source)
 		electrostaff_stun(user, user, skip_cooldown = TRUE)
 		user.visible_message("<span class='warning'>[user] ударил шоком [user.p_themselves()] пока пытался помыть активированный [src]!</span>",
-							"<span class='userdanger'>Вы зря пытались помыть [src] пока он активирован.</span>")
+							"<span class='userdanger'>Зря вы пытались помыть [src] пока он активирован.</span>")
 		return TRUE
 	..()
+
+/obj/item/melee/electrostaff/AltClick(mob/user)
+	..()
+	if(user.incapacitated())
+		to_chat(user, "<span class='warning'>Вы не можете этого сделать прямо сейчас!</span>")
+		return
+	if(unique_reskin && loc == user)
+		reskin_staff(user)
+
+/obj/item/melee/electrostaff/proc/reskin_staff(mob/M)
+	var/list/skins = list()
+	for(var/I in options)
+		skins[I] = image(icon, icon_state = "[base_icon][options[I]]")
+	var/choice = show_radial_menu(M, src, skins, radius = 40, custom_check = CALLBACK(src, PROC_REF(reskin_radial_check), M), require_near = TRUE)
+
+	if(choice && reskin_radial_check(M))
+		current_skin = options[choice]
+		to_chat(M, "[choice] идеально подходит вашему посоху.")
+		unique_reskin = FALSE
+		update_icon()
+		M.update_inv_r_hand()
+		M.update_inv_l_hand()
+
+/obj/item/melee/electrostaff/proc/reskin_radial_check(mob/user)
+	if(!ishuman(user))
+		return FALSE
+	var/mob/living/carbon/human/H = user
+	if(!src || !H.is_in_hands(src) || HAS_TRAIT(H, TRAIT_HANDS_BLOCKED))
+		return FALSE
+	return TRUE
+
+/obj/item/weaponcrafting/gunkit/electrostaff
+	name = "\improper electrostaff parts kit"
+	desc = "Возьмите 2 оглушающие дубинки. Соедините их вместе, поместив внутрь батарею. Используйте остальные инструменты (лишних винтиков быть не должно)."
+	origin_tech = "combat=6;materials=4"
+	outcome = /obj/item/melee/electrostaff/loaded
+
+/datum/design/electrostaff
+	name = "Electrostaff Parts Kit"
+	desc = "Лучше, чем 2 станбатона по отдельности."
+	id = "electrostaff"
+	req_tech = list("combat" = 7, "magnets" = 5, "powerstorage" = 5)
+	build_type = PROTOLATHE
+	materials = list(MAT_METAL = 4000, MAT_GLASS = 1000, MAT_GOLD = 3000, MAT_SILVER = 1500)
+	build_path = /obj/item/weaponcrafting/gunkit/electrostaff
+	category = list("Weapons")
+
+/datum/crafting_recipe/electrostaff
+	name = "Electrostaff"
+	tools = list(TOOL_SCREWDRIVER, TOOL_WIRECUTTER)
+	result = list(/obj/item/melee/electrostaff/loaded)
+	reqs = list(/obj/item/melee/baton = 2,
+				/obj/item/stock_parts/cell/high = 1,
+				/obj/item/stack/cable_coil = 5,
+				/obj/item/weaponcrafting/gunkit/electrostaff = 1)
+	time = 10 SECONDS
+	category = CAT_WEAPONRY
+	subcategory = CAT_WEAPON
+
+
