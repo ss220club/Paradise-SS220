@@ -14675,7 +14675,7 @@
 	},
 /area/station/security/permabrig)
 "blj" = (
-/obj/machinery/smartfridge,
+/obj/machinery/smartfridge/food,
 /obj/machinery/door/window/classic/normal{
 	dir = 8;
 	name = "Kitchen Desk"
@@ -31684,13 +31684,8 @@
 	},
 /area/station/public/locker)
 "cxe" = (
-/obj/structure/table,
-/obj/item/pickaxe,
-/obj/item/pickaxe,
-/obj/item/pickaxe,
-/obj/item/pickaxe,
-/obj/item/gun/energy/kinetic_accelerator,
-/obj/item/gun/energy/kinetic_accelerator,
+/obj/structure/closet/secure_closet/exile,
+/obj/effect/turf_decal/delivery/white/hollow,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "darkblue"
@@ -31831,14 +31826,10 @@
 /area/station/engineering/control)
 "cxJ" = (
 /obj/structure/table,
-/obj/item/storage/firstaid/regular{
-	pixel_x = -6
-	},
-/obj/item/storage/firstaid/regular{
-	pixel_x = 2;
-	pixel_y = 2
-	},
 /obj/structure/extinguisher_cabinet/directional/east,
+/obj/machinery/recharger{
+	pixel_y = 4
+	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "darkblue"
@@ -32025,6 +32016,7 @@
 /obj/machinery/light/directional/west,
 /obj/effect/turf_decal/delivery/hollow,
 /obj/structure/closet/secure_closet/expedition,
+/obj/item/pickaxe,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "darkblue"
@@ -32145,6 +32137,8 @@
 /obj/item/flashlight/seclite,
 /obj/item/flashlight/seclite,
 /obj/item/flashlight/seclite,
+/obj/item/gun/energy/kinetic_accelerator,
+/obj/item/gun/energy/kinetic_accelerator,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "darkblue"
@@ -32536,6 +32530,7 @@
 "czW" = (
 /obj/effect/turf_decal/delivery/hollow,
 /obj/structure/closet/secure_closet/expedition,
+/obj/item/pickaxe,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "darkblue"
@@ -32925,6 +32920,7 @@
 /obj/machinery/firealarm/directional/west,
 /obj/effect/turf_decal/delivery/hollow,
 /obj/structure/closet/secure_closet/expedition,
+/obj/item/pickaxe,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "darkblue"
@@ -33247,7 +33243,10 @@
 /area/station/science/robotics/showroom)
 "cCV" = (
 /obj/structure/table,
-/obj/machinery/recharger,
+/obj/item/storage/firstaid/regular{
+	pixel_y = 6
+	},
+/obj/item/storage/firstaid/regular,
 /turf/simulated/floor/plasteel{
 	dir = 10;
 	icon_state = "darkblue"
