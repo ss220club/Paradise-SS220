@@ -287,7 +287,7 @@
 
 /datum/design/electrostaff
 	name = "Electrostaff Parts Kit"
-	desc = "Лучше, чем 2 станбатона по отдельности."
+	desc = "Оперативный ответ."
 	id = "electrostaff"
 	req_tech = list("combat" = 7, "magnets" = 5, "powerstorage" = 5)
 	build_type = PROTOLATHE
