@@ -68,9 +68,10 @@
 	important_information = "Ваша должность нацелена на свободный РП-отыгрыш и не разрешает нарушать правила сервера. \
 	\nВы ДВОРЕЦКИЙ. Данная роль нацелена на обеспечение глав в удовлетворении физических потребностей, а мостик в чистоте."
 
+*/
 /datum/outfit/job/donor/butler
 	name = "Butler"
-	jobtype = /datum/job/donor/butler
+	//jobtype = /datum/job/donor/butler
 
 	uniform = /obj/item/clothing/under/rank/procedure/lawyer/black
 	shoes = /obj/item/clothing/shoes/laceup
@@ -92,8 +93,7 @@
 		/obj/item/clothing/suit/storage/iaa/blackjacket = 1,
 		/obj/item/clothing/suit/chef/classic = 1,
 		)
-*/
-
+/*
 /datum/job/donor/maid
 	title = "Maid"
 	department_flag = JOBCAT_MEDSCI
@@ -111,10 +111,10 @@
 	outfit = /datum/outfit/job/donor/maid
 	important_information = "Ваша должность нацелена на свободный РП-отыгрыш и не разрешает нарушать правила сервера. \
 	\nВы ГОРНИЧНАЯ. Данная роль нацелена на обеспечение глав в удовлетворении физических потребностей, а мостик в чистоте."
-
+*/
 /datum/outfit/job/donor/maid
 	name = "Maid"
-	jobtype = /datum/job/donor/maid
+	//jobtype = /datum/job/donor/maid
 
 	uniform = /obj/item/clothing/under/costume/janimaid
 	shoes = /obj/item/clothing/shoes/laceup

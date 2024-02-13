@@ -177,7 +177,7 @@
 	pda = /obj/item/pda/chaplain
 	id = /obj/item/card/id/acolyte
 
-
+/*
 /datum/job/donor/deliverer
 	title = "Deliverer"
 	department_flag = JOBCAT_SUPPORT
@@ -197,10 +197,10 @@
 	outfit = /datum/outfit/job/donor/deliverer
 	important_information = "Ваша должность нацелена на свободный РП-отыгрыш и не разрешает нарушать правила сервера. \
 	\nВы ДОСТАВЩИК. Данная роль нацелена на доставку товаров от одного отдела до другого. Ваше призвание - доставлять ресурсы от отдела до отдела или еду от самого ШЕФа."
-
+*/
 /datum/outfit/job/donor/deliverer
 	name = "Deliverer"
-	jobtype = /datum/job/donor/deliverer
+	//jobtype = /datum/job/donor/deliverer
 
 	uniform = /obj/item/clothing/under/misc/overalls
 	shoes = /obj/item/clothing/shoes/workboots
@@ -304,10 +304,10 @@
 	important_information = "Ваша должность нацелена на свободный РП-отыгрыш и не разрешает нарушать правила сервера. \
 	\nВы ХУДОЖНИК. Данная роль нацелена на демонстрацию вашей тонкой натуры. Найдите себе красильщик полов, создайте искусство! \
 	Возможно вы захотите наложить инсталляцию посреди мостика?"
-
+*/
 /datum/outfit/job/donor/painter
 	name = "Painter"
-	jobtype = /datum/job/donor/painter
+	//jobtype = /datum/job/donor/painter
 
 	uniform = /obj/item/clothing/under/misc/sl_suit
 	suit = /obj/item/clothing/suit/apron
@@ -329,8 +329,6 @@
 		/obj/item/toy/crayon/rainbow = 1,
 		/obj/item/painter = 1,
 	)
-*/
-
 
 /datum/job/donor/musican
 	title = "Musician"

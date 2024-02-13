@@ -186,9 +186,10 @@
 	\nВы ПОДМАСТЕРЬЕ. Вы ассистент с полномочиями для работы на станции. Построить свою мастерскую или заняться другим полезным для станции и вас делом - ваша стезя. \
 	Но серые комбинезоны и тулбоксы так и манят вас..."
 
+*/
 /datum/outfit/job/donor/apprentice
 	name = "Apprentice"
-	jobtype = /datum/job/donor/apprentice
+	//jobtype = /datum/job/donor/apprentice
 
 	uniform = /obj/item/clothing/under/color/grey
 	suit = /obj/item/clothing/suit/apron/overalls
@@ -207,7 +208,6 @@
 		/obj/item/clothing/under/pants/shorts/grey = 1,
 		/obj/item/clothing/under/misc/assistantformal = 1,
 	)
-*/
 
 /datum/job/donor/guard
 	title = "Guard"
