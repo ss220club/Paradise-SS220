@@ -79,10 +79,7 @@
 	return ..()
 
 /obj/item/melee/electrostaff/proc/link_new_cell(unlink = FALSE)
-	if(unlink)
-		cell = null
-	else
-		cell = new(src)
+	cell = unlink ? null : new(src)
 
 /obj/item/melee/electrostaff/examine(mob/user)
 	. = ..()
