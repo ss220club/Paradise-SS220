@@ -13,5 +13,5 @@
 
 /obj/structure/closet/secure_closet/blueshield/populate_contents()
 	. = ..()
-	new /obj/item/melee/electrostaff/loaded(src)
+	new /obj/item/melee/baton/electrostaff/loaded(src)
 	new /obj/item/screwdriver(src)
