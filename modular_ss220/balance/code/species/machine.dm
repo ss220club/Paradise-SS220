@@ -12,7 +12,7 @@
 	new /obj/item/flashlight/flare/glowstick/emergency(src)
 
 /obj/machinery/recharger/attackby(obj/item/G, mob/user, params)
-	if (istype(G, /obj/item/melee/baton/electrostaff))
+	if(istype(G, /obj/item/melee/baton/electrostaff))
 		to_chat(user, "<span class='notice'>[G] не имеет внешних разьемов для подзарядки.</span>")
 		return
 	. = ..()
