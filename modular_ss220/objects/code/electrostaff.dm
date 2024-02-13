@@ -1,11 +1,10 @@
-/obj/item/melee/electrostaff
+/obj/item/melee/baton/electrostaff
 	name = "электропосох"
 	desc = "Шоковая палка, только более мощная, двуручная и доступная наиболее авторитетным членам силовых структур Nanotrasen. А еще у неё нет тупого конца."
 	lefthand_file = 'modular_ss220/objects/icons/inhands/melee_lefthand.dmi'
 	righthand_file = 'modular_ss220/objects/icons/inhands/melee_righthand.dmi'
 	icon = 'modular_ss220/objects/icons/melee.dmi'
-	belt_icon = "stunbaton"
-	var/base_icon = "electrostaff"
+	base_icon = "electrostaff"
 	icon_state = "electrostaff_orange"
 	slot_flags = SLOT_FLAG_BELT
 	w_class = WEIGHT_CLASS_HUGE
@@ -15,24 +14,17 @@
 	attack_verb = list("attacked", "beaten")
 	/// What sound plays when its opening
 	var/sound_on = 'modular_ss220/objects/sound/weapons/melee/electrostaff/on.ogg'
-	/// What sound plays when its hiting and turned on
-	var/hitsound_on = 'modular_ss220/objects/sound/weapons/melee/electrostaff/hit.ogg'
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 50, RAD = 0, FIRE = 80, ACID = 80)
-	/// How many seconds does the knockdown last for?
-	var/knockdown_duration = 15 SECONDS
-	/// how much stamina damage does this baton do?
-	var/stam_damage = 80
+
+	stam_damage = 80
+	/// How much burn damage it does when turned on
 	var/burn_damage = 5
 
-	/// Is the baton currently turned on
-	var/turned_on = FALSE
-	/// How much power does it cost to stun someone
-	var/hitcost = 1600 // 6 hits to 0 power
-	var/obj/item/stock_parts/cell/high/cell = null
-	/// the initial cooldown tracks the time between swings. tracks the world.time when the baton is usable again.
-	var/cooldown = 3.5 SECONDS
-	/// the time it takes before the target falls over
-	var/knockdown_delay = 2.5 SECONDS
+	turned_on = FALSE
+	knockdown_duration = 15 SECONDS
+	hitcost = 1600 // 6 hits to 0 power
+	cooldown = 3.5 SECONDS
+	knockdown_delay = 2.5 SECONDS
 
 	/// allows one-time reskinning
 	var/unique_reskin = TRUE
@@ -40,29 +32,20 @@
 	var/current_skin = null
 	var/list/options = list()
 
-/obj/item/melee/electrostaff/Initialize(mapload)
-	. = ..()
+/obj/item/melee/baton/electrostaff/Initialize(mapload)
 	current_skin = "_orange"
-	AddComponent(/datum/component/two_handed, force_unwielded = force, force_wielded = force, wield_callback = CALLBACK(src, PROC_REF(on_wield)), unwield_callback = CALLBACK(src, PROC_REF(on_unwield)))
+	AddComponent(/datum/component/two_handed, force_unwielded = force / 2, force_wielded = force, wield_callback = CALLBACK(src, PROC_REF(on_wield)), unwield_callback = CALLBACK(src, PROC_REF(on_unwield)))
 	options["Оранжевое свечение"] = "_orange"
 	options["Красное свечение"] = "_red"
 	options["Фиолетовое свечение"] = "_purple"
 	options["Синее свечение"] = "_blue"
+	. = ..()
 
-/obj/item/melee/electrostaff/loaded/Initialize(mapload) //this one starts with a cell pre-installed.
+/obj/item/melee/baton/electrostaff/loaded/Initialize(mapload) //this one starts with a cell pre-installed.
 	link_new_cell()
 	return ..()
 
-/obj/item/melee/electrostaff/Destroy()
-	if(cell?.loc == src)
-		QDEL_NULL(cell)
-	return ..()
-
-/obj/item/melee/electrostaff/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is putting the live [name] in [user.p_their()] mouth! It looks like [user.p_theyre()] trying to commit suicide.</span>")
-	return FIRELOSS
-
-/obj/item/melee/electrostaff/update_icon_state()
+/obj/item/melee/baton/electrostaff/update_icon_state()
 	if(HAS_TRAIT(src, TRAIT_WIELDED))
 		if(cell?.charge >= hitcost)
 			icon_state = "[base_icon][current_skin]_active"
@@ -76,177 +59,55 @@
 			icon_state = "[base_icon][current_skin]"
 		else
 			icon_state = "[base_icon][current_skin]_nocell"
-	return ..()
 
-/obj/item/melee/electrostaff/proc/link_new_cell(unlink = FALSE)
-	cell = unlink ? null : new(src)
-
-/obj/item/melee/electrostaff/examine(mob/user)
+/obj/item/melee/baton/electrostaff/examine(mob/user)
 	. = ..()
+	. -= "<span class='notice'>This item can be recharged in a recharger. Using a screwdriver on this item will allow you to access its power cell, which can be replaced.</span>"
+	. += "<span class='notice'>This item does not have external charging connectors. Use <b>a screwdriver</b> to access the internal battery to replace or charge it.</span>"
 	if(unique_reskin)
-		. += "<span class='notice'>Alt-клик, чтобы изменить скин предмета.</span>"
-	if(cell)
-		. += "<span class='notice'>Электропосох заряжен на [round(cell.percent())]%.</span>"
-	else
-		. += "<span class='warning'>В электропосохе отсутствует источник питания.</span>"
-	. += "<span class='notice'>При включении этот предмет обожжет и отправит в отключку любого по кому попадет, после небольшой задержки. При использовании с намерением причинить вред он также травмирует, даже будучи выключенным.</span>"
-	. += "<span class='notice'>Этот предмет не имеет внешних разьемов для подзарядки. Используйте <b>отвертку</b>, чтобы получить доступ к внутренней батарее для ее замены или зарядки.</span>"
+		. += "<span class='notice'>Alt-click to change light.</span>"
 
-/obj/item/melee/electrostaff/get_cell()
-	return cell
-
-/obj/item/melee/electrostaff/proc/deductcharge(amount)
-	if(!cell)
+/obj/item/melee/baton/electrostaff/attack_self(mob/user)
+	var/signal_ret = SEND_SIGNAL(src, COMSIG_ITEM_ATTACK_SELF, user)
+	if(signal_ret & COMPONENT_NO_INTERACT)
 		return
-	cell.use(amount)
-	if(cell.rigged)
-		cell = null
-		turned_on = FALSE
-		update_icon()
-	if(cell.charge < (hitcost)) // If after the deduction the baton doesn't have enough charge for a stun hit it turns off.
-		turned_on = FALSE
-		update_icon()
-		playsound(src, "sparks", 75, TRUE, -1)
+	if(signal_ret & COMPONENT_CANCEL_ATTACK_CHAIN)
+		return TRUE
 
-/obj/item/melee/electrostaff/attackby(obj/item/I, mob/user, params)
-	if(istype(I, /obj/item/stock_parts/cell))
-		var/obj/item/stock_parts/cell/C = I
-		if(cell)
-			to_chat(user, "<span class='warning'>[src] уже имеет батарею!</span>")
-			return
-		if(C.maxcharge < hitcost)
-			to_chat(user, "<span class='warning'>[src] требует батарею высокого более высокого обьема!</span>")
-			return
-		if(!user.unEquip(I))
-			return
-		I.forceMove(src)
-		cell = I
-		to_chat(user, "<span class='notice'>Вы установили [I] в [src].</span>")
-
-/obj/item/melee/electrostaff/screwdriver_act(mob/living/user, obj/item/I)
-	if(!cell)
-		to_chat(user, "<span class='warning'>Установленные батареи отсутствуют!</span>")
-		return
-	if(!I.use_tool(src, user, volume = I.tool_volume))
-		return
-	user.put_in_hands(cell)
-	to_chat(user, "<span class='notice'>Вы достали [cell] из [src].</span>")
-	cell.update_icon()
-	cell = null
-	turned_on = FALSE
-	update_icon(UPDATE_ICON_STATE)
-
-/obj/item/melee/electrostaff/proc/on_wield(obj/item/source, mob/living/carbon/user)
+/obj/item/melee/baton/electrostaff/proc/on_wield(obj/item/source, mob/living/carbon/user)
 	if(cell?.charge >= hitcost)
 		turned_on = TRUE
-		to_chat(user, "<span class='notice'>[src] включен.</span>")
+		to_chat(user, "<span class='notice'>[src] turned on.</span>")
 		playsound(src, sound_on, 75, TRUE, -1)
 	else
 		if(!cell)
-			to_chat(user, "<span class='warning'>[src] не имеет источника питания!</span>")
+			to_chat(user, "<span class='warning'>[src] does not have a power source!</span>")
 		else
-			to_chat(user, "<span class='warning'>[src] разряжен.</span>")
+			to_chat(user, "<span class='warning'>[src] is out of charge.</span>")
 	update_icon()
 	add_fingerprint(user)
 
-/obj/item/melee/electrostaff/proc/on_unwield(obj/item/source, mob/living/carbon/user)
+/obj/item/melee/baton/electrostaff/proc/on_unwield(obj/item/source, mob/living/carbon/user)
 	turned_on = FALSE
 	if(cell?.charge >= hitcost)
-		to_chat(user, "<span class='notice'>[src] выключен.</span>")
+		to_chat(user, "<span class='notice'>[src] turned off.</span>")
 		playsound(src, "sparks", 75, TRUE, -1)
 	else
 		if(!cell)
-			to_chat(user, "<span class='warning'>[src] не имеет источника питания!</span>")
+			to_chat(user, "<span class='warning'>[src] does not have a power source!</span>")
 		else
-			to_chat(user, "<span class='warning'>[src] разряжен.</span>")
+			to_chat(user, "<span class='warning'>[src] is out of charge.</span>")
 	update_icon()
 	add_fingerprint(user)
 
-/obj/item/melee/electrostaff/attack(mob/M, mob/living/user)
-	if(turned_on && HAS_TRAIT(user, TRAIT_CLUMSY) && prob(50))
-		if(electrostaff_stun(user, user, skip_cooldown = TRUE)) // for those super edge cases where you clumsy baton yourself in quick succession
-			user.visible_message("<span class='danger'>[user] неожиданно попадает по [user.p_themselves()] с помощью [src]!</span>",
-							"<span class='userdanger'>Вы неожиданно попадаете по себе с помощью [src]!</span>")
-		return
-	if(user.mind?.martial_art?.no_baton && user.mind?.martial_art?.can_use(user))
-		to_chat(user, user.mind.martial_art.no_baton_reason)
-		return
-	if(issilicon(M)) // Can't stunbaton borgs and AIs
-		return ..()
-
-	if(!isliving(M))
-		return
-	var/mob/living/L = M
-
-	if(user.a_intent == INTENT_HARM)
-		if(turned_on)
-			electrostaff_stun(L, user)
-		return ..() // Whack them too if in harm intent
-
-	if(!turned_on)
-		L.visible_message("<span class='warning'>[user] ткнул [L] с помощью [src]. К счастью он был выключен.</span>",
-			"<span class='danger'>[L == user ? "Вы ткнули себя самого" : "[user] ткнул вас"] с помощью [src]. К счастью он был выключен.</span>")
-		return
-
-	if(electrostaff_stun(L, user))
-		user.do_attack_animation(L)
-
 /// returning false results in no baton attack animation, returning true results in an animation.
-/obj/item/melee/electrostaff/proc/electrostaff_stun(mob/living/L, mob/user, skip_cooldown = FALSE)
-	if(cooldown > world.time && !skip_cooldown)
-		return FALSE
-
-	var/user_UID = user.UID()
-	if(HAS_TRAIT_FROM(L, TRAIT_WAS_BATONNED, user_UID)) // prevents double baton cheese.
-		return FALSE
-
-	cooldown = world.time + initial(cooldown) // tracks the world.time when hitting will be next available.
-	if(ishuman(L))
-		var/mob/living/carbon/human/H = L
-		if(H.check_shields(src, 0, "[user]'s [name]", MELEE_ATTACK)) //No message; check_shields() handles that
-			playsound(L, 'sound/weapons/genhit.ogg', 50, TRUE)
-			return FALSE
-		H.Confused(15 SECONDS)
-		H.Jitter(15 SECONDS)
-		H.apply_damage(stam_damage, STAMINA)
+/obj/item/melee/baton/electrostaff/baton_stun(mob/living/L, mob/user, skip_cooldown = FALSE)
+	. = ..(L, user, skip_cooldown)
+	if (. == TRUE)
 		if(user.a_intent == INTENT_HARM)
-			H.apply_damage(burn_damage, BURN)
-		H.SetStuttering(15 SECONDS)
+			L.apply_damage(burn_damage, BURN)
 
-	ADD_TRAIT(L, TRAIT_WAS_BATONNED, user_UID) // so one person cannot hit the same person with two separate batons
-	L.apply_status_effect(STATUS_EFFECT_DELAYED, knockdown_delay, CALLBACK(L, TYPE_PROC_REF(/mob/living/, KnockDown), knockdown_duration), COMSIG_LIVING_CLEAR_STUNS)
-	addtimer(CALLBACK(src, PROC_REF(electrostaff_delay), L, user_UID), knockdown_delay)
-
-	SEND_SIGNAL(L, COMSIG_LIVING_MINOR_SHOCK, 33)
-
-	if(user)
-		L.lastattacker = user.real_name
-		L.lastattackerckey = user.ckey
-		L.visible_message("<span class='danger'>[user] оглушил [L] при помощи [src]!</span>",
-			"<span class='userdanger'>[L == user ? "Вы оглушили сами себя" : "[user] оглушил вас"] при помощи [src]!</span>")
-		add_attack_logs(user, L, "stunned")
-	playsound(src, hitsound_on, 50, TRUE, -1)
-	deductcharge(hitcost)
-	return TRUE
-
-/obj/item/melee/electrostaff/proc/electrostaff_delay(mob/living/target, user_UID)
-	REMOVE_TRAIT(target, TRAIT_WAS_BATONNED, user_UID)
-
-/obj/item/melee/electrostaff/emp_act(severity)
-	. = ..()
-	if(cell)
-		deductcharge(1000 / severity)
-
-/obj/item/melee/electrostaff/wash(mob/living/user, atom/source)
-	if(turned_on && cell?.charge)
-		flick("baton_active", source)
-		electrostaff_stun(user, user, skip_cooldown = TRUE)
-		user.visible_message("<span class='warning'>[user] ударил шоком [user.p_themselves()] пока пытался помыть активированный [src]!</span>",
-							"<span class='userdanger'>Зря вы пытались помыть [src] пока он активирован.</span>")
-		return TRUE
-	..()
-
-/obj/item/melee/electrostaff/AltClick(mob/user)
+/obj/item/melee/baton/electrostaff/AltClick(mob/user)
 	..()
 	if(user.incapacitated())
 		to_chat(user, "<span class='warning'>Вы не можете этого сделать прямо сейчас!</span>")
@@ -254,7 +115,7 @@
 	if(unique_reskin && loc == user)
 		reskin_staff(user)
 
-/obj/item/melee/electrostaff/proc/reskin_staff(mob/M)
+/obj/item/melee/baton/electrostaff/proc/reskin_staff(mob/M)
 	var/list/skins = list()
 	for(var/I in options)
 		skins[I] = image(icon, icon_state = "[base_icon][options[I]]")
@@ -268,7 +129,7 @@
 		M.update_inv_r_hand()
 		M.update_inv_l_hand()
 
-/obj/item/melee/electrostaff/proc/reskin_radial_check(mob/user)
+/obj/item/melee/baton/electrostaff/proc/reskin_radial_check(mob/user)
 	if(!ishuman(user))
 		return FALSE
 	var/mob/living/carbon/human/H = user
@@ -280,7 +141,7 @@
 	name = "\improper electrostaff parts kit"
 	desc = "Возьмите 2 оглушающие дубинки. Соедините их вместе, поместив внутрь батарею. Используйте остальные инструменты (лишних винтиков быть не должно)."
 	origin_tech = "combat=6;materials=4"
-	outcome = /obj/item/melee/electrostaff/loaded
+	outcome = /obj/item/melee/baton/electrostaff/loaded
 
 /datum/design/electrostaff
 	name = "Electrostaff Parts Kit"
@@ -295,7 +156,7 @@
 /datum/crafting_recipe/electrostaff
 	name = "Electrostaff"
 	tools = list(TOOL_SCREWDRIVER, TOOL_WIRECUTTER)
-	result = list(/obj/item/melee/electrostaff/loaded)
+	result = list(/obj/item/melee/baton/electrostaff/loaded)
 	reqs = list(/obj/item/melee/baton = 2,
 				/obj/item/stock_parts/cell/high = 1,
 				/obj/item/stack/cable_coil = 5,
