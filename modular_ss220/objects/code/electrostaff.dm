@@ -103,7 +103,7 @@
 /// returning false results in no baton attack animation, returning true results in an animation.
 /obj/item/melee/baton/electrostaff/baton_stun(mob/living/L, mob/user, skip_cooldown = FALSE)
 	. = ..(L, user, skip_cooldown)
-	if (. == TRUE)
+	if(. == TRUE)
 		if(user.a_intent == INTENT_HARM)
 			L.apply_damage(burn_damage, BURN)
 
