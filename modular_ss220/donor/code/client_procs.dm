@@ -124,6 +124,6 @@
 
 	// запрет педалям, разрешение разрабам, разрешение донатерам
 	var/list/restricted_ranks = list("Администратор", "Триал Администратор", "Ментор")
-	if(donator_level > DONATOR_LEVEL_MAX && holder.rank in restricted_ranks)
+	if((donator_level > DONATOR_LEVEL_MAX) && (holder.rank in restricted_ranks))
 		return FALSE
 	return required_donator_level <= donator_level
