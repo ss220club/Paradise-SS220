@@ -29,7 +29,7 @@
 	var/list/candidates = SSghost_spawns.poll_candidates("Do you want to play as a terror spider?", null, TRUE, source = /mob/living/simple_animal/hostile/poison/terror_spider) // questionable
 	var/max_spiders = length(candidates)
 	log_debug("where is [max_spiders] candidates")
-	spawnpoints += round(length(GLOB.clients) / poulation_factor) // server population sensevity
+	spawnpoints += round(population_factor * length(GLOB.clients)) // server population sensitivity
 	log_debug("where is [spawnpoints] available spawnpoints")
 	spawn_terror_spiders(count_spawn_spiders(max_spiders), candidates)
 	SSevents.biohazards_this_round += 1
