@@ -108,7 +108,7 @@
 			L.apply_damage(burn_damage, BURN)
 
 /obj/item/melee/baton/electrostaff/AltClick(mob/user)
-	..()
+	. = ..()
 	if(user.incapacitated())
 		to_chat(user, "<span class='warning'>Вы не можете этого сделать прямо сейчас!</span>")
 		return
