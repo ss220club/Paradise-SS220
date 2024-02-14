@@ -79,7 +79,7 @@
 				spawncount--
 				successSpawn = TRUE
 
-				spider_count --
+				spider_count--
 
 			if(spawncount <= 0)
 				break
