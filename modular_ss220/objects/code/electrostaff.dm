@@ -81,7 +81,7 @@
 	turned_on = FALSE
 	after_turn(FALSE, user)
 
-/obj/item/melee/baton/electrostaff/proc/after_turn(var/to_turn_on, mob/living/carbon/user)
+/obj/item/melee/baton/electrostaff/proc/after_turn(to_turn_on, mob/living/carbon/user)
 	if(cell?.charge >= hitcost)
 		if(to_turn_on)
 			turned_on = TRUE
