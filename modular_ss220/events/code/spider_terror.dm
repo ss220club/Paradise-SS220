@@ -46,15 +46,9 @@
 			log_debug("spider added into pool: [chosen_spider_id]")
 			log_debug("where is [spawnpoints] available spawnpoints now")
 
-		if(spawnpoints >= TS_POINTS_GREEN)
-			continue
-
-		else
-			break // lack of points break
-
-		if(spawncount >= max_spiders)
-
-			break // over candidates limit break
+		if(spawnpoints < TS_POINTS_GREEN || spawncount >= max_spiders)
+			break
+		
 	log_debug("selected [spawncount] spider(s)")
 	return spider_counts
 
