@@ -43,7 +43,7 @@
 
 /obj/item/melee/baton/electrostaff/loaded/Initialize(mapload) //this one starts with a cell pre-installed.
 	link_new_cell()
-	return ..()
+	. = ..()
 
 /obj/item/melee/baton/electrostaff/update_icon_state()
 	if(HAS_TRAIT(src, TRAIT_WIELDED))
