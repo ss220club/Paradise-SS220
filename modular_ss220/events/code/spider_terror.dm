@@ -12,10 +12,10 @@
 
 /datum/event/spider_terror
 	announceWhen = 240
-	var/poulation_factor = 1.5 // higher - lesser spawnpoints
+	var/population_factor = 0.7 // higher - more spawnpoints
 	spawncount = 0 // amount of spawned spiders
-	var/spawnpoints = TS_POINTS_GREEN // weihgt points
-	//lists for mathcing spiders and their weights
+	var/spawnpoints = TS_POINTS_GREEN // weight points
+	/// lists for matching spiders and their weights
 	var/list/spider_types = list("TERROR_GREEN" = TERROR_GREEN, "TERROR_WHITE" = TERROR_WHITE, "TERROR_PRINCESS" = TERROR_PRINCESS, "TERROR_PRINCE" = TERROR_PRINCE, "TERROR_QUEEN" = TERROR_QUEEN)
 	var/list/spider_costs = list("TERROR_GREEN" = TS_POINTS_GREEN, "TERROR_WHITE" = TS_POINTS_WHITE, "TERROR_PRINCESS" = TS_POINTS_PRINCESS, "TERROR_PRINCE" = TS_POINTS_PRINCE, "TERROR_QUEEN" = TS_POINTS_QUEEN)
 	var/list/spider_counts = list("TERROR_GREEN" = 0, "TERROR_WHITE" = 0, "TERROR_PRINCESS" = 0, "TERROR_PRINCE" = 0, "TERROR_QUEEN" = 0)
