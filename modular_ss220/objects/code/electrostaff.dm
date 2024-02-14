@@ -51,9 +51,9 @@
 			icon_state = "[base_icon][current_skin]_active"
 		else
 			if(cell != null)
-				icon_state = "[base_icon][current_skin]1"
+				icon_state = "[base_icon][current_skin]_wield"
 			else
-				icon_state = "[base_icon][current_skin]_nocell1"
+				icon_state = "[base_icon][current_skin]_nocell_wield"
 	else
 		if(cell != null)
 			icon_state = "[base_icon][current_skin]"
@@ -63,9 +63,9 @@
 /obj/item/melee/baton/electrostaff/examine(mob/user)
 	. = ..()
 	. -= "<span class='notice'>This item can be recharged in a recharger. Using a screwdriver on this item will allow you to access its power cell, which can be replaced.</span>"
-	. += "<span class='notice'>This item does not have external charging connectors. Use <b>a screwdriver</b> to access the internal battery to replace or charge it.</span>"
+	. += "<span class='notice'>Данный предмет не имеет внешних разъемов для зарядки. Используйте <b>отвертку</b> для доступа к внутренней батарее, чтобы заменить или зарядить её.</span>"
 	if(unique_reskin)
-		. += "<span class='notice'>Alt-click to change light.</span>"
+		. += "<span class='notice'>Alt-клик, чтобы изменить свечение.</span>"
 
 /obj/item/melee/baton/electrostaff/attack_self(mob/user)
 	var/signal_ret = SEND_SIGNAL(src, COMSIG_ITEM_ATTACK_SELF, user)
@@ -75,28 +75,23 @@
 		return TRUE
 
 /obj/item/melee/baton/electrostaff/proc/on_wield(obj/item/source, mob/living/carbon/user)
-	if(cell?.charge >= hitcost)
-		turned_on = TRUE
-		to_chat(user, "<span class='notice'>[src] turned on.</span>")
-		playsound(src, sound_on, 75, TRUE, -1)
-	else
-		if(!cell)
-			to_chat(user, "<span class='warning'>[src] does not have a power source!</span>")
-		else
-			to_chat(user, "<span class='warning'>[src] is out of charge.</span>")
-	update_icon()
-	add_fingerprint(user)
+	after_turn(TRUE, user)
 
 /obj/item/melee/baton/electrostaff/proc/on_unwield(obj/item/source, mob/living/carbon/user)
 	turned_on = FALSE
+	after_turn(FALSE, user)
+
+/obj/item/melee/baton/electrostaff/proc/after_turn(var/to_turn_on, mob/living/carbon/user)
 	if(cell?.charge >= hitcost)
-		to_chat(user, "<span class='notice'>[src] turned off.</span>")
-		playsound(src, "sparks", 75, TRUE, -1)
+		if (to_turn_on)
+			turned_on = TRUE
+		to_chat(user, "<span class='notice'>[src] [turned_on ? "включен" : "выключен"].</span>")
+		playsound(src, turned_on ? sound_on : "sparks", 75, TRUE, -1)
 	else
 		if(!cell)
-			to_chat(user, "<span class='warning'>[src] does not have a power source!</span>")
+			to_chat(user, "<span class='warning'>[src] не имеет источников питания!</span>")
 		else
-			to_chat(user, "<span class='warning'>[src] is out of charge.</span>")
+			to_chat(user, "<span class='warning'>[src] обесточен.</span>")
 	update_icon()
 	add_fingerprint(user)
 
