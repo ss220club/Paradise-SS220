@@ -83,7 +83,7 @@
 
 /obj/item/melee/baton/electrostaff/proc/after_turn(var/to_turn_on, mob/living/carbon/user)
 	if(cell?.charge >= hitcost)
-		if (to_turn_on)
+		if(to_turn_on)
 			turned_on = TRUE
 		to_chat(user, "<span class='notice'>[src] [turned_on ? "включен" : "выключен"].</span>")
 		playsound(src, turned_on ? sound_on : "sparks", 75, TRUE, -1)
