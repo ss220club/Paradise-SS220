@@ -27,7 +27,7 @@
 	else
 		visible_message(span_danger("[user] пытается съесть [animal]!"))
 
-	if(!do_after(user, SECONDS(3), target = devourer))
+	if(!do_after(user, 3 SECONDS, target = devourer))
 		return
 
 	visible_message(span_danger("[devourer] съедает [animal]!"))
