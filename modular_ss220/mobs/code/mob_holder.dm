@@ -6,6 +6,38 @@
 	origin_tech = "biotech=2"
 	slot_flags = SLOT_FLAG_HEAD
 
+/obj/item/holder/attack(mob/living/target, mob/living/user, def_zone)
+	var/mob/living/simple_animal/animal = contents[1]
+	var/mob/living/carbon/devourer = target
+	if(!istype(animal) || !istype(devourer))
+		return ..()
+
+	if(user.a_intent != INTENT_HARM)
+		return ..()
+	
+	if(!is_type_in_list(animal,  devourer.dna.species.allowed_consumed_mobs))
+		if(user != devourer)
+			user.visible_message(span_notice("Вряд ли это понравится [devourer]..."))
+		else if(ishuman(devourer))
+			user.visible_message(span_notice("Интересно, как на вкус [animal]? Но проверять не будем."))
+		return
+
+	if(user != devourer)
+		visible_message(span_danger("[user] пытается скормить [devourer] [animal]!"))
+	else
+		visible_message(span_danger("[user] пытается съесть [animal]!"))
+
+	if(!do_after(user, SECONDS(3), target = devourer))
+		return
+
+	visible_message(span_danger("[devourer] съедает [animal]!"))
+	if(animal.mind)
+		add_attack_logs(devourer, animal, "Devoured")
+	animal.forceMove(devourer)
+	LAZYADD(devourer.stomach_contents, animal)
+	icon = null // workaround to hide cringy holder lying on the floor for 1 sec
+	user.drop_item()
+
 /mob/living/simple_animal/attackby(obj/item/O, mob/living/user)
 	if(user.a_intent == INTENT_HELP || user.a_intent == INTENT_GRAB)
 		if(istype(O, /obj/item/pet_carrier))
