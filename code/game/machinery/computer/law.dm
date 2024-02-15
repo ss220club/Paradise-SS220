@@ -99,24 +99,23 @@
 		borg.cmd_show_laws()
 		borg.throw_alert("newlaw", /obj/screen/alert/newlaw)
 
-/obj/machinery/computer/aiupload/attack_hand(mob/user as mob)
-	if(src.stat & NOPOWER)
-		to_chat(usr, "Консоль аплоуда обесточена!")
+/obj/machinery/computer/aiupload/attack_hand(mob/user)
+	if(stat & NOPOWER)
+		to_chat(user, "<span class='warning'>Консоль аплоуда обесточена!</span>")
 		return
-	if(src.stat & BROKEN)
-		to_chat(usr, "Консоль аплоуда сломана!")
+	if(stat & BROKEN)
+		to_chat(user, "<span class='warning'>Консоль аплоуда сломана!</span>")
 		return
 
-	src.current = select_active_ai(user)
+	current = select_active_ai(user)
 
-	if(!src.current)
-		to_chat(usr, "Активных ИИ не обнаружено.")
-	else
-		to_chat(usr, "[src.current.name] выбран для смены законов.")
-	return
+	if(!current)
+		to_chat(user, "<span class='warning'>Активных ИИ не обнаружено.</span>")
+		return
+	to_chat(user, "<span class='notice'>[current.name] выбран для смены законов.</span>")
 
-/obj/machinery/computer/aiupload/attack_ghost(user as mob)
-	return 1
+/obj/machinery/computer/aiupload/attack_ghost(user)
+	return TRUE
 
 #undef AIUPLOAD_EMAG_COOLDOWN
 
@@ -129,11 +128,10 @@
 	circuit = /obj/item/circuitboard/borgupload
 	var/mob/living/silicon/robot/current = null
 
-
-/obj/machinery/computer/borgupload/attackby(obj/item/aiModule/module as obj, mob/user as mob, params)
+/obj/machinery/computer/borgupload/attackby(obj/item/aiModule/module, mob/user, params)
 	if(istype(module, /obj/item/aiModule))
 		if(!current)//no borg selected
-			to_chat(user, "<span class='danger'>Киборг не выбран. Пожалуйста, выберите цель для загрузки законов")
+			to_chat(user, "<span class='danger'>Киборг не выбран. Пожалуйста, выберите цель для загрузки законов.</span>")
 			return
 		var/turf/T = get_turf(current)
 		if(!atoms_share_level(T, src))
@@ -144,21 +142,20 @@
 	return ..()
 
 
-/obj/machinery/computer/borgupload/attack_hand(mob/user as mob)
-	if(src.stat & NOPOWER)
-		to_chat(usr, "Консоль аплоуда обесточена!")
+/obj/machinery/computer/borgupload/attack_hand(mob/user)
+	if(stat & NOPOWER)
+		to_chat(user, "<span class='warning'>Консоль аплоуда обесточена!</span>")
 		return
-	if(src.stat & BROKEN)
-		to_chat(usr, "Консоль аплоуда сломана!")
+	if(stat & BROKEN)
+		to_chat(user, "<span class='warning'>Консоль аплоуда сломана!</span>")
 		return
 
-	src.current = freeborg()
+	current = freeborg(user)
 
-	if(!src.current)
-		to_chat(usr, "Свободных боргов не обнаружено.")
-	else
-		to_chat(usr, "[src.current.name] выбран для смены законов.")
-	return
+	if(!current)
+		to_chat(user, "<span class='warning'>Свободных боргов не обнаружено.</span>")
+		return
+	to_chat(user, "<span class='notice'>[current.name] выбран для смены законов.</span>")
 
-/obj/machinery/computer/borgupload/attack_ghost(user as mob)
-		return 1
+/obj/machinery/computer/borgupload/attack_ghost(user)
+	return TRUE

@@ -447,7 +447,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 
 		//if(icon_state == initial(icon_state))
 	var/icontype = ""
-	icontype = input("Выберите иконку!", "ИИ", null, null) in display_choices
+	icontype = tgui_input_list(usr, "Выберите иконку!", "ИИ", display_choices)
 	icon = 'icons/mob/ai.dmi'	//reset this in case we were on a custom sprite and want to change to a standard one
 	switch(icontype)
 		if("Custom")
@@ -968,7 +968,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 		return
 
 	var/list/ai_emotions = list("Very Happy", "Happy", "Neutral", "Unsure", "Confused", "Sad", "BSOD", "Blank", "Problems?", "Awesome", "Facepalm", "Friend Computer")
-	var/emote = input("Пожалуйста, выберите эмоцию!", "Эмоция ИИ", null, null) in ai_emotions
+	var/emote = tgui_input_list(usr, "Пожалуйста, выберите эмоцию!", "Эмоция ИИ", ai_emotions)
 
 	if(check_unable())
 		return

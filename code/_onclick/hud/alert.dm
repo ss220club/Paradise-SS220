@@ -428,7 +428,7 @@ or shoot a gun to move around via Newton's 3rd Law of Motion."
 		var/mob/living/simple_animal/diona/D = nymphs[1]
 		D.split(TRUE)
 	else
-		var/mob/living/simple_animal/diona/D = input("Select a nymph to drop:", "Nymph Dropping", nymphs[1]) as anything in nymphs
+		var/mob/living/simple_animal/diona/D = tgui_input_list(usr, "Select a nymph to drop:", "Nymph Dropping", nymphs)
 		if(D in usr.contents)
 			D.split(TRUE)
 
