@@ -13,6 +13,6 @@
 
 /obj/machinery/recharger/attackby(obj/item/G, mob/user, params)
 	if(istype(G, /obj/item/melee/baton/electrostaff))
-		to_chat(user, "<span class='notice'>[G] не имеет внешних разьемов для подзарядки.</span>")
+		to_chat(user, "<span class='notice'>[G] не имеет внешних разъемов для подзарядки.</span>")
 		return
 	. = ..()
