@@ -9,7 +9,6 @@
 	department_head = list("Head of Personnel")
 	selection_color = "#fbd5ff"
 	access = list( ACCESS_MAINT_TUNNELS)
-	minimal_access = list(ACCESS_MAINT_TUNNELS)
 	alt_titles = null
 	outfit = /datum/outfit/job/donor
 	hidden_from_job_prefs = TRUE
