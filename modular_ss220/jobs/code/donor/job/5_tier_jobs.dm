@@ -6,7 +6,6 @@
 	alt_titles = list("VIP Гость", "VIP Персона", "VIP Гость NT", "VIP Персона NT", "Гость Корпорации NT")
 	relate_job = "Vip"
 	access = list(ACCESS_MAINT_TUNNELS, ACCESS_LIBRARY, ACCESS_HEADS, ACCESS_RC_ANNOUNCE, ACCESS_EVA)
-	minimal_access = list(ACCESS_MAINT_TUNNELS, ACCESS_LIBRARY, ACCESS_HEADS, ACCESS_RC_ANNOUNCE, ACCESS_EVA)
 	selection_color = "#9d679d"
 	hidden_from_job_prefs = FALSE
 	donator_tier = 5
@@ -50,7 +49,6 @@
 	alt_titles = list("Банкир", "Независимый Банкир", "Корпорат", "Бизнесмен", "Банкир NT", "Корпорат NT", "Бизнесмен NT")
 	relate_job = "Vip"
 	access = list(ACCESS_MAINT_TUNNELS, ACCESS_LIBRARY, ACCESS_EVA)
-	minimal_access = list(ACCESS_MAINT_TUNNELS, ACCESS_LIBRARY, ACCESS_EVA)
 	selection_color = "#9d679d"
 	hidden_from_job_prefs = FALSE
 	donator_tier = 5
@@ -103,7 +101,6 @@
 	department_head = list("Head of Security")
 	job_department_flags = DEP_FLAG_SECURITY
 	access = list(ACCESS_CLOWN, ACCESS_THEATRE, ACCESS_MAINT_TUNNELS, ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_BRIG, ACCESS_COURT)
-	minimal_access = list(ACCESS_CLOWN, ACCESS_THEATRE, ACCESS_MAINT_TUNNELS, ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_BRIG, ACCESS_COURT)
 	selection_color = "#9d679d"
 	hidden_from_job_prefs = FALSE
 	donator_tier = 5

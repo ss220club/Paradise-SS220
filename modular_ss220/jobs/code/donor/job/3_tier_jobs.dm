@@ -8,7 +8,6 @@
 	alt_titles = list("Сервис-Администратор", "Сервис-Управитель", "Помпадур", "Сервис-Менеджер")
 	relate_job = "Bar"
 	access = list(ACCESS_THEATRE, ACCESS_LIBRARY, ACCESS_BAR, ACCESS_KITCHEN, ACCESS_HYDROPONICS, ACCESS_MINERAL_STOREROOM, ACCESS_JANITOR)
-	minimal_access = list(ACCESS_THEATRE, ACCESS_LIBRARY, ACCESS_BAR, ACCESS_KITCHEN, ACCESS_HYDROPONICS, ACCESS_MINERAL_STOREROOM, ACCESS_JANITOR)
 	selection_color = "#63979a"
 	hidden_from_job_prefs = FALSE
 	donator_tier = 3
@@ -51,7 +50,6 @@
 	alt_titles = list("Турист ТСФ", "Посетитель ТСФ")
 	relate_job = "Assistant"
 	access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS)
-	minimal_access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS)
 	selection_color = "#63979a"
 	hidden_from_job_prefs = FALSE
 	donator_tier = 3
@@ -91,7 +89,6 @@
 	alt_titles = list("Турист СССП", "Посетитель СССП")
 	relate_job = "Assistant"
 	access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS)
-	minimal_access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS)
 	selection_color = "#63979a"
 	hidden_from_job_prefs = FALSE
 	donator_tier = 3
@@ -136,7 +133,6 @@
 	alt_titles = list("Менеджер по Клинингу", "Ловец Крыс", "Уборщик I-разряда", "Уборщик II-разряда", "Уборщик III-разряда", "Уборщик IV-разряда", "Уборщик V-разряда")
 	relate_job = "Janitor"
 	access = list(ACCESS_JANITOR, ACCESS_MAINT_TUNNELS, ACCESS_EXTERNAL_AIRLOCKS, ACCESS_MEDICAL)
-	minimal_access = list(ACCESS_JANITOR, ACCESS_MAINT_TUNNELS, ACCESS_EXTERNAL_AIRLOCKS, ACCESS_MEDICAL)
 	selection_color = "#63979a"
 	hidden_from_job_prefs = FALSE
 	donator_tier = 3
@@ -177,7 +173,6 @@
 	alt_titles = list("Подмастерье", "Ассистент-Механик", "Ассистент I-го разряда", "Ассистент II-го разряда", "Ассистент III-го разряда", "Ассистент IV-го разряда", "Ассистент V-го разряда")
 	relate_job = "Assistant"
 	access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS, ACCESS_CONSTRUCTION, ACCESS_MINERAL_STOREROOM)
-	minimal_access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS, ACCESS_CONSTRUCTION, ACCESS_MINERAL_STOREROOM)
 	selection_color = "#63979a"
 	hidden_from_job_prefs = FALSE
 	donator_tier = 3
@@ -219,7 +214,6 @@
 	alt_titles = list("Охранник", "Сторож Сервиса", "Охранник Сервиса", "Вышибала Сервиса")
 	relate_job = "Bar"
 	access = list(ACCESS_MAINT_TUNNELS, ACCESS_BAR, ACCESS_KITCHEN, ACCESS_HYDROPONICS, ACCESS_LIBRARY)
-	minimal_access = list(ACCESS_MAINT_TUNNELS, ACCESS_BAR, ACCESS_KITCHEN, ACCESS_HYDROPONICS, ACCESS_LIBRARY)
 	selection_color = "#63979a"
 	hidden_from_job_prefs = FALSE
 	donator_tier = 3
@@ -255,7 +249,6 @@
 	alt_titles = list("Мигрант")
 	relate_job = "Assistant"
 	access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS)
-	minimal_access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS)
 	selection_color = "#63979a"
 	hidden_from_job_prefs = FALSE
 	donator_tier = 3
@@ -293,7 +286,6 @@
 	ru_title = "Безработный"
 	alt_titles = list("Безработный", "Безработный Ассистент", "Свободный Ассистент", "Отрабатыващий Ассистент", "Ассистент Технических Тоннелей")
 	access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS, ACCESS_CONSTRUCTION)
-	minimal_access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS, ACCESS_CONSTRUCTION)
 	selection_color = "#63979a"
 	hidden_from_job_prefs = FALSE
 	donator_tier = 3

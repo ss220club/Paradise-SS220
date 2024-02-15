@@ -7,7 +7,6 @@
 	ru_title = "Парикмахер"
 	alt_titles = list("Парикмахер", "Стилист", "Хозяин Студии Красоты", "Визажист", "Куафёр", "Цирюльник", "Брадобрей")
 	access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS)
-	minimal_access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS)
 	selection_color = "#558758"
 	hidden_from_job_prefs = FALSE
 	donator_tier = 2
@@ -39,7 +38,6 @@
 	alt_titles = list("Банщик", "Хозяин Бани", "Парильщик", "Пармейстер")
 	relate_job = "Bath"
 	access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS)
-	minimal_access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS)
 	selection_color = "#558758"
 	hidden_from_job_prefs = FALSE
 	donator_tier = 2
@@ -81,7 +79,6 @@
 	relate_job = "Bar"
 	alt_titles = list("Крупье", "Дилер", "Слот-Ассистент", "Пит-Босс", )
 	access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS, ACCESS_THEATRE, ACCESS_HYDROPONICS, ACCESS_BAR)
-	minimal_access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS, ACCESS_THEATRE, ACCESS_HYDROPONICS, ACCESS_BAR)
 	selection_color = "#558758"
 	hidden_from_job_prefs = FALSE
 	donator_tier = 2
@@ -119,7 +116,6 @@
 	relate_job = "Bar"
 	alt_titles = list("Официант", "Хост Сервиса")
 	access = list(ACCESS_MAINT_TUNNELS, ACCESS_THEATRE, ACCESS_HYDROPONICS, ACCESS_BAR, ACCESS_KITCHEN)
-	minimal_access = list(ACCESS_MAINT_TUNNELS, ACCESS_THEATRE, ACCESS_HYDROPONICS, ACCESS_BAR, ACCESS_KITCHEN)
 	selection_color = "#558758"
 	hidden_from_job_prefs = FALSE
 	donator_tier = 2
@@ -156,7 +152,6 @@
 	alt_titles = list("Послушник", "Монах", "Приспешник", "Последователь", "Обрядчик")
 	relate_job = "Chaplain"
 	access = list(ACCESS_CHAPEL_OFFICE, ACCESS_MAINT_TUNNELS)
-	minimal_access = list(ACCESS_CHAPEL_OFFICE, ACCESS_MAINT_TUNNELS)
 	selection_color = "#558758"
 	hidden_from_job_prefs = FALSE
 	donator_tier = 2
@@ -190,7 +185,6 @@
 	supervisors = "главой персонала и квартирмейстером"
 	department_head = list("Head of Personnel", "Quartermaster")
 	access = list(ACCESS_MAINT_TUNNELS, ACCESS_MAILSORTING, ACCESS_CARGO, ACCESS_MINT, ACCESS_MINERAL_STOREROOM)
-	minimal_access = list(ACCESS_MAINT_TUNNELS, ACCESS_CARGO, ACCESS_MAILSORTING, ACCESS_MINERAL_STOREROOM)
 	selection_color = "#558758"
 	hidden_from_job_prefs = FALSE
 	donator_tier = 2
@@ -248,7 +242,6 @@
 	alt_titles = list("Борец", "Рефери", "Тренер", "Боксёр", "Спортсмен")
 	relate_job = "Art"
 	access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS, ACCESS_THEATRE, ACCESS_RC_ANNOUNCE)
-	minimal_access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS, ACCESS_THEATRE, ACCESS_RC_ANNOUNCE)
 	selection_color = "#558758"
 	hidden_from_job_prefs = FALSE
 	donator_tier = 2
@@ -296,7 +289,6 @@
 	alt_titles = list("Художник", "Творец", "Искусствовед", "Пейзажист", "Фотореалист", "Перфоманс-Артист")
 	relate_job = "Art"
 	access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS, ACCESS_THEATRE)
-	minimal_access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS, ACCESS_THEATRE)
 	selection_color = "#558758"
 	hidden_from_job_prefs = FALSE
 	donator_tier = 2
@@ -340,7 +332,6 @@
 	alt_titles = list("Музыкант", "Маэстро", "Гитарист", "Барабанщик", "Пианист", "Волынщик", "Скрипач", "Скоморох", "Саксофонист", "Солист", "Певец", "Гастролер")
 	relate_job = "Art"
 	access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS, ACCESS_THEATRE)
-	minimal_access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS, ACCESS_THEATRE)
 	selection_color = "#558758"
 	hidden_from_job_prefs = FALSE
 	donator_tier = 2
@@ -382,7 +373,6 @@
 	alt_titles = list("Актер", "Артист", "Стендапер", "Комедиант", "Эстрадный Артист")
 	relate_job = "Art"
 	access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS, ACCESS_THEATRE)
-	minimal_access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS, ACCESS_THEATRE)
 	selection_color = "#558758"
 	hidden_from_job_prefs = FALSE
 	donator_tier = 2
