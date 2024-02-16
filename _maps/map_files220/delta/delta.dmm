@@ -8746,12 +8746,13 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/engineering,
 /obj/effect/mapping_helpers/airlock/autoname,
-/obj/effect/mapping_helpers/airlock/access/all/engineering/construction,
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/effect/mapping_helpers/airlock/access/all/engineering/atmos,
+/obj/effect/mapping_helpers/airlock/access/all/engineering/external,
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/auxsolarport)
 "aLs" = (
@@ -11246,7 +11247,6 @@
 /obj/machinery/door/airlock/atmos/glass,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/mapping_helpers/airlock/access/any/engineering/atmos,
-/obj/effect/mapping_helpers/airlock/access/any/engineering/general,
 /turf/simulated/floor/plasteel{
 	icon_state = "neutralfull"
 	},
@@ -13310,7 +13310,6 @@
 /obj/machinery/door/airlock/atmos/glass,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/mapping_helpers/airlock/access/any/engineering/atmos,
-/obj/effect/mapping_helpers/airlock/access/any/engineering/general,
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plasteel{
 	icon_state = "neutralfull"
@@ -20064,7 +20063,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/mapping_helpers/airlock/access/all/engineering/general,
+/obj/effect/mapping_helpers/airlock/access/any/engineering/construction,
 /turf/simulated/floor/plasteel{
 	icon_state = "neutralfull"
 	},
@@ -22328,7 +22327,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/disposalpipe/segment,
-/obj/effect/mapping_helpers/airlock/access/all/engineering/general,
+/obj/effect/mapping_helpers/airlock/access/any/engineering/construction,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/break_room)
 "bNZ" = (
@@ -27460,7 +27459,6 @@
 "cfg" = (
 /obj/machinery/door/airlock/engineering/glass,
 /obj/effect/mapping_helpers/airlock/autoname,
-/obj/effect/mapping_helpers/airlock/access/all/engineering/construction,
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
@@ -27473,6 +27471,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+/obj/effect/mapping_helpers/airlock/access/all/engineering/general,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/smes)
 "cfh" = (
@@ -62369,7 +62368,7 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
-/obj/effect/mapping_helpers/airlock/access/all/engineering/general,
+/obj/effect/mapping_helpers/airlock/access/any/engineering/construction,
 /turf/simulated/floor/plasteel{
 	icon_state = "neutralfull"
 	},
@@ -95900,7 +95899,7 @@
 	int_button_link_id = "fpsolar_btn_int";
 	int_door_link_id = "fpsolar_door_int";
 	pixel_y = 25;
-	req_access_txt = "32";
+	req_access_txt = "24";
 	vent_link_id = "fpsolar_vent"
 	},
 /obj/structure/cable{
@@ -99881,7 +99880,6 @@
 	locked = 1
 	},
 /obj/effect/mapping_helpers/airlock/autoname,
-/obj/effect/mapping_helpers/airlock/access/all/engineering/construction,
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
@@ -99890,8 +99888,10 @@
 /obj/machinery/access_button/south{
 	autolink_id = "fpsolar_btn_ext";
 	name = "exterior access button";
-	req_access_txt = "32"
+	req_access_txt = "24"
 	},
+/obj/effect/mapping_helpers/airlock/access/all/engineering/atmos,
+/obj/effect/mapping_helpers/airlock/access/all/engineering/external,
 /turf/simulated/floor/plating,
 /area/station/maintenance/auxsolarport)
 "ujU" = (
@@ -107023,7 +107023,6 @@
 	locked = 1
 	},
 /obj/effect/mapping_helpers/airlock/autoname,
-/obj/effect/mapping_helpers/airlock/access/all/engineering/construction,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
@@ -107035,8 +107034,10 @@
 /obj/machinery/access_button/north{
 	autolink_id = "fpsolar_btn_int";
 	name = "interior access button";
-	req_access_txt = "32"
+	req_access_txt = "24"
 	},
+/obj/effect/mapping_helpers/airlock/access/all/engineering/atmos,
+/obj/effect/mapping_helpers/airlock/access/all/engineering/external,
 /turf/simulated/floor/plating,
 /area/station/maintenance/auxsolarport)
 "wzJ" = (
