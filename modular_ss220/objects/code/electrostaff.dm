@@ -75,6 +75,11 @@
 	if(signal_ret & COMPONENT_CANCEL_ATTACK_CHAIN)
 		return TRUE
 
+/obj/item/melee/baton/electrostaff/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
+	if(!HAS_TRAIT(src, TRAIT_WIELDED))
+		return FALSE
+	. = ..()
+
 /obj/item/melee/baton/electrostaff/proc/on_wield(obj/item/source, mob/living/carbon/user)
 	after_turn(TRUE, user)
 
