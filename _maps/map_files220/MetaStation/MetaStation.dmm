@@ -5217,6 +5217,10 @@
 /obj/structure/closet/secure_closet/engineering_welding,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/control)
+"aCH" = (
+/obj/machinery/door/firedoor,
+/turf/simulated/floor/plasteel,
+/area/station/supply/storage)
 "aCV" = (
 /obj/structure/cable/yellow{
 	d1 = 2;
@@ -7176,7 +7180,7 @@
 /area/station/maintenance/fpmaint)
 "aKe" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/mining,
+/obj/machinery/door/airlock/multi_tile/supply/glass,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/mapping_helpers/airlock/access/any/supply/mining,
 /turf/simulated/floor/plasteel,
@@ -7191,7 +7195,6 @@
 	icon_state = "1-2"
 	},
 /obj/structure/disposalpipe/segment,
-/obj/machinery/door/airlock/mining,
 /turf/simulated/floor/plasteel,
 /area/station/supply/miningdock)
 "aKg" = (
@@ -9459,6 +9462,7 @@
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/mapping_helpers/airlock/access/any/engineering/maintenance,
 /obj/effect/mapping_helpers/airlock/access/any/supply/general,
+/obj/effect/mapping_helpers/airlock/access/any/supply/mining,
 /turf/simulated/floor/plating,
 /area/station/maintenance/fpmaint)
 "aRC" = (
@@ -14204,7 +14208,7 @@
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/mapping_helpers/airlock/access/any/supply/general,
 /turf/simulated/floor/plating,
-/area/station/supply/storage)
+/area/station/maintenance/port2)
 "bfp" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
@@ -16103,7 +16107,7 @@
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/mapping_helpers/airlock/access/any/supply/mail_sorting,
 /turf/simulated/floor/plating,
-/area/station/supply/office)
+/area/station/maintenance/port2)
 "bkw" = (
 /obj/structure/cable/yellow{
 	d1 = 1;
@@ -48864,7 +48868,7 @@
 /turf/simulated/floor/plasteel{
 	icon_state = "darkneutralfull"
 	},
-/area/station/maintenance/port)
+/area/station/hallway/primary/central)
 "fmP" = (
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 10
@@ -56663,6 +56667,7 @@
 	},
 /obj/machinery/door/firedoor,
 /obj/effect/mapping_helpers/airlock/access/any/supply/general,
+/obj/effect/mapping_helpers/airlock/access/any/supply/mining,
 /turf/simulated/floor/plasteel,
 /area/station/supply/lobby)
 "iKZ" = (
@@ -57207,7 +57212,9 @@
 /area/station/science/robotics)
 "jap" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/mining,
+/obj/machinery/door/airlock/multi_tile/supply/glass{
+	dir = 1
+	},
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/mapping_helpers/airlock/access/any/supply/general,
 /turf/simulated/floor/plasteel,
@@ -71217,7 +71224,7 @@
 	},
 /obj/effect/mapping_helpers/airlock/access/all/medical/psychology,
 /turf/simulated/floor/plating,
-/area/station/medical/psych)
+/area/station/maintenance/apmaint)
 "pDA" = (
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/plasteel{
@@ -84413,7 +84420,7 @@
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
-/area/station/maintenance/port)
+/area/station/hallway/primary/central)
 "vWd" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock,
@@ -110680,7 +110687,7 @@ rrq
 wpu
 aRG
 aZt
-jap
+aCH
 jap
 aZt
 aZt
@@ -110975,7 +110982,7 @@ bzK
 qAr
 bXS
 bzK
-cdT
+bZu
 vWb
 fmG
 cRU
