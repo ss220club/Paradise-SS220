@@ -1666,10 +1666,10 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/effect/mapping_helpers/airlock/access/all/supply/general,
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/mining,
 /obj/effect/mapping_helpers/airlock/autoname,
+/obj/effect/mapping_helpers/airlock/access/any/supply/mail_sorting,
 /turf/simulated/floor/plasteel{
 	icon_state = "neutralfull"
 	},
@@ -3193,7 +3193,7 @@
 /area/station/maintenance/fore2)
 "arV" = (
 /obj/machinery/conveyor{
-	dir = 4;
+	dir = 5;
 	id = "cargodisposals_output";
 	name = "Output Belt"
 	},
@@ -4548,7 +4548,7 @@
 "awq" = (
 /obj/machinery/door/airlock/maintenance,
 /obj/effect/mapping_helpers/airlock/autoname,
-/obj/effect/mapping_helpers/airlock/access/all/engineering/maintenance,
+/obj/effect/mapping_helpers/airlock/access/any/engineering/maintenance,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -4563,6 +4563,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+/obj/effect/mapping_helpers/airlock/access/any/supply/mail_sorting,
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/fore2)
 "aws" = (
@@ -4776,10 +4777,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/effect/mapping_helpers/airlock/access/all/engineering/maintenance,
+/obj/effect/mapping_helpers/airlock/access/any/engineering/maintenance,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/effect/mapping_helpers/airlock/access/any/supply/mail_sorting,
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/fore2)
 "axb" = (
@@ -7050,7 +7052,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/mining,
 /obj/effect/mapping_helpers/airlock/autoname,
-/obj/effect/mapping_helpers/airlock/access/all/supply/mining,
+/obj/effect/mapping_helpers/airlock/access/any/supply/mining,
 /turf/simulated/floor/plasteel{
 	icon_state = "purplefull"
 	},
@@ -7312,8 +7314,8 @@
 	locked = 1
 	},
 /obj/effect/mapping_helpers/airlock/autoname,
-/obj/effect/mapping_helpers/airlock/access/all/supply/general,
 /obj/machinery/door/firedoor,
+/obj/effect/mapping_helpers/airlock/access/any/supply/mail_sorting,
 /turf/simulated/floor/plating,
 /area/station/supply/storage)
 "aFO" = (
@@ -8597,7 +8599,7 @@
 /obj/effect/turf_decal/delivery,
 /obj/machinery/door/airlock/mining/glass,
 /obj/effect/mapping_helpers/airlock/autoname,
-/obj/effect/mapping_helpers/airlock/access/all/supply/general,
+/obj/effect/mapping_helpers/airlock/access/any/supply/mail_sorting,
 /turf/simulated/floor/plasteel,
 /area/station/supply/office)
 "aKE" = (
@@ -8915,7 +8917,7 @@
 	},
 /obj/machinery/door/airlock/mining/glass,
 /obj/effect/mapping_helpers/airlock/autoname,
-/obj/effect/mapping_helpers/airlock/access/all/supply/general,
+/obj/effect/mapping_helpers/airlock/access/any/supply/mail_sorting,
 /turf/simulated/floor/plasteel,
 /area/station/supply/office)
 "aMd" = (
@@ -9846,7 +9848,7 @@
 	},
 /obj/machinery/door/airlock/maintenance,
 /obj/effect/mapping_helpers/airlock/autoname,
-/obj/effect/mapping_helpers/airlock/access/all/supply/general,
+/obj/effect/mapping_helpers/airlock/access/any/supply/mail_sorting,
 /turf/simulated/floor/plating,
 /area/station/supply/storage)
 "aQs" = (
@@ -10030,8 +10032,8 @@
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/airlock/mining/glass,
 /obj/effect/mapping_helpers/airlock/autoname,
-/obj/effect/mapping_helpers/airlock/access/all/supply/mail_sorting,
 /obj/machinery/door/firedoor,
+/obj/effect/mapping_helpers/airlock/access/any/supply/mail_sorting,
 /turf/simulated/floor/plasteel,
 /area/station/supply/sorting)
 "aRO" = (
@@ -11125,8 +11127,8 @@
 	},
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/structure/fans/tiny,
-/obj/effect/mapping_helpers/airlock/access/all/supply/mining,
 /obj/effect/turf_decal/delivery,
+/obj/effect/mapping_helpers/airlock/access/any/supply/mining,
 /turf/simulated/floor/plasteel,
 /area/station/supply/miningdock)
 "aWI" = (
@@ -11752,7 +11754,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/effect/mapping_helpers/airlock/access/all/supply/general,
 /turf/simulated/floor/plasteel,
 /area/station/supply/office)
 "aZt" = (
@@ -12559,7 +12560,6 @@
 /area/station/supply/miningdock)
 "bcI" = (
 /obj/machinery/door/firedoor,
-/obj/effect/mapping_helpers/airlock/access/all/supply/mining,
 /turf/simulated/floor/plasteel{
 	icon_state = "purplefull"
 	},
@@ -12907,17 +12907,6 @@
 	icon_state = "redfull"
 	},
 /area/station/security/permabrig)
-"bel" = (
-/obj/machinery/door/window/classic/reversed,
-/obj/effect/turf_decal/delivery,
-/obj/effect/mapping_helpers/airlock/windoor/access/any/supply/mining,
-/obj/structure/plasticflaps{
-	opacity = 1
-	},
-/turf/simulated/floor/plasteel{
-	icon_state = "neutralfull"
-	},
-/area/station/supply/miningdock)
 "ben" = (
 /obj/item/storage/box/donkpockets{
 	pixel_x = -4;
@@ -13571,7 +13560,7 @@
 	},
 /obj/machinery/door/airlock/maintenance,
 /obj/effect/mapping_helpers/airlock/autoname,
-/obj/effect/mapping_helpers/airlock/access/all/supply/mining,
+/obj/effect/mapping_helpers/airlock/access/any/supply/mining,
 /turf/simulated/floor/plating,
 /area/station/supply/miningdock)
 "bgU" = (
@@ -15197,7 +15186,6 @@
 	},
 /area/station/supply/miningdock)
 "bnh" = (
-/obj/effect/turf_decal/delivery,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
 	icon_state = "purple"
@@ -19170,9 +19158,9 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/firedoor,
-/obj/effect/mapping_helpers/airlock/access/any/engineering/maintenance,
 /obj/machinery/door/airlock/mining,
 /obj/effect/mapping_helpers/airlock/autoname,
+/obj/effect/mapping_helpers/airlock/access/any/supply/mail_sorting,
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/disposal/east)
 "bDN" = (
@@ -23065,9 +23053,6 @@
 	dir = 1;
 	name = "Cargo Bay Desk"
 	},
-/obj/effect/mapping_helpers/airlock/windoor/access/any/supply/general{
-	dir = 1
-	},
 /obj/effect/turf_decal/delivery,
 /obj/item/desk_bell{
 	anchored = 1;
@@ -23083,6 +23068,9 @@
 	dir = 2;
 	id_tag = "cargodesk";
 	name = "Cargo Desk Shutters"
+	},
+/obj/effect/mapping_helpers/airlock/windoor/access/any/supply/general{
+	dir = 1
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "neutralfull"
@@ -31397,6 +31385,7 @@
 /obj/machinery/door/airlock/maintenance,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/mapping_helpers/airlock/access/any/engineering/maintenance,
+/obj/effect/mapping_helpers/airlock/access/any/supply/general,
 /turf/simulated/floor/plasteel{
 	icon_state = "neutralfull"
 	},
@@ -31708,9 +31697,6 @@
 	dir = 4;
 	name = "Cargo Desk"
 	},
-/obj/effect/mapping_helpers/airlock/windoor/access/any/supply/mail_sorting{
-	dir = 4
-	},
 /obj/item/folder/yellow,
 /obj/item/pen,
 /obj/effect/turf_decal/delivery,
@@ -31721,6 +31707,9 @@
 	},
 /obj/structure/noticeboard{
 	pixel_y = 32
+	},
+/obj/effect/mapping_helpers/airlock/windoor/access/any/supply/mail_sorting{
+	dir = 4
 	},
 /turf/simulated/floor/plasteel,
 /area/station/supply/sorting)
@@ -40583,13 +40572,6 @@
 	icon_state = "darkblue"
 	},
 /area/station/medical/surgery/primary)
-"dlE" = (
-/obj/effect/turf_decal/delivery/partial,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "browncorner"
-	},
-/area/station/hallway/primary/central/north)
 "dlJ" = (
 /obj/effect/decal/cleanable/fungus,
 /turf/simulated/wall,
@@ -47635,7 +47617,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/mining,
 /obj/effect/mapping_helpers/airlock/autoname,
-/obj/effect/mapping_helpers/airlock/access/all/supply/mining,
+/obj/effect/mapping_helpers/airlock/access/any/supply/mining,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -58113,8 +58095,8 @@
 	locked = 1
 	},
 /obj/effect/mapping_helpers/airlock/autoname,
-/obj/effect/mapping_helpers/airlock/access/all/supply/mining,
 /obj/effect/turf_decal/delivery,
+/obj/effect/mapping_helpers/airlock/access/any/supply/mining,
 /turf/simulated/floor/plasteel,
 /area/station/supply/miningdock)
 "hgg" = (
@@ -58651,7 +58633,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/effect/mapping_helpers/airlock/access/any/medical/cmo,
+/obj/effect/mapping_helpers/airlock/access/all/medical/cmo,
+/obj/effect/mapping_helpers/airlock/access/all/command/general,
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -64606,9 +64589,6 @@
 	dir = 1;
 	name = "Cargo Bay Desk"
 	},
-/obj/effect/mapping_helpers/airlock/windoor/access/any/supply/general{
-	dir = 1
-	},
 /obj/effect/turf_decal/delivery,
 /obj/item/desk_bell{
 	anchored = 1;
@@ -64620,6 +64600,9 @@
 	dir = 2;
 	id_tag = "cargodesk";
 	name = "Cargo Desk Shutters"
+	},
+/obj/effect/mapping_helpers/airlock/windoor/access/any/supply/general{
+	dir = 1
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "neutralfull"
@@ -82007,6 +81990,7 @@
 /obj/effect/mapping_helpers/airlock/welded,
 /obj/machinery/door/airlock/mining,
 /obj/effect/mapping_helpers/airlock/autoname,
+/obj/effect/mapping_helpers/airlock/access/any/supply/mail_sorting,
 /turf/simulated/floor/plating,
 /area/station/supply/abandoned_boxroom)
 "oCK" = (
@@ -82349,11 +82333,11 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/effect/mapping_helpers/airlock/access/all/supply/mining,
 /obj/machinery/door/airlock/multi_tile/supply/glass{
 	dir = 1
 	},
 /obj/effect/mapping_helpers/airlock/autoname,
+/obj/effect/mapping_helpers/airlock/access/any/supply/mining,
 /turf/simulated/floor/plasteel{
 	icon_state = "purplefull"
 	},
@@ -87291,9 +87275,9 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/effect/mapping_helpers/airlock/access/all/supply/general,
 /obj/machinery/door/airlock/mining,
 /obj/effect/mapping_helpers/airlock/autoname,
+/obj/effect/mapping_helpers/airlock/access/any/supply/mail_sorting,
 /turf/simulated/floor/plasteel,
 /area/station/supply/storage)
 "qmT" = (
@@ -95769,7 +95753,6 @@
 "sRJ" = (
 /obj/machinery/door/airlock/mining/glass,
 /obj/effect/mapping_helpers/airlock/autoname,
-/obj/effect/mapping_helpers/airlock/access/all/supply/mail_sorting,
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
@@ -95781,6 +95764,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/effect/mapping_helpers/airlock/access/any/supply/mail_sorting,
 /turf/simulated/floor/plasteel,
 /area/station/supply/sorting)
 "sRU" = (
@@ -101353,9 +101337,9 @@
 /area/station/maintenance/medmaint)
 "uKC" = (
 /obj/machinery/door/firedoor,
-/obj/effect/mapping_helpers/airlock/access/all/supply/general,
 /obj/machinery/door/airlock/multi_tile/supply/glass,
 /obj/effect/mapping_helpers/airlock/autoname,
+/obj/effect/mapping_helpers/airlock/access/any/supply/general,
 /turf/simulated/floor/plasteel,
 /area/station/supply/office)
 "uKF" = (
@@ -105527,7 +105511,6 @@
 	icon_state = "1-2"
 	},
 /obj/effect/mapping_helpers/airlock/access/any/medical/genetics,
-/obj/effect/mapping_helpers/airlock/access/any/medical/general,
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -107719,6 +107702,7 @@
 /obj/machinery/door/airlock/maintenance,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/mapping_helpers/airlock/access/any/engineering/maintenance,
+/obj/effect/mapping_helpers/airlock/access/any/supply/general,
 /turf/simulated/floor/plating,
 /area/station/maintenance/disposal/west)
 "wMt" = (
@@ -108165,7 +108149,8 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/effect/mapping_helpers/airlock/access/any/medical/cmo,
+/obj/effect/mapping_helpers/airlock/access/all/medical/cmo,
+/obj/effect/mapping_helpers/airlock/access/all/command/general,
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -109234,7 +109219,7 @@
 /obj/machinery/door/airlock/science,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/mapping_helpers/airlock/access/any/medical/genetics,
-/obj/effect/mapping_helpers/airlock/access/any/medical/general,
+/obj/effect/mapping_helpers/airlock/access/any/medical/morgue,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -112375,13 +112360,13 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/mining,
 /obj/effect/mapping_helpers/airlock/autoname,
-/obj/effect/mapping_helpers/airlock/access/all/supply/mining,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/effect/mapping_helpers/airlock/access/any/supply/mining,
 /turf/simulated/floor/plasteel{
 	icon_state = "purplefull"
 	},
@@ -153841,8 +153826,8 @@ bgS
 wGq
 wXc
 bnh
-bel
-dlE
+bbi
+bov
 hMM
 spq
 wkq
