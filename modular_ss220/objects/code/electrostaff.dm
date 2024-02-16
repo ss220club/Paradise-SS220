@@ -34,6 +34,7 @@
 
 /obj/item/melee/baton/electrostaff/Initialize(mapload)
 	current_skin = "_orange"
+	AddComponent(/datum/component/parry, _stamina_constant = 2, _stamina_coefficient = 0.5, _parryable_attack_types = NON_PROJECTILE_ATTACKS)
 	AddComponent(/datum/component/two_handed, force_unwielded = force / 2, force_wielded = force, wield_callback = CALLBACK(src, PROC_REF(on_wield)), unwield_callback = CALLBACK(src, PROC_REF(on_unwield)))
 	options["Оранжевое свечение"] = "_orange"
 	options["Красное свечение"] = "_red"
