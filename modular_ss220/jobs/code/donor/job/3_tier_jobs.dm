@@ -238,6 +238,7 @@
 	id = /obj/item/card/id/guard
 	backpack_contents = list(
 		/obj/item/clothing/suit/jacket/leather = 1,
+		/obj/item/reagent_containers/spray/pepper = 1,
 		)
 
 
