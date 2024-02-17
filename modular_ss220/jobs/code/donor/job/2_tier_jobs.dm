@@ -423,9 +423,6 @@
 					uniform = /obj/item/clothing/under/dress/redeveninggown
 
 			if("Художник", "Творец", "Искусствовед", "Пейзажист", "Фотореалист", "Перфоманс-Артист")
-				important_information = "Ваша должность нацелена на свободный РП-отыгрыш и не разрешает нарушать правила сервера. \
-				\nВы ХУДОЖНИК. Данная роль нацелена на демонстрацию вашей тонкой натуры. Найдите себе красильщик полов, создайте искусство! \
-				Возможно вы захотите наложить инсталляцию посреди мостика?"
 				uniform = /obj/item/clothing/under/misc/sl_suit
 				suit = /obj/item/clothing/suit/apron
 				shoes = /obj/item/clothing/shoes/white

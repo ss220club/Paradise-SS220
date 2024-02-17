@@ -54,10 +54,6 @@
 	if(H.mind && H.mind.role_alt_title)
 		switch(H.mind.role_alt_title)
 			if("Butler", "Дворецкий")
-				important_information = "Ваша должность нацелена на свободный РП-отыгрыш и не разрешает нарушать правила сервера. \
-				\nВы ДВОРЕЦКИЙ. Данная роль нацелена на обеспечение глав в удовлетворении физических потребностей, а мостик в чистоте."
-				relate_job = "Vip"
-				access = list(ACCESS_MAINT_TUNNELS, ACCESS_LIBRARY, ACCESS_HEADS, ACCESS_EVA, ACCESS_LAWYER)
 				uniform = /obj/item/clothing/under/rank/procedure/lawyer/black
 				shoes = /obj/item/clothing/shoes/laceup
 				head = /obj/item/clothing/head/beaverhat
@@ -80,10 +76,6 @@
 					)
 
 			if("Maid", "Горничная")
-				important_information = "Ваша должность нацелена на свободный РП-отыгрыш и не разрешает нарушать правила сервера. \
-				\nВы ГОРНИЧНАЯ. Данная роль нацелена на обеспечение глав в удовлетворении физических потребностей, а мостик в чистоте."
-				relate_job = "Vip"
-				access = list(ACCESS_MAINT_TUNNELS, ACCESS_LIBRARY, ACCESS_HEADS, ACCESS_EVA, ACCESS_LAWYER)
 				uniform = /obj/item/clothing/under/costume/janimaid
 				shoes = /obj/item/clothing/shoes/laceup
 				gloves = /obj/item/clothing/gloves/color/white
