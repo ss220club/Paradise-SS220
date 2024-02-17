@@ -2,8 +2,8 @@
 	title = "Adjutant"
 	department_flag = JOBCAT_MEDSCI
 	flag = JOB_ADJUTANT
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 3
+	spawn_positions = 3
 	ru_title = "Адъютант"
 	alt_titles = list("Адъютант", "Butler", "Дворецкий", "Maid", "Горничная")
 	relate_job = "Internal Affairs Agent"
