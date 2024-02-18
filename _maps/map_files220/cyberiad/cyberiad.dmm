@@ -24626,7 +24626,7 @@
 /obj/machinery/access_button{
 	autolink_id = "eng_atmos_btn_ext";
 	pixel_y = 24;
-	req_access_txt = "10;13"
+	req_access_txt = "13"
 	},
 /obj/effect/mapping_helpers/airlock/access/any/engineering/external,
 /turf/simulated/floor/plating,
@@ -38797,7 +38797,7 @@
 /obj/machinery/access_button{
 	autolink_id = "eng_atmos_btn_int";
 	pixel_y = 24;
-	req_access_txt = "10;13"
+	req_access_txt = "13"
 	},
 /obj/effect/mapping_helpers/airlock/access/any/engineering/external,
 /turf/simulated/floor/plating,
@@ -58044,6 +58044,11 @@
 	},
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/mapping_helpers/airlock/access/any/engineering/external,
+/obj/machinery/access_button{
+	autolink_id = "fssolar_btn_ext";
+	pixel_x = -24;
+	req_one_access_txt = "10;13"
+	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/auxsolarstarboard)
 "iip" = (
@@ -65772,20 +65777,18 @@
 	},
 /area/station/engineering/equipmentstorage)
 "lgb" = (
-/obj/machinery/access_button{
-	autolink_id = "fssolar_btn_ext";
-	pixel_x = -25;
-	pixel_y = -25;
-	req_one_access_txt = "10;13"
+/obj/machinery/door/airlock/external{
+	hackProof = 1;
+	id_tag = "emergency_home";
+	locked = 1
 	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/structure/fans/tiny,
+/obj/effect/mapping_helpers/airlock/access/any/security/doors,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
 	},
-/obj/structure/lattice/catwalk,
-/turf/space,
-/area/station/engineering/solar/auxstarboard)
+/area/station/hallway/secondary/exit)
 "lgO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -74255,7 +74258,7 @@
 /obj/machinery/access_button{
 	autolink_id = "eng_sm_btn_ext";
 	pixel_y = 24;
-	req_access_txt = "10;13"
+	req_access_txt = "13"
 	},
 /turf/simulated/floor/plating,
 /area/station/engineering/ai_transit_tube)
@@ -74333,7 +74336,7 @@
 /obj/machinery/access_button{
 	autolink_id = "eng_sm_btn_int";
 	pixel_y = 24;
-	req_access_txt = "10;13"
+	req_access_txt = "13"
 	},
 /turf/simulated/floor/plating,
 /area/station/engineering/ai_transit_tube)
@@ -86414,12 +86417,6 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
-/obj/machinery/access_button{
-	autolink_id = "fssolar_btn_int";
-	pixel_x = 25;
-	pixel_y = 25;
-	req_one_access_txt = "13"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5
 	},
@@ -89977,6 +89974,11 @@
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/effect/mapping_helpers/airlock/access/any/engineering/external,
+/obj/machinery/access_button{
+	autolink_id = "fssolar_btn_int";
+	pixel_x = 24;
+	req_one_access_txt = "13"
+	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/auxsolarstarboard)
 "tTf" = (
@@ -144294,7 +144296,7 @@ aqZ
 azU
 awQ
 axq
-lgb
+axq
 iih
 utp
 tSW
@@ -158216,7 +158218,7 @@ bEG
 bEG
 bEG
 bEG
-xir
+lgb
 bjR
 xir
 bjR
