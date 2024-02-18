@@ -161,6 +161,7 @@
 	reqs = list(/obj/item/melee/baton = 2,
 				/obj/item/stock_parts/cell/high = 1,
 				/obj/item/stack/cable_coil = 5,
+				/obj/item/assembly/signaler/anomaly/flux = 1,
 				/obj/item/weaponcrafting/gunkit/electrostaff = 1)
 	time = 10 SECONDS
 	category = CAT_WEAPONRY
