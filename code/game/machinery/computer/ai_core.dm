@@ -168,7 +168,7 @@
 			log_game("[key_name(usr)] has completed an AI core in [R]: [COORD(loc)].")
 			to_chat(user, "<span class='notice'>Вы подключаете монитор.</span>")
 			if(!brain)
-				var/open_for_latejoin = alert(user, "Вы хотите, чтобы это ядро было доступно из лобби игры?", "Latejoin", "Да", "Да", "Нет") == "Да"
+				var/open_for_latejoin = tgui_alert(user, "Вы хотите, чтобы это ядро было доступно из лобби игры?", "Latejoin", list("Да", "Нет")) == "Да"
 				var/obj/structure/AIcore/deactivated/D = new(loc)
 				if(open_for_latejoin)
 					GLOB.empty_playable_ai_cores += D

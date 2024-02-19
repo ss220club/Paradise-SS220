@@ -69,29 +69,29 @@
 				owner.add_supplied_law(supplied_law_position, supplied_law)
 
 		if("change_zeroth_law")
-			var/new_law = sanitize(input("Введите новый Нулевой закон. Оставьте поле пустым для отмены изменений.", "Смена закона", zeroth_law))
+			var/new_law = tgui_input_text(src, "Введите новый Нулевой закон. Оставьте поле пустым для отмены изменений.", "Смена закона", zeroth_law)
 			if(new_law && new_law != zeroth_law && (!..()))
 				zeroth_law = new_law
 
 		if("change_ion_law")
-			var/new_law = sanitize(input("Введите новый ионный закон. Оставьте поле пустым для отмены изменений.", "Смена закона", ion_law))
+			var/new_law = tgui_input_text(src, "Введите новый ионный закон. Оставьте поле пустым для отмены изменений.", "Смена закона", ion_law)
 			if(new_law && new_law != ion_law && (!..()))
 				ion_law = new_law
 
 		if("change_inherent_law")
-			var/new_law = sanitize(input("Введите новый основной закон. Оставьте поле пустым для отмены изменений.", "Смена закона", inherent_law))
+			var/new_law = tgui_input_text(src, "Введите новый основной закон. Оставьте поле пустым для отмены изменений.", "Смена закона", inherent_law)
 			if(new_law && new_law != inherent_law && (!..()))
 				inherent_law = new_law
 
 		if("change_supplied_law")
-			var/new_law = sanitize(input("Введите новый дополнительный закон. Оставьте поле пустым для отмены изменений.", "Смена закона", supplied_law))
+			var/new_law = tgui_input_text(src, "Введите новый дополнительный закон. Оставьте поле пустым для отмены изменений.", "Смена закона", supplied_law)
 			if(new_law && new_law != supplied_law && (!..()))
 				supplied_law = new_law
 
 		if("change_supplied_law_position")
-			var/new_position = input(usr, "Введите позицию от 1 до [MAX_SUPPLIED_LAW_NUMBER] включительно. Дополнительные законы с такой же позицией, что и основные, не будут проговариваться.", "Позиция закона", supplied_law_position) as num|null
+			var/new_position = tgui_input_number(usr, "Введите позицию от 1 до [MAX_SUPPLIED_LAW_NUMBER] включительно. Дополнительные законы с такой же позицией, что и основные, не будут проговариваться.", "Позиция закона", supplied_law_position, MAX_SUPPLIED_LAW_NUMBER, 1)
 			if(isnum(new_position) && (!..()))
-				supplied_law_position = clamp(new_position, 1, MAX_SUPPLIED_LAW_NUMBER)
+				supplied_law_position = new_position
 
 		if("edit_law")
 			if(is_malf(usr))
@@ -101,7 +101,7 @@
 					to_chat(usr, "<span class='warning'>Вы не можете изменить данный закон.</span>")
 					return
 				if(AL)
-					var/new_law = sanitize(input(usr, "Введите новый закон. Оставьте поле пустым для отмены изменений.", "Смена закона", AL.law))
+					var/new_law = tgui_input_text(usr, "Введите новый закон. Оставьте поле пустым для отмены изменений.", "Смена закона", AL.law)
 					if(new_law && new_law != AL.law && is_malf(usr) && (!..()))
 						log_and_message_admins("has changed a law of [owner] from '[AL.law]' to '[new_law]'")
 						AL.law = new_law

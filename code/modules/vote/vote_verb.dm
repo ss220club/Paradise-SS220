@@ -28,7 +28,7 @@
 	for(var/vtype in vote_types)
 		votemap["[vtype]"] = vtype
 
-	var/choice = input(usr, "Выбрать тип голосования", "Голосование") as null|anything in vote_types
+	var/choice = tgui_input_list(usr, "Выбрать тип голосования", "Голосование", vote_types)
 
 	if(choice == null)
 		return
@@ -40,18 +40,18 @@
 		return
 
 	// Its custom, lets ask
-	var/question = input(usr, "За что голосуем?") as text|null
+	var/question = tgui_input_text(usr, "За что голосуем?", "Create Vote", encode = FALSE)
 	if(!question)
 		return
 
 	var/list/choices = list()
 	for(var/i in 1 to 10)
-		var/option = capitalize(input(usr, "Впишите опцию или нажмите отмену для завершения") as text|null)
+		var/option = tgui_input_text(usr, "Впишите опцию или нажмите отмену для завершения", "Create Vote", encode = FALSE)
 		if(!option || !usr.client)
 			break
 		choices |= option
 
-	var/c2 = alert(usr, "Показать подсчеты во время голосования?", "Голоса", "Да", "Нет")
+	var/c2 = tgui_alert(usr, "Показать подсчеты во время голосования?", "Голоса", list("Да", "Нет"))
 	var/c3 = input(usr, "Выберите тип расчета результата", "Голосование", VOTE_RESULT_TYPE_MAJORITY) as anything in list(VOTE_RESULT_TYPE_MAJORITY)
 
 	var/datum/vote/V = new /datum/vote(usr.ckey, question, choices, TRUE)

@@ -3,6 +3,10 @@
 	name = "Зал Суда"
 	icon_state = "courtroom"
 
+/area/station/legal/courtroom/gallery
+	name = "\improper Courtroom Gallery"
+	icon_state = "courtroom"
+
 /area/station/legal/lawoffice
 	name = "Юридический Отдел"
 	icon_state = "law"

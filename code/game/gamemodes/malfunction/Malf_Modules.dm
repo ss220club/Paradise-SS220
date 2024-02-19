@@ -237,7 +237,7 @@
 	if(!istype(T) || !is_station_level(T.z))
 		to_chat(owner, "<span class='warning'>Вы не можете активировать УСД пока находитесь вне станции!</span>")
 		return
-	if(alert(owner, "Отправить сигнал на взведение? (true = взвести, false = отмена)", "purge_all_life()", "confirm = TRUE;", "confirm = FALSE;") != "confirm = TRUE;")
+	if(tgui_alert(owner, "Отправить сигнал на взведение? (true = взвести, false = отмена)", "purge_all_life()", list("confirm = TRUE;", "confirm = FALSE;")) != "confirm = TRUE;")
 		return
 	if(active)
 		return //prevent the AI from activating an already active doomsday
@@ -582,7 +582,7 @@
 	if(!owner_AI.can_place_transformer(src))
 		return
 	active = TRUE
-	if(alert(owner, "Вы уверены, что хотите поставить машину тут?", "Вы уверены?", "Да", "Нет") == "No")
+	if(tgui_alert(owner, "Вы уверены, что хотите поставить машину тут?", "Вы уверены?", list("Да", "Нет")) == "No")
 		active = FALSE
 		return
 	if(!owner_AI.can_place_transformer(src))

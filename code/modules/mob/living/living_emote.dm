@@ -416,9 +416,9 @@
 		to_chat(user, "<span class='boldwarning'>Отправка IC сообщение недоступна (muted).</span>")
 		return FALSE
 	else if(!params)
-		custom_emote = copytext(sanitize(input("Выберите эмоцию для отображения.") as text|null), 1, MAX_MESSAGE_LEN)
+		custom_emote = tgui_input_text(user, "Выберите эмоцию для отображения.", "Custom Emote")
 		if(custom_emote && !check_invalid(user, custom_emote))
-			var/type = input("Эта эмоция видима или слышима?") as null|anything in list("Видима", "Слышима")
+			var/type = tgui_alert(user, "Эта эмоция видима или слышима?", "Custom Emote", list("Видима", "Слышима"))
 			switch(type)
 				if("Видима")
 					custom_emote_type = EMOTE_VISIBLE

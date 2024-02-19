@@ -25,8 +25,6 @@
 	return ..()
 
 /mob/new_player/verb/new_player_panel()
-	set src = usr
-
 	if(client.tos_consent || GLOB.configuration.system.external_tos_handler)
 		new_player_panel_proc()
 	else
@@ -183,9 +181,9 @@
 			to_chat(usr, "<span class='warning'>Вы должны дождаться окончания запуска сервера, прежде чем сможете присоединиться к нему!</span>")
 			return FALSE
 
-		if(alert(src,"Вы уверены, что хотите наблюдать? После этого Вы не сможете присоединиться к раунду!","Настройка игрока","Да","Нет") == "Да")
+		if(alert(usr, "Вы уверены, что хотите наблюдать? После этого Вы не сможете присоединиться к раунду!", Наблюдать", "Да", "Нет") == "Да")
 			if(!client)
-				return 1
+				return TRUE
 			var/mob/dead/observer/observer = new(src)
 			src << browse(null, "window=playersetup")
 			spawning = TRUE

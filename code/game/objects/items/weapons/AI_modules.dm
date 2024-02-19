@@ -116,8 +116,10 @@ AI MODULES
 
 /obj/item/aiModule/safeguard/attack_self(mob/user as mob)
 	..()
-	var/targName = stripped_input(usr, "Пожалуйста, введите имя человека для охраны.", "Кого охранять?", user.name)
-	targetName = targName
+	var/new_targetName = tgui_input_text(user, "Пожалуйста, введите имя человека для охраны.", "Кого охранять?", user.name)
+	if(!new_targetName)
+		return
+	targetName = new_targetName
 	desc = "Модуль ИИ 'Охрана': 'Охраняйте [targetName]. Лица, угрожающие [targetName], более не должны считаться членами экипажа и должны быть уничтожены.'"
 
 /obj/item/aiModule/safeguard/install(obj/machinery/computer/C)
@@ -143,8 +145,10 @@ AI MODULES
 
 /obj/item/aiModule/oneCrewMember/attack_self(mob/user as mob)
 	..()
-	var/targName = stripped_input(usr, "Пожалуйста, введите имя члена экипажа.", "Кто?", user.real_name)
-	targetName = targName
+	var/new_targetName = tgui_input_text(usr, "Пожалуйста, введите имя члена экипажа.", "Кто?", user.real_name)
+	if(!new_targetName)
+		return
+	targetName = new_targetName
 	desc = "Модуль ИИ 'One Crew': 'Только [targetName] является экипажем.'"
 
 /obj/item/aiModule/oneCrewMember/install(obj/machinery/computer/C)
@@ -208,12 +212,15 @@ AI MODULES
 
 /obj/item/aiModule/freeform/attack_self(mob/user as mob)
 	..()
-	var/new_lawpos = input("Введите приоритет вашему закону. Написанные законы могут иметь проритет только 15 и выше.", "Приоритет закона (15+)", lawpos) as num
-	if(new_lawpos < MIN_SUPPLIED_LAW_NUMBER)	return
-	lawpos = min(new_lawpos, MAX_SUPPLIED_LAW_NUMBER)
-	var/newlaw = ""
-	var/targName = sanitize(copytext_char(input(usr, "Напишите закон ИИ.", "Ввод закона во Freeform.", newlaw),1,MAX_MESSAGE_LEN))	// SS220 EDIT - ORIGINAL: copytext
-	newFreeFormLaw = targName
+	var/new_lawpos = tgui_input_number(user, "Введите приоритет вашему закону. Написанные законы могут иметь проритет только 15 и выше.", "Приоритет закона", lawpos, MAX_SUPPLIED_LAW_NUMBER, MIN_SUPPLIED_LAW_NUMBER)
+	if(!new_lawpos || new_lawpos == lawpos)
+		return
+	lawpos = new_lawpos
+
+	var/new_targetName = tgui_input_text(user, "Напишите закон ИИ.", "Ввод закона во Freeform.")
+	if(!new_targetName)
+		return
+	newFreeFormLaw = new_targetName
 	desc = "Модуль ИИ Freeform: ([lawpos]) '[newFreeFormLaw]'"
 
 /obj/item/aiModule/freeform/addAdditionalLaws(mob/living/silicon/ai/target, mob/sender)
@@ -406,10 +413,11 @@ AI MODULES
 
 /obj/item/aiModule/freeformcore/attack_self(mob/user as mob)
 	..()
-	var/newlaw = ""
-	var/targName = stripped_input(usr, "Пожалуйста, введите новый основной закон для ИИ.", "Форма ввода закона", newlaw)
-	newFreeFormLaw = targName
-	desc = "Модуль ядра ИИ 'Freeform':  '[newFreeFormLaw]'"
+	var/new_targetName = tgui_input_text(usr, "Пожалуйста, введите новый основной закон для ИИ.", "Форма ввода закона")
+	if(!new_targetName)
+		return
+	newFreeFormLaw = new_targetName
+	desc = "Модуль ядра ИИ 'Freeform': '[newFreeFormLaw]'"
 
 /obj/item/aiModule/freeformcore/addAdditionalLaws(mob/living/silicon/ai/target, mob/sender)
 	..()
@@ -433,10 +441,11 @@ AI MODULES
 
 /obj/item/aiModule/syndicate/attack_self(mob/user as mob)
 	..()
-	var/newlaw = ""
-	var/targName = stripped_input(usr, "Введите новый закон для ИИ.", "Форма ввода закона", newlaw,MAX_MESSAGE_LEN)
-	newFreeFormLaw = targName
-	desc = "Взломанный модуль ИИ с законом:  '[newFreeFormLaw]'"
+	var/new_targetName = tgui_input_text(usr, "Введите новый закон для ИИ.", "Форма ввода закона", max_length = MAX_MESSAGE_LEN)
+	if(!new_targetName)
+		return
+	newFreeFormLaw = new_targetName
+	desc = "Взломанный модуль ИИ с законом: '[newFreeFormLaw]'"
 
 /obj/item/aiModule/syndicate/transmitInstructions(mob/living/silicon/ai/target, mob/sender)
 	//	..()    //We don't want this module reporting to the AI who dun it. --NEO

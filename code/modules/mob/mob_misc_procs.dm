@@ -456,7 +456,7 @@
 	if(IsSleeping())
 		to_chat(src, "<span class='notice'>You are already sleeping.</span>")
 		return
-	if(alert(src, "You sure you want to sleep for a while?", "Sleep", "Yes", "No") == "Yes")
+	if(tgui_alert(src, "You sure you want to sleep for a while?", "Sleep", list("Yes", "No")) == "Yes")
 		SetSleeping(40 SECONDS, voluntary = TRUE) //Short nap
 
 /mob/living/verb/rest()
@@ -660,11 +660,11 @@
 
 		for(var/i=1,i<=3,i++)	//we get 3 attempts to pick a suitable name.
 			if(force)
-				newname = clean_input("Выберите новое имя.", "Смена имени", oldname, src)
+				newname = tgui_input_text(src, "Выберите новое имя.", "Смена имени", oldname)
 			else
-				newname = clean_input("Вы - [role]. Хотели бы вы сменить своё имя? (У вас есть 3 минуты на выбор имени.)", "Смена имени", oldname, src)
+				newname = tgui_input_text(src, "Вы - [role]. Хотели бы вы сменить своё имя? (У вас есть 3 минуты на выбор имени.)", "Смена имени", oldname, timeout = 3 MINUTES)
 			if(((world.time - time_passed) > 1800) && !force)
-				alert(src, "К сожалению, прошло более трёх минут для выбора имени. Если вы робот, используйте верб Namepick; в иных случаях, adminhelp.", "Смена имени")
+				tgui_alert(src, "К сожалению, прошло более трёх минут для выбора имени. Если вы робот, используйте верб Namepick; в иных случаях, adminhelp.", "Смена имени")
 				return	//took too long
 			newname = reject_bad_name(newname,allow_numbers)	//returns null if the name doesn't meet some basic requirements. Tidies up a few other things like bad-characters.
 

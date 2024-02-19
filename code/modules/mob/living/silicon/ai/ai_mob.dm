@@ -571,7 +571,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 		to_chat(src, "<span class='warning'>Please allow one minute to pass between announcements.</span>")
 		return
 
-	var/input = input(usr, "Напишите сообщение для экипажа.", "Оповещение ИИ") as message|null
+	var/input = tgui_input_text(usr, "Напишите сообщение для экипажа.", "Оповещение ИИ", multiline = TRUE, encode = FALSE)
 	if(!input)
 		return
 
@@ -588,7 +588,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 	if(check_unable(AI_CHECK_WIRELESS))
 		return
 
-	var/input = input("Пожалуйста, напишите причину для вызова шаттла.", "Причина вызова Шаттла.") as null|message
+	var/input = tgui_input_text(src, "Пожалуйста, напишите причину для вызова шаттла.", "Причина вызова Шаттла", multiline = TRUE, encode = FALSE)
 	if(!input || stat)
 		return
 
@@ -606,7 +606,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 	if(check_unable(AI_CHECK_WIRELESS))
 		return
 
-	var/confirm = alert("Вы уверены, что хотите отозвать шаттл?", "Потверждение отзыва шаттла", "Да", "Нет")
+	var/confirm = tgui_alert(src, "Вы уверены, что хотите отозвать шаттл?", "Потверждение отзыва шаттла", list("Да", "Нет"))
 
 	if(check_unable(AI_CHECK_WIRELESS))
 		return
@@ -1007,7 +1007,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 			custom_hologram = TRUE
 
 	var/input
-	switch(alert("Хотите выбрать голограмму на основе члена экипажа, животного или переключиться на уникальный аватар?",,"Crew Member","Unique","Animal"))
+	switch(tgui_alert(usr, "Хотите выбрать голограмму на основе члена экипажа, животного или переключиться на уникальный аватар?", "Change Hologram", list("Crew Member", "Unique", "Animal")))
 		if("Crew Member")
 			var/personnel_list[] = list()
 
@@ -1234,13 +1234,12 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 	set desc = "Меняет передоваемое сообщение при прибытии нового члена экипажа на станцию."
 	set category = "Команды ИИ"
 
-	var/newmsg = clean_input("Какое сообщение вы хотите поставить? Список переменных: $name, $rank, $species, $gender, $age", "Смена сообщения прибытия", arrivalmsg)
-	if(!newmsg)
+	var/newmsg = tgui_input_text(usr, "Какое сообщение вы хотите поставить? Список переменных: $name, $rank, $species, $gender, $age", "Смена сообщения прибытия", arrivalmsg, encode = FALSE)
+	if(!newmsg || newmsg == arrivalmsg)
 		return
-	newmsg = html_decode(newmsg) // This feels a bit redundant, but sanitisation is (probably) important.
-	if(newmsg != arrivalmsg)
-		arrivalmsg = newmsg
-		to_chat(usr, "Сообщение о прибытии было успешно изменено.")
+
+	arrivalmsg = newmsg
+	to_chat(usr, "Сообщение о прибытии было успешно изменено.")
 
 // Handled camera lighting, when toggled.
 // It will get the nearest camera from the eyeobj, lighting it.
@@ -1444,7 +1443,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 				A = D
 
 		if(istype(A))
-			switch(alert(src, "Вы хотите открыть \ [A] для [target]?", "Doorknob_v2a.exe", "Да", "Нет"))
+			switch(tgui_alert(src, "Вы хотите открыть \ [A] для [target]?", "Doorknob_v2a.exe", list("Да", "Нет")))
 				if("Да")
 					if(!A.density)
 						to_chat(src, "<span class='notice'>Шлюз в [A] уже был открыт .</span>")
