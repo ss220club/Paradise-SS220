@@ -33,6 +33,19 @@
 	visible_message(span_danger("[devourer] съедает [animal]!"))
 	if(animal.mind)
 		add_attack_logs(devourer, animal, "Devoured")
+
+	if(istype(animal, /mob/living/simple_animal/hostile/poison/bees)) // Eating a bee will end up damaging you
+		var/obj/item/organ/external/mouth = devourer.get_organ(BODY_ZONE_PRECISE_MOUTH)
+		var/mob/living/simple_animal/hostile/poison/bees/bee = animal
+		mouth.receive_damage(1)
+		if(bee.beegent)
+			bee.beegent.reaction_mob(devourer, REAGENT_INGEST)
+			devourer.reagents.add_reagent(bee.beegent.id, rand(1, 5))
+		else
+			devourer.reagents.add_reagent("spidertoxin", 5)
+		visible_message(span_warning("Рот [devourer] опух."))
+		devourer.visible_message(span_danger("Ваш рот ужален, он теперь опухает!"))
+
 	animal.forceMove(devourer)
 	LAZYADD(devourer.stomach_contents, animal)
 	icon = null // workaround to hide cringy holder lying on the floor for 1 sec
@@ -92,6 +105,14 @@
 	origin_tech = "materials=3;programming=4;engineering=4"
 	slot_flags = SLOT_FLAG_HEAD | SLOT_FLAG_EARS
 
+/obj/item/holder/bee
+	name = "bee"
+	desc = "Buzzy buzzy bee, stingy sti- Ouch!"
+	icon = 'icons/mob/bees.dmi'
+	icon_state = "queen_item"
+	origin_tech = "biotech=5"
+	slot_flags = null
+
 /obj/item/holder/bunny
 	slot_flags = SLOT_FLAG_HEAD | SLOT_FLAG_EARS
 
@@ -100,6 +121,7 @@
 	desc = "A colorful butterfly, how'd it get up here?"
 	icon = 'icons/mob/animal.dmi'
 	icon_state = "butterfly"
+	origin_tech = "biotech=4"
 	slot_flags = SLOT_FLAG_HEAD | SLOT_FLAG_EARS
 
 /obj/item/holder/mouse
