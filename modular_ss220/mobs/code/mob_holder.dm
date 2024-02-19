@@ -83,25 +83,31 @@
 	desc = "It's a tiny plant critter."
 	icon_state = "nymph"
 	origin_tech = "biotech=5"
-	slot_flags = SLOT_FLAG_HEAD|SLOT_FLAG_EARS
-	icon = 'icons/mob/animal.dmi'
+	icon = 'icons/mob/monkey.dmi' // why...
 
 /obj/item/holder/pai
 	name = "pAI"
 	desc = "It's a little robot."
 	icon_state = "pai"
 	origin_tech = "materials=3;programming=4;engineering=4"
-	slot_flags = SLOT_FLAG_HEAD|SLOT_FLAG_EARS
+	slot_flags = SLOT_FLAG_HEAD | SLOT_FLAG_EARS
 
 /obj/item/holder/bunny
-	slot_flags = SLOT_FLAG_HEAD|SLOT_FLAG_EARS
+	slot_flags = SLOT_FLAG_HEAD | SLOT_FLAG_EARS
+
+/obj/item/holder/butterfly
+	name = "butterfly"
+	desc = "A colorful butterfly, how'd it get up here?"
+	icon = 'icons/mob/animal.dmi'
+	icon_state = "butterfly"
+	slot_flags = SLOT_FLAG_HEAD | SLOT_FLAG_EARS
 
 /obj/item/holder/mouse
 	name = "mouse"
 	desc = "It's a small, disease-ridden rodent."
 	icon = 'modular_ss220/mobs/icons/mob/animal.dmi'
 	icon_state = "mouse_gray"
-	slot_flags = SLOT_FLAG_HEAD|SLOT_FLAG_EARS
+	slot_flags = SLOT_FLAG_HEAD | SLOT_FLAG_EARS
 
 /obj/item/holder/drone
 	name = "maintenance drone"
@@ -294,13 +300,13 @@
 /obj/item/holder/lizard
 	name = "pet"
 	desc = "It's a pet"
-	icon = 'modular_ss220/mobs/icons/mob/animal.dmi'
+	icon = 'icons/mob/animal.dmi'
 	icon_state = "lizard"
 
 /obj/item/holder/chick
 	name = "pet"
 	desc = "It's a small chicken"
-	icon = 'modular_ss220/mobs/icons/mob/animal.dmi'
+	icon = 'icons/mob/animal.dmi'
 	icon_state = "chick"
 
 /obj/item/holder/chicken
