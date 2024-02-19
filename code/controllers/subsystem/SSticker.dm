@@ -535,7 +535,7 @@ SUBSYSTEM_DEF(ticker)
 			m = pick(memetips)
 
 	if(m)
-		to_chat(world, "<span class='purple'><b>Tip of the round: </b>[html_encode(m)]</span>")
+		to_chat(world, "<span class='purple'><b>Подсказка раунда: </b>[html_encode(m)]</span>")
 
 /datum/controller/subsystem/ticker/proc/declare_completion()
 	GLOB.nologevent = TRUE //end of round murder and shenanigans are legal; there's no need to jam up attack logs past this point.
@@ -546,8 +546,8 @@ SUBSYSTEM_DEF(ticker)
 	var/station_integrity = min(round( 100.0 *  GLOB.start_state.score(ending_station_state), 0.1), 100.0)
 
 	var/list/end_of_round_info = list()
-	end_of_round_info += "<BR>[TAB]Shift Duration: <B>[round(ROUND_TIME / 36000)]:[add_zero("[ROUND_TIME / 600 % 60]", 2)]:[ROUND_TIME / 100 % 6][ROUND_TIME / 100 % 10]</B>"
-	end_of_round_info += "<BR>[TAB]Station Integrity: <B>[mode.station_was_nuked ? "<font color='red'>Destroyed</font>" : "[station_integrity]%"]</B>"
+	end_of_round_info += "<BR>[TAB]Длительность смены: <B>[round(ROUND_TIME / 36000)]:[add_zero("[ROUND_TIME / 600 % 60]", 2)]:[ROUND_TIME / 100 % 6][ROUND_TIME / 100 % 10]</B>"
+	end_of_round_info += "<BR>[TAB]Целостность станции: <B>[mode.station_was_nuked ? "<font color='red'>Уничтожена</font>" : "[station_integrity]%"]</B>"
 	end_of_round_info += "<BR>"
 
 	//Silicon laws report
@@ -555,9 +555,9 @@ SUBSYSTEM_DEF(ticker)
 		var/ai_ckey = safe_get_ckey(aiPlayer)
 
 		if(aiPlayer.stat != DEAD)
-			end_of_round_info += "<b>[aiPlayer.name] (Played by: [ai_ckey])'s laws at the end of the game were:</b>"
+			end_of_round_info += "<b>Законы [aiPlayer.name] (Игрок: [ai_ckey]) к концу игры были:</b>"
 		else
-			end_of_round_info += "<b>[aiPlayer.name] (Played by: [ai_ckey])'s laws when it was deactivated were:</b>"
+			end_of_round_info += "<b>В момент деактивации [aiPlayer.name] (Игрок: [ai_ckey]), его законы были следующими:</b>"
 		aiPlayer.laws_sanity_check()
 		for(var/datum/ai_law/law as anything in aiPlayer.laws.sorted_laws)
 			if(law == aiPlayer.laws.zeroth_law)
@@ -566,10 +566,10 @@ SUBSYSTEM_DEF(ticker)
 				end_of_round_info += "[law.get_index()]. [law.law]"
 
 		if(length(aiPlayer.connected_robots))
-			end_of_round_info += "<b>The AI's loyal minions were:</b> "
+			end_of_round_info += "<b>Лояльными к ИИ киборгами были:</b> "
 			for(var/mob/living/silicon/robot/robo in aiPlayer.connected_robots)
 				var/robo_ckey = safe_get_ckey(robo)
-				end_of_round_info += "[robo.name][robo.stat ? " (Deactivated)" : ""] (Played by: [robo_ckey])"
+				end_of_round_info += "[robo.name][robo.stat ? " (Деактивирован)" : ""] (Игрок: [robo_ckey])"
 
 	var/dronecount = 0
 
@@ -583,9 +583,9 @@ SUBSYSTEM_DEF(ticker)
 
 		if(!robo.connected_ai)
 			if(robo.stat != DEAD)
-				end_of_round_info += "<b>[robo.name] (Played by: [robo_ckey]) survived as an AI-less borg! Its laws were:</b>"
+				end_of_round_info += "<b>[robo.name] (Игрок: [robo_ckey]) выжил, будучи киборгом без ИИ-мастера! Законы Киборга:</b>"
 			else
-				end_of_round_info += "<b>[robo.name] (Played by: [robo_ckey]) was unable to survive the rigors of being a cyborg without an AI. Its laws were:</b>"
+				end_of_round_info += "<b>[robo.name] (Игрок: [robo_ckey]) Не смог выжить без ИИ-мастера. Законы киборга:</b>"
 
 			robo.laws_sanity_check()
 			for(var/datum/ai_law/law as anything in robo.laws.sorted_laws)
@@ -595,7 +595,7 @@ SUBSYSTEM_DEF(ticker)
 					end_of_round_info += "[law.get_index()]. [law.law]"
 
 	if(dronecount)
-		end_of_round_info += "<b>There [dronecount > 1 ? "were" : "was"] [dronecount] industrious maintenance [dronecount > 1 ? "drones" : "drone"] this round.</b>"
+		end_of_round_info += "<b>В раунде [dronecount > 1 ? "было" : "был"] [dronecount] [dronecount > 1 ? "дронов техобслуживания" : "дрон техобслуживания"].</b>"
 
 	if(length(mode.eventmiscs))
 		for(var/datum/mind/eventmind in mode.eventmiscs)
@@ -715,7 +715,7 @@ SUBSYSTEM_DEF(ticker)
 /datum/controller/subsystem/ticker/proc/reboot_helper(reason, end_string, delay)
 	// Admins delayed round end. Just alert and dont bother with anything else.
 	if(delay_end)
-		to_chat(world, "<span class='boldannounceooc'>An admin has delayed the round end.</span>")
+		to_chat(world, "<span class='boldannounceooc'>Админ отложил начало раунда.</span>")
 		return
 
 	if(!isnull(delay))
@@ -725,14 +725,14 @@ SUBSYSTEM_DEF(ticker)
 		// Use default restart timeout
 		delay = restart_timeout
 
-	to_chat(world, "<span class='boldannounceooc'>Rebooting world in [delay/10] [delay > 10 ? "seconds" : "second"]. [reason]</span>")
+	to_chat(world, "<span class='boldannounceooc'>Перезапуск мира через [delay/10] [delay > 10 ? "секунд" : "секунду"]. [reason]</span>")
 
 	real_reboot_time = world.time + delay
 	UNTIL(world.time > real_reboot_time) // Hold it here
 
 	// And if we re-delayed, bail again
 	if(delay_end)
-		to_chat(world, "<span class='boldannounceooc'>Reboot was cancelled by an admin.</span>")
+		to_chat(world, "<span class='boldannounceooc'>Админ отменил перезапуск.</span>")
 		return
 
 	if(end_string)
