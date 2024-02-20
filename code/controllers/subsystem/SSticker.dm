@@ -725,7 +725,7 @@ SUBSYSTEM_DEF(ticker)
 		// Use default restart timeout
 		delay = restart_timeout
 
-	to_chat(world, "<span class='boldannounceooc'>Перезапуск мира через [delay/10] [delay > 10 ? "секунд" : "секунду"]. [reason]</span>")
+	to_chat(world, "<span class='boldannounceooc'>Перезапуск через [delay/10] [delay > 10 ? "секунд" : "секунду"]. [reason]</span>")
 
 	real_reboot_time = world.time + delay
 	UNTIL(world.time > real_reboot_time) // Hold it here
