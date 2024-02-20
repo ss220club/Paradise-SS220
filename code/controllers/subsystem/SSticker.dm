@@ -585,7 +585,7 @@ SUBSYSTEM_DEF(ticker)
 			if(robo.stat != DEAD)
 				end_of_round_info += "<b>[robo.name] (Игрок: [robo_ckey]) выжил, будучи киборгом без ИИ-мастера! Законы Киборга:</b>"
 			else
-				end_of_round_info += "<b>[robo.name] (Игрок: [robo_ckey]) Не смог выжить без ИИ-мастера. Законы киборга:</b>"
+				end_of_round_info += "<b>[robo.name] (Игрок: [robo_ckey]) не смог выжить без ИИ-мастера. Законы киборга:</b>"
 
 			robo.laws_sanity_check()
 			for(var/datum/ai_law/law as anything in robo.laws.sorted_laws)
