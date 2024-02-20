@@ -73,6 +73,11 @@
 	path = /obj/item/storage/wallet/wallet_USSP_2
 	cost = 12
 
+/datum/gear/donor/Wallet_WYCI
+	display_name = "Бумажник W.Y.C.I."
+	path = /obj/item/storage/wallet/wallet_wyci
+	cost = 12
+
 /datum/gear/donor/firefirstaid
 	display_name = "Набор первой медицинской помощи от премиальной страховки"
 	path = /obj/item/storage/firstaid/regular/donor
@@ -123,7 +128,28 @@
 	path = /obj/item/clothing/head/kitty
 	donator_tier = 2
 	cost = 1
- 
+
+/datum/gear/donor/driver
+	display_name = "Driver jacket."
+	path = /obj/item/clothing/suit/jacket/driver
+	donator_tier = 2
+	cost = 1
+
+/datum/gear/donor/soundhand_black_jacket
+	display_name = "Черная куртка с тэгом группы Саундхэнд."
+	path = /obj/item/clothing/suit/storage/soundhand_black_jacket/soundhand_black_jacket_tag
+	cost = 2
+
+/datum/gear/donor/soundhand_olive_jacket
+	display_name = "Оливковая куртка с тэгом группы Саундхэнд."
+	path = /obj/item/clothing/suit/storage/soundhand_olive_jacket/soundhand_olive_jacket_tag
+	cost = 2
+
+/datum/gear/donor/soundhand_brown_jacket
+	display_name = "Коричневая куртка с тэгом группы Саундхэнд."
+	path = /obj/item/clothing/suit/storage/soundhand_brown_jacket/soundhand_brown_jacket_tag
+	cost = 2
+
 // ID Skins
 /datum/gear/donor/id_decal_colored
 	display_name = "Наклейка на карту (Голографическая)"

@@ -126,7 +126,7 @@
 
 //Converts an angle (degrees) into an ss13 direction
 /proc/angle2dir(degree)
-	degree = ((degree+22.5)%365)
+	degree = (degree + 22.5) % 360
 	if(degree < 45)		return NORTH
 	if(degree < 90)		return NORTHEAST
 	if(degree < 135)	return EAST
@@ -209,16 +209,16 @@
 			return 'icons/mob/screen_white.dmi'
 		if("Midnight")
 			return 'icons/mob/screen_midnight.dmi'
-		// SS220 ADDITION START
+		// SS220 ADDITION - START
 		if("Vaporwave")
 			return 'modular_ss220/aesthetics/skin/icons/screen_vaporwave.dmi'
 		if("Detective")
 			return 'modular_ss220/aesthetics/skin/icons/screen_detective.dmi'
-		if("Trasen")
+		if("Trasenknox")
 			return 'modular_ss220/aesthetics/skin/icons/screen_trasenknox.dmi'
 		if("Clockwork")
 			return 'modular_ss220/aesthetics/skin/icons/screen_clockwork.dmi'
-		// SS220 ADDITION END
+		// SS220 ADDITION - END
 		else
 			return 'icons/mob/screen_midnight.dmi'
 

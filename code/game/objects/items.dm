@@ -253,10 +253,6 @@ GLOBAL_DATUM_INIT(welding_sparks, /mutable_appearance, mutable_appearance('icons
 		MO.desc = "Looks like this was \an [src] some time ago."
 		..()
 
-/obj/item/afterattack(atom/target, mob/user, proximity, params)
-	SEND_SIGNAL(src, COMSIG_ITEM_AFTERATTACK, target, user, proximity, params)
-	..()
-
 /obj/item/attack_hand(mob/user as mob, pickupfireoverride = FALSE)
 	if(!user) return 0
 	if(ishuman(user))
@@ -397,7 +393,7 @@ GLOBAL_DATUM_INIT(welding_sparks, /mutable_appearance, mutable_appearance('icons
 		return ..()
 
 /obj/item/proc/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
-	var/signal_result = SEND_SIGNAL(src, COMSIG_ITEM_HIT_REACT, owner, hitby, damage, attack_type) + prob(final_block_chance)
+	var/signal_result = (SEND_SIGNAL(src, COMSIG_ITEM_HIT_REACT, owner, hitby, damage, attack_type) & COMPONENT_BLOCK_SUCCESSFUL) + prob(final_block_chance)
 	if(signal_result != 0)
 		if(hit_reaction_chance >= 0) //Normally used for non blocking hit reactions, but also used for displaying block message on actual blocks
 			owner.visible_message("<span class='danger'>[owner] blocks [attack_text] with [src]!</span>")
@@ -779,6 +775,14 @@ GLOBAL_DATUM_INIT(welding_sparks, /mutable_appearance, mutable_appearance('icons
 				outline_color = COLOR_THEME_CLOCKWORK //if you want free gbp go fix the fact that clockwork's tooltip css is glass'
 			if("glass")
 				outline_color = COLOR_THEME_GLASS
+			// SS220 ADDITION - START
+			if("vaporwave")
+				outline_color = COLOR_THEME_VAPORWAVE
+			if("detective")
+				outline_color = COLOR_THEME_DETECTIVE
+			if("trasenknox")
+				outline_color = COLOR_THEME_TRASENKNOX
+			// SS220 ADDITION - END
 			else //this should never happen, hopefully
 				outline_color = COLOR_WHITE
 	if(color)

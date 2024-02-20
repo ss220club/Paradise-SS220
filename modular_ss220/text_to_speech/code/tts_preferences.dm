@@ -13,26 +13,29 @@
 
 /datum/character_save/copy_to(mob/living/carbon/human/character)
 	. = ..()
-	character.tts_seed = tts_seed
-	character.dna.tts_seed_dna = tts_seed
+	if(tts_seed)
+		character.tts_seed = tts_seed
+		character.dna.tts_seed_dna = tts_seed
 
 /datum/ui_module/tts_seeds_explorer
 	name = "Эксплорер TTS голосов"
 	var/phrases = TTS_PHRASES
 
-/datum/ui_module/tts_seeds_explorer/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = FALSE, datum/tgui/master_ui = null, datum/ui_state/state = GLOB.always_state)
-	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
+/datum/ui_module/tts_seeds_explorer/ui_state(mob/user)
+	return GLOB.always_state
+
+/datum/ui_module/tts_seeds_explorer/ui_interact(mob/user, datum/tgui/ui = null)
+	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, ui_key, "TTSSeedsExplorer", name, 550, 800, master_ui, state)
+		ui = new(user, src, "TTSSeedsExplorer", name)
 		ui.set_autoupdate(FALSE)
 		ui.open()
 
 /datum/ui_module/tts_seeds_explorer/ui_data(mob/user)
 	var/list/data = list()
-
 	data["selected_seed"] = user.client.prefs.active_character.tts_seed
-
 	data["donator_level"] = user.client.donator_level
+	data["character_gender"] = user.client.prefs.active_character.gender
 
 	return data
 
@@ -60,7 +63,6 @@
 			"required_donator_level" = seed.required_donator_level,
 		))
 	data["seeds"] = seeds
-
 	data["phrases"] = phrases
 
 	return data
@@ -101,6 +103,10 @@
 			client.prefs.ShowChoices(src)
 			return FALSE
 		var/datum/tts_seed/seed = SStts220.tts_seeds[client.prefs.active_character.tts_seed]
+		if(!seed)
+			to_chat(usr, span_danger("Выбранный голос персонажа недоступен!"))
+			client.prefs.ShowChoices(src)
+			return FALSE
 
 		switch(client.donator_level)
 			if(LITTLE_WORKER_TIER)
