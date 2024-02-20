@@ -583,7 +583,7 @@ SUBSYSTEM_DEF(ticker)
 
 		if(!robo.connected_ai)
 			if(robo.stat != DEAD)
-				end_of_round_info += "<b>[robo.name] (Игрок: [robo_ckey]) выжил, будучи киборгом без ИИ-мастера! Законы Киборга:</b>"
+				end_of_round_info += "<b>[robo.name] (Игрок: [robo_ckey]) выжил, будучи киборгом без ИИ-мастера! Законы киборга:</b>"
 			else
 				end_of_round_info += "<b>[robo.name] (Игрок: [robo_ckey]) не смог выжить без ИИ-мастера. Законы киборга:</b>"
 
