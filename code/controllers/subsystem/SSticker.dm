@@ -555,7 +555,7 @@ SUBSYSTEM_DEF(ticker)
 		var/ai_ckey = safe_get_ckey(aiPlayer)
 
 		if(aiPlayer.stat != DEAD)
-			end_of_round_info += "<b>Законы [aiPlayer.name] (Игрок: [ai_ckey]) к концу игры были:</b>"
+			end_of_round_info += "<b>Законы [aiPlayer.name] (Игрок: [ai_ckey]), его законы к концу игры были:</b>"
 		else
 			end_of_round_info += "<b>В момент деактивации [aiPlayer.name] (Игрок: [ai_ckey]), его законы были следующими:</b>"
 		aiPlayer.laws_sanity_check()
