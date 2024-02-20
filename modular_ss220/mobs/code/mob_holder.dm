@@ -22,6 +22,10 @@
 			user.visible_message(span_notice("Интересно, как на вкус [animal]? Но проверять не будем."))
 		return
 
+	if(!user.canUnEquip(src, FALSE))
+		user.visible_message(span_notice("[src] никак не отлипает от руки!"))
+		return
+
 	if(user != devourer)
 		visible_message(span_danger("[user] пытается скормить [devourer] [animal]!"))
 	else
