@@ -76,6 +76,27 @@
 	name = "Заброшенный Коридор Эвакуационного Шаттла"
 	icon_state = "escape"
 
+/area/station/public/sleep_male
+	name = "Мужские Дормитории"
+	icon_state = "Sleep"
+
+/area/station/public/sleep_female
+	name = "Женские Дормитории"
+	icon_state = "Sleep"
+
+/area/station/public/toilet/male
+	name = "Мужские Туалеты"
+
+/area/station/public/toilet/female
+	name = "Женские Туалеты"
+
+/area/station/security/interrogation/observation
+	name = "Просматриваемая Допросная"
+
+/area/station/service/bar/atrium
+	name = "Атриум"
+	icon_state = "bar"
+
 /* CentCom */
 /area/centcom/ss220
 	name = "ЦК"

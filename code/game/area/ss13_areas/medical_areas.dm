@@ -53,26 +53,9 @@
 	name = "Комната Ожидания Медицинского Отдела"
 	icon_state = "patientsward"
 
-/area/station/medical/isolation/a
-	name = "Комната Изоляции А"
-	icon_state = "medbayisoa"
-
-/area/station/medical/isolation/b
-	name = "Комната Изоляции Б"
-	icon_state = "medbayisob"
-
-/area/station/medical/isolation/c
-	name = "Комната Изоляции В"
-	icon_state = "medbayisoc"
-
-/area/station/medical/isolation
-	name = "Зона Изоляции"
-	icon_state = "medbayisoaccess"
-
 /area/station/medical/coldroom
 	name = "Морозильная Камера Медицинского Отдела"
 	icon_state = "coldroom"
-
 
 /area/station/medical/storage/secondary
 	name = "Дополнительный Склад Медицинского Отдела"

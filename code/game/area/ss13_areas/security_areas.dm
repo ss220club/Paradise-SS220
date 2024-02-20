@@ -51,14 +51,6 @@
 	name = "Тюремный Блок А"
 	icon_state = "brigcella"
 
-/area/station/security/prison/cell_block/B
-	name = "Тюремный Блок Б"
-	icon_state = "brigcellb"
-
-/area/station/security/prison/cell_block/C
-	name = "Тюремный Блок В"
-	icon_state = "brig"
-
 /area/station/security/execution
 	name = "Комната Казни"
 	icon_state = "execution"
@@ -77,11 +69,6 @@
 /area/station/security/storage
 	name = "Склад Снаряжения Службы Безопасности"
 	icon_state = "securityequipmentstorage"
-
-/area/station/security/interrogation/observation
-	name = "Просматриваемая Допросная"
-	icon_state = "security"
-	can_get_auto_cryod = FALSE
 
 /area/station/security/evidence
 	name = "Комната Хранения Улик"
@@ -110,10 +97,6 @@
 	name = "Защищенная Оружейная"
 	icon_state = "secarmory"
 
-/area/station/security/securehallway
-	name = "Защищенный Коридор Брига"
-	icon_state = "securehall"
-
 /area/station/security/detective
 	name = "Офис Детектива"
 	icon_state = "detective"
@@ -131,22 +114,6 @@
 
 /area/station/security/checkpoint/secondary
 	name = "Дополнительный Контрольно-Пропускной Пункт Службы Безопасности"
-	icon_state = "checkpoint1"
-
-/area/station/security/checkpoint/supply
-	name = "Контрольно-Пропускной Пункт Службы Безопасности - Отдел Карго"
-	icon_state = "checkpoint1"
-
-/area/station/security/checkpoint/engineering
-	name = "Контрольно-Пропускной Пункт Службы Безопасности - Инженерный Отдел"
-	icon_state = "checkpoint1"
-
-/area/station/security/checkpoint/medical
-	name = "Контрольно-Пропускной Пункт Службы Безопасности - Медицинский Отдел"
-	icon_state = "checkpoint1"
-
-/area/station/security/checkpoint/science
-	name = "Контрольно-Пропускной Пункт Службы Безопасности - РНД"
 	icon_state = "checkpoint1"
 
 // Solitary

@@ -163,14 +163,6 @@
 	name = "Вторичное Криохранилище Дормитория"
 	icon_state = "Sleep"
 
-/area/station/public/sleep_male
-	name = "Мужские Дормитории"
-	icon_state = "Sleep"
-
-/area/station/public/sleep_female
-	name = "Женские Дормитории"
-	icon_state = "Sleep"
-
 /area/station/public/locker
 	name = "Бытовое Помещение"
 	icon_state = "locker"
@@ -179,12 +171,6 @@
 	name = "Туалеты Дормиторий"
 	icon_state = "toilet"
 	sound_environment = SOUND_AREA_SMALL_ENCLOSED
-
-/area/station/public/toilet/male
-	name = "Мужские Туалеты"
-
-/area/station/public/toilet/female
-	name = "Женские Туалеты"
 
 /area/station/public/toilet/unisex
 	name = "Общие Туалеты"
@@ -203,10 +189,6 @@
 /area/station/public/mrchangs
 	name = "Забегаловка Мистера Чанга"
 	icon_state = "changs"
-
-/area/station/public/clothing
-	name = "Магазин Одежды"
-	icon_state = "Theatre"
 
 /area/station/public/pet_store
 	name = "Зоомагазин"
@@ -230,10 +212,6 @@
 	name = "Основное Хранилище Инструментов"
 	icon_state = "primarystorage"
 
-/area/station/public/storage/autolathe
-	name = "Хранилище Автолата"
-	icon_state = "storage"
-
 /area/station/public/storage/art
 	name = "Хранилище Художественных Принадлежностей"
 	icon_state = "storage"
@@ -249,9 +227,6 @@
 /area/station/public/storage/office
 	name = "Комната Канцелярских Принадлежностей"
 	icon_state = "office_supplies"
-
-/area/station/public/recreation
-	name = "Зона Отдыха"
 
 /area/station/public/construction
 	name = "Зона Для Строительства"

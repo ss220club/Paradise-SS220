@@ -72,7 +72,3 @@
 /area/station/command/customs
 	name = "Контрольно-Пропускной Пункт Командования"
 	icon_state = "checkpoint1"
-
-/area/station/command/customs2
-	name = "Дополнительный Контрольно-Пропускной Пункт Командования"
-	icon_state = "security"

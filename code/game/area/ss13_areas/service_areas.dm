@@ -12,10 +12,6 @@
 	icon_state = "bar"
 	sound_environment = SOUND_AREA_WOODFLOOR
 
-/area/station/service/bar/atrium
-	name = "Атриум"
-	icon_state = "bar"
-
 /area/station/service/theatre
 	name = "Театр"
 	icon_state = "Theatre"
