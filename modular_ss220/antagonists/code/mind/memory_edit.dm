@@ -96,7 +96,7 @@
 			assigned.Add(H)
 			candidates.Remove(H)
 
-		var/datum/team/blood_brothers_team/brother_team = new(assigned, TRUE)
+		new /datum/team/blood_brothers_team(assigned, TRUE)
 
 		return TRUE
 	return FALSE

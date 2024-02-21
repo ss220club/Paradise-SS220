@@ -29,8 +29,6 @@
 		var/datum/vox_pack/pack = new path
 		if(pack.cost < 0)
 			continue
-		//if(pack.limited_stock >= 0 && pack.purchased >= pack.limited_stock)
-		//	continue	// !!!! перенести потом в проверку покупки
 		if(!shop_items[pack.category])
 			shop_items[pack.category] = list()
 		shop_items[pack.category] += pack
@@ -47,7 +45,8 @@
 				"desc" = sanitize(pack.description()),
 				"cost" = pack.cost,
 				"contents" = pack.ui_manifest,
-				"obj_path" = pack.reference))
+				"obj_path" = pack.reference
+				))
 			packs_items[pack.reference] = pack
 
 	packs_cats = cats
@@ -77,8 +76,6 @@
 /obj/machinery/vox_shop/attack_ai(mob/user)
 	return FALSE
 
-
-
 /obj/machinery/vox_shop/attackby(obj/item/O, mob/user, params)
 	. = ..()
 	if(istype(O, /obj/item/stack/vox_cash))
@@ -89,6 +86,36 @@
 	cash_stored += vox_cash.amount
 	vox_cash.use(vox_cash.amount)
 	return TRUE
+
+/// Размещение предметов в отдельные емкости
+/obj/machinery/vox_shop/proc/make_container(mob/user, list/typepath_objects)
+	var/is_heavy = FALSE
+	var/list/objs_for_contain = list()
+
+	// Создаем объекты
+	for(var/typepath in typepath_objects)
+		var/obj/obj = new typepath()
+		objs_for_contain.Add(obj)
+		if(is_heavy)
+			continue
+		if(isitem(obj))
+			var/obj/item/item = obj
+			if(item.w_class >= WEIGHT_CLASS_NORMAL)
+				is_heavy = TRUE
+
+	// Размещаем по емкостям
+	if(length(objs_for_contain) > 2)
+		var/container_type = is_heavy ? /obj/structure/closet/crate : /obj/item/storage/box
+		var/obj/container = new container_type(get_turf(src))
+		for(var/obj/obj in objs_for_contain)
+			obj.forceMove(container)
+	else if(length(objs_for_contain))
+		for(var/obj/obj as anything in objs_for_contain)
+			if(isitem(obj))
+				user.put_in_any_hand_if_possible(obj)
+			else
+				obj.forceMove(get_turf(src))
+
 
 
 // ============= UI =============
@@ -133,21 +160,13 @@
 
 	switch(action)
 		if("add_to_cart")
-			var/datum/vox_pack/pack = packs_items[params["item"]]
-			if(LAZYIN(cart_list, params["item"]))
-				to_chat(ui.user, "<span class='warning'>[pack.name] is already in your cart!</span>")
-				return
-			var/startamount = 1
-			LAZYSET(cart_list, params["item"], startamount)
-			generate_tgui_cart(TRUE)
+			add_to_cart(params, ui.user)
 
 		if("remove_from_cart")
-			remove_from_cart(params["item"])
+			remove_from_cart(params)
 
-		if("set_cart_item_amount")
-			var/amount = text2num(params["amount"])
-			LAZYSET(cart_list, params["item"], max(amount, 0))
-			generate_tgui_cart(TRUE)
+		if("set_cart_item_quantity")
+			set_cart_item_quantity(params)
 
 		if("purchase_cart")
 			if(!LAZYLEN(cart_list))
@@ -156,29 +175,30 @@
 				to_chat(ui.user, "<span class='warning'>[src] недостаточно кикиридитов! Неси больше!</span>")
 				return
 
-			var/list/bought_objects = list()
+			var/list/bought_typepath_objects = list()
 			for(var/reference in cart_list)
 				var/datum/vox_pack/pack = packs_items[reference]
 				var/amount = cart_list[reference]
 				if(amount <= 0)
 					continue
-				bought_objects += get_purchase(pack, pack ? pack.reference : "", amount)
+				var/list/purchase_list = mass_purchase(pack, pack ? pack.reference : "", amount)
+				if(!length(purchase_list))
+					to_chat(ui.user, span_warning("[pack.name] - превысил допустимое возможное количество для покупки."))
+					return
+				bought_typepath_objects += purchase_list
 
-			// Сортируем предметы в отдельные емкости
-			var/is_heavy = FALSE
-			var/list/obj/item/items_for_contain = list()
-			for(var/obj/item/item in bought_objects)
-				items_for_contain += item
-				if(item.w_class >= WEIGHT_CLASS_NORMAL)
-					is_heavy = TRUE
-			if(length(items_for_contain) > 2)
-				var/container_type = is_heavy ? /obj/structure/closet/crate : /obj/item/storage/box
-				var/obj/container = new container_type(get_turf(src))
-				for(var/obj/item/item as anything in items_for_contain)
-					item.forceMove(container)
-			else if(length(items_for_contain))
-				for(var/obj/item/item as anything in items_for_contain)
-					ui.user.put_in_any_hand_if_possible(item)
+			// проверяем что не купили больше необходимого
+			for(var/reference in cart_list)
+				var/datum/vox_pack/pack = packs_items[reference]
+				if(pack.limited_stock < 0)
+					continue
+				var/amount = pack.purchased + cart_list[reference]
+				if(amount > pack.limited_stock)
+					to_chat(ui.user, span_warning("[pack.name] - превысил допустимое возможное количество для покупки."))
+					return
+
+			// Завершение покупки
+			make_container(ui.user, bought_typepath_objects)
 
 			empty_cart()
 			SStgui.update_uis(src)
@@ -189,18 +209,19 @@
 
 // ========== UI Procs ==========
 
-/obj/machinery/vox_shop/proc/get_purchase(datum/vox_pack/pack, reference, amount = 1)
+/obj/machinery/vox_shop/proc/mass_purchase(datum/vox_pack/pack, reference, amount = 1)
 	if(!pack)
 		return
 	if(amount <= 0)
 		return
+	if(pack.limited_stock >= 0 && (pack.purchased + amount) > pack.limited_stock)
+		return
 	var/list/bought_objects = list()
 	for(var/i in 1 to amount)
-		var/items_list = pack.create_package(src, usr, put_in_hands = FALSE)
+		var/list/items_list = pack.get_items_list(src, usr, put_in_hands = FALSE)
 		if(!length(items_list))
 			break
 		bought_objects += items_list
-
 	return bought_objects
 
 /obj/machinery/vox_shop/proc/calculate_cart_cash()
@@ -229,15 +250,33 @@
 			"obj_path" = pack.reference,
 			"contents" = pack.ui_manifest,
 			"amount" = cart_list[reference],
-			"limit" = pack.limited_stock))
+			"limit" = pack.limited_stock
+			))
 
-		// !!!!!!!!!! разобраться в ошибке с неправильно заносящимися items
-		// заношу я как supply_pack, а в .js как в uplink_item
+/obj/machinery/vox_shop/proc/add_to_cart(params, mob/user)
+	var/item = params["item"]
+	var/amount = 1
+	var/datum/vox_pack/pack = packs_items[item]
+	if(LAZYIN(cart_list, item))
+		amount += cart_list[item]
+	if((pack.purchased + amount) > pack.limited_stock)
+		to_chat(user, span_warning("[pack.name] больше невозможно купить!"))
+		return
+	LAZYSET(cart_list, item, max(amount, 1))
+	generate_tgui_cart(TRUE)
 
-/obj/machinery/vox_shop/proc/remove_from_cart(item_reference)
-	LAZYREMOVE(cart_list, item_reference)
+/obj/machinery/vox_shop/proc/remove_from_cart(params)
+	LAZYREMOVE(cart_list, params["item"])
 	generate_tgui_cart(TRUE)
 
 /obj/machinery/vox_shop/proc/empty_cart()
 	cart_list = null
+	generate_tgui_cart(TRUE)
+
+/obj/machinery/vox_shop/proc/set_cart_item_quantity(params)
+	var/amount = text2num(params["quantity"])
+	if(amount <= 0)
+		remove_from_cart(params)
+		return
+	LAZYSET(cart_list, params["item"], max(amount, 0))
 	generate_tgui_cart(TRUE)

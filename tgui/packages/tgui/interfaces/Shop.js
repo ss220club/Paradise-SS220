@@ -46,7 +46,7 @@ export const Shop = (props, context) => {
                 }}
                 icon="store"
               >
-                View Market
+                Торговля
               </Tabs.Tab>
               <Tabs.Tab
                 key="Cart"
@@ -56,16 +56,7 @@ export const Shop = (props, context) => {
                 }}
                 icon="shopping-cart"
               >
-                View Shopping Cart{' '}
-                {cart && cart.length ? '(' + cart.length + ')' : ''}
-              </Tabs.Tab>
-              <Tabs.Tab
-                key="LockShop"
-                // This cant ever be selected. Its just a close button.
-                onClick={() => act('lock')}
-                icon="lock"
-              >
-                Lock Shop
+                Корзина {cart && cart.length ? '(' + cart.length + ')' : ''}
               </Tabs.Tab>
             </Tabs>
           </Stack.Item>
@@ -95,25 +86,13 @@ const ItemsPage = (_properties, context) => {
       <Stack vertical>
         <Stack.Item>
           <Section
-            title={'Current Balance: ' + cash + 'KK'}
+            title={'Средства: ' + cash + 'к'}
             buttons={
-              <>
-                <Button.Checkbox
-                  content="Show Descriptions"
-                  checked={showDesc}
-                  onClick={() => setShowDesc(!showDesc)}
-                />
-                <Button
-                  content="Random Item"
-                  icon="question"
-                  onClick={() => act('buyRandom')}
-                />
-                <Button
-                  content="Refund Currently Held Item"
-                  icon="undo"
-                  onClick={() => act('refund')}
-                />
-              </>
+              <Button.Checkbox
+                content="Описание"
+                checked={showDesc}
+                onClick={() => setShowDesc(!showDesc)}
+              />
             }
           />
         </Stack.Item>
@@ -172,22 +151,22 @@ const CartPage = (_properties, context) => {
         <Section
           fill
           scrollable
-          title={'Current Balance: ' + cash + 'KK'}
+          title={'Средства: ' + cash + 'к'}
           buttons={
             <>
               <Button.Checkbox
-                content="Show Descriptions"
+                content="Описание"
                 checked={showDesc}
                 onClick={() => setShowDesc(!showDesc)}
               />
               <Button
-                content="Empty Cart"
+                content="Очистить"
                 icon="trash"
                 onClick={() => act('empty_cart')}
                 disabled={!cart}
               />
               <Button
-                content={'Purchase Cart (' + cart_price + 'TC)'}
+                content={'Оплатить (' + cart_price + 'к)'}
                 icon="shopping-cart"
                 onClick={() => act('purchase_cart')}
                 disabled={!cart || cart_price > cash}
@@ -212,7 +191,7 @@ const CartPage = (_properties, context) => {
                 </Stack.Item>
               ))
             ) : (
-              <Box italic>Your Shopping Cart is empty!</Box>
+              <Box italic>Ваша корзина пуста!</Box>
             )}
           </Stack>
         </Section>
@@ -241,35 +220,19 @@ const ShopItemButtons = (props, context) => {
   const { cash } = data;
 
   return (
-    <>
-      <Button
-        icon="shopping-cart"
-        color={i.hijack_only === 1 && 'red'}
-        tooltip="Add to cart."
-        tooltipPosition="left"
-        onClick={() =>
-          act('add_to_cart', {
-            item: i.obj_path,
-          })
-        }
-        disabled={i.cost > cash}
-      />
-      <Button
-        content={
-          'Buy (' + i.cost + 'TC)' + (i.refundable ? ' [Refundable]' : '')
-        }
-        color={i.hijack_only === 1 && 'red'}
-        // Yes I care this much about both of these being able to render at the same time
-        tooltip={i.hijack_only === 1 && 'Hijack Agents Only!'}
-        tooltipPosition="left"
-        onClick={() =>
-          act('buyItem', {
-            item: i.obj_path,
-          })
-        }
-        disabled={i.cost > cash}
-      />
-    </>
+    <Button
+      icon="shopping-cart"
+      content={'Купить (' + i.cost + 'Кикиридитов)'}
+      color={i.hijack_only === 1 && 'red'}
+      tooltip="Добавить в корзину."
+      tooltipPosition="left"
+      onClick={() =>
+        act('add_to_cart', {
+          item: i.obj_path,
+        })
+      }
+      disabled={i.cost > cash || (i.limit !== -1 && i.purchased >= i.limit)}
+    />
   );
 };
 
@@ -281,8 +244,8 @@ const CartButtons = (props, context) => {
     <Stack>
       <Button
         icon="times"
-        content={'(' + i.cost * i.amount + 'TC)'}
-        tooltip="Remove from cart."
+        content={'(' + i.cost * i.amount + 'к)'}
+        tooltip="Убрать из корзины."
         tooltipPosition="left"
         onClick={() =>
           act('remove_from_cart', {
@@ -292,7 +255,6 @@ const CartButtons = (props, context) => {
       />
       <Button
         icon="minus"
-        tooltip={i.limit === 0 && 'Discount already redeemed!'}
         ml="5px"
         onClick={() =>
           act('set_cart_item_quantity', {
@@ -306,7 +268,6 @@ const CartButtons = (props, context) => {
         content={i.amount}
         width="45px"
         tooltipPosition="bottom-end"
-        tooltip={i.limit === 0 && 'Discount already redeemed!'}
         onCommit={(e, value) =>
           act('set_cart_item_quantity', {
             item: i.obj_path,

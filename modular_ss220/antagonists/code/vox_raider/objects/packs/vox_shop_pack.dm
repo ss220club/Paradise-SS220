@@ -5,7 +5,7 @@
 	var/cost = -1	// -1 = hide
 	var/limited_stock = -1 // Can you only buy so many? -1 allows for infinite purchases
 	var/purchased = 0	// How much have you already bought?
-	var/amount
+	var/amount = 1
 	var/category = VOX_PACK_MISC
 	var/list/contains = list()
 
@@ -21,24 +21,13 @@
 		ui_manifest += "[initial(AM.name)]"	// !!!! проверяем отобразится ли иконка
 		//ui_manifest += "<big>[bicon(I)]</big> [initial(AM.name)]"	// !!!! проверяем отобразится ли иконка
 
-/datum/vox_pack/proc/create_package(turf/spawn_location, mob/user, put_in_hands = TRUE)
+/datum/vox_pack/proc/get_items_list(mob/user, put_in_hands = TRUE)
 	var/list/items_list = list()
 	for(var/typepath in contains)
 		if(!typepath)
 			continue
-
-		var/atom/atom = new typepath(spawn_location)
-		items_list.Add(atom)
-
-		if(amount)
-			if(isstack(atom))
-				var/obj/item/stack/mats = atom
-				mats.amount = amount
-			else
-				for(var/i in amount-1)
-					var/atom/temp_atom = new typepath(spawn_location)
-					items_list.Add(temp_atom)
-
+		for(var/i in 1 to amount)
+			items_list.Add(typepath)
 	return items_list
 
 /datum/vox_pack/proc/description()

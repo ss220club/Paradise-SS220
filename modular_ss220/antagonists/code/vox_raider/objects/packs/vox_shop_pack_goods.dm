@@ -5,6 +5,7 @@
 /datum/vox_pack/equipment/goods/test
 	name = "Тестовый набор"
 	desc = "Тестовое описание"
+	reference = "DEBUG_TEST"
 	cost = 0
 	limited_stock = 5
 	contains = list(
