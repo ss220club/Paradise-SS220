@@ -77,9 +77,6 @@
 	var/datum/antagonist/blood_brother/temp = new
 	var/list/mob/living/carbon/human/candidates = list()
 
-	if(GLOB.configuration.gamemode.prevent_mindshield_antags)
-		temp.restricted_jobs += temp.protected_jobs
-
 	log_admin("[key_name(owner)] tried making Blood Brothers with One-Click-Antag")
 	message_admins("[key_name_admin(owner)] tried making Blood Brothers with One-Click-Antag")
 
@@ -95,7 +92,7 @@
 		for(var/i = 0, i<numBrothers, i++)
 			if(i>=amount)
 				break
-			H = pick(candidates)
+			var/H = pick(candidates)
 			assigned.Add(H)
 			candidates.Remove(H)
 

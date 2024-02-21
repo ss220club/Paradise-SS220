@@ -137,4 +137,4 @@
 		return
 	var/mob/living/carbon/human/H = owner.current
 	if(owner.current)
-		H.equipOutfit(/datum/outfit/admin/vox, visualsOnly)
+		H.equipOutfit(/datum/outfit/vox, visualsOnly)

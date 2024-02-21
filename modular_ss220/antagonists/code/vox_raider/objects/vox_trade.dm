@@ -122,7 +122,8 @@
 	return TRUE
 
 /obj/machinery/vox_trader/proc/do_trade(mob/user)
-	var/list/items_list = get_turf(src).GetAllContents(7)
+	var/turf/current_turf = get_turf(src)
+	var/list/items_list = current_turf.GetAllContents(7)
 
 	if(!length(items_list))
 		sparks()

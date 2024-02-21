@@ -9,49 +9,51 @@
 	density = TRUE
 	var/cash_stored = 0
 
-	var/list/packs_list = list()
-	var/list/packs_data = list()
-
-	var/list/packs_cats = list()
+	var/list/packs_cats = list()	// Категории по предметам - ui_static_data
+	var/list/packs_items = list()	// Все доступные предметы -
 
 	var/list/cart_list
 	var/list/cart_data
 
+
+// ============ DATA ============
+
 /obj/machinery/vox_shop/Initialize(mapload)
 	. = ..()
-	generate_packs_list()
+	generate_pack_items()
+	generate_pack_lists()
 
-/obj/machinery/vox_shop/proc/generate_packs_list()
-	packs_list = subtypesof(/datum/vox_pack)
-
-	for(var/pack_type in packs_list)
-		var/datum/vox_pack/pack = new pack_type
+/obj/machinery/vox_shop/proc/generate_pack_items()
+	var/list/shop_items = list()
+	for(var/path in subtypesof(/datum/vox_pack))
+		var/datum/vox_pack/pack = new path
 		if(pack.cost < 0)
 			continue
-		packs_data.Add(list(list(
-			"name" = pack.name,
-			"desc" = pack.desc,
-			"cost" = pack.cost,
-			"ref" = "[pack.UID()]",
-			"contents" = pack.ui_manifest,
-			"category" = pack.category,
-			)))
+		//if(pack.limited_stock >= 0 && pack.purchased >= pack.limited_stock)
+		//	continue	// !!!! перенести потом в проверку покупки
+		if(!shop_items[pack.category])
+			shop_items[pack.category] = list()
+		shop_items[pack.category] += pack
 
-	for(var/category in VOX_PACK_AMOUNT)
-		packs_cats.Add(list(list("name" = get_category_name(category), "category" = category)))
+	packs_items = shop_items
 
-/obj/machinery/vox_shop/proc/get_category_name(category)
-	switch(category)
-		if(VOX_PACK_CONSUMABLES)
-			return "Расходники"
-		if(VOX_PACK_EQUIPMENT)
-			return "Экипировка"
-		if(VOX_PACK_RAIDER)
-			return "Снаряжение Рейдеров"
-		if(VOX_PACK_MERCENARIES)
-			return "Снаряжение Наемников"
-		if(VOX_PACK_GOODS)
-			return "Товары"
+/obj/machinery/vox_shop/proc/generate_pack_lists()
+	var/list/cats = list()
+	for(var/category in packs_items)
+		cats[++cats.len] = list("cat" = category, "items" = list())
+		for(var/datum/vox_pack/pack in packs_items[category])
+			cats[cats.len]["items"] += list(list(
+				"name" = sanitize(pack.name),
+				"desc" = sanitize(pack.description()),
+				"cost" = pack.cost,
+				"contents" = pack.ui_manifest,
+				"obj_path" = pack.reference))
+			packs_items[pack.reference] = pack
+
+	packs_cats = cats
+
+
+// ======= Interaction ==========
 
 /obj/machinery/vox_shop/attack_hand(mob/user)
 	if(!check_usable(user))
@@ -61,6 +63,10 @@
 
 /obj/machinery/vox_shop/proc/check_usable(mob/user)
 	. = FALSE
+
+	if(user) 			// !!!!! времянка
+		return TRUE 	// !!!!! времянка
+
 	if(issilicon(user))
 		return
 	if(!isvox(user))
@@ -72,21 +78,25 @@
 	return FALSE
 
 
+
 /obj/machinery/vox_shop/attackby(obj/item/O, mob/user, params)
 	. = ..()
 	if(istype(O, /obj/item/stack/vox_cash))
 		insert_cash(/obj/item/stack/vox_cash, user)
 
-/obj/machinery/vox_shop/proc/insert_cash(obj/item/stack/vox_cash/cash_insert, mob/user)
-	visible_message("<span class='info'>[user] загрузил [cash_insert] в [src].</span>")
-	cash_stored += cash_insert.amount
-	cash_insert.use(cash_insert.amount)
+/obj/machinery/vox_shop/proc/insert_cash(obj/item/stack/vox_cash, mob/user)
+	visible_message("<span class='info'>[user] загрузил [vox_cash] в [src].</span>")
+	cash_stored += vox_cash.amount
+	vox_cash.use(vox_cash.amount)
 	return TRUE
 
-/obj/machinery/vox_shop/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = FALSE, datum/tgui/master_ui = null, datum/ui_state/state = GLOB.default_state)
-	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
+
+// ============= UI =============
+
+/obj/machinery/vox_shop/ui_interact(mob/user, datum/tgui/ui = null)
+	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, ui_key, "VoxShop", name, 900, 800, master_ui, state)
+		ui = new(user, src, "Shop", name/*, 900, 800*/)
 		ui.open()
 
 /obj/machinery/vox_shop/ui_data(mob/user)
@@ -108,7 +118,9 @@
 /obj/machinery/vox_shop/ui_static_data(mob/user)
 	var/list/static_data = list()
 
-	static_data["packs"] = packs_data
+	if(!packs_cats || !packs_items)
+		generate_pack_lists(user)
+	//static_data["packs"] = packs_items
 	static_data["cats"] = packs_cats
 
 	return static_data
@@ -121,7 +133,7 @@
 
 	switch(action)
 		if("add_to_cart")
-			var/datum/vox_pack/pack = packs_list[params["item"]]
+			var/datum/vox_pack/pack = packs_items[params["item"]]
 			if(LAZYIN(cart_list, params["item"]))
 				to_chat(ui.user, "<span class='warning'>[pack.name] is already in your cart!</span>")
 				return
@@ -146,7 +158,7 @@
 
 			var/list/bought_objects = list()
 			for(var/reference in cart_list)
-				var/datum/vox_pack/pack = packs_list[reference]
+				var/datum/vox_pack/pack = packs_items[reference]
 				var/amount = cart_list[reference]
 				if(amount <= 0)
 					continue
@@ -174,6 +186,9 @@
 		if("empty_cart")
 			empty_cart()
 
+
+// ========== UI Procs ==========
+
 /obj/machinery/vox_shop/proc/get_purchase(datum/vox_pack/pack, reference, amount = 1)
 	if(!pack)
 		return
@@ -191,7 +206,7 @@
 /obj/machinery/vox_shop/proc/calculate_cart_cash()
 	. = 0
 	for(var/reference in cart_list)
-		var/datum/vox_pack/item = packs_list[reference]
+		var/datum/vox_pack/item = packs_items[reference]
 		var/amount = cart_list[reference]
 		. += item.cost * amount
 
@@ -206,15 +221,15 @@
 
 	cart_data = list()
 	for(var/reference in cart_list)
-		var/datum/vox_pack/pack = packs_list[reference]
+		var/datum/vox_pack/pack = packs_items[reference]
 		cart_data += list(list(
 			"name" = pack.name,
 			"desc" = pack.desc,
 			"cost" = pack.cost,
-			"ref" = "[pack.UID()]",
+			"obj_path" = pack.reference,
 			"contents" = pack.ui_manifest,
-			"category" = pack.category,
-			"amount" = cart_list[reference]))
+			"amount" = cart_list[reference],
+			"limit" = pack.limited_stock))
 
 		// !!!!!!!!!! разобраться в ошибке с неправильно заносящимися items
 		// заношу я как supply_pack, а в .js как в uplink_item
@@ -226,4 +241,3 @@
 /obj/machinery/vox_shop/proc/empty_cart()
 	cart_list = null
 	generate_tgui_cart(TRUE)
-

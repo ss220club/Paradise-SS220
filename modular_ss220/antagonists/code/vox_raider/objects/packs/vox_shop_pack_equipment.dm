@@ -68,4 +68,7 @@
 	name = "Скафандр"
 	desc = "Защитный костюм для работы во враждебной атмосфере с приемлимыми защитными свойствами и полной защитой от давления."
 	cost = 50
-	contains = list(/obj/item/clothing/suit/space/vox, /obj/item/clothing/head/helmet/space/vox)
+	contains = list(
+		/obj/item/clothing/suit/space/vox,
+		/obj/item/clothing/head/helmet/space/vox
+		)

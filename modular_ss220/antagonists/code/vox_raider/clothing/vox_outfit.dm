@@ -55,8 +55,9 @@
 	if(istype(I))
 		apply_to_card(I, H, get_all_accesses(), "Vox Raider", "syndie")
 
-	H.internal = H.r_pocket
-	H.update_action_buttons_icon()
+	if(internals_slot)
+		H.internal = H.get_item_by_slot(internals_slot)
+		H.update_action_buttons_icon()
 
 
 // ==================== Raiders ====================
