@@ -7,6 +7,7 @@
 	slot_flags = SLOT_FLAG_HEAD
 
 /obj/item/holder/attack(mob/living/target, mob/living/user, def_zone)
+	ASSERT(length(contents) > 0)
 	var/mob/living/simple_animal/animal = contents[1]
 	var/mob/living/carbon/devourer = target
 	if(!istype(animal) || !istype(devourer))
@@ -19,7 +20,7 @@
 		if(user != devourer)
 			user.visible_message(span_notice("Вряд ли это понравится [devourer]..."))
 		else if(ishuman(devourer))
-			user.visible_message(span_notice("Интересно, как на вкус [animal]? Но проверять не будем."))
+			user.visible_message(span_notice("Интересно, каков на вкус [animal]? Но проверять не будем."))
 		return
 
 	if(!user.canUnEquip(src, FALSE))
