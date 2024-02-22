@@ -11,9 +11,6 @@
 
 	var/list/ui_manifest = list()
 
-/datum/vox_pack/New()
-	. = ..()
-
 /datum/vox_pack/proc/get_items_list(mob/user, put_in_hands = TRUE)
 	var/list/items_list = list()
 	for(var/typepath in contains)
@@ -25,28 +22,19 @@
 
 /datum/vox_pack/proc/description()
 	if(!desc)
-		// Fallback description
-		//var/obj/temp = src.item
-		//desc = replacetext(initial(temp.desc), "\n", "<br>")
 		desc = replacetext(desc, "\n", "<br>")
 	return desc
+
+// /datum/vox_pack/New()
+// 	. = ..()
+// 	make_ui_manifest()
 
 /datum/vox_pack/proc/make_ui_manifest()
 	for(var/path in contains)
 		if(!path)
 			continue
 		var/atom/movable/AM = path
-		var/icon/I = icon(initial(AM.icon), initial(AM.icon_state))
+		var/I = "[icon2base64(icon(initial(AM.icon), initial(AM.icon_state), SOUTH, 1))]"
 		ui_manifest.Add(list(initial(AM.name) = I))
-
-
-/datum/vox_pack/proc/get_ui_manifest()
-	var/ui_string = ""
-	for(var/I in ui_manifest)
-		if(!I)
-			continue
-		ui_string += "<big>[bicon(I)]</big>"	// !!!! проверяем отобразится ли иконка
 		//var/icon/I = icon(initial(AM.icon), initial(AM.icon_state))
-		//ui_manifest += "[initial(AM.name)]"	// !!!! проверяем отобразится ли иконка
-		//ui_manifest += "<big>[bicon(I)]</big> [initial(AM.name)]"	// !!!! проверяем отобразится ли иконка
-	return ui_string
+		//ui_manifest.Add(list(initial(AM.name) = I))

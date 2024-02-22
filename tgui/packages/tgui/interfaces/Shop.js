@@ -201,10 +201,7 @@ const CartPage = (_properties, context) => {
 };
 
 const ShopItem = (props, context) => {
-  const { i,
-    showDecription = 1,
-    buttons = <ShopItemButtons i={i} />
-  } = props;
+  const { i, showDecription = 1, buttons = <ShopItemButtons i={i} /> } = props;
 
   return (
     <Section
@@ -295,6 +292,31 @@ const CartButtons = (props, context) => {
         }
         disabled={i.limit !== -1 && i.amount >= i.limit}
       />
+    </Stack>
+  );
+};
+
+const ContentImages = (props, context) => {
+  const { act, data } = useBackend(context);
+  const { pack } = props;
+
+  return (
+    <Stack fill horizontal>
+      <Stack.Item width="70%">
+        {pack.content_images.map((i) => (
+          <Stack.Item grow key={i.ref}>
+            <img
+              src={`data:image/jpeg;base64,${i}`}
+              style={{
+                'vertical-align': 'middle',
+                width: '32px',
+                margin: '0px',
+                'margin-left': '0px',
+              }}
+            />
+          </Stack.Item>
+        ))}
+      </Stack.Item>
     </Stack>
   );
 };

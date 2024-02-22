@@ -44,7 +44,6 @@
 				"name" = sanitize(pack.name),
 				"desc" = sanitize(pack.description()),
 				"cost" = pack.cost,
-				"content" = pack.get_ui_manifest(),
 				"obj_path" = pack.reference
 				))
 			packs_items[pack.reference] = pack
@@ -248,7 +247,6 @@
 			"desc" = sanitize(pack.description()),
 			"cost" = pack.cost,
 			"obj_path" = pack.reference,
-			"content" = pack.get_ui_manifest(),
 			"amount" = cart_list[reference],
 			"limit" = pack.limited_stock
 			))
