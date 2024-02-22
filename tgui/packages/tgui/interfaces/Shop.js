@@ -32,7 +32,7 @@ export const Shop = (props, context) => {
   const [tabIndex, setTabIndex] = useLocalState(context, 'tabIndex', 0);
 
   return (
-    <Window width={900} height={600} theme="syndicate">
+    <Window width={900} height={600} theme="abductor">
       <ComplexModal />
       <Window.Content scrollable>
         <Stack fill vertical>
@@ -89,7 +89,7 @@ const ItemsPage = (_properties, context) => {
             title={'Средства: ' + cash + 'к'}
             buttons={
               <Button.Checkbox
-                content="Описание"
+                content="Подробности"
                 checked={showDesc}
                 onClick={() => setShowDesc(!showDesc)}
               />
@@ -155,7 +155,7 @@ const CartPage = (_properties, context) => {
           buttons={
             <>
               <Button.Checkbox
-                content="Описание"
+                content="Подробности"
                 checked={showDesc}
                 onClick={() => setShowDesc(!showDesc)}
               />
@@ -201,7 +201,10 @@ const CartPage = (_properties, context) => {
 };
 
 const ShopItem = (props, context) => {
-  const { i, showDecription = 1, buttons = <ShopItemButtons i={i} /> } = props;
+  const { i,
+    showDecription = 1,
+    buttons = <ShopItemButtons i={i} />
+  } = props;
 
   return (
     <Section
@@ -210,6 +213,9 @@ const ShopItem = (props, context) => {
       buttons={buttons}
     >
       {showDecription ? <Box italic>{decodeHtmlEntities(i.desc)}</Box> : null}
+      {showDecription ? (
+        <Box italic>{decodeHtmlEntities(i.content)}</Box>
+      ) : null}
     </Section>
   );
 };

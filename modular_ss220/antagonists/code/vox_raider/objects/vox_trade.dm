@@ -4,14 +4,15 @@
 	// icon = 'icons/obj/recycling.dmi'
 	// icon_state = "grinder-o0"
 	icon = 'modular_ss220/antagonists/icons/trader_machine.dmi'
-	icon_state = "trader-idle"
+	icon_state = "trader-idle-off"
+	var/icon_state_on = "trader-idle"
 	max_integrity = 5000
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	anchored = TRUE
 	density = FALSE
 
 	var/cooldown = 3 SECONDS
-	var/cooldown_for_each_item = 1 SECONDS
+	var/cooldown_for_each_item = 0.2 SECONDS
 	var/is_trading_now = FALSE
 
 	var/list/connected_instruments = list()
@@ -86,23 +87,19 @@
 	return FALSE	// Ха-ха, глупая железяка не понимает как пользоваться технологиями ВОКСов!
 
 /obj/machinery/vox_trader/proc/check_usable(mob/user)
+	return TRUE // !!!!!! ВРЕМЕННО
 	. = FALSE
-
 	if(issilicon(user))
 		return
-
 	if(!isvox(user))
 		to_chat(user, span_notice("Вы осматриваете [src] и не понимаете как оно работает и куда сувать свои пальцы..."))
 		return
-
 	if(is_trading_now)
 		to_chat(user, span_warning("[src] обрабатываем и пересчитывает ценности. Ожидайте."))
 		return
-
 	if(length(blacklist) && (user in blacklist))
 		to_chat(user, span_warning("Вы пытаетесь связаться с [src], но никто не отзывается."))
 		return
-
 	return TRUE
 
 /obj/machinery/vox_trader/proc/sparks()
@@ -111,13 +108,8 @@
 /obj/machinery/vox_trader/proc/try_trade(mob/user)
 	if(!check_usable(user))
 		return FALSE
-
 	add_fingerprint(user)
-
-	playsound(get_turf(src), 'sound/weapons/flash.ogg', 25, 1)
-	is_trading_now = TRUE
-	sparks()
-
+	trade_start()
 	addtimer(CALLBACK(src, PROC_REF(do_trade), user), cooldown)
 	return TRUE
 
@@ -126,8 +118,7 @@
 	var/list/items_list = current_turf.GetAllContents(7)
 
 	if(!length(items_list))
-		sparks()
-		is_trading_now = FALSE
+		trade_cancel()
 		angry_count++
 		switch(angry_count)
 			if(3)
@@ -149,7 +140,6 @@
 				blacklist.Add(user)	// Докикикировался.
 			else
 				atom_say(span_warning("Вами недовольны. Где товар?"))
-
 		return
 
 	angry_count = 0
@@ -157,23 +147,40 @@
 
 	// делаем вид что происходит пересчет
 	var/cooldown_items_time = length(items_list) * cooldown_for_each_item
-	addtimer(CALLBACK(src, PROC_REF(do_trade), user, items_list), cooldown_items_time)
+	addtimer(CALLBACK(src, PROC_REF(make_cash), user, items_list), cooldown_items_time)
 
 /obj/machinery/vox_trader/proc/make_cash(mob/user, list/items_list)
 	if(!src || QDELETED(src))
-		is_trading_now = FALSE
 		return
 
-	flick("trader-beam", src)
-	playsound(get_turf(src), 'sound/weapons/contractorbatonhit.ogg', 25, TRUE)
-
 	var/values_sum = get_value(user, items_list, TRUE)
+	if(values_sum <= 10)
+		atom_say(span_notice("Расчет окончен. Средства отправлены на транспортные погашения."))
+		trade_cancel()
+		return
 	if(values_sum > 100)
 		atom_say(span_greenannounce("Расчет окончен. [values_sum > 2000 ? "Крайне ценно!" : "Ценно!"] Ваша доля [values_sum]"))
 	else
 		atom_say(span_notice("Расчет окончен. Вы бы еще консервных банок насобирали! Ваша доля [values_sum]"))
 
-	new /obj/item/stack/vox_cash(src, values_sum)
+	trade_cancel()
+	beam()
+	new /obj/item/stack/vox_cash(get_turf(src), values_sum)
+
+/obj/machinery/vox_trader/proc/trade_start()
+	is_trading_now = TRUE
+	icon_state = icon_state_on
+	sparks()
+	playsound(get_turf(src), 'sound/weapons/flash.ogg', 25, 1)
+
+/obj/machinery/vox_trader/proc/trade_cancel()
+	is_trading_now = FALSE
+	icon_state = initial(icon_state)
+	sparks()
+
+/obj/machinery/vox_trader/proc/beam()
+	playsound(get_turf(src), 'sound/weapons/contractorbatonhit.ogg', 25, TRUE)
+	flick("trader-beam", src)
 
 /obj/machinery/vox_trader/proc/get_value(mob/user, list/items_list, is_need_grading = FALSE)
 	var/values_sum = 0
@@ -191,7 +198,7 @@
 		if(I.anchored)
 			continue
 
-		if(!isspacecash(I)) // воксам не нужны деньги мяса.
+		if(isspacecash(I) || isvoxcash(I)) // воксам не нужны деньги мяса.
 			continue
 
 		var/temp_values_sum = 0
@@ -227,34 +234,28 @@
 			var/list/tech_list = params2list(I.origin_tech)
 			for(var/tech in tech_list)
 				var/temp_mult = 1
+				var/tech_value = text2num(tech_list[tech])
 				if(tech in collected_tech_dict)
-					if(collected_tech_dict[tech] < tech_list[tech])
-						temp_values_sum += unique_tech_level_reward * (tech_list[tech] - collected_tech_dict[tech])
-						collected_tech_dict[tech] = tech_list[tech]
+					if(collected_tech_dict[tech] < tech_value)
+						temp_values_sum += unique_tech_level_reward * (tech_value - collected_tech_dict[tech])
+						collected_tech_dict[tech] = tech_value
 						is_tech_unique = TRUE
 				else
-					temp_values_sum += unique_tech_level_reward * tech_list[tech]
-					collected_tech_dict += list(tech = tech_list[tech])
+					temp_values_sum += unique_tech_level_reward * tech_value
+					collected_tech_dict += list(tech = tech_value)
 					is_tech_unique = TRUE
 				if(tech in valuable_tech_list)
-					temp_mult = tech_list[tech]
+					temp_mult = tech_value
 					is_tech_valuable = TRUE
 				if(!is_tech_unique)	// ценим уникальные разработки, а не спам продукцией абдукторов из протолата
 					temp_mult /= no_unique_tech_div
-				var/excess_mult = tech_list[tech] > 7 ? 2 : 1	// переизбыток
-				temp_values_sum += round(tech_list[tech] * tech_mult * temp_mult * excess_mult)
+				var/excess_mult = text2num(tech_value) > 7 ? 2 : 1	// переизбыток
+				temp_values_sum += round(tech_value * tech_mult * temp_mult * excess_mult)
 				is_tech = TRUE
 
 		if(istype(I, /obj/item/stack))
 			var/obj/item/stack/stack = I
 			temp_values_sum *= round(stack.amount / stack_div)
-
-		if(isstorage(I))
-			var/obj/item/storage/storage = I
-			var/test = storage.contents
-			 // !!!! ПРОТЕСТИРОВАТЬ ЧТО НЕ ЗАЦИКЛИЛОСЬ И ДО ЭТОГО НЕ ВКЛЮЧАЛОСЬ В ПОИСКЕ ПО ТЮРФУ
-			var/test2 = storage.contents
-			//temp_values_sum += get_value(storage.contents)
 
 		if(istype(I, /obj/item/card/id))
 			var/obj/item/card/id/id
@@ -312,7 +313,8 @@
 		// ____________________________
 		// Завершаем рассчет
 		values_sum += temp_values_sum
-		qdel(I)
+		if(temp_values_sum >= 0)
+			qdel(I)
 
 	// Заносим наши принятые списки
 	if(!is_need_grading)

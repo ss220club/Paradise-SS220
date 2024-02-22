@@ -2,7 +2,7 @@
 	name = "Киконсоль Закиказов"
 	desc = "Технология связывающая воксов на дальних рубежах."
 	icon = 'modular_ss220/antagonists/icons/trader_machine.dmi'
-	icon_state = "trader-idle-off"
+	icon_state = "shop"
 	max_integrity = 5000
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	anchored = TRUE
@@ -44,7 +44,7 @@
 				"name" = sanitize(pack.name),
 				"desc" = sanitize(pack.description()),
 				"cost" = pack.cost,
-				"contents" = pack.ui_manifest,
+				"content" = pack.get_ui_manifest(),
 				"obj_path" = pack.reference
 				))
 			packs_items[pack.reference] = pack
@@ -63,8 +63,7 @@
 /obj/machinery/vox_shop/proc/check_usable(mob/user)
 	. = FALSE
 
-	if(user) 			// !!!!! времянка
-		return TRUE 	// !!!!! времянка
+	return TRUE 	// !!!!! времянка
 
 	if(issilicon(user))
 		return
@@ -78,8 +77,8 @@
 
 /obj/machinery/vox_shop/attackby(obj/item/O, mob/user, params)
 	. = ..()
-	if(istype(O, /obj/item/stack/vox_cash))
-		insert_cash(/obj/item/stack/vox_cash, user)
+	if(isvoxcash(O))
+		insert_cash(O, user)
 
 /obj/machinery/vox_shop/proc/insert_cash(obj/item/stack/vox_cash, mob/user)
 	visible_message("<span class='info'>[user] загрузил [vox_cash] в [src].</span>")
@@ -171,7 +170,8 @@
 		if("purchase_cart")
 			if(!LAZYLEN(cart_list))
 				return
-			if(calculate_cart_cash() > cash_stored)
+			var/cart_cash = calculate_cart_cash()
+			if(cart_cash > cash_stored)
 				to_chat(ui.user, "<span class='warning'>[src] недостаточно кикиридитов! Неси больше!</span>")
 				return
 
@@ -199,7 +199,7 @@
 
 			// Завершение покупки
 			make_container(ui.user, bought_typepath_objects)
-
+			cash_stored -= cart_cash
 			empty_cart()
 			SStgui.update_uis(src)
 
@@ -244,11 +244,11 @@
 	for(var/reference in cart_list)
 		var/datum/vox_pack/pack = packs_items[reference]
 		cart_data += list(list(
-			"name" = pack.name,
-			"desc" = pack.desc,
+			"name" = sanitize(pack.name),
+			"desc" = sanitize(pack.description()),
 			"cost" = pack.cost,
 			"obj_path" = pack.reference,
-			"contents" = pack.ui_manifest,
+			"content" = pack.get_ui_manifest(),
 			"amount" = cart_list[reference],
 			"limit" = pack.limited_stock
 			))
@@ -259,7 +259,7 @@
 	var/datum/vox_pack/pack = packs_items[item]
 	if(LAZYIN(cart_list, item))
 		amount += cart_list[item]
-	if((pack.purchased + amount) > pack.limited_stock)
+	if(pack.limited_stock >= 0 && (pack.purchased + amount) > pack.limited_stock)
 		to_chat(user, span_warning("[pack.name] больше невозможно купить!"))
 		return
 	LAZYSET(cart_list, item, max(amount, 1))

@@ -23,6 +23,14 @@
 	. = ..()
 	rename_amount()
 
+/obj/item/stack/vox_cash/use(used, check = TRUE)
+	. = ..()
+	rename_amount()
+
+/obj/item/stack/vox_cash/add(newamount)
+	. = ..()
+	rename_amount()
+
 /obj/item/stack/vox_cash/c5
 	amount = 5
 
