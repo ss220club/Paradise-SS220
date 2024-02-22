@@ -20,6 +20,11 @@
 			items_list.Add(typepath)
 	return items_list
 
+/datum/vox_pack/proc/check_possible_buy(amount)
+	if(limited_stock >= 0 && (purchased + amount > limited_stock))
+		return FALSE
+	return TRUE
+
 /datum/vox_pack/proc/description()
 	if(!desc)
 		desc = replacetext(desc, "\n", "<br>")

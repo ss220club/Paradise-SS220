@@ -48,6 +48,7 @@
 	var/stack_div = 4
 	var/temp_div = 5
 	var/no_unique_tech_div = 4
+	var/denomination_div = 5
 
 	// дополнительные бонусы
 	var/integrity_reward = 5
@@ -258,7 +259,7 @@
 			temp_values_sum *= round(stack.amount / stack_div)
 
 		if(istype(I, /obj/item/card/id))
-			var/obj/item/card/id/id
+			var/obj/item/card/id/id = I
 			for(var/access in id.access)
 				if(access in collected_access_list)
 					continue
@@ -285,7 +286,7 @@
 			temp_values_sum += round(temp_value)
 
 		for(var/datum/theft_objective/objective in highrisk_list)
-			if(!istype(I, objective.type))
+			if(!istype(I, objective.typepath))
 				continue
 			if(istype(I, /obj/item/aicard))
 				for(var/mob/living/silicon/ai/A in I)
@@ -341,7 +342,7 @@
 		to_chat(user, addition_text)
 
  	// Деноминируем кикиридиты и забираем небольшой процент в семью.
-	values_sum /= 10				// деноминируем
+	values_sum /= denomination_div	// деноминируем
 	values_sum -= values_sum % 10	// забираем процентик
 	return round(values_sum)
 

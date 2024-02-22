@@ -186,15 +186,13 @@
 					return
 				bought_typepath_objects += purchase_list
 
-			// проверяем что не купили больше необходимого
+			// Обновляем количество купленного товара
 			for(var/reference in cart_list)
 				var/datum/vox_pack/pack = packs_items[reference]
 				if(pack.limited_stock < 0)
 					continue
 				var/amount = pack.purchased + cart_list[reference]
-				if(amount > pack.limited_stock)
-					to_chat(ui.user, span_warning("[pack.name] - превысил допустимое возможное количество для покупки."))
-					return
+				pack.purchased += amount
 
 			// Завершение покупки
 			make_container(ui.user, bought_typepath_objects)
@@ -213,7 +211,7 @@
 		return
 	if(amount <= 0)
 		return
-	if(pack.limited_stock >= 0 && (pack.purchased + amount) > pack.limited_stock)
+	if(!pack.check_possible_buy(amount))
 		return
 	var/list/bought_objects = list()
 	for(var/i in 1 to amount)
@@ -257,7 +255,7 @@
 	var/datum/vox_pack/pack = packs_items[item]
 	if(LAZYIN(cart_list, item))
 		amount += cart_list[item]
-	if(pack.limited_stock >= 0 && (pack.purchased + amount) > pack.limited_stock)
+	if(!pack.check_possible_buy(amount))
 		to_chat(user, span_warning("[pack.name] больше невозможно купить!"))
 		return
 	LAZYSET(cart_list, item, max(amount, 1))

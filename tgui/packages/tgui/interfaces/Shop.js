@@ -225,9 +225,9 @@ const ShopItemButtons = (props, context) => {
   return (
     <Button
       icon="shopping-cart"
-      content={'Купить (' + i.cost + 'Кикиридитов)'}
+      content={'Добавить в корзину (' + i.cost + ' Кикиридитов)'}
       color={i.hijack_only === 1 && 'red'}
-      tooltip="Добавить в корзину."
+      tooltip="Добавить товар в корзину, увеличив общее число данного товара."
       tooltipPosition="left"
       onClick={() =>
         act('add_to_cart', {
