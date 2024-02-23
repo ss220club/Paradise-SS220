@@ -10,6 +10,8 @@
 	/// List of scenarios chosen on `pre_setup` stage, and which will be applied on `post_setup`
 	var/list/datum/antag_scenario/executed_scenarios = list()
 
+	var/list/mob/new_player/ready_players
+	var/list/datum/antag_scenario/acceptable_scenarios
 
 /datum/game_mode/antag_mix/New()
 	. = ..()
@@ -19,21 +21,26 @@
 /datum/game_mode/antag_mix/pre_setup()
 	var/list/datum/antag_scenario/possible_scenarios = subtypesof(/datum/antag_scenario)
 
-	var/list/mob/new_player/ready_players = get_ready_players()
+	ready_players = get_ready_players()
 	var/ready_players_amount = length(ready_players)
 	log_antag_mix("Trying to start round with [ready_players_amount] ready players")
 	log_antag_mix("Max antagonist fraction is '[max_antag_fraction]'")
 
-	var/list/datum/antag_scenario/acceptable_scenarios = initialize_acceptable_scenarios(possible_scenarios, ready_players_amount)
+	acceptable_scenarios = initialize_acceptable_scenarios(possible_scenarios, ready_players_amount)
 	if(!length(acceptable_scenarios))
 		return FALSE
 
 	budget = calculate_budget(ready_players_amount)
 	log_antag_mix("Roundstart budget: [budget]")
-	return pick_scenarios(draft_scenarios(acceptable_scenarios, ready_players), ready_players_amount)
+
+	return ..()
 
 
 /datum/game_mode/antag_mix/post_setup()
+	var/ready_players_amount = length(ready_players)
+	if(!pick_scenarios(draft_scenarios(acceptable_scenarios, ready_players), ready_players_amount))
+		return FALSE
+
 	for(var/datum/antag_scenario/scenario_to_execute as anything in executed_scenarios)
 		scenario_to_execute.execute()
 
