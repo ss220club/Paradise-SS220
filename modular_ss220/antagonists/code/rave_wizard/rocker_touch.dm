@@ -77,7 +77,6 @@
 	uniform = /obj/item/clothing/under/color/black/nodrop
 	shoes = /obj/item/clothing/shoes/jackboots/nodrop
 	suit = /obj/item/clothing/suit/leathercoat/nodrop
-	r_hand = /obj/item/instrument/eguitar
 
 /obj/item/clothing/under/color/black/nodrop
 	flags = NODROP

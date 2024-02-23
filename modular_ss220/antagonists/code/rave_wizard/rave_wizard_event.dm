@@ -92,6 +92,12 @@
 	spell_categories -= "Offensive"
 	spell_categories -= "Rituals"
 
+/datum/spellbook_entry/summon_supermatter
+	category = "Offensive"
+
+/datum/spellbook_entry/rathens
+	category = "Offensive"
+
 /datum/game_mode/proc/greet_rave_wizard(datum/mind/wizard, you_are=TRUE)
 	SEND_SOUND(wizard.current, sound('sound/ambience/antag/ragesmages.ogg'))
 	var/list/messages = list()
@@ -113,6 +119,7 @@
 
 /datum/event_container/major/New()
 	. = ..()
+	ASSERT(length(available_events) > 0)
 	var/datum/event_meta/nothing_event = available_events[1]
 	nothing_event.weight -= RAVE_WIZARD_EVENT_WEIGHT
 	available_events += list(new /datum/event_meta(EVENT_LEVEL_MAJOR, "Rave Wizard", /datum/event/rave_wizard, RAVE_WIZARD_EVENT_WEIGHT, is_one_shot = TRUE))
