@@ -19,8 +19,7 @@
 						'modular_ss220/antagonists/sound/music4.mp3',
 						'modular_ss220/antagonists/sound/music5.mp3',
 						'modular_ss220/antagonists/sound/music6.mp3')
-	var/dance_probability = 60
-	var/flip_probability = 30
+	var/emote_probability = 60
 
 /obj/effect/timestop/dancing/timestop()
 	playsound(get_turf(src), pick(sound_type), 100, 1, -1)
@@ -36,15 +35,13 @@
 					var/mob/living/simple_animal/hostile/H = dancestoped_mob
 					H.AIStatus = AI_OFF
 					H.LoseTarget()
-				if(prob(dance_probability))
-					dancestoped_mob.emote(pick(list("spin","dance")))
-				if(prob(flip_probability))
-					dancestoped_mob.emote("flip")
 				stopped_atoms |= dancestoped_mob
 		for(var/mob/living/M in stopped_atoms)
 			if(get_dist(get_turf(M),get_turf(src)) > freezerange) //If they lagged/ran past the timestop somehow, just ignore them
 				unfreeze_mob(M)
 				stopped_atoms -= M
+			if(prob(emote_probability))
+				M.emote(pick(list("spin","dance","flip")), intentional = TRUE)
 		sleep(1)
 	for(var/mob/living/M in stopped_atoms)
 		unfreeze_mob(M)

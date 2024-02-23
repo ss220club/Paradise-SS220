@@ -92,6 +92,7 @@
 	spell_categories -= "Offensive"
 	spell_categories -= "Rituals"
 
+
 /datum/spellbook_entry/summon_supermatter
 	category = "Offensive"
 
