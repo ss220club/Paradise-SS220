@@ -18,13 +18,13 @@
 	
 	if(!is_type_in_list(animal,  devourer.dna.species.allowed_consumed_mobs))
 		if(user != devourer)
-			user.visible_message(span_notice("Вряд ли это понравится [devourer]..."))
+			to_chat(user, span_notice("Вряд ли это понравится [devourer]..."))
 		else if(ishuman(devourer))
-			user.visible_message(span_notice("Интересно, каков на вкус [animal]? Но проверять не будем."))
+			to_chat(user, span_notice("Интересно, каков на вкус [animal]? Но проверять не будем."))
 		return
 
 	if(!user.canUnEquip(src, FALSE))
-		user.visible_message(span_notice("[src] никак не отлипает от руки!"))
+		to_chat(user, span_notice("[src] никак не отлипает от руки!"))
 		return
 
 	if(user != devourer)
@@ -48,8 +48,7 @@
 			devourer.reagents.add_reagent(bee.beegent.id, rand(1, 5))
 		else
 			devourer.reagents.add_reagent("spidertoxin", 5)
-		visible_message(span_warning("Рот [devourer] опух."))
-		devourer.visible_message(span_danger("Ваш рот ужален, он теперь опухает!"))
+		devourer.visible_message(span_warning("Рот [devourer] опух."), span_danger("Ваш рот ужален, он теперь опухает!"))
 
 	animal.forceMove(devourer)
 	LAZYADD(devourer.stomach_contents, animal)
