@@ -5,6 +5,7 @@
 	var/integrity_bite = 10		// Integrity used
 	var/nutritional_value = 20 	// How much nutrition add
 	var/is_only_grab_intent = FALSE	//Grab if help_intent was used
+	var/is_examine_bites = TRUE
 
 /obj/item/examine(mob/user)
 	var/material_string = item_string_material(user)
@@ -59,17 +60,18 @@
 		if(MATERIAL_CLASS_RAD)
 			material_string = "\nРадиоактивный предмет. [isdrask(user) ? material_promt : ""]"
 
-	var/bites_split = max_bites > 3 ? round(max_bites / 4) : 1
-	var/bites_damage_string = ""
-	if(current_bites >= 1 && current_bites <= bites_split)
-		bites_damage_string = "Выглядит покусанным..."
-	else if(current_bites >= bites_split && current_bites <= (bites_split * 2))
-		bites_damage_string = "Видны оторванные части..."
-	else if((current_bites >= bites_split * 2) && current_bites <= (bites_split * 3))
-		bites_damage_string = "Видна внутренняя часть..."
-	else if((current_bites >= bites_split * 3))
-		bites_damage_string = "Осталась одна труха..."
-	material_string += "\n[bites_damage_string]"
+	if(is_examine_bites)
+		var/bites_split = max_bites > 3 ? round(max_bites / 4) : 1
+		var/bites_damage_string = ""
+		if(current_bites >= 1 && current_bites <= bites_split)
+			bites_damage_string = "Выглядит покусанным..."
+		else if(current_bites >= bites_split && current_bites <= (bites_split * 2))
+			bites_damage_string = "Видны оторванные части..."
+		else if((current_bites >= bites_split * 2) && current_bites <= (bites_split * 3))
+			bites_damage_string = "Видна внутренняя часть..."
+		else if((current_bites >= bites_split * 3))
+			bites_damage_string = "Осталась одна труха..."
+		material_string += "\n[bites_damage_string]"
 
 	return material_string
 
