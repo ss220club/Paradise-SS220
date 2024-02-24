@@ -27,7 +27,10 @@
 		"heart" =    /obj/item/organ/internal/heart,
 		"brain" =    /obj/item/organ/internal/brain/crystal,
 		"eyes" =     /obj/item/organ/internal/eyes/luminescent_crystal, //Standard darksight of 2.
-		"strange crystal" = /obj/item/organ/internal/nucleation/strange_crystal
+		"ears" = /obj/item/organ/internal/ears/resonant_crystal,
+		"strange crystal" = /obj/item/organ/internal/nucleation/strange_crystal,
+		"strange crystal" = /obj/item/organ/internal/nucleation/strange_crystal,
+		"strange crystal" = /obj/item/organ/internal/nucleation/strange_crystal,
 		)
 
 	var/organ_explosion_thrown_range = 4

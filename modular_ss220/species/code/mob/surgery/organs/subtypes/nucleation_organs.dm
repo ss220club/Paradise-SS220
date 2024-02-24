@@ -1,14 +1,21 @@
+/obj/item/organ/internal
+	var/is_special_effect = FALSE
 
 /obj/item/organ/internal/nucleation
 	name = "nucleation organ"
 	icon = 'modular_ss220/species/icons/obj/surgery.dmi'
 	desc = "A crystalized human organ. /red It has a strangely iridescent glow."
 	max_integrity = 500
+	is_special_effect = TRUE
 	var/integrity_item_dust = 50
 	var/amount_fire_loss = 20
 	var/radiation_pulse_amount = 200
 	var/radiation_pulse_range = 2
 	var/temp_protect = ARMOR_MAX_TEMP_PROTECT
+
+/obj/item/organ/internal/nucleation/Initialize(mapload)
+	. = ..()
+	ADD_TRAIT(src, TRAIT_SUPERMATTER_IMMUNE, ROUNDSTART_TRAIT)
 
 /obj/item/organ/internal/nucleation/can_be_pulled(mob/user)
 	if(!check_touched(user))
@@ -16,18 +23,18 @@
 	return FALSE
 
 /obj/item/organ/internal/nucleation/attackby(obj/item/I, mob/living/user, params)
-	if(istype(I, /obj/item/organ/internal/nucleation))
+	if(istype(I, /obj/item/organ/internal/nucleation) || istype(I, /obj/item/organ/internal/ears/resonant_crystal))
 		playsound(src, 'sound/effects/supermatter.ogg', 50, TRUE)
 		radiation_pulse(user, radiation_pulse_amount, radiation_pulse_range)
 		var/flash_range = rand(2, 7)
-		obj_integrity -= integrity_item_dust
-		if(obj_integrity <= integrity_item_dust)
-			explosion(user, 0, 0, 1, flash_range)
-			QDEL_NULL(src)
 		I.obj_integrity -= integrity_item_dust
 		if(I.obj_integrity <= integrity_item_dust)
 			explosion(user, 0, 0, 1, flash_range)
 			QDEL_NULL(I)
+		obj_integrity -= integrity_item_dust
+		if(obj_integrity <= integrity_item_dust)
+			explosion(user, 0, 0, 1, flash_range)
+			QDEL_NULL(src)
 		return TRUE
 	if(istype(I, /obj/item/retractor/supermatter))
 		var/obj/item/retractor/supermatter/tongs = I
@@ -64,7 +71,7 @@
 /obj/item/organ/internal/nucleation/pickup(mob/living/user)
 	if(!try_burn_hit(affected_user = user))
 		return ..()
-	forceMove(user.drop_item())
+	user.drop_item()
 
 /obj/item/organ/internal/nucleation/proc/try_burn_hit(obj/item/affected_item, mob/living/affected_user, def_zone)
 	if(burn_hit(affected_item, affected_user, def_zone))
@@ -123,19 +130,24 @@
 	return TRUE
 
 // ============ ORGANS ============
-/obj/item/organ/internal/nucleation/resonant_crystal
-	name = "resonant crystal"
-	icon_state = "resonant-crystal"
-	organ_tag = "resonant crystal"
-	parent_organ = "head"
-	slot = "res_crystal"
-
 /obj/item/organ/internal/nucleation/strange_crystal
 	name = "strange crystal"
 	icon_state = "strange-crystal"
 	organ_tag = "strange crystal"
 	parent_organ = "chest"
 	slot = "heart"
+
+/obj/item/organ/internal/ears/resonant_crystal
+	name = "resonant crystal"
+	icon = 'modular_ss220/species/icons/obj/surgery.dmi'
+	icon_state = "resonant-crystal"
+	organ_tag = "resonant crystal"
+	parent_organ = "head"
+	slot = "ears"
+
+/obj/item/organ/internal/ears/resonant_crystal/Initialize(mapload)
+	. = ..()
+	ADD_TRAIT(src, TRAIT_SUPERMATTER_IMMUNE, ROUNDSTART_TRAIT)
 
 /obj/item/organ/internal/eyes/luminescent_crystal
 	name = "luminescent eyes"
@@ -144,6 +156,9 @@
 	organ_tag = "luminescent eyes"
 	light_color = "#1C1C00"
 
+/obj/item/organ/internal/eyes/luminescent_crystal/Initialize(mapload)
+	. = ..()
+	ADD_TRAIT(src, TRAIT_SUPERMATTER_IMMUNE, ROUNDSTART_TRAIT)
 /obj/item/organ/internal/eyes/luminescent_crystal/New()
 	set_light(2)
 	..()
@@ -153,3 +168,8 @@
 	icon = 'modular_ss220/species/icons/obj/surgery.dmi'
 	icon_state = "crystal-brain"
 	organ_tag = "crystallized brain"
+
+
+/obj/item/organ/internal/brain/crystal/Initialize(mapload)
+	. = ..()
+	ADD_TRAIT(src, TRAIT_SUPERMATTER_IMMUNE, ROUNDSTART_TRAIT)
