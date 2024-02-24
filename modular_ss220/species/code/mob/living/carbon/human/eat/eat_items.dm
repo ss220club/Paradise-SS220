@@ -92,17 +92,17 @@
 			if(target.nutrition >= NUTRITION_LEVEL_FULL)
 				chat_message_to_user = "В [target == user ? "вас" : target] больше не лезет [src.name]. [target == user ? "Вы" : target] наел[target == user ? "ись" : "ся"]!"
 				return FALSE
-			else if (target == user)
+			else if(target == user)
 				chat_message_to_user = "Вы откусили от [src.name]. Вкуснятина!"
 		if(INTENT_HARM)
 			chat_message_to_user = "В [target == user ? "вас" : target] больше не лезет. Но [target == user ? "вы" : user] насильно запихива[target == user ? "ете" : "ет"] [src.name] в рот!"
-			if (target != user)
+			if(target != user)
 				chat_message_to_target = "В ваш рот насильно запихивают [src.name]!"
 			if(target.nutrition >= NUTRITION_LEVEL_FULL)
 				target.vomit(nutritional_value + 20)
 				target.adjustStaminaLoss(15)
 
-	if (target != user)
+	if(target != user)
 		if(!forceFed(target, user, FALSE))
 			return FALSE
 		to_chat(target, "<span class='notice'>[chat_message_to_target]</span>")
@@ -148,7 +148,7 @@
 	else if((current_bites >= bites_split * 3))
 		colour = "#697581ff"
 
-	if (colour)
+	if(colour)
 		add_atom_colour(colour, FIXED_COLOUR_PRIORITY)
 
 /obj/item/proc/item_heal(mob/living/carbon/human/H)
