@@ -1,6 +1,6 @@
 /obj/item
 	var/material_type = MATERIAL_CLASS_NONE
-	var/max_bites = 1 			//The maximum amount of bites before item is depleted
+	var/bites_limit = 1 			//The maximum amount of bites before item is depleted
 	var/current_bites = 0	//How many bites did
 	var/integrity_bite = 10		// Integrity used
 	var/nutritional_value = 20 	// How much nutrition add
@@ -61,7 +61,7 @@
 			material_string = "\nРадиоактивный предмет. [isdrask(user) ? material_promt : ""]"
 
 	if(is_examine_bites)
-		var/bites_split = max_bites > 3 ? round(max_bites / 4) : 1
+		var/bites_split = bites_limit > 3 ? round(bites_limit / 4) : 1
 		var/bites_damage_string = ""
 		if(current_bites >= 1 && current_bites <= bites_split)
 			bites_damage_string = "Выглядит покусанным..."
@@ -122,7 +122,7 @@
 	current_bites++
 	colour_change()
 	obj_integrity = max(obj_integrity - integrity_bite, 0)
-	if(current_bites >= max_bites)
+	if(current_bites >= bites_limit)
 		to_chat(user, "<span class='notice'>[target == user ? "Вы доели" : "[target] доел"] [src.name].</span>")
 		qdel(src)
 
@@ -136,7 +136,7 @@
 	return 1
 
 /obj/item/proc/colour_change()
-	var/bites_split = max_bites > 3 ? round(max_bites / 4) : 1
+	var/bites_split = bites_limit > 3 ? round(bites_limit / 4) : 1
 	var/colour
 	if(current_bites >= 1 && current_bites <= bites_split)
 		colour = "#d9e0e7ff"

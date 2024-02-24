@@ -10,7 +10,7 @@
 /obj/item/soap/Initialize(mapload)
 	. = ..()
 	material_type = MATERIAL_CLASS_SOAP
-	max_bites = 6
+	bites_limit = 6
 	nutritional_value = 15
 	is_only_grab_intent = TRUE
 
@@ -28,10 +28,10 @@
 
 /obj/item/soap/nanotrasen/Initialize(mapload)
 	. = ..()
-	max_bites = 12
+	bites_limit = 12
 	nutritional_value = 15
 
 /obj/item/soap/ducttape/Initialize(mapload)
 	. = ..()
-	max_bites = 2
+	bites_limit = 2
 	nutritional_value = 10

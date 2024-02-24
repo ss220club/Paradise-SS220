@@ -8,14 +8,14 @@
 /obj/item/bedsheet/Initialize(mapload)
 	. = ..()
 	material_type = MATERIAL_CLASS_CLOTH
-	max_bites = 10
+	bites_limit = 10
 	nutritional_value = 15
 
 /obj/item/clothing/Initialize(mapload)
 
 	. = ..()
 	material_type = MATERIAL_CLASS_NONE
-	max_bites = 10
+	bites_limit = 10
 	integrity_bite = 20
 	nutritional_value = 5
 
@@ -24,7 +24,7 @@
 /obj/item/clothing/under/Initialize(mapload)
 	. = ..()
 	material_type = MATERIAL_CLASS_CLOTH
-	max_bites = 10
+	bites_limit = 10
 	integrity_bite = 40
 	nutritional_value = 10
 
@@ -33,7 +33,7 @@
 /obj/item/clothing/neck/Initialize(mapload)
 	. = ..()
 	material_type = MATERIAL_CLASS_CLOTH
-	max_bites = 8
+	bites_limit = 8
 	nutritional_value = 10
 
 
@@ -41,7 +41,7 @@
 /obj/item/clothing/accessory/Initialize(mapload)
 	. = ..()
 	material_type = MATERIAL_CLASS_CLOTH
-	max_bites = 1
+	bites_limit = 1
 
 /obj/item/clothing/accessory/holobadge/Initialize(mapload)
 	. = ..()
@@ -61,13 +61,13 @@
 /obj/item/clothing/gloves/Initialize(mapload)
 	. = ..()
 	material_type = MATERIAL_CLASS_CLOTH
-	max_bites = 2
+	bites_limit = 2
 	nutritional_value = 10
 
 /obj/item/clothing/gloves/color/Initialize(mapload)
 	. = ..()
 	material_type = MATERIAL_CLASS_CLOTH
-	max_bites = 2
+	bites_limit = 2
 	nutritional_value = 10
 
 /obj/item/clothing/gloves/color/yellow/Initialize(mapload)
@@ -91,7 +91,7 @@
 /obj/item/clothing/mask/bandana/Initialize(mapload)
 	. = ..()
 	material_type = MATERIAL_CLASS_CLOTH
-	max_bites = 4
+	bites_limit = 4
 	nutritional_value = 10
 
 
@@ -99,7 +99,7 @@
 /obj/item/clothing/head/Initialize(mapload)
 	. = ..()
 	material_type = MATERIAL_CLASS_CLOTH
-	max_bites = 6
+	bites_limit = 6
 	nutritional_value = 10
 
 /obj/item/clothing/head/helmet/Initialize(mapload)
@@ -150,23 +150,23 @@
 /obj/item/clothing/suit/Initialize(mapload)
 	. = ..()
 	material_type = MATERIAL_CLASS_CLOTH
-	max_bites = 16
+	bites_limit = 16
 	nutritional_value = 10
 
 /obj/item/clothing/suit/hooded/Initialize(mapload)
 	. = ..()
 	material_type = MATERIAL_CLASS_CLOTH
-	max_bites = 20
+	bites_limit = 20
 
 /obj/item/clothing/suit/chef/Initialize(mapload)
 	. = ..()
 	material_type = MATERIAL_CLASS_CLOTH
-	max_bites = 8
+	bites_limit = 8
 
 /obj/item/clothing/suit/apron/Initialize(mapload)
 	. = ..()
 	material_type = MATERIAL_CLASS_CLOTH
-	max_bites = 8
+	bites_limit = 8
 
 /obj/item/clothing/suit/chameleon/Initialize(mapload)
 	. = ..()

@@ -11,9 +11,9 @@
 	throw_speed = 4
 	throw_range = 20
 	discrete = 1
-	max_bites = 30 //The maximum amount of bites before the soap is depleted
 	var/cleanspeed = 50 //slower than mop
 	var/times_eaten = 0 //How many times a Drask has chewed on this bar of soap
+	var/max_bites = 30 //The maximum amount of bites before the soap is depleted
 
 /obj/item/soap/Initialize(mapload)
 	. = ..()

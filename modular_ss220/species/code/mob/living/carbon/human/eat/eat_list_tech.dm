@@ -7,57 +7,57 @@
 /obj/item/flashlight/Initialize(mapload)
 	. = ..()
 	material_type = MATERIAL_CLASS_TECH
-	max_bites = 8
+	bites_limit = 8
 	nutritional_value = 2
 	is_only_grab_intent = TRUE	//всё-таки используется в подсвечивании глаз тенеморфам
 
 /obj/item/clothing/head/hardhat/Initialize(mapload)
 	. = ..()
 	material_type = MATERIAL_CLASS_TECH
-	max_bites = 8
+	bites_limit = 8
 	nutritional_value = 2
 
 /obj/item/holosign_creator/Initialize(mapload)
 	. = ..()
 	material_type = MATERIAL_CLASS_TECH
-	max_bites = 6
+	bites_limit = 6
 	nutritional_value = 3
 
 /obj/item/signmaker/Initialize(mapload)
 	. = ..()
 	material_type = MATERIAL_CLASS_TECH
-	max_bites = 6
+	bites_limit = 6
 	nutritional_value = 3
 
 /obj/item/pipe_painter/Initialize(mapload)
 	. = ..()
 	material_type = MATERIAL_CLASS_TECH
-	max_bites = 10
+	bites_limit = 10
 	nutritional_value = 3
 
 /obj/item/airlock_painter/Initialize(mapload)
 	. = ..()
 	material_type = MATERIAL_CLASS_TECH
-	max_bites = 10
+	bites_limit = 10
 	nutritional_value = 3
 
 /obj/item/laser_pointer/Initialize(mapload)
 	. = ..()
 	material_type = MATERIAL_CLASS_TECH
-	max_bites = 1
+	bites_limit = 1
 	nutritional_value = 15
 	is_only_grab_intent = TRUE	//лазером можно светить в глаза
 
 /obj/item/radio/Initialize(mapload)
 	. = ..()
 	material_type = MATERIAL_CLASS_TECH
-	max_bites = 10
+	bites_limit = 10
 	nutritional_value = 5
 
 /obj/item/gps/Initialize(mapload)
 	. = ..()
 	material_type = MATERIAL_CLASS_TECH
-	max_bites = 15
+	bites_limit = 15
 	nutritional_value = 3
 
 
@@ -66,45 +66,45 @@
 /obj/item/t_scanner/Initialize(mapload)
 	. = ..()
 	material_type = MATERIAL_CLASS_TECH
-	max_bites = 2
+	bites_limit = 2
 	nutritional_value = 20
 
 /obj/item/slime_scanner/Initialize(mapload)
 	. = ..()
 	material_type = MATERIAL_CLASS_TECH
-	max_bites = 6
+	bites_limit = 6
 	nutritional_value = 20
 
 /obj/item/sensor_device/Initialize(mapload)
 	. = ..()
 	material_type = MATERIAL_CLASS_TECH
-	max_bites = 6
+	bites_limit = 6
 	nutritional_value = 20
 
 /obj/item/mining_scanner/Initialize(mapload)
 	. = ..()
 	material_type = MATERIAL_CLASS_TECH
-	max_bites = 6
+	bites_limit = 6
 	nutritional_value = 15
 
 /obj/item/pinpointer/Initialize(mapload)
 	. = ..()
 	material_type = MATERIAL_CLASS_TECH
-	max_bites = 6
+	bites_limit = 6
 	nutritional_value = 20
 
 //Используемые на карбонах
 /obj/item/healthanalyzer/Initialize(mapload)
 	. = ..()
 	material_type = MATERIAL_CLASS_TECH
-	max_bites = 3
+	bites_limit = 3
 	nutritional_value = 15
 	is_only_grab_intent = TRUE
 
 /obj/item/bodyanalyzer/Initialize(mapload)
 	. = ..()
 	material_type = MATERIAL_CLASS_TECH
-	max_bites = 4
+	bites_limit = 4
 	nutritional_value = 20
 	is_only_grab_intent = TRUE
 
@@ -115,21 +115,21 @@
 /obj/item/plant_analyzer/Initialize(mapload)
 	. = ..()
 	material_type = MATERIAL_CLASS_TECH
-	max_bites = 4
+	bites_limit = 4
 	nutritional_value = 20
 	is_only_grab_intent = TRUE
 
 /obj/item/autopsy_scanner/Initialize(mapload)
 	. = ..()
 	material_type = MATERIAL_CLASS_TECH
-	max_bites = 6
+	bites_limit = 6
 	nutritional_value = 20
 	is_only_grab_intent = TRUE
 
 /obj/item/reagent_scanner/Initialize(mapload)
 	. = ..()
 	material_type = MATERIAL_CLASS_TECH
-	max_bites = 6
+	bites_limit = 6
 	nutritional_value = 15
 	is_only_grab_intent = TRUE
 
@@ -140,13 +140,13 @@
 /obj/item/analyzer/Initialize(mapload)
 	. = ..()
 	material_type = MATERIAL_CLASS_TECH
-	max_bites = 6
+	bites_limit = 6
 	nutritional_value = 15
 
 /obj/item/melee/baton/Initialize(mapload)
 	. = ..()
 	material_type = MATERIAL_CLASS_TECH
-	max_bites = 6
+	bites_limit = 6
 	nutritional_value = 10
 	is_only_grab_intent = TRUE
 
@@ -160,19 +160,19 @@
 /obj/item/circuitboard/Initialize(mapload)
 	. = ..()
 	material_type = MATERIAL_CLASS_TECH
-	max_bites = 3
+	bites_limit = 3
 	nutritional_value = 20
 
 /obj/item/borg/upgrade/Initialize(mapload)
 	. = ..()
 	material_type = MATERIAL_CLASS_TECH
-	max_bites = 3
+	bites_limit = 3
 	nutritional_value = 20
 
 /obj/item/multitool/Initialize(mapload)
 	. = ..()
 	material_type = MATERIAL_CLASS_TECH
-	max_bites = 5
+	bites_limit = 5
 	nutritional_value = 10
 
 /obj/item/multitool/abductor
@@ -184,75 +184,75 @@
 /obj/item/radio/headset/Initialize(mapload)
 	. = ..()
 	material_type = MATERIAL_CLASS_TECH
-	max_bites = 1
+	bites_limit = 1
 	nutritional_value = 20
 	is_only_grab_intent = TRUE	//чтобы случайно не надкусили
 
 /obj/item/pda/Initialize(mapload)
 	. = ..()
 	material_type = MATERIAL_CLASS_TECH
-	max_bites = 10
+	bites_limit = 10
 	nutritional_value = 5
 	is_only_grab_intent = TRUE
 
 /obj/item/paicard/Initialize(mapload)
 	. = ..()
 	material_type = MATERIAL_CLASS_TECH
-	max_bites = 10
+	bites_limit = 10
 	nutritional_value = 15
 
 /obj/item/machineprototype/Initialize(mapload)
 	. = ..()
 	material_type = MATERIAL_CLASS_TECH
-	max_bites = 20
+	bites_limit = 20
 	nutritional_value = 15
 
 /obj/item/mobcapsule/Initialize(mapload) //lazarus
 	. = ..()
 	material_type = MATERIAL_CLASS_TECH
-	max_bites = 6
+	bites_limit = 6
 	nutritional_value = 30
 
 /obj/item/camera_bug/Initialize(mapload)	//Hakuna matata
 	. = ..()
 	material_type = MATERIAL_CLASS_TECH
-	max_bites = 4
+	bites_limit = 4
 	nutritional_value = 30
 	is_only_grab_intent = TRUE
 
 /obj/item/door_remote/Initialize(mapload)
 	. = ..()
 	material_type = MATERIAL_CLASS_TECH
-	max_bites = 5
+	bites_limit = 5
 	nutritional_value = 80
 	is_only_grab_intent = TRUE
 
 /obj/item/encryptionkey/Initialize(mapload)
 	. = ..()
 	material_type = MATERIAL_CLASS_TECH
-	max_bites = 1
+	bites_limit = 1
 	nutritional_value = 30
 
 /obj/item/implanter
-	max_bites = 1
+	bites_limit = 1
 	nutritional_value = 15
 
 /obj/item/radio/beacon/Initialize(mapload)
 	. = ..()
 	material_type = MATERIAL_CLASS_TECH
-	max_bites = 1
+	bites_limit = 1
 	nutritional_value = 30
 
 /obj/item/aicard/Initialize(mapload)	//тяжело жуется
 	. = ..()
 	material_type = MATERIAL_CLASS_TECH
-	max_bites = 40
+	bites_limit = 40
 	nutritional_value = 5
 
 /obj/item/holder/drone/Initialize(mapload)
 	. = ..()
 	material_type = MATERIAL_CLASS_TECH
-	max_bites = 10
+	bites_limit = 10
 	nutritional_value = 15
 
 
@@ -261,37 +261,37 @@
 /obj/item/pod_parts/core/Initialize(mapload)
 	. = ..()
 	material_type = MATERIAL_CLASS_TECH
-	max_bites = 20
+	bites_limit = 20
 	nutritional_value = 10
 
 /obj/item/airlock_electronics/Initialize(mapload)
 	. = ..()
 	material_type = MATERIAL_CLASS_TECH
-	max_bites = 1
+	bites_limit = 1
 	nutritional_value = 10
 
 /obj/item/airalarm_electronics/Initialize(mapload)
 	. = ..()
 	material_type = MATERIAL_CLASS_TECH
-	max_bites = 1
+	bites_limit = 1
 	nutritional_value = 10
 
 /obj/item/apc_electronics/Initialize(mapload)
 	. = ..()
 	material_type = MATERIAL_CLASS_TECH
-	max_bites = 1
+	bites_limit = 1
 	nutritional_value = 15
 
 /obj/item/assembly/Initialize(mapload)
 	. = ..()
 	material_type = MATERIAL_CLASS_TECH
-	max_bites = 1
+	bites_limit = 1
 	nutritional_value = 20
 
 /obj/item/stock_parts/Initialize(mapload)
 	. = ..()
 	material_type = MATERIAL_CLASS_TECH
-	max_bites = 1
+	bites_limit = 1
 	nutritional_value = 5
 
 /obj/item/stock_parts/capacitor/adv/Initialize(mapload)
@@ -348,44 +348,44 @@
 /obj/item/rad_laser/Initialize(mapload)	//health analyzer с радиацией. Смаковать таким одно удовольствие. Если конечно найдут.
 	. = ..()
 	material_type = MATERIAL_CLASS_TECH
-	max_bites = 20
+	bites_limit = 20
 	nutritional_value = 30
 	is_only_grab_intent = TRUE
 
 /obj/item/jammer/Initialize(mapload)
 	. = ..()
 	material_type = MATERIAL_CLASS_TECH
-	max_bites =	6
+	bites_limit =	6
 	nutritional_value = 80
 
 /obj/item/teleporter/Initialize(mapload)	//Нет, это не хайриск, это синди-телепортер
 	. = ..()
 	material_type = MATERIAL_CLASS_TECH
-	max_bites = 8
+	bites_limit = 8
 	nutritional_value = 120
 
 /obj/item/batterer/Initialize(mapload)
 	. = ..()
 	material_type = MATERIAL_CLASS_TECH
-	max_bites = 6
+	bites_limit = 6
 	nutritional_value = 100
 	is_only_grab_intent = TRUE
 
 /obj/item/card/emag/Initialize(mapload)		//Каждый кусочек по ощущениям растекается словно мед по твоим воксовым кубам...
 	. = ..()
 	material_type = MATERIAL_CLASS_TECH
-	max_bites = 10
+	bites_limit = 10
 	nutritional_value = 200
 	is_only_grab_intent = TRUE
 
 /obj/item/card/emag_broken/Initialize(mapload)
 	. = ..()
 	material_type = MATERIAL_CLASS_TECH
-	max_bites = 10
+	bites_limit = 10
 	nutritional_value = 50
 
 /obj/item/card/data/clown/Initialize(mapload)
 	. = ..()
 	material_type = MATERIAL_CLASS_TECH
-	max_bites = 1000
+	bites_limit = 1000
 	nutritional_value = 1
