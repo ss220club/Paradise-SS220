@@ -145,7 +145,7 @@
 		colour = "#b7c3ccff"
 	else if((current_bites >= bites_split * 2) && current_bites <= (bites_split * 3))
 		colour = "#929eabff"
-	else if((current_bites >= bites_split * 3))
+	else if(current_bites >= bites_split * 3)
 		colour = "#697581ff"
 
 	if(colour)
