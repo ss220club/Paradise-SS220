@@ -1271,6 +1271,12 @@
 /obj/item/clothing/shoes/orange,
 /obj/item/coin/antagtoken/syndicate,
 /obj/item/clothing/suit/jacket/driver,
+/obj/item/clothing/under/color/orange/prison,
+/obj/item/clothing/shoes/orange,
+/obj/item/card/id/prisoner,
+/obj/item/card/id/prisoner,
+/obj/item/card/id/prisoner,
+/obj/item/card/id/prisoner,
 /turf/simulated/floor/plating/asteroid{
 	icon_state = "asteroidfloor"
 	},
@@ -2912,8 +2918,7 @@
 	id_tag = "prison_hang"
 	},
 /obj/machinery/door_control/bolt_control/north{
-	id = "prison_hang";
-	req_one_access_txt = "271"
+	id = "prison_hang"
 	},
 /obj/effect/mapping_helpers/airlock/access/any/engineering/general,
 /obj/machinery/door/firedoor,
@@ -6389,6 +6394,25 @@
 /turf/simulated/wall/r_wall,
 /area/ruin/space/spacehotelv1/guestroom2{
 	name = "Prison Recycling"
+	})
+"nJ" = (
+/obj/structure/table/reinforced,
+/obj/machinery/door/window/reinforced/normal{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/airlock/windoor/access/any/security/armory{
+	dir = 4
+	},
+/obj/item/storage/belt/security,
+/obj/item/storage/belt/security,
+/obj/item/storage/belt/security,
+/obj/item/storage/belt/security,
+/obj/item/storage/belt/security,
+/obj/item/storage/belt/security,
+/obj/item/storage/belt/security,
+/turf/simulated/floor/plasteel/dark,
+/area/ruin/space/spacehotelv1/guestroom4{
+	name = "Security Wing"
 	})
 "nK" = (
 /obj/structure/rack,
@@ -16091,6 +16115,19 @@
 /area/ruin/space/spacehotelv1/barber{
 	name = "South Corridor"
 	})
+"Iw" = (
+/obj/machinery/crema_switch{
+	pixel_y = 32
+	},
+/obj/structure/table/wood,
+/obj/item/reagent_containers/drinks/bottle/holywater,
+/turf/simulated/floor/plasteel{
+	dir = 4;
+	icon_state = "chapel"
+	},
+/area/ruin/space/spacehotelv1/guestroom3{
+	name = "Prison Chapel"
+	})
 "Ix" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -16775,6 +16812,16 @@
 /area/ruin/space/spacehotelv1/bar{
 	name = "Prison Engineering"
 	})
+"JY" = (
+/obj/structure/crematorium{
+	dir = 8
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "chapel"
+	},
+/area/ruin/space/spacehotelv1/guestroom3{
+	name = "Prison Chapel"
+	})
 "JZ" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -17007,6 +17054,23 @@
 	},
 /obj/effect/mapping_helpers/airlock/access/any/security/doors,
 /obj/machinery/door/firedoor,
+/turf/simulated/floor/plasteel/dark{
+	icon_state = "dark_large"
+	},
+/area/ruin/space/spacehotelv1/engi1{
+	name = "North Corridor"
+	})
+"KB" = (
+/obj/machinery/door/airlock/security{
+	id_tag = "prison_kpp_mine"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/door/firedoor,
+/obj/effect/mapping_helpers/airlock/access/any/security/doors,
 /turf/simulated/floor/plasteel/dark{
 	icon_state = "dark_large"
 	},
@@ -18660,6 +18724,7 @@
 	})
 "Ow" = (
 /obj/structure/closet/secure_closet/chaplain,
+/obj/item/gun/projectile/shotgun/riot/short,
 /turf/simulated/floor/carpet/lone,
 /area/ruin/space/spacehotelv1/guestroom3{
 	name = "Prison Chapel"
@@ -43635,7 +43700,7 @@ CB
 fa
 Gl
 VK
-Ra
+KB
 ik
 zd
 Yv
@@ -50567,7 +50632,7 @@ rl
 Us
 FQ
 wG
-dO
+nJ
 mB
 cX
 Us
@@ -51877,10 +51942,10 @@ Wo
 Lt
 js
 Fw
+Kw
+Lw
+Lw
 lJ
-zl
-zl
-zl
 Wg
 zl
 zl
@@ -52135,9 +52200,9 @@ Hm
 Qi
 Lq
 lJ
-zl
-zl
-ok
+js
+Fw
+lJ
 Wg
 zl
 Yv
@@ -52392,9 +52457,9 @@ Hm
 Lw
 Lw
 lJ
-zl
-zl
-zl
+Iw
+JY
+lJ
 Wg
 xV
 zl
