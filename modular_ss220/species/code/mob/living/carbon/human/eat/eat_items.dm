@@ -82,7 +82,7 @@
 
 //Eat all thing in my hand
 /obj/item/proc/item_eat(mob/living/carbon/target, mob/user)
-	if (!check_item_eat(target, user))
+	if(!check_item_eat(target, user))
 		return FALSE
 
 	var/chat_message_to_user = "Вы кормите [target] [src.name]."
@@ -127,7 +127,7 @@
 		to_chat(user, "<span class='notice'>[target == user ? "Вы доели" : "[target] доел"] [src.name].</span>")
 		qdel(src)
 
-/obj/item/proc/forceFed(mob/living/carbon/target, mob/user, var/instant_application = FALSE)
+/obj/item/proc/forceFed(mob/living/carbon/target, mob/user, instant_application = FALSE)
 	if(!instant_application)
 		visible_message("<span class='warning'>[user] пытается накормить [target], запихивая в рот [src.name].</span>")
 
