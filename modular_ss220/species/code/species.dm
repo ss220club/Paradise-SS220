@@ -6,7 +6,7 @@
 		return TRUE
 	var/list/play_records = params2list(M.client.prefs.exp)
 	var/record = text2num(play_records[EXP_TYPE_LIVING])
-	if(record < required_playtimes_minutes || M.client.donator_level == 0)
+	if(record < required_playtimes_minutes && M.client.donator_level == 0)
 		return FALSE
 	return TRUE
 
