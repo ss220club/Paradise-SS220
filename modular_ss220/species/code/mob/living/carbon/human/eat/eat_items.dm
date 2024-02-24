@@ -68,7 +68,7 @@
 			bites_damage_string = "Видны оторванные части..."
 		else if((current_bites >= bites_split * 2) && current_bites <= (bites_split * 3))
 			bites_damage_string = "Видна внутренняя часть..."
-		else if((current_bites >= bites_split * 3))
+		else if(current_bites >= bites_split * 3)
 			bites_damage_string = "Осталась одна труха..."
 		material_string += "\n[bites_damage_string]"
 
