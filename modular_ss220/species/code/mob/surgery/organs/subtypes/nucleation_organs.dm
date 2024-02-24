@@ -72,6 +72,7 @@
 	if(!try_burn_hit(affected_user = user))
 		return ..()
 	user.drop_item()
+	forceMove(user.drop_location())
 
 /obj/item/organ/internal/nucleation/proc/try_burn_hit(obj/item/affected_item, mob/living/affected_user, def_zone)
 	if(burn_hit(affected_item, affected_user, def_zone))
@@ -115,7 +116,7 @@
 		var/obj/item/organ/external/organ = H.bodyparts_by_name[def_zone]
 		if(organ)
 			H.adjustFireLossByPart(amount_fire_loss, def_zone)
-			if(organ.burn_dam >= max_damage)
+			if(organ.burn_dam >= max_damage-5)
 				to_chat(H, span_danger("Испарил вашу конечность - [organ.name]!"))
 				QDEL_NULL(organ)
 				return TRUE

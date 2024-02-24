@@ -7,20 +7,19 @@
 	var/is_only_grab_intent = FALSE	//Grab if help_intent was used
 	var/is_examine_bites = TRUE
 
+	// Healing Special Effect
+	var/overall_heal_amount = 0
+	var/fracture_repair_probability = 5
+
 /obj/item/examine(mob/user)
 	var/material_string = item_string_material(user)
 	. = ..(user, "", material_string)
 
 /obj/item/attack(mob/living/target, mob/living/user, def_zone)
-	. = ..()
 	if(check_item_eat(target, user))
-		return FALSE
-
-/obj/item/afterattack(atom/target, mob/user, proximity, params)
+		try_item_eat(target, user)
+		return TRUE
 	. = ..()
-	if(!proximity)
-		return
-	try_item_eat(target, user)
 
 /obj/item/proc/check_item_eat(mob/target, mob/user)
 	switch(material_type)
@@ -114,6 +113,8 @@
 	playsound(user.loc, 'sound/items/eatfood.ogg', 50, 0)
 	target.adjust_nutrition(nutritional_value)
 	item_bite(target, user)
+	if(overall_heal_amount > 0)
+		item_heal(target)
 
 	SSticker.score.score_food_eaten++
 	return TRUE
@@ -149,3 +150,12 @@
 
 	if (colour)
 		add_atom_colour(colour, FIXED_COLOUR_PRIORITY)
+
+/obj/item/proc/item_heal(mob/living/carbon/human/H)
+	H.heal_overall_damage(overall_heal_amount, overall_heal_amount)
+	if(prob(fracture_repair_probability)) // 5% chance per proc to find a random limb, and mend it
+		var/list/our_organs = H.bodyparts.Copy()
+		shuffle(our_organs)
+		for(var/obj/item/organ/external/L in our_organs)
+			if(L.mend_fracture())
+				break // We're only checking one limb here, bucko
