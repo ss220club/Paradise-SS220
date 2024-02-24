@@ -17,7 +17,7 @@
 
 /obj/item/afterattack(atom/target, mob/user, proximity, params)
 	. = ..()
- 	if(!proximity)
+	if(!proximity)
 		return
 	try_item_eat(target, user)
 

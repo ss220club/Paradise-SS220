@@ -1,16 +1,19 @@
-/obj/item/clothing/suit/New()
+/obj/item/clothing/suit/Initialize(mapload)
 	. = ..()
 	max_integrity *= 2
 	integrity_failure *= 2
 
 
 //==== =Moth-Nian-Tkach food =====
-/obj/item/bedsheet
+/obj/item/bedsheet/Initialize(mapload)
+	. = ..()
 	material_type = MATERIAL_CLASS_CLOTH
 	max_bites = 10
 	nutritional_value = 15
 
-/obj/item/clothing
+/obj/item/clothing/Initialize(mapload)
+
+	. = ..()
 	material_type = MATERIAL_CLASS_NONE
 	max_bites = 10
 	integrity_bite = 20
@@ -18,7 +21,8 @@
 
 
 //UNDER
-/obj/item/clothing/under
+/obj/item/clothing/under/Initialize(mapload)
+	. = ..()
 	material_type = MATERIAL_CLASS_CLOTH
 	max_bites = 10
 	integrity_bite = 40
@@ -26,161 +30,215 @@
 
 
 //NECK
-/obj/item/clothing/neck
+/obj/item/clothing/neck/Initialize(mapload)
+	. = ..()
 	material_type = MATERIAL_CLASS_CLOTH
 	max_bites = 8
 	nutritional_value = 10
 
 
 //ACCESSORY
-/obj/item/clothing/accessory
+/obj/item/clothing/accessory/Initialize(mapload)
+	. = ..()
 	material_type = MATERIAL_CLASS_CLOTH
 	max_bites = 1
 
-/obj/item/clothing/accessory/holobadge
+/obj/item/clothing/accessory/holobadge/Initialize(mapload)
+	. = ..()
 	material_type = MATERIAL_CLASS_NONE
-/obj/item/clothing/accessory/lawyers_badge
+/obj/item/clothing/accessory/lawyers_badge/Initialize(mapload)
+	. = ..()
 	material_type = MATERIAL_CLASS_NONE
-/obj/item/clothing/accessory/necklace
+/obj/item/clothing/accessory/necklace/Initialize(mapload)
+	. = ..()
 	material_type = MATERIAL_CLASS_NONE
-/obj/item/clothing/accessory/medal
+/obj/item/clothing/accessory/medal/Initialize(mapload)
+	. = ..()
 	material_type = MATERIAL_CLASS_NONE
 
 
 //GLOVES
-/obj/item/clothing/gloves
+/obj/item/clothing/gloves/Initialize(mapload)
+	. = ..()
 	material_type = MATERIAL_CLASS_CLOTH
 	max_bites = 2
 	nutritional_value = 10
 
-/obj/item/clothing/gloves/color
+/obj/item/clothing/gloves/color/Initialize(mapload)
+	. = ..()
 	material_type = MATERIAL_CLASS_CLOTH
 	max_bites = 2
 	nutritional_value = 10
 
-/obj/item/clothing/gloves/color/yellow
+/obj/item/clothing/gloves/color/yellow/Initialize(mapload)
+	. = ..()
 	material_type = MATERIAL_CLASS_NONE
-/obj/item/clothing/gloves/color/red/insulated
+/obj/item/clothing/gloves/color/red/insulated/Initialize(mapload)
+	. = ..()
 	material_type = MATERIAL_CLASS_NONE
-/obj/item/clothing/gloves/color/red/insulated
+/obj/item/clothing/gloves/color/red/insulated/Initialize(mapload)
+	. = ..()
 	material_type = MATERIAL_CLASS_NONE
-/obj/item/clothing/gloves/color/latex
+/obj/item/clothing/gloves/color/latex/Initialize(mapload)
+	. = ..()
 	material_type = MATERIAL_CLASS_NONE
-/obj/item/clothing/gloves/color/captain
+/obj/item/clothing/gloves/color/captain/Initialize(mapload)
+	. = ..()
 	material_type = MATERIAL_CLASS_NONE
 
 
 //MASK
-/obj/item/clothing/mask/bandana
+/obj/item/clothing/mask/bandana/Initialize(mapload)
+	. = ..()
 	material_type = MATERIAL_CLASS_CLOTH
 	max_bites = 4
 	nutritional_value = 10
 
 
 //HEAD
-/obj/item/clothing/head
+/obj/item/clothing/head/Initialize(mapload)
+	. = ..()
 	material_type = MATERIAL_CLASS_CLOTH
 	max_bites = 6
 	nutritional_value = 10
 
-/obj/item/clothing/head/helmet
+/obj/item/clothing/head/helmet/Initialize(mapload)
+	. = ..()
 	material_type = MATERIAL_CLASS_NONE
-/obj/item/clothing/head/helmet/space
+/obj/item/clothing/head/helmet/space/Initialize(mapload)
+	. = ..()
 	material_type = MATERIAL_CLASS_NONE
-/obj/item/clothing/head/collectable
+/obj/item/clothing/head/collectable/Initialize(mapload)
+	. = ..()
 	material_type = MATERIAL_CLASS_NONE
-/obj/item/clothing/head/caphat
+/obj/item/clothing/head/caphat/Initialize(mapload)
+	. = ..()
 	material_type = MATERIAL_CLASS_NONE
-/obj/item/clothing/head/det_hat
+/obj/item/clothing/head/det_hat/Initialize(mapload)
+	. = ..()
 	material_type = MATERIAL_CLASS_NONE
-/obj/item/clothing/head/beret
+/obj/item/clothing/head/beret/Initialize(mapload)
+	. = ..()
 	material_type = MATERIAL_CLASS_NONE
-/obj/item/clothing/head/HoS
+/obj/item/clothing/head/HoS/Initialize(mapload)
+	. = ..()
 	material_type = MATERIAL_CLASS_NONE
-/obj/item/clothing/head/warden
+/obj/item/clothing/head/warden/Initialize(mapload)
+	. = ..()
 	material_type = MATERIAL_CLASS_NONE
-/obj/item/clothing/head/officer
+/obj/item/clothing/head/officer/Initialize(mapload)
+	. = ..()
 	material_type = MATERIAL_CLASS_NONE
-/obj/item/clothing/head/surgery
+/obj/item/clothing/head/surgery/Initialize(mapload)
+	. = ..()
 	material_type = MATERIAL_CLASS_NONE
-/obj/item/clothing/head/welding
+/obj/item/clothing/head/welding/Initialize(mapload)
+	. = ..()
 	material_type = MATERIAL_CLASS_NONE
-/obj/item/clothing/head/cakehat
+/obj/item/clothing/head/cakehat/Initialize(mapload)
+	. = ..()
 	material_type = MATERIAL_CLASS_NONE
-/obj/item/clothing/head/kitty	//Нет. Нельзя.
+/obj/item/clothing/head/kitty/Initialize(mapload)	//Нет. Нельзя.
+	. = ..()
 	material_type = MATERIAL_CLASS_NONE
-/obj/item/clothing/head/headmirror
+/obj/item/clothing/head/headmirror/Initialize(mapload)
+	. = ..()
 	material_type = MATERIAL_CLASS_NONE
 
 
 //SUIT
-/obj/item/clothing/suit
+/obj/item/clothing/suit/Initialize(mapload)
+	. = ..()
 	material_type = MATERIAL_CLASS_CLOTH
 	max_bites = 16
 	nutritional_value = 10
 
-/obj/item/clothing/suit/hooded
+/obj/item/clothing/suit/hooded/Initialize(mapload)
+	. = ..()
 	material_type = MATERIAL_CLASS_CLOTH
 	max_bites = 20
 
-/obj/item/clothing/suit/chef
+/obj/item/clothing/suit/chef/Initialize(mapload)
+	. = ..()
 	material_type = MATERIAL_CLASS_CLOTH
 	max_bites = 8
 
-/obj/item/clothing/suit/apron
+/obj/item/clothing/suit/apron/Initialize(mapload)
+	. = ..()
 	material_type = MATERIAL_CLASS_CLOTH
 	max_bites = 8
 
-/obj/item/clothing/suit/chameleon
+/obj/item/clothing/suit/chameleon/Initialize(mapload)
+	. = ..()
 	material_type = MATERIAL_CLASS_NONE
-/obj/item/clothing/suit/space
+/obj/item/clothing/suit/space/Initialize(mapload)
+	. = ..()
 	material_type = MATERIAL_CLASS_NONE
-/obj/item/clothing/suit/armor
+/obj/item/clothing/suit/armor/Initialize(mapload)
+	. = ..()
 	material_type = MATERIAL_CLASS_NONE
-/obj/item/clothing/suit/storage		//jacket e.t.c.
+/obj/item/clothing/suit/storage/Initialize(mapload)		//jacket e.t.c.
+	. = ..()
 	material_type = MATERIAL_CLASS_NONE
-/obj/item/clothing/suit/fire
+/obj/item/clothing/suit/fire/Initialize(mapload)
+	. = ..()
 	material_type = MATERIAL_CLASS_NONE
 
 
 
 //Full Costume
-/obj/item/clothing/head/cardborg
+/obj/item/clothing/head/cardborg/Initialize(mapload)
+	. = ..()
 	material_type = MATERIAL_CLASS_NONE
-/obj/item/clothing/suit/cardborg
-	material_type = MATERIAL_CLASS_NONE
-
-/obj/item/clothing/head/bio_hood
-	material_type = MATERIAL_CLASS_NONE
-/obj/item/clothing/suit/bio_suit
+/obj/item/clothing/suit/cardborg/Initialize(mapload)
+	. = ..()
 	material_type = MATERIAL_CLASS_NONE
 
-/obj/item/clothing/head/bomb_hood
+/obj/item/clothing/head/bio_hood/Initialize(mapload)
+	. = ..()
 	material_type = MATERIAL_CLASS_NONE
-/obj/item/clothing/suit/bomb_suit
-	material_type = MATERIAL_CLASS_NONE
-
-/obj/item/clothing/head/radiation
-	material_type = MATERIAL_CLASS_NONE
-/obj/item/clothing/suit/radiation
+/obj/item/clothing/suit/bio_suit/Initialize(mapload)
+	. = ..()
 	material_type = MATERIAL_CLASS_NONE
 
-/obj/item/clothing/head/wizard
+/obj/item/clothing/head/bomb_hood/Initialize(mapload)
+	. = ..()
 	material_type = MATERIAL_CLASS_NONE
-/obj/item/clothing/suit/wizrobe
-	material_type = MATERIAL_CLASS_NONE
-
-/obj/item/clothing/head/beekeeper_head
-	material_type = MATERIAL_CLASS_NONE
-/obj/item/clothing/suit/beekeeper_suit
+/obj/item/clothing/suit/bomb_suit/Initialize(mapload)
+	. = ..()
 	material_type = MATERIAL_CLASS_NONE
 
-/obj/item/clothing/suit/hooded/explorer
+/obj/item/clothing/head/radiation/Initialize(mapload)
+	. = ..()
 	material_type = MATERIAL_CLASS_NONE
-/obj/item/clothing/head/hooded/explorer
+/obj/item/clothing/suit/radiation/Initialize(mapload)
+	. = ..()
 	material_type = MATERIAL_CLASS_NONE
 
-/obj/item/clothing/head/beanie/durathread
+/obj/item/clothing/head/wizard/Initialize(mapload)
+	. = ..()
 	material_type = MATERIAL_CLASS_NONE
-/obj/item/clothing/under/misc/durathread
+/obj/item/clothing/suit/wizrobe/Initialize(mapload)
+	. = ..()
+	material_type = MATERIAL_CLASS_NONE
+
+/obj/item/clothing/head/beekeeper_head/Initialize(mapload)
+	. = ..()
+	material_type = MATERIAL_CLASS_NONE
+/obj/item/clothing/suit/beekeeper_suit/Initialize(mapload)
+	. = ..()
+	material_type = MATERIAL_CLASS_NONE
+
+/obj/item/clothing/suit/hooded/explorer/Initialize(mapload)
+	. = ..()
+	material_type = MATERIAL_CLASS_NONE
+/obj/item/clothing/head/hooded/explorer/Initialize(mapload)
+	. = ..()
+	material_type = MATERIAL_CLASS_NONE
+
+/obj/item/clothing/head/beanie/durathread/Initialize(mapload)
+	. = ..()
+	material_type = MATERIAL_CLASS_NONE
+/obj/item/clothing/under/misc/durathread/Initialize(mapload)
+	. = ..()
 	material_type = MATERIAL_CLASS_NONE

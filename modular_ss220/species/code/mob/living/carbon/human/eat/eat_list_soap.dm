@@ -7,25 +7,31 @@
 
 //===== Drask food =====
 //Soap
-/obj/item/soap
+/obj/item/soap/Initialize(mapload)
+	. = ..()
 	material_type = MATERIAL_CLASS_SOAP
 	max_bites = 6
 	nutritional_value = 15
 	is_only_grab_intent = TRUE
 
-/obj/item/soap/homemade
+/obj/item/soap/homemade/Initialize(mapload)
+	. = ..()
 	nutritional_value = 30
 
-/obj/item/soap/deluxe
+/obj/item/soap/deluxe/Initialize(mapload)
+	. = ..()
 	nutritional_value = 60
 
-/obj/item/soap/syndie
+/obj/item/soap/syndie/Initialize(mapload)
+	. = ..()
 	nutritional_value = 100
 
-/obj/item/soap/nanotrasen
+/obj/item/soap/nanotrasen/Initialize(mapload)
+	. = ..()
 	max_bites = 12
 	nutritional_value = 15
 
-/obj/item/soap/ducttape
+/obj/item/soap/ducttape/Initialize(mapload)
+	. = ..()
 	max_bites = 2
 	nutritional_value = 10
