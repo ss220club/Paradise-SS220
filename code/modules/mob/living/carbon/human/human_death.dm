@@ -34,7 +34,7 @@
 		M.forceMove(drop_location())
 		visible_message("<span class='danger'>[M] bursts out of [src]!</span>")
 
-	if(!ismachineperson(src))
+	if(!ismachineperson(src) && !isnucleation(src)) // SS220 EDIT - SPECIES
 		hgibs(loc, dna)
 	else
 		new /obj/effect/decal/cleanable/blood/gibs/robot(loc)
