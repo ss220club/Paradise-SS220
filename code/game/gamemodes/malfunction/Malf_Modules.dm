@@ -582,7 +582,7 @@
 	if(!owner_AI.can_place_transformer(src))
 		return
 	active = TRUE
-	if(tgui_alert(owner, "Вы уверены, что хотите поставить машину тут?", "Вы уверены?", list("Да", "Нет")) == "No")
+	if(tgui_alert(owner, "Вы уверены, что хотите поставить машину тут?", "Вы уверены?", list("Да", "Нет")) != "Yes")
 		active = FALSE
 		return
 	if(!owner_AI.can_place_transformer(src))
