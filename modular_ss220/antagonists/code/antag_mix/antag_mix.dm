@@ -100,7 +100,7 @@
 		if(!length(drafted_scenarios) || (current_antag_fraction >= max_antag_fraction))
 			break
 
-		var/datum/antag_scenario/picked_scenario = pickweight(drafted_scenarios)
+		var/datum/antag_scenario/picked_scenario = length(drafted_scenarios) == 1 ? drafted_scenarios[1] : pickweight(drafted_scenarios)
 		if(picked_scenario.cost > budget_left)
 			drafted_scenarios.Remove(picked_scenario)
 			continue

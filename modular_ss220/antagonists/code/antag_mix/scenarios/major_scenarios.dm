@@ -8,8 +8,8 @@
 	antag_team = /datum/team/vox_raiders_team
 	required_players = 30
 	cost = 30
-	weight = 0.25
 	candidates_required = 2
+	weight = 1
 	antag_cap = 6	// 1 команда на сценарий из 2-6 воксов
 	team_size = 6
 
