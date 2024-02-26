@@ -82,8 +82,6 @@
 
 		choices["[mind_to_check.name]([alive_living_mob.ckey])"] = mind_to_check
 
-	if(!length(choices))
-		alert(admin, "Нет кандитатов для создания команды.")
 	sortTim(choices, GLOBAL_PROC_REF(cmp_text_asc))
 
 	var/list/candidates_list = list(first_raider)

@@ -50,6 +50,8 @@
 	var/list/recommended_species_active_pref
 	/// Multiplication modifier that increases the chance of landing by N times
 	var/recommended_species_mod = 0
+	// Will the scenario be selected repeatedly or only once?
+	var/execution_once = FALSE
 
 /datum/antag_scenario/New()
 	if(abstract)
