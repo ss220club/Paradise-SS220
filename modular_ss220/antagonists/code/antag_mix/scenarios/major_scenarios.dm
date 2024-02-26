@@ -9,8 +9,8 @@
 	required_players = 30
 	cost = 30
 	weight = 0.25
-	antag_cap = 6
 	candidates_required = 2
+	antag_cap = 6	// 1 команда на сценарий из 2-6 воксов
 	team_size = 6
 
 	is_crew_antag = FALSE
