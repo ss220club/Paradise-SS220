@@ -4,11 +4,6 @@
 #define TS_POINTS_PRINCE 30
 #define TS_POINTS_QUEEN 42
 
-#define TERROR_GREEN /mob/living/simple_animal/hostile/poison/terror_spider/green
-#define TERROR_WHITE /mob/living/simple_animal/hostile/poison/terror_spider/prince
-#define TERROR_PRINCESS /mob/living/simple_animal/hostile/poison/terror_spider/queen/princess
-#define TERROR_PRINCE /mob/living/simple_animal/hostile/poison/terror_spider/prince
-#define TERROR_QUEEN /mob/living/simple_animal/hostile/poison/terror_spider/queen
 
 /datum/event/spider_terror
 	announceWhen = 240
@@ -16,9 +11,30 @@
 	spawncount = 0 // amount of spawned spiders
 	var/spawnpoints = TS_POINTS_GREEN // weight points
 	/// lists for matching spiders and their weights
-	var/list/spider_types = list("TERROR_GREEN" = TERROR_GREEN, "TERROR_WHITE" = TERROR_WHITE, "TERROR_PRINCESS" = TERROR_PRINCESS, "TERROR_PRINCE" = TERROR_PRINCE, "TERROR_QUEEN" = TERROR_QUEEN)
-	var/list/spider_costs = list("TERROR_GREEN" = TS_POINTS_GREEN, "TERROR_WHITE" = TS_POINTS_WHITE, "TERROR_PRINCESS" = TS_POINTS_PRINCESS, "TERROR_PRINCE" = TS_POINTS_PRINCE, "TERROR_QUEEN" = TS_POINTS_QUEEN)
-	var/list/spider_counts = list("TERROR_GREEN" = 0, "TERROR_WHITE" = 0, "TERROR_PRINCESS" = 0, "TERROR_PRINCE" = 0, "TERROR_QUEEN" = 0)
+
+	var/list/spider_types = list(
+		"TERROR_GREEN" = /mob/living/simple_animal/hostile/poison/terror_spider/green,
+		"TERROR_WHITE" = /mob/living/simple_animal/hostile/poison/terror_spider/white,
+		"TERROR_PRINCESS" = /mob/living/simple_animal/hostile/poison/terror_spider/queen/princess,
+		"TERROR_PRINCE" = /mob/living/simple_animal/hostile/poison/terror_spider/prince,
+		"TERROR_QUEEN" = /mob/living/simple_animal/hostile/poison/terror_spider/queen
+	)
+
+	var/list/spider_costs = list(
+		"TERROR_GREEN" = TS_POINTS_GREEN,
+		"TERROR_WHITE" = TS_POINTS_WHITE,
+		"TERROR_PRINCESS" = TS_POINTS_PRINCESS,
+		"TERROR_PRINCE" = TS_POINTS_PRINCE,
+		"TERROR_QUEEN" = TS_POINTS_QUEEN
+	)
+
+	var/list/spider_counts = list(
+		"TERROR_GREEN" = 0,
+		"TERROR_WHITE" = 0,
+		"TERROR_PRINCESS" = 0,
+		"TERROR_PRINCE" = 0,
+		"TERROR_QUEEN" = 0
+	)
 
 /datum/event/spider_terror/start()
 	spawncount = 0 // yeah, still not 0
@@ -48,7 +64,7 @@
 
 		if(spawnpoints < TS_POINTS_GREEN || spawncount >= max_spiders)
 			break
-		
+
 	log_debug("selected [spawncount] spider(s)")
 	return spider_counts
 
@@ -93,9 +109,3 @@
 #undef TS_POINTS_PRINCESS
 #undef TS_POINTS_PRINCE
 #undef TS_POINTS_QUEEN
-
-#undef TERROR_GREEN
-#undef TERROR_WHITE
-#undef TERROR_PRINCESS
-#undef TERROR_PRINCE
-#undef TERROR_QUEEN
