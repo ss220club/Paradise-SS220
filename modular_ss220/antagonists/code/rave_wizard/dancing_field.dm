@@ -23,30 +23,35 @@
 
 /obj/effect/timestop/dancing/timestop()
 	playsound(get_turf(src), pick(sound_type), 100, 1, -1)
-	for(var/i in 1 to duration-1)
-		for(var/A in orange (freezerange, loc))
-			if(isliving(A))
-				var/mob/living/dancestoped_mob = A
-				if(dancestoped_mob in immune)
-					continue
-				dancestoped_mob.notransform = TRUE
-				dancestoped_mob.anchored = TRUE
-				if(ishostile(dancestoped_mob))
-					var/mob/living/simple_animal/hostile/H = dancestoped_mob
-					H.AIStatus = AI_OFF
-					H.LoseTarget()
-				stopped_atoms |= dancestoped_mob
-		for(var/mob/living/M in stopped_atoms)
-			if(get_dist(get_turf(M),get_turf(src)) > freezerange) //If they lagged/ran past the timestop somehow, just ignore them
-				unfreeze_mob(M)
-				stopped_atoms -= M
-			if(prob(emote_probability))
-				M.emote(pick(list("spin","dance","flip")), intentional = TRUE)
-		sleep(1)
+	for(var/i in 0 to duration-2)
+		addtimer(CALLBACK(src, PROC_REF(stop_and_dance_mobs_in_area)), i)
+	addtimer(CALLBACK(src, PROC_REF(release_frozen_mobs)), duration-1)
+	QDEL_IN(src, duration-1)
+	return
+
+/obj/effect/timestop/dancing/proc/release_frozen_mobs()
 	for(var/mob/living/M in stopped_atoms)
 		unfreeze_mob(M)
-	qdel(src)
-	return
+
+/obj/effect/timestop/dancing/proc/stop_and_dance_mobs_in_area()
+	for(var/A in orange (freezerange, loc))
+		if(isliving(A))
+			var/mob/living/dancestoped_mob = A
+			if(dancestoped_mob in immune)
+				continue
+			dancestoped_mob.notransform = TRUE
+			dancestoped_mob.anchored = TRUE
+			if(ishostile(dancestoped_mob))
+				var/mob/living/simple_animal/hostile/H = dancestoped_mob
+				H.AIStatus = AI_OFF
+				H.LoseTarget()
+			stopped_atoms |= dancestoped_mob
+	for(var/mob/living/M in stopped_atoms)
+		if(get_dist(get_turf(M),get_turf(src)) > freezerange) //If they lagged/ran past the timestop somehow, just ignore them
+			unfreeze_mob(M)
+			stopped_atoms -= M
+		if(prob(emote_probability))
+			M.emote(pick(list("spin","dance","flip")), intentional = TRUE)
 
 /datum/spellbook_entry/dancestop
 	name = "Dance Stop"
