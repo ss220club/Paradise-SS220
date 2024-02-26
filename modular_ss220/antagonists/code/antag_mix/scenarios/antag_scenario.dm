@@ -50,8 +50,6 @@
 	var/list/recommended_species_active_pref
 	/// Multiplication modifier that increases the chance of landing by N times
 	var/recommended_species_mod = 0
-	// Will the scenario be selected repeatedly or only once?
-	var/execution_once = FALSE
 
 /datum/antag_scenario/New()
 	if(abstract)
@@ -114,13 +112,13 @@
 /datum/antag_scenario/proc/pre_execute(population)
 	var/assigned_before = length(assigned)
 	var/calculated_antag_cap = get_total_antag_cap(population)
+	modif_chance_recommended_species()
 	for(var/i in 1 to calculated_antag_cap)
 		if(!length(candidates))
 			break
 
-		modif_chance_recommended_species()
-
-		var/mob/new_player/chosen = pick_n_take(candidates)
+		var/mob/new_player/chosen = pickweight(candidates)
+		candidates.Remove(chosen)
 
 		// We will check if something bad happened with candidates here.
 		if(!chosen || !chosen.mind)
@@ -134,13 +132,14 @@
 		chosen_mind.restricted_roles |= restricted_roles
 
 	return length(assigned) - assigned_before > 0
+
 /**
  * Called in `post_setup`, which means that all players already have jobs. Here antags should receive everything they need.
  * Can fail here, but there is nothing we can do on this stage - all players already have their jobs.
 */
 /datum/antag_scenario/proc/execute()
-	if(!is_crew_antag && !try_create_characters())
-		return FALSE
+	if(!is_crew_antag)
+		try_create_characters()
 
 	for(var/datum/mind/assignee as anything in assigned)
 		assignee.add_antag_datum(antag_datum)
@@ -197,12 +196,9 @@
 			candidates.Remove(candidate)
 
 /**
- * Сreate characters if the antagonist is not from the crew.
+ * Create a character if the antagonist should not have a body initially.
 */
 /datum/antag_scenario/proc/try_create_characters()
-	if(is_crew_antag)
-		return FALSE
-
 	if(!length(assigned))
 		return FALSE
 
@@ -226,7 +222,9 @@
 		var/picked_landmark = pick(temp_landmarks)
 		temp_landmarks.Remove(picked_landmark)
 		var/turf/loc_spawn = get_turf(picked_landmark)
-		make_character(mind, loc_spawn)
+
+		if(!mind.current)
+			make_character(mind, loc_spawn)
 		equip_character(mind)
 
 	return TRUE
@@ -258,5 +256,6 @@
 		var/list/datum/character_save/characters = candidate.client.prefs.character_saves
 		for(var/datum/character_save/character in characters)
 			if(character.species in recommended_species_active_pref)
-				for(var/j in recommended_species_mod)
-					candidates.Add(candidate)
+				candidates[candidate] = recommended_species_mod
+			else
+				candidates[candidate] = 1

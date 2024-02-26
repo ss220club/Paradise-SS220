@@ -17,13 +17,15 @@
 		return FALSE
 
 	var/teams_before = length(picked_teams)
+	modif_chance_recommended_species()
 	for(var/i in 1 to max_teams)
 		var/list/datum/mind/members = list()
 		for(var/j in 1 to team_size)
 			if(!length(candidates))
 				break
 
-			var/mob/new_player/team_member = pick_n_take(candidates)
+			var/mob/new_player/team_member = pickweight(candidates)
+			candidates.Remove(team_member)
 			if(!team_member || !team_member.mind)
 				error("For some reason 'null' or mindless candidate was present in [type] 'candidates' list")
 				continue
@@ -39,10 +41,8 @@
 		// If for some reason, not enough members were found - we will try again
 		if(team_size > length(members))
 			max_teams++
-			continue
-
-		message_admins("Picked team of: [json_encode(members)]")
-		picked_teams += list(members)
+			message_admins("Picked team of: [json_encode(members)]")
+			picked_teams += list(members)
 
 	return length(picked_teams) - teams_before > 0
 

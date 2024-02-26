@@ -19,6 +19,7 @@
 	recommended_species_active_pref = list("Vox")
 	recommended_species_mod = 3
 
+
 /datum/antag_scenario/team/vox_raiders/equip_character(datum/mind/mind)
 	var/mob/living/carbon/human/H = mind.current
 	if(H)

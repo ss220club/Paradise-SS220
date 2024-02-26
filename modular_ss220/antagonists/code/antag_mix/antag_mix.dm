@@ -117,7 +117,7 @@
 		log_antag_mix("Scenario '[picked_scenario.name]' with: cost '[picked_scenario.cost]', weight '[picked_scenario.weight]' was picked [picked_scenarios[picked_scenario]] times")
 		log_antag_mix("Antagonist fraction is '[current_antag_fraction]'")
 
-		if(picked_scenario.execution_once)
+		if(picked_scenario.scaled_times <= 1)
 			drafted_scenarios.Remove(picked_scenario)
 
 	if(!length(picked_scenarios))
