@@ -17,3 +17,7 @@
 /datum/job/hydro/New()
 	. = ..()
 	access += list(ACCESS_KITCHEN, ACCESS_BAR)
+
+/datum/job/doctor/New()
+	. = ..()
+	access += list(ACCESS_CHEMISTRY, ACCESS_GENETICS, ACCESS_VIROLOGY)
