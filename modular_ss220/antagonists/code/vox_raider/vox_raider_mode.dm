@@ -12,7 +12,6 @@
 
 	var/datum/antag_scenario/antag_datum = /datum/antag_scenario/team/vox_raiders
 	required_players = initial(antag_datum.required_players)
-	return
 
 /datum/game_mode/antag_mix/vox_raider/announce()
 	to_chat(world, "<B>The current game mode is - Vox Raiders!</B>")

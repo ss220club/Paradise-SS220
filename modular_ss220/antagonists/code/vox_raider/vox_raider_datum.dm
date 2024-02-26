@@ -18,10 +18,10 @@
 	. = ..()
 	SEND_SOUND(owner.current, sound('modular_ss220/antagonists/sound/ambience/antag/vox_raiders_intro.ogg'))
 
-	. += {"Вы Вокс-Рейдер, вы и ваша стая нашли станцию Нанотрейзен имеющую ценности.
+	. += {"Вы Вокс Рейдер, вы и ваша стая нашли станцию Нанотрейзен имеющую ценности.
 		Раздобудьте эти ценности любым доступным способом: торговлей, кражей, договорами.
 		Главное помните, не допустите своей гибели или гибели членов стаи. Ценные блестяшки не стоят мертвого собрата.
-		\nВы можете заказывать товары и снаряжение в Киконсолк Закиказов.
+		\nВы можете заказывать товары и снаряжение в Киконсоле Закиказов.
 		\nСдавайте ценности в Расчичетчикик.
 		\nКовчег выделил вам товары которые могут потенциально заинтересовать экипаж станции.
 		Разумеется не за бесплатно, выберите что вам действительно нужно и закажите это."}
@@ -57,17 +57,17 @@
 		return FALSE
 
 	if(new_antag.has_antag_datum(/datum/antagonist/vox_raider))
-		alert(admin, "Candidate is already vox raider")
+		alert(admin, "Кандидат уже Вокс Рейдер")
 		return FALSE
 
 	if(!can_be_owned(new_antag))
-		alert(admin, "Candidate can't be vox raider.")
+		alert(admin, "Кандидат не может быть Вокс Рейдером")
 		return FALSE
 
-	switch(alert(admin, "Create new team or add to existing?", "vox raiders", "Create", "Add", "Cancel"))
-		if("Create")
+	switch(alert(admin, "Создать новую команду или добавить в существующую?", "Воксы Рейдеры", "Создать", "Добавить", "Закрыть"))
+		if("Создать")
 			return create_new_vox_raiders_team(admin, new_antag)
-		if("Add")
+		if("Добавить")
 			return add_to_existing_vox_raiders_team(admin, new_antag)
 
 	return FALSE
@@ -84,27 +84,28 @@
 
 	if(!length(choices))
 		alert(admin, "Нет кандитатов для создания команды.")
-		return FALSE
-
 	sortTim(choices, GLOBAL_PROC_REF(cmp_text_asc))
 
-	var/choice = tgui_input_list(admin, "Выберите кандидата, если вы завершили выбор, то закройте окно.", "Добавить нового вокс рейдера", choices)
-	if(!choice)
-		return FALSE
+	var/list/candidates_list = list(first_raider)
+	while(TRUE)
+		if(!length(choices))
+			break
+		var/choice = tgui_input_list(admin, "Выберите  кандидата, если вы завершили выбор, то закройте окно.", "Добавить нового вокс рейдера", choices)
+		if(!choice)
+			break
+		var/datum/mind/mind = choices[choice]
+		if(!mind)
+			stack_trace("Chosen second vox raider `[choice]` was `null` for some reason")
+		choices.Remove(choice)
+		candidates_list.Add(mind)
 
-	var/datum/mind/second_raider = choices[choice]
-	if(!second_raider)
-		stack_trace("Chosen second vox raider `[choice]` was `null` for some reason")
+	var/datum/team/vox_raiders_team/team = new(candidates_list, FALSE)
+	for(var/datum/mind/mind in candidates_list)
+		if(isnull(mind.add_antag_datum(src, team)))
+			error("Antag datum couldn't be granted to new raider [mind.name] in `/datum/antagonist/vox_raider/proc/create_new_vox_raiders_team`")
+			alert(admin, "Кандидат [mind.name] не был выбран для `Vox Raider` по каким-то причинам. Попробуйте еще раз.")
 
-	var/datum/team/vox_raiders_team/raider_team = new(list(first_raider, second_raider), FALSE)
-	if(isnull(first_raider.add_antag_datum(src, raider_team)))
-		qdel(raider_team)
-		return FALSE
-
-	if(isnull(second_raider.add_antag_datum(/datum/antagonist/vox_raider, raider_team)))
-		error("Antag datum couldn't be granted to second raider in `/datum/antagonist/vox_raider/proc/create_new_vox_raiders_team`")
-		alert(admin, "Second raider wasn't made into `vox raider` for some reason. Try again.")
-		return TRUE
+	offer_to_equip(admin, candidates_list)
 
 	log_admin("[key_name(admin)] made vox raiders.")
 	return TRUE
@@ -117,24 +118,29 @@
 		choices["[team.name][length(member_ckeys) ? "([member_ckeys.Join(", ")])" : ""]"] = team
 
 	if(!length(choices))
-		alert(admin, "No vox raider teams found. Try creating new one.")
+		alert(admin, "Команда Воксов-Рейдеров не найдена. Попробуйте создать новую.")
 		return FALSE
 
 	sortTim(choices, GLOBAL_PROC_REF(cmp_text_asc))
-	var/choice = tgui_input_list(admin, "Choose the vox raiders team.", "vox raiders Team", choices)
+	var/choice = tgui_input_list(admin, "Выбор команды Воксов-Рейдеров.", "Команда Воксов-Рейдеров", choices)
 	if(!choice)
 		return FALSE
 
-	var/datum/team/vox_raiders_team/chosen_team = choices[choice]
-	if(!chosen_team)
+	var/datum/team/vox_raiders_team/team = choices[choice]
+	if(!team)
 		stack_trace("Chosen vox raiders team `[choice]` was `null` for some reason.")
 
+	return !isnull(raider_to_add.add_antag_datum(src, team))
 
-	return !isnull(raider_to_add.add_antag_datum(src, chosen_team))
-
-/datum/antagonist/vox_raider/proc/equip_vox_raider(visualsOnly = FALSE)
-	if(!isvox(owner.current))
+/datum/antagonist/vox_raider/proc/offer_to_equip(admin, list/candidates_list, visualsOnly)
+	if(!length(candidates_list))
 		return
-	var/mob/living/carbon/human/H = owner.current
-	if(owner.current)
-		H.equipOutfit(/datum/outfit/vox, visualsOnly)
+	var/choice = (alert(admin, "Снарядить в стандартную экипировку?", "Снаряжение", "Да", "Нет"))
+	if(!choice || choice == "Нет")
+		return
+	for(var/datum/mind/mind in candidates_list)
+		if(!isvox(mind.current))
+			return
+		var/mob/living/carbon/human/H = mind.current
+		if(mind.current)
+			H.equipOutfit(/datum/outfit/vox, visualsOnly)

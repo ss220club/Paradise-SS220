@@ -25,12 +25,3 @@
 		H.equipOutfit(/datum/outfit/vox)
 		H.faction = list("Vox")
 	mind.offstation_role = TRUE
-
-
-
-
-// !!!!!!!!! ВРЕМЯНКА ДЛЯ ТЕСТА
-/datum/antag_scenario/team/vox_raiders/New()
-	. = ..()
-	required_players = 0
-

@@ -6,6 +6,8 @@
 /datum/modpack/antagonists/initialize()
 	GLOB.huds += new/datum/atom_hud/antag/hidden()
 	GLOB.special_roles |= ROLE_BLOOD_BROTHER
+
+	GLOB.huds += new/datum/atom_hud/antag/hidden()
 	GLOB.special_roles |= ROLE_VOX_RAIDER
 
 	SSradio.ANTAG_FREQS |= list(VOX_RAID_FREQ)

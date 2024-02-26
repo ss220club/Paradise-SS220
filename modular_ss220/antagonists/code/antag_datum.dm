@@ -2,7 +2,7 @@
 	var/mob/living/carbon/human/H = new(spawn_loc)
 	var/datum/character_save/character
 
-	var/client/client = owner.current.client	// !!!!!!! проверить что клиент вообще вызывается даже у гостов
+	var/client/client = owner.current.client
 	if(try_use_preference && client && client.prefs && length(client.prefs.character_saves))
 		for(var/datum/character_save/character_save in client.prefs.character_saves)
 			var/temp_species_name = species_name
