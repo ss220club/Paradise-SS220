@@ -22,7 +22,7 @@
 	alt_titles = list("Pantomimist")
 
 /datum/job/explorer
-	alt_titles = list("Expeditor", "Exploration Member", "Exploration Medic")
+	alt_titles = list("Expeditor", "Exploration Member", "Exploration Engineer", "Exploration Medic")
 
 /datum/job/mining/New()
 	. = ..()

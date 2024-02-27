@@ -43,7 +43,7 @@
 			head = /obj/item/clothing/head/beret/sec
 
 /datum/job/officer
-	alt_titles = list("Security Trainer", "Junior Security Officer", "Security Peacekeeper", "Security Operative", "Security Agent", "Security Group-Alpha", "Security Group-Beta", "Security Group-Charlie")
+	alt_titles = list("Security Trainer", "Junior Security Officer", "Security Peacekeeper", "Security Operative", "Security Agent")
 
 /datum/outfit/job/officer/pre_equip(mob/living/carbon/human/H, visualsOnly)
 	. = ..()
