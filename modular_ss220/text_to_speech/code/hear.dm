@@ -1,5 +1,3 @@
-GLOBAL_DATUM_INIT(default_announcer, /datum/tts_seed, new /datum/tts_seed/silero/glados)
-
 /mob/combine_message(list/message_pieces, verb, mob/speaker, always_stars)
 	. = ..()
 	return replace_characters(., list("+"))
