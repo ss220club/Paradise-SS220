@@ -200,5 +200,5 @@
 /mob/living/silicon/verb/synth_change_voice()
 	set name = "Смена голоса"
 	set desc = "Express yourself!"
-	set category = "Подсистемы"
+	set category = "Subsystems"
 	change_tts_seed(src, fancy_voice_input_tgui = TRUE, new_traits = list(TTS_TRAIT_ROBOTIZE))
