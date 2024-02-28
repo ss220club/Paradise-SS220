@@ -21,3 +21,11 @@
 /datum/job/doctor/New()
 	. = ..()
 	access += list(ACCESS_CHEMISTRY, ACCESS_GENETICS, ACCESS_VIROLOGY)
+
+/datum/job/atmos/New()
+	. = ..()
+	access += list(ACCESS_ENGINE)
+
+/datum/job/engineer/New()
+	. = ..()
+	access += list(ACCESS_ATMOSPHERICS)
