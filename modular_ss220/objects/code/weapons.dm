@@ -166,7 +166,6 @@
 	и инструментом высшего правосудия."
 	slot_flags = SLOT_FLAG_BELT
 	w_class = WEIGHT_CLASS_SMALL
-	sharp = TRUE
 
 	var/on = FALSE
 	/// Force when concealed
