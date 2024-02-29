@@ -142,3 +142,7 @@
 		var/mob/living/carbon/human/H = mind.current
 		if(mind.current)
 			H.equipOutfit(/datum/outfit/vox, visualsOnly)
+
+/datum/antagonist/vox_raider/make_body(spawn_loc, try_use_preference = FALSE, species_name = null, list/possible_species)
+	. = ..()
+	owner.store_memory("<B> Я Вокс-Рейдер, основа моя: беречь стаю, тащить ценности. </B>.")

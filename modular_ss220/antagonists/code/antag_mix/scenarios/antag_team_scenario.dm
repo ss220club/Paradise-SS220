@@ -32,6 +32,8 @@
 
 			var/datum/mind/chosen_mind = team_member.mind
 			chosen_mind.special_role = antag_special_role
+			if(!is_crew_antag)
+				chosen_mind.assigned_role = antag_special_role
 			chosen_mind.restricted_roles |= restricted_roles
 
 			members += chosen_mind
@@ -56,5 +58,7 @@
 		var/datum/team/new_team = new antag_team(team_members, FALSE)
 		for(var/datum/mind/team_member as anything in new_team.members)
 			team_member.add_antag_datum(antag_datum, new_team)
+		if(!is_crew_antag)
+			try_make_characters(new_team.members)
 
 	return TRUE

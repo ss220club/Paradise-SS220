@@ -1,18 +1,22 @@
-/datum/antagonist/proc/create_mob(spawn_loc, species_name = null, list/possible_species, try_use_preference = FALSE)
-	var/mob/living/carbon/human/H = new(spawn_loc)
+/datum/antagonist/proc/make_body(spawn_loc, try_use_preference = FALSE, species_name = null, list/possible_species)
 	var/datum/character_save/character
+	var/mob/living/carbon/human/H = owner.current
+	if(!H)
+		H = new(spawn_loc)
+	else
+		H.forceMove(get_turf(spawn_loc))
 
 	var/client/client = owner.current.client
 	if(try_use_preference && client && client.prefs && length(client.prefs.character_saves))
-		for(var/datum/character_save/character_save in client.prefs.character_saves)
+		for(var/datum/character_save/temp_character in client.prefs.character_saves)
 			var/temp_species_name = species_name
 			if(!temp_species_name)
 				if(length(possible_species))
 					temp_species_name = pick(possible_species)
 				else
 					temp_species_name = "Human"
-			if(character_save.species == temp_species_name)
-				character = character_save
+			if(temp_character.species == temp_species_name)
+				character = temp_character
 				species_name = temp_species_name
 				break
 	else
@@ -29,5 +33,3 @@
 	H.overeatduration = 0
 	H.flavor_text = null
 	H.update_body()
-
-	owner.store_memory("<B> Я Вокс-Рейдер, основа моя: беречь стаю, тащить ценности. </B>.")

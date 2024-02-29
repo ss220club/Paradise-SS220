@@ -58,7 +58,6 @@
 
 	apply_configuration()
 
-
 /**
  * Gets configuration params from [GLOB.configuration.antag_mix_gamemode.params_by_scenario],
  * which are grouped by `config_tag` property of `/datum/antag_scenario`.
@@ -129,6 +128,8 @@
 		var/datum/mind/chosen_mind = chosen.mind
 		assigned |= chosen_mind
 		chosen_mind.special_role = antag_special_role
+		if(!is_crew_antag)
+			chosen_mind.assigned_role = antag_special_role
 		chosen_mind.restricted_roles |= restricted_roles
 
 	return length(assigned) - assigned_before > 0
@@ -138,12 +139,10 @@
  * Can fail here, but there is nothing we can do on this stage - all players already have their jobs.
 */
 /datum/antag_scenario/proc/execute()
-	if(!is_crew_antag)
-		try_create_characters()
-
 	for(var/datum/mind/assignee as anything in assigned)
 		assignee.add_antag_datum(antag_datum)
-
+	if(!is_crew_antag)
+		try_make_characters(assigned)
 	return TRUE
 
 /**
@@ -198,7 +197,7 @@
 /**
  * Create a character if the antagonist should not have a body initially.
 */
-/datum/antag_scenario/proc/try_create_characters()
+/datum/antag_scenario/proc/try_make_characters(list/datum/mind/assigned)
 	if(!length(assigned))
 		return FALSE
 
@@ -223,8 +222,7 @@
 		temp_landmarks.Remove(picked_landmark)
 		var/turf/loc_spawn = get_turf(picked_landmark)
 
-		if(!mind.current)
-			make_character(mind, loc_spawn)
+		make_character(mind, loc_spawn)
 		equip_character(mind)
 
 	return TRUE
@@ -235,7 +233,7 @@
 /datum/antag_scenario/proc/make_character(datum/mind/mind, turf/loc_spawn)
 	var/picked_species = pick(possible_species)
 	var/datum/antagonist/temp_antag_datum = locate(antag_datum) in mind.antag_datums
-	temp_antag_datum.create_mob(loc_spawn, TRUE, picked_species, possible_species)
+	temp_antag_datum.make_body(loc_spawn, TRUE, picked_species, possible_species)
 
 /datum/antag_scenario/proc/equip_character(datum/mind/mind)
 	return TRUE
