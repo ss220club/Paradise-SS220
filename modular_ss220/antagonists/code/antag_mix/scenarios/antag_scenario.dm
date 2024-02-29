@@ -217,7 +217,7 @@
 	var/list/temp_landmarks = list()
 	for(var/datum/mind/mind in assigned)
 		if(!length(temp_landmarks))
-			temp_landmarks = landmarks
+			temp_landmarks = landmarks.Copy()
 		var/picked_landmark = pick(temp_landmarks)
 		temp_landmarks.Remove(picked_landmark)
 		var/turf/loc_spawn = get_turf(picked_landmark)
