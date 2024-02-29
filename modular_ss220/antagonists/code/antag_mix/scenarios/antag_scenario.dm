@@ -224,6 +224,7 @@
 
 		make_character(mind, loc_spawn)
 		equip_character(mind)
+		mind.current.dna.species.after_equip_job(null, M)
 
 	return TRUE
 
