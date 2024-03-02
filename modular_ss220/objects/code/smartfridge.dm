@@ -1,6 +1,6 @@
 /obj/machinery/smartfridge/load(obj/I, mob/user)
 	var/item_loc_origin = I.loc
-	if (!..())
+	if(!..())
 		return FALSE
 
 	if(istype(item_loc_origin, /obj/item/gripper))
