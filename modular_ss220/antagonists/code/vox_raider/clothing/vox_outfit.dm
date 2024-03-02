@@ -53,7 +53,7 @@
 
 	var/obj/item/card/id/I = H.wear_id
 	if(istype(I))
-		apply_to_card(I, H, get_all_accesses(), "Vox Raider", "syndie")
+		apply_to_card(I, H, list(ACCESS_VOX), "Vox Raider", "syndie")
 
 	if(internals_slot)
 		H.internal = H.get_item_by_slot(internals_slot)

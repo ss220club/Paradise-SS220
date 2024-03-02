@@ -105,3 +105,10 @@
 	name = "Necropolis"
 	no_teleportlocs = TRUE
 	tele_proof = TRUE
+
+/area/vox_base
+	name = "Vox Base"
+	icon_state = "purple"
+	requires_power = FALSE
+	report_alerts = FALSE
+	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
