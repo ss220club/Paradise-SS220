@@ -43,7 +43,7 @@
 	/// Is the antagonist chosen from the station's crew?
 	var/is_crew_antag = TRUE
 	/// Spawn antagonist at landmark name
-	var/obj/effect/landmark/spawner/landmark_type = /obj/effect/landmark/spawner/rev
+	var/obj/effect/landmark/spawner/landmark_type = /obj/effect/landmark/spawner/xeno
 	/// What species can be used for the antagonist
 	var/list/possible_species = list("Human")
 	/// Recommended species at prefs to increase the chance of getting a role for RP-experienced players
@@ -141,8 +141,8 @@
 /datum/antag_scenario/proc/execute()
 	for(var/datum/mind/assignee as anything in assigned)
 		assignee.add_antag_datum(antag_datum)
-	if(!is_crew_antag)
-		try_make_characters(assigned)
+	if(!is_crew_antag && !try_make_characters(assigned))
+		return FALSE
 	return TRUE
 
 /**
@@ -201,14 +201,11 @@
 	if(!length(assigned))
 		return FALSE
 
-	var/list/landmarks = list()
-	for(var/obj/effect/landmark/landmark in GLOB.landmarks_list)
-		if(!istype(landmark, landmark_type))
-			continue
-		landmarks.Add(landmark)
+	var/list/landmarks = GLOB.raider_spawn.Copy()
 
 	if(!length(landmarks))
-		for(var/obj/effect/landmark/spawner/late/landmark in GLOB.landmarks_list)
+		landmarks = list()
+		for(var/landmark in GLOB.latejoin)
 			landmarks.Add(landmark)
 
 	if(!length(landmarks))

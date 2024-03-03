@@ -540,6 +540,11 @@
 /obj/structure/table/wood,
 /turf/simulated/floor/wood,
 /area/ghost_bar)
+"aqd" = (
+/obj/effect/landmark/damageturf,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/plating/nitrogen,
+/area/vox_base)
 "aqj" = (
 /obj/machinery/atmospherics/unary/cryo_cell,
 /turf/simulated/floor/plasteel{
@@ -969,7 +974,8 @@
 /obj/structure/table/reinforced/brass,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel/dark/nitrogen{
-	icon_state = "darkpurple"
+	icon_state = "darkpurple";
+	nitrogen = 103.984
 	},
 /area/vox_base)
 "aAs" = (
@@ -3663,7 +3669,7 @@
 /obj/structure/lattice,
 /obj/structure/lattice,
 /turf/space,
-/area/space/nearstation)
+/area/space/centcomm)
 "cns" = (
 /obj/structure/fans/tiny/invisible,
 /obj/structure/marker_beacon/dock_marker/collision,
@@ -3834,12 +3840,6 @@
 /obj/structure/chair/sofa/corner,
 /turf/simulated/floor/carpet/red,
 /area/centcom/ss220/bar)
-"crJ" = (
-/obj/structure/shuttle/engine/platform{
-	layer = 2.9
-	},
-/turf/simulated/floor/plating/airless,
-/area/shuttle/vox)
 "cso" = (
 /obj/effect/decal/cleanable/blood/old,
 /obj/item/trash/snack_bowl,
@@ -4450,6 +4450,9 @@
 	},
 /turf/simulated/floor/carpet/black,
 /area/centcom/ss220/bar)
+"cLG" = (
+/turf/space/transit/north,
+/area/space/centcomm)
 "cLI" = (
 /obj/effect/decal/syndie_logo{
 	icon_state = "logo15"
@@ -4496,11 +4499,6 @@
 /obj/effect/landmark/spawner/aroomwarp,
 /turf/simulated/floor/carpet/black,
 /area/centcom/ss220/admin1)
-"cNg" = (
-/obj/structure/lattice,
-/obj/structure/lattice,
-/turf/space,
-/area/shuttle/vox)
 "cNm" = (
 /turf/simulated/floor/wood/oak,
 /area/syndicate_mothership/control)
@@ -6425,7 +6423,7 @@
 	dir = 4;
 	layer = 2.9
 	},
-/turf/space/transit,
+/turf/simulated/floor/plating/airless,
 /area/shuttle/vox)
 "dQy" = (
 /obj/machinery/light/spot{
@@ -7291,6 +7289,39 @@
 /obj/machinery/economy/vending/coffee/free,
 /turf/simulated/floor/wood/fancy/cherry,
 /area/centcom/ss220/admin2)
+"exM" = (
+/obj/docking_port/mobile{
+	dwidth = 13;
+	height = 18;
+	id = "vox_shuttle";
+	name = "scavenger shuttle";
+	width = 19;
+	dir = 2;
+	pixel_y = -5
+	},
+/obj/docking_port/stationary{
+	dwidth = 13;
+	height = 18;
+	id = "vox_shuttle_away";
+	name = "Scavenger Base";
+	width = 19;
+	dir = 2;
+	pixel_y = 11
+	},
+/obj/machinery/door/airlock/hatch{
+	id_tag = "voxwest_door_ext";
+	req_access_txt = "152";
+	aiControlDisabled = 1;
+	hackProof = 1
+	},
+/obj/structure/fans/tiny,
+/turf/simulated/floor/mineral/plastitanium{
+	color = "#fff894";
+	nitrogen = 103.984;
+	oxygen = 0;
+	name = "vox floor"
+	},
+/area/shuttle/vox)
 "eyg" = (
 /obj/machinery/light/directional/west,
 /obj/structure/chair/comfy/shuttle/dark{
@@ -8813,6 +8844,15 @@
 	icon_state = "navyblue"
 	},
 /area/centcom/ss220/admin3)
+"fop" = (
+/obj/machinery/computer/shuttle/vox,
+/turf/simulated/floor/mineral/plastitanium{
+	color = "#ff78f4";
+	nitrogen = 103.984;
+	oxygen = 0;
+	name = "vox floor"
+	},
+/area/shuttle/vox)
 "foF" = (
 /obj/effect/decal/nanotrasen_logo/n4,
 /turf/simulated/floor/plasteel,
@@ -9198,7 +9238,7 @@
 	dir = 4;
 	layer = 2.9
 	},
-/turf/space/transit,
+/turf/simulated/floor/plating/airless,
 /area/shuttle/vox)
 "fzO" = (
 /obj/structure/shuttle/engine/propulsion{
@@ -9451,7 +9491,8 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel/dark/nitrogen{
 	icon_state = "darkpurple";
-	dir = 1
+	dir = 1;
+	nitrogen = 103.984
 	},
 /area/vox_base)
 "fID" = (
@@ -9830,7 +9871,8 @@
 /obj/machinery/kitchen_machine/grill/upgraded,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel/dark/nitrogen{
-	icon_state = "darkpurple"
+	icon_state = "darkpurple";
+	nitrogen = 103.984
 	},
 /area/vox_base)
 "fXY" = (
@@ -10171,7 +10213,8 @@
 /obj/machinery/processor,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel/dark/nitrogen{
-	icon_state = "darkpurplecorners"
+	icon_state = "darkpurplecorners";
+	nitrogen = 103.984
 	},
 /area/vox_base)
 "gka" = (
@@ -10628,24 +10671,6 @@
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/shuttle/administration)
-"gyq" = (
-/obj/structure/table/glass{
-	color = "#73d1cb"
-	},
-/obj/item/clothing/glasses/hud/security/sunglasses/fluff/voxxyhud{
-	pixel_x = -5;
-	pixel_y = 2
-	},
-/obj/item/clothing/glasses/hud/security/sunglasses/fluff/voxxyhud{
-	pixel_x = 6
-	},
-/turf/simulated/floor/mineral/plastitanium{
-	color = "#00ffea";
-	nitrogen = 103.984;
-	oxygen = 0;
-	name = "vox floor"
-	},
-/area/vox_base)
 "gyr" = (
 /obj/structure/light_fake/small{
 	light_range = 6
@@ -11069,7 +11094,8 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel/dark/nitrogen{
 	icon_state = "darkpurple";
-	dir = 8
+	dir = 8;
+	nitrogen = 103.984
 	},
 /area/vox_base)
 "gIY" = (
@@ -11678,15 +11704,6 @@
 	icon_state = "dark"
 	},
 /area/syndicate_mothership)
-"haU" = (
-/obj/machinery/computer/shuttle/vox,
-/turf/simulated/floor/mineral/plastitanium{
-	color = "#ff78f4";
-	nitrogen = 103.984;
-	oxygen = 0;
-	name = "vox floor"
-	},
-/area/shuttle/vox)
 "hbm" = (
 /obj/item/storage/firstaid/o2,
 /obj/structure/table,
@@ -11841,6 +11858,7 @@
 "hfW" = (
 /obj/item/restraints/handcuffs,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/remains/mouse,
 /turf/simulated/floor/plasteel/dark/nitrogen,
 /area/vox_base)
 "hgw" = (
@@ -11988,6 +12006,9 @@
 	},
 /turf/simulated/wall/indestructible/fakeglass,
 /area/centcom/ss220/admin3)
+"hkJ" = (
+/turf/space,
+/area/shuttle/vox)
 "hkS" = (
 /obj/machinery/economy/vending/shoedispenser,
 /turf/simulated/floor/carpet/black,
@@ -12019,6 +12040,24 @@
 	},
 /turf/simulated/floor/wood/fancy/cherry,
 /area/centcom/ss220/bar)
+"hlK" = (
+/obj/structure/table/glass{
+	color = "#73d1cb"
+	},
+/obj/item/clothing/glasses/hud/security/sunglasses/fluff/voxxyhud{
+	pixel_x = -5;
+	pixel_y = 2
+	},
+/obj/item/clothing/glasses/hud/security/sunglasses/fluff/voxxyhud{
+	pixel_x = 6
+	},
+/turf/simulated/floor/mineral/plastitanium{
+	color = "#00ffea";
+	nitrogen = 103.984;
+	oxygen = 0;
+	name = "vox floor"
+	},
+/area/vox_base)
 "hlS" = (
 /obj/machinery/computer/camera_advanced/abductor{
 	team = 1
@@ -12502,11 +12541,6 @@
 /obj/structure/window/reinforced,
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/medbay)
-"hAy" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/damageturf,
-/turf/simulated/floor/plating/nitrogen,
-/area/space/nearstation)
 "hAC" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 5
@@ -13617,27 +13651,7 @@
 	},
 /area/syndicate_mothership/cargo)
 "iiu" = (
-/obj/structure/shuttle/engine/heater{
-	dir = 1;
-	icon_state = "heater2x2";
-	tag = "icon-heater (NORTH)"
-	},
-/obj/structure/shuttle/engine/platform{
-	dir = 1;
-	layer = 2.9
-	},
-/obj/structure/window/plasmareinforced{
-	color = "red"
-	},
-/obj/machinery/door/poddoor/shutters{
-	density = 0;
-	dir = 1;
-	icon_state = "open";
-	id_tag = "voxshutters";
-	name = "Blast Shutters";
-	opacity = 0;
-	layer = 2.5
-	},
+/obj/structure/lattice,
 /turf/simulated/floor/plating/airless,
 /area/shuttle/vox)
 "iiw" = (
@@ -14081,7 +14095,8 @@
 /obj/machinery/cooker/deepfryer/upgraded,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel/dark/nitrogen{
-	icon_state = "darkpurple"
+	icon_state = "darkpurple";
+	nitrogen = 103.984
 	},
 /area/vox_base)
 "iuA" = (
@@ -14936,7 +14951,8 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel/dark/nitrogen{
 	icon_state = "darkpurple";
-	dir = 4
+	dir = 4;
+	nitrogen = 103.984
 	},
 /area/vox_base)
 "iZU" = (
@@ -14968,6 +14984,19 @@
 	icon_state = "white"
 	},
 /area/ninja/holding)
+"jaI" = (
+/obj/effect/turf_decal/delivery/hollow,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/damageturf,
+/obj/machinery/atmospherics/portable/canister/nitrogen,
+/obj/effect/decal/remains/mouse,
+/turf/simulated/floor/mineral/plastitanium{
+	color = "#fff894";
+	nitrogen = 103.984;
+	oxygen = 0;
+	name = "vox floor"
+	},
+/area/vox_base)
 "jaR" = (
 /obj/item/robot_parts/robot_component{
 	desc = "Некая блюспейс сущность, обещала когда нибудь его доделать...";
@@ -15872,6 +15901,11 @@
 	icon_state = "darkyellowcornersalt"
 	},
 /area/syndicate_mothership/cargo)
+"jEz" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/remains/mouse,
+/turf/simulated/floor/plating/nitrogen,
+/area/vox_base)
 "jED" = (
 /obj/machinery/airlock_controller/access_controller{
 	ext_door_link_id = "voxeast_door_ext";
@@ -15931,6 +15965,10 @@
 /obj/structure/table,
 /turf/simulated/floor/plasteel/dark,
 /area/shuttle/administration)
+"jIv" = (
+/obj/structure/lattice,
+/turf/space,
+/area/shuttle/vox)
 "jIP" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
@@ -15959,7 +15997,8 @@
 /obj/effect/landmark/damageturf,
 /turf/simulated/floor/plasteel/dark/nitrogen{
 	icon_state = "darkpurple";
-	dir = 1
+	dir = 1;
+	nitrogen = 103.984
 	},
 /area/vox_base)
 "jJu" = (
@@ -16860,9 +16899,6 @@
 /obj/machinery/photocopier,
 /turf/simulated/floor/wood/parquet/tile,
 /area/centcom/ss220/admin2)
-"kqJ" = (
-/turf/space/transit/north,
-/area/space/centcomm)
 "kqP" = (
 /obj/structure/chair/comfy/purp{
 	dir = 8
@@ -17873,6 +17909,15 @@
 	},
 /turf/simulated/wall/indestructible/opsglass,
 /area/syndicate_mothership/control)
+"lfu" = (
+/obj/machinery/computer/camera_advanced/shuttle_docker/vox,
+/turf/simulated/floor/mineral/plastitanium{
+	color = "#ff78f4";
+	nitrogen = 103.984;
+	oxygen = 0;
+	name = "vox floor"
+	},
+/area/shuttle/vox)
 "lfO" = (
 /obj/structure/table/wood,
 /obj/item/card/id/prisoner/random,
@@ -18467,7 +18512,8 @@
 /obj/machinery/kitchen_machine/oven/upgraded,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel/dark/nitrogen{
-	icon_state = "darkpurple"
+	icon_state = "darkpurple";
+	nitrogen = 103.984
 	},
 /area/vox_base)
 "lvM" = (
@@ -19220,15 +19266,6 @@
 	icon_state = "navybluealt"
 	},
 /area/syndicate_mothership/control)
-"lOI" = (
-/obj/machinery/computer/camera_advanced/shuttle_docker/vox,
-/turf/simulated/floor/mineral/plastitanium{
-	color = "#ff78f4";
-	nitrogen = 103.984;
-	oxygen = 0;
-	name = "vox floor"
-	},
-/area/shuttle/vox)
 "lOJ" = (
 /obj/structure/chair/sofa/left{
 	dir = 8
@@ -20158,7 +20195,8 @@
 "mus" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel/dark/nitrogen{
-	icon_state = "darkpurplefull"
+	icon_state = "darkpurplefull";
+	nitrogen = 103.984
 	},
 /area/vox_base)
 "muB" = (
@@ -20182,6 +20220,29 @@
 	icon_state = "darkneutralfull"
 	},
 /area/syndicate_mothership)
+"mvx" = (
+/obj/machinery/cell_charger,
+/obj/item/pickaxe,
+/obj/item/pickaxe,
+/obj/item/pickaxe,
+/obj/structure/closet/walllocker/firelocker/east,
+/obj/structure/table/reinforced{
+	color = "#e67e7e"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/sheet/mineral/sandbags,
+/obj/item/stack/sheet/mineral/sandbags,
+/obj/item/stack/sheet/mineral/sandbags,
+/obj/item/stack/sheet/mineral/sandbags,
+/obj/item/stack/sheet/mineral/sandbags,
+/obj/item/stack/sheet/mineral/sandbags,
+/turf/simulated/floor/mineral/plastitanium{
+	color = "#ffae00";
+	nitrogen = 103.984;
+	oxygen = 0;
+	name = "vox floor"
+	},
+/area/shuttle/vox)
 "mvy" = (
 /obj/effect/landmark/damageturf,
 /obj/effect/decal/cleanable/dirt,
@@ -20440,9 +20501,6 @@
 /obj/item/kirbyplants,
 /turf/simulated/floor/wood/fancy/cherry,
 /area/centcom/ss220/bar)
-"mGT" = (
-/turf/space,
-/area/shuttle/vox)
 "mGW" = (
 /obj/structure/rack/gunrack,
 /obj/item/gun/energy/lwap{
@@ -20836,16 +20894,6 @@
 "mWE" = (
 /turf/simulated/floor/plating/asteroid/ancient,
 /area/ghost_bar)
-"mWI" = (
-/obj/effect/turf_decal/delivery/hollow,
-/obj/structure/reagent_dispensers/fueltank,
-/turf/simulated/floor/mineral/plastitanium{
-	color = "#fff894";
-	nitrogen = 103.984;
-	oxygen = 0;
-	name = "vox floor"
-	},
-/area/vox_base)
 "mXk" = (
 /obj/machinery/door/poddoor/shutters{
 	dir = 8;
@@ -21724,7 +21772,8 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel/dark/nitrogen{
 	icon_state = "darkpurple";
-	dir = 4
+	dir = 4;
+	nitrogen = 103.984
 	},
 /area/vox_base)
 "nzJ" = (
@@ -23550,11 +23599,6 @@
 	},
 /area/shuttle/administration)
 "oKl" = (
-/obj/structure/shuttle/engine/heater{
-	dir = 1;
-	icon_state = "heater2x2_side";
-	tag = "icon-heater (NORTH)"
-	},
 /obj/structure/shuttle/engine/platform{
 	dir = 1;
 	layer = 2.9
@@ -23570,6 +23614,9 @@
 	name = "Blast Shutters";
 	opacity = 0;
 	layer = 2.5
+	},
+/obj/structure/shuttle/engine/heater{
+	dir = 1
 	},
 /turf/simulated/floor/plating/airless,
 /area/shuttle/vox)
@@ -24308,6 +24355,9 @@
 	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate)
+"pmS" = (
+/turf/space,
+/area/space/nearstation)
 "pmY" = (
 /obj/structure/curtain/open/shower/security,
 /turf/simulated/wall/indestructible/fakeglass,
@@ -24485,11 +24535,6 @@
 	icon_state = "dark"
 	},
 /area/shuttle/syndicate)
-"pvh" = (
-/obj/effect/landmark/damageturf,
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plating/nitrogen,
-/area/vox_base)
 "pvL" = (
 /obj/structure/table/wood,
 /obj/item/candle/eternal/wizard{
@@ -25222,7 +25267,8 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel/dark/nitrogen{
 	icon_state = "darkpurplecorners";
-	dir = 8
+	dir = 8;
+	nitrogen = 103.984
 	},
 /area/vox_base)
 "pQc" = (
@@ -25761,6 +25807,11 @@
 	icon_state = "darkblue"
 	},
 /area/centcom/ss220/bar)
+"qgS" = (
+/obj/structure/lattice,
+/obj/structure/lattice,
+/turf/simulated/floor/plating/airless,
+/area/shuttle/vox)
 "qiV" = (
 /obj/effect/turf_decal/delivery/hollow,
 /obj/structure/closet/crate/trashcart,
@@ -28312,7 +28363,8 @@
 	},
 /turf/simulated/floor/plasteel/dark/nitrogen{
 	icon_state = "darkpurplecorners";
-	dir = 4
+	dir = 4;
+	nitrogen = 103.984
 	},
 /area/vox_base)
 "rLs" = (
@@ -28784,7 +28836,8 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/spawner/lootdrop/three_course_meal,
 /turf/simulated/floor/plasteel/dark/nitrogen{
-	icon_state = "darkpurplefull"
+	icon_state = "darkpurplefull";
+	nitrogen = 103.984
 	},
 /area/vox_base)
 "rXN" = (
@@ -29396,32 +29449,10 @@
 	},
 /turf/simulated/floor/plasteel/dark/nitrogen{
 	icon_state = "darkpurplecorners";
-	dir = 1
+	dir = 1;
+	nitrogen = 103.984
 	},
 /area/vox_base)
-"ssL" = (
-/obj/machinery/cell_charger,
-/obj/item/pickaxe,
-/obj/item/pickaxe,
-/obj/item/pickaxe,
-/obj/structure/closet/walllocker/firelocker/east,
-/obj/structure/table/reinforced{
-	color = "#e67e7e"
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/item/stack/sheet/mineral/sandbags,
-/obj/item/stack/sheet/mineral/sandbags,
-/obj/item/stack/sheet/mineral/sandbags,
-/obj/item/stack/sheet/mineral/sandbags,
-/obj/item/stack/sheet/mineral/sandbags,
-/obj/item/stack/sheet/mineral/sandbags,
-/turf/simulated/floor/mineral/plastitanium{
-	color = "#ffae00";
-	nitrogen = 103.984;
-	oxygen = 0;
-	name = "vox floor"
-	},
-/area/shuttle/vox)
 "stj" = (
 /obj/item/kirbyplants,
 /turf/simulated/floor/wood,
@@ -31429,16 +31460,6 @@
 /obj/structure/closet/walllocker/firelocker/north,
 /turf/simulated/floor/mineral/plastitanium/red/nitrogen,
 /area/vox_base)
-"tLn" = (
-/obj/structure/table/reinforced/brass,
-/obj/item/stack/tape_roll,
-/turf/simulated/floor/mineral/plastitanium{
-	color = "#fff894";
-	nitrogen = 103.984;
-	oxygen = 0;
-	name = "vox floor"
-	},
-/area/vox_base)
 "tLy" = (
 /obj/machinery/cryopod/offstation/right,
 /obj/structure/light_fake/spot{
@@ -31607,7 +31628,6 @@
 "tRa" = (
 /obj/structure/chair/brass,
 /obj/effect/landmark/spawner/vox_raider,
-/obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/mineral/plastitanium/red/nitrogen,
 /area/vox_base)
 "tRn" = (
@@ -31715,7 +31735,8 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel/dark/nitrogen{
 	icon_state = "darkpurple";
-	dir = 8
+	dir = 8;
+	nitrogen = 103.984
 	},
 /area/vox_base)
 "tUK" = (
@@ -32638,9 +32659,15 @@
 	},
 /area/centcom/ss220/admin3)
 "uAW" = (
-/obj/structure/lattice,
-/turf/space,
-/area/shuttle/vox)
+/obj/effect/turf_decal/delivery/hollow,
+/obj/structure/reagent_dispensers/fueltank,
+/turf/simulated/floor/mineral/plastitanium{
+	color = "#fff894";
+	nitrogen = 103.984;
+	oxygen = 0;
+	name = "vox floor"
+	},
+/area/vox_base)
 "uAZ" = (
 /obj/structure/shuttle/engine/heater,
 /obj/structure/window/reinforced{
@@ -32961,12 +32988,12 @@
 /turf/simulated/floor/wood/fancy/oak,
 /area/centcom/ss220/bar)
 "uLM" = (
-/obj/structure/shuttle/engine/large{
-	dir = 1;
-	opacity = 0
-	},
 /obj/structure/shuttle/engine/platform{
 	layer = 2.9
+	},
+/obj/structure/shuttle/engine/propulsion{
+	dir = 1;
+	icon_state = "propulsion_l"
 	},
 /turf/simulated/floor/plating/airless,
 /area/shuttle/vox)
@@ -33593,7 +33620,6 @@
 	dir = 8
 	},
 /obj/effect/landmark/spawner/vox_raider,
-/obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/mineral/plastitanium/red/nitrogen,
 /area/vox_base)
 "vjh" = (
@@ -34113,7 +34139,6 @@
 	dir = 4
 	},
 /obj/effect/landmark/spawner/vox_raider,
-/obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/mineral/plastitanium/red/nitrogen,
 /area/vox_base)
 "vwP" = (
@@ -34747,7 +34772,8 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/damageturf,
 /turf/simulated/floor/plasteel/dark/nitrogen{
-	icon_state = "darkpurplefull"
+	icon_state = "darkpurplefull";
+	nitrogen = 103.984
 	},
 /area/vox_base)
 "vSv" = (
@@ -35398,7 +35424,7 @@
 	dir = 4;
 	layer = 2.9
 	},
-/turf/space/transit,
+/turf/simulated/floor/plating/airless,
 /area/shuttle/vox)
 "wpd" = (
 /obj/item/flag/solgov,
@@ -35565,6 +35591,11 @@
 	name = "floor"
 	},
 /area/syndicate_mothership/infteam)
+"wtP" = (
+/turf/simulated/wall/indestructible/fakeglass/brass{
+	color = "#4b5582"
+	},
+/area/space/nearstation)
 "wum" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/marker_beacon/spotlight/jade,
@@ -35608,7 +35639,7 @@
 /turf/simulated/wall/indestructible/fakeglass/brass{
 	color = "#4b5582"
 	},
-/area/space/nearstation)
+/area/vox_base)
 "wwn" = (
 /obj/machinery/door/airlock/titanium/glass{
 	req_one_access_txt = "160";
@@ -35708,14 +35739,6 @@
 	name = "vox floor"
 	},
 /area/shuttle/vox)
-"wyI" = (
-/obj/structure/chair/brass{
-	dir = 1
-	},
-/obj/effect/landmark/spawner/vox_raider,
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/mineral/plastitanium/red/nitrogen,
-/area/vox_base)
 "wzw" = (
 /obj/structure/light_fake/small{
 	dir = 8
@@ -36682,39 +36705,6 @@
 /obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/plating,
 /area/centcom/ss220/jail)
-"xcl" = (
-/obj/docking_port/mobile{
-	dwidth = 5;
-	height = 18;
-	id = "vox_shuttle";
-	name = "scavenger shuttle";
-	width = 19;
-	dir = 2;
-	pixel_y = -5
-	},
-/obj/docking_port/stationary{
-	dwidth = 5;
-	height = 18;
-	id = "vox_shuttle_away";
-	name = "Scavenger Base";
-	width = 19;
-	dir = 2;
-	pixel_y = 11
-	},
-/obj/machinery/door/airlock/hatch{
-	id_tag = "voxwest_door_ext";
-	req_access_txt = "152";
-	aiControlDisabled = 1;
-	hackProof = 1
-	},
-/obj/structure/fans/tiny,
-/turf/simulated/floor/mineral/plastitanium{
-	color = "#fff894";
-	nitrogen = 103.984;
-	oxygen = 0;
-	name = "vox floor"
-	},
-/area/shuttle/vox)
 "xcx" = (
 /obj/structure/closet/cabinet/wizard,
 /turf/simulated/floor/carpet/black,
@@ -37511,6 +37501,16 @@
 	},
 /turf/simulated/floor/wood/oak,
 /area/syndicate_mothership/infteam)
+"xvg" = (
+/obj/structure/table/reinforced/brass,
+/obj/item/stack/tape_roll,
+/turf/simulated/floor/mineral/plastitanium{
+	color = "#fff894";
+	nitrogen = 103.984;
+	oxygen = 0;
+	name = "vox floor"
+	},
+/area/vox_base)
 "xvt" = (
 /obj/structure/chair/comfy/shuttle/dark,
 /turf/simulated/floor/plasteel{
@@ -37553,7 +37553,6 @@
 /area/centcom/ss220/library)
 "xwS" = (
 /obj/structure/chair/brass,
-/obj/effect/decal/cleanable/dirt,
 /obj/item/toy/plushie/voxplushie{
 	desc = "Мини-прималис. Главное в воксе - держать клюв Кирпичом. Игрушка сшитая основателем камневидного базирования в перерыве между рейдами.";
 	name = "Кирпич";
@@ -37630,7 +37629,8 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel/dark/nitrogen{
 	icon_state = "darkpurple";
-	dir = 1
+	dir = 1;
+	nitrogen = 103.984
 	},
 /area/vox_base)
 "xyP" = (
@@ -38305,6 +38305,7 @@
 /area/centcom/ss220/jail)
 "xZM" = (
 /obj/effect/landmark/damageturf,
+/obj/effect/decal/remains/mouse,
 /turf/simulated/floor/mineral/plastitanium{
 	color = "#00ffea";
 	nitrogen = 103.984;
@@ -38432,9 +38433,6 @@
 	icon_state = "darkyellowfull"
 	},
 /area/centcom/ss220/command)
-"yel" = (
-/turf/space,
-/area/space/nearstation)
 "yex" = (
 /obj/item/syndicatedetonator{
 	desc = "Радиус взрыва: 255x255x255";
@@ -75173,7 +75171,7 @@ rMS
 rMS
 qgo
 kAf
-pvh
+aqd
 fDJ
 qgo
 rMS
@@ -75430,7 +75428,7 @@ rMS
 rMS
 qgo
 vtH
-fkL
+jEz
 nys
 qgo
 rMS
@@ -75956,7 +75954,7 @@ rMS
 rMS
 geH
 sQi
-yel
+pmS
 rMS
 rMS
 rMS
@@ -76212,10 +76210,10 @@ oOq
 rMS
 rMS
 sQi
-yel
-yel
+pmS
+pmS
 rMS
-yel
+pmS
 nNr
 rMS
 rMS
@@ -76468,12 +76466,12 @@ qgo
 mCG
 rMS
 rMS
-yel
-yel
-yel
-yel
-yel
-yel
+pmS
+pmS
+pmS
+pmS
+pmS
+pmS
 nNr
 nNr
 rMS
@@ -76724,14 +76722,14 @@ wdT
 qgo
 mCG
 mCG
-wwl
-yel
-yel
+wtP
+pmS
+pmS
 vbS
 dkU
-yel
-yel
-yel
+pmS
+pmS
+pmS
 rMS
 rMS
 nNr
@@ -76981,17 +76979,17 @@ okS
 kqj
 qBA
 mvy
-wwl
-yel
-yel
+wtP
+pmS
+pmS
 seK
-yel
-yel
-yel
+pmS
+pmS
+pmS
 sQi
 sQi
-yel
-yel
+pmS
+pmS
 nNr
 nNr
 nNr
@@ -77238,16 +77236,16 @@ vrC
 qgo
 qBA
 mej
-wwl
-yel
-yel
-yel
-yel
-yel
+wtP
+pmS
+pmS
+pmS
+pmS
+pmS
 sQi
 sQi
-yel
-yel
+pmS
+pmS
 nNr
 nNr
 rMS
@@ -77496,13 +77494,13 @@ qgo
 mCG
 rMS
 rMS
-yel
-yel
-yel
-yel
+pmS
+pmS
+pmS
+pmS
 rMS
-yel
-yel
+pmS
+pmS
 nNr
 nNr
 rMS
@@ -77735,8 +77733,8 @@ adJ
 adJ
 sQi
 sQi
-yel
-yel
+pmS
+pmS
 sQi
 ryz
 ngY
@@ -77754,8 +77752,8 @@ mCG
 jTr
 rMS
 rMS
-yel
-yel
+pmS
+pmS
 rMS
 rMS
 sQi
@@ -77991,8 +77989,8 @@ sQi
 sQi
 sQi
 sQi
-yel
-yel
+pmS
+pmS
 fYV
 fYV
 qgo
@@ -78007,18 +78005,18 @@ wqN
 tVR
 qJJ
 qgo
-wwl
-wwl
+wtP
+wtP
 rMS
 sQi
 sQi
 sQi
 rMS
-yel
-yel
-yel
-yel
-yel
+adJ
+adJ
+adJ
+adJ
+adJ
 nNr
 nNr
 nNr
@@ -78244,7 +78242,7 @@ fYV
 fYV
 fYV
 nNr
-yel
+pmS
 sQi
 sQi
 sQi
@@ -78266,19 +78264,19 @@ qgo
 qgo
 nNr
 nNr
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-yel
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
 rMS
 rMS
 rMS
@@ -78503,8 +78501,8 @@ nNr
 nNr
 sQi
 sQi
-yel
-yel
+pmS
+pmS
 sQi
 geH
 fYV
@@ -78522,22 +78520,22 @@ geH
 geH
 geH
 nNr
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-yel
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
 rMS
 rMS
 rMS
@@ -78762,7 +78760,7 @@ geH
 fYV
 fYV
 nNr
-yel
+pmS
 sQi
 geH
 nNr
@@ -78776,26 +78774,26 @@ mAj
 gXG
 rMS
 geH
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-yel
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
 rMS
 rMS
 rMS
@@ -79020,40 +79018,40 @@ qgo
 fYV
 nNr
 nNr
-yel
+pmS
 sQi
 sQi
-yel
-yel
-yel
+pmS
+pmS
+pmS
 geH
 ryz
 cNY
 cNY
 ryz
 geH
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-yel
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
 rMS
 rMS
 adJ
@@ -79271,46 +79269,46 @@ qgo
 qgo
 tHm
 wqv
-tLn
+xvg
 aUy
 qgo
 fYV
 fYV
 nNr
-yel
-yel
+pmS
+pmS
 sQi
 sQi
-yel
+pmS
 sQi
 geH
 ryz
 qnq
 mAj
 ryz
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-sQi
-sQi
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+bnh
+bnh
 sQi
 rMS
 adJ
@@ -79524,9 +79522,9 @@ adJ
 adJ
 fYV
 qgo
-mWI
+uAW
 fxh
-lnR
+jaI
 deT
 xAT
 jih
@@ -79546,7 +79544,7 @@ uVe
 mAj
 ryz
 adJ
-uAW
+iiu
 qGp
 qGp
 qGp
@@ -79562,12 +79560,12 @@ qGp
 qGp
 qGp
 qGp
-uAW
-yel
-sQi
-sQi
-sQi
-sQi
+iiu
+adJ
+bnh
+bnh
+bnh
+bnh
 geH
 rMS
 adJ
@@ -79795,17 +79793,17 @@ pyo
 gDM
 pyo
 qgo
-rMS
+fJi
 nNr
-rMS
+fJi
 gXG
 cNY
 cNY
 gXG
 adJ
-vqU
+adJ
 uLM
-iiu
+oKl
 wyl
 dJR
 hjx
@@ -79820,11 +79818,11 @@ acp
 kzZ
 vqU
 vqU
-yel
-yel
-yel
-yel
-yel
+adJ
+adJ
+adJ
+adJ
+adJ
 nNr
 rMS
 adJ
@@ -80052,16 +80050,16 @@ pyo
 xpR
 vUt
 qgo
-rMS
+fJi
 wwl
-rMS
+fJi
 gXG
 ksE
 uVe
 gXG
 adJ
-vqU
-crJ
+adJ
+uLM
 oKl
 oDn
 oXe
@@ -80077,10 +80075,10 @@ bQd
 kzZ
 sfx
 vqU
-yel
-yel
-yel
-yel
+adJ
+adJ
+adJ
+adJ
 nNr
 nNr
 rMS
@@ -80327,17 +80325,17 @@ oXe
 pAF
 eYU
 sTB
-ssL
+mvx
 uiK
 fAB
 mnD
 kzZ
 vqU
 vqU
-yel
-yel
-yel
-yel
+adJ
+adJ
+adJ
+adJ
 nNr
 nNr
 rMS
@@ -80590,11 +80588,11 @@ qGp
 qGp
 qGp
 qGp
-uAW
-yel
-sQi
-sQi
-sQi
+iiu
+adJ
+bnh
+bnh
+bnh
 geH
 rMS
 rMS
@@ -80830,7 +80828,7 @@ ryz
 kyx
 vSW
 sVB
-xcl
+exM
 gck
 cNL
 cqR
@@ -80848,10 +80846,10 @@ rpC
 fgy
 qGp
 qGp
-yel
-yel
-sQi
-sQi
+adJ
+adJ
+bnh
+bnh
 geH
 rMS
 rMS
@@ -81105,10 +81103,10 @@ aDY
 aDY
 kgQ
 qGp
-yel
-yel
-yel
-yel
+adJ
+adJ
+adJ
+adJ
 rMS
 rMS
 rMS
@@ -81337,13 +81335,13 @@ cNY
 qLw
 qLw
 qgo
-rMS
+fJi
 wwl
-rMS
-rMS
-qBA
-rMS
-rMS
+fJi
+fJi
+fkL
+fJi
+fJi
 qGp
 vVW
 qgx
@@ -81362,10 +81360,10 @@ iby
 iby
 gXc
 qGp
-yel
-yel
-yel
-yel
+adJ
+adJ
+adJ
+adJ
 nNr
 rMS
 rMS
@@ -81594,15 +81592,15 @@ cNY
 qLw
 qLw
 qgo
-rMS
+fJi
 geH
 geH
 wwl
-qBA
+fkL
 wwl
-yel
+adJ
 vQb
-lOI
+lfu
 bGr
 bGr
 bGr
@@ -81619,10 +81617,10 @@ tzJ
 aUF
 uJj
 qGp
-yel
-yel
-yel
-yel
+adJ
+adJ
+adJ
+adJ
 nNr
 rMS
 rMS
@@ -81853,13 +81851,13 @@ xwM
 ryz
 geH
 geH
-yel
+pmS
 wwl
-hAy
+rMU
 wwl
-yel
+adJ
 vQb
-haU
+fop
 mLW
 bGr
 bGr
@@ -81876,10 +81874,10 @@ nFz
 chV
 cJD
 eYU
-yel
-yel
-yel
-yel
+adJ
+adJ
+adJ
+adJ
 nNr
 nNr
 rMS
@@ -82110,11 +82108,11 @@ rTt
 ryz
 geH
 sQi
-yel
+pmS
 wwl
-qBA
+fkL
 wwl
-yel
+adJ
 qGp
 qGp
 eOx
@@ -82133,9 +82131,9 @@ lxv
 ryw
 tps
 qGp
-yel
-yel
-yel
+adJ
+adJ
+adJ
 nNr
 nNr
 rMS
@@ -82366,12 +82364,12 @@ cAQ
 cAQ
 qgo
 fYV
-yel
-yel
-rMS
-qBA
-rMS
-yel
+pmS
+pmS
+fJi
+fkL
+fJi
+adJ
 adJ
 skn
 hOz
@@ -82390,9 +82388,9 @@ pSg
 chV
 cJD
 eYU
-yel
-yel
-yel
+adJ
+adJ
+adJ
 rMS
 rMS
 rMS
@@ -82611,7 +82609,7 @@ fYV
 fYV
 fYV
 geH
-yel
+pmS
 nNr
 fYV
 jTj
@@ -82630,13 +82628,13 @@ hAK
 qgo
 qgo
 adJ
-uAW
+jIv
 qGp
 bzg
 bzg
 qGp
-uAW
-uAW
+iiu
+iiu
 skn
 xFG
 vbv
@@ -82647,10 +82645,10 @@ vDS
 xym
 xym
 qGp
-yel
-yel
-yel
-yel
+adJ
+adJ
+adJ
+adJ
 nNr
 rMS
 rMS
@@ -82869,7 +82867,7 @@ geH
 geH
 sQi
 sQi
-yel
+pmS
 fYV
 wMp
 fTD
@@ -82888,11 +82886,11 @@ vzl
 qgo
 adJ
 adJ
-uAW
-uAW
-uAW
-uAW
-uAW
+iiu
+iiu
+iiu
+iiu
+iiu
 qGp
 qGp
 qGp
@@ -82904,10 +82902,10 @@ oEm
 fqy
 fqy
 qGp
-yel
-yel
-yel
-yel
+adJ
+adJ
+adJ
+adJ
 nNr
 rMS
 rMS
@@ -83123,7 +83121,7 @@ fYV
 fYV
 nNr
 nNr
-yel
+pmS
 sQi
 sQi
 geH
@@ -83145,11 +83143,11 @@ ahr
 qgo
 adJ
 adJ
-mGT
-mGT
-uAW
-mGT
-uAW
+adJ
+adJ
+iiu
+hkJ
+iiu
 hiW
 bAd
 jED
@@ -83161,11 +83159,11 @@ oKp
 cso
 gdV
 qGp
-yel
-yel
-yel
-yel
-yel
+adJ
+adJ
+adJ
+adJ
+adJ
 nNr
 rMS
 adJ
@@ -83402,11 +83400,11 @@ vqo
 ryz
 adJ
 adJ
-mGT
-mGT
-uAW
-mGT
-uAW
+adJ
+adJ
+iiu
+hkJ
+iiu
 wQI
 chV
 chV
@@ -83418,11 +83416,11 @@ jwd
 ukS
 duf
 qGp
-yel
-yel
-yel
-yel
-yel
+adJ
+adJ
+adJ
+adJ
+adJ
 rMS
 rMS
 adJ
@@ -83659,8 +83657,8 @@ rpa
 qgo
 adJ
 adJ
-uAW
-uAW
+iiu
+iiu
 qGp
 qGp
 qGp
@@ -83675,10 +83673,10 @@ qGp
 iuA
 qGp
 qGp
-yel
-yel
-yel
-yel
+adJ
+adJ
+adJ
+adJ
 rMS
 rMS
 rMS
@@ -83904,7 +83902,7 @@ sju
 tRa
 dpG
 vIK
-wyI
+xZx
 ayX
 qgo
 nNr
@@ -83918,8 +83916,8 @@ adJ
 adJ
 adJ
 adJ
-uAW
-uAW
+iiu
+iiu
 qGp
 qGp
 qGp
@@ -83931,11 +83929,11 @@ hrw
 qGp
 qGp
 dwC
-cNg
-yel
-yel
-yel
-yel
+qgS
+adJ
+adJ
+adJ
+adJ
 rMS
 rMS
 rMS
@@ -84161,7 +84159,7 @@ nMK
 xwS
 uuV
 dpG
-wyI
+xZx
 sju
 ryz
 geH
@@ -84177,8 +84175,8 @@ adJ
 adJ
 adJ
 adJ
-uAW
-uAW
+iiu
+iiu
 qGp
 qGp
 qGp
@@ -84186,12 +84184,12 @@ vqU
 ayO
 vqU
 qGp
-uAW
-uAW
+iiu
+iiu
 adJ
-yel
-yel
-yel
+adJ
+adJ
+adJ
 nNr
 rMS
 rMS
@@ -84426,29 +84424,29 @@ sQi
 ryz
 dPp
 pft
-gyq
+hlK
 ryz
 geH
-sQi
-sQi
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-sQi
+bnh
+bnh
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+bnh
 nNr
 rMS
 rMS
@@ -84687,24 +84685,24 @@ qkd
 qgo
 geH
 geH
-sQi
-sQi
-sQi
-yel
-yel
-yel
-yel
-yel
-sQi
-yel
-yel
-yel
-sQi
-yel
-yel
-yel
-yel
-sQi
+bnh
+bnh
+bnh
+adJ
+adJ
+adJ
+adJ
+adJ
+bnh
+adJ
+adJ
+adJ
+bnh
+adJ
+adJ
+adJ
+adJ
+bnh
 cnn
 geH
 nNr
@@ -84935,8 +84933,8 @@ mdo
 nMK
 nMK
 cmy
-hAy
-qBA
+rMU
+fkL
 cmy
 pft
 pft
@@ -84944,23 +84942,23 @@ xZM
 ryz
 rMS
 geH
-yel
-yel
-yel
-yel
-yel
-yel
-yel
-sQi
-sQi
-yel
-yel
-yel
-sQi
-sQi
-yel
-yel
-yel
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+bnh
+bnh
+adJ
+adJ
+adJ
+bnh
+bnh
+adJ
+adJ
+adJ
 nNr
 geH
 nNr
@@ -85202,21 +85200,21 @@ qgo
 nNr
 nNr
 nNr
-yel
+adJ
 nNr
 nNr
-yel
-yel
-yel
-sQi
-sQi
-yel
-yel
-yel
-sQi
-sQi
-yel
-yel
+adJ
+adJ
+adJ
+bnh
+bnh
+adJ
+adJ
+adJ
+bnh
+bnh
+adJ
+adJ
 nNr
 nNr
 nNr
@@ -85467,10 +85465,10 @@ nNr
 rMS
 rMS
 sQi
-yel
-yel
-yel
-sQi
+adJ
+adJ
+adJ
+bnh
 rMS
 rMS
 rMS
@@ -85724,8 +85722,8 @@ rMS
 rMS
 rMS
 rMS
-yel
-yel
+adJ
+adJ
 nNr
 rMS
 rMS
@@ -91243,30 +91241,30 @@ fjg
 fjg
 fjg
 adJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
 adJ
 adJ
 adJ
@@ -91500,30 +91498,30 @@ fjg
 fjg
 fjg
 adJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
 adJ
 adJ
 adJ
@@ -91757,30 +91755,30 @@ fjg
 fjg
 fjg
 adJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
 adJ
 adJ
 adJ
@@ -92014,30 +92012,30 @@ fjg
 fjg
 fjg
 adJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
 adJ
 adJ
 adJ
@@ -92271,30 +92269,30 @@ fjg
 fjg
 fjg
 adJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
 adJ
 adJ
 adJ
@@ -92528,30 +92526,30 @@ fjg
 fjg
 fjg
 adJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
 adJ
 adJ
 adJ
@@ -92785,30 +92783,30 @@ fjg
 fjg
 fjg
 adJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
 adJ
 adJ
 adJ
@@ -93042,30 +93040,30 @@ fjg
 fjg
 fjg
 adJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
 adJ
 adJ
 adJ
@@ -93299,30 +93297,30 @@ fjg
 fjg
 fjg
 adJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
 adJ
 adJ
 adJ
@@ -93556,30 +93554,30 @@ fjg
 fjg
 fjg
 adJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
 adJ
 adJ
 adJ
@@ -93813,30 +93811,30 @@ fjg
 fjg
 fjg
 adJ
-kqJ
-kqJ
+cLG
+cLG
 qSH
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
 adJ
 adJ
 adJ
@@ -94070,30 +94068,30 @@ fjg
 fjg
 fjg
 adJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
 adJ
 adJ
 adJ
@@ -94327,30 +94325,30 @@ fjg
 fjg
 fjg
 adJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
 adJ
 adJ
 adJ
@@ -94584,30 +94582,30 @@ fjg
 fjg
 fjg
 adJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
 adJ
 adJ
 adJ
@@ -94841,30 +94839,30 @@ fjg
 fjg
 fjg
 adJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
 adJ
 adJ
 adJ
@@ -95098,30 +95096,30 @@ fjg
 fjg
 fjg
 adJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
 adJ
 adJ
 adJ
@@ -95355,30 +95353,30 @@ fjg
 fjg
 fjg
 adJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
 adJ
 adJ
 adJ
@@ -95612,30 +95610,30 @@ fjg
 fjg
 fjg
 adJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
 adJ
 adJ
 adJ
@@ -95869,30 +95867,30 @@ fjg
 fjg
 fjg
 adJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
 adJ
 adJ
 adJ
@@ -96126,30 +96124,30 @@ adJ
 adJ
 adJ
 adJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
 adJ
 adJ
 adJ
@@ -96383,30 +96381,30 @@ adJ
 adJ
 adJ
 adJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
 adJ
 adJ
 adJ
@@ -96640,30 +96638,30 @@ adJ
 adJ
 adJ
 adJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
 adJ
 adJ
 adJ
@@ -96897,30 +96895,30 @@ adJ
 adJ
 adJ
 adJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
 adJ
 adJ
 adJ
@@ -97154,30 +97152,30 @@ adJ
 adJ
 adJ
 adJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
 adJ
 adJ
 adJ
@@ -97411,30 +97409,30 @@ adJ
 adJ
 adJ
 adJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
 adJ
 adJ
 adJ
@@ -97668,30 +97666,30 @@ adJ
 adJ
 adJ
 adJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
-kqJ
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
+cLG
 adJ
 adJ
 adJ

@@ -21,6 +21,7 @@
 
 
 /datum/antag_scenario/team/vox_raiders/equip_character(datum/mind/mind)
+	. = ..()
 	var/mob/living/carbon/human/H = mind.current
 	if(H)
 		H.equipOutfit(/datum/outfit/vox)
