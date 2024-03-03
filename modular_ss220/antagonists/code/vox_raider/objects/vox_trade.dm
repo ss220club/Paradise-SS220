@@ -185,6 +185,7 @@
 
 /obj/machinery/vox_trader/proc/get_value(mob/user, list/items_list, is_need_grading = FALSE)
 	var/values_sum = 0
+	var/values_sum_precious = 0 // считаем сумму без скидки, например для хайрисков и уникальных доступов. Оцень ценных вещей.
 	var/accepted_access = list()
 
 	// проверка для бонусной диалоговой строки
@@ -238,11 +239,11 @@
 				var/tech_value = text2num(tech_list[tech])
 				if(tech in collected_tech_dict)
 					if(collected_tech_dict[tech] < tech_value)
-						temp_values_sum += unique_tech_level_reward * (tech_value - collected_tech_dict[tech])
+						values_sum_precious += unique_tech_level_reward * (tech_value - collected_tech_dict[tech])
 						collected_tech_dict[tech] = tech_value
 						is_tech_unique = TRUE
 				else
-					temp_values_sum += unique_tech_level_reward * tech_value
+					values_sum_precious += unique_tech_level_reward * tech_value
 					collected_tech_dict += list(tech = tech_value)
 					is_tech_unique = TRUE
 				if(tech in valuable_tech_list)
@@ -251,7 +252,8 @@
 				if(!is_tech_unique)	// ценим уникальные разработки, а не спам продукцией абдукторов из протолата
 					temp_mult /= no_unique_tech_div
 				var/excess_mult = text2num(tech_value) > 7 ? 2 : 1	// переизбыток
-				temp_values_sum += round(tech_value * tech_mult * temp_mult * excess_mult)
+				var/tech_value = round(tech_value * tech_mult * temp_mult * excess_mult)
+				temp_values_sum += tech_value
 				is_tech = TRUE
 
 		if(istype(I, /obj/item/stack))
@@ -264,10 +266,10 @@
 				if(access in collected_access_list)
 					continue
 				if(access in valuable_access_list)
-					temp_values_sum += valuable_access_reward
+					values_sum_precious += valuable_access_reward
 					is_access_unique = TRUE
 				else
-					temp_values_sum += value_access_reward
+					values_sum_precious += value_access_reward
 				accepted_access += access
 
 		if(isitem(I))
@@ -302,10 +304,10 @@
 							temp_value *= 2
 						else
 							temp_value *= 1.5
-			temp_values_sum += temp_value
+			values_sum_precious += temp_value
 
 		if(I in special_precious_objects_list)
-			temp_values_sum += valuable_highrisk_reward
+			values_sum_precious += valuable_highrisk_reward
 
 		//Оцениваем драгоценность для задания
 		if(is_need_grading)
@@ -344,6 +346,7 @@
  	// Деноминируем кикиридиты и забираем небольшой процент в семью.
 	values_sum /= denomination_div	// деноминируем
 	values_sum -= values_sum % 10	// забираем процентик
+	values_sum += values_sum_precious // Даем бонус за особые ценности
 	return round(values_sum)
 
 /obj/machinery/vox_trader/proc/precious_grading(mob/user, obj/I, value)
