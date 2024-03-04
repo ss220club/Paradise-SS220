@@ -26,7 +26,7 @@
 	for(var/i in 0 to duration-2)
 		addtimer(CALLBACK(src, PROC_REF(stop_and_dance_mobs_in_area)), i)
 	addtimer(CALLBACK(src, PROC_REF(release_frozen_mobs)), duration-1)
-	QDEL_IN(src, duration-1)
+	QDEL_IN(src, duration)
 	return
 
 /obj/effect/timestop/dancing/proc/release_frozen_mobs()
