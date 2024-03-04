@@ -358,7 +358,7 @@
 			for(var/valuable_type in valuable_guns_dict)
 				if(!istype(I, valuable_type))
 					continue
-				values_sum_precious += valuable_objects_dict[valuable_type]
+				values_sum_precious += valuable_guns_dict[valuable_type]
 				break
 
 		//Оцениваем драгоценность для задания

@@ -16,19 +16,19 @@
 		return
 
 	if(!isvox(user))
-		to_chat(span_warning("Кажется вы тыкаете не той стороной... Или [name] не работает? Да как воксы этим пользуются?!"))
+		to_chat(user, span_warning("Кажется вы тыкаете не той стороной... Или [name] не работает? Да как воксы этим пользуются?!"))
 		return
 
 	if(!connected_trader)
-		to_chat(span_warning("Невозможно получить сведения с оценочной базы данных. Подключите устройство."))
+		to_chat(user, span_warning("Невозможно получить сведения с оценочной базы данных. Подключите устройство."))
 		return
 
 	if(!isobj(target))
-		to_chat(span_notice("Данный объект не поддается оценке."))
+		to_chat(user, span_notice("Данный объект не поддается оценке."))
 		return
 
 	if(!connected_trader.check_usable(user))
 		return
 
 	var/value = connected_trader.get_value(list(target))
-	to_chat(span_green("Ценность [target.name]: [value]"))
+	to_chat(user, span_green("Ценность [target.name]: [value]"))

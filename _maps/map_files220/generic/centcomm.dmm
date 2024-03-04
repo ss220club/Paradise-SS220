@@ -523,19 +523,6 @@
 "aph" = (
 /turf/simulated/floor/carpet/red,
 /area/wizard_station)
-"apy" = (
-/obj/machinery/door/airlock/survival_pod/glass{
-	hackProof = 1;
-	aiControlDisabled = 1;
-	name = "vox door";
-	req_access_txt = "152"
-	},
-/turf/simulated/floor/mineral/plastitanium{
-	nitrogen = 103.984;
-	oxygen = 0;
-	name = "vox floor"
-	},
-/area/vox_base)
 "apS" = (
 /obj/structure/table/wood,
 /turf/simulated/floor/wood,
@@ -3396,6 +3383,7 @@
 "cee" = (
 /obj/effect/turf_decal/delivery/hollow,
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/light,
 /turf/simulated/floor/mineral/plastitanium{
 	color = "#fff894";
 	nitrogen = 103.984;
@@ -8111,6 +8099,9 @@
 "eTp" = (
 /obj/structure/closet/walllocker/firelocker/north,
 /obj/effect/turf_decal/box/red,
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/simulated/floor/mineral/plastitanium{
 	color = "#fff894";
 	nitrogen = 103.984;
@@ -12327,6 +12318,9 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/walllocker/firelocker/north,
 /obj/effect/turf_decal/box/red,
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/simulated/floor/mineral/plastitanium{
 	color = "#fff894";
 	nitrogen = 103.984;
@@ -21673,6 +21667,7 @@
 "nwZ" = (
 /obj/effect/turf_decal/delivery/hollow,
 /obj/effect/landmark/damageturf,
+/obj/machinery/light,
 /turf/simulated/floor/mineral/plastitanium{
 	color = "#fff894";
 	nitrogen = 103.984;
@@ -23752,7 +23747,12 @@
 /area/trader_station/sol)
 "oQG" = (
 /obj/structure/table/reinforced/brass,
-/obj/effect/spawner/lootdrop/trash,
+/obj/item/hand_valuer{
+	pixel_x = -6
+	},
+/obj/item/hand_valuer{
+	pixel_x = 4
+	},
 /turf/simulated/floor/mineral/plastitanium{
 	color = "#fff894";
 	nitrogen = 103.984;
@@ -29227,20 +29227,6 @@
 	icon_state = "darkyellowaltstrip"
 	},
 /area/syndicate_mothership/control)
-"siZ" = (
-/obj/machinery/door/airlock/survival_pod/glass{
-	hackProof = 1;
-	aiControlDisabled = 1;
-	name = "vox door";
-	req_access_txt = "152"
-	},
-/obj/effect/landmark/damageturf,
-/turf/simulated/floor/mineral/plastitanium{
-	nitrogen = 103.984;
-	oxygen = 0;
-	name = "vox floor"
-	},
-/area/vox_base)
 "sji" = (
 /obj/effect/decal/nanotrasen_logo_circle{
 	icon_state = "ntlogo_sec";
@@ -35451,16 +35437,6 @@
 	icon_state = "grimy"
 	},
 /area/syndicate_mothership/elite_squad)
-"wqv" = (
-/obj/structure/table/reinforced/brass,
-/obj/effect/spawner/lootdrop/officetoys,
-/turf/simulated/floor/mineral/plastitanium{
-	color = "#fff894";
-	nitrogen = 103.984;
-	oxygen = 0;
-	name = "vox floor"
-	},
-/area/vox_base)
 "wqN" = (
 /obj/structure/bed/mattress/dirty,
 /obj/item/reagent_containers/glass/beaker/waterbottle{
@@ -37501,16 +37477,6 @@
 	},
 /turf/simulated/floor/wood/oak,
 /area/syndicate_mothership/infteam)
-"xvg" = (
-/obj/structure/table/reinforced/brass,
-/obj/item/stack/tape_roll,
-/turf/simulated/floor/mineral/plastitanium{
-	color = "#fff894";
-	nitrogen = 103.984;
-	oxygen = 0;
-	name = "vox floor"
-	},
-/area/vox_base)
 "xvt" = (
 /obj/structure/chair/comfy/shuttle/dark,
 /turf/simulated/floor/plasteel{
@@ -79268,8 +79234,8 @@ qgo
 qgo
 qgo
 tHm
-wqv
-xvg
+oQG
+oQG
 aUy
 qgo
 fYV
@@ -80563,7 +80529,7 @@ cNY
 cNY
 mAj
 qnq
-apy
+hAK
 oue
 fkL
 iBC
@@ -80820,7 +80786,7 @@ cNY
 cNY
 cNY
 uVe
-siZ
+hAK
 rMU
 fkL
 adp
@@ -82096,7 +82062,7 @@ qgo
 qgo
 hnH
 oQG
-wqv
+oQG
 uNC
 qgo
 rTt
@@ -82363,7 +82329,7 @@ oqL
 cAQ
 cAQ
 qgo
-fYV
+rMS
 pmS
 pmS
 fJi
@@ -82611,7 +82577,7 @@ fYV
 geH
 pmS
 nNr
-fYV
+rMS
 jTj
 cCC
 qwQ
@@ -82620,7 +82586,7 @@ sju
 uvq
 qRP
 oYj
-fYV
+rMS
 nNr
 qgo
 qgo
@@ -82868,7 +82834,7 @@ geH
 sQi
 sQi
 pmS
-fYV
+rMS
 wMp
 fTD
 cNY
@@ -82877,8 +82843,8 @@ sju
 cNY
 fTD
 ozJ
-fYV
-fYV
+rMS
+rMS
 qgo
 jdV
 vHV
@@ -83125,7 +83091,7 @@ pmS
 sQi
 sQi
 geH
-fYV
+rMS
 lnF
 cNY
 nMK
@@ -83134,8 +83100,8 @@ nMK
 nMK
 cNY
 xeb
-fYV
-fYV
+rMS
+rMS
 qgo
 ctB
 pft
@@ -83391,7 +83357,7 @@ sLH
 nMK
 nMK
 auS
-fYV
+rMS
 nNr
 ryz
 dPp
@@ -83648,7 +83614,7 @@ vwA
 sLH
 cYy
 qgo
-fYV
+rMS
 nNr
 qgo
 dqB
