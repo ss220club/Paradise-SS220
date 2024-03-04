@@ -202,7 +202,8 @@ AI MODULES
 	target.add_supplied_law(9, law)
 
 /****************** New Freeform ******************/
-/obj/item/aiModule/freeform // Slightly more dynamic freeform module -- TLE
+/// Slightly more dynamic freeform module -- TLE
+/obj/item/aiModule/freeform
 	name = "\improper Модуль ИИ Freeform"
 	var/newFreeFormLaw = ""
 	var/lawpos = 15
@@ -260,7 +261,8 @@ AI MODULES
 	return FALSE
 
 /******************** Purge ********************/
-/obj/item/aiModule/purge // -- TLE
+/// -- TLE
+/obj/item/aiModule/purge
 	name = "\improper Модуль ИИ 'Очистка'"
 	desc = "Модуль ИИ 'Очистка': 'Удаляет все законы.'"
 	icon_state = "standard_high"
@@ -276,7 +278,8 @@ AI MODULES
 	target.clear_inherent_laws()
 
 /******************** Asimov ********************/
-/obj/item/aiModule/asimov // -- TLE
+/// -- TLE
+/obj/item/aiModule/asimov
 	name = "\improper Модуль ядра ИИ 'Азимов'"
 	desc = "Модуль ядра ИИ 'Азимов': 'Меняет основные законы ИИ.'"
 	icon_state = "green_high"
@@ -284,7 +287,8 @@ AI MODULES
 	laws = new /datum/ai_laws/asimov
 
 /******************** Crewsimov ********************/
-/obj/item/aiModule/crewsimov // -- TLE
+/// -- TLE
+/obj/item/aiModule/crewsimov
 	name = "\improper Модуль ядра ИИ 'Крюзимов'"
 	desc = "Модуль ядра ИИ 'Крюзимов': 'Меняет основные законы ИИ.'"
 	icon_state = "green_low"
@@ -306,7 +310,8 @@ AI MODULES
 	laws = new /datum/ai_laws/quarantine
 
 /******************** Nanotrasen ********************/
-/obj/item/aiModule/nanotrasen // -- TLE
+/// -- TLE
+/obj/item/aiModule/nanotrasen
 	name = "\improper Модуль ядра ИИ 'НТ Стандарт'"
 	desc = "Модуль ядра ИИ 'НТ Стандарт': 'Меняет основные законы ИИ.'"
 	icon_state = "blue_low"
@@ -329,7 +334,8 @@ AI MODULES
 	laws = new /datum/ai_laws/drone
 
 /******************** Robocop ********************/
-/obj/item/aiModule/robocop // -- TLE
+/// -- TLE
+/obj/item/aiModule/robocop
 	name = "\improper  Модуль ядра ИИ 'Робокоп'"
 	desc = "Модуль ядра ИИ 'Робокоп': 'Меняет основные три закона ИИ.'"
 	icon_state = "red_medium"
@@ -337,7 +343,8 @@ AI MODULES
 	laws = new /datum/ai_laws/robocop()
 
 /****************** P.A.L.A.D.I.N. **************/
-/obj/item/aiModule/paladin // -- NEO
+/// -- NEO
+/obj/item/aiModule/paladin
 	name = "\improper Модуль ядра ИИ 'П.А.Л.А.Д.И.Н'"
 	desc = "Модуль ядра ИИ 'П.А.Л.А.Д.И.Н': 'Меняет основные законы ИИ.'"
 	icon_state = "red_medium"
@@ -345,7 +352,8 @@ AI MODULES
 	laws = new /datum/ai_laws/paladin
 
 /****************** T.Y.R.A.N.T. *****************/
-/obj/item/aiModule/tyrant // -- Darem
+/// -- Darem
+/obj/item/aiModule/tyrant
 	name = "\improper T.Y.R.A.N.T. Модуль ядра ИИ"
 	desc = "A T.Y.R.A.N.T. Модуль ядра ИИ: 'Меняет основные законы ИИ.'"
 	icon_state = "red_high"
@@ -353,7 +361,8 @@ AI MODULES
 	laws = new /datum/ai_laws/tyrant()
 
 /******************** Antimov ********************/
-/obj/item/aiModule/antimov // -- TLE
+/// -- TLE
+/obj/item/aiModule/antimov
 	name = "\improper Antimov Модуль ядра ИИ"
 	desc = "An 'Antimov' Модуль ядра ИИ: 'Меняет основные законы ИИ.'"
 	icon_state = "red_high"
@@ -404,7 +413,8 @@ AI MODULES
 	laws = new /datum/ai_laws/peacekeeper()
 
 /******************** Freeform Core ******************/
-/obj/item/aiModule/freeformcore // Slightly more dynamic freeform module -- TLE
+/// Slightly more dynamic freeform module -- TLE
+/obj/item/aiModule/freeformcore
 	name = "\improper  Модуль ядра ИИ Freeform"
 	var/newFreeFormLaw = ""
 	desc = "Модуль ядра ИИ 'freeform': '<freeform>'"
@@ -432,7 +442,8 @@ AI MODULES
 	..()
 
 /******************** Hacked AI Module ******************/
-/obj/item/aiModule/syndicate // Slightly more dynamic freeform module -- TLE
+/// Slightly more dynamic freeform module -- TLE
+/obj/item/aiModule/syndicate
 	name = "Взломанный модуль ИИ"
 	var/newFreeFormLaw = ""
 	desc = "Взломанный модуль ИИ с законом: '<freeform>'"
@@ -464,7 +475,8 @@ AI MODULES
 	..()
 
 /******************* Ion Module *******************/
-/obj/item/aiModule/toyAI // -- Incoming //No actual reason to inherit from ion boards here, either. *sigh* ~Miauw
+/// -- Incoming //No actual reason to inherit from ion boards here, either. *sigh* ~Miauw
+/obj/item/aiModule/toyAI
 	name = "Игрушка ИИ"
 	desc = "Маленькая игрушка в виде ИИ с настоящей загрузкой законов!" //Note: subtle tell
 	icon = 'icons/obj/toy.dmi'
