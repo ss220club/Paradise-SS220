@@ -61,9 +61,6 @@
 
 /obj/machinery/vox_shop/proc/check_usable(mob/user)
 	. = FALSE
-
-	return TRUE 	// !!!!! времянка
-
 	if(issilicon(user))
 		return
 	if(!isvox(user))

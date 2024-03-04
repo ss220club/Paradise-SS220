@@ -39,7 +39,7 @@
 	// ========= МНОЖИТЕЛИ =========
 
 	// произведения за параметры
-	var/tech_mult = 3
+	var/tech_mult = 6
 	var/weight_mult = 3
 	var/force_mult = 5
 
@@ -58,7 +58,7 @@
 	var/valuable_highrisk_reward = 500
 	var/value_access_reward = 100
 	var/valuable_access_reward = 500
-	var/unique_tech_level_reward = 50
+	var/unique_tech_level_reward = 50	// учитываем также множитель за технологии
 
 	// дополнительные списки
 	var/highrisk_list = list()
@@ -88,7 +88,6 @@
 	return FALSE	// Ха-ха, глупая железяка не понимает как пользоваться технологиями ВОКСов!
 
 /obj/machinery/vox_trader/proc/check_usable(mob/user)
-	return TRUE // !!!!!! ВРЕМЕННО
 	. = FALSE
 	if(issilicon(user))
 		return
@@ -249,11 +248,8 @@
 				if(tech in valuable_tech_list)
 					temp_mult = tech_value
 					is_tech_valuable = TRUE
-				if(!is_tech_unique)	// ценим уникальные разработки, а не спам продукцией абдукторов из протолата
-					temp_mult /= no_unique_tech_div
 				var/excess_mult = text2num(tech_value) > 7 ? 2 : 1	// переизбыток
-				var/tech_value = round(tech_value * tech_mult * temp_mult * excess_mult)
-				temp_values_sum += tech_value
+				temp_values_sum += round(tech_value * temp_mult * excess_mult)
 				is_tech = TRUE
 
 		if(istype(I, /obj/item/stack))
