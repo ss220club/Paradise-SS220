@@ -29,13 +29,6 @@
 	var/collected_access_list = list()
 	var/collected_tech_dict = list()
 
-	var/list/special_precious_objects_list = list(
-		/obj/item/areaeditor/blueprints/ce,
-		/obj/item/disk/nuclear,
-		/obj/item/clothing/suit/armor/reactive,
-		/obj/item/documents,
-	)
-
 	// ========= МНОЖИТЕЛИ =========
 
 	// произведения за параметры
@@ -54,20 +47,70 @@
 	var/integrity_reward = 5
 	var/electroprotect_reward = 50
 	var/permeability_reward	= 20
-	var/highrisk_reward = 300
-	var/valuable_highrisk_reward = 500
+	var/highrisk_reward = 500
+	var/valuable_highrisk_reward = 1000
 	var/value_access_reward = 100
 	var/valuable_access_reward = 500
 	var/unique_tech_level_reward = 50	// учитываем также множитель за технологии
 
 	// дополнительные списки
-	var/highrisk_list = list()
-	var/valuable_access_list = list()
-	var/valuable_tech_list = list("bluespace", "syndicate", "combat", "abductor")
+	var/list/highrisk_list = list()
+	var/list/valuable_highrisk_list = list(
+		/obj/item/areaeditor/blueprints/ce,
+		/obj/item/disk/nuclear,
+		/obj/item/clothing/suit/armor/reactive,
+		/obj/item/documents,
+	)
+	var/list/valuable_access_list = list()	// определяется при инициализации
+	var/list/valuable_tech_list = list("bluespace", "syndicate", "combat", "abductor")
 
+	// дополнительные суммы за ценности
+	var/list/valuable_objects_dict = list(
+		/obj/machinery/nuclearbomb = 5000,
+		)
+	var/list/valuable_guns_dict = list(
+		/obj/item/gun/energy/taser = 300,
+		/obj/item/gun/energy/disabler = 100,
+		/obj/item/gun/energy/lasercannon = 400,
+
+		/obj/item/gun/energy/gun/blueshield = 300,
+		/obj/item/gun/energy/gun/nuclear = 300,
+		/obj/item/gun/energy/gun/advtaser = 500,
+		/obj/item/gun/energy/gun = 150,
+
+		/obj/item/gun/energy/pulse = 3000,
+		/obj/item/gun/energy/ionrifle = 1000,
+		/obj/item/gun/energy/decloner = 500,
+		/obj/item/gun/energy/floragun = 500,
+		/obj/item/gun/energy/meteorgun = 500,
+		/obj/item/gun/energy/mindflayer = 500,
+		/obj/item/gun/energy/wormhole_projector = 800,
+		/obj/item/gun/energy/laser/instakill = 10000,
+		/obj/item/gun/energy/clown = 100,
+		/obj/item/gun/energy/plasmacutter/adv = 300,
+		/obj/item/gun/energy/laser = 200,
+
+		/obj/item/gun/magic/staff = 10000,
+		/obj/item/gun/magic/wand = 5000,
+		/obj/item/gun/magic = 2000,
+
+		/obj/item/gun/projectile/automatic/toy = 10,
+		/obj/item/gun/projectile/automatic/lasercarbine = 800,
+		/obj/item/gun/projectile/automatic/laserrifle = 1000,
+		/obj/item/gun/projectile/automatic/pistol = 300,
+		/obj/item/gun/projectile/automatic/l6_saw = 3000,
+		/obj/item/gun/projectile/automatic/sniper_rifle = 2000,
+		/obj/item/gun/projectile/automatic = 500,
+		/obj/item/gun/projectile = 300,
+
+		/obj/item/gun/rocketlauncher = 1000,
+		/obj/item/gun/medbeam = 2000,
+		/obj/item/gun/throw/crossbow = 300,
+		/obj/item/gun/syringe = 200,
+		)
 	// =============================
 
-/obj/machinery/vox_trader/New()
+/obj/machinery/vox_trader/Initialize(mapload)
 	. = ..()
 	for(var/theft_type in subtypesof(/datum/theft_objective))
 		highrisk_list += new theft_type
@@ -254,7 +297,11 @@
 
 		if(istype(I, /obj/item/stack))
 			var/obj/item/stack/stack = I
-			temp_values_sum *= round(stack.amount / stack_div)
+			var/point_value = 1
+			if(istype(I, /obj/item/stack/sheet))
+				var/obj/item/stack/sheet/sheet = stack
+				point_value += sheet.point_value
+			temp_values_sum *= round(stack.amount / stack_div * point_value)
 
 		if(istype(I, /obj/item/card/id))
 			var/obj/item/card/id/id = I
@@ -286,10 +333,6 @@
 		for(var/datum/theft_objective/objective in highrisk_list)
 			if(!istype(I, objective.typepath))
 				continue
-			if(istype(I, /obj/item/aicard))
-				for(var/mob/living/silicon/ai/A in I)
-					if(!(isAI(A) && A.stat != 2)) //See if any AI's are alive inside that card.
-						continue
 			var/temp_value = highrisk_reward
 			if(objective.special_equipment)
 				temp_value *= 2
@@ -302,12 +345,25 @@
 							temp_value *= 1.5
 			values_sum_precious += temp_value
 
-		if(I in special_precious_objects_list)
-			values_sum_precious += valuable_highrisk_reward
+			if(I in valuable_highrisk_list)
+				values_sum_precious += valuable_highrisk_reward
+
+		for(var/valuable_type in valuable_objects_dict)
+			if(!istype(I, valuable_type))
+				continue
+			values_sum_precious += valuable_objects_dict[valuable_type]
+			break
+
+		if(istype(I, /obj/item/gun))
+			for(var/valuable_type in valuable_guns_dict)
+				if(!istype(I, valuable_type))
+					continue
+				values_sum_precious += valuable_objects_dict[valuable_type]
+				break
 
 		//Оцениваем драгоценность для задания
 		if(is_need_grading)
-			precious_grading(user, I, temp_values_sum)
+			precious_grading(user, I, temp_values_sum + (values_sum_precious - values_sum))
 
 		// ____________________________
 		// Завершаем рассчет
