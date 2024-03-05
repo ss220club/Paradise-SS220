@@ -32,9 +32,9 @@
 		if(MATERIAL_CLASS_SOAP)
 			return isdrask(target)
 		if(MATERIAL_CLASS_PLASMA)
-			return splasmaman(target)
+			return isplasmaman(target)
 		if(MATERIAL_CLASS_RAD)
-			return (is_species(target, /datum/species/nucleation))
+			return isnucleation(target)
 	if(is_only_grab_intent && user.a_intent != INTENT_GRAB)
 		return FALSE
 	return TRUE
