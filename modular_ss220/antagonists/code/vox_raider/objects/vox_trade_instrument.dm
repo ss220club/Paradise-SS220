@@ -30,5 +30,5 @@
 	if(!connected_trader.check_usable(user))
 		return
 
-	var/value = connected_trader.get_value(list(target))
+	var/value = connected_trader.get_value(user, list(target), is_visuale_only = TRUE)
 	to_chat(user, span_green("Ценность [target.name]: [value]"))

@@ -1,298 +1,292 @@
-/obj/item/dart_cartridge
-	name = "dart cartridge"
-	desc = "A rack of hollow darts."
-	icon = 'icons/obj/weapons/ammo.dmi'
-	icon_state = "darts-5"
-	item_state = "rcdammo"
-	opacity = 0
-	density = 0
-	anchored = 0.0
-	origin_tech = "materials=2"
-	var/darts = 5
-
-/obj/item/dart_cartridge/update_icon()
-	if(!darts)
-		icon_state = "darts-0"
-	else if(darts > 5)
-		icon_state = "darts-5"
-	else
-		icon_state = "darts-[darts]"
-	return 1
-
-/obj/item/gun/dartgun
+/obj/item/gun/syringe/dart_gun
 	name = "dart gun"
-	desc = "A small gas-powered dartgun, capable of delivering chemical cocktails swiftly across short distances."
-	icon_state = "dartgun-empty"
+	desc = "Компактный метатель дротиков для доставки химических коктейлей."
+	icon = 'modular_ss220/antagonists/icons/guns/projectile.dmi'
+	icon_state = "dartgun"
+	item_state = "bluetag"
+	var/cartridge_overlay = "dartgun_cartridge_overlay"
+	max_syringes = 5
+	var/list/valid_cartridge_types = list(/obj/item/storage/dart_cartridge)
+	var/valid_dart_type = /obj/item/reagent_containers/syringe/dart
+	var/obj/item/storage/dart_cartridge/cartridge_loaded
+	var/pixel_y_overlay_div = 5	// сколько у нас делений для спрайта оверлея ("Позиций")
+	var/pixel_y_overlay_offset = 2 // на сколько пикселей смещаем оверлей
 
-	var/list/beakers = list() //All containers inside the gun.
-	var/list/mixing = list() //Containers being used for mixing.
-	var/obj/item/dart_cartridge/cartridge = null //Container of darts.
-	var/max_beakers = 3
-	var/dart_reagent_amount = 15
-	var/containers_type = /obj/item/reagent_containers/glass/beaker
-	var/list/starting_chems = null
+/obj/item/gun/syringe/dart_gun/update_overlays()
+	. = ..()
+	if(cartridge_loaded)
+		var/pixel_y_offset = 0
+		var/num = length(syringes)
+		if(num)
+			pixel_y_offset = -(pixel_y_overlay_div - pixel_y_overlay_div * num / max_syringes) * pixel_y_overlay_offset
+		. += image(icon = icon, icon_state = cartridge_overlay,  pixel_y = pixel_y_offset)
+		if(cartridge_loaded.overlay_state_color)
+			. += image(icon = icon, icon_state = "[cartridge_overlay]_[cartridge_loaded.overlay_state_color]",  pixel_y = pixel_y_offset)
+		. += icon_state
 
-/obj/item/gun/dartgun/update_icon()
-	if(!cartridge)
-		icon_state = "dartgun-e"
-		return 1
-
-	if(!cartridge.darts)
-		icon_state = "dartgun-0"
-	else if(cartridge.darts > 5)
-		icon_state = "dartgun-5"
+/obj/item/gun/syringe/dart_gun/attackby(obj/item/A, mob/user, params, show_msg)
+	if(cartridge_loaded)
+		for(var/hold_type in cartridge_loaded.can_hold)
+			if(!istype(A, hold_type))
+				continue
+			if(insert_syringe_to_cartridge(A) && user && user.unEquip(A))
+				to_chat(user, span_notice("Вы загрузили [A] в [cartridge_loaded] в [src]!"))
+				return ..()
+		to_chat(user, "Картридж [src] полон!")
+		return FALSE
 	else
-		icon_state = "dartgun-[cartridge.darts]"
-	return 1
+		for(var/cartridge_type in valid_cartridge_types)
+			if(istype(A, cartridge_type))
+				if(user && !user.unEquip(A))
+					return TRUE
+				to_chat(user, span_notice("Вы вставили [A] в [src]!"))
+				cartridge_load(A)
+				return ..()
+	if(!chambered.BB && istype(A, valid_dart_type) && length(syringes) < max_syringes)
+		return ..()
+	if(user)
+		to_chat(user, "[A] не вмещается в [src]!")
+	return TRUE
 
-/obj/item/gun/dartgun/New()
-	..()
-	if(starting_chems)
-		for(var/chem in starting_chems)
-			var/obj/B = new containers_type(src)
-			B.reagents.add_reagent(chem, 50)
-			beakers += B
-	cartridge = new /obj/item/dart_cartridge(src)
+/obj/item/gun/syringe/dart_gun/proc/insert_syringe_to_cartridge(obj/item/syringe)
+	if(length(syringes) >= max_syringes)
+		return FALSE
+	syringe.forceMove(cartridge_loaded)
+	syringes.Add(syringe)
+	process_chamber()
+	return TRUE
+
+/obj/item/gun/syringe/dart_gun/proc/cartridge_load(obj/item/A, mob/user)
+	A.forceMove(src)
+	cartridge_loaded = A
+	for(var/obj/item/I in A.contents)
+		syringes.Add(I)
+	process_chamber()
+
+/obj/item/gun/syringe/dart_gun/proc/cartridge_unload(mob/user)
+	if(!cartridge_loaded)
+		return FALSE
+	user.unEquip(cartridge_loaded)
+	cartridge_loaded.update_icon()
+	cartridge_loaded = null
 	update_icon()
 
-/obj/item/gun/dartgun/examine(mob/user)
+/obj/item/gun/syringe/dart_gun/attack_self(mob/living/user)
+	if(cartridge_loaded)
+		user.put_in_hands(cartridge_loaded)
+		playsound(src, 'modular_ss220/antagonists/sound/guns/m79_unload.ogg', 50, 1)
+		to_chat(user, span_notice("Вы выгрузили [cartridge_loaded] с [src]."))
+		cartridge_loaded = null
+		process_chamber()
+		return TRUE
+	return ..()
+
+/obj/item/gun/syringe/dart_gun/process_chamber()
 	. = ..()
-	if(get_dist(user, src) <= 2)
-		if(beakers.len)
-			. += "<span class='notice'>[src] contains:</span>"
-			for(var/obj/item/reagent_containers/glass/beaker/B in beakers)
-				if(B.reagents && B.reagents.reagent_list.len)
-					for(var/datum/reagent/R in B.reagents.reagent_list)
-						. += "<span class='notice'>[R.volume] units of [R.name]</span>"
-
-/obj/item/gun/dartgun/attackby(obj/item/I as obj, mob/user as mob, params)
-	if(istype(I, /obj/item/dart_cartridge))
-
-		var/obj/item/dart_cartridge/D = I
-
-		if(!D.darts)
-			to_chat(user, "<span class='warning'>[D] is empty.</span>")
-			return 0
-
-		if(cartridge)
-			if(cartridge.darts <= 0)
-				src.remove_cartridge()
-			else
-				to_chat(user, "<span class='warning'>There's already a cartridge in [src].</span>")
-				return 0
-
-		user.drop_transfer_item_to_loc(D, src)
-		cartridge = D
-		to_chat(user, "<span class='notice'>You slot [D] into [src].</span>")
+	if(!cartridge_loaded)
 		update_icon()
 		return
-	if(istype(I, /obj/item/reagent_containers/glass))
-		if(!istype(I, containers_type))
-			to_chat(user, "<span class='warning'>[I] doesn't seem to fit into [src].</span>")
-			return
-		if(beakers.len >= max_beakers)
-			to_chat(user, "<span class='warning'>[src] already has [max_beakers] beakers in it - another one isn't going to fit!</span>")
-			return
-		var/obj/item/reagent_containers/glass/beaker/B = I
-		if(!user.drop_transfer_item_to_loc(B, src))
-			to_chat(user, "<span class='warning'>\The [B] is stuck to you!</span>")
-			return
-		beakers += B
-		to_chat(user, "<span class='notice'>You slot [B] into [src].</span>")
-		src.updateUsrDialog()
-	else
-		return ..()
 
-/obj/item/gun/dartgun/can_shoot()
-	if(!cartridge)
-		return 0
-	else
-		return cartridge.darts
-
-/obj/item/gun/dartgun/proc/has_selected_beaker_reagents()
-	return 0
-
-/obj/item/gun/dartgun/proc/remove_cartridge()
-	if(cartridge)
-		to_chat(usr, "<span class='notice'>You pop the cartridge out of [src].</span>")
-		var/obj/item/dart_cartridge/C = cartridge
-		C.forceMove(get_turf(src))
-		C.update_icon()
-		cartridge = null
-		src.update_icon()
-
-/obj/item/gun/dartgun/proc/get_mixed_syringe()
-	if(!cartridge)
-		return 0
-	if(!cartridge.darts)
-		return 0
-
-	var/obj/item/reagent_containers/syringe/dart = new(src)
-
-	if(mixing.len)
-		var/mix_amount = dart_reagent_amount/mixing.len
-		for(var/obj/item/reagent_containers/glass/beaker/B in mixing)
-			B.reagents.trans_to(dart,mix_amount)
-
-	return dart
-
-/obj/item/gun/dartgun/proc/fire_dart(atom/target, mob/user)
-	if(locate (/obj/structure/table, src.loc))
-		return
-	else
-		var/turf/trg = get_turf(target)
-		var/obj/effect/syringe_gun_dummy/D = new/obj/effect/syringe_gun_dummy(get_turf(src))
-		var/obj/item/reagent_containers/syringe/S = get_mixed_syringe()
-		if(!S)
-			to_chat(user, "<span class='warning'>There are no darts in [src]!</span>")
-			return
-		if(!S.reagents)
-			to_chat(user, "<span class='warning'>There are no reagents available!</span>")
-			return
-		cartridge.darts--
-		src.update_icon()
-		S.reagents.trans_to(D, S.reagents.total_volume)
-		qdel(S)
-		D.icon_state = "syringeproj"
-		D.name = "syringe"
-		D.reagents.set_reacting(FALSE)
-		playsound(user.loc, 'sound/items/syringeproj.ogg', 50, 1)
-
-		for(var/i=0, i<6, i++)
-			if(!D) break
-			if(D.loc == trg) break
-			step_towards(D,trg)
-
-			if(D)
-				for(var/mob/living/carbon/M in D.loc)
-					if(!istype(M,/mob/living/carbon)) continue
-					if(M == user) continue
-					//Syringe gun attack logging by Yvarov
-					var/R
-					if(D.reagents)
-						for(var/datum/reagent/A in D.reagents.reagent_list)
-							R += A.id + " ("
-							R += num2text(A.volume) + "),"
-
-					add_attack_logs(user, M, "Shot with dartgun containing [R]")
-
-					if(D.reagents)
-						D.reagents.trans_to(M, 15)
-					to_chat(M, "<span class='danger'>You feel a slight prick.</span>")
-
-					qdel(D)
-					break
-			if(D)
-				for(var/atom/A in D.loc)
-					if(A == user) continue
-					if(A.density) qdel(D)
-
-			sleep(1)
-
-		if(D) spawn(10) qdel(D)
-
+	// Вышвыриваем картридж
+	if(!length(syringes))
+		var/turf/current_turf = get_turf(src)
+		cartridge_loaded.forceMove(current_turf)
+		cartridge_loaded.throw_at(target = current_turf, range = 3, speed = 1)
+		cartridge_loaded.pixel_x = rand(-10, 10)
+		cartridge_loaded.pixel_y = rand(-4, 16)
+		cartridge_loaded.update_icon()
+		cartridge_loaded = null
+		update_icon()
+		playsound(src, 'modular_ss220/antagonists/sound/guns/m79_break_open.ogg', 50, 1)
 		return
 
-/obj/item/gun/dartgun/afterattack(atom/target, mob/living/user, flag, params)
-	if(!isturf(target.loc) || target == user)
-		return
-	..()
-
-/obj/item/gun/dartgun/attack_self(mob/user)
-	user.set_machine(src)
-	var/dat = {"<meta charset="UTF-8"><b>[src] mixing control:</b><br><br>"}
-
-	if(beakers.len)
-		var/i = 1
-		for(var/obj/item/reagent_containers/glass/beaker/B in beakers)
-			dat += "Beaker [i] contains: "
-			if(B.reagents && B.reagents.reagent_list.len)
-				for(var/datum/reagent/R in B.reagents.reagent_list)
-					dat += "<br>    [R.volume] units of [R.name], "
-				if(check_beaker_mixing(B))
-					dat += text("<A href='?src=[UID()];stop_mix=[i]'><font color='green'>Mixing</font></A> ")
-				else
-					dat += text("<A href='?src=[UID()];mix=[i]'><font color='red'>Not mixing</font></A> ")
-			else
-				dat += "nothing."
-			dat += " \[<A href='?src=[UID()];eject=[i]'>Eject</A>\]<br>"
-			i++
-	else
-		dat += "There are no beakers inserted!<br><br>"
-
-	if(cartridge)
-		if(cartridge.darts)
-			dat += "The dart cartridge has [cartridge.darts] shots remaining."
-		else
-			dat += "<font color='red'>The dart cartridge is empty!</font>"
-		dat += " \[<A href='?src=[UID()];eject_cart=1'>Eject</A>\]"
-
-	user << browse(dat, "window=dartgun")
-	onclose(user, "dartgun", src)
-
-/obj/item/gun/dartgun/proc/check_beaker_mixing(var/obj/item/B)
-	if(!mixing || !beakers)
-		return 0
-	for(var/obj/item/M in mixing)
-		if(M == B)
-			return 1
-	return 0
-
-/obj/item/gun/dartgun/Topic(href, href_list)
-	src.add_fingerprint(usr)
-	if(href_list["stop_mix"])
-		var/index = text2num(href_list["stop_mix"])
-		if(index <= beakers.len)
-			for(var/obj/item/M in mixing)
-				if(M == beakers[index])
-					mixing -= M
-					break
-	else if(href_list["mix"])
-		var/index = text2num(href_list["mix"])
-		if(index <= beakers.len)
-			mixing += beakers[index]
-	else if(href_list["eject"])
-		var/index = text2num(href_list["eject"])
-		if(index <= beakers.len)
-			if(beakers[index])
-				var/obj/item/reagent_containers/glass/beaker/B = beakers[index]
-				to_chat(usr, "<span class='notice'>You remove [B] from [src].</span>")
-				mixing -= B
-				beakers -= B
-				B.forceMove(get_turf(src))
-	else if(href_list["eject_cart"])
-		remove_cartridge()
-	src.updateUsrDialog()
-	return
-
-/obj/item/gun/dartgun/process_fire(atom/target as mob|obj|turf, mob/living/user as mob|obj, message = 1, params, zone_override)
-	if(cartridge)
-		spawn(0)
-			fire_dart(target,user)
-	else
-		to_chat(usr, "<span class='warning'>[src] is empty.</span>")
+	playsound(src, 'modular_ss220/antagonists/sound/guns/m79_reload.ogg', 50, 1)
+	update_icon()
 
 
-/obj/item/gun/dartgun/vox
-	name = "alien dart gun"
-	desc = "A small gas-powered dartgun, fitted for nonhuman hands."
-	icon = 'icons/obj/weapons/projectile.dmi'
-	icon_state = "dartgun-e"
+/obj/item/storage/dart_cartridge
+	name = "dart cartridge"
+	desc = "Подставка для дротиков."
+	icon = 'modular_ss220/antagonists/icons/guns/ammo.dmi'
+	icon_state = "darts-0"
+	var/icon_state_base = "darts"
+	var/overlay_state = "darts_overlay"
+	var/overlay_state_color
+	item_state = "rcdammo"
+	origin_tech = "materials=2"
+	storage_slots = 5
+	can_hold = list(
+		/obj/item/reagent_containers/syringe/dart
+	)
+	var/dart_fill_type	// Каким дротиком заполним?
+	var/dart_fill_num = 5	// Сколько дротиков заполним
 
-/obj/item/gun/dartgun/vox/medical
-	starting_chems = list("silver_sulfadiazine","styptic_powder","charcoal")
-
-/obj/item/gun/dartgun/vox/raider
-	starting_chems = list("space_drugs","ether","haloperidol")
-
-/obj/effect/syringe_gun_dummy //moved this shitty thing here
-	name = ""
-	desc = ""
-	icon = 'icons/obj/chemical.dmi'
-	icon_state = "null"
-	anchored = 1
-	density = 0
-
-/obj/effect/syringe_gun_dummy/New()
+/obj/item/storage/dart_cartridge/update_icon()
 	. = ..()
-	create_reagents(15)
+	var/num = length(contents)
+	if(!num)
+		icon_state = "[icon_state_base]-0"
+	else if(num > storage_slots)
+		icon_state = "[icon_state_base]-[storage_slots]"
+	else
+		icon_state = "[icon_state_base]-[num]"
+	return TRUE
+
+/obj/item/storage/dart_cartridge/update_overlays()
+	. = ..()
+	if(overlay_state_color)
+		. += "[overlay_state]_[overlay_state_color]"
+
+/obj/item/storage/dart_cartridge/populate_contents()
+	if(dart_fill_type)
+		for(var/i in 1 to dart_fill_num+1) //На один больше чтобы фулл заряжался + 1 внутрь
+			new dart_fill_type(src)
+		update_icon()
+
+
+/obj/item/reagent_containers/syringe/dart
+	name = "dart"
+	desc = "Дротик содержащий химические коктейли."
+	icon = 'modular_ss220/antagonists/icons/objects/dart.dmi'
+	amount_per_transfer_from_this = 15
+	volume = 15
+
+
+// ============== Шприцеметы ==============
+
+/obj/item/gun/syringe/dart_gun/extended
+	name = "extended dart gun"
+	desc = "Расширенный метатель дротиков и шприцов для доставки химических коктейлей."
+	icon_state = "dartgun_ext"
+	valid_cartridge_types = list(
+		/obj/item/storage/dart_cartridge,
+		/obj/item/storage/dart_cartridge/extended
+		)
+
+/obj/item/gun/syringe/dart_gun/big
+	name = "capacious dart gun"
+	desc = "Вместительный метатель дротиков для доставки химических коктейлей."
+	icon_state = "dartgun_big"
+	max_syringes = 10
+	pixel_y_overlay_offset = 1
+	valid_cartridge_types = list(
+		/obj/item/storage/dart_cartridge,
+		/obj/item/storage/dart_cartridge/big,
+		)
+
+
+// ============= Картриджи =============
+
+/obj/item/storage/dart_cartridge/extended
+	name = "extended dart cartridge"
+	desc = "Подставка для дротиков и шприцов."
+	overlay_state_color = "ext"
+	can_hold = list(
+		/obj/item/reagent_containers/syringe,
+		/obj/item/reagent_containers/syringe/dart
+	)
+
+/obj/item/storage/dart_cartridge/big
+	name = "capacious dart cartridge"
+	desc = "Расширенная подставка для дротиков."
+	overlay_state_color = "big"
+	storage_slots = 10
+	dart_fill_num = 10
+
+/obj/item/storage/dart_cartridge/combat
+	name = "combat dart cartridge"
+	desc = "Подставка для боевых дротиков для нанесения повреждений."
+	overlay_state_color = "red"
+	dart_fill_type = /obj/item/reagent_containers/syringe/dart/combat
+
+/obj/item/storage/dart_cartridge/medical
+	name = "medical dart cartridge"
+	overlay_state_color = "teal"
+	desc = "Подставка для полезных дротиков для восстановления."
+	dart_fill_type = /obj/item/reagent_containers/syringe/dart/medical
+
+/obj/item/storage/dart_cartridge/pain
+	name = "pain dart cartridge"
+	overlay_state_color = "yellow"
+	desc = "Подставка для вредных дротиков, приносящих боль и страдания."
+	dart_fill_type = /obj/item/reagent_containers/syringe/dart/pain
+
+/obj/item/storage/dart_cartridge/drugs
+	name = "drugs dart cartridge"
+	overlay_state_color = "purple"
+	desc = "Подставка для дротиков-наркотиков."
+	dart_fill_type = /obj/item/reagent_containers/syringe/dart/drugs
+
+
+// ============= Шприцы =============
+
+/obj/item/reagent_containers/syringe/dart/combat
+	name = "combat dart"
+	desc = "Боевой дротик, заставляющий цель потерять равновесие и впоследствии обездвижиться."
+	list_reagents = list("space_drugs" = 5, "ether" = 5, "haloperidol" = 5)
+
+/obj/item/reagent_containers/syringe/dart/medical
+	name = "medical dart"
+	desc = "Медицинский дротик для восстановления большинства повреждений."
+	list_reagents = list("silver_sulfadiazine" = 5, "styptic_powder" = 5, "charcoal" = 5)
+
+/obj/item/reagent_containers/syringe/dart/pain
+	name = "pain dart"
+	desc = "Зудящий порошок с примесью гистамина для страданий."
+	list_reagents = list("itching_powder" = 10, "histamine" = 5)
+
+/obj/item/reagent_containers/syringe/dart/drugs
+	name = "pain dart"
+	desc = "Отвратительная смесь наркотиков, вызывающая галлюцинации, потерю координации и рассудка."
+	list_reagents = list(
+		"space_drugs" = 5, "lsd" = 5, "fliptonium" = 2, "jenkem" = 2, "happiness" = 1)
+
+/obj/item/reagent_containers/syringe/dart/antiviral
+	name = "dart (spaceacillin)"
+	desc = "Содержит противовирусные вещества."
+	list_reagents = list("spaceacillin" = 10)
+
+/obj/item/reagent_containers/syringe/dart/charcoal
+	name = "dart (charcoal)"
+	desc = "Содержит древесный уголь для лечения токсинов и повреждений от них."
+	list_reagents = list("charcoal" = 10)
+
+/obj/item/reagent_containers/syringe/dart/epinephrine
+	name = "dart (Epinephrine)"
+	desc = "Содержит адреналин для стабилизации пациентов."
+	list_reagents = list("epinephrine" = 10)
+
+/obj/item/reagent_containers/syringe/dart/insulin
+	name = "dart (insulin)"
+	desc = "Содержит инсулин для лечения диабета."
+	list_reagents = list("insulin" = 10)
+
+/obj/item/reagent_containers/syringe/dart/calomel
+	name = "dart (calomel)"
+	desc = "Содержит токсичный каломель для очистки от других веществ в организме."
+	list_reagents = list("calomel" = 10)
+
+/obj/item/reagent_containers/syringe/dart/heparin
+	name = "dart (heparin)"
+	desc = "Содержит гепарин, антикоагулянт крови."
+	list_reagents = list("heparin" = 10)
+
+/obj/item/reagent_containers/syringe/dart/bioterror
+	name = "bioterror dart"
+	desc = "Содержит несколько парализующих реагентов."
+	list_reagents = list("neurotoxin" = 5, "capulettium" = 5, "sodium_thiopental" = 5)
+
+/obj/item/reagent_containers/syringe/dart/capulettium
+	name = "capulettium dart"
+	desc = "Для упокоения целей."
+	list_reagents = list("capulettium" = 10)
+
+/obj/item/reagent_containers/syringe/dart/sarin
+	name = "toxin dart"
+	desc = "Смертельный нейротоксин в малых дозах."
+	list_reagents = list("sarin" = 5)
+
+/obj/item/reagent_containers/syringe/dart/pancuronium
+	name = "pancuronium dart"
+	desc = "Мощный парализующий яд"
+	list_reagents = list("pancuronium" = 5)

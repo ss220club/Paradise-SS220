@@ -124,7 +124,7 @@
 	. = ..()
 	if(istype(I, /obj/item/hand_valuer))
 		var/obj/item/hand_valuer/valuer = I
-		to_chat(span_green("Устройство [valuer.connected_trader ? "пере" : ""]инициализировано в системе."))
+		to_chat(user, span_green("Устройство [valuer.connected_trader ? "пере" : ""]инициализировано в системе."))
 		valuer.connected_trader = src
 
 /obj/machinery/vox_trader/attack_ai(mob/user)
@@ -225,7 +225,7 @@
 	playsound(get_turf(src), 'sound/weapons/contractorbatonhit.ogg', 25, TRUE)
 	flick("trader-beam", src)
 
-/obj/machinery/vox_trader/proc/get_value(mob/user, list/items_list, is_need_grading = FALSE)
+/obj/machinery/vox_trader/proc/get_value(mob/user, list/items_list, is_need_grading = FALSE, is_visuale_only = FALSE)
 	var/values_sum = 0
 	var/values_sum_precious = 0 // считаем сумму без скидки, например для хайрисков и уникальных доступов. Оцень ценных вещей.
 	var/accepted_access = list()
@@ -368,7 +368,7 @@
 		// ____________________________
 		// Завершаем рассчет
 		values_sum += temp_values_sum
-		if(temp_values_sum >= 0)
+		if(temp_values_sum >= 0 && !is_visuale_only)
 			qdel(I)
 
 	// Заносим наши принятые списки
