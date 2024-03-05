@@ -34,7 +34,7 @@
 		if(MATERIAL_CLASS_PLASMA)
 			return splasmaman(target)
 		if(MATERIAL_CLASS_RAD)
-			return isnucleation(target)
+			return (is_species(target, /datum/species/nucleation))
 	if(is_only_grab_intent && user.a_intent != INTENT_GRAB)
 		return FALSE
 	return TRUE
