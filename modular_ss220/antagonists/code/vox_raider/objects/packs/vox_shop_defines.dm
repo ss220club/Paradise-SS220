@@ -7,3 +7,7 @@
 #define VOX_PACK_CONSUMABLES	"Расходники"
 #define VOX_PACK_GOODS 			"Товары"
 #define VOX_PACK_MISC 			"Разное"
+
+// Weapons
+#define VOX_PACK_SPIKE 			"Шипомет"
+#define VOX_PACK_DART 			"Дротики"

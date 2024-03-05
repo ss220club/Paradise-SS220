@@ -1,9 +1,11 @@
 /obj/item/gun/syringe/dart_gun
 	name = "dart gun"
 	desc = "Компактный метатель дротиков для доставки химических коктейлей."
-	icon = 'modular_ss220/antagonists/icons/guns/projectile.dmi'
+	icon = 'modular_ss220/antagonists/icons/guns/vox_guns.dmi'
+	lefthand_file = 'modular_ss220/antagonists/icons/guns/inhands/guns_lefthand.dmi'
+	righthand_file = 'modular_ss220/antagonists/icons/guns/inhands/guns_righthand.dmi'
 	icon_state = "dartgun"
-	item_state = "bluetag"
+	item_state = "dartgun"
 	var/cartridge_overlay = "dartgun_cartridge_overlay"
 	max_syringes = 5
 	var/list/valid_cartridge_types = list(/obj/item/storage/dart_cartridge)
@@ -141,7 +143,7 @@
 	if(dart_fill_type)
 		for(var/i in 1 to dart_fill_num+1) //На один больше чтобы фулл заряжался + 1 внутрь
 			new dart_fill_type(src)
-		update_icon()
+	update_icon()
 
 
 /obj/item/reagent_containers/syringe/dart
@@ -255,11 +257,6 @@
 	name = "dart (Epinephrine)"
 	desc = "Содержит адреналин для стабилизации пациентов."
 	list_reagents = list("epinephrine" = 10)
-
-/obj/item/reagent_containers/syringe/dart/insulin
-	name = "dart (insulin)"
-	desc = "Содержит инсулин для лечения диабета."
-	list_reagents = list("insulin" = 10)
 
 /obj/item/reagent_containers/syringe/dart/calomel
 	name = "dart (calomel)"
