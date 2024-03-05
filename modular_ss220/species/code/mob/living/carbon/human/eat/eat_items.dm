@@ -26,20 +26,15 @@
 		if(MATERIAL_CLASS_NONE)
 			return FALSE
 		if(MATERIAL_CLASS_CLOTH)
-			if(!ismoth(target))
-				return FALSE
+			return ismoth(target)
 		if(MATERIAL_CLASS_TECH)
-			if(!isvox(target))
-				return FALSE
+			return isvox(target)
 		if(MATERIAL_CLASS_SOAP)
-			if(!isdrask(target))
-				return FALSE
+			return isdrask(target)
 		if(MATERIAL_CLASS_PLASMA)
-			if(!isplasmaman(target))
-				return FALSE
+			return splasmaman(target)
 		if(MATERIAL_CLASS_RAD)
-			if(!isnucleation(target))
-				return FALSE
+			return isnucleation(target)
 	if(is_only_grab_intent && user.a_intent != INTENT_GRAB)
 		return FALSE
 	return TRUE
