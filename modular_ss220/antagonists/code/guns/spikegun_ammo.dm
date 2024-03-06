@@ -1,6 +1,6 @@
 /obj/item/stock_parts/cell/vox_spike
 	name = "\improper vox spike power cell"
-	desc = "Зарядная пурпурная светящаяся ячейка."
+	desc = "Зарядная пурпурная светящаяся стандартная ячейка для шипометов."
 	icon = 'modular_ss220/antagonists/icons/guns/ammo.dmi'
 	icon_state = "spike_cell"
 	maxcharge = 1000

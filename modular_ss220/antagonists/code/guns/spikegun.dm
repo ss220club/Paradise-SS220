@@ -40,7 +40,7 @@
 /obj/item/gun/energy/spike/update_icon_state()
 	. = ..()
 	var/inhand_ratio = CEILING((cell.charge / cell.maxcharge) * inhand_charge_sections, 1)
-	var/new_item_state = "[item_state]_[inhand_ratio]"
+	var/new_item_state = "[initial(item_state)]_[inhand_ratio]"
 	item_state = new_item_state
 
 

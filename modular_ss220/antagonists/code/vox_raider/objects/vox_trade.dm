@@ -12,7 +12,6 @@
 	density = FALSE
 
 	var/cooldown = 3 SECONDS
-	var/cooldown_for_each_item = 0.2 SECONDS
 	var/is_trading_now = FALSE
 
 	var/list/connected_instruments = list()
@@ -152,6 +151,7 @@
 	if(!check_usable(user))
 		return FALSE
 	add_fingerprint(user)
+	user.do_attack_animation(src)
 	trade_start()
 	addtimer(CALLBACK(src, PROC_REF(do_trade), user), cooldown)
 	return TRUE
@@ -186,11 +186,8 @@
 		return
 
 	angry_count = 0
-	atom_say(span_notice("Вами довольны. Начат пересчет ценностей, ожидайте."))
-
-	// делаем вид что происходит пересчет
-	var/cooldown_items_time = length(items_list) * cooldown_for_each_item
-	addtimer(CALLBACK(src, PROC_REF(make_cash), user, items_list), cooldown_items_time)
+	atom_say(span_notice("Вами довольны. Производится пересчет ценностей."))
+	INVOKE_ASYNC(src, PROC_REF(make_cash), user, items_list)
 
 /obj/machinery/vox_trader/proc/make_cash(mob/user, list/items_list)
 	if(!src || QDELETED(src))

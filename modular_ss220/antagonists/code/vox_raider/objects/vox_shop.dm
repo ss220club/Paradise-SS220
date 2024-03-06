@@ -72,9 +72,11 @@
 	return FALSE
 
 /obj/machinery/vox_shop/attackby(obj/item/O, mob/user, params)
-	. = ..()
 	if(isvoxcash(O))
+		user.do_attack_animation(src)
 		insert_cash(O, user)
+		return TRUE
+	. = ..()
 
 /obj/machinery/vox_shop/proc/insert_cash(obj/item/stack/vox_cash, mob/user)
 	visible_message("<span class='info'>[user] загрузил [vox_cash] в [src].</span>")
@@ -111,6 +113,7 @@
 			else
 				obj.forceMove(get_turf(src))
 
+	do_sparks(5, 1, get_turf(src))
 
 
 // ============= UI =============
