@@ -123,8 +123,7 @@
 	. = ..()
 	if(istype(I, /obj/item/hand_valuer))
 		var/obj/item/hand_valuer/valuer = I
-		to_chat(user, span_green("Устройство [valuer.connected_trader ? "пере" : ""]инициализировано в системе."))
-		valuer.connected_trader = src
+		valuer.connect(user, src)
 
 /obj/machinery/vox_trader/attack_ai(mob/user)
 	return FALSE	// Ха-ха, глупая железяка не понимает как пользоваться технологиями ВОКСов!

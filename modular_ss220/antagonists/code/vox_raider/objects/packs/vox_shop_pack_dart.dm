@@ -25,6 +25,7 @@
 	cost = 0
 	contains = list(/obj/item/gun/syringe/dart_gun/big)
 
+
 // ============== AMMO ==============
 
 /datum/vox_pack/dart/cartridge

@@ -9,7 +9,7 @@
 	throw_speed = 1
 	throw_range = 7
 	w_class = WEIGHT_CLASS_TINY
-	max_amount = MAX_STACKABLE_CASH
+	max_amount = MAX_STACKABLE_CASH*10
 	merge_type = /obj/item/stack/vox_cash
 
 /obj/item/stack/vox_cash/proc/rename_amount()
@@ -57,3 +57,12 @@
 
 /obj/item/stack/vox_cash/c10000
 	amount = 10000
+
+/obj/item/stack/vox_cash/c25000
+	amount = 25000
+
+/obj/item/stack/vox_cash/c50000
+	amount = 50000
+
+/obj/item/stack/vox_cash/c100000
+	amount = 100000

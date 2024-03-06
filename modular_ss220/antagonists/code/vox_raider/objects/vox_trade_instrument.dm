@@ -2,7 +2,7 @@
 	name = "ручной оценщик"
 	desc = "Приспособление воксов для оценки стоимости объекта."
 	icon = 'modular_ss220/antagonists/icons/trader_machine.dmi'
-	icon_state = "gps-s"
+	icon_state = "valuer"
 	item_state = "camera_bug"
 	var/obj/machinery/vox_trader/connected_trader
 
@@ -32,3 +32,9 @@
 
 	var/value = connected_trader.get_value(user, list(target), is_visuale_only = TRUE)
 	to_chat(user, span_green("Ценность [target.name]: [value]"))
+
+/obj/item/hand_valuer/proc/connect(mob/living/user, obj/machinery/vox_trader/input_trader)
+	to_chat(user, span_green("Устройство [connected_trader ? "пере" : ""]инициализировано в системе."))
+	playsound(src, 'modular_ss220/antagonists/sound/guns/m79_unload.ogg', 50, 1)
+	icon_state = "[initial(icon_state)]-on"
+	connected_trader = input_trader

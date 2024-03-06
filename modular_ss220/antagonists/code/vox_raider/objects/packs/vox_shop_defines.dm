@@ -9,5 +9,6 @@
 #define VOX_PACK_MISC 			"Разное"
 
 // Weapons
-#define VOX_PACK_SPIKE 			"Шипомет"
+#define VOX_PACK_SPIKE 			"Шипометы"
 #define VOX_PACK_DART 			"Дротики"
+#define VOX_PACK_BIO 			"Биооружие"
