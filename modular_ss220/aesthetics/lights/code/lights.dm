@@ -22,3 +22,6 @@
 
 /obj/item/mounted/frame/light_fixture/small
 	icon = 'icons/obj/lighting.dmi'
+
+/obj/item/flashlight/lamp
+	on = FALSE
