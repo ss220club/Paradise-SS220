@@ -31,8 +31,9 @@
 /obj/item/gun/throw/biogun/notify_ammo_count()
 	var/amount = get_ammocount()
 	if(get_ammocount() >= 1)
-		return "<span class='notice'>[src] заряжен [amount]/[max_capacity].</span>"
-	return "<span class='notice'>[src] разряжен.</span>"
+		return span_notice("[src] заряжен [amount]/[max_capacity].")
+	return span_notice("[src] разряжен.")
+
 
 // ============== Существа ==============
 

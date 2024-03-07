@@ -24,10 +24,6 @@
 	throwforce = 20
 	w_class = WEIGHT_CLASS_NORMAL
 
-
-/obj/item/biocore/Initialize(mapload)
-	. = ..()
-
 /obj/item/biocore/throw_at(atom/target, range, speed, mob/thrower, spin=1, diagonals_first = 0, datum/callback/callback)
 	playsound(loc,'sound/weapons/bolathrow.ogg', 50, TRUE)
 	if(is_spin)
@@ -60,7 +56,9 @@
 		var/mob/living/L = hit_atom
 		L.apply_effects(stun, weaken, knockdown, paralyze, irradiate, slur, stutter, eyeblur, drowsy, 0, stamina, jitter)
 
+
 // ============== Ядра ==============
+
 /obj/item/biocore/viscerator
 	name = "biocore (viscerator)"
 	spawn_amount = 3
