@@ -1,4 +1,4 @@
-/datum/modpack/example
+/datum/modpack/peas_shooter
 	/// A string name for the modpack. Used for looking up other modpacks in init.
 	name = "Горохострел"
 	/// A string desc for the modpack. Can be used for modpack verb list as description.
