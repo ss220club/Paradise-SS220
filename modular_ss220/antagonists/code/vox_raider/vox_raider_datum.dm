@@ -1,12 +1,12 @@
 /datum/antagonist/vox_raider
-	name = "vox raider"
+	name = "Vox Raider"
 	roundend_category = "vox raiders"
 	job_rank = ROLE_VOX_RAIDER
 	special_role = SPECIAL_ROLE_VOX_RAIDER
 	antag_hud_name = "hudvoxraider"
 	antag_hud_type = ANTAG_HUD_VOX_RAIDER
 	wiki_page_name = "vox_raiders"
-	var/datum/team/vox_raiders_team/raiders_team = null
+	var/datum/team/vox_raiders/raiders_team = null
 
 /datum/antagonist/vox_raider/add_owner_to_gamemode()
 	SSticker.mode.vox_raiders |= owner
@@ -33,7 +33,7 @@
 
 	. += "Нужно больше ценностей!"
 
-/datum/antagonist/vox_raider/create_team(datum/team/vox_raiders_team/team)
+/datum/antagonist/vox_raider/create_team(datum/team/vox_raiders/team)
 	if(!istype(team))
 		error("Wrong team type passed to [type].")
 		return
@@ -46,7 +46,7 @@
 
 /datum/antagonist/vox_raider/proc/get_raider_names_text()
 	PRIVATE_PROC(TRUE)
-	var/datum/team/vox_raiders_team/team = get_team()
+	var/datum/team/vox_raiders/team = get_team()
 	if(!istype(team))
 		return ""
 
@@ -97,7 +97,7 @@
 		choices.Remove(choice)
 		candidates_list.Add(mind)
 
-	var/datum/team/vox_raiders_team/team = new(candidates_list, FALSE)
+	var/datum/team/vox_raiders/team = new(candidates_list, FALSE)
 	for(var/datum/mind/mind in candidates_list)
 		if(isnull(mind.add_antag_datum(src, team)))
 			error("Antag datum couldn't be granted to new raider [mind.name] in `/datum/antagonist/vox_raider/proc/create_new_vox_raiders_team`")
@@ -111,7 +111,7 @@
 /datum/antagonist/vox_raider/proc/add_to_existing_vox_raiders_team(admin, datum/mind/raider_to_add)
 	PRIVATE_PROC(TRUE)
 	var/list/choices = list()
-	for(var/datum/team/vox_raiders_team/team in GLOB.antagonist_teams)
+	for(var/datum/team/vox_raiders/team in GLOB.antagonist_teams)
 		var/list/member_ckeys = team.get_member_ckeys()
 		choices["[team.name][length(member_ckeys) ? "([member_ckeys.Join(", ")])" : ""]"] = team
 
@@ -124,7 +124,7 @@
 	if(!choice)
 		return FALSE
 
-	var/datum/team/vox_raiders_team/team = choices[choice]
+	var/datum/team/vox_raiders/team = choices[choice]
 	if(!team)
 		stack_trace("Chosen vox raiders team `[choice]` was `null` for some reason.")
 

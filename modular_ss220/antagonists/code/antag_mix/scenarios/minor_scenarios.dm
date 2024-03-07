@@ -10,7 +10,6 @@
 	weight = 1
 	antag_cap = 1
 	candidates_required = 1
-	scaled_times = 5
 	restricted_roles = list("Cyborg")
 	protected_roles = list(
 		"Security Cadet",
@@ -40,7 +39,6 @@
 	weight = 1
 	antag_cap = 1
 	candidates_required = 1
-	scaled_times = 3
 	restricted_roles = list("Cyborg", "AI")
 	protected_roles = list(
 		"Security Cadet",
@@ -71,7 +69,6 @@
 	weight = 1
 	antag_cap = 1
 	candidates_required = 1
-	scaled_times = 3
 	restricted_roles = list("Cyborg", "AI", "Chaplain")
 	protected_roles = list(
 		"Security Cadet",
@@ -104,7 +101,6 @@
 	antag_cap = 2
 	candidates_required = 2
 	team_size = 2
-	scaled_times = 3
 	restricted_roles = list("Cyborg", "AI")
 	protected_roles = list(
 		"Security Cadet",

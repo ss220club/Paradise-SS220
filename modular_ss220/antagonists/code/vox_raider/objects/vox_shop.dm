@@ -132,7 +132,7 @@
 	data["cart_price"] = calculate_cart_cash()
 
 	var/list/vox_raider_members = list()
-	for(var/datum/team/vox_raiders_team/team in subtypesof(/datum/team/vox_raiders_team))
+	for(var/datum/team/vox_raiders/team in subtypesof(/datum/team/vox_raiders))
 		vox_raider_members.Add(team.members)
 	data["vox_members"] = vox_raider_members
 	// data["crewmembers"] = GLOB.crew_repository.health_data(viewing_current_z_level)

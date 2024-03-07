@@ -15,7 +15,7 @@
 	burst_size = 3	// выстреливает всегда очередью
 	shaded_charge = TRUE
 	can_charge = FALSE
-	charge_delay = 10
+	charge_delay = 4
 	cell_type = /obj/item/stock_parts/cell/vox_spike
 	ammo_type = list(/obj/item/ammo_casing/energy/vox_spike)
 	var/can_reload = TRUE
@@ -53,7 +53,7 @@
 	charge_sections = 6
 	inhand_charge_sections = 6
 	selfcharge = TRUE
-	charge_delay = 10
+	charge_delay = 4
 	ammo_type = list(/obj/item/ammo_casing/energy/vox_spike/long)
 
 /obj/item/gun/energy/spike/long/process()
@@ -77,15 +77,16 @@
 	ammo_type = list(/obj/item/ammo_casing/energy/vox_spike/big)
 	selfcharge = TRUE
 	can_reload = FALSE
+	charge_delay = 8
 	var/nutrition_cost = 20 // Сколько нутриентов тратится за 1 тик
 	var/brute_cost = 5 // Цена за то что ты не вокс
 	var/stamine_cost = 20 // Цена за то что ты не вокс
 
 /obj/item/gun/energy/spike/bio/process()
 	if(selfcharge)
-		if(charge_tick < charge_delay)
-			return ..()
 		if(!ishuman(loc))
+			return FALSE
+		if(charge_tick < charge_delay)
 			return ..()
 		var/mob/living/carbon/human/user = loc
 		if(user.nutrition <= NUTRITION_LEVEL_HYPOGLYCEMIA)

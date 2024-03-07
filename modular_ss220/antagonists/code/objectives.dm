@@ -6,9 +6,9 @@
 	/// На сколько ценность должна быть "цена" чтобы её засчитать
 	var/precious_value = 200
 	/// Сколько нужно украсть дополнительных ценностей в зависимости от количества людей в игре
-	var/dynamic_amount = 3
+	var/dynamic_amount = 5
 	/// Каждый X игроков добавляем доп. число ценностей
-	var/dynamic_player = 10
+	var/dynamic_player = 15
 
 /datum/objective/raider_steal/update_explanation_text()
 	explanation_text = "Соберите [precious_amount] ценностей, у каждой из которых цена минимум на [precious_value] кикикридитов. Все ценности должны быть приняты Расчичетчикиком."
@@ -28,23 +28,23 @@
 
 /datum/objective/raider_steal/check_completion()
 	var/list_count = 0
-	for(var/obj/machinery/vox_trader/trader in GLOB.machines)
-		if(trader.precious_value)
-			continue
-		list_count += trader.precious_collected_names_list // !!!!! Вывести в конце гринтекста что собрали !!!!!!!!
-
+	var/obj/machinery/vox_trader/trader = locate() in GLOB.machines
+	if(!trader)
+		return
+	trader.synchronize_traders_stats()
+	for(var/I in trader.precious_collected_dict)
+		list_count += trader.precious_collected_dict[I]["count"]
 	if(list_count >= precious_amount)
 		return TRUE
 	return FALSE
-
 
 /datum/objective/raider_entirety_steal
 	name = "Raider entirety theft"
 	needs_target = FALSE
 	/// Общая сумма ценностей
-	var/precious_value = 10000
+	var/precious_value = 20000
 	/// Сколько нужно украсть дополнительных ценностей на каждого игрока
-	var/dynamic_value = 100
+	var/dynamic_value = 200
 
 /datum/objective/raider_entirety_steal/update_explanation_text()
 	explanation_text = "Соберите ценностей на сумму [precious_value]. Все ценности должны быть приняты Расчичетчикиком."
@@ -66,12 +66,10 @@
 /datum/objective/raider_entirety_steal/check_completion()
 	var/value_sum = 0
 	for(var/obj/machinery/vox_trader/trader in GLOB.machines)
-		if(precious_value <= trader.precious_collected_value)
-			value_sum += trader.precious_collected_value
-	if(precious_value <= value_sum)
+		value_sum += trader.value_sum
+	if(value_sum >= precious_value)
 		return TRUE
 	return FALSE
-
 
 
 /datum/objective/raider_collection_access
@@ -86,6 +84,7 @@
 /datum/objective/raider_collection_access/New(text, datum/team/team_to_join)
 	. = ..()
 	access_amount = length(get_all_accesses())
+	update_explanation_text()
 
 /datum/objective/raider_collection_access/check_completion()
 	for(var/obj/machinery/vox_trader/trader in GLOB.machines)
@@ -102,6 +101,10 @@
 
 /datum/objective/raider_collection_tech/update_explanation_text()
 	explanation_text = "Соберите [tech_amount] уникальных технологий [tech_min_level] или больше уровня. Все технологии должны быть приняты Расчичетчикиком."
+
+/datum/objective/raider_collection_tech/New(text, datum/team/team_to_join)
+	. = ..()
+	update_explanation_text()
 
 /datum/objective/raider_collection_tech/check_completion()
 	for(var/obj/machinery/vox_trader/trader in GLOB.machines)

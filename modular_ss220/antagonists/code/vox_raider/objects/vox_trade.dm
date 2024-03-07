@@ -1,8 +1,6 @@
 /obj/machinery/vox_trader
 	name = "Расчичетчикик"
 	desc = "Приемная и расчетная связная машина для ценностей. Проста также как еда воксов."
-	// icon = 'icons/obj/recycling.dmi'
-	// icon_state = "grinder-o0"
 	icon = 'modular_ss220/antagonists/icons/trader_machine.dmi'
 	icon_state = "trader-idle-off"
 	var/icon_state_on = "trader-idle"
@@ -22,8 +20,8 @@
 
 	// Данные для подсчета драгоценностей выполнения задачи.
 	// Обновляются при первом взаимодействии если есть воксы-рейдеры.
-	var/precious_collected_names_list = list()
-	var/precious_collected_value = 0
+	var/precious_collected_dict = list()
+	var/value_sum = 0
 	var/precious_value
 	var/collected_access_list = list()
 	var/collected_tech_dict = list()
@@ -66,6 +64,8 @@
 	// дополнительные суммы за ценности
 	var/list/valuable_objects_dict = list(
 		/obj/machinery/nuclearbomb = 5000,
+		/obj/item/mod/core = 1000,
+		/obj/item/mod = 300,
 		)
 	var/list/valuable_guns_dict = list(
 		/obj/item/gun/energy/taser = 300,
@@ -396,19 +396,53 @@
 	values_sum += values_sum_precious // Даем бонус за особые ценности
 	return round(values_sum)
 
-/obj/machinery/vox_trader/proc/precious_grading(mob/user, obj/I, value)
+/obj/machinery/vox_trader/proc/precious_grading(mob/user, obj/O, value)
 	if(!user)
 		return
-	if(!precious_value)
-		var/list/objectives = user.mind?.get_all_objectives()
-		if(!length(objectives))
-			return
-		var/datum/objective/raider_steal/objective = locate() in objectives
-		precious_value = objective.precious_value
-	if(value >= precious_value)
-		precious_collected_names_list += I.name
-		precious_collected_value += value
+	value_sum += value
+	if(!correct_precious_value(user))
+		return
+	update_precious_collected_dict(O.name, value)
 
-		// var/datum/antagonist/vox_raider/raider = user.mind?.has_antag_datum(/datum/antagonist/vox_raider)
-		// if(!raider)
-		// 	return
+/obj/machinery/vox_trader/proc/correct_precious_value(mob/user)
+	if(precious_value)
+		return TRUE
+	if(!user)
+		return FALSE
+	var/list/objectives = user.mind?.get_all_objectives()
+	if(!length(objectives))
+		return FALSE
+	var/datum/objective/raider_steal/objective = locate() in objectives
+	precious_value = objective.precious_value
+	return TRUE
+
+/obj/machinery/vox_trader/proc/update_precious_collected_dict(object_name, object_value)
+	if(!correct_precious_value())
+		return
+	if(object_value >= precious_value)
+		if(object_name in precious_collected_dict)
+			precious_collected_dict[object_name]["count"] += 1
+			precious_collected_dict[object_name]["value"] += object_value
+		else
+			precious_collected_dict += list("[object_name]" = list("count" = 1, "value" = object_value))
+
+/obj/machinery/vox_trader/proc/synchronize_traders_stats()
+	for(var/obj/machinery/vox_trader/trader in GLOB.machines)
+		if(trader == src)
+			continue
+
+		value_sum += trader.value_sum
+
+		for(var/access in trader.collected_access_list)
+			if(access in collected_access_list)
+				continue
+			collected_access_list += access
+
+		for(var/tech in trader.collected_tech_dict)
+			if(tech in collected_tech_dict)
+				collected_tech_dict[tech][1] = max(collected_tech_dict[tech][1], trader.collected_tech_dict[tech][1])
+				continue
+			collected_tech_dict += tech
+
+		for(var/dict in trader.precious_collected_dict)
+			update_precious_collected_dict(trader.precious_collected_dict[dict], trader.precious_collected_dict[dict]["value"])

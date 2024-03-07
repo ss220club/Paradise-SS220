@@ -26,12 +26,11 @@
 
 /obj/item/biocore/throw_at(atom/target, range, speed, mob/thrower, spin=1, diagonals_first = 0, datum/callback/callback)
 	playsound(loc,'sound/weapons/bolathrow.ogg', 50, TRUE)
-	if(is_spin)
-		SpinAnimation()
-	if(!..())
-		return
+	. = ..()
 
 /obj/item/biocore/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
+	if(!isliving(hit_atom))
+		return
 	. = ..()
 	spawn_mobs()
 	hurt_impact(hit_atom)

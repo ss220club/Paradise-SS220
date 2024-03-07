@@ -11,24 +11,30 @@
 	max_capacity = 3
 	valid_projectile_type = /obj/item/biocore
 
+/obj/item/gun/throw/biogun/Initialize(mapload)
+	. = ..()
+	update_icon()
+
 /obj/item/gun/throw/biogun/process_chamber()
 	. = ..()
 	update_icon()
 
 /obj/item/gun/throw/biogun/update_icon_state()
 	. = ..()
-	var/inhand_ratio = CEILING((length(loaded_projectiles) / max_capacity) * inhand_charge_sections, 1)
+	var/num = length(loaded_projectiles) + (to_launch ? 1 : 0)
+	var/inhand_ratio = CEILING((num / max_capacity) * inhand_charge_sections, 1)
 	var/new_item_state = "[initial(item_state)][inhand_ratio]"
 	item_state = new_item_state
 
 /obj/item/gun/throw/biogun/update_overlays()
 	. = ..()
-	var/num = length(loaded_projectiles)
+	var/num = length(loaded_projectiles) + (to_launch ? 1 : 0)
 	if(num)
 		num = min(num, max_capacity)
 		. += "[icon_state]_charge[num]"
 
 /obj/item/gun/throw/biogun/notify_ammo_count()
+	update_icon()
 	var/amount = get_ammocount()
 	if(get_ammocount() >= 1)
 		return span_notice("[src] заряжен [amount]/[max_capacity].")
@@ -60,6 +66,7 @@
 	desc = "Небольшое биомеханическое проворное существо на высоких ножках, мешающее и изматывающее тех, кому оно не понравилось."
 	icon_state = "stamina"
 	icon_living = "stamina"
+	density = FALSE
 	obj_damage = 0
 	speed = 0.25
 	melee_damage_type = STAMINA
@@ -95,6 +102,7 @@
 	desc = "Маленькое биомеханическое существо с острыми клыкам с половину его тела."
 	icon_state = "kusaka"
 	icon_living = "kusaka"
+	density = FALSE
 	speed = 0.5
 	obj_damage = 0
 	melee_damage_lower = 5
@@ -131,6 +139,7 @@
 	desc = "Маленькое биомеханическое иглоподобное существо."
 	icon_state = "tox"
 	icon_living = "tox"
+	density = FALSE
 	melee_damage_type = TOX
 	melee_damage_lower = 5
 	melee_damage_upper = 15
