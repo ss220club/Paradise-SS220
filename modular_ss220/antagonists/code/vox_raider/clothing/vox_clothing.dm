@@ -1,6 +1,6 @@
 /obj/item/clothing/under/vox/jumpsuit
 	name = "vox jumpsuit"
-	desc = "Рабочая одежда ВОКСа."
+	desc = "Рабочая одежда вокса."
 	icon_state = "vox-jumpsuit"
 	item_color = "vox-jumpsuit"
 	item_state = "syndicate-black"

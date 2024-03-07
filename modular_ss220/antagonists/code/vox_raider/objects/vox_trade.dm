@@ -267,7 +267,8 @@
 		if(istype(I, /obj/item/disk/tech_disk))
 			var/obj/item/disk/tech_disk/disk = I
 			var/datum/tech/tech = disk.stored
-			I.origin_tech = "[tech.id]=[tech.level]"
+			if(tech)
+				I.origin_tech = "[tech.id]=[tech.level]"
 
 		if(I.origin_tech)
 			var/list/tech_list = params2list(I.origin_tech)
@@ -281,7 +282,7 @@
 						is_tech_unique = TRUE
 				else
 					values_sum_precious += unique_tech_level_reward * tech_value
-					collected_tech_dict += list(tech = tech_value)
+					collected_tech_dict += list("[tech]" = tech_value)
 					is_tech_unique = TRUE
 				if(tech in valuable_tech_list)
 					temp_mult = tech_value
@@ -322,7 +323,8 @@
 				temp_value += permeability_reward * (1 - item.permeability_coefficient)
 			if(item.w_class)
 				temp_value += item.w_class * weight_mult
-				is_weight = TRUE
+				if(item.w_class >= WEIGHT_CLASS_BULKY)
+					is_weight = TRUE
 			temp_values_sum += round(temp_value)
 
 		for(var/datum/theft_objective/objective in highrisk_list)
@@ -366,15 +368,16 @@
 		if(temp_values_sum >= 0 && !is_visuale_only)
 			qdel(I)
 
-	// Заносим наши принятые списки
-	if(!is_need_grading)
-		collected_access_list += accepted_access
-
 	var/addition_text = ""
-	if(accepted_access)
-		addition_text += span_boldnotice("\nОценка не имеющихся доступов: \n")
+	if(length(accepted_access))
+		if(is_need_grading) // Заносим наши принятые доступы
+			collected_access_list += accepted_access
+		addition_text += span_boldnotice("\nОценка имеющихся доступов: \n")
 		for(var/access in accepted_access)
-			addition_text += span_notice("[get_access_desc(access)]; ")
+			var/access_desc = get_access_desc(access)
+			if(!access_desc)
+				continue
+			addition_text += span_notice("[access_desc]; ")
 		if(is_access_unique)
 			addition_text += span_good("\nИмеются ценные доступы. Очень ценно!")
 	if(is_weight)
@@ -419,12 +422,14 @@
 /obj/machinery/vox_trader/proc/update_precious_collected_dict(object_name, object_value)
 	if(!correct_precious_value())
 		return
+	object_value \= denomination_div
 	if(object_value >= precious_value)
-		if(object_name in precious_collected_dict)
-			precious_collected_dict[object_name]["count"] += 1
-			precious_collected_dict[object_name]["value"] += object_value
+		var/precious_data = precious_collected_dict[object_name]
+		if(!precious_data)
+			precious_collected_dict[object_name] = list("count" = 1, value = object_value)
 		else
-			precious_collected_dict += list("[object_name]" = list("count" = 1, "value" = object_value))
+			precious_data["count"]++
+			precious_data["value"] += object_value
 
 /obj/machinery/vox_trader/proc/synchronize_traders_stats()
 	for(var/obj/machinery/vox_trader/trader in GLOB.machines)

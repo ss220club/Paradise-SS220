@@ -29,8 +29,6 @@
 	. = ..()
 
 /obj/item/biocore/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
-	if(!isliving(hit_atom))
-		return
 	. = ..()
 	spawn_mobs()
 	hurt_impact(hit_atom)

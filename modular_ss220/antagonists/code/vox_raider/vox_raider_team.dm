@@ -20,7 +20,7 @@
 	add_team_objective(new picked_collect_objective_type())
 	// Конечная цель
 	add_team_objective(new /datum/objective/survive(
-	{"Не допустите гибели вас и остальных ВОКСов из команды."}))
+	{"Не допустите гибели вас и остальных Воксов из команды."}))
 
 
 	// !!!!!! Тест !!!!!!!

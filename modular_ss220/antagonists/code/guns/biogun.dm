@@ -9,6 +9,8 @@
 	var/inhand_charge_sections = 3
 	w_class = WEIGHT_CLASS_HUGE
 	max_capacity = 3
+	projectile_speed = 2
+	projectile_range = 30
 	valid_projectile_type = /obj/item/biocore
 
 /obj/item/gun/throw/biogun/Initialize(mapload)
