@@ -3,5 +3,53 @@
 	category = VOX_PACK_BIO
 
 // ============== GUNS ==============
+/datum/vox_pack/bio/gun
+	name = "Биомёт"
+	desc = "Компактный метатель биоядер-снарядов. Вмещает в себя 3 острых биоядра одновременно, выстреливая их поочереди, вонзая в плоть цели, а после вылупляя, выпуская биомеханическую тварь для последующей помощи Воксам."
+	reference = "B_G"
+	cost = 0
+	contains = list(/obj/item/gun/throw/biogun)
 
 // ============== AMMO ==============
+
+/datum/vox_pack/bio/core
+	name = "Биоядро (Потрошитель х3)"
+	desc = "Переписанная машина синдиката на служении Воксам."
+	reference = "B_B_VISC"
+	cost = 0
+	contains = list(/obj/item/biocore/viscerator)
+
+/datum/vox_pack/bio/core/
+	name = "Биоядро (Стакикамка х3)"
+	desc = "Биомеханизм изматывающий своих жертв."
+	reference = "B_B_STAM"
+	cost = 0
+	contains = list(/obj/item/biocore/stamina)
+
+/datum/vox_pack/bio/core/
+	name = "Биоядро (Асикикид х1)"
+	desc = "Кислотный жгущий биомеханизм."
+	reference = "B_B_ACID"
+	cost = 0
+	contains = list(/obj/item/biocore/acid)
+
+/datum/vox_pack/bio/core/
+	name = "Биоядро (Кусакика х4)"
+	desc = "Кусачий маленький биомеханизм."
+	reference = "B_B_KUS"
+	cost = 0
+	contains = list(/obj/item/biocore/kusaka)
+
+/datum/vox_pack/bio/core/
+	name = "Биоядро (Таракикан х1)"
+	desc = "Броневой биомеханизм, приспособленный для вышибания дверей."
+	reference = "B_B_TAT"
+	cost = 0
+	contains = list(/obj/item/biocore/taran)
+
+/datum/vox_pack/bio/core/
+	name = "Биоядро (Токсикикик х3)"
+	desc = "Иглоподобный биомеханизм для впрыскивания токсин."
+	reference = "B_B_TOX"
+	cost = 0
+	contains = list(/obj/item/biocore/tox)

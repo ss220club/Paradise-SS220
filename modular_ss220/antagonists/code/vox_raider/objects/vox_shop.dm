@@ -102,7 +102,7 @@
 
 	// Размещаем по емкостям
 	if(length(objs_for_contain) > 2)
-		var/container_type = is_heavy ? /obj/structure/closet/crate : /obj/item/storage/box
+		var/container_type = is_heavy ? /obj/structure/closet/crate/trashcart : /obj/item/storage/box
 		var/obj/container = new container_type(get_turf(src))
 		for(var/obj/obj in objs_for_contain)
 			obj.forceMove(container)

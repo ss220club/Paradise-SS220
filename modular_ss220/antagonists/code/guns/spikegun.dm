@@ -40,7 +40,7 @@
 /obj/item/gun/energy/spike/update_icon_state()
 	. = ..()
 	var/inhand_ratio = CEILING((cell.charge / cell.maxcharge) * inhand_charge_sections, 1)
-	var/new_item_state = "[initial(item_state)]_[inhand_ratio]"
+	var/new_item_state = "[initial(item_state)][inhand_ratio]"
 	item_state = new_item_state
 
 
@@ -49,7 +49,7 @@
 	name = "\improper Vox spike longgun"
 	desc = "Оружие причудливой формы с яркими пурпурными энергетическими светочами. Рукоять предназначена для когтистой руки. Выстреливает длинными энергетическими самовосстановимыми кристаллами с увеличенной проникающей способностью."
 	icon_state = "spike_long"
-	item_state = "spikelong"
+	item_state = "spike_long"
 	charge_sections = 6
 	inhand_charge_sections = 6
 	selfcharge = TRUE
@@ -59,7 +59,7 @@
 /obj/item/gun/energy/spike/long/process()
 	if(selfcharge)
 		if(charge_tick < charge_delay)
-			return
+			return ..()
 		playsound(src, 'modular_ss220/antagonists/sound/guns/m79_reload.ogg', 25, 1)
 	. = ..()
 
@@ -70,7 +70,7 @@
 	name = "\improper Vox spike biogun"
 	desc = "Оружие причудливой формы с шипами-трубками для нанизывания на руку. Рукоять предназначена для когтистой руки и имеет заостренные полые шипы. Выстреливает большими энергетическими заостренными кристаллами, выматывающие цель."
 	icon_state = "spike_bio"
-	item_state = "spikebio"
+	item_state = "spike_bio"
 	w_class = WEIGHT_CLASS_HUGE
 	charge_sections = 4
 	inhand_charge_sections = 4
@@ -84,12 +84,12 @@
 /obj/item/gun/energy/spike/bio/process()
 	if(selfcharge)
 		if(charge_tick < charge_delay)
-			return
+			return ..()
 		if(!ishuman(loc))
-			return
+			return ..()
 		var/mob/living/carbon/human/user = loc
 		if(user.nutrition <= NUTRITION_LEVEL_HYPOGLYCEMIA)
-			return
+			return ..()
 		user.adjust_nutrition(-nutrition_cost)
 		if(!isvox(user))
 			user.adjustBruteLoss(brute_cost)

@@ -185,7 +185,6 @@
 		return
 
 	angry_count = 0
-	atom_say(span_notice("Вами довольны. Производится пересчет ценностей."))
 	INVOKE_ASYNC(src, PROC_REF(make_cash), user, items_list)
 
 /obj/machinery/vox_trader/proc/make_cash(mob/user, list/items_list)

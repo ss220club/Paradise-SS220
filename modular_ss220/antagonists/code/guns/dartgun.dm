@@ -14,6 +14,10 @@
 	var/pixel_y_overlay_div = 5	// сколько у нас делений для спрайта оверлея ("Позиций")
 	var/pixel_y_overlay_offset = 2 // на сколько пикселей смещаем оверлей при полном делении
 
+/obj/item/gun/syringe/dart_gun/Destroy()
+	qdel(cartridge_loaded)
+	. = ..()
+
 /obj/item/gun/syringe/dart_gun/update_overlays()
 	. = ..()
 	if(cartridge_loaded)
