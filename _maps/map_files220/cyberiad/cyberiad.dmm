@@ -755,13 +755,19 @@
 /area/station/security/main)
 "aeC" = (
 /obj/structure/table/wood,
-/obj/item/reagent_containers/drinks/mug/hos,
+/obj/item/reagent_containers/drinks/mug/hos{
+	pixel_x = 8;
+	pixel_y = 16
+	},
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/item/lighter/zippo/hos,
+/obj/item/lighter/zippo/hos{
+	pixel_x = -4;
+	pixel_y = 19
+	},
 /obj/effect/spawner/lootdrop/officetoys,
 /turf/simulated/floor/carpet,
 /area/station/command/office/hos)
@@ -1000,14 +1006,23 @@
 /area/station/security/main)
 "afM" = (
 /obj/structure/table/wood,
+/obj/item/paper_bin/nanotrasen{
+	pixel_x = 6;
+	pixel_y = 2
+	},
+/obj/item/pen/multi{
+	pixel_x = 8;
+	pixel_y = 4
+	},
 /obj/item/flashlight/lamp/green{
 	on = 0;
-	pixel_x = -3;
-	pixel_y = 8
+	pixel_x = -8;
+	pixel_y = 12
 	},
-/obj/item/stamp/hos,
-/obj/item/paper_bin/nanotrasen,
-/obj/item/pen/multi,
+/obj/item/stamp/hos{
+	pixel_x = -6;
+	pixel_y = -4
+	},
 /turf/simulated/floor/carpet,
 /area/station/command/office/hos)
 "afO" = (
@@ -41141,8 +41156,9 @@
 	d2 = 4;
 	icon_state = "0-4"
 	},
-/obj/machinery/door/poddoor{
-	id_tag = "hos_secure_doors"
+/obj/machinery/door/poddoor/shutters/preopen{
+	id_tag = "hos_secure_doors";
+	dir = 1
 	},
 /turf/simulated/floor/plating,
 /area/station/command/office/hos)
@@ -49078,7 +49094,7 @@
 	id = "hos_room"
 	},
 /obj/structure/cable,
-/obj/machinery/door/poddoor{
+/obj/machinery/door/poddoor/shutters/preopen{
 	id_tag = "hos_secure_doors"
 	},
 /turf/simulated/floor/plating,
@@ -52367,7 +52383,7 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
-/obj/machinery/door/poddoor{
+/obj/machinery/door/poddoor/shutters/preopen{
 	id_tag = "hos_secure_doors"
 	},
 /turf/simulated/floor/plating,
@@ -62325,7 +62341,7 @@
 	d2 = 2;
 	icon_state = "0-2"
 	},
-/obj/machinery/door/poddoor{
+/obj/machinery/door/poddoor/shutters/preopen{
 	id_tag = "hos_secure_doors"
 	},
 /turf/simulated/floor/plating,
@@ -70217,8 +70233,9 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
-/obj/machinery/door/poddoor{
-	id_tag = "hos_secure_doors"
+/obj/machinery/door/poddoor/shutters/preopen{
+	id_tag = "hos_secure_doors";
+	dir = 1
 	},
 /turf/simulated/floor/plating,
 /area/station/command/office/hos)
@@ -89234,8 +89251,9 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
-/obj/machinery/door/poddoor{
-	id_tag = "hos_secure_doors"
+/obj/machinery/door/poddoor/shutters/preopen{
+	id_tag = "hos_secure_doors";
+	dir = 1
 	},
 /turf/simulated/floor/plating,
 /area/station/command/office/hos)
