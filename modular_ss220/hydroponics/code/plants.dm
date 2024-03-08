@@ -139,6 +139,6 @@
 	user.unEquip(src)
 	if(trash)
 		var/obj/item/trash = generate_trash()
-		user.put_in_hands(T)
+		user.put_in_hands(trash)
 		to_chat(user, "<span class='notice'>Ты открываешь [src]\'s оболочку, получая [T].</span>")
 	qdel(src)
