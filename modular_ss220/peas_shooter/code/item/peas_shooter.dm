@@ -28,7 +28,7 @@
 
 /obj/item/projectile/bullet/midbullet_r/peas_shooter/on_hit(mob/H)
 	. = ..()
-	if(prob(30))
+	if(prob(5))
 		var/peas_talk = pick("Только не туда", "пацаны, я горошину ловлю", "хлоп-хлоп", "Это не суп", "МАГИСТРААААТ", "Я тучка-тучка", "Только не мартышки!")
 		H.say(peas_talk)
 	if(prob(30))
