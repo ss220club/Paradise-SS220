@@ -5,6 +5,8 @@
 	icon_state = "peas_shooter"
 	lefthand_file = 'modular_ss220/peas_shooter/icons/inhands/peasshooter_lefthand.dmi'
 	righthand_file = 'modular_ss220/peas_shooter/icons/inhands/peasshooter_righthand.dmi'
+	fire_sound = 'modular_ss220/peas_shooter/sounds/fire.ogg'
+	drop_sound = 'modular_ss220/peas_shooter/sounds/drop.ogg'
 	w_class = WEIGHT_CLASS_NORMAL
 	mag_type = /obj/item/ammo_box/magazine/peas_shooter
 

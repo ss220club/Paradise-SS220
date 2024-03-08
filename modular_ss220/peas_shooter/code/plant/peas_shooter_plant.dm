@@ -5,6 +5,7 @@
 	icon_state = "seed-soybean"
 	species = "peas shooter"
 	plantname = "Peas Shooter Plants"
+	growthstages = 4
 	growing_icon = 'modular_ss220/peas_shooter/icons/plant/growing.dmi'
 	icon_harvest = "peas_shooter-grow4"
 	icon_grow = "peas_shooter-grow"
@@ -15,7 +16,7 @@
 	mutatelist = list()
 	potency = 20
 	yield = 1
-	production = 1
+	production = 10
 	genes = list()
 
 /obj/item/seeds/soya/Initialize(mapload)
