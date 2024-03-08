@@ -15,6 +15,7 @@
 	production = 10
 	genes = list()
 
-/obj/item/seeds/soya
-	mutatelist = list(/obj/item/seeds/soya/peas_shooter)
+/obj/item/seeds/soya/Initialize(mapload)
+    . = ..()
+	mutatelist += list(/obj/item/seeds/soya/peas_shooter,)
 
