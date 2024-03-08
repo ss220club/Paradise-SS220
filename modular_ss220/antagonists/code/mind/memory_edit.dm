@@ -66,69 +66,69 @@
 					to_chat(usr, "<span class='warning'>Unfortunately there weren't enough candidates available.</span>")
 
 /datum/admins/proc/makeBloodBrothersTeam()
-	var/confirm = alert("Are you sure?", "Confirm creation", "Yes", "No")
-	if(confirm != "Yes")
+	var/confirm = alert("Создать новую команду?", "Подтверждение", "Да", "Нет")
+	if(confirm != "Да")
 		return FALSE
 
-	var/amount = input("Size of team?", "Confirm creation")
-	if(!amount || amount >= 10 || amount <= 0)
+	var/amount = input("Размер команды (1-20)?", "Подтверждение")
+	if(!amount || amount > 20 || amount <= 0)
 		return FALSE
 
-	var/datum/antagonist/blood_brother/temp = new
+	var/datum/antagonist/blood_brother/antag_datum = new
 	var/list/mob/living/carbon/human/candidates = list()
+	for(var/mob/living/carbon/human/applicant in GLOB.player_list)
+		if(CandCheck(ROLE_BLOOD_BROTHER, applicant, temp))
+			candidates += applicant
+	if(!length(candidates))
+		return FALSE
+	qdel(antag_datum)
+
+	var/num = min(length(candidates), amount)
+	var/list/assigned = list()
+	for(var/i = 0, i < num, i++)
+		if(i >= amount)
+			break
+		var/H = pick(candidates)
+		assigned.Add(H)
+		candidates.Remove(H)
+
+	new /datum/team/blood_brothers_team(assigned, TRUE)
 
 	log_admin("[key_name(owner)] tried making Blood Brothers with One-Click-Antag")
 	message_admins("[key_name_admin(owner)] tried making Blood Brothers with One-Click-Antag")
 
-	for(var/mob/living/carbon/human/applicant in GLOB.player_list)
-		if(CandCheck(ROLE_BLOOD_BROTHER, applicant, temp))
-			candidates += applicant
-
-	if(candidates.len)
-		var/numBrothers = min(candidates.len, amount)
-		var/list/assigned = list()
-
-
-		for(var/i = 0, i<numBrothers, i++)
-			if(i>=amount)
-				break
-			var/H = pick(candidates)
-			assigned.Add(H)
-			candidates.Remove(H)
-
-		new /datum/team/blood_brothers_team(assigned, TRUE)
-
-		return TRUE
-	return FALSE
 
 /datum/admins/proc/makeVoxRaidersTeam()
-	var/confirm = alert("Are you sure?", "Confirm creation", "Yes", "No")
-	if(confirm != "Yes")
+	var/confirm = alert("Создать новую команду?", "Подтверждение", "Да", "Нет")
+	if(confirm != "Да")
 		return FALSE
-	new /datum/event/abductor
-	//new /datum/event/vox_raider
+
+	var/amount = input("Размер команды (1-20)?", "Подтверждение")
+	if(!amount || amount > 20 || amount <= 0)
+		return FALSE
+
+	var/datum/antagonist/vox_raider/antag_datum = new
+	var/list/mob/living/carbon/human/candidates = list()
+	for(var/mob/living/carbon/human/applicant in GLOB.player_list)
+		if(CandCheck(ROLE_VOX_RAIDER, applicant, antag_datum))
+			candidates += applicant
+	if(!length(candidates))
+		return FALSE
+	qdel(antag_datum)
+
+	var/num = min(length(candidates), amount)
+	var/list/assigned = list()
+	for(var/i = 0, i < num, i++)
+		if(i >= amount)
+			break
+		var/H = pick(candidates)
+		assigned.Add(H)
+		candidates.Remove(H)
+
+	offer_to_equip(owner, assigned)
+
+	new /datum/team/vox_raiders(assigned, TRUE)
 
 	log_admin("[key_name(owner)] tried making Vox Raiders with One-Click-Antag")
 	message_admins("[key_name_admin(owner)] tried making Vox Raiders with One-Click-Antag")
-
 	return TRUE
-
-
-
-
-
-	// var/image/I = new('icons/mob/simple_human.dmi', "wizard")
-	// var/list/candidates = SSghost_spawns.poll_candidates("Do you wish to be considered for the position of a Wizard Federation 'diplomat'?", "wizard", source = I)
-
-	// log_admin("[key_name(owner)] tried making a Wizard with One-Click-Antag")
-	// message_admins("[key_name_admin(owner)] tried making a Wizard with One-Click-Antag")
-
-	// if(candidates.len)
-	// 	var/mob/dead/observer/selected = pick(candidates)
-	// 	candidates -= selected
-
-	// 	var/mob/living/carbon/human/new_character = makeBody(selected)
-	// 	new_character.mind.make_Wizard()
-	// 	dust_if_respawnable(selected)
-	// 	return 1
-	// return 0

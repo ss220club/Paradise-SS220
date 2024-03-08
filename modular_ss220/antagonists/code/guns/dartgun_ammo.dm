@@ -135,27 +135,27 @@
 /obj/item/reagent_containers/syringe/dart/antiviral
 	name = "dart (spaceacillin)"
 	desc = "Содержит противовирусные вещества."
-	list_reagents = list("spaceacillin" = 10)
+	list_reagents = list("spaceacillin" = 15)
 
 /obj/item/reagent_containers/syringe/dart/charcoal
 	name = "dart (charcoal)"
 	desc = "Содержит древесный уголь для лечения токсинов и повреждений от них."
-	list_reagents = list("charcoal" = 10)
+	list_reagents = list("charcoal" = 15)
 
 /obj/item/reagent_containers/syringe/dart/epinephrine
 	name = "dart (Epinephrine)"
 	desc = "Содержит адреналин для стабилизации пациентов."
-	list_reagents = list("epinephrine" = 10)
+	list_reagents = list("epinephrine" = 15)
 
 /obj/item/reagent_containers/syringe/dart/calomel
 	name = "dart (calomel)"
 	desc = "Содержит токсичный каломель для очистки от других веществ в организме."
-	list_reagents = list("calomel" = 10)
+	list_reagents = list("calomel" = 15)
 
 /obj/item/reagent_containers/syringe/dart/heparin
 	name = "dart (heparin)"
 	desc = "Содержит гепарин, антикоагулянт крови."
-	list_reagents = list("heparin" = 10)
+	list_reagents = list("heparin" = 15)
 
 /obj/item/reagent_containers/syringe/dart/bioterror
 	name = "bioterror dart"
@@ -165,14 +165,14 @@
 /obj/item/reagent_containers/syringe/dart/capulettium
 	name = "capulettium dart"
 	desc = "Для упокоения целей."
-	list_reagents = list("capulettium" = 10)
+	list_reagents = list("capulettium" = 15)
 
 /obj/item/reagent_containers/syringe/dart/sarin
 	name = "toxin dart"
 	desc = "Смертельный нейротоксин в малых дозах."
-	list_reagents = list("sarin" = 5)
+	list_reagents = list("sarin" = 15)
 
 /obj/item/reagent_containers/syringe/dart/pancuronium
 	name = "pancuronium dart"
 	desc = "Мощный парализующий яд"
-	list_reagents = list("pancuronium" = 5)
+	list_reagents = list("pancuronium" = 15)

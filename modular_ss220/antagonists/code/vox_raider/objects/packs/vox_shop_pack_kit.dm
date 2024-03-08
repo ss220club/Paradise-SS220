@@ -2,6 +2,7 @@
 /datum/vox_pack/kit
 	name = "DEBUG Kit Vox Pack"
 	category = VOX_PACK_KIT
+	is_need_trader_cost = FALSE
 	var/discount_div = 0.05	// Процент скидки на паки за покупку набора
 	var/list/packs_list = list() // Паки которые мы используем для инициализации текущего пака и его цены
 
@@ -145,9 +146,9 @@
 	)
 
 /datum/vox_pack/kit/heavy
-	name = "Набор"
-	desc = ""
-	reference = "K_"
+	name = "Тяжелый Набор"
+	desc = "Полный набор тяжелого костюма для работы в условиях переизбыточной опасности."
+	reference = "K_HEAVY"
 	packs_list = list(
 		/datum/vox_pack/raider/heavy,
 		/datum/vox_pack/equipment/magboots/heavy,

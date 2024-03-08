@@ -2,7 +2,7 @@
 	. = ..()
 	var/list/end_of_round_info = list()
 	end_of_round_info += mode.get_extra_end_of_round_antagonist_statistics()
-	to_chat(world, end_of_round_info.Join("<br>"))
+	to_chat(world, chat_box_purple(end_of_round_info.Join("<br>")))
 
 /datum/game_mode/proc/get_extra_end_of_round_antagonist_statistics()
 	. = list()
@@ -52,9 +52,6 @@
 		checked_accesses["[code]"] = region_accesses
 	var/access_count = 0
 	for(var/code in region_codes)
-		var/test = checked_accesses["[code]"]
-		var/test1 = checked_accesses[code]
-		var/test2 = checked_accesses
 		if(length(checked_accesses["[code]"]) > 0)
 			continue
 		switch(code)

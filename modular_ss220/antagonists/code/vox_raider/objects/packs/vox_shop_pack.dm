@@ -3,6 +3,7 @@
 	var/desc = "Описание отсутствует. Сообщите разработчику."
 	var/reference = null
 	var/cost = -1	// -1 = hide
+	var/is_need_trader_cost = TRUE // Is need an additional cost on top of the cost from the “trader machine”
 	var/limited_stock = -1 // Can you only buy so many? -1 allows for infinite purchases
 	var/purchased = 0	// How much have you already bought?
 	var/amount = 1

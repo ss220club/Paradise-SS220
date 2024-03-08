@@ -25,10 +25,18 @@
 
 /obj/machinery/vox_shop/proc/generate_pack_items()
 	var/list/shop_items = list()
+	var/obj/machinery/vox_trader/trader = locate() in GLOB.machines
 	for(var/path in subtypesof(/datum/vox_pack))
 		var/datum/vox_pack/pack = new path
 		if(pack.cost < 0)
 			continue
+		if(pack.is_need_trader_cost)
+			var/list/pack_contents = list()
+			for(var/object_type in pack.contains)
+				var/obj/O = new object_type()
+			var/pack_trader_cost = trader.get_value(null, pack_contents, TRUE)
+			QDEL_LIST_CONTENTS(pack_contents)
+			pack.cost += pack_trader_cost
 		if(!shop_items[pack.category])
 			shop_items[pack.category] = list()
 		shop_items[pack.category] += pack

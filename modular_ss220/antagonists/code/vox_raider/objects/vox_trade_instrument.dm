@@ -31,7 +31,7 @@
 		return
 
 	var/value = connected_trader.get_value(user, list(target), TRUE)
-	to_chat(user, span_green("Ценность [target.name]: [value]"))
+	to_chat(user, chat_box_notice(span_green("Ценность [target.name]: [value]")))
 
 /obj/item/hand_valuer/proc/connect(mob/living/user, obj/machinery/vox_trader/input_trader)
 	to_chat(user, span_green("Устройство [connected_trader ? "пере" : ""]инициализировано в системе."))

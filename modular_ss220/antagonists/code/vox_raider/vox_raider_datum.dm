@@ -124,6 +124,8 @@
 	if(!choice)
 		return FALSE
 
+	offer_to_equip(admin, list(raider_to_add))
+
 	var/datum/team/vox_raiders/team = choices[choice]
 	if(!team)
 		stack_trace("Chosen vox raiders team `[choice]` was `null` for some reason.")
@@ -138,7 +140,7 @@
 		return
 	for(var/datum/mind/mind in candidates_list)
 		if(!isvox(mind.current))
-			return
+			make_body(loc, TRUE, "Vox")
 		var/mob/living/carbon/human/H = mind.current
 		if(mind.current)
 			H.equipOutfit(/datum/outfit/vox, visualsOnly)

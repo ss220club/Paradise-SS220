@@ -396,8 +396,9 @@
 		addition_text += span_notice("\nНовые технологии! Очень ценно! Необходимо!")
 	if(is_tech_valuable)
 		addition_text += span_notice("\nЦенные технологии! Крайне ценно!")
-	if(addition_text != "")
-		to_chat(user, addition_text)
+
+	if(user && addition_text != "")
+		to_chat(user, chat_box_notice(addition_text))
 
  	// Деноминируем кикиридиты и забираем небольшой процент в семью.
 	values_sum -= values_sum % 10	// забираем процентик

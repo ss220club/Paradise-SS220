@@ -28,7 +28,6 @@
 	character.copy_to(H)
 
 	// species
-	//H.dna.species.create_organs(H)	// !!!!!! Проверить есть ли НУЖНЫЕ органы
 	H.cleanSE() //No fat/blind/colourblind/epileptic/whatever ops.
 	H.overeatduration = 0
 	H.flavor_text = null
