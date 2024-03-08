@@ -280,11 +280,13 @@
 				if(tech in collected_tech_dict)
 					if(collected_tech_dict[tech] < tech_value)
 						temp_values_sum_precious += unique_tech_level_reward * (tech_value - collected_tech_dict[tech])
-						collected_tech_dict[tech] = tech_value
+						if(!is_visuale_only)
+							collected_tech_dict[tech] = tech_value
 						is_tech_unique = TRUE
 				else
 					temp_values_sum_precious += unique_tech_level_reward * tech_value
-					collected_tech_dict += list("[tech]" = tech_value)
+					if(!is_visuale_only)
+						collected_tech_dict += list("[tech]" = tech_value)
 					is_tech_unique = TRUE
 				if(tech in valuable_tech_list)
 					temp_mult = tech_value

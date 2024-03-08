@@ -140,7 +140,7 @@
 		return
 	for(var/datum/mind/mind in candidates_list)
 		if(!isvox(mind.current))
-			make_body(loc, TRUE, "Vox")
+			make_body(get_turf(src), TRUE, "Vox")
 		var/mob/living/carbon/human/H = mind.current
 		if(mind.current)
 			H.equipOutfit(/datum/outfit/vox, visualsOnly)

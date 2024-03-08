@@ -52,7 +52,7 @@
 	. = ..()
 	if(!random_subtype)
 		return
-	var/list/possible_types = subtypesof(choosen_type) + list(choosen_type)
+	var/list/possible_types = subtypesof(random_subtype) + list(random_subtype)
 	var/choosen_type = pick(possible_types)
 	contains.Add(choosen_type)
 
@@ -61,39 +61,39 @@
 	desc = "Случайный товар для продажи."
 	reference = "G_TOY"
 	cost = 100
-	random_subtype = list(/obj/item/toy)
+	random_subtype = /obj/item/toy
 
 /datum/vox_pack/goods/random/bikehorn
 	name = "Гудок"
 	desc = "Случайный товар для продажи."
 	reference = "G_HORN"
 	cost = 100
-	random_subtype = list(/obj/item/bikehorn)
+	random_subtype = /obj/item/bikehorn
 
 /datum/vox_pack/goods/random/beach_ball
 	name = "Мяч"
 	desc = "Случайный товар для продажи."
 	reference = "G_BALL"
 	cost = 100
-	random_subtype = list(/obj/item/beach_ball)
+	random_subtype = /obj/item/beach_ball
 
 /datum/vox_pack/goods/random/instrument
 	name = "Музыкальный Инструмент"
 	desc = "Случайный товар для продажи."
 	reference = "G_MINS"
 	cost = 100
-	random_subtype = list(/obj/item/instrument)
+	random_subtype = /obj/item/instrument
 
 /datum/vox_pack/goods/random/soap
 	name = "Мыло"
 	desc = "Случайный товар для продажи."
 	reference = "G_SOAP"
 	cost = 25
-	random_subtype = list(/obj/item/soap)
+	random_subtype = /obj/item/soap
 
 /datum/vox_pack/goods/random/lighter
 	name = "Зажигалка"
 	desc = "Случайный товар для продажи."
 	reference = "G_LIGH"
 	cost = 75
-	random_subtype = list(/obj/item/lighter)
+	random_subtype = /obj/item/lighter

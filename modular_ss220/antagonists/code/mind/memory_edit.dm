@@ -74,6 +74,9 @@
 	if(!amount || amount > 20 || amount <= 0)
 		return FALSE
 
+	var/datum/game_mode/antag_mix/temp = new
+	if(GLOB.configuration.gamemode.prevent_mindshield_antags)
+		temp.restricted_jobs += temp.protected_jobs
 	var/datum/antagonist/blood_brother/antag_datum = new
 	var/list/mob/living/carbon/human/candidates = list()
 	for(var/mob/living/carbon/human/applicant in GLOB.player_list)
@@ -107,14 +110,17 @@
 	if(!amount || amount > 20 || amount <= 0)
 		return FALSE
 
+	var/datum/game_mode/antag_mix/temp = new
+	if(GLOB.configuration.gamemode.prevent_mindshield_antags)
+		temp.restricted_jobs += temp.protected_jobs
+
 	var/datum/antagonist/vox_raider/antag_datum = new
 	var/list/mob/living/carbon/human/candidates = list()
 	for(var/mob/living/carbon/human/applicant in GLOB.player_list)
-		if(CandCheck(ROLE_VOX_RAIDER, applicant, antag_datum))
+		if(CandCheck(ROLE_VOX_RAIDER, applicant, temp))
 			candidates += applicant
 	if(!length(candidates))
 		return FALSE
-	qdel(antag_datum)
 
 	var/num = min(length(candidates), amount)
 	var/list/assigned = list()
@@ -125,7 +131,8 @@
 		assigned.Add(H)
 		candidates.Remove(H)
 
-	offer_to_equip(owner, assigned)
+	antag_datum.offer_to_equip(owner, assigned)
+	qdel(antag_datum)
 
 	new /datum/team/vox_raiders(assigned, TRUE)
 

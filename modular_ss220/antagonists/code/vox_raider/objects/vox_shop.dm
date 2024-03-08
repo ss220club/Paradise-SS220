@@ -34,6 +34,7 @@
 			var/list/pack_contents = list()
 			for(var/object_type in pack.contains)
 				var/obj/O = new object_type()
+				pack_contents.Add(O)
 			var/pack_trader_cost = trader.get_value(null, pack_contents, TRUE)
 			QDEL_LIST_CONTENTS(pack_contents)
 			pack.cost += pack_trader_cost

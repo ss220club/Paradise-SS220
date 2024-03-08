@@ -9,7 +9,7 @@
 	name = "Рюкзак"
 	desc = "Рюкзак из плотно переплетенного синтетического волокна. Хорошо защищает спину носителя при побегах и вмещает достаточно добра."
 	reference = "E_B"
-	cost = 200
+	cost = 100
 	contains = list(/obj/item/storage/backpack/vox)
 
 /datum/vox_pack/equipment/backpack/duffel
