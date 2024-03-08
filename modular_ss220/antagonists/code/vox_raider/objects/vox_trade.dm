@@ -49,6 +49,7 @@
 	var/value_access_reward = 100
 	var/valuable_access_reward = 500
 	var/unique_tech_level_reward = 300	// учитываем также множитель за технологии
+	var/stock_parts_rating_reward = 50
 
 	// дополнительные списки
 	var/list/highrisk_list = list()
@@ -332,6 +333,10 @@
 				if(item.w_class >= WEIGHT_CLASS_BULKY)
 					is_weight = TRUE
 			temp_values_sum += round(temp_value)
+
+		if(istype(/obj/item/stock_parts))
+			var/obj/item/stock_parts/part = I
+			temp_values_sum += part.rating * stock_parts_rating_reward
 
 		for(var/datum/theft_objective/objective in highrisk_list)
 			if(!istype(I, objective.typepath))
