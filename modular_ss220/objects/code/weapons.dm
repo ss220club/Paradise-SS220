@@ -172,7 +172,7 @@
 
 /obj/item/ammo_box/magazine/peas_shooter
 	name = "peacock shooter magazine"
-	desc = "peacocker's mags for cockers"
+	desc = "хранилище горошин для горохострела, вмещает до 6 горошин за раз."
 	ammo_type = /obj/item/ammo_casing/peas_shooter
 	max_ammo = 6
 
