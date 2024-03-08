@@ -3,7 +3,6 @@
 	desc = "A living pea! Can shoot peas, does minor stamina damage and forces brainrotting!"
 	icon = 'modular_ss220/peas_shooter/icons/items/peas_shooter.dmi'
 	icon_state = "peas_shooter"
-	item_state = "peas_shooter"
 	lefthand_file = 'modular_ss220/peas_shooter/icons/inhands/peasshooter_lefthand.dmi'
 	righthand_file = 'modular_ss220/peas_shooter/icons/inhands/peasshooter_righthand.dmi'
 	w_class = WEIGHT_CLASS_NORMAL
