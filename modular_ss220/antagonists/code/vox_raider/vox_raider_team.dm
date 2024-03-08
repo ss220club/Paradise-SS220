@@ -22,12 +22,6 @@
 	add_team_objective(new /datum/objective/survive(
 	{"Не допустите гибели вас и остальных Воксов из команды."}))
 
-
-	// !!!!!! Тест !!!!!!!
-	add_team_objective(new /datum/objective/raider_entirety_steal())
-	add_team_objective(new /datum/objective/raider_collection_access())
-	add_team_objective(new /datum/objective/raider_collection_tech())
-
 /datum/team/vox_raiders/add_member(datum/mind/new_member, add_antag_datum)
 	. = ..()
 	update_name()
