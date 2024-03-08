@@ -182,7 +182,7 @@
 	projectile_type = /obj/item/projectile/bullet/midbullet_r/peas_shooter
 	icon_state = "peashooter_bullet"
 
-//Пуля горохострела
+// Пуля горохострела
 /obj/item/projectile/bullet/midbullet_r/peas_shooter
 	icon = 'modular_ss220/objects/icons/ammo.dmi'
 	item_state = "peashooter_bullet"
