@@ -178,7 +178,7 @@
 
 /obj/item/ammo_casing/peas_shooter
 	name = "pea bullet"
-	desc = "Пуля из гороха, не может нанести какого-либо ощутимого урона, но наносит слабый урон самооценке"
+	desc = "Пуля из гороха, не может нанести какого-либо ощутимого урона."
 	projectile_type = /obj/item/projectile/bullet/midbullet_r/peas_shooter
 	icon_state = "peashooter_bullet"
 
