@@ -21,7 +21,7 @@
 	// Данные для подсчета драгоценностей выполнения задачи.
 	// Обновляются при первом взаимодействии если есть воксы-рейдеры.
 	var/precious_collected_dict = list()
-	var/value_sum = 0
+	var/all_values_sum = 0
 	var/precious_value
 	var/collected_access_list = list()
 	var/collected_tech_dict = list()
@@ -48,7 +48,7 @@
 	var/valuable_highrisk_reward = 1000
 	var/value_access_reward = 100
 	var/valuable_access_reward = 500
-	var/unique_tech_level_reward = 50	// учитываем также множитель за технологии
+	var/unique_tech_level_reward = 300	// учитываем также множитель за технологии
 
 	// дополнительные списки
 	var/list/highrisk_list = list()
@@ -191,12 +191,13 @@
 	if(!src || QDELETED(src))
 		return
 
-	var/values_sum = get_value(user, items_list, TRUE)
+	var/values_sum = get_value(user, items_list)
 	if(values_sum <= 10)
 		atom_say(span_notice("Расчет окончен. Средства отправлены на транспортные погашения."))
 		trade_cancel()
 		return
 	if(values_sum > 100)
+		all_values_sum += values_sum
 		atom_say(span_greenannounce("Расчет окончен. [values_sum > 2000 ? "Крайне ценно!" : "Ценно!"] Ваша доля [values_sum]"))
 	else
 		atom_say(span_notice("Расчет окончен. Вы бы еще консервных банок насобирали! Ваша доля [values_sum]"))
@@ -220,7 +221,7 @@
 	playsound(get_turf(src), 'sound/weapons/contractorbatonhit.ogg', 25, TRUE)
 	flick("trader-beam", src)
 
-/obj/machinery/vox_trader/proc/get_value(mob/user, list/items_list, is_need_grading = FALSE, is_visuale_only = FALSE)
+/obj/machinery/vox_trader/proc/get_value(mob/user, list/items_list, is_visuale_only = FALSE)
 	var/values_sum = 0
 	var/values_sum_precious = 0 // считаем сумму без скидки, например для хайрисков и уникальных доступов. Оцень ценных вещей.
 	var/accepted_access = list()
@@ -241,6 +242,7 @@
 			continue
 
 		var/temp_values_sum = 0
+		var/temp_values_sum_precious = 0
 
 		// целостность объекта
 		if(I.obj_integrity > 0)
@@ -277,11 +279,11 @@
 				var/tech_value = text2num(tech_list[tech])
 				if(tech in collected_tech_dict)
 					if(collected_tech_dict[tech] < tech_value)
-						values_sum_precious += unique_tech_level_reward * (tech_value - collected_tech_dict[tech])
+						temp_values_sum_precious += unique_tech_level_reward * (tech_value - collected_tech_dict[tech])
 						collected_tech_dict[tech] = tech_value
 						is_tech_unique = TRUE
 				else
-					values_sum_precious += unique_tech_level_reward * tech_value
+					temp_values_sum_precious += unique_tech_level_reward * tech_value
 					collected_tech_dict += list("[tech]" = tech_value)
 					is_tech_unique = TRUE
 				if(tech in valuable_tech_list)
@@ -305,10 +307,10 @@
 				if(access in collected_access_list)
 					continue
 				if(access in valuable_access_list)
-					values_sum_precious += valuable_access_reward
+					temp_values_sum_precious += valuable_access_reward
 					is_access_unique = TRUE
 				else
-					values_sum_precious += value_access_reward
+					temp_values_sum_precious += value_access_reward
 				accepted_access += access
 
 		if(isitem(I))
@@ -340,37 +342,41 @@
 							temp_value *= 2
 						else
 							temp_value *= 1.5
-			values_sum_precious += temp_value
+			temp_values_sum_precious += temp_value
 
 			if(I in valuable_highrisk_list)
-				values_sum_precious += valuable_highrisk_reward
+				temp_values_sum_precious += valuable_highrisk_reward
 
 		for(var/valuable_type in valuable_objects_dict)
 			if(!istype(I, valuable_type))
 				continue
-			values_sum_precious += valuable_objects_dict[valuable_type]
+			temp_values_sum_precious += valuable_objects_dict[valuable_type]
 			break
 
 		if(istype(I, /obj/item/gun))
 			for(var/valuable_type in valuable_guns_dict)
 				if(!istype(I, valuable_type))
 					continue
-				values_sum_precious += valuable_guns_dict[valuable_type]
+				temp_values_sum_precious += valuable_guns_dict[valuable_type]
 				break
 
+		temp_values_sum /= denomination_div	// деноминируем
+
 		//Оцениваем драгоценность для задания
-		if(is_need_grading)
-			precious_grading(user, I, temp_values_sum + (values_sum_precious - values_sum))
+		if(!is_visuale_only)
+			precious_grading(user, I, temp_values_sum + temp_values_sum_precious)
 
 		// ____________________________
 		// Завершаем рассчет
 		values_sum += temp_values_sum
-		if(temp_values_sum >= 0 && !is_visuale_only)
+		values_sum_precious += temp_values_sum_precious
+
+		if(!is_visuale_only && (temp_values_sum + temp_values_sum_precious) >= 0)
 			qdel(I)
 
 	var/addition_text = ""
 	if(length(accepted_access))
-		if(is_need_grading) // Заносим наши принятые доступы
+		if(!is_visuale_only) // Заносим наши принятые доступы
 			collected_access_list += accepted_access
 		addition_text += span_boldnotice("\nОценка имеющихся доступов: \n")
 		for(var/access in accepted_access)
@@ -394,7 +400,6 @@
 		to_chat(user, addition_text)
 
  	// Деноминируем кикиридиты и забираем небольшой процент в семью.
-	values_sum /= denomination_div	// деноминируем
 	values_sum -= values_sum % 10	// забираем процентик
 	values_sum += values_sum_precious // Даем бонус за особые ценности
 	return round(values_sum)
@@ -402,7 +407,6 @@
 /obj/machinery/vox_trader/proc/precious_grading(mob/user, obj/O, value)
 	if(!user)
 		return
-	value_sum += value
 	if(!correct_precious_value(user))
 		return
 	update_precious_collected_dict(O.name, value)
@@ -422,21 +426,20 @@
 /obj/machinery/vox_trader/proc/update_precious_collected_dict(object_name, object_value)
 	if(!correct_precious_value())
 		return
-	object_value \= denomination_div
 	if(object_value >= precious_value)
 		var/precious_data = precious_collected_dict[object_name]
 		if(!precious_data)
-			precious_collected_dict[object_name] = list("count" = 1, value = object_value)
+			precious_collected_dict[object_name] = list("count" = 1, "value" = object_value)
 		else
 			precious_data["count"]++
-			precious_data["value"] += object_value
+			precious_data["value"] = max(precious_data["value"], object_value)
 
 /obj/machinery/vox_trader/proc/synchronize_traders_stats()
 	for(var/obj/machinery/vox_trader/trader in GLOB.machines)
 		if(trader == src)
 			continue
 
-		value_sum += trader.value_sum
+		all_values_sum += trader.all_values_sum
 
 		for(var/access in trader.collected_access_list)
 			if(access in collected_access_list)

@@ -30,7 +30,7 @@
 	if(!connected_trader.check_usable(user))
 		return
 
-	var/value = connected_trader.get_value(user, list(target), is_visuale_only = TRUE)
+	var/value = connected_trader.get_value(user, list(target), TRUE)
 	to_chat(user, span_green("Ценность [target.name]: [value]"))
 
 /obj/item/hand_valuer/proc/connect(mob/living/user, obj/machinery/vox_trader/input_trader)

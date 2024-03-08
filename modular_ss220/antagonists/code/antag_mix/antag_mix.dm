@@ -174,9 +174,3 @@
 
 /datum/game_mode/antag_mix/proc/log_antag_mix(text)
 	log_debug("\[ANTAG MIX\] [text]")
-
-/datum/game_mode/antag_mix/get_end_of_round_antagonist_statistics()
-	. = list()
-	. += auto_declare_completion_vox_raiders()
-	listclearnulls(.)
-	. += ..()

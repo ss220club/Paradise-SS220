@@ -54,3 +54,32 @@
 		raider_names += raider.name
 
 	return raider_names.Join(", ")
+
+/datum/team/vox_raiders/on_round_end()
+	. = ..()
+	var/list/to_send = list()
+	for(var/datum/team/vox_raiders/team in GLOB.antagonist_teams)
+		if(!objective_holder)
+			continue
+		var/teamwin = 1
+		to_send += "<br><b>Стая [name]</b>"
+		for(var/datum/objective/objective in objective_holder.objectives)
+			if(!objective.check_completion())
+				teamwin = 0
+		if(teamwin)
+			to_send += "<br><font color='green'><B>Стая успешно завершила свои цели!</B></font>"
+		else
+			to_send += "<br><font color='red'><B>Стая провалилась!</B></font>"
+		var/num_survive = length(members)
+		for(var/datum/mind/mind in members)
+			if(!mind.current || mind.current.stat==DEAD)
+				num_survive--
+		if(num_survive == length(members))
+			to_send += "<br><font color='green'><B>Вся стая выжила!</B></font>"
+		else if(num_survive <= 0)
+			to_send += "<br><font color='red'><B>Вся стая погибла!</B></font>"
+		else
+			to_send += "<br><font color='orange'><B>У стаи есть потери!</B></font>"
+	if(!length(to_send))
+		return
+	to_chat(world, to_send.Join("<br>"))

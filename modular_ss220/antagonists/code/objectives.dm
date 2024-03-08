@@ -11,7 +11,7 @@
 	var/dynamic_player = 15
 
 /datum/objective/raider_steal/update_explanation_text()
-	explanation_text = "Соберите [precious_amount] ценностей, у каждой из которых цена минимум на [precious_value] кикикридитов. Все ценности должны быть приняты Расчичетчикиком."
+	explanation_text = "Соберите [precious_amount] ценностей, у каждой из которых цена минимум на [precious_value] кикиридитов. Все ценности должны быть приняты Расчичетчикиком."
 
 /datum/objective/raider_steal/New(text, datum/team/team_to_join)
 	. = ..()
@@ -66,7 +66,7 @@
 /datum/objective/raider_entirety_steal/check_completion()
 	var/value_sum = 0
 	for(var/obj/machinery/vox_trader/trader in GLOB.machines)
-		value_sum += trader.value_sum
+		value_sum += trader.all_values_sum
 	if(value_sum >= precious_value)
 		return TRUE
 	return FALSE
