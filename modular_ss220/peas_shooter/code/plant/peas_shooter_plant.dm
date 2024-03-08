@@ -21,7 +21,7 @@
 
 /obj/item/seeds/soya/Initialize(mapload)
 	. = ..()
-	mutatelist += list(/obj/item/seeds/soya/peas_shooter)
+	mutatelist |= list(/obj/item/seeds/soya/peas_shooter)
 
 /obj/item/food/snacks/grown/soybeans/Initialize(mapload)
 	. = ..()
