@@ -1,6 +1,6 @@
 /obj/item/gun/projectile/revolver/peas_shooter
 	name = "Peas shooter"
-	desc = "Живой горох! Может стрелять горошинами, которые наносят слабый стамина урон и вызывают брейнрот"
+	desc = "Живой горох! Может стрелять горошинами, которые наносят слабый урон самооценке."
 	icon = 'modular_ss220/peas_shooter/icons/items/peas_shooter.dmi'
 	icon_state = "peas_shooter"
 	lefthand_file = 'modular_ss220/peas_shooter/icons/inhands/peasshooter_lefthand.dmi'
