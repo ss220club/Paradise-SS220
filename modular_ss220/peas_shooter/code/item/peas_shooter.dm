@@ -23,7 +23,6 @@
 /obj/item/projectile/bullet/midbullet_r/peas_shooter
 	icon = 'modular_ss220/peas_shooter/icons/items/peas_shooter.dmi'
 	item_state = "peashooter_bullet"
-	icon_state = "peashooter_bullet"
 	stamina = 5
 	damage_type = STAMINA
 
