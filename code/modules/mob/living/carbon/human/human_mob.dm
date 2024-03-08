@@ -211,16 +211,16 @@
 		if(V)
 			status_tab_data[++status_tab_data.len] = list("Total Blood:", "[V.bloodtotal]")
 			status_tab_data[++status_tab_data.len] = list("Usable Blood:", "[V.bloodusable]")
-    if(istype(loc, /obj/spacepod)) // Spacepods!
-		  var/obj/spacepod/S = loc
-		  // If we want numbers instead of percents
-		  // [S.cell ? "[round(S.cell.charge,0.1)]/[S.cell.maxcharge] KJ" : "NONE"]
-		  status_tab_data[++status_tab_data.len] = list("Spacepod Charge:", "[S.cell ? "[round((S.cell.charge / S.cell.maxcharge) * 100, 0.1)]%" : "No cell detected"]")
-		  // Same here
-		  // [round((S.obj_integrity / S.max_integrity) * 100, 0.1)]
-		  status_tab_data[++status_tab_data.len] = list("Spacepod Integrity:", "[!S.obj_integrity ? "0" : "[round(S.obj_integrity,0.1)]/[S.max_integrity]"]")
-		  status_tab_data[++status_tab_data.len] = list("Spacepod Velocity:", "[round(sqrt(S.velocity_x*S.velocity_x+S.velocity_y*S.velocity_y), 0.1)] m/s")
-      
+	if(istype(loc, /obj/spacepod)) // Spacepods!
+		var/obj/spacepod/S = loc
+		// If we want numbers instead of percents
+		// [S.cell ? "[round(S.cell.charge,0.1)]/[S.cell.maxcharge] KJ" : "NONE"]
+		status_tab_data[++status_tab_data.len] = list("Spacepod Charge:", "[S.cell ? "[round((S.cell.charge / S.cell.maxcharge) * 100, 0.1)]" : "No cell detected"]")
+		// Same here
+		// [round((S.obj_integrity / S.max_integrity) * 100, 0.1)]
+		status_tab_data[++status_tab_data.len] = list("Spacepod Integrity:", "[!S.obj_integrity ? "0" : "[round(S.obj_integrity, 0.1)]/[S.max_integrity]"]")
+		status_tab_data[++status_tab_data.len] = list("Spacepod Velocity:", "[round(sqrt(S.velocity_x*S.velocity_x+S.velocity_y*S.velocity_y), 0.1)] m/s")
+
 /mob/living/carbon/human/ex_act(severity)
 	if(status_flags & GODMODE)
 		return FALSE
