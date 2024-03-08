@@ -8,7 +8,7 @@
 	name = "Дротикомет"
 	desc = "Компактный метатель дротиков для доставки химических коктейлей. Вмещает 5(+1) дротиков."
 	reference = "D_G"
-	cost = 1000
+	cost = 500
 	contains = list(/obj/item/gun/syringe/dart_gun)
 
 /datum/vox_pack/dart/gun/ext

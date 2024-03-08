@@ -9,7 +9,7 @@
 	name = "Рюкзак"
 	desc = "Рюкзак из плотно переплетенного синтетического волокна. Хорошо защищает спину носителя при побегах и вмещает достаточно добра."
 	reference = "E_B"
-	cost = 100
+	cost = 200
 	contains = list(/obj/item/storage/backpack/vox)
 
 /datum/vox_pack/equipment/backpack/duffel
@@ -48,7 +48,7 @@
 	name = "Магнитные Налапочники"
 	desc = "Когтистые плотные налапочники с небольшой защитой для лап."
 	reference = "E_M"
-	cost = 400
+	cost = 200
 	contains = list(/obj/item/clothing/shoes/magboots/vox)
 
 /datum/vox_pack/equipment/magboots/scout
@@ -62,14 +62,14 @@
 	name = "Боевые Магнитные Налапочники"
 	desc = "Боевые бронированные когтистые налапочники с улучшенным сцеплением с поверхностью."
 	reference = "E_MC"
-	cost = 1500
+	cost = 2000
 	contains = list(/obj/item/clothing/shoes/magboots/vox/combat)
 
 /datum/vox_pack/equipment/magboots/heavy
 	name = "Тяжелые Магнитные Налапочники"
 	desc = "Тяжелые бронированные когтистые налапочники для ведения боевых действий и защит нижних конечностей от всевозможных угроз."
 	reference = "E_MH"
-	cost = 3000
+	cost = 4000
 	contains = list(/obj/item/clothing/shoes/magboots/vox/heavy)
 
 
@@ -78,7 +78,7 @@
 	name = "Скафандр"
 	desc = "Защитный костюм для работы во враждебной атмосфере с приемлимыми защитными свойствами и полной защитой от давления."
 	reference = "E_PR"
-	cost = 200
+	cost = 100
 	contains = list(
 		/obj/item/clothing/suit/space/vox,
 		/obj/item/clothing/head/helmet/space/vox

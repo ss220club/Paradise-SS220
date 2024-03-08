@@ -32,5 +32,5 @@
 	name = "Зарядная Ячейка"
 	desc = "Стандартная зарядная ячейка подходящая под большинство шипометов."
 	reference = "S_C"
-	cost = 200
+	cost = 100
 	contains = list(/obj/item/stock_parts/cell/vox_spike)

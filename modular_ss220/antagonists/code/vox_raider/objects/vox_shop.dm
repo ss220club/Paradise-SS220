@@ -10,7 +10,7 @@
 	var/cash_stored = 0
 
 	var/list/packs_cats = list()	// Категории по предметам - ui_static_data
-	var/list/packs_items = list()	// Все доступные предметы -
+	var/list/packs_items = list()	// Все доступные предметы
 
 	var/list/cart_list
 	var/list/cart_data

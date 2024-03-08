@@ -161,30 +161,8 @@
 
 	if(!length(items_list))
 		trade_cancel()
-		angry_count++
-		switch(angry_count)
-			if(3)
-				atom_say(span_warning("Вами очень недовольны. Где товар?!"))
-			if(4)
-				atom_say(span_warning("Вами ОЧЕНЬ недовольны... Нам нужен реальный товар!"))
-			if(5)
-				atom_say(span_warning("Отправляй товар!"))
-			if(6)
-				atom_say(span_warning("Что ты щелкаешь как дятел?!"))
-			if(7)
-				atom_say(span_warning("Или ты будешь отправлять товар или не будешь больше отправлять ничего!"))
-			if(8)
-				atom_say(span_warning("Я не буду с тобой торговать пока ты не дашь товар!"))
-			if(9)
-				atom_say(span_warning("Ты шутки шутишь? Товар. Последнее предупреждение."))
-			if(10)
-				atom_say(span_warning("[user.name], [src] больше не будет с вами торговать!"))
-				blacklist.Add(user)	// Докикикировался.
-			else
-				atom_say(span_warning("Вами недовольны. Где товар?"))
 		return
 
-	angry_count = 0
 	INVOKE_ASYNC(src, PROC_REF(make_cash), user, items_list)
 
 /obj/machinery/vox_trader/proc/make_cash(mob/user, list/items_list)
@@ -193,7 +171,30 @@
 
 	var/values_sum = get_value(user, items_list)
 	if(values_sum <= 10)
-		atom_say(span_notice("Расчет окончен. Средства отправлены на транспортные погашения."))
+		if(values_sum <= 0)
+			angry_count++
+			switch(angry_count)
+				if(3)
+					atom_say(span_warning("Вами очень недовольны. Где товар?!"))
+				if(4)
+					atom_say(span_warning("Вами ОЧЕНЬ недовольны... Нам нужен реальный товар!"))
+				if(5)
+					atom_say(span_warning("Отправляй товар!"))
+				if(6)
+					atom_say(span_warning("Что ты щелкаешь как дятел?!"))
+				if(7)
+					atom_say(span_warning("Или ты будешь отправлять товар или не будешь больше отправлять ничего!"))
+				if(8)
+					atom_say(span_warning("Я не буду с тобой торговать пока ты не дашь товар!"))
+				if(9)
+					atom_say(span_warning("Ты шутки шутишь? Товар. Последнее предупреждение."))
+				if(10)
+					atom_say(span_warning("[user.name], [src] больше не будет с вами торговать!"))
+					blacklist.Add(user)	// Докикикировался.
+				else
+					atom_say(span_warning("Вами недовольны. Где товар?"))
+		else
+			atom_say(span_notice("Расчет окончен. Средства отправлены на транспортные погашения."))
 		trade_cancel()
 		return
 	if(values_sum > 100)
@@ -202,6 +203,7 @@
 	else
 		atom_say(span_notice("Расчет окончен. Вы бы еще консервных банок насобирали! Ваша доля [values_sum]"))
 
+	angry_count = 0
 	trade_cancel()
 	beam()
 	new /obj/item/stack/vox_cash(get_turf(src), values_sum)
