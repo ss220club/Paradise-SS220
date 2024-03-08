@@ -140,5 +140,5 @@
 	if(trash)
 		var/obj/item/T = generate_trash()
 		user.put_in_hands(T)
-		to_chat(user, "<span class='notice'>You open [src]\'s shell, revealing \a [T].</span>")
+		to_chat(user, "<span class='notice'>Ты открываешь [src]\'s оболочку, получая [T].</span>")
 	qdel(src)
