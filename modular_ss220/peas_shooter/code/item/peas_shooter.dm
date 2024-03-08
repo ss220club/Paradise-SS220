@@ -28,8 +28,5 @@
 
 /obj/item/projectile/bullet/midbullet_r/peas_shooter/on_hit(mob/H)
 	. = ..()
-	if(prob(5))
-		var/peas_talk = pick("Горошину поймал!",)
-		H.say(peas_talk)
-	if(prob(30))
-		H.emote("scream")
+	if(prob(15))
+		H.emote("moan")
