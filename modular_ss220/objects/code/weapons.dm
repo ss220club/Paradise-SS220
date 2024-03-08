@@ -157,7 +157,7 @@
 	icon = 'modular_ss220/objects/icons/ammo.dmi'
 	icon_state = "mm127_box"
 
-//Горохострел
+// Горохострел
 /obj/item/gun/projectile/revolver/peas_shooter
 	name = "Peas shooter"
 	desc = "Живой горох! Может стрелять горошинами, которые наносят слабый урон самооценке."
