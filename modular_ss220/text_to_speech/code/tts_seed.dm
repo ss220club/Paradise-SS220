@@ -7,6 +7,6 @@
 	new_dna.tts_seed_dna = tts_seed_dna
 	return new_dna
 
-/mob/living/carbon/human/change_dna(datum/dna/new_dna, include_species_change, keep_flavor_text)
+/mob/living/carbon/human/UpdateAppearance(list/UI)
 	. = ..()
 	AddComponent(/datum/component/tts_component, dna.tts_seed_dna)
