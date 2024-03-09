@@ -21,8 +21,8 @@
 /mob/living/simple_animal/slime
 	tts_seed = "Chen"
 
-/mob/living/carbon/human/monkey
+/mob/living/carbon/human/species/monkey
 	tts_seed = "Sniper"
 
-/mob/living/carbon/human/monkey/punpun
+/mob/living/carbon/human/species/monkey/punpun
 	tts_seed = "Chen"
