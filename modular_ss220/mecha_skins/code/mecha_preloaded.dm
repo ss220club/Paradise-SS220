@@ -1,9 +1,9 @@
-//GYGAX
+// GYGAX
 
 /obj/mecha/combat/gygax/nt
 	name = "Nanotrasen Special Gygax"
 	desc = "Козырь Nanotrasen при решении проблем, легкий мех окрашенный в победоносные цвета НТ. Если вы видите этот мех, вероятно все проблемы уже решены."
-	icon = 'modular_ss220/mecha_skins/code/mecha.dmi'
+	icon = 'modular_ss220/mecha_skins/icons/mecha.dmi'
 	icon_state = "ntgygax"
 	initial_icon = "ntgygax"
 	max_integrity = 300
@@ -46,12 +46,12 @@
 /obj/mecha/combat/gygax/nt/add_cell()
 	cell = new /obj/item/stock_parts/cell/high/slime(src)
 
-//DURAND
+// DURAND
 
 /obj/mecha/combat/durand/rover
 	desc = "Combat exosuit, developed by syndicate from the Durand Mk. II by scraping unnecessary things, and adding some of their tech. Much more protected from any Nanotrasen hazards."
 	name = "Rover"
-	icon = 'modular_ss220/mecha_skins/code/mecha.dmi'
+	icon = 'modular_ss220/mecha_skins/icons/mecha.dmi'
 	icon_state = "darkdurand"
 	initial_icon = "darkdurand"
 	armor = list(melee = 30, bullet = 40, laser = 50, energy = 50, bomb = 20, rad = 50, fire = 100, acid = 100)
