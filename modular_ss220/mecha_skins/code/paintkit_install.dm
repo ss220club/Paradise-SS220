@@ -131,15 +131,9 @@
 
 /obj/structure/mecha_wreckage/gygax/gygax_black
 	name = "\improper Обломки черного Гигакса"
-	desc = "Логотип Синдиката все ещё на месте. Хм.."
+	desc = "Логотип Синдиката все ещё на месте. Хм..."
 	icon = 'modular_ss220/mecha_skins/icons/mecha.dmi'
 	icon_state = "gygax_black-broken"
-
-/obj/structure/mecha_wreckage/gygax/gygax_nt
-	name = "\improper Обломки специального Гигакса НТ"
-	desc = "Видимо козырь был плохим..."
-	icon = 'modular_ss220/mecha_skins/icons/mecha.dmi'
-	icon_state = "ntgygax-broken"
 
 // DURAND
 
@@ -160,12 +154,6 @@
 	desc = "Это всего лишь тестовый образец.."
 	icon = 'modular_ss220/mecha_skins/icons/mecha.dmi'
 	icon_state = "shire-broken"
-
-/obj/structure/mecha_wreckage/durand/rover
-	name = "\improper Обломки Ровера."
-	desc = "И как такой гигант пал?"
-	icon = 'modular_ss220/mecha_skins/icons/mecha.dmi'
-	icon_state = "darkdurand-broken"
 
 /obj/structure/mecha_wreckage/durand/skull
 	name = "\improper Обломки \"Скелемеха\""
