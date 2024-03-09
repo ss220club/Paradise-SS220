@@ -130,7 +130,7 @@
 /obj/machinery/vox_shop/ui_interact(mob/user, datum/tgui/ui = null)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "Shop", name/*, 900, 800*/)
+		ui = new(user, src, "Shop", name)
 		ui.open()
 
 /obj/machinery/vox_shop/ui_data(mob/user)

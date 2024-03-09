@@ -334,7 +334,7 @@
 					is_weight = TRUE
 			temp_values_sum += round(temp_value)
 
-		if(istype(/obj/item/stock_parts))
+		if(istype(I, /obj/item/stock_parts))
 			var/obj/item/stock_parts/part = I
 			temp_values_sum += part.rating * stock_parts_rating_reward
 
@@ -409,8 +409,7 @@
 	if(user && addition_text != "")
 		to_chat(user, chat_box_notice(addition_text))
 
- 	// Деноминируем кикиридиты и забираем небольшой процент в семью.
-	values_sum -= values_sum % 10	// забираем процентик
+	values_sum -= values_sum % 10	// забираем процентик в семью
 	values_sum += values_sum_precious // Даем бонус за особые ценности
 	return round(values_sum)
 
