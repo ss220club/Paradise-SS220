@@ -119,6 +119,8 @@ SUBSYSTEM_DEF(tts220)
 		"мед" = "м ед",
 		"меде" = "м еде",
 		"кз" = "Кэ Зэ",
+		"дтпа" = "Дэ Тэ Пэ А",
+		"слр" = "Эс Эл Эр"
 	)
 
 	var/static/list/tts_job_replacements = list(
@@ -149,6 +151,7 @@ SUBSYSTEM_DEF(tts220)
 		"chief medical officer" = "Главный врач",
 		"medical doctor" = "Врач",
 		"Intern" = "Интерн",
+		"Medical Intern" = "Медицинский Интерн",
 		"Student Medical Doctor" = "Врач-практикант",
 		"Medical Assistant" = "Ассистирующий врач",
 		"surgeon" = "Хирург",
