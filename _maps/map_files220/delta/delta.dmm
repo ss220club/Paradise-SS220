@@ -30538,7 +30538,6 @@
 "csf" = (
 /obj/structure/cable,
 /obj/machinery/power/apc/directional/south,
-/obj/effect/landmark/damageturf,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
 	icon_state = "black"
@@ -33960,6 +33959,11 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
 	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
@@ -50036,6 +50040,11 @@
 /obj/machinery/door/firedoor,
 /obj/effect/mapping_helpers/airlock/access/any/engineering/maintenance,
 /obj/effect/mapping_helpers/airlock/access/any/service/theatre,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/fore)
 "eBE" = (
@@ -55237,11 +55246,7 @@
 /turf/simulated/floor/wood/fancy/cherry,
 /area/station/legal/lawoffice)
 "gkj" = (
-/obj/machinery/power/apc{
-	cell_type = 25000;
-	dir = 4;
-	name = "Courtroom";
-	pixel_x = 24;
+/obj/machinery/power/apc/critical/directional/east{
 	shock_proof = 1
 	},
 /obj/structure/cable{
@@ -62437,7 +62442,7 @@
 	name = "Toxins Venting Bay Door";
 	power_state = 0
 	},
-/turf/simulated/wall/r_wall,
+/turf/simulated/floor/engine,
 /area/station/science/toxins/mixing)
 "ivI" = (
 /obj/item/kirbyplants,
@@ -62510,6 +62515,7 @@
 	name = "Toxins Launcher Bay Door";
 	protected = 0
 	},
+/obj/structure/fans/tiny,
 /turf/simulated/floor/plating,
 /area/station/science/toxins/launch)
 "ixA" = (
@@ -83742,6 +83748,11 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
 	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "red"
@@ -102821,11 +102832,7 @@
 /obj/structure/table/wood,
 /obj/item/food/snacks/grown/poppy/geranium,
 /obj/item/soap/deluxe,
-/obj/machinery/power/apc{
-	cell_type = 25000;
-	dir = 4;
-	name = "Courtroom";
-	pixel_x = 24;
+/obj/machinery/power/apc/critical/directional/east{
 	shock_proof = 1
 	},
 /obj/structure/cable{
@@ -103617,11 +103624,7 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc{
-	cell_type = 25000;
-	dir = 4;
-	name = "Courtroom";
-	pixel_x = 24;
+/obj/machinery/power/apc/critical/directional/east{
 	shock_proof = 1
 	},
 /turf/simulated/floor/wood/oak,
@@ -111433,11 +111436,7 @@
 	pixel_x = -5;
 	pixel_y = 2
 	},
-/obj/machinery/power/apc{
-	cell_type = 25000;
-	dir = 4;
-	name = "Courtroom";
-	pixel_x = 24;
+/obj/machinery/power/apc/critical/directional/east{
 	shock_proof = 1
 	},
 /obj/structure/cable{
