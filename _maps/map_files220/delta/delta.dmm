@@ -744,6 +744,7 @@
 	icon_state = "4-8"
 	},
 /obj/effect/mapping_helpers/airlock/access/any/engineering/general,
+/obj/effect/mapping_helpers/airlock/access/any/engineering/external,
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/auxsolarstarboard)
 "afN" = (
@@ -8739,7 +8740,8 @@
 	icon_state = "4-8"
 	},
 /obj/effect/mapping_helpers/airlock/access/any/engineering/general,
-/turf/simulated/floor/plasteel,
+/obj/effect/mapping_helpers/airlock/access/any/engineering/atmos,
+/turf/simulated/floor/plating,
 /area/station/maintenance/auxsolarport)
 "aLs" = (
 /obj/effect/turf_decal/stripes/line{
@@ -30515,7 +30517,6 @@
 "csf" = (
 /obj/structure/cable,
 /obj/machinery/power/apc/directional/south,
-/obj/effect/landmark/damageturf,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
 	icon_state = "black"
@@ -33940,6 +33941,11 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
 	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
@@ -45463,7 +45469,7 @@
 	},
 /area/station/hallway/secondary/exit)
 "dOz" = (
-/obj/machinery/atmospherics/pipe/simple/insulated,
+/obj/machinery/atmospherics/pipe/simple/visible,
 /turf/simulated/floor/plasteel{
 	icon_state = "whitepurple"
 	},
@@ -46137,6 +46143,7 @@
 	dir = 8
 	},
 /obj/effect/mapping_helpers/airlock/access/any/engineering/general,
+/obj/effect/mapping_helpers/airlock/access/any/engineering/external,
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/portsolar)
 "dRj" = (
@@ -46693,6 +46700,7 @@
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/mapping_helpers/airlock/access/any/engineering/general,
+/obj/effect/mapping_helpers/airlock/access/any/engineering/external,
 /turf/simulated/floor/plating,
 /area/station/hallway/secondary/exit)
 "dTj" = (
@@ -48764,7 +48772,7 @@
 	},
 /area/station/medical/paramedic)
 "ehm" = (
-/obj/machinery/atmospherics/pipe/simple/insulated{
+/obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -50016,6 +50024,11 @@
 /obj/machinery/door/firedoor,
 /obj/effect/mapping_helpers/airlock/access/any/engineering/maintenance,
 /obj/effect/mapping_helpers/airlock/access/any/service/theatre,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/fore)
 "eBE" = (
@@ -52643,7 +52656,8 @@
 	},
 /obj/machinery/access_button/north{
 	autolink_id = "apmaint2_btn_int";
-	name = "interior access button"
+	name = "interior access button";
+	req_access_txt = "13"
 	},
 /obj/effect/mapping_helpers/airlock/access/any/engineering/external,
 /turf/simulated/floor/plating,
@@ -55199,11 +55213,7 @@
 /turf/simulated/floor/wood/fancy/cherry,
 /area/station/legal/lawoffice)
 "gkj" = (
-/obj/machinery/power/apc{
-	cell_type = 25000;
-	dir = 4;
-	name = "Courtroom";
-	pixel_x = 24;
+/obj/machinery/power/apc/critical/directional/east{
 	shock_proof = 1
 	},
 /obj/structure/cable{
@@ -55482,7 +55492,7 @@
 /area/station/medical/virology)
 "gpn" = (
 /obj/effect/spawner/window/reinforced/plasma/grilled,
-/obj/machinery/atmospherics/pipe/simple/insulated,
+/obj/machinery/atmospherics/pipe/simple/visible,
 /turf/simulated/floor/plating,
 /area/station/science/toxins/mixing)
 "gpy" = (
@@ -56837,10 +56847,6 @@
 	},
 /turf/simulated/floor/wood/fancy/cherry,
 /area/station/legal/lawoffice)
-"gMk" = (
-/obj/machinery/jukebox/bar,
-/turf/simulated/floor/wood/oak,
-/area/station/service/theatre)
 "gMx" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -62410,7 +62416,7 @@
 	name = "Toxins Venting Bay Door";
 	power_state = 0
 	},
-/turf/simulated/wall/r_wall,
+/turf/simulated/floor/engine,
 /area/station/science/toxins/mixing)
 "ivI" = (
 /obj/item/kirbyplants,
@@ -62484,6 +62490,7 @@
 	name = "Toxins Launcher Bay Door";
 	protected = 0
 	},
+/obj/structure/fans/tiny,
 /turf/simulated/floor/plating,
 /area/station/science/toxins/launch)
 "ixA" = (
@@ -66361,7 +66368,8 @@
 	int_door_link_id = "escape_door_int";
 	pixel_x = -26;
 	pixel_y = 6;
-	vent_link_id = "escape_vent"
+	vent_link_id = "escape_vent";
+	req_access_txt = "13"
 	},
 /obj/effect/turf_decal/delivery,
 /obj/machinery/light/small/directional/east,
@@ -67647,7 +67655,7 @@
 /obj/machinery/access_button/east{
 	autolink_id = "escape_btn_ext";
 	name = "exterior access button";
-	req_access_txt = "10;13"
+	req_access_txt = "13"
 	},
 /obj/effect/mapping_helpers/airlock/access/any/engineering/external,
 /turf/simulated/floor/plasteel,
@@ -75348,6 +75356,7 @@
 	icon_state = "1-2"
 	},
 /obj/effect/mapping_helpers/airlock/access/any/engineering/general,
+/obj/effect/mapping_helpers/airlock/access/any/engineering/external,
 /turf/simulated/floor/plating,
 /area/station/maintenance/starboardsolar)
 "mCt" = (
@@ -76730,7 +76739,7 @@
 /obj/machinery/access_button/south{
 	autolink_id = "fssolar_btn_ext";
 	name = "exterior access button";
-	req_access_txt = "10;13"
+	req_access_txt = "13"
 	},
 /obj/effect/mapping_helpers/airlock/access/any/engineering/external,
 /turf/simulated/floor/plating,
@@ -78411,7 +78420,7 @@
 /obj/machinery/access_button/west{
 	autolink_id = "assolar_btn_int";
 	name = "interior access button";
-	req_access_txt = "10;13"
+	req_access_txt = "13"
 	},
 /obj/effect/mapping_helpers/airlock/access/any/engineering/external,
 /turf/simulated/floor/plating,
@@ -80157,7 +80166,8 @@
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/machinery/access_button/east{
 	autolink_id = "arrivalsn_btn_ext";
-	name = "exterior access button"
+	name = "exterior access button";
+	req_access_txt = "13"
 	},
 /obj/effect/mapping_helpers/airlock/access/any/engineering/external,
 /turf/simulated/floor/plating,
@@ -83688,6 +83698,11 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
 	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "red"
@@ -84657,7 +84672,7 @@
 /obj/machinery/access_button/north{
 	autolink_id = "stationai_btn_ext";
 	name = "exterior access button";
-	req_access_txt = "10;13"
+	req_access_txt = "13"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -86189,7 +86204,8 @@
 	int_button_link_id = "arrivalsn_btn_int";
 	int_door_link_id = "arrivalsn_door_int";
 	pixel_x = 25;
-	vent_link_id = "arrivalsn_vent"
+	vent_link_id = "arrivalsn_vent";
+	req_access_txt = "13"
 	},
 /obj/machinery/light/small/directional/west,
 /turf/simulated/floor/plating,
@@ -88691,7 +88707,7 @@
 	},
 /area/station/public/pool)
 "qJA" = (
-/obj/machinery/atmospherics/pipe/simple/insulated{
+/obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 8
 	},
 /turf/simulated/floor/plasteel/white,
@@ -90998,7 +91014,8 @@
 /obj/machinery/access_button/west{
 	autolink_id = "arrivalsn_btn_int";
 	name = "exterior access button";
-	pixel_y = 1
+	pixel_y = 1;
+	req_access_txt = "13"
 	},
 /obj/effect/mapping_helpers/airlock/access/any/engineering/external,
 /turf/simulated/floor/plating,
@@ -94123,8 +94140,8 @@
 	int_button_link_id = "stationai_btn_int";
 	int_door_link_id = "stationai_door_int";
 	pixel_y = -57;
-	req_access_txt = "10;13";
-	vent_link_id = "stationai_vent"
+	vent_link_id = "stationai_vent";
+	req_access_txt = "13"
 	},
 /obj/structure/cable{
 	d1 = 4;
@@ -95862,7 +95879,7 @@
 	int_button_link_id = "fpsolar_btn_int";
 	int_door_link_id = "fpsolar_door_int";
 	pixel_y = 25;
-	req_access_txt = "24";
+	req_access_txt = "13";
 	vent_link_id = "fpsolar_vent"
 	},
 /obj/structure/cable{
@@ -99398,7 +99415,8 @@
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/machinery/access_button/north{
 	autolink_id = "apmaint2_btn_ext";
-	name = "exterior access button"
+	name = "exterior access button";
+	req_access_txt = "13"
 	},
 /obj/effect/mapping_helpers/airlock/access/any/engineering/external,
 /turf/simulated/floor/plasteel,
@@ -101811,7 +101829,7 @@
 /obj/machinery/access_button/south{
 	autolink_id = "stationai_btn_int";
 	name = "interior access button";
-	req_access_txt = "10;13"
+	req_access_txt = "13"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -102575,7 +102593,7 @@
 	dir = 1
 	},
 /obj/structure/window/plasmareinforced,
-/obj/machinery/atmospherics/pipe/simple/insulated,
+/obj/machinery/atmospherics/pipe/simple/visible,
 /obj/machinery/atmospherics/meter{
 	layer = 3.3
 	},
@@ -102756,11 +102774,7 @@
 /obj/structure/table/wood,
 /obj/item/food/snacks/grown/poppy/geranium,
 /obj/item/soap/deluxe,
-/obj/machinery/power/apc{
-	cell_type = 25000;
-	dir = 4;
-	name = "Courtroom";
-	pixel_x = 24;
+/obj/machinery/power/apc/critical/directional/east{
 	shock_proof = 1
 	},
 /obj/structure/cable{
@@ -103552,11 +103566,7 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc{
-	cell_type = 25000;
-	dir = 4;
-	name = "Courtroom";
-	pixel_x = 24;
+/obj/machinery/power/apc/critical/directional/east{
 	shock_proof = 1
 	},
 /turf/simulated/floor/wood/oak,
@@ -104596,7 +104606,7 @@
 /obj/machinery/access_button/east{
 	autolink_id = "escape_btn_int";
 	name = "interior access button";
-	req_access_txt = "10;13"
+	req_access_txt = "13"
 	},
 /obj/effect/mapping_helpers/airlock/access/any/engineering/external,
 /turf/simulated/floor/plating,
@@ -106545,7 +106555,8 @@
 	int_button_link_id = "apmaint2_btn_int";
 	int_door_link_id = "apmaint2_door_int";
 	pixel_y = 25;
-	vent_link_id = "apmaint2_vent"
+	vent_link_id = "apmaint2_vent";
+	req_access_txt = "13"
 	},
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
 	autolink_id = "apmaint2_vent";
@@ -111367,11 +111378,7 @@
 	pixel_x = -5;
 	pixel_y = 2
 	},
-/obj/machinery/power/apc{
-	cell_type = 25000;
-	dir = 4;
-	name = "Courtroom";
-	pixel_x = 24;
+/obj/machinery/power/apc/critical/directional/east{
 	shock_proof = 1
 	},
 /obj/structure/cable{
@@ -146322,7 +146329,7 @@ aGy
 cnC
 rza
 efP
-gMk
+dBq
 dBq
 dBq
 dBq

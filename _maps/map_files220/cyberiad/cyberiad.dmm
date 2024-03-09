@@ -26467,7 +26467,6 @@
 	},
 /area/station/science/robotics)
 "cck" = (
-/obj/structure/table,
 /obj/structure/table/glass,
 /obj/item/storage/box/donkpockets,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -31707,7 +31706,6 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/start/geneticist,
-/obj/effect/mapping_helpers/airlock/windoor/access/all/science/research,
 /obj/effect/mapping_helpers/airlock/windoor/access/all/medical/genetics,
 /turf/simulated/floor/plasteel{
 	dir = 6;
@@ -34739,7 +34737,7 @@
 	pixel_x = 3;
 	pixel_y = -3
 	},
-/obj/machinery/atmospherics/pipe/simple/insulated,
+/obj/machinery/atmospherics/pipe/simple/visible,
 /turf/simulated/floor/plasteel{
 	icon_state = "whitepurple"
 	},
@@ -40262,6 +40260,7 @@
 	icon_state = "1-2"
 	},
 /obj/effect/mapping_helpers/airlock/access/any/engineering/general,
+/obj/effect/mapping_helpers/airlock/access/any/engineering/external,
 /turf/simulated/floor/plating,
 /area/station/maintenance/starboardsolar)
 "dcn" = (
@@ -47670,7 +47669,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/simple/insulated,
+/obj/machinery/atmospherics/pipe/simple/visible,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "whitepurple"
@@ -53041,7 +53040,6 @@
 	dir = 5
 	},
 /obj/machinery/economy/atm/north,
-/obj/machinery/jukebox/bar,
 /turf/simulated/floor/wood/fancy/cherry,
 /area/station/service/bar)
 "gvg" = (
@@ -56444,7 +56442,6 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/effect/mapping_helpers/airlock/access/all/science/research,
 /obj/effect/mapping_helpers/airlock/access/all/medical/genetics,
 /turf/simulated/floor/plating,
 /area/station/science/genetics)
@@ -58048,7 +58045,7 @@
 /obj/machinery/access_button{
 	autolink_id = "fssolar_btn_ext";
 	pixel_x = -24;
-	req_one_access_txt = "10;13"
+	req_one_access_txt = "13"
 	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/auxsolarstarboard)
@@ -63817,7 +63814,6 @@
 "kuL" = (
 /obj/machinery/door/airlock/maintenance,
 /obj/effect/mapping_helpers/airlock/autoname,
-/obj/effect/mapping_helpers/airlock/access/all/engineering/maintenance,
 /obj/effect/mapping_helpers/airlock/access/all/medical/general,
 /turf/simulated/floor/plating,
 /area/station/maintenance/asmaint2)
@@ -64130,9 +64126,6 @@
 	},
 /obj/structure/disposalpipe/trunk{
 	dir = 8
-	},
-/obj/effect/mapping_helpers/airlock/windoor/access/all/science/research{
-	dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/windoor/access/all/medical/genetics{
 	dir = 4
@@ -64701,7 +64694,7 @@
 	int_button_link_id = "eng_sm_btn_int";
 	int_door_link_id = "eng_sm_door_int";
 	pixel_y = 25;
-	req_access_txt = "10;13";
+	req_access_txt = "13";
 	vent_link_id = "eng_sm_vent"
 	},
 /turf/simulated/floor/plating,
@@ -65416,7 +65409,7 @@
 /obj/machinery/access_button{
 	autolink_id = "assolar_btn_int";
 	pixel_x = -24;
-	req_one_access_txt = "10;13"
+	req_one_access_txt = "13"
 	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/starboardsolar)
@@ -67713,7 +67706,7 @@
 /turf/simulated/floor/grass,
 /area/station/service/hydroponics)
 "lRi" = (
-/obj/machinery/atmospherics/pipe/simple/insulated{
+/obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 8
 	},
 /obj/machinery/atmospherics/binary/pump{
@@ -69769,7 +69762,7 @@
 /obj/machinery/access_button/west{
 	autolink_id = "scibomb_btn_ext";
 	pixel_y = 24;
-	req_one_access_txt = "10;13";
+	req_one_access_txt = "13";
 	pixel_x = 0
 	},
 /turf/simulated/floor/plating,
@@ -71682,7 +71675,6 @@
 	},
 /obj/machinery/door/airlock/science,
 /obj/effect/mapping_helpers/airlock/autoname,
-/obj/effect/mapping_helpers/airlock/access/all/science/research,
 /obj/effect/mapping_helpers/airlock/access/all/medical/genetics,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
@@ -74229,7 +74221,7 @@
 	name = "Biohazard Shutter"
 	},
 /obj/effect/spawner/window/reinforced/plasma/grilled,
-/obj/machinery/atmospherics/pipe/simple/insulated,
+/obj/machinery/atmospherics/pipe/simple/visible,
 /turf/simulated/floor/engine,
 /area/station/science/misc_lab)
 "ojj" = (
@@ -75553,7 +75545,7 @@
 	},
 /area/station/turret_protected/ai_upload)
 "oGU" = (
-/obj/machinery/atmospherics/pipe/simple/insulated{
+/obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 8
 	},
 /obj/machinery/atmospherics/binary/valve{
@@ -85248,7 +85240,6 @@
 /obj/machinery/access_button{
 	autolink_id = "fpmaint_btn_ext";
 	pixel_x = 24;
-	pixel_y = 0;
 	req_one_access_txt = "13"
 	},
 /turf/simulated/floor/plating,
@@ -85358,7 +85349,7 @@
 /area/station/maintenance/apmaint)
 "smz" = (
 /obj/effect/spawner/window/reinforced/plasma/grilled,
-/obj/machinery/atmospherics/pipe/simple/insulated,
+/obj/machinery/atmospherics/pipe/simple/visible,
 /turf/simulated/floor/plating,
 /area/station/science/toxins/mixing)
 "smJ" = (
@@ -94563,7 +94554,7 @@
 	},
 /area/station/command/office/ce)
 "vBv" = (
-/obj/machinery/atmospherics/pipe/simple/insulated,
+/obj/machinery/atmospherics/pipe/simple/visible,
 /obj/machinery/atmospherics/meter{
 	layer = 3.3
 	},
@@ -98306,6 +98297,7 @@
 /obj/machinery/door/airlock/engineering,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/mapping_helpers/airlock/access/any/engineering/general,
+/obj/effect/mapping_helpers/airlock/access/any/engineering/external,
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/auxsolarstarboard)
 "wXC" = (
@@ -101931,7 +101923,7 @@
 /obj/machinery/access_button/east{
 	autolink_id = "scibomb_btn_int";
 	pixel_y = 24;
-	req_one_access_txt = "10;13";
+	req_one_access_txt = "13";
 	pixel_x = 0
 	},
 /turf/simulated/floor/plating,
