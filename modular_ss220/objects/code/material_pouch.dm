@@ -32,10 +32,3 @@
 	max_w_class = WEIGHT_CLASS_NORMAL
 	slot_flags = SLOT_FLAG_BELT | SLOT_FLAG_POCKET
 
-/obj/structure/closet/secure_closet/engineering_chief/populate_contents()
-	. = ..()
-	new /obj/item/storage/bag/material_pouch(src)
-
-/obj/structure/closet/secure_closet/engineering_personal/populate_contents()
-	. = ..()
-	new /obj/item/storage/bag/material_pouch(src)
