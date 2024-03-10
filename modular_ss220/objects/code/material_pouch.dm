@@ -1,6 +1,6 @@
 /obj/item/storage/bag/material_pouch
 	name = "material pouch"
-	desc = "Сумка для хранения листов материалов, вмещает до 5 стопок."
+	desc = "Сумка для хранения листов материалов."
 	icon = 'modular_ss220/objects/icons/material_pouch.dmi'
 	icon_state = "materialpouch"
 	storage_slots = 5
