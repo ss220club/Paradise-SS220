@@ -1,3 +1,4 @@
+// Surgical Tray
 /obj/item/storage/surgical_tray/Initialize(mapload)
 	. = ..()
 
@@ -12,3 +13,9 @@
 	new /obj/item/circular_saw(src)
 	new /obj/item/bonegel(src)
 	new /obj/item/bonesetter(src)
+
+// Paramedic Closet
+/obj/structure/closet/secure_closet/paramedic/populate_contents()
+	. = ..()
+	new /obj/item/grenade/jaunter_grenade(src)
+	new /obj/item/grenade/jaunter_grenade(src)

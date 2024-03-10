@@ -15,3 +15,4 @@
 	. = ..()
 	new /obj/item/melee/baton/electrostaff/loaded(src)
 	new /obj/item/screwdriver(src)
+
