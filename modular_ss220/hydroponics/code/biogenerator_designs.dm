@@ -15,7 +15,7 @@
 	category = list("initial","Organic Materials")
 
 /datum/design/material_pouch
-	name = "Material pouch"
+	name = "Подсумок для материалов"
 	id = "material_pouch"
 	build_type = BIOGENERATOR
 	materials = list(MAT_BIOMASS = 500)
