@@ -1,3 +1,66 @@
+/* Ghostbar */
+// Ash
+/turf/simulated/floor/ash
+	name = "ash"
+	icon = 'modular_ss220/maps220/icons/floors.dmi'
+	icon_state = "ash"
+	baseturf = /turf/simulated/floor/ash
+	footstep = FOOTSTEP_SAND
+	barefootstep = FOOTSTEP_SAND
+	clawfootstep = FOOTSTEP_SAND
+	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
+
+/turf/simulated/floor/ash/pry_tile(obj/item/C, mob/user, silent = FALSE)
+	return
+
+/turf/simulated/floor/ash/rocky
+	name = "rocky ground"
+	icon_state = "rockyash"
+	baseturf = /turf/simulated/floor/ash/rocky
+	footstep = FOOTSTEP_FLOOR
+	barefootstep = FOOTSTEP_HARD_BAREFOOT
+	clawfootstep = FOOTSTEP_HARD_CLAW
+	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
+
+// Cobble (decorative)
+/turf/simulated/floor/indestructible/cobble
+	name = "cobblestone path"
+	desc = "A simple but beautiful path made of various sized stones."
+	icon = 'modular_ss220/maps220/icons/floors.dmi'
+	icon_state = "cobblerock"
+	baseturf = /turf/simulated/floor/indestructible/cobble
+
+/turf/simulated/floor/indestructible/cobble/side
+	icon_state = "cobblerock_side"
+
+/turf/simulated/floor/indestructible/cobble/corner
+	icon_state = "cobblerock_corner"
+
+// Cobblestone
+/turf/simulated/floor/cobblestone
+	name = "cobblestone"
+	desc = "Cobbled stone that makes a permanent pathway. A bit old-fashioned."
+	icon = 'modular_ss220/maps220/icons/floors.dmi'
+	icon_state = "cobble"
+	gender = PLURAL
+	planetary_atmos = FALSE
+
+/turf/simulated/floor/cobblestone/planet
+	planetary_atmos = TRUE
+
+/turf/simulated/floor/cobblestone/dungeon
+	icon_state = "cobble_dungeon"
+	planetary_atmos = FALSE
+
+/turf/simulated/floor/cobblestone/dungeon/planet
+	planetary_atmos = TRUE
+
+/turf/simulated/floor/cobblestone/sparse
+	icon_state = "cobble_sparse"
+
+/turf/simulated/floor/cobblestone/sparse/planet
+	planetary_atmos = TRUE
+
 /* Beach */
 /turf/simulated/floor/beach/away/coastline/beachcorner
 	name = "beachcorner"
