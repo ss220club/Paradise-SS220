@@ -23031,7 +23031,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/effect/mapping_helpers/airlock/access/any/supply/general,
+/obj/effect/mapping_helpers/airlock/access/any/supply/cargo_bay,
 /turf/simulated/floor/plating,
 /area/station/maintenance/port)
 "bNI" = (
@@ -23155,12 +23155,14 @@
 /obj/machinery/door_control/shutter/west{
 	id = "QMLoaddoor";
 	name = "Loading Doors";
-	pixel_y = -8
+	pixel_y = -8;
+	req_one_access_txt = "79"
 	},
 /obj/machinery/door_control/shutter/west{
 	id = "QMLoaddoor2";
 	name = "Loading Doors";
-	pixel_y = 8
+	pixel_y = 8;
+	req_one_access_txt = "79"
 	},
 /obj/effect/turf_decal{
 	dir = 8
@@ -24336,7 +24338,7 @@
 	locked = 1
 	},
 /obj/effect/mapping_helpers/airlock/autoname,
-/obj/effect/mapping_helpers/airlock/access/any/supply/general,
+/obj/effect/mapping_helpers/airlock/access/all/supply/supply_shuttle,
 /turf/simulated/floor/plating,
 /area/station/supply/storage)
 "bTu" = (
@@ -25862,7 +25864,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/effect/mapping_helpers/airlock/access/any/supply/mining,
-/obj/effect/mapping_helpers/airlock/access/any/command/blueshield,
 /turf/simulated/floor/plasteel,
 /area/station/supply/miningdock)
 "cat" = (
@@ -84986,7 +84987,7 @@
 	locked = 1
 	},
 /obj/effect/mapping_helpers/airlock/autoname,
-/obj/effect/mapping_helpers/airlock/access/any/supply/general,
+/obj/effect/mapping_helpers/airlock/access/all/supply/supply_shuttle,
 /turf/simulated/floor/plating,
 /area/station/supply/storage)
 "sfu" = (
