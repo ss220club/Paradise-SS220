@@ -24,5 +24,5 @@
 	)
 
 	GLOB.cloth_recipes += list(
-		new /datum/stack_recipe("material pouch", /obj/item/storage/bag/material_pouch, 4, time = 2 SECONDS, on_floor = TRUE),
+		new /datum/stack_recipe("material pouch", /obj/item/storage/bag/material_pouch, 4, time = 2 SECONDS, on_floor = FALSE),
 	)
