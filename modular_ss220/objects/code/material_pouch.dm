@@ -1,7 +1,7 @@
-/obj/item/storage/bag/mat_pouch
+/obj/item/storage/bag/material_pouch
 	name = "material pouch"
 	desc = "Сумка для хранения листов материалов, вмещает до 5 стопок."
-	icon = 'modular_ss220/objects/icons/mat_pouch.dmi'
+	icon = 'modular_ss220/objects/icons/material_pouch.dmi'
 	icon_state = "materialpouch"
 	storage_slots = 5
 	max_combined_w_class = 250
@@ -31,3 +31,11 @@
 	resistance_flags = FLAMMABLE
 	max_w_class = WEIGHT_CLASS_NORMAL
 	slot_flags = SLOT_FLAG_BELT | SLOT_FLAG_POCKET
+
+/obj/structure/closet/secure_closet/engineering_chief/populate_contents()
+	. = ..()
+	new /obj/item/storage/bag/material_pouch(src)
+
+/obj/structure/closet/secure_closet/engineering_personal/populate_contents()
+	. = ..()
+	new /obj/item/storage/bag/material_pouch(src)
