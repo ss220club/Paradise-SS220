@@ -157,6 +157,43 @@
 	icon = 'modular_ss220/objects/icons/ammo.dmi'
 	icon_state = "mm127_box"
 
+// Горохострел
+/obj/item/gun/projectile/revolver/peas_shooter
+	name = "Peas shooter"
+	desc = "Живой горох! Может стрелять горошинами, которые наносят слабый урон самооценке."
+	icon = 'modular_ss220/objects/icons/guns.dmi'
+	icon_state = "peas_shooter"
+	lefthand_file = 'modular_ss220/objects/icons/inhands/guns_lefthand.dmi'
+	righthand_file = 'modular_ss220/objects/icons/inhands/guns_righthand.dmi'
+	fire_sound = 'modular_ss220/objects/sound/weapons/gunshots/peas_shooter_gunshot.ogg'
+	drop_sound = 'modular_ss220/objects/sound/weapons/drop/peas_shooter_drop.ogg'
+	w_class = WEIGHT_CLASS_NORMAL
+	mag_type = /obj/item/ammo_box/magazine/peas_shooter
+
+/obj/item/ammo_box/magazine/peas_shooter
+	name = "peacock shooter magazine"
+	desc = "хранилище горошин для горохострела, вмещает до 6 горошин за раз."
+	ammo_type = /obj/item/ammo_casing/peas_shooter
+	max_ammo = 6
+
+/obj/item/ammo_casing/peas_shooter
+	name = "pea bullet"
+	desc = "Пуля из гороха, не может нанести какого-либо ощутимого урона."
+	projectile_type = /obj/item/projectile/bullet/midbullet_r/peas_shooter
+	icon_state = "peashooter_bullet"
+
+// Пуля горохострела
+/obj/item/projectile/bullet/midbullet_r/peas_shooter
+	icon = 'modular_ss220/objects/icons/ammo.dmi'
+	item_state = "peashooter_bullet"
+	stamina = 5
+	damage_type = STAMINA
+
+/obj/item/projectile/bullet/midbullet_r/peas_shooter/on_hit(mob/H)
+	. = ..()
+	if(prob(15))
+		H.emote("moan")
+
 // Тактическая бита Флота Nanotrasen
 /obj/item/melee/baseball_bat/homerun/central_command
 	name = "тактическая бита Флота Nanotrasen"
@@ -334,7 +371,7 @@
 	cost = 500
 	containername = "pneumatic pepper rifles pack"
 
-/datum/supply_packs/security/armory/beretta
+/datum/supply_packs/security/armory/pneumapepperballs
 	name = "Pneumatic Pepper Rifle Ammunition Crate"
 	contains = list(/obj/item/ammo_box/magazine/pneuma/pepper,
 					/obj/item/ammo_box/magazine/pneuma/pepper,

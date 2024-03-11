@@ -584,7 +584,7 @@
 /obj/machinery/door/poddoor/shutters{
 	dir = 2;
 	id_tag = "Main in";
-	requires_power = 0
+	interact_offline = 1
 	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/inside/complex)
@@ -1234,7 +1234,7 @@
 /obj/machinery/door/poddoor/shutters{
 	dir = 2;
 	id_tag = "Command";
-	requires_power = 0
+	interact_offline = 1
 	},
 /obj/effect/mapping_helpers/damaged_window,
 /turf/simulated/floor/plasteel,
@@ -1525,7 +1525,7 @@
 /obj/machinery/suit_storage_unit/syndicate{
 	req_access = null;
 	state_open = 1;
-	requires_power = 0
+	interact_offline = 1
 	},
 /obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/mineral/plastitanium,
@@ -2012,8 +2012,7 @@
 /obj/structure/table/glass,
 /obj/item/flashlight/lamp/green{
 	pixel_x = 10;
-	pixel_y = -6;
-	on = 0
+	pixel_y = -6
 	},
 /obj/item/paper_bin{
 	pixel_x = 6;
@@ -2363,7 +2362,7 @@
 /obj/effect/spawner/window/reinforced/grilled,
 /obj/machinery/door/poddoor/shutters{
 	id_tag = "Sec in";
-	requires_power = 0
+	interact_offline = 1
 	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/inside/complex)
@@ -2552,7 +2551,7 @@
 /obj/machinery/door/poddoor/shutters{
 	dir = 8;
 	id_tag = "Hang in";
-	requires_power = 0
+	interact_offline = 1
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/jungle_planet/inside/complex)
@@ -3194,7 +3193,7 @@
 /obj/structure/chair/sofa/left{
 	dir = 8
 	},
-/obj/machinery/computer{
+/obj/machinery/computer/nonfunctional{
 	desc = "A computer long since rendered non-functional due to lack of maintenance. Spitting out error messages.";
 	icon_keyboard = "";
 	icon_screen = "telescreen";
@@ -4047,7 +4046,7 @@
 /obj/machinery/door/poddoor/shutters{
 	id_tag = "Right in";
 	dir = 8;
-	requires_power = 0
+	interact_offline = 1
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -4271,7 +4270,7 @@
 /obj/machinery/door/poddoor/shutters{
 	id_tag = "Sec in";
 	dir = 8;
-	requires_power = 0
+	interact_offline = 1
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/jungle_planet/inside/complex)
@@ -4298,7 +4297,7 @@
 	pixel_x = 6;
 	pixel_y = 7
 	},
-/obj/machinery/computer{
+/obj/machinery/computer/nonfunctional{
 	desc = "A computer long since rendered non-functional due to lack of maintenance. Spitting out error messages.";
 	icon_keyboard = "";
 	icon_screen = "telescreen";
@@ -4486,7 +4485,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/jungle_planet/inside/complex)
 "fNF" = (
-/obj/machinery/computer{
+/obj/machinery/computer/nonfunctional{
 	name = "broken computer";
 	desc = "A computer long since rendered non-functional due to lack of maintenance. Spitting out error messages.";
 	icon_state = "computer";
@@ -4844,7 +4843,7 @@
 /area/awaymission/jungle_planet/outside/river)
 "grz" = (
 /obj/machinery/door/airlock/external{
-	requires_power = 0
+	interact_offline = 1
 	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/jungle_planet/outside/abandoned)
@@ -6220,9 +6219,7 @@
 /area/awaymission/jungle_planet/inside)
 "icJ" = (
 /obj/structure/table,
-/obj/item/flashlight/lamp{
-	on = 0
-	},
+/obj/item/flashlight/lamp,
 /obj/item/flash,
 /obj/machinery/firealarm{
 	name = "north fire alarm";
@@ -6257,7 +6254,7 @@
 	},
 /obj/machinery/door/poddoor/shutters{
 	id_tag = "Sec in";
-	requires_power = 0
+	interact_offline = 1
 	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/inside/complex)
@@ -6329,7 +6326,7 @@
 /obj/machinery/door/poddoor/shutters{
 	dir = 2;
 	id_tag = "Hang in";
-	requires_power = 0
+	interact_offline = 1
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -6487,7 +6484,7 @@
 /area/awaymission/jungle_planet/outside/waterfall)
 "isZ" = (
 /obj/machinery/photocopier,
-/obj/machinery/computer{
+/obj/machinery/computer/nonfunctional{
 	desc = "A computer long since rendered non-functional due to lack of maintenance. Spitting out error messages.";
 	icon_keyboard = "";
 	icon_screen = "telescreen";
@@ -6778,7 +6775,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/jungle_planet/inside)
 "iKW" = (
-/obj/machinery/computer{
+/obj/machinery/computer/nonfunctional{
 	desc = "A computer long since rendered non-functional due to lack of maintenance. Spitting out error messages.";
 	icon_keyboard = "";
 	icon_screen = "telescreen";
@@ -7173,7 +7170,7 @@
 	},
 /area/awaymission/jungle_planet/outside/river)
 "jjL" = (
-/obj/machinery/computer{
+/obj/machinery/computer/nonfunctional{
 	desc = "A computer long since rendered non-functional due to lack of maintenance. Spitting out error messages.";
 	icon_state = "computer";
 	dir = 8
@@ -7311,7 +7308,7 @@
 /area/awaymission/jungle_planet/outside/cave/small)
 "jte" = (
 /obj/machinery/gateway/centeraway{
-	requires_power = 0;
+	interact_offline = 1;
 	calibrated = 0
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -8158,7 +8155,7 @@
 /obj/machinery/door/poddoor/shutters{
 	dir = 2;
 	id_tag = "Command";
-	requires_power = 0
+	interact_offline = 1
 	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/inside/complex)
@@ -8337,7 +8334,7 @@
 	},
 /area/awaymission/jungle_planet/inside/complex)
 "kDy" = (
-/obj/machinery/computer{
+/obj/machinery/computer/nonfunctional{
 	dir = 2;
 	icon_state = "broken";
 	icon_screen = "broken";
@@ -8545,7 +8542,7 @@
 /obj/item/shard{
 	icon_state = "small"
 	},
-/obj/machinery/computer{
+/obj/machinery/computer/nonfunctional{
 	desc = "A computer long since rendered non-functional due to lack of maintenance. Spitting out error messages.";
 	icon_keyboard = "";
 	icon_screen = "telescreen";
@@ -8955,7 +8952,7 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/inside/complex)
 "lms" = (
-/obj/machinery/computer{
+/obj/machinery/computer/nonfunctional{
 	dir = 2;
 	icon_state = "broken";
 	icon_screen = "broken";
@@ -9380,7 +9377,7 @@
 /obj/machinery/door/poddoor/shutters{
 	id_tag = "Sec in";
 	dir = 8;
-	requires_power = 0
+	interact_offline = 1
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -10537,7 +10534,7 @@
 /obj/machinery/door/poddoor/shutters{
 	dir = 2;
 	id_tag = "Command";
-	requires_power = 0
+	interact_offline = 1
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/jungle_planet/inside/complex)
@@ -10566,7 +10563,7 @@
 /turf/simulated/floor/indestructible/grass,
 /area/awaymission/jungle_planet/outside/river)
 "nhA" = (
-/obj/machinery/computer{
+/obj/machinery/computer/nonfunctional{
 	name = "broken computer";
 	desc = "A computer long since rendered non-functional due to lack of maintenance. Spitting out error messages.";
 	icon_state = "computer";
@@ -12818,7 +12815,7 @@
 /area/awaymission/jungle_planet/inside/complex)
 "qmr" = (
 /obj/structure/table,
-/obj/machinery/computer{
+/obj/machinery/computer/nonfunctional{
 	name = "broken computer";
 	desc = "A computer long since rendered non-functional due to lack of maintenance. Spitting out error messages.";
 	icon_state = "laptop";
@@ -13097,7 +13094,7 @@
 /obj/machinery/door/poddoor/shutters{
 	dir = 8;
 	id_tag = "Hang in";
-	requires_power = 0
+	interact_offline = 1
 	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/inside/complex)
@@ -13415,7 +13412,7 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/outside)
 "qVg" = (
-/obj/machinery/computer{
+/obj/machinery/computer/nonfunctional{
 	dir = 8;
 	icon_state = "broken";
 	icon_screen = "broken";
@@ -13594,7 +13591,7 @@
 /obj/effect/spawner/window/reinforced/grilled,
 /obj/machinery/door/poddoor/shutters{
 	id_tag = "Sec in";
-	requires_power = 0
+	interact_offline = 1
 	},
 /obj/effect/mapping_helpers/damaged_window,
 /turf/simulated/floor/plating,
@@ -13924,7 +13921,7 @@
 /obj/machinery/door/poddoor/shutters{
 	dir = 2;
 	id_tag = "Hang in";
-	requires_power = 0
+	interact_offline = 1
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -13944,7 +13941,7 @@
 /area/awaymission/jungle_planet/inside/complex)
 "rBr" = (
 /obj/structure/chair/office/dark,
-/obj/machinery/computer{
+/obj/machinery/computer/nonfunctional{
 	desc = "A computer long since rendered non-functional due to lack of maintenance. Spitting out error messages.";
 	icon_keyboard = "";
 	icon_screen = "telescreen";
@@ -14146,7 +14143,7 @@
 /obj/machinery/door_control/shutter/south{
 	id = "Main in";
 	req_access = list(271);
-	requires_power = 0
+	interact_offline = 1
 	},
 /obj/effect/spawner/random_spawners/dirt_maybe,
 /turf/simulated/floor/plasteel,
@@ -14155,7 +14152,7 @@
 /obj/effect/spawner/window/reinforced/grilled,
 /obj/machinery/door/poddoor/shutters{
 	id_tag = "Sec in";
-	requires_power = 0
+	interact_offline = 1
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/jungle_planet/inside/complex)
@@ -14797,7 +14794,7 @@
 /obj/machinery/door/poddoor/shutters{
 	id_tag = "Sec in";
 	dir = 8;
-	requires_power = 0
+	interact_offline = 1
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/jungle_planet/inside/complex)
@@ -15039,7 +15036,7 @@
 	},
 /area/awaymission/jungle_planet/outside/river)
 "sRJ" = (
-/obj/machinery/computer{
+/obj/machinery/computer/nonfunctional{
 	desc = "A computer long since rendered non-functional due to lack of maintenance. Spitting out error messages.";
 	name = "broken computer"
 	},
@@ -15067,7 +15064,7 @@
 /obj/machinery/door/poddoor/shutters{
 	id_tag = "Arm in";
 	dir = 2;
-	requires_power = 0
+	interact_offline = 1
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -15901,7 +15898,7 @@
 /obj/machinery/door/poddoor/shutters{
 	id_tag = "Right in";
 	dir = 8;
-	requires_power = 0
+	interact_offline = 1
 	},
 /obj/machinery/door/airlock/mining{
 	locked = 1;
@@ -17137,7 +17134,7 @@
 /obj/machinery/door/poddoor/shutters{
 	id_tag = "Sec in";
 	dir = 8;
-	requires_power = 0
+	interact_offline = 1
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/jungle_planet/inside/complex)
@@ -17441,7 +17438,7 @@
 /obj/machinery/door/poddoor/shutters{
 	id_tag = "Sec in";
 	dir = 8;
-	requires_power = 0
+	interact_offline = 1
 	},
 /obj/machinery/door/airlock/security{
 	locked = 1;
@@ -18150,7 +18147,7 @@
 /obj/effect/spawner/window/reinforced/grilled,
 /obj/machinery/door/poddoor/shutters{
 	id_tag = "Sec in";
-	requires_power = 0
+	interact_offline = 1
 	},
 /obj/effect/mapping_helpers/damaged_window,
 /turf/simulated/floor/plasteel,
@@ -18550,7 +18547,7 @@
 /obj/machinery/door/poddoor/shutters{
 	dir = 8;
 	id_tag = "Command";
-	requires_power = 0
+	interact_offline = 1
 	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/inside/complex)
@@ -18559,7 +18556,7 @@
 /obj/machinery/door/poddoor/shutters{
 	id_tag = "Arm in";
 	dir = 2;
-	requires_power = 0
+	interact_offline = 1
 	},
 /obj/machinery/door/airlock/security{
 	locked = 1;
@@ -18957,7 +18954,7 @@
 /obj/machinery/door/poddoor/shutters{
 	dir = 8;
 	id_tag = "Hang in";
-	requires_power = 0
+	interact_offline = 1
 	},
 /obj/effect/mapping_helpers/damaged_window,
 /turf/simulated/floor/plating,
@@ -19008,7 +19005,7 @@
 	},
 /area/awaymission/jungle_planet/inside)
 "xJT" = (
-/obj/machinery/computer{
+/obj/machinery/computer/nonfunctional{
 	icon_state = "computer";
 	dir = 8;
 	name = "arrival console"
@@ -19218,7 +19215,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/poddoor/shutters{
 	id_tag = "Sec in";
-	requires_power = 0
+	interact_offline = 1
 	},
 /obj/machinery/door/airlock/security{
 	locked = 1;

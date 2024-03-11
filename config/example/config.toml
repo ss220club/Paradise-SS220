@@ -386,8 +386,6 @@ details_url = "https://iphub.info/?ip="
 [job_configuration]
 # This section contains information on job configuartion, as well as the jon amounts
 
-# Disable this if you are in a lowpop environment
-jobs_have_minimal_access = true
 # Require account agre restrictions for job? Requires the database
 restrict_jobs_on_account_age = false
 # Allow admins to bypass all job age restrictions
@@ -428,7 +426,7 @@ job_slot_amounts = [
 	{name = "Chemist", lowpop = 2, highpop = 2},
 	{name = "Geneticist", lowpop = 2, highpop = 2},
 	{name = "Medical Doctor", lowpop = 5, highpop = 6},
-	{name = "Intern", lowpop = 0, highpop = 0},
+	{name = "Medical Intern", lowpop = 0, highpop = 0},
 	{name = "Virologist", lowpop = 1, highpop = 1},
 	# Science
 	{name = "Roboticist", lowpop = 2, highpop = 2},
