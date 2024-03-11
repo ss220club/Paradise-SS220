@@ -5,10 +5,12 @@
 /turf/simulated/floor/plating,
 /area/awaymission/caves/build/reqpower_build)
 "ab" = (
-/obj/effect/decal/cleanable/shreds,
-/obj/effect/spawner/random_spawners/dirt_often,
-/turf/simulated/floor/plasteel,
-/area/awaymission/caves/build)
+/mob/living/simple_animal/hostile/poison/giant_spider{
+	wander = 0;
+	maxbodytemp = 1500
+	},
+/turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
+/area/awaymission/caves)
 "ac" = (
 /obj/machinery/door/airlock/medical,
 /obj/machinery/door/firedoor/closed,
@@ -1639,13 +1641,20 @@
 	},
 /area/awaymission/caves)
 "hQ" = (
-/obj/structure/spider/stickyweb,
-/mob/living/simple_animal/hostile/poison/giant_spider{
-	wander = 0;
-	maxbodytemp = 1500
+/obj/structure/extinguisher_cabinet/directional/west,
+/obj/structure/table,
+/obj/item/radio,
+/obj/item/radio{
+	pixel_x = -6;
+	pixel_y = 4
 	},
-/turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
-/area/awaymission/caves)
+/obj/effect/spawner/random_spawners/dirt_often,
+/obj/item/card/id/away/old{
+	name = "Miner's Personal ID";
+	pixel_x = 5
+	},
+/turf/simulated/floor/plasteel,
+/area/awaymission/caves/build)
 "hS" = (
 /obj/structure{
 	icon = 'icons/obj/machines/telecomms.dmi';
@@ -1865,12 +1874,19 @@
 	},
 /area/awaymission/caves/build/reqpower_build)
 "iH" = (
-/mob/living/simple_animal/hostile/poison/giant_spider{
-	wander = 0;
-	maxbodytemp = 1500
+/obj/structure/table,
+/obj/structure/sign/nosmoking_2{
+	pixel_y = 30
 	},
-/turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
-/area/awaymission/caves)
+/obj/item/card/id/away/old{
+	name = "Miner's Personal ID";
+	pixel_x = -5
+	},
+/obj/item/card/id/away/old{
+	name = "Miner's Personal ID"
+	},
+/turf/simulated/floor/plasteel,
+/area/awaymission/caves/build)
 "iM" = (
 /obj/effect/decal/cleanable/glass,
 /obj/effect/spawner/random_spawners/dirt_often,
@@ -2167,13 +2183,6 @@
 /turf/simulated/floor/plating/lavaland_air,
 /area/awaymission/caves)
 "kn" = (
-/obj/machinery/suit_storage_unit/lavaland{
-	req_access = list(271);
-	storage_type = null;
-	locked = 1
-	},
-/obj/effect/spawner/random_spawners/dirt_often,
-/obj/effect/turf_decal/delivery/hollow,
 /turf/simulated/floor/plasteel,
 /area/awaymission/caves/build)
 "ko" = (
@@ -2190,12 +2199,12 @@
 	},
 /area/awaymission/caves/build/reqpower_build)
 "kv" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
+/obj/machinery/suit_storage_unit/lavaland{
+	req_access = list(271);
+	storage_type = null;
+	locked = 1
 	},
-/obj/effect/spawner/random_spawners/dirt_often,
+/obj/effect/turf_decal/delivery/hollow,
 /turf/simulated/floor/plasteel,
 /area/awaymission/caves/build)
 "kC" = (
@@ -2232,7 +2241,9 @@
 /turf/simulated/floor/plating,
 /area/awaymission/caves/build/reqpower_build)
 "kI" = (
-/obj/structure/fans/tiny,
+/obj/effect/decal/cleanable/glass,
+/obj/effect/spawner/window/reinforced/grilled,
+/obj/effect/mapping_helpers/damaged_window,
 /turf/simulated/floor/plating,
 /area/awaymission/caves/build)
 "kR" = (
@@ -2310,9 +2321,14 @@
 /turf/simulated/floor/plating,
 /area/awaymission/caves/build/reqpower_build)
 "lp" = (
-/obj/effect/decal/cleanable/glass,
-/obj/effect/spawner/window/reinforced/grilled,
-/turf/simulated/floor/plating,
+/obj/structure/closet/secure_closet{
+	req_access = list(271)
+	},
+/obj/item/extinguisher/mini,
+/obj/item/pickaxe/mini,
+/obj/item/kitchen/knife/combat/survival,
+/obj/item/storage/backpack/satchel/explorer,
+/turf/simulated/floor/plasteel,
 /area/awaymission/caves/build)
 "lq" = (
 /obj/machinery/door/firedoor,
@@ -2381,9 +2397,8 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/caves/build)
 "ly" = (
-/obj/effect/spawner/window/reinforced/grilled,
-/obj/effect/mapping_helpers/damaged_window,
-/turf/simulated/floor/plating,
+/obj/machinery/autolathe,
+/turf/simulated/floor/plasteel,
 /area/awaymission/caves/build)
 "lD" = (
 /turf/simulated/wall/indestructible/rock/mineral,
@@ -2625,6 +2640,11 @@
 	},
 /area/awaymission/caves/build/reqpower_build)
 "mN" = (
+/obj/effect/spawner/random_spawners/dirt_often,
+/obj/item/card/id/away/old{
+	name = "Miner's Personal ID";
+	pixel_x = -5
+	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/caves/build)
 "mR" = (
@@ -3546,13 +3566,13 @@
 	},
 /area/awaymission/caves/build/reqpower_build)
 "sd" = (
-/obj/structure/closet/secure_closet{
-	req_access = list(271)
+/obj/structure/closet/crate,
+/obj/item/stack/sheet/mineral/plasma{
+	amount = 30
 	},
-/obj/item/extinguisher/mini,
-/obj/item/pickaxe/mini,
-/obj/item/kitchen/knife/combat/survival,
-/obj/item/storage/backpack/satchel/explorer,
+/obj/structure/sign/explosives/alt{
+	pixel_x = -32
+	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/caves/build)
 "se" = (
@@ -4838,9 +4858,13 @@
 /turf/simulated/floor/plating/lavaland_air,
 /area/awaymission/caves)
 "yN" = (
-/obj/structure/dispenser/oxygen,
-/turf/simulated/floor/plasteel,
-/area/awaymission/caves/build)
+/obj/structure/spider/stickyweb,
+/mob/living/simple_animal/hostile/poison/giant_spider{
+	wander = 0;
+	maxbodytemp = 1500
+	},
+/turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
+/area/awaymission/caves)
 "yO" = (
 /obj/effect/decal/cleanable/glass,
 /obj/effect/spawner/random_spawners/dirt_often,
@@ -5179,10 +5203,11 @@
 	},
 /area/awaymission/caves/build/reqpower_build)
 "AI" = (
-/obj/structure/barricade/wooden,
-/obj/structure/barricade/wooden/crude{
-	layer = 3.01
-	},
+/obj/structure/table,
+/obj/item/analyzer,
+/obj/machinery/light_construct/small/north,
+/obj/item/storage/belt/utility/full/multitool,
+/obj/item/flashlight/shadowlight,
 /turf/simulated/floor/plasteel,
 /area/awaymission/caves/build)
 "AK" = (
@@ -5701,12 +5726,9 @@
 	},
 /area/awaymission/caves)
 "Dj" = (
-/obj/structure/closet/crate,
-/obj/item/stack/sheet/mineral/plasma{
-	amount = 30
-	},
-/obj/structure/sign/explosives/alt{
-	pixel_x = -32
+/obj/structure/barricade/wooden,
+/obj/structure/barricade/wooden/crude{
+	layer = 3.01
 	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/caves/build)
@@ -5956,10 +5978,8 @@
 	},
 /area/awaymission/caves/build)
 "EE" = (
-/obj/effect/decal/cleanable/glass,
-/obj/effect/spawner/window/reinforced/grilled,
-/obj/effect/mapping_helpers/damaged_window,
-/turf/simulated/floor/plating,
+/obj/structure/dispenser/oxygen,
+/turf/simulated/floor/plasteel,
 /area/awaymission/caves/build)
 "EG" = (
 /obj/structure/bookcase/random,
@@ -6081,6 +6101,10 @@
 	planetary_atmos = 1
 	},
 /area/awaymission/caves)
+"Fn" = (
+/obj/structure/fans/tiny,
+/turf/simulated/floor/plating,
+/area/awaymission/caves/build)
 "Fo" = (
 /obj/structure/table/reinforced,
 /obj/item/paper_bin,
@@ -6536,7 +6560,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/structure/extinguisher_cabinet/directional/south,
+/obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/plasteel,
 /area/awaymission/caves/build)
 "HG" = (
@@ -6575,6 +6599,11 @@
 	icon_state = "vault"
 	},
 /area/awaymission/caves/build/reqpower_build)
+"HM" = (
+/obj/effect/decal/cleanable/glass,
+/obj/effect/spawner/window/reinforced/grilled,
+/turf/simulated/floor/plating,
+/area/awaymission/caves/build)
 "HQ" = (
 /obj/effect/spawner/window/reinforced/plasma/grilled,
 /obj/effect/mapping_helpers/damaged_window,
@@ -6930,12 +6959,9 @@
 	},
 /area/awaymission/caves)
 "JC" = (
-/obj/effect/spawner/random_spawners/dirt_often,
-/obj/item/card/id/away/old{
-	name = "Miner's Personal ID";
-	pixel_x = -5
-	},
-/turf/simulated/floor/plasteel,
+/obj/effect/spawner/window/reinforced/grilled,
+/obj/effect/mapping_helpers/damaged_window,
+/turf/simulated/floor/plating,
 /area/awaymission/caves/build)
 "JD" = (
 /obj/effect/spawner/random_spawners/dirt_often,
@@ -8616,7 +8642,8 @@
 	},
 /area/awaymission/caves/build/reqpower_build)
 "SZ" = (
-/obj/machinery/autolathe,
+/obj/effect/decal/cleanable/shreds,
+/obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/plasteel,
 /area/awaymission/caves/build)
 "Tc" = (
@@ -8848,18 +8875,13 @@
 /turf/simulated/floor/plating,
 /area/awaymission/caves/build/reqpower_build)
 "Uh" = (
-/obj/structure/extinguisher_cabinet/directional/west,
-/obj/structure/table,
-/obj/item/radio,
-/obj/item/radio{
-	pixel_x = -6;
-	pixel_y = 4
+/obj/machinery/suit_storage_unit/lavaland{
+	req_access = list(271);
+	storage_type = null;
+	locked = 1
 	},
 /obj/effect/spawner/random_spawners/dirt_often,
-/obj/item/card/id/away/old{
-	name = "Miner's Personal ID";
-	pixel_x = 5
-	},
+/obj/effect/turf_decal/delivery/hollow,
 /turf/simulated/floor/plasteel,
 /area/awaymission/caves/build)
 "Uj" = (
@@ -9251,14 +9273,6 @@
 	icon_state = "dark"
 	},
 /area/awaymission/caves)
-"VP" = (
-/obj/structure/table,
-/obj/item/analyzer,
-/obj/machinery/light_construct/small/north,
-/obj/item/storage/belt/utility/full/multitool,
-/obj/item/flashlight/shadowlight,
-/turf/simulated/floor/plasteel,
-/area/awaymission/caves/build)
 "VR" = (
 /obj/item/stack/cable_coil{
 	amount = 1
@@ -9949,12 +9963,12 @@
 	},
 /area/awaymission/caves)
 "Ze" = (
-/obj/machinery/suit_storage_unit/lavaland{
-	req_access = list(271);
-	storage_type = null;
-	locked = 1
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
-/obj/effect/turf_decal/delivery/hollow,
+/obj/structure/extinguisher_cabinet/directional/south,
 /turf/simulated/floor/plasteel,
 /area/awaymission/caves/build)
 "Zg" = (
@@ -9971,20 +9985,6 @@
 "Zj" = (
 /obj/effect/spawner/window/reinforced/grilled,
 /turf/simulated/floor/plating/lavaland_air,
-/area/awaymission/caves/build)
-"Zl" = (
-/obj/structure/table,
-/obj/structure/sign/nosmoking_2{
-	pixel_y = 30
-	},
-/obj/item/card/id/away/old{
-	name = "Miner's Personal ID";
-	pixel_x = -5
-	},
-/obj/item/card/id/away/old{
-	name = "Miner's Personal ID"
-	},
-/turf/simulated/floor/plasteel,
 /area/awaymission/caves/build)
 "Zm" = (
 /obj/effect/spawner/random_spawners/blood_often,
@@ -12816,7 +12816,7 @@ ZJ
 ZJ
 ZJ
 sr
-hQ
+yN
 ZJ
 sr
 sr
@@ -13508,7 +13508,7 @@ TK
 sr
 sr
 sr
-hQ
+yN
 sr
 sr
 TK
@@ -14447,7 +14447,7 @@ sr
 sr
 sr
 sr
-hQ
+yN
 ZJ
 TK
 TK
@@ -14900,7 +14900,7 @@ sr
 sr
 sr
 sr
-hQ
+yN
 ri
 sr
 sr
@@ -14947,7 +14947,7 @@ TK
 Ot
 Ot
 fB
-Dj
+sd
 Ot
 Ot
 Ot
@@ -15121,7 +15121,7 @@ TK
 ZJ
 ZJ
 ZJ
-iH
+ab
 ZJ
 va
 ZJ
@@ -15177,7 +15177,7 @@ TK
 TK
 TK
 Ot
-Ze
+kv
 NS
 Wt
 zU
@@ -15409,9 +15409,9 @@ TK
 TK
 TK
 Ot
-Ze
+kv
 NS
-HF
+Ze
 Ot
 Ot
 Ot
@@ -15645,7 +15645,7 @@ UZ
 NS
 uU
 ui
-kI
+Fn
 yh
 NY
 NY
@@ -15873,11 +15873,11 @@ TK
 TK
 TK
 Ot
-VP
-mN
-kv
+AI
+kn
+HF
 ev
-kI
+Fn
 yh
 NY
 NY
@@ -16056,7 +16056,7 @@ sr
 sr
 sr
 sr
-hQ
+yN
 sr
 ZJ
 ZJ
@@ -16105,9 +16105,9 @@ TK
 TK
 TK
 Ot
-Zl
-mN
-kv
+iH
+kn
+HF
 Ot
 SD
 Wg
@@ -16570,8 +16570,8 @@ TK
 TK
 Ot
 Ot
-SZ
-yN
+ly
+EE
 Ot
 Ot
 Ot
@@ -17663,7 +17663,7 @@ TK
 TK
 TK
 TK
-hQ
+yN
 sr
 sr
 sr
@@ -17682,7 +17682,7 @@ TK
 TK
 ZJ
 sr
-hQ
+yN
 ZJ
 TK
 TK
@@ -17935,7 +17935,7 @@ sr
 ZJ
 ZJ
 sr
-hQ
+yN
 ZJ
 TK
 LU
@@ -18369,7 +18369,7 @@ TK
 TK
 TK
 ZJ
-iH
+ab
 TK
 ZJ
 ZJ
@@ -18594,7 +18594,7 @@ sr
 ZJ
 ZJ
 sr
-hQ
+yN
 ZJ
 TK
 TK
@@ -18614,7 +18614,7 @@ PF
 sr
 TK
 sr
-hQ
+yN
 sr
 ZJ
 ZJ
@@ -18909,7 +18909,7 @@ ZJ
 ZJ
 ZJ
 kG
-ly
+JC
 HY
 mC
 kG
@@ -19141,12 +19141,12 @@ ZJ
 va
 ZJ
 kG
-sd
+lp
 NS
+hQ
+SZ
 Uh
-ab
-kn
-ly
+JC
 Kh
 kD
 NY
@@ -19374,11 +19374,11 @@ ZJ
 ZJ
 mC
 FJ
-JC
-nR
 mN
+nR
+kn
 qx
-lp
+HM
 rp
 kD
 NY
@@ -19610,7 +19610,7 @@ mx
 hw
 ew
 wh
-lp
+HM
 pt
 kD
 ZJ
@@ -19746,7 +19746,7 @@ TK
 TK
 ZJ
 sr
-hQ
+yN
 sr
 ZJ
 TK
@@ -19842,7 +19842,7 @@ ZN
 ZN
 CU
 qx
-EE
+kI
 rp
 kD
 NY
@@ -20070,8 +20070,8 @@ bO
 bO
 kG
 mC
-AI
-AI
+Dj
+Dj
 kG
 kG
 kG
@@ -20305,7 +20305,7 @@ he
 NS
 ao
 ui
-kI
+Fn
 uh
 NY
 aV
@@ -20941,7 +20941,7 @@ ZJ
 nx
 ZJ
 ZJ
-iH
+ab
 ZJ
 va
 ZJ
@@ -21159,7 +21159,7 @@ ZJ
 TK
 TK
 TK
-hQ
+yN
 ZJ
 ZJ
 sr
@@ -21693,7 +21693,7 @@ TK
 TK
 ZJ
 kG
-EE
+kI
 HY
 kG
 kG
@@ -22061,7 +22061,7 @@ LU
 LU
 TK
 sr
-hQ
+yN
 ZJ
 ZJ
 TK
@@ -22299,7 +22299,7 @@ TK
 TK
 ZJ
 ZJ
-hQ
+yN
 ZJ
 ZJ
 sr
@@ -25329,7 +25329,7 @@ sr
 ZJ
 TK
 TK
-hQ
+yN
 sr
 TK
 TK
@@ -25567,7 +25567,7 @@ ZJ
 TK
 TK
 sr
-hQ
+yN
 sr
 sr
 ZJ
@@ -26018,7 +26018,7 @@ TK
 ZJ
 TK
 TK
-hQ
+yN
 sr
 ZJ
 sr
@@ -47424,7 +47424,7 @@ TK
 TK
 aT
 ZJ
-iH
+ab
 sr
 TK
 TK
@@ -48115,7 +48115,7 @@ LU
 LU
 TK
 TK
-hQ
+yN
 ZJ
 ZJ
 ZJ
