@@ -1047,7 +1047,7 @@
 //Plov
 /obj/item/food/snacks/plov
 	name = "плов с изюмом"
-	desc = "Плов то тому самому рецепту с Земли так ещё и с изюмом! Объеденье."
+	desc = "Плов по тому самому рецепту с Земли, так ещё и с изюмом! Объеденье."
 	icon = 'modular_ss220/food/icons/food.dmi'
 	icon_state = "plov"
 	bitesize = 1
