@@ -1,65 +1,40 @@
 #define CHAT_BADGES_DMI 'modular_ss220/chat_badges/icons/chatbadges.dmi'
 
 /client/proc/get_ooc_badged_name()
-	. = key
+	var/donator_badge = get_donator_badge()
+	var/worker_badge = get_worker_badge()
+	var/icon/donator_badge_icon = donator_badge ? icon(CHAT_BADGES_DMI, donator_badge) : null
+	var/icon/worker_badge_icon = worker_badge ? icon(CHAT_BADGES_DMI, worker_badge) : null
+
+	return "[donator_badge_icon ? bicon(donator_badge_icon) : ""][worker_badge_icon ? bicon(worker_badge_icon) : ""][key]"
+
+/client/proc/get_donator_badge()
 	if(donator_level && (prefs.toggles & PREFTOGGLE_DONATOR_PUBLIC))
-		var/icon/donator = icon(CHAT_BADGES_DMI, donator_level > 3 ? "Trusted" : "Paradise")
-		. = "[bicon(donator)][.]"
+		return donator_level > 3 ? "Trusted" : "Paradise"
 
-	if(prefs.unlock_content)
-		if(prefs.toggles & PREFTOGGLE_MEMBER_PUBLIC)
-			var/icon/palm = icon(CHAT_BADGES_DMI, "Trusted")
-			. = "[bicon(palm)][.]"
+	if(prefs.unlock_content && (prefs.toggles & PREFTOGGLE_MEMBER_PUBLIC))
+		return "Trusted"
 
-	if(!holder)
-		return
-
-	// Config disallows using Russian so this is the way
-	var/rank
-	switch(holder.rank)
-		if("Максон")
-			rank = "Wycc"
-
-		if("Банда", "Братюня", "Сестрюня")
-			rank = "Streamer"
-
-		if("Хост")
-			rank = "Host"
-
-		if("Ведущий Разработчик")
-			rank = "HeadDeveloper"
-
-		if("Старший Разработчик", "Разработчик")
-			rank = "Developer"
-
-		if("Начальный Разработчик")
-			rank = "MiniDeveloper"
-
-		if("Бригадир Мапперов")
-			rank = "HeadMapper"
-
-		if("Маппер")
-			rank = "Mapper"
-
-		if("Спрайтер")
-			rank = "Spriceter"
-
-		if("Маленький Работяга")
-			rank = "WikiLore"
-
-		if("Старший Администратор")
-			rank = "HeadAdmin"
-
-		if("Администратор")
-			rank = "GameAdmin"
-
-		if("Триал Администратор")
-			rank = "TrialAdmin"
-
-		if("Ментор")
-			rank = "Mentor"
-
-	var/icon/rank_badge = icon(CHAT_BADGES_DMI, rank)
-	. = "[bicon(rank_badge)][.]"
+/client/proc/get_worker_badge()
+	var/list/rank_badge_map = list(
+		"Максон" = "Wycc",
+		"Банда" = "Streamer",
+		"Братюня" = "Streamer",
+		"Сестрюня" = "Streamer",
+		"Хост" = "Host",
+		"Ведущий Разработчик" = "HeadDeveloper",
+		"Старший Разработчик" = "Developer",
+		"Разработчик" = "Developer",
+		"Начальный Разработчик" = "MiniDeveloper",
+		"Бригадир Мапперов" = "HeadMapper",
+		"Маппер" = "Mapper",
+		"Спрайтер" = "Spriceter",
+		"Маленький Работяга" = "WikiLore",
+		"Старший Администратор" = "HeadAdmin",
+		"Администратор" = "GameAdmin",
+		"Триал Администратор" = "TrialAdmin",
+		"Ментор" = "Mentor"
+	)
+	return rank_badge_map[holder?.rank]
 
 #undef CHAT_BADGES_DMI
