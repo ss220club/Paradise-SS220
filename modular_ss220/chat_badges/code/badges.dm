@@ -10,7 +10,7 @@ GLOBAL_LIST(badge_icons_cache)
 
 /client/proc/get_donator_badge()
 	if(donator_level && (prefs.toggles & PREFTOGGLE_DONATOR_PUBLIC))
-		return donator_level > 3 ? "Trusted" : "Paradise"
+		return donator_level > 3 ? "Paradise" : "Trusted"
 
 	if(prefs.unlock_content && (prefs.toggles & PREFTOGGLE_MEMBER_PUBLIC))
 		return "Trusted"
