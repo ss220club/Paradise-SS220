@@ -1050,6 +1050,7 @@
 	desc = "Плов по тому самому рецепту с Земли, так ещё и с изюмом! Объедение."
 	icon = 'modular_ss220/food/icons/food.dmi'
 	icon_state = "plov"
+	trash = /obj/item/trash/plate
 	filling_color = "#B15124"
 	list_reagents = list("nutriment" = 5, "blackpepper" = 1, "vitamin" = 1, "plantmatter" = 3)
 	tastes = list("рис" = 3, "мясо" = 1, "морковка" = 1, "изюм" = 1)
