@@ -1044,7 +1044,7 @@
 	icon_state = "disk"
 	item_state = "chips"
 
-//Plov
+// Plov
 /obj/item/food/snacks/plov
 	name = "плов с изюмом"
 	desc = "Плов по тому самому рецепту с Земли, так ещё и с изюмом! Объеденье."
