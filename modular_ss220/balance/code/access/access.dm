@@ -33,3 +33,7 @@
 /datum/job/blueshield/New()
 	. = ..()
 	access += list(ACCESS_CARGO_BAY)
+
+/datum/job/roboticist/New()
+	. = ..()
+	access += list(ACCESS_TOX)
