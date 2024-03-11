@@ -41,8 +41,8 @@ GLOBAL_LIST(badge_icons_cache)
 	if(isnull(badge))
 		return null
 		
-	var/icon/badge_icon = LAZYACCESS[GLOB.badge_icons_cache, badge]
-	if(!badge_icon)
+	var/icon/badge_icon = LAZYACCESS(GLOB.badge_icons_cache, badge)
+	if(isnull(badge_icon))
 		badge_icon = icon(CHAT_BADGES_DMI, badge)
 		LAZYSET(GLOB.badge_icons_cache, badge, badge_icon)
 		
