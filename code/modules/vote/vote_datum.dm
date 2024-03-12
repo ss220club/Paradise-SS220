@@ -1,4 +1,3 @@
-#define VOTE_RESULT_TYPE_MAJORITY "Majority"
 
 /datum/vote
 	/// Person who started the vote
@@ -200,4 +199,3 @@
 				voted[usr.ckey] = params["target"]
 			else
 				message_admins("<span class='boldannounceooc'>\[EXPLOIT]</span> Пользователь [key_name_admin(usr)] подделал голосование в панели!")
-

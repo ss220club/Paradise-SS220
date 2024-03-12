@@ -228,3 +228,5 @@
 		if(table.patient.stat != patientStatusHolder)
 			atom_say("Статус пациента: [patientStatus].")
 			patientStatusHolder = table.patient.stat
+
+#undef OP_COMPUTER_COOLDOWN
