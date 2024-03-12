@@ -438,4 +438,4 @@
 
 /obj/effect/spawner/lootdrop/maintenance/Initialize(mapload)
 	loot += list(/obj/item/melee/stylet = 3)
-	return..()
+	return ..()
