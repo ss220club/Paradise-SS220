@@ -87,3 +87,29 @@
 /turf/simulated/floor/light/purple
 	color = "#d493ff"
 	light_color = "#d493ff"
+
+// CIRCUIT FLOORS
+/turf/simulated/floor/redgrid
+	icon = 'modular_ss220/aesthetics/floors/icons/floors.dmi'
+	icon_state = "rcircuit"
+
+/turf/simulated/floor/greengrid
+	icon = 'modular_ss220/aesthetics/floors/icons/floors.dmi'
+	icon_state = "gcircuit"
+
+/turf/simulated/floor/bluegrid
+	icon = 'modular_ss220/aesthetics/floors/icons/floors.dmi'
+	icon_state = "bcircuit"
+
+/turf/simulated/floor/circuit
+	icon = 'icons/turf/floors.dmi'
+	icon_state = "gcircuitoff"
+
+/turf/simulated/floor/circuit/red
+	icon_state = "rcircuit"
+
+/turf/simulated/floor/circuit/green
+	icon_state = "gcircuit"
+
+/turf/simulated/floor/circuit/blue
+	icon_state = "bcircuit"
