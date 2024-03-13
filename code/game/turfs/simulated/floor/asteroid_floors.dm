@@ -22,6 +22,9 @@
 	var/proper_name = name
 	. = ..()
 	name = proper_name
+	randomize_icon_state()
+
+/turf/simulated/floor/plating/asteroid/proc/randomize_icon_state()
 	if(prob(floor_variance))
 		icon_state = "[environment_type][rand(0,12)]"
 
@@ -98,6 +101,24 @@
 			ChangeTurf(Z.turf_type, keep_icon = FALSE)
 		playsound(src, 'sound/weapons/Genhit.ogg', 50, 1)
 
+	else if(can_lay_cable())
+		if(istype(I, /obj/item/stack/cable_coil))
+			var/obj/item/stack/cable_coil/C = I
+			for(var/obj/structure/cable/LC in src)
+				if(LC.d1 == 0 || LC.d2 == 0)
+					LC.attackby(C, user)
+					return
+			C.place_turf(src, user)
+			return TRUE
+		else if(istype(I, /obj/item/rcl))
+			var/obj/item/rcl/R = I
+			if(R.loaded)
+				for(var/obj/structure/cable/LC in src)
+					if(LC.d1 == 0 || LC.d2 == 0)
+						LC.attackby(R, user)
+						return
+				R.loaded.place_turf(src, user)
+				R.is_empty(user)
 /turf/simulated/floor/plating/asteroid/welder_act(mob/user, obj/item/I)
 	return
 

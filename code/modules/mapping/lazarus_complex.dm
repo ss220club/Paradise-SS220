@@ -1,3 +1,5 @@
+//This datum is used as data source for basic name, webmap, etc. It is not necessary.
+
 /datum/map/lazarus
 	fluff_name = "PSC Lazarus"
 	technical_name = "Lazarus"
