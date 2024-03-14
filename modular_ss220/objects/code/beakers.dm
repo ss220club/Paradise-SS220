@@ -18,7 +18,7 @@
 
 /obj/item/reagent_containers/glass/beaker/variety/white/Initialize(mapload)
 	. = ..()
-	possible_transfer_amounts += list(55,80,110,130,150)
+	possible_transfer_amounts += list(100, 150)
 
 /obj/item/reagent_containers/glass/beaker/variety/gold/Initialize(mapload)
 	. = ..()
