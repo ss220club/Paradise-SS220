@@ -64,7 +64,7 @@
 	name = "X-large beaker"
 	id = "xlarge_beaker"
 	build_type = PROTOLATHE
-	materials = list(MAT_METAL = 500, MAT_PLASTIC = 500, MAT_GLASS = 2500,)
+	materials = list(MAT_METAL = 500, MAT_PLASTIC = 500, MAT_GLASS = 2500)
 	req_tech = list("materials" = 2, "plasmatech" = 2,)
 	build_path = /obj/item/reagent_containers/glass/beaker/variety/white
 	category = list("Medical")
