@@ -407,6 +407,12 @@
 /datum/emote/living/carbon/human/warble
 	name = EMOTE_HUMAN_WARBLE
 
+/datum/emote/living/carbon/human/croak
+	name = EMOTE_HUMAN_CROAK
+
+/datum/emote/living/carbon/human/croak/anger
+	name = EMOTE_HUMAN_CROAK_ANGER
+
 /datum/emote/living/carbon/human/clack
 	name = EMOTE_HUMAN_CLACK
 
@@ -441,6 +447,9 @@
 	name = EMOTE_HUMAN_POP
 
 /// Emote Animal
+
+/datum/emote/living/simple_animal/gorilla/ooga
+	name = EMOTE_ANIMAL_OOGA
 
 /datum/emote/living/simple_animal/diona_chirp
 	name = EMOTE_ANIMAL_CHIRP
