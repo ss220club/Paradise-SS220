@@ -73,7 +73,7 @@
 	name = "Metamaterial beaker"
 	id = "metamaterial_beaker"
 	build_type = PROTOLATHE
-	materials = list(MAT_METAL = 1500, MAT_GOLD = 1500, MAT_GLASS = 2500,)
+	materials = list(MAT_METAL = 1500, MAT_GOLD = 1500, MAT_GLASS = 2500)
 	req_tech = list("materials" = 4, "plasmatech" = 3)
 	build_path = /obj/item/reagent_containers/glass/beaker/variety/gold
 	category = list("Medical")
