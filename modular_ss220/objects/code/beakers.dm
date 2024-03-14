@@ -23,6 +23,7 @@
 /obj/item/reagent_containers/glass/beaker/variety/gold/Initialize(mapload)
 	. = ..()
 	possible_transfer_amounts += list(55,80,110,130,150,160,180)
+
 /obj/item/reagent_containers/glass/beaker/variety/on_reagent_change()
 	. = ..()
 	update_icon(UPDATE_OVERLAYS)
