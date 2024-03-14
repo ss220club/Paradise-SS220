@@ -1,6 +1,7 @@
 /datum/emote/exercise
 	key = "exercise"
 	key_third_person = "exercises"
+	name = "Упражнения"
 	// message = "упражняется!"
 	hands_use_check = TRUE
 	emote_type = EMOTE_VISIBLE | EMOTE_FORCE_NO_RUNECHAT // Don't need an emote to see that
