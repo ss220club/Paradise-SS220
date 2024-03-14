@@ -243,8 +243,8 @@ GLOBAL_LIST_EMPTY(allRequestConsoles)
 					radiochannel = "AI Private"
 				else if(recipient in SUPPLY_ROLES)
 					radiochannel = "Supply"
-				message_log.Add(list(list("Сообщение отправлено [recipient] в [station_time_timestamp()]", "[message]")))
-				Radio.autosay("Внимание; новое сообщение от [department]", "Консоль запросов [recipient]", "[radiochannel]")
+				message_log.Add(list(list("Message sent to [recipient] at [station_time_timestamp()]", "[message]")))
+				Radio.autosay("Оповещение: Получено новое сообщение с консоли запросов для [recipient] от [department]", null, "[radiochannel]")
 			else
 				atom_say("Сервер не обнаружен!")
 
@@ -275,11 +275,11 @@ GLOBAL_LIST_EMPTY(allRequestConsoles)
 		if("printLabel")
 			var/error_message
 			if(!ship_tag_index)
-				error_message = "Выберите назначение."
+				error_message = "Пожалуйста, выберите пункт назначения."
 			else if(!msgVerified)
-				error_message = "Предъявите ID поставщика."
+				error_message = "Пожалуйста, проверьте ID отправителя."
 			else if(world.time < print_cooldown)
-				error_message = "Позвольте принтеру напечатать этикетку."
+				error_message = "Пожалуйста, дайте принтеру время на подготовку следующей транспортировочной маркировки."
 			if(error_message)
 				atom_say("[error_message]")
 				return
