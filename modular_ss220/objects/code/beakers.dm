@@ -4,7 +4,7 @@
 	icon = 'modular_ss220/objects/icons/beakers.dmi'
 	icon_state = "beakerwhite"
 	volume = 150
-	possible_transfer_amounts = list(5,10,20,30,60,120)
+	amount_per_transfer_from_this = 10
 	container_type = OPENCONTAINER
 
 /obj/item/reagent_containers/glass/beaker/variety/gold
@@ -13,10 +13,16 @@
 	icon = 'modular_ss220/objects/icons/beakers.dmi'
 	icon_state = "beakergold"
 	volume = 180
-	possible_transfer_amounts = list(5,10,25,50,100,150)
 	amount_per_transfer_from_this = 10
 	container_type = OPENCONTAINER
 
+/obj/item/reagent_containers/glass/beaker/variety/white/Initialize(mapload)
+	. = ..()
+	possible_transfer_amounts += list(55,80,110,130,150)
+
+/obj/item/reagent_containers/glass/beaker/variety/gold/Initialize(mapload)
+	. = ..()
+	possible_transfer_amounts += list(55,80,110,130,150,160,180)
 /obj/item/reagent_containers/glass/beaker/variety/on_reagent_change()
 	. = ..()
 	update_icon(UPDATE_OVERLAYS)
