@@ -58,6 +58,7 @@
 
 /datum/design/beaker_white
 	name = "X-large Beaker"
+	desc = "Мензурка с нанесением покрытия из укреплённого стекла и пластика"
 	id = "xlarge_beaker"
 	build_type = PROTOLATHE
 	materials = list(MAT_METAL = 500, MAT_PLASTIC = 500, MAT_GLASS = 2500)
@@ -67,6 +68,7 @@
 
 /datum/design/beaker_gold
 	name = "Metamaterial Beaker"
+	desc = "Мензурка с нанесением покрытия из золота"
 	id = "metamaterial_beaker"
 	build_type = PROTOLATHE
 	materials = list(MAT_METAL = 1500, MAT_GOLD = 1500, MAT_GLASS = 2500)
