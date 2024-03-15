@@ -45,6 +45,7 @@
 	environment_type = "snow"
 	baseturf = /turf/simulated/floor/plating/asteroid/lazarus/dirt
 	transform = matrix(1, 0, -9, 0, 1, -9) //50x50
+	slowdown = 1
 
 /turf/simulated/floor/plating/asteroid/lazarus/snow/getDug()
 	ChangeTurf(/turf/simulated/floor/plating/asteroid/lazarus/dirt, keep_icon = FALSE)
