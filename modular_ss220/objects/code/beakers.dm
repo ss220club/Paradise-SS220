@@ -5,7 +5,6 @@
 	icon_state = "beakerwhite"
 	volume = 150
 	amount_per_transfer_from_this = 10
-	container_type = OPENCONTAINER
 
 /obj/item/reagent_containers/glass/beaker/variety/gold
 	name = "metamaterial beaker"
