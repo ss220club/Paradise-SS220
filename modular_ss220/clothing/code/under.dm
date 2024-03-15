@@ -52,7 +52,6 @@
 	icon = 'modular_ss220/clothing/icons/object/under.dmi'
 	icon_state = "yellowgreen_skirt"
 	item_color = "yellowgreen_skirt"
-	item_state = "yellowgreen_skirt"
 	sprite_sheets = list(
 		"Human" = 'modular_ss220/clothing/icons/mob/under.dmi',
 		)
@@ -63,7 +62,6 @@
 	icon = 'modular_ss220/clothing/icons/object/under.dmi'
 	icon_state = "aqua_skirt"
 	item_color = "aqua_skirt"
-	item_state = "aqua_skirt"
 	sprite_sheets = list(
 		"Human" = 'modular_ss220/clothing/icons/mob/under.dmi',
 		)
@@ -74,7 +72,6 @@
 	icon = 'modular_ss220/clothing/icons/object/under.dmi'
 	icon_state = "black_skirt"
 	item_color = "black_skirt"
-	item_state = "black_skirt"
 	sprite_sheets = list(
 		"Human" = 'modular_ss220/clothing/icons/mob/under.dmi',
 		)
@@ -85,7 +82,6 @@
 	icon = 'modular_ss220/clothing/icons/object/under.dmi'
 	icon_state = "blue_skirt"
 	item_color = "blue_skirt"
-	item_state = "blue_skirt"
 	sprite_sheets = list(
 		"Human" = 'modular_ss220/clothing/icons/mob/under.dmi',
 		)
@@ -96,7 +92,6 @@
 	icon = 'modular_ss220/clothing/icons/object/under.dmi'
 	icon_state = "brown_skirt"
 	item_color = "brown_skirt"
-	item_state = "brown_skirt"
 	sprite_sheets = list(
 		"Human" = 'modular_ss220/clothing/icons/mob/under.dmi',
 		)
@@ -107,7 +102,6 @@
 	icon = 'modular_ss220/clothing/icons/object/under.dmi'
 	icon_state = "darkblue_skirt"
 	item_color = "darkblue_skirt"
-	item_state = "darkblue_skirt"
 	sprite_sheets = list(
 		"Human" = 'modular_ss220/clothing/icons/mob/under.dmi',
 		)
@@ -118,7 +112,6 @@
 	icon = 'modular_ss220/clothing/icons/object/under.dmi'
 	icon_state = "darkred_skirt"
 	item_color = "darkred_skirt"
-	item_state = "darkred_skirt"
 	sprite_sheets = list(
 		"Human" = 'modular_ss220/clothing/icons/mob/under.dmi',
 		)
@@ -129,7 +122,6 @@
 	icon = 'modular_ss220/clothing/icons/object/under.dmi'
 	icon_state = "green_skirt"
 	item_color = "green_skirt"
-	item_state = "green_skirt"
 	sprite_sheets = list(
 		"Human" = 'modular_ss220/clothing/icons/mob/under.dmi',
 		)
@@ -140,7 +132,6 @@
 	icon = 'modular_ss220/clothing/icons/object/under.dmi'
 	icon_state = "grey_skirt"
 	item_color = "grey_skirt"
-	item_state = "grey_skirt"
 	sprite_sheets = list(
 		"Human" = 'modular_ss220/clothing/icons/mob/under.dmi',
 		)
@@ -151,7 +142,6 @@
 	icon = 'modular_ss220/clothing/icons/object/under.dmi'
 	icon_state = "lightblue_skirt"
 	item_color = "lightblue_skirt"
-	item_state = "lightblue_skirt"
 	sprite_sheets = list(
 		"Human" = 'modular_ss220/clothing/icons/mob/under.dmi',
 		)
@@ -162,7 +152,6 @@
 	icon = 'modular_ss220/clothing/icons/object/under.dmi'
 	icon_state = "lightbrown_skirt"
 	item_color = "lightbrown_skirt"
-	item_state = "lightbrown_skirt"
 	sprite_sheets = list(
 		"Human" = 'modular_ss220/clothing/icons/mob/under.dmi',
 		)
@@ -173,7 +162,6 @@
 	icon = 'modular_ss220/clothing/icons/object/under.dmi'
 	icon_state = "lightgreen_skirt"
 	item_color = "lightgreen_skirt"
-	item_state = "lightgreen_skirt"
 	sprite_sheets = list(
 		"Human" = 'modular_ss220/clothing/icons/mob/under.dmi',
 		)
@@ -184,7 +172,6 @@
 	icon = 'modular_ss220/clothing/icons/object/under.dmi'
 	icon_state = "lightpurple_skirt"
 	item_color = "lightpurple_skirt"
-	item_state = "lightpurple_skirt"
 	sprite_sheets = list(
 		"Human" = 'modular_ss220/clothing/icons/mob/under.dmi',
 		)
@@ -195,7 +182,6 @@
 	icon = 'modular_ss220/clothing/icons/object/under.dmi'
 	icon_state = "lightred_skirt"
 	item_color = "lightred_skirt"
-	item_state = "lightred_skirt"
 	sprite_sheets = list(
 		"Human" = 'modular_ss220/clothing/icons/mob/under.dmi',
 		)
@@ -206,7 +192,6 @@
 	icon = 'modular_ss220/clothing/icons/object/under.dmi'
 	icon_state = "orange_skirt"
 	item_color = "orange_skirt"
-	item_state = "orange_skirt"
 	sprite_sheets = list(
 		"Human" = 'modular_ss220/clothing/icons/mob/under.dmi',
 		)
@@ -217,7 +202,6 @@
 	icon = 'modular_ss220/clothing/icons/object/under.dmi'
 	icon_state = "pink_skirt"
 	item_color = "pink_skirt"
-	item_state = "pink_skirt"
 	sprite_sheets = list(
 		"Human" = 'modular_ss220/clothing/icons/mob/under.dmi',
 		)
@@ -228,7 +212,6 @@
 	icon = 'modular_ss220/clothing/icons/object/under.dmi'
 	icon_state = "prisoner_skirt"
 	item_color = "prisoner_skirt"
-	item_state = "prisoner_skirt"
 	sprite_sheets = list(
 		"Human" = 'modular_ss220/clothing/icons/mob/under.dmi',
 		)
@@ -239,7 +222,6 @@
 	icon = 'modular_ss220/clothing/icons/object/under.dmi'
 	icon_state = "purple_skirt"
 	item_color = "purple_skirt"
-	item_state = "purple_skirt"
 	sprite_sheets = list(
 		"Human" = 'modular_ss220/clothing/icons/mob/under.dmi',
 		)
@@ -250,7 +232,6 @@
 	icon = 'modular_ss220/clothing/icons/object/under.dmi'
 	icon_state = "rainbow_skirt"
 	item_color = "rainbow_skirt"
-	item_state = "rainbow_skirt"
 	sprite_sheets = list(
 		"Human" = 'modular_ss220/clothing/icons/mob/under.dmi',
 		)
@@ -261,7 +242,6 @@
 	icon = 'modular_ss220/clothing/icons/object/under.dmi'
 	icon_state = "red_skirt"
 	item_color = "red_skirt"
-	item_state = "red_skirt"
 	sprite_sheets = list(
 		"Human" = 'modular_ss220/clothing/icons/mob/under.dmi',
 		)
@@ -272,7 +252,6 @@
 	icon = 'modular_ss220/clothing/icons/object/under.dmi'
 	icon_state = "white_skirt"
 	item_color = "white_skirt"
-	item_state = "white_skirt"
 	sprite_sheets = list(
 		"Human" = 'modular_ss220/clothing/icons/mob/under.dmi',
 		)
@@ -283,7 +262,6 @@
 	icon = 'modular_ss220/clothing/icons/object/under.dmi'
 	icon_state = "yellow_skirt"
 	item_color = "yellow_skirt"
-	item_state = "yellow_skirt"
 	sprite_sheets = list(
 		"Human" = 'modular_ss220/clothing/icons/mob/under.dmi',
 		)
