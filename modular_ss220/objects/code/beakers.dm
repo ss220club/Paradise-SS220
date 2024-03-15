@@ -61,7 +61,7 @@
 		. += "assembly"
 
 /datum/design/beaker_white
-	name = "X-large beaker"
+	name = "X-large Beaker"
 	id = "xlarge_beaker"
 	build_type = PROTOLATHE
 	materials = list(MAT_METAL = 500, MAT_PLASTIC = 500, MAT_GLASS = 2500)
