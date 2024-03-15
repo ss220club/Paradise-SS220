@@ -303,7 +303,7 @@
 		SEND_SOUND(M.current, sound('sound/hallucinations/im_here1.ogg'))
 		to_chat(M.current, "<span class='cultlarge'>Your cult is ascendant and the red harvest approaches - you cannot hide your true nature for much longer!</span>")
 		addtimer(CALLBACK(src, PROC_REF(ascend), M.current), 20 SECONDS)
-	GLOB.major_announcement.Announce("Picking up extradimensional activity related to the Cult of [SSticker.cultdat ? SSticker.cultdat.entity_name : "Nar'Sie"] from your station. Data suggests that about [ascend_percent * 100]% of the station has been converted. Security staff are authorized to use lethal force freely against cultists. Non-security staff should be prepared to defend themselves and their work areas from hostile cultists. Self defense permits non-security staff to use lethal force as a last resort, but non-security staff should be defending their work areas, not hunting down cultists. Dead crewmembers must be revived and deconverted once the situation is under control.", "Central Command Higher Dimensional Affairs", 'sound/AI/commandreport.ogg')
+	GLOB.major_announcement.Announce("Обнаружение внепространственной активности, связанной с Культом [SSticker.cultdat ? SSticker.cultdat.entity_name : "Нар'Си"] на вашей станции. Данные свидетельствуют о том, что около [ascend_percent * 100]% экипажа станции было порабощено. Сотрудники службы безопасности имеют право беспрепятственно применять летальную силу против культистов. Сотрудники, не относящиеся к службе безопасности, должны быть готовы защищать себя и свои рабочие места от враждебно настроенных культистов. Самооборона предоставляет сотрудникам, не относящимся к службе безопасности, право применять летальную силу в качестве крайней меры для защиты себя и своего отдела, но не позволяет им вести охоту на членов культа. Погибшие члены экипажа должны быть реанимированы и деконвертированы, как только ситуация будет взята под контроль.", "Отдел по делам Высших Измерений.", 'sound/AI/commandreport.ogg')
 
 /datum/game_mode/proc/cult_fall()
 	cult_ascendant = FALSE
@@ -313,14 +313,14 @@
 		SEND_SOUND(M.current, sound('sound/hallucinations/wail.ogg'))
 		to_chat(M.current, "<span class='cultlarge'>The veil repairs itself, your power grows weaker...</span>")
 		addtimer(CALLBACK(src, PROC_REF(descend), M.current), 20 SECONDS)
-	GLOB.major_announcement.Announce("Paranormal activity has returned to minimal levels. \
-									Security staff should minimize lethal force against cultists, using non-lethals where possible. \
-									All dead cultists should be taken to medbay or robotics for immediate revival and deconversion. \
-									Non-security staff may defend themselves, but should prioritize leaving any areas with cultists and reporting the cultists to security. \
-									Self defense permits non-security staff to use lethal force as a last resort. Hunting down cultists may make you liable for a manslaughter charge. \
-									Any access granted in response to the paranormal threat should be reset. \
-									Any and all security gear that was handed out should be returned. Finally, all weapons (including improvised) should be removed from the crew.",
-									"Central Command Higher Dimensional Affairs", 'sound/AI/commandreport.ogg')
+	GLOB.major_announcement.Announce("Паранормальная активность вернулась к минимальному уровню. \
+									Сотрудники службы безопасности должны свести к минимуму применение летальной силы против культистов, используя, по возможности, нелетальные средства. \
+									Все мертвые культисты должны быть доставлены в медотдел, или робототехнику для немедленной реанимации и деконвертации. \
+									Сотрудники, не относящиеся к службе безопасности, могут защищаться, но должны в первую очередь покинуть все зоны с наличием культистов и сообщить о них в службу безопасности. \
+									Самооборона позволяет сотрудникам, не относящимся к службе безопасности, использовать летальную силу в качестве крайней меры. Охота на культистов может повлечь за собой обвинение в неправомерном нападении. \
+									Любой доступ, предоставленный в ответ на паранормальную угрозу, должен быть сброшен. \
+									Все выданные средства защиты должны быть возвращены. И наконец, все оружие (включая самодельное) у экипажа должно быть изъято.",
+									"Отдел по делам Высших Измерений.", 'sound/AI/commandreport.ogg')
 
 /datum/game_mode/proc/rise(cultist)
 	if(!ishuman(cultist) || !iscultist(cultist))

@@ -224,8 +224,8 @@
  */
 
 /obj/item/kitchen/rollingpin
-	name = "rolling pin"
-	desc = "Used to knock out the Bartender."
+	name = "скалка"
+	desc = "Используется, чтобы вырубить бармена."
 	icon_state = "rolling_pin"
 	force = 8.0
 	throwforce = 10.0
