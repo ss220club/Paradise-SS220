@@ -371,7 +371,7 @@ GLOBAL_LIST_EMPTY(allRequestConsoles)
 		reminder_timer_id = TIMER_ID_NULL
 		return
 
-	atom_say("Есть непрочитанное(-ые) сообщение(-я).")
+	atom_say("Есть непрочитанные сообщения.")
 
 /obj/machinery/requests_console/proc/print_label(tag_name, tag_index)
 	var/obj/item/shippingPackage/sp = new /obj/item/shippingPackage(get_turf(src))
