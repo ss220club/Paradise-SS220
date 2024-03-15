@@ -12,7 +12,6 @@
 	icon = 'modular_ss220/objects/icons/beakers.dmi'
 	icon_state = "beakergold"
 	volume = 180
-	amount_per_transfer_from_this = 10
 
 /obj/item/reagent_containers/glass/beaker/variety/white/Initialize(mapload)
 	. = ..()
