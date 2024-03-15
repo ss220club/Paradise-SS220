@@ -9,7 +9,7 @@
 
 /obj/item/reagent_containers/glass/beaker/variety/gold
 	name = "metamaterial beaker"
-	desc = "Мензурка, созданная с применением золота"
+	desc = "Мензурка, созданная с применением золота."
 	icon = 'modular_ss220/objects/icons/beakers.dmi'
 	icon_state = "beakergold"
 	volume = 180
