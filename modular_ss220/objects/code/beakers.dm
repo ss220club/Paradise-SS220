@@ -70,7 +70,7 @@
 	category = list("Medical")
 
 /datum/design/beaker_gold
-	name = "Metamaterial beaker"
+	name = "Metamaterial Beaker"
 	id = "metamaterial_beaker"
 	build_type = PROTOLATHE
 	materials = list(MAT_METAL = 1500, MAT_GOLD = 1500, MAT_GLASS = 2500)
