@@ -4,7 +4,6 @@
 	icon = 'modular_ss220/objects/icons/beakers.dmi'
 	icon_state = "beakerwhite"
 	volume = 150
-	amount_per_transfer_from_this = 10
 
 /obj/item/reagent_containers/glass/beaker/variety/gold
 	name = "metamaterial beaker"
