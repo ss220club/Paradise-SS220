@@ -13,7 +13,6 @@
 	icon_state = "beakergold"
 	volume = 180
 	amount_per_transfer_from_this = 10
-	container_type = OPENCONTAINER
 
 /obj/item/reagent_containers/glass/beaker/variety/white/Initialize(mapload)
 	. = ..()
