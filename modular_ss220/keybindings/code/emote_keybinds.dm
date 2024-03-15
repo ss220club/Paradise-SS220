@@ -125,7 +125,7 @@
 	name = "Своя эмоция 4"
 
 /datum/keybinding/custom/five
-	name = "Своя эмоцияe 5"
+	name = "Своя эмоция 5"
 
 /datum/keybinding/custom/six
 	name = "Своя эмоция 6"
