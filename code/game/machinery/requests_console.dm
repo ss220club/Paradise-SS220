@@ -35,7 +35,7 @@ GLOBAL_LIST_EMPTY(req_console_information)
 GLOBAL_LIST_EMPTY(allRequestConsoles)
 
 /obj/machinery/requests_console
-	name = "Консоль запросов"
+	name = "Request Console"
 	desc = "Консоль, предназначанная для отправки запросов в другие отделы станции."
 	anchored = TRUE
 	icon = 'icons/obj/terminals.dmi'
@@ -96,7 +96,7 @@ GLOBAL_LIST_EMPTY(allRequestConsoles)
 
 	announcer.config.default_title = "Оповещение от [department]"
 
-	name = "Консоль запросов [department]"
+	name = "Request console [department]"
 	GLOB.allRequestConsoles += src
 	if(departmentType & RC_ASSIST)
 		GLOB.req_console_assistance |= department
