@@ -197,7 +197,7 @@
 						/obj/item/clothing/under/darkred_skirt = 50,
 						/obj/item/clothing/under/green_skirt = 50,
 						/obj/item/clothing/under/grey_skirt = 30,
-						/obj/item/clothing/under/lightblue_skirt = 50,
+						/obj/item/clothing/under/lightblue_skirt = 30,
 						/obj/item/clothing/under/lightbrown_skirt = 30,
 						/obj/item/clothing/under/lightgreen_skirt = 50,
 						/obj/item/clothing/under/lightpurple_skirt = 50,
