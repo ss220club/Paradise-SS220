@@ -22,24 +22,40 @@
 	max_ambience_cooldown = 220 SECONDS
 
 /area/lazarus/outdoors/rod
-	icon_state = "away1"
+	icon_state = "awaycontent1"
 	name = "Окрестности аванпост ''Род''"
 
 /area/lazarus/outdoors/yarilo
-	icon_state = "away2"
+	icon_state = "awaycontent2"
 	name = "Окрестности аванпост ''Ярило''"
 
 /area/lazarus/outdoors/stribog
-	icon_state = "away3"
+	icon_state = "awaycontent3"
 	name = "Окрестности аванпост ''Стрибог''"
 
 /area/lazarus/outdoors/svarog
-	icon_state = "away4"
+	icon_state = "awaycontent4"
 	name = "Окрестности аванпост ''Сварог''"
 
+/area/lazarus/outdoors/veles
+	icon_state = "awaycontent5"
+	name = "Окрестности аванпост ''Велес''"
+
 /area/lazarus/outdoors/ice_lake
-	icon_state = "awaycontent1"
+	icon_state = "away1"
 	name = "Замёрзшее озеро"
+
+//-----MISC LOCATIONS-----//
+/obj/structure
+//---Cabins---//
+
+/area/lazarus/cabin
+	icon_state = "oldbar"
+	name = "Хижина в лесу"
+	sound_environment = SOUND_AREA_WOODFLOOR
+
+/area/lazarus/cabin/crusader
+	name = "Хижина крестоносца"
 
 //-----OUTPOST-----//
 
