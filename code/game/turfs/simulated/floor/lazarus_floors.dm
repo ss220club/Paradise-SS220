@@ -24,6 +24,7 @@
 	name = "земля"
 	desc = "Почва, почти полностью состоящая из песка. Используйте лопату для добычи песка."
 	baseturf = /turf/simulated/floor/plating/asteroid/lazarus/dirt
+	icon_state = "dirt_0"
 
 // SNOW
 
@@ -36,7 +37,7 @@
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = list(SMOOTH_GROUP_TURF, SMOOTH_GROUP_LAZARUS_SNOW)
 	canSmoothWith = list(SMOOTH_GROUP_LAZARUS_SNOW)
-	layer = ABOVE_OPEN_TURF_LAYER
+	layer = SNOW_LAYER
 	broken_states = list("damaged")
 	footstep = FOOTSTEP_SAND
 	barefootstep = FOOTSTEP_SAND

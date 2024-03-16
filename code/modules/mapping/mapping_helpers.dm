@@ -59,7 +59,7 @@
 	name = "lavaland baseturf editor"
 	baseturf = /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface
 
-/obj/effect/baseturf_helper/lazarun
+/obj/effect/baseturf_helper/lazarus
 	name = "lazarus baseturf editor"
 	baseturf = /turf/simulated/floor/plating/asteroid/lazarus/dirt
 
