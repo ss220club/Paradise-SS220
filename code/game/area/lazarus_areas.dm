@@ -61,6 +61,7 @@
 
 /area/lazarus/outpost/rod/living/cryo
 	name = "Жилой отсек низкого класса (Род)"
+	icon_state = "cryo"
 
 /area/lazarus/outpost/rod/living/a
 	name = "Жилой отсек среднего класса 'A' (Род)"
@@ -134,3 +135,89 @@
 	name = "Подстанция (Род)"
 	icon_state = "engi"
 
+//---YARILO---//
+
+/area/lazarus/outpost/yarilo
+	name = "Аванпост ''Ярило''"
+
+// Living
+
+/area/lazarus/outpost/yarilo/living
+	name = "Жилой отсек (Ярило)"
+	icon_state = "dorms"
+
+/area/lazarus/outpost/yarilo/living/cryo
+	name = "Жилой отсек низкого класса (Ярило)"
+	icon_state = "cryo"
+
+/area/lazarus/outpost/yarilo/living/locker
+	name = "Комната отдыха (Ярило)"
+
+/area/lazarus/outpost/yarilo/living/dinner
+	name = "Столовая (Ярило)"
+	icon_state = "kitchen"
+
+// Med
+
+/area/lazarus/outpost/yarilo/med
+	name = "Медбей (Ярило)"
+	icon_state = "medbay"
+
+/area/lazarus/outpost/yarilo/med/exam
+	name = "Медбей (Ярило)"
+	icon_state = "exam_room"
+
+/area/lazarus/outpost/yarilo/med/chem
+	name = "Химия (Ярило)"
+	icon_state = "chem"
+
+/area/lazarus/outpost/yarilo/med/surgery
+	name = "Хирургия (Ярило)"
+	icon_state = "surgery"
+
+/area/lazarus/outpost/yarilo/med/cmo
+	name = "Офис главного врача (Ярило)"
+	icon_state = "CMO"
+
+/area/lazarus/outpost/yarilo/med/cryo
+	name = "Отсек криогеники (Ярило)"
+	icon_state = "cryo"
+
+/area/lazarus/outpost/yarilo/med/virology
+	name = "Вирусология (Ярило)"
+	icon_state = "virology"
+
+/area/lazarus/outpost/yarilo/med/morgue
+	name = "Морг (Ярило)"
+	icon_state = "morgue"
+
+// Engi
+
+/area/lazarus/outpost/yarilo/engi
+	name = "Инженерия (Ярило)"
+	icon_state = "engi"
+
+/area/lazarus/outpost/yarilo/engi/storage
+	name = "Малый склад (Ярило)"
+	icon_state = "engine_storage"
+
+/area/lazarus/outpost/yarilo/engi/storage/secured
+	name = "Главный склад (Ярило)"
+
+/area/lazarus/outpost/yarilo/engi/power
+	name = "Главный склад (Ярило)"
+	icon_state = "engine"
+
+/area/lazarus/outpost/yarilo/engi/ce
+	name = "Главный склад (Ярило)"
+	icon_state = "ce"
+
+//Other
+
+/area/lazarus/outpost/yarilo/exit
+	name = "Шлюз (Ярило)"
+	icon_state = "entry"
+
+/area/lazarus/outpost/yarilo/toilet
+	name = "Уборная (Ярило)"
+	icon_state = "toilet"
