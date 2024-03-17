@@ -172,45 +172,45 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 /datum/uplink_item/dangerous/pistol
 	name = "FK-69 Stechkin Pistol"
 	reference = "SPI"
-	desc = "A small, easily concealable handgun that uses 10mm auto rounds in 8-round magazines and is compatible with suppressors."
+	desc = "Маленький, легкоскрываемый пистолет, использующий патроны 10мм в магазине ёмкостью 8 пуль. Совместим с глушителями."
 	item = /obj/item/gun/projectile/automatic/pistol
 	cost = 20
 
 /datum/uplink_item/dangerous/revolver
 	name = "Syndicate .357 Revolver"
 	reference = "SR"
-	desc = "A brutally simple syndicate revolver that fires .357 Magnum cartridges and has 7 chambers. Comes with a spare speed loader."
+	desc = "Брутально простой револьвер Синдиката, стреляющий пулятми калибра .357 Magnum, имеющий барабан на 7 пуль. Поставляется со спидлоадером."
 	item = /obj/item/storage/box/syndie_kit/revolver
 	cost = 65
 	surplus = 50
 
 /datum/uplink_item/dangerous/rapid
 	name = "Gloves of the North Star"
-	desc = "These gloves let the user help, shove, grab, and punch people very fast. Does not improve weapon attack speed. Can be combined with martial arts for a deadly weapon."
+	desc = "Эти перчатки позволяют очень быстро помогать, толкать, хватать и бить людей. Может быть совмещено с боевыми искусствами как смертоносное оружие"
 	reference = "RPGD"
 	item = /obj/item/clothing/gloves/fingerless/rapid
 	cost = 40
 
 /datum/uplink_item/dangerous/sword
 	name = "Energy Sword"
-	desc = "The energy sword is an edged weapon with a blade of pure energy. The sword is small enough to be pocketed when inactive. Activating it produces a loud, distinctive noise."
+	desc = "Энергетический меч - это меч с клинком из чистой энергии. В неактивном состоянии меч можно спрятать в кармане. Активация производит характерный громкий звук."
 	reference = "ES"
 	item = /obj/item/melee/energy/sword/saber
 	cost = 40
 
 /datum/uplink_item/dangerous/powerfist
 	name = "Power Fist"
-	desc = "The power-fist is a metal gauntlet with a built-in piston-ram powered by an external gas supply. \
-		Upon hitting a target, the piston-ram will extend forward to make contact for some serious damage. \
-		Using a wrench on the piston valve will allow you to tweak the amount of gas used per punch to \
-		deal extra damage and hit targets further. Use a screwdriver to take out any attached tanks."
+	desc = "Силовая перчатка - металическая перчатся со встроенной системой поршнево-таранной системой, используящая в качестве источника баллоны с газом. \
+		При ударе цели, поршнево-таранная система выдвинется вперед, увеличивая урон от контакта. \
+		Использование ключа на клапане поршня позволяет регулировать использование газа в баллоне для \
+		нанесения увеличенного урона и отталкивания целей на большие расстояния. Использование отвёртки снимает баллон."
 	reference = "PF"
 	item = /obj/item/melee/powerfist
 	cost = 50
 
 /datum/uplink_item/dangerous/chainsaw
 	name = "Chainsaw"
-	desc = "A high powered chainsaw for cutting up ...you know...."
+	desc = "Высокомощая бензопила для разрезания... ну вы понимаете чего..."
 	reference = "CH"
 	item = /obj/item/butcher_chainsaw
 	cost = 65
@@ -218,21 +218,21 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/dangerous/universal_gun_kit
 	name = "Universal Self Assembling Gun Kit"
-	desc = "A universal gun kit, that can be combined with any weapon kit to make a functioning RND gun of your own. Uses built in allen keys to self assemble, just combine the kits by hitting them together."
+	desc = "Универсальный оружейный набор, который можно совместить с любым оружейным набором, получая таким образом функционирующее оружие из РнД. Использует встроенные шестигранники для сборки, просто совместите наборы, ударив один об другой."
 	reference = "IKEA"
 	item = /obj/item/weaponcrafting/gunkit/universal_gun_kit
 	cost = 25
 
 /datum/uplink_item/dangerous/batterer
 	name = "Mind Batterer"
-	desc = "A dangerous syndicate device focused on crowd control and escapes. Causes brain damage, confusion, and other nasty effects to those surrounding the user. Has 5 charges."
+	desc = "Опасное оружие синдиката, фокусирущееся на контроле толпы и побеге. Наносит урон мозгу, головокружение, а также другие неприятные эффекты на всех, кто находится рядом. Имеет пять зарядов."
 	reference = "BTR"
 	item = /obj/item/batterer
 	cost = 25
 
 /datum/uplink_item/dangerous/porta_turret
 	name = "Portable Turret"
-	desc = "A pop-up syndicate turret, shoots anyone who didn't prime the grenade. The turret cannot be moved after it's deployed."
+	desc = "Турель Синдиката, которая атакует любого, кто не взвёл гранату. Турель нельзя передвинуть после установки."
 	reference = "MIS"
 	item = /obj/item/grenade/turret
 	cost = 20
@@ -245,7 +245,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/ammo/pistol
 	name = "Stechkin - 10mm Magazine"
-	desc = "An additional 8-round 10mm magazine for use in the syndicate pistol, loaded with rounds that are cheap but around half as effective as .357"
+	desc = "Дополнительный 8-зарядный 10мм магазин для пистолета Синдиката, заряженный дешевыми пулями, в половину уступающими пулям .357 калибра"
 	reference = "10MM"
 	item = /obj/item/ammo_box/magazine/m10mm
 	cost = 3
@@ -253,7 +253,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/ammo/pistolap
 	name = "Stechkin - 10mm Armour Piercing Magazine"
-	desc = "An additional 8-round 10mm magazine for use in the syndicate pistol, loaded with rounds that are less effective at injuring the target but penetrate protective gear."
+	desc = "Дополнительный 8-зарядный 10мм магазин для пистолета Синдиката, заряженный пулями, которые менее эффективны в ранении жертвы, но пробивающие защитное снаряжение."
 	reference = "10MMAP"
 	item = /obj/item/ammo_box/magazine/m10mm/ap
 	cost = 6
@@ -261,7 +261,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/ammo/pistolfire
 	name = "Stechkin - 10mm Incendiary Magazine"
-	desc = "An additional 8-round 10mm magazine for use in the syndicate pistol, loaded with incendiary rounds which ignite the target."
+	desc = "Дополнительный 8-зарядный 10мм магазин для пистолета Синдиката, заряженный зажигательными пулями, поджигающие цель."
 	reference = "10MMFIRE"
 	item = /obj/item/ammo_box/magazine/m10mm/fire
 	cost = 9
@@ -269,7 +269,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/ammo/pistolhp
 	name = "Stechkin - 10mm Hollow Point Magazine"
-	desc = "An additional 8-round 10mm magazine for use in the syndicate pistol, loaded with rounds which are more damaging but ineffective against armour."
+	desc = "Дополнительный 8-зарядный 10мм магазин для пистолета Синдиката, заряженный пулями, которые наносят больше урона, но бесполезны против брони."
 	reference = "10MMHP"
 	item = /obj/item/ammo_box/magazine/m10mm/hp
 	cost = 7
@@ -277,7 +277,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/ammo/revolver
 	name = ".357 Revolver - Speedloader"
-	desc = "A speed loader that contains seven additional .357 Magnum rounds for the syndicate revolver. For when you really need a lot of things dead."
+	desc = "Спидлоадер, содержащий 7 пуль для револьвера .357 Синдиката. Когда вам нужно положить очень много вещей."
 	reference = "357"
 	item = /obj/item/ammo_box/a357
 	cost = 15
@@ -290,39 +290,39 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/stealthy_weapons/garrote
 	name = "Fiber Wire Garrote"
-	desc = "A length of fiber wire between two wooden handles, perfect for the discrete assassin. This weapon, when used on a target from behind \
-			will instantly put them in your grasp and silence them, as well as causing rapid suffocation. Does not work on those who do not need to breathe."
+	desc = "Длинное волокно с вдумя деревянными рукоятками, идеальна для тихого убийцы. Это оружие, будучи использовано на жертве со спины \
+			моментально захватит обезмолвит её, вызывая быстрое удушье. Не сработает на тех, кому не требуется дыхание."
 	item = /obj/item/garrote
 	reference = "GAR"
 	cost = 30
 
 /datum/uplink_item/stealthy_weapons/cameraflash
 	name = "Camera Flash"
-	desc = "A flash disguised as a camera with a self-charging safety system preventing the flash from burning out. \
-			Due to its design, this flash cannot be overcharged like regular flashes can. \
-			Useful for stunning borgs and individuals without eye protection or blinding a crowd for a get away."
+	desc = "Флэш, замаскированный под камеру с самозарядной системой защиты от перегара. \
+			Из-за дизайна, данный флэш не может быть перегружен как обычные флэши. \
+			Полезна для оглушения киборгов, а также индивидов без защиты глаз или толпы для побега."
 	reference = "CF"
 	item = /obj/item/flash/cameraflash
 	cost = 5
 
 /datum/uplink_item/stealthy_weapons/throwingweapons
 	name = "Box of Throwing Weapons"
-	desc = "A box of shurikens and reinforced bolas from ancient Earth martial arts. They are highly effective \
-			throwing weapons. The bolas can knock a target down and the shurikens will embed into limbs."
+	desc = "Коробка сюрикенов и усиленных бол из древнего Земного боевого искусства. Это очень эффективное \
+			метательное оружие. Болы могут сбить человека с ног, а сюрикены гарантированно застревают в конечностях."
 	reference = "STK"
 	item = /obj/item/storage/box/syndie_kit/throwing_weapons
 	cost = 15
 
 /datum/uplink_item/stealthy_weapons/edagger
 	name = "Energy Dagger"
-	desc = "A dagger made of energy that looks and functions as a pen when off."
+	desc = "Клинок из энергии, функционирующий и выглядящий как ручка в выключенном состоянии."
 	reference = "EDP"
 	item = /obj/item/pen/edagger
 	cost = 10
 
 /datum/uplink_item/stealthy_weapons/foampistol
 	name = "Toy Gun (with Stun Darts)"
-	desc = "An innocent looking toy pistol designed to fire foam darts. Comes loaded with riot grade darts, to incapacitate a target."
+	desc = "Безобидно выглядящий игрушечный пистолет, предназначенный для стрельбы вспененными зарядами. Поставляется заряженным с высококачественными дротиками для оглушения цели."
 	reference = "FSPI"
 	item = /obj/item/gun/projectile/automatic/toy/pistol/riot
 	cost = 15
@@ -330,14 +330,14 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/stealthy_weapons/false_briefcase
 	name = "False Bottomed Briefcase"
-	desc = "A modified briefcase capable of storing and firing a gun under a false bottom. Use a screwdriver to pry away the false bottom and make modifications. Distinguishable upon close examination due to the added weight."
+	desc = "Модифицированный чемодан, способный хранить и стрелять оружием под ложным дном. Используйте отвёртку для открытия дна и модификации. Отличим при ближайшем рассмотрении из-за дополнительного веса."
 	reference = "FBBC"
 	item = /obj/item/storage/briefcase/false_bottomed
 	cost = 10
 
 /datum/uplink_item/stealthy_weapons/soap
 	name = "Syndicate Soap"
-	desc = "A sinister-looking surfactant used to clean blood stains to hide murders and prevent DNA analysis. You can also drop it underfoot to slip people."
+	desc = "Зловеще выглядящий очиститель, используемый для очистки кровавых следов на месте убийства и предотвращения ДНК-тестов. Вы также можете бросать его под ноги людям."
 	reference = "SOAP"
 	item = /obj/item/soap/syndie
 	cost = 5
@@ -345,7 +345,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/stealthy_weapons/RSG
 	name = "Rapid Syringe Gun"
-	desc = "A syndicate rapid syringe gun able to fill and fire syringes automatically from an internal reagent reservoir. Comes pre-loaded with 7 empty syringes, and has a maximum capacity of 14 syringes and 300u of reagents."
+	desc = "Быстрый шприцемёт Синдиката, способный стрелять шприцами автоматически из внутреннего хранилища реагентов. Поставляется с 7 заряженными пустыми шприцами, максимальная ёмкость в 14 шприцов и 300u реагентов"
 	reference = "RSG"
 	item = /obj/item/gun/syringe/rapidsyringe/preloaded/half
 	cost = 60
