@@ -817,3 +817,17 @@ or shoot a gun to move around via Newton's 3rd Law of Motion."
 	master = null
 	screen_loc = ""
 	return ..()
+
+/// Gives the player the option to succumb while in critical condition
+/atom/movable/screen/alert/succumb
+	name = "Succumb"
+	desc = "Shuffle off this mortal coil."
+	icon_state = "succumb"
+
+/atom/movable/screen/alert/succumb/Click()
+	if(!usr || !usr.client)
+		return
+	var/mob/living/living_owner = usr
+	if(!istype(usr))
+		return
+	living_owner.do_succumb(TRUE)
