@@ -318,7 +318,7 @@
 //skrell
 /datum/uplink_item/species_restricted/lovepen
 	name = "Aggression Suppression Pen"
-	desc = "A syringe disguised as a functional pen which is filled with a potent aggression supressing chemical. The pen holds four doses of the mixture and it cannot be refilled."
+	desc = "Шприц, замаскированный под ручку, которая заполнена мощным подавляющим агрессию химикатом. В ручке содержатся 4 дозы микстуры и они не могут быть восполнены."
 	reference = "LP"
 	item = /obj/item/pen/sleepy/love
 	cost = 20
@@ -327,7 +327,7 @@
 //Vox
 /datum/uplink_item/species_restricted/spikethrower
 	name = "Skipjack Spikethrower"
-	desc = "An energy based weapon that launches high velocity plasma spikes. These spikes hit with enough force to knock the target down and leave a nasty wound."
+	desc = "Энергетическое оружие, что запускает высокоскорстные плазма шипы. Эти шипы попадают с силой достаточной чтобы уронить цель и оставить рану."
 	reference = "STG"
 	item = /obj/item/gun/energy/spikethrower
 	cost = 60
@@ -338,7 +338,7 @@
 //Positonic supercharge implant: stims, 3 uses, IPC adrenals
 /datum/uplink_item/species_restricted/supercharge_implant
 	name = "Synthetic Supercharge Bio-chip"
-	desc = "A bio-chip injected into the body, and later activated manually to inject a chemical cocktail, which has the effect of removing and reducing the time of all stuns and increasing movement speed. Can be activated up to 3 times."
+	desc = "Био-чип, который можно вколоть в тело и позже, активировав, он вколет коктейль из химикатов, который убирает все станы и увеличивает скорость передвижения. Может быть активирован до 3 раз."
 	reference = "SSI"
 	item = /obj/item/bio_chip_implanter/supercharge
 	cost = 40
@@ -349,7 +349,7 @@
 //plasmeme
 /datum/uplink_item/species_restricted/fireproofing_nanites
 	name = "Fireproofing Nanite Injector"
-	desc = "A swarm of nanomachines that absorb excess amounts of heat, allowing the user to become practically fireproof."
+	desc = "Рой наномашин, которые поглощают излишнее тепло, позволяя пользователю становиться  огнеупорным."
 	reference = "FPN"
 	item = /obj/item/fireproofing_injector
 	cost = 25
@@ -359,7 +359,7 @@
 //Human
 /datum/uplink_item/species_restricted/holo_cigar
 	name = "Holo-Cigar"
-	desc = "A holo-cigar imported from the Sol system. The full effects of looking so badass aren't understood yet, but users show an increase in precision while dual-wielding firearms."
+	desc = "Голо-сигара, привезённая из Солнечной системы. Полный список эффектов от её крутого вида пока не обнаружили, но пользователи показывают повышенную точность при стрельбе с двух рук."
 	reference = "SHC"
 	item = /obj/item/clothing/mask/holo_cigar
 	cost = 10
@@ -368,8 +368,8 @@
 //Gr(e)(a)y
 /datum/uplink_item/species_restricted/prescan
 	name = "Technocracy Advanced Cloning System"
-	desc = "This kit will give you the parts to build an advanced automatic cloning system, to clone whoever has the linked implant installed on death. \
-	Power intensive, implant must be recovered for reuse, and implanter must be linked to cloner."
+	desc = "Этот набор даст вам запчасти для строительства продвинутой системы клонирования. Которая клонирует любого у кого есть установленный имплант, привязанный к машине продвинутого клонирования, после смерти. \
+	Но эта процедура энергоёмка. Также после клонирования имплант должен быть возвращён для повторного использования и привязан к продвинутой системе клонирования."
 	reference = "TACS"
 	item = /obj/item/storage/box/syndie_kit/prescan
 	cost = 25 /// A fresh start, but a start with nothing. Hard to use as well
