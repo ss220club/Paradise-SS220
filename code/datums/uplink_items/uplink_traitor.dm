@@ -381,7 +381,7 @@
 
 /datum/uplink_item/dangerous/crossbow
 	name = "Energy Crossbow"
-	desc = "A miniature energy crossbow that is small enough both to fit into a pocket and to slip into a backpack unnoticed by observers. Fires bolts tipped with toxin, a poisonous substance that is the product of a living organism. Knocks enemies down for a short period of time. Recharges automatically."
+	desc = "Миниатюрный энергетический арбалет, он достаточно мал для того чтобы поместиться в карман или незаметно для окружающих проскользнуть в рюкзак. Стреляет болтами, покрытыми токсином. Эта токсичная субстанция является продуктом деятельности живого организма. Опрокидывает врагов на пол на короткий период времени. Перезаряжается автоматически."
 	reference = "EC"
 	item = /obj/item/gun/energy/kinetic_accelerator/crossbow
 	cost = 60
@@ -391,8 +391,8 @@
 /datum/uplink_item/dangerous/guardian
 	name = "Holoparasites"
 	reference = "HPA"
-	desc = "Though capable of near sorcerous feats via use of hardlight holograms and nanomachines, they require an organic host as a home base and source of fuel. \
-			The holoparasites are unable to incoporate themselves to changeling and vampire agents."
+	desc = "Голопаразиты и способны на фантастические подвиги лишь только с помощью голограм и наномашин, они всё также нуждаются в органическом носителе в качестве дома и источника питания. \
+			Голопаразиты не способны включить себя в телах генокрадов и вампиров."
 	item = /obj/item/storage/box/syndie_kit/guardian
 	excludefrom = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 	cost = 60
@@ -403,9 +403,9 @@
 
 /datum/uplink_item/stealthy_weapons/martialarts
 	name = "Martial Arts Scroll"
-	desc = "This scroll contains the secrets of an ancient martial arts technique. You will master unarmed combat, \
-			deflecting ranged weapon fire when you are in a defensive stance (throw mode). Learning this art means you will also refuse to use dishonorable ranged weaponry. \
-			Unable to be understood by vampire and changeling agents."
+	desc = "Этот свиток содержит секреты техники древнего боевого исскуства. Вы сможете стать мастером безоружного боя, \
+			сможете отражать пули из огнестрельного оружия, когда вы в защитной стойке (режиме броска). Также, изучив это исскуство, вы больше не сможете использовать бесчестное оружие дальнего боя. \
+			Не может быть изучено вампирами и генокрадами агентами."
 	reference = "SCS"
 	item = /obj/item/sleeping_carp_scroll
 	cost = 65
@@ -414,9 +414,9 @@
 
 /datum/uplink_item/stealthy_weapons/bearserk
 	name = "Bearserker Pelt"
-	desc = "A bear pelt that infuses the wearer with bear spirits and knowledge on an occultic martial art known as Rage of the Space Bear. \
-			The pelt itself is also armored, providing the wearer great longevity. \
-			Made with love, lots of spirits and lots of the other kind of spirits by the Sydnicate-affiliated cult, Children of Ursa Major."
+	desc = "Шкура медведя вселяет в носителя души медведей и знания окультного боевого исскуства также известного как Ярость космического медведя. \
+			Сама по себе шкура бронирована, давая носителю хорошую живучесть. \
+			Созданная с любовью, множество душ и множество духов другого типа души Кооперированного культа Синдиката, Сыновей Большой Медведицы."
 	reference = "BSP"
 	item = /obj/item/clothing/head/bearpelt/bearserk
 	cost = 60
