@@ -46,7 +46,7 @@
 	name = "Замёрзшее озеро"
 
 //-----MISC LOCATIONS-----//
-/obj/structure
+
 //---Cabins---//
 
 /area/lazarus/cabin
@@ -56,6 +56,13 @@
 
 /area/lazarus/cabin/crusader
 	name = "Хижина крестоносца"
+
+//---Other---//
+
+/area/lazarus/geotherm
+	name = "Геотермальная электростанция ''Ярило''"
+	icon_state = "engine"
+	sound_environment = SOUND_AREA_STANDARD_STATION
 
 //-----OUTPOST-----//
 
