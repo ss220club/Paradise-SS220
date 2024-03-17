@@ -352,7 +352,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/stealthy_weapons/poisonbottle
 	name = "Poison Bottle"
-	desc = "The Syndicate will ship a bottle containing 40 units of a randomly selected poison. The poison can range from highly irritating to incredibly lethal."
+	desc = "Синдикат поставит вам один пузырёк с 40u случайного яда. Яд варьируется от очень раздражающего до невероятно смертельного."
 	reference = "TPB"
 	item = /obj/item/reagent_containers/glass/bottle/traitor
 	cost = 10
@@ -360,7 +360,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/stealthy_weapons/silencer
 	name = "Universal Suppressor"
-	desc = "Fitted for use on any small caliber weapon with a threaded barrel, this suppressor will silence the shots of the weapon for increased stealth and superior ambushing capability."
+	desc = "Подходящий для любого оружия малого калибра с нарезным стволом, этот глушитель способен заглушить выстрелы для улучшенного стелса и преимущества в засадах."
 	reference = "US"
 	item = /obj/item/suppressor
 	cost = 5
@@ -368,14 +368,14 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/stealthy_weapons/dehy_carp
 	name = "Dehydrated Space Carp"
-	desc = "Just add water to make your very own hostile to everything space carp. It looks just like a plushie. The first person to squeeze it will be registered as its owner, who it will not attack. If no owner is registered, it'll just attack everyone."
+	desc = "Просто добавьте воды для создания ручного карпа, враждебного ко всему. Выглядит как плюшевая игрушка. Первый человек, сжавший игрушку, будет считаться владельцем, на которого она не будет нападать. Если владельца нет, Оно будет атаковать вообще всех."
 	reference = "DSC"
 	item = /obj/item/toy/plushie/carpplushie/dehy_carp
 	cost = 4
 
 /datum/uplink_item/stealthy_weapons/knuckleduster
 	name = "Syndicate Knuckleduster"
-	desc = "A straightforward and fairly concealable melee weapon for bludgeoning someone to death in brutal fashion. This one is designed specifically to cause severe organ damage to the victim."
+	desc = "Прямолинейный и достаточно легкоскрываемое оружие ближнего боя для избиения кого-либо в брутальном стиле. Конкретно это оружие по дизайну наносит сильный урон внутренним органам жерты."
 	reference = "SKD"
 	item = /obj/item/melee/knuckleduster/syndie
 	cost = 10
@@ -388,42 +388,42 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/explosives/plastic_explosives
 	name = "Composition C-4"
-	desc = "C-4 is plastic explosive of the common variety Composition C. Reliably destroys the object it's placed on, assuming it isn't bomb resistant. Does not stick to crewmembers. Will only destroy station floors if placed directly on it. It has a modifiable timer with a minimum setting of 10 seconds."
+	desc = "С-4 это пластиковая взрывчатся, распространённая вариация композита С. Надёжно уничтожает объект на который установлен, за исключением взрывоустойчивыйх. Не липнет к членам экипажа. Уничтожит только напольные покрытия в случае установки на них. Есть настраиваемый таймер с минимумом в 10 секунд."
 	reference = "C4"
 	item = /obj/item/grenade/plastic/c4
 	cost = 5
 
 /datum/uplink_item/explosives/plastic_explosives_pack
 	name = "Pack of 5 C-4 Explosives"
-	desc = "A package containing 5 C-4 Explosives at a discounted price. For when you need that little bit extra for your sabotaging needs."
+	desc = "Посылка, содержащая 5 взрывчаток С-4 по скидочной цене. Для тех случаев, когда для ваших саботажей требуется слегка больше."
 	reference = "C4P"
 	item = /obj/item/storage/box/syndie_kit/c4
 	cost = 20
 
 /datum/uplink_item/explosives/syndicate_minibomb
 	name = "Syndicate Minibomb"
-	desc = "The minibomb is a grenade with a five-second fuse."
+	desc = "Минибомба это граната с пятисекундным таймером"
 	reference = "SMB"
 	item = /obj/item/grenade/syndieminibomb
 	cost = 30
 
 /datum/uplink_item/explosives/frag_grenade
 	name = "Fragmentation Grenade"
-	desc = "A frag grenade. Upon detonation, releases shrapnel that can embed in nearby victims."
+	desc = "Осколочная граната. При детонации выпускает шрапнель, втыкающуюся в ближайших жертв."
 	reference = "FG"
 	item = /obj/item/grenade/frag
 	cost = 10
 
 /datum/uplink_item/explosives/frag_grenade_pack
-	name = "Pack of 5 Fragmentation Grenades"
-	desc = "A box of 5 frag grenades. Upon detonation, releases shrapnel that can embed in nearby victims. And it seems you'll have a LOT of victims."
+	name = "Набор из 5 осколочных гранат"
+	desc = "Коробка с пятью осколочными гранатами.  При детонации выпускает шрапнель, втыкающуюся в ближайших жертв. И кажется вам требуется МНОГО жертв."
 	reference = "FGP"
 	item = /obj/item/storage/box/syndie_kit/frag_grenades
 	cost = 40
 
 /datum/uplink_item/explosives/pizza_bomb
 	name = "Pizza Bomb"
-	desc = "A pizza box with a bomb taped inside of it. The timer needs to be set by opening the box; afterwards, opening the box again will trigger the detonation."
+	desc = "Коробка из под пиццы с бомбой, приклееной внутри. Сначала таймер надо настроить, открыв коробку; повторное открытие провоцирует детонацию."
 	reference = "PB"
 	item = /obj/item/pizzabox/pizza_bomb
 	cost = 30
@@ -431,15 +431,15 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/explosives/atmosn2ogrenades
 	name = "Knockout Gas Grenades"
-	desc = "A box of two (2) grenades that spread knockout gas over a large area. Equip internals before using one of these."
+	desc = "Коробка с двумя (2) гранатами, распространяющими усыпляющий газ на большой территории. Включите внутренний баллон с воздухом перед их использованием."
 	reference = "ANG"
 	item = /obj/item/storage/box/syndie_kit/atmosn2ogrenades
 	cost = 40
 
 /datum/uplink_item/explosives/emp
 	name = "EMP Grenades and bio-chip implanter Kit"
-	desc = "A box that contains two EMP grenades and an EMP implant with 2 uses. Useful to disrupt communication, \
-			security's energy weapons, and silicon lifeforms when you're in a tight spot."
+	desc = "Коробка, содержащая две ЭМИ гранаты и ЭМИ имплант на два использования. Полезно для отключения коммуникаций, \
+			энергетического оружия СБ и синтетических форм жизни когда вас прижмут."
 	reference = "EMPK"
 	item = /obj/item/storage/box/syndie_kit/emp
 	cost = 10
@@ -456,8 +456,8 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/stealthy_tools/chameleon_stamp
 	name = "Chameleon Stamp"
-	desc = "A stamp that can be activated to imitate an official Nanotrasen Stamp. The disguised stamp will work exactly like the real stamp and will allow you to forge false documents to gain access or equipment; \
-	it can also be used in a washing machine to forge clothing."
+	desc = "Штамп, который может быть использован для имитации оффициального штампа НаноТрэйзен. Замаскированный штамп будет работать точно также как настоящий, позволяя вам подделывать документы для получения дополнительных доступов и оборудования; \
+	Также может быть использовано в стиральной машине для подделывания одежды."
 	reference = "CHST"
 	item = /obj/item/stamp/chameleon
 	cost = 1
@@ -465,7 +465,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/stealthy_tools/chameleonflag
 	name = "Chameleon Flag"
-	desc = "A flag that can be disguised as any other known flag. There is a hidden spot in the pole to boobytrap the flag with a grenade or minibomb, which will detonate some time after the flag is set on fire."
+	desc = "Флаг, который может быть замаскирован под любой известный флаг. Есть скрытое место в флагштоке для минирования гранатой или минибомбой, которая подорвётся через некоторое время после поджига флага."
 	reference = "CHFLAG"
 	item = /obj/item/flag/chameleon
 	cost = 1
@@ -473,7 +473,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/stealthy_tools/chamsechud
 	name = "Chameleon Security HUD"
-	desc = "A stolen Nanotrasen Security HUD with Syndicate chameleon technology implemented into it. Similarly to a chameleon jumpsuit, the HUD can be morphed into various other eyewear, while retaining the HUD qualities when worn."
+	desc = "Сворованный ХУД Службы Безопасности СБ с имплиментированной хамелеон технологией Синдиката. Сходно комбинезону хамелеон, ХУД может превратиться в любые очки, сохраняя свой функционал когда они надеты."
 	reference = "CHHUD"
 	item = /obj/item/clothing/glasses/hud/security/chameleon
 	cost = 10
