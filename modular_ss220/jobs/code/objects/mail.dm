@@ -1,8 +1,7 @@
 #define BREAD_SERVICE_JOBS_LIST list("Waiter", "Butler", "Maid")
 
 /obj/item/envelope/security/Initialize()
-	job_list |= GLOB.security_positions_ss220
-	job_list |= GLOB.security_donor_jobs
+	job_list |= GLOB.security_positions_ss220 + GLOB.security_donor_jobs
 	return ..()
 
 /obj/item/envelope/science/Initialize()
