@@ -570,51 +570,51 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 // DEVICE AND TOOLS
 
 /datum/uplink_item/device_tools
-	category = "Devices and Tools"
+	category = "Устройства и инструменты"
 	abstract = 1
 
 /datum/uplink_item/device_tools/emag
 	name = "Cryptographic Sequencer"
-	desc = "The cryptographic sequencer, also known as an emag, is a small card that unlocks hidden functions in electronic devices, subverts intended functions and characteristically breaks security mechanisms."
+	desc = "Криптографический секвенсор, также известный как емаг, это маленькая карта, открывающая скрытые возможности элнетронных устройств, искажает изначальные функции и характерно ломает системы безопасности."
 	reference = "EMAG"
 	item = /obj/item/card/emag
 	cost = 30
 
 /datum/uplink_item/device_tools/access_tuner
 	name = "Access Tuner"
-	desc = "The access tuner is a small device that can interface with airlocks from range. It takes a few seconds to connect and can change the bolt state, open the door, or toggle emergency access."
+	desc = "Настройщик доступа - это  маленькое устройство, взаимодействующее со шлюзами на расстоянии. Этот процесс занимает несколько секунд и позволяет болтировать, открывать или переключать экстренный доступ."
 	reference = "HACK"
 	item = /obj/item/door_remote/omni/access_tuner
 	cost = 30
 
 /datum/uplink_item/device_tools/toolbox
 	name = "Fully Loaded Toolbox"
-	desc = "The syndicate toolbox is a suspicious black and red. Aside from tools, it comes with insulated gloves and a multitool."
+	desc = "Подозрительный красно-чёрный ящик с инструментами Синдиката. Помимо инструментов, поставляется с изолированными перчатками и мультитулом."
 	reference = "FLTB"
 	item = /obj/item/storage/toolbox/syndicate
 	cost = 5
 
 /datum/uplink_item/device_tools/surgerybag
 	name = "Syndicate Surgery Duffelbag"
-	desc = "The Syndicate surgery duffelbag comes with a full set of surgery tools, a straightjacket and a muzzle. The bag itself is also made of very light materials and won't slow you down while it is equipped."
+	desc = "Хирургическая сумка Синдиката поставляется с полным набором хирургических инструментов, смирительной рубашкой и намордником. Сама сумка сделана из очень лёгких материалов, поэтому не будет замедлять вас, пока сумка на спине."
 	reference = "SSDB"
 	item = /obj/item/storage/backpack/duffel/syndie/med/surgery
 	cost = 10
 
 /datum/uplink_item/device_tools/bonerepair
 	name = "Prototype Nanite Autoinjector"
-	desc = "Stolen prototype full body repair nanites. On injection it will shut down body systems as it revitilizes limbs and organs."
+	desc = "Украденный прототип с нанитами, лечащими всё тело. При инъекции выключает системы в теле, пока они оживляют органы и конечности."
 	reference = "NCAI"
 	item = /obj/item/reagent_containers/hypospray/autoinjector/nanocalcium
 	cost = 10
 
 /datum/uplink_item/device_tools/syndicate_teleporter
 	name = "Experimental Syndicate Teleporter"
-	desc = "The Syndicate teleporter is a handheld device that teleports the user 4-8 meters forward. \
-			Beware, teleporting into a wall will make the teleporter do a parallel emergency teleport, \
-			but if that emergency teleport fails, it will kill you. \
-			Has 4 charges, recharges, warranty voided if exposed to EMP. \
-			Comes with free chameleon mesons, to help you stay stylish while seeing through walls."
+	desc = "Телепортатор Синдиката это переносное устройство, переносящее пользователя на 4-8 метров вперед. \
+			Осторожно, телепортация в стену заставит телепортатор сделать экстренный параллельный телепорт, \
+			но если экстренны телепорт даст сбой, он вас убьет. \
+			Имеет четыре заряда, перезаряжается, гарантия истекает при воздействии ЭМИ. \
+			Поставляется с хамелеон мезонами, чтобы вы оставались стильным, имея возможность видеть сквозь стены."
 	reference = "TELE"
 	item = /obj/item/storage/box/syndie_kit/teleporter
 	cost = 40
@@ -628,16 +628,16 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/suits/space_suit
 	name = "Syndicate Space Suit"
-	desc = "This red and black syndicate space suit is less encumbering than Nanotrasen variants, \
-			fits inside bags, and has a weapon slot. Comes packaged with internals. Nanotrasen crewmembers are trained to report red space suit \
-			sightings, however. "
+	desc = "Этот красно-черный скафандр Синдиката менее загруженный, чем варианты Нанотрэйзен, \
+	помещается в рюкзак, а также имеет оружейный слот. Поставляется с баллоном воздуха. Но всё же, члены команды Нанотрейзен научены докладывать о \
+	красно-черных скафандрах."
 	reference = "SS"
 	item = /obj/item/storage/box/syndie_kit/space
 	cost = 20
 
 /datum/uplink_item/suits/thermal
 	name = "MODsuit Thermal Visor Module"
-	desc = "A visor for a MODsuit. Lets you see living beings through walls. Also provides night vision."
+	desc = "Визор для МОДСьюта. Позволяет вам видеть живых существ через стены. Также даёт ночное зрение."
 	reference = "MSTV"
 	item = /obj/item/mod/module/visor/thermal
 	cost = 15 // Don't forget, you need to get a modsuit to go with this
@@ -645,7 +645,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/suits/night
 	name = "MODsuit Night Visor Module"
-	desc = "A visor for a MODsuit. Lets you see clearer in the dark."
+	desc = "Визор для МОДСьюта. Позволяет вам лучше видеть в темноте."
 	reference = "MSNV"
 	item = /obj/item/mod/module/visor/night
 	cost = 5 // It's night vision, rnd pumps out those goggles for anyone man.
