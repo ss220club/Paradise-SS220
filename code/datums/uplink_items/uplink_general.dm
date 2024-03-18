@@ -487,14 +487,14 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/stealthy_tools/agent_card
 	name = "Agent ID Card"
-	desc = "Agent cards prevent artificial intelligences from tracking the wearer, and can copy access from other identification cards. The access is cumulative, so scanning one card does not erase the access gained from another."
+	desc = "Карта агента предотвращает отслеживание носителя искусственным интеллектом, а также копировать доступы с других карт. Эффект суммируется, поэтому сканирование следующих карт не сбрасывает доступы с предыдущих."
 	reference = "AIDC"
 	item = /obj/item/card/id/syndicate
 	cost = 10
 
 /datum/uplink_item/stealthy_tools/chameleon_proj
 	name = "Chameleon-Projector"
-	desc = "Projects an image across a user, disguising them as an object scanned with it, as long as they don't move the projector from their hand. The disguised user cannot run and projectiles pass over them."
+	desc = "Проецирует картинку на пользователя, маскируя их как просканированный объект пока проектор находится в руке. Замаскированный пользователь не может бегать и снаряды пролетают над ним."
 	reference = "CP"
 	item = /obj/item/chameleon
 	cost = 25
@@ -508,7 +508,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/stealthy_tools/camera_bug
 	name = "Camera Bug"
-	desc = "Enables you to view all cameras on the network to track a target. Also has 5 sticky hidden cameras, allowing you remote view of any object you can stick a camera on."
+	desc = "Позволяет вам просматривать все камеры в сети для отслеживания цели. Также даёт 5 скрытых камер, позволяя вам удалённо смотреть за объектом, на который вы прицепили камеру."
 	reference = "CB"
 	item = /obj/item/storage/box/syndie_kit/camera_bug
 	cost = 5
@@ -516,14 +516,14 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/stealthy_tools/dnascrambler
 	name = "DNA Scrambler"
-	desc = "A syringe with one injection that randomizes appearance and name upon use. A cheaper but less versatile alternative to an agent card and voice changer."
+	desc = "Сприц с одной инъекцией, меняющая имя и внешность на случайные. Более дешевая, но менее универсальная альтернатива карте агента и изменителю воздуха."
 	reference = "DNAS"
 	item = /obj/item/dnascrambler
 	cost = 7
 
 /datum/uplink_item/stealthy_tools/smugglersatchel
 	name = "Smuggler's Satchel"
-	desc = "This satchel is thin enough to be hidden in the gap between plating and tiling, great for stashing your stolen goods. Comes with a crowbar and a floor tile inside."
+	desc = "Эта сумка достаточно тонкая для укладки между обшивкой и полом, отличная вещь для сокрытия ваших вещей. Поставляется с ломом и тайлом пола внутри."
 	reference = "SMSA"
 	item = /obj/item/storage/backpack/satchel_flat
 	cost = 10
@@ -531,8 +531,8 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/stealthy_tools/emplight
 	name = "EMP Flashlight"
-	desc = "A small, self-charging, short-ranged EMP device disguised as a flashlight. \
-		Useful for disrupting headsets, cameras, and borgs during stealth operations."
+	desc = "Маленькое, самозарядное устройство ЭМИ, замаскированное под фонарик. Работает на короткой дистанции. \
+		Полезно за счёт отключения наушников, камер,."
 	reference = "EMPL"
 	item = /obj/item/flashlight/emp
 	cost = 20
@@ -545,8 +545,8 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/stealthy_tools/cutouts
 	name = "Adaptive Cardboard Cutouts"
-	desc = "These cardboard cutouts are coated with a thin material that prevents discoloration and makes the images on them appear more lifelike. This pack contains three as well as a \
-	spraycan for changing their appearances."
+	desc = "Эти картонные аппликации покрыты тонким материалом, предотвращающее выветание и делает изображения более похожими на реальными. В наборе их 3, а также \
+	баллончик с краской для смены облика."
 	reference = "ADCC"
 	item = /obj/item/storage/box/syndie_kit/cutouts
 	cost = 1
@@ -554,7 +554,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/stealthy_tools/safecracking
 	name = "Safe-cracking Kit"
-	desc = "Everything you need to quietly open a mechanical combination safe."
+	desc = "Всё что вам требуется для открытия механического сейфа."
 	reference = "SCK"
 	item = /obj/item/storage/box/syndie_kit/safecracking
 	cost = 5
@@ -562,7 +562,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/stealthy_tools/handheld_mirror
 	name = "Hand Held Mirror"
-	desc = "A pocket sized mirror. Allows you to change all your hair and facial features, from color to style, instantly while in your hand."
+	desc = "Карманное зеркало. Позволяет вам меня причёску и особенности лица, от цвета до стиля, моментально, пока зеркало находится в руках."
 	reference = "HM"
 	item = /obj/item/handheld_mirror
 	cost = 5
