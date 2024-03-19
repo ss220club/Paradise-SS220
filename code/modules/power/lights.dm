@@ -184,7 +184,7 @@
 	/// How much power does it use?
 	var/static_power_used = 0
 	/// Light range (Also used in power calculation)
-	var/brightness_range = 8
+	var/brightness_range = 5
 	/// Light intensity
 	var/brightness_power = 0.55
 	/// Light colour when on
