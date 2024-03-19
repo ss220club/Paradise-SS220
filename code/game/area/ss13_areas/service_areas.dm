@@ -41,7 +41,6 @@
 
 /area/station/service/clown/secret
 	name = "Сверхсекретная Штаб-Квартира Клоуна"
-	requires_power = FALSE
 
 /area/station/service/mime
 	name = "Офис Мима"
