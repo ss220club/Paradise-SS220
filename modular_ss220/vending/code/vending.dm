@@ -186,9 +186,9 @@
 						/obj/item/clothing/under/yellow_skirt = 10,
 						/obj/item/clothing/under/rainbow_skirt = 1)
 
-	src.contraband += list(/obj/item/clothing/under/prisoner_skirt = 1)
+	contraband += list(/obj/item/clothing/under/prisoner_skirt = 1)
 
-	src.prices += list(/obj/item/clothing/under/yellowgreen_skirt = 30,
+	prices += list(/obj/item/clothing/under/yellowgreen_skirt = 30,
 						/obj/item/clothing/under/aqua_skirt = 50,
 						/obj/item/clothing/under/black_skirt = 30,
 						/obj/item/clothing/under/blue_skirt = 50,
