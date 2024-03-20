@@ -164,7 +164,7 @@
 	slogan_list = list("Кола в космосе!")
 
 /obj/machinery/economy/vending/suitdispenser/Initialize(mapload)
-	src.products += list(/obj/item/clothing/under/yellowgreen_skirt = 10,
+	products += list(/obj/item/clothing/under/yellowgreen_skirt = 10,
 						/obj/item/clothing/under/black_skirt = 10,
 						/obj/item/clothing/under/aqua_skirt = 10,
 						/obj/item/clothing/under/blue_skirt = 10,
