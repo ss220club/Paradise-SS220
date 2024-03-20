@@ -1,4 +1,7 @@
 /* Beach */
+/turf/simulated/floor/beach/away
+	planetary_atmos = FALSE
+
 /turf/simulated/floor/beach/away/coastline/beachcorner
 	name = "beachcorner"
 	icon = 'modular_ss220/maps220/icons/floors.dmi'
@@ -75,9 +78,9 @@
 /* Lavaland */
 /turf/simulated/floor/plasteel/lavaland_air
 	name = "floor"
-	temperature = 300
-	oxygen = 14
-	nitrogen = 23
+	temperature = 500
+	oxygen = 8
+	nitrogen = 14
 
 /* Indestructible */
 /turf/simulated/floor/indestructible/grass
@@ -237,3 +240,10 @@
 /turf/simulated/floor/plating/dirt/xen_dirt
 	name = "strange path"
 	color = "#ee5f1c"
+
+/* Away Chasm */
+/turf/simulated/floor/chasm/straight_down/lava_land_surface/normal_air/normal_temp
+	planetary_atmos = FALSE
+	light_color = null
+	light_power = 0
+	light_range = 0 // removing faint glow
