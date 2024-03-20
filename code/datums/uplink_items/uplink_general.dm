@@ -45,7 +45,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 		if(A.cost >= 100)
 			discount *= 0.5 // If the item costs 100TC or more, it's only 25% off.
 		A.cost = max(round(A.cost * (1-discount)),1)
-		A.category = "Discounted Gear"
+		A.category = "Снаряжение со скидкой"
 		A.name += " ([round(((initial(A.cost)-A.cost)/initial(A.cost))*100)]% off!)"
 		A.job = null // If you get a job specific item selected, actually lets you buy it in the discount section
 		A.species = null //same as above for species speific items
@@ -289,9 +289,9 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	category = "Stealthy and Inconspicuous Weapons"
 
 /datum/uplink_item/stealthy_weapons/garrote
-	name = "Fiber Wire Garrote"
-	desc = "Длинное волокно с двумя деревянными рукоятками, идеальна для тихого убийцы. Это оружие, будучи использовано на жертве со спины \
-			моментально захватит обезмолвит её, вызывая быстрое удушье. Не сработает на тех, кому не требуется дыхание."
+	name = "Удавка из волоконной проволоки"
+	desc = "A length of fiber wire between two wooden handles, perfect for the discrete assassin. This weapon, when used on a target from behind \
+			will instantly put them in your grasp and silence them, as well as causing rapid suffocation. Does not work on those who do not need to breathe."
 	item = /obj/item/garrote
 	reference = "GAR"
 	cost = 30
@@ -472,15 +472,15 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	surplus = 35
 
 /datum/uplink_item/stealthy_tools/chamsechud
-	name = "Chameleon Security HUD"
-	desc = "Сворованный ХУД Службы Безопасности с имплиментированной хамелеон технологией Синдиката. Сходно комбинезону хамелеон, ХУД может превратиться в любые очки, сохраняя свой функционал когда они надеты."
+	name = "Хамелеон ХУД Службы Безопасности"
+	desc = "A stolen Nanotrasen Security HUD with Syndicate chameleon technology implemented into it. Similarly to a chameleon jumpsuit, the HUD can be morphed into various other eyewear, while retaining the HUD qualities when worn."
 	reference = "CHHUD"
 	item = /obj/item/clothing/glasses/hud/security/chameleon
 	cost = 10
 
 /datum/uplink_item/stealthy_tools/thermal
-	name = "Thermal Chameleon Glasses"
-	desc = "Это термальные очки с имплиментированной хамелеон технологией Синдиката. Они позволят вам видеть организмы They allow you to see organisms through walls by capturing the upper portion of the infra-red light spectrum, emitted as heat and light by objects. Hotter objects, such as warm bodies, cybernetic organisms and artificial intelligence cores emit more of this light than cooler objects like walls and airlocks."
+	name = "Термальные очки Хамелеон"
+	desc = "These glasses are thermals with Syndicate chameleon technology built into them. They allow you to see organisms through walls by capturing the upper portion of the infra-red light spectrum, emitted as heat and light by objects. Hotter objects, such as warm bodies, cybernetic organisms and artificial intelligence cores emit more of this light than cooler objects like walls and airlocks."
 	reference = "THIG"
 	item = /obj/item/clothing/glasses/chameleon/thermal
 	cost = 15
@@ -515,8 +515,8 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	surplus = 90
 
 /datum/uplink_item/stealthy_tools/dnascrambler
-	name = "DNA Scrambler"
-	desc = "Шприц с одной инъекцией, меняющая имя и внешность на случайные. Более дешевая, но менее универсальная альтернатива карте агента и изменителю воздуха."
+	name = "Шифратор ДНК"
+	desc = "A syringe with one injection that randomizes appearance and name upon use. A cheaper but less versatile alternative to an agent card and voice changer."
 	reference = "DNAS"
 	item = /obj/item/dnascrambler
 	cost = 7
@@ -623,7 +623,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 //Space Suits and Hardsuits
 /datum/uplink_item/suits
-	category = "Скафандры и МОДСьюты"
+	category = "Space Suits and MODsuits"
 	surplus = 10 //I am setting this to 10 as there are a bunch of modsuit parts in here that should be weighted to 10. Suits and modsuits adjusted below.
 
 /datum/uplink_item/suits/space_suit
@@ -652,23 +652,23 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	surplus = 10 //You don't need more than one
 
 /datum/uplink_item/suits/plate_compression
-	name = "MODsuit Plate Compression Module"
-	desc = "Модуль на МОДСьют, позволяющий ему сжаться в более маленький размер. Не совместим с модулями хранилища, \
-	сначала вам придётся извлечь данные модули."
+	name = "Модуль на сжатие для МОДСьюта"
+	desc = "A MODsuit module that lets the suit compress into a smaller size. Not compatible with storage modules, \
+	you will have to take that module out first."
 	reference = "MSPC"
 	item = /obj/item/mod/module/plate_compression
 	cost = 10
 
 /datum/uplink_item/suits/chameleon_module
-	name = "MODsuit Chameleon Module"
-	desc = "Модуль на МОДСьют, позволяющий использовать технологию хамелеон для маскировки сложенного модсьюта под любой предмет. Примечание: маскировка выключится при разложении МОДСьюта, но может быть активирована повторно после складывания."
+	name = "Модуль Хамелеон для МОДСьюта"
+	desc = "A module using chameleon technology to disguise an undeployed modsuit as another object. Note: the disguise will not work once the modsuit is deployed, but can be toggled again when retracted."
 	reference = "MSCM"
 	item = /obj/item/mod/module/chameleon
 	cost = 10
 
 /datum/uplink_item/suits/noslip
-	name = "MODsuit Anti-Slip Module"
-	desc = "Модуль на МОДСьют, предотвращающий подскальзывание на воде. Предустановлен в МОДСьюты из аплинка."
+	name = "Mодуль Анти-подскальзывание для МОДСьюта"
+	desc = "A MODsuit module preventing the user from slipping on water. Already installed in the uplink modsuits."
 	reference = "MSNS"
 	item = /obj/item/mod/module/noslip
 	cost = 5
@@ -689,40 +689,40 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	surplus = 10
 
 /datum/uplink_item/suits/hidden_holster
-	name = "Hidden Holster Module"
-	desc = "Модуль кобуры, замаскированный под крюк-кошку. Естественно, требуется МОДСьют для установки. Ствол приобретается отдельно."
+	name = "Модуль на скрытую кобуру"
+	desc = "A holster module disguised to look like a tether module. Requires a modsuit to put it in of course. Gun not included."
 	reference = "HHM"
 	item = /obj/item/mod/module/holster/hidden
 	cost = 5
 	surplus = 10
 
 /datum/uplink_item/suits/smoke_grenade
-	name = "Smoke Grenade Module"
-	desc = "Модуль, который выпускает взведенные дымовые гранаты для разгона толпы."
+	name = "Модуль с дымовой шашкой"
+	desc = "A module that dispenses primed smoke grenades to disperse crowds."
 	reference = "SGM"
 	item = /obj/item/mod/module/dispenser/smoke
 	cost = 10
 	surplus = 10
 
 /datum/uplink_item/device_tools/binary
-	name = "Binary Translator Key"
-	desc = "Ключ, который при установке в наушник, позволяет вам слышать и общаться с ИИ и киборгами в бинарном канале. Для разговора по бинарному каналу, используйте префикс :+ ."
+	name = "Бинарный ключ шифрования"
+	desc = "A key, that when inserted into a radio headset, allows you to listen to and talk with artificial intelligences and cybernetic organisms in binary. To talk on the binary channel, type :+ before your radio message."
 	reference = "BITK"
 	item = /obj/item/encryptionkey/binary
 	cost = 25
 	surplus = 75
 
 /datum/uplink_item/device_tools/cipherkey
-	name = "Syndicate Encryption Key"
-	desc = "Ключ, который при установке в наушник, позволяет вам слышать каналы всех отделов станции, а также общаться в зашифрованном канале Синдиката."
+	name = "Ключ шифрования Синдиката"
+	desc = "A key, that when inserted into a radio headset, allows you to listen to all station department channels as well as talk on an encrypted Syndicate channel."
 	reference = "SEK"
 	item = /obj/item/encryptionkey/syndicate
 	cost = 10 //Nowhere near as useful as the Binary Key!
 	surplus = 75
 
 /datum/uplink_item/device_tools/hacked_module
-	name = "Hacked AI Upload Module"
-	desc = "Будучи использованным на консоли загрузки законов, этот модуль позволяет вам загрузить приоритетные законы в ИИ. Данный закон будет выше всех остальных в списке. Подбирайте выражения аккуратно, ведь ИИ может попытаться использовать Ваши законы против Вас."
+	name = "Взломанный модуль для Аплоуда ИИ"
+	desc = "When used with an upload console, this module allows you to upload priority laws to an artificial intelligence. Be careful with their wording, as artificial intelligences may look for loopholes to exploit."
 	reference = "HAI"
 	item = /obj/item/aiModule/syndicate
 	cost = 15
@@ -748,22 +748,22 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	cant_discount = TRUE
 
 /datum/uplink_item/device_tools/advpinpointer
-	name = "Advanced Pinpointer"
-	desc = "Пинпоинтер, который может отслеживать определённое место, ДНК код, ценный предмет или диск ядерной аутентификации."
+	name = "Улучшенный пинпоинтер"
+	desc = "A pinpointer that tracks any specified coordinates, DNA string, high value item or the nuclear authentication disk."
 	reference = "ADVP"
 	item = /obj/item/pinpointer/advpinpointer
 	cost = 20
 
 /datum/uplink_item/device_tools/ai_detector
-	name = "Artificial Intelligence Detector" // changed name in case newfriends thought it detected disguised ai's
-	desc = "Функционирующий мультитул, который горит красным, когда оно замечает, что за ним или носителем смотрит ИИ. Знание, когда за вами смотрит ИИ полезно для сохранения маскировки."
+	name = "Детектор Искуственного Интеллекта" // changed name in case newfriends thought it detected disguised ai's
+	desc = "A functional multitool that turns red when it detects an artificial intelligence watching it or its holder. Knowing when an artificial intelligence is watching you is useful for knowing when to maintain cover."
 	reference = "AID"
 	item = /obj/item/multitool/ai_detect
 	cost = 5
 
 /datum/uplink_item/device_tools/jammer
-	name = "Radio Jammer"
-	desc = "Будучи включённым, данное устройство весь исходящий радиотрафик вокруг вас, усложняя взаимопонимание."
+	name = "Глушитель радио"
+	desc = "When turned on this device will scramble any outgoing radio communications near you, making them hard to understand."
 	reference = "RJ"
 	item = /obj/item/jammer
 	cost = 20
@@ -772,32 +772,32 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 // IMPLANTS
 
 /datum/uplink_item/bio_chips
-	category = "Био-чипы"
+	category = "Bio-chips"
 
 /datum/uplink_item/bio_chips/freedom
-	name = "Freedom Bio-chip"
-	desc = "Био-чип, вживляемый в тело и позже активируемый для того, чтобы вырваться из любых оков. Может быть активирован до 4 раз."
+	name = "Био-чип 'Freedom'"
+	desc = "A bio-chip injected into the body and later activated manually to break out of any restraints or grabs. Can be activated up to 4 times."
 	reference = "FI"
 	item = /obj/item/bio_chip_implanter/freedom
 	cost = 25
 
 /datum/uplink_item/bio_chips/protofreedom
-	name = "Prototype Freedom Bio-chip"
-	desc = "A prototype Био-чип, вживляемый в тело и позже активируемый для того, чтобы вырваться из любых оков. Может быть активирован лишь единожды."
+	name = "Прототип био-чипа 'Свобода'"
+	desc = "A prototype bio-chip injected into the body and later activated manually to break out of any restraints or grabs. Can only be activated a singular time."
 	reference = "PFI"
 	item = /obj/item/bio_chip_implanter/freedom/prototype
 	cost = 10
 
 /datum/uplink_item/bio_chips/storage
-	name = "Storage Bio-chip"
-	desc = "Био-чип, вживляемый в тело и активируемый по воле владельца. Открывает маленький субпространственный карман, способный вместить 2 предмета."
+	name = "Био-чип Хранилища"
+	desc = "A bio-chip injected into the body, and later activated at the user's will. It will open a small subspace pocket capable of storing two items."
 	reference = "ESI"
 	item = /obj/item/bio_chip_implanter/storage
 	cost = 40
 
 /datum/uplink_item/bio_chips/mindslave
-	name = "Mindslave Bio-chip"
-	desc = "Коробка с имлантером с имплантом Майндслэйв, который при вживлении в другого человека делает их лояльным вам и вашему делу кроме случаев, если они уже проимплантированы кем-то другим. Лояльность кончается при извлечении импланта из тела."
+	name = "Био-чип Майндслейва"
+	desc = "A box containing a bio-chip implanter filled with a mindslave bio-chip that when injected into another person makes them loyal to you and your cause, unless of course they're already implanted by someone else. Loyalty ends if the implant is no longer in their system."
 	reference = "MI"
 	item = /obj/item/bio_chip_implanter/traitor
 	cost = 50
