@@ -1,9 +1,8 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "ab" = (
-/obj/structure/chair/stool/bar/dark{
-	dir = 1
-	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/random_spawners/blood_maybe,
+/obj/item/chair/stool/bar/dark,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "green"
@@ -49,8 +48,16 @@
 "al" = (
 /obj/structure/table,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
 /turf/simulated/floor/plasteel,
 /area/lazarus/outpost/rod/sec/interrogation)
+"an" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
+/turf/simulated/floor/plasteel{
+	icon_state = "whitegreenfull"
+	},
+/area/lazarus/outpost/rod/living/cryo)
 "ap" = (
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -99,6 +106,17 @@
 	icon_state = "greencorner"
 	},
 /area/lazarus/outpost/rod)
+"av" = (
+/obj/structure/closet,
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/random_spawners/blood_maybe,
+/obj/item/clothing/under/color/random,
+/obj/item/clothing/under/color/random,
+/turf/simulated/floor/plasteel{
+	dir = 6;
+	icon_state = "green"
+	},
+/area/lazarus/outpost/rod/living/a)
 "aw" = (
 /obj/machinery/light/directional/south,
 /obj/effect/spawner/random_spawners/dirt_frequent,
@@ -153,6 +171,8 @@
 "aE" = (
 /obj/structure/closet,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/decal/cleanable/blood,
+/obj/item/clothing/under/color/random,
 /turf/simulated/floor/plasteel{
 	dir = 6;
 	icon_state = "green"
@@ -201,12 +221,12 @@
 /turf/simulated/floor/wood/oak,
 /area/lazarus/outpost/rod/sec/hos)
 "aM" = (
-/obj/effect/spawner/random_spawners/dirt_frequent,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "green"
+/obj/effect/spawner/window/reinforced/grilled,
+/obj/structure/curtain{
+	color = "#696969"
 	},
-/area/lazarus/outpost/rod/living/b)
+/turf/simulated/floor/plating,
+/area/lazarus/outpost/rod/hop)
 "aO" = (
 /obj/machinery/door/airlock/engineering{
 	name = "Жилой отсек среднего класса"
@@ -275,6 +295,15 @@
 	icon_state = "yellowcorner"
 	},
 /area/lazarus/outpost/yarilo/living)
+"aZ" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/random_spawners/blood_maybe,
+/obj/item/chair/stool/bar/dark,
+/turf/simulated/floor/plasteel{
+	dir = 4;
+	icon_state = "green"
+	},
+/area/lazarus/outpost/rod/bar)
 "bb" = (
 /obj/effect/decal/cleanable/dust,
 /obj/effect/light_emitter/colored{
@@ -294,6 +323,14 @@
 	icon_state = "green"
 	},
 /area/lazarus/outpost/rod/living/b)
+"bh" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/item/storage/box/evidence,
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "redcorner"
+	},
+/area/lazarus/outpost/rod/sec/interrogation)
 "bi" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
 /obj/effect/decal/cleanable/cobweb,
@@ -302,14 +339,6 @@
 	icon_state = "cafeteria"
 	},
 /area/lazarus/outpost/rod/kitchen)
-"bj" = (
-/obj/structure/closet,
-/obj/effect/spawner/random_spawners/dirt_frequent,
-/turf/simulated/floor/plasteel{
-	dir = 9;
-	icon_state = "red"
-	},
-/area/lazarus/outpost/rod/living/sec)
 "bk" = (
 /obj/structure/chair/stool{
 	dir = 4
@@ -336,6 +365,9 @@
 /obj/structure/closet,
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/effect/spawner/random_spawners/blood_maybe,
+/obj/item/clothing/under/color/random,
+/obj/item/clothing/under/color/random,
+/obj/item/clothing/suit/hooded/wintercoat,
 /turf/simulated/floor/plasteel{
 	dir = 6;
 	icon_state = "green"
@@ -459,6 +491,8 @@
 	dir = 8
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/random_spawners/blood_maybe,
+/obj/effect/spawner/lootdrop/lazarus/trash,
 /turf/simulated/floor/plasteel,
 /area/lazarus/outpost/rod/bar)
 "bH" = (
@@ -475,11 +509,13 @@
 /turf/simulated/floor/plating/asteroid/lazarus/dirt,
 /area/lazarus/outdoors/rod)
 "bK" = (
+/obj/effect/landmark/damageturf,
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plasteel{
-	icon_state = "redcorner"
+	dir = 1;
+	icon_state = "greencorner"
 	},
-/area/lazarus/outpost/rod)
+/area/lazarus/outpost/rod/living/a)
 "bL" = (
 /obj/machinery/cryopod{
 	dir = 4
@@ -494,11 +530,29 @@
 	},
 /area/lazarus/outpost/rod/bar)
 "bO" = (
-/obj/structure/grille/broken,
-/obj/effect/decal/cleanable/glass,
-/obj/item/shard,
-/turf/simulated/floor/plating,
-/area/lazarus/outpost/rod/living/cryo)
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/holosign/barrier,
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/random_spawners/blood_often,
+/obj/effect/spawner/lootdrop/lazarus/trash,
+/turf/simulated/floor/plasteel{
+	icon_state = "redcorner"
+	},
+/area/lazarus/outpost/rod)
+"bR" = (
+/obj/structure/bed,
+/obj/structure/sign/poster/official/random/north,
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
+/turf/simulated/floor/plasteel{
+	dir = 9;
+	icon_state = "green"
+	},
+/area/lazarus/outpost/rod/living/b)
 "bS" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -513,10 +567,6 @@
 	icon_state = "cafeteria"
 	},
 /area/lazarus/outpost/yarilo/living/dinner)
-"bT" = (
-/obj/structure/sink/puddle,
-/turf/simulated/floor/plating/asteroid/lazarus/snow,
-/area/lazarus/outdoors)
 "bU" = (
 /obj/structure/table,
 /obj/item/paper_bin{
@@ -531,11 +581,19 @@
 	icon_state = "dark"
 	},
 /area/lazarus/outdoors)
+"bV" = (
+/obj/structure/closet,
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/item/clothing/suit/hooded/wintercoat,
+/obj/item/clothing/suit/hooded/wintercoat/security,
+/turf/simulated/floor/plasteel,
+/area/lazarus/outpost/rod/exit)
 "bX" = (
 /turf/simulated/floor/plasteel,
 /area/lazarus/outpost/yarilo/living)
 "ca" = (
 /obj/structure/bed,
+/obj/item/bedsheet/grey,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/rod/living/a)
 "cc" = (
@@ -546,6 +604,7 @@
 	dir = 4
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/mob_spawn/human/lazarus/colonist,
 /turf/simulated/floor/plasteel{
 	dir = 10;
 	icon_state = "whiteblue"
@@ -583,6 +642,7 @@
 	dir = 4
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/random_spawners/blood_maybe,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/rod/bar)
 "cl" = (
@@ -590,15 +650,23 @@
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/rod/living/sec)
 "cn" = (
-/obj/structure/chair/stool/bar/dark{
-	dir = 4
+/obj/structure/cable{
+	d2 = 8;
+	icon_state = "0-8"
 	},
-/obj/effect/spawner/random_spawners/dirt_frequent,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "green"
+/obj/effect/decal/cleanable/glass,
+/obj/item/shard{
+	icon_state = "small";
+	pixel_x = 10
 	},
-/area/lazarus/outpost/rod/bar)
+/obj/structure/grille/broken,
+/obj/item/shard{
+	icon_state = "medium";
+	pixel_x = -5;
+	pixel_y = -8
+	},
+/turf/simulated/floor/plating,
+/area/lazarus/outpost/rod/sec/interrogation)
 "co" = (
 /obj/structure/flora/grass/both,
 /turf/simulated/floor/plating/asteroid/lazarus/snow,
@@ -612,10 +680,13 @@
 	},
 /area/lazarus/outpost/yarilo/living)
 "ct" = (
-/obj/effect/spawner/window/reinforced/grilled,
-/obj/effect/mapping_helpers/damaged_window,
-/turf/simulated/floor/plating,
-/area/lazarus/outpost/rod/exit)
+/obj/structure/barricade/wooden,
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "greencorner"
+	},
+/area/lazarus/outpost/rod)
 "cu" = (
 /obj/structure/closet/secure_closet/security/empty,
 /obj/structure/closet/secure_closet/security/empty,
@@ -714,6 +785,8 @@
 	dir = 4
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/mob_spawn/human/lazarus/iaa,
+/obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/carpet/red,
 /area/lazarus/outpost/rod/iaa)
 "cO" = (
@@ -738,11 +811,25 @@
 /obj/structure/sign/poster/official/random/east,
 /obj/machinery/light/directional/east,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/decal/cleanable/ash,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "green"
 	},
 /area/lazarus/outpost/rod/bar)
+"cS" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
+/turf/simulated/floor/plasteel{
+	dir = 8;
+	icon_state = "bluecorner"
+	},
+/area/lazarus/outpost/rod)
+"cT" = (
+/obj/structure/flora/grass/green,
+/obj/structure/flora/tree/pine,
+/turf/simulated/floor/plating/asteroid/lazarus/snow,
+/area/lazarus/outdoors/rod)
 "cU" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -841,6 +928,7 @@
 	icon_state = "4-8"
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
 /turf/simulated/floor/plasteel,
 /area/lazarus/outpost/rod/living/sec)
 "dj" = (
@@ -877,13 +965,9 @@
 	},
 /area/lazarus/outpost/rod/kitchen)
 "dl" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/effect/spawner/random_spawners/dirt_frequent,
-/turf/simulated/floor/carpet/red,
+/obj/effect/spawner/window/reinforced/grilled,
+/obj/effect/mapping_helpers/damaged_window,
+/turf/simulated/floor/plating,
 /area/lazarus/outpost/rod/living/sec)
 "dn" = (
 /obj/structure/filingcabinet/chestdrawer,
@@ -904,6 +988,7 @@
 	icon_state = "pipe-c"
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/random_spawners/blood_often,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "redcorner"
@@ -931,7 +1016,7 @@
 /obj/effect/baseturf_helper/lazarus,
 /obj/item/paper/crumpled/bloody{
 	name = "Окровавленная записка";
-	info = "[i]Кирн, даже не думай вскрывать этот шлюз. Николас запер эту тварь там ценой своей жизни. Ебучий дробовик не стоит рисков растаться с жизнью, а то и хуже. Я попытаюсь прорваться к вышке и вызвать подмогу, а ты пока присматривай за Лили, чтобы та не обратилась. И да, заделай досками все окна. Нехватало, чтобы ещё одна из этих тварей забрела на базу.[/i][br][br][i]Мэтью[/i]"
+	info = "<i>Кирн, даже не думай вскрывать этот шлюз. Николас запер эту тварь там ценой своей жизни. Ебучий дробовик не стоит рисков растаться с жизнью, а то и хуже. Я попытаюсь прорваться к вышке и вызвать подмогу, а ты пока присматривай за Лили, чтобы та не обратилась. И да, заделай досками все окна. Нехватало, чтобы ещё одна из этих тварей забрела на базу.</i> <br><br><i>Мэтью</i>"
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plating,
@@ -989,6 +1074,15 @@
 	},
 /turf/simulated/floor/plating,
 /area/lazarus/geotherm)
+"dF" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/item/camera,
+/turf/simulated/floor/carpet/black,
+/area/lazarus/outpost/rod/hop)
+"dG" = (
+/obj/effect/mob_spawn/human/lazarus/colonist/winter,
+/turf/simulated/floor/plating/asteroid/lazarus/snow,
+/area/lazarus/outdoors/rod)
 "dH" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -996,6 +1090,7 @@
 	icon_state = "1-4"
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/item/paper,
 /turf/simulated/floor/carpet/black,
 /area/lazarus/outpost/rod/hop)
 "dJ" = (
@@ -1015,14 +1110,25 @@
 /obj/structure/spider/stickyweb,
 /obj/structure/spider/cocoon,
 /obj/effect/spawner/random_spawners/blood_maybe,
+/obj/effect/spawner/lootdrop/lazarus/trash,
 /turf/simulated/floor/plasteel{
 	icon_state = "freezerfloor"
 	},
 /area/lazarus/outpost/rod/kitchen)
+"dM" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
+/turf/simulated/floor/plating,
+/area/lazarus/outpost/rod/sec/arsenal)
 "dP" = (
 /obj/structure/flora/bush,
 /turf/simulated/floor/plating/asteroid/lazarus/snow,
 /area/lazarus/outdoors/rod)
+"dR" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
+/turf/simulated/floor/plating,
+/area/lazarus/outpost/rod/botany)
 "dS" = (
 /obj/structure/chair/stool{
 	dir = 1
@@ -1174,6 +1280,7 @@
 	icon_state = "4-8"
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/rod/living/locker)
 "ez" = (
@@ -1201,19 +1308,20 @@
 	icon_state = "pipe-c"
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/random_spawners/blood_often,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "redcorner"
 	},
 /area/lazarus/outpost/rod)
 "eD" = (
-/obj/effect/spawner/random_spawners/dirt_frequent,
-/turf/simulated/floor/plasteel{
-	icon_state = "white"
-	},
+/obj/effect/spawner/window/reinforced/grilled,
+/obj/effect/mapping_helpers/damaged_window,
+/turf/simulated/floor/plating,
 /area/lazarus/outpost/rod/med)
 "eG" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/random_spawners/blood_often,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "whiteblue"
@@ -1264,6 +1372,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/effect/spawner/random_spawners/blood_maybe,
+/obj/effect/decal/cleanable/ash,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/rod/bar)
 "eS" = (
@@ -1319,6 +1428,8 @@
 	icon_state = "4-8"
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/mob_spawn/human/lazarus/security,
+/obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/plasteel,
 /area/lazarus/outpost/rod)
 "fd" = (
@@ -1346,6 +1457,8 @@
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/effect/landmark/damageturf,
+/obj/effect/spawner/random_spawners/blood_maybe,
+/obj/effect/spawner/lootdrop/lazarus/trash,
 /turf/simulated/floor/plasteel,
 /area/lazarus/outpost/rod/bar)
 "fh" = (
@@ -1441,7 +1554,6 @@
 "fu" = (
 /obj/item/kirbyplants,
 /obj/effect/spawner/random_spawners/dirt_frequent,
-/obj/structure/barricade/sandbags,
 /turf/simulated/floor/plasteel{
 	dir = 6;
 	icon_state = "green"
@@ -1457,19 +1569,32 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plasteel,
 /area/lazarus/outpost/yarilo/engi/storage)
+"fw" = (
+/obj/effect/spawner/window/reinforced/grilled,
+/obj/structure/curtain/open{
+	color = "#696969"
+	},
+/turf/simulated/floor/plating,
+/area/lazarus/outpost/rod/hop)
+"fz" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
+/turf/simulated/floor/carpet/black,
+/area/lazarus/outpost/rod/hop)
 "fA" = (
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
 /area/lazarus/outdoors)
 "fB" = (
-/obj/effect/spawner/random_spawners/dirt_frequent,
-/obj/effect/spawner/random_spawners/blood_maybe,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "greencorner"
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
-/area/lazarus/outpost/rod/living/a)
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/turf/simulated/floor/plating,
+/area/lazarus/outpost/rod/living/sec)
 "fD" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -1495,6 +1620,10 @@
 	icon_state = "white"
 	},
 /area/lazarus/outpost/yarilo/med/virology)
+"fJ" = (
+/obj/structure/girder,
+/turf/simulated/floor/plating,
+/area/lazarus/outpost/rod/sec/briefing)
 "fN" = (
 /obj/effect/baseturf_helper/lazarus,
 /obj/effect/spawner/random_spawners/dirt_frequent,
@@ -1617,6 +1746,7 @@
 	icon_state = "1-4"
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
 /turf/simulated/floor/plasteel{
 	icon_state = "whitegreenfull"
 	},
@@ -1743,9 +1873,9 @@
 /area/lazarus/outpost/yarilo/living/cryo)
 "gH" = (
 /obj/structure/table,
-/obj/effect/spawner/random_spawners/blood_often,
 /obj/item/ammo_casing/shotgun/buckshot,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/rod/living/a)
 "gM" = (
@@ -1803,8 +1933,15 @@
 "gS" = (
 /turf/simulated/wall,
 /area/lazarus/geotherm)
+"gT" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/structure/barricade/sandbags,
+/obj/effect/spawner/random_spawners/blood_maybe,
+/turf/simulated/floor/carpet,
+/area/lazarus/outpost/rod/bar)
 "gZ" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
 /turf/simulated/floor/plasteel{
 	dir = 6;
 	icon_state = "darkred"
@@ -1827,6 +1964,18 @@
 	icon_state = "freezerfloor"
 	},
 /area/lazarus/outpost/yarilo/toilet)
+"hc" = (
+/obj/effect/landmark/damageturf,
+/obj/item/gun/projectile/shotgun/automatic/combat,
+/obj/item/storage/box/buck,
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/mob_spawn/human/lazarus/colonist/survivalist,
+/obj/effect/decal/cleanable/blood,
+/turf/simulated/floor/plasteel{
+	dir = 4;
+	icon_state = "green"
+	},
+/area/lazarus/outpost/rod/living/a)
 "hi" = (
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -1860,6 +2009,14 @@
 	icon_state = "redcorner"
 	},
 /area/lazarus/outpost/rod/sec/interrogation)
+"hq" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/random_spawners/blood_often,
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "greencorner"
+	},
+/area/lazarus/outpost/rod/living/a)
 "ht" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plasteel{
@@ -1880,6 +2037,19 @@
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/rod/hop)
+"hv" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
+/turf/simulated/floor/plating,
+/area/lazarus/outpost/rod)
 "hw" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5
@@ -1903,6 +2073,8 @@
 "hy" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/structure/barricade/sandbags,
+/obj/effect/mob_spawn/human/lazarus/colonist/russian,
+/obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/carpet,
 /area/lazarus/outpost/rod/bar)
 "hz" = (
@@ -1937,12 +2109,26 @@
 	icon_state = "blue"
 	},
 /area/lazarus/outpost/yarilo/living)
-"hJ" = (
-/obj/effect/spawner/window/reinforced/grilled,
-/obj/structure/curtain{
-	color = "#696969"
+"hE" = (
+/obj/structure/table,
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/item/reagent_containers/drinks/mug,
+/turf/simulated/floor/plasteel{
+	dir = 5;
+	icon_state = "green"
 	},
-/turf/simulated/floor/plating,
+/area/lazarus/outpost/rod/living/b)
+"hI" = (
+/obj/effect/spawner/lootdrop/lazarus/trash,
+/turf/simulated/floor/plating/asteroid/lazarus/dirt,
+/area/lazarus/outdoors/rod)
+"hJ" = (
+/obj/structure/table,
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/turf/simulated/floor/plasteel{
+	dir = 5;
+	icon_state = "green"
+	},
 /area/lazarus/outpost/rod/living/b)
 "hL" = (
 /obj/machinery/biogenerator,
@@ -2013,9 +2199,12 @@
 	},
 /area/lazarus/outpost/yarilo/med/virology)
 "hV" = (
-/obj/effect/spawner/random_spawners/dirt_frequent,
-/turf/simulated/floor/carpet/black,
-/area/lazarus/outpost/rod/hop)
+/obj/effect/spawner/window/reinforced/grilled,
+/obj/structure/curtain{
+	color = "#696969"
+	},
+/turf/simulated/floor/plating,
+/area/lazarus/outpost/rod/living/b)
 "hW" = (
 /obj/structure/table/wood,
 /obj/item/flashlight/lantern,
@@ -2118,20 +2307,24 @@
 /area/lazarus/outpost/rod/maint)
 "ip" = (
 /obj/structure/bed,
-/obj/item/bedsheet/black,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/mob_spawn/human/lazarus/security,
+/obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/plasteel{
 	dir = 9;
 	icon_state = "red"
 	},
 /area/lazarus/outpost/rod/living/sec)
 "iq" = (
-/obj/effect/spawner/window/reinforced/grilled,
-/obj/structure/curtain{
-	color = "#696969"
+/obj/structure/disposalpipe/segment{
+	dir = 4
 	},
-/turf/simulated/floor/plating,
-/area/lazarus/outpost/rod/hop)
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/structure/spider/stickyweb,
+/turf/simulated/floor/plasteel{
+	icon_state = "cafeteria"
+	},
+/area/lazarus/outpost/rod/kitchen)
 "ir" = (
 /obj/machinery/light/directional/east,
 /obj/structure/cable{
@@ -2183,9 +2376,6 @@
 	},
 /area/lazarus/outpost/yarilo)
 "iz" = (
-/obj/structure/chair{
-	dir = 8
-	},
 /obj/machinery/light/directional/south,
 /obj/structure/cable{
 	d1 = 2;
@@ -2193,6 +2383,7 @@
 	icon_state = "2-4"
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/item/chair,
 /turf/simulated/floor/plasteel{
 	icon_state = "redcorner"
 	},
@@ -2223,12 +2414,14 @@
 /turf/simulated/floor/plasteel,
 /area/lazarus/outpost/yarilo/engi)
 "iF" = (
-/obj/structure/chair/stool{
-	dir = 4
-	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/item/chair/stool,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/rod/living/sec)
+"iG" = (
+/obj/structure/barricade/sandbags,
+/turf/simulated/floor/plating/asteroid/lazarus/dirt,
+/area/lazarus/outdoors/rod)
 "iI" = (
 /obj/structure/table,
 /obj/item/reagent_containers/condiment/peppermill{
@@ -2326,6 +2519,15 @@
 /obj/effect/spawner/window/reinforced/grilled,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/rod/living/cryo)
+"iY" = (
+/obj/structure/bed,
+/obj/structure/sign/poster/official/random/north,
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/turf/simulated/floor/plasteel{
+	dir = 5;
+	icon_state = "red"
+	},
+/area/lazarus/outpost/rod/living/sec)
 "iZ" = (
 /obj/structure/table/reinforced,
 /obj/machinery/defibrillator_mount/loaded,
@@ -2358,6 +2560,7 @@
 /area/lazarus/outpost/rod/kitchen)
 "je" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/random_spawners/blood_often,
 /turf/simulated/floor/carpet/red,
 /area/lazarus/outpost/rod/iaa)
 "jf" = (
@@ -2426,9 +2629,25 @@
 	icon_state = "whiteblue"
 	},
 /area/lazarus/outpost/yarilo/med/exam)
+"jA" = (
+/obj/structure/table,
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/item/bedsheet/grey,
+/turf/simulated/floor/plasteel{
+	dir = 9;
+	icon_state = "green"
+	},
+/area/lazarus/outpost/rod/living/b)
 "jE" = (
 /turf/simulated/floor/plating/asteroid/lazarus/snow,
 /area/lazarus/outdoors/yarilo)
+"jF" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/item/stack/cable_coil{
+	amount = 2
+	},
+/turf/simulated/floor/plating,
+/area/lazarus/outpost/rod/maint)
 "jH" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plating,
@@ -2463,11 +2682,16 @@
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/structure/barricade/sandbags,
+/obj/effect/spawner/random_spawners/blood_maybe,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/rod/bar)
 "jO" = (
 /obj/structure/closet,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/item/clothing/under/color/random,
+/obj/item/clothing/under/color/random,
+/obj/item/clothing/suit/hooded/wintercoat,
+/obj/item/clothing/suit/hooded/wintercoat/security,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/rod/living/sec)
 "jR" = (
@@ -2488,13 +2712,10 @@
 /turf/simulated/floor/plasteel,
 /area/lazarus/outpost/yarilo/engi/ce)
 "jS" = (
-/obj/effect/landmark/damageturf,
-/obj/effect/spawner/random_spawners/dirt_frequent,
-/turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "greencorner"
-	},
-/area/lazarus/outpost/rod/living/a)
+/obj/effect/spawner/window/reinforced/grilled,
+/obj/effect/mapping_helpers/damaged_window,
+/turf/simulated/floor/plating,
+/area/lazarus/outpost/rod/botany)
 "jU" = (
 /obj/structure/table,
 /obj/item/taperecorder,
@@ -2505,7 +2726,6 @@
 /area/lazarus/outpost/rod/iaa)
 "jW" = (
 /obj/structure/bed,
-/obj/item/bedsheet/black,
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plasteel{
 	dir = 5;
@@ -2521,6 +2741,7 @@
 "jY" = (
 /obj/machinery/light/directional/north,
 /obj/effect/landmark/damageturf,
+/obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "redcorner"
@@ -2547,6 +2768,15 @@
 	icon_state = "red"
 	},
 /area/lazarus/outpost/rod/sec/interrogation)
+"ke" = (
+/obj/effect/spawner/window/reinforced/grilled,
+/obj/structure/barricade/wooden/crude/snow,
+/obj/effect/mapping_helpers/damaged_window,
+/obj/structure/curtain{
+	color = "#696969"
+	},
+/turf/simulated/floor/plating,
+/area/lazarus/outpost/rod/living/a)
 "ki" = (
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plasteel{
@@ -2554,25 +2784,29 @@
 	icon_state = "yellow"
 	},
 /area/lazarus/outpost/yarilo/engi)
-"kj" = (
-/obj/effect/spawner/window/reinforced/grilled,
-/obj/structure/cable{
-	d2 = 8;
-	icon_state = "0-8"
-	},
-/obj/effect/mapping_helpers/damaged_window,
-/turf/simulated/floor/plating,
-/area/lazarus/outpost/rod/sec/interrogation)
 "kl" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
-/obj/structure/table_frame,
-/obj/item/stack/sheet/metal,
-/turf/simulated/floor/carpet,
-/area/lazarus/outpost/rod/bar)
+/obj/effect/spawner/random_spawners/blood_often,
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "redcorner"
+	},
+/area/lazarus/outpost/rod)
 "kn" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
-/turf/simulated/wall,
-/area/lazarus/outpost/rod/living/a)
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "greencorner"
+	},
+/area/lazarus/outpost/rod)
 "kp" = (
 /obj/machinery/light/small/directional/east,
 /obj/effect/spawner/random_spawners/dirt_frequent,
@@ -2606,13 +2840,6 @@
 /obj/effect/spawner/window/reinforced/grilled,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/rod/living/locker)
-"kt" = (
-/obj/effect/spawner/random_spawners/dirt_frequent,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "greencorner"
-	},
-/area/lazarus/outpost/rod/living/a)
 "kw" = (
 /obj/structure/table,
 /turf/simulated/floor/plasteel{
@@ -2653,7 +2880,8 @@
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/structure/spider/stickyweb,
 /obj/structure/spider/cocoon,
-/obj/effect/spawner/random_spawners/blood_maybe,
+/obj/effect/mob_spawn/human/lazarus/chef,
+/obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/plasteel{
 	icon_state = "freezerfloor"
 	},
@@ -2681,11 +2909,16 @@
 	},
 /area/lazarus/outpost/yarilo/exit)
 "kM" = (
-/obj/effect/spawner/random_spawners/dirt_frequent,
-/turf/simulated/floor/plasteel{
-	icon_state = "greencorner"
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
-/area/lazarus/outpost/rod)
+/obj/structure/disposalpipe/segment,
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/random_spawners/blood_maybe,
+/turf/simulated/floor/plating,
+/area/lazarus/outpost/rod/bar)
 "kP" = (
 /obj/structure/flora/tree/dead,
 /turf/simulated/floor/plating/asteroid/lazarus/dirt,
@@ -2722,9 +2955,10 @@
 	},
 /area/lazarus/outpost/yarilo/living/locker)
 "kW" = (
-/obj/structure/table,
 /obj/machinery/recharger,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/structure/table_frame,
+/obj/item/stack/sheet/metal,
 /turf/simulated/floor/plasteel{
 	icon_state = "blue"
 	},
@@ -2779,9 +3013,15 @@
 /area/lazarus/geotherm)
 "lj" = (
 /obj/effect/spawner/window/reinforced/grilled,
-/obj/effect/mapping_helpers/damaged_window,
+/obj/structure/cable{
+	d2 = 2;
+	icon_state = "0-2"
+	},
+/obj/structure/curtain/open{
+	color = "#696969"
+	},
 /turf/simulated/floor/plating,
-/area/lazarus/outpost/rod/kitchen)
+/area/lazarus/outpost/rod/sec/hos)
 "lk" = (
 /turf/simulated/floor/plating/asteroid/lazarus/snow,
 /area/lazarus/outdoors/rod)
@@ -2792,12 +3032,16 @@
 	icon_state = "darkblue"
 	},
 /area/lazarus/outpost/yarilo/med/morgue)
+"ln" = (
+/obj/structure/table,
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/turf/simulated/floor/plating,
+/area/lazarus/outpost/rod/bar)
 "lo" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
-/obj/structure/spider/stickyweb,
 /turf/simulated/floor/plasteel{
 	icon_state = "cafeteria"
 	},
@@ -2813,6 +3057,7 @@
 	icon_state = "pipe-c"
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/random_spawners/blood_often,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "whiteblue"
@@ -2881,6 +3126,14 @@
 "ly" = (
 /turf/simulated/wall/r_wall,
 /area/lazarus/outdoors)
+"lB" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "red"
+	},
+/area/lazarus/outpost/rod/iaa)
 "lD" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/effect/spawner/random_spawners/blood_maybe,
@@ -2922,10 +3175,6 @@
 	icon_state = "whitegreen"
 	},
 /area/lazarus/outpost/yarilo/med/virology)
-"lI" = (
-/obj/structure/girder,
-/turf/simulated/floor/plating,
-/area/lazarus/outpost/rod/sec/interrogation)
 "lK" = (
 /obj/machinery/door/airlock/security{
 	name = "Жилой отсек среднего класса"
@@ -2960,15 +3209,13 @@
 /turf/simulated/floor/plasteel,
 /area/lazarus/outpost/rod/living/locker)
 "lP" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
+/obj/effect/spawner/window/reinforced/grilled,
+/obj/structure/curtain{
+	color = "#696969"
 	},
-/obj/effect/spawner/random_spawners/dirt_frequent,
-/obj/effect/landmark/damageturf,
+/obj/effect/mapping_helpers/damaged_window,
 /turf/simulated/floor/plating,
-/area/lazarus/outpost/rod/living/sec)
+/area/lazarus/outpost/rod/living/b)
 "lT" = (
 /obj/structure/cable/yellow{
 	d1 = 2;
@@ -2994,14 +3241,14 @@
 	},
 /area/lazarus/outpost/yarilo/engi/ce)
 "lV" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
-/turf/simulated/floor/plasteel{
-	icon_state = "cafeteria"
-	},
-/area/lazarus/outpost/rod/kitchen)
+/turf/simulated/floor/carpet/red,
+/area/lazarus/outpost/rod/living/sec)
 "lX" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -3011,7 +3258,9 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/structure/holosign/barrier,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/random_spawners/blood_often,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "redcorner"
@@ -3037,6 +3286,7 @@
 	icon_state = "1-2"
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/item/chair/stool,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "red"
@@ -3065,6 +3315,9 @@
 /turf/simulated/floor/plasteel,
 /area/lazarus/outpost/rod)
 "mf" = (
+/obj/item/stack/sheet/wood{
+	amount = 13
+	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plasteel{
 	dir = 1;
@@ -3072,14 +3325,23 @@
 	},
 /area/lazarus/outpost/rod)
 "mh" = (
-/obj/structure/table,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/structure/table_frame,
+/obj/item/stack/sheet/metal,
 /turf/simulated/floor/plasteel{
 	icon_state = "redcorner"
 	},
 /area/lazarus/outpost/rod/sec/interrogation)
 "mn" = (
 /obj/structure/table/reinforced,
+/obj/item/airlock_electronics,
+/obj/item/shard{
+	icon_state = "medium";
+	pixel_x = -5;
+	pixel_y = -8
+	},
+/obj/item/shard,
+/obj/item/stack/cable_coil,
 /turf/simulated/floor/plasteel,
 /area/lazarus/outpost/rod/hop)
 "mo" = (
@@ -3112,6 +3374,15 @@
 	icon_state = "blue"
 	},
 /area/lazarus/outpost/rod/hop)
+"mu" = (
+/obj/structure/bed,
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/item/bedsheet/grey,
+/turf/simulated/floor/plasteel{
+	dir = 10;
+	icon_state = "green"
+	},
+/area/lazarus/outpost/rod/living/b)
 "mv" = (
 /obj/machinery/disposal,
 /obj/structure/disposalpipe/trunk,
@@ -3122,11 +3393,9 @@
 /area/lazarus/outpost/yarilo/engi/ce)
 "mw" = (
 /obj/effect/spawner/window/reinforced/grilled,
-/obj/structure/cable,
-/obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/effect/mapping_helpers/damaged_window,
 /turf/simulated/floor/plating,
-/area/lazarus/outpost/rod/sec/interrogation)
+/area/lazarus/outpost/rod/kitchen)
 "mx" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -3192,16 +3461,6 @@
 /obj/structure/flora/tree/dead,
 /turf/simulated/floor/plating/asteroid/lazarus/dirt,
 /area/lazarus/outdoors)
-"mL" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/structure/disposalpipe/segment,
-/obj/effect/spawner/random_spawners/dirt_frequent,
-/turf/simulated/floor/plating,
-/area/lazarus/outpost/rod/bar)
 "mN" = (
 /obj/structure/chair{
 	dir = 1
@@ -3234,6 +3493,17 @@
 "mS" = (
 /turf/simulated/wall,
 /area/lazarus/outpost/rod/exit)
+"mV" = (
+/obj/structure/sink/directional/west,
+/obj/structure/mirror{
+	pixel_x = 28
+	},
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
+/turf/simulated/floor/plasteel{
+	icon_state = "freezerfloor"
+	},
+/area/lazarus/outpost/rod/toilet)
 "mY" = (
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -3258,6 +3528,7 @@
 	pixel_y = 9
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/structure/spider/stickyweb,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/rod/kitchen)
 "ne" = (
@@ -3349,6 +3620,7 @@
 "ny" = (
 /obj/effect/baseturf_helper/lazarus,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "greencorner"
@@ -3475,6 +3747,7 @@
 	},
 /obj/effect/baseturf_helper/lazarus,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
 /turf/simulated/floor/plasteel,
 /area/lazarus/outpost/rod/sec/hos)
 "op" = (
@@ -3549,7 +3822,7 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
-/obj/structure/curtain{
+/obj/structure/curtain/open{
 	color = "#696969"
 	},
 /turf/simulated/floor/plating,
@@ -3645,10 +3918,18 @@
 	},
 /area/lazarus/outpost/yarilo/engi)
 "oQ" = (
-/obj/effect/spawner/window/reinforced/grilled,
-/obj/effect/mapping_helpers/damaged_window,
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/random_spawners/blood_often,
 /turf/simulated/floor/plating,
-/area/lazarus/outpost/rod/botany)
+/area/lazarus/outpost/rod/med)
+"oS" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/mob_spawn/human/lazarus/security,
+/turf/simulated/floor/plasteel{
+	dir = 5;
+	icon_state = "darkred"
+	},
+/area/lazarus/outpost/rod/sec/arsenal)
 "oT" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plasteel{
@@ -3685,6 +3966,7 @@
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/effect/landmark/damageturf,
 /obj/effect/spawner/random_spawners/blood_maybe,
+/obj/effect/spawner/lootdrop/lazarus/trash,
 /turf/simulated/floor/plasteel{
 	icon_state = "green"
 	},
@@ -3698,9 +3980,13 @@
 /area/lazarus/outpost/rod/sec/arsenal)
 "pc" = (
 /obj/effect/spawner/window/reinforced/grilled,
+/obj/structure/cable{
+	d2 = 2;
+	icon_state = "0-2"
+	},
 /obj/effect/mapping_helpers/damaged_window,
 /turf/simulated/floor/plating,
-/area/lazarus/outpost/rod/sec/interrogation)
+/area/lazarus/outpost/rod/sec/hos)
 "pd" = (
 /obj/machinery/economy/vending/clothing,
 /turf/simulated/floor/plasteel{
@@ -3739,6 +4025,10 @@
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/wood,
 /area/lazarus/cabin/crusader)
+"pn" = (
+/obj/structure/flora/ash/rock/style_random,
+/turf/simulated/floor/plating/asteroid/lazarus/dirt,
+/area/lazarus/outdoors/rod)
 "ps" = (
 /obj/structure/table/glass,
 /obj/item/clipboard,
@@ -3755,6 +4045,7 @@
 /area/lazarus/outpost/yarilo/med/morgue)
 "px" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/random_spawners/blood_often,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "redcorner"
@@ -3771,6 +4062,7 @@
 "pB" = (
 /obj/effect/decal/cleanable/vomit,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/decal/cleanable/ash,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/rod/bar)
 "pC" = (
@@ -3781,12 +4073,14 @@
 	},
 /area/lazarus/outpost/yarilo/engi)
 "pD" = (
+/obj/item/flag/nt,
+/obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "darkred"
+	dir = 1;
+	icon_state = "red"
 	},
-/area/lazarus/outpost/rod/sec/arsenal)
+/area/lazarus/outpost/rod/sec/hos)
 "pE" = (
 /obj/structure/closet/wardrobe/grey,
 /turf/simulated/floor/plating,
@@ -3846,6 +4140,7 @@
 /obj/effect/landmark/damageturf,
 /obj/effect/spawner/random_spawners/blood_maybe,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "green"
@@ -3869,16 +4164,9 @@
 	},
 /area/lazarus/outpost/rod/kitchen)
 "pU" = (
-/obj/machinery/light/directional/south,
 /obj/effect/spawner/random_spawners/dirt_frequent,
-/obj/effect/spawner/random_spawners/dirt_frequent,
-/obj/structure/sign/poster/ripped{
-	pixel_y = -32
-	},
-/turf/simulated/floor/plasteel{
-	icon_state = "whitegreenfull"
-	},
-/area/lazarus/outpost/rod/living/cryo)
+/turf/simulated/wall,
+/area/lazarus/outpost/rod/living/b)
 "pX" = (
 /obj/structure/cable/yellow{
 	d1 = 4;
@@ -3905,17 +4193,34 @@
 	icon_state = "green"
 	},
 /area/lazarus/outpost/rod/bar)
+"qb" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
+/turf/simulated/floor/plasteel{
+	icon_state = "whitegreenfull"
+	},
+/area/lazarus/outpost/rod/living/cryo)
 "qc" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
-/turf/simulated/floor/plating,
-/area/lazarus/outpost/rod)
-"qe" = (
-/obj/machinery/door/airlock{
-	name = "Жилой отсек среднего класса"
+/obj/effect/spawner/random_spawners/blood_often,
+/turf/simulated/floor/plasteel{
+	dir = 4;
+	icon_state = "greencorner"
 	},
-/obj/effect/mapping_helpers/machinery/destroyed,
+/area/lazarus/outpost/rod/living/a)
+"qe" = (
+/obj/structure/closet,
 /obj/effect/spawner/random_spawners/dirt_frequent,
-/turf/simulated/floor/plasteel,
+/obj/item/clothing/under/color/random,
+/turf/simulated/floor/plasteel{
+	dir = 10;
+	icon_state = "green"
+	},
 /area/lazarus/outpost/rod/living/a)
 "qf" = (
 /turf/simulated/floor/plasteel{
@@ -4007,10 +4312,12 @@
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/rod/hop)
 "qq" = (
-/obj/effect/spawner/window/reinforced/grilled,
-/obj/effect/mapping_helpers/damaged_window,
-/turf/simulated/floor/plating,
-/area/lazarus/outpost/rod)
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/random_spawners/blood_often,
+/turf/simulated/floor/plasteel{
+	icon_state = "white"
+	},
+/area/lazarus/outpost/rod/med)
 "qt" = (
 /obj/machinery/economy/vending/coffee,
 /turf/simulated/floor/plasteel{
@@ -4065,14 +4372,20 @@
 "qH" = (
 /obj/structure/closet,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/item/clothing/under/color/random,
+/obj/item/clothing/suit/hooded/wintercoat/security,
+/obj/item/clothing/suit/hooded/wintercoat/security,
 /turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "green"
+	dir = 9;
+	icon_state = "red"
 	},
-/area/lazarus/outpost/rod/living/a)
+/area/lazarus/outpost/rod/living/sec)
 "qI" = (
 /obj/structure/closet,
 /obj/effect/spawner/random_spawners/wall_rusted_always,
+/obj/item/clothing/under/color/random,
+/obj/item/clothing/under/color/random,
+/obj/item/clothing/suit/hooded/wintercoat,
 /turf/simulated/floor/plasteel{
 	dir = 10;
 	icon_state = "green"
@@ -4128,8 +4441,10 @@
 /area/lazarus/outpost/yarilo/med/morgue)
 "qR" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
-/obj/effect/landmark/damageturf,
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel{
+	dir = 4;
+	icon_state = "redcorner"
+	},
 /area/lazarus/outpost/rod/living/sec)
 "qT" = (
 /obj/structure/cable{
@@ -4218,6 +4533,15 @@
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/carpet,
 /area/lazarus/outpost/rod/sec/hos)
+"rf" = (
+/obj/structure/sign/poster/official/random/south,
+/obj/machinery/light/directional/south,
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/turf/simulated/floor/plasteel{
+	icon_state = "whitegreenfull"
+	},
+/area/lazarus/outpost/rod/living/cryo)
 "rg" = (
 /obj/structure/flora/tree/dead,
 /turf/simulated/floor/plating/asteroid/lazarus/snow,
@@ -4235,6 +4559,33 @@
 	icon_state = "whitebluecorner"
 	},
 /area/lazarus/outpost/yarilo/med/surgery)
+"rk" = (
+/obj/effect/spawner/window/reinforced/grilled,
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/turf/simulated/floor/plating,
+/area/lazarus/outpost/rod/botany)
+"ro" = (
+/obj/structure/chair/stool/bar/dark{
+	dir = 1
+	},
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/random_spawners/blood_maybe,
+/obj/effect/spawner/lootdrop/lazarus/trash,
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "green"
+	},
+/area/lazarus/outpost/rod/bar)
+"rp" = (
+/obj/structure/closet,
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/item/clothing/under/color/random,
+/obj/item/clothing/under/color/random,
+/turf/simulated/floor/plasteel{
+	dir = 6;
+	icon_state = "green"
+	},
+/area/lazarus/outpost/rod/living/b)
 "rq" = (
 /obj/structure/bed,
 /obj/structure/sign/poster/official/random/north,
@@ -4248,17 +4599,19 @@
 	},
 /area/lazarus/outpost/yarilo/med/exam)
 "rx" = (
-/obj/effect/spawner/window/reinforced/grilled,
-/obj/structure/cable{
-	d2 = 4;
-	icon_state = "0-4"
-	},
-/obj/effect/mapping_helpers/damaged_window,
-/turf/simulated/floor/plating,
-/area/lazarus/outpost/rod/sec/interrogation)
+/mob/living/simple_animal/hostile/poison/giant_spider,
+/turf/simulated/floor/plating/asteroid/lazarus/snow,
+/area/lazarus/outdoors/rod)
+"ry" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
+/turf/simulated/floor/plasteel,
+/area/lazarus/outpost/rod/sec/briefing)
 "rz" = (
 /obj/structure/closet,
 /obj/effect/decal/cleanable/cobweb,
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/random_spawners/blood_often,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "redcorner"
@@ -4267,6 +4620,7 @@
 "rA" = (
 /obj/effect/landmark/damageturf,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/random_spawners/blood_often,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "greencorner"
@@ -4285,6 +4639,14 @@
 	dir = 6
 	},
 /area/lazarus/outpost/rod/bar)
+"rE" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/structure/spider/stickyweb,
+/obj/effect/spawner/lootdrop/lazarus/trash,
+/turf/simulated/floor/plasteel{
+	icon_state = "cafeteria"
+	},
+/area/lazarus/outpost/rod/kitchen)
 "rH" = (
 /obj/structure/bed,
 /obj/item/bedsheet/black,
@@ -4340,14 +4702,12 @@
 	},
 /area/lazarus/outpost/yarilo/med/cryo)
 "rT" = (
-/obj/effect/spawner/window/reinforced/grilled,
-/obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2"
+/obj/machinery/door/airlock{
+	name = "Жилой отсек среднего класса"
 	},
-/obj/effect/mapping_helpers/damaged_window,
-/turf/simulated/floor/plating,
-/area/lazarus/outpost/rod/sec/hos)
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/turf/simulated/floor/plasteel,
+/area/lazarus/outpost/rod/living/a)
 "rU" = (
 /obj/machinery/door/airlock/engineering/glass{
 	name = "Малый склад"
@@ -4366,6 +4726,14 @@
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/carpet,
 /area/lazarus/cabin/crusader)
+"sd" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
+/turf/simulated/floor/plasteel{
+	dir = 4;
+	icon_state = "green"
+	},
+/area/lazarus/outpost/rod/living/b)
 "sh" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -4448,19 +4816,18 @@
 	},
 /area/lazarus/outpost/yarilo/med/cryo)
 "su" = (
-/obj/structure/table,
-/obj/effect/spawner/random_spawners/dirt_frequent,
-/turf/simulated/floor/plasteel{
-	dir = 5;
-	icon_state = "green"
-	},
-/area/lazarus/outpost/rod/living/b)
+/obj/effect/spawner/window/reinforced/grilled,
+/obj/structure/cable,
+/obj/effect/mapping_helpers/damaged_window,
+/turf/simulated/floor/plating,
+/area/lazarus/outpost/rod/iaa)
 "sx" = (
 /obj/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
 	dir = 4
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/random_spawners/blood_often,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "whiteblue"
@@ -4535,6 +4902,7 @@
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "neutralcorner"
@@ -4690,6 +5058,7 @@
 	icon_state = "2-8"
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/random_spawners/blood_often,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/rod/sec/interrogation)
 "tw" = (
@@ -4732,6 +5101,7 @@
 /area/lazarus/outpost/yarilo/engi/ce)
 "tD" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/random_spawners/blood_often,
 /turf/simulated/floor/plasteel{
 	icon_state = "whitebluecorner"
 	},
@@ -4752,6 +5122,8 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/mob_spawn/human/lazarus/security,
+/obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "redcorner"
@@ -4776,9 +5148,9 @@
 /area/lazarus/outpost/yarilo/engi/power)
 "tL" = (
 /obj/structure/bed,
-/obj/effect/spawner/random_spawners/blood_often,
 /obj/item/ammo_casing/shotgun/buckshot,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/plasteel{
 	dir = 10;
 	icon_state = "green"
@@ -4793,6 +5165,7 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/random_spawners/blood_often,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "redcorner"
@@ -4865,11 +5238,20 @@
 	icon_state = "redcorner"
 	},
 /area/lazarus/outpost/rod/living/sec)
-"tZ" = (
-/obj/effect/spawner/window/reinforced/grilled,
-/obj/effect/mapping_helpers/damaged_window,
-/turf/simulated/floor/plating,
-/area/lazarus/outpost/rod/bar)
+"ua" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/disposalpipe/segment,
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/decal/cleanable/blood,
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "redcorner"
+	},
+/area/lazarus/outpost/rod)
 "ub" = (
 /obj/structure/chair/stool{
 	dir = 1
@@ -4891,6 +5273,8 @@
 	dir = 4
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/mob_spawn/human/lazarus/colonist,
+/obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/carpet,
 /area/lazarus/outpost/rod/bar)
 "uh" = (
@@ -4952,11 +5336,36 @@
 	icon_state = "whiteblue"
 	},
 /area/lazarus/outpost/yarilo/med/surgery)
+"ut" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
+/turf/simulated/floor/plasteel{
+	dir = 8;
+	icon_state = "blue"
+	},
+/area/lazarus/outpost/rod/botany)
 "uv" = (
-/obj/effect/spawner/window/reinforced/grilled,
-/obj/effect/mapping_helpers/damaged_window,
-/turf/simulated/floor/plating,
-/area/lazarus/outpost/rod/hop)
+/obj/structure/closet,
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/item/clothing/under/color/random,
+/obj/item/clothing/under/color/random,
+/turf/simulated/floor/plasteel{
+	dir = 10;
+	icon_state = "green"
+	},
+/area/lazarus/outpost/rod/living/b)
+"uw" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/item/chair/stool{
+	dir = 1
+	},
+/turf/simulated/floor/plasteel,
+/area/lazarus/outpost/rod/sec/briefing)
 "uy" = (
 /obj/structure/cable/yellow{
 	d1 = 2;
@@ -5016,6 +5425,11 @@
 	},
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/yarilo/engi/storage/secured)
+"uM" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
+/turf/simulated/floor/plating,
+/area/lazarus/outpost/rod)
 "uO" = (
 /turf/simulated/floor/plasteel{
 	dir = 1;
@@ -5023,7 +5437,8 @@
 	},
 /area/lazarus/outpost/yarilo/living)
 "uP" = (
-/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/window/reinforced/grilled,
+/obj/effect/mapping_helpers/damaged_window,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/rod/sec/interrogation)
 "uR" = (
@@ -5039,6 +5454,12 @@
 	icon_state = "green"
 	},
 /area/lazarus/outpost/yarilo/living/locker)
+"uU" = (
+/obj/structure/table,
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/random_spawners/blood_maybe,
+/turf/simulated/floor/carpet,
+/area/lazarus/outpost/rod/bar)
 "uV" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -5123,13 +5544,24 @@
 	icon_state = "pipe-c"
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/random_spawners/blood_often,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/rod)
 "vj" = (
-/obj/structure/grille,
-/obj/effect/decal/cleanable/glass,
-/turf/simulated/floor/plating,
-/area/lazarus/outpost/rod/living/cryo)
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/turf/simulated/floor/plasteel{
+	dir = 4;
+	icon_state = "bluecorner"
+	},
+/area/lazarus/outpost/rod)
 "vk" = (
 /obj/item/kirbyplants,
 /obj/effect/spawner/random_spawners/dirt_frequent,
@@ -5156,16 +5588,21 @@
 /turf/simulated/wall/indestructible/ice,
 /area/lazarus/outdoors)
 "vu" = (
-/obj/structure/chair/stool/bar/dark{
-	dir = 1
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
-/obj/effect/spawner/random_spawners/blood_maybe,
+/obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "green"
+	dir = 4;
+	icon_state = "greencorner"
 	},
-/area/lazarus/outpost/rod/bar)
+/area/lazarus/outpost/rod)
 "vv" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -5177,6 +5614,14 @@
 	icon_state = "dark"
 	},
 /area/lazarus/outpost/yarilo/med/morgue)
+"vw" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/item/bedsheet/purple,
+/turf/simulated/floor/plasteel{
+	dir = 4;
+	icon_state = "green"
+	},
+/area/lazarus/outpost/rod/living/b)
 "vy" = (
 /obj/structure/bed,
 /obj/machinery/light/small/directional/west,
@@ -5185,6 +5630,7 @@
 /obj/structure/sign/poster/ripped{
 	pixel_y = -32
 	},
+/obj/item/bedsheet/yellow,
 /turf/simulated/floor/plasteel{
 	dir = 10;
 	icon_state = "green"
@@ -5222,19 +5668,26 @@
 /turf/simulated/wall/r_wall,
 /area/lazarus/outpost/yarilo/engi/power)
 "vG" = (
+/obj/structure/bed,
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/structure/sign/poster/ripped{
+	pixel_y = -32
+	},
+/obj/effect/spawner/lootdrop/lazarus/trash,
+/turf/simulated/floor/plasteel{
+	dir = 10;
+	icon_state = "green"
+	},
+/area/lazarus/outpost/rod/living/b)
+"vH" = (
 /obj/effect/spawner/window/reinforced/grilled,
-/obj/structure/cable,
+/obj/structure/cable{
+	d2 = 2;
+	icon_state = "0-2"
+	},
 /obj/effect/mapping_helpers/damaged_window,
 /turf/simulated/floor/plating,
-/area/lazarus/outpost/rod/sec/hos)
-"vH" = (
-/obj/structure/barricade/wooden,
-/obj/effect/spawner/random_spawners/dirt_frequent,
-/turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "greencorner"
-	},
-/area/lazarus/outpost/rod)
+/area/lazarus/outpost/rod/sec/briefing)
 "vI" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plasteel,
@@ -5244,6 +5697,22 @@
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/carpet,
 /area/lazarus/outpost/rod/hop)
+"vL" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/item/book/manual/wiki/sop_legal{
+	pixel_x = 5;
+	pixel_y = 6
+	},
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "red"
+	},
+/area/lazarus/outpost/rod/sec/briefing)
 "vN" = (
 /turf/simulated/floor/plasteel{
 	dir = 1;
@@ -5308,13 +5777,11 @@
 	},
 /area/lazarus/outpost/yarilo/engi/ce)
 "wh" = (
-/obj/effect/spawner/window/reinforced/grilled,
-/obj/structure/curtain{
-	color = "#696969"
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/turf/simulated/floor/plasteel{
+	icon_state = "greencorner"
 	},
-/obj/effect/mapping_helpers/damaged_window,
-/turf/simulated/floor/plating,
-/area/lazarus/outpost/rod/living/b)
+/area/lazarus/outpost/rod)
 "wi" = (
 /obj/structure/chair/stool{
 	dir = 1
@@ -5341,24 +5808,9 @@
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/rod/living/b)
-"wk" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/effect/spawner/random_spawners/dirt_frequent,
-/obj/item/book/manual/wiki/sop_legal{
-	pixel_x = 5;
-	pixel_y = 6
-	},
-/turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "red"
-	},
-/area/lazarus/outpost/rod/sec/briefing)
 "wl" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/structure/spider/stickyweb,
 /turf/simulated/floor/plasteel{
 	icon_state = "cafeteria"
 	},
@@ -5398,6 +5850,24 @@
 	icon_state = "greencorner"
 	},
 /area/lazarus/outpost/rod)
+"wx" = (
+/obj/structure/curtain/open{
+	color = "#696969"
+	},
+/obj/effect/decal/cleanable/glass,
+/obj/structure/grille/broken,
+/obj/item/shard,
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/turf/simulated/floor/plating,
+/area/lazarus/outpost/rod/hop)
+"wz" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/damageturf,
+/obj/effect/spawner/lootdrop/lazarus/trash,
+/turf/simulated/floor/plasteel,
+/area/lazarus/outpost/rod/living/sec)
 "wC" = (
 /obj/machinery/hydroponics/constructable,
 /obj/structure/sign/poster/official/random/south,
@@ -5479,6 +5949,8 @@
 	},
 /area/lazarus/outpost/yarilo/living)
 "wW" = (
+/obj/effect/spawner/random_spawners/blood_often,
+/obj/effect/spawner/lootdrop/lazarus/trash,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "greencorner"
@@ -5488,6 +5960,7 @@
 /obj/machinery/light/small/directional/east,
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/effect/spawner/random_spawners/blood_maybe,
+/obj/effect/spawner/lootdrop/lazarus/trash,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "green"
@@ -5522,12 +5995,9 @@
 	},
 /area/lazarus/outpost/yarilo/med/exam)
 "xi" = (
-/obj/structure/table,
-/obj/item/camera,
-/obj/item/storage/photo_album{
-	pixel_y = -10
-	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/structure/table_frame,
+/obj/item/stack/sheet/metal,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "blue"
@@ -5567,6 +6037,7 @@
 "xo" = (
 /obj/effect/baseturf_helper/lazarus,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/random_spawners/blood_often,
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -5623,6 +6094,16 @@
 	icon_state = "whiteblue"
 	},
 /area/lazarus/outpost/yarilo/med)
+"xB" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/decal/cleanable/blood,
+/turf/simulated/floor/carpet/red,
+/area/lazarus/outpost/rod/living/sec)
 "xD" = (
 /turf/simulated/floor/plasteel{
 	icon_state = "green"
@@ -5648,6 +6129,7 @@
 	dir = 8
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
 /turf/simulated/floor/plasteel{
 	dir = 10;
 	icon_state = "green"
@@ -5670,6 +6152,7 @@
 	icon_state = "1-2"
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/rod/living/b)
 "xY" = (
@@ -5692,11 +6175,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plasteel,
 /area/lazarus/outpost/yarilo/engi)
-"yd" = (
-/obj/effect/spawner/window/reinforced/grilled,
-/obj/effect/spawner/random_spawners/dirt_frequent,
-/turf/simulated/floor/plating,
-/area/lazarus/outpost/rod/botany)
 "ye" = (
 /obj/effect/decal/cleanable/vomit,
 /obj/structure/cable{
@@ -5705,6 +6183,8 @@
 	icon_state = "4-8"
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/decal/cleanable/ash,
+/obj/effect/spawner/random_spawners/blood_maybe,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/rod/bar)
 "yf" = (
@@ -5748,6 +6228,7 @@
 	icon_state = "1-2"
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
 /turf/simulated/floor/plasteel{
 	icon_state = "freezerfloor"
 	},
@@ -5774,11 +6255,10 @@
 /turf/simulated/floor/wood/oak,
 /area/lazarus/outpost/rod/hop)
 "yr" = (
-/obj/effect/spawner/random_spawners/dirt_frequent,
-/obj/structure/table_frame,
-/obj/item/stack/sheet/metal,
+/obj/effect/spawner/window/reinforced/grilled,
+/obj/effect/mapping_helpers/damaged_window,
 /turf/simulated/floor/plating,
-/area/lazarus/outpost/rod/bar)
+/area/lazarus/outpost/rod)
 "yt" = (
 /obj/effect/spawner/window/reinforced/grilled,
 /turf/simulated/floor/plating,
@@ -5788,15 +6268,9 @@
 /turf/simulated/wall,
 /area/lazarus/outpost/rod/living/b)
 "yw" = (
-/obj/item/stack/sheet/wood{
-	amount = 13
-	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
-/turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "greencorner"
-	},
-/area/lazarus/outpost/rod)
+/turf/simulated/wall,
+/area/lazarus/outpost/rod/living/sec)
 "yz" = (
 /obj/effect/baseturf_helper/lazarus,
 /turf/simulated/floor/plating/asteroid/lazarus/dirt,
@@ -5843,6 +6317,34 @@
 	icon_state = "0-8"
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/item/flashlight/flare{
+	pixel_x = 4;
+	pixel_y = 1
+	},
+/obj/item/flashlight/flare{
+	pixel_x = -10;
+	pixel_y = -2
+	},
+/obj/item/flashlight/flare{
+	pixel_x = 5;
+	pixel_y = -4
+	},
+/obj/item/flashlight/flare{
+	pixel_x = -5;
+	pixel_y = 10
+	},
+/obj/item/flashlight/flare{
+	pixel_x = -9;
+	pixel_y = 4
+	},
+/obj/item/flashlight/flare{
+	pixel_x = -8;
+	pixel_y = -7
+	},
+/obj/item/flashlight/flare{
+	pixel_x = 6;
+	pixel_y = 6
+	},
 /turf/simulated/floor/plasteel,
 /area/lazarus/outpost/rod/exit)
 "yQ" = (
@@ -5859,6 +6361,7 @@
 "yU" = (
 /obj/item/kirbyplants,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/random_spawners/blood_often,
 /turf/simulated/floor/plasteel{
 	icon_state = "whiteblue"
 	},
@@ -5902,6 +6405,10 @@
 	icon_state = "darkblue"
 	},
 /area/lazarus/outpost/yarilo/med/morgue)
+"zd" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/turf/simulated/wall,
+/area/lazarus/outpost/rod/living/a)
 "zg" = (
 /obj/structure/table/glass,
 /obj/item/folder/white,
@@ -5985,6 +6492,7 @@
 	dir = 8
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/random_spawners/blood_maybe,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/rod/bar)
 "zs" = (
@@ -6017,6 +6525,7 @@
 	dir = 4
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/random_spawners/blood_maybe,
 /turf/simulated/floor/carpet,
 /area/lazarus/outpost/rod/bar)
 "zu" = (
@@ -6026,6 +6535,8 @@
 	icon_state = "1-2"
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/random_spawners/blood_often,
+/obj/effect/spawner/lootdrop/lazarus/trash,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "redcorner"
@@ -6048,9 +6559,10 @@
 	},
 /area/lazarus/outpost/yarilo/med/morgue)
 "zx" = (
-/obj/structure/girder,
+/obj/effect/spawner/window/reinforced/grilled,
+/obj/effect/mapping_helpers/damaged_window,
 /turf/simulated/floor/plating,
-/area/lazarus/outpost/rod/living/sec)
+/area/lazarus/outpost/rod/exit)
 "zy" = (
 /obj/structure/bed{
 	dir = 1
@@ -6130,14 +6642,12 @@
 /turf/simulated/floor/plating,
 /area/lazarus/geotherm)
 "zN" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
+/obj/effect/spawner/window/reinforced/grilled,
+/obj/structure/cable,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/mapping_helpers/damaged_window,
 /turf/simulated/floor/plating,
-/area/lazarus/outpost/rod/maint)
+/area/lazarus/outpost/rod/sec/interrogation)
 "zO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
@@ -6218,17 +6728,10 @@
 	icon_state = "white"
 	},
 /area/lazarus/outpost/yarilo/med/virology)
-"Af" = (
-/obj/effect/spawner/random_spawners/blood_maybe,
-/obj/effect/spawner/random_spawners/dirt_frequent,
-/turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "greencorner"
-	},
-/area/lazarus/outpost/rod/living/a)
 "Ai" = (
 /obj/item/kirbyplants,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/random_spawners/blood_often,
 /turf/simulated/floor/plasteel{
 	icon_state = "red"
 	},
@@ -6328,6 +6831,7 @@
 	dir = 4
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
 /turf/simulated/floor/plasteel,
 /area/lazarus/outpost/rod/iaa)
 "AD" = (
@@ -6403,6 +6907,7 @@
 	},
 /obj/structure/holosign/barrier,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/random_spawners/blood_often,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "redcorner"
@@ -6429,7 +6934,8 @@
 /area/lazarus/outpost/rod/sec/hos)
 "AS" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
-/obj/effect/spawner/random_spawners/blood_maybe,
+/obj/structure/table_frame,
+/obj/item/stack/sheet/metal,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/rod/bar)
 "AU" = (
@@ -6445,9 +6951,15 @@
 	icon_state = "whiteyellowfull"
 	},
 /area/lazarus/outpost/yarilo/med/chem)
+"AV" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/random_spawners/blood_often,
+/turf/simulated/floor/plating,
+/area/lazarus/outpost/rod)
 "AW" = (
 /obj/structure/bed,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/item/bedsheet/green,
 /turf/simulated/floor/plasteel{
 	dir = 6;
 	icon_state = "green"
@@ -6499,10 +7011,19 @@
 /obj/machinery/chem_master,
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/effect/spawner/random_spawners/blood_maybe,
+/obj/effect/spawner/lootdrop/lazarus/trash,
 /turf/simulated/floor/plasteel{
 	icon_state = "freezerfloor"
 	},
 /area/lazarus/outpost/rod/kitchen)
+"Bn" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
+/turf/simulated/floor/plasteel{
+	dir = 4;
+	icon_state = "greencorner"
+	},
+/area/lazarus/outpost/rod/living/b)
 "Bo" = (
 /obj/structure/bed,
 /obj/item/bedsheet/black,
@@ -6510,6 +7031,7 @@
 /obj/structure/sign/poster/ripped{
 	pixel_y = -32
 	},
+/obj/effect/mob_spawn/human/lazarus/security,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/rod/living/sec)
 "Bp" = (
@@ -6545,6 +7067,17 @@
 	icon_state = "cafeteria"
 	},
 /area/lazarus/outpost/yarilo/living/dinner)
+"Bx" = (
+/obj/structure/closet,
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/item/clothing/under/color/random,
+/obj/item/clothing/suit/hooded/wintercoat,
+/obj/item/clothing/suit/hooded/wintercoat,
+/turf/simulated/floor/plasteel{
+	dir = 6;
+	icon_state = "green"
+	},
+/area/lazarus/outpost/rod/living/b)
 "Bz" = (
 /obj/machinery/door/airlock/hatch{
 	name = "Аванпост ''Ярило''"
@@ -6582,12 +7115,15 @@
 	},
 /area/lazarus/outpost/yarilo/engi)
 "BF" = (
-/obj/effect/spawner/random_spawners/dirt_frequent,
-/obj/structure/spider/stickyweb,
-/turf/simulated/floor/plasteel{
-	icon_state = "cafeteria"
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
-/area/lazarus/outpost/rod/kitchen)
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
+/turf/simulated/floor/plating,
+/area/lazarus/outpost/rod/maint)
 "BG" = (
 /obj/structure/table,
 /obj/item/camera,
@@ -6661,6 +7197,8 @@
 "BX" = (
 /obj/structure/closet,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/item/clothing/suit/hooded/wintercoat,
+/obj/item/clothing/suit/hooded/wintercoat,
 /turf/simulated/floor/plasteel,
 /area/lazarus/outpost/rod/exit)
 "Ca" = (
@@ -6675,16 +7213,13 @@
 /turf/simulated/wall/r_wall,
 /area/lazarus/outpost/yarilo/med/exam)
 "Cf" = (
-/obj/effect/spawner/window/reinforced/grilled,
-/obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2"
+/obj/effect/spawner/random_spawners/blood_maybe,
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "greencorner"
 	},
-/obj/structure/curtain{
-	color = "#696969"
-	},
-/turf/simulated/floor/plating,
-/area/lazarus/outpost/rod/sec/hos)
+/area/lazarus/outpost/rod/living/a)
 "Cg" = (
 /obj/structure/flora/grass/both,
 /turf/simulated/floor/plating/asteroid/lazarus/dirt,
@@ -6739,6 +7274,7 @@
 "Cr" = (
 /obj/structure/closet,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/item/clothing/suit/hooded/wintercoat/medical,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/rod/exit)
 "Cv" = (
@@ -6796,7 +7332,7 @@
 "CI" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plating,
-/area/lazarus/outpost/rod/living/a)
+/area/lazarus/outpost/rod)
 "CJ" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -6853,6 +7389,7 @@
 "CV" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/effect/landmark/damageturf,
+/obj/item/chair/stool,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "red"
@@ -6886,13 +7423,31 @@
 "Da" = (
 /obj/structure/closet,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/item/clothing/under/color/random,
+/obj/item/clothing/under/color/random,
+/obj/item/clothing/under/color/random,
+/obj/item/clothing/suit/hooded/wintercoat,
 /turf/simulated/floor/plasteel{
 	dir = 6;
 	icon_state = "green"
 	},
 /area/lazarus/outpost/rod/living/b)
+"Db" = (
+/obj/structure/grille,
+/obj/effect/decal/cleanable/glass,
+/obj/item/shard{
+	icon_state = "medium";
+	pixel_x = -5;
+	pixel_y = -8
+	},
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/turf/simulated/floor/plating,
+/area/lazarus/outpost/rod/exit)
 "Dc" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "red"
@@ -6913,12 +7468,12 @@
 /turf/simulated/floor/plating/asteroid/lazarus/snow,
 /area/lazarus/outdoors/yarilo)
 "Dl" = (
-/obj/structure/chair/stool{
-	dir = 1
-	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
-/turf/simulated/floor/plasteel,
-/area/lazarus/outpost/rod/sec/briefing)
+/obj/item/storage/photo_album{
+	pixel_y = -10
+	},
+/turf/simulated/floor/carpet/black,
+/area/lazarus/outpost/rod/hop)
 "Dm" = (
 /obj/structure/table/glass,
 /obj/item/storage/bag/chemistry,
@@ -6951,13 +7506,6 @@
 	icon_state = "cafeteria"
 	},
 /area/lazarus/outpost/yarilo/living/dinner)
-"Dt" = (
-/obj/machinery/door/airlock{
-	name = "Жилой отсек среднего класса"
-	},
-/obj/effect/spawner/random_spawners/dirt_frequent,
-/turf/simulated/floor/plasteel,
-/area/lazarus/outpost/rod/living/a)
 "Du" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/spawner/random_spawners/dirt_frequent,
@@ -6979,14 +7527,9 @@
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/rod)
 "Dy" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/effect/spawner/random_spawners/dirt_frequent,
-/turf/simulated/floor/plasteel,
-/area/lazarus/outpost/rod/sec/interrogation)
+/obj/structure/barricade/sandbags,
+/turf/simulated/floor/plating/asteroid/lazarus/snow,
+/area/lazarus/outdoors/rod)
 "DB" = (
 /obj/machinery/computer/pandemic,
 /obj/structure/cable{
@@ -7024,6 +7567,19 @@
 	icon_state = "whitegreen"
 	},
 /area/lazarus/outpost/yarilo/med/virology)
+"DI" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
+/turf/simulated/floor/plasteel{
+	dir = 4;
+	icon_state = "greencorner"
+	},
+/area/lazarus/outpost/rod)
 "DJ" = (
 /obj/machinery/hydroponics/constructable,
 /obj/effect/spawner/random_spawners/dirt_frequent,
@@ -7037,6 +7593,7 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/rod/sec/briefing)
 "DO" = (
@@ -7090,13 +7647,10 @@
 	},
 /area/lazarus/outpost/yarilo/engi/power)
 "DU" = (
-/obj/structure/closet,
 /obj/effect/spawner/random_spawners/dirt_frequent,
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "green"
-	},
-/area/lazarus/outpost/rod/living/b)
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/plasteel,
+/area/lazarus/outpost/rod/living/sec)
 "DW" = (
 /obj/machinery/bodyscanner{
 	dir = 4
@@ -7211,11 +7765,22 @@
 	dir = 4
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
 /turf/simulated/floor/plasteel{
 	dir = 9;
 	icon_state = "green"
 	},
 /area/lazarus/outpost/rod/living/locker)
+"EC" = (
+/obj/structure/bed,
+/obj/structure/sign/poster/official/random/north,
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
+/turf/simulated/floor/plasteel{
+	dir = 5;
+	icon_state = "green"
+	},
+/area/lazarus/outpost/rod/living/b)
 "ED" = (
 /obj/effect/spawner/window/reinforced/grilled,
 /turf/simulated/floor/plating,
@@ -7230,6 +7795,13 @@
 	icon_state = "green"
 	},
 /area/lazarus/outpost/rod/living/locker)
+"EH" = (
+/obj/effect/spawner/window/reinforced/grilled,
+/obj/structure/curtain/open{
+	color = "#696969"
+	},
+/turf/simulated/floor/plating,
+/area/lazarus/outpost/rod/living/b)
 "EI" = (
 /turf/simulated/wall,
 /area/lazarus/outpost/rod/iaa)
@@ -7306,6 +7878,8 @@
 "EY" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/structure/table_frame,
+/obj/effect/spawner/random_spawners/blood_maybe,
+/obj/item/stack/sheet/plasteel,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark";
 	dir = 6
@@ -7319,6 +7893,7 @@
 "Fb" = (
 /obj/structure/extinguisher_cabinet/directional/west,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/random_spawners/blood_maybe,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/rod/bar)
 "Fe" = (
@@ -7342,6 +7917,7 @@
 	icon_state = "4-8"
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/damageturf,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/rod/living/sec)
 "Fn" = (
@@ -7408,10 +7984,14 @@
 /area/space)
 "Fw" = (
 /obj/structure/bed,
-/obj/item/bedsheet/black,
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/rod/living/sec)
+"Fy" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/random_spawners/blood_often,
+/turf/simulated/floor/plasteel,
+/area/lazarus/outpost/rod/living/a)
 "FA" = (
 /turf/simulated/floor/plasteel{
 	icon_state = "darkyellowfull"
@@ -7424,11 +8004,6 @@
 	},
 /turf/simulated/floor/engine,
 /area/lazarus/outpost/yarilo/med/chem)
-"FH" = (
-/obj/structure/table,
-/obj/effect/spawner/random_spawners/dirt_frequent,
-/turf/simulated/floor/plating,
-/area/lazarus/outpost/rod/bar)
 "FI" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -7560,9 +8135,14 @@
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/rod/living/b)
 "Gp" = (
-/obj/structure/barricade/sandbags,
-/turf/simulated/floor/plating/asteroid/lazarus/snow,
-/area/lazarus/outdoors/rod)
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/turf/simulated/floor/plasteel,
+/area/lazarus/outpost/rod/sec/interrogation)
 "Gq" = (
 /obj/structure/flora/bush,
 /turf/simulated/floor/plating/asteroid/lazarus/dirt,
@@ -7628,14 +8208,12 @@
 	},
 /area/lazarus/outpost/yarilo/med)
 "GJ" = (
-/obj/effect/spawner/window/reinforced/grilled,
-/obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2"
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/turf/simulated/floor/plasteel{
+	dir = 4;
+	icon_state = "green"
 	},
-/obj/effect/mapping_helpers/damaged_window,
-/turf/simulated/floor/plating,
-/area/lazarus/outpost/rod/sec/briefing)
+/area/lazarus/outpost/rod/living/b)
 "GO" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -7735,6 +8313,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/effect/landmark/damageturf,
+/obj/effect/spawner/random_spawners/blood_maybe,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/rod/bar)
 "Hl" = (
@@ -7758,6 +8337,7 @@
 	icon_state = "0-2"
 	},
 /obj/effect/landmark/damageturf,
+/obj/effect/spawner/random_spawners/blood_often,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "greencorner"
@@ -7770,6 +8350,7 @@
 	icon_state = "2-8"
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
 /turf/simulated/floor/plasteel{
 	icon_state = "greencorner";
 	dir = 8
@@ -7800,16 +8381,15 @@
 	},
 /area/lazarus/outpost/rod/living/cryo)
 "HA" = (
-/obj/effect/spawner/random_spawners/blood_often,
-/obj/effect/landmark/damageturf,
-/obj/item/gun/projectile/shotgun/automatic/combat,
-/obj/item/storage/box/buck,
 /obj/effect/spawner/random_spawners/dirt_frequent,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "green"
-	},
-/area/lazarus/outpost/rod/living/a)
+/turf/simulated/floor/carpet/black,
+/area/lazarus/outpost/rod/hop)
+"HD" = (
+/obj/effect/spawner/window/reinforced/grilled,
+/obj/structure/cable,
+/obj/effect/mapping_helpers/damaged_window,
+/turf/simulated/floor/plating,
+/area/lazarus/outpost/rod/sec/hos)
 "HE" = (
 /obj/structure/cable/yellow{
 	d1 = 1;
@@ -7827,6 +8407,16 @@
 /obj/structure/flora/bush,
 /turf/simulated/floor/plating/asteroid/lazarus/dirt,
 /area/lazarus/outdoors/rod)
+"HH" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
+/turf/simulated/floor/plating,
+/area/lazarus/outpost/rod/maint)
 "HI" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plasteel{
@@ -7835,21 +8425,16 @@
 	},
 /area/lazarus/outpost/rod/hop)
 "HK" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/structure/disposalpipe/segment{
+/obj/structure/chair/stool/bar/dark{
 	dir = 4
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
-/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/random_spawners/blood_maybe,
 /turf/simulated/floor/plasteel{
 	dir = 4;
-	icon_state = "greencorner"
+	icon_state = "green"
 	},
-/area/lazarus/outpost/rod)
+/area/lazarus/outpost/rod/bar)
 "HL" = (
 /obj/machinery/power/terminal,
 /obj/structure/cable/yellow,
@@ -7870,6 +8455,7 @@
 "HS" = (
 /obj/item/kirbyplants,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/item/paper,
 /turf/simulated/floor/plasteel{
 	icon_state = "blue"
 	},
@@ -7882,6 +8468,7 @@
 	icon_state = "0-2"
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
 /turf/simulated/floor/plasteel{
 	icon_state = "freezerfloor"
 	},
@@ -7921,16 +8508,22 @@
 	},
 /area/lazarus/outpost/yarilo/living/locker)
 "Ig" = (
-/mob/living/simple_animal/hostile/poison/giant_spider,
-/turf/simulated/floor/plating/asteroid/lazarus/snow,
-/area/lazarus/outdoors/rod)
+/obj/effect/spawner/window/reinforced/grilled,
+/obj/structure/barricade/wooden/crude/snow,
+/obj/structure/curtain{
+	color = "#696969"
+	},
+/obj/effect/mapping_helpers/damaged_window,
+/turf/simulated/floor/plating,
+/area/lazarus/outpost/rod/living/a)
 "Ih" = (
+/obj/structure/holosign/barrier,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/random_spawners/blood_often,
 /turf/simulated/floor/plasteel{
-	dir = 4;
 	icon_state = "redcorner"
 	},
-/area/lazarus/outpost/rod/living/sec)
+/area/lazarus/outpost/rod)
 "Il" = (
 /obj/structure/table,
 /obj/item/defibrillator/loaded,
@@ -7961,13 +8554,10 @@
 /turf/simulated/floor/plasteel,
 /area/lazarus/outpost/yarilo/engi/ce)
 "Iq" = (
-/obj/structure/bed,
-/obj/effect/spawner/random_spawners/dirt_frequent,
-/turf/simulated/floor/plasteel{
-	dir = 10;
-	icon_state = "green"
-	},
-/area/lazarus/outpost/rod/living/b)
+/obj/structure/grille,
+/obj/effect/decal/cleanable/glass,
+/turf/simulated/floor/plating,
+/area/lazarus/outpost/rod/living/cryo)
 "It" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -7978,6 +8568,15 @@
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/carpet/black,
 /area/lazarus/outpost/rod/hop)
+"Iv" = (
+/obj/structure/bed,
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/item/bedsheet/green,
+/turf/simulated/floor/plasteel{
+	dir = 6;
+	icon_state = "green"
+	},
+/area/lazarus/outpost/rod/living/b)
 "Iz" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -8008,10 +8607,13 @@
 	},
 /area/lazarus/outpost/yarilo/living)
 "ID" = (
-/obj/structure/sign/poster/official/random/south,
 /obj/machinery/light/directional/south,
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/structure/sign/poster/ripped{
+	pixel_y = -32
+	},
+/obj/effect/spawner/lootdrop/lazarus/trash,
 /turf/simulated/floor/plasteel{
 	icon_state = "whitegreenfull"
 	},
@@ -8037,6 +8639,7 @@
 	icon_state = "1-2"
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/structure/spider/stickyweb,
 /turf/simulated/floor/plasteel{
 	icon_state = "cafeteria"
 	},
@@ -8069,6 +8672,11 @@
 	icon_state = "green"
 	},
 /area/lazarus/outpost/yarilo/living/locker)
+"IO" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/item/paper,
+/turf/simulated/floor/carpet/black,
+/area/lazarus/outpost/rod/hop)
 "IP" = (
 /obj/effect/spawner/window/reinforced/grilled,
 /turf/simulated/floor/plating,
@@ -8124,6 +8732,7 @@
 	},
 /obj/machinery/light/directional/north,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
 /turf/simulated/floor/plasteel{
 	icon_state = "whitegreenfull"
 	},
@@ -8173,10 +8782,12 @@
 	},
 /area/lazarus/outpost/rod/sec/interrogation)
 "Ju" = (
-/obj/effect/spawner/window/reinforced/grilled,
 /obj/effect/spawner/random_spawners/dirt_frequent,
-/turf/simulated/floor/plating,
-/area/lazarus/outpost/rod/bar)
+/obj/effect/spawner/random_spawners/blood_often,
+/turf/simulated/floor/plasteel{
+	icon_state = "whiteblue"
+	},
+/area/lazarus/outpost/rod/med)
 "Jx" = (
 /obj/machinery/photocopier,
 /obj/effect/spawner/random_spawners/dirt_frequent,
@@ -8297,6 +8908,8 @@
 /area/lazarus/outpost/rod/bar)
 "JZ" = (
 /obj/structure/closet,
+/obj/item/clothing/under/color/random,
+/obj/item/clothing/suit/hooded/wintercoat/security,
 /turf/simulated/floor/plasteel{
 	dir = 9;
 	icon_state = "red"
@@ -8317,6 +8930,7 @@
 /obj/structure/sign/poster/official/random/north,
 /mob/living/simple_animal/hostile/abomination/altform1,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/plasteel{
 	dir = 9;
 	icon_state = "green"
@@ -8369,6 +8983,18 @@
 	icon_state = "cafeteria"
 	},
 /area/lazarus/outpost/yarilo/living/dinner)
+"Km" = (
+/obj/structure/closet,
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/item/clothing/under/color/random,
+/obj/item/clothing/under/color/random,
+/obj/item/clothing/under/color/random,
+/obj/item/clothing/suit/hooded/wintercoat,
+/turf/simulated/floor/plasteel{
+	dir = 10;
+	icon_state = "green"
+	},
+/area/lazarus/outpost/rod/living/b)
 "Kn" = (
 /obj/effect/spawner/random_spawners/wall_rusted_always,
 /obj/effect/decal/cleanable/fungus,
@@ -8382,14 +9008,19 @@
 	},
 /obj/machinery/light/directional/east,
 /obj/effect/spawner/random_spawners/dirt_frequent,
-/obj/structure/curtain{
-	color = "#696969"
-	},
 /turf/simulated/floor/carpet/red,
 /area/lazarus/outpost/rod/living/sec)
 "Kp" = (
 /obj/structure/table/reinforced,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/item/radio{
+	pixel_x = -8;
+	pixel_y = 6
+	},
+/obj/item/radio{
+	pixel_x = 8;
+	pixel_y = 6
+	},
 /turf/simulated/floor/plasteel,
 /area/lazarus/outpost/rod/exit)
 "Ks" = (
@@ -8409,6 +9040,8 @@
 	icon_state = "4-8"
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/item/paper,
+/obj/item/paper,
 /turf/simulated/floor/carpet/black,
 /area/lazarus/outpost/rod/hop)
 "Kv" = (
@@ -8422,20 +9055,17 @@
 "Kx" = (
 /obj/effect/spawner/window/reinforced/grilled,
 /obj/structure/barricade/wooden/crude/snow,
-/obj/structure/curtain{
-	color = "#696969"
-	},
+/obj/effect/mapping_helpers/damaged_window,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/rod/living/a)
 "KB" = (
-/obj/item/flag/nt,
-/obj/effect/spawner/random_spawners/dirt_frequent,
-/obj/effect/spawner/random_spawners/dirt_frequent,
-/turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "red"
+/obj/machinery/door/airlock{
+	name = "Жилой отсек среднего класса"
 	},
-/area/lazarus/outpost/rod/sec/hos)
+/obj/effect/mapping_helpers/machinery/destroyed,
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/turf/simulated/floor/plasteel,
+/area/lazarus/outpost/rod/living/a)
 "KD" = (
 /turf/simulated/wall,
 /area/lazarus/outpost/yarilo/living)
@@ -8489,6 +9119,16 @@
 	icon_state = "whitebluefull"
 	},
 /area/lazarus/outpost/yarilo/med/exam)
+"KM" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/random_spawners/blood_often,
+/turf/simulated/floor/plating,
+/area/lazarus/outpost/rod)
 "KO" = (
 /obj/structure/cable/yellow{
 	d1 = 4;
@@ -8547,12 +9187,14 @@
 "KV" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plasteel{
-	icon_state = "whiteblue"
+	icon_state = "cafeteria"
 	},
-/area/lazarus/outpost/rod/med)
+/area/lazarus/outpost/rod/kitchen)
 "KW" = (
 /obj/structure/bed,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/item/bedsheet/grey,
+/obj/effect/spawner/lootdrop/lazarus/trash,
 /turf/simulated/floor/plasteel{
 	dir = 10;
 	icon_state = "green"
@@ -8598,6 +9240,7 @@
 	icon_state = "1-2"
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/random_spawners/blood_often,
 /turf/simulated/floor/plasteel{
 	icon_state = "redcorner"
 	},
@@ -8622,8 +9265,9 @@
 /area/lazarus/outpost/yarilo/med/exam)
 "Ln" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
-/turf/simulated/wall,
-/area/lazarus/outpost/rod/living/b)
+/obj/effect/spawner/random_spawners/blood_maybe,
+/turf/simulated/floor/plating,
+/area/lazarus/outpost/rod/bar)
 "Lr" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -8684,6 +9328,16 @@
 	},
 /turf/simulated/floor/plating,
 /area/lazarus/geotherm)
+"LC" = (
+/obj/structure/bed,
+/obj/structure/sign/poster/official/random/north,
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/item/bedsheet/yellow,
+/turf/simulated/floor/plasteel{
+	dir = 5;
+	icon_state = "green"
+	},
+/area/lazarus/outpost/rod/living/a)
 "LE" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -8695,6 +9349,7 @@
 	pixel_x = 10;
 	pixel_y = 9
 	},
+/obj/effect/spawner/random_spawners/blood_maybe,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/rod/bar)
 "LF" = (
@@ -8727,7 +9382,8 @@
 	icon_state = "pipe-c"
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
-/obj/effect/landmark/damageturf,
+/obj/effect/mob_spawn/human/lazarus/colonist,
+/obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/plasteel,
 /area/lazarus/outpost/rod/bar)
 "LK" = (
@@ -8819,6 +9475,7 @@
 /obj/structure/table,
 /obj/structure/extinguisher_cabinet/directional/north,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/item/mounted/frame/apc_frame,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "green"
@@ -8851,6 +9508,15 @@
 /obj/structure/sign/barsign,
 /turf/simulated/wall,
 /area/lazarus/outpost/rod/bar)
+"Mp" = (
+/obj/machinery/door/airlock{
+	name = "Жилой отсек среднего класса"
+	},
+/obj/effect/mapping_helpers/airlock/welded,
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/structure/barricade/wooden/crude,
+/turf/simulated/floor/plating,
+/area/lazarus/outpost/rod/living/a)
 "Mu" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -8870,6 +9536,11 @@
 	icon_state = "yellow"
 	},
 /area/lazarus/outpost/yarilo/engi/storage)
+"Mx" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/random_spawners/blood_often,
+/turf/simulated/floor/plating,
+/area/lazarus/outpost/rod/living/a)
 "My" = (
 /obj/structure/flora/tree/pine,
 /turf/simulated/floor/plating/asteroid/lazarus/snow,
@@ -8927,6 +9598,7 @@
 	dir = 4
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/random_spawners/blood_often,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "redcorner"
@@ -8953,9 +9625,6 @@
 /turf/simulated/floor/plating/asteroid/lazarus/snow,
 /area/lazarus/outdoors/yarilo)
 "MQ" = (
-/obj/structure/chair/stool{
-	dir = 1
-	},
 /obj/structure/cable{
 	d1 = 2;
 	d2 = 8;
@@ -9018,13 +9687,15 @@
 /area/lazarus/outpost/rod/bar)
 "Nc" = (
 /obj/effect/spawner/window/reinforced/grilled,
-/obj/structure/barricade/wooden/crude/snow,
-/obj/structure/curtain{
+/obj/structure/cable{
+	d2 = 4;
+	icon_state = "0-4"
+	},
+/obj/structure/curtain/open{
 	color = "#696969"
 	},
-/obj/effect/mapping_helpers/damaged_window,
 /turf/simulated/floor/plating,
-/area/lazarus/outpost/rod/living/a)
+/area/lazarus/outpost/rod/living/sec)
 "Ne" = (
 /turf/simulated/floor/plasteel{
 	dir = 8;
@@ -9054,6 +9725,10 @@
 	icon_state = "freezerfloor"
 	},
 /area/lazarus/outpost/yarilo/toilet)
+"Nl" = (
+/obj/structure/sink/puddle,
+/turf/simulated/floor/plating/asteroid/lazarus/snow,
+/area/lazarus/outdoors)
 "Nm" = (
 /obj/structure/cable/yellow{
 	d1 = 2;
@@ -9071,9 +9746,11 @@
 /turf/simulated/floor/carpet,
 /area/lazarus/cabin/crusader)
 "No" = (
-/obj/structure/spider/stickyweb,
-/turf/simulated/floor/plating/asteroid/lazarus/dirt,
-/area/lazarus/outdoors/rod)
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/structure/table_frame,
+/obj/item/stack/sheet/metal,
+/turf/simulated/floor/carpet,
+/area/lazarus/outpost/rod/bar)
 "Nu" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -9085,6 +9762,8 @@
 	},
 /area/lazarus/outpost/rod)
 "Nw" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/random_spawners/blood_often,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "redcorner"
@@ -9106,6 +9785,7 @@
 /obj/machinery/light/directional/west,
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/effect/landmark/damageturf,
+/obj/effect/spawner/random_spawners/blood_maybe,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "green"
@@ -9155,18 +9835,10 @@
 	},
 /area/lazarus/outpost/yarilo/med/morgue)
 "NL" = (
-/obj/structure/grille,
-/obj/effect/decal/cleanable/glass,
-/obj/item/shard{
-	icon_state = "medium";
-	pixel_x = -5;
-	pixel_y = -8
-	},
-/obj/item/shard{
-	icon_state = "medium"
-	},
+/obj/effect/spawner/window/reinforced/grilled,
+/obj/effect/mapping_helpers/damaged_window,
 /turf/simulated/floor/plating,
-/area/lazarus/outpost/rod/exit)
+/area/lazarus/outpost/rod/hop)
 "NN" = (
 /obj/effect/decal/cleanable/fungus,
 /turf/simulated/wall,
@@ -9254,6 +9926,7 @@
 "Og" = (
 /obj/machinery/light/directional/north,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "neutral"
@@ -9312,9 +9985,7 @@
 "Ov" = (
 /obj/structure/bed,
 /obj/effect/spawner/random_spawners/dirt_frequent,
-/obj/structure/sign/poster/ripped{
-	pixel_y = -32
-	},
+/obj/item/bedsheet/yellow,
 /turf/simulated/floor/plasteel{
 	dir = 10;
 	icon_state = "green"
@@ -9396,15 +10067,15 @@
 /area/lazarus/outpost/rod/kitchen)
 "OJ" = (
 /obj/machinery/light/small/directional/west,
-/obj/effect/spawner/random_spawners/blood_often,
-/obj/effect/landmark/damageturf,
 /obj/item/ammo_casing/shotgun/buckshot,
 /obj/item/ammo_casing/shotgun/buckshot,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/rod/living/a)
 "OK" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "red"
@@ -9450,6 +10121,7 @@
 "OU" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/item/chair,
+/obj/effect/spawner/random_spawners/blood_maybe,
 /turf/simulated/floor/plasteel{
 	icon_state = "greencorner";
 	dir = 8
@@ -9505,9 +10177,13 @@
 	},
 /area/lazarus/outpost/rod/toilet)
 "Pj" = (
-/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/window/reinforced/grilled,
+/obj/effect/mapping_helpers/damaged_window,
+/obj/structure/curtain/open{
+	color = "#696969"
+	},
 /turf/simulated/floor/plating,
-/area/lazarus/outpost/rod/bar)
+/area/lazarus/outpost/rod/living/b)
 "Pk" = (
 /obj/structure/chair/stool/bar/dark{
 	dir = 1
@@ -9520,10 +10196,12 @@
 	},
 /area/lazarus/outpost/rod/bar)
 "Pl" = (
-/obj/effect/spawner/window/reinforced/grilled,
-/obj/effect/mapping_helpers/damaged_window,
-/turf/simulated/floor/plating,
-/area/lazarus/outpost/rod/living/sec)
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/turf/simulated/floor/plasteel{
+	dir = 5;
+	icon_state = "darkred"
+	},
+/area/lazarus/outpost/rod/sec/arsenal)
 "Pm" = (
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/yarilo/engi/storage/secured)
@@ -9534,6 +10212,7 @@
 	req_access_txt = "25"
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/random_spawners/blood_maybe,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark";
 	dir = 6
@@ -9601,6 +10280,7 @@
 /area/lazarus/outpost/yarilo/engi/power)
 "PG" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "greencorner"
@@ -9708,8 +10388,8 @@
 	},
 /area/lazarus/outpost/yarilo/med/cryo)
 "Qa" = (
-/obj/structure/holosign/barrier,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/random_spawners/blood_often,
 /turf/simulated/floor/plasteel{
 	icon_state = "redcorner"
 	},
@@ -9719,10 +10399,6 @@
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/rod/maint)
-"Qc" = (
-/obj/structure/girder,
-/turf/simulated/floor/plating,
-/area/lazarus/outpost/rod/sec/briefing)
 "Qd" = (
 /obj/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
@@ -9749,6 +10425,7 @@
 /obj/structure/sign/poster/ripped{
 	pixel_y = -32
 	},
+/obj/effect/spawner/lootdrop/lazarus/trash,
 /turf/simulated/floor/plasteel{
 	icon_state = "redcorner"
 	},
@@ -9760,6 +10437,10 @@
 /obj/structure/closet,
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/effect/spawner/random_spawners/blood_maybe,
+/obj/item/clothing/under/color/random,
+/obj/item/clothing/under/color/random,
+/obj/item/clothing/under/color/random,
+/obj/item/clothing/suit/hooded/wintercoat,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/rod/living/a)
 "Qn" = (
@@ -9805,27 +10486,31 @@
 /turf/simulated/floor/plating/asteroid/lazarus/snow,
 /area/lazarus/outdoors/rod)
 "Qw" = (
+/obj/effect/spawner/window/reinforced/grilled,
 /obj/structure/cable{
 	d2 = 8;
 	icon_state = "0-8"
 	},
-/obj/effect/decal/cleanable/glass,
-/obj/item/shard{
-	icon_state = "small";
-	pixel_x = 10
-	},
-/obj/structure/grille/broken,
-/obj/item/shard{
-	icon_state = "medium";
-	pixel_x = -5;
-	pixel_y = -8
-	},
+/obj/effect/mapping_helpers/damaged_window,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/rod/sec/interrogation)
 "Qy" = (
 /obj/structure/flora/ausbushes/sparsegrass,
 /turf/simulated/floor/plating/asteroid/lazarus/dirt,
 /area/lazarus/outdoors/rod)
+"QA" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "red"
+	},
+/area/lazarus/outpost/rod/sec/hos)
 "QD" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -9959,6 +10644,7 @@
 	icon_state = "1-2"
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "greencorner"
@@ -9974,6 +10660,8 @@
 "QK" = (
 /obj/structure/closet,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/item/clothing/under/color/random,
+/obj/item/clothing/under/color/random,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/rod/living/b)
 "QL" = (
@@ -9996,6 +10684,15 @@
 /obj/structure/table/reinforced,
 /obj/effect/decal/cleanable/cobweb2,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/item/flashlight,
+/obj/item/flashlight{
+	pixel_x = 6;
+	pixel_y = 10
+	},
+/obj/item/storage/firstaid{
+	pixel_x = -6;
+	pixel_y = 5
+	},
 /turf/simulated/floor/plasteel,
 /area/lazarus/outpost/rod/exit)
 "QR" = (
@@ -10014,8 +10711,14 @@
 /obj/machinery/light/small/directional/west,
 /obj/effect/landmark/damageturf,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
 /turf/simulated/floor/plasteel,
 /area/lazarus/outpost/rod/living/a)
+"QW" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
+/turf/simulated/floor/plasteel,
+/area/lazarus/outpost/rod/living/b)
 "QY" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 1
@@ -10099,15 +10802,6 @@
 	icon_state = "red"
 	},
 /area/lazarus/outpost/rod/sec/briefing)
-"Rv" = (
-/obj/machinery/door/airlock{
-	name = "Жилой отсек среднего класса"
-	},
-/obj/effect/mapping_helpers/airlock/welded,
-/obj/effect/spawner/random_spawners/dirt_frequent,
-/obj/structure/barricade/wooden/crude,
-/turf/simulated/floor/plating,
-/area/lazarus/outpost/rod/living/a)
 "Rw" = (
 /obj/structure/filingcabinet/chestdrawer/autopsy,
 /turf/simulated/floor/plasteel{
@@ -10127,6 +10821,14 @@
 /obj/structure/flora/tree/pine,
 /turf/simulated/floor/plating/asteroid/lazarus/dirt,
 /area/lazarus/outdoors)
+"Rz" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/random_spawners/blood_often,
+/obj/effect/spawner/lootdrop/lazarus/trash,
+/turf/simulated/floor/plasteel{
+	icon_state = "whiteblue"
+	},
+/area/lazarus/outpost/rod/med)
 "RA" = (
 /turf/simulated/wall,
 /area/lazarus/outpost/rod/bar)
@@ -10137,8 +10839,13 @@
 /obj/machinery/door/airlock/security/glass{
 	name = "Комната брифинга"
 	},
+/obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plasteel,
 /area/lazarus/outpost/rod/sec/interrogation)
+"RD" = (
+/obj/structure/girder,
+/turf/simulated/floor/plating,
+/area/lazarus/outpost/rod/living/sec)
 "RE" = (
 /obj/structure/bed,
 /obj/item/bedsheet/hos,
@@ -10159,6 +10866,7 @@
 	dir = 4
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/random_spawners/blood_often,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/rod/med)
 "RH" = (
@@ -10191,9 +10899,25 @@
 "RN" = (
 /turf/simulated/wall,
 /area/lazarus/outpost/yarilo/living/locker)
+"RO" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
+/turf/simulated/floor/plasteel{
+	icon_state = "cafeteria"
+	},
+/area/lazarus/outpost/rod/kitchen)
+"RQ" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
+/turf/simulated/floor/carpet,
+/area/lazarus/outpost/rod/hop)
 "RS" = (
 /obj/structure/rack,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/item/shovel,
+/obj/item/shovel,
+/obj/item/shovel,
+/obj/item/shovel,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/rod/exit)
 "RU" = (
@@ -10219,6 +10943,7 @@
 	icon_state = "0-2"
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/rod/living/b)
 "Sf" = (
@@ -10283,6 +11008,8 @@
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/effect/landmark/damageturf,
+/obj/effect/spawner/random_spawners/blood_maybe,
+/obj/effect/spawner/lootdrop/lazarus/trash,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "green"
@@ -10422,11 +11149,16 @@
 	},
 /area/lazarus/outdoors)
 "SW" = (
-/obj/effect/spawner/window/reinforced/grilled,
-/obj/structure/cable,
-/obj/effect/mapping_helpers/damaged_window,
-/turf/simulated/floor/plating,
-/area/lazarus/outpost/rod/iaa)
+/obj/structure/chair/stool/bar/dark{
+	dir = 1
+	},
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/random_spawners/blood_maybe,
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "green"
+	},
+/area/lazarus/outpost/rod/bar)
 "SX" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -10439,6 +11171,7 @@
 	icon_state = "2-8"
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/rod)
 "SZ" = (
@@ -10487,16 +11220,17 @@
 /turf/simulated/floor/plating/asteroid/lazarus/snow,
 /area/lazarus/outdoors/rod)
 "Tp" = (
-/obj/machinery/light/small/directional/east,
-/obj/effect/spawner/random_spawners/dirt_frequent,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "green"
+/obj/effect/spawner/window/reinforced/grilled,
+/obj/structure/barricade/wooden/crude/snow,
+/obj/structure/curtain{
+	color = "#696969"
 	},
-/area/lazarus/outpost/rod/living/b)
+/turf/simulated/floor/plating,
+/area/lazarus/outpost/rod/living/a)
 "Tq" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/effect/spawner/random_spawners/blood_maybe,
+/obj/effect/decal/cleanable/ash,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "greencorner"
@@ -10529,6 +11263,7 @@
 	icon_state = "2-8"
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/random_spawners/blood_often,
 /turf/simulated/floor/plasteel,
 /area/lazarus/outpost/rod/sec/interrogation)
 "Tx" = (
@@ -10678,6 +11413,7 @@
 	},
 /obj/machinery/light/small/directional/north,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
 /turf/simulated/floor/plasteel{
 	icon_state = "freezerfloor"
 	},
@@ -10685,6 +11421,7 @@
 "TX" = (
 /obj/machinery/light/directional/south,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/random_spawners/blood_often,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/rod)
 "TY" = (
@@ -10752,6 +11489,11 @@
 	dir = 8
 	},
 /area/lazarus/outpost/yarilo)
+"Uj" = (
+/obj/effect/spawner/window/reinforced/grilled,
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/turf/simulated/floor/plating,
+/area/lazarus/outpost/rod/bar)
 "Uk" = (
 /obj/machinery/light/directional/west,
 /obj/structure/cable{
@@ -10802,6 +11544,7 @@
 	icon_state = "1-2"
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
 /turf/simulated/floor/plasteel,
 /area/lazarus/outpost/rod)
 "Ur" = (
@@ -10821,6 +11564,7 @@
 "Uv" = (
 /obj/structure/extinguisher_cabinet/directional/south,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
 /turf/simulated/floor/plasteel{
 	icon_state = "red"
 	},
@@ -10967,11 +11711,11 @@
 	},
 /area/lazarus/outpost/rod/hop)
 "UV" = (
-/obj/effect/spawner/window/reinforced/grilled,
-/obj/structure/barricade/wooden/crude/snow,
-/obj/effect/mapping_helpers/damaged_window,
+/obj/structure/grille/broken,
+/obj/effect/decal/cleanable/glass,
+/obj/item/shard,
 /turf/simulated/floor/plating,
-/area/lazarus/outpost/rod/living/a)
+/area/lazarus/outpost/rod/living/cryo)
 "UW" = (
 /obj/structure/cable/yellow{
 	d1 = 1;
@@ -11014,18 +11758,6 @@
 "Vd" = (
 /turf/simulated/wall/r_wall,
 /area/lazarus/outpost/rod/hop)
-"Vf" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/structure/holosign/barrier,
-/obj/effect/spawner/random_spawners/dirt_frequent,
-/turf/simulated/floor/plasteel{
-	icon_state = "redcorner"
-	},
-/area/lazarus/outpost/rod)
 "Vg" = (
 /turf/simulated/wall,
 /area/lazarus/outpost/yarilo/med)
@@ -11036,6 +11768,7 @@
 	icon_state = "4-8"
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "brown"
@@ -11055,21 +11788,13 @@
 	},
 /area/lazarus/outdoors)
 "Vo" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/holosign/barrier,
+/obj/machinery/light/small/directional/east,
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "redcorner"
+	dir = 4;
+	icon_state = "green"
 	},
-/area/lazarus/outpost/rod)
+/area/lazarus/outpost/rod/living/b)
 "Vr" = (
 /obj/structure/closet/firecloset,
 /turf/simulated/floor/plating,
@@ -11093,11 +11818,10 @@
 	},
 /area/lazarus/outpost/yarilo/engi/ce)
 "Vx" = (
-/obj/structure/chair/stool/bar/dark{
-	dir = 1
-	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/effect/landmark/damageturf,
+/obj/effect/spawner/random_spawners/blood_maybe,
+/obj/item/chair/stool/bar/dark,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "green"
@@ -11144,6 +11868,10 @@
 /obj/structure/sign/poster/official/random/north,
 /obj/structure/closet,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/decal/cleanable/blood,
+/obj/item/clothing/under/color/random,
+/obj/item/clothing/suit/hooded/wintercoat,
+/obj/item/clothing/suit/hooded/wintercoat/security,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/rod/living/sec)
 "VG" = (
@@ -11202,6 +11930,7 @@
 "VR" = (
 /obj/item/kirbyplants,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "redcorner"
@@ -11235,10 +11964,14 @@
 /turf/simulated/floor/plasteel,
 /area/lazarus/outpost/rod/sec/interrogation)
 "VY" = (
-/obj/effect/spawner/window/reinforced/grilled,
-/obj/effect/mapping_helpers/damaged_window,
-/turf/simulated/floor/plating,
-/area/lazarus/outpost/rod/med)
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/random_spawners/blood_maybe,
+/obj/effect/spawner/lootdrop/lazarus/trash,
+/turf/simulated/floor/plasteel{
+	dir = 4;
+	icon_state = "greencorner"
+	},
+/area/lazarus/outpost/rod/living/a)
 "VZ" = (
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plasteel{
@@ -11308,6 +12041,15 @@
 "Wh" = (
 /turf/simulated/wall,
 /area/lazarus/outpost/rod/kitchen)
+"Wi" = (
+/obj/machinery/light/small/directional/east,
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
+/turf/simulated/floor/plasteel{
+	dir = 4;
+	icon_state = "green"
+	},
+/area/lazarus/outpost/rod/living/b)
 "Wk" = (
 /obj/effect/decal/cleanable/fungus,
 /obj/effect/spawner/random_spawners/wall_rusted_always,
@@ -11341,6 +12083,7 @@
 	icon_state = "1-2"
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/item/paper,
 /turf/simulated/floor/carpet/black,
 /area/lazarus/outpost/rod/hop)
 "Wo" = (
@@ -11350,8 +12093,8 @@
 /area/lazarus/cabin/crusader)
 "Wr" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
-/turf/simulated/wall,
-/area/lazarus/outpost/rod/living/sec)
+/turf/simulated/floor/plating,
+/area/lazarus/outpost/rod/sec/interrogation)
 "Wv" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -11508,6 +12251,7 @@
 "Xc" = (
 /obj/effect/baseturf_helper/lazarus,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/random_spawners/blood_maybe,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark";
 	dir = 6
@@ -11541,6 +12285,10 @@
 /obj/structure/flora/grass/green,
 /turf/simulated/floor/plating/asteroid/lazarus/dirt,
 /area/lazarus/outdoors)
+"Xh" = (
+/obj/structure/fence,
+/turf/simulated/floor/plating/asteroid/lazarus/dirt,
+/area/lazarus/outdoors/rod)
 "Xi" = (
 /obj/machinery/cryopod,
 /obj/effect/spawner/random_spawners/dirt_frequent,
@@ -11587,9 +12335,10 @@
 	},
 /area/lazarus/outpost/yarilo/med/virology)
 "Xo" = (
-/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/window/reinforced/grilled,
+/obj/effect/mapping_helpers/damaged_window,
 /turf/simulated/floor/plating,
-/area/lazarus/outpost/rod/med)
+/area/lazarus/outpost/rod/bar)
 "Xr" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -11709,6 +12458,7 @@
 	pixel_y = 3
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/structure/spider/stickyweb,
 /turf/simulated/floor/plasteel{
 	icon_state = "cafeteria"
 	},
@@ -11739,6 +12489,16 @@
 /turf/simulated/wall/r_wall,
 /area/lazarus/outpost/yarilo/engi/storage)
 "Yc" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/damageturf,
+/obj/effect/spawner/random_spawners/blood_maybe,
+/turf/simulated/floor/plating,
+/area/lazarus/outpost/rod/bar)
+"Yd" = (
+/obj/structure/flora/grass/green,
+/turf/simulated/floor/plating/asteroid/lazarus/snow,
+/area/lazarus/outdoors)
+"Ye" = (
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
@@ -11748,19 +12508,25 @@
 	dir = 4
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "bluecorner"
 	},
 /area/lazarus/outpost/rod)
-"Yd" = (
-/obj/structure/flora/grass/green,
-/turf/simulated/floor/plating/asteroid/lazarus/snow,
-/area/lazarus/outdoors)
 "Yg" = (
 /obj/effect/spawner/window/reinforced/grilled,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/yarilo/med/exam)
+"Yh" = (
+/obj/structure/table,
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
+/turf/simulated/floor/plasteel{
+	dir = 9;
+	icon_state = "green"
+	},
+/area/lazarus/outpost/rod/living/a)
 "Yi" = (
 /obj/structure/flora/bush,
 /turf/simulated/wall/indestructible/ice,
@@ -11807,6 +12573,15 @@
 	icon_state = "white"
 	},
 /area/lazarus/outpost/yarilo/med/virology)
+"Yu" = (
+/obj/effect/spawner/window/reinforced/grilled,
+/obj/structure/cable{
+	d2 = 4;
+	icon_state = "0-4"
+	},
+/obj/effect/mapping_helpers/damaged_window,
+/turf/simulated/floor/plating,
+/area/lazarus/outpost/rod/sec/interrogation)
 "Yv" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -11836,12 +12611,9 @@
 /turf/simulated/floor/wood,
 /area/lazarus/cabin/crusader)
 "Yx" = (
-/obj/machinery/cryopod{
-	dir = 4
-	},
-/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/structure/girder,
 /turf/simulated/floor/plating,
-/area/lazarus/outpost/rod/living/cryo)
+/area/lazarus/outpost/rod/sec/interrogation)
 "Yy" = (
 /obj/effect/spawner/window/reinforced/grilled,
 /obj/structure/cable,
@@ -11872,8 +12644,10 @@
 /turf/simulated/floor/plasteel,
 /area/lazarus/outpost/rod/living/b)
 "YH" = (
-/obj/structure/table,
-/obj/item/storage/box/evidence,
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/structure/table_frame,
+/obj/item/stack/sheet/metal,
+/obj/effect/spawner/lootdrop/lazarus/trash,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "redcorner"
@@ -11903,6 +12677,8 @@
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/effect/spawner/random_spawners/blood_maybe,
+/obj/effect/decal/cleanable/ash,
+/obj/effect/spawner/lootdrop/lazarus/trash,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/rod/bar)
 "YO" = (
@@ -11911,7 +12687,7 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
-/obj/structure/curtain{
+/obj/structure/curtain/open{
 	color = "#696969"
 	},
 /turf/simulated/floor/plating,
@@ -11937,6 +12713,8 @@
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/random_spawners/blood_often,
+/obj/effect/spawner/lootdrop/lazarus/trash,
 /turf/simulated/floor/plasteel,
 /area/lazarus/outpost/rod)
 "YR" = (
@@ -11946,6 +12724,11 @@
 	icon_state = "dark"
 	},
 /area/lazarus/outpost/rod/sec/arsenal)
+"YS" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/item/paper,
+/turf/simulated/floor/plating,
+/area/lazarus/outpost/rod/hop)
 "YT" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 9
@@ -11977,10 +12760,12 @@
 /turf/simulated/wall/r_wall,
 /area/lazarus/outpost/yarilo/engi/ce)
 "YW" = (
+/obj/machinery/cryopod{
+	dir = 4
+	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
-/obj/effect/landmark/damageturf,
 /turf/simulated/floor/plating,
-/area/lazarus/outpost/rod/bar)
+/area/lazarus/outpost/rod/living/cryo)
 "YX" = (
 /obj/machinery/atmospherics/unary/thermomachine/freezer/on{
 	dir = 1;
@@ -12058,6 +12843,8 @@
 	},
 /obj/machinery/light/small/directional/north,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/mob_spawn/human/lazarus/security,
+/obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/rod/toilet)
 "Zr" = (
@@ -12144,6 +12931,15 @@
 	icon_state = "green"
 	},
 /area/lazarus/outpost/yarilo/living/locker)
+"ZP" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/random_spawners/blood_maybe,
+/obj/effect/spawner/lootdrop/lazarus/trash,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark";
+	dir = 6
+	},
+/area/lazarus/outpost/rod/bar)
 "ZQ" = (
 /obj/structure/closet/wardrobe/xenos,
 /obj/structure/sign/poster/official/random/east,
@@ -17668,7 +18464,7 @@ zn
 pI
 pI
 pI
-pI
+zn
 vp
 vp
 vp
@@ -19212,7 +20008,7 @@ pI
 zn
 pI
 pI
-pI
+zn
 pI
 vp
 vp
@@ -20242,7 +21038,7 @@ zn
 pI
 pI
 pI
-pI
+zn
 pI
 pI
 vp
@@ -20754,7 +21550,7 @@ pI
 pI
 pI
 pI
-pI
+zn
 pI
 pI
 pI
@@ -26015,7 +26811,7 @@ lk
 lk
 vT
 lk
-Ig
+rx
 SR
 lk
 lk
@@ -27035,7 +27831,7 @@ wL
 iU
 iU
 sS
-Yx
+YW
 iU
 iU
 wL
@@ -27550,8 +28346,8 @@ Um
 ha
 gj
 xv
-xv
-pU
+an
+ID
 wL
 lk
 rJ
@@ -28563,19 +29359,19 @@ lk
 SR
 zZ
 zZ
-wh
+Pj
 zZ
 zZ
 zZ
-hJ
+EH
 yv
 yv
 yv
-wh
+lP
 yv
 yv
-Yx
-Yx
+YW
+YW
 Hz
 iU
 iU
@@ -29076,29 +29872,29 @@ lk
 lk
 lk
 zZ
-mJ
+bR
 Gl
-Iq
+mu
 zZ
 mJ
 Eh
-Ov
+vG
 yv
 wj
 Gl
-Iq
+Ov
 yv
 Jh
 ai
 Hz
 Rq
 xv
-ID
+rf
 wL
 ne
 Fp
 BQ
-zN
+BF
 Qb
 QG
 lk
@@ -29590,21 +30386,21 @@ rJ
 SR
 lk
 VM
-su
-aM
+hE
+GJ
 Da
 zZ
-su
-aM
-Da
+hJ
+vw
+Bx
 yv
-su
-aM
-Da
+hJ
+sd
+rp
 yv
 mp
 mp
-Hz
+qb
 mp
 Xi
 mp
@@ -29612,7 +30408,7 @@ wL
 Wb
 BQ
 BQ
-zN
+jF
 Qb
 QG
 SR
@@ -30119,14 +30915,14 @@ yv
 wL
 iX
 OL
-bO
-vj
+UV
+Iq
 wL
 wL
 ui
 fN
 BQ
-zN
+jF
 Zb
 QG
 bJ
@@ -30619,7 +31415,7 @@ lk
 IG
 MB
 IP
-vI
+QW
 ER
 dW
 ER
@@ -30638,7 +31434,7 @@ as
 vE
 MR
 TP
-QD
+HH
 QD
 lx
 RH
@@ -31135,7 +31931,7 @@ MB
 IP
 vI
 jH
-mq
+Bn
 mq
 vI
 mq
@@ -31148,8 +31944,8 @@ lt
 lt
 Hi
 lt
-HK
-qc
+vu
+uM
 At
 Lv
 mC
@@ -31652,11 +32448,11 @@ zZ
 zZ
 zZ
 tH
-Ln
+pU
 zZ
 zZ
 tH
-Ln
+pU
 zZ
 Zx
 ks
@@ -31671,7 +32467,7 @@ nw
 nw
 nw
 bJ
-Qy
+bJ
 lk
 SR
 lk
@@ -32160,24 +32956,24 @@ lk
 SR
 lk
 yv
-IR
+jA
 vI
 QK
 zZ
 IR
 vI
-DU
+uv
 zZ
 IR
 vI
-DU
+Km
 zZ
 EB
 DC
 Ew
 Zx
 zW
-kM
+wh
 nw
 lY
 TT
@@ -32674,30 +33470,30 @@ bJ
 lk
 SR
 yv
-bc
+EC
 qw
 wT
 zZ
 bc
-Tp
+Wi
 Tx
 zZ
 mI
-Tp
-Tx
+Vo
+Iv
 zZ
 LZ
 bz
 xb
 Zx
 zW
-qc
-VY
-eG
+CI
 eD
-Xo
-KV
-VY
+eG
+qq
+oQ
+Ju
+eD
 bJ
 rJ
 lk
@@ -33189,29 +33985,29 @@ lk
 rJ
 yv
 yv
-hJ
+EH
 zZ
 zZ
 zZ
-wh
+lP
 zZ
 zZ
 zZ
-hJ
+hV
 zZ
 zZ
 OA
 pQ
 Ok
 ks
-TI
-kM
+hv
+wh
 NY
 sx
 xo
-eD
+qq
 yU
-VY
+eD
 bJ
 lk
 SR
@@ -33722,7 +34518,7 @@ me
 Uq
 xn
 RG
-Xo
+oQ
 tD
 qn
 nw
@@ -34217,15 +35013,15 @@ SR
 lk
 Oq
 Oq
-Nc
+Ig
 Oq
 Oq
 Oq
-Nc
+ke
 Ou
 RF
 RF
-Kx
+Tp
 Oq
 Oq
 Vz
@@ -34236,8 +35032,8 @@ Dx
 Du
 dc
 lq
-eD
-KV
+qq
+Rz
 Sf
 fd
 bJ
@@ -35250,10 +36046,10 @@ bo
 Oq
 XI
 ev
-bo
+av
 RF
 gH
-HA
+hc
 aE
 Oq
 AZ
@@ -35267,7 +36063,7 @@ nw
 NY
 nw
 fd
-lk
+SR
 bJ
 lk
 lk
@@ -35759,15 +36555,15 @@ lk
 lk
 Oq
 Oq
-Dt
+rT
 Oq
 Oq
 Oq
-qe
-kn
+KB
+zd
 RF
 RF
-Rv
+Mp
 Oq
 Oq
 Zx
@@ -35775,10 +36571,10 @@ ks
 Zx
 Zx
 UC
-qc
+CI
 zP
-Gp
-lk
+Dy
+rJ
 lk
 lk
 lk
@@ -36272,30 +37068,30 @@ SR
 lk
 lk
 sC
-UV
+Kx
 lu
-jS
+bK
 QJ
 Eq
 Eq
-CI
+Mx
 wW
-QJ
+hq
 dr
-Af
+Cf
 dz
-yw
-vH
 mf
-qc
+ct
+kn
+CI
 UC
-qc
+uM
 zP
-Gp
+Dy
 lk
 SR
-lk
-lk
+FZ
+IG
 bJ
 lk
 lk
@@ -36786,12 +37582,12 @@ lk
 lk
 lk
 sC
-UV
+Kx
 Gi
-fB
+VY
 Yl
-kt
-lu
+qc
+Fy
 rA
 Ho
 Ug
@@ -36801,15 +37597,15 @@ eU
 sY
 mx
 mx
-mx
+DI
 CJ
 kq
 zP
-Gp
+Dy
 lk
 lk
-lk
-lk
+SR
+cf
 bJ
 lk
 lk
@@ -37305,11 +38101,11 @@ FJ
 Oq
 Oq
 Oq
-Dt
+rT
 RF
 RF
 RF
-Dt
+rT
 RF
 RF
 ow
@@ -37321,7 +38117,7 @@ wc
 Vd
 Vd
 qo
-uv
+NL
 Vd
 Vd
 bJ
@@ -37814,9 +38610,9 @@ SR
 lk
 pf
 RF
-Ja
+Yh
 lu
-qH
+qe
 Oq
 PA
 FM
@@ -37830,7 +38626,7 @@ TV
 ow
 Zo
 ow
-Yc
+vj
 NT
 Vd
 FS
@@ -38325,10 +39121,10 @@ lk
 lk
 lk
 lk
-lk
+bJ
 lk
 RF
-oY
+LC
 kp
 tw
 Oq
@@ -38344,14 +39140,14 @@ Hd
 ow
 LW
 ow
-Yc
+vj
 NT
 qo
 HI
-hV
-hV
+Dl
+HA
 HS
-uv
+NL
 bJ
 lk
 lk
@@ -38837,21 +39633,21 @@ SR
 lk
 SR
 lk
-lk
+SR
 lk
 rJ
 lk
 RF
 RF
-Nc
+Ig
 RF
 RF
 RF
-Nc
+Kx
 RF
 RF
 RF
-Nc
+Ig
 RF
 RF
 HT
@@ -38863,7 +39659,7 @@ xN
 hu
 Aq
 dH
-hV
+dF
 kW
 qo
 bJ
@@ -39357,29 +40153,29 @@ lk
 lk
 mH
 lk
-lk
+bJ
 IG
+bJ
+kI
 lk
 rJ
 lk
-rJ
-lk
-IG
+Qy
 lk
 lk
 ow
 no
 nS
-no
+mV
 ow
-Yc
+Ye
 NT
 qo
 cU
 Ku
-hV
+fz
 mr
-uv
+NL
 bJ
 bJ
 bJ
@@ -39862,31 +40658,31 @@ lk
 SR
 lk
 lk
-lk
+SR
 lk
 IG
 lk
 lk
 lk
 rJ
-mH
-IG
+Xh
+Qy
 lk
-SR
-lk
-lk
+WF
 lk
 lk
 lk
 lk
-SR
+lk
+lk
+WF
 zq
 zq
 EE
 EE
 EE
 EE
-Yc
+vj
 oK
 Vd
 qj
@@ -40384,7 +41180,7 @@ bJ
 bJ
 lk
 Ut
-lk
+dG
 dP
 lk
 IG
@@ -40396,18 +41192,18 @@ lk
 Tn
 zq
 BX
-BX
+bV
 Cr
-BX
+bV
 EE
-Yc
-qc
-uv
+vj
+CI
+NL
 YU
-hV
+HA
 OZ
 UU
-iq
+fw
 yp
 wR
 ae
@@ -40908,23 +41704,23 @@ bJ
 yz
 bJ
 bJ
-ct
+zx
 Og
 Ul
 ht
 ra
 XH
-Yc
-qc
+vj
+CI
 mn
 Au
-hV
-hV
-OZ
+IO
+fz
+YS
 YK
 OZ
 vK
-iq
+wx
 bJ
 lk
 lk
@@ -41417,7 +42213,7 @@ bJ
 bJ
 bJ
 bJ
-bJ
+hI
 bJ
 bJ
 bJ
@@ -41432,11 +42228,11 @@ WA
 NT
 qo
 Az
-hV
-hV
+HA
+IO
 Et
-iq
-Tg
+fw
+RQ
 bE
 Vd
 bJ
@@ -41936,12 +42732,12 @@ IG
 lk
 pf
 dP
-NL
+Db
 QO
 Kp
 yM
 RS
-ct
+zx
 TI
 NT
 Vd
@@ -42438,15 +43234,15 @@ bJ
 lk
 pf
 lk
-lk
+HG
 mH
 lk
 SR
 lk
 lk
-lk
-dP
-lk
+bJ
+HG
+bJ
 SR
 lk
 Qv
@@ -42456,16 +43252,16 @@ EE
 EE
 EE
 mS
-Yc
+vj
 NT
 Vd
 Vd
-uv
+NL
 qo
 Vd
 Vd
-iq
-iq
+aM
+aM
 Vd
 bJ
 lk
@@ -42755,7 +43551,7 @@ sG
 zn
 pI
 zn
-bT
+Nl
 sG
 Yd
 rR
@@ -42951,23 +43747,23 @@ lk
 bJ
 lk
 lk
-IG
+Qy
 lk
 mH
 lk
-lk
+bJ
 rJ
 lk
-IG
+Qy
 lk
 lk
 lk
-lk
+bJ
 lk
 pI
 zP
 dp
-tG
+ua
 tG
 tM
 YP
@@ -42975,7 +43771,7 @@ yh
 lw
 lw
 CT
-FL
+cS
 FL
 zP
 lk
@@ -43465,7 +44261,7 @@ lk
 bJ
 lk
 lk
-SR
+WF
 lk
 BH
 BH
@@ -43473,25 +44269,25 @@ cJ
 Jj
 Jj
 Jj
-cJ
+Nc
 BH
 BH
 BH
 cJ
 Jj
 Jj
-lX
-bK
+kl
+Qa
 px
-qc
+AV
 eC
 Nu
 ws
-qc
+CI
 nZ
-kM
-kM
-qq
+wh
+wh
+yr
 lk
 lk
 lk
@@ -43501,7 +44297,7 @@ bJ
 bJ
 bJ
 bJ
-No
+bJ
 bJ
 lk
 lk
@@ -43982,7 +44778,7 @@ lk
 lk
 lk
 BH
-bj
+qH
 gN
 SO
 Jj
@@ -43994,26 +44790,26 @@ jO
 gN
 SO
 Jj
-lX
-bK
+kl
+Qa
 EI
 zE
 Xl
-SW
+su
 qh
 Yo
 uV
-Ju
+Uj
 Yo
 RA
 RA
-Yo
-tZ
+Xo
+Xo
 Uu
 jd
-lj
+mw
 OI
-lj
+mw
 jd
 lk
 bJ
@@ -44493,23 +45289,23 @@ SR
 lk
 bJ
 lk
-lk
-lk
+WF
+WF
 BH
-rH
-dl
+iY
+lV
 Bo
 Jj
 jW
-dl
+lV
 MU
 BH
 rH
-dl
+lV
 MU
 BH
-Vo
-Qa
+lX
+Ih
 EI
 vk
 AA
@@ -45016,14 +45812,14 @@ BH
 BH
 BH
 lK
-Wr
+yw
 BH
-Wr
+yw
 lK
 BH
 BH
 MK
-YC
+KM
 UG
 La
 WU
@@ -45032,16 +45828,16 @@ RA
 GH
 bG
 Hk
-mL
+kM
 LI
-kl
+No
 uF
 OU
 xM
 Wh
 ZE
 gt
-BF
+wl
 aU
 OI
 bJ
@@ -45522,9 +46318,9 @@ lk
 bJ
 bJ
 lk
-lk
+SR
 RU
-Pl
+dl
 ig
 Za
 cB
@@ -45537,27 +46333,27 @@ dh
 GV
 Jj
 AN
-Vf
+bO
 UG
 oU
 JU
 Ps
 qh
 pY
-cn
-cn
+aZ
+HK
 Tq
 zt
-FH
+ln
 uF
 hy
 pa
 LH
 We
 nc
-wl
+KV
 SS
-lj
+mw
 bJ
 rJ
 lk
@@ -46035,22 +46831,22 @@ lk
 lk
 lk
 bJ
-lk
+SR
 lk
 RU
 UB
-Fj
-Ih
+fB
+qR
 VR
-Ih
+qR
 sR
 cl
 iF
+DU
+Fj
 qR
-lP
-Ih
-Pl
-lX
+dl
+kl
 TX
 EI
 IM
@@ -46064,14 +46860,14 @@ Vx
 ck
 pB
 YM
-hy
-Pj
+gT
+Ln
 LH
-lo
+iq
 iI
 DX
 CX
-lj
+mw
 bJ
 bJ
 bJ
@@ -46550,7 +47346,7 @@ IG
 lk
 bJ
 lk
-lk
+WF
 Jj
 BH
 lK
@@ -46566,23 +47362,23 @@ YJ
 nL
 vh
 Lj
-SW
-Dc
+su
+lB
 je
 Ai
 RA
 rb
 Xc
 EY
-vu
+SW
 os
 aK
 eR
 jK
-YW
+Yc
 LH
-lo
-wl
+iq
+RO
 gO
 yW
 Wh
@@ -47063,24 +47859,24 @@ lk
 lk
 lk
 bJ
-lk
-lk
+cf
+bJ
 Jj
 ip
-dl
+xB
 Fw
 BH
 cu
-qR
+wz
 gz
 gM
 YJ
 KF
-Ih
-Pl
+qR
+dl
 SX
 Lj
-SW
+su
 Dc
 cM
 jU
@@ -47088,14 +47884,14 @@ Mn
 iM
 Na
 EY
-ab
+ro
 ye
+Ln
 AS
-yr
 ug
 bN
 fn
-lV
+lo
 XM
 qE
 fR
@@ -47574,38 +48370,38 @@ lk
 IG
 lk
 lk
-lk
+SR
 lk
 bJ
 lk
-lk
+SR
 Jj
 VE
 Ko
 nD
 BH
 yB
-Ih
+qR
 IB
 Tr
 yB
 Yp
 yB
-zx
+RD
 fb
-bK
+Qa
 EI
 zH
 aq
 Ck
 RA
 Kv
-Na
+ZP
 qJ
 ab
 LE
-uF
-kl
+uU
+No
 zr
 eS
 dk
@@ -48091,7 +48887,7 @@ lk
 lk
 lk
 bJ
-lk
+SR
 lk
 Jj
 Jj
@@ -48103,15 +48899,15 @@ NG
 bm
 hz
 Tl
-Qc
+fJ
 gx
-lI
+Yx
 Tw
-mw
+zN
 gx
-rx
+Yu
 gv
-rx
+Yu
 Uu
 Jq
 Na
@@ -48123,8 +48919,8 @@ lD
 fg
 fu
 Wh
-BF
-BF
+rE
+wl
 gO
 qA
 Wh
@@ -48600,17 +49396,17 @@ pI
 lk
 SR
 lk
-lk
+SR
 lk
 lk
 SR
 bJ
 lk
 lk
-lk
-Gp
-Gp
-lk
+SR
+Dy
+Dy
+IG
 Mf
 ZU
 Xx
@@ -48630,7 +49426,7 @@ Uu
 Uu
 Yo
 Uu
-Yo
+Xo
 Uu
 ed
 mG
@@ -48638,7 +49434,7 @@ cO
 mG
 ed
 NS
-yd
+rk
 NZ
 ed
 ed
@@ -49120,21 +49916,21 @@ lk
 lk
 bJ
 lk
-rJ
+kI
 lk
-lk
-Gp
-lk
-GJ
+bJ
+Dy
+bJ
+vH
 OH
 mc
 ff
 Ly
 kU
-kU
+uw
 RC
 Nw
-Dy
+Gp
 wH
 Vs
 Vs
@@ -49145,7 +49941,7 @@ lk
 lk
 lk
 lk
-Gp
+Dy
 ed
 PT
 zC
@@ -49156,7 +49952,7 @@ xY
 TA
 yI
 ed
-Gp
+Dy
 lk
 lk
 bJ
@@ -49628,25 +50424,25 @@ pI
 lk
 lk
 lk
+SR
 lk
-lk
-lk
+SR
 lk
 bJ
-lk
+SR
 lk
 lk
 SR
-Gp
+Dy
 lk
-GJ
+vH
 Rt
 VW
 DK
 dS
 cL
 dt
-pc
+uP
 jY
 im
 On
@@ -49656,21 +50452,21 @@ tq
 iz
 Yy
 lk
+bJ
+WF
 lk
-SR
-lk
-Gp
-oQ
+Dy
+jS
 kR
 LF
 TA
-TA
+dR
 oT
 Ad
 PG
 ii
 mG
-Gp
+Dy
 lk
 lk
 bJ
@@ -50151,30 +50947,30 @@ bJ
 lk
 lk
 lk
-Gp
+Dy
 lk
 NG
 NP
 xp
 TG
-wi
+Ly
 ub
 fq
 gx
-Nw
-Dy
-uP
-uP
+bh
+Gp
+Wr
+Wr
 kc
-uP
+Wr
 aB
 Mc
 lk
-lk
-lk
-lk
-Gp
-oQ
+IG
+bJ
+rJ
+Dy
+jS
 KX
 Ki
 zR
@@ -50184,7 +50980,7 @@ hL
 WJ
 ZV
 mG
-Gp
+Dy
 lk
 lk
 bJ
@@ -50663,18 +51459,18 @@ lk
 lk
 bJ
 lk
-SR
-lk
-Gp
-Gp
-GJ
+WF
+bJ
+Dy
+Dy
+vH
 fU
 DP
-wk
+vL
 wi
-Dl
+ry
 St
-pc
+uP
 YH
 mN
 Sp
@@ -50686,19 +51482,19 @@ gx
 lk
 lk
 lk
-lk
-Gp
+bJ
+Dy
 ed
 Gv
 Ht
 gR
 TE
 TE
-gR
+ut
 nk
 OM
 Pw
-Gp
+Dy
 lk
 bJ
 bJ
@@ -51177,10 +51973,10 @@ SR
 lk
 bJ
 lk
-lk
-lk
-lk
-Gp
+IG
+bJ
+SR
+iG
 qN
 jc
 XP
@@ -51194,12 +51990,12 @@ IL
 IL
 IL
 IL
-Qw
+cn
 tU
 zB
 zB
 lk
-lk
+SR
 lk
 lk
 NN
@@ -51693,7 +52489,7 @@ bJ
 bJ
 lk
 lk
-lk
+dP
 lk
 qN
 qN
@@ -51704,7 +52500,7 @@ OC
 Ep
 KI
 Ol
-is
+dM
 UX
 Lu
 IL
@@ -51715,14 +52511,14 @@ zB
 lk
 lk
 rJ
-lk
+SR
 lk
 ed
 ed
-oQ
+jS
 mG
 mG
-oQ
+jS
 Pw
 Kn
 lk
@@ -52203,13 +52999,13 @@ lk
 lk
 lk
 lk
-lk
+cf
 bJ
 lk
-SR
+WF
 lk
 rJ
-lk
+IG
 lk
 Er
 Er
@@ -52217,7 +53013,7 @@ bt
 OB
 bt
 IL
-pD
+oS
 pb
 cK
 LN
@@ -52227,17 +53023,17 @@ Vj
 Ls
 zB
 lk
+kI
 lk
 lk
+Qy
 lk
-lk
-lk
-Gp
-Gp
-Gp
-Gp
-Gp
-Gp
+Dy
+Dy
+Dy
+Dy
+Dy
+Dy
 lk
 lk
 bJ
@@ -52722,8 +53518,8 @@ bJ
 lk
 lk
 lk
-lk
-lk
+bJ
+SR
 lk
 gr
 BG
@@ -52737,16 +53533,16 @@ is
 nm
 IL
 zB
-kj
+Qw
 zB
 zB
 lk
 lk
 lk
 SR
-lk
+bJ
 rJ
-lk
+SR
 lk
 lk
 lk
@@ -53236,17 +54032,17 @@ bJ
 bJ
 lk
 lk
-lk
+WF
 lk
 Er
 Er
-KB
+pD
 Fa
 sJ
 AP
 IL
 YR
-pD
+Pl
 gZ
 PQ
 IL
@@ -53255,14 +54051,14 @@ lk
 lk
 lk
 lk
+pf
+lk
+bJ
+SR
+bJ
 lk
 lk
-lk
-lk
-lk
-lk
-lk
-lk
+bJ
 SR
 lk
 bJ
@@ -53750,9 +54546,9 @@ lk
 bJ
 lk
 SR
+cf
 lk
-lk
-rT
+pc
 qm
 GW
 wS
@@ -53764,19 +54560,19 @@ tO
 tO
 YR
 IL
+rJ
+lk
+bJ
+bJ
+SR
 lk
 lk
-lk
-lk
-lk
-lk
-lk
-lk
-lk
-lk
-lk
-lk
-lk
+bJ
+dP
+cf
+rJ
+bJ
+WF
 lk
 lk
 bJ
@@ -54265,10 +55061,10 @@ bJ
 bJ
 lk
 rJ
-lk
+bJ
 gr
 Cx
-GW
+QA
 QH
 aP
 EV
@@ -54279,13 +55075,13 @@ IL
 IL
 IL
 lk
+bJ
+SR
 lk
 lk
 lk
-lk
-lk
-lk
-lk
+SR
+IG
 lk
 lk
 SR
@@ -54778,33 +55574,33 @@ lk
 lk
 bJ
 bJ
-lk
-lk
+pf
+bJ
 Er
 jo
 IU
 MG
 EO
 tx
-vG
+HD
+lk
+lk
+cf
 lk
 lk
 lk
 lk
 lk
-lk
-lk
-lk
-lk
-lk
+SR
+IG
 rJ
 lk
+IG
+lk
+bJ
 lk
 lk
-lk
-lk
-lk
-lk
+SR
 lk
 bJ
 bJ
@@ -55295,29 +56091,29 @@ bJ
 lk
 SR
 lk
-rT
+pc
 Re
 BV
 qT
 da
 pi
 lk
+IG
 lk
 lk
+cT
 lk
-rJ
-lk
-lk
-lk
-lk
-lk
+SR
+bJ
+bJ
 lk
 lk
+bJ
+SR
+SR
 lk
-lk
-lk
-lk
-rJ
+SR
+kI
 lk
 bJ
 bJ
@@ -55806,33 +56602,33 @@ lk
 lk
 SR
 bJ
+SR
 lk
-lk
-lk
+Qy
 Er
 jo
 jo
 Wg
 Er
 Er
+WF
+dP
 lk
+bJ
 lk
-lk
-lk
-lk
-lk
+rJ
 lk
 lk
 lk
 SR
 lk
+bJ
 lk
 lk
-lk
-lk
-lk
+bJ
+bJ
 rJ
-lk
+SR
 bJ
 lk
 lk
@@ -56321,10 +57117,10 @@ lk
 lk
 bJ
 bJ
+rJ
 lk
-lk
-lk
-Cf
+Dy
+lj
 aL
 rd
 yf
@@ -56332,20 +57128,20 @@ Er
 lk
 lk
 lk
+WF
+lk
+lk
+SR
+pn
+lk
+lk
+lk
+rJ
+lk
+bJ
 SR
 lk
-lk
-lk
-lk
-lk
-lk
-lk
-lk
-lk
-lk
-lk
-lk
-lk
+SR
 lk
 bJ
 lk
@@ -56836,29 +57632,29 @@ lk
 lk
 bJ
 bJ
-lk
-lk
-Cf
+SR
+Dy
+lj
 rP
 NJ
 RE
 Er
-lk
-lk
-lk
+IG
 lk
 rJ
 lk
-lk
-lk
-lk
-lk
-lk
-lk
+kI
 lk
 SR
 lk
 lk
+SR
+bJ
+lk
+lk
+SR
+lk
+rJ
 bJ
 bJ
 bJ
@@ -57351,23 +58147,23 @@ lk
 lk
 bJ
 lk
-lk
+Dy
 Er
 Er
 oA
 Er
 Er
 lk
+SR
 lk
 lk
 lk
 lk
 lk
+rJ
+rJ
 lk
-lk
-lk
-lk
-lk
+IG
 lk
 lk
 bJ
@@ -57866,10 +58662,10 @@ lk
 bJ
 bJ
 bJ
-lk
-Gp
-Gp
-Gp
+SR
+Dy
+Dy
+Dy
 lk
 lk
 bJ
@@ -58897,7 +59693,7 @@ SR
 lk
 lk
 lk
-lk
+SR
 lk
 lk
 lk
