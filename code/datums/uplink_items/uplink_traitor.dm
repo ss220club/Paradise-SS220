@@ -3,7 +3,7 @@
 // JOB SPECIFIC GEAR
 
 /datum/uplink_item/jobspecific
-	category = "Job Specific Tools"
+	category = "Уникальные для работы инструменты"
 	cant_discount = TRUE
 	excludefrom = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST) // Stops the job specific category appearing for nukies
 
@@ -424,7 +424,7 @@
 
 /datum/uplink_item/stealthy_tools/traitor_belt
 	name = "Traitor's Toolbelt"
-	desc = "A robust seven-slot belt made for carrying a broad variety of weapons, ammunition and explosives. It's modelled after the standard NT toolbelt so as to avoid suspicion while wearing it."
+	desc = "Робастный пояс на семь слотов для хранения различного оружия, амуниции и взрывчатки. Он создан на основе стандартного пояса НТ поэтому он совершенно скрытный для ношения."
 	reference = "SBM"
 	item = /obj/item/storage/belt/military/traitor
 	cost = 10
@@ -432,10 +432,9 @@
 
 /datum/uplink_item/stealthy_tools/frame
 	name = "F.R.A.M.E. PDA Cartridge"
-	desc = "When inserted into a personal digital assistant, this cartridge gives you five PDA viruses which \
-			when used cause the targeted PDA to become a new uplink with zero TCs, and immediately become unlocked.  \
-			You will receive the unlock code upon activating the virus, and the new uplink may be charged with \
-			telecrystals normally."
+	desc = "Когда вставлен в ПДА, этот картридж даст вам возможность закинуть вирус на любой ПДА. \
+			Который при использовании на ПДА откроет новый аплинк без телекристаллов и не даст его заблокировать. \
+			Вы получите код для разблокировки после использования вируса и новый аплинк может быть пополнен новыми телекристаллами."
 	reference = "FRAME"
 	item = /obj/item/cartridge/frame
 	excludefrom = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
@@ -443,8 +442,8 @@
 
 /datum/uplink_item/stealthy_tools/voice_modulator
 	name = "Chameleon Voice Modulator Mask"
-	desc = "A syndicate tactical mask equipped with chameleon technology and a sound modulator for disguising your voice. \
-			While the mask is active, your voice will sound unrecognizable to others."
+	desc = "Тактическая маска синдиката, экипированная хамелеон технологией и модулятором голоса для его маскировки. \
+			Когда маска активирована, ваш голос не смогут распознать окружающие."
 	reference = "CVMM"
 	item = /obj/item/clothing/mask/gas/voice_modulator/chameleon
 	cost = 8
@@ -452,8 +451,8 @@
 
 /datum/uplink_item/stealthy_tools/silicon_cham_suit
 	name = "\"Big Brother\" Obfuscation Suit"
-	desc = "A syndicate tactical suit equipped with the latest in anti-silicon technology and, allegedly, biological technology learned from the Changeling Hivemind. \
-			While this suit is worn, you will be unable to be tracked or seen by on-Station AI."
+	desc = "Тактический комбинезон синдиката, экипированный новешей анти-синтетической технологией и якобы технологией, которая была взята с коллективного разума генокрадов. \
+			Пока костюм надет вас не смогут отследить или увидеть любые станционные ИИ."
 	reference = "BBOS"
 	item = /obj/item/clothing/under/syndicate/silicon_cham
 	cost = 20
@@ -461,7 +460,7 @@
 
 /datum/uplink_item/stealthy_weapons/sleepy_pen
 	name = "Sleepy Pen"
-	desc = "A syringe disguised as a functional pen. It's filled with a potent anaesthetic. \ The pen holds two doses of the mixture. The pen can be refilled."
+	desc = "Шприц, замаскированный под ручку. Он заполнен сильным анестетиком. \ В ручке содержится две дозы вещества. Не может быть восполнена."
 	reference = "SP"
 	item = /obj/item/pen/sleepy
 	cost = 40
@@ -469,7 +468,7 @@
 
 /datum/uplink_item/stealthy_weapons/dart_pistol
 	name = "Dart Pistol Kit"
-	desc = "A miniaturized version of a normal syringe gun. It is very quiet when fired and can fit into any space a small item can. Comes with 3 syringes: a knockout poison, a silencing agent and a deadly neurotoxin."
+	desc = "Миниатюрная версия шприцемёта. Имеет очень тихий звук стрельбы и может помещаться в карманы. Поставляется вместе с тремя шприцами: ошеломляющим токсином, токсином немоты и смертельным нейротоксином."
 	reference = "DART"
 	item = /obj/item/storage/box/syndie_kit/dart_gun
 	cost = 20
@@ -479,7 +478,7 @@
 /// Nukies get combat gloves plus instead
 /datum/uplink_item/stealthy_weapons/combat_minus
 	name = "Experimental Krav Gloves"
-	desc = "Experimental gloves with installed nanochips that teach you Krav Maga when worn, great as a cheap backup weapon. Warning, the nanochips will override any other fighting styles such as CQC. Do not look as fly as the Warden's"
+	desc = "Экспериментальные перчатки с установленными наночипами, которые мнгновенно дают знания боевого искусства Крав Мага носителю. Идеальны в качестве запасного оружия. Осторожно, наночипы перезапишут любые другие боевые искусства. Перчатки не выглядят также привлекательно как те, что у вардена."
 	reference = "CGM"
 	item = /obj/item/clothing/gloves/color/black/krav_maga
 	cost = 50
@@ -488,7 +487,7 @@
 /// Nukies get Diamond Tipped Thermal Safe Drill instead
 /datum/uplink_item/device_tools/thermal_drill
 	name = "Amplifying Thermal Safe Drill"
-	desc = "A tungsten carbide thermal drill with magnetic clamps for the purpose of drilling hardened objects. Comes with built in security detection and nanite system, to keep you up if security comes a-knocking."
+	desc = "Покрытая карбидом вольфрама термальная дрель с магнитыми зажимами для сверления твёрдых объектов. Поставляется вместе с детектором безопасности и системой нанитов для поддержки вашего состояния когда служба безопасности постучится к вам."
 	reference = "DRL"
 	item = /obj/item/thermal_drill/syndicate
 	cost = 5
@@ -497,11 +496,11 @@
 
 /datum/uplink_item/suits/modsuit
 	name = "Syndicate MODsuit"
-	desc = "The feared MODsuit of a syndicate nuclear agent. Features armor and a eva mode \
-			for faster movement on station. Toggling the suit in and out of \
-			combat mode will allow you all the mobility of a loose fitting uniform without sacrificing armoring. \
-			Comes containing internals. \
-			Nanotrasen crew who spot these suits are known to panic."
+	desc = "Устрашающий МОДсьют ядерных оперативников синдиката. Вмещает в себя режим скафандра и бронекостюма \
+			для быстрого перемещения по станции. Переключение модсьюта в боевой режим и его переключение \
+			позволит не терять мобильность при этом, не теряя броню. \
+			Поставляется вместе с баллоном для дыхания. \
+			Сотрудники Nanotrasen, что видят данный модсьют погружаются в ужас."
 	reference = "BRHS"
 	item = /obj/item/mod/control/pre_equipped/traitor
 	cost = 30
@@ -510,8 +509,8 @@
 
 /datum/uplink_item/suits/modsuit_elite
 	name = "Syndicate Elite MODsuit"
-	desc = "An advanced MODsuit with superior armor to the standard Syndicate MODsuit. \
-	Nanotrasen crew who spot these suits are known to *really* panic."
+	desc = "Продвинутый МОДсьют с хорошей бронёй для стандартного МОДсьюта синдиката. \
+	Сотрудники Nanotrasen, что видят данный модсьют погружаются в *настоящий* ужас."
 	reference = "MSE"
 	item = /obj/item/mod/control/pre_equipped/traitor_elite
 	cost = 45 //45 to start, no holopara / ebow.
@@ -521,7 +520,7 @@
 /// Nukies get Nuclear Uplink Bio-chip instead
 /datum/uplink_item/bio_chips/uplink
 	name = "Uplink Bio-chip"
-	desc = "A bio-chip injected into the body, and later activated manually to open an uplink with 50 telecrystals. The ability for an agent to open an uplink after their possessions have been stripped from them makes this implant excellent for escaping confinement."
+	desc = "Био-чип, который можно вколоть в тело и позже самостоятельно активировать для открытия аплинка с 50 телекристаллами. После открытия аплинка и покупки предметов возможность его использовать повторно будет отобрана, что делает этот имплант отличным средством для скрытной закупки снаряжения."
 	reference = "UI"
 	item = /obj/item/bio_chip_implanter/uplink
 	cost = 70
@@ -531,11 +530,11 @@
 
 /datum/uplink_item/cyber_implants/sensory_enhancer
 	name = "Qani-Laaca Sensory Computer Autoimplanter"
-	desc = "Epilepsy Warning: Drug has vibrant visual effects! \
-	This spinal implant will inject mephedrone into your system, a powerful stimulant that causes slight heart damage.\
-	This stimulant will provide faster movement speed, slight pain resistance, immunity to crawling slowdown, and faster attack speed, though no antistun.\
-	Overdosing will cause massive heart damage, but will allow the user to dodge bullets for a minute and attack even faster.\
-	Two minute normal uptime, 5 minute cooldown, unlimited uses. Incompatible with the Binyat Wireless Hacking System."
+	desc = "Предупреждение: Наркотик может вызвать приступ у эпилептиков! \
+	Этот спинной имплант будет давать вам инъекции мефедрона прямо в кровь. Мефедрон - мощный стимулянт, что вызывает урон сердцу.\
+	Этот стимулянт предоставит вам увеличенную скорость передвижения, небольшое притупление боли, увеличенную скорость ударов, иммунитет к замедлению при ползании и иммунитет к электрическим дубинкам и подобного рода оружию.\
+	Передозировка вызовет массивный урон сердцу, но также позволит пользователю уклоняться от пуль на минуту и атаковать ещё быстрее.\
+	Время работы составляет 2 минуты, время перезарядки составляет 5 минут, бесконечное количество использований. Несовместим вместе с Binyat Wireless Hacking System."
 	reference = "QLSC"
 	item = /obj/item/autosurgeon/organ/syndicate/sensory_enhancer
 	cost = 40
@@ -543,8 +542,8 @@
 
 /datum/uplink_item/badass/syndiecards
 	name = "Syndicate Playing Cards"
-	desc = "A special deck of space-grade playing cards with a mono-molecular edge and metal reinforcement, making them lethal weapons both when wielded as a blade and when thrown. \
-	You can also play card games with them."
+	desc = "Специальная колода космических игральных карт с мономолекулярными краями и металлическими усилениями, делая их летальным оружием, когда находятся в двух руках и когда брошено. \
+	Вы также можете играть в карты с помощью этих карт."
 	reference = "SPC"
 	item = /obj/item/deck/cards/syndicate
 	cost = 2
@@ -553,7 +552,7 @@
 
 /datum/uplink_item/badass/plasticbag
 	name = "Plastic Bag"
-	desc = "A simple, plastic bag. Keep out of reach of small children, do not apply to head."
+	desc = "Простой пластиковый мешок. Держите его подальше от детей, не надевайте его на голову."
 	reference = "PBAG"
 	item = /obj/item/storage/bag/plasticbag
 	cost = 1
@@ -561,7 +560,7 @@
 
 /datum/uplink_item/bundles_TC/contractor
 	name = "Syndicate Contractor Kit"
-	desc = "A bundle granting you the privilege of taking on kidnapping contracts for credit and TC payouts that can add up to more than its initial cost."
+	desc = "Комплект, дающий вам привелегию принимать контракты на похищение для получения кредитов и телекристаллов, что могут давать больше телекристаллов больше чем у вас было изначально."
 	reference = "SCOK"
 	cost = 100
 	item = /obj/item/storage/box/syndie_kit/contractor
@@ -571,13 +570,13 @@
 	var/datum/mind/mind = usr.mind
 	var/datum/antagonist/traitor/AT = mind.has_antag_datum(/datum/antagonist/traitor)
 	if(LAZYACCESS(GLOB.contractors, mind))
-		to_chat(usr, "<span class='warning'>Error: Contractor credentials detected for the current user. Unable to provide another Contractor kit.</span>")
+		to_chat(usr, "<span class='warning'>Ошибка: Реквизиты контрактора найдены для текущего пользователя. Невозможно предоставить ещё один набор контрактора.</span>")
 		return
 	else if(!AT)
-		to_chat(usr, "<span class='warning'>Error: Embedded Syndicate credentials not found.</span>")
+		to_chat(usr, "<span class='warning'>Ошибка: Встроенные реквизиты Синдиката не найдены.</span>")
 		return
 	else if(ischangeling(usr) || mind.has_antag_datum(/datum/antagonist/vampire))
-		to_chat(usr, "<span class='warning'>Error: Embedded Syndicate credentials contain an abnormal signature. Aborting.</span>")
+		to_chat(usr, "<span class='warning'>Ошибка: Встроенные реквизиты Синдиката содержат странную сигнатуру. Закрытие.</span>")
 		return
 
 	var/obj/item/I = ..()
@@ -593,7 +592,7 @@
 
 /datum/uplink_item/bundles_TC/badass
 	name = "Syndicate Bundle"
-	desc = "Syndicate Bundles are specialised groups of items that arrive in a plain box. These items are collectively worth more than 100 telecrystals. You can select one out of three specialisations after purchase."
+	desc = "Наборы синдиката это специализированные группы предметов, что прибудут в коробке. В сумме эти предметы стоят более 100 телекристаллов. Вы можете выбрать один из трёх наборов после покупки."
 	reference = "SYB"
 	item = /obj/item/radio/beacon/syndicate/bundle
 	cost = 100
@@ -601,7 +600,7 @@
 
 /datum/uplink_item/bundles_TC/surplus_crate
 	name = "Syndicate Surplus Crate"
-	desc = "A crate containing 250 telecrystals worth of random syndicate leftovers."
+	desc = "Ящик, содержащий в себе вещей на 250 телекристаллов."
 	reference = "SYSC"
 	cost = 100
 	item = /obj/item/storage/box/syndie_kit/bundle
@@ -621,9 +620,9 @@
 
 /datum/uplink_item/stealthy_weapons/cqc
 	name = "CQC Manual"
-	desc = "A manual that teaches a single user tactical Close-Quarters Combat before self-destructing. \
-			Changes your unarmed damage to deal non-lethal stamina damage. \
-			Does not restrict weapon usage, and can be used alongside Gloves of the North Star."
+	desc = "Инструкция, которая может научить вас тактическому искусству ближнего боя перед самоуничтожением и может быть изучено только одним человеком. \
+			Меняет ваш урон кулаков на нелетельный стамина урон. \
+			Не запрещает вам использовать оружие дальнего боя и может быть использовано вместе с перчатками полярной звезды."
 	reference = "CQC"
 	item = /obj/item/CQC_manual
 	cost = 50
@@ -631,8 +630,8 @@
 
 /datum/uplink_item/explosives/syndicate_bomb
 	name = "Syndicate Bomb"
-	desc = "The Syndicate Bomb has an adjustable timer with a minimum setting of 90 seconds. Ordering the bomb sends you a small beacon, which will teleport the explosive to your location when you activate it. \
-	You can wrench the bomb down to prevent removal. The crew may attempt to defuse the bomb."
+	desc = "Бомба синдиката с настраиваемым таймером с минимальной настройкой в 90 секунд. Заказывая бомбу, вам будет выдан маленький маяк, который телепортирует бомбу на локацию маяка. \
+	Вы можете прикрутить бомбу с помощью гаечного ключа чтобы избежать обезвреживания. Экипаж может попытаться разминировать бомбу."
 	reference = "SB"
 	item = /obj/item/radio/beacon/syndicate/bomb
 	cost = 40
@@ -643,8 +642,8 @@
 
 /datum/uplink_item/explosives/emp_bomb
 	name = "EMP bomb"
-	desc = "The EMP has an adjustable timer with a minimum setting of 90 seconds. Ordering the bomb sends you a small beacon, which will teleport the explosive to your location when you activate it. \
-	You can wrench the bomb down to prevent removal. The crew may attempt to defuse the bomb. Will pulse 3 times."
+	desc = "ЭМИ  бомба с настраиваемым таймером с минимальной настройкой таймера в 90 секунд. Заказывая бомбу, вы получите маленький маяк на который отправится бомба при активации. \
+	Вы можете прикрутить бомбу с помощью гаечного ключа для того чтобы предотвратить обезвреживание. Экипаж также может попытаться разминировать бомбу. Создаст импульс 3 раза."
 	reference = "SBEMP"
 	item = /obj/item/radio/beacon/syndicate/bomb/emp
 	cost = 40
@@ -659,7 +658,7 @@
 
 /datum/uplink_item/explosives/atmosfiregrenades
 	name = "Plasma Fire Grenades"
-	desc = "A box of two (2) grenades that cause large plasma fires. Can be used to deny access to a large area. Most useful if you have an atmospherics hardsuit."
+	desc = "Коробка, состоящая из двух гранат, что вызывают огромный плазма пожар. Могут быть использованы для создания преграды для доступа в отдел. Они особенно полезны если у вас есть атмосферный МОДсьют."
 	reference = "APG"
 	item = /obj/item/storage/box/syndie_kit/atmosfiregrenades
 	hijack_only = TRUE
@@ -670,8 +669,8 @@
 
 /datum/uplink_item/stealthy_tools/chameleon
 	name = "Chameleon Kit"
-	desc = "A set of items that contain chameleon technology allowing you to disguise as pretty much anything on the station, and more! \
-			Due to budget cuts, the shoes don't provide protection against slipping. The set comes with a complementary chameleon stamp."
+	desc = "Набор одежды, что содержат хамелеон технологию, позволяющая замаскироваться под любого на станции и даже больше! \
+			Из-за проблем с бюджетом ботинки не предоставляют защиту от скользских поверхностей. Набор поставляется вместе с хамелеон печатью."
 	reference = "CHAM"
 	item = /obj/item/storage/box/syndie_kit/chameleon
 	cost = 20
@@ -679,8 +678,8 @@
 
 /datum/uplink_item/stealthy_tools/syndigaloshes
 	name = "No-Slip Chameleon Shoes"
-	desc = "These shoes will allow the wearer to run on wet floors and slippery objects without falling down. \
-			They do not work on heavily lubricated surfaces."
+	desc = "Эти ботинки позволяют носителю бегать по скользкому полу и скользким объектам без падения на пол. \
+			Они не работают на очень скользких поверхностях."
 	reference = "NSSS"
 	item = /obj/item/clothing/shoes/chameleon/noslip
 	cost = 10
@@ -688,7 +687,7 @@
 
 /datum/uplink_item/explosives/detomatix
 	name = "Detomatix PDA Cartridge"
-	desc = "When inserted into a personal digital assistant, this cartridge gives you five opportunities to detonate PDAs of crewmembers who have their message feature enabled. The concussive effect from the explosion will knock the recipient out for a short period, and deafen them for longer."
+	desc = "Когда вставлен в КПК, этот картридж даст вам 5 возможностей сдетонировать КПК других членов экипажа, где включен мессенджер. Взрывной волной от взрыва жертв будет опрокидывать на пол, оглушать на продолжительный период времени."
 	reference = "DEPC"
 	item = /obj/item/cartridge/syndicate
 	cost = 30
