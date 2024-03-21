@@ -57,6 +57,9 @@
 /area/lazarus/cabin/crusader
 	name = "Хижина крестоносца"
 
+/area/lazarus/cabin/bar
+	name = "Тайный бар"
+
 //---Other---//
 
 /area/lazarus/geotherm
