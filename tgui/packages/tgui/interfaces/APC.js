@@ -12,7 +12,7 @@ import { InterfaceLockNoticeBox } from './common/InterfaceLockNoticeBox';
 
 export const APC = (props, context) => {
   return (
-    <Window width={510} height={435}>
+    <Window width={520} height={435}>
       <Window.Content>
         <ApcContent />
       </Window.Content>
@@ -76,44 +76,7 @@ const ApcContent = (props, context) => {
   return (
     <>
       <InterfaceLockNoticeBox />
-      <Section title="Power Status">
-        <LabeledList>
-          <LabeledList.Item
-            label="Main Breaker"
-            color={externalPowerStatus.color}
-            buttons={
-              <Button
-                icon={data.isOperating ? 'power-off' : 'times'}
-                content={data.isOperating ? 'On' : 'Off'}
-                selected={data.isOperating && !locked}
-                color={data.isOperating ? '' : 'bad'}
-                disabled={locked}
-                onClick={() => act('breaker')}
-              />
-            }
-          >
-            [ {externalPowerStatus.externalPowerText} ]
-          </LabeledList.Item>
-          <LabeledList.Item label="Power Cell">
-            <ProgressBar color="good" value={adjustedCellChange} />
-          </LabeledList.Item>
-          <LabeledList.Item
-            label="Charge Mode"
-            color={chargingStatus.color}
-            buttons={
-              <Button
-                icon={data.chargeMode ? 'sync' : 'times'}
-                content={data.chargeMode ? 'Auto' : 'Off'}
-                selected={data.chargeMode}
-                disabled={locked}
-                onClick={() => act('charge')}
-              />
-            }
-          >
-            [ {chargingStatus.chargingText} ]
-          </LabeledList.Item>
-        </LabeledList>
-      </Section>
+      <Section title="Power Status" />
       <Section title="Power Channels">
         <LabeledList>
           {channelArray.map((channel) => {
