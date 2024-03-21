@@ -516,7 +516,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/stealthy_tools/dnascrambler
 	name = "DNA Scrambler"
-	desc = "Шприц с одной инъекцией, меняющая имя и внешность на случайные. Более дешевая, но менее универсальная альтернатива карте агента и изменителю воздуха."
+	desc = "Шприц с одной инъекцией, меняющая имя и внешность на случайные. Более дешевая, но менее универсальная альтернатива карте агента и изменителю голоса."
 	reference = "DNAS"
 	item = /obj/item/dnascrambler
 	cost = 7
@@ -545,7 +545,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/stealthy_tools/cutouts
 	name = "Adaptive Cardboard Cutouts"
-	desc = "Эти картонные аппликации покрыты тонким материалом, предотвращающее выветание и делает изображения более похожими на реальными. В наборе их 3, а также \
+	desc = "Эти картонные аппликации покрыты тонким материалом, предотвращающее выцветание и делает изображения более похожими на реальными. В наборе их 3, а также \
 	баллончик с краской для смены облика."
 	reference = "ADCC"
 	item = /obj/item/storage/box/syndie_kit/cutouts
@@ -582,7 +582,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/device_tools/access_tuner
 	name = "Access Tuner"
-	desc = "Настройщик доступа - это  маленькое устройство, взаимодействующее со шлюзами на расстоянии. Этот процесс занимает несколько секунд и позволяет болтировать, открывать или переключать экстренный доступ."
+	desc = "Настройщик доступа - это маленькое устройство, взаимодействующее со шлюзами на расстоянии. Этот процесс занимает несколько секунд и позволяет болтировать, открывать или переключать экстренный доступ у шлюзов."
 	reference = "HACK"
 	item = /obj/item/door_remote/omni/access_tuner
 	cost = 30
@@ -603,7 +603,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/device_tools/bonerepair
 	name = "Prototype Nanite Autoinjector"
-	desc = "Украденный прототип с нанитами, лечащими всё тело. При инъекции выключает системы в теле, пока они оживляют органы и конечности."
+	desc = "Украденный прототип с нанитами, лечащими всё тело. При инъекции выключает системы в теле, пока наниты оживляют органы и конечности."
 	reference = "NCAI"
 	item = /obj/item/reagent_containers/hypospray/autoinjector/nanocalcium
 	cost = 10
@@ -613,16 +613,16 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	desc = "Телепортатор Синдиката это переносное устройство, переносящее пользователя на 4-8 метров вперед. \
 			Осторожно, телепортация в стену заставит телепортатор сделать экстренный параллельный телепорт, \
 			но если экстренны телепорт даст сбой, он вас убьет. \
-			Имеет четыре заряда, перезаряжается, гарантия истекает при воздействии ЭМИ. \
+			Имеет четыре заряда, перезаряжается, гарантия недействительна при воздействии ЭМИ. \
 			Поставляется с хамелеон мезонами, чтобы вы оставались стильным, имея возможность видеть сквозь стены."
 	reference = "TELE"
 	item = /obj/item/storage/box/syndie_kit/teleporter
 	cost = 40
 
-/datum/uplink_item/device_tools/organ_extractor
+/datum/uplink_item/device_tools/organ_extractor // Сюда завозят новый стафф? ШОК!
 	name = "Organ Extractor"
-	desc = "A device that can remove organs or cybernetic implants from a target, and stores them inside. \
-	Stored organs can be implanted into the user, or into other targets. Synthesizes chemicals to keep the organs fresh."
+	desc = "Устройство, используемое для извлечения и хранения органов и кибернетических имплантов жертвы. \
+	Хранящиеся ограны можно вживить в пользователя или в другую цель. Синтезирует химикаты для сохранения органов свежими."
 	reference = "OREX"
 	item = /obj/item/organ_extractor
 	cost = 20
@@ -659,7 +659,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/suits/plate_compression
 	name = "MODsuit Plate Compression Module"
-	desc = "Модуль на МОДСьют, позволяющий ему сжаться в более маленький размер. Не совместим с модулями хранилища, \
+	desc = "Модуль на МОДСьют, позволяющий ему сжаться в более маленький размер. Несовместим с модулями хранилища, \
 	сначала вам придётся извлечь данные модули."
 	reference = "MSPC"
 	item = /obj/item/mod/module/plate_compression
@@ -789,7 +789,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/bio_chips/protofreedom
 	name = "Prototype Freedom Bio-chip"
-	desc = "A prototype Био-чип, вживляемый в тело и позже активируемый для того, чтобы вырваться из любых оков. Может быть активирован лишь единожды."
+	desc = "Прототип био-чипа, вживляемый в тело и позже активируемый для того, чтобы вырваться из любых оков. Может быть активирован лишь единожды."
 	reference = "PFI"
 	item = /obj/item/bio_chip_implanter/freedom/prototype
 	cost = 10
@@ -803,7 +803,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/bio_chips/mindslave
 	name = "Mindslave Bio-chip"
-	desc = "Коробка с имлантером с имплантом Майндслэйв, который при вживлении в другого человека делает их лояльным вам и вашему делу кроме случаев, если они уже проимплантированы кем-то другим. Лояльность кончается при извлечении импланта из тела."
+	desc = "Коробка с имлантером с био-чипом Майндслэйв, который при вживлении в другого человека делает их лояльным вам и вашему делу кроме случаев, если они уже проимплантированы кем-то другим. Лояльность кончается при извлечении импланта из тела."
 	reference = "MI"
 	item = /obj/item/bio_chip_implanter/traitor
 	cost = 50
@@ -869,7 +869,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/badass/balloon
 	name = "For showing that you are The Boss"
-	desc = "Бесполезный красный шарик с лого Синдиката на нём. Подрывает даже глубочашее прикрытие."
+	desc = "Бесполезный красный шарик с логотипом Синдиката на нём. Подрывает даже глубочашее прикрытие."
 	reference = "BABA"
 	item = /obj/item/toy/syndicateballoon
 	cost = 100
@@ -884,7 +884,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/badass/tpsuit
 	name = "Syndicate Two-Piece Suit"
-	desc = "Чёткий костюм-двойка, который должен носить каждый уважающий агент Синдиката. Идеальна для профессионалов, действующих скрытно, но также имеет среднюю броню в случае, если всё пойдёт не по плану. Поставляется с двумя карманами на кашемировой подкладке для максимального стиля и комфорта."
+	desc = "Чёткий костюм-двойка, который должен носить каждый уважающий cебя агент Синдиката. Идеальен для профессионалов, действующих скрытно, но также имеет среднюю броню в случае, если всё пойдёт не по плану. Поставляется с двумя карманами на кашемировой подкладке для максимального стиля и комфорта."
 	reference = "SUIT"
 	item = /obj/item/clothing/suit/storage/iaa/blackjacket/armored
 	cost = 3
@@ -896,35 +896,35 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/bundles_TC/telecrystal
 	name = "1 Raw Telecrystal"
-	desc = "Telecrystal in its rawest and purest form; can be utilized on active uplinks to increase their telecrystal count."
+	desc = "Телекристалл в своей чистейшей форме; может быть использован для увеличения счета телекристаллов на активных аплинках."
 	reference = "RTC"
 	item = /obj/item/stack/telecrystal
 	cost = 1
 
 /datum/uplink_item/bundles_TC/telecrystal/five
 	name = "5 Raw Telecrystals"
-	desc = "Five telecrystals in their rawest and purest form; can be utilized on active uplinks to increase their telecrystal count."
+	desc = "Пять телекристаллов в своей чистейшей форме; может быть использован для увеличения счета телекристаллов на активных аплинках."
 	reference = "RTCF"
 	item = /obj/item/stack/telecrystal/five
 	cost = 5
 
 /datum/uplink_item/bundles_TC/telecrystal/twenty
 	name = "20 Raw Telecrystals"
-	desc = "Twenty telecrystals in their rawest and purest form; can be utilized on active uplinks to increase their telecrystal count."
+	desc = "Двадцать телекристаллов в своей чистейшей форме; могут быть использованы для увеличения счета телекристаллов на активных аплинках."
 	reference = "RTCT"
 	item = /obj/item/stack/telecrystal/twenty
 	cost = 20
 
 /datum/uplink_item/bundles_TC/telecrystal/fifty
 	name = "50 Raw Telecrystals"
-	desc = "Fifty telecrystals in their rawest and purest form; can be utilized on active uplinks to increase their telecrystal count."
+	desc = "Пятьдесят телекристаллов в своей чистейшей форме; могут быть использованы для увеличения счета телекристаллов на активных аплинках."
 	reference = "RTCB"
 	item = /obj/item/stack/telecrystal/fifty
 	cost = 50
 
 /datum/uplink_item/bundles_TC/telecrystal/hundred
 	name = "100 Raw Telecrystals"
-	desc = "One-hundred telecrystals in their rawest and purest form; can be utilized on active uplinks to increase their telecrystal count."
+	desc = "Одна сотня телекристаллов в своей чистейшей форме; могут быть использованы для увеличения счета телекристаллов на активных аплинках."
 	reference = "RTCH"
 	item = /obj/item/stack/telecrystal/hundred
 	cost = 100
