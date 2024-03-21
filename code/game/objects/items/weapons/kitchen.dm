@@ -147,7 +147,7 @@
 /obj/item/kitchen/knife/shiv
 	name = "glass shiv"
 	desc = "A haphazard sharp object wrapped in cloth, just like great-great-great-great grandma used to make."
-	icon = 'icons/obj/items.dmi'
+	icon = 'icons/obj/weapons/melee.dmi'
 	item_state = "glass_shiv"
 	icon_state = "glass_shiv"
 
@@ -224,8 +224,8 @@
  */
 
 /obj/item/kitchen/rollingpin
-	name = "rolling pin"
-	desc = "Used to knock out the Bartender."
+	name = "скалка"
+	desc = "Используется, чтобы вырубить бармена."
 	icon_state = "rolling_pin"
 	force = 8.0
 	throwforce = 10.0

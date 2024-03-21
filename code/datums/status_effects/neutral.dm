@@ -52,11 +52,11 @@
 	alert_type = null
 	status_type = STATUS_EFFECT_REFRESH
 	/// Message displayed when wizards perform this together
-	var/critical_success = "high-five EPICALLY!"
+	var/critical_success = "ЭПИЧНО дают пять!"
 	/// Message displayed when normal people perform this together
-	var/success = "high-five!"
+	var/success = "дают пять!"
 	/// Message displayed when this status effect is applied.
-	var/request = "requests a high-five."
+	var/request = "ожидает пятюню."
 	/// Item to be shown in the pop-up balloon.
 	var/obj/item/item_path = /obj/item/latexballon
 	/// Sound effect played when this emote is completed.
@@ -81,7 +81,7 @@
 		if(!C.has_status_effect(type) || C == user)
 			continue
 		if(is_wiz && iswizard(C))
-			user.visible_message("<span class='biggerdanger'><b>[user.name]</b> and <b>[C.name]</b> [critical_success]</span>")
+			user.visible_message("<span class='biggerdanger'><b>[user.name]</b> и <b>[C.name]</b> [critical_success]</span>")
 			user.status_flags |= GODMODE
 			C.status_flags |= GODMODE
 			explosion(get_turf(user), 5, 2, 1, 3, cause = id)
@@ -93,7 +93,7 @@
 		C.do_attack_animation(user, no_effect = TRUE)
 		playsound(user, sound_effect, 80)
 		if(!both_wiz)
-			user.visible_message("<span class='notice'><b>[user.name]</b> and <b>[C.name]</b> [success]</span>")
+			user.visible_message("<span class='notice'><b>[user.name]</b> и <b>[C.name]</b> [success]</span>")
 			user.remove_status_effect(type)
 			C.remove_status_effect(type)
 			return FALSE
@@ -107,39 +107,39 @@
 
 /datum/status_effect/high_five/proc/get_missed_message()
 	var/list/missed_highfive_messages = list(
-		"lowers [owner.p_their()] hand, it looks like [owner.p_they()] [owner.p_were()] left hanging...",
-		"seems to awkwardly wave at nobody in particular.",
-		"moves [owner.p_their()] hand directly to [owner.p_their()] forehead in shame.",
-		"fully commits and high-fives empty space.",
-		"high-fives [owner.p_their()] other hand shamefully before wiping away a tear.",
-		"goes for a handshake, then a fistbump, before pulling [owner.p_their()] hand back...? <i>What [owner.p_are()] [owner.p_they()] doing?</i>"
+		"опускает руку, неловкая ситуация...",
+		"неловко машет непонятно кому.",
+		"от стыда прикладывает руку прямо себе на лоб.",
+		"от души дает пять в воздух.",
+		"стыдливо даёт пять самому себе перед тем, как смахнуть слезу.",
+		"пытается совершить рукопожатие, потом удар кулаками прежде чем одёрнуть свою руку...? <i>Что происходит?</i>"
 	)
 
 	return pick(missed_highfive_messages)
 
 /datum/status_effect/high_five/dap
 	id = "dap"
-	critical_success = "dap each other up EPICALLY!"
-	success = "dap each other up!"
-	request = "requests someone to dap them up!"
+	critical_success = "совершают ЭПИЧЕСКИ крутое рукопожатие!"
+	success = "совершают крутое рукопожатие!"
+	request = "ожидает особое рукопожатие!"
 	sound_effect = 'sound/effects/snap.ogg'
 	item_path = /obj/item/melee/touch_attack/fake_disintegrate  // EI-NATH!
 
 /datum/status_effect/high_five/dap/get_missed_message()
-	return "sadly can't find anybody to give daps to, and daps [owner.p_themselves()]. Shameful."
+	return "не находит никого, кто мог бы совершить крутое рукопожатие и, к сожалению, жмет руку лишь себе. Позорище."
 
 /datum/status_effect/high_five/handshake
 	id = "handshake"
-	critical_success = "give each other an EPIC handshake!"
-	success = "give each other a handshake!"
-	request = "requests a handshake!"
+	critical_success = "ЭПИЧНО пожимают друг другу руки!"
+	success = "пожимают друг другу руки!"
+	request = "ожидает рукопожатие!"
 	sound_effect = "sound/weapons/thudswoosh.ogg"
 
 /datum/status_effect/high_five/handshake/get_missed_message()
 	var/list/missed_messages = list(
-		"drops [owner.p_their()] hand, shamefully.",
-		"grabs [owner.p_their()] outstretched hand with [owner.p_their()] other hand and gives [owner.p_themselves()] a handshake.",
-		"balls [owner.p_their()] hand into a fist, slowly bringing it back in."
+		"стыдливо опускает руку.",
+		"хватает протянутую руку другой рукой и обменивается рукопожатием только с собой.",
+		"сжимает ладонь в кулак и медленно убирает руку обратно."
 	)
 
 	return pick(missed_messages)

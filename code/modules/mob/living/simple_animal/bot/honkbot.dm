@@ -292,7 +292,7 @@
 		target = C
 		oldtarget_name = C.name
 		bike_horn()
-		speak("Honk!")
+		speak("Хонк!")
 		visible_message("<b>[src]</b> starts chasing [C.name]!")
 		mode = BOT_HUNT
 		INVOKE_ASYNC(src, PROC_REF(handle_automated_action))
@@ -335,7 +335,7 @@
 			C.KnockDown(10 SECONDS)
 			playsound(loc, 'sound/misc/sadtrombone.ogg', 50, 1, -1)
 			if(!client)
-				speak("Honk!")
+				speak("Хонк!")
 			sensor_blink()
 			return
 	..()

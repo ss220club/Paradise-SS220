@@ -158,6 +158,7 @@
 	item_state = "plasmacutter"
 	modifystate = -1
 	origin_tech = "combat=1;materials=3;magnets=2;plasmatech=3;engineering=1"
+	needs_permit = FALSE
 	ammo_type = list(/obj/item/ammo_casing/energy/plasma)
 	fire_sound = 'sound/weapons/laser.ogg'
 	usesound = 'sound/items/welder.ogg'
@@ -824,7 +825,7 @@
 
 /obj/item/gun/energy/detective/proc/start_pointing(target_UID)
 	tracking_target_UID = target_UID
-	Announcer.autosay("Alert: Detective's revolver discharged in tracking mode. Tracking: [locateUID(tracking_target_UID)] at [get_area_name(src)].", src, "Security")
+	Announcer.autosay("Внимание: размещена метка слежения. Отслеживание: [locateUID(tracking_target_UID)] в [get_area_name(src)].", src, "Security")
 	var/obj/item/pinpointer/crew/C = locateUID(linked_pinpointer_UID)
 	if(C)
 		C.start_tracking()
