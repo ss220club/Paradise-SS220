@@ -1270,3 +1270,223 @@
 /obj/effect/landmark/awaymissions/black_mesa/random_mob_placer/hecu
 	icon_state = "spawn_vortigaunt"
 	possible_mobs = list(/mob/living/simple_animal/hostile/blackmesa/hecu, /mob/living/simple_animal/hostile/blackmesa/hecu/ranged,/mob/living/simple_animal/hostile/blackmesa/hecu/ranged/smg)
+
+/* Space Battle */
+//Spawners
+/obj/effect/landmark/awaymissions/spacebattle/mine_spawner
+	icon = 'modular_ss220/maps220/icons/spacebattle.dmi'
+	icon_state = "spawner_mine"
+	var/id = null
+	var/triggered = 0
+	var/faction = "syndicate"
+	var/safety_z_check = 1
+
+/obj/effect/landmark/awaymissions/spacebattle/mob_spawn
+	name = "spawner"
+	icon = 'modular_ss220/maps220/icons/spacebattle.dmi'
+	var/id = null
+	var/syndi_mob = null
+
+/obj/effect/landmark/awaymissions/spacebattle/mine_spawner/Crossed(AM as mob|obj, oldloc)
+	if(!isliving(AM))
+		return
+	var/mob/living/M = AM
+	if(faction && (faction in M.faction))
+		return
+	triggerlandmark(M)
+
+/obj/effect/landmark/awaymissions/spacebattle/mine_spawner/proc/triggerlandmark(mob/living/victim)
+	if(triggered)
+		return
+	victim.spawn_alert(victim)
+	for(var/obj/effect/landmark/awaymissions/spacebattle/mob_spawn/S in GLOB.landmarks_list)
+		if(safety_z_check && S.z != z)
+			continue
+		if(S.id == id)
+			new S.syndi_mob(get_turf(S))
+			triggered = 1
+	qdel(src)
+
+/obj/effect/landmark/awaymissions/spacebattle/mob_spawn/melee
+	name = "melee"
+	icon_state = "melee"
+	syndi_mob = /mob/living/simple_animal/hostile/syndicate/melee/autogib/spacebattle
+
+/obj/effect/landmark/awaymissions/spacebattle/mob_spawn/melee_space
+	name = "melee_space"
+	icon_state = "space_melee"
+	syndi_mob = /mob/living/simple_animal/hostile/syndicate/melee/space/autogib/spacebattle
+
+/obj/effect/landmark/awaymissions/spacebattle/mob_spawn/ranged
+	name = "ranged"
+	icon_state = "range"
+	syndi_mob = /mob/living/simple_animal/hostile/syndicate/ranged/autogib/spacebattle
+
+/obj/effect/landmark/awaymissions/spacebattle/mob_spawn/ranged_space
+	name = "ranged_space"
+	icon_state = "space_range"
+	syndi_mob = /mob/living/simple_animal/hostile/syndicate/ranged/space/autogib/spacebattle
+
+/obj/effect/landmark/awaymissions/spacebattle/mob_spawn/drone
+	name = "drone"
+	icon_state = "drone"
+	syndi_mob = /mob/living/simple_animal/hostile/malf_drone/spacebattle
+
+//Enemies
+/mob/living/simple_animal/hostile/syndicate
+	var/synmobdrop //Обычный лут, дропается со всех
+	var/SynSpace //Выпадение бладрига
+	var/SynMelee //Лут с милишников
+	var/SynRange //Лут с дальников
+
+/mob/living/simple_animal/hostile/syndicate/Initialize()
+	var/rollforloot = rand(1,50) //Лучшего варианта я не нашел
+	switch(rollforloot)
+		if(1 to 8) // 16%
+			pick(synmobdrop = /obj/item/food/snacks/syndicake,
+				synmobdrop = /obj/item/poster/random_contraband)
+		if(8 to 15) // 14%
+			pick(synmobdrop = /obj/item/clothing/mask/gas/syndicate,
+				synmobdrop = /obj/item/tank/internals/emergency_oxygen/engi/syndi)
+		if(15 to 20) // 10%
+			pick(synmobdrop = /obj/item/target/syndicate,
+				synmobdrop = /obj/item/deck/cards/syndicate,
+				synmobdrop = /obj/item/kitchen/knife/combat/survival)
+		if(20 to 24) // 8%
+			pick(synmobdrop = /obj/item/clothing/glasses/night,
+				synmobdrop = /obj/item/stack/medical/bruise_pack,
+				synmobdrop = /obj/item/stack/medical/ointment)
+		if(24 to 27) // 6%
+			pick(synmobdrop = /obj/item/reagent_containers/patch/styptic/small,
+				synmobdrop = /obj/item/reagent_containers/patch/silver_sulf/small,
+				synmobdrop = /obj/item/food/snacks/donkpocket)
+		if(27 to 29) // 4%
+			pick(synmobdrop = /obj/item/reagent_containers/patch/styptic,
+				synmobdrop = /obj/item/reagent_containers/patch/silver_sulf,
+				synmobdrop = /obj/item/storage/backpack/duffel/syndie,
+				synmobdrop = /obj/item/clothing/gloves/combat)
+		if(30) // 2%
+			pick(synmobdrop = /obj/item/storage/fancy/cigarettes/cigpack_syndicate,
+				synmobdrop = /obj/item/storage/box/syndidonkpockets,
+				synmobdrop = /obj/item/card/id/syndicate)
+		else // 40%
+			synmobdrop = /obj/item/ammo_casing/c10mm
+	. = ..()
+
+/mob/living/simple_animal/hostile/syndicate/Initialize()
+	switch(rand(1,33))
+		if(1) // 3%
+			SynSpace = /obj/item/clothing/suit/space/hardsuit/syndi
+		else
+			SynSpace = /obj/item/ammo_casing/c10mm
+	return ..()
+
+/mob/living/simple_animal/hostile/syndicate/melee/Initialize()
+	switch(rand(1,100))
+		if(1) // 1%
+			SynMelee = /obj/item/melee/energy/sword/saber
+		if(2 to 3) // 2%
+			SynMelee = /obj/item/shield/energy
+		else
+			SynMelee = /obj/item/ammo_casing/c10mm
+	return ..()
+
+/mob/living/simple_animal/hostile/syndicate/ranged/Initialize()
+	switch(rand(rand(1,100)))
+		if(25 to 35) // 10%
+			SynRange = /obj/item/ammo_box/magazine/m10mm
+		if(35 to 40) // 5%
+			SynRange = /obj/item/gun/projectile/automatic/pistol
+		if(40 to 47) // 7%
+			SynRange = /obj/item/clothing/accessory/holster
+		if(47 to 50) // 3%
+			SynRange = /obj/item/ammo_box/magazine/smgm45
+		if(50 to 51) // 1%
+			SynRange = /obj/item/gun/projectile/automatic/c20r
+		else
+			SynRange = /obj/item/ammo_casing/c10mm
+	.=..()
+
+/mob/living/simple_animal/hostile/syndicate/melee/autogib/spacebattle
+	damage_coeff = list("brute" = 0.8, "fire" = 0.8, "tox" = 1, "clone" = 2, "stamina" = 0, "oxy" = 0.5)
+	melee_damage_type = BURN
+	attack_sound = 'sound/weapons/saberon.ogg'
+
+/mob/living/simple_animal/hostile/syndicate/melee/autogib/spacebattle/Initialize()
+	. = ..()
+	loot = list(/obj/effect/decal/cleanable/ash, synmobdrop, SynMelee)
+	return .
+
+/mob/living/simple_animal/hostile/syndicate/melee/space/autogib/spacebattle
+	damage_coeff = list("brute" = 0.8, "fire" = 0.8, "tox" = 1, "clone" = 2, "stamina" = 0, "oxy" = 0)
+	melee_damage_type = BURN
+	attack_sound = 'sound/weapons/saberon.ogg'
+
+/mob/living/simple_animal/hostile/syndicate/melee/space/autogib/spacebattle/Initialize()
+	. = ..()
+	loot = list(/obj/effect/decal/cleanable/ash, synmobdrop, SynMelee, SynSpace)
+	return .
+
+/mob/living/simple_animal/hostile/syndicate/ranged/autogib/spacebattle
+	damage_coeff = list("brute" = 1, "fire" = 1, "tox" = 1, "clone" = 2, "stamina" = 0, "oxy" = 0.5)
+
+/mob/living/simple_animal/hostile/syndicate/ranged/autogib/spacebattle/Initialize()
+	. = ..()
+	loot = list(/obj/effect/decal/cleanable/ash, synmobdrop, SynRange)
+	return .
+
+/mob/living/simple_animal/hostile/syndicate/ranged/space/autogib/spacebattle/Initialize()
+	. = ..()
+	loot = list(/obj/effect/decal/cleanable/ash, synmobdrop, SynRange, SynSpace)
+	return .
+
+/mob/living/simple_animal/hostile/malf_drone/spacebattle
+	icon = 'modular_ss220/maps220/icons/spacebattle.dmi'
+	icon_state = "wisewill-Combat-roll"
+	icon_living = "wisewill-Combat-roll"
+	icon_gib = "drone_dead"
+	health = 50
+	maxHealth = 50
+	faction = list("syndicate")
+	projectiletype = /obj/item/projectile/beam/laser/syndrone
+
+/obj/item/projectile/beam/laser/syndrone
+	name = "light immolation beam"
+	damage = 8
+	icon_state = "scatterlaser"
+	eyeblur = 1
+
+/mob/living/simple_animal/hostile/malf_drone/spacebattle/drop_loot()
+	do_sparks(3, 1, src)
+	var/turf/T = get_turf(src)
+
+	//shards
+	var/obj/O = new /obj/item/shard(T)
+	step_to(O, get_turf(pick(view(7, src))))
+	if(prob(50))
+		O = new /obj/item/shard(T)
+		step_to(O, get_turf(pick(view(7, src))))
+	if(prob(25))
+		O = new /obj/item/shard(T)
+		step_to(O, get_turf(pick(view(7, src))))
+
+	//rods
+	var/obj/item/stack/K = new /obj/item/stack/rods(T, rand(1,5))
+	step_to(K, get_turf(pick(view(7, src))))
+	K.update_icon()
+
+	//plastitanuim
+	K = new /obj/item/stack/sheet/mineral/plastitanium(T, rand(1,5))
+	step_to(K, get_turf(pick(view(7, src))))
+	K.update_icon()
+
+/mob/living/simple_animal/hostile/malf_drone/spacebattle/update_icons()
+	if(passive_mode)
+		icon_state = "wisewill-Combat"
+	else if(health / maxHealth > 0.9)
+		icon_state = "wisewill-Combat-roll2"
+	else if(health / maxHealth > 0.5)
+		icon_state = "wisewill-Combat-roll"
+	else if(health / maxHealth < 0.5)
+		icon_state = "wisewill-Combat"
+
