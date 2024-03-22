@@ -8,7 +8,7 @@ GLOBAL_LIST(badge_icons_cache)
 
 	var/badge_part = "[donator_badge_icon ? bicon(donator_badge_icon) : ""][worker_badge_icon ? bicon(worker_badge_icon) : ""]"
 	var/list/parts = list()
-	if (badge_part)
+	if(badge_part)
 		parts += badge_part
 	parts += key
 	return jointext(parts, " ")
