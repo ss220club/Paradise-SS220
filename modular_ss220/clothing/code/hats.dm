@@ -65,7 +65,7 @@
 		)
 
 /obj/item/clothing/head/towel
-	name = "полотенце"
+	name = "шапка из полотенца"
 	desc = "Полотенце замотанное в импровизированную шапку. Можно надеть на голову."
 	icon = 'modular_ss220/clothing/icons/object/hats.dmi'
 	icon_state = "towel_head"
