@@ -266,3 +266,122 @@
 		"Human" = 'modular_ss220/clothing/icons/mob/under.dmi',
 		)
 
+/obj/item/clothing/under/towel_long
+	name = "полотенце"
+	desc = "Полотенце, сотканное из синтетической ткани. Можно обмотать вокруг тела."
+	icon = 'modular_ss220/clothing/icons/object/under.dmi'
+	icon_state = "towel_long"
+	item_color = "towel_long"
+	lefthand_file = 'modular_ss220/clothing/icons/inhands/left_hand.dmi'
+	righthand_file = 'modular_ss220/clothing/icons/inhands/right_hand.dmi'
+	sprite_sheets = list(
+		"Human" = 'modular_ss220/clothing/icons/mob/under.dmi',
+		"Tajaran" = 'modular_ss220/clothing/icons/mob/under.dmi',
+		"Vulpkanin" = 'modular_ss220/clothing/icons/mob/under.dmi',
+		"Kidan" = 'modular_ss220/clothing/icons/mob/under.dmi',
+		"Skrell" = 'modular_ss220/clothing/icons/mob/under.dmi',
+		"Slime People" = 'modular_ss220/clothing/icons/mob/under.dmi',
+		"Plasmaman" = 'modular_ss220/clothing/icons/mob/under.dmi',
+		"Grey" = 'modular_ss220/clothing/icons/mob/species/grey/under.dmi',
+		"Drask" = 'modular_ss220/clothing/icons/mob/species/drask/under.dmi',
+		"Unathi" = 'modular_ss220/clothing/icons/mob/species/unathi/under.dmi',
+		"Vox" = 'modular_ss220/clothing/icons/mob/species/vox/under.dmi',
+		"Monkey" = 'modular_ss220/clothing/icons/mob/species/monkey/under.dmi',
+		"Nian" = 'modular_ss220/clothing/icons/mob/under.dmi',
+		"Golem" = 'modular_ss220/clothing/icons/mob/under.dmi',
+		"Adbuctor" = 'modular_ss220/clothing/icons/mob/under.dmi',
+		"Machine" = 'modular_ss220/clothing/icons/mob/under.dmi',
+		"Diona" = 'modular_ss220/clothing/icons/mob/under.dmi',
+		"Shadow" = 'modular_ss220/clothing/icons/mob/under.dmi',
+		"Ancient Skeleton" ='modular_ss220/clothing/icons/mob/under.dmi',
+	)
+
+/obj/item/clothing/under/towel_long_alt
+	name = "махровое полотенце"
+	desc = "Полотенце, сотканное из синтетической ткани, на взгляд шершавое. Можно обмотать вокруг тела."
+	icon = 'modular_ss220/clothing/icons/object/under.dmi'
+	icon_state = "towel_long_alt"
+	item_color = "towel_long_alt"
+	lefthand_file = 'modular_ss220/clothing/icons/inhands/left_hand.dmi'
+	righthand_file = 'modular_ss220/clothing/icons/inhands/right_hand.dmi'
+	sprite_sheets = list(
+		"Human" = 'modular_ss220/clothing/icons/mob/under.dmi',
+		"Tajaran" = 'modular_ss220/clothing/icons/mob/under.dmi',
+		"Vulpkanin" = 'modular_ss220/clothing/icons/mob/under.dmi',
+		"Kidan" = 'modular_ss220/clothing/icons/mob/under.dmi',
+		"Skrell" = 'modular_ss220/clothing/icons/mob/under.dmi',
+		"Slime People" = 'modular_ss220/clothing/icons/mob/under.dmi',
+		"Plasmaman" = 'modular_ss220/clothing/icons/mob/under.dmi',
+		"Grey" = 'modular_ss220/clothing/icons/mob/species/grey/under.dmi',
+		"Drask" = 'modular_ss220/clothing/icons/mob/species/drask/under.dmi',
+		"Unathi" = 'modular_ss220/clothing/icons/mob/species/unathi/under.dmi',
+		"Vox" = 'modular_ss220/clothing/icons/mob/species/vox/under.dmi',
+		"Monkey" = 'modular_ss220/clothing/icons/mob/species/monkey/under.dmi',
+		"Nian" = 'modular_ss220/clothing/icons/mob/under.dmi',
+		"Golem" = 'modular_ss220/clothing/icons/mob/under.dmi',
+		"Adbuctor" = 'modular_ss220/clothing/icons/mob/under.dmi',
+		"Machine" = 'modular_ss220/clothing/icons/mob/under.dmi',
+		"Diona" = 'modular_ss220/clothing/icons/mob/under.dmi',
+		"Shadow" = 'modular_ss220/clothing/icons/mob/under.dmi',
+		"Ancient Skeleton" ='modular_ss220/clothing/icons/mob/under.dmi',
+	)
+
+/obj/item/clothing/under/towel_short
+	name = "маленькое полотенце"
+	desc = "Полотенце, сотканное из синтетической ткани, но маленькое. Можно обмотать вокруг тела."
+	icon = 'modular_ss220/clothing/icons/object/under.dmi'
+	icon_state = "towel_short"
+	item_color = "towel_short"
+	lefthand_file = 'modular_ss220/clothing/icons/inhands/left_hand.dmi'
+	righthand_file = 'modular_ss220/clothing/icons/inhands/right_hand.dmi'
+	sprite_sheets = list(
+		"Human" = 'modular_ss220/clothing/icons/mob/under.dmi',
+		"Tajaran" = 'modular_ss220/clothing/icons/mob/under.dmi',
+		"Vulpkanin" = 'modular_ss220/clothing/icons/mob/under.dmi',
+		"Kidan" = 'modular_ss220/clothing/icons/mob/under.dmi',
+		"Skrell" = 'modular_ss220/clothing/icons/mob/under.dmi',
+		"Slime People" = 'modular_ss220/clothing/icons/mob/under.dmi',
+		"Plasmaman" = 'modular_ss220/clothing/icons/mob/under.dmi',
+		"Grey" = 'modular_ss220/clothing/icons/mob/species/grey/under.dmi',
+		"Drask" = 'modular_ss220/clothing/icons/mob/species/drask/under.dmi',
+		"Unathi" = 'modular_ss220/clothing/icons/mob/species/unathi/under.dmi',
+		"Vox" = 'modular_ss220/clothing/icons/mob/species/vox/under.dmi',
+		"Monkey" = 'modular_ss220/clothing/icons/mob/species/monkey/under.dmi',
+		"Nian" = 'modular_ss220/clothing/icons/mob/under.dmi',
+		"Golem" = 'modular_ss220/clothing/icons/mob/under.dmi',
+		"Adbuctor" = 'modular_ss220/clothing/icons/mob/under.dmi',
+		"Machine" = 'modular_ss220/clothing/icons/mob/under.dmi',
+		"Diona" = 'modular_ss220/clothing/icons/mob/under.dmi',
+		"Shadow" = 'modular_ss220/clothing/icons/mob/under.dmi',
+		"Ancient Skeleton" ='modular_ss220/clothing/icons/mob/under.dmi',
+	)
+
+/obj/item/clothing/under/towel_short_alt
+	name = "маленькое махровое полотенце"
+	desc = "Полотенце, сотканное из синтетической ткани, на взгляд шершавое и маленькое. Можно обмотать вокруг тела."
+	icon = 'modular_ss220/clothing/icons/object/under.dmi'
+	icon_state = "towel_short_alt"
+	item_color = "towel_short_alt"
+	lefthand_file = 'modular_ss220/clothing/icons/inhands/left_hand.dmi'
+	righthand_file = 'modular_ss220/clothing/icons/inhands/right_hand.dmi'
+	sprite_sheets = list(
+		"Human" = 'modular_ss220/clothing/icons/mob/under.dmi',
+		"Tajaran" = 'modular_ss220/clothing/icons/mob/under.dmi',
+		"Vulpkanin" = 'modular_ss220/clothing/icons/mob/under.dmi',
+		"Kidan" = 'modular_ss220/clothing/icons/mob/under.dmi',
+		"Skrell" = 'modular_ss220/clothing/icons/mob/under.dmi',
+		"Slime People" = 'modular_ss220/clothing/icons/mob/under.dmi',
+		"Plasmaman" = 'modular_ss220/clothing/icons/mob/under.dmi',
+		"Grey" = 'modular_ss220/clothing/icons/mob/species/grey/under.dmi',
+		"Drask" = 'modular_ss220/clothing/icons/mob/species/drask/under.dmi',
+		"Unathi" = 'modular_ss220/clothing/icons/mob/species/unathi/under.dmi',
+		"Vox" = 'modular_ss220/clothing/icons/mob/species/vox/under.dmi',
+		"Monkey" = 'modular_ss220/clothing/icons/mob/species/monkey/under.dmi',
+		"Nian" = 'modular_ss220/clothing/icons/mob/under.dmi',
+		"Golem" = 'modular_ss220/clothing/icons/mob/under.dmi',
+		"Adbuctor" = 'modular_ss220/clothing/icons/mob/under.dmi',
+		"Machine" = 'modular_ss220/clothing/icons/mob/under.dmi',
+		"Diona" = 'modular_ss220/clothing/icons/mob/under.dmi',
+		"Shadow" = 'modular_ss220/clothing/icons/mob/under.dmi',
+		"Ancient Skeleton" ='modular_ss220/clothing/icons/mob/under.dmi',
+	)
