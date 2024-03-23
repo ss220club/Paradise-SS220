@@ -56,7 +56,8 @@
 	..()
 
 /obj/item/clothing/suit/storage/hear_message(mob/M, msg)
-	pockets.hear_message(M, msg)
+	if(pockets)	// Runtimes during mapload when initializing corpses
+		pockets.hear_message(M, msg)
 	..()
 
 /obj/item/clothing/suit/storage/proc/return_inv()
