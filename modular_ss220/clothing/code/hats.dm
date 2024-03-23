@@ -91,3 +91,31 @@
 		"Vox" 				= 	'modular_ss220/clothing/icons/mob/species/vox/hats.dmi',
 		"Vulpkanin" 		= 	'modular_ss220/clothing/icons/mob/hats.dmi',
 	)
+
+/obj/item/clothing/head/towel/red
+	name = "красная шапочка из полотенца"
+	color = "#EE204D"
+
+/obj/item/clothing/head/towel/green
+	name = "зелёная шапочка из полотенца"
+	color = "#32CD32"
+
+/obj/item/clothing/head/towel/blue
+	name = "синяя шапочка из полотенца"
+	color = "#1E90FF"
+
+/obj/item/clothing/head/towel/orange
+	name = "оранжевая шапочка из полотенца"
+	color = "#FFA500"
+
+/obj/item/clothing/head/towel/purple
+	name = "фиолетовая шапочка из полотенца"
+	color = "#DA70D6"
+
+/obj/item/clothing/head/towel/cyan
+	name = "голубая шапочка из полотенца"
+	color = "#40E0D0"
+
+/obj/item/clothing/head/towel/brown
+	name = "коричневая шапочка из полотенца"
+	color = "#DEB887"
