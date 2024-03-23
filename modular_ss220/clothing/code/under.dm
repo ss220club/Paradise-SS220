@@ -335,8 +335,6 @@
 	icon_state = "towel_short"
 	item_color = "towel_short"
 	has_sensor = 0
-	lefthand_file = 'modular_ss220/clothing/icons/inhands/left_hand.dmi'
-	righthand_file = 'modular_ss220/clothing/icons/inhands/right_hand.dmi'
 	sprite_sheets = list(
 		"Human" = 'modular_ss220/clothing/icons/mob/under.dmi',
 		"Tajaran" = 'modular_ss220/clothing/icons/mob/under.dmi',
@@ -366,8 +364,6 @@
 	icon_state = "towel_short_alt"
 	item_color = "towel_short_alt"
 	has_sensor = 0
-	lefthand_file = 'modular_ss220/clothing/icons/inhands/left_hand.dmi'
-	righthand_file = 'modular_ss220/clothing/icons/inhands/right_hand.dmi'
 	sprite_sheets = list(
 		"Human" = 'modular_ss220/clothing/icons/mob/under.dmi',
 		"Tajaran" = 'modular_ss220/clothing/icons/mob/under.dmi',
