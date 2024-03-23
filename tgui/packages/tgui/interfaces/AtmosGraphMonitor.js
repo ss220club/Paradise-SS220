@@ -16,21 +16,21 @@ export const AtmosGraphMonitor = (props, context) => {
   let sensors_list = data.sensors || {};
 
   return (
-    <Window width={400} height={400}>
+    <Window width={600} height={400}>
       <Window.Content scrollable>
         {Object.keys(sensors_list).map((s) => (
           <Section key={s} title={s}>
             <LabeledList>
               {Object.keys(sensors_list[s]).indexOf('pressure') > -1 ? (
-                <LabeledList.Item label="Давление">
-                  {sensors_list[s]['pressure']} kpa
+                <LabeledList.Item label="История давлений (kpa)">
+                  {sensors_list[s]['pressure_history'].join(', ')}
                 </LabeledList.Item>
               ) : (
                 ''
               )}
               {Object.keys(sensors_list[s]).indexOf('temperature') > -1 ? (
-                <LabeledList.Item label="Температура">
-                  {sensors_list[s]['temperature']} K
+                <LabeledList.Item label="История температур (K)">
+                  {sensors_list[s]['temperature_history'].join(', ')}
                 </LabeledList.Item>
               ) : (
                 ''
