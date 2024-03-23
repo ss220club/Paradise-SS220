@@ -43,38 +43,30 @@
 
 /// Вызов логирования данных в process
 /obj/machinery/computer/general_air_control/pt_monitor/process()
-	record()
+	record_sensors_data()
 	. = ..()
 
-/// Функция логирования данных в список, поведение подобно /obj/machinery/computer/general_air_control/proc/refresh_sensors()
-/obj/machinery/computer/general_air_control/pt_monitor/proc/record()
-	if(world.time >= next_record_time)
-		next_record_time = world.time + record_interval
+/// Функция логирования данных в список
+/// Все необходимые проверки выполняются предварительно в ..general_air_control/proc/refresh_sensors()
+/obj/machinery/computer/general_air_control/pt_monitor/proc/record_sensors_data()
+	if(world.time < next_record_time)
+		return
+	next_record_time = world.time + record_interval
 
-		for(var/sensor_name in sensor_name_uid_map)
-			var/obj/machinery/atmospherics/AM = locateUID(sensor_name_uid_map[sensor_name])
-			if(QDELETED(AM))
-				sensor_name_uid_map -= sensor_name
-				sensor_name_data_map -= sensor_name
-				continue
+	for(var/sensor_name in sensor_name_uid_map)
+		var/obj/machinery/atmospherics/air_sensor/sensor = locateUID(sensor_name_uid_map[sensor_name])
+		var/list/sensor_data = sensor_name_data_map[sensor_name]
+		var/list/sensor_pressure_history = sensor_data["pressure_history"]
+		var/list/sensor_temperature_history = sensor_data["temperature_history"]
 
-			if(istype(AM, /obj/machinery/atmospherics/air_sensor))
-				var/obj/machinery/atmospherics/air_sensor/AS = AM
-				var/list/sensor_data = sensor_name_data_map[sensor_name]
-				var/list/sensor_pressure_history = sensor_data["pressure_history"]
-				var/list/sensor_temperature_history = sensor_data["temperature_history"]
-				var/datum/gas_mixture/air_sample = AS.return_air()
+		var/datum/gas_mixture/air_sample = sensor.return_air()
+		var/pressure = (sensor.output & SENSOR_PRESSURE) ? air_sample.return_pressure() : NO_DATA_VALUE
+		var/temperature = (sensor.output & SENSOR_TEMPERATURE) ? air_sample.return_temperature() : NO_DATA_VALUE
 
-				if(AS.output & SENSOR_PRESSURE)
-					sensor_pressure_history += air_sample.return_pressure()
-				else
-					sensor_pressure_history += NO_DATA_VALUE
-				if(AS.output & SENSOR_TEMPERATURE)
-					sensor_temperature_history += air_sample.return_temperature()
-				else
-					sensor_temperature_history += NO_DATA_VALUE
+		sensor_pressure_history += pressure
+		sensor_temperature_history += temperature
 
-				if(length(sensor_pressure_history) > record_size)
-					sensor_pressure_history.Cut(1, 2)
-				if(length(sensor_temperature_history) > record_size)
-					sensor_temperature_history.Cut(1, 2)
+		if(length(sensor_pressure_history) > record_size)
+			sensor_pressure_history.Cut(1, 2)
+		if(length(sensor_temperature_history) > record_size)
+			sensor_temperature_history.Cut(1, 2)
