@@ -7,9 +7,10 @@
 /obj/machinery/computer/general_air_control/pt_monitor
 	name = "Atmospheric graph monitoring console"
 	desc = "Used to monitor pressure and temperature of linked analyzer."
-	icon_screen = "idce"
+	icon = 'modular_ss220/pt_monitor/icons/pt_monitor.dmi'
+	icon_screen = "screen"
 	icon_keyboard = "atmos_key"
-	//code\game\machinery\computer\power_monitor_console.dm
+	//code\game\machinery\computer\power_monitor_c6onsole.dm
 	circuit = /obj/item/circuitboard/pt_monitor
 
 /obj/machinery/computer/general_air_control/pt_monitor/ui_interact(mob/user, datum/tgui/ui = null)
