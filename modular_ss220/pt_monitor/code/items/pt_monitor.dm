@@ -2,11 +2,21 @@
 #define SENSOR_TEMPERATURE 	(1<<1)
 #define NO_DATA_VALUE  		0
 
+/datum/design/pt_monitor
+	name = "Console Board (Atmospheric Graph Monitor)"
+	desc ="Allows for the construction of circuit boards used to build an Atmospheric Graph Monitor."
+	id = "pt_monitor"
+	req_tech = list("programming" = 2, "engineering" = 3)
+	build_type = IMPRINTER
+	materials = list(MAT_GLASS = 1000)
+	build_path = /obj/item/circuitboard/pt_monitor
+	category = list("Computer Boards")
+
 /obj/item/circuitboard/pt_monitor
 	board_name = "Atmospheric Graph Monitor"
 	icon_state = "engineering"
 	build_path = /obj/machinery/computer/general_air_control/pt_monitor
-	origin_tech = "programming=2;engineering=3;materials=2"
+	origin_tech = "programming=2;engineering=3"
 
 /obj/machinery/computer/general_air_control/pt_monitor
 	name = "Atmospheric graph monitoring console"
