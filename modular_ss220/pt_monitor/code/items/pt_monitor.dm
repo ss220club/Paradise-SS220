@@ -41,31 +41,53 @@
 		if(isnull(sensor_name_data_map[sensor_name]["temperature_history"]))
 			sensor_name_data_map[sensor_name]["temperature_history"] = list()
 
-/// Вызов логирования данных в process
+/// Вызов логирования файлов
+/// TODO Избавиться от родительского вызова process() -> refresh_all() -> refresh_sensors(). Сейчас без него UI не хочет обновляться.
 /obj/machinery/computer/general_air_control/pt_monitor/process()
 	record_sensors_data()
 	. = ..()
 
-/// Функция логирования данных в список
-/// Все необходимые проверки выполняются предварительно в ..general_air_control/proc/refresh_sensors()
+/// Переопределим процесс refresh_sensors для записи истории показаний
 /obj/machinery/computer/general_air_control/pt_monitor/proc/record_sensors_data()
+	// Проверка что время записи наступило
 	if(world.time < next_record_time)
 		return
 	next_record_time = world.time + record_interval
 
 	for(var/sensor_name in sensor_name_uid_map)
-		var/obj/machinery/atmospherics/air_sensor/sensor = locateUID(sensor_name_uid_map[sensor_name])
+		var/obj/machinery/atmospherics/AM = locateUID(sensor_name_uid_map[sensor_name])
+		// Проверка что сенсор существует
+		if(QDELETED(AM))
+			sensor_name_uid_map -= sensor_name
+			sensor_name_data_map -= sensor_name
+			continue
+
 		var/list/sensor_data = sensor_name_data_map[sensor_name]
 		var/list/sensor_pressure_history = sensor_data["pressure_history"]
 		var/list/sensor_temperature_history = sensor_data["temperature_history"]
+		var/current_pressure
+		var/current_temperature
 
-		var/datum/gas_mixture/air_sample = sensor.return_air()
-		var/pressure = (sensor.output & SENSOR_PRESSURE) ? air_sample.return_pressure() : NO_DATA_VALUE
-		var/temperature = (sensor.output & SENSOR_TEMPERATURE) ? air_sample.return_temperature() : NO_DATA_VALUE
+		// Получение данных если air_sensor
+		if(istype(AM, /obj/machinery/atmospherics/air_sensor))
+			var/obj/machinery/atmospherics/air_sensor/sensor = AM
+			var/datum/gas_mixture/air_sample = sensor.return_air()
+			current_pressure = (sensor.output & SENSOR_PRESSURE) ? air_sample.return_pressure() : NO_DATA_VALUE
+			current_temperature = (sensor.output & SENSOR_TEMPERATURE) ? air_sample.return_temperature() : NO_DATA_VALUE
+		// Получение данных если meter
+		else if(istype(AM, /obj/machinery/atmospherics/meter))
+			var/obj/machinery/atmospherics/meter/the_meter = AM
+			if(the_meter.target)
+				var/datum/gas_mixture/meter_air_sample = the_meter.target.return_air()
+				current_pressure = meter_air_sample ? meter_air_sample.return_pressure() : NO_DATA_VALUE
+				current_temperature = meter_air_sample ? meter_air_sample.return_temperature() : NO_DATA_VALUE
+		// Неизвестный сенсор (не должно случиться)
+		else
+			continue
 
-		sensor_pressure_history += pressure
-		sensor_temperature_history += temperature
-
+		// Запись данных в списки и их обрезка
+		sensor_pressure_history += (!isnull(current_pressure)) ? current_pressure : NO_DATA_VALUE
+		sensor_temperature_history += (!isnull(current_temperature)) ? current_temperature : NO_DATA_VALUE
 		if(length(sensor_pressure_history) > record_size)
 			sensor_pressure_history.Cut(1, 2)
 		if(length(sensor_temperature_history) > record_size)
