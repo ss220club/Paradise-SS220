@@ -1334,48 +1334,61 @@
 
 //Enemies
 /mob/living/simple_animal/hostile/syndicate
-	var/synmobdrop //Обычный лут, дропается со всех
-	var/SynSpace //Выпадение бладрига
-	var/SynMelee //Лут с милишников
-	var/SynRange //Лут с дальников
+	//Обычный лут, дропается со всех
+	var/SynMobDrop
+	//Выпадение бладрига
+	var/SynSpace
+	//Лут с милишников
+	var/SynMelee
+	//Лут с дальников
+	var/SynRange
 
 /mob/living/simple_animal/hostile/syndicate/Initialize()
-	var/rollforloot = rand(1,50) //Лучшего варианта я не нашел
-	switch(rollforloot)
-		if(1 to 8) // 16%
-			pick(synmobdrop = /obj/item/food/snacks/syndicake,
-				synmobdrop = /obj/item/poster/random_contraband)
-		if(8 to 15) // 14%
-			pick(synmobdrop = /obj/item/clothing/mask/gas/syndicate,
-				synmobdrop = /obj/item/tank/internals/emergency_oxygen/engi/syndi)
-		if(15 to 20) // 10%
-			pick(synmobdrop = /obj/item/target/syndicate,
-				synmobdrop = /obj/item/deck/cards/syndicate,
-				synmobdrop = /obj/item/kitchen/knife/combat/survival)
-		if(20 to 24) // 8%
-			pick(synmobdrop = /obj/item/clothing/glasses/night,
-				synmobdrop = /obj/item/stack/medical/bruise_pack,
-				synmobdrop = /obj/item/stack/medical/ointment)
-		if(24 to 27) // 6%
-			pick(synmobdrop = /obj/item/reagent_containers/patch/styptic/small,
-				synmobdrop = /obj/item/reagent_containers/patch/silver_sulf/small,
-				synmobdrop = /obj/item/food/snacks/donkpocket)
-		if(27 to 29) // 4%
-			pick(synmobdrop = /obj/item/reagent_containers/patch/styptic,
-				synmobdrop = /obj/item/reagent_containers/patch/silver_sulf,
-				synmobdrop = /obj/item/storage/backpack/duffel/syndie,
-				synmobdrop = /obj/item/clothing/gloves/combat)
-		if(30) // 2%
-			pick(synmobdrop = /obj/item/storage/fancy/cigarettes/cigpack_syndicate,
-				synmobdrop = /obj/item/storage/box/syndidonkpockets,
-				synmobdrop = /obj/item/card/id/syndicate)
-		else // 40%
-			synmobdrop = /obj/item/ammo_casing/c10mm
+	var/RollForLoot = rand(1,50)
+	switch(RollForLoot)
+		// 16%
+		if(1 to 8)
+			pick(SynMobDrop = /obj/item/food/snacks/syndicake,
+				SynMobDrop = /obj/item/poster/random_contraband)
+		// 14%
+		if(8 to 15)
+			pick(SynMobDrop = /obj/item/clothing/mask/gas/syndicate,
+				SynMobDrop = /obj/item/tank/internals/emergency_oxygen/engi/syndi)
+		// 10%
+		if(15 to 20)
+			pick(SynMobDrop = /obj/item/target/syndicate,
+				SynMobDrop = /obj/item/deck/cards/syndicate,
+				SynMobDrop = /obj/item/kitchen/knife/combat/survival)
+		// 8%
+		if(20 to 24)
+			pick(SynMobDrop = /obj/item/clothing/glasses/night,
+				SynMobDrop = /obj/item/stack/medical/bruise_pack,
+				SynMobDrop = /obj/item/stack/medical/ointment)
+		// 6%
+		if(24 to 27)
+			pick(SynMobDrop = /obj/item/reagent_containers/patch/styptic/small,
+				SynMobDrop = /obj/item/reagent_containers/patch/silver_sulf/small,
+				SynMobDrop = /obj/item/food/snacks/donkpocket)
+		// 4%
+		if(27 to 29)
+			pick(SynMobDrop = /obj/item/reagent_containers/patch/styptic,
+				SynMobDrop = /obj/item/reagent_containers/patch/silver_sulf,
+				SynMobDrop = /obj/item/storage/backpack/duffel/syndie,
+				SynMobDrop = /obj/item/clothing/gloves/combat)
+		// 2%
+		if(30)
+			pick(SynMobDrop = /obj/item/storage/fancy/cigarettes/cigpack_syndicate,
+				SynMobDrop = /obj/item/storage/box/syndidonkpockets,
+				SynMobDrop = /obj/item/card/id/syndicate)
+		// 40%
+		else
+			SynMobDrop = /obj/item/ammo_casing/c10mm
 	. = ..()
 
 /mob/living/simple_animal/hostile/syndicate/Initialize()
 	switch(rand(1,33))
-		if(1) // 3%
+		// 3%
+		if(1)
 			SynSpace = /obj/item/clothing/suit/space/hardsuit/syndi
 		else
 			SynSpace = /obj/item/ammo_casing/c10mm
@@ -1383,9 +1396,11 @@
 
 /mob/living/simple_animal/hostile/syndicate/melee/Initialize()
 	switch(rand(1,100))
-		if(1) // 1%
+		// 1%
+		if(1)
 			SynMelee = /obj/item/melee/energy/sword/saber
-		if(2 to 3) // 2%
+		// 2%
+		if(2 to 3)
 			SynMelee = /obj/item/shield/energy
 		else
 			SynMelee = /obj/item/ammo_casing/c10mm
@@ -1393,15 +1408,20 @@
 
 /mob/living/simple_animal/hostile/syndicate/ranged/Initialize()
 	switch(rand(rand(1,100)))
-		if(25 to 35) // 10%
+		// 10%
+		if(25 to 35)
 			SynRange = /obj/item/ammo_box/magazine/m10mm
-		if(35 to 40) // 5%
+		// 5%
+		if(35 to 40)
 			SynRange = /obj/item/gun/projectile/automatic/pistol
-		if(40 to 47) // 7%
+		// 7%
+		if(40 to 47)
 			SynRange = /obj/item/clothing/accessory/holster
-		if(47 to 50) // 3%
+		// 3%
+		if(47 to 50)
 			SynRange = /obj/item/ammo_box/magazine/smgm45
-		if(50 to 51) // 1%
+		// 1%
+		if(50 to 51)
 			SynRange = /obj/item/gun/projectile/automatic/c20r
 		else
 			SynRange = /obj/item/ammo_casing/c10mm
@@ -1414,7 +1434,7 @@
 
 /mob/living/simple_animal/hostile/syndicate/melee/autogib/spacebattle/Initialize()
 	. = ..()
-	loot = list(/obj/effect/decal/cleanable/ash, synmobdrop, SynMelee)
+	loot = list(/obj/effect/decal/cleanable/ash, SynMobDrop, SynMelee)
 	return .
 
 /mob/living/simple_animal/hostile/syndicate/melee/space/autogib/spacebattle
@@ -1424,7 +1444,7 @@
 
 /mob/living/simple_animal/hostile/syndicate/melee/space/autogib/spacebattle/Initialize()
 	. = ..()
-	loot = list(/obj/effect/decal/cleanable/ash, synmobdrop, SynMelee, SynSpace)
+	loot = list(/obj/effect/decal/cleanable/ash, SynMobDrop, SynMelee, SynSpace)
 	return .
 
 /mob/living/simple_animal/hostile/syndicate/ranged/autogib/spacebattle
@@ -1432,12 +1452,12 @@
 
 /mob/living/simple_animal/hostile/syndicate/ranged/autogib/spacebattle/Initialize()
 	. = ..()
-	loot = list(/obj/effect/decal/cleanable/ash, synmobdrop, SynRange)
+	loot = list(/obj/effect/decal/cleanable/ash, SynMobDrop, SynRange)
 	return .
 
 /mob/living/simple_animal/hostile/syndicate/ranged/space/autogib/spacebattle/Initialize()
 	. = ..()
-	loot = list(/obj/effect/decal/cleanable/ash, synmobdrop, SynRange, SynSpace)
+	loot = list(/obj/effect/decal/cleanable/ash, SynMobDrop, SynRange, SynSpace)
 	return .
 
 /mob/living/simple_animal/hostile/malf_drone/spacebattle

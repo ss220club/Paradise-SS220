@@ -183,19 +183,22 @@
 /obj/effect/mob_spawn/human/corpse/spacebattle/security/Initialize()
 	var/secgun = rand(1,10)
 	switch(secgun)
-		if(1 to 7) //70%
+		//70%
+		if(1 to 7)
 			suit_store = /obj/item/gun/projectile/automatic/pistol/enforcer/lethal
 			backpack_contents = list(
 				/obj/item/storage/box/survival = 1,
 				/obj/item/ammo_box/magazine/enforcer/lethal = 1
 				)
-		if(8 to 9) //20%
+		//20%
+		if(8 to 9)
 			suit_store = /obj/item/gun/projectile/automatic/wt550
 			backpack_contents = list(
 				/obj/item/storage/box/survival = 1,
 				/obj/item/ammo_box/magazine/wt550m9 = 1
 				)
-		if(10) //10%
+		//10%
+		if(10)
 			suit_store = /obj/item/gun/projectile/shotgun/riot
 			backpack_contents = list(
 				/obj/item/storage/box/survival = 1,
