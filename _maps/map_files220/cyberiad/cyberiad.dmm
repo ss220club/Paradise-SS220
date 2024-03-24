@@ -13854,7 +13854,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/item/radio{
+/obj/item/radio/security{
 	pixel_y = 6
 	},
 /turf/simulated/floor/plasteel{
@@ -16146,21 +16146,21 @@
 	dir = 8
 	},
 /obj/machinery/ai_status_display/north,
-/obj/item/radio/alternative{
+/obj/item/radio{
 	pixel_y = 12
 	},
-/obj/item/radio/alternative{
+/obj/item/radio{
 	pixel_y = 6
 	},
-/obj/item/radio/alternative{
+/obj/item/radio{
 	pixel_x = 8;
 	pixel_y = 6
 	},
-/obj/item/radio/alternative{
+/obj/item/radio{
 	pixel_y = 6;
 	pixel_x = -8
 	},
-/obj/item/radio/alternative,
+/obj/item/radio,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "darkblue"
@@ -25379,11 +25379,15 @@
 "bYr" = (
 /obj/structure/table,
 /obj/item/megaphone{
-	pixel_x = -3;
-	pixel_y = 7
+	pixel_x = -2;
+	pixel_y = 12
 	},
-/obj/item/paper_bin,
-/obj/item/pen,
+/obj/item/paper_bin{
+	pixel_y = -8
+	},
+/obj/item/pen{
+	pixel_y = -4
+	},
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
@@ -28769,6 +28773,15 @@
 /mob/living/simple_animal/pet/cat/Floppa,
 /turf/simulated/floor/wood/oak,
 /area/station/command/office/blueshield)
+"clS" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/simulated/floor/plating/airless,
+/area/space/nearstation)
 "clU" = (
 /obj/machinery/door/airlock/medical/glass,
 /obj/effect/mapping_helpers/airlock/autoname,
@@ -34164,7 +34177,7 @@
 /obj/structure/table,
 /obj/item/folder,
 /obj/item/folder,
-/obj/item/radio,
+/obj/item/radio/alternative,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "whitepurple"
@@ -37858,14 +37871,14 @@
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 4
 	},
-/obj/item/radio/alternative{
+/obj/item/radio{
 	pixel_y = 4;
 	pixel_x = -8
 	},
-/obj/item/radio/alternative{
+/obj/item/radio{
 	pixel_y = 4
 	},
-/obj/item/radio/alternative{
+/obj/item/radio{
 	pixel_x = 8;
 	pixel_y = 4
 	},
@@ -37943,18 +37956,18 @@
 "cTT" = (
 /obj/structure/table,
 /obj/machinery/status_display/directional/north,
-/obj/item/radio/alternative{
+/obj/item/radio{
 	pixel_y = 6;
 	pixel_x = -8
 	},
-/obj/item/radio/alternative{
+/obj/item/radio{
 	pixel_x = 8;
 	pixel_y = 6
 	},
-/obj/item/radio/alternative{
+/obj/item/radio{
 	pixel_y = 12
 	},
-/obj/item/radio/alternative,
+/obj/item/radio,
 /turf/simulated/floor/plasteel{
 	icon_state = "darkyellowfull"
 	},
@@ -54952,6 +54965,12 @@
 /obj/item/radio/intercom,
 /turf/simulated/wall,
 /area/station/engineering/atmos)
+"hcy" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/turf/simulated/floor/plating/airless,
+/area/station/engineering/control)
 "hcz" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/cyan,
 /obj/machinery/atmospherics/meter,
@@ -60427,6 +60446,16 @@
 	},
 /turf/simulated/floor/plating,
 /area/station/security/processing)
+"jft" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/structure/grille,
+/turf/simulated/floor/plating/airless,
+/area/space/nearstation)
 "jfx" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -66719,6 +66748,12 @@
 /obj/item/radio/intercom/directional/north,
 /turf/simulated/floor/engine,
 /area/station/science/explab/chamber)
+"lBS" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
+/turf/simulated/floor/plating/airless,
+/area/station/engineering/control)
 "lCk" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/spawner/lootdrop/maintenance,
@@ -72451,15 +72486,23 @@
 /area/station/command/bridge)
 "nBz" = (
 /obj/structure/table,
-/obj/item/clipboard,
+/obj/item/clipboard{
+	pixel_y = 3
+	},
 /obj/item/stamp/granted{
 	pixel_x = -4;
-	pixel_y = 4
+	pixel_y = 6
 	},
-/obj/item/stamp/qm,
+/obj/item/stamp/qm{
+	pixel_y = 2
+	},
 /obj/item/stamp/denied{
 	pixel_x = 4;
-	pixel_y = -4
+	pixel_y = -2
+	},
+/obj/item/lighter/zippo/engraved{
+	pixel_x = 14;
+	pixel_y = 6
 	},
 /turf/simulated/floor/carpet,
 /area/station/supply/qm)
@@ -77526,6 +77569,18 @@
 /obj/effect/spawner/random_spawners/blood_maybe,
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/asmaint)
+"pqE" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/machinery/power/grounding_rod{
+	anchored = 1
+	},
+/turf/simulated/floor/plating/airless,
+/area/space/nearstation)
 "pqG" = (
 /obj/structure/table,
 /obj/machinery/door/window/classic/normal{
@@ -81880,9 +81935,9 @@
 	c_tag = "Engineering Equipment Storage Lockers";
 	network = list("SS13","Engineering")
 	},
-/obj/item/radio/alternative,
-/obj/item/radio/alternative,
-/obj/item/radio/alternative,
+/obj/item/radio,
+/obj/item/radio,
+/obj/item/radio,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -121183,17 +121238,17 @@ qsQ
 qsQ
 qsQ
 cSU
-cKr
-cKr
-cKr
+jft
+jft
+jft
 cSU
-cKr
-cKr
-cKr
+clS
+pqE
+clS
 cSU
-cKr
-cKr
-cKr
+jft
+jft
+jft
 cSU
 cKr
 cKr
@@ -121694,7 +121749,7 @@ aab
 cSU
 iIG
 dpO
-cPn
+lBS
 aaa
 cTn
 cVB
@@ -121710,7 +121765,7 @@ cVB
 cVB
 rDS
 aaa
-qJO
+hcy
 afT
 cSU
 cSU
@@ -123236,7 +123291,7 @@ aab
 cSU
 cSU
 cRz
-cRA
+cLC
 aab
 dei
 cWf
@@ -123252,7 +123307,7 @@ aaa
 cRk
 mha
 aab
-cRA
+cLC
 dfA
 cSU
 cSU
