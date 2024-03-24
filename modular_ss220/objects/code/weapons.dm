@@ -403,7 +403,6 @@
 	attack_verb = list("hit", "poked")
 	sharp = TRUE
 	var/list/attack_verb_on = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
-	var/bayonet = FALSE
 
 /obj/item/melee/stylet/update_icon_state()
 	. = ..()
