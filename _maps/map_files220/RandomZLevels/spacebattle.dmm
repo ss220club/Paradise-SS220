@@ -69,7 +69,7 @@
 "ak" = (
 /obj/item/weldingtool,
 /turf/simulated/floor/plating/airless,
-/area/space)
+/area/awaymission/space_battle/cruiser)
 "al" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
@@ -499,6 +499,14 @@
 	icon_state = "dark_diagonal"
 	},
 /area/awaymission/space_battle/server)
+"bv" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/turf/simulated/wall/indestructible/whiteshuttle,
+/area/awaymission/space_battle/cruiser)
 "bx" = (
 /obj/machinery/light/small/directional/west,
 /turf/simulated/floor/plating,
@@ -637,7 +645,7 @@
 /obj/effect/decal/cleanable/blood,
 /obj/effect/mob_spawn/human/corpse/spacebattle/engineer/space,
 /turf/simulated/floor/plating/airless,
-/area/space)
+/area/awaymission/space_battle/cruiser)
 "cb" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -983,7 +991,7 @@
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/plating/airless,
-/area/space)
+/area/awaymission/space_battle/cruiser)
 "dc" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -1147,7 +1155,7 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/plating/airless,
-/area/space)
+/area/awaymission/space_battle/cruiser)
 "dG" = (
 /obj/structure/window/plasmareinforced,
 /obj/structure/window/plasmareinforced{
@@ -1354,6 +1362,13 @@
 	},
 /turf/simulated/floor/engine,
 /area/awaymission/space_battle/hallway3)
+"et" = (
+/obj/machinery/atmospherics/pipe/simple/visible{
+	dir = 5
+	},
+/mob/living/simple_animal/hostile/syndicate/melee/space/autogib/spacebattle,
+/turf/simulated/floor/mineral/plastitanium/red,
+/area/awaymission/space_battle/syndicate/syndicate6)
 "ev" = (
 /turf/simulated/floor/plasteel/stairs/right{
 	dir = 4
@@ -1783,6 +1798,7 @@
 /obj/structure/closet,
 /obj/item/clothing/under/retro/security,
 /obj/item/clothing/under/retro/security,
+/obj/machinery/light/small/directional/west,
 /turf/simulated/floor/plasteel{
 	icon_state = "red";
 	dir = 8
@@ -2366,7 +2382,7 @@
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/plating/airless,
-/area/space)
+/area/awaymission/space_battle/cruiser)
 "hm" = (
 /obj/structure/kitchenspike,
 /turf/simulated/floor/plasteel/freezer,
@@ -2623,6 +2639,11 @@
 /obj/structure/closet/fireaxecabinet{
 	pixel_y = 32
 	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "yellow";
 	dir = 1
@@ -2724,7 +2745,7 @@
 "it" = (
 /obj/machinery/bsa/full/east,
 /turf/simulated/floor/plating/airless,
-/area/space)
+/area/awaymission/space_battle/cruiser)
 "iu" = (
 /obj/item/gun/projectile/automatic/c20r,
 /obj/structure/rack/gunrack,
@@ -3276,11 +3297,11 @@
 "jU" = (
 /obj/structure/cable{
 	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
+	d2 = 4;
+	icon_state = "2-4"
 	},
-/turf/simulated/floor/plasteel,
-/area/awaymission/space_battle/engine)
+/turf/simulated/wall/indestructible/whiteshuttle,
+/area/awaymission/space_battle/cruiser)
 "jV" = (
 /obj/machinery/constructable_frame{
 	icon_state = "box_2"
@@ -3348,7 +3369,9 @@
 /obj/structure/window/plasmareinforced{
 	dir = 4
 	},
-/obj/machinery/power/rad_collector,
+/obj/machinery/power/rad_collector{
+	anchored = 1
+	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/engine)
 "kf" = (
@@ -3517,10 +3540,13 @@
 /turf/simulated/floor/mineral/plastitanium,
 /area/awaymission/space_battle/syndicate/syndicate2)
 "kJ" = (
-/obj/effect/decal/cleanable/blood,
-/obj/effect/mob_spawn/human/corpse/spacebattle/engineer/space,
-/turf/simulated/floor/plating/airless,
-/area/space)
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/wall/indestructible/whiteshuttle,
+/area/awaymission/space_battle/cruiser)
 "kK" = (
 /obj/structure/closet/crate/can,
 /obj/effect/spawner/lootdrop/maintenance,
@@ -3730,20 +3756,11 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating/airless,
-/area/space)
+/area/awaymission/space_battle/cruiser)
 "lr" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
-/turf/simulated/floor/plasteel,
-/area/awaymission/space_battle/engine)
+/obj/machinery/light/small/directional/west,
+/turf/simulated/floor/plating/airless,
+/area/awaymission/space_battle/cruiser)
 "ls" = (
 /obj/effect/landmark/awaymissions/spacebattle/mob_spawn/melee_space{
 	id = "pod1"
@@ -4009,7 +4026,7 @@
 /obj/effect/decal/cleanable/blood,
 /obj/effect/mob_spawn/human/corpse/spacebattle/engineer/space,
 /turf/simulated/floor/plating/airless,
-/area/space)
+/area/awaymission/space_battle/cruiser)
 "mk" = (
 /turf/simulated/floor/plasteel{
 	icon_state = "neutral";
@@ -4283,9 +4300,14 @@
 /turf/simulated/floor/plating/airless,
 /area/awaymission/space_battle/syndicate/syndicate5)
 "nn" = (
-/obj/effect/decal/cleanable/blood,
+/obj/structure/cable/yellow{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/obj/machinery/light/small/directional/east,
 /turf/simulated/floor/plating/airless,
-/area/space)
+/area/awaymission/space_battle/cruiser)
 "no" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -4338,7 +4360,7 @@
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/plating/airless,
-/area/space)
+/area/awaymission/space_battle/cruiser)
 "nw" = (
 /turf/simulated/floor/mineral/plastitanium/red{
 	icon_state = "titanium_white"
@@ -4827,7 +4849,7 @@
 	},
 /mob/living/simple_animal/hostile/syndicate/melee/space/autogib/spacebattle,
 /turf/simulated/floor/plating/airless,
-/area/space)
+/area/awaymission/space_battle/cruiser)
 "oW" = (
 /obj/machinery/power/terminal{
 	dir = 1
@@ -4837,7 +4859,7 @@
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/plating/airless,
-/area/space)
+/area/awaymission/space_battle/cruiser)
 "oX" = (
 /obj/effect/landmark/damageturf,
 /turf/simulated/floor/mineral/titanium,
@@ -5027,6 +5049,19 @@
 /obj/machinery/light/directional/east,
 /turf/simulated/floor/grass/no_creep,
 /area/awaymission/space_battle)
+"pE" = (
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/turf/simulated/wall/indestructible/whiteshuttle,
+/area/awaymission/space_battle/cruiser)
 "pG" = (
 /obj/effect/turf_decal/stripes/line,
 /turf/simulated/floor/mineral/plastitanium/red,
@@ -5497,6 +5532,18 @@
 /obj/effect/turf_decal/caution/red,
 /turf/simulated/floor/plasteel/dark,
 /area/awaymission/space_battle/hallway4)
+"rq" = (
+/obj/structure/closet/radiation,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "yellow";
+	dir = 4
+	},
+/area/awaymission/space_battle/engine)
 "rr" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -6387,13 +6434,13 @@
 	},
 /area/awaymission/space_battle/hallway8)
 "uj" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/effect/decal/cleanable/blood,
 /obj/effect/mob_spawn/human/corpse/spacebattle/engineer,
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/engine)
 "uk" = (
@@ -6485,11 +6532,6 @@
 	pixel_x = 3;
 	pixel_y = 3
 	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
 /obj/machinery/light/directional/east,
 /turf/simulated/floor/plasteel{
 	icon_state = "yellow";
@@ -6506,11 +6548,6 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/engine)
 "uB" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
 /obj/structure/cable/yellow{
 	d1 = 1;
 	d2 = 2;
@@ -6761,7 +6798,7 @@
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/plating/airless,
-/area/space)
+/area/awaymission/space_battle/cruiser)
 "vu" = (
 /obj/structure/toilet,
 /obj/effect/decal/cleanable/blood,
@@ -6819,7 +6856,7 @@
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/plating/airless,
-/area/space)
+/area/awaymission/space_battle/cruiser)
 "vE" = (
 /obj/effect/spawner/window/plastitanium,
 /turf/simulated/floor/plating,
@@ -6855,7 +6892,7 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/plating/airless,
-/area/space)
+/area/awaymission/space_battle/cruiser)
 "vK" = (
 /obj/machinery/light/directional/west,
 /turf/simulated/floor/plasteel{
@@ -7019,6 +7056,15 @@
 	},
 /turf/simulated/floor/mineral/plastitanium,
 /area/awaymission/space_battle/syndicate)
+"wn" = (
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/obj/machinery/light/small/directional/east,
+/turf/simulated/floor/plating/airless,
+/area/awaymission/space_battle/cruiser)
 "wo" = (
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/space_battle/syndicate/syndicate4)
@@ -7497,7 +7543,7 @@
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/plating/airless,
-/area/space)
+/area/awaymission/space_battle/cruiser)
 "xN" = (
 /obj/machinery/computer/nonfunctional{
 	name = "broken computer";
@@ -7805,7 +7851,7 @@
 	},
 /obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/plating/airless,
-/area/space)
+/area/awaymission/space_battle/cruiser)
 "yL" = (
 /obj/machinery/door/airlock/hatch{
 	color = "grey"
@@ -7935,6 +7981,14 @@
 	icon_state = "bar"
 	},
 /area/awaymission/space_battle/kitchen)
+"zh" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/wall/indestructible/whiteshuttle,
+/area/awaymission/space_battle/cruiser)
 "zi" = (
 /obj/machinery/porta_turret{
 	lethal = 1;
@@ -8018,7 +8072,7 @@
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/plating/airless,
-/area/space)
+/area/awaymission/space_battle/cruiser)
 "zw" = (
 /obj/effect/landmark/awaymissions/spacebattle/mob_spawn/ranged_space{
 	id = "MainBridge"
@@ -8176,7 +8230,9 @@
 /obj/structure/window/plasmareinforced{
 	dir = 1
 	},
-/obj/machinery/power/rad_collector,
+/obj/machinery/power/rad_collector{
+	anchored = 1
+	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/engine)
 "zU" = (
@@ -8303,7 +8359,7 @@
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/plating/airless,
-/area/space)
+/area/awaymission/space_battle/cruiser)
 "Ap" = (
 /obj/machinery/light/directional/east,
 /turf/simulated/floor/mineral/plastitanium/red,
@@ -8778,15 +8834,14 @@
 /obj/machinery/power/smes,
 /obj/structure/cable/yellow,
 /turf/simulated/floor/plating/airless,
-/area/space)
+/area/awaymission/space_battle/cruiser)
 "BR" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
+/obj/structure/chair/comfy/shuttle/dark{
+	dir = 8
 	},
-/turf/simulated/floor/plating/airless,
-/area/space)
+/mob/living/simple_animal/hostile/syndicate/ranged/space/autogib,
+/turf/simulated/floor/mineral/plastitanium/red,
+/area/awaymission/space_battle/syndicate/syndicate6)
 "BS" = (
 /obj/machinery/light/directional/east,
 /turf/simulated/floor/plasteel{
@@ -8937,7 +8992,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating/airless,
-/area/space)
+/area/awaymission/space_battle/cruiser)
 "Cs" = (
 /obj/machinery/cryopod/offstation{
 	icon_state = "sleeper_s";
@@ -9275,6 +9330,15 @@
 /turf/simulated/floor/plasteel{
 	icon_state = "yellow"
 	},
+/area/awaymission/space_battle/engine)
+"Di" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/engine)
 "Dj" = (
 /obj/effect/landmark/damageturf,
@@ -9831,7 +9895,7 @@
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/plating/airless,
-/area/space)
+/area/awaymission/space_battle/cruiser)
 "EV" = (
 /turf/simulated/wall/indestructible/syndishuttle/nosmooth{
 	icon_state = "plastitanium_wall-10-d"
@@ -10053,6 +10117,7 @@
 	color = "red";
 	dir = 4
 	},
+/mob/living/simple_animal/hostile/syndicate/ranged/space/autogib/spacebattle,
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/space_battle/syndicate/syndicate6)
 "FB" = (
@@ -10105,6 +10170,14 @@
 /obj/machinery/atmospherics/portable/canister/oxygen,
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/hallway4)
+"FJ" = (
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/turf/simulated/wall/indestructible/whiteshuttle,
+/area/awaymission/space_battle/cruiser)
 "FK" = (
 /obj/machinery/door/window/reinforced/normal,
 /turf/simulated/floor/plasteel{
@@ -11717,7 +11790,7 @@
 "KL" = (
 /mob/living/simple_animal/hostile/syndicate/melee/space/autogib/spacebattle,
 /turf/simulated/floor/plating/airless,
-/area/space)
+/area/awaymission/space_battle/cruiser)
 "KM" = (
 /obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/plasteel{
@@ -13017,10 +13090,13 @@
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/space_battle/syndicate/syndicate2)
 "OH" = (
-/obj/machinery/power/smes,
+/obj/machinery/power/smes{
+	charge = 300000;
+	output_level = 100000
+	},
 /obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2"
+	d2 = 4;
+	icon_state = "0-4"
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "yellow";
@@ -13381,7 +13457,7 @@
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/plating/airless,
-/area/space)
+/area/awaymission/space_battle/cruiser)
 "PP" = (
 /obj/structure/railing{
 	dir = 1
@@ -14923,11 +14999,6 @@
 "UN" = (
 /obj/structure/rack,
 /obj/item/clothing/gloves/color/fyellow/old,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /turf/simulated/floor/plasteel{
 	icon_state = "yellow";
 	dir = 4
@@ -15363,7 +15434,9 @@
 /obj/structure/window/plasmareinforced{
 	dir = 8
 	},
-/obj/machinery/power/rad_collector,
+/obj/machinery/power/rad_collector{
+	anchored = 1
+	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/engine)
 "Wd" = (
@@ -16247,7 +16320,7 @@
 "YH" = (
 /obj/item/clothing/glasses/welding,
 /turf/simulated/floor/plating/airless,
-/area/space)
+/area/awaymission/space_battle/cruiser)
 "YI" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -16628,13 +16701,12 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/hallway6)
 "ZP" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
+/obj/machinery/atmospherics/pipe/simple/visible{
+	dir = 6
 	},
-/turf/simulated/floor/plating/airless,
-/area/space)
+/mob/living/simple_animal/hostile/syndicate/melee/space/autogib/spacebattle,
+/turf/simulated/floor/mineral/plastitanium/red,
+/area/awaymission/space_battle/syndicate/syndicate6)
 "ZQ" = (
 /turf/simulated/floor/plasteel{
 	icon_state = "neutral";
@@ -29410,9 +29482,9 @@ nS
 yG
 YM
 cG
+BR
 yh
-yh
-yh
+BR
 cG
 YM
 nS
@@ -30951,11 +31023,11 @@ yG
 yG
 nT
 cX
-UT
+et
 cF
 eY
 PZ
-bN
+ZP
 DP
 Wi
 yG
@@ -39164,10 +39236,10 @@ Uo
 XR
 Ew
 JX
-VC
+jU
 id
-sW
-Iv
+Di
+dk
 PS
 Wc
 Wc
@@ -39421,7 +39493,7 @@ XO
 op
 nQ
 vB
-VC
+zh
 Hp
 UQ
 uB
@@ -39678,11 +39750,11 @@ Uo
 yE
 rW
 Pt
-VC
+zh
 Hp
 Lh
-jU
-lr
+OZ
+OZ
 uj
 Ei
 aZ
@@ -39935,12 +40007,12 @@ ZQ
 Sp
 Sp
 tI
-VC
+zh
 XE
 OH
 UN
 uz
-kh
+rq
 kh
 kh
 Hh
@@ -40192,12 +40264,12 @@ VC
 VC
 VC
 VC
-VC
-VC
-VC
-VC
-VC
-VC
+FJ
+kJ
+pE
+kJ
+kJ
+bv
 VC
 VC
 VC
@@ -52019,13 +52091,13 @@ VC
 xM
 vt
 vD
-Go
-Go
-Go
+VE
+VE
+VE
 EU
 BO
 oW
-ZP
+Zb
 VC
 VE
 tT
@@ -52277,7 +52349,7 @@ zs
 vt
 Ao
 vD
-Go
+VE
 EU
 vI
 BO
@@ -52534,7 +52606,7 @@ zs
 vt
 Ao
 Ao
-Go
+VE
 vI
 vI
 BO
@@ -52788,14 +52860,14 @@ IW
 hY
 MA
 yK
-nn
+cm
 nv
 Ao
-Go
+VE
 vI
 dF
-Go
-Go
+VE
+VE
 hl
 MA
 MS
@@ -53305,7 +53377,7 @@ PO
 vt
 Ao
 vD
-Go
+VE
 EU
 vI
 BO
@@ -53562,12 +53634,12 @@ db
 vt
 Ao
 Ao
-Go
+VE
 vI
 vI
 BO
 oW
-BR
+Dn
 Mn
 cm
 VC
@@ -53815,16 +53887,16 @@ eU
 VC
 VC
 VC
-Go
-Go
+VE
+VE
 nv
 Ao
 it
 vI
 dF
 YH
-Go
-Go
+VE
+VE
 VC
 VC
 VC
@@ -54072,16 +54144,16 @@ QH
 eU
 VC
 VC
-Go
-Go
-Go
-nv
-Go
-dF
+VE
+VE
+VE
+nn
+VE
+wn
 ak
-Go
-Go
-Go
+VE
+VE
+VE
 VC
 VC
 cb
@@ -54333,7 +54405,7 @@ Mn
 jN
 Mn
 VC
-Go
+VE
 VC
 Mn
 bH
@@ -54586,15 +54658,15 @@ VC
 cf
 LE
 VC
-nn
-kJ
-nn
+cm
+bh
+cm
 VC
-Go
+VE
 VC
-Go
-Go
-Go
+VE
+VE
+VE
 VC
 YI
 uY
@@ -54843,15 +54915,15 @@ ai
 VC
 zQ
 VC
-Go
-nn
-nn
-Go
-Go
-Go
-Go
-Go
-Go
+VE
+cm
+cm
+lr
+VE
+lr
+VE
+VE
+VE
 VC
 za
 cf
@@ -55100,15 +55172,15 @@ PM
 PM
 Df
 VC
-Go
-Go
-Go
+VE
+VE
+VE
 KL
 yG
-Go
-Go
-Go
-Go
+VE
+VE
+VE
+VE
 VC
 yZ
 QE
@@ -55357,15 +55429,15 @@ PM
 xU
 tP
 VC
-Go
-Go
+VE
+VE
 Dg
 Dg
 yG
 Dg
 Dg
-Go
-Go
+VE
+VE
 VC
 hn
 bC
@@ -55614,7 +55686,7 @@ Wf
 PM
 mM
 VC
-Go
+VE
 Dg
 Dg
 yG
@@ -55622,7 +55694,7 @@ yG
 yG
 Dg
 Dg
-Go
+VE
 VC
 Zn
 bC

@@ -1441,6 +1441,8 @@
 	damage_coeff = list("brute" = 0.8, "fire" = 0.8, "tox" = 1, "clone" = 2, "stamina" = 0, "oxy" = 0)
 	melee_damage_type = BURN
 	attack_sound = 'sound/weapons/saberon.ogg'
+	maxHealth = 130
+	health = 130
 
 /mob/living/simple_animal/hostile/syndicate/melee/space/autogib/spacebattle/Initialize()
 	. = ..()
@@ -1454,6 +1456,10 @@
 	. = ..()
 	loot = list(/obj/effect/decal/cleanable/ash, SynMobDrop, SynRange)
 	return .
+
+/mob/living/simple_animal/hostile/syndicate/ranged/space/autogib/spacebattle
+	maxHealth = 130
+	health = 130
 
 /mob/living/simple_animal/hostile/syndicate/ranged/space/autogib/spacebattle/Initialize()
 	. = ..()
