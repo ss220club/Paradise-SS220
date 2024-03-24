@@ -41,14 +41,8 @@
 		if(isnull(sensor_name_data_map[sensor_name]["temperature_history"]))
 			sensor_name_data_map[sensor_name]["temperature_history"] = list()
 
-/// Вызов логирования файлов
-/// TODO Избавиться от родительского вызова process() -> refresh_all() -> refresh_sensors(). Сейчас без него UI не хочет обновляться.
-/obj/machinery/computer/general_air_control/pt_monitor/process()
-	record_sensors_data()
-	. = ..()
-
 /// Переопределим процесс refresh_sensors для записи истории показаний
-/obj/machinery/computer/general_air_control/pt_monitor/proc/record_sensors_data()
+/obj/machinery/computer/general_air_control/pt_monitor/refresh_sensors()
 	// Проверка что время записи наступило
 	if(world.time < next_record_time)
 		return
