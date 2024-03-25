@@ -128,6 +128,21 @@
 	icon_state = "key"
 	w_class = WEIGHT_CLASS_TINY
 
+/obj/item/key/mime
+	name = "ключ от машины мима"
+	desc = "Ключ, который ведёт к невидимой машине мима, удачи."
+	icon_state = "mimekey"
+	COOLDOWN_DECLARE(alarm_cooldown)
+
+/obj/item/key/mime/attack_self(mob/user)
+	if(!COOLDOWN_FINISHED(src, alarm_cooldown))
+		return
+	if(prob(10))
+		to_chat(user, "<span class='warning'>Ключ вибрирует, похоже, вы находитесь рядом с ней!</span>")
+	else
+		to_chat(user, "<span class='info'>Ключ ничего не делает, кажется, что машина находится слишком далеко.</span>")
+	playsound(user, 'sound/misc/mime_key.ogg', 20)
+	COOLDOWN_START(src, alarm_cooldown, 4 SECONDS)
 
 //BUCKLE HOOKS
 /obj/vehicle/unbuckle_mob(mob/living/buckled_mob, force = FALSE)
