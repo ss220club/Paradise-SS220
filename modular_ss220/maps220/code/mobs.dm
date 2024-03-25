@@ -1425,7 +1425,7 @@
 			SynRange = /obj/item/gun/projectile/automatic/c20r
 		else
 			SynRange = /obj/item/ammo_casing/c10mm
-	.=..()
+	. = ..()
 
 /mob/living/simple_animal/hostile/syndicate/melee/autogib/spacebattle
 	damage_coeff = list("brute" = 0.8, "fire" = 0.8, "tox" = 1, "clone" = 2, "stamina" = 0, "oxy" = 0.5)
