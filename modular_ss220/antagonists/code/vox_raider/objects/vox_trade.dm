@@ -67,6 +67,12 @@
 		/obj/machinery/nuclearbomb = 5000,
 		/obj/item/mod/core = 1000,
 		/obj/item/mod = 300,
+		/obj/machinery/power/port_gen = 800,
+		/obj/machinery/power = 300,
+		/obj/machinery/the_singularitygen/tesla = 5000,
+		/obj/machinery/the_singularitygen = 4000,
+		/obj/structure/particle_accelerator = 1500,
+		/obj/machinery/power/emitter = 150,
 		)
 	var/list/valuable_guns_dict = list(
 		/obj/item/gun/energy/taser = 300,

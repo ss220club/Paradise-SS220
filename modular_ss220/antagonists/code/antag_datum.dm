@@ -1,10 +1,10 @@
-/datum/antagonist/proc/make_body(spawn_loc, try_use_preference = FALSE, species_name = null, list/possible_species)
+/datum/antagonist/proc/make_body(loc_spawn, try_use_preference = FALSE, species_name = null, list/possible_species)
 	var/datum/character_save/character
 	var/mob/living/carbon/human/H = owner.current
 	if(!H)
-		H = new(spawn_loc)
+		H = new(loc_spawn)
 	else
-		H.forceMove(get_turf(spawn_loc))
+		H.forceMove(get_turf(loc_spawn))
 
 	var/client/client = owner.current.client
 	if(try_use_preference && client && client.prefs && length(client.prefs.character_saves))

@@ -29,6 +29,8 @@
 	var/antag_cap = 1
 	/// How many possible candidates are required for this scenario to be executed
 	var/candidates_required = 1
+	/// Will the scenario be selected repeatedly or only once?
+	var/execution_once = FALSE
 	/// Jobs that can't be chosen for the scenario
 	var/list/restricted_roles = list()
 	/// Jobs that can't be chosen for the scenario if 'GLOB.configuration.gamemode.prevent_mindshield_antags' is TRUE

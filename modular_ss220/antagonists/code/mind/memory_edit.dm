@@ -29,6 +29,10 @@
 				var/datum/antagonist/vox_raider/antag_datum = new
 				if(!antag_datum.admin_add(usr, src))
 					qdel(antag_datum)
+			if("landmark")
+				var/picked_landmark = pick(GLOB.raider_spawn)
+				var/turf/loc_spawn = get_turf(picked_landmark)
+				H.forceMove(loc_spawn)
 
 	. = ..()
 
@@ -45,6 +49,7 @@
 	. = _memory_edit_header("vox raider")
 	if(has_antag_datum(/datum/antagonist/vox_raider))
 		. += "<b><font color='red'>VOX RAIDER</font></b>|<a href='?src=[UID()];vox_raider=clear'>Remove</a>"
+		. += "<br><a href='?src=[UID()];vox_raider=landmark'>To Vox Base</a>."
 	else
 		. += "<a href='?src=[UID()];vox_raider=make'>Make Vox Raider</a>"
 

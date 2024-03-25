@@ -27,7 +27,7 @@
 	slowdown = 0
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/vox
 
-/obj/item/clothing/head/helmet/space/hardsuit/vox	// !!!!!! им требуется еще доделать кнопки с фонариками или выпилить их
+/obj/item/clothing/head/helmet/space/hardsuit/vox
 	name = "vox raider helmet"
 	desc = "Специализированный космический шлем воксов-рейдеров."
 	icon_state = "vox-raider"
@@ -42,6 +42,8 @@
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	armor = list(MELEE = 75, BULLET = 50, LASER = 30, ENERGY = 20, BOMB = 25, RAD = 115, FIRE = 80, ACID = 200)
 
+/obj/item/clothing/head/helmet/space/hardsuit/syndi/update_icon_state()
+	icon_state = "[initial(icon_state)][on]"
 
 // Space Trooper
 

@@ -174,7 +174,6 @@
 /obj/item/clothing/suit/armor/vox_merc/stealth/equipped(mob/living/user, slot)
 	..()
 	if(isvox(user) && slot == SLOT_HUD_OUTER_SUIT)
-		mimic_spell = new
 		user.AddSpell(mimic_spell)
 		// !!!!! доделать эту способность, а то она не конвертирует корректно
 		// Click on a target to remember it's form. Click on yourself to change form.

@@ -53,12 +53,15 @@
 
 	var/obj/item/card/id/I = H.wear_id
 	if(istype(I))
-		apply_to_card(I, H, list(ACCESS_VOX), "Vox Raider", "syndie")
+		apply_to_card(I, H, list(ACCESS_MAINT_TUNNELS, ACCESS_VOX, ACCESS_EXTERNAL_AIRLOCKS), "Vox Raider", "data")
 
 	if(internals_slot)
 		H.internal = H.get_item_by_slot(internals_slot)
 		H.update_action_buttons_icon()
 
+/obj/item/card/id/syndicate/vox
+	name = "vox data card"
+	icon_state = "data"
 
 // ==================== Raiders ====================
 /datum/outfit/vox/raider
