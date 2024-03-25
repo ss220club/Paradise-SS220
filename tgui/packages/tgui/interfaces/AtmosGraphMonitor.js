@@ -52,13 +52,6 @@ export const AtmosGraphMonitor = (props, context) => {
             <LabeledList>
               {/* ДАВЛЕНИЕ */}
               {Object.keys(sensors_list[s]).indexOf('pressure_history') > -1 ? (
-                <LabeledList.Item label="Последнее давление (kpa)">
-                  {toFixed(lastPressureToSensor[s], 1)}
-                </LabeledList.Item>
-              ) : (
-                ''
-              )}
-              {Object.keys(sensors_list[s]).indexOf('pressure_history') > -1 ? (
                 <LabeledList.Item label="График Давления">
                   <Section fill height={5} ml={1}>
                     <AtmosChart
@@ -76,14 +69,6 @@ export const AtmosGraphMonitor = (props, context) => {
               )}
 
               {/* ТЕМПЕРАТУРА */}
-              {Object.keys(sensors_list[s]).indexOf('temperature_history') >
-              -1 ? (
-                <LabeledList.Item label="Последняя температура (K)">
-                  {toFixed(lastTemperatureToSensor[s], 1)}
-                </LabeledList.Item>
-              ) : (
-                ''
-              )}
               {Object.keys(sensors_list[s]).indexOf('temperature_history') >
               -1 ? (
                 <LabeledList.Item label="График Температуры">
@@ -188,12 +173,12 @@ class AtmosChart extends Component {
       normalized.push([-strokeWidth, first[1]]);
     }
     const points = dataToPolylinePoints(normalized);
-    const horizontalLinesCount = data.length;
+    const horizontalLinesCount = 2; // Горизонтальные линии сетки, не имеют физического смысла
     const verticalLinesCount = data.length;
     const gridColor = 'rgba(255, 255, 255, 0.1)';
     const gridWidth = 2;
     const pointTextColor = 'rgba(255, 255, 255, 0.8)';
-    const pointTextSize = '0.5em';
+    const pointTextSize = '0.8em';
 
     return (
       <Box position="relative" {...rest}>
@@ -211,6 +196,18 @@ class AtmosChart extends Component {
                 overflow: 'hidden',
               }}
             >
+              {/* Горизонтальные линии сетки */}
+              {Array.from({ length: horizontalLinesCount }).map((_, index) => (
+                <line
+                  key={`horizontal-line-${index}`}
+                  x1={0}
+                  y1={(index + 1) * (viewBox[1] / (horizontalLinesCount + 1))}
+                  x2={viewBox[0]}
+                  y2={(index + 1) * (viewBox[1] / (horizontalLinesCount + 1))}
+                  stroke={gridColor}
+                  strokeWidth={gridWidth}
+                />
+              ))}
               {/* Вертикальные линии сетки */}
               {Array.from({ length: verticalLinesCount }).map((_, index) => (
                 <line
@@ -231,6 +228,23 @@ class AtmosChart extends Component {
                 strokeWidth={strokeWidth}
                 points={points}
               />
+              {/* Значения точек */}
+              {data.map(
+                (point, index) =>
+                  index % 2 === 0 && (
+                    <text
+                      key={`point-text-${index}`}
+                      x={normalized[index][0]}
+                      y={viewBox[1] - normalized[index][1]}
+                      fill={pointTextColor}
+                      fontSize={pointTextSize}
+                      dy="1em" // Сдвиг текста вниз, чтобы он не перекрывал точку
+                      textAnchor="middle" // Центрирование текста по x координате
+                    >
+                      {`${point[1].toFixed(0)}`}
+                    </text>
+                  )
+              )}
             </svg>
           </div>
         )}
