@@ -241,7 +241,7 @@ class AtmosChart extends Component {
                       dy="1em" // Сдвиг текста вниз, чтобы он не перекрывал точку
                       textAnchor="middle" // Центрирование текста по x координате
                     >
-                      {`${point[1].toFixed(0)}`}
+                      {point[1] !== null ? point[1].toFixed(0) : 'N/A'}
                     </text>
                   )
               )}
