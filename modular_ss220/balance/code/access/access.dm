@@ -24,11 +24,11 @@
 
 /datum/job/atmos/New()
 	. = ..()
-	access += list(ACCESS_ENGINE)
+	access += list(ACCESS_ENGINE, ACCESS_ENGINE_EQUIP)
 
 /datum/job/engineer/New()
 	. = ..()
-	access += list(ACCESS_ATMOSPHERICS)
+	access += list(ACCESS_ATMOSPHERICS, ACCESS_EMERGENCY_STORAGE)
 
 /datum/job/blueshield/New()
 	. = ..()

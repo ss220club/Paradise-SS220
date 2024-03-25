@@ -9,3 +9,7 @@
 	. = ..()
 	new /obj/item/melee/baton/electrostaff/loaded(src)
 	new /obj/item/screwdriver(src)
+
+/obj/structure/closet/secure_closet/engineering_personal/populate_contents()
+	. = ..()
+	new /obj/item/holosign_creator/atmos(src)
