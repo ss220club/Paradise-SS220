@@ -1,6 +1,8 @@
 #define SENSOR_PRESSURE 	(1<<0)
 #define SENSOR_TEMPERATURE 	(1<<1)
-#define NO_DATA_VALUE  		0
+#define NO_DATA_VALUE  		null
+#define MAX_RECORD_SIZE 	20
+#define RECORD_INTERVAL     1
 
 /datum/design/pt_monitor
 	name = "Console Board (Atmospheric Graph Monitor)"
@@ -26,8 +28,8 @@
 	icon_keyboard = "atmos_key"
 	circuit = /obj/item/circuitboard/pt_monitor
 
-	var/record_size = 10
-	var/record_interval = 5 SECONDS
+	var/record_size = MAX_RECORD_SIZE
+	var/record_interval = RECORD_INTERVAL SECONDS
 	var/next_record_time = 0
 
 /// Переопределим унаследованный от general_air_control TGUI интерфейс
@@ -47,9 +49,9 @@
 	. = ..()
 	for(var/sensor_name in sensor_name_data_map)
 		if(isnull(sensor_name_data_map[sensor_name]["pressure_history"]))
-			sensor_name_data_map[sensor_name]["pressure_history"] = list()
+			sensor_name_data_map[sensor_name]["pressure_history"] = new /list(MAX_RECORD_SIZE)
 		if(isnull(sensor_name_data_map[sensor_name]["temperature_history"]))
-			sensor_name_data_map[sensor_name]["temperature_history"] = list()
+			sensor_name_data_map[sensor_name]["temperature_history"] = new /list(MAX_RECORD_SIZE)
 
 /// Переопределим процесс refresh_sensors для записи истории показаний
 /obj/machinery/computer/general_air_control/pt_monitor/refresh_sensors()
@@ -90,8 +92,8 @@
 			continue
 
 		// Запись данных в списки и их обрезка
-		sensor_pressure_history += (!isnull(current_pressure)) ? current_pressure : NO_DATA_VALUE
-		sensor_temperature_history += (!isnull(current_temperature)) ? current_temperature : NO_DATA_VALUE
+		sensor_pressure_history += current_pressure
+		sensor_temperature_history += current_temperature
 		if(length(sensor_pressure_history) > record_size)
 			sensor_pressure_history.Cut(1, 2)
 		if(length(sensor_temperature_history) > record_size)
