@@ -1,10 +1,10 @@
 import { useBackend } from '../backend';
 import { Section, LabeledList, Box } from '../components';
-import { toFixed } from 'common/math';
 import { Window } from '../layouts';
 import { pureComponentHooks } from '../../common/react';
 import { zipWith, map } from '../../common/collections';
 import { Component, createRef } from 'inferno';
+import { toFixed } from '../../common/math';
 
 export const AtmosGraphMonitor = (props, context) => {
   const { act, data } = useBackend(context);
@@ -52,7 +52,11 @@ export const AtmosGraphMonitor = (props, context) => {
             <LabeledList>
               {/* ДАВЛЕНИЕ */}
               {Object.keys(sensors_list[s]).indexOf('pressure_history') > -1 ? (
-                <LabeledList.Item label="График Давления">
+                <LabeledList.Item
+                  label={
+                    'Давление (' + toFixed(lastPressureToSensor[s], 0) + ' кПа)'
+                  }
+                >
                   <Section fill height={5} mx={1} mt={0.5}>
                     <AtmosChart
                       fillPositionedParent
@@ -71,7 +75,13 @@ export const AtmosGraphMonitor = (props, context) => {
               {/* ТЕМПЕРАТУРА */}
               {Object.keys(sensors_list[s]).indexOf('temperature_history') >
               -1 ? (
-                <LabeledList.Item label="График Температуры">
+                <LabeledList.Item
+                  label={
+                    'Температура (' +
+                    toFixed(lastTemperatureToSensor[s], 0) +
+                    ' K)'
+                  }
+                >
                   <Section fill height={5} mx={1} mt={0.5}>
                     <AtmosChart
                       fillPositionedParent
@@ -174,7 +184,7 @@ class AtmosChart extends Component {
     }
     const points = dataToPolylinePoints(normalized);
     const horizontalLinesCount = 2; // Горизонтальные линии сетки, не имеют физического смысла
-    const verticalLinesCount = data.length;
+    const verticalLinesCount = data.length - 2;
     const gridColor = 'rgba(255, 255, 255, 0.1)';
     const gridWidth = 2;
     const pointTextColor = 'rgba(255, 255, 255, 0.8)';
@@ -228,10 +238,25 @@ class AtmosChart extends Component {
                 strokeWidth={strokeWidth}
                 points={points}
               />
+              {/* Точки */}
+              {data.map(
+                (point, index) =>
+                  index % 2 === 1 && (
+                    <circle
+                      key={`point-${index}`}
+                      cx={normalized[index][0]}
+                      cy={viewBox[1] - normalized[index][1]}
+                      r={2} // радиус точки
+                      fill="#ffffff" // цвет точки
+                      stroke={strokeColor} // цвет обводки
+                      strokeWidth={1} // ширина обводки
+                    />
+                  )
+              )}
               {/* Значения точек */}
               {data.map(
                 (point, index) =>
-                  index % 2 === 0 && (
+                  index % 2 === 1 && (
                     <text
                       key={`point-text-${index}`}
                       x={normalized[index][0]}
@@ -239,6 +264,7 @@ class AtmosChart extends Component {
                       fill={pointTextColor}
                       fontSize={pointTextSize}
                       dy="1em" // Сдвиг текста вниз, чтобы он не перекрывал точку
+                      dx="-2.5em" // Сдвиг текста вправо
                       textAnchor="middle" // Центрирование текста по x координате
                     >
                       {point[1] !== null ? point[1].toFixed(0) : 'N/A'}
