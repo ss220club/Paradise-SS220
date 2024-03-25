@@ -35,6 +35,27 @@
 		return
 	return ..()
 
+/obj/structure/bed/antihobo
+	name = "подозрительная кровать"
+	desc = "Это удобная кровать, поставленная корпорацией к этому особому дню. Может быть, они хотят, чтобы их любимые сотрудники вздремнули?"
+	var/captured = FALSE
+
+/obj/structure/bed/antihobo/buckle_mob(mob/living/M, force, check_loc)
+	. = ..()
+	captured = TRUE
+	playsound(loc, 'sound/machines/switch.ogg', 30)
+	atom_say("Бомж обнаружен и обезврежен, ближайшие уполномоченные лица должны разобрать эту кровать, и заставить его работать.")
+
+/obj/structure/bed/antihobo/unbuckle_mob(mob/living/buckled_mob, force)
+	if(captured)
+		to_chat(buckled_mob, "<span class='warning'>Ты не можешь отстегнуться, зови на помощь!</span>")
+		return
+	return ..()
+
+/obj/structure/bed/antihobo/Destroy()
+	captured = FALSE
+	return ..()
+
 /obj/structure/bed/psych
 	name = "psych bed"
 	desc = "For prime comfort during psychiatric evaluations."
