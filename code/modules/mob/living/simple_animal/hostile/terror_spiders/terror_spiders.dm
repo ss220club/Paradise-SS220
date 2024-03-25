@@ -1,3 +1,4 @@
+
 GLOBAL_LIST_EMPTY(ts_ckey_blacklist)
 GLOBAL_VAR_INIT(ts_count_dead, 0)
 GLOBAL_VAR_INIT(ts_count_alive_awaymission, 0) // SS220 EDIT - ADDITION
