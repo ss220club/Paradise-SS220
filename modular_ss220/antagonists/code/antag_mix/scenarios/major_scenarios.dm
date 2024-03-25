@@ -12,6 +12,7 @@
 	weight = 1
 	antag_cap = 6	// 1 команда на сценарий из 2-6 воксов
 	team_size = 6
+	execution_once = TRUE
 
 	is_crew_antag = FALSE
 	landmark_type = /obj/effect/landmark/spawner/vox_raider
