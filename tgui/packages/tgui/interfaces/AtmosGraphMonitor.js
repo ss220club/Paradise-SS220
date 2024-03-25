@@ -53,7 +53,7 @@ export const AtmosGraphMonitor = (props, context) => {
               {/* ДАВЛЕНИЕ */}
               {Object.keys(sensors_list[s]).indexOf('pressure_history') > -1 ? (
                 <LabeledList.Item label="График Давления">
-                  <Section fill height={5} ml={1}>
+                  <Section fill height={5} mx={1} mt={0.5}>
                     <AtmosChart
                       fillPositionedParent
                       data={pressureDataToSensor[s]}
@@ -72,7 +72,7 @@ export const AtmosGraphMonitor = (props, context) => {
               {Object.keys(sensors_list[s]).indexOf('temperature_history') >
               -1 ? (
                 <LabeledList.Item label="График Температуры">
-                  <Section fill height={5} ml={1}>
+                  <Section fill height={5} mx={1} mt={0.5}>
                     <AtmosChart
                       fillPositionedParent
                       data={temperatureDataToSensor[s]}
