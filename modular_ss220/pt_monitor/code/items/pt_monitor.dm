@@ -4,7 +4,7 @@
 #define MAX_RECORD_SIZE 	20
 #define RECORD_INTERVAL     1
 
-/datum/design/pt_monitor //Определение дизайна для печати платы
+/datum/design/pt_monitor
 	name = "Console Board (Atmospheric Graph Monitor)"
 	desc ="Allows for the construction of circuit boards used to build an Atmospheric Graph Monitor."
 	id = "pt_monitor"
@@ -14,13 +14,13 @@
 	build_path = /obj/item/circuitboard/pt_monitor
 	category = list("Computer Boards")
 
-/obj/item/circuitboard/pt_monitor //Определение платы для консоли атмосферного контроля
+/obj/item/circuitboard/pt_monitor
 	board_name = "Atmospheric Graph Monitor"
 	icon_state = "engineering"
 	build_path = /obj/machinery/computer/general_air_control/pt_monitor
 	origin_tech = "programming=2;engineering=3"
 
-/obj/machinery/computer/general_air_control/pt_monitor //Определение консоли атмосферного контроля
+/obj/machinery/computer/general_air_control/pt_monitor
 	name = "Atmospheric graph monitoring console"
 	desc = "Used to monitor pressure and temperature of linked analyzer."
 	icon = 'modular_ss220/pt_monitor/icons/pt_monitor.dmi'
