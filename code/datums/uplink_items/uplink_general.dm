@@ -681,14 +681,14 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/suits/springlock_module
 	name = "Heavily Modified Springlock MODsuit Module"
-	desc = "Модуль, простирающийся на всю длину MODsuit. \
-		This mechanical exoskeleton pushes out of the way when the user enters and it helps in booting \
-		up, but was taken out of modern suits because of the springlock's tendency to \"snap\" back \
-		into place when exposed to humidity. You know what it's like to have an entire exoskeleton enter you? \
-		This version of the module has been modified to allow for near instant activation of the MODsuit. \
-		Useful for quickly getting your MODsuit on/off, or for taking care of a target via a tragic accident. \
-		It is hidden as a DNA lock module. It will block retraction for 10 seconds by default to allow you to follow \
-		up with smoke, but you can multitool the module to disable that."
+	desc = "Модуль, простирающийся на всю длину MODsuit, находясь под внешней оболочкой\
+		Этот механический экзоскелет отодвигается при входении пользователя и ускоряет запуск, \
+		но он был изъят из современных костюмов из-за тенденции \"срываться\" в \
+		в исходное положение при попадании влаги. Вы знаете, какого это, чувтсовать вхождение в себя экзоскелета? \
+		Эта версия модуля былоа улучшена таким образом, что повзоляет практически моментально активировать MODSuit. \
+		Полезен для быстрого снятия MODSuit или для убийства цели при помощи трагичного несчастного случая. \
+		Этот модуль спрятан как ДНК-замок. Он заблокирут складывание модуля на 5 секунд по умолчанию, позволяя вам \
+		использовать дым, но вы можете отключить данный функционал модуля, используя мультитул."
 	reference = "FNAF"
 	item = /obj/item/mod/module/springlock/bite_of_87
 	cost = 5
