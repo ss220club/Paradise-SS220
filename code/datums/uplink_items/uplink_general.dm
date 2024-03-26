@@ -92,7 +92,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 	if(hijack_only && !(usr.mind.special_role == SPECIAL_ROLE_NUKEOPS))//nukies get items that regular traitors only get with hijack. If a hijack-only item is not for nukies, then exclude it via the gamemode list.
 		if(!(locate(/datum/objective/hijack) in usr.mind.get_all_objectives()) && U.uplink_type != UPLINK_TYPE_ADMIN)
-			to_chat(usr, "<span class='warning'>Синдикат выдаст это очень опасное оружие только агенту с миссией Угон.</span>")
+			to_chat(usr, "<span class='warning'>Синдикат выдаст это очень опасное оружие только агентам с целью Угон.</span>")
 			return
 
 	U.uses -= max(cost, 0)
@@ -523,7 +523,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/stealthy_tools/smugglersatchel
 	name = "Smuggler's Satchel"
-	desc = "Эта сумка достаточно тонкая для укладки между обшивкой и полом, отличная вещь для сокрытия ваших вещей. Поставляется с ломом и тайлом пола внутри."
+	desc = "Эта сумка достаточно тонкая для укладки между обшивкой и полом, отлично подходит для прятанья ворованных вещей. Поставляется с ломом и напольной плиткой внутри."
 	reference = "SMSA"
 	item = /obj/item/storage/backpack/satchel_flat
 	cost = 10
@@ -545,8 +545,8 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/stealthy_tools/cutouts
 	name = "Adaptive Cardboard Cutouts"
-	desc = "Эти картонные аппликации покрыты тонким материалом, предотвращающее выцветание и делает изображения более похожими на реальными. В наборе их 3, а также \
-	баллончик с краской для смены облика."
+	desc = "Эти картонные аппликации покрыты тонким материалом, предотвращающим выцветание и делающим изображения более похожими на реальные. В наборе их 3, а также \
+	баллончик с краской для смены их вида."
 	reference = "ADCC"
 	item = /obj/item/storage/box/syndie_kit/cutouts
 	cost = 1
@@ -629,7 +629,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 //Space Suits and Hardsuits
 /datum/uplink_item/suits
-	category = "Скафандры и МОДСьюты"
+	category = "Скафандры и MODsuit'ы"
 	surplus = 10 //I am setting this to 10 as there are a bunch of modsuit parts in here that should be weighted to 10. Suits and modsuits adjusted below.
 
 /datum/uplink_item/suits/space_suit
@@ -643,7 +643,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/suits/thermal
 	name = "MODsuit Thermal Visor Module"
-	desc = "Визор для МОДСьюта. Позволяет вам видеть живых существ через стены. Также даёт ночное зрение."
+	desc = "Визор для MODsuit'а. Позволяет вам видеть живых существ через стены. Также даёт ночное зрение."
 	reference = "MSTV"
 	item = /obj/item/mod/module/visor/thermal
 	cost = 15 // Don't forget, you need to get a modsuit to go with this
@@ -651,7 +651,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/suits/night
 	name = "MODsuit Night Visor Module"
-	desc = "Визор для МОДСьюта. Позволяет вам лучше видеть в темноте."
+	desc = "Визор для MODsuit'а. Позволяет вам лучше видеть в темноте."
 	reference = "MSNV"
 	item = /obj/item/mod/module/visor/night
 	cost = 5 // It's night vision, rnd pumps out those goggles for anyone man.
@@ -659,22 +659,22 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/suits/plate_compression
 	name = "MODsuit Plate Compression Module"
-	desc = "Модуль на МОДСьют, позволяющий ему сжаться в более маленький размер. Несовместим с модулями хранилища, \
-	сначала вам придётся извлечь данные модули."
+	desc = "Модуль на MODsuit, позволяющий ему сжаться до меньших размеров. Несовместим с модулями хранилища, \
+	сначала вам придётся извлечь такой модуль."
 	reference = "MSPC"
 	item = /obj/item/mod/module/plate_compression
 	cost = 10
 
 /datum/uplink_item/suits/chameleon_module
 	name = "MODsuit Chameleon Module"
-	desc = "Модуль на МОДСьют, позволяющий использовать технологию хамелеон для маскировки сложенного модсьюта под любой предмет. Примечание: маскировка выключится при разложении МОДСьюта, но может быть активирована повторно после складывания."
+	desc = "Модуль, использующий технологию хамелеон для маскировки сложенного MODsuit'а под другой предмет. Примечание: маскировка выключится при развертывании MODsuit'а, но может быть активирована повторно после складывания."
 	reference = "MSCM"
 	item = /obj/item/mod/module/chameleon
 	cost = 10
 
 /datum/uplink_item/suits/noslip
 	name = "MODsuit Anti-Slip Module"
-	desc = "Модуль на МОДСьют, предотвращающий подскальзывание на воде. Предустановлен в МОДСьюты из аплинка."
+	desc = "Модуль на MODsuit, предотвращающий поскальзывание на воде. Предустановлен в MODsuit'ы из аплинка."
 	reference = "MSNS"
 	item = /obj/item/mod/module/noslip
 	cost = 5
@@ -696,7 +696,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/suits/hidden_holster
 	name = "Hidden Holster Module"
-	desc = "Модуль кобуры, замаскированный под крюк-кошку. Естественно, требуется МОДСьют для установки. Ствол приобретается отдельно."
+	desc = "Модуль кобуры, замаскированный под крюк-кошку. Требует MODsuit для установки, естественно. Ствол приобретается отдельно."
 	reference = "HHM"
 	item = /obj/item/mod/module/holster/hidden
 	cost = 5
@@ -704,7 +704,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/suits/smoke_grenade
 	name = "Smoke Grenade Module"
-	desc = "Модуль на МОДСьют, который выпускает взведенные дымовые гранаты для разгона толпы."
+	desc = "Модуль на MODsuit, который выпускает взведенные дымовые гранаты для разгона толпы."
 	reference = "SGM"
 	item = /obj/item/mod/module/dispenser/smoke
 	cost = 10
@@ -720,7 +720,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/device_tools/cipherkey
 	name = "Syndicate Encryption Key"
-	desc = "Ключ, который при установке в наушник позволяет вам слышать каналы всех отделов станции, а также общаться в зашифрованном канале Синдиката."
+	desc = "Ключ, который при установке в радио-гарнитуру позволяет вам слышать каналы всех отделов станции, а также общаться в зашифрованном канале Синдиката."
 	reference = "SEK"
 	item = /obj/item/encryptionkey/syndicate
 	cost = 10 //Nowhere near as useful as the Binary Key!
@@ -728,14 +728,14 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/device_tools/hacked_module
 	name = "Hacked AI Upload Module"
-	desc = "Будучи использованным на консоли загрузки законов, этот модуль позволяет вам загрузить приоритетные законы в ИИ. Данный закон будет выше всех остальных в списке. Подбирайте выражения аккуратно, ведь ИИ может попытаться использовать Ваши законы против Вас."
+	desc = "Будучи использованным на консоли загрузки законов, этот модуль позволяет вам загрузить приоритетные законы в ИИ. Подбирайте формулировки внимательно, ведь ИИ может попытаться найти в них дыру."
 	reference = "HAI"
 	item = /obj/item/aiModule/syndicate
 	cost = 15
 
 /datum/uplink_item/device_tools/powersink
 	name = "Power Sink"
-	desc = "При прикручивании к проводке и последующей активации, это большое устройство вызывает большую нагрузку на энергосеть станции, вызывая блэкаут на станции. Данное устройство нельзя переместить после вызова. При покупке вы получаете маленький маячок, который при активации телепортирует высасыватель энергии на ваше местоположение."
+	desc = "При прикручивании к проводке и последующей активации это большое устройство вызывает большую нагрузку на энергосеть станции, вызывая обширный блэкаут. Данное устройство нельзя носить из-за его чрезмерных размеров. При покупке вы получаете маленький маячок, который при активации телепортирует поглотитель энергии на ваше местоположение."
 	reference = "PS"
 	item = /obj/item/radio/beacon/syndicate/power_sink
 	cost = 50
@@ -743,8 +743,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 /datum/uplink_item/device_tools/singularity_beacon
 	name = "Power Beacon"
 	desc = "При прикручивании к проводке и последующей активации, это большое устройство притягивает любые \
-			активные гравитационные сингулярности. Саботажем двигателя Сингулярности/Теслы \
-			придётся заниматься отдельно. Из-за размера его нельзя перемещать. При покупке \
+			активные гравитационные сингулярности. Оно не будет работать, если двигатель еще в зоне содержания. Из-за размера его нельзя перемещать. При покупке \
 			вы получаете маленький маячок, который при активации телепортирует большой маяк на ваше местоположение."
 	reference = "SNGB"
 	item = /obj/item/radio/beacon/syndicate
@@ -755,21 +754,21 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/device_tools/advpinpointer
 	name = "Advanced Pinpointer"
-	desc = "Пинпоинтер, который может отслеживать определённое место, ДНК код, ценный предмет или диск ядерной аутентификации."
+	desc = "Пинпоинтер, который может отслеживать определённые координаты, ДНК код, ценный предмет или диск ядерной аутентификации."
 	reference = "ADVP"
 	item = /obj/item/pinpointer/advpinpointer
 	cost = 20
 
 /datum/uplink_item/device_tools/ai_detector
 	name = "Artificial Intelligence Detector" // changed name in case newfriends thought it detected disguised ai's
-	desc = "Функционирующий мультитул, который горит красным, когда оно замечает, что за ним или носителем смотрит ИИ. Знание, когда за вами смотрит ИИ полезно для сохранения маскировки."
+	desc = "Функционирующий мультитул, который горит красным, когда замечает, что за ним или носителем смотрит ИИ. Знание, когда за вами смотрит ИИ, полезно для сохранения прикрытия."
 	reference = "AID"
 	item = /obj/item/multitool/ai_detect
 	cost = 5
 
 /datum/uplink_item/device_tools/jammer
 	name = "Radio Jammer"
-	desc = "Будучи включённым, данное устройство весь исходящий радиотрафик вокруг вас, усложняя взаимопонимание."
+	desc = "Будучи включённым, данное устройство искажает весь исходящий радио-трафик возле вас, усложняя взаимопонимание."
 	reference = "RJ"
 	item = /obj/item/jammer
 	cost = 20
@@ -803,14 +802,14 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/bio_chips/mindslave
 	name = "Mindslave Bio-chip"
-	desc = "Коробка с имлантером с био-чипом Майндслэйв, который при вживлении в другого человека делает их лояльным вам и вашему делу кроме случаев, если они уже проимплантированы кем-то другим. Лояльность кончается при извлечении импланта из тела."
+	desc = "Коробка с имлантером с био-чипом подчинения, который при вживлении в другого человека делает их верным вам и вашему делу, кроме случаев, если они уже проимплантированы кем-то другим. Лояльность кончается при извлечении импланта из тела."
 	reference = "MI"
 	item = /obj/item/bio_chip_implanter/traitor
 	cost = 50
 
 /datum/uplink_item/bio_chips/adrenal
 	name = "Adrenal Bio-chip"
-	desc = "Био-чип, вводимый в тело и позже активируемый в ручную для впрыскивания химического коктейля, имеющего средние исцеляющие способности, а также убирает текущий ослаблений и уменьшает время всех последущих, дополнительно увеличивая скорость перемещения. Может быть активирован до трёх раз."
+	desc = "Био-чип, вводимый в тело и позже активируемый в ручную для впрыскивания химического коктейля, имеющего средние исцеляющие способности, а также убирает текущие ослабления и уменьшает время всех последующих, дополнительно увеличивая скорость передвижения. Может быть активирован до 3 раз."
 	reference = "AI"
 	item = /obj/item/bio_chip_implanter/adrenalin
 	cost = 40
@@ -818,7 +817,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 /datum/uplink_item/bio_chips/stealthimplant
 	name = "Stealth Bio-chip"
 	desc = "Этот уникальный имплант делает вас практически невидимым, если вы правильно разыграете карты. \
-			При активации, он спрячет вас внутри картонной коробки, которую можно обнаружить только если кто-то столкнётся об вас."
+			При активации, он спрячет вас внутри картонной коробки, которую можно обнаружить, только если кто-то врежется в вас."
 	reference = "SI"
 	item = /obj/item/bio_chip_implanter/stealth
 	cost = 45
@@ -830,17 +829,17 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/cyber_implants/hackerman_deck
 	name = "Binyat Wireless Hacking System Autoimplanter"
-	desc = "Этот имплант позволит вам взламывать устройства на расстоянии. Однако, при использовании вы \
-	получите урон от ожогов, и процесс взлома сопровождается заметным эффектом. \
-	Нельзя увидеть на прокачанных сканерах тела. Несовместим с Qani-Laaca Sensory Computer."
+	desc = "Этот имплант позволит вам взламывать устройства на расстоянии. Однако, он слегка обжигает \
+	при использовании, и процесс взлома сопровождается заметным эффектом. \
+	Нельзя увидеть на неулучшенных сканерах тела. Несовместим с Qani-Laaca Sensory Computer."
 	reference = "HKR"
 	item = /obj/item/autosurgeon/organ/syndicate/hackerman_deck
 	cost = 30 // Probably slightly less useful than an emag with heat / cooldown, but I am not going to make it cheaper or everyone picks it over emag
 
 /datum/uplink_item/cyber_implants/razorwire
 	name = "Razorwire Spool Arm Implant Autoimplanter"
-	desc = "Длиннная мономолекулярная нить, встроенная прямо в заднюю часть руки. \
-		Невероятно тонкая и безупречно острая, она без проблем прорежет любую органику; \
+	desc = "Длинная мономолекулярная нить, встроенная прямо в тыльную сторону ладони. \
+		Невероятно тонкая и безупречно острая, она без проблем прорежет любую органику \
 		даже на расстоянии нескольких шагов. Однако, против чего-либо более стойкого результаты могут варьироваться."
 	reference = "RZR"
 	item = /obj/item/autosurgeon/organ/syndicate/razorwire
@@ -869,7 +868,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/badass/balloon
 	name = "For showing that you are The Boss"
-	desc = "Бесполезный красный шарик с логотипом Синдиката на нём. Подрывает даже глубочашее прикрытие."
+	desc = "Бесполезный красный шарик с логотипом Синдиката на нём. Подрывает даже глубочайшее прикрытие."
 	reference = "BABA"
 	item = /obj/item/toy/syndicateballoon
 	cost = 100
@@ -877,14 +876,14 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/badass/bomber
 	name = "Syndicate Bomber Jacket"
-	desc = "Крутая куртка для выебонов перед НаноТрэйзен. Подкладка сделана из тонкого полимера для защиты. Не даёт дополнительное место для хранения вещей."
+	desc = "Крутая куртка, чтоб выделываться перед НаноТрэйзен. Подкладка сделана из тонкого полимера для защиты. Не даёт дополнительное место для хранения вещей."
 	reference = "JCKT"
 	item = /obj/item/clothing/suit/jacket/syndicatebomber
 	cost = 3
 
 /datum/uplink_item/badass/tpsuit
 	name = "Syndicate Two-Piece Suit"
-	desc = "Чёткий костюм-двойка, который должен носить каждый уважающий cебя агент Синдиката. Идеальен для профессионалов, действующих скрытно, но также имеет среднюю броню в случае, если всё пойдёт не по плану. Поставляется с двумя карманами на кашемировой подкладке для максимального стиля и комфорта."
+	desc = "Чёткий костюм-двойка, который должен носить каждый уважающий cебя агент Синдиката. Идеален для профессионалов, действующих скрытно, но также несколько бронирован экспериментальной нанотканью на случай, если всё пойдёт не по плану. Поставляется с двумя карманами на кашемировой подкладке для максимального стиля и комфорта."
 	reference = "SUIT"
 	item = /obj/item/clothing/suit/storage/iaa/blackjacket/armored
 	cost = 3
@@ -895,8 +894,8 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	cant_discount = TRUE
 
 /datum/uplink_item/bundles_TC/telecrystal
-	name = "1 Raw Telecrystal"
-	desc = "Телекристалл в своей чистейшей форме; может быть использован для увеличения счета телекристаллов на активных аплинках."
+	name = "Raw Telecrystal"
+	desc = "Телекристалл в своей чистейшей форме, может быть использован для увеличения счета телекристаллов на активных аплинках."
 	reference = "RTC"
 	item = /obj/item/stack/telecrystal
 	cost = 1
@@ -910,21 +909,21 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/bundles_TC/telecrystal/twenty
 	name = "20 Raw Telecrystals"
-	desc = "Двадцать телекристаллов в своей чистейшей форме; могут быть использованы для увеличения счета телекристаллов на активных аплинках."
+	desc = "Двадцать телекристаллов в своей чистейшей форме, могут быть использованы для увеличения счета телекристаллов на активных аплинках."
 	reference = "RTCT"
 	item = /obj/item/stack/telecrystal/twenty
 	cost = 20
 
 /datum/uplink_item/bundles_TC/telecrystal/fifty
 	name = "50 Raw Telecrystals"
-	desc = "Пятьдесят телекристаллов в своей чистейшей форме; могут быть использованы для увеличения счета телекристаллов на активных аплинках."
+	desc = "Пятьдесят телекристаллов в своей чистейшей форме, могут быть использованы для увеличения счета телекристаллов на активных аплинках."
 	reference = "RTCB"
 	item = /obj/item/stack/telecrystal/fifty
 	cost = 50
 
 /datum/uplink_item/bundles_TC/telecrystal/hundred
 	name = "100 Raw Telecrystals"
-	desc = "Одна сотня телекристаллов в своей чистейшей форме; могут быть использованы для увеличения счета телекристаллов на активных аплинках."
+	desc = "Одна сотня телекристаллов в своей чистейшей форме, могут быть использованы для увеличения счета телекристаллов на активных аплинках."
 	reference = "RTCH"
 	item = /obj/item/stack/telecrystal/hundred
 	cost = 100
