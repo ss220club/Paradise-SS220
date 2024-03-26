@@ -10,7 +10,7 @@ export const AtmosGraphMonitor = (props, context) => {
   const { act, data } = useBackend(context);
 
   let sensors_list = data.sensors || {};
-  // Найдём последние значения давления и температуры для каждого датчика
+
   const lastPressureToSensor = {};
   const lastTemperatureToSensor = {};
   for (const sensor in sensors_list) {
@@ -20,7 +20,6 @@ export const AtmosGraphMonitor = (props, context) => {
       sensors_list[sensor].temperature_history.slice(-1)[0];
   }
 
-  // Найдём максимальные значения давления и температуры для каждого датчика
   const maxPressureToSensor = {};
   const maxTemperatureToSensor = {};
   for (const sensor in sensors_list) {
@@ -32,7 +31,6 @@ export const AtmosGraphMonitor = (props, context) => {
     );
   }
 
-  // Приведём данные в нужный формат
   const pressureDataToSensor = {};
   const temperatureDataToSensor = {};
   for (const sensor in sensors_list) {
@@ -104,7 +102,8 @@ export const AtmosGraphMonitor = (props, context) => {
   );
 };
 
-// СПИЗЖЕННЫЙ КОД КОМПОНЕНТА CHART.JS
+// Ниже находится код вдохновленный компонентом CHART.JS
+// К удалению, если будут приняты изменения в официальном компоненте
 
 const normalizeData = (data, scale, rangeX, rangeY) => {
   if (data.length === 0) {
