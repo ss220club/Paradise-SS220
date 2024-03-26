@@ -45,6 +45,9 @@ export const AtmosGraphMonitor = (props, context) => {
   return (
     <Window width={700} height={400}>
       <Window.Content scrollable>
+        <Section title="Графический атмосферный монитор">
+          <b>ИНФО</b>: Интервал записи 20 секунд, точки каждые 2 секунды
+        </Section>
         {Object.keys(sensors_list).map((s) => (
           <Section key={s} title={s}>
             <Section>
