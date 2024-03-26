@@ -468,7 +468,6 @@
 /obj/machinery/vox_trader/proc/get_trade_contents(mob/user)
 	var/turf/current_turf = get_turf(src)
 	var/list/items_list = current_turf.GetAllContents(7)
-
 	for(var/obj/O in items_list)
 		if(istype(O, /obj/item/organ))
 			var/obj/item/organ/organ = O
@@ -477,9 +476,18 @@
 			continue
 		if(isliving(O))
 			var/mob/living/M = O
-			send_to_station(M)
 			items_list.Remove(M)
-			continue
+			if(!isvox(M))
+				send_to_station(M)
+				continue
+			var/datum/antagonist/vox_raider/antag = locate() in M.mind.antag_datums
+			if(antag)
+				continue
+			for(var/datum/antagonist/A as anything in user.mind.antag_datums)
+				var/datum/team/team = user.get_team()
+				if(team)
+					team.add_member(M.mind, TRUE)
+					break
 
 /obj/machinery/vox_trader/proc/send_to_station(mob/living/M)
 	M.Sleeping(16 SECONDS)
