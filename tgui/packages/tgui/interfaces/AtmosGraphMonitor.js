@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Section, LabeledList, Box } from '../components';
+import { Section, Box } from '../components';
 import { Window } from '../layouts';
 import { pureComponentHooks } from '../../common/react';
 import { zipWith, map } from '../../common/collections';
@@ -47,16 +47,17 @@ export const AtmosGraphMonitor = (props, context) => {
       <Window.Content scrollable>
         {Object.keys(sensors_list).map((s) => (
           <Section key={s} title={s}>
-            <LabeledList>
+            <Section>
               {/* ДАВЛЕНИЕ */}
               {Object.keys(sensors_list[s]).indexOf('pressure_history') >
                 -1 && (
-                <LabeledList.Item
-                  label={
-                    'Давление (' + toFixed(lastPressureToSensor[s], 0) + ' кПа)'
-                  }
-                >
-                  <Section fill height={5} mx={1} mt={0.5}>
+                <Box mb={2} px={2}>
+                  <Box>
+                    {'Давление (' +
+                      toFixed(lastPressureToSensor[s], 0) +
+                      ' кПа)'}
+                  </Box>
+                  <Section fill height={5} mt={1}>
                     <AtmosChart
                       fillPositionedParent
                       data={pressureDataToSensor[s]}
@@ -66,20 +67,19 @@ export const AtmosGraphMonitor = (props, context) => {
                       fillColor="rgba(219, 40, 40, 0.1)"
                     />
                   </Section>
-                </LabeledList.Item>
+                </Box>
               )}
 
               {/* ТЕМПЕРАТУРА */}
               {Object.keys(sensors_list[s]).indexOf('temperature_history') >
                 -1 && (
-                <LabeledList.Item
-                  label={
-                    'Температура (' +
-                    toFixed(lastTemperatureToSensor[s], 0) +
-                    ' K)'
-                  }
-                >
-                  <Section fill height={5} mx={1} mt={0.5}>
+                <Box mb={2} px={2}>
+                  <Box>
+                    {'Температура (' +
+                      toFixed(lastTemperatureToSensor[s], 0) +
+                      ' K)'}
+                  </Box>
+                  <Section fill height={5} mt={1}>
                     <AtmosChart
                       fillPositionedParent
                       data={temperatureDataToSensor[s]}
@@ -89,9 +89,9 @@ export const AtmosGraphMonitor = (props, context) => {
                       fillColor="rgba(40, 219, 40, 0.1)"
                     />
                   </Section>
-                </LabeledList.Item>
+                </Box>
               )}
-            </LabeledList>
+            </Section>
           </Section>
         ))}
       </Window.Content>
