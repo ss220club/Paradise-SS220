@@ -42,9 +42,10 @@
 		if(initial(uses) > 1) //no need to tell 'em if it was one-use anyway!
 			to_chat(owner, "<span class='warning'>У [name] закончились использования!</span>")
 		qdel(src)
-	else
-		desc = "[initial(desc)]У этой способности осталось [uses] использований."
-		UpdateButtonIcon()
+	if(QDELETED(src) || uses) //Not sure if not having src here would cause a runtime, so it's here to be safe
+		return
+	desc = "[initial(desc)]У этой способности осталось [uses] использований."
+	UpdateButtons()
 
 //Framework for ranged abilities that can have different effects by left-clicking stuff.
 /datum/action/innate/ai/ranged
@@ -190,7 +191,7 @@
 					else //Adding uses to an existing module
 						action.uses += initial(action.uses)
 						action.desc = "У [initial(action.desc)] теперь [action.uses] использований."
-						action.UpdateButtonIcon()
+						action.UpdateButtons()
 						temp = "Были добавлены использовани[action.uses > 1 ? "я" : "е"] к [action.name]!"
 			processing_time -= AM.cost
 

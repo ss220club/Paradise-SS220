@@ -358,7 +358,7 @@
 	singlemutcheck(H, GLOB.clumsyblock, MUTCHK_FORCED)
 	active = TRUE
 	background_icon_state = "bg_spell"
-	UpdateButtonIcon()
+	UpdateButtons()
 	to_chat(H, "<span class='notice'>Вы начинаете вести себя неуклюже, чтобы отвести от себя подозрения. Снова сосредоточьтесь, прежде чем использовать оружие.</span>")
 
 /datum/action/innate/toggle_clumsy/Deactivate()
@@ -367,7 +367,7 @@
 	singlemutcheck(H, GLOB.clumsyblock, MUTCHK_FORCED)
 	active = FALSE
 	background_icon_state = "bg_default"
-	UpdateButtonIcon()
+	UpdateButtons()
 	to_chat(H, "<span class='notice'>Вы сосредоточились и теперь можете эффективно пользоваться оружием.</span>")
 
 /datum/job/mime
