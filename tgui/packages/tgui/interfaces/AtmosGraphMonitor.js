@@ -185,6 +185,7 @@ class AtmosChart extends Component {
     const gridWidth = 2;
     const pointTextColor = 'rgba(255, 255, 255, 0.8)';
     const pointTextSize = '0.8em';
+    const labelViewBoxSize = 400;
 
     return (
       <Box position="relative" {...rest}>
@@ -252,6 +253,7 @@ class AtmosChart extends Component {
               {/* Значения точек */}
               {data.map(
                 (point, index) =>
+                  viewBox[0] > labelViewBoxSize &&
                   index % 2 === 1 && (
                     <text
                       key={`point-text-${index}`}
