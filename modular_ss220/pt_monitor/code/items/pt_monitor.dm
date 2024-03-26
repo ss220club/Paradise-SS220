@@ -81,7 +81,9 @@
 				current_pressure = meter_air_sample ? meter_air_sample.return_pressure() : NO_DATA_VALUE
 				current_temperature = meter_air_sample ? meter_air_sample.return_temperature() : NO_DATA_VALUE
 		else
-			continue
+			sensor_name_uid_map -= sensor_name
+			sensor_name_data_map -= sensor_name
+			CRASH("Sensor of unexpected type was found: [atmos_sensor.type]")
 
 		sensor_pressure_history += current_pressure
 		sensor_temperature_history += current_temperature
