@@ -163,13 +163,7 @@
 	return TRUE
 
 /obj/machinery/vox_trader/proc/do_trade(mob/user)
-	var/turf/current_turf = get_turf(src)
-	var/list/items_list = current_turf.GetAllContents(7)
-
-	if(!length(items_list))
-		trade_cancel()
-		return
-
+	var/list/items_list = /get_trade_contents(user)
 	INVOKE_ASYNC(src, PROC_REF(make_cash), user, items_list)
 
 /obj/machinery/vox_trader/proc/make_cash(mob/user, list/items_list)
@@ -177,6 +171,7 @@
 		return
 
 	var/values_sum = get_value(user, items_list)
+
 	if(values_sum <= 10)
 		if(values_sum <= 0)
 			angry_count++
@@ -469,3 +464,30 @@
 
 		for(var/dict in trader.precious_collected_dict)
 			update_precious_collected_dict(trader.precious_collected_dict[dict], trader.precious_collected_dict[dict]["value"])
+
+/obj/machinery/vox_trader/proc/get_trade_contents(mob/user)
+	var/turf/current_turf = get_turf(src)
+	var/list/items_list = current_turf.GetAllContents(7)
+
+	for(var/obj/O in items_list)
+		if(istype(O, /obj/item/organ))
+			var/obj/item/organ/organ = O
+			if(organ.owner)
+				items_list.Remove(organ)
+			continue
+		if(isliving(O))
+			var/mob/living/M = O
+			send_to_station(M)
+			items_list.Remove(M)
+			continue
+
+/obj/machinery/vox_trader/proc/send_to_station(mob/living/M)
+	M.Sleeping(16 SECONDS)
+	M.setOxyLoss(0)
+	M.adjustBruteLoss(-25)
+	M.adjustFireLoss(-25)
+	M.adjustToxLoss(-50)
+	M.forceMove(pick(GLOB.latejoin))
+	if(iscarbon)
+		var/mob/living/carbon/C = M
+		C.uncuff()

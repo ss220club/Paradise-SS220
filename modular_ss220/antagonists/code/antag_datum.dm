@@ -22,7 +22,7 @@
 	else
 		// Randomize appearance
 		character = new
-		character.species = species_name ? species_name : get_random_species(TRUE)
+		character.species = species_name ? species_name : pick(get_safe_species())
 		character.randomise()
 
 	character.copy_to(H)

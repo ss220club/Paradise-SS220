@@ -32,7 +32,7 @@
 			if("landmark")
 				var/picked_landmark = pick(GLOB.raider_spawn)
 				var/turf/loc_spawn = get_turf(picked_landmark)
-				H.forceMove(loc_spawn)
+				current.forceMove(loc_spawn)
 
 	. = ..()
 
