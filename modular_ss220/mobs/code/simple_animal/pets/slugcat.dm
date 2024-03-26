@@ -171,7 +171,9 @@
 
 /mob/living/simple_animal/pet/slugcat/proc/place_on_head(obj/item/item_to_add, mob/user)
 	if(!item_to_add)
-		user.visible_message(span_notice("[user] похлопывает по голове [src.name]."), span_notice("Вы положили руку на голову [src.name]."))
+		user.visible_message(
+			span_notice("[user] похлопывает по голове [src.name]."),
+			span_notice("Вы положили руку на голову [src.name]."))
 		if(flags_2 & HOLOGRAM_2)
 			return 0
 		return 0
@@ -189,7 +191,10 @@
 		to_chat(user, span_warning("[item_to_add.name] застрял в ваших руках, вы не можете его надеть на голову [src.name]!"))
 		return 0
 
-	user.visible_message(span_notice("[user] надевает [item_to_add].name на голову [real_name]."), span_notice("Вы надеваете [item_to_add.name] на голову [real_name]."), span_italics("Вы слышите как что-то нацепили."))
+	user.visible_message(
+		span_notice("[user] надевает [item_to_add].name на голову [real_name]."),
+		span_notice("Вы надеваете [item_to_add.name] на голову [real_name]."),
+		span_italics("Вы слышите как что-то нацепили."))
 	inventory_head = item_to_add
 	regenerate_icons()
 
@@ -228,7 +233,9 @@
 
 /mob/living/simple_animal/pet/slugcat/proc/place_to_hand(obj/item/item_to_add, mob/user)
 	if(!item_to_add)
-		user.visible_message(span_notice("[user] пощупал лапки [src]."), span_notice("Вы пощупали лапки [src]."))
+		user.visible_message(
+			span_notice("[user] пощупал лапки [src]."),
+			span_notice("Вы пощупали лапки [src]."))
 		if(flags_2 & HOLOGRAM_2)
 			return 0
 		return 0
@@ -254,7 +261,10 @@
 		to_chat(user, span_warning("[src.name] пацифист и не пользуется [item_to_add.name]!"))
 		return 0
 
-	user.visible_message(span_notice("[real_name] выхватывает [item_to_add] с рук [user]."), span_notice("[real_name] выхватывает [item_to_add] с ваших рук."), span_italics("Вы видите довольные глаза."))
+	user.visible_message(
+		span_notice("[real_name] выхватывает [item_to_add] с рук [user]."),
+		span_notice("[real_name] выхватывает [item_to_add] с ваших рук."),
+		span_italics("Вы видите довольные глаза."))
 	move_item_to_hand(item_to_add)
 
 	return 1

@@ -245,7 +245,9 @@
 					return // Something happened while the player was thinking
 
 			usr.face_atom(over_object)
-			usr.visible_message(span_notice("[usr] вытащил питомца из [src.name] на [over_object.name]."), span_notice("Вы вытащили питомца из [src.name] на [over_object.name]."))
+			usr.visible_message(
+				span_notice("[usr] вытащил питомца из [src.name] на [over_object.name]."),
+				span_notice("Вы вытащили питомца из [src.name] на [over_object.name]."))
 
 			try_free_content(T, usr)
 			return TRUE

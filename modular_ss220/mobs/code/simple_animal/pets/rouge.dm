@@ -131,7 +131,9 @@
 			to_chat(user, span_warning("You can't put more than one hat on [src]!"))
 		return
 	if(!item_to_add)
-		user.visible_message(span_notice("[user] pets [src]."), span_notice("You rest your hand on [src]'s head for a moment."))
+		user.visible_message(
+			span_notice("[user] pets [src]."),
+			span_notice("You rest your hand on [src]'s head for a moment."))
 		if(flags_2 & HOLOGRAM_2)
 			return
 		return
@@ -148,7 +150,10 @@
 		if(health <= 0)
 			to_chat(user, span_notice("Безжизненный взгляд в глазах [real_name] никак не меняется, когда вы надеваете [item_to_add] на неё."))
 		else if(user)
-			user.visible_message(span_notice("[user] надевает [item_to_add] на центральную голову [real_name]. [src] смотрит на [user] и довольно шипит."), span_notice("Вы надеваете [item_to_add] на голову [real_name]. [src] озадачено смотрит на вас, пока другие головы смотрят на центральную с завистью."), span_italics("Вы слышите дружелюбное шипение."))
+			user.visible_message(
+				span_notice("[user] надевает [item_to_add] на центральную голову [real_name]. [src] смотрит на [user] и довольно шипит."),
+				span_notice("Вы надеваете [item_to_add] на голову [real_name]. [src] озадачено смотрит на вас, пока другие головы смотрят на центральную с завистью."),
+				span_italics("Вы слышите дружелюбное шипение."))
 		item_to_add.forceMove(src)
 		inventory_head = item_to_add
 		update_snek_fluff()
