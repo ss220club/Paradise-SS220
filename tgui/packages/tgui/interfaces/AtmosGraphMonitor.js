@@ -49,7 +49,8 @@ export const AtmosGraphMonitor = (props, context) => {
           <Section key={s} title={s}>
             <LabeledList>
               {/* ДАВЛЕНИЕ */}
-              {Object.keys(sensors_list[s]).indexOf('pressure_history') > -1 ? (
+              {Object.keys(sensors_list[s]).indexOf('pressure_history') >
+                -1 && (
                 <LabeledList.Item
                   label={
                     'Давление (' + toFixed(lastPressureToSensor[s], 0) + ' кПа)'
@@ -66,13 +67,11 @@ export const AtmosGraphMonitor = (props, context) => {
                     />
                   </Section>
                 </LabeledList.Item>
-              ) : (
-                ''
               )}
 
               {/* ТЕМПЕРАТУРА */}
               {Object.keys(sensors_list[s]).indexOf('temperature_history') >
-              -1 ? (
+                -1 && (
                 <LabeledList.Item
                   label={
                     'Температура (' +
@@ -91,8 +90,6 @@ export const AtmosGraphMonitor = (props, context) => {
                     />
                   </Section>
                 </LabeledList.Item>
-              ) : (
-                ''
               )}
             </LabeledList>
           </Section>
