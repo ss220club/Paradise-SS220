@@ -5239,7 +5239,7 @@
 	pixel_y = -5
 	},
 /turf/space,
-/area/space/nearstation)
+/area/space/nearstation/centcom)
 "dli" = (
 /obj/machinery/cryopod/offstation/right,
 /obj/machinery/computer/cryopod{
@@ -9781,13 +9781,9 @@
 /turf/simulated/floor/carpet/black,
 /area/centcom/ss220/court)
 "fTD" = (
-/obj/effect/landmark/spawner/vox_raider,
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/mineral/plastitanium{
-	nitrogen = 103.984;
-	oxygen = 0;
-	name = "vox floor"
-	},
+/obj/effect/landmark/spawner/vox_raider,
+/turf/simulated/floor/mineral/plastitanium/red/nitrogen,
 /area/vox_base)
 "fTQ" = (
 /obj/structure/table/glass,
@@ -9821,7 +9817,9 @@
 	},
 /area/syndicate_mothership)
 "fVA" = (
-/obj/effect/mob_spawn/human/corpse/clown/corpse,
+/obj/effect/mob_spawn/human/corpse/clown/corpse{
+	description = "Он почти добрался до монетки"
+	},
 /turf/simulated/floor/plating/asteroid/ancient/airless,
 /area/space/nearstation/centcom)
 "fVW" = (
@@ -10080,8 +10078,10 @@
 /area/syndicate_mothership/outside)
 "geH" = (
 /obj/structure/lattice,
-/turf/simulated/floor/plating/asteroid/ancient/airless,
-/area/space/nearstation)
+/turf/simulated/floor/plating/airless{
+	icon_state = "asteroidplating"
+	},
+/area/space/nearstation/centcom)
 "gfa" = (
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 5
@@ -16305,7 +16305,7 @@
 /obj/structure/closet/crate/trashcart,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating/nitrogen,
-/area/space/nearstation)
+/area/space/nearstation/centcom)
 "jUj" = (
 /obj/structure/chair/office/dark,
 /turf/simulated/floor/wood,
@@ -19753,7 +19753,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/item/flashlight/lantern,
 /turf/simulated/floor/plating/nitrogen,
-/area/space/nearstation)
+/area/space/nearstation/centcom)
 "meG" = (
 /obj/effect/turf_decal/woodsiding{
 	dir = 4
@@ -20243,7 +20243,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/chair/plastic,
 /turf/simulated/floor/plating/nitrogen,
-/area/space/nearstation)
+/area/space/nearstation/centcom)
 "mwa" = (
 /obj/structure/table/glass,
 /obj/structure/window/reinforced,
@@ -20460,7 +20460,7 @@
 /obj/effect/landmark/damageturf,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating/nitrogen,
-/area/space/nearstation)
+/area/space/nearstation/centcom)
 "mEb" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/fancy/donut_box,
@@ -23694,7 +23694,7 @@
 /obj/item/pickaxe,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating/nitrogen,
-/area/space/nearstation)
+/area/space/nearstation/centcom)
 "oOM" = (
 /obj/machinery/computer/emergency_shuttle,
 /turf/simulated/floor/plasteel{
@@ -24354,7 +24354,7 @@
 /area/shuttle/syndicate)
 "pmS" = (
 /turf/space,
-/area/space/nearstation)
+/area/space/nearstation/centcom)
 "pmY" = (
 /obj/structure/curtain/open/shower/security,
 /turf/simulated/wall/indestructible/fakeglass,
@@ -24616,7 +24616,9 @@
 	},
 /area/centcom/ss220/bar)
 "pxm" = (
-/obj/item/coin/antagtoken,
+/obj/item/coin/antagtoken{
+	desc = "Он здесь, но так далеко! Эта монетка точно даст мне антага! Но как же до неё добраться из гост-бара?.."
+	},
 /turf/simulated/floor/plating/asteroid/ancient/airless,
 /area/space/nearstation/centcom)
 "pxu" = (
@@ -25030,7 +25032,9 @@
 	},
 /area/syndicate_mothership/jail)
 "pLx" = (
-/obj/effect/decal/remains/human,
+/obj/effect/decal/remains/human{
+	desc = "Он попросил приоткрыть окошко."
+	},
 /turf/simulated/floor/plating/asteroid/ancient/airless,
 /area/space/nearstation/centcom)
 "pMa" = (
@@ -25995,6 +25999,10 @@
 	icon_state = "darkbrown"
 	},
 /area/centcom/ss220/admin3)
+"qon" = (
+/obj/effect/landmark/spawner/vox_raider,
+/turf/simulated/floor/mineral/plastitanium/red/nitrogen,
+/area/vox_base)
 "qpv" = (
 /obj/structure/showcase{
 	icon = 'icons/mob/robots.dmi';
@@ -26240,6 +26248,16 @@
 	name = "vox floor"
 	},
 /area/vox_base)
+"qwW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/access_button{
+	autolink_id = "voxwest_btn_ext";
+	req_one_access_txt = "152";
+	pixel_x = 27;
+	pixel_y = -26
+	},
+/turf/simulated/floor/plating/nitrogen,
+/area/vox_base)
 "qxe" = (
 /obj/effect/turf_decal/box,
 /obj/effect/landmark/spawner/nuclear_bomb/syndicate,
@@ -26417,7 +26435,7 @@
 "qBA" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating/nitrogen,
-/area/space/nearstation)
+/area/space/nearstation/centcom)
 "qBC" = (
 /obj/machinery/door/airlock/titanium,
 /obj/structure/fans/tiny,
@@ -28411,7 +28429,7 @@
 /area/shuttle/vox)
 "rMS" = (
 /turf/simulated/wall/indestructible/rock,
-/area/space/nearstation)
+/area/space/nearstation/centcom)
 "rMU" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/damageturf,
@@ -29102,7 +29120,7 @@
 	desc = "Статуя робота во фраке сидящего за пианино в открытом космосе. Судя по всему он здесь уже давно. И у него отличный металлический блестящий зад."
 	},
 /turf/space,
-/area/space/nearstation)
+/area/space/nearstation/centcom)
 "seV" = (
 /obj/effect/turf_decal/delivery/hollow,
 /obj/machinery/atmospherics/portable/canister/nitrogen,
@@ -33431,7 +33449,7 @@
 	dir = 4
 	},
 /turf/space,
-/area/space/nearstation)
+/area/space/nearstation/centcom)
 "vce" = (
 /turf/simulated/wall/indestructible/fakeglass,
 /area/centcom/ss220/admin1)
@@ -34013,6 +34031,7 @@
 	},
 /obj/item/soap/nanotrasen,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/spawner/vox_raider,
 /turf/simulated/floor/plating/nitrogen,
 /area/vox_base)
 "vtN" = (
@@ -35579,7 +35598,7 @@
 /turf/simulated/wall/indestructible/fakeglass/brass{
 	color = "#4b5582"
 	},
-/area/space/nearstation)
+/area/space/nearstation/centcom)
 "wum" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/marker_beacon/spotlight/jade,
@@ -75665,8 +75684,8 @@ rMS
 rMS
 rMS
 nNr
-geH
-geH
+wEp
+wEp
 nNr
 rMS
 rMS
@@ -75921,7 +75940,7 @@ qgo
 rMS
 rMS
 rMS
-geH
+wEp
 sQi
 pmS
 rMS
@@ -76421,9 +76440,9 @@ rMS
 rMS
 qgo
 odN
-mdo
+qon
 sLH
-sLH
+fTD
 mdo
 sLH
 sLH
@@ -76679,7 +76698,7 @@ rMS
 qgo
 mpf
 sLH
-sLH
+fTD
 sLH
 sLH
 sLH
@@ -77188,9 +77207,9 @@ adJ
 adJ
 rMS
 rMS
-geH
-geH
-geH
+wEp
+wEp
+wEp
 qgo
 qgo
 qgo
@@ -77444,10 +77463,10 @@ adJ
 adJ
 adJ
 rMS
-geH
+wEp
 sQi
 sQi
-geH
+wEp
 qgo
 klk
 kYb
@@ -78473,7 +78492,7 @@ sQi
 pmS
 pmS
 sQi
-geH
+wEp
 fYV
 fYV
 fYV
@@ -78487,7 +78506,7 @@ gXG
 rMS
 geH
 geH
-geH
+wEp
 nNr
 adJ
 adJ
@@ -78724,14 +78743,14 @@ fYV
 fYV
 fYV
 nNr
-geH
-geH
+wEp
+wEp
 fYV
 fYV
 nNr
 pmS
 sQi
-geH
+wEp
 nNr
 nNr
 nNr
@@ -78742,7 +78761,7 @@ cNY
 mAj
 gXG
 rMS
-geH
+wEp
 adJ
 adJ
 adJ
@@ -79506,8 +79525,8 @@ qgo
 qgo
 qgo
 sQi
-geH
-nNr
+wEp
+bIN
 ryz
 uVe
 mAj
@@ -79535,7 +79554,7 @@ bnh
 bnh
 bnh
 bnh
-geH
+wEp
 rMS
 adJ
 adJ
@@ -80539,7 +80558,7 @@ iBC
 hAK
 fkL
 fkL
-sVB
+ryz
 eBl
 ayB
 oXe
@@ -80562,7 +80581,7 @@ adJ
 bnh
 bnh
 bnh
-geH
+wEp
 rMS
 rMS
 adJ
@@ -80794,8 +80813,8 @@ rMU
 fkL
 adp
 ryz
-kyx
-fkL
+rMU
+qwW
 sVB
 exM
 gck
@@ -80819,7 +80838,7 @@ adJ
 adJ
 bnh
 bnh
-geH
+wEp
 rMS
 rMS
 adJ
@@ -81563,7 +81582,7 @@ xym
 qgo
 fJi
 geH
-geH
+wEp
 fJi
 fkL
 fJi
@@ -81819,7 +81838,7 @@ cNY
 xwM
 ryz
 geH
-geH
+wEp
 pmS
 wwl
 rMU
@@ -82577,7 +82596,7 @@ fYV
 fYV
 fYV
 fYV
-geH
+wEp
 pmS
 nNr
 rMS
@@ -82832,19 +82851,19 @@ adJ
 fYV
 fYV
 fYV
-geH
-geH
+wEp
+wEp
 sQi
 sQi
 pmS
 rMS
 wMp
-fTD
+cNY
 cNY
 sju
 sju
 cNY
-fTD
+cNY
 ozJ
 rMS
 rMS
@@ -83345,7 +83364,7 @@ adJ
 fYV
 fYV
 fYV
-geH
+wEp
 nNr
 qgo
 qgo
@@ -83600,10 +83619,10 @@ adJ
 adJ
 adJ
 fYV
-geH
+wEp
 sQi
 sQi
-geH
+wEp
 qgo
 gju
 iZk
@@ -83875,7 +83894,7 @@ xZx
 ayX
 qgo
 nNr
-geH
+wEp
 qgo
 edd
 pft
@@ -84374,7 +84393,7 @@ adJ
 fYV
 fYV
 fYV
-nNr
+bIN
 ryz
 fXk
 mus
@@ -84653,7 +84672,7 @@ pft
 qkd
 qgo
 geH
-geH
+wEp
 bnh
 bnh
 bnh
@@ -84673,7 +84692,7 @@ adJ
 adJ
 bnh
 bnh
-geH
+wEp
 nNr
 rMS
 rMS
@@ -84929,7 +84948,7 @@ adJ
 adJ
 adJ
 nNr
-geH
+wEp
 nNr
 nNr
 nNr
@@ -85406,7 +85425,7 @@ fYV
 fYV
 geH
 geH
-nNr
+bIN
 qgo
 qgo
 qgo
@@ -85433,7 +85452,7 @@ nNr
 nNr
 rMS
 rMS
-sQi
+bnh
 adJ
 adJ
 adJ
@@ -85923,7 +85942,7 @@ adJ
 adJ
 adJ
 fYV
-geH
+wEp
 sQi
 sQi
 adJ
@@ -85931,12 +85950,12 @@ adJ
 fYV
 adJ
 nNr
-geH
-geH
+wEp
+wEp
 adJ
 adJ
 nNr
-geH
+wEp
 geH
 rMS
 rMS
@@ -86180,7 +86199,7 @@ adJ
 adJ
 fYV
 fYV
-geH
+wEp
 sQi
 adJ
 adJ
@@ -86194,7 +86213,7 @@ adJ
 adJ
 adJ
 nNr
-geH
+wEp
 geH
 nNr
 adJ
@@ -86214,10 +86233,10 @@ nNr
 nNr
 adJ
 adJ
-adJ
-adJ
-adJ
-adJ
+nNr
+nNr
+nNr
+nNr
 adJ
 adJ
 adJ
@@ -86438,7 +86457,7 @@ adJ
 fYV
 fYV
 fYV
-geH
+wEp
 adJ
 adJ
 adJ
@@ -86472,8 +86491,8 @@ adJ
 adJ
 adJ
 adJ
-adJ
-adJ
+nNr
+nNr
 adJ
 adJ
 adJ
@@ -86729,7 +86748,7 @@ adJ
 adJ
 adJ
 adJ
-adJ
+nNr
 adJ
 adJ
 adJ
@@ -86968,12 +86987,12 @@ adJ
 adJ
 wEp
 fYV
-wEp
+geH
 fYV
 adJ
 sQi
-geH
-geH
+wEp
+wEp
 adJ
 adJ
 adJ
@@ -87224,12 +87243,12 @@ adJ
 adJ
 adJ
 adJ
+geH
+bIN
+fYV
+fYV
+geH
 wEp
-nNr
-fYV
-fYV
-geH
-geH
 fYV
 nNr
 adJ
@@ -87481,11 +87500,11 @@ adJ
 adJ
 pLx
 nNr
-nNr
-nNr
-nNr
-nNr
-nNr
+bIN
+bIN
+bIN
+bIN
+bIN
 geH
 nNr
 fYV
@@ -87741,8 +87760,8 @@ nNr
 fYV
 fYV
 fYV
-nNr
-nNr
+bIN
+bIN
 fYV
 nNr
 fYV
