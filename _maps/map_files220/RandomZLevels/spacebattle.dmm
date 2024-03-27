@@ -119,17 +119,11 @@
 	},
 /area/awaymission/space_battle/hallway6)
 "av" = (
-/mob/living/simple_animal/hostile/syndicate/melee/autogib/depot/armory{
-	armour_penetration_flat = 20;
-	armour_penetration_percentage = 80;
-	loot = list(/obj/effect/decal/cleanable/ash,/obj/item/documents/syndicate/blue);
-	speed = 2;
-	health = 600;
-	maxHealth = 450;
-	name = "Syndicate Commander"
+/obj/structure/chair/comfy/shuttle/dark{
+	dir = 1
 	},
-/turf/simulated/floor/plasteel,
-/area/awaymission/space_battle/bridge)
+/turf/simulated/floor/mineral/plastitanium/red,
+/area/awaymission/space_battle/syndicate/syndicate5)
 "aw" = (
 /obj/structure/window/plasmareinforced{
 	color = "red";
@@ -1475,6 +1469,10 @@
 	},
 /turf/simulated/floor/engine,
 /area/awaymission/space_battle/cruiser)
+"eN" = (
+/mob/living/simple_animal/hostile/syndicate/ranged/space/autogib/spacebattle,
+/turf/simulated/floor/mineral/plastitanium/red,
+/area/awaymission/space_battle/syndicate/syndicate5)
 "eO" = (
 /obj/machinery/door/airlock/titanium,
 /obj/effect/landmark/damageturf,
@@ -4233,6 +4231,19 @@
 /turf/simulated/floor/plasteel{
 	icon_state = "blue"
 	},
+/area/awaymission/space_battle/bridge)
+"nb" = (
+/obj/effect/decal/cleanable/blood,
+/mob/living/simple_animal/hostile/syndicate/melee/autogib/depot/armory{
+	armour_penetration_flat = 20;
+	armour_penetration_percentage = 80;
+	loot = list(/obj/effect/decal/cleanable/ash,/obj/item/documents/syndicate/blue);
+	speed = 2;
+	health = 600;
+	maxHealth = 450;
+	name = "Syndicate Commander"
+	},
+/turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/bridge)
 "nc" = (
 /obj/machinery/atmospherics/portable/canister/air,
@@ -9990,7 +10001,7 @@
 /obj/structure/chair/comfy/shuttle/dark{
 	dir = 8
 	},
-/mob/living/simple_animal/hostile/syndicate/ranged/autogib/spacebattle,
+/mob/living/simple_animal/hostile/syndicate/ranged/space/autogib/spacebattle,
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/space_battle/syndicate/syndicate5)
 "Fd" = (
@@ -13765,6 +13776,10 @@
 	dir = 8
 	},
 /area/awaymission/space_battle/hallway4)
+"QF" = (
+/obj/structure/chair/comfy/shuttle/dark,
+/turf/simulated/floor/mineral/plastitanium/red,
+/area/awaymission/space_battle/syndicate/syndicate5)
 "QG" = (
 /turf/simulated/floor/plasteel{
 	icon_state = "neutral";
@@ -14591,10 +14606,7 @@
 /area/awaymission/space_battle/syndicate/syndicate6)
 "Tq" = (
 /obj/effect/spawner/window/plastitanium,
-/obj/machinery/door/poddoor/shutters{
-	dir = 8;
-	layer = 2.9
-	},
+/obj/machinery/door/poddoor,
 /turf/simulated/floor/plating,
 /area/awaymission/space_battle/syndicate/syndicate5)
 "Tr" = (
@@ -16007,7 +16019,7 @@
 /area/awaymission/space_battle/cruiser)
 "XH" = (
 /obj/mecha/combat/marauder/mauler{
-	max_integrity = 400
+	max_integrity = 250
 	},
 /obj/machinery/light/directional/west,
 /turf/simulated/floor/mineral/plastitanium/red,
@@ -50849,10 +50861,10 @@ jt
 by
 ek
 JE
-by
+nb
 JE
-av
 JE
+mb
 JE
 na
 VC
@@ -67067,7 +67079,7 @@ yG
 yG
 yG
 yG
-yG
+ol
 yG
 yG
 yG
@@ -68847,7 +68859,7 @@ yG
 yG
 yG
 yG
-yG
+ol
 yG
 yG
 yG
@@ -69645,7 +69657,7 @@ yG
 yG
 yG
 yG
-yG
+ol
 yG
 yG
 yG
@@ -71658,7 +71670,7 @@ yG
 yG
 yG
 yG
-yG
+ol
 yG
 yG
 yG
@@ -73693,6 +73705,7 @@ yG
 yG
 yG
 yG
+ol
 yG
 yG
 yG
@@ -73756,8 +73769,7 @@ yG
 yG
 yG
 yG
-yG
-yG
+ol
 yG
 yG
 yG
@@ -75509,7 +75521,7 @@ yG
 yG
 yG
 yG
-yG
+ol
 yG
 yG
 yG
@@ -76041,13 +76053,13 @@ yG
 yG
 ps
 Nu
-RU
+QF
 ks
 ks
 dj
 ks
 ks
-Jt
+av
 Nu
 ps
 yG
@@ -76555,13 +76567,13 @@ yG
 yG
 Nu
 Nu
-ks
+eN
 ks
 UJ
 XH
 IT
 ks
-ks
+eN
 Nu
 Nu
 yG
@@ -77099,7 +77111,7 @@ yG
 yG
 yG
 yG
-yG
+ol
 yG
 yG
 yG
@@ -77298,7 +77310,7 @@ yG
 yG
 yG
 yG
-yG
+ol
 yG
 yG
 yG
@@ -77863,7 +77875,7 @@ yG
 yG
 yG
 yG
-yG
+ol
 yG
 yG
 yG
@@ -80132,7 +80144,7 @@ yG
 yG
 yG
 yG
-yG
+ol
 yG
 yG
 yG
