@@ -45,20 +45,15 @@ export const AtmosGraphMonitor = (props, context) => {
   return (
     <Window width={700} height={400}>
       <Window.Content scrollable>
-        <Section title="Графический атмосферный монитор">
-          <b>ИНФО</b>: Интервал записи 20 секунд, точки каждые 2 секунды
-        </Section>
+        <Section color={'gray'}>Интервал записи T = 20 с.</Section>
         {Object.keys(sensors_list).map((s) => (
           <Section key={s} title={s}>
-            <Section>
+            <Section px={2}>
               {/* ДАВЛЕНИЕ */}
-              {Object.keys(sensors_list[s]).indexOf('pressure_history') >
-                -1 && (
-                <Box mb={2} px={2}>
+              {'pressure_history' in sensors_list[s] && (
+                <Box mb={2}>
                   <Box>
-                    {'Давление (' +
-                      toFixed(lastPressureToSensor[s], 0) +
-                      ' кПа)'}
+                    Давление ({toFixed(lastPressureToSensor[s], 0)} кПа)
                   </Box>
                   <Section fill height={5} mt={1}>
                     <AtmosChart
@@ -74,13 +69,10 @@ export const AtmosGraphMonitor = (props, context) => {
               )}
 
               {/* ТЕМПЕРАТУРА */}
-              {Object.keys(sensors_list[s]).indexOf('temperature_history') >
-                -1 && (
-                <Box mb={2} px={2}>
+              {'temperature_history' in sensors_list[s] && (
+                <Box>
                   <Box>
-                    {'Температура (' +
-                      toFixed(lastTemperatureToSensor[s], 0) +
-                      ' K)'}
+                    Температура ({toFixed(lastTemperatureToSensor[s], 0)} К)
                   </Box>
                   <Section fill height={5} mt={1}>
                     <AtmosChart
