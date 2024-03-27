@@ -3,7 +3,7 @@
 #define NO_DATA_VALUE  		null
 #define MAX_RECORD_SIZE 	20
 #define RECORD_INTERVAL     1
-#define LONG_RECORD_INTERVAL 5
+#define LONG_RECORD_INTERVAL 15
 
 /datum/design/pt_monitor
 	name = "Console Board (Atmospheric Graph Monitor)"
