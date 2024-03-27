@@ -114,3 +114,10 @@
 				sensor_long_pressure_history.Cut(1, 2)
 			if(length(sensor_long_temperature_history) > record_size)
 				sensor_long_temperature_history.Cut(1, 2)
+
+#undef SENSOR_PRESSURE
+#undef SENSOR_TEMPERATURE
+#undef NO_DATA_VALUE
+#undef MAX_RECORD_SIZE
+#undef RECORD_INTERVAL
+#undef LONG_RECORD_INTERVAL
