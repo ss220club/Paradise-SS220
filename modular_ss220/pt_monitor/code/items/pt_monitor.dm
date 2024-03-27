@@ -3,6 +3,7 @@
 #define NO_DATA_VALUE  		null
 #define MAX_RECORD_SIZE 	20
 #define RECORD_INTERVAL     1
+#define LONG_RECORD_INTERVAL 5
 
 /datum/design/pt_monitor
 	name = "Console Board (Atmospheric Graph Monitor)"
@@ -31,6 +32,8 @@
 	var/record_size = MAX_RECORD_SIZE
 	var/record_interval = RECORD_INTERVAL SECONDS
 	var/next_record_time = 0
+	var/long_record_interval = LONG_RECORD_INTERVAL SECONDS
+	var/next_long_record_time = 0
 
 /obj/machinery/computer/general_air_control/pt_monitor/ui_interact(mob/user, datum/tgui/ui = null)
 	if(!isprocessing)
@@ -49,6 +52,10 @@
 			sensor_name_data_map[sensor_name]["pressure_history"] = new /list(MAX_RECORD_SIZE)
 		if(isnull(sensor_name_data_map[sensor_name]["temperature_history"]))
 			sensor_name_data_map[sensor_name]["temperature_history"] = new /list(MAX_RECORD_SIZE)
+		if(isnull(sensor_name_data_map[sensor_name]["long_pressure_history"]))
+			sensor_name_data_map[sensor_name]["long_pressure_history"] = new /list(MAX_RECORD_SIZE)
+		if(isnull(sensor_name_data_map[sensor_name]["long_temperature_history"]))
+			sensor_name_data_map[sensor_name]["long_temperature_history"] = new /list(MAX_RECORD_SIZE)
 
 /obj/machinery/computer/general_air_control/pt_monitor/refresh_sensors()
 	if(world.time < next_record_time)
@@ -66,6 +73,8 @@
 		var/list/sensor_data = sensor_name_data_map[sensor_name]
 		var/list/sensor_pressure_history = sensor_data["pressure_history"]
 		var/list/sensor_temperature_history = sensor_data["temperature_history"]
+		var/list/sensor_long_pressure_history = sensor_data["long_pressure_history"]
+		var/list/sensor_long_temperature_history = sensor_data["long_temperature_history"]
 		var/current_pressure
 		var/current_temperature
 
@@ -91,3 +100,13 @@
 			sensor_pressure_history.Cut(1, 2)
 		if(length(sensor_temperature_history) > record_size)
 			sensor_temperature_history.Cut(1, 2)
+
+		if(world.time < next_long_record_time)
+			return
+		next_long_record_time = world.time + long_record_interval
+		sensor_long_pressure_history += current_pressure
+		sensor_long_temperature_history += current_temperature
+		if(length(sensor_long_pressure_history) > record_size)
+			sensor_long_pressure_history.Cut(1, 2)
+		if(length(sensor_long_temperature_history) > record_size)
+			sensor_long_temperature_history.Cut(1, 2)
