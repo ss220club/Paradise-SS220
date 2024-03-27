@@ -90,7 +90,8 @@
 	id = "whiteship_cyberiad";
 	name = "North of Cyberiad";
 	dwidth = 8;
-	height = 31
+	height = 31;
+	width = 21
 	},
 /turf/space,
 /area/space)
@@ -17991,7 +17992,9 @@
 "bqd" = (
 /obj/structure/table/wood,
 /obj/machinery/light_switch/east,
-/obj/machinery/computer/library,
+/obj/machinery/computer/library{
+	pixel_y = 8
+	},
 /turf/simulated/floor/wood/oak,
 /area/station/service/library)
 "bqg" = (
@@ -18321,7 +18324,10 @@
 /area/station/service/library)
 "brx" = (
 /obj/structure/table/wood,
-/obj/machinery/computer/library,
+/obj/machinery/computer/library{
+	dir = 4;
+	pixel_y = 6
+	},
 /turf/simulated/floor/wood/oak,
 /area/station/service/library)
 "bry" = (
@@ -59626,7 +59632,9 @@
 /area/station/hallway/primary/port)
 "iPz" = (
 /obj/structure/table,
-/obj/machinery/computer/library,
+/obj/machinery/computer/library{
+	pixel_y = 8
+	},
 /turf/simulated/floor/wood/oak,
 /area/station/security/permabrig)
 "iPF" = (
