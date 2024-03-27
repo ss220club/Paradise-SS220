@@ -1,5 +1,5 @@
-import { useBackend } from '../backend';
-import { Section, Box } from '../components';
+import { useBackend, useLocalState } from '../backend';
+import { Section, Box, Tabs, Icon } from '../components';
 import { Window } from '../layouts';
 import { pureComponentHooks } from '../../common/react';
 import { zipWith, map } from '../../common/collections';
@@ -8,89 +8,143 @@ import { toFixed } from '../../common/math';
 
 export const AtmosGraphMonitor = (props, context) => {
   const { act, data } = useBackend(context);
+  const [tabIndex, setTabIndex] = useLocalState(context, 'tabIndex', 0);
+  const decideTab = (index) => {
+    switch (index) {
+      case 0:
+        return (
+          <AtmosGraphPage
+            data={data}
+            info="Интервал записи T = 20 с. Тут еще дописать информацию о графике"
+            pressureListName="pressure_history"
+            temperatureListName="temperature_history"
+          />
+        );
+      case 1:
+        return (
+          <AtmosGraphPage
+            data={data}
+            info="Интервал записи T = 300 с. И здесь тоже дописать информацию о графике"
+            pressureListName="long_pressure_history"
+            temperatureListName="long_temperature_history"
+          />
+        );
 
+      default:
+        return "WE SHOULDN'T BE HERE!";
+    }
+  };
+  return (
+    <Window width={700} height={400}>
+      <Window.Content scrollable>
+        <Box fillPositionedParent>
+          <Tabs>
+            <Tabs.Tab
+              key="View"
+              selected={tabIndex === 0}
+              onClick={() => setTabIndex(0)}
+            >
+              <Icon name="area-chart" /> Текущие
+            </Tabs.Tab>
+            <Tabs.Tab
+              key="History"
+              selected={tabIndex === 1}
+              onClick={() => setTabIndex(1)}
+            >
+              <Icon name="bar-chart" /> История
+            </Tabs.Tab>
+          </Tabs>
+          {decideTab(tabIndex)}
+        </Box>
+      </Window.Content>
+    </Window>
+  );
+};
+
+const AtmosGraphPage = ({
+  data,
+  info,
+  pressureListName,
+  temperatureListName,
+}) => {
   let sensors_list = data.sensors || {};
 
   const lastPressureToSensor = {};
   const lastTemperatureToSensor = {};
   for (const sensor in sensors_list) {
     lastPressureToSensor[sensor] =
-      sensors_list[sensor].pressure_history.slice(-1)[0];
+      sensors_list[sensor][pressureListName].slice(-1)[0];
     lastTemperatureToSensor[sensor] =
-      sensors_list[sensor].temperature_history.slice(-1)[0];
+      sensors_list[sensor][temperatureListName].slice(-1)[0];
   }
 
   const maxPressureToSensor = {};
   const maxTemperatureToSensor = {};
   for (const sensor in sensors_list) {
     maxPressureToSensor[sensor] = Math.max(
-      ...sensors_list[sensor].pressure_history
+      ...sensors_list[sensor][pressureListName]
     );
     maxTemperatureToSensor[sensor] = Math.max(
-      ...sensors_list[sensor].temperature_history
+      ...sensors_list[sensor][temperatureListName]
     );
   }
 
   const pressureDataToSensor = {};
   const temperatureDataToSensor = {};
   for (const sensor in sensors_list) {
-    pressureDataToSensor[sensor] = sensors_list[sensor].pressure_history.map(
+    pressureDataToSensor[sensor] = sensors_list[sensor][pressureListName].map(
       (value, index) => [index, value]
     );
-    temperatureDataToSensor[sensor] = sensors_list[
-      sensor
-    ].temperature_history.map((value, index) => [index, value]);
+    temperatureDataToSensor[sensor] = sensors_list[sensor][
+      temperatureListName
+    ].map((value, index) => [index, value]);
   }
 
   return (
-    <Window width={700} height={400}>
-      <Window.Content scrollable>
-        <Section color={'gray'}>Интервал записи T = 20 с.</Section>
-        {Object.keys(sensors_list).map((s) => (
-          <Section key={s} title={s}>
-            <Section px={2}>
-              {/* ДАВЛЕНИЕ */}
-              {'pressure_history' in sensors_list[s] && (
-                <Box mb={2}>
-                  <Box>
-                    Давление ({toFixed(lastPressureToSensor[s], 0)} кПа)
-                  </Box>
-                  <Section fill height={5} mt={1}>
-                    <AtmosChart
-                      fillPositionedParent
-                      data={pressureDataToSensor[s]}
-                      rangeX={[0, pressureDataToSensor[s].length - 1]}
-                      rangeY={[0, maxPressureToSensor[s] + 5]}
-                      strokeColor="rgba(219, 40, 40, 1)"
-                      fillColor="rgba(219, 40, 40, 0.1)"
-                    />
-                  </Section>
-                </Box>
-              )}
+    <Box>
+      <Section color={'gray'}>{info}</Section>
+      {Object.keys(sensors_list).map((s) => (
+        <Section key={s} title={s}>
+          <Section px={2}>
+            {/* ДАВЛЕНИЕ */}
+            {'pressure_history' in sensors_list[s] && (
+              <Box mb={2}>
+                <Box>Давление ({toFixed(lastPressureToSensor[s], 0)} кПа)</Box>
+                <Section fill height={5} mt={1}>
+                  <AtmosChart
+                    fillPositionedParent
+                    data={pressureDataToSensor[s]}
+                    rangeX={[0, pressureDataToSensor[s].length - 1]}
+                    rangeY={[0, maxPressureToSensor[s] + 5]}
+                    strokeColor="rgba(219, 40, 40, 1)"
+                    fillColor="rgba(219, 40, 40, 0.1)"
+                  />
+                </Section>
+              </Box>
+            )}
 
-              {/* ТЕМПЕРАТУРА */}
-              {'temperature_history' in sensors_list[s] && (
+            {/* ТЕМПЕРАТУРА */}
+            {'temperature_history' in sensors_list[s] && (
+              <Box>
                 <Box>
-                  <Box>
-                    Температура ({toFixed(lastTemperatureToSensor[s], 0)} К)
-                  </Box>
-                  <Section fill height={5} mt={1}>
-                    <AtmosChart
-                      fillPositionedParent
-                      data={temperatureDataToSensor[s]}
-                      rangeX={[0, temperatureDataToSensor[s].length - 1]}
-                      rangeY={[0, maxTemperatureToSensor[s] + 5]}
-                      strokeColor="rgba(40, 219, 40, 1)"
-                      fillColor="rgba(40, 219, 40, 0.1)"
-                    />
-                  </Section>
+                  Температура ({toFixed(lastTemperatureToSensor[s], 0)} К)
                 </Box>
-              )}
-            </Section>
+                <Section fill height={5} mt={1}>
+                  <AtmosChart
+                    fillPositionedParent
+                    data={temperatureDataToSensor[s]}
+                    rangeX={[0, temperatureDataToSensor[s].length - 1]}
+                    rangeY={[0, maxTemperatureToSensor[s] + 5]}
+                    strokeColor="rgba(40, 219, 40, 1)"
+                    fillColor="rgba(40, 219, 40, 0.1)"
+                  />
+                </Section>
+              </Box>
+            )}
           </Section>
-        ))}
-      </Window.Content>
-    </Window>
+        </Section>
+      ))}
+    </Box>
   );
 };
 
