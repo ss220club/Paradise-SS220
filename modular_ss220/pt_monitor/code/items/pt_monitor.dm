@@ -58,9 +58,15 @@
 			sensor_name_data_map[sensor_name]["long_temperature_history"] = new /list(MAX_RECORD_SIZE)
 
 /obj/machinery/computer/general_air_control/pt_monitor/refresh_sensors()
+	var/log_long_record = FALSE
+
 	if(world.time < next_record_time)
 		return
 	next_record_time = world.time + record_interval
+
+	if(world.time > next_long_record_time)
+		log_long_record = TRUE
+		next_long_record_time = world.time + long_record_interval
 
 	for(var/sensor_name in sensor_name_uid_map)
 		var/obj/machinery/atmospherics/atmos_sensor = locateUID(sensor_name_uid_map[sensor_name])
@@ -101,12 +107,10 @@
 		if(length(sensor_temperature_history) > record_size)
 			sensor_temperature_history.Cut(1, 2)
 
-		if(world.time < next_long_record_time)
-			return
-		next_long_record_time = world.time + long_record_interval
-		sensor_long_pressure_history += current_pressure
-		sensor_long_temperature_history += current_temperature
-		if(length(sensor_long_pressure_history) > record_size)
-			sensor_long_pressure_history.Cut(1, 2)
-		if(length(sensor_long_temperature_history) > record_size)
-			sensor_long_temperature_history.Cut(1, 2)
+		if(log_long_record)
+			sensor_long_pressure_history += current_pressure
+			sensor_long_temperature_history += current_temperature
+			if(length(sensor_long_pressure_history) > record_size)
+				sensor_long_pressure_history.Cut(1, 2)
+			if(length(sensor_long_temperature_history) > record_size)
+				sensor_long_temperature_history.Cut(1, 2)
