@@ -12,6 +12,20 @@
 	projectile_speed = 2
 	projectile_range = 30
 	valid_projectile_type = /obj/item/biocore
+	var/is_vox_private = FALSE
+
+/obj/item/gun/throw/biogun/pickup(mob/user)
+	. = ..()
+	if(!is_vox_private)
+		is_vox_private = TRUE
+		to_chat(user, span_notice("Оружие инициализировало вас, более никто кроме Воксов не сможет им воспользоваться."))
+
+/obj/item/gun/throw/biogun/afterattack(atom/target, mob/living/user, flag, params)
+	if(is_vox_private && !isvox(user))
+		if(prob(20))
+			to_chat(user, span_notice("Оружие отказывается с вами работать и не активируется."))
+		return FALSE
+	. = ..()
 
 /obj/item/gun/throw/biogun/Initialize(mapload)
 	. = ..()

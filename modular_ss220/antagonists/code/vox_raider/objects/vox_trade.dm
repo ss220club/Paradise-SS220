@@ -44,8 +44,8 @@
 	var/integrity_reward = 5
 	var/electroprotect_reward = 50
 	var/permeability_reward	= 20
-	var/highrisk_reward = 500
-	var/valuable_highrisk_reward = 1000
+	var/highrisk_reward = 2500
+	var/valuable_highrisk_reward = 5000
 	var/value_access_reward = 100
 	var/valuable_access_reward = 500
 	var/unique_tech_level_reward = 300	// учитываем также множитель за технологии

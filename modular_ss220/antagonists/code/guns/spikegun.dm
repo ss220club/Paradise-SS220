@@ -19,6 +19,20 @@
 	cell_type = /obj/item/stock_parts/cell/vox_spike
 	ammo_type = list(/obj/item/ammo_casing/energy/vox_spike)
 	var/can_reload = TRUE
+	var/is_vox_private = FALSE
+
+/obj/item/gun/energy/spike/pickup(mob/user)
+	. = ..()
+	if(!is_vox_private)
+		is_vox_private = TRUE
+		to_chat(user, span_notice("Оружие инициализировало вас, более никто кроме Воксов не сможет им воспользоваться."))
+
+/obj/item/gun/energy/spike/afterattack(atom/target, mob/living/user, flag, params)
+	if(is_vox_private && !isvox(user))
+		if(prob(20))
+			to_chat(user, span_notice("Оружие отказывается с вами работать и не активируется."))
+		return FALSE
+	. = ..()
 
 /obj/item/gun/energy/spike/emp_act()
 	return

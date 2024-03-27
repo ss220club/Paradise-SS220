@@ -83,3 +83,12 @@
 		/obj/item/clothing/suit/space/vox,
 		/obj/item/clothing/head/helmet/space/vox
 		)
+
+
+// ============== Misc ==============
+/datum/vox_pack/equipment/flag
+	name = "Флаг"
+	desc = "С ним ценности еще ценнее."
+	reference = "E_FLAG"
+	cost = 100
+	contains = list(/obj/item/flag/vox_raider)

@@ -13,6 +13,20 @@
 	var/obj/item/storage/dart_cartridge/cartridge_loaded
 	var/pixel_y_overlay_div = 5	// сколько у нас делений для спрайта оверлея ("Позиций")
 	var/pixel_y_overlay_offset = 2 // на сколько пикселей смещаем оверлей при полном делении
+	var/is_vox_private = FALSE
+
+/obj/item/gun/syringe/dart_gun/pickup(mob/user)
+	. = ..()
+	if(!is_vox_private)
+		is_vox_private = TRUE
+		to_chat(user, span_notice("Оружие инициализировало вас, более никто кроме Воксов не сможет им воспользоваться."))
+
+/obj/item/gun/syringe/dart_gun/afterattack(atom/target, mob/living/user, flag, params)
+	if(is_vox_private && !isvox(user))
+		if(prob(20))
+			to_chat(user, span_notice("Оружие отказывается с вами работать и не активируется."))
+		return FALSE
+	. = ..()
 
 /obj/item/gun/syringe/dart_gun/Destroy()
 	qdel(cartridge_loaded)
