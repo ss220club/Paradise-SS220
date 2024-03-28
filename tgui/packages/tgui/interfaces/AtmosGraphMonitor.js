@@ -78,6 +78,17 @@ const AtmosGraphPage = ({
       sensors_list[sensor][temperatureListName].slice(-1)[0];
   }
 
+  const minPressureToSensor = {};
+  const minTemperatureToSensor = {};
+  for (const sensor in sensors_list) {
+    minPressureToSensor[sensor] = Math.min(
+      ...sensors_list[sensor][pressureListName]
+    );
+    minTemperatureToSensor[sensor] = Math.min(
+      ...sensors_list[sensor][temperatureListName]
+    );
+  }
+
   const maxPressureToSensor = {};
   const maxTemperatureToSensor = {};
   for (const sensor in sensors_list) {
@@ -109,7 +120,16 @@ const AtmosGraphPage = ({
             {/* ДАВЛЕНИЕ */}
             {'pressure_history' in sensors_list[s] && (
               <Box mb={2}>
-                <Box>Давление ({toFixed(lastPressureToSensor[s], 0)} кПа)</Box>
+                <Box>
+                  {'Давление: ' +
+                    toFixed(lastPressureToSensor[s], 0) +
+                    'кПа (MIN: ' +
+                    toFixed(minPressureToSensor[s], 0) +
+                    'кПа;' +
+                    ' MAX: ' +
+                    toFixed(maxPressureToSensor[s], 0) +
+                    'кПа)'}
+                </Box>
                 <Section fill height={5} mt={1}>
                   <AtmosChart
                     fillPositionedParent
@@ -127,7 +147,14 @@ const AtmosGraphPage = ({
             {'temperature_history' in sensors_list[s] && (
               <Box>
                 <Box>
-                  Температура ({toFixed(lastTemperatureToSensor[s], 0)} К)
+                  {'Температура: ' +
+                    toFixed(lastTemperatureToSensor[s], 0) +
+                    'К (MIN: ' +
+                    toFixed(minTemperatureToSensor[s], 0) +
+                    'К;' +
+                    ' MAX: ' +
+                    toFixed(maxTemperatureToSensor[s], 0) +
+                    'К)'}
                 </Box>
                 <Section fill height={5} mt={1}>
                   <AtmosChart
