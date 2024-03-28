@@ -120,3 +120,10 @@
 	reference = "E_FOOD"
 	cost = 5
 	contains = list(/obj/item/food/snacks/soup/stew)
+
+/datum/vox_pack/equipment/hand_valuer
+	name = "Оценщик"
+	desc = "Позволяет узнать ценность товаров. Не забудьте его активировать о Расчичетчикик."
+	reference = "E_VALUER"
+	cost = 100
+	contains = list(/obj/item/hand_valuer)
