@@ -29,6 +29,7 @@
 
 	var/list/datum/antag_scenario/acceptable_scenarios = initialize_acceptable_scenarios(possible_scenarios, ready_players_amount)
 	if(!length(acceptable_scenarios))
+		log_antag_mix("Invalid game mode pre setup antag_mix - acceptable scenarios.")
 		return FALSE
 
 	budget = calculate_budget(ready_players_amount)

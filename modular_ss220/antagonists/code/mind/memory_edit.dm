@@ -64,11 +64,12 @@
 			if("8")
 				log_admin("[key_name(usr)] has spawned a blood brothers.")
 				if(!makeBloodBrothersTeam())
-					to_chat(usr, "<span class='warning'>Unfortunately there weren't enough candidates available.</span>")
+					to_chat(usr, "<span class='warning'>К сожалению, недостаточно кандидатов.</span>")
 			if("9")
 				log_admin("[key_name(usr)] has spawned a vox raiders.")
 				if(!makeVoxRaidersTeam())
-					to_chat(usr, "<span class='warning'>Unfortunately there weren't enough candidates available.</span>")
+					to_chat(usr, "<span class='warning'>К сожалению, недостаточно кандидатов.</span>")
+
 
 /datum/admins/proc/makeBloodBrothersTeam()
 	var/confirm = alert("Создать новую команду?", "Подтверждение", "Да", "Нет")

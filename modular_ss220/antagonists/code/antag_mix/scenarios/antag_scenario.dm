@@ -201,6 +201,7 @@
 */
 /datum/antag_scenario/proc/try_make_characters(list/datum/mind/assigned)
 	if(!length(assigned))
+		error("Invalid antag scenario - try make characters: Not enough assigned candidates.")
 		return FALSE
 
 	var/list/landmarks = GLOB.raider_spawn.Copy()
@@ -211,6 +212,7 @@
 			landmarks.Add(landmark)
 
 	if(!length(landmarks))
+		error("Invalid antag scenario - try make characters: Not enough landmarks.")
 		return FALSE
 
 	var/list/temp_landmarks = list()
