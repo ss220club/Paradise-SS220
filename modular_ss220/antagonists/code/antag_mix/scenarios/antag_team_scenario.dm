@@ -52,6 +52,7 @@
 /datum/antag_scenario/team/execute()
 	for(var/list/team_members in picked_teams)
 		if(!length(team_members))
+			error("Invalid antag scenario team execute - not enough team_members.")
 			continue
 
 		message_admins("Creating team of [json_encode(team_members)]")
