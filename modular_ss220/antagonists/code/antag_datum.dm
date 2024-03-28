@@ -18,6 +18,7 @@
 				character = temp_character
 				species_name = temp_species_name
 				break
+
 	if(!character)
 		// Randomize appearance
 		character = new

@@ -92,3 +92,31 @@
 	reference = "E_FLAG"
 	cost = 100
 	contains = list(/obj/item/flag/vox_raider)
+
+/datum/vox_pack/equipment/radio
+	name = "Наушники"
+	desc = "Наушник дальней связи для поддержания связи со стаей."
+	reference = "E_RAD"
+	cost = 100
+	contains = list(/obj/item/radio/headset/vox)
+
+/datum/vox_pack/equipment/radio/alt
+	name = "Защитные наушники"
+	desc = "Наушник дальней связи для поддержания связи со стаей. Защищает ушные раковины от громких звуков"
+	reference = "E_RAD_ALT"
+	cost = 500
+	contains = list(/obj/item/radio/headset/vox/alt)
+
+/datum/vox_pack/equipment/card
+	name = "Идентификационная Карта"
+	desc = "Карта для идентификации, смены образов и воровства доступов."
+	reference = "E_CARD"
+	cost = 150
+	contains = list(/obj/item/card/id/syndicate/vox)
+
+/datum/vox_pack/equipment/food
+	name = "Варево"
+	desc = "Лучше чем ничего."
+	reference = "E_FOOD"
+	cost = 5
+	contains = list(/obj/item/food/snacks/soup/stew)

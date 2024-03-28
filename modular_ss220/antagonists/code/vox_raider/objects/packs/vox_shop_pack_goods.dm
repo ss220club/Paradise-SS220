@@ -95,3 +95,10 @@
 	reference = "G_LIGH"
 	cost = 75
 	random_subtype = /obj/item/lighter
+
+/datum/vox_pack/goods/drugs
+	name = "Наркотики"
+	desc = "Мясу понравится этот товар."
+	reference = "G_DRUG"
+	cost = 200
+	contains = list(/obj/item/storage/pill_bottle/random_drug_bottle)
