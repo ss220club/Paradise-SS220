@@ -55,14 +55,15 @@
 
 /obj/machinery/computer/general_air_control/pt_monitor/refresh_sensors()
 	var/log_long_record = FALSE
+	var/current_time = world.time
 
-	if(world.time < next_record_time)
+	if(current_time < next_record_time)
 		return
-	next_record_time = world.time + record_interval
+	next_record_time = current_time + record_interval
 
-	if(world.time > next_long_record_time)
+	if(current_time >= next_long_record_time)
 		log_long_record = TRUE
-		next_long_record_time = world.time + long_record_interval
+		next_long_record_time = current_time + long_record_interval
 
 	for(var/sensor_name in sensor_name_uid_map)
 		var/obj/machinery/atmospherics/atmos_sensor = locateUID(sensor_name_uid_map[sensor_name])
