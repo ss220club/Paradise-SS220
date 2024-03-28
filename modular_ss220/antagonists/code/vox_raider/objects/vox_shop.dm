@@ -118,7 +118,8 @@
 	else if(length(objs_for_contain))
 		for(var/obj/obj as anything in objs_for_contain)
 			if(isitem(obj))
-				user.put_in_any_hand_if_possible(obj)
+				if(!user.put_in_any_hand_if_possible(obj))
+					user.equip_or_collect(obj, SLOT_HUD_IN_BACKPACK)
 			else
 				obj.forceMove(get_turf(src))
 
