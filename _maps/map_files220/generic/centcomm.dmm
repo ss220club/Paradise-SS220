@@ -3197,13 +3197,16 @@
 	},
 /area/syndicate_mothership/cargo)
 "bXl" = (
-/obj/machinery/door/airlock/hatch{
-	req_access_txt = "152";
-	name = "vox hatch";
-	aiControlDisabled = 1;
-	hackProof = 1
-	},
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/door/airlock/survival_pod/glass,
+/obj/machinery/door/poddoor/shutters{
+	density = 0;
+	dir = 2;
+	icon_state = "open";
+	id_tag = "voxshutters";
+	name = "Blast Shutters";
+	opacity = 0
+	},
 /turf/simulated/floor/mineral/plastitanium{
 	color = "#ff78f4";
 	nitrogen = 103.984;
@@ -3722,6 +3725,18 @@
 /obj/item/radio/intercom/directional/south,
 /turf/simulated/floor/plasteel/dark,
 /area/shuttle/escape)
+"coz" = (
+/obj/effect/spawner/window/shuttle/survival_pod,
+/obj/machinery/door/poddoor/shutters{
+	density = 0;
+	dir = 2;
+	icon_state = "open";
+	id_tag = "voxshutters";
+	name = "Blast Shutters";
+	opacity = 0
+	},
+/turf/simulated/floor/plating/nitrogen,
+/area/shuttle/vox)
 "coD" = (
 /obj/structure/table/wood{
 	color = "#996633"
@@ -5488,6 +5503,14 @@
 	hackProof = 1
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/door/poddoor/shutters{
+	density = 0;
+	dir = 1;
+	icon_state = "open";
+	id_tag = "voxshutters";
+	name = "Blast Shutters";
+	opacity = 0
+	},
 /turf/simulated/floor/mineral/plastitanium/red/nitrogen,
 /area/shuttle/vox)
 "drF" = (
@@ -6384,6 +6407,14 @@
 	hackProof = 1
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/door/poddoor/shutters{
+	density = 0;
+	dir = 1;
+	icon_state = "open";
+	id_tag = "voxshutters";
+	name = "Blast Shutters";
+	opacity = 0
+	},
 /turf/simulated/floor/mineral/plastitanium{
 	color = "#fff894";
 	nitrogen = 103.984;
@@ -7320,6 +7351,14 @@
 	hackProof = 1
 	},
 /obj/structure/fans/tiny,
+/obj/machinery/door/poddoor/shutters{
+	density = 0;
+	dir = 1;
+	icon_state = "open";
+	id_tag = "voxshutters";
+	name = "Blast Shutters";
+	opacity = 0
+	},
 /turf/simulated/floor/mineral/plastitanium{
 	color = "#fff894";
 	nitrogen = 103.984;
@@ -12661,6 +12700,12 @@
 	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/syndicate_mothership/jail)
+"hEK" = (
+/turf/simulated/wall/mineral/plastitanium/nosmooth{
+	icon_state = "plastitanium_wall-0";
+	icon = 'icons/turf/walls/plastitanium_wall.dmi'
+	},
+/area/vox_base)
 "hER" = (
 /obj/machinery/conveyor/south{
 	id = "SFBQMLoad"
@@ -20614,7 +20659,7 @@
 "mLW" = (
 /obj/machinery/door_control{
 	id = "voxshutters";
-	name = "remote shutter control";
+	name = "vox remote shutter control";
 	req_access = list(152);
 	wires = 1;
 	pixel_x = 28;
@@ -21646,6 +21691,14 @@
 	hackProof = 1
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/door/poddoor/shutters{
+	density = 0;
+	dir = 2;
+	icon_state = "open";
+	id_tag = "voxshutters";
+	name = "Blast Shutters";
+	opacity = 0
+	},
 /turf/simulated/floor/mineral/plastitanium{
 	color = "#fff894";
 	nitrogen = 103.984;
@@ -25435,6 +25488,9 @@
 /obj/effect/turf_decal/delivery/white,
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/supply)
+"pXq" = (
+/turf/simulated/wall/indestructible/opsglass/limited_smooth,
+/area/vox_base)
 "pXu" = (
 /obj/structure/platform{
 	dir = 8;
@@ -28428,6 +28484,13 @@
 	hackProof = 1
 	},
 /obj/effect/turf_decal/delivery/hollow,
+/obj/machinery/door/poddoor/shutters{
+	density = 0;
+	icon_state = "open";
+	id_tag = "voxshutters";
+	name = "Blast Shutters";
+	opacity = 0
+	},
 /turf/simulated/floor/mineral/plastitanium/red/nitrogen,
 /area/shuttle/vox)
 "rMS" = (
@@ -31257,6 +31320,14 @@
 	aiControlDisabled = 1;
 	hackProof = 1
 	},
+/obj/machinery/door/poddoor/shutters{
+	density = 0;
+	dir = 1;
+	icon_state = "open";
+	id_tag = "voxshutters";
+	name = "Blast Shutters";
+	opacity = 0
+	},
 /turf/simulated/floor/mineral/plastitanium{
 	color = "#ff78f4";
 	nitrogen = 103.984;
@@ -32804,6 +32875,29 @@
 	icon_state = "rampbottom"
 	},
 /area/syndicate_mothership/cargo)
+"uDL" = (
+/obj/machinery/door/airlock/hatch{
+	req_access_txt = "152";
+	name = "vox hatch";
+	aiControlDisabled = 1;
+	hackProof = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/door/poddoor/shutters{
+	density = 0;
+	dir = 1;
+	icon_state = "open";
+	id_tag = "voxshutters";
+	name = "Blast Shutters";
+	opacity = 0
+	},
+/turf/simulated/floor/mineral/plastitanium{
+	color = "#ff78f4";
+	nitrogen = 103.984;
+	oxygen = 0;
+	name = "vox floor"
+	},
+/area/shuttle/vox)
 "uEs" = (
 /obj/machinery/porta_turret/syndicate/interior,
 /obj/structure/window/plasmareinforced{
@@ -36352,6 +36446,14 @@
 	hackProof = 1
 	},
 /obj/structure/fans/tiny,
+/obj/machinery/door/poddoor/shutters{
+	density = 0;
+	dir = 1;
+	icon_state = "open";
+	id_tag = "voxshutters";
+	name = "Blast Shutters";
+	opacity = 0
+	},
 /turf/simulated/floor/mineral/plastitanium/red/nitrogen,
 /area/shuttle/vox)
 "wQK" = (
@@ -80313,7 +80415,7 @@ ijC
 gXG
 ryz
 jgL
-gXG
+hEK
 qGp
 qGp
 qGp
@@ -80570,7 +80672,7 @@ iBC
 hAK
 fkL
 fkL
-ryz
+pXq
 eBl
 ayB
 oXe
@@ -81084,7 +81186,7 @@ fJi
 gXG
 fkL
 vUt
-gXG
+hEK
 qGp
 qGp
 qGp
@@ -81341,7 +81443,7 @@ fJi
 gXG
 hAK
 gXG
-gXG
+hEK
 qGp
 vVW
 qgx
@@ -81351,7 +81453,7 @@ qGp
 hCs
 plY
 nsh
-qGp
+coz
 eMD
 lsW
 qPS
@@ -81604,7 +81706,7 @@ lfu
 bGr
 bGr
 bGr
-bXl
+uDL
 bGr
 bGr
 bGr
@@ -82122,7 +82224,7 @@ qGp
 hCs
 plY
 gxA
-qGp
+coz
 vWb
 chV
 chV

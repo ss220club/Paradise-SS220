@@ -233,7 +233,7 @@
 /datum/antag_scenario/proc/make_character(datum/mind/mind, turf/loc_spawn)
 	var/picked_species = pick(possible_species)
 	var/datum/antagonist/temp_antag_datum = locate(antag_datum) in mind.antag_datums
-	temp_antag_datum.make_body(loc_spawn, TRUE, picked_species, possible_species)
+	temp_antag_datum.make_body(loc_spawn, mind, TRUE, picked_species, possible_species)
 
 /datum/antag_scenario/proc/equip_character(datum/mind/mind)
 	return TRUE

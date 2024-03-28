@@ -1,6 +1,6 @@
-/datum/antagonist/proc/make_body(loc_spawn, try_use_preference = FALSE, species_name = null, list/possible_species)
+/datum/antagonist/proc/make_body(loc_spawn, datum/mind/mind, try_use_preference = FALSE, species_name = null, list/possible_species)
 	var/datum/character_save/character
-	var/mob/living/carbon/human/H = owner.current
+	var/mob/living/carbon/human/H = mind.current
 	if(!H)
 		H = new(loc_spawn)
 	else

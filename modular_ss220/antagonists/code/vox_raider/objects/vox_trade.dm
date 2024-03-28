@@ -163,7 +163,7 @@
 	return TRUE
 
 /obj/machinery/vox_trader/proc/do_trade(mob/user)
-	var/list/items_list = /get_trade_contents(user)
+	var/list/items_list = get_trade_contents(user)
 	INVOKE_ASYNC(src, PROC_REF(make_cash), user, items_list)
 
 /obj/machinery/vox_trader/proc/make_cash(mob/user, list/items_list)
@@ -468,26 +468,29 @@
 /obj/machinery/vox_trader/proc/get_trade_contents(mob/user)
 	var/turf/current_turf = get_turf(src)
 	var/list/items_list = current_turf.GetAllContents(7)
-	for(var/obj/O in items_list)
-		if(istype(O, /obj/item/organ))
-			var/obj/item/organ/organ = O
+	for(var/I in items_list)
+		if(istype(I, /obj/item/organ))
+			var/obj/item/organ/organ = I
 			if(organ.owner)
 				items_list.Remove(organ)
 			continue
-		if(isliving(O))
-			var/mob/living/M = O
+		if(isliving(I))
+			var/mob/living/M = I
 			items_list.Remove(M)
 			if(!isvox(M))
 				send_to_station(M)
+				continue
+			if(!M.mind)
 				continue
 			var/datum/antagonist/vox_raider/antag = locate() in M.mind.antag_datums
 			if(antag)
 				continue
 			for(var/datum/antagonist/A as anything in user.mind.antag_datums)
-				var/datum/team/team = user.get_team()
+				var/datum/team/team = A.get_team()
 				if(team)
 					team.add_member(M.mind, TRUE)
 					break
+	return items_list
 
 /obj/machinery/vox_trader/proc/send_to_station(mob/living/M)
 	M.Sleeping(16 SECONDS)
@@ -496,6 +499,6 @@
 	M.adjustFireLoss(-25)
 	M.adjustToxLoss(-50)
 	M.forceMove(pick(GLOB.latejoin))
-	if(iscarbon)
+	if(iscarbon(M))
 		var/mob/living/carbon/C = M
 		C.uncuff()

@@ -42,8 +42,21 @@
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	armor = list(MELEE = 75, BULLET = 50, LASER = 30, ENERGY = 20, BOMB = 25, RAD = 115, FIRE = 80, ACID = 200)
 
-/obj/item/clothing/head/helmet/space/hardsuit/syndi/update_icon_state()
-	icon_state = "[initial(icon_state)][on]"
+/obj/item/clothing/head/helmet/space/hardsuit/vox/toggle_light(mob/user)
+	on = !on
+	icon_state = "[initial(icon_state)][on ? "_light" : ""]"
+
+	if(ishuman(user))
+		var/mob/living/carbon/human/H = user
+		H.update_inv_head()
+
+	if(on)
+		set_light(brightness_on)
+	else
+		set_light(0)
+	for(var/X in actions)
+		var/datum/action/A = X
+		A.UpdateButtonIcon()
 
 // Space Trooper
 

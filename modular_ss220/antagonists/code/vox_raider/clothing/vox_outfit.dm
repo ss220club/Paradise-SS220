@@ -4,10 +4,10 @@
 	uniform = /obj/item/clothing/under/vox/jumpsuit
 	gloves = /obj/item/clothing/gloves/vox
 	shoes = /obj/item/clothing/shoes/roman/vox
-	mask = /obj/item/clothing/mask/breath/vox/respirator
 	l_ear = /obj/item/radio/headset/vox
 	id = /obj/item/card/id/syndicate/vox
 	l_pocket = /obj/item/melee/classic_baton/telescopic
+	//mask = /obj/item/clothing/mask/breath/vox/respirator
 	belt = /obj/item/tank/internals/emergency_oxygen/double/vox
 
 	back = /obj/item/storage/backpack/vox

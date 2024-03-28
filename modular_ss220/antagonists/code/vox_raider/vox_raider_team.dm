@@ -22,11 +22,11 @@
 	add_team_objective(new /datum/objective/survive(
 	{"Не допустите гибели вас и остальных Воксов из команды. Избегайте смерти влекущие за собой расходы стае."}))
 
-/datum/team/vox_raiders/add_member(datum/mind/new_member, add_antag_datum)
+/datum/team/vox_raiders/handle_adding_member(datum/mind/new_member)
 	. = ..()
 	update_name()
 
-/datum/team/vox_raiders/remove_member(datum/mind/member)
+/datum/team/vox_raiders/handle_removing_member(datum/mind/member, force = FALSE)
 	. = ..()
 	update_name()
 
