@@ -127,3 +127,17 @@
 	reference = "E_VALUER"
 	cost = 100
 	contains = list(/obj/item/hand_valuer)
+
+/datum/vox_pack/equipment/nitrogen
+	name = "Дыхательный Балон"
+	desc = "Сдвоенный дыхательный балон наполненный нитрогеном."
+	reference = "E_NITR"
+	cost = 50
+	contains = list(/obj/item/tank/internals/emergency_oxygen/double/vox)
+
+/datum/vox_pack/equipment/nitrogen
+	name = "Дыхательная Маска"
+	desc = "С встроенной трубкой для дыхания"
+	reference = "E_NITR"
+	cost = 25
+	contains = list(/obj/item/clothing/mask/breath/vox)
