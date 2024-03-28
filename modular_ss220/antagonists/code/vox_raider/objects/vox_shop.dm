@@ -118,8 +118,9 @@
 	else if(length(objs_for_contain))
 		for(var/obj/obj as anything in objs_for_contain)
 			if(isitem(obj))
-				if(!user.put_in_any_hand_if_possible(obj))
-					user.equip_or_collect(obj, SLOT_HUD_IN_BACKPACK)
+				if(!user.put_in_any_hand_if_possible(obj) && ishuman(user))
+					var/mob/living/carbon/human/H = user
+					H.equip_or_collect(obj, SLOT_HUD_IN_BACKPACK)
 			else
 				obj.forceMove(get_turf(src))
 
