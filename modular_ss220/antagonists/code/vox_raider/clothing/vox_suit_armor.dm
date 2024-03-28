@@ -161,7 +161,7 @@
 	armor = list(MELEE = 20, BULLET = 20, LASER = 20, ENERGY = 20, BOMB = 15, RAD = INFINITY, FIRE = INFINITY, ACID = 80)
 	strip_delay = 6 SECONDS
 	put_on_delay = 4 SECONDS
-	var/obj/effect/proc_holder/spell/mimic/mimic_spell = new
+	var/obj/effect/proc_holder/spell/mimic/mimic_spell
 
 /obj/item/clothing/head/helmet/vox_merc/stealth
 	name = "vox mercenary stealth helmet"
@@ -174,46 +174,16 @@
 /obj/item/clothing/suit/armor/vox_merc/stealth/equipped(mob/living/user, slot)
 	..()
 	if(isvox(user) && slot == SLOT_HUD_OUTER_SUIT)
+		if(!mimic_spell)
+			mimic_spell = new
 		user.AddSpell(mimic_spell)
-		// !!!!! доделать эту способность, а то она не конвертирует корректно
-		// Click on a target to remember it's form. Click on yourself to change form.
-		// You start becoming desk lamp.	-- Я тут выбрал "Деск ламп"
-		// You take form of The comfy chair. -- он почему-то начал выбирать предыдущую форму.
-		// И всё еще ДАЖЕ В НЕЁ не превратился
 
 /obj/item/clothing/suit/armor/vox_merc/stealth/dropped(mob/user)
 	. = ..()
-	if(user)
+	if(user && mimic_spell)
 		user.RemoveSpell(mimic_spell)
 
 /obj/item/clothing/suit/armor/vox_merc/stealth/Destroy()
 	. = ..()
 	if(mimic_spell)
 		QDEL_NULL(mimic_spell)
-
-
-
-
-
-
-
-
-
-
-
-
-// Clothing
-// Vox space gear (vaccuum suit, low pressure armour)
-// Can't be equipped by any other species due to bone structure and vox cybernetics.
-// /obj/item/clothing/suit/space/vox
-// 	w_class = WEIGHT_CLASS_NORMAL
-// 	allowed = list(/obj/item/gun,/obj/item/ammo_box,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/melee/energy/sword/saber, /obj/item/restraints/handcuffs,/obj/item/tank/internals)
-// 	armor = list(melee = 40, bullet = 40, laser = 30, energy = 15, bomb = 30, bio = 30, rad = 30, fire = 80, acid = 85)
-// 	heat_protection = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
-// 	max_heat_protection_temperature = SPACE_SUIT_MAX_TEMP_PROTECT
-// 	icon = 'icons/obj/clothing/species/vox/suits.dmi'
-// 	species_restricted = list("Vox", "Vox Armalis")
-// 	sprite_sheets = list(
-// 		"Vox" = 'icons/mob/species/vox/suit.dmi',
-// 		"Vox Armalis" = 'icons/mob/species/armalis/suit.dmi',
-// 		)

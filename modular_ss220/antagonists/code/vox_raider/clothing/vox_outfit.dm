@@ -7,14 +7,13 @@
 	l_ear = /obj/item/radio/headset/vox
 	id = /obj/item/card/id/syndicate/vox
 	l_pocket = /obj/item/melee/classic_baton/telescopic
-	//mask = /obj/item/clothing/mask/breath/vox/respirator
-	belt = /obj/item/tank/internals/emergency_oxygen/double/vox
 
 	back = /obj/item/storage/backpack/vox
 	backpack_contents = list(
+		/obj/item/clothing/mask/breath/vox/respirator = 1,
+		/obj/item/tank/internals/emergency_oxygen/double/vox = 1,
 		/obj/item/flashlight = 1,
 		/obj/item/flash = 1,
-		// /obj/item/gun/energy/noisecannon = 1,
 		/obj/item/clothing/suit/space/vox/pressure = 1,
 		/obj/item/clothing/head/helmet/space/vox/pressure = 1,
 	)

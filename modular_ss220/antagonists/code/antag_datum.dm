@@ -2,11 +2,10 @@
 	var/datum/character_save/character
 	var/mob/living/carbon/human/H = mind.current
 	if(!H)
-		H = new(loc_spawn)
-	else
-		H.forceMove(get_turf(loc_spawn))
+		H = new
+	H.forceMove(get_turf(loc_spawn))
 
-	var/client/client = owner.current.client
+	var/client/client = mind.current.client
 	if(try_use_preference && client && client.prefs && length(client.prefs.character_saves))
 		for(var/datum/character_save/temp_character in client.prefs.character_saves)
 			var/temp_species_name = species_name

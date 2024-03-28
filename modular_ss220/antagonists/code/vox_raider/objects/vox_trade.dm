@@ -468,18 +468,26 @@
 /obj/machinery/vox_trader/proc/get_trade_contents(mob/user)
 	var/turf/current_turf = get_turf(src)
 	var/list/items_list = current_turf.GetAllContents(7)
+
 	for(var/I in items_list)
-		if(istype(I, /obj/item/organ))
+		if(istype(I, /obj/item/organ)) // Inner organs
 			var/obj/item/organ/organ = I
 			if(organ.owner)
-				items_list.Remove(organ)
+				items_list.Remove(I)
 			continue
+		if(isobj(I))
+			var/obj/O = I
+			if(ismob(O.loc))	// Cyborg Parts, wearing clothes, but not contents
+				items_list.Remove(I)
+				continue
 		if(isliving(I))
 			var/mob/living/M = I
-			items_list.Remove(M)
+			items_list.Remove(I)
 			if(!isvox(M))
 				send_to_station(M)
 				continue
+
+			// Make new Vox Raider
 			if(!M.mind)
 				continue
 			var/datum/antagonist/vox_raider/antag = locate() in M.mind.antag_datums
@@ -490,6 +498,7 @@
 				if(team)
 					team.add_member(M.mind, TRUE)
 					break
+
 	return items_list
 
 /obj/machinery/vox_trader/proc/send_to_station(mob/living/M)
