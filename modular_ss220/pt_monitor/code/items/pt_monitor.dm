@@ -29,10 +29,7 @@
 	icon_keyboard = "atmos_key"
 	circuit = /obj/item/circuitboard/pt_monitor
 
-	var/record_size = MAX_RECORD_SIZE
-	var/record_interval = RECORD_INTERVAL SECONDS
 	var/next_record_time = 0
-	var/long_record_interval = LONG_RECORD_INTERVAL SECONDS
 	var/next_long_record_time = 0
 
 /obj/machinery/computer/general_air_control/pt_monitor/ui_interact(mob/user, datum/tgui/ui = null)
@@ -59,11 +56,11 @@
 
 	if(current_time < next_record_time)
 		return
-	next_record_time = current_time + record_interval
+	next_record_time = current_time + RECORD_INTERVAL SECONDS
 
 	if(current_time >= next_long_record_time)
 		log_long_record = TRUE
-		next_long_record_time = current_time + long_record_interval
+		next_long_record_time = current_time + LONG_RECORD_INTERVAL SECONDS
 
 	for(var/sensor_name in sensor_name_uid_map)
 		var/obj/machinery/atmospherics/atmos_sensor = locateUID(sensor_name_uid_map[sensor_name])
@@ -99,21 +96,21 @@
 
 		sensor_pressure_history += current_pressure
 		sensor_temperature_history += current_temperature
-		if(length(sensor_pressure_history) > record_size)
+		if(length(sensor_pressure_history) > MAX_RECORD_SIZE)
 			sensor_pressure_history.Cut(1, 2)
-		if(length(sensor_temperature_history) > record_size)
+		if(length(sensor_temperature_history) > MAX_RECORD_SIZE)
 			sensor_temperature_history.Cut(1, 2)
 
 		if(log_long_record)
 			sensor_long_pressure_history += current_pressure
 			sensor_long_temperature_history += current_temperature
-			if(length(sensor_long_pressure_history) > record_size)
+			if(length(sensor_long_pressure_history) > MAX_RECORD_SIZE)
 				sensor_long_pressure_history.Cut(1, 2)
-			if(length(sensor_long_temperature_history) > record_size)
+			if(length(sensor_long_temperature_history) > MAX_RECORD_SIZE)
 				sensor_long_temperature_history.Cut(1, 2)
 
 /obj/machinery/computer/general_air_control/pt_monitor/process()
-	if((stat & BROKEN) || (sensor_name_uid_map.len < 1))
+	if(!is_operational() || length(sensor_name_uid_map) < 1)
 		return
 
 	refresh_all()
