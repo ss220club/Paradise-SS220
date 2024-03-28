@@ -36,10 +36,6 @@
 	var/next_long_record_time = 0
 
 /obj/machinery/computer/general_air_control/pt_monitor/ui_interact(mob/user, datum/tgui/ui = null)
-	if(!isprocessing)
-		START_PROCESSING(SSmachines, src)
-		refresh_all()
-
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "AtmosGraphMonitor", name)
@@ -114,6 +110,12 @@
 				sensor_long_pressure_history.Cut(1, 2)
 			if(length(sensor_long_temperature_history) > record_size)
 				sensor_long_temperature_history.Cut(1, 2)
+
+/obj/machinery/computer/general_air_control/pt_monitor/process()
+	if((stat & BROKEN) || (sensor_name_uid_map.len < 1))
+		return
+
+	refresh_all()
 
 #undef SENSOR_PRESSURE
 #undef SENSOR_TEMPERATURE
