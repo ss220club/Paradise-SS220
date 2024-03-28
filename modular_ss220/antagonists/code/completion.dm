@@ -34,7 +34,7 @@
 		<br>[biggest_index] ([trader.precious_collected_dict[biggest_index]["value"]]), \
 		всего продано [trader.precious_collected_dict[biggest_index]["count"]] штук."
 
-	text += "<br><br><b>Собраны доступы:</b>"
+	text += "<br><br><b>Собраны доступы:<br></b>"
 	var/list/checked_accesses = list()
 	var/list/region_codes = list(
 		REGION_GENERAL, REGION_SECURITY, REGION_MEDBAY, REGION_RESEARCH,
