@@ -153,15 +153,13 @@
 
 /obj/item/clothing/suit/armor/vox_merc/stealth
 	name = "vox mercenary stealth suit"
-	desc = "Специализированный бронекостюм воксов-наемников. Синтетический материал используемый в костюмах воксов позволяет тем действовать в неблагоприятных для них окружающих условиях, делая их костюмы универсальными для большинства атмосфер с приемлимым давлением. \
-	\nМаскировочный костюм для сокрытия под любое органическое существо или объект в видимом спектре носителя. Не обладает значительными защитными свойствами. Модель обеспечена огнеупорной и радстойкой синт-тканью, позволяющей находиться в этом костюме даже в неблагоприятных условиях, не нарушая маскировки."
+	desc = "Специализированный маскировочный костюм воксов-наемников. Синтетический материал используемый в костюмах воксов позволяет тем действовать в неблагоприятных для них окружающих условиях, делая их костюмы универсальными для большинства атмосфер с приемлимым давлением."
 	icon_state = "vox-merc-stealth"
 	item_color = "vox-merc-stealth"
 	blood_overlay_type = "suit"
 	armor = list(MELEE = 20, BULLET = 20, LASER = 20, ENERGY = 20, BOMB = 15, RAD = INFINITY, FIRE = INFINITY, ACID = 80)
 	strip_delay = 6 SECONDS
 	put_on_delay = 4 SECONDS
-	var/obj/effect/proc_holder/spell/mimic/mimic_spell
 
 /obj/item/clothing/head/helmet/vox_merc/stealth
 	name = "vox mercenary stealth helmet"
@@ -170,20 +168,3 @@
 	armor = list(MELEE = 20, BULLET = 20, LASER = 20, ENERGY = 20, BOMB = 15, RAD = INFINITY, FIRE = INFINITY, ACID = 80)
 	flags = HEADBANGPROTECT
 	flags_inv =  HIDEMASK|HIDEEARS|HIDEEYES
-
-/obj/item/clothing/suit/armor/vox_merc/stealth/equipped(mob/living/user, slot)
-	..()
-	if(isvox(user) && slot == SLOT_HUD_OUTER_SUIT)
-		if(!mimic_spell)
-			mimic_spell = new
-		user.AddSpell(mimic_spell)
-
-/obj/item/clothing/suit/armor/vox_merc/stealth/dropped(mob/user)
-	. = ..()
-	if(user && mimic_spell)
-		user.RemoveSpell(mimic_spell)
-
-/obj/item/clothing/suit/armor/vox_merc/stealth/Destroy()
-	. = ..()
-	if(mimic_spell)
-		QDEL_NULL(mimic_spell)
