@@ -2,7 +2,7 @@
 	name = "Scavenger console"
 	desc = "Консоль контроля полета шаттла мусорщиков."
 	shuttleId = "vox_shuttle"
-	possible_destinations = "vox_shuttle_home;vox_shuttle_away;vox_shuttle_custom;syndicate_ne;syndicate_n;syndicate_se;syndicate_sw;syndicate_s"
+	possible_destinations = "vox_shuttle_home;vox_shuttle_away;vox_shuttle_custom"
 	req_access = list(ACCESS_VOX)
 	resistance_flags = INDESTRUCTIBLE
 	flags = NODECONSTRUCT
