@@ -7,7 +7,7 @@
 
 /datum/design/pt_monitor
 	name = "Console Board (Atmospheric Graph Monitor)"
-	desc ="Allows for the construction of circuit boards used to build an Atmospheric Graph Monitor."
+	desc ="Позволяет распечатать плату, для создания Atmospheric Graph Monitor."
 	id = "pt_monitor"
 	req_tech = list("programming" = 2, "engineering" = 3)
 	build_type = IMPRINTER
@@ -23,7 +23,7 @@
 
 /obj/machinery/computer/general_air_control/pt_monitor
 	name = "Atmospheric graph monitoring console"
-	desc = "Used to monitor pressure and temperature of linked analyzer."
+	desc = "Используется для мониторинга давления и температуры с помощью подключаемых мультитулом датчиков."
 	icon = 'modular_ss220/pt_monitor/icons/pt_monitor.dmi'
 	icon_screen = "screen"
 	icon_keyboard = "atmos_key"
