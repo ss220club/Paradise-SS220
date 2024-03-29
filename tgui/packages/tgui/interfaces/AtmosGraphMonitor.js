@@ -112,7 +112,7 @@ const AtmosGraphPage = ({
           <Section px={2}>
             {/* ТЕМПЕРАТУРА */}
             {'temperature_history' in sensors_list[s] && (
-              <Box>
+              <Box mb={2}>
                 <Box>
                   {'Температура: ' +
                     toFixed(lastTemperatureToSensor[s], 0) +
@@ -138,7 +138,7 @@ const AtmosGraphPage = ({
 
             {/* ДАВЛЕНИЕ */}
             {'pressure_history' in sensors_list[s] && (
-              <Box mb={2}>
+              <Box mb={-1}>
                 <Box>
                   {'Давление: ' +
                     toFixed(lastPressureToSensor[s], 0) +
