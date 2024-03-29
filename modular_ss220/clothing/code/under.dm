@@ -445,7 +445,6 @@
 	color = "#DEB887"
 
 // Маленькое полотенце
-
 /obj/item/clothing/under/towel_short/red
 	name = "красное маленькое полотенце"
 	color = "#EE204D"
