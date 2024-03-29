@@ -387,7 +387,6 @@
 	)
 
 // Длинное полотенце
-
 /obj/item/clothing/under/towel_long/red
 	name = "красное полотенце"
 	color = "#EE204D"
