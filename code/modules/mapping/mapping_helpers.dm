@@ -59,6 +59,10 @@
 	name = "lavaland baseturf editor"
 	baseturf = /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface
 
+/obj/effect/baseturf_helper/lazarus
+	name = "lazarus baseturf editor"
+	baseturf = /turf/simulated/floor/plating/asteroid/lazarus/dirt
+
 /obj/effect/mapping_helpers
 	icon = 'icons/effects/mapping_helpers.dmi'
 	icon_state = ""

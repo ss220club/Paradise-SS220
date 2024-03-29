@@ -50,13 +50,19 @@ SUBSYSTEM_DEF(mapping)
 	// Load all Z level templates
 	preloadTemplates()
 
+	//-----MASSIVE DISABLED SECTION FOR EVENT PURPOSE-----//
+
 	// Load the station
-	loadStation()
+	// We don't need station in event
+	//loadStation()
 
 	// Load lavaland
-	loadLavaland()
+	// We don't need lava in event
+	//loadLavaland()
 
 	// Seed space ruins
+	// And we also don't need any space ruind cus we don't have space
+	/*
 	if(GLOB.configuration.ruins.enable_space_ruins)
 		handleRuins()
 	else
@@ -64,11 +70,15 @@ SUBSYSTEM_DEF(mapping)
 
 	// Makes a blank space level for the sake of randomness
 	GLOB.space_manager.add_new_zlevel("Empty Area", linkage = CROSSLINKED, traits = list(REACHABLE_BY_CREW, REACHABLE_SPACE_ONLY))
+	*/
 
 
 	// Setup the Z-level linkage
-	GLOB.space_manager.do_transition_setup()
+	// Transitions are also a bad thing for us
+	//GLOB.space_manager.do_transition_setup()
 
+	// Lavaland ruinds are also not required
+	/*
 	if(GLOB.configuration.ruins.enable_lavaland)
 		// Spawn Lavaland ruins and rivers.
 		log_startup_progress("Populating lavaland...")
@@ -80,6 +90,7 @@ SUBSYSTEM_DEF(mapping)
 		log_startup_progress("Successfully populated lavaland in [time_spent]s.")
 	else
 		log_startup_progress("Skipping lavaland ruins...")
+	*/
 
 	// Now we make a list of areas for teleport locs
 	teleportlocs = list()
@@ -106,11 +117,14 @@ SUBSYSTEM_DEF(mapping)
 	ghostteleportlocs = sortAssoc(ghostteleportlocs)
 
 	// Now we make a list of areas that exist on the station. Good for if you don't want to select areas that exist for one station but not others. Directly references
+	// Also not required for event, cus we don't have a station
+	/*
 	existing_station_areas = list()
 	for(var/area/AR in world)
 		var/turf/picked = safepick(get_area_turfs(AR.type))
 		if(picked && is_station_level(picked.z))
 			existing_station_areas += AR
+	*/
 
 	// World name
 	if(GLOB.configuration.general.server_name)

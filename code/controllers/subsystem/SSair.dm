@@ -296,6 +296,10 @@ SUBSYSTEM_DEF(air)
 			T.excited_group.garbage_collect()
 
 /datum/controller/subsystem/air/proc/add_to_active(turf/simulated/T, blockchanges = 1)
+
+	//Comment for myself, to find how to disable atmos if I will need to do it
+	//return
+
 	if(!initialized)
 		/* it makes no sense to "activate" turfs before setup_allturfs is
 		 * called, as setup_allturfs would simply cull the list incorrectly.
