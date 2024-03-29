@@ -69,46 +69,39 @@ const AtmosGraphPage = ({
 }) => {
   let sensors_list = data.sensors || {};
 
+  const getLastReading = (sensor, listName) =>
+    sensors_list[sensor][listName].slice(-1)[0];
+  const getMinReading = (sensor, listName) =>
+    Math.min(...sensors_list[sensor][listName]);
+  const getMaxReading = (sensor, listName) =>
+    Math.max(...sensors_list[sensor][listName]);
+  const getDataToSensor = (sensor, listName) =>
+    sensors_list[sensor][listName].map((value, index) => [index, value]);
+
   const lastPressureToSensor = {};
   const lastTemperatureToSensor = {};
-  for (const sensor in sensors_list) {
-    lastPressureToSensor[sensor] =
-      sensors_list[sensor][pressureListName].slice(-1)[0];
-    lastTemperatureToSensor[sensor] =
-      sensors_list[sensor][temperatureListName].slice(-1)[0];
-  }
-
   const minPressureToSensor = {};
   const minTemperatureToSensor = {};
-  for (const sensor in sensors_list) {
-    minPressureToSensor[sensor] = Math.min(
-      ...sensors_list[sensor][pressureListName]
-    );
-    minTemperatureToSensor[sensor] = Math.min(
-      ...sensors_list[sensor][temperatureListName]
-    );
-  }
-
   const maxPressureToSensor = {};
   const maxTemperatureToSensor = {};
-  for (const sensor in sensors_list) {
-    maxPressureToSensor[sensor] = Math.max(
-      ...sensors_list[sensor][pressureListName]
-    );
-    maxTemperatureToSensor[sensor] = Math.max(
-      ...sensors_list[sensor][temperatureListName]
-    );
-  }
-
   const pressureDataToSensor = {};
   const temperatureDataToSensor = {};
+
   for (const sensor in sensors_list) {
-    pressureDataToSensor[sensor] = sensors_list[sensor][pressureListName].map(
-      (value, index) => [index, value]
-    );
-    temperatureDataToSensor[sensor] = sensors_list[sensor][
+    lastPressureToSensor[sensor] = getLastReading(sensor, pressureListName);
+    lastTemperatureToSensor[sensor] = getLastReading(
+      sensor,
       temperatureListName
-    ].map((value, index) => [index, value]);
+    );
+    minPressureToSensor[sensor] = getMinReading(sensor, pressureListName);
+    minTemperatureToSensor[sensor] = getMinReading(sensor, temperatureListName);
+    maxPressureToSensor[sensor] = getMaxReading(sensor, pressureListName);
+    maxTemperatureToSensor[sensor] = getMaxReading(sensor, temperatureListName);
+    pressureDataToSensor[sensor] = getDataToSensor(sensor, pressureListName);
+    temperatureDataToSensor[sensor] = getDataToSensor(
+      sensor,
+      temperatureListName
+    );
   }
 
   return (
