@@ -474,7 +474,6 @@
 	color = "#DEB887"
 
 // Маленькое махровое полотенце
-
 /obj/item/clothing/under/towel_short_alt/red
 	name = "красное махровое маленькое полотенце"
 	color = "#EE204D"
