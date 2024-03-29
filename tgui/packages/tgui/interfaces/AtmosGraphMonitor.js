@@ -110,32 +110,6 @@ const AtmosGraphPage = ({
       {Object.keys(sensors_list).map((s) => (
         <Section key={s} title={s}>
           <Section px={2}>
-            {/* ДАВЛЕНИЕ */}
-            {'pressure_history' in sensors_list[s] && (
-              <Box mb={2}>
-                <Box>
-                  {'Давление: ' +
-                    toFixed(lastPressureToSensor[s], 0) +
-                    'кПа (MIN: ' +
-                    toFixed(minPressureToSensor[s], 0) +
-                    'кПа;' +
-                    ' MAX: ' +
-                    toFixed(maxPressureToSensor[s], 0) +
-                    'кПа)'}
-                </Box>
-                <Section fill height={5} mt={1}>
-                  <AtmosChart
-                    fillPositionedParent
-                    data={pressureDataToSensor[s]}
-                    rangeX={[0, pressureDataToSensor[s].length - 1]}
-                    rangeY={[0, maxPressureToSensor[s] + 5]}
-                    strokeColor="rgba(219, 40, 40, 1)"
-                    fillColor="rgba(219, 40, 40, 0.1)"
-                  />
-                </Section>
-              </Box>
-            )}
-
             {/* ТЕМПЕРАТУРА */}
             {'temperature_history' in sensors_list[s] && (
               <Box>
@@ -155,6 +129,32 @@ const AtmosGraphPage = ({
                     data={temperatureDataToSensor[s]}
                     rangeX={[0, temperatureDataToSensor[s].length - 1]}
                     rangeY={[0, maxTemperatureToSensor[s] + 5]}
+                    strokeColor="rgba(219, 40, 40, 1)"
+                    fillColor="rgba(219, 40, 40, 0.1)"
+                  />
+                </Section>
+              </Box>
+            )}
+
+            {/* ДАВЛЕНИЕ */}
+            {'pressure_history' in sensors_list[s] && (
+              <Box mb={2}>
+                <Box>
+                  {'Давление: ' +
+                    toFixed(lastPressureToSensor[s], 0) +
+                    'кПа (MIN: ' +
+                    toFixed(minPressureToSensor[s], 0) +
+                    'кПа;' +
+                    ' MAX: ' +
+                    toFixed(maxPressureToSensor[s], 0) +
+                    'кПа)'}
+                </Box>
+                <Section fill height={5} mt={1}>
+                  <AtmosChart
+                    fillPositionedParent
+                    data={pressureDataToSensor[s]}
+                    rangeX={[0, pressureDataToSensor[s].length - 1]}
+                    rangeY={[0, maxPressureToSensor[s] + 5]}
                     strokeColor="rgba(40, 219, 40, 1)"
                     fillColor="rgba(40, 219, 40, 0.1)"
                   />
@@ -331,7 +331,7 @@ class AtmosChart extends Component {
                       fill={pointTextColor}
                       fontSize={pointTextSize}
                       dy="1em" // Сдвиг текста вниз, чтобы он не перекрывал точку
-                      dx="-2.5em" // Сдвиг текста вправо
+                      dx="-2.5em" // Сдвиг текста влево
                       textAnchor="middle" // Центрирование текста по x координате
                     >
                       {point[1] !== null ? point[1].toFixed(0) : 'N/A'}
