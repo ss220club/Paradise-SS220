@@ -78,32 +78,6 @@ const AtmosGraphPage = ({
   const getDataToSensor = (sensor, listName) =>
     sensors_list[sensor][listName].map((value, index) => [index, value]);
 
-  const lastPressureToSensor = {};
-  const lastTemperatureToSensor = {};
-  const minPressureToSensor = {};
-  const minTemperatureToSensor = {};
-  const maxPressureToSensor = {};
-  const maxTemperatureToSensor = {};
-  const pressureDataToSensor = {};
-  const temperatureDataToSensor = {};
-
-  for (const sensor in sensors_list) {
-    lastPressureToSensor[sensor] = getLastReading(sensor, pressureListName);
-    lastTemperatureToSensor[sensor] = getLastReading(
-      sensor,
-      temperatureListName
-    );
-    minPressureToSensor[sensor] = getMinReading(sensor, pressureListName);
-    minTemperatureToSensor[sensor] = getMinReading(sensor, temperatureListName);
-    maxPressureToSensor[sensor] = getMaxReading(sensor, pressureListName);
-    maxTemperatureToSensor[sensor] = getMaxReading(sensor, temperatureListName);
-    pressureDataToSensor[sensor] = getDataToSensor(sensor, pressureListName);
-    temperatureDataToSensor[sensor] = getDataToSensor(
-      sensor,
-      temperatureListName
-    );
-  }
-
   return (
     <Box>
       <Section color={'gray'}>{info}</Section>
@@ -111,24 +85,27 @@ const AtmosGraphPage = ({
         <Section key={s} title={s}>
           <Section px={2}>
             {/* ТЕМПЕРАТУРА */}
-            {'temperature_history' in sensors_list[s] && (
+            {temperatureListName in sensors_list[s] && (
               <Box mb={2}>
                 <Box>
                   {'Температура: ' +
-                    toFixed(lastTemperatureToSensor[s], 0) +
+                    toFixed(getLastReading(s, temperatureListName), 0) +
                     'К (MIN: ' +
-                    toFixed(minTemperatureToSensor[s], 0) +
+                    toFixed(getMinReading(s, temperatureListName), 0) +
                     'К;' +
                     ' MAX: ' +
-                    toFixed(maxTemperatureToSensor[s], 0) +
+                    toFixed(getMaxReading(s, temperatureListName), 0) +
                     'К)'}
                 </Box>
                 <Section fill height={5} mt={1}>
                   <AtmosChart
                     fillPositionedParent
-                    data={temperatureDataToSensor[s]}
-                    rangeX={[0, temperatureDataToSensor[s].length - 1]}
-                    rangeY={[0, maxTemperatureToSensor[s] + 5]}
+                    data={getDataToSensor(s, temperatureListName)}
+                    rangeX={[
+                      0,
+                      getDataToSensor(s, temperatureListName).length - 1,
+                    ]}
+                    rangeY={[0, getMaxReading(s, temperatureListName) + 5]}
                     strokeColor="rgba(219, 40, 40, 1)"
                     fillColor="rgba(219, 40, 40, 0.1)"
                   />
@@ -137,24 +114,27 @@ const AtmosGraphPage = ({
             )}
 
             {/* ДАВЛЕНИЕ */}
-            {'pressure_history' in sensors_list[s] && (
+            {pressureListName in sensors_list[s] && (
               <Box mb={-1}>
                 <Box>
                   {'Давление: ' +
-                    toFixed(lastPressureToSensor[s], 0) +
+                    toFixed(getLastReading(s, pressureListName), 0) +
                     'кПа (MIN: ' +
-                    toFixed(minPressureToSensor[s], 0) +
+                    toFixed(getMinReading(s, pressureListName), 0) +
                     'кПа;' +
                     ' MAX: ' +
-                    toFixed(maxPressureToSensor[s], 0) +
+                    toFixed(getMaxReading(s, pressureListName), 0) +
                     'кПа)'}
                 </Box>
                 <Section fill height={5} mt={1}>
                   <AtmosChart
                     fillPositionedParent
-                    data={pressureDataToSensor[s]}
-                    rangeX={[0, pressureDataToSensor[s].length - 1]}
-                    rangeY={[0, maxPressureToSensor[s] + 5]}
+                    data={getDataToSensor(s, pressureListName)}
+                    rangeX={[
+                      0,
+                      getDataToSensor(s, pressureListName).length - 1,
+                    ]}
+                    rangeY={[0, getMaxReading(s, pressureListName) + 5]}
                     strokeColor="rgba(40, 219, 40, 1)"
                     fillColor="rgba(40, 219, 40, 0.1)"
                   />
