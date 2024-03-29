@@ -416,7 +416,6 @@
 	color = "#DEB887"
 
 // Длинное махровое полотенце
-
 /obj/item/clothing/under/towel_long_alt/red
 	name = "красное махровое полотенце"
 	color = "#EE204D"
