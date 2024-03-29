@@ -4,6 +4,7 @@
 #define MAX_RECORD_SIZE 	20
 #define RECORD_INTERVAL     1
 #define LONG_RECORD_INTERVAL 15
+#define LAZYINITLISTSIZED(L, N) if(!L) L = new/list(N)
 
 /datum/design/pt_monitor
 	name = "Console Board (Atmospheric Graph Monitor)"
@@ -41,14 +42,10 @@
 /obj/machinery/computer/general_air_control/pt_monitor/configure_sensors(mob/living/user, obj/item/multitool/M)
 	. = ..()
 	for(var/sensor_name in sensor_name_data_map)
-		if(isnull(sensor_name_data_map[sensor_name]["pressure_history"]))
-			sensor_name_data_map[sensor_name]["pressure_history"] = new /list(MAX_RECORD_SIZE)
-		if(isnull(sensor_name_data_map[sensor_name]["temperature_history"]))
-			sensor_name_data_map[sensor_name]["temperature_history"] = new /list(MAX_RECORD_SIZE)
-		if(isnull(sensor_name_data_map[sensor_name]["long_pressure_history"]))
-			sensor_name_data_map[sensor_name]["long_pressure_history"] = new /list(MAX_RECORD_SIZE)
-		if(isnull(sensor_name_data_map[sensor_name]["long_temperature_history"]))
-			sensor_name_data_map[sensor_name]["long_temperature_history"] = new /list(MAX_RECORD_SIZE)
+		LAZYINITLISTSIZED(sensor_name_data_map[sensor_name]["pressure_history"], MAX_RECORD_SIZE)
+		LAZYINITLISTSIZED(sensor_name_data_map[sensor_name]["temperature_history"], MAX_RECORD_SIZE)
+		LAZYINITLISTSIZED(sensor_name_data_map[sensor_name]["long_pressure_history"], MAX_RECORD_SIZE)
+		LAZYINITLISTSIZED(sensor_name_data_map[sensor_name]["long_temperature_history"], MAX_RECORD_SIZE)
 
 /obj/machinery/computer/general_air_control/pt_monitor/refresh_sensors()
 	var/log_long_record = FALSE
@@ -121,3 +118,4 @@
 #undef MAX_RECORD_SIZE
 #undef RECORD_INTERVAL
 #undef LONG_RECORD_INTERVAL
+#undef LAZYINITLISTSIZED
