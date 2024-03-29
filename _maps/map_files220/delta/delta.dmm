@@ -2278,7 +2278,7 @@
 "apn" = (
 /obj/structure/table/reinforced,
 /obj/item/book/manual/wiki/security_space_law,
-/obj/item/radio,
+/obj/item/radio/security,
 /turf/simulated/floor/plasteel{
 	dir = 5;
 	icon_state = "red"
@@ -25849,9 +25849,8 @@
 "bZS" = (
 /obj/structure/table/wood,
 /obj/machinery/computer/library{
-	pixel_y = 3
+	pixel_y = 8
 	},
-/obj/item/radio/intercom/directional/north,
 /turf/simulated/floor/plasteel/grimy,
 /area/station/service/library)
 "bZV" = (
@@ -29331,7 +29330,7 @@
 "cmX" = (
 /obj/structure/rack,
 /obj/item/tank/internals/oxygen,
-/obj/item/radio,
+/obj/item/radio/alternative,
 /obj/machinery/firealarm/directional/south,
 /turf/simulated/floor/plasteel,
 /area/station/command/teleporter)
@@ -29641,7 +29640,10 @@
 /obj/machinery/computer/security/telescreen/entertainment{
 	pixel_x = -32
 	},
-/obj/machinery/computer/library,
+/obj/machinery/computer/library{
+	dir = 4;
+	pixel_y = 6
+	},
 /obj/effect/decal/cleanable/cobweb,
 /turf/simulated/floor/wood/parquet/tile,
 /area/station/service/library)
@@ -32005,19 +32007,19 @@
 /obj/machinery/light/directional/east,
 /obj/item/radio/intercom/directional/east,
 /obj/structure/table,
-/obj/item/radio/alternative{
+/obj/item/radio{
 	pixel_y = 7;
 	pixel_x = -7
 	},
-/obj/item/radio/alternative{
+/obj/item/radio{
 	pixel_y = 7;
 	pixel_x = -3
 	},
-/obj/item/radio/alternative{
+/obj/item/radio{
 	pixel_y = 7;
 	pixel_x = 1
 	},
-/obj/item/radio/alternative{
+/obj/item/radio{
 	pixel_y = 7;
 	pixel_x = 5
 	},
@@ -33060,7 +33062,7 @@
 "cCK" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/belt/utility,
-/obj/item/radio,
+/obj/item/radio/alternative,
 /turf/simulated/floor/plasteel/dark,
 /area/station/ai_monitored/storage/eva)
 "cCL" = (
@@ -43912,9 +43914,9 @@
 "dEU" = (
 /obj/structure/table/reinforced,
 /obj/item/radio/intercom/directional/north,
-/obj/item/radio{
-	pixel_x = -14;
-	pixel_y = 7
+/obj/item/radio/security{
+	pixel_x = -16;
+	pixel_y = 6
 	},
 /obj/item/storage/box/ids{
 	pixel_x = 2;
@@ -49194,6 +49196,12 @@
 "eoX" = (
 /turf/simulated/wall/r_wall,
 /area/station/security/permabrig)
+"epo" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
+/turf/simulated/floor/plating/airless,
+/area/station/engineering/control)
 "epE" = (
 /obj/machinery/door/airlock/maintenance,
 /obj/effect/mapping_helpers/airlock/autoname,
@@ -56418,7 +56426,10 @@
 /obj/machinery/computer/security/telescreen/entertainment{
 	pixel_x = -32
 	},
-/obj/machinery/computer/library,
+/obj/machinery/computer/library{
+	dir = 4;
+	pixel_y = 6
+	},
 /turf/simulated/floor/wood/parquet/tile,
 /area/station/service/library)
 "gFX" = (
@@ -57204,6 +57215,16 @@
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/command/bridge)
+"gSE" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/structure/grille,
+/turf/simulated/floor/plating/airless,
+/area/space/nearstation)
 "gSH" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/chair/sofa/pew/right{
@@ -80622,20 +80643,20 @@
 /obj/structure/table,
 /obj/machinery/firealarm/directional/north,
 /obj/item/radio/alternative{
-	pixel_y = 12;
-	pixel_x = -6
+	pixel_x = -6;
+	pixel_y = 12
 	},
 /obj/item/radio/alternative{
-	pixel_y = 3;
-	pixel_x = -6
+	pixel_x = -6;
+	pixel_y = 6
 	},
 /obj/item/radio/alternative{
-	pixel_y = 12;
-	pixel_x = 4
+	pixel_x = 6;
+	pixel_y = 12
 	},
 /obj/item/radio/alternative{
-	pixel_y = 3;
-	pixel_x = 4
+	pixel_x = 6;
+	pixel_y = 6
 	},
 /turf/simulated/floor/plasteel{
 	dir = 5;
@@ -87032,6 +87053,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
+/obj/item/radio/intercom/directional/west,
 /turf/simulated/floor/carpet,
 /area/station/service/library)
 "qjP" = (
@@ -94522,6 +94544,15 @@
 	icon_state = "neutralfull"
 	},
 /area/station/hallway/primary/aft)
+"sAx" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/simulated/floor/plating/airless,
+/area/space/nearstation)
 "sAG" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -101088,6 +101119,18 @@
 	},
 /turf/simulated/floor/plating,
 /area/station/service/hydroponics)
+"uIz" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/machinery/power/grounding_rod{
+	anchored = 1
+	},
+/turf/simulated/floor/plating/airless,
+/area/space/nearstation)
 "uIK" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -111193,8 +111236,8 @@
 /area/station/hallway/primary/central)
 "xQB" = (
 /obj/structure/table/reinforced,
-/obj/item/radio{
-	pixel_y = 8
+/obj/item/radio/security{
+	pixel_y = 6
 	},
 /obj/structure/reagent_dispensers/peppertank/east,
 /obj/machinery/requests_console{
@@ -129579,17 +129622,17 @@ cba
 cba
 cba
 bXU
-cie
-cie
-cie
+gSE
+gSE
+gSE
 bXU
-cie
-cie
-cie
+sAx
+uIz
+sAx
 bXU
-cie
-cie
-cie
+gSE
+gSE
+gSE
 bXU
 cie
 cie
@@ -130090,7 +130133,7 @@ aaa
 bXU
 bZj
 cbb
-cdc
+epo
 aaa
 ctY
 cJe
@@ -130106,7 +130149,7 @@ cJe
 cJe
 cOm
 aaa
-cda
+cbb
 cbb
 cDx
 bXU
@@ -131632,7 +131675,7 @@ jof
 bXU
 bXU
 bZl
-cbb
+cda
 abj
 cBU
 cjJ
@@ -131648,7 +131691,7 @@ aaa
 dUE
 cPK
 abj
-cbb
+cda
 cDv
 bXU
 cEA
@@ -154651,10 +154694,10 @@ aaa
 aaa
 aaa
 aaa
+aaa
+aaa
+aaa
 hDZ
-aaa
-aaa
-aaa
 aaa
 aaa
 aaa
