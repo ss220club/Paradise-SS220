@@ -5,6 +5,9 @@
 #define RECORD_INTERVAL     1
 #define LONG_RECORD_INTERVAL 15
 #define LAZYINITLISTSIZED(L, N) if(!L) L = new/list(N)
+#define ADD_TO_HISTORY(history_list, measurement) \
+	history_list += measurement; \
+	if(length(history_list) > MAX_RECORD_SIZE) history_list.Cut(1, 2)
 
 /datum/design/pt_monitor
 	name = "Console Board (Atmospheric Graph Monitor)"
@@ -91,20 +94,12 @@
 			sensor_name_data_map -= sensor_name
 			CRASH("Sensor of unexpected type was found: [atmos_sensor.type]")
 
-		sensor_pressure_history += current_pressure
-		sensor_temperature_history += current_temperature
-		if(length(sensor_pressure_history) > MAX_RECORD_SIZE)
-			sensor_pressure_history.Cut(1, 2)
-		if(length(sensor_temperature_history) > MAX_RECORD_SIZE)
-			sensor_temperature_history.Cut(1, 2)
+		ADD_TO_HISTORY(sensor_pressure_history, current_pressure)
+		ADD_TO_HISTORY(sensor_temperature_history, current_temperature)
 
 		if(log_long_record)
-			sensor_long_pressure_history += current_pressure
-			sensor_long_temperature_history += current_temperature
-			if(length(sensor_long_pressure_history) > MAX_RECORD_SIZE)
-				sensor_long_pressure_history.Cut(1, 2)
-			if(length(sensor_long_temperature_history) > MAX_RECORD_SIZE)
-				sensor_long_temperature_history.Cut(1, 2)
+			ADD_TO_HISTORY(sensor_long_pressure_history, current_pressure)
+			ADD_TO_HISTORY(sensor_long_temperature_history, current_temperature)
 
 /obj/machinery/computer/general_air_control/pt_monitor/process()
 	if(!is_operational() || length(sensor_name_uid_map) < 1)
@@ -119,3 +114,4 @@
 #undef RECORD_INTERVAL
 #undef LONG_RECORD_INTERVAL
 #undef LAZYINITLISTSIZED
+#undef ADD_TO_HISTORY
