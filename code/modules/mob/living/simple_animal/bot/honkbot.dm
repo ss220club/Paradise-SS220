@@ -137,6 +137,29 @@
 
 /mob/living/simple_animal/bot/honkbot/cmag_act(mob/user)
 	if(HAS_TRAIT(src, TRAIT_CMAGGED))
+		return
+	if(locked || !open)
+		to_chat(user, "<span class='warning'>Unlock and open it with a screwdriver first!")
+		return FALSE
+
+	ADD_TRAIT(src, TRAIT_CMAGGED, CLOWN_EMAG)
+	remote_disabled = TRUE
+	locked = TRUE
+	open = FALSE
+	bot_reset()
+	turn_on()
+	if(user)
+		to_chat(user, "<span class='notice'>You smear bananium ooze all over [src]'s circuitry")
+		add_attack_logs(user, src, "Cmagged")
+	show_laws()
+
+/mob/living/simple_animal/bot/honkbot/examine(mob/user)
+	. = ..()
+	if(HAS_TRAIT(src, TRAIT_CMAGGED))
+		. += "<span class='warning'>Yellow ooze seems to be seeping from the case...</span>"
+
+/mob/living/simple_animal/bot/honkbot/cmag_act(mob/user)
+	if(HAS_TRAIT(src, TRAIT_CMAGGED))
 		return FALSE
 	if(locked || !open)
 		to_chat(user, "<span class='warning'>Unlock and open it with a screwdriver first!</span>")
@@ -224,6 +247,10 @@
 	C.SetDeaf(0)
 	playsound(loc, pick('sound/voice/bgod.ogg', 'sound/voice/biamthelaw.ogg', 'sound/voice/bsecureday.ogg', 'sound/voice/bradio.ogg', 'sound/voice/bcreep.ogg'), 50, FALSE)
 	set_mode(BOT_IDLE)
+
+/mob/living/simple_animal/bot/honkbot/proc/declare_victory(mob/living/carbon/C)
+	C.SetDeaf(0)
+	playsound(loc, pick('sound/voice/bgod.ogg', 'sound/voice/biamthelaw.ogg', 'sound/voice/bsecureday.ogg', 'sound/voice/bradio.ogg', 'sound/voice/bcreep.ogg'), 50, FALSE)
 
 /mob/living/simple_animal/bot/honkbot/proc/stun_attack(mob/living/carbon/C) // airhorn stun
 	if(spam_flag)
