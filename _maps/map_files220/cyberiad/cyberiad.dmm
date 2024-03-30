@@ -10164,6 +10164,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
+/obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/plasteel,
 /area/station/hallway/secondary/entry)
 "aMg" = (
@@ -17713,9 +17714,11 @@
 /turf/simulated/floor/carpet,
 /area/station/service/chapel)
 "boL" = (
-/turf/simulated/floor/plasteel{
-	icon_state = "arrival"
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 1
 	},
+/turf/simulated/floor/plasteel,
 /area/station/hallway/secondary/entry)
 "boP" = (
 /obj/machinery/light/directional/south,
@@ -18250,10 +18253,6 @@
 	icon_state = "brown"
 	},
 /area/station/command/bridge)
-"brc" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
-/turf/simulated/floor/plasteel,
-/area/station/hallway/secondary/entry)
 "brd" = (
 /obj/item/skeleton/head,
 /obj/effect/decal/cleanable/dust,
@@ -21421,9 +21420,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 6
 	},
 /turf/simulated/floor/plasteel{
 	dir = 1;
@@ -68954,18 +68950,6 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/station/hallway/primary/central/ne)
-"mkg" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "arrival"
-	},
-/area/station/hallway/secondary/entry)
 "mki" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -78759,7 +78743,7 @@
 /area/station/medical/surgery/primary)
 "pNQ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 6
+	dir = 4
 	},
 /turf/simulated/floor/plasteel{
 	dir = 1;
@@ -80624,15 +80608,11 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/fpmaint2)
 "qwP" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/turf/simulated/floor/plasteel{
-	icon_state = "arrival"
-	},
+/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/turf/simulated/floor/plasteel,
 /area/station/hallway/secondary/entry)
 "qwU" = (
 /obj/structure/chair/sofa/corp,
@@ -86527,6 +86507,9 @@
 "sEJ" = (
 /obj/machinery/light/directional/north,
 /obj/structure/sign/poster/official/random/north,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
+	},
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "arrival"
@@ -86843,7 +86826,10 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/storage)
 "sLN" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 1
+	},
 /turf/simulated/floor/plasteel,
 /area/station/hallway/secondary/entry)
 "sLX" = (
@@ -89663,7 +89649,7 @@
 "tND" = (
 /obj/machinery/light/directional/north,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
+	dir = 6
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -111742,7 +111728,7 @@ aRU
 aQa
 aRU
 aMd
-boL
+bMg
 aSd
 aaa
 aaa
@@ -111757,7 +111743,7 @@ aaa
 aaa
 aLd
 sEJ
-bLZ
+boL
 piQ
 cve
 piQ
@@ -111999,7 +111985,7 @@ aSd
 aSd
 aSd
 cFJ
-boL
+bsh
 aSd
 aaa
 aaa
@@ -112013,7 +111999,7 @@ aaa
 aaa
 aaa
 aSd
-gGY
+pNQ
 bLZ
 piQ
 cve
@@ -112255,8 +112241,8 @@ aVV
 aSd
 bid
 mOp
-sLN
-bMg
+aSf
+bsh
 aSd
 aaa
 aaa
@@ -112270,7 +112256,7 @@ aaa
 aaa
 aaa
 aSd
-gGY
+pNQ
 uKL
 aSd
 aSd
@@ -112528,7 +112514,7 @@ aaa
 aaa
 aSd
 pNQ
-rGW
+aSf
 mTi
 aSd
 aaa
@@ -112785,7 +112771,7 @@ aaa
 aaa
 aSd
 bGl
-aRd
+aSf
 bKp
 aSd
 aaa
@@ -113026,8 +113012,8 @@ aVV
 aSd
 bjS
 aTp
-brc
-bOb
+aSf
+bsh
 aSd
 aaa
 aaa
@@ -113041,7 +113027,7 @@ aaa
 aaa
 aaa
 aSd
-mkg
+pNQ
 aMD
 aSd
 aSd
@@ -113284,7 +113270,7 @@ aSd
 aSd
 aSd
 blE
-qwP
+bsh
 aSd
 aaa
 aaa
@@ -113298,7 +113284,7 @@ aaa
 aaa
 aaa
 aSd
-qfI
+pNQ
 bLZ
 pkf
 cve
@@ -113540,8 +113526,8 @@ aVX
 aRU
 aQa
 aRU
-aMd
 qwP
+bOb
 aSd
 aaa
 aaa
@@ -113556,7 +113542,7 @@ aaa
 aaa
 aLd
 tND
-bLZ
+sLN
 pkf
 cve
 pkf
