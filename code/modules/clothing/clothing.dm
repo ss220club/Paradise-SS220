@@ -49,6 +49,11 @@
 	icon_state = "[replacetext("[icon_state]", "_up", "")][up ? "_up" : ""]"
 	return TRUE
 
+/obj/item/clothing/examine(mob/user)
+	. = ..()
+	if(isolation != 0)
+		. += "<span class='notice'>Защищает от холода на [isolation] пунктов.</span>"
+
 /obj/item/clothing/proc/weldingvisortoggle(mob/user) //proc to toggle welding visors on helmets, masks, goggles, etc.
 	if(!can_use(user))
 		return FALSE

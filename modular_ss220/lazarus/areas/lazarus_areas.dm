@@ -62,10 +62,27 @@
 
 //---Other---//
 
+//Geotherm
+
 /area/lazarus/geotherm
-	name = "Геотермальная электростанция ''Ярило''"
+	name = "Геотермальная электростанция"
 	icon_state = "engine"
 	sound_environment = SOUND_AREA_STANDARD_STATION
+
+/area/lazarus/geotherm/rod
+	name = "Геотермальная электростанция (Род)"
+
+/area/lazarus/geotherm/yarilo
+	name = "Геотермальная электростанция (Ярило)"
+
+/area/lazarus/geotherm/stribog
+	name = "Геотермальная электростанция (Стрибог)"
+
+/area/lazarus/geotherm/svarog
+	name = "Геотермальная электростанция (Сварог)"
+
+/area/lazarus/geotherm/veles
+	name = "Геотермальная электростанция (Велес)"
 
 //-----OUTPOST-----//
 
@@ -247,3 +264,20 @@
 /area/lazarus/outpost/yarilo/toilet
 	name = "Уборная (Ярило)"
 	icon_state = "toilet"
+
+//---STRIBOG---//
+
+/area/lazarus/outpost/stribog
+	name = "Аванпост ''Стрибог''"
+
+/area/lazarus/outpost/stribog/storage
+	name = "Склад (Стрибог)"
+	icon_state = "storage"
+
+/area/lazarus/outpost/stribog/landing
+	name = "Посадочная площадка (Стрибог)"
+	icon_state = "escape"
+
+/area/lazarus/outpost/stribog/maint
+	name = "Подстанция (Стрибог)"
+	icon_state = "engi"

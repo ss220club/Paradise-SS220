@@ -131,6 +131,9 @@
 	mymob.healths = null
 	mymob.healthdoll = null
 	mymob.pullin = null
+	if(istype(mymob, /mob/living/carbon/human))
+		var/mob/living/carbon/human/h = mymob
+		h.frostbite_screen = null
 
 	//clear the rest of our reload_fullscreen
 	lingchemdisplay = null

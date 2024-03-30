@@ -187,3 +187,9 @@
 		else
 			on = FALSE
 			update_icon()
+
+/obj/machinery/space_heater/proc/get_heat()
+	if(on)
+		return SPACE_HEATER_HEAT
+	else
+		return

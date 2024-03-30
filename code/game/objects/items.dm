@@ -134,6 +134,8 @@ GLOBAL_DATUM_INIT(welding_sparks, /mutable_appearance, mutable_appearance('icons
 	var/outline_filter
 	/// In tiles, how far this weapon can reach; 1 for adjacent, which is default
 	var/reach = 1
+	/// Isolation provided by item for frostbite mechanic
+	var/isolation = 0
 
 /obj/item/New()
 	..()
