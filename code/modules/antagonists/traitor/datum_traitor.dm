@@ -160,7 +160,7 @@
 		messages.Add(give_codewords())
 	if(isAI(owner.current))
 		add_law_zero()
-		owner.current.playsound_local(get_turf(owner.current), 'sound/ambience/antag/malf.ogg', 100, FALSE, pressure_affected = FALSE, use_reverb = FALSE)
+		owner.current.playsound_local(get_turf(owner.current), 'sound/ambience/antag/tatoralert.ogg', 100, FALSE, pressure_affected = FALSE, use_reverb = FALSE)
 		var/mob/living/silicon/ai/A = owner.current
 		A.show_laws()
 	else
