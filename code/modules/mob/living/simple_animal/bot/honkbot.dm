@@ -139,7 +139,7 @@
 	if(HAS_TRAIT(src, TRAIT_CMAGGED))
 		return
 	if(locked || !open)
-		to_chat(user, "<span class='warning'>Unlock and open it with a screwdriver first!")
+		to_chat(user, "<span class='warning'>Unlock and open it with a screwdriver first!</span>")
 		return FALSE
 
 	ADD_TRAIT(src, TRAIT_CMAGGED, CLOWN_EMAG)
@@ -149,7 +149,7 @@
 	bot_reset()
 	turn_on()
 	if(user)
-		to_chat(user, "<span class='notice'>You smear bananium ooze all over [src]'s circuitry")
+		to_chat(user, "<span class='notice'>You smear bananium ooze all over [src]'s circuitry!</span>")
 		add_attack_logs(user, src, "Cmagged")
 	show_laws()
 
