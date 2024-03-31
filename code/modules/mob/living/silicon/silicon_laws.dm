@@ -1,4 +1,4 @@
-#define BASE_LAW_TYPE /datum/ai_laws/nanotrasen
+#define BASE_LAW_TYPE /datum/ai_laws/pranksimov
 
 /mob/living/silicon/proc/laws_sanity_check()
 	if(!src.laws)
@@ -124,12 +124,7 @@
 	laws.sort_laws()
 
 /mob/living/silicon/proc/make_laws()
-	if(HAS_TRAIT(SSstation, STATION_TRAIT_UNIQUE_AI))
-		laws = pick_unique_lawset()
-	else if(GLOB.configuration.general.random_ai_lawset)
-		laws = get_random_lawset()
-	else
-		laws = new /datum/ai_laws/crewsimov()
+	laws = new /datum/ai_laws/pranksimov
 
 /mob/living/silicon/proc/get_random_lawset()
 	var/list/law_options[0]
