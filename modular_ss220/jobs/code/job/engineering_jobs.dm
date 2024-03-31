@@ -66,4 +66,4 @@
 
 /datum/job/atmos/New()
 	. = ..()
-	alt_titles |= list("Disposals Technician", "Firefighter")
+        LAZYOR(alt_titles, list("Disposals Technician", "Firefighter"))
