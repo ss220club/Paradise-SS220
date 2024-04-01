@@ -5,7 +5,7 @@
 	jokes.Remove("")
 
 
-	for(var/i = 0, i < 7, i++)
+	for(var/i = 0, i < 20, i++)
 		var/joke = pick(jokes)
 		credits += new /datum/credit/joke(joke)
 		jokes -= joke
