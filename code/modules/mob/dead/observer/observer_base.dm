@@ -3,7 +3,7 @@
 
 GLOBAL_LIST_EMPTY(ghost_images)
 
-GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_MINIMUM)
+GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 
 GLOBAL_DATUM_INIT(ghost_crew_monitor, /datum/ui_module/crew_monitor/ghost, new)
 
@@ -18,7 +18,7 @@ GLOBAL_DATUM_INIT(ghost_crew_monitor, /datum/ui_module/crew_monitor/ghost, new)
 	density = FALSE
 	alpha = 127
 	move_resist = INFINITY	//  don't get pushed around
-	invisibility = INVISIBILITY_MINIMUM
+	invisibility = INVISIBILITY_OBSERVER
 	blocks_emissive = FALSE // Ghosts are transparent, duh
 	var/can_reenter_corpse
 	var/bootime = FALSE
