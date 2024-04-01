@@ -60,6 +60,17 @@ export const AtmosGraphMonitor = (props, context) => {
             </Tabs.Tab>
           </Tabs>
           {decideTab(tabIndex)}
+          {Object.keys(data.sensors).length === 0 && (
+            <Box
+              pt={2}
+              textAlign={'center'}
+              textColor={'gray'}
+              bold
+              fontSize={1.3}
+            >
+              Подключите gas sensor или meter с помощью multitool
+            </Box>
+          )}
         </Box>
       </Window.Content>
     </Window>
