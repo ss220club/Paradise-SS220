@@ -273,7 +273,7 @@
 /mob/living/simple_animal/bot/medbot/process_scan(mob/living/carbon/human/H)
 	if(buckled)
 		if((last_warning + 300) < world.time)
-			speak("<span class='danger'>Movement restrained! Unit on standby!</span>")
+			speak("<span class='danger'>Движение ограничено! Юнит в режиме ожидания!</span>")
 			playsound(loc, 'sound/machines/buzz-two.ogg', 50, FALSE)
 			last_warning = world.time
 		return
@@ -286,7 +286,7 @@
 	if(assess_patient(H))
 		last_found = world.time
 		if((last_newpatient_speak + 300) < world.time) //Don't spam these messages!
-			var/list/messagevoice = list("Hey, [H.name]! Hold on, I'm coming." = 'sound/voice/medbot_scream.ogg', "Wait [H.name]! I want to help!" = 'sound/voice/medbot_scream.ogg', "[H.name], you appear to be injured!" = 'sound/voice/medbot_scream.ogg')
+			var/list/messagevoice = list("Hey, [H.name]! Подождите, я сейчас прибуду." = 'sound/voice/medbot_scream.ogg', "[H.name] стойте! Я хочу помочь!" = 'sound/voice/medbot_scream.ogg', "[H.name], кажется, Вы ранены!" = 'sound/voice/medbot_scream.ogg')
 			var/message = pick(messagevoice)
 			speak(message)
 			playsound(loc, messagevoice[message], 20, FALSE)
@@ -308,7 +308,7 @@
 
 	if(!patient)
 		if(!shut_up && prob(1))
-			var/list/messagevoice = list("Radar, put a mask on!" = 'sound/voice/medbot_scream.ogg', "There's always a catch, and I'm the best there is." = 'sound/voice/medbot_scream.ogg', "I knew it, I should've been a plastic surgeon." = 'sound/voice/medbot_scream.ogg', "What kind of medbay is this? Everyone's dropping like flies." = 'sound/voice/medbot_scream.ogg', "Delicious!" = 'sound/voice/medbot_scream.ogg')
+			var/list/messagevoice = list("Радар, надень маску!" = 'sound/voice/medbot_scream.ogg', "Всегда есть подвох, но со мной тебе нечего бояться!" = 'sound/voice/medbot_scream.ogg', "Я так и знал! Нужно было учиться на пластического хирурга." = 'sound/voice/medbot_scream.ogg', "Что это за медицинский отдел такой? Все мрут как мухи!" = 'sound/voice/medbot_scream.ogg', "Великолепно!" = 'sound/voice/medbot_scream.ogg')
 			var/message = pick(messagevoice)
 			speak(message)
 			playsound(loc, messagevoice[message], 20, FALSE)
@@ -453,7 +453,7 @@
 		return
 
 	if(C.stat == DEAD || HAS_TRAIT(C, TRAIT_FAKEDEATH))
-		var/list/messagevoice = list("No! Stay with me!" = 'sound/voice/medbot_scream.ogg', "Live, damnit! LIVE!" = 'sound/voice/medbot_scream.ogg', "I...I've never lost a patient before. Not today, I mean." = 'sound/voice/medbot_scream.ogg')
+		var/list/messagevoice = list("Нет! Не бросай меня!" = 'sound/voice/medbot_scream.ogg', "Живи, черт возьми, ЖИВИ!" = 'sound/voice/medbot_scream.ogg', "Я... я никогда раньше не терял пациентов. Сегодня, то есть." = 'sound/voice/medbot_scream.ogg')
 		var/message = pick(messagevoice)
 		speak(message)
 		playsound(loc, messagevoice[message], 20, FALSE)
@@ -471,7 +471,7 @@
 		reagent_id = select_medication(C, beaker_injection)
 
 	if(!reagent_id) //If they don't need any of that they're probably cured!
-		var/list/messagevoice = list("All patched up!" = 'sound/voice/medbot_scream.ogg', "An apple a day keeps me away." = 'sound/voice/medbot_scream.ogg', "Feel better soon!" = 'sound/voice/medbot_scream.ogg')
+		var/list/messagevoice = list("Как новенький!" = 'sound/voice/medbot_scream.ogg', "Яблочко на ужин, и врач не нужен!" = 'sound/voice/medbot_scream.ogg', "Поправляйтесь!" = 'sound/voice/medbot_scream.ogg')
 		var/message = pick(messagevoice)
 		speak(message)
 		playsound(loc, messagevoice[message], 20, FALSE)
@@ -564,7 +564,7 @@
 	if(syndicate_aligned)
 		return
 	var/area/location = get_area(src)
-	speak("Medical emergency! [crit_patient ? "<b>[crit_patient]</b>" : "A patient"] is in critical condition at [location]!", radio_channel)
+	speak("Внимание, требуется медицинская помощь! [crit_patient ? "<b>[crit_patient]</b>" : "Пострадавший"] в критическом состоянии в [location]!", radio_channel)
 	declare_cooldown = TRUE
 	spawn(200) //Twenty seconds
 		declare_cooldown = FALSE

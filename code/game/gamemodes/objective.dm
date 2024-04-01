@@ -384,10 +384,10 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 	return FALSE
 
 /datum/objective/block
-	name = "Silicon hijack"
-	explanation_text = "Hijack the shuttle with no loyalist Nanotrasen crew on board and free. \
-	Syndicate agents, other enemies of Nanotrasen, cyborgs, pets, and cuffed/restrained hostages may be allowed on the shuttle alive. \
-	Using the doomsday device successfully is also an option."
+	name = "Синтетический угон"
+	explanation_text = "Угоните шаттл без лояльного к Нанотрейзен экипажа на борту. \
+	Агенты Синдиката, другие враги корпорации, киборги, питомцы/ограниченные заложники, разрешены живыми на шаттле. \
+	Успешное использование устройства судного дня - тоже вариант."
 	martyr_compatible = FALSE
 	needs_target = FALSE
 
@@ -504,8 +504,8 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 	return FALSE
 
 /datum/objective/survive
-	name = "Survive"
-	explanation_text = "Stay alive until the end."
+	name = "Выживание"
+	explanation_text = "Оставайтесь в живых до самого конца."
 	needs_target = FALSE
 
 /datum/objective/survive/check_completion()

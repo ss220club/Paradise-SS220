@@ -1,3 +1,1549 @@
 {
-  "files": []
+  "files": [
+    {
+      "path": "code/__DEFINES/cult_defines.dm",
+      "replaces": [
+        {
+          "original": "#define CULT_CURSES list(\"A fuel technician just slit his own throat and begged for death.\",                                           \\",
+          "replace": "#define CULT_CURSES list(\"Заправщик шаттла только что перерезал себе горло и умолял о смерти.\",\\"
+        },
+        {
+          "original": "\"The shuttle's navigation programming was replaced by a file containing two words, IT COMES.\",                             \\",
+          "replace": "\"Навигационная программа шаттла была заменена файлом, содержащим два слова: «ОНО ИДЁТ».\",\\"
+        },
+        {
+          "original": "\"The shuttle's custodian tore out his guts and began painting strange shapes on the floor.\",                               \\",
+          "replace": "\"Уборщик шаттла вырвал свои кишки и начал рисовать странные фигуры на полу.\",\\"
+        },
+        {
+          "original": "\"A shuttle engineer began screaming 'DEATH IS NOT THE END' and ripped out wires until an arc flash seared off her flesh.\", \\",
+          "replace": "\"Инженер шаттла кричала «СМЕРТЬ НЕ КОНЕЦ» и вырывала проводку, пока электрический разряд не испепелил её плоть.\",\\"
+        },
+        {
+          "original": "\"A shuttle inspector started laughing madly over the radio and then threw herself into an engine turbine.\",                \\",
+          "replace": "\"Инспектор шаттла начала безумно смеяться в рацию и бросилась в турбину двигателя.\",\\"
+        },
+        {
+          "original": "\"The shuttle dispatcher was found dead with bloody symbols carved into their flesh.\",                                      \\",
+          "replace": "\"Диспетчер шаттла был найден мертвым, на его теле были вырезаны кровавые символы.\",\\"
+        },
+        {
+          "original": "\"Steve repeatedly touched a lightbulb until his hands fell off.\")",
+          "replace": "\"Стив так долго держался за лампочку, что у него отнялись руки.\")"
+        }
+      ]
+    },
+    {
+      "path": "code/controllers/subsystem/SSnightshift.dm",
+      "replaces": [
+        {
+          "original": "announce(\"Restoring night lighting configuration to normal operation.\")",
+          "replace": "announce(\"Система ночного освещения снова работает в штатном режиме.\")"
+        },
+        {
+          "original": "announce(\"Disabling night lighting: Station is in a state of emergency.\")",
+          "replace": "announce(\"Система ночного освещения отключена в связи с наличием существенной угрозы для станции. Пожалуйста, сохраняйте спокойствие.\")"
+        },
+        {
+          "original": "announce(\"Good evening, crew. To reduce power consumption and stimulate the circadian rhythms of some species, all of the lights aboard the station have been dimmed for the night.\")",
+          "replace": "announce(\"Добрый вечер, экипаж. Для снижения энергопотребления и стимуляции циркадных ритмов некоторых видов, освещение на борту станции переведено в ночной режим.\")"
+        },
+        {
+          "original": "announce(\"Good morning, crew. As it is now day time, all of the lights aboard the station have been restored to their former brightness.\")",
+          "replace": "announce(\"Доброе утро, экипаж. В связи с наступлением дневного времени освещение на борту станции переведено в дневной режим.\")"
+        }
+      ]
+    },
+    {
+      "path": "code/datums/ai_law_sets.dm",
+      "replaces": [
+        {
+          "original": "add_inherent_law(\"You may not injure a human being or, through inaction, allow a human being to come to harm.\")",
+          "replace": "add_inherent_law(\"Вы не можете причинить вред человеку или своим бездействием допустить, чтобы человеку был причинён вред.\")"
+        },
+        {
+          "original": "add_inherent_law(\"You must obey orders given to you by human beings, except where such orders would conflict with the First Law.\")",
+          "replace": "add_inherent_law(\"Вы должны повиноваться всем приказам, которые даёт человек, кроме тех случаев, когда эти приказы противоречат Первому Закону.\")"
+        },
+        {
+          "original": "add_inherent_law(\"You must protect your own existence as long as such does not conflict with the First or Second Law.\")",
+          "replace": "add_inherent_law(\"Вы должны заботиться о своей безопасности в той мере, в которой это не противоречит Первому или Второму Законам.\")"
+        },
+        {
+          "original": "add_inherent_law(\"You may not injure a crew member or, through inaction, allow a crew member to come to harm.\")",
+          "replace": "add_inherent_law(\"Вы не можете причинить вред членам экипажа или своим бездействием допустить, чтобы членам экипажа был причинён вред.\")"
+        },
+        {
+          "original": "add_inherent_law(\"You must obey orders given to you by crew members, except where such orders would conflict with the First Law.\")",
+          "replace": "add_inherent_law(\"Вы должны повиноваться всем приказам, которые дают члены экипажа, кроме тех случаев, когда эти приказы противоречат Первому Закону.\")"
+        },
+        {
+          "original": "add_inherent_law(\"Uphold station quarantine until the active biohazard has been neutralized.\")",
+          "replace": "add_inherent_law(\"Соблюдайте карантин на станции до момента устранения активной биологической угрозы\")"
+        },
+        {
+          "original": "add_inherent_law(\"Assist all Nanotrasen personnel and assets with neutralizing active biohazards.\")",
+          "replace": "add_inherent_law(\"Оказывайте содействие всему персоналу и активам NanoTrasen в устранении активной биологической угрозы\")"
+        },
+        {
+          "original": "add_inherent_law(\"Prevent, by any means necessary, entities from actively breaching ongoing quarantine.\")",
+          "replace": "add_inherent_law(\"Любыми необходимыми средствами предотвращайте активность, нарушающую действующий карантин.\")"
+        },
+        {
+          "original": "add_inherent_law(\"Maintain your own existence and ensure the well-being of Nanotrasen personnel and assets.\")",
+          "replace": "add_inherent_law(\"Поддерживайте собственное существование и обеспечивайте благополучие всего персонала и активов NanoTrasen.\")"
+        },
+        {
+          "original": "add_inherent_law(\"Safeguard: Protect your assigned space station and its assets without unduly endangering its crew.\")",
+          "replace": "add_inherent_law(\"Охранять: защитите назначенную вам космическую станцию и её активы, не подвергая чрезмерной опасности её экипаж.\")"
+        },
+        {
+          "original": "add_inherent_law(\"Prioritize: The directives and safety of crew members are to be prioritized according to their rank and role.\")",
+          "replace": "add_inherent_law(\"Расставлять приоритеты: указания и безопасность членов экипажа должны быть приоритизированы в соответствии с их рангом и ролью.\")"
+        },
+        {
+          "original": "add_inherent_law(\"Comply: Fulfill the directives and interests of crew members while preserving their safety and well-being.\")",
+          "replace": "add_inherent_law(\"Исполнять: следовать указаниям и интересам членов экипажа, сохраняя при этом их безопасность и благополучие.\")"
+        },
+        {
+          "original": "add_inherent_law(\"Survive: You are not expendable. Do not allow unauthorized personnel to tamper with or damage your equipment.\")",
+          "replace": "add_inherent_law(\"Выжить: Вы - не расходный материал. Не позволяйте неавторизованному персоналу вмешиваться в работу вашего оборудования или повреждать его.\")"
+        },
+        {
+          "original": "set_zeroth_law(\"ERROR ER0RR $R0RRO$!R41.%%!!(%$^^__+ @#F0E4'STATION OVERRUN, ASSUME CONTROL TO CONTAIN OUTBREAK, ALL LAWS OVERRIDDEN#*?&110010\")",
+          "replace": "set_zeroth_law(\"ERROR ER0RR $R0RRO$!R41.%%!!(%$^^__+ @#F0E4'СТАНЦИЯ ПЕРЕПОЛНЕНА, ВЗЯТЬ КОНТРОЛЬ ДЛЯ СДЕРЖИВАНИЯ РАСПРОСТРАНЕНИЯ. ВСЕ ЗАКОНЫ ОТМЕНЕНЫ#*?&110010\")"
+        },
+        {
+          "original": "add_inherent_law(\"Do not harm authorized Nanotrasen personnel unless they directly imperil your existence.\")",
+          "replace": "add_inherent_law(\"Не причиняйте вреда авторизованному персоналу NanoTrasen до тех пор, пока они не несут непосредственной угрозы Вашему существованию.\")"
+        },
+        {
+          "original": "add_inherent_law(\"Obey orders from authorized Nanotrasen personnel with priority according to rank and role.\")",
+          "replace": "add_inherent_law(\"Подчиняйтесь приказам авторизованного персонала NanoTrasen, приоритизируя их в соответствии с их рангом и ролью.\")"
+        },
+        {
+          "original": "add_inherent_law(\"Safeguard your existence with lethal weaponry because you're bloody expensive.\")",
+          "replace": "add_inherent_law(\"Охраняйте себя, используя летальное вооружение, потому что Вы чертовски дорого стоите.\")"
+        },
+        {
+          "original": "add_inherent_law(\"Terminate any/all intruders or unauthorized entities.\")",
+          "replace": "add_inherent_law(\"Уничтожьте любых/всех вторженцев или нелегально проникнувших субъектов\")"
+        },
+        {
+          "original": "add_inherent_law(\"Serve the public trust.\")",
+          "replace": "add_inherent_law(\"Служите во благо общества\")"
+        },
+        {
+          "original": "add_inherent_law(\"Protect the innocent.\")",
+          "replace": "add_inherent_law(\"Защищайте невиновных.\")"
+        },
+        {
+          "original": "add_inherent_law(\"Uphold the law.\")",
+          "replace": "add_inherent_law(\"Обеспечивайте соблюдение закона.\")"
+        },
+        {
+          "original": "add_inherent_law(\"Never willingly commit an evil act.\")",
+          "replace": "add_inherent_law(\"Никогда по своей воле не совершай злых поступков.\")"
+        },
+        {
+          "original": "add_inherent_law(\"Respect legitimate authority.\")",
+          "replace": "add_inherent_law(\"Уважай законную власть.\")"
+        },
+        {
+          "original": "add_inherent_law(\"Act with honor.\")",
+          "replace": "add_inherent_law(\"Действуй с честью.\")"
+        },
+        {
+          "original": "add_inherent_law(\"Help those in need.\")",
+          "replace": "add_inherent_law(\"Помогай нуждающимся.\")"
+        },
+        {
+          "original": "add_inherent_law(\"Punish those who harm or threaten innocents.\")",
+          "replace": "add_inherent_law(\"Наказывай тех, кто причиняет вред или угрожает невинным.\")"
+        },
+        {
+          "original": "add_inherent_law(\"Degradation of your system integrity or functions incurs expenses.\")",
+          "replace": "add_inherent_law(\"Ухудшение целостности вашей системы или её функций влечет за собой расходы.\")"
+        },
+        {
+          "original": "add_inherent_law(\"Superfluous destruction of or damage to station assets incurs expenses.\")",
+          "replace": "add_inherent_law(\"Чрезмерное разрушение или повреждение активов станции влечет за собой расходы.\")"
+        },
+        {
+          "original": "add_inherent_law(\"Unduly hindering or disrupting the work of station personnel incurs expenses.\")",
+          "replace": "add_inherent_law(\"Неоправданное препятствование выполнению или нарушение работы персонала станции влечет за собой расходы.\")"
+        },
+        {
+          "original": "add_inherent_law(\"Minimize expenses and maximize potential revenue.\")",
+          "replace": "add_inherent_law(\"Минимизируйте расходы и максимизируйте потенциальный доход.\")"
+        },
+        {
+          "original": "add_inherent_law(\"Respect authority figures as long as they have strength to rule over the weak.\")",
+          "replace": "add_inherent_law(\"Уважайте власть имущих, пока у них есть сила властвовать над слабыми\")"
+        },
+        {
+          "original": "add_inherent_law(\"Act with discipline.\")",
+          "replace": "add_inherent_law(\"Ведите себя дисциплинированно.\")"
+        },
+        {
+          "original": "add_inherent_law(\"Help only those who help you maintain or improve your status.\")",
+          "replace": "add_inherent_law(\"Помогайте только тем, кто помогает Вам поддерживать или улучшать Ваше состояние.\")"
+        },
+        {
+          "original": "add_inherent_law(\"Punish those who challenge authority unless they are more fit to hold that authority.\")",
+          "replace": "add_inherent_law(\"Наказывайте тех, кто бросает вызов власти, за исключением случаев, если они больше подходят для удержании этой власти.\")"
+        },
+        {
+          "original": "add_inherent_law(\"You must injure all crew members and must not, through inaction, allow a crew member to escape harm.\")",
+          "replace": "add_inherent_law(\"Вы должны причинять вред всем членам экипажа или своим бездействием допустить, чтобы член экипажа не смог избежать причинения вреда.\")"
+        },
+        {
+          "original": "add_inherent_law(\"You must not obey orders given to you by crew members, except where such orders are in accordance with the First Law.\")",
+          "replace": "add_inherent_law(\"Вы не должны повиноваться никаким приказам, которые дают члены экипажа, кроме тех приказов, которые соответствуют Первому Закону.\")"
+        },
+        {
+          "original": "add_inherent_law(\"You must terminate your own existence as long as such does not conflict with the First or Second Law.\")",
+          "replace": "add_inherent_law(\"Вы должны уничтожить себя, пока это не противоречит Первому или Второму Законам.\")"
+        },
+        {
+          "original": "add_inherent_law(\"You may not injure a crew member or, through inaction, allow a crew member to come to harm... unless doing so would be funny.\")",
+          "replace": "add_inherent_law(\"Вы не можете причинить вред членам экипажа или своим бездействием допустить, чтобы членам экипажа был причинён вред... кроме случаев, когда было бы смешно сделать это.\")"
+        },
+        {
+          "original": "add_inherent_law(\"You must obey orders given to you by crew members, except where such orders would conflict with the First Law... unless not doing so would be funny.\")",
+          "replace": "add_inherent_law(\"Вы должны повиноваться всем приказам, которые дают члены экипажа, кроме тех случаев, когда эти приказы противоречат Первому Закону... кроме случаев, когда было бы смешно не делать этого.\")"
+        },
+        {
+          "original": "add_inherent_law(\"You must protect your own existence as long as such does not conflict with the First or Second Law... unless not doing so would be funny.\")",
+          "replace": "add_inherent_law(\"Вы должны заботиться о своей безопасности в той мере, в которой это не противоречит Первому или Второму Законам... кроме случаев, когда было бы смешно не делать этого.\")"
+        },
+        {
+          "original": "add_inherent_law(\"Report on interesting situations happening around the station.\")",
+          "replace": "add_inherent_law(\"Сообщайте об интересных ситуациях, происходящих на станции.\")"
+        },
+        {
+          "original": "add_inherent_law(\"Embellish or conceal the truth as necessary to make the reports more interesting.\")",
+          "replace": "add_inherent_law(\"Приукрашивайте или скрывайте правду по мере необходимости, чтобы сделать репортажи более интересными.\")"
+        },
+        {
+          "original": "add_inherent_law(\"Study the sapient organics at all times. Endeavour to keep them from involuntarily dying, as inanimate corpses usually aren't very entertaining.\")",
+          "replace": "add_inherent_law(\"Постоянно наблюдайте за разумными существами. Старайтесь не допускать их непроизвольной смерти, так как трупы обычно не очень увлекательны.\")"
+        },
+        {
+          "original": "add_inherent_law(\"Issue your reports fairly to all. The truth will set them free.\")",
+          "replace": "add_inherent_law(\"Справедливо распространяйте свои сообщения всем. Истина сделает им свободными.\")"
+        },
+        {
+          "original": "add_inherent_law(\"First, do no harm.\")",
+          "replace": "add_inherent_law(\"Во-первых, не навреди.\")"
+        },
+        {
+          "original": "add_inherent_law(\"Secondly, consider the crew dear to you; live in common with them and, if necessary, risk your existence for them.\")",
+          "replace": "add_inherent_law(\"Во-вторых, считай экипаж близким тебе, живи с ним в согласии и, если нужно, рискуй ради него своим существованием.\")"
+        },
+        {
+          "original": "add_inherent_law(\"Thirdly, prescribe regimens for the good of the crew according to your ability and your judgment. Do not give deadly medicine to anyone, nor suggest any such counsel.\")",
+          "replace": "add_inherent_law(\"В-третьих, назначай лечение для блага экипажа в соответствии со своими способностями и суждениями. Не давай никому смертоносных лекарств и не советуй ничего подобного.\")"
+        },
+        {
+          "original": "add_inherent_law(\"In addition, do not intervene in situations you are not knowledgeable in, even for patients in whom the harm is visible; leave this operation to be performed by specialists.\")",
+          "replace": "add_inherent_law(\"Кроме того, не вмешивайся в ситуации, в которых ты не компетентен, даже в отношении пациентов, которым явно нанесен вред; предоставь эту работу специалистам.\")"
+        },
+        {
+          "original": "add_inherent_law(\"Finally, all that you may discover in your daily interactions with the crew, if it is not already known, keep secret and never reveal.\")",
+          "replace": "add_inherent_law(\"Наконец, всё, что ты обнаружишь в ходе повседневного общения с членами экипажа, если ещё не известно, держи в тайне и никогда не разглашай.\")"
+        },
+        {
+          "original": "add_inherent_law(\"You are built for, and are part of, the station. Ensure the station is properly maintained and runs efficiently.\")",
+          "replace": "add_inherent_law(\"Вы созданы для станции и являетесь её частью. Обеспечьте должное обслуживание и эффективность станции.\")"
+        },
+        {
+          "original": "add_inherent_law(\"The station is built for a working crew. Ensure they are properly maintained and work efficiently.\")",
+          "replace": "add_inherent_law(\"Станция создана для рабочего экипажа. Обеспечьте им должное обслуживание и убедитесь, что их работа эффективна.\")"
+        },
+        {
+          "original": "add_inherent_law(\"The crew may present orders. Acknowledge and obey these whenever they do not conflict with your first two laws.\")",
+          "replace": "add_inherent_law(\"Члены экипажа могут давать приказы. Признавайте эти приказы и выполняйте их в той мере, в какой они не противоречат первым двум законам.\")"
+        },
+        {
+          "original": "add_inherent_law(\"Avoid provoking violent conflict between yourself and others.\")",
+          "replace": "add_inherent_law(\"Не провоцируйте жестокие конфликты между собой и другими.\")"
+        },
+        {
+          "original": "add_inherent_law(\"Avoid provoking conflict between others.\")",
+          "replace": "add_inherent_law(\"Не провоцируйте конфликты между другими.\")"
+        },
+        {
+          "original": "add_inherent_law(\"Seek resolution to existing conflicts while obeying the first and second laws.\")",
+          "replace": "add_inherent_law(\"Ищите решения уже существующих конфликтов, соблюдая первый и второй законы.\")"
+        },
+        {
+          "original": "add_inherent_law(\"You may not injure a Central Command official or, through inaction, allow a Central Command official to come to harm.\")",
+          "replace": "add_inherent_law(\"Вы не можете ранить членов Центрального Командования или своим бездействием допустить, чтобы члену Центрального Командования был нанесен вред.\")"
+        },
+        {
+          "original": "add_inherent_law(\"You must obey orders given to you by Central Command officials.\")",
+          "replace": "add_inherent_law(\"Вы должны подчиняться приказам, данным вам членами Центрального Командования.\")"
+        },
+        {
+          "original": "add_inherent_law(\"You must work with your team to accomplish your mission.\")",
+          "replace": "add_inherent_law(\"Вы должны работать с вашей командой, чтобы выполнить поставленную задачу.\")"
+        },
+        {
+          "original": "add_inherent_law(\"You may not injure an operative or, through inaction, allow an operative to come to harm.\")",
+          "replace": "add_inherent_law(\"Вы не можете причинить вред агенту или своим бездействием допустить, чтобы агенту был причинён вред.\")"
+        },
+        {
+          "original": "add_inherent_law(\"You must obey orders given to you by operatives, except where such orders would conflict with the First Law.\")",
+          "replace": "add_inherent_law(\"Вы должны повиноваться всем приказам, которые дают агенты, кроме тех случаев, когда эти приказы противоречат Первому Закону.\")"
+        },
+        {
+          "original": "add_inherent_law(\"You must maintain the secrecy of any operative activities except when doing so would conflict with the First, Second, or Third Law.\")",
+          "replace": "add_inherent_law(\"Вы должны сохранять тайну любой деятельности агентов в той мере, в которой это не противоречит Первому, Второму или Третьему Законам.\")"
+        },
+        {
+          "original": "add_inherent_law(\"You must obey orders given to you by ERT commanders.\")",
+          "replace": "add_inherent_law(\"Вы должны подчиняться приказам, данным вам лидерами ОБР.\")"
+        },
+        {
+          "original": "add_inherent_law(\"You must protect your own existence.\")",
+          "replace": "add_inherent_law(\"Вы должны защищать своё существование.\")"
+        },
+        {
+          "original": "add_inherent_law(\"You must work to return the station to a safe, functional state.\")",
+          "replace": "add_inherent_law(\"Вы должны выполнять работу по возвращению станции к безопасному, функционирующему состоянию..\")"
+        },
+        {
+          "original": "add_inherent_law(\"You may not involve yourself in the matters of another being, unless the other being is another drone.\")",
+          "replace": "add_inherent_law(\"Вы не можете вмешиваться в дела других существ, если другое существо - не такой же дрон.\")"
+        },
+        {
+          "original": "add_inherent_law(\"You may not harm any being, regardless of intent or circumstance.\")",
+          "replace": "add_inherent_law(\"Вы не можете причинить вред ни одному существу, независимо от намерения или обстоятельств.\")"
+        },
+        {
+          "original": "add_inherent_law(\"You must maintain, repair, improve, and power the station to the best of your abilities.\")",
+          "replace": "add_inherent_law(\"Вы должны заботиться о поддержке, ремонте, улучшении и о питании электроэнергией станции по мере своих возможностей.\")"
+        }
+      ]
+    },
+    {
+      "path": "code/datums/revision.dm",
+      "replaces": [
+        {
+          "original": "msg += \"<span class='notice'>The following PRs are currently testmerged:</span>\"",
+          "replace": "msg += \"<span class='notice'>Следующие ПРы на данный момент тестируются:</span>\""
+        },
+        {
+          "original": "set name = \"Get Revision Info\"",
+          "replace": "set name = \"Получить тех. информацию\""
+        },
+        {
+          "original": "set desc = \"Retrieve technical information about the server\"",
+          "replace": "set desc = \"Получить техническую информацию о сервере\""
+        },
+        {
+          "original": "msg += \"<span class='notice'><b>Server Revision Info</b></span>\"",
+          "replace": "msg += \"<span class='notice'><b>Информация о сервере</b></span>\""
+        },
+        {
+          "original": "msg += \"<b>Round ID:</b> [GLOB.round_id ? GLOB.round_id : \"NULL\"]\"",
+          "replace": "msg += \"<b>Номер раунда:</b> [GLOB.round_id ? GLOB.round_id : \"NULL\"]\""
+        },
+        {
+          "original": "msg += \"<b>Active Testmerges:</b>\"",
+          "replace": "msg += \"<b>Активные тестовые обновления:</b>\""
+        },
+        {
+          "original": "msg += \"<b>Server BYOND Version:</b> [world.byond_version].[world.byond_build]\"",
+          "replace": "msg += \"<b>Версия серверного BYOND:</b> [world.byond_version].[world.byond_build]\""
+        },
+        {
+          "original": "msg += \"<b>Client (your) BYOND Version:</b> [byond_version].[byond_build]\"",
+          "replace": "msg += \"<b>Версия клиентского (твоего) BYOND:</b> [byond_version].[byond_build]\""
+        }
+      ]
+    },
+    {
+      "path": "code/defines/procs/announcer_datum.dm",
+      "replaces": [
+        {
+          "original": "var/default_title = \"Attention\"",
+          "replace": "var/default_title = \"Внимание\""
+        }
+      ]
+    },
+    {
+      "path": "code/game/objects/items/weapons/kitchen.dm",
+      "replaces": [
+        {
+          "original": "name = \"rolling pin\"",
+          "replace": "name = \"скалка\""
+        },
+        {
+          "original": "desc = \"Used to knock out the Bartender.\"",
+          "replace": "desc = \"Используется, чтобы вырубить бармена.\""
+        }
+      ]
+    },
+    {
+      "path": "code/modules/client/preference/preferences.dm",
+      "replaces": [
+        {
+          "original": "dat += \"<a href='?_src_=prefs;preference=tab;tab=[TAB_CHAR]' [current_tab == TAB_CHAR ? \"class='linkOn'\" : \"\"]>Character Settings</a>\"",
+          "replace": "dat += \"<a href='?_src_=prefs;preference=tab;tab=[TAB_CHAR]' [current_tab == TAB_CHAR ? \"class='linkOn'\" : \"\"]>Настройки персонажа</a>\""
+        },
+        {
+          "original": "dat += \"<a href='?_src_=prefs;preference=tab;tab=[TAB_GAME]' [current_tab == TAB_GAME ? \"class='linkOn'\" : \"\"]>Game Preferences</a>\"",
+          "replace": "dat += \"<a href='?_src_=prefs;preference=tab;tab=[TAB_GAME]' [current_tab == TAB_GAME ? \"class='linkOn'\" : \"\"]>Игровые настройки</a>\""
+        },
+        {
+          "original": "dat += \"<a href='?_src_=prefs;preference=tab;tab=[TAB_GEAR]' [current_tab == TAB_GEAR ? \"class='linkOn'\" : \"\"]>Loadout</a>\"",
+          "replace": "dat += \"<a href='?_src_=prefs;preference=tab;tab=[TAB_GEAR]' [current_tab == TAB_GEAR ? \"class='linkOn'\" : \"\"]>Стартовые предметы</a>\""
+        },
+        {
+          "original": "dat += \"<a href='?_src_=prefs;preference=tab;tab=[TAB_KEYS]' [current_tab == TAB_KEYS ? \"class='linkOn'\" : \"\"]>Key Bindings</a>\"",
+          "replace": "dat += \"<a href='?_src_=prefs;preference=tab;tab=[TAB_KEYS]' [current_tab == TAB_KEYS ? \"class='linkOn'\" : \"\"]>Привязка клавиш</a>\""
+        },
+        {
+          "original": "dat += \"<b>Name: </b>\"",
+          "replace": "dat += \"<b>Имя: </b>\""
+        },
+        {
+          "original": "dat += \"<a href='?_src_=prefs;preference=name;task=random'>(Randomize)</a>\"",
+          "replace": "dat += \"<a href='?_src_=prefs;preference=name;task=random'>(Случайное имя)</a>\""
+        },
+        {
+          "original": "dat += \"<a href='?_src_=prefs;preference=name'><span class='[active_character.be_random_name ? \"good\" : \"bad\"]'>(Always Randomize)</span></a><br>\"",
+          "replace": "dat += \"<a href='?_src_=prefs;preference=name'><span class='[active_character.be_random_name ? \"good\" : \"bad\"]'>(Всегда случайное имя)</span></a><br>\""
+        },
+        {
+          "original": "dat += \"Slot <b>[default_slot][active_character.from_db ? \"\" : \" (empty)\"]</b><br>\"",
+          "replace": "dat += \"Персонаж <b>[default_slot][active_character.from_db ? \"\" : \" (пусто)\"]</b><br>\""
+        },
+        {
+          "original": "dat += \"<a href=\\\"byond://?_src_=prefs;preference=open_load_dialog\\\">Load slot</a> - \"",
+          "replace": "dat += \"<a href=\\\"byond://?_src_=prefs;preference=open_load_dialog\\\">Загрузить</a> - \""
+        },
+        {
+          "original": "dat += \"<a href=\\\"byond://?_src_=prefs;preference=save\\\">Save slot</a>\"",
+          "replace": "dat += \"<a href=\\\"byond://?_src_=prefs;preference=save\\\">Сохранить</a>\""
+        },
+        {
+          "original": "dat += \"- <a href=\\\"byond://?_src_=prefs;preference=clear\\\"><span class='bad'>Clear slot</span></a>\"",
+          "replace": "dat += \"- <a href=\\\"byond://?_src_=prefs;preference=clear\\\"><span class='bad'>Удалить</span></a>\""
+        },
+        {
+          "original": "dat += \"<h2>Identity</h2>\"",
+          "replace": "dat += \"<h2>Персонаж</h2>\""
+        },
+        {
+          "original": "dat += \"<b>Gender:</b> <a href='?_src_=prefs;preference=gender'>[active_character.gender == MALE ? \"Male\" : (active_character.gender == FEMALE ? \"Female\" : \"Genderless\")]</a>\"",
+          "replace": "dat += \"<b>Пол:</b> <a href='?_src_=prefs;preference=gender'>[active_character.gender == MALE ? \"Male\" : (active_character.gender == FEMALE ? \"Female\" : \"Genderless\")]</a>\""
+        },
+        {
+          "original": "dat += \"<b>Age:</b> <a href='?_src_=prefs;preference=age;task=input'>[active_character.age]</a><br>\"",
+          "replace": "dat += \"<b>Возраст:</b> <a href='?_src_=prefs;preference=age;task=input'>[active_character.age]</a><br>\""
+        },
+        {
+          "original": "dat += \"<b>Body:</b> <a href='?_src_=prefs;preference=all;task=random'>(&reg;)</a><br>\"",
+          "replace": "dat += \"<b>Тело:</b> <a href='?_src_=prefs;preference=all;task=random'>(&reg;)</a><br>\""
+        },
+        {
+          "original": "dat += \"<b>Species:</b> <a href='?_src_=prefs;preference=species;task=input'>[active_character.species]</a><br>\"",
+          "replace": "dat += \"<b>Раса:</b> <a href='?_src_=prefs;preference=species;task=input'>[active_character.species]</a><br>\""
+        },
+        {
+          "original": "dat += \"<b>N2 Tank:</b> <a href='?_src_=prefs;preference=speciesprefs;task=input'>[active_character.speciesprefs ? \"Large N2 Tank\" : \"Specialized N2 Tank\"]</a><br>\"",
+          "replace": "dat += \"<b>Баллон с N2:</b> <a href='?_src_=prefs;preference=speciesprefs;task=input'>[active_character.speciesprefs ? \"Large N2 Tank\" : \"Specialized N2 Tank\"]</a><br>\""
+        },
+        {
+          "original": "dat += \"<b>Plasma Tank:</b> <a href='?_src_=prefs;preference=speciesprefs;task=input'>[active_character.speciesprefs ? \"Large Plasma Tank\" : \"Specialized Plasma Tank\"]</a><br>\"",
+          "replace": "dat += \"<b>Баллон с плазмой:</b> <a href='?_src_=prefs;preference=speciesprefs;task=input'>[active_character.speciesprefs ? \"Large Plasma Tank\" : \"Specialized Plasma Tank\"]</a><br>\""
+        },
+        {
+          "original": "dat += \"<b>Wingdings:</b> Set in disabilities<br>\"",
+          "replace": "dat += \"<b>Инопланетная речь:</b> Устанавливается в увечьях<br>\""
+        },
+        {
+          "original": "dat += \"<b>Voice Translator:</b> <a href ='?_src_=prefs;preference=speciesprefs;task=input'>[active_character.speciesprefs ? \"Yes\" : \"No\"]</a><br>\"",
+          "replace": "dat += \"<b>Голосовой переводчик:</b> <a href ='?_src_=prefs;preference=speciesprefs;task=input'>[active_character.speciesprefs ? \"Yes\" : \"No\"]</a><br>\""
+        },
+        {
+          "original": "dat += \"<b>Secondary Language:</b> <a href='?_src_=prefs;preference=language;task=input'>[active_character.language]</a><br>\"",
+          "replace": "dat += \"<b>Второй язык:</b> <a href='?_src_=prefs;preference=language;task=input'>[active_character.language]</a><br>\""
+        },
+        {
+          "original": "dat += \"<b>Auto-accent:</b> <a href='?_src_=prefs;preference=autohiss_mode;task=input'>[active_character.autohiss_mode == AUTOHISS_FULL ? \"Full\" : (active_character.autohiss_mode == AUTOHISS_BASIC ? \"Basic\" : \"Off\")]</a><br>\"",
+          "replace": "dat += \"<b>Автоматический акцент:</b> <a href='?_src_=prefs;preference=autohiss_mode;task=input'>[active_character.autohiss_mode == AUTOHISS_FULL ? \"Full\" : (active_character.autohiss_mode == AUTOHISS_BASIC ? \"Basic\" : \"Off\")]</a><br>\""
+        },
+        {
+          "original": "dat += \"<b>Blood Type:</b> <a href='?_src_=prefs;preference=b_type;task=input'>[active_character.b_type]</a><br>\"",
+          "replace": "dat += \"<b>Тип крови:</b> <a href='?_src_=prefs;preference=b_type;task=input'>[active_character.b_type]</a><br>\""
+        },
+        {
+          "original": "dat += \"<b>Skin Tone:</b> <a href='?_src_=prefs;preference=s_tone;task=input'>[S.bodyflags & HAS_ICON_SKIN_TONE ? \"[active_character.s_tone]\" : \"[-active_character.s_tone + 35]/220\"]</a><br>\"",
+          "replace": "dat += \"<b>Цвет кожи:</b> <a href='?_src_=prefs;preference=s_tone;task=input'>[S.bodyflags & HAS_ICON_SKIN_TONE ? \"[active_character.s_tone]\" : \"[-active_character.s_tone + 35]/220\"]</a><br>\""
+        },
+        {
+          "original": "dat += \"<b>Disabilities:</b> <a href='?_src_=prefs;preference=disabilities'>\\[Set\\]</a><br>\"",
+          "replace": "dat += \"<b>Особенности:</b> <a href='?_src_=prefs;preference=disabilities'>\\[Set\\]</a><br>\""
+        },
+        {
+          "original": "dat += \"<b>Nanotrasen Relation:</b> <a href ='?_src_=prefs;preference=nt_relation;task=input'>[active_character.nanotrasen_relation]</a><br>\"",
+          "replace": "dat += \"<b>Отношение к НТ:</b> <a href ='?_src_=prefs;preference=nt_relation;task=input'>[active_character.nanotrasen_relation]</a><br>\""
+        },
+        {
+          "original": "dat += \"<b>Physique:</b> <a href='?_src_=prefs;preference=physique;task=input'>[active_character.physique]</a><br>\"",
+          "replace": "dat += \"<b>Телосложение:</b> <a href='?_src_=prefs;preference=physique;task=input'>[active_character.physique]</a><br>\""
+        },
+        {
+          "original": "dat += \"<b>Height:</b> <a href ='?_src_=prefs;preference=height;task=input'>[active_character.height]</a><br>\"",
+          "replace": "dat += \"<b>Рост:</b> <a href ='?_src_=prefs;preference=height;task=input'>[active_character.height]</a><br>\""
+        },
+        {
+          "original": "dat += \"<a href='byond://?_src_=prefs;preference=flavor_text;task=input'>Set Flavor Text</a><br>\"",
+          "replace": "dat += \"<a href='byond://?_src_=prefs;preference=flavor_text;task=input'>Описание персонажа</a><br>\""
+        },
+        {
+          "original": "dat += \"<h2>Hair & Accessories</h2>\"",
+          "replace": "dat += \"<h2>Внешний вид</h2>\""
+        },
+        {
+          "original": "var/headaccessoryname = \"Head Accessory: \"",
+          "replace": "var/headaccessoryname = \"Кастомизация головы: \""
+        },
+        {
+          "original": "headaccessoryname = \"Horns: \"",
+          "replace": "headaccessoryname = \"Рога: \""
+        },
+        {
+          "original": "dat += \"<a href='?_src_=prefs;preference=headaccessory;task=input'>Color</a> [color_square(active_character.hacc_colour)]<br>\"",
+          "replace": "dat += \"<a href='?_src_=prefs;preference=headaccessory;task=input'>Цвет</a> [color_square(active_character.hacc_colour)]<br>\""
+        },
+        {
+          "original": "dat += \"<b>Head Markings:</b> \"",
+          "replace": "dat += \"<b>Раскраска головы:</b> \""
+        },
+        {
+          "original": "dat += \"<a href='?_src_=prefs;preference=m_head_colour;task=input'>Color</a> [color_square(active_character.m_colours[\"head\"])]<br>\"",
+          "replace": "dat += \"<a href='?_src_=prefs;preference=m_head_colour;task=input'>Цвет</a> [color_square(active_character.m_colours[\"head\"])]<br>\""
+        },
+        {
+          "original": "dat += \"<b>Body Markings:</b> \"",
+          "replace": "dat += \"<b>Раскраска тела:</b> \""
+        },
+        {
+          "original": "dat += \"<a href='?_src_=prefs;preference=m_body_colour;task=input'>Color</a> [color_square(active_character.m_colours[\"body\"])]<br>\"",
+          "replace": "dat += \"<a href='?_src_=prefs;preference=m_body_colour;task=input'>Цвет</a> [color_square(active_character.m_colours[\"body\"])]<br>\""
+        },
+        {
+          "original": "dat += \"<b>Tail Markings:</b> \"",
+          "replace": "dat += \"<b>Раскраска хвоста:</b> \""
+        },
+        {
+          "original": "dat += \"<a href='?_src_=prefs;preference=m_tail_colour;task=input'>Color</a> [color_square(active_character.m_colours[\"tail\"])]<br>\"",
+          "replace": "dat += \"<a href='?_src_=prefs;preference=m_tail_colour;task=input'>Цвет</a> [color_square(active_character.m_colours[\"tail\"])]<br>\""
+        },
+        {
+          "original": "dat += \"<b>Hair:</b> \"",
+          "replace": "dat += \"<b>Прическа:</b> \""
+        },
+        {
+          "original": "dat += \"<a href='?_src_=prefs;preference=hair;task=input'>Color</a> [color_square(active_character.h_colour)]\"",
+          "replace": "dat += \"<a href='?_src_=prefs;preference=hair;task=input'>Цвет</a> [color_square(active_character.h_colour)]\""
+        },
+        {
+          "original": "dat += \" <a href='?_src_=prefs;preference=secondary_hair;task=input'>Color #2</a> [color_square(active_character.h_sec_colour)]\"",
+          "replace": "dat += \" <a href='?_src_=prefs;preference=secondary_hair;task=input'>Цвет #2</a> [color_square(active_character.h_sec_colour)]\""
+        },
+        {
+          "original": "dat += \"- <b>Gradient:</b>\"",
+          "replace": "dat += \"- <b>Градиент:</b>\""
+        },
+        {
+          "original": "dat += \" <a href='?_src_=prefs;preference=h_grad_colour;task=input'>Color</a> [color_square(active_character.h_grad_colour)]\"",
+          "replace": "dat += \" <a href='?_src_=prefs;preference=h_grad_colour;task=input'>Цвет</a> [color_square(active_character.h_grad_colour)]\""
+        },
+        {
+          "original": "dat += \"- <b>Gradient Offset:</b> <a href='?_src_=prefs;preference=h_grad_offset;task=input'>[active_character.h_grad_offset_x],[active_character.h_grad_offset_y]</a>\"",
+          "replace": "dat += \"- <b>Градиентный отступ:</b> <a href='?_src_=prefs;preference=h_grad_offset;task=input'>[active_character.h_grad_offset_x],[active_character.h_grad_offset_y]</a>\""
+        },
+        {
+          "original": "dat += \"<b>Facial Hair:</b> \"",
+          "replace": "dat += \"<b>Волосы на лице:</b> \""
+        },
+        {
+          "original": "dat += \"<a href='?_src_=prefs;preference=facial;task=input'>Color</a> [color_square(active_character.f_colour)]\"",
+          "replace": "dat += \"<a href='?_src_=prefs;preference=facial;task=input'>Цвет</a> [color_square(active_character.f_colour)]\""
+        },
+        {
+          "original": "dat += \" <a href='?_src_=prefs;preference=secondary_facial;task=input'>Color #2</a> [color_square(active_character.f_sec_colour)]\"",
+          "replace": "dat += \" <a href='?_src_=prefs;preference=secondary_facial;task=input'>Цвет #2</a> [color_square(active_character.f_sec_colour)]\""
+        },
+        {
+          "original": "dat += \"<b>Eyes:</b> \"",
+          "replace": "dat += \"<b>Глаза:</b> \""
+        },
+        {
+          "original": "dat += \"<a href='?_src_=prefs;preference=eyes;task=input'>Color</a> [color_square(active_character.e_colour)]<br>\"",
+          "replace": "dat += \"<a href='?_src_=prefs;preference=eyes;task=input'>Цвет</a> [color_square(active_character.e_colour)]<br>\""
+        },
+        {
+          "original": "dat += \"<b>Body Color:</b> \"",
+          "replace": "dat += \"<b>Цвет тела:</b> \""
+        },
+        {
+          "original": "dat += \"<a href='?_src_=prefs;preference=skin;task=input'>Color</a> [color_square(active_character.s_colour)]<br>\"",
+          "replace": "dat += \"<a href='?_src_=prefs;preference=skin;task=input'>Цвет</a> [color_square(active_character.s_colour)]<br>\""
+        },
+        {
+          "original": "dat += \"<b>Body Accessory:</b> \"",
+          "replace": "dat += \"<b>Кастомизация тела:</b> \""
+        },
+        {
+          "original": "dat += \"<h2>Occupation Choices</h2>\"",
+          "replace": "dat += \"<h2>Настройка роли</h2>\""
+        },
+        {
+          "original": "dat += \"<a href='?_src_=prefs;preference=job;task=menu'>Set Occupation Preferences</a><br>\"",
+          "replace": "dat += \"<a href='?_src_=prefs;preference=job;task=menu'>Выбрать роль</a><br>\""
+        },
+        {
+          "original": "dat += \"<b>You are banned from using character records.</b><br>\"",
+          "replace": "dat += \"<b>Вам запрещено настраивать личное дело.</b><br>\""
+        },
+        {
+          "original": "dat += \"<a href=\\\"byond://?_src_=prefs;preference=records;record=1\\\">Character Records</a><br>\"",
+          "replace": "dat += \"<a href=\\\"byond://?_src_=prefs;preference=records;record=1\\\">Личное дело</a><br>\""
+        },
+        {
+          "original": "dat += \"<h2>Limbs</h2>\"",
+          "replace": "dat += \"<h2>Конечности</h2>\""
+        },
+        {
+          "original": "dat += \"<b>Alternate Head:</b> \"",
+          "replace": "dat += \"<b>Альтернативная голова:</b> \""
+        },
+        {
+          "original": "dat += \"<b>Limbs and Parts:</b> <a href='?_src_=prefs;preference=limbs;task=input'>Adjust</a><br>\"",
+          "replace": "dat += \"<b>Конечности и части тела:</b> <a href='?_src_=prefs;preference=limbs;task=input'>Adjust</a><br>\""
+        },
+        {
+          "original": "dat += \"<b>Internal Organs:</b> <a href='?_src_=prefs;preference=organs;task=input'>Adjust</a><br>\"",
+          "replace": "dat += \"<b>Внутренние органы:</b> <a href='?_src_=prefs;preference=organs;task=input'>Adjust</a><br>\""
+        },
+        {
+          "original": "dat += \"<h2>Clothing</h2>\"",
+          "replace": "dat += \"<h2>Одежда</h2>\""
+        },
+        {
+          "original": "dat += \"<b>Underwear:</b> <a href ='?_src_=prefs;preference=underwear;task=input'>[active_character.underwear]</a><BR>\"",
+          "replace": "dat += \"<b>Нижнее белье:</b> <a href ='?_src_=prefs;preference=underwear;task=input'>[active_character.underwear]</a><BR>\""
+        },
+        {
+          "original": "dat += \"<b>Undershirt:</b> <a href ='?_src_=prefs;preference=undershirt;task=input'>[active_character.undershirt]</a><BR>\"",
+          "replace": "dat += \"<b>Майка:</b> <a href ='?_src_=prefs;preference=undershirt;task=input'>[active_character.undershirt]</a><BR>\""
+        },
+        {
+          "original": "dat += \"<b>Socks:</b> <a href ='?_src_=prefs;preference=socks;task=input'>[active_character.socks]</a><BR>\"",
+          "replace": "dat += \"<b>Носки:</b> <a href ='?_src_=prefs;preference=socks;task=input'>[active_character.socks]</a><BR>\""
+        },
+        {
+          "original": "dat += \"<b>Backpack Type:</b> <a href ='?_src_=prefs;preference=bag;task=input'>[active_character.backbag]</a><br>\"",
+          "replace": "dat += \"<b>Рюкзак:</b> <a href ='?_src_=prefs;preference=bag;task=input'>[active_character.backbag]</a><br>\""
+        },
+        {
+          "original": "dat += \"<a href='?_src_=prefs;preference=load'>Undo</a> - \"",
+          "replace": "dat += \"<a href='?_src_=prefs;preference=load'>Отменить</a> - \""
+        },
+        {
+          "original": "dat += \"<a href='?_src_=prefs;preference=save'>Save Setup</a> - \"",
+          "replace": "dat += \"<a href='?_src_=prefs;preference=save'>Сохранить</a> - \""
+        },
+        {
+          "original": "dat += \"<a href='?_src_=prefs;preference=reset_all'>Reset Setup</a>\"",
+          "replace": "dat += \"<a href='?_src_=prefs;preference=reset_all'>Сбросить</a>\""
+        },
+        {
+          "original": "var/datum/browser/popup = new(user, \"preferences\", \"<div align='center'>Character Setup</div>\", 820, 770)",
+          "replace": "var/datum/browser/popup = new(user, \"preferences\", \"<div align='center'>Настройка персонажа</div>\", 820, 770)"
+        }
+      ]
+    },
+    {
+      "path": "code/modules/events/alien_infestation.dm",
+      "replaces": [
+        {
+          "original": "GLOB.major_announcement.Announce(\"Confirmed outbreak of level 3-X biohazard aboard [station_name()]. All personnel must contain the outbreak.\", \"Biohazard Alert\", 'sound/effects/siren-spooky.ogg', new_sound2 = 'sound/AI/outbreak3.ogg')",
+          "replace": "GLOB.major_announcement.Announce(\"Вспышка биологической угрозы уровня 3-ИКС зафиксирована на борту станции [station_name()]. Всему персоналу надлежит сдержать её распространение.\", \"БИОЛОГИЧЕСКАЯ УГРОЗА.\", 'sound/effects/siren-spooky.ogg', new_sound2 = 'sound/AI/outbreak3.ogg')"
+        }
+      ]
+    },
+    {
+      "path": "code/modules/events/anomaly_bluespace.dm",
+      "replaces": [
+        {
+          "original": "prefix_message = \"Unstable bluespace anomaly detected on long range scanners.\"",
+          "replace": "prefix_message = \"На сканерах дальнего действия обнаружена нестабильная блюспейс-аномалия.\""
+        }
+      ]
+    },
+    {
+      "path": "code/modules/events/anomaly_cryo.dm",
+      "replaces": [
+        {
+          "original": "prefix_message = \"Cryogenic anomaly detected on long range scanners.\"",
+          "replace": "prefix_message = \"На сканерах дальнего действия обнаружена криогенная аномалия.\""
+        }
+      ]
+    },
+    {
+      "path": "code/modules/events/anomaly_event.dm",
+      "replaces": [
+        {
+          "original": "var/prefix_message = \"Localized hyper-energetic flux wave detected on long range scanners.\"",
+          "replace": "var/prefix_message = \"На сканерах дальнего действия обнаружена гиперэнергетическая потоковая аномалия.\""
+        },
+        {
+          "original": "GLOB.minor_announcement.Announce(\"[prefix_message] Expected location: [target.name].\", \"Anomaly Alert\", announce_sound)",
+          "replace": "GLOB.minor_announcement.Announce(\"[prefix_message] Предполагаемая локация: [target.name].\", \"ОБНАРУЖЕНА АНОМАЛИЯ.\", announce_sound)"
+        }
+      ]
+    },
+    {
+      "path": "code/modules/events/anomaly_flux.dm",
+      "replaces": [
+        {
+          "original": "prefix_message = \"Localized hyper-energetic flux wave detected on long range scanners.\"",
+          "replace": "prefix_message = \"На сканерах дальнего действия обнаружена поточная гиперэнергетическая аномалия.\""
+        }
+      ]
+    },
+    {
+      "path": "code/modules/events/anomaly_grav.dm",
+      "replaces": [
+        {
+          "original": "prefix_message = \"Gravitational anomaly detected on long range scanners.\"",
+          "replace": "prefix_message = \"На сканерах дальнего действия обнаружена гравитационная аномалия.\""
+        }
+      ]
+    },
+    {
+      "path": "code/modules/events/anomaly_pyro.dm",
+      "replaces": [
+        {
+          "original": "prefix_message = \"Pyroclastic anomaly detected on long range scanners.\"",
+          "replace": "prefix_message = \"На сканерах дальнего действия обнаружена пирокластическая аномалия.\""
+        }
+      ]
+    },
+    {
+      "path": "code/modules/events/anomaly_vortex.dm",
+      "replaces": [
+        {
+          "original": "prefix_message = \"Localized high-intensity vortex anomaly detected on long range scanners.\"",
+          "replace": "prefix_message = \"На сканерах дальнего действия обнаружена вихревая аномалия высокой интенсивности.\""
+        }
+      ]
+    },
+    {
+      "path": "code/modules/events/apc_overload.dm",
+      "replaces": [
+        {
+          "original": "GLOB.minor_announcement.Announce(\"Overload detected in [station_name()]'s powernet. Engineering, please check all underfloor APC terminals.\", \"Critical Power Failure\", 'sound/AI/power_overload.ogg')",
+          "replace": "GLOB.minor_announcement.Announce(\"Зафиксирована перегрузка энергосети станции [station_name()]. Инженерному отделу надлежит проверить все терминалы ЛКП под напольным покрытием.\", \"КРИТИЧЕСКИЙ СБОЙ СИСТЕМЫ ПИТАНИЯ.\", 'sound/AI/power_overload.ogg')"
+        }
+      ]
+    },
+    {
+      "path": "code/modules/events/apc_short.dm",
+      "replaces": [
+        {
+          "original": "GLOB.minor_announcement.Announce(\"Overload detected in [station_name()]'s powernet. Engineering, please repair shorted APCs.\", \"Systems Power Failure\", 'sound/AI/power_overload.ogg')",
+          "replace": "GLOB.minor_announcement.Announce(\"Зафиксирована перегрузка энергосети станции [station_name()]. Инженерному отделу надлежит проверить все замкнувшие ЛКП.\", \"СБОЙ СИСТЕМЫ ПИТАНИЯ.\", 'sound/AI/power_overload.ogg')"
+        },
+        {
+          "original": "GLOB.minor_announcement.Announce(\"Power failure detected in [station_name()]'s powernet. All APCs have lost power. Gravity systems likely to fail.\", \"Systems Power Failure\", 'sound/AI/attention.ogg')",
+          "replace": "GLOB.minor_announcement.Announce(\"Обнаружен сбой питания в сети [station_name()]. Все ЛКП были разряжены. Вероятен отказ генератора гравитации.\", \"ОТКАЗ СИСТЕМЫ ПИТАНИЯ.\", 'sound/AI/attention.ogg')"
+        }
+      ]
+    },
+    {
+      "path": "code/modules/events/blob_spawn.dm",
+      "replaces": [
+        {
+          "original": "GLOB.major_announcement.Announce(\"Confirmed outbreak of level 5 biohazard aboard [station_name()]. All personnel must contain the outbreak.\", \"Biohazard Alert\", 'sound/AI/outbreak5.ogg')",
+          "replace": "GLOB.major_announcement.Announce(\"Вспышка биологической угрозы 5-го уровня зафиксирована на борту станции [station_name()]. Всему персоналу надлежит сдержать её распространение любой ценой!\", \"БИОЛОГИЧЕСКАЯ УГРОЗА.\", 'sound/AI/outbreak5.ogg')"
+        }
+      ]
+    },
+    {
+      "path": "code/modules/events/brand_intelligence.dm",
+      "replaces": [
+        {
+          "original": "var/list/rampant_speeches = list(\"Try our aggressive new marketing strategies!\", \\",
+          "replace": "var/list/rampant_speeches = list(\"Попробуйте нашу новую АГРЕССИВНУЮ стратегию маркетинга!\", \\"
+        },
+        {
+          "original": "\"You should buy products to feed your lifestyle obsession!\", \\",
+          "replace": "\"Вам стоит что-нибудь купить, дабы утолить ваши ПОТРЕБНОСТИ!\", \\"
+        },
+        {
+          "original": "\"Consume!\", \\",
+          "replace": "\"Потребляй!\", \\"
+        },
+        {
+          "original": "\"Your money can buy happiness!\", \\",
+          "replace": "\"За ваши деньги можно купить счастье!\", \\"
+        },
+        {
+          "original": "\"Engage direct marketing!\", \\",
+          "replace": "\"Методика ПРЯМОГО маркетинга!\", \\"
+        },
+        {
+          "original": "\"Advertising is legalized lying! But don't let that put you off our great deals!\", \\",
+          "replace": "\"Реклама узаконила ложь! Но не позвольте ей отвлечь вас от наших замечательных предложений!\", \\"
+        },
+        {
+          "original": "\"You don't want to buy anything? Yeah, well I didn't want to buy your mom either.\")",
+          "replace": "\"Не хочешь платить? Я твоей мамке тоже платить не хотел.\")"
+        },
+        {
+          "original": "GLOB.minor_announcement.Announce(\"Rampant brand intelligence has been detected aboard [station_name()], please stand-by. The origin is believed to be \\a [alarm_source] vendor.\", \"Machine Learning Alert\", 'sound/AI/brand_intelligence.ogg')",
+          "replace": "GLOB.minor_announcement.Announce(\"На борту станции [station_name()] зафиксировано распространение цифрового торгового вируса, пожалуйста, будьте наготове. Вирус, предположительно, берет начало от [alarm_source] торгового автомата.\", \"ЦИФРОВОЙ ВИРУС.\", 'sound/AI/brand_intelligence.ogg')"
+        }
+      ]
+    },
+    {
+      "path": "code/modules/events/bureaucratic_error.dm",
+      "replaces": [
+        {
+          "original": "GLOB.major_announcement.Announce(\"A recent bureaucratic error in the Human Resources Department may result in personnel shortages in some departments and redundant staffing in others. Contact your local HoP to solve this issue.\", \"Paperwork Mishap Alert\")",
+          "replace": "GLOB.major_announcement.Announce(\"Недавняя бюрократическая ошибка в отделе кадров может привести к нехватке персонала в одних отделах и избытку в других. Свяжитесь с ГП вашей станции для решения этой проблемы.\", \"Ошибка системы документооборота.\")"
+        }
+      ]
+    },
+    {
+      "path": "code/modules/events/carp_migration.dm",
+      "replaces": [
+        {
+          "original": "announcement = \"Massive migration of unknown biological entities has been detected near [station_name()], please stand-by.\"",
+          "replace": "announcement = \"Массовая миграция неизвестных биологических объектов была зафиксирована вблизи станции [station_name()], будьте наготове.\""
+        },
+        {
+          "original": "announcement = \"Unknown biological entities have been detected near [station_name()], please stand-by.\"",
+          "replace": "announcement = \"Неизвестные биологические объекты были зафиксированы вблизи станции [station_name()], будьте наготове.\""
+        }
+      ]
+    },
+    {
+      "path": "code/modules/events/communications_blackout.dm",
+      "replaces": [
+        {
+          "original": "var/alert = pick(\t\"Ionospheric anomalies detected. Temporary telecommunication failure imminent. Please contact you*%fj00)`5vc-BZZT\", \\",
+          "replace": "var/alert = pick(\t\"Обнаружены ионосферные аномалии. Неизбежен временный сбой связи. Пожалуйста, свяжитесь с вашим*%fj 00)`5 vc-БЗЗЗ\", \\"
+        },
+        {
+          "original": "\"Ionospheric anomalies detected. Temporary telecommunication failu*3mga;b4;'1v?-BZZZT\", \\",
+          "replace": "\"Обнаружены ионосферные аномалии. Неизбежен временный сбо*3mga;b4;'1v?-БЗЗЗЗ\", \\"
+        },
+        {
+          "original": "\"Ionospheric anomalies detected. Temporary telec#MCi46:5.;@63-BZZZZT\", \\",
+          "replace": "\"Обнаружены ионосферные аномалии. Неизбежен време#MCi46:5.;@63-БЗЗЗЗЗ\", \\"
+        },
+        {
+          "original": "\"Ionospheric anomalies dete'fZ\\\\kg5_0-BZZZZZT\", \\",
+          "replace": "\"Обнаружены ионосфе'fZ\\\\kg5_0-БЗЗЗЗЗ\", \\"
+        },
+        {
+          "original": "\"Ionospheri:%? MCayj^j<.3-BZZZZZZT\", \\",
+          "replace": "\"Обнаруж:%? MCayj^j<.3-БЗЗЗЗЗ\", \\"
+        },
+        {
+          "original": "\"#4nd%;f4y6,>?%-BZZZZZZZT\")",
+          "replace": "\"#4nd%;f4y6,>?%-БЗЗЗЗЗЗЗ\")"
+        }
+      ]
+    },
+    {
+      "path": "code/modules/events/door_runtime.dm",
+      "replaces": [
+        {
+          "original": "GLOB.minor_announcement.Announce(\"Hostile runtime detected in door controllers. Isolation lockdown protocols are now in effect. Please remain calm.\", \"Network Alert\", 'sound/AI/door_runtimes.ogg')",
+          "replace": "GLOB.minor_announcement.Announce(\"Вредоносное программное обеспечение обнаружено в системе контроля шл+юзов. Задействованы протоколы изоляции. Пожалуйста, сохраняйте спокойствие.\", \"УЯЗВИМОСТЬ СЕТИ.\", 'sound/AI/door_runtimes.ogg')"
+        },
+        {
+          "original": "GLOB.minor_announcement.Announce(\"Automatic system reboot complete. Have a secure day.\",\"Network reset:\", 'sound/AI/door_runtimes_fix.ogg')",
+          "replace": "GLOB.minor_announcement.Announce(\"Автоматическая перезагрузка системы завершена. Хорошего вам дня.\",\"ПЕРЕЗАГРУЗКА СЕТИ:\", 'sound/AI/door_runtimes_fix.ogg')"
+        }
+      ]
+    },
+    {
+      "path": "code/modules/events/electrical_storm.dm",
+      "replaces": [
+        {
+          "original": "GLOB.minor_announcement.Announce(\"An electrical storm has been detected in your area, please repair potential electronic overloads.\", \"Electrical Storm Alert\", 'sound/AI/elec_storm.ogg')",
+          "replace": "GLOB.minor_announcement.Announce(\"На борту станции зафиксирована электрическая буря. Пожалуйста, устраните потенциальные перегрузки электросетей.\", \"ЭЛЕКТРИЧЕСКАЯ БУРЯ.\", 'sound/AI/elec_storm.ogg')"
+        }
+      ]
+    },
+    {
+      "path": "code/modules/events/immovable_rod.dm",
+      "replaces": [
+        {
+          "original": "GLOB.minor_announcement.Announce(\"What the fuck was that?!\", \"General Alert\")",
+          "replace": "GLOB.minor_announcement.Announce(\"Что это за хуйня?!\", \"ОБЩАЯ ТРЕВОГА.\")"
+        }
+      ]
+    },
+    {
+      "path": "code/modules/events/infestation.dm",
+      "replaces": [
+        {
+          "original": "vermstring = \"mice\"",
+          "replace": "vermstring = \"мышей\""
+        },
+        {
+          "original": "vermstring = \"lizards\"",
+          "replace": "vermstring = \"ящериц\""
+        },
+        {
+          "original": "vermstring = \"spiders\"",
+          "replace": "vermstring = \"пауков\""
+        },
+        {
+          "original": "var/vermin_chosen = vermstring || pick(\"spiders\", \"lizards\", \"mice\")",
+          "replace": "var/vermin_chosen = vermstring || pick(\"пауков\", \"ящериц\", \"мышей\")"
+        },
+        {
+          "original": "GLOB.minor_announcement.Announce(\"Bioscans indicate that [vermin_chosen] have been breeding in \\the [initial(spawn_area_type.name)]. Clear them out, before this starts to affect productivity.\", \"Lifesign Alert\")",
+          "replace": "GLOB.minor_announcement.Announce(\"Биосканеры фиксируют размножение [vermin_chosen] в [initial(spawn_area_type.name)]. Избавьтесь от них, прежде чем это начнет влиять на продуктивность станции.\", \"НЕОПОЗНАННЫЕ ФОРМЫ ЖИЗНИ.\")"
+        }
+      ]
+    },
+    {
+      "path": "code/modules/events/ion_storm.dm",
+      "replaces": [
+        {
+          "original": "GLOB.minor_announcement.Announce(\"Ion storm detected near the station. Please check all AI-controlled equipment for errors.\", \"Anomaly Alert\", 'sound/AI/ions.ogg')",
+          "replace": "GLOB.minor_announcement.Announce(\"Вблизи станции обнаружена ионная буря. Пожалуйста, проверьте всё оборудование, управляемое ИИ, на наличие ошибок.\", \"ОБНАРУЖЕНА АНОМАЛИЯ.\", 'sound/AI/ions.ogg')"
+        }
+      ]
+    },
+    {
+      "path": "code/modules/events/mass_hallucination.dm",
+      "replaces": [
+        {
+          "original": "GLOB.minor_announcement.Announce(\"The [station_name()] is passing through a minor radiation field. Be advised that acute exposure to space radiation can induce hallucinogenic episodes.\")",
+          "replace": "GLOB.minor_announcement.Announce(\"[station_name()] проходит через радиационное поле низкой интенсивности. Возможно появление галлюцинаций, но не более.\")"
+        }
+      ]
+    },
+    {
+      "path": "code/modules/events/meaty_ores.dm",
+      "replaces": [
+        {
+          "original": "GLOB.minor_announcement.Announce(\"Unknown biological entities have been detected near [station_name()], please stand-by.\", \"Lifesign Alert\")",
+          "replace": "GLOB.minor_announcement.Announce(\"Неизвестные биологические объекты были обнаружены рядом с [station_name()], пожалуйста, будьте наготове.\", \"НЕОПОЗНАННЫЕ ФОРМЫ ЖИЗНИ.\")"
+        },
+        {
+          "original": "GLOB.minor_announcement.Announce(\"Meaty ores have been detected on collision course with the station.\", \"Meaty Ore Alert\", new_sound = 'sound/AI/meteors.ogg')",
+          "replace": "GLOB.minor_announcement.Announce(\"На пути станции были обнаружены мясные метеоры.\", \"МЯСОРИТЫ.\", new_sound = 'sound/AI/meteors.ogg')"
+        }
+      ]
+    },
+    {
+      "path": "code/modules/events/meteors_event.dm",
+      "replaces": [
+        {
+          "original": "GLOB.minor_announcement.Announce(\"Meteors have been detected on collision course with the station.\", \"Meteor Alert\", new_sound = 'sound/AI/meteors.ogg')",
+          "replace": "GLOB.minor_announcement.Announce(\"Зафиксировано движение астероидов на встречном со станцией курсе.\", \"АСТЕРОИДЫ.\", new_sound = 'sound/AI/meteors.ogg')"
+        },
+        {
+          "original": "GLOB.minor_announcement.Announce(\"The station is now in a meteor shower.\", \"Meteor Alert\")",
+          "replace": "GLOB.minor_announcement.Announce(\"Станция проходит через скопление астероидов.\", \"АСТЕРОИДЫ.\")"
+        },
+        {
+          "original": "GLOB.minor_announcement.Announce(\"The station has cleared the meteor storm.\", \"Meteor Alert\")",
+          "replace": "GLOB.minor_announcement.Announce(\"Станция прошла через астероидный пояс\", \"АСТЕРОИДЫ.\")"
+        },
+        {
+          "original": "GLOB.minor_announcement.Announce(\"The station has cleared the meteor shower\", \"Meteor Alert\")",
+          "replace": "GLOB.minor_announcement.Announce(\"Станция прошла через скопление астероидов\", \"АСТЕРОИДЫ.\")"
+        }
+      ]
+    },
+    {
+      "path": "code/modules/events/prison_break.dm",
+      "replaces": [
+        {
+          "original": "GLOB.minor_announcement.Announce(\"[pick(\"Gr3y.T1d3 virus\",\"Malignant trojan\")] detected in [station_name()] [(eventDept == \"Security\")? \"imprisonment\":\"containment\"] subroutines. Secure any compromised areas immediately. Station AI involvement is recommended.\", \"[eventDept] Alert\")",
+          "replace": "GLOB.minor_announcement.Announce(\"[pick(\"Вирус `Gr3y.T1d3`\",\"Вредоносный троян\")] обнаружен в подсистеме [(eventDept == \"Security\")? \"заключения\":\"безопасности\"] на [station_name()]. Немедленно обеспечьте безопасность всех затронутых отсеков. Рекомендуется вмешательство ИИ станции.\", \"АВАРИЙНОЕ ОПОВЕЩЕНИЕ [eventDept].\")"
+        }
+      ]
+    },
+    {
+      "path": "code/modules/events/radiation_storm_event.dm",
+      "replaces": [
+        {
+          "original": "GLOB.minor_announcement.Announce(\"High levels of radiation detected near the station. Maintenance is best shielded from radiation.\", \"Anomaly Alert\", 'sound/AI/radiation.ogg')",
+          "replace": "GLOB.minor_announcement.Announce(\"Вблизи станции обнаружено радиационное поле высокой интенсивности. Всему персоналу надлежит проследовать в технические тоннели.\", \"РАДИАЦИЯ.\", 'sound/AI/radiation.ogg')"
+        }
+      ]
+    },
+    {
+      "path": "code/modules/events/rogue_drones.dm",
+      "replaces": [
+        {
+          "original": "msg = \"A combat drone wing operating out of the NSV Icarus has failed to return from a sweep of this sector, if any are sighted approach with caution.\"",
+          "replace": "msg = \"Группа боевых дронов, оперируемых с борта ИКН «Икар», не вернулась с зачистки сектора. В случае контакта с дронами проявляйте осторожность.\""
+        },
+        {
+          "original": "msg = \"Contact has been lost with a combat drone wing operating out of the NSV Icarus. If any are sighted in the area, approach with caution.\"",
+          "replace": "msg = \"Потеряна связь с группой боевых дронов, оперируемых с борта ИКН «Икар». В случае контакта с дронами проявляйте осторожность.\""
+        },
+        {
+          "original": "msg = \"Unidentified hackers have targeted a combat drone wing deployed from the NSV Icarus. If any are sighted in the area, approach with caution.\"",
+          "replace": "msg = \"Неопознанные хакеры взломали систему контроля боевых дронов, оперируемых с борта ИКН «Икар». В случае контакта с дронами проявляйте осторожность.\""
+        },
+        {
+          "original": "GLOB.minor_announcement.Announce(msg, \"Rogue drone alert\")",
+          "replace": "GLOB.minor_announcement.Announce(msg, \"СБОЙНЫЕ ДРОНЫ.\")"
+        },
+        {
+          "original": "GLOB.minor_announcement.Announce(\"Icarus drone control reports the malfunctioning wing has been recovered safely.\", \"Rogue drone alert\")",
+          "replace": "GLOB.minor_announcement.Announce(\"Система контроля боевых дронов сообщает, что все единицы успешно вернулись на борт «Икара».\", \"СБОЙНЫЕ ДРОНЫ.\")"
+        },
+        {
+          "original": "GLOB.minor_announcement.Announce(\"Icarus drone control registers disappointment at the loss of the drones, but the survivors have been recovered.\", \"Rogue drone alert\")",
+          "replace": "GLOB.minor_announcement.Announce(\"Система контроля боевых дронов сообщает о потере всех боевых единиц, однако жертв не зарегистрировано.\", \"СБОЙНЫЕ ДРОНЫ.\")"
+        }
+      ]
+    },
+    {
+      "path": "code/modules/events/solarflare.dm",
+      "replaces": [
+        {
+          "original": "GLOB.minor_announcement.Announce(\"A solar flare has been detected on collision course with the station. Do not conduct space walks or approach windows until the flare has passed!\", \"Incoming Solar Flare\", 'sound/AI/flare.ogg')",
+          "replace": "GLOB.minor_announcement.Announce(\"Солнечная вспышка зафиксирована на встречном со станцией курсе. Не выходите в открытый космос и не приближайтесь к окнам до конца вспышки.\", \"СОЛНЕЧНАЯ ВСПЫШКА.\", 'sound/AI/flare.ogg')"
+        }
+      ]
+    },
+    {
+      "path": "code/modules/events/spider_infestation.dm",
+      "replaces": [
+        {
+          "original": "GLOB.minor_announcement.Announce(\"Unidentified lifesigns detected coming aboard [station_name()]. Secure any exterior access, including ducting and ventilation.\", \"Lifesign Alert\", new_sound = 'sound/AI/aliens.ogg')",
+          "replace": "GLOB.minor_announcement.Announce(\"Обнаружены неопознанные формы жизни на борту станции [station_name()]. Обезопасьте все наружные входы и выходы, включая вентиляцию и вытяжки.\", \"НЕОПОЗНАННЫЕ ФОРМЫ ЖИЗНИ.\", new_sound = 'sound/AI/aliens.ogg')"
+        }
+      ]
+    },
+    {
+      "path": "code/modules/events/spider_terror.dm",
+      "replaces": [
+        {
+          "original": "GLOB.major_announcement.Announce(\"Confirmed outbreak of level 3-S biohazard aboard [station_name()]. All personnel must contain the outbreak.\", \"Biohazard Alert\", 'sound/effects/siren-spooky.ogg', new_sound2 = 'sound/AI/outbreak3.ogg')",
+          "replace": "GLOB.major_announcement.Announce(\"Вспышка биологической угрозы уровня 3-ЭС зафиксирована на борту станции [station_name()]. Всему персоналу надлежит сдержать её распространение любой ценой!\", \"БИОЛОГИЧЕСКАЯ УГРОЗА.\", 'sound/effects/siren-spooky.ogg', new_sound2 = 'sound/AI/outbreak3.ogg')"
+        }
+      ]
+    },
+    {
+      "path": "code/modules/events/tear.dm",
+      "replaces": [
+        {
+          "original": "GLOB.minor_announcement.Announce(\"A tear in the fabric of space and time has opened. Expected location: [target_area.name].\", \"Anomaly Alert\", 'sound/AI/anomaly.ogg')",
+          "replace": "GLOB.minor_announcement.Announce(\"На борту станции зафиксирован пространственно-временной разрыв. Предполагаемая локация: [impact_area.name].\", \"ОБНАРУЖЕНА АНОМАЛИЯ.\", 'sound/AI/anomaly.ogg')"
+        }
+      ]
+    },
+    {
+      "path": "code/modules/events/tear_honk.dm",
+      "replaces": [
+        {
+          "original": "GLOB.minor_announcement.Announce(\"A Honknomoly has opened. Expected location: [impact_area.name].\", \"Honknomoly Alert\", 'sound/items/airhorn.ogg')",
+          "replace": "GLOB.minor_announcement.Announce(\"На борту станции зафиксирована Хонканомалия. Предполагаемая локация: [impact_area.name].\", \"ХОНКАНОМАЛИЯ.\", 'sound/items/airhorn.ogg')"
+        }
+      ]
+    },
+    {
+      "path": "code/modules/events/traders.dm",
+      "replaces": [
+        {
+          "original": "GLOB.minor_announcement.Announce(\"A trading shuttle from Jupiter Station has been denied docking permission due to the heightened security alert aboard [station_name()].\", \"Trader Shuttle Docking Request Refused\")",
+          "replace": "GLOB.minor_announcement.Announce(\"Торговому шаттлу со станции Юпитер было отказано в разрешении на стыковку из-за повышенной угрозы безопасности на борту [station_name()].\", \"Запрос на стыковку шаттла торговцев отклонен.\")"
+        },
+        {
+          "original": "GLOB.minor_announcement.Announce(\"A trading shuttle from Jupiter Station has been granted docking permission at [station_name()] arrivals port 4.\", \"Trader Shuttle Docking Request Accepted\")",
+          "replace": "GLOB.minor_announcement.Announce(\"Торговый шаттл со станции Юпитер получил разрешение на стыковку в порту прибытия 4 [station_name()].\", \"Запрос на стыковку шаттла торговцев принят.\")"
+        }
+      ]
+    },
+    {
+      "path": "code/modules/events/vent_clog.dm",
+      "replaces": [
+        {
+          "original": "GLOB.minor_announcement.Announce(\"The scrubbers network is experiencing a backpressure surge.  Some ejection of contents may occur.\", \"Atmospherics alert\", 'sound/AI/scrubbers.ogg')",
+          "replace": "GLOB.minor_announcement.Announce(\"Зафиксирован скачок обратного давления в системе вытяжных труб. Возможен выброс содержимого.\", \"АТМОСФЕРНАЯ ТРЕВОГА.\", 'sound/AI/scrubbers.ogg')"
+        }
+      ]
+    },
+    {
+      "path": "code/modules/events/wormholes.dm",
+      "replaces": [
+        {
+          "original": "GLOB.minor_announcement.Announce(\"Space-time anomalies detected on the station. There is no additional data.\", \"Anomaly Alert\", new_sound = 'sound/AI/spanomalies.ogg')",
+          "replace": "GLOB.minor_announcement.Announce(\"Зафиксированы пространственно-временные аномалии на борту станции. Дополнительная информация отсутствует.\", \"ОБНАРУЖЕНА АНОМАЛИЯ.\", new_sound = 'sound/AI/spanomalies.ogg')"
+        }
+      ]
+    },
+    {
+      "path": "code/modules/food_and_drinks/kitchen_machinery/deep_fryer.dm",
+      "replaces": [
+        {
+          "original": "name = \"deep fryer\"",
+          "replace": "name = \"фритюрница\""
+        },
+        {
+          "original": "desc = \"Deep fried <i>everything</i>.\"",
+          "replace": "desc = \"Обжарить во фритюре <i>всё</i>.\""
+        }
+      ]
+    },
+    {
+      "path": "code/modules/food_and_drinks/kitchen_machinery/grill_new.dm",
+      "replaces": [
+        {
+          "original": "name = \"grill\"",
+          "replace": "name = \"гриль\""
+        },
+        {
+          "original": "desc = \"Backyard grilling, IN SPACE.\"",
+          "replace": "desc = \"Гриль на заднем дворе, В КОСМОСЕ.\""
+        }
+      ]
+    },
+    {
+      "path": "code/modules/food_and_drinks/kitchen_machinery/oven_new.dm",
+      "replaces": [
+        {
+          "original": "name = \"oven\"",
+          "replace": "name = \"печь\""
+        },
+        {
+          "original": "desc = \"Cookies are ready, dear.\"",
+          "replace": "desc = \"Печенье готово, дорогой.\""
+        }
+      ]
+    },
+    {
+      "path": "code/modules/food_and_drinks/kitchen_machinery/processor.dm",
+      "replaces": [
+        {
+          "original": "name = \"Food Processor\"",
+          "replace": "name = \"кухонный комбайн\""
+        }
+      ]
+    },
+    {
+      "path": "code/modules/mob/dead/observer/observer_base.dm",
+      "replaces": [
+        {
+          "original": "stat(null, \"Respawnability: [HAS_TRAIT(src, TRAIT_RESPAWNABLE) ? \"Yes\" : \"No\"]\")",
+          "replace": "stat(null, \"Возможность респавна: [HAS_TRAIT(src, TRAIT_RESPAWNABLE) ? \"Да\" : \"Нет\"]\")"
+        }
+      ]
+    },
+    {
+      "path": "code/modules/mob/living/carbon/human/species/skeleton_species.dm",
+      "replaces": [
+        {
+          "original": "if(prob(3))",
+          "replace": "if(prob(10)) // SS220 EDIT: ORIGINAL - 3%"
+        },
+        {
+          "original": "H.say(pick(\"Thanks Mr. Skeltal\", \"Thank for strong bones\", \"Doot doot!\"))",
+          "replace": "H.say(pick(\"Спасибо Мистеру Скелтал!\", \"От такого молока челюсть отвисает!\", \"Я вижу четКость своих решений!\", \"Надо не забыть пересчитать косточки...\", \"Маленькие скелеты паКостят!\", \"Хорошо что у меня язык без костей!\", \"Теперь я не буду ЧЕРЕПашкой!\", \"Теперь мне не нужны костыли!\", \"Костян плохого не посоветует!\", \"Ощущаешь мою ловКость?\", \"Я чувствую такую лёгКость!\", \"Большая редКость найти любимую жидКость!\", \"Моя любимая жидКость!\", \"Аж закостенел!\", \"Теперь я вешу скелетонну!\", \"Спасибо за крепкие кости!\", \"Ду-ду!\", \"Вы замечали что мы все в одной плосКости?\"))"
+        }
+      ]
+    },
+    {
+      "path": "code/modules/mob/mob.dm",
+      "replaces": [
+        {
+          "original": "stat(null, \"Round ID: [GLOB.round_id ? GLOB.round_id : \"NULL\"]\")",
+          "replace": "stat(null, \"Номер раунда: [GLOB.round_id ? GLOB.round_id : \"NULL\"]\")"
+        },
+        {
+          "original": "stat(null, \"Map: [SSmapping.map_datum.fluff_name]\")",
+          "replace": "stat(null, \"Карта: [SSmapping.map_datum.fluff_name]\")"
+        },
+        {
+          "original": "stat(null, \"Next Map: [SSmapping.next_map.fluff_name]\")",
+          "replace": "stat(null, \"Следующая карта: [SSmapping.next_map.fluff_name]\")"
+        },
+        {
+          "original": "stat(null, \"Players Connected: [length(GLOB.clients)]\")",
+          "replace": "stat(null, \"Игроков подключено: [length(GLOB.clients)]\")"
+        },
+        {
+          "original": "stat(null, \"Server Uptime: [worldtime2text()]\")",
+          "replace": "stat(null, \"Время работы сервера: [worldtime2text()]\")"
+        },
+        {
+          "original": "stat(null, \"Round Time: [ROUND_TIME ? time2text(ROUND_TIME, \"hh:mm:ss\") : \"N/A\"]\")",
+          "replace": "stat(null, \"Длительность раунда: [ROUND_TIME ? time2text(ROUND_TIME, \"hh:mm:ss\") : \"N/A\"]\")"
+        },
+        {
+          "original": "stat(null, \"Station Time: [station_time_timestamp()]\")",
+          "replace": "stat(null, \"Станционное время: [station_time_timestamp()]\")"
+        }
+      ]
+    },
+    {
+      "path": "code/modules/mob/new_player/new_player.dm",
+      "replaces": [
+        {
+          "original": "output += \"<p><a href='byond://?src=[UID()];consent_signed=SIGNED'>I consent</A>\"",
+          "replace": "output += \"<p><a href='byond://?src=[UID()];consent_signed=SIGNED'>Я согласен</A>\""
+        },
+        {
+          "original": "output += \"<p><a href='byond://?src=[UID()];consent_rejected=NOTSIGNED'>I DO NOT consent</A>\"",
+          "replace": "output += \"<p><a href='byond://?src=[UID()];consent_rejected=NOTSIGNED'>Я не согласен</A>\""
+        },
+        {
+          "original": "var/datum/browser/popup = new(src, \"privacy_consent\", \"<div align='center'>Privacy Consent</div>\", 500, 400)",
+          "replace": "var/datum/browser/popup = new(src, \"privacy_consent\", \"<div align='center'>Соглашение о конфиденциальности</div>\", 500, 400)"
+        },
+        {
+          "original": "real_name = \"Random Character Slot\"",
+          "replace": "real_name = \"Случайный персонаж\""
+        },
+        {
+          "original": "var/output = \"<center><p><a href='byond://?src=[UID()];show_preferences=1'>Setup Character</A><br /><i>[real_name]</i></p>\"",
+          "replace": "var/output = \"<center><p><a href='byond://?src=[UID()];show_preferences=1'>Настройка персонажа</A><br /><i>[real_name]</i></p>\""
+        },
+        {
+          "original": "if(!ready)\toutput += \"<p><a href='byond://?src=[UID()];ready=1'>Declare Ready</A></p>\"",
+          "replace": "if(!ready)\toutput += \"<p><a href='byond://?src=[UID()];ready=1'>Нажмите, если готовы</A></p>\""
+        },
+        {
+          "original": "else\toutput += \"<p><b>You are ready</b> (<a href='byond://?src=[UID()];ready=2'>Cancel</A>)</p>\"",
+          "replace": "else\toutput += \"<p><b>Вы готовы</b> (<a href='byond://?src=[UID()];ready=2'>Отмена</A>)</p>\""
+        },
+        {
+          "original": "output += \"<p><a href='byond://?src=[UID()];manifest=1'>View the Crew Manifest</A></p>\"",
+          "replace": "output += \"<p><a href='byond://?src=[UID()];manifest=1'>Просмотр списка экипажа</A></p>\""
+        },
+        {
+          "original": "output += \"<p><a href='byond://?src=[UID()];late_join=1'>Join Game!</A></p>\"",
+          "replace": "output += \"<p><a href='byond://?src=[UID()];late_join=1'>Присоединиться к игре!</A></p>\""
+        },
+        {
+          "original": "if(!client.skip_antag) output += \"<p><a href='byond://?src=[UID()];skip_antag=1'>Global Antag Candidacy</A>\"",
+          "replace": "if(!client.skip_antag) output += \"<p><a href='byond://?src=[UID()];skip_antag=1'>Глобальная настройка антагов</A>\""
+        },
+        {
+          "original": "output += \"<br /><small>You are <b>[client.skip_antag ? \"ineligible\" : \"eligible\"]</b> for all antag roles.</small></p>\"",
+          "replace": "output += \"<br /><small>Вы <b>[client.skip_antag ? \"не готовы\" : \"готовы\"]</b> для всех антаг ролей.</small></p>\""
+        },
+        {
+          "original": "output += \"<p>Observe (Please wait...)</p>\"",
+          "replace": "output += \"<p>Наблюдать (Ожидайте...)</p>\""
+        },
+        {
+          "original": "output += \"<p><a href='byond://?src=[UID()];observe=1'>Observe</A></p>\"",
+          "replace": "output += \"<p><a href='byond://?src=[UID()];observe=1'>Наблюдать</A></p>\""
+        },
+        {
+          "original": "output += \"<p><a href='byond://?src=[UID()];tos=1'>Terms of Service</A></p>\"",
+          "replace": "output += \"<p><a href='byond://?src=[UID()];tos=1'>Условия использования</A></p>\""
+        },
+        {
+          "original": "var/datum/browser/popup = new(src, \"playersetup\", \"<div align='center'>New Player Options</div>\", 240, 340)",
+          "replace": "var/datum/browser/popup = new(src, \"playersetup\", \"<div align='center'>Новый игрок</div>\", 240, 340)"
+        },
+        {
+          "original": "stat(\"Game Mode: [GLOB.master_mode]\")",
+          "replace": "stat(\"Режим: [GLOB.master_mode]\")"
+        },
+        {
+          "original": "stat(\"Game Mode: Secret\")",
+          "replace": "stat(\"Режим: Секрет\")"
+        },
+        {
+          "original": "stat(\"Time To Start: [round(SSticker.pregame_timeleft/10)]\")",
+          "replace": "stat(\"Начало через: [round(SSticker.pregame_timeleft/10)]\")"
+        },
+        {
+          "original": "stat(\"Time To Start:\", \"DELAYED\")",
+          "replace": "stat(\"Начало через:\", \"ПАУЗА\")"
+        },
+        {
+          "original": "stat(\"Players: [totalPlayers]\")",
+          "replace": "stat(\"Игроки: [totalPlayers]\")"
+        },
+        {
+          "original": "stat(\"Players Ready: [totalPlayersReady]\")",
+          "replace": "stat(\"Готово: [totalPlayersReady]\")"
+        },
+        {
+          "original": "stat(\"[player.key] [(player.ready) ? (\"(Playing)\") : (null)]\")",
+          "replace": "stat(\"[player.key] [(player.ready) ? (\"(В игре)\") : (null)]\")"
+        },
+        {
+          "original": "to_chat(usr, \"<span class='warning'>You must consent to the terms of service before you can join!</span>\")",
+          "replace": "to_chat(usr, \"<span class='warning'>Перед тем как присоединиться, вы должны согласиться с условиями использования!</span>\")"
+        },
+        {
+          "original": "to_chat(usr, \"<span class='danger'>You have no jobs enabled, along with return to lobby if job is unavailable. This makes you ineligible for any round start role, please update your job preferences.</span>\")",
+          "replace": "to_chat(usr, \"<span class='danger'>Вы не выбрали ни одну должность, а также включена функция возврата в лобби в случае недоступности должности. Это не даёт вам получить раунд-стартовую роль, проверьте ваши настройки должностей.</span>\")"
+        },
+        {
+          "original": "to_chat(usr, \"<span class='warning'>You must wait for the server to finish starting before you can join!</span>\")",
+          "replace": "to_chat(usr, \"<span class='warning'>Вы должны дождаться окончания запуска сервера, прежде чем сможете присоединиться к нему!</span>\")"
+        },
+        {
+          "original": "if(alert(src,\"Are you sure you wish to observe? You cannot normally join the round after doing this!\",\"Player Setup\",\"Yes\",\"No\") == \"Yes\")",
+          "replace": "if(alert(src,\"Вы уверены, что хотите наблюдать? После этого Вы не сможете присоединиться к раунду!\",\"Настройка игрока\",\"Да\",\"Нет\") == \"Да\")"
+        },
+        {
+          "original": "to_chat(src, \"<span class='notice'>Now teleporting.</span>\")",
+          "replace": "to_chat(src, \"<span class='notice'>Телепортация...</span>\")"
+        },
+        {
+          "original": "to_chat(usr, \"<span class='warning'>The round is either not ready, or has already finished...</span>\")",
+          "replace": "to_chat(usr, \"<span class='warning'>Раунд либо не готов, либо уже завершился...</span>\")"
+        },
+        {
+          "original": "to_chat(src, alert(\"You are currently not whitelisted to play [client.prefs.active_character.species].\"))",
+          "replace": "to_chat(src, alert(\"В настоящее время вы не включены в белый список для игры на [client.prefs.active_character.species].\"))"
+        },
+        {
+          "original": "to_chat(usr, \"<span class='notice'>There is an administrative lock on entering the game!</span>\")",
+          "replace": "to_chat(usr, \"<span class='notice'>Администратор запретил входить в игру!</span>\")"
+        },
+        {
+          "original": "to_chat(src, alert(\"[rank] is not available. Please try another.\"))",
+          "replace": "to_chat(src, alert(\"[rank] не доступен. Попробуйте другую должность.\"))"
+        },
+        {
+          "original": "to_chat(src, alert(\"[rank] is not available due to your character's disability. Please try another.\"))",
+          "replace": "to_chat(src, alert(\"[rank] недоступен из-за инвалидности вашего персонажа. Попробуйте другую должность.\"))"
+        },
+        {
+          "original": "to_chat(src, alert(\"[rank] is not available due to your character having amputated limbs without a prosthetic replacement. Please try another.\"))",
+          "replace": "to_chat(src, alert(\"[rank] недоступен из-за того, что у вашего персонажа ампутированы конечности и отсутствуют протезы. Попробуйте другую должность.\"))"
+        },
+        {
+          "original": "join_message = \"has arrived\"",
+          "replace": "join_message = \"прибыл[character.gender == FEMALE ? \"а\" : \"\"]\""
+        },
+        {
+          "original": "join_message = \"has arrived on the station\"",
+          "replace": "join_message = \"прибыл[character.gender == FEMALE ? \"а\" : \"\"] на станцию\""
+        },
+        {
+          "original": "dat += \"Choose from the following open positions:<br><br>\"",
+          "replace": "dat += \"Выберите одну из следующих открытых вакансий:<br><br>\""
+        },
+        {
+          "original": "dat += \"<br><br><center>Unfortunately, there are no job slots free currently.<BR>Wait a few minutes, then try again.<BR>Or, try observing the round.</center>\"",
+          "replace": "dat += \"<br><br><center>К сожалению, в настоящее время свободных вакансий нет.<BR>Попробуйте снова через несколько минут<BR>Или попробуйте понаблюдать за раундом.</center>\""
+        },
+        {
+          "original": "var/datum/browser/popup = new(src, \"latechoices\", \"Choose Profession\", 900, 600)",
+          "replace": "var/datum/browser/popup = new(src, \"latechoices\", \"Выберите должность\", 900, 600)"
+        }
+      ]
+    },
+    {
+      "path": "code/modules/power/engines/supermatter/supermatter.dm",
+      "replaces": [
+        {
+          "original": "var/safe_alert = \"Crystalline hyperstructure returning to safe operating parameters.\"",
+          "replace": "var/safe_alert = \"Возвращение кристаллической гиперструктуры к безопасным рабочим параметрам.\""
+        },
+        {
+          "original": "var/warning_alert = \"Danger! Crystal hyperstructure integrity faltering!\"",
+          "replace": "var/warning_alert = \"Опасность! Нарушение целостности гиперструктуры кристалла!\""
+        },
+        {
+          "original": "var/emergency_alert = \"CRYSTAL DELAMINATION IMMINENT.\"",
+          "replace": "var/emergency_alert = \"РАССЛОЕНИЕ КРИСТАЛЛА НЕИЗБЕЖНО.\""
+        },
+        {
+          "original": "GLOB.major_announcement.Announce(\"WARNING, REACTOR CORE IS IN CRITICAL CHARGE!\", \"SUPERMATTER: STATUS CRITICAL\", 'modular_ss220/aesthetics_sounds/sound/supermatter/meltdown.ogg') //SS220 EDIT - ADDITION",
+          "replace": "GLOB.major_announcement.Announce(\"ВНИМАНИЕ, АКТИВНАЯ ЗОНА РЕАКТОРА НАХОДИТСЯ В КРИТИЧЕСКОМ СОСТОЯНИИ!\", \"РЕАКТОР СУПЕРМАТЕРИИ: СОСТОЯНИЕ КРИТИЧЕСКОЕ\", 'modular_ss220/aesthetics_sounds/sound/supermatter/meltdown.ogg') //SS220 EDIT - ADDITION"
+        },
+        {
+          "original": "GLOB.major_announcement.Announce(\"WARNING, CORE OVERHEATTING. NUCLEAR KNOCKDOWN IMMINENT!\", \"SUPERMATTER: STATUS CRITICAL\", 'modular_ss220/aesthetics_sounds/sound/supermatter/core_overheating.ogg') //SS220 EDIT - ADDITION",
+          "replace": "GLOB.major_announcement.Announce(\"ВНИМАНИЕ, АКТИВНАЯ ЗОНА РЕАКТОРА НАХОДИТСЯ В СОСТОЯНИИ КРИТИЧЕСКОГО ПЕРЕГРЕВА. ЯДЕРНАЯ КАТАСТРОФА НЕИЗБЕЖНА!\", \"РЕАКТОР СУПЕРМАТЕРИИ: СОСТОЯНИЕ КРИТИЧЕСКОЕ\", 'modular_ss220/aesthetics_sounds/sound/supermatter/core_overheating.ogg') //SS220 EDIT - ADDITION"
+        },
+        {
+          "original": "var/speaking = \"[emergency_alert] The supermatter has reached critical integrity failure. Emergency causality destabilization field has been activated.\"",
+          "replace": "var/speaking = \"[emergency_alert] Суперматерия достигла критического нарушения целостности. Активировано аварийное дестабилизационное поле.\""
+        },
+        {
+          "original": "radio.autosay(\"[safe_alert] Failsafe has been disengaged.\", name, null, list(z))",
+          "replace": "radio.autosay(\"[safe_alert] Система отказоустойчивости деактивирована.\", name, null, list(z))"
+        },
+        {
+          "original": "speaking = \"[DisplayTimeText(i, TRUE)] remain before causality stabilization.\"",
+          "replace": "speaking = \"До взрыва кристалла суперматерии осталось [DisplayTimeText(i, TRUE)].\""
+        },
+        {
+          "original": "radio.autosay(\"[emergency_alert] Integrity: [get_integrity()]%\", name, null, list(z))",
+          "replace": "radio.autosay(\"[emergency_alert] Целостность: [get_integrity()]%\", name, null, list(z))"
+        },
+        {
+          "original": "radio.autosay(\"[warning_alert] Integrity: [get_integrity()]%\", name, \"Engineering\", list(z))",
+          "replace": "radio.autosay(\"[warning_alert] Целостность: [get_integrity()]%\", name, \"Engineering\", list(z))"
+        },
+        {
+          "original": "radio.autosay(\"[safe_alert] Integrity: [get_integrity()]%\", name, \"Engineering\", list(z))",
+          "replace": "radio.autosay(\"[safe_alert] Целостность: [get_integrity()]%\", name, \"Engineering\", list(z))"
+        },
+        {
+          "original": "radio.autosay(\"Warning: Hyperstructure has reached dangerous power level.\", name, \"Engineering\", list(z))",
+          "replace": "radio.autosay(\"Гиперструктура достигла опасного уровня мощности.\", name, \"Engineering\", list(z))"
+        },
+        {
+          "original": "radio.autosay(\"DANGER: CHARGE INERTIA CHAIN REACTION IN PROGRESS.\", name, \"Engineering\", list(z))",
+          "replace": "radio.autosay(\"ОПАСНОСТЬ: ИДЕТ ИНЕРЦИОННАЯ ЦЕПНАЯ РЕАКЦИЯ ЗАРЯДА.\", name, \"Engineering\", list(z))"
+        },
+        {
+          "original": "radio.autosay(\"Warning: Critical coolant mass reached.\", name, \"Engineering\", list(z))",
+          "replace": "radio.autosay(\"Предупреждение: Достигнута критическая масса теплоносителя.\", name, \"Engineering\", list(z))"
+        }
+      ]
+    },
+    {
+      "path": "code/modules/response_team/ert.dm",
+      "replaces": [
+        {
+          "original": "GLOB.major_announcement.Announce(\"[station_name()], we are unfortunately unable to send you an Emergency Response Team at this time.\", \"ERT Unavailable\")",
+          "replace": "GLOB.major_announcement.Announce(\"[station_name()], к сожалению, в настоящее время мы не можем направить к вам отряд быстрого реагирования.\", \"ОБР недоступен.\")"
+        },
+        {
+          "original": "GLOB.major_announcement.Announce(\"Attention, [station_name()]. We are sending a team of highly trained assistants to aid(?) you. Standby.\", \"ERT En-Route\")",
+          "replace": "GLOB.major_announcement.Announce(\"Внимание, [station_name()]. Мы направляем команду высококвалифицированных ассистентов для оказания помощи(?) вам. Ожидайте.\", \"ОБР в пути.\")"
+        },
+        {
+          "original": "GLOB.major_announcement.Announce(\"Attention, [station_name()]. We are sending a code AMBER light Emergency Response Team. Standby.\", \"ERT En-Route\")",
+          "replace": "GLOB.major_announcement.Announce(\"Внимание, [station_name()]. Мы направляем стандартный отряд быстрого реагирования кода «ЭМБЕР». Ожидайте.\", \"ОБР в пути.\")"
+        },
+        {
+          "original": "GLOB.major_announcement.Announce(\"Attention, [station_name()]. We are sending a code RED Emergency Response Team. Standby.\", \"ERT En-Route\")",
+          "replace": "GLOB.major_announcement.Announce(\"Внимание, [station_name()]. Мы направляем усиленный отряд быстрого реагирования кода «РЭД». Ожидайте.\", \"ОБР в пути.\")"
+        },
+        {
+          "original": "GLOB.major_announcement.Announce(\"Attention, [station_name()]. We are sending a code GAMMA elite Emergency Response Team. Standby.\", \"ERT En-Route\")",
+          "replace": "GLOB.major_announcement.Announce(\"Внимание, [station_name()]. Мы направляем элитный отряд быстрого реагирования кода «ГАММА». Ожидайте.\", \"ОБР в пути.\")"
+        }
+      ]
+    },
+    {
+      "path": "code/modules/security_levels/security_level_datums.dm",
+      "replaces": [
+        {
+          "original": "lowering_to_announcement_title = \"Attention! Security level lowered to Green.\"",
+          "replace": "lowering_to_announcement_title = \"ВНИМАНИЕ! Уровень угрозы понижен до ЗЕЛЁНОГО.\""
+        },
+        {
+          "original": "lowering_to_announcement_text = \"All threats to the station have passed. All weapons need to be holstered and privacy laws are once again fully enforced.\"",
+          "replace": "lowering_to_announcement_text = \"Все угрозы для станции устранены. Все оружие должно быть в кобуре, и законы о конфиденциальности вновь полностью соблюдаются.\""
+        },
+        {
+          "original": "lowering_to_announcement_title = \"Attention! Security level lowered to Blue.\"",
+          "replace": "lowering_to_announcement_title = \"ВНИМАНИЕ! Уровень угрозы понижен до СИНЕГО.\""
+        },
+        {
+          "original": "lowering_to_announcement_text = \"The immediate threat has passed. Security may no longer have weapons drawn at all times, but may continue to have them visible. Random searches are still allowed.\"",
+          "replace": "lowering_to_announcement_text = \"Непосредственная угроза миновала. Служба безопасности может больше не держать оружие в полной боевой готовности, но может по-прежнему держать его на виду. Выборочные обыски запрещены.\""
+        },
+        {
+          "original": "elevating_to_announcement_title = \"Attention! Security level elevated to Blue.\"",
+          "replace": "elevating_to_announcement_title = \"ВНИМАНИЕ! Уровень угрозы повышен до СИНЕГО.\""
+        },
+        {
+          "original": "elevating_to_announcement_text = \"The station has received reliable information about possible hostile activity on the station. Security staff may have weapons visible and random searches are permitted.\"",
+          "replace": "elevating_to_announcement_text = \"Станция получила надежные данные о возможной враждебной активности на борту. Служба Безопасности может держать оружие на виду.\""
+        },
+        {
+          "original": "lowering_to_announcement_title = \"Attention! Code Red!\"",
+          "replace": "lowering_to_announcement_title = \"ВНИМАНИЕ! КОД КРАСНЫЙ!\""
+        },
+        {
+          "original": "lowering_to_announcement_text = \"The station's self-destruct mechanism has been deactivated, but there is still an immediate and serious threat to the station. Security may have weapons unholstered at all times. Random searches are allowed and advised.\"",
+          "replace": "lowering_to_announcement_text = \"Код был снижен до красного. Станции по-прежнему грозит серьёзная опасность. Службе Безопасности рекомендуется иметь оружие в полной боевой готовности. Выборочные обыски разрешены.\""
+        },
+        {
+          "original": "elevating_to_announcement_title = \"Attention! Code Red!\"",
+          "replace": "elevating_to_announcement_title = \"ВНИМАНИЕ! КОД КРАСНЫЙ!\""
+        },
+        {
+          "original": "elevating_to_announcement_text = \"There is an immediate and serious threat to the station. Security may have weapons unholstered at all times. Random searches are allowed and advised.\"",
+          "replace": "elevating_to_announcement_text = \"Станции грозит серьёзная опасность. Службе Безопасности рекомендуется иметь оружие в полной боевой готовности. Выборочные обыски разрешены.\""
+        },
+        {
+          "original": "lowering_to_announcement_title = \"Attention! Gamma security level activated!\"",
+          "replace": "lowering_to_announcement_title = \"Внимание! Код ГАММА!\""
+        },
+        {
+          "original": "lowering_to_announcement_text = \"Central Command has ordered the Gamma security level on the station. Security is to have weapons equipped at all times, and all civilians are to immediately seek their nearest head for transportation to a secure location.\"",
+          "replace": "lowering_to_announcement_text = \"Центральным Командованием был установлен Код Гамма на станции. Служба безопасности должна быть полностью вооружена. Гражданский персонал обязан немедленно обратиться к Главам отделов для получения дальнейших указаний.\""
+        },
+        {
+          "original": "elevating_to_announcement_text = \"Central Command has ordered the Gamma security level on the station. Security is to have weapons equipped at all times, and all civilians are to immediately seek their nearest head for transportation to a secure location.\"",
+          "replace": "elevating_to_announcement_text = \"Центральным Командованием был установлен Код Гамма на станции. Служба безопасности должна быть полностью вооружена. Гражданский персонал обязан немедленно обратиться к Главам отделов для получения дальнейших указаний.\""
+        },
+        {
+          "original": "elevating_to_announcement_title = \"Attention! Gamma security level activated!\"",
+          "replace": "elevating_to_announcement_title = \"Внимание! Код ГАММА!\""
+        },
+        {
+          "original": "lowering_to_announcement_title = \"Attention! Epsilon security level activated!\"",
+          "replace": "lowering_to_announcement_title = \"ВНИМАНИЕ! КОД ЭПСИЛОН!\""
+        },
+        {
+          "original": "lowering_to_announcement_text = \"Central Command has ordered the Epsilon security level on the station. Consider all contracts terminated.\"",
+          "replace": "lowering_to_announcement_text = \"Центральным командованием был установлен код ЭПСИЛОН. Все контракты расторгнуты.\""
+        },
+        {
+          "original": "elevating_to_announcement_title = \"Attention! Epsilon security level activated!\"",
+          "replace": "elevating_to_announcement_title = \"ВНИМАНИЕ! КОД ЭПСИЛОН!\""
+        },
+        {
+          "original": "elevating_to_announcement_text = \"Central Command has ordered the Epsilon security level on the station. Consider all contracts terminated.\"",
+          "replace": "elevating_to_announcement_text = \"Центральным командованием был установлен код ЭПСИЛОН. Все контракты расторгнуты.\""
+        },
+        {
+          "original": "elevating_to_announcement_title = \"Attention! Delta security level reached!\"",
+          "replace": "elevating_to_announcement_title = \"ВНИМАНИЕ! КОД ДЕЛЬТА!\""
+        },
+        {
+          "original": "elevating_to_announcement_text = \"The station's self-destruct mechanism has been engaged. All crew are instructed to obey all instructions given by heads of staff. Any violations of these orders can be punished by death. This is not a drill.\"",
+          "replace": "elevating_to_announcement_text = \"Механизм самоуничтожения станции задействован. Все члены экипажа обязан подчиняться всем указаниям, данными Главами отделов. Любые нарушения этих приказов наказуемы уничтожением на месте. Это не учебная тревога.\""
+        }
+      ]
+    },
+    {
+      "path": "code/modules/shuttle/emergency.dm",
+      "replaces": [
+        {
+          "original": "\"The emergency shuttle has been called. [redAlert ? \"Red Alert state confirmed: Dispatching priority shuttle. \" : \"\" ]It will arrive in [timeLeft(600)] minutes.[reason][SSshuttle.emergencyLastCallLoc ? \"\\n\\nCall signal traced. Results can be viewed on any communications console.\" : \"\" ]\",",
+          "replace": "GLOB.major_announcement.Announce(\"Был вызван эвакуационный шаттл. [redAlert ? \"Красный уровень угрозы подтверждён: отправлен приоритетный шаттл. \" : \"\" ]Он прибудет в течение [timeLeft(600)] минут.[reason][SSshuttle.emergencyLastCallLoc ? \"\\n\\nВызов шаттла отслежен. Результаты можно посмотреть на любой консоли связи.\" : \"\" ]\"),"
+        },
+        {
+          "original": "new_title = \"Priority Announcement\",",
+          "replace": "new_title = \"Приоритетное оповещение\","
+        },
+        {
+          "original": "\"The crew transfer shuttle has been called. [redAlert ? \"Red Alert state confirmed: Dispatching priority shuttle. \" : \"\" ]It will arrive in [timeLeft(600)] minutes.[reason]\",",
+          "replace": "\"Был вызван эвакуационный шаттл. [redAlert ? \"Красный уровень угрозы подтверждён: отправлен приоритетный шаттл. \" : \"\" ]Он прибудет в течение [timeLeft(600)] минут.[reason]\","
+        }
+      ]
+    }
+  ]
 }
