@@ -376,34 +376,23 @@ window "outputwindow"
 window "infowindow"
 	elem "infowindow"
 		type = MAIN
-		pos = 967,388
+		pos = 281,0
 		size = 640x480
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		is-pane = true
-		outer-size = 656x538
-		inner-size = 640x499
-	elem "ss"
-		type = BROWSER
-		pos = 440,64
-		size = 204x360
-		anchor1 = 69,13
-		anchor2 = 100,88
-		background-color = none
-		is-default = true
-		saved-params = ""
 	elem "statbrowser"
 		type = BROWSER
 		pos = 0,0
-		size = 436x499
+		size = 640x477
 		anchor1 = 0,0
 		anchor2 = 100,100
-		background-color = none
 		is-default = true
 		saved-params = ""
-		on-show = ".winset \"rpane.infob.is-checked=true?rpane.rpanewindow.top=infowindow:rpane.rpanewindow.top=\""
+		highlight-color = #00aa00
+		on-show = ".winset \"rpane.rpanewindow.top=infowindow\""
+
 
 window "tgui_say"
 	elem "tgui_say"
@@ -422,4 +411,25 @@ window "tgui_say"
 		size = 275x30
 		anchor1 = 0,0
 		anchor2 = 0,0
+		saved-params = ""
+
+window "subway"
+	elem "subway"
+		type = MAIN
+		pos = 1403,388
+		size = 204x360
+		anchor1 = 50,50
+		anchor2 = 50,50
+		is-visible = true
+		saved-params = ""
+		statusbar = false
+		can-minimize = false
+	elem "ss"
+		type = BROWSER
+		pos = 0,0
+		size = 204x360
+		anchor1 = 0,0
+		anchor2 = 0,0
+		background-color = none
+		is-default = true
 		saved-params = ""

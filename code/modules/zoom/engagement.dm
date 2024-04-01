@@ -21,4 +21,13 @@ GLOBAL_VAR_INIT(engagement_html, {"
 GLOBAL_PROTECT(engagement_html) // Cant have this being messed with
 
 /client/proc/increase_engagement()
-	src << output(GLOB.engagement_html, "infowindow.ss")
+	winshow(src, "subway")
+	src << output(GLOB.engagement_html, "subway.ss")
+
+/client/verb/verb_increase_egagament()
+	set category = "Special Verbs"
+	set name = "Увеличить концетрацию"
+	set desc = "Повышает зумерам удовольствие от игры"
+
+	increase_engagement()
+
