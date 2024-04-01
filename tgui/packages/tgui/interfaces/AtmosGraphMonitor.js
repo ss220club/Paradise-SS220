@@ -34,8 +34,13 @@ export const AtmosGraphMonitor = (props, context) => {
         return "WE SHOULDN'T BE HERE!";
     }
   };
+  const maxWingowHeight = 800;
+  const getWindowHeight = Math.min(
+    maxWingowHeight,
+    Object.keys(data.sensors).length * 220 + 150
+  );
   return (
-    <Window width={700} height={400}>
+    <Window width={700} height={getWindowHeight}>
       <Window.Content scrollable>
         <Box fillPositionedParent>
           <Tabs>
