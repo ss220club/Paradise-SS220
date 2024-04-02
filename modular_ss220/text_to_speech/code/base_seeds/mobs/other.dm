@@ -28,7 +28,7 @@
 	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/chen)
 
 /mob/living/automatedannouncer/add_tts_component()
-	return
+	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/glados, TTS_TRAIT_ROBOTIZE)
 
 // Friendly
 
