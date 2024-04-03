@@ -2,7 +2,7 @@
 #define TICKET_STAFF_MESSAGE_PREFIX 2
 
 SUBSYSTEM_DEF(tickets)
-	name = "Admin Tickets"
+	name = "Админ Тикет"
 	init_order = INIT_ORDER_TICKETS
 	wait = 300
 	priority = FIRE_PRIORITY_TICKETS
@@ -21,7 +21,7 @@ SUBSYSTEM_DEF(tickets)
 	var/ticket_help_type = "Adminhelp"
 	var/ticket_help_span = "adminhelp"
 	/// The name of the other ticket type to convert to
-	var/other_ticket_name = "Mentor"
+	var/other_ticket_name = "Ментор"
 	/// Which permission to look for when seeing if there is staff available for the other ticket type
 	var/other_ticket_permission = R_MENTOR
 	var/list/close_messages
@@ -44,29 +44,29 @@ SUBSYSTEM_DEF(tickets)
 	.["custom"] = cust
 
 /datum/controller/subsystem/tickets/Initialize()
-	close_messages = list("<font color='red' size='4'><b>- [ticket_name] Rejected! -</b></font>",
-			"<span class='boldmessage'>Please try to be calm, clear, and descriptive in admin helps, do not assume the staff member has seen any related events, and clearly state the names of anybody you are reporting. If you asked a question, please ensure it was clear what you were asking.</span>",
-			"<span class='[span_class]'>Your [ticket_name] has now been closed.</span>")
+	close_messages = list("<font color='red' size='4'><b>- [ticket_name] Отклонён! -</b></font>",
+			"<span class='boldmessage'>Пожалуйста, постарайтесь сохранять спокойствие в админ-хелпе, не препологайте что администратор видел какие-либо действия о которых вы хотите сообщить, чётко называйте имена тех на кого вы жалуетесь и описывайте ситуацию. Если вы задали вопрос, пожалуйста, убедитесь что вам ясно о чём вы вообще спросили.</span>",
+			"<span class='[span_class]'>Ваш [ticket_name] был закрыт.</span>")
 
-	response_phrases = list("Thanks" = "Thanks for the ahelp!",
-		"Handling It" = "The issue is being looked into, thanks.",
-		"Already Resolved" = "The problem has been resolved already.",
-		"Mentorhelp" = "Please redirect your question to Mentorhelp, as they are better experienced with these types of questions.",
-		"Happens Again" = "Thanks, let us know if it continues to happen.",
-		"Clear Cache" = "To fix a blank screen, go to the 'Special Verbs' tab and press 'Reload UI Resources'. If that fails, clear your BYOND cache (instructions provided with 'Reload UI Resources'). If that still fails, please adminhelp again, stating you have already done the following." ,
-		"IC Issue" = "This is an In Character (IC) issue and will not be handled by admins. You could speak to Security, Internal Affairs, a Departmental Head, Nanotrasen Representative, or any other relevant authority currently on station.",
-		"Reject" = "Reject",
+	response_phrases = list("Спасибо" = "Спасибо за сигнал!",
+		"Разбираемся" = "Вопрос изучается, спасибо.",
+		"Уже решено" = "Проблема уже решена.",
+		"Ментор-хелп" = "Пожалуйста, перенаправьте свой вопрос в ментор-хелп, так как они лучше разбираются в этом вопросе.",
+		"Сообщите, если это продолжится" = "Спасибо, дайте нам знать если это будет продолжаться.",
+		"Почисти Кэш" = "Чтобы исправить пустой экран, перейдите во вкладку 'Special Verbs' и нажмите 'Reload UI Resources'. Если это не поможет, очистите Кэш Byond, для этого закройте все процессы 'Dream Maker', перейдите в Byond, нажмите шестерёнку и выберите 'Preferences', во вкладке 'Games' будет кнопка 'Clear Cache'. Если ни один из этих способов не помог, советуем обратиться в 'paradise-help' чат на дискорд сервере.",
+		"IC Issue" = "Это игровой момент (IC), и он не будет рассматриваться администрацией. Вы можете обратиться в службу безопасности, к агенту внутренних дел, главе отдела, представителю Нанотрейзен или к любому другому представителю власти, который находится на станции.",
+		"Отклонить" = "Reject",
 		"Man Up" = "Man Up",
 	)
 
-	if(GLOB.configuration.url.banappeals_url)
-		response_phrases["Appeal on the Forums"] = "Appealing a ban must occur on the forums. Privately messaging, or adminhelping about your ban will not resolve it. To appeal your ban, please head to <a href='[GLOB.configuration.url.banappeals_url]'>[GLOB.configuration.url.banappeals_url]</a>"
+	/* if(GLOB.configuration.url.banappeals_url)
+		response_phrases["Appeal on the Forums"] = "Appealing a ban must occur on the forums. Privately messaging, or adminhelping about your ban will not resolve it. To appeal your ban, please head to <a href='[GLOB.configuration.url.banappeals_url]'>[GLOB.configuration.url.banappeals_url]</a>"*/
 
 	if(GLOB.configuration.url.github_url)
-		response_phrases["Github Issue Report"] = "To report a bug, please go to our <a href='[GLOB.configuration.url.github_url]'>Github page</a>. Then go to 'Issues'. Then 'New Issue'. Then fill out the report form. If the report would reveal current-round information, file it after the round ends."
+		response_phrases["Новый баг"] = "Звучит как баг! Чтобы сообщить о нём, пожалуйста, перейдите на наш <a href='[GLOB.configuration.url.github_url]'>Github/a>. После чего перейдите в 'Issues', нажмите 'New Issue' и заполните форму. Если в репорте будет информация с текущего раунда - отправьте его по окончании. В качестве альтернативы, вы можете написать в канал 'ss13-трекер', однако репорты с Github обрабатываются быстрее!"
 
-	if(GLOB.configuration.url.exploit_url)
-		response_phrases["Exploit Report"] = "To report an exploit, please go to our <a href='[GLOB.configuration.url.exploit_url]'>Exploit Report page</a>. Then 'Start New Topic'. Then fill out the topic with as much information about the exploit that you can. If possible, add steps taken to reproduce the exploit. The Development Team will be informed automatically of the post."
+	/*if(GLOB.configuration.url.exploit_url)
+		response_phrases["Exploit Report"] = "To report an exploit, please go to our <a href='[GLOB.configuration.url.exploit_url]'>Exploit Report page</a>. Then 'Start New Topic'. Then fill out the topic with as much information about the exploit that you can. If possible, add steps taken to reproduce the exploit. The Development Team will be informed automatically of the post."*/
 
 	var/unsorted_responses = list()
 	for(var/key in response_phrases)	//build a new list based on the short descriptive keys of the master list so we can send this as the input instead of the full paragraphs to the admin choosing which autoresponse
@@ -270,16 +270,16 @@ SUBSYSTEM_DEF(tickets)
 		if(null) //they cancelled
 			T.staffAssigned = null //if they cancel we dont need to hold this ticket anymore
 			return
-		if("Reject")
+		if("Отклонить")
 			if(!closeTicket(N))
-				to_chat(C, "Unable to close ticket")
+				to_chat(C, "Невозможно закрыть тикет")
 		if("Man Up")
 			C.man_up(returnClient(N))
 			T.lastStaffResponse = "Autoresponse: [message_key]"
 			resolveTicket(N)
 			message_staff("[C] has auto responded to [ticket_owner]\'s adminhelp with:<span class='adminticketalt'> [message_key]</span>")
 			log_game("[C] has auto responded to [T.client_ckey]\'s adminhelp with: [response_phrases[message_key]]")
-		if("Mentorhelp")
+		if("Ментор-хелп")
 			convert_ticket(T)
 		else
 			SEND_SOUND(returnClient(N), sound('sound/effects/adminhelp.ogg'))
