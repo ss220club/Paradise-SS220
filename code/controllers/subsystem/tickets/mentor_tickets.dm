@@ -9,7 +9,7 @@ GLOBAL_REAL(SSmentor_tickets, /datum/controller/subsystem/tickets/mentor_tickets
 	name = "Mentor Tickets"
 	offline_implications = "Mentor tickets will no longer be marked as stale. No immediate action is needed."
 	ticket_system_name = "Mentor Tickets"
-	ticket_name = "Ментор Тикет"
+	ticket_name = "Ментор тикет"
 	span_class = "mentorhelp"
 	anchor_link_extra = ";is_mhelp=1"
 	ticket_help_type = "Mentorhelp"
@@ -35,7 +35,7 @@ GLOBAL_REAL(SSmentor_tickets, /datum/controller/subsystem/tickets/mentor_tickets
 	)
 
 	if(GLOB.configuration.url.github_url)
-		response_phrases["Новый баг"] = "Звучит как баг! Чтобы сообщить о нём, пожалуйста, перейдите на наш <a href='[GLOB.configuration.url.github_url]'>Github/a>. После чего перейдите в 'Issues', нажмите 'New Issue' и заполните форму. Если в репорте будет информация с текущего раунда - отправьте его по окончании. В качестве альтернативы, вы можете написать в канал 'ss13-трекер', однако репорты с Github обрабатываются быстрее!"
+		response_phrases["Новый баг"] = "Звучит как баг! Чтобы сообщить о нём, пожалуйста, перейдите на наш <a href='[GLOB.configuration.url.github_url]'>Github</a>. После чего перейдите в 'Issues', нажмите 'New Issue' и заполните форму. Если в репорте будет информация с текущего раунда - отправьте его по окончании. В качестве альтернативы, вы можете написать в канал 'ss13-трекер', однако репорты с Github обрабатываются быстрее!"
 
 	var/unsorted_responses = list()
 	for(var/key in response_phrases)        //build a new list based on the short descriptive keys of the master list so we can send this as the input instead of the full paragraphs to the admin choosing which autoresponse
@@ -67,7 +67,7 @@ GLOBAL_REAL(SSmentor_tickets, /datum/controller/subsystem/tickets/mentor_tickets
 		return
 
 	SEND_SOUND(returnClient(N), sound('sound/effects/adminhelp.ogg'))
-	to_chat_safe(returnClient(N), "<span class='[span_class]'>[key_name_hidden(C)] использует следующий автоответ:</span> <span class='adminticketalt'>[response_phrases[message_key]]</span>") //for this we want the full value of whatever key this is to tell the player so we do response_phrases[message_key]
+	to_chat_safe(returnClient(N), "<span class='[span_class]'>[key_name_hidden(C)] использует автоответ:</span> <span class='adminticketalt'>[response_phrases[message_key]]</span>") //for this we want the full value of whatever key this is to tell the player so we do response_phrases[message_key]
 	message_staff("[C] ипользовал автоответ в ментор-тикете [ticket_owner]:<span class='adminticketalt'> [message_key]</span>") //we want to use the short named keys for this instead of the full sentence which is why we just do message_key
 	T.lastStaffResponse = "Автоответ: [message_key]"
 	resolveTicket(N)
