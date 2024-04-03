@@ -158,7 +158,7 @@ SUBSYSTEM_DEF(tickets)
 	if(M)
 		L += "([ADMIN_QUE(M,"?")]) ([ADMIN_PP(M,"PP")]) ([ADMIN_VV(M,"VV")]) ([ADMIN_TP(M,"TP")]) ([ADMIN_SM(M,"SM")]) ([admin_jump_link(M)])"
 	L += "(<a href='?_src_=holder;openticket=[ticketNum][anchor_link_extra]'>ТИКЕТ</a>) "
-	L += "[isAI(M) ? "(<a href='?_src_=holder;adminchecklaws=[M.UID()]'>CL</a>)" : ""] (<a href='?_src_=holder;take_question=[ticketNum][anchor_link_extra]'>ВЗЯТЬ</a>) "
+	L += "[isAI(M) ? "(<a href='?_src_=holder;adminchecklaws=[M.UID()]'>ЗАКОНЫ</a>)" : ""] (<a href='?_src_=holder;take_question=[ticketNum][anchor_link_extra]'>ВЗЯТЬ</a>) "
 	L += "(<a href='?_src_=holder;resolve=[ticketNum][anchor_link_extra]'>РЕШИТЬ</a>) (<a href='?_src_=holder;autorespond=[ticketNum][anchor_link_extra]'>АВТО</a>) "
 	L += "(<a href='?_src_=holder;convert_ticket=[ticketNum][anchor_link_extra]'>КОНВЕРТ</a>) :</span> <span class='[ticket_help_span]'>[msg]</span>"
 	return L.Join()
