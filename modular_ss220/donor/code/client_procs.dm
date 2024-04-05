@@ -52,7 +52,7 @@
 			if(BIG_WORKER_TIER)
 				C.donator_level = BIG_WORKER_TTS_LEVEL > donator_level ? C.donator_level : donator_level
 			else
-				C.donator_level = max(c.donator_level, donator_level)
+				C.donator_level = max(C.donator_level, donator_level)
 
 	C.donor_loadout_points()
 	C.donor_character_slots()
