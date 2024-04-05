@@ -38514,6 +38514,9 @@
 	dir = 4
 	},
 /obj/machinery/light/directional/south,
+/obj/machinery/atmospherics/meter{
+	autolink_id = "sm_sen_cold"
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "darkyellow"
 	},
@@ -80909,6 +80912,13 @@
 	icon_state = "freezerfloor"
 	},
 /area/station/maintenance/disposal)
+"qCM" = (
+/obj/machinery/atmospherics/air_sensor{
+	autolink_id = "sm_sen_cont";
+	output = 127
+	},
+/turf/simulated/floor/engine,
+/area/station/engineering/engine/supermatter)
 "qCO" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
@@ -88713,7 +88723,9 @@
 	dir = 4
 	},
 /obj/machinery/light/directional/south,
-/obj/machinery/atmospherics/meter,
+/obj/machinery/atmospherics/meter{
+	autolink_id = "sm_sen_hot"
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "darkyellow"
 	},
@@ -90852,7 +90864,8 @@
 "uiw" = (
 /obj/structure/extinguisher_cabinet/directional/east,
 /obj/machinery/computer/general_air_control/pt_monitor{
-	dir = 1
+	dir = 1;
+	autolink_sensors = list("sm_sen_hot"="Горячий Контур","sm_sen_cold"="Холодный Контур","sm_sen_cont"="Зона Содержания")
 	},
 /turf/simulated/floor/plasteel{
 	dir = 6;
@@ -138481,7 +138494,7 @@ dah
 wQQ
 mkq
 dPA
-cSI
+qCM
 phw
 cSI
 nic
