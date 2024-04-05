@@ -36,6 +36,17 @@
 	var/next_record_time = 0
 	var/next_long_record_time = 0
 
+/obj/machinery/computer/general_air_control/pt_monitor/proc/init_history_lists()
+	for(var/sensor_name in sensor_name_data_map)
+		LAZYINITLISTSIZED(sensor_name_data_map[sensor_name]["pressure_history"], MAX_RECORD_SIZE)
+		LAZYINITLISTSIZED(sensor_name_data_map[sensor_name]["temperature_history"], MAX_RECORD_SIZE)
+		LAZYINITLISTSIZED(sensor_name_data_map[sensor_name]["long_pressure_history"], MAX_RECORD_SIZE)
+		LAZYINITLISTSIZED(sensor_name_data_map[sensor_name]["long_temperature_history"], MAX_RECORD_SIZE)
+
+/obj/machinery/computer/general_air_control/pt_monitor/LateInitialize()
+	. = ..()
+	init_history_lists()
+
 /obj/machinery/computer/general_air_control/pt_monitor/ui_interact(mob/user, datum/tgui/ui = null)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
@@ -44,11 +55,7 @@
 
 /obj/machinery/computer/general_air_control/pt_monitor/configure_sensors(mob/living/user, obj/item/multitool/M)
 	. = ..()
-	for(var/sensor_name in sensor_name_data_map)
-		LAZYINITLISTSIZED(sensor_name_data_map[sensor_name]["pressure_history"], MAX_RECORD_SIZE)
-		LAZYINITLISTSIZED(sensor_name_data_map[sensor_name]["temperature_history"], MAX_RECORD_SIZE)
-		LAZYINITLISTSIZED(sensor_name_data_map[sensor_name]["long_pressure_history"], MAX_RECORD_SIZE)
-		LAZYINITLISTSIZED(sensor_name_data_map[sensor_name]["long_temperature_history"], MAX_RECORD_SIZE)
+	init_history_lists()
 
 /obj/machinery/computer/general_air_control/pt_monitor/refresh_sensors()
 	var/log_long_record = FALSE
