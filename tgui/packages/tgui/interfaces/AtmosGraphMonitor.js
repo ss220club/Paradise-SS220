@@ -24,7 +24,7 @@ export const AtmosGraphMonitor = (props, context) => {
         return (
           <AtmosGraphPage
             data={data}
-            info="Интервал записи T = 10 Мин. (5 Мин) | Интервал между записями t = 30с."
+            info="Интервал записи T = 10 Мин. | Интервал между записями t = 30с."
             pressureListName="long_pressure_history"
             temperatureListName="long_temperature_history"
           />
