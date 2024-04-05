@@ -2,8 +2,8 @@
 #define SENSOR_TEMPERATURE 	(1<<1)
 #define NO_DATA_VALUE  		null
 #define MAX_RECORD_SIZE 	20
-#define RECORD_INTERVAL     1
-#define LONG_RECORD_INTERVAL 15
+#define RECORD_INTERVAL     3
+#define LONG_RECORD_INTERVAL 30
 #define LAZYINITLISTSIZED(L, N) if(!L) L = new/list(N)
 #define ADD_TO_HISTORY(history_list, measurement) \
 	history_list += measurement; \
