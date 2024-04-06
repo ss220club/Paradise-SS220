@@ -35,7 +35,7 @@ GLOBAL_REAL(SSmentor_tickets, /datum/controller/subsystem/tickets/mentor_tickets
 	)
 
 	if(GLOB.configuration.url.github_url)
-		response_phrases["Новый баг"] = "Звучит как баг! Чтобы сообщить о нём, пожалуйста, перейдите на наш <a href='[GLOB.configuration.url.github_url]'>GitHub</a>. После чего перейдите в 'Issues', нажмите 'New Issue' и заполните форму. Если в репорте будет информация с текущего раунда, отправьте ее только после его окончания. В качестве альтернативы вы можете написать в канал 'ss13-трекер', однако репорты с GitHub обрабатываются быстрее!"
+		response_phrases["Новый баг"] = "Звучит как баг! Чтобы сообщить о нём, пожалуйста, перейдите на наш <a href='[GLOB.configuration.url.github_url]'>GitHub</a>. После чего перейдите в 'Issues', нажмите 'New Issue' и заполните форму. Если в репорте будет информация с текущего раунда, отправьте ее только после его окончания. В качестве альтернативы вы можете написать в канал 'ss13-трекер' нашего дискорд сервера, однако репорты с GitHub обрабатываются быстрее!"
 
 	var/unsorted_responses = list()
 	for(var/key in response_phrases)        //build a new list based on the short descriptive keys of the master list so we can send this as the input instead of the full paragraphs to the admin choosing which autoresponse
