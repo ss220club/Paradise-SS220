@@ -808,6 +808,13 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	item = /obj/item/bio_chip_implanter/traitor
 	cost = 50
 
+/datum/uplink_item/bio_chips/proto_adrenal
+	name = "Proto-Adrenal Bio-chip"
+	desc = "A old prototype of the Adrenalin implant, that grants the user 4 seconds of antistun, getting them back on their feet instantly once, but nothing more. Speed and healing sold seperately."
+	reference = "PAI"
+	item = /obj/item/bio_chip_implanter/proto_adrenalin
+	cost = 18
+
 /datum/uplink_item/bio_chips/adrenal
 	name = "Adrenal Bio-chip"
 	desc = "Био-чип, вводимый в тело и позже активируемый в ручную для впрыскивания химического коктейля, имеющего средние исцеляющие способности, а также убирает текущие ослабления и уменьшает время всех последующих, дополнительно увеличивая скорость передвижения. Может быть активирован до 3 раз."
@@ -851,6 +858,13 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 /datum/uplink_item/badass
 	category = "(Бесполезно) Понты"
 	surplus = 0
+
+/datum/uplink_item/badass/pen
+	name = "Syndicate Fountain Pen"
+	desc = "A slick Syndicate-branded pen, to show everyone at the meeting that you mean business."
+	reference = "PEN"
+	item = /obj/item/pen/multi/syndicate
+	cost = 1
 
 /datum/uplink_item/badass/syndiecigs
 	name = "Syndicate Smokes"

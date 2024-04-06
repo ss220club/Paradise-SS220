@@ -710,7 +710,7 @@
 						return
 					active_character.flavor_text = msg
 
-				// SS220 ADDITION START
+				// SS220 ADDITION START - TTS220
 				if("tts_seed")
 					var/datum/ui_module/tts_seeds_explorer/explorer = explorer_users[user]
 					if(!explorer)
@@ -872,7 +872,9 @@
 							active_character.organ_data[organ] = null
 						if("Cybernetic")
 							active_character.organ_data[organ] = "cybernetic"
-
+				if("cyborg_brain_type")
+					var/brain_type = tgui_input_list(user, "What type of brain would you like to have as a cyborg?", "Cyborg Brain Type", GLOB.borg_brain_choices)
+					active_character.cyborg_brain_type = brain_type
 				if("clientfps")
 					var/version_message
 					if(user.client && user.client.byond_version < 511)

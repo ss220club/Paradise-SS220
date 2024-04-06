@@ -1,20 +1,8 @@
-//Defines
-//Deciseconds until ticket becomes stale if unanswered. Alerts admins.
-#define TICKET_TIMEOUT 6000 // 10 minutes
-//Decisecions before the user is allowed to open another ticket while their existing one is open.
-#define TICKET_DUPLICATE_COOLDOWN 3000 // 5 minutes
-
-//Status defines
-#define TICKET_OPEN       1
-#define TICKET_CLOSED     2
-#define TICKET_RESOLVED   3
-#define TICKET_STALE      4
-
 #define TICKET_STAFF_MESSAGE_ADMIN_CHANNEL 1
 #define TICKET_STAFF_MESSAGE_PREFIX 2
 
 SUBSYSTEM_DEF(tickets)
-	name = "Admin Tickets"
+	name = "Админ Тикет"
 	init_order = INIT_ORDER_TICKETS
 	wait = 300
 	priority = FIRE_PRIORITY_TICKETS
@@ -23,7 +11,7 @@ SUBSYSTEM_DEF(tickets)
 
 	var/span_class = "adminticket"
 	var/ticket_system_name = "Admin Tickets"
-	var/ticket_name = "Admin Ticket"
+	var/ticket_name = "Админ тикет"
 	var/close_rights = R_ADMIN
 	var/rights_needed = R_ADMIN | R_MOD
 
@@ -33,7 +21,7 @@ SUBSYSTEM_DEF(tickets)
 	var/ticket_help_type = "Adminhelp"
 	var/ticket_help_span = "adminhelp"
 	/// The name of the other ticket type to convert to
-	var/other_ticket_name = "Mentor"
+	var/other_ticket_name = "Ментор"
 	/// Which permission to look for when seeing if there is staff available for the other ticket type
 	var/other_ticket_permission = R_MENTOR
 	var/list/close_messages
@@ -44,6 +32,11 @@ SUBSYSTEM_DEF(tickets)
 	/// DB ID for these tickets to be logged with
 	var/db_save_id = "ADMIN"
 
+	// Autoresponse phrases.
+	var/response_phrases
+	// Autoresponse keys, in sorted order.
+	var/sorted_responses
+
 /datum/controller/subsystem/tickets/get_metrics()
 	. = ..()
 	var/list/cust = list()
@@ -51,9 +44,34 @@ SUBSYSTEM_DEF(tickets)
 	.["custom"] = cust
 
 /datum/controller/subsystem/tickets/Initialize()
-	close_messages = list("<font color='red' size='4'><b>- [ticket_name] Rejected! -</b></font>",
-			"<span class='boldmessage'>Please try to be calm, clear, and descriptive in admin helps, do not assume the staff member has seen any related events, and clearly state the names of anybody you are reporting. If you asked a question, please ensure it was clear what you were asking.</span>",
-			"<span class='[span_class]'>Your [ticket_name] has now been closed.</span>")
+	close_messages = list("<font color='red' size='4'><b>- [ticket_name] Отклонён! -</b></font>",
+			"<span class='boldmessage'>Пожалуйста, постарайтесь сохранять спокойствие в админ-хелпе, не предполагайте, что администратор видел какие-либо действия, о которых вы хотите сообщить, чётко называйте имена тех, на кого вы жалуетесь, и описывайте ситуацию. Если вы задали вопрос, пожалуйста, убедитесь, что вам ясно, о чём вы вообще спросили.</span>",
+			"<span class='[span_class]'>Ваш [ticket_name] был закрыт.</span>")
+
+	response_phrases = list("Спасибо" = "Спасибо за сигнал!",
+		"Разбираемся" = "Вопрос изучается, спасибо.",
+		"Уже решено" = "Проблема уже решена.",
+		"Ментор-хелп" = "Пожалуйста, перенаправьте свой вопрос в ментор-хелп, так как они лучше разбираются в этом вопросе.",
+		"Сообщите, если это продолжится" = "Спасибо, дайте нам знать если это будет продолжаться.",
+		"Почисти Кэш" = "Чтобы исправить пустой экран, перейдите во вкладку 'Special Verbs' и нажмите 'Reload UI Resources'. Если это не поможет, очистите Кэш Byond, для этого закройте все процессы 'Dream Maker', перейдите в Byond, нажмите шестерёнку и выберите 'Preferences', во вкладке 'Games' будет кнопка 'Clear Cache'. Если ни один из этих способов не помог, советуем обратиться в 'paradise-help' чат на дискорд сервере.",
+		"IC Issue" = "Это игровой момент (IC), и он не будет рассматриваться администрацией. Вы можете обратиться в службу безопасности, к агенту внутренних дел, главе отдела, представителю Нанотрейзен или к любому другому представителю власти, который находится на станции.",
+		"Отклонить" = "Reject",
+		"Man Up" = "Man Up",
+	)
+
+	/* if(GLOB.configuration.url.banappeals_url)
+		response_phrases["Appeal on the Forums"] = "Appealing a ban must occur on the forums. Privately messaging, or adminhelping about your ban will not resolve it. To appeal your ban, please head to <a href='[GLOB.configuration.url.banappeals_url]'>[GLOB.configuration.url.banappeals_url]</a>"*/
+
+	if(GLOB.configuration.url.github_url)
+		response_phrases["Новый баг"] = "Звучит как баг! Чтобы сообщить о нём, пожалуйста, перейдите на наш <a href='[GLOB.configuration.url.github_url]'>GitHub</a>. После чего перейдите в 'Issues', нажмите 'New Issue' и заполните форму. Если в репорте будет информация с текущего раунда, отправьте ее только после его окончания. В качестве альтернативы вы можете написать в канал 'ss13-трекер' нашего дискорд сервера, однако репорты с GitHub обрабатываются быстрее!"
+
+	/*if(GLOB.configuration.url.exploit_url)
+		response_phrases["Exploit Report"] = "To report an exploit, please go to our <a href='[GLOB.configuration.url.exploit_url]'>Exploit Report page</a>. Then 'Start New Topic'. Then fill out the topic with as much information about the exploit that you can. If possible, add steps taken to reproduce the exploit. The Development Team will be informed automatically of the post."*/
+
+	var/unsorted_responses = list()
+	for(var/key in response_phrases)	//build a new list based on the short descriptive keys of the master list so we can send this as the input instead of the full paragraphs to the admin choosing which autoresponse
+		unsorted_responses += key
+	sorted_responses = sortTim(unsorted_responses, GLOBAL_PROC_REF(cmp_text_asc)) //use sortTim and cmp_text_asc to sort alphabetically
 
 /datum/controller/subsystem/tickets/fire()
 	var/stales = checkStaleness()
@@ -61,10 +79,10 @@ SUBSYSTEM_DEF(tickets)
 		var/report
 		for(var/num in stales)
 			report += "[num], "
-		message_staff("<span class='[span_class]'>Tickets [report] have been open for over [TICKET_TIMEOUT / 600] minutes. Changing status to stale.</span>")
+		message_staff("<span class='[span_class]'>Тикеты [report] были открыты более [TICKET_TIMEOUT / 600] минут. Изменения статуса на устаревший.</span>")
 
 /datum/controller/subsystem/tickets/get_stat_details()
-	return "Tickets: [LAZYLEN(allTickets)]"
+	return "Тикеты: [LAZYLEN(allTickets)]"
 
 /datum/controller/subsystem/tickets/proc/checkStaleness()
 	var/stales = list()
@@ -107,11 +125,12 @@ SUBSYSTEM_DEF(tickets)
 		ticketNum = T.ticketNum
 		T.addResponse(C, text)
 		T.setCooldownPeriod()
-		to_chat(C.mob, "<span class='[span_class]'>Your [ticket_name] #[ticketNum] remains open! Visit \"My tickets\" under the Admin Tab to view it.</span>")
+		to_chat(C.mob, "<span class='[span_class]'>Ваш [ticket_name] #[ticketNum] остаётся открытым! Откройте \"My tickets\" во вкладке Admin для просмотра.</span>")
 		var/url_message = makeUrlMessage(C, text, ticketNum)
 		message_staff(url_message, NONE, TRUE)
+		return T
 	else
-		newTicket(C, text, text)
+		return newTicket(C, text, text)
 
 /**
  * Will add the URLs usable by staff to the message and return it
@@ -126,22 +145,22 @@ SUBSYSTEM_DEF(tickets)
 	if(istype(target, /datum/ticket))
 		var/datum/ticket/T = target
 		M = get_mob_by_ckey(T.client_ckey)
-		key_and_name = M ? key_name(M, TRUE, ticket_help_type) : "[T.client_ckey] (DC)/(DELETED)"
+		key_and_name = M ? key_name(M, TRUE, ticket_help_type, ticket_id = T.ticketNum) : "[T.client_ckey] (DC)/(DELETED)"
 		msg = T.title
 		ticketNum = T.ticketNum
 	else if(isclient(target))
 		var/client/C = target
 		M = C.mob
-		key_and_name = key_name(M, TRUE, ticket_help_type)
+		key_and_name = key_name(M, TRUE, ticket_help_type, ticket_id = ticketNum)
 
 	var/list/L = list()
 	L += "<span class='[ticket_help_span]'>[ticket_help_type]: </span><span class='boldnotice'>[key_and_name] "
 	if(M)
 		L += "([ADMIN_QUE(M,"?")]) ([ADMIN_PP(M,"PP")]) ([ADMIN_VV(M,"VV")]) ([ADMIN_TP(M,"TP")]) ([ADMIN_SM(M,"SM")]) ([admin_jump_link(M)])"
-	L += "(<a href='?_src_=holder;openticket=[ticketNum][anchor_link_extra]'>TICKET</a>) "
-	L += "[isAI(M) ? "(<a href='?_src_=holder;adminchecklaws=[M.UID()]'>CL</a>)" : ""] (<a href='?_src_=holder;take_question=[ticketNum][anchor_link_extra]'>TAKE</a>) "
-	L += "(<a href='?_src_=holder;resolve=[ticketNum][anchor_link_extra]'>RESOLVE</a>) (<a href='?_src_=holder;autorespond=[ticketNum][anchor_link_extra]'>AUTO</a>) "
-	L += "(<a href='?_src_=holder;convert_ticket=[ticketNum][anchor_link_extra]'>CONVERT</a>) :</span> <span class='[ticket_help_span]'>[msg]</span>"
+	L += "(<a href='?_src_=holder;openticket=[ticketNum][anchor_link_extra]'>ТИКЕТ</a>) "
+	L += "[isAI(M) ? "(<a href='?_src_=holder;adminchecklaws=[M.UID()]'>ЗАКОНЫ</a>)" : ""] (<a href='?_src_=holder;take_question=[ticketNum][anchor_link_extra]'>ВЗЯТЬ</a>) "
+	L += "(<a href='?_src_=holder;resolve=[ticketNum][anchor_link_extra]'>РЕШИТЬ</a>) (<a href='?_src_=holder;autorespond=[ticketNum][anchor_link_extra]'>АВТО</a>) "
+	L += "(<a href='?_src_=holder;convert_ticket=[ticketNum][anchor_link_extra]'>КОНВЕРТ</a>) :</span> <span class='[ticket_help_span]'>[msg]</span>"
 	return L.Join()
 
 //Open a new ticket and populate details then add to the list of open tickets
@@ -161,16 +180,18 @@ SUBSYSTEM_DEF(tickets)
 	T.mobControlled = C.mob
 
 	//Inform the user that they have opened a ticket
-	to_chat(C, "<span class='[span_class]'>You have opened [ticket_name] number #[(getTicketCounter() - 1)]! Please be patient and we will help you soon!</span>")
+	to_chat(C, "<span class='[span_class]'>Вы открыли [ticket_name] номер #[(getTicketCounter() - 1)]! Ожидайте, мы вам поможем!</span>")
 	SEND_SOUND(C, sound('sound/effects/adminticketopen.ogg'))
 
 	message_staff(url_title, NONE, TRUE)
+	return T
 
 //Set ticket state with key N to open
 /datum/controller/subsystem/tickets/proc/openTicket(N)
 	var/datum/ticket/T = allTickets[N]
 	if(T.ticketState != TICKET_OPEN)
-		message_staff("<span class='[span_class]'>[usr.client] / ([usr]) re-opened [ticket_name] number [N]</span>")
+		message_staff("<span class='[span_class]'>[usr.client] / ([usr]) переоткрыл [ticket_name] номер [N]</span>")
+		to_chat_safe(returnClient(N), "<span class='[span_class]'>Ваш [ticket_name] был переоткрыт.</span>")
 		T.ticketState = TICKET_OPEN
 		return TRUE
 
@@ -179,27 +200,34 @@ SUBSYSTEM_DEF(tickets)
 	var/datum/ticket/T = allTickets[N]
 	if(T.ticketState != TICKET_RESOLVED)
 		T.ticketState = TICKET_RESOLVED
-		message_staff("<span class='[span_class]'>[usr.client] / ([usr]) resolved [ticket_name] number [N]</span>")
-		to_chat_safe(returnClient(N), "<span class='[span_class]'>Your [ticket_name] has now been resolved.</span>")
+		message_staff("<span class='[span_class]'>[usr.client] / ([usr]) решил [ticket_name] номер [N]</span>")
+		to_chat_safe(returnClient(N), "<span class='[span_class]'>Ваш [ticket_name] был решён.</span>")
 		return TRUE
+
+/datum/controller/subsystem/tickets/proc/addResponse(list/tickets, who, message)
+	var/list/ticket_numbers = list()
+	for(var/datum/ticket/T in tickets)
+		ticket_numbers += T.ticketNum
+		T.addResponse(who, message)
 
 /datum/controller/subsystem/tickets/proc/convert_to_other_ticket(ticketId)
 	if(!check_rights(rights_needed))
 		return
-	if(alert("Are you sure to convert this ticket to an '[other_ticket_name]' ticket?", null,"Yes","No") != "Yes")
+	if(alert("Вы уверены что хотите конвертировать в '[other_ticket_name]' тикет?", null,"Да","Нет") != "Да")
 		return
 	if(!other_ticket_system_staff_check())
 		return
 	var/datum/ticket/T = allTickets[ticketId]
 	if(T.ticket_converted)
-		to_chat(usr, "<span class='warning'>This ticket has already been converted!</span>")
+		to_chat(usr, "<span class='warning'>Этот тикет уже конвертирован!</span>")
 		return
 	convert_ticket(T)
+	message_staff("<span class='[span_class]'>[usr.client] / ([usr]) конвертировал [ticket_name] номер [ticketId]</span>")
 
 /datum/controller/subsystem/tickets/proc/other_ticket_system_staff_check()
 	var/list/staff = staff_countup(other_ticket_permission)
 	if(!staff[1])
-		if(alert("No active staff online to answer the ticket. Are you sure you want to convert the ticket?", null, "No", "Yes") != "Yes")
+		if(alert("Нет активных администраторов/менторов. Вы уверены что хотите конвертировать?", null, "Нет", "Да") != "Да")
 			return FALSE
 	return TRUE
 
@@ -207,14 +235,14 @@ SUBSYSTEM_DEF(tickets)
 	var/client/C = usr.client
 	var/client/owner = get_client_by_ckey(T.client_ckey)
 	if(!owner)
-		to_chat(C, "<span class='notice'>Can't convert the ticket of a disconnected user.")
+		to_chat(C, "<span class='notice'Невозможно конвертировать тикет отключённого игрока.")
 		return
 	T.ticketState = TICKET_CLOSED
 	T.ticket_converted = TRUE
-	to_chat_safe(owner, list("<span class='[span_class]'>[key_name_hidden(C)] has converted your ticket to a [other_ticket_name] ticket.</span>",\
-									"<span class='[span_class]'>Be sure to use the correct type of help next time!</span>"))
-	message_staff("<span class='[span_class]'>[C] has converted ticket number [T.ticketNum] to a [other_ticket_name] ticket.</span>")
-	log_game("[C] has converted ticket number [T.ticketNum] to a [other_ticket_name] ticket.")
+	to_chat_safe(owner, list("<span class='[span_class]'>[key_name_hidden(C)] конвертировал ваш тикет в [other_ticket_name] тикет.</span>",\
+									"<span class='[span_class]'>Постарайтесь использовать правильный тикет в следующий раз!</span>"))
+	message_staff("<span class='[span_class]'>[C] конвертировал тикет номер [T.ticketNum] в [other_ticket_name] тикет.</span>")
+	log_game("[C] конвертировал тикет номер [T.ticketNum] в [other_ticket_name] тикет.")
 	create_other_system_ticket(T)
 
 /datum/controller/subsystem/tickets/proc/create_other_system_ticket(datum/ticket/T)
@@ -228,67 +256,44 @@ SUBSYSTEM_DEF(tickets)
 	var/datum/ticket/T = allTickets[N]
 	var/client/C = usr.client
 	if((T.staffAssigned && T.staffAssigned != C) || (T.lastStaffResponse && T.lastStaffResponse != C) || ((T.ticketState != TICKET_OPEN) && (T.ticketState != TICKET_STALE))) //if someone took this ticket, is it the same admin who is autoresponding? if so, then skip the warning
-		if(alert(usr, "[T.ticketState == TICKET_OPEN ? "Another admin appears to already be handling this." : "This ticket is already marked as closed or resolved"] Are you sure you want to continue?", "Confirmation", "Yes", "No") != "Yes")
+		if(alert(usr, "[T.ticketState == TICKET_OPEN ? "Другой администратор уже разбирается." : "Этот тикет уже помечен как решённый или закрытый."] Вы уверены что хотите продолжить?", "Подтверждение", "Да", "Нет") != "Да")
 			return
 	T.assignStaff(C)
 
-	var/response_phrases = list("Thanks" = "Thanks for the ahelp!",
-		"Handling It" = "The issue is being looked into, thanks.",
-		"Already Resolved" = "The problem has been resolved already.",
-		"Mentorhelp" = "Please redirect your question to Mentorhelp, as they are better experienced with these types of questions.",
-		"Happens Again" = "Thanks, let us know if it continues to happen.",
-		"Clear Cache" = "To fix a blank screen, go to the 'Special Verbs' tab and press 'Reload UI Resources'. If that fails, clear your BYOND cache (instructions provided with 'Reload UI Resources'). If that still fails, please adminhelp again, stating you have already done the following." ,
-		"IC Issue" = "This is an In Character (IC) issue and will not be handled by admins. You could speak to Security, Internal Affairs, a Departmental Head, Nanotrasen Representative, or any other relevant authority currently on station.",
-		"Reject" = "Reject",
-		"Man Up" = "Man Up",
-	)
 
-	if(GLOB.configuration.url.banappeals_url)
-		response_phrases["Appeal on the Forums"] = "Appealing a ban must occur on the forums. Privately messaging, or adminhelping about your ban will not resolve it. To appeal your ban, please head to <a href='[GLOB.configuration.url.banappeals_url]'>[GLOB.configuration.url.banappeals_url]</a>"
-
-	if(GLOB.configuration.url.github_url)
-		response_phrases["Github Issue Report"] = "To report a bug, please go to our <a href='[GLOB.configuration.url.github_url]'>Github page</a>. Then go to 'Issues'. Then 'New Issue'. Then fill out the report form. If the report would reveal current-round information, file it after the round ends."
-
-	if(GLOB.configuration.url.exploit_url)
-		response_phrases["Exploit Report"] = "To report an exploit, please go to our <a href='[GLOB.configuration.url.exploit_url]'>Exploit Report page</a>. Then 'Start New Topic'. Then fill out the topic with as much information about the exploit that you can. If possible, add steps taken to reproduce the exploit. The Development Team will be informed automatically of the post."
-
-	var/sorted_responses = list()
-	for(var/key in response_phrases)	//build a new list based on the short descriptive keys of the master list so we can send this as the input instead of the full paragraphs to the admin choosing which autoresponse
-		sorted_responses += key
-
-	var/message_key = input("Select an autoresponse. This will mark the ticket as resolved.", "Autoresponse") as null|anything in sortTim(sorted_responses, GLOBAL_PROC_REF(cmp_text_asc)) //use sortTim and cmp_text_asc to sort alphabetically
+	var/message_key = input("Выберите автоответ. Это пометит тикет как решённый.", "Автоответ") as null|anything in sorted_responses
 	var/client/ticket_owner = get_client_by_ckey(T.client_ckey)
 	if(!ticket_owner)
-		to_chat(C, "<span class='notice'>Can't respond to the ticket of a disconnected user.")
+		to_chat(C, "<span class='notice'>Невозможно ответить на тикет отключённого игрока.")
 		return
 	switch(message_key)
 		if(null) //they cancelled
 			T.staffAssigned = null //if they cancel we dont need to hold this ticket anymore
 			return
-		if("Reject")
+		if("Отклонить")
 			if(!closeTicket(N))
-				to_chat(C, "Unable to close ticket")
+				to_chat(C, "Невозможно закрыть тикет")
 		if("Man Up")
 			C.man_up(returnClient(N))
-			T.lastStaffResponse = "Autoresponse: [message_key]"
+			T.lastStaffResponse = "Автоответ: [message_key]"
 			resolveTicket(N)
-			message_staff("[C] has auto responded to [ticket_owner]\'s adminhelp with:<span class='adminticketalt'> [message_key]</span>")
-			log_game("[C] has auto responded to [T.client_ckey]\'s adminhelp with: [response_phrases[message_key]]")
-		if("Mentorhelp")
+			message_staff("[C] ипользовал автоответ в админ-тикете [ticket_owner]:<span class='adminticketalt'> [message_key]</span>")
+			log_game("[C] ипользовал автоответ в админ-тикете [T.client_ckey]: [response_phrases[message_key]]")
+		if("Ментор-хелп")
 			convert_ticket(T)
 		else
 			SEND_SOUND(returnClient(N), sound('sound/effects/adminhelp.ogg'))
-			to_chat_safe(returnClient(N), "<span class='[span_class]'>[key_name_hidden(C)] is autoresponding with: <span/> <span class='adminticketalt'>[response_phrases[message_key]]</span>")//for this we want the full value of whatever key this is to tell the player so we do response_phrases[message_key]
-			message_staff("[C] has auto responded to [ticket_owner]\'s adminhelp with:<span class='adminticketalt'> [message_key]</span>") //we want to use the short named keys for this instead of the full sentence which is why we just do message_key
-			T.lastStaffResponse = "Autoresponse: [message_key]"
+			to_chat_safe(returnClient(N), "<span class='[span_class]'>[key_name_hidden(C)] использует автоответ:<span/> <span class='adminticketalt'>[response_phrases[message_key]]</span>")//for this we want the full value of whatever key this is to tell the player so we do response_phrases[message_key]
+			message_staff("[C] ипользовал автоответ в админ-тикете [ticket_owner]:<span class='adminticketalt'> [message_key]</span>") //we want to use the short named keys for this instead of the full sentence which is why we just do message_key
+			T.lastStaffResponse = "Автоответ: [message_key]"
 			resolveTicket(N)
-			log_game("[C] has auto responded to [ticket_owner]\'s adminhelp with: [response_phrases[message_key]]")
+			log_game("[C] ипользовал автоответ в админ-тикете [ticket_owner]: [response_phrases[message_key]]")
 
 //Set ticket state with key N to closed
 /datum/controller/subsystem/tickets/proc/closeTicket(N)
 	var/datum/ticket/T = allTickets[N]
 	if(T.ticketState != TICKET_CLOSED)
-		message_staff("<span class='[span_class]'>[usr.client] / ([usr]) closed [ticket_name] number [N]</span>")
+		message_staff("<span class='[span_class]'>[usr.client] / ([usr]) закрыл [ticket_name] номер [N]</span>")
 		to_chat_safe(returnClient(N), close_messages)
 		T.ticketState = TICKET_CLOSED
 		return TRUE
@@ -301,7 +306,9 @@ SUBSYSTEM_DEF(tickets)
 	return FALSE
 
 //Check if the user has ANY ticket not resolved or closed.
-/datum/controller/subsystem/tickets/proc/checkForTicket(client/C)
+/datum/controller/subsystem/tickets/proc/checkForTicket(client/C, ticket_id = -1)
+	if(ticket_id > 0 && ticket_id <= length(allTickets))
+		return list(allTickets[ticket_id])
 	var/list/tickets = list()
 	for(var/datum/ticket/T in allTickets)
 		if(T.client_ckey == C.ckey && (T.ticketState == TICKET_OPEN || T.ticketState == TICKET_STALE))
@@ -317,7 +324,7 @@ SUBSYSTEM_DEF(tickets)
 
 /datum/controller/subsystem/tickets/proc/assignStaffToTicket(client/C, N)
 	var/datum/ticket/T = allTickets[N]
-	if(T.staffAssigned != null && T.staffAssigned != C && alert("Ticket is already assigned to [T.staffAssigned.ckey]. Are you sure you want to take it?", "Take ticket", "Yes", "No") != "Yes")
+	if(T.staffAssigned != null && T.staffAssigned != C && alert("Тикет уже взял [T.staffAssigned.ckey]. Вы уверены что хотите взять его?", "Взять тикет", "Да", "Нет") != "Да")
 		return FALSE
 	T.assignStaff(C)
 	return TRUE
