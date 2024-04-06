@@ -63,7 +63,7 @@ SUBSYSTEM_DEF(tickets)
 		response_phrases["Appeal on the Forums"] = "Appealing a ban must occur on the forums. Privately messaging, or adminhelping about your ban will not resolve it. To appeal your ban, please head to <a href='[GLOB.configuration.url.banappeals_url]'>[GLOB.configuration.url.banappeals_url]</a>"*/
 
 	if(GLOB.configuration.url.github_url)
-		response_phrases["Новый баг"] = "Звучит как баг! Чтобы сообщить о нём, пожалуйста, перейдите на наш <a href='[GLOB.configuration.url.github_url]'>GitHub</a>. После чего перейдите в 'Issues', нажмите 'New Issue' и заполните форму. Если в репорте будет информация с текущего раунда, отправьте ее только после его окончания. В качестве альтернативы вы можете написать в канал 'ss13-трекер', однако репорты с GitHub обрабатываются быстрее!"
+		response_phrases["Новый баг"] = "Звучит как баг! Чтобы сообщить о нём, пожалуйста, перейдите на наш <a href='[GLOB.configuration.url.github_url]'>GitHub</a>. После чего перейдите в 'Issues', нажмите 'New Issue' и заполните форму. Если в репорте будет информация с текущего раунда, отправьте ее только после его окончания. В качестве альтернативы вы можете написать в канал 'ss13-трекер' нашего дискорд сервера, однако репорты с GitHub обрабатываются быстрее!"
 
 	/*if(GLOB.configuration.url.exploit_url)
 		response_phrases["Exploit Report"] = "To report an exploit, please go to our <a href='[GLOB.configuration.url.exploit_url]'>Exploit Report page</a>. Then 'Start New Topic'. Then fill out the topic with as much information about the exploit that you can. If possible, add steps taken to reproduce the exploit. The Development Team will be informed automatically of the post."*/
