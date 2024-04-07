@@ -190,20 +190,11 @@ const normalizeData = (data, scale, rangeX, rangeY) => {
     min[1] = rangeY[0];
     max[1] = rangeY[1];
   }
-  const normalizeValue = (value, min, max, scale) => {
-    return ((value - min) / (max - min)) * scale;
-  };
-
-  const normalizePoint = (point, min, max, scale) => {
-    return zipWith((value, min, max, scale) =>
-      normalizeValue(value, min, max, scale)
-    )(point, min, max, scale);
-  };
-
-  const normalizedData = map((point) => {
-    return normalizePoint(point, min, max, scale);
-  })(data);
-  return normalizedData;
+  const normalizeValue = (value, min, max, scale) =>
+    ((value - min) / (max - min)) * scale;
+  const normalizePoint = zipWith(normalizeValue);
+  const normalizeData = map((point) => normalizePoint(point, min, max, scale));
+  return normalizeData(data);
 };
 
 const dataToPolylinePoints = (data) => {
