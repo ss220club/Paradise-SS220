@@ -291,7 +291,7 @@ class AtmosChart extends Component<AtmosChartProps, AtmosChartState> {
                 left: 0,
                 right: 0,
                 bottom: 0,
-                overflow: 'hidden',
+                overflow: 'visible',
               }}
             >
               {/* Горизонтальные линии сетки */}
@@ -318,29 +318,39 @@ class AtmosChart extends Component<AtmosChartProps, AtmosChartState> {
                   strokeWidth={gridWidth}
                 />
               ))}
-              {/* Полилиния графика */}
+              {/* Полилиния (заливка) графика */}
               <polyline
                 transform={`scale(1, -1) translate(0, -${viewBox[1]})`}
                 fill={fillColor}
-                stroke={strokeColor}
-                strokeWidth={strokeWidth}
                 points={points}
               />
+              {/* Линия графика */}
+              {data.map((point, index) => {
+                if (index === 0) return null;
+                return (
+                  <line
+                    key={`line-${index}`}
+                    x1={normalized[index - 1][0]}
+                    y1={viewBox[1] - normalized[index - 1][1]}
+                    x2={normalized[index][0]}
+                    y2={viewBox[1] - normalized[index][1]}
+                    stroke={strokeColor}
+                    strokeWidth={strokeWidth}
+                  />
+                );
+              })}
               {/* Точки */}
-              {data.map(
-                (point, index) =>
-                  index % 2 === 1 && (
-                    <circle
-                      key={`point-${index}`}
-                      cx={normalized[index][0]}
-                      cy={viewBox[1] - normalized[index][1]}
-                      r={2} // радиус точки
-                      fill="#ffffff" // цвет точки
-                      stroke={strokeColor} // цвет обводки
-                      strokeWidth={1} // ширина обводки
-                    />
-                  )
-              )}
+              {data.map((point, index) => (
+                <circle
+                  key={`point-${index}`}
+                  cx={normalized[index][0]}
+                  cy={viewBox[1] - normalized[index][1]}
+                  r={2}
+                  fill="#ffffff"
+                  stroke={strokeColor}
+                  strokeWidth={1}
+                />
+              ))}
               {/* Значения точек */}
               {data.map(
                 (point, index) =>
@@ -352,9 +362,8 @@ class AtmosChart extends Component<AtmosChartProps, AtmosChartState> {
                       y={viewBox[1] - normalized[index][1]}
                       fill={pointTextColor}
                       fontSize={pointTextSize}
-                      dy="1em" // Сдвиг текста вниз, чтобы он не перекрывал точку
-                      dx="-2.5em" // Сдвиг текста влево
-                      textAnchor="middle" // Центрирование текста по x координате
+                      dy="1em"
+                      style={{ 'text-anchor': 'middle' }}
                     >
                       {point[1] !== null ? point[1].toFixed(0) : 'N/A'}
                     </text>
