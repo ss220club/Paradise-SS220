@@ -1,5 +1,6 @@
 /obj/machinery/processor
-	name = "кухонный комбайн"
+	name = "\improper кухонный комбайн"
+	desc = "Used for turning ingredients into other ingredients."
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "processor"
 	layer = 2.9
