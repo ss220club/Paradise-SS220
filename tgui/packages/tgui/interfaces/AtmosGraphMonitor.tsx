@@ -111,7 +111,7 @@ const AtmosGraphPage = ({
           <Section px={2}>
             {/* ТЕМПЕРАТУРА */}
             {temperatureListName in sensors_list[s] && (
-              <Box mb={2}>
+              <Box mb={4}>
                 <Box>
                   {'Температура: ' +
                     toFixed(getLastReading(s, temperatureListName), 0) +
@@ -363,7 +363,7 @@ class AtmosChart extends Component<AtmosChartProps, AtmosChartState> {
                       fill={pointTextColor}
                       fontSize={pointTextSize}
                       dy="1em"
-                      style={{ 'text-anchor': 'middle' }}
+                      style={{ 'text-anchor': 'end' }}
                     >
                       {point[1] !== null ? point[1].toFixed(0) : 'N/A'}
                     </text>
