@@ -60,7 +60,6 @@
 			string_names_ass += "[m.name](ckey:[ckey(m.key)]), "
 		log_debug("pre_execute: assigned: [string_names_ass];")
 
-		log_debug("Members: [json_encode(members)]")
 		message_admins("Members: [json_encode(members)]")
 		// If for some reason, not enough members were found - we will try again
 		if(team_size > length(members))
