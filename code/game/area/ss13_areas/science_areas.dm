@@ -9,7 +9,7 @@
 	icon_state = "mechbay"
 
 /area/station/science/robotics/showroom
-	name = "Салон Робототехники"
+	name = "VIP Комната"
 	icon_state = "showroom"
 
 // Experimentor
