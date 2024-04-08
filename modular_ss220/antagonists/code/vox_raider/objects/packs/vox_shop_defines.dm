@@ -12,3 +12,4 @@
 #define VOX_PACK_SPIKE "Шипометы"
 #define VOX_PACK_DART "Дротики"
 #define VOX_PACK_BIO "Биооружие"
+#define VOX_PACK_MELEE "Ближний Контакт"
