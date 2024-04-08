@@ -64,9 +64,11 @@
 		// If for some reason, not enough members were found - we will try again
 		if(team_size > length(members))
 			max_teams++
-			message_admins("Picked team of: [json_encode(members)]")
-			log_debug("Picked team of: [json_encode(members)]")
-			picked_teams += list(members)
+			continue
+
+		message_admins("Picked team of: [json_encode(members)]")
+		log_debug("Picked team of: [json_encode(members)]")
+		picked_teams += list(members)
 
 	if(!(length(picked_teams) - teams_before > 0))
 		log_debug("pre_execute team == [length(picked_teams) - teams_before > 0]: [length(picked_teams)], [teams_before], [max_teams]. ")
