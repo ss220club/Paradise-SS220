@@ -43,7 +43,7 @@ export const AtmosGraphMonitor = (props, context) => {
         return "WE SHOULDN'T BE HERE!";
     }
   };
-  const maxWingowHeight = 800;
+  const maxWingowHeight = 900;
   const getWindowHeight = Math.min(
     maxWingowHeight,
     Object.keys(data.sensors).length * 220 + 150
@@ -111,7 +111,7 @@ const AtmosGraphPage = ({
           <Section px={2}>
             {/* ТЕМПЕРАТУРА */}
             {temperatureListName in sensors_list[s] && (
-              <Box mb={4}>
+              <Box mb={2}>
                 <Box>
                   {'Температура: ' +
                     toFixed(getLastReading(s, temperatureListName), 0) +
@@ -277,21 +277,21 @@ class AtmosChart extends Component<AtmosChartProps, AtmosChartState> {
     const pointTextColor = 'rgba(255, 255, 255, 0.8)';
     const pointTextSize = '0.8em';
     const labelViewBoxSize = 400;
+    const svgBoxPaddingRight = 0;
+    const svgBoxPaddingBottom = 10;
 
     return (
       <Box position="relative" {...rest}>
         {(props) => (
           <div ref={this.ref} {...props}>
             <svg
-              viewBox={`0 0 ${viewBox[0]} ${viewBox[1]}`}
+              viewBox={`0 0
+                ${viewBox[0] + svgBoxPaddingRight}
+                ${viewBox[1] + svgBoxPaddingBottom}`}
               preserveAspectRatio="none"
               style={{
                 position: 'absolute',
-                top: 0,
-                left: 0,
-                right: 0,
-                bottom: 0,
-                overflow: 'visible',
+                overflow: 'hidden',
               }}
             >
               {/* Горизонтальные линии сетки */}
