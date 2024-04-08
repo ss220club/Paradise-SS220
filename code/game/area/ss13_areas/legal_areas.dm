@@ -1,6 +1,6 @@
 
 /area/station/legal/courtroom
-	name = "\improper Courtroom"
+	name = "Зал Суда"
 	icon_state = "courtroom"
 
 /area/station/legal/courtroom/gallery
@@ -8,12 +8,12 @@
 	icon_state = "courtroom"
 
 /area/station/legal/lawoffice
-	name = "\improper Law Office"
+	name = "Юридический Отдел"
 	icon_state = "law"
 	sound_environment = SOUND_AREA_SMALL_SOFTFLOOR
 
 /area/station/legal/magistrate
-	name = "\improper Magistrate's Office"
+	name = "Офис Магистрата"
 	icon_state = "magistrate"
 	sound_environment = SOUND_AREA_SMALL_SOFTFLOOR
 

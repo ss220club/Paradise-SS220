@@ -37,7 +37,7 @@ GLOBAL_LIST_EMPTY(allRequestConsoles)
 
 /obj/machinery/requests_console
 	name = "Requests Console"
-	desc = "A console intended to send requests to different departments on the station."
+	desc = "Консоль, предназначанная для отправки запросов в другие отделы станции."
 	anchored = TRUE
 	icon = 'icons/obj/terminals.dmi'
 	icon_state = "req_comp_off"
@@ -102,9 +102,9 @@ GLOBAL_LIST_EMPTY(allRequestConsoles)
 	Radio.follow_target = src
 	. = ..()
 
-	announcer.config.default_title = "[department] announcement"
+	announcer.config.default_title = "Оповещение от [department]"
 
-	name = "[department] Requests Console"
+	name = "[department] Requests console"
 	GLOB.allRequestConsoles += src
 	if(departmentType & RC_ASSIST)
 		GLOB.req_console_assistance |= department
@@ -152,7 +152,7 @@ GLOBAL_LIST_EMPTY(allRequestConsoles)
 /obj/machinery/requests_console/ui_interact(mob/user, datum/tgui/ui = null)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "RequestConsole", "[department] Request Console")
+		ui = new(user, src, "RequestConsole", "Консоль запросов [department]")
 		ui.open()
 
 /obj/machinery/requests_console/ui_data(mob/user)
@@ -196,7 +196,7 @@ GLOBAL_LIST_EMPTY(allRequestConsoles)
 			if(reject_bad_text(params["write"]))
 				recipient = params["write"] //write contains the string of the receiving department's name
 
-				var/new_message = tgui_input_text(usr, "Write your message:", "Awaiting Input", encode = FALSE)
+				var/new_message = tgui_input_text(usr, "Напишите своё сообщение:", "Ожидание ввода", encode = FALSE)
 				if(new_message)
 					message = new_message
 					screen = RCS_MESSAUTH
@@ -211,7 +211,7 @@ GLOBAL_LIST_EMPTY(allRequestConsoles)
 					reset_message(TRUE)
 
 		if("writeAnnouncement")
-			var/new_message = tgui_input_text(usr, "Write your message:", "Awaiting Input", message, multiline = TRUE, encode = FALSE)
+			var/new_message = tgui_input_text(usr, "Напишите своё оповещение:", "Ожидание ввода", message, multiline = TRUE, encode = FALSE)
 			if(new_message)
 				message = new_message
 			else
@@ -261,16 +261,16 @@ GLOBAL_LIST_EMPTY(allRequestConsoles)
 		if("printLabel")
 			var/error_message
 			if(!ship_tag_index)
-				error_message = "Please select a destination."
+				error_message = "Пожалуйста, выберите пункт назначения."
 			else if(!msgVerified)
-				error_message = "Please verify shipper ID."
+				error_message = "Пожалуйста, проверьте ID отправителя."
 			else if(world.time < print_cooldown)
-				error_message = "Please allow the printer time to prepare the next shipping label."
+				error_message = "Пожалуйста, дайте принтеру время на подготовку следующей транспортировочной маркировки."
 			if(error_message)
 				atom_say("[error_message]")
 				return
 			print_label(ship_tag_name, ship_tag_index)
-			shipping_log.Add(list(list("Shipping Label printed for [ship_tag_name]", "[msgVerified]"))) // List in a list for passing into TGUI
+			shipping_log.Add(list(list("Этикетка напечатана для [ship_tag_name]", "[msgVerified]"))) // List in a list for passing into TGUI
 			reset_message(TRUE)
 
 		//Handle silencing the console
@@ -284,7 +284,7 @@ GLOBAL_LIST_EMPTY(allRequestConsoles)
 			return
 		if(screen == RCS_MESSAUTH)
 			var/obj/item/card/id/T = I
-			msgVerified = "Verified by [T.registered_name] ([T.assignment])"
+			msgVerified = "Подтверждено [T.registered_name] ([T.assignment])"
 			SStgui.update_uis(src)
 		if(screen == RCS_ANNOUNCE)
 			var/obj/item/card/id/ID = I
@@ -293,7 +293,7 @@ GLOBAL_LIST_EMPTY(allRequestConsoles)
 				announcer.author = ID.assignment ? "[ID.assignment] [ID.registered_name]" : ID.registered_name
 			else
 				reset_message()
-				to_chat(user, "<span class='warning'>You are not authorized to send announcements.</span>")
+				to_chat(user, "<span class='warning'>У вас нет допуска на отправку оповещений.</span>")
 			SStgui.update_uis(src)
 		if(screen == RCS_SECONDARY)
 			var/obj/item/card/id/ID = I
@@ -303,14 +303,14 @@ GLOBAL_LIST_EMPTY(allRequestConsoles)
 				has_active_secondary_goal = check_for_active_secondary_goal(goalRequester)
 		if(screen == RCS_SHIPPING)
 			var/obj/item/card/id/T = I
-			msgVerified = "Sender verified as [T.registered_name] ([T.assignment])"
+			msgVerified = "Отправитель подтверждён как [T.registered_name] ([T.assignment])"
 			SStgui.update_uis(src)
 	if(istype(I, /obj/item/stamp))
 		if(inoperable(MAINT))
 			return
 		if(screen == RCS_MESSAUTH)
 			var/obj/item/stamp/T = I
-			msgStamped = "Stamped with the [T.name]"
+			msgStamped = "Проштамповано [T.name]"
 			SStgui.update_uis(src)
 	else
 		return ..()
@@ -365,7 +365,7 @@ GLOBAL_LIST_EMPTY(allRequestConsoles)
 		reminder_timer_id = TIMER_ID_NULL
 		return
 
-	atom_say("Unread message(s) available.")
+	atom_say("Есть непрочитанные сообщения.")
 
 /obj/machinery/requests_console/proc/print_label(tag_name, tag_index)
 	var/obj/item/shippingPackage/sp = new /obj/item/shippingPackage(get_turf(src))

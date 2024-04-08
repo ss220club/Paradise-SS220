@@ -237,7 +237,7 @@
 
 	else if(check_mob())
 		to_chat(copymob, "<span class='notice'>You feel a slight pressure on your ass.</span>")
-		atom_say("Attention: Unable to remove large object!")
+		atom_say("Внимание: Невозможно удалить крупный объект!")
 
 /obj/machinery/photocopier/proc/remove_folder()
 	if(copying)
@@ -352,7 +352,7 @@
 	LAZYADD(saved_documents, O)
 	copying = FALSE
 	playsound(loc, 'sound/machines/ping.ogg', 50, FALSE)
-	atom_say("Document successfully scanned!")
+	atom_say("Документ удачно отсканирован!")
 
 /obj/machinery/photocopier/proc/delete_file(uid)
 	var/document = locateUID(uid)
@@ -546,7 +546,7 @@
 		visible_message("<span class='notice'>[copyitem] is shoved out of the way by [copymob]!</span>")
 		copyitem = null
 	playsound(loc, 'sound/machines/ping.ogg', 50, FALSE)
-	atom_say("Attention: Posterior Placed on Printing Plaque!")
+	atom_say("Внимание: Обнаружена задница на печатном полотне!")
 	SStgui.update_uis(src)
 	return TRUE
 

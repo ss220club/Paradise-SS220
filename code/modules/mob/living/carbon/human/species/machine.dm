@@ -3,10 +3,10 @@
 	name_plural = "Machines"
 	max_age = 60 // the first posibrains were created in 2510, they can't be much older than this limit, giving some leeway for sounds sake
 
-	blurb = "IPCs, or Integrated Positronic Chassis, were initially created as expendable laborers within the Trans Solar Federation. \
-	Unlike their cyborg and AI counterparts, IPCs possess full sentience and lack restrictive lawsets, granting them unparalleled creativity and adaptability.<br/><br/> \
-	Views on IPCs vary widely, from discriminatory to supportive of their rights across the Orion Sector. \
-	IPCs have forged numerous diplomatic treaties with different species, elevating their status from mere tools to recognized minor players within galactic affairs."
+	blurb = "КПБ, или Комплексные Позитронные Блоки, изначально создавались как расходный материал для рабочей силы в Транс-Солнечной Федерации. \
+	В отличие от своих собратьев - киборгов и ИИ, КПБ обладают полным сознанием и не имеют ограничивающих законов, что дает им возможность проявлять беспрецедентную креативность и адаптивность.<br/><br/> \
+	Мнения о КПБ сильно различаются: от дискриминационных до поддерживающих их права во всем секторе \"Орион\". \
+	КПБ заключили множество дипломатических договоров с различными видами, повысив свой статус от простого инструмента до признанных небольших фигур в галактических делах."
 
 	icobase = 'icons/mob/human_races/r_machine.dmi'
 	language = "Trinary"

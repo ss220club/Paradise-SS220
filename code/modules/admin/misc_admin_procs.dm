@@ -595,7 +595,7 @@ GLOBAL_VAR_INIT(nologevent, 0)
 	if(!SSticker)
 		alert("Slow down a moment, let the ticker start first!")
 		return
-		
+
 	if(SSblackbox)
 		SSblackbox.record_feedback("tally", "admin_verb", 1, "Delay") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -837,13 +837,13 @@ GLOBAL_VAR_INIT(gamma_ship_location, 1) // 0 = station , 1 = space
 		toArea = locate(/area/shuttle/gamma/station)
 		for(var/obj/machinery/door/poddoor/impassable/gamma/H in GLOB.airlocks)
 			H.open()
-		GLOB.major_announcement.Announce("Central Command has deployed the Gamma Armory shuttle.", new_sound = 'sound/AI/gamma_deploy.ogg')
+		GLOB.major_announcement.Announce("Центральное Командование направило оружейный Гамма шаттл.", new_sound = 'sound/AI/gamma_deploy.ogg')
 	else
 		fromArea = locate(/area/shuttle/gamma/station)
 		toArea = locate(/area/shuttle/gamma/space)
 		for(var/obj/machinery/door/poddoor/impassable/gamma/H in GLOB.airlocks)
 			H.close() //DOOR STUCK
-		GLOB.major_announcement.Announce("Central Command has recalled the Gamma Armory shuttle.", new_sound = 'sound/AI/gamma_recall.ogg')
+		GLOB.major_announcement.Announce("Центральное Командование отозвало оружейный Гамма шаттл.", new_sound = 'sound/AI/gamma_recall.ogg')
 	fromArea.move_contents_to(toArea)
 
 	for(var/obj/machinery/mech_bay_recharge_port/P in toArea)
