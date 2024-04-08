@@ -122,7 +122,7 @@
 
 	for(var/i in 1 to calculated_antag_cap)
 		if(!length(candidates))
-			log_debug("Antag scenario 'candidates' length == false")
+			log_debug("Antag scenario 'candidates' null length")
 			break
 
 		var/mob/new_player/chosen = pickweight(candidates)
@@ -136,7 +136,7 @@
 			continue
 
 		var/datum/mind/chosen_mind = chosen.mind
-		log_debug("pre_execure mind: [chosen.ckey], [chosen_mind.name], [chosen_mind.current ? "[chosen_mind.current.real_name]" : ""]")
+		log_debug("pre_execute mind: [chosen.ckey], [chosen_mind.name], [chosen_mind.current ? "[chosen_mind.current.real_name]" : ""]")
 		assigned |= chosen_mind
 		chosen_mind.special_role = antag_special_role
 		if(!is_crew_antag)
@@ -171,6 +171,7 @@
  * Gets antag cap per this scenario, but taking `scaled_times` into calculation.
 */
 /datum/antag_scenario/proc/get_total_antag_cap(population)
+	log_debug("get_total_antag_cap([population]): antag_cap: [get_antag_cap(population)]; scaled_times: [scaled_times]")
 	return get_antag_cap(population) * (scaled_times + 1)
 
 /**
