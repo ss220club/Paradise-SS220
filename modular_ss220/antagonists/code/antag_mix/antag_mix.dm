@@ -141,13 +141,15 @@
 
 /datum/game_mode/antag_mix/proc/pre_execute_scenario(datum/antag_scenario/scenario_to_pre_execute, scaled_times, players_ready_amount)
 	if(!scenario_to_pre_execute)
+		log_antag_mix("Scenario '[scenario_to_pre_execute.name]' can't pre execute.")
 		return 0
 
+	log_antag_mix("Scenario '[scenario_to_pre_execute.name]' params: scaled_times [scaled_times]; players_ready_amount: [players_ready_amount]")
 	scenario_to_pre_execute.trim_candidates()
 
 	scenario_to_pre_execute.scaled_times = scaled_times
 	if(!scenario_to_pre_execute.pre_execute(players_ready_amount))
-		log_antag_mix("Scenario '[scenario_to_pre_execute.name]' failed to pre execute")
+		log_antag_mix("Scenario '[scenario_to_pre_execute.name]' failed to pre execute.")
 		return 0
 
 	executed_scenarios |= scenario_to_pre_execute
