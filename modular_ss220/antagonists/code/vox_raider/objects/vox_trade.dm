@@ -64,7 +64,7 @@
 
 	// дополнительные суммы за ценности
 	var/list/valuable_objects_dict = list(
-		/obj/machinery/nuclearbomb = 2500, // Ядро внутри является хайриском, оно дороже и учитывается при продаже.
+		/obj/machinery/nuclearbomb = 5000, // Ядро внутри является хайриском, оно дороже и учитывается при продаже. ~12.5k
 		/obj/item/mod/core = 1000,
 		/obj/item/mod = 300,
 		/obj/machinery/power/port_gen = 800,

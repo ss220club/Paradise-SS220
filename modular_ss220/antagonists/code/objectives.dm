@@ -2,11 +2,11 @@
 	name = "Raider theft"
 	needs_target = FALSE
 	/// Сколько ценностей надо украсть
-	var/precious_amount = 10
+	var/precious_amount = 30
 	/// На сколько ценность должна быть "цена" чтобы её засчитать
 	var/precious_value = 200
 	/// Сколько нужно украсть дополнительных ценностей в зависимости от количества людей в игре
-	var/dynamic_amount = 5
+	var/dynamic_amount = 10
 	/// Каждый X игроков добавляем доп. число ценностей
 	var/dynamic_player = 15
 
@@ -42,9 +42,9 @@
 	name = "Raider entirety theft"
 	needs_target = FALSE
 	/// Общая сумма ценностей
-	var/precious_value = 20000
+	var/precious_value = 50000
 	/// Сколько нужно украсть дополнительных ценностей на каждого игрока
-	var/dynamic_value = 200
+	var/dynamic_value = 750
 
 /datum/objective/raider_entirety_steal/update_explanation_text()
 	explanation_text = "Соберите ценностей на сумму [precious_value]. Все ценности должны быть приняты Расчичетчикиком."
