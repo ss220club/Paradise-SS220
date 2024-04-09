@@ -115,11 +115,6 @@
 	var/calculated_antag_cap = get_total_antag_cap(population)
 	modif_chance_recommended_species()
 
-	var/string_names = ""
-	for(var/mob/new_player/i in candidates)
-		string_names += "[i.name](ckey:[i.ckey]), "
-	log_debug("pre_execute: calculated_antag_cap = [calculated_antag_cap]; assigned_before = [assigned_before]; length(candidates): [length(candidates)]; candidates: [string_names];")
-
 	for(var/i in 1 to calculated_antag_cap)
 		if(!length(candidates))
 			log_debug("Antag scenario 'candidates' null length")
@@ -131,20 +126,21 @@
 		// We will check if something bad happened with candidates here.
 		if(!chosen || !chosen.mind)
 			error("Antag scenario 'candidates' were containing 'null' or mindless mob. This should not happen.")
-			log_debug("Antag scenario 'candidates' were containing 'null' or mindless mob. This should not happen. calculated_antag_cap = [calculated_antag_cap];")
 			calculated_antag_cap++
 			continue
 
 		var/datum/mind/chosen_mind = chosen.mind
-		log_debug("pre_execute mind: [chosen.ckey], [chosen_mind.name], [chosen_mind.current ? "[chosen_mind.current.real_name]" : ""]")
 		assigned |= chosen_mind
 		chosen_mind.special_role = antag_special_role
 		if(!is_crew_antag)
 			chosen_mind.assigned_role = antag_special_role
 		chosen_mind.restricted_roles |= restricted_roles
 
-	if(!(length(assigned) - assigned_before > 0))
-		log_debug("pre_execute = FALSE == [length(assigned) - assigned_before > 0]: [length(assigned)], [assigned_before], ")
+	var/string_names = ""
+	for(var/mob/new_player/i in assigned)
+		string_names += "[i.name](ckey:[i.ckey]), "
+	log_debug("pre_execute: calculated_antag_cap = [calculated_antag_cap]; assigned_before = [assigned_before]; length(candidates): [length(candidates)]; assigned: [string_names];")
+
 	return length(assigned) - assigned_before > 0
 
 /**
@@ -171,19 +167,12 @@
  * Gets antag cap per this scenario, but taking `scaled_times` into calculation.
 */
 /datum/antag_scenario/proc/get_total_antag_cap(population)
-	log_debug("get_total_antag_cap([population]): antag_cap: [get_antag_cap(population)]; scaled_times: [scaled_times]")
 	return get_antag_cap(population) * (scaled_times + 1)
 
 /**
  * Filter candidates scenario specific requirement vise.
 */
 /datum/antag_scenario/proc/trim_candidates()
-
-	var/string_names = ""
-	for(var/mob/new_player/i in candidates)
-		string_names += "[i.name](ckey:[i.ckey]), "
-	log_debug("antag_scenario trim_candidates start candidates: [string_names]")
-
 	for(var/mob/new_player/candidate as anything in candidates)
 		var/client/candidate_client = candidate.client
 		var/datum/mind/candidate_mind = candidate.mind
@@ -214,10 +203,6 @@
 		if(candidate_mind.assigned_role in restricted_roles)
 			candidates.Remove(candidate)
 
-	var/string_names_end = ""
-	for(var/mob/new_player/i in candidates)
-		string_names_end += "[i.name](ckey:[i.ckey]), "
-	log_debug("antag_scenario trim_candidates end candidates: [string_names_end]")
 
 /**
  * Create a character if the antagonist should not have a body initially.

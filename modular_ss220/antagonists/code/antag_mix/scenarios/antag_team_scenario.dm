@@ -10,11 +10,9 @@
 /datum/antag_scenario/team/pre_execute(population)
 	if(!ispath(antag_team))
 		error("'antag_team' in '[type]' team antag scenario is '[antag_team]' which is invalid.")
-		log_debug("'antag_team' in '[type]' team antag scenario is '[antag_team]' which is invalid.")
 
 	var/max_teams = FLOOR((get_total_antag_cap(population) / team_size), 1)
 	message_admins("Max teams: [max_teams]")
-	log_debug("Max teams: [max_teams]")
 	if(!max_teams)
 		log_debug("Max teams: ERROR; team_size: [team_size]; antag_cap: [get_total_antag_cap(population)]; population: [population]")
 		return FALSE
@@ -28,20 +26,13 @@
 				log_debug("Antag scenario team 'candidates' null length")
 				break
 
-			var/string_names = ""
-			for(var/mob/new_player/c in candidates)
-				string_names += "[c.name](ckey:[c.ckey]), "
-			log_debug("pre_execute: length(candidates): [length(candidates)]; candidates: [string_names];")
-
 			var/mob/new_player/team_member = pickweight(candidates)
 			candidates.Remove(team_member)
 			if(!team_member || !team_member.mind)
 				error("For some reason 'null' or mindless candidate was present in [type] 'candidates' list")
-				log_debug("For some reason 'null' or mindless candidate was present in [type] 'candidates' list.")
 				continue
 
 			var/datum/mind/chosen_mind = team_member.mind
-			log_debug("pre_execute mind: [team_member.ckey], [chosen_mind.name], [chosen_mind.current ? "[chosen_mind.current.real_name]" : ""]")
 			chosen_mind.special_role = antag_special_role
 			if(!is_crew_antag)
 				chosen_mind.assigned_role = antag_special_role
@@ -53,12 +44,7 @@
 		var/string_names = ""
 		for(var/datum/mind/m in members)
 			string_names += "[m.name](ckey:[ckey(m.key)]), "
-		log_debug("pre_execute: members: [string_names];")
-
-		var/string_names_ass = ""
-		for(var/datum/mind/m in assigned)
-			string_names_ass += "[m.name](ckey:[ckey(m.key)]), "
-		log_debug("pre_execute: assigned: [string_names_ass];")
+		log_debug("Antag Scenatio pre_execute: members: [string_names];")
 
 		message_admins("Members: [json_encode(members)]")
 		// If for some reason, not enough members were found - we will try again
@@ -67,11 +53,8 @@
 			continue
 
 		message_admins("Picked team of: [json_encode(members)]")
-		log_debug("Picked team of: [json_encode(members)]")
 		picked_teams += list(members)
 
-	if(!(length(picked_teams) - teams_before > 0))
-		log_debug("pre_execute team == [length(picked_teams) - teams_before > 0]: [length(picked_teams)], [teams_before], [max_teams]. ")
 	return length(picked_teams) - teams_before > 0
 
 
