@@ -2,8 +2,8 @@
 #define SENSOR_TEMPERATURE 	(1<<1)
 #define NO_DATA_VALUE  		null
 #define MAX_RECORD_SIZE 	20
-#define RECORD_INTERVAL     3
-#define LONG_RECORD_INTERVAL 30
+#define RECORD_INTERVAL     3 SECONDS
+#define LONG_RECORD_INTERVAL 30 SECONDS
 #define LAZYINITLISTSIZED(L, N) if(!L) L = new/list(N)
 #define ADD_TO_HISTORY(history_list, measurement) \
 	history_list += measurement; \
@@ -63,11 +63,11 @@
 
 	if(current_time < next_record_time)
 		return
-	next_record_time = current_time + RECORD_INTERVAL SECONDS
+	next_record_time = current_time + RECORD_INTERVAL
 
 	if(current_time >= next_long_record_time)
 		log_long_record = TRUE
-		next_long_record_time = current_time + LONG_RECORD_INTERVAL SECONDS
+		next_long_record_time = current_time + LONG_RECORD_INTERVAL
 
 	for(var/sensor_name in sensor_name_uid_map)
 		var/obj/machinery/atmospherics/atmos_sensor = locateUID(sensor_name_uid_map[sensor_name])
