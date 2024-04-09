@@ -63124,6 +63124,10 @@
 "kiq" = (
 /obj/machinery/light_switch/south,
 /obj/machinery/light/directional/south,
+/obj/machinery/atmospherics/unary/portables_connector{
+	dir = 1
+	},
+/obj/machinery/atmospherics/portable/canister/air,
 /turf/simulated/floor/plasteel,
 /area/station/science/xenobiology)
 "kiu" = (
@@ -65024,8 +65028,8 @@
 /turf/simulated/floor/plasteel,
 /area/station/hallway/primary/port)
 "kRV" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 6
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 1
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
@@ -86361,6 +86365,19 @@
 /obj/effect/spawner/lootdrop/maintenance,
 /turf/simulated/floor/plating,
 /area/station/maintenance/apmaint)
+"sCY" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "whitepurple"
+	},
+/area/station/science/xenobiology)
 "sDk" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
@@ -98214,6 +98231,14 @@
 /obj/effect/spawner/random_spawners/fungus_probably,
 /turf/simulated/wall,
 /area/station/maintenance/fpmaint2)
+"wTO" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 6
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "whitepurple"
+	},
+/area/station/science/xenobiology)
 "wUT" = (
 /turf/simulated/floor/plasteel{
 	icon_state = "hydrofloor"
@@ -148027,7 +148052,7 @@ cZy
 nqa
 rjK
 cEH
-ddY
+wTO
 kiq
 cBR
 vIW
@@ -148284,7 +148309,7 @@ bER
 oLS
 fYu
 jXI
-ial
+sCY
 oDE
 eBF
 fpG
