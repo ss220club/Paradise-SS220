@@ -401,7 +401,8 @@
 		input_level--
 		update_icon()
 	if(prob(input_level - safe_levels + (emagged * 5)))	//at dangerous levels, start doing freaky shit. prob with values less than 0 treat it as 0
-		GLOB.major_announcement.Announce("Произошел непредвиденный скачок напряжения во время работы Блюспейс-сборщика. Обнаружено внепространственное вторжение! Ожидаемое местоположение: [get_area(src).name]. [emagged ? "ОПАСНОСТЬ: Аварийное отключение не удалось! Пожалуйста, перейдите к ручному отключению." : "Начато аварийное отключение."]", "ВНИМАНИЕ: Обнаружена неисправность Блюспейс-сборщика!", 'sound/AI/harvester.ogg')
+		var/area/our_area = get_area(src)
+		GLOB.major_announcement.Announce("Произошел непредвиденный скачок напряжения во время работы Блюспейс-сборщика. Обнаружено внепространственное вторжение! Ожидаемое местоположение: [our_area.name]. [emagged ? "ОПАСНОСТЬ: Аварийное отключение не удалось! Пожалуйста, перейдите к ручному отключению." : "Начато аварийное отключение."]", "ВНИМАНИЕ: Обнаружена неисправность Блюспейс-сборщика!", 'sound/AI/harvester.ogg')
 		if(!emagged)
 			input_level = 0	//emergency shutdown unless we're sabotaged
 			desired_level = 0
