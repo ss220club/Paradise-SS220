@@ -43,9 +43,8 @@ export const AtmosGraphMonitor = (props, context) => {
         return "WE SHOULDN'T BE HERE!";
     }
   };
-  const maxWingowHeight = 800;
   const getWindowHeight = Math.min(
-    maxWingowHeight,
+    800,
     Object.keys(data.sensors).length * 220 + 150
   );
   return (
