@@ -282,18 +282,7 @@ class AtmosChart extends Component<AtmosChartProps, AtmosChartState> {
       <Box position="relative" {...rest}>
         {(props) => (
           <div ref={this.ref} {...props}>
-            <svg
-              viewBox={`0 0 ${viewBox[0]} ${viewBox[1]}`}
-              preserveAspectRatio="none"
-              style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                right: 0,
-                bottom: 0,
-                overflow: 'visible',
-              }}
-            >
+            <svg viewBox={`0 0 ${viewBox[0]} ${viewBox[1]}`}>
               {/* Горизонтальные линии сетки */}
               {Array.from({ length: horizontalLinesCount }).map((_, index) => (
                 <line
