@@ -813,26 +813,24 @@
 		AI.cracked_camera = TRUE
 		QDEL_NULL(AI.builtInCamera)
 
-/datum/AI_Module/engi_upgrade
-	module_name = "Улучшение на эмиттер для инженерного киборга"
-	mod_pick_name = "emitter"
-	description = "Скачивает ПО, разблокирующее эмиттер на всех инженерных киборгах. Киборги, построенные после улучшения, будут иметь его по умолчанию."
-	cost = 50 // IDK look into this
+/datum/AI_Module/borg_upgrade
+	module_name = "Combat Cyborg Firmware Upgrade"
+	mod_pick_name = "combatborgs"
+	description = "Downloads firmware that activates built-in combat hardware present in all cyborgs. Cyborgs built after this is used will come with the hardware activated."
+	cost = 70 // IDK look into this
 	one_purchase = TRUE
 	upgrade = TRUE
-	unlock_text = "<span class='notice'>ПО загружено. Баги устранены. Встроенные эмиттеры работают с эффективностью 73%.</span>"
+	unlock_text = "<span class='notice'>Firmware downloaded. Bugs removed. Combat subsystems operating at 73% efficiency.</span>"
 	unlock_sound = 'sound/items/rped.ogg'
 
-/datum/AI_Module/engi_upgrade/upgrade(mob/living/silicon/ai/AI)
-	AI.purchased_modules += /obj/item/robot_module/engineering
-	log_game("[key_name(usr)] purchased emitters for all engineering cyborgs.")
-	message_admins("<span class='notice'>[key_name_admin(usr)] purchased emitters for all engineering cyborgs!</span>")
+/datum/AI_Module/borg_upgrade/upgrade(mob/living/silicon/ai/AI)
+	AI.purchased_modules = list(/obj/item/robot_module/engineering, /obj/item/robot_module/janitor, /obj/item/robot_module/medical, /obj/item/robot_module/miner, /obj/item/robot_module/butler)
+	log_game("[key_name(usr)] purchased combat upgrades for all cyborgs.")
+	message_admins("<span class='notice'>[key_name_admin(usr)] purchased combat upgrades for all cyborgs!</span>")
 	for(var/mob/living/silicon/robot/R in AI.connected_robots)
-		if(!istype(R.module, /obj/item/robot_module/engineering))
-			continue
 		R.module.malfhacked = TRUE
 		R.module.rebuild_modules()
-		to_chat(R, "<span class='notice'Новое ПО загружено. Эмиттеры теперь активны.</span>")
+		to_chat(R, "<span class='notice'>New firmware downloaded. Combat upgrades are now online.</span>")
 
 /datum/AI_Module/repair_cyborg
 	module_name = "Починка киборгов"
