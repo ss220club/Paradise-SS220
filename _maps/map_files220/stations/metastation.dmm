@@ -121,9 +121,6 @@
 	pixel_y = -6
 	},
 /obj/machinery/firealarm/directional/east,
-/obj/machinery/alarm/directional/east{
-	pixel_x = 36
-	},
 /obj/item/stamp/warden{
 	pixel_x = -6;
 	pixel_y = 6
@@ -44492,7 +44489,7 @@
 	},
 /obj/machinery/power/apc/directional/east,
 /obj/machinery/light_switch/east{
-	pixel_y = 10
+	pixel_y = 12
 	},
 /turf/simulated/floor/plasteel,
 /area/station/security/prison/cell_block/A)
@@ -46711,18 +46708,6 @@
 	icon_state = "darkredcorners"
 	},
 /area/station/security/armory/secure)
-"epM" = (
-/obj/machinery/door/poddoor/preopen{
-	id_tag = "Secure Gate";
-	name = "brig shutters"
-	},
-/obj/structure/cable/yellow{
-	d2 = 8;
-	icon_state = "0-8"
-	},
-/obj/effect/spawner/window/reinforced/grilled,
-/turf/simulated/floor/plating,
-/area/station/security/warden)
 "epY" = (
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 4
@@ -58151,6 +58136,7 @@
 	dir = 8;
 	network = list("SS13","Research Outpost","Mining Outpost")
 	},
+/obj/machinery/alarm/directional/south,
 /turf/simulated/floor/plasteel{
 	dir = 6;
 	icon_state = "red"
@@ -60087,6 +60073,9 @@
 	},
 /obj/effect/mapping_helpers/airlock/windoor/access/any/security/brig{
 	dir = 8
+	},
+/obj/machinery/firealarm/directional/south{
+	pixel_x = -4
 	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
@@ -64690,11 +64679,6 @@
 	name = "brig shutters"
 	},
 /obj/machinery/door/firedoor,
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
 /obj/structure/cable/yellow{
 	d1 = 1;
 	d2 = 8;
@@ -71666,10 +71650,6 @@
 	},
 /area/station/service/kitchen)
 "pSE" = (
-/obj/machinery/firealarm/directional/west,
-/obj/machinery/alarm/directional/west{
-	pixel_x = -36
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable/yellow{
@@ -71682,6 +71662,7 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
+/obj/machinery/alarm/directional/west,
 /turf/simulated/floor/plasteel,
 /area/station/security/prison/cell_block/A)
 "pSL" = (
@@ -116549,7 +116530,7 @@ rEl
 acf
 fRT
 jIs
-epM
+aqu
 aHM
 aJk
 aNt
