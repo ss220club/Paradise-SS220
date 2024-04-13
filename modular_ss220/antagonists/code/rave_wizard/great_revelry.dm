@@ -1,4 +1,4 @@
-/obj/effect/proc_holder/spell/great_revelry
+/datum/spell/great_revelry
 	name = "Ritual of Great Revelry"
 	desc = "Gives everyone a beckoning bottle of alcohol, forcing them to drop an item from their hand."
 
@@ -20,10 +20,10 @@
 	action_background_icon_state = "revelry"
 	action_icon = 'modular_ss220/antagonists/icons/rave.dmi'
 
-/obj/effect/proc_holder/spell/great_revelry/create_new_targeting()
+/datum/spell/great_revelry/create_new_targeting()
 	return new /datum/spell_targeting/self
 
-/obj/effect/proc_holder/spell/great_revelry/cast(list/targets, mob/user = usr)
+/datum/spell/great_revelry/cast(list/targets, mob/user = usr)
 	for(var/mob/living/carbon/human/H in GLOB.player_list)
 		var/turf/T = get_turf(H)
 		if(T && is_away_level(T.z))
@@ -36,7 +36,7 @@
 		give_alcohol(H)
 
 
-/obj/effect/proc_holder/spell/great_revelry/proc/give_alcohol(mob/living/carbon/human/H)
+/datum/spell/great_revelry/proc/give_alcohol(mob/living/carbon/human/H)
 	var/bottle_type = pick(beverages)
 	var/obj/item/bottle = new bottle_type(get_turf(H))
 	playsound(get_turf(H),'modular_ss220/antagonists/sound/beer_can_open.ogg', 50, TRUE)
@@ -44,5 +44,5 @@
 
 /datum/spellbook_entry/great_revelry
 	name = "Ritual of Great Revelry"
-	spell_type = /obj/effect/proc_holder/spell/great_revelry
+	spell_type = /datum/spell/great_revelry
 	category = "Rave"

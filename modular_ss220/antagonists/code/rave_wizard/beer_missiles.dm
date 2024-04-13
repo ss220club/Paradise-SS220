@@ -1,4 +1,4 @@
-/obj/effect/proc_holder/spell/projectile/beer_missile
+/datum/spell/projectile/magic_missile/beer
 	name = "Beer Missile"
 	desc = "This spell fires several, slow moving, magic beer bottles at nearby targets"
 	school = "evocation"
@@ -11,7 +11,7 @@
 	proj_icon_state = "beer"
 	proj_name = "A bottle of beer"
 	proj_lingering = 1
-	proj_type = "/obj/effect/proc_holder/spell/inflict_handler/beer_missile"
+	proj_type = "/obj/item/projectile/magic/magic_missile/beer"
 	proj_lifespan = 20
 	proj_step_delay = 5
 	proj_trail_icon = 'icons/obj/drinks.dmi'
@@ -23,29 +23,12 @@
 	action_icon = 'modular_ss220/antagonists/icons/rave.dmi'
 	sound = 'sound/magic/magic_missile.ogg'
 
-/obj/effect/proc_holder/spell/projectile/beer_missile/create_new_targeting()
-	var/datum/spell_targeting/targeted/T = new()
-	T.allowed_type = /mob/living
-	T.max_targets = INFINITY
-	return T
-
-/obj/effect/proc_holder/spell/inflict_handler/beer_missile
-	sound = "shatter"
+/obj/item/projectile/magic/magic_missile/beer
+	hitsound = "shatter"
 	var/debuff_effect_duration = 10 SECONDS
-
-/obj/effect/proc_holder/spell/inflict_handler/beer_missile/cast(list/targets, mob/user = usr)
-	for(var/mob/living/target in targets)
-		target.AdjustKnockDown(debuff_effect_duration)
-		target.AdjustDizzy(debuff_effect_duration)
-		target.AdjustSlur(debuff_effect_duration)
-		target.AdjustConfused(debuff_effect_duration)
-		target.AdjustEyeBlurry(debuff_effect_duration)
-		target.AdjustDrowsy(debuff_effect_duration)
-		target.AdjustDruggy(debuff_effect_duration)
-	. = ..()
 
 /datum/spellbook_entry/beer_missile
 	name = "Magic beer missiles"
-	spell_type = /obj/effect/proc_holder/spell/projectile/beer_missile
+	spell_type = /datum/spell/projectile/magic_missile/beer
 	category = "Rave"
 

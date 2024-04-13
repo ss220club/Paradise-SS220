@@ -1,4 +1,4 @@
-/obj/effect/proc_holder/spell/aoe/conjure/summon_disco
+/datum/spell/aoe/conjure/summon_disco
 	name = "Summon Disco Ball"
 	desc = "Summons a disco ball"
 	base_cooldown = 400 SECONDS
@@ -13,7 +13,7 @@
 	action_icon = 'modular_ss220/antagonists/icons/rave.dmi'
 	var/obj/machinery/jukebox/disco/indestructible/our_disco
 
-/obj/effect/proc_holder/spell/aoe/conjure/summon_disco/cast(list/targets, mob/living/user = usr)
+/datum/spell/aoe/conjure/summon_disco/cast(list/targets, mob/living/user = usr)
 	if(!our_disco)
 		var/list/summoned_items = ..()
 		if(summoned_items || summoned_items.len > 0)
@@ -25,6 +25,6 @@
 
 /datum/spellbook_entry/summon_disco
 	name = "Summon Disco Ball"
-	spell_type = /obj/effect/proc_holder/spell/aoe/conjure/summon_disco
+	spell_type = /datum/spell/aoe/conjure/summon_disco
 	cost = 1
 	category = "Rave"

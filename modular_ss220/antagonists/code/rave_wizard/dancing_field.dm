@@ -1,4 +1,4 @@
-/obj/effect/proc_holder/spell/aoe/conjure/timestop/dance
+/datum/spell/aoe/conjure/timestop/dance
 	name = "Dance Time"
 	desc = "This spell makes everyone dance in it's range. Enchanted targets cannot attack, but projectiles harm as usual"
 	invocation = "DAN SIN FIVA"
@@ -55,7 +55,7 @@
 
 /datum/spellbook_entry/dancestop
 	name = "Dance Stop"
-	spell_type = /obj/effect/proc_holder/spell/aoe/conjure/timestop/dance
+	spell_type = /datum/spell/aoe/conjure/timestop/dance
 	category = "Rave"
 
 /obj/effect/timestop/dancing/wizard

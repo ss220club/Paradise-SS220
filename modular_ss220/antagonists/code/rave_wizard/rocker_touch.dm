@@ -1,7 +1,7 @@
 #define DRUGS_AMOUNT_INJECTED_BY_TUMOR 20
 #define ALCOHOL_AMOUNT_INJECTED_BY_TUMOR 20
 
-/obj/effect/proc_holder/spell/touch/rocker
+/datum/spell/touch/touch/rocker
 	name = "Rocker Touch"
 	desc = "Teach those foolish suits how to spend time in style"
 	hand_path = /obj/item/melee/touch_attack/rocker
@@ -22,7 +22,7 @@
 
 /datum/spellbook_entry/rocker_curse
 	name = "Alcoholism curse"
-	spell_type = /obj/effect/proc_holder/spell/touch/rocker
+	spell_type = /datum/spell/touch/touch/rocker
 	category = "Rave"
 	cost = 1
 

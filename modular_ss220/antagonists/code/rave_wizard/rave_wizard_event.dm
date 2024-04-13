@@ -1,4 +1,3 @@
-#define SPELLBOOK_AVAILABLE_POINTS 4
 #define MAGIVENDS_PRODUCTS_REFILL_VALUE 20
 #define WIZARD_WIKI ("<span class='motd'>На вики-странице доступна более подробная информация: ([GLOB.configuration.url.wiki_url]/index.php/Wizard)</span>")
 #define RAVE_WIZARD_EVENT_WEIGHT 5
@@ -23,7 +22,9 @@
 	if(new_wizard)
 
 		var/mob/living/carbon/human/new_character = makeBody(new_wizard)
-		new_character.mind.make_rave_wizard()
+		var/datum/antagonist/wizard/rave_wizard = new /datum/antagonist/wizard/rave()
+		new_character.mind.add_antag_datum(rave_wizard)
+		new_character.forceMove(pick(GLOB.wizardstart))
 		// This puts them at the wizard spawn, worry not
 		new_character.equip_to_slot_or_del(new /obj/item/reagent_containers/drinks/mugwort(new_wizard), SLOT_HUD_IN_BACKPACK)
 		new_character.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses, SLOT_HUD_GLASSES)
@@ -53,71 +54,6 @@
 		magic.product_records.Cut()
 		magic.build_inventory(magic.products, magic.product_records)
 
-/datum/mind/proc/make_rave_wizard()
-	if(!(src in SSticker.mode.wizards))
-		SSticker.mode.wizards += src
-		special_role = SPECIAL_ROLE_WIZARD
-		assigned_role = SPECIAL_ROLE_WIZARD
-		//ticker.mode.learn_basic_spells(current)
-		if(!GLOB.wizardstart.len)
-			current.loc = pick(GLOB.latejoin)
-			to_chat(current, "HOT INSERTION, GO GO GO")
-		else
-			current.loc = pick(GLOB.wizardstart)
-
-		SSticker.mode.equip_wizard(current)
-		src.learn_rave_spells()
-		for(var/obj/item/spellbook/S in current.contents)
-			S.op = 0
-			S.remove_harmful_spells_and_items()
-			S.uses = SPELLBOOK_AVAILABLE_POINTS
-		SSticker.mode.forge_rave_wizard_objectives(src)
-		SSticker.mode.greet_rave_wizard(src)
-		SSticker.mode.update_wiz_icons_added(src)
-		SSticker.mode.name_wizard(current)
-
-/datum/mind/proc/learn_rave_spells()
-	var/spell_paths = list(/obj/effect/proc_holder/spell/projectile/beer_missile,
-							/obj/effect/proc_holder/spell/aoe/conjure/timestop/dance,
-							/obj/effect/proc_holder/spell/great_revelry,
-							/obj/effect/proc_holder/spell/touch/rocker,
-							/obj/effect/proc_holder/spell/aoe/conjure/summon_disco)
-	for(var/spell_path in spell_paths)
-		var/S = new spell_path
-		src.AddSpell(S)
-
-/obj/item/spellbook/proc/remove_harmful_spells_and_items()
-	main_categories -= "Magical Items"
-	main_categories -= "Loadouts"
-	spell_categories -= "Offensive"
-	spell_categories -= "Rituals"
-
-
-/datum/spellbook_entry/summon_supermatter
-	category = "Offensive"
-
-/datum/spellbook_entry/rathens
-	category = "Offensive"
-
-/datum/game_mode/proc/greet_rave_wizard(datum/mind/wizard, you_are=TRUE)
-	SEND_SOUND(wizard.current, sound('sound/ambience/antag/ragesmages.ogg'))
-	var/list/messages = list()
-	if(you_are)
-		messages.Add(span_danger("Вы — маг рейва!"))
-
-	messages.Add(wizard.prepare_announce_objectives(title = FALSE))
-	messages.Add(WIZARD_WIKI)
-	to_chat(wizard.current, chat_box_red(messages.Join("<br>")))
-	wizard.current.create_log(MISC_LOG, "[wizard.current] was made into a wizard")
-
-/datum/game_mode/proc/forge_rave_wizard_objectives(datum/mind/wizard)
-	wizard.add_mind_objective(/datum/objective/wizrave)
-
-/datum/objective/wizrave
-	explanation_text = "Устройте вечеринку, о которой потомки будут слагать легенды."
-	needs_target = FALSE
-	completed = TRUE
-
 /datum/event_container/major/New()
 	. = ..()
 	ASSERT(length(available_events) > 0)
@@ -127,5 +63,4 @@
 
 #undef MAGIVENDS_PRODUCTS_REFILL_VALUE
 #undef WIZARD_WIKI
-#undef SPELLBOOK_AVAILABLE_POINTS
 #undef RAVE_WIZARD_EVENT_WEIGHT
