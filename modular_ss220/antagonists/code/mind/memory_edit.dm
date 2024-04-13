@@ -7,6 +7,15 @@
 
 	. += _memory_edit_role_enabled(ROLE_BLOOD_BROTHER)
 
+/datum/mind/memory_edit_wizard(mob/living/carbon/human/H)
+	. = _memory_edit_header("wizard")
+	if(has_antag_datum(/datum/antagonist/wizard))
+		. += "<b><font color='red'>WIZARD</font></b>|<a href='?src=[UID()];wizard=clear'>no</a>"
+		. += "<br><a href='?src=[UID()];wizard=lair'>To lair</a>, <a href='?src=[UID()];common=undress'>undress</a>, <a href='?src=[UID()];wizard=dressup'>dress up</a>, <a href='?src=[UID()];wizard=name'>let choose name</a>, <a href='?src=[UID()];wizard=enrave'>enrave</a>."
+	else
+		. += "<a href='?src=[UID()];wizard=wizard'>wizard</a>|<b>NO</b>"
+
+	. += _memory_edit_role_enabled(ROLE_WIZARD)
 
 /datum/mind/proc/clear_antag_datum(datum/antagonist/antag_datum_to_clear)
 	if(!has_antag_datum(antag_datum_to_clear))
@@ -31,4 +40,13 @@
 				if(!brother_antag_datum.admin_add(usr, src))
 					qdel(brother_antag_datum)
 
+	if(href_list["wizard"])
+		switch(href_list["wizard"])
+			if("enrave")
+				var/datum/antagonist/wizard/wizard = has_antag_datum(/datum/antagonist/wizard)
+				if(!istype(wizard))
+					return
+				add_antag_datum(/datum/antagonist/wizard/rave)
+				log_admin("[key_name(usr)] has enraved wizard [key_name(current)]")
+				message_admins("[key_name_admin(usr)] has enraved wizard [key_name_admin(current)]")
 	. = ..()

@@ -20,6 +20,17 @@
 		var/S = new spell_path
 		owner.AddSpell(S)
 
+
+/datum/mind/proc/enrave() //for admin spawn
+	if(!has_antag_datum(/datum/antagonist/wizard/rave))
+		return
+	var/obj/item/spellbook/spellbook = new /obj/item/spellbook(src)
+	spellbook.owner = src
+	spellbook.remove_harmful_spells_and_items()
+	spellbook.uses = SPELLBOOK_AVAILABLE_POINTS
+	src.current.equip_to_slot_or_del(spellbook, SLOT_HUD_LEFT_HAND)
+
+
 /datum/antagonist/wizard/equip_wizard() //copypasta to make spellbook adjustments
 	if(!ishuman(owner.current))
 		return
