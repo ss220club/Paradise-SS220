@@ -68,3 +68,17 @@
 	icon = 'modular_ss220/clothing/icons/object/masks.dmi'
 	icon_override = 'modular_ss220/clothing/icons/mob/mask.dmi'
 	icon_state = "breathscarf"
+
+/obj/item/clothing/mask/breath/combine_mask
+	name = "Комбинированная маска"
+	desc = "Комбинированное обмундирование для защиты дыхания. На нём видны опознавательные знаки Nanotrasen"
+	icon = 'modular_ss220/clothing/icons/object/masks.dmi'
+	icon_override = 'modular_ss220/clothing/icons/mob/mask.dmi'
+	icon_state = "combine_helmet"
+
+/obj/item/clothing/mask/breath/elite_combine/mask
+	name = "Элитная комбинированная маска"
+	desc = "Комбинированное обмундирование для защиты дыхания. Этот образец отличается особым качеством и отделкой."
+	icon = 'modular_ss220/clothing/icons/object/masks.dmi'
+	icon_override = 'modular_ss220/clothing/icons/mob/mask.dmi'
+	icon_state = "elite_combine_helmet"

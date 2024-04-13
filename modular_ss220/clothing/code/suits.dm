@@ -222,3 +222,33 @@
 	icon = 'modular_ss220/clothing/icons/object/helmet.dmi'
 	icon_state = "hardsuit0-sec"
 	icon_override = 'modular_ss220/clothing/icons/mob/helmet.dmi'
+		)
+
+/obj/item/clothing/suit/beatrice_dress
+	name = "Розовое платье"
+	desc = "?"
+	icon = 'modular_ss220/clothing/icons/object/suits.dmi'
+	icon_state = "beatricedress"
+	icon_override = 'modular_ss220/clothing/icons/mob/suits.dmi'
+
+/obj/item/clothing/suit/black_idol_dress
+	name = "Чёрное платье"
+	desc = "?"
+	icon = 'modular_ss220/clothing/icons/object/suits.dmi'
+	icon_state = "black_idol_dress"
+	icon_override = 'modular_ss220/clothing/icons/mob/suits.dmi'
+
+
+/obj/item/clothing/suit/blue_bright_dress
+	name = "Светло синее платье"
+	desc = "?"
+	icon = 'modular_ss220/clothing/icons/object/suits.dmi'
+	icon_state = "blue_bright_dress"
+	icon_override = 'modular_ss220/clothing/icons/mob/suits.dmi'
+
+/obj/item/clothing/suit/black_rose_dress
+	name = "Чёрное вечернее платье"
+	desc = "?"
+	icon = 'modular_ss220/clothing/icons/object/suits.dmi'
+	icon_state = "black_rose_dress"
+	icon_override = 'modular_ss220/clothing/icons/mob/suits.dmi'
