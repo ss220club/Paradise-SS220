@@ -1082,7 +1082,6 @@
 	new /obj/item/stack/cable_coil(src)
 
 /obj/item/storage/box/responseteam/plasmaman/populate_contents()
-	new /obj/item/clothing/mask/breath(src)
 	new /obj/item/tank/internals/plasmaman/belt(src)
 	new /obj/item/crowbar/small(src)
 	new /obj/item/flashlight/flare(src)
