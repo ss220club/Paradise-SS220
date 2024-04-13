@@ -166,9 +166,17 @@ GLOBAL_VAR_INIT(record_id_num, 1001)
 		G.fields["m_stat"]		= "Stable"
 		G.fields["sex"]			= capitalize(H.gender)
 		G.fields["species"]		= H.dna.species.name
-		G.fields["photo"]		= get_id_photo(H)
-		G.fields["photo-south"] = "data:image/png;base64,[icon2base64(icon(G.fields["photo"], dir = SOUTH))]"
-		G.fields["photo-west"] = "data:image/png;base64,[icon2base64(icon(G.fields["photo"], dir = WEST))]"
+		// Do some ID card checking stuff here to save on resources
+		var/card_photo
+		if(istype(H.wear_id, /obj/item/card/id))
+			var/obj/item/card/id/IDC = H.wear_id
+			card_photo = IDC.photo
+		else
+			card_photo = get_id_photo(H)
+
+		G.fields["photo"] = card_photo
+		G.fields["photo-south"] = "data:image/png;base64,[icon2base64(icon(card_photo, dir = SOUTH))]"
+		G.fields["photo-west"] = "data:image/png;base64,[icon2base64(icon(card_photo, dir = WEST))]"
 		if(H.gen_record && !jobban_isbanned(H, ROLEBAN_RECORDS))
 			G.fields["notes"] = H.gen_record
 		else
@@ -492,7 +500,7 @@ GLOBAL_VAR_INIT(record_id_num, 1001)
 			clothes_s = new /icon('modular_ss220/jobs/icons/clothing/mob/uniform.dmi', "student_s")
 			clothes_s.Blend(new /icon('icons/mob/clothing/feet.dmi', "white"), ICON_UNDERLAY)
 			clothes_s.Blend(new /icon('icons/mob/clothing/suit.dmi', "labcoat_tox_open"), ICON_OVERLAY)
-		if("Intern")
+		if("Medical Intern")
 			clothes_s = new /icon('modular_ss220/jobs/icons/clothing/mob/uniform.dmi', "intern_s")
 			clothes_s.Blend(new /icon('icons/mob/clothing/feet.dmi', "white"), ICON_UNDERLAY)
 			clothes_s.Blend(new /icon('icons/mob/clothing/suit.dmi', "labcoat_open"), ICON_OVERLAY)

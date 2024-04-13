@@ -266,7 +266,7 @@ GLOBAL_LIST_EMPTY(deadsay_radio_systems)
 		connection = radio_connection
 		channel = null
 
-	if(is_type_in_list(get_area(src), blacklisted_areas))
+	if(loc && is_type_in_list(get_area(src), blacklisted_areas))
 		// add a debug log so people testing things won't be fighting against a "broken" radio for too long.
 		log_debug("Radio message from [src] was used in restricted area [get_area(src)].")
 		return
@@ -512,18 +512,6 @@ GLOBAL_LIST_EMPTY(deadsay_radio_systems)
 	broadcast_message(tcm)
 	qdel(tcm) // Delete the message datum
 
-/*
-/obj/item/radio/proc/accept_rad(obj/item/radio/R as obj, message)
-
-	if((R.frequency == frequency && message))
-		return 1
-	else if
-
-	else
-		return null
-	return
-*/
-
 
 /obj/item/radio/proc/receive_range(freq, level)
 	// check if this radio can receive on the given frequency, and if so,
@@ -553,11 +541,6 @@ GLOBAL_LIST_EMPTY(deadsay_radio_systems)
 		if(!accept)
 			return -1
 	return canhear_range
-
-/obj/item/radio/proc/send_hear(freq, level)
-	var/range = receive_range(freq, level)
-	if(range > -1)
-		return get_mobs_in_view(canhear_range, src)
 
 /obj/item/radio/proc/is_listening()
 	var/is_listening = TRUE
@@ -835,7 +818,7 @@ GLOBAL_LIST_EMPTY(deadsay_radio_systems)
 	to_chat(hearer, "<span class='deadsay'><b>[speaker_name]</b> ([ghost_follow_link(subject, hearer)]) [message]</span>")
 
 /obj/item/radio/headset/deadsay/talk_into(mob/living/M, list/message_pieces, channel, verbage)
-	var/message = sanitize(copytext(multilingual_to_message(message_pieces), 1, MAX_MESSAGE_LEN))
+	var/message = copytext(multilingual_to_message(message_pieces), 1, MAX_MESSAGE_LEN)
 
 	if(!message)
 		return

@@ -160,7 +160,7 @@
 	/// The owning [/datum/syndicatce_contract].
 	var/datum/syndicate_contract/owning_contract = null
 	/// Name fixer regex because area names have rogue characters sometimes.
-	var/static/regex/name_fixer = regex("(\[a-z0-9 \\'\]+)$", "ig")
+	var/static/regex/name_fixer = regex("(\[a-zа-яё0-9 \\'\]+)$", "ig") // SS220 EDIT - Regex for RU Areas
 
 /datum/objective/contract/New(contract)
 	owning_contract = contract
@@ -202,6 +202,9 @@
 		return
 	// We pick the target ourselves so we don't want the default behaviour.
 	owning_contract.invalidate()
+
+/datum/objective/contract/update_explanation_text()
+	return
 
 /**
   * Assigns a randomly selected zone to the contract's selectable zone at the given difficulty.

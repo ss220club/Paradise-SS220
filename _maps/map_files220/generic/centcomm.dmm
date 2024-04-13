@@ -159,7 +159,7 @@
 /turf/simulated/floor/carpet,
 /area/syndicate_mothership/control)
 "afe" = (
-/obj/machinery/computer{
+/obj/machinery/computer/nonfunctional{
 	dir = 1
 	},
 /obj/structure/window/reinforced,
@@ -1062,7 +1062,9 @@
 /turf/simulated/floor/wood/parquet/tile,
 /area/centcom/ss220/admin2)
 "aIZ" = (
-/obj/machinery/computer/library,
+/obj/machinery/computer/library{
+	pixel_y = 8
+	},
 /obj/structure/table/wood,
 /turf/simulated/floor/wood/oak,
 /area/wizard_station)
@@ -2296,7 +2298,7 @@
 /turf/simulated/floor/plating/airless{
 	icon_state = "asteroidplating"
 	},
-/area/space/nearstation)
+/area/space/nearstation/centcom)
 "bJO" = (
 /obj/structure/fans/tiny/invisible,
 /obj/structure/marker_beacon/dock_marker/collision,
@@ -2524,7 +2526,8 @@
 	id = "QMLoaddoor";
 	layer = 3;
 	name = "Loading Doors";
-	pixel_y = 8
+	pixel_y = 8;
+	req_one_access_txt = "79"
 	},
 /turf/simulated/floor/mineral/titanium/blue,
 /area/shuttle/supply)
@@ -5375,7 +5378,7 @@
 /area/centcom/ss220/park)
 "dHo" = (
 /obj/machinery/light/spot,
-/obj/machinery/economy/atm/south,
+/obj/machinery/economy/atm/directional/south,
 /turf/simulated/floor/wood/fancy/cherry,
 /area/shuttle/trade/sol)
 "dHB" = (
@@ -5644,6 +5647,12 @@
 /obj/machinery/door/airlock/centcom,
 /turf/simulated/floor/wood,
 /area/ghost_bar)
+"dNN" = (
+/obj/machinery/clonescanner,
+/turf/simulated/floor/plasteel/dark{
+	icon_state = "barber"
+	},
+/area/shuttle/administration)
 "dOd" = (
 /obj/machinery/atmospherics/unary/thermomachine/freezer/on,
 /obj/structure/light_fake{
@@ -6057,7 +6066,7 @@
 /obj/machinery/door/airlock/external{
 	id_tag = "s_docking_airlock";
 	name = "Shuttle Hatch";
-	req_access_txt = "31"
+	req_one_access_txt = "79"
 	},
 /obj/structure/fans/tiny,
 /turf/simulated/floor/plating,
@@ -6209,7 +6218,8 @@
 	color = "#996633"
 	},
 /obj/machinery/computer/library{
-	pixel_y = 6
+	pixel_y = 6;
+	dir = 1
 	},
 /turf/simulated/floor/carpet,
 /area/centcom/ss220/library)
@@ -8040,7 +8050,7 @@
 /turf/simulated/floor/plating/airless{
 	icon_state = "asteroidplating"
 	},
-/area/space/nearstation)
+/area/space/nearstation/centcom)
 "fqZ" = (
 /obj/structure/rack,
 /obj/item/tank/internals/emergency_oxygen/double/vox,
@@ -8816,7 +8826,7 @@
 "fVA" = (
 /obj/effect/mob_spawn/human/corpse/clown/corpse,
 /turf/simulated/floor/plating/asteroid/ancient/airless,
-/area/space/nearstation)
+/area/space/nearstation/centcom)
 "fVW" = (
 /turf/simulated/floor/beach/away/coastline{
 	water_overlay_image = null
@@ -8927,7 +8937,7 @@
 /area/shuttle/syndicate)
 "fYV" = (
 /turf/simulated/mineral/ancient/outer,
-/area/space/nearstation)
+/area/space/nearstation/centcom)
 "fZS" = (
 /obj/machinery/computer/account_database{
 	name = "Admin Accounts Database";
@@ -9483,7 +9493,7 @@
 	color = "#996633"
 	},
 /obj/machinery/computer/library{
-	pixel_y = 6
+	pixel_y = 8
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "grimy"
@@ -10245,7 +10255,6 @@
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/admin3)
 "gSz" = (
-/obj/effect/landmark/spawner/teleport_scroll,
 /obj/structure/table/wood/fancy/black,
 /obj/item/paper/crumpled/bloody/ruins/lavaland/clown_planet{
 	info = "Deliver five cream pies to the agreed place or your apprentice gets honked again";
@@ -12019,7 +12028,7 @@
 /obj/machinery/light/spot{
 	dir = 1
 	},
-/obj/machinery/economy/atm/north,
+/obj/machinery/economy/atm/directional/north,
 /turf/simulated/floor/wood/fancy/cherry,
 /area/shuttle/trade/sol)
 "hWx" = (
@@ -12499,8 +12508,7 @@
 	req_access = list(114)
 	},
 /turf/simulated/floor/plasteel{
-	icon_state = "rampbottom";
-	tag = "icon-stage_stairs"
+	icon_state = "rampbottom"
 	},
 /area/centcom/ss220/court)
 "ipZ" = (
@@ -12813,7 +12821,7 @@
 /turf/simulated/floor/wood/parquet/tile,
 /area/centcom/ss220/admin1)
 "iwE" = (
-/obj/machinery/computer,
+/obj/machinery/computer/nonfunctional,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "navybluefull"
@@ -14424,7 +14432,7 @@
 /obj/structure/lattice,
 /obj/structure/light_fake/small,
 /turf/space,
-/area/space/nearstation)
+/area/space/nearstation/centcom)
 "jKB" = (
 /obj/effect/turf_decal/delivery,
 /turf/simulated/floor/plasteel{
@@ -16162,7 +16170,7 @@
 /turf/simulated/floor/grass/no_creep,
 /area/centcom/ss220/bar)
 "leo" = (
-/obj/machinery/computer,
+/obj/machinery/computer/nonfunctional,
 /obj/structure/window/reinforced{
 	dir = 4
 	},
@@ -16324,7 +16332,7 @@
 /turf/simulated/floor/plating/airless{
 	icon_state = "asteroidplating"
 	},
-/area/space/nearstation)
+/area/space/nearstation/centcom)
 "lkx" = (
 /obj/machinery/door/airlock/hatch/syndicate{
 	name = "Syndicate Base"
@@ -16700,7 +16708,7 @@
 	},
 /area/centcom/ss220/general)
 "lvh" = (
-/obj/machinery/computer,
+/obj/machinery/computer/nonfunctional,
 /obj/structure/window/reinforced{
 	dir = 1
 	},
@@ -17809,7 +17817,7 @@
 	},
 /area/centcom/ss220/command)
 "lYC" = (
-/obj/machinery/computer{
+/obj/machinery/computer/nonfunctional{
 	dir = 1
 	},
 /turf/simulated/floor/plasteel{
@@ -18507,7 +18515,7 @@
 /obj/structure/marker_beacon/dock_marker,
 /obj/structure/lattice/catwalk,
 /turf/space,
-/area/space/nearstation)
+/area/space/nearstation/centcom)
 "mBD" = (
 /obj/machinery/door/airlock/hatch/syndicate/command{
 	name = "Тюрьма";
@@ -19840,7 +19848,7 @@
 	},
 /area/centcom/ss220/admin2)
 "nDz" = (
-/obj/machinery/computer,
+/obj/machinery/computer/nonfunctional,
 /obj/structure/window/reinforced{
 	dir = 4
 	},
@@ -19938,7 +19946,7 @@
 	},
 /area/syndicate_mothership)
 "nGm" = (
-/obj/machinery/dna_scannernew,
+/obj/machinery/clonescanner,
 /obj/structure/window/reinforced,
 /turf/simulated/floor/plasteel{
 	dir = 6;
@@ -20023,8 +20031,7 @@
 /area/shuttle/syndicate)
 "nID" = (
 /turf/simulated/floor/plasteel{
-	icon_state = "rampbottom";
-	tag = "icon-stage_stairs"
+	icon_state = "rampbottom"
 	},
 /area/centcom/ss220/admin1)
 "nIM" = (
@@ -20134,7 +20141,7 @@
 /area/syndicate_mothership/elite_squad)
 "nNr" = (
 /turf/simulated/floor/plating/asteroid/ancient/airless,
-/area/space/nearstation)
+/area/space/nearstation/centcom)
 "nNB" = (
 /obj/structure/bookcase/manuals/research_and_development,
 /turf/simulated/floor/wood/oak,
@@ -21942,8 +21949,7 @@
 	},
 /obj/structure/sign/barsign{
 	icon_state = "syndibarsign";
-	pixel_y = 32;
-	tag = "syndibarsign"
+	pixel_y = 32
 	},
 /turf/simulated/floor/plating,
 /area/syndicate_mothership/elite_squad)
@@ -22344,7 +22350,7 @@
 "pxm" = (
 /obj/item/coin/antagtoken,
 /turf/simulated/floor/plating/asteroid/ancient/airless,
-/area/space/nearstation)
+/area/space/nearstation/centcom)
 "pxu" = (
 /obj/effect/turf_decal/siding/black{
 	dir = 8
@@ -22380,7 +22386,7 @@
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/supply)
 "pyl" = (
-/obj/machinery/computer,
+/obj/machinery/computer/nonfunctional,
 /obj/structure/window/reinforced{
 	dir = 8
 	},
@@ -22704,7 +22710,7 @@
 "pLx" = (
 /obj/effect/decal/remains/human,
 /turf/simulated/floor/plating/asteroid/ancient/airless,
-/area/space/nearstation)
+/area/space/nearstation/centcom)
 "pMa" = (
 /obj/machinery/computer/shuttle/syndicate/drop_pod,
 /turf/simulated/wall/mineral/plastitanium,
@@ -26348,13 +26354,15 @@
 	id = "QMLoaddoor2";
 	layer = 4;
 	name = "Loading Doors";
-	pixel_y = -8
+	pixel_y = -8;
+	req_one_access_txt = "106"
 	},
 /obj/machinery/door_control/no_emag/east{
 	id = "QMLoaddoor";
 	layer = 4;
 	name = "Loading Doors";
-	pixel_y = 8
+	pixel_y = 8;
+	req_one_access_txt = "106"
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/supply)
@@ -26482,7 +26490,10 @@
 /obj/structure/table/wood{
 	color = "#996633"
 	},
-/obj/machinery/computer/library,
+/obj/machinery/computer/library{
+	dir = 8;
+	pixel_y = 6
+	},
 /turf/simulated/floor/carpet,
 /area/centcom/ss220/general)
 "smo" = (
@@ -27167,7 +27178,7 @@
 "sQi" = (
 /obj/structure/lattice,
 /turf/space,
-/area/space/nearstation)
+/area/space/nearstation/centcom)
 "sQk" = (
 /obj/structure/chair/sofa/bench/left{
 	dir = 1
@@ -28216,8 +28227,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/plasteel{
-	icon_state = "rampbottom";
-	tag = "icon-stage_stairs"
+	icon_state = "rampbottom"
 	},
 /area/centcom/ss220/court)
 "tAU" = (
@@ -29047,10 +29057,7 @@
 	},
 /area/centcom/ss220/admin3)
 "udY" = (
-/obj/machinery/power/apc{
-	name = "Gamma Armory APC";
-	pixel_y = -24
-	},
+/obj/machinery/power/apc/directional/south,
 /obj/structure/cable{
 	d2 = 4;
 	icon_state = "0-4"
@@ -29058,7 +29065,7 @@
 /obj/structure/sign/securearea{
 	pixel_x = -32
 	},
-/obj/machinery/suit_storage_unit/gamma,
+/obj/machinery/suit_storage_unit/gamma/secure,
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/shuttle/gamma/space)
 "ued" = (
@@ -31779,7 +31786,7 @@
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/admin3)
 "wdR" = (
-/obj/machinery/computer,
+/obj/machinery/computer/nonfunctional,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "dark"
@@ -32170,9 +32177,7 @@
 /area/shuttle/trade/sol)
 "wtd" = (
 /obj/structure/table/wood/fancy/royalblack,
-/obj/item/radio/phone{
-	desc = "How else would the wizards order pizza?"
-	},
+/obj/structure/pondering_orb,
 /obj/effect/turf_decal/woodsiding{
 	dir = 6
 	},
@@ -34168,7 +34173,7 @@
 /obj/machinery/door/airlock/external{
 	id_tag = "s_docking_airlock";
 	name = "Shuttle Hatch";
-	req_access_txt = "31"
+	req_one_access_txt = "79"
 	},
 /obj/structure/fans/tiny,
 /obj/docking_port/mobile/supply{
@@ -48447,7 +48452,7 @@ wCi
 wCi
 wCi
 wCi
-ibG
+dNN
 frK
 rkZ
 nfA

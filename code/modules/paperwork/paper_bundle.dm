@@ -105,7 +105,7 @@
 		. += "<span class='notice'>It is too far away.</span>"
 
 /obj/item/paper_bundle/proc/show_content(mob/user as mob)
-	var/dat = {"<meta charset="UTF-8">"} // SS220 EDIT - ORIGINAL: ... Empty var
+	var/dat = {"<meta charset="UTF-8">"}
 	var/obj/item/W = src[page]
 	switch(screen)
 		if(0)
@@ -201,10 +201,10 @@
 	. = ..()
 
 /obj/item/paper_bundle/proc/rename(mob/user)
-	var/n_name = sanitize(copytext_char(input(user, "What would you like to label the bundle?", "Bundle Labelling", name) as text, 1, MAX_MESSAGE_LEN))	// SS220 EDIT - ORIGINAL: copytext
-	if((loc == user && !user.stat))
-		name = "[(n_name ? "[n_name]" : "paper bundle")]"
-
+	var/n_name = tgui_input_text(user, "What would you like to label the bundle?", "Bundle Labelling", name)
+	if(!Adjacent(user) || !n_name || user.stat)
+		return
+	name = "[(n_name ? "[n_name]" : "paper bundle")]"
 	add_fingerprint(user)
 
 /obj/item/paper_bundle/AltShiftClick(mob/user)

@@ -121,10 +121,7 @@
 
 
 /datum/data/pda/app/messenger/proc/create_message(mob/living/U, obj/item/pda/P)
-	var/t = input(U, "Please enter message", name, null) as text|null
-	if(!t)
-		return
-	t = sanitize(copytext_char(t, 1, MAX_MESSAGE_LEN))		// SS220 EDIT - ORIGINAL: copytext
+	var/t = tgui_input_text(U, "Please enter your message", name)
 	if(!t || !istype(P))
 		return
 	if(!in_range(pda, U) && pda.loc != U)

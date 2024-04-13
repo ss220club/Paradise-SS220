@@ -584,7 +584,7 @@
 /obj/machinery/door/poddoor/shutters{
 	dir = 2;
 	id_tag = "Main in";
-	requires_power = 0
+	interact_offline = 1
 	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/inside/complex)
@@ -1234,7 +1234,7 @@
 /obj/machinery/door/poddoor/shutters{
 	dir = 2;
 	id_tag = "Command";
-	requires_power = 0
+	interact_offline = 1
 	},
 /obj/effect/mapping_helpers/damaged_window,
 /turf/simulated/floor/plasteel,
@@ -1525,7 +1525,7 @@
 /obj/machinery/suit_storage_unit/syndicate{
 	req_access = null;
 	state_open = 1;
-	requires_power = 0
+	interact_offline = 1
 	},
 /obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/mineral/plastitanium,
@@ -2012,8 +2012,7 @@
 /obj/structure/table/glass,
 /obj/item/flashlight/lamp/green{
 	pixel_x = 10;
-	pixel_y = -6;
-	on = 0
+	pixel_y = -6
 	},
 /obj/item/paper_bin{
 	pixel_x = 6;
@@ -2363,7 +2362,7 @@
 /obj/effect/spawner/window/reinforced/grilled,
 /obj/machinery/door/poddoor/shutters{
 	id_tag = "Sec in";
-	requires_power = 0
+	interact_offline = 1
 	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/inside/complex)
@@ -2552,7 +2551,7 @@
 /obj/machinery/door/poddoor/shutters{
 	dir = 8;
 	id_tag = "Hang in";
-	requires_power = 0
+	interact_offline = 1
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/jungle_planet/inside/complex)
@@ -2638,9 +2637,9 @@
 /turf/simulated/floor/mineral/plastitanium,
 /area/awaymission/jungle_planet/outside/abandoned)
 "drq" = (
-/turf/simulated/mineral/volcanic{
-	baseturf = /turf/simulated/floor/plating/asteroid/ancient;
-	turf_type = /turf/simulated/floor/plating/asteroid/ancient
+/turf/simulated/mineral/random{
+	turf_type = /turf/simulated/floor/plating/asteroid/ancient;
+	baseturf = /turf/simulated/floor/plating/asteroid/ancient
 	},
 /area/awaymission/jungle_planet/outside/cave)
 "drM" = (
@@ -3194,7 +3193,7 @@
 /obj/structure/chair/sofa/left{
 	dir = 8
 	},
-/obj/machinery/computer{
+/obj/machinery/computer/nonfunctional{
 	desc = "A computer long since rendered non-functional due to lack of maintenance. Spitting out error messages.";
 	icon_keyboard = "";
 	icon_screen = "telescreen";
@@ -4047,7 +4046,7 @@
 /obj/machinery/door/poddoor/shutters{
 	id_tag = "Right in";
 	dir = 8;
-	requires_power = 0
+	interact_offline = 1
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -4271,7 +4270,7 @@
 /obj/machinery/door/poddoor/shutters{
 	id_tag = "Sec in";
 	dir = 8;
-	requires_power = 0
+	interact_offline = 1
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/jungle_planet/inside/complex)
@@ -4298,7 +4297,7 @@
 	pixel_x = 6;
 	pixel_y = 7
 	},
-/obj/machinery/computer{
+/obj/machinery/computer/nonfunctional{
 	desc = "A computer long since rendered non-functional due to lack of maintenance. Spitting out error messages.";
 	icon_keyboard = "";
 	icon_screen = "telescreen";
@@ -4486,7 +4485,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/jungle_planet/inside/complex)
 "fNF" = (
-/obj/machinery/computer{
+/obj/machinery/computer/nonfunctional{
 	name = "broken computer";
 	desc = "A computer long since rendered non-functional due to lack of maintenance. Spitting out error messages.";
 	icon_state = "computer";
@@ -4844,7 +4843,7 @@
 /area/awaymission/jungle_planet/outside/river)
 "grz" = (
 /obj/machinery/door/airlock/external{
-	requires_power = 0
+	interact_offline = 1
 	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/jungle_planet/outside/abandoned)
@@ -5296,7 +5295,7 @@
 /area/awaymission/jungle_planet/inside/complex)
 "gYH" = (
 /obj/structure/stone_tile/slab/cracked,
-/obj/item/food/snacks/grown/poppy/lily,
+/obj/item/food/snacks/grown/lily,
 /obj/item/food/snacks/grown/moonflower,
 /turf/simulated/floor/engine/cult,
 /area/awaymission/jungle_planet/outside/cave)
@@ -6220,9 +6219,7 @@
 /area/awaymission/jungle_planet/inside)
 "icJ" = (
 /obj/structure/table,
-/obj/item/flashlight/lamp{
-	on = 0
-	},
+/obj/item/flashlight/lamp,
 /obj/item/flash,
 /obj/machinery/firealarm{
 	name = "north fire alarm";
@@ -6257,7 +6254,7 @@
 	},
 /obj/machinery/door/poddoor/shutters{
 	id_tag = "Sec in";
-	requires_power = 0
+	interact_offline = 1
 	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/inside/complex)
@@ -6329,7 +6326,7 @@
 /obj/machinery/door/poddoor/shutters{
 	dir = 2;
 	id_tag = "Hang in";
-	requires_power = 0
+	interact_offline = 1
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -6487,7 +6484,7 @@
 /area/awaymission/jungle_planet/outside/waterfall)
 "isZ" = (
 /obj/machinery/photocopier,
-/obj/machinery/computer{
+/obj/machinery/computer/nonfunctional{
 	desc = "A computer long since rendered non-functional due to lack of maintenance. Spitting out error messages.";
 	icon_keyboard = "";
 	icon_screen = "telescreen";
@@ -6778,7 +6775,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/jungle_planet/inside)
 "iKW" = (
-/obj/machinery/computer{
+/obj/machinery/computer/nonfunctional{
 	desc = "A computer long since rendered non-functional due to lack of maintenance. Spitting out error messages.";
 	icon_keyboard = "";
 	icon_screen = "telescreen";
@@ -7110,7 +7107,7 @@
 	icon_state = "0-8"
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
-/obj/machinery/power/apc/off_station/empty_charge/east,
+/obj/machinery/power/apc/off_station/empty_charge/directional/east,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "yellowcorner"
@@ -7173,7 +7170,7 @@
 	},
 /area/awaymission/jungle_planet/outside/river)
 "jjL" = (
-/obj/machinery/computer{
+/obj/machinery/computer/nonfunctional{
 	desc = "A computer long since rendered non-functional due to lack of maintenance. Spitting out error messages.";
 	icon_state = "computer";
 	dir = 8
@@ -7311,7 +7308,7 @@
 /area/awaymission/jungle_planet/outside/cave/small)
 "jte" = (
 /obj/machinery/gateway/centeraway{
-	requires_power = 0;
+	interact_offline = 1;
 	calibrated = 0
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -8158,7 +8155,7 @@
 /obj/machinery/door/poddoor/shutters{
 	dir = 2;
 	id_tag = "Command";
-	requires_power = 0
+	interact_offline = 1
 	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/inside/complex)
@@ -8337,7 +8334,7 @@
 	},
 /area/awaymission/jungle_planet/inside/complex)
 "kDy" = (
-/obj/machinery/computer{
+/obj/machinery/computer/nonfunctional{
 	dir = 2;
 	icon_state = "broken";
 	icon_screen = "broken";
@@ -8545,7 +8542,7 @@
 /obj/item/shard{
 	icon_state = "small"
 	},
-/obj/machinery/computer{
+/obj/machinery/computer/nonfunctional{
 	desc = "A computer long since rendered non-functional due to lack of maintenance. Spitting out error messages.";
 	icon_keyboard = "";
 	icon_screen = "telescreen";
@@ -8955,7 +8952,7 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/inside/complex)
 "lms" = (
-/obj/machinery/computer{
+/obj/machinery/computer/nonfunctional{
 	dir = 2;
 	icon_state = "broken";
 	icon_screen = "broken";
@@ -9380,7 +9377,7 @@
 /obj/machinery/door/poddoor/shutters{
 	id_tag = "Sec in";
 	dir = 8;
-	requires_power = 0
+	interact_offline = 1
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -9567,7 +9564,7 @@
 	d2 = 4;
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/off_station/empty_charge/south,
+/obj/machinery/power/apc/off_station/empty_charge/directional/south,
 /turf/simulated/floor/plasteel{
 	icon_state = "grimy"
 	},
@@ -10537,7 +10534,7 @@
 /obj/machinery/door/poddoor/shutters{
 	dir = 2;
 	id_tag = "Command";
-	requires_power = 0
+	interact_offline = 1
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/jungle_planet/inside/complex)
@@ -10566,7 +10563,7 @@
 /turf/simulated/floor/indestructible/grass,
 /area/awaymission/jungle_planet/outside/river)
 "nhA" = (
-/obj/machinery/computer{
+/obj/machinery/computer/nonfunctional{
 	name = "broken computer";
 	desc = "A computer long since rendered non-functional due to lack of maintenance. Spitting out error messages.";
 	icon_state = "computer";
@@ -12818,7 +12815,7 @@
 /area/awaymission/jungle_planet/inside/complex)
 "qmr" = (
 /obj/structure/table,
-/obj/machinery/computer{
+/obj/machinery/computer/nonfunctional{
 	name = "broken computer";
 	desc = "A computer long since rendered non-functional due to lack of maintenance. Spitting out error messages.";
 	icon_state = "laptop";
@@ -13097,7 +13094,7 @@
 /obj/machinery/door/poddoor/shutters{
 	dir = 8;
 	id_tag = "Hang in";
-	requires_power = 0
+	interact_offline = 1
 	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/inside/complex)
@@ -13415,7 +13412,7 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/outside)
 "qVg" = (
-/obj/machinery/computer{
+/obj/machinery/computer/nonfunctional{
 	dir = 8;
 	icon_state = "broken";
 	icon_screen = "broken";
@@ -13594,7 +13591,7 @@
 /obj/effect/spawner/window/reinforced/grilled,
 /obj/machinery/door/poddoor/shutters{
 	id_tag = "Sec in";
-	requires_power = 0
+	interact_offline = 1
 	},
 /obj/effect/mapping_helpers/damaged_window,
 /turf/simulated/floor/plating,
@@ -13924,7 +13921,7 @@
 /obj/machinery/door/poddoor/shutters{
 	dir = 2;
 	id_tag = "Hang in";
-	requires_power = 0
+	interact_offline = 1
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -13944,7 +13941,7 @@
 /area/awaymission/jungle_planet/inside/complex)
 "rBr" = (
 /obj/structure/chair/office/dark,
-/obj/machinery/computer{
+/obj/machinery/computer/nonfunctional{
 	desc = "A computer long since rendered non-functional due to lack of maintenance. Spitting out error messages.";
 	icon_keyboard = "";
 	icon_screen = "telescreen";
@@ -14146,7 +14143,7 @@
 /obj/machinery/door_control/shutter/south{
 	id = "Main in";
 	req_access = list(271);
-	requires_power = 0
+	interact_offline = 1
 	},
 /obj/effect/spawner/random_spawners/dirt_maybe,
 /turf/simulated/floor/plasteel,
@@ -14155,7 +14152,7 @@
 /obj/effect/spawner/window/reinforced/grilled,
 /obj/machinery/door/poddoor/shutters{
 	id_tag = "Sec in";
-	requires_power = 0
+	interact_offline = 1
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/jungle_planet/inside/complex)
@@ -14429,11 +14426,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/jungle_planet/inside/complex)
 "sbr" = (
-/turf/simulated/floor/chasm/straight_down/lava_land_surface/normal_air{
-	light_color = null;
-	light_range = 0;
-	light_power = 0
-	},
+/turf/simulated/floor/chasm/straight_down/lava_land_surface/normal_air/normal_temp,
 /area/awaymission/jungle_planet/outside/cave)
 "sbX" = (
 /obj/structure/barricade/wooden,
@@ -14797,7 +14790,7 @@
 /obj/machinery/door/poddoor/shutters{
 	id_tag = "Sec in";
 	dir = 8;
-	requires_power = 0
+	interact_offline = 1
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/jungle_planet/inside/complex)
@@ -14847,7 +14840,7 @@
 "sDQ" = (
 /obj/structure/stone_tile/slab/cracked,
 /obj/item/food/snacks/grown/poppy,
-/obj/item/food/snacks/grown/poppy/geranium,
+/obj/item/food/snacks/grown/geranium,
 /turf/simulated/floor/engine/cult,
 /area/awaymission/jungle_planet/outside/cave)
 "sFa" = (
@@ -15039,7 +15032,7 @@
 	},
 /area/awaymission/jungle_planet/outside/river)
 "sRJ" = (
-/obj/machinery/computer{
+/obj/machinery/computer/nonfunctional{
 	desc = "A computer long since rendered non-functional due to lack of maintenance. Spitting out error messages.";
 	name = "broken computer"
 	},
@@ -15067,7 +15060,7 @@
 /obj/machinery/door/poddoor/shutters{
 	id_tag = "Arm in";
 	dir = 2;
-	requires_power = 0
+	interact_offline = 1
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -15901,7 +15894,7 @@
 /obj/machinery/door/poddoor/shutters{
 	id_tag = "Right in";
 	dir = 8;
-	requires_power = 0
+	interact_offline = 1
 	},
 /obj/machinery/door/airlock/mining{
 	locked = 1;
@@ -17137,7 +17130,7 @@
 /obj/machinery/door/poddoor/shutters{
 	id_tag = "Sec in";
 	dir = 8;
-	requires_power = 0
+	interact_offline = 1
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/jungle_planet/inside/complex)
@@ -17441,7 +17434,7 @@
 /obj/machinery/door/poddoor/shutters{
 	id_tag = "Sec in";
 	dir = 8;
-	requires_power = 0
+	interact_offline = 1
 	},
 /obj/machinery/door/airlock/security{
 	locked = 1;
@@ -18150,7 +18143,7 @@
 /obj/effect/spawner/window/reinforced/grilled,
 /obj/machinery/door/poddoor/shutters{
 	id_tag = "Sec in";
-	requires_power = 0
+	interact_offline = 1
 	},
 /obj/effect/mapping_helpers/damaged_window,
 /turf/simulated/floor/plasteel,
@@ -18550,7 +18543,7 @@
 /obj/machinery/door/poddoor/shutters{
 	dir = 8;
 	id_tag = "Command";
-	requires_power = 0
+	interact_offline = 1
 	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/inside/complex)
@@ -18559,7 +18552,7 @@
 /obj/machinery/door/poddoor/shutters{
 	id_tag = "Arm in";
 	dir = 2;
-	requires_power = 0
+	interact_offline = 1
 	},
 /obj/machinery/door/airlock/security{
 	locked = 1;
@@ -18957,7 +18950,7 @@
 /obj/machinery/door/poddoor/shutters{
 	dir = 8;
 	id_tag = "Hang in";
-	requires_power = 0
+	interact_offline = 1
 	},
 /obj/effect/mapping_helpers/damaged_window,
 /turf/simulated/floor/plating,
@@ -19008,7 +19001,7 @@
 	},
 /area/awaymission/jungle_planet/inside)
 "xJT" = (
-/obj/machinery/computer{
+/obj/machinery/computer/nonfunctional{
 	icon_state = "computer";
 	dir = 8;
 	name = "arrival console"
@@ -19218,7 +19211,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/poddoor/shutters{
 	id_tag = "Sec in";
-	requires_power = 0
+	interact_offline = 1
 	},
 /obj/machinery/door/airlock/security{
 	locked = 1;
@@ -29485,7 +29478,7 @@ rwz
 gpG
 gpG
 gqc
-drq
+miM
 omz
 uBw
 cET
@@ -29671,8 +29664,8 @@ hPE
 gpG
 gpG
 gpG
-drq
-drq
+miM
+miM
 omz
 fFa
 szb
@@ -29858,8 +29851,8 @@ tpH
 gpG
 gpG
 gpG
-drq
-drq
+miM
+miM
 omz
 kRN
 jei
@@ -30046,7 +30039,7 @@ gOJ
 xDV
 gpG
 gOJ
-drq
+miM
 omz
 vwC
 oKw
@@ -30422,9 +30415,9 @@ gpG
 gpG
 gpG
 gpG
-drq
-drq
-drq
+miM
+miM
+miM
 fQG
 wjj
 lFP
@@ -30609,8 +30602,8 @@ gpG
 dCq
 sXU
 aId
-drq
-drq
+miM
+miM
 fQG
 neX
 wjj
@@ -30795,10 +30788,10 @@ gpG
 gpG
 bhA
 jhj
-drq
-drq
-drq
-drq
+miM
+miM
+miM
+miM
 dPT
 yep
 nSy
@@ -30982,10 +30975,10 @@ gpG
 xDV
 bhA
 oBh
-drq
-drq
-drq
-drq
+miM
+miM
+miM
+miM
 gpG
 gpG
 iHH
@@ -31170,7 +31163,7 @@ gpG
 kGW
 vBz
 lKZ
-drq
+miM
 frH
 pJn
 gpG
@@ -31929,9 +31922,9 @@ brp
 gpG
 gpG
 gpG
-drq
-drq
-drq
+miM
+miM
+miM
 gOJ
 gOJ
 gpG
@@ -32106,8 +32099,8 @@ gpG
 gpG
 gpG
 gOJ
-drq
-drq
+miM
+miM
 oUq
 kSX
 glO
@@ -32115,11 +32108,11 @@ rBC
 gGN
 crg
 gTg
-drq
-drq
-drq
-drq
-drq
+miM
+miM
+miM
+miM
+miM
 frH
 gOJ
 bhA
@@ -32293,19 +32286,19 @@ gpG
 gpG
 gpG
 gOJ
-drq
-drq
-drq
+miM
+miM
+miM
 oUq
 nub
 xWD
 lIv
 iBX
 iDD
-drq
-drq
-drq
-drq
+miM
+miM
+miM
+miM
 gOJ
 gpG
 gOJ
@@ -32480,9 +32473,9 @@ gpG
 gpG
 gpG
 gOJ
-drq
-drq
-drq
+miM
+miM
+miM
 sXj
 aPs
 geP
@@ -32491,8 +32484,8 @@ cku
 sXj
 sXj
 sXj
-drq
-drq
+miM
+miM
 gpG
 gpG
 gpG
@@ -32667,9 +32660,9 @@ gpG
 gpG
 gpG
 gpG
-drq
-drq
-drq
+miM
+miM
+miM
 sXj
 dGT
 sPM
@@ -32855,8 +32848,8 @@ gpG
 gpG
 gOJ
 tpH
-drq
-drq
+miM
+miM
 sXj
 tEr
 sUU
@@ -37367,14 +37360,14 @@ vzJ
 miM
 miM
 miM
-drq
+miM
 gOJ
 nhk
-drq
+miM
 nai
 eBs
-drq
-drq
+miM
+miM
 miM
 miM
 miM
@@ -37553,15 +37546,15 @@ lWL
 miM
 miM
 miM
-drq
-drq
+miM
+miM
 kvL
-drq
-drq
+miM
+miM
 nai
 nai
-drq
-drq
+miM
+miM
 miM
 miM
 miM
@@ -37739,33 +37732,33 @@ jYd
 aHl
 miM
 miM
-drq
-drq
-drq
+miM
+miM
+miM
 kvL
-drq
-drq
+miM
+miM
 nai
 nai
-drq
-drq
-drq
-drq
-drq
-drq
-drq
-drq
-drq
-drq
-drq
-drq
-drq
-drq
-drq
-drq
-drq
-drq
-drq
+miM
+miM
+miM
+miM
+miM
+miM
+miM
+miM
+miM
+miM
+miM
+miM
+miM
+miM
+miM
+miM
+miM
+miM
+miM
 miM
 miM
 "}
@@ -37926,33 +37919,33 @@ jbn
 miM
 miM
 miM
-drq
-drq
+miM
+miM
 kvL
 kvL
-drq
+miM
 nai
 nai
 nai
-drq
-drq
-drq
-drq
-drq
-drq
-drq
-drq
-drq
-drq
-drq
-drq
-drq
-drq
-drq
-drq
-drq
-drq
-drq
+miM
+miM
+miM
+miM
+miM
+miM
+miM
+miM
+miM
+miM
+miM
+miM
+miM
+miM
+miM
+miM
+miM
+miM
+miM
 miM
 miM
 "}
@@ -38112,34 +38105,34 @@ nGx
 nGx
 jfF
 kvL
-drq
-drq
+miM
+miM
 kvL
 kvL
 rOc
 nai
 nai
 nai
-drq
-drq
-drq
-drq
-drq
-drq
-drq
-drq
-drq
-drq
-drq
-drq
+miM
+miM
+miM
+miM
+miM
+miM
+miM
+miM
+miM
+miM
+miM
+miM
 nai
 nai
 nai
 nai
-drq
-drq
-drq
-drq
+miM
+miM
+miM
+miM
 miM
 miM
 "}
@@ -38307,26 +38300,26 @@ aFD
 nai
 nai
 nai
-drq
-drq
-drq
-drq
-drq
-drq
-drq
-drq
-drq
-drq
-drq
-drq
+miM
+miM
+miM
+miM
+miM
+miM
+miM
+miM
+miM
+miM
+miM
+miM
 nai
 nai
-drq
+miM
 nai
-drq
-drq
-drq
-drq
+miM
+miM
+miM
+miM
 miM
 miM
 "}
@@ -38485,35 +38478,35 @@ mYK
 jbn
 miM
 miM
-drq
-drq
+miM
+miM
 kvL
 kvL
 nai
 nai
 nai
 nai
-drq
-drq
-drq
-drq
-drq
-drq
-drq
-drq
-drq
+miM
+miM
+miM
+miM
+miM
+miM
+miM
+miM
+miM
 nai
 rOc
-drq
-drq
+miM
+miM
 nai
-drq
-drq
+miM
+miM
 nai
 nai
-drq
-drq
-drq
+miM
+miM
+miM
 miM
 miM
 "}
@@ -38672,35 +38665,35 @@ mYK
 mYK
 miM
 miM
-drq
-drq
+miM
+miM
 nIc
 kvL
 nai
 nai
 nai
 nai
-drq
-drq
-drq
-drq
-drq
-drq
+miM
+miM
+miM
+miM
+miM
+miM
 nai
 xQa
-drq
+miM
 nai
 nai
 nai
-drq
+miM
 nai
-drq
-drq
-drq
-drq
-drq
-drq
-drq
+miM
+miM
+miM
+miM
+miM
+miM
+miM
 miM
 miM
 "}
@@ -38858,10 +38851,10 @@ lWL
 lWL
 mYK
 miM
-drq
-drq
-drq
-drq
+miM
+miM
+miM
+miM
 kvL
 aFD
 nai
@@ -38869,9 +38862,9 @@ eUP
 nai
 nai
 uyI
-drq
-drq
-drq
+miM
+miM
+miM
 nai
 nai
 nai
@@ -38879,15 +38872,15 @@ nai
 nai
 nai
 nai
-drq
+miM
 nai
-drq
-drq
-drq
-drq
-drq
-drq
-drq
+miM
+miM
+miM
+miM
+miM
+miM
+miM
 miM
 miM
 "}
@@ -39045,8 +39038,8 @@ mYK
 lNN
 mYK
 miM
-drq
-drq
+miM
+miM
 kvL
 kvL
 kvL
@@ -39055,26 +39048,26 @@ kPT
 nai
 nai
 nai
-drq
-drq
-drq
-drq
+miM
+miM
+miM
+miM
 nai
 nai
 nai
-drq
-drq
-drq
+miM
+miM
+miM
 nai
 nai
 nai
 aFD
-drq
-drq
-drq
-drq
-drq
-drq
+miM
+miM
+miM
+miM
+miM
+miM
 miM
 miM
 "}
@@ -39232,8 +39225,8 @@ mYK
 sNa
 aHl
 miM
-drq
-drq
+miM
+miM
 kvL
 kvL
 kvL
@@ -39242,26 +39235,26 @@ aFD
 nai
 kPT
 nai
-drq
-drq
-drq
+miM
+miM
+miM
 nai
 nai
-drq
-drq
-drq
-drq
-drq
-drq
+miM
+miM
+miM
+miM
+miM
+miM
 nai
 nai
 nai
-drq
-drq
-drq
-drq
-drq
-drq
+miM
+miM
+miM
+miM
+miM
+miM
 miM
 miM
 "}
@@ -39419,36 +39412,36 @@ mYK
 pKX
 mYK
 miM
-drq
-drq
-drq
+miM
+miM
+miM
 nai
 nai
 nai
-drq
-drq
+miM
+miM
 kPT
 nai
 nai
-drq
-drq
+miM
+miM
 nai
-drq
-drq
-drq
-drq
-drq
-drq
-drq
-drq
+miM
+miM
+miM
+miM
+miM
+miM
+miM
+miM
 nai
 nai
-drq
-drq
-drq
-drq
-drq
-drq
+miM
+miM
+miM
+miM
+miM
+miM
 miM
 miM
 "}
@@ -39606,36 +39599,36 @@ lWL
 lNN
 aHl
 miM
-drq
-drq
-drq
+miM
+miM
+miM
 nai
 nai
 nai
-drq
-drq
+miM
+miM
 eUP
 rbZ
 aFD
 nai
 nai
 nai
-drq
-drq
-drq
-drq
-drq
+miM
+miM
+miM
+miM
+miM
 nai
-drq
+miM
 nai
 nai
 nai
 xQa
-drq
-drq
-drq
-drq
-drq
+miM
+miM
+miM
+miM
+miM
 miM
 miM
 "}
@@ -39793,36 +39786,36 @@ lWL
 mYK
 aHl
 miM
-drq
-drq
-drq
-drq
-drq
+miM
+miM
+miM
+miM
+miM
 nai
 nai
-drq
+miM
 nai
 nai
-drq
-drq
-drq
+miM
+miM
+miM
 nai
 ncg
-drq
-drq
-drq
-drq
+miM
+miM
+miM
+miM
 aFD
 nai
 kPT
-drq
-drq
+miM
+miM
 nai
-drq
-drq
-drq
-drq
-drq
+miM
+miM
+miM
+miM
+miM
 miM
 miM
 "}
@@ -39980,36 +39973,36 @@ lWL
 dPQ
 aHl
 miM
-drq
-drq
-drq
-drq
-drq
+miM
+miM
+miM
+miM
+miM
 nai
 nai
-drq
+miM
 nai
-drq
-drq
-drq
-drq
+miM
+miM
+miM
+miM
 mfj
-drq
-drq
-drq
-drq
-drq
+miM
+miM
+miM
+miM
+miM
 bQa
 nai
 eUP
 nai
-drq
+miM
 nai
 nai
-drq
-drq
-drq
-drq
+miM
+miM
+miM
+miM
 miM
 miM
 "}
@@ -40168,24 +40161,24 @@ sNa
 lWL
 miM
 miM
-drq
-drq
+miM
+miM
 nai
-drq
-drq
+miM
+miM
 nai
-drq
+miM
 mKY
 nai
-drq
-drq
-drq
-drq
-drq
-drq
-drq
-drq
-drq
+miM
+miM
+miM
+miM
+miM
+miM
+miM
+miM
+miM
 nai
 nai
 nai
@@ -40193,10 +40186,10 @@ kPT
 nai
 nai
 nai
-drq
-drq
-drq
-drq
+miM
+miM
+miM
+miM
 miM
 miM
 "}
@@ -40355,35 +40348,35 @@ mYK
 uim
 miM
 miM
-drq
-drq
+miM
+miM
 nai
-drq
-drq
+miM
+miM
 nai
 nai
 nai
 eUP
-drq
-drq
-drq
-drq
-drq
-drq
-drq
-drq
-drq
+miM
+miM
+miM
+miM
+miM
+miM
+miM
+miM
+miM
 nai
 nai
 nai
-drq
+miM
 nai
 nai
 nai
 rOc
-drq
-drq
-drq
+miM
+miM
+miM
 miM
 miM
 "}
@@ -40543,34 +40536,34 @@ sNa
 miM
 miM
 miM
-drq
+miM
 nai
-drq
-drq
+miM
+miM
 nai
-drq
-drq
-drq
-drq
-drq
-drq
-drq
-drq
+miM
+miM
+miM
+miM
+miM
+miM
+miM
+miM
 nai
-drq
-drq
+miM
+miM
 rOc
 nai
 nai
 nai
-drq
-drq
+miM
+miM
 nai
 nai
 nai
-drq
-drq
-drq
+miM
+miM
+miM
 miM
 miM
 "}
@@ -40730,34 +40723,34 @@ sNa
 aHl
 miM
 miM
-drq
+miM
 nai
 nai
-drq
+miM
 tcb
-drq
-drq
-drq
-drq
+miM
+miM
+miM
+miM
 nai
 nai
 nai
 nai
 nai
-drq
-drq
-drq
+miM
+miM
+miM
 nai
 nai
 nai
 nai
-drq
-drq
+miM
+miM
 nai
-drq
-drq
-drq
-drq
+miM
+miM
+miM
+miM
 miM
 miM
 "}
@@ -40917,34 +40910,34 @@ mYK
 mYK
 aHl
 miM
-drq
-drq
+miM
+miM
 nai
-drq
+miM
 nai
 nai
-drq
-drq
-drq
+miM
+miM
+miM
 nai
-drq
-drq
+miM
+miM
 nai
-drq
-drq
-drq
-drq
-drq
+miM
+miM
+miM
+miM
+miM
 nai
 nai
 aFD
 nai
 nai
 nai
-drq
-drq
-drq
-drq
+miM
+miM
+miM
+miM
 miM
 miM
 "}
@@ -41105,7 +41098,7 @@ lWL
 mYK
 miM
 miM
-drq
+miM
 nai
 nai
 nai
@@ -41117,8 +41110,8 @@ nai
 nai
 nai
 nai
-drq
-drq
+miM
+miM
 nai
 nai
 nai
@@ -41127,11 +41120,11 @@ nai
 nai
 nai
 nai
-drq
-drq
-drq
-drq
-drq
+miM
+miM
+miM
+miM
+miM
 miM
 miM
 "}
@@ -41292,33 +41285,33 @@ sNa
 mYK
 aHl
 miM
-drq
-drq
-drq
-drq
-drq
-drq
-drq
-drq
+miM
+miM
+miM
+miM
+miM
+miM
+miM
+miM
 nai
 nai
-drq
-drq
+miM
+miM
 nai
-drq
-drq
-drq
-drq
-drq
+miM
+miM
+miM
+miM
+miM
 nai
 nai
 nai
-drq
-drq
-drq
-drq
-drq
-drq
+miM
+miM
+miM
+miM
+miM
+miM
 miM
 miM
 "}
@@ -41481,31 +41474,31 @@ jYd
 miM
 miM
 miM
-drq
-drq
+miM
+miM
 nai
 nai
 nai
 nai
 nai
-drq
-drq
-drq
-drq
-drq
-drq
-drq
+miM
+miM
+miM
+miM
+miM
+miM
+miM
 nai
 nai
 nai
-drq
-drq
-drq
-drq
-drq
-drq
-drq
-drq
+miM
+miM
+miM
+miM
+miM
+miM
+miM
+miM
 miM
 miM
 "}
@@ -41669,30 +41662,30 @@ mYK
 miM
 miM
 miM
-drq
-drq
-drq
-drq
-drq
-drq
-drq
-drq
-drq
-drq
-drq
-drq
-drq
+miM
+miM
+miM
+miM
+miM
+miM
+miM
+miM
+miM
+miM
+miM
+miM
+miM
 miM
 nai
 miM
-drq
-drq
-drq
-drq
-drq
-drq
-drq
-drq
+miM
+miM
+miM
+miM
+miM
+miM
+miM
+miM
 miM
 miM
 "}
@@ -41857,12 +41850,12 @@ aHl
 miM
 miM
 miM
-drq
-drq
-drq
-drq
-drq
-drq
+miM
+miM
+miM
+miM
+miM
+miM
 miM
 miM
 miM
@@ -50944,13 +50937,13 @@ miM
 miM
 miM
 miM
-miM
+drq
 drq
 nai
 drq
 miM
-drq
-drq
+miM
+miM
 sbr
 miM
 miM
@@ -51132,13 +51125,13 @@ miM
 miM
 otS
 pKO
+miM
+miM
 drq
-miM
 drq
-miM
-nai
-miM
-miM
+drq
+drq
+drq
 miM
 miM
 miM
@@ -51322,9 +51315,9 @@ miM
 miM
 miM
 drq
-drq
-drq
-drq
+miM
+miM
+miM
 drq
 miM
 miM
@@ -51507,7 +51500,7 @@ miM
 miM
 miM
 miM
-miM
+drq
 nai
 miM
 miM
@@ -51688,14 +51681,14 @@ uZv
 nIc
 kvL
 nIc
-drq
+miM
 miM
 miM
 miM
 miM
 sbr
 drq
-drq
+miM
 miM
 miM
 miM
@@ -53552,7 +53545,7 @@ aFD
 nai
 nai
 nai
-drq
+miM
 nbQ
 nai
 jEf
@@ -55267,7 +55260,7 @@ miM
 miM
 miM
 miM
-miM
+drq
 drq
 drq
 rOc
@@ -55453,7 +55446,7 @@ miM
 miM
 miM
 miM
-miM
+drq
 drq
 drq
 uIE
@@ -55644,7 +55637,7 @@ drq
 drq
 drq
 drq
-drq
+miM
 rOc
 miM
 miM
@@ -55830,8 +55823,8 @@ aFD
 drq
 drq
 drq
-drq
-drq
+miM
+miM
 miM
 miM
 miM
@@ -56017,8 +56010,8 @@ miM
 miM
 miM
 miM
-drq
-drq
+miM
+miM
 miM
 miM
 miM
@@ -56205,7 +56198,7 @@ miM
 miM
 miM
 miM
-drq
+miM
 miM
 miM
 miM
@@ -56392,7 +56385,7 @@ miM
 miM
 miM
 miM
-drq
+miM
 miM
 miM
 miM

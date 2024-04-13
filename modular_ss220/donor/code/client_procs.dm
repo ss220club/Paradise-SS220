@@ -2,7 +2,7 @@
 
 
 /datum/client_login_processor/donator_check/proc/CheckAutoDonatorLevel(client/C)
-	var/list/big_worker = list("Админ", "Старший Администратор", "Старший Разработчик", "Разработчик", "Бригадир мапперов", "Маппер")
+	var/list/big_worker = list("Администратор", "Старший Администратор", "Старший Разработчик", "Разработчик", "Бригадир мапперов", "Маппер")
 
 	if(C.holder)
 		C.donator_level = (C.holder.rank in big_worker) ? BIG_WORKER_TIER : LITTLE_WORKER_TIER
@@ -105,3 +105,13 @@
 	prefs.character_saves.len = prefs.max_save_slots
 
 #undef MAX_SAVE_SLOTS_SS220
+
+/client/proc/is_donor_allowed(required_donator_level)
+	switch(donator_level)
+		if(LITTLE_WORKER_TIER)
+			if(required_donator_level > LITTLE_WORKER_LEVEL)
+				return FALSE
+		if(BIG_WORKER_TIER)
+			if(required_donator_level > BIG_WORKER_LEVEL)
+				return FALSE
+	return required_donator_level <= donator_level
