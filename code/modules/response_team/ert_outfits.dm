@@ -32,8 +32,6 @@
 		var/obj/item/organ/internal/cyberimp/mouth/breathing_tube/hardened/BT = new /obj/item/organ/internal/cyberimp/mouth/breathing_tube/hardened(H)
 		BT.insert(H)
 
-		r_hand = /obj/item/tank/internals/plasmaman/belt
-
 		if(findtext(H.job, "Commander"))
 			head = /obj/item/clothing/head/helmet/space/plasmaman/captain
 			uniform = /obj/item/clothing/under/plasmaman/captain
@@ -59,14 +57,14 @@
 		U.extinguish_cooldown -= 50
 		U.extinguishes_left += 5
 		U.strip_delay += 80
-		U.armor = list(MELEE = 20, BULLET = 10, LASER = 10, ENERGY = 10, BOMB = 10, RAD = 10, FIRE = INFINITY, ACID = INFINITY)
+		var/datum/armor/p_a = U.armor
+		p_a.setRating(20,10,10,10,10,10,INFINITY,INFINITY)
 
 		var/obj/item/clothing/head/helmet/space/plasmaman/L = H.head
+		var/datum/armor/p_h = L.armor
+		p_h.setRating(25,15,15,15,15,15,INFINITY,INFINITY)
 		L.brightness_on += 4
 		L.strip_delay += 80
-
-		var/obj/item/tank/internals/plasmaman/belt/int = H.r_hand
-		H.internal = int
 
 		H.update_action_buttons_icon()
 		H.rejuvenate()
@@ -106,6 +104,7 @@
 
 		H.skin_colour = color
 		head_organ.hair_colour = color
+		head_organ.headacc_colour = color
 
 		var/obj/item/organ/internal/cyberimp/chest/ipc_repair/hardened/R = new
 		R.insert(H)
@@ -156,6 +155,18 @@
 			var/new_name = replacetext(H.real_name, the_rank, pick("Lieutenant", "Captain", "Major"))
 			H.rename_character(null, new_name)
 			break
+
+/datum/outfit/job/centcom/response_team/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+	. = ..()
+
+	if(istype(H.dna.species, /datum/species/plasmaman))
+		var/obj/item/tank/internal_tank
+		internal_tank = new /obj/item/tank/internals/plasmaman/belt/full(H)
+		if(!H.equip_to_appropriate_slot(internal_tank) && !H.put_in_any_hand_if_possible(internal_tank))
+			H.unEquip(H.r_hand)
+			H.equip_or_collect(internal_tank, SLOT_HUD_RIGHT_HAND)
+		H.internal = internal_tank
+		H.update_action_buttons_icon()
 
 /datum/outfit/job/centcom/response_team/commander/amber
 	name = "RT Commander (Amber)"
