@@ -43,12 +43,25 @@ export const AtmosGraphMonitor = (props, context) => {
         return "WE SHOULDN'T BE HERE!";
     }
   };
-  const getWindowHeight = Math.min(
-    800,
-    Object.keys(data.sensors).length * 220 + 150
-  );
+  const getWindowHeight = (sensorsLenght: number) => {
+    switch (sensorsLenght) {
+      case 0:
+        return 180;
+      case 1:
+        return 350;
+      case 2:
+        return 590;
+      case 3:
+        return 830;
+      default:
+        return 870;
+    }
+  };
   return (
-    <Window width={700} height={getWindowHeight}>
+    <Window
+      width={700}
+      height={getWindowHeight(Object.keys(data.sensors).length)}
+    >
       <Window.Content scrollable>
         <Box fillPositionedParent>
           <Tabs>
@@ -129,7 +142,10 @@ const AtmosGraphPage = ({
                       0,
                       getDataToSensor(s, temperatureListName).length - 1,
                     ]}
-                    rangeY={[0, getMaxReading(s, temperatureListName) + 5]}
+                    rangeY={[
+                      getMinReading(s, temperatureListName) - 10,
+                      getMaxReading(s, temperatureListName) + 5,
+                    ]}
                     strokeColor="rgba(219, 40, 40, 1)"
                     fillColor="rgba(219, 40, 40, 0.1)"
                   />
@@ -158,7 +174,10 @@ const AtmosGraphPage = ({
                       0,
                       getDataToSensor(s, pressureListName).length - 1,
                     ]}
-                    rangeY={[0, getMaxReading(s, pressureListName) + 5]}
+                    rangeY={[
+                      getMinReading(s, pressureListName) - 10,
+                      getMaxReading(s, pressureListName) + 5,
+                    ]}
                     strokeColor="rgba(40, 219, 40, 1)"
                     fillColor="rgba(40, 219, 40, 0.1)"
                   />
