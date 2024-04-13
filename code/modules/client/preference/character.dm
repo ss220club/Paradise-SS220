@@ -38,7 +38,8 @@
 	var/species = "Human"
 	var/language = "None"				//Secondary language
 	var/autohiss_mode = AUTOHISS_OFF	//Species autohiss level. OFF, BASIC, FULL.
-
+	/// If a spawned cyborg should have an MMI, a positronic, or a robobrain. MMI by default
+	var/cyborg_brain_type = MMI_BORG
 	/// The body accessory name of the mob (e.g. wings, tail).
 	var/body_accessory = null
 
@@ -110,17 +111,17 @@
 	real_name = random_name(gender, species)
 
 /datum/character_save/proc/save(client/C)
-	var/organlist
-	var/rlimblist
+	var/organ_list
+	var/rlimb_list
 	var/playertitlelist
 	var/gearlist
 
 	var/markingcolourslist = list2params(m_colours)
 	var/markingstyleslist = list2params(m_styles)
 	if(!isemptylist(organ_data))
-		organlist = list2params(organ_data)
+		organ_list = list2params(organ_data)
 	if(!isemptylist(rlimb_data))
-		rlimblist = list2params(rlimb_data)
+		rlimb_list = list2params(rlimb_data)
 	if(!isemptylist(player_alt_titles))
 		playertitlelist = list2params(player_alt_titles)
 	if(!isemptylist(loadout_gear))
@@ -177,8 +178,8 @@
 					gen_record=:gen_record,
 					player_alt_titles=:playertitlelist,
 					disabilities=:disabilities,
-					organ_data=:organlist,
-					rlimb_data=:rlimblist,
+					organ_data=:organ_list,
+					rlimb_data=:rlimb_list,
 					nanotrasen_relation=:nanotrasen_relation,
 					physique=:physique,
 					height=:height,
@@ -192,6 +193,7 @@
 					hair_gradient_colour=:h_grad_colour,
 					hair_gradient_alpha=:h_grad_alpha,
 					custom_emotes=:custom_emotes,
+					cyborg_brain_type=:cyborg_brain_type,
 					tts_seed=:tts_seed
 					WHERE ckey=:ckey
 					AND slot=:slot"}, list(
@@ -237,8 +239,8 @@
 						"gen_record" = gen_record,
 						"playertitlelist" = (playertitlelist ? playertitlelist : ""), // This it intentnional. It wont work without it!
 						"disabilities" = disabilities,
-						"organlist" = (organlist ? organlist : ""),
-						"rlimblist" = (rlimblist ? rlimblist : ""),
+						"organ_list" = (organ_list ? organ_list : ""),
+						"rlimb_list" = (rlimb_list ? rlimb_list : ""),
 						"nanotrasen_relation" = nanotrasen_relation,
 						"physique" = physique,
 						"height" = height,
@@ -252,7 +254,8 @@
 						"h_grad_colour" = h_grad_colour,
 						"h_grad_alpha" = h_grad_alpha,
 						"custom_emotes" = json_encode(custom_emotes),
-						"tts_seed" = tts_seed,
+						"cyborg_brain_type" = cyborg_brain_type,
+						"tts_seed" = tts_seed, // SS220 EDIT ADDITION - TTS220
 						"ckey" = C.ckey,
 						"slot" = slot_number
 					))
@@ -293,7 +296,7 @@
 			player_alt_titles,
 			disabilities, organ_data, rlimb_data, nanotrasen_relation, physique, height, speciesprefs,
 			socks, body_accessory, gear, autohiss,
-			hair_gradient, hair_gradient_offset, hair_gradient_colour, hair_gradient_alpha, custom_emotes, tts_seed)
+			hair_gradient, hair_gradient_offset, hair_gradient_colour, hair_gradient_alpha, custom_emotes, cyborg_brain_type, tts_seed)
 		VALUES
 			(:ckey, :slot, :metadata, :name, :be_random_name, :gender,
 			:age, :species, :language,
@@ -318,9 +321,9 @@
 			:sec_record,
 			:gen_record,
 			:playertitlelist,
-			:disabilities, :organlist, :rlimblist, :nanotrasen_relation, :physique, :height, :speciesprefs,
+			:disabilities, :organ_list, :rlimb_list, :nanotrasen_relation, :physique, :height, :speciesprefs,
 			:socks, :body_accessory, :gearlist, :autohiss_mode,
-			:h_grad_style, :h_grad_offset, :h_grad_colour, :h_grad_alpha, :custom_emotes, :tts_seed)
+			:h_grad_style, :h_grad_offset, :h_grad_colour, :h_grad_alpha, :custom_emotes, :cyborg_brain_type, :tts_seed)
 	"}, list(
 		// This has too many params for anyone to look at this without going insae
 		"ckey" = C.ckey,
@@ -366,8 +369,8 @@
 		"gen_record" = gen_record,
 		"playertitlelist" = (playertitlelist ? playertitlelist : ""), // This it intentional. It wont work without it!
 		"disabilities" = disabilities,
-		"organlist" = (organlist ? organlist : ""),
-		"rlimblist" = (rlimblist ? rlimblist : ""),
+		"organ_list" = (organ_list ? organ_list : ""),
+		"rlimb_list" = (rlimb_list ? rlimb_list : ""),
 		"nanotrasen_relation" = nanotrasen_relation,
 		"physique" = physique,
 		"height" = height,
@@ -381,7 +384,8 @@
 		"h_grad_colour" = h_grad_colour,
 		"h_grad_alpha" = h_grad_alpha,
 		"custom_emotes" = json_encode(custom_emotes),
-		"tts_seed" = tts_seed
+		"cyborg_brain_type" = cyborg_brain_type,
+		"tts_seed" = tts_seed // SS220 EDIT ADDITION - TTS220
 	))
 
 	if(!query.warn_execute())
@@ -469,7 +473,8 @@
 	var/custom_emotes_tmp = query.item[55]
 	physique = query.item[56]
 	height = query.item[57]
-	tts_seed = query.item[58]
+	cyborg_brain_type = query.item[58]
+	tts_seed = query.item[59] // SS220 EDIT ADDITION - TTS220
 
 	//Sanitize
 	var/datum/species/SP = GLOB.all_species[species]
@@ -532,15 +537,15 @@
 	autohiss_mode	= sanitize_integer(autohiss_mode, 0, 2, initial(autohiss_mode))
 
 	alternate_option = sanitize_integer(alternate_option, 0, 2, initial(alternate_option))
-	job_support_high = sanitize_integer(job_support_high, 0, 65535, initial(job_support_high))
-	job_support_med = sanitize_integer(job_support_med, 0, 65535, initial(job_support_med))
-	job_support_low = sanitize_integer(job_support_low, 0, 65535, initial(job_support_low))
-	job_medsci_high = sanitize_integer(job_medsci_high, 0, 65535, initial(job_medsci_high))
-	job_medsci_med = sanitize_integer(job_medsci_med, 0, 65535, initial(job_medsci_med))
-	job_medsci_low = sanitize_integer(job_medsci_low, 0, 65535, initial(job_medsci_low))
-	job_engsec_high = sanitize_integer(job_engsec_high, 0, 65535, initial(job_engsec_high))
-	job_engsec_med = sanitize_integer(job_engsec_med, 0, 65535, initial(job_engsec_med))
-	job_engsec_low = sanitize_integer(job_engsec_low, 0, 65535, initial(job_engsec_low))
+	job_support_high = sanitize_integer(job_support_high, 0, get_datum_last_support(), initial(job_support_high)) // SS220 EDIT - EXTRA JOBS
+	job_support_med = sanitize_integer(job_support_med, 0, get_datum_last_support(), initial(job_support_med)) // SS220 EDIT - EXTRA JOBS
+	job_support_low = sanitize_integer(job_support_low, 0, get_datum_last_support(), initial(job_support_low)) // SS220 EDIT - EXTRA JOBS
+	job_medsci_high = sanitize_integer(job_medsci_high, 0, get_datum_last_medsci(), initial(job_medsci_high)) // SS220 EDIT - EXTRA JOBS
+	job_medsci_med = sanitize_integer(job_medsci_med, 0, get_datum_last_medsci(), initial(job_medsci_med)) // SS220 EDIT - EXTRA JOBS
+	job_medsci_low = sanitize_integer(job_medsci_low, 0, get_datum_last_medsci(), initial(job_medsci_low)) // SS220 EDIT - EXTRA JOBS
+	job_engsec_high = sanitize_integer(job_engsec_high, 0, get_datum_last_engsec(), initial(job_engsec_high)) // SS220 EDIT - EXTRA JOBS
+	job_engsec_med = sanitize_integer(job_engsec_med, 0, get_datum_last_engsec(), initial(job_engsec_med)) // SS220 EDIT - EXTRA JOBS
+	job_engsec_low = sanitize_integer(job_engsec_low, 0, get_datum_last_engsec(), initial(job_engsec_low)) // SS220 EDIT - EXTRA JOBS
 	disabilities = sanitize_integer(disabilities, 0, 65535, initial(disabilities))
 
 	socks			= sanitize_text(socks, initial(socks))
@@ -555,7 +560,7 @@
 	loadout_gear = sanitize_json(loadout_gear)
 	custom_emotes_tmp = sanitize_json(custom_emotes_tmp)
 	custom_emotes = init_custom_emotes(custom_emotes_tmp)
-
+	cyborg_brain_type = sanitize_inlist(cyborg_brain_type, GLOB.borg_brain_choices, initial(cyborg_brain_type))
 	if(!player_alt_titles)
 		player_alt_titles = new()
 	if(!organ_data)
@@ -1091,7 +1096,7 @@
 				clothes_s.Blend(new /icon('icons/mob/clothing/hands.dmi', "bgloves"), ICON_OVERLAY)
 				has_gloves = TRUE
 				if(prob(1))
-					clothes_s.Blend(new /icon('icons/mob/clothing/suit.dmi', "poncho"), ICON_OVERLAY)
+					clothes_s.Blend(new /icon('icons/mob/clothing/suit.dmi', "qmcoat"), ICON_OVERLAY)
 				switch(backbag)
 					if(2)
 						clothes_s.Blend(new /icon('icons/mob/clothing/back.dmi', "backpack"), ICON_OVERLAY)
@@ -1658,21 +1663,21 @@
 	if(length(med_record) <= 40)
 		HTML += "[med_record]"
 	else
-		HTML += "[copytext_char(med_record, 1, 37)]..."		// SS220 EDIT - ORIGINAL: copytext
+		HTML += "[copytext_char(med_record, 1, 37)]..."
 
 	HTML += "<br><a href=\"byond://?_src_=prefs;preference=records;task=gen_record\">Employment Records</a><br>"
 
 	if(length(gen_record) <= 40)
 		HTML += "[gen_record]"
 	else
-		HTML += "[copytext_char(gen_record, 1, 37)]..."		// SS220 EDIT - ORIGINAL: copytext
+		HTML += "[copytext_char(gen_record, 1, 37)]..."
 
 	HTML += "<br><a href=\"byond://?_src_=prefs;preference=records;task=sec_record\">Security Records</a><br>"
 
 	if(length(sec_record) <= 40)
 		HTML += "[sec_record]<br>"
 	else
-		HTML += "[copytext_char(sec_record, 1, 37)]...<br>"	// SS220 EDIT - ORIGINAL: copytext
+		HTML += "[copytext_char(sec_record, 1, 37)]...<br>"
 
 	HTML += "<a href=\"byond://?_src_=prefs;preference=records;records=-1\">\[Done\]</a>"
 	HTML += "</center></tt>"
@@ -1788,7 +1793,7 @@
 
 /datum/character_save/proc/copy_to(mob/living/carbon/human/character)
 	var/datum/species/S = GLOB.all_species[species]
-	character.set_species(S.type) // Yell at me if this causes everything to melt
+	character.set_species(S.type, delay_icon_update = TRUE) // Yell at me if this causes everything to melt
 	if(be_random_name)
 		real_name = random_name(gender, species)
 
@@ -1889,7 +1894,7 @@
 			message_admins("[key_name_admin(character)] has spawned with their gender as plural or neuter. Please notify coders.")
 			character.change_gender(MALE)
 
-	character.change_eye_color(e_colour)
+	character.change_eye_color(e_colour, skip_icons = TRUE)
 	character.original_eye_color = e_colour
 
 	if(disabilities & DISABILITY_FLAG_FAT)
@@ -1949,12 +1954,11 @@
 
 	character.dna.ready_dna(character, flatten_SE = FALSE)
 	character.sync_organ_dna(assimilate = TRUE)
-	character.UpdateAppearance()
 
 	// Do the initial caching of the player's body icons.
 	character.force_update_limbs()
 	character.update_eyes()
-	character.regenerate_icons()
+	character.UpdateAppearance()
 
 //Check if the user has ANY job selected.
 /datum/character_save/proc/check_any_job()
@@ -1981,6 +1985,15 @@
 		html += "<tt><center>"
 		html += "<b>Choose occupation chances</b><br>Unavailable occupations are crossed out.<br><br>"
 		html += "<center><a href='?_src_=prefs;preference=job;task=close'>Save</a></center><br>" // Easier to press up here.
+
+		// ===== SS220 ADD - NEW JOBS ======
+		// ============= START =============
+		if(check_available_extra_job_prefs(user.client))
+			html += "<center><u><b><a href='?_src_=prefs;preference=job;task=extra_job'>Показать [extra_jobs_check ? "основные" : "дополнительные"] работы</a></b></u></center><br>"
+		if(extra_jobs_check)
+			splitJobs = get_split_extra_jobs()
+		// ============== END ==============
+
 		html += "<div align='center'>Left-click to raise an occupation preference, right-click to lower it.<br></div>"
 		html += "<script type='text/javascript'>function setJobPrefRedirect(level, rank) { window.location.href='?_src_=prefs;preference=job;task=setJobLevel;level=' + level + ';text=' + encodeURIComponent(rank); return false; }</script>"
 		html += "<table width='100%' cellpadding='1' cellspacing='0'><tr><td width='20%'>" // Table within a table for alignment, also allows you to easily add more colomns.
@@ -1999,6 +2012,15 @@
 
 			if(job.hidden_from_job_prefs)
 				continue
+
+			// ===== SS220 ADD - NEW JOBS ======
+			// ============= START =============
+			if(!job.is_donor_allowed(user.client))
+				continue
+
+			if(extra_jobs_check != job.is_extra_job)
+				continue
+			// ============== END ==============
 
 			index += 1
 			if((index >= limit) || (job.title in splitJobs))

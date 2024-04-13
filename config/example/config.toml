@@ -149,7 +149,7 @@ ipc_screens = [
 # Enable/disable the database on a whole
 sql_enabled = false
 # SQL version. If this is a mismatch, round start will be delayed
-sql_version = 532206
+sql_version = 542206
 # SQL server address. Can be an IP or DNS name
 sql_address = "127.0.0.1"
 # SQL server port
@@ -261,6 +261,8 @@ disable_certain_round_early_end = false
 traitor_objective_amount = 2
 # Enable player limits on gamemodes. Disable if testing
 enable_gamemode_player_limit = true
+# Enable to generate zero or more random station traits on game start.
+add_random_station_traits = false
 
 
 ################################################################
@@ -280,6 +282,8 @@ server_features = "Medium RP, varied species/jobs"
 allow_character_metadata = true
 # Lobby time before roundstart (Seconds)
 lobby_time = 240
+# Default timeout for world reboot (Seconds)
+restart_timeout = 75
 # Forbid people without a BYOND account joining the server
 guest_ban = true
 # Allow players to use antagHUD?
@@ -386,8 +390,6 @@ details_url = "https://iphub.info/?ip="
 [job_configuration]
 # This section contains information on job configuartion, as well as the jon amounts
 
-# Disable this if you are in a lowpop environment
-jobs_have_minimal_access = true
 # Require account agre restrictions for job? Requires the database
 restrict_jobs_on_account_age = false
 # Allow admins to bypass all job age restrictions
@@ -428,7 +430,7 @@ job_slot_amounts = [
 	{name = "Chemist", lowpop = 2, highpop = 2},
 	{name = "Geneticist", lowpop = 2, highpop = 2},
 	{name = "Medical Doctor", lowpop = 5, highpop = 6},
-	{name = "Intern", lowpop = 0, highpop = 0},
+	{name = "Medical Intern", lowpop = 0, highpop = 0},
 	{name = "Virologist", lowpop = 1, highpop = 1},
 	# Science
 	{name = "Roboticist", lowpop = 2, highpop = 2},
@@ -716,6 +718,9 @@ active_lava_ruins = [
 	"_maps/map_files/RandomRuins/LavaRuins/lavaland_surface_watcher_grave.dmm",
 	"_maps/map_files/RandomRuins/LavaRuins/lavaland_surface_xeno_nest.dmm",
 	"_maps/map_files220/RandomRuins/LavaRuins/scp_facility.dmm",
+	"_maps/map_files220/RandomRuins/LavaRuins/cheesus_temple.dmm",
+	"_maps/map_files220/RandomRuins/LavaRuins/ash_old.dmm",
+	"_maps/map_files220/RandomRuins/LavaRuins/old_outpost.dmm",
 ]
 # Budget for lavaland ruins. A higher number means more will spawn
 lavaland_ruin_budget = 100
@@ -919,6 +924,8 @@ ffmpeg_cpuaffinity = ""
 
 # Force discord verification
 force_discord_verification = false
+# Respawn delay in minutes before one may respawn as a crew member
+respawn_delay = 20
 
 ################################################################
 

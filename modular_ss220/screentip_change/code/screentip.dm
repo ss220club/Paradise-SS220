@@ -1,2 +1,2 @@
-/obj/screen/screentip
-	maptext_y = 0
+/atom/movable/screen/screentip
+	maptext_y = -25
