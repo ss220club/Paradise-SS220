@@ -232,6 +232,13 @@ type AtmosChartProps = {
   strokeWidth?: number;
   fillColor?: string;
   fillPositionedParent?: boolean;
+  horizontalLinesCount?: number;
+  verticalLinesCount?: number;
+  gridColor?: string;
+  gridWidth?: number;
+  pointTextColor?: string;
+  pointTextSize?: string;
+  labelViewBoxSize?: number;
 };
 
 type AtmosChartState = {
@@ -274,6 +281,13 @@ class AtmosChart extends Component<AtmosChartProps, AtmosChartState> {
       fillColor = 'none',
       strokeColor = '#ffffff',
       strokeWidth = 2,
+      horizontalLinesCount = 2,
+      verticalLinesCount = data.length - 2,
+      gridColor = 'rgba(255, 255, 255, 0.1)',
+      gridWidth = 2,
+      pointTextColor = 'rgba(255, 255, 255, 0.8)',
+      pointTextSize = '0.8em',
+      labelViewBoxSize = 400,
       ...rest
     } = this.props;
     const { viewBox } = this.state;
@@ -288,13 +302,6 @@ class AtmosChart extends Component<AtmosChartProps, AtmosChartState> {
       normalized.push([-strokeWidth, first[1]]);
     }
     const points = dataToPolylinePoints(normalized);
-    const horizontalLinesCount = 2; // Горизонтальные линии сетки, не имеют физического смысла
-    const verticalLinesCount = data.length - 2;
-    const gridColor = 'rgba(255, 255, 255, 0.1)';
-    const gridWidth = 2;
-    const pointTextColor = 'rgba(255, 255, 255, 0.8)';
-    const pointTextSize = '0.8em';
-    const labelViewBoxSize = 400;
 
     return (
       <Box position="relative" {...rest}>
