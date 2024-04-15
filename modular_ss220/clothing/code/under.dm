@@ -44,6 +44,7 @@
 		"Unathi" 			= 	'modular_ss220/clothing/icons/mob/species/unathi/under.dmi',
 		"Vox" 				= 	'modular_ss220/clothing/icons/mob/species/vox/under.dmi',
 		"Vulpkanin" 		= 	'modular_ss220/clothing/icons/mob/under.dmi',
+		"Nucleation"		=	'modular_ss220/clothing/icons/mob/under.dmi',
 		)
 
 /obj/item/clothing/under/yellowgreen_skirt
