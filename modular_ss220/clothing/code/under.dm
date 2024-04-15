@@ -328,7 +328,7 @@
 		"Diona" = 'modular_ss220/clothing/icons/mob/under.dmi',
 		"Shadow" = 'modular_ss220/clothing/icons/mob/under.dmi',
 		"Ancient Skeleton" = 'modular_ss220/clothing/icons/mob/under.dmi',
-		"Nucleation" = 'modular_ss220/clothing/icons/mob/under.dmi'
+		"Nucleation" = 'modular_ss220/clothing/icons/mob/under.dmi',
 	)
 
 /obj/item/clothing/under/towel_short
@@ -358,7 +358,7 @@
 		"Diona" = 'modular_ss220/clothing/icons/mob/under.dmi',
 		"Shadow" = 'modular_ss220/clothing/icons/mob/under.dmi',
 		"Ancient Skeleton" = 'modular_ss220/clothing/icons/mob/under.dmi',
-		"Nucleation" = 'modular_ss220/clothing/icons/mob/under.dmi'
+		"Nucleation" = 'modular_ss220/clothing/icons/mob/under.dmi',
 	)
 
 /obj/item/clothing/under/towel_short_alt
@@ -388,7 +388,7 @@
 		"Diona" = 'modular_ss220/clothing/icons/mob/under.dmi',
 		"Shadow" = 'modular_ss220/clothing/icons/mob/under.dmi',
 		"Ancient Skeleton" = 'modular_ss220/clothing/icons/mob/under.dmi',
-		"Nucleation" = 'modular_ss220/clothing/icons/mob/under.dmi'
+		"Nucleation" = 'modular_ss220/clothing/icons/mob/under.dmi',
 	)
 
 // Длинное полотенце
