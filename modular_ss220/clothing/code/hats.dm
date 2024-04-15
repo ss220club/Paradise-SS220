@@ -90,6 +90,7 @@
 		"Unathi" = 'modular_ss220/clothing/icons/mob/hats.dmi',
 		"Vox" = 'modular_ss220/clothing/icons/mob/species/vox/hats.dmi',
 		"Vulpkanin" = 'modular_ss220/clothing/icons/mob/hats.dmi',
+		"Nucleation" = 'modular_ss220/clothing/icons/mob/hats.dmi'
 	)
 
 /obj/item/clothing/head/towel/red
