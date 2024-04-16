@@ -31,7 +31,7 @@
 	src.current.equip_to_slot_or_del(spellbook, SLOT_HUD_LEFT_HAND)
 
 
-/datum/antagonist/wizard/equip_wizard() //copypasta to make spellbook adjustments
+/datum/antagonist/wizard/rave/equip_wizard() //copypasta to make spellbook adjustments
 	if(!ishuman(owner.current))
 		return
 	var/mob/living/carbon/human/new_wiz = owner.current
