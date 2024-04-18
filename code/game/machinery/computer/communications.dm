@@ -255,7 +255,7 @@
 				Nuke_request(input, ui.user)
 				to_chat(ui.user, "<span class='notice'>Request sent.</span>")
 				log_game("[key_name(ui.user)] has requested the nuclear codes from Centcomm")
-				GLOB.major_announcement.Announce("[ui.user] запросил коды для запуска механизма ядерного самоуничтожения станции. В ближайшее время будет отправлено уведомление о подтверждении или отклонении данного запроса.", "ВНИМАНИЕ: Запрос кода самоуничтожения станции.",'sound/AI/commandreport.ogg')
+				GLOB.major_announcement.Announce("[ui.user] запросил коды для запуска механизма ядерного самоуничтожения станции. В ближайшее время будет отправлено уведомление о подтверждении или отклонении данного запроса.", "ВНИМАНИЕ: Запрос кода самоуничтожения станции.", 'sound/AI/nuke_codes.ogg')
 				centcomm_message_cooldown = world.time + 6000 // 10 minutes
 			setMenuState(ui.user, COMM_SCREEN_MAIN)
 

@@ -118,7 +118,7 @@
 /datum/vote/proc/announce(start_text)
 	to_chat(world, chat_box_purple(
 		"<span><font color='purple'><b>[start_text]</b></br></br>\
-		<a href='?src=[SSvote.UID()];vote=open'>Нажмите здесь или введите <code>Vote</code>, чтобы оставить голос.</a></br>\
+		<a href='byond://?src=[SSvote.UID()];vote=open'>Нажмите здесь или введите <code>Vote</code>, чтобы оставить голос.</a></br>\
 		У вас [GLOB.configuration.vote.vote_time / 10] секунд на выбор.</span>"))
 	SEND_SOUND(world, sound('sound/ambience/alarm4.ogg'))
 
