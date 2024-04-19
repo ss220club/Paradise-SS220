@@ -7204,11 +7204,6 @@
 /turf/simulated/floor/plasteel,
 /area/station/supply/miningdock)
 "aKg" = (
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/public/glass,
 /obj/effect/mapping_helpers/airlock/autoname,
@@ -9350,21 +9345,12 @@
 /turf/simulated/floor/engine,
 /area/station/engineering/engine/supermatter)
 "aRg" = (
-/obj/machinery/atmospherics/meter,
-/obj/machinery/atmospherics/pipe/manifold/visible/cyan{
-	dir = 8;
-	initialize_directions = 11
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 4
+/obj/machinery/atmospherics/air_sensor{
+	autolink_id = "sm_sen_cont";
+	output = 127
 	},
 /turf/simulated/floor/engine,
-/area/station/engineering/control)
+/area/station/engineering/engine/supermatter)
 "aRm" = (
 /obj/machinery/light/small/directional/south,
 /turf/simulated/floor/plating,
@@ -10049,6 +10035,9 @@
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
+	},
+/obj/machinery/atmospherics/meter{
+	autolink_id = "sm_sen_cold"
 	},
 /turf/simulated/floor/engine,
 /area/station/engineering/control)
@@ -18872,11 +18861,6 @@
 /area/station/security/permabrig)
 "bsb" = (
 /obj/item/folder/white,
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/machinery/light/directional/west,
 /obj/structure/cable/yellow{
 	d1 = 1;
@@ -22208,6 +22192,11 @@
 	},
 /obj/item/reagent_containers/glass/bottle/nutrient/ez,
 /obj/item/reagent_containers/spray/plantbgone,
+/obj/item/storage/bag/plants/seed_sorting_tray,
+/obj/item/reagent_containers/glass/bottle/nutrient/mut{
+	pixel_x = -4;
+	pixel_y = 2
+	},
 /turf/simulated/floor/plasteel,
 /area/station/hallway/secondary/garden)
 "bBN" = (
@@ -29911,7 +29900,7 @@
 "cbP" = (
 /obj/effect/turf_decal/delivery/hollow,
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/chem_dispenser/botanical,
+/obj/machinery/chem_dispenser,
 /turf/simulated/floor/plasteel{
 	dir = 5;
 	icon_state = "greenblue"
@@ -43849,10 +43838,10 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
-/obj/machinery/atmospherics/meter,
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
+/obj/machinery/atmospherics/meter,
 /turf/simulated/floor/engine,
 /area/station/engineering/control)
 "ded" = (
@@ -45543,13 +45532,14 @@
 /obj/machinery/camera{
 	c_tag = "Brig Prisoner Processing"
 	},
+/obj/machinery/light_switch/north{
+	pixel_x = 6
+	},
 /obj/machinery/button/windowtint/north{
 	id = "Processing";
 	pixel_x = -6;
-	req_access_txt = "63"
-	},
-/obj/machinery/light_switch/north{
-	pixel_x = 6
+	req_access_txt = "63";
+	range = 4
 	},
 /turf/simulated/floor/plasteel{
 	dir = 1;
@@ -45942,10 +45932,10 @@
 	},
 /area/station/hallway/primary/aft)
 "dXb" = (
-/obj/machinery/atmospherics/meter,
 /obj/machinery/atmospherics/pipe/manifold/visible/cyan,
 /obj/machinery/light/directional/south,
 /obj/effect/turf_decal/stripes/line,
+/obj/machinery/atmospherics/meter,
 /turf/simulated/floor/engine,
 /area/station/engineering/control)
 "dXu" = (
@@ -48018,11 +48008,6 @@
 /obj/effect/turf_decal/delivery,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/structure/cable/yellow{
 	d1 = 1;
 	d2 = 2;
@@ -59492,6 +59477,9 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
+/obj/machinery/atmospherics/meter{
+	autolink_id = "sm_sen_hot"
+	},
 /turf/simulated/floor/engine,
 /area/station/engineering/control)
 "knq" = (
@@ -67193,11 +67181,6 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/xenobio_south)
 "nDu" = (
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/machinery/firealarm/directional/west,
 /obj/structure/cable/yellow{
 	d1 = 1;
@@ -70826,11 +70809,6 @@
 	},
 /area/station/medical/medbay)
 "pAO" = (
-/obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
 /obj/machinery/door/airlock/maintenance,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
@@ -78798,6 +78776,15 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/station/science/toxins/mixing)
+"tij" = (
+/obj/machinery/computer/general_air_control/pt_monitor{
+	dir = 4;
+	autolink_sensors = list("sm_sen_hot"="Горячий Контур","sm_sen_cold"="Холодный Контур","sm_sen_cont"="Зона Содержания")
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/station/engineering/control)
 "tio" = (
 /obj/structure/cable/yellow{
 	d1 = 1;
@@ -81356,6 +81343,7 @@
 /obj/item/plant_analyzer,
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/machinery/light_switch/north,
+/obj/item/storage/bag/plants/seed_sorting_tray,
 /turf/simulated/floor/plasteel{
 	dir = 5;
 	icon_state = "green"
@@ -88118,28 +88106,6 @@
 /obj/item/radio/intercom/directional/south,
 /turf/simulated/floor/plasteel,
 /area/station/security/brig)
-"xVd" = (
-/obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/simulated/floor/plasteel,
-/area/station/hallway/primary/starboard)
 "xVB" = (
 /obj/structure/kitchenspike_frame,
 /obj/effect/decal/cleanable/blood/old,
@@ -128118,7 +128084,7 @@ bhU
 aGX
 bam
 bnr
-xVd
+boY
 lDD
 aoG
 bSG
@@ -130675,7 +130641,7 @@ fWD
 xWl
 sLD
 jwN
-nRh
+tij
 pcW
 pcW
 pcW
@@ -131954,7 +131920,7 @@ nYI
 pFo
 aMU
 aPa
-aRg
+aPa
 aTJ
 aPs
 aVs
@@ -132985,7 +132951,7 @@ kGw
 aRs
 aTK
 aRf
-aSo
+aRg
 aTV
 mzf
 dqm

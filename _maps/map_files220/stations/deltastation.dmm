@@ -7332,7 +7332,9 @@
 /turf/simulated/floor/plasteel,
 /area/station/engineering/controlroom)
 "aGa" = (
-/obj/machinery/atmospherics/meter,
+/obj/machinery/atmospherics/meter{
+	autolink_id = "sm_sen_cold"
+	},
 /obj/machinery/atmospherics/pipe/manifold/visible,
 /obj/structure/cable/yellow{
 	d1 = 4;
@@ -8284,6 +8286,9 @@
 	pixel_y = -4
 	},
 /obj/effect/turf_decal/delivery/hollow,
+/obj/item/clothing/head/welding/flamedecal/blue{
+	pixel_y = 5
+	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/controlroom)
 "aJH" = (
@@ -23724,11 +23729,6 @@
 	dir = 1;
 	pixel_y = -25;
 	name = "custom placement"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -54828,11 +54828,6 @@
 /obj/effect/mapping_helpers/airlock/welded,
 /obj/machinery/door/airlock/psych,
 /obj/effect/mapping_helpers/airlock/autoname,
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
 /obj/effect/mapping_helpers/airlock/access/any/medical/psychology,
 /turf/simulated/floor/wood/oak,
 /area/station/medical/patients_rooms)
@@ -56152,9 +56147,9 @@
 /turf/simulated/floor/plasteel,
 /area/station/engineering/controlroom)
 "gBF" = (
-/obj/structure/table/reinforced,
-/obj/item/clothing/head/welding/flamedecal/blue{
-	pixel_y = 5
+/obj/machinery/computer/general_air_control/pt_monitor{
+	dir = 8;
+	autolink_sensors = list("sm_sen_hot"="Горячий Контур","sm_sen_cold"="Холодный Контур","sm_sen_cont"="Зона Содержания")
 	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/controlroom)
@@ -60706,11 +60701,6 @@
 	icon_state = "0-2"
 	},
 /obj/structure/disposalpipe/segment,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /turf/simulated/floor/plating,
 /area/station/security/permabrig)
 "hWP" = (
@@ -61985,11 +61975,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/firedoor,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable{
 	d1 = 1;
@@ -80334,11 +80319,6 @@
 	},
 /area/station/science/genetics)
 "obO" = (
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 1
 	},
@@ -86456,7 +86436,7 @@
 /area/station/hallway/secondary/exit)
 "pYO" = (
 /obj/effect/turf_decal/delivery,
-/obj/machinery/chem_dispenser/botanical,
+/obj/machinery/chem_dispenser,
 /obj/machinery/requests_console{
 	department = "Hydroponics";
 	departmentType = 2;
@@ -89134,6 +89114,13 @@
 	icon_state = "neutralfull"
 	},
 /area/station/hallway/primary/central/ne)
+"qQH" = (
+/obj/machinery/atmospherics/air_sensor{
+	autolink_id = "sm_sen_cont";
+	output = 127
+	},
+/turf/simulated/floor/engine,
+/area/station/engineering/engine/supermatter)
 "qQK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
@@ -96139,11 +96126,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/firedoor,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/machinery/door/airlock/bathroom{
 	id = "toilet2";
 	id_tag = "toilet2"
@@ -98093,10 +98075,23 @@
 "tGh" = (
 /obj/effect/turf_decal/delivery/hollow,
 /obj/structure/table,
-/obj/item/reagent_containers/spray/plantbgone,
-/obj/item/reagent_containers/spray/plantbgone,
-/obj/item/reagent_containers/spray/plantbgone,
 /obj/machinery/firealarm/directional/east,
+/obj/item/reagent_containers/glass/bottle/nutrient/mut{
+	pixel_x = -4;
+	pixel_y = 2
+	},
+/obj/item/reagent_containers/spray/plantbgone{
+	pixel_y = 10;
+	pixel_x = 6
+	},
+/obj/item/reagent_containers/spray/plantbgone{
+	pixel_x = 6;
+	pixel_y = 4
+	},
+/obj/item/reagent_containers/spray/plantbgone{
+	pixel_x = 6;
+	pixel_y = -2
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/service/hydroponics)
 "tGN" = (
@@ -102910,6 +102905,7 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
+/obj/item/storage/bag/plants/seed_sorting_tray,
 /turf/simulated/floor/plasteel,
 /area/station/security/permabrig)
 "vhM" = (
@@ -106599,11 +106595,6 @@
 	icon_state = "1-2"
 	},
 /obj/structure/disposalpipe/segment,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/effect/mapping_helpers/airlock/access/any/security/general,
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/dormitory_maintenance)
@@ -107101,7 +107092,9 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/machinery/atmospherics/meter,
+/obj/machinery/atmospherics/meter{
+	autolink_id = "sm_sen_hot"
+	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/controlroom)
 "wBK" = (
@@ -136265,7 +136258,7 @@ nUm
 kJd
 aAa
 aBX
-aAa
+qQH
 mxm
 aAa
 aCZ
