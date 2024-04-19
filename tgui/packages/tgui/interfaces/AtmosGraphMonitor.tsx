@@ -148,6 +148,11 @@ const AtmosGraphPage = ({
                     ]}
                     strokeColor="rgba(219, 40, 40, 1)"
                     fillColor="rgba(219, 40, 40, 0.1)"
+                    horizontalLinesCount={2}
+                    verticalLinesCount={
+                      getDataToSensor(s, temperatureListName).length - 2
+                    }
+                    labelViewBoxSize={400}
                   />
                 </Section>
               </Box>
@@ -180,6 +185,11 @@ const AtmosGraphPage = ({
                     ]}
                     strokeColor="rgba(40, 219, 40, 1)"
                     fillColor="rgba(40, 219, 40, 0.1)"
+                    horizontalLinesCount={2}
+                    verticalLinesCount={
+                      getDataToSensor(s, pressureListName).length - 2
+                    }
+                    labelViewBoxSize={400}
                   />
                 </Section>
               </Box>
@@ -281,13 +291,13 @@ class AtmosChart extends Component<AtmosChartProps, AtmosChartState> {
       fillColor = 'none',
       strokeColor = '#ffffff',
       strokeWidth = 2,
-      horizontalLinesCount = 2,
-      verticalLinesCount = data.length - 2,
+      horizontalLinesCount = 0,
+      verticalLinesCount = 0,
       gridColor = 'rgba(255, 255, 255, 0.1)',
       gridWidth = 2,
       pointTextColor = 'rgba(255, 255, 255, 0.8)',
       pointTextSize = '0.8em',
-      labelViewBoxSize = 400,
+      labelViewBoxSize = 0,
       ...rest
     } = this.props;
     const { viewBox } = this.state;
