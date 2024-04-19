@@ -75,13 +75,6 @@
 	density = TRUE
 	baseturf = /turf/simulated/floor/beach/away/water/drop_no_overlay/dense
 
-/* Lavaland */
-/turf/simulated/floor/plasteel/lavaland_air
-	name = "floor"
-	temperature = 500
-	oxygen = 8
-	nitrogen = 14
-
 /* Indestructible */
 /turf/simulated/floor/indestructible/grass
 	name = "grass patch"
@@ -184,8 +177,9 @@
 		var/datum/effect_system/spark_spread/s = new
 		s.set_up(5, 1, unlucky_mob.loc)
 		s.start()
-		unlucky_mob.visible_message(span_danger("[unlucky_mob.name] is shocked by [src]!"), \
-		span_userdanger("You feel a powerful shock course through your body!"))
+		unlucky_mob.visible_message(
+			span_danger("[unlucky_mob.name] is shocked by [src]!"),
+			span_userdanger("You feel a powerful shock course through your body!"))
 		playsound(unlucky_mob, 'sound/effects/sparks4.ogg', 100, TRUE)
 
 /turf/simulated/floor/beach/away/blackmesa/remove_plating(mob/user)

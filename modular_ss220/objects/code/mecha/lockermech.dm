@@ -65,7 +65,7 @@
 	output += "<b>Cargo Compartment Contents:</b><div style='margin-left: 15px;'>"
 	if(length(cargo))
 		for(var/obj/cargo_item as anything in cargo)
-			output += "<a href='?src=[UID()];drop_from_cargo=[cargo_item.UID()]'>Unload</a> : [cargo_item]<br>"
+			output += "<a href='byond://?src=[UID()];drop_from_cargo=[cargo_item.UID()]'>Unload</a> : [cargo_item]<br>"
 	else
 		output += "Nothing"
 	output += "</div>"
@@ -81,7 +81,7 @@
 	if(!cargo_to_unload || !(cargo_to_unload in cargo))
 		return
 
-	occupant_message("<span class='notice'>You unload [cargo_to_unload].</span>")
+	occupant_message(span_notice("You unload [cargo_to_unload]."))
 	cargo_to_unload.forceMove(get_turf(src))
 	cargo -= cargo_to_unload
 	log_message("Unloaded [cargo_to_unload]. Cargo compartment capacity: [cargo_capacity - length(cargo)]")
@@ -106,7 +106,7 @@
 /obj/mecha/lockermech/emag_act(mob/user)
 	if(!emagged)
 		emagged = TRUE
-		desc += "</br><span class='danger'>The mech's equipment slots spark dangerously!</span>"
+		desc += span_danger("</br>The mech's equipment slots spark dangerously!")
 	return ..()
 
 // Crafting
