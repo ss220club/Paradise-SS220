@@ -225,26 +225,26 @@
 		)
 
 /obj/item/clothing/suit/beatrice_dress
-	name = "Розовое платье"
+	name = "розовое платье"
 	icon = 'modular_ss220/clothing/icons/object/suits.dmi'
 	icon_state = "beatricedress"
 	icon_override = 'modular_ss220/clothing/icons/mob/suits.dmi'
 
 /obj/item/clothing/suit/black_idol_dress
-	name = "Чёрное платье"
+	name = "чёрное платье"
 	icon = 'modular_ss220/clothing/icons/object/suits.dmi'
 	icon_state = "black_idol_dress"
 	icon_override = 'modular_ss220/clothing/icons/mob/suits.dmi'
 
 
 /obj/item/clothing/suit/blue_bright_dress
-	name = "Светло синее платье"
+	name = "светло-синее платье"
 	icon = 'modular_ss220/clothing/icons/object/suits.dmi'
 	icon_state = "blue_bright_dress"
 	icon_override = 'modular_ss220/clothing/icons/mob/suits.dmi'
 
 /obj/item/clothing/suit/black_rose_dress
-	name = "Чёрное вечернее платье"
+	name = "чёрное вечернее платье"
 	icon = 'modular_ss220/clothing/icons/object/suits.dmi'
 	icon_state = "black_rose_dress"
 	icon_override = 'modular_ss220/clothing/icons/mob/suits.dmi'
