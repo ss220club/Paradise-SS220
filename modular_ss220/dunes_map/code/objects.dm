@@ -132,3 +132,21 @@
 	power_gen = 5000
 	max_power_output = 1
 	max_safe_output = 1
+
+
+//car wreck
+
+/obj/structure/decorative_structures/car_wreck
+	name = "\improper остов машины"
+	desc = "Заржавевший и выпотрошенный наземный транспорт, который активно использовался несколько веков назад."
+	icon = 'modular_ss220/dunes_map/icons/wrecks_1.dmi'
+	icon_state = "helper"
+	anchored = TRUE
+	layer = ABOVE_ALL_MOB_LAYER
+	max_integrity = 50
+
+/obj/structure/decorative_structures/car_wreck/Initialize(mapload)
+	. = ..()
+	var/list/car_types = list("coupe", "muscle", "sport", "van")
+	icon_state = "[pick(car_types)]-[rand(1,5)]"
+	AddComponent(/datum/component/largetransparency)
