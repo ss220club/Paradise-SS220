@@ -3,13 +3,12 @@
 	desc = "One man's garbage is another man's treasure."
 	icon = 'modular_ss220/dunes_map/icons/rubble.dmi'
 	icon_state = "base"
-	appearance_flags = PIXEL_SCALE
 	opacity = 1
 	density = TRUE
 	anchored = TRUE
 	max_integrity = 40
 
-	var/list/loot = list(/obj/item/cell,/obj/item/stack/material/iron,/obj/item/stack/material/rods)
+	var/list/loot = list(/obj/item/stock_parts/cell,/obj/item/stack/sheet/metal,/obj/item/stack/rods)
 	var/lootleft = 1
 	var/emptyprob = 95
 	var/is_rummaging = 0
@@ -23,10 +22,11 @@
 	. = ..()
 	update_icon()
 
-/obj/structure/rubble/on_update_icon()
+/obj/structure/rubble/update_icon(updates)
+	. = ..()
+	var/matrix/M
 	var/list/parts = list()
 	for(var/i = 1 to 7)
-		var/matrix/M = matrix()
 		var/image/I = image(icon,"rubble[rand(1,15)]")
 		if(prob(10))
 			var/atom/A = pick(loot)
@@ -38,7 +38,8 @@
 				I.color = "#54362e"
 		I.pixel_x = rand(-16,16)
 		I.pixel_y = rand(-16,16)
-		I.transform = M.Turn(rand(0,360))
+		M.Turn(rand(0,360))
+		I.transform = M
 		parts += I
 
 
@@ -59,66 +60,48 @@
 	else
 		to_chat(user, "<span class='warning'> Someone is already rummaging here!")
 
-
-/obj/structure/rubble/use_tool(obj/item/tool, mob/user, list/click_params)
+/obj/structure/rubble/tool_act(mob/living/user, obj/item/I, tool_type)
+	. = ..()
 	// Pickaxe - Clear rubble
-	if(istype(tool, /obj/item/pickaxe))
-		var/obj/item/pickaxe/pickaxe = tool
+	if (istype(tool_type, /obj/item/pickaxe))
 		user.visible_message(
-			"<span class='notice'> \The [user] starts clearing away \the [src] with \a [tool].",
-			"<span class='notice'> You start clearing away \the [src] with \the [tool]."
-			)
-		if (!user.do_skilled(pickaxe.digspeed, SKILL_HAULING, src) || !user.use_sanity_check(src, tool))
-			return TRUE
+			"<span class='notice'> \The [user] starts clearing away \the [src] with \a [tool_type].",
+			"<span class='notice'> You start clearing away \the [src] with \the [tool_type]."
+		)
 		if (lootleft && prob(1))
 			var/booty = pickweight(loot)
 			new booty(loc)
 		user.visible_message(
-			"<span class='notice'> \The [user] clears away \the [src] with \a [tool].",
-			"<span class='notice'> You clear away \the [src] with \the [tool]."
+			"<span class='notice'> \The [user] clears away \the [src] with \a [tool_type].",
+			"<span class='notice'> You clear away \the [src] with \the [tool_type]."
 		)
-		qdel_self()
+		qdel(src)
 		return TRUE
 
 	return ..()
 
 
-/obj/structure/rubble/on_death()
-	visible_message(span_warning("[src] breaks apart!"))
+
+
+
+/obj/structure/rubble/Destroy()
+	. = ..()
+	visible_message("<span class='warning'> \The [src] breaks apart!")
 	qdel(src)
 
 /obj/structure/rubble/house
-	loot = list(/obj/item/archaeological_find/bowl,
-	/obj/item/archaeological_find/remains,
-	/obj/item/archaeological_find/bowl/urn,
-	/obj/item/archaeological_find/cutlery,
-	/obj/item/archaeological_find/statuette,
-	/obj/item/archaeological_find/instrument,
-	/obj/item/archaeological_find/container,
-	/obj/item/archaeological_find/mask,
-	/obj/item/archaeological_find/coin,
-	/obj/item/archaeological_find,
-	/obj/item/archaeological_find/material = 5,
-	/obj/item/archaeological_find/material/exotic = 2,
-	/obj/item/archaeological_find/parts = 3
+	loot = list(
+
 	)
 
 /obj/structure/rubble/lab
 	emptyprob = 30
 	loot = list(
-	/obj/item/archaeological_find/statuette,
-	/obj/item/archaeological_find/instrument,
-	/obj/item/archaeological_find/mask,
-	/obj/item/archaeological_find,
-	/obj/item/archaeological_find/material = 10,
-	/obj/item/archaeological_find/material/exotic = 10,
-	/obj/item/archaeological_find/parts = 10
+
 	)
 
 /obj/structure/rubble/war
 	emptyprob = 95 //can't have piles upon piles of guns
-	loot = list(/obj/item/archaeological_find/knife,
-	/obj/item/archaeological_find/gun,
-	/obj/item/archaeological_find/laser,
-	/obj/item/archaeological_find/sword,
-	/obj/item/archaeological_find/katana)
+	loot = list(
+
+	)
