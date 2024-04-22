@@ -128,8 +128,7 @@
 /obj/item/clothing/head/helmet/space/deathsquad/beret/field
 	icon_state = "beret_centcom_officer"
 
-
-//event outfits
+// Event outfits
 /datum/outfit/scavenger
 	name = "scavenger"
 
@@ -143,9 +142,7 @@
 	backpack_contents = list(
 		/obj/item/storage/box/survival = 1,
 		/obj/item/flashlight = 1,
-		/obj/item/reagent_containers/food/drinks/bottle/random_drink = 1)
-
-
+		/obj/item/reagent_containers/drinks/bottle/random_drink = 1)
 
 /datum/outfit/scavenger/post_equip(mob/living/carbon/human/H, visualsOnly)
 	. = ..()
