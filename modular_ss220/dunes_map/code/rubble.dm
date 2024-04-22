@@ -1,13 +1,13 @@
 /obj/structure/rubble
 	name = "pile of rubble"
 	desc = "One man's garbage is another man's treasure."
-	icon = ''modular_ss220/dunes_map/icons/rubble.dmi'
+	icon = 'modular_ss220/dunes_map/icons/rubble.dmi'
 	icon_state = "base"
-	appearance_flags = DEFAULT_APPEARANCE_FLAGS | PIXEL_SCALE
+	appearance_flags = PIXEL_SCALE
 	opacity = 1
 	density = TRUE
 	anchored = TRUE
-	health_max = 40
+	max_integrity = 40
 
 	var/list/loot = list(/obj/item/cell,/obj/item/stack/material/iron,/obj/item/stack/material/rods)
 	var/lootleft = 1
@@ -24,9 +24,9 @@
 	update_icon()
 
 /obj/structure/rubble/on_update_icon()
-
 	var/list/parts = list()
 	for(var/i = 1 to 7)
+		var/matrix/M = matrix()
 		var/image/I = image(icon,"rubble[rand(1,15)]")
 		if(prob(10))
 			var/atom/A = pick(loot)
@@ -38,7 +38,7 @@
 				I.color = "#54362e"
 		I.pixel_x = rand(-16,16)
 		I.pixel_y = rand(-16,16)
-		I.transform = var/matrix/M.Turn(rand(0,360))
+		I.transform = M.Turn(rand(0,360))
 		parts += I
 
 
@@ -62,20 +62,20 @@
 
 /obj/structure/rubble/use_tool(obj/item/tool, mob/user, list/click_params)
 	// Pickaxe - Clear rubble
-	if (istype(tool, /obj/item/pickaxe))
+	if(istype(tool, /obj/item/pickaxe))
 		var/obj/item/pickaxe/pickaxe = tool
 		user.visible_message(
-			"<span class='notice'> \The [user] starts clearing away \the [src] with \a [tool]."),
-			"<span class='notice'> You start clearing away \the [src] with \the [tool].")
-		)
+			"<span class='notice'> \The [user] starts clearing away \the [src] with \a [tool].",
+			"<span class='notice'> You start clearing away \the [src] with \the [tool]."
+			)
 		if (!user.do_skilled(pickaxe.digspeed, SKILL_HAULING, src) || !user.use_sanity_check(src, tool))
 			return TRUE
 		if (lootleft && prob(1))
 			var/booty = pickweight(loot)
 			new booty(loc)
 		user.visible_message(
-			"<span class='notice'> \The [user] clears away \the [src] with \a [tool]."),
-			"<span class='notice'> You clear away \the [src] with \the [tool].")
+			"<span class='notice'> \The [user] clears away \the [src] with \a [tool].",
+			"<span class='notice'> You clear away \the [src] with \the [tool]."
 		)
 		qdel_self()
 		return TRUE
@@ -84,7 +84,7 @@
 
 
 /obj/structure/rubble/on_death()
-	visible_message(SPAN_WARNING("\The [src] breaks apart!"))
+	visible_message(span_warning("[src] breaks apart!"))
 	qdel(src)
 
 /obj/structure/rubble/house
