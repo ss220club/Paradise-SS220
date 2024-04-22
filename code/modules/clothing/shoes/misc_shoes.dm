@@ -204,6 +204,8 @@
 	can_cut_open = 1
 	icon_state = "workboots"
 
+	isolation = FB_ISOLATION_MEDIUM
+
 /obj/item/clothing/shoes/workboots/mining
 	name = "mining boots"
 	desc = "Steel-toed mining boots for mining in hazardous environments. Very good at keeping toes uncrushed."
@@ -224,6 +226,8 @@
 	min_cold_protection_temperature = SHOES_MIN_TEMP_PROTECT
 	heat_protection = FEET|LEGS
 	max_heat_protection_temperature = SHOES_MAX_TEMP_PROTECT
+
+	isolation = FB_ISOLATION_MEDIUM
 
 /obj/item/clothing/shoes/cult
 	name = "boots"

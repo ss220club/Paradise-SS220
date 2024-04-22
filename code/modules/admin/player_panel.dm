@@ -441,6 +441,15 @@
 			dat += check_role_table("Blood Brothers", SSticker.mode.blood_brothers)
 		// SS220 EDIT - END
 
+		// SS220 LAZARUS EDIT - START
+		if(SSticker.mode.ling_infestors.len)
+			var/list/datum/mind/active_infestors = list()
+			for(var/mob/living/simple_animal/changeling_primalis/I in SSticker.mode.ling_infestors)
+				if(I.mind)
+					active_infestors.Add(I.mind)
+			dat += check_role_table("Changeling Primalis Infestors", active_infestors)
+		// SS220 LAZARUS EDIT - END
+
 		if(SSticker.mode.implanted.len)
 			dat += check_role_table("Mindslaves", SSticker.mode.implanted)
 

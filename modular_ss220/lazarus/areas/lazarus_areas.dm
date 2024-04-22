@@ -21,6 +21,8 @@
 	min_ambience_cooldown = 70 SECONDS
 	max_ambience_cooldown = 220 SECONDS
 
+	temperature = AREA_TEMPERATURE_OUTSIDE
+
 /area/lazarus/outdoors/rod
 	icon_state = "awaycontent1"
 	name = "Окрестности аванпост ''Род''"
@@ -54,6 +56,8 @@
 	name = "Хижина в лесу"
 	sound_environment = SOUND_AREA_WOODFLOOR
 
+	temperature = AREA_TEMPERATURE_INSIDE
+
 /area/lazarus/cabin/crusader
 	name = "Хижина крестоносца"
 
@@ -68,6 +72,8 @@
 	name = "Геотермальная электростанция"
 	icon_state = "engine"
 	sound_environment = SOUND_AREA_STANDARD_STATION
+
+	temperature = AREA_TEMPERATURE_INSIDE
 
 /area/lazarus/geotherm/rod
 	name = "Геотермальная электростанция (Род)"
@@ -90,6 +96,8 @@
 	name = "Аванпост комплекса ''Лазарь''"
 	icon_state = "crew_quarters"
 	sound_environment = SOUND_AREA_STANDARD_STATION
+
+	temperature = AREA_TEMPERATURE_INSIDE
 
 //---ROD---//
 

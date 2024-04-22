@@ -377,6 +377,8 @@
 
 	sprite_sheets = list("Vox" = 'icons/mob/clothing/species/vox/suit.dmi')
 
+	isolation = FB_ISOLATION_HIGH
+
 /obj/item/clothing/head/hooded/winterhood
 	name = "winter hood"
 	desc = "A hood attached to a heavy winter jacket."
@@ -388,6 +390,8 @@
 	flags_inv = HIDEEARS
 
 	sprite_sheets = list("Vox" = 'icons/mob/clothing/species/vox/head.dmi')
+
+	isolation = FB_ISOLATION_MEDIUM
 
 /obj/item/clothing/suit/pimpcoat
 	name = "expensive coat"
@@ -1050,6 +1054,8 @@
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
 	heat_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	allowed = list(/obj/item/flashlight, /obj/item/gun/energy, /obj/item/gun/projectile, /obj/item/ammo_box)
+
+	isolation = FB_ISOLATION_HIGH
 
 /obj/item/clothing/suit/sovietcoat/officer
 	name = "\improper Soviet officer's greatcoat"

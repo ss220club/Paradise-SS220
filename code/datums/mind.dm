@@ -550,6 +550,9 @@
 		sections["nuclear"] = memory_edit_nuclear(H)
 		/** Abductors **/
 		sections["abductor"] = memory_edit_abductor(H)
+		// SS220 LAZARUS EDIT - START
+		sections["changeling_primalis"] = memory_edit_changeling_primalis(H)
+		// SS220 LAZARUS EDIT - START
 	sections["eventmisc"] = memory_edit_eventmisc(H)
 	/** TRAITOR ***/
 	sections["traitor"] = memory_edit_traitor()

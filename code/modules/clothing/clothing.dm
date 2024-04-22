@@ -52,7 +52,7 @@
 /obj/item/clothing/examine(mob/user)
 	. = ..()
 	if(isolation != 0)
-		. += "<span class='notice'>Защищает от холода на [isolation] пунктов.</span>"
+		. += "<span class='notice'>Защищает от холода на [isolation] единиц(ы).</span>"
 
 /obj/item/clothing/proc/weldingvisortoggle(mob/user) //proc to toggle welding visors on helmets, masks, goggles, etc.
 	if(!can_use(user))
@@ -273,6 +273,8 @@
 		"Drask" = 'icons/mob/clothing/species/drask/gloves.dmi'
 		)
 
+	isolation = FB_ISOLATION_LOW
+
 // Called just before an attack_hand(), in mob/UnarmedAttack()
 /obj/item/clothing/gloves/proc/Touch(atom/A, proximity)
 	return // return TRUE to cancel attack_hand()
@@ -372,6 +374,8 @@
 	var/see_in_dark = 0
 	var/lighting_alpha
 
+	isolation = FB_ISOLATION_LOW
+
 /obj/item/clothing/head/update_icon_state()
 	if(..())
 		item_state = "[replacetext("[item_state]", "_up", "")][up ? "_up" : ""]"
@@ -385,6 +389,8 @@
 	var/adjusted_flags = null
 	strip_delay = 40
 	put_on_delay = 40
+
+	isolation = FB_ISOLATION_LOW
 
 //Proc that moves gas/breath masks out of the way
 /obj/item/clothing/mask/proc/adjustmask(mob/user)
@@ -483,6 +489,8 @@
 		"Vox" = 'icons/mob/clothing/species/vox/shoes.dmi',
 		"Drask" = 'icons/mob/clothing/species/drask/shoes.dmi'
 		)
+
+	isolation = FB_ISOLATION_LOW
 
 /obj/item/clothing/shoes/equipped(mob/user, slot)
 	. = ..()
@@ -601,6 +609,8 @@
 	var/list/hide_tail_by_species = null
 	/// Maximum weight class of an item in the suit storage slot.
 	var/max_suit_w = WEIGHT_CLASS_BULKY
+
+	isolation = FB_ISOLATION_MEDIUM
 
 /obj/item/clothing/suit/Initialize(mapload)
 	. = ..()
@@ -770,6 +780,8 @@
 	var/displays_id = TRUE
 	var/rolled_down = FALSE
 	var/basecolor
+
+	isolation = FB_ISOLATION_LOW
 
 /obj/item/clothing/under/rank/Initialize(mapload)
 	. = ..()

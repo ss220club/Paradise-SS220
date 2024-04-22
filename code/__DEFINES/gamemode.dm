@@ -55,6 +55,7 @@
 #define SPECIAL_ROLE_XENOMORPH_SENTINEL "Xenomorph Sentinel"
 #define SPECIAL_ROLE_XENOMORPH_LARVA "Xenomorph Larva"
 #define SPECIAL_ROLE_EVENTMISC "Event Role"
+#define SPECIAL_ROLE_CHANGELING_PRIMALIS "Changeling Primalis"
 
 // Constants used by code which checks the status of nuclear blasts during a
 // round, regardless of original game mode, e.g. setting the ending cinematic.
