@@ -3,10 +3,11 @@
 	desc = "One man's garbage is another man's treasure."
 	icon = 'modular_ss220/dunes_map/icons/rubble.dmi'
 	icon_state = "base"
-	opacity = 1
-	density = TRUE
+	opacity = 0
+	density = FALSE
 	anchored = TRUE
 	max_integrity = 40
+	layer = TURF_DECAL_LAYER
 
 	var/list/loot = list(/obj/item/stock_parts/cell,/obj/item/stack/sheet/metal,/obj/item/stack/rods)
 	var/lootleft = 1
@@ -15,7 +16,7 @@
 
 /obj/structure/rubble/New()
 	if(prob(emptyprob))
-		lootleft = 0
+		lootleft = 1
 	..()
 
 /obj/structure/rubble/Initialize()
@@ -24,11 +25,11 @@
 
 /obj/structure/rubble/update_icon(updates)
 	. = ..()
-	var/matrix/M
-	var/list/parts = list()
+	clear_smooth_overlays()
+	var/matrix/M = matrix()
 	for(var/i = 1 to 7)
 		var/image/I = image(icon,"rubble[rand(1,15)]")
-		if(prob(10))
+		if(prob(40))
 			var/atom/A = pick(loot)
 			if(initial(A.icon) && initial(A.icon_state))
 				I.icon = initial(A.icon)
@@ -36,26 +37,35 @@
 				I.color = initial(A.color)
 			if(!lootleft)
 				I.color = "#54362e"
+		I.appearance_flags = PLANE_MASTER | PIXEL_SCALE
 		I.pixel_x = rand(-16,16)
 		I.pixel_y = rand(-16,16)
 		M.Turn(rand(0,360))
 		I.transform = M
-		parts += I
+		overlays += I
+	if(lootleft)
+		add_overlay(icon, "twinkle[rand(1,3)]")
+	update_overlays()
 
 
 /obj/structure/rubble/attack_hand(mob/user)
 	if(!is_rummaging)
-		if(!lootleft)
-			to_chat(user, "<span class='warning'> There's nothing left in this one but unusable garbage...")
-			return
 		visible_message("[user] starts rummaging through \the [src].")
 		is_rummaging = 1
-		if(do_after(user, 3 SECONDS, src))
-			var/obj/item/booty = pickweight(loot)
-			booty = new booty(loc)
-			lootleft--
-			update_icon()
-			to_chat(user, "<span class='notice'> You find \a [booty] and pull it carefully out of \the [src].")
+		if(!do_after(user, 3 SECONDS, target = src))
+			is_rummaging = 0
+			return
+
+		if(!lootleft)
+			to_chat(user, "<span class='warning'> There's nothing left in this one but unusable garbage...")
+			is_rummaging = 0
+			return
+
+		var/obj/item/booty = pickweight(loot)
+		booty = new booty(loc)
+		lootleft--
+		update_icon()
+		to_chat(user, "<span class='notice'> You find \a [booty] and pull it carefully out of \the [src].")
 		is_rummaging = 0
 	else
 		to_chat(user, "<span class='warning'> Someone is already rummaging here!")
@@ -91,6 +101,14 @@
 
 /obj/structure/rubble/house
 	loot = list(
+		/obj/item/food/snacks/chips = 6,
+		/obj/item/kitchen/knife,
+		/obj/item/reagent_containers/drinks/cans/starkist,
+		/obj/item/reagent_containers/drinks/cans/space_up,
+		/obj/item/stack/sheet/wood = 3,
+		/obj/item/reagent_containers/glass/beaker/large,
+		/obj/item/reagent_containers/glass/beaker/waterbottle/large
+
 
 	)
 
