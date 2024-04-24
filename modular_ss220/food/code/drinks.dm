@@ -590,6 +590,6 @@
 	name = "Restart"
 	id = "restart"
 	result = "restart"
-	required_reagents = list("uplink" = 1, "capulettium_plus" = 1, "synthanol" = 1)
+	required_reagents = list("uplink" = 1, "rewriter" = 1, "synthanol" = 1)
 	result_amount = 3
 	mix_sound = 'sound/goonstation/misc/drinkfizz.ogg'
