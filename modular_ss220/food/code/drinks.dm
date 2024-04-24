@@ -537,31 +537,30 @@
 	color = "#0026fc"
 	reagent_state = LIQUID
 	process_flags = SYNTHETIC
-	alcohol_perc = 1.5
+	alcohol_perc = 2.5
 	drink_icon = "restart"
 	drinking_glass_icon = 'modular_ss220/food/icons/drinks.dmi'
 	drink_name = "Перезагрузка"
 	drink_desc = "Иногда нужно просто начать заново."
 	taste_description = "перезагрузка системы"
+	goal_difficulty = REAGENT_GOAL_NORMAL
 
 /datum/reagent/consumable/ethanol/synthanol/restart/on_mob_life(mob/living/carbon/human/M)
 	var/update_flags = STATUS_UPDATE_NONE
 	switch(current_cycle)
 		if(5 to 13)
-			M.Jitter(40 SECONDS)
-			if(prob(10))
+			M.Jitter(200 SECONDS)
+			M.SetSlur(200 SECONDS)
+			if(prob(20))
 				M.emote(pick("twitch","giggle"))
-			if(prob(5))
-				to_chat(M, span_notice("Rebooting.."))
+			if(prob(10))
+				M.say("Перезагрузка...")
 		if(14)
-			playsound(get_turf(M),'modular_ss220/food/sound/restart-shutdown.ogg', 200, 1)
-		if(15 to 23)
-			M.Weaken(10 SECONDS)
+			playsound(get_turf(M),'modular_ss220/food/sound/restart-shutdown.ogg', 100)
+		if(15 to 24)
 			update_flags |= M.adjustBruteLoss(-0.3, FALSE, robotic = TRUE)
 			update_flags |= M.adjustFireLoss(-0.3, FALSE, robotic = TRUE)
-			M.SetSleeping(20 SECONDS)
-		if(24)
-			playsound(get_turf(M), 'modular_ss220/food/sound/restart-wakeup.ogg', 200, 1)
+			fakedeath(M)
 		if(25)
 			M.SetStunned(0)
 			M.SetWeakened(0)
@@ -569,10 +568,20 @@
 			M.SetSleeping(0)
 			M.SetDrowsy(0)
 			M.SetSlur(0)
-			M.SetDrunk(0)
+			M.AdjustDrunk(-800 SECONDS)
 			M.SetJitter(0)
 			M.SetDizzy(0)
 			M.SetDruggy(0)
+			if(HAS_TRAIT(M, TRAIT_FAKEDEATH))
+				fakerevive(M)
+				if(prob(90))
+					playsound(M, 'modular_ss220/food/sound/restart-wakeup.ogg', 100)
+				else
+					playsound(M, 'modular_ss220/food/sound/restart-wakeup-ERROR.ogg', 15) // TOO loud
+					M.adjustFireLoss(5)
+					M.emote("scream")
+			M.resting = FALSE
+			M.stand_up() // wakey wakey
 			var/restart_amount = clamp(M.reagents.get_reagent_amount("restart")-0.4, 0, 330)
 			M.reagents.remove_reagent("restart",restart_amount)
 	return ..() | update_flags
@@ -581,6 +590,6 @@
 	name = "Restart"
 	id = "restart"
 	result = "restart"
-	required_reagents = list("trinary" = 1, "codelibre" = 1, "rewriter" = 1, "irishempbomb" = 1, "synthanol" = 1  )
-	result_amount = 5
+	required_reagents = list("uplink" = 1, "capulettium_plus" = 1, "synthanol" = 1)
+	result_amount = 3
 	mix_sound = 'sound/goonstation/misc/drinkfizz.ogg'
