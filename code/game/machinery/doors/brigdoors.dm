@@ -166,7 +166,7 @@
 		return
 	if(timing)
 		if(timeleft() <= 0)
-			Radio.autosay("Время заключения истекло. Освобождение заключенного.", name, "Security", list(z))
+			Radio.autosay("Время заключения истекло. Освобождение заключенного.", name, "Security")
 			occupant = CELL_NONE
 			timer_end() // open doors, reset timer, clear status screen
 			timing = FALSE
@@ -385,7 +385,7 @@
 					return FALSE
 				releasetime = world.timeofday + timetoset
 				var/resettext = isobserver(usr) ? "по причине: '[reset_reason]'" : "офицером [usr.name], по причине: '[reset_reason]'"
-				Radio.autosay("Таймер заключенного [occupant] был сброшен [resettext].", name, "Security", list(z))
+				Radio.autosay("Таймер заключенного [occupant] был сброшен [resettext].", name, "Security")
 				notify_prisoner("Ваш таймер был сброшен по причине: '[reset_reason]'.")
 				var/datum/data/record/R = find_security_record("name", occupant)
 				if(istype(R))
@@ -396,7 +396,7 @@
 			if(timing)
 				timer_end()
 				var/stoptext = isobserver(usr) ? "консолью управления камерами." : "офицером [usr.name]."
-				Radio.autosay("Таймер остановлен вручную [stoptext]", name, "Security", list(z))
+				Radio.autosay("Таймер остановлен вручную [stoptext]", name, "Security")
 			else
 				. = FALSE
 		if("flash")

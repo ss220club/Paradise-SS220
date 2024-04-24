@@ -61,7 +61,7 @@
 		var/obj/machinery/door_timer/T = locate(ref)
 		if(T)
 			T.timer_end()
-			T.Radio.autosay("Таймер остановлен вручную с консоли управления камерами.", T.name, "Security", list(z))
+			T.Radio.autosay("Таймер остановлен вручную с консоли управления камерами.", T.name, "Security")
 		return TRUE
 
 	return FALSE

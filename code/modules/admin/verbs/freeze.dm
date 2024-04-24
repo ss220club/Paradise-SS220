@@ -93,12 +93,12 @@ GLOBAL_LIST_EMPTY(frozen_atom_list) // A list of admin-frozen atoms.
 /obj/machinery/atmospherics/supermatter_crystal/admin_Freeze(client/admin)
 	var/obj/effect/overlay/adminoverlay/freeze_overlay = new
 	if(processes)
-		radio.autosay("Внимание: Неизвестное вмешательство заморозило процесс разрушения вокруг кристалла. Оно не развивается в местном временном пространстве.", name, "Engineering", list(z))
+		radio.autosay("Внимание: Неизвестное вмешательство заморозило процесс разрушения вокруг кристалла. Оно не развивается в местном временном пространстве.", name, "Engineering")
 		GLOB.frozen_atom_list += src
 		processes = FALSE
 		add_overlay(freeze_overlay)
 	else
-		radio.autosay("Внимание: Неизвестное воздействие на кристалл прекращено. Время вокруг кристалла вернулось в привычное течение.", name, "Engineering", list(z))
+		radio.autosay("Внимание: Неизвестное воздействие на кристалл прекращено. Время вокруг кристалла вернулось в привычное течение.", name, "Engineering")
 		GLOB.frozen_atom_list -= src
 		processes = TRUE
 		cut_overlay(freeze_overlay)

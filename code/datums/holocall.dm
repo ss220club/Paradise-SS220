@@ -34,7 +34,7 @@
 			LAZYADD(H.holo_calls, src)
 			H.atom_say("Оповещение с голопада [area]: Входящий звонок от [caller]!")
 
-	if(!dialed_holopads.len)
+	if(!length(dialed_holopads))
 		calling_holopad.atom_say("Соединение не установлено.")
 		qdel(src)
 		return
@@ -105,7 +105,7 @@
 
 	LAZYREMOVE(H.holo_calls, src)
 	dialed_holopads -= H
-	if(!dialed_holopads.len)
+	if(!length(dialed_holopads))
 		if(graceful)
 			calling_holopad.atom_say("Вызов завершен.")
 		qdel(src)

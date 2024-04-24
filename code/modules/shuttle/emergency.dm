@@ -54,7 +54,7 @@
 			return
 
 		var/list/cardaccess = W:access
-		if(!istype(cardaccess, /list) || !cardaccess.len) //no access
+		if(!istype(cardaccess, /list) || !length(cardaccess)) //no access
 			to_chat(user, "The access level of [W:registered_name]\'s card is not high enough. ")
 			return
 
@@ -74,10 +74,10 @@
 			if("Authorize")
 				if(!authorized.Find(W:registered_name))
 					authorized += W:registered_name
-					if(auth_need - authorized.len > 0)
+					if(auth_need - length(authorized) > 0)
 						message_admins("[key_name_admin(user)] has authorized early shuttle launch.")
 						log_game("[key_name(user)] has authorized early shuttle launch in ([x], [y], [z]).")
-						GLOB.minor_announcement.Announce("[auth_need - authorized.len] авторизаций(-я) необходимо для досрочного запуска шаттла.")
+						GLOB.minor_announcement.Announce("[auth_need - length(authorized)] авторизаций(-я) необходимо для досрочного запуска шаттла.")
 					else
 						message_admins("[key_name_admin(user)] has launched the emergency shuttle [seconds] seconds before launch.")
 						log_game("[key_name(user)] has launched the emergency shuttle in ([x], [y], [z]) [seconds] seconds before launch.")
@@ -86,10 +86,10 @@
 
 			if("Repeal")
 				if(authorized.Remove(W:registered_name))
-					GLOB.minor_announcement.Announce("[auth_need - authorized.len] авторизаций(-я) необходимо для досрочного запуска шаттла.")
+					GLOB.minor_announcement.Announce("[auth_need - length(authorized)] авторизаций(-я) необходимо для досрочного запуска шаттла.")
 
 			if("Abort")
-				if(authorized.len)
+				if(length(authorized))
 					GLOB.minor_announcement.Announce("Все авторизации на досрочный запуск шаттла были отозваны.")
 					authorized.Cut()
 
@@ -341,7 +341,7 @@
 
 	// The emergency shuttle doesn't work like others so this
 	// ripple check is slightly different
-	if(!ripples.len && (time_left <= SHUTTLE_RIPPLE_TIME) && ((mode == SHUTTLE_CALL) || (mode == SHUTTLE_ESCAPE)))
+	if(!length(ripples) && (time_left <= SHUTTLE_RIPPLE_TIME) && ((mode == SHUTTLE_CALL) || (mode == SHUTTLE_ESCAPE)))
 		var/destination
 		if(mode == SHUTTLE_CALL)
 			destination = SSshuttle.getDock("emergency_home")

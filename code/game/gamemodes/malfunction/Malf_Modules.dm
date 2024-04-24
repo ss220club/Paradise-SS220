@@ -464,14 +464,15 @@
 
 	user.playsound_local(user, "sparks", 50, FALSE, use_reverb = FALSE)
 	adjust_uses(-1, user)
-	target.audible_message("<span class='italics'>Вы слышите громкое электрическое жужжание из [target]!</span>")
+	target.audible_message("<span class='danger'>Вы слышите громкое электрическое жужжание из [target]!</span>")
+	playsound(target, 'sound/goonstation/misc/fuse.ogg', 50, FALSE, use_reverb = FALSE)
 	addtimer(CALLBACK(src, PROC_REF(detonate_machine), target), 5 SECONDS) //kaboom!
 	to_chat(user, "<span class='warning'>Перегружаем платы машины...</span>")
 	return TRUE
 
 /datum/spell/ai_spell/ranged/overload_machine/proc/detonate_machine(obj/machinery/M)
 	if(M && !QDELETED(M))
-		explosion(get_turf(M), 0, 3, 5, 0)
+		explosion(get_turf(M), 0, 2, 3, 0)
 		if(M) //to check if the explosion killed it before we try to delete it
 			qdel(M)
 
@@ -850,12 +851,6 @@
 	selection_activated_message = "<span class='notice'>Вызов процесса 0FFFFFFF в логике ЛКП, ожидается ответ пользователя.</span>"
 	selection_deactivated_message = "<span class='notice'>Логика ЛКП сбрасывается...</span>"
 	var/is_active = FALSE
-
-/datum/spell/ai_spell/ranged/repair_cyborg/create_new_targeting()
-	var/datum/spell_targeting/click/T = new
-	T.allowed_type = /mob/living/silicon/robot
-	T.try_auto_target = FALSE
-	return T
 
 /datum/spell/ai_spell/ranged/repair_cyborg/cast(list/targets, mob/user)
 	var/mob/living/silicon/robot/robot_target = targets[1]

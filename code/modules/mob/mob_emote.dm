@@ -134,7 +134,8 @@
 	var/mob/living/L = user
 
 	if(IS_HORIZONTAL(L))
-		message = "шлепается и метается по полу."
+		var/turf = get_turf(L)
+		message = "Шлепается и метается [isspaceturf(turf) ? "в космосе" : "по полу"]."
 		return ..()
 	else if(params)
 		message_param = "делает кувырок в направлении к %t."
@@ -166,10 +167,10 @@
 							"<span class='warning'>As you flip your hat falls off!</span>")
 
 	if(prob(5) && ishuman(user))
-		message = "пытается сделать кувырок и шлёпается на пол!"
-		sleep(0.3 SECONDS)
+		var/turf = get_turf(L)
+		message = "пытается сделать кувырок и [isspaceturf(turf) ? "теряет баланс" : "шлёпается на пол"]!"
 		if(istype(L))
-			L.Weaken(4 SECONDS)
+			addtimer(CALLBACK(L, TYPE_PROC_REF(/mob/living, Weaken), 4 SECONDS), 0.3 SECONDS)
 		return ..()
 
 	. = ..()

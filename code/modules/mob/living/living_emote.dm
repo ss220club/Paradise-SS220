@@ -11,7 +11,6 @@
 	. = ..()
 	if(user.mind?.miming)
 		return FALSE  // shh
-	return .
 
 /datum/emote/living/blush
 	key = "blush"
@@ -208,7 +207,7 @@
 				message_param = "пытается указать ногой на %t."
 			else
 				// nugget
-				message_param = "<span class='userdanger>ударяется головой о землю</span>, пытаясь двигаться в направлении %t."
+				message_param = "<span class='userdanger'>ударяется головой о землю</span>, пытаясь двигаться в направлении %t."
 
 	return ..()
 
