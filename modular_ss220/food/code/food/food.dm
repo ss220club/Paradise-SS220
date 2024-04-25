@@ -1066,3 +1066,21 @@
 		/obj/item/food/snacks/grown/berries,
 	)
 	result = /obj/item/food/snacks/plov
+
+/obj/item/food/snacks/mre
+	icon = 'modular_ss220/food/icons/food.dmi'
+
+/obj/item/food/snacks/mre/steak
+	name = "упаковка стейка"
+	desc = "наивкуснейший стейк прямиком из НТ!"
+	trash = /obj/item/trash/mre
+	bitesize = 1
+	icon_state = "mre_steak"
+	filling_color = "#246557"
+	list_reagents = list("nutriment" = 2, "vitamin" = 3)
+	tastes = list("говядина" = 1, "пюре" =1)
+
+/obj/item/trash/mre
+	name = "упаковка из под сухпайка"
+	icon = 'modular_ss220/food/icons/trash.dmi'
+	icon_state = "mre_trash"
