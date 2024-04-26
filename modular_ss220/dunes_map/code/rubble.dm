@@ -1,8 +1,8 @@
 /obj/structure/rubble
 	name = "pile of rubble"
 	desc = "One man's garbage is another man's treasure."
-	icon = 'modular_ss220/dunes_map/icons/rubble.dmi'
-	icon_state = "base"
+	icon = 'modular_ss220/dunes_map/icons/loot_piles.dmi'
+	icon_state = "randompile"
 	opacity = 0
 	density = FALSE
 	anchored = TRUE
@@ -10,8 +10,9 @@
 	layer = TURF_DECAL_LAYER
 
 	var/list/loot = list(/obj/item/stock_parts/cell,/obj/item/stack/sheet/metal,/obj/item/stack/rods)
-	var/lootleft = 1
-	var/emptyprob = 95
+	var/list/trash_types
+	var/lootleft = 0
+	var/emptyprob = 25
 	var/is_rummaging = 0
 
 /obj/structure/rubble/New()
@@ -21,31 +22,8 @@
 
 /obj/structure/rubble/Initialize()
 	. = ..()
+	icon_state = "[pick(trash_types)]"
 	update_icon()
-
-/obj/structure/rubble/update_icon(updates)
-	. = ..()
-	clear_smooth_overlays()
-	var/matrix/M = matrix()
-	for(var/i = 1 to 7)
-		var/image/I = image(icon,"rubble[rand(1,15)]")
-		if(prob(40))
-			var/atom/A = pick(loot)
-			if(initial(A.icon) && initial(A.icon_state))
-				I.icon = initial(A.icon)
-				I.icon_state = initial(A.icon_state)
-				I.color = initial(A.color)
-			if(!lootleft)
-				I.color = "#54362e"
-		I.appearance_flags = PLANE_MASTER | PIXEL_SCALE
-		I.pixel_x = rand(-16,16)
-		I.pixel_y = rand(-16,16)
-		M.Turn(rand(0,360))
-		I.transform = M
-		overlays += I
-	if(lootleft)
-		add_overlay(icon, "twinkle[rand(1,3)]")
-	update_overlays()
 
 
 /obj/structure/rubble/attack_hand(mob/user)
@@ -69,6 +47,7 @@
 		is_rummaging = 0
 	else
 		to_chat(user, "<span class='warning'> Someone is already rummaging here!")
+
 
 /obj/structure/rubble/tool_act(mob/living/user, obj/item/I, tool_type)
 	. = ..()
@@ -100,6 +79,7 @@
 	qdel(src)
 
 /obj/structure/rubble/house
+	trash_types = list("junk_pile2", "junk_pile4","trash_pile1", "trash_pile2")
 	loot = list(
 		/obj/item/food/snacks/chips = 6,
 		/obj/item/kitchen/knife,
@@ -113,13 +93,15 @@
 	)
 
 /obj/structure/rubble/lab
+	trash_types = list("junk_pile4", "technical_pile1", "technical_pile2", "technical_pile3")
 	emptyprob = 30
 	loot = list(
 
 	)
 
 /obj/structure/rubble/war
-	emptyprob = 95 //can't have piles upon piles of guns
+	trash_types = list("boxfort", "junk_pile3", "junk_pile5",  "junk_pile1")
+	emptyprob = 40 //can't have piles upon piles of guns
 	loot = list(
 
 	)
