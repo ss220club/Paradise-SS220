@@ -36,6 +36,3 @@
 
 /area/mine/outpost/vehicle
 	name = "Оверлорд - гараж"
-
-/area/mine/outpost/
-	name = "Аванпост - авангард НТ"
