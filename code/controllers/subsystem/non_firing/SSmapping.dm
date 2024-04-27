@@ -51,7 +51,7 @@ SUBSYSTEM_DEF(mapping)
 	preloadTemplates()
 	preloadTemplates(path = "code/modules/unit_tests/atmos/")
 
-//-----MASSIVE DISABLED SECTION FOR EVENT PURPOSE-----//
+//-----Ивентовые отключалки-----//
 
 	// Load the station
 	loadStation()
