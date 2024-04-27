@@ -9,7 +9,7 @@
 	max_integrity = 40
 	layer = TURF_DECAL_LAYER
 
-	var/list/loot = list(/obj/item/stock_parts/cell,/obj/item/stack/sheet/metal,/obj/item/stack/rods)
+	var/list/loot
 	var/list/trash_types
 	var/lootleft = 0
 	var/emptyprob = 25
@@ -77,6 +77,13 @@
 	. = ..()
 	visible_message("<span class='warning'> \The [src] breaks apart!")
 	qdel(src)
+
+/obj/structure/rubble/outside
+	trash_types = list("technical_pile1", "technical_pile2", "junk_pile5", "junk_pile1", "boxfort", "trash_pile2")
+	loot = list(
+		/obj/item/stock_parts/cell,
+		/obj/item/stack/sheet/metal,
+		/obj/item/stack/rods)
 
 /obj/structure/rubble/house
 	trash_types = list("junk_pile2", "junk_pile4","trash_pile1", "trash_pile2")
