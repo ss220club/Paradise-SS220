@@ -68,3 +68,10 @@
 	icon = 'modular_ss220/clothing/icons/object/masks.dmi'
 	icon_override = 'modular_ss220/clothing/icons/mob/mask.dmi'
 	icon_state = "breathscarf"
+
+/obj/item/clothing/mask/breath/shemag_desert
+	name = "шемах с дыхательной канюлей"
+	desc = "Удобный хлопковый платок, легко собирающийся в повязку на лицо. С внутренней стороны подшита адаптивная гофрированная трубочка для подсоединения баллонов."
+	icon = 'modular_ss220/clothing/icons/object/masks.dmi'
+	icon_state = "shemag_desert"
+	icon_override = 'modular_ss220/clothing/icons/mob/mask.dmi'

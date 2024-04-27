@@ -506,3 +506,44 @@
 /obj/item/clothing/under/towel_short_alt/brown
 	name = "коричневое махровое маленькое полотенце"
 	color = "#DEB887"
+
+/obj/item/clothing/under/raider
+	name = "броня рейдера-мясника"
+	desc = "Лохмотья, укрепленные стальными пластинами и шипами."
+	icon = 'modular_ss220/clothing/icons/object/under.dmi'
+	icon_state = "raider_butcher"
+	item_color = "raider_butcher"
+	icon_override= 'modular_ss220/clothing/icons/mob/under.dmi'
+	sprite_sheets = list(
+		"Human" = 'modular_ss220/clothing/icons/mob/under.dmi',
+	)
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|FEET
+	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
+	heat_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+	armor = list(MELEE = 25, BULLET = 15, LASER = 15, ENERGY = 5, BOMB = 20, RAD = 0, FIRE = 50, ACID = 50)
+
+/obj/item/clothing/under/raider/raider_fem
+	name = "броня рейдера"
+	desc = "Кожаная жилетка, обшитая пластинами железа и пластали."
+	icon_state = "fem_raider"
+	item_color = "fem_raider"
+	sprite_sheets = list(
+		"Human" = 'modular_ss220/clothing/icons/mob/under.dmi',
+	)
+
+/obj/item/clothing/under/desert_suit
+	name = "дистикомб"
+	desc = "Плотный обтягивающий комбенизон. Тонкая, многослойная ткань предназначена для рассеяния тепла и фильтрации выделяющейся из тела воды."
+	icon = 'modular_ss220/clothing/icons/object/under.dmi'
+	icon_state = "exp_suit_desert"
+	item_color = "exp_suit_desert"
+	icon_override = 'modular_ss220/clothing/icons/mob/under.dmi'
+	sprite_sheets = list(
+		"Human" = 'modular_ss220/clothing/icons/mob/under.dmi',
+	)
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|FEET
+	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
+	heat_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+	armor = list(MELEE = 20, BULLET = 10, LASER = 10, ENERGY = 5, BOMB = 20, RAD = 0, FIRE = 50, ACID = 50)
