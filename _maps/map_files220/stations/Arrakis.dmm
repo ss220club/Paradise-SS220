@@ -7522,11 +7522,6 @@
 "auk" = (
 /turf/simulated/wall/indestructible/sandstone,
 /area/awaymission/arrakis/cave)
-"aum" = (
-/turf/simulated/floor/vines{
-	temperature = 365
-	},
-/area/awaymission/arrakis/outside/outside7)
 "aun" = (
 /obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/plasteel{
@@ -8872,6 +8867,9 @@
 	icon_state = "neutral"
 	},
 /area/awaymission/arrakis/bunker/hallway)
+"ayF" = (
+/turf/simulated/wall/indestructible/rock/mineral/dune_rock,
+/area/awaymission/arrakis/outside/outside2)
 "ayG" = (
 /obj/structure/table,
 /obj/item/roller{
@@ -9198,10 +9196,6 @@
 	icon_state = "whiteblue"
 	},
 /area/awaymission/arrakis/bunker/medbay)
-"azx" = (
-/obj/effect/mapping_helpers/light,
-/turf/simulated/floor/indestructible/dune_sand/smooth,
-/area/awaymission/arrakis/cave)
 "azz" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
@@ -14848,6 +14842,10 @@
 	icon_state = "neutral"
 	},
 /area/awaymission/arrakis/bunker/dorms)
+"aQv" = (
+/obj/effect/decal/cleanable/flour,
+/turf/simulated/floor/indestructible/dune_sand,
+/area/awaymission/arrakis/outside/outside3)
 "aQw" = (
 /obj/effect/decal/cleanable/dust,
 /obj/structure/closet/secure_closet/personal/cabinet,
@@ -15874,10 +15872,6 @@
 	icon_state = "dark"
 	},
 /area/awaymission/arrakis/bunker/rnd)
-"aTD" = (
-/obj/effect/decal/cleanable/flour,
-/turf/simulated/floor/indestructible/dune_sand,
-/area/awaymission/arrakis/outside/outside3)
 "aTE" = (
 /obj/machinery/door/airlock/public/glass{
 	name = "Arcade"
@@ -18420,7 +18414,9 @@
 	},
 /area/awaymission/arrakis/outside/outside2)
 "bmI" = (
-/turf/simulated/wall/mineral/titanium,
+/turf/simulated/wall/mineral/titanium{
+	baseturf = /turf/simulated/floor/indestructible/dune_sand
+	},
 /area/awaymission/arrakis/outside/outside3)
 "bmR" = (
 /obj/item/gun/syringe,
@@ -21383,7 +21379,9 @@
 /turf/simulated/floor/plating,
 /area/awaymission/arrakis/bunker/brig)
 "egt" = (
-/turf/simulated/wall/mineral/titanium,
+/turf/simulated/wall/mineral/titanium{
+	baseturf = /turf/simulated/floor/indestructible/dune_sand
+	},
 /area/awaymission/arrakis/outside/outside2)
 "egE" = (
 /obj/item/stack/rods/fifty,
@@ -27290,6 +27288,11 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/arrakis/bunker/janitor)
+"keR" = (
+/turf/simulated/floor/vines{
+	temperature = 365
+	},
+/area/awaymission/arrakis/outside/outside7)
 "kgk" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
@@ -27879,7 +27882,9 @@
 /turf/simulated/floor/indestructible/dune_sand/smooth/cold,
 /area/awaymission/arrakis/cave/cave)
 "kVN" = (
-/turf/simulated/wall/mineral/plastitanium/nodiagonal,
+/turf/simulated/wall/mineral/plastitanium/nodiagonal{
+	baseturf = /turf/simulated/floor/indestructible/dune_sand
+	},
 /area/awaymission/arrakis/outside/outside2)
 "kVZ" = (
 /obj/structure/table/wood,
@@ -40983,8 +40988,9 @@
 /turf/simulated/floor/plasteel/dark,
 /area/awaymission/arrakis/bunker/brig)
 "ybJ" = (
-/turf/simulated/wall/indestructible/rock/mineral/dune_rock,
-/area/awaymission/arrakis/outside/outside2)
+/obj/effect/mapping_helpers/light,
+/turf/simulated/floor/indestructible/dune_sand/smooth,
+/area/awaymission/arrakis/cave)
 "ybP" = (
 /obj/item/stack/tile{
 	pixel_x = 22
@@ -98026,7 +98032,7 @@ aeA
 aeA
 aeA
 aeA
-aTD
+aQv
 aeA
 aeA
 aeA
@@ -98732,7 +98738,7 @@ aeA
 aeA
 aeA
 aeA
-aTD
+aQv
 aTW
 aTW
 aBe
@@ -104533,7 +104539,7 @@ aBe
 ayO
 ayO
 aBe
-azx
+ybJ
 ayO
 ayO
 ayO
@@ -119860,7 +119866,7 @@ aXZ
 aXZ
 aXZ
 aXZ
-ybJ
+ayF
 alp
 alp
 alp
@@ -120212,8 +120218,8 @@ aXZ
 aXZ
 aXZ
 aXZ
-ybJ
-ybJ
+ayF
+ayF
 alp
 alp
 pah
@@ -120565,7 +120571,7 @@ aXZ
 aXZ
 aXZ
 aXZ
-ybJ
+ayF
 ayO
 ayO
 ayO
@@ -143978,7 +143984,7 @@ aeo
 jsv
 aeo
 aeo
-aum
+keR
 aeo
 aeo
 aeo
@@ -144329,9 +144335,9 @@ aeo
 aeo
 jsv
 aeo
-aum
-aum
-aum
+keR
+keR
+keR
 aeo
 aeo
 jsv
@@ -144681,7 +144687,7 @@ jsv
 jsv
 jsv
 aeo
-aum
+keR
 aeo
 aeo
 aeo
@@ -145033,8 +145039,8 @@ ejU
 vJr
 ejU
 aeo
-aum
-aum
+keR
+keR
 aeo
 aeo
 aeo
@@ -145385,9 +145391,9 @@ ejU
 ejU
 ncW
 aeo
-aum
-aum
-aum
+keR
+keR
+keR
 aeo
 aeo
 jsv
@@ -145738,8 +145744,8 @@ jEl
 rLB
 aeo
 aeo
-aum
-aum
+keR
+keR
 aeo
 aeo
 jsv
@@ -146090,9 +146096,9 @@ rLB
 rLB
 aeo
 aeo
-aum
-aum
-aum
+keR
+keR
+keR
 aeo
 jsv
 ayO
@@ -146442,8 +146448,8 @@ xKr
 gls
 aeo
 aeo
-aum
-aum
+keR
+keR
 aeo
 aeo
 jsv
@@ -146791,12 +146797,12 @@ rLB
 rLB
 rLB
 rLB
-aum
-aum
+keR
+keR
 aeo
-aum
-aum
-aum
+keR
+keR
+keR
 aeo
 jsv
 ayO
@@ -147143,11 +147149,11 @@ rLB
 cgU
 gls
 qpN
-aum
-aum
+keR
+keR
 aeo
-aum
-aum
+keR
+keR
 aeo
 aeo
 jsv
@@ -147492,13 +147498,13 @@ rLB
 jEl
 xKr
 rLB
-aum
-aum
-aum
-aum
-aum
-aum
-aum
+keR
+keR
+keR
+keR
+keR
+keR
+keR
 aeo
 aeo
 aeo
@@ -147843,14 +147849,14 @@ vXn
 gls
 rLB
 rLB
-aum
-aum
-aum
+keR
+keR
+keR
 ssa
-aum
-aum
-aum
-aum
+keR
+keR
+keR
+keR
 aeo
 aeo
 aeo
@@ -148200,8 +148206,8 @@ jsv
 jsv
 jsv
 jsv
-aum
-aum
+keR
+keR
 aeo
 aeo
 aeo
@@ -148552,8 +148558,8 @@ aeo
 jvD
 aeo
 jsv
-aum
-aum
+keR
+keR
 aeo
 aeo
 aeo
@@ -148904,8 +148910,8 @@ aeo
 aeo
 aeo
 jsv
-aum
-aum
+keR
+keR
 aeo
 aeo
 aeo
@@ -149256,9 +149262,9 @@ jHU
 jHU
 jHU
 qlY
-aum
-aum
-aum
+keR
+keR
+keR
 aeo
 aeo
 aeo
@@ -149609,8 +149615,8 @@ vmv
 vmv
 rLB
 aeo
-aum
-aum
+keR
+keR
 aeo
 aeo
 aeo
@@ -149961,9 +149967,9 @@ vmv
 vmv
 rLB
 aeo
-aum
-aum
-aum
+keR
+keR
+keR
 aeo
 aeo
 jsv
@@ -150313,10 +150319,10 @@ vmv
 vmv
 rLB
 aeo
-aum
-aum
-aum
-aum
+keR
+keR
+keR
+keR
 aeo
 jsv
 ayO
@@ -150666,9 +150672,9 @@ qrF
 mRL
 aeo
 aeo
-aum
-aum
-aum
+keR
+keR
+keR
 aeo
 jsv
 ayO
@@ -151018,9 +151024,9 @@ aeo
 jsv
 aeo
 aeo
-aum
-aum
-aum
+keR
+keR
+keR
 aeo
 jsv
 ayO
@@ -151368,11 +151374,11 @@ aeo
 jvD
 aeo
 jsv
-aum
+keR
 aeo
-aum
+keR
 aeo
-aum
+keR
 aeo
 jsv
 ayO
@@ -151720,11 +151726,11 @@ jsv
 jsv
 jsv
 jsv
-aum
+keR
 aeo
-aum
+keR
 aeo
-aum
+keR
 aeo
 jsv
 ayO
@@ -152068,15 +152074,15 @@ aeo
 aeo
 aeo
 aeo
-aum
-aum
-aum
-aum
-aum
+keR
+keR
+keR
+keR
+keR
 aeo
 aeo
 aeo
-aum
+keR
 aeo
 jsv
 ayO
@@ -152418,17 +152424,17 @@ aeo
 aeo
 aeo
 aeo
-aum
-aum
-aum
-aum
-aum
-aum
+keR
+keR
+keR
+keR
+keR
+keR
 aeo
 aeo
 aeo
-aum
-aum
+keR
+keR
 aeo
 jsv
 ayO
@@ -152767,11 +152773,11 @@ aeo
 aeo
 aeo
 aeo
-aum
-aum
-aum
-aum
-aum
+keR
+keR
+keR
+keR
+keR
 aeo
 aeo
 aeo
@@ -152779,8 +152785,8 @@ aeo
 aeo
 aeo
 aeo
-aum
-aum
+keR
+keR
 aeo
 jsv
 ayO
@@ -153120,18 +153126,18 @@ aeo
 aeo
 aeo
 aeo
-aum
-aum
-aum
-aum
+keR
+keR
+keR
+keR
 aeo
 aeo
 aeo
 aeo
 aeo
 aeo
-aum
-aum
+keR
+keR
 aeo
 aeo
 jsv
@@ -153474,15 +153480,15 @@ aeo
 aeo
 aeo
 aeo
-aum
-aum
-aum
-aum
-aum
-aum
-aum
+keR
+keR
+keR
+keR
+keR
+keR
+keR
 aeo
-aum
+keR
 aeo
 aeo
 aeo
@@ -153828,13 +153834,13 @@ aeo
 aeo
 aeo
 aeo
-aum
-aum
-aum
-aum
-aum
-aum
-aum
+keR
+keR
+keR
+keR
+keR
+keR
+keR
 aeo
 aeo
 aeo
@@ -154181,11 +154187,11 @@ aeo
 aeo
 aeo
 aeo
-aum
-aum
-aum
-aum
-aum
+keR
+keR
+keR
+keR
+keR
 aeo
 aeo
 aeo
@@ -154536,9 +154542,9 @@ aeo
 aeo
 aeo
 aeo
-aum
-aum
-aum
+keR
+keR
+keR
 aeo
 aeo
 aeo
