@@ -5,14 +5,14 @@
 	icon = 'modular_ss220/dunes_map/icons/desert.dmi'
 	icon_state = "brick"
 	temperature = DUNE_TEMPERATURE
-	planetary_atmos = TRUE
+	planetary_atmos = FALSE
 
 /turf/simulated/floor/indestructible/dune_sand
 	name = "dune sand"
 	icon = 'modular_ss220/dunes_map/icons/desert.dmi'
 	icon_state = "sand"
 	temperature = DUNE_TEMPERATURE
-	planetary_atmos = TRUE
+	planetary_atmos = FALSE
 	footstep = FOOTSTEP_SAND
 	barefootstep = FOOTSTEP_SAND
 	clawfootstep = FOOTSTEP_SAND
@@ -161,16 +161,16 @@
 
 /turf/simulated/floor/plating/lava/smooth/dune
 	icon = 'modular_ss220/dunes_map/icons/lava.dmi'
-	planetary_atmos = TRUE
+	planetary_atmos = FALSE
 	temperature = DUNE_TEMPERATURE
 
 /turf/simulated/floor/engine/cult/dune
 	icon_state = "cult"
 	temperature = DUNE_TEMPERATURE
-	planetary_atmos = TRUE
+	planetary_atmos = FALSE
 
 /turf/simulated/floor/indestructible/dune
 	temperature = DUNE_TEMPERATURE
-	planetary_atmos = TRUE
+	planetary_atmos = FALSE
 
 #undef DUNE_TEMPERATURE
