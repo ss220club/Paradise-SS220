@@ -50,7 +50,7 @@ SUBSYSTEM_DEF(mapping)
 	// Load all Z level templates
 	preloadTemplates()
 
-//-----MASSIVE DISABLED SECTION FOR EVENT PURPOSE-----//
+//-----Ивентовые отключалки-----//
 
 	// Load the station
 	loadStation()
