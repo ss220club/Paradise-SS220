@@ -4563,7 +4563,9 @@
 "amh" = (
 /obj/structure/table_frame/brass,
 /obj/effect/decal/cleanable/dust,
-/turf/simulated/floor/brick,
+/turf/simulated/floor/indestructible/dune_sand{
+	icon_state = "brick"
+	},
 /area/awaymission/arrakis/outside/outside1)
 "ami" = (
 /obj/effect/decal/cleanable/dirt,
@@ -7523,7 +7525,9 @@
 /turf/simulated/wall/indestructible/sandstone,
 /area/awaymission/arrakis/cave)
 "aum" = (
-/turf/simulated/floor/vines,
+/turf/simulated/floor/vines{
+	temperature = 365
+	},
 /area/awaymission/arrakis/cave)
 "aun" = (
 /obj/effect/decal/cleanable/dust,
@@ -10554,7 +10558,7 @@
 	ext_button_link_id = "xeno_btn_ext_dune";
 	ext_door_link_id = "xeno_door_ext_dune";
 	int_button_link_id = "xeno_btn_int_dune";
-	int_door_link_id = "xeno_door_int";
+	int_door_link_id = "xeno_door_int_dune";
 	name = "Xenobiology Access Console";
 	pixel_y = -24
 	},
@@ -15820,7 +15824,9 @@
 	name = "ржавые перила"
 	},
 /obj/effect/turf_decal/sand/plating,
-/turf/simulated/floor/brick,
+/turf/simulated/floor/indestructible/dune_sand{
+	icon_state = "brick"
+	},
 /area/awaymission/arrakis/outside/outside2)
 "aTl" = (
 /obj/machinery/light/nightshifted/west,
@@ -19372,6 +19378,13 @@
 /obj/structure/flora/rock/pile,
 /turf/simulated/floor/indestructible/dune_sand/dug/cold,
 /area/awaymission/arrakis/cave/cave)
+"cfV" = (
+/obj/item/stack/sheet/mineral/sandstone,
+/obj/effect/turf_decal/sand/plating,
+/turf/simulated/floor/indestructible/dune_sand{
+	icon_state = "brick"
+	},
+/area/awaymission/arrakis/outside/outside1)
 "cgU" = (
 /obj/structure/flora/ash/rock/style_2,
 /turf/simulated/floor/engine/cult/dune,
@@ -19805,7 +19818,9 @@
 /area/awaymission/arrakis/bunker/kitchen)
 "cGr" = (
 /obj/effect/turf_decal/sand/plating,
-/turf/simulated/floor/brick,
+/turf/simulated/floor/indestructible/dune_sand{
+	icon_state = "brick"
+	},
 /area/awaymission/arrakis/outside/outside2)
 "cGD" = (
 /obj/effect/decal/cleanable/dust,
@@ -20252,7 +20267,8 @@
 	},
 /area/awaymission/arrakis/bunker/brig)
 "diC" = (
-/obj/structure/lattice/lava{
+/obj/effect/decal/fakelattice{
+	density = 0;
 	color = "#e0ac7b"
 	},
 /turf/simulated/floor/indestructible/dune_sand/dug,
@@ -25727,6 +25743,12 @@
 	floor_variance = null
 	},
 /area/space)
+"iti" = (
+/obj/effect/turf_decal/sand/plating,
+/turf/simulated/floor/indestructible/dune_sand{
+	icon_state = "brick"
+	},
+/area/awaymission/arrakis/outside/outside1)
 "itC" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -26406,7 +26428,9 @@
 	name = "ржавые перила"
 	},
 /obj/effect/turf_decal/sand/plating,
-/turf/simulated/floor/brick,
+/turf/simulated/floor/indestructible/dune_sand{
+	icon_state = "brick"
+	},
 /area/awaymission/arrakis/outside/outside2)
 "iYe" = (
 /obj/item/stack/ore,
@@ -26820,6 +26844,7 @@
 	dir = 2
 	},
 /obj/effect/turf_decal/sand/plating,
+/obj/structure/fans/tiny,
 /turf/simulated/floor/plasteel{
 	icon_state = "asteroidfloor"
 	},
@@ -27418,7 +27443,9 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/arrakis/bunker/janitor)
 "keR" = (
-/turf/simulated/floor/vines,
+/turf/simulated/floor/vines{
+	temperature = 365
+	},
 /area/awaymission/arrakis/outside)
 "kga" = (
 /obj/effect/turf_decal/sand/plating,
@@ -29485,7 +29512,9 @@
 	color = "#e0ac7b"
 	},
 /obj/effect/turf_decal/sand/plating,
-/turf/simulated/floor/brick,
+/turf/simulated/floor/indestructible/dune_sand{
+	icon_state = "brick"
+	},
 /area/awaymission/arrakis/outside/outside2)
 "mCi" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -30319,7 +30348,9 @@
 	name = "ржавые перила"
 	},
 /obj/effect/turf_decal/sand/plating,
-/turf/simulated/floor/brick,
+/turf/simulated/floor/indestructible/dune_sand{
+	icon_state = "brick"
+	},
 /area/awaymission/arrakis/outside/outside2)
 "nnO" = (
 /obj/item/shard{
@@ -30500,6 +30531,11 @@
 	},
 /turf/simulated/floor/wood/fancy/oak,
 /area/awaymission/arrakis/cave/cave1)
+"nuI" = (
+/turf/simulated/floor/indestructible/dune_sand{
+	icon_state = "brick"
+	},
+/area/awaymission/arrakis/outside/outside1)
 "nuM" = (
 /obj/structure/sign/explosives{
 	pixel_y = -32
@@ -31681,7 +31717,9 @@
 "ovV" = (
 /obj/item/stack/sheet/mineral/sandstone,
 /obj/effect/decal/cleanable/dust,
-/turf/simulated/floor/brick,
+/turf/simulated/floor/indestructible/dune_sand{
+	icon_state = "brick"
+	},
 /area/awaymission/arrakis/outside/outside1)
 "own" = (
 /obj/structure/table/wood,
@@ -31742,6 +31780,13 @@
 	icon_state = "whiteblue"
 	},
 /area/awaymission/arrakis/bunker/medbay)
+"oxO" = (
+/obj/effect/decal/fakelattice{
+	density = 0;
+	color = "#e0ac7b"
+	},
+/turf/simulated/floor/indestructible/dune_sand,
+/area/awaymission/arrakis/outside/outside5)
 "oxV" = (
 /obj/structure/computerframe{
 	dir = 8
@@ -32647,7 +32692,9 @@
 	icon_state = "1-4"
 	},
 /obj/effect/turf_decal/sand/plating,
-/turf/simulated/floor/brick,
+/turf/simulated/floor/indestructible/dune_sand{
+	icon_state = "brick"
+	},
 /area/awaymission/arrakis/outside/outside2)
 "pgh" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -33882,6 +33929,7 @@
 /obj/machinery/door/airlock/vault{
 	name = "Mining Outpost - Storage"
 	},
+/obj/structure/fans/tiny,
 /turf/simulated/floor/plasteel,
 /area/awaymission/arrakis/outside/mining_storage_outpost)
 "qpp" = (
@@ -33900,7 +33948,9 @@
 /area/awaymission/arrakis/cave/cave)
 "qpN" = (
 /obj/structure/flora/rock/pile/icy,
-/turf/simulated/floor/vines,
+/turf/simulated/floor/vines{
+	temperature = 365
+	},
 /area/awaymission/arrakis/cave)
 "qqO" = (
 /obj/effect/decal/cleanable/dirt,
@@ -34092,7 +34142,9 @@
 	name = "ржавые перила"
 	},
 /obj/effect/turf_decal/sand/plating,
-/turf/simulated/floor/brick,
+/turf/simulated/floor/indestructible/dune_sand{
+	icon_state = "brick"
+	},
 /area/awaymission/arrakis/outside/outside2)
 "qzJ" = (
 /obj/effect/decal/cleanable/dust,
@@ -34140,14 +34192,18 @@
 /turf/simulated/floor/indestructible/dune_sand,
 /area/awaymission/arrakis/outside/mining_town)
 "qCe" = (
-/turf/simulated/floor/plating/lava/smooth/dune,
-/area/awaymission/arrakis/cave)
+/obj/effect/decal/cleanable/dust,
+/turf/simulated/floor/indestructible/dune_sand{
+	icon_state = "brick"
+	},
+/area/awaymission/arrakis/outside/outside1)
 "qCf" = (
 /obj/machinery/conveyor/east,
 /obj/machinery/door/poddoor/shutters{
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dust,
+/obj/structure/fans/tiny,
 /turf/simulated/floor/engine,
 /area/awaymission/arrakis/outside/mining_storage_outpost)
 "qCN" = (
@@ -35744,7 +35800,9 @@
 	name = "ржавые перила"
 	},
 /obj/effect/turf_decal/sand/plating,
-/turf/simulated/floor/brick,
+/turf/simulated/floor/indestructible/dune_sand{
+	icon_state = "brick"
+	},
 /area/awaymission/arrakis/outside/outside2)
 "slS" = (
 /obj/effect/decal/cleanable/dirt,
@@ -35903,7 +35961,9 @@
 /area/awaymission/arrakis/bunker/brig)
 "ssa" = (
 /obj/structure/flora/rock/pile,
-/turf/simulated/floor/vines,
+/turf/simulated/floor/vines{
+	temperature = 365
+	},
 /area/awaymission/arrakis/cave)
 "ssi" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -38016,6 +38076,12 @@
 	icon_state = "white"
 	},
 /area/awaymission/arrakis/bunker/cryo)
+"uGy" = (
+/obj/structure/table_frame/brass,
+/turf/simulated/floor/indestructible/dune_sand{
+	icon_state = "brick"
+	},
+/area/awaymission/arrakis/outside/outside1)
 "uGJ" = (
 /obj/effect/landmark/damageturf,
 /obj/structure/bed/mattress/dirty,
@@ -38120,6 +38186,13 @@
 	floor_variance = null
 	},
 /area/awaymission/arrakis/outside/outside2)
+"uNM" = (
+/obj/effect/decal/cleanable/dust,
+/obj/structure/rubble,
+/turf/simulated/floor/indestructible/dune_sand{
+	icon_state = "brick"
+	},
+/area/awaymission/arrakis/outside/outside1)
 "uPg" = (
 /obj/machinery/computer/nonfunctional{
 	dir = 1
@@ -38566,7 +38639,9 @@
 	icon_state = "4-8"
 	},
 /obj/effect/turf_decal/sand/plating,
-/turf/simulated/floor/brick,
+/turf/simulated/floor/indestructible/dune_sand{
+	icon_state = "brick"
+	},
 /area/awaymission/arrakis/outside/outside2)
 "vjf" = (
 /obj/item/pen/multi,
@@ -38662,7 +38737,9 @@
 	},
 /area/awaymission/arrakis/outside/outside1)
 "vmv" = (
-/turf/simulated/floor/plasteel/stairs,
+/turf/simulated/floor/plasteel/stairs{
+	temperature = 365
+	},
 /area/awaymission/arrakis/cave)
 "vmJ" = (
 /obj/effect/decal/cleanable/dirt,
@@ -60840,7 +60917,7 @@ adM
 asV
 diC
 csH
-eca
+oxO
 pAo
 kdb
 sgp
@@ -60849,7 +60926,7 @@ uQJ
 pAo
 pAo
 csH
-eca
+oxO
 asV
 asV
 asV
@@ -121925,7 +122002,7 @@ ovV
 rER
 oXa
 ovV
-lkP
+cfV
 oXa
 oXa
 oXa
@@ -122273,13 +122350,13 @@ aGD
 aGD
 azy
 aGD
-nPC
-nPC
+nuI
+qCe
 aGD
-nPC
+qCe
 nzd
 azy
-nPC
+qCe
 aGD
 xGV
 aGD
@@ -122625,14 +122702,14 @@ aGD
 aGD
 oXa
 azy
-nPC
-tAj
+qCe
+uGy
 aGD
 aTT
 aGD
-nPC
+qCe
 aGD
-nPC
+qCe
 ovV
 aGD
 aGD
@@ -122979,8 +123056,8 @@ ovV
 aGD
 aGD
 aGD
-nPC
-rER
+qCe
+iti
 aGD
 aGD
 aGD
@@ -123328,11 +123405,11 @@ aGD
 aGD
 aTT
 kOZ
-xGm
+uNM
 ovV
-nPC
-nPC
-nPC
+qCe
+qCe
+qCe
 acn
 aGD
 azy
@@ -123680,11 +123757,11 @@ aGD
 aGD
 azy
 bOp
-nPC
-nPC
+qCe
+qCe
 ovV
 aGD
-nPC
+qCe
 aGD
 aGD
 aCH
@@ -142428,9 +142505,9 @@ aHr
 aHr
 aHr
 aHr
-qCe
 aHr
-qCe
+aHr
+aHr
 aHr
 aHr
 aHr
@@ -142758,17 +142835,6 @@ ayO
 ayO
 ayO
 ayO
-qCe
-qCe
-qCe
-aHr
-aHr
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
 aHr
 aHr
 aHr
@@ -142778,12 +142844,23 @@ aHr
 aHr
 aHr
 aHr
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
 aHr
 aHr
 aHr
@@ -143110,34 +143187,34 @@ ayO
 ayO
 ayO
 ayO
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
 aHr
 aHr
 aHr
 aHr
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
 aHr
 aHr
 aHr
@@ -143462,35 +143539,35 @@ ayO
 ayO
 ayO
 ayO
-qCe
-qCe
-qCe
-qCe
-qCe
 aHr
 aHr
 aHr
 aHr
 aHr
-qCe
-qCe
-qCe
-qCe
-qCe
 aHr
 aHr
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
 aHr
 aHr
 aHr
@@ -143826,21 +143903,21 @@ ybJ
 ybJ
 aHr
 aHr
-qCe
-qCe
-qCe
 aHr
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
 aHr
 aHr
 aHr
@@ -144178,20 +144255,20 @@ gAf
 ybJ
 aHr
 aHr
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
 aHr
 aHr
 aHr
@@ -144533,16 +144610,16 @@ aHr
 aHr
 aHr
 aHr
-qCe
-qCe
 aHr
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
 aHr
 aHr
 aHr
@@ -144885,16 +144962,16 @@ aHr
 aHr
 aHr
 aHr
-qCe
-qCe
 aHr
 aHr
 aHr
-qCe
-qCe
-qCe
-qCe
-qCe
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
 aHr
 aHr
 aHr
@@ -145242,11 +145319,11 @@ aHr
 aHr
 aHr
 aHr
-qCe
-qCe
-qCe
-qCe
-qCe
+aHr
+aHr
+aHr
+aHr
+aHr
 aHr
 aHr
 aHr
@@ -145595,10 +145672,10 @@ ybJ
 ybJ
 ybJ
 ybJ
-qCe
-qCe
-qCe
-qCe
+aHr
+aHr
+aHr
+aHr
 aHr
 aHr
 aHr
@@ -145948,10 +146025,10 @@ gAf
 gAf
 ybJ
 aHr
-qCe
-qCe
-qCe
-qCe
+aHr
+aHr
+aHr
+aHr
 aHr
 aHr
 aHr
@@ -145970,7 +146047,7 @@ ejU
 ejU
 ejU
 nyG
-qCe
+aHr
 jEl
 rLB
 aHr
@@ -146300,12 +146377,12 @@ aHr
 gAf
 ybJ
 aHr
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
 aHr
 aHr
 aHr
@@ -146319,8 +146396,8 @@ ejU
 ejU
 ejU
 ejU
-qCe
-qCe
+aHr
+aHr
 jEl
 rLB
 rLB
@@ -146655,11 +146732,11 @@ aHr
 aHr
 aHr
 aHr
-qCe
-qCe
-qCe
-qCe
-qCe
+aHr
+aHr
+aHr
+aHr
+aHr
 aHr
 aHr
 aHr
@@ -147008,11 +147085,11 @@ aHr
 aHr
 aHr
 aHr
-qCe
-qCe
-qCe
-qCe
-qCe
+aHr
+aHr
+aHr
+aHr
+aHr
 aHr
 aHr
 ybJ
@@ -147360,18 +147437,18 @@ aHr
 aHr
 aHr
 aHr
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
 aHr
 ybJ
 ejU
 ejU
 ejU
-qCe
+aHr
 ncW
 gls
 rLB
@@ -147712,18 +147789,18 @@ ybJ
 ybJ
 ybJ
 ybJ
-qCe
 aHr
-qCe
-qCe
-qCe
-qCe
+aHr
+aHr
+aHr
+aHr
+aHr
 aHr
 ybJ
 ejU
 ejU
-qCe
-qCe
+aHr
+aHr
 rLB
 rLB
 jEl
@@ -148069,8 +148146,8 @@ aHr
 aHr
 aHr
 aHr
-qCe
-qCe
+aHr
+aHr
 ybJ
 ejU
 ejU
@@ -148421,7 +148498,7 @@ ybJ
 ybJ
 ybJ
 aHr
-qCe
+aHr
 aHr
 ybJ
 ybJ
@@ -148773,21 +148850,21 @@ ybJ
 gAf
 ybJ
 aHr
-qCe
-qCe
-qCe
+aHr
+aHr
+aHr
 jvD
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
 jvD
-qCe
+aHr
 ybJ
 aum
 aum
@@ -149125,21 +149202,21 @@ ybJ
 gAf
 ybJ
 aHr
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
 ybJ
 aum
 aum
@@ -151238,20 +151315,20 @@ gAf
 ybJ
 aHr
 aHr
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
 ybJ
 aHr
 aHr
@@ -151588,22 +151665,22 @@ aHr
 ybJ
 gAf
 ybJ
-qCe
-qCe
-qCe
-qCe
+aHr
+aHr
+aHr
+aHr
 jvD
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
-qCe
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
+aHr
 jvD
-qCe
+aHr
 ybJ
 aum
 aHr
@@ -151940,9 +152017,9 @@ aHr
 ybJ
 ybJ
 ybJ
-qCe
-qCe
-qCe
+aHr
+aHr
+aHr
 ybJ
 ybJ
 ybJ
@@ -152290,10 +152367,10 @@ gAf
 ybJ
 aHr
 aHr
-qCe
-qCe
-qCe
-qCe
+aHr
+aHr
+aHr
+aHr
 aHr
 ybJ
 aHr
@@ -152640,11 +152717,11 @@ ybJ
 ybJ
 ybJ
 ybJ
-qCe
-qCe
-qCe
-qCe
-qCe
+aHr
+aHr
+aHr
+aHr
+aHr
 aHr
 aHr
 ybJ
@@ -152991,11 +153068,11 @@ aHr
 aHr
 aHr
 aHr
-qCe
-qCe
-qCe
-qCe
-qCe
+aHr
+aHr
+aHr
+aHr
+aHr
 aHr
 aHr
 aHr
@@ -153343,9 +153420,9 @@ aHr
 aHr
 aHr
 aHr
-qCe
-qCe
-qCe
+aHr
+aHr
+aHr
 aHr
 aHr
 aHr
@@ -153695,8 +153772,8 @@ aHr
 aHr
 aHr
 aHr
-qCe
-qCe
+aHr
+aHr
 aHr
 aHr
 aHr
@@ -154046,9 +154123,9 @@ ybJ
 aHr
 aHr
 aHr
-qCe
-qCe
-qCe
+aHr
+aHr
+aHr
 aHr
 aHr
 aHr
@@ -154397,9 +154474,9 @@ gAf
 ybJ
 aHr
 aHr
-qCe
-qCe
-qCe
+aHr
+aHr
+aHr
 aHr
 aHr
 aHr
@@ -154747,10 +154824,10 @@ ybJ
 ybJ
 ybJ
 ybJ
-qCe
-qCe
-qCe
-qCe
+aHr
+aHr
+aHr
+aHr
 aHr
 aHr
 aHr
@@ -155099,9 +155176,9 @@ aHr
 aHr
 aHr
 aHr
-qCe
-qCe
-qCe
+aHr
+aHr
+aHr
 aHr
 aHr
 aHr
@@ -155449,10 +155526,10 @@ aHr
 aHr
 aHr
 aHr
-qCe
-qCe
-qCe
-qCe
+aHr
+aHr
+aHr
+aHr
 aHr
 aHr
 aHr
@@ -155800,11 +155877,11 @@ aHr
 aHr
 aHr
 aHr
-qCe
-qCe
-qCe
-qCe
-qCe
+aHr
+aHr
+aHr
+aHr
+aHr
 aHr
 aHr
 aHr
@@ -156152,9 +156229,9 @@ aHr
 aHr
 aHr
 aHr
-qCe
-qCe
-qCe
+aHr
+aHr
+aHr
 aHr
 aHr
 aHr
@@ -156504,8 +156581,8 @@ aHr
 aHr
 aHr
 aHr
-qCe
-qCe
+aHr
+aHr
 aHr
 aHr
 aHr
@@ -156855,10 +156932,10 @@ aHr
 aHr
 aHr
 aHr
-qCe
-qCe
-qCe
-qCe
+aHr
+aHr
+aHr
+aHr
 aHr
 aHr
 aHr
@@ -157207,9 +157284,9 @@ aHr
 aHr
 aHr
 aHr
-qCe
-qCe
-qCe
+aHr
+aHr
+aHr
 aHr
 aHr
 aHr
@@ -157559,10 +157636,10 @@ aHr
 aHr
 aHr
 aHr
-qCe
-qCe
-qCe
-qCe
+aHr
+aHr
+aHr
+aHr
 aHr
 aHr
 aHr

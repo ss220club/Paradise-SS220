@@ -1,7 +1,7 @@
 /datum/map/boxstation
-	fluff_name = "ИСН Кибериада"
-	technical_name = "Cyberiad220"
-	map_path = "_maps/map_files220/stations/boxstation.dmm"
+	fluff_name = "Hirka"
+	technical_name = "Hirka220"
+	map_path = "_maps/map_files220/stations/Arrakis.dmm"
 	webmap_url = "https://discord.com/channels/1097181193939730453/1097543419586428989/1178708893128478873/"
 
 /datum/map/deltastation
