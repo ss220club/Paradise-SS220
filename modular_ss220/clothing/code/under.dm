@@ -507,6 +507,7 @@
 	name = "коричневое махровое маленькое полотенце"
 	color = "#DEB887"
 
+//desert
 /obj/item/clothing/under/raider
 	name = "броня рейдера-мясника"
 	desc = "Лохмотья, укрепленные стальными пластинами и шипами."
@@ -528,8 +529,15 @@
 	desc = "Кожаная жилетка, обшитая пластинами железа и пластали."
 	icon_state = "fem_raider"
 	item_color = "fem_raider"
+
+/obj/item/clothing/under/raider/kidan1
+	name = "броня жука-рейдера"
+	desc = "Плотно скрепленные пласталевые пластины на кожаном каркасе."
+	icon_state = "raider_kidan"
+	item_color = "raider_kidan"
+	species_restricted = list("Kidan")
 	sprite_sheets = list(
-		"Human" = 'modular_ss220/clothing/icons/mob/under.dmi',
+		"Kidan" = 'modular_ss220/clothing/icons/mob/under.dmi',
 	)
 
 /obj/item/clothing/under/desert_suit

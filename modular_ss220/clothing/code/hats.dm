@@ -123,6 +123,7 @@
 	name = "коричневая шапочка из полотенца"
 	color = "#DEB887"
 
+//desert
 /obj/item/clothing/head/helmet/swat/raider_helmet
 	name = "шипастый шлем"
 	desc = "Старая кевларовая каска изуродованная шипами и вырезами."
@@ -130,6 +131,13 @@
 	icon_state = "raider_pin_helmet"
 	icon_override = 'modular_ss220/clothing/icons/mob/hats.dmi'
 	flags = BLOCKHEADHAIR
+
+/obj/item/clothing/head/helmet/swat/raider_helmet/raider_kidan
+	name = "шлем жука-рейдера"
+	desc = "Больше похоже на мешок..."
+	icon_state = "raider_kidan_helmet"
+	species_restricted = list("Kidan")
+	flags_inv = HIDEMASK | HIDEEARS | HIDEEYES | HIDEFACE
 
 /obj/item/clothing/glasses/sunglasses/desert_glasses
 	name = "защитные очки"

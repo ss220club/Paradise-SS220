@@ -238,3 +238,59 @@
 /* SOO jacket */
 /obj/item/clothing/suit/space/deathsquad/officer/soo_brown
 	icon_state = "brtrenchcoat_open"
+
+
+
+
+
+
+
+
+
+
+
+//desert
+
+/obj/item/clothing/suit/hooded/desert_cape
+	name = "пустынная накидка"
+	desc = "Пустынная накидка из особой крепкой ткани. Капюшон поможет не свалиться под палящим солнцем"
+	icon = 'modular_ss220/clothing/icons/object/suits.dmi'
+	icon_state = "desertcape"
+	icon_override = 'modular_ss220/clothing/icons/mob/suits.dmi'
+	armor = list(MELEE = 20, BULLET = 20, LASER = 20, ENERGY = 5, BOMB = 15, RAD = 0, FIRE = 50, ACID = 50)
+	allowed = list(/obj/item/reagent_containers/drinks/flask, /obj/item/melee, /obj/item/flash, /obj/item/lighter, /obj/item/clothing/mask/cigarette, /obj/item/storage/fancy/cigarettes, /obj/item/tank/internals, /obj/item/gun/energy, /obj/item/gun/projectile, /obj/item/kitchen/knife)
+	hoodtype = /obj/item/clothing/head/hooded/desert_cape
+
+/obj/item/clothing/head/hooded/desert_cape
+	name = "капюшон пустынной накидки"
+	desc = "Капюшон, прикреплённый к пустынной накидке."
+	icon = 'modular_ss220/clothing/icons/object/hats.dmi'
+	icon_state = "desertcape"
+	icon_override = 'modular_ss220/clothing/icons/mob/hats.dmi'
+	body_parts_covered = HEAD
+	heat_protection = HEAD
+	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
+	flags = BLOCKHAIR
+	flags_inv = HIDEEARS
+
+/obj/item/clothing/suit/hooded/desert_cape2
+	name = "лёгкая пустынная накидка"
+	desc = "Лёгкая пустынная накидка из особой крепкой ткани. Капюшон поможет не свалиться под палящим солнцем."
+	icon = 'modular_ss220/clothing/icons/object/suits.dmi'
+	icon_state = "desertlightcape"
+	icon_override = 'modular_ss220/clothing/icons/mob/suits.dmi'
+	armor = list(MELEE = 20, BULLET = 10, LASER = 10, ENERGY = 5, BOMB = 15, RAD = 0, FIRE = 50, ACID = 50)
+	allowed = list(/obj/item/reagent_containers/drinks/flask, /obj/item/melee, /obj/item/flash, /obj/item/lighter, /obj/item/clothing/mask/cigarette, /obj/item/storage/fancy/cigarettes, /obj/item/tank/internals, /obj/item/gun/energy, /obj/item/gun/projectile, /obj/item/kitchen/knife)
+	hoodtype = /obj/item/clothing/head/hooded/desert_cape2
+
+/obj/item/clothing/head/hooded/desert_cape2
+	name = "капюшон лёгкой пустынной накидки"
+	desc = "Капюшон, прикреплённый к лёгкой пустынной накидке."
+	icon = 'modular_ss220/clothing/icons/object/hats.dmi'
+	icon_state = "desertlightcape"
+	icon_override = 'modular_ss220/clothing/icons/mob/hats.dmi'
+	body_parts_covered = HEAD
+	heat_protection = HEAD
+	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
+	flags = BLOCKHAIR
+	flags_inv = HIDEEARS
