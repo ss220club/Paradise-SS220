@@ -266,3 +266,17 @@
 	desc = "Статуя отвратительной твари выполненная из черного камня."
 	icon_state = "ugly_statue2"
 
+
+//sabers
+
+/obj/item/dualsaber/midnight_saber
+	name = "злоба"
+	desc = "''Злоба'' - Один из легендарных мечей в галактике, был создан мастером  Согда К'Тримом. Обладающий мистической энергией, он вызывает трепет у тех, кто стоит перед его обладателем.  Злоба - олицетворяет самую темную сторону силы,   рукоять меча  гладкая, не имеющая массивных узоров и рун.  При вспышке света он излучает рванный кроваво-красный свет, словно крича о непокорности и ярости своего владельца.  По мифам в мече ''Злоба'' пребыает сама темная сущность могущества и бесконечного гнева, готовая исполнить волю своего хозяина даже за пределами пространства и времени. Текущий владелец: Миднайт Блэк.."
+	icon = 'modular_ss220/dunes_map/icons/saber.dmi'
+	lefthand_file = 'modular_ss220/dunes_map/icons/saber_left.dmi'
+	righthand_file = 'modular_ss220/dunes_map/icons/saber_right.dmi'
+	icon_state = "dualsaber0"
+	blade_color = "midnight"
+	colormap = LIGHT_COLOR_RED
+	wieldsound = 'modular_ss220/dunes_map/sound/weapons/saberon.ogg'
+	unwieldsound = 'modular_ss220/dunes_map/sound/weapons/saberoffquick.ogg'
