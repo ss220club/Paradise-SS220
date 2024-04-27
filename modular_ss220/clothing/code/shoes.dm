@@ -63,3 +63,12 @@
 /obj/item/clothing/shoes/shark/light
 	name = "светло-голубые акульи тапочки"
 	icon_state = "shark_light"
+
+//desert
+/obj/item/clothing/shoes/combat/raider_desert
+	name = "жучьи вездеходы"
+	desc = "Грубая, но надежная обувь для прогулок по пустыне."
+	icon = 'modular_ss220/clothing/icons/object/shoes.dmi'
+	icon_state = "raider_kidan_boots"
+	icon_override = 'modular_ss220/clothing/icons/mob/shoes.dmi'
+	species_restricted = list("Kidan")
