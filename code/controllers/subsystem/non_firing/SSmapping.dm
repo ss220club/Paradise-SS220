@@ -51,13 +51,16 @@ SUBSYSTEM_DEF(mapping)
 	preloadTemplates()
 	preloadTemplates(path = "code/modules/unit_tests/atmos/")
 
+//-----MASSIVE DISABLED SECTION FOR EVENT PURPOSE-----//
+
 	// Load the station
 	loadStation()
 
-	// Load lavaland
-	loadLavaland()
+	// Load lavaland (disabled)
+	//loadLavaland()
 
-	// Seed space ruins
+	// Seed space ruins (disabled)
+/*
 	if(GLOB.configuration.ruins.enable_space_ruins)
 		handleRuins()
 	else
@@ -65,12 +68,13 @@ SUBSYSTEM_DEF(mapping)
 
 	// Makes a blank space level for the sake of randomness
 	GLOB.space_manager.add_new_zlevel("Empty Area", linkage = CROSSLINKED, traits = list(REACHABLE_BY_CREW, REACHABLE_SPACE_ONLY))
+*/
 
+	// Setup the Z-level linkage (disabled)
+	//GLOB.space_manager.do_transition_setup()
 
-	// Setup the Z-level linkage
-	GLOB.space_manager.do_transition_setup()
-
-	if(GLOB.configuration.ruins.enable_lavaland)
+/*
+	if(GLOB.configuration.ruins.enable_lavaland) (disabled)
 		// Spawn Lavaland ruins and rivers.
 		log_startup_progress("Populating lavaland...")
 		var/lavaland_setup_timer = start_watch()
@@ -82,7 +86,7 @@ SUBSYSTEM_DEF(mapping)
 		log_startup_progress("Successfully populated lavaland in [time_spent]s.")
 	else
 		log_startup_progress("Skipping lavaland ruins...")
-
+*/
 	// Now we make a list of areas for teleport locs
 	// Located below is some of the worst code I've ever seen
 	// Checking all areas to see if they have a turf in them? Nice one ssmapping!
@@ -119,6 +123,7 @@ SUBSYSTEM_DEF(mapping)
 	ghostteleportlocs = sortAssoc(ghostteleportlocs)
 
 	// Now we make a list of areas that exist on the station. Good for if you don't want to select areas that exist for one station but not others. Directly references
+/* (disabled)
 	existing_station_areas = list()
 	for(var/area/AR as anything in all_areas)
 		var/list/pickable_turfs = list()
@@ -127,6 +132,7 @@ SUBSYSTEM_DEF(mapping)
 		var/turf/picked = safepick(pickable_turfs)
 		if(picked && is_station_level(picked.z))
 			existing_station_areas += AR
+*/
 
 	// World name
 	if(GLOB.configuration.general.server_name)
