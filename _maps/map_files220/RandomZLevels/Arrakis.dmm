@@ -4054,7 +4054,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/obj/structure/chair/sofa/right{
+/obj/structure/chair/sofa/left{
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -6183,7 +6183,6 @@
 	network = list("Research","SS13");
 	dir = 8
 	},
-/obj/item/circuitboard/circuit_imprinter,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "darkpurple"
@@ -6603,7 +6602,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/obj/structure/chair/sofa/left{
+/obj/structure/chair/sofa/right{
 	dir = 1
 	},
 /turf/simulated/floor/plasteel{
@@ -14061,14 +14060,14 @@
 	},
 /area/awaymission/arrakis/bunker/medbay)
 "aNV" = (
-/obj/machinery/mecha_part_fabricator{
-	dir = 1
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/reagent_dispensers/watertank,
+/turf/simulated/floor/indestructible/dune_sand{
+	icon_state = "darkfull";
+	icon = 'modular_ss220/aesthetics/floors/icons/floors.dmi';
+	floor_variance = null
 	},
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "darkpurple"
-	},
-/area/awaymission/arrakis/bunker/rnd)
+/area/awaymission/arrakis/outside/podhangars)
 "aNW" = (
 /obj/effect/decal/cleanable/crayon{
 	icon_state = "body";
@@ -16420,7 +16419,7 @@
 "aVc" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/reagent_dispensers/watertank{
-	tank_volume = 100
+	tank_volume = 50
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "darkgreen"
@@ -32331,9 +32330,7 @@
 /turf/simulated/floor/indestructible/dune_sand/smooth/cold,
 /area/awaymission/arrakis/cave/cave)
 "oVp" = (
-/obj/structure/reagent_dispensers/watertank{
-	tank_volume = 500
-	},
+/obj/structure/reagent_dispensers/watertank,
 /turf/simulated/floor/wood/oak,
 /area/awaymission/arrakis/cave/cave1)
 "oVA" = (
@@ -58546,7 +58543,7 @@ pty
 aqo
 auL
 akb
-aNV
+aqR
 vsA
 aqp
 aeF
@@ -58555,9 +58552,9 @@ ahv
 aij
 aqR
 aPC
-aNV
+aqR
 aPb
-aNV
+aqR
 aOK
 aGx
 aWC
@@ -157128,7 +157125,7 @@ alp
 alp
 fox
 fox
-gnS
+aNV
 tfw
 ooa
 twR

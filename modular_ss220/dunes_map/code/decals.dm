@@ -9,7 +9,6 @@
 	desc = "Шерстяной ковер с красно-черными узорами."
 	icon = 'modular_ss220/dunes_map/icons/carpets.dmi'
 	icon_state = "carpet1"
-	deconstructible = FALSE
 /obj/effect/turf_decal/carpet/carpet_blue
 	name = "синий ковер"
 	desc = "Шерстяной ковер с синими узорами."

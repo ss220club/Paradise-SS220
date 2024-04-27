@@ -122,3 +122,38 @@
 /obj/item/clothing/head/towel/brown
 	name = "коричневая шапочка из полотенца"
 	color = "#DEB887"
+
+/obj/item/clothing/head/helmet/swat/raider_helmet
+	name = "шипастый шлем"
+	desc = "Старая кевларовая каска изуродованная шипами и вырезами."
+	icon = 'modular_ss220/clothing/icons/object/hats.dmi'
+	icon_state = "raider_pin_helmet"
+	icon_override = 'modular_ss220/clothing/icons/mob/hats.dmi'
+	flags = BLOCKHEADHAIR
+
+/obj/item/clothing/glasses/sunglasses/desert_glasses
+	name = "защитные очки"
+	desc = "Затемненные окуляры в оправе из укрепленной кожи."
+	icon = 'modular_ss220/clothing/icons/object/hats.dmi'
+	icon_state = "desert_sunglasses"
+	icon_override = 'modular_ss220/clothing/icons/mob/hats.dmi'
+	flash_protect = FLASH_PROTECTION_WELDER
+
+/obj/item/clothing/glasses/sunglasses/desert_glasses/raider_glasses
+	icon_state = "raider_sunglasses"
+
+/obj/item/clothing/head/arafat_desert
+	name = "плотная тканевая арафатка"
+	desc = "Поможет не свалиться от солнечного удара."
+	icon = 'modular_ss220/clothing/icons/object/hats.dmi'
+	icon_state = "arafat_desert"
+	icon_override = 'modular_ss220/clothing/icons/mob/hats.dmi'
+	flags = BLOCKHAIR
+	flags_inv = HIDEEARS | HIDEFACE
+	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
+	body_parts_covered = HEAD
+	min_cold_protection_temperature = FIRE_HELM_MIN_TEMP_PROTECT
+	max_heat_protection_temperature = FIRE_HELM_MAX_TEMP_PROTECT
+	cold_protection = HEAD
+	heat_protection = HEAD
+	armor = list(MELEE = 10, BULLET = 5, LASER = 5, ENERGY = 5, BOMB = 5, RAD = 0, FIRE = 50, ACID = 50)
