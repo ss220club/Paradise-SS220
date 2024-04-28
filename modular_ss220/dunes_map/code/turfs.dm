@@ -158,6 +158,7 @@
 	oxygen = 21.8366
 	nitrogen = 82.1472
 	temperature = DUNE_TEMPERATURE
+	planetary_atmos = FALSE
 
 /turf/simulated/floor/plating/lava/smooth/dune
 	icon = 'modular_ss220/dunes_map/icons/lava.dmi'
