@@ -532,7 +532,7 @@
 
 /obj/item/clothing/under/raider/kidan1
 	name = "броня жука-рейдера"
-	desc = "Плотно скрепленные пласталевые пластины на кожаном каркасе."
+	desc = "Плотно скрепленные пласталевые пластины на кожаном каркасе. Самый страшный звук ночной пустыни - клик-клак..."
 	icon_state = "raider_kidan"
 	item_color = "raider_kidan"
 	species_restricted = list("Kidan")

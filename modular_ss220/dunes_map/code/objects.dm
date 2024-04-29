@@ -154,7 +154,7 @@
 //statues and stuff
 
 /obj/structure/fluff/desert_construction
-	name = "Окаменелые останки"
+	name = "окаменелые останки"
 	desc = "Останки какой-то огромной допотопной твари."
 	icon = 'modular_ss220/dunes_map/icons/statuelarge.dmi'
 	icon_state = "rib"
@@ -163,57 +163,62 @@
 	layer = ABOVE_ALL_MOB_LAYER
 
 /obj/structure/fluff/desert_construction/skull1
-	name = "Окаменелый череп"
+	name = "окаменелый череп"
 	desc = "Череп какой-то огромной допотопной твари."
 	icon_state = "skull"
 
 /obj/structure/fluff/desert_construction/skull2
-	name = "Окаменелые череп"
+	name = "окаменелые череп"
 	desc = "Череп какой-то огромной допотопной твари."
 	icon_state = "skull-half"
 
 /obj/structure/fluff/desert_construction/ribs
-	name = "Останки"
+	name = "останки"
 	desc = "Белеющие на солнце кости местной фауны."
 	icon_state = "rib_white"
 
 /obj/structure/fluff/desert_construction/stone1
-	name = "Скала"
+	name = "скала"
 	desc = "Массивный каменный обломок."
 	icon_state = "stone1"
 
 /obj/structure/fluff/desert_construction/stone2
-	name = "Скала"
+	name = "скала"
 	desc = "Массивный каменный обломок."
 	icon_state = "stone2"
 
 /obj/structure/fluff/desert_construction/obelisk1
-	name = "Обелиск"
+	name = "обелиск"
 	desc = "Древний обелиск из песчанника, обтесанный и расписаный неизвестными иероглифами."
 	icon_state = "obelisk"
 
 /obj/structure/fluff/desert_construction/altar
-	name = "Кубический алтарь"
+	name = "кубический алтарь"
 	desc = "Геометрически правильное сооружение из черного камня, испускающее тусклый красный свет."
 	icon_state = "cube"
 
 /obj/structure/fluff/desert_construction/head1
-	name = "Массивный каменный бюст"
+	name = "массивный каменный бюст"
 	desc = "Голова отвратительной твари, выбитая в камне."
 	icon_state = "head1"
 
+/obj/structure/fluff/desert_construction/crushedhead
+	name = "разрушенный бюст"
+	desc = "Останки некогда массивной статуи, поддашвейся неумолимой стихии."
+	icon_state = "crushedhead"
+
 /obj/structure/fluff/desert_construction/column1
-	name = "Колонна"
+	name = "колонна"
 	desc = "Колонна из песчаника."
 	icon_state = "column4"
 
 /obj/structure/fluff/desert_construction/column2
-	name = "Обломок колонны"
+	name = "обломок колонны"
 	desc = "Разрушенная колонна из песчаника."
 	icon_state = "column5"
 
 /obj/structure/fluff/desert_construction/red_rocks
-	name = "Камень"
+	name = "камень"
 	desc = "Небольшой обломок красного песчаника."
 	icon_state = "rock"
 	density = FALSE
@@ -224,45 +229,45 @@
 	icon_state = "[pick("rock")]-[rand(1,4)]"
 
 /obj/structure/fluff/desert_construction/black_obelisk1
-	name = "Поврежденный чёрный обелиск"
+	name = "поврежденный чёрный обелиск"
 	desc = "Разрушенный ужасающий черный обелиск, несущий запретные знания в своих письменах"
 	icon_state = "black_obelisk"
 
 /obj/structure/fluff/desert_construction/huge_columns
-	name = "Колонна"
+	name = "колонна"
 	desc = "Колонна из песчаника."
 	icon = 'modular_ss220/dunes_map/icons/columns.dmi'
 	icon_state = "column1"
 
 /obj/structure/fluff/desert_construction/huge_columns/column3
-	name = "Колонна"
+	name = "колонна"
 	desc = "Полуразрушенная колонна из песчаника."
 	icon_state = "column3"
 
 /obj/structure/fluff/desert_construction/huge_columns/column4
-	name = "Колонна"
+	name = "колонна"
 	desc = "Каменная колонна."
 	icon_state = "column2"
 
 /obj/structure/fluff/desert_construction/huge_columns/black_obelisk2
-	name = "Чёрный обелиск"
+	name = "чёрный обелиск"
 	desc = "Ужасающий черный обелиск, несущий запретные знания в своих письменах"
 	icon_state = "black_obelisk2"
 
 /obj/structure/fluff/desert_construction/huge_columns/statue1
-	name = "Монструозная статуя"
+	name = "монструозная статуя"
 	desc = "Статуя отвратительной твари выполненная из черного камня."
 	icon_state = "ugly_statue1"
 
 /obj/structure/fluff/desert_construction/huge_head
-	name = "Огромный каменный бюст"
+	name = "огромный каменный бюст"
 	desc = "Вы никогда не видели чего-то более устрашающего и омерзительного."
 	icon = 'modular_ss220/dunes_map/icons/hugehead.dmi'
 	icon_state = "head2"
 	pixel_x = -16
 
 /obj/structure/fluff/desert_construction/huge_head/statue2
-	name = "Монструозная статуя"
+	name = "монструозная статуя"
 	desc = "Статуя отвратительной твари выполненная из черного камня."
 	icon_state = "ugly_statue2"
 
@@ -271,7 +276,7 @@
 
 /obj/item/dualsaber/midnight_saber
 	name = "злоба"
-	desc = "''Злоба'' - Один из легендарных мечей в галактике, был создан мастером  Согда К'Тримом. Обладающий мистической энергией, он вызывает трепет у тех, кто стоит перед его обладателем.  Злоба - олицетворяет самую темную сторону силы,   рукоять меча  гладкая, не имеющая массивных узоров и рун.  При вспышке света он излучает рванный кроваво-красный свет, словно крича о непокорности и ярости своего владельца.  По мифам в мече ''Злоба'' пребыает сама темная сущность могущества и бесконечного гнева, готовая исполнить волю своего хозяина даже за пределами пространства и времени. Текущий владелец: Миднайт Блэк.."
+	desc = "''Злоба'' - Один из легендарных мечей в галактике, был создан мастером Согда К'Тримом. Обладающий мистической энергией, он вызывает трепет у тех, кто стоит перед его обладателем.  Злоба - олицетворяет самую темную сторону силы,   рукоять меча  гладкая, не имеющая массивных узоров и рун.  При вспышке света он излучает рванный кроваво-красный свет, словно крича о непокорности и ярости своего владельца.  По мифам в мече ''Злоба'' пребыает сама темная сущность могущества и бесконечного гнева, готовая исполнить волю своего хозяина даже за пределами пространства и времени. Текущий владелец: Миднайт Блэк.."
 	icon = 'modular_ss220/dunes_map/icons/saber.dmi'
 	lefthand_file = 'modular_ss220/dunes_map/icons/saber_left.dmi'
 	righthand_file = 'modular_ss220/dunes_map/icons/saber_right.dmi'
