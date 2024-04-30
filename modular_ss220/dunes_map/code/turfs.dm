@@ -5,6 +5,10 @@
 	icon = 'modular_ss220/dunes_map/icons/desert.dmi'
 	icon_state = "brick"
 	temperature = DUNE_TEMPERATURE
+	planetary_atmos = TRUE
+
+/turf/simulated/floor/brick/cold
+	temperature = T20C
 	planetary_atmos = FALSE
 
 /turf/simulated/floor/indestructible/dune_sand
@@ -12,7 +16,7 @@
 	icon = 'modular_ss220/dunes_map/icons/desert.dmi'
 	icon_state = "sand"
 	temperature = DUNE_TEMPERATURE
-	planetary_atmos = FALSE
+	planetary_atmos = TRUE
 	footstep = FOOTSTEP_SAND
 	barefootstep = FOOTSTEP_SAND
 	clawfootstep = FOOTSTEP_SAND
@@ -119,6 +123,7 @@
 	color = "#E6E6E6"
 	temperature = T20C
 	baseturf = /turf/simulated/floor/indestructible/dune_sand/dug/cold
+	planetary_atmos = FALSE
 
 /turf/simulated/floor/indestructible/dune_sand/smooth
 	icon = 'modular_ss220/dunes_map/icons/sand_smooth.dmi'
@@ -132,6 +137,7 @@
 	color = "#E6E6E6"
 	temperature = T20C
 	baseturf = /turf/simulated/floor/indestructible/dune_sand/dug/cold
+	planetary_atmos = FALSE
 
 /turf/simulated/floor/indestructible/dune_sand/dug
 	name = "sand dug"
@@ -141,6 +147,7 @@
 	color = "#E6E6E6"
 	temperature = T20C
 	baseturf = /turf/simulated/floor/indestructible/dune_sand/dug/cold
+	planetary_atmos = FALSE
 
 /turf/simulated/floor/beach/away/water/desert_water
 	icon = 'modular_ss220/dunes_map/icons/desert.dmi'
@@ -158,20 +165,20 @@
 	oxygen = 21.8366
 	nitrogen = 82.1472
 	temperature = DUNE_TEMPERATURE
-	planetary_atmos = FALSE
+	planetary_atmos = TRUE
 
 /turf/simulated/floor/plating/lava/smooth/dune
 	icon = 'modular_ss220/dunes_map/icons/lava.dmi'
-	planetary_atmos = FALSE
+	planetary_atmos = TRUE
 	temperature = DUNE_TEMPERATURE
 
 /turf/simulated/floor/engine/cult/dune
 	icon_state = "cult"
 	temperature = DUNE_TEMPERATURE
-	planetary_atmos = FALSE
+	planetary_atmos = TRUE
 
 /turf/simulated/floor/indestructible/dune
 	temperature = DUNE_TEMPERATURE
-	planetary_atmos = FALSE
+	planetary_atmos = TRUE
 
 #undef DUNE_TEMPERATURE
