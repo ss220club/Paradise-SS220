@@ -506,3 +506,47 @@
 /obj/item/clothing/under/towel_short_alt/brown
 	name = "коричневое махровое маленькое полотенце"
 	color = "#DEB887"
+
+/obj/item/clothing/under/dress/beatrice_dress
+	name = "розовое платье"
+	icon = 'modular_ss220/clothing/icons/object/under.dmi'
+	icon_state = "beatricedress"
+	item_color = "beatricedress"
+	sprite_sheets = list(
+		"Human" = 'modular_ss220/clothing/icons/mob/under.dmi',
+		"Tajaran" = 'modular_ss220/clothing/icons/mob/under.dmi',
+		"Vulpkanin" = 'modular_ss220/clothing/icons/mob/under.dmi',
+		"Kidan" = 'modular_ss220/clothing/icons/mob/under.dmi',
+		"Skrell" = 'modular_ss220/clothing/icons/mob/under.dmi',
+		"Slime People" = 'modular_ss220/clothing/icons/mob/under.dmi',
+		"Plasmaman" = 'modular_ss220/clothing/icons/mob/under.dmi',
+		"Unathi" = 'modular_ss220/clothing/icons/mob/under.dmi'
+	)
+
+/obj/item/clothing/under/dress/black_idol_dress
+	name = "чёрное платье"
+	icon = 'modular_ss220/clothing/icons/object/under.dmi'
+	icon_state = "black_idol_dress"
+	item_color = "black_idol_dress"
+	sprite_sheets = list(
+		"Human" = 'modular_ss220/clothing/icons/mob/under.dmi',
+	)
+
+
+/obj/item/clothing/under/dress/blue_bright_dress
+	name = "светло-синее платье"
+	icon = 'modular_ss220/clothing/icons/object/under.dmi'
+	icon_state = "blue_bright_dress"
+	item_color = "blue_bright_dress"
+	sprite_sheets = list(
+		"Human" = 'modular_ss220/clothing/icons/mob/under.dmi',
+	)
+
+/obj/item/clothing/under/dress/black_rose_dress
+	name = "чёрное вечернее платье"
+	icon = 'modular_ss220/clothing/icons/object/under.dmi'
+	icon_state = "black_rose_dress"
+	item_color = "black_rose_dress"
+	sprite_sheets = list(
+		"Human" = 'modular_ss220/clothing/icons/mob/under.dmi',
+	)
