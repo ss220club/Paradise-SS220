@@ -222,5 +222,3 @@
 	icon = 'modular_ss220/clothing/icons/object/helmet.dmi'
 	icon_state = "hardsuit0-sec"
 	icon_override = 'modular_ss220/clothing/icons/mob/helmet.dmi'
-
-
