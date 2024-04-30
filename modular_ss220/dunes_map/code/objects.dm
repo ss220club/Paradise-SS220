@@ -285,3 +285,62 @@
 	colormap = LIGHT_COLOR_RED
 	wieldsound = 'modular_ss220/dunes_map/sound/weapons/saberon.ogg'
 	unwieldsound = 'modular_ss220/dunes_map/sound/weapons/saberoffquick.ogg'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/obj/item/dualsaber/gromov_saber
+	name = "Ловец Скорби"
+	desc = "''Ловец  Скорби''  (Второе название ''Плакса'') -  Один из легендарных световых мечей.   Он сиволизизирует не только силу власти и могущества, но и является предметом гордости своего обладателя.  Искусно выполненый клинок излучает мягкий голубой свет,   словно призывая к миру и согласию, но при этом скрывает в себе силу и решимость защитить своего хозяина любой ценой.  Рукоять меча состоит из матового металлического материала,  так же на рукояти красуется  фреска с логотипом NT.   Ловец Скорби имеет специфический звук,  отдалённо напоминающий плач, от чего некоторые прозвали меч ''Плаксой'' \n Создатель:  Гаскон-Валлен-Деламот    Текущий владелец: Билл Громов"
+	icon = 'modular_ss220/dunes_map/icons/gromov.dmi'
+	lefthand_file = 'modular_ss220/dunes_map/icons/saber_left.dmi'
+	righthand_file = 'modular_ss220/dunes_map/icons/saber_right.dmi'
+	icon_state = "dualsaber0"
+	blade_color = "gromov"
+	colormap = LIGHT_COLOR_LIGHT_CYAN
+
+	wieldsound = 'modular_ss220/dunes_map/sound/weapons/sabergromovweild.ogg'
+	unwieldsound = 'modular_ss220/dunes_map/sound/weapons/sabegromovunweild.ogg'
+
