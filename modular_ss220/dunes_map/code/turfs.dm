@@ -16,7 +16,7 @@
 	footstep = FOOTSTEP_SAND
 	barefootstep = FOOTSTEP_SAND
 	clawfootstep = FOOTSTEP_SAND
-	heavyfootstep = FOOTSTEP_SAND
+	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 	smoothing_groups = list(SMOOTH_GROUP_FLOOR)
 	var/environment_type = "sand"
 	var/obj/item/stack/digResult = /obj/item/stack/ore/glass
