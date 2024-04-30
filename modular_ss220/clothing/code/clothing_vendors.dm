@@ -7,7 +7,7 @@
 		/obj/item/clothing/under/dress/black_rose_dress = 1
 		)
 	prices += list(
-		/obj/item/clothing/head/ratge = 125,
+		/obj/item/clothing/head/ratge = 75,
 		/obj/item/clothing/under/dress/beatrice_dress = 125,
 		/obj/item/clothing/under/dress/black_idol_dress = 125,
 		/obj/item/clothing/under/dress/blue_bright_dress = 125,
