@@ -206,7 +206,7 @@
 				if(our_excited_group)
 					last_share_check()
 
-#define LAVALAND_TEMPERATURE 500
+#define LAVALAND_TEMPERATURE 365
 
 	if(planetary_atmos) //share our air with the "atmosphere" "above" the turf
 		var/datum/gas_mixture/G = new
