@@ -92,6 +92,11 @@
 	requires_power = TRUE
 	always_unpowered = FALSE
 
+/area/awaymission/arrakis/cave/cave2
+	name = "\improper Пустыня - Храм"
+	requires_power = FALSE
+	always_unpowered = FALSE
+
 /area/awaymission/arrakis/bunker
 	name = "\improper Пустыня - Вход в бункер"
 	icon = 'modular_ss220/dunes_map/icons/areas.dmi'
