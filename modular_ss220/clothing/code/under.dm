@@ -532,7 +532,6 @@
 		"Human" = 'modular_ss220/clothing/icons/mob/under.dmi',
 	)
 
-
 /obj/item/clothing/under/dress/blue_bright_dress
 	name = "светло-синее платье"
 	icon = 'modular_ss220/clothing/icons/object/under.dmi'
