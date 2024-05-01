@@ -167,7 +167,7 @@
 	temperature = DUNE_TEMPERATURE
 	planetary_atmos = TRUE
 
-/turf/simulated/floor/plating/lava/smooth/dune
+/turf/simulated/floor/lava/dune
 	icon = 'modular_ss220/dunes_map/icons/lava.dmi'
 	planetary_atmos = TRUE
 	temperature = DUNE_TEMPERATURE
@@ -180,5 +180,59 @@
 /turf/simulated/floor/indestructible/dune
 	temperature = DUNE_TEMPERATURE
 	planetary_atmos = TRUE
+
+//cave turfs
+
+/turf/simulated/floor/indestructible/dune_sand/cave
+	name = "cave floor"
+	icon = 'modular_ss220/dunes_map/icons/cave_floor.dmi'
+	icon_state = "caverock0"
+	environment_type = "caverock"
+	digResult = /obj/item/stack/ore/slag
+	floor_variance = 10
+
+/turf/simulated/floor/indestructible/dune_sand/cave/Initialize(mapload)
+	var/proper_name = name
+	. = ..()
+	name = proper_name
+	if(prob(floor_variance))
+		icon_state = "[environment_type][rand(1,10)]"
+
+/turf/simulated/floor/indestructible/dune_sand/cave/dug
+	name = "cave floor dug"
+	icon_state = "caverock_dug"
+
+/turf/simulated/floor/indestructible/dune_sand/cave/cold_rock
+	color = "#E6E6E6"
+	temperature = T20C
+	baseturf = /turf/simulated/floor/indestructible/dune_sand/cave/dug/cold
+	planetary_atmos = FALSE
+
+/turf/simulated/floor/indestructible/dune_sand/cave/dug/cold
+	color = "#E6E6E6"
+	temperature = T20C
+	baseturf = /turf/simulated/floor/indestructible/dune_sand/cave/dug/cold
+	planetary_atmos = FALSE
+
+/turf/simulated/floor/indestructible/dune_sand/cave/cavedeep
+	icon_state = "caverockdeep0"
+	environment_type = "caverockdeep"
+	digResult = /obj/item/stack/sheet/mineral/sandstone
+
+/turf/simulated/floor/indestructible/dune_sand/cave/cavedeep/dug
+	name = "cave floor dug"
+	icon_state = "caverockdeep_dug"
+
+/turf/simulated/floor/indestructible/dune_sand/cave/cavedeep/cold_rock
+	color = "#E6E6E6"
+	temperature = T20C
+	baseturf = /turf/simulated/floor/indestructible/dune_sand/cave/cavedeep/dug/cold
+	planetary_atmos = FALSE
+
+/turf/simulated/floor/indestructible/dune_sand/cave/cavedeep/dug/cold
+	color = "#E6E6E6"
+	temperature = T20C
+	baseturf = /turf/simulated/floor/indestructible/dune_sand/cave/cavedeep/dug/cold
+	planetary_atmos = FALSE
 
 #undef DUNE_TEMPERATURE
