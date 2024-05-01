@@ -265,9 +265,8 @@
 	name = "капюшон пустынной накидки"
 	desc = "Капюшон, прикреплённый к пустынной накидке."
 	icon = 'modular_ss220/clothing/icons/object/hats.dmi'
-	icon_state = "desertcape"
+	icon_state = "desertcape_hood"
 	icon_override = 'modular_ss220/clothing/icons/mob/hats.dmi'
-	body_parts_covered = HEAD
 	heat_protection = HEAD
 	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
 	flags = BLOCKHAIR
@@ -287,10 +286,40 @@
 	name = "капюшон лёгкой пустынной накидки"
 	desc = "Капюшон, прикреплённый к лёгкой пустынной накидке."
 	icon = 'modular_ss220/clothing/icons/object/hats.dmi'
-	icon_state = "desertlightcape"
+	icon_state = "desertlightcape_hood"
 	icon_override = 'modular_ss220/clothing/icons/mob/hats.dmi'
-	body_parts_covered = HEAD
 	heat_protection = HEAD
 	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
 	flags = BLOCKHAIR
 	flags_inv = HIDEEARS
+
+//CentComm dune hardsuit
+/obj/item/clothing/suit/space/hardsuit/centcomm_desert
+	name = "\improper сэсэс"
+	desc = "сэсэс."
+	icon = 'modular_ss220/clothing/icons/object/suits.dmi'
+	icon_state = "hardsuit-CCdesert"
+	item_state = "hardsuit-CCdesert"
+	slowdown = 0.25
+	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
+	flags_inv = HIDEJUMPSUIT|HIDETAIL
+	armor = list(MELEE = 35, BULLET = 15, LASER = 30, ENERGY = 10, BOMB = 30, RAD = 50, FIRE = 75, ACID = 75)
+	allowed = list(/obj/item/gun, /obj/item/flashlight, /obj/item/tank/internals, /obj/item/melee/baton, /obj/item/reagent_containers/spray/pepper, /obj/item/ammo_box, /obj/item/ammo_casing, /obj/item/restraints/handcuffs)
+	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/centcomm_desert
+	sprite_sheets = list(
+		"Human" = 'modular_ss220/clothing/icons/mob/suits.dmi',
+	)
+	species_restricted = list("Human")
+
+/obj/item/clothing/head/helmet/space/hardsuit/centcomm_desert
+	name = "\improper сэсэс"
+	desc = "сэсэс."
+	icon = 'modular_ss220/clothing/icons/object/helmet.dmi'
+	icon_state = "hardsuit0-CCdesert"
+	item_state = "hardsuit0-CCdesert"
+	item_color = "CCdesert"
+	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
+	sprite_sheets = list(
+		"Human" = 'modular_ss220/clothing/icons/mob/helmet.dmi',
+	)
+	species_restricted = list("Human")
