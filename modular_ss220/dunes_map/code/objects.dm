@@ -272,75 +272,45 @@
 	icon_state = "ugly_statue2"
 
 
-//sabers
+//legendary sabers
 
-/obj/item/dualsaber/midnight_saber
-	name = "злоба"
+/obj/item/dualsaber/legendary_saber
+	name = "Злоба"
 	desc = "''Злоба'' - Один из легендарных мечей в галактике, был создан мастером Согда К'Тримом. Обладающий мистической энергией, он вызывает трепет у тех, кто стоит перед его обладателем.  Злоба - олицетворяет самую темную сторону силы,   рукоять меча  гладкая, не имеющая массивных узоров и рун.  При вспышке света он излучает рванный кроваво-красный свет, словно крича о непокорности и ярости своего владельца.  По мифам в мече ''Злоба'' пребыает сама темная сущность могущества и бесконечного гнева, готовая исполнить волю своего хозяина даже за пределами пространства и времени. Текущий владелец: Миднайт Блэк.."
 	icon = 'modular_ss220/dunes_map/icons/saber.dmi'
 	lefthand_file = 'modular_ss220/dunes_map/icons/saber_left.dmi'
 	righthand_file = 'modular_ss220/dunes_map/icons/saber_right.dmi'
-	icon_state = "dualsaber0"
+	icon_state = "mid_dualsaber0"
 	blade_color = "midnight"
 	colormap = LIGHT_COLOR_RED
-	wieldsound = 'modular_ss220/dunes_map/sound/weapons/saberon.ogg'
-	unwieldsound = 'modular_ss220/dunes_map/sound/weapons/saberoffquick.ogg'
+	wieldsound = 'modular_ss220/dunes_map/sound/weapons/mid_saberon.ogg'
+	unwieldsound = 'modular_ss220/dunes_map/sound/weapons/mid_saberoff.ogg'
+	var/saber_name = "mid"
 
+/obj/item/dualsaber/legendary_saber/update_icon_state()
+	if(HAS_TRAIT(src, TRAIT_WIELDED))
+		icon_state = "[saber_name]_dualsaber[blade_color]1"
+		set_light(brightness_on, l_color=colormap)
+	else
+		icon_state = "[saber_name]_dualsaber0"
+		set_light(0)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/obj/item/dualsaber/gromov_saber
+/obj/item/dualsaber/legendary_saber/gromov_saber
 	name = "Ловец Скорби"
 	desc = "''Ловец  Скорби''  (Второе название ''Плакса'') -  Один из легендарных световых мечей.   Он сиволизизирует не только силу власти и могущества, но и является предметом гордости своего обладателя.  Искусно выполненый клинок излучает мягкий голубой свет,   словно призывая к миру и согласию, но при этом скрывает в себе силу и решимость защитить своего хозяина любой ценой.  Рукоять меча состоит из матового металлического материала,  так же на рукояти красуется  фреска с логотипом NT.   Ловец Скорби имеет специфический звук,  отдалённо напоминающий плач, от чего некоторые прозвали меч ''Плаксой'' \n Создатель:  Гаскон-Валлен-Деламот    Текущий владелец: Билл Громов"
-	icon = 'modular_ss220/dunes_map/icons/gromov.dmi'
-	lefthand_file = 'modular_ss220/dunes_map/icons/saber_left.dmi'
-	righthand_file = 'modular_ss220/dunes_map/icons/saber_right.dmi'
-	icon_state = "dualsaber0"
+	icon_state = "gr_dualsaber0"
 	blade_color = "gromov"
 	colormap = LIGHT_COLOR_LIGHT_CYAN
+	saber_name = "gr"
+	wieldsound = 'modular_ss220/dunes_map/sound/weapons/gr_saberon.ogg'
+	unwieldsound = 'modular_ss220/dunes_map/sound/weapons/gr_saberoff.ogg'
 
-	wieldsound = 'modular_ss220/dunes_map/sound/weapons/sabergromovweild.ogg'
-	unwieldsound = 'modular_ss220/dunes_map/sound/weapons/sabegromovunweild.ogg'
-
+/obj/item/dualsaber/legendary_saber/sharlotta_saber
+	name = "Пламя"
+	desc = "''Пламя'' - один из легендарных световых мечей. Он отражает неумолимую справедливость и рьяность характера своего хозяина. В противоречие грозному названию, эфес меча представляет собой аккуратное и ''нежное'' произведение искусства - отполированная нарезная титановая основа завершается золотым навершием, а декоративная гарда выполнен в виде раскрывшегося бутона. Энергетический клинок источает яркий фиолетовый свет, несущий очищение и упокоение своим врагам. Рукоять меча крайне хорошо сбалансирована и отдает дань аристократическим традициям человеческого прошлого. Создатель: Гаскон-Валлен-Деламот. Текущий владелец: Шарлотта Дитерхис."
+	icon_state = "sh_dualsaber0"
+	blade_color = "sharlotta"
+	colormap = LIGHT_COLOR_LAVENDER
+	saber_name = "sh"
+	wieldsound = 'modular_ss220/dunes_map/sound/weapons/sh_saberon.ogg'
+	unwieldsound = 'modular_ss220/dunes_map/sound/weapons/sh_saberoff.ogg'
