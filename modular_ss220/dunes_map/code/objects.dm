@@ -286,6 +286,8 @@
 	wieldsound = 'modular_ss220/dunes_map/sound/weapons/mid_saberon.ogg'
 	unwieldsound = 'modular_ss220/dunes_map/sound/weapons/mid_saberoff.ogg'
 	var/saber_name = "mid"
+	var/hit_unwield = 'modular_ss220/dunes_map/sound/weapons/mid_saberhit.ogg'
+	var/hit_wield = "swing_hit"
 
 /obj/item/dualsaber/legendary_saber/update_icon_state()
 	if(HAS_TRAIT(src, TRAIT_WIELDED))
@@ -294,6 +296,18 @@
 	else
 		icon_state = "[saber_name]_dualsaber0"
 		set_light(0)
+
+/obj/item/dualsaber/legendary_saber/on_wield(obj/item/source, mob/living/carbon/user)
+	if(user && HAS_TRAIT(user, TRAIT_HULK))
+		to_chat(user, "<span class='warning'>You lack the grace to wield this!</span>")
+		return COMPONENT_TWOHANDED_BLOCK_WIELD
+
+	hitsound = hit_unwield
+	w_class = w_class_on
+
+/obj/item/dualsaber/legendary_saber/on_unwield()
+	hitsound = hit_wield
+	w_class = initial(w_class)
 
 /obj/item/dualsaber/legendary_saber/gromov_saber
 	name = "Ловец Скорби"
@@ -304,6 +318,7 @@
 	saber_name = "gr"
 	wieldsound = 'modular_ss220/dunes_map/sound/weapons/gr_saberon.ogg'
 	unwieldsound = 'modular_ss220/dunes_map/sound/weapons/gr_saberoff.ogg'
+	hit_unwield = 'modular_ss220/dunes_map/sound/weapons/gr_saberhit.ogg'
 
 /obj/item/dualsaber/legendary_saber/sharlotta_saber
 	name = "Пламя"
@@ -314,3 +329,4 @@
 	saber_name = "sh"
 	wieldsound = 'modular_ss220/dunes_map/sound/weapons/sh_saberon.ogg'
 	unwieldsound = 'modular_ss220/dunes_map/sound/weapons/sh_saberoff.ogg'
+	hit_unwield = 'modular_ss220/dunes_map/sound/weapons/sh_saberhit.ogg'
