@@ -267,7 +267,11 @@
 	flags = BLOCKHAIR
 	flags_inv = HIDEEARS
 
-//CentComm dune hardsuit
+
+
+//dune hardsuit
+
+//цкшные допилю
 /obj/item/clothing/suit/space/hardsuit/centcomm_desert
 	name = "\improper сэсэс"
 	desc = "сэсэс."
@@ -292,6 +296,35 @@
 	icon_state = "hardsuit0-CCdesert"
 	item_state = "hardsuit0-CCdesert"
 	item_color = "CCdesert"
+	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
+	sprite_sheets = list(
+		"Human" = 'modular_ss220/clothing/icons/mob/helmet.dmi',
+	)
+	species_restricted = list("Human")
+
+/obj/item/clothing/suit/space/hardsuit/midnight_suit
+	name = "\improper костюм Миднайта"
+	desc = "Экзоскелет ударной группы синдиката, модернизированный по спецзаказу Миднайта Блэка."
+	icon = 'modular_ss220/clothing/icons/object/suits.dmi'
+	icon_state = "hardsuit-midnightsuit"
+	item_state = "hardsuit-midnightsuit"
+	slowdown = 0.25
+	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
+	flags_inv = HIDEJUMPSUIT|HIDETAIL
+	armor = list(MELEE = 35, BULLET = 35, LASER = 30, ENERGY = 20, BOMB = 50, RAD = 100, FIRE = 75, ACID = 75)
+	allowed = list(/obj/item/gun, /obj/item/flashlight, /obj/item/tank/internals, /obj/item/melee/baton, /obj/item/ammo_box, /obj/item/ammo_casing, /obj/item/restraints/handcuffs, /obj/item/dualsaber, /obj/item/gun)
+	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/midnight_suit
+	sprite_sheets = list(
+		"Human" = 'modular_ss220/clothing/icons/mob/suits.dmi',
+	)
+	species_restricted = list("Human")
+/obj/item/clothing/head/helmet/space/hardsuit/midnight_suit
+	name = "\improper сэсэс"
+	desc = "Шлем костюма Миднайта."
+	icon = 'modular_ss220/clothing/icons/object/helmet.dmi'
+	icon_state = "hardsuit0-midnightsuit"
+	item_state = "hardsuit0-midnightsuit"
+	item_color = "midnightsuit"
 	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
 	sprite_sheets = list(
 		"Human" = 'modular_ss220/clothing/icons/mob/helmet.dmi',

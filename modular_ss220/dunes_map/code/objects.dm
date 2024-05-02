@@ -286,8 +286,8 @@
 	wieldsound = 'modular_ss220/dunes_map/sound/weapons/mid_saberon.ogg'
 	unwieldsound = 'modular_ss220/dunes_map/sound/weapons/mid_saberoff.ogg'
 	var/saber_name = "mid"
-	var/hit_unwield = 'modular_ss220/dunes_map/sound/weapons/mid_saberhit.ogg'
-	var/hit_wield = "swing_hit"
+	var/hit_wield = 'modular_ss220/dunes_map/sound/weapons/mid_saberhit.ogg'
+	var/hit_unwield = "swing_hit"
 
 /obj/item/dualsaber/legendary_saber/update_icon_state()
 	if(HAS_TRAIT(src, TRAIT_WIELDED))
@@ -302,11 +302,11 @@
 		to_chat(user, "<span class='warning'>You lack the grace to wield this!</span>")
 		return COMPONENT_TWOHANDED_BLOCK_WIELD
 
-	hitsound = hit_unwield
+	hitsound = hit_wield
 	w_class = w_class_on
 
 /obj/item/dualsaber/legendary_saber/on_unwield()
-	hitsound = hit_wield
+	hitsound = hit_unwield
 	w_class = initial(w_class)
 
 /obj/item/dualsaber/legendary_saber/gromov_saber
@@ -318,7 +318,7 @@
 	saber_name = "gr"
 	wieldsound = 'modular_ss220/dunes_map/sound/weapons/gr_saberon.ogg'
 	unwieldsound = 'modular_ss220/dunes_map/sound/weapons/gr_saberoff.ogg'
-	hit_unwield = 'modular_ss220/dunes_map/sound/weapons/gr_saberhit.ogg'
+	hit_wield = 'modular_ss220/dunes_map/sound/weapons/gr_saberhit.ogg'
 
 /obj/item/dualsaber/legendary_saber/sharlotta_saber
 	name = "Пламя"
@@ -329,4 +329,17 @@
 	saber_name = "sh"
 	wieldsound = 'modular_ss220/dunes_map/sound/weapons/sh_saberon.ogg'
 	unwieldsound = 'modular_ss220/dunes_map/sound/weapons/sh_saberoff.ogg'
-	hit_unwield = 'modular_ss220/dunes_map/sound/weapons/sh_saberhit.ogg'
+	hit_wield = 'modular_ss220/dunes_map/sound/weapons/sh_saberhit.ogg'
+
+/obj/item/dualsaber/legendary_saber/kirien_katana
+	name = "Верность клятве"
+	desc = "''Верность Клятве'' - Легендарный световой меч с впечатляющим изумрудно-зеленым свечением.   Сияющий осколок зеленого света, словно призывает к доблести и чести.  Владение данным  оружием говорит о преданности и силе духа.  Этот меч служит, как напоминание о обязательствах и клятвах, данным владельцем при его получении.  Согласно мифам,  в свечении отражается сама душа создателя   Арканона, который проводил долгие годы в изоляции в попытках создать воистину  уникальное творение.  Рукоять хромированный сатин, украшенный древними иероглифами людской расы. Создатель: Арканон  Текущий владелец: Хель Кириэн."
+	icon_state = "kir_dualsaber0"
+	blade_color = "kirien"
+	colormap = LIGHT_COLOR_PURE_GREEN
+	force_unwielded = 18
+	saber_name = "kir"
+	wieldsound = 'modular_ss220/dunes_map/sound/weapons/sh_saberon.ogg'
+	unwieldsound = 'modular_ss220/dunes_map/sound/weapons/sh_saberoff.ogg'
+	hit_wield = 'sound/weapons/blade1.ogg'
+	hit_unwield = 'sound/weapons/slash.ogg'
