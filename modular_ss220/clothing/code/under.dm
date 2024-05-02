@@ -542,11 +542,10 @@
 
 /obj/item/clothing/under/desert_suit
 	name = "дистикомб"
-	desc = "Плотный обтягивающий комбенизон. Тонкая, многослойная ткань предназначена для рассеяния тепла и фильтрации выделяющейся из тела воды."
+	desc = "Плотный обтягивающий комбенизон. Тонкая многослойная ткань предназначена для рассеяния тепла и фильтрации выделяющейся из тела воды."
 	icon = 'modular_ss220/clothing/icons/object/under.dmi'
 	icon_state = "exp_suit_desert"
 	item_color = "exp_suit_desert"
-	icon_override = 'modular_ss220/clothing/icons/mob/under.dmi'
 	sprite_sheets = list(
 		"Human" = 'modular_ss220/clothing/icons/mob/under.dmi',
 	)
@@ -555,3 +554,24 @@
 	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
 	heat_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	armor = list(MELEE = 20, BULLET = 10, LASER = 10, ENERGY = 5, BOMB = 20, RAD = 0, FIRE = 50, ACID = 50)
+
+/obj/item/clothing/under/desert_suit/kidan_desertsuit
+	name = "пустынная одежда жуков"
+	desc = "Удобная и практичная одежда из тонкой многослойной ткани с подшитым изнутри регулятором тепла."
+	icon = 'modular_ss220/clothing/icons/object/under.dmi'
+	icon_state = "kidan_desertsuit"
+	item_color = "kidan_desertsuit"
+	sprite_sheets = list(
+		"Kidan" = 'modular_ss220/clothing/icons/mob/under.dmi',
+	)
+	species_restricted = list("Kidan")
+
+/obj/item/clothing/under/desert_ntuniform
+	name = "пустынная униформа"
+	desc = "Стандартная униформа Компании для работы в жарком климате. Не подойдет для долгих прогулок под палящим солнцем."
+	icon = 'modular_ss220/clothing/icons/object/under.dmi'
+	icon_state = "desert_ntuniform"
+	item_color = "desert_ntuniform"
+	sprite_sheets = list(
+		"Human" = 'modular_ss220/clothing/icons/mob/under.dmi',
+		)

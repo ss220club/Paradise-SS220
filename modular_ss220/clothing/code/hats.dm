@@ -165,3 +165,14 @@
 	cold_protection = HEAD
 	heat_protection = HEAD
 	armor = list(MELEE = 10, BULLET = 5, LASER = 5, ENERGY = 5, BOMB = 5, RAD = 0, FIRE = 50, ACID = 50)
+
+/obj/item/clothing/head/arafat_desert/kufiyakidan
+	name = "киданская куфия"
+	desc = "Удобная и лёгкая куфия, сшитая под киданскую голову"
+	icon_state = "kufiyakidan"
+	flags_inv = HIDEEARS
+	flags_cover = HEADCOVERSEYES
+	sprite_sheets = list(
+		"Kidan" = 'modular_ss220/clothing/icons/mob/hats.dmi',
+		)
+	species_restricted = list("Kidan")
