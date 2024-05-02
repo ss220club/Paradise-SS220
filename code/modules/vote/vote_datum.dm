@@ -119,7 +119,7 @@
 	to_chat(world, chat_box_purple(
 		"<span><font color='purple'><b>[start_text]</b></br></br>\
 		<a href='byond://?src=[SSvote.UID()];vote=open'>Нажмите здесь или введите <code>Vote</code>, чтобы оставить голос.</a></br>\
-		У вас [GLOB.configuration.vote.vote_time / 10] секунд на выбор.</span>"))
+		У вас [GLOB.configuration.vote.vote_time / 10] секунд на выбор.</span>"), MESSAGE_TYPE_OOC)
 	SEND_SOUND(world, sound('sound/ambience/alarm4.ogg'))
 
 
