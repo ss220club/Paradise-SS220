@@ -573,7 +573,7 @@
 			if(prob(5))
 				Paralyse(4 SECONDS)
 			switch(health)
-				if(-INFINITY to -100)
+				if(-INFINITY to -50) // SS220 EDIT - Less survivability
 					adjustOxyLoss(1)
 					if(prob(health * -0.1))
 						if(ishuman(src))
@@ -583,14 +583,14 @@
 						var/datum/disease/D = new /datum/disease/critical/heart_failure
 						ForceContractDisease(D)
 					Paralyse(10 SECONDS)
-				if(-99 to -80)
+				if(-49 to -40) // SS220 EDIT - Less survivability
 					adjustOxyLoss(1)
 					if(prob(4))
 						to_chat(src, "<span class='userdanger'>Your chest hurts...</span>")
 						Paralyse(4 SECONDS)
 						var/datum/disease/D = new /datum/disease/critical/heart_failure
 						ForceContractDisease(D)
-				if(-79 to -50)
+				if(-39 to -25) // SS220 EDIT - Less survivability
 					adjustOxyLoss(1)
 					if(prob(10))
 						var/datum/disease/D = new /datum/disease/critical/shock
@@ -603,7 +603,7 @@
 						Weaken(6 SECONDS)
 					if(prob(3))
 						Paralyse(4 SECONDS)
-				if(-49 to 0)
+				if(-24 to 0) // SS220 EDIT - Less survivability
 					adjustOxyLoss(1)
 					if(prob(3))
 						var/datum/disease/D = new /datum/disease/critical/shock
