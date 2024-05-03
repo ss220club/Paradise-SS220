@@ -521,7 +521,6 @@
 		"Drask" 			= 	'modular_ss220/clothing/icons/mob/under.dmi',
 		"Grey" 				= 	'modular_ss220/clothing/icons/mob/under.dmi',
 		"Human" 			= 	'modular_ss220/clothing/icons/mob/under.dmi',
-		"Kidan" 			= 	'modular_ss220/clothing/icons/mob/under.dmi',
 		"Machine"			= 	'modular_ss220/clothing/icons/mob/under.dmi',
 		"Nian" 				= 	'modular_ss220/clothing/icons/mob/under.dmi',
 		"Plasmaman" 		= 	'modular_ss220/clothing/icons/mob/under.dmi',
@@ -530,8 +529,9 @@
 		"Unathi" 			= 	'modular_ss220/clothing/icons/mob/under.dmi',
 		"Vox" 				= 	'modular_ss220/clothing/icons/mob/under.dmi',
 		"Nucleation"		=	'modular_ss220/clothing/icons/mob/under.dmi',
+		"Kidan" 			= 	'modular_ss220/clothing/icons/mob/species/kidan/under.dmi',
 		"Tajaran" 			=	'modular_ss220/clothing/icons/mob/species/tajaran/under.dmi',
-		"Vulpkanin" 		= 	'modular_ss220/clothing/icons/mob/under.dmi',
+		"Vulpkanin" 		= 	'modular_ss220/clothing/icons/mob/species/vulpkanin/under.dmi',
 	)
 /obj/item/clothing/under/dune/heatprotect
 	name = "дистикомб"
@@ -543,24 +543,6 @@
 	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
 	heat_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	armor = list(MELEE = 20, BULLET = 10, LASER = 10, ENERGY = 5, BOMB = 20, RAD = 0, FIRE = 50, ACID = 50)
-	sprite_sheets = list(
-		"Human"				= 	'modular_ss220/clothing/icons/mob/under.dmi',
-		"Diona" 			= 	'modular_ss220/clothing/icons/mob/under.dmi',
-		"Drask" 			= 	'modular_ss220/clothing/icons/mob/under.dmi',
-		"Grey" 				= 	'modular_ss220/clothing/icons/mob/under.dmi',
-		"Human" 			= 	'modular_ss220/clothing/icons/mob/under.dmi',
-		"Kidan" 			= 	'modular_ss220/clothing/icons/mob/under.dmi',
-		"Machine"			= 	'modular_ss220/clothing/icons/mob/under.dmi',
-		"Nian" 				= 	'modular_ss220/clothing/icons/mob/under.dmi',
-		"Plasmaman" 		= 	'modular_ss220/clothing/icons/mob/under.dmi',
-		"Skrell" 			= 	'modular_ss220/clothing/icons/mob/under.dmi',
-		"Slime People" 		= 	'modular_ss220/clothing/icons/mob/under.dmi',
-		"Unathi" 			= 	'modular_ss220/clothing/icons/mob/under.dmi',
-		"Vox" 				= 	'modular_ss220/clothing/icons/mob/under.dmi',
-		"Nucleation"		=	'modular_ss220/clothing/icons/mob/under.dmi',
-		"Tajaran" 			=	'modular_ss220/clothing/icons/mob/species/tajaran/under.dmi',
-		"Vulpkanin" 		= 	'modular_ss220/clothing/icons/mob/species/vulpkanin/under.dmi',
-	)
 
 /obj/item/clothing/under/dune/heatprotect/kidan
 	name = "пустынная одежда жуков"
@@ -574,24 +556,6 @@
 	desc = "Лохмотья, укрепленные стальными пластинами и шипами."
 	icon_state = "raider_butcher"
 	item_color = "raider_butcher"
-	sprite_sheets = list(
-		"Human"				= 	'modular_ss220/clothing/icons/mob/under.dmi',
-		"Diona" 			= 	'modular_ss220/clothing/icons/mob/under.dmi',
-		"Drask" 			= 	'modular_ss220/clothing/icons/mob/under.dmi',
-		"Grey" 				= 	'modular_ss220/clothing/icons/mob/under.dmi',
-		"Human" 			= 	'modular_ss220/clothing/icons/mob/under.dmi',
-		"Kidan" 			= 	'modular_ss220/clothing/icons/mob/under.dmi',
-		"Machine"			= 	'modular_ss220/clothing/icons/mob/under.dmi',
-		"Nian" 				= 	'modular_ss220/clothing/icons/mob/under.dmi',
-		"Plasmaman" 		= 	'modular_ss220/clothing/icons/mob/under.dmi',
-		"Skrell" 			= 	'modular_ss220/clothing/icons/mob/under.dmi',
-		"Slime People" 		= 	'modular_ss220/clothing/icons/mob/under.dmi',
-		"Unathi" 			= 	'modular_ss220/clothing/icons/mob/under.dmi',
-		"Vox" 				= 	'modular_ss220/clothing/icons/mob/under.dmi',
-		"Nucleation"		=	'modular_ss220/clothing/icons/mob/under.dmi',
-		"Tajaran" 			=	'modular_ss220/clothing/icons/mob/species/tajaran/under.dmi',
-		"Vulpkanin" 		= 	'modular_ss220/clothing/icons/mob/species/vulpkanin/under.dmi',
-	)
 	armor = list(MELEE = 25, BULLET = 15, LASER = 15, ENERGY = 5, BOMB = 20, RAD = 0, FIRE = 50, ACID = 50)
 
 /obj/item/clothing/under/dune/heatprotect/raider/raider_fem
