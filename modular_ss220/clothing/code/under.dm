@@ -508,70 +508,101 @@
 	color = "#DEB887"
 
 //desert
-/obj/item/clothing/under/raider
-	name = "броня рейдера-мясника"
-	desc = "Лохмотья, укрепленные стальными пластинами и шипами."
-	icon = 'modular_ss220/clothing/icons/object/under.dmi'
-	icon_state = "raider_butcher"
-	item_color = "raider_butcher"
-	icon_override= 'modular_ss220/clothing/icons/mob/under.dmi'
-	sprite_sheets = list(
-		"Human" = 'modular_ss220/clothing/icons/mob/under.dmi',
-	)
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|FEET
-	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
-	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
-	heat_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
-	armor = list(MELEE = 25, BULLET = 15, LASER = 15, ENERGY = 5, BOMB = 20, RAD = 0, FIRE = 50, ACID = 50)
 
-/obj/item/clothing/under/raider/raider_fem
-	name = "броня рейдера"
-	desc = "Кожаная жилетка, обшитая пластинами железа и пластали."
-	icon_state = "fem_raider"
-	item_color = "fem_raider"
-
-/obj/item/clothing/under/raider/kidan1
-	name = "броня жука-рейдера"
-	desc = "Плотно скрепленные пласталевые пластины на кожаном каркасе. Самый страшный звук ночной пустыни - клик-клак..."
-	icon_state = "raider_kidan"
-	item_color = "raider_kidan"
-	species_restricted = list("Kidan")
-	sprite_sheets = list(
-		"Kidan" = 'modular_ss220/clothing/icons/mob/under.dmi',
-	)
-
-/obj/item/clothing/under/desert_suit
-	name = "дистикомб"
-	desc = "Плотный обтягивающий комбенизон. Тонкая многослойная ткань предназначена для рассеяния тепла и фильтрации выделяющейся из тела воды."
-	icon = 'modular_ss220/clothing/icons/object/under.dmi'
-	icon_state = "exp_suit_desert"
-	item_color = "exp_suit_desert"
-	sprite_sheets = list(
-		"Human" = 'modular_ss220/clothing/icons/mob/under.dmi',
-	)
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|FEET
-	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
-	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
-	heat_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
-	armor = list(MELEE = 20, BULLET = 10, LASER = 10, ENERGY = 5, BOMB = 20, RAD = 0, FIRE = 50, ACID = 50)
-
-/obj/item/clothing/under/desert_suit/kidan_desertsuit
-	name = "пустынная одежда жуков"
-	desc = "Удобная и практичная одежда из тонкой многослойной ткани с подшитым изнутри регулятором тепла."
-	icon = 'modular_ss220/clothing/icons/object/under.dmi'
-	icon_state = "kidan_desertsuit"
-	item_color = "kidan_desertsuit"
-	sprite_sheets = list(
-		"Kidan" = 'modular_ss220/clothing/icons/mob/under.dmi',
-	)
-	species_restricted = list("Kidan")
-
-/obj/item/clothing/under/desert_ntuniform
+/obj/item/clothing/under/dune
 	name = "пустынная униформа"
 	desc = "Стандартная униформа Компании для работы в жарком климате. Не подойдет для долгих прогулок под палящим солнцем."
 	icon = 'modular_ss220/clothing/icons/object/under.dmi'
 	icon_state = "desert_ntuniform"
 	item_color = "desert_ntuniform"
 	sprite_sheets = list(
-		"Human" = 'modular_ss220/clothing/icons/mob/under.dmi',
-		)
+		"Human"				= 	'modular_ss220/clothing/icons/mob/under.dmi',
+		"Diona" 			= 	'modular_ss220/clothing/icons/mob/under.dmi',
+		"Drask" 			= 	'modular_ss220/clothing/icons/mob/under.dmi',
+		"Grey" 				= 	'modular_ss220/clothing/icons/mob/under.dmi',
+		"Human" 			= 	'modular_ss220/clothing/icons/mob/under.dmi',
+		"Kidan" 			= 	'modular_ss220/clothing/icons/mob/under.dmi',
+		"Machine"			= 	'modular_ss220/clothing/icons/mob/under.dmi',
+		"Nian" 				= 	'modular_ss220/clothing/icons/mob/under.dmi',
+		"Plasmaman" 		= 	'modular_ss220/clothing/icons/mob/under.dmi',
+		"Skrell" 			= 	'modular_ss220/clothing/icons/mob/under.dmi',
+		"Slime People" 		= 	'modular_ss220/clothing/icons/mob/under.dmi',
+		"Unathi" 			= 	'modular_ss220/clothing/icons/mob/under.dmi',
+		"Vox" 				= 	'modular_ss220/clothing/icons/mob/under.dmi',
+		"Nucleation"		=	'modular_ss220/clothing/icons/mob/under.dmi',
+		"Tajaran" 			=	'modular_ss220/clothing/icons/mob/species/tajaran/under.dmi',
+		"Vulpkanin" 		= 	'modular_ss220/clothing/icons/mob/under.dmi',
+	)
+/obj/item/clothing/under/dune/heatprotect
+	name = "дистикомб"
+	desc = "Плотный обтягивающий комбенизон. Тонкая многослойная ткань предназначена для рассеяния тепла и фильтрации выделяющейся из тела воды."
+	icon_state = "exp_suit_desert"
+	item_color = "exp_suit_desert"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|FEET
+	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
+	heat_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+	armor = list(MELEE = 20, BULLET = 10, LASER = 10, ENERGY = 5, BOMB = 20, RAD = 0, FIRE = 50, ACID = 50)
+	sprite_sheets = list(
+		"Human"				= 	'modular_ss220/clothing/icons/mob/under.dmi',
+		"Diona" 			= 	'modular_ss220/clothing/icons/mob/under.dmi',
+		"Drask" 			= 	'modular_ss220/clothing/icons/mob/under.dmi',
+		"Grey" 				= 	'modular_ss220/clothing/icons/mob/under.dmi',
+		"Human" 			= 	'modular_ss220/clothing/icons/mob/under.dmi',
+		"Kidan" 			= 	'modular_ss220/clothing/icons/mob/under.dmi',
+		"Machine"			= 	'modular_ss220/clothing/icons/mob/under.dmi',
+		"Nian" 				= 	'modular_ss220/clothing/icons/mob/under.dmi',
+		"Plasmaman" 		= 	'modular_ss220/clothing/icons/mob/under.dmi',
+		"Skrell" 			= 	'modular_ss220/clothing/icons/mob/under.dmi',
+		"Slime People" 		= 	'modular_ss220/clothing/icons/mob/under.dmi',
+		"Unathi" 			= 	'modular_ss220/clothing/icons/mob/under.dmi',
+		"Vox" 				= 	'modular_ss220/clothing/icons/mob/under.dmi',
+		"Nucleation"		=	'modular_ss220/clothing/icons/mob/under.dmi',
+		"Tajaran" 			=	'modular_ss220/clothing/icons/mob/species/tajaran/under.dmi',
+		"Vulpkanin" 		= 	'modular_ss220/clothing/icons/mob/species/vulpkanin/under.dmi',
+	)
+
+/obj/item/clothing/under/dune/heatprotect/kidan
+	name = "пустынная одежда жуков"
+	desc = "Удобная и практичная одежда из тонкой многослойной ткани с подшитым изнутри регулятором тепла."
+	icon_state = "kidan_desertsuit"
+	item_color = "kidan_desertsuit"
+	species_restricted = list("Kidan")
+
+/obj/item/clothing/under/dune/heatprotect/raider
+	name = "броня рейдера-мясника"
+	desc = "Лохмотья, укрепленные стальными пластинами и шипами."
+	icon_state = "raider_butcher"
+	item_color = "raider_butcher"
+	sprite_sheets = list(
+		"Human"				= 	'modular_ss220/clothing/icons/mob/under.dmi',
+		"Diona" 			= 	'modular_ss220/clothing/icons/mob/under.dmi',
+		"Drask" 			= 	'modular_ss220/clothing/icons/mob/under.dmi',
+		"Grey" 				= 	'modular_ss220/clothing/icons/mob/under.dmi',
+		"Human" 			= 	'modular_ss220/clothing/icons/mob/under.dmi',
+		"Kidan" 			= 	'modular_ss220/clothing/icons/mob/under.dmi',
+		"Machine"			= 	'modular_ss220/clothing/icons/mob/under.dmi',
+		"Nian" 				= 	'modular_ss220/clothing/icons/mob/under.dmi',
+		"Plasmaman" 		= 	'modular_ss220/clothing/icons/mob/under.dmi',
+		"Skrell" 			= 	'modular_ss220/clothing/icons/mob/under.dmi',
+		"Slime People" 		= 	'modular_ss220/clothing/icons/mob/under.dmi',
+		"Unathi" 			= 	'modular_ss220/clothing/icons/mob/under.dmi',
+		"Vox" 				= 	'modular_ss220/clothing/icons/mob/under.dmi',
+		"Nucleation"		=	'modular_ss220/clothing/icons/mob/under.dmi',
+		"Tajaran" 			=	'modular_ss220/clothing/icons/mob/species/tajaran/under.dmi',
+		"Vulpkanin" 		= 	'modular_ss220/clothing/icons/mob/species/vulpkanin/under.dmi',
+	)
+	armor = list(MELEE = 25, BULLET = 15, LASER = 15, ENERGY = 5, BOMB = 20, RAD = 0, FIRE = 50, ACID = 50)
+
+/obj/item/clothing/under/dune/heatprotect/raider/raider_fem
+	name = "броня рейдера"
+	desc = "Кожаная жилетка, обшитая пластинами железа и пластали."
+	icon_state = "fem_raider"
+	item_color = "fem_raider"
+
+/obj/item/clothing/under/dune/heatprotect/raider/kidan1
+	name = "броня жука-рейдера"
+	desc = "Плотно скрепленные пласталевые пластины на кожаном каркасе. Самый страшный звук ночной пустыни - клик-клак..."
+	icon_state = "raider_kidan"
+	item_color = "raider_kidan"
+	species_restricted = list("Kidan")
