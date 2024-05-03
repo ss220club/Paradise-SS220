@@ -230,9 +230,27 @@
 	desc = "Пустынная накидка из особой крепкой ткани. Капюшон поможет не свалиться под палящим солнцем"
 	icon = 'modular_ss220/clothing/icons/object/suits.dmi'
 	icon_state = "desertcape"
-	icon_override = 'modular_ss220/clothing/icons/mob/suits.dmi'
+	sprite_sheets = list(
+		"Human"				= 	'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Diona" 			= 	'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Drask" 			= 	'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Grey" 				= 	'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Human" 			= 	'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Kidan" 			= 	'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Machine"			= 	'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Nian" 				= 	'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Plasmaman" 		= 	'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Skrell" 			= 	'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Slime People" 		= 	'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Unathi" 			= 	'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Vox" 				= 	'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Nucleation"		=	'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Tajaran" 			=	'modular_ss220/clothing/icons/mob/species/tajaran/suits.dmi',
+		"Vulpkanin" 		= 	'modular_ss220/clothing/icons/mob/suits.dmi',
+	)
+	flags_inv = HIDETAIL
 	armor = list(MELEE = 20, BULLET = 20, LASER = 20, ENERGY = 5, BOMB = 15, RAD = 0, FIRE = 50, ACID = 50)
-	allowed = list(/obj/item/reagent_containers/drinks/flask, /obj/item/melee, /obj/item/flash, /obj/item/lighter, /obj/item/clothing/mask/cigarette, /obj/item/storage/fancy/cigarettes, /obj/item/tank/internals, /obj/item/gun/energy, /obj/item/gun/projectile, /obj/item/kitchen/knife)
+	allowed = list(/obj/item/reagent_containers/drinks/flask, /obj/item/melee, /obj/item/flash, /obj/item/lighter, /obj/item/storage/fancy/cigarettes, /obj/item/tank/internals, /obj/item/gun/energy, /obj/item/gun/projectile, /obj/item/kitchen/knife, /obj/item/dualsaber)
 	hoodtype = /obj/item/clothing/head/hooded/desert_cape
 
 /obj/item/clothing/head/hooded/desert_cape
@@ -240,58 +258,64 @@
 	desc = "Капюшон, прикреплённый к пустынной накидке."
 	icon = 'modular_ss220/clothing/icons/object/hats.dmi'
 	icon_state = "desertcape_hood"
-	icon_override = 'modular_ss220/clothing/icons/mob/hats.dmi'
 	heat_protection = HEAD
 	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
 	flags = BLOCKHAIR
 	flags_inv = HIDEEARS
+	sprite_sheets = list(
+		"Human"				= 	'modular_ss220/clothing/icons/mob/hats.dmi',
+		"Diona" 			= 	'modular_ss220/clothing/icons/mob/hats.dmi',
+		"Drask" 			= 	'modular_ss220/clothing/icons/mob/hats.dmi',
+		"Grey" 				= 	'modular_ss220/clothing/icons/mob/hats.dmi',
+		"Human" 			= 	'modular_ss220/clothing/icons/mob/hats.dmi',
+		"Kidan" 			= 	'modular_ss220/clothing/icons/mob/hats.dmi',
+		"Machine"			= 	'modular_ss220/clothing/icons/mob/hats.dmi',
+		"Nian" 				= 	'modular_ss220/clothing/icons/mob/hats.dmi',
+		"Plasmaman" 		= 	'modular_ss220/clothing/icons/mob/hats.dmi',
+		"Skrell" 			= 	'modular_ss220/clothing/icons/mob/hats.dmi',
+		"Slime People" 		= 	'modular_ss220/clothing/icons/mob/hats.dmi',
+		"Unathi" 			= 	'modular_ss220/clothing/icons/mob/hats.dmi',
+		"Vox" 				= 	'modular_ss220/clothing/icons/mob/hats.dmi',
+		"Nucleation"		=	'modular_ss220/clothing/icons/mob/hats.dmi',
+		"Tajaran" 			=	'modular_ss220/clothing/icons/mob/species/tajaran/hats.dmi',
+		"Vulpkanin" 		= 	'modular_ss220/clothing/icons/mob/species/vulpkanin/hats.dmi',
+	)
 
-/obj/item/clothing/suit/hooded/desert_cape2
+/obj/item/clothing/suit/hooded/desert_cape/desert_cape2
 	name = "лёгкая пустынная накидка"
 	desc = "Лёгкая пустынная накидка из особой крепкой ткани. Капюшон поможет не свалиться под палящим солнцем."
-	icon = 'modular_ss220/clothing/icons/object/suits.dmi'
 	icon_state = "desertlightcape"
-	icon_override = 'modular_ss220/clothing/icons/mob/suits.dmi'
+	flags_inv = HIDETAIL
 	armor = list(MELEE = 20, BULLET = 10, LASER = 10, ENERGY = 5, BOMB = 15, RAD = 0, FIRE = 50, ACID = 50)
-	allowed = list(/obj/item/reagent_containers/drinks/flask, /obj/item/melee, /obj/item/flash, /obj/item/lighter, /obj/item/clothing/mask/cigarette, /obj/item/storage/fancy/cigarettes, /obj/item/tank/internals, /obj/item/gun/energy, /obj/item/gun/projectile, /obj/item/kitchen/knife)
-	hoodtype = /obj/item/clothing/head/hooded/desert_cape2
+	hoodtype = /obj/item/clothing/head/hooded/desert_cape/desert_cape2
 
-/obj/item/clothing/head/hooded/desert_cape2
+/obj/item/clothing/head/hooded/desert_cape/desert_cape2
 	name = "капюшон лёгкой пустынной накидки"
 	desc = "Капюшон, прикреплённый к лёгкой пустынной накидке."
-	icon = 'modular_ss220/clothing/icons/object/hats.dmi'
 	icon_state = "desertlightcape_hood"
-	icon_override = 'modular_ss220/clothing/icons/mob/hats.dmi'
-	heat_protection = HEAD
-	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
-	flags = BLOCKHAIR
-	flags_inv = HIDEEARS
-
-
 
 //dune hardsuit
 
-//цкшные допилю
-/obj/item/clothing/suit/space/hardsuit/centcomm_desert
-	name = "\improper сэсэс"
-	desc = "сэсэс."
+/obj/item/clothing/suit/space/hardsuit/dune
+	name = "\improper защитный костюм офицера"
+	desc = "Специальный костюм офицера Центрального Командования Нанотрейзен предназначенный для защиты от агрессивной окружающей среды."
 	icon = 'modular_ss220/clothing/icons/object/suits.dmi'
 	icon_state = "hardsuit-CCdesert"
 	item_state = "hardsuit-CCdesert"
 	slowdown = 0.25
 	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
-	flags_inv = HIDEJUMPSUIT|HIDETAIL
+	flags_inv = HIDEJUMPSUIT
 	armor = list(MELEE = 35, BULLET = 15, LASER = 30, ENERGY = 10, BOMB = 30, RAD = 50, FIRE = 75, ACID = 75)
-	allowed = list(/obj/item/gun, /obj/item/flashlight, /obj/item/tank/internals, /obj/item/melee/baton, /obj/item/reagent_containers/spray/pepper, /obj/item/ammo_box, /obj/item/ammo_casing, /obj/item/restraints/handcuffs)
-	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/centcomm_desert
+	allowed = list(/obj/item/gun, /obj/item/flashlight, /obj/item/tank/internals, /obj/item/melee/baton, /obj/item/ammo_box, /obj/item/ammo_casing, /obj/item/restraints/handcuffs, /obj/item/dualsaber, /obj/item/gun)
+	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/dune
 	sprite_sheets = list(
 		"Human" = 'modular_ss220/clothing/icons/mob/suits.dmi',
 	)
 	species_restricted = list("Human")
 
-/obj/item/clothing/head/helmet/space/hardsuit/centcomm_desert
-	name = "\improper сэсэс"
-	desc = "сэсэс."
+/obj/item/clothing/head/helmet/space/hardsuit/dune
+	name = "\improper шлем"
+	desc = "Щлем защитного костюма офицера ЦК."
 	icon = 'modular_ss220/clothing/icons/object/helmet.dmi'
 	icon_state = "hardsuit0-CCdesert"
 	item_state = "hardsuit0-CCdesert"
@@ -302,31 +326,18 @@
 	)
 	species_restricted = list("Human")
 
-/obj/item/clothing/suit/space/hardsuit/midnight_suit
+/obj/item/clothing/suit/space/hardsuit/dune/midnight_suit
 	name = "\improper костюм Миднайта"
 	desc = "Экзоскелет ударной группы синдиката, модернизированный по спецзаказу Миднайта Блэка."
-	icon = 'modular_ss220/clothing/icons/object/suits.dmi'
 	icon_state = "hardsuit-midnightsuit"
 	item_state = "hardsuit-midnightsuit"
-	slowdown = 0.25
-	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
-	flags_inv = HIDEJUMPSUIT|HIDETAIL
-	armor = list(MELEE = 35, BULLET = 35, LASER = 30, ENERGY = 20, BOMB = 50, RAD = 100, FIRE = 75, ACID = 75)
-	allowed = list(/obj/item/gun, /obj/item/flashlight, /obj/item/tank/internals, /obj/item/melee/baton, /obj/item/ammo_box, /obj/item/ammo_casing, /obj/item/restraints/handcuffs, /obj/item/dualsaber, /obj/item/gun)
-	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/midnight_suit
-	sprite_sheets = list(
-		"Human" = 'modular_ss220/clothing/icons/mob/suits.dmi',
-	)
-	species_restricted = list("Human")
-/obj/item/clothing/head/helmet/space/hardsuit/midnight_suit
-	name = "\improper сэсэс"
+	armor = list(MELEE = 35, BULLET = 35, LASER = 30, ENERGY = 20, BOMB = 40, RAD = 100, FIRE = 75, ACID = 75)
+	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/dune/midnight_suit
+
+/obj/item/clothing/head/helmet/space/hardsuit/dune/midnight_suit
+	name = "\improper шлем"
 	desc = "Шлем костюма Миднайта."
-	icon = 'modular_ss220/clothing/icons/object/helmet.dmi'
 	icon_state = "hardsuit0-midnightsuit"
 	item_state = "hardsuit0-midnightsuit"
 	item_color = "midnightsuit"
-	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
-	sprite_sheets = list(
-		"Human" = 'modular_ss220/clothing/icons/mob/helmet.dmi',
-	)
-	species_restricted = list("Human")
+	armor = list(MELEE = 25, BULLET = 15, LASER = 20, ENERGY = 20, BOMB = 10, RAD = 100, FIRE = 75, ACID = 75)

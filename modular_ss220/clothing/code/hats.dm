@@ -155,7 +155,24 @@
 	desc = "Поможет не свалиться от солнечного удара."
 	icon = 'modular_ss220/clothing/icons/object/hats.dmi'
 	icon_state = "arafat_desert"
-	icon_override = 'modular_ss220/clothing/icons/mob/hats.dmi'
+	sprite_sheets = list(
+		"Human"				= 	'modular_ss220/clothing/icons/mob/hats.dmi',
+		"Diona" 			= 	'modular_ss220/clothing/icons/mob/hats.dmi',
+		"Drask" 			= 	'modular_ss220/clothing/icons/mob/hats.dmi',
+		"Grey" 				= 	'modular_ss220/clothing/icons/mob/hats.dmi',
+		"Human" 			= 	'modular_ss220/clothing/icons/mob/hats.dmi',
+		"Kidan" 			= 	'modular_ss220/clothing/icons/mob/hats.dmi',
+		"Machine"			= 	'modular_ss220/clothing/icons/mob/hats.dmi',
+		"Nian" 				= 	'modular_ss220/clothing/icons/mob/hats.dmi',
+		"Plasmaman" 		= 	'modular_ss220/clothing/icons/mob/hats.dmi',
+		"Skrell" 			= 	'modular_ss220/clothing/icons/mob/hats.dmi',
+		"Slime People" 		= 	'modular_ss220/clothing/icons/mob/hats.dmi',
+		"Unathi" 			= 	'modular_ss220/clothing/icons/mob/hats.dmi',
+		"Vox" 				= 	'modular_ss220/clothing/icons/mob/hats.dmi',
+		"Nucleation"		=	'modular_ss220/clothing/icons/mob/hats.dmi',
+		"Tajaran" 			=	'modular_ss220/clothing/icons/mob/species/tajaran/hats.dmi',
+		"Vulpkanin" 		= 	'modular_ss220/clothing/icons/mob/species/vulpkanin/hats.dmi',
+	)
 	flags = BLOCKHAIR
 	flags_inv = HIDEEARS | HIDEFACE
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
@@ -172,7 +189,4 @@
 	icon_state = "kufiyakidan"
 	flags_inv = HIDEEARS
 	flags_cover = HEADCOVERSEYES
-	sprite_sheets = list(
-		"Kidan" = 'modular_ss220/clothing/icons/mob/hats.dmi',
-		)
 	species_restricted = list("Kidan")
