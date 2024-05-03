@@ -236,7 +236,6 @@
 		"Drask" 			= 	'modular_ss220/clothing/icons/mob/suits.dmi',
 		"Grey" 				= 	'modular_ss220/clothing/icons/mob/suits.dmi',
 		"Human" 			= 	'modular_ss220/clothing/icons/mob/suits.dmi',
-		"Kidan" 			= 	'modular_ss220/clothing/icons/mob/suits.dmi',
 		"Machine"			= 	'modular_ss220/clothing/icons/mob/suits.dmi',
 		"Nian" 				= 	'modular_ss220/clothing/icons/mob/suits.dmi',
 		"Plasmaman" 		= 	'modular_ss220/clothing/icons/mob/suits.dmi',
@@ -245,6 +244,7 @@
 		"Unathi" 			= 	'modular_ss220/clothing/icons/mob/suits.dmi',
 		"Vox" 				= 	'modular_ss220/clothing/icons/mob/suits.dmi',
 		"Nucleation"		=	'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Kidan" 			= 	'modular_ss220/clothing/icons/mob/species/kidan/suits.dmi',
 		"Tajaran" 			=	'modular_ss220/clothing/icons/mob/species/tajaran/suits.dmi',
 		"Vulpkanin" 		= 	'modular_ss220/clothing/icons/mob/suits.dmi',
 	)
@@ -268,7 +268,6 @@
 		"Drask" 			= 	'modular_ss220/clothing/icons/mob/hats.dmi',
 		"Grey" 				= 	'modular_ss220/clothing/icons/mob/hats.dmi',
 		"Human" 			= 	'modular_ss220/clothing/icons/mob/hats.dmi',
-		"Kidan" 			= 	'modular_ss220/clothing/icons/mob/hats.dmi',
 		"Machine"			= 	'modular_ss220/clothing/icons/mob/hats.dmi',
 		"Nian" 				= 	'modular_ss220/clothing/icons/mob/hats.dmi',
 		"Plasmaman" 		= 	'modular_ss220/clothing/icons/mob/hats.dmi',
@@ -277,6 +276,7 @@
 		"Unathi" 			= 	'modular_ss220/clothing/icons/mob/hats.dmi',
 		"Vox" 				= 	'modular_ss220/clothing/icons/mob/hats.dmi',
 		"Nucleation"		=	'modular_ss220/clothing/icons/mob/hats.dmi',
+		"Kidan" 			= 	'modular_ss220/clothing/icons/mob/species/kidan/hats.dmi',
 		"Tajaran" 			=	'modular_ss220/clothing/icons/mob/species/tajaran/hats.dmi',
 		"Vulpkanin" 		= 	'modular_ss220/clothing/icons/mob/species/vulpkanin/hats.dmi',
 	)
@@ -285,7 +285,6 @@
 	name = "лёгкая пустынная накидка"
 	desc = "Лёгкая пустынная накидка из особой крепкой ткани. Капюшон поможет не свалиться под палящим солнцем."
 	icon_state = "desertlightcape"
-	flags_inv = HIDETAIL
 	armor = list(MELEE = 20, BULLET = 10, LASER = 10, ENERGY = 5, BOMB = 15, RAD = 0, FIRE = 50, ACID = 50)
 	hoodtype = /obj/item/clothing/head/hooded/desert_cape/desert_cape2
 
@@ -293,6 +292,18 @@
 	name = "капюшон лёгкой пустынной накидки"
 	desc = "Капюшон, прикреплённый к лёгкой пустынной накидке."
 	icon_state = "desertlightcape_hood"
+
+/obj/item/clothing/suit/hooded/desert_cape/desert_kidan
+	name = "киданская накидка"
+	desc = "Мешковатая и лёгкая накидка из особой ткани, позволяет защититься от солнца и недоброжелателей."
+	icon_state = "desertkidancape"
+	hoodtype = /obj/item/clothing/head/hooded/desert_cape/desert_kidan
+	species_restricted = list("Kidan")
+
+/obj/item/clothing/head/hooded/desert_cape/desert_kidan
+	name = "капюшон киданской накидки"
+	desc = "Капюшон, прикреплённый к киданской накидке."
+	icon_state = "desertkidancape_hood"
 
 //dune hardsuit
 
