@@ -13,7 +13,7 @@
 
 	area_type = /area/awaymission/arrakis/outside
 	target_trait = STATION_LEVEL
-
+	weather_color = "#fff262"
 	immunity_type = "sand"
 
 /datum/weather/ash_storm/sand_storm/update_areas()
@@ -39,20 +39,14 @@
 				N.plane = initial(N.plane)
 				N.set_opacity(FALSE)
 
-/datum/weather/ash_storm/sand_storm/is_ash_immune(atom/L)
-	while(L && !isturf(L))
-		if(ismecha(L)) //Mechs are immune
-			return TRUE
-		if(ishuman(L)) //Are you immune?
-			var/mob/living/carbon/human/H = L
-			var/thermal_protection = H.get_thermal_protection()
-			if(thermal_protection >= FIRE_IMMUNITY_MAX_TEMP_PROTECT)
-				return TRUE
-		L = L.loc //Matryoshka check
-	return FALSE //RIP you
-
 /datum/weather/ash_storm/sand_storm/weather_act(mob/living/L)
+	var/blurr_prob = 40
+	var/blind_prob = 15
 	if(is_ash_immune(L))
 		return
-	L.adjustFireLoss(0.2)
-	L.EyeBlurry(1 SECONDS)
+	L.adjustFireLoss(0.4)
+	L.SetSlowed(5,5)
+	if(prob(blurr_prob))
+		L.AdjustEyeBlurry (rand(6 SECONDS, 8 SECONDS))
+	if(prob(blind_prob))
+		L.AdjustEyeBlind (2 SECONDS)
