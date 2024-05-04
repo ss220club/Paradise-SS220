@@ -273,6 +273,29 @@
 
 
 //legendary sabers
+/obj/item/melee/rapier/genri_rapier
+	name = "Трость-рапира"
+	desc = "ыа"
+	icon = 'modular_ss220/dunes_map/icons/saber.dmi'
+	icon_state = "trrapier"
+	item_state = "trrapier"
+	force = 25
+	lefthand_file = 'modular_ss220/dunes_map/icons/saber_left.dmi'
+	righthand_file = 'modular_ss220/dunes_map/icons/saber_right.dmi'
+
+/obj/item/storage/belt/rapier/genri_rapier
+	name = "Трость-рапира"
+	desc = "ыа"
+	icon_state = "trsheath"
+	item_state = "trsheath"
+	icon = 'modular_ss220/dunes_map/icons/saber.dmi'
+	lefthand_file = 'modular_ss220/dunes_map/icons/saber_left.dmi'
+	righthand_file = 'modular_ss220/dunes_map/icons/saber_right.dmi'
+	can_hold = list(/obj/item/melee/rapier/genri_rapier)
+
+/obj/item/storage/belt/rapier/genri_rapier/populate_contents()
+	new /obj/item/melee/rapier/genri_rapier(src)
+	update_icon()
 
 /obj/item/dualsaber/legendary_saber
 	name = "Злоба"
