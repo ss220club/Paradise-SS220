@@ -294,12 +294,15 @@
 	..()
 	add_atom_colour(SSparallax.random_parallax_color, ADMIN_COLOUR_PRIORITY)
 
+//Выключение бэкграунда астероидов для ивента//
+/*
 /atom/movable/screen/parallax_layer/random/asteroids
 	icon_state = "asteroids"
 	layer = 4
+*/
 
 /atom/movable/screen/parallax_layer/planet
-	icon_state = "planet_lava"
+	icon_state = "planet_hirka"
 	blend_mode = BLEND_OVERLAY
 	absolute = TRUE //Status of seperation
 	speed = 3
@@ -312,7 +315,7 @@
 
 /atom/movable/screen/parallax_layer/planet/update_status(mob/M)
 	var/turf/T = get_turf(M)
-	if(is_station_level(T.z))
+	if(is_admin_level(T.z))
 		invisibility = 0
 	else
 		invisibility = INVISIBILITY_ABSTRACT

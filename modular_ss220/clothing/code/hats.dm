@@ -145,9 +145,16 @@
 		"Vox" 				= 	'modular_ss220/clothing/icons/mob/hats.dmi',
 		"Nucleation"		=	'modular_ss220/clothing/icons/mob/hats.dmi',
 		"Kidan" 			= 	'modular_ss220/clothing/icons/mob/species/kidan/hats.dmi',
-		"Tajaran" 			=	'modular_ss220/clothing/icons/mob/hats.dmi',
-		"Vulpkanin" 		= 	'modular_ss220/clothing/icons/mob/hats.dmi',
+		"Tajaran" 			=	'modular_ss220/clothing/icons/mob/species/tajaran/hats.dmi',
+		"Vulpkanin" 		= 	'modular_ss220/clothing/icons/mob/species/vulpkanin/hats.dmi',
 	)
+
+/obj/item/clothing/head/helmet/swat/raider_helmet/mechanic
+	name = "кожаный шлем"
+	desc = "Лёгкий шлем из укрепленной кожи с защитой для глаз. Его вид наталкивает вас на глубокие темные фантазии..."
+	icon_state = "raider_mechmaniac_helmet"
+	flags = BLOCKHAIR
+	flags_inv = HIDEMASK | HIDEEARS | HIDEEYES | HIDEFACE
 
 /obj/item/clothing/head/helmet/swat/raider_helmet/raider_kidan
 	name = "шлем жука-рейдера"
@@ -155,6 +162,11 @@
 	icon_state = "raider_kidan_helmet"
 	species_restricted = list("Kidan")
 	flags_inv = HIDEMASK | HIDEEARS | HIDEEYES | HIDEFACE
+
+/obj/item/clothing/head/helmet/swat/raider_helmet/raider_kidan/kidan_steel
+	name = "стальной шлем жука-рейдера"
+	desc = "Крепкий, лёгкий, практичный. Изготовлен под голову киданов."
+	icon_state = "kidan_metal_helmet"
 
 /obj/item/clothing/glasses/sunglasses/desert_glasses
 	name = "защитные очки"

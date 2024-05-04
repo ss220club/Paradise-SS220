@@ -558,15 +558,27 @@
 	item_color = "raider_butcher"
 	armor = list(MELEE = 25, BULLET = 15, LASER = 15, ENERGY = 5, BOMB = 20, RAD = 0, FIRE = 50, ACID = 50)
 
+/obj/item/clothing/under/dune/heatprotect/raider/mechanic
+	name = "кожаная броня рейдеров"
+	desc = "Костюм из кожи, украшенный стальными цепями, шипами и стяжками. Его вид наталкивает вас на мысли о глубоких темных фантазиях...."
+	icon_state = "raider_butcher"
+	item_color = "raider_butcher"
+
 /obj/item/clothing/under/dune/heatprotect/raider/raider_fem
 	name = "броня рейдера"
 	desc = "Кожаная жилетка, обшитая пластинами железа и пластали."
 	icon_state = "fem_raider"
 	item_color = "fem_raider"
 
-/obj/item/clothing/under/dune/heatprotect/raider/kidan1
+/obj/item/clothing/under/dune/heatprotect/raider/kidan_armor
 	name = "броня жука-рейдера"
 	desc = "Плотно скрепленные пласталевые пластины на кожаном каркасе. Самый страшный звук ночной пустыни - клик-клак..."
 	icon_state = "raider_kidan"
 	item_color = "raider_kidan"
 	species_restricted = list("Kidan")
+
+/obj/item/clothing/under/dune/heatprotect/raider/kidan_armor/kidan_armor2
+	name = "броня жука-рейдера"
+	desc = "Плотно скрепленные пласталевые пластины на кожаном каркасе. Самый страшный звук ночной пустыни - клик-клак..."
+	icon_state = "kidan_metal_armor"
+	item_color = "kidan_metal_armor"
