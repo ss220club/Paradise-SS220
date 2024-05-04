@@ -10,6 +10,24 @@
 	min_ambience_cooldown = 3 MINUTES
 	max_ambience_cooldown = 3 MINUTES
 
+/area/awaymission/arrakis/outside_building
+	name = "\improper Пустыня - Ангары"
+	icon_state = "awaycontent18"
+	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
+	requires_power = TRUE
+	always_unpowered = FALSE
+	ambientsounds = RUINS_SOUNDS
+	min_ambience_cooldown = 5 MINUTES
+	max_ambience_cooldown = 5 MINUTES
+
+/area/awaymission/arrakis/outside_building/mining_storage_outpost
+	name = "\improper Пустыня - Шахтёрский аванпост"
+	icon_state = "awaycontent28"
+
+/area/awaymission/arrakis/outside_building/hermit_shack
+	name = "\improper Пустыня - Хижина отшельника"
+	icon_state = "awaycontent30"
+
 /area/awaymission/arrakis/outside
 	name = "\improper Пустыня - Дюны"
 	icon_state = "syndie-outside"
@@ -53,30 +71,6 @@
 /area/awaymission/arrakis/outside/shuttle
 	name = "\improper Пустыня - Шаттл"
 	icon_state = "unknown"
-
-/area/awaymission/arrakis/outside/podhangars
-	name = "\improper Пустыня - Ангары"
-	icon_state = "awaycontent18"
-	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
-	requires_power = TRUE
-	always_unpowered = FALSE
-	ambientsounds = RUINS_SOUNDS
-
-/area/awaymission/arrakis/outside/mining_storage_outpost
-	name = "\improper Пустыня - Шахтёрский аванпост"
-	icon_state = "awaycontent28"
-	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
-	requires_power = TRUE
-	always_unpowered = TRUE
-	ambientsounds = RUINS_SOUNDS
-
-/area/awaymission/arrakis/outside/hermit_shack
-	name = "\improper Пустыня - Хижина отшельника"
-	icon_state = "awaycontent30"
-	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
-	requires_power = TRUE
-	always_unpowered = TRUE
-	ambientsounds = RUINS_SOUNDS
 
 /area/awaymission/arrakis/cave
 	name = "\improper Пустыня - Скалы"
