@@ -1,4 +1,4 @@
-#define SYNDICATE_CHALLENGE_TIMER 20 MINUTES
+#define SYNDICATE_CHALLENGE_TIMER 7 MINUTES // SS220 EDIT
 
 /obj/machinery/computer/shuttle/syndicate
 	name = "syndicate shuttle terminal"
@@ -20,7 +20,7 @@
 	possible_destinations = "syndicate_away"
 
 /obj/machinery/computer/shuttle/syndicate/can_call_shuttle(user, action)
-	var/time_to_go = max(SYNDICATE_CHALLENGE_TIMER, (challenge_time + 10 MINUTES))
+	var/time_to_go = challenge_time + SYNDICATE_CHALLENGE_TIMER // SS220 EDIT
 	if(action == "move")
 		if(challenge && world.time < time_to_go)
 			to_chat(user, "<span class='warning'>You've issued a combat challenge to the station! You've got to give them at least [round(((time_to_go - world.time) / 10) / 60)] more minutes to allow them to prepare.</span>")
