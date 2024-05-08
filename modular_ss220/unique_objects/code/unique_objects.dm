@@ -41,6 +41,12 @@
 	anchored = TRUE
 	oreAmount = 0
 
+/obj/structure/statue/mooniverse/occ
+	name = "Офицер специальных операций"
+	desc = "Статуя одного из офицеров специальных операций. Возможно этот офицер хорошо служит ЦК..."
+	icon = 'modular_ss220/unique_objects/icons/statue.dmi'
+	icon_state = "mooniverse_oco"
+
 /obj/structure/statue/themis
 	name = "Фемида"
 	desc = "Статуя древнегреческой богини правосудия."
