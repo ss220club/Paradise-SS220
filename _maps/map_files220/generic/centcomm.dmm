@@ -6218,10 +6218,11 @@
 /obj/structure/window/reinforced/tinted{
 	pixel_y = -3
 	},
-/obj/machinery/shower{
-	dir = 4
-	},
 /obj/structure/curtain/open/shower,
+/obj/machinery/shower{
+	dir = 4;
+	pixel_x = 6
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "showroomfloor"
 	},
@@ -10963,7 +10964,9 @@
 	dir = 1;
 	anchored = 1
 	},
-/obj/item/flag/chameleon,
+/obj/item/flag/chameleon{
+	layer = 4
+	},
 /turf/simulated/floor/plasteel/dark{
 	icon_state = "dark_herringbone"
 	},
@@ -13206,10 +13209,11 @@
 /turf/simulated/floor/grass,
 /area/centcom/ss220/evac)
 "hIN" = (
-/obj/machinery/shower{
-	dir = 4
-	},
 /obj/structure/curtain/open/shower,
+/obj/machinery/shower{
+	dir = 4;
+	pixel_x = 6
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "showroomfloor"
 	},
@@ -14283,6 +14287,22 @@
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/supply)
+"ilZ" = (
+/obj/structure/table/glass,
+/obj/item/pizzabox/mushroom{
+	pixel_y = 10
+	},
+/obj/item/pizzabox/pepperoni{
+	pixel_y = 13
+	},
+/obj/item/pizzabox/hawaiian{
+	pixel_y = 16
+	},
+/turf/simulated/floor/plasteel/dark{
+	dir = 4;
+	icon_state = "darkbluealt"
+	},
+/area/centcom/ss220/bar)
 "imp" = (
 /obj/structure/chair/sofa/corp/left{
 	dir = 8
@@ -17400,7 +17420,7 @@
 	},
 /obj/structure/chair/sofa/bench/left{
 	cover_color = "#68452a";
-	layer = 3.2
+	layer = 4
 	},
 /turf/simulated/floor/plasteel/dark{
 	icon_state = "darkblue"
@@ -20905,7 +20925,7 @@
 /obj/machinery/door/airlock/centcom{
 	name = "Зона ЦК"
 	},
-/turf/simulated/floor/carpet/black,
+/turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/supply)
 "mhk" = (
 /obj/structure/railing{
@@ -22075,6 +22095,19 @@
 	icon_state = "darkbrownfull"
 	},
 /area/centcom/ss220/supply)
+"mWo" = (
+/obj/structure/table/glass,
+/obj/item/reagent_containers/drinks/cans/beer{
+	pixel_x = -8
+	},
+/obj/item/reagent_containers/drinks/cans/beer,
+/obj/item/reagent_containers/drinks/cans/beer{
+	pixel_x = 8
+	},
+/turf/simulated/floor/plasteel/dark{
+	icon_state = "darkbluealt"
+	},
+/area/centcom/ss220/bar)
 "mWp" = (
 /obj/structure/sign/flag/nanotrasen{
 	pixel_x = -32
@@ -22355,12 +22388,13 @@
 /obj/structure/window/reinforced/tinted{
 	pixel_y = -3
 	},
-/obj/machinery/shower{
-	dir = 4
-	},
 /obj/structure/curtain/open/shower,
 /obj/structure/light_fake{
 	dir = 8
+	},
+/obj/machinery/shower{
+	dir = 4;
+	pixel_x = 6
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "showroomfloor"
@@ -23901,7 +23935,7 @@
 /area/syndicate_mothership/control)
 "off" = (
 /obj/structure/table/glass,
-/obj/item/pizzabox/pizza_bomb/autoarm{
+/obj/item/pizzabox/mushroom{
 	pixel_y = 10
 	},
 /obj/item/pizzabox/garlic{
@@ -23977,7 +24011,7 @@
 	},
 /obj/structure/chair/sofa/bench/right{
 	cover_color = "#68452a";
-	layer = 3.2
+	layer = 4
 	},
 /turf/simulated/floor/plasteel/dark{
 	icon_state = "darkblue"
@@ -24549,7 +24583,7 @@
 	},
 /obj/structure/chair/sofa/bench{
 	cover_color = "#68452a";
-	layer = 3.2
+	layer = 4
 	},
 /turf/simulated/floor/plasteel/dark{
 	icon_state = "darkblue"
@@ -24879,6 +24913,7 @@
 /area/centcom/ss220/park)
 "oIC" = (
 /obj/structure/table/glass,
+/obj/item/food/snacks/boiledpelmeni,
 /turf/simulated/floor/plasteel/dark{
 	dir = 4;
 	icon_state = "darkbluealt"
@@ -27353,7 +27388,9 @@
 	dir = 1;
 	anchored = 1
 	},
-/obj/item/flag/chameleon,
+/obj/item/flag/chameleon{
+	layer = 4
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/admin1)
 "qhu" = (
@@ -27678,7 +27715,7 @@
 /area/centcom/ss220/admin3)
 "qtB" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	name = "Жральня поменьше";
+	name = "Столовая";
 	dir = 1
 	},
 /obj/effect/turf_decal/delivery/blue,
@@ -27696,7 +27733,7 @@
 	},
 /area/syndicate_mothership/infteam)
 "quL" = (
-/obj/machinery/door/airlock/multi_tile,
+/obj/machinery/door/airlock/multi_tile/glass,
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/bar)
 "quM" = (
@@ -31751,6 +31788,13 @@
 /obj/item/flag/nt,
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/admin1)
+"sKI" = (
+/obj/structure/table/glass,
+/obj/item/food/snacks/boiledpelmeni,
+/turf/simulated/floor/plasteel/dark{
+	icon_state = "dark_large"
+	},
+/area/centcom/ss220/bar)
 "sKS" = (
 /obj/structure/rack,
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/bola,
@@ -32957,7 +33001,7 @@
 /area/centcom/ss220/park)
 "txg" = (
 /obj/machinery/door_control/no_emag{
-	id = "СС_Shitspawn_Exterior_1";
+	id = "СС_BD_Shitspawn_Interior_1";
 	name = "Blast Door Open";
 	req_one_access_txt = "101";
 	pixel_x = 24
@@ -33017,7 +33061,7 @@
 /area/centcom/ss220/admin3)
 "tzm" = (
 /obj/machinery/door_control/no_emag{
-	id = "СС_Shitspawn_Interior_1";
+	id = "СС_BD_Shitspawn_Exterior_1";
 	name = "Blast Door Open";
 	req_one_access_txt = "101";
 	pixel_x = 24
@@ -33407,8 +33451,8 @@
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/jail)
 "tLz" = (
-/obj/machinery/door/airlock/multi_tile{
-	dir = 1
+/obj/machinery/door/airlock/multi_tile/glass{
+	dir = 2
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/bar)
@@ -33909,6 +33953,19 @@
 /obj/item/storage/backpack/duffel/syndie/med/surgery,
 /turf/simulated/floor/mineral/plastitanium,
 /area/syndicate_mothership/elite_squad)
+"uaV" = (
+/obj/structure/window/reinforced/tinted{
+	pixel_y = -3
+	},
+/obj/machinery/shower{
+	dir = 4;
+	pixel_x = 6
+	},
+/obj/structure/curtain/open/shower,
+/turf/simulated/floor/plasteel{
+	icon_state = "showroomfloor"
+	},
+/area/centcom/ss220/evac)
 "uaY" = (
 /turf/simulated/floor/plasteel/dark{
 	dir = 1;
@@ -34407,7 +34464,9 @@
 	dir = 1;
 	anchored = 1
 	},
-/obj/item/flag/chameleon,
+/obj/item/flag/chameleon{
+	layer = 4
+	},
 /turf/simulated/floor/plasteel/dark{
 	icon_state = "dark_herringbone"
 	},
@@ -39768,8 +39827,9 @@
 /area/syndicate_mothership/control)
 "xtW" = (
 /obj/structure/table/glass,
+/obj/item/food/snacks/boiledpelmeni,
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "dark_large"
+	icon_state = "darkbluealt"
 	},
 /area/centcom/ss220/bar)
 "xtY" = (
@@ -40011,6 +40071,7 @@
 /obj/structure/light_fake/spot{
 	dir = 1
 	},
+/obj/item/food/snacks/boiledpelmeni,
 /turf/simulated/floor/plasteel/dark{
 	dir = 5;
 	icon_state = "darkbluealt"
@@ -63953,7 +64014,7 @@ sbf
 eRY
 xYo
 isT
-xtW
+mWo
 nPO
 gCa
 rZZ
@@ -64979,8 +65040,8 @@ eNh
 eNh
 eNh
 xcy
-xtW
-xtW
+sKI
+sKI
 mni
 nPO
 gCa
@@ -65490,7 +65551,7 @@ nmP
 osb
 xCW
 oIC
-oIC
+ilZ
 oIC
 tTt
 fcw
@@ -65735,7 +65796,7 @@ hbv
 eSs
 owz
 eSs
-dCv
+uaV
 dCv
 neY
 dCv
