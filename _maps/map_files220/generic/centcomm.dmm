@@ -6932,6 +6932,13 @@
 /obj/item/food/snacks/junglesalad,
 /turf/simulated/floor/mineral/plastitanium,
 /area/centcom/ss220/general)
+"dXK" = (
+/obj/machinery/conveyor/east/ccw{
+	dir = 6;
+	id = "QMLoad"
+	},
+/turf/simulated/floor/plasteel/dark,
+/area/centcom/ss220/supply)
 "dYf" = (
 /turf/simulated/floor/plasteel/dark{
 	dir = 1;
@@ -8288,7 +8295,7 @@
 "eLc" = (
 /obj/effect/turf_decal/delivery/white,
 /obj/machinery/door/airlock/multi_tile/glass{
-	name = "Жральня"
+	name = "Столовая"
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/bar)
@@ -8745,6 +8752,16 @@
 	smoothing_flags = 2
 	},
 /area/syndicate_mothership)
+"eZF" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/conveyor/east{
+	id = "QMLoad1";
+	dir = 8
+	},
+/turf/simulated/floor/plasteel/dark,
+/area/centcom/ss220/supply)
 "faa" = (
 /obj/structure/table/reinforced,
 /obj/item/stamp/syndicate{
@@ -9923,6 +9940,15 @@
 /obj/machinery/disposal/deliveryChute,
 /obj/structure/disposalpipe/trunk{
 	dir = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/machinery/door/window/reinforced/normal{
+	name = "Стеклянный шлюз"
 	},
 /turf/simulated/floor/plasteel/dark{
 	icon_state = "darkbrownfull"
@@ -14130,6 +14156,10 @@
 	dir = 8
 	},
 /obj/structure/disposalpipe/trunk{
+	dir = 8
+	},
+/obj/machinery/conveyor/east{
+	id = "QMLoad1";
 	dir = 8
 	},
 /turf/simulated/floor/plasteel/dark{
@@ -20878,6 +20908,10 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/conveyor/east{
+	id = "QMLoad1";
+	dir = 8
+	},
 /turf/simulated/floor/plasteel/dark{
 	dir = 4;
 	icon_state = "darkbrowncorners"
@@ -22091,6 +22125,15 @@
 	dir = 1
 	},
 /obj/structure/disposalpipe/trunk,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced,
+/obj/machinery/door/window/reinforced/normal{
+	name = "Стеклянный шлюз";
+	dir = 1;
+	pixel_y = 1
+	},
 /turf/simulated/floor/plasteel/dark{
 	icon_state = "darkbrownfull"
 	},
@@ -25245,6 +25288,17 @@
 	dir = 1
 	},
 /area/syndicate_mothership/jail)
+"oSM" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/turf_decal/box/white,
+/obj/machinery/conveyor_switch/oneway{
+	dir = 8;
+	id = "QMLoad1"
+	},
+/turf/simulated/floor/plasteel/dark,
+/area/centcom/ss220/supply)
 "oTb" = (
 /obj/effect/turf_decal/caution/stand_clear/white,
 /obj/effect/turf_decal/box/white/corners{
@@ -27715,7 +27769,7 @@
 /area/centcom/ss220/admin3)
 "qtB" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	name = "Столовая";
+	name = "Столовая ОБР";
 	dir = 1
 	},
 /obj/effect/turf_decal/delivery/blue,
@@ -36893,6 +36947,16 @@
 	icon_state = "darkneutralfull"
 	},
 /area/syndicate_mothership)
+"vQF" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/conveyor/east/ccw{
+	dir = 10;
+	id = "QMLoad1"
+	},
+/turf/simulated/floor/plasteel/dark,
+/area/centcom/ss220/supply)
 "vRj" = (
 /obj/structure/table/reinforced,
 /turf/simulated/floor/plating{
@@ -37234,7 +37298,9 @@
 	},
 /area/centcom/ss220/supply)
 "wct" = (
-/obj/machinery/door/airlock/centcom,
+/obj/machinery/door/airlock/centcom{
+	name = "Коморка уборщика"
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/general)
 "wcw" = (
@@ -40447,6 +40513,10 @@
 "xOp" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/machinery/conveyor/east{
+	id = "QMLoad1";
+	dir = 8
 	},
 /turf/simulated/floor/plasteel/dark{
 	dir = 1;
@@ -55748,7 +55818,7 @@ egO
 uBy
 wYC
 pNp
-gyW
+oSM
 nGp
 egO
 egO
@@ -56005,8 +56075,8 @@ egO
 egO
 egO
 egO
-gyW
-qYl
+vQF
+dXK
 egO
 egO
 oTb
@@ -56262,7 +56332,7 @@ egO
 uiD
 xka
 sFj
-gyW
+eZF
 qYl
 egO
 egO
@@ -56519,7 +56589,7 @@ egO
 bsz
 spM
 aMJ
-gyW
+eZF
 qYl
 egO
 egO
