@@ -39,14 +39,47 @@
 				N.plane = initial(N.plane)
 				N.set_opacity(FALSE)
 
-/datum/weather/ash_storm/sand_storm/weather_act(mob/living/L)
-	var/blurr_prob = 40
-	var/blind_prob = 15
-	if(is_ash_immune(L))
-		return
-	L.adjustFireLoss(0.4)
+// это говно не работает, я допилю
+/datum/weather/ash_storm/sand_storm/proc/is_blind_immune(atom/L)
+	while(L && !isturf(L))
+		if(ismecha(L)) //Mechs are immune
+			return TRUE
+		if(ishuman(L)) //Are you immune?
+			var/mob/living/carbon/human/H = L
+			var/eye_protection = H.get_head_slots()
+			var/helmet = list (/obj/item/clothing/head/helmet/swat/raider_helmet/raider_kidan, /obj/item/clothing/glasses/sunglasses, /obj/item/clothing/head/helmet/space)
+			//var/wear = H.equip_to_slot ()
+			if(istype(eye_protection, helmet))
+				return TRUE
+		L = L.loc //Matryoshka check
+	return FALSE //RIP you
+
+/datum/weather/ash_storm/sand_storm/weather_act(mob/living/carbon/human/L)
+	//var/blurr_prob = 40
+	//var/blind_prob = 15
+	L.adjustFireLoss(0.8)
 	L.SetSlowed(5,5)
-	if(prob(blurr_prob))
-		L.AdjustEyeBlurry (rand(6 SECONDS, 8 SECONDS))
-	if(prob(blind_prob))
+	//if (prob(blurr_prob))
+		//L.AdjustEyeBlurry (rand(6 SECONDS, 8 SECONDS))
+
+	if(is_blind_immune(L))
+		return
+	L.AdjustEyeBlind (2 SECONDS)
+
+
+
+
+
+
+
+
+/*	if (istype(L) ||L.head == helmet)
+		return
+	else if (prob(blind_prob))
 		L.AdjustEyeBlind (2 SECONDS)
+if(prob(blind_prob))
+		L.AdjustEyeBlind (2 SECONDS)
+
+	else if (prob(blurr_prob))
+		L.AdjustEyeBlurry (rand(6 SECONDS, 8 SECONDS))
+*/

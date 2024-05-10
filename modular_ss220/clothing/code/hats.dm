@@ -124,6 +124,11 @@
 	color = "#DEB887"
 
 //desert
+
+/obj/item/clothing
+	var/sandstorm_eye_protect = FALSE // защита от ослепления в буре
+	var/sandstorm_slowdown_resist = FALSE // защита от замедления в буре
+
 /obj/item/clothing/head/helmet/swat/raider_helmet
 	name = "шипастый шлем"
 	desc = "Старая кевларовая каска изуродованная шипами и вырезами."
@@ -163,10 +168,16 @@
 	species_restricted = list("Kidan")
 	flags_inv = HIDEMASK | HIDEEARS | HIDEEYES | HIDEFACE
 
-/obj/item/clothing/head/helmet/swat/raider_helmet/raider_kidan/kidan_steel
+/obj/item/clothing/head/helmet/swat/raider_helmet/raider_kidan/kidan_steel1
 	name = "стальной шлем жука-рейдера"
 	desc = "Крепкий, лёгкий, практичный. Изготовлен под голову киданов."
 	icon_state = "kidan_metal_helmet"
+
+/obj/item/clothing/head/helmet/swat/raider_helmet/raider_kidan/kidan_steel2
+	name = "шлем силовой брони жука-рейдера"
+	desc = "Элемент силовой брони СССП старого образца. Некоторые партии, по всей видимости, были специально созданы для киданских борцов за независимость. Во всяком случае теперь этот шлем пренадлежит рейдерам."
+	icon_state = "kidan_power_helmet"
+	armor = list(MELEE = 20, BULLET = 25, LASER = 30, ENERGY = 5, BOMB = 30, RAD = 25, FIRE = 50, ACID = 50)
 
 /obj/item/clothing/glasses/sunglasses/desert_glasses
 	name = "защитные очки"
