@@ -331,6 +331,32 @@
 	desc = "Капюшон, прикреплённый к киданской накидке."
 	icon_state = "desertkidancape_hood"
 
+/obj/item/clothing/suit/space/kidan_powerarmor
+	name = "силовая броня жука-рейдера"
+	desc = "Силовая броня СССП старого образца. Некоторые партии, по всей видимости, были специально созданы для киданских борцов за независимость. Во всяком случае теперь эта броня пренадлежит рейдерам."
+	icon = 'modular_ss220/clothing/icons/object/suits.dmi'
+	icon_state = "kidan_power_armor"
+	item_state = "kidan_power_armor"
+	allowed = list(/obj/item/gun, /obj/item/flashlight, /obj/item/tank/internals, /obj/item/melee/baton, /obj/item/ammo_box, /obj/item/ammo_casing, /obj/item/restraints/handcuffs, /obj/item/dualsaber)
+	slowdown = 0.3
+	armor = list(MELEE = 30, BULLET = 25, LASER = 35, ENERGY = 5, BOMB = 30, RAD = 25, FIRE = 50, ACID = 50)
+	sprite_sheets = list(
+		"Kidan" 			= 	'modular_ss220/clothing/icons/mob/species/kidan/suits.dmi',
+	)
+	species_restricted = list("Kidan")
+	var/footstep = 1
+
+/obj/item/clothing/suit/space/kidan_powerarmor/on_mob_move(dir, mob/mob)
+	var/mob/living/carbon/human/H = mob
+	if(!istype(H) || H.wear_suit != src || !isturf(H.loc))
+		return
+	if(footstep > 1)
+		playsound(src, 'sound/effects/servostep.ogg', 100, 1)
+		footstep = 0
+	else
+		footstep++
+	..()
+
 //dune hardsuit
 
 /obj/item/clothing/suit/space/hardsuit/dune
@@ -343,7 +369,7 @@
 	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
 	flags_inv = HIDEJUMPSUIT
 	armor = list(MELEE = 35, BULLET = 15, LASER = 30, ENERGY = 10, BOMB = 30, RAD = 50, FIRE = 75, ACID = 75)
-	allowed = list(/obj/item/gun, /obj/item/flashlight, /obj/item/tank/internals, /obj/item/melee/baton, /obj/item/ammo_box, /obj/item/ammo_casing, /obj/item/restraints/handcuffs, /obj/item/dualsaber, /obj/item/gun)
+	allowed = list(/obj/item/gun, /obj/item/flashlight, /obj/item/tank/internals, /obj/item/melee/baton, /obj/item/ammo_box, /obj/item/ammo_casing, /obj/item/restraints/handcuffs, /obj/item/dualsaber)
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/dune
 	sprite_sheets = list(
 		"Human" = 'modular_ss220/clothing/icons/mob/suits.dmi',
@@ -368,7 +394,7 @@
 	desc = "Экзоскелет ударной группы синдиката, модернизированный по спецзаказу Миднайта Блэка."
 	icon_state = "hardsuit-midnightsuit"
 	item_state = "hardsuit-midnightsuit"
-	armor = list(MELEE = 35, BULLET = 35, LASER = 30, ENERGY = 20, BOMB = 40, RAD = 100, FIRE = 75, ACID = 75)
+	armor = list(MELEE = 70, BULLET = 80, LASER = 65, ENERGY = 40, BOMB = 85, RAD = 115, FIRE = INFINITY, ACID = INFINITY)
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/dune/midnight_suit
 
 /obj/item/clothing/head/helmet/space/hardsuit/dune/midnight_suit
@@ -377,4 +403,4 @@
 	icon_state = "hardsuit0-midnightsuit"
 	item_state = "hardsuit0-midnightsuit"
 	item_color = "midnightsuit"
-	armor = list(MELEE = 25, BULLET = 15, LASER = 20, ENERGY = 20, BOMB = 10, RAD = 100, FIRE = 75, ACID = 75)
+	armor = list(MELEE = 70, BULLET = 80, LASER = 65, ENERGY = 40, BOMB = 85, RAD = 115, FIRE = INFINITY, ACID = INFINITY)

@@ -191,6 +191,9 @@
 	digResult = /obj/item/stack/ore/slag
 	floor_variance = 10
 
+/turf/simulated/floor/indestructible/dune_sand/cave/dark
+	color = "#e0ac7b"
+
 /turf/simulated/floor/indestructible/dune_sand/cave/Initialize(mapload)
 	var/proper_name = name
 	. = ..()
@@ -202,11 +205,18 @@
 	name = "cave floor dug"
 	icon_state = "caverock_dug"
 
+/turf/simulated/floor/indestructible/dune_sand/cave/dug/dark
+	color = "#e0ac7b"
+
 /turf/simulated/floor/indestructible/dune_sand/cave/cold_rock
 	color = "#E6E6E6"
 	temperature = T20C
 	baseturf = /turf/simulated/floor/indestructible/dune_sand/cave/dug/cold
 	planetary_atmos = FALSE
+
+/turf/simulated/floor/indestructible/dune_sand/cave/cold_rock/dark
+	color = "#e0ac7b"
+	baseturf = /turf/simulated/floor/indestructible/dune_sand/cave/dug/cold/dark
 
 /turf/simulated/floor/indestructible/dune_sand/cave/dug/cold
 	color = "#E6E6E6"
@@ -214,14 +224,24 @@
 	baseturf = /turf/simulated/floor/indestructible/dune_sand/cave/dug/cold
 	planetary_atmos = FALSE
 
+/turf/simulated/floor/indestructible/dune_sand/cave/dug/cold/dark
+	color = "#e0ac7b"
+	baseturf = /turf/simulated/floor/indestructible/dune_sand/cave/dug/cold/dark
+
 /turf/simulated/floor/indestructible/dune_sand/cave/cavedeep
 	icon_state = "caverockdeep0"
 	environment_type = "caverockdeep"
 	digResult = /obj/item/stack/sheet/mineral/sandstone
 
+/turf/simulated/floor/indestructible/dune_sand/cave/cavedeep/dark
+	color = "#e0ac7b"
+
 /turf/simulated/floor/indestructible/dune_sand/cave/cavedeep/dug
 	name = "cave floor dug"
 	icon_state = "caverockdeep_dug"
+
+/turf/simulated/floor/indestructible/dune_sand/cave/cavedeep/dug/dark
+	color = "#e0ac7b"
 
 /turf/simulated/floor/indestructible/dune_sand/cave/cavedeep/cold_rock
 	color = "#E6E6E6"
@@ -229,10 +249,18 @@
 	baseturf = /turf/simulated/floor/indestructible/dune_sand/cave/cavedeep/dug/cold
 	planetary_atmos = FALSE
 
+/turf/simulated/floor/indestructible/dune_sand/cave/cavedeep/cold_rock/dark
+	color = "#e0ac7b"
+	baseturf = /turf/simulated/floor/indestructible/dune_sand/cave/cavedeep/dug/cold/dark
+
 /turf/simulated/floor/indestructible/dune_sand/cave/cavedeep/dug/cold
 	color = "#E6E6E6"
 	temperature = T20C
 	baseturf = /turf/simulated/floor/indestructible/dune_sand/cave/cavedeep/dug/cold
 	planetary_atmos = FALSE
+
+/turf/simulated/floor/indestructible/dune_sand/cave/cavedeep/dug/cold/dark
+	color = "#e0ac7b"
+	baseturf = /turf/simulated/floor/indestructible/dune_sand/cave/cavedeep/dug/cold/dark
 
 #undef DUNE_TEMPERATURE

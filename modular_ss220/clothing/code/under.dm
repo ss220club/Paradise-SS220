@@ -561,8 +561,8 @@
 /obj/item/clothing/under/dune/heatprotect/raider/mechanic
 	name = "кожаная броня рейдеров"
 	desc = "Костюм из кожи, украшенный стальными цепями, шипами и стяжками. Его вид наталкивает вас на мысли о глубоких темных фантазиях...."
-	icon_state = "raider_butcher"
-	item_color = "raider_butcher"
+	icon_state = "raider_mechmaniac_outfit"
+	item_color = "raider_mechmaniac_outfit"
 
 /obj/item/clothing/under/dune/heatprotect/raider/raider_fem
 	name = "броня рейдера"
