@@ -201,6 +201,7 @@
 		"Unathi" 			= 	'modular_ss220/clothing/icons/mob/suits.dmi',
 		"Vox" 				= 	'modular_ss220/clothing/icons/mob/species/vox/suits.dmi',
 		"Vulpkanin" 		= 	'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Nucleation"		=	'modular_ss220/clothing/icons/mob/suits.dmi',
 		)
 
 /datum/supply_packs/misc/soundhand
@@ -210,3 +211,14 @@
 					/obj/item/clothing/suit/storage/soundhand_brown_jacket)
 	cost = 600
 	containername = "soundhand fan crate"
+
+/* Space Battle */
+/obj/item/clothing/suit/space/hardsuit/security
+	icon = 'modular_ss220/clothing/icons/object/suits.dmi'
+	icon_state = "hardsuit-sec-old"
+	icon_override = 'modular_ss220/clothing/icons/mob/suits.dmi'
+
+/obj/item/clothing/head/helmet/space/hardsuit/security
+	icon = 'modular_ss220/clothing/icons/object/helmet.dmi'
+	icon_state = "hardsuit0-sec"
+	icon_override = 'modular_ss220/clothing/icons/mob/helmet.dmi'

@@ -17,18 +17,17 @@
 	onTransitZ(new_z = loc.z)
 
 /obj/item/gun/energy/laser/awaymission_aeg/onTransitZ(old_z, new_z)
-
-	if(is_away_level(new_z))
+	. = ..()
+	if(is_away_level(new_z) || (!is_station_level(new_z) && check_level_trait(new_z, REACHABLE_SPACE_ONLY)))
 		if(ismob(loc))
 			to_chat(loc, span_notice("Ваш [src] активируется, начиная аккумулировать энергию из материи сущего."))
 		selfcharge = TRUE
-	else
-		if(selfcharge)
-			if(ismob(loc))
-				to_chat(loc, span_danger("Ваш [src] деактивируется, так как он подавляется системами станции.</span>"))
-			cell.charge = 0
-			selfcharge = FALSE
-			update_icon()
+		return
+	if(ismob(loc) && selfcharge)
+		to_chat(loc, span_danger("Ваш [src] деактивируется, так как он подавляется системами станции.</span>"))
+	cell.charge = 0
+	selfcharge = FALSE
+	update_icon()
 
 /obj/item/gun/energy/laser/awaymission_aeg/proc/update_mob()
 	if(ismob(loc))
@@ -66,7 +65,9 @@
 		return FALSE
 
 	if(user.nutrition <= NUTRITION_LEVEL_STARVING)
-		user.visible_message(span_warning("[user.name] слабо давит на [src], но бесполезно: слишком мало сил!"), span_notice("Вы пытаетесь надавить на рычаг зарядки [src], но не можете из-за голода и усталости!"))
+		user.visible_message(
+			span_warning("[user.name] слабо давит на [src], но бесполезно: слишком мало сил!"),
+			span_notice("Вы пытаетесь надавить на рычаг зарядки [src], но не можете из-за голода и усталости!"))
 		return FALSE
 
 	user.visible_message(msg_recharge_all, msg_recharge_user)

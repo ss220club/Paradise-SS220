@@ -34,7 +34,7 @@
 		M.forceMove(drop_location())
 		visible_message("<span class='danger'>[M] bursts out of [src]!</span>")
 
-	if(!ismachineperson(src))
+	if(!ismachineperson(src) && !is_species(src, /datum/species/nucleation)) // SS220 EDIT - SPECIES
 		hgibs(loc, dna)
 	else
 		new /obj/effect/decal/cleanable/blood/gibs/robot(loc)
@@ -104,6 +104,7 @@
 		// We're alive again, so re-build the entire healthdoll
 		healthdoll.cached_healthdoll_overlays.Cut()
 		update_health_hud()
+		update_stamina_hud()
 	// Update healthdoll
 	if(dna.species)
 		dna.species.update_sight(src)

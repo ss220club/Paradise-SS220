@@ -6,7 +6,7 @@
 
 	if(height==0)
 		return 1
-	if(istype(mover, /obj/item/projectile))
+	if(isprojectile(mover))
 		return projectile_hit_check(mover)
 	if(mover.throwing)
 		return (!density || horizontal || (mover.throwing.thrower == src))
@@ -44,8 +44,6 @@
 			mob.control_object.forceMove(get_step(mob.control_object, direct))
 	return
 
-#define MOVEMENT_DELAY_BUFFER 0.75
-#define MOVEMENT_DELAY_BUFFER_DELTA 1.25
 #define CONFUSION_LIGHT_COEFFICIENT		0.15
 #define CONFUSION_HEAVY_COEFFICIENT		0.075
 #define CONFUSION_MAX					80 SECONDS
@@ -54,9 +52,10 @@
 /client/Move(n, direct)
 	if(world.time < move_delay)
 		return
-	else
-		input_data.desired_move_dir_add = NONE
-		input_data.desired_move_dir_sub = NONE
+
+	input_data.desired_move_dir_add = NONE
+	input_data.desired_move_dir_sub = NONE
+
 	var/old_move_delay = move_delay
 	move_delay = world.time + world.tick_lag //this is here because Move() can now be called multiple times per tick
 	if(!mob || !mob.loc)
@@ -131,10 +130,8 @@
 					M.stop_pulling()
 
 
-	//We are now going to move
-	moving = 1
 	var/delay = mob.movement_delay()
-	if(old_move_delay + (delay * MOVEMENT_DELAY_BUFFER_DELTA) + MOVEMENT_DELAY_BUFFER > world.time)
+	if(old_move_delay + world.tick_lag > world.time)
 		move_delay = old_move_delay
 	else
 		move_delay = world.time
@@ -185,12 +182,8 @@
 	if(prev_pulling_loc && mob.pulling?.face_while_pulling && (mob.pulling.loc != prev_pulling_loc))
 		mob.setDir(get_dir(mob, mob.pulling)) // Face welding tanks and stuff when pulling
 
-	moving = 0
 	if(mob && . && mob.throwing)
 		mob.throwing.finalize(FALSE)
-
-	for(var/obj/O in mob)
-		O.on_mob_move(direct, mob)
 
 #undef CONFUSION_LIGHT_COEFFICIENT
 #undef CONFUSION_HEAVY_COEFFICIENT
@@ -204,7 +197,7 @@
 ///Called by client/Move()
 ///Checks to see if you are being grabbed and if so attemps to break it
 /client/proc/Process_Grab()
-	if(mob.grabbed_by.len)
+	if(length(mob.grabbed_by))
 		if(mob.incapacitated(FALSE, TRUE)) // Can't break out of grabs if you're incapacitated
 			return TRUE
 		if(HAS_TRAIT(mob, TRAIT_IMMOBILIZED))
@@ -252,10 +245,10 @@
 		return
 	var/mob/living/L = mob
 	switch(L.incorporeal_move)
-		if(1)
+		if(INCORPOREAL_MOVE_NORMAL)
 			L.forceMove(get_step(L, direct))
 			L.dir = direct
-		if(2)
+		if(INCORPOREAL_MOVE_NINJA)
 			if(prob(50))
 				var/locx
 				var/locy
@@ -294,7 +287,7 @@
 				new /obj/effect/temp_visual/dir_setting/ninja/shadow(mobloc, L.dir)
 				L.forceMove(get_step(L, direct))
 			L.dir = direct
-		if(3) //Incorporeal move, but blocked by holy-watered tiles
+		if(INCORPOREAL_MOVE_HOLY_BLOCK)
 			var/turf/simulated/floor/stepTurf = get_step(L, direct)
 			if(stepTurf.flags & NOJAUNT)
 				to_chat(L, "<span class='warning'>Holy energies block your path.</span>")
@@ -304,7 +297,7 @@
 			else
 				L.forceMove(get_step(L, direct))
 				L.dir = direct
-	return 1
+	return TRUE
 
 
 ///Process_Spacemove
@@ -369,6 +362,9 @@
 		return
 	if(!Process_Spacemove(get_dir(pulling.loc, A)))
 		return
+	var/target_turf = get_step(pulling, get_dir(pulling.loc, A))
+	if(get_dist(target_turf, loc) > 1) // Make sure the turf we are trying to pull to is adjacent to the user.
+		return // We do not use Adjacent() here because it checks if there are dense objects in the way, making it impossible to move an object to the side if we're blocked on both sides.
 	if(ismob(pulling))
 		var/mob/M = pulling
 		var/atom/movable/t = M.pulling

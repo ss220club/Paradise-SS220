@@ -95,10 +95,11 @@
 
 /obj/item/clothing/glasses/hud/debug
 	name = "AVD-CNED glasses"
-	desc = "Medical, security and diagnostic hud. Alt click to toggle xray."
+	desc = "Diagnostic, Hydroponic, Medical, Security, and Skills HUD. Built-in advanced reagent scanner. Alt-click to toggle X-ray vision."
 	icon_state = "nvgmeson"
 	flags_cover = GLASSESCOVERSEYES
 	flash_protect = FLASH_PROTECTION_WELDER
+	scan_reagents_advanced = TRUE
 
 	prescription_upgradable = FALSE
 
@@ -172,7 +173,6 @@
 	selected_species = GLOB.all_species[choice]
 
 /obj/item/debug/human_spawner/AltClick(mob/user)
-	. = ..()
 	if(!Adjacent(user))
 		return
 	activate_mind = !activate_mind

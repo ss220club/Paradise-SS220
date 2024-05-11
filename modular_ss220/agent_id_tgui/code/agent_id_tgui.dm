@@ -140,8 +140,9 @@
 			return
 
 /obj/item/card/id/proc/flash_card(mob/user)
-	user.visible_message("[user] shows you: [bicon(src)] [src.name]. The assignment on the card: [src.assignment]",\
-		"You flash your ID card: [bicon(src)] [src.name]. The assignment on the card: [src.assignment]")
+	user.visible_message(
+		span_notice("[user] shows you: [bicon(src)] [src.name]. The assignment on the card: [src.assignment]."),
+		span_notice("You flash your ID card: [bicon(src)] [src.name]. The assignment on the card: [src.assignment]."))
 	if(mining_points)
 		to_chat(user, "There's <b>[mining_points] Mining Points</b> loaded onto this card. This card has earned <b>[total_mining_points] Mining Points</b> this Shift!")
 	src.add_fingerprint(user)
@@ -245,7 +246,7 @@
 			if("Security")
 				new_rank = tgui_input_list(registered_human, "What job would you like to be shown on this card (for SecHUDs)?\nChanging occupation will not grant or remove any access levels.", "Agent Card Occupation", GLOB.security_positions)
 			if("Support")
-				new_rank = tgui_input_list(registered_human, "What job would you like to be shown on this card (for SecHUDs)?\nChanging occupation will not grant or remove any access levels.", "Agent Card Occupation", GLOB.support_positions)
+				new_rank = tgui_input_list(registered_human, "What job would you like to be shown on this card (for SecHUDs)?\nChanging occupation will not grant or remove any access levels.", "Agent Card Occupation", GLOB.service_positions)
 			if("Command")
 				new_rank = tgui_input_list(registered_human, "What job would you like to be shown on this card (for SecHUDs)?\nChanging occupation will not grant or remove any access levels.", "Agent Card Occupation", GLOB.command_positions)
 			if("Special")
@@ -263,7 +264,7 @@
 			if("Security")
 				new_job = tgui_input_list(registered_human, "What job would you like to put on this card?\nChanging occupation will not grant or remove any access levels.", "Agent Card Occupation", GLOB.security_positions)
 			if("Support")
-				new_job = tgui_input_list(registered_human, "What job would you like to put on this card?\nChanging occupation will not grant or remove any access levels.", "Agent Card Occupation", GLOB.support_positions)
+				new_job = tgui_input_list(registered_human, "What job would you like to put on this card?\nChanging occupation will not grant or remove any access levels.", "Agent Card Occupation", GLOB.service_positions)
 			if("Command")
 				new_job = tgui_input_list(registered_human, "What job would you like to put on this card?\nChanging occupation will not grant or remove any access levels.", "Agent Card Occupation", GLOB.command_positions)
 			if("Special")

@@ -25,7 +25,7 @@
 	if(!reclined)
 		return ..()
 
-	to_chat(user, "<span class='danger'>*click*</span>")
+	to_chat(user, span_danger("*click*"))
 	playsound(user, dry_fire_sound, 100, 1)
 
 // Colt Anaconda .44
@@ -156,6 +156,43 @@
 	max_ammo = 100
 	icon = 'modular_ss220/objects/icons/ammo.dmi'
 	icon_state = "mm127_box"
+
+// Горохострел
+/obj/item/gun/projectile/revolver/peas_shooter
+	name = "Peas shooter"
+	desc = "Живой горох! Может стрелять горошинами, которые наносят слабый урон самооценке."
+	icon = 'modular_ss220/objects/icons/guns.dmi'
+	icon_state = "peas_shooter"
+	lefthand_file = 'modular_ss220/objects/icons/inhands/guns_lefthand.dmi'
+	righthand_file = 'modular_ss220/objects/icons/inhands/guns_righthand.dmi'
+	fire_sound = 'modular_ss220/objects/sound/weapons/gunshots/peas_shooter_gunshot.ogg'
+	drop_sound = 'modular_ss220/objects/sound/weapons/drop/peas_shooter_drop.ogg'
+	w_class = WEIGHT_CLASS_NORMAL
+	mag_type = /obj/item/ammo_box/magazine/peas_shooter
+
+/obj/item/ammo_box/magazine/peas_shooter
+	name = "peacock shooter magazine"
+	desc = "хранилище горошин для горохострела, вмещает до 6 горошин за раз."
+	ammo_type = /obj/item/ammo_casing/peas_shooter
+	max_ammo = 6
+
+/obj/item/ammo_casing/peas_shooter
+	name = "pea bullet"
+	desc = "Пуля из гороха, не может нанести какого-либо ощутимого урона."
+	projectile_type = /obj/item/projectile/bullet/midbullet_r/peas_shooter
+	icon_state = "peashooter_bullet"
+
+// Пуля горохострела
+/obj/item/projectile/bullet/midbullet_r/peas_shooter
+	icon = 'modular_ss220/objects/icons/ammo.dmi'
+	item_state = "peashooter_bullet"
+	stamina = 5
+	damage_type = STAMINA
+
+/obj/item/projectile/bullet/midbullet_r/peas_shooter/on_hit(mob/H)
+	. = ..()
+	if(prob(15))
+		H.emote("moan")
 
 // Тактическая бита Флота Nanotrasen
 /obj/item/melee/baseball_bat/homerun/central_command
@@ -341,3 +378,65 @@
 					/obj/item/ammo_box/magazine/pneuma/pepper)
 	cost = 250
 	containername = "pneumatic pepper ammunition pack"
+
+/obj/item/melee/stylet
+	name = "выкидной нож"
+	desc = "Маленький складной нож скрытого ношения. \
+	Нож в итальянском стиле, который исторически стал предметом споров и даже запретов \
+	Его лезвие практически мгновенно выбрасывается при нажатии кнопки-качельки."
+	slot_flags = SLOT_FLAG_BELT
+	w_class = WEIGHT_CLASS_TINY
+
+	var/on = FALSE
+	force = 2
+	var/force_on = 8
+
+	lefthand_file = 'modular_ss220/objects/icons/inhands/melee_lefthand.dmi'
+	righthand_file = 'modular_ss220/objects/icons/inhands/melee_righthand.dmi'
+	icon = 'modular_ss220/objects/icons/melee.dmi'
+	hitsound = 'sound/weapons/bladeslice.ogg'
+	item_state = "stylet_0"
+	var/item_state_on = "stylet_1"
+	icon_state = "stylet_0"
+	var/icon_state_on = "stylet_1"
+	var/extend_sound = 'modular_ss220/objects/sound/weapons/styletext.ogg'
+	attack_verb = list("hit", "poked")
+	sharp = TRUE
+	var/list/attack_verb_on = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+
+/obj/item/melee/stylet/update_icon_state()
+	. = ..()
+	if(on)
+		icon_state = "stylet_1"
+	else
+		icon_state = "stylet_0"
+
+/obj/item/melee/stylet/attack_self(mob/user)
+	on = !on
+
+	if(on)
+		to_chat(user, span_userdanger("Вы разложили [src]"))
+		item_state = item_state_on
+		update_icon(UPDATE_ICON_STATE)
+		w_class = WEIGHT_CLASS_SMALL
+		force = force_on
+		attack_verb = attack_verb_on
+	else
+		to_chat(user, span_notice("Вы сложили [src]."))
+		item_state = initial(item_state)
+		update_icon(UPDATE_ICON_STATE)
+		w_class = initial(w_class)
+		force = initial(force)
+		attack_verb = initial(attack_verb)
+
+	// Update mob hand visuals
+	if(ishuman(user))
+		var/mob/living/carbon/human/H = user
+		H.update_inv_l_hand()
+		H.update_inv_r_hand()
+	playsound(loc, extend_sound, 50, TRUE)
+	add_fingerprint(user)
+
+/obj/effect/spawner/lootdrop/maintenance/Initialize(mapload)
+	loot += list(/obj/item/melee/stylet = 5)
+	return ..()

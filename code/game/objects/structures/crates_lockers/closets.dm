@@ -190,6 +190,9 @@
 		if(!user.drop_item()) //couldn't drop the item
 			to_chat(user, "<span class='notice'>\The [W] is stuck to your hand, you cannot put it in \the [src]!</span>")
 			return
+		if(W.loc != user.loc)
+			// It went somewhere else, don't teleport it back.
+			return
 		if(W)
 			W.forceMove(loc)
 			return TRUE // It's resolved. No afterattack needed. Stops you from emagging lockers when putting in an emag
@@ -371,7 +374,7 @@
 
 /obj/structure/closet/get_remote_view_fullscreens(mob/user)
 	if(user.stat == DEAD || !(user.sight & (SEEOBJS|SEEMOBS)))
-		user.overlay_fullscreen("remote_view", /atom/movable/screen/fullscreen/impaired, 1)
+		user.overlay_fullscreen("remote_view", /atom/movable/screen/fullscreen/stretch/impaired, 1)
 
 /obj/structure/closet/ex_act(severity)
 	for(var/atom/A in contents)

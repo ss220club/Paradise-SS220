@@ -103,9 +103,21 @@ Difficulty: Hard
 	BL = new /mob/living/simple_animal/hostile/ancient_robot_leg(loc, src, BOTTOM_LEFT)
 	beam = new /obj/effect/abstract(loc)
 	mode = pick(BLUESPACE, GRAV, PYRO, FLUX, VORTEX, CRYO) //picks one of the 6 cores
-	if(mode == FLUX) // Main attack is shock, so flux makes it stronger
-		melee_damage_lower = 25
-		melee_damage_upper = 25
+	switch(mode)
+		if(BLUESPACE)
+			desc += " It emits sparks of blue energy."
+		if(GRAV)
+			desc += " Gravity seems to distort around it."
+		if(PYRO)
+			desc += " You see flames burning around it."
+		if(FLUX) // Main attack is shock, so flux makes it stronger
+			melee_damage_lower = 25
+			melee_damage_upper = 25
+			desc += " It seems to overflow with energy."
+		if(VORTEX)
+			desc += " You see space bend and distort around it."
+		if(CRYO)
+			desc += " The air surrounding it is cold and listless."
 	body_shield()
 	add_overlay("[mode]")
 	add_overlay("eyes")
@@ -637,6 +649,7 @@ Difficulty: Hard
 	robust_searching = TRUE
 	ranged_ignores_vision = TRUE
 	stat_attack = UNCONSCIOUS
+	maxbodytemp = INFINITY
 	var/range = 3
 	var/mob/living/simple_animal/hostile/megafauna/ancient_robot/core = null
 	var/fake_max_hp = 300
@@ -863,3 +876,8 @@ Difficulty: Hard
 #undef FLUX
 #undef CRYO
 #undef VORTEX
+
+#undef TOP_RIGHT
+#undef TOP_LEFT
+#undef BOTTOM_RIGHT
+#undef BOTTOM_LEFT

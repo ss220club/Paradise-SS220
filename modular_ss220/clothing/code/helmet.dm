@@ -31,8 +31,10 @@
 		"Unathi" 			= 	'modular_ss220/clothing/icons/mob/species/unathi/helmet.dmi',
 		"Vox" 				= 	'modular_ss220/clothing/icons/mob/species/vox/helmet.dmi',
 		"Vulpkanin" 		= 	'modular_ss220/clothing/icons/mob/species/vulpkanin/helmet.dmi',
+		"Nucleation"		=	'modular_ss220/clothing/icons/mob/helmet.dmi',
 		)
 
 /obj/item/clothing/head/helmet/bike_helmet/replica
 	desc = "Крутой шлем. На вид хлипкий..."
 	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+
