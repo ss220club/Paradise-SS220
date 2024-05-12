@@ -1966,7 +1966,8 @@
 	},
 /obj/machinery/door_control/no_emag/west{
 	id = "СС_COO_Mecha";
-	name = "Blast Door Open"
+	name = "Blast Door Open";
+	req_one_access_txt = "114"
 	},
 /turf/simulated/floor/plasteel/dark{
 	icon_state = "dark_large"
@@ -17199,22 +17200,6 @@
 /obj/structure/sign/securearea,
 /turf/simulated/wall/indestructible/riveted,
 /area/centcom/ss220/admin3)
-"jTU" = (
-/obj/effect/turf_decal/delivery/white,
-/obj/machinery/door/poddoor/shutters{
-	dir = 1;
-	id_tag = "cc_mech_weapon";
-	name = "Mech"
-	},
-/obj/machinery/door_control/no_emag/west{
-	id = "cc_mech_weapon";
-	name = "Оружейная - Мехи";
-	req_one_access_txt = "114"
-	},
-/turf/simulated/floor/plasteel/dark{
-	icon_state = "navybluefull"
-	},
-/area/centcom/ss220/admin3)
 "jUj" = (
 /obj/structure/chair/office/dark,
 /turf/simulated/floor/wood,
@@ -18826,6 +18811,11 @@
 	id_tag = "cc_mech_weapon";
 	name = "Mech"
 	},
+/obj/machinery/door_control/no_emag/west{
+	id = "cc_mech_weapon";
+	name = "Оружейная - Мехи";
+	req_one_access_txt = "114"
+	},
 /turf/simulated/floor/plasteel/dark{
 	icon_state = "navybluefull"
 	},
@@ -19317,6 +19307,17 @@
 /obj/structure/musician/piano,
 /turf/simulated/floor/wood,
 /area/ghost_bar)
+"lbI" = (
+/obj/effect/turf_decal/delivery/white,
+/obj/machinery/door/poddoor/shutters{
+	dir = 1;
+	id_tag = "cc_mech_weapon";
+	name = "Mech"
+	},
+/turf/simulated/floor/plasteel/dark{
+	icon_state = "navybluefull"
+	},
+/area/centcom/ss220/admin3)
 "lbN" = (
 /obj/structure/chair/comfy/brown{
 	color = "#FF3300"
@@ -64368,7 +64369,7 @@ nSc
 uef
 lJY
 kpt
-jTU
+kMT
 juv
 kpt
 bgl
@@ -64625,7 +64626,7 @@ nSc
 uef
 lJY
 kpt
-kMT
+lbI
 juv
 kpt
 bgl
