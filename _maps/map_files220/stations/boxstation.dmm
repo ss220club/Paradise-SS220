@@ -35128,24 +35128,15 @@
 /turf/simulated/floor/engine,
 /area/station/science/xenobiology)
 "cJM" = (
-/obj/item/radio/intercom/custom{
-	pixel_x = -28;
-	pixel_y = 4
-	},
 /obj/item/radio/intercom/private{
 	pixel_x = 28;
 	pixel_y = 4
 	},
-/obj/machinery/turretid/lethal{
-	check_synth = 1;
-	name = "AI Chamber Turret Control";
-	pixel_x = -6;
-	pixel_y = 24;
-	req_one_access_txt = "75"
+/obj/item/radio/intercom/custom{
+	pixel_x = -28;
+	pixel_y = 4
 	},
-/obj/item/radio/intercom/directional/north{
-	pixel_y = 36
-	},
+/obj/item/radio/intercom/directional/north,
 /obj/effect/landmark/start/ai,
 /turf/simulated/floor/bluegrid,
 /area/station/turret_protected/ai)
@@ -41285,10 +41276,12 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
+/obj/machinery/turretid/lethal{
+	check_synth = 1;
+	name = "AI Chamber Turret Control";
+	pixel_x = -6;
+	pixel_y = 24;
+	req_one_access_txt = "75"
 	},
 /turf/simulated/floor/bluegrid,
 /area/station/turret_protected/ai)
@@ -43363,6 +43356,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
+/obj/machinery/camera/motion{
+	c_tag = "AI Chamber - Aft";
+	dir = 1;
+	network = list("SS13","MiniSat");
+	start_active = 1
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -44269,12 +44268,7 @@
 /turf/simulated/floor/bluegrid,
 /area/station/turret_protected/ai)
 "drN" = (
-/obj/effect/spawner/window/reinforced/grilled,
-/obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2"
-	},
-/turf/simulated/floor/plating,
+/turf/simulated/wall,
 /area/station/turret_protected/ai)
 "drO" = (
 /obj/machinery/light/directional/east,
@@ -44289,14 +44283,12 @@
 /turf/simulated/wall,
 /area/station/maintenance/aft)
 "drR" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
+/obj/machinery/light/directional/east,
+/obj/machinery/status_display/directional/east,
+/obj/machinery/porta_turret{
+	dir = 8
 	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
+/turf/simulated/floor/bluegrid,
 /area/station/turret_protected/ai)
 "drS" = (
 /obj/machinery/light/directional/north,
@@ -44395,8 +44387,7 @@
 	},
 /obj/machinery/flasher{
 	id = "hopflash";
-	pixel_y = 22;
-	pixel_x = 1
+	pixel_y = 24
 	},
 /turf/simulated/floor/bluegrid,
 /area/station/turret_protected/ai)
@@ -44410,11 +44401,6 @@
 	icon_state = "1-8"
 	},
 /obj/machinery/ai_slipper,
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
 /turf/simulated/floor/bluegrid,
 /area/station/turret_protected/ai)
 "dsg" = (
@@ -44440,6 +44426,12 @@
 /area/station/turret_protected/ai)
 "dsi" = (
 /obj/machinery/firealarm/directional/south,
+/obj/machinery/camera/motion{
+	c_tag = "AI Chamber - Aft";
+	dir = 1;
+	network = list("SS13","MiniSat");
+	start_active = 1
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -83380,10 +83372,10 @@
 /turf/simulated/floor/plating,
 /area/station/engineering/ai_transit_tube)
 "rxK" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
+/obj/machinery/light/directional/west,
+/obj/machinery/status_display/directional/west,
+/obj/machinery/porta_turret{
+	dir = 4
 	},
 /turf/simulated/floor/bluegrid,
 /area/station/turret_protected/ai)
@@ -93584,22 +93576,14 @@
 /turf/simulated/floor/plating,
 /area/station/science/xenobiology)
 "vfp" = (
-/obj/machinery/door/window/classic/reversed{
-	dir = 8;
-	name = "AI Core Door"
-	},
-/obj/effect/mapping_helpers/airlock/windoor/access/any/command/ai_upload{
-	dir = 8
-	},
-/obj/machinery/power/apc/important/directional/north{
-	pixel_x = 6;
-	pixel_y = 26
-	},
 /obj/structure/cable{
-	d2 = 8;
-	icon_state = "0-8"
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
-/turf/simulated/floor/bluegrid,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
 /area/station/turret_protected/ai)
 "vfy" = (
 /obj/item/chair/stool{
@@ -101270,6 +101254,21 @@
 /obj/item/trash/chips,
 /turf/simulated/floor/plating,
 /area/station/maintenance/asmaint2)
+"xWE" = (
+/obj/machinery/door/window/classic/reversed{
+	dir = 8;
+	name = "AI Core Door"
+	},
+/obj/effect/mapping_helpers/airlock/windoor/access/any/command/ai_upload{
+	dir = 8
+	},
+/obj/structure/cable{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/obj/machinery/power/apc/important/directional/north,
+/turf/simulated/floor/bluegrid,
+/area/station/turret_protected/ai)
 "xWJ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/small/directional/south,
@@ -142490,8 +142489,8 @@ drG
 drI
 dry
 drE
-drI
-drG
+dry
+rxK
 dry
 drf
 drf
@@ -142747,7 +142746,7 @@ dnr
 dny
 dnz
 dnB
-drR
+vfp
 dsb
 drE
 drf
@@ -143001,9 +143000,9 @@ dnl
 drv
 drE
 dnw
-drf
-drf
-vfp
+drN
+drN
+xWE
 drN
 dfE
 dsi
@@ -143258,7 +143257,7 @@ dnj
 iFI
 dnq
 dnt
-drf
+drN
 cJM
 dry
 dsc
@@ -143515,11 +143514,11 @@ drE
 drv
 drE
 dni
-drf
-drf
+drN
+drN
 dsd
 drN
-rxK
+dry
 drE
 drf
 drf
@@ -144032,8 +144031,8 @@ drO
 drM
 dry
 drE
-drM
-drO
+dry
+drR
 dry
 drf
 drf
