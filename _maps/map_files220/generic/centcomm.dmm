@@ -6117,7 +6117,7 @@
 "dzJ" = (
 /turf/simulated/floor/plasteel/dark{
 	dir = 4;
-	icon_state = "darkred"
+	icon_state = "darkblue"
 	},
 /area/centcom/ss220/admin3)
 "dzR" = (
@@ -6692,11 +6692,13 @@
 /area/syndicate_mothership/outside)
 "dNn" = (
 /obj/structure/table/reinforced,
-/obj/item/gun/energy/disabler/smg{
-	pixel_y = 10
+/obj/item/storage/box/flashbangs{
+	pixel_x = 9;
+	pixel_y = 6
 	},
-/obj/item/gun/energy/disabler/smg{
-	pixel_y = 2
+/obj/item/storage/box/flashbangs{
+	pixel_x = -9;
+	pixel_y = 6
 	},
 /turf/simulated/floor/plasteel/dark{
 	icon_state = "darkgreen"
@@ -7573,7 +7575,7 @@
 "eqQ" = (
 /turf/simulated/floor/plasteel/dark{
 	dir = 10;
-	icon_state = "darkblue"
+	icon_state = "darkred"
 	},
 /area/centcom/ss220/admin3)
 "ero" = (
@@ -8199,7 +8201,7 @@
 "eHi" = (
 /obj/machinery/door/poddoor/shutters{
 	id_tag = "CC_Armory_Blue";
-	name = "Blue"
+	name = "Red"
 	},
 /obj/effect/turf_decal/delivery/white/hollow,
 /turf/simulated/floor/plasteel/dark{
@@ -17197,6 +17199,22 @@
 /obj/structure/sign/securearea,
 /turf/simulated/wall/indestructible/riveted,
 /area/centcom/ss220/admin3)
+"jTU" = (
+/obj/effect/turf_decal/delivery/white,
+/obj/machinery/door/poddoor/shutters{
+	dir = 1;
+	id_tag = "cc_mech_weapon";
+	name = "Mech"
+	},
+/obj/machinery/door_control/no_emag/west{
+	id = "cc_mech_weapon";
+	name = "Оружейная - Мехи";
+	req_one_access_txt = "114"
+	},
+/turf/simulated/floor/plasteel/dark{
+	icon_state = "navybluefull"
+	},
+/area/centcom/ss220/admin3)
 "jUj" = (
 /obj/structure/chair/office/dark,
 /turf/simulated/floor/wood,
@@ -17423,7 +17441,7 @@
 /obj/machinery/door/poddoor/shutters{
 	dir = 8;
 	id_tag = "CC_Armory_Red";
-	name = "Red"
+	name = "Gamma"
 	},
 /obj/effect/turf_decal/delivery/white/hollow,
 /turf/simulated/floor/plasteel/dark{
@@ -18802,11 +18820,12 @@
 /turf/simulated/floor/fakespace,
 /area/centcom/ss220/bar)
 "kMT" = (
-/obj/machinery/door/airlock/centcom{
-	name = "Мехи";
-	req_one_access_txt = "114"
-	},
 /obj/effect/turf_decal/delivery/white,
+/obj/machinery/door/poddoor/shutters{
+	dir = 1;
+	id_tag = "cc_mech_weapon";
+	name = "Mech"
+	},
 /turf/simulated/floor/plasteel/dark{
 	icon_state = "navybluefull"
 	},
@@ -23806,7 +23825,7 @@
 /area/shuttle/syndicate)
 "nIb" = (
 /obj/machinery/door_control/no_emag/east{
-	color = "#ff8080";
+	color = "#8080ff";
 	id = "CC_Armory_Red";
 	name = "Оружейная - Уровень 3";
 	req_one_access_txt = "114"
@@ -26359,7 +26378,7 @@
 /area/shuttle/syndicate)
 "pmQ" = (
 /obj/machinery/door_control/no_emag/west{
-	color = "#8080ff";
+	color = "#ff8080";
 	id = "CC_Armory_Blue";
 	name = "Оружейная - Уровень 2";
 	req_one_access_txt = "114"
@@ -28523,7 +28542,7 @@
 "qEQ" = (
 /turf/simulated/floor/plasteel/dark{
 	dir = 8;
-	icon_state = "darkblue"
+	icon_state = "darkred"
 	},
 /area/centcom/ss220/admin3)
 "qEZ" = (
@@ -40805,7 +40824,7 @@
 "xBH" = (
 /turf/simulated/floor/plasteel/dark{
 	dir = 6;
-	icon_state = "darkred"
+	icon_state = "darkblue"
 	},
 /area/centcom/ss220/admin3)
 "xCo" = (
@@ -64349,7 +64368,7 @@ nSc
 uef
 lJY
 kpt
-kMT
+jTU
 juv
 kpt
 bgl
