@@ -224,6 +224,6 @@
 	refill_canister = /obj/item/vending_refill/adv_ntmed
 
 /obj/item/reagent_containers/hypospray/autoinjector/nt_emergency
-	name = "экстренный автоинжектор"
+	name = "advanced emergency autoinjector"
 	desc = "Компания всегда ставит жизни и здоровье своих сотрудников превыше всего."
 	list_reagents = list("nanites" = 10)
