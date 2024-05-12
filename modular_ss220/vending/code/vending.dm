@@ -212,16 +212,16 @@
 						/obj/item/clothing/under/rainbow_skirt = 100)
 	. = ..()
 
-/obj/machinery/economy/vending/wallmed/nt
-	name = "\improper Медицина НТ"
+/obj/machinery/economy/vending/wallmed/emergency_ntmed
+	name = "\improper Advanced Nanomed"
 	desc = "Продвинутая экстренная аптечка на все случаи жизни."
 	products = list(
-		/obj/item/reagent_containers/applicator/dual = 2,
+		/obj/item/reagent_containers/applicator/dual = 1,
 		/obj/item/reagent_containers/syringe/charcoal = 4,
 		/obj/item/reagent_containers/hypospray/autoinjector/nt_emergency = 4,
 		/obj/item/healthanalyzer/advanced = 1
 		)
-	contraband = null
+	refill_canister = /obj/item/vending_refill/adv_ntmed
 
 /obj/item/reagent_containers/hypospray/autoinjector/nt_emergency
 	name = "экстренный автоинжектор"
