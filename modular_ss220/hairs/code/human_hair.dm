@@ -512,3 +512,35 @@
 
 /datum/sprite_accessory/hair/long_curls_alt
 	species_allowed = list("Human", "Slime People", "Tajaran", "Vulpkanin")
+
+/* Human hair */
+/datum/sprite_accessory/hair/hair_glammetal
+	icon = 'modular_ss220/hairs/icons/human_hair.dmi'
+	name = "Glam Metal"
+	icon_state = "hair_glammetal"
+	species_allowed = list("Human", "Slime People")
+
+/datum/sprite_accessory/hair/hair_undercut_fem_s
+	icon = 'modular_ss220/hairs/icons/human_hair.dmi'
+	name = "Undercut Female"
+	icon_state = "hair_undercut_fem"
+	species_allowed = list("Human", "Slime People")
+
+/datum/sprite_accessory/hair/hair_curtains
+	icon = 'modular_ss220/hairs/icons/human_hair.dmi'
+	name = "Curtains"
+	icon_state = "hair_curtains"
+	species_allowed = list("Human", "Slime People")
+	glasses_over = 0
+
+/datum/sprite_accessory/hair/hair_damsel
+	icon = 'modular_ss220/hairs/icons/human_hair.dmi'
+	name = "Damsel"
+	icon_state = "hair_damsel"
+	species_allowed = list("Human", "Slime People")
+
+/datum/sprite_accessory/hair/zone_s
+	icon = 'modular_ss220/hairs/icons/human_hair.dmi'
+	name = "Zone"
+	icon_state = "zone"
+	species_allowed = list("Human", "Slime People")
