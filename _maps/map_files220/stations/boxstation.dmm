@@ -35130,26 +35130,23 @@
 "cJM" = (
 /obj/item/radio/intercom/custom{
 	pixel_x = -28;
-	pixel_y = -10
+	pixel_y = 4
 	},
 /obj/item/radio/intercom/private{
 	pixel_x = 28;
-	pixel_y = -10
+	pixel_y = 4
 	},
-/obj/item/radio/intercom/directional/south,
-/obj/machinery/requests_console{
-	department = "AI";
-	departmentType = 5;
-	name = "AI Requests Console";
-	pixel_x = 32;
-	pixel_y = -32
+/obj/machinery/turretid/lethal{
+	check_synth = 1;
+	name = "AI Chamber Turret Control";
+	pixel_x = -6;
+	pixel_y = 24;
+	req_one_access_txt = "75"
+	},
+/obj/item/radio/intercom/directional/north{
+	pixel_y = 36
 	},
 /obj/effect/landmark/start/ai,
-/obj/machinery/newscaster/security_unit{
-	name = "AI newscaster";
-	pixel_x = -32;
-	pixel_y = -32
-	},
 /turf/simulated/floor/bluegrid,
 /area/station/turret_protected/ai)
 "cJO" = (
@@ -41283,10 +41280,15 @@
 	},
 /area/station/engineering/atmos)
 "dfE" = (
-/obj/machinery/camera/motion{
-	c_tag = "AI Core South";
-	network = list("SS13","MiniSat");
-	start_active = 1
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
 	},
 /turf/simulated/floor/bluegrid,
 /area/station/turret_protected/ai)
@@ -43337,6 +43339,13 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
+/obj/machinery/requests_console{
+	department = "AI";
+	departmentType = 5;
+	name = "AI Requests Console";
+	pixel_x = 32;
+	pixel_y = -32
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -43346,11 +43355,6 @@
 	d1 = 1;
 	d2 = 8;
 	icon_state = "1-8"
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
 	},
 /obj/machinery/hologram/holopad,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -43418,6 +43422,11 @@
 	},
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
@@ -44244,6 +44253,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
+/obj/machinery/newscaster/security_unit{
+	name = "AI newscaster";
+	pixel_x = -32;
+	pixel_y = -32
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -44255,7 +44269,12 @@
 /turf/simulated/floor/bluegrid,
 /area/station/turret_protected/ai)
 "drN" = (
-/turf/simulated/wall,
+/obj/effect/spawner/window/reinforced/grilled,
+/obj/structure/cable{
+	d2 = 2;
+	icon_state = "0-2"
+	},
+/turf/simulated/floor/plating,
 /area/station/turret_protected/ai)
 "drO" = (
 /obj/machinery/light/directional/east,
@@ -44271,23 +44290,13 @@
 /area/station/maintenance/aft)
 "drR" = (
 /obj/structure/cable{
-	d2 = 8;
-	icon_state = "0-8"
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
-/obj/structure/window/reinforced{
-	dir = 1
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
 	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/machinery/camera/motion{
-	c_tag = "AI Core";
-	dir = 1;
-	network = list("SS13","MiniSat");
-	start_active = 1
-	},
-/obj/machinery/power/apc/important/directional/south,
-/turf/simulated/floor/bluegrid,
 /area/station/turret_protected/ai)
 "drS" = (
 /obj/machinery/light/directional/north,
@@ -44359,28 +44368,53 @@
 	},
 /area/station/turret_protected/ai)
 "dsc" = (
-/obj/structure/cable{
-	d2 = 8;
-	icon_state = "0-8"
-	},
 /obj/machinery/power/smes{
 	charge = 5e+006
+	},
+/obj/structure/cable{
+	d2 = 2;
+	icon_state = "0-2"
+	},
+/obj/structure/window/reinforced{
+	dir = 1
 	},
 /turf/simulated/floor/bluegrid,
 /area/station/turret_protected/ai)
 "dsd" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
+/obj/machinery/door/window/classic/reversed{
+	dir = 4;
+	name = "AI Core Door"
 	},
-/turf/simulated/wall,
+/obj/effect/mapping_helpers/airlock/windoor/access/any/command/ai_upload{
+	dir = 4
+	},
+/obj/machinery/camera/motion{
+	c_tag = "AI Core South";
+	network = list("SS13","MiniSat");
+	start_active = 1
+	},
+/obj/machinery/flasher{
+	id = "hopflash";
+	pixel_y = 22;
+	pixel_x = 1
+	},
+/turf/simulated/floor/bluegrid,
 /area/station/turret_protected/ai)
 "dse" = (
 /obj/machinery/power/terminal{
 	dir = 1
 	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
 /obj/machinery/ai_slipper,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/bluegrid,
 /area/station/turret_protected/ai)
 "dsg" = (
@@ -83348,15 +83382,8 @@
 "rxK" = (
 /obj/structure/cable{
 	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
-/obj/machinery/door/window/classic/reversed{
-	dir = 1;
-	name = "AI Core Door"
-	},
-/obj/effect/mapping_helpers/airlock/windoor/access/any/command/ai_upload{
-	dir = 1
+	d2 = 8;
+	icon_state = "1-8"
 	},
 /turf/simulated/floor/bluegrid,
 /area/station/turret_protected/ai)
@@ -93557,23 +93584,20 @@
 /turf/simulated/floor/plating,
 /area/station/science/xenobiology)
 "vfp" = (
-/obj/structure/window/reinforced{
-	dir = 1
+/obj/machinery/door/window/classic/reversed{
+	dir = 8;
+	name = "AI Core Door"
 	},
-/obj/structure/window/reinforced{
+/obj/effect/mapping_helpers/airlock/windoor/access/any/command/ai_upload{
 	dir = 8
 	},
-/obj/machinery/turretid/lethal{
-	check_synth = 1;
-	name = "AI Chamber Turret Control";
-	pixel_x = 5;
-	pixel_y = -24;
-	req_one_access_txt = "75"
+/obj/machinery/power/apc/important/directional/north{
+	pixel_x = 6;
+	pixel_y = 26
 	},
-/obj/machinery/flasher{
-	id = "AI";
-	pixel_x = -8;
-	pixel_y = -24
+/obj/structure/cable{
+	d2 = 8;
+	icon_state = "0-8"
 	},
 /turf/simulated/floor/bluegrid,
 /area/station/turret_protected/ai)
@@ -142723,8 +142747,8 @@ dnr
 dny
 dnz
 dnB
+drR
 dsb
-drE
 drE
 drf
 drf
@@ -142977,10 +143001,10 @@ dnl
 drv
 drE
 dnw
+drf
+drf
 vfp
 drN
-drN
-dsd
 dfE
 dsi
 drf
@@ -143234,9 +143258,9 @@ dnj
 iFI
 dnq
 dnt
-rxK
+drf
 cJM
-drN
+dry
 dsc
 dse
 dsh
@@ -143491,11 +143515,11 @@ drE
 drv
 drE
 dni
-drR
+drf
+drf
+dsd
 drN
-drN
-drN
-dry
+rxK
 drE
 drf
 drf
