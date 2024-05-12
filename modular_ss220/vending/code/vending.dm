@@ -211,3 +211,19 @@
 						/obj/item/clothing/under/prisoner_skirt = 175,
 						/obj/item/clothing/under/rainbow_skirt = 100)
 	. = ..()
+
+/obj/machinery/economy/vending/wallmed/nt
+	name = "\improper Медицина НТ"
+	desc = "Продвинутая экстренная аптечка на все случаи жизни."
+	products = list(
+		/obj/item/reagent_containers/applicator/dual = 2,
+		/obj/item/reagent_containers/syringe/charcoal = 4,
+		/obj/item/reagent_containers/hypospray/autoinjector/nt_emergency = 4,
+		/obj/item/healthanalyzer/advanced = 1
+		)
+	contraband = null
+
+/obj/item/reagent_containers/hypospray/autoinjector/nt_emergency
+	name = "экстренный автоинжектор"
+	desc = "Компания всегда ставит жизни и здоровье своих сотрудников превыше всего."
+	list_reagents = list("nanites" = 10)

@@ -33,6 +33,21 @@
 /obj/machinery/economy/vending/wallmed/directional/east
 	pixel_x = 24
 
+/obj/machinery/economy/vending/wallmed/nt/directional
+	name = "\improper Медицина НТ"
+
+/obj/machinery/economy/vending/wallmed/nt/directional/south
+	pixel_y = -32
+
+/obj/machinery/economy/vending/wallmed/nt/directional/north
+	pixel_y = 32
+
+/obj/machinery/economy/vending/wallmed/nt/directional/west
+	pixel_x = -25
+
+/obj/machinery/economy/vending/wallmed/nt/directional/east
+	pixel_x = 24
+
 /* Fire Alarm */
 /obj/machinery/firealarm/directional
 	name = "\improper fire alarm"
