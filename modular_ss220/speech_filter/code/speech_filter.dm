@@ -1,3 +1,5 @@
+#define BRAINROT_FILTER_FILE 'config/speech_filters/brainrot_filter.json'
+
 /datum/element/speech_filter
 	element_flags = ELEMENT_DETACH_ON_HOST_DESTROY
 
@@ -27,7 +29,13 @@
 		return
 
 	var/original_message_length = length(message)
+	if(!original_message_length)
+		return
+
 	var/regex/brainrot_filter_regex = get_brainrot_filter_regex()
+	if(!brainrot_filter_regex)
+		return
+
 	message = replacetext(message, brainrot_filter_regex, "")
 	if(original_message_length == length(message))
 		return
@@ -37,7 +45,10 @@
 	to_chat(talker, span_sinister("Почему у меня такой скудный словарный запас? Стоит сходить в библиотеку и прочесть книгу..."))
 
 /datum/element/speech_filter/proc/get_brainrot_filter_regex()
-	var/static/list/filters = strings("brainrot_filter.json", "brainrot_filter")
+	if(!fexists(BRAINROT_FILTER_FILE))
+		return
+
+	var/static/list/filters = json_load(BRAINROT_FILTER_FILE)["brainrot_filter"]
 	if(!length(filters))
 		return list()
 
@@ -51,3 +62,5 @@
 
 /datum/element/speech_filter/proc/can_bypass_filter(mob/mob_to_check)
 	return mob_to_check.client.ckey in GLOB.configuration.ss220_misc.speech_filter_bypass
+
+#undef BRAINROT_FILTER_FILE
