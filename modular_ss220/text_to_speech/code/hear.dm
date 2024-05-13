@@ -26,4 +26,4 @@
 		cast_tts(M, message)
 
 /mob/handle_speaker_name(atom/movable/speaker, vname, hard_to_hear)
-	return "radio"
+	return "Radio"
