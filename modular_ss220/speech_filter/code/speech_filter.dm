@@ -16,6 +16,7 @@
 /datum/element/speech_filter/Detach(datum/source, force)
 	. = ..()
 	UnregisterSignal(source, COMSIG_MOB_SAY)
+	UnregisterSignal(source, COMSIG_MOB_LOGOUT)
 
 /datum/element/speech_filter/proc/filter_speech(mob/talker, list/speech_args)
 	if(!GLOB.configuration.ss220_misc.enable_speech_filter || can_bypass_filter(talker))
