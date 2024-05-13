@@ -399,7 +399,7 @@
 //legendary sabers
 /obj/item/melee/rapier/genri_rapier
 	name = "Трость-рапира"
-	desc = "ыа"
+	desc = "Стилизованная под трость рапира, чье элегантное и обоюдоострое лезвие усажено на роскошно украшенную рукоять. Одни лишь инкрустированные в неё драгоценные камни стоят как целая звездная система."
 	icon = 'modular_ss220/dunes_map/icons/saber.dmi'
 	icon_state = "trrapier"
 	item_state = "trrapier"
@@ -409,7 +409,7 @@
 
 /obj/item/storage/belt/rapier/genri_rapier
 	name = "Трость-рапира"
-	desc = "ыа"
+	desc = "Ножны стилизованной под трость рапиры. Их корпус вырезан из черного дерева и щедро украшен позолотой. Их владелец обладает неоспоримый богатством и властью в известной Галактике."
 	icon_state = "trsheath"
 	item_state = "trsheath"
 	icon = 'modular_ss220/dunes_map/icons/saber.dmi'
