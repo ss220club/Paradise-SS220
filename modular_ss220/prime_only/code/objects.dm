@@ -37,6 +37,10 @@
 	var/hit_wield = 'modular_ss220/prime_only/sound/weapons/mid_saberhit.ogg'
 	var/hit_unwield = "swing_hit"
 
+	var/datum/enchantment/enchant = null
+	var/ranged = FALSE
+	var/power = 1
+
 /obj/item/dualsaber/legendary_saber/update_icon_state()
 	if(HAS_TRAIT(src, TRAIT_WIELDED))
 		icon_state = "[saber_name]_dualsaber[blade_color]1"
@@ -67,6 +71,7 @@
 	wieldsound = 'modular_ss220/prime_only/sound/weapons/gr_saberon.ogg'
 	unwieldsound = 'modular_ss220/prime_only/sound/weapons/gr_saberoff.ogg'
 	hit_wield = 'modular_ss220/prime_only/sound/weapons/gr_saberhit.ogg'
+	enchant = new/datum/enchantment/dash
 
 /obj/item/dualsaber/legendary_saber/sharlotta_saber
 	name = "Пламя"
@@ -111,3 +116,103 @@
 	wieldsound = 'modular_ss220/prime_only/sound/weapons/kel_saberon.ogg'
 	unwieldsound = 'modular_ss220/prime_only/sound/weapons/kel_saberoff.ogg'
 	hit_wield = 'modular_ss220/prime_only/sound/weapons/kel_saberhit.ogg'
+
+/obj/item/dualsaber/legendary_saber/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
+	. = ..()
+	enchant?.on_legendary_hit(target, user, proximity_flag, src)
+
+/obj/item/dualsaber/legendary_saber/proc/add_enchantment(new_enchant, mob/living/user, intentional = TRUE)
+	var/datum/enchantment/E = new new_enchant
+	enchant = E
+	E.on_gain(src, user)
+	E.power *= power
+	if(intentional)
+		SSblackbox.record_feedback("nested tally", "saber_enchants", 1, list("[E.name]"))
+
+
+/datum/enchantment/dash/proc/charge(mob/living/user, atom/chargeat, obj/item/dualsaber/legendary_saber/S)
+	if(on_leap_cooldown)
+		return
+	log_debug("Вызван charge. user: [user], target[chargeat]")
+	if(!chargeat)
+		log_debug("Цель для charge не выбрана")
+		return
+	var/turf/T = get_turf(chargeat)
+	log_debug("Турф: [T]")
+
+	if(!T)
+		log_debug("get_turf: Турф для charge не выбран")
+		return
+	var/list/targets = list()
+	for(var/atom/target in T.contents)
+		log_debug("Цель в список: [target]")
+		targets += target
+	charging = TRUE
+
+	var/obj/effect/temp_visual/decoy/D = new /obj/effect/temp_visual/decoy(user.loc, user)
+
+	animate(D, alpha = 0, color = "#271e77", transform = matrix()*1, time = anim_time, loop = anim_loop)
+
+	var/i
+	for(i=0, i<5, i++)
+		spawn(i * 9 MILLISECONDS)
+			step_to(user, T, 1, movespeed)
+			var/obj/effect/temp_visual/decoy/D2 = new /obj/effect/temp_visual/decoy(user.loc, user)
+			animate(D2, alpha = 0, color = "#271e77", transform = matrix()*1, time = anim_time, loop = anim_loop)
+
+
+
+
+	log_debug("Из charge В charge_end отправляется: [S]")
+	spawn(45 MILLISECONDS)
+		charge_end(targets, user, S)
+
+
+/datum/enchantment/dash/proc/charge_end(var/list/targets = list(), mob/living/user, obj/item/dualsaber/legendary_saber/S)
+	log_debug("Завершение прыжка")
+	charging = FALSE
+	//user.SetImmobilized(0, TRUE)
+	for(var/mob/living/L in targets)
+		log_debug("цель: [L]")
+		log_debug("charge_end: режет - [S]")
+		if(!(L == user))
+			L.KnockDown(knockdown_duration)
+			S.melee_attack_chain(user, L)
+			log_debug("ГООЛ")
+
+/datum/enchantment/dash
+	name = "Рывок"
+	desc = "Этот клинок несёт владельца прямо к цели. Никто не уйдёт."
+	ranged = TRUE
+	var/movespeed = 0.8
+	var/on_leap_cooldown = FALSE
+	var/charging = FALSE
+	var/knockdown_duration = 4 SECONDS
+	var/anim_time = 3
+	var/anim_loop = 3
+
+
+/datum/enchantment/proc/on_legendary_hit(mob/living/target, mob/living/user, proximity, obj/item/dualsaber/legendary_saber/S)
+	if(world.time < cooldown)
+		return FALSE
+	if(!istype(target))
+		return FALSE
+	if(target.stat == DEAD)
+		return FALSE
+	if(!ranged && !proximity)
+		return FALSE
+	cooldown = world.time + initial(cooldown)
+	return TRUE
+
+/datum/enchantment/dash/on_legendary_hit(mob/living/target, mob/living/user, proximity, obj/item/dualsaber/legendary_saber/S)
+	if(proximity) // don't put it on cooldown if adjacent
+		return
+	. = ..()
+	if(!.)
+		return
+	log_debug("Вызван эффект меча [S]")
+
+	if(HAS_TRAIT(S, TRAIT_WIELDED))
+		charge(user, target, S)
+
+
