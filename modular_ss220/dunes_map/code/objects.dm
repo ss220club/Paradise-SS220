@@ -317,7 +317,7 @@
 	desc = "Решетка камеры из пластали. Вряд ли её получится сломать."
 	icon = 'modular_ss220/dunes_map/icons/bars.dmi'
 	icon_state = "bars_wall"
-	opacity = TRUE
+	opacity = FALSE
 	anchored = TRUE
 	can_be_unanchored = FALSE
 	density = TRUE
@@ -351,16 +351,15 @@
 	volume = 50
 	resistance_flags = FIRE_PROOF
 
-
 /obj/structure/wall_torch
 	name = "настенный факел"
 	desc = "Древний и ненадежный способ освещения помещений."
 	icon = 'modular_ss220/dunes_map/icons/walltorch.dmi'
 	icon_state = "torchwall"
-	anchored = 1
+	anchored = TRUE
 	max_integrity = 50
 	obj_integrity = 50
-	density = 0
+	density = FALSE
 	light_power = 1
 	light_range = 5
 	light_color = COLOR_DARK_ORANGE
@@ -370,6 +369,32 @@
 	new /obj/item/flashlight/flare/torch(T)
 	STOP_PROCESSING(SSobj, src)
 	..()
+
+/obj/effect/mine/explosive/desert
+	icon = 'modular_ss220/dunes_map/icons/mine.dmi'
+	icon_state = "desertminearmed"
+	range_heavy = 0
+	range_light = 3
+	range_flash = 4
+	layer = 2.9
+
+/obj/structure/mirror/magic/kidan
+	name = "жучье зеркало"
+
+/obj/vehicle/motorcycle/desert
+	vehicle_move_delay = 0.2
+
+/obj/item/card/id/away/kidan
+	name = "самодельная идентификационная карта"
+	desc = "Грубо припаянный микрочип и пара магнитных полос на пластиковой карточке."
+	icon_state = "data"
+
+/obj/item/card/id/away/kidan/Initialize(mapload)
+	. = ..()
+	var/kidan_name = list (
+		"Лопух", "Локатор", "Костыль", "Горбун", "Кубышка", "Мотыль", "Котелок", "Бацилла", "Жаба", "Ворона", "Крыса", "Амеба", "Глиста", "Аскарида",  "Гвоздь", "Робинзон", "Курортник", "Фунт", "Гульден", "Тугрик", "Махно", "Бугор", "Змей", "Лютый", "Шайба", "Мазай", "Абу",
+		)
+	registered_name = "[pick (kidan_name)]"
 
 //legendary sabers
 /obj/item/melee/rapier/genri_rapier
