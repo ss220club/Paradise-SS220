@@ -1,0 +1,52 @@
+/datum/element/speech_filter
+	element_flags = ELEMENT_DETACH_ON_HOST_DESTROY
+
+/datum/element/speech_filter/Attach(datum/target)
+	. = ..()
+	if(!isliving(target))
+		return ELEMENT_INCOMPATIBLE
+
+	var/mob/mob_to_censor = target
+	if(!mob_to_censor.client)
+		return ELEMENT_INCOMPATIBLE
+
+	RegisterSignal(mob_to_censor, COMSIG_MOB_SAY, PROC_REF(filter_speech))
+	RegisterSignal(mob_to_censor, COMSIG_MOB_LOGOUT, PROC_REF(Detach))
+
+/datum/element/speech_filter/Detach(datum/source, force)
+	. = ..()
+	UnregisterSignal(source, COMSIG_MOB_SAY)
+
+/datum/element/speech_filter/proc/filter_speech(mob/talker, list/speech_args)
+	if(!GLOB.configuration.ss220_misc.enable_speech_filter || can_bypass_filter(talker))
+		return
+
+	var/message = speech_args[SPEECH_MESSAGE]
+	if(message[1] == "*")
+		return
+
+	var/original_message_length = length(message)
+	var/regex/brainrot_filter_regex = get_brainrot_filter_regex()
+	message = replacetext(message, brainrot_filter_regex, "")
+	if(original_message_length == length(message))
+		return
+
+	speech_args[SPEECH_MESSAGE] = trim(message)
+	addtimer(CALLBACK(talker, TYPE_PROC_REF(/mob, emote), "drool"), 0.3 SECONDS)
+	to_chat(talker, span_sinister("Почему у меня такой скудный словарный запас? Стоит сходить в библиотеку и прочесть книгу..."))
+
+/datum/element/speech_filter/proc/get_brainrot_filter_regex()
+	var/static/list/filters = strings("brainrot_filter.json", "brainrot_filter")
+	if(!length(filters))
+		return list()
+
+	var/static/regex/brainrot_filter
+	if(!brainrot_filter)
+		var/list/unique_filters = list()
+		unique_filters |= filters
+		brainrot_filter = regex(unique_filters.Join("|"), "ig")
+
+	return brainrot_filter
+
+/datum/element/speech_filter/proc/can_bypass_filter(mob/mob_to_check)
+	return mob_to_check.client.ckey in GLOB.configuration.ss220_misc.speech_filter_bypass
