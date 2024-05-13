@@ -6,9 +6,6 @@
 
 /datum/configuration_section/ss220_misc_configuration/load_data(list/data)
 	. = ..()
-
-	world.log << "enable_speech_filter = [data["enable_speech_filter"]]"
-
 	CONFIG_LOAD_BOOL(enable_speech_filter, data["enable_speech_filter"])
 
 	var/list/filter_bypass
