@@ -37,7 +37,7 @@
 	var/hit_wield = 'modular_ss220/prime_only/sound/weapons/mid_saberhit.ogg'
 	var/hit_unwield = "swing_hit"
 
-	var/datum/enchantment/enchant = null
+	var/datum/enchantment/enchant = new/datum/enchantment/dash
 	var/ranged = FALSE
 	var/power = 1
 
@@ -84,7 +84,6 @@
 	wieldsound = 'modular_ss220/prime_only/sound/weapons/gr_saberon.ogg'
 	unwieldsound = 'modular_ss220/prime_only/sound/weapons/gr_saberoff.ogg'
 	hit_wield = 'modular_ss220/prime_only/sound/weapons/gr_saberhit.ogg'
-	enchant = new/datum/enchantment/dash
 
 /obj/item/dualsaber/legendary_saber/sharlotta_saber
 	name = "Пламя"
@@ -96,7 +95,6 @@
 	wieldsound = 'modular_ss220/prime_only/sound/weapons/sh_saberon.ogg'
 	unwieldsound = 'modular_ss220/prime_only/sound/weapons/sh_saberoff.ogg'
 	hit_wield = 'modular_ss220/prime_only/sound/weapons/sh_saberhit.ogg'
-	enchant = new/datum/enchantment/dash
 
 /obj/item/dualsaber/legendary_saber/kirien_saber
 	name = "Верность клятве"
@@ -108,7 +106,6 @@
 	wieldsound = 'modular_ss220/prime_only/sound/weapons/kir_saberon.ogg'
 	unwieldsound = 'modular_ss220/prime_only/sound/weapons/kir_saberoff.ogg'
 	hit_wield = 'modular_ss220/prime_only/sound/weapons/kir_saberhit.ogg'
-	enchant = new/datum/enchantment/dash
 
 /obj/item/dualsaber/legendary_saber/normandy_saber
 	name = "Сестра"
@@ -120,8 +117,6 @@
 	wieldsound = 'modular_ss220/prime_only/sound/weapons/norm_saberon.ogg'
 	unwieldsound = 'modular_ss220/prime_only/sound/weapons/norm_saberoff.ogg'
 	hit_wield = 'modular_ss220/prime_only/sound/weapons/norm_saberhit.ogg'
-	enchant = new/datum/enchantment/dash
-
 /obj/item/dualsaber/legendary_saber/kelly_saber
 	name = "Ловец Бегущих"
 	desc = "''Ловец Бегущих'' - легендарный световой меч который является младшей частью меча ''Сестра''. Первый взгляд на корпус даёт понять, что он служит уже продолжительное время. Вся поверхность изобилует царапинами, сколами и потёртостями. Под кнопкой включения, вдоль рукояти, нарисованы семь белых, перечёркнутых жетонов - счёт владельцев, через которых прошло это оружие. Рядом с самым первым жетоном выгравировано ''2361. А.М.'' Рукоять меча удлинена для комфортного боя как одной, так и двумя руками, навершие Типа P покрыто золотом и обладает специальным разъёмом для подключения второго меча, а гарда представляет собой два закруглённых отростка. Обладатели этого меча используют хаотичный, адаптивный под врага стиль боя. Создатель: Коникс`Хеллькикс. Текущий Владелец: Мунивёрс Нормандия, в последствии был передан Рицу Келли."
@@ -132,7 +127,6 @@
 	wieldsound = 'modular_ss220/prime_only/sound/weapons/kel_saberon.ogg'
 	unwieldsound = 'modular_ss220/prime_only/sound/weapons/kel_saberoff.ogg'
 	hit_wield = 'modular_ss220/prime_only/sound/weapons/kel_saberhit.ogg'
-	enchant = new/datum/enchantment/dash
 
 /obj/item/dualsaber/legendary_saber/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	. = ..()
