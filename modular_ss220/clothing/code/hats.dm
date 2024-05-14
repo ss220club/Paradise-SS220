@@ -160,6 +160,7 @@
 	icon_state = "raider_mechmaniac_helmet"
 	flags = BLOCKHAIR
 	flags_inv = HIDEMASK | HIDEEARS | HIDEEYES | HIDEFACE
+	flash_protect = FLASH_PROTECTION_WELDER
 
 /obj/item/clothing/head/helmet/swat/raider_helmet/raider_kidan
 	name = "шлем жука-рейдера"
@@ -167,6 +168,7 @@
 	icon_state = "raider_kidan_helmet"
 	species_restricted = list("Kidan")
 	flags_inv = HIDEMASK | HIDEEARS | HIDEEYES | HIDEFACE
+	flash_protect = FLASH_PROTECTION_WELDER
 
 /obj/item/clothing/head/helmet/swat/raider_helmet/raider_kidan/kidan_steel1
 	name = "стальной шлем жука-рейдера"
