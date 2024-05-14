@@ -171,7 +171,7 @@
 		charge_end(targets, user, S)
 
 
-/datum/enchantment/dash/proc/charge_end(var/list/targets = list(), mob/living/user, obj/item/dualsaber/legendary_saber/S)
+/datum/enchantment/dash/proc/charge_end(list/targets = list(), mob/living/user, obj/item/dualsaber/legendary_saber/S)
 	charging = FALSE
 
 	for(var/mob/living/L in targets)
