@@ -11,10 +11,11 @@
 		AddComponent(/datum/component/ckey_condition, _ckeys = ckey_whitelist)
 		log_debug("Компонент для проверки сикея добавлен")
 
+/datum/component/condition_locked_pickup/RegisterWithParent()
 	RegisterSignal(parent, COMSIG_ITEM_PICKUP, PROC_REF(try_pick_up))
 	log_debug("Сигнал зарегистрирован")
 
-/datum/component/condition_locked_pickup/proc/try_pick_up(mob/living/user)
+/datum/component/condition_locked_pickup/proc/try_pick_up(obj/item/I, mob/living/user)
 	log_debug("Попытка поднять легендарный меч")
 	log_debug("Родитель - [parent]")
 	log_debug("src - [src]")
@@ -39,6 +40,9 @@
 	RegisterSignal(parent, COMSIG_IS_CONDITION_PASSED, PROC_REF(check_ckey))
 
 /datum/component/ckey_condition/proc/check_ckey(mob/living/user)
+	log_debug("check_ckey: Родитель - [parent]")
+	log_debug("check_ckey: src - [src]")
+	log_debug("check_ckey: user - [user]")
 	if(user.client.ckey in ckeys)
 		log_debug("Сикей валиден")
 		return TRUE
@@ -52,6 +56,9 @@
 	RegisterSignal(parent, COMSIG_IS_CONDITION_PASSED, PROC_REF(check_role))
 
 /datum/component/role_condition/proc/check_role(mob/living/user)
+	log_debug("check_role: Родитель - [parent]")
+	log_debug("check_role: src - [src]")
+	log_debug("check_role: user - [user]")
 	if(required_role in user.mind.vars)
 		log_debug("Роль валидна")
 		return user.mind.vars[required_role]
