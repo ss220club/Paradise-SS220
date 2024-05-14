@@ -1,3 +1,5 @@
+#define LEGENDARY_SWORDS_CKEY_WHITELIST list("grombila")
+
 /obj/item/melee/rapier/genri_rapier
 	name = "Трость-рапира"
 	desc = "Стилизованная под трость рапира, чье элегантное и обоюдоострое лезвие усажено на роскошно украшенную рукоять. Одни лишь инкрустированные в неё драгоценные камни стоят как целая звездная система."
@@ -41,18 +43,13 @@
 	var/ranged = FALSE
 	var/power = 1
 
+/obj/item/dualsaber/legendary_saber/Initialize(mapload)
+	. = ..()
+	src.AddComponent(/datum/component/condition_locked_pickup, "offstation_role", LEGENDARY_SWORDS_CKEY_WHITELIST)
+
 /obj/item/dualsaber/legendary_saber/pickup(mob/living/user)
 	. = ..()
-	if(!(user.mind.offstation_role) && !(user.client.ckey == "mooniverse"))
-		user.Weaken(10 SECONDS)
-		user.unEquip(src, force, silent = FALSE)
-		to_chat(user, span_userdanger("Вы недостойны."))
-		if(ishuman(user))
-			var/mob/living/carbon/human/H = user
-			H.apply_damage(rand(force/2, force), BRUTE, pick(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM))
-		else
-			user.adjustBruteLoss(rand(force/2, force))
-
+	log_debug("подобравший: [user]")
 
 /obj/item/dualsaber/legendary_saber/update_icon_state()
 	if(HAS_TRAIT(src, TRAIT_WIELDED))
