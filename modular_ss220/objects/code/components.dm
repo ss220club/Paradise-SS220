@@ -15,7 +15,6 @@
 	log_debug("Сигнал зарегистрирован")
 
 /datum/component/condition_locked_pickup/proc/try_pick_up(mob/living/user)
-	SIGNAL_HANDLER
 	log_debug("Попытка поднять легендарный меч")
 	log_debug("Родитель - [parent]")
 	log_debug("src - [src]")
@@ -40,7 +39,6 @@
 	RegisterSignal(parent, COMSIG_IS_CONDITION_PASSED, PROC_REF(check_ckey))
 
 /datum/component/ckey_condition/proc/check_ckey(mob/living/user)
-	SIGNAL_HANDLER
 	if(user.client.ckey in ckeys)
 		log_debug("Сикей валиден")
 		return TRUE
@@ -54,7 +52,6 @@
 	RegisterSignal(parent, COMSIG_IS_CONDITION_PASSED, PROC_REF(check_role))
 
 /datum/component/role_condition/proc/check_role(mob/living/user)
-	SIGNAL_HANDLER
 	if(required_role in user.mind.vars)
 		log_debug("Роль валидна")
 		return user.mind.vars[required_role]
