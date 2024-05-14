@@ -42,7 +42,7 @@
 	if(!brainrot_regex)
 		return
 
-	message = rust_utils_regex_replace(message, brainrot_regex, "igu", "")
+	message = rustutils_regex_replace(message, brainrot_regex, "i", "")
 	if(original_message_length == length(message))
 		return
 
