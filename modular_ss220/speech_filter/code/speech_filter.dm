@@ -1,7 +1,13 @@
-#define BRAINROT_FILTER_FILE 'config/speech_filters/brainrot_filter.json'
+#define BRAINROT_FILTER_FILE "config/speech_filters/brainrot_filter.json"
 
 /datum/element/speech_filter
 	element_flags = ELEMENT_DETACH_ON_HOST_DESTROY
+	var/static/list/brainrot_notifications = list(
+		"Почему у меня такой скудный словарный запас? Стоит сходить в библиотеку и прочесть книгу...",
+		"Что, черт побери, я несу?",
+		"Я в своём уме? Надо следить за языком.",
+		"Неужели я не могу подобрать нужных слов? Позор мне..."
+	)
 
 /datum/element/speech_filter/Attach(datum/target)
 	. = ..()
@@ -32,17 +38,17 @@
 	if(!original_message_length)
 		return
 
-	var/regex/brainrot_filter_regex = get_brainrot_filter_regex()
-	if(!brainrot_filter_regex)
+	var/brainrot_regex = get_brainrot_filter_regex()
+	if(!brainrot_regex)
 		return
 
-	message = replacetext(message, brainrot_filter_regex, "")
+	message = rust_utils_regex_replace(message, brainrot_regex, "igu", "")
 	if(original_message_length == length(message))
 		return
 
 	speech_args[SPEECH_MESSAGE] = trim(message)
 	addtimer(CALLBACK(talker, TYPE_PROC_REF(/mob, emote), "drool"), 0.3 SECONDS)
-	to_chat(talker, span_sinister("Почему у меня такой скудный словарный запас? Стоит сходить в библиотеку и прочесть книгу..."))
+	to_chat(talker, span_sinister(pick(brainrot_notifications)))
 
 /datum/element/speech_filter/proc/get_brainrot_filter_regex()
 	if(!fexists(BRAINROT_FILTER_FILE))
@@ -52,13 +58,13 @@
 	if(!length(filters))
 		return list()
 
-	var/static/regex/brainrot_filter
-	if(!brainrot_filter)
+	var/static/brainrot_regex
+	if(!brainrot_regex)
 		var/list/unique_filters = list()
 		unique_filters |= filters
-		brainrot_filter = regex(unique_filters.Join("|"), "ig")
+		brainrot_regex = unique_filters.Join("|")
 
-	return brainrot_filter
+	return brainrot_regex
 
 /datum/element/speech_filter/proc/can_bypass_filter(mob/mob_to_check)
 	return mob_to_check.client.ckey in GLOB.configuration.ss220_misc.speech_filter_bypass
