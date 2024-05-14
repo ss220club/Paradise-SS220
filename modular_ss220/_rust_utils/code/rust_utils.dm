@@ -3,8 +3,8 @@
 /* This comment bypasses grep checks */ /var/__rust_utils
 
 /proc/__detect_rust_utils()
-	if (world.system_type == UNIX)
-		if (fexists("./librust_utils.so"))
+	if(world.system_type == UNIX)
+		if(fexists("./librust_utils.so"))
 			// No need for LD_LIBRARY_PATH badness.
 			return __rust_utils = "./librust_utils.so"
 		else
