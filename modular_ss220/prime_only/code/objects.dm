@@ -41,6 +41,19 @@
 	var/ranged = FALSE
 	var/power = 1
 
+/obj/item/dualsaber/legendary_saber/pickup(mob/living/user)
+	. = ..()
+	if(!(user.mind.offstation_role) && !(user.client.ckey == "mooniverse"))
+		user.Weaken(10 SECONDS)
+		user.unEquip(src, force, silent = FALSE)
+		to_chat(user, span_userdanger("Вы недостойны."))
+		if(ishuman(user))
+			var/mob/living/carbon/human/H = user
+			H.apply_damage(rand(force/2, force), BRUTE, pick(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM))
+		else
+			user.adjustBruteLoss(rand(force/2, force))
+
+
 /obj/item/dualsaber/legendary_saber/update_icon_state()
 	if(HAS_TRAIT(src, TRAIT_WIELDED))
 		icon_state = "[saber_name]_dualsaber[blade_color]1"
@@ -83,6 +96,7 @@
 	wieldsound = 'modular_ss220/prime_only/sound/weapons/sh_saberon.ogg'
 	unwieldsound = 'modular_ss220/prime_only/sound/weapons/sh_saberoff.ogg'
 	hit_wield = 'modular_ss220/prime_only/sound/weapons/sh_saberhit.ogg'
+	enchant = new/datum/enchantment/dash
 
 /obj/item/dualsaber/legendary_saber/kirien_saber
 	name = "Верность клятве"
@@ -94,6 +108,7 @@
 	wieldsound = 'modular_ss220/prime_only/sound/weapons/kir_saberon.ogg'
 	unwieldsound = 'modular_ss220/prime_only/sound/weapons/kir_saberoff.ogg'
 	hit_wield = 'modular_ss220/prime_only/sound/weapons/kir_saberhit.ogg'
+	enchant = new/datum/enchantment/dash
 
 /obj/item/dualsaber/legendary_saber/normandy_saber
 	name = "Сестра"
@@ -105,6 +120,7 @@
 	wieldsound = 'modular_ss220/prime_only/sound/weapons/norm_saberon.ogg'
 	unwieldsound = 'modular_ss220/prime_only/sound/weapons/norm_saberoff.ogg'
 	hit_wield = 'modular_ss220/prime_only/sound/weapons/norm_saberhit.ogg'
+	enchant = new/datum/enchantment/dash
 
 /obj/item/dualsaber/legendary_saber/kelly_saber
 	name = "Ловец Бегущих"
@@ -116,6 +132,7 @@
 	wieldsound = 'modular_ss220/prime_only/sound/weapons/kel_saberon.ogg'
 	unwieldsound = 'modular_ss220/prime_only/sound/weapons/kel_saberoff.ogg'
 	hit_wield = 'modular_ss220/prime_only/sound/weapons/kel_saberhit.ogg'
+	enchant = new/datum/enchantment/dash
 
 /obj/item/dualsaber/legendary_saber/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	. = ..()
@@ -133,24 +150,18 @@
 /datum/enchantment/dash/proc/charge(mob/living/user, atom/chargeat, obj/item/dualsaber/legendary_saber/S)
 	if(on_leap_cooldown)
 		return
-	log_debug("Вызван charge. user: [user], target[chargeat]")
 	if(!chargeat)
-		log_debug("Цель для charge не выбрана")
 		return
 	var/turf/T = get_turf(chargeat)
-	log_debug("Турф: [T]")
 
 	if(!T)
-		log_debug("get_turf: Турф для charge не выбран")
 		return
 	var/list/targets = list()
 	for(var/atom/target in T.contents)
-		log_debug("Цель в список: [target]")
 		targets += target
 	charging = TRUE
 
 	var/obj/effect/temp_visual/decoy/D = new /obj/effect/temp_visual/decoy(user.loc, user)
-
 	animate(D, alpha = 0, color = "#271e77", transform = matrix()*1, time = anim_time, loop = anim_loop)
 
 	var/i
@@ -160,25 +171,19 @@
 			var/obj/effect/temp_visual/decoy/D2 = new /obj/effect/temp_visual/decoy(user.loc, user)
 			animate(D2, alpha = 0, color = "#271e77", transform = matrix()*1, time = anim_time, loop = anim_loop)
 
-
-
-
-	log_debug("Из charge В charge_end отправляется: [S]")
 	spawn(45 MILLISECONDS)
+		if(get_dist(user, T) > 1)
+			return
 		charge_end(targets, user, S)
 
 
 /datum/enchantment/dash/proc/charge_end(var/list/targets = list(), mob/living/user, obj/item/dualsaber/legendary_saber/S)
-	log_debug("Завершение прыжка")
 	charging = FALSE
-	//user.SetImmobilized(0, TRUE)
+
 	for(var/mob/living/L in targets)
-		log_debug("цель: [L]")
-		log_debug("charge_end: режет - [S]")
 		if(!(L == user))
-			L.KnockDown(knockdown_duration)
+			user.apply_damage(-40, STAMINA)
 			S.melee_attack_chain(user, L)
-			log_debug("ГООЛ")
 
 /datum/enchantment/dash
 	name = "Рывок"
@@ -187,9 +192,8 @@
 	var/movespeed = 0.8
 	var/on_leap_cooldown = FALSE
 	var/charging = FALSE
-	var/knockdown_duration = 4 SECONDS
-	var/anim_time = 3
-	var/anim_loop = 3
+	var/anim_time = 3 DECISECONDS
+	var/anim_loop = 3 DECISECONDS
 
 
 /datum/enchantment/proc/on_legendary_hit(mob/living/target, mob/living/user, proximity, obj/item/dualsaber/legendary_saber/S)
@@ -210,7 +214,6 @@
 	. = ..()
 	if(!.)
 		return
-	log_debug("Вызван эффект меча [S]")
 
 	if(HAS_TRAIT(S, TRAIT_WIELDED))
 		charge(user, target, S)
