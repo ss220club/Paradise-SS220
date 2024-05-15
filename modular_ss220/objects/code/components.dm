@@ -1,9 +1,11 @@
 #define COMSIG_IS_CONDITION_PASSED "is_condition_passed"
 #define COMSIG_PICK_LEGENDARY_ITEM "pick_legendary_item"
 #define COMPONENT_CONDITION_PASSED 1 << 0
+#define COMPONENT_CONDITION_FAILED 0 << 0
 
 /datum/component/condition_locked_pickup
 	var/pickup_damage
+	var/force = 20
 
 /datum/component/condition_locked_pickup/Initialize(required_role, ckey_whitelist, pickup_damage = 0)
 		src.pickup_damage = pickup_damage
@@ -14,10 +16,10 @@
 
 
 /datum/component/condition_locked_pickup/proc/try_pick_up(obj/item/I, mob/living/user)
-	SIGNAL_HANDLER
-	if(!(SEND_SIGNAL(src, COMSIG_IS_CONDITION_PASSED, user) & COMPONENT_CONDITION_PASSED))
+
+	if(!(SEND_SIGNAL(src, COMSIG_IS_CONDITION_PASSED) & COMPONENT_CONDITION_PASSED))
 		user.Weaken(10 SECONDS)
-		user.unEquip(src, pickup_damage, silent = FALSE)
+		user.unEquip(I, force, silent = FALSE)
 		to_chat(user, span_userdanger("Вы недостойны."))
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
@@ -35,8 +37,12 @@
 	required_role = _required_role
 	RegisterSignal(parent, COMSIG_IS_CONDITION_PASSED, PROC_REF(check_requirements))
 
-/datum/component/pass_condition/proc/check_requirements(mob/living/user)
+/datum/component/pass_condition/proc/check_requirements()
 	SIGNAL_HANDLER
-	if(user.client.ckey in ckeys || user.mind.vars[required_role])
+	if(usr.client.ckey in ckeys)
 		return COMPONENT_CONDITION_PASSED
 
+	if(required_role in usr.mind.vars)
+		if(usr.mind.vars[required_role])
+			return COMPONENT_CONDITION_PASSED
+	return COMPONENT_CONDITION_FAILED
