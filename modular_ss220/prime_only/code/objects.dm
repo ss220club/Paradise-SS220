@@ -45,7 +45,7 @@
 
 /obj/item/dualsaber/legendary_saber/Initialize(mapload)
 	. = ..()
-	src.AddComponent(/datum/component/condition_locked_pickup, "offstation_role", LEGENDARY_SWORDS_CKEY_WHITELIST)
+	src.AddComponent(/datum/component/condition_locked_pickup, "offstation_role", LEGENDARY_SWORDS_CKEY_WHITELIST, pickup_damage = 10)
 
 /obj/item/dualsaber/legendary_saber/pickup(mob/living/user)
 	. = ..()
