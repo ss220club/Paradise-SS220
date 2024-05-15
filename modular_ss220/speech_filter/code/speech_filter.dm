@@ -42,7 +42,7 @@
 	if(!brainrot_regex)
 		return
 
-	message = rustutils_regex_replace(message, brainrot_regex, "i", "")
+	message = rustutils_regex_replace(message, brainrot_regex, "i", "цветочек")
 	if(original_message_length == length(message))
 		return
 
