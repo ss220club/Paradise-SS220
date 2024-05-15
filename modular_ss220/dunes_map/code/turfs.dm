@@ -1,4 +1,4 @@
-#define DUNE_TEMPERATURE 365 // Жарко пиздец
+#define DUNE_TEMPERATURE 430 // Жарко пиздец
 
 /turf/simulated/floor/brick
 	name = "brick floor"

@@ -20,6 +20,14 @@
 	min_ambience_cooldown = 5 MINUTES
 	max_ambience_cooldown = 5 MINUTES
 
+/area/awaymission/arrakis/outside_building/raider_base
+	name = "\improper Пустыня - База рейдеров"
+	icon_state = "awaycontent14"
+
+/area/awaymission/arrakis/outside_building/abandoned_house
+	name = "\improper Пустыня - Заброшенный дом"
+	icon_state = "awaycontent13"
+
 /area/awaymission/arrakis/outside_building/mining_storage_outpost
 	name = "\improper Пустыня - Шахтёрский аванпост"
 	icon_state = "awaycontent28"
@@ -163,6 +171,11 @@
 
 /area/awaymission/arrakis/bunker/bedrooms
 	name = "\improper Бункер - Спальни"
+	icon = 'icons/turf/areas.dmi'
+	icon_state = "dorms"
+
+/area/awaymission/arrakis/bunker/storage
+	name = "\improper Бункер - Хранилище"
 	icon = 'icons/turf/areas.dmi'
 	icon_state = "dorms"
 

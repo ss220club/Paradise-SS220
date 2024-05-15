@@ -54,7 +54,7 @@
 
 /datum/weather/ash_storm/sand_storm/weather_act(mob/living/carbon/human/L)
 	var/blurr_prob = 40
-	L.adjustFireLoss(0.8)
+	L.adjustFireLoss(1)
 	L.SetSlowed(5,5)
 	if (prob(blurr_prob))
 		L.AdjustEyeBlurry (rand(2 SECONDS, 8 SECONDS))

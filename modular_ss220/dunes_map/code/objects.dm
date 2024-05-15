@@ -162,7 +162,6 @@
 	max_power_output = 1
 	max_safe_output = 1
 
-
 //car wreck
 
 /obj/structure/decorative_structures/car_wreck
@@ -395,6 +394,44 @@
 		"Лопух", "Локатор", "Костыль", "Горбун", "Кубышка", "Мотыль", "Котелок", "Бацилла", "Жаба", "Ворона", "Крыса", "Амеба", "Глиста", "Аскарида",  "Гвоздь", "Робинзон", "Курортник", "Фунт", "Гульден", "Тугрик", "Махно", "Бугор", "Змей", "Лютый", "Шайба", "Мазай", "Абу",
 		)
 	registered_name = "[pick (kidan_name)]"
+
+
+/obj/structure/necropolis_gate/temple_gate
+	name = "\improper врата храма"
+	desc = "Массивные врата древнего храма, вырезанные из песчанника и исписанные древними проклятиями."
+	light_power = 0
+	light_range = 0
+
+/obj/structure/necropolis_gate/temple_gate/toggle_the_gate(mob/user)
+	if(changing_openness)
+		return
+
+	changing_openness = TRUE
+	var/turf/T = get_turf(src)
+
+	if(open)
+		new /obj/effect/temp_visual/necropolis(T)
+		visible_message("<span class='danger'> Двери храма с грохотом закрылись!</span>")
+		playsound(T, 'sound/effects/stonedoor_openclose.ogg', 300, TRUE, frequency = 80000)
+		density = TRUE
+		var/turf/sight_blocker_turf = get_turf(src)
+		if(sight_blocker_distance)
+			for(var/i in 1 to sight_blocker_distance)
+				if(!sight_blocker_turf)
+					break
+				sight_blocker_turf = get_step(sight_blocker_turf, NORTH)
+		if(sight_blocker_turf)
+			sight_blocker.pixel_y = initial(sight_blocker.pixel_y) - (32 * sight_blocker_distance)
+			sight_blocker.forceMove(sight_blocker_turf)
+		addtimer(CALLBACK(src, PROC_REF(toggle_open_delayed_step), T), 0.5 SECONDS, TIMER_UNIQUE)
+		return TRUE
+
+	cut_overlay(door_overlay)
+	new /obj/effect/temp_visual/necropolis/open(T)
+	visible_message("<span class='warning'>Массивная дверь поддается и медленно открвает вам путь во тьму...</span>")
+	playsound(T, 'sound/effects/stonedoor_openclose.ogg', 300, TRUE, frequency = 20000)
+	addtimer(CALLBACK(src, PROC_REF(toggle_closed_delayed_step)), 2.2 SECONDS, TIMER_UNIQUE)
+	return TRUE
 
 //legendary sabers
 /obj/item/melee/rapier/genri_rapier

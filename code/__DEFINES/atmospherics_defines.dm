@@ -105,9 +105,9 @@
 #define FIRE_IMMUNITY_MAX_TEMP_PROTECT		35000		//what max_heat_protection_temperature is set to for firesuit quality suits and helmets. MUST NOT BE 0.
 
 #define HELMET_MIN_TEMP_PROTECT				160		//For normal helmets
-#define HELMET_MAX_TEMP_PROTECT				600		//For normal helmets
+#define HELMET_MAX_TEMP_PROTECT				350		//For normal helmets. С 600 до 350 для ивента
 #define ARMOR_MIN_TEMP_PROTECT				160		//For armor
-#define ARMOR_MAX_TEMP_PROTECT				600		//For armor
+#define ARMOR_MAX_TEMP_PROTECT				350		//For armor. С 600 до 350 для ивента
 
 #define GLOVES_MIN_TEMP_PROTECT				2.0		//For some gloves (black and)
 #define GLOVES_MAX_TEMP_PROTECT				1500	//For some gloves
