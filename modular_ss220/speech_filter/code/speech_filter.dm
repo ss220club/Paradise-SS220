@@ -31,24 +31,25 @@
 		return
 
 	var/message = speech_args[SPEECH_MESSAGE]
-	if(message[1] == "*")
+	if(!length(message))
 		return
 
-	var/original_message_length = length(message)
-	if(!original_message_length)
+	if(message[1] == "*")
 		return
 
 	var/brainrot_regex = get_brainrot_filter_regex()
 	if(!brainrot_regex)
 		return
 
+	var/original_message = copytext(message, 1)
 	message = rustutils_regex_replace(message, brainrot_regex, "i", "")
-	if(original_message_length == length(message))
+	if(length(original_message) == length(message))
 		return
 
 	speech_args[SPEECH_MESSAGE] = trim(message)
 	addtimer(CALLBACK(talker, TYPE_PROC_REF(/mob, emote), "drool"), 0.3 SECONDS)
 	to_chat(talker, span_sinister(pick(brainrot_notifications)))
+	log_and_message_admins("[key_name(talker)] has attempted to say forbidden word. His message was: [original_message]")
 
 /datum/element/speech_filter/proc/get_brainrot_filter_regex()
 	if(!fexists(BRAINROT_FILTER_FILE))
