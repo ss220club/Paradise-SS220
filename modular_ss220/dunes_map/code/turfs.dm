@@ -119,6 +119,10 @@
 	color = "gray"
 	smoothing_groups = null
 
+/turf/simulated/floor/indestructible/dune_sand/dark/cold
+	temperature = T20C
+	planetary_atmos = FALSE
+
 /turf/simulated/floor/indestructible/dune_sand/cold
 	color = "#E6E6E6"
 	temperature = T20C
