@@ -184,4 +184,8 @@
 	icon = 'icons/turf/areas.dmi'
 	icon_state = "purple"
 	ambientsounds = DESERT_SOUNDS_SECRET
-	lightswitch = FALSE
+
+/area/awaymission/arrakis/bunker/normandy_mi_v_shkafu_pryachemsya
+	name = "\improper Бункер - Офис Центрального Командования"
+	icon = 'icons/turf/areas.dmi'
+	icon_state = "green"

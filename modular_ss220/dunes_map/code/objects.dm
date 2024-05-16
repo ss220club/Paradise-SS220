@@ -190,6 +190,12 @@
 	deconstructible = FALSE
 	layer = ABOVE_ALL_MOB_LAYER
 
+/obj/structure/fluff/desert_construction/holomap
+	name = "Голокарта Хирки"
+	desc = "Актуальная карта планеты с подробностями региона Убежища."
+	icon = 'modular_ss220/dunes_map/icons/statuelarge.dmi'
+	icon_state = "holo_map"
+
 /obj/structure/fluff/desert_construction/skull1
 	name = "окаменелый череп"
 	desc = "Череп какой-то огромной допотопной твари."
