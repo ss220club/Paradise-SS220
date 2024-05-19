@@ -386,9 +386,6 @@
 /obj/structure/mirror/magic/kidan
 	name = "жучье зеркало"
 
-/obj/vehicle/motorcycle/desert
-	vehicle_move_delay = 0.2
-
 /obj/item/card/id/away/kidan
 	name = "самодельная идентификационная карта"
 	desc = "Грубо припаянный микрочип и пара магнитных полос на пластиковой карточке."
