@@ -87,7 +87,7 @@ TGUI сильно отличается от большинства других 
 
 ---
 
-# LICENSE
+# LICENSES
 
 > [!CAUTION]
 > If you wish to use our code in a closed source manner (i.e. not make it available to the public and/or those who connect to services you offer using this code) you must **only** use code prior to commit [1af3ddef2af85937251e24384c2173c4b6c3222b on 2015/01/05 22:04 GMT](https://github.com/ParadiseSS13/Paradise/commit/1af3ddef2af85937251e24384c2173c4b6c3222b), which is licenced under GPLv3.
