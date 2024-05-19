@@ -3862,6 +3862,21 @@
 	dir = 1
 	},
 /area/ghost_bar)
+"cgW" = (
+/obj/structure/statue/silver/monkey{
+	pixel_y = 14;
+	anchored = 1
+	},
+/obj/structure/light_fake/small{
+	light_range = 6;
+	light_color = "red"
+	},
+/turf/simulated/floor/plasteel{
+	desc = "\"This is a plaque in honour of our comrades on the G4407 Stations. Hopefully TG4407 model can live up to your fame and fortune.\" Scratched in beneath that is a crude image of a meteor and a spaceman. The spaceman is laughing. The meteor is exploding.";
+	icon_state = "plaque";
+	name = "Comemmorative Plaque"
+	},
+/area/centcom/ss220/admin2)
 "cgX" = (
 /obj/structure/closet/secure_closet/clown{
 	req_access = null
@@ -5418,9 +5433,6 @@
 /turf/simulated/floor/indestructible/grass/no_creep,
 /area/centcom/ss220/admin1)
 "deB" = (
-/obj/structure/closet/cabinet{
-	armor = list("melee"=100,"bullet"=100,"laser"=100,"energy"=100,"bomb"=100,"rad"=100,"fire"=100,"acid"=100)
-	},
 /obj/item/storage/box/centcomofficer,
 /obj/item/radio/headset/centcom{
 	name = "Navy Captain bowman headset"
@@ -5437,6 +5449,10 @@
 /obj/item/clothing/gloves/color/white,
 /obj/item/clothing/shoes/cowboy/white{
 	name = "white boots"
+	},
+/obj/structure/closet/secure_closet/personal/cabinet{
+	armor = list("melee"=100,"bullet"=100,"laser"=100,"energy"=100,"bomb"=100,"rad"=100,"fire"=100,"acid"=100);
+	req_access = list(114)
 	},
 /turf/simulated/floor/wood/parquet/tile,
 /area/centcom/ss220/admin2)
@@ -12453,6 +12469,13 @@
 	icon_state = "whiteblue"
 	},
 /area/centcom/ss220/medbay)
+"gYI" = (
+/obj/machinery/door/airlock/centcom{
+	name = "Хранилище";
+	req_one_access_txt = "101"
+	},
+/turf/simulated/floor/carpet/black,
+/area/centcom/ss220/admin2)
 "gZt" = (
 /obj/structure/chair/stool{
 	dir = 1
@@ -12632,6 +12655,10 @@
 /obj/structure/rack/gunrack,
 /turf/simulated/floor/mineral/plastitanium,
 /area/syndicate_mothership/elite_squad)
+"hdx" = (
+/obj/structure/sink/directional/west,
+/turf/simulated/floor/carpet/black,
+/area/centcom/ss220/admin2)
 "hdC" = (
 /obj/machinery/bluespace_beacon/syndicate,
 /obj/effect/turf_decal/box/red,
@@ -15851,6 +15878,14 @@
 /turf/simulated/floor/plasteel/dark{
 	icon_state = "dark_small"
 	},
+/area/centcom/ss220/admin2)
+"iQA" = (
+/obj/structure/table,
+/obj/item/storage/box/monkeycubes,
+/obj/structure/mirror/magic{
+	pixel_y = -32
+	},
+/turf/simulated/floor/wood/fancy/cherry,
 /area/centcom/ss220/admin2)
 "iQF" = (
 /obj/structure/table/wood/fancy/royalblack,
@@ -21984,6 +22019,10 @@
 /obj/structure/platform/corner,
 /turf/simulated/floor/wood/fancy/cherry,
 /area/centcom/ss220/general)
+"mlB" = (
+/mob/living/carbon/human/skeleton,
+/turf/simulated/floor/carpet/black,
+/area/centcom/ss220/admin2)
 "mlJ" = (
 /obj/structure/bed,
 /obj/item/bedsheet/centcom,
@@ -25022,6 +25061,15 @@
 	icon_state = "dark"
 	},
 /area/syndicate_mothership/control)
+"ody" = (
+/obj/item/clothing/head/beret/centcom/officer,
+/obj/item/clothing/shoes/centcom,
+/obj/item/radio/headset/centcom,
+/obj/item/clothing/under/rank/centcom,
+/obj/item/card/id/centcom,
+/obj/structure/closet/cabinet,
+/turf/simulated/floor/wood/fancy/cherry,
+/area/centcom/ss220/admin2)
 "odA" = (
 /obj/effect/decal/syndie_logo{
 	icon_state = "logo17"
@@ -42278,6 +42326,10 @@
 	},
 /turf/simulated/floor/carpet/black,
 /area/syndicate_mothership/jail)
+"xJN" = (
+/obj/structure/sink/directional/east,
+/turf/simulated/floor/carpet/black,
+/area/centcom/ss220/admin2)
 "xKy" = (
 /obj/structure/chair/stool,
 /obj/effect/decal/syndie_logo{
@@ -52157,10 +52209,10 @@ xeh
 cjj
 vYY
 ciP
-adJ
-adJ
-adJ
-adJ
+ciP
+ciP
+ciP
+ciP
 adJ
 adJ
 adJ
@@ -52414,10 +52466,10 @@ xIB
 vIu
 htP
 ciP
-adJ
-adJ
-adJ
-adJ
+ody
+xJN
+iQA
+ciP
 adJ
 adJ
 adJ
@@ -52671,10 +52723,10 @@ kpJ
 vIu
 jeH
 ciP
-adJ
-adJ
-adJ
-adJ
+ody
+vIu
+mlB
+ciP
 adJ
 adJ
 adJ
@@ -52926,12 +52978,12 @@ vIu
 vIu
 vIu
 vIu
-oXh
+vIu
+gYI
+vIu
+vIu
+cgW
 ciP
-adJ
-adJ
-adJ
-adJ
 adJ
 adJ
 adJ
@@ -53185,10 +53237,10 @@ dRm
 vIu
 tUV
 ciP
-adJ
-adJ
-adJ
-adJ
+ody
+vIu
+mlB
+ciP
 adJ
 adJ
 adJ
@@ -53442,10 +53494,10 @@ xOd
 vIu
 lwb
 ciP
-adJ
-adJ
-adJ
-adJ
+ody
+hdx
+iQA
+ciP
 adJ
 adJ
 adJ
@@ -53699,10 +53751,10 @@ xeh
 cjj
 vYY
 ciP
-adJ
-adJ
-adJ
-adJ
+ciP
+ciP
+ciP
+ciP
 adJ
 adJ
 adJ
