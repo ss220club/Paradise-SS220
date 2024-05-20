@@ -156,6 +156,96 @@
 
 	return pick(missed_messages)
 
+/datum/status_effect/high_five/rps
+	id = "rps"
+	critical_success = "both play rock -- THEY'RE GOING IN FOR THE FISTBUMP!"
+	success = "play rock-paper-scissors!"
+	sound_effect = 'sound/effects/glassknock.ogg'
+	request = "wants to play rock-paper-scissors!"
+	item_path = /obj/item/claymore  // it's time to d-d-d-d-d-d-d-duel!
+	/// The move that you'll be making.
+	var/move
+
+/datum/status_effect/high_five/rps/get_missed_message()
+	var/list/missed_messages = list(
+		"just seems to be practicing against [owner.p_themselves()]. [owner.p_are(TRUE)] [owner.p_they()] losing?",
+		"seems more interested in a thumb war."
+	)
+
+	return pick(missed_messages)
+
+/datum/status_effect/high_five/rps/proc/get_move_status(my_move, their_move)
+	if(my_move == their_move)
+		return RPS_EMOTE_TIE
+	switch(my_move)
+		if(RPS_EMOTE_ROCK)
+			return their_move == RPS_EMOTE_SCISSORS ? RPS_EMOTE_WE_WIN : RPS_EMOTE_THEY_WIN
+
+		if(RPS_EMOTE_PAPER)
+			return their_move == RPS_EMOTE_ROCK ? RPS_EMOTE_WE_WIN : RPS_EMOTE_THEY_WIN
+
+		if(RPS_EMOTE_SCISSORS)
+			return their_move == RPS_EMOTE_PAPER ? RPS_EMOTE_WE_WIN : RPS_EMOTE_THEY_WIN
+
+		else
+			CRASH("Unknown emote rock type")
+
+/datum/status_effect/high_five/rps/post_start()
+	playsound(owner, 'sound/effects/glassknock.ogg', 50, FALSE)
+
+/datum/status_effect/high_five/rps/regular_effect(mob/living/carbon/user, mob/living/carbon/highfived)
+	var/datum/status_effect/high_five/rps/their_status_effect = highfived.has_status_effect(type)
+	var/outcome = get_move_status(move, their_status_effect.move)
+	var/outcome_msg
+	switch(outcome)
+		if(RPS_EMOTE_TIE)
+			outcome_msg = "It's a tie!"
+		if(RPS_EMOTE_WE_WIN)
+			outcome_msg = "[user] wins!"
+		if(RPS_EMOTE_THEY_WIN)
+			outcome_msg = "[highfived] wins!"
+
+	user.visible_message(
+		"<span class='notice'>[user] plays <b>[move]</b>, and [highfived] plays <b>[their_status_effect.move]</b>.</span>",
+		"<span class='notice'>[highfived] plays <b>[their_status_effect.move]</b>.</span>",
+		"<span class='notice'>It sounds like rock-paper-scissors.</span>"
+	)
+
+	user.visible_message(
+		"<span class='warning'>[outcome_msg]</span>",
+		blind_message = "<span class='notice'>It sounds like [pick(user, highfived)] won!</span>"  // you're blind how are you supposed to know
+	)
+
+/datum/status_effect/high_five/rps/on_creation(mob/living/new_owner, made_move)
+	if(made_move)
+		if(!(made_move in list(RPS_EMOTE_ROCK, RPS_EMOTE_PAPER, RPS_EMOTE_SCISSORS)))
+			stack_trace("RPS emote was given an invalid move type on creation.")
+		else
+			move = made_move
+
+	return ..()
+
+/datum/status_effect/high_five/rps/on_apply()
+	if(!isnull(move))
+		to_chat(owner, "<span class='notice'>You prepare to play <b>[move]</b>.</span>")
+		return ..()  // we already have the move, probably from the emote passing it in
+
+	move = get_rock_paper_scissors_move(owner)
+	if(move == null)
+		return FALSE  // make it auto-remove itself
+
+	to_chat(owner, "<span class='notice'>You prepare to play <b>[move]</b>.</span>")
+	return ..()
+
+
+/proc/get_rock_paper_scissors_move(mob/living/carbon/user)
+	var/list/move_icons = list(
+		RPS_EMOTE_SCISSORS = image(icon = 'icons/obj/items.dmi', icon_state = "bscissor"),
+		RPS_EMOTE_PAPER = image(icon = 'icons/obj/bureaucracy.dmi', icon_state = "paper"),
+		RPS_EMOTE_ROCK = image(icon = 'icons/obj/toy.dmi', icon_state = "pet_rock")
+	)
+	return show_radial_menu(user, user, move_icons)
+
 /// A status effect that can have a certain amount of "bonus" duration added, which extends the duration every tick,
 /// although there is a maximum amount of bonus time that can be active at any given time.
 /datum/status_effect/limited_bonus
