@@ -172,12 +172,41 @@
 	anchored = TRUE
 	layer = ABOVE_ALL_MOB_LAYER
 	max_integrity = 50
+	var/list/obj/structure/fillers = list()
+
+/obj/structure/filler_car
+	name = "car part"
+	density = TRUE
+	anchored = TRUE
+	invisibility = 101
+	var/obj/structure/parent
+
+/obj/structure/filler_car/Destroy()
+	parent = null
+	return ..()
+
+/obj/structure/filler_car/ex_act()
+	return
 
 /obj/structure/decorative_structures/car_wreck/Initialize(mapload)
 	. = ..()
 	var/list/car_types = list("coupe", "muscle", "sport", "van")
 	icon_state = "[pick(car_types)]-[rand(1,5)]"
 	AddComponent(/datum/component/largetransparency)
+
+	var/list/occupied = list()
+	for(var/direct in list(EAST))
+		occupied += get_step(src,direct)
+	occupied += locate(x+2,y,z)
+
+	for(var/T in occupied)
+		var/obj/structure/filler/F = new(T)
+		F.parent = src
+		fillers += F
+
+/obj/structure/decorative_structures/car_wreck/Destroy()
+	QDEL_LIST_CONTENTS(fillers)
+	return ..()
 
 //statues and stuff
 
