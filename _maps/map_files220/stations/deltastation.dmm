@@ -46408,15 +46408,21 @@
 /area/station/service/chapel/office)
 "dSj" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
-/turf/simulated/floor/plasteel/dark,
+/turf/simulated/floor/plasteel/grimy,
 /area/station/service/chapel/office)
 "dSk" = (
 /obj/machinery/alarm/directional/north,
-/turf/simulated/floor/plasteel/dark,
+/turf/simulated/floor/carpet,
 /area/station/service/chapel/office)
 "dSm" = (
-/obj/machinery/firealarm/directional/north,
-/turf/simulated/floor/plasteel/dark,
+/obj/machinery/newscaster/directional/north,
+/obj/structure/table/wood,
+/obj/item/storage/fancy/candle_box/full{
+	pixel_x = 2;
+	pixel_y = 3
+	},
+/obj/item/storage/fancy/candle_box/full,
+/turf/simulated/floor/carpet,
 /area/station/service/chapel/office)
 "dSn" = (
 /obj/structure/closet,
@@ -46428,24 +46434,14 @@
 	},
 /area/station/maintenance/apmaint)
 "dSo" = (
-/obj/structure/table,
-/obj/item/folder{
-	pixel_x = 5;
-	pixel_y = 4
+/obj/machinery/requests_console{
+	department = "Chapel";
+	departmentType = 2;
+	name = "Chapel Requests Console";
+	pixel_y = 30
 	},
-/obj/item/paper_bin{
-	pixel_x = -4;
-	pixel_y = 4
-	},
-/obj/item/pen{
-	pixel_x = -5;
-	pixel_y = 6
-	},
-/turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "green"
-	},
-/area/station/hallway/secondary/exit)
+/turf/simulated/floor/carpet,
+/area/station/service/chapel/office)
 "dSp" = (
 /obj/structure/closet/firecloset,
 /obj/effect/turf_decal/delivery,
@@ -46559,13 +46555,16 @@
 /turf/simulated/floor/plasteel/grimy,
 /area/station/service/chapel/office)
 "dSL" = (
-/obj/structure/chair/office/dark,
-/turf/simulated/floor/plasteel/grimy,
+/obj/structure/table/wood,
+/obj/item/paper_bin,
+/obj/item/pen,
+/turf/simulated/floor/carpet,
 /area/station/service/chapel/office)
 "dSN" = (
-/obj/item/kirbyplants,
 /obj/machinery/light_switch/east,
-/turf/simulated/floor/plasteel/grimy,
+/obj/structure/table/wood,
+/obj/item/storage/fancy/crayons,
+/turf/simulated/floor/carpet,
 /area/station/service/chapel/office)
 "dSO" = (
 /obj/structure/cable{
@@ -46727,7 +46726,6 @@
 "dTr" = (
 /obj/machinery/disposal,
 /obj/machinery/light/small/directional/north,
-/obj/machinery/light_switch/west,
 /obj/structure/disposalpipe/trunk{
 	dir = 4
 	},
@@ -46904,17 +46902,12 @@
 "dUf" = (
 /obj/structure/table/wood,
 /obj/item/reagent_containers/drinks/bottle/holywater,
+/obj/machinery/light/directional/east,
 /turf/simulated/floor/carpet,
 /area/station/service/chapel/office)
 "dUg" = (
 /obj/structure/table/wood,
 /obj/item/folder,
-/obj/item/pen,
-/turf/simulated/floor/carpet,
-/area/station/service/chapel/office)
-"dUh" = (
-/obj/item/paper_bin,
-/obj/structure/table/wood,
 /obj/item/pen,
 /turf/simulated/floor/carpet,
 /area/station/service/chapel/office)
@@ -47155,25 +47148,16 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
 	},
-/turf/simulated/floor/plasteel/grimy,
+/turf/simulated/floor/plasteel/dark,
 /area/station/service/chapel/office)
 "dUQ" = (
-/obj/structure/table/wood,
-/obj/machinery/light/directional/east,
-/obj/item/storage/fancy/candle_box/full{
-	pixel_x = 2;
-	pixel_y = 3
-	},
-/obj/item/storage/fancy/candle_box/full,
-/obj/machinery/newscaster/directional/east,
-/turf/simulated/floor/carpet,
+/turf/simulated/floor/plasteel/grimy,
 /area/station/service/chapel/office)
 "dUR" = (
 /obj/structure/chair/office/dark{
 	dir = 1
 	},
-/obj/effect/landmark/start/chaplain,
-/turf/simulated/floor/carpet,
+/turf/simulated/floor/plasteel/grimy,
 /area/station/service/chapel/office)
 "dUS" = (
 /obj/structure/reagent_dispensers/fueltank,
@@ -48074,22 +48058,17 @@
 /turf/space,
 /area/station/maintenance/portsolar)
 "dYT" = (
+/obj/effect/landmark/start/chaplain,
+/obj/structure/chair/office/dark,
 /turf/simulated/floor/carpet,
 /area/station/service/chapel/office)
 "dYU" = (
-/obj/structure/table/wood,
-/obj/item/storage/fancy/crayons,
 /obj/machinery/camera{
 	c_tag = "Chaplain's Office";
 	dir = 1
 	},
-/obj/machinery/requests_console{
-	department = "Chapel";
-	departmentType = 2;
-	name = "Chapel Requests Console";
-	pixel_y = -30
-	},
-/turf/simulated/floor/carpet,
+/obj/machinery/newscaster/directional/east,
+/turf/simulated/floor/plasteel/dark,
 /area/station/service/chapel/office)
 "dYV" = (
 /obj/structure/rack,
@@ -61186,6 +61165,19 @@
 /obj/machinery/camera{
 	c_tag = "Departure Lounge South-West";
 	dir = 1
+	},
+/obj/structure/table,
+/obj/item/paper_bin{
+	pixel_x = -4;
+	pixel_y = 4
+	},
+/obj/item/folder{
+	pixel_x = 5;
+	pixel_y = 4
+	},
+/obj/item/pen{
+	pixel_x = -5;
+	pixel_y = 6
 	},
 /turf/simulated/floor/plasteel{
 	dir = 10;
@@ -146209,8 +146201,8 @@ dJx
 dSk
 dSL
 dTw
-dUh
-dYT
+dUR
+dSi
 dTX
 aaa
 aaa
@@ -146463,11 +146455,11 @@ dMk
 dPF
 dRv
 dJx
-dSi
-dSL
+dSo
+dYT
 dUg
 dUR
-dYT
+dSi
 dTX
 abj
 aaa
@@ -146977,10 +146969,10 @@ duw
 dJx
 dJx
 dJx
+dIx
+dIx
+dIx
 dKK
-dIx
-dIx
-dIx
 dIx
 dIx
 dIH
@@ -147237,7 +147229,7 @@ wIc
 wAX
 dRl
 dJH
-dSo
+mux
 iex
 dIH
 sYX
