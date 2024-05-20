@@ -69,6 +69,20 @@
 	user.remove_status_effect(type)
 	highfived.remove_status_effect(type)
 
+/datum/status_effect/high_five/proc/wiz_effect(mob/living/carbon/user, mob/living/carbon/highfived)
+	user.status_flags |= GODMODE
+	highfived.status_flags |= GODMODE
+	explosion(get_turf(user), 5, 2, 1, 3, cause = id)
+	// explosions have a spawn so this makes sure that we don't get gibbed
+	addtimer(CALLBACK(src, PROC_REF(wiz_cleanup), user, highfived), 0.3 SECONDS) // I want to be sure this lasts long enough, with lag.
+	add_attack_logs(user, highfived, "caused a wizard [id] explosion")
+
+/datum/status_effect/high_five/proc/post_start()
+	return
+
+/datum/status_effect/high_five/proc/regular_effect(mob/living/carbon/user, mob/living/carbon/highfived)
+	user.visible_message("<span class='notice'><b>[user.name]</b> and <b>[highfived.name]</b> [success]</span>")
+
 /datum/status_effect/high_five/on_apply()
 	if(!iscarbon(owner))
 		return FALSE
@@ -82,25 +96,23 @@
 			continue
 		if(is_wiz && iswizard(C))
 			user.visible_message("<span class='biggerdanger'><b>[user.name]</b> и <b>[C.name]</b> [critical_success]</span>")
-			user.status_flags |= GODMODE
-			C.status_flags |= GODMODE
-			explosion(get_turf(user), 5, 2, 1, 3, cause = id)
-			// explosions have a spawn so this makes sure that we don't get gibbed
-			addtimer(CALLBACK(src, PROC_REF(wiz_cleanup), user, C), 0.3 SECONDS) //I want to be sure this lasts long enough, with lag.
-			add_attack_logs(user, C, "caused a wizard [id] explosion")
+			wiz_effect(user, C)
 			both_wiz = TRUE
 		user.do_attack_animation(C, no_effect = TRUE)
 		C.do_attack_animation(user, no_effect = TRUE)
 		playsound(user, sound_effect, 80)
 		if(!both_wiz)
-			user.visible_message("<span class='notice'><b>[user.name]</b> и <b>[C.name]</b> [success]</span>")
+			regular_effect(user, C)
 			user.remove_status_effect(type)
 			C.remove_status_effect(type)
 			return FALSE
+		// We can return to break out of the loop here so we don't auto-remove (which causes the timer on the wizard highfive to break)
+		// This is safe because we only pass the continue if we don't have the status effect
 		return TRUE // DO NOT AUTOREMOVE
 
 	owner.custom_emote(EMOTE_VISIBLE, request)
 	owner.create_point_bubble_from_path(item_path, FALSE)
+	post_start()
 
 /datum/status_effect/high_five/on_timeout()
 	owner.visible_message("[owner] [get_missed_message()]")
