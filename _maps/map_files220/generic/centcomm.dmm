@@ -5143,8 +5143,10 @@
 /area/centcom/ss220/jail)
 "cXK" = (
 /obj/structure/lattice,
-/obj/effect/mapping_helpers/light{
-	light_power = 10
+/obj/effect/light_emitter/colored{
+	light_color = "#FFFFF";
+	light_power = 10;
+	light_range = 5
 	},
 /turf/space,
 /area/space/centcomm)
@@ -5204,7 +5206,11 @@
 /area/centcom/ss220/admin2)
 "cYX" = (
 /obj/structure/marker_beacon/spotlight/jade,
-/obj/effect/mapping_helpers/light,
+/obj/effect/light_emitter/colored{
+	light_color = "#FFFFF";
+	light_power = 10;
+	light_range = 5
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/command)
 "cZg" = (
@@ -10911,6 +10917,14 @@
 	},
 /turf/simulated/floor/carpet/black,
 /area/centcom/ss220/admin2)
+"gcj" = (
+/obj/effect/light_emitter/colored{
+	light_color = "#FFFFF";
+	light_power = 10;
+	light_range = 5
+	},
+/turf/space,
+/area/space/centcomm)
 "gcr" = (
 /obj/structure/chair/sofa/bench/right{
 	cover_color = "#68452a";
@@ -18101,7 +18115,6 @@
 /obj/structure/light_fake{
 	dir = 1
 	},
-/obj/effect/mapping_helpers/light,
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/supply)
 "kfk" = (
@@ -19501,7 +19514,11 @@
 /area/ninja/holding)
 "kQG" = (
 /obj/structure/marker_beacon/spotlight/jade,
-/obj/effect/mapping_helpers/light,
+/obj/effect/light_emitter/colored{
+	light_color = "#FFFFF";
+	light_power = 10;
+	light_range = 5
+	},
 /turf/simulated/floor/plasteel/dark{
 	icon_state = "dark_large"
 	},
@@ -25002,7 +25019,11 @@
 /area/syndicate_mothership/infteam)
 "nWa" = (
 /obj/structure/marker_beacon/spotlight/jade,
-/obj/effect/mapping_helpers/light,
+/obj/effect/light_emitter/colored{
+	light_color = "#FFFFF";
+	light_power = 10;
+	light_range = 5
+	},
 /turf/simulated/floor/plasteel/dark{
 	icon_state = "dark_herringbone"
 	},
@@ -25406,7 +25427,9 @@
 	pixel_y = 10
 	},
 /obj/effect/turf_decal/stripes/red/box,
-/obj/effect/mapping_helpers/light,
+/obj/effect/light_emitter/colored{
+	light_color = "white"
+	},
 /turf/simulated/floor/plasteel/dark{
 	dir = 8;
 	icon_state = "darkbrown"
@@ -26661,12 +26684,6 @@
 "oUn" = (
 /turf/simulated/floor/wood/fancy/oak,
 /area/centcom/ss220/park)
-"oUw" = (
-/obj/mecha/combat/gygax/nt,
-/obj/effect/turf_decal/stripes/red/box,
-/obj/effect/mapping_helpers/light,
-/turf/simulated/floor/plasteel/dark,
-/area/centcom/ss220/supply)
 "oUL" = (
 /turf/simulated/wall/indestructible/wood,
 /area/ninja/outpost)
@@ -29204,12 +29221,6 @@
 	},
 /turf/simulated/floor/wood/oak,
 /area/syndicate_mothership/control)
-"qyu" = (
-/obj/mecha/combat/marauder,
-/obj/effect/turf_decal/stripes/red/box,
-/obj/effect/mapping_helpers/light,
-/turf/simulated/floor/plasteel/dark,
-/area/centcom/ss220/supply)
 "qyB" = (
 /obj/structure/rack/gunrack,
 /obj/item/gun/projectile/automatic/ak814,
@@ -34792,10 +34803,6 @@
 	},
 /turf/simulated/floor/carpet,
 /area/centcom/ss220/court)
-"txP" = (
-/obj/effect/mapping_helpers/light,
-/turf/simulated/floor/plasteel/dark,
-/area/centcom/ss220/supply)
 "txR" = (
 /obj/structure/showcase,
 /turf/simulated/floor/wood/fancy/cherry,
@@ -38758,7 +38765,9 @@
 	pixel_y = 9
 	},
 /obj/effect/turf_decal/stripes/red/box,
-/obj/effect/mapping_helpers/light,
+/obj/effect/light_emitter/colored{
+	light_color = "white"
+	},
 /turf/simulated/floor/plasteel/dark{
 	dir = 8;
 	icon_state = "darkbrown"
@@ -42789,12 +42798,6 @@
 	},
 /turf/simulated/floor/carpet/black,
 /area/centcom/ss220/admin2)
-"xSQ" = (
-/obj/mecha/combat/honker/loaded,
-/obj/effect/turf_decal/stripes/red/box,
-/obj/effect/mapping_helpers/light,
-/turf/simulated/floor/plasteel/dark,
-/area/centcom/ss220/supply)
 "xSS" = (
 /obj/structure/platform/corner{
 	dir = 8;
@@ -52355,7 +52358,7 @@ rzI
 egO
 egO
 rzI
-qyu
+hQW
 hQW
 cxO
 rZT
@@ -52612,7 +52615,7 @@ rzI
 egO
 xCL
 rzI
-oUw
+nFt
 nFt
 cxO
 wwo
@@ -53910,13 +53913,13 @@ egO
 rzI
 bNX
 fiW
-txP
+egO
 fiW
 esG
 fiW
 bNX
 fiW
-txP
+egO
 fiW
 esG
 rzI
@@ -54411,7 +54414,7 @@ egO
 egO
 egO
 rzI
-xSQ
+rdh
 rdh
 cxO
 qdr
@@ -61630,9 +61633,9 @@ umL
 mLO
 hGn
 adJ
+gcj
 adJ
-adJ
-cXK
+bnh
 bnh
 bnh
 bnh
