@@ -407,7 +407,7 @@
 /obj/effect/mine/explosive/desert
 	icon = 'modular_ss220/dunes_map/icons/mine.dmi'
 	icon_state = "desertminearmed"
-	range_heavy = 0
+	range_heavy = 1
 	range_light = 3
 	range_flash = 4
 	layer = 2.9
@@ -464,6 +464,16 @@
 	playsound(T, 'sound/effects/stonedoor_openclose.ogg', 300, TRUE, frequency = 20000)
 	addtimer(CALLBACK(src, PROC_REF(toggle_closed_delayed_step)), 2.2 SECONDS, TIMER_UNIQUE)
 	return TRUE
+
+/obj/structure/warn_sign
+	name = "предупреждающий знак"
+	desc = "Ничего хорошего он не говорит..."
+	icon = 'modular_ss220/dunes_map/icons/warn.dmi'
+	icon_state = "warn"
+	density = FALSE
+	max_integrity = 5
+	anchored = TRUE
+	layer = 2.9
 
 //legendary sabers
 /obj/item/melee/rapier/genri_rapier
