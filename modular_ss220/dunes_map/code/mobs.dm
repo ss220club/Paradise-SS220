@@ -16,6 +16,39 @@
 /obj/structure/spawner/desert_depretarors/range
 	mob_types = list(/mob/living/simple_animal/hostile/duna/depredator/range)
 
+/obj/item/projectile/beam/depredator
+	name = "depredator laser"
+	icon_state = "purple_laser"
+	damage = 10
+
+/obj/effect/projectile/muzzle/depredator
+	icon_state = "muzzle_hcult"
+
+/obj/effect/projectile/tracer/depredator
+	name = "depredator laser"
+	icon_state = "hcult"
+
+/obj/effect/projectile/impact/depredator
+	name = "depredator impact"
+	icon_state = "impact_hcult"
+
+/obj/item/projectile/beam/depredator/hitscan
+	color = LIGHT_COLOR_PURPLE
+	hitscan = TRUE
+	muzzle_type = /obj/effect/projectile/muzzle/depredator
+	tracer_type = /obj/effect/projectile/tracer/depredator
+	impact_type = /obj/effect/projectile/impact/depredator
+	impact_effect_type = null
+	hitscan_light_intensity = 3
+	hitscan_light_range = 0.75
+	hitscan_light_color_override = LIGHT_COLOR_PURPLE
+	muzzle_flash_intensity = 6
+	muzzle_flash_range = 2
+	muzzle_flash_color_override = LIGHT_COLOR_PURPLE
+	impact_light_intensity = 7
+	impact_light_range = 2.5
+	impact_light_color_override = LIGHT_COLOR_PURPLE
+
 /mob/living/simple_animal/hostile/duna
 	var/list/alert_sounds
 	var/alert_cooldown = 3 SECONDS
@@ -79,7 +112,7 @@
 	)
 
 /mob/living/simple_animal/hostile/duna/depredator/range
-	projectiletype = /obj/item/projectile/beam/immolator/weak/hitscan
+	projectiletype = /obj/item/projectile/beam/depredator/hitscan
 	projectilesound = 'modular_ss220/aesthetics_sounds/sound/mobs/vortigaunt/attack_shoot4.ogg'
 	ranged_cooldown_time = 2.5 SECONDS
 	ranged = TRUE
