@@ -58,6 +58,11 @@
 		if(m_intent == MOVE_INTENT_RUN)
 			adjust_hydration(-(thirst_drain * 0.15))
 
+/mob/living/carbon/human/examine(mob/user)
+	. = ..()
+	if(hydration < HYDRATION_LEVEL_INEFFICIENT)
+		. += span_warning("Выглядит изнуренным.")
+
 /mob/living/carbon/human/proc/handle_thirst_alerts()
 	if(!hydration_display)
 		return

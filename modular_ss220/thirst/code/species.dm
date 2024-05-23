@@ -1,6 +1,13 @@
 /datum/species
 	var/thirst_drain = THIRST_FACTOR
 
+/datum/species/movement_delay(mob/living/carbon/human/H)
+	. = ..()
+	if(!has_gravity(H) || HAS_TRAIT(H, TRAIT_IGNORESLOWDOWN))
+		return
+	if(H.hydration <= HYDRATION_LEVEL_INEFFICIENT && !H.flying)
+		. += 1.5
+
 /datum/species/machine/New()
 	. = ..()
 	inherent_traits.Add(TRAIT_NO_THIRST)
