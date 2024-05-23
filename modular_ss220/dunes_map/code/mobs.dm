@@ -125,3 +125,25 @@
 	minimum_distance = 10
 	aggro_vision_range = 10
 	vision_range = 10
+
+
+/obj/structure/spawner/gator
+	name = "спавнер аллигаторов"
+	desc = "они умирают от бури."
+	icon = 'icons/mob/nest.dmi'
+	icon_state = "hole"
+
+	faction = list("hostile")
+	max_mobs = 1
+	max_integrity = 300
+	density = FALSE
+	invisibility = 101
+	mob_types = list(/mob/living/simple_animal/hostile/lizard/gator/desert)
+
+	spawn_time = 120 SECONDS
+/mob/living/simple_animal/hostile/lizard/gator/desert
+	del_on_death = TRUE
+	butcher_results = null
+	icon_state = "gator"
+	icon_living = "gator"
+	icon_dead = "gator_dead"
