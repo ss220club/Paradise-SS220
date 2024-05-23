@@ -267,7 +267,7 @@
 		"Human" = 'modular_ss220/clothing/icons/mob/under.dmi',
 		)
 
-/obj/item/clothing/under/towel/body
+/obj/item/clothing/under/towel
 	icon = 'modular_ss220/clothing/icons/object/under.dmi'
 	sprite_sheets = list(
 		"Human" = 'modular_ss220/clothing/icons/mob/under.dmi',
@@ -295,7 +295,7 @@
 	righthand_file = 'modular_ss220/clothing/icons/inhands/right_hand.dmi'
 	has_sensor = 0
 
-/obj/item/clothing/under/towel/body/attackby(obj/item/S, mob/user, params)
+/obj/item/clothing/under/towel/attackby(obj/item/S, mob/user, params)
 	. = ..()
 	if(istype(S, /obj/item/toy/crayon/spraycan))
 		var/obj/item/toy/crayon/spraycan/spcan = S
@@ -307,142 +307,142 @@
 		to_chat(user, "<span class='notice'>Вы перекрашиваете [src.name].</span>")
 		return
 
-/obj/item/clothing/under/towel/body/long
+/obj/item/clothing/under/towel/long
 	name = "полотенце"
 	desc = "Полотенце, сотканное из синтетической ткани. Можно обмотать вокруг тела."
 	icon_state = "towel_long"
 	item_color = "towel_long"
 
-/obj/item/clothing/under/towel/body/long/alt
+/obj/item/clothing/under/towel/long/alt
 	name = "махровое полотенце"
 	desc = "Полотенце, сотканное из синтетической ткани, на взгляд шершавое. Можно обмотать вокруг тела."
 	icon_state = "towel_long_alt"
 	item_color = "towel_long_alt"
 
-/obj/item/clothing/under/towel/body/short
+/obj/item/clothing/under/towel/short
 	name = "маленькое полотенце"
 	desc = "Полотенце, сотканное из синтетической ткани, но маленькое. Можно обмотать вокруг тела."
 	icon_state = "towel_short"
 	item_color = "towel_short"
 
-/obj/item/clothing/under/towel/body/short/alt
+/obj/item/clothing/under/towel/short/alt
 	name = "маленькое махровое полотенце"
 	desc = "Полотенце, сотканное из синтетической ткани, на взгляд шершавое и маленькое. Можно обмотать вокруг тела."
 	icon_state = "towel_short_alt"
 	item_color = "towel_short_alt"
 
 // Длинное полотенце
-/obj/item/clothing/under/towel/body/long/red
+/obj/item/clothing/under/towel/long/red
 	name = "красное полотенце"
 	color = "#EE204D"
 
-/obj/item/clothing/under/towel/body/long/green
+/obj/item/clothing/under/towel/long/green
 	name = "зелёное полотенце"
 	color = "#32CD32"
 
-/obj/item/clothing/under/towel/body/long/blue
+/obj/item/clothing/under/towel/long/blue
 	name = "синее полотенце"
 	color = "#1E90FF"
 
-/obj/item/clothing/under/towel/body/long/orange
+/obj/item/clothing/under/towel/long/orange
 	name = "оранжевое полотенце"
 	color = "#FFA500"
 
-/obj/item/clothing/under/towel/body/long/purple
+/obj/item/clothing/under/towel/long/purple
 	name = "фиолетовое полотенце"
 	color = "#DA70D6"
 
-/obj/item/clothing/under/towel/body/long/cyan
+/obj/item/clothing/under/towel/long/cyan
 	name = "голубое полотенце"
 	color = "#40E0D0"
 
-/obj/item/clothing/under/towel/body/long/brown
+/obj/item/clothing/under/towel/long/brown
 	name = "коричневое полотенце"
 	color = "#DEB887"
 
 // Длинное махровое полотенце
-/obj/item/clothing/under/towel/body/long/alt/red
+/obj/item/clothing/under/towel/long/alt/red
 	name = "красное махровое полотенце"
 	color = "#EE204D"
 
-/obj/item/clothing/under/towel/body/long/alt/green
+/obj/item/clothing/under/towel/long/alt/green
 	name = "зелёное махровое полотенце"
 	color = "#32CD32"
 
-/obj/item/clothing/under/towel/body/long/alt/blue
+/obj/item/clothing/under/towel/long/alt/blue
 	name = "синее махровое полотенце"
 	color = "#1E90FF"
 
-/obj/item/clothing/under/towel/body/long/alt/orange
+/obj/item/clothing/under/towel/long/alt/orange
 	name = "оранжевое махровое полотенце"
 	color = "#FFA500"
 
-/obj/item/clothing/under/towel/body/long/alt/purple
+/obj/item/clothing/under/towel/long/alt/purple
 	name = "фиолетовое махровое полотенце"
 	color = "#DA70D6"
 
-/obj/item/clothing/under/towel/body/long/alt/cyan
+/obj/item/clothing/under/towel/long/alt/cyan
 	name = "голубое махровое полотенце"
 	color = "#40E0D0"
 
-/obj/item/clothing/under/towel/body/long/alt/brown
+/obj/item/clothing/under/towel/long/alt/brown
 	name = "коричневое махровое полотенце"
 	color = "#DEB887"
 
 // Маленькое полотенце
-/obj/item/clothing/under/towel/body/short/red
+/obj/item/clothing/under/towel/short/red
 	name = "красное маленькое полотенце"
 	color = "#EE204D"
 
-/obj/item/clothing/under/towel/body/short/green
+/obj/item/clothing/under/towel/short/green
 	name = "зелёное маленькое полотенце"
 	color = "#32CD32"
 
-/obj/item/clothing/under/towel/body/short/blue
+/obj/item/clothing/under/towel/short/blue
 	name = "синее маленькое полотенце"
 	color = "#1E90FF"
 
-/obj/item/clothing/under/towel/body/short/orange
+/obj/item/clothing/under/towel/short/orange
 	name = "оранжевое маленькое полотенце"
 	color = "#FFA500"
 
-/obj/item/clothing/under/towel/body/short/purple
+/obj/item/clothing/under/towel/short/purple
 	name = "фиолетовое маленькое полотенце"
 	color = "#DA70D6"
 
-/obj/item/clothing/under/towel/body/short/cyan
+/obj/item/clothing/under/towel/short/cyan
 	name = "голубое маленькое полотенце"
 	color = "#40E0D0"
 
-/obj/item/clothing/under/towel/body/short/brown
+/obj/item/clothing/under/towel/short/brown
 	name = "коричневое маленькое полотенце"
 	color = "#DEB887"
 
 // Маленькое махровое полотенце
-/obj/item/clothing/under/towel/body/short/alt/red
+/obj/item/clothing/under/towel/short/alt/red
 	name = "красное махровое маленькое полотенце"
 	color = "#EE204D"
 
-/obj/item/clothing/under/towel/body/short/alt/green
+/obj/item/clothing/under/towel/short/alt/green
 	name = "зелёное махровое маленькое полотенце"
 	color = "#32CD32"
 
-/obj/item/clothing/under/towel/body/short/alt/blue
+/obj/item/clothing/under/towel/short/alt/blue
 	name = "синее махровое маленькое полотенце"
 	color = "#1E90FF"
 
-/obj/item/clothing/under/towel/body/short/alt/orange
+/obj/item/clothing/under/towel/short/alt/orange
 	name = "оранжевое махровое маленькое полотенце"
 	color = "#FFA500"
 
-/obj/item/clothing/under/towel/body/short/alt/purple
+/obj/item/clothing/under/towel/short/alt/purple
 	name = "фиолетовое махровое маленькое полотенце"
 	color = "#DA70D6"
 
-/obj/item/clothing/under/towel/body/short/alt/cyan
+/obj/item/clothing/under/towel/short/alt/cyan
 	name = "голубое махровое маленькое полотенце"
 	color = "#40E0D0"
 
-/obj/item/clothing/under/towel/body/short/alt/brown
+/obj/item/clothing/under/towel/short/alt/brown
 	name = "коричневое махровое маленькое полотенце"
 	color = "#DEB887"
