@@ -5,6 +5,6 @@
 
 /atom/movable/screen/hydration
 	name = "hydration"
-	icon = 'icons/mob/screen_hunger.dmi'
+	icon = 'modular_ss220/thirst/icons/screen_alert.dmi'
 	icon_state = null
-	screen_loc = ui_nutrition
+	screen_loc = ui_hydration

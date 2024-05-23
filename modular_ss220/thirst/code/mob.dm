@@ -25,7 +25,7 @@
 		return FALSE
 	. = ..()
 
-/mob/living/carbon/human/set_species(datum/species/new_species, default_colour, delay_icon_update, skip_same_check, retain_damage)
+/mob/living/carbon/human/set_species(datum/species/new_species, use_default_color, delay_icon_update, skip_same_check, retain_damage, transformation, keep_missing_bodyparts)
 	. = ..()
 	if(!.)
 		return
@@ -63,6 +63,8 @@
 		return
 	if(HAS_TRAIT(src, TRAIT_NO_THIRST) || !GLOB.configuration.ss220_misc.hydration_enabled)
 		hydration_display.icon_state = null
+		return
+	if(hydration_display.icon_state == "water_notice_me")
 		return
 	switch(hydration)
 		if(HYDRATION_LEVEL_WELL_FED to INFINITY)

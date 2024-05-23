@@ -31,8 +31,10 @@
 
 /datum/antagonist/vampire/apply_innate_effects(mob/living/mob_override)
 	. = ..()
-	ADD_TRAIT(mob_override, TRAIT_NO_THIRST, "vampire")
+	var/mob/living/vampire = mob_override || owner.current
+	ADD_TRAIT(vampire, TRAIT_NO_THIRST, "vampire")
 
 /datum/antagonist/vampire/remove_innate_effects(mob/living/mob_override)
 	. = ..()
-	REMOVE_TRAIT(mob_override, TRAIT_NO_THIRST, "vampire")
+	var/mob/living/vampire = mob_override || owner.current
+	REMOVE_TRAIT(vampire, TRAIT_NO_THIRST, "vampire")
