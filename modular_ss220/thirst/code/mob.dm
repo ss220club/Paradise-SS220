@@ -56,7 +56,7 @@
 	if(hydration && stat != DEAD)
 		adjust_hydration(-(thirst_drain * 0.1))
 		if(m_intent == MOVE_INTENT_RUN)
-			adjust_hydration(-(thirst_drain * 0.1))
+			adjust_hydration(-(thirst_drain * 0.15))
 
 /mob/living/carbon/human/proc/handle_thirst_alerts()
 	if(!hydration_display)
