@@ -61,7 +61,7 @@
 /mob/living/carbon/human/examine(mob/user)
 	. = ..()
 	if(hydration < HYDRATION_LEVEL_INEFFICIENT)
-		. += span_warning("Выглядит изнуренным.")
+		. += span_warning("Выглядит обезвоженным.")
 
 /mob/living/carbon/human/proc/handle_thirst_alerts()
 	if(!hydration_display)

@@ -1,10 +1,10 @@
 /datum/disease/critical/dehydration
-	name = "Dehydration"
+	name = "Обезвоживание"
 	form = "Medical Emergency"
 	max_stages = 3
 	spread_flags = SPECIAL
-	spread_text = "The patient has low water levels."
-	cure_text = "Providing any form of non-ethanol drinkable liquids."
+	spread_text = "У пациента обезвоживание."
+	cure_text = "Любой напиток, не содержащий этанол."
 	viable_mobtypes = list(/mob/living/carbon/human)
 	stage_prob = 1
 	severity = DANGEROUS
@@ -16,8 +16,6 @@
 	if(ishuman(affected_mob))
 		var/mob/living/carbon/human/H = affected_mob
 		if(HAS_TRAIT(H, TRAIT_NO_THIRST))
-			return TRUE
-		if(ismachineperson(H))
 			return TRUE
 	return ..()
 
