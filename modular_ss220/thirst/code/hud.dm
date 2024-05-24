@@ -8,3 +8,4 @@
 	icon = 'modular_ss220/thirst/icons/screen_alert.dmi'
 	icon_state = null
 	screen_loc = ui_hydration
+	layer = 21.1 // Above nutrition
