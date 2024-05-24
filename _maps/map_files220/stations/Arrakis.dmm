@@ -1708,9 +1708,8 @@
 /area/awaymission/arrakis/bunker/engie)
 "aeO" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/sink/directional/north,
-/obj/structure/mirror{
-	pixel_y = 34
+/obj/effect/decal/cleanable/glass{
+	layer = 2
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "hydrofloor"
@@ -2401,7 +2400,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/reagent_dispensers/spacecleanertank/north,
 /obj/structure/reagent_dispensers/watertank{
-	tank_volume = 100
+	tank_volume = 500
 	},
 /obj/item/reagent_containers/glass/bucket{
 	pixel_y = 11;
@@ -8619,6 +8618,9 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
+	},
+/obj/effect/decal/cleanable/glass{
+	layer = 2
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "hydrofloor"
@@ -16392,7 +16394,7 @@
 "aVc" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/reagent_dispensers/watertank{
-	tank_volume = 50
+	tank_volume = 500
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "darkgreen"
@@ -28095,6 +28097,19 @@
 	icon_state = "darkredalt"
 	},
 /area/awaymission/arrakis/bunker)
+"hlB" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/mirror{
+	pixel_y = 34;
+	icon_state = "mirror_broke"
+	},
+/obj/effect/decal/cleanable/glass{
+	layer = 2
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "hydrofloor"
+	},
+/area/awaymission/arrakis/bunker/bar)
 "hmr" = (
 /obj/structure/closet/secure_closet/security,
 /obj/item/melee/classic_baton,
@@ -39640,6 +39655,10 @@
 	icon_state = "navyblue"
 	},
 /area/awaymission/arrakis/bunker/normandy_mi_v_shkafu_pryachemsya)
+"plQ" = (
+/obj/structure/spawner/gator,
+/turf/simulated/floor/beach/away/water/desert_water,
+/area/awaymission/arrakis/outside/outside5)
 "pmS" = (
 /obj/structure/girder/reinforced,
 /obj/item/stack/sheet/mineral/plastitanium,
@@ -45140,9 +45159,10 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/arrakis/bunker/brig)
 "sXh" = (
-/obj/structure/spawner/gator,
-/turf/simulated/floor/beach/away/water/desert_water,
-/area/awaymission/arrakis/outside/outside5)
+/obj/structure/flora/tree/cactus/flat,
+/obj/effect/mine/explosive/desert,
+/turf/simulated/floor/indestructible/dune_sand,
+/area/awaymission/arrakis/outside/outside2)
 "sXB" = (
 /obj/structure/barricade/wooden,
 /obj/structure/barricade/wooden/crude{
@@ -45707,7 +45727,7 @@
 /area/awaymission/arrakis/outside/mining_town)
 "ttD" = (
 /obj/effect/decal/cleanable/dust,
-/mob/living/simple_animal/hostile/duna/depredator/range,
+/mob/living/simple_animal/hostile/duna/range,
 /turf/simulated/floor/brick/cold,
 /area/awaymission/arrakis/cave/cave2)
 "ttE" = (
@@ -57183,7 +57203,7 @@ asV
 asV
 asV
 asV
-sXh
+plQ
 omB
 omB
 omB
@@ -57273,8 +57293,8 @@ oBI
 jzQ
 jzQ
 jzQ
-jzQ
 ttD
+jzQ
 jzQ
 jyd
 ayO
@@ -57555,7 +57575,7 @@ omB
 omB
 omB
 omB
-sXh
+plQ
 omB
 omB
 omB
@@ -61121,7 +61141,7 @@ vQO
 vQO
 vQO
 jzQ
-ttD
+jzQ
 jzQ
 jyd
 qMl
@@ -61461,7 +61481,7 @@ eZD
 lGj
 eZD
 lrd
-jzQ
+ttD
 jzQ
 lrd
 jDg
@@ -63244,7 +63264,7 @@ ayO
 qMl
 qTQ
 bxA
-jzQ
+ttD
 jzQ
 jzQ
 jzQ
@@ -63901,7 +63921,7 @@ ayO
 ayO
 ayO
 adM
-sXh
+plQ
 qud
 hKJ
 adM
@@ -67436,8 +67456,8 @@ ayO
 ayO
 qMl
 qmJ
-jzQ
 ttD
+jzQ
 jzQ
 nyT
 jzQ
@@ -67801,7 +67821,7 @@ tWB
 qMl
 ffM
 aLm
-jzQ
+ttD
 jzQ
 mzt
 qMl
@@ -82090,7 +82110,7 @@ ayO
 ayO
 aYs
 ayO
-yaD
+aYs
 aYs
 aYs
 fZk
@@ -86635,7 +86655,7 @@ asJ
 aSz
 aAh
 aSz
-arD
+hlB
 axP
 agE
 aJx
@@ -87339,7 +87359,7 @@ aih
 aSz
 aKc
 aSz
-arD
+hlB
 aLb
 aEo
 aJx
@@ -145250,7 +145270,7 @@ aXZ
 aXZ
 aXZ
 aXZ
-cqJ
+sXh
 aXZ
 aXZ
 aXZ
@@ -146309,7 +146329,7 @@ aXZ
 aXZ
 aXZ
 aXZ
-aXZ
+prb
 aXZ
 aXZ
 aXZ
@@ -148441,13 +148461,13 @@ aXZ
 aXZ
 aXZ
 aXZ
+prb
 aXZ
 aXZ
 aXZ
 aXZ
 aXZ
-aXZ
-aXZ
+prb
 aXZ
 aXZ
 aXZ
@@ -152319,7 +152339,7 @@ aXZ
 auU
 aXZ
 aXZ
-aXZ
+prb
 aXZ
 aXZ
 aXZ

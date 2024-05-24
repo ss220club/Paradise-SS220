@@ -9,12 +9,12 @@
 	max_integrity = 300
 	density = FALSE
 	invisibility = 101
-	mob_types = list(/mob/living/simple_animal/hostile/duna/depredator)
+	mob_types = list(/mob/living/simple_animal/hostile/duna)
 
 	spawn_time = 180 SECONDS
 
 /obj/structure/spawner/desert_depretarors/range
-	mob_types = list(/mob/living/simple_animal/hostile/duna/depredator/range)
+	mob_types = list(/mob/living/simple_animal/hostile/duna/range)
 
 /obj/item/projectile/beam/depredator
 	name = "depredator laser"
@@ -53,31 +53,24 @@
 	var/list/alert_sounds
 	var/alert_cooldown = 3 SECONDS
 	var/alert_cooldown_time
-
-/mob/living/simple_animal/hostile/duna/Initialize(mapload)
-	. = ..()
-	add_language("Sol Common")
-	default_language = GLOB.all_languages["Sol Common"]
-
-	speed = pick(-1.2, -1, -0.5, 0, 0.5, 1, 1.5, 2, 2.5)
-
-/mob/living/simple_animal/hostile/duna/Aggro()
-	if(!alert_sounds)
-		return
-	if(world.time > alert_cooldown_time)
-		playsound(src, pick(alert_sounds), 150, ignore_walls = FALSE)
-		alert_cooldown_time = world.time + alert_cooldown
-
-
-/mob/living/simple_animal/hostile/duna/depredator
 	name = "депредатор"
 	desc = "Ебанина"
 	icon = 'modular_ss220/dunes_map/icons/mobs.dmi'
-	icon_state = "osminog_meele"
-	icon_living = "osminog_meele"
-	icon_dead = "osminog_meele"
+	icon_state = "osminogmeele"
+	icon_living = "osminogmeele"
+	icon_dead = "osminogmeele"
 	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	sentience_type = SENTIENCE_OTHER
+	status_flags = CANPUSH
+	del_on_death = TRUE
+	dodging = TRUE
+	unsuitable_atmos_damage = 0
+	minbodytemp = 0
+	maxbodytemp = 3500
+	check_friendly_fire = TRUE
+	a_intent = INTENT_HARM
+	loot = list(/obj/effect/gibspawner/xeno)
+	faction = list("depredators")
 	turns_per_move = 3
 	move_to_delay = 2.8
 	stat_attack = UNCONSCIOUS
@@ -92,13 +85,6 @@
 	a_intent = INTENT_HARM
 	loot = list(/obj/effect/gibspawner/xeno)
 	faction = list("depredators")
-	unsuitable_atmos_damage = 0
-	minbodytemp = 0
-	maxbodytemp = 3500
-	check_friendly_fire = 1
-	status_flags = CANPUSH
-	del_on_death = TRUE
-	dodging = TRUE
 	rapid_melee = 2
 	footstep_type = FOOTSTEP_MOB_SHOE
 	alert_cooldown = 10 SECONDS
@@ -110,14 +96,37 @@
 		'modular_ss220/dunes_map/sound/mobs/dep5.ogg',
 		'modular_ss220/dunes_map/sound/mobs/dep6.ogg',
 	)
+	layer = ABOVE_OBJ_LAYER
 
-/mob/living/simple_animal/hostile/duna/depredator/range
+/mob/living/simple_animal/hostile/duna/Initialize(mapload)
+	. = ..()
+	add_language("Sol Common")
+	default_language = GLOB.all_languages["Sol Common"]
+
+	speed = pick(-1.2, -1, -0.5, 0, 0.5, 1, 1.5, 2, 2.5)
+
+	var/list/meele_type= list("gold", "silver", "platinum")
+	icon_state = "osminogmeele_[pick(meele_type)]"
+
+/mob/living/simple_animal/hostile/duna/Aggro()
+	if(!alert_sounds)
+		return
+	if(world.time > alert_cooldown_time)
+		playsound(src, pick(alert_sounds), 200, ignore_walls = FALSE)
+		alert_cooldown_time = world.time + alert_cooldown
+
+
+/mob/living/simple_animal/hostile/duna/range
+	icon_state = "osminogrange_gold"
+	var/list/range_type= list("gold", "silver", "platinum")
 	projectiletype = /obj/item/projectile/beam/depredator/hitscan
 	projectilesound = 'modular_ss220/aesthetics_sounds/sound/mobs/vortigaunt/attack_shoot4.ogg'
 	ranged_cooldown_time = 2.5 SECONDS
 	ranged = TRUE
-	dodging = TRUE
-	rapid = 3
+	maxHealth = 120
+	health = 120
+	rapid = 2
+	rapid_fire_delay = 1 SECONDS
 	harm_intent_damage = 15
 	melee_damage_lower = 10
 	melee_damage_upper = 10
@@ -126,6 +135,11 @@
 	aggro_vision_range = 10
 	vision_range = 10
 
+/mob/living/simple_animal/hostile/duna/range/Initialize(mapload)
+	. = ..()
+
+	var/list/range_type= list("gold", "silver", "platinum")
+	icon_state = "osminogrange_[pick(range_type)]"
 
 /obj/structure/spawner/gator
 	name = "спавнер аллигаторов"
