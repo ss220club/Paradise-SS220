@@ -7,7 +7,7 @@
 #define HYDRATION_LEVEL_INEFFICIENT 100
 #define HYDRATION_LEVEL_CURSED 0
 
-#define ui_hydration "EAST-1:28,CENTER-3:11"
+#define ui_hydration "EAST-2:32,CENTER-1:13"
 
 /// By default, it takes 40 minutes to go from roundstart to red by idlying. It takes 20 minutes to go from roundstart to red from endlessly running around, and 28 minutes by walking.
 #define THIRST_FACTOR 0.25
