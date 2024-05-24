@@ -225,6 +225,12 @@
 		return
 	Burn()
 
+/obj/structure/bonfire/proc/get_heat()
+	if(burning)
+		return BONFIRE_HEAT
+	else
+		return 0
+
 /obj/structure/bonfire/extinguish()
 	if(burning)
 		icon_state = "bonfire"

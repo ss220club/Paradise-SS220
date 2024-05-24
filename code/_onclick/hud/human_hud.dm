@@ -335,6 +335,11 @@
 	mymob.healthdoll = new()
 	infodisplay += mymob.healthdoll
 
+	if(istype(mymob, /mob/living/carbon/human))
+		var/mob/living/carbon/human/h = mymob
+		h.frostbite_screen = new()
+		infodisplay += h.frostbite_screen
+
 	mymob.pullin = new /atom/movable/screen/pull()
 	mymob.pullin.icon = ui_style
 	mymob.pullin.hud = src

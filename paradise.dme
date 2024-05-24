@@ -64,6 +64,7 @@
 #include "code\__DEFINES\flags.dm"
 #include "code\__DEFINES\food_defines.dm"
 #include "code\__DEFINES\footstep_defines.dm"
+#include "code\__DEFINES\frostbite_defines.dm"
 #include "code\__DEFINES\game_defines.dm"
 #include "code\__DEFINES\gamemode.dm"
 #include "code\__DEFINES\genetics_defines.dm"
@@ -2921,3 +2922,35 @@
 
 // SS220
 #include "modular_ss220\modular_ss220.dme"
+
+// -----LAZARUS EVENT-----
+
+#include "modular_ss220\lazarus\datums\lazarus_complex.dm"
+#include "_maps\lazarus_event_maps.dm"
+
+#include "modular_ss220\lazarus\turfs\lazarus_floors.dm"
+#include "modular_ss220\lazarus\turfs\lazarus_walls.dm"
+#include "modular_ss220\lazarus\areas\lazarus_areas.dm"
+#include "modular_ss220\lazarus\objects\geothermal_generator.dm"
+
+#include "modular_ss220\lazarus\datums\outfits\corpses\lazarus_corpse_outfit.dm"
+#include "modular_ss220\lazarus\datums\outfits\corpses\colonists.dm"
+#include "modular_ss220\lazarus\datums\outfits\corpses\security.dm"
+#include "modular_ss220\lazarus\datums\outfits\corpses\service.dm"
+#include "modular_ss220\lazarus\datums\outfits\corpses\engineering.dm"
+#include "modular_ss220\lazarus\datums\outfits\corpses\medical.dm"
+
+#include "modular_ss220\lazarus\objects\mapping\corpse_spawners\corpse_spawners.dm"
+#include "modular_ss220\lazarus\objects\mapping\corpse_spawners\colonists.dm"
+#include "modular_ss220\lazarus\objects\mapping\corpse_spawners\security.dm"
+#include "modular_ss220\lazarus\objects\mapping\corpse_spawners\service.dm"
+#include "modular_ss220\lazarus\objects\mapping\corpse_spawners\engineering.dm"
+#include "modular_ss220\lazarus\objects\mapping\corpse_spawners\medical.dm"
+
+#include "modular_ss220\lazarus\objects\mapping\loot_spawners\loot_spawners.dm"
+
+#include "modular_ss220\lazarus\changeling_primalis\changeling_primalis_mob.dm"
+#include "modular_ss220\lazarus\changeling_primalis\changeling_primalis_hud.dm"
+#include "modular_ss220\lazarus\changeling_primalis\changeling_primalis_abilities.dm"
+#include "modular_ss220\lazarus\changeling_primalis\changeling_primalis_memory_edit.dm"
+#include "modular_ss220\lazarus\changeling_primalis\changeling_primalis_datum.dm"

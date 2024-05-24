@@ -552,6 +552,42 @@
 		var/mob/living/carbon/H = usr
 		H.check_self_for_injuries()
 
+/atom/movable/screen/frostbite
+	name = "Температура"
+	icon = 'icons/mob/screen_frostbite.dmi'
+	icon_state = "normal_warm"
+	screen_loc = ui_frostbite
+
+/atom/movable/screen/frostbite/Click()
+	if(ishuman(usr) && usr.stat != DEAD)
+		var/mob/living/carbon/human/H = usr
+		var/list/status_list = list()
+		switch(H.get_frostbite_delta())
+			if(FROSTBITE_VERYHIGH to INFINITY)
+				status_list += "<span class='notice'>Тут очень тепло. Примерно на [H.get_frostbite_delta()] единиц(ы). Я быстро тут согреюсь.</span>"
+			if(FROSTBITE_HIGH to FROSTBITE_VERYHIGH)
+				status_list += "<span class='notice'>Тут довольно тепло. Примерно на [H.get_frostbite_delta()] единиц(ы). Тут можно согреться согреюсь.</span>"
+			if(FROSTBITE_LOW to FROSTBITE_HIGH)
+				status_list += "<span class='notice'>Тут нормальная температура. Примерно [H.get_frostbite_delta()] единиц(ы). Я не слишком рискую.</span>"
+			if(FROSTBITE_VERYLOW to FROSTBITE_LOW)
+				status_list += "<span class='warning'>Тут довольно холодно. Примерно на [H.get_frostbite_delta()] единиц(ы). Лучше не задерживаться здесь надолго.</span>"
+			if(-INFINITY to FROSTBITE_VERYLOW)
+				status_list += "<span class='warning'>Тут очень холодно. Примерно на [H.get_frostbite_delta()] единиц(ы). Нужно скорее уйти отсюда!</span>"
+		switch(H.frostbite)
+			if(FROSTBITE_CHILLED to FROSTBITE_WARM)
+				status_list += "<span class='notice'>Мне очень тепло и комфортно. Примерно на [H.frostbite] единиц(ы). Можно идти на вылазку.</span>"
+			if(FROSTBITE_MILD to FROSTBITE_CHILLED)
+				status_list += "<span class='notice'>Мне немного прохладно. Примерно на [H.frostbite] единиц(ы). Лучше немного согреться.</span>"
+			if(FROSTBITE_SEVERE to FROSTBITE_MILD)
+				status_list += "<span class='warning'>Мне холодно. Примерно на [H.frostbite] единиц(ы). Нужно срочно найти где согреться.</span>"
+			if(FROSTBITE_HYPOTHERMIA to FROSTBITE_SEVERE)
+				status_list += "<span class='warning'>Мне очень холодно. Примерно на [H.frostbite] единиц(ы). Если я не найду где согреться, то умру!</span>"
+			if(-1 to FROSTBITE_HYPOTHERMIA)
+				status_list += "<span class='warning'>Мне безумно холодно. Примерно на [H.frostbite] единиц. Глаза слипаются на ходу. Я не могу больше идти...</span>"
+		status_list += "<span class='notice'>По ощущениям, моя одежда защищает меня от холода на [H.get_clothes_isolation()] единиц(ы)."
+		status_list += "<span class='notice'>Окружающие меня объекты и погода изменяют температуру на [H.get_around_heat()] единиц(ы)."
+		to_chat(usr, chat_box_examine(status_list.Join("\n")))
+
 /atom/movable/screen/component_button
 	var/atom/movable/screen/parent
 

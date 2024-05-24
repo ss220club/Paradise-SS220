@@ -19,7 +19,9 @@
 							/obj/item/clothing/under/color/red/dodgeball,
 							/obj/item/clothing/under/color/red/jersey,
 							/obj/item/clothing/under/color/blue/jersey,
-							/obj/item/clothing/under/color/white/enforcer)
+							/obj/item/clothing/under/color/white/enforcer,
+							/obj/item/clothing/under/color/rainbow,
+							/obj/item/clothing/under/color/psyche)
 	var/obj/item/clothing/under/color/C = pick(subtypesof(/obj/item/clothing/under/color) - excluded)
 	name = initial(C.name)
 	icon_state = initial(C.icon_state)

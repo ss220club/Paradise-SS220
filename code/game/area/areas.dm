@@ -97,6 +97,10 @@
 	luminosity = TRUE
 	var/dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
 
+	// Lazarus frostbite mechanic
+	/// Amount of heat losed by nude human in this area
+	var/temperature = AREA_TEMPERATURE_COMFORTABLE
+
 /area/New(loc, ...)
 	if(!there_can_be_many) // Has to be done in New else the maploader will fuck up and find subtypes for the parent
 		GLOB.all_unique_areas[type] = src

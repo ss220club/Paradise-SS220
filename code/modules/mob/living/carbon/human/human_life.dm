@@ -21,6 +21,8 @@
 
 		handle_pain()
 		handle_heartbeat()
+		if(lastarea)
+			handle_frostbite()
 		dna.species.handle_life(src)
 		if(!client)
 			dna.species.handle_npc(src)
@@ -128,6 +130,25 @@
 /mob/living/carbon/human/breathe()
 	if(!dna.species.breathe(src))
 		..()
+
+/mob/living/carbon/human/proc/handle_frostbite()
+	if(status_flags & GODMODE)
+		frostbite = FROSTBITE_WARM
+	else
+		frostbite = clamp(get_frostbite_delta() + frostbite, 0, FROSTBITE_WARM)
+	switch(frostbite)
+		if(FROSTBITE_HYPOTHERMIA to FROSTBITE_SEVERE)
+			adjustFireLoss(0.5)
+		if(0 to FROSTBITE_HYPOTHERMIA)
+			adjustStaminaLoss(0.5)
+			adjustFireLoss(1)
+	update_frostbite_hud()
+
+/mob/living/carbon/human/proc/get_frostbite_delta()
+	if(lastarea)
+		return min(lastarea.temperature + get_clothes_isolation(), 0) + FROSTBITE_REGENERATION + get_around_heat()
+	else
+		return 0
 
 /mob/living/carbon/human/check_breath(datum/gas_mixture/breath)
 
@@ -415,6 +436,27 @@
 
 	return thermal_protection_flags
 
+/mob/living/carbon/human/proc/get_clothes_isolation()
+	var/clothes_isolation = 0.0
+
+	clothes_isolation += head?.isolation
+	clothes_isolation += wear_suit?.isolation
+	clothes_isolation += wear_mask?.isolation
+	clothes_isolation += w_uniform?.isolation
+	clothes_isolation += shoes?.isolation
+	clothes_isolation += gloves?.isolation
+
+	return clothes_isolation
+
+/mob/living/carbon/human/proc/get_around_heat()
+	// It's just an oneshot event. Please, don't force me to rewrite this using signals and proximity component. I'm too lazy.
+	var/around_heat = 0
+	for(var/obj/structure/bonfire/B in range(5))
+		around_heat += B.get_heat()
+	for(var/obj/machinery/space_heater/H in range(5))
+		around_heat += H.get_heat()
+	return around_heat
+
 /mob/living/carbon/human/proc/get_cold_protection(temperature)
 
 	if(HAS_TRAIT(src, TRAIT_RESISTCOLD))
@@ -611,6 +653,35 @@
 					if(prob(5))
 						to_chat(src, "<span class='userdanger'>You feel [pick("terrible", "awful", "like shit", "sick", "numb", "cold", "sweaty", "tingly", "horrible")]!</span>")
 						Weaken(6 SECONDS)
+
+/mob/living/carbon/human/proc/update_frostbite_hud()
+	if(!client)
+		return
+	if(frostbite_screen && stat != DEAD)
+		var/frostbite_state = ""
+		switch(get_frostbite_delta())
+			if(FROSTBITE_VERYHIGH to INFINITY)
+				frostbite_state += "veryhigh_"
+			if(FROSTBITE_HIGH to FROSTBITE_VERYHIGH)
+				frostbite_state += "high_"
+			if(FROSTBITE_LOW to FROSTBITE_HIGH)
+				frostbite_state += "normal_"
+			if(FROSTBITE_VERYLOW to FROSTBITE_LOW)
+				frostbite_state += "low_"
+			if(-INFINITY to FROSTBITE_VERYLOW)
+				frostbite_state += "verylow_"
+		switch(frostbite)
+			if(FROSTBITE_CHILLED to FROSTBITE_WARM)
+				frostbite_state += "warm"
+			if(FROSTBITE_MILD to FROSTBITE_CHILLED)
+				frostbite_state += "chilled"
+			if(FROSTBITE_SEVERE to FROSTBITE_MILD)
+				frostbite_state += "mild"
+			if(FROSTBITE_HYPOTHERMIA to FROSTBITE_SEVERE)
+				frostbite_state += "severe"
+			if(-1 to FROSTBITE_HYPOTHERMIA)
+				frostbite_state += "hypothermia"
+		frostbite_screen.icon_state = frostbite_state
 
 #define BODYPART_PAIN_REDUCTION 5
 

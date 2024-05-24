@@ -21,6 +21,8 @@
 	new /obj/item/reagent_containers/drinks/mug/cap(src)
 	new /obj/item/tank/internals/emergency_oxygen/double(src)
 
+/obj/structure/closet/secure_closet/captains/empty/populate_contents()
+
 /obj/structure/closet/secure_closet/hop
 	name = "head of personnel's locker"
 	req_access = list(ACCESS_HOP)
@@ -38,6 +40,8 @@
 	new /obj/item/reagent_containers/drinks/mug/hop(src)
 	new /obj/item/clothing/accessory/medal/service(src)
 	new /obj/item/storage/bag/garment/head_of_personnel(src)
+
+/obj/structure/closet/secure_closet/hop/empty/populate_contents()
 
 /obj/structure/closet/secure_closet/hos
 	name = "head of security's locker"
@@ -68,6 +72,8 @@
 	new /obj/item/reagent_containers/drinks/flask/barflask(src)
 	new /obj/item/clothing/mask/gas/sechailer(src)
 
+/obj/structure/closet/secure_closet/hos/empty/populate_contents()
+
 /obj/structure/closet/secure_closet/warden
 	name = "warden's locker"
 	req_access = list(ACCESS_ARMORY)
@@ -90,6 +96,8 @@
 	new /obj/item/clothing/gloves/color/black/krav_maga/sec(src)
 	new /obj/item/clothing/mask/gas/sechailer(src)
 
+/obj/structure/closet/secure_closet/warden/empty/populate_contents()
+
 /obj/structure/closet/secure_closet/security
 	name = "security officer's locker"
 	req_access = list(ACCESS_SECURITY)
@@ -111,6 +119,8 @@
 	new /obj/item/flashlight/seclite(src)
 	new /obj/item/clothing/head/helmet(src)
 	new /obj/item/clothing/suit/armor/secjacket(src)
+
+/obj/structure/closet/secure_closet/security/empty/populate_contents()
 
 /obj/structure/closet/secure_closet/evidence
 	name = "evidence locker"
@@ -141,6 +151,8 @@
 	new /obj/item/clothing/accessory/holster(src)
 	new /obj/item/storage/bag/garment/blueshield(src)
 
+/obj/structure/closet/secure_closet/blueshield/empty/populate_contents()
+
 /obj/structure/closet/secure_closet/ntrep
 	name = "\improper Nanotrasen Representative's locker"
 	req_access = list(ACCESS_NTREP)
@@ -158,6 +170,8 @@
 	new /obj/item/storage/box/tapes(src)
 	new /obj/item/taperecorder(src)
 	new /obj/item/storage/bag/garment/nanotrasen_representative(src)
+
+/obj/structure/closet/secure_closet/ntrep/empty/populate_contents()
 
 /obj/structure/closet/secure_closet/security/cargo
 
@@ -207,6 +221,8 @@
 	new /obj/item/holosign_creator/detective(src)
 	new /obj/item/taperecorder(src)
 	new /obj/item/storage/box/tapes(src)
+
+/obj/structure/closet/secure_closet/detective/empty/populate_contents()
 
 /obj/structure/closet/secure_closet/injection
 	name = "lethal injections locker"
@@ -318,6 +334,8 @@
 	new /obj/item/clothing/accessory/lawyers_badge(src)
 	new /obj/item/storage/bag/garment/magistrate(src)
 
+/obj/structure/closet/secure_closet/magistrate/empty/populate_contents()
+
 /obj/structure/closet/secure_closet/iaa
 	name = "internal affairs locker"
 	req_access = list(ACCESS_LAWYER)
@@ -334,3 +352,5 @@
 	new /obj/item/storage/briefcase(src)
 	new /obj/item/radio/headset/headset_iaa(src)
 	new /obj/item/radio/headset/headset_iaa(src)
+
+/obj/structure/closet/secure_closet/iaa/empty/populate_contents()

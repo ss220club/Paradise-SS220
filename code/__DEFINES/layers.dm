@@ -21,7 +21,8 @@
 /// Which layer turfs appear on by default in the map editor. Should be unique!
 #define MAP_EDITOR_TURF_LAYER 1.6999
 #define PLATING_LAYER 1.7
-#define LATTICE_LAYER 1.701
+#define SNOW_LAYER 1.701
+#define LATTICE_LAYER 1.702
 #define DISPOSAL_PIPE_LAYER 1.71
 #define GAS_PIPE_HIDDEN_LAYER 1.72
 #define WIRE_LAYER 1.73

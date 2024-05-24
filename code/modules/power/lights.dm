@@ -184,11 +184,11 @@
 	/// How much power does it use?
 	var/static_power_used = 0
 	/// Light range (Also used in power calculation)
-	var/brightness_range = 8
+	var/brightness_range = 5
 	/// Light intensity
-	var/brightness_power = 1
+	var/brightness_power = 0.55
 	/// Light colour when on
-	var/brightness_color = "#FFFFFF"
+	var/brightness_color = "#a0a080"
 	/// Light fixture status (LIGHT_OK | LIGHT_EMPTY | LIGHT_BURNED | LIGHT_BROKEN)
 	var/status = LIGHT_OK
 	/// Is the light currently flickering?
@@ -216,7 +216,7 @@
 	/// Light intensity when in night shift mode
 	var/nightshift_light_power = 0.45
 	/// The colour of the light while it's in night shift mode
-	var/nightshift_light_color = "#FFDDCC"
+	var/nightshift_light_color = "#a0a080"
 	/// The colour of the light while it's in emergency mode
 	var/bulb_emergency_colour = "#FF3232"
 

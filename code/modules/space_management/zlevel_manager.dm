@@ -48,6 +48,8 @@ GLOBAL_DATUM_INIT(space_manager, /datum/zlev_manager, new())
 		return z_list["[z]"]
 
 /datum/zlev_manager/proc/get_zlev_by_name(A)
+	if(A == MAIN_STATION || A == MINING)	//This is solution only for temporal events. Maintainers will kill you for this
+		return levels_by_name[CENTCOMM]
 	if(!(A in levels_by_name))
 		throw EXCEPTION("Non-existent z level: '[A]'")
 	return levels_by_name[A]

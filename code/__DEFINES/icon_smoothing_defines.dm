@@ -74,8 +74,9 @@ DEFINE_BITFIELD(smoothing_flags, list(
 
 #define SMOOTH_GROUP_GRASS S_TURF(31)					///turf/simulated/floor/grass
 #define SMOOTH_GROUP_JUNGLE_GRASS S_TURF(32)			///turf/simulated/floor/grass/jungle
+#define SMOOTH_GROUP_LAZARUS_SNOW S_TURF(33)			///turf/simulated/floor/plating/asteroid/lazarus/snow
 
-#define MAX_S_TURF SMOOTH_GROUP_JUNGLE_GRASS //Always match this value with the one above it.
+#define MAX_S_TURF SMOOTH_GROUP_LAZARUS_SNOW //Always match this value with the one above it.
 
 
 #define S_OBJ(num) (MAX_S_TURF + 1 + num)
@@ -101,6 +102,10 @@ DEFINE_BITFIELD(smoothing_flags, list(
 #define SMOOTH_GROUP_REGULAR_WALLS S_OBJ(17)			///turf/simulated/wall, /obj/structure/falsewall
 #define SMOOTH_GROUP_REINFORCED_WALLS S_OBJ(18)			///turf/simulated/wall/r_wall, /obj/structure/falsewall/reinforced
 #define SMOOTH_GROUP_CULT_WALLS S_OBJ(19)				///turf/simulated/wall/cult
+#define SMOOTH_GROUP_ASTEROID_WALLS S_OBJ(12)			///turf/simulated/mineral, /obj/structure/falsewall/rock_ancient
+
+#define SMOOTH_GROUP_ICE_WALLS S_OBJ(13)
+
 
 #define SMOOTH_GROUP_WINDOW_FULLTILE S_OBJ(21)			///turf/simulated/indestructible/fakeglass, /obj/structure/window/full/basic, /obj/structure/window/full/plasmabasic, /obj/structure/window/full/plasmareinforced, /obj/structure/window/full/reinforced
 #define SMOOTH_GROUP_WINDOW_FULLTILE_BRASS S_OBJ(22)	///obj/structure/window/brass/fulltile

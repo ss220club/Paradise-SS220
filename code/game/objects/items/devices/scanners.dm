@@ -181,6 +181,11 @@ SLIME SCANNER
 	msgs += "<span class='notice'>Analyzing Results for [H]:\nOverall Status: [status]"
 	msgs += "Key: <span class='healthscan_oxy'>Suffocation</span>/<font color='green'>Toxin</font>/<font color='#FFA500'>Burns</font>/<font color='red'>Brute</font>"
 	msgs += "Damage Specifics: <span class='healthscan_oxy'>[OX]</span> - <font color='green'>[TX]</font> - <font color='#FFA500'>[BU]</font> - <font color='red'>[BR]</font>"
+
+	// SS220 EDIT - START
+	msgs += "Обморожение: <font color='#e6451c'>[H.frostbite]/[FROSTBITE_WARM]</font>"
+	// SS220 EDIT - END
+
 	if(H.timeofdeath && (H.stat == DEAD || (HAS_TRAIT(H, TRAIT_FAKEDEATH))))
 		msgs += "<span class='notice'>Time of Death: [station_time_timestamp("hh:mm:ss", H.timeofdeath)]</span>"
 		var/tdelta = round(world.time - H.timeofdeath)

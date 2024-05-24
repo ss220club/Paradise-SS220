@@ -181,7 +181,7 @@
 		else
 			O.forceMove(src)
 
-	ChangeTurf(/turf/simulated/floor/plating)
+	ChangeTurf(baseturf)
 	return TRUE
 
 /turf/simulated/wall/proc/break_wall()

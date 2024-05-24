@@ -1,5 +1,5 @@
 /obj/structure/barricade/wooden
-	layer = ABOVE_OBJ_LAYER
+	layer = ABOVE_WINDOW_LAYER
 
 /obj/machinery/door/window
 	layer = CLOSED_DOOR_LAYER

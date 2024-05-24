@@ -103,3 +103,14 @@
 	var/list/bodyparts = list()
 	/// map organ names to organs
 	var/list/bodyparts_by_name = list()
+
+	// Lazarus body temperature mechanic
+	// Yes, it is the same thing as bodytemperature. I just too lazy to work with it, so I made my own. It's a oneshot event after all.
+	/// Body temperature for lazarus cold mechanics
+	var/frostbite = FROSTBITE_WARM
+
+	/// HUD element for temperature status
+	var/atom/movable/screen/frostbite/frostbite_screen = null
+
+	/// Infested by this changeling primalis
+	var/mob/living/simple_animal/changeling_primalis/changeling_primalis

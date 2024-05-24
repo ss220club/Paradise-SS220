@@ -113,6 +113,8 @@
 	"Vox" = 'icons/mob/clothing/species/vox/head.dmi'
 	)
 
+	isolation = FB_ISOLATION_MEDIUM
+
 /obj/item/clothing/head/ushanka/attack_self(mob/user as mob)
 	if(icon_state == "ushankadown")
 		icon_state = "ushankaup"
