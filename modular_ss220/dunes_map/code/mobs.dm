@@ -96,7 +96,7 @@
 		'modular_ss220/dunes_map/sound/mobs/dep5.ogg',
 		'modular_ss220/dunes_map/sound/mobs/dep6.ogg',
 	)
-	layer = ABOVE_OBJ_LAYER
+	layer = ABOVE_ALL_MOB_LAYER
 
 /mob/living/simple_animal/hostile/duna/Initialize(mapload)
 	. = ..()
