@@ -93,6 +93,7 @@
 	icon = 'modular_ss220/clothing/icons/object/cloaks.dmi'
 	icon_state = "ntsc_cloak"
 	icon_override = 'modular_ss220/clothing/icons/mob/cloaks.dmi'
+	species_restricted = list("Human")
 
 /obj/item/clothing/suit/space/deathsquad/officer/field/cloak_nt/coat_nt
 	name = "полевой плащ офицера флота Нанотрейзен"

@@ -44,15 +44,3 @@
 	item_state = "cloak_desert2"
 	flags_inv = HIDETAIL
 
-/obj/item/clothing/suit/mantle/armor/desert_mantle/ntcloak
-	name = "чёрная офицерская мантия"
-	desc = "Носится офицером Центрального Командования Нанотрейзен."
-	icon_state = "ntcloak"
-	item_state = "ntcloak"
-	species_restricted = list("Human")
-
-/obj/item/clothing/suit/mantle/armor/desert_mantle/ntcloak/trench
-	name = "чёрная офицерская тренчкот"
-	desc = "Носится офицером Центрального Командования Нанотрейзен."
-	icon_state = "ntcloak2"
-	item_state = "ntcloak2"
