@@ -40,9 +40,9 @@ SUBSYSTEM_DEF(mapping)
 		F << next_map.type
 
 /datum/controller/subsystem/mapping/Initialize()
-	var/datum/lavaland_theme/lavaland_theme_type = pick(subtypesof(/datum/lavaland_theme))
-	ASSERT(lavaland_theme_type)
-	lavaland_theme = new lavaland_theme_type
+	// var/datum/lavaland_theme/lavaland_theme_type = pick(subtypesof(/datum/lavaland_theme))
+	// ASSERT(lavaland_theme_type)
+	// lavaland_theme = new lavaland_theme_type
 	log_startup_progress("We're in the mood for [initial(lavaland_theme.name)] today...") //We load this first. In the event some nerd ever makes a surface map, and we don't have it in lavaland in the event lavaland is disabled.
 
 	cave_theme = pick(BLOCKED_BURROWS, CLASSIC_CAVES, DEADLY_DEEPROCK)
@@ -55,13 +55,13 @@ SUBSYSTEM_DEF(mapping)
 	loadStation()
 
 	// Load lavaland
-	loadLavaland()
+	// loadLavaland()
 
 	// Seed space ruins
-	if(GLOB.configuration.ruins.enable_space_ruins)
-		handleRuins()
-	else
-		log_startup_progress("Skipping space ruins...")
+	// if(GLOB.configuration.ruins.enable_space_ruins)
+	// 	handleRuins()
+	// else
+	// 	log_startup_progress("Skipping space ruins...")
 
 	// Makes a blank space level for the sake of randomness
 	GLOB.space_manager.add_new_zlevel("Empty Area", linkage = CROSSLINKED, traits = list(REACHABLE_BY_CREW, REACHABLE_SPACE_ONLY))
@@ -70,18 +70,18 @@ SUBSYSTEM_DEF(mapping)
 	// Setup the Z-level linkage
 	GLOB.space_manager.do_transition_setup()
 
-	if(GLOB.configuration.ruins.enable_lavaland)
-		// Spawn Lavaland ruins and rivers.
-		log_startup_progress("Populating lavaland...")
-		var/lavaland_setup_timer = start_watch()
-		seedRuins(list(level_name_to_num(MINING)), GLOB.configuration.ruins.lavaland_ruin_budget, /area/lavaland/surface/outdoors/unexplored, GLOB.lava_ruins_templates)
-		if(lavaland_theme)
-			lavaland_theme.setup()
-			lavaland_theme.setup_caves()
-		var/time_spent = stop_watch(lavaland_setup_timer)
-		log_startup_progress("Successfully populated lavaland in [time_spent]s.")
-	else
-		log_startup_progress("Skipping lavaland ruins...")
+	// if(GLOB.configuration.ruins.enable_lavaland)
+	// 	// Spawn Lavaland ruins and rivers.
+	// 	log_startup_progress("Populating lavaland...")
+	// 	var/lavaland_setup_timer = start_watch()
+	// 	seedRuins(list(level_name_to_num(MINING)), GLOB.configuration.ruins.lavaland_ruin_budget, /area/lavaland/surface/outdoors/unexplored, GLOB.lava_ruins_templates)
+	// 	if(lavaland_theme)
+	// 		lavaland_theme.setup()
+	// 		lavaland_theme.setup_caves()
+	// 	var/time_spent = stop_watch(lavaland_setup_timer)
+	// 	log_startup_progress("Successfully populated lavaland in [time_spent]s.")
+	// else
+	// 	log_startup_progress("Skipping lavaland ruins...")
 
 	// Now we make a list of areas for teleport locs
 	// Located below is some of the worst code I've ever seen
@@ -176,21 +176,27 @@ SUBSYSTEM_DEF(mapping)
 		return
 
 	var/watch = start_watch()
-	log_startup_progress("Loading [map_datum.fluff_name]...")
+	log_startup_progress("Loading 4 [map_datum.fluff_name]...")
 	// This should always be Z2, but you never know
-	var/map_z_level = GLOB.space_manager.add_new_zlevel(MAIN_STATION, linkage = CROSSLINKED, traits = list(STATION_LEVEL, STATION_CONTACT, REACHABLE_BY_CREW, REACHABLE_SPACE_ONLY, AI_OK))
+	var/map_z_level = GLOB.space_manager.add_new_zlevel(MAIN_STATION + "1", linkage = SELFLOOPING, traits = list(STATION_LEVEL, STATION_CONTACT, REACHABLE_BY_CREW))
 	GLOB.maploader.load_map(wrap_file(map_datum.map_path), z_offset = map_z_level)
-	log_startup_progress("Loaded [map_datum.fluff_name] in [stop_watch(watch)]s")
+	map_z_level = GLOB.space_manager.add_new_zlevel(MAIN_STATION + "2", linkage = SELFLOOPING, traits = list(STATION_LEVEL, STATION_CONTACT, REACHABLE_BY_CREW))
+	GLOB.maploader.load_map(wrap_file(map_datum.map_path), z_offset = map_z_level)
+	map_z_level = GLOB.space_manager.add_new_zlevel(MAIN_STATION + "3", linkage = SELFLOOPING, traits = list(STATION_LEVEL, STATION_CONTACT, REACHABLE_BY_CREW))
+	GLOB.maploader.load_map(wrap_file(map_datum.map_path), z_offset = map_z_level)
+	map_z_level = GLOB.space_manager.add_new_zlevel(MAIN_STATION + "4", linkage = SELFLOOPING, traits = list(STATION_LEVEL, STATION_CONTACT, REACHABLE_BY_CREW))
+	GLOB.maploader.load_map(wrap_file(map_datum.map_path), z_offset = map_z_level)
+	log_startup_progress("Loaded 4 [map_datum.fluff_name] in [stop_watch(watch)]s")
 
-	// Save station name in the DB
-	if(!SSdbcore.IsConnected())
-		return
-	var/datum/db_query/query_set_map = SSdbcore.NewQuery(
-		"UPDATE round SET start_datetime=NOW(), map_name=:mapname, station_name=:stationname WHERE id=:round_id",
-		list("mapname" = map_datum.technical_name, "stationname" = map_datum.fluff_name, "round_id" = GLOB.round_id)
-	)
-	query_set_map.Execute(async = FALSE) // This happens during a time of intense server lag, so should be non-async
-	qdel(query_set_map)
+	// // Save station name in the DB
+	// if(!SSdbcore.IsConnected())
+	// 	return
+	// var/datum/db_query/query_set_map = SSdbcore.NewQuery(
+	// 	"UPDATE round SET start_datetime=NOW(), map_name=:mapname, station_name=:stationname WHERE id=:round_id",
+	// 	list("mapname" = map_datum.technical_name, "stationname" = map_datum.fluff_name, "round_id" = GLOB.round_id)
+	// )
+	// query_set_map.Execute(async = FALSE) // This happens during a time of intense server lag, so should be non-async
+	// qdel(query_set_map)
 
 // Loads in lavaland
 /datum/controller/subsystem/mapping/proc/loadLavaland()
