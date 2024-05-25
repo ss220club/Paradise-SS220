@@ -489,12 +489,12 @@
 	if(istype(robot) && robot.emagged)
 		. += "<br>Cyborg: <b><font color='red'>Is emagged!</font></b> <a href='byond://?src=[UID()];silicon=unemag'>Unemag!</a><br>0th law: [robot.laws.zeroth_law]"
 	var/mob/living/silicon/ai/ai = current
-	if(istype(ai) && ai.connected_robots.len)
+	if(istype(ai) && length(ai.connected_robots))
 		var/n_e_robots = 0
 		for(var/mob/living/silicon/robot/R in ai.connected_robots)
 			if(R.emagged)
 				n_e_robots++
-		. += "<br>[n_e_robots] of [ai.connected_robots.len] slaved cyborgs are emagged. <a href='byond://?src=[UID()];silicon=unemagcyborgs'>Unemag</a>"
+		. += "<br>[n_e_robots] of [length(ai.connected_robots)] slaved cyborgs are emagged. <a href='byond://?src=[UID()];silicon=unemagcyborgs'>Unemag</a>"
 
 /datum/mind/proc/memory_edit_uplink()
 	. = ""
@@ -519,7 +519,7 @@
 		alert("Not before round-start!", "Alert")
 		return
 
-	var/list/out = list("<meta charset='UTF-8'><b>[name]</b>[(current && (current.real_name != name))?" (as [current.real_name])" : ""]")
+	var/list/out = list("<html><meta charset='UTF-8'><head><title>[name]</title></head><body><b>[name]</b>[(current && (current.real_name != name))?" (as [current.real_name])" : ""]")
 	out.Add("Mind currently owned by key: [key] [active ? "(synced)" : "(not synced)"]")
 	out.Add("Assigned role: [assigned_role]. <a href='byond://?src=[UID()];role_edit=1'>Edit</a>")
 	out.Add("Factions and special roles:")
@@ -599,6 +599,7 @@
 	out.Add(gen_objective_text(admin = TRUE))
 	out.Add("<a href='byond://?src=[UID()];obj_add=1'>Add objective</a><br>")
 	out.Add("<a href='byond://?src=[UID()];obj_announce=1'>Announce objectives</a><br>")
+	out.Add("</body></html>")
 	usr << browse(out.Join("<br>"), "window=edit_memory[src];size=500x500")
 
 /datum/mind/Topic(href, href_list)
@@ -692,7 +693,7 @@
 
 			if("destroy")
 				var/list/possible_targets = active_ais(1)
-				if(possible_targets.len)
+				if(length(possible_targets))
 					var/mob/new_target = input("Select target:", "Objective target") as null|anything in possible_targets
 					new_objective = new /datum/objective/destroy
 					new_objective.target = new_target.mind
@@ -969,12 +970,12 @@
 	else if(href_list["changeling"])
 		switch(href_list["changeling"])
 			if("clear")
-				if(ischangeling(current))
+				if(IS_CHANGELING(current))
 					remove_antag_datum(/datum/antagonist/changeling)
 					log_admin("[key_name(usr)] has de-changelinged [key_name(current)]")
 					message_admins("[key_name_admin(usr)] has de-changelinged [key_name_admin(current)]")
 			if("changeling")
-				if(!ischangeling(current))
+				if(!IS_CHANGELING(current))
 					add_antag_datum(/datum/antagonist/changeling)
 					to_chat(current, "<span class='biggerdanger'>Your powers have awoken. A flash of memory returns to us... we are a changeling!</span>")
 					log_admin("[key_name(usr)] has changelinged [key_name(current)]")
@@ -1111,10 +1112,10 @@
 				if(!(src in SSticker.mode.syndicates))
 					SSticker.mode.syndicates += src
 					SSticker.mode.update_synd_icons_added(src)
-					if(SSticker.mode.syndicates.len==1)
+					if(length(SSticker.mode.syndicates) == 1)
 						SSticker.mode.prepare_syndicate_leader(src)
 					else
-						current.real_name = "[syndicate_name()] Operative #[SSticker.mode.syndicates.len-1]"
+						current.real_name = "[syndicate_name()] Operative #[length(SSticker.mode.syndicates) - 1]"
 					special_role = SPECIAL_ROLE_NUKEOPS
 					to_chat(current, "<span class='notice'>You are a [syndicate_name()] agent!</span>")
 					SSticker.mode.forge_syndicate_objectives(src)
@@ -1141,7 +1142,7 @@
 				if(!SSticker.mode.equip_syndicate(current))
 					to_chat(usr, "<span class='warning'>Equipping a syndicate failed!</span>")
 					return
-				SSticker.mode.update_syndicate_id(current.mind, SSticker.mode.syndicates.len == 1)
+				SSticker.mode.update_syndicate_id(current.mind, length(SSticker.mode.syndicates) == 1)
 				log_admin("[key_name(usr)] has equipped [key_name(current)] as a nuclear operative")
 				message_admins("[key_name_admin(usr)] has equipped [key_name_admin(current)] as a nuclear operative")
 
@@ -1600,10 +1601,10 @@
 	if(!(src in SSticker.mode.syndicates))
 		SSticker.mode.syndicates += src
 		SSticker.mode.update_synd_icons_added(src)
-		if(SSticker.mode.syndicates.len==1)
+		if(length(SSticker.mode.syndicates) == 1)
 			SSticker.mode.prepare_syndicate_leader(src)
 		else
-			current.real_name = "[syndicate_name()] Operative #[SSticker.mode.syndicates.len-1]"
+			current.real_name = "[syndicate_name()] Operative #[length(SSticker.mode.syndicates) - 1]"
 		special_role = SPECIAL_ROLE_NUKEOPS
 		assigned_role = SPECIAL_ROLE_NUKEOPS
 		to_chat(current, "<span class='notice'>You are a [syndicate_name()] agent!</span>")
@@ -1793,6 +1794,7 @@
 
 //Initialisation procs
 /mob/proc/mind_initialize()
+	SHOULD_CALL_PARENT(TRUE)
 	if(mind)
 		mind.key = key
 	else
@@ -1804,6 +1806,7 @@
 	if(!mind.name)
 		mind.name = real_name
 	mind.current = src
+	SEND_SIGNAL(src, COMSIG_MIND_INITIALIZE)
 
 //HUMAN
 /mob/living/carbon/human/mind_initialize()

@@ -250,6 +250,10 @@
 							0.4,0.6,0.0,\
 							0.2,0.2,0.6)
 
+#define MATRIX_STANDARD list(1.0,0.0,0.0,\
+							0.0,1.0,0.0,\
+							0.0,0.0,1.0)
+
 /*
 	Used for wire name appearances. Replaces the color name on the left with the one on the right.
 	The color on the left is the one used as the actual color of the wire, but it doesn't look good when written.
@@ -396,9 +400,10 @@
 #define INVESTIGATE_RENAME "renames"
 
 #define INVESTIGATE_BOMB "bombs"
+#define INVESTIGATE_HOTMIC "hotmic"
 
 // The SQL version required by this version of the code
-#define SQL_VERSION 542206 // SS220 EDIT
+#define SQL_VERSION 562206 // SS220 EDIT
 
 // Vending machine stuff
 #define CAT_NORMAL (1<<0)
@@ -695,3 +700,6 @@ do { \
 #define TEAM_ADMIN_ADD_OBJ_SUCCESS				(1<<0)
 #define TEAM_ADMIN_ADD_OBJ_CANCEL_LOG 			(1<<1)
 #define TEAM_ADMIN_ADD_OBJ_PURPOSEFUL_CANCEL 	(1<<2)
+
+/// A helper used by `restrict_file_types.py` to identify types to restrict in a file. Not used by byond at all.
+#define RESTRICT_TYPE(type) // do nothing

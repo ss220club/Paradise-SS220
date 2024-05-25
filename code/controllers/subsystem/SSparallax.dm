@@ -35,7 +35,7 @@ SUBSYSTEM_DEF(parallax)
 	var/list/currentrun = src.currentrun
 
 	while(length(currentrun))
-		var/client/C = currentrun[currentrun.len]
+		var/client/C = currentrun[length(currentrun)]
 		currentrun.len--
 		if(!C || !C.eye)
 			if(MC_TICK_CHECK)
