@@ -1,0 +1,18 @@
+
+//TIER 1
+#define TS_DESC_KNIGHT "Knight - ASSAULT"
+#define TS_DESC_LURKER "Lurker - AMBUSH"
+#define TS_DESC_HEALER "Healer - NURSE"
+#define TS_DESC_REAPER "Reaper - BRAWL"
+#define TS_DESC_BUILDER "Drone - BUILD"
+//TIER 2
+#define TS_DESC_WIDOW "Widow - POISON"
+#define TS_DESC_GUARDIAN "Guardian - GUARD"
+#define TS_DESC_DESTROYER "Destroyer - BREACHER"
+
+//TIER 3
+#define TS_DESC_DEFILER "Defiler - INFECT"
+
+//EFFECTS
+#define STATUS_EFFECT_TERROR_REGEN /datum/status_effect/terror/regeneration
+#define PASSEVERYTHING (PASSTABLE|PASSGLASS|PASSGRILLE|PASSBLOB|PASSMOB|LETPASSTHROW|PASSFENCE|PASSDOOR|PASSGIRDER)
