@@ -84,6 +84,9 @@
 		healthscan(src, M, 1, TRUE)
 
 /mob/living/simple_animal/changeling_primalis/say(message, verb, sanitize, ignore_speech_problems, ignore_atmospherics, ignore_languages)
+	if(istype(get_default_language(), /datum/language/ling))
+		return ..()
+	return
 
 /mob/living/simple_animal/changeling_primalis/emote(emote_key, type_override, message, intentional, force_silence)
 	to_chat(src, span_warning("Вы не способны на выражение эмоций"))

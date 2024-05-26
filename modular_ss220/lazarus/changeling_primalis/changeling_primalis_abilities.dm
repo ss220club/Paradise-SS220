@@ -156,7 +156,7 @@
 		to_chat(user.host, "<span class='warning'>Вы чувствуете невероятную боль по всему телу. Плоть пузырится и рвётся, покрывая вас неким подобием хитинового панциря.</span>")
 		user.host.unEquip(user.host.head)
 		user.host.unEquip(user.host.wear_suit)
-		user.equip_to_slot_if_possible(new /obj/item/clothing/suit/armor/changeling(user), SLOT_HUD_OUTER_SUIT, TRUE, TRUE)
-		user.equip_to_slot_if_possible(new /obj/item/clothing/head/helmet/changeling(user), SLOT_HUD_HEAD, TRUE, TRUE)
+		user.host.equip_to_slot_if_possible(new /obj/item/clothing/suit/armor/changeling(user), SLOT_HUD_OUTER_SUIT, TRUE, TRUE)
+		user.host.equip_to_slot_if_possible(new /obj/item/clothing/head/helmet/changeling(user), SLOT_HUD_HEAD, TRUE, TRUE)
 		is_active = TRUE
 		return TRUE

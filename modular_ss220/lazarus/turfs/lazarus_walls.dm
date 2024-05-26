@@ -1,3 +1,5 @@
+#define SMOOTH_GROUP_ICE_WALLS S_OBJ(80)	///turf/simulated/wall/ice
+
 /turf/simulated/wall/ice
 	name = "ледяная стена"
 	desc = "Стена из застывших во льду камней. Кирка против неё бесполезна, но сварочник может помочь."

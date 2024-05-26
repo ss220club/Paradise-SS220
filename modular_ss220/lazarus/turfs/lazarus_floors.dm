@@ -38,7 +38,6 @@
 	smoothing_groups = list(SMOOTH_GROUP_TURF, SMOOTH_GROUP_LAZARUS_SNOW)
 	canSmoothWith = list(SMOOTH_GROUP_LAZARUS_SNOW)
 	layer = SNOW_LAYER
-	broken_states = list("damaged")
 	footstep = FOOTSTEP_SAND
 	barefootstep = FOOTSTEP_SAND
 	clawfootstep = FOOTSTEP_SAND
