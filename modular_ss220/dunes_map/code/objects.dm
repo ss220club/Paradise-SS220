@@ -475,3 +475,77 @@
 	anchored = TRUE
 	layer = 2.9
 
+
+/obj/item/stock_parts/cell/cube
+	name = "Куб"
+	desc = "Место для описания куба"
+	maxcharge = 500000
+	chargerate = 100
+	icon = 'modular_ss220/dunes_map/icons/cube.dmi'
+	icon_state = "warn"
+
+/obj/item/stock_parts/cell/cube/process()
+	if(percent() == 100)
+		icon_state = "charged"
+	else
+		icon_state = "warn"
+
+
+/obj/item/stock_parts/cell/cube/New()
+	. = ..()
+	// charge = 0
+
+/obj/item/stock_parts/cell/cube/Destroy()
+	empulse(get_turf(loc), 4, 10, 1)
+	explosion(get_turf(loc), 0, 0, 20, 0)
+	for(var/mob/living/carbon/human/H in GLOB.alive_mob_list)
+		if(H.name == "Миднайт Блэк")
+			qdel(H)
+			return
+	return ..()
+
+
+
+/obj/machinery/bsa/full/attacked_by(obj/item/I, mob/living/user)
+	if(istype(I, /obj/item/stock_parts/cell/cube ))
+		var/obj/item/stock_parts/cell/cube/C = I
+		if(C.charge >= 500000)
+
+			if(!do_after(user, 3 SECONDS, target = src))
+				return
+			name = "Войдспейс Артиллерия"
+			desc = "Самый умный? Придумай описание!"
+			icon = 'modular_ss220/dunes_map/icons/bsa.dmi'
+			icon_state = "cannon"
+			update_icon()
+			reload_cooldown = 600
+			C.charge = 0
+			return
+	. = ..()
+
+/obj/machinery/bsa/full/fire(mob/user, turf/bullseye, target)
+	if(src.name == "Войдспейс Артиллерия")
+		var/turf/point = get_front_turf()
+		for(var/turf/T in get_line(get_step(point,dir),get_target_turf()))
+			T.ex_act(1)
+			for(var/atom/A in T)
+				A.ex_act(1)
+
+		point.Beam(get_target_turf(), icon_state = "bsa_beam", icon = 'modular_ss220/dunes_map/icons/beam.dmi', time = 50, maxdistance = world.maxx, beam_type = /obj/effect/ebeam/deadly) //ZZZAP
+		playsound(src, 'sound/machines/bsa_fire.ogg', 100, 1)
+		if(istype(target, /obj/item/gps))
+			var/obj/item/gps/G = target
+			message_admins("[key_name_admin(user)] has launched an artillery strike at GPS named [G.gpstag].")
+
+		else
+			message_admins("[key_name_admin(user)] has launched an artillery strike.")//Admin BSA firing, just targets a room, which the explosion says
+
+		log_admin("[key_name(user)] has launched an artillery strike.") // Line below handles logging the explosion to disk
+		explosion(bullseye,ex_power,ex_power*2,ex_power*4)
+
+		reload()
+		return
+	else
+		. = ..()
+
+
