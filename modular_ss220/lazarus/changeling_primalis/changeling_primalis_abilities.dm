@@ -1,3 +1,17 @@
+/*
+TODO:
+
+Скилл на общение с хостом. ГОТОВ
+Скилл на ремонт органов.
+Скилл на крик.
+Скилл на траву.
+Скилл на заражение.
+Скилл на перехват контроля.
+Скилл на вознесение.
+*/
+
+#define EVOLUTION_BONUS 150
+
 // Basic
 
 /datum/action/changeling_primalis
@@ -30,6 +44,97 @@
 
 /datum/action/changeling_primalis/toggle
 	var/is_active = FALSE
+
+// Message host
+
+/datum/action/changeling_primalis/message_host
+	name = "Сообщить носителю"
+	desc = "Мы подключаемся к мозгу носителя, и посылаем ему некоторое сообщение. Носитель будет воспринимать наши слова как странный голос в голове. Носитель не может ответить нам, пока мы не установим с ним контакт, но может использовать шёпот, чтобы скрыть разговор с нами."
+	button_icon_state = "hivemind_channel"
+	chemical_cost = 0
+
+/datum/action/changeling_primalis/message_host/activate()
+	var/msg = clean_input("Сообщение:", "Сообщение для носителя")
+	if(!msg)
+		return
+	if(user.host.client)
+		if(user.host.client.holder)
+			to_chat(user.host, "<b>Вы слышите голос в своей голове... <i>[msg]</i></b>")
+	return TRUE
+
+// Contact host
+
+/datum/action/changeling_primalis/contact_host
+	name = "Установить контакт"
+	desc = "Мы закрепляемся в сознании нашего носителя, раскрывая своё существование и устанавливая постоянный контакт. После этого носитель будет знать, что мы находимся в нём и сможет коммуницировать с нами посредством телепатии. Однако наша истинная природа будет ему неизвестна."
+	button_icon_state = "hivemind_link"
+	chemical_cost = 0
+
+/datum/action/changeling_primalis/contact_host/activate()
+	var/confirm = alert(usr, "Вы уверены, что хотите установить контакт с носителем? Он моментально узнает о нашем присутствии и сможет телепатически общаться с нами.","Установить контакт?","Да","Нет")
+	if(confirm == "Да")
+		Remove(user)
+		for(var/datum/action/changeling_primalis/message_host/mes_host in user.actions)
+			mes_host.Remove(user)
+		var/datum/action/com_host = new /datum/action/changeling_primalis/communicate_host(user)
+		var/datum/action/com_parasite = new /datum/action/communicate_parasite(user)
+		com_host.Grant(user)
+		com_parasite.Grant(user.host)
+	return TRUE
+
+
+// Communicate host
+
+/datum/action/changeling_primalis/communicate_host
+	name = "Разговаривать с носителем"
+	desc = "Мы транслируем сообщение в разум носителя. Носитель поймёт, что оно исходит от нас."
+	button_icon_state = "hivemind_channel"
+	chemical_cost = 0
+
+/datum/action/changeling_primalis/communicate_host/activate()
+	var/msg = clean_input("Сообщение:", "Сообщение для носителя")
+	if(!msg)
+		return
+	to_chat(user, "<b>[user.name]: <i>[msg]</i></b>")
+	to_chat(user.host, "<b>[user.name]: <i>[msg]</i></b>")
+
+// Communicate parasite
+
+/datum/action/communicate_parasite
+	name = "Разговаривать с гостем"
+	desc = "Проговорив фразу про себя, вы способны передать её гостю, что обитает в вашем сознании."
+	button_icon_state = "hivemind_channel"
+
+/datum/action/communicate_parasite/Trigger(left_click)
+	if(istype(src, /mob/living/carbon/human))
+		var/mob/living/carbon/human/host = src
+		if(host.changeling_primalis)
+			var/msg = clean_input("Сообщение:", "Сообщение для гостя")
+			if(!msg)
+				return
+			to_chat(host, "<b>[host.name]: <i>[msg]</i></b>")
+			to_chat(host.changeling_primalis, "<b>[host.name]: <i>[msg]</i></b>")
+
+// Speed Up Evolution
+
+/datum/action/changeling_primalis/speed_up_evolution
+	name = "Ускорить эволюцию"
+	desc = "Ускоряет процесс развития паразита за счёт химикатов. Даёт намёк на заражение носителю и окружающим людям. Используйте тогда, когда ваш носитель и окружающие его люди заняты. Стоит 100 химикатов"
+	button_icon_state = "changelingsting"
+	chemical_cost = 100
+
+/datum/action/changeling_primalis/speed_up_evolution/activate()
+	if(!take_chems())
+		return FALSE
+	to_chat(user, span_notice("Мы бросаем все наши силы на то, чтобы углубиться в тело носителя, сливаясь с его организмом в единое целое."))
+	switch(rand(0, 5))
+		if(0 to 5)
+			to_chat(user.host, span_attack("Голову пронзает невероятноя боль. Вы едва не теряете сознание от этого. Будто что-то скребёт внутри..."))
+			user.host.adjustBrainLoss(10)
+			user.host.adjustStaminaLoss(50)
+			user.host.pain("head", 90)
+	user.evolution_points += EVOLUTION_BONUS
+	return TRUE
 
 // Fleshmend
 
@@ -76,6 +181,39 @@
 	user.host.reagents.add_reagent("stimulative_cling", 1)
 	return TRUE
 
+
+// Panacea
+
+/datum/action/changeling_primalis/panacea
+	name = "Анатомическая панацея"
+	desc = "Мы вводим в тело носителя ряд биоактивных элементов, вычищая из него токсины, радиацию и мутировавшие трани, а также восстанавливая нервную систему. Стоит 50 химикатов"
+	button_icon_state = "panacea"
+	chemical_cost = 50
+
+/datum/action/changeling_primalis/panacea/activate()
+	if(!take_chems())
+		return FALSE
+	to_chat(user, "<span class='notice'>Панацея распространяется по телу, зачищая его от ядов.</span>")
+	to_chat(user.host, "<span class='notice'>По телу расплывается приятное прохладное ощущение.</span>")
+
+	var/obj/item/organ/internal/body_egg/egg = user.host.get_int_organ(/obj/item/organ/internal/body_egg)
+	if(egg)
+		egg.remove(user)
+		if(iscarbon(user))
+			var/mob/living/carbon/human/C = user.host
+			C.vomit()
+		egg.forceMove(get_turf(user))
+
+	user.host.reagents.add_reagent("mutadone", 1)
+	user.host.apply_status_effect(STATUS_EFFECT_PANACEA)
+	for(var/thing in user.host.viruses)
+		var/datum/disease/D = thing
+		if(D.severity == NONTHREAT)
+			continue
+		D.cure()
+
+	return TRUE
+
 // Heat Up
 
 /datum/action/changeling_primalis/heat_up
@@ -104,6 +242,7 @@
 	if(is_active)
 		to_chat(user, "<span class='notice'>Мы преобразуем руку-клинок обратно в нормальную конечность.</span>")
 		to_chat(user.host, "<span class='warning'>Вы вновь чувствуете невероятную боль в руке. Похоже, странная рука-лезвие вновь превратилось в вашу обычную конечность.</span>")
+		user.host.emote("scream")
 		playsound(user.host.loc, 'sound/effects/bone_break_2.ogg', 100, TRUE)
 		if(istype(user.host.l_hand, /obj/item/melee/arm_blade))
 			qdel(user.host.l_hand)
@@ -117,6 +256,7 @@
 			return FALSE
 		to_chat(user, "<span class='notice'>Используя податливые ткани носителя, мы формируем острый клинок из его руки.</span>")
 		to_chat(user.host, "<span class='warning'>Вы чувствуете невероятную боль в своей руке. Плоть пузырится и рвётся, преобразуя вашу конечность в острое лезвие.</span>")
+		user.host.emote("scream")
 		SEND_SIGNAL(user.host, COMSIG_MOB_WEAPON_APPEARS)
 		if(!user.host.drop_item())
 			to_chat(user, "[user.host.get_active_hand()] застрял в руке носителя. Мы не можем вырастить руку-лезвие на ней.")
@@ -139,8 +279,9 @@
 	if(is_active)
 		to_chat(user, "<span class='notice'>Мы разрушаем панцирь, вновь обнажая уязвимую плоть носителя миру.</span>")
 		to_chat(user.host, "<span class='warning'>Вы вновь чувствуете невероятную боль по всему телу. Панцирь начинает раскалываться и вскоре полностью спадает.</span>")
-		user.host.unEquip(user.host.head)
-		user.host.unEquip(user.host.wear_suit)
+		user.host.emote("scream")
+		qdel(user.host.head)
+		qdel(user.host.wear_suit)
 		is_active = FALSE
 	else
 		if(!take_chems())
@@ -152,8 +293,9 @@
 			to_chat(user, "\the [user.host.head] застрял на голове, мы не можем вырастить панцирь на ней!")
 			return FALSE
 
-		to_chat(user, "<span class='notice'>Используя податливые ткани носителя, мы формируете прочный панцирь из его эпидермиса.</span>")
+		to_chat(user, "<span class='notice'>Используя податливые ткани носителя, мы формируем прочный панцирь из его эпидермиса.</span>")
 		to_chat(user.host, "<span class='warning'>Вы чувствуете невероятную боль по всему телу. Плоть пузырится и рвётся, покрывая вас неким подобием хитинового панциря.</span>")
+		user.host.emote("scream")
 		user.host.unEquip(user.host.head)
 		user.host.unEquip(user.host.wear_suit)
 		user.host.equip_to_slot_if_possible(new /obj/item/clothing/suit/armor/changeling(user), SLOT_HUD_OUTER_SUIT, TRUE, TRUE)
