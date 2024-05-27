@@ -10,6 +10,7 @@
 /datum/spell/terror_stealth
 	name = "Stealth"
 	desc = "Become completely invisible for a short time."
+	action_icon = 'modular_ss220/events/icons/actions.dmi'
 	action_icon_state = "stealth"
 	action_background_icon_state = "bg_terror"
 	base_cooldown = 25 SECONDS
@@ -44,6 +45,7 @@
 	desc = "Exude feromones to heal your allies"
 	action_icon_state = "heal"
 	action_background_icon_state = "bg_terror"
+	action_icon = 'modular_ss220/events/icons/actions.dmi'
 	base_cooldown = 30 SECONDS
 	clothes_req = FALSE
 	human_req = FALSE
@@ -80,6 +82,7 @@
 	name = "Venom spit"
 	desc = "Spit an acid that creates smoke filled with drugs and venom on impact."
 	invocation_type = "none"
+	action_icon = 'modular_ss220/events/icons/actions.dmi'
 	action_icon_state = "fake_death"
 	action_background_icon_state = "bg_terror"
 	selection_activated_message	= "<span class='notice'>Your prepare your venom spit! <B>Left-click to spit at a target!</B></span>"
@@ -111,11 +114,14 @@
 	return ..()
 
 
+
+
 //SMOKE SPIT
 /datum/spell/fireball/smoke_spit
 	name = "Smoke spit"
 	desc = "Spit an acid that creates smoke on impact."
 	invocation_type = "none"
+	action_icon = 'modular_ss220/events/icons/actions.dmi'
 	action_icon_state = "smoke"
 	action_background_icon_state = "bg_terror"
 	selection_activated_message	= "<span class='notice'>Your prepare your smoke spit! <B>Left-click to spit at a target!</B></span>"
@@ -152,6 +158,7 @@
 /datum/spell/emplosion/terror_emp
 	name = "EMP shriek"
 	desc = "Emits a shriek that causes EMP pulse."
+	action_icon = 'modular_ss220/events/icons/actions.dmi'
 	action_icon_state = "emp_new"
 	action_background_icon_state = "bg_terror"
 	base_cooldown = 40 SECONDS
@@ -193,6 +200,7 @@
 /datum/spell/explosion/terror_burn
 	name = "Burn!"
 	desc = "Release your energy to create a massive fire ring."
+	action_icon = 'modular_ss220/events/icons/actions.dmi'
 	action_icon_state = "explosion"
 	action_background_icon_state = "bg_terror"
 	base_cooldown = 60 SECONDS
@@ -214,6 +222,7 @@
 /datum/spell/aoe/conjure/build/terror_shield
 	name = "Guardian shield"
 	desc = "Create a temporary organic shield to protect your hive."
+	action_icon = 'modular_ss220/events/icons/actions.dmi'
 	action_icon_state = "terror_shield"
 	action_background_icon_state = "bg_terror"
 	base_cooldown = 8 SECONDS
@@ -227,7 +236,7 @@
 /obj/effect/forcefield/terror
 	desc = "Thick protective membrane produced by Guardians of Terror."
 	name = "Guardian shield"
-	icon = 'icons/effects/effects.dmi'
+	icon = 'modular_ss220/events/icons/effects.dmi'
 	icon_state = "terror_shield"
 	lifetime = 16.5 SECONDS                       //max 2 shields existing at one time
 	light_color = LIGHT_COLOR_PURPLE
@@ -247,6 +256,7 @@
 /datum/spell/terror_smoke
 	name = "Smoke"
 	desc = "Erupt a smoke to confuse your enemies."
+	action_icon = 'modular_ss220/events/icons/actions.dmi'
 	action_icon_state = "smoke"
 	action_background_icon_state = "bg_terror"
 	base_cooldown = 8 SECONDS
@@ -271,6 +281,7 @@
 /datum/spell/terror_parasmoke
 	name = "Paralyzing Smoke"
 	desc = "Erupt a smoke to paralyze your enemies."
+	action_icon = 'modular_ss220/events/icons/actions.dmi'
 	action_icon_state = "biohazard2"
 	action_background_icon_state = "bg_terror"
 	base_cooldown = 60 SECONDS
@@ -303,6 +314,7 @@
 /datum/spell/aoe/terror_shriek
 	name = "Terrify"
 	desc = "Emit a loud shriek to terrify your enemies."
+	action_icon = 'modular_ss220/events/icons/actions.dmi'
 	action_icon_state = "terror_shriek"
 	action_background_icon_state = "bg_terror"
 	base_cooldown = 60 SECONDS
@@ -343,6 +355,7 @@
 /datum/spell/aoe/terror_shriek_princess
 	name = "Princess Shriek"
 	desc = "Emits a loud shriek that weakens your enemies."
+	action_icon = 'modular_ss220/events/icons/actions.dmi'
 	action_icon_state = "terror_shriek"
 	action_background_icon_state = "bg_terror"
 	base_cooldown = 60 SECONDS
@@ -380,6 +393,7 @@
 /datum/spell/aoe/terror_slam
 	name = "Slam"
 	desc = "Slam the ground with your body."
+	action_icon = 'modular_ss220/events/icons/actions.dmi'
 	action_icon_state = "slam"
 	action_background_icon_state = "bg_terror"
 	base_cooldown = 35 SECONDS
@@ -413,6 +427,7 @@
 /datum/spell/aoe/conjure/build/terror_jelly
 	name = "Produce jelly"
 	desc = "Produce an organic jelly that heals spiders."
+	action_icon = 'modular_ss220/events/icons/actions.dmi'
 	action_icon_state = "spiderjelly"
 	action_background_icon_state = "bg_terror"
 	base_cooldown = 30 SECONDS
@@ -440,6 +455,7 @@
 /datum/spell/aoe/terror_shriek_queen
 	name = "Queen Shriek"
 	desc = "Emit a loud shriek that weakens your enemies."
+	action_icon = 'modular_ss220/events/icons/actions.dmi'
 	action_icon_state = "terror_shriek"
 	action_background_icon_state = "bg_terror"
 	base_cooldown = 45 SECONDS

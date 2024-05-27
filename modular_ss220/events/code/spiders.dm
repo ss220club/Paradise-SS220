@@ -85,6 +85,11 @@
 // --------------------- TERROR SPIDERS: SHARED ATTACK CODE -----------------------
 // --------------------------------------------------------------------------------
 
+/mob/living/simple_animal/hostile/poison/terror_spider/New()
+	. = ..()
+	for(var/spell in special_abillity)
+		src.AddSpell(new spell)
+
 /mob/living/simple_animal/hostile/poison/terror_spider/do_attack_animation(atom/A, visual_effect_icon, obj/item/used_item, no_effect)
 	// Forces terrors to use the 'bite' graphic when attacking something. Same as code/modules/mob/living/carbon/alien/larva/larva_defense.dm#L34
 	if(!no_effect && !visual_effect_icon)
@@ -162,70 +167,11 @@
 		if(killcount >= 1)
 			. += "<span class='warning'>[p_they(TRUE)] has blood dribbling from [p_their()] mouth.</span>"
 
-/mob/living/simple_animal/hostile/poison/terror_spider/New()
-	..()
-	GLOB.ts_spiderlist += src
-	add_language("Spider Hivemind")
-	for(var/spell in special_abillity)
-		src.AddSpell(new spell)
-
-	if(spider_tier >= TS_TIER_2)
-		add_language("Galactic Common")
-	default_language = GLOB.all_languages["Spider Hivemind"]
-
-	if(web_type)
-		web_action = new()
-		web_action.Grant(src)
-	if(can_wrap)
-		wrap_action = new()
-		wrap_action.Grant(src)
-	name += " ([rand(1, 1000)])"
-	real_name = name
-	msg_terrorspiders("[src] has grown in [get_area(src)].")
-	if(is_away_level(z))
-		spider_awaymission = 1
-		GLOB.ts_count_alive_awaymission++
-		if(spider_tier >= 3)
-			ai_ventcrawls = FALSE // means that pre-spawned bosses on away maps won't ventcrawl. Necessary to keep prince/mother in one place.
-		if(istype(get_area(src), /area/awaymission/UO71)) // if we are playing the away mission with our special spiders...
-			spider_uo71 = 1
-			if(world.time < 600)
-				// these are static spiders, specifically for the UO71 away mission, make them stay in place
-				ai_ventcrawls = FALSE
-				spider_placed = 1
-	else
-		GLOB.ts_count_alive_station++
-	// after 3 seconds, assuming nobody took control of it yet, offer it to ghosts.
-	addtimer(CALLBACK(src, PROC_REF(CheckFaction)), 20)
-	addtimer(CALLBACK(src, PROC_REF(announcetoghosts)), 30)
-	var/datum/atom_hud/U = GLOB.huds[DATA_HUD_MEDICAL_ADVANCED]
-	U.add_hud_to(src)
-	spider_creation_time = world.time
-
-/mob/living/simple_animal/hostile/poison/terror_spider/announcetoghosts()
-	if(spider_awaymission)
-		return
-	. = ..()
-
-/mob/living/simple_animal/hostile/poison/terror_spider/Destroy()
-	GLOB.ts_spiderlist -= src
-	handle_dying()
-	return ..()
 
 /mob/living/simple_animal/hostile/poison/terror_spider/Life(seconds, times_fired)
 	. = ..()
-	if(stat == DEAD) // Can't use if(.) for this due to the fact it can sometimes return FALSE even when mob is alive.
-		if(prob(10))
-			// 10% chance every cycle to decompose
-			visible_message("<span class='notice'>\The dead body of the [src] decomposes!</span>")
-			gib()
-	else
-		if(health < maxHealth)
-			adjustBruteLoss(-regeneration)
-		if(degenerate)
-			adjustBruteLoss(6)
-		if(prob(5))
-			CheckFaction()
+	if(health < maxHealth)
+		adjustBruteLoss(-regeneration)
 
 /mob/living/simple_animal/hostile/poison/terror_spider/handle_dying()
 	if(!hasdied)

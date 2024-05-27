@@ -2,25 +2,6 @@
 /datum/action/innate/terrorspider
 	background_icon_state = "bg_terror"
 
-/datum/action/innate/terrorspider/web
-	name = "Web"
-	icon_icon = 'icons/effects/effects.dmi'
-	button_icon_state = "stickyweb1"
-
-/datum/action/innate/terrorspider/web/Activate()
-	var/mob/living/simple_animal/hostile/poison/terror_spider/user = owner
-	user.Web()
-
-/datum/action/innate/terrorspider/wrap
-	name = "Wrap"
-	icon_icon = 'icons/effects/effects.dmi'
-	button_icon_state = "cocoon_large1"
-
-/datum/action/innate/terrorspider/wrap/Activate()
-	var/mob/living/simple_animal/hostile/poison/terror_spider/user = owner
-	user.FindWrapTarget()
-	user.DoWrap()
-
 // ---------- GREEN ACTIONS
 
 /datum/action/innate/terrorspider/greeneggs
