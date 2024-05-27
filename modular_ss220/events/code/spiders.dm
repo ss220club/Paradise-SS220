@@ -234,5 +234,6 @@
 /obj/item/projectile/terrorspider
 	name = "basic"
 	damage = 0
+	icon = 'modular_ss220/events/icons/projectiles.dmi'
 	icon_state = "toxin"
 	damage_type = TOX

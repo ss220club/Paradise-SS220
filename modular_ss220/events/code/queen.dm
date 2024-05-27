@@ -9,12 +9,6 @@
 // -------------: SPRITES FROM: IK3I
 
 /mob/living/simple_animal/hostile/poison/terror_spider/queen
-	name = "Queen of Terror spider"
-	desc = "An enormous, terrifying spider. Its egg sac is almost as big as its body, and teeming with spider eggs!"
-	ai_target_method = TS_DAMAGE_SIMPLE
-	icon_state = "terror_queen"
-	icon_living = "terror_queen"
-	icon_dead = "terror_queen_dead"
 	maxHealth = 340
 	health = 340
 	damage_coeff = list(BRUTE = 0.7, BURN = 1.1, TOX = 1, CLONE = 0, STAMINA = 0, OXY = 0.2)
@@ -23,24 +17,16 @@
 	death_sound = 'modular_ss220/events/sound/creatures/terrorspiders/queen_death.ogg'
 	melee_damage_lower = 25
 	melee_damage_upper = 30
-	armour_penetration_flat = 20
+	armour_penetration_flat = 10
 	obj_damage = 100
 	environment_smash = ENVIRONMENT_SMASH_WALLS
-	ai_break_lights = FALSE
-	ai_spins_webs = FALSE
-	ai_ventcrawls = FALSE
 	idle_ventcrawl_chance = 0
 	move_resist = MOVE_FORCE_STRONG // no more pushing a several hundred if not thousand pound spider
 	force_threshold = 18 // outright immune to anything of force under 18, this means welders can't hurt it, only guns can
-	ranged = 1
-	retreat_distance = 5
-	minimum_distance = 5
 	projectilesound = 'modular_ss220/events/sound/creatures/terrorspiders/spit2.ogg'
 	projectiletype = /obj/item/projectile/terrorspider/queen
 	ranged_cooldown_time = 20
-	spider_tier = TS_TIER_4
-	spider_opens_doors = 2
-	web_type = /obj/structure/spider/terrorweb/queen
+	web_type = /obj/structure/spider/terrorweb/queen/improved
 	delay_web = 15
 	special_abillity = list(/datum/spell/aoe/terror_shriek_queen)
 	can_wrap = FALSE
@@ -48,22 +34,6 @@
 
 	var/datum/action/innate/terrorspider/ventsmash/ventsmash_action
 	var/datum/action/innate/terrorspider/remoteview/remoteview_action
-
-
-
-/mob/living/simple_animal/hostile/poison/terror_spider/queen/New()
-	..()
-	ventsmash_action = new()
-	ventsmash_action.Grant(src)
-	remoteview_action = new()
-	remoteview_action.Grant(src)
-	grant_queen_subtype_abilities()
-	spider_myqueen = src
-	if(spider_awaymission)
-		spider_growinstantly = TRUE
-		spider_spawnfrequency = 150
-
-
 
 /mob/living/simple_animal/hostile/poison/terror_spider/queen/grant_eggs()
 	spider_lastspawn = world.time
@@ -74,40 +44,6 @@
 	else if(canlay > 1)
 		to_chat(src, "<span class='notice'>You have [canlay] eggs available to lay.</span>")
 		SEND_SOUND(src, sound('modular_ss220/events/sound/effects/ping.ogg'))
-
-
-
-/mob/living/simple_animal/hostile/poison/terror_spider/queen/death(gibbed)
-	if(can_die() && !hasdied)
-		if(spider_uo71)
-			UnlockBlastDoors("UO71_Caves")
-		// When a queen (or subtype!) dies, so do all of her spiderlings, and half of all her fully grown offspring
-		// This feature is intended to provide a way for crew to still win even if the queen has overwhelming numbers - by sniping the queen.
-		for(var/thing in GLOB.ts_spiderlist)
-			var/mob/living/simple_animal/hostile/poison/terror_spider/T = thing
-			if(!T.spider_myqueen)
-				continue
-			if(T == src)
-				continue
-			if(T.spider_myqueen != src)
-				continue
-			if(T.spider_tier < spider_tier)
-				T.visible_message("<span class='danger'>[T] writhes in pain!</span>")
-				to_chat(T, "<span class='userdanger'>\The psychic backlash from the death of [src] overwhelms you! You feel the life start to drain out of you...</span>")
-				T.degenerate = TRUE
-		for(var/thing in GLOB.ts_spiderling_list)
-			var/obj/structure/spider/spiderling/terror_spiderling/T = thing
-			if(T.spider_myqueen && T.spider_myqueen == src)
-				qdel(T)
-	return ..()
-
-
-/mob/living/simple_animal/hostile/poison/terror_spider/queen/Retaliate()
-	..()
-	for(var/thing in GLOB.ts_spiderlist)
-		var/mob/living/simple_animal/hostile/poison/terror_spider/T = thing
-		T.enemies |= enemies
-
 
 
 
@@ -201,8 +137,21 @@
 								DoLayTerrorEggs(pick(spider_types_standard), 5)
 
 
+/mob/living/simple_animal/hostile/poison/terror_spider/queen/ListAvailableEggTypes()
+	if(MinutesAlive() >= 25)
+		var/list/spider_array = CountSpidersDetailed(TRUE, list(/mob/living/simple_animal/hostile/poison/terror_spider/mother, /mob/living/simple_animal/hostile/poison/terror_spider/defiler, /mob/living/simple_animal/hostile/poison/terror_spider/queen/princess))
+		if(spider_array["all"] == 0)
+			return list(TS_DESC_DEFILER, TS_DESC_PRINCESS, TS_DESC_MOTHER)
 
-
+	var/list/valid_types = list(TS_DESC_KNIGHT, TS_DESC_LURKER, TS_DESC_HEALER, TS_DESC_REAPER, TS_DESC_BUILDER)
+	var/list/spider_array = CountSpidersDetailed(FALSE, list(/mob/living/simple_animal/hostile/poison/terror_spider/destroyer, /mob/living/simple_animal/hostile/poison/terror_spider/guardian, /mob/living/simple_animal/hostile/poison/terror_spider/widow))
+	if(spider_array[/mob/living/simple_animal/hostile/poison/terror_spider/destroyer] < 3)
+		valid_types += TS_DESC_DESTROYER
+	if(spider_array[/mob/living/simple_animal/hostile/poison/terror_spider/guardian] < 3)
+		valid_types += TS_DESC_GUARDIAN
+	if(spider_array[/mob/living/simple_animal/hostile/poison/terror_spider/widow] < 4)
+		valid_types += TS_DESC_WIDOW
+	return valid_types
 
 /mob/living/simple_animal/hostile/poison/terror_spider/queen/LayQueenEggs()
 	if(stat == DEAD)
@@ -296,20 +245,5 @@
 	stamina = 40
 	damage_type = BURN
 
-/obj/structure/spider/terrorweb/queen
-	name = "airtight web"
-	desc = "This multi-layered web seems to be able to resist air pressure."
+/obj/structure/spider/terrorweb/queen/improved
 	max_integrity = 30
-
-
-/obj/structure/spider/terrorweb/queen/Initialize(mapload)
-	. = ..()
-	air_update_turf(TRUE)
-
-/obj/structure/spider/terrorweb/queen/CanAtmosPass(turf/T, vertical)
-	return FALSE
-
-/obj/structure/spider/terrorweb/queen/Destroy()
-	var/turf/T = get_turf(src)
-	. = ..()
-	T.air_update_turf(TRUE)

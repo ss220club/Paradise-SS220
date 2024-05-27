@@ -26,7 +26,7 @@
 	web_type = /obj/structure/spider/terrorweb/white
 	delay_web = 10
 	special_abillity = list(/datum/spell/terror_smoke,
-							/datum/spell/terror_parasmoke,
+							/datum/spell/aoe/conjure/build/terror_parasmoke,
 							/datum/spell/aoe/terror_shriek)
 	spider_intro_text = "Будучи Осквернителем Ужаса, ваша цель - атаковать ничего не подозревающих гуманоидов, чтобы заразить их яйцами. Вы наносите мало урона, но можете парализовать цель за три укуса, а ваш яд заставит её замолчать. Вы также можете генерировать различные дымы вредящие противникам. И помните, не нужно убивать заражённых, они послужат носителями для новых пауков!"
 

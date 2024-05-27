@@ -92,6 +92,8 @@
 	base_cooldown = 25 SECONDS
 	fireball_type = /obj/item/projectile/terrorspider/widow/venom
 
+/datum/spell/fireball/venom_spit/update_spell_icon()
+	return
 
 /obj/item/projectile/terrorspider/widow/venom
 	name = "venom acid"
@@ -132,7 +134,7 @@
 	fireball_type = /obj/item/projectile/terrorspider/widow/smoke
 
 
-/obj/effect/proc_holder/spell/fireball/smoke_spit/update_icon_state()
+/datum/spell/fireball/smoke_spit/update_spell_icon()
 	return
 
 
@@ -187,14 +189,13 @@
 	var/ex_flash = 0
 	var/ex_flame = 0
 
-/datum/spell/explosion/spell/explosion/create_new_targeting()
+/datum/spell/explosion/create_new_targeting()
 	return new /datum/spell_targeting/self
 
 
-/datum/spell/explosion/spell/explosion/cast(list/targets, mob/user = usr)
+/datum/spell/explosion/cast(list/targets, mob/user = usr)
 	for(var/mob/living/target in targets)
 		explosion(target.loc, ex_severe, ex_heavy, ex_light, ex_flash, flame_range = ex_flame)
-
 
 
 /datum/spell/explosion/terror_burn
@@ -208,7 +209,6 @@
 	human_req = FALSE
 	sound = 'modular_ss220/events/sound/creatures/terrorspiders/brown_shriek.ogg'
 	ex_flame = 5
-
 
 /datum/spell/explosion/terror_burn/can_cast(mob/user = usr, charge_check = TRUE, show_message = FALSE)
 	if(!isturf(user.loc))
@@ -278,7 +278,7 @@
 
 
 //PARALYSING SMOKE
-/datum/spell/terror_parasmoke
+/datum/spell/aoe/conjure/build/terror_parasmoke
 	name = "Paralyzing Smoke"
 	desc = "Erupt a smoke to paralyze your enemies."
 	action_icon = 'modular_ss220/events/icons/actions.dmi'
@@ -288,27 +288,29 @@
 	clothes_req = FALSE
 	human_req = FALSE
 	sound = 'modular_ss220/events/sound/creatures/terrorspiders/attack2.ogg'
+	summon_type = list(/obj/effect/spawner/terror_parasmoke)
+
+// /datum/spell/aoe/conjure/build/terror_parasmoke/create_new_targeting()
+// 	return new /datum/spell_targeting/self
 
 
-/datum/spell/terror_parasmoke/create_new_targeting()
-	return new /datum/spell_targeting/self
-
-
-/datum/spell/terror_parasmoke/can_cast(mob/user = usr, charge_check = TRUE, show_message = FALSE)
+/datum/spell/aoe/conjure/build/terror_parasmoke/can_cast(mob/user = usr, charge_check = TRUE, show_message = FALSE)
 	if(!isturf(user.loc))
 		return FALSE
 	return ..()
 
+/obj/effect/spawner/terror_parasmoke
+	name = "paralytic smoke"
 
-/datum/spell/terror_parasmoke/cast(list/targets, mob/user = usr)
+/obj/effect/spawner/terror_parasmoke/New()
+	. = ..()
 	var/datum/effect_system/smoke_spread/chem/smoke = new
-	var/datum/reagents/reagents
-	//create_reagents(2000)
+	create_reagents(2000)
 	reagents.add_reagent("neurotoxin", 1000)
 	reagents.add_reagent("capulettium_plus", 1000)
-	smoke.set_up(reagents, user, TRUE)
+	smoke.set_up(reagents, src.loc, TRUE)
 	smoke.start()
-
+	qdel(src)
 
 //TERRIFYING SHRIEK
 /datum/spell/aoe/terror_shriek

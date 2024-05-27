@@ -56,8 +56,8 @@
 	. = ..()
 	if(stat != DEAD) // Can't use if(.) for this due to the fact it can sometimes return FALSE even when mob is alive.
 		if(ckey)
-			if (current_mode)
-				if (world.time > (last_mode + mode_duration))
+			if(current_mode)
+				if(world.time > (last_mode + mode_duration))
 					activate_mode(0)
 			if(world.time > (last_attack_mode + mode_cooldown))
 				attack_mode_av = 1
@@ -69,7 +69,7 @@
 //Both attack and defence mod lasts for 10 seconds and has a cd of 30. When you are out of non default modes your mode is set to default.
 /mob/living/simple_animal/hostile/poison/terror_spider/knight/proc/activate_mode(n)
 	var/t = world.time
-	if	(n==0)
+	if(n==0)
 		playsound(src, 'modular_ss220/events/sound/creatures/terrorspiders/keratosis_out.ogg', 150)
 		to_chat(src, "<span class='notice'>Your body relaxes!</span>")
 		speed = 0.8
@@ -79,7 +79,7 @@
 		regeneration = 2
 		current_mode = 0
 		return 1
-	if	(n==1)
+	if(n==1)
 		if(attack_mode_av)
 			last_attack_mode = t
 			last_mode = t
@@ -95,7 +95,7 @@
 			return 1
 		to_chat(src, "<span class='notice'>You cant do this yet!</span>")
 		return 0
-	if	(n==2)
+	if(n==2)
 		if(defence_mode_av)
 			last_defence_mode = t
 			last_mode = t
