@@ -78634,6 +78634,21 @@
 	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/fsmaint)
+"pJb" = (
+/obj/machinery/door/poddoor/shutters{
+	dir = 2;
+	id_tag = "stationawaygate";
+	name = "Gateway Access Shutters"
+	},
+/obj/machinery/door_control/shutter/west{
+	id = "stationawaygate";
+	name = "Gateway Shutters Control";
+	req_one_access_txt = "62"
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/station/supply/expedition/gate)
 "pJh" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -80665,11 +80680,6 @@
 	},
 /area/station/maintenance/asmaint)
 "qvo" = (
-/obj/machinery/door_control/shutter/east{
-	id = "stationawaygate";
-	name = "Gateway Shutters Control";
-	req_one_access_txt = "62"
-	},
 /obj/structure/closet/secure_closet/expedition,
 /turf/simulated/floor/plasteel{
 	dir = 9;
@@ -126568,7 +126578,7 @@ vtO
 bam
 cGT
 rBx
-iIt
+pJb
 bgP
 pBf
 bkq
