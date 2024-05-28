@@ -23,7 +23,7 @@
 	speed = -0.1
 	delay_web = 20
 	deathmessage = "Emits a  piercing screech and slowly falls on the ground."
-	death_sound = 'modular_ss220/events/sound/creatures/terrorspiders/princess_death.ogg'
+	death_sound = 'sound/creatures/terrorspiders/princess_death.ogg'
 	spider_tier = TS_TIER_3
 	move_resist = MOVE_FORCE_STRONG // no more pushing a several hundred if not thousand pound spider
 	spider_intro_text = "Будучи Принцессой Ужаса, ваша задача - откладывать яйца и охранять их. Хоть вы и умеете плеваться кислотой, а также обладаете визгом, помогающим в бою, вам не стоит сражаться намеренно, ведь для этого есть другие пауки."

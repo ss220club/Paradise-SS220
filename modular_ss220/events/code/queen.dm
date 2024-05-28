@@ -224,20 +224,6 @@
 	playsound(src.loc, 'modular_ss220/events/sound/creatures/terrorspiders/queen_shriek.ogg', 100, 1)
 	. = ..()
 
-
-
-
-
-/mob/living/simple_animal/hostile/poison/terror_spider/queen/examine(mob/user)
-	. = ..()
-	if(!key || stat == DEAD)
-		return
-	if(!isobserver(user) && !isterrorspider(user))
-		return
-	. += "<span class='notice'>[p_they(TRUE)] has laid [eggslaid] egg[eggslaid != 1 ? "s" : ""].</span>"
-	. += "<span class='notice'>[p_they(TRUE)] has lived for [MinutesAlive()] minutes.</span>"
-
-
 /obj/item/projectile/terrorspider/queen
 	name = "queen venom"
 	icon_state = "toxin3"
