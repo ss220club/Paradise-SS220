@@ -98,7 +98,7 @@
 	icon_state = "bar"
 
 /area/station/supply/expedition/gate
-	name ="Гейт"
+	name = "Гейт"
 
 /* CentCom */
 /area/centcom/ss220
