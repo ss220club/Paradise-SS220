@@ -503,6 +503,16 @@
 	set category = "Эмоции"
 	emote("hem", intentional = TRUE)
 
+/mob/living/carbon/human/proc/emote_bark()
+	set name = "▷ " + EMOTE_HUMAN_BARK + " "
+	set category = "Эмоции"
+	emote("bark", intentional = TRUE)
+
+/mob/living/carbon/human/proc/emote_wbark()
+	set name = "▷ " + EMOTE_HUMAN_WBARK + " "
+	set category = "Эмоции"
+	emote("wbark", intentional = TRUE)
+
 /// Слишком переполненное меню, убираю то что легче написать чем искать. ///
 /*
 /mob/living/carbon/human/verb/emote_deathgasp()

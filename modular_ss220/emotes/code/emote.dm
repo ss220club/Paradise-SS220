@@ -392,3 +392,31 @@
 	return pick(
 		'modular_ss220/emotes/audio/skrell/anger_1.ogg',
 		'modular_ss220/emotes/audio/skrell/anger_2.ogg')
+
+/datum/emote/living/carbon/human/bark
+	key = "bark"
+	key_third_person = "bark"
+	message = "гавкает."
+	message_param = "гавкает на %t."
+	emote_type = EMOTE_AUDIBLE
+	age_based = TRUE
+	species_type_whitelist_typecache = list(/datum/species/vulpkanin)
+
+/datum/emote/living/carbon/human/bark/get_sound(mob/living/user)
+	return pick(
+			'modular_ss220/emotes/audio/bark1.ogg',
+			'modular_ss220/emotes/audio/bark2.ogg')
+
+/datum/emote/living/carbon/human/wbark
+	key = "wbark"
+	key_third_person = "wbark"
+	message = "дважды гавкает."
+	message_param = "дважды гавкает на %t."
+	emote_type = EMOTE_AUDIBLE
+	age_based = TRUE
+	species_type_whitelist_typecache = list(/datum/species/vulpkanin)
+
+/datum/emote/living/carbon/human/wbark/get_sound(mob/living/user)
+	return pick(
+			'modular_ss220/emotes/audio/wbark1.ogg',
+			'modular_ss220/emotes/audio/wbark2.ogg')
