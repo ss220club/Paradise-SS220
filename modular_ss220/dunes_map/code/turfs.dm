@@ -267,4 +267,50 @@
 	color = "#e0ac7b"
 	baseturf = /turf/simulated/floor/indestructible/dune_sand/cave/cavedeep/dug/cold/dark
 
+//boss
+/turf/simulated/floor/bossroom
+	name = "floor"
+	icon = 'modular_ss220/dunes_map/icons/cave_floor.dmi'
+	icon_state = "boss0"
+	temperature = DUNE_TEMPERATURE
+	planetary_atmos = TRUE
+	footstep = FOOTSTEP_MEAT
+	barefootstep = FOOTSTEP_MEAT
+	clawfootstep = FOOTSTEP_MEAT
+	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
+	smoothing_groups = list(SMOOTH_GROUP_FLOOR)
+	var/environment_type = "boss"
+	var/floor_variance = 15
+
+/turf/simulated/floor/bossroom/cold
+	temperature = T20C
+	planetary_atmos = FALSE
+
+/turf/simulated/floor/bossroom/Initialize(mapload)
+	var/proper_name = name
+	. = ..()
+	name = proper_name
+	if(prob(floor_variance))
+		icon_state = "[environment_type][rand(1,15)]"
+
+/turf/simulated/floor/bossroom/try_replace_tile(obj/item/stack/tile/T, mob/user, params)
+	return
+
+/turf/simulated/floor/bossroom/burn_tile()
+	return
+
+/turf/simulated/floor/bossroom/MakeSlippery(wet_setting)
+	return
+
+/turf/simulated/floor/bossroom/MakeDry(wet_setting)
+	return
+
+/turf/simulated/floor/bossroom/remove_plating()
+	return
+
+/turf/simulated/floor/bossroom/crowbar_act(mob/user, obj/item/I)
+	return
+
+
+
 #undef DUNE_TEMPERATURE
