@@ -97,6 +97,9 @@
 	name = "Атриум"
 	icon_state = "bar"
 
+/area/station/supply/expedition/gate
+	name = "Гейт"
+
 /* CentCom */
 /area/centcom/ss220
 	name = "ЦК"
