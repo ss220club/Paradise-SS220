@@ -26,6 +26,10 @@
 	name = "Отдел Исследований"
 	icon_state = "sci"
 
+/area/station/science/lobby
+	name = "Research Division Lobby"
+	icon_state = "sci"
+
 /area/station/science/break_room
 	name = "Комната Отдыха РНД"
 	icon_state = "scibreak"
