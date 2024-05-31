@@ -199,7 +199,7 @@ GLOBAL_LIST_EMPTY(ert_request_messages)
 	head_organ.h_style = random_hair_style(M.gender, head_organ.dna.species.name)
 	head_organ.f_style = random_facial_hair_style(M.gender, head_organ.dna.species.name)
 
-	M.rename_character(null, "[pick("Corporal", "Sergeant", "Staff Sergeant", "Sergeant First Class", "Master Sergeant", "Sergeant Major")] [pick(GLOB.last_names)]")
+	M.rename_character(null, "[pick("Капрал", "Сержант", "Старший Сержант", "Сержант 1-го Класса", "Мастер-Сержант", "Сержант-Майор")] [pick(GLOB.last_names)]")
 	M.age = rand(23,35)
 	M.regenerate_icons()
 	M.update_body()
