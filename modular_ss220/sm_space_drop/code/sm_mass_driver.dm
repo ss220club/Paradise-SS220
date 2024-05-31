@@ -1,5 +1,5 @@
 /obj/machinery/mass_driver/sm_mass_driver
-	name = "Supermatter mass driver"
+	name = "supermatter mass driver"
 	desc = "Запускает кристалл Суперматерии бороздить просторы космоса."
 	resistance_flags = LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 

@@ -3,7 +3,7 @@
 //////////////////////////////////////
 /// Supermatter Drop button
 /obj/machinery/driver_button/sm_drop_button
-	name = "Supermatter launch trigger"
+	name = "supermatter launch trigger"
 	desc = "Кнопка экстренного сброс кристалла Суперматерии.\n<font color='red'>ВНИМАНИЕ:</font> Неправомерное использование может привести к тюремному заключению."
 	icon = 'modular_ss220/sm_space_drop/icons/sm_buttons.dmi'
 	icon_state = "button"
@@ -67,7 +67,7 @@
 			user.custom_emote(EMOTE_VISIBLE, "дружески похлопывает по [name].")
 			to_chat(user, span_warning("Если вы пытаетесь разбить стекло, вам придется ударить по нему сильнее..."))
 	else
-		// Must be !glass and !launched and crystal is in emergency state (around 25%)
+		// Must be !glass and !launched and crystal is in emergency state (around 10%)
 		for(crystal in SSair.atmos_machinery)
 			if(crystal?.get_integrity() < SUPERMATTER_EMERGENCY)
 				user.custom_emote(EMOTE_VISIBLE, "нажимает кнопку сброса [name]!")
@@ -84,7 +84,7 @@
 
 	if(SSticker && SSticker.current_state == GAME_STATE_PLAYING)
 		var/area/area = get_area(src)
-		if(area)
+		if(area && !launched)
 			message_admins("Supermatter Crystal has been launched to space by [key_name_admin(user)] [ADMIN_JMP(src)].")
 			investigate_log("has been launched to space at ([area.name]) by [key_name(user)].", "supermatter")
 
