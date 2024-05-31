@@ -12544,6 +12544,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/plasteel{
 	icon_state = "bar"
 	},
@@ -45347,8 +45348,8 @@
 /area/station/maintenance/fsmaint)
 "dxe" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/random_spawners/syndicate/loot/level2,
 /obj/effect/landmark/damageturf,
+/obj/effect/spawner/lootdrop/maintenance/three,
 /turf/simulated/floor/engine,
 /area/station/maintenance/fsmaint)
 "dxq" = (
@@ -53917,8 +53918,8 @@
 /obj/structure/mirror{
 	pixel_y = -34
 	},
-/obj/structure/sink/kitchen/south,
 /obj/effect/landmark/start/assistant,
+/obj/structure/sink/directional/south,
 /turf/simulated/floor/plasteel{
 	icon_state = "hydrofloor"
 	},
@@ -64763,10 +64764,10 @@
 	},
 /area/station/maintenance/fsmaint)
 "kua" = (
-/obj/structure/sink/kitchen/south,
 /obj/structure/mirror{
 	pixel_y = -34
 	},
+/obj/structure/sink/directional/south,
 /turf/simulated/floor/plasteel{
 	icon_state = "hydrofloor"
 	},
@@ -66667,8 +66668,10 @@
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/aft)
 "lcH" = (
-/obj/structure/grille,
-/turf/simulated/wall,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dust,
+/obj/effect/spawner/lootdrop/trash,
+/turf/simulated/floor/plating,
 /area/station/maintenance/fsmaint)
 "lcL" = (
 /obj/effect/spawner/random_barrier/wall_probably,
@@ -67914,7 +67917,9 @@
 "lCp" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/small/directional/west,
-/obj/effect/spawner/lootdrop/trash,
+/obj/structure/chair/stool{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "purple"
@@ -68269,6 +68274,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/mineral/tranquillite,
 /area/station/service/mime)
 "lHM" = (
@@ -74376,8 +74382,8 @@
 	},
 /area/station/supply/miningdock)
 "nNq" = (
-/obj/machinery/door/airlock/multi_tile,
 /obj/effect/mapping_helpers/airlock/autoname,
+/obj/machinery/door/airlock/multi_tile/glass,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "whitegreen"
@@ -97134,6 +97140,10 @@
 	},
 /obj/structure/curtain/open/shower{
 	anchored = 1
+	},
+/obj/structure/window/reinforced/tinted{
+	pixel_y = -1;
+	dir = 4
 	},
 /turf/simulated/floor/plasteel/freezer,
 /area/station/public/toilet)
@@ -145761,7 +145771,7 @@ xAf
 wpY
 jtl
 xdS
-aOF
+lcH
 xKp
 aTZ
 aGY
@@ -150644,7 +150654,7 @@ ton
 mDv
 wAP
 aOC
-lcH
+bmH
 ehK
 baz
 baz
