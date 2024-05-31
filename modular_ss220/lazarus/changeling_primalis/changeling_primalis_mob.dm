@@ -134,7 +134,6 @@
 /mob/living/simple_animal/changeling_primalis/proc/grant_basic_skills()
 	var/list/primalis_abilities = list()
 
-	primalis_abilities += new /datum/action/changeling_primalis/message_host(src)
 	primalis_abilities += new /datum/action/changeling_primalis/contact_host(src)
 	primalis_abilities += new /datum/action/changeling_primalis/speed_up_evolution(src)
 
