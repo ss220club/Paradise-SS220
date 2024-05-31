@@ -73,7 +73,7 @@
 				user.custom_emote(EMOTE_VISIBLE, "нажимает кнопку сброса [name]!")
 				playsound(loc, "modular_ss220/sm_space_drop/sound/button[rand(1, 5)].ogg", 100, TRUE)
 				visible_message(span_notice("Кнопка громко щелкает."))
-				GLOB.major_announcement.Announce("ВНИМАНИЕ, ПРОИЗВОДИТСЯ ЭКСТРЕННЫЙ СБРОС КРИСТАЛЛА!", "КРИСТАЛЛ СУПЕРМАТЕРИИ: ЭКСТРЕННЫЙ СБРОС.", 'sound/effects/engine_alert2.ogg')
+				GLOB.major_announcement.Announce("ВНИМАНИЕ, ПРОИЗВОДИТСЯ ЭКСТРЕННЫЙ СБРОС КРИСТАЛЛА!", "РЕАКТОР СУПЕРМАТЕРИИ: ЭКСТРЕННЫЙ СБРОС.", 'sound/effects/engine_alert2.ogg')
 				launch_sequence()
 				update_icon_state()
 				break
