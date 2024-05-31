@@ -181,7 +181,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_FLASH_PROTECTION	"flash_protection"
 #define TRAIT_NIGHT_VISION		"night_vision"
 #define TRAIT_EMOTE_MUTE		"emote_mute"
-#define TRAIT_PUNCTURE_IMMUNE	"punctureimmune" //prevents RSG syringes from piercing your clothing
+#define TRAIT_RSG_IMMUNE		"rsgimmune" //prevents RSG syringes from piercing your clothing
 
 #define TRAIT_NO_BONES 			"no_bones"
 #define TRAIT_STURDY_LIMBS		"sturdy_limbs"
@@ -233,6 +233,11 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_TABLE_LEAP "table_leap" // Lets bartender and chef mount tables faster
 #define TRAIT_NEVER_MISSES_DISPOSALS "trait_never_misses_disposals" // For janitors landing disposal throws
 #define TRAIT_SLEIGHT_OF_HAND "sleight_of_hand"
+#define TRAIT_KNOWS_COOKING_RECIPES "knows_cooking_recipes"
+
+/// used for dead mobs that are observing, but should not be afforded all the same platitudes as full ghosts.
+/// This is a mind trait because ghosts can be frequently deleted and we want to be sure this sticks.
+#define TRAIT_MENTOR_OBSERVING "mentor_observe"
 
 //***** ITEM AND MOB TRAITS *****//
 /// Show what machine/door wires do when held.
@@ -320,6 +325,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define HOLO_CIGAR "holo_cigar"
 #define GLADIATOR "gladiator"
 #define PULSEDEMON_TRAIT "pulse_demon"
+/// Mentor observing
+#define MENTOR_OBSERVING "mobserving"
 
 //quirk traits
 #define TRAIT_ALCOHOL_TOLERANCE	"alcohol_tolerance"
