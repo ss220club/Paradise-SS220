@@ -3,7 +3,7 @@
 /turf/simulated/wall/ice
 	name = "ледяная стена"
 	desc = "Стена из застывших во льду камней. Кирка против неё бесполезна, но сварочник может помочь."
-	icon = 'icons/turf/walls/ice_wall.dmi'
+	icon = 'modular_ss220/lazarus/icons/ice_wall.dmi'
 	icon_state = "ice_wall-0"
 	base_icon_state = "ice_wall"
 	sheet_type = null
@@ -15,7 +15,7 @@
 /turf/simulated/wall/indestructible/ice
 	name = "ледяная стена"
 	desc = "Стена из застывших во льду камней. Эта выглядит очень крепко."
-	icon = 'icons/turf/walls/ice_wall.dmi'
+	icon = 'modular_ss220/lazarus/icons/ice_wall.dmi'
 	icon_state = "ice_wall-0"
 	base_icon_state = "ice_wall"
 	sheet_type = null

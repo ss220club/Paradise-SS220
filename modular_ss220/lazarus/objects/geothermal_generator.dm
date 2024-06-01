@@ -9,7 +9,7 @@
 /obj/machinery/power/geothermal_generator
 	name = "Геотермальный генератор"
 	desc = "Стационарный электрогенератор, пассивно вырабатывающий небольшой объём электроэнергии благодаря подземным источникам тепла. Время от времени нуждается в ремонте."
-	icon = 'icons/obj/power.dmi'
+	icon = 'modular_ss220/lazarus/icons/geothermal.dmi'
 	icon_state = "geoterm_broken"
 	density = TRUE
 	anchored = TRUE

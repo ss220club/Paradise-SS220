@@ -228,7 +228,7 @@ TODO:
 	to_chat(user.host, "<span class='warning'>Вы чувствуете невероятную боль. Кожа пузырится и на месте отсутствующих культей формируются новый, здоровые конечности. Вас тошнит.</span>")
 	user.host.emote("scream")
 
-	check_and_regenerate_organs(src)
+	user.host.check_and_regenerate_organs(src)
 
 	return TRUE
 
@@ -237,6 +237,7 @@ TODO:
 /datum/action/changeling_primalis/heat_up
 	name = "Органическая грелка"
 	desc = "Повышает температуру тела носителя на 1500 единиц, помогая тому согреться или дольше продержаться на улице. Стоит 20 химикатов"
+	button_icon = 'modular_ss220/lazarus/icons/lazarus_actions.dmi'
 	button_icon_state = "heat_up"
 	chemical_cost = 20
 

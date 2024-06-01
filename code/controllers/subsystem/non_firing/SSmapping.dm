@@ -130,8 +130,6 @@ SUBSYSTEM_DEF(mapping)
 	ghostteleportlocs = sortAssoc(ghostteleportlocs)
 
 	// Now we make a list of areas that exist on the station. Good for if you don't want to select areas that exist for one station but not others. Directly references
-	// Also not required for event, cus we don't have a station
-	/*
 	existing_station_areas = list()
 	for(var/area/AR as anything in all_areas)
 		var/list/pickable_turfs = list()
@@ -140,7 +138,6 @@ SUBSYSTEM_DEF(mapping)
 		var/turf/picked = safepick(pickable_turfs)
 		if(picked && is_station_level(picked.z))
 			existing_station_areas += AR
-	*/
 
 	// World name
 	if(GLOB.configuration.general.server_name)

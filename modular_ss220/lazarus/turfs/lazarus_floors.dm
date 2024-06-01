@@ -6,7 +6,7 @@
 	baseturf = /turf/simulated/floor/plating/asteroid/lazarus
 	icon_state = "dirt_0"
 	icon_plating = "dirt_0"
-	icon = 'icons/turf/floors/lazarus_natural_floors.dmi'
+	icon = 'modular_ss220/lazarus/icons/lazarus_natural_floors.dmi'
 	digResult = /obj/item/stack/ore/glass
 	turf_type = /turf/simulated/floor/plating/asteroid/lazarus
 	//planetary_atmos = TRUE // It's not work properly
@@ -31,7 +31,7 @@
 /turf/simulated/floor/plating/asteroid/lazarus/snow
 	name = "снег"
 	desc = "Большой сугроб. Замедляет вас и понижает температуру при передвижении. Используйте лопату для расчистки снега."
-	icon = 'icons/turf/floors/lazarus_snow.dmi'
+	icon = 'modular_ss220/lazarus/icons/lazarus_snow.dmi'
 	icon_state = "snow"
 	base_icon_state = "snow"
 	smoothing_flags = SMOOTH_BITMASK
