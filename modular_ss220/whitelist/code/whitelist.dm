@@ -27,7 +27,7 @@
 	if(GLOB.configuration.overflow.reroute_cap != 0.5 || !ckey || (ckey in GLOB.configuration.overflow.overflow_whitelist))
 		return ..()
 
-	var/list/denied_entry = list("reason"="no-whitelist", "desc"="\nПричина: Вас ([key]) нет в вайтлисте этого сервера. Приобрести доступ возможно у одного из стримеров Банды за баллы канала или записаться самостоятельно с помощью команды в дискорде, доступной сабам бусти, начиная со второго тира.")
+	var/list/denied_entry = list("reason"="no-whitelist", "desc"="\nПричина: Приносим извинения за временные неудобства, сервер выделен под стримерский ивент.")
 	var/datum/db_query/whitelist_query = SSdbcore.NewQuery({"
 	SELECT ckey FROM ckey_whitelist WHERE ckey=:ckey AND
 	is_valid=1 AND port=:port AND date_start<=NOW() AND
