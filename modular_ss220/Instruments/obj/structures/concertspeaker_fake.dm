@@ -27,7 +27,7 @@
 		icon_state = "[initial(icon_state)]_anchored"
 
 /obj/structure/concertspeaker_fake/wrench_act(mob/living/user, obj/item/I)
-	if((resistance_flags & INDESTRUCTIBLE))
+	if(resistance_flags & INDESTRUCTIBLE)
 		return
 
 	if(!anchored && !isinspace())
