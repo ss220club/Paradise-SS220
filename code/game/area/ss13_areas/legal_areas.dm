@@ -4,7 +4,7 @@
 	icon_state = "courtroom"
 
 /area/station/legal/courtroom/gallery
-	name = "\improper Courtroom Gallery"
+	name = "Галерея Зала Суда"
 	icon_state = "courtroom"
 
 /area/station/legal/lawoffice
