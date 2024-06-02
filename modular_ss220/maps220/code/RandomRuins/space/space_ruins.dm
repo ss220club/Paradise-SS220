@@ -84,3 +84,12 @@
 	suffix = "spacehotel.dmm"
 	cost = 10
 	allow_duplicates = FALSE
+
+/datum/map_template/ruin/space/ABOTCH_new
+	name = "Nanotreisen ABOTCH Research Station"
+	id = "ABOTCH_new"
+	description = "ABOTCH_THETA_CHARLIE"
+	prefix = "_maps/map_files220/RandomRuins/SpaceRuins/"
+	suffix = "ABOTCH_new.dmm"
+	cost = 0
+	allow_duplicates = FALSE
