@@ -131,6 +131,25 @@
 	name = "капюшон Вай"
 	icon_state = "vi_arcane"
 
+/obj/item/clothing/suit/storage/soundhand_white_jacket
+	name = "серебристая куртка группы Саундхенд."
+	desc = "Редкая серебристая куртка Саундхенд. Ограниченная серия."
+	icon = 'modular_ss220/clothing/icons/object/suits.dmi'
+	icon_state = "soundhand_white_jacket"
+	icon_override = 'modular_ss220/clothing/icons/mob/suits.dmi'
+	lefthand_file = 'modular_ss220/clothing/icons/inhands/left_hand.dmi'
+	righthand_file = 'modular_ss220/clothing/icons/inhands/right_hand.dmi'
+
+/obj/item/clothing/suit/storage/soundhand_white_jacket/soundhand_white_jacket_tag
+	name = "Куртка Арии."
+	desc = "Редкая серебристая куртка Арии Вильвен, основательницы Саундхенд."
+	icon = 'modular_ss220/clothing/icons/object/suits.dmi'
+	icon_state = "soundhand_white_jacket_teg"
+	icon_override = 'modular_ss220/clothing/icons/mob/suits.dmi'
+	item_state = "soundhand_white_jacket"
+	lefthand_file = 'modular_ss220/clothing/icons/inhands/left_hand.dmi'
+	righthand_file = 'modular_ss220/clothing/icons/inhands/right_hand.dmi'
+
 /obj/item/clothing/suit/storage/soundhand_black_jacket
 	name = "фанатская черная куртка группы Саундхэнд."
 	desc = "Фанатская черная куртка группы Саундхэнд."

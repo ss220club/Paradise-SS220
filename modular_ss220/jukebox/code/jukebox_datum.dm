@@ -404,10 +404,10 @@
 /datum/jukebox/single_mob/start_music(mob/solo_listener)
 	register_listener(solo_listener)
 
-/datum/jukebox/drum
+/datum/jukebox/concertspeaker
 	songs_path = "config/drum_music/"
 
-/datum/jukebox/drum/load_songs_from_config()
+/datum/jukebox/concertspeaker/load_songs_from_config()
 	var/static/list/config_songs
 	if(isnull(config_songs))
 		config_songs = fill_songs_static_list()
