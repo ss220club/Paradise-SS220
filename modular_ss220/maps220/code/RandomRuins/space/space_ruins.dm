@@ -85,11 +85,11 @@
 	cost = 10
 	allow_duplicates = FALSE
 
-/datum/map_template/ruin/space/ABOTCH_new
+/datum/map_template/ruin/space/ABOTCH_RSN
 	name = "Nanotreisen ABOTCH Research Station"
-	id = "ABOTCH_new"
+	id = "ABOTCH_RSN.dmm"
 	description = "ABOTCH_THETA_CHARLIE"
 	prefix = "_maps/map_files220/RandomRuins/SpaceRuins/"
-	suffix = "ABOTCH_new.dmm"
+	suffix = "ABOTCH_RSN.dmm"
 	cost = 0
 	allow_duplicates = FALSE
