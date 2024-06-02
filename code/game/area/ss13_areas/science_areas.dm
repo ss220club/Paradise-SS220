@@ -27,7 +27,7 @@
 	icon_state = "sci"
 
 /area/station/science/lobby
-	name = "Research Division Lobby"
+	name = "Фойе Отдела Исследований"
 	icon_state = "sci"
 
 /area/station/science/break_room
