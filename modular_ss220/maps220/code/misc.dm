@@ -29,7 +29,6 @@
 		. += span_notice("[name] издаётся манящим кроваво-красным светом.")
 
 /obj/machinery/wish_granter_dark/update_icon_state()
-	. = ..()
 	if(!charges)
 		icon_state = initial(icon_state) + "_dormant"
 	if(insisting)
