@@ -20144,12 +20144,6 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/station/public/locker)
-"bAb" = (
-/obj/structure/chair/comfy/black{
-	dir = 8
-	},
-/turf/simulated/floor/wood/oak,
-/area/station/command/office/ntrep)
 "bAc" = (
 /obj/machinery/door/airlock/command/cap,
 /obj/effect/mapping_helpers/airlock/autoname,
@@ -28058,17 +28052,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos/storage)
-"ciH" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
-	dir = 4
-	},
-/turf/simulated/floor/wood/oak,
-/area/station/command/office/ntrep)
 "ciI" = (
 /obj/machinery/conveyor/southwest{
 	id = "garbage"
@@ -29660,7 +29643,10 @@
 "coT" = (
 /obj/structure/window/reinforced,
 /obj/structure/table/wood,
-/obj/machinery/computer/secure_data/laptop,
+/obj/machinery/computer/secure_data/laptop{
+	dir = 1;
+	pixel_y = 3
+	},
 /turf/simulated/floor/carpet/royalblack,
 /area/station/command/office/ntrep)
 "coU" = (
@@ -43887,10 +43873,13 @@
 /turf/simulated/floor/plating,
 /area/station/engineering/tech_storage)
 "dpq" = (
+/obj/machinery/newscaster/security_unit/south,
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 8
+	},
 /obj/structure/chair/sofa/corner{
 	dir = 8
 	},
-/obj/machinery/newscaster/security_unit/south,
 /turf/simulated/floor/wood/oak,
 /area/station/command/office/ntrep)
 "dpu" = (
@@ -45602,6 +45591,9 @@
 "dGj" = (
 /obj/machinery/firealarm/directional/south,
 /obj/machinery/papershredder,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
 /turf/simulated/floor/wood/oak,
 /area/station/command/office/ntrep)
 "dGn" = (
@@ -50616,13 +50608,8 @@
 	},
 /area/station/medical/virology)
 "fzT" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
+/obj/structure/chair/comfy/black{
+	dir = 8
 	},
 /turf/simulated/floor/wood/oak,
 /area/station/command/office/ntrep)
@@ -51364,6 +51351,9 @@
 /area/station/service/hydroponics)
 "fNC" = (
 /obj/structure/reagent_dispensers/water_cooler,
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 4
+	},
 /turf/simulated/floor/wood/oak,
 /area/station/command/office/ntrep)
 "fNH" = (
@@ -63326,10 +63316,8 @@
 /area/station/maintenance/asmaint)
 "kjf" = (
 /obj/machinery/alarm/directional/south,
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/structure/chair/sofa{
-	dir = 1
-	},
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/wood/oak,
@@ -78391,9 +78379,6 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 4
-	},
 /obj/item/clothing/mask/cigarette/cigar/havana{
 	pixel_y = 4
 	},
@@ -78402,6 +78387,7 @@
 	pixel_y = 9
 	},
 /obj/structure/table/wood,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/wood/oak,
 /area/station/command/office/ntrep)
 "pzX" = (
@@ -96998,11 +96984,14 @@
 	},
 /area/station/science/hallway)
 "woD" = (
+/obj/machinery/light/directional/south,
+/obj/item/radio/intercom/directional/south,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
 /obj/structure/chair/sofa/left{
 	dir = 1
 	},
-/obj/machinery/light/directional/south,
-/obj/item/radio/intercom/directional/south,
 /turf/simulated/floor/wood/oak,
 /area/station/command/office/ntrep)
 "woK" = (
@@ -129429,7 +129418,7 @@ fjN
 fOa
 sBi
 ckI
-ciH
+cMN
 fNC
 cgW
 sIO
@@ -129684,9 +129673,9 @@ cdN
 cgW
 ioe
 xhT
-bAb
-ckv
 fzT
+ckv
+cMN
 dGj
 cgW
 cyD
@@ -129943,7 +129932,7 @@ ckv
 xhT
 ckv
 ckv
-fzT
+cMN
 woD
 cgW
 cvI
