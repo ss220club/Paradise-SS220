@@ -361,4 +361,4 @@ RESTRICT_TYPE(/datum/antagonist/vampire)
 
 
 /datum/antagonist/vampire/custom_blurb()
-	return "On the date [GLOB.current_date_string], at [station_time_timestamp()],\n in the [station_name()], [get_area_name(owner.current, TRUE)]...\nThe hunt begins again..."
+	return "Этим днём, [GLOB.current_date_string], в [station_time_timestamp()],\n на [station_name()], [get_area_name(owner.current, TRUE)]...\nОхота начинается снова..."
