@@ -473,8 +473,27 @@
 	density = FALSE
 	max_integrity = 5
 	anchored = TRUE
-	layer = 2.9
+	layer = ABOVE_ALL_MOB_LAYER
 
+/obj/structure/telecrystal_deposit
+	name = "отложение телекристаллов"
+	desc = "Естественные наросты телекристаллов."
+	icon = 'icons/effects/vampire_effects.dmi'
+	icon_state = "blood_barrier"
+	anchored = TRUE
+	layer = ABOVE_ALL_MOB_LAYER
+	density = TRUE
+	max_integrity = 20
+	light_power = 1.4
+	light_range = 3
+	light_color = COLOR_MAROON
+
+
+/obj/structure/telecrystal_deposit/Destroy()
+	playsound(src, 'sound/effects/pylon_shatter.ogg', 30, 0)
+	var/turf/T = get_turf(src)
+	new /obj/item/stack/telecrystal/five(T)
+	..()
 
 /obj/item/stock_parts/cell/cube
 	name = "Куб"

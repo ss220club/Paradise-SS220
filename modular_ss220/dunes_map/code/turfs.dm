@@ -164,6 +164,10 @@
 	name = "dune rock"
 	color = "#D9742B"
 
+/turf/simulated/wall/indestructible/rock/mineral/dune_rock/deep_rock
+	name = "dune deep rock"
+	color = "#603516"
+
 /turf/simulated/floor/chasm/straight_down/lava_land_surface/dune
 	icon = 'modular_ss220/dunes_map/icons/chasm.dmi'
 	oxygen = 21.8366
@@ -240,12 +244,18 @@
 /turf/simulated/floor/indestructible/dune_sand/cave/cavedeep/dark
 	color = "#e0ac7b"
 
+/turf/simulated/floor/indestructible/dune_sand/cave/cavedeep/dark/dark_basalt
+	color = "#4d4742"
+
 /turf/simulated/floor/indestructible/dune_sand/cave/cavedeep/dug
 	name = "cave floor dug"
 	icon_state = "caverockdeep_dug"
 
 /turf/simulated/floor/indestructible/dune_sand/cave/cavedeep/dug/dark
 	color = "#e0ac7b"
+
+/turf/simulated/floor/indestructible/dune_sand/cave/cavedeep/dug/dark/dark_basalt
+	color = "#4d4742"
 
 /turf/simulated/floor/indestructible/dune_sand/cave/cavedeep/cold_rock
 	color = "#E6E6E6"
@@ -311,6 +321,18 @@
 /turf/simulated/floor/bossroom/crowbar_act(mob/user, obj/item/I)
 	return
 
+/turf/simulated/floor/plating/asteroid/basalt/dune
+	temperature = DUNE_TEMPERATURE
+	planetary_atmos = TRUE
 
+/turf/simulated/floor/lava/dune_basalt
+	temperature = DUNE_TEMPERATURE
+	planetary_atmos = TRUE
+
+/turf/simulated/floor/chasm/straight_down/lava_land_surface/dune_basalt
+	temperature = DUNE_TEMPERATURE
+	planetary_atmos = TRUE
+	oxygen = 21.8366
+	nitrogen = 82.1472
 
 #undef DUNE_TEMPERATURE

@@ -242,3 +242,62 @@
 	minimum_distance = 8
 	projectiletype = /obj/item/projectile/beam/pulse
 	projectilesound = 'sound/weapons/emitter2.ogg'
+
+// ГРАЖДАНСКИЙ ГРАЖДАНСКИЙ
+
+/mob/living/simple_animal/tanya_cc
+	name = "Таня фон Нормандия"
+	desc = "Боевой юнит-андроид проекта ''Delta 8-1-7'', идеально подходящий для выполнения любых поставленных задач. Судя по глазам, этот экземпляр находится на боевом дежурстве и действует автономно."
+	icon =  'modular_ss220/dunes_map/icons/tanya_cc.dmi'
+	icon_state = "tanya_cc"
+	icon_living = "tanya_cc"
+	icon_dead = "tanya_cc"
+	faction = "neutral"
+	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
+	sentience_type = SENTIENCE_OTHER
+	turns_per_move = 3
+	speed = -0.5
+	maxHealth = 150
+	health = 150
+	harm_intent_damage = 15
+	melee_damage_lower = 20
+	melee_damage_upper = 25
+	a_intent = INTENT_HARM
+	status_flags = CANPUSH
+	del_on_death = TRUE
+	loot = list(/obj/effect/gibspawner/robot)
+	see_in_dark = 8
+	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
+	footstep_type = FOOTSTEP_MOB_SHOE
+	wander = FALSE
+
+/mob/living/simple_animal/tanya_cc/Initialize(mapload)
+	. = ..()
+	add_language("Sol Common")
+	default_language = GLOB.all_languages["Sol Common"]
+
+/mob/living/simple_animal/tanya_death
+	name = "Таня фон Нормандия"
+	desc = "Боевой юнит-андроид проекта ''Delta 8-1-7'', облаченный в тяжелую штурмовую броню. Судя по глазам, этот экземпляр находится на боевом дежурстве и действует автономно."
+	icon =  'modular_ss220/dunes_map/icons/tanya_cc.dmi'
+	icon_state = "tanya_cc_death"
+	icon_living = "tanya_cc_death"
+	icon_dead = "tanya_cc_death"
+	faction = "neutral"
+	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
+	sentience_type = SENTIENCE_OTHER
+	turns_per_move = 3
+	speed = -0.5
+	harm_intent_damage = 15
+	melee_damage_lower = 20
+	melee_damage_upper = 25
+	a_intent = INTENT_HARM
+	status_flags = CANPUSH
+	del_on_death = TRUE
+	loot = list(/obj/effect/gibspawner/robot)
+	see_in_dark = 8
+	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
+	footstep_type = FOOTSTEP_MOB_SHOE
+	wander = FALSE
+	maxHealth = 300
+	health = 300

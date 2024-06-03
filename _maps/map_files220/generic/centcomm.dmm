@@ -990,11 +990,12 @@
 /turf/simulated/floor/wood/parquet/tile,
 /area/centcom/ss220/admin2)
 "aIi" = (
-/mob/living/simple_animal/hostile/retaliate/tanya_cc,
+/obj/machinery/door/poddoor/impassable,
+/obj/effect/turf_decal/delivery,
 /turf/simulated/floor/plasteel/dark{
-	icon_state = "navyblue"
+	icon_state = "darkbluealt"
 	},
-/area/centcom/ss220/admin3)
+/area/centcom/ss220/admin1)
 "aIZ" = (
 /obj/machinery/computer/library,
 /obj/structure/table/wood,
@@ -1014,7 +1015,7 @@
 /turf/simulated/floor/carpet/black,
 /area/ghost_bar)
 "aKo" = (
-/mob/living/simple_animal/hostile/retaliate/tanya_cc,
+/mob/living/simple_animal/tanya_cc,
 /turf/simulated/floor/plasteel/dark{
 	dir = 1;
 	icon_state = "darkbluealt"
@@ -2140,7 +2141,7 @@
 "bFe" = (
 /obj/structure{
 	icon = 'icons/obj/turrets.dmi';
-	icon_state = "target_prism"
+	icon_state = "destroyed_target_prism"
 	},
 /obj/structure/lattice/catwalk/mining,
 /turf/space,
@@ -2571,7 +2572,7 @@
 /obj/effect/turf_decal/box/white{
 	color = "#6697cc"
 	},
-/mob/living/simple_animal/hostile/retaliate/tanya_cc,
+/mob/living/simple_animal/tanya_cc,
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/park)
 "bUd" = (
@@ -3400,7 +3401,7 @@
 	dir = 8;
 	light_color = "red"
 	},
-/mob/living/simple_animal/hostile/retaliate/tanya_cc,
+/mob/living/simple_animal/tanya_cc,
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/bar)
 "cxm" = (
@@ -3628,6 +3629,9 @@
 /obj/machinery/door/airlock/command/glass{
 	name = "Escape Shuttle Cockpit";
 	req_access_txt = "19"
+	},
+/obj/machinery/door/poddoor{
+	layer = 3.2
 	},
 /turf/simulated/floor/plasteel,
 /area/shuttle/escape)
@@ -3994,7 +3998,7 @@
 /obj/effect/turf_decal/box/white{
 	color = "#6697cc"
 	},
-/mob/living/simple_animal/hostile/retaliate/tanya_death,
+/mob/living/simple_animal/tanya_death,
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/bar)
 "cRs" = (
@@ -7969,7 +7973,7 @@
 	dir = 4;
 	light_color = "red"
 	},
-/mob/living/simple_animal/hostile/retaliate/tanya_cc,
+/mob/living/simple_animal/tanya_cc,
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/bar)
 "fyC" = (
@@ -8435,7 +8439,7 @@
 /obj/effect/turf_decal/box/white{
 	color = "#6697cc"
 	},
-/mob/living/simple_animal/hostile/retaliate/tanya_cc,
+/mob/living/simple_animal/tanya_cc,
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/bar)
 "fQN" = (
@@ -8837,7 +8841,8 @@
 	},
 /obj/machinery/door_control/no_emag{
 	id = "CC_tanya";
-	pixel_y = 10
+	pixel_y = 10;
+	pixel_x = -6
 	},
 /obj/machinery/door_control/no_emag{
 	id = "cc_boom2";
@@ -8848,6 +8853,11 @@
 	id = "cc_boom1";
 	pixel_y = -2;
 	pixel_x = -6
+	},
+/obj/machinery/door_control/no_emag{
+	id = "CC_place";
+	pixel_y = 10;
+	pixel_x = 8
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/admin1)
@@ -9838,7 +9848,7 @@
 /area/syndicate_mothership/jail)
 "gOa" = (
 /obj/structure/tribune/centcom{
-	pixel_y = 10
+	anchored = 1
 	},
 /obj/effect/turf_decal/siding/black/corner,
 /turf/simulated/floor/plasteel/dark{
@@ -11689,13 +11699,6 @@
 /obj/effect/decal/nanotrasen_logo/n1,
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/admin2)
-"idD" = (
-/mob/living/simple_animal/hostile/retaliate/tanya_death,
-/turf/simulated/floor/plasteel/dark{
-	dir = 1;
-	icon_state = "darkblue"
-	},
-/area/centcom/ss220/bar)
 "idU" = (
 /obj/structure/railing/cap/normal,
 /turf/simulated/floor/indestructible/grass/no_creep,
@@ -12419,6 +12422,15 @@
 /obj/machinery/light/directional/west,
 /turf/simulated/floor/plasteel,
 /area/shuttle/escape)
+"iGt" = (
+/obj/machinery/door/poddoor/multi_tile/impassable{
+	id_tag = "CC_place"
+	},
+/turf/simulated/floor/plasteel/dark{
+	dir = 8;
+	icon_state = "darkblue"
+	},
+/area/centcom/ss220/bar)
 "iGx" = (
 /obj/structure/table/wood{
 	color = "#996633"
@@ -12544,10 +12556,10 @@
 	},
 /area/syndicate_mothership/cargo)
 "iKO" = (
-/mob/living/simple_animal/hostile/retaliate/tanya_cc,
 /obj/effect/turf_decal/box/white{
 	color = "#6697cc"
 	},
+/mob/living/simple_animal/tanya_cc,
 /turf/simulated/floor/plasteel/dark{
 	icon_state = "dark_large"
 	},
@@ -12900,13 +12912,6 @@
 /obj/structure/table,
 /turf/simulated/floor/plasteel/freezer,
 /area/ninja/holding)
-"jaN" = (
-/mob/living/simple_animal/hostile/retaliate/tanya_cc,
-/turf/simulated/floor/plasteel/dark{
-	dir = 4;
-	icon_state = "darkred"
-	},
-/area/centcom/ss220/admin3)
 "jaR" = (
 /obj/item/robot_parts/robot_component{
 	desc = "Некая блюспейс сущность, обещала когда нибудь его доделать...";
@@ -13828,7 +13833,6 @@
 	},
 /area/centcom/ss220/jail)
 "jKF" = (
-/mob/living/simple_animal/hostile/retaliate/tanya_cc,
 /turf/simulated/floor/plasteel/dark{
 	icon_state = "navybluefull"
 	},
@@ -14432,11 +14436,11 @@
 /obj/effect/turf_decal/box/white{
 	color = "#6697cc"
 	},
-/mob/living/simple_animal/hostile/retaliate/tanya_cc,
 /obj/structure/light_fake/spot{
 	dir = 2;
 	light_color = "red"
 	},
+/mob/living/simple_animal/tanya_cc,
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/evac)
 "kmg" = (
@@ -15668,7 +15672,7 @@
 /obj/effect/turf_decal/box/white{
 	color = "#6697cc"
 	},
-/mob/living/simple_animal/hostile/retaliate/tanya_cc,
+/mob/living/simple_animal/tanya_cc,
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/park)
 "lnr" = (
@@ -16746,7 +16750,7 @@
 /obj/effect/turf_decal/box/white{
 	color = "#6697cc"
 	},
-/mob/living/simple_animal/hostile/retaliate/tanya_death,
+/mob/living/simple_animal/tanya_death,
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/park)
 "lOY" = (
@@ -17738,14 +17742,9 @@
 /turf/simulated/floor/carpet/black,
 /area/syndicate_mothership/elite_squad)
 "mBi" = (
-/obj/structure/railing{
-	dir = 8
-	},
-/mob/living/simple_animal/hostile/retaliate/tanya_death,
-/turf/simulated/floor/plasteel/dark{
-	icon_state = "dark_large"
-	},
-/area/ruin/powered)
+/mob/living/simple_animal/tanya_cc,
+/turf/simulated/floor/plasteel/dark,
+/area/centcom/ss220/admin1)
 "mBu" = (
 /obj/structure/marker_beacon/dock_marker,
 /obj/structure/lattice/catwalk,
@@ -18574,11 +18573,10 @@
 /turf/simulated/floor/indestructible/grass,
 /area/syndicate_mothership/outside)
 "nnY" = (
-/mob/living/simple_animal/hostile/retaliate/tanya_cc,
-/turf/simulated/floor/plasteel/dark{
-	icon_state = "dark_large"
-	},
-/area/centcom/ss220/evac)
+/obj/machinery/door/poddoor/impassable,
+/obj/effect/turf_decal/delivery,
+/turf/simulated/floor/plasteel/dark,
+/area/centcom/ss220/admin1)
 "noC" = (
 /obj/machinery/door/airlock/public/glass{
 	name = "Библиотека"
@@ -19025,6 +19023,8 @@
 	pixel_y = 33;
 	dir = 8
 	},
+/obj/machinery/door/poddoor/preopen,
+/obj/effect/turf_decal/delivery,
 /turf/simulated/floor/plasteel/dark{
 	dir = 1;
 	icon_state = "darkbluealt"
@@ -19821,13 +19821,6 @@
 	icon_state = "whiteblue"
 	},
 /area/centcom/ss220/general)
-"onE" = (
-/mob/living/simple_animal/hostile/retaliate/tanya_cc,
-/turf/simulated/floor/plasteel/dark{
-	dir = 1;
-	icon_state = "navyblue"
-	},
-/area/centcom/ss220/admin3)
 "onI" = (
 /obj/structure/girder/reinforced,
 /obj/effect/landmark/damageturf,
@@ -20039,10 +20032,8 @@
 /turf/simulated/floor/mineral/plastitanium,
 /area/syndicate_mothership/infteam)
 "owz" = (
-/mob/living/simple_animal/hostile/retaliate/tanya_cc,
-/turf/simulated/floor/plasteel/dark{
-	icon_state = "dark_large"
-	},
+/mob/living/simple_animal/tanya_cc,
+/turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/bar)
 "oxa" = (
 /obj/item/flag/syndi,
@@ -21150,7 +21141,7 @@
 /obj/structure/sign/securearea{
 	pixel_y = 32
 	},
-/mob/living/simple_animal/hostile/retaliate/tanya_cc,
+/mob/living/simple_animal/tanya_cc,
 /turf/simulated/floor/plasteel/dark{
 	dir = 1;
 	icon_state = "darkbluealt"
@@ -24424,7 +24415,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/mob/living/simple_animal/hostile/retaliate/tanya_cc,
+/mob/living/simple_animal/tanya_cc,
 /turf/simulated/floor/plasteel/dark{
 	icon_state = "dark_large"
 	},
@@ -24547,6 +24538,7 @@
 /obj/structure/railing{
 	dir = 9
 	},
+/mob/living/simple_animal/tanya_death,
 /turf/simulated/floor/plasteel/dark{
 	icon_state = "dark_large"
 	},
@@ -24573,7 +24565,6 @@
 /area/centcom/ss220/supply)
 "rSS" = (
 /obj/structure/light_fake/spot,
-/mob/living/simple_animal/hostile/retaliate/tanya_death,
 /turf/simulated/floor/plasteel/dark{
 	icon_state = "darkblue"
 	},
@@ -24913,7 +24904,7 @@
 /obj/effect/turf_decal/box/white{
 	color = "#6697cc"
 	},
-/mob/living/simple_animal/hostile/retaliate/tanya_death,
+/mob/living/simple_animal/tanya_death,
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/evac)
 "sbY" = (
@@ -25153,7 +25144,6 @@
 	pixel_x = 16;
 	color = "#6b8cc4"
 	},
-/mob/living/simple_animal/hostile/retaliate/tanya_cc,
 /turf/simulated/floor/plasteel/dark{
 	dir = 8;
 	icon_state = "navybluecorners"
@@ -25469,16 +25459,6 @@
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/ghost_bar)
-"sCq" = (
-/obj/structure/light_fake/spot{
-	dir = 1
-	},
-/mob/living/simple_animal/hostile/retaliate/tanya_death,
-/turf/simulated/floor/plasteel/dark{
-	dir = 1;
-	icon_state = "darkblue"
-	},
-/area/centcom/ss220/bar)
 "sCx" = (
 /obj/machinery/conveyor/north{
 	id = "SFBQMLoad2"
@@ -26440,6 +26420,20 @@
 	},
 /turf/simulated/floor/wood/oak,
 /area/syndicate_mothership)
+"tlx" = (
+/obj/machinery/door/airlock/command/glass{
+	name = "Escape Shuttle Cockpit";
+	req_access_txt = "19"
+	},
+/obj/machinery/door/poddoor{
+	layer = 3.2;
+	id_tag = "cc_shuttle1"
+	},
+/obj/machinery/door_control/no_emag/east{
+	id = "cc_shuttle1"
+	},
+/turf/simulated/floor/plasteel,
+/area/shuttle/escape)
 "tlK" = (
 /obj/item/flag/nt,
 /turf/simulated/floor/plasteel/dark{
@@ -27602,7 +27596,7 @@
 /turf/simulated/floor/carpet/arcade,
 /area/trader_station/sol)
 "tYW" = (
-/obj/machinery/door/poddoor/multi_tile/three_tile_hor,
+/obj/machinery/door/poddoor/multi_tile/impassable/three_tile_hor,
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/park)
 "tZc" = (
@@ -27922,6 +27916,15 @@
 	icon_state = "blackfull"
 	},
 /area/syndicate_mothership/jail)
+"ulU" = (
+/obj/machinery/door/poddoor/multi_tile/impassable{
+	id_tag = "CC_place"
+	},
+/turf/simulated/floor/plasteel/dark{
+	dir = 4;
+	icon_state = "darkblue"
+	},
+/area/centcom/ss220/bar)
 "umn" = (
 /turf/simulated/floor/plasteel/dark{
 	dir = 10;
@@ -28467,7 +28470,7 @@
 /obj/effect/turf_decal/box/white{
 	color = "#6697cc"
 	},
-/mob/living/simple_animal/hostile/retaliate/tanya_cc,
+/mob/living/simple_animal/tanya_cc,
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/evac)
 "uKg" = (
@@ -32237,12 +32240,6 @@
 /obj/item/flag/species/nian,
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/evac)
-"xqX" = (
-/mob/living/simple_animal/hostile/retaliate/tanya_death,
-/turf/simulated/floor/plasteel/dark{
-	icon_state = "darkblue"
-	},
-/area/centcom/ss220/bar)
 "xrf" = (
 /obj/structure/dresser,
 /obj/structure/light_fake/small,
@@ -50608,8 +50605,8 @@ wjg
 wjg
 wjg
 nEh
-tTm
-nmP
+nnY
+aIi
 wjg
 wjg
 wjg
@@ -52169,7 +52166,7 @@ uef
 lJY
 kpt
 tUK
-onE
+juv
 kpt
 bgl
 wJb
@@ -52426,7 +52423,7 @@ uef
 lJY
 kpt
 tUK
-onE
+juv
 kpt
 bgl
 eoe
@@ -53195,7 +53192,7 @@ nsJ
 nPO
 fgJ
 juv
-aIi
+kpt
 wOB
 nPO
 rus
@@ -53380,7 +53377,7 @@ eoV
 jrk
 lGw
 jrk
-sZD
+iGt
 gWI
 uow
 uow
@@ -53414,7 +53411,7 @@ vrI
 lLE
 laA
 eAJ
-owz
+eAJ
 osb
 bxy
 cMS
@@ -53452,7 +53449,7 @@ eHi
 nPO
 qWl
 juv
-aIi
+kpt
 pwe
 nPO
 nPO
@@ -53637,7 +53634,7 @@ eoV
 jrk
 lGw
 jrk
-lPV
+ulU
 dnm
 dnm
 dnm
@@ -53671,7 +53668,7 @@ cpg
 osb
 laA
 eAJ
-owz
+eAJ
 osb
 hJk
 jwn
@@ -54183,7 +54180,7 @@ wwO
 wwO
 cpg
 jzm
-xYo
+owz
 xYo
 osb
 osb
@@ -54218,8 +54215,8 @@ aff
 frj
 nPO
 dzJ
-jaN
-jaN
+dzJ
+dzJ
 cGC
 yjZ
 hrd
@@ -54441,7 +54438,7 @@ wwO
 cpg
 jwq
 quM
-tTm
+mBi
 wjg
 tAn
 oEZ
@@ -56722,9 +56719,9 @@ jrk
 lGw
 jrk
 eSs
-nnY
 lGw
-nnY
+lGw
+lGw
 eSs
 jrk
 lGw
@@ -56741,7 +56738,7 @@ bnh
 bnh
 bnh
 kfZ
-sCq
+vUI
 xYo
 rSS
 kfZ
@@ -57227,7 +57224,7 @@ wwO
 wwO
 fiL
 rRb
-mBi
+tAC
 wap
 rOe
 tAC
@@ -57500,8 +57497,8 @@ seb
 wCe
 seb
 wCe
-seb
-rkn
+eSs
+sKW
 adJ
 adJ
 adJ
@@ -58015,7 +58012,7 @@ jrk
 seb
 jrk
 seb
-sKW
+bFe
 adJ
 adJ
 adJ
@@ -58026,9 +58023,9 @@ cqV
 cqV
 tMP
 kfZ
-idD
+qsg
 xYo
-xqX
+uUA
 kfZ
 oQx
 cqV
@@ -59307,7 +59304,7 @@ snC
 snC
 pTW
 pTW
-adJ
+xvF
 adJ
 adJ
 adJ
@@ -59565,7 +59562,7 @@ snC
 snC
 pTW
 pTW
-xvF
+adJ
 adJ
 adJ
 adJ
@@ -61597,7 +61594,7 @@ oOM
 lJk
 itB
 itB
-cFJ
+tlx
 fqT
 hWD
 hWD
@@ -61854,7 +61851,7 @@ sKd
 lJk
 itB
 itB
-cuN
+flV
 dKw
 eGe
 xeY
