@@ -22,7 +22,7 @@
 	dietflags = DIET_OMNI
 	show_ssd = 0
 	eyes = "blank_eyes"
-	death_message = "lets out a faint chimper as it collapses and stops moving..."
+	death_message = "издаёт слабый визг, падает и перестаёт двигаться..."
 
 	scream_verb = "screeches"
 	male_scream_sound = 'sound/goonstation/voice/monkey_scream.ogg'
