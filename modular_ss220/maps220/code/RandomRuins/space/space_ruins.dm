@@ -93,3 +93,4 @@
 	suffix = "ABOTCH_RSN.dmm"
 	cost = 0
 	allow_duplicates = FALSE
+	always_place = TRUE
