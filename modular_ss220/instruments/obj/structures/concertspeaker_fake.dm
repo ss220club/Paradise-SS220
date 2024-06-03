@@ -1,7 +1,9 @@
 /obj/structure/concertspeaker_fake
-	name = "\improper концертная колонка"
-	icon_state = "concertspeaker"
-	icon = 'modular_ss220/instruments/icons/Samurai_Gitara.dmi'
+	name = "\proper концертная колонка"
+	desc = "Концертная колонка для синронизации с концертной установкой."
+	icon = 'modular_ss220/jukebox/icons/jukebox.dmi'
+	icon_state = "concertspeaker_unanchored"
+	base_icon_state = "concertspeaker"
 	atom_say_verb = "states"
 	anchored = FALSE
 	var/active = FALSE
@@ -15,23 +17,22 @@
 	var/frequency = 1400
 	var/receiving = TRUE
 
-/obj/structure/concertspeaker_fake/update_icon_state()
-	if(stat & BROKEN)
-		icon_state = "[initial(icon_state)]_broken"
-		return
-	icon_state = "[initial(icon_state)]"
+/obj/structure/concertspeaker_fake/examine()
+	. = ..()
+	. += "<span class='notice'>Используйте гаечный ключ, чтобы разобрать для транспортировки и собрать для игры.</span>"
 
-	if(active)
-		icon_state = "[initial(icon_state)]-active"
-	else if(anchored)
-		icon_state = "[initial(icon_state)]_anchored"
+/obj/structure/concertspeaker_fake/update_icon_state()
+	if(stat & (BROKEN))
+		icon_state = "[base_icon_state]_broken"
+	else
+		icon_state = "[base_icon_state][active ? "_active" : null]"
 
 /obj/structure/concertspeaker_fake/wrench_act(mob/living/user, obj/item/I)
 	if(resistance_flags & INDESTRUCTIBLE)
 		return
 
 	if(!anchored && !isinspace())
-		to_chat(user, span_notice("You secure [src] to the floor."))
+		to_chat(user, span_notice("You secure [name] to the floor."))
 		anchored = TRUE
 		density = TRUE
 		layer = 5
@@ -43,12 +44,11 @@
 		layer = 2.5
 		update_icon()
 
+	icon_state = "[base_icon_state][anchored ? null : "_unanchored"]"
 	playsound(src, 'sound/items/deconstruct.ogg', 50, 1)
 
 	return TRUE
 
-/obj/structure/concertspeaker_fake/attack_hand(mob/user)
-	return TRUE
 
 /obj/structure/concertspeaker_fake/Initialize()
 	. = ..()

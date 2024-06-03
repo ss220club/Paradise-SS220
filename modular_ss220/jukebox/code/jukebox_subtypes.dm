@@ -41,8 +41,8 @@
 		dance(dancer)
 
 /obj/machinery/jukebox/concertspeaker
-	name = "\improper концертная установка"
-	desc = "Концертная колонка, которая используется для воспроизведения концертной записи"
+	name = "\proper концертная установка"
+	desc = "Концертная колонка, которая используется для воспроизведения концертной записи."
 	icon = 'modular_ss220/jukebox/icons/jukebox.dmi'
 	icon_state = "concertspeaker_unanchored"
 	base_icon_state = "concertspeaker"
@@ -52,6 +52,10 @@
 	var/code = 0
 	var/frequency = 1400
 
+/obj/machinery/jukebox/concertspeaker/examine()
+	. = ..()
+	. += "<span class='notice'>Используйте гаечный ключ, чтобы разобрать для транспортировки и собрать для игры.</span>"
+
 /obj/machinery/jukebox/concertspeaker/wrench_act()
 	. = ..()
 	icon_state = "[base_icon_state][anchored ? null : "_unanchored"]"
@@ -60,7 +64,7 @@
 	if(stat & (BROKEN))
 		icon_state = "[base_icon_state]_broken"
 	else
-		icon_state = "[base_icon_state][music_player.active_song_sound ? "-active" : null]"
+		icon_state = "[base_icon_state][music_player.active_song_sound ? "_active" : null]"
 
 /obj/machinery/jukebox/concertspeaker/Initialize()
 	. = ..()

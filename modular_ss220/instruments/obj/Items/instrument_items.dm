@@ -1,5 +1,5 @@
 /obj/item/instrument/soundhand_metal_guitar
-	name = "Гитара Арии"
+	name = "гитара Арии"
 	desc = "Тяжелая гитара со встроенными эффектами дисторшена и овердрайва. Эта гитара украшена пламенем в районе корпуса и подписью Арии Вильвен."
 	icon_state = "elguitar_fire"
 	item_state = "elguitar_fire"
@@ -16,7 +16,7 @@
 	AddComponent(/datum/component/two_handed, require_twohands = TRUE)
 
 /obj/item/instrument/soundhand_bass_guitar
-	name = "Басс-гитара"
+	name = "бас-гитара"
 	desc = "Тяжелая гитара с сокращенным количеством широких струн для извлечения низкочастотных звуков."
 	icon_state = "bluegitara"
 	item_state = "bluegitara"
@@ -33,7 +33,7 @@
 	AddComponent(/datum/component/two_handed, require_twohands = TRUE)
 
 /obj/item/instrument/soundhand_rock_guitar
-	name = "Рок-гитара"
+	name = "рок-гитара"
 	desc = "Тяжелая гитара со встроенными эффектами дисторшена и овердрайва"
 	icon_state = "elguitar"
 	item_state = "elguitar"
@@ -51,13 +51,13 @@
 
 /datum/supply_packs/misc/soundhand
 	name = "Soundhand Concert Crate"
-	contains = list(/obj/item/clothing/suit/storage/soundhand_black_jacket/soundhand_black_jacket_tag,
-					/obj/item/clothing/suit/storage/soundhand_black_jacket/soundhand_black_jacket_tag,
-					/obj/item/clothing/suit/storage/soundhand_olive_jacket/soundhand_olive_jacket_tag,
-					/obj/item/clothing/suit/storage/soundhand_olive_jacket/soundhand_olive_jacket_tag,
-					/obj/item/clothing/suit/storage/soundhand_brown_jacket/soundhand_brown_jacket_tag,
-					/obj/item/clothing/suit/storage/soundhand_brown_jacket/soundhand_brown_jacket_tag,
-					/obj/item/clothing/suit/storage/soundhand_white_jacket/soundhand_white_jacket_tag,
+	contains = list(/obj/item/clothing/suit/storage/soundhand_black_jacket/tag,
+					/obj/item/clothing/suit/storage/soundhand_black_jacket/tag,
+					/obj/item/clothing/suit/storage/soundhand_olive_jacket/tag,
+					/obj/item/clothing/suit/storage/soundhand_olive_jacket/tag,
+					/obj/item/clothing/suit/storage/soundhand_brown_jacket/tag,
+					/obj/item/clothing/suit/storage/soundhand_brown_jacket/tag,
+					/obj/item/clothing/suit/storage/soundhand_white_jacket/tag,
 					/obj/item/instrument/soundhand_metal_guitar,
 					/obj/item/instrument/soundhand_bass_guitar,
 					/obj/item/instrument/soundhand_rock_guitar,

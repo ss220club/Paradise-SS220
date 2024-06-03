@@ -137,22 +137,22 @@
 
 /datum/gear/donor/soundhand_black_jacket
 	display_name = "Черная куртка с тэгом группы Саундхэнд"
-	path = /obj/item/clothing/suit/storage/soundhand_black_jacket/soundhand_black_jacket_tag
+	path = /obj/item/clothing/suit/storage/soundhand_black_jacket/tag
 	cost = 2
 
 /datum/gear/donor/soundhand_olive_jacket
 	display_name = "Оливковая куртка с тэгом группы Саундхэнд"
-	path = /obj/item/clothing/suit/storage/soundhand_olive_jacket/soundhand_olive_jacket_tag
+	path = /obj/item/clothing/suit/storage/soundhand_olive_jacket/tag
 	cost = 2
 
 /datum/gear/donor/soundhand_brown_jacket
 	display_name = "Коричневая куртка с тэгом группы Саундхэнд"
-	path = /obj/item/clothing/suit/storage/soundhand_brown_jacket/soundhand_brown_jacket_tag
+	path = /obj/item/clothing/suit/storage/soundhand_brown_jacket/tag
 	cost = 2
 
 /datum/gear/donor/soundhand_white_jacket
 	display_name = "Серебристая куртка Арии"
-	path = /obj/item/clothing/suit/storage/soundhand_white_jacket/soundhand_white_jacket_tag
+	path = /obj/item/clothing/suit/storage/soundhand_white_jacket/tag
 	donator_tier = 5
 	cost = 2
 

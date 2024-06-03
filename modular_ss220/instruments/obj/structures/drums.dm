@@ -1,34 +1,29 @@
 /obj/structure/musician/drumskit
-	name = "\improper барабанная установка"
-	desc = "Складные барабаны, используйте гаечный ключ чтобы их поставить или сложить."
-	icon = 'modular_ss220/jukebox/icons/jukebox.dmi'
+	name = "\proper барабанная установка"
+	desc = "Складная барбанная установка с несколькими томами и тарелками."
+	icon = 'modular_ss220/instruments/icons/samurai_gitara.dmi'
 	icon_state = "drum_red_unanchored"
 	base_icon_state = "drum_red"
-	atom_say_verb = "states"
+	layer = 2.5
 	anchored = FALSE
-	can_play_unanchored = FALSE
 	var/active = FALSE
 	allowed_instrument_ids = "drums"
-	layer = 2.5
-	can_buckle = FALSE
+	//Использутся, чтобы отслеживать, персонаж должен лежать или "сидеть" (стоять)
 	buckle_lying = FALSE
-	resistance_flags = NONE
-	max_integrity = 250
-	integrity_failure = 25
-	buckle_offset = 0
-	var/buildstacktype = /obj/item/stack/sheet/metal
-	var/buildstackamount = 1
-	var/item_chair = /obj/item/chair // if null it can't be picked up
-	var/comfort = 0
-	var/possible_dirs = 1
+	//Задает состояния и флаги Атома (как я понял) - взято из машинерии, иначе в строчке 75 вышибается ошибка
 	var/stat = 0
+
+/obj/structure/musician/drumskit/examine()
+	. = ..()
+	. += "<span class='notice'>Используйте гаечный ключ, чтобы разобрать для транспортировки и собрать для игры.</span>"
 
 /obj/structure/musician/drumskit/Initialize(mapload)
 	. = ..()
-	song = new(src, "drums") // Piano is the default instrument but all instruments are allowed
+	//Выбирает инструмент по умолчанию
+	song = new(src, "drums")
 	song.instrument_range = 15
 	song.allowed_instrument_ids = "drums"
-	// To update the icon
+	// Для обновления иконки (код взят с кода наушников)
 	RegisterSignal(src, COMSIG_SONG_START, PROC_REF(start_playing))
 	RegisterSignal(src, COMSIG_SONG_END, PROC_REF(stop_playing))
 
@@ -74,6 +69,6 @@
 	if(stat & (BROKEN))
 		icon_state = "[base_icon_state]_broken"
 	else if(anchored)
-		icon_state = "[base_icon_state][active ? "-active" : null]"
+		icon_state = "[base_icon_state][active ? "_active" : null]"
 
 	setDir(SOUTH)
