@@ -47,12 +47,15 @@
 	name = "Заброшенное Складское Помещение"
 	icon_state = "cargobay"
 
+/area/station/supply/expedition/gate
+	name = "Гейт"
+
 /area/station/public/pool
 	name = "Бассейн"
 	icon_state = "dorms"
 
 /area/station/public/vacant_store
-	name = "Вакантный Офис"
+	name = "Вакантный Магазин"
 	icon = 'modular_ss220/maps220/icons/areas.dmi'
 	icon_state = "vacantstore"
 
@@ -65,7 +68,7 @@
 	icon_state = "kitchen"
 
 /area/station/maintenance/old_detective
-	name = "Старый офис Детектива"
+	name = "Старый Офис Детектива"
 	icon_state = "detective"
 
 /area/station/maintenance/virology_maint
@@ -96,9 +99,6 @@
 /area/station/service/bar/atrium
 	name = "Атриум"
 	icon_state = "bar"
-
-/area/station/supply/expedition/gate
-	name = "Гейт"
 
 /* CentCom */
 /area/centcom/ss220
