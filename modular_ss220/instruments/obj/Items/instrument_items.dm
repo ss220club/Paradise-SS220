@@ -37,10 +37,10 @@
 	desc = "Тяжелая гитара со встроенными эффектами дисторшена и овердрайва"
 	icon_state = "elguitar"
 	item_state = "elguitar"
-	icon = 'modular_ss220/instruments/icons/Samurai_Gitara.dmi'
+	icon = 'modular_ss220/instruments/icons/samurai_gitara.dmi'
 	w_class = WEIGHT_CLASS_BULKY
-	lefthand_file = 'modular_ss220/instruments/icons/Samurai_Gitara_lefthand.dmi'
-	righthand_file = 'modular_ss220/instruments/icons/Samurai_Gitara_righthand.dmi'
+	lefthand_file = 'modular_ss220/instruments/icons/samurai_gitara_lefthand.dmi'
+	righthand_file = 'modular_ss220/instruments/icons/samurai_gitara_righthand.dmi'
 	attack_verb = list("played metal on", "shredded", "crashed", "smashed")
 	hitsound = 'sound/weapons/stringsmash.ogg'
 	allowed_instrument_ids = list("cshmetalgt", "cshrockgt", "csteelgt", "ccleangt")
