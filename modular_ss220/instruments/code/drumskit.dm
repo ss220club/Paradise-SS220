@@ -1,7 +1,7 @@
 /obj/structure/musician/drumskit
 	name = "\proper барабанная установка"
 	desc = "Складная барбанная установка с несколькими томами и тарелками."
-	icon = 'modular_ss220/instruments/icons/samurai_gitara.dmi'
+	icon = 'modular_ss220/instruments/icons/samurai_guitar.dmi'
 	icon_state = "drum_red_unanchored"
 	base_icon_state = "drum_red"
 	layer = 2.5
