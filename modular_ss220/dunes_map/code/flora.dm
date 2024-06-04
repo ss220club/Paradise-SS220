@@ -12,7 +12,7 @@
 /obj/structure/flora/tree/cactus/little
 	icon_state = "little_cactus1"
 	density = FALSE
-	layer = TURF_LAYER
+	layer = BELOW_OBJ_LAYER
 
 /obj/structure/flora/tree/cactus/little/Initialize(mapload)
 	. = ..()
@@ -21,7 +21,7 @@
 /obj/structure/flora/tree/cactus/circle
 	icon_state = "circle_cactus1"
 	density = FALSE
-	layer = TURF_LAYER
+	layer = BELOW_OBJ_LAYER
 
 /obj/structure/flora/tree/cactus/circle/Initialize(mapload)
 	. = ..()
@@ -30,7 +30,7 @@
 /obj/structure/flora/tree/cactus/flat
 	icon_state = "flat_cactus1"
 	density = FALSE
-	layer = TURF_LAYER
+	layer = BELOW_OBJ_LAYER
 
 /obj/structure/flora/tree/cactus/flat/Initialize(mapload)
 	. = ..()

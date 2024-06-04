@@ -16,6 +16,23 @@
 /obj/structure/spawner/desert_depretarors/range
 	mob_types = list(/mob/living/simple_animal/hostile/duna/range)
 
+/obj/structure/spawner/desert_depretarors/altar
+	name = "пульсирующий алтарь"
+	desc = "страшное описание."
+	icon = 'modular_ss220/dunes_map/icons/marker_normal.dmi'
+	icon_state = "marker_depred"
+	density = TRUE
+	invisibility = 0
+	spawn_time = 20 SECONDS
+	layer = ABOVE_MOB_LAYER
+
+	light_power = 2
+	light_range = 3
+	light_color = COLOR_VIOLET
+
+/obj/structure/spawner/desert_depretarors/altar/range
+	mob_types = list(/mob/living/simple_animal/hostile/duna/range)
+
 /obj/item/projectile/beam/depredator
 	name = "depredator laser"
 	icon_state = "purple_laser"
@@ -60,6 +77,7 @@
 	icon_living = "osminogmeele"
 	icon_dead = "osminogmeele"
 	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
+	mob_size = MOB_SIZE_LARGE
 	sentience_type = SENTIENCE_OTHER
 	status_flags = CANPUSH
 	del_on_death = TRUE
@@ -82,9 +100,6 @@
 	melee_damage_upper = 20
 	attacktext = "разрывает"
 	attack_sound = 'modular_ss220/mobs/sound/creatures/zombie_attack.ogg'
-	a_intent = INTENT_HARM
-	loot = list(/obj/effect/gibspawner/xeno)
-	faction = list("depredators")
 	rapid_melee = 2
 	footstep_type = FOOTSTEP_MOB_SHOE
 	alert_cooldown = 10 SECONDS
@@ -141,6 +156,54 @@
 	var/list/range_type= list("gold", "silver", "platinum")
 	icon_state = "osminogrange_[pick(range_type)]"
 
+/mob/living/simple_animal/hostile/duna_tower
+	name = "сторожевой алтарь"
+	desc = "Ебанина"
+	icon = 'modular_ss220/dunes_map/icons/marker_normal.dmi'
+	icon_state = "marker_depred_range"
+	icon_living = "marker_depred_range"
+	icon_dead = "marker_depred_range"
+	mob_biotypes = MOB_PLANT
+	sentience_type = SENTIENCE_OTHER
+	move_resist = INFINITY
+	mob_size = MOB_SIZE_LARGE
+	del_on_death = TRUE
+	dodging = FALSE
+	unsuitable_atmos_damage = 0
+	minbodytemp = 0
+	maxbodytemp = 3500
+	check_friendly_fire = TRUE
+	a_intent = INTENT_HARM
+	faction = list("depredators")
+	turns_per_move = 0
+	move_to_delay = 2.8
+	stat_attack = UNCONSCIOUS
+	robust_searching = 1
+	maxHealth = 300
+	health = 300
+	ranged_cooldown_time = 5 SECONDS
+	ranged = TRUE
+	maxHealth = 120
+	health = 120
+	rapid = 5
+	rapid_fire_delay = 0.3 SECONDS
+	harm_intent_damage = 0
+	melee_damage_lower = 0
+	melee_damage_upper = 0
+	retreat_distance = 0
+	minimum_distance = 20
+	aggro_vision_range = 13
+	vision_range = 13
+	wander = FALSE
+	stop_automated_movement = TRUE
+	projectiletype = /obj/item/projectile/beam/depredator/hitscan
+	projectilesound = 'modular_ss220/aesthetics_sounds/sound/mobs/vortigaunt/attack_shoot4.ogg'
+
+	light_power = 2
+	light_range = 3
+	light_color = COLOR_VIOLET
+
+// Крокодил
 /obj/structure/spawner/gator
 	name = "спавнер аллигаторов"
 	desc = "они умирают от бури."
@@ -162,6 +225,8 @@
 	icon_living = "gator"
 	icon_dead = "gator_dead"
 
+// ТАНЯ
+
 /mob/living/simple_animal/hostile/retaliate/tanya_cc
 	name = "Таня фон Нормандия"
 	desc = "Боевой юнит-андроид проекта ''Delta 8-1-7'', идеально подходящий для выполнения любых поставленных задач. Судя по глазам, этот экземпляр находится на боевом дежурстве и действует автономно."
@@ -169,7 +234,7 @@
 	icon_state = "tanya_cc"
 	icon_living = "tanya_cc"
 	icon_dead = "tanya_cc"
-	faction = "neutral"
+	faction = list("neutral")
 	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	sentience_type = SENTIENCE_OTHER
 	turns_per_move = 3
@@ -212,7 +277,7 @@
 	icon_state = "tanya_cc_death"
 	icon_living = "tanya_cc_death"
 	icon_dead = "tanya_cc_death"
-	faction = "neutral"
+	faction = list("neutral")
 	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	sentience_type = SENTIENCE_OTHER
 	turns_per_move = 3
@@ -242,62 +307,3 @@
 	minimum_distance = 8
 	projectiletype = /obj/item/projectile/beam/pulse
 	projectilesound = 'sound/weapons/emitter2.ogg'
-
-// ГРАЖДАНСКИЙ ГРАЖДАНСКИЙ
-
-/mob/living/simple_animal/tanya_cc
-	name = "Таня фон Нормандия"
-	desc = "Боевой юнит-андроид проекта ''Delta 8-1-7'', идеально подходящий для выполнения любых поставленных задач. Судя по глазам, этот экземпляр находится на боевом дежурстве и действует автономно."
-	icon =  'modular_ss220/dunes_map/icons/tanya_cc.dmi'
-	icon_state = "tanya_cc"
-	icon_living = "tanya_cc"
-	icon_dead = "tanya_cc"
-	faction = "neutral"
-	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
-	sentience_type = SENTIENCE_OTHER
-	turns_per_move = 3
-	speed = -0.5
-	maxHealth = 150
-	health = 150
-	harm_intent_damage = 15
-	melee_damage_lower = 20
-	melee_damage_upper = 25
-	a_intent = INTENT_HARM
-	status_flags = CANPUSH
-	del_on_death = TRUE
-	loot = list(/obj/effect/gibspawner/robot)
-	see_in_dark = 8
-	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
-	footstep_type = FOOTSTEP_MOB_SHOE
-	wander = FALSE
-
-/mob/living/simple_animal/tanya_cc/Initialize(mapload)
-	. = ..()
-	add_language("Sol Common")
-	default_language = GLOB.all_languages["Sol Common"]
-
-/mob/living/simple_animal/tanya_death
-	name = "Таня фон Нормандия"
-	desc = "Боевой юнит-андроид проекта ''Delta 8-1-7'', облаченный в тяжелую штурмовую броню. Судя по глазам, этот экземпляр находится на боевом дежурстве и действует автономно."
-	icon =  'modular_ss220/dunes_map/icons/tanya_cc.dmi'
-	icon_state = "tanya_cc_death"
-	icon_living = "tanya_cc_death"
-	icon_dead = "tanya_cc_death"
-	faction = "neutral"
-	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
-	sentience_type = SENTIENCE_OTHER
-	turns_per_move = 3
-	speed = -0.5
-	harm_intent_damage = 15
-	melee_damage_lower = 20
-	melee_damage_upper = 25
-	a_intent = INTENT_HARM
-	status_flags = CANPUSH
-	del_on_death = TRUE
-	loot = list(/obj/effect/gibspawner/robot)
-	see_in_dark = 8
-	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
-	footstep_type = FOOTSTEP_MOB_SHOE
-	wander = FALSE
-	maxHealth = 300
-	health = 300

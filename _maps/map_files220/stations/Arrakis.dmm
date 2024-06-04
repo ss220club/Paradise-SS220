@@ -14045,12 +14045,6 @@
 	dir = 1;
 	pixel_y = 6
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
 /obj/effect/mapping_helpers/machinery/damaged,
 /obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/wood,
@@ -20152,6 +20146,11 @@
 /obj/effect/decal/cleanable/blood/old,
 /turf/simulated/floor/indestructible/dune_sand/smooth,
 /area/awaymission/arrakis/outside/outside2)
+"cfT" = (
+/obj/structure/flora/rock/pile,
+/obj/structure/telecrystal_deposit,
+/turf/simulated/floor/indestructible/dune_sand/cave/cavedeep/dark,
+/area/awaymission/arrakis/cave)
 "cfV" = (
 /obj/item/stack/sheet/mineral/sandstone,
 /obj/effect/turf_decal/sand/plating,
@@ -20285,6 +20284,10 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/carpet/black,
 /area/awaymission/arrakis/bunker/bedrooms)
+"cmR" = (
+/obj/structure/spawner/desert_depretarors/altar,
+/turf/simulated/floor/plating/asteroid/basalt/dune,
+/area/awaymission/arrakis/cave/cave)
 "cnz" = (
 /obj/item/stack/rods,
 /turf/simulated/floor/indestructible/dune_sand/smooth,
@@ -20571,6 +20574,10 @@
 	},
 /turf/simulated/floor/indestructible/dune_sand,
 /area/awaymission/arrakis/outside/outside3)
+"cvx" = (
+/mob/living/simple_animal/hostile/duna_tower,
+/turf/simulated/floor/indestructible/dune_sand/cave/cavedeep/dark/dark_basalt,
+/area/awaymission/arrakis/cave/cave)
 "cvM" = (
 /obj/structure/grille/broken,
 /obj/effect/decal/cleanable/glass,
@@ -29681,6 +29688,10 @@
 /obj/item/shard,
 /turf/simulated/floor/indestructible/dune_sand/smooth,
 /area/awaymission/arrakis/outside/outside2)
+"ila" = (
+/obj/structure/spawner/desert_depretarors/altar,
+/turf/simulated/floor/indestructible/dune_sand/cave/cavedeep/dark/dark_basalt,
+/area/awaymission/arrakis/cave/cave)
 "iln" = (
 /obj/structure/lattice/catwalk/mining{
 	color = "#e0ac7b"
@@ -36183,6 +36194,10 @@
 	},
 /turf/simulated/floor/indestructible/dune_sand/smooth,
 /area/awaymission/arrakis/outside/outside2)
+"mRE" = (
+/mob/living/simple_animal/hostile/duna_tower,
+/turf/simulated/floor/plating/asteroid/basalt/dune,
+/area/awaymission/arrakis/cave/cave)
 "mRL" = (
 /obj/structure/railing{
 	dir = 10;
@@ -38912,7 +38927,7 @@
 	name = "Detective";
 	req_access = list(4)
 	},
-/obj/effect/mapping_helpers/machinery/damaged,
+/obj/effect/mapping_helpers/airlock/locked,
 /turf/simulated/floor/wood,
 /area/awaymission/arrakis/bunker/brig)
 "oEU" = (
@@ -46079,7 +46094,7 @@
 	name = "Magistrate's Office";
 	req_access = list(74)
 	},
-/obj/effect/mapping_helpers/machinery/damaged,
+/obj/effect/mapping_helpers/airlock/locked,
 /turf/simulated/floor/wood,
 /area/awaymission/arrakis/bunker/brig)
 "tmW" = (
@@ -48457,6 +48472,14 @@
 /obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/wood/fancy/cherry,
 /area/awaymission/arrakis/cave/cave1)
+"vcR" = (
+/obj/structure/necropolis_gate/temple_gate,
+/obj/structure/necropolis_arch,
+/obj/structure/opacity_blocker,
+/turf/simulated/floor/brick{
+	color = "#4d4742"
+	},
+/area/awaymission/arrakis/cave/cave)
 "vcT" = (
 /obj/structure/mineral_door/wood{
 	color = "#9b5839";
@@ -48492,7 +48515,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/mapping_helpers/machinery/damaged,
+/obj/effect/mapping_helpers/airlock/locked,
 /turf/simulated/floor/wood,
 /area/awaymission/arrakis/bunker/brig)
 "vcY" = (
@@ -48538,6 +48561,10 @@
 	icon_state = "whitepurple"
 	},
 /area/awaymission/arrakis/bunker/rnd)
+"ved" = (
+/obj/structure/telecrystal_deposit,
+/turf/simulated/floor/indestructible/dune_sand/cave/cavedeep/dark,
+/area/awaymission/arrakis/cave)
 "vev" = (
 /obj/effect/decal/cleanable/dust,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
@@ -52482,6 +52509,10 @@
 	},
 /turf/simulated/floor/indestructible/dune_sand/cave/cold_rock,
 /area/awaymission/arrakis/cave)
+"xRn" = (
+/obj/structure/telecrystal_deposit,
+/turf/simulated/floor/plating/asteroid/basalt/dune,
+/area/awaymission/arrakis/cave/cave)
 "xRF" = (
 /obj/structure/spider/stickyweb,
 /mob/living/simple_animal/hostile/poison/giant_spider,
@@ -113679,7 +113710,7 @@ ayO
 ayO
 ayO
 ayO
-aeo
+jOH
 aeo
 aeo
 asm
@@ -114391,8 +114422,8 @@ mWn
 asm
 asm
 aeo
-uwb
-ejU
+cfT
+ved
 ejU
 ejU
 ejU
@@ -114742,8 +114773,8 @@ aeo
 aeo
 aeo
 asm
-aeo
-ejU
+jOH
+ved
 ejU
 ejU
 aeo
@@ -115096,7 +115127,7 @@ aeo
 aeo
 ejU
 ejU
-ejU
+ved
 ejU
 aeo
 ayO
@@ -115438,7 +115469,7 @@ ayO
 ayO
 ayO
 ayO
-ejU
+ved
 ejU
 ejU
 ejU
@@ -116503,7 +116534,7 @@ aeo
 aeo
 ayO
 aeo
-aeo
+jOH
 aeo
 aeo
 aeo
@@ -116857,7 +116888,7 @@ ayO
 ayO
 aeo
 aeo
-aeo
+jOH
 aeo
 mWn
 mWn
@@ -118609,8 +118640,8 @@ ayO
 ayO
 ayO
 ejU
-ejU
-ejU
+ved
+ved
 aeo
 ejU
 ejU
@@ -118959,9 +118990,9 @@ ayO
 ayO
 ayO
 ayO
+ved
 ejU
-ejU
-ejU
+ved
 aeo
 aeo
 aeo
@@ -120017,7 +120048,7 @@ ayO
 ayO
 ayO
 ayO
-ejU
+ved
 ejU
 ejU
 aeo
@@ -120736,14 +120767,14 @@ asm
 asm
 asm
 asm
-rBb
-rBb
-rBb
+xRn
+xRn
+xRn
 asm
 asm
 wwB
 wwB
-wwB
+raL
 asm
 asm
 asm
@@ -121092,10 +121123,10 @@ rBb
 rBb
 sMG
 asm
+raL
 wwB
 wwB
-wwB
-wwB
+raL
 asm
 asm
 ayO
@@ -121423,7 +121454,7 @@ ayO
 ayO
 ayO
 ayO
-ejU
+ved
 ejU
 ayO
 ayO
@@ -121444,10 +121475,10 @@ rBb
 rBb
 asm
 asm
+raL
 wwB
 wwB
-wwB
-wwB
+raL
 asm
 asm
 ayO
@@ -123187,7 +123218,7 @@ ayO
 ejU
 ejU
 ayO
-ejU
+ved
 ayO
 ayO
 asm
@@ -123200,7 +123231,7 @@ asm
 rBb
 rBb
 uTy
-wFt
+uTy
 rBb
 rBb
 rBb
@@ -123557,7 +123588,7 @@ rBb
 rBb
 rBb
 rBb
-rBb
+mRE
 rBb
 rBb
 raL
@@ -123890,7 +123921,7 @@ ayO
 ayO
 ayO
 ayO
-ejU
+ved
 ayO
 ayO
 asm
@@ -123903,7 +123934,7 @@ asm
 asm
 rBb
 uTy
-uTy
+wFt
 rBb
 uTy
 uTy
@@ -124254,18 +124285,18 @@ asm
 asm
 asm
 rBb
+wFt
+xRn
+xRn
+uTy
 uTy
 rBb
 rBb
-uTy
-uTy
 rBb
 rBb
 rBb
 rBb
-rBb
-rBb
-rBb
+xRn
 raL
 raL
 raL
@@ -124606,19 +124637,19 @@ mWn
 asm
 asm
 uTy
+wFt
+rBb
+wFt
+uTy
 uTy
 rBb
 uTy
-uTy
-uTy
-rBb
-uTy
 rBb
 rBb
 rBb
 rBb
 rBb
-rBb
+xRn
 raL
 raL
 raL
@@ -124958,7 +124989,7 @@ mWn
 asm
 asm
 uTy
-uTy
+wFt
 rBb
 uTy
 uTy
@@ -124969,8 +125000,8 @@ uTy
 rBb
 rBb
 rBb
-rBb
-rBb
+xRn
+xRn
 asm
 raL
 asm
@@ -125310,10 +125341,10 @@ mWn
 asm
 asm
 uTy
-wFt
+uTy
 uTy
 rBb
-wFt
+uTy
 rBb
 uTy
 uTy
@@ -126021,7 +126052,7 @@ uTy
 uTy
 rBb
 rBb
-wFt
+ila
 uTy
 rBb
 rBb
@@ -126387,7 +126418,7 @@ uTy
 rBb
 rBb
 uTy
-uTy
+ila
 uTy
 uTy
 uTy
@@ -127778,7 +127809,7 @@ raL
 raL
 raL
 rBb
-rBb
+mRE
 rBb
 rBb
 uTy
@@ -127787,7 +127818,7 @@ kUE
 kUE
 rBb
 rBb
-rBb
+mRE
 rBb
 rBb
 kUE
@@ -128155,7 +128186,7 @@ rBb
 rBb
 rBb
 rBb
-uTy
+ila
 peD
 uTy
 uTy
@@ -128528,8 +128559,8 @@ asm
 asm
 asm
 asm
-mWn
-mWn
+lNX
+lNX
 asm
 asm
 asm
@@ -128880,8 +128911,8 @@ asm
 asm
 asm
 asm
-mWn
-mWn
+lNX
+lNX
 asm
 asm
 asm
@@ -129191,7 +129222,7 @@ rBb
 uTy
 rBb
 uTy
-wFt
+uTy
 rBb
 uTy
 rBb
@@ -129233,8 +129264,8 @@ qUW
 qUW
 qUW
 asm
-mWn
-mWn
+lNX
+lNX
 asm
 asm
 asm
@@ -129892,7 +129923,7 @@ raL
 raL
 rBb
 rBb
-wFt
+uTy
 uTy
 uTy
 uTy
@@ -130249,7 +130280,7 @@ uTy
 uTy
 rBb
 uTy
-wFt
+uTy
 rBb
 uTy
 uTy
@@ -130600,10 +130631,10 @@ abX
 uTy
 uTy
 rBb
-wFt
+uTy
 rBb
 rBb
-wFt
+uTy
 uTy
 uTy
 rBb
@@ -131304,7 +131335,7 @@ rBb
 rBb
 rBb
 rBb
-wFt
+uTy
 uTy
 uTy
 rBb
@@ -131314,7 +131345,7 @@ rBb
 kUE
 kUE
 rBb
-uTy
+cvx
 uTy
 uTy
 uTy
@@ -131659,7 +131690,7 @@ uTy
 uTy
 uTy
 uTy
-rBb
+cmR
 uTy
 uTy
 rBb
@@ -132004,7 +132035,7 @@ raL
 raL
 raL
 raL
-rBb
+xRn
 rBb
 rBb
 uTy
@@ -132356,9 +132387,9 @@ rBb
 raL
 raL
 raL
+xRn
 rBb
-rBb
-uTy
+cvx
 uTy
 rBb
 rBb
@@ -132708,8 +132739,8 @@ rBb
 raL
 raL
 raL
-rBb
-rBb
+xRn
+xRn
 uTy
 uTy
 rBb
@@ -133061,7 +133092,7 @@ raL
 raL
 raL
 raL
-rBb
+xRn
 uTy
 rBb
 uTy
@@ -134469,18 +134500,18 @@ rBb
 raL
 raL
 raL
-rBb
-rBb
-rBb
-uTy
-uTy
-uTy
+xRn
 rBb
 rBb
 uTy
 uTy
-wFt
 uTy
+rBb
+rBb
+uTy
+uTy
+uTy
+cvx
 uTy
 uTy
 uTy
@@ -134829,7 +134860,7 @@ rBb
 rBb
 rBb
 rBb
-wFt
+uTy
 uTy
 uTy
 uTy
@@ -134845,7 +134876,7 @@ rBb
 rBb
 uTy
 uTy
-uTy
+ila
 uTy
 uTy
 rBb
@@ -135182,7 +135213,7 @@ rBb
 jsv
 jsv
 jsv
-wFt
+uTy
 uTy
 uTy
 uTy
@@ -135526,7 +135557,7 @@ rBb
 raL
 raL
 raL
-rBb
+xRn
 rBb
 rBb
 jsv
@@ -137296,14 +137327,14 @@ aKV
 aKV
 aKV
 aKV
+vcR
 aKV
 aKV
-aKV
 uTy
 uTy
 uTy
 uTy
-uTy
+ila
 uTy
 uTy
 rBb
@@ -139064,7 +139095,7 @@ jsv
 uTy
 uTy
 uTy
-rBb
+mRE
 rBb
 rBb
 rBb
@@ -141873,7 +141904,7 @@ kUE
 kUE
 rBb
 rBb
-uTy
+cvx
 uTy
 uTy
 rBb
@@ -146848,7 +146879,7 @@ aKV
 aKV
 aKV
 aKV
-aKV
+vcR
 rBb
 rBb
 rBb

@@ -98,7 +98,7 @@
 	icon = 'modular_ss220/dunes_map/icons/kolodec.dmi'
 	icon_state = "kolodec"
 	density = TRUE
-	layer = ABOVE_ALL_MOB_LAYER
+	layer = ABOVE_MOB_LAYER
 	var/drop_x = 1
 	var/drop_y = 1
 	var/drop_z = -1
@@ -217,7 +217,7 @@
 	icon_state = "rib"
 	density = TRUE
 	deconstructible = FALSE
-	layer = ABOVE_ALL_MOB_LAYER
+	layer = ABOVE_MOB_LAYER
 
 /obj/structure/fluff/desert_construction/holomap
 	name = "Голокарта Хирки"
@@ -341,7 +341,7 @@
 	icon_state = "concrete_block"
 	base_icon_state = "concrete_block"
 	max_integrity = 300
-	proj_pass_rate = 60
+	proj_pass_rate = 10
 	pass_flags = LETPASSTHROW
 	climbable = TRUE
 	stacktype = null
@@ -410,7 +410,7 @@
 	range_heavy = 1
 	range_light = 3
 	range_flash = 4
-	layer = 2.9
+	layer = LOW_OBJ_LAYER
 
 /obj/structure/mirror/magic/kidan
 	name = "жучье зеркало"
@@ -473,7 +473,7 @@
 	density = FALSE
 	max_integrity = 5
 	anchored = TRUE
-	layer = ABOVE_ALL_MOB_LAYER
+	layer = ABOVE_MOB_LAYER
 
 /obj/structure/telecrystal_deposit
 	name = "отложение телекристаллов"
@@ -481,7 +481,7 @@
 	icon = 'icons/effects/vampire_effects.dmi'
 	icon_state = "blood_barrier"
 	anchored = TRUE
-	layer = ABOVE_ALL_MOB_LAYER
+	layer = ABOVE_MOB_LAYER
 	density = TRUE
 	max_integrity = 20
 	light_power = 1.4

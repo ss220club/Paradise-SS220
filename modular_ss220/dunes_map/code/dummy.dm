@@ -71,7 +71,7 @@
 	icon_state_initial = "target_prism"
 	icon_state_active = "target_prism"
 	icon_state_destroyed = "destroyed_target_prism"
-	faction = "neutral"
+	faction = list("neutral")
 	lethal = TRUE
 	name = "Heavy Defence Turret"
 	max_integrity = 120
