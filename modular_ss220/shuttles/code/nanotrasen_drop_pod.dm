@@ -47,6 +47,13 @@
 			return FALSE
 	return ..()
 
+/obj/machinery/computer/shuttle/nanotrasen/drop_pod/vv_edit_var(var_name, var_value)
+	if(var_name == "allow_force_sent")
+		var/confirm = tgui_alert(usr, "Отправка Дроп Пода в последующем будет невозможна, вы уверены?", "Подтверждение", list("Да", "Нет"))
+		if(confirm != "Да")
+			return FALSE
+	return ..()
+
 /* Docking Ports */
 /obj/docking_port/mobile/assault_pod/nanotrasen
 	id = "nt_drop_pod"
