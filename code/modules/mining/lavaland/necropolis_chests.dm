@@ -12,6 +12,9 @@
 	desc = "It's watching you suspiciously."
 
 /obj/structure/closet/crate/necropolis/tendril/populate_contents()
+	if(prob(50))
+		new /obj/item/food/snacks/candy/sucker(src)
+		return
 	var/loot = rand(1, 23)
 	switch(loot)
 		if(1)

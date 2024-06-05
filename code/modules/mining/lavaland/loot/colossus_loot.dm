@@ -3,6 +3,9 @@
 	name = "colossus chest"
 
 /obj/structure/closet/crate/necropolis/colossus/populate_contents()
+	if(prob(50))
+		new /obj/item/food/snacks/candy/sucker(src)
+		return
 	var/list/crystalchoices = subtypesof(/obj/machinery/anomalous_crystal)
 	var/random_crystal = pick(crystalchoices)
 	var/list/choices = list(/obj/item/organ/internal/vocal_cords/colossus, /obj/item/organ/internal/eyes/cybernetic/eyesofgod, random_crystal)
@@ -15,6 +18,9 @@
 
 /obj/structure/closet/crate/necropolis/colossus/crusher/populate_contents()
 	. = ..()
+	if(prob(50))
+		new /obj/item/food/snacks/candy/sucker(src)
+		return
 	new /obj/item/crusher_trophy/blaster_tubes(src)
 
 ///Anomolous Crystal///

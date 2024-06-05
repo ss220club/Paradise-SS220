@@ -34,5 +34,8 @@
 
 /obj/structure/closet/crate/necropolis/ancient/crusher/populate_contents()
 	. = ..()
+	if(prob(50))
+		new /obj/item/food/snacks/candy/sucker(src)
+		return
 	new /obj/item/crusher_trophy/adaptive_intelligence_core(src)
 

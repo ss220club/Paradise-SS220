@@ -2,6 +2,9 @@
 	name = "dragon chest"
 
 /obj/structure/closet/crate/necropolis/dragon/populate_contents()
+	if(prob(50))
+		new /obj/item/food/snacks/candy/sucker(src)
+		return
 	var/loot = rand(1,4)
 	switch(loot)
 		if(1)
@@ -20,6 +23,9 @@
 
 /obj/structure/closet/crate/necropolis/dragon/crusher/populate_contents()
 	. = ..()
+	if(prob(50))
+		new /obj/item/food/snacks/candy/sucker(src)
+		return
 	new /obj/item/crusher_trophy/tail_spike(src)
 
 
