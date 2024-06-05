@@ -4,7 +4,7 @@
 	var/victims_amount = 5
 
 /datum/event/zombie_virus_outbreak/setup()
-	announceWhen = rand(750, 900)
+	announceWhen = rand(300, 400)
 
 /datum/event/zombie_virus_outbreak/announce(false_alarm)
 	if(!successful_spawn && !false_alarm)
