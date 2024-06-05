@@ -35,7 +35,8 @@
 		notify_ghosts(
 			message = "[victim] был заражен зомби вирусом",
 			title = "Заражение зомби вирусом",
-			source = victim, flashwindow = TRUE,
+			source = victim,
+			flashwindow = TRUE,
 			action = NOTIFY_FOLLOW)
 
 	successful_spawn = TRUE
