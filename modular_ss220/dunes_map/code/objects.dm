@@ -219,6 +219,16 @@
 	deconstructible = FALSE
 	layer = ABOVE_MOB_LAYER
 
+/obj/structure/fluff/desert_construction/depred_boss
+	name = "маяк депредаторов"
+	desc = ""
+	icon = 'modular_ss220/dunes_map/icons/marker_giant.dmi'
+	icon_state = "marker_giant_active_anim"
+	pixel_x = -32
+	light_power = 2
+	light_range = 10
+	light_color = COLOR_MAROON
+
 /obj/structure/fluff/desert_construction/holomap
 	name = "Голокарта Хирки"
 	desc = "Актуальная карта планеты с подробностями региона Убежища."
@@ -264,6 +274,9 @@
 	name = "массивный каменный бюст"
 	desc = "Голова отвратительной твари, выбитая в камне."
 	icon_state = "head1"
+
+/obj/structure/fluff/desert_construction/head1/black
+	icon_state = "head1_black"
 
 /obj/structure/fluff/desert_construction/crushedhead
 	name = "разрушенный бюст"
@@ -328,6 +341,9 @@
 	icon = 'modular_ss220/dunes_map/icons/hugehead.dmi'
 	icon_state = "head2"
 	pixel_x = -16
+
+/obj/structure/fluff/desert_construction/huge_head/black
+	icon_state = "head2_black"
 
 /obj/structure/fluff/desert_construction/huge_head/statue2
 	name = "монструозная статуя"

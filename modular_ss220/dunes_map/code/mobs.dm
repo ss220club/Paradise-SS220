@@ -34,15 +34,22 @@
 	mob_types = list(/mob/living/simple_animal/hostile/duna/range)
 
 /obj/item/projectile/beam/depredator
-	name = "depredator laser"
+	name = "depredator beam"
 	icon_state = "purple_laser"
 	damage = 10
+
+/obj/item/projectile/beam/depredator_laser
+	name = "depredator laser"
+	icon_state = "sniperlaser"
+	damage = 8
+	impact_effect_type = /obj/effect/temp_visual/impact_effect/purple_laser
+	light_color = COLOR_PURPLE
 
 /obj/effect/projectile/muzzle/depredator
 	icon_state = "muzzle_hcult"
 
 /obj/effect/projectile/tracer/depredator
-	name = "depredator laser"
+	name = "depredator beam"
 	icon_state = "hcult"
 
 /obj/effect/projectile/impact/depredator
@@ -183,21 +190,19 @@
 	health = 300
 	ranged_cooldown_time = 5 SECONDS
 	ranged = TRUE
-	maxHealth = 120
-	health = 120
 	rapid = 5
-	rapid_fire_delay = 0.3 SECONDS
+	rapid_fire_delay = 0.5 SECONDS
 	harm_intent_damage = 0
 	melee_damage_lower = 0
 	melee_damage_upper = 0
 	retreat_distance = 0
 	minimum_distance = 20
-	aggro_vision_range = 13
+	aggro_vision_range = 10
 	vision_range = 13
 	wander = FALSE
 	stop_automated_movement = TRUE
-	projectiletype = /obj/item/projectile/beam/depredator/hitscan
-	projectilesound = 'modular_ss220/aesthetics_sounds/sound/mobs/vortigaunt/attack_shoot4.ogg'
+	projectiletype = /obj/item/projectile/beam/depredator_laser
+	projectilesound = 'sound/weapons/resonator_blast.ogg'
 
 	light_power = 2
 	light_range = 3
