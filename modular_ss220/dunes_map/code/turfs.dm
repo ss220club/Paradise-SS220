@@ -284,9 +284,9 @@
 	icon_state = "boss0"
 	temperature = DUNE_TEMPERATURE
 	planetary_atmos = TRUE
-	footstep = FOOTSTEP_MEAT
-	barefootstep = FOOTSTEP_MEAT
-	clawfootstep = FOOTSTEP_MEAT
+	footstep = FOOTSTEP_CARPET
+	barefootstep = FOOTSTEP_CARPET
+	clawfootstep = FOOTSTEP_CARPET
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 	smoothing_groups = list(SMOOTH_GROUP_FLOOR)
 	var/environment_type = "boss"

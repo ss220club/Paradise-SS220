@@ -226,7 +226,7 @@
 	icon_state = "marker_giant_active_anim"
 	pixel_x = -32
 	light_power = 2
-	light_range = 10
+	light_range = 20
 	light_color = COLOR_MAROON
 
 /obj/structure/fluff/desert_construction/holomap

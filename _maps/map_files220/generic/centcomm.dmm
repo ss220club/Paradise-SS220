@@ -1073,26 +1073,15 @@
 /turf/space/transit,
 /area/space/centcomm)
 "aMJ" = (
-/obj/structure/rack,
-/obj/item/radio/headset/headset_iaa/alt,
-/obj/item/radio/headset/headset_iaa/alt,
-/obj/item/radio/headset/heads/magistrate/alt,
-/obj/item/radio/headset/heads/magistrate/alt,
-/obj/item/radio/headset/heads/ntrep,
-/obj/item/radio/headset/heads/ntrep,
-/obj/item/stamp/captain,
-/obj/item/stamp/ce,
-/obj/item/stamp/cmo,
-/obj/item/stamp/hop,
-/obj/item/stamp/hos,
-/obj/item/stamp/law,
-/obj/item/stamp/magistrate,
-/obj/item/stamp/qm,
-/obj/item/stamp/rd,
-/obj/item/stamp/rep,
-/obj/effect/turf_decal/delivery/white,
-/turf/simulated/floor/plasteel/dark,
-/area/centcom/ss220/supply)
+/obj/structure/light_fake/spot{
+	dir = 8;
+	light_color = "red"
+	},
+/turf/simulated/floor/plasteel/dark{
+	dir = 8;
+	icon_state = "darkbluealt"
+	},
+/area/centcom/ss220/admin1)
 "aNi" = (
 /obj/structure/curtain/black{
 	pixel_y = -32;
@@ -1400,6 +1389,10 @@
 /area/abductor_ship)
 "aZj" = (
 /obj/effect/turf_decal/delivery/white/hollow,
+/obj/mecha/combat/durand,
+/obj/structure/light_fake/spot{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/supply)
 "baa" = (
@@ -1769,6 +1762,11 @@
 	},
 /turf/space/transit/horizontal,
 /area/space/centcomm)
+"bpg" = (
+/obj/effect/turf_decal/delivery/white/hollow,
+/mob/living/simple_animal/hostile/retaliate/tanya_death,
+/turf/simulated/floor/plasteel/dark,
+/area/centcom/ss220/admin1)
 "bpw" = (
 /obj/machinery/computer/shuttle/syndicate{
 	name = "Nuclear Operatives Shuttle Console"
@@ -1837,16 +1835,11 @@
 	},
 /area/centcom/ss220/admin2)
 "bsz" = (
-/obj/structure/rack,
-/obj/item/circuitboard/aiupload,
-/obj/item/circuitboard/circuit_imprinter,
-/obj/item/circuitboard/communications,
-/obj/item/circuitboard/destructive_analyzer,
-/obj/item/circuitboard/ore_redemption,
-/obj/item/circuitboard/mining_shuttle,
-/obj/item/circuitboard/protolathe,
-/obj/effect/turf_decal/delivery/white,
-/turf/simulated/floor/plasteel/dark,
+/mob/living/simple_animal/hostile/retaliate/tanya_cc,
+/turf/simulated/floor/plasteel/dark{
+	dir = 8;
+	icon_state = "darkyellowalt"
+	},
 /area/centcom/ss220/supply)
 "bsB" = (
 /obj/item/flag/nt,
@@ -2055,6 +2048,16 @@
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/park)
+"bBP" = (
+/obj/structure/light_fake/spot{
+	dir = 4
+	},
+/obj/structure/barricade/security,
+/turf/simulated/floor/plasteel/dark{
+	dir = 4;
+	icon_state = "darkbluealt"
+	},
+/area/centcom/ss220/admin1)
 "bCk" = (
 /obj/machinery/economy/vending/hatdispenser,
 /turf/simulated/floor/plasteel{
@@ -3048,6 +3051,12 @@
 /obj/structure/flora/tree/jungle,
 /turf/simulated/floor/indestructible/grass,
 /area/syndicate_mothership/outside)
+"cid" = (
+/obj/structure/barricade/security,
+/turf/simulated/floor/plasteel/dark{
+	icon_state = "darkbluealt"
+	},
+/area/centcom/ss220/admin3)
 "cie" = (
 /obj/effect/decal/syndie_logo{
 	icon_state = "logo10"
@@ -3316,6 +3325,13 @@
 /obj/machinery/cryopod/robot/offstation,
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/admin3)
+"ctp" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/item/tank/internals/emergency_oxygen/engi,
+/turf/simulated/floor/plasteel/dark,
+/area/centcom/ss220/admin3)
 "ctL" = (
 /turf/simulated/floor/plasteel/stairs/right,
 /area/centcom/ss220/evac)
@@ -3329,6 +3345,13 @@
 /obj/structure/extinguisher_cabinet/directional/east,
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/admin3)
+"cue" = (
+/obj/structure/light_fake/spot{
+	dir = 4;
+	light_color = "red"
+	},
+/turf/simulated/floor/plasteel/dark,
+/area/centcom/ss220/admin1)
 "cuu" = (
 /obj/structure/flora/ausbushes/brflowers,
 /obj/structure/flora/ausbushes/ppflowers,
@@ -3337,14 +3360,9 @@
 /turf/simulated/floor/indestructible/grass,
 /area/syndicate_mothership/control)
 "cux" = (
-/obj/structure/table,
-/obj/item/hand_labeler{
-	pixel_y = 7
-	},
-/obj/item/hand_labeler,
-/obj/effect/turf_decal/stripes/white,
-/turf/simulated/floor/plasteel/dark,
-/area/centcom/ss220/supply)
+/obj/structure/girder/reinforced,
+/turf/simulated/floor/plating/airless,
+/area/centcom/ss220/admin1)
 "cuK" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -3481,6 +3499,14 @@
 	},
 /turf/space/transit,
 /area/space/centcomm)
+"cBS" = (
+/obj/effect/turf_decal/delivery/white/hollow,
+/obj/mecha/combat/gygax,
+/obj/structure/light_fake/spot{
+	dir = 4
+	},
+/turf/simulated/floor/plasteel/dark,
+/area/centcom/ss220/supply)
 "cBW" = (
 /obj/machinery/economy/vending/coffee/free,
 /turf/simulated/floor/plasteel/dark,
@@ -3631,7 +3657,8 @@
 	req_access_txt = "19"
 	},
 /obj/machinery/door/poddoor{
-	layer = 3.2
+	layer = 3.2;
+	id_tag = "cc_shuttle1"
 	},
 /turf/simulated/floor/plasteel,
 /area/shuttle/escape)
@@ -3696,7 +3723,8 @@
 /area/wizard_station)
 "cHP" = (
 /obj/structure/light_fake/spot{
-	dir = 8
+	dir = 8;
+	light_color = "red"
 	},
 /turf/simulated/floor/plasteel/dark{
 	dir = 9;
@@ -4033,38 +4061,9 @@
 	},
 /area/syndicate_mothership)
 "cTs" = (
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/table{
-	color = "#996633"
-	},
-/obj/item/mecha_parts/mecha_equipment/anticcw_armor_booster,
-/obj/item/mecha_parts/mecha_equipment/anticcw_armor_booster,
-/obj/item/mecha_parts/mecha_equipment/anticcw_armor_booster,
-/obj/item/mecha_parts/mecha_equipment/antiproj_armor_booster,
-/obj/item/mecha_parts/mecha_equipment/antiproj_armor_booster,
-/obj/item/mecha_parts/mecha_equipment/antiproj_armor_booster,
-/obj/item/mecha_parts/mecha_equipment/repair_droid,
-/obj/item/mecha_parts/mecha_equipment/repair_droid,
-/obj/item/mecha_parts/mecha_equipment/repair_droid,
-/obj/item/mecha_parts/mecha_equipment/repair_droid,
-/obj/item/mecha_parts/mecha_equipment/repair_droid,
-/obj/item/mecha_parts/mecha_equipment/repair_droid,
-/obj/item/mecha_parts/mecha_equipment/tesla_energy_relay,
-/obj/item/mecha_parts/mecha_equipment/tesla_energy_relay,
-/obj/item/mecha_parts/mecha_equipment/tesla_energy_relay,
-/obj/item/mecha_parts/mecha_equipment/tesla_energy_relay,
-/obj/item/mecha_parts/mecha_equipment/tesla_energy_relay,
-/obj/item/mecha_parts/mecha_equipment/tesla_energy_relay,
-/obj/item/mecha_parts/mecha_equipment/generator/nuclear,
-/obj/item/mecha_parts/mecha_equipment/generator/nuclear,
-/obj/item/mecha_parts/mecha_equipment/generator/nuclear,
-/obj/item/mecha_parts/mecha_equipment/generator/nuclear,
-/obj/item/mecha_parts/mecha_equipment/generator/nuclear,
-/obj/item/mecha_parts/mecha_equipment/generator/nuclear,
+/obj/effect/decal/cleanable/ash,
 /turf/simulated/floor/plasteel/dark,
-/area/centcom/ss220/supply)
+/area/centcom/ss220/admin1)
 "cUk" = (
 /obj/item/stack/sheet/metal/fifty,
 /turf/space,
@@ -4946,6 +4945,14 @@
 	icon_state = "darkyellowalt"
 	},
 /area/syndicate_mothership/cargo)
+"dzt" = (
+/obj/effect/turf_decal/delivery/white/hollow,
+/mob/living/simple_animal/hostile/retaliate/tanya_death,
+/turf/simulated/floor/plasteel/dark{
+	dir = 4;
+	icon_state = "darkbluecornersalt"
+	},
+/area/centcom/ss220/admin1)
 "dzI" = (
 /obj/structure/table/wood,
 /obj/item/food/snacks/sliceable/chocolatecake,
@@ -5400,9 +5407,12 @@
 /turf/simulated/floor/mineral/titanium,
 /area/shuttle/transport)
 "dMi" = (
-/obj/mecha/combat/gygax/loaded,
-/turf/simulated/floor/plasteel/dark,
-/area/centcom/ss220/supply)
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/plasteel/dark{
+	dir = 4;
+	icon_state = "darkblue"
+	},
+/area/centcom/ss220/bar)
 "dMr" = (
 /obj/machinery/door/airlock/hatch/syndicate{
 	name = "Cargo Shuttle"
@@ -6850,34 +6860,11 @@
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/admin3)
 "eNh" = (
-/obj/structure/window/reinforced{
-	dir = 4
+/mob/living/simple_animal/hostile/retaliate/tanya_cc,
+/turf/simulated/floor/plasteel/dark{
+	dir = 4;
+	icon_state = "darkyellowaltstrip"
 	},
-/obj/structure/table{
-	color = "#996633"
-	},
-/obj/item/mecha_parts/mecha_equipment/weapon/energy/plasma,
-/obj/item/mecha_parts/mecha_equipment/weapon/energy/plasma,
-/obj/item/mecha_parts/mecha_equipment/weapon/energy/plasma,
-/obj/item/mecha_parts/mecha_equipment/cable_layer,
-/obj/item/mecha_parts/mecha_equipment/cable_layer,
-/obj/item/mecha_parts/mecha_equipment/cable_layer,
-/obj/item/mecha_parts/mecha_equipment/extinguisher,
-/obj/item/mecha_parts/mecha_equipment/extinguisher,
-/obj/item/mecha_parts/mecha_equipment/extinguisher,
-/obj/item/mecha_parts/mecha_equipment/rcd,
-/obj/item/mecha_parts/mecha_equipment/rcd,
-/obj/item/mecha_parts/mecha_equipment/rcd,
-/obj/item/mecha_parts/mecha_equipment/mining_scanner,
-/obj/item/mecha_parts/mecha_equipment/mining_scanner,
-/obj/item/mecha_parts/mecha_equipment/mining_scanner,
-/obj/item/mecha_parts/mecha_equipment/drill/diamonddrill,
-/obj/item/mecha_parts/mecha_equipment/drill/diamonddrill,
-/obj/item/mecha_parts/mecha_equipment/drill/diamonddrill,
-/obj/item/mecha_parts/mecha_equipment/hydraulic_clamp,
-/obj/item/mecha_parts/mecha_equipment/hydraulic_clamp,
-/obj/item/mecha_parts/mecha_equipment/hydraulic_clamp,
-/turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/supply)
 "eNi" = (
 /turf/simulated/wall/mineral/titanium,
@@ -7241,6 +7228,13 @@
 	},
 /turf/simulated/floor/grass/no_creep,
 /area/centcom/ss220/evac)
+"fap" = (
+/obj/structure/barricade/security,
+/turf/simulated/floor/plasteel/dark{
+	dir = 4;
+	icon_state = "darkbluealt"
+	},
+/area/centcom/ss220/admin1)
 "faJ" = (
 /obj/structure/sign/poster/contraband/random{
 	pixel_x = -30
@@ -7542,7 +7536,8 @@
 	},
 /area/syndicate_mothership/jail)
 "flD" = (
-/obj/mecha/working/ripley/deathripley,
+/obj/effect/turf_decal/delivery/white/hollow,
+/obj/mecha/combat/durand,
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/supply)
 "flJ" = (
@@ -7903,6 +7898,34 @@
 	icon_state = "white"
 	},
 /area/centcom/ss220/medbay)
+"fty" = (
+/obj/structure/table/reinforced,
+/obj/machinery/door_control/no_emag{
+	id = "CC_tanya";
+	pixel_y = 10;
+	pixel_x = -6;
+	name = "ТАНИ"
+	},
+/obj/machinery/door_control/no_emag{
+	id = "cc_boom2";
+	pixel_y = -2;
+	pixel_x = 8;
+	name = "БСА"
+	},
+/obj/machinery/door_control/no_emag{
+	id = "CC_place";
+	pixel_y = 10;
+	pixel_x = 8;
+	name = "ЗАХОД"
+	},
+/obj/machinery/door_control/no_emag{
+	id = "cc_boom2";
+	pixel_y = -2;
+	pixel_x = 8;
+	name = "БСА"
+	},
+/turf/simulated/floor/plasteel/dark,
+/area/centcom/ss220/supply)
 "ftU" = (
 /obj/structure/light_fake/spot{
 	dir = 8
@@ -8051,7 +8074,11 @@
 /turf/simulated/floor/carpet/black,
 /area/centcom/ss220/bar)
 "fBm" = (
-/obj/mecha/working/ripley,
+/obj/effect/turf_decal/delivery/white/hollow,
+/obj/mecha/combat/gygax,
+/obj/structure/light_fake/spot{
+	dir = 8
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/supply)
 "fBu" = (
@@ -8239,6 +8266,13 @@
 "fGI" = (
 /turf/simulated/floor/carpet/black,
 /area/centcom/ss220/bar)
+"fHf" = (
+/obj/effect/landmark/burnturf,
+/obj/structure/fluff/paper/stack{
+	dir = 8
+	},
+/turf/simulated/floor/plasteel/dark,
+/area/centcom/ss220/admin1)
 "fID" = (
 /turf/simulated/floor/plating/asteroid{
 	icon_state = "asteroidwarning";
@@ -8833,34 +8867,11 @@
 	},
 /area/ninja/holding)
 "gln" = (
-/obj/structure/table/reinforced,
-/obj/machinery/door/window/reinforced/normal{
-	dir = 8;
-	name = "Блокпост";
-	req_one_access_txt = "101"
+/mob/living/simple_animal/hostile/retaliate/tanya_cc,
+/turf/simulated/floor/plasteel/dark{
+	icon_state = "darkyellowcornersalt"
 	},
-/obj/machinery/door_control/no_emag{
-	id = "CC_tanya";
-	pixel_y = 10;
-	pixel_x = -6
-	},
-/obj/machinery/door_control/no_emag{
-	id = "cc_boom2";
-	pixel_y = -2;
-	pixel_x = 8
-	},
-/obj/machinery/door_control/no_emag{
-	id = "cc_boom1";
-	pixel_y = -2;
-	pixel_x = -6
-	},
-/obj/machinery/door_control/no_emag{
-	id = "CC_place";
-	pixel_y = 10;
-	pixel_x = 8
-	},
-/turf/simulated/floor/plasteel/dark,
-/area/centcom/ss220/admin1)
+/area/centcom/ss220/supply)
 "glr" = (
 /obj/structure/closet/secure_closet/mime{
 	req_access = null
@@ -9314,6 +9325,10 @@
 	},
 /turf/simulated/floor/carpet/arcade,
 /area/syndicate_mothership/infteam)
+"gzy" = (
+/obj/effect/decal/cleanable/glass,
+/turf/simulated/floor/plasteel/dark,
+/area/centcom/ss220/admin1)
 "gzG" = (
 /obj/structure/table/wood,
 /obj/item/paper_bin{
@@ -10966,6 +10981,13 @@
 "hFb" = (
 /turf/simulated/floor/plating,
 /area/centcom/ss220/supply)
+"hFD" = (
+/obj/mecha/combat/gygax,
+/turf/simulated/floor/plasteel/dark{
+	dir = 4;
+	icon_state = "darkbluealt"
+	},
+/area/centcom/ss220/admin1)
 "hFJ" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -11515,6 +11537,52 @@
 	name = "floor"
 	},
 /area/syndicate_mothership/elite_squad)
+"hUM" = (
+/obj/structure/rack,
+/obj/item/mecha_parts/mecha_equipment/weapon/energy/ion,
+/obj/item/mecha_parts/mecha_equipment/weapon/energy/ion,
+/obj/item/mecha_parts/mecha_equipment/weapon/energy/ion,
+/obj/item/mecha_parts/mecha_equipment/weapon/energy/laser/heavy,
+/obj/item/mecha_parts/mecha_equipment/weapon/energy/laser/heavy,
+/obj/item/mecha_parts/mecha_equipment/weapon/energy/laser/heavy,
+/obj/item/mecha_parts/mecha_equipment/weapon/energy/pulse,
+/obj/item/mecha_parts/mecha_equipment/weapon/energy/pulse,
+/obj/item/mecha_parts/mecha_equipment/weapon/energy/pulse,
+/obj/item/mecha_parts/mecha_equipment/weapon/energy/taser,
+/obj/item/mecha_parts/mecha_equipment/weapon/energy/taser,
+/obj/item/mecha_parts/mecha_equipment/weapon/energy/taser,
+/obj/item/mecha_parts/mecha_equipment/weapon/energy/tesla,
+/obj/item/mecha_parts/mecha_equipment/weapon/energy/tesla,
+/obj/item/mecha_parts/mecha_equipment/weapon/energy/tesla,
+/obj/item/mecha_parts/mecha_equipment/weapon/energy/xray,
+/obj/item/mecha_parts/mecha_equipment/weapon/energy/xray,
+/obj/item/mecha_parts/mecha_equipment/weapon/energy/xray,
+/obj/item/mecha_parts/mecha_equipment/weapon/energy/immolator,
+/obj/item/mecha_parts/mecha_equipment/weapon/energy/immolator,
+/obj/item/mecha_parts/mecha_equipment/weapon/energy/immolator,
+/obj/item/mecha_parts/mecha_equipment/weapon/energy/disabler,
+/obj/item/mecha_parts/mecha_equipment/weapon/energy/disabler,
+/obj/item/mecha_parts/mecha_equipment/weapon/energy/disabler,
+/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/carbine,
+/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/carbine,
+/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/carbine,
+/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/lmg,
+/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/lmg,
+/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/lmg,
+/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack,
+/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack,
+/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack,
+/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/bola,
+/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/bola,
+/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/bola,
+/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/heavy,
+/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/heavy,
+/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/heavy,
+/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/scattershot,
+/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/scattershot,
+/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/scattershot,
+/turf/simulated/floor/plasteel/dark,
+/area/centcom/ss220/supply)
 "hVc" = (
 /obj/effect/decal/syndie_logo{
 	icon_state = "logo18"
@@ -12105,34 +12173,9 @@
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/supply)
 "isB" = (
-/obj/structure/table,
-/obj/item/clothing/accessory/medal/gold{
-	pixel_x = -6;
-	pixel_y = 10
-	},
-/obj/item/clothing/accessory/medal/gold/heroism{
-	pixel_x = 6;
-	pixel_y = 10
-	},
-/obj/item/clothing/accessory/medal/gold{
-	pixel_x = -6;
-	pixel_y = 10
-	},
-/obj/item/clothing/accessory/medal/gold{
-	pixel_x = -6;
-	pixel_y = 10
-	},
-/obj/item/clothing/accessory/medal/gold/heroism{
-	pixel_x = 6;
-	pixel_y = 10
-	},
-/obj/item/clothing/accessory/medal/gold/heroism{
-	pixel_x = 6;
-	pixel_y = 10
-	},
-/obj/effect/turf_decal/stripes/white,
-/turf/simulated/floor/plasteel/dark,
-/area/centcom/ss220/supply)
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/plating/airless,
+/area/space/centcomm)
 "isJ" = (
 /obj/structure/chair/comfy/corp{
 	dir = 1
@@ -13622,6 +13665,10 @@
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/supply)
+"jzI" = (
+/obj/item/clothing/mask/gas,
+/turf/simulated/floor/plasteel/dark,
+/area/centcom/ss220/admin3)
 "jAn" = (
 /obj/machinery/kitchen_machine/oven,
 /obj/item/food/snacks/rawcookies/chocochips{
@@ -14475,6 +14522,10 @@
 "kns" = (
 /turf/simulated/wall/mineral/plastitanium/nodiagonal,
 /area/shuttle/assault_pod)
+"knG" = (
+/obj/structure/barricade/security,
+/turf/simulated/floor/plasteel/dark,
+/area/centcom/ss220/admin1)
 "knO" = (
 /obj/machinery/economy/vending/medical/syndicate_access,
 /turf/simulated/floor/plasteel{
@@ -15152,21 +15203,8 @@
 /turf/simulated/floor/indestructible,
 /area/centcom/ss220/library)
 "kQR" = (
-/obj/machinery/door/airlock/centcom{
-	name = "Склад";
-	req_one_access_txt = "106"
-	},
 /obj/effect/turf_decal/delivery/white,
-/obj/machinery/door/poddoor/impassable{
-	id_tag = "CC_Cargo";
-	layer = 3;
-	name = "Склад"
-	},
-/obj/machinery/door_control/no_emag/north{
-	id = "CC_Cargo";
-	name = "Blast Door Control";
-	req_one_access_txt = "106"
-	},
+/obj/machinery/door/poddoor/preopen,
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/supply)
 "kRT" = (
@@ -16429,54 +16467,11 @@
 /turf/simulated/floor/plasteel/dark,
 /area/shuttle/escape)
 "lJp" = (
-/obj/structure/window/reinforced{
-	dir = 4
+/obj/effect/turf_decal/delivery/white/hollow,
+/obj/mecha/combat/durand,
+/obj/structure/light_fake/spot{
+	dir = 8
 	},
-/obj/structure/table{
-	color = "#996633"
-	},
-/obj/item/mecha_parts/mecha_equipment/weapon/energy/ion,
-/obj/item/mecha_parts/mecha_equipment/weapon/energy/ion,
-/obj/item/mecha_parts/mecha_equipment/weapon/energy/ion,
-/obj/item/mecha_parts/mecha_equipment/weapon/energy/laser/heavy,
-/obj/item/mecha_parts/mecha_equipment/weapon/energy/laser/heavy,
-/obj/item/mecha_parts/mecha_equipment/weapon/energy/laser/heavy,
-/obj/item/mecha_parts/mecha_equipment/weapon/energy/pulse,
-/obj/item/mecha_parts/mecha_equipment/weapon/energy/pulse,
-/obj/item/mecha_parts/mecha_equipment/weapon/energy/pulse,
-/obj/item/mecha_parts/mecha_equipment/weapon/energy/taser,
-/obj/item/mecha_parts/mecha_equipment/weapon/energy/taser,
-/obj/item/mecha_parts/mecha_equipment/weapon/energy/taser,
-/obj/item/mecha_parts/mecha_equipment/weapon/energy/tesla,
-/obj/item/mecha_parts/mecha_equipment/weapon/energy/tesla,
-/obj/item/mecha_parts/mecha_equipment/weapon/energy/tesla,
-/obj/item/mecha_parts/mecha_equipment/weapon/energy/xray,
-/obj/item/mecha_parts/mecha_equipment/weapon/energy/xray,
-/obj/item/mecha_parts/mecha_equipment/weapon/energy/xray,
-/obj/item/mecha_parts/mecha_equipment/weapon/energy/immolator,
-/obj/item/mecha_parts/mecha_equipment/weapon/energy/immolator,
-/obj/item/mecha_parts/mecha_equipment/weapon/energy/immolator,
-/obj/item/mecha_parts/mecha_equipment/weapon/energy/disabler,
-/obj/item/mecha_parts/mecha_equipment/weapon/energy/disabler,
-/obj/item/mecha_parts/mecha_equipment/weapon/energy/disabler,
-/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/carbine,
-/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/carbine,
-/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/carbine,
-/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/lmg,
-/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/lmg,
-/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/lmg,
-/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack,
-/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack,
-/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack,
-/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/bola,
-/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/bola,
-/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/bola,
-/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/heavy,
-/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/heavy,
-/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/heavy,
-/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/scattershot,
-/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/scattershot,
-/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/scattershot,
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/supply)
 "lJx" = (
@@ -17107,6 +17102,12 @@
 /obj/structure/window/reinforced,
 /turf/simulated/floor/wood/oak,
 /area/centcom/ss220/library)
+"mah" = (
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/plasteel/dark{
+	icon_state = "dark_large"
+	},
+/area/centcom/ss220/bar)
 "maG" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -17124,9 +17125,9 @@
 /turf/simulated/floor/wood/oak,
 /area/syndicate_mothership)
 "mbB" = (
-/obj/mecha/combat/gygax,
-/turf/simulated/floor/plasteel/dark,
-/area/centcom/ss220/supply)
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/plating,
+/area/centcom/ss220/admin1)
 "mbQ" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -17138,9 +17139,9 @@
 	},
 /area/syndicate_mothership)
 "mcm" = (
-/obj/structure/closet/crate/secure/bin{
-	color = "#36373a";
-	anchored = 1
+/obj/effect/decal/cleanable/glass,
+/obj/structure/fluff/paper/stack{
+	dir = 4
 	},
 /turf/simulated/floor/plasteel/dark{
 	dir = 10;
@@ -18205,6 +18206,13 @@
 	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/shuttle/specops)
+"mZD" = (
+/obj/effect/landmark/burnturf,
+/turf/simulated/floor/plasteel/dark{
+	dir = 8;
+	icon_state = "darkbluealt"
+	},
+/area/centcom/ss220/admin1)
 "mZR" = (
 /obj/machinery/computer/shuttle/ferry{
 	dir = 4
@@ -19029,6 +19037,7 @@
 	},
 /obj/machinery/door/poddoor/preopen,
 /obj/effect/turf_decal/delivery,
+/obj/structure/barricade/security,
 /turf/simulated/floor/plasteel/dark{
 	dir = 1;
 	icon_state = "darkbluealt"
@@ -19339,6 +19348,31 @@
 	name = "floor"
 	},
 /area/syndicate_mothership/elite_squad)
+"nPR" = (
+/obj/structure/rack,
+/obj/item/mecha_parts/mecha_equipment/weapon/energy/plasma,
+/obj/item/mecha_parts/mecha_equipment/weapon/energy/plasma,
+/obj/item/mecha_parts/mecha_equipment/weapon/energy/plasma,
+/obj/item/mecha_parts/mecha_equipment/cable_layer,
+/obj/item/mecha_parts/mecha_equipment/cable_layer,
+/obj/item/mecha_parts/mecha_equipment/cable_layer,
+/obj/item/mecha_parts/mecha_equipment/extinguisher,
+/obj/item/mecha_parts/mecha_equipment/extinguisher,
+/obj/item/mecha_parts/mecha_equipment/extinguisher,
+/obj/item/mecha_parts/mecha_equipment/rcd,
+/obj/item/mecha_parts/mecha_equipment/rcd,
+/obj/item/mecha_parts/mecha_equipment/rcd,
+/obj/item/mecha_parts/mecha_equipment/mining_scanner,
+/obj/item/mecha_parts/mecha_equipment/mining_scanner,
+/obj/item/mecha_parts/mecha_equipment/mining_scanner,
+/obj/item/mecha_parts/mecha_equipment/drill/diamonddrill,
+/obj/item/mecha_parts/mecha_equipment/drill/diamonddrill,
+/obj/item/mecha_parts/mecha_equipment/drill/diamonddrill,
+/obj/item/mecha_parts/mecha_equipment/hydraulic_clamp,
+/obj/item/mecha_parts/mecha_equipment/hydraulic_clamp,
+/obj/item/mecha_parts/mecha_equipment/hydraulic_clamp,
+/turf/simulated/floor/plasteel/dark,
+/area/centcom/ss220/supply)
 "nQx" = (
 /obj/machinery/status_display{
 	pixel_x = -32
@@ -19885,6 +19919,13 @@
 	},
 /turf/simulated/floor/carpet/black,
 /area/syndicate_mothership/infteam)
+"oqQ" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/item/clothing/mask/gas,
+/turf/simulated/floor/plasteel/dark,
+/area/centcom/ss220/admin3)
 "orQ" = (
 /obj/structure/chair/sofa/pew/left{
 	dir = 1
@@ -20456,16 +20497,10 @@
 /turf/simulated/floor/wood/oak,
 /area/syndicate_mothership/control)
 "oPH" = (
-/obj/structure/closet/emcloset,
-/obj/item/tank/internals/emergency_oxygen/engi,
-/obj/item/tank/internals/emergency_oxygen/engi,
-/obj/item/tank/internals/emergency_oxygen/engi,
-/obj/item/clothing/mask/gas,
-/obj/item/clothing/mask/gas,
-/obj/item/clothing/mask/gas,
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
+/obj/item/tank/internals/emergency_oxygen/engi,
 /turf/simulated/floor/plasteel/dark{
 	dir = 1;
 	icon_state = "vault"
@@ -20508,9 +20543,8 @@
 	},
 /area/centcom/ss220/command)
 "oQT" = (
-/obj/mecha/combat/durand,
-/turf/simulated/floor/plasteel/dark,
-/area/centcom/ss220/supply)
+/turf/simulated/floor/plating,
+/area/centcom/ss220/admin1)
 "oRl" = (
 /obj/structure/curtain/black{
 	pixel_y = -32;
@@ -20620,6 +20654,12 @@
 	},
 /turf/simulated/floor/plasteel/goonplaque,
 /area/centcom/ss220/general)
+"oUG" = (
+/obj/effect/decal/cleanable/ash,
+/turf/simulated/floor/plasteel/dark{
+	icon_state = "darkbluealt"
+	},
+/area/centcom/ss220/admin3)
 "oUL" = (
 /turf/simulated/wall/indestructible/wood,
 /area/ninja/outpost)
@@ -22321,16 +22361,13 @@
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/admin3)
 "qnB" = (
-/obj/structure/rack,
-/obj/item/nullrod,
-/obj/item/nullrod,
-/obj/item/nullrod,
-/obj/item/melee/classic_baton,
-/obj/item/melee/classic_baton,
-/obj/item/melee/classic_baton,
-/obj/effect/turf_decal/delivery/white,
-/turf/simulated/floor/plasteel/dark,
-/area/centcom/ss220/supply)
+/obj/effect/landmark/damageturf,
+/obj/effect/decal/cleanable/glass,
+/turf/simulated/floor/plasteel/dark{
+	dir = 8;
+	icon_state = "darkbluecornersalt"
+	},
+/area/centcom/ss220/admin1)
 "qnN" = (
 /obj/effect/landmark/burnturf,
 /obj/effect/decal/cleanable/glass,
@@ -22994,35 +23031,13 @@
 /turf/simulated/floor/plating,
 /area/syndicate_mothership)
 "qPs" = (
-/obj/structure/table,
-/obj/item/clothing/accessory/medal/silver{
-	pixel_x = -8;
-	pixel_y = 10
+/obj/structure/fluff/paper/stack{
+	dir = 1
 	},
-/obj/item/clothing/accessory/medal/silver{
-	pixel_x = -8;
-	pixel_y = 10
+/turf/simulated/floor/plasteel/dark{
+	icon_state = "darkbluealt"
 	},
-/obj/item/clothing/accessory/medal/silver{
-	pixel_x = -8;
-	pixel_y = 10
-	},
-/obj/item/clothing/accessory/medal/silver/leadership{
-	pixel_y = 10
-	},
-/obj/item/clothing/accessory/medal/silver/leadership{
-	pixel_y = 10
-	},
-/obj/item/clothing/accessory/medal/silver/leadership{
-	pixel_y = 10
-	},
-/obj/item/clothing/accessory/medal/silver/valor{
-	pixel_x = 8;
-	pixel_y = 10
-	},
-/obj/effect/turf_decal/stripes/white,
-/turf/simulated/floor/plasteel/dark,
-/area/centcom/ss220/supply)
+/area/centcom/ss220/admin1)
 "qPL" = (
 /obj/structure/flora/ausbushes/genericbush,
 /obj/structure/flora/ausbushes/lavendergrass,
@@ -23235,17 +23250,9 @@
 	},
 /area/syndicate_mothership/elite_squad)
 "qZz" = (
-/obj/structure/table,
-/obj/item/stack/packageWrap,
-/obj/item/stack/packageWrap{
-	pixel_y = 3
-	},
-/obj/item/stack/packageWrap{
-	pixel_y = 6
-	},
-/obj/effect/turf_decal/stripes/white,
-/turf/simulated/floor/plasteel/dark,
-/area/centcom/ss220/supply)
+/obj/effect/landmark/burnturf,
+/turf/simulated/floor/plating,
+/area/centcom/ss220/admin1)
 "qZS" = (
 /obj/machinery/door/airlock/hatch/syndicate/command{
 	name = "Тюрьма"
@@ -23456,7 +23463,7 @@
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/admin3)
 "rgS" = (
-/obj/mecha/working/ripley/firefighter,
+/mob/living/simple_animal/hostile/retaliate/tanya_death,
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/supply)
 "rhB" = (
@@ -23836,100 +23843,11 @@
 /turf/simulated/floor/plating,
 /area/syndicate_mothership/cargo)
 "rtC" = (
-/obj/structure/table,
-/obj/item/clothing/accessory/medal{
-	pixel_x = -8;
-	pixel_y = 10
+/obj/structure/fluff/paper/stack{
+	dir = 1
 	},
-/obj/item/clothing/accessory/medal{
-	pixel_x = -8;
-	pixel_y = 10
-	},
-/obj/item/clothing/accessory/medal{
-	pixel_x = -8;
-	pixel_y = 10
-	},
-/obj/item/clothing/accessory/medal/engineering{
-	pixel_y = 10
-	},
-/obj/item/clothing/accessory/medal/engineering{
-	pixel_y = 10
-	},
-/obj/item/clothing/accessory/medal/engineering{
-	pixel_y = 10
-	},
-/obj/item/clothing/accessory/medal/legal{
-	pixel_x = 8;
-	pixel_y = 10
-	},
-/obj/item/clothing/accessory/medal/legal{
-	pixel_x = 8;
-	pixel_y = 10
-	},
-/obj/item/clothing/accessory/medal/legal{
-	pixel_x = 8;
-	pixel_y = 10
-	},
-/obj/item/clothing/accessory/medal/medical{
-	pixel_x = -8;
-	pixel_y = 6
-	},
-/obj/item/clothing/accessory/medal/medical{
-	pixel_x = -8;
-	pixel_y = 6
-	},
-/obj/item/clothing/accessory/medal/medical{
-	pixel_x = -8;
-	pixel_y = 6
-	},
-/obj/item/clothing/accessory/medal/science{
-	pixel_y = 6
-	},
-/obj/item/clothing/accessory/medal/science{
-	pixel_y = 6
-	},
-/obj/item/clothing/accessory/medal/science{
-	pixel_y = 6
-	},
-/obj/item/clothing/accessory/medal/security{
-	pixel_x = 8;
-	pixel_y = 6
-	},
-/obj/item/clothing/accessory/medal/security{
-	pixel_x = 8;
-	pixel_y = 6
-	},
-/obj/item/clothing/accessory/medal/security{
-	pixel_x = 8;
-	pixel_y = 6
-	},
-/obj/item/clothing/accessory/medal/service{
-	pixel_x = -4;
-	pixel_y = 2
-	},
-/obj/item/clothing/accessory/medal/service{
-	pixel_x = -4;
-	pixel_y = 2
-	},
-/obj/item/clothing/accessory/medal/service{
-	pixel_x = -4;
-	pixel_y = 2
-	},
-/obj/item/clothing/accessory/medal/heart{
-	pixel_x = 4;
-	pixel_y = 2
-	},
-/obj/item/clothing/accessory/medal/heart{
-	pixel_x = 4;
-	pixel_y = 2
-	},
-/obj/item/clothing/accessory/medal/heart{
-	pixel_x = 4;
-	pixel_y = 2
-	},
-/obj/effect/turf_decal/stripes/white,
 /turf/simulated/floor/plasteel/dark,
-/area/centcom/ss220/supply)
+/area/centcom/ss220/admin1)
 "rtF" = (
 /obj/structure/table,
 /obj/item/reagent_containers/drinks/shaker,
@@ -24470,9 +24388,9 @@
 	},
 /area/centcom/ss220/admin3)
 "rOv" = (
-/obj/mecha/combat/durand/loaded,
-/turf/simulated/floor/plasteel/dark,
-/area/centcom/ss220/supply)
+/obj/structure/inflatable,
+/turf/simulated/floor/plating/airless,
+/area/centcom/ss220/admin1)
 "rOI" = (
 /obj/effect/decal/syndie_logo{
 	icon_state = "logo16"
@@ -25275,16 +25193,7 @@
 	},
 /area/centcom/ss220/bar)
 "spM" = (
-/obj/structure/rack,
-/obj/item/grenade/clusterbuster/holy,
-/obj/item/grenade/clusterbuster/holy,
-/obj/item/grenade/clusterbuster/holy,
-/obj/item/grenade/chem_grenade/holywater,
-/obj/item/grenade/chem_grenade/holywater,
-/obj/item/grenade/chem_grenade/holywater,
-/obj/item/grenade/chem_grenade/holywater,
-/obj/item/grenade/chem_grenade/holywater,
-/obj/item/grenade/chem_grenade/holywater,
+/obj/machinery/door/poddoor/preopen,
 /obj/effect/turf_decal/delivery/white,
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/supply)
@@ -25566,22 +25475,12 @@
 	},
 /area/centcom/ss220/admin2)
 "sFj" = (
-/obj/item/grenade/clusterbuster/cleaner,
-/obj/item/grenade/clusterbuster/cleaner,
-/obj/item/grenade/clusterbuster/cleaner,
-/obj/item/grenade/chem_grenade/cleaner,
-/obj/item/grenade/chem_grenade/cleaner,
-/obj/item/grenade/chem_grenade/cleaner,
-/obj/item/grenade/chem_grenade/cleaner,
-/obj/item/grenade/chem_grenade/cleaner,
-/obj/item/grenade/chem_grenade/cleaner,
-/obj/item/scythe/tele,
-/obj/item/scythe/tele,
-/obj/item/scythe/tele,
-/obj/structure/rack,
-/obj/effect/turf_decal/delivery/white,
-/turf/simulated/floor/plasteel/dark,
-/area/centcom/ss220/supply)
+/obj/effect/turf_decal/delivery/white/hollow,
+/mob/living/simple_animal/hostile/retaliate/tanya_death,
+/turf/simulated/floor/plasteel/dark{
+	icon_state = "darkbluecornersalt"
+	},
+/area/centcom/ss220/admin1)
 "sFl" = (
 /obj/effect/turf_decal/siding/black,
 /obj/effect/turf_decal/siding/black{
@@ -26440,7 +26339,8 @@
 	id_tag = "cc_shuttle1"
 	},
 /obj/machinery/door_control/no_emag/east{
-	id = "cc_shuttle1"
+	id = "cc_shuttle1";
+	req_one_access_txt = "114"
 	},
 /turf/simulated/floor/plasteel,
 /area/shuttle/escape)
@@ -26722,6 +26622,7 @@
 /area/ghost_bar)
 "ttZ" = (
 /obj/machinery/economy/vending/cigarette,
+/obj/effect/mapping_helpers/machinery/destroyed,
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/admin1)
 "tut" = (
@@ -26845,17 +26746,12 @@
 /turf/simulated/floor/carpet/arcade,
 /area/trader_station/sol)
 "tzx" = (
-/obj/structure/light_fake/spot{
-	dir = 1
-	},
-/obj/structure/sign/poster/official/nanotrasen_logo{
-	pixel_y = 32
-	},
+/obj/mecha/combat/gygax,
 /turf/simulated/floor/plasteel/dark{
-	dir = 1;
-	icon_state = "darkyellowalt"
+	dir = 6;
+	icon_state = "darkbluealt"
 	},
-/area/centcom/ss220/supply)
+/area/centcom/ss220/admin1)
 "tAi" = (
 /obj/machinery/atmospherics/portable/canister/oxygen{
 	anchored = 1;
@@ -27432,10 +27328,8 @@
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/admin1)
 "tTt" = (
-/obj/structure/closet/crate/trashcart{
-	name = "Специальная доставка с ЦК"
-	},
 /obj/effect/turf_decal/delivery/white/hollow,
+/obj/mecha/combat/gygax,
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/supply)
 "tTA" = (
@@ -27840,25 +27734,12 @@
 /turf/simulated/floor/plating/abductor,
 /area/abductor_ship)
 "uiD" = (
-/obj/structure/rack,
-/obj/item/bodyanalyzer/advanced,
-/obj/item/bodyanalyzer/advanced,
-/obj/item/bodyanalyzer/advanced,
-/obj/item/bodyanalyzer/advanced,
-/obj/item/bodyanalyzer/advanced,
-/obj/item/clothing/glasses/hud/health/night,
-/obj/item/clothing/glasses/hud/health/night,
-/obj/item/clothing/glasses/hud/health/night,
-/obj/item/clothing/glasses/hud/health/night,
-/obj/item/clothing/glasses/hud/health/night,
-/obj/item/gun/medbeam,
-/obj/item/gun/medbeam,
-/obj/item/gun/medbeam,
-/obj/item/gun/medbeam,
-/obj/item/gun/medbeam,
-/obj/effect/turf_decal/delivery/white,
-/turf/simulated/floor/plasteel/dark,
-/area/centcom/ss220/supply)
+/obj/structure/barricade/security,
+/turf/simulated/floor/plasteel/dark{
+	dir = 8;
+	icon_state = "darkbluealt"
+	},
+/area/centcom/ss220/admin1)
 "ujj" = (
 /obj/structure/sink/directional/east,
 /turf/simulated/floor/plasteel{
@@ -28278,13 +28159,11 @@
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/supply)
 "uBQ" = (
-/obj/structure/table,
-/obj/item/paper_bin{
-	pixel_y = 3
-	},
-/obj/item/pen,
 /obj/structure/light_fake/spot{
 	dir = 8
+	},
+/obj/structure/fluff/paper/stack{
+	dir = 1
 	},
 /turf/simulated/floor/plasteel/dark{
 	dir = 8;
@@ -28759,6 +28638,13 @@
 	icon_state = "darkyellowfull"
 	},
 /area/syndicate_mothership/cargo)
+"uSx" = (
+/obj/structure/barricade/security,
+/turf/simulated/floor/plasteel/dark{
+	dir = 1;
+	icon_state = "darkbluealt"
+	},
+/area/centcom/ss220/admin3)
 "uSI" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -29318,6 +29204,34 @@
 	},
 /turf/simulated/floor/wood/oak,
 /area/syndicate_mothership/elite_squad)
+"vsu" = (
+/obj/structure/rack,
+/obj/item/mecha_parts/mecha_equipment/anticcw_armor_booster,
+/obj/item/mecha_parts/mecha_equipment/anticcw_armor_booster,
+/obj/item/mecha_parts/mecha_equipment/anticcw_armor_booster,
+/obj/item/mecha_parts/mecha_equipment/antiproj_armor_booster,
+/obj/item/mecha_parts/mecha_equipment/antiproj_armor_booster,
+/obj/item/mecha_parts/mecha_equipment/antiproj_armor_booster,
+/obj/item/mecha_parts/mecha_equipment/repair_droid,
+/obj/item/mecha_parts/mecha_equipment/repair_droid,
+/obj/item/mecha_parts/mecha_equipment/repair_droid,
+/obj/item/mecha_parts/mecha_equipment/repair_droid,
+/obj/item/mecha_parts/mecha_equipment/repair_droid,
+/obj/item/mecha_parts/mecha_equipment/repair_droid,
+/obj/item/mecha_parts/mecha_equipment/tesla_energy_relay,
+/obj/item/mecha_parts/mecha_equipment/tesla_energy_relay,
+/obj/item/mecha_parts/mecha_equipment/tesla_energy_relay,
+/obj/item/mecha_parts/mecha_equipment/tesla_energy_relay,
+/obj/item/mecha_parts/mecha_equipment/tesla_energy_relay,
+/obj/item/mecha_parts/mecha_equipment/tesla_energy_relay,
+/obj/item/mecha_parts/mecha_equipment/generator/nuclear,
+/obj/item/mecha_parts/mecha_equipment/generator/nuclear,
+/obj/item/mecha_parts/mecha_equipment/generator/nuclear,
+/obj/item/mecha_parts/mecha_equipment/generator/nuclear,
+/obj/item/mecha_parts/mecha_equipment/generator/nuclear,
+/obj/item/mecha_parts/mecha_equipment/generator/nuclear,
+/turf/simulated/floor/plasteel/dark,
+/area/centcom/ss220/supply)
 "vsE" = (
 /obj/item/flag/nt,
 /obj/structure/light_fake/spot{
@@ -31996,39 +31910,9 @@
 	},
 /area/centcom/ss220/medbay)
 "xka" = (
-/obj/structure/rack,
-/obj/item/clothing/under/color/black,
-/obj/item/clothing/under/color/black,
-/obj/item/clothing/under/color/black,
-/obj/item/clothing/under/color/black,
-/obj/item/clothing/under/color/black,
-/obj/item/clothing/under/retro/security,
-/obj/item/clothing/under/retro/security,
-/obj/item/clothing/under/retro/science,
-/obj/item/clothing/under/retro/science,
-/obj/item/clothing/under/retro/medical,
-/obj/item/clothing/under/retro/medical,
-/obj/item/clothing/under/retro/engineering,
-/obj/item/clothing/under/retro/engineering,
-/obj/item/clothing/under/misc/durathread,
-/obj/item/clothing/under/misc/durathread,
-/obj/item/clothing/under/suit/mafia/white,
-/obj/item/clothing/under/suit/mafia/white,
-/obj/item/clothing/under/suit/mafia/vest,
-/obj/item/clothing/under/suit/mafia/vest,
-/obj/item/clothing/under/suit/mafia/tan,
-/obj/item/clothing/under/suit/mafia/tan,
-/obj/item/clothing/under/suit/mafia,
-/obj/item/clothing/under/suit/mafia,
-/obj/item/clothing/under/rank/procedure/lawyer/black,
-/obj/item/clothing/under/rank/procedure/lawyer/black,
-/obj/item/clothing/under/rank/procedure/lawyer/blue,
-/obj/item/clothing/under/rank/procedure/lawyer/blue,
-/obj/item/clothing/under/rank/procedure/lawyer/red,
-/obj/item/clothing/under/rank/procedure/lawyer/red,
-/obj/effect/turf_decal/delivery/white,
+/obj/structure/barricade/security,
 /turf/simulated/floor/plasteel/dark,
-/area/centcom/ss220/supply)
+/area/centcom/ss220/admin3)
 "xkj" = (
 /obj/machinery/computer,
 /obj/structure/window/reinforced{
@@ -32609,15 +32493,12 @@
 /turf/simulated/floor/wood/fancy/oak,
 /area/centcom/ss220/general)
 "xDX" = (
-/obj/structure/light_fake/spot{
-	dir = 8
+/obj/mecha/combat/gygax,
+/turf/simulated/floor/plasteel/dark{
+	dir = 5;
+	icon_state = "darkbluealt"
 	},
-/obj/structure/closet/crate/trashcart{
-	name = "Специальная доставка с ЦК"
-	},
-/obj/effect/turf_decal/delivery/white/hollow,
-/turf/simulated/floor/plasteel/dark,
-/area/centcom/ss220/supply)
+/area/centcom/ss220/admin1)
 "xEb" = (
 /obj/machinery/sleeper{
 	dir = 4;
@@ -44205,8 +44086,8 @@ hfq
 hfq
 hfq
 hfq
-hfq
-hfq
+uiD
+uiD
 oTu
 tTm
 vEb
@@ -44462,8 +44343,8 @@ tTm
 tTm
 tTm
 tTm
-tTm
-tTm
+knG
+knG
 tTm
 tTm
 tTm
@@ -44719,8 +44600,8 @@ nfj
 nfj
 nfj
 nfj
-otw
-nfj
+bBP
+fap
 nfj
 nfj
 nfj
@@ -48328,7 +48209,7 @@ adJ
 nPO
 pwL
 lJY
-mti
+oUG
 nPO
 nPO
 nPO
@@ -49612,9 +49493,9 @@ ruC
 adJ
 nPO
 ofZ
-lJY
+jzI
 gFP
-uKn
+ctp
 rLQ
 rWF
 rWF
@@ -49838,7 +49719,7 @@ bnh
 adJ
 adJ
 bnh
-wjg
+cux
 wjg
 qUN
 nfj
@@ -49871,7 +49752,7 @@ jiu
 ofZ
 lJY
 gFP
-uKn
+oqQ
 vIm
 pYp
 hnM
@@ -50093,9 +49974,9 @@ adJ
 bnh
 bnh
 wjg
-wjg
-wjg
-wjg
+xEu
+adJ
+sxc
 wjg
 wjg
 wjg
@@ -50350,10 +50231,10 @@ nyl
 wjg
 wjg
 wjg
-wjg
-wjg
-wjg
-wjg
+cux
+bnh
+sxc
+bnh
 wjg
 wjg
 fpM
@@ -50371,7 +50252,7 @@ adJ
 tTc
 wjg
 dYf
-nmP
+qPs
 wjg
 adJ
 adJ
@@ -50607,9 +50488,9 @@ lvz
 uBQ
 mcm
 wjg
-wjg
-wjg
-wjg
+cux
+isB
+isB
 wjg
 wjg
 wjg
@@ -50861,18 +50742,18 @@ jXc
 tTm
 tTm
 tTm
-tTm
-vEb
-hfq
-hfq
-hfq
-hfq
-xuW
-hfq
-hfq
-hfq
+fHf
+qnB
+rOv
+rHE
+rHE
+rHE
+rHE
+qZz
+aMJ
+mZD
 oTu
-tTm
+rtC
 vEb
 vqG
 hfq
@@ -51117,17 +50998,17 @@ tmc
 pFF
 tTm
 tTm
+ikw
+lJx
+oQT
+qZz
+mbB
+qZz
+qZz
+mbB
+mbB
 tTm
-tTm
-tTm
-tTm
-tTm
-tTm
-tTm
-tTm
-tTm
-tTm
-tTm
+oQT
 tTm
 tTm
 mdS
@@ -51143,7 +51024,7 @@ lJx
 lJx
 fst
 tTm
-tTm
+cTs
 tTm
 tTm
 tTm
@@ -51372,19 +51253,19 @@ gwP
 gwP
 wjg
 jXc
-iIC
-nfj
-nfj
-nfj
-nfj
-nfj
-nfj
-nfj
-jYJ
 tTm
-iIC
-nfj
-nfj
+tTm
+tTm
+tTm
+ikw
+ikw
+gzy
+lJx
+mbB
+tTm
+cwV
+xeD
+xeD
 nfj
 nfj
 nfj
@@ -51629,17 +51510,17 @@ iHR
 wjg
 wjg
 dYf
-nmP
-rzI
-rzI
-rzI
-rzI
-rzI
-rzI
-rzI
-tlK
+iIC
+nfj
+dzt
+bpg
+cue
+bpg
+sFj
+nfj
+nfj
 hqL
-akO
+iII
 rzI
 rzI
 gXE
@@ -51888,15 +51769,15 @@ wjg
 dYf
 nmP
 rzI
+xDX
+hFD
+wjg
+hFD
+tzx
 rzI
-rzI
-rzI
-rzI
-rzI
-rzI
-rzI
+spM
 kQR
-rzI
+spM
 rzI
 rzI
 rzI
@@ -51924,9 +51805,9 @@ ltc
 bgl
 wJb
 nPO
-ofZ
-lJY
-mti
+uSx
+xka
+cid
 nPO
 ygY
 veQ
@@ -52388,8 +52269,8 @@ uow
 kGb
 uow
 uow
-uow
-uow
+cEZ
+cEZ
 uow
 uow
 xOS
@@ -52411,13 +52292,13 @@ egO
 pZO
 egO
 tWr
-rtC
-qPs
-isB
-qnB
-vFG
+sKY
+lEI
+sKY
+lEI
 wgc
-uiD
+wgc
+wgc
 rzI
 rBx
 aff
@@ -52642,7 +52523,7 @@ eAJ
 uUA
 uws
 eAJ
-eAJ
+mah
 eAJ
 eAJ
 eAJ
@@ -52659,21 +52540,21 @@ dBA
 mmG
 nmP
 rzI
-aZj
-oQT
-aZj
-mbB
-aZj
-fBm
+flD
+rgS
+flD
+egO
+tTt
+egO
 jVd
 egO
 kwP
 lMG
 lMG
 lMG
+bsz
 lMG
-lMG
-lMG
+bsz
 xtW
 rzI
 aff
@@ -52899,13 +52780,13 @@ eAJ
 uUA
 osb
 dnm
+cEZ
 dnm
 dnm
 dnm
 dnm
 dnm
-dnm
-dnm
+dMi
 dnm
 iHM
 osb
@@ -52916,16 +52797,16 @@ wjg
 psB
 nmP
 rzI
-aZj
-rOv
-aZj
-dMi
-aZj
+flD
+egO
+flD
+egO
+tTt
 rgS
 jVd
 mrZ
 sMg
-sMg
+eNh
 sMg
 sMg
 sMg
@@ -53167,21 +53048,21 @@ cPP
 osb
 osb
 vce
-gln
+fMQ
 vce
 wjg
 dYf
 nmP
 rzI
 aZj
-egO
+rgS
 aZj
-egO
-aZj
-flD
+rgS
+cBS
+rgS
 jVd
 mRf
-qZz
+vFG
 sKY
 lEI
 pON
@@ -53430,13 +53311,13 @@ wjg
 mmG
 lvt
 rzI
-cTs
 rzI
-lJp
+vsu
 rzI
-eNh
+hUM
 rzI
-tzx
+nPR
+jVd
 mRf
 egO
 egO
@@ -53687,15 +53568,15 @@ aic
 dYf
 nmP
 rzI
-tTt
-xDX
-tTt
-xDX
-tTt
-xDX
+lJp
+rgS
+lJp
+egO
+fBm
+egO
 jVd
 mRf
-cux
+vFG
 pNp
 hxQ
 wYC
@@ -53944,12 +53825,12 @@ wjg
 dYf
 nmP
 rzI
+flD
+egO
+flD
+egO
 tTt
-tTt
-tTt
-tTt
-tTt
-tTt
+egO
 jVd
 kwP
 jXb
@@ -54201,18 +54082,18 @@ wjg
 dYf
 nmP
 rzI
+flD
+rgS
+flD
+rgS
 tTt
-tTt
-tTt
-tTt
-tTt
-tTt
+rgS
 jVd
 egO
 mrZ
 byz
 xpS
-mrZ
+gln
 byz
 byz
 byz
@@ -54458,22 +54339,22 @@ bMe
 oTu
 nmP
 rzI
-tTt
-tTt
-tTt
-tTt
-tTt
-tTt
+egO
+egO
+egO
+egO
+egO
+egO
 jVd
 egO
 tWr
-bsz
+vFG
 jVd
 tWr
-spM
-sFj
-aMJ
-xka
+hxQ
+wYC
+uBy
+eJx
 rzI
 qKc
 qLq
@@ -55231,7 +55112,7 @@ nmP
 rzI
 cbc
 lMG
-lMG
+fty
 dLK
 lMG
 lMG
