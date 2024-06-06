@@ -1,11 +1,11 @@
 /// TIme before blossom starts
-#define BLOSSOM_START_TIME (10 SECONDS)
+#define BLOSSOM_START_TIME (30 MINUTES)
 /// Time before blossom ends
-#define BLOSSOM_END_TIME (10 SECONDS)
+#define BLOSSOM_END_TIME (10 MINUTES)
 /// Time before blossom leaves a pile
-#define LEAVES_PILE_SPAWN_TIME (5 SECONDS)
+#define LEAVES_PILE_SPAWN_TIME (2 MINUTES)
 /// Time before blossom transforms grass tile to Sakura's grass
-#define TRANSFORM_TURF_TIME (5 SECONDS)
+#define TRANSFORM_TURF_TIME (10 MINUTES)
 
 /* Sakura Tree */
 /obj/structure/flora/tree/sakura
@@ -21,12 +21,10 @@
 /obj/structure/flora/tree/sakura/Initialize(mapload)
 	. = ..()
 	RegisterSignal(SSticker, COMSIG_TICKER_ROUND_STARTING, PROC_REF(on_round_start))
-	log_debug("Sakura object initialized.")
 
 /obj/structure/flora/tree/sakura/New()
 	. = ..()
 	if(SSticker.IsRoundInProgress())
-		log_debug("Initiating Blossom Cycle after round-start.")
 		initiate_blossom_cycle()
 
 /obj/structure/flora/tree/sakura/Destroy()
@@ -43,12 +41,10 @@
 	initiate_blossom_cycle()
 	SIGNAL_HANDLER
 	UnregisterSignal(src, COMSIG_TICKER_ROUND_STARTING)
-	log_debug("COMSIG_TICKER_ROUND_STARTING signal unregistered.")
 	return
 
 /// Initiates the blooming cycle, in which the countdown begins
 /obj/structure/flora/tree/sakura/proc/initiate_blossom_cycle()
-	log_debug("Blossom Cycle in-progress.")
 	// Start the bloom cycle 30 minutes after the start of the round or creating new tree
 	timer_handle_start = addtimer(CALLBACK(src, PROC_REF(start_blossom)), BLOSSOM_START_TIME, TIMER_UNIQUE | TIMER_OVERRIDE | TIMER_STOPPABLE)
 
