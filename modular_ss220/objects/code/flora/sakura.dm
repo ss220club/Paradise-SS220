@@ -55,7 +55,7 @@
 		// Spawns blossom effect
 		blossom_effect = new(T)
 		blossom_effect.parent_tree = src
-		// Start the timer to remove the blossom effect after 15 minutes
+		// Start the timer to remove the blossom effect after 10 minutes
 		timer_handle_end = addtimer(CALLBACK(src, PROC_REF(end_blossom)), BLOSSOM_END_TIME, TIMER_UNIQUE | TIMER_OVERRIDE | TIMER_STOPPABLE)
 
 /// Ends blooming, starts timer for a new one
@@ -79,6 +79,7 @@
 
 /obj/effect/blossom/Initialize(mapload)
 	. = ..()
+	// Start the timer to spawn a pile of Sakura leaves after 2 minutes
 	addtimer(CALLBACK(src, PROC_REF(make_sakura_leaves)), LEAVES_PILE_SPAWN_TIME, TIMER_UNIQUE | TIMER_OVERRIDE | TIMER_STOPPABLE)
 
 /obj/effect/blossom/New(turf, obj/structure/flora/tree/sakura/Sakura)
@@ -99,6 +100,7 @@
 	if(!istype(T, /turf/simulated/floor/grass/sakura))
 		if(parent_tree)
 			new /obj/effect/decal/sakura_leaves(T, src)
+			// Start the timer to replace grass tile with sakura's one after 10 minutes
 			addtimer(CALLBACK(src, PROC_REF(transform_turf)), TRANSFORM_TURF_TIME, TIMER_UNIQUE | TIMER_OVERRIDE | TIMER_STOPPABLE)
 
 /// Transforms grass tile to sakura grass under blossom effect
@@ -108,7 +110,7 @@
 		return
 	if(istype(T, /turf/simulated/floor/grass))
 		T.ChangeTurf(/turf/simulated/floor/grass/sakura)
-		// Delete sakura leaves pile
+		// Deletes pile of Sakura leaves
 		for(var/obj/effect/decal/sakura_leaves/D in T)
 			qdel(D)
 
@@ -156,15 +158,21 @@
 		fire_act()
 	if(istype(I, /obj/item/cultivator))
 		var/obj/item/cultivator/C = I
-		user.visible_message(span_notice("[user] is clearing [src] from the ground..."), span_notice("You begin clearing [src] from the ground..."), span_warning("You hear a sound of leaves rustling."))
+		user.visible_message(
+			span_notice("[user] is clearing [src] from the ground..."),
+			span_notice("You begin clearing [src] from the ground..."),
+			span_warning("You hear a sound of leaves rustling."))
 		playsound(loc, 'sound/effects/shovel_dig.ogg', 50, 1)
 		if(!do_after(user, 50 * C.toolspeed, target = src))
 			return
-		user.visible_message(span_notice("[user] clears [src] from the ground!"), span_notice("You clear [src] from the ground!"))
+		user.visible_message(
+			span_notice("[user] clears [src] from the ground!"),
+			span_notice("You clear [src] from the ground!"))
 		qdel(src)
 	else
 		return ..()
 
+// This is fake fire actually
 /obj/effect/decal/sakura_leaves/fire_act()
 	if(resistance_flags & FLAMMABLE)
 		on_fire = TRUE
