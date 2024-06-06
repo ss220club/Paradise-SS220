@@ -1,3 +1,4 @@
+// Спавнеры депредов
 /obj/structure/spawner/desert_depretarors
 	name = "спавнер депредов"
 	desc = "страшное описание."
@@ -17,8 +18,8 @@
 	mob_types = list(/mob/living/simple_animal/hostile/duna/range)
 
 /obj/structure/spawner/desert_depretarors/altar
-	name = "пульсирующий алтарь"
-	desc = "страшное описание."
+	name = "пульсирующий маяк"
+	desc = "Спиральный монолит из черного камня. В его высокотехнологичных вкраплениях, слово по жилам, протекает невиданная ранее энергия - продукт симбиоза блюспейса и редспейса. Кажется, он используется депредаторами как маяк навигации."
 	icon = 'modular_ss220/dunes_map/icons/marker_normal.dmi'
 	icon_state = "marker_depred"
 	density = TRUE
@@ -33,6 +34,7 @@
 /obj/structure/spawner/desert_depretarors/altar/range
 	mob_types = list(/mob/living/simple_animal/hostile/duna/range)
 
+// Снаряды депредов
 /obj/item/projectile/beam/depredator
 	name = "depredator beam"
 	icon_state = "purple_laser"
@@ -41,7 +43,7 @@
 /obj/item/projectile/beam/depredator_laser
 	name = "depredator laser"
 	icon_state = "sniperlaser"
-	damage = 8
+	damage = 9
 	impact_effect_type = /obj/effect/temp_visual/impact_effect/purple_laser
 	light_color = COLOR_PURPLE
 
@@ -73,12 +75,13 @@
 	impact_light_range = 2.5
 	impact_light_color_override = LIGHT_COLOR_PURPLE
 
+// Депреды
 /mob/living/simple_animal/hostile/duna
 	var/list/alert_sounds
 	var/alert_cooldown = 3 SECONDS
 	var/alert_cooldown_time
 	name = "депредатор"
-	desc = "Ебанина"
+	desc = "Высокое злобное существо, пришедшее из неизведанных глубин космоса. Тварь представляет из себя жуткое переплетение темно-фиолетовой плоти и бугристых пучков мышц. Они постоянно пульсируют, неустанно перегоняя под кожей бледные зеленоватые отсветы. Что бы это ни было - оно отвратительно."
 	icon = 'modular_ss220/dunes_map/icons/mobs.dmi'
 	icon_state = "osminogmeele"
 	icon_living = "osminogmeele"
@@ -164,8 +167,8 @@
 	icon_state = "osminogrange_[pick(range_type)]"
 
 /mob/living/simple_animal/hostile/duna_tower
-	name = "сторожевой алтарь"
-	desc = "Ебанина"
+	name = "сторожевой маяк"
+	desc = "Спиральный монолит из черного камня. В его высокотехнологичных вкраплениях, слово по жилам, протекает невиданная ранее энергия - продукт симбиоза блюспейса и редспейса. Кажется, он используется депредаторами как защитная установка."
 	icon = 'modular_ss220/dunes_map/icons/marker_normal.dmi'
 	icon_state = "marker_depred_range"
 	icon_living = "marker_depred_range"
@@ -190,19 +193,20 @@
 	health = 300
 	ranged_cooldown_time = 5 SECONDS
 	ranged = TRUE
-	rapid = 5
+	rapid = 3
 	rapid_fire_delay = 0.5 SECONDS
 	harm_intent_damage = 0
 	melee_damage_lower = 0
 	melee_damage_upper = 0
 	retreat_distance = 0
 	minimum_distance = 20
-	aggro_vision_range = 10
-	vision_range = 13
+	aggro_vision_range = 11
+	vision_range = 15
 	wander = FALSE
 	stop_automated_movement = TRUE
 	projectiletype = /obj/item/projectile/beam/depredator_laser
 	projectilesound = 'sound/weapons/resonator_blast.ogg'
+	anchored = TRUE
 
 	light_power = 2
 	light_range = 3
@@ -312,3 +316,4 @@
 	minimum_distance = 8
 	projectiletype = /obj/item/projectile/beam/pulse
 	projectilesound = 'sound/weapons/emitter2.ogg'
+

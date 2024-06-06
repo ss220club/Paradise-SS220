@@ -221,7 +221,7 @@
 
 /obj/structure/fluff/desert_construction/depred_boss
 	name = "маяк депредаторов"
-	desc = ""
+	desc = "Ваше приключение оканчивается здесь. Его исход зависит только от Вас."
 	icon = 'modular_ss220/dunes_map/icons/marker_giant.dmi'
 	icon_state = "marker_giant_active_anim"
 	pixel_x = -32
@@ -350,6 +350,7 @@
 	desc = "Статуя отвратительной твари выполненная из черного камня."
 	icon_state = "ugly_statue2"
 
+//barricade
 /obj/structure/barricade/beton
 	name = "бетонный фундаментный блок"
 	desc = "Здоровое бетонное ограждение. Поможет в качестве укрытия."
@@ -362,6 +363,7 @@
 	climbable = TRUE
 	stacktype = null
 
+//bars
 /obj/structure/bars
 	name = "решетка"
 	desc = "Решетка камеры из пластали. Вряд ли её получится сломать."
@@ -384,7 +386,7 @@
 	max_integrity = INFINITY
 	obj_integrity = INFINITY
 
-
+//flask
 /obj/item/reagent_containers/drinks/flask/desert
 	name = "кожаная фляжка"
 	desc = "Кожаная походная фляжка кочевых народов пустыни."
@@ -401,6 +403,7 @@
 	volume = 50
 	resistance_flags = FIRE_PROOF
 
+//torch
 /obj/structure/wall_torch
 	name = "настенный факел"
 	desc = "Древний и ненадежный способ освещения помещений."
@@ -420,6 +423,7 @@
 	STOP_PROCESSING(SSobj, src)
 	..()
 
+//mine
 /obj/effect/mine/explosive/desert
 	icon = 'modular_ss220/dunes_map/icons/mine.dmi'
 	icon_state = "desertminearmed"
@@ -428,9 +432,7 @@
 	range_flash = 4
 	layer = LOW_OBJ_LAYER
 
-/obj/structure/mirror/magic/kidan
-	name = "жучье зеркало"
-
+//raider card
 /obj/item/card/id/away/kidan
 	name = "самодельная идентификационная карта"
 	desc = "Грубо припаянный микрочип и пара магнитных полос на пластиковой карточке."
@@ -443,7 +445,7 @@
 		)
 	registered_name = "[pick (kidan_name)]"
 
-
+//template gate
 /obj/structure/necropolis_gate/temple_gate
 	name = "\improper врата храма"
 	desc = "Массивные врата древнего храма, вырезанные из песчанника и исписанные древними проклятиями."
@@ -481,6 +483,7 @@
 	addtimer(CALLBACK(src, PROC_REF(toggle_closed_delayed_step)), 2.2 SECONDS, TIMER_UNIQUE)
 	return TRUE
 
+//sign
 /obj/structure/warn_sign
 	name = "предупреждающий знак"
 	desc = "Ничего хорошего он не говорит..."
@@ -491,6 +494,7 @@
 	anchored = TRUE
 	layer = ABOVE_MOB_LAYER
 
+//telecrystal
 /obj/structure/telecrystal_deposit
 	name = "отложение телекристаллов"
 	desc = "Естественные наросты телекристаллов."
@@ -504,12 +508,20 @@
 	light_range = 3
 	light_color = COLOR_MAROON
 
-
 /obj/structure/telecrystal_deposit/Destroy()
 	playsound(src, 'sound/effects/pylon_shatter.ogg', 30, 0)
 	var/turf/T = get_turf(src)
-	new /obj/item/stack/telecrystal/five(T)
+	new /obj/item/stack/telecrystal/five/native(T)
 	..()
+
+/obj/item/stack/telecrystal/five/native
+	name = "телекристалл"
+	desc = "Его пульсация одновременно приманивает и настораживает."
+	icon = 'modular_ss220/dunes_map/icons/stack.dmi'
+	icon_state = "native"
+	dynamic_icon_state = FALSE
+
+//cube and VSA
 
 /obj/item/stock_parts/cell/cube
 	name = "Куб"
@@ -549,12 +561,13 @@
 			if(!do_after(user, 3 SECONDS, target = src))
 				return
 			name = "Войдспейс Артиллерия"
-			desc = "Самый умный? Придумай описание!"
+			desc = "Эксперементальная дальнобойная артиллерия, несущая в себе необузданную мощь Куба. Да поможет нам Господь..."
 			icon = 'modular_ss220/dunes_map/icons/bsa.dmi'
 			icon_state = "cannon"
 			update_icon()
 			reload_cooldown = 600
 			C.charge = 0
+			pixel_y = -60
 			return
 	. = ..()
 
@@ -567,7 +580,7 @@
 				A.ex_act(1)
 
 		point.Beam(get_target_turf(), icon_state = "bsa_beam", icon = 'modular_ss220/dunes_map/icons/beam.dmi', time = 50, maxdistance = world.maxx, beam_type = /obj/effect/ebeam/deadly) //ZZZAP
-		playsound(src, 'sound/machines/bsa_fire.ogg', 100, 1)
+		playsound(src, 'modular_ss220/dunes_map/sound/weapons/VSA.ogg', 200, 1)
 		if(istype(target, /obj/item/gps))
 			var/obj/item/gps/G = target
 			message_admins("[key_name_admin(user)] has launched an artillery strike at GPS named [G.gpstag].")
