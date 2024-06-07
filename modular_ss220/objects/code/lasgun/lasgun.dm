@@ -17,7 +17,6 @@
 	burst_size = 1
 	actions_types = list()
 
-
 /obj/item/gun/projectile/automatic/sslr/update_icon_state()
 	icon_state = "sslr[magazine ? "-[CEILING(get_ammo(0) / 4, 1) * 4]" : ""]"
 	item_state = "sslr[magazine ? "" : "_empty"]"
