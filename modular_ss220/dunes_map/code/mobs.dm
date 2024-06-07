@@ -411,3 +411,145 @@
 	icon_state = "scorpion_mini"
 	icon_living = "scorpion_mini"
 	icon_dead = "scorpion_mini"
+/*
+	- [+] абилка атаки вокруг босса
+	- [/] абилка атаки в определенную область (возможно чардж)
+	- [+] автонаводящийся снаряд
+	- [t] спавн адов
+	- [+] абилка как шёпот у ксеносов, но босс говорит на всю карту ттсом и реплика сопровождается ЗДОРОВЕННОЙ ФРАЗОЙ В ЧАТЕ вместе с криповым звуком.
+	- [t] для боевых абилок желателен делей перед кастом, в идеале конечно визуал еще, но это уже влажные мечты
+	- [+] сам бос милишный
+	- [+] с регеном, если можно
+	- [+] скорость низкая
+	- [+] толкать его нельзя
+*/
+
+/mob/living/simple_animal/hostile/cthulhu
+	// Visual
+	name = "Ктулху"
+	desc = "Ебейший ебанат"
+	attack_sound = 'sound/misc/demon_attack1.ogg'
+	icon = 'modular_ss220/dunes_map/icons/cthulhu.dmi'
+	icon_state = "cthulhu"
+	icon_living = "cthulhu"
+	pixel_x = -240
+	pixel_y = -220
+	layer = LARGE_MOB_LAYER
+	// mouse_opacity = MOUSE_OPACITY_OPAQUE
+
+
+	// Balance
+	move_force = MOVE_FORCE_OVERPOWERING
+	move_resist = MOVE_FORCE_OVERPOWERING
+	pull_force = MOVE_FORCE_OVERPOWERING
+	mob_size = MOB_SIZE_LARGE
+	speed = 2
+	maxHealth = 3000
+	health = 3000
+	var/regeneration_amount = 5
+	melee_damage_lower = 30
+	melee_damage_upper = 45
+	a_intent = INTENT_HARM
+	sentience_type = SENTIENCE_BOSS
+	faction = list("depredators")
+	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
+	flying = TRUE
+	minbodytemp = 0
+	maxbodytemp = INFINITY
+
+	var/list/datum/spell/spells = list(/datum/spell/fireball/homing/cthulhu,
+								/datum/spell/leap/cthulhu,
+								/datum/spell/global_annouce,
+								/datum/spell/aoe/conjure/duna,
+								/datum/spell/pulse_rain)
+
+/mob/living/simple_animal/hostile/cthulhu/Initialize(mapload)
+	. = ..()
+	for(var/datum/spell/path as anything in spells)
+		var/datum/spell/spell = new path()
+		AddSpell(spell)
+
+/mob/living/simple_animal/hostile/cthulhu/Life(seconds, times_fired)
+	. = ..()
+	adjustHealth(-regeneration_amount * seconds)
+
+/obj/effect/temp_visual/target_cthulhu
+	icon = 'icons/mob/actions/actions.dmi'
+	icon_state = "sniper_zoom"
+	layer = BELOW_MOB_LAYER
+	duration = 0.5 SECONDS
+
+/datum/spell/fireball/homing/cthulhu
+	invocation_type = "none"
+	var/preparation_time = 0.5 SECONDS
+
+/datum/spell/fireball/homing/cthulhu/cast(list/targets, mob/living/user)
+	for(var/mob/mob in targets)
+		new /obj/effect/temp_visual/target_cthulhu(get_turf(mob))
+	if(!do_after(user, preparation_time, FALSE))
+		return FALSE
+	. = ..()
+
+
+/datum/spell/leap/cthulhu
+	var/preparation_time = 0.3 SECONDS
+
+/datum/spell/leap/cthulhu/cast(list/targets, mob/living/user)
+	for(var/mob/mob in targets)
+		new /obj/effect/temp_visual/target_cthulhu(get_turf(user))
+	if(!do_after(user, preparation_time, FALSE))
+		return FALSE
+	. = ..()
+	user.pixel_y = initial(user.pixel_y)
+
+/datum/spell/global_annouce
+	name = "Волна мысли"
+	action_icon_state = "resonant_shriek"
+	base_cooldown = 0
+	clothes_req = FALSE
+
+/datum/spell/global_annouce/create_new_targeting()
+	return new /datum/spell_targeting/self
+
+/datum/spell/global_annouce/cast(list/targets, mob/user)
+	var/text = tgui_input_text(user, "Сообщение для отправки", "Волна мысли")
+	text = span_narsie(text)
+	for(var/mob/player as anything in GLOB.player_list)
+		to_chat(player, text)
+	sound_to_playing_players(sound('sound/misc/demon_dies.ogg'), 60)
+
+/datum/spell/aoe/conjure/duna
+	name = "Призвать прислужников"
+	action_icon_state = "shadow_boxing"
+	human_req = FALSE
+	clothes_req = FALSE
+	base_cooldown = 40 SECONDS
+	aoe_range = 4
+	summon_amt = 3
+	summon_type = list(/mob/living/simple_animal/hostile/duna,
+						/mob/living/simple_animal/hostile/duna/range)
+
+/datum/spell/pulse_rain
+	name = "AOE атака без названия"
+	action_icon_state = "magicm"
+	base_cooldown = 15 SECONDS
+	clothes_req = FALSE
+	var/obj/item/projectile/projectile_type = /obj/item/projectile/energy/mindflayer
+
+/datum/spell/pulse_rain/create_new_targeting()
+	var/datum/spell_targeting/clicked_atom/external/C = new()
+	C.range = 20
+	return C
+
+/datum/spell/pulse_rain/proc/shoot(base, user, angle)
+	var/obj/item/projectile/H = new projectile_type(get_turf(user))
+	H.preparePixelProjectile(base, base, get_turf(user))
+	H.firer = user
+	H.firer_source_atom = user
+	H.fire(angle)
+
+/datum/spell/pulse_rain/cast(list/targets, mob/user)
+	var/target = targets[1]
+	var/static/list/directional_shot_angles = list(1, 45, 90, 135, 180, 225, 270, 315)
+	for(var/angle in directional_shot_angles)
+		shoot(target, user, angle)
