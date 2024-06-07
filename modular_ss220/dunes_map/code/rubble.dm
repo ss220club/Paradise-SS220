@@ -130,7 +130,7 @@
 		/obj/item/flashlight/flare,
 		/obj/item/flashlight/flare/torch,
 		/obj/item/flashlight,
-		/obj/item/reagent_containers/hypospray/autoinjector/survival
+		/obj/item/reagent_containers/hypospray/autoinjector/survival,
 		)
 
 /obj/structure/rubble/house
@@ -154,20 +154,20 @@
 		/obj/item/reagent_containers/glass/beaker/waterbottle,
 		/obj/item/lighter/zippo,
 		/obj/item/storage/fancy/cigarettes/cigpack_robustgold,
-		/obj/item/storage/fancy/cigarettes/cigpack_robust
+		/obj/item/storage/fancy/cigarettes/cigpack_robust,
 		/obj/item/cigbutt,
 		/obj/item/reagent_containers/drinks/bottle/vodka,
 		/obj/item/reagent_containers/drinks/bottle/gin,
 		/obj/item/reagent_containers/drinks/bottle/absinthe/premium,
-		/obj/item/reagent_containers/drinks/mug
+		/obj/item/reagent_containers/drinks/mug,
 		/obj/item/reagent_containers/glass/rag,
 		/obj/item/reagent_containers/patch/silver_sulf = 3,
 		/obj/item/reagent_containers/patch/styptic = 3,
-		/obj/item/reagent_containers/patch/synthflesh = 3
+		/obj/item/reagent_containers/patch/synthflesh = 3,
 		/obj/item/reagent_containers/hypospray/autoinjector/epinephrine,
 		/obj/item/reagent_containers/drinks/oilcan,
 		/obj/item/melee/baseball_bat,
-		/obj/item/melee/classic_baton
+		/obj/item/melee/classic_baton,
 	)
 
 /obj/structure/rubble/lab
@@ -176,7 +176,7 @@
 	loot = list(
 		/obj/item/stock_parts/cell,
 		/obj/item/stock_parts/cell/hyper/empty,
-		/obj/item/stock_parts/matter_bin/super
+		/obj/item/stock_parts/matter_bin/super,
 		/obj/item/stock_parts/matter_bin/adv,
 		/obj/item/stock_parts/matter_bin = 2,
 		/obj/item/stock_parts/scanning_module/adv,
@@ -188,14 +188,14 @@
 		/obj/item/t_scanner/mod/advanced,
 		/obj/item/clothing/glasses/regular,
 		/obj/item/clothing/glasses/science,
-		/obj/item/clothing/glasses/hud/diagnostic
+		/obj/item/clothing/glasses/hud/diagnostic,
 		/obj/item/clothing/suit/storage/labcoat,
 		/obj/item/clothing/suit/storage/labcoat/chemist,
 		/obj/item/mod/core/standard,
 		/obj/item/mecha_modkit/voice/nanotrasen,
 		/obj/item/mecha_parts/chassis/durand,
 		/obj/item/dnascrambler,
-		/obj/item/flashlight/seclite
+		/obj/item/flashlight/seclite,
 	)
 
 /obj/structure/rubble/war
@@ -234,5 +234,5 @@
 		/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/carbine,
 		/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/scattershot,
 		/obj/item/mecha_parts/mecha_equipment/weapon/energy/laser/heavy,
-		/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack
+		/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack,
 	)
