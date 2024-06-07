@@ -2616,14 +2616,8 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
-/obj/structure/rack,
-/obj/item/gun/energy/disabler{
-	pixel_y = 6
-	},
-/obj/item/gun/energy/disabler{
-	pixel_y = 3
-	},
-/obj/item/gun/energy/disabler,
+/mob/living/simple_animal/bot/secbot/armsky,
+/obj/effect/turf_decal/delivery/hollow,
 /turf/simulated/floor/plasteel{
 	dir = 6;
 	icon_state = "darkred"
@@ -60677,6 +60671,7 @@
 "kNk" = (
 /obj/structure/rack,
 /obj/item/clothing/suit/hooded/ablative,
+/obj/item/gun/energy/ionrifle,
 /turf/simulated/floor/plasteel{
 	dir = 9;
 	icon_state = "darkblue"
@@ -67025,7 +67020,13 @@
 	},
 /obj/machinery/light/directional/north,
 /obj/structure/rack,
-/obj/item/gun/energy/ionrifle,
+/obj/item/gun/energy/disabler{
+	pixel_y = 6
+	},
+/obj/item/gun/energy/disabler{
+	pixel_y = 3
+	},
+/obj/item/gun/energy/disabler,
 /turf/simulated/floor/plasteel{
 	icon_state = "darkred"
 	},
@@ -81417,7 +81418,6 @@
 "uBY" = (
 /obj/machinery/power/apc/important/directional/south,
 /obj/structure/cable/yellow,
-/mob/living/simple_animal/bot/secbot/armsky,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
