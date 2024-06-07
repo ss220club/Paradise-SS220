@@ -413,11 +413,11 @@
 	icon_dead = "scorpion_mini"
 /*
 	- [+] абилка атаки вокруг босса
-	- [/] абилка атаки в определенную область (возможно чардж)
+	- [+] абилка атаки в определенную область (возможно чардж)
 	- [+] автонаводящийся снаряд
-	- [t] спавн адов
+	- [+] спавн адов
 	- [+] абилка как шёпот у ксеносов, но босс говорит на всю карту ттсом и реплика сопровождается ЗДОРОВЕННОЙ ФРАЗОЙ В ЧАТЕ вместе с криповым звуком.
-	- [t] для боевых абилок желателен делей перед кастом, в идеале конечно визуал еще, но это уже влажные мечты
+	- [+] для боевых абилок желателен делей перед кастом, в идеале конечно визуал еще, но это уже влажные мечты
 	- [+] сам бос милишный
 	- [+] с регеном, если можно
 	- [+] скорость низкая
@@ -435,18 +435,16 @@
 	pixel_x = -240
 	pixel_y = -220
 	layer = LARGE_MOB_LAYER
-	// mouse_opacity = MOUSE_OPACITY_OPAQUE
-
 
 	// Balance
 	move_force = MOVE_FORCE_OVERPOWERING
 	move_resist = MOVE_FORCE_OVERPOWERING
 	pull_force = MOVE_FORCE_OVERPOWERING
 	mob_size = MOB_SIZE_LARGE
-	speed = 2
+	speed = 2.5
 	maxHealth = 3000
 	health = 3000
-	var/regeneration_amount = 5
+	var/regeneration_per_second = 5
 	melee_damage_lower = 30
 	melee_damage_upper = 45
 	a_intent = INTENT_HARM
@@ -457,11 +455,14 @@
 	minbodytemp = 0
 	maxbodytemp = INFINITY
 
-	var/list/datum/spell/spells = list(/datum/spell/fireball/homing/cthulhu,
+	var/list/datum/spell/spells = list(
+								/datum/spell/fireball/homing/cthulhu,
 								/datum/spell/leap/cthulhu,
 								/datum/spell/global_annouce,
 								/datum/spell/aoe/conjure/duna,
-								/datum/spell/pulse_rain)
+								/datum/spell/pulse_circle,
+								/datum/spell/meterorite_rain
+								)
 
 /mob/living/simple_animal/hostile/cthulhu/Initialize(mapload)
 	. = ..()
@@ -469,35 +470,56 @@
 		var/datum/spell/spell = new path()
 		AddSpell(spell)
 
+/mob/living/simple_animal/hostile/cthulhu/add_tts_component()
+	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/doom)
+
+
+/mob/living/simple_animal/hostile/cthulhu/Login()
+	. = ..()
+	client.view = "27x21"
+
 /mob/living/simple_animal/hostile/cthulhu/Life(seconds, times_fired)
 	. = ..()
-	adjustHealth(-regeneration_amount * seconds)
+	adjustHealth(-regeneration_per_second * seconds)
 
 /obj/effect/temp_visual/target_cthulhu
 	icon = 'icons/mob/actions/actions.dmi'
 	icon_state = "sniper_zoom"
+	color = "#3333ff"
 	layer = BELOW_MOB_LAYER
 	duration = 0.5 SECONDS
 
 /datum/spell/fireball/homing/cthulhu
 	invocation_type = "none"
+	base_cooldown = 10 SECONDS
 	var/preparation_time = 0.5 SECONDS
+	fireball_type = /obj/item/projectile/homing/magic/homing_fireball/cthulhu
+
+
+/obj/item/projectile/homing/magic/homing_fireball/cthulhu
+	layer = ABOVE_ALL_MOB_LAYER
+	explosion_devastate = 0
+	explosion_heavy = 0
+	explosion_light = 2
+	explosion_flash = 4
+	explosion_fire = 3
 
 /datum/spell/fireball/homing/cthulhu/cast(list/targets, mob/living/user)
-	for(var/mob/mob in targets)
-		new /obj/effect/temp_visual/target_cthulhu(get_turf(mob))
-	if(!do_after(user, preparation_time, FALSE))
+	for(var/atom/atom in targets)
+		new /obj/effect/temp_visual/target_cthulhu(get_turf(atom))
+	if(!do_after(user, preparation_time, FALSE, allow_moving = TRUE))
 		return FALSE
 	. = ..()
 
 
 /datum/spell/leap/cthulhu
-	var/preparation_time = 0.3 SECONDS
+	var/preparation_time = 0.5 SECONDS
 
 /datum/spell/leap/cthulhu/cast(list/targets, mob/living/user)
-	for(var/mob/mob in targets)
-		new /obj/effect/temp_visual/target_cthulhu(get_turf(user))
-	if(!do_after(user, preparation_time, FALSE))
+	animate_wiggle_then_reset(user, 1, 1, 1, 1)
+	user.pixel_x = initial(user.pixel_x)
+	user.pixel_y = initial(user.pixel_y)
+	if(!do_after(user, preparation_time, FALSE, allow_moving = TRUE))
 		return FALSE
 	. = ..()
 	user.pixel_y = initial(user.pixel_y)
@@ -512,11 +534,12 @@
 	return new /datum/spell_targeting/self
 
 /datum/spell/global_annouce/cast(list/targets, mob/user)
-	var/text = tgui_input_text(user, "Сообщение для отправки", "Волна мысли")
-	text = span_narsie(text)
+	var/message = tgui_input_text(user, "Сообщение для отправки", "Волна мысли")
+	var/spanned_message = span_narsie(message)
 	for(var/mob/player as anything in GLOB.player_list)
-		to_chat(player, text)
-	sound_to_playing_players(sound('sound/misc/demon_dies.ogg'), 60)
+		user.cast_tts(player, message)
+		to_chat(player, spanned_message)
+	sound_to_playing_players(sound('sound/misc/demon_dies.ogg'), 20)
 
 /datum/spell/aoe/conjure/duna
 	name = "Призвать прислужников"
@@ -529,27 +552,63 @@
 	summon_type = list(/mob/living/simple_animal/hostile/duna,
 						/mob/living/simple_animal/hostile/duna/range)
 
-/datum/spell/pulse_rain
-	name = "AOE атака без названия"
+/datum/spell/pulse_circle
+	name = "Я не придумал название спелу"
 	action_icon_state = "magicm"
-	base_cooldown = 15 SECONDS
+	base_cooldown = 5 SECONDS
 	clothes_req = FALSE
 	var/obj/item/projectile/projectile_type = /obj/item/projectile/energy/mindflayer
 
-/datum/spell/pulse_rain/create_new_targeting()
-	var/datum/spell_targeting/clicked_atom/external/C = new()
-	C.range = 20
-	return C
+/datum/spell/pulse_circle/create_new_targeting()
+	return new /datum/spell_targeting/self
 
-/datum/spell/pulse_rain/proc/shoot(base, user, angle)
-	var/obj/item/projectile/H = new projectile_type(get_turf(user))
-	H.preparePixelProjectile(base, base, get_turf(user))
-	H.firer = user
-	H.firer_source_atom = user
-	H.fire(angle)
+/datum/spell/pulse_circle/proc/shoot(user, angle)
+	var/obj/item/projectile/P = new projectile_type(get_turf(user))
+	P.firer = user
+	P.fire(angle)
 
-/datum/spell/pulse_rain/cast(list/targets, mob/user)
-	var/target = targets[1]
+/datum/spell/pulse_circle/cast(list/targets, mob/user)
 	var/static/list/directional_shot_angles = list(1, 45, 90, 135, 180, 225, 270, 315)
 	for(var/angle in directional_shot_angles)
-		shoot(target, user, angle)
+		shoot(user, angle)
+
+/datum/spell/meterorite_rain
+	name = "Метеоритный дождь"
+	clothes_req = FALSE
+	base_cooldown = 20 SECONDS
+	action_icon_state = "sniper_zoom"
+	var/aoe = 4
+	var/probability = 25
+
+/datum/spell/meterorite_rain/create_new_targeting()
+	. = ..()
+	var/datum/spell_targeting/clicked_atom/external/C = new()
+	C.range = 25
+	return C
+
+/datum/spell/meterorite_rain/cast(list/targets, mob/user)
+	. = ..()
+	var/turf/target = targets[1]
+	for(var/turf/turf in range(aoe, get_turf(target)))
+		if(prob(probability))
+			new /obj/effect/temp_visual/target_cthulhu_meteor(turf)
+
+/obj/effect/temp_visual/target_cthulhu_meteor
+	icon = 'icons/effects/effects.dmi'
+	icon_state = "target_circle"
+	duration = 1 SECONDS
+	var/damage = 20
+
+/obj/effect/temp_visual/target_cthulhu_meteor/Initialize(mapload)
+	. = ..()
+	var/turf/T = get_turf(src)
+	playsound(T,'sound/magic/fleshtostone.ogg', 80, TRUE)
+	new /obj/effect/temp_visual/fireball(T)
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/effect/temp_visual/target_cthulhu_meteor, fall), T), duration)
+
+/obj/effect/temp_visual/target_cthulhu_meteor/proc/fall(turf/T)
+	playsound(T, "explosion", 80, TRUE)
+	new /obj/effect/hotspot(T)
+	T.hotspot_expose(700, 50, 1)
+	for(var/mob/living/L in T.contents)
+		L.adjustFireLoss(damage)
