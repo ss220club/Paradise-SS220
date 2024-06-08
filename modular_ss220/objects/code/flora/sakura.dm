@@ -1,4 +1,4 @@
-/// TIme before blossom starts
+/// Time before blossom starts
 #define BLOSSOM_START_TIME (30 MINUTES)
 /// Time before blossom ends
 #define BLOSSOM_END_TIME (10 MINUTES)
@@ -88,7 +88,7 @@
 		parent_tree = Sakura
 
 /obj/effect/blossom/Destroy()
-	if(parent_tree == null)
+	if(isnull(parent_tree))
 		qdel(src)
 	return ..()
 
@@ -97,22 +97,25 @@
 	var/turf/T = get_turf(src)
 	if(locate(/obj/effect/decal/sakura_leaves, T))
 		return
-	if(!istype(T, /turf/simulated/floor/grass/sakura))
-		if(parent_tree)
-			new /obj/effect/decal/sakura_leaves(T, src)
-			// Start the timer to replace grass tile with sakura's one after 10 minutes
-			addtimer(CALLBACK(src, PROC_REF(transform_turf)), TRANSFORM_TURF_TIME, TIMER_UNIQUE | TIMER_OVERRIDE | TIMER_STOPPABLE)
+	if(istype(T, /turf/simulated/floor/grass/sakura))
+		return
+	if(!parent_tree)
+		return
+	new /obj/effect/decal/sakura_leaves(T, src)
+	// Start the timer to replace grass tile with sakura's one after 10 minutes
+	addtimer(CALLBACK(src, PROC_REF(transform_turf)), TRANSFORM_TURF_TIME, TIMER_UNIQUE | TIMER_OVERRIDE | TIMER_STOPPABLE)
 
 /// Transforms grass tile to sakura grass under blossom effect
 /obj/effect/blossom/proc/transform_turf()
 	var/turf/T = get_turf(src)
 	if(istype(T, /turf/simulated/floor/grass/sakura))
 		return
-	if(istype(T, /turf/simulated/floor/grass))
-		T.ChangeTurf(/turf/simulated/floor/grass/sakura)
-		// Deletes pile of Sakura leaves
-		for(var/obj/effect/decal/sakura_leaves/D in T)
-			qdel(D)
+	if(!istype(T, /turf/simulated/floor/grass))
+		return
+	T.ChangeTurf(/turf/simulated/floor/grass/sakura)
+	// Deletes pile of Sakura leaves
+	for(var/obj/effect/decal/sakura_leaves/D in T)
+		qdel(D)
 
 /// Sakura Leaves
 /obj/effect/decal/sakura_leaves
@@ -145,9 +148,9 @@
 	for(var/obj/structure/flora/tree/sakura/sakura in T)
 		if(sakura.icon_state == "cherry_blossom")
 			pixel_x = -2
-			dir = EAST
+			dir = WEST
 		if(sakura.icon_state == "cherry_blossom2")
-			pixel_x = 2
+			pixel_x = 5
 			dir = EAST
 		if(sakura.icon_state == "cherry_blossom3")
 			pixel_x = -7
@@ -199,13 +202,10 @@
 	layer = GRASS_UNDER_LAYER
 	transform = null
 
-/turf/simulated/floor/grass/sakura/break_tile()
+/turf/simulated/floor/grass/sakura/update_icon_state()
 	. = ..()
-	icon_state = "damaged"
-
-/turf/simulated/floor/grass/sakura/burn_tile()
-	. = ..()
-	icon_state = "damaged"
+	if(broken || burnt)
+		icon_state = "damaged"
 
 #undef BLOSSOM_START_TIME
 #undef BLOSSOM_END_TIME
