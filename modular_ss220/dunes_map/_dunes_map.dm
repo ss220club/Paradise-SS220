@@ -35,6 +35,10 @@
 
 #define DESERT_SOUNDS_SECRET list('modular_ss220/dunes_map/sound/music/whatdowefound.ogg')
 
+#define CC_IS_UNDER_ATTACK list('modular_ss220/dunes_map/sound/music/cc_attack.ogg',\
+	'modular_ss220/dunes_map/sound/music/cc_attack2.ogg',\
+	'modular_ss220/dunes_map/sound/music/cc_ship.ogg',\
+	'modular_ss220/dunes_map/sound/music/cc_ship2.ogg')
 
 /datum/modpack/dunes_map/post_initialize()
 	. = ..()

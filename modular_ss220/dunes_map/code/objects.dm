@@ -445,44 +445,6 @@
 		)
 	registered_name = "[pick (kidan_name)]"
 
-//template gate
-/obj/structure/necropolis_gate/temple_gate
-	name = "\improper врата храма"
-	desc = "Массивные врата древнего храма, вырезанные из песчанника и исписанные древними проклятиями."
-	light_power = 0
-	light_range = 0
-
-/obj/structure/necropolis_gate/temple_gate/toggle_the_gate(mob/user)
-	if(changing_openness)
-		return
-
-	changing_openness = TRUE
-	var/turf/T = get_turf(src)
-
-	if(open)
-		new /obj/effect/temp_visual/necropolis(T)
-		visible_message("<span class='danger'> Двери храма с грохотом закрылись!</span>")
-		playsound(T, 'sound/effects/stonedoor_openclose.ogg', 300, TRUE, frequency = 80000)
-		density = TRUE
-		var/turf/sight_blocker_turf = get_turf(src)
-		if(sight_blocker_distance)
-			for(var/i in 1 to sight_blocker_distance)
-				if(!sight_blocker_turf)
-					break
-				sight_blocker_turf = get_step(sight_blocker_turf, NORTH)
-		if(sight_blocker_turf)
-			sight_blocker.pixel_y = initial(sight_blocker.pixel_y) - (32 * sight_blocker_distance)
-			sight_blocker.forceMove(sight_blocker_turf)
-		addtimer(CALLBACK(src, PROC_REF(toggle_open_delayed_step), T), 0.5 SECONDS, TIMER_UNIQUE)
-		return TRUE
-
-	cut_overlay(door_overlay)
-	new /obj/effect/temp_visual/necropolis/open(T)
-	visible_message("<span class='warning'>Массивная дверь поддается и медленно открвает вам путь во тьму...</span>")
-	playsound(T, 'sound/effects/stonedoor_openclose.ogg', 300, TRUE, frequency = 20000)
-	addtimer(CALLBACK(src, PROC_REF(toggle_closed_delayed_step)), 2.2 SECONDS, TIMER_UNIQUE)
-	return TRUE
-
 //sign
 /obj/structure/warn_sign
 	name = "предупреждающий знак"
@@ -520,6 +482,37 @@
 	icon = 'modular_ss220/dunes_map/icons/stack.dmi'
 	icon_state = "native"
 	dynamic_icon_state = FALSE
+
+//CE closet rip meson
+
+/obj/structure/closet/secure_closet/engineering_chief/rip_meson
+
+
+/obj/structure/closet/secure_closet/engineering_chief/rip_meson/populate_contents()
+	if(prob(50))
+		new /obj/item/storage/backpack/industrial(src)
+	else
+		new /obj/item/storage/backpack/satchel_eng(src)
+	new /obj/item/storage/backpack/duffel/engineering(src)
+	new /obj/item/areaeditor/blueprints/ce(src)
+	new /obj/item/storage/box/permits(src)
+	new /obj/item/storage/bag/garment/chief_engineer(src)
+	new /obj/item/mod/module/jetpack/advanced(src)
+	new /obj/item/cartridge/ce(src)
+	new /obj/item/radio/headset/heads/ce(src)
+	new /obj/item/storage/toolbox/mechanical(src)
+	new /obj/item/clothing/mask/gas(src)
+	new /obj/item/multitool(src)
+	new /obj/item/holosign_creator/engineering(src)
+	new /obj/item/flash(src)
+	new /obj/item/door_remote/chief_engineer(src)
+	new /obj/item/rpd(src)
+	new /obj/item/reagent_containers/drinks/mug/ce(src)
+	new /obj/item/clothing/accessory/medal/engineering(src)
+	new /obj/item/holosign_creator/atmos(src)
+	new /obj/item/rcd/preloaded(src)
+	new /obj/item/organ/internal/cyberimp/brain/wire_interface(src)
+	new /obj/item/storage/bag/construction(src)
 
 //cube and VSA
 

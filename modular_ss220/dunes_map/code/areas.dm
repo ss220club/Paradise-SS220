@@ -189,3 +189,13 @@
 	name = "\improper Бункер - Офис Центрального Командования"
 	icon = 'icons/turf/areas.dmi'
 	icon_state = "green"
+
+/area/centcom/ss220
+	name = "\improper ЦК"
+	icon_state = "centcom"
+	requires_power = FALSE
+	dynamic_lighting = DYNAMIC_LIGHTING_FORCED
+	nad_allowed = TRUE
+	ambientsounds = CC_IS_UNDER_ATTACK
+	min_ambience_cooldown = 3 MINUTES
+	max_ambience_cooldown = 3 MINUTES
