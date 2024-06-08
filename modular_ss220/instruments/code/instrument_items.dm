@@ -4,7 +4,7 @@
 	icon_state = "elguitar_fire"
 	item_state = "elguitar_fire"
 	icon = 'modular_ss220/instruments/icons/samurai_guitar.dmi'
-	w_class = WEIGHT_CLASS_BULKY
+	w_class = WEIGHT_CLASS_NORMAL
 	lefthand_file = 'modular_ss220/instruments/icons/samurai_guitar_lefthand.dmi'
 	righthand_file = 'modular_ss220/instruments/icons/samurai_guitar_righthand.dmi'
 	attack_verb = list("played metal on", "shredded", "crashed", "smashed")
@@ -21,7 +21,7 @@
 	icon_state = "bluegitara"
 	item_state = "bluegitara"
 	icon = 'modular_ss220/instruments/icons/samurai_guitar.dmi'
-	w_class = WEIGHT_CLASS_BULKY
+	w_class = WEIGHT_CLASS_NORMAL
 	lefthand_file = 'modular_ss220/instruments/icons/samurai_guitar_lefthand.dmi'
 	righthand_file = 'modular_ss220/instruments/icons/samurai_guitar_righthand.dmi'
 	attack_verb = list("played metal on", "shredded", "crashed", "smashed")
@@ -38,7 +38,7 @@
 	icon_state = "elguitar"
 	item_state = "elguitar"
 	icon = 'modular_ss220/instruments/icons/samurai_guitar.dmi'
-	w_class = WEIGHT_CLASS_BULKY
+	w_class = WEIGHT_CLASS_NORMAL
 	lefthand_file = 'modular_ss220/instruments/icons/samurai_guitar_lefthand.dmi'
 	righthand_file = 'modular_ss220/instruments/icons/samurai_guitar_righthand.dmi'
 	attack_verb = list("played metal on", "shredded", "crashed", "smashed")
