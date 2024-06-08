@@ -7,7 +7,7 @@
 	light_power = 0
 	light_range = 0
 
-/obj/structure/necropolis_gate/Initialize()
+/obj/structure/necropolis_gate/temple_gate/Initialize()
 	. = ..()
 	var/turf/sight_blocker_turf = get_turf(src)
 	if(sight_blocker_distance)
@@ -57,7 +57,7 @@
 		return TRUE
 
 	cut_overlay(door_overlay)
-	new /obj/effect/temp_visual/necropolis/open/desert(T)
+	new /obj/effect/temp_visual/necropolis/desert/open(T)
 	visible_message("<span class='warning'>Массивная дверь поддается и медленно открвает вам путь во тьму...</span>")
 	playsound(T, 'sound/effects/stonedoor_openclose.ogg', 300, TRUE, frequency = 20000)
 	addtimer(CALLBACK(src, PROC_REF(toggle_closed_delayed_step)), 2.2 SECONDS, TIMER_UNIQUE)
@@ -72,11 +72,11 @@
 	pixel_x = -32
 	pixel_y = -32
 
-/obj/effect/temp_visual/necropolis/open/desert
+/obj/effect/temp_visual/necropolis/desert/open
 	icon_state = "desertdoor_opening"
 	duration = 38
 
-/obj/structure/opacity_blocker/desert
+/obj/structure/opacity_blocker
 	icon = 'modular_ss220/dunes_map/icons/gate.dmi'
 	icon_state = "desertgate_blocker"
 	layer = EDGED_TURF_LAYER
@@ -85,6 +85,7 @@
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	opacity = TRUE
 	anchored = TRUE
+	invisibility = 101
 
 
 //boss gate
@@ -97,7 +98,7 @@
 	light_power = 0
 	light_range = 0
 
-/obj/structure/necropolis_gate/Initialize()
+/obj/structure/necropolis_gate/boss_gate/Initialize()
 	. = ..()
 	var/turf/sight_blocker_turf = get_turf(src)
 	if(sight_blocker_distance)
@@ -122,7 +123,7 @@
 	dais_overlay.layer = CLOSED_TURF_LAYER
 	add_overlay(dais_overlay)
 
-/obj/structure/necropolis_gate/temple_gate/toggle_the_gate(mob/user)
+/obj/structure/necropolis_gate/boss_gate/toggle_the_gate(mob/user)
 	if(changing_openness)
 		return
 
@@ -147,7 +148,7 @@
 		return TRUE
 
 	cut_overlay(door_overlay)
-	new /obj/effect/temp_visual/necropolis/open/boss(T)
+	new /obj/effect/temp_visual/necropolis/boss/open(T)
 	visible_message("<span class='warning'>Врата пирамиды расступаются перед вами, издавая пронзительный скрежет...</span>")
 	playsound(T, 'sound/effects/stonedoor_openclose.ogg', 300, TRUE, frequency = 20000)
 	addtimer(CALLBACK(src, PROC_REF(toggle_closed_delayed_step)), 2.2 SECONDS, TIMER_UNIQUE)
@@ -157,16 +158,16 @@
 	icon = 'modular_ss220/dunes_map/icons/gate.dmi'
 	icon_state = "bossdoor_closing"
 	appearance_flags = 0
-	duration = 6
+	duration = 14
 	layer = EDGED_TURF_LAYER
 	pixel_x = -32
 	pixel_y = -32
 
-/obj/effect/temp_visual/necropolis/open/boss
+/obj/effect/temp_visual/necropolis/boss/open
 	icon_state = "bossdoor_opening"
-	duration = 38
+	duration = 18
 
-/obj/structure/opacity_blocker/boss
+/obj/structure/opacity_blocker
 	icon = 'modular_ss220/dunes_map/icons/gate.dmi'
 	icon_state = "bossgate_blocker"
 	layer = EDGED_TURF_LAYER
@@ -175,13 +176,14 @@
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	opacity = TRUE
 	anchored = TRUE
+	invisibility = 101
 
 /obj/structure/necropolis_arch/boss_arch
 	name = "арка пирамиды"
 	desc = "Циклопическая арка над вратами пирамиды, высеченная из черного камня."
 	icon = 'modular_ss220/dunes_map/icons/arch.dmi'
 	icon_state = "bossarch_full"
-	pixel_x = -65
+	pixel_x = -64
 	pixel_y = -42
 
 /obj/structure/necropolis_arch/boss_arch/Initialize()
