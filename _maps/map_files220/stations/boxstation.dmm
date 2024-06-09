@@ -11194,6 +11194,9 @@
 	},
 /area/station/maintenance/fsmaint)
 "aPL" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 5
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "whitegreenfull"
 	},
@@ -12167,13 +12170,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/hologram/holopad,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 6
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 10
-	},
+/obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/plasteel{
 	icon_state = "whitegreenfull"
 	},
@@ -13271,7 +13268,6 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
 	},
-/obj/machinery/light/directional/north,
 /obj/item/radio/intercom/directional/north,
 /turf/simulated/floor/plasteel,
 /area/station/public/dorms)
@@ -47942,7 +47938,7 @@
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/assembly_line)
 "eri" = (
-/obj/structure/table/wood,
+/obj/structure/table/wood/poker,
 /obj/item/coin/iron,
 /obj/item/coin/iron,
 /obj/item/coin/gold,
@@ -70355,12 +70351,14 @@
 	},
 /area/station/command/office/hos)
 "mmr" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "whitegreenfull"
@@ -75457,12 +75455,11 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/asmaint)
 "ofu" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
-	dir = 8
-	},
 /obj/machinery/alarm/directional/east,
+/obj/machinery/cryopod,
 /turf/simulated/floor/plasteel{
-	icon_state = "whitegreenfull"
+	dir = 8;
+	icon_state = "whitegreen"
 	},
 /area/station/public/sleep)
 "ofw" = (
@@ -89049,6 +89046,7 @@
 	pixel_y = 32
 	},
 /obj/machinery/light/directional/north,
+/obj/machinery/hologram/holopad,
 /turf/simulated/floor/plasteel{
 	icon_state = "whitegreenfull"
 	},
@@ -95946,7 +95944,7 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/fpmaint)
 "vpJ" = (
-/obj/structure/table/wood,
+/obj/structure/table/wood/poker,
 /obj/item/deck/cards/doublecards,
 /turf/simulated/floor/carpet/green,
 /area/station/public/arcade)
@@ -97422,9 +97420,7 @@
 	},
 /area/station/security/permabrig)
 "vOR" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
-	dir = 4
-	},
+/obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/plasteel{
 	icon_state = "whitegreenfull"
 	},
@@ -101070,7 +101066,7 @@
 /turf/simulated/floor/plasteel,
 /area/station/service/janitor)
 "xfi" = (
-/obj/structure/table/wood,
+/obj/structure/table/wood/poker,
 /obj/machinery/button/windowtint/north{
 	id = "casino"
 	},
