@@ -85,3 +85,12 @@
 	cost = 10
 	allow_duplicates = FALSE
 
+/datum/map_template/ruin/space/abotch_rsn
+	name = "Nanotreisen ABOTCH Research Station"
+	id = "abotch_rsn"
+	description = "ABOTCH_THETA_CHARLIE"
+	prefix = "_maps/map_files220/RandomRuins/SpaceRuins/"
+	suffix = "abotch_rsn.dmm"
+	cost = 0
+	allow_duplicates = FALSE
+	always_place = TRUE
