@@ -84,3 +84,13 @@
 	suffix = "spacehotel.dmm"
 	cost = 10
 	allow_duplicates = FALSE
+
+/datum/map_template/ruin/space/abotch_rsn
+	name = "Nanotreisen ABOTCH Research Station"
+	id = "abotch_rsn"
+	description = "bomj Station ABOTCH"
+	prefix = "_maps/map_files220/RandomRuins/SpaceRuins/"
+	suffix = "abotch_rsn.dmm"
+	cost = 0
+	allow_duplicates = FALSE
+	always_place = TRUE
