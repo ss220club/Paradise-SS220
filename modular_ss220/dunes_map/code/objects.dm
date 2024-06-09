@@ -427,6 +427,7 @@
 /obj/effect/mine/explosive/desert
 	icon = 'modular_ss220/dunes_map/icons/mine.dmi'
 	icon_state = "desertminearmed"
+	faction = list("raider")
 	range_heavy = 1
 	range_light = 3
 	range_flash = 4
@@ -514,21 +515,28 @@
 	new /obj/item/organ/internal/cyberimp/brain/wire_interface(src)
 	new /obj/item/storage/bag/construction(src)
 
+//sarcophagus
+
+/obj/structure/closet/coffin/sarcophagus/full
+
+/obj/structure/closet/coffin/sarcophagus/full/populate_contents()
+	new /obj/effect/mob_spawn/human/corpse/skeleton(src)
+
 //cube and VSA
 
 /obj/item/stock_parts/cell/cube
 	name = "Куб"
-	desc = "Место для описания куба"
+	desc = "Легендарный артефакт, Куб. Пожалуй, самый ценный в обитаемой Галактике. Его гладкая поверхность холодно поблёскивает чернотой."
 	maxcharge = 500000
 	chargerate = 100
 	icon = 'modular_ss220/dunes_map/icons/cube.dmi'
-	icon_state = "warn"
+	icon_state = "empty"
 
 /obj/item/stock_parts/cell/cube/process()
 	if(percent() == 100)
 		icon_state = "charged"
 	else
-		icon_state = "warn"
+		icon_state = "empty"
 
 
 /obj/item/stock_parts/cell/cube/New()

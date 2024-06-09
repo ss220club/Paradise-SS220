@@ -346,7 +346,7 @@
 	melee_damage_lower = 15
 	melee_damage_upper = 20
 	minbodytemp = 0
-	maxbodytemp = 3500
+	maxbodytemp = 600
 	faction = list("scorpio")
 	pass_flags = PASSTABLE
 	move_to_delay = 6
@@ -377,6 +377,7 @@
 	icon_dead = "scorpion"
 	maxHealth = 120
 	health = 120
+	maxbodytemp = 600
 	venom_per_bite = 20
 	melee_damage_lower = 10
 	melee_damage_upper = 20

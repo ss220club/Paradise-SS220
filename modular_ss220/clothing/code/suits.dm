@@ -357,6 +357,13 @@
 	else
 		footstep++
 	..()
+// abaya temp
+
+/obj/item/clothing/suit/hooded/abaya
+	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
+
+/obj/item/clothing/head/hooded/screened_niqab
+	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
 
 //dune hardsuit
 
