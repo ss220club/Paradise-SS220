@@ -93,5 +93,5 @@
 	prefix = "_maps/map_files220/RandomRuins/SpaceRuins/"
 	suffix = "oldstation220.dmm"
 	cost = 0
-	allow_duplicates = FALSE
 	always_place = TRUE
+	allow_duplicates = FALSE
