@@ -105,6 +105,7 @@
 	robust_searching = 1
 	maxHealth = 150
 	health = 150
+	see_in_dark = 8
 	harm_intent_damage = 5
 	melee_damage_lower = 15
 	melee_damage_upper = 20
@@ -191,6 +192,7 @@
 	robust_searching = 1
 	maxHealth = 300
 	health = 300
+	see_in_dark = 8
 	ranged_cooldown_time = 5 SECONDS
 	ranged = TRUE
 	rapid = 3
@@ -317,3 +319,83 @@
 	projectiletype = /obj/item/projectile/beam/pulse
 	projectilesound = 'sound/weapons/emitter2.ogg'
 
+// Скорпиончики
+
+/mob/living/simple_animal/hostile/poison/giant_scorpio
+	name = "гигантский скорпион"
+	desc = "Огромная восьмилапая тварь, закованная в хитиновый панцырь. Этот выглядит особенно защищенным. Остерегайтесь его сильных клешней и смертоносного жала на хвосте!"
+	icon = 'modular_ss220/dunes_map/icons/scorpio.dmi'
+	icon_state = "yellow_scorpion"
+	icon_living = "yellow_scorpion"
+	icon_dead = "yellow_scorpion"
+	mob_biotypes = MOB_ORGANIC | MOB_BUG
+	speak_emote = list("chitters")
+	emote_hear = list("chitters")
+	speak_chance = 5
+	turns_per_move = 5
+	see_in_dark = 8
+	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
+	footstep_type = FOOTSTEP_MOB_CLAW
+	response_help  = "pets"
+	response_disarm = "gently pushes aside"
+	response_harm   = "hits"
+	loot = list(/obj/effect/decal/cleanable/blood/gibs/xeno)
+	maxHealth = 200
+	health = 200
+	obj_damage = 60
+	melee_damage_lower = 15
+	melee_damage_upper = 20
+	minbodytemp = 0
+	maxbodytemp = 3500
+	faction = list("scorpio")
+	pass_flags = PASSTABLE
+	move_to_delay = 6
+	del_on_death = TRUE
+	attacktext = "strikes"
+	attack_sound = 'sound/weapons/bladeslice.ogg'
+	gold_core_spawnable = HOSTILE_SPAWN
+	var/venom_per_bite = 0
+
+/mob/living/simple_animal/hostile/poison/giant_scorpio/AttackingTarget()
+	. = ..()
+	if(. && venom_per_bite > 0 && iscarbon(target) && (!client || a_intent == INTENT_HARM))
+		var/mob/living/carbon/C = target
+		var/inject_target = pick("chest", "head")
+		if(C.can_inject(null, FALSE, inject_target, FALSE))
+			C.reagents.add_reagent("toxin", venom_per_bite)
+
+/*
+/mob/living/simple_animal/hostile/poison/giant_scorpio/AttackingTarget()
+	. = ..()
+	flick("scorpion_attack",src)
+*/
+
+/mob/living/simple_animal/hostile/poison/giant_scorpio/poison
+	desc = "Огромная восьмилапая тварь, закованная в хитиновый панцырь. Этот кажется особенно ядовитым. Остерегайтесь его сильных клешней и смертоносного жала на хвосте!"
+	icon_state = "scorpion"
+	icon_living = "scorpion"
+	icon_dead = "scorpion"
+	maxHealth = 120
+	health = 120
+	venom_per_bite = 20
+	melee_damage_lower = 10
+	melee_damage_upper = 20
+	move_to_delay = 5
+
+
+/mob/living/simple_animal/hostile/poison_snake/scorpio_mini
+	name = "скорпион"
+	desc = "Небольшое проворливое членистоногое обитающие в засушливом климате. Для охоты и защиты использует жало с сильным нейропаралитическим ядом."
+	icon = 'modular_ss220/dunes_map/icons/scorpio.dmi'
+	icon_state = "y_scorpion_mini"
+	icon_living = "y_scorpion_mini"
+	icon_dead = "y_scorpion_mini"
+	speak_emote = list("chitters")
+	faction = list("scorpio")
+	del_on_death = TRUE
+	loot = list(/obj/effect/decal/cleanable/spiderling_remains)
+
+/mob/living/simple_animal/hostile/poison_snake/scorpio_mini/purpl
+	icon_state = "scorpion_mini"
+	icon_living = "scorpion_mini"
+	icon_dead = "scorpion_mini"
