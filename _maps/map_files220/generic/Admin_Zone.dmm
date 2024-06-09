@@ -31,6 +31,20 @@
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/tdome/arena)
+"aE" = (
+/obj/structure/rack,
+/obj/item/ammo_box/shotgun/buck{
+	pixel_y = -2
+	},
+/obj/item/ammo_box/shotgun/beanbag{
+	pixel_y = 4
+	},
+/obj/item/paper{
+	info = "Базовые патроны, если нужно ещё возьмите из своих карманов..";
+	name = "Напоминалка"
+	},
+/turf/simulated/floor/pod/dark,
+/area/space)
 "aG" = (
 /turf/simulated/floor/holofloor{
 	dir = 8;
@@ -43,6 +57,11 @@
 	icon_state = "red"
 	},
 /area/holodeck/source_basketball)
+"aL" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dust,
+/turf/simulated/floor/plating,
+/area/space)
 "aQ" = (
 /obj/item/clothing/under/color/rainbow,
 /obj/item/clothing/glasses/sunglasses_fake,
@@ -51,6 +70,39 @@
 	icon_state = "desert"
 	},
 /area/holodeck/source_beach)
+"aX" = (
+/obj/effect/decal/cleanable/dust,
+/turf/simulated/floor/plasteel/freezer,
+/area/space)
+"aY" = (
+/obj/structure/table/wood/poker,
+/turf/simulated/floor/wood/fancy,
+/area/space)
+"aZ" = (
+/obj/structure/rack,
+/obj/item/phone{
+	pixel_y = -8;
+	pixel_x = 8
+	},
+/obj/item/phone,
+/obj/item/phone{
+	pixel_y = -8;
+	pixel_x = -8
+	},
+/obj/item/phone{
+	pixel_y = 8;
+	pixel_x = 8
+	},
+/obj/item/phone{
+	pixel_y = 8;
+	pixel_x = -8
+	},
+/obj/item/paper{
+	info = "Назовите номер боевого/холостого патрона уведомив какой он участнику лично в голову. ПАТРОНЫ СЧИТАТЬ ОТ ТЕКУЩИХ А НЕ ОТ СТАРТОВОЗАРЯЖЕННЫХ!";
+	name = "Напоминалка"
+	},
+/turf/simulated/floor/pod/dark,
+/area/space)
 "bq" = (
 /obj/structure/chair/stool/holostool{
 	dir = 1
@@ -83,6 +135,17 @@
 /obj/item/grenade/chem_grenade/large,
 /turf/simulated/floor/wood/oak,
 /area/admin)
+"bJ" = (
+/obj/structure/sink/directional/west{
+	pixel_x = 13
+	},
+/obj/structure/mirror{
+	icon_state = "mirror_broke";
+	pixel_x = 28
+	},
+/obj/effect/decal/cleanable/dust,
+/turf/simulated/floor/plasteel/freezer,
+/area/space)
 "bL" = (
 /turf/simulated/floor/plasteel{
 	icon_state = "grimy"
@@ -217,6 +280,10 @@
 	icon_state = "wood"
 	},
 /area/holodeck/source_theatre)
+"dY" = (
+/obj/structure/railing/corner,
+/turf/simulated/floor/catwalk,
+/area/space)
 "dZ" = (
 /obj/structure/table/wood,
 /obj/item/ammo_box/magazine/sniper_rounds/penetrator,
@@ -275,6 +342,15 @@
 /obj/item/gun/magic/wand/teleport,
 /turf/simulated/floor/wood/oak,
 /area/admin)
+"ev" = (
+/obj/machinery/conveyor_switch/oneway{
+	id = "roulette2"
+	},
+/obj/effect/turf_decal/arrows/white{
+	dir = 8
+	},
+/turf/simulated/floor/pod/dark,
+/area/space)
 "ew" = (
 /obj/structure/holowindow,
 /turf/simulated/floor/holofloor{
@@ -383,12 +459,29 @@
 /obj/structure/table/reinforced,
 /turf/simulated/floor/plasteel/dark,
 /area/tdome/tdomeobserve)
+"fJ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dust,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/door/airlock/maintenance_hatch,
+/turf/simulated/floor/plasteel/freezer,
+/area/space)
 "fO" = (
 /obj/effect/baseturf_helper{
 	baseturf = /turf/simulated/floor/plasteel
 	},
 /turf/simulated/wall/indestructible,
 /area/adminconstruction)
+"fZ" = (
+/obj/structure/chair/comfy/black{
+	dir = 8
+	},
+/obj/item/paper{
+	info = "Все представленные вещи в комнате можно копировать";
+	name = "Напоминалка"
+	},
+/turf/simulated/floor/pod/dark,
+/area/space)
 "gc" = (
 /obj/structure/table,
 /obj/item/stack/cable_coil,
@@ -416,12 +509,37 @@
 	icon_state = "alienvault"
 	},
 /area/admin)
+"gK" = (
+/obj/effect/turf_decal/loading_area/red{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/space)
 "gN" = (
 /obj/structure/flora/grass/brown,
 /turf/simulated/floor/holofloor{
 	icon_state = "snow"
 	},
 /area/holodeck/source_snowfield)
+"gO" = (
+/obj/structure/table/reinforced,
+/obj/machinery/conveyor{
+	dir = 8;
+	id = "roulette1"
+	},
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "roulette2"
+	},
+/obj/structure/plasticflaps{
+	opacity = 1
+	},
+/turf/simulated/floor/plating,
+/area/space)
 "gR" = (
 /obj/structure/table/wood,
 /obj/item/paper{
@@ -548,6 +666,15 @@
 /obj/item/gun/projectile/shotgun/riot,
 /turf/simulated/floor/wood/oak,
 /area/admin)
+"iE" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/toilet{
+	dir = 4
+	},
+/obj/machinery/light/small/directional/north,
+/obj/effect/mapping_helpers/machinery/destroyed,
+/turf/simulated/floor/plasteel/freezer,
+/area/space)
 "iM" = (
 /obj/structure/table/wood,
 /obj/item/gun/energy/pulse/pistol,
@@ -582,6 +709,27 @@
 /obj/machinery/reagentgrinder,
 /turf/simulated/floor/wood/oak,
 /area/admin)
+"jz" = (
+/obj/structure/rack,
+/obj/item/reagent_containers/glass/bottle/adminordrazine{
+	pixel_y = 10;
+	pixel_x = -10
+	},
+/obj/item/reagent_containers/glass/bottle/adminordrazine{
+	pixel_y = 10;
+	pixel_x = 10
+	},
+/obj/item/reagent_containers/glass/bottle/adminordrazine{
+	pixel_x = 10
+	},
+/obj/item/reagent_containers/glass/bottle/adminordrazine{
+	pixel_x = -10
+	},
+/obj/item/reagent_containers/glass/bottle/adminordrazine{
+	pixel_y = 5
+	},
+/turf/simulated/floor/pod/dark,
+/area/space)
 "jB" = (
 /obj/structure/table/wood,
 /obj/item/nullrod/tribal_knife,
@@ -631,6 +779,10 @@
 	icon_state = "vault"
 	},
 /area/tdome/tdomeadmin)
+"jS" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/plating,
+/area/space)
 "jY" = (
 /obj/structure/table/holotable,
 /obj/item/clothing/gloves/boxing/hologlove,
@@ -651,6 +803,44 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/tdome/arena_source)
+"kc" = (
+/obj/structure/rack,
+/obj/item/bio_chip_implanter/proto_adrenalin{
+	pixel_y = 12;
+	pixel_x = 2
+	},
+/obj/item/paper{
+	info = "Участник может забрать любой предмет противника, кроме адреналина.";
+	name = "Напоминалка";
+	pixel_x = -8
+	},
+/obj/item/bio_chip_implanter/proto_adrenalin{
+	pixel_y = 8;
+	pixel_x = 2
+	},
+/obj/item/bio_chip_implanter/proto_adrenalin{
+	pixel_y = 4;
+	pixel_x = 2
+	},
+/obj/item/bio_chip_implanter/proto_adrenalin{
+	pixel_x = 2
+	},
+/obj/item/bio_chip_implanter/proto_adrenalin{
+	pixel_x = 2;
+	pixel_y = -4
+	},
+/obj/item/bio_chip_implanter/proto_adrenalin{
+	pixel_x = 2;
+	pixel_y = -8
+	},
+/turf/simulated/floor/pod/dark,
+/area/space)
+"kd" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/catwalk,
+/area/space)
 "kf" = (
 /obj/structure/table/holotable,
 /obj/machinery/readybutton,
@@ -682,6 +872,12 @@
 	icon_state = "vault"
 	},
 /area/tdome/tdomeadmin)
+"kD" = (
+/obj/structure/chair{
+	dir = 1
+	},
+/turf/simulated/floor/wood/fancy/cherry,
+/area/space)
 "kM" = (
 /obj/structure/table/wood,
 /obj/item/hatchet/unathiknife,
@@ -689,6 +885,15 @@
 	icon_state = "alienvault"
 	},
 /area/admin)
+"kN" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/mineral/processing_unit{
+	name = "Странный механизм"
+	},
+/turf/simulated/floor/wood/fancy/cherry,
+/area/space)
 "kQ" = (
 /obj/structure/table,
 /obj/item/food/snacks/grown/citrus/lemon,
@@ -866,11 +1071,27 @@
 	icon_state = "grimy"
 	},
 /area/admin)
+"nh" = (
+/obj/effect/landmark/damageturf,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/cobweb2,
+/turf/simulated/floor/plating,
+/area/space)
 "nk" = (
 /turf/simulated/floor/holofloor{
 	icon_state = "grimy"
 	},
 /area/holodeck/source_meetinghall)
+"nv" = (
+/obj/machinery/light/small/directional/east,
+/obj/structure/rack,
+/obj/item/storage/pill_bottle,
+/obj/item/paper{
+	info = "Лекарство с истекшим сроком годности, если недостаточно идите в комнату выше и готовте сами. Адмиразин - 5u, цианид - 10u";
+	name = "Напоминалка"
+	},
+/turf/simulated/floor/pod/dark,
+/area/space)
 "nC" = (
 /turf/simulated/floor/holofloor{
 	dir = 5;
@@ -1006,6 +1227,24 @@
 	icon_state = "red"
 	},
 /area/holodeck/source_basketball)
+"pc" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/small/directional/west,
+/obj/structure/table/reinforced,
+/obj/item/storage/pill_bottle/fakedeath{
+	pixel_y = 4;
+	pixel_x = 6;
+	desc = "Это герметичный контейнер для хранения ксанакса";
+	name = "таблетница ксанакса"
+	},
+/turf/simulated/floor/plasteel/freezer,
+/area/space)
+"pf" = (
+/obj/machinery/teleport/station{
+	name = "Странный механизм"
+	},
+/turf/simulated/floor/wood/fancy/cherry,
+/area/space)
 "pk" = (
 /obj/structure/table/wood,
 /obj/item/gun/projectile/revolver/doublebarrel/improvised,
@@ -1064,6 +1303,28 @@
 	icon_state = "red"
 	},
 /area/holodeck/source_thunderdomecourt)
+"qw" = (
+/obj/structure/rack,
+/obj/item/storage/box/pillbottles{
+	layer = 3.1;
+	pixel_x = 8;
+	pixel_y = 10
+	},
+/obj/item/storage/box/pillbottles{
+	layer = 3.1;
+	pixel_x = -4
+	},
+/obj/item/storage/box/pillbottles{
+	layer = 3.1;
+	pixel_x = 8
+	},
+/obj/item/storage/box/pillbottles{
+	layer = 3.1;
+	pixel_x = -4;
+	pixel_y = 10
+	},
+/turf/simulated/floor/pod/dark,
+/area/space)
 "qx" = (
 /obj/structure/table/wood,
 /obj/item/ammo_box/foambox/sniper,
@@ -1078,6 +1339,16 @@
 /obj/item/ammo_box/foambox/sniper,
 /turf/simulated/floor/carpet/arcade,
 /area/admin)
+"qL" = (
+/obj/machinery/light/small/directional/north,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/computer/syndicate_depot/teleporter{
+	name = "Redspace Teleporter Console"
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/space)
 "qR" = (
 /obj/structure/table/wood,
 /obj/item/gun/throw/piecannon,
@@ -1113,6 +1384,15 @@
 	icon_state = "grimy"
 	},
 /area/admin)
+"qZ" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/r_n_d/server/centcom{
+	name = "Странный механизм"
+	},
+/turf/simulated/floor/wood/fancy/cherry,
+/area/space)
 "ri" = (
 /obj/structure/table/holotable,
 /obj/item/clothing/gloves/boxing/hologlove{
@@ -1184,6 +1464,15 @@
 /obj/item/gun/energy/alien,
 /turf/simulated/floor/wood/oak,
 /area/admin)
+"rR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/door/airlock/bathroom{
+	id = "toilet2";
+	id_tag = "toilet2"
+	},
+/obj/effect/mapping_helpers/airlock/locked,
+/turf/simulated/floor/plasteel/freezer,
+/area/space)
 "sd" = (
 /obj/structure/holowindow{
 	dir = 1
@@ -1239,6 +1528,12 @@
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/tdome/arena)
+"tl" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/space)
 "to" = (
 /obj/structure/table/wood,
 /obj/item/kitchen/knife/combat/survival,
@@ -1246,6 +1541,29 @@
 	icon_state = "alienvault"
 	},
 /area/admin)
+"tv" = (
+/obj/structure/rack,
+/obj/item/ammo_box/shotgun{
+	pixel_y = -2
+	},
+/obj/item/circular_saw/alien{
+	pixel_y = -6
+	},
+/obj/item/circular_saw/alien{
+	pixel_y = -2
+	},
+/obj/item/circular_saw/alien{
+	pixel_y = 2
+	},
+/obj/item/circular_saw/alien{
+	pixel_y = 6
+	},
+/obj/item/paper{
+	info = "Интерпритация ручной пилы. Если участник использует, ему нужно кинуть пилу и дробовик вам, если патрон там холостой - ничего не меняйте, если патрон боевой - зарядите слаг.";
+	name = "Напоминалка"
+	},
+/turf/simulated/floor/pod/dark,
+/area/space)
 "tx" = (
 /obj/machinery/computer/syndicate_depot/teleporter{
 	name = "Redspace Teleporter Console"
@@ -1318,6 +1636,10 @@
 /obj/item/gun/energy/gun/nuclear,
 /turf/simulated/floor/wood/oak,
 /area/admin)
+"uO" = (
+/obj/machinery/light/small/directional/west,
+/turf/simulated/floor/wood/fancy/cherry,
+/area/space)
 "uW" = (
 /obj/machinery/door/airlock/hatch/syndicate{
 	name = "What?"
@@ -1390,6 +1712,10 @@
 	icon_state = "desert"
 	},
 /area/holodeck/source_beach)
+"vA" = (
+/obj/machinery/door/airlock/hatch,
+/turf/simulated/floor/wood/fancy/cherry,
+/area/space)
 "vL" = (
 /obj/structure/rack,
 /obj/item/clothing/under/color/red,
@@ -1593,6 +1919,13 @@
 	icon_state = "red"
 	},
 /area/holodeck/source_basketball)
+"xT" = (
+/obj/item/paper{
+	info = "В данной комнате представлены награды за победу";
+	name = "Напоминалка"
+	},
+/turf/simulated/floor/pod/dark,
+/area/space)
 "xY" = (
 /obj/structure/table/wood,
 /obj/item/gun/energy/pulse,
@@ -1615,6 +1948,19 @@
 	icon_state = "red"
 	},
 /area/holodeck/source_emptycourt)
+"ys" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/glass,
+/turf/simulated/floor/plasteel/freezer,
+/area/space)
+"yx" = (
+/obj/effect/spawner/window/reinforced/tinted/grilled,
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/turf/simulated/floor/plating,
+/area/space)
 "yC" = (
 /obj/structure/table/wood,
 /obj/item/gun/magic/staff/slipping,
@@ -1707,6 +2053,14 @@
 /obj/structure/dresser,
 /turf/simulated/floor/wood/oak,
 /area/admin)
+"zX" = (
+/obj/machinery/teleport/station,
+/obj/effect/landmark/damageturf,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/space)
 "Ah" = (
 /obj/effect/baseturf_helper{
 	baseturf = /turf/simulated/floor/indestructible
@@ -1718,6 +2072,14 @@
 /obj/item/gun/projectile/automatic/pistol/m1911,
 /turf/simulated/floor/wood/oak,
 /area/admin)
+"Aw" = (
+/turf/simulated/floor/catwalk,
+/area/space)
+"AA" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dust,
+/turf/simulated/floor/plasteel/freezer,
+/area/space)
 "AD" = (
 /turf/simulated/floor/holofloor{
 	dir = 4;
@@ -1733,6 +2095,13 @@
 /obj/machinery/igniter/on,
 /turf/simulated/floor/plasteel/dark,
 /area/tdome/arena)
+"AO" = (
+/obj/item/paper{
+	info = "Приготовте себе свои лекарство с истекшим сроком годности";
+	name = "Напоминалка"
+	},
+/turf/simulated/floor/pod/dark,
+/area/space)
 "AP" = (
 /obj/structure/table/holotable,
 /obj/item/clothing/suit/armor/riot/knight/red,
@@ -1779,12 +2148,27 @@
 	},
 /turf/simulated/floor/wood/oak,
 /area/admin)
+"Bm" = (
+/obj/effect/spawner/window/reinforced/tinted/grilled,
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
+	},
+/turf/simulated/floor/plating,
+/area/space)
 "Bo" = (
 /obj/effect/landmark/spawner/tdomeobserve,
 /turf/simulated/floor/plasteel{
 	icon_state = "redyellowfull"
 	},
 /area/tdome/tdomeobserve)
+"Bp" = (
+/obj/effect/spawner/window/reinforced/tinted/grilled,
+/obj/structure/disposalpipe/junction{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/space)
 "Bv" = (
 /obj/item/kirbyplants,
 /obj/machinery/light/small/directional/west,
@@ -1805,6 +2189,12 @@
 	icon_state = "grimy"
 	},
 /area/admin)
+"BD" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/catwalk,
+/area/space)
 "BG" = (
 /obj/structure/table/wood/poker,
 /obj/machinery/light/small/directional/east,
@@ -1848,6 +2238,13 @@
 /obj/item/storage/firstaid/tactical,
 /turf/simulated/floor/wood/oak,
 /area/admin)
+"Cv" = (
+/obj/machinery/message_server{
+	active = 0;
+	name = "Странный механизм"
+	},
+/turf/simulated/floor/wood/fancy/cherry,
+/area/space)
 "Cx" = (
 /obj/effect/turf_decal/delivery/hollow,
 /obj/structure/barricade/sandbags,
@@ -1900,6 +2297,15 @@
 /obj/item/gun/magic/tentacle,
 /turf/simulated/floor/wood/oak,
 /area/admin)
+"CX" = (
+/obj/machinery/computer/teleporter{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/space)
 "De" = (
 /turf/simulated/floor/holofloor{
 	dir = 9;
@@ -1934,6 +2340,18 @@
 	icon_state = "snow"
 	},
 /area/holodeck/source_snowfield)
+"DD" = (
+/obj/structure/table/reinforced,
+/obj/machinery/conveyor{
+	dir = 8;
+	id = "roulette1"
+	},
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "roulette2"
+	},
+/turf/simulated/floor/plating,
+/area/space)
 "DJ" = (
 /turf/simulated/floor/holofloor/space,
 /area/holodeck/source_space)
@@ -1948,6 +2366,12 @@
 	icon_state = "green"
 	},
 /area/holodeck/source_emptycourt)
+"DP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dust,
+/obj/machinery/door/airlock/hatch,
+/turf/simulated/floor/plasteel/freezer,
+/area/space)
 "DR" = (
 /obj/structure/table/wood,
 /obj/item/gun/projectile/shotgun/automatic,
@@ -1965,6 +2389,9 @@
 	icon_state = "redfull"
 	},
 /area/holodeck/source_boxingcourt)
+"Ed" = (
+/turf/simulated/floor/wood/fancy/cherry,
+/area/space)
 "Eh" = (
 /obj/structure/table/wood,
 /obj/item/gun/energy/mindflayer,
@@ -1994,6 +2421,27 @@
 	icon_state = "red"
 	},
 /area/holodeck/source_emptycourt)
+"Ex" = (
+/obj/structure/rack,
+/obj/item/restraints/handcuffs,
+/obj/item/restraints/handcuffs{
+	pixel_y = -8
+	},
+/obj/item/restraints/handcuffs{
+	pixel_y = 4
+	},
+/obj/item/restraints/handcuffs{
+	pixel_y = 8
+	},
+/obj/item/restraints/handcuffs{
+	pixel_y = -4
+	},
+/obj/item/paper{
+	info = "Участник пропустит 2 хода";
+	name = "Напоминалка"
+	},
+/turf/simulated/floor/pod/dark,
+/area/space)
 "EG" = (
 /obj/structure/table/wood,
 /obj/item/gun/energy/telegun,
@@ -2101,6 +2549,28 @@
 "FU" = (
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/source_theatre)
+"FY" = (
+/obj/structure/rack,
+/obj/item/reagent_containers/glass/bottle/cyanide{
+	pixel_y = 10;
+	pixel_x = -10
+	},
+/obj/item/reagent_containers/glass/bottle/cyanide{
+	pixel_y = 10
+	},
+/obj/item/reagent_containers/glass/bottle/cyanide{
+	pixel_y = 10;
+	pixel_x = 10
+	},
+/obj/item/reagent_containers/glass/bottle/cyanide,
+/obj/item/reagent_containers/glass/bottle/cyanide{
+	pixel_x = -10
+	},
+/obj/item/reagent_containers/glass/bottle/cyanide{
+	pixel_x = 10
+	},
+/turf/simulated/floor/pod/dark,
+/area/space)
 "Ga" = (
 /obj/structure/table/wood,
 /obj/item/gun/projectile/shotgun/riot/short,
@@ -2118,6 +2588,13 @@
 	},
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/source_theatre)
+"Gi" = (
+/obj/structure/table/wood/poker,
+/obj/structure/disposalpipe/trunk{
+	dir = 4
+	},
+/turf/simulated/floor/wood/fancy,
+/area/space)
 "Gk" = (
 /obj/structure/table/holotable,
 /obj/item/clothing/gloves/boxing/hologlove{
@@ -2154,6 +2631,18 @@
 /obj/item/reagent_containers/glass/bottle/adminordrazine,
 /turf/simulated/floor/wood/oak,
 /area/admin)
+"GE" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/cobweb2,
+/obj/structure/sink/directional/west{
+	pixel_x = 13
+	},
+/obj/structure/mirror{
+	icon_state = "mirror_broke";
+	pixel_x = 28
+	},
+/turf/simulated/floor/plasteel/freezer,
+/area/space)
 "GG" = (
 /obj/structure/table/wood,
 /obj/machinery/syndicatebomb/badmin/clown,
@@ -2200,6 +2689,16 @@
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/tdome/arena)
+"Hy" = (
+/turf/simulated/floor/fakespace,
+/area/space)
+"HD" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dust,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/space)
 "HE" = (
 /obj/structure/chair/comfy/beige{
 	dir = 4;
@@ -2219,6 +2718,10 @@
 /obj/item/gun/projectile/automatic/sniper_rifle,
 /turf/simulated/floor/wood/oak,
 /area/admin)
+"HM" = (
+/obj/effect/decal/cleanable/generic,
+/turf/simulated/floor/plating,
+/area/space)
 "HP" = (
 /turf/simulated/floor/holofloor{
 	dir = 4;
@@ -2272,6 +2775,13 @@
 	icon_state = "red"
 	},
 /area/holodeck/source_knightarena)
+"Iw" = (
+/obj/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 8
+	},
+/turf/simulated/floor/pod/dark,
+/area/space)
 "IB" = (
 /obj/structure/table/wood,
 /obj/item/gun/projectile/automatic/toy/pistol,
@@ -2322,6 +2832,14 @@
 /obj/structure/flora/ausbushes/grassybush,
 /turf/simulated/floor/holofloor/grass,
 /area/holodeck/source_picnicarea)
+"IZ" = (
+/obj/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 8
+	},
+/obj/machinery/light/small/directional/south,
+/turf/simulated/floor/pod/dark,
+/area/space)
 "Jc" = (
 /obj/structure/table/wood,
 /obj/item/chainsaw/doomslayer,
@@ -2342,6 +2860,10 @@
 /obj/item/gun/magic/staff/door,
 /turf/simulated/floor/wood/oak,
 /area/admin)
+"Jg" = (
+/obj/structure/chair,
+/turf/simulated/floor/wood/fancy/cherry,
+/area/space)
 "Jk" = (
 /turf/simulated/floor/holofloor{
 	icon_state = "green"
@@ -2570,6 +3092,11 @@
 /obj/item/gun/projectile/automatic/pistol/enforcer,
 /turf/simulated/floor/wood/oak,
 /area/admin)
+"LM" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/plastic,
+/turf/simulated/floor/plating,
+/area/space)
 "LR" = (
 /turf/simulated/floor/holofloor{
 	icon = 'icons/turf/floors/plating.dmi';
@@ -2658,6 +3185,10 @@
 	icon_state = "alienvault"
 	},
 /area/admin)
+"NA" = (
+/obj/structure/table/reinforced,
+/turf/simulated/floor/pod/dark,
+/area/space)
 "ND" = (
 /turf/simulated/floor/holofloor{
 	dir = 4;
@@ -2834,6 +3365,31 @@
 /obj/item/gun/projectile/revolver/doublebarrel,
 /turf/simulated/floor/wood/oak,
 /area/admin)
+"PK" = (
+/obj/effect/decal/cleanable/dust,
+/obj/structure/sink/directional/west{
+	pixel_x = 13
+	},
+/obj/structure/mirror{
+	icon_state = "mirror_broke";
+	pixel_x = 28
+	},
+/turf/simulated/floor/plasteel/freezer,
+/area/space)
+"PO" = (
+/obj/structure/rack,
+/obj/item/storage/fancy/donut_box{
+	pixel_y = 2
+	},
+/obj/item/storage/fancy/donut_box{
+	pixel_y = 6
+	},
+/obj/item/paper{
+	info = "Интерпритация лупы, разрядить дробовик, посмотрите что за патрон, зарядите его назад";
+	name = "Напоминалка"
+	},
+/turf/simulated/floor/pod/dark,
+/area/space)
 "PQ" = (
 /obj/item/storage/box/syringes,
 /obj/item/assembly/igniter,
@@ -2895,6 +3451,11 @@
 	icon_state = "blue"
 	},
 /area/holodeck/source_knightarena)
+"Qm" = (
+/turf/simulated/wall/indestructible/opsglass{
+	opacity = 1
+	},
+/area/space)
 "Qt" = (
 /obj/structure/table/wood,
 /obj/item/gun/projectile/automatic/tommygun,
@@ -2962,11 +3523,24 @@
 	},
 /turf/simulated/floor/carpet,
 /area/admin)
+"Rl" = (
+/obj/machinery/conveyor_switch/oneway{
+	id = "roulette1"
+	},
+/obj/effect/turf_decal/arrows/white{
+	dir = 4
+	},
+/turf/simulated/floor/pod/dark,
+/area/space)
 "Rn" = (
 /obj/structure/table/wood,
 /obj/item/gun/projectile/automatic/toy/pistol/riot,
 /turf/simulated/floor/carpet/arcade,
 /area/admin)
+"Ry" = (
+/obj/machinery/chem_master,
+/turf/simulated/floor/pod/dark,
+/area/space)
 "RA" = (
 /obj/machinery/sleeper/upgraded,
 /turf/simulated/floor/wood/oak,
@@ -2978,6 +3552,13 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/tdome/arena_source)
+"RL" = (
+/obj/effect/landmark/damageturf,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/space)
 "RQ" = (
 /turf/simulated/wall/indestructible/riveted,
 /area/tdome/arena_source)
@@ -3035,6 +3616,14 @@
 /obj/structure/mineral_door/wood,
 /turf/simulated/floor/wood/oak,
 /area/admin)
+"SE" = (
+/obj/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 8
+	},
+/obj/machinery/light/small/directional/north,
+/turf/simulated/floor/pod/dark,
+/area/space)
 "SK" = (
 /obj/structure/table/wood,
 /obj/item/gun/energy/laser/mounted,
@@ -3069,6 +3658,12 @@
 /obj/item/gun/magic/staff/focus,
 /turf/simulated/floor/wood/oak,
 /area/admin)
+"Tf" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/catwalk,
+/area/space)
 "Th" = (
 /obj/structure/table/wood,
 /obj/item/radio/headset,
@@ -3218,6 +3813,12 @@
 	icon_state = "vault"
 	},
 /area/tdome/tdomeadmin)
+"Us" = (
+/obj/structure/railing{
+	layer = 4.3
+	},
+/turf/simulated/floor/catwalk,
+/area/space)
 "UH" = (
 /obj/structure/flora/ausbushes/fullgrass,
 /turf/simulated/floor/holofloor/grass,
@@ -3229,6 +3830,15 @@
 /obj/mecha/combat/reticence/loaded,
 /turf/simulated/floor/wood/oak,
 /area/admin)
+"UR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/door/airlock/bathroom{
+	id = "toilet2";
+	id_tag = "toilet2"
+	},
+/obj/effect/mapping_helpers/airlock/welded,
+/turf/simulated/floor/plasteel/freezer,
+/area/space)
 "UU" = (
 /obj/structure/table/wood,
 /obj/item/gun/projectile/automatic/pistol/deagle/camo,
@@ -3304,6 +3914,31 @@
 /obj/item/gun/projectile/automatic/c20r/toy/riot,
 /turf/simulated/floor/wood/oak,
 /area/admin)
+"VI" = (
+/obj/structure/rack,
+/obj/item/clothing/mask/cigarette/syndicate{
+	pixel_y = 12
+	},
+/obj/item/clothing/mask/cigarette/syndicate{
+	pixel_y = 16
+	},
+/obj/item/storage/fancy/cigarettes/cigpack_syndicate{
+	pixel_y = -1;
+	pixel_x = -6
+	},
+/obj/item/storage/fancy/cigarettes/cigpack_syndicate{
+	pixel_y = -1
+	},
+/obj/item/storage/fancy/cigarettes/cigpack_syndicate{
+	pixel_y = -1;
+	pixel_x = 8
+	},
+/obj/item/paper{
+	info = "Восстановит 1 хп участника";
+	name = "Напоминалка"
+	},
+/turf/simulated/floor/pod/dark,
+/area/space)
 "VK" = (
 /obj/structure/table/wood,
 /obj/item/gun/projectile/automatic/sniper_rifle/syndicate,
@@ -3315,6 +3950,32 @@
 	icon_state = "seashallow"
 	},
 /area/holodeck/source_beach)
+"VV" = (
+/obj/machinery/teleport/hub/upgraded{
+	admin_usage = 1
+	},
+/obj/effect/turf_decal/delivery/red,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/space)
+"VY" = (
+/obj/structure/rack,
+/obj/item/gun/projectile/shotgun/riot{
+	pixel_y = -8
+	},
+/obj/item/gun/projectile/shotgun/riot{
+	pixel_y = -4
+	},
+/obj/item/gun/projectile/shotgun/riot,
+/obj/item/gun/projectile/shotgun/riot{
+	pixel_y = 4
+	},
+/obj/item/gun/projectile/shotgun/riot{
+	pixel_y = 8
+	},
+/turf/simulated/floor/pod/dark,
+/area/space)
 "Wb" = (
 /obj/structure/table/wood,
 /obj/item/gun/projectile/revolver/capgun,
@@ -3335,6 +3996,32 @@
 /obj/item/toy/chainsaw,
 /turf/simulated/floor/carpet/arcade,
 /area/admin)
+"Wg" = (
+/obj/structure/rack,
+/obj/item/reagent_containers/drinks/cans/dr_gibb{
+	pixel_x = 10;
+	pixel_y = 10
+	},
+/obj/item/reagent_containers/drinks/cans/dr_gibb{
+	pixel_x = 10
+	},
+/obj/item/reagent_containers/drinks/cans/dr_gibb{
+	pixel_x = -10
+	},
+/obj/item/reagent_containers/drinks/cans/dr_gibb{
+	pixel_x = -10;
+	pixel_y = 10
+	},
+/obj/item/reagent_containers/drinks/cans/dr_gibb,
+/obj/item/reagent_containers/drinks/cans/dr_gibb{
+	pixel_y = 10
+	},
+/obj/item/paper{
+	info = "Участник может 1 раз перезарядить дробовик и кинуть непроигранный патрон вам";
+	name = "Напоминалка"
+	},
+/turf/simulated/floor/pod/dark,
+/area/space)
 "Wx" = (
 /obj/structure/table/wood,
 /obj/item/gun/energy/arc_revolver,
@@ -3481,11 +4168,24 @@
 	icon_state = "darkneutralfull"
 	},
 /area/admin)
+"Xz" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/space,
+/turf/simulated/floor/catwalk,
+/area/space)
 "XB" = (
 /obj/structure/table/wood,
 /obj/item/gun/projectile/automatic/speargun,
 /turf/simulated/floor/wood/oak,
 /area/admin)
+"XN" = (
+/obj/structure/railing/corner{
+	dir = 4
+	},
+/turf/simulated/floor/catwalk,
+/area/space)
 "XZ" = (
 /obj/structure/table/wood,
 /obj/item/melee/spellblade,
@@ -3512,6 +4212,9 @@
 /obj/item/gun/projectile/automatic/pistol,
 /turf/simulated/floor/wood/oak,
 /area/admin)
+"Yu" = (
+/turf/simulated/floor/pod/dark,
+/area/space)
 "YA" = (
 /obj/structure/rack,
 /obj/item/clothing/under/color/red,
@@ -3547,6 +4250,14 @@
 /obj/item/gun/projectile/shotgun/automatic/dual_tube,
 /turf/simulated/floor/wood/oak,
 /area/admin)
+"Zb" = (
+/obj/effect/spawner/window/reinforced/tinted/grilled,
+/obj/structure/disposalpipe/junction{
+	dir = 8;
+	icon_state = "pipe-j2"
+	},
+/turf/simulated/floor/plating,
+/area/space)
 "Zi" = (
 /turf/simulated/floor/holofloor{
 	dir = 4;
@@ -3578,6 +4289,16 @@
 /obj/item/grenade/clusterbuster/mega_syndieminibomb,
 /turf/simulated/floor/wood/oak,
 /area/admin)
+"ZM" = (
+/obj/structure/rack,
+/obj/item/stack/spacecash/debug,
+/turf/simulated/floor/pod/dark,
+/area/space)
+"ZN" = (
+/obj/effect/decal/cleanable/dust,
+/obj/effect/decal/cleanable/glass,
+/turf/simulated/floor/plasteel/freezer,
+/area/space)
 
 (1,1,1) = {"
 Ah
@@ -17979,22 +18700,22 @@ cN
 cN
 cN
 cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
+TY
+TY
+TY
+Qm
+TY
+TY
+Qm
+TY
+TY
+Qm
+TY
+TY
+Qm
+TY
+TY
+TY
 cN
 cN
 cN
@@ -18236,22 +18957,22 @@ cN
 cN
 cN
 cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
+TY
+dY
+kd
+kd
+kd
+kd
+kd
+kd
+kd
+kd
+kd
+kd
+kd
+kd
+XN
+TY
 cN
 cN
 cN
@@ -18493,22 +19214,22 @@ cN
 cN
 cN
 cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
+Qm
+Us
+Hy
+Hy
+Hy
+Hy
+Hy
+Hy
+Hy
+Hy
+Hy
+Hy
+Hy
+Hy
+BD
+Qm
 cN
 cN
 cN
@@ -18750,22 +19471,22 @@ cN
 cN
 cN
 cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
+TY
+Us
+Hy
+Hy
+Hy
+Hy
+Hy
+Hy
+Hy
+Hy
+Hy
+Hy
+Hy
+Hy
+BD
+TY
 cN
 cN
 cN
@@ -19000,29 +19721,29 @@ EH
 pO
 "}
 (61,1,1) = {"
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
+TY
+TY
+TY
+TY
+TY
+TY
+TY
+TY
+TY
+Hy
+Hy
+Hy
+Hy
+Hy
+Hy
+Hy
+Hy
+Hy
+Hy
+Hy
+Hy
+BD
+Qm
 cN
 cN
 cN
@@ -19257,29 +19978,29 @@ pO
 pO
 "}
 (62,1,1) = {"
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
+TY
+VV
+zX
+CX
+TY
+iE
+TY
+iE
+TY
+Hy
+Hy
+Hy
+Hy
+Hy
+Hy
+Hy
+Hy
+Hy
+Hy
+Hy
+Hy
+Xz
+TY
 cN
 cN
 cN
@@ -19514,34 +20235,34 @@ RZ
 pO
 "}
 (63,1,1) = {"
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
+TY
+gK
+jS
+tl
+TY
+rR
+TY
+UR
+TY
+Hy
+Hy
+Hy
+Hy
+Hy
+Hy
+Hy
+Hy
+Hy
+Hy
+TY
+TY
+TY
+TY
+TY
+TY
+TY
+TY
+TY
 cN
 cN
 cN
@@ -19771,34 +20492,34 @@ RZ
 pO
 "}
 (64,1,1) = {"
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
+TY
+HM
+HD
+RL
+TY
+ys
+pc
+ZN
+TY
+Tf
+Tf
+Tf
+Tf
+Tf
+Tf
+Tf
+Tf
+Tf
+Tf
+TY
+Ed
+Ed
+Ed
+uO
+Ed
+Ed
+Ed
+TY
 cN
 cN
 cN
@@ -20028,34 +20749,34 @@ RZ
 pO
 "}
 (65,1,1) = {"
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
+TY
+qL
+LM
+aL
+fJ
+AA
+ys
+aX
+DP
+Aw
+Aw
+Aw
+Aw
+Aw
+Aw
+Aw
+Aw
+Aw
+Aw
+vA
+Ed
+Ed
+aY
+aY
+aY
+Ed
+Ed
+TY
 cN
 cN
 cN
@@ -20285,34 +21006,34 @@ RZ
 pO
 "}
 (66,1,1) = {"
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
+TY
+nh
+jS
+jS
+TY
+GE
+PK
+bJ
+TY
+TY
+TY
+TY
+TY
+TY
+TY
+TY
+TY
+TY
+TY
+TY
+Ed
+Ed
+Jg
+aY
+kD
+Ed
+Ed
+TY
 cN
 cN
 cN
@@ -20542,6 +21263,15 @@ gN
 pO
 "}
 (67,1,1) = {"
+TY
+TY
+TY
+TY
+TY
+TY
+TY
+TY
+TY
 cN
 cN
 cN
@@ -20552,24 +21282,15 @@ cN
 cN
 cN
 cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
+TY
+Ed
+Gi
+aY
+aY
+aY
+Gi
+Ed
+TY
 cN
 cN
 cN
@@ -20818,15 +21539,15 @@ cN
 cN
 cN
 cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
+TY
+pf
+kN
+TY
+DD
+TY
+qZ
+Cv
+TY
 cN
 cN
 cN
@@ -21072,20 +21793,20 @@ cN
 cN
 cN
 cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
+TY
+TY
+TY
+TY
+yx
+Bp
+TY
+gO
+TY
+Zb
+Bm
+TY
+TY
+TY
 cN
 cN
 cN
@@ -21329,20 +22050,20 @@ cN
 cN
 cN
 cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
+TY
+Ry
+qw
+TY
+SE
+Iw
+ev
+NA
+Rl
+Iw
+IZ
+TY
+VY
+TY
 cN
 cN
 cN
@@ -21586,20 +22307,20 @@ cN
 cN
 cN
 cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
+TY
+Yu
+Yu
+AO
+Yu
+Yu
+Yu
+fZ
+Yu
+Yu
+Yu
+xT
+Yu
+TY
 cN
 cN
 cN
@@ -21843,20 +22564,20 @@ cN
 cN
 cN
 cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
+TY
+FY
+jz
+TY
+aE
+Ex
+tv
+Yu
+VI
+Wg
+kc
+TY
+ZM
+TY
 cN
 cN
 cN
@@ -22100,20 +22821,20 @@ cN
 cN
 cN
 cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
+TY
+TY
+TY
+TY
+TY
+TY
+PO
+nv
+aZ
+TY
+TY
+TY
+TY
+TY
 cN
 cN
 cN
@@ -22362,11 +23083,11 @@ cN
 cN
 cN
 cN
-cN
-cN
-cN
-cN
-cN
+TY
+TY
+TY
+TY
+TY
 cN
 cN
 cN
