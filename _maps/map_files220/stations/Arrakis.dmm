@@ -10019,7 +10019,7 @@
 	},
 /area/awaymission/arrakis/bunker/engie)
 "aBG" = (
-/obj/structure/closet/secure_closet/engineering_chief,
+/obj/structure/closet/secure_closet/engineering_chief/rip_meson,
 /obj/item/rcd/preloaded,
 /obj/item/cartridge/engineering{
 	pixel_x = 3
@@ -19873,8 +19873,10 @@
 	},
 /area/awaymission/arrakis/bunker/tanya_cyborg_blyat_lab)
 "bXw" = (
-/obj/structure/mineral_door/bars_door,
 /obj/effect/decal/cleanable/dust,
+/obj/machinery/door/airlock/survival_pod{
+	req_one_access_txt = "271"
+	},
 /turf/simulated/floor/brick/cold,
 /area/awaymission/arrakis/cave)
 "bYa" = (
@@ -20256,7 +20258,10 @@
 /turf/simulated/floor/indestructible/dune_sand,
 /area/awaymission/arrakis/outside/outside5)
 "cjk" = (
-/obj/structure/mineral_door/bars_door,
+/obj/machinery/door/airlock/survival_pod/glass{
+	id_tag = "cell1";
+	req_one_access_txt = "271"
+	},
 /turf/simulated/floor/brick/cold,
 /area/awaymission/arrakis/outside_building)
 "cjn" = (
@@ -22054,6 +22059,7 @@
 	color = "#996633"
 	},
 /obj/item/storage/box/handcuffs,
+/obj/item/melee/baton,
 /turf/simulated/floor/brick/cold,
 /area/awaymission/arrakis/outside_building)
 "dqx" = (
@@ -23634,6 +23640,9 @@
 /area/awaymission/arrakis/cave/cave)
 "enb" = (
 /obj/structure/closet/crate/wooden/wooden_crate,
+/obj/item/gun/energy/disabler,
+/obj/item/gun/energy/disabler,
+/obj/item/gun/energy/disabler,
 /turf/simulated/floor/brick/cold,
 /area/awaymission/arrakis/outside_building)
 "enz" = (
@@ -24039,10 +24048,10 @@
 	},
 /area/awaymission/arrakis/bunker/brig)
 "eyo" = (
-/obj/structure/necropolis_gate/temple_gate,
 /obj/structure/fans/tiny/invisible,
 /obj/effect/turf_decal/sand,
 /obj/effect/decal/snow/sand/surround,
+/obj/structure/necropolis_gate,
 /turf/simulated/floor/brick/cold,
 /area/awaymission/arrakis/cave/cave2)
 "eyp" = (
@@ -32714,6 +32723,24 @@
 	},
 /turf/simulated/floor/brick/cold,
 /area/awaymission/arrakis/cave/cave2)
+"kmW" = (
+/obj/structure/table/wood{
+	color = "#996633"
+	},
+/obj/machinery/door_control/bolt_control{
+	pixel_x = -9;
+	id = "cell1"
+	},
+/obj/machinery/door_control/bolt_control{
+	pixel_x = 1;
+	id = "cell2"
+	},
+/obj/machinery/door_control/bolt_control{
+	pixel_x = 11;
+	id = "cell3"
+	},
+/turf/simulated/floor/brick/cold,
+/area/awaymission/arrakis/outside_building)
 "kmX" = (
 /obj/structure/door_assembly/door_assembly_ext,
 /turf/simulated/floor/indestructible/dune_sand{
@@ -35750,12 +35777,6 @@
 /area/awaymission/arrakis/cave)
 "mtc" = (
 /obj/structure/closet/crate/wooden/wooden_crate,
-/obj/item/bio_chip_implanter/traitor,
-/obj/item/bio_chip_implanter/traitor,
-/obj/item/bio_chip_implanter/traitor,
-/obj/item/bio_chip_implanter/traitor,
-/obj/item/bio_chip_implanter/traitor,
-/obj/item/bio_chip_implanter/traitor,
 /obj/item/bio_chip_implanter/traitor,
 /obj/item/bio_chip_implanter/traitor,
 /obj/item/bio_chip_implanter/traitor,
@@ -38913,9 +38934,11 @@
 /turf/simulated/floor/wood,
 /area/awaymission/arrakis/bunker/brig)
 "our" = (
-/obj/structure/mineral_door/bars_door,
 /obj/effect/decal/straw/light,
 /obj/effect/decal/cleanable/dust,
+/obj/machinery/door/airlock/survival_pod{
+	req_one_access_txt = "271"
+	},
 /turf/simulated/floor/brick/cold,
 /area/awaymission/arrakis/outside_building)
 "ouE" = (
@@ -46574,6 +46597,13 @@
 	},
 /turf/simulated/floor/indestructible/dune_sand/smooth,
 /area/awaymission/arrakis/outside/outside5)
+"toh" = (
+/obj/machinery/door/airlock/survival_pod/glass{
+	id_tag = "cell3";
+	req_one_access_txt = "271"
+	},
+/turf/simulated/floor/brick/cold,
+/area/awaymission/arrakis/outside_building)
 "ton" = (
 /obj/structure/telecrystal_deposit,
 /turf/simulated/floor/indestructible/dune_sand/cave/cavedeep/dark/dark_basalt,
@@ -49027,11 +49057,11 @@
 /area/awaymission/arrakis/cave/cave1)
 "vcR" = (
 /obj/effect/decal/cleanable/dust,
-/obj/structure/necropolis_gate/boss_gate,
 /obj/structure/necropolis_arch/boss_arch{
 	pixel_x = -65;
 	pixel_y = -42
 	},
+/obj/structure/boss_gate,
 /turf/simulated/floor/brick{
 	icon_state = "brick_boss2"
 	},
@@ -49910,6 +49940,13 @@
 /obj/structure/flora/tree/cactus/flat,
 /turf/simulated/floor/indestructible/dune_sand/smooth,
 /area/awaymission/arrakis/outside/mining_town)
+"vFN" = (
+/obj/machinery/door/airlock/survival_pod/glass{
+	id_tag = "cell2";
+	req_one_access_txt = "271"
+	},
+/turf/simulated/floor/brick/cold,
+/area/awaymission/arrakis/outside_building)
 "vFP" = (
 /obj/effect/decal/nanotrasen_logo_circle{
 	icon_state = "ntlogo_sec";
@@ -166637,7 +166674,7 @@ uMf
 vZo
 vZo
 vZo
-cjk
+vFN
 dKs
 dKs
 aJS
@@ -168045,7 +168082,7 @@ dni
 vZo
 vZo
 dKs
-cjk
+toh
 kXd
 eUc
 dKs
@@ -169104,7 +169141,7 @@ ayO
 ayO
 enb
 mkt
-sMv
+kmW
 ayO
 iQG
 dKs

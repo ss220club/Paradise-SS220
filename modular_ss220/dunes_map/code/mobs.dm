@@ -12,7 +12,7 @@
 	invisibility = 101
 	mob_types = list(/mob/living/simple_animal/hostile/duna)
 
-	spawn_time = 180 SECONDS
+	spawn_time = 480 SECONDS
 
 /obj/structure/spawner/desert_depretarors/range
 	mob_types = list(/mob/living/simple_animal/hostile/duna/range)
@@ -24,7 +24,7 @@
 	icon_state = "marker_depred"
 	density = TRUE
 	invisibility = 0
-	spawn_time = 20 SECONDS
+	spawn_time = 30 SECONDS
 	layer = ABOVE_MOB_LAYER
 
 	light_power = 2
