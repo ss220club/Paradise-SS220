@@ -403,6 +403,13 @@
 	volume = 50
 	resistance_flags = FIRE_PROOF
 
+/obj/item/reagent_containers/drinks/flask/ntpremium
+	name = "подарочная фляжка"
+	desc = "Фляжка с небольшой гравировкой ''NT'', так удачно подаренная компанией неделю назад."
+	icon_state = "flask"
+	volume = 50
+	resistance_flags = FIRE_PROOF
+
 //torch
 /obj/structure/wall_torch
 	name = "настенный факел"
@@ -433,7 +440,7 @@
 	range_flash = 4
 	layer = LOW_OBJ_LAYER
 
-//raider card
+//ID card's
 /obj/item/card/id/away/kidan
 	name = "самодельная идентификационная карта"
 	desc = "Грубо припаянный микрочип и пара магнитных полос на пластиковой карточке."
@@ -445,6 +452,13 @@
 		"Лопух", "Локатор", "Костыль", "Горбун", "Кубышка", "Мотыль", "Котелок", "Бацилла", "Жаба", "Ворона", "Крыса", "Амеба", "Глиста", "Аскарида",  "Гвоздь", "Робинзон", "Курортник", "Фунт", "Гульден", "Тугрик", "Махно", "Бугор", "Змей", "Лютый", "Шайба", "Мазай", "Абу",
 		)
 	registered_name = "[pick (kidan_name)]"
+
+/obj/item/card/id/centcom/tanya
+	name = "Таня фон Нормандия's ID card"
+	desc = "An ID straight from Central Command."
+	icon_state = "centcom"
+	registered_name = "Таня фон Нормандия"
+	assignment = "Normandy Special Forces"
 
 //sign
 /obj/structure/warn_sign
@@ -514,6 +528,111 @@
 	new /obj/item/rcd/preloaded(src)
 	new /obj/item/organ/internal/cyberimp/brain/wire_interface(src)
 	new /obj/item/storage/bag/construction(src)
+
+//survival boxes with FLASK (NT premium)
+
+/obj/item/storage/box/survival
+	icon_state = "civ_box"
+
+/obj/item/storage/box/survival/populate_contents()
+	new /obj/item/clothing/mask/breath(src)
+	if(HAS_TRAIT(SSstation, STATION_TRAIT_PREMIUM_INTERNALS))
+		new /obj/item/tank/internals/emergency_oxygen/engi(src)
+		new /obj/item/reagent_containers/hypospray/autoinjector/survival(src)
+		new /obj/item/flashlight/flare(src)
+		new /obj/item/reagent_containers/drinks/flask/ntpremium(src)
+	else
+		new /obj/item/tank/internals/emergency_oxygen(src)
+		new /obj/item/reagent_containers/hypospray/autoinjector/epinephrine(src)
+		new /obj/item/flashlight/flare/glowstick/emergency(src)
+		new /obj/item/reagent_containers/drinks/flask/ntpremium(src)
+
+
+/obj/item/storage/box/survival_vox
+	icon_state = "vox_box"
+
+/obj/item/storage/box/survival_vox/populate_contents()
+	new /obj/item/clothing/mask/breath/vox(src)
+	new /obj/item/tank/internals/emergency_oxygen/nitrogen(src)
+	if(HAS_TRAIT(SSstation, STATION_TRAIT_PREMIUM_INTERNALS))
+		new /obj/item/reagent_containers/hypospray/autoinjector/survival(src)
+		new /obj/item/flashlight/flare(src)
+		new /obj/item/reagent_containers/drinks/flask/ntpremium(src)
+	else
+		new /obj/item/reagent_containers/hypospray/autoinjector/epinephrine(src)
+		new /obj/item/flashlight/flare/glowstick/emergency(src)
+		new /obj/item/reagent_containers/drinks/flask/ntpremium(src)
+
+/obj/item/storage/box/survival_plasmaman
+	icon_state = "plasma_box"
+
+/obj/item/storage/box/survival_plasmaman/populate_contents()
+	new /obj/item/clothing/mask/breath(src)
+	new /obj/item/tank/internals/emergency_oxygen/plasma(src)
+	if(HAS_TRAIT(SSstation, STATION_TRAIT_PREMIUM_INTERNALS))
+		new /obj/item/reagent_containers/hypospray/autoinjector/survival(src)
+		new /obj/item/flashlight/flare(src)
+		new /obj/item/reagent_containers/drinks/flask/ntpremium(src)
+	else
+		new /obj/item/reagent_containers/hypospray/autoinjector/epinephrine(src)
+		new /obj/item/flashlight/flare/glowstick/emergency(src)
+		new /obj/item/reagent_containers/drinks/flask/ntpremium(src)
+
+/obj/item/storage/box/engineer
+	icon_state = "eng_box"
+
+/obj/item/storage/box/engineer/populate_contents()
+	new /obj/item/clothing/mask/breath(src)
+	if(HAS_TRAIT(SSstation, STATION_TRAIT_PREMIUM_INTERNALS))
+		new /obj/item/tank/internals/emergency_oxygen/double(src)
+		new /obj/item/reagent_containers/hypospray/autoinjector/survival(src)
+		new /obj/item/flashlight/flare(src)
+		new /obj/item/reagent_containers/drinks/flask/ntpremium(src)
+	else
+		new /obj/item/tank/internals/emergency_oxygen/engi(src)
+		new /obj/item/reagent_containers/hypospray/autoinjector/epinephrine(src)
+		new /obj/item/flashlight/flare/glowstick/emergency(src)
+		new /obj/item/reagent_containers/drinks/flask/ntpremium(src)
+
+/obj/item/storage/box/survival_mining
+	icon_state = "min_box"
+
+/obj/item/storage/box/survival_mining/populate_contents()
+	new /obj/item/clothing/mask/gas/explorer(src)
+	if(HAS_TRAIT(SSstation, STATION_TRAIT_PREMIUM_INTERNALS))
+		new /obj/item/tank/internals/emergency_oxygen/double(src)
+		new /obj/item/reagent_containers/hypospray/autoinjector/survival(src)
+		new /obj/item/flashlight/flare(src)
+		new /obj/item/reagent_containers/drinks/flask/ntpremium(src)
+	else
+		new /obj/item/tank/internals/emergency_oxygen/engi(src)
+		new /obj/item/reagent_containers/hypospray/autoinjector/epinephrine(src)
+		new /obj/item/flashlight/flare/glowstick/emergency(src)
+		new /obj/item/reagent_containers/drinks/flask/ntpremium(src)
+
+/obj/item/storage/box/survival_syndi
+	icon_state = "syndi_box"
+
+/obj/item/storage/box/survival_syndi/populate_contents()
+	new /obj/item/clothing/mask/gas/syndicate(src)
+	new /obj/item/tank/internals/emergency_oxygen/engi/syndi(src)
+	new /obj/item/crowbar/small(src)
+	new /obj/item/reagent_containers/hypospray/autoinjector/epinephrine(src)
+	new /obj/item/reagent_containers/pill/initropidril(src)
+	new /obj/item/flashlight/flare/glowstick/red(src)
+	new /obj/item/reagent_containers/drinks/flask(src)
+
+/obj/item/storage/box/survival/redneck
+	icon = 'modular_ss220/aesthetics/boxes/icons/boxes.dmi'
+	icon_state = "dnakit"
+
+/obj/item/storage/box/survival/redneck/populate_contents()
+	new /obj/item/tank/internals/emergency_oxygen/double(src)
+	new /obj/item/reagent_containers/drinks/flask/desert(src)
+	new /obj/item/kitchen/knife/combat/survival(src)
+	new /obj/item/flashlight/flare(src)
+	new /obj/item/stack/medical/bruise_pack/comfrey(src)
+	new /obj/item/stack/medical/ointment/aloe(src)
 
 //sarcophagus
 

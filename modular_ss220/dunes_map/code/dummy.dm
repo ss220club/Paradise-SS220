@@ -88,34 +88,3 @@
 	opacity = TRUE
 	density = TRUE
 	faction = "syndicate"
-
-/datum/outfit/admin/tanya
-	name = "Таня фон Нормандия"
-	uniform = /obj/item/clothing/under/solgov/srt
-	belt = /obj/item/storage/belt/military/assault/srt
-	shoes = /obj/item/clothing/shoes/jackboots
-	head = /obj/item/clothing/head/beret/solgov/command
-	gloves = /obj/item/clothing/gloves/combat
-	mask = /obj/item/clothing/mask/gas/sechailer
-	r_hand = /obj/item/gun/projectile/automatic/ar
-	l_pocket = /obj/item/tank/internals/emergency_oxygen/double
-	r_pocket = /obj/item/reagent_containers/hypospray/combat/nanites
-	back = /obj/item/mod/control/pre_equipped/apocryphal
-	id = /obj/item/card/id/centcom
-	pda = /obj/item/pda/centcom
-	backpack_contents = list(
-		/obj/item/storage/box/flashbangs,
-		/obj/item/ammo_box/magazine/m556/arg = 5,
-		/obj/item/flashlight/seclite,
-		/obj/item/grenade/plastic/c4/x4,
-		/obj/item/melee/energy/sword/saber,
-		/obj/item/shield/energy,
-	)
-	bio_chips = list(
-		/obj/item/bio_chip/mindshield,
-		/obj/item/bio_chip/dust
-	)
-	cybernetic_implants = list(
-		/obj/item/organ/internal/cyberimp/chest/nutriment/plus/hardened,
-		/obj/item/organ/internal/cyberimp/arm/combat/centcom
-	)

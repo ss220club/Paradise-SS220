@@ -12,7 +12,7 @@
 	var/list/loot
 	var/list/trash_types
 	var/lootleft = 0
-	var/emptyprob = 25
+	var/emptyprob = 45
 	var/is_rummaging = 0
 
 /obj/structure/rubble/New()
@@ -199,7 +199,7 @@
 
 /obj/structure/rubble/war
 	trash_types = list("boxfort", "junk_pile3", "junk_pile5",  "junk_pile1")
-	emptyprob = 40 //can't have piles upon piles of guns
+	emptyprob = 30 //can't have piles upon piles of guns
 	loot = list(
 		/obj/item/spear,
 		/obj/item/spear/bonespear,

@@ -281,6 +281,9 @@
 	add_language("Sol Common")
 	default_language = GLOB.all_languages["Sol Common"]
 
+/mob/living/simple_animal/hostile/retaliate/tanya_cc/add_tts_component()
+	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/cerys)
+
 /mob/living/simple_animal/hostile/retaliate/tanya_death   // Не от tanya_cc т.к. баллистические снаряды перезаписывают энергетические - разделить их никак нельзя
 	name = "Таня фон Нормандия"
 	desc = "Боевой юнит-андроид проекта ''Delta 8-1-7'', облаченный в тяжелую штурмовую броню. Судя по глазам, этот экземпляр находится на боевом дежурстве и действует автономно."
@@ -318,6 +321,14 @@
 	minimum_distance = 8
 	projectiletype = /obj/item/projectile/beam/pulse
 	projectilesound = 'sound/weapons/emitter2.ogg'
+
+/mob/living/simple_animal/hostile/retaliate/tanya_death/Initialize(mapload)
+	. = ..()
+	add_language("Sol Common")
+	default_language = GLOB.all_languages["Sol Common"]
+
+/mob/living/simple_animal/hostile/retaliate/tanya_death/add_tts_component()
+	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/cerys)
 
 // Скорпиончики
 

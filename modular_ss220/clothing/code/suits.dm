@@ -357,13 +357,30 @@
 	else
 		footstep++
 	..()
-// abaya temp
+
+// village clothes temp
 
 /obj/item/clothing/suit/hooded/abaya
 	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
 
 /obj/item/clothing/head/hooded/screened_niqab
 	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
+
+/obj/item/clothing/suit/poncho
+	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
+
+/obj/item/clothing/accessory/cowboyshirt
+	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
+
+/obj/item/clothing/head/cowboyhat
+	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
+
+/obj/item/clothing/shoes/cowboy
+	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
+
+/obj/item/clothing/suit/fluff/dusty_jacket
+	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
+
 
 //dune hardsuit
 
