@@ -141,6 +141,9 @@
 		playsound(src, pick(alert_sounds), 200, ignore_walls = FALSE)
 		alert_cooldown_time = world.time + alert_cooldown
 
+/mob/living/simple_animal/hostile/duna/add_tts_component()
+	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/kazamon)
+
 
 /mob/living/simple_animal/hostile/duna/range
 	icon_state = "osminogrange_gold"
@@ -473,7 +476,7 @@
 		AddSpell(spell)
 
 /mob/living/simple_animal/hostile/cthulhu/add_tts_component()
-	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/doom)
+	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/ornn)
 
 
 /mob/living/simple_animal/hostile/cthulhu/Login()
