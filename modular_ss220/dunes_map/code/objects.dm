@@ -217,6 +217,7 @@
 	icon_state = "rib"
 	density = TRUE
 	deconstructible = FALSE
+	max_integrity = 500
 	layer = ABOVE_MOB_LAYER
 
 /obj/structure/fluff/desert_construction/depred_boss
@@ -225,6 +226,7 @@
 	icon = 'modular_ss220/dunes_map/icons/marker_giant.dmi'
 	icon_state = "marker_giant_active_anim"
 	pixel_x = -32
+	max_integrity = 2000
 	light_power = 2
 	light_range = 20
 	light_color = COLOR_MAROON
@@ -459,6 +461,7 @@
 	icon_state = "centcom"
 	registered_name = "Таня фон Нормандия"
 	assignment = "Normandy Special Forces"
+	rank = "Normandy Special Forces"
 
 //sign
 /obj/structure/warn_sign
@@ -475,14 +478,14 @@
 /obj/structure/telecrystal_deposit
 	name = "отложение телекристаллов"
 	desc = "Естественные наросты телекристаллов."
-	icon = 'icons/effects/vampire_effects.dmi'
-	icon_state = "blood_barrier"
+	icon = 'modular_ss220/dunes_map/icons/crystal.dmi'
+	icon_state = "crystal1"
 	anchored = TRUE
-	layer = ABOVE_MOB_LAYER
-	density = TRUE
-	max_integrity = 20
-	light_power = 1.4
-	light_range = 3
+	layer = LOW_OBJ_LAYER
+	density = FALSE
+	max_integrity = 30
+	light_power = 2
+	light_range = 5
 	light_color = COLOR_MAROON
 
 /obj/structure/telecrystal_deposit/Destroy()
@@ -491,10 +494,31 @@
 	new /obj/item/stack/telecrystal/five/native(T)
 	..()
 
+/obj/structure/telecrystal_deposit/mini
+	icon_state = "crystal3"
+	max_integrity = 10
+	light_power = 5
+	light_range = 1.5
+
+/obj/structure/telecrystal_deposit/medium
+	icon = 'icons/effects/vampire_effects.dmi'
+	icon_state = "blood_barrier"
+	max_integrity = 20
+	layer = ABOVE_MOB_LAYER
+	density = TRUE
+
+/obj/structure/telecrystal_deposit/huge
+	icon_state = "crystal2"
+	max_integrity = 50
+	light_power = 3
+	light_range = 4
+	layer = ABOVE_MOB_LAYER
+	density = TRUE
+
 /obj/item/stack/telecrystal/five/native
 	name = "телекристалл"
 	desc = "Его пульсация одновременно приманивает и настораживает."
-	icon = 'modular_ss220/dunes_map/icons/stack.dmi'
+	icon = 'modular_ss220/dunes_map/icons/crystal.dmi'
 	icon_state = "native"
 	dynamic_icon_state = FALSE
 

@@ -13,7 +13,7 @@
 	head = /obj/item/clothing/head/beret/solgov/command
 	gloves = /obj/item/clothing/gloves/combat
 	mask = /obj/item/clothing/mask/gas/sechailer
-	r_hand = /obj/item/gun/projectile/automatic/ar
+	glasses = /obj/item/clothing/glasses/hud/security/night
 	l_pocket = /obj/item/tank/internals/emergency_oxygen/double
 	r_pocket = /obj/item/reagent_containers/hypospray/combat/nanites
 	back = /obj/item/storage/backpack/security
@@ -27,6 +27,7 @@
 		/obj/item/grenade/plastic/c4/x4,
 		/obj/item/melee/energy/sword/saber,
 		/obj/item/shield/energy,
+		/obj/item/gun/projectile/automatic/ar
 	)
 	bio_chips = list(
 		/obj/item/bio_chip/mindshield,
@@ -35,7 +36,8 @@
 	cybernetic_implants = list(
 		/obj/item/organ/internal/cyberimp/chest/nutriment/plus/hardened,
 		/obj/item/organ/internal/cyberimp/arm/combat/centcom,
-		/obj/item/organ/internal/cyberimp/brain/anti_sleep/hardened
+		/obj/item/organ/internal/cyberimp/brain/anti_stam/hardened,
+		/obj/item/organ/internal/eyes/cybernetic/xray/hardened
 	)
 
 /datum/outfit/admin/tanya/tanya2
@@ -56,17 +58,17 @@
 		/obj/item/shield/energy,
 	)
 
-/datum/outfit/admin/tanya/tanya3
+/datum/outfit/admin/tanya/tanya4
 	name = "Таня фон Нормандия - Пульсовая - в броне"
 	back = /obj/item/mod/control/pre_equipped/apocryphal
-	r_hand = /obj/item/gun/energy/pulse
+	r_hand = /obj/item/shield/energy,
 	backpack_contents = list(
 		/obj/item/storage/box/responseteam,
 		/obj/item/storage/box/flashbangs,
 		/obj/item/flashlight/seclite,
 		/obj/item/grenade/plastic/c4/x4,
 		/obj/item/melee/energy/sword/saber,
-		/obj/item/shield/energy,
+		/obj/item/gun/energy/pulse
 	)
 
 /datum/outfit/redneck
