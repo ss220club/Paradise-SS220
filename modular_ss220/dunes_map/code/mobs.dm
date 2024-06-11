@@ -122,7 +122,7 @@
 		'modular_ss220/dunes_map/sound/mobs/dep5.ogg',
 		'modular_ss220/dunes_map/sound/mobs/dep6.ogg',
 	)
-	layer = ABOVE_ALL_MOB_LAYER
+	layer = 4.49
 
 /mob/living/simple_animal/hostile/duna/Initialize(mapload)
 	. = ..()
@@ -432,9 +432,11 @@
 	icon = 'modular_ss220/dunes_map/icons/cthulhu.dmi'
 	icon_state = "cthulhu"
 	icon_living = "cthulhu"
-	pixel_x = -240
-	pixel_y = -220
+	pixel_x = -140
+	pixel_y = -120
 	layer = LARGE_MOB_LAYER
+	wander = FALSE
+	see_in_dark = 8
 
 	// Balance
 	move_force = MOVE_FORCE_OVERPOWERING
@@ -539,7 +541,7 @@
 	for(var/mob/player as anything in GLOB.player_list)
 		user.cast_tts(player, message)
 		to_chat(player, spanned_message)
-	sound_to_playing_players(sound('sound/misc/demon_dies.ogg'), 20)
+	sound_to_playing_players(sound('modular_ss220/dunes_map/sound/mobs/boss_roar.ogg'), 20)
 
 /datum/spell/aoe/conjure/duna
 	name = "Призвать прислужников"
@@ -553,7 +555,7 @@
 						/mob/living/simple_animal/hostile/duna/range)
 
 /datum/spell/pulse_circle
-	name = "Я не придумал название спелу"
+	name = "Ego autem non ascendit cum nomine"
 	action_icon_state = "magicm"
 	base_cooldown = 5 SECONDS
 	clothes_req = FALSE
