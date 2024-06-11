@@ -158,18 +158,18 @@
 
 /datum/status_effect/high_five/rps
 	id = "rps"
-	critical_success = "both play rock -- THEY'RE GOING IN FOR THE FISTBUMP!"
-	success = "play rock-paper-scissors!"
+	critical_success = "оба разыгрывают камень, ОНИ ДЕЛАЮТ ДРУЖЕСКИЙ УДАР КУЛАКАМИ!"
+	success = "камень, ножницы, бумага!"
 	sound_effect = 'sound/effects/glassknock.ogg'
-	request = "wants to play rock-paper-scissors!"
+	request = "хочет сыграть в «камень-ножницы-бумага»!"
 	item_path = /obj/item/claymore  // it's time to d-d-d-d-d-d-d-duel!
 	/// The move that you'll be making.
 	var/move
 
 /datum/status_effect/high_five/rps/get_missed_message()
 	var/list/missed_messages = list(
-		"just seems to be practicing against [owner.p_themselves()]. [owner.p_are(TRUE)] [owner.p_they()] losing?",
-		"seems more interested in a thumb war."
+		"перестаёт стучать по ладони и опускает свою руку, кажется он огорчён.",
+		"играет в «камень-ножницы-бумага» сам с собой. Он проиграл..."
 	)
 
 	return pick(missed_messages)
@@ -199,21 +199,21 @@
 	var/outcome_msg
 	switch(outcome)
 		if(RPS_EMOTE_TIE)
-			outcome_msg = "It's a tie!"
+			outcome_msg = "Это ничья!"
 		if(RPS_EMOTE_WE_WIN)
-			outcome_msg = "[user] wins!"
+			outcome_msg = "[user] побеждает!"
 		if(RPS_EMOTE_THEY_WIN)
-			outcome_msg = "[highfived] wins!"
+			outcome_msg = "[highfived] побеждает!"
 
 	user.visible_message(
-		"<span class='notice'>[user] plays <b>[move]</b>, and [highfived] plays <b>[their_status_effect.move]</b>.</span>",
-		"<span class='notice'>[highfived] plays <b>[their_status_effect.move]</b>.</span>",
-		"<span class='notice'>It sounds like rock-paper-scissors.</span>"
+		"<span class='notice'>[user] разыгрывает <b>[move]</b>, [highfived] в свою очередь разыгрывает <b>[their_status_effect.move]</b>.</span>",
+		"<span class='notice'>[highfived] разыгрывает <b>[their_status_effect.move]</b>.</span>",
+		"<span class='notice'>Похоже на «камень-ножницы-бумага».</span>"
 	)
 
 	user.visible_message(
 		"<span class='warning'>[outcome_msg]</span>",
-		blind_message = "<span class='notice'>It sounds like [pick(user, highfived)] won!</span>"  // you're blind how are you supposed to know
+		blind_message = "<span class='notice'>Похоже что [pick(user, highfived)] победил!</span>"  // you're blind how are you supposed to know
 	)
 
 /datum/status_effect/high_five/rps/on_creation(mob/living/new_owner, made_move)
@@ -227,14 +227,14 @@
 
 /datum/status_effect/high_five/rps/on_apply()
 	if(!isnull(move))
-		to_chat(owner, "<span class='notice'>You prepare to play <b>[move]</b>.</span>")
+		to_chat(owner, "<span class='notice'>Вы готовитесь разыграть <b>[move]</b>.</span>")
 		return ..()  // we already have the move, probably from the emote passing it in
 
 	move = get_rock_paper_scissors_move(owner)
 	if(move == null)
 		return FALSE  // make it auto-remove itself
 
-	to_chat(owner, "<span class='notice'>You prepare to play <b>[move]</b>.</span>")
+	to_chat(owner, "<span class='notice'>Вы готовитесь разыграть <b>[move]</b>.</span>")
 	return ..()
 
 
