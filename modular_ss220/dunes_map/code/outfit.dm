@@ -61,7 +61,7 @@
 /datum/outfit/admin/tanya/tanya4
 	name = "Таня фон Нормандия - Пульсовая - в броне"
 	back = /obj/item/mod/control/pre_equipped/apocryphal
-	r_hand = /obj/item/shield/energy,
+	r_hand = /obj/item/shield/energy
 	backpack_contents = list(
 		/obj/item/storage/box/responseteam,
 		/obj/item/storage/box/flashbangs,
