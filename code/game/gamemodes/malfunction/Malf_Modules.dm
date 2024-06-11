@@ -436,7 +436,7 @@
 
 //Overload Machine: Allows the AI to overload a machine, detonating it after a delay. Two uses per purchase.
 /datum/AI_Module/overload_machine
-	module_name = "Перезагрузка машины"
+	module_name = "Взрыв машины"
 	mod_pick_name = "overload"
 	description = "Перегревает машину, вызывая небольшой взрыв и уничтожая её. Два использования за покупку."
 	cost = 20
@@ -444,7 +444,7 @@
 	unlock_text = "<span class='notice'>Вы получаете способность направлять энергию из APC напрямую в машинерию.</span>"
 
 /datum/spell/ai_spell/ranged/overload_machine
-	name = "Перезагрузка машины"
+	name = "Взрыв машины"
 	desc = "Перегревает машину, вызывая небольшой взрыв через небольшой промежуток времени."
 	action_icon_state = "overload_machine"
 	uses = 4
@@ -515,7 +515,7 @@
 
 //Robotic Factory: Places a large machine that converts humans that go through it into cyborgs. Unlocking this ability removes shunting.
 /datum/AI_Module/place_cyborg_transformer
-	module_name = "Фабрика роботов (Убирает запихивание)"
+	module_name = "Фабрика роботов (Убирает прятки)"
 	mod_pick_name = "cyborgtransformer"
 	description = "Строит машину где угодно, используя дорогие наномашины, которая превращает живое существо в лояльного раба-киборга."
 	cost = 100
@@ -553,7 +553,7 @@
 	new /obj/machinery/transformer(T, user)
 	playsound(T, 'sound/effects/phasein.ogg', 100, 1)
 	user.can_shunt = FALSE
-	to_chat(user, "<span class='warning'>Вы больше не можете запихнуть свои процессы в ЛКП.</span>")
+	to_chat(user, "<span class='warning'>Вы больше не можете спрятать свои процессы в ЛКП.</span>")
 	adjust_uses(-1, user)
 
 /mob/living/silicon/ai/proc/remove_transformer_image(client/C, image/I, turf/T)
@@ -590,17 +590,17 @@
 
 //Turret Assembly: Assemble an AI turret at the chosen location. One use per purchase
 /datum/AI_Module/place_turret
-	module_name = "Deploy Turret"
+	module_name = "Установка турели"
 	mod_pick_name = "turretdeployer"
-	description = "Build a turret anywhere that lethally targets organic life in sight."
+	description = "Ставит турель, летально стреляющая во всех ограников на поражение."
 	cost = 30
 	power_type = /datum/spell/ai_spell/place_turret
 	unlock_text = "<span class='notice'>You prepare an energy turret for deployment.</span>"
 	unlock_sound = 'sound/items/rped.ogg'
 
 /datum/spell/ai_spell/place_turret
-	name = "Deploy Turret"
-	desc = "Build a turret anywhere that lethally targets organic life in sight."
+	name = "Установка турели"
+	desc = "Ставит турель, летально стреляющая во всех ограников на поражение."
 	action_icon_state = "deploy_turret"
 	uses = 1
 	auto_use_uses = FALSE
@@ -613,12 +613,12 @@
 
 /datum/spell/ai_spell/place_turret/cast(list/targets, mob/living/silicon/ai/user)
 	if(in_use)
-		to_chat(user, "<span class='notice'>Your assemblers can only construct one turret at a time.</span>")
+		to_chat(user, "<span class='notice'>Сборщики могут устанавливать только одну турель за раз.</span>")
 		return
 	if(!user.can_place_turret(src))
 		return
 	in_use = TRUE
-	if(tgui_alert(user, "Are you sure you want to place a turret here? Deployment will take a few seconds to complete, in which the turret will be vulnerable.", "Are you sure?", list("No", "Yes")) != "Yes")
+	if(tgui_alert(user, "Вы уверены, что хотите поставить турель здесь? Установка займёт некоторое время, и в это время она уязвима.", "Вы уверены?", list("Нет", "Да")) != "Да")
 		in_use = FALSE
 		return
 	if(!user.can_place_turret(src))
@@ -633,7 +633,7 @@
 	//Handles the turret construction and configuration
 	playsound(T, 'sound/items/rped.ogg', 100, TRUE) //Plays a sound both at the location of the construction to alert players and to the user as feedback
 	user.playsound_local(user, 'sound/items/rped.ogg', 50, FALSE, use_reverb = FALSE)
-	to_chat(user, "<span class='notice'>You order your electronics to assemble a turret. This will take a few seconds.</span>")
+	to_chat(user, "<span class='notice'>Вы приказываете вашей электронике собрать турель. Это займёт несколько секунд.</span>")
 	var/obj/effect/temp_visual/rcd_effect/spawning_effect = new(T)
 	QDEL_IN(spawning_effect, 5 SECONDS)
 
@@ -658,7 +658,7 @@
 		turret.disabled = initial(turret.disabled)
 		new /obj/effect/temp_visual/rcd_effect/end(T)
 		playsound(T, 'sound/items/deconstruct.ogg', 100, TRUE)
-		to_chat(user, "<span class='notice'>Turret deployed.</span>")
+		to_chat(user, "<span class='notice'>Турель установлена.</span>")
 		adjust_uses(-1, user)
 
 /mob/living/silicon/ai/proc/can_place_turret(datum/spell/ai_spell/place_turret/action)
@@ -674,14 +674,14 @@
 	var/datum/camerachunk/C = GLOB.cameranet.getCameraChunk(deploylocation.x, deploylocation.y, deploylocation.z)
 
 	if(!istype(deploylocation))
-		to_chat(src, "<span class='warning'>There isn't enough room! Make sure you are placing the machine in a clear area and on a floor.</span>")
+		to_chat(src, "<span class='warning'>Недостаточно места! Убедитесь, что вы ставите машину на полу.</span>")
 		return FALSE
 	if(!C.visibleTurfs[deploylocation])
-		to_chat(src, "<span class='warning'>You don't have camera vision of this location!</span>")
+		to_chat(src, "<span class='warning'>Ваши камеры не имеют там обзора!</span>")
 		addtimer(CALLBACK(src, PROC_REF(remove_transformer_image), client, I, deploylocation), 3 SECONDS)
 		return FALSE
 	if(is_blocked_turf(deploylocation))
-		to_chat(src, "<span class='warning'>That area must be clear of objects!</span>")
+		to_chat(src, "<span class='warning'>Зона должна быть свободна от предметов!</span>")
 		addtimer(CALLBACK(src, PROC_REF(remove_transformer_image), client, I, deploylocation), 3 SECONDS)
 		return FALSE
 
