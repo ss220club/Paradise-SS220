@@ -9,7 +9,7 @@
 	righthand_file = 'modular_ss220/instruments/icons/samurai_guitar_righthand.dmi'
 	attack_verb = list("played metal on", "shredded", "crashed", "smashed")
 	hitsound = 'sound/weapons/stringsmash.ogg'
-	allowed_instrument_ids = list("cshmetalgt", "cshrockgt", "csteelgt", "ccleangt")
+	allowed_instrument_ids = list("cshmetalgt", "cshrockgt", "csteelgt", "ccleangt","cshbassgt", "cnylongt", "cmutedgt")
 
 /obj/item/instrument/soundhand_metal_guitar/Initialize(mapload)
 	. = ..()
