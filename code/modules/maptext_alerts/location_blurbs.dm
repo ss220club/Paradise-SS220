@@ -109,7 +109,7 @@
 
 	qdel(src)
 
-/datum/controller/subsystem/jobs/proc/show_location_blurb(client/show_blurb_to, datum/mind/antag_check)
+/datum/controller/subsystem/jobs/proc/show_location_blurb(client/show_blurb_to, datum/mind/antag_check) // ИВЕНТ изменение заставки
 	PRIVATE_PROC(TRUE)
 
 	if(!show_blurb_to?.mob)
@@ -129,10 +129,10 @@
 				location_blurb.background_a = role.blurb_a
 				location_blurb.font_family = role.blurb_font
 				break
-			location_blurb.blurb_text = uppertext("2570 год, [station_time_timestamp()]\n АКН ''Трурль'', третья палуба, [get_area_name(show_blurb_to.mob, TRUE)]")
+			location_blurb.blurb_text = uppertext("2570 год, [station_time_timestamp()]\n 	АКН ''Трурль'', третья палуба, [get_area_name(show_blurb_to.mob, TRUE)]")
 
 	else
-		location_blurb.blurb_text = uppertext("2570 год, [station_time_timestamp()]\n АКН ''Трурль'', третья палуба, [get_area_name(show_blurb_to.mob, TRUE)]")
+		location_blurb.blurb_text = uppertext("2570 год, [station_time_timestamp()]\nАКН ''Трурль'', третья палуба, [get_area_name(show_blurb_to.mob, TRUE)]")
 	location_blurb.hold_for = 3 SECONDS
 	location_blurb.appear_animation_duration = 1 SECONDS
 	location_blurb.fade_animation_duration = 0.5 SECONDS
