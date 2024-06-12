@@ -1,10 +1,6 @@
 /datum/controller/subsystem/ticker/Initialize()
-	var/static/list/config_songs = flist("config/lobby_music/sounds/")
-	var/static/list/music = list()
-	for(var/song in config_songs)
-		music += song
-
-	login_music = "config/lobby_music/sounds/[pick(music)]"
+	var/static/list/possible_music= flist("config/lobby_music/sounds/")
+	login_music = "config/lobby_music/sounds/[pick(possible_music)]"
 
 /client/playtitlemusic()
 	UNTIL(SSticker.login_music)
