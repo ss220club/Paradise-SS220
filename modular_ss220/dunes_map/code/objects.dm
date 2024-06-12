@@ -342,6 +342,7 @@
 	desc = "Вы никогда не видели чего-то более устрашающего и омерзительного."
 	icon = 'modular_ss220/dunes_map/icons/hugehead.dmi'
 	icon_state = "head2"
+	max_integrity = 1000
 	pixel_x = -16
 
 /obj/structure/fluff/desert_construction/huge_head/black
