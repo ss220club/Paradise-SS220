@@ -11,4 +11,4 @@
 
 	if(!(prefs.sound & SOUND_LOBBY) || GLOB.configuration.general.disable_lobby_music)
 		return
-	SEND_SOUND(src, sound(SSticker.login_music, repeat = 1, wait = 0, volume = 50 * prefs.get_channel_volume(CHANNEL_LOBBYMUSIC), channel = CHANNEL_LOBBYMUSIC))
+	SEND_SOUND(src, sound(SSticker.login_music, repeat = FALSE, wait = 0, volume = 50 * prefs.get_channel_volume(CHANNEL_LOBBYMUSIC), channel = CHANNEL_LOBBYMUSIC))
