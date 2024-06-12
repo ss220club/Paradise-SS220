@@ -1,14 +1,14 @@
 /datum/controller/subsystem/ticker/Initialize()
-	login_music = pick(
-		'modular_ss220/aesthetics_sounds/sound/music/Endless_Space.ogg',
-		'modular_ss220/aesthetics_sounds/sound/music/Human.ogg',
-		'modular_ss220/aesthetics_sounds/sound/music/Robocop_RightVer.ogg',
-		'modular_ss220/aesthetics_sounds/sound/music/Space_Asshole.ogg',
-		'modular_ss220/aesthetics_sounds/sound/music/Traitor.ogg',
-		'modular_ss220/aesthetics_sounds/sound/music/Treacherous_Voyage.ogg',
-		'modular_ss220/aesthetics_sounds/sound/music/Delirium.ogg',
-		'modular_ss220/aesthetics_sounds/sound/music/Space_Oddity.ogg',
-		'modular_ss220/aesthetics_sounds/sound/music/She-Wolf.ogg',
-		'modular_ss220/aesthetics_sounds/sound/music/Calling_You.ogg',
-		'modular_ss220/aesthetics_sounds/sound/music/Possessor.ogg',
-	)
+	var/static/list/config_songs = flist("config/lobby_music/sounds/")
+	var/static/list/music = list()
+	for(var/song in config_songs)
+		music += song
+
+	login_music = "config/lobby_music/sounds/[pick(music)]"
+
+/client/playtitlemusic()
+	UNTIL(SSticker.login_music)
+
+	if(!(prefs.sound & SOUND_LOBBY) || GLOB.configuration.general.disable_lobby_music)
+		return
+	SEND_SOUND(src, sound(SSticker.login_music, repeat = 1, wait = 0, volume = 50 * prefs.get_channel_volume(CHANNEL_LOBBYMUSIC), channel = CHANNEL_LOBBYMUSIC))
