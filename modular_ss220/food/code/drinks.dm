@@ -4,13 +4,15 @@
 		icon = initial(icon)
 		return
 	var/datum/reagent/reagent = reagents.get_master_reagent()
-	if(!istype(reagent, /datum/reagent/consumable/ethanol))
+	if(!istype(reagent, /datum/reagent/consumable))
 		icon = initial(icon)
-		return
-	var/datum/reagent/consumable/ethanol/booze = reagent
-	icon = booze.drinking_glass_icon
+	else
+		var/datum/reagent/consumable/drink = reagent
+		icon = drink.drinking_glass_icon
+	if(!reagent.drink_icon)
+		icon_state = "glass_empty"
 
-/datum/reagent/consumable/ethanol
+/datum/reagent/consumable
 	var/drinking_glass_icon = 'icons/obj/drinks.dmi'
 
 /obj/machinery/chem_dispenser/beer/Initialize(mapload)
