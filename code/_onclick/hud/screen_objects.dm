@@ -592,6 +592,12 @@
 		status_list += "<span class='notice'>Окружающие меня объекты и погода изменяют температуру на [H.get_around_heat()] единиц(ы)."
 		to_chat(usr, chat_box_examine(status_list.Join("\n")))
 
+/atom/movable/screen/nutrition
+	name = "nutrition"
+	icon = 'icons/mob/screen_hunger.dmi'
+	icon_state = null
+	screen_loc = ui_nutrition
+
 /atom/movable/screen/component_button
 	var/atom/movable/screen/parent
 

@@ -131,6 +131,7 @@
 	mymob.healths = null
 	mymob.healthdoll = null
 	mymob.pullin = null
+	mymob.nutrition_display = null
 	if(istype(mymob, /mob/living/carbon/human))
 		var/mob/living/carbon/human/h = mymob
 		h.frostbite_screen = null

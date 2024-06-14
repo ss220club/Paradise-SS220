@@ -331,14 +331,14 @@
 	new /obj/item/gavelblock(src)
 	new /obj/item/gavelhammer(src)
 	new /obj/item/clothing/accessory/medal/legal(src)
-	new /obj/item/clothing/accessory/lawyers_badge(src)
+	new /obj/item/clothing/accessory/legal_badge(src)
 	new /obj/item/storage/bag/garment/magistrate(src)
 
 /obj/structure/closet/secure_closet/magistrate/empty/populate_contents()
 
 /obj/structure/closet/secure_closet/iaa
 	name = "internal affairs locker"
-	req_access = list(ACCESS_LAWYER)
+	req_access = list(ACCESS_INTERNAL_AFFAIRS)
 	icon_opened = "magi_open"
 	icon_state = "iaa"
 	open_door_sprite = "chaplain_door"
@@ -352,5 +352,6 @@
 	new /obj/item/storage/briefcase(src)
 	new /obj/item/radio/headset/headset_iaa(src)
 	new /obj/item/radio/headset/headset_iaa(src)
+	new /obj/item/clothing/accessory/legal_badge/iaa(src)
 
 /obj/structure/closet/secure_closet/iaa/empty/populate_contents()

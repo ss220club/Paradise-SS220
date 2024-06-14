@@ -345,6 +345,9 @@
 	mymob.healthdoll = new()
 	infodisplay += mymob.healthdoll
 
+	mymob.nutrition_display = new()
+	infodisplay += mymob.nutrition_display
+
 	if(istype(mymob, /mob/living/carbon/human))
 		var/mob/living/carbon/human/h = mymob
 		h.frostbite_screen = new()
