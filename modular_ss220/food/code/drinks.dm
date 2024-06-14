@@ -593,7 +593,7 @@
 	description = "Алкогольный напиток, полученный путём ферментации хлеба"
 	color = "#775a1c"
 	nutriment_factor = 1 * REAGENTS_METABOLISM
-	alcohol_perc = 0.3
+	alcohol_perc = 0.2
 	drink_icon = "alco_kvass"
 	drinking_glass_icon = 'modular_ss220/food/icons/drinks.dmi'
 	drink_name = "Стакан алкогольного кваса"
