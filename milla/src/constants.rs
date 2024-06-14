@@ -1,8 +1,8 @@
 /// How many Z levels we allow before being suspicious that the wrong number was sent.
-pub(crate) const MAX_Z_LEVELS: i32 = 10;
+pub(crate) const MAX_Z_LEVELS: i32 = 20;
 
 /// How big is the map? Assumed square.
-pub(crate) const MAP_SIZE: usize = 255;
+pub(crate) const MAP_SIZE: usize = 512;
 
 /// 0 degrees Celsius, in Kelvin
 pub(crate) const T0C: f32 = 273.15;

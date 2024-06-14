@@ -114,17 +114,11 @@
 	name = "Жилой отсек низкого класса (Род)"
 	icon_state = "cryo"
 
-/area/lazarus/outpost/rod/living/a
-	name = "Жилой отсек среднего класса 'A' (Род)"
-
-/area/lazarus/outpost/rod/living/b
-	name = "Жилой отсек среднего класса 'Б' (Род)"
-
 /area/lazarus/outpost/rod/living/sec
 	name = "Жилой отсек среднего класса 'SEC' (Род)"
 
-/area/lazarus/outpost/rod/living/locker
-	name = "Комната отдыха (Род)"
+/area/lazarus/outpost/rod/living/crew
+	name = "Жилой отсек среднего класса 'CREW' (Род)"
 
 // Sec
 
@@ -148,14 +142,22 @@
 	name = "Офис начальника охраны (Род)"
 	icon_state = "hos"
 
+/area/lazarus/outpost/rod/sec/range
+	name = "Стрельбище (Род)"
+	icon_state = "firingrange"
+
+/area/lazarus/outpost/rod/sec/locker
+	name = "Раздевалка охраны (Род)"
+	icon_state = "securityoffice"
+
 //Other
 
 /area/lazarus/outpost/rod/med
 	name = "Медпункт (Род)"
 	icon_state = "medbay"
 
-/area/lazarus/outpost/rod/bar
-	name = "Бар (Род)"
+/area/lazarus/outpost/rod/canteen
+	name = "Столовая (Род)"
 	icon_state = "bar"
 
 /area/lazarus/outpost/rod/kitchen
@@ -166,13 +168,13 @@
 	name = "Гидропоника (Род)"
 	icon_state = "hydro"
 
+/area/lazarus/outpost/rod/biodome
+	name = "Био-купол (Род)"
+	icon_state = "garden"
+
 /area/lazarus/outpost/rod/hop
 	name = "Офис менеджера комплекса 'Лазарь' (Род)"
 	icon_state = "hop"
-
-/area/lazarus/outpost/rod/exit
-	name = "Шлюз (Род)"
-	icon_state = "entry"
 
 /area/lazarus/outpost/rod/iaa
 	name = "Офис юриста (Род)"

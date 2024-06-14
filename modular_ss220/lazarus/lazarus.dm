@@ -4,5 +4,3 @@
 	author = "ThaumicNik"
 
 /datum/modpack/antagonists/initialize()
-	GLOB.special_roles |= ROLE_BLOOD_BROTHER
-	GLOB.huds += new/datum/atom_hud/antag/hidden()

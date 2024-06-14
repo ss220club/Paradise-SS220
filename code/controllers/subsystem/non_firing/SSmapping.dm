@@ -106,6 +106,10 @@ SUBSYSTEM_DEF(mapping)
 	// Located below is some of the worst code I've ever seen
 	// Checking all areas to see if they have a turf in them? Nice one ssmapping!
 
+	// Now we initialize event map
+	var/event_z_level = GLOB.space_manager.add_new_zlevel("Testing", linkage = UNAFFECTED, traits = list(AI_OK))
+	GLOB.maploader.load_map(file("modular_ss220/lazarus/maps/lazarus.dmm"), z_offset = event_z_level)
+
 	var/list/all_areas = list()
 	for(var/area/areas in world)
 		all_areas += areas
