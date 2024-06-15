@@ -416,7 +416,7 @@
 
 /datum/jukebox/concertspeaker/fill_songs_static_list()
 	var/songs_list = list()
-	for(var/datum/track/new_track as anything in subtypesof(/datum/track/soundhand/))
+	for(var/datum/track/new_track as anything in subtypesof(/datum/track/soundhand))
 		songs_list[new_track.song_name] = new_track
 
 	if(!length(songs_list))
