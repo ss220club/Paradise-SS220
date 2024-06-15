@@ -416,7 +416,13 @@
 
 /datum/jukebox/concertspeaker/fill_songs_static_list()
 	var/songs_list = list()
-	for(var/datum/track/new_track as anything in subtypesof(/datum/track/soundhand))
+	for(var/datum/track/process_track as anything in subtypesof(/datum/track/soundhand))
+		//Создание нового трека в списке, необходимо перекидывать данные в новый трек
+		var/datum/track/new_track = new()
+		new_track.song_path = process_track.song_path
+		new_track.song_name = process_track.song_name
+		new_track.song_length = process_track.song_length
+		new_track.song_beat = process_track.song_beat
 		songs_list[new_track.song_name] = new_track
 
 	if(!length(songs_list))
