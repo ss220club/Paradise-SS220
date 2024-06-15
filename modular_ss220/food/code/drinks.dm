@@ -638,10 +638,26 @@
 		return
 	return ..()
 
+/obj/item/reagent_containers/drinks/cans/kvass
+	name = "Квас"
+	desc = "Банка кваса. На этикетке написано \"Сделано в СССП\""
+	icon_state = "kvass_can"
+	icon = 'modular_ss220/food/icons/drinks.dmi'
+	list_reagents = list("kvass" = 50)
+
 /obj/machinery/chem_dispenser/soda/Initialize(mapload)
 	dispensable_reagents += "kvass"
 	return ..()
 
 /obj/item/handheld_chem_dispenser/soda/Initialize(mapload)
 	dispensable_reagents += "kvass"
+	return ..()
+
+/obj/machinery/economy/vending/boozeomat/Initialize(mapload)
+	products += list(/obj/item/reagent_containers/drinks/cans/kvass = 8)
+	return ..()
+
+/obj/machinery/economy/vending/cola/Initialize(mapload)
+	products += list(/obj/item/reagent_containers/drinks/cans/kvass = 10)
+	prices += list(/obj/item/reagent_containers/drinks/cans/kvass = 50)
 	return ..()
