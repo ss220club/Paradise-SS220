@@ -207,6 +207,18 @@
 	lefthand_file = 'modular_ss220/clothing/icons/inhands/left_hand.dmi'
 	righthand_file = 'modular_ss220/clothing/icons/inhands/right_hand.dmi'
 
+/datum/supply_packs/misc/soundhand_fan
+	name = "Soundhand Fan Crate"
+	contains = list(/obj/item/clothing/suit/storage/soundhand_black_jacket,
+					/obj/item/clothing/suit/storage/soundhand_black_jacket,
+					/obj/item/clothing/suit/storage/soundhand_olive_jacket,
+					/obj/item/clothing/suit/storage/soundhand_olive_jacket,
+					/obj/item/clothing/suit/storage/soundhand_brown_jacket,
+					/obj/item/clothing/suit/storage/soundhand_brown_jacket,
+					/obj/item/clothing/suit/storage/soundhand_white_jacket)
+	cost = 1500
+	containername = "soundhand Fan crate"
+
 /obj/item/clothing/suit/chef/red
 	name = "chef's red apron"
 	desc = "Хорошо скроенный поварской китель."
