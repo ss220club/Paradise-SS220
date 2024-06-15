@@ -419,7 +419,7 @@
 	desc = "Экзоскелет ударной группы синдиката, модернизированный по спецзаказу Миднайта Блэка."
 	icon_state = "hardsuit-midnightsuit"
 	item_state = "hardsuit-midnightsuit"
-	armor = list(MELEE = 70, BULLET = 80, LASER = 65, ENERGY = 40, BOMB = 85, RAD = 115, FIRE = INFINITY, ACID = INFINITY)
+	armor = list(MELEE = 115, BULLET = 115, LASER = 65, ENERGY = 40, BOMB = 200, RAD = INFINITY, FIRE = INFINITY, ACID = INFINITY)
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/dune/midnight_suit
 
 /obj/item/clothing/head/helmet/space/hardsuit/dune/midnight_suit
@@ -428,4 +428,4 @@
 	icon_state = "hardsuit0-midnightsuit"
 	item_state = "hardsuit0-midnightsuit"
 	item_color = "midnightsuit"
-	armor = list(MELEE = 70, BULLET = 80, LASER = 65, ENERGY = 40, BOMB = 85, RAD = 115, FIRE = INFINITY, ACID = INFINITY)
+	armor = list(MELEE = 115, BULLET = 115, LASER = 65, ENERGY = 40, BOMB = 200, RAD = INFINITY, FIRE = INFINITY, ACID = INFINITY)

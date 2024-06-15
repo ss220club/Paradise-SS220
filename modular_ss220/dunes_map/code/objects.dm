@@ -666,6 +666,13 @@
 /obj/structure/closet/coffin/sarcophagus/full/populate_contents()
 	new /obj/effect/mob_spawn/human/corpse/skeleton(src)
 
+//Midniht suit storage
+
+/obj/machinery/suit_storage_unit/syndicate/midnight
+	name = "хранилище экзоскелета Миднайта"
+	suit_type = /obj/item/clothing/suit/space/hardsuit/dune/midnight_suit
+	storage_type = /obj/item/tank/internals/oxygen/red
+
 //cube and VSA
 
 /obj/item/stock_parts/cell/cube
