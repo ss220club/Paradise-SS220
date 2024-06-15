@@ -24,7 +24,7 @@
 	impact_light_color_override = LIGHT_COLOR_PURPLE
 
 /obj/machinery/power/emitter/dummy_depred
-	name = "стреляло"
+	name = "depredator turret"
 	desc = "скрытный депредатор незаметно стрелять трурль спецэффекты 220"
 	projectile_type = /obj/item/projectile/beam/depredator/dummy/hitscan
 	projectile_sound = 'modular_ss220/aesthetics_sounds/sound/mobs/vortigaunt/attack_shoot4.ogg'
@@ -41,7 +41,7 @@
 	minimum_fire_delay = 20
 
 /obj/machinery/power/emitter/dummy_laser
-	name = "стреляло"
+	name = "turret"
 	desc = "незаметный стрелять лазер эффекты взрыв кино сс220"
 	projectile_type = /obj/item/projectile/beam/laser/heavylaser/dummy
 	projectile_sound = 'sound/weapons/lasercannonfire.ogg'

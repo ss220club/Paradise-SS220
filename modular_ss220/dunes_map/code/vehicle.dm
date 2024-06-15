@@ -34,4 +34,10 @@
 		COOLDOWN_START(src, enginesound_cooldown, engine_sound_length)
 		playsound(get_turf(src), engine_sound, 200, TRUE)
 
+/obj/vehicle/motorcycle/desert/user_buckle_mob(mob/living/M, mob/user)
+	..()
+	ADD_TRAIT(M, TRAIT_CANNOT_PULL, TRAIT_HANDS_BLOCKED)
 
+/obj/vehicle/motorcycle/desert/unbuckle_mob(mob/living/buckled_mob, force = FALSE)
+	..()
+	REMOVE_TRAIT(buckled_mob, TRAIT_CANNOT_PULL, TRAIT_HANDS_BLOCKED)
