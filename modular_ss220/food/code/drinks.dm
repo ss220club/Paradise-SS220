@@ -584,3 +584,24 @@
 	required_reagents = list("trinary" = 1, "codelibre" = 1, "rewriter" = 1, "irishempbomb" = 1, "synthanol" = 1  )
 	result_amount = 5
 	mix_sound = 'sound/goonstation/misc/drinkfizz.ogg'
+
+
+/datum/reagent/consumable/ethanol/quadruple_sec
+	name = "Quadruple Sec"
+	id = "quadruple_sec"
+	description = "Бьет по голове как плазмабатон."
+	color = "#cc0000"
+	alcohol_perc = 0.6
+	drink_icon = "quadruple_sec"
+	drinking_glass_icon = 'modular_ss220/food/icons/drinks.dmi'
+	drink_name = "Quadruple Sec"
+	drink_desc = "Бьет по голове как плазмабатон."
+	taste_description = "бодрящая горькая свежесть; ни один враг станции не останется непобежденным"
+
+/datum/chemical_reaction/quadruple_sec
+	name = "Quadruple Sec"
+	id = "quadruple_sec"
+	result = "quadruple_sec"
+	required_reagents = list("bahama_mama" = 5, "triple_citrus" = 5, "grapejuice" = 5 )
+	result_amount = 15
+	mix_sound = 'sound/weapons/taser.ogg'
