@@ -665,14 +665,14 @@
 /datum/reagent/consumable/ethanol/narsour
 	name = "Nar'Sour"
 	id = "narsour"
-	description = "Side effects include self-mutilation and hoarding plasteel."
+	description = "Побочные эффекты включают в себя склонность к суициду и складирование пластали."
 	color = "#9e0f0f"
 	alcohol_perc = 0.3
 	dizzy_adj = 4 SECONDS
 	taste_description = "bloody"
 	drink_icon = "narsour"
 	drinking_glass_icon = 'modular_ss220/food/icons/drinks.dmi'
-	drink_desc = "A new hit cocktail inspired by THE ARM Breweries will have you shouting Fuu ma'jin in no time!"
+	drink_desc = "Новый хит-коктейль, вдохновлённый пивоварнями фирмы \"THE ARM\", что заставит вас выкрикивать Fuu ma'jin без остановки!"
 	drink_name = "Nar'Sour"
 
 /datum/chemical_reaction/narsour
@@ -681,7 +681,7 @@
 	result = "narsour"
 	result_amount = 2
 	required_reagents = list("blood" = 1, "bloodymary" = 1, "lemonjuice" = 1)
-	mix_message = "The mixture develops a sinister glow."
+	mix_message = "Смесь излучает зловещее сияние."
 	mix_sound = 'sound/goonstation/misc/drinkfizz.ogg'
 
 /datum/reagent/consumable/ethanol/narsour/on_mob_life(mob/living/carbon/M)
