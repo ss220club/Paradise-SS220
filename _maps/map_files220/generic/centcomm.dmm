@@ -808,6 +808,13 @@
 "aCa" = (
 /turf/space,
 /area/centcom/ss220/medbay)
+"aCE" = (
+/obj/structure/barricade/security,
+/turf/simulated/floor/plasteel/dark{
+	dir = 8;
+	icon_state = "darkyellowalt"
+	},
+/area/centcom/ss220/admin2)
 "aCG" = (
 /obj/structure/light_fake{
 	dir = 1
@@ -2402,6 +2409,13 @@
 	icon_state = "darkyellowalt"
 	},
 /area/centcom/ss220/supply)
+"bOO" = (
+/obj/item/ammo_box/magazine/m556/arg,
+/turf/simulated/floor/plasteel/dark{
+	dir = 4;
+	icon_state = "darkbluealt"
+	},
+/area/centcom/ss220/admin1)
 "bPs" = (
 /obj/machinery/door/airlock/public/glass{
 	name = "Зона отдыха"
@@ -2564,7 +2578,7 @@
 /area/centcom/ss220/evac)
 "bSp" = (
 /obj/effect/landmark/damageturf,
-/obj/item/stack/sheet/metal/fifty,
+/obj/item/stack/sheet/metal,
 /turf/simulated/floor/plating,
 /area/centcom/ss220/admin1)
 "bSv" = (
@@ -3057,6 +3071,11 @@
 	icon_state = "dark"
 	},
 /area/syndicate_mothership/elite_squad)
+"cfX" = (
+/obj/effect/spawner/window/reinforced/grilled,
+/obj/effect/mapping_helpers/damaged_window,
+/turf/simulated/floor/plating,
+/area/centcom/ss220/admin2)
 "cgm" = (
 /obj/effect/turf_decal/siding/black{
 	dir = 10
@@ -3928,10 +3947,12 @@
 	},
 /area/centcom/ss220/general)
 "cIX" = (
-/turf/simulated/floor/plasteel/dark{
-	dir = 10;
-	icon_state = "darkredalt"
+/obj/structure/toilet{
+	dir = 8
 	},
+/obj/machinery/light/small/directional/north,
+/obj/effect/mapping_helpers/machinery/destroyed,
+/turf/simulated/floor/plating/airless,
 /area/centcom/ss220/jail)
 "cJw" = (
 /obj/structure/mirror/magic{
@@ -4240,7 +4261,7 @@
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/admin1)
 "cUk" = (
-/obj/item/stack/sheet/metal/fifty,
+/obj/item/stack/sheet/metal,
 /turf/space,
 /area/space/centcomm)
 "cUl" = (
@@ -4740,7 +4761,6 @@
 /area/syndicate_mothership)
 "dlw" = (
 /obj/structure/chair/sofa/left,
-/obj/item/clothing/under/syndicate/tacticool,
 /turf/simulated/floor/carpet,
 /area/syndicate_mothership/infteam)
 "dlQ" = (
@@ -5419,16 +5439,12 @@
 /turf/simulated/floor/carpet/black,
 /area/centcom/ss220/general)
 "dGG" = (
-/obj/machinery/door/airlock/centcom{
-	name = "Камера";
-	req_one_access_txt = "114"
+/obj/effect/decal/cleanable/glass,
+/obj/item/shard{
+	pixel_x = 9
 	},
-/obj/machinery/door/poddoor/shutters{
-	dir = 8;
-	id_tag = "СС_Jail_2";
-	name = "Камера 2"
-	},
-/turf/simulated/floor/plasteel/dark,
+/obj/effect/landmark/burnturf,
+/turf/simulated/floor/plating/airless,
 /area/centcom/ss220/jail)
 "dHo" = (
 /obj/machinery/light/spot,
@@ -5532,6 +5548,12 @@
 	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/shuttle/specops)
+"dJQ" = (
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/plasteel/airless{
+	icon_state = "dark"
+	},
+/area/centcom/ss220/jail)
 "dJX" = (
 /obj/structure/chair/comfy/shuttle{
 	dir = 4
@@ -5759,6 +5781,7 @@
 /turf/simulated/floor/wood/fancy/cherry,
 /area/centcom/ss220/admin2)
 "dRA" = (
+/obj/structure/barricade/security,
 /turf/simulated/floor/plasteel/dark{
 	dir = 8;
 	icon_state = "darkbluealtstrip"
@@ -5945,7 +5968,7 @@
 	id_tag = "СС_Jail_1";
 	name = "Камера 1"
 	},
-/turf/simulated/wall/indestructible/fakeglass,
+/turf/simulated/floor/plating/airless,
 /area/centcom/ss220/jail)
 "dYF" = (
 /obj/structure/light_fake/small{
@@ -6059,16 +6082,10 @@
 /turf/simulated/wall/mineral/plastitanium/nodiagonal,
 /area/syndicate_mothership/outside)
 "ebq" = (
-/obj/machinery/door/airlock/centcom{
-	name = "Камера";
-	req_one_access_txt = "114"
+/obj/effect/landmark/burnturf,
+/turf/simulated/floor/plasteel/airless{
+	icon_state = "darkredalt"
 	},
-/obj/machinery/door/poddoor/shutters{
-	dir = 8;
-	id_tag = "СС_Jail_3";
-	name = "Камера 3"
-	},
-/turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/jail)
 "ebr" = (
 /obj/machinery/door/poddoor{
@@ -6100,6 +6117,11 @@
 	icon_state = "darkbluealt"
 	},
 /area/centcom/ss220/admin3)
+"ecF" = (
+/turf/simulated/floor/plasteel/airless{
+	icon_state = "dark"
+	},
+/area/centcom/ss220/jail)
 "eda" = (
 /obj/structure/chair/comfy/shuttle/dark{
 	dir = 4
@@ -6445,7 +6467,11 @@
 /turf/space/transit/horizontal,
 /area/space/centcomm)
 "eqT" = (
-/turf/simulated/floor/plasteel/dark{
+/obj/effect/landmark/burnturf,
+/obj/item/shrapnel{
+	icon_state = "shrapnel3"
+	},
+/turf/simulated/floor/plasteel/airless{
 	icon_state = "darkredalt"
 	},
 /area/centcom/ss220/jail)
@@ -6756,9 +6782,9 @@
 /turf/simulated/floor/plating,
 /area/syndicate_mothership/cargo)
 "eAX" = (
-/turf/simulated/floor/plasteel/dark{
-	dir = 1;
-	icon_state = "darkredalt"
+/turf/simulated/floor/plasteel/airless{
+	icon_state = "darkredalt";
+	dir = 1
 	},
 /area/centcom/ss220/jail)
 "eBg" = (
@@ -8692,6 +8718,12 @@
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/admin1)
+"fHl" = (
+/obj/item/stack/cable_coil{
+	amount = 1
+	},
+/turf/space,
+/area/centcom/ss220/jail)
 "fID" = (
 /turf/simulated/floor/plating/asteroid{
 	icon_state = "asteroidwarning";
@@ -8774,7 +8806,7 @@
 /area/shuttle/assault_pod)
 "fMh" = (
 /obj/effect/decal/cleanable/blood,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/plating/airless,
 /area/centcom/ss220/jail)
 "fMl" = (
 /obj/structure/light_fake/small,
@@ -9168,6 +9200,14 @@
 	},
 /turf/simulated/floor/carpet/red,
 /area/centcom/ss220/admin2)
+"gco" = (
+/obj/item/stack/sheet/metal,
+/obj/effect/landmark/burnturf,
+/turf/simulated/floor/plasteel/airless{
+	icon_state = "darkredalt";
+	dir = 1
+	},
+/area/centcom/ss220/jail)
 "gcw" = (
 /obj/effect/turf_decal/loading_area/white{
 	dir = 4
@@ -9445,7 +9485,9 @@
 /turf/simulated/floor/plating,
 /area/syndicate_mothership/elite_squad)
 "gnO" = (
-/turf/simulated/floor/plating,
+/obj/item/stack/sheet/metal,
+/obj/effect/landmark/burnturf,
+/turf/simulated/floor/plating/airless,
 /area/centcom/ss220/jail)
 "gnT" = (
 /obj/item/gun/projectile/automatic/sniper_rifle{
@@ -9583,7 +9625,7 @@
 /turf/simulated/floor/wood/fancy/oak,
 /area/centcom/ss220/general)
 "gvk" = (
-/obj/item/stack/sheet/metal/fifty,
+/obj/item/stack/sheet/metal,
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/admin3)
 "gvC" = (
@@ -9674,12 +9716,8 @@
 /turf/simulated/floor/wood/fancy/cherry,
 /area/centcom/ss220/admin2)
 "gxo" = (
-/obj/machinery/door/poddoor/shutters{
-	dir = 8;
-	id_tag = "СС_Jail_4";
-	name = "Камера 4"
-	},
-/turf/simulated/wall/indestructible/fakeglass,
+/obj/structure/girder/reinforced,
+/turf/simulated/floor/plating/airless,
 /area/centcom/ss220/jail)
 "gxy" = (
 /obj/structure/table/wood,
@@ -9800,7 +9838,7 @@
 /turf/simulated/floor/carpet/orange,
 /area/centcom/ss220/general)
 "gAa" = (
-/obj/item/stack/sheet/metal/fifty,
+/obj/item/stack/sheet/metal,
 /turf/simulated/floor/plating,
 /area/centcom/ss220/admin1)
 "gAs" = (
@@ -9952,6 +9990,7 @@
 /obj/machinery/atmospherics/pipe/manifold4w/hidden{
 	color = "grey"
 	},
+/obj/mecha/combat/nomad,
 /turf/simulated/floor/plating,
 /area/syndicate_mothership/elite_squad)
 "gEh" = (
@@ -10224,6 +10263,14 @@
 "gKF" = (
 /turf/simulated/wall/indestructible/opsglass,
 /area/syndicate_mothership/elite_squad)
+"gLM" = (
+/obj/machinery/light/directional/north,
+/obj/effect/mapping_helpers/machinery/destroyed,
+/turf/simulated/floor/plasteel/dark{
+	dir = 1;
+	icon_state = "darkbluealt"
+	},
+/area/centcom/ss220/admin2)
 "gLU" = (
 /obj/effect/baseturf_helper{
 	baseturf = /turf/simulated/floor/indestructible
@@ -11229,6 +11276,16 @@
 	icon_state = "grimy"
 	},
 /area/trader_station/sol)
+"htz" = (
+/obj/machinery/power/emitter/dummy_depred{
+	powered = 1;
+	active = 1;
+	anchored = 1;
+	dir = 1;
+	fire_delay = 500
+	},
+/turf/space,
+/area/space/centcomm)
 "htH" = (
 /obj/effect/turf_decal/tile/neutral/full{
 	color = "#000000"
@@ -12684,7 +12741,8 @@
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/admin3)
 "ipi" = (
-/turf/simulated/floor/plasteel/dark,
+/obj/effect/landmark/burnturf,
+/turf/simulated/floor/plating/airless,
 /area/centcom/ss220/jail)
 "ipl" = (
 /obj/structure/table/wood/fancy/royalblack,
@@ -12727,7 +12785,7 @@
 /turf/simulated/floor/carpet/royalblue,
 /area/shuttle/trade/sol)
 "iqm" = (
-/obj/item/stack/sheet/metal/fifty,
+/obj/item/stack/sheet/metal,
 /turf/space,
 /area/centcom/ss220/admin3)
 "iqn" = (
@@ -13094,8 +13152,9 @@
 	},
 /area/syndicate_mothership/outside)
 "iCa" = (
-/obj/effect/landmark/spawner/prisonwarp,
-/turf/simulated/floor/plating,
+/obj/effect/decal/cleanable/glass,
+/obj/effect/landmark/burnturf,
+/turf/simulated/floor/plating/airless,
 /area/centcom/ss220/jail)
 "iCF" = (
 /obj/structure/railing,
@@ -13814,7 +13873,7 @@
 /area/centcom/ss220/evac)
 "jgK" = (
 /obj/effect/landmark/damageturf,
-/obj/item/stack/sheet/metal/fifty,
+/obj/item/stack/sheet/metal,
 /turf/simulated/floor/plating/airless,
 /area/centcom/ss220/admin1)
 "jhd" = (
@@ -13890,10 +13949,9 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/blood,
-/obj/structure/light_fake/small{
-	dir = 1
-	},
-/turf/simulated/floor/plating,
+/obj/machinery/light/small/directional/north,
+/obj/effect/mapping_helpers/machinery/destroyed,
+/turf/simulated/floor/plating/airless,
 /area/centcom/ss220/jail)
 "jlp" = (
 /obj/effect/spawner/window/shuttle,
@@ -14020,16 +14078,8 @@
 /turf/simulated/floor/mineral/plastitanium,
 /area/shuttle/syndicate_elite)
 "jom" = (
-/obj/structure/showcase{
-	icon = 'icons/mob/robots.dmi';
-	icon_state = "secborg";
-	name = "Охранный Робот";
-	desc = "Кажется оно ни на что не реагирует..."
-	},
-/turf/simulated/floor/plasteel/dark{
-	dir = 6;
-	icon_state = "darkredalt"
-	},
+/obj/effect/gibspawner/robot,
+/turf/simulated/floor/plating/airless,
 /area/centcom/ss220/jail)
 "jon" = (
 /obj/structure/table/wood,
@@ -14527,6 +14577,7 @@
 /obj/effect/turf_decal/stripes/red/line{
 	dir = 1
 	},
+/obj/item/circuitboard/mecha,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "dark"
@@ -14628,10 +14679,9 @@
 	},
 /area/syndicate_mothership/cargo)
 "jKD" = (
-/turf/simulated/floor/plasteel/dark{
-	dir = 9;
-	icon_state = "darkredalt"
-	},
+/obj/effect/decal/cleanable/glass,
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/plating/airless,
 /area/centcom/ss220/jail)
 "jKF" = (
 /turf/simulated/floor/plasteel/dark{
@@ -14686,13 +14736,9 @@
 	},
 /area/syndicate_mothership/elite_squad)
 "jMe" = (
-/obj/structure/toilet{
-	dir = 8
-	},
-/obj/structure/light_fake/small{
-	dir = 1
-	},
-/turf/simulated/floor/plating,
+/obj/effect/decal/cleanable/ash,
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/plating/airless,
 /area/centcom/ss220/jail)
 "jMn" = (
 /obj/machinery/computer/bsa_control/admin,
@@ -15280,6 +15326,11 @@
 /obj/effect/turf_decal/delivery/white,
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/court)
+"kml" = (
+/obj/structure/bed,
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/plating/airless,
+/area/centcom/ss220/jail)
 "kmp" = (
 /obj/structure/flora/rock/jungle,
 /obj/structure/flora/rock/jungle,
@@ -15581,12 +15632,8 @@
 	},
 /area/centcom/ss220/admin3)
 "kyT" = (
-/obj/machinery/door/poddoor/shutters{
-	dir = 8;
-	id_tag = "СС_Jail_3";
-	name = "Камера 3"
-	},
-/turf/simulated/wall/indestructible/fakeglass,
+/obj/structure/lattice,
+/turf/space,
 /area/centcom/ss220/jail)
 "kzo" = (
 /obj/structure/rack,
@@ -16048,7 +16095,7 @@
 /turf/simulated/floor/beach/away/sand,
 /area/ninja/holding)
 "kQG" = (
-/obj/item/stack/sheet/metal/fifty,
+/obj/item/stack/sheet/metal,
 /turf/simulated/floor/plasteel/dark{
 	dir = 1;
 	icon_state = "darkbluealt"
@@ -17761,15 +17808,14 @@
 	},
 /area/trader_station/sol)
 "lSA" = (
-/obj/effect/turf_decal/siding/brown{
-	dir = 8
-	},
 /obj/item/clothing/shoes/jackboots{
 	pixel_x = -12;
 	layer = 2.99
 	},
-/turf/simulated/floor/wood/oak,
-/area/syndicate_mothership/infteam)
+/turf/simulated/floor/plasteel/dark{
+	icon_state = "dark_large"
+	},
+/area/syndicate_mothership/elite_squad)
 "lSO" = (
 /obj/structure/chair/sofa/right{
 	color = "#63009c"
@@ -18170,6 +18216,9 @@
 	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/syndicate_mothership/outside)
+"mgA" = (
+/turf/simulated/floor/plating/airless,
+/area/centcom/ss220/jail)
 "mhc" = (
 /obj/structure/table/reinforced{
 	color = "#444444"
@@ -18265,7 +18314,7 @@
 /turf/simulated/floor/carpet,
 /area/syndicate_mothership/control)
 "mkF" = (
-/obj/item/stack/sheet/metal/fifty,
+/obj/item/stack/sheet/metal,
 /turf/simulated/floor/plating,
 /area/centcom/ss220/admin3)
 "mkU" = (
@@ -18751,7 +18800,7 @@
 /area/syndicate_mothership)
 "mED" = (
 /obj/effect/landmark/burnturf,
-/obj/item/stack/sheet/metal/fifty,
+/obj/item/stack/sheet/metal,
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/admin1)
 "mGe" = (
@@ -18888,7 +18937,7 @@
 /area/wizard_station)
 "mLC" = (
 /obj/structure/lattice,
-/obj/item/stack/sheet/metal/fifty,
+/obj/item/stack/sheet/metal,
 /turf/space,
 /area/centcom/ss220/medbay)
 "mLO" = (
@@ -19135,13 +19184,9 @@
 /turf/simulated/floor/plating/asteroid/ancient,
 /area/ghost_bar)
 "mXk" = (
-/obj/machinery/door/poddoor/shutters{
-	dir = 8;
-	id_tag = "СС_Jail_2";
-	name = "Камера 2"
-	},
-/turf/simulated/wall/indestructible/fakeglass,
-/area/centcom/ss220/jail)
+/obj/effect/gibspawner/human,
+/turf/simulated/floor/plating,
+/area/centcom/ss220/admin1)
 "mXp" = (
 /turf/simulated/floor/plasteel/dark{
 	dir = 4;
@@ -19622,7 +19667,7 @@
 /turf/simulated/floor/mineral/plastitanium,
 /area/syndicate_mothership)
 "npS" = (
-/obj/item/stack/sheet/metal/fifty,
+/obj/item/stack/sheet/metal,
 /turf/space,
 /area/centcom/ss220/bar)
 "npT" = (
@@ -20081,11 +20126,8 @@
 	},
 /area/centcom/ss220/admin1)
 "nEq" = (
-/turf/simulated/floor/plasteel/dark{
-	dir = 8;
-	icon_state = "darkredalt"
-	},
-/area/centcom/ss220/jail)
+/turf/simulated/floor/plating,
+/area/centcom/ss220/admin2)
 "nES" = (
 /obj/structure/table/glass,
 /obj/item/reagent_containers/drinks/drinkingglass{
@@ -20659,9 +20701,9 @@
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/bar)
 "nZB" = (
-/turf/simulated/floor/plasteel/dark{
-	dir = 4;
-	icon_state = "darkredaltstrip"
+/turf/simulated/floor/plasteel/airless{
+	icon_state = "darkredaltstrip";
+	dir = 4
 	},
 /area/centcom/ss220/jail)
 "nZM" = (
@@ -20830,6 +20872,12 @@
 /obj/structure/bookcase/random,
 /turf/simulated/floor/carpet/green,
 /area/ghost_bar)
+"ohR" = (
+/obj/item/shard{
+	icon_state = "small"
+	},
+/turf/space,
+/area/space/centcomm)
 "ohV" = (
 /obj/machinery/computer/shuttle/sst,
 /turf/simulated/floor/carpet/black,
@@ -20934,12 +20982,19 @@
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/bar)
 "ond" = (
-/obj/effect/decal/cleanable/blood,
-/turf/simulated/floor/plasteel/dark{
-	dir = 4;
-	icon_state = "darkredalt"
+/obj/item/ammo_casing,
+/obj/item/ammo_casing{
+	dir = 9;
+	pixel_y = 5;
+	pixel_x = -5
 	},
-/area/centcom/ss220/jail)
+/obj/item/ammo_casing{
+	dir = 5;
+	pixel_y = 4;
+	pixel_x = 8
+	},
+/turf/simulated/floor/plasteel/dark,
+/area/centcom/ss220/admin3)
 "onr" = (
 /obj/effect/decal/syndie_logo{
 	icon_state = "logo11"
@@ -21224,7 +21279,7 @@
 /area/centcom/ss220/command)
 "oxA" = (
 /obj/structure/bed,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/plating/airless,
 /area/centcom/ss220/jail)
 "oyn" = (
 /turf/simulated/floor/plasteel{
@@ -22197,6 +22252,7 @@
 /obj/structure/sign/security{
 	pixel_x = -32
 	},
+/obj/structure/barricade/security,
 /turf/simulated/floor/plasteel/dark{
 	dir = 10;
 	icon_state = "darkbluealt"
@@ -22503,15 +22559,12 @@
 	},
 /area/centcom/ss220/admin3)
 "pwL" = (
-/obj/structure/light_fake/spot{
+/obj/item/shrapnel,
+/turf/simulated/floor/plasteel/airless{
+	icon_state = "darkredalt";
 	dir = 1
 	},
-/obj/effect/mapping_helpers/machinery/destroyed,
-/turf/simulated/floor/plasteel/dark{
-	dir = 1;
-	icon_state = "darkbluealt"
-	},
-/area/centcom/ss220/admin3)
+/area/centcom/ss220/jail)
 "pxm" = (
 /obj/item/coin/antagtoken,
 /turf/simulated/floor/plating/asteroid/ancient/airless,
@@ -23435,18 +23488,8 @@
 /turf/simulated/floor/plasteel/dark,
 /area/ruin/powered)
 "qem" = (
-/obj/machinery/door_control/no_emag/east{
-	id = "СС_Jail_1";
-	name = "Камера 1";
-	pixel_y = 6
-	},
-/obj/machinery/door_control/no_emag/east{
-	id = "СС_Jail_2";
-	name = "Камера 2";
-	pixel_y = -6
-	},
-/turf/simulated/floor/plasteel/dark{
-	dir = 4;
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/plasteel/airless{
 	icon_state = "darkredalt"
 	},
 /area/centcom/ss220/jail)
@@ -23713,16 +23756,9 @@
 	},
 /area/centcom/ss220/admin3)
 "qpv" = (
-/obj/structure/showcase{
-	icon = 'icons/mob/robots.dmi';
-	icon_state = "secborg";
-	name = "Охранный Робот";
-	desc = "Кажется оно ни на что не реагирует..."
-	},
-/turf/simulated/floor/plasteel/dark{
-	dir = 5;
-	icon_state = "darkredalt"
-	},
+/obj/effect/gibspawner/robot,
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/plating/airless,
 /area/centcom/ss220/jail)
 "qpB" = (
 /obj/structure/chair/comfy/shuttle{
@@ -24629,6 +24665,7 @@
 /turf/simulated/floor/mineral/plastitanium,
 /area/syndicate_mothership/outside)
 "qVk" = (
+/obj/structure/barricade/security,
 /turf/simulated/floor/plasteel/dark{
 	dir = 9;
 	icon_state = "darkbluealt"
@@ -24661,19 +24698,13 @@
 /turf/simulated/floor/wood/oak,
 /area/wizard_station)
 "qXJ" = (
-/obj/machinery/door_control/no_emag/east{
-	id = "СС_Jail_4";
-	name = "Камера 4";
-	pixel_y = -6
+/obj/effect/landmark/damageturf,
+/obj/item/shrapnel{
+	icon_state = "shrapnel3"
 	},
-/obj/machinery/door_control/no_emag/east{
-	id = "СС_Jail_3";
-	name = "Камера 3";
-	pixel_y = 6
-	},
-/turf/simulated/floor/plasteel/dark{
-	dir = 4;
-	icon_state = "darkredalt"
+/turf/simulated/floor/plasteel/airless{
+	icon_state = "darkredalt";
+	dir = 1
 	},
 /area/centcom/ss220/jail)
 "qXK" = (
@@ -25213,9 +25244,20 @@
 /turf/simulated/floor/indestructible/grass,
 /area/syndicate_mothership/control)
 "rrS" = (
-/obj/item/stack/cable_coil,
-/turf/space,
-/area/space/centcomm)
+/obj/item/ammo_casing{
+	pixel_y = -11
+	},
+/obj/item/ammo_casing{
+	dir = 9;
+	pixel_y = 5
+	},
+/obj/item/ammo_casing{
+	dir = 5;
+	pixel_y = -16;
+	pixel_x = 8
+	},
+/turf/simulated/floor/plasteel/dark,
+/area/centcom/ss220/admin2)
 "rrZ" = (
 /obj/effect/turf_decal/stripes/red/line{
 	dir = 8
@@ -25745,10 +25787,13 @@
 	},
 /area/syndicate_mothership)
 "rJs" = (
-/turf/simulated/floor/plasteel/dark{
-	dir = 6;
-	icon_state = "darkredalt"
+/obj/structure/grille/broken,
+/obj/effect/decal/cleanable/glass,
+/obj/item/shard{
+	icon_state = "medium"
 	},
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/plating,
 /area/centcom/ss220/jail)
 "rJW" = (
 /obj/structure/railing/corner{
@@ -26061,12 +26106,8 @@
 	name = "Камера";
 	req_one_access_txt = "114"
 	},
-/obj/machinery/door/poddoor/shutters{
-	dir = 8;
-	id_tag = "СС_Jail_1";
-	name = "Камера 1"
-	},
-/turf/simulated/floor/plasteel/dark,
+/obj/effect/mapping_helpers/machinery/damaged,
+/turf/simulated/floor/plating/airless,
 /area/centcom/ss220/jail)
 "rTf" = (
 /obj/structure/fans/tiny/invisible,
@@ -26642,6 +26683,12 @@
 	icon_state = "dark"
 	},
 /area/syndicate_mothership/cargo)
+"slU" = (
+/obj/effect/landmark/burnturf,
+/turf/simulated/floor/plasteel/airless{
+	icon_state = "dark"
+	},
+/area/centcom/ss220/jail)
 "smn" = (
 /obj/structure/table/wood{
 	color = "#996633"
@@ -26679,7 +26726,7 @@
 /turf/simulated/wall/mineral/titanium,
 /area/shuttle/escape)
 "sok" = (
-/obj/item/stack/sheet/metal/fifty,
+/obj/item/stack/sheet/metal,
 /turf/simulated/floor/plasteel/dark{
 	dir = 4;
 	icon_state = "darkbluealt"
@@ -27104,10 +27151,7 @@
 /turf/simulated/floor/plating/airless,
 /area/shuttle/administration)
 "sHP" = (
-/obj/effect/baseturf_helper{
-	baseturf = /turf/simulated/floor/indestructible
-	},
-/turf/simulated/wall/indestructible/riveted,
+/turf/space,
 /area/centcom/ss220/jail)
 "sHT" = (
 /obj/item/shrapnel,
@@ -28236,9 +28280,9 @@
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/admin1)
 "tut" = (
-/obj/structure/bed,
 /obj/effect/decal/cleanable/blood,
-/turf/simulated/floor/plating,
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/plating/airless,
 /area/centcom/ss220/jail)
 "tuu" = (
 /obj/structure/table/reinforced,
@@ -28701,16 +28745,10 @@
 /turf/simulated/floor/carpet/orange,
 /area/shuttle/trade/sol)
 "tKN" = (
-/obj/machinery/door/airlock/centcom{
-	name = "Камера";
-	req_one_access_txt = "114"
+/obj/item/shard{
+	icon_state = "small"
 	},
-/obj/machinery/door/poddoor/shutters{
-	dir = 8;
-	id_tag = "СС_Jail_4";
-	name = "Камера 4"
-	},
-/turf/simulated/floor/plasteel/dark,
+/turf/space,
 /area/centcom/ss220/jail)
 "tKR" = (
 /obj/machinery/economy/vending/medical,
@@ -28851,7 +28889,7 @@
 /turf/simulated/floor/wood,
 /area/centcom/ss220/court)
 "tQw" = (
-/obj/item/stack/sheet/metal/fifty,
+/obj/item/stack/sheet/metal,
 /turf/simulated/floor/plating/airless,
 /area/centcom/ss220/admin3)
 "tQU" = (
@@ -28939,7 +28977,7 @@
 /area/syndicate_mothership/cargo)
 "tUp" = (
 /obj/effect/landmark/burnturf,
-/obj/item/stack/sheet/metal/fifty,
+/obj/item/stack/sheet/metal,
 /turf/simulated/floor/plating/airless,
 /area/centcom/ss220/medbay)
 "tUK" = (
@@ -29200,13 +29238,8 @@
 /turf/simulated/floor/carpet/cyan,
 /area/centcom/ss220/general)
 "ucI" = (
-/obj/structure/light_fake/spot{
-	dir = 8
-	},
-/turf/simulated/floor/plasteel/dark{
-	dir = 8;
-	icon_state = "darkredalt"
-	},
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/plating/airless,
 /area/centcom/ss220/jail)
 "ucJ" = (
 /obj/effect/turf_decal/stripes/red/line{
@@ -29306,6 +29339,13 @@
 /obj/structure/curtain/open/shower,
 /turf/simulated/floor/plasteel/freezer,
 /area/ghost_bar)
+"ugw" = (
+/obj/structure/barricade/security,
+/turf/simulated/floor/plasteel/dark{
+	dir = 4;
+	icon_state = "darkyellowalt"
+	},
+/area/centcom/ss220/admin2)
 "ugE" = (
 /obj/machinery/door/airlock/hatch/syndicate/command{
 	name = "Тюрьма"
@@ -29707,10 +29747,12 @@
 /turf/simulated/floor/wood/oak,
 /area/syndicate_mothership)
 "uxI" = (
-/turf/simulated/floor/plasteel/dark{
-	dir = 4;
-	icon_state = "darkredalt"
+/obj/item/shard{
+	icon_state = "medium";
+	pixel_x = -7;
+	pixel_y = -10
 	},
+/turf/space,
 /area/centcom/ss220/jail)
 "uxR" = (
 /obj/structure/bookcase/manuals,
@@ -30705,7 +30747,7 @@
 /turf/simulated/floor/mineral/titanium,
 /area/syndicate_mothership/outside)
 "vop" = (
-/obj/item/stack/sheet/metal/fifty,
+/obj/item/stack/sheet/metal,
 /turf/space,
 /area/centcom/ss220/admin1)
 "voq" = (
@@ -30945,6 +30987,12 @@
 	icon_state = "darkredcornersalt"
 	},
 /area/syndicate_mothership/jail)
+"vsV" = (
+/obj/item/ammo_box/magazine/m556/arg,
+/turf/simulated/floor/plasteel/dark{
+	icon_state = "darkbluealt"
+	},
+/area/centcom/ss220/admin3)
 "vtr" = (
 /obj/structure/light_fake/spot{
 	dir = 8
@@ -31489,7 +31537,9 @@
 /area/centcom/ss220/evac)
 "vMG" = (
 /obj/effect/landmark/burnturf,
-/obj/item/stack/cable_coil,
+/obj/item/stack/cable_coil{
+	amount = 1
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/admin1)
 "vML" = (
@@ -31580,12 +31630,11 @@
 /turf/simulated/floor/mineral/plastitanium,
 /area/shuttle/syndicate_elite)
 "vPJ" = (
-/obj/structure/light_fake/spot{
+/obj/machinery/light/directional/north,
+/obj/effect/mapping_helpers/machinery/destroyed,
+/turf/simulated/floor/plasteel/airless{
+	icon_state = "darkredalt";
 	dir = 1
-	},
-/turf/simulated/floor/plasteel/dark{
-	dir = 1;
-	icon_state = "darkredalt"
 	},
 /area/centcom/ss220/jail)
 "vPR" = (
@@ -31887,6 +31936,12 @@
 	icon_state = "dark"
 	},
 /area/syndicate_mothership/elite_squad)
+"wcZ" = (
+/obj/effect/decal/cleanable/generic,
+/turf/simulated/floor/plasteel/dark{
+	icon_state = "darkbluealt"
+	},
+/area/centcom/ss220/admin2)
 "wdk" = (
 /obj/structure/lattice/catwalk/mining,
 /turf/space,
@@ -32015,7 +32070,8 @@
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/supply)
 "wge" = (
-/turf/simulated/floor/plasteel/dark{
+/obj/effect/landmark/burnturf,
+/turf/simulated/floor/plasteel/airless{
 	icon_state = "darkredcornersalt"
 	},
 /area/centcom/ss220/jail)
@@ -32325,7 +32381,7 @@
 /area/centcom/ss220/evac)
 "wsD" = (
 /obj/effect/landmark/damageturf,
-/obj/item/stack/sheet/metal/fifty,
+/obj/item/stack/sheet/metal,
 /turf/simulated/floor/plating/airless,
 /area/centcom/ss220/admin3)
 "wsH" = (
@@ -33104,6 +33160,12 @@
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/ghost_bar)
+"wSb" = (
+/obj/machinery/door/poddoor/shutters{
+	anchored = 0
+	},
+/turf/space,
+/area/centcom/ss220/jail)
 "wSr" = (
 /obj/effect/bump_teleporter{
 	id = "Synd25";
@@ -33179,6 +33241,10 @@
 	icon_state = "darkbluealt"
 	},
 /area/centcom/ss220/admin1)
+"wVi" = (
+/obj/effect/gibspawner/robot,
+/turf/simulated/floor/plasteel/dark,
+/area/centcom/ss220/admin2)
 "wVB" = (
 /obj/structure/sink/directional/west,
 /obj/structure/mirror{
@@ -33385,10 +33451,16 @@
 	},
 /area/space/centcomm)
 "xcj" = (
-/obj/effect/landmark/spawner/prisonwarp,
-/obj/effect/decal/cleanable/blood,
-/turf/simulated/floor/plating,
-/area/centcom/ss220/jail)
+/obj/item/ammo_casing{
+	dir = 5;
+	pixel_y = -16;
+	pixel_x = 8
+	},
+/turf/simulated/floor/plasteel/dark{
+	dir = 1;
+	icon_state = "darkbluealt"
+	},
+/area/centcom/ss220/admin3)
 "xcx" = (
 /obj/structure/closet/cabinet/wizard,
 /turf/simulated/floor/carpet/black,
@@ -33836,7 +33908,7 @@
 	},
 /area/syndicate_mothership/infteam)
 "xoZ" = (
-/obj/item/stack/sheet/metal/fifty,
+/obj/item/stack/sheet/metal,
 /turf/simulated/floor/plasteel/dark{
 	dir = 1;
 	icon_state = "darkbluecornersalt"
@@ -34116,6 +34188,7 @@
 	dir = 4
 	},
 /obj/item/dualsaber/legendary_saber,
+/obj/item/clothing/under/syndicate/tacticool,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "dark"
@@ -34577,7 +34650,9 @@
 	},
 /area/syndicate_mothership/control)
 "xMj" = (
-/turf/simulated/wall/indestructible/fakeglass,
+/obj/effect/spawner/window/reinforced/grilled,
+/obj/effect/mapping_helpers/damaged_window,
+/turf/simulated/floor/plating,
 /area/centcom/ss220/jail)
 "xMm" = (
 /obj/structure/closet/wardrobe/black,
@@ -36750,13 +36825,13 @@ adJ
 adJ
 adJ
 adJ
+cUk
 adJ
 adJ
 adJ
 adJ
 adJ
-adJ
-adJ
+cUk
 adJ
 adJ
 adJ
@@ -37005,7 +37080,7 @@ adJ
 adJ
 adJ
 adJ
-adJ
+xEu
 adJ
 adJ
 adJ
@@ -37265,11 +37340,11 @@ adJ
 adJ
 adJ
 adJ
+xEu
 adJ
 adJ
 adJ
-adJ
-adJ
+bnh
 adJ
 adJ
 adJ
@@ -37525,9 +37600,9 @@ adJ
 adJ
 adJ
 adJ
-adJ
-adJ
-adJ
+bnh
+bnh
+isB
 adJ
 adJ
 adJ
@@ -37777,23 +37852,23 @@ olw
 olw
 olw
 olw
-olw
-olw
-olw
-olw
-olw
-olw
-olw
-olw
-olw
-olw
-olw
-olw
-olw
-olw
-olw
-olw
-olw
+adJ
+adJ
+adJ
+adJ
+fMN
+adJ
+bnh
+rgd
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
 adJ
 adJ
 adJ
@@ -38034,23 +38109,23 @@ mPw
 mPw
 mPw
 mPw
-xZL
-xZL
-xZL
-xZL
-xZL
-xZL
-xZL
-xZL
-xZL
-xZL
-xZL
-xZL
-xZL
-xZL
-xZL
+gxo
+gxo
+kyT
+kyT
+tKN
 sHP
-olw
+sHP
+sHP
+sHP
+sHP
+sHP
+sHP
+sHP
+kyT
+sHP
+sHP
+adJ
 adJ
 adJ
 adJ
@@ -38291,25 +38366,25 @@ kRV
 jNw
 jNw
 mPw
-jKD
-nEq
-nEq
 ucI
-nEq
-nEq
 ucI
-nEq
-nEq
 ucI
-nEq
-nEq
 ucI
-nEq
-cIX
-xZL
-olw
+kyT
+sHP
+sHP
+sHP
+sHP
+sHP
+sHP
+kyT
+kyT
+ucI
+sHP
+sHP
 adJ
 adJ
+cQL
 adJ
 adJ
 adJ
@@ -38548,27 +38623,27 @@ aBP
 gns
 ava
 mPw
-eAX
+gco
 ipi
+ucI
 ipi
-ipi
-ipi
-ipi
-ipi
-ipi
-ipi
-ipi
-ipi
-ipi
-ipi
-ipi
-eqT
-xZL
-olw
+ucI
+ucI
+kyT
+sHP
+wSb
+fHl
+sHP
+sHP
+sHP
+sHP
+sHP
+sHP
 adJ
 adJ
 adJ
 adJ
+cUk
 adJ
 adJ
 adJ
@@ -38806,22 +38881,22 @@ dZA
 dZA
 mPw
 eAX
-ipi
+slU
 wge
+ipi
+ipi
+ucI
+ucI
+ucI
+kyT
+kyT
+sHP
 uxI
-uxI
-uxI
-qem
-uxI
-uxI
-uxI
-uxI
-uxI
-qXJ
-ond
-rJs
-xZL
-olw
+sHP
+kyT
+sHP
+jKD
+adJ
 adJ
 adJ
 adJ
@@ -39062,28 +39137,28 @@ aBP
 oWC
 oWC
 mPw
-eAX
-ipi
-eqT
+qXJ
+ecF
+qem
 xZL
 dYv
 rSX
 xZL
-mXk
-dGG
-xZL
-kyT
-ebq
-xZL
+ucI
+iCa
 gxo
-tKN
-xZL
-olw
+kyT
+kyT
+sHP
+sHP
+sHP
+kyT
+bRC
+adJ
+ohR
 adJ
 adJ
-adJ
-adJ
-adJ
+xEu
 adJ
 adJ
 adJ
@@ -39320,24 +39395,24 @@ drl
 qdh
 mPw
 vPJ
-ipi
-eqT
+ecF
+ebq
 xZL
-gnO
-xcj
+mgA
+fMh
 xMj
 gnO
-iCa
-xMj
+ucI
+rJs
 fMh
 iCa
-xMj
-gnO
-iCa
-xZL
-olw
+kyT
+kyT
+sHP
+sHP
 adJ
 adJ
+xEu
 adJ
 adJ
 adJ
@@ -39576,23 +39651,23 @@ aBP
 eWc
 eWc
 mPw
-eAX
-ipi
+pwL
+dJQ
 eqT
 xZL
-jMe
+cIX
 oxA
 xZL
 jlc
-oxA
+kml
 xZL
 jMe
-oxA
+dGG
 xZL
-jMe
+jKD
 tut
-xZL
-olw
+kyT
+adJ
 adJ
 adJ
 adJ
@@ -39645,7 +39720,7 @@ vfU
 bfI
 bfI
 dzR
-lSA
+bfI
 bfI
 dGk
 wOK
@@ -39848,8 +39923,8 @@ xZL
 xZL
 xZL
 xZL
-xZL
-olw
+gxo
+adJ
 adJ
 adJ
 adJ
@@ -40110,7 +40185,7 @@ adJ
 adJ
 adJ
 adJ
-adJ
+xEu
 adJ
 adJ
 adJ
@@ -40886,7 +40961,7 @@ adJ
 adJ
 adJ
 adJ
-adJ
+cUk
 adJ
 adJ
 adJ
@@ -41120,7 +41195,7 @@ ava
 mPw
 vHs
 hPF
-eAs
+nEq
 ciP
 nTz
 vIu
@@ -41375,7 +41450,7 @@ aBP
 dZA
 dZA
 mPw
-nDw
+gLM
 hPF
 jms
 ciP
@@ -41888,9 +41963,9 @@ oIt
 sEX
 gPe
 gPe
-gPe
+aCE
 qKL
-hPF
+wVi
 eAs
 ciP
 ePY
@@ -42145,8 +42220,8 @@ oIt
 hPF
 hPF
 hPF
-hPF
-hPF
+iXO
+nEq
 hPF
 eAs
 ciP
@@ -42402,9 +42477,9 @@ eqp
 pzc
 pzc
 pzc
-pzc
+ugw
 rDf
-hPF
+nEq
 eAs
 ciP
 ciP
@@ -43175,7 +43250,7 @@ iwE
 sZy
 fRz
 nDw
-hPF
+rrS
 jms
 bFq
 vIu
@@ -43690,8 +43765,8 @@ wmI
 fRz
 vHs
 hwC
-eAs
-ois
+wcZ
+cfX
 vIu
 vIu
 leS
@@ -43948,7 +44023,7 @@ fRz
 vHs
 hWC
 eAs
-ois
+cfX
 vIu
 vIu
 leS
@@ -45770,7 +45845,7 @@ adJ
 adJ
 adJ
 adJ
-rks
+htz
 adJ
 adJ
 adJ
@@ -46265,7 +46340,7 @@ tTm
 cgs
 qnw
 eHN
-lJY
+ond
 gvk
 qNB
 nPO
@@ -46284,7 +46359,7 @@ adJ
 adJ
 adJ
 adJ
-adJ
+rks
 adJ
 adJ
 adJ
@@ -46510,7 +46585,7 @@ nfj
 nfj
 otw
 mbB
-oQT
+mXk
 mbB
 oQT
 bBP
@@ -46784,7 +46859,7 @@ cLs
 uRd
 nPO
 nPO
-adJ
+olw
 adJ
 adJ
 adJ
@@ -47036,7 +47111,7 @@ adJ
 adJ
 adJ
 nPO
-pwL
+rOt
 nKL
 aSu
 mZR
@@ -49606,7 +49681,7 @@ adJ
 adJ
 adJ
 jiu
-ofZ
+xcj
 lJY
 gFP
 fCL
@@ -50120,7 +50195,7 @@ nfA
 adJ
 adJ
 nPO
-pwL
+rOt
 lJY
 oUG
 nPO
@@ -50871,7 +50946,7 @@ iwk
 jPr
 hTI
 adJ
-rrS
+fMN
 oiH
 oiH
 oiH
@@ -53179,7 +53254,7 @@ tTm
 cwV
 xeD
 xeD
-nfj
+bOO
 nfj
 nfj
 xeD
@@ -53461,8 +53536,8 @@ nPO
 nPO
 nPO
 nPO
-ofZ
-lJY
+xcj
+ond
 mti
 nPO
 fqi
@@ -54234,7 +54309,7 @@ eoe
 nPO
 ofZ
 lJY
-mti
+vsV
 nPO
 afs
 veQ
@@ -55820,7 +55895,7 @@ ebr
 qGr
 cYU
 cYU
-cYU
+lSA
 mKl
 fWw
 dGj
