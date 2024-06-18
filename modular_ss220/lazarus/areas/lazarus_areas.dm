@@ -203,13 +203,6 @@
 	name = "Жилой отсек низкого класса (Ярило)"
 	icon_state = "cryo"
 
-/area/lazarus/outpost/yarilo/living/locker
-	name = "Комната отдыха (Ярило)"
-
-/area/lazarus/outpost/yarilo/living/dinner
-	name = "Столовая (Ярило)"
-	icon_state = "kitchen"
-
 // Med
 
 /area/lazarus/outpost/yarilo/med
@@ -267,13 +260,21 @@
 
 //Other
 
-/area/lazarus/outpost/yarilo/exit
-	name = "Шлюз (Ярило)"
-	icon_state = "entry"
-
 /area/lazarus/outpost/yarilo/toilet
 	name = "Уборная (Ярило)"
 	icon_state = "toilet"
+
+/area/lazarus/outpost/yarilo/kitchen
+	name = "Кухня (Ярило)"
+	icon_state = "kitchen"
+
+/area/lazarus/outpost/yarilo/canteen
+	name = "Столовая (Ярило)"
+	icon_state = "bar"
+
+/area/lazarus/outpost/yarilo/maint
+	name = "Кладовка (Род)"
+	icon_state = "engi"
 
 //---STRIBOG---//
 
