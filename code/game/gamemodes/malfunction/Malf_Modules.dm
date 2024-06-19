@@ -544,7 +544,7 @@
 	if(!user.can_place_transformer(src))
 		return
 	in_use = TRUE
-	if(tgui_alert(user, "Вы уверены, что хотите поставить машину тут?", "Вы уверены?", list("Да", "Нет")) != "Yes")
+	if(tgui_alert(user, "Вы уверены, что хотите поставить машину тут?", "Вы уверены?", list("Да", "Нет")) != "Да")
 		active = FALSE
 		return
 	if(!user.can_place_transformer(src))
