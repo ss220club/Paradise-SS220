@@ -645,23 +645,6 @@
 	icon = 'modular_ss220/food/icons/drinks.dmi'
 	list_reagents = list("kvass" = 50)
 
-/obj/machinery/chem_dispenser/soda/Initialize(mapload)
-	dispensable_reagents += "kvass"
-	return ..()
-
-/obj/item/handheld_chem_dispenser/soda/Initialize(mapload)
-	dispensable_reagents += "kvass"
-	return ..()
-
-/obj/machinery/economy/vending/boozeomat/Initialize(mapload)
-	products += list(/obj/item/reagent_containers/drinks/cans/kvass = 8)
-	return ..()
-
-/obj/machinery/economy/vending/cola/Initialize(mapload)
-	products += list(/obj/item/reagent_containers/drinks/cans/kvass = 10)
-	prices += list(/obj/item/reagent_containers/drinks/cans/kvass = 50)
-	return ..()
-
 /datum/reagent/consumable/ethanol/narsour
 	name = "Nar'Sour"
 	id = "narsour"
@@ -687,3 +670,20 @@
 /datum/reagent/consumable/ethanol/narsour/on_mob_life(mob/living/carbon/M)
 	. = ..()
 	M.CultSlur(10 SECONDS)
+
+/obj/machinery/chem_dispenser/soda/Initialize(mapload)
+	dispensable_reagents += "kvass"
+	return ..()
+
+/obj/item/handheld_chem_dispenser/soda/Initialize(mapload)
+	dispensable_reagents += "kvass"
+	return ..()
+
+/obj/machinery/economy/vending/boozeomat/Initialize(mapload)
+	products += list(/obj/item/reagent_containers/drinks/cans/kvass = 8)
+	return ..()
+
+/obj/machinery/economy/vending/cola/Initialize(mapload)
+	products += list(/obj/item/reagent_containers/drinks/cans/kvass = 10)
+	prices += list(/obj/item/reagent_containers/drinks/cans/kvass = 50)
+	return ..()
