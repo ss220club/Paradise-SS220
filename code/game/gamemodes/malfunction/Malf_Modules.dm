@@ -593,10 +593,10 @@
 /datum/AI_Module/place_turret
 	module_name = "Установка турели"
 	mod_pick_name = "turretdeployer"
-	description = "Поставит где угодно турель, которая во всех органиков будет стрелять лазером."
+	description = "Развертывает турель в любом месте, которая летально нейтрализует органиков."
 	cost = 30
 	power_type = /datum/spell/ai_spell/place_turret
-	unlock_text = "<span class='notice'>Вы готовите к установке энерго-турель.</span>"
+	unlock_text = "<span class='notice'>Вы готовите энергетическую турель к развертыванию.</span>"
 	unlock_sound = 'sound/items/rped.ogg'
 
 /datum/spell/ai_spell/place_turret
@@ -675,7 +675,7 @@
 	var/datum/camerachunk/C = GLOB.cameranet.getCameraChunk(deploylocation.x, deploylocation.y, deploylocation.z)
 
 	if(!istype(deploylocation))
-		to_chat(src, "<span class='warning'>Недостаточно места! Убедитесь, что вы ставите турель на чистом полу.</span>")
+		to_chat(src, "<span class='warning'>Недостаточно места! Убедитесь, что вы ставите турель на свободном тайле пола.</span>")
 		return FALSE
 	if(!C.visibleTurfs[deploylocation])
 		to_chat(src, "<span class='warning'>У вас нет видимости там!</span>")
@@ -817,7 +817,7 @@
 /datum/AI_Module/borg_upgrade
 	module_name = "Боевое обновление ПО киборгов"
 	mod_pick_name = "combatborgs"
-	description = "Скачивает ПО, активирующее встроенное боевое оборудование киборгов. Киборги, построенные после покупки улучшения, будут автоматом идти с боевыми улучшениями."
+	description = "Скачивает ПО, активирующее встроенное боевое оборудование киборгов. Киборги, построенные после покупки улучшения, будут автоматически идти с боевыми улучшениями."
 	cost = 70 // IDK look into this
 	one_purchase = TRUE
 	upgrade = TRUE
@@ -831,7 +831,7 @@
 	for(var/mob/living/silicon/robot/R in AI.connected_robots)
 		R.module.malfhacked = TRUE
 		R.module.rebuild_modules()
-		to_chat(R, "<span class='notice'>Новое ПО загружено. Боевые улучшения включены.</span>")
+		to_chat(R, "<span class='notice'>Новое ПО загружено. Активированы боевые улучшения.</span>")
 
 /datum/AI_Module/repair_cyborg
 	module_name = "Починка киборгов"
