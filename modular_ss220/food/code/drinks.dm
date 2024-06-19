@@ -621,30 +621,6 @@
 	result_amount = 5
 	mix_sound = 'sound/goonstation/misc/drinkfizz.ogg'
 
-// fermenting_barrel don't have behavior for non-plant food, so we need some proc for bread
-/obj/structure/fermenting_barrel/proc/make_drink(obj/item/I, drink_id, amount)
-	reagents.add_reagent(drink_id, amount)
-	qdel(I)
-	playsound(src, 'sound/effects/bubbles.ogg', 50, TRUE)
-
-/obj/structure/fermenting_barrel/attackby(obj/item/I, mob/user, params)
-	if(istype(I, /obj/item/food/snacks/sliceable/bread))
-		if(!user.drop_item())
-			to_chat(user, "<span class='warning'>[I] is stuck to your hand!</span>")
-			return FALSE
-		I.forceMove(src)
-		to_chat(user, "<span class='notice'>You place [I] into [src] to start the fermentation process.</span>")
-		addtimer(CALLBACK(src, PROC_REF(make_drink), I, "alco_kvass", 35), rand(80, 120) * speed_multiplier)
-		return
-	return ..()
-
-/obj/item/reagent_containers/drinks/cans/kvass
-	name = "Квас"
-	desc = "Банка кваса. На этикетке написано \"Сделано в СССП\""
-	icon_state = "kvass_can"
-	icon = 'modular_ss220/food/icons/drinks.dmi'
-	list_reagents = list("kvass" = 50)
-
 /datum/reagent/consumable/ethanol/narsour
 	name = "Nar'Sour"
 	id = "narsour"
@@ -670,6 +646,30 @@
 /datum/reagent/consumable/ethanol/narsour/on_mob_life(mob/living/carbon/M)
 	. = ..()
 	M.CultSlur(10 SECONDS)
+
+// fermenting_barrel don't have behavior for non-plant food, so we need some proc for bread
+/obj/structure/fermenting_barrel/proc/make_drink(obj/item/I, drink_id, amount)
+	reagents.add_reagent(drink_id, amount)
+	qdel(I)
+	playsound(src, 'sound/effects/bubbles.ogg', 50, TRUE)
+
+/obj/structure/fermenting_barrel/attackby(obj/item/I, mob/user, params)
+	if(istype(I, /obj/item/food/snacks/sliceable/bread))
+		if(!user.drop_item())
+			to_chat(user, "<span class='warning'>[I] is stuck to your hand!</span>")
+			return FALSE
+		I.forceMove(src)
+		to_chat(user, "<span class='notice'>You place [I] into [src] to start the fermentation process.</span>")
+		addtimer(CALLBACK(src, PROC_REF(make_drink), I, "alco_kvass", 35), rand(80, 120) * speed_multiplier)
+		return
+	return ..()
+
+/obj/item/reagent_containers/drinks/cans/kvass
+	name = "Квас"
+	desc = "Банка кваса. На этикетке написано \"Сделано в СССП\""
+	icon_state = "kvass_can"
+	icon = 'modular_ss220/food/icons/drinks.dmi'
+	list_reagents = list("kvass" = 50)
 
 /obj/machinery/chem_dispenser/soda/Initialize(mapload)
 	dispensable_reagents += "kvass"
