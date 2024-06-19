@@ -591,17 +591,17 @@
 
 //Turret Assembly: Assemble an AI turret at the chosen location. One use per purchase
 /datum/AI_Module/place_turret
-	module_name = "Deploy Turret"
+	module_name = "Установка турели"
 	mod_pick_name = "turretdeployer"
-	description = "Build a turret anywhere that lethally targets organic life in sight."
+	description = "Поставит где угодно турель, которая во всех органиков будет стрелять лазером."
 	cost = 30
 	power_type = /datum/spell/ai_spell/place_turret
-	unlock_text = "<span class='notice'>You prepare an energy turret for deployment.</span>"
+	unlock_text = "<span class='notice'>Вы готовите к установке энерго-турель.</span>"
 	unlock_sound = 'sound/items/rped.ogg'
 
 /datum/spell/ai_spell/place_turret
-	name = "Deploy Turret"
-	desc = "Build a turret anywhere that lethally targets organic life in sight."
+	name = "Установка турели"
+	desc = "Где угодно ставит турель, стреляющую во всех органиков лазером."
 	action_icon_state = "deploy_turret"
 	uses = 1
 	auto_use_uses = FALSE
@@ -614,12 +614,12 @@
 
 /datum/spell/ai_spell/place_turret/cast(list/targets, mob/living/silicon/ai/user)
 	if(in_use)
-		to_chat(user, "<span class='notice'>Your assemblers can only construct one turret at a time.</span>")
+		to_chat(user, "<span class='notice'>Вы можете ставить только одну турель за раз.</span>")
 		return
 	if(!user.can_place_turret(src))
 		return
 	in_use = TRUE
-	if(tgui_alert(user, "Are you sure you want to place a turret here? Deployment will take a few seconds to complete, in which the turret will be vulnerable.", "Are you sure?", list("No", "Yes")) != "Yes")
+	if(tgui_alert(user, "Вы уверены, что хотите поставить турель тут? Установка займёт некоторое время, в течении которого турель будет уязвима.", "Вы уверены?", list("Нет", "Да")) != "Да")
 		in_use = FALSE
 		return
 	if(!user.can_place_turret(src))
@@ -634,7 +634,7 @@
 	//Handles the turret construction and configuration
 	playsound(T, 'sound/items/rped.ogg', 100, TRUE) //Plays a sound both at the location of the construction to alert players and to the user as feedback
 	user.playsound_local(user, 'sound/items/rped.ogg', 50, FALSE, use_reverb = FALSE)
-	to_chat(user, "<span class='notice'>You order your electronics to assemble a turret. This will take a few seconds.</span>")
+	to_chat(user, "<span class='notice'>Вы приказываете электронике поставить турель. Это займёт некоторое время.</span>")
 	var/obj/effect/temp_visual/rcd_effect/spawning_effect = new(T)
 	QDEL_IN(spawning_effect, 5 SECONDS)
 
@@ -675,14 +675,14 @@
 	var/datum/camerachunk/C = GLOB.cameranet.getCameraChunk(deploylocation.x, deploylocation.y, deploylocation.z)
 
 	if(!istype(deploylocation))
-		to_chat(src, "<span class='warning'>There isn't enough room! Make sure you are placing the machine in a clear area and on a floor.</span>")
+		to_chat(src, "<span class='warning'>Недостаточно места! Убедитесь, что вы ставите турель на чистом полу.</span>")
 		return FALSE
 	if(!C.visibleTurfs[deploylocation])
-		to_chat(src, "<span class='warning'>You don't have camera vision of this location!</span>")
+		to_chat(src, "<span class='warning'>У вас нет видимости там!</span>")
 		addtimer(CALLBACK(src, PROC_REF(remove_transformer_image), client, I, deploylocation), 3 SECONDS)
 		return FALSE
 	if(is_blocked_turf(deploylocation))
-		to_chat(src, "<span class='warning'>That area must be clear of objects!</span>")
+		to_chat(src, "<span class='warning'>Эта зона должна быть очищена от объектов!</span>")
 		addtimer(CALLBACK(src, PROC_REF(remove_transformer_image), client, I, deploylocation), 3 SECONDS)
 		return FALSE
 
@@ -815,13 +815,13 @@
 		QDEL_NULL(AI.builtInCamera)
 
 /datum/AI_Module/borg_upgrade
-	module_name = "Combat Cyborg Firmware Upgrade"
+	module_name = "Боевое обновление ПО киборгов"
 	mod_pick_name = "combatborgs"
-	description = "Downloads firmware that activates built-in combat hardware present in all cyborgs. Cyborgs built after this is used will come with the hardware activated."
+	description = "Скачивает ПО, активирующее встроенное боевое оборудование киборгов. Киборги, построенные после покупки улучшения, будут автоматом идти с боевыми улучшениями."
 	cost = 70 // IDK look into this
 	one_purchase = TRUE
 	upgrade = TRUE
-	unlock_text = "<span class='notice'>Firmware downloaded. Bugs removed. Combat subsystems operating at 73% efficiency.</span>"
+	unlock_text = "<span class='notice'>ПО загружено. Баги устранены. Эффективность боевых подсистем киборгов - 73%.</span>"
 	unlock_sound = 'sound/items/rped.ogg'
 
 /datum/AI_Module/borg_upgrade/upgrade(mob/living/silicon/ai/AI)
@@ -831,7 +831,7 @@
 	for(var/mob/living/silicon/robot/R in AI.connected_robots)
 		R.module.malfhacked = TRUE
 		R.module.rebuild_modules()
-		to_chat(R, "<span class='notice'>New firmware downloaded. Combat upgrades are now online.</span>")
+		to_chat(R, "<span class='notice'>Новое ПО загружено. Боевые улучшения включены.</span>")
 
 /datum/AI_Module/repair_cyborg
 	module_name = "Починка киборгов"
