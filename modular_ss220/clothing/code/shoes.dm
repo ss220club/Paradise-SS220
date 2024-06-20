@@ -14,16 +14,17 @@
 	actions_types = list(/datum/action/item_action/toggle_light, /datum/action/item_action/change_color)
 	dyeable = FALSE
 	color = null
-	/// Neon overlay that applies on mob
-	var/mutable_appearance/neon_overlay
 	/// Does it emit light?
 	var/glow_active = FALSE
+	/// Neon overlay that applies on mob
+	var/mutable_appearance/neon_overlay
 
 /obj/item/clothing/shoes/black/neon/ui_action_click(mob/user, actiontype)
-	if(actiontype == /datum/action/item_action/change_color)
-		change_color(user)
-	else if(actiontype == /datum/action/item_action/toggle_light)
-		toggle_glow(user)
+	switch(actiontype)
+		if(/datum/action/item_action/change_color)
+			change_color(user)
+		if(/datum/action/item_action/toggle_light)
+			toggle_glow(user)
 
 /obj/item/clothing/shoes/black/neon/attack_self(mob/user)
 	var/choice = tgui_input_list(user, "Что вы хотите сделать?", "Неоновые кросовки", list("Переключить подсветку", "Сменить цвет"))
