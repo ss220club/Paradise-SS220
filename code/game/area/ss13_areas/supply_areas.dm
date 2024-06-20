@@ -39,7 +39,7 @@
 	icon_state = "yellow"
 
 /area/station/supply/expedition
-	name = "Комната Экспидиции"
+	name = "Комната Экспедиции"
 	icon_state = "expedition"
 	ambientsounds = list('sound/ambience/ambiexp.ogg')
 	sound_environment = SOUND_AREA_SMALL_ENCLOSED
