@@ -20,3 +20,21 @@
 	)
 	return .
 
+/datum/modpack/redis220/initialize()
+	var/datum/feed_channel/some_channel = new
+	some_channel.channel_name = "Проклятье 220 Ньюс"
+
+	var/datum/feed_message/some_message = new
+	some_message.author = "Фурриверс Нормандия"
+	some_message.author_ckey = "mooniverse"
+	some_message.title = "ГСБ любит вульп!"
+	some_message.body = {"
+	В столе ГСБ найдена стопка фотографий седалищных мест вульпканинов из его отдела!
+	Служебный роман или главой отдела стал извращнец? Узнайте в сегодняшнем выпуске!
+	"}
+
+	some_message.img = new /icon('icons/obj/butts.dmi', "vulp")
+
+	some_channel.add_message(some_message)
+	world.log << "Passed UT"
+	world.log << "Is redis alive - [SSredis.connected]"
