@@ -732,7 +732,7 @@
 	bound_height = 32
 	density = TRUE
 	anchored = TRUE
-	layer = ABOVE_ALL_MOB_LAYER
+	layer = 4.6
 
 /obj/structure/shipping_container/Initialize(mapload)
 	. = ..()
@@ -743,48 +743,56 @@
 	desc = "A standard-measure shipping container for bulk transport of goods. This one is from Conarex Aeronautics, and is probably carrying spacecraft parts (or a bribery scandal) as a result."
 	icon_state = "conarex"
 
-/obj/structure/shipping_container/deforest
-	name = "\improper DeForest Medical Corp. shipping container"
-	desc = "A standard-measure shipping container for bulk transport of goods. This one is from DeForest, and so is probably carrying medical supplies."
-	icon_state = "deforest"
-
-/obj/structure/shipping_container/kahraman
-	name = "\improper Kahraman Heavy Industry shipping container"
-	desc = "A standard-measure shipping container for bulk transport of goods. This one is from Kahraman, and is reinforced for carrying ore."
-	icon_state = "kahraman"
-
-/obj/structure/shipping_container/kahraman/alt
-	icon_state = "kahraman_alt"
+/obj/structure/shipping_container/conarex/corrosion
+	icon_state = "conarex_corrosion"
 
 /obj/structure/shipping_container/kosmologistika
 	name = "\improper Kosmologistika shipping container"
 	desc = "A standard-measure shipping container for bulk transport of goods. This one is from Kosmologistika, the logistics company owned and operated by the SSC."
 	icon_state = "kosmologistika"
 
-/obj/structure/shipping_container/interdyne
-	name = "\improper Interdyne shipping container"
-	desc = "A standard-measure shipping container for bulk transport of goods. This one is from Interdyne, a private pharmaceutical company. Probably carrying medical or research supplies, probably."
-	icon_state = "interdyne"
-
-/obj/structure/shipping_container/nakamura
-	name = "\improper Nakamura Engineering shipping container"
-	desc = "A standard-measure shipping container for bulk transport of goods. This one is from Nakamura, presumably for transporting tools or heavy industrial equipment."
-	icon_state = "nakamura"
+/obj/structure/shipping_container/kosmologistika/corrosion
+	icon_state = "kosmologistika_corrosion"
 
 /obj/structure/shipping_container/nanotrasen
 	name = "\improper Nanotrasen shipping container"
 	desc = "A standard-measure shipping container for bulk transport of goods. This one prominently features Nanotrasen's logo, and so presumably could be carrying anything."
 	icon_state = "nanotrasen"
 
+/obj/structure/shipping_container/nanotrasen/corrosion
+	icon_state = "nanotrasen_corrosion"
+
+/obj/structure/shipping_container/deforest
+	name = "\improper DeForest Medical Corp. shipping container"
+	desc = "A standard-measure shipping container for bulk transport of goods. This one is from DeForest, and so is probably carrying medical supplies."
+	icon_state = "deforest"
+
+/obj/structure/shipping_container/deforest/corrosion
+	icon_state = "deforest_corrosion"
+
+/obj/structure/shipping_container/interdyne
+	name = "\improper Interdyne shipping container"
+	desc = "A standard-measure shipping container for bulk transport of goods. This one is from Interdyne, a private pharmaceutical company. Probably carrying medical or research supplies, probably."
+	icon_state = "interdyne"
+
+/obj/structure/shipping_container/interdyne/corrosion
+	icon_state = "interdyne_corrosion"
+
+/obj/structure/shipping_container/nakamura
+	name = "\improper Nakamura Engineering shipping container"
+	desc = "A standard-measure shipping container for bulk transport of goods. This one is from Nakamura, presumably for transporting tools or heavy industrial equipment."
+	icon_state = "nakamura"
+
+/obj/structure/shipping_container/nakamura/corrosion
+	icon_state = "nakamura_corrosion"
+
 /obj/structure/shipping_container/nthi
 	name = "\improper Nanotrasen Heavy Industries shipping container"
 	desc = "A standard-measure shipping container for bulk transport of goods. This one is from NTHI: Nanotrasen's mining and refining subdivision."
 	icon_state = "nthi"
 
-/obj/structure/shipping_container/vitezstvi
-	name = "\improper Vítězství Arms shipping container"
-	desc = "A standard-measure shipping container for bulk transport of goods. This one is from Vítězství Arms, proudly proclaiming that Vítězství weapons mean victory."
-	icon_state = "vitezstvi"
+/obj/structure/shipping_container/nthi/corrosion
+	icon_state = "nthi_corrosion"
 
 //Syndies
 /obj/structure/shipping_container/cybersun
@@ -792,15 +800,38 @@
 	desc = "A standard-measure shipping container for bulk transport of goods. This one prominently features Cybersun's logo, and so presumably could be carrying almost anything."
 	icon_state = "cybersun"
 
+/obj/structure/shipping_container/cybersun/corrosion
+	icon_state = "cybersun_corrosion"
+
 /obj/structure/shipping_container/donk_co
 	name = "\improper Donk Co. shipping container"
 	desc = "A standard-measure shipping container for bulk transport of goods. This one is from Donk Co. and so could be carrying just about anything- although it's probably Donk Pockets."
-	icon_state = "donk_co"
+	icon_state = "donk"
+
+/obj/structure/shipping_container/donk_co/corrosion
+	icon_state = "donk_corrosion"
 
 /obj/structure/shipping_container/gorlex
 	name = "\improper Gorlex Securities shipping container"
 	desc = "A standard-measure shipping container for bulk transport of goods. This one is from Gorlex Securities, and is probably carrying their primary export: war crimes."
 	icon_state = "gorlex"
 
-/obj/structure/shipping_container/gorlex/red
-	icon_state = "gorlex_red"
+/obj/structure/shipping_container/gorlex/corrosion
+	icon_state = "gorlex_corrosion"
+
+/obj/structure/shipping_container/desert_nt
+	icon_state = "nanotrasen_corrosion_1"
+
+/obj/structure/shipping_container/desert_other
+	icon_state = "gorlex_corrosion_1"
+
+/obj/structure/shipping_container/desert_nt/Initialize(mapload)
+	. = ..()
+	icon_state = "nanotrasen_corrosion_[rand(1,3)]"
+	AddComponent(/datum/component/largetransparency, 0, 1, 2, 0)
+
+/obj/structure/shipping_container/desert_other/Initialize(mapload)
+	. = ..()
+	var/list/container_type = list("gorlex_corrosion", "donk_corrosion", "kosmologistika_corrosion", "conarex_corrosion", "cybersun_corrosion", "deforest_corrosion", "interdyne_corrosion", "nakamura_corrosion", "nthi_corrosion")
+	icon_state = "[pick(container_type)]_[rand(1,3)]"
+	AddComponent(/datum/component/largetransparency, 0, 1, 2, 0)
