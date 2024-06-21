@@ -172,14 +172,14 @@
 	anchored = TRUE
 	layer = ABOVE_ALL_MOB_LAYER
 	max_integrity = 50
-	bound_width = 96
-	bound_height = 32
 
 /obj/structure/decorative_structures/car_wreck/Initialize(mapload)
 	. = ..()
 	var/list/car_types = list("coupe", "muscle", "sport", "van")
 	icon_state = "[pick(car_types)]-[rand(1,5)]"
 	AddComponent(/datum/component/largetransparency, 0, 1, 2, 0)
+	bound_width = 96
+	bound_height = 32
 
 //statues and stuff
 
@@ -723,13 +723,11 @@
 
 
 /obj/structure/shipping_container
-	name = "shipping container"
-	desc = "A standard-measure shipping container for bulk transport of goods. This one is blank, offering no clue as to its contents."
+	name = "грузовой контейнер"
+	desc = "Стандартный контейнер для транспортировки грузов. Этот без маркировки, поэтому информации о его содержимом нет."
 	icon = 'modular_ss220/dunes_map/icons/containers.dmi'
 	icon_state = "container_blank"
 	max_integrity = 1000
-	bound_width = 96
-	bound_height = 32
 	density = TRUE
 	anchored = TRUE
 	layer = 4.6
@@ -737,87 +735,99 @@
 /obj/structure/shipping_container/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/largetransparency, 0, 1, 2, 0)
+	bound_width = 96
+	bound_height = 32
 
 /obj/structure/shipping_container/conarex
-	name = "\improper Conarex Aeronautics shipping container"
-	desc = "A standard-measure shipping container for bulk transport of goods. This one is from Conarex Aeronautics, and is probably carrying spacecraft parts (or a bribery scandal) as a result."
+	name = "\improper грузовой контейнер Космического Бюро Контарекс"
+	desc = "Стандартный контейнер для транспортировки грузов. Этот принадлежит Космическому Бюро Контарекс и, скорее всего, используется для перевозки частей космических кораблей (или очередных коррупционных скандалов)."
 	icon_state = "conarex"
 
 /obj/structure/shipping_container/conarex/corrosion
 	icon_state = "conarex_corrosion"
+	desc = "Стандартный контейнер для транспортировки грузов. Этот принадлежит Космическому Бюро Контарекс и, скорее всего, используется для перевозки частей космических кораблей (или очередных коррупционных скандалов). Ни первого, ни второго вы в этом старье не найдете."
 
 /obj/structure/shipping_container/kosmologistika
-	name = "\improper Kosmologistika shipping container"
-	desc = "A standard-measure shipping container for bulk transport of goods. This one is from Kosmologistika, the logistics company owned and operated by the SSC."
+	name = "\improper грузовой контейнер Космологистики"
+	desc = "Стандартный контейнер для транспортировки грузов. Этот принадлежит Космологистике - грузотранспортной компании СССП, используемой в пространствах других космических государств."
 	icon_state = "kosmologistika"
 
 /obj/structure/shipping_container/kosmologistika/corrosion
 	icon_state = "kosmologistika_corrosion"
+	desc = "Стандартный контейнер для транспортировки грузов. Этот принадлежит Космологистике - грузотранспортной компании СССП, используемой в пространствах других космических государств. Сейчас это старье может разве что послужить временным убежищем."
 
 /obj/structure/shipping_container/nanotrasen
-	name = "\improper Nanotrasen shipping container"
-	desc = "A standard-measure shipping container for bulk transport of goods. This one prominently features Nanotrasen's logo, and so presumably could be carrying anything."
+	name = "\improper грузовой контейнер корпорации Нанотрейзен"
+	desc = "Стандартный контейнер для транспортировки грузов. Этот промаркирован логотипом Нанотрейзен, поэтому внутри может быть что угодно."
 	icon_state = "nanotrasen"
 
 /obj/structure/shipping_container/nanotrasen/corrosion
 	icon_state = "nanotrasen_corrosion"
+	desc = "Стандартный контейнер для транспортировки грузов. Этот промаркирован логотипом Нанотрейзен, поэтому внутри может быть что угодно. Учитывая его состояние, вы вряд ли найдете что-то стоящее."
 
 /obj/structure/shipping_container/deforest
-	name = "\improper DeForest Medical Corp. shipping container"
-	desc = "A standard-measure shipping container for bulk transport of goods. This one is from DeForest, and so is probably carrying medical supplies."
+	name = "\improper грузовой контейнер медицинской корпорации ДеФорест"
+	desc = "Стандартный контейнер для транспортировки грузов. Этот принадлежит ДеФорест, внутри него - медицинское оборудование."
 	icon_state = "deforest"
 
 /obj/structure/shipping_container/deforest/corrosion
 	icon_state = "deforest_corrosion"
+	desc = "Стандартный контейнер для транспортировки грузов. Этот принадлежит ДеФорест, внутри него - медицинское оборудование. Во всяком случае, было раньше."
 
 /obj/structure/shipping_container/interdyne
-	name = "\improper Interdyne shipping container"
-	desc = "A standard-measure shipping container for bulk transport of goods. This one is from Interdyne, a private pharmaceutical company. Probably carrying medical or research supplies, probably."
+	name = "\improper грузовой контейнер компании Интердайн"
+	desc = "Стандартный контейнер для транспортировки грузов. Этот принадлежит фармкомпании Интердайн и используется для перевозки исключительно лицензированных препаратов."
 	icon_state = "interdyne"
 
 /obj/structure/shipping_container/interdyne/corrosion
 	icon_state = "interdyne_corrosion"
+	desc = "Стандартный контейнер для транспортировки грузов. Этот принадлежит фармкомпании Интердайн и используется для перевозки исключительно лицензированных препаратов. Сейчас в нем ничего нет."
 
 /obj/structure/shipping_container/nakamura
-	name = "\improper Nakamura Engineering shipping container"
-	desc = "A standard-measure shipping container for bulk transport of goods. This one is from Nakamura, presumably for transporting tools or heavy industrial equipment."
+	name = "\improper грузовой контейнер бюро Накимура"
+	desc = "Стандартный контейнер для транспортировки грузов. Такие используются инженерным бюро Накимура и перевозят оборудование для тяжелой промышленности."
 	icon_state = "nakamura"
 
 /obj/structure/shipping_container/nakamura/corrosion
 	icon_state = "nakamura_corrosion"
+	desc = "Стандартный контейнер для транспортировки грузов. Такие используются инженерным бюро Накимура и перевозят оборудование для тяжелой промышленности. Сейчас это лишь проржавевший остов."
 
 /obj/structure/shipping_container/nthi
-	name = "\improper Nanotrasen Heavy Industries shipping container"
-	desc = "A standard-measure shipping container for bulk transport of goods. This one is from NTHI: Nanotrasen's mining and refining subdivision."
+	name = "\improper грузовой контейнер ГДпНТ"
+	desc = "Стандартный контейнер для транспортировки грузов. Этот принадлежит Горнодобывающему подразделению Нанотрейзен, которое специализируется на разработке и добыче полезных ископаемых."
 	icon_state = "nthi"
 
 /obj/structure/shipping_container/nthi/corrosion
 	icon_state = "nthi_corrosion"
+	desc = "Стандартный контейнер для транспортировки грузов. Этот принадлежит Горнодобывающему подразделению Нанотрейзен, которое специализируется на разработке и добыче полезных ископаемых. Сейчас в нем ничего нет."
 
 //Syndies
 /obj/structure/shipping_container/cybersun
-	name = "\improper Cybersun Industries shipping container"
-	desc = "A standard-measure shipping container for bulk transport of goods. This one prominently features Cybersun's logo, and so presumably could be carrying almost anything."
+	name = "\improper грузовой контейнер корпорации Киберсана"
+	desc = "Стандартный контейнер для транспортировки грузов. На нем виден логотип Киберсана, поэтому внутри него может находится все что угодно."
 	icon_state = "cybersun"
 
 /obj/structure/shipping_container/cybersun/corrosion
 	icon_state = "cybersun_corrosion"
+	desc = "Стандартный контейнер для транспортировки грузов. На нем виден логотип Киберсана, поэтому внутри него может находится все что угодно. Не стоит даже пытаться его вскрывать."
 
 /obj/structure/shipping_container/donk_co
-	name = "\improper Donk Co. shipping container"
-	desc = "A standard-measure shipping container for bulk transport of goods. This one is from Donk Co. and so could be carrying just about anything- although it's probably Donk Pockets."
+	name = "\improper грузовой контейнер Донк&Софт"
+	desc = "Стандартный контейнер для транспортировки грузов. В подобных перевозят всю продукцию Донк&Софт, чаще всего - Donk Pockets."
 	icon_state = "donk"
 
 /obj/structure/shipping_container/donk_co/corrosion
 	icon_state = "donk_corrosion"
+	desc = "Стандартный контейнер для транспортировки грузов. В подобных перевозят всю продукцию Донк&Софт, чаще всего - Donk Pockets. В этом ржавом контейнере ничего не осталось."
 
 /obj/structure/shipping_container/gorlex
-	name = "\improper Gorlex Securities shipping container"
-	desc = "A standard-measure shipping container for bulk transport of goods. This one is from Gorlex Securities, and is probably carrying their primary export: war crimes."
+	name = "\improper грузовой контейнер корпорации Горлекс"
+	desc = "Стандартный контейнер для транспортировки грузов. Этот промаркирован логотипом корпорации Горлекс, а значит внутри может быть только одно - военные преступления."
 	icon_state = "gorlex"
 
 /obj/structure/shipping_container/gorlex/corrosion
 	icon_state = "gorlex_corrosion"
+	desc = "Стандартный контейнер для транспортировки грузов. Этот промаркирован логотипом корпорации Горлекс, а значит внутри может быть только одно - военные преступления. Но даже их вам не удасться найти в этом древнем контейнере."
 
 /obj/structure/shipping_container/desert_nt
 	icon_state = "nanotrasen_corrosion_1"
@@ -829,9 +839,15 @@
 	. = ..()
 	icon_state = "nanotrasen_corrosion_[rand(1,3)]"
 	AddComponent(/datum/component/largetransparency, 0, 1, 2, 0)
+	bound_width = 96
+	bound_height = 32
+	desc = "Стандартный контейнер для транспортировки грузов. Истертый логотип Нанотрейзен все еще узнаваем, а это значит, что внутри может быть все что угодно. Хотя, учитывая его состояние, вы вряд ли найдете что-то стоящее."
 
 /obj/structure/shipping_container/desert_other/Initialize(mapload)
 	. = ..()
 	var/list/container_type = list("gorlex_corrosion", "donk_corrosion", "kosmologistika_corrosion", "conarex_corrosion", "cybersun_corrosion", "deforest_corrosion", "interdyne_corrosion", "nakamura_corrosion", "nthi_corrosion")
 	icon_state = "[pick(container_type)]_[rand(1,3)]"
 	AddComponent(/datum/component/largetransparency, 0, 1, 2, 0)
+	bound_width = 96
+	bound_height = 32
+	desc = "Стандартный контейнер для транспортировки грузов. Маркировочный логотип давно стерся и о его бывших владельцах остается лишь гадать. В любом случае, в этом проржавевшем контейнере не осталось ничего полезного."
