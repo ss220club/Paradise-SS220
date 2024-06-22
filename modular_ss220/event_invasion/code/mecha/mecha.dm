@@ -27,7 +27,7 @@
 	initial_icon = "mech"
 	layer = 5.1
 	step_in = 3
-	opacity = 0
+	opacity = FALSE
 	dir_in = 1
 	pixel_x = -16
 	pixel_y = 32
