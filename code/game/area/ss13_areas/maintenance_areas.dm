@@ -5,10 +5,6 @@
 	valid_territory = FALSE
 	sound_environment = SOUND_AREA_TUNNEL_ENCLOSED
 
-/area/station/maintenance/atmos_control
-	name = "Технические Тоннели Атмоса"
-	icon_state = "fpmaint"
-
 /area/station/maintenance/engimaint
 	name = "Технические Тоннели Инженерии"
 	icon_state = "engimaint"
@@ -51,10 +47,6 @@
 
 /area/station/maintenance/maintcentral
 	name = "Центральные Технические Тоннели"
-	icon_state = "maintcentral"
-
-/area/station/maintenance/maintcentral2
-	name = "Вспомогательные Центральные Технические Тоннели"
 	icon_state = "maintcentral"
 
 /area/station/maintenance/fore
@@ -105,10 +97,6 @@
 	name = "Комната Утилизации"
 	icon_state = "disposals"
 
-/area/station/maintenance/genetics
-	name = "Технические Тоннели Генетики"
-	icon_state = "asmaint"
-
 /area/station/maintenance/electrical
 	name = "Необслуживаемое Помещение Электрооборудования"
 	icon_state = "elect"
@@ -140,10 +128,6 @@
 /area/station/maintenance/gambling_den
 	name = "Игровой Зал"
 	icon_state = "yellow"
-
-/area/station/maintenance/consarea
-	name = "Альтернативная Зона Строительства"
-	icon_state = "construction"
 
 /area/station/maintenance/auxsolarport
 	name = "Северо-Западные Солнечные Панели"
@@ -216,9 +200,6 @@
 
 /area/station/maintenance/disposal/external/southeast
 	name = "South-Eastern External Waste Belt"
-
-/area/station/maintenance/disposal/external/east
-	name="Eastern External Waste Belt"
 
 /area/station/maintenance/disposal/external/north
 	name = "Northern External Waste Belt"

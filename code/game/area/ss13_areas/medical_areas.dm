@@ -49,10 +49,6 @@
 	icon_state = "patients"
 	sound_environment = SOUND_AREA_SMALL_SOFTFLOOR
 
-/area/station/medical/ward
-	name = "Комната Ожидания Медицинского Отдела"
-	icon_state = "patientsward"
-
 /area/station/medical/coldroom
 	name = "Морозильная Камера Медицинского Отдела"
 	icon_state = "coldroom"

@@ -30,14 +30,6 @@
 	name = "Шахтный Док"
 	icon_state = "mining"
 
-/area/station/supply/miningstorage
-	name = "Склад Шахты"
-	icon_state = "green"
-
-/area/station/supply/mechbay
-	name = "Мех. Отсек Шахты"
-	icon_state = "yellow"
-
 /area/station/supply/expedition
 	name = "Комната Экспедиции"
 	icon_state = "expedition"

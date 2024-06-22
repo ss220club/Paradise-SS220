@@ -150,10 +150,6 @@
 	icon_state = "dorms"
 	sound_environment = SOUND_AREA_STANDARD_STATION
 
-
-/area/crew_quarters/toilet/aux
-	name = "Вспомогательные Туалеты"
-
 /area/station/public/sleep
 	name = "Криохранилище Дормитория"
 	icon_state = "Sleep"
@@ -197,8 +193,6 @@
 /area/station/public/vacant_office
 	name = "Свободный Офис"
 	icon_state = "vacantoffice"
-
-/area/station/public/vacant_office/secondary
 
 //Storage
 /area/station/public/storage

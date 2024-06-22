@@ -82,14 +82,6 @@
 	name = "Северо-Восточные Солнечные Панели"
 	icon_state = "FSsolars"
 
-/area/station/engineering/solar/fore
-	name = "Северные Солнечные Панели"
-	icon_state = "yellow"
-
-/area/station/engineering/solar/aft
-	name = "Южные Солнечные Панели"
-	icon_state = "Asolars"
-
 /area/station/engineering/solar/starboard
 	name = "Восточные Солнечные Панели"
 	icon_state = "Ssolars"

@@ -54,12 +54,6 @@
 	icon_state = "teleporter"
 	ambientsounds = ENGINEERING_SOUNDS
 
-/area/station/command/gateway
-	name = "Гейт"
-	icon_state = "gateway"
-	ambientsounds = ENGINEERING_SOUNDS
-	sound_environment = SOUND_AREA_STANDARD_STATION
-
 /area/station/command/vault
 	name = "Хранилище"
 	icon_state = "nuke_storage"

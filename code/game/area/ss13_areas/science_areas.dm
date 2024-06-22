@@ -50,22 +50,10 @@
 	name = "Коридор РНД"
 	icon_state = "sci"
 
-/area/station/science/supermatter
-	name = "Лаборатория Суперматерии"
-	icon_state = "scilab"
-
 /area/station/science/xenobiology
 	name = "Лаборатория Ксенобиологии"
 	icon_state = "xenobio"
 	xenobiology_compatible = TRUE
-
-/area/station/science/xenobiology/xenoflora_storage
-	name = "Хранилище Ксенофлоры"
-	icon_state = "scilab"
-
-/area/station/science/xenobiology/xenoflora
-	name = "Лаборатория Ксенофлоры"
-	icon_state = "scilab"
 
 /area/station/science/storage
 	name = "Хранилище Токсинов РНД"
