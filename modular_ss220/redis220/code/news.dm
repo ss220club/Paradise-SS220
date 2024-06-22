@@ -2,7 +2,14 @@
 	. = ..()
 	if(!M.author_ckey)
 		return
-	var/list/data = M.serialize() + list("publish_realtime" = world.realtime, "channel_name" = channel_name)
+	var/list/data = M.serialize() + list(
+		"publish_realtime" = world.realtime,
+		"publish_time" = time2text(ROUND_TIME, "hh:mm:ss", 0),
+		"channel_name" = channel_name,
+		"round_id" = GLOB.round_id,
+		"server" = "[world.internet_address]:[world.port]",
+		"security_level" = SSsecurity_level.get_current_level_as_text()
+		)
 	SSredis.publish("byond.news", json_encode(data))
 
 /datum/feed_message/serialize()
@@ -21,6 +28,11 @@
 	return .
 
 /datum/modpack/redis220/initialize()
+	world.log << "123"
+	addtimer(CALLBACK(src, PROC_REF(test)), 1 MINUTES)
+
+/datum/modpack/redis220/proc/test()
+	world.log << "456"
 	var/datum/feed_channel/some_channel = new
 	some_channel.channel_name = "Проклятье 220 Ньюс"
 
@@ -36,5 +48,3 @@
 	some_message.img = new /icon('icons/obj/butts.dmi', "vulp")
 
 	some_channel.add_message(some_message)
-	world.log << "Passed UT"
-	world.log << "Is redis alive - [SSredis.connected]"
