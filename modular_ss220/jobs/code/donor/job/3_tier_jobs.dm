@@ -161,6 +161,7 @@
 		/obj/item/clothing/head/beret/purple_normal = 1,
 		/obj/item/clothing/suit/storage/iaa/purplejacket = 1,
 		/obj/item/clipboard = 1,
+		/obj/item/reagent_containers/spray/cleaner = 1,
 	)
 
 
