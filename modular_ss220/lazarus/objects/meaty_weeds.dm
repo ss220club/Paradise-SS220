@@ -45,3 +45,53 @@
 		wall_weed = new /obj/structure/alien/wallweed/meaty(T, src)
 
 	wall_weed.compare_overlays(wall_dirs)
+
+/obj/structure/alien/weeds/meaty/spread()
+	var/turf/U = get_turf(src)
+
+	if(isspaceturf(U))
+		qdel(src)
+		return
+
+	if(!linked_node)
+		if(prob(20))
+			silent_removal = TRUE
+			qdel(src)
+		return
+
+	if((istype(linked_node, /obj/structure/alien/resin/door)) || (istype(linked_node, /obj/structure/alien/resin/wall)))
+		return
+
+	if(get_dist(linked_node, src) > linked_node.node_range) /*!linked_node || */
+		return
+
+	for(var/turf/T in U.GetAtmosAdjacentTurfs())
+		if((locate(/obj/structure/alien/weeds) in T) || isspaceturf(T) || islava(T) || ischasm(T))
+			continue
+		new /obj/structure/alien/weeds/meaty(T, linked_node)
+		check_surroundings()
+
+/obj/structure/alien/weeds/node/meaty/spread()
+	var/turf/U = get_turf(src)
+
+	if(isspaceturf(U))
+		qdel(src)
+		return
+
+	if(!linked_node)
+		if(prob(20))
+			silent_removal = TRUE
+			qdel(src)
+		return
+
+	if((istype(linked_node, /obj/structure/alien/resin/door)) || (istype(linked_node, /obj/structure/alien/resin/wall)))
+		return
+
+	if(get_dist(linked_node, src) > linked_node.node_range) /*!linked_node || */
+		return
+
+	for(var/turf/T in U.GetAtmosAdjacentTurfs())
+		if((locate(/obj/structure/alien/weeds) in T) || isspaceturf(T) || islava(T) || ischasm(T))
+			continue
+		new /obj/structure/alien/weeds/meaty(T, linked_node)
+		check_surroundings()

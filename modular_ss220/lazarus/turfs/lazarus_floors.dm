@@ -13,7 +13,7 @@
 
 /turf/simulated/floor/plating/asteroid/lazarus/randomize_icon_state()
 	if(prob(floor_variance))
-		icon_state = "[environment_type]_[rand(1,2)]"
+		icon_state = "[environment_type]_[rand(1,4)]"
 
 /turf/simulated/floor/plating/screwdriver_act(mob/user, obj/item/I)	// "You start unfastening the dirt" fix
 	return FALSE
@@ -51,4 +51,61 @@
 	ChangeTurf(/turf/simulated/floor/plating/asteroid/lazarus/dirt, keep_icon = FALSE)
 	randomize_icon_state()
 
+/turf/simulated/mineral/random/lazarus
+	environment_type = "dirt"
+	turf_type = /turf/simulated/floor/plating/asteroid/lazarus
+	baseturf = /turf/simulated/floor/plating/asteroid/lazarus
+	mineralSpawnChanceList = list(/turf/simulated/mineral/uranium/lazarus = 5, /turf/simulated/mineral/diamond/lazarus = 1, /turf/simulated/mineral/gold/lazarus = 10,
+		/turf/simulated/mineral/silver/lazarus = 12, /turf/simulated/mineral/plasma/lazarus = 20, /turf/simulated/mineral/iron/lazarus = 40, /turf/simulated/mineral/titanium/lazarus = 11,
+		/turf/simulated/mineral/gibtonite/lazarus = 4, /turf/simulated/mineral/bscrystal/lazarus = 1)
 
+/turf/simulated/mineral/uranium/lazarus
+	environment_type = "dirt"
+	turf_type = /turf/simulated/floor/plating/asteroid/lazarus
+	baseturf = /turf/simulated/floor/plating/asteroid/lazarus
+
+/turf/simulated/mineral/diamond/lazarus
+	environment_type = "dirt"
+	turf_type = /turf/simulated/floor/plating/asteroid/lazarus
+	baseturf = /turf/simulated/floor/plating/asteroid/lazarus
+
+/turf/simulated/mineral/gold/lazarus
+	environment_type = "dirt"
+	turf_type = /turf/simulated/floor/plating/asteroid/lazarus
+	baseturf = /turf/simulated/floor/plating/asteroid/lazarus
+
+/turf/simulated/mineral/silver/lazarus
+	environment_type = "dirt"
+	turf_type = /turf/simulated/floor/plating/asteroid/lazarus
+	baseturf = /turf/simulated/floor/plating/asteroid/lazarus
+
+/turf/simulated/mineral/plasma/lazarus
+	environment_type = "dirt"
+	turf_type = /turf/simulated/floor/plating/asteroid/lazarus
+	baseturf = /turf/simulated/floor/plating/asteroid/lazarus
+
+/turf/simulated/mineral/iron/lazarus
+	environment_type = "dirt"
+	turf_type = /turf/simulated/floor/plating/asteroid/lazarus
+	baseturf = /turf/simulated/floor/plating/asteroid/lazarus
+
+/turf/simulated/mineral/titanium/lazarus
+	environment_type = "dirt"
+	turf_type = /turf/simulated/floor/plating/asteroid/lazarus
+	baseturf = /turf/simulated/floor/plating/asteroid/lazarus
+
+/turf/simulated/mineral/gibtonite/lazarus
+	environment_type = "dirt"
+	turf_type = /turf/simulated/floor/plating/asteroid/lazarus
+	baseturf = /turf/simulated/floor/plating/asteroid/lazarus
+
+/turf/simulated/mineral/bscrystal/lazarus
+	environment_type = "dirt"
+	turf_type = /turf/simulated/floor/plating/asteroid/lazarus
+	baseturf = /turf/simulated/floor/plating/asteroid/lazarus
+
+/turf/simulated/floor/chasm/straight_down/lava_land_surface/normal_air/lazarus
+	icon = 'modular_ss220/lazarus/icons/lazarus_chasms.dmi'
+	light_range = 3
+	light_power = 0.8
+	light_color = LIGHT_COLOR_DARKRED

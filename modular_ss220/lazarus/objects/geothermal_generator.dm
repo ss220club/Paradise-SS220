@@ -50,12 +50,11 @@
 
 
 /obj/machinery/power/geothermal_generator/process()
-	if(powernet && gen_state == GEOTHERMAL_GEN_ACTIVE)
-		produce_direct_power(GEOTHERMAL_GEN_OUTPUT)
-	else if(!powernet)
-		message_admins("No powernet on generator")
-	else if(gen_state == GEOTHERMAL_GEN_ACTIVE && gen_state != GEOTHERMAL_GEN_BROKEN )
-		message_admins("Generator isn't active")
+	if(powernet)
+		if(gen_state == GEOTHERMAL_GEN_ACTIVE)
+			produce_direct_power(GEOTHERMAL_GEN_OUTPUT)
+	else
+		break_gen()
 	return
 
 /obj/machinery/power/geothermal_generator/screwdriver_act(mob/living/user, obj/item/I)
