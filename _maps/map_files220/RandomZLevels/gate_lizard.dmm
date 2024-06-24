@@ -143,7 +143,7 @@
 /obj/effect/turf_decal/delivery/white,
 /obj/machinery/door_control/shutter/north{
 	id = "Main in";
-	req_access = list(271)
+	req_access = list(301)
 	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/inside/complex)
@@ -246,7 +246,7 @@
 /obj/item/clothing/accessory/stethoscope,
 /obj/machinery/door_control/shutter/west{
 	id = "CMDgate";
-	req_access = list(271)
+	req_access = list(301)
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plasteel{
@@ -570,8 +570,8 @@
 "aRy" = (
 /obj/machinery/door/airlock/mining{
 	locked = 1;
-	name = "Main Hangar";
-	req_access = list(271);
+	name = "main Hangar";
+	req_access = list(301);
 	id_tag = "commanddoor"
 	},
 /obj/machinery/door/firedoor,
@@ -1476,6 +1476,11 @@
 /obj/item/coin/gold,
 /obj/effect/spawner/random_spawners/dirt_often,
 /obj/structure/closet/crate/wooden/wooden_crate,
+/obj/item/salvage/loot/pirate,
+/obj/item/salvage/loot/pirate,
+/obj/item/salvage/loot/pirate,
+/obj/item/salvage/loot/pirate,
+/obj/item/salvage/loot/pirate,
 /turf/simulated/floor/wood/oak,
 /area/awaymission/jungle_planet/outside/cave/pirate)
 "bVh" = (
@@ -1770,11 +1775,11 @@
 	},
 /obj/machinery/door/airlock/mining{
 	name = "second hangar";
-	req_access = list(271)
+	req_access = list(301)
 	},
 /obj/machinery/door_control/shutter/north{
 	id = "Cargo out";
-	req_access = list(271)
+	req_access = list(301)
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -1856,6 +1861,11 @@
 	icon_state = "darkblue"
 	},
 /area/awaymission/jungle_planet/inside/complex)
+"cuM" = (
+/obj/effect/decal/cleanable/blood/old,
+/obj/item/salvage/ruin/pirate,
+/turf/simulated/floor/wood/oak,
+/area/awaymission/jungle_planet/outside/cave)
 "cuS" = (
 /obj/effect/turf_decal/delivery,
 /obj/structure/spider/stickyweb,
@@ -2161,7 +2171,7 @@
 /obj/machinery/door/airlock/engineering{
 	locked = 1;
 	name = "engineering";
-	req_access = list(271)
+	req_access = list(301)
 	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/inside/complex)
@@ -2950,7 +2960,7 @@
 /obj/machinery/door_control/shutter/north{
 	name = "Armory Shutters-control";
 	id = "Arm in";
-	req_access = list(271)
+	req_access = list(301)
 	},
 /obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/plasteel{
@@ -3298,6 +3308,7 @@
 	},
 /obj/item/pen,
 /obj/item/clipboard,
+/obj/item/salvage/ruin/nanotrasen,
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/inside/complex)
 "esZ" = (
@@ -3711,7 +3722,7 @@
 "eRi" = (
 /obj/machinery/door_control/shutter/east{
 	id = "Right in";
-	req_access = list(271)
+	req_access = list(301)
 	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/inside/complex)
@@ -4387,6 +4398,12 @@
 	icon_state = "purplecorner"
 	},
 /area/awaymission/jungle_planet/inside/complex)
+"fLK" = (
+/obj/item/salvage/loot/syndicate,
+/turf/simulated/floor/plating/asteroid/ancient{
+	name = "ground"
+	},
+/area/awaymission/jungle_planet/outside/cave)
 "fMh" = (
 /obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/plating,
@@ -4447,6 +4464,12 @@
 /obj/structure/flora/tree/jungle,
 /turf/simulated/floor/indestructible/grass/no_creep,
 /area/awaymission/jungle_planet/outside)
+"fRW" = (
+/obj/effect/spawner/random_spawners/dirt_often,
+/obj/effect/landmark/damageturf,
+/obj/item/salvage/ruin/pirate,
+/turf/simulated/floor/wood/oak,
+/area/awaymission/jungle_planet/outside/cave/pirate)
 "fSp" = (
 /obj/effect/spawner/random_spawners/dirt_maybe,
 /turf/simulated/floor/plating,
@@ -4917,6 +4940,10 @@
 	icon_state = "redcorner"
 	},
 /area/awaymission/jungle_planet/inside/complex)
+"gEr" = (
+/obj/item/salvage/ruin/pirate,
+/turf/simulated/floor/wood/oak,
+/area/awaymission/jungle_planet/outside/cave)
 "gEY" = (
 /obj/structure/flora/ausbushes/reedbush{
 	pixel_y = -15
@@ -5143,6 +5170,22 @@
 	name = "ground"
 	},
 /area/awaymission/jungle_planet/outside/cave)
+"gUi" = (
+/obj/machinery/door/airlock/mining{
+	name = "second hangar";
+	locked = 1;
+	req_access = list(301);
+	id_tag = "hang2in"
+	},
+/obj/machinery/door/poddoor/shutters{
+	dir = 8;
+	id_tag = "Cargo in"
+	},
+/turf/simulated/floor/plasteel{
+	dir = 4;
+	icon_state = "darkneutralfull"
+	},
+/area/awaymission/jungle_planet/inside)
 "gUQ" = (
 /obj/effect/spawner/random_spawners/dirt_maybe,
 /obj/item/shovel{
@@ -5264,7 +5307,7 @@
 "hbL" = (
 /obj/machinery/door/airlock/medical{
 	name = "morgue";
-	req_access = list(271)
+	req_access = list(301)
 	},
 /turf/simulated/floor/plasteel{
 	dir = 5;
@@ -6145,7 +6188,7 @@
 /obj/machinery/door/airlock/security{
 	locked = 1;
 	name = "security";
-	req_access = list(271)
+	req_access = list(301)
 	},
 /obj/machinery/door/poddoor/shutters{
 	id_tag = "Sec in";
@@ -6216,7 +6259,7 @@
 /obj/machinery/door/airlock/mining{
 	locked = 1;
 	name = "main hangar";
-	req_access = list(271)
+	req_access = list(301)
 	},
 /obj/machinery/door/poddoor/shutters{
 	dir = 2;
@@ -6484,7 +6527,7 @@
 "iAq" = (
 /obj/machinery/door/airlock/medical{
 	name = "medbay";
-	req_access = list(271)
+	req_access = list(301)
 	},
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/plasteel,
@@ -6685,6 +6728,7 @@
 "iMH" = (
 /obj/effect/turf_decal/delivery,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/item/salvage/ruin/russian,
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/inside/complex)
 "iMN" = (
@@ -7430,7 +7474,7 @@
 /obj/effect/decal/cleanable/blood/old,
 /obj/machinery/door_control/shutter/south{
 	id = "Cargo in";
-	req_access = list(271)
+	req_access = list(301)
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -7621,7 +7665,7 @@
 /obj/machinery/door_control/shutter/south{
 	id = "Sec in";
 	name = "Security Shutters-control";
-	req_access = list(271)
+	req_access = list(301)
 	},
 /obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/plasteel{
@@ -8332,9 +8376,9 @@
 /area/awaymission/jungle_planet/inside/complex)
 "kLd" = (
 /obj/machinery/economy/vending/medical{
-	req_access = list(271)
+	req_access = list(301)
 	},
-/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/random_spawners/dirt_maybe,
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -8477,9 +8521,7 @@
 	},
 /area/awaymission/jungle_planet/inside/complex)
 "kUl" = (
-/obj/item/reagent_containers/drinks/bottle/tequila,
-/obj/effect/spawner/random_spawners/dirt_often,
-/obj/structure/closet/crate/wooden/wooden_crate,
+/obj/item/salvage/ruin/pirate,
 /turf/simulated/floor/wood/oak,
 /area/awaymission/jungle_planet/outside/cave/pirate)
 "kUv" = (
@@ -8750,6 +8792,11 @@
 /obj/structure/stone_tile/block/cracked,
 /turf/simulated/floor/engine/cult,
 /area/awaymission/jungle_planet/outside/cave)
+"ljf" = (
+/obj/effect/spawner/random_spawners/dirt_often,
+/obj/item/salvage/ruin/pirate,
+/turf/simulated/floor/wood/oak,
+/area/awaymission/jungle_planet/outside/cave/pirate)
 "ljB" = (
 /obj/structure/flora/rock/pile,
 /turf/simulated/floor/beach/away/coastline/beachcorner{
@@ -9173,7 +9220,7 @@
 	},
 /obj/machinery/door/airlock/mining{
 	name = "second hangar";
-	req_access = list(271)
+	req_access = list(301)
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -9501,12 +9548,8 @@
 /obj/machinery/door/airlock/mining{
 	name = "second hangar";
 	locked = 1;
-	req_access = list(271);
+	req_access = list(301);
 	id_tag = "hang2in"
-	},
-/obj/machinery/door/poddoor/shutters{
-	dir = 8;
-	id_tag = "Cargo in"
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -9525,7 +9568,7 @@
 /obj/machinery/door/airlock/security{
 	locked = 1;
 	name = "security";
-	req_access = list(271)
+	req_access = list(301)
 	},
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/plasteel,
@@ -10143,11 +10186,11 @@
 /turf/simulated/floor/indestructible/grass,
 /area/awaymission/jungle_planet/outside)
 "mSW" = (
-/obj/item/reagent_containers/drinks/bottle/whiskey,
-/obj/effect/spawner/random_spawners/dirt_often,
-/obj/structure/closet/crate/wooden/wooden_crate,
-/obj/effect/landmark/damageturf,
-/turf/simulated/floor/wood/oak,
+/obj/machinery/light/small/directional/north,
+/obj/item/salvage/ruin/pirate,
+/turf/simulated/floor/plating/asteroid/ancient{
+	name = "ground"
+	},
 /area/awaymission/jungle_planet/outside/cave/pirate)
 "mTn" = (
 /obj/structure/flora/junglebush/large,
@@ -10224,19 +10267,20 @@
 	pixel_x = 8;
 	id = "Command";
 	name = "command shsutters control";
-	req_access = list(271)
+	req_access = list(301)
 	},
 /obj/machinery/door_control/shutter{
 	pixel_x = -8;
 	name = "shutters control";
 	id = "Hang in";
-	req_access = list(271)
+	req_access = list(301)
 	},
 /obj/machinery/door_control/bolt_control{
 	pixel_y = 8;
 	in_use = 1;
 	desiredstate_open = 1;
-	id = "commanddoor"
+	id = "commanddoor";
+	req_access = list(301)
 	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/inside/complex)
@@ -10325,6 +10369,11 @@
 /obj/item/coin/gold,
 /obj/effect/spawner/random_spawners/dirt_often,
 /obj/structure/closet/crate/wooden/wooden_crate,
+/obj/item/salvage/loot/pirate,
+/obj/item/salvage/loot/pirate,
+/obj/item/salvage/loot/pirate,
+/obj/item/salvage/loot/pirate,
+/obj/item/salvage/loot/pirate,
 /turf/simulated/floor/wood/oak,
 /area/awaymission/jungle_planet/outside/cave/pirate)
 "ncg" = (
@@ -11295,7 +11344,7 @@
 	},
 /obj/machinery/door/airlock/mining{
 	name = "second hangar";
-	req_access = list(271)
+	req_access = list(301)
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -11743,7 +11792,7 @@
 /obj/machinery/door/airlock/command{
 	locked = 1;
 	name = "command";
-	req_access = list(271)
+	req_access = list(301)
 	},
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
@@ -12670,7 +12719,7 @@
 /area/awaymission/jungle_planet/outside/abandoned)
 "qph" = (
 /obj/structure/closet/syndicate,
-/obj/item/clothing/suit/jacket/syndicatebomber,
+/obj/item/clothing/suit/jacket/bomber/syndicate,
 /obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/mineral/plastitanium,
 /area/awaymission/jungle_planet/outside/abandoned)
@@ -12755,6 +12804,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/item/salvage/ruin/russian,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "darkneutralfull"
@@ -12888,7 +12938,7 @@
 /obj/machinery/door/airlock/mining{
 	locked = 1;
 	name = "main hangar";
-	req_access = list(271)
+	req_access = list(301)
 	},
 /obj/machinery/door/poddoor/shutters{
 	dir = 8;
@@ -13010,7 +13060,7 @@
 /obj/machinery/door/firedoor/closed,
 /obj/machinery/door/airlock/engineering{
 	name = "engineering";
-	req_access = list(271)
+	req_access = list(301)
 	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/inside/complex)
@@ -13068,6 +13118,10 @@
 	name = "ground"
 	},
 /area/awaymission/jungle_planet/outside/cave/small)
+"qOq" = (
+/obj/item/salvage/ruin/russian,
+/turf/simulated/floor/wood/oak,
+/area/awaymission/jungle_planet/outside/river)
 "qOs" = (
 /obj/structure/sink{
 	layer = 4;
@@ -13251,6 +13305,7 @@
 "qYR" = (
 /obj/effect/turf_decal/delivery,
 /obj/effect/spawner/random_spawners/dirt_often,
+/obj/item/salvage/ruin/russian,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "darkneutralfull"
@@ -13698,7 +13753,7 @@
 	},
 /obj/machinery/door/airlock/mining{
 	name = "main hangar";
-	req_access = list(271)
+	req_access = list(301)
 	},
 /obj/machinery/door/poddoor/shutters{
 	dir = 2;
@@ -13922,7 +13977,7 @@
 "rNJ" = (
 /obj/machinery/door_control/shutter/south{
 	id = "Main in";
-	req_access = list(271);
+	req_access = list(301);
 	interact_offline = 1
 	},
 /obj/effect/spawner/random_spawners/dirt_maybe,
@@ -14188,6 +14243,12 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/inside/complex)
+"sba" = (
+/obj/effect/turf_decal/delivery,
+/obj/effect/spawner/random_spawners/dirt_maybe,
+/obj/item/salvage/ruin/russian,
+/turf/simulated/floor/plasteel,
+/area/awaymission/jungle_planet/inside/complex)
 "sbj" = (
 /obj/structure/flora/ausbushes/reedbush{
 	pixel_y = -15
@@ -14294,6 +14355,7 @@
 "sjJ" = (
 /obj/effect/turf_decal/delivery,
 /obj/effect/spawner/random_spawners/dirt_maybe,
+/obj/item/salvage/ruin/russian,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "darkneutralfull"
@@ -14781,7 +14843,7 @@
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/door_control/shutter/south{
 	id = "Cargo in";
-	req_access = list(271)
+	req_access = list(301)
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -14952,6 +15014,10 @@
 /obj/structure/table,
 /obj/item/folder/syndicate/red,
 /obj/item/pen,
+/obj/item/salvage/loot/syndicate{
+	pixel_y = 10;
+	pixel_x = 10
+	},
 /turf/simulated/floor/mineral/plastitanium,
 /area/awaymission/jungle_planet/outside/abandoned)
 "tcS" = (
@@ -15023,6 +15089,13 @@
 /obj/structure/flora/tree/jungle/small,
 /turf/simulated/floor/indestructible/grass,
 /area/awaymission/jungle_planet/outside)
+"tgz" = (
+/obj/item/salvage/ruin/pirate,
+/turf/simulated/floor/plasteel{
+	dir = 5;
+	icon_state = "cafeteria"
+	},
+/area/awaymission/jungle_planet/inside/complex)
 "tha" = (
 /obj/effect/spawner/window/reinforced/grilled,
 /obj/effect/mapping_helpers/damaged_window,
@@ -15262,6 +15335,11 @@
 /obj/item/bikehorn/golden,
 /obj/effect/spawner/random_spawners/dirt_often,
 /obj/structure/closet/crate/wooden/wooden_crate,
+/obj/item/salvage/loot/pirate,
+/obj/item/salvage/loot/pirate,
+/obj/item/salvage/loot/pirate,
+/obj/item/salvage/loot/pirate,
+/obj/item/salvage/loot/pirate,
 /turf/simulated/floor/wood/oak,
 /area/awaymission/jungle_planet/outside/cave/pirate)
 "ttC" = (
@@ -15313,7 +15391,7 @@
 /obj/machinery/door/airlock/mining{
 	name = "second hangar";
 	locked = 1;
-	req_access = list(271);
+	req_access = list(301);
 	id_tag = "hang2in"
 	},
 /obj/effect/decal/cleanable/blood/writing{
@@ -15478,6 +15556,11 @@
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/jungle_planet/inside/complex)
+"tLd" = (
+/obj/structure/table/wood,
+/obj/item/salvage/loot/pirate,
+/turf/simulated/floor/wood/oak,
+/area/awaymission/jungle_planet/outside/cave)
 "tLh" = (
 /obj/effect/turf_decal/delivery,
 /obj/structure/closet/crate{
@@ -15654,7 +15737,7 @@
 /obj/machinery/door/airlock/mining{
 	locked = 1;
 	name = "main hangar";
-	req_access = list(271)
+	req_access = list(301)
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -16296,6 +16379,7 @@
 	},
 /area/awaymission/jungle_planet/outside/river)
 "uIx" = (
+/obj/item/salvage/ruin/nanotrasen,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "purple"
@@ -17179,7 +17263,7 @@
 /obj/machinery/door/airlock/security{
 	locked = 1;
 	name = "security";
-	req_access = list(271)
+	req_access = list(301)
 	},
 /turf/simulated/floor/plasteel{
 	dir = 1;
@@ -17971,9 +18055,7 @@
 /area/awaymission/jungle_planet/inside)
 "wMk" = (
 /obj/structure/table/wood,
-/obj/item/reagent_containers/drinks/drinkingglass{
-	list_reagents = list("rum" = 50)
-	},
+/obj/item/salvage/loot/pirate,
 /turf/simulated/floor/wood/oak,
 /area/awaymission/jungle_planet/outside/cave/pirate)
 "wME" = (
@@ -18256,7 +18338,7 @@
 /obj/machinery/door/airlock/command{
 	locked = 1;
 	name = "command";
-	req_access = list(271);
+	req_access = list(301);
 	id_tag = "commanddoor"
 	},
 /obj/machinery/door/firedoor/closed,
@@ -18277,7 +18359,7 @@
 /obj/machinery/door/airlock/security{
 	locked = 1;
 	name = "security";
-	req_access = list(271)
+	req_access = list(301)
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -18358,7 +18440,7 @@
 /obj/machinery/door_control/shutter/south{
 	name = "Armory Shutters-control";
 	id = "Arm in";
-	req_access = list(271)
+	req_access = list(301)
 	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
@@ -18469,6 +18551,14 @@
 /area/awaymission/jungle_planet/outside)
 "xsR" = (
 /obj/effect/decal/cleanable/blood/old,
+/turf/simulated/floor/plasteel{
+	dir = 4;
+	icon_state = "darkneutralfull"
+	},
+/area/awaymission/jungle_planet/inside)
+"xtn" = (
+/obj/effect/turf_decal/delivery,
+/obj/item/salvage/ruin/russian,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "darkneutralfull"
@@ -18821,7 +18911,7 @@
 "xPr" = (
 /obj/machinery/door/airlock/research{
 	name = "robotech";
-	req_access = list(271)
+	req_access = list(301)
 	},
 /obj/machinery/door/firedoor/closed,
 /turf/simulated/floor/plasteel,
@@ -18899,13 +18989,9 @@
 /turf/simulated/floor/wood/oak,
 /area/awaymission/jungle_planet/inside/complex)
 "xSz" = (
-/obj/item/reagent_containers/drinks/bottle/rum,
-/obj/item/reagent_containers/drinks/bottle/rum{
-	list_reagents = list("rum" = 0)
-	},
-/obj/structure/closet/crate/wooden/wooden_crate,
-/turf/simulated/floor/wood/oak,
-/area/awaymission/jungle_planet/outside/cave/pirate)
+/obj/item/salvage/ruin/nanotrasen,
+/turf/simulated/floor/plasteel,
+/area/awaymission/jungle_planet/inside/complex)
 "xSA" = (
 /obj/structure/flora/rock,
 /obj/structure/grille/broken,
@@ -18930,7 +19016,7 @@
 /obj/machinery/door/airlock/security{
 	locked = 1;
 	name = "security";
-	req_access = list(271)
+	req_access = list(301)
 	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/inside/complex)
@@ -19125,6 +19211,11 @@
 	name = "engineering";
 	req_access = list(271)
 	},
+/turf/simulated/floor/plasteel,
+/area/awaymission/jungle_planet/inside/complex)
+"ykF" = (
+/obj/effect/turf_decal/delivery,
+/obj/item/salvage/ruin/russian,
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/inside/complex)
 "ylm" = (
@@ -25104,7 +25195,7 @@ vgy
 tcr
 oLz
 tLh
-mRw
+xtn
 xDg
 wbK
 eOR
@@ -26203,7 +26294,7 @@ lqx
 qPA
 bGr
 gBW
-eIh
+tgz
 sXj
 qgA
 eHa
@@ -27514,7 +27605,7 @@ tUb
 sgy
 dGT
 dGT
-plk
+ykF
 rBb
 rFs
 lsj
@@ -27913,7 +28004,7 @@ wJh
 wJh
 fQm
 fQm
-mky
+gUi
 tzH
 mky
 vPN
@@ -29195,7 +29286,7 @@ miM
 omz
 uBw
 cET
-jlc
+sba
 aIM
 nZX
 oHz
@@ -33126,7 +33217,7 @@ gkO
 nqg
 gdv
 sPM
-uJW
+xSz
 mpQ
 sXj
 sXj
@@ -34350,7 +34441,7 @@ xQV
 hvX
 oBh
 rMM
-azA
+qOq
 miM
 myZ
 myZ
@@ -35473,7 +35564,7 @@ oBh
 hYQ
 cdh
 pbH
-aPj
+kUl
 hYQ
 dIT
 aPj
@@ -35660,7 +35751,7 @@ isG
 hYQ
 lJw
 aPj
-qkp
+ljf
 hYQ
 hYQ
 nou
@@ -37720,7 +37811,7 @@ wtW
 eOG
 cpc
 uvz
-qkp
+ljf
 hYQ
 hYQ
 myZ
@@ -38466,9 +38557,9 @@ miM
 miM
 myZ
 myZ
-umH
+mSW
 qkp
-pbH
+fRW
 myZ
 myZ
 iJL
@@ -38654,8 +38745,8 @@ miM
 miM
 myZ
 kUl
-xSz
-mSW
+kUl
+kUl
 myZ
 myZ
 qkp
@@ -50980,7 +51071,7 @@ miM
 sbr
 nai
 nai
-nai
+fLK
 nai
 nai
 nai
@@ -51369,7 +51460,7 @@ nai
 nai
 miM
 miM
-aPk
+cuM
 arp
 aPk
 pce
@@ -51556,7 +51647,7 @@ miM
 miM
 miM
 miM
-arp
+gEr
 arp
 arp
 vYJ
@@ -51743,7 +51834,7 @@ miM
 miM
 miM
 miM
-arp
+gEr
 arp
 arp
 bwB
@@ -53812,7 +53903,7 @@ pce
 arp
 arp
 miM
-qDP
+tLd
 xAS
 miM
 miM
@@ -53990,7 +54081,7 @@ rOc
 miM
 miM
 ecz
-qDP
+tLd
 arp
 mNu
 arp
@@ -54369,7 +54460,7 @@ arp
 qDP
 arp
 ecz
-qDP
+tLd
 arp
 mNu
 arp

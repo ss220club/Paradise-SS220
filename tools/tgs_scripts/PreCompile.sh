@@ -50,3 +50,9 @@ RUSTFLAGS="-C target-cpu=native"
 env PKG_CONFIG_ALLOW_CROSS=1 ~/.cargo/bin/cargo build --release --all-features --target=i686-unknown-linux-gnu
 mv target/i686-unknown-linux-gnu/release/librust_utils.so "$1/librust_utils.so"
 cd ../../
+
+echo "Deploying MILLA..."
+cd $1/milla
+env PKG_CONFIG_ALLOW_CROSS=1 ~/.cargo/bin/cargo build --release --features all --target=i686-unknown-linux-gnu
+mv target/i686-unknown-linux-gnu/release/libmilla.so "$1/libmilla.so"
+cd ..
