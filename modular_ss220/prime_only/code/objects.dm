@@ -1,4 +1,4 @@
-#define LEGENDARY_SWORDS_CKEY_WHITELIST list("grombila")
+#define LEGENDARY_SWORDS_CKEY_WHITELIST list("mooniverse")
 
 /obj/item/melee/rapier/genri_rapier
 	name = "Трость-рапира"
