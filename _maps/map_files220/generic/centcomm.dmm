@@ -1187,7 +1187,8 @@
 /area/centcom/ss220/admin1)
 "aKT" = (
 /obj/machinery/door/airlock/centcom{
-	name = "Зона ЦК"
+	req_access_txt = "101";
+	name = "Бар"
 	},
 /turf/simulated/floor/pod/light,
 /area/centcom/ss220/supply)
@@ -2951,8 +2952,11 @@
 /area/centcom/ss220/general)
 "bKL" = (
 /obj/structure/fans/tiny,
-/obj/machinery/door/airlock/external,
-/turf/simulated/floor/plasteel,
+/obj/machinery/door/airlock/external{
+	id_tag = "ferry_away";
+	name = "Шаттл"
+	},
+/turf/simulated/floor/plating,
 /area/centcom/ss220/supply)
 "bLl" = (
 /obj/effect/turf_decal/miscellaneous/goldensiding{
@@ -5670,10 +5674,10 @@
 /area/centcom/ss220/admin2)
 "dhs" = (
 /obj/machinery/door/airlock/centcom{
-	name = "Шаттл Нанотрейзен";
+	name = "Шаттл";
 	req_access_txt = "101"
 	},
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/supply)
 "dhE" = (
 /obj/machinery/abductor/pad{
@@ -8840,13 +8844,6 @@
 	},
 /turf/simulated/floor/mineral/plastitanium,
 /area/syndicate_mothership/infteam)
-"eRQ" = (
-/obj/item/flag/ian,
-/turf/simulated/floor/plasteel/dark{
-	dir = 9;
-	icon_state = "darkbluealtstrip"
-	},
-/area/centcom/ss220/supply)
 "eRW" = (
 /obj/structure/reagent_dispensers/watertank,
 /turf/simulated/floor/plasteel{
@@ -12722,10 +12719,11 @@
 	},
 /area/centcom/ss220/medbay)
 "gYI" = (
-/obj/structure/mirror/magic{
-	pixel_y = -32
+/obj/machinery/door/airlock/centcom{
+	req_access_txt = "101";
+	name = "Туалеты"
 	},
-/turf/simulated/floor/carpet/black,
+/turf/simulated/floor/plasteel,
 /area/centcom/ss220/supply)
 "gZt" = (
 /obj/structure/chair/stool{
@@ -13148,11 +13146,11 @@
 /turf/simulated/floor/wood/oak,
 /area/centcom/ss220/park)
 "hkd" = (
-/obj/item/flag/ian,
-/turf/simulated/floor/plasteel/dark{
-	dir = 5;
-	icon_state = "darkbluealtstrip"
+/obj/machinery/door/airlock/centcom{
+	req_access_txt = "101";
+	name = "Рабочая Зона"
 	},
+/turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/supply)
 "hlh" = (
 /obj/machinery/atmospherics/pipe/simple/visible{
@@ -13242,9 +13240,7 @@
 /turf/simulated/floor/lava/mapping_lava,
 /area/wizard_station)
 "hnT" = (
-/obj/machinery/economy/vending/wallmed/syndicate{
-	pixel_y = 30
-	},
+/obj/machinery/economy/vending/wallmed/syndicate/directional/north,
 /turf/simulated/floor/carpet/black,
 /area/syndicate_mothership/infteam)
 "hom" = (
@@ -22234,7 +22230,8 @@
 /area/centcom/ss220/admin1)
 "mgU" = (
 /obj/machinery/door/airlock/centcom{
-	name = "Зона ЦК"
+	req_access_txt = "101";
+	name = "Спальня"
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/supply)
@@ -22361,6 +22358,9 @@
 /area/syndicate_mothership/control)
 "mkt" = (
 /mob/living/carbon/human/skeleton,
+/obj/structure/mirror/magic{
+	pixel_y = -32
+	},
 /turf/simulated/floor/carpet/black,
 /area/centcom/ss220/supply)
 "mkF" = (
@@ -24921,12 +24921,12 @@
 /obj/item/clothing/under/fluff/elishirt,
 /obj/item/clothing/under/fluff/jay_turtleneck,
 /obj/item/clothing/under/fluff/jay_turtleneck,
-/obj/item/clothing/under/rank/procedure/lawyer/black,
-/obj/item/clothing/under/rank/procedure/lawyer/black,
-/obj/item/clothing/under/rank/procedure/lawyer/blue,
-/obj/item/clothing/under/rank/procedure/lawyer/blue,
-/obj/item/clothing/under/rank/procedure/lawyer/red,
-/obj/item/clothing/under/rank/procedure/lawyer/red,
+/obj/item/clothing/under/rank/procedure/iaa/formal/black,
+/obj/item/clothing/under/rank/procedure/iaa/formal/black/skirt,
+/obj/item/clothing/under/rank/procedure/iaa/formal/blue,
+/obj/item/clothing/under/rank/procedure/iaa/formal/blue/skirt,
+/obj/item/clothing/under/rank/procedure/iaa/formal/red,
+/obj/item/clothing/under/rank/procedure/iaa/formal/red/skirt,
 /obj/item/clothing/under/suit/mafia{
 	name = "black outfit"
 	},
@@ -27259,9 +27259,7 @@
 	},
 /area/ninja/holding)
 "pcm" = (
-/obj/machinery/economy/vending/wallmed/syndicate{
-	pixel_y = -30
-	},
+/obj/machinery/economy/vending/wallmed/syndicate/directional/south,
 /turf/simulated/floor/carpet/black,
 /area/syndicate_mothership/infteam)
 "pcL" = (
@@ -27513,9 +27511,7 @@
 "pmM" = (
 /obj/machinery/light/small/directional/south,
 /obj/effect/turf_decal/stripes/line,
-/obj/machinery/economy/vending/wallmed/syndicate{
-	pixel_y = -30
-	},
+/obj/machinery/economy/vending/wallmed/syndicate/directional/south,
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate)
 "pmQ" = (
@@ -30402,10 +30398,10 @@
 /area/syndicate_mothership)
 "qZh" = (
 /obj/machinery/door/airlock/centcom{
-	name = "Блокпост";
-	req_one_access_txt = "101"
+	req_access_txt = "101";
+	name = "Зона Отдыха"
 	},
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/supply)
 "qZj" = (
 /obj/structure/sign/flag/nanotrasen,
@@ -31090,13 +31086,13 @@
 /area/centcom/ss220/bar)
 "rqP" = (
 /obj/structure/table/wood,
-/obj/item/radio/beacon/syndicate/bomb{
+/obj/item/beacon/syndicate/bomb{
 	pixel_y = 8
 	},
-/obj/item/radio/beacon/syndicate/bomb{
+/obj/item/beacon/syndicate/bomb{
 	pixel_y = 4
 	},
-/obj/item/radio/beacon/syndicate/bomb,
+/obj/item/beacon/syndicate/bomb,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "dark"
@@ -33380,7 +33376,8 @@
 /area/centcom/ss220/admin2)
 "syo" = (
 /obj/machinery/door/airlock/centcom{
-	name = "Зона ЦК"
+	req_access_txt = "101";
+	name = "Рабочая Зона"
 	},
 /turf/simulated/floor/plasteel,
 /area/centcom/ss220/supply)
@@ -35113,14 +35110,13 @@
 	req_one_access_txt = "101";
 	pixel_x = 24
 	},
-/obj/machinery/door/airlock/centcom{
-	id_tag = "CC_Shitspawn_Interior_1";
-	name = "Зона ЦК";
-	req_one_access_txt = "101"
-	},
 /obj/machinery/door/poddoor/impassable{
 	id_tag = "СС_BD_Shitspawn_Interior_1";
 	layer = 3
+	},
+/obj/machinery/door/airlock/centcom{
+	name = "Блокпост";
+	req_one_access_txt = "101"
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/supply)
@@ -35164,14 +35160,13 @@
 	req_one_access_txt = "101";
 	pixel_x = 24
 	},
-/obj/machinery/door/airlock/centcom{
-	id_tag = "CC_Shitspawn_Exterior_1";
-	name = "Зона ЦК";
-	req_one_access_txt = "101"
-	},
 /obj/machinery/door/poddoor/impassable{
 	id_tag = "СС_BD_Shitspawn_Exterior_1";
 	layer = 3
+	},
+/obj/machinery/door/airlock/centcom{
+	name = "Блокпост";
+	req_one_access_txt = "101"
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/supply)
@@ -37616,10 +37611,10 @@
 /area/centcom/ss220/admin2)
 "uWb" = (
 /obj/machinery/door/airlock/centcom{
-	name = "Зона ЦК";
-	req_access_txt = "101"
+	req_access_txt = "101";
+	name = "Пункт Отправки"
 	},
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/supply)
 "uWc" = (
 /obj/structure/barricade{
@@ -37791,7 +37786,6 @@
 /area/centcom/ss220/medbay)
 "vbN" = (
 /obj/structure/light_fake,
-/obj/item/flag/ian,
 /turf/simulated/floor/plasteel/dark{
 	icon_state = "darkbluealtstrip"
 	},
@@ -41308,7 +41302,9 @@
 /turf/simulated/floor/plating,
 /area/syndicate_mothership/infteam)
 "wOH" = (
-/obj/machinery/door/airlock/maintenance_hatch,
+/obj/machinery/door/airlock/maintenance_hatch{
+	name = "Комната Грязи"
+	},
 /turf/simulated/floor/plating,
 /area/centcom/ss220/supply)
 "wOK" = (
@@ -41651,11 +41647,11 @@
 /obj/item/grenade/syndieminibomb{
 	pixel_x = 8
 	},
-/obj/item/radio/beacon/syndicate/bomb{
+/obj/item/beacon/syndicate/bomb{
 	pixel_x = -5;
 	pixel_y = 12
 	},
-/obj/item/radio/beacon/syndicate/bomb{
+/obj/item/beacon/syndicate/bomb{
 	pixel_x = -5;
 	pixel_y = 12
 	},
@@ -42097,12 +42093,12 @@
 /obj/item/clothing/under/suit/mafia/tan,
 /obj/item/clothing/under/suit/mafia,
 /obj/item/clothing/under/suit/mafia,
-/obj/item/clothing/under/rank/procedure/lawyer/black,
-/obj/item/clothing/under/rank/procedure/lawyer/black,
-/obj/item/clothing/under/rank/procedure/lawyer/blue,
-/obj/item/clothing/under/rank/procedure/lawyer/blue,
-/obj/item/clothing/under/rank/procedure/lawyer/red,
-/obj/item/clothing/under/rank/procedure/lawyer/red,
+/obj/item/clothing/under/rank/procedure/iaa/formal/black,
+/obj/item/clothing/under/rank/procedure/iaa/formal/black,
+/obj/item/clothing/under/rank/procedure/iaa/formal/blue,
+/obj/item/clothing/under/rank/procedure/iaa/formal/blue,
+/obj/item/clothing/under/rank/procedure/iaa/formal/red,
+/obj/item/clothing/under/rank/procedure/iaa/formal/red,
 /obj/effect/turf_decal/delivery/white,
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/supply)
@@ -51551,7 +51547,7 @@ tgd
 tgd
 dhg
 ajH
-rzI
+vdr
 oXo
 egO
 lsI
@@ -52318,10 +52314,10 @@ adJ
 adJ
 adJ
 rzI
-hDe
-hDe
-hDe
 rzI
+hDe
+hDe
+hDe
 rzI
 rzI
 dhs
@@ -52575,7 +52571,7 @@ rtA
 rtA
 rtA
 rzI
-eRQ
+rQX
 jie
 jie
 jie
@@ -53858,7 +53854,7 @@ dTG
 rzI
 otb
 nEU
-gYI
+oVq
 rzI
 lsI
 lsI
@@ -54625,7 +54621,7 @@ adJ
 rzI
 vqf
 vqf
-syo
+gYI
 mLN
 uxt
 uxt
@@ -55659,7 +55655,7 @@ rzI
 aek
 ije
 rzI
-hkd
+eNK
 ptx
 ptx
 ptx
@@ -56178,7 +56174,7 @@ ofW
 ppK
 ofW
 ppK
-qZh
+ase
 oVq
 oVq
 jvf
@@ -56429,7 +56425,7 @@ aVm
 uxt
 uxt
 dVH
-syo
+hkd
 ppK
 ppK
 ppK
@@ -59256,7 +59252,7 @@ rzI
 gnX
 bew
 egO
-syo
+qZh
 ppK
 ppK
 ppK
