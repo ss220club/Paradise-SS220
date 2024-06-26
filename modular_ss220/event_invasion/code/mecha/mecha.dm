@@ -198,12 +198,13 @@
 	internals_action.Grant(user, src)
 	lights_action.Grant(user, src)
 	change_stance_action.Grant(user, src)
-	mech_evacuate_action.Grant(user, src)
 
 	if (user == occupant)
 		GrantDriverActions(user)
 	else if (user == gunner)
 		GrantGunnerActions(user)
+
+	mech_evacuate_action.Grant(user, src)
 
 /obj/mecha/combat/nomad/proc/GrantDriverActions(mob/living/user)
 	eject_action.Grant(user, src)
@@ -529,41 +530,41 @@
 
 /datum/action/innate/mecha/mech_evacuation
 	name = "Блюспейс эвакуация"
-	button_icon_state = "mech_eject"
+	icon_icon = 'modular_ss220/event_invasion/icons/mech_icon.dmi'
+	button_icon_state = "drop_pilot"
 
 /datum/action/innate/mecha/mech_evacuation/Activate()
 	if(!owner)
 		return
 
 	var/obj/mecha/combat/nomad/parsed_chassis = chassis
+	var/mob/target = owner
+	parsed_chassis.RemoveActions(owner)
 
 	if(!parsed_chassis)
 		return
-	if (parsed_chassis.occupant == owner)
+	if (parsed_chassis.occupant == target)
 		parsed_chassis.occupant = null
-	else if(parsed_chassis.gunner == owner)
+	else if(parsed_chassis.gunner == target)
 		parsed_chassis.gunner = null
 	else
 		return
-	evacuate_target(owner)
+	evacuate_target(target)
 
 /datum/action/innate/mecha/mech_evacuation/proc/evacuate_target(atom/movable/target)
-	chassis.RemoveActions(owner)
-
-	var/obj/effect/extraction_holder/holder_obj = new(locate(330, 118, 3))
+	var/obj/effect/extraction_holder/holder_obj = new(locate(328, 118, 3))
 	var/mutable_appearance/balloon
 	var/mutable_appearance/balloon2
 	var/mutable_appearance/balloon3
 
 	playsound(target.loc, 'sound/items/fultext_launch.ogg', 50, 1, -3)
 	target.forceMove(holder_obj)
-	holder_obj.pixel_z = 1000
 	holder_obj.appearance = target.appearance
 	balloon2 = mutable_appearance('icons/obj/fulton_balloon.dmi', "fulton_expand")
 	balloon2.pixel_y = 10
 	balloon2.appearance_flags = RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM
 	holder_obj.add_overlay(balloon2)
-	sleep(4)
+	holder_obj.pixel_z = 1000
 	balloon = mutable_appearance('icons/obj/fulton_balloon.dmi', "fulton_balloon")
 	balloon.pixel_y = 10
 	balloon.appearance_flags = RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM
@@ -574,7 +575,6 @@
 		living_target.SetParalysis(0)
 		living_target.SetDrowsy(0)
 		living_target.SetSleeping(0)
-	sleep(30)
 	animate(holder_obj, pixel_z = 10, time = 50)
 	sleep(50)
 	animate(holder_obj, pixel_z = 15, time = 10)
@@ -592,7 +592,6 @@
 	target.density = initial(target.density)
 	animate(holder_obj, pixel_z = 0, time = 5)
 	target.forceMove(holder_obj.loc)
-	sleep(5)
 	qdel(holder_obj)
 
 #undef DRIVER_SEAT
