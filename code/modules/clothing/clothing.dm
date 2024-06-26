@@ -268,8 +268,7 @@
 	var/safe_from_poison = FALSE
 	strip_delay = 20
 	put_on_delay = 40
-	///Amount of times touching something with these gloves will spill blood on it
-	var/transfer_blood = 0
+	var/transfer_blood = FALSE
 
 	sprite_sheets = list(
 		"Vox" = 'icons/mob/clothing/species/vox/gloves.dmi',
