@@ -63,9 +63,9 @@
 	prefix = "_maps/map_files220/RandomRuins/SpaceRuins/"
 	suffix = "whiteship.dmm"
 	description = "An old, abandoned NT medical ship. Its computer can navigate to other landmarks within space with ease."
-	allow_duplicates = FALSE 
-	always_place = TRUE 
-	cost = 0 
+	allow_duplicates = FALSE
+	always_place = TRUE
+	cost = 0
 
 /datum/map_template/ruin/space/voxraiders_1
 	name = "Vox Raiders"
@@ -85,3 +85,13 @@
 	cost = 10
 	allow_duplicates = FALSE
 
+/datum/map_template/ruin/space/oldstation220
+	name = "Nanotrasen Old Research Station"
+	description = "The crew of a space station awaken one hundred years after a crisis. Awaking to a derelict space station on the verge of collapse, and a hostile force of invading \
+	hivebots. Can the surviving crew overcome the odds and survive and rebuild, or will the cold embrace of the stars become their new home?"
+	id = "oldstation220"
+	prefix = "_maps/map_files220/RandomRuins/SpaceRuins/"
+	suffix = "oldstation220.dmm"
+	cost = 0
+	always_place = TRUE
+	allow_duplicates = FALSE

@@ -31,13 +31,13 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/economy/vending/wallmed/emergency_ntm
 /obj/machinery/firealarm/directional/north
 	pixel_y = 24
 
-/obj/machinery/firealarm/directional/west
-	pixel_x = -24
-	dir = 8
-
 /obj/machinery/firealarm/directional/east
 	pixel_x = 24
 	dir = 4
+
+/obj/machinery/firealarm/directional/west
+	pixel_x = -24
+	dir = 8
 
 /obj/machinery/firealarm/no_alarm
 	name = "\improper fire alarm"
@@ -49,12 +49,12 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/economy/vending/wallmed/emergency_ntm
 /obj/machinery/firealarm/no_alarm/north
 	pixel_y = 24
 
-/obj/machinery/firealarm/no_alarm/west
-	pixel_x = -24
-	dir = 4
-
 /obj/machinery/firealarm/no_alarm/east
 	pixel_x = 24
+	dir = 4
+
+/obj/machinery/firealarm/no_alarm/west
+	pixel_x = -24
 	dir = 8
 
 /* Light Switch */
