@@ -16,7 +16,8 @@
 					/obj/item/grenade/chem_grenade/pyro = 5,
 					/obj/item/grenade/chem_grenade/cryo = 5,
 					/obj/item/grenade/chem_grenade/adv_release = 5,
-					/obj/item/reagent_containers/drinks/bottle/holywater = 1)
+					/obj/item/reagent_containers/drinks/bottle/holywater = 1,
+					/obj/item/pen/sleepy/undisguised = 1)
 	slogan_list = list("Это не пиромания, если тебе платят!","Чувствуешь запах? Плазма, сынок. Больше ничто в мире так не пахнет.","Люблю запах плазмы по утрам.")
 	resistance_flags = FIRE_PROOF
 

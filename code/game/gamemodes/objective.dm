@@ -384,7 +384,7 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 	return FALSE
 
 /datum/objective/block
-	name = "Синтетический угон"
+	name = "Silicon hijack"
 	explanation_text = "Угоните шаттл без лояльного к Нанотрейзен экипажа на борту. \
 	Агенты Синдиката, другие враги корпорации, киборги, питомцы/ограниченные заложники, разрешены живыми на шаттле. \
 	Успешное использование устройства судного дня - тоже вариант."
@@ -396,6 +396,8 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 		if(!M.current || !issilicon(M.current))
 			return FALSE
 	if(SSticker.mode.station_was_nuked)
+		return TRUE
+	if(SSshuttle.emergency.aihacked)
 		return TRUE
 	if(SSshuttle.emergency.mode < SHUTTLE_ENDGAME)
 		return FALSE
