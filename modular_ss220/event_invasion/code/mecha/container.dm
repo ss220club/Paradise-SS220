@@ -13,12 +13,13 @@
 	max_integrity = 10000
 	opacity = FALSE
 	anchored = TRUE
-	var/datum/effect_system/smoke_spread/bad/smoke
+	var/datum/effect_system/smoke_spread/smoke
 
 /obj/structure/container/syndie/Initialize(mapload)
 	. = ..()
-	smoke = new /datum/effect_system/smoke_spread/bad
-	smoke.attach(SOUTH_OF_TURF(loc))
+	AddComponent(/datum/component/largetransparency, 0, 1, 2, 0)
+	smoke = new /datum/effect_system/smoke_spread
+	smoke.attach(NORTH_OF_TURF(loc))
 	appearance_flags |= PIXEL_SCALE
 	transform = transform.Scale(2, 2)
 

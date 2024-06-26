@@ -19,12 +19,30 @@
 	pixel_x = -16
 	pixel_y = 32
 
+/obj/structure/mecha_wreckage/nomad
+	name = "\improper Останки Кочевника"
+	icon = 'modular_ss220/event_invasion/icons/mecha.dmi'
+	icon_state = "nomad-broken"
+	anchored = TRUE
+	bound_height = 96
+	bound_width = 64
+	layer = 5.4
+	pixel_x = -16
+	pixel_y = 32
+
+/obj/structure/mecha_wreckage/nomad/Initialize(mapload, mob/living/silicon/ai/AI_pilot)
+	. = ..()
+
+	appearance_flags |= PIXEL_SCALE
+	transform = transform.Scale(2, 2)
+
 /obj/mecha/combat/nomad
 	desc = "A lightweight, security exosuit. Popular among private and corporate security."
 	name = "Кочевник"
 	icon = 'modular_ss220/event_invasion/icons/mecha.dmi'
 	icon_state = "mech-down-0-0"
-	initial_icon = "mech"
+	initial_icon = "nomad"
+	wreckage = /obj/structure/mecha_wreckage/nomad
 	layer = 5.1
 	step_in = 3
 	opacity = FALSE
@@ -37,7 +55,7 @@
 	max_temperature = 50000
 	infra_luminosity = 6
 	leg_overload_coeff = 2
-	wreckage = /obj/structure/mecha_wreckage/gygax
+	wreckage = /obj/structure/mecha_wreckage/nomad
 	internal_damage_threshold = 35
 	max_equip = 3
 	maxsize = 2
@@ -48,6 +66,7 @@
 	var/datum/action/innate/mecha/gunner_mech_eject/gunner_eject_action = new
 	var/datum/action/innate/mecha/strafe/strafing_action = new
 	var/datum/action/innate/mecha/change_stance/change_stance_action = new
+	var/datum/action/innate/mecha/mech_evacuation/mech_evacuate_action = new
 	eject_action = new /datum/action/innate/mecha/mech_eject/nomad
 
 	var/strafe = FALSE
@@ -179,7 +198,7 @@
 	internals_action.Grant(user, src)
 	lights_action.Grant(user, src)
 	change_stance_action.Grant(user, src)
-	stats_action.Grant(user, src)
+	mech_evacuate_action.Grant(user, src)
 
 	if (user == occupant)
 		GrantDriverActions(user)
@@ -188,6 +207,7 @@
 
 /obj/mecha/combat/nomad/proc/GrantDriverActions(mob/living/user)
 	eject_action.Grant(user, src)
+	stats_action.Grant(user, src)
 	strafing_action.Grant(user, src)
 	if(locate(/obj/item/mecha_parts/mecha_equipment/thrusters) in equipment)
 		add_thrusters()
@@ -202,12 +222,13 @@
 	eject_action.Remove(user)
 	strafing_action.Remove(user)
 	thrusters_action.Remove(user)
+	stats_action.Remove(user)
 
 /obj/mecha/combat/nomad/RemoveActions(mob/living/user, human_occupant = 0)
 	internals_action.Remove(user)
 	lights_action.Remove(user)
+	mech_evacuate_action.Remove(user)
 	change_stance_action.Remove(user)
-	stats_action.Remove(user)
 	user.client.RemoveViewMod("mecha-auto-zoom")
 	user.client.fit_viewport()
 
@@ -393,6 +414,8 @@
 
 /obj/mecha/combat/nomad/Destroy()
 	gunner = null
+	qdel(guns_decal)
+	guns_decal = null
 	. = ..()
 
 /datum/action/innate/mecha/change_stance
@@ -478,8 +501,6 @@
 		to_chat(owner, "<span class='warning'>Вы не можете выйти из \"Кочевника\" пока он не в сидячем положении.</span>")
 		return
 
-
-
 	flick("mech-open-act-[parsed_chassis.occupant ? 1 : 0]-2", parsed_chassis)
 	parsed_chassis.update_icon(UPDATE_ICON_STATE)
 	sleep(2 SECONDS)
@@ -505,6 +526,74 @@
 
 	chassis.occupant_message("Стрейф [parsed_chassis.strafe ? "активирован" : "деактивирован"].")
 	chassis.log_message("Стрейф [parsed_chassis.strafe ? "активирован" : "деактивирован"].")
+
+/datum/action/innate/mecha/mech_evacuation
+	name = "Блюспейс эвакуация"
+	button_icon_state = "mech_eject"
+
+/datum/action/innate/mecha/mech_evacuation/Activate()
+	if(!owner)
+		return
+
+	var/obj/mecha/combat/nomad/parsed_chassis = chassis
+
+	if(!parsed_chassis)
+		return
+	if (parsed_chassis.occupant == owner)
+		parsed_chassis.occupant = null
+	else if(parsed_chassis.gunner == owner)
+		parsed_chassis.gunner = null
+	else
+		return
+	evacuate_target(owner)
+
+/datum/action/innate/mecha/mech_evacuation/proc/evacuate_target(atom/movable/target)
+	chassis.RemoveActions(owner)
+
+	var/obj/effect/extraction_holder/holder_obj = new(locate(330, 118, 3))
+	var/mutable_appearance/balloon
+	var/mutable_appearance/balloon2
+	var/mutable_appearance/balloon3
+
+	playsound(target.loc, 'sound/items/fultext_launch.ogg', 50, 1, -3)
+	target.forceMove(holder_obj)
+	holder_obj.pixel_z = 1000
+	holder_obj.appearance = target.appearance
+	balloon2 = mutable_appearance('icons/obj/fulton_balloon.dmi', "fulton_expand")
+	balloon2.pixel_y = 10
+	balloon2.appearance_flags = RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM
+	holder_obj.add_overlay(balloon2)
+	sleep(4)
+	balloon = mutable_appearance('icons/obj/fulton_balloon.dmi', "fulton_balloon")
+	balloon.pixel_y = 10
+	balloon.appearance_flags = RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM
+	holder_obj.cut_overlay(balloon2)
+	holder_obj.add_overlay(balloon)
+	if(ishuman(target))
+		var/mob/living/carbon/human/living_target = target
+		living_target.SetParalysis(0)
+		living_target.SetDrowsy(0)
+		living_target.SetSleeping(0)
+	sleep(30)
+	animate(holder_obj, pixel_z = 10, time = 50)
+	sleep(50)
+	animate(holder_obj, pixel_z = 15, time = 10)
+	sleep(10)
+	animate(holder_obj, pixel_z = 10, time = 10)
+	sleep(10)
+	balloon3 = mutable_appearance('icons/obj/fulton_balloon.dmi', "fulton_retract")
+	balloon3.pixel_y = 10
+	balloon3.appearance_flags = RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM
+	holder_obj.cut_overlay(balloon)
+	holder_obj.add_overlay(balloon3)
+	sleep(4)
+	holder_obj.cut_overlay(balloon3)
+	target.anchored = FALSE // An item has to be unanchored to be extracted in the first place.
+	target.density = initial(target.density)
+	animate(holder_obj, pixel_z = 0, time = 5)
+	target.forceMove(holder_obj.loc)
+	sleep(5)
+	qdel(holder_obj)
 
 #undef DRIVER_SEAT
 #undef GUNNER_SEAT
