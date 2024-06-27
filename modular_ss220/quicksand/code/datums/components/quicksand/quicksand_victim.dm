@@ -4,16 +4,23 @@
 	/// The number of current stage
 	VAR_PRIVATE/current_stage_number = 0
 	/// Reference to actual victim mob
-	VAR_PRIVATE/mob/victim = null
+	VAR_PRIVATE/mob/living/victim = null
 	/// The stage of quicksand the victim is currently on
 	VAR_PRIVATE/datum/quicksand_stage/current_stage = null
 	/// List of stages the victim will go through
 	VAR_PRIVATE/list/planned_stages = list()
 
-/datum/quicksand_victim/New(mob/victim, list/planned_stages)
+/datum/quicksand_victim/New(mob/living/victim, list/planned_stages)
 	src.victim = victim
 	src.planned_stages = planned_stages
 	move_to_next_stage()
+	RegisterSignal(victim, COMSIG_LIVING_RESIST, PROC_REF(on_victim_resist))
+
+/datum/quicksand_victim/proc/on_victim_resist(mob/living/resisting_victim)
+	SIGNAL_HANDLER
+
+	// TODO: Properly implement
+	return
 
 /datum/quicksand_victim/proc/change_stage(datum/quicksand_stage/stage_to_change_to)
 	PRIVATE_PROC(TRUE)

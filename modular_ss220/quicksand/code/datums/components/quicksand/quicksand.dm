@@ -50,10 +50,10 @@
 
 	if(isitem(entering))
 		handle_item(entering)
-	else if(ismob(entering))
-		handle_mob(entering)
+	else if(isliving(entering))
+		handle_living_mob(entering)
 
-/datum/component/quicksand/proc/handle_mob(mob/victim)
+/datum/component/quicksand/proc/handle_living_mob(mob/victim)
 	PRIVATE_PROC(TRUE)
 
 	if(!can_be_catched(victim))
