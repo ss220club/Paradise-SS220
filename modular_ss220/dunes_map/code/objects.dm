@@ -646,6 +646,17 @@
 	suit_type = /obj/item/clothing/suit/space/hardsuit/dune/midnight_suit
 	storage_type = /obj/item/tank/internals/oxygen/red
 
+// Tanya camera
+/obj/structure/tanya_camera
+	name = "окаменелые останки"
+	desc = "Останки какой-то огромной допотопной твари."
+	icon = 'modular_ss220/dunes_map/icons/statuelarge.dmi'
+	icon_state = "rib"
+	density = TRUE
+	deconstructible = FALSE
+	max_integrity = 500
+	layer = ABOVE_MOB_LAYER
+
 //cube and VSA
 
 /obj/item/stock_parts/cell/cube
@@ -655,17 +666,21 @@
 	chargerate = 100
 	icon = 'modular_ss220/dunes_map/icons/cube.dmi'
 	icon_state = "empty"
+	item_state = "empty"
+	lefthand_file = 'modular_ss220/dunes_map/icons/cube_left.dmi'
+	righthand_file = 'modular_ss220/dunes_map/icons/cube_right.dmi'
 
 /obj/item/stock_parts/cell/cube/process()
 	if(percent() == 100)
 		icon_state = "charged"
+		item_state = "charged"
 	else
 		icon_state = "empty"
-
+		item_state = "empty"
 
 /obj/item/stock_parts/cell/cube/New()
 	. = ..()
-	// charge = 0
+	charge = 0
 
 /obj/item/stock_parts/cell/cube/Destroy()
 	empulse(get_turf(loc), 4, 10, 1)
@@ -675,7 +690,6 @@
 			qdel(H)
 			return
 	return ..()
-
 
 
 /obj/machinery/bsa/full/attacked_by(obj/item/I, mob/living/user)
@@ -692,7 +706,7 @@
 			update_icon()
 			reload_cooldown = 600
 			C.charge = 0
-			pixel_y = -60
+			pixel_y = -50
 			return
 	. = ..()
 

@@ -26273,7 +26273,7 @@
 "fHQ" = (
 /turf/simulated/floor/plasteel{
 	dir = 9;
-	icon_state = "darkred"
+	icon_state = "navybluealt"
 	},
 /area/awaymission/arrakis/bunker/brig/bsa)
 "fHU" = (
@@ -27856,6 +27856,15 @@
 	icon_state = "darkred"
 	},
 /area/awaymission/arrakis/bunker/brig)
+"gDN" = (
+/obj/structure/computerframe{
+	dir = 8
+	},
+/turf/simulated/floor/plasteel{
+	dir = 6;
+	icon_state = "navybluealt"
+	},
+/area/awaymission/arrakis/bunker/brig/bsa)
 "gEe" = (
 /obj/structure/chair{
 	dir = 4
@@ -28999,6 +29008,17 @@
 	icon_state = "cult"
 	},
 /area/awaymission/arrakis/bunker/brig)
+"hoQ" = (
+/obj/effect/decal/nanotrasen_logo_circle{
+	icon_state = "ntlogo_sec";
+	dir = 4;
+	pixel_x = -16;
+	color = "#6b8cc4"
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "dark_large"
+	},
+/area/awaymission/arrakis/bunker/tanya_cyborg_blyat_lab)
 "hqB" = (
 /obj/effect/decal/cleanable/dust,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
@@ -31513,12 +31533,8 @@
 /area/awaymission/arrakis/bunker/bedrooms)
 "iWc" = (
 /obj/structure/table/reinforced,
-/obj/machinery/door_control/shutter{
-	id = "BSA_open";
-	pixel_y = 8;
-	req_access = list(114);
-	wires = 1;
-	name = "BSA BlastDoor Open"
+/obj/item/stack/ore/bluespace_crystal/refined{
+	amount = 6
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -32342,13 +32358,10 @@
 /turf/simulated/floor/brick/cold,
 /area/awaymission/arrakis/cave/cave2)
 "jzj" = (
-/obj/structure/chair/comfy/shuttle{
-	dir = 4
-	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
-/area/awaymission/arrakis/bunker/brig/bsa)
+/obj/machinery/light/directional/east,
+/obj/machinery/recharge_station/upgraded,
+/turf/simulated/floor/bluegrid,
+/area/awaymission/arrakis/bunker/tanya_cyborg_blyat_lab)
 "jzz" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel/dark,
@@ -35987,6 +36000,15 @@
 	floor_variance = null
 	},
 /area/awaymission/arrakis/outside/outside2)
+"lYZ" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 4
+	},
+/turf/simulated/floor/plasteel{
+	dir = 10;
+	icon_state = "navybluealt"
+	},
+/area/awaymission/arrakis/bunker/brig/bsa)
 "lZs" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/disposal,
@@ -40488,12 +40510,6 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/arrakis/bunker/bedrooms)
 "oLP" = (
-/obj/effect/turf_decal/siding/black,
-/obj/effect/decal/nanotrasen_logo_circle{
-	icon_state = "ntlogo_sec";
-	pixel_x = 16;
-	color = "#6b8cc4"
-	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark_large"
 	},
@@ -44324,9 +44340,7 @@
 	},
 /area/awaymission/arrakis/outside_building)
 "rcj" = (
-/obj/structure/computerframe{
-	dir = 8
-	},
+/obj/structure/table/reinforced,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "navybluealt"
@@ -45466,11 +45480,15 @@
 /turf/simulated/floor/brick/cold,
 /area/awaymission/arrakis/outside_building/raider_base)
 "rTc" = (
-/obj/item/stack/sheet/mineral/sandstone,
-/obj/item/stack/sheet/mineral/sandstone,
-/obj/item/stack/sheet/mineral/sandstone,
-/turf/simulated/floor/indestructible/dune_sand,
-/area/awaymission/arrakis/cave)
+/obj/effect/decal/nanotrasen_logo_circle{
+	icon_state = "ntlogo_sec";
+	pixel_x = 16;
+	color = "#6b8cc4"
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "dark_large"
+	},
+/area/awaymission/arrakis/bunker/tanya_cyborg_blyat_lab)
 "rTj" = (
 /obj/structure/grille/broken,
 /obj/structure/computerframe,
@@ -46567,6 +46585,11 @@
 	icon_state = "brown"
 	},
 /area/awaymission/arrakis/bunker/engie)
+"sEp" = (
+/obj/effect/turf_decal/sand/plating,
+/obj/item/stack/sheet/mineral/sandstone,
+/turf/simulated/floor/brick,
+/area/awaymission/arrakis/cave)
 "sFM" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -49745,17 +49768,8 @@
 /turf/simulated/floor/indestructible/dune_sand/cave/cavedeep/cold_rock,
 /area/awaymission/arrakis/outside_building/raider_base)
 "uMs" = (
-/obj/effect/turf_decal/siding/black,
-/obj/effect/decal/nanotrasen_logo_circle{
-	icon_state = "ntlogo_sec";
-	dir = 4;
-	pixel_x = -16;
-	color = "#6b8cc4"
-	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark_large"
-	},
-/area/awaymission/arrakis/bunker/tanya_cyborg_blyat_lab)
+/turf/simulated/wall/indestructible/riveted,
+/area/awaymission/arrakis/cave)
 "uMA" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/damageturf,
@@ -50142,6 +50156,20 @@
 	},
 /turf/simulated/floor/wood/cherry,
 /area/awaymission/arrakis/cave/cave1)
+"vag" = (
+/obj/structure/table/reinforced,
+/obj/machinery/door_control/shutter{
+	id = "BSA_open";
+	pixel_y = 8;
+	req_access = list(114);
+	wires = 1;
+	name = "BSA BlastDoor Open"
+	},
+/turf/simulated/floor/plasteel{
+	dir = 5;
+	icon_state = "navybluealt"
+	},
+/area/awaymission/arrakis/bunker/brig/bsa)
 "van" = (
 /obj/structure{
 	icon = 'icons/obj/pipes/disposal.dmi';
@@ -50600,11 +50628,8 @@
 	},
 /area/awaymission/arrakis/outside_building/raider_base)
 "vlz" = (
-/obj/machinery/recharge_station/upgraded,
 /obj/machinery/light/directional/west,
-/obj/effect/turf_decal/siding/black/corner{
-	dir = 5
-	},
+/obj/machinery/recharge_station/upgraded,
 /turf/simulated/floor/bluegrid,
 /area/awaymission/arrakis/bunker/tanya_cyborg_blyat_lab)
 "vlL" = (
@@ -51772,6 +51797,14 @@
 	icon_state = "neutral"
 	},
 /area/awaymission/arrakis/bunker/dorms)
+"vVU" = (
+/obj/machinery/light/directional/west,
+/obj/effect/turf_decal/siding/black/corner{
+	dir = 5
+	},
+/obj/machinery/recharge_station/upgraded,
+/turf/simulated/floor/bluegrid,
+/area/awaymission/arrakis/bunker/tanya_cyborg_blyat_lab)
 "vVV" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -57603,7 +57636,7 @@ ayO
 ayO
 ayO
 ayO
-ayO
+aDo
 aDo
 aDo
 aDo
@@ -57951,12 +57984,12 @@ ayO
 ayO
 ayO
 ayO
-ayO
 aDo
 aDo
 aDo
 aDo
 aDo
+vVU
 vlz
 aDo
 aDo
@@ -58303,13 +58336,13 @@ ayO
 ayO
 ayO
 ayO
-ayO
 aDo
 kiK
 nwo
 roY
 nwo
 sHn
+oLP
 kiK
 nwo
 roY
@@ -58655,13 +58688,13 @@ ayO
 ayO
 ayO
 ayO
-ayO
 aDo
 kiK
 ooE
 ipP
 ooE
 sHn
+oLP
 kiK
 ooE
 ipP
@@ -59006,7 +59039,6 @@ ayO
 ayO
 ayO
 ayO
-ayO
 aDo
 aDo
 kiK
@@ -59014,7 +59046,8 @@ yii
 ipP
 yii
 bXu
-oLP
+rTc
+kiK
 yii
 ipP
 yii
@@ -59358,7 +59391,6 @@ ayO
 ayO
 ayO
 ayO
-ayO
 aDo
 qhf
 gaS
@@ -59366,6 +59398,7 @@ wBE
 blP
 wBE
 fcv
+oLP
 cMY
 wBE
 vQP
@@ -59710,7 +59743,6 @@ ayO
 ayO
 ayO
 ayO
-ayO
 aDo
 aDo
 kiK
@@ -59718,7 +59750,8 @@ nwo
 ipP
 nwo
 oDI
-uMs
+hoQ
+kiK
 nwo
 ipP
 nwo
@@ -60063,13 +60096,13 @@ ayO
 ayO
 ayO
 ayO
-ayO
 aDo
 kiK
 wMq
 ipP
 wMq
 sHn
+oLP
 kiK
 wMq
 ipP
@@ -60415,13 +60448,13 @@ ayO
 ayO
 ayO
 ayO
-ayO
 aDo
 kiK
 wMq
 ipP
 wMq
 sHn
+oLP
 kiK
 wMq
 ipP
@@ -60767,13 +60800,13 @@ ayO
 ayO
 ayO
 ayO
-ayO
 aDo
 lGb
 wMq
 ipP
 wMq
 sHn
+oLP
 kiK
 wMq
 ipP
@@ -61119,13 +61152,13 @@ ayO
 ayO
 ayO
 ayO
-ayO
 aDo
 kiK
 wMq
 ipP
 wMq
 sHn
+oLP
 kiK
 wMq
 ipP
@@ -61470,7 +61503,6 @@ ayO
 ayO
 ayO
 ayO
-ayO
 aDo
 aDo
 kiK
@@ -61478,7 +61510,8 @@ yii
 ipP
 yii
 bXu
-oLP
+rTc
+kiK
 yii
 ipP
 yii
@@ -61822,7 +61855,6 @@ ayO
 ayO
 ayO
 ayO
-ayO
 aDo
 qhf
 cMY
@@ -61830,6 +61862,7 @@ wBE
 bVf
 wBE
 fcv
+oLP
 cMY
 wBE
 bVf
@@ -62174,7 +62207,6 @@ ayO
 ayO
 ayO
 ayO
-ayO
 aDo
 aDo
 kiK
@@ -62182,7 +62214,8 @@ nwo
 cKy
 nwo
 oDI
-uMs
+hoQ
+kiK
 nwo
 cKy
 nwo
@@ -62527,13 +62560,13 @@ ayO
 ayO
 ayO
 ayO
-ayO
 aDo
 kiK
 wMq
 cKy
 wMq
 sHn
+oLP
 kiK
 wMq
 cKy
@@ -62879,13 +62912,13 @@ ayO
 ayO
 ayO
 ayO
-ayO
 aDo
 lGb
 wMq
 cKy
 wMq
 sHn
+oLP
 kiK
 wMq
 cKy
@@ -63231,13 +63264,13 @@ ayO
 ayO
 ayO
 ayO
-ayO
 aDo
 kiK
 wMq
 cKy
 wMq
 sHn
+oLP
 kiK
 wMq
 cKy
@@ -63583,13 +63616,13 @@ ayO
 ayO
 ayO
 ayO
-ayO
 aDo
 kiK
 wMq
 cKy
 wMq
 sHn
+oLP
 kiK
 wMq
 cKy
@@ -63934,7 +63967,6 @@ ayO
 ayO
 ayO
 ayO
-ayO
 aDo
 aDo
 kiK
@@ -63942,7 +63974,8 @@ yii
 cKy
 yii
 bXu
-oLP
+rTc
+kiK
 yii
 cKy
 yii
@@ -64286,7 +64319,6 @@ ayO
 ayO
 ayO
 ayO
-ayO
 aDo
 qhf
 gaS
@@ -64294,6 +64326,7 @@ wBE
 bVf
 wBE
 fcv
+oLP
 cMY
 wBE
 vWC
@@ -64638,7 +64671,6 @@ ayO
 ayO
 ayO
 ayO
-ayO
 aDo
 aDo
 kiK
@@ -64646,7 +64678,8 @@ nwo
 sHn
 nwo
 oDI
-uMs
+hoQ
+kiK
 nwo
 cKy
 nwo
@@ -64983,7 +65016,6 @@ ayO
 ayO
 ayO
 ayO
-aBe
 ayO
 ayO
 ayO
@@ -64998,6 +65030,7 @@ ooE
 sHn
 ooE
 sHn
+oLP
 kiK
 ooE
 cKy
@@ -65336,7 +65369,6 @@ aBe
 ibi
 aBe
 aBe
-rHI
 ayO
 ayO
 ayO
@@ -65350,6 +65382,7 @@ yii
 qfp
 yii
 sHn
+oLP
 kiK
 yii
 vow
@@ -65686,9 +65719,8 @@ oGG
 jXK
 oGG
 aHr
-veM
+sEp
 aBe
-rTc
 ayO
 ayO
 ayO
@@ -65702,6 +65734,7 @@ aDo
 aDo
 aDo
 bCj
+jzj
 aDo
 aDo
 aDo
@@ -66041,7 +66074,6 @@ oGG
 aBe
 aHr
 oGG
-aHr
 ayO
 ayO
 ayO
@@ -66052,6 +66084,7 @@ ayO
 ayO
 ayO
 ayO
+uMs
 aDo
 aDo
 aDo
@@ -66392,8 +66425,8 @@ oGG
 aBe
 aHr
 aHr
-aHr
-aHr
+jXK
+ayO
 ayO
 ayO
 ayO
@@ -66746,7 +66779,7 @@ rHI
 aBe
 liH
 oGG
-rHI
+ayO
 ayO
 ayO
 ayO
@@ -67098,7 +67131,7 @@ ayO
 oGG
 aBe
 oGG
-aBe
+ayO
 ayO
 ayO
 ayO
@@ -68543,7 +68576,7 @@ qYC
 xvf
 tOL
 tOL
-jzj
+tOL
 tOL
 tOL
 pcf
@@ -69597,8 +69630,8 @@ ayO
 ayO
 qYC
 fHQ
-hTB
-hTB
+lYZ
+aDp
 ucc
 hTB
 hTB
@@ -69948,9 +69981,9 @@ ayO
 ayO
 ayO
 qYC
-bLS
-tOL
-tOL
+vag
+gDN
+aDp
 tOL
 tOL
 tOL
@@ -70300,9 +70333,9 @@ ayO
 ayO
 ayO
 qYC
-hRN
-tOL
-tOL
+aDp
+aDp
+aDp
 tOL
 sDZ
 tOL
@@ -70655,7 +70688,7 @@ qYC
 bLS
 tOL
 tOL
-oEU
+tOL
 tOL
 tOL
 xpT
@@ -71007,7 +71040,7 @@ qYC
 hRN
 tOL
 tOL
-oEU
+tOL
 tOL
 tOL
 oMO
@@ -71711,7 +71744,7 @@ qYC
 bLS
 tOL
 tOL
-tOL
+oEU
 tOL
 tOL
 xpT
@@ -72063,7 +72096,7 @@ qYC
 hRN
 tOL
 tOL
-tOL
+oEU
 tOL
 tOL
 oMO

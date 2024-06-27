@@ -242,7 +242,7 @@
 // ТАНЯ
 
 /mob/living/simple_animal/hostile/retaliate/tanya_cc
-	name = "Таня фон Нормандия"
+	name = "Дельта 8-1-7"
 	desc = "Боевой юнит-андроид проекта ''Delta 8-1-7'', идеально подходящий для выполнения любых поставленных задач. Судя по глазам, этот экземпляр находится на боевом дежурстве и действует автономно."
 	icon =  'modular_ss220/dunes_map/icons/tanya_cc.dmi'
 	icon_state = "tanya_cc"
@@ -288,7 +288,7 @@
 	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/cerys)
 
 /mob/living/simple_animal/hostile/retaliate/tanya_death   // Не от tanya_cc т.к. баллистические снаряды перезаписывают энергетические - разделить их никак нельзя
-	name = "Таня фон Нормандия"
+	name = "Дельта 8-1-7"
 	desc = "Боевой юнит-андроид проекта ''Delta 8-1-7'', облаченный в тяжелую штурмовую броню. Судя по глазам, этот экземпляр находится на боевом дежурстве и действует автономно."
 	icon =  'modular_ss220/dunes_map/icons/tanya_cc.dmi'
 	icon_state = "tanya_cc_death"
@@ -544,7 +544,7 @@
 	for(var/mob/player as anything in GLOB.player_list)
 		user.cast_tts(player, message)
 		to_chat(player, spanned_message)
-	sound_to_playing_players(sound('modular_ss220/dunes_map/sound/mobs/boss_roar.ogg'), 20)
+	sound_to_playing_players(sound('modular_ss220/dunes_map/sound/mobs/boss_roar.ogg'), 100)
 
 /datum/spell/aoe/conjure/duna
 	name = "Призвать прислужников"
