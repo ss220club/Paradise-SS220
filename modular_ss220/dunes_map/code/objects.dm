@@ -750,6 +750,12 @@
 		log_admin("[key_name(user)] has launched an artillery strike.") // Line below handles logging the explosion to disk
 		explosion(bullseye,ex_power,ex_power*2,ex_power*4)
 
+		// Explosion code is some delicious spaghetti, so this is the easiest way
+		var/mob/living/simple_animal/hostile/cthulhu/boss = locate()
+		if(boss)
+			boss.should_die = TRUE
+			boss.quick_explode_gib()
+
 		reload()
 		return
 	else

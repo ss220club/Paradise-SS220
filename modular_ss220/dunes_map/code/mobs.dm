@@ -459,6 +459,7 @@
 	flying = TRUE
 	minbodytemp = 0
 	maxbodytemp = INFINITY
+	var/should_die = FALSE
 
 	var/list/datum/spell/spells = list(
 								/datum/spell/fireball/homing/cthulhu,
@@ -478,7 +479,6 @@
 /mob/living/simple_animal/hostile/cthulhu/add_tts_component()
 	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/ornn)
 
-
 /mob/living/simple_animal/hostile/cthulhu/Login()
 	. = ..()
 	client.view = "27x21"
@@ -486,6 +486,24 @@
 /mob/living/simple_animal/hostile/cthulhu/Life(seconds, times_fired)
 	. = ..()
 	adjustHealth(-regeneration_per_second * seconds)
+
+/mob/living/simple_animal/hostile/cthulhu/update_icon_state()
+	. = ..()
+	switch(health)
+		if(0 to 1000)
+			icon_state = "cthulhu_low"
+		if(1001 to 2000)
+			icon_state = "cthulhu_mid"
+		else
+			icon_state = "cthulhu"
+
+/mob/living/simple_animal/hostile/cthulhu/adjustHealth(damage, updating_health)
+	. = ..()
+	update_icon_state()
+
+/mob/living/simple_animal/hostile/cthulhu/can_die()
+	. = ..()
+	return should_die & .
 
 /obj/effect/temp_visual/target_cthulhu
 	icon = 'icons/mob/actions/actions.dmi'
