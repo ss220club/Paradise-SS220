@@ -433,10 +433,10 @@
 	registered_name = "[pick (kidan_name)]"
 
 /obj/item/card/id/centcom/tanya
-	name = "Таня фон Нормандия's ID card"
-	desc = "An ID straight from Central Command."
+	name = "Дельта 8-1-7's ID card (Normandy Special Forces)"
+	desc = "An ID straight from Normandy Special Forces."
 	icon_state = "centcom"
-	registered_name = "Таня фон Нормандия"
+	registered_name = "Дельта 8-1-7"
 	assignment = "Normandy Special Forces"
 	rank = "Normandy Special Forces"
 
@@ -649,6 +649,37 @@
 	suit_type = /obj/item/clothing/suit/space/hardsuit/dune/midnight_suit
 	storage_type = /obj/item/tank/internals/oxygen/red
 
+// Tanya camera
+/obj/structure/tanya_camera
+	name = "Колба с Дельта 8-1-7"
+	desc = "Этот юнит еще не готов..."
+	icon = 'modular_ss220/dunes_map/icons/tanya.dmi'
+	icon_state = "clone"
+	density = TRUE
+	max_integrity = 20
+	layer = HITSCAN_LAYER
+	var/breaksound = "shatter"
+	anchored = TRUE
+
+/obj/structure/tanya_broken
+	name = "Разбитая колба"
+	desc = "Все еще не идеальна."
+	icon = 'modular_ss220/dunes_map/icons/tanya.dmi'
+	icon_state = "tanya_broken"
+	density = TRUE
+	max_integrity = 200
+	layer = HITSCAN_LAYER
+	anchored = TRUE
+
+/obj/structure/tanya_camera/Destroy()
+	playsound(src, breaksound, 30, 0)
+	var/turf/T = get_turf(src)
+	new /obj/effect/decal/cleanable/glass(T)
+	new /obj/effect/gibspawner/robot(T)
+	new /obj/effect/decal/cleanable/blood/gibs/body(T)
+	new /obj/structure/tanya_broken(T)
+	..()
+
 //cube and VSA
 
 /obj/item/stock_parts/cell/cube
@@ -658,17 +689,21 @@
 	chargerate = 100
 	icon = 'modular_ss220/dunes_map/icons/cube.dmi'
 	icon_state = "empty"
+	item_state = "empty"
+	lefthand_file = 'modular_ss220/dunes_map/icons/cube_left.dmi'
+	righthand_file = 'modular_ss220/dunes_map/icons/cube_right.dmi'
 
 /obj/item/stock_parts/cell/cube/process()
 	if(percent() == 100)
 		icon_state = "charged"
+		item_state = "charged"
 	else
 		icon_state = "empty"
-
+		item_state = "empty"
 
 /obj/item/stock_parts/cell/cube/New()
 	. = ..()
-	// charge = 0
+	charge = 0
 
 /obj/item/stock_parts/cell/cube/Destroy()
 	empulse(get_turf(loc), 4, 10, 1)
@@ -693,7 +728,7 @@
 			update_appearance()
 			reload_cooldown = 600
 			C.charge = 0
-			pixel_y = -60
+			pixel_y = -50
 			return
 	. = ..()
 
@@ -748,6 +783,12 @@
 
 		log_admin("[key_name(user)] has launched an artillery strike.") // Line below handles logging the explosion to disk
 		explosion(bullseye,ex_power,ex_power*2,ex_power*4)
+
+		// Explosion code is some delicious spaghetti, so this is the easiest way
+		var/mob/living/simple_animal/hostile/cthulhu/boss = locate()
+		if(boss)
+			boss.should_die = TRUE
+			boss.quick_explode_gib()
 
 		reload()
 		return

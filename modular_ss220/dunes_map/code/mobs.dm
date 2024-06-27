@@ -242,7 +242,7 @@
 // ТАНЯ
 
 /mob/living/simple_animal/hostile/retaliate/tanya_cc
-	name = "Таня фон Нормандия"
+	name = "Дельта 8-1-7"
 	desc = "Боевой юнит-андроид проекта ''Delta 8-1-7'', идеально подходящий для выполнения любых поставленных задач. Судя по глазам, этот экземпляр находится на боевом дежурстве и действует автономно."
 	icon =  'modular_ss220/dunes_map/icons/tanya_cc.dmi'
 	icon_state = "tanya_cc"
@@ -281,14 +281,14 @@
 
 /mob/living/simple_animal/hostile/retaliate/tanya_cc/Initialize(mapload)
 	. = ..()
-	add_language("Sol Common")
-	default_language = GLOB.all_languages["Sol Common"]
+	add_language("Galactic Common")
+	default_language = GLOB.all_languages["Galactic Common"]
 
 /mob/living/simple_animal/hostile/retaliate/tanya_cc/add_tts_component()
 	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/cerys)
 
 /mob/living/simple_animal/hostile/retaliate/tanya_death   // Не от tanya_cc т.к. баллистические снаряды перезаписывают энергетические - разделить их никак нельзя
-	name = "Таня фон Нормандия"
+	name = "Дельта 8-1-7"
 	desc = "Боевой юнит-андроид проекта ''Delta 8-1-7'', облаченный в тяжелую штурмовую броню. Судя по глазам, этот экземпляр находится на боевом дежурстве и действует автономно."
 	icon =  'modular_ss220/dunes_map/icons/tanya_cc.dmi'
 	icon_state = "tanya_cc_death"
@@ -327,8 +327,8 @@
 
 /mob/living/simple_animal/hostile/retaliate/tanya_death/Initialize(mapload)
 	. = ..()
-	add_language("Sol Common")
-	default_language = GLOB.all_languages["Sol Common"]
+	add_language("Galactic Common")
+	default_language = GLOB.all_languages["Galactic Common"]
 
 /mob/living/simple_animal/hostile/retaliate/tanya_death/add_tts_component()
 	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/cerys)
@@ -459,6 +459,7 @@
 	flying = TRUE
 	minbodytemp = 0
 	maxbodytemp = INFINITY
+	var/should_die = FALSE
 
 	var/list/datum/spell/spells = list(
 								/datum/spell/fireball/homing/cthulhu,
@@ -478,7 +479,6 @@
 /mob/living/simple_animal/hostile/cthulhu/add_tts_component()
 	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/ornn)
 
-
 /mob/living/simple_animal/hostile/cthulhu/Login()
 	. = ..()
 	client.view = "27x21"
@@ -486,6 +486,24 @@
 /mob/living/simple_animal/hostile/cthulhu/Life(seconds, times_fired)
 	. = ..()
 	adjustHealth(-regeneration_per_second * seconds)
+
+/mob/living/simple_animal/hostile/cthulhu/update_icon_state()
+	. = ..()
+	switch(health)
+		if(0 to 1000)
+			icon_state = "cthulhu_low"
+		if(1001 to 2000)
+			icon_state = "cthulhu_mid"
+		else
+			icon_state = "cthulhu"
+
+/mob/living/simple_animal/hostile/cthulhu/adjustHealth(damage, updating_health)
+	. = ..()
+	update_icon_state()
+
+/mob/living/simple_animal/hostile/cthulhu/can_die()
+	. = ..()
+	return should_die & .
 
 /obj/effect/temp_visual/target_cthulhu
 	icon = 'icons/mob/actions/actions.dmi'
@@ -544,7 +562,7 @@
 	for(var/mob/player as anything in GLOB.player_list)
 		user.cast_tts(player, message)
 		to_chat(player, spanned_message)
-	sound_to_playing_players(sound('modular_ss220/dunes_map/sound/mobs/boss_roar.ogg'), 20)
+	sound_to_playing_players(sound('modular_ss220/dunes_map/sound/mobs/boss_roar.ogg'), 100)
 
 /datum/spell/aoe/conjure/duna
 	name = "Призвать прислужников"
