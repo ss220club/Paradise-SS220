@@ -1,3 +1,6 @@
+#define TRAIT_CUBE_IMPACTED "cubeimpacted"
+#define MACHINERY_TRAIT "machinery"
+
 /obj/item/reagent_containers/food/condiment/milk/empty
 	list_reagents = null
 
@@ -677,27 +680,57 @@
 	return ..()
 
 
-
 /obj/machinery/bsa/full/attacked_by(obj/item/I, mob/living/user)
 	if(istype(I, /obj/item/stock_parts/cell/cube ))
 		var/obj/item/stock_parts/cell/cube/C = I
 		if(C.charge >= 500000)
-
+			visible_message("<span class = 'sinister'> Орудие начинает пульсировать неестественным светом. <span>")
 			if(!do_after(user, 3 SECONDS, target = src))
 				return
-			name = "Войдспейс Артиллерия"
-			desc = "Эксперементальная дальнобойная артиллерия, несущая в себе необузданную мощь Куба. Да поможет нам Господь..."
-			icon = 'modular_ss220/dunes_map/icons/bsa.dmi'
-			icon_state = "cannon"
-			update_icon()
+
+			ADD_TRAIT(src, TRAIT_CUBE_IMPACTED, MACHINERY_TRAIT)
+			playsound(src, 'modular_ss220/dunes_map/sound/machinery/MV_WALL.ogg', 50, 0)
+			update_appearance()
 			reload_cooldown = 600
 			C.charge = 0
 			pixel_y = -60
 			return
 	. = ..()
 
+/obj/machinery/bsa/full/update_name(updates)
+	. = ..()
+	if(HAS_TRAIT(src, TRAIT_CUBE_IMPACTED))
+		name = "Войдспейс Артиллерия"
+	else
+		name = initial(name)
+
+/obj/machinery/bsa/full/update_desc(updates)
+	. = ..()
+	if(HAS_TRAIT(src, TRAIT_CUBE_IMPACTED))
+		desc = "Эксперементальная дальнобойная артиллерия, несущая в себе необузданную мощь Куба. Да поможет нам Господь..."
+	else
+		desc = initial(desc)
+
+/obj/machinery/bsa/full/update_icon(updates)
+	. = ..()
+	if(HAS_TRAIT(src, TRAIT_CUBE_IMPACTED))
+		icon = 'modular_ss220/dunes_map/icons/bsa.dmi'
+	else
+		icon = initial(icon)
+
+/obj/machinery/bsa/full/update_icon_state()
+	. = ..()
+	if(HAS_TRAIT(src, TRAIT_CUBE_IMPACTED))
+		if(cannon_direction == EAST)
+			icon_state = "cannon_east"
+		else
+			icon_state = "cannon"
+	else
+		icon_state = initial(icon_state)
+
+
 /obj/machinery/bsa/full/fire(mob/user, turf/bullseye, target)
-	if(src.name == "Войдспейс Артиллерия")
+	if(HAS_TRAIT(src, TRAIT_CUBE_IMPACTED))
 		var/turf/point = get_front_turf()
 		for(var/turf/T in get_line(get_step(point,dir),get_target_turf()))
 			T.ex_act(1)
