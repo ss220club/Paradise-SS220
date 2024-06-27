@@ -281,8 +281,8 @@
 
 /mob/living/simple_animal/hostile/retaliate/tanya_cc/Initialize(mapload)
 	. = ..()
-	add_language("Sol Common")
-	default_language = GLOB.all_languages["Sol Common"]
+	add_language("Galactic Common")
+	default_language = GLOB.all_languages["Galactic Common"]
 
 /mob/living/simple_animal/hostile/retaliate/tanya_cc/add_tts_component()
 	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/cerys)
@@ -327,8 +327,8 @@
 
 /mob/living/simple_animal/hostile/retaliate/tanya_death/Initialize(mapload)
 	. = ..()
-	add_language("Sol Common")
-	default_language = GLOB.all_languages["Sol Common"]
+	add_language("Galactic Common")
+	default_language = GLOB.all_languages["Galactic Common"]
 
 /mob/living/simple_animal/hostile/retaliate/tanya_death/add_tts_component()
 	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/cerys)

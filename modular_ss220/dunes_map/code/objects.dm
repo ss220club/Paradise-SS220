@@ -430,10 +430,10 @@
 	registered_name = "[pick (kidan_name)]"
 
 /obj/item/card/id/centcom/tanya
-	name = "Таня фон Нормандия's ID card"
-	desc = "An ID straight from Central Command."
+	name = "Дельта 8-1-7's ID card (Normandy Special Forces)"
+	desc = "An ID straight from Normandy Special Forces."
 	icon_state = "centcom"
-	registered_name = "Таня фон Нормандия"
+	registered_name = "Дельта 8-1-7"
 	assignment = "Normandy Special Forces"
 	rank = "Normandy Special Forces"
 
@@ -648,14 +648,34 @@
 
 // Tanya camera
 /obj/structure/tanya_camera
-	name = "окаменелые останки"
-	desc = "Останки какой-то огромной допотопной твари."
-	icon = 'modular_ss220/dunes_map/icons/statuelarge.dmi'
-	icon_state = "rib"
+	name = "Колба с Дельта 8-1-7"
+	desc = "Этот юнит еще не готов..."
+	icon = 'modular_ss220/dunes_map/icons/tanya.dmi'
+	icon_state = "clone"
 	density = TRUE
-	deconstructible = FALSE
-	max_integrity = 500
-	layer = ABOVE_MOB_LAYER
+	max_integrity = 20
+	layer = HITSCAN_LAYER
+	var/breaksound = "shatter"
+	anchored = TRUE
+
+/obj/structure/tanya_broken
+	name = "Разбитая колба"
+	desc = "Все еще не идеальна."
+	icon = 'modular_ss220/dunes_map/icons/tanya.dmi'
+	icon_state = "tanya_broken"
+	density = TRUE
+	max_integrity = 200
+	layer = HITSCAN_LAYER
+	anchored = TRUE
+
+/obj/structure/tanya_camera/Destroy()
+	playsound(src, breaksound, 30, 0)
+	var/turf/T = get_turf(src)
+	new /obj/effect/decal/cleanable/glass(T)
+	new /obj/effect/gibspawner/robot(T)
+	new /obj/effect/decal/cleanable/blood/gibs/body(T)
+	new /obj/structure/tanya_broken(T)
+	..()
 
 //cube and VSA
 
