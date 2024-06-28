@@ -925,3 +925,36 @@
 	bound_width = 96
 	bound_height = 32
 	desc = "Стандартный контейнер для транспортировки грузов. Маркировочный логотип давно стерся и о его бывших владельцах остается лишь гадать. В любом случае, в этом проржавевшем контейнере не осталось ничего полезного."
+
+/obj/structure/nt_ship
+	name = "Десантный корабль Нанотрейзен"
+	desc = "Многофункциональный десантный корабль, разработанный Департаментом Защиты Активов для проведения быстрых штурмовых операций. На этом судне опозновательные знаки Отдела Специальных Операций системы Эпсилон Эридана."
+	icon = 'modular_ss220/dunes_map/icons/nt_shuttle.dmi'
+	icon_state = "nt_ship_down"
+	max_integrity = INFINITY
+	density = TRUE
+	anchored = TRUE
+	layer = ABOVE_ALL_MOB_LAYER
+
+/obj/structure/nt_ship/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/largetransparency, 0, 1, 3, 0)
+	bound_width = 128
+	bound_height = 64
+
+/obj/structure/nt_ship/open
+	icon_state = "nt_ship_down_open"
+
+/obj/structure/nt_ship/fly
+	icon_state = "nt_ship"
+
+/obj/structure/nt_ship/fly/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/largetransparency, 0, 1, 3, 0)
+	bound_width = 128
+	bound_height = 64
+	animate(src, pixel_y = 10, time = 20, loop = -1, easing = SINE_EASING)
+	animate(pixel_y = 0, time = 20, loop = -1, easing = SINE_EASING)
+
+/obj/structure/nt_ship/fly/fly_open
+	icon_state = "nt_ship_open"
