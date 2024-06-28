@@ -680,6 +680,14 @@
 	new /obj/structure/tanya_broken(T)
 	..()
 
+// kidan radio
+/obj/item/radio/kidan
+	name = "suspecious handheld radio"
+	desc = "A suspecious shortwave radio. This model is painted in reddish colors, there is some numbers and letters on back of it."
+	icon = 'modular_ss220/devices/icons/radio.dmi'
+	icon_state = "walkietalkie_syndie"
+	frequency = RADIO_LOW_FREQ
+
 //cube and VSA
 
 /obj/item/stock_parts/cell/cube
@@ -953,8 +961,8 @@
 	AddComponent(/datum/component/largetransparency, 0, 1, 3, 0)
 	bound_width = 128
 	bound_height = 64
-	animate(src, pixel_y = 10, time = 20, loop = -1, easing = SINE_EASING)
-	animate(pixel_y = 0, time = 20, loop = -1, easing = SINE_EASING)
+	animate(src, pixel_y = 10, time = 40, loop = -1, easing = SINE_EASING)
+	animate(pixel_y = 0, time = 40, loop = -1, easing = SINE_EASING)
 
 /obj/structure/nt_ship/fly/fly_open
 	icon_state = "nt_ship_open"

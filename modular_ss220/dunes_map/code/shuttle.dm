@@ -6,4 +6,4 @@
 
 /obj/machinery/computer/shuttle/dunes/onTransitZ(old_z,new_z)
 	. = ..()
-	explosion(src, 1, 15, 50, 75, 1, 1)
+	explosion(src, 1, 8, 50, 75, 1, 1)
