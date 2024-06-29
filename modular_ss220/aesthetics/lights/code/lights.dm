@@ -25,3 +25,6 @@
 
 /obj/item/flashlight/lamp
 	on = FALSE
+
+/atom
+	var/glow_icon = 'modular_ss220/aesthetics/lights/icons/lamps.dmi'
