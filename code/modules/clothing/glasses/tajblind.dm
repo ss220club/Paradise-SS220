@@ -66,13 +66,13 @@
 
 /obj/item/clothing/glasses/hud/tajblind/meson/equipped(mob/user, slot, initial)
 	. = ..()
-	if(slot == SLOT_HUD_GLASSES)
-		ADD_TRAIT(user, TRAIT_MESON_VISION, "meson_glasses[UID()]")
+	// if(slot == SLOT_HUD_GLASSES)
+	// 	ADD_TRAIT(user, TRAIT_MESON_VISION, "meson_glasses[UID()]")
 
 /obj/item/clothing/glasses/hud/tajblind/meson/dropped(mob/user)
 	. = ..()
-	if(user)
-		REMOVE_TRAIT(user, TRAIT_MESON_VISION, "meson_glasses[UID()]")
+	// if(user)
+	// 	REMOVE_TRAIT(user, TRAIT_MESON_VISION, "meson_glasses[UID()]")
 
 /obj/item/clothing/glasses/hud/tajblind/meson/cargo
 	name = "\improper Tajaran mining meson veil"

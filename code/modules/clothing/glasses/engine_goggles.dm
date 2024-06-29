@@ -31,8 +31,8 @@
 
 /obj/item/clothing/glasses/meson/engine/equipped(mob/user, slot, initial)
 	. = ..()
-	if(active_on_equip && mode == MODE_MESON && slot == SLOT_HUD_GLASSES)
-		ADD_TRAIT(user, TRAIT_MESON_VISION, "meson_glasses[UID()]")
+	// if(active_on_equip && mode == MODE_MESON && slot == SLOT_HUD_GLASSES)
+	// 	ADD_TRAIT(user, TRAIT_MESON_VISION, "meson_glasses[UID()]")
 
 	if(active_on_equip_rad && mode == MODE_RAD && slot == SLOT_HUD_GLASSES)
 		ADD_TRAIT(user, SM_HALLUCINATION_IMMUNE, "meson_glasses[UID()]")
@@ -42,12 +42,12 @@
 	to_chat(user, "<span class='[voluntary ? "notice" : "warning"]'>[voluntary ? "You turn the goggles" : "The goggles turn"] [mode ? "to [mode] mode" : "off"][voluntary ? "." : "!"]</span>")
 
 	if(mode == MODE_MESON)
-		if(!HAS_TRAIT_FROM(user, TRAIT_MESON_VISION, "meson_glasses[UID()]"))
-			ADD_TRAIT(user, TRAIT_MESON_VISION, "meson_glasses[UID()]")
-		active_on_equip = TRUE
-	else
-		REMOVE_TRAIT(user, TRAIT_MESON_VISION, "meson_glasses[UID()]")
-		active_on_equip = FALSE
+	// 	if(!HAS_TRAIT_FROM(user, TRAIT_MESON_VISION, "meson_glasses[UID()]"))
+	// 		ADD_TRAIT(user, TRAIT_MESON_VISION, "meson_glasses[UID()]")
+	// 	active_on_equip = TRUE
+	// else
+	// 	REMOVE_TRAIT(user, TRAIT_MESON_VISION, "meson_glasses[UID()]")
+	// 	active_on_equip = FALSE
 
 	if(mode == MODE_RAD)
 		if(!HAS_TRAIT_FROM(user, SM_HALLUCINATION_IMMUNE, "meson_glasses[UID()]"))
