@@ -86,7 +86,7 @@
 		"Skrell" 			= 	'modular_ss220/clothing/icons/mob/mask.dmi',
 		"Slime People" 		= 	'modular_ss220/clothing/icons/mob/mask.dmi',
 		"Unathi" 			= 	'modular_ss220/clothing/icons/mob/mask.dmi',
-		"Vox" 				= 	'modular_ss220/clothing/icons/mob/mask.dmi',
+		"Vox" 				= 	'modular_ss220/clothing/icons/mob/species/vox/mask.dmi',
 		"Nucleation"		=	'modular_ss220/clothing/icons/mob/mask.dmi',
 		"Kidan" 			= 	'modular_ss220/clothing/icons/mob/species/kidan/mask.dmi',
 		"Tajaran" 			=	'modular_ss220/clothing/icons/mob/mask.dmi',

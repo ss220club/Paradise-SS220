@@ -201,8 +201,8 @@
 	rapid = 3
 	rapid_fire_delay = 0.5 SECONDS
 	harm_intent_damage = 0
-	melee_damage_lower = 0
-	melee_damage_upper = 0
+	melee_damage_lower = 3
+	melee_damage_upper = 5
 	retreat_distance = 0
 	minimum_distance = 20
 	aggro_vision_range = 11
