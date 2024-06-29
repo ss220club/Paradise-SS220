@@ -1,6 +1,7 @@
 /datum/vox_pack/mercenary
 	name = "DEBUG Mercenary Vox Pack"
 	category = VOX_PACK_MERCENARIES
+	time_until_available = 10
 
 /datum/vox_pack/mercenary/lamilar
 	name = "Ламилярный Костюм"

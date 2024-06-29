@@ -483,21 +483,10 @@
 		if(isliving(I))
 			var/mob/living/M = I
 			items_list.Remove(I)
-			if(!isvox(M))
-				send_to_station(M)
+			if(isvox(M))
+				make_new_vox_raider(M)
 				continue
-
-			// Make new Vox Raider
-			if(!M.mind)
-				continue
-			var/datum/antagonist/vox_raider/antag = locate() in M.mind.antag_datums
-			if(antag)
-				continue
-			for(var/datum/antagonist/A as anything in user.mind.antag_datums)
-				var/datum/team/team = A.get_team()
-				if(team)
-					team.add_member(M.mind, TRUE)
-					break
+			send_to_station(M)
 
 	return items_list
 
@@ -511,3 +500,15 @@
 	if(iscarbon(M))
 		var/mob/living/carbon/C = M
 		C.uncuff()
+
+/obj/machinery/vox_trader/proc/make_new_vox_raider(mob/living/M)
+	if(!M.mind)
+		continue
+	var/datum/antagonist/vox_raider/antag = locate() in M.mind.antag_datums
+	if(antag)
+		continue
+	for(var/datum/antagonist/A as anything in user.mind.antag_datums)
+		var/datum/team/team = A.get_team()
+		if(team)
+			team.add_member(M.mind, TRUE)
+			break

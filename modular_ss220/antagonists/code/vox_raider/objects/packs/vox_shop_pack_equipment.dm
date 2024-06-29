@@ -63,6 +63,7 @@
 	desc = "Боевые бронированные когтистые налапочники с улучшенным сцеплением с поверхностью."
 	reference = "E_MC"
 	cost = 2000
+	time_until_available = 45
 	contains = list(/obj/item/clothing/shoes/magboots/vox/combat)
 
 /datum/vox_pack/equipment/magboots/heavy
@@ -70,6 +71,7 @@
 	desc = "Тяжелые бронированные когтистые налапочники для ведения боевых действий и защит нижних конечностей от всевозможных угроз."
 	reference = "E_MH"
 	cost = 4000
+	time_until_available = 60
 	contains = list(/obj/item/clothing/shoes/magboots/vox/heavy)
 
 
@@ -105,6 +107,7 @@
 	desc = "Наушник дальней связи для поддержания связи со стаей. Защищает ушные раковины от громких звуков"
 	reference = "E_RAD_ALT"
 	cost = 500
+	time_until_available = 60
 	contains = list(/obj/item/radio/headset/vox/alt)
 
 /datum/vox_pack/equipment/card

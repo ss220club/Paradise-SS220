@@ -54,6 +54,7 @@
 	desc = "Подставка с боевыми дротиками для нанесения повреждений."
 	reference = "D_C_COM"
 	cost = 400
+	time_until_available = 45
 	contains = list(/obj/item/storage/dart_cartridge/combat)
 
 /datum/vox_pack/dart/cartridge/medical
@@ -68,6 +69,7 @@
 	desc = "Подставка с вредными дротиками, приносящие боль и страдания."
 	reference = "D_C_PAIN"
 	cost = 400
+	time_until_available = 30
 	contains = list(/obj/item/storage/dart_cartridge/pain)
 
 /datum/vox_pack/dart/cartridge/drugs
@@ -75,6 +77,7 @@
 	desc = "Подставка для вредных дротиков-наркотиков."
 	reference = "D_C_DRUG"
 	cost = 300
+	time_until_available = 30
 	contains = list(/obj/item/storage/dart_cartridge/drugs)
 
 /datum/vox_pack/dart/cartridge/random
@@ -82,4 +85,5 @@
 	desc = "Случайный набор дротиков с химикатами."
 	reference = "D_C_RAND"
 	cost = 1000
+	time_until_available = 60
 	contains = list(/obj/item/storage/dart_cartridge/big/random)

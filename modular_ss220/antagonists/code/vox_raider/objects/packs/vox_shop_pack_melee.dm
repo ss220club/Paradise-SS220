@@ -21,6 +21,7 @@
 	desc = "Энергетическая сабля для абордажей кораблей."
 	reference = "ME_SW"
 	cost = 500
+	time_until_available = 45
 	contains = list(/obj/item/melee/energy/sword/pirate)
 
 /datum/vox_pack/melee/sword/purple

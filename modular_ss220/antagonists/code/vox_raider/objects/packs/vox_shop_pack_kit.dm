@@ -91,6 +91,7 @@
 /datum/vox_pack/kit/trooper
 	name = "Набор Космического Штурмовика"
 	desc = "Набор для штурма космических кораблей и станций."
+	time_until_available = 60
 	reference = "K_"
 	packs_list = list(
 		/datum/vox_pack/raider/trooper,
@@ -105,6 +106,7 @@
 /datum/vox_pack/kit/scout
 	name = "Набор Космического Разведчика"
 	desc = "Набор для проведения разведки в неблагоприятных условиях."
+	time_until_available = 60
 	reference = "K_SSCT"
 	packs_list = list(
 		/datum/vox_pack/raider/scout,
@@ -119,6 +121,7 @@
 /datum/vox_pack/kit/medic
 	name = "Набор Космического Медика"
 	desc = "Набор для скорого оказания помощи в неблагоприятных условиях и защиты носителя."
+	time_until_available = 60
 	reference = "K_"
 	packs_list = list(
 		/datum/vox_pack/raider/medic,
@@ -134,6 +137,7 @@
 /datum/vox_pack/kit/mechanic
 	name = "Набор Механика"
 	desc = "Набор первичного необходимого для ремонта вышедшего из строя оборудования в условиях боя."
+	time_until_available = 60
 	reference = "K_"
 	packs_list = list(
 		/datum/vox_pack/raider/mechanic,
@@ -148,6 +152,7 @@
 /datum/vox_pack/kit/heavy
 	name = "Тяжелый Набор"
 	desc = "Полный набор тяжелого костюма для работы в условиях переизбыточной опасности."
+	time_until_available = 90
 	reference = "K_HEAVY"
 	packs_list = list(
 		/datum/vox_pack/raider/heavy,

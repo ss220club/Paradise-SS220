@@ -224,6 +224,8 @@
 		return
 	if(!pack.check_possible_buy(amount))
 		return
+	if(!pack.check_time_available())
+		return
 	var/list/bought_objects = list()
 	for(var/i in 1 to amount)
 		var/list/items_list = pack.get_items_list(src, usr, put_in_hands = FALSE)
@@ -268,6 +270,9 @@
 		amount += cart_list[item]
 	if(!pack.check_possible_buy(amount))
 		to_chat(user, span_warning("[pack.name] больше невозможно купить!"))
+		return
+	if(!pack.check_time_available())
+		to_chat(user, span_warning("[pack.name] будет доступен к покупке в [pack.get_time_available()]"))
 		return
 	LAZYSET(cart_list, item, max(amount, 1))
 	generate_tgui_cart(TRUE)

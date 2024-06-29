@@ -1,6 +1,7 @@
 /datum/vox_pack/bio
 	name = "DEBUG Bio Vox Pack"
 	category = VOX_PACK_BIO
+	time_until_available = 45
 
 // ============== GUNS ==============
 /datum/vox_pack/bio/gun
