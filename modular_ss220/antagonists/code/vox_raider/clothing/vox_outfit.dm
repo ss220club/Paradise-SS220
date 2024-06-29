@@ -1,6 +1,6 @@
 // Outfit
 /datum/outfit/vox
-	name = "Vox Clothing"
+	name = "Vox Crew"
 	uniform = /obj/item/clothing/under/vox/jumpsuit
 	gloves = /obj/item/clothing/gloves/vox
 	shoes = /obj/item/clothing/shoes/roman/vox
@@ -52,7 +52,7 @@
 
 	var/obj/item/card/id/I = H.wear_id
 	if(istype(I))
-		apply_to_card(I, H, list(ACCESS_MAINT_TUNNELS, ACCESS_VOX, ACCESS_EXTERNAL_AIRLOCKS), "Vox Raider", "data")
+		apply_to_card(I, H, list(ACCESS_MAINT_TUNNELS, ACCESS_VOX, ACCESS_EXTERNAL_AIRLOCKS), "Vox Skipjack Crew", "data")
 
 	if(internals_slot)
 		H.internal = H.get_item_by_slot(internals_slot)
