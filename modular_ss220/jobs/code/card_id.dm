@@ -140,7 +140,7 @@ GLOBAL_LIST_INIT(card_skins_donor_ss220, list(
 	name = "Clining Manager ID"
 	access = list(ACCESS_JANITOR, ACCESS_MAINT_TUNNELS, ACCESS_EXTERNAL_AIRLOCKS, ACCESS_MEDICAL)
 	icon = 'modular_ss220/aesthetics/better_ids/icons/better_ids.dmi'
-	icon_state = "cleaningmanager"
+	icon_state = "managerjanitor"
 
 /obj/item/card/id/apprentice
 	name = "Apprentice ID"
@@ -168,20 +168,20 @@ GLOBAL_LIST_INIT(card_skins_donor_ss220, list(
 
 /obj/item/card/id/adjutant
 	name = "Adjutant ID"
-	access = list(ACCESS_LIBRARY, ACCESS_HEADS, ACCESS_EVA, ACCESS_LAWYER, ACCESS_COURT, ACCESS_SEC_DOORS, ACCESS_MAINT_TUNNELS, ACCESS_RESEARCH, ACCESS_MEDICAL, ACCESS_CONSTRUCTION, ACCESS_MAILSORTING)
+	access = list(ACCESS_LIBRARY, ACCESS_HEADS, ACCESS_EVA, ACCESS_INTERNAL_AFFAIRS, ACCESS_COURT, ACCESS_SEC_DOORS, ACCESS_MAINT_TUNNELS, ACCESS_RESEARCH, ACCESS_MEDICAL, ACCESS_CONSTRUCTION, ACCESS_MAILSORTING)
 	icon = 'modular_ss220/aesthetics/better_ids/icons/better_ids.dmi'
 	icon_state = "adjutant"
 	item_state = "silver-id"
 
 /obj/item/card/id/butler
 	name = "Butler ID"
-	access = list(ACCESS_MAINT_TUNNELS, ACCESS_LIBRARY, ACCESS_HEADS, ACCESS_EVA, ACCESS_LAWYER)
+	access = list(ACCESS_MAINT_TUNNELS, ACCESS_LIBRARY, ACCESS_HEADS, ACCESS_EVA, ACCESS_INTERNAL_AFFAIRS)
 	icon = 'modular_ss220/aesthetics/better_ids/icons/better_ids.dmi'
 	icon_state = "butler"
 
 /obj/item/card/id/maid
 	name = "Maid ID"
-	access = list(ACCESS_MAINT_TUNNELS, ACCESS_LIBRARY, ACCESS_HEADS, ACCESS_EVA, ACCESS_LAWYER)
+	access = list(ACCESS_MAINT_TUNNELS, ACCESS_LIBRARY, ACCESS_HEADS, ACCESS_EVA, ACCESS_INTERNAL_AFFAIRS)
 	icon = 'modular_ss220/aesthetics/better_ids/icons/better_ids.dmi'
 	icon_state = "maid"
 

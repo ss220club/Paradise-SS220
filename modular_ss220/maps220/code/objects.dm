@@ -143,8 +143,8 @@
 //	bound_height = 96
 	appearance_flags = 0
 
-/obj/structure/shuttle/engine/large/Initialize()
-	..()
+/obj/structure/shuttle/engine/large/Initialize(mapload)
+	. = ..()
 	var/list/occupied = list()
 	for(var/direct in list(EAST,NORTH,NORTHEAST))
 		occupied += get_step(src,direct)
@@ -154,8 +154,8 @@
 		F.parent = src
 		fillers += F
 
-/obj/structure/shuttle/engine/huge/Initialize()
-	..()
+/obj/structure/shuttle/engine/huge/Initialize(mapload)
+	. = ..()
 	var/list/occupied = list()
 	for(var/direct in list(EAST,WEST,NORTH,SOUTH,SOUTHEAST,SOUTHWEST,NORTHEAST,NORTHWEST))
 		occupied += get_step(src,direct)
@@ -297,7 +297,7 @@
 
 	else
 		undead.set_species(/datum/species/skeleton) // OP skellybones
-		undead.visible_message(span_warning ("[undead] отторгает бренную оболочку и предстает в виде скелета!"))
+		undead.visible_message(span_warning("[undead] отторгает бренную оболочку и предстает в виде скелета!"))
 		undead.grab_ghost() // yoinks the ghost if its not in the body
 		undead.revive()
 		equip_undead(undead)

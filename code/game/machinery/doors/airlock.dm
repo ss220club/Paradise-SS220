@@ -1301,7 +1301,7 @@ GLOBAL_LIST_EMPTY(airlock_emissive_underlays)
 	density = FALSE
 	if(width > 1)
 		set_fillers_density(FALSE)
-	air_update_turf(1)
+	recalculate_atmos_connectivity()
 	sleep(1)
 	layer = OPEN_DOOR_LAYER
 	update_icon(AIRLOCK_OPEN, 1)
@@ -1343,7 +1343,7 @@ GLOBAL_LIST_EMPTY(airlock_emissive_underlays)
 	density = TRUE
 	if(width > 1)
 		set_fillers_density(TRUE)
-	air_update_turf(1)
+	recalculate_atmos_connectivity()
 	if(!override)
 		sleep(4)
 	if(!safe)
@@ -1556,16 +1556,18 @@ GLOBAL_LIST_EMPTY(airlock_emissive_underlays)
 		if(!electronics)
 			ae = new/obj/item/airlock_electronics(loc)
 			check_access()
-			if(req_access.len)
+			if(length(req_access))
 				ae.selected_accesses = req_access
-			else if(req_one_access.len)
+			else if(length(req_one_access))
 				ae.selected_accesses = req_one_access
 				ae.one_access = 1
 			ae.unres_access_from = unres_sides
+			ae.is_installed = FALSE
 		else
 			ae = electronics
 			electronics = null
 			ae.forceMove(loc)
+			ae.is_installed = FALSE
 	QDEL_LIST_CONTENTS(fillers)
 	qdel(src)
 
