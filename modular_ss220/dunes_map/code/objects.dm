@@ -97,7 +97,7 @@
 
 /obj/structure/sink/kolodec
 	name = "\improper колодец"
-	desc = "Главное не упасть..."
+	desc = "Дна не видно. К тому же тут склизко... Главное не упасть..."
 	icon = 'modular_ss220/dunes_map/icons/kolodec.dmi'
 	icon_state = "kolodec"
 	density = TRUE
@@ -105,6 +105,12 @@
 	var/drop_x = 1
 	var/drop_y = 1
 	var/drop_z = -1
+
+/obj/structure/sink/kolodec/attack_hand(mob/user)
+	. = ..()
+	to_chat(user, "<span class='userdanger'>Вы едва не сорвались в колодец. А дна ведь даже и не видно...</span>")
+	if(prob(5))
+		drop(user)
 
 /obj/structure/sink/kolodec/Initialize(mapload)
 	. = ..()
