@@ -972,3 +972,9 @@
 	name = "Hardened Hydration pump implant"
 	desc = "A military-grade version of the standard implant, for more elite forces."
 	emp_proof = TRUE
+
+/obj/structure/mirror/magic/kidan
+	name = "Жучье зеркало"
+	desc = "Тут могло бы быть ваше описани"
+	actually_magical = FALSE
+	race_list = list("Kidan")
