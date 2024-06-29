@@ -1,5 +1,5 @@
 /atom
-	var/glow_icon = 'modular_ss220/aesthetics/lights/icons/lamps.dmi'
+	glow_icon = 'modular_ss220/aesthetics/lights/icons/lamps.dmi'
 
 /obj/machinery/light
 	icon = 'modular_ss220/aesthetics/lights/icons/lights.dmi'
