@@ -484,7 +484,7 @@
 			var/mob/living/M = I
 			items_list.Remove(I)
 			if(isvox(M))
-				make_new_vox_raider(M)
+				make_new_vox_raider(user, M)
 				continue
 			send_to_station(M)
 
@@ -501,7 +501,7 @@
 		var/mob/living/carbon/C = M
 		C.uncuff()
 
-/obj/machinery/vox_trader/proc/make_new_vox_raider(mob/living/M)
+/obj/machinery/vox_trader/proc/make_new_vox_raider(mob/user, mob/living/M)
 	if(!M.mind)
 		continue
 	var/datum/antagonist/vox_raider/antag = locate() in M.mind.antag_datums
