@@ -967,3 +967,8 @@
 
 /obj/structure/nt_ship/fly/fly_open
 	icon_state = "nt_ship_open"
+
+/obj/item/organ/internal/cyberimp/chest/hydration/hardened
+	name = "Hardened Hydration pump implant"
+	desc = "A military-grade version of the standard implant, for more elite forces."
+	emp_proof = TRUE
