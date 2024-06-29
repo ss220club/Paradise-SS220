@@ -41,6 +41,12 @@
 	anchored = TRUE
 	oreAmount = 0
 
+/obj/structure/statue/mooniverse/soo
+	name = "Офицер специальных операций"
+	desc = "Статуя одного из офицеров специальных операций. Возможно этот офицер хорошо служит ЦК..."
+	icon = 'modular_ss220/unique_objects/icons/statue.dmi'
+	icon_state = "mooniverse_soo"
+
 /obj/structure/statue/themis
 	name = "Фемида"
 	desc = "Статуя древнегреческой богини правосудия."
@@ -50,6 +56,30 @@
 	pixel_y = 7
 	anchored = TRUE
 	oreAmount = 0
+
+/obj/structure/statue/gold/heinrich_traisen
+	name = "Генрих Трейзен Третий"
+	desc = "Золотая статуя текущего главы семьи Трейзен. Его успешная агрессивная политика в отношении конкурентов, формирование окончательной монополии на рынке и мудрое распоряжение имеющимися активами привели к получению Корпорацией исключительных прав на разработку, переработку и продажу плазмы во многих известных мирах. Именно благодаря Генриху Трейзену Третьему мы сегодня знаем Компанию Нанотрейзен такой, какая она есть."
+	icon = 'modular_ss220/unique_objects/icons/statue.dmi'
+	icon_state = "henri"
+	layer = ABOVE_MOB_LAYER
+	anchored = TRUE
+	oreAmount = 30
+
+/obj/structure/statue/holo_planet
+	name = "планетарная голограмма"
+	desc = "Установка, позволяющая показывать подробные голографические карты известных миров."
+	icon = 'modular_ss220/unique_objects/icons/statue.dmi'
+	icon_state = "planet"
+	layer = ABOVE_MOB_LAYER
+	anchored = TRUE
+	oreAmount = 0
+
+/obj/structure/statue/sandstone/venus/pure
+	name = "Венера"
+	desc = "Эта мраморная реплика античной статуи восхлавляет женскую красоту и грацию, привлекая внимание своими изящными формами. Скульптура создает величественный образ, который восхищает своим великолепием."
+	icon = 'modular_ss220/unique_objects/icons/statuelarge.dmi'
+	icon_state = "venus_pure"
 
 // Cyberiad statue
 /obj/structure/statue/cyberiad
@@ -193,7 +223,7 @@
 		return FALSE
 
 	if(is_final)
-		to_chat(user, "<span class='warning'>Этот унитаз достиг пика великолепия и безвкусия. Нельзя больше улучшить.</span>")
+		to_chat(user, span_warning("Этот унитаз достиг пика великолепия и безвкусия. Нельзя больше улучшить."))
 		return FALSE
 
 	var/obj/item/stack/M = I
@@ -210,13 +240,13 @@
 			break
 
 	if(!is_correct)
-		to_chat(user, "<span class='warning'>Неподходящий материал для улучшения.</span>")
+		to_chat(user, span_warning("Неподходящий материал для улучшения."))
 		return FALSE
 
 	var/is_rare = istype(M, /obj/item/stack/ore/bluespace_crystal/refined)
 	var/need_amount = is_rare ? 2 : 5
 	if(M.get_amount() < need_amount)
-		to_chat(user, "<span class='warning'>Недостаточно материала, нужно хотя бы [need_amount] шт.</span>")
+		to_chat(user, span_warning("Недостаточно материала, нужно хотя бы [need_amount] шт."))
 		return FALSE
 
 	switch(type)
@@ -244,7 +274,7 @@
 			if(M.type == /obj/item/stack/ore/bluespace_crystal/refined)
 				construct(M, user, /obj/structure/toilet/material/bluespace/nt, need_amount)
 		else
-			to_chat(user, "<span class='warning'>Неподходящая цель для гравировки.</span>")
+			to_chat(user, span_warning("Неподходящая цель для гравировки."))
 	return TRUE
 
 /obj/structure/toilet/proc/construct(obj/item/stack/M, mob/living/user, build_type, amount)
@@ -318,14 +348,14 @@
 
 /obj/structure/toilet/material/bluespace/emag_act(mob/user)
 	if(!emagged)
-		to_chat(user, "<span class='notice'>Блюспейс начал переливаться красными вкраплениями.</span>")
+		to_chat(user, span_notice("Блюспейс начал переливаться красными вкраплениями."))
 		if(do_after(user, 2 SECONDS, target = src))
 			emagged = TRUE
 			tp_range = initial(tp_range) * 3
 			singulo_layer = "bluespace_toilet_singularity-emagged"
 			update_icon(UPDATE_ICON_STATE)
 			playsound(src, "sparks", 100, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
-			visible_message("<span class='warning'>Блюспейс начал переливаться словно редспейс.</span>")
+			visible_message(span_warning("Блюспейс начал переливаться словно редспейс."))
 
 /obj/structure/toilet/material/bluespace/update_icon_state()
 	. = ..()

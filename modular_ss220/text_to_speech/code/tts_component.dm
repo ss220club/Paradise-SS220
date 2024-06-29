@@ -61,6 +61,7 @@
 	var/tts_seeds
 	var/tts_gender = get_converted_tts_seed_gender()
 	var/list/tts_seeds_by_gender = SStts220.tts_seeds_by_gender[tts_gender]
+	tts_seeds_by_gender |= SStts220.tts_seeds_by_gender[TTS_GENDER_ANY]
 	if(check_rights(R_VAREDIT, FALSE, chooser) || override || !ismob(being_changed))
 		tts_seeds = tts_seeds_by_gender
 	else
@@ -88,8 +89,10 @@
 	return new_tts_seed
 
 /datum/component/tts_component/proc/tts_seed_change(atom/being_changed, mob/chooser, override = FALSE, fancy_voice_input_tgui = FALSE, list/new_traits = null)
-	SIGNAL_HANDLER_DOES_SLEEP
-	set waitfor = FALSE
+	SIGNAL_HANDLER
+	INVOKE_ASYNC(src, PROC_REF(set_tts_seed), being_changed, chooser, override, fancy_voice_input_tgui, new_traits)
+
+/datum/component/tts_component/proc/set_tts_seed(atom/being_changed, mob/chooser, override = FALSE, fancy_voice_input_tgui = FALSE, list/new_traits = null)
 	var/datum/tts_seed/new_tts_seed = select_tts_seed(chooser = chooser, override = override, fancy_voice_input_tgui = fancy_voice_input_tgui, new_traits = new_traits)
 	if(!new_tts_seed)
 		return null
@@ -97,7 +100,9 @@
 
 /datum/component/tts_component/proc/get_random_tts_seed_by_gender()
 	var/tts_gender = get_converted_tts_seed_gender()
-	var/tts_random = pick(SStts220.tts_seeds_by_gender[tts_gender])
+	var/list/tts_seeds = SStts220.tts_seeds_by_gender[tts_gender]
+	tts_seeds |= SStts220.tts_seeds_by_gender[TTS_GENDER_ANY]
+	var/tts_random = pick(tts_seeds)
 	var/datum/tts_seed/seed = SStts220.tts_seeds[tts_random]
 	if(!seed)
 		return null

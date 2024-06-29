@@ -79,7 +79,7 @@
 /turf/simulated/mineral/random/labormineral/volcanic,
 /area/lavaland/surface/outdoors)
 "ap" = (
-/obj/effect/spawner/window/reinforced/grilled,
+/obj/effect/spawner/window/reinforced/plasma/grilled,
 /turf/simulated/floor/plating,
 /area/mine/laborcamp)
 "aq" = (
@@ -102,7 +102,8 @@
 /area/mine/outpost/custodial)
 "at" = (
 /obj/machinery/shower{
-	dir = 8
+	dir = 8;
+	pixel_x = -6
 	},
 /obj/structure/curtain/open/shower,
 /obj/effect/decal/cleanable/dirt,
@@ -140,10 +141,11 @@
 "ay" = (
 /obj/item/bikehorn/rubberducky,
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/shower{
-	dir = 8
-	},
 /obj/structure/curtain/open/shower,
+/obj/machinery/shower{
+	dir = 8;
+	pixel_x = -6
+	},
 /turf/simulated/floor/plasteel/white,
 /area/mine/laborcamp)
 "az" = (
@@ -201,11 +203,8 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
 	},
-/obj/effect/turf_decal/tile/brown{
-	dir = 1
-	},
 /turf/simulated/floor/plasteel{
-	dir = 4;
+	dir = 5;
 	icon_state = "brown"
 	},
 /area/mine/laborcamp)
@@ -422,7 +421,7 @@
 /area/mine/outpost/storage)
 "bg" = (
 /obj/machinery/door/firedoor,
-/obj/effect/spawner/window/reinforced/grilled,
+/obj/effect/spawner/window/reinforced/plasma/grilled,
 /turf/simulated/floor/plating,
 /area/mine/outpost/hallway/west)
 "bh" = (
@@ -480,7 +479,7 @@
 /area/lavaland/surface/outdoors/outpost/catwalk)
 "bp" = (
 /obj/machinery/door/firedoor,
-/obj/effect/spawner/window/reinforced/grilled,
+/obj/effect/spawner/window/reinforced/plasma/grilled,
 /turf/simulated/floor/plating,
 /area/mine/outpost/storage)
 "bq" = (
@@ -654,7 +653,7 @@
 /area/lavaland/surface/outdoors/outpost/catwalk)
 "bF" = (
 /obj/structure/shuttle/engine/propulsion/burst,
-/turf/simulated/floor/plating/airless,
+/turf/simulated/floor/plating/lavaland_air,
 /area/shuttle/mining)
 "bG" = (
 /obj/structure/closet/crate/freezer,
@@ -699,7 +698,7 @@
 /area/mine/outpost/engineering)
 "bJ" = (
 /obj/machinery/door/firedoor,
-/obj/effect/spawner/window/reinforced/grilled,
+/obj/effect/spawner/window/reinforced/plasma/grilled,
 /obj/effect/turf_decal/delivery/hollow,
 /turf/simulated/floor/plating,
 /area/mine/outpost/cafeteria)
@@ -737,9 +736,9 @@
 /area/mine/outpost/cafeteria)
 "bO" = (
 /obj/machinery/door/airlock/titanium{
-	id_tag = "s_docking_airlock"
+	id_tag = "s_docking_airlock";
+	name = "Labor Shuttle Airlock"
 	},
-/obj/effect/mapping_helpers/airlock/autoname,
 /obj/docking_port/mobile/labour,
 /obj/structure/fans/tiny,
 /obj/docking_port/stationary{
@@ -862,6 +861,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
+/obj/structure/bed/roller,
 /turf/simulated/floor/plasteel{
 	icon_state = "barber"
 	},
@@ -936,7 +936,7 @@
 	},
 /area/mine/laborcamp)
 "cj" = (
-/obj/effect/spawner/window/reinforced/grilled,
+/obj/effect/spawner/window/reinforced/plasma/grilled,
 /turf/simulated/floor/plating,
 /area/mine/outpost/maintenance/south)
 "ck" = (
@@ -1116,7 +1116,7 @@
 /turf/simulated/floor/plating,
 /area/mine/outpost/cafeteria)
 "cG" = (
-/obj/effect/spawner/window/reinforced/grilled,
+/obj/effect/spawner/window/reinforced/plasma/grilled,
 /turf/simulated/floor/plating,
 /area/mine/laborcamp/security)
 "cH" = (
@@ -1339,7 +1339,7 @@
 	},
 /area/mine/outpost/airlock)
 "dg" = (
-/obj/effect/spawner/window/reinforced/grilled,
+/obj/effect/spawner/window/reinforced/plasma/grilled,
 /turf/simulated/floor/plating,
 /area/mine/outpost/mechbay)
 "dh" = (
@@ -1856,6 +1856,7 @@
 /obj/effect/spawner/window/reinforced/polarized/grilled{
 	id = "mining qm"
 	},
+/obj/structure/fans/tiny,
 /turf/simulated/floor/plating,
 /area/mine/outpost/quartermaster)
 "ec" = (
@@ -2132,7 +2133,7 @@
 /area/mine/outpost/cafeteria)
 "eC" = (
 /obj/structure/disposalpipe/segment,
-/obj/effect/spawner/window/reinforced/tinted/grilled,
+/obj/effect/spawner/window/plasma/grilled,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plating,
 /area/mine/outpost/hallway/east)
@@ -2187,7 +2188,7 @@
 	},
 /area/mine/outpost/hallway/east)
 "eG" = (
-/obj/effect/spawner/window/reinforced/grilled,
+/obj/effect/spawner/window/reinforced/plasma/grilled,
 /turf/simulated/floor/plating,
 /area/mine/outpost/storage)
 "eH" = (
@@ -2351,7 +2352,7 @@
 /turf/simulated/floor/plasteel,
 /area/mine/outpost/mechbay)
 "eV" = (
-/obj/effect/spawner/window/reinforced/grilled,
+/obj/effect/spawner/window/reinforced/plasma/grilled,
 /turf/simulated/floor/plating,
 /area/mine/outpost/hallway/west)
 "eW" = (
@@ -3417,11 +3418,16 @@
 /turf/simulated/floor/indestructible/boss,
 /area/lavaland/surface/outdoors/legion)
 "hj" = (
-/obj/machinery/light/directional/east,
+/obj/machinery/light{
+	dir = 4
+	},
 /obj/structure/chair/comfy/shuttle{
 	dir = 8
 	},
-/turf/simulated/floor/mineral/titanium,
+/obj/effect/turf_decal{
+	dir = 10
+	},
+/turf/simulated/floor/mineral/plastitanium/red,
 /area/shuttle/siberia)
 "hl" = (
 /obj/structure/stone_tile/block{
@@ -3463,8 +3469,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "darkred"
+	icon_state = "darkredyellowfull"
 	},
 /area/mine/laborcamp)
 "hx" = (
@@ -3574,8 +3579,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "darkred"
+	icon_state = "darkredyellowfull"
 	},
 /area/mine/laborcamp)
 "id" = (
@@ -3729,6 +3733,9 @@
 	},
 /area/mine/outpost/lockers)
 "iB" = (
+/obj/effect/turf_decal/stripes/red/corner{
+	dir = 1
+	},
 /obj/machinery/mineral/labor_prisoner_shuttle_console{
 	pixel_y = 32
 	},
@@ -3920,8 +3927,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "darkred"
+	icon_state = "darkredyellowfull"
 	},
 /area/mine/laborcamp)
 "jq" = (
@@ -5382,6 +5388,12 @@
 /obj/structure/table/reinforced/brass,
 /turf/simulated/floor/indestructible/boss,
 /area/lavaland/surface/outdoors/legion)
+"pn" = (
+/obj/effect/turf_decal/stripes/red/line{
+	dir = 1
+	},
+/turf/simulated/floor/mineral/titanium,
+/area/shuttle/siberia)
 "pq" = (
 /turf/simulated/floor/mineral/titanium,
 /area/shuttle/siberia)
@@ -5504,6 +5516,10 @@
 	icon_state = "brown"
 	},
 /area/mine/laborcamp)
+"qJ" = (
+/obj/effect/decal/cleanable/fungus,
+/turf/simulated/wall/r_wall,
+/area/mine/laborcamp)
 "qK" = (
 /obj/structure/stone_tile/block/cracked{
 	dir = 4
@@ -5545,7 +5561,9 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/item/cigbutt,
-/turf/simulated/floor/plasteel/dark,
+/turf/simulated/floor/plasteel{
+	icon_state = "darkredyellowfull"
+	},
 /area/mine/laborcamp)
 "rm" = (
 /obj/machinery/conveyor{
@@ -5776,10 +5794,8 @@
 /turf/simulated/floor/lava/lava_land_surface,
 /area/lavaland/surface/outdoors/legion)
 "sO" = (
+/obj/structure/bed/roller,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/table,
-/obj/item/storage/firstaid/ancient,
-/obj/item/stack/medical/bruise_pack/advanced,
 /turf/simulated/floor/plasteel{
 	icon_state = "barber"
 	},
@@ -5827,7 +5843,7 @@
 /area/lavaland/surface/outdoors/legion)
 "te" = (
 /obj/machinery/door/firedoor,
-/obj/effect/spawner/window/reinforced/grilled,
+/obj/effect/spawner/window/reinforced/plasma/grilled,
 /turf/simulated/floor/plating,
 /area/mine/outpost/cafeteria)
 "ti" = (
@@ -6140,7 +6156,7 @@
 /turf/simulated/floor/indestructible/boss,
 /area/lavaland/surface/outdoors/legion)
 "uL" = (
-/obj/effect/spawner/window/reinforced/grilled,
+/obj/effect/spawner/window/reinforced,
 /obj/machinery/flasher{
 	id = "labor"
 	},
@@ -6261,9 +6277,10 @@
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors)
 "vk" = (
-/obj/machinery/door/airlock/titanium,
-/obj/effect/mapping_helpers/airlock/autoname,
-/obj/effect/mapping_helpers/airlock/access/any/security/brig,
+/obj/machinery/door/airlock/titanium{
+	name = "Labor Shuttle Airlock"
+	},
+/obj/effect/mapping_helpers/airlock/access/all/security/brig,
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/shuttle/siberia)
 "vm" = (
@@ -6308,8 +6325,7 @@
 	pixel_y = 22
 	},
 /turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "darkred"
+	icon_state = "darkredyellowfull"
 	},
 /area/mine/laborcamp)
 "vy" = (
@@ -6351,14 +6367,19 @@
 	dir = 8
 	},
 /area/mine/outpost/hallway/east)
+"vG" = (
+/obj/structure/shuttle/engine/propulsion/burst{
+	dir = 8
+	},
+/turf/simulated/wall/mineral/titanium/interior,
+/area/lavaland/surface/outdoors)
 "vI" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/small/directional/north,
 /obj/item/trash/syndi_cakes,
 /obj/effect/decal/cleanable/cobweb2,
 /turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "darkred"
+	icon_state = "darkredyellowfull"
 	},
 /area/mine/laborcamp)
 "vK" = (
@@ -6442,7 +6463,9 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel/dark,
+/turf/simulated/floor/plasteel{
+	icon_state = "darkredyellowfull"
+	},
 /area/mine/laborcamp)
 "wn" = (
 /obj/structure/stone_tile/block/cracked{
@@ -6521,14 +6544,13 @@
 /area/mine/outpost/comms)
 "wN" = (
 /obj/machinery/door/firedoor,
-/obj/effect/spawner/window/reinforced/grilled,
+/obj/effect/spawner/window/reinforced/plasma/grilled,
 /turf/simulated/floor/plating,
 /area/mine/outpost/medbay)
 "wP" = (
 /obj/structure/shuttle/engine/heater,
-/obj/structure/window/reinforced{
-	dir = 1;
-	layer = 2.9
+/obj/structure/window/plasmareinforced{
+	dir = 1
 	},
 /turf/simulated/floor/plating/lavaland_air,
 /area/shuttle/siberia)
@@ -6742,8 +6764,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/item/cigbutt,
 /turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "darkred"
+	icon_state = "darkredyellowfull"
 	},
 /area/mine/laborcamp)
 "yo" = (
@@ -6908,8 +6929,7 @@
 /obj/structure/table,
 /obj/item/kitchen/utensil/fork,
 /turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "darkred"
+	icon_state = "darkredyellowfull"
 	},
 /area/mine/laborcamp)
 "zs" = (
@@ -7367,6 +7387,12 @@
 /obj/effect/mapping_helpers/no_lava,
 /turf/simulated/mineral/random/volcanic,
 /area/lavaland/surface/outdoors)
+"BC" = (
+/obj/structure/closet/crate/freezer/iv_storage,
+/turf/simulated/floor/plasteel{
+	icon_state = "barber"
+	},
+/area/mine/laborcamp)
 "BD" = (
 /obj/structure/closet/secure_closet/miner,
 /turf/simulated/floor/plasteel{
@@ -7428,8 +7454,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "darkred"
+	icon_state = "darkredyellowfull"
 	},
 /area/mine/laborcamp)
 "Cb" = (
@@ -7569,8 +7594,18 @@
 	},
 /area/mine/laborcamp/security)
 "CK" = (
-/obj/structure/closet/crate,
-/turf/simulated/floor/mineral/titanium,
+/obj/structure/chair/comfy/shuttle{
+	dir = 4
+	},
+/obj/effect/turf_decal{
+	dir = 6
+	},
+/obj/machinery/camera{
+	c_tag = "Labor Camp Shuttle";
+	network = list("Labor Camp");
+	dir = 4
+	},
+/turf/simulated/floor/mineral/plastitanium/red,
 /area/shuttle/siberia)
 "CL" = (
 /obj/structure/girder,
@@ -7604,6 +7639,15 @@
 /obj/item/wirecutters/brass,
 /turf/simulated/floor/indestructible/boss,
 /area/lavaland/surface/outdoors/legion)
+"CW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table,
+/obj/item/stack/medical/splint,
+/obj/item/stack/medical/bruise_pack/advanced,
+/turf/simulated/floor/plasteel{
+	icon_state = "barber"
+	},
+/area/mine/laborcamp)
 "CX" = (
 /obj/effect/turf_decal/delivery/hollow,
 /obj/item/radio/intercom/directional/west,
@@ -7679,6 +7723,10 @@
 "Dq" = (
 /turf/simulated/wall,
 /area/mine/outpost/hallway/east)
+"Dt" = (
+/obj/item/stack/ore/iron,
+/turf/simulated/floor/plating/lavaland_air,
+/area/lavaland/surface/outdoors)
 "Dy" = (
 /obj/item/toy/figure/crew/miner,
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
@@ -7984,7 +8032,7 @@
 /obj/item/bedsheet/orange,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/damageturf,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/mine/laborcamp)
 "Fs" = (
 /obj/structure/stone_tile/block/burnt{
@@ -8043,6 +8091,7 @@
 /obj/effect/spawner/window/reinforced/polarized/grilled{
 	id = "mining qm"
 	},
+/obj/structure/fans/tiny,
 /turf/simulated/floor/plating,
 /area/mine/outpost/quartermaster)
 "FK" = (
@@ -8067,11 +8116,11 @@
 /area/lavaland/surface/outdoors)
 "FW" = (
 /obj/machinery/door/airlock/titanium{
-	id_tag = "s_docking_airlock"
+	id_tag = "s_docking_airlock";
+	name = "Labor Shuttle Airlock"
 	},
-/obj/effect/mapping_helpers/airlock/autoname,
+/obj/effect/mapping_helpers/airlock/access/all/security/brig,
 /obj/structure/fans/tiny,
-/obj/effect/mapping_helpers/airlock/access/any/security/brig,
 /turf/simulated/floor/plating,
 /area/shuttle/siberia)
 "FX" = (
@@ -8106,6 +8155,18 @@
 /obj/effect/spawner/random_spawners/oil_maybe,
 /turf/simulated/floor/plasteel,
 /area/mine/outpost/mechbay)
+"Gm" = (
+/obj/structure/table,
+/obj/item/storage/firstaid/ancient,
+/obj/machinery/camera{
+	c_tag = "Labor Camp Infirmary";
+	network = list("Labor Camp");
+	dir = 8
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "barber"
+	},
+/area/mine/laborcamp)
 "Gn" = (
 /obj/structure/chair/comfy/shuttle{
 	dir = 1
@@ -8116,7 +8177,7 @@
 "Gp" = (
 /obj/structure/sign/poster/contraband/clown,
 /obj/effect/spawner/random_spawners/wall_rusted_always,
-/turf/simulated/wall,
+/turf/simulated/wall/r_wall,
 /area/mine/laborcamp)
 "Gt" = (
 /obj/structure/stone_tile/cracked{
@@ -8251,6 +8312,9 @@
 /obj/effect/mapping_helpers/no_lava,
 /turf/simulated/floor/lava/mapping_lava,
 /area/lavaland/surface/outdoors/legion)
+"Hs" = (
+/turf/simulated/wall/r_wall,
+/area/mine/laborcamp)
 "Hu" = (
 /obj/structure/stone_tile/block,
 /obj/structure/stone_tile{
@@ -8300,6 +8364,14 @@
 	},
 /turf/simulated/floor/indestructible/boss,
 /area/lavaland/surface/outdoors/legion)
+"HE" = (
+/obj/structure/closet/walllocker/emerglocker/north,
+/obj/item/storage/toolbox/mechanical,
+/obj/item/flashlight/flare,
+/turf/simulated/floor/plasteel/lavaland_air{
+	icon_state = "titanium"
+	},
+/area/lavaland/surface/outdoors)
 "HF" = (
 /obj/structure/stone_tile/block{
 	dir = 8
@@ -8451,7 +8523,9 @@
 	dir = 4
 	},
 /obj/item/trash/sosjerky,
-/turf/simulated/floor/plasteel/dark,
+/turf/simulated/floor/plasteel{
+	icon_state = "darkredyellowfull"
+	},
 /area/mine/laborcamp)
 "Iv" = (
 /obj/effect/turf_decal/delivery,
@@ -8640,17 +8714,14 @@
 /area/lavaland/surface/outdoors/legion)
 "Jx" = (
 /obj/structure/shuttle/engine/heater,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
+/obj/structure/window/plasmareinforced{
 	dir = 1
 	},
-/obj/structure/window/reinforced{
-	dir = 4
+/obj/structure/window/plasmareinforced{
+	dir = 1
 	},
-/turf/simulated/floor/plating/airless,
-/area/shuttle/mining)
+/turf/simulated/floor/plating/lavaland_air,
+/area/shuttle/siberia)
 "JC" = (
 /obj/structure/lattice/catwalk/mining,
 /obj/effect/decal/cleanable/dirt,
@@ -8670,6 +8741,12 @@
 /obj/structure/closet/crate/necropolis/tendril,
 /turf/simulated/floor/indestructible/boss,
 /area/lavaland/surface/outdoors/legion)
+"JJ" = (
+/obj/structure/door_assembly/door_assembly_silver,
+/turf/simulated/floor/plasteel/lavaland_air{
+	icon_state = "titanium"
+	},
+/area/lavaland/surface/outdoors)
 "JK" = (
 /obj/machinery/conveyor{
 	dir = 8;
@@ -8687,7 +8764,7 @@
 	network = list("Labor Camp")
 	},
 /obj/effect/landmark/damageturf,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/oak,
 /area/mine/laborcamp)
 "JQ" = (
 /obj/machinery/light/small/directional/east,
@@ -8701,7 +8778,9 @@
 "JV" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/cigbutt,
-/turf/simulated/floor/plasteel/dark,
+/turf/simulated/floor/plasteel{
+	icon_state = "darkredyellowfull"
+	},
 /area/mine/laborcamp)
 "JX" = (
 /obj/structure/table,
@@ -8756,8 +8835,7 @@
 /obj/structure/table,
 /obj/item/trash/plate,
 /turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "darkred"
+	icon_state = "darkredyellowfull"
 	},
 /area/mine/laborcamp)
 "Ko" = (
@@ -8892,7 +8970,13 @@
 	id = "gulagshuttleflasher";
 	pixel_x = 25
 	},
-/turf/simulated/floor/mineral/titanium,
+/obj/structure/chair/comfy/shuttle{
+	dir = 8
+	},
+/obj/effect/turf_decal{
+	dir = 9
+	},
+/turf/simulated/floor/mineral/plastitanium/red,
 /area/shuttle/siberia)
 "KS" = (
 /turf/simulated/wall/boss,
@@ -8946,6 +9030,10 @@
 	dir = 1
 	},
 /obj/effect/mapping_helpers/no_lava,
+/turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"Ll" = (
+/obj/structure/flora/ash/tall_shroom,
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors)
 "Lr" = (
@@ -9290,7 +9378,7 @@
 /turf/simulated/floor/carpet,
 /area/mine/outpost/quartermaster)
 "Ni" = (
-/obj/effect/spawner/window/reinforced/grilled,
+/obj/effect/spawner/window/reinforced/plasma/grilled,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
@@ -9307,6 +9395,9 @@
 /obj/structure/railing,
 /turf/simulated/floor/lava/mapping_lava,
 /area/lavaland/surface/outdoors/outpost/catwalk)
+"Nl" = (
+/turf/simulated/wall/mineral/titanium,
+/area/lavaland/surface/outdoors)
 "Nn" = (
 /obj/structure/stone_tile/block/cracked,
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
@@ -9593,7 +9684,7 @@
 /area/mine/outpost/lockers)
 "PB" = (
 /obj/machinery/door/firedoor,
-/obj/effect/spawner/window/reinforced/grilled,
+/obj/effect/spawner/window/reinforced/plasma/grilled,
 /turf/simulated/floor/plating,
 /area/mine/outpost/lockers)
 "PH" = (
@@ -9654,7 +9745,7 @@
 /turf/simulated/floor/lava/mapping_lava,
 /area/lavaland/surface/outdoors/outpost/catwalk)
 "PX" = (
-/turf/simulated/wall,
+/turf/simulated/wall/r_wall,
 /area/mine/laborcamp/security)
 "Qb" = (
 /obj/structure/stone_tile/cracked{
@@ -9804,17 +9895,25 @@
 /area/lavaland/surface/outdoors/legion)
 "QZ" = (
 /obj/structure/shuttle/engine/heater,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced{
+/obj/structure/window/plasmareinforced{
 	dir = 1
 	},
-/turf/simulated/floor/plating/airless,
+/obj/structure/window/plasmareinforced{
+	dir = 4
+	},
+/obj/structure/window/plasmareinforced{
+	dir = 8
+	},
+/turf/simulated/floor/plating/lavaland_air,
 /area/shuttle/mining)
+"Rb" = (
+/obj/structure/grille/broken,
+/obj/structure/grille/broken,
+/obj/effect/mob_spawn/human/corpse/skeleton,
+/obj/effect/decal/cleanable/glass,
+/obj/item/shard,
+/turf/simulated/floor/plating/lavaland_air,
+/area/lavaland/surface/outdoors)
 "Rd" = (
 /obj/structure/rack,
 /obj/item/storage/bag/ore,
@@ -9839,7 +9938,7 @@
 /obj/structure/sign/securearea{
 	name = "\improper KEEP CLEAR: DOCKING AREA"
 	},
-/obj/effect/spawner/window/reinforced/grilled,
+/obj/effect/spawner/window/reinforced/plasma/grilled,
 /turf/simulated/floor/plating,
 /area/mine/outpost/hallway/west)
 "Rj" = (
@@ -9968,6 +10067,10 @@
 /obj/structure/stone_tile/cracked,
 /turf/simulated/floor/indestructible/boss,
 /area/lavaland/surface/outdoors/legion)
+"RY" = (
+/obj/structure/girder,
+/turf/simulated/floor/plating/lavaland_air,
+/area/lavaland/surface/outdoors)
 "Sa" = (
 /obj/structure/lattice/catwalk/mining,
 /obj/structure/marker_beacon/dock_marker,
@@ -10217,6 +10320,10 @@
 /obj/structure/fans/tiny,
 /turf/simulated/floor/plating,
 /area/mine/laborcamp)
+"TV" = (
+/obj/structure/grille/broken,
+/turf/simulated/floor/plating/lavaland_air,
+/area/lavaland/surface/outdoors)
 "Uc" = (
 /obj/structure/stone_tile/cracked{
 	dir = 8
@@ -10326,7 +10433,10 @@
 /obj/structure/chair/comfy/shuttle{
 	dir = 4
 	},
-/turf/simulated/floor/mineral/titanium,
+/obj/effect/turf_decal{
+	dir = 5
+	},
+/turf/simulated/floor/mineral/plastitanium/red,
 /area/shuttle/siberia)
 "UA" = (
 /obj/structure/stone_tile/block,
@@ -10472,6 +10582,13 @@
 	},
 /turf/simulated/floor/indestructible/boss,
 /area/lavaland/surface/outdoors/legion)
+"Vr" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/iv_drip,
+/turf/simulated/floor/plasteel{
+	icon_state = "barber"
+	},
+/area/mine/laborcamp)
 "Vt" = (
 /obj/machinery/camera{
 	c_tag = "Labor Camp Central";
@@ -10537,7 +10654,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/turf/simulated/floor/plasteel,
+/turf/simulated/floor/plasteel{
+	icon_state = "darkredyellowfull"
+	},
 /area/mine/laborcamp)
 "VD" = (
 /obj/machinery/door/airlock/glass,
@@ -10553,21 +10672,12 @@
 	},
 /area/mine/outpost/cafeteria)
 "VI" = (
-/obj/effect/baseturf_helper/lava_land,
+/obj/effect/baseturf_helper/asteroid/basalt,
 /turf/simulated/floor/mineral/titanium,
 /area/shuttle/siberia)
 "VJ" = (
-/obj/structure/table,
-/obj/item/stack/medical/bruise_pack/advanced,
-/obj/item/storage/firstaid/ancient,
-/obj/machinery/camera{
-	c_tag = "Labor Camp Infirmary";
-	network = list("Labor Camp");
-	dir = 8
-	},
-/turf/simulated/floor/plasteel{
-	icon_state = "barber"
-	},
+/obj/effect/spawner/random_spawners/wall_rusted_always,
+/turf/simulated/wall/r_wall,
 /area/mine/laborcamp)
 "VK" = (
 /obj/structure/flora/ash/stem_shroom,
@@ -10731,7 +10841,14 @@
 /obj/structure/table,
 /obj/item/folder/red,
 /obj/item/restraints/handcuffs,
-/obj/machinery/light/directional/east,
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/machinery/flasher_button{
+	id = "gulagshuttleflasher";
+	name = "Flash Control";
+	req_access_txt = "1"
+	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/shuttle/siberia)
 "WC" = (
@@ -10818,6 +10935,10 @@
 	icon_state = "tranquillite"
 	},
 /area/mine/outpost/cafeteria)
+"Xb" = (
+/obj/effect/decal/cleanable/ash,
+/turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
 "Xd" = (
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
@@ -11005,7 +11126,7 @@
 /area/mine/outpost/hallway/east)
 "Yb" = (
 /obj/effect/spawner/random_spawners/wall_rusted_always,
-/turf/simulated/wall,
+/turf/simulated/wall/r_wall,
 /area/mine/laborcamp/security)
 "Yc" = (
 /obj/machinery/light/small/directional/east,
@@ -11069,7 +11190,7 @@
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors/legion)
 "Yv" = (
-/obj/effect/spawner/window/reinforced/grilled,
+/obj/effect/spawner/window/reinforced/plasma/grilled,
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
 /area/mine/outpost/airlock)
@@ -11160,6 +11281,7 @@
 /obj/effect/spawner/window/reinforced/polarized/grilled{
 	id = "mining qm"
 	},
+/obj/structure/fans/tiny,
 /turf/simulated/floor/plating,
 /area/mine/outpost/quartermaster)
 "Zj" = (
@@ -11217,8 +11339,7 @@
 "Zv" = (
 /obj/machinery/economy/vending/sustenance,
 /turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "darkred"
+	icon_state = "darkredyellowfull"
 	},
 /area/mine/laborcamp)
 "Zy" = (
@@ -11312,9 +11433,18 @@
 /obj/effect/mapping_helpers/no_lava,
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors)
+"ZY" = (
+/obj/item/mounted/frame/intercom,
+/obj/item/stack/cable_coil{
+	amount = 1
+	},
+/turf/simulated/floor/plasteel/lavaland_air{
+	icon_state = "titanium"
+	},
+/area/lavaland/surface/outdoors)
 "ZZ" = (
 /obj/effect/decal/cleanable/fungus,
-/turf/simulated/wall,
+/turf/simulated/wall/r_wall,
 /area/mine/laborcamp/security)
 
 (1,1,1) = {"
@@ -13224,9 +13354,9 @@ an
 an
 an
 an
-an
-an
-an
+Xb
+aj
+aj
 an
 an
 an
@@ -13325,17 +13455,17 @@ aj
 aj
 aj
 aj
+ab
+dT
 aj
 aj
 aj
+ab
+Xu
 aj
 aj
 aj
-aj
-aj
-aj
-aj
-aj
+ab
 aj
 aj
 aj
@@ -13481,9 +13611,9 @@ an
 an
 an
 an
-an
-an
-an
+ab
+ab
+ab
 an
 an
 an
@@ -13580,17 +13710,17 @@ aj
 aj
 aj
 aj
-aj
-aj
-aj
-aj
-aj
-aj
-aj
-aj
-aj
-aj
-aj
+ab
+ab
+Ll
+ab
+ab
+ab
+dT
+ab
+ab
+ab
+ab
 aj
 aj
 aj
@@ -13738,9 +13868,9 @@ an
 an
 an
 an
-an
-an
-an
+vG
+JJ
+vG
 an
 an
 an
@@ -13836,8 +13966,8 @@ aj
 aj
 aj
 aj
-aj
-aj
+ab
+ab
 kI
 kI
 NW
@@ -13847,7 +13977,7 @@ NW
 kI
 kI
 kI
-aj
+ab
 aj
 aj
 aj
@@ -13995,9 +14125,9 @@ an
 an
 an
 an
-an
-an
-an
+Nl
+HE
+TV
 an
 an
 an
@@ -14093,19 +14223,19 @@ aj
 aj
 aj
 ab
-aj
-aj
+ab
+ab
 NW
 aw
 Bg
 vk
-pq
+pn
 Uy
 CK
 wP
 wt
-aj
-aj
+ab
+ab
 aj
 aj
 aj
@@ -14252,9 +14382,9 @@ an
 an
 an
 an
-an
-an
-an
+Dt
+ZY
+Nl
 an
 an
 an
@@ -14350,8 +14480,8 @@ aj
 aj
 aj
 aj
-aj
 ab
+ai
 NW
 BP
 Bg
@@ -14359,11 +14489,11 @@ kI
 iB
 VI
 pq
-wP
+Jx
 wt
-aj
-aj
-aj
+ab
+ai
+ai
 aj
 aj
 aj
@@ -14509,8 +14639,8 @@ an
 an
 an
 an
-an
-an
+RY
+Rb
 an
 an
 an
@@ -14608,7 +14738,7 @@ aD
 aj
 aj
 aj
-aj
+ai
 NW
 Wx
 hf
@@ -14618,9 +14748,9 @@ hj
 pq
 wP
 wt
-aj
-aj
 ab
+ai
+aj
 aj
 aj
 aj
@@ -14865,7 +14995,7 @@ wY
 aj
 aj
 aj
-aj
+ab
 kI
 kI
 FW
@@ -14875,8 +15005,8 @@ kI
 bO
 kI
 kI
-aj
-aj
+ab
+VK
 aj
 aj
 aj
@@ -15127,12 +15257,12 @@ PX
 PX
 Hc
 PX
-aq
-aq
+Hs
+Hs
 TU
-aq
-aj
-aj
+VJ
+ai
+ab
 aj
 aj
 aj
@@ -15387,7 +15517,7 @@ PX
 DT
 zY
 JZ
-aq
+VJ
 aj
 aj
 aj
@@ -15629,12 +15759,12 @@ aj
 aj
 aj
 aD
-qT
+VJ
 ap
 ap
 ap
-qT
-qT
+VJ
+VJ
 Yb
 Ov
 OE
@@ -15644,7 +15774,7 @@ PX
 rd
 Xr
 yw
-aq
+Hs
 oj
 aj
 aj
@@ -15886,7 +16016,7 @@ aj
 aj
 aj
 aD
-aq
+Hs
 vw
 zo
 Kl
@@ -15901,10 +16031,10 @@ PX
 PK
 JZ
 hQ
-aq
+Hs
 Lz
-aj
-aj
+ab
+ab
 aj
 aj
 aj
@@ -16158,11 +16288,11 @@ HN
 JZ
 YI
 aJ
-aq
+Hs
 Ni
-aq
-aq
-aj
+VJ
+VJ
+VJ
 aj
 aj
 aj
@@ -16400,7 +16530,7 @@ an
 aj
 aj
 aj
-tZ
+qJ
 vI
 ic
 ym
@@ -16415,11 +16545,11 @@ PX
 op
 sv
 jn
-aq
+Hs
 bZ
 sO
-ap
-aj
+Vr
+Hs
 aj
 aj
 aj
@@ -16655,9 +16785,9 @@ an
 an
 an
 aj
-qT
-qT
-aq
+VJ
+VJ
+Hs
 qT
 qT
 qT
@@ -16669,14 +16799,14 @@ ZZ
 PX
 ba
 PX
-aq
-aq
+Hs
+Hs
 Cy
-aq
+Hs
 ca
 YV
+cd
 ap
-aj
 aj
 aj
 aj
@@ -16912,7 +17042,7 @@ an
 an
 an
 ab
-qT
+VJ
 NZ
 sF
 KE
@@ -16932,8 +17062,8 @@ tJ
 aq
 cb
 bh
+bh
 ap
-aj
 aj
 aj
 aj
@@ -17169,7 +17299,7 @@ an
 an
 an
 ab
-qT
+VJ
 qT
 GD
 YY
@@ -17189,9 +17319,9 @@ by
 bL
 cc
 ci
+CW
 ap
-aj
-aj
+ab
 aj
 aj
 aj
@@ -17426,7 +17556,7 @@ an
 an
 an
 an
-qT
+VJ
 Dd
 sF
 KE
@@ -17444,11 +17574,11 @@ bn
 Oh
 rS
 qT
-cd
+BC
+bh
+Gm
 VJ
-ap
-aj
-aj
+ab
 aj
 aj
 aj
@@ -17683,8 +17813,8 @@ an
 an
 an
 an
-qT
-qT
+VJ
+VJ
 aq
 aq
 aq
@@ -17700,13 +17830,13 @@ Vv
 bl
 aq
 bA
-qT
-aq
-aq
-aq
-aj
-aj
-aj
+VJ
+Hs
+Hs
+Hs
+VJ
+ab
+ab
 aj
 aj
 aj
@@ -17941,7 +18071,7 @@ an
 an
 an
 an
-aq
+Hs
 au
 au
 au
@@ -17957,12 +18087,12 @@ Vv
 jf
 aq
 bz
-qT
+VJ
 ce
 cz
-aq
-aj
-aj
+Hs
+ai
+ab
 aj
 aj
 aj
@@ -18198,7 +18328,7 @@ an
 an
 an
 an
-qT
+VJ
 lO
 HA
 av
@@ -18217,9 +18347,9 @@ bB
 bM
 cA
 sM
-tZ
-aj
-aj
+qJ
+ai
+ab
 aj
 aj
 aj
@@ -18455,7 +18585,7 @@ an
 an
 an
 an
-qT
+VJ
 tT
 WJ
 qw
@@ -18471,12 +18601,12 @@ Vv
 qT
 aq
 qT
-qT
+VJ
 cg
 sM
-tZ
-aj
-aj
+qJ
+dT
+ab
 aj
 aj
 aj
@@ -18712,7 +18842,7 @@ an
 an
 an
 an
-aq
+Hs
 oA
 Ts
 JQ
@@ -18728,11 +18858,11 @@ Ia
 zt
 rr
 JP
-qT
+VJ
 cB
 cC
-aq
-aj
+VJ
+ab
 aj
 aj
 aj
@@ -18969,12 +19099,12 @@ an
 an
 an
 an
-aq
-qT
-qT
-aq
-qT
-qT
+Hs
+VJ
+VJ
+Hs
+VJ
+VJ
 xx
 DX
 aq
@@ -18985,10 +19115,10 @@ Hi
 aq
 De
 Fp
-qT
-qT
-qT
-qT
+VJ
+VJ
+VJ
+VJ
 aj
 aj
 aj
@@ -19231,18 +19361,18 @@ an
 an
 an
 an
-aq
+Hs
 tC
 JZ
-aq
-qT
-qT
-qT
-tZ
-qT
-qT
-aq
-aq
+Hs
+VJ
+VJ
+VJ
+qJ
+VJ
+VJ
+Hs
+Hs
 aj
 aj
 aj
@@ -19488,10 +19618,10 @@ an
 an
 an
 an
-aq
+Hs
 ap
 gF
-aq
+Hs
 aT
 aX
 aX
@@ -19776,7 +19906,7 @@ xC
 tb
 xC
 tb
-Jx
+QZ
 bF
 kQ
 ch
