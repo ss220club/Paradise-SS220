@@ -144,3 +144,38 @@
 	reference = "E_NITR"
 	cost = 25
 	contains = list(/obj/item/clothing/mask/breath/vox)
+
+/datum/vox_pack/equipment/jammer
+	name = "Глушилка"
+	desc = "Глушитель связи."
+	reference = "E_JAM"
+	cost = 500
+	contains = list(/obj/item/jammer)
+
+/datum/vox_pack/equipment/jammer
+	name = "Глушилка"
+	desc = "Глушитель связи."
+	reference = "E_JAM"
+	cost = 500
+	contains = list(/obj/item/jammer)
+
+/datum/vox_pack/equipment/ai_detector
+	name = "Детектор"
+	desc = "Детектор искусственного интеллекта замаскированного под мультиметр."
+	reference = "E_AI"
+	cost = 250
+	contains = list(/obj/item/multitool/ai_detect)
+
+/datum/vox_pack/equipment/stealth
+	name = "Имплантер Маскировки"
+	desc = "Имплантер для скрытых операций и краж."
+	reference = "E_BCI_S"
+	cost = 2000
+	contains = list(/obj/item/bio_chip_implanter/stealth)
+
+/datum/vox_pack/equipment/freedom
+	name = "Имплантер Свободы"
+	desc = "Имплантер скоротечно изменяющий структуру костей для освобождения от сдерживающих факторов."
+	reference = "E_BCI_F"
+	cost = 1500
+	contains = list(/obj/item/bio_chip_implanter/freedom)

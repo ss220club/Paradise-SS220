@@ -151,20 +151,73 @@
 
 // Stealth
 
+// Crew Steath Suit
 /obj/item/clothing/suit/armor/vox_merc/stealth
 	name = "vox mercenary stealth suit"
-	desc = "Специализированный маскировочный костюм воксов-наемников. Синтетический материал используемый в костюмах воксов позволяет тем действовать в неблагоприятных для них окружающих условиях, делая их костюмы универсальными для большинства атмосфер с приемлимым давлением."
+	desc = "Специализированный маскировочный костюм воксов-наемников. Синтетический материал используемый в костюмах воксов позволяет тем действовать в неблагоприятных для них окружающих условиях, делая их костюмы универсальными для большинства атмосфер с приемлимым давлением. \
+		Костюм с маскировочной системой, напрямую связанная с телом носителя. При снимании костюма возможно ощущение легкого недомогания."
 	icon_state = "vox-merc-stealth"
 	item_color = "vox-merc-stealth"
 	blood_overlay_type = "suit"
 	armor = list(MELEE = 20, BULLET = 20, LASER = 20, ENERGY = 20, BOMB = 15, RAD = INFINITY, FIRE = INFINITY, ACID = 80)
 	strip_delay = 6 SECONDS
 	put_on_delay = 4 SECONDS
+	var/datum/spell/disguise_self/vox/disguise_spell
 
+/datum/spell/disguise_self/vox
+	name = "Маскировка"
+	desc = "Замаскируйтесь под члена экипажа с его голосом в текущей зоне. \
+  		Внимательный осмотр выдаст вас. Если повредить маскировку - она сбросится.
+	invocation = "none"
+	invocation_type = "none"
+
+/obj/item/clothing/suit/armor/vox_merc/stealth/equipped(mob/living/user, slot)
+	..()
+	if(isvox(user) && slot == SLOT_HUD_OUTER_SUIT)
+		if(!disguise_spell)
+			disguise_spell = new
+		user.AddSpell(disguise_spell)
+
+/obj/item/clothing/suit/armor/vox_merc/stealth/dropped(mob/user)
+	. = ..()
+	if(user && disguise_spell)
+		user.RemoveSpell(disguise_spell)
+		// сбрасываем спел нанеся чутка урон
+		SEND_SIGNAL(src, COMSIG_MOB_APPLY_DAMAGE, 5, BRUTE)
+
+/obj/item/clothing/suit/armor/vox_merc/stealth/Destroy()
+	. = ..()
+	if(disguise_spell)
+		QDEL_NULL(disguise_spell)
+
+// Smoke Helmet
 /obj/item/clothing/head/helmet/vox_merc/stealth
 	name = "vox mercenary stealth helmet"
+	desc = "Специализированный шлем воксов-наемников со встроенной системой дымогенератора."
 	icon_state = "vox-merc-stealth"
 	item_color = "vox-merc-stealth"
 	armor = list(MELEE = 20, BULLET = 20, LASER = 20, ENERGY = 20, BOMB = 15, RAD = INFINITY, FIRE = INFINITY, ACID = 80)
 	flags = HEADBANGPROTECT
 	flags_inv =  HIDEMASK|HIDEEARS|HIDEEYES
+	var/datum/spell/disguise_self/vox/smoke_spell
+
+/datum/spell/smoke
+	name = "Дымовой занавес"
+	desc = "Выпустить дымовую занавесу скрывающее поле зрение всех находящихся в нём в ближайшей зоне."
+
+/obj/item/clothing/head/helmet/vox_merc/stealth/equipped(mob/living/user, slot)
+	..()
+	if(isvox(user) && slot == SLOT_HUD_HEAD)
+		if(!smoke_spell)
+			smoke_spell = new
+		user.AddSpell(smoke_spell)
+
+/obj/item/clothing/head/helmet/vox_merc/stealth/dropped(mob/user)
+	. = ..()
+	if(user && smoke_spell)
+		user.RemoveSpell(smoke_spell)
+
+/obj/item/clothing/head/helmet/vox_merc/stealth/Destroy()
+	. = ..()
+	if(smoke_spell)
+		QDEL_NULL(smoke_spell)

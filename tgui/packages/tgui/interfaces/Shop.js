@@ -226,7 +226,7 @@ const ShopItemButtons = (props, context) => {
     <Button
       icon="shopping-cart"
       content={'Добавить в корзину (' + i.cost + ' Кикиридитов)'}
-      color={i.hijack_only === 1 && 'red'}
+      color={i.limit !== -1 && 'red'}
       tooltip="Добавить товар в корзину, увеличив общее число данного товара."
       tooltipPosition="left"
       onClick={() =>
@@ -234,7 +234,7 @@ const ShopItemButtons = (props, context) => {
           item: i.obj_path,
         })
       }
-      disabled={i.cost > cash || (i.limit !== -1 && i.purchased >= i.limit)}
+      disabled={i.cost > cash || (i.limit !== -1 && i.purchased >= i.limit) || i.is_time_available === false}
     />
   );
 };

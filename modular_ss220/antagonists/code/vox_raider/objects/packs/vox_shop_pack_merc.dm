@@ -37,7 +37,7 @@
 		)
 
 /datum/vox_pack/mercenary/lamilar/scout
-	name = ""
+	name = "Ламилярный Костюм Разведчика"
 	desc = "Компактный и мобильный костюм сформированный из лёгких пластин и за счет их особого размещения, увеличивает погашение импульсов перенаправляя их в ускорение носителя, но взамен теряя значимые защитные свойства. "
 	reference = "M_LAM_S"
 	cost = 1000
@@ -57,16 +57,13 @@
 		/obj/item/clothing/head/helmet/vox_merc/bomber
 		)
 
-
 /datum/vox_pack/mercenary/stealth
 	name = "Маскировочный Костюм"
 	desc = "Специализированный маскировочный костюм воксов-наемников. Синтетический материал используемый в костюмах воксов позволяет тем действовать в неблагоприятных для них окружающих условиях, делая их костюмы универсальными для большинства атмосфер с приемлимым давлением. \
-	Поставляется с маскировочными приборами."
+	Предназначен для скрытых операций."
 	reference = "M_STE"
-	cost = 3500
+	cost = 4500
 	contains = list(
 		/obj/item/clothing/suit/armor/vox_merc/stealth,
 		/obj/item/clothing/head/helmet/vox_merc/stealth,
-		/obj/item/jammer,
-		/obj/item/bio_chip_implanter/stealth
 		)

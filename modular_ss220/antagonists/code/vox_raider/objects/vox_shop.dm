@@ -259,7 +259,8 @@
 			"cost" = pack.cost,
 			"obj_path" = pack.reference,
 			"amount" = cart_list[reference],
-			"limit" = pack.limited_stock
+			"limit" = pack.limited_stock,
+			"is_time_available" = pack.check_time_available()
 			))
 
 /obj/machinery/vox_shop/proc/add_to_cart(params, mob/user)
