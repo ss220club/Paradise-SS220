@@ -503,12 +503,13 @@
 
 /obj/machinery/vox_trader/proc/make_new_vox_raider(mob/user, mob/living/M)
 	if(!M.mind)
-		continue
+		return FALSE
 	var/datum/antagonist/vox_raider/antag = locate() in M.mind.antag_datums
 	if(antag)
-		continue
+		return FALSE
 	for(var/datum/antagonist/A as anything in user.mind.antag_datums)
 		var/datum/team/team = A.get_team()
 		if(team)
 			team.add_member(M.mind, TRUE)
 			break
+	return TRUE
