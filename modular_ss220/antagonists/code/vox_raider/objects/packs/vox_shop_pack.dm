@@ -1,0 +1,42 @@
+/datum/vox_pack
+	var/name = "DEBUG Vox Pack"
+	var/desc = "Описание отсутствует. Сообщите разработчику."
+	var/reference = null
+	var/cost = -1	// -1 = hide
+	var/is_need_trader_cost = TRUE // Is need an additional cost on top of the cost from the “trader machine”
+	var/time_until_available = 0 // How long does it take from the start of the round? In MINUTES
+	var/limited_stock = -1 // Can you only buy so many? -1 allows for infinite purchases
+	var/purchased = 0	// How much have you already bought?
+	var/amount = 1
+	var/category = VOX_PACK_MISC
+	var/list/contains = list()
+
+/datum/vox_pack/proc/get_items_list(mob/user, put_in_hands = TRUE)
+	var/list/items_list = list()
+	for(var/typepath in contains)
+		if(!typepath)
+			continue
+		for(var/i in 1 to amount)
+			items_list.Add(typepath)
+	return items_list
+
+/datum/vox_pack/proc/check_possible_buy(amount)
+	if(limited_stock >= 0 && (purchased + amount > limited_stock))
+		return FALSE
+	return TRUE
+
+/datum/vox_pack/proc/check_time_available()
+	var/round_time_minutes = ROUND_TIME MINUTES
+	if(round_time_minutes < time_until_available)
+		return FALSE
+	return TRUE
+
+/datum/vox_pack/proc/get_time_available()
+	return "<b>[round(time_until_available / 36000)]:[add_zero(num2text(time_until_available / 600 % 60), 2)]:[add_zero(num2text(time_until_available / 10 % 60), 2)]</b>"
+
+/datum/vox_pack/proc/description()
+	if(!desc)
+		desc = replacetext(desc, "\n", "<br>")
+	if(!check_time_available())
+		desc += "<br>Заказ возможен после [get_time_available()]<br>"
+	return desc
