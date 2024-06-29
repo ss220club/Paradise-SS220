@@ -26,17 +26,22 @@
 	return TRUE
 
 /datum/vox_pack/proc/check_time_available()
-	var/round_time_minutes = ROUND_TIME MINUTES
-	if(round_time_minutes < time_until_available)
+	var/round_time_minutes = ROUND_TIME
+	if(round_time_minutes < time_until_available MINUTES)
 		return FALSE
 	return TRUE
 
 /datum/vox_pack/proc/get_time_available()
-	return "<b>[round(time_until_available / 36000)]:[add_zero(num2text(time_until_available / 600 % 60), 2)]:[add_zero(num2text(time_until_available / 10 % 60), 2)]</b>"
+	var/t = SSticker.time_game_started + time_until_available MINUTES
+	return "[round(t / 36000)]:[add_zero(num2text(t / 600 % 60), 2)]"
+
+/datum/vox_pack/proc/get_time_left()
+	var/t = SSticker.time_game_started + time_until_available MINUTES - ROUND_TIME
+	return "[round(t / 36000)]:[add_zero(num2text(t / 600 % 60), 2)]:[add_zero(num2text(t / 10 % 60), 2)]"
 
 /datum/vox_pack/proc/description()
 	if(!desc)
 		desc = replacetext(desc, "\n", "<br>")
 	if(!check_time_available())
-		desc += "<br>Заказ возможен после [get_time_available()]<br>"
+		desc += "\nЗаказ возможен после [get_time_available()] от начала рейда."
 	return desc

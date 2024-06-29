@@ -272,7 +272,7 @@
 		to_chat(user, span_warning("[pack.name] больше невозможно купить!"))
 		return
 	if(!pack.check_time_available())
-		to_chat(user, span_warning("[pack.name] будет доступен к покупке в [pack.get_time_available()]"))
+		to_chat(user, span_warning("[pack.name] будет доступен к покупке в [pack.get_time_available()], осталось [pack.get_time_left()]"))
 		return
 	LAZYSET(cart_list, item, max(amount, 1))
 	generate_tgui_cart(TRUE)
