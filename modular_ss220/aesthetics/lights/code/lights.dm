@@ -1,3 +1,6 @@
+/atom
+	var/glow_icon = 'modular_ss220/aesthetics/lights/icons/lamps.dmi'
+
 /obj/machinery/light
 	icon = 'modular_ss220/aesthetics/lights/icons/lights.dmi'
 	layer = ABOVE_MOB_LAYER
@@ -25,6 +28,3 @@
 
 /obj/item/flashlight/lamp
 	on = FALSE
-
-/atom
-	var/glow_icon = 'modular_ss220/aesthetics/lights/icons/lamps.dmi'
