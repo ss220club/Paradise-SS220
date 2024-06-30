@@ -41,7 +41,7 @@
 	mode = modes[mode]
 	to_chat(user, "<span class='[voluntary ? "notice" : "warning"]'>[voluntary ? "You turn the goggles" : "The goggles turn"] [mode ? "to [mode] mode" : "off"][voluntary ? "." : "!"]</span>")
 
-	if(mode == MODE_MESON)
+	//if(mode == MODE_MESON)
 	// 	if(!HAS_TRAIT_FROM(user, TRAIT_MESON_VISION, "meson_glasses[UID()]"))
 	// 		ADD_TRAIT(user, TRAIT_MESON_VISION, "meson_glasses[UID()]")
 	// 	active_on_equip = TRUE
