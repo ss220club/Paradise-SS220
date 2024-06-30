@@ -107,6 +107,10 @@
 	var/drop_z = -1
 	var/drop_chance = 5
 
+/obj/structure/sink/kolodec/examine_more(mob/user)
+	. = ..()
+	. += "<span class='userdanger'>Если туда упасть - верная смерть.</span>"
+
 /obj/structure/sink/kolodec/attack_hand(mob/user)
 	to_chat(user, "<span class='userdanger'>Вы подходите вплотную к колодцу. Выглядит КРАЙНЕ небезопасно. Может, не стоит?</span>")
 	if(!do_after(user, 3 SECONDS, target = src))
