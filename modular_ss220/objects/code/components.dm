@@ -9,7 +9,7 @@
 
 /datum/component/condition_locked_pickup/Initialize(required_role, ckey_whitelist, pickup_damage = 0)
 		src.pickup_damage = pickup_damage
-		AddComponent(/datum/component/pass_condition, _ckeys = ckey_whitelist, _required_role = required_role)
+		AddComponent(/datum/component/ckey_and_role_locked_pickup, _ckeys = ckey_whitelist, _required_role = required_role)
 
 /datum/component/condition_locked_pickup/RegisterWithParent()
 	RegisterSignal(parent, COMSIG_ITEM_PICKUP, PROC_REF(try_pick_up))
@@ -28,16 +28,16 @@
 			user.adjustBruteLoss(rand(pickup_damage, pickup_damage * 2))
 	return
 
-/datum/component/pass_condition
+/datum/component/ckey_and_role_locked_pickup
 	var/list/ckeys = list()
 	var/required_role
 
-/datum/component/pass_condition/Initialize(list/_ckeys = list(), _required_role = null)
+/datum/component/ckey_and_role_locked_pickup/Initialize(list/_ckeys = list(), _required_role = null)
 	ckeys = _ckeys
 	required_role = _required_role
 	RegisterSignal(parent, COMSIG_IS_CONDITION_PASSED, PROC_REF(check_requirements))
 
-/datum/component/pass_condition/proc/check_requirements()
+/datum/component/ckey_and_role_locked_pickup/proc/check_requirements()
 	SIGNAL_HANDLER
 	if(usr.client.ckey in ckeys)
 		return COMPONENT_CONDITION_PASSED

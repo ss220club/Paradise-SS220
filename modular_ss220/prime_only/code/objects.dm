@@ -1,6 +1,6 @@
 #define LEGENDARY_SWORDS_CKEY_WHITELIST list("mooniverse")
 
-/obj/item/melee/rapier/genri_rapier
+/obj/item/melee/rapier/cane_rapier
 	name = "Трость-рапира"
 	desc = "Стилизованная под трость рапира, чье элегантное и обоюдоострое лезвие усажено на роскошно украшенную рукоять. Одни лишь инкрустированные в неё драгоценные камни стоят как целая звездная система."
 	icon = 'modular_ss220/prime_only/icons/saber.dmi'
@@ -10,7 +10,7 @@
 	lefthand_file = 'modular_ss220/prime_only/icons/saber_left.dmi'
 	righthand_file = 'modular_ss220/prime_only/icons/saber_right.dmi'
 
-/obj/item/storage/belt/rapier/genri_rapier
+/obj/item/storage/belt/rapier/cane_rapier
 	name = "Трость-рапира"
 	desc = "Ножны стилизованной под трость рапиры. Их корпус вырезан из черного дерева и щедро украшен позолотой. Их владелец обладает неоспоримый богатством и властью в известной Галактике."
 	icon_state = "trsheath"
@@ -18,10 +18,10 @@
 	icon = 'modular_ss220/prime_only/icons/saber.dmi'
 	lefthand_file = 'modular_ss220/prime_only/icons/saber_left.dmi'
 	righthand_file = 'modular_ss220/prime_only/icons/saber_right.dmi'
-	can_hold = list(/obj/item/melee/rapier/genri_rapier)
+	can_hold = list(/obj/item/melee/rapier/cane_rapier)
 
-/obj/item/storage/belt/rapier/genri_rapier/populate_contents()
-	new /obj/item/melee/rapier/genri_rapier(src)
+/obj/item/storage/belt/rapier/cane_rapier/populate_contents()
+	new /obj/item/melee/rapier/cane_rapier(src)
 	update_icon()
 
 /obj/item/dualsaber/legendary_saber
@@ -71,7 +71,7 @@
 	hitsound = hit_unwield
 	w_class = initial(w_class)
 
-/obj/item/dualsaber/legendary_saber/gromov_saber
+/obj/item/dualsaber/legendary_saber/sorrow_catcher
 	name = "Ловец Скорби"
 	desc = "\"Ловец  Скорби\"  (Второе название \"Плакса\") -  один из легендарных световых мечей.   Он сиволизизирует не только силу власти и могущества, но и является предметом гордости своего обладателя.  Искусно выполненый клинок излучает мягкий голубой свет,   словно призывая к миру и согласию, но при этом скрывает в себе силу и решимость защитить своего хозяина любой ценой.  Рукоять меча состоит из матового металлического материала,  так же на рукояти красуется  фреска с логотипом NT.   Ловец Скорби имеет специфический звук,  отдалённо напоминающий плач, от чего некоторые прозвали меч \"Плаксой\" \n Создатель:  Гаскон-Валлен-Деламот.    Текущий владелец: Билл Громов"
 	icon_state = "gr_dualsaber0"
@@ -82,7 +82,7 @@
 	unwieldsound = 'modular_ss220/prime_only/sound/weapons/gr_saberoff.ogg'
 	hit_wield = 'modular_ss220/prime_only/sound/weapons/gr_saberhit.ogg'
 
-/obj/item/dualsaber/legendary_saber/sharlotta_saber
+/obj/item/dualsaber/legendary_saber/flame
 	name = "Пламя"
 	desc = "\"Пламя\" - один из легендарных световых мечей. Он отражает неумолимую справедливость и рьяность характера своего хозяина. В противоречие грозному названию, эфес меча представляет собой аккуратное и \"нежное\" произведение искусства - отполированная нарезная титановая основа завершается золотым навершием, а декоративная гарда выполнен в виде раскрывшегося бутона. Энергетический клинок источает яркий фиолетовый свет, несущий очищение и упокоение своим врагам. Рукоять меча крайне хорошо сбалансирована и отдает дань аристократическим традициям человеческого прошлого. Создатель: Гаскон-Валлен-Деламот. Текущий владелец: Шарлотта Дитерхис."
 	icon_state = "sh_dualsaber0"
@@ -93,7 +93,7 @@
 	unwieldsound = 'modular_ss220/prime_only/sound/weapons/sh_saberoff.ogg'
 	hit_wield = 'modular_ss220/prime_only/sound/weapons/sh_saberhit.ogg'
 
-/obj/item/dualsaber/legendary_saber/kirien_saber
+/obj/item/dualsaber/legendary_saber/devotion
 	name = "Верность клятве"
 	desc = "\"Верность Клятве\" - легендарный световой меч с впечатляющим изумрудно-зеленым свечением.   Сияющий осколок зеленого света, словно призывает к доблести и чести.  Владение данным  оружием говорит о преданности и силе духа.  Этот меч служит, как напоминание о обязательствах и клятвах, данным владельцем при его получении.  Согласно мифам,  в свечении отражается сама душа создателя   Арканона, который проводил долгие годы в изоляции в попытках создать воистину  уникальное творение.  Рукоять хромированный сатин, украшенный древними иероглифами людской расы. Создатель: Арканон.  Текущий владелец: Хель Кириэн."
 	icon_state = "kir_dualsaber0"
@@ -104,7 +104,7 @@
 	unwieldsound = 'modular_ss220/prime_only/sound/weapons/kir_saberoff.ogg'
 	hit_wield = 'modular_ss220/prime_only/sound/weapons/kir_saberhit.ogg'
 
-/obj/item/dualsaber/legendary_saber/normandy_saber
+/obj/item/dualsaber/legendary_saber/sister
 	name = "Сестра"
 	desc = "\"Сестра\" - легендарный световой меч, представляет собой удивительное оружие с мистической историей и неповторимыми свойствами.  Его лезвие излучает мягкий  золотой свет, символизирующий  мудрость, мощь и защиту. Сестра - это не просто меч, а источник силы и опоры для своего владельца.  Его форма напоминает древние мечи рыцарей, но в тоже время он обладает строгим стилем, который дополняет своего владельца. Этот меч стал объектом поклонения и уважения во всей галактике, имя его символ доблести, чести и справедливости.  По мифам считается, что только тот, кто искренне верит в силу справедлиовсти и защиты, способен раскрывать скрытые возможности Сестры. Этот меч служит не просто как инструмент борьбы, но как символ верности высшим идеалам. Создатель: Коникс`Хеллькикс.  Текущий Владелец: Мунивёрс Нормандия"
 	icon_state = "norm_dualsaber0"
@@ -114,7 +114,7 @@
 	wieldsound = 'modular_ss220/prime_only/sound/weapons/norm_saberon.ogg'
 	unwieldsound = 'modular_ss220/prime_only/sound/weapons/norm_saberoff.ogg'
 	hit_wield = 'modular_ss220/prime_only/sound/weapons/norm_saberhit.ogg'
-/obj/item/dualsaber/legendary_saber/kelly_saber
+/obj/item/dualsaber/legendary_saber/flee_catcher
 	name = "Ловец Бегущих"
 	desc = "\"Ловец Бегущих\" - легендарный световой меч который является младшей частью меча \"Сестра\". Первый взгляд на корпус даёт понять, что он служит уже продолжительное время. Вся поверхность изобилует царапинами, сколами и потёртостями. Под кнопкой включения, вдоль рукояти, нарисованы семь белых, перечёркнутых жетонов - счёт владельцев, через которых прошло это оружие. Рядом с самым первым жетоном выгравировано ''2361. А.М.'' Рукоять меча удлинена для комфортного боя как одной, так и двумя руками, навершие Типа P покрыто золотом и обладает специальным разъёмом для подключения второго меча, а гарда представляет собой два закруглённых отростка. Обладатели этого меча используют хаотичный, адаптивный под врага стиль боя. Создатель: Коникс`Хеллькикс. Текущий Владелец: Мунивёрс Нормандия, в последствии был передан Рицу Келли."
 	icon_state = "kel_dualsaber0"
