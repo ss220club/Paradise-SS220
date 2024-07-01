@@ -97,7 +97,7 @@
 
 /obj/structure/sink/kolodec
 	name = "\improper колодец"
-	desc = "Главное не упасть..."
+	desc = "Дна не видно. К тому же тут склизко... Главное не упасть..."
 	icon = 'modular_ss220/dunes_map/icons/kolodec.dmi'
 	icon_state = "kolodec"
 	density = TRUE
@@ -105,14 +105,44 @@
 	var/drop_x = 1
 	var/drop_y = 1
 	var/drop_z = -1
+	var/drop_chance = 5
+
+/obj/structure/sink/kolodec/examine_more(mob/user)
+	. = ..()
+	. += "<span class='userdanger'>Если туда упасть - верная смерть.</span>"
+
+/obj/structure/sink/kolodec/attack_hand(mob/user)
+	to_chat(user, "<span class='userdanger'>Вы подходите вплотную к колодцу. Выглядит КРАЙНЕ небезопасно. Может, не стоит?</span>")
+	if(!do_after(user, 3 SECONDS, target = src))
+		return
+	. = ..()
+
+	if(prob(drop_chance))
+		drop(user)
+	else
+		to_chat(user, "<span class='userdanger'>Вы едва не сорвались в колодец. А дна ведь даже и не видно...</span>")
+
+/obj/structure/sink/kolodec/attackby(obj/item/O, mob/user, params)
+	to_chat(user, "<span class='userdanger'>Вы подходите вплотную к колодцу. Выглядит КРАЙНЕ небезопасно. Может, не стоит?</span>")
+	if(!do_after(user, 4 SECONDS, target = src))
+		return
+	. = ..()
+
+	if(prob(drop_chance))
+		drop(user)
+	else
+		to_chat(user, "<span class='userdanger'>Вы едва не сорвались в колодец. А дна ведь даже и не видно...</span>")
+
 
 /obj/structure/sink/kolodec/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/largetransparency)
 
-/obj/structure/sink/kolodec/MouseDrop_T(atom/movable/AM)
+/obj/structure/sink/kolodec/MouseDrop_T(atom/movable/AM, mob/user)
 	. = 0
-	if(!do_after(AM, 1 SECONDS, target = src))
+	if(isliving(AM))
+		visible_message("<span class='userdanger'>[user] начинает скидывать [AM] в колодец!!! </span>")
+	if(!do_after(user, 3 SECONDS, target = src))
 		return
 	AM.forceMove(src.loc)
 	var/thing_to_check = src
@@ -151,6 +181,8 @@
 		fallen_mob.notransform = FALSE
 		if(fallen_mob.stat != DEAD)
 			fallen_mob.adjustBruteLoss(500) //crunch from long fall, want it to be like legion in damage
+			log_admin("[key_name(fallen_mob)] упал в колодец! Руку приложил: [key_name(usr)]")
+			message_admins("[key_name_admin(fallen_mob)] упал в колодец! Руку приложил: [key_name_admin(usr)]")
 		return
 	for(var/mob/M in AM.contents)
 		M.forceMove(src)
@@ -975,3 +1007,14 @@
 
 /obj/structure/nt_ship/fly/fly_open
 	icon_state = "nt_ship_open"
+
+/obj/item/organ/internal/cyberimp/chest/hydration/hardened
+	name = "Hardened Hydration pump implant"
+	desc = "A military-grade version of the standard implant, for more elite forces."
+	emp_proof = TRUE
+
+/obj/structure/mirror/magic/kidan
+	name = "Жучье зеркало"
+	desc = "Тут могло бы быть ваше описани"
+	actually_magical = FALSE
+	race_list = list("Kidan")

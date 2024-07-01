@@ -98,6 +98,7 @@
 	var/options = list("Name", "Body", "Voice")
 	var/organ_warn = FALSE
 	var/actually_magical = TRUE
+	var/list/race_list = list("Human", "Tajaran", "Skrell", "Unathi", "Diona", "Vulpkanin", "Nian", "Grey", "Drask")
 
 /obj/structure/mirror/magic/attack_hand(mob/user)
 	if(!ishuman(user) || broken)
@@ -125,7 +126,7 @@
 		if("Body")
 			if(organ_warn)
 				to_chat(user, "<span class='boldwarning'>Using the mirror will destroy any non biochip implants in you!</span>")
-			var/list/race_list = list("Human", "Tajaran", "Skrell", "Unathi", "Diona", "Vulpkanin", "Nian", "Grey", "Drask")
+
 			if(actually_magical)
 				race_list = list("Human", "Tajaran", "Skrell", "Unathi", "Diona", "Vulpkanin", "Nian", "Grey", "Drask", "Vox", "Plasmaman", "Kidan")
 

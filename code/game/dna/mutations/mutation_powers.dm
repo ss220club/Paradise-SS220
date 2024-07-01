@@ -1111,7 +1111,7 @@
 	activation_messages = list("More information seems to reach your eyes...")
 	deactivation_messages = list("The amount of information reaching your eyes fades...")
 	instability = GENE_INSTABILITY_MINOR
-	traits_to_add = list(TRAIT_MESON_VISION)
+	// traits_to_add = list(TRAIT_MESON_VISION)
 
 /datum/mutation/meson_vision/New()
 	..()
