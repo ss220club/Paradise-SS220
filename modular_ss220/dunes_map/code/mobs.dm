@@ -479,9 +479,9 @@
 /mob/living/simple_animal/hostile/cthulhu/add_tts_component()
 	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/ornn)
 
-/mob/living/simple_animal/hostile/cthulhu/Login()
-	. = ..()
-	client.view = "27x21"
+//mob/living/simple_animal/hostile/cthulhu/Login()
+//	. = ..()
+//	client.view = "27x21"
 
 /mob/living/simple_animal/hostile/cthulhu/Life(seconds, times_fired)
 	. = ..()

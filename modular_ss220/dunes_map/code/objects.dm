@@ -1018,3 +1018,24 @@
 	desc = "Тут могло бы быть ваше описани"
 	actually_magical = FALSE
 	race_list = list("Kidan")
+
+/obj/structure/closet/syndicate/nuclear/duna
+	name = "armoury closet"
+	desc = "It's a storage unit for a Syndicate boarding party."
+
+/obj/structure/closet/syndicate/nuclear/populate_contents()
+	new /obj/item/ammo_box/magazine/m10mm(src)
+	new /obj/item/ammo_box/magazine/m10mm(src)
+	new /obj/item/ammo_box/magazine/m10mm(src)
+	new /obj/item/ammo_box/magazine/smgm45(src)
+	new /obj/item/ammo_box/magazine/smgm45(src)
+	new /obj/item/ammo_box/magazine/uzim9mm(src)
+	new /obj/item/storage/box/teargas(src)
+	new /obj/item/storage/box/flashbangs(src)
+	new /obj/item/storage/backpack/duffel/syndie/med(src)
+	new /obj/item/tank/jetpack/oxygen/harness(src)
+	new /obj/item/gun/projectile/automatic/shotgun/bulldog(src)
+	new /obj/item/gun/projectile/automatic/shotgun/bulldog(src)
+	new /obj/item/gun/projectile/automatic/c20r(src)
+	new /obj/item/gun/projectile/automatic/c20r(src)
+	new /obj/item/gun/projectile/automatic/mini_uzi(src)

@@ -182,7 +182,7 @@
 		/obj/item/organ/internal/cyberimp/brain/anti_stam/hardened,
 		/obj/item/organ/internal/cyberimp/chest/nutriment/plus/hardened,
 		/obj/item/organ/internal/cyberimp/arm/combat/centcom,
-		/obj/item/organ/internal/cyberimp/chest/hydration
+		/obj/item/organ/internal/cyberimp/chest/hydration/hardened
 	)
 
 /datum/outfit/admin/syndicate/midnight
@@ -195,5 +195,5 @@
 		/obj/item/organ/internal/eyes/cybernetic/thermals/hardened,
 		/obj/item/organ/internal/cyberimp/brain/anti_stam/hardened,
 		/obj/item/organ/internal/cyberimp/chest/nutriment/plus/hardened,
-		/obj/item/organ/internal/cyberimp/chest/hydration
+		/obj/item/organ/internal/cyberimp/chest/hydration/hardened
 	)
