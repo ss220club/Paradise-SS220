@@ -1039,3 +1039,13 @@
 	new /obj/item/gun/projectile/automatic/c20r(src)
 	new /obj/item/gun/projectile/automatic/c20r(src)
 	new /obj/item/gun/projectile/automatic/mini_uzi(src)
+
+/obj/effect/portal/to_boss
+	icon_state = "portal-syndicate"
+	var/target_x = 202
+	var/target_y = 324
+	var/target_z = 3
+
+/obj/effect/portal/to_boss/New(loc, turf/_target, obj/creation_object, lifespan = 900, mob/creation_mob, create_sparks = TRUE)
+	. = ..()
+	target = locate(target_x, target_y, target_z)
