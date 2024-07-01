@@ -441,6 +441,14 @@
 	assignment = "Normandy Special Forces"
 	rank = "Normandy Special Forces"
 
+/obj/item/card/id/midnight
+	name = "Миднайт Блэк's ID card (Syndicate Special Agent)"
+	desc = "An ID straight from Syndicate."
+	registered_name = "Миднайт Блэк"
+	assignment = "Syndicate Special Agent"
+	rank = "Syndicate Special Agent"
+	access = list(ACCESS_MAINT_TUNNELS, ACCESS_SYNDICATE, ACCESS_SYNDICATE_LEADER, ACCESS_SYNDICATE_COMMAND, ACCESS_EXTERNAL_AIRLOCKS)
+
 //sign
 /obj/structure/warn_sign
 	name = "предупреждающий знак"

@@ -15,6 +15,7 @@
 	mask = /obj/item/clothing/mask/gas/sechailer
 	glasses = /obj/item/clothing/glasses/hud/security/night
 	l_pocket = /obj/item/tank/internals/emergency_oxygen/double
+	l_ear = /obj/item/radio/headset/centcom
 	r_pocket = /obj/item/reagent_containers/hypospray/combat/nanites
 	back = /obj/item/storage/backpack/security
 	id = /obj/item/card/id/centcom/tanya
@@ -171,3 +172,28 @@
 /datum/outfit/redneck_women/woman2
 	name = "деревенщина-женщина 2"
 	suit = /obj/item/clothing/suit/hooded/abaya/orange
+
+/datum/outfit/job/ntspecops/normandy
+	name = "Мунивёрс Нормандия"
+	suit = /obj/item/clothing/suit/space/deathsquad/officer/soo_brown
+	l_pocket = /obj/item/dualsaber/legendary_saber/normandy_saber
+	cybernetic_implants = list(
+		/obj/item/organ/internal/eyes/cybernetic/xray/hardened,
+		/obj/item/organ/internal/cyberimp/brain/anti_stam/hardened,
+		/obj/item/organ/internal/cyberimp/chest/nutriment/plus/hardened,
+		/obj/item/organ/internal/cyberimp/arm/combat/centcom,
+		/obj/item/organ/internal/cyberimp/chest/hydration
+	)
+
+/datum/outfit/admin/syndicate/midnight
+	name = "Миднайт Блэк"
+	uniform = /obj/item/clothing/under/suit/really_black
+	shoes = /obj/item/clothing/shoes/chameleon/noslip
+	uplink_uses = 200
+	id = /obj/item/card/id/midnight
+	cybernetic_implants = list(
+		/obj/item/organ/internal/eyes/cybernetic/thermals/hardened,
+		/obj/item/organ/internal/cyberimp/brain/anti_stam/hardened,
+		/obj/item/organ/internal/cyberimp/chest/nutriment/plus/hardened,
+		/obj/item/organ/internal/cyberimp/chest/hydration
+	)
