@@ -67,9 +67,9 @@
 
 /// Reloads neon overlay (usually used after a color change)
 /obj/item/clothing/shoes/black/neon/proc/reload_neon_overlay(mob/user)
-	var/mob/living/carbon/human/H = user
 	if(!user)
 		return
+	var/mob/living/carbon/human/H = user
 	if(neon_overlay)
 		remove_neon_overlay(user)
 		if(H.get_item_by_slot(SLOT_HUD_SHOES))
@@ -77,9 +77,9 @@
 
 /// Toggles neon overlay and light emit
 /obj/item/clothing/shoes/black/neon/proc/toggle_glow(mob/user)
-	var/mob/living/carbon/human/H = user
 	if(!user)
 		return
+	var/mob/living/carbon/human/H = user
 	// Toggle neon overlay
 	if(!glow_active && H.get_item_by_slot(SLOT_HUD_SHOES))
 		apply_neon_overlay(user)
