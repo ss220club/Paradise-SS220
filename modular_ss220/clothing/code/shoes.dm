@@ -4,8 +4,8 @@
 
 /* Neon Shoes */
 /obj/item/clothing/shoes/black/neon
-	name = "неоновые кросовки"
-	desc = "Пара чёрных кросовок с светодиодными вставками."
+	name = "неоновые кроссовки"
+	desc = "Пара чёрных кроссовок с светодиодными вставками."
 	icon = 'modular_ss220/clothing/icons/object/shoes.dmi'
 	icon_state = "neon"
 	icon_override = 'modular_ss220/clothing/icons/mob/shoes.dmi'
@@ -27,7 +27,7 @@
 			toggle_glow(user)
 
 /obj/item/clothing/shoes/black/neon/attack_self(mob/user)
-	var/choice = tgui_input_list(user, "Что вы хотите сделать?", "Неоновые кросовки", list("Переключить подсветку", "Сменить цвет"))
+	var/choice = tgui_input_list(user, "Что вы хотите сделать?", "Неоновые кроссовки", list("Переключить подсветку", "Сменить цвет"))
 	switch(choice)
 		if("Переключить подсветку")
 			toggle_glow(user)
@@ -97,7 +97,7 @@
 
 /// Opens user input for changing neon color
 /obj/item/clothing/shoes/black/neon/proc/change_color(mob/user)
-	var/temp = input(user, "Пожалуйста, выберите цвет.", "Цвет кросовок") as color
+	var/temp = input(user, "Пожалуйста, выберите цвет.", "Цвет кроссовок") as color
 	color = temp
 	light_color = temp
 	reload_neon_overlay(user)
