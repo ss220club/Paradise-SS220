@@ -54,6 +54,7 @@
 	armor = list(melee = 50, bullet = 50, laser = 50, energy = 55, bomb = 50, rad = 50, fire = 100, acid = 75)
 	max_temperature = 50000
 	infra_luminosity = 6
+	lights_power = 15
 	leg_overload_coeff = 2
 	wreckage = /obj/structure/mecha_wreckage/nomad
 	internal_damage_threshold = 35
@@ -63,6 +64,7 @@
 	normal_step_energy_drain = 3
 	starting_voice = /obj/item/mecha_modkit/voice/syndicate/nomad
 	var/mob/living/carbon/gunner = null
+	var/mob/camera/aiEye/remote/eyeobj
 	var/datum/action/innate/mecha/gunner_mech_eject/gunner_eject_action = new
 	var/datum/action/innate/mecha/strafe/strafing_action = new
 	var/datum/action/innate/mecha/change_stance/change_stance_action = new
@@ -85,8 +87,9 @@
 	nomad_gun = new /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/nomad/missile
 	nomad_gun.attach(src)
 
-/obj/mecha/combat/nomad/proc/debug_proc()
-	flick("weapon_act_down", guns_decal)
+/obj/mecha/combat/nomad/proc/CreateEye()
+	eyeobj = new()
+	eyeobj.origin = src
 
 /obj/mecha/combat/nomad/proc/set_nomad_overlays(state)
 	if(!guns_decal)
@@ -204,8 +207,6 @@
 	else if (user == gunner)
 		GrantGunnerActions(user)
 
-	mech_evacuate_action.Grant(user, src)
-
 /obj/mecha/combat/nomad/proc/GrantDriverActions(mob/living/user)
 	eject_action.Grant(user, src)
 	stats_action.Grant(user, src)
@@ -215,9 +216,11 @@
 
 /obj/mecha/combat/nomad/proc/GrantGunnerActions(mob/living/user)
 	gunner_eject_action.Grant(user, src)
+	mech_evacuate_action.Grant(user, src)
 
 /obj/mecha/combat/nomad/proc/RemoveGunnerActions(mob/living/user)
 	gunner_eject_action.Remove(user)
+	mech_evacuate_action.Remove(user)
 
 /obj/mecha/combat/nomad/proc/RemoveDriverActions(mob/living/user)
 	eject_action.Remove(user)
@@ -228,7 +231,6 @@
 /obj/mecha/combat/nomad/RemoveActions(mob/living/user, human_occupant = 0)
 	internals_action.Remove(user)
 	lights_action.Remove(user)
-	mech_evacuate_action.Remove(user)
 	change_stance_action.Remove(user)
 	user.client.RemoveViewMod("mecha-auto-zoom")
 	user.client.fit_viewport()

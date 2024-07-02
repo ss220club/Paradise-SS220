@@ -3,12 +3,11 @@
 	name = "\improper FNX-66 Carbine"
 	icon_state = "mecha_carbine"
 	origin_tech = "materials=4;combat=4"
-	projectile = /obj/item/projectile/bullet/incendiary/shell/dragonsbreath
+	projectile = /obj/item/projectile/bullet/weakbullet3
 	fire_sound = 'sound/weapons/gunshots/gunshot_rifle.ogg'
 	projectiles_per_shot = 3
 	projectiles = 100
 	projectile_energy_cost = 0
-	projectile = /obj/item/projectile/bullet/incendiary/shell/dragonsbreath
 
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/nomad/missile
 	name = "\improper Nomad Light Missile Rack"
