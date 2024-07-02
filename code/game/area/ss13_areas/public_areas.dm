@@ -149,6 +149,7 @@
 	name = "Дормитории"
 	icon_state = "dorms"
 	sound_environment = SOUND_AREA_STANDARD_STATION
+	request_console_name = "Crew Quarters"
 
 /area/station/public/sleep
 	name = "Криохранилище Дормитория"
@@ -162,6 +163,7 @@
 /area/station/public/locker
 	name = "Бытовое Помещение"
 	icon_state = "locker"
+	request_console_name = "Crew Quarters"
 
 /area/station/public/toilet
 	name = "Туалеты Дормиторий"
@@ -177,6 +179,7 @@
 /area/station/public/fitness
 	name = "Фитнес-Зал"
 	icon_state = "fitness"
+	request_console_name = "Crew Quarters"
 
 /area/station/public/arcade
 	name = "Аркаданый Зал"
@@ -205,6 +208,7 @@
 /area/station/public/storage/tools
 	name = "Основное Хранилище Инструментов"
 	icon_state = "primarystorage"
+	request_console_name = "Tool Storage"
 
 /area/station/public/storage/art
 	name = "Хранилище Художественных Принадлежностей"

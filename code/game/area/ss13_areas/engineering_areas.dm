@@ -2,10 +2,13 @@
 /area/station/engineering/atmos
 	name = "Атмосферный Отдел"
 	icon_state = "atmos"
+	request_console_flags = RC_ASSIST | RC_SUPPLY
 
 /area/station/engineering/atmos/control
 	name = "Комната Контроля Атмосферы"
 	icon_state = "atmosctrl"
+	request_console_flags = RC_ASSIST | RC_SUPPLY
+	request_console_name = "Atmospherics"
 
 /area/station/engineering/atmos/distribution
 	name = "Атмосферный Распределительный Контур"
@@ -24,11 +27,14 @@
 /area/station/engineering/control
 	name = "Инженерный Отдел"
 	icon_state = "engine_control"
+	request_console_flags = RC_ASSIST | RC_SUPPLY
 
 /area/station/engineering/break_room
 	name = "Фойе Инженерного Отдела"
 	icon_state = "engibreak"
 	sound_environment = SOUND_AREA_SMALL_ENCLOSED
+	request_console_flags = RC_ASSIST | RC_SUPPLY
+	request_console_name = "Engineering"
 
 /area/station/engineering/break_room/secondary
 	name = "Дополнительное Фойе Инженерного Отдела"
@@ -37,10 +43,14 @@
 	name = "Инженерный Склад Снаряжения"
 	icon_state = "engilocker"
 	sound_environment = SOUND_AREA_SMALL_ENCLOSED
+	request_console_flags = RC_ASSIST | RC_SUPPLY
+	request_console_name = "Engineering"
 
 /area/station/engineering/hardsuitstorage
 	name = "Инженерный Склад ВКД"
 	icon_state = "engi"
+	request_console_flags = RC_ASSIST | RC_SUPPLY
+	request_console_name = "Engineering"
 
 /area/station/engineering/controlroom
 	name = "Инженерная Комната Управления"
@@ -101,3 +111,4 @@
 /area/station/engineering/tech_storage
 	name = "Техническое Хранилище"
 	icon_state = "techstorage"
+	request_console_name = "Tech Storage"

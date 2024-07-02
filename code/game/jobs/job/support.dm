@@ -393,14 +393,14 @@
 //action given to antag clowns
 /datum/action/innate/toggle_clumsy
 	name = "Toggle Clown Clumsy"
-	button_icon_state = "clown"
+	button_overlay_icon_state = "clown"
 
 /datum/action/innate/toggle_clumsy/Activate()
 	var/mob/living/carbon/human/H = owner
 	H.dna.SetSEState(GLOB.clumsyblock, TRUE)
 	singlemutcheck(H, GLOB.clumsyblock, MUTCHK_FORCED)
 	active = TRUE
-	background_icon_state = "bg_spell"
+	button_background_icon_state = "bg_spell"
 	UpdateButtons()
 	to_chat(H, "<span class='notice'>Вы начинаете вести себя неуклюже, чтобы отвести от себя подозрения. Снова сосредоточьтесь, прежде чем использовать оружие.</span>")
 
@@ -409,7 +409,7 @@
 	H.dna.SetSEState(GLOB.clumsyblock, FALSE)
 	singlemutcheck(H, GLOB.clumsyblock, MUTCHK_FORCED)
 	active = FALSE
-	background_icon_state = "bg_default"
+	button_background_icon_state = "bg_default"
 	UpdateButtons()
 	to_chat(H, "<span class='notice'>Вы сосредоточились и теперь можете эффективно пользоваться оружием.</span>")
 

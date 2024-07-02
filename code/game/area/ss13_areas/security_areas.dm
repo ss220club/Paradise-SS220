@@ -6,6 +6,8 @@
 /area/station/security/main
 	name = "Офис Службы Безопасности"
 	icon_state = "securityoffice"
+	request_console_flags = RC_ASSIST | RC_INFO
+	request_console_name = "Security"
 
 /area/station/security/lobby
 	name = "Лобби Службы Безопасности"
@@ -14,6 +16,8 @@
 /area/station/security/brig
 	name = "Бриг"
 	icon_state = "brig"
+	request_console_flags = RC_ASSIST | RC_INFO
+	request_console_name = "Security"
 
 /area/station/security/brig/prison_break()
 	for(var/obj/structure/closet/secure_closet/brig/temp_closet in src)
@@ -69,6 +73,8 @@
 /area/station/security/storage
 	name = "Склад Снаряжения Службы Безопасности"
 	icon_state = "securityequipmentstorage"
+	request_console_flags = RC_ASSIST | RC_INFO
+	request_console_name = "Security"
 
 /area/station/security/evidence
 	name = "Комната Хранения Улик"
@@ -88,6 +94,8 @@
 	name = "Офис Смотрителя"
 	icon_state = "Warden"
 	sound_environment = SOUND_AREA_SMALL_SOFTFLOOR
+	request_console_flags = RC_ASSIST | RC_SUPPLY | RC_INFO
+	request_console_name = "Warden"
 
 /area/station/security/armory
 	name = "Оружейная"
@@ -96,11 +104,15 @@
 /area/station/security/armory/secure
 	name = "Защищенная Оружейная"
 	icon_state = "secarmory"
+	request_console_flags = RC_ASSIST | RC_SUPPLY | RC_INFO
+	request_console_name = "Warden"
 
 /area/station/security/detective
 	name = "Офис Детектива"
 	icon_state = "detective"
 	ambientsounds = list('sound/ambience/ambidet1.ogg', 'sound/ambience/ambidet2.ogg')
+	request_console_flags = RC_ASSIST | RC_INFO
+	request_console_name = "Detective"
 
 /area/station/security/range
 	name = "Стрельбище"
@@ -119,6 +131,8 @@
 /area/station/security/checkpoint/secondary
 	name = "Дополнительный Контрольно-Пропускной Пункт Службы Безопасности"
 	icon_state = "checkpoint1"
+	request_console_flags = RC_ASSIST | RC_INFO
+	request_console_name = "Security"
 
 // Solitary
 /area/station/security/permasolitary
