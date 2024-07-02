@@ -3,7 +3,7 @@
 	var/duration = 1 SECONDS
 	/// Chance in percent of mob resisting this stage and move back to previous stage
 	var/resist_chance = 50
-	/// Chance to critically fail on resist and progress to next stage
+	/// Chance in percent to fail critically and progress to next stage
 	var/critical_failure_chance = 50
 	/// Message that victim recieves when stage is applied
 	var/on_apply_message = "Generic message"
@@ -21,19 +21,20 @@
 	if(on_apply_status_effect)
 		apply_to.apply_status_effect(on_apply_status_effect)
 
-	to_chat(apply_to, span_danger(on_apply_message))
-
 	on_apply(apply_to)
+	to_chat(apply_to, span_danger(on_apply_message))
 
 /**
  * Suction stage must be removed from mob this way. Calls `on_remove`.
  */
-/datum/quicksand_stage/proc/remove(mob/living/remove_from)
+/datum/quicksand_stage/proc/remove(mob/living/remove_from, )
 	SHOULD_NOT_OVERRIDE(TRUE)
 
-	to_chat(apply_to, span_green(on_remove_message))
+	if(on_apply_status_effect)
+		remove_from.remove_status_effect(on_apply_status_effect)
 
 	on_remove(remove_from)
+	to_chat(remove_from, span_green(on_remove_message))
 
 /**
  * Override if need to do something specific, when this stage is applied to mob.

@@ -4,14 +4,16 @@
 	/// Chance in percent of catching walking or running mob.
 	VAR_PRIVATE/default_mob_catch_chance = 30
 	/// Steps that mob will come through
-	/// Assoc list of mob currently being sucked to `/datum/quicksand_victim` object.
+	/// Assoc list of mob currently being sucked to `/datum/quicksand_victim_holder` object.
 	VAR_PRIVATE/list/victims = list()
 	/// List of `/atom/movable` that were completely devoured by quicksand.
 	/// Includes bulky objects and dead mobs
 	VAR_PRIVATE/list/devoured = list()
 	/// List of stages stage types
 	VAR_PRIVATE/list/stage_types = list(
-		/datum/quicksand_stage/initial
+		/datum/quicksand_stage/feet,
+		/datum/quicksand_stage/torso,
+		/datum/quicksand_stage/head
 	)
 	/// List of cached stage prototypes
 	VAR_PRIVATE/list/cached_stage_prototypes = list()
@@ -34,6 +36,7 @@
 
 /datum/component/quicksand/RegisterWithParent()
 	RegisterSignal(parent, COMSIG_ATOM_ENTERED, PROC_REF(on_entered))
+	RegisterSignal(parent, COMSIG_ATOM_EXITED, PROC_REF(on_exited))
 
 /datum/component/quicksand/proc/init_quicksand_stages()
 	PRIVATE_PROC(TRUE)
@@ -52,6 +55,15 @@
 		handle_item(entering)
 	else if(isliving(entering))
 		handle_living_mob(entering)
+
+/datum/component/quicksand/proc/on_exited(datum/source, atom/movable/exiting)
+	SIGNAL_HANDLER
+	PRIVATE_PROC(TRUE)
+
+	if(!isliving(exiting))
+		return
+
+	remove_victim(victims[exiting])
 
 /datum/component/quicksand/proc/handle_living_mob(mob/victim)
 	PRIVATE_PROC(TRUE)
@@ -82,10 +94,23 @@
 
 	devour(target)
 
-/datum/component/quicksand/proc/start_suction(mob/victim)
+/datum/component/quicksand/proc/start_suction(mob/living/victim)
 	PRIVATE_PROC(TRUE)
 
-	victims[victim] = new /datum/quicksand_victim(victim, get_stage_prototypes())
+	var/datum/quicksand_victim_holder/victim_holder = new /datum/quicksand_victim_holder(victim, get_stage_prototypes())
+	victims[victim] = victim_holder
+
+	RegisterSignal(victim_holder, COMSIG_QUICKSAND_VICTIM_RELEASED, PROC_REF(remove_victim))
+
+/datum/component/quicksand/proc/remove_victim(datum/quicksand_victim_holder/victim_holder_to_remove)
+	SIGNAL_HANDLER
+	PRIVATE_PROC(TRUE)
+
+	var/mob/living/actual_victim_mob = victim_holder_to_remove.get_victim()
+
+	victims -= actual_victim_mob
+	UnregisterSignal(victim_holder_to_remove, COMSIG_QUICKSAND_VICTIM_RELEASED)
+	qdel(victim_holder_to_remove)
 
 /datum/component/quicksand/proc/get_stage_prototypes()
 	PRIVATE_PROC(TRUE)
