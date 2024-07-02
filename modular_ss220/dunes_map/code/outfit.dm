@@ -197,3 +197,69 @@
 		/obj/item/organ/internal/cyberimp/chest/nutriment/plus/hardened,
 		/obj/item/organ/internal/cyberimp/chest/hydration/hardened
 	)
+
+// Синди сборы
+/datum/outfit/admin/syndicate/heads
+	name = "Синди Главы НЕ ИСПОЛЬЗОВАТЬ"
+	id = /obj/item/card/id/syndicate/command
+	mask = /obj/item/clothing/mask/chameleon/voice_change
+	l_ear = /obj/item/radio/headset/chameleon
+	cybernetic_implants = list(
+		/obj/item/organ/internal/cyberimp/chest/nutriment/plus/hardened,
+		/obj/item/organ/internal/cyberimp/chest/hydration/hardened
+	)
+
+/datum/outfit/admin/syndicate/heads/cybersun
+	name = "СИНДИКАТ – КИБЕРСАН"
+	uniform = /obj/item/clothing/under/rank/procedure/iaa
+	suit = /obj/item/clothing/suit/armor/hos/jensen
+	gloves = /obj/item/clothing/gloves/color/white
+	shoes = /obj/item/clothing/shoes/laceup
+	glasses = /obj/item/clothing/glasses/hud/security/sunglasses/jensenshades
+	r_hand = /obj/item/cane
+
+
+/datum/outfit/admin/syndicate/heads/donk
+	name = "СИНДИКАТ – ДОНК"
+	uniform = /obj/item/clothing/under/rank/procedure/lawyer/red
+	gloves = /obj/item/clothing/gloves/color/white
+	shoes = /obj/item/clothing/shoes/laceup
+	glasses = /obj/item/clothing/glasses/regular/hipster
+	head = /obj/item/clothing/head/boaterhat
+
+/datum/outfit/admin/syndicate/heads/gorlex
+	name = "СИНДИКАТ – ГОРЛЕКС"
+	uniform = /obj/item/clothing/under/syndicate
+	gloves = /obj/item/clothing/gloves/combat
+	shoes = /obj/item/clothing/shoes/combat
+	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
+	suit = /obj/item/clothing/suit/jacket/syndicatebomber
+
+/datum/outfit/admin/syndicate/heads/vox
+	name = "СИНДИКАТ – ВОКС"
+	uniform = /obj/item/clothing/under/vox/vox_casual
+	shoes = /obj/item/clothing/shoes/magboots/vox
+	glasses = /obj/item/clothing/glasses/eyepatch
+	head = /obj/item/clothing/head/fluff/kaki
+	suit = /obj/item/clothing/suit/pirate_brown
+
+/datum/outfit/admin/syndicate/heads/waffle
+	name = "СИНДИКАТ – ВАФЛЯ"
+	uniform = /obj/item/clothing/under/rank/procedure/lawyer/black
+	gloves = /obj/item/clothing/gloves/color/black
+	shoes = /obj/item/clothing/shoes/laceup
+	glasses = /obj/item/clothing/glasses/monocle
+	head = /obj/item/clothing/head/plaguedoctorhat
+
+/datum/outfit/admin/syndicate/heads/morezzi
+	name = "СИНДИКАТ – МОРЕЦЦИ"
+	uniform = /obj/item/clothing/under/misc/scratch
+	shoes = /obj/item/clothing/shoes/laceup
+	glasses = /obj/item/clothing/glasses/sunglasses
+	head = /obj/item/clothing/head/cowboyhat/white
+
+/datum/outfit/admin/syndicate/heads/self
+	name = "СИНДИКАТ – СЕЛФ"
+	suit = /obj/item/clothing/suit/armor/swat
+	shoes = /obj/item/clothing/shoes/combat
+	gloves = /obj/item/clothing/gloves/combat
