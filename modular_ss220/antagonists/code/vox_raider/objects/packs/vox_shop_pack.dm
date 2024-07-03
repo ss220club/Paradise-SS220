@@ -43,5 +43,5 @@
 	if(!desc)
 		desc = replacetext(desc, "\n", "<br>")
 	if(!check_time_available())
-		desc += "\n\nЗаказ возможен после [get_time_available()] от начала рейда."
+		desc += " \[Заказ возможен после [get_time_available()] от начала рейда.\]"
 	return desc

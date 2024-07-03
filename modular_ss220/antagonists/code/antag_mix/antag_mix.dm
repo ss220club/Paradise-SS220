@@ -126,6 +126,9 @@
 		return FALSE
 
 	for(var/picked_scenario in picked_scenarios)
+		log_debug("Antag mix picked scenario: [picked_scenario], spend budget [picked_scenarios[picked_scenario] - 1] times, left budget: [budget_left], players ready: [players_ready_amount]")
+		//var/scaled_times_picked = length(picked_scenarios) > 1 ? picked_scenarios[picked_scenario] - 1 : 1
+		//spend_budget(pre_execute_scenario(picked_scenario, scaled_times_picked, players_ready_amount))
 		spend_budget(pre_execute_scenario(picked_scenario, picked_scenarios[picked_scenario] - 1, players_ready_amount))
 
 	if(budget != budget_left && current_antag_fraction < max_antag_fraction && length(drafted_scenarios))

@@ -175,7 +175,9 @@
 	..()
 	if(isvox(user) && slot == SLOT_HUD_OUTER_SUIT)
 		if(!disguise_spell)
-			disguise_spell = new
+			disguise_spell = new(null)
+		if(!disguise_spell.action)
+			disguise_spell.action = new(src)
 		user.AddSpell(disguise_spell)
 
 /obj/item/clothing/suit/armor/vox_merc/stealth/dropped(mob/user)
@@ -199,7 +201,7 @@
 	armor = list(MELEE = 20, BULLET = 20, LASER = 20, ENERGY = 20, BOMB = 15, RAD = INFINITY, FIRE = INFINITY, ACID = 80)
 	flags = HEADBANGPROTECT
 	flags_inv =  HIDEMASK|HIDEEARS|HIDEEYES
-	var/datum/spell/disguise_self/vox/smoke_spell
+	var/datum/spell/smoke/smoke_spell
 
 /datum/spell/smoke
 	name = "Дымовой занавес"
@@ -209,7 +211,9 @@
 	..()
 	if(isvox(user) && slot == SLOT_HUD_HEAD)
 		if(!smoke_spell)
-			smoke_spell = new
+			smoke_spell = new(null)
+		if(!smoke_spell.action)
+			smoke_spell.action = new(src)
 		user.AddSpell(smoke_spell)
 
 /obj/item/clothing/head/helmet/vox_merc/stealth/dropped(mob/user)

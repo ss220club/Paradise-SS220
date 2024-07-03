@@ -17,13 +17,19 @@
 		log_debug("Max teams: ERROR; team_size: [team_size]; antag_cap: [get_total_antag_cap(population)]; population: [population]")
 		return FALSE
 
+	var/string_candidates = ""
+	for(var/mob/new_player/i in candidates)
+		string_candidates += "[i.name](ckey:[i.ckey]), "
+	log_debug("Antag scenario candidates: [string_candidates]")
+
 	var/teams_before = length(picked_teams)
 	modif_chance_recommended_species()
 	for(var/i in 1 to max_teams)
+		log_debug("Antag scenario team №[i] 'candidates' team_size: [team_size]; antag_cap: [get_total_antag_cap(population)]; population: [population]")
 		var/list/datum/mind/members = list()
 		for(var/j in 1 to team_size)
 			if(!length(candidates))
-				log_debug("Antag scenario team 'candidates' null length")
+				//log_debug("\[BREAK\] Antag scenario team №[i], size №[j] 'candidates' null length")
 				break
 
 			var/mob/new_player/team_member = pickweight(candidates)
@@ -44,17 +50,17 @@
 		var/string_names = ""
 		for(var/datum/mind/m in members)
 			string_names += "[m.name](ckey:[ckey(m.key)]), "
-		log_debug("Antag Scenatio pre_execute: members: [string_names];")
+		log_debug("Antag Team Scenario pre_execute team №[i]: members: [string_names];")
 
-		message_admins("Members: [json_encode(members)]")
 		// If for some reason, not enough members were found - we will try again
-		if(team_size > length(members))
+		if(team_size > length(members) && length(candidates) > 0)
 			max_teams++
+			message_admins("New Antag Team Required №[max_teams]- team_size: [team_size]; length(members): [length(members)]")
 			continue
 
-		message_admins("Picked team of: [json_encode(members)]")
 		picked_teams += list(members)
 
+	log_debug("Antag Team Scenario pre_execute: length(picked_teams)([length(picked_teams)]) - teams_before([teams_before]): [length(picked_teams) - teams_before]")
 	return length(picked_teams) - teams_before > 0
 
 
