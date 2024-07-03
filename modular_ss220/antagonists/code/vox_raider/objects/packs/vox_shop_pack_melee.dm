@@ -3,6 +3,14 @@
 	name = "DEBUG Melee Vox Pack"
 	category = VOX_PACK_MELEE
 
+// ============== Гарпун ==============
+
+/datum/vox_pack/melee/harpoon
+	name = "Гарпун"
+	desc = "Инструмент для охоты на космических китов."
+	reference = "ME_HARP"
+	cost = 100
+	contains = list(/obj/item/harpoon)
 
 // ============== Щиты ==============
 
@@ -69,4 +77,9 @@
 	cost = 500
 	contains = list(/obj/item/grenade/barrier/dropwall)
 
-
+/datum/vox_pack/melee/inflatable
+	name = "Надувной Набор"
+	desc = "Развертываемый надувной набор для заделывания разгерметизаций."
+	reference = "ME_IFL"
+	cost = 200
+	contains = list(/obj/item/storage/briefcase/inflatable)

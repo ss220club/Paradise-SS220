@@ -73,7 +73,7 @@
 	desc = "Боевые бронированные когтистые налапочники с улучшенным сцеплением с поверхностью."
 	reference = "C_SH_MC"
 	cost = 2000
-	timC_until_available = 45
+	time_until_available = 45
 	contains = list(/obj/item/clothing/shoes/magboots/vox/combat)
 
 /datum/vox_pack/clothes/magboots/heavy
@@ -81,7 +81,7 @@
 	desc = "Тяжелые бронированные когтистые налапочники для ведения боевых действий и защит нижних конечностей от всевозможных угроз."
 	reference = "C_SH_MH"
 	cost = 4000
-	timC_until_available = 60
+	time_until_available = 60
 	contains = list(/obj/item/clothing/shoes/magboots/vox/heavy)
 
 
@@ -103,14 +103,47 @@
 
 // ============== GLASSES ==============
 
+/datum/vox_pack/clothes/eye_night
+	name = "Очки Ночного Видения"
+	desc = "Очки позволяющие видеть в кромешной темноте."
+	reference = "C_EYE_NI"
+	cost = 300
+	contains = list(/obj/item/clothing/glasses/night)
+
+/datum/vox_pack/clothes/eye_meson
+	name = "Мезонный Глаз"
+	desc = "Мезонный кибернетический глаз с системой вставки в глазной разъем. Полностью заменяет функционирующий глаз или его полость. \
+	ВНИМАНИЕ! Глаз возможно удалить только хирургическим путем. Из-за своего размера - не позволяет надевать прочие приблуды на глаза. \
+	Перед взятием, должен оказаться в руках того, в кого будет вставлен кибернетический глаз."
+	reference = "C_EYE_ME"
+	cost = 1000
+	contains = list(/obj/item/clothing/glasses/meson/cyber)
+
 /datum/vox_pack/clothes/eye_thermal
 	name = "Термальный Глаз"
 	desc = "Термальный кибернетический глаз с системой вставки в глазной разъем. Полностью заменяет функционирующий глаз или его полость. \
-	ВНИМАНИЕ! Глаз возможно удалить только хирургическим путем."
+	ВНИМАНИЕ! Глаз возможно удалить только хирургическим путем. Из-за своего размера - не позволяет надевать прочие приблуды на глаза. \
+	Перед взятием, должен оказаться в руках того, в кого будет вставлен кибернетический глаз."
 	reference = "C_EYE_TH"
 	cost = 4500
+	time_until_available = 45
 	contains = list(/obj/item/clothing/glasses/thermal/cyber)
 
+/datum/vox_pack/clothes/sechud
+	name = "Дисплей Службы Безопасности"
+	desc = "Очки с защитой для глаз и с доступом в системы базы данных службы безопасности."
+	reference = "C_EYE_SEC"
+	cost = 3500
+	time_until_available = 45
+	contains = list(/obj/item/clothing/glasses/hud/security/sunglasses/fluff/voxxyhud)
+
+/datum/vox_pack/clothes/healthhud
+	name = "Медицинский Дисплей"
+	desc = "Очки для контроля жизненных показателей."
+	reference = "C_EYE_HEALTH"
+	cost = 1000
+	time_until_available = 45
+	contains = list(/obj/item/clothing/glasses/hud/health)
 
 
 // ============== EARS ==============
@@ -127,7 +160,7 @@
 	desc = "Наушник дальней связи для поддержания связи со стаей. Защищает ушные раковины от громких звуков"
 	reference = "C_RAD_ALT"
 	cost = 500
-	timC_until_available = 60
+	time_until_available = 60
 	contains = list(/obj/item/radio/headset/vox/alt)
 
 

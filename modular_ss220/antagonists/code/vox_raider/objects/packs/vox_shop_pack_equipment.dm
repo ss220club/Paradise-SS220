@@ -18,19 +18,19 @@
 	cost = 150
 	contains = list(/obj/item/card/id/syndicate/vox)
 
-/datum/vox_pack/equipment/food
-	name = "Варево"
-	desc = "Лучше чем ничего."
-	reference = "E_FOOD"
-	cost = 5
-	contains = list(/obj/item/food/snacks/soup/stew)
-
 /datum/vox_pack/equipment/hand_valuer
 	name = "Оценщик"
 	desc = "Позволяет узнать ценность товаров. Не забудьте его активировать о Расчичетчикик."
 	reference = "E_VALUER"
 	cost = 100
 	contains = list(/obj/item/hand_valuer)
+
+/datum/vox_pack/equipment/mask
+	name = "Дыхательная Маска"
+	desc = "С встроенной трубкой для дыхания"
+	reference = "E_MASK"
+	cost = 25
+	contains = list(/obj/item/clothing/mask/breath/vox)
 
 /datum/vox_pack/equipment/nitrogen
 	name = "Дыхательный Балон"
@@ -39,12 +39,8 @@
 	cost = 50
 	contains = list(/obj/item/tank/internals/emergency_oxygen/double/vox)
 
-/datum/vox_pack/equipment/nitrogen
-	name = "Дыхательная Маска"
-	desc = "С встроенной трубкой для дыхания"
-	reference = "E_NITR"
-	cost = 25
-	contains = list(/obj/item/clothing/mask/breath/vox)
+
+// TECH
 
 /datum/vox_pack/equipment/jammer
 	name = "Глушилка"
