@@ -11,7 +11,7 @@
 	var/category = VOX_PACK_MISC
 	var/list/contains = list()
 
-/datum/vox_pack/proc/get_items_list(mob/user, put_in_hands = TRUE)
+/datum/vox_pack/proc/get_items_list()
 	var/list/items_list = list()
 	for(var/typepath in contains)
 		if(!typepath)

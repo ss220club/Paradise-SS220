@@ -286,7 +286,7 @@
 /datum/vox_pack/kit/kigyar/bio
 	name = "Набор Киг-Йар Биоштурмовика"
 	desc = "Набор Киг-Йар для ведения боевых действий в ближнем бою"
-	reference = "K_KIG_LONG"
+	reference = "K_KIG_BIO"
 	packs_list = list(
 		/datum/vox_pack/mercenary/bomber,
 		/datum/vox_pack/clothes/magboots/combat,
@@ -305,10 +305,10 @@
 		/obj/item/clothing/glasses/sunglasses/big,
 	)
 
-/datum/vox_pack/kit/kigyar/bio
+/datum/vox_pack/kit/kigyar/biotech
 	name = "Набор Киг-Йар Биотехника"
 	desc = "Набор Киг-Йар хозяина биоядер."
-	reference = "K_KIG_LONG"
+	reference = "K_KIG_BIOTECH"
 	discount_div = 0.5
 	packs_list = list(
 		/datum/vox_pack/mercenary/fieldmedic,
