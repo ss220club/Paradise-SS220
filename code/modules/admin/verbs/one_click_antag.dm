@@ -23,8 +23,8 @@
 		"}
 	// SS220 ADD - Start
 	dat += {"
-		<a href='?src=[UID()];makeAntag=8'>Make Blood Brothers Team</a><br>
-		<a href='?src=[UID()];makeAntag=9'>Make Vox Raiders</a><br>
+		<a href='byond://?src=[UID()];makeAntag=8'>Make Blood Brothers Team</a><br>
+		<a href='byond://?src=[UID()];makeAntag=9'>Make Vox Raiders</a><br>
 		"}
 	// SS220 ASS - End
 	usr << browse(dat, "window=oneclickantag;size=400x400")
