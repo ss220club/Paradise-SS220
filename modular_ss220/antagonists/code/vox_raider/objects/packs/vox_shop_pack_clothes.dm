@@ -103,7 +103,14 @@
 
 // ============== GLASSES ==============
 
-/obj/item/clothing/glasses/thermal/cyber
+/datum/vox_pack/clothes/eye_thermal
+	name = "Термальный Глаз"
+	desc = "Термальный кибернетический глаз с системой вставки в глазной разъем. Полностью заменяет функционирующий глаз или его полость. \
+	ВНИМАНИЕ! Глаз возможно удалить только хирургическим путем."
+	reference = "C_EYE_TH"
+	cost = 4500
+	contains = list(/obj/item/clothing/glasses/thermal/cyber)
+
 
 
 // ============== EARS ==============
