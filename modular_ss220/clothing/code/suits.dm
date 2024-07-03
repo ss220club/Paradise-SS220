@@ -382,6 +382,14 @@
 	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
 
 
+/obj/item/clothing/suit/jacket/mafia_white
+	name = "белый пиджак"
+	desc = "Два слова: стиль и статус."
+	icon_state = "mafia_white"
+	item_state = "mafia_white"
+	icon = 'modular_ss220/clothing/icons/object/suits.dmi'
+	icon_override = 'modular_ss220/clothing/icons/mob/suits.dmi'
+
 //dune hardsuit
 
 /obj/item/clothing/suit/space/hardsuit/dune

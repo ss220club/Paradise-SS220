@@ -582,3 +582,13 @@
 	desc = "Плотно скрепленные пласталевые пластины на кожаном каркасе. Самый страшный звук ночной пустыни - клик-клак..."
 	icon_state = "kidan_metal_armor"
 	item_color = "kidan_metal_armor"
+
+/obj/item/clothing/under/white_pants
+	name = "солидный костюм"
+	desc = "Дорогой и элегантный костюм с синей жилеткой."
+	icon_state = "waiter_white"
+	item_color = "waiter_white"
+	icon = 'modular_ss220/clothing/icons/object/under.dmi'
+	sprite_sheets = list(
+		"Human" 			= 	'modular_ss220/clothing/icons/mob/under.dmi'
+	)

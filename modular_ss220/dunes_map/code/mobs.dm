@@ -97,7 +97,7 @@
 	maxbodytemp = 3500
 	check_friendly_fire = TRUE
 	a_intent = INTENT_HARM
-	loot = list(/obj/effect/gibspawner/xeno)
+	loot = list(/obj/effect/decal/cleanable/blood/gibs/xeno/down)
 	faction = list("depredators")
 	turns_per_move = 3
 	move_to_delay = 2.8
@@ -429,15 +429,15 @@
 
 /mob/living/simple_animal/hostile/cthulhu
 	// Visual
-	name = "Ктулху"
-	desc = "Ебейший ебанат"
+	name = "Старший"
+	desc = "Мы обречены..."
 	attack_sound = 'sound/misc/demon_attack1.ogg'
 	icon = 'modular_ss220/dunes_map/icons/cthulhu.dmi'
 	icon_state = "cthulhu"
 	icon_living = "cthulhu"
 	pixel_x = -140
 	pixel_y = -120
-	layer = LARGE_MOB_LAYER
+	layer = ABOVE_ALL_MOB_LAYER
 	wander = FALSE
 	see_in_dark = 8
 

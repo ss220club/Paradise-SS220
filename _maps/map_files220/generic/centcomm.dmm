@@ -691,6 +691,7 @@
 	pixel_x = -7
 	},
 /obj/item/radio/centcom,
+/obj/item/megaphone,
 /turf/simulated/floor/plasteel/dark{
 	icon_state = "podfloor_dark"
 	},
@@ -1232,7 +1233,6 @@
 	dir = 8;
 	light_color = "red"
 	},
-/mob/living/carbon/human,
 /turf/simulated/floor/mineral/plastitanium,
 /area/centcom/ss220/admin1)
 "aQU" = (
@@ -3912,14 +3912,6 @@
 /obj/effect/decal/syndie_logo,
 /turf/simulated/floor/mineral/plastitanium,
 /area/shuttle/syndicate)
-"cHl" = (
-/obj/structure/chair/comfy/shuttle/dark{
-	dir = 4
-	},
-/obj/effect/turf_decal/delivery/blue/hollow,
-/mob/living/carbon/human,
-/turf/simulated/floor/mineral/plastitanium,
-/area/centcom/ss220/admin1)
 "cHw" = (
 /obj/structure/table/wood/fancy/black,
 /obj/item/candle/eternal/wizard{
@@ -8879,6 +8871,10 @@
 	name = "floor"
 	},
 /area/syndicate_mothership/outside)
+"fIL" = (
+/obj/machinery/hologram/holopad,
+/turf/simulated/floor/plasteel/dark,
+/area/shuttle/escape)
 "fJl" = (
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 6
@@ -10062,6 +10058,7 @@
 	color = "#996633"
 	},
 /obj/item/folder/yellow,
+/obj/item/megaphone,
 /turf/simulated/floor/wood/fancy/cherry,
 /area/centcom/ss220/admin2)
 "gze" = (
@@ -15224,7 +15221,9 @@
 /turf/simulated/floor/plating/airless,
 /area/centcom/ss220/jail)
 "jMn" = (
-/obj/machinery/computer/bsa_control/admin,
+/obj/structure/computerframe{
+	dir = 1
+	},
 /obj/structure/light_fake/spot,
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/admin3)
@@ -17786,13 +17785,6 @@
 	icon_state = "bot"
 	},
 /area/shuttle/escape)
-"lCj" = (
-/obj/machinery/recharger{
-	pixel_y = 4
-	},
-/obj/structure/table,
-/turf/simulated/floor/mineral/plastitanium,
-/area/centcom/ss220/admin1)
 "lCD" = (
 /mob/living/simple_animal/mouse/brown{
 	desc = "Секретная разработка синдиката. Сидит тут потому, что сам хочет";
@@ -24067,14 +24059,6 @@
 "pUt" = (
 /turf/simulated/floor/plasteel/stairs/right,
 /area/ghost_bar)
-"pUQ" = (
-/obj/effect/turf_decal/box/white,
-/mob/living/carbon/human,
-/turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "dark"
-	},
-/area/syndicate_mothership)
 "pVD" = (
 /obj/effect/spawner/window/reinforced/grilled,
 /obj/effect/mapping_helpers/damaged_window,
@@ -24854,7 +24838,6 @@
 	dir = 8
 	},
 /obj/effect/turf_decal/delivery/blue,
-/mob/living/carbon/human,
 /turf/simulated/floor/mineral/plastitanium,
 /area/centcom/ss220/admin1)
 "qvx" = (
@@ -28775,15 +28758,6 @@
 	icon_state = "bot"
 	},
 /area/shuttle/escape)
-"tdd" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/turf_decal/box/white,
-/mob/living/carbon/human,
-/turf/simulated/floor/plasteel{
-	dir = 1;
-	icon_state = "dark"
-	},
-/area/syndicate_mothership)
 "tdl" = (
 /obj/structure/chair/comfy/shuttle/dark{
 	dir = 4
@@ -49422,9 +49396,9 @@ cUF
 phq
 fnU
 suT
-tdd
-pUQ
-pUQ
+oiT
+uwa
+uwa
 plv
 fnU
 kEs
@@ -49679,9 +49653,9 @@ eLK
 hiV
 cji
 suT
-tdd
-tdd
-pUQ
+oiT
+oiT
+uwa
 suT
 xie
 rJo
@@ -49936,9 +49910,9 @@ jmk
 xBZ
 cji
 suT
-pUQ
-tdd
-pUQ
+uwa
+oiT
+uwa
 suT
 tOi
 vYw
@@ -50193,9 +50167,9 @@ kex
 dCB
 fnU
 wgp
-pUQ
-tdd
-tdd
+uwa
+oiT
+oiT
 suT
 fnU
 dlQ
@@ -64424,7 +64398,7 @@ adJ
 eRG
 jtg
 lJk
-itB
+fIL
 itB
 cFJ
 fqT
@@ -74022,7 +73996,7 @@ iRI
 iRI
 eVh
 uJb
-lCj
+hzv
 iRI
 iRI
 iRI
@@ -74512,13 +74486,13 @@ iRI
 iRI
 iRI
 iRI
-cHl
+ffH
 aQL
-cHl
+ffH
 uJb
-cHl
+ffH
 aQL
-cHl
+ffH
 iRI
 iRI
 iRI
@@ -74769,13 +74743,13 @@ iRI
 iRI
 iRI
 iRI
-cHl
+ffH
 nBZ
 ffH
 uJb
 ffH
 nBZ
-cHl
+ffH
 iRI
 iRI
 iRI
@@ -75026,13 +75000,13 @@ iRI
 iRI
 iRI
 iRI
-cHl
-uJb
 ffH
 uJb
 ffH
 uJb
-cHl
+ffH
+uJb
+ffH
 iRI
 iRI
 iRI
@@ -75283,13 +75257,13 @@ iRI
 iRI
 iRI
 iRI
-cHl
+ffH
 uJb
 uJb
 uJb
 uJb
 uJb
-cHl
+ffH
 iRI
 iRI
 iRI

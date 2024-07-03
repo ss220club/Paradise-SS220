@@ -253,13 +253,22 @@
 
 /datum/outfit/admin/syndicate/heads/morezzi
 	name = "СИНДИКАТ – МОРЕЦЦИ"
-	uniform = /obj/item/clothing/under/misc/scratch
+	uniform = /obj/item/clothing/under/white_pants
 	shoes = /obj/item/clothing/shoes/laceup
+	suit = /obj/item/clothing/suit/jacket/mafia_white
 	glasses = /obj/item/clothing/glasses/sunglasses
 	head = /obj/item/clothing/head/cowboyhat/white
 
 /datum/outfit/admin/syndicate/heads/self
 	name = "СИНДИКАТ – СЕЛФ"
 	suit = /obj/item/clothing/suit/armor/swat
-	shoes = /obj/item/clothing/shoes/combat
+	shoes = /obj/item/clothing/shoes/jackboots/mecha_noise
 	gloves = /obj/item/clothing/gloves/combat
+
+
+/datum/outfit/job/ntnavyofficer
+	name = "Генрих Трейзен"
+	r_hand = /obj/item/storage/belt/rapier/genri_rapier
+	head = /obj/item/clothing/head/ntrep
+	mask = /obj/item/clothing/mask/gas/navy_officer
+	suit = /obj/item/clothing/suit/space/deathsquad/officer/field/cloak_nt

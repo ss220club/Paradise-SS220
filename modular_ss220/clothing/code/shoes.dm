@@ -72,3 +72,11 @@
 	icon_state = "raider_kidan_boots"
 	icon_override = 'modular_ss220/clothing/icons/mob/shoes.dmi'
 	species_restricted = list("Kidan")
+
+/obj/item/clothing/shoes/jackboots/mecha_noise
+	name = "heavy jackboots"
+	desc = "Outdated heavier versions of the standard Nanotrasen-issue Security combat boots. Pick up that can."
+
+/obj/item/clothing/shoes/jackboots/mecha_noise/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/squeak, list('sound/mecha/mechstep.ogg' = 1, 'sound/mecha/mechstep.ogg' = 1), 50, falloff_exponent = 20)
