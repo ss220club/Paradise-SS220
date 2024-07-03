@@ -2,7 +2,7 @@
 	var/list/datum/mind/vox_raiders = list()
 
 /datum/game_mode/antag_mix/vox_raider
-	name = "vox raiders"
+	name = "Vox Raiders"
 	config_tag = "vox_raiders"
 	required_players = 30
 
