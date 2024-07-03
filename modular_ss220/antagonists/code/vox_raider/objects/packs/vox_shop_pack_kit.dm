@@ -3,20 +3,25 @@
 	name = "DEBUG Kit Vox Pack"
 	category = VOX_PACK_KIT
 	is_need_trader_cost = FALSE
-	var/discount_div = 0.15	// Процент скидки на паки за покупку набора
+	discount_div = 0.35	// Процент скидки на паки за покупку набора
 	var/list/packs_list = list() // Паки которые мы используем для инициализации текущего пака и его цены
 
-/datum/vox_pack/kit/New()
-	. = ..()
-	var/temp_cost = 0
-	for(var/datum/vox_pack/pack in packs_list)
+/datum/vox_pack/kit/update_pack()
+	if(discount_div <= 0)
+		return FALSE
+	var/temp_cost = initial(cost)
+
+	for(var/i in packs_list)
+		var/datum/vox_pack/pack = i
 		temp_cost += pack.cost
 		contains += pack.contains
 		if(pack.limited_stock >= 0)
 			limited_stock = min(limited_stock, pack.limited_stock)
 		if(!time_until_available && pack.time_until_available > time_until_available)
 			time_until_available = pack.time_until_available
-	cost += temp_cost / discount_div
+
+	cost = temp_cost * discount_div
+	return TRUE
 
 // ============== Дешевые Наборы ==============
 
@@ -24,23 +29,24 @@
 	name = "Лёгкий Набор"
 	desc = "Дешевый и лёгкий набор снаряжения, производящийся в промышленных масштабах и рекомендуемый каждому начинающему и опытному воксу при отсутствии средств."
 	reference = "K_LAM"
+	cost = 100
 	packs_list = list(
 		/datum/vox_pack/mercenary/lamilar,
 		/datum/vox_pack/clothes/magboots,
 		/datum/vox_pack/clothes/gloves,
 		)
-	discount_div = 0.35
+	discount_div = 0.5
 
 /datum/vox_pack/kit/pressure
 	name = "Космический Набор"
 	desc = "Дешевый набор для перемещения в космосе. Отличное дополнение к полевым наборам."
 	reference = "K_PRES"
+	cost = 100
 	packs_list = list(
 		/datum/vox_pack/clothes/pressure,
 		/datum/vox_pack/equipment/mask,
 		/datum/vox_pack/equipment/nitrogen,
 		)
-	discount_div = 0.35
 
 // ============== Наборы Наемников ==============
 
@@ -48,6 +54,7 @@
 	name = "Штурмовой Набор"
 	desc = "Набор штурмовика для сражения при нормальной атмосфере."
 	reference = "K_STR"
+	cost = 100
 	packs_list = list(
 		/datum/vox_pack/mercenary/stormtrooper,
 		/datum/vox_pack/clothes/magboots/combat,
@@ -68,6 +75,7 @@
 	name = "Набор Полевого Медика"
 	desc = "Всё для оказания первой помощи, хирургического вмешательства и защиты самого медика."
 	reference = "K_FM"
+	cost = 100
 	packs_list = list(
 		/datum/vox_pack/mercenary/fieldmedic,
 		/datum/vox_pack/clothes/magboots,
@@ -83,12 +91,13 @@
 		/obj/item/reagent_containers/iv_bag/blood/vox,
 		/obj/item/reagent_containers/iv_bag/blood/vox,
 	)
-	discount_div = 0.25
+	discount_div = 0.5
 
 /datum/vox_pack/kit/field_scout
 	name = "Набор Полевого Разведчика"
 	desc = "Набор для разведывательных действий в благоприятных условиях."
 	reference = "K_FSCT"
+	cost = 100
 	packs_list = list(
 		/datum/vox_pack/mercenary/lamilar/scout,
 		/datum/vox_pack/clothes/magboots/scout,
@@ -103,6 +112,7 @@
 	name = "Набор Подрывника"
 	desc = "Набор медвежатника для собственной защиты и вскрытия защищенного."
 	reference = "K_BOM"
+	cost = 100
 	packs_list = list(
 		/datum/vox_pack/mercenary/bomber,
 		/datum/vox_pack/clothes/magboots/heavy,
@@ -125,7 +135,7 @@
 	contains = list(
 		/obj/item/clothing/glasses/hud/diagnostic/sunglasses,
 	)
-	discount_div = 0.25
+	discount_div = 0.5
 
 
 // ============== Наборы Рейдеров ==============
@@ -134,6 +144,7 @@
 	name = "Набор Космического Штурмовика"
 	desc = "Набор для штурма космических кораблей и станций."
 	reference = "K_TROOP"
+	cost = 100
 	packs_list = list(
 		/datum/vox_pack/raider/trooper,
 		/datum/vox_pack/clothes/magboots/combat,
@@ -160,6 +171,7 @@
 	name = "Набор Космического Разведчика"
 	desc = "Набор для проведения разведки в неблагоприятных условиях."
 	reference = "K_SSCT"
+	cost = 100
 	packs_list = list(
 		/datum/vox_pack/raider/scout,
 		/datum/vox_pack/clothes/magboots/scout,
@@ -177,6 +189,7 @@
 	name = "Набор Космического Медика"
 	desc = "Набор для скорого оказания помощи в неблагоприятных условиях и защиты носителя."
 	reference = "K_MEDIC"
+	cost = 100
 	packs_list = list(
 		/datum/vox_pack/raider/medic,
 		/datum/vox_pack/clothes/magboots,
@@ -190,7 +203,7 @@
 		/datum/vox_pack/dart/cartridge/medical,
 		/datum/vox_pack/dart/cartridge/medical,
 		)
-	discount_div = 0.25
+	discount_div = 0.5
 	contains = list(
 		/obj/item/clothing/mask/breath/vox,
 		/obj/item/tank/internals/emergency_oxygen/double/vox,
@@ -201,6 +214,7 @@
 	name = "Набор Механика"
 	desc = "Набор первичного необходимого для ремонта вышедшего из строя оборудования в условиях боя."
 	reference = "K_MECH"
+	cost = 100
 	packs_list = list(
 		/datum/vox_pack/raider/mechanic,
 		/datum/vox_pack/clothes/magboots/heavy,
@@ -220,12 +234,13 @@
 		/obj/item/storage/firstaid/machine,
 		/obj/item/clothing/glasses/welding,
 	)
-	discount_div = 0.25
+	discount_div = 0.5
 
 /datum/vox_pack/kit/heavy
 	name = "Тяжелый Набор"
 	desc = "Полный набор тяжелого костюма для работы в условиях переизбыточной опасности."
 	reference = "K_HEAVY"
+	cost = 100
 	packs_list = list(
 		/datum/vox_pack/raider/heavy,
 		/datum/vox_pack/clothes/magboots/heavy,
@@ -246,8 +261,9 @@
 	name = "Набор Киг-Йар"
 	desc = "Набор стрелка Киг-Йар для ведения боевых действий на средних дистанциях."
 	time_until_available = 30
-	discount_div = 0.4
+	discount_div = 0.7
 	reference = "K_KIG"
+	cost = 100
 	packs_list = list(
 		/datum/vox_pack/mercenary/lamilar,
 		/datum/vox_pack/clothes/magboots/scout,
@@ -267,6 +283,7 @@
 	name = "Набор Киг-Йар Пронзателя"
 	desc = "Набор Киг-Йар для ведения боевых действий сквозь укрытия."
 	reference = "K_KIG_LONG"
+	cost = 100
 	packs_list = list(
 		/datum/vox_pack/mercenary/lamilar/scout,
 		/datum/vox_pack/clothes/magboots/scout,
@@ -287,6 +304,7 @@
 	name = "Набор Киг-Йар Биоштурмовика"
 	desc = "Набор Киг-Йар для ведения боевых действий в ближнем бою"
 	reference = "K_KIG_BIO"
+	cost = 100
 	packs_list = list(
 		/datum/vox_pack/mercenary/bomber,
 		/datum/vox_pack/clothes/magboots/combat,
@@ -309,7 +327,7 @@
 	name = "Набор Киг-Йар Биотехника"
 	desc = "Набор Киг-Йар хозяина биоядер."
 	reference = "K_KIG_BIOTECH"
-	discount_div = 0.5
+	cost = 100
 	packs_list = list(
 		/datum/vox_pack/mercenary/fieldmedic,
 		/datum/vox_pack/clothes/magboots/scout,

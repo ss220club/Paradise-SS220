@@ -2,15 +2,7 @@ import { filter, sortBy } from 'common/collections';
 import { flow } from 'common/fp';
 import { decodeHtmlEntities } from 'common/string';
 import { useBackend, useLocalState } from '../backend';
-import {
-  Box,
-  Button,
-  Input,
-  Section,
-  Stack,
-  Tabs,
-  LabeledList,
-} from '../components';
+import { Box, Button, Input, Section, Stack, Tabs, LabeledList } from '../components';
 import { Window } from '../layouts';
 import { ComplexModal } from './common/ComplexModal';
 
@@ -73,11 +65,7 @@ const ItemsPage = (_properties, context) => {
   const { act, data } = useBackend(context);
   const { cash, cats } = data;
   // Default to first
-  const [shopItems, setShopItems] = useLocalState(
-    context,
-    'shopItems',
-    cats[0].items
-  );
+  const [shopItems, setShopItems] = useLocalState(context, 'shopItems', cats[0].items);
 
   const [showDesc, setShowDesc] = useLocalState(context, 'showDesc', 1);
 
@@ -88,11 +76,7 @@ const ItemsPage = (_properties, context) => {
           <Section
             title={'Средства: ' + cash + 'к'}
             buttons={
-              <Button.Checkbox
-                content="Подробности"
-                checked={showDesc}
-                onClick={() => setShowDesc(!showDesc)}
-              />
+              <Button.Checkbox content="Подробности" checked={showDesc} onClick={() => setShowDesc(!showDesc)} />
             }
           />
         </Stack.Item>
@@ -119,16 +103,8 @@ const ItemsPage = (_properties, context) => {
           <Section fill scrollable>
             <Stack vertical>
               {shopItems.map((i) => (
-                <Stack.Item
-                  key={decodeHtmlEntities(i.name)}
-                  p={1}
-                  backgroundColor={'rgba(255, 0, 0, 0.1)'}
-                >
-                  <ShopItem
-                    i={i}
-                    showDecription={showDesc}
-                    key={decodeHtmlEntities(i.name)}
-                  />
+                <Stack.Item key={decodeHtmlEntities(i.name)} p={1} backgroundColor={'rgba(255, 0, 0, 0.1)'}>
+                  <ShopItem i={i} showDecription={showDesc} key={decodeHtmlEntities(i.name)} />
                 </Stack.Item>
               ))}
             </Stack>
@@ -154,17 +130,8 @@ const CartPage = (_properties, context) => {
           title={'Средства: ' + cash + 'к'}
           buttons={
             <>
-              <Button.Checkbox
-                content="Подробности"
-                checked={showDesc}
-                onClick={() => setShowDesc(!showDesc)}
-              />
-              <Button
-                content="Очистить"
-                icon="trash"
-                onClick={() => act('empty_cart')}
-                disabled={!cart}
-              />
+              <Button.Checkbox content="Подробности" checked={showDesc} onClick={() => setShowDesc(!showDesc)} />
+              <Button content="Очистить" icon="trash" onClick={() => act('empty_cart')} disabled={!cart} />
               <Button
                 content={'Оплатить (' + cart_price + 'к)'}
                 icon="shopping-cart"
@@ -177,17 +144,8 @@ const CartPage = (_properties, context) => {
           <Stack vertical>
             {cart ? (
               cart.map((i) => (
-                <Stack.Item
-                  key={decodeHtmlEntities(i.name)}
-                  p={1}
-                  mr={1}
-                  backgroundColor={'rgba(255, 0, 0, 0.1)'}
-                >
-                  <ShopItem
-                    i={i}
-                    showDecription={showDesc}
-                    buttons={<CartButtons i={i} />}
-                  />
+                <Stack.Item key={decodeHtmlEntities(i.name)} p={1} mr={1} backgroundColor={'rgba(255, 0, 0, 0.1)'}>
+                  <ShopItem i={i} showDecription={showDesc} buttons={<CartButtons i={i} />} />
                 </Stack.Item>
               ))
             ) : (
@@ -204,15 +162,9 @@ const ShopItem = (props, context) => {
   const { i, showDecription = 1, buttons = <ShopItemButtons i={i} /> } = props;
 
   return (
-    <Section
-      title={decodeHtmlEntities(i.name)}
-      showBottom={showDecription}
-      buttons={buttons}
-    >
+    <Section title={decodeHtmlEntities(i.name)} showBottom={showDecription} buttons={buttons}>
       {showDecription ? <Box italic>{decodeHtmlEntities(i.desc)}</Box> : null}
-      {showDecription ? (
-        <Box italic>{decodeHtmlEntities(i.content)}</Box>
-      ) : null}
+      {showDecription ? <Box italic>{decodeHtmlEntities(i.content)}</Box> : null}
     </Section>
   );
 };
@@ -227,7 +179,7 @@ const ShopItemButtons = (props, context) => {
       icon="shopping-cart"
       content={'Добавить в корзину (' + i.cost + ' Кикиридитов)'}
       color={i.limit !== -1 && 'red'}
-      tooltip="Добавить товар в корзину, увеличив общее число данного товара."
+      tooltip="Добавить товар в корзину, увеличив общее число данного товара. Цена товара меняется в зависимости от полученных ценностей в Расчичетчикике."
       tooltipPosition="left"
       onClick={() =>
         act('add_to_cart', {

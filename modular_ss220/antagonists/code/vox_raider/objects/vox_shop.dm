@@ -28,6 +28,7 @@
 	var/obj/machinery/vox_trader/trader = locate() in GLOB.machines
 	for(var/path in subtypesof(/datum/vox_pack))
 		var/datum/vox_pack/pack = new path
+		pack.update_pack()
 		if(pack.cost < 0)
 			continue
 		if(pack.is_need_trader_cost)
@@ -58,6 +59,7 @@
 			packs_items[pack.reference] = pack
 
 	packs_cats = cats
+	SStgui.update_uis(src)
 
 
 // ======= Interaction ==========
@@ -228,7 +230,7 @@
 		return
 	var/list/bought_objects = list()
 	for(var/i in 1 to amount)
-		var/list/items_list = pack.get_items_list(src, usr, put_in_hands = FALSE)
+		var/list/items_list = pack.get_items_list()
 		if(!length(items_list))
 			break
 		bought_objects += items_list

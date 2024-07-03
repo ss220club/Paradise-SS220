@@ -16,7 +16,7 @@
 
 	// Забавные взаимодействия
 	var/angry_count = 0
-	var/list/blacklist = list()
+	var/list/blacklist_users = list()
 
 	// Данные для подсчета драгоценностей выполнения задачи.
 	// Обновляются при первом взаимодействии если есть воксы-рейдеры.
@@ -25,6 +25,9 @@
 	var/precious_value
 	var/collected_access_list = list()
 	var/collected_tech_dict = list()
+
+	// Списки запрещенных для продажи товаров, инициализируется через отдельный PROC, а не тут
+	var/list/blacklist_objects = list()
 
 	// ========= МНОЖИТЕЛИ =========
 
@@ -145,7 +148,7 @@
 	if(is_trading_now)
 		to_chat(user, span_warning("[src] обрабатываем и пересчитывает ценности. Ожидайте."))
 		return
-	if(length(blacklist) && (user in blacklist))
+	if(length(blacklist_users) && (user in blacklist_users))
 		to_chat(user, span_warning("Вы пытаетесь связаться с [src], но никто не отзывается."))
 		return
 	return TRUE
@@ -192,7 +195,7 @@
 					atom_say(span_warning("Ты шутки шутишь? Товар. Последнее предупреждение."))
 				if(10)
 					atom_say(span_warning("[user.name], [src] больше не будет с вами торговать!"))
-					blacklist.Add(user)	// Докикикировался.
+					blacklist_users.Add(user)	// Докикикировался.
 				else
 					atom_say(span_warning("Вами недовольны. Где товар?"))
 		else
@@ -215,6 +218,7 @@
 	icon_state = icon_state_on
 	sparks()
 	playsound(get_turf(src), 'sound/weapons/flash.ogg', 25, 1)
+	try_update_blacklist()
 
 /obj/machinery/vox_trader/proc/trade_cancel()
 	is_trading_now = FALSE
@@ -407,6 +411,10 @@
 	if(is_tech_valuable)
 		addition_text += span_notice("\nЦенные технологии! Крайне ценно!")
 
+	if(!is_visuale_only && (is_tech_valuable || is_tech_unique))
+		update_shops()
+		addition_text += span_notice("\nЦены на некоторые товары снижены!")
+
 	if(user && addition_text != "")
 		to_chat(user, chat_box_notice(addition_text))
 
@@ -470,6 +478,10 @@
 	var/list/items_list = current_turf.GetAllContents(7)
 
 	for(var/I in items_list)
+		for(var/blacklist_object in blacklist_objects)
+			if(istype(I, blacklist_object))
+				items_list.Remove(I)
+				continue
 		if(istype(I, /obj/item/organ)) // Inner organs
 			var/obj/item/organ/organ = I
 			if(organ.owner)
@@ -517,3 +529,28 @@
 			break
 
 	return TRUE
+
+/obj/machinery/vox_trader/proc/update_shops()
+	for(var/obj/machinery/vox_shop/shop in GLOB.machines)
+		shop.generate_pack_items()
+		shop.generate_pack_lists()
+
+/obj/machinery/vox_trader/proc/try_update_blacklist()
+	if(length(blacklist_objects))
+		return
+	var/obj/machinery/vox_shop/shop = locate() in GLOB.machines
+	if(!shop)
+		return
+
+	var/list/all_objects = list()
+
+	for(var/category in shop.packs_items)
+		for(var/datum/vox_pack/pack in shop.packs_items[category])
+			if(category == VOX_PACK_KIT)
+				continue
+			var/list/items_list = pack.get_items_list()
+			if(!length(items_list))
+				break
+			all_objects += items_list
+
+	blacklist_objects = all_objects

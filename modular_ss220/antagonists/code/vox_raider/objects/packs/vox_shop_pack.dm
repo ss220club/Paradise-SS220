@@ -7,9 +7,19 @@
 	var/time_until_available = 0 // How long does it take from the start of the round? In MINUTES
 	var/limited_stock = -1 // Can you only buy so many? -1 allows for infinite purchases
 	var/purchased = 0	// How much have you already bought?
+	var/discount_div = 0	// Процент скидки на паки за покупку набора
 	var/amount = 1
 	var/category = VOX_PACK_MISC
 	var/list/contains = list()
+
+/datum/vox_pack/New()
+	. = ..()
+	update_pack()
+
+/datum/vox_pack/proc/update_pack()
+	if(discount_div <= 0)
+		return
+	cost = initial(cost) * discount_div
 
 /datum/vox_pack/proc/get_items_list()
 	var/list/items_list = list()
