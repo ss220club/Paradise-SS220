@@ -499,17 +499,21 @@
 	M.forceMove(pick(GLOB.latejoin))
 	if(iscarbon(M))
 		var/mob/living/carbon/C = M
-		C.uncuff()
+		C.Silence(6 SECONDS)
+		C.clear_restraints()
+		to_chat(C, span_warning("Вы ощущаете как ваши мозги были промыты. \
+		Вы всё еще не можете прийти в себя и отрывками вспоминаете что неизвестные похители вас. \
+		Неизвестно сколько они продержали вас у себя и что с вами делали... \
+		Но вы чувствуете себя будто обновленным."))
 
 /obj/machinery/vox_trader/proc/make_new_vox_raider(mob/user, mob/living/M)
-	if(!M.mind)
+	if(!M.mind || locate(M.mind.has_antag(/datum/antagonist/vox_raider)))
 		return FALSE
-	var/datum/antagonist/vox_raider/antag = locate() in M.mind.antag_datums
-	if(antag)
-		return FALSE
-	for(var/datum/antagonist/A as anything in user.mind.antag_datums)
+
+	for(var/datum/antagonist/A in M.mind.antag_datums)
 		var/datum/team/team = A.get_team()
 		if(team)
 			team.add_member(M.mind, TRUE)
 			break
+
 	return TRUE
