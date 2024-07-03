@@ -51,7 +51,7 @@
 		. += "<b><font color='red'>VOX RAIDER</font></b>|<a href='byond://?src=[UID()];vox_raider=clear'>Remove</a>"
 		. += "<br><a href='byond://?src=[UID()];vox_raider=landmark'>To Vox Base</a>."
 	else
-		. += "<a href='?src=[UID()];vox_raider=make'>Make Vox Raider</a>"
+		. += "<a href='byond://?src=[UID()];vox_raider=make'>Make Vox Raider</a>"
 
 	. += _memory_edit_role_enabled(ROLE_VOX_RAIDER)
 
