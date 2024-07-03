@@ -507,7 +507,7 @@
 		Но вы чувствуете себя будто обновленным."))
 
 /obj/machinery/vox_trader/proc/make_new_vox_raider(mob/user, mob/living/M)
-	if(!M.mind || locate(M.mind.has_antag(/datum/antagonist/vox_raider)))
+	if(!M.mind || locate(M.mind.has_antag_datum(/datum/antagonist/vox_raider)))
 		return FALSE
 
 	for(var/datum/antagonist/A in M.mind.antag_datums)
