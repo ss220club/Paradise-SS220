@@ -3,24 +3,28 @@
 	name = "DEBUG Kit Vox Pack"
 	category = VOX_PACK_KIT
 	is_need_trader_cost = FALSE
-	discount_div = 0.35	// Процент скидки на паки за покупку набора
+	discount_div = 0.85	// Процент скидки на паки за покупку набора
 	var/list/packs_list = list() // Паки которые мы используем для инициализации текущего пака и его цены
+	var/list/contains_addition = list() // Дополнительные предметы в наборе
 
 /datum/vox_pack/kit/update_pack()
 	if(discount_div <= 0)
 		return FALSE
 	var/temp_cost = initial(cost)
+	contains.Cut()
+	if(length(contains_addition))
+		contains |= contains_addition
 
 	for(var/i in packs_list)
-		var/datum/vox_pack/pack = i
+		var/datum/vox_pack/pack = new i
 		temp_cost += pack.cost
-		contains += pack.contains
+		contains |= pack.contains.Copy()
 		if(pack.limited_stock >= 0)
 			limited_stock = min(limited_stock, pack.limited_stock)
-		if(!time_until_available && pack.time_until_available > time_until_available)
-			time_until_available = pack.time_until_available
+		if(!time_until_available && pack.time_until_available)
+			time_until_available = max(time_until_available, pack.time_until_available)
 
-	cost = temp_cost * discount_div
+	cost = round(temp_cost * discount_div)
 	return TRUE
 
 // ============== Дешевые Наборы ==============
@@ -35,7 +39,14 @@
 		/datum/vox_pack/clothes/magboots,
 		/datum/vox_pack/clothes/gloves,
 		)
-	discount_div = 0.5
+	discount_div = 0.65
+
+	// !!!!!!!!! TEST
+	contains_addition = list(
+		/obj/item/roller/holo,
+		/obj/item/roller/holo,
+		/obj/item/roller/holo,
+	)
 
 /datum/vox_pack/kit/pressure
 	name = "Космический Набор"
@@ -81,17 +92,17 @@
 		/datum/vox_pack/clothes/magboots,
 		/datum/vox_pack/clothes/gloves,
 		/datum/vox_pack/clothes/healthhud,
+		/datum/vox_pack/consumables/blood,
+		/datum/vox_pack/consumables/blood,
+		/datum/vox_pack/consumables/blood,
 		)
-	contains = list(
+	contains_addition = list(
 		/obj/item/storage/firstaid/adv,
 		/obj/item/storage/firstaid/toxin,
 		/obj/item/storage/firstaid/surgery,
 		/obj/item/roller/holo,
-		/obj/item/reagent_containers/iv_bag/blood/vox,
-		/obj/item/reagent_containers/iv_bag/blood/vox,
-		/obj/item/reagent_containers/iv_bag/blood/vox,
 	)
-	discount_div = 0.5
+	discount_div = 0.65
 
 /datum/vox_pack/kit/field_scout
 	name = "Набор Полевого Разведчика"
@@ -107,6 +118,7 @@
 		/datum/vox_pack/consumables/t4,
 		/datum/vox_pack/consumables/t4,
 		)
+	discount_div = 0.65
 
 /datum/vox_pack/kit/bomber
 	name = "Набор Подрывника"
@@ -132,7 +144,7 @@
 		/datum/vox_pack/melee/inflatable,
 		/datum/vox_pack/melee/inflatable,
 		)
-	contains = list(
+	contains_addition = list(
 		/obj/item/clothing/glasses/hud/diagnostic/sunglasses,
 	)
 	discount_div = 0.5
@@ -162,7 +174,7 @@
 		/datum/vox_pack/consumables/c4,
 		/datum/vox_pack/consumables/c4,
 		)
-	contains = list(
+	contains_addition = list(
 		/obj/item/clothing/mask/breath/vox/respirator,
 		/obj/item/tank/internals/emergency_oxygen/double/vox,
 	)
@@ -180,10 +192,11 @@
 		/datum/vox_pack/equipment/ai_detector,
 		/datum/vox_pack/equipment/jammer,
 		)
-	contains = list(
+	contains_addition = list(
 		/obj/item/clothing/mask/breath/vox/respirator,
 		/obj/item/tank/internals/emergency_oxygen/double/vox,
 	)
+	discount_div = 0.65
 
 /datum/vox_pack/kit/medic
 	name = "Набор Космического Медика"
@@ -203,8 +216,8 @@
 		/datum/vox_pack/dart/cartridge/medical,
 		/datum/vox_pack/dart/cartridge/medical,
 		)
-	discount_div = 0.5
-	contains = list(
+	discount_div = 0.65
+	contains_addition = list(
 		/obj/item/clothing/mask/breath/vox,
 		/obj/item/tank/internals/emergency_oxygen/double/vox,
 		/obj/item/roller/holo,
@@ -226,7 +239,7 @@
 		/datum/vox_pack/melee/inflatable,
 		/datum/vox_pack/melee/inflatable,
 		)
-	contains = list(
+	contains_addition = list(
 		/obj/item/clothing/glasses/hud/diagnostic/night,
 		/obj/item/clothing/mask/breath/vox,
 		/obj/item/tank/internals/emergency_oxygen/double/vox,
@@ -234,7 +247,7 @@
 		/obj/item/storage/firstaid/machine,
 		/obj/item/clothing/glasses/welding,
 	)
-	discount_div = 0.5
+	discount_div = 0.65
 
 /datum/vox_pack/kit/heavy
 	name = "Тяжелый Набор"
@@ -248,7 +261,7 @@
 		/datum/vox_pack/clothes/sechud,
 		/datum/vox_pack/clothes/radio/alt,
 		)
-	contains = list(
+	contains_addition = list(
 		/obj/item/clothing/mask/breath/vox/respirator,
 		/obj/item/tank/internals/emergency_oxygen/double/vox,
 		/obj/item/clothing/glasses/thermal/monocle,
@@ -261,7 +274,7 @@
 	name = "Набор Киг-Йар"
 	desc = "Набор стрелка Киг-Йар для ведения боевых действий на средних дистанциях."
 	time_until_available = 30
-	discount_div = 0.7
+	discount_div = 0.5
 	reference = "K_KIG"
 	cost = 100
 	packs_list = list(
@@ -296,7 +309,7 @@
 		/datum/vox_pack/spike/cell,
 		/datum/vox_pack/spike/cell,
 		)
-	contains = list(
+	contains_addition = list(
 		/obj/item/clothing/glasses/thermal/monocle,
 	)
 
@@ -319,7 +332,7 @@
 		/datum/vox_pack/consumables/food,
 		/datum/vox_pack/consumables/food,
 		)
-	contains = list(
+	contains_addition = list(
 		/obj/item/clothing/glasses/sunglasses/big,
 	)
 
@@ -345,6 +358,6 @@
 		/datum/vox_pack/bio/core/acid,
 		/datum/vox_pack/bio/core/acid,
 		)
-	contains = list(
+	contains_addition = list(
 		/obj/item/clothing/glasses/sunglasses/big,
 	)

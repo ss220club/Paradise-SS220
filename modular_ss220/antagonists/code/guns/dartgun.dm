@@ -8,7 +8,13 @@
 	item_state = "dartgun"
 	var/cartridge_overlay = "dartgun_cartridge_overlay"
 	max_syringes = 5
-	var/list/valid_cartridge_types = list(/obj/item/storage/dart_cartridge)
+	var/list/valid_cartridge_types = list(
+		/obj/item/storage/dart_cartridge,
+		/obj/item/storage/dart_cartridge/combat,
+		/obj/item/storage/dart_cartridge/drugs,
+		/obj/item/storage/dart_cartridge/medical,
+		/obj/item/storage/dart_cartridge/pain,
+		)
 	var/valid_dart_type = /obj/item/reagent_containers/syringe/dart
 	var/obj/item/storage/dart_cartridge/cartridge_loaded
 	var/pixel_y_overlay_div = 5	// сколько у нас делений для спрайта оверлея ("Позиций")
@@ -57,7 +63,7 @@
 	else
 		for(var/cartridge_type in valid_cartridge_types)
 			if(istype(A, cartridge_type))
-				if(A.type != "[cartridge_type]")	// Исключаем сабтипы
+				if("[A.type]" != "[cartridge_type]")	// Исключаем сабтипы
 					continue
 				if(user && !user.unEquip(A))
 					return TRUE
@@ -134,6 +140,10 @@
 	icon_state = "dartgun_ext"
 	valid_cartridge_types = list(
 		/obj/item/storage/dart_cartridge,
+		/obj/item/storage/dart_cartridge/combat,
+		/obj/item/storage/dart_cartridge/drugs,
+		/obj/item/storage/dart_cartridge/medical,
+		/obj/item/storage/dart_cartridge/pain,
 		/obj/item/storage/dart_cartridge/extended
 		)
 
@@ -144,5 +154,10 @@
 	max_syringes = 10
 	valid_cartridge_types = list(
 		/obj/item/storage/dart_cartridge,
+		/obj/item/storage/dart_cartridge/combat,
+		/obj/item/storage/dart_cartridge/drugs,
+		/obj/item/storage/dart_cartridge/medical,
+		/obj/item/storage/dart_cartridge/pain,
 		/obj/item/storage/dart_cartridge/big,
+		/obj/item/storage/dart_cartridge/big/random
 		)

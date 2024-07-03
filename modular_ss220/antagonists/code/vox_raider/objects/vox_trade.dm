@@ -411,7 +411,7 @@
 	if(is_tech_valuable)
 		addition_text += span_notice("\nЦенные технологии! Крайне ценно!")
 
-	if(!is_visuale_only && (is_tech_valuable || is_tech_unique))
+	if(!is_visuale_only && is_tech_unique)
 		update_shops()
 		addition_text += span_notice("\nЦены на некоторые товары снижены!")
 

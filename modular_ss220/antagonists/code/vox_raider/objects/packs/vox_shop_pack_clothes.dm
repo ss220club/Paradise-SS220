@@ -171,8 +171,8 @@
 	reference = "C_PR"
 	cost = 100
 	contains = list(
-		/obj/item/clothing/suit/space/vox,
-		/obj/item/clothing/head/helmet/space/vox
+		/obj/item/clothing/suit/space/vox/pressure,
+		/obj/item/clothing/head/helmet/space/vox/pressure
 		)
 
 

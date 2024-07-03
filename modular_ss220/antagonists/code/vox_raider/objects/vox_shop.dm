@@ -28,7 +28,6 @@
 	var/obj/machinery/vox_trader/trader = locate() in GLOB.machines
 	for(var/path in subtypesof(/datum/vox_pack))
 		var/datum/vox_pack/pack = new path
-		pack.update_pack()
 		if(pack.cost < 0)
 			continue
 		if(pack.is_need_trader_cost)

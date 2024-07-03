@@ -50,7 +50,7 @@
 	contains = list(/obj/item/storage/dart_cartridge/big)
 
 /datum/vox_pack/dart/cartridge/combat
-	name = "Картридж (5+1)"
+	name = "Картридж (5+1) - Боевой"
 	desc = "Подставка с боевыми дротиками для нанесения повреждений."
 	reference = "D_C_COM"
 	cost = 400
@@ -58,14 +58,14 @@
 	contains = list(/obj/item/storage/dart_cartridge/combat)
 
 /datum/vox_pack/dart/cartridge/medical
-	name = "Картридж (5+1)"
+	name = "Картридж (5+1) - Медицинский"
 	desc = "Подставка с полезными дротиками для восстановления телесных повреждений."
 	reference = "D_C_MED"
 	cost = 300
 	contains = list(/obj/item/storage/dart_cartridge/medical)
 
 /datum/vox_pack/dart/cartridge/pain
-	name = "Картридж (5+1)"
+	name = "Картридж (5+1) - Болевой"
 	desc = "Подставка с вредными дротиками, приносящие боль и страдания."
 	reference = "D_C_PAIN"
 	cost = 400
@@ -73,7 +73,7 @@
 	contains = list(/obj/item/storage/dart_cartridge/pain)
 
 /datum/vox_pack/dart/cartridge/drugs
-	name = "Картридж (5+1)"
+	name = "Картридж (5+1) - Наркотический"
 	desc = "Подставка для вредных дротиков-наркотиков."
 	reference = "D_C_DRUG"
 	cost = 300
@@ -81,7 +81,7 @@
 	contains = list(/obj/item/storage/dart_cartridge/drugs)
 
 /datum/vox_pack/dart/cartridge/random
-	name = "Картридж с ???  (10+1)"
+	name = "Картридж (10+1) - ???"
 	desc = "Случайный набор дротиков с химикатами."
 	reference = "D_C_RAND"
 	cost = 1000

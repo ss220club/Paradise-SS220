@@ -19,7 +19,7 @@
 /datum/vox_pack/proc/update_pack()
 	if(discount_div <= 0)
 		return
-	cost = initial(cost) * discount_div
+	cost = round(initial(cost) * discount_div)
 
 /datum/vox_pack/proc/get_items_list()
 	var/list/items_list = list()
