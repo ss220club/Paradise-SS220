@@ -48,6 +48,113 @@
 /datum/vox_pack/clothes/shoes
 	name = "Обувка"
 	desc = "Синтетические обертки подходящие для большинства типов ног."
-	reference = "C_S"
+	reference = "C_SH"
 	cost = 15
 	contains = list(/obj/item/clothing/shoes/roman/vox)
+
+
+// ============== MAGBOOTS ==============
+/datum/vox_pack/clothes/magboots
+	name = "Магнитные Налапочники"
+	desc = "Когтистые плотные налапочники с небольшой защитой для лап."
+	reference = "C_SH_M"
+	cost = 200
+	contains = list(/obj/item/clothing/shoes/magboots/vox)
+
+/datum/vox_pack/clothes/magboots/scout
+	name = "Магнитные Налапочники Разведки"
+	desc = "Легкие когтистые налапочники с продвинутым сцеплением с поверхностью для ускорение передвижения."
+	reference = "C_SH_MS"
+	cost = 1000
+	contains = list(/obj/item/clothing/shoes/magboots/vox/scout)
+
+/datum/vox_pack/clothes/magboots/combat
+	name = "Боевые Магнитные Налапочники"
+	desc = "Боевые бронированные когтистые налапочники с улучшенным сцеплением с поверхностью."
+	reference = "C_SH_MC"
+	cost = 2000
+	timC_until_available = 45
+	contains = list(/obj/item/clothing/shoes/magboots/vox/combat)
+
+/datum/vox_pack/clothes/magboots/heavy
+	name = "Тяжелые Магнитные Налапочники"
+	desc = "Тяжелые бронированные когтистые налапочники для ведения боевых действий и защит нижних конечностей от всевозможных угроз."
+	reference = "C_SH_MH"
+	cost = 4000
+	timC_until_available = 60
+	contains = list(/obj/item/clothing/shoes/magboots/vox/heavy)
+
+
+// ============== GLOVES ==============
+/datum/vox_pack/clothes/gloves
+	name = "Рукавицы"
+	desc = "Плотные рукавицы с когтями с защитой кистей."
+	reference = "C_GL"
+	cost = 400
+	contains = list(/obj/item/clothing/gloves/vox)
+
+/datum/vox_pack/clothes/gloves/insulated
+	name = "Изоляционные Рукавицы"
+	desc = "Плотные изоляционные рукавицы с когтями."
+	reference = "C_GL_I"
+	cost = 2000
+	contains = list(/obj/item/clothing/gloves/color/yellow/vox)
+
+
+// ============== GLASSES ==============
+
+/obj/item/clothing/glasses/thermal/cyber
+
+
+// ============== EARS ==============
+
+/datum/vox_pack/clothes/radio
+	name = "Наушники"
+	desc = "Наушник дальней связи для поддержания связи со стаей."
+	reference = "C_RAD"
+	cost = 100
+	contains = list(/obj/item/radio/headset/vox)
+
+/datum/vox_pack/clothes/radio/alt
+	name = "Защитные наушники"
+	desc = "Наушник дальней связи для поддержания связи со стаей. Защищает ушные раковины от громких звуков"
+	reference = "C_RAD_ALT"
+	cost = 500
+	timC_until_available = 60
+	contains = list(/obj/item/radio/headset/vox/alt)
+
+
+// ============== Space Suits ==============
+/datum/vox_pack/clothes/pressure
+	name = "Скафандр"
+	desc = "Защитный костюм для работы во враждебной атмосфере с приемлимыми защитными свойствами и полной защитой от давления."
+	reference = "C_PR"
+	cost = 100
+	contains = list(
+		/obj/item/clothing/suit/space/vox,
+		/obj/item/clothing/head/helmet/space/vox
+		)
+
+
+// ============== BACKPACK ==============
+
+/datum/vox_pack/clothes/backpack
+	name = "Рюкзак"
+	desc = "Рюкзак из плотно переплетенного синтетического волокна. Хорошо защищает спину носителя при побегах и вмещает достаточно добра."
+	reference = "C_BP"
+	cost = 200
+	contains = list(/obj/item/storage/backpack/vox)
+
+/datum/vox_pack/clothes/backpack/duffel
+	name = "Сумка"
+	desc = "Сумка из синтетического волокна. Емкий, вмещает много добра."
+	reference = "C_BPD"
+	cost = 300
+	contains = list(/obj/item/storage/backpack/duffel/vox)
+
+/datum/vox_pack/clothes/backpack/satchel
+	name = "Ранец"
+	desc = "Ранец из синтетического волокна. Компактный, из-за чего его можно отлично прятать."
+	reference = "C_BPS"
+	cost = 150
+	contains = list(/obj/item/storage/backpack/satchel_flat/vox)
