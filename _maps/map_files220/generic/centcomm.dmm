@@ -2944,7 +2944,8 @@
 /obj/structure/light_fake/spot{
 	dir = 4
 	},
-/obj/effect/landmark/damageturf,
+/obj/structure/table/reinforced/brass,
+/obj/effect/spawner/lootdrop/officetoys,
 /turf/simulated/floor/mineral/plastitanium/red/nitrogen,
 /area/vox_base)
 "bDj" = (
@@ -32849,11 +32850,9 @@
 /turf/simulated/floor/indestructible/grass/no_creep,
 /area/centcom/ss220/admin1)
 "qWR" = (
-/obj/structure/table/reinforced{
-	color = "#cc52c0"
+/obj/machinery/computer/security/camera_bug{
+	dir = 8
 	},
-/obj/item/paper_bin,
-/obj/item/flashlight/pen,
 /turf/simulated/floor/mineral/plastitanium{
 	color = "#ff78f4";
 	nitrogen = 103.984;
@@ -38324,8 +38323,7 @@
 /turf/simulated/floor/wood/oak,
 /area/syndicate_mothership/control)
 "tCc" = (
-/obj/structure/table/reinforced/brass,
-/obj/effect/spawner/lootdrop/officetoys,
+/obj/machinery/computer/security/camera_bug,
 /turf/simulated/floor/mineral/plastitanium/red/nitrogen,
 /area/vox_base)
 "tCg" = (
@@ -42862,7 +42860,16 @@
 /obj/structure/table/reinforced{
 	color = "#cc52c0"
 	},
-/obj/effect/spawner/lootdrop/officetoys,
+/obj/effect/spawner/lootdrop/officetoys{
+	pixel_x = -5;
+	pixel_y = 6
+	},
+/obj/item/paper_bin{
+	pixel_x = 10
+	},
+/obj/item/flashlight/pen{
+	pixel_x = 9
+	},
 /turf/simulated/floor/mineral/plastitanium{
 	color = "#ff78f4";
 	nitrogen = 103.984;
