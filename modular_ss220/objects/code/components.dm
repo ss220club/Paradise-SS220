@@ -3,11 +3,13 @@
 	var/force = 20
 	var/list/ckeys = list()
 	var/required_role
+	var/refusal_text
 
-/datum/component/ckey_and_role_locked_pickup/Initialize(required_role, ckey_whitelist, pickup_damage = 0)
+/datum/component/ckey_and_role_locked_pickup/Initialize(required_role, ckey_whitelist, pickup_damage = 0, refusal_text)
 		src.required_role = required_role
 		src.ckeys = ckey_whitelist
 		src.pickup_damage = pickup_damage
+		src.refusal_text = refusal_text
 
 /datum/component/ckey_and_role_locked_pickup/RegisterWithParent()
 	RegisterSignal(parent, COMSIG_ITEM_PICKUP, PROC_REF(try_pick_up))
@@ -21,7 +23,7 @@
 		return
 	user.Weaken(10 SECONDS)
 	user.unEquip(I, force, silent = FALSE)
-	to_chat(user, span_userdanger("Вы недостойны."))
+	to_chat(user, span_userdanger(refusal_text))
 	if(ishuman(user))
 		user.apply_damage(rand(pickup_damage, pickup_damage * 2), BRUTE, pick(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM))
 
