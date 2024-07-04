@@ -6,7 +6,7 @@
 	antag_special_role = SPECIAL_ROLE_VOX_RAIDER
 	antag_datum = /datum/antagonist/vox_raider
 	required_players = 30
-	cost = 30
+	cost = 60
 	candidates_required = 2
 	antag_team = /datum/team/vox_raiders
 	weight = 1
