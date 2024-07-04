@@ -17,40 +17,40 @@
 	name = "Биоядро (Потрошитель х3)"
 	desc = "Переписанная машина синдиката на служении Воксам."
 	reference = "B_B_VISC"
-	cost = 1000
+	cost = 500
 	contains = list(/obj/item/biocore/viscerator)
 
 /datum/vox_pack/bio/core/stamine
 	name = "Биоядро (Стакикамка х3)"
 	desc = "Биомеханизм изматывающий своих жертв."
 	reference = "B_B_STAM"
-	cost = 600
+	cost = 300
 	contains = list(/obj/item/biocore/stamina)
 
 /datum/vox_pack/bio/core/acid
 	name = "Биоядро (Асикикид х1)"
 	desc = "Кислотный жгущий биомеханизм."
 	reference = "B_B_ACID"
-	cost = 900
+	cost = 200
 	contains = list(/obj/item/biocore/acid)
 
 /datum/vox_pack/bio/core/kusaka
 	name = "Биоядро (Кусакика х4)"
 	desc = "Кусачий маленький биомеханизм."
 	reference = "B_B_KUS"
-	cost = 800
+	cost = 400
 	contains = list(/obj/item/biocore/kusaka)
 
 /datum/vox_pack/bio/core/taran
 	name = "Биоядро (Таракикан х1)"
 	desc = "Броневой биомеханизм, приспособленный для вышибания дверей."
 	reference = "B_B_TAT"
-	cost = 1000
+	cost = 500
 	contains = list(/obj/item/biocore/taran)
 
 /datum/vox_pack/bio/core/tox
 	name = "Биоядро (Токсикикик х3)"
 	desc = "Иглоподобный биомеханизм для впрыскивания токсин."
 	reference = "B_B_TOX"
-	cost = 800
+	cost = 400
 	contains = list(/obj/item/biocore/tox)
