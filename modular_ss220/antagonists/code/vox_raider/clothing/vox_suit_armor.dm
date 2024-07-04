@@ -184,6 +184,7 @@
 	. = ..()
 	if(user && disguise_spell)
 		user.RemoveSpell(disguise_spell)
+		qdel(disguise_spell.action)
 		// сбрасываем спел нанеся чутка урон
 		SEND_SIGNAL(src, COMSIG_MOB_APPLY_DAMAGE, 5, BRUTE)
 
@@ -219,6 +220,7 @@
 /obj/item/clothing/head/helmet/vox_merc/stealth/dropped(mob/user)
 	. = ..()
 	if(user && smoke_spell)
+		qdel(smoke_spell.action)
 		user.RemoveSpell(smoke_spell)
 
 /obj/item/clothing/head/helmet/vox_merc/stealth/Destroy()
