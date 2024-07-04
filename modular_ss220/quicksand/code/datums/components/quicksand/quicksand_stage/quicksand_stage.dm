@@ -8,7 +8,7 @@
 	/// Message that victim recieves when stage is applied
 	var/on_apply_message = "Generic message"
 	/// Message that victim recieves when stage is removed
-	var/on_remove_message = "Generic message"
+	var/on_successful_resist_message = "Generic message"
 	/// Status effect that will be applied in `apply` proc. Null if no status effect should be applied
 	var/datum/status_effect/on_apply_status_effect = null
 
@@ -34,7 +34,7 @@
 		remove_from.remove_status_effect(on_apply_status_effect)
 
 	on_remove(remove_from)
-	to_chat(remove_from, span_green(on_remove_message))
+	to_chat(remove_from, span_green(on_successful_resist_message))
 
 /**
  * Override if need to do something specific, when this stage is applied to mob.

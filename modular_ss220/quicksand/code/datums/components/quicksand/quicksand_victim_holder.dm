@@ -20,7 +20,7 @@
 	if(stage_change_timer_id)
 		deltimer(stage_change_timer_id)
 
-	victim = null
+	release_victim()
 	current_stage = null
 	planned_stages = null
 
@@ -78,6 +78,7 @@
 
 	remove_current_stage()
 	SEND_SIGNAL(src, COMSIG_QUICKSAND_VICTIM_RELEASED, victim)
+	victim = null
 
 /datum/quicksand_victim_holder/proc/change_stage(datum/quicksand_stage/stage_to_change_to)
 	PRIVATE_PROC(TRUE)
