@@ -519,10 +519,13 @@
 		Но вы чувствуете себя будто обновленным."))
 
 /obj/machinery/vox_trader/proc/make_new_vox_raider(mob/user, mob/living/M)
-	if(!M.mind || locate(M.mind.has_antag_datum(/datum/antagonist/vox_raider)))
+	if(!M.mind)
 		return FALSE
 
-	for(var/datum/antagonist/A in M.mind.antag_datums)
+	var/datum/antagonist/vox_raider/antag = locate() in M.mind.antag_datums
+	if(antag)
+		return FALSE
+	for(var/datum/antagonist/A as anything in user.mind.antag_datums)
 		var/datum/team/team = A.get_team()
 		if(team)
 			team.add_member(M.mind, TRUE)
