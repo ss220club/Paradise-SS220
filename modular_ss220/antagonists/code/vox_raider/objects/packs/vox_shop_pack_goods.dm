@@ -96,9 +96,122 @@
 	cost = 75
 	random_subtype = /obj/item/lighter
 
+/datum/vox_pack/goods/flag
+	name = "Флаг"
+	desc = "Случайный товар для продажи."
+	reference = "G_FLAG"
+	cost = 50
+	random_subtype = /obj/item/flag
+
+/datum/vox_pack/goods/id_skin
+	name = "Наклейка на карту"
+	desc = "Случайный товар для продажи."
+	reference = "G_IDS"
+	cost = 50
+	random_subtype = /obj/item/id_skin
+
 /datum/vox_pack/goods/drugs
 	name = "Наркотики"
 	desc = "Мясу понравится этот товар."
 	reference = "G_DRUG"
 	cost = 200
 	contains = list(/obj/item/storage/pill_bottle/random_drug_bottle)
+
+/datum/vox_pack/goods/enforser
+	name = "Пистолет Энфорсер (резина)"
+	desc = "Мясу понравится этот товар."
+	reference = "G_ENF"
+	cost = 1000
+	contains = list(/obj/item/gun/projectile/automatic/pistol/enforcer,
+		/obj/item/ammo_box/magazine/enforcer,
+		/obj/item/ammo_box/magazine/enforcer,
+		/obj/item/ammo_box/magazine/enforcer,
+	)
+
+/datum/vox_pack/goods/space
+	name = "Космический Старый Костюм \"NasaVoid\" - Красный"
+	desc = "Мясу понравится этот товар."
+	reference = "G_SP"
+	cost = 200
+	contains = list(
+		/obj/item/clothing/head/helmet/space/nasavoid,
+		/obj/item/clothing/suit/space/nasavoid,
+	)
+
+/datum/vox_pack/goods/space/green
+	name = "Космический Старый Костюм \"NasaVoid\" - Зеленый"
+	desc = "Мясу понравится этот товар."
+	reference = "G_SP_G"
+	cost = 200
+	contains = list(
+		/obj/item/clothing/head/helmet/space/nasavoid/green,
+		/obj/item/clothing/suit/space/nasavoid/green,
+	)
+
+/datum/vox_pack/goods/space/ntblue
+	name = "Космический Старый Костюм \"NasaVoid\" - NT Синий"
+	desc = "Мясу понравится этот товар."
+	reference = "G_SP_NTB"
+	cost = 250
+	contains = list(
+		/obj/item/clothing/head/helmet/space/nasavoid/ntblue,
+		/obj/item/clothing/suit/space/nasavoid/ntblue,
+	)
+
+/datum/vox_pack/goods/space/purple
+	name = "Космический Старый Костюм \"NasaVoid\" - Фиолетовый"
+	desc = "Мясу понравится этот товар."
+	reference = "G_SP_P"
+	cost = 200
+	contains = list(
+		/obj/item/clothing/head/helmet/space/nasavoid/purple,
+		/obj/item/clothing/suit/space/nasavoid/purple,
+	)
+
+/datum/vox_pack/goods/space/yellow
+	name = "Космический Старый Костюм \"NasaVoid\" - Желтый"
+	desc = "Мясу понравится этот товар."
+	reference = "G_SP_Y"
+	cost = 200
+	contains = list(
+		/obj/item/clothing/head/helmet/space/nasavoid/yellow,
+		/obj/item/clothing/suit/space/nasavoid/yellow,
+	)
+
+/datum/vox_pack/goods/space/ltblue
+	name = "Космический Старый Костюм \"NasaVoid\" - Светло-синий"
+	desc = "Мясу понравится этот товар."
+	reference = "G_SP_LTB"
+	cost = 200
+	contains = list(
+		/obj/item/clothing/head/helmet/space/nasavoid/ltblue,
+		/obj/item/clothing/suit/space/nasavoid/ltblue,
+	)
+
+/datum/vox_pack/goods/telescopic
+	name = "Телескопическая дубинка"
+	desc = "Мясу понравится этот товар."
+	reference = "G_TEL"
+	cost = 300
+	contains = list(/obj/item/melee/classic_baton/telescopic)
+
+/datum/vox_pack/goods/clown_grenade
+	name = "Клоунская Граната"
+	desc = "Мясу понравится этот товар."
+	reference = "G_CL_GR"
+	cost = 100
+	contains = list(/obj/item/grenade/clown_grenade)
+
+/datum/vox_pack/goods/clown_gun
+	name = "Клоунская Хлопушка"
+	desc = "Мясу понравится этот товар."
+	reference = "G_CL_GUN"
+	cost = 100
+	contains = list(/obj/item/gun/energy/clown)
+
+/datum/vox_pack/goods/clown_pda
+	name = "Клоунский ПДА"
+	desc = "Мясу понравится этот товар."
+	reference = "G_CL_PDA"
+	cost = 200
+	contains = list(/obj/item/pda/clown)

@@ -95,7 +95,6 @@
 		/obj/item/gun/energy/mindflayer = 500,
 		/obj/item/gun/energy/wormhole_projector = 800,
 		/obj/item/gun/energy/laser/instakill = 10000,
-		/obj/item/gun/energy/clown = 100,
 		/obj/item/gun/energy/plasmacutter/adv = 300,
 		/obj/item/gun/energy/laser = 200,
 
