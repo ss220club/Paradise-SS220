@@ -362,11 +362,11 @@
 	icon_state = "ugly_statue2"
 
 /obj/structure/statue/sandstone/assistant/village
-	name = "Статуя молодого Грейхма Сайлмана."
+	name = "Статуя молодого Грейхма Сайлмана"
 	desc = "Легендарная личность для каждого выходца с Хирки."
 	icon = 'modular_ss220/dunes_map/icons/statuelarge.dmi'
 	icon_state = "statue_village"
-	pixel_x = 10
+	pixel_y = 10
 
 //barricade
 /obj/structure/barricade/beton

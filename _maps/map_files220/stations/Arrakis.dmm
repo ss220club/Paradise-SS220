@@ -21483,8 +21483,7 @@
 /area/awaymission/arrakis/bunker/brig)
 "cSp" = (
 /obj/effect/decal/cleanable/dust,
-/obj/structure/mirror/magic{
-	name = "жучье зеркало";
+/obj/structure/mirror/magic/kidan{
 	pixel_y = 32
 	},
 /turf/simulated/floor/brick/cold,
@@ -22274,7 +22273,7 @@
 /obj/structure/statue/cheese/cheesus{
 	color = "#633717";
 	name = "Статуя Грейхма Сайлмана";
-	desc = "Лик проклятого Пророка."
+	desc = "Лик проклятого Пророка"
 	},
 /turf/simulated/floor/wood/fancy/birch{
 	color = "#45260f"
@@ -22709,12 +22708,11 @@
 /obj/item/storage/box/buck,
 /obj/item/storage/box/buck,
 /obj/item/storage/box/buck,
-/obj/item/storage/box/buck,
-/obj/item/storage/box/buck,
-/obj/item/storage/box/buck,
-/obj/item/storage/box/buck,
-/obj/item/storage/box/buck,
 /obj/machinery/light/small/directional/east,
+/obj/item/storage/box/rubbershot,
+/obj/item/storage/box/rubbershot,
+/obj/item/storage/box/rubbershot,
+/obj/item/storage/box/rubbershot,
 /turf/simulated/floor/brick/cold,
 /area/awaymission/arrakis/outside_building/raider_base)
 "dCg" = (
@@ -24692,6 +24690,16 @@
 	icon_state = "navyblue"
 	},
 /area/awaymission/arrakis/bunker/normandy_mi_v_shkafu_pryachemsya)
+"eHE" = (
+/obj/structure/chair/sofa/pew/right{
+	dir = 8
+	},
+/turf/simulated/floor/plasteel{
+	dir = 8;
+	icon_state = "chapel";
+	color = "#e0ac7b"
+	},
+/area/awaymission/arrakis/cave/cave1)
 "eHO" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
@@ -25056,12 +25064,11 @@
 /turf/simulated/floor/indestructible/dune_sand,
 /area/awaymission/arrakis/cave)
 "eUO" = (
-/obj/structure/wall_torch{
-	dir = 1
-	},
 /obj/effect/decal/cleanable/dust,
+/obj/structure/spider/stickyweb,
+/mob/living/simple_animal/hostile/duna,
 /turf/simulated/floor/brick/cold,
-/area/awaymission/arrakis/outside_building/raider_base)
+/area/awaymission/arrakis/cave/cave2)
 "eUT" = (
 /obj/effect/turf_decal/stripes/corner{
 	dir = 8
@@ -25448,6 +25455,16 @@
 	icon_state = "red"
 	},
 /area/awaymission/arrakis/bunker/brig)
+"fen" = (
+/obj/structure/chair/sofa/pew/left{
+	dir = 8
+	},
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "chapel";
+	color = "#e0ac7b"
+	},
+/area/awaymission/arrakis/cave/cave1)
 "feo" = (
 /obj/machinery/light/directional/east,
 /obj/machinery/recharge_station/upgraded,
@@ -28058,6 +28075,7 @@
 /turf/simulated/floor/indestructible/dune_sand/smooth,
 /area/awaymission/arrakis/outside/outside5)
 "gJP" = (
+/obj/effect/mapping_helpers/light/dark,
 /turf/simulated/floor/indestructible/dune_sand/cave/cavedeep/dug/cold,
 /area/awaymission/arrakis/outside_building/raider_base)
 "gJY" = (
@@ -33027,6 +33045,7 @@
 /obj/item/clothing/suit/hooded/abaya,
 /obj/item/clothing/suit/hooded/abaya,
 /obj/item/clothing/suit/hooded/abaya,
+/obj/item/kitchen/knife/ritual,
 /turf/simulated/floor/wood/fancy/birch{
 	color = "#45260f"
 	},
@@ -33868,7 +33887,7 @@
 /turf/simulated/floor/brick/cold,
 /area/awaymission/arrakis/cave/cave2)
 "kDK" = (
-/obj/structure/rack,
+/obj/structure/reagent_dispensers/water_cooler,
 /turf/simulated/floor/wood/fancy/oak,
 /area/awaymission/arrakis/cave/cave1)
 "kDZ" = (
@@ -35602,6 +35621,7 @@
 /obj/structure/closet/crate/grave/gravelead{
 	desc = "Тут покоится Фуриор. Человек попытавшийся поднять контейнер."
 	},
+/obj/item/toy/plushie/black_fox,
 /turf/simulated/floor/indestructible/dune_sand,
 /area/awaymission/arrakis/outside/mining_town)
 "lIZ" = (
@@ -35804,6 +35824,10 @@
 /obj/effect/decal/cleanable/dust,
 /obj/item/storage/box/buck,
 /obj/item/storage/box/rubbershot,
+/obj/item/reagent_containers/drinks/bottle/whiskey,
+/obj/item/reagent_containers/drinks/bottle/whiskey,
+/obj/item/reagent_containers/drinks/bottle/whiskey,
+/obj/item/reagent_containers/drinks/bottle/whiskey,
 /turf/simulated/floor/wood/fancy/cherry,
 /area/awaymission/arrakis/cave/cave1)
 "lQT" = (
@@ -39977,6 +40001,14 @@
 /obj/structure/spider/terrorweb,
 /turf/simulated/floor/indestructible/dune_sand,
 /area/awaymission/arrakis/cave)
+"ozD" = (
+/obj/effect/decal/cleanable/dust,
+/obj/item/shovel,
+/obj/structure/rack{
+	color = "#e0ac7b"
+	},
+/turf/simulated/floor/wood,
+/area/awaymission/arrakis/cave/cave1)
 "ozF" = (
 /obj/item/reagent_containers/drinks/oilcan,
 /turf/simulated/floor/indestructible/dune_sand{
@@ -40224,6 +40256,11 @@
 	pixel_x = -1;
 	pixel_y = 10
 	},
+/obj/item/reagent_containers/pill/fakedeath,
+/obj/item/reagent_containers/pill/fakedeath,
+/obj/item/reagent_containers/pill/fakedeath,
+/obj/item/reagent_containers/pill/fakedeath,
+/obj/item/reagent_containers/pill/fakedeath,
 /turf/simulated/floor/wood/fancy/birch{
 	color = "#45260f"
 	},
@@ -43281,6 +43318,7 @@
 /obj/structure/closet/crate/grave/gravelead{
 	desc = "Тут покоится Сику. «Вот би ТиГэ» сказал он перед тем как ему разбили лицо."
 	},
+/obj/item/toy/plushie/lizardplushie,
 /turf/simulated/floor/indestructible/dune_sand,
 /area/awaymission/arrakis/outside/mining_town)
 "qsI" = (
@@ -44543,7 +44581,7 @@
 	},
 /area/awaymission/arrakis/bunker/storage)
 "rfD" = (
-/obj/structure/closet/cabinet,
+/obj/item/flag/species/kidan,
 /obj/effect/decal/cleanable/cobweb2,
 /turf/simulated/floor/brick/cold,
 /area/awaymission/arrakis/outside_building/raider_base)
@@ -47832,6 +47870,11 @@
 /obj/structure/telecrystal_deposit/mini,
 /turf/simulated/floor/indestructible/dune_sand/cave/cavedeep/dark/dark_basalt,
 /area/awaymission/arrakis/cave)
+"top" = (
+/obj/effect/decal/cleanable/dust,
+/mob/living/carbon/human/kidan,
+/turf/simulated/floor/brick/cold,
+/area/awaymission/arrakis/outside_building/raider_base)
 "toJ" = (
 /obj/effect/decal/cleanable/blood/writing{
 	dir = 4
@@ -53948,11 +53991,11 @@
 /turf/simulated/floor/wood/fancy/oak,
 /area/awaymission/arrakis/cave/cave1)
 "xnr" = (
-/obj/item/reagent_containers/glass/bottle/reagent{
-	icon_state = "vial0"
+/obj/structure/mineral_door/sandstone{
+	color = "#603516"
 	},
-/turf/simulated/wall/indestructible/rock/mineral/dune_rock,
-/area/awaymission/arrakis/cave)
+/turf/simulated/floor/indestructible/dune_sand/cave/cavedeep/cold_rock,
+/area/awaymission/arrakis/outside_building/raider_base)
 "xnA" = (
 /obj/item/shard{
 	icon_state = "large";
@@ -54089,6 +54132,10 @@
 	},
 /obj/effect/decal/cleanable/cobweb,
 /obj/item/storage/pill_bottle/random_drug_bottle,
+/turf/simulated/floor/brick/cold,
+/area/awaymission/arrakis/outside_building/raider_base)
+"xtm" = (
+/mob/living/carbon/human/kidan,
 /turf/simulated/floor/brick/cold,
 /area/awaymission/arrakis/outside_building/raider_base)
 "xtA" = (
@@ -62300,7 +62347,7 @@ qMl
 qMl
 qMl
 qMl
-xnr
+ayO
 ayO
 ayO
 tWB
@@ -62512,12 +62559,12 @@ aYs
 aIg
 aYs
 paM
-lvh
-iZU
+fen
+eHE
 lQf
 lQf
-lvh
-iZU
+fen
+eHE
 paM
 aYs
 aYs
@@ -62978,7 +63025,7 @@ jzQ
 jzQ
 jzQ
 wrH
-gzO
+eUO
 qMl
 ayO
 ayO
@@ -63317,7 +63364,7 @@ ayO
 qMl
 wWK
 gzO
-kzN
+jzQ
 enJ
 jzQ
 fIe
@@ -65429,7 +65476,7 @@ ayO
 qMl
 fvR
 jzQ
-kzN
+jzQ
 jzQ
 jzQ
 bJU
@@ -65794,7 +65841,7 @@ jzQ
 jzQ
 jzQ
 jzQ
-gzO
+eUO
 qMl
 ayO
 ayO
@@ -80079,7 +80126,7 @@ aYs
 paM
 hSS
 knF
-knF
+ozD
 pVH
 paM
 aYs
@@ -85925,7 +85972,7 @@ aeA
 aeA
 aeA
 aeA
-aeA
+aNX
 aeA
 aeA
 aeA
@@ -90481,7 +90528,7 @@ aeA
 aeA
 aeA
 aeA
-aeA
+aNX
 aeA
 aeA
 aeA
@@ -92265,7 +92312,7 @@ aeA
 aeA
 aeA
 aeA
-aeA
+aNX
 aeA
 aeA
 aeA
@@ -94686,7 +94733,7 @@ aeA
 aeA
 aeA
 aeA
-aeA
+aNX
 aeA
 aeA
 aeA
@@ -96479,7 +96526,7 @@ aeA
 aeA
 aeA
 aeA
-aeA
+aNX
 aeA
 aeA
 aeA
@@ -102101,7 +102148,7 @@ aeA
 aeA
 aeA
 aeA
-aeA
+aNX
 aeA
 aeA
 aeA
@@ -163261,7 +163308,7 @@ ayO
 ayO
 atn
 ayO
-kXd
+xtm
 kXd
 dKs
 atn
@@ -163611,7 +163658,7 @@ ayO
 ayO
 ayO
 atn
-dKs
+top
 bSz
 dKs
 ayO
@@ -163969,7 +164016,7 @@ dKs
 xVZ
 ayO
 kIO
-dKs
+top
 ayO
 atn
 ayO
@@ -164666,7 +164713,7 @@ ayO
 ayO
 ayO
 atn
-dKs
+top
 dKs
 hvb
 dKs
@@ -165729,10 +165776,10 @@ kXd
 dKs
 rLO
 dKs
-kXd
-eUO
-ayO
-bFP
+hvb
+dKs
+xnr
+eUc
 dKs
 kXd
 mTi
@@ -166082,12 +166129,12 @@ ayO
 qvE
 dKs
 ayO
-dKs
+top
 ayO
 ayO
 gOD
 ccn
-ayO
+bFP
 kXd
 kXd
 kXd
@@ -166782,7 +166829,7 @@ ayO
 ayO
 ayO
 atn
-kXd
+xtm
 dKs
 dKs
 ayO
@@ -166793,7 +166840,7 @@ ayO
 ayO
 ayO
 ayO
-kXd
+ayO
 ocY
 inz
 ocY
@@ -167485,7 +167532,7 @@ ayO
 ayO
 ayO
 ayO
-ayO
+ocY
 sMv
 sMv
 dKs
@@ -167837,7 +167884,7 @@ ayO
 oAc
 jXB
 ayO
-ayO
+ocY
 cSp
 vxV
 dKs

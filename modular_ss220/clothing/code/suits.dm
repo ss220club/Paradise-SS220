@@ -381,6 +381,14 @@
 /obj/item/clothing/suit/fluff/dusty_jacket
 	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
 
+/obj/item/clothing/head/witchhunter_hat
+	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
+
+/obj/item/clothing/suit/poncho/pink
+	name = "pink poncho"
+	desc = "Your classic, non-racist poncho. This one is pink."
+	icon_state = "ponchoshame"
+	item_state = "ponchoshame"
 
 /obj/item/clothing/suit/jacket/mafia_white
 	name = "белый пиджак"
