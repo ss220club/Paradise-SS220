@@ -27,7 +27,10 @@
 
 /obj/machinery/economy/vending/nta/admin/Initialize(mapload)
 	products = list()
-	var/list/new_products = list() + subtypesof(/obj/item/ammo_box) + /obj/item/storage/box/rubbershot + /obj/item/storage/box/buck + /obj/item/storage/box/dragonsbreath + /obj/item/storage/box/holy + /obj/item/storage/box/rubbershot + /obj/item/storage/box/slug + /obj/item/storage/box/stun + /obj/item/storage/box/tranquilizer - /obj/item/ammo_box/magazine - typesof(/obj/item/ammo_box/magazine/internal)
+	var/list/new_products = list() + subtypesof(/obj/item/ammo_box) + /obj/item/storage/box/rubbershot +\
+	/obj/item/storage/box/buck + /obj/item/storage/box/dragonsbreath + /obj/item/storage/box/holy +\
+	/obj/item/storage/box/rubbershot + /obj/item/storage/box/slug + /obj/item/storage/box/stun +\
+	/obj/item/storage/box/tranquilizer - /obj/item/ammo_box/magazine - typesof(/obj/item/ammo_box/magazine/internal)
 	for(var/ammo_type in new_products)
 		products[ammo_type] = 999
 	.=..()
