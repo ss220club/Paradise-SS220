@@ -1,23 +1,25 @@
 #define COMSIG_IS_CONDITION_PASSED "is_condition_passed"
 #define COMSIG_PICK_LEGENDARY_ITEM "pick_legendary_item"
-#define COMPONENT_CONDITION_PASSED 1 << 0
-#define COMPONENT_CONDITION_FAILED 0 << 0
+#define COMPONENT_CONDITION_PASSED TRUE
+#define COMPONENT_CONDITION_FAILED FALSE
 
-/datum/component/condition_locked_pickup
+/datum/component/ckey_and_role_locked_pickup
 	var/pickup_damage
 	var/force = 20
+	var/list/ckeys = list()
+	var/required_role
 
-/datum/component/condition_locked_pickup/Initialize(required_role, ckey_whitelist, pickup_damage = 0)
+/datum/component/ckey_and_role_locked_pickup/Initialize(required_role, ckey_whitelist, pickup_damage = 0)
+		src.required_role = required_role
+		src.ckeys = ckey_whitelist
 		src.pickup_damage = pickup_damage
-		AddComponent(/datum/component/ckey_and_role_locked_pickup, _ckeys = ckey_whitelist, _required_role = required_role)
 
-/datum/component/condition_locked_pickup/RegisterWithParent()
+/datum/component/ckey_and_role_locked_pickup/RegisterWithParent()
 	RegisterSignal(parent, COMSIG_ITEM_PICKUP, PROC_REF(try_pick_up))
 
+/datum/component/ckey_and_role_locked_pickup/proc/try_pick_up(obj/item/I, mob/living/user)
 
-/datum/component/condition_locked_pickup/proc/try_pick_up(obj/item/I, mob/living/user)
-
-	if(!(SEND_SIGNAL(src, COMSIG_IS_CONDITION_PASSED) & COMPONENT_CONDITION_PASSED))
+	if(!check_role_and_ckey())
 		user.Weaken(10 SECONDS)
 		user.unEquip(I, force, silent = FALSE)
 		to_chat(user, span_userdanger("Вы недостойны."))
@@ -28,17 +30,7 @@
 			user.adjustBruteLoss(rand(pickup_damage, pickup_damage * 2))
 	return
 
-/datum/component/ckey_and_role_locked_pickup
-	var/list/ckeys = list()
-	var/required_role
-
-/datum/component/ckey_and_role_locked_pickup/Initialize(list/_ckeys = list(), _required_role = null)
-	ckeys = _ckeys
-	required_role = _required_role
-	RegisterSignal(parent, COMSIG_IS_CONDITION_PASSED, PROC_REF(check_requirements))
-
-/datum/component/ckey_and_role_locked_pickup/proc/check_requirements()
-	SIGNAL_HANDLER
+/datum/component/ckey_and_role_locked_pickup/proc/check_role_and_ckey()
 	if(usr.client.ckey in ckeys)
 		return COMPONENT_CONDITION_PASSED
 
