@@ -105,7 +105,7 @@
 	var/drop_x = 1
 	var/drop_y = 1
 	var/drop_z = -1
-	var/drop_chance = 5
+	var/drop_chance = 1
 
 /obj/structure/sink/kolodec/examine_more(mob/user)
 	. = ..()
