@@ -38,17 +38,13 @@
 	var/saber_name = "mid"
 	var/hit_wield = 'modular_ss220/prime_only/sound/weapons/mid_saberhit.ogg'
 	var/hit_unwield = "swing_hit"
-
-	var/datum/enchantment/enchant = new/datum/enchantment/dash
 	var/ranged = FALSE
 	var/power = 1
+	var/datum/enchantment/enchant = new/datum/enchantment/dash
 
 /obj/item/dualsaber/legendary_saber/Initialize(mapload)
 	. = ..()
-	src.AddComponent(/datum/component/ckey_and_role_locked_pickup, "offstation_role", LEGENDARY_SWORDS_CKEY_WHITELIST, pickup_damage = 10)
-
-/obj/item/dualsaber/legendary_saber/pickup(mob/living/user)
-	. = ..()
+	AddComponent(/datum/component/ckey_and_role_locked_pickup, "offstation_role", LEGENDARY_SWORDS_CKEY_WHITELIST, pickup_damage = 10)
 
 /obj/item/dualsaber/legendary_saber/update_icon_state()
 	if(HAS_TRAIT(src, TRAIT_WIELDED))
@@ -113,6 +109,7 @@
 	wieldsound = 'modular_ss220/prime_only/sound/weapons/norm_saberon.ogg'
 	unwieldsound = 'modular_ss220/prime_only/sound/weapons/norm_saberoff.ogg'
 	hit_wield = 'modular_ss220/prime_only/sound/weapons/norm_saberhit.ogg'
+
 /obj/item/dualsaber/legendary_saber/flee_catcher
 	name = "Ловец Бегущих"
 	desc = "\"Ловец Бегущих\" - один из легендарных энергетических мечей Галактики. Являясь \"младшей\" парной частью еще одного легендарного меча - \"Сестры\", это оружие представляет собой более грубое и практичное творение. Корпус рукояти, изобилующий царапинами и потёртостями, говорит о тяжелой истории меча. Одной из традиций владельцев этого оружия является рисование под кнопкой включения отметок в виде белых жетонов, коих уже насчитывается семь штук. Рядом с самым первым жетоном выгравирована надпись : \"2361. А.М.\" \n Цвет клинка ярко-желтый,  его рукоять удлинена для комфортного боя как одной, так и двумя руками, навершие Типа \"P\" покрыто золотом и обладает специальным разъёмом для подключения своей старшей \"Сестры\", а гарда представляет собой два закругленных декоративных отростка. Из старых легенд известно, что строптивый и бурный характер меча могли сдержать лишь настоящие мастера, которые использовали хаотичный, но адаптивный под врага стиль боя. \n Создатель: Коникс`Хеллькикс. Текущий Владелец: Мунивёрс Нормандия, в последствии был передан Рицу Келли."
@@ -136,18 +133,17 @@
 	if(intentional)
 		SSblackbox.record_feedback("nested tally", "saber_enchants", 1, list("[E.name]"))
 
-
 /datum/enchantment/dash/proc/charge(mob/living/user, atom/chargeat, obj/item/dualsaber/legendary_saber/S)
 	if(on_leap_cooldown)
 		return
 	if(!chargeat)
 		return
-	var/turf/T = get_turf(chargeat)
+	var/turf/destination_turf  = get_turf(chargeat)
 
-	if(!T)
+	if(!destination_turf )
 		return
 	var/list/targets = list()
-	for(var/atom/target in T.contents)
+	for(var/atom/target in destination_turf.contents)
 		targets += target
 	charging = TRUE
 
@@ -157,15 +153,14 @@
 	var/i
 	for(i=0, i<5, i++)
 		spawn(i * 9 MILLISECONDS)
-			step_to(user, T, 1, movespeed)
+			step_to(user, destination_turf , 1, movespeed)
 			var/obj/effect/temp_visual/decoy/D2 = new /obj/effect/temp_visual/decoy(user.loc, user)
 			animate(D2, alpha = 0, color = "#271e77", transform = matrix()*1, time = anim_time, loop = anim_loop)
 
 	spawn(45 MILLISECONDS)
-		if(get_dist(user, T) > 1)
+		if(get_dist(user, destination_turf ) > 1)
 			return
 		charge_end(targets, user, S)
-
 
 /datum/enchantment/dash/proc/charge_end(list/targets = list(), mob/living/user, obj/item/dualsaber/legendary_saber/S)
 	charging = FALSE
@@ -184,7 +179,6 @@
 	var/charging = FALSE
 	var/anim_time = 3 DECISECONDS
 	var/anim_loop = 3 DECISECONDS
-
 
 /datum/enchantment/proc/on_legendary_hit(mob/living/target, mob/living/user, proximity, obj/item/dualsaber/legendary_saber/S)
 	if(world.time < cooldown)
@@ -207,5 +201,3 @@
 
 	if(HAS_TRAIT(S, TRAIT_WIELDED))
 		charge(user, target, S)
-
-

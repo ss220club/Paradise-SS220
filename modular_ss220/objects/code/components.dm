@@ -1,8 +1,3 @@
-#define COMSIG_IS_CONDITION_PASSED "is_condition_passed"
-#define COMSIG_PICK_LEGENDARY_ITEM "pick_legendary_item"
-#define COMPONENT_CONDITION_PASSED TRUE
-#define COMPONENT_CONDITION_FAILED FALSE
-
 /datum/component/ckey_and_role_locked_pickup
 	var/pickup_damage
 	var/force = 20
@@ -17,24 +12,24 @@
 /datum/component/ckey_and_role_locked_pickup/RegisterWithParent()
 	RegisterSignal(parent, COMSIG_ITEM_PICKUP, PROC_REF(try_pick_up))
 
+/datum/component/ckey_and_role_locked_pickup/UnregisterFromParent()
+	UnregisterSignal(parent, COMSIG_ITEM_PICKUP)
+
 /datum/component/ckey_and_role_locked_pickup/proc/try_pick_up(obj/item/I, mob/living/user)
 
-	if(!check_role_and_ckey())
-		user.Weaken(10 SECONDS)
-		user.unEquip(I, force, silent = FALSE)
-		to_chat(user, span_userdanger("Вы недостойны."))
-		if(ishuman(user))
-			var/mob/living/carbon/human/H = user
-			H.apply_damage(rand(pickup_damage, pickup_damage * 2), BRUTE, pick(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM))
-		else
-			user.adjustBruteLoss(rand(pickup_damage, pickup_damage * 2))
-	return
+	if(check_role_and_ckey(user))
+		return
+	user.Weaken(10 SECONDS)
+	user.unEquip(I, force, silent = FALSE)
+	to_chat(user, span_userdanger("Вы недостойны."))
+	if(ishuman(user))
+		user.apply_damage(rand(pickup_damage, pickup_damage * 2), BRUTE, pick(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM))
 
-/datum/component/ckey_and_role_locked_pickup/proc/check_role_and_ckey()
-	if(usr.client.ckey in ckeys)
-		return COMPONENT_CONDITION_PASSED
+/datum/component/ckey_and_role_locked_pickup/proc/check_role_and_ckey(mob/user)
+	if(user.client.ckey in ckeys)
+		return TRUE
 
-	if(required_role in usr.mind.vars)
-		if(usr.mind.vars[required_role])
-			return COMPONENT_CONDITION_PASSED
-	return COMPONENT_CONDITION_FAILED
+	if(required_role in user.mind.vars)
+		if(user.mind.vars[required_role])
+			return TRUE
+	return FALSE
