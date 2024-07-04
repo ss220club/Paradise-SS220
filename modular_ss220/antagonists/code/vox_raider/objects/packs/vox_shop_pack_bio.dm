@@ -17,7 +17,7 @@
 	name = "Биоядро (Потрошитель х3)"
 	desc = "Переписанная машина синдиката на служении Воксам."
 	reference = "B_B_VISC"
-	cost = 500
+	cost = 400
 	contains = list(/obj/item/biocore/viscerator)
 
 /datum/vox_pack/bio/core/stamine
@@ -38,19 +38,19 @@
 	name = "Биоядро (Кусакика х4)"
 	desc = "Кусачий маленький биомеханизм."
 	reference = "B_B_KUS"
-	cost = 400
+	cost = 300
 	contains = list(/obj/item/biocore/kusaka)
 
 /datum/vox_pack/bio/core/taran
 	name = "Биоядро (Таракикан х1)"
 	desc = "Броневой биомеханизм, приспособленный для вышибания дверей."
 	reference = "B_B_TAT"
-	cost = 500
+	cost = 400
 	contains = list(/obj/item/biocore/taran)
 
 /datum/vox_pack/bio/core/tox
 	name = "Биоядро (Токсикикик х3)"
 	desc = "Иглоподобный биомеханизм для впрыскивания токсин."
 	reference = "B_B_TOX"
-	cost = 400
+	cost = 300
 	contains = list(/obj/item/biocore/tox)

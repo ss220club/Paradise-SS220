@@ -386,6 +386,10 @@
 		values_sum_precious += temp_values_sum_precious
 
 		if(!is_visuale_only && (temp_values_sum + temp_values_sum_precious) >= 0)
+			var/obj/O = I
+			if(ismob(O.loc))	// Cyborg Parts, wearing clothes, but not contents
+				var/mob/M = O
+				M.unEquip(I)
 			qdel(I)
 
 	var/addition_text = ""
