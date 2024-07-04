@@ -748,11 +748,12 @@
 	item_state = "empty"
 	lefthand_file = 'modular_ss220/dunes_map/icons/cube_left.dmi'
 	righthand_file = 'modular_ss220/dunes_map/icons/cube_right.dmi'
+	var/charged_type = "charged"
 
 /obj/item/stock_parts/cell/cube/process()
 	if(percent() == 100)
-		icon_state = "charged"
-		item_state = "charged"
+		icon_state = charged_type
+		item_state = charged_type
 	else
 		icon_state = "empty"
 		item_state = "empty"
@@ -760,6 +761,14 @@
 /obj/item/stock_parts/cell/cube/New()
 	. = ..()
 	charge = 0
+
+/obj/item/stock_parts/cell/cube/pickup(mob/user)
+	. = ..()
+	if(user.name == "Миднайт Блэк" && percent() == 100)
+		charged_type = "midn"
+
+	else if(user.name == "Муниверс Нормандия" && percent() == 100)
+		charged_type = "norm"
 
 /obj/item/stock_parts/cell/cube/Destroy()
 	empulse(get_turf(loc), 4, 10, 1)
