@@ -10,6 +10,7 @@
 
 /datum/antagonist/vox_raider/add_owner_to_gamemode()
 	SSticker.mode.vox_raiders |= owner
+	owner.faction |= list("Vox")
 
 /datum/antagonist/vox_raider/remove_owner_from_gamemode()
 	SSticker.mode.vox_raiders -= owner
