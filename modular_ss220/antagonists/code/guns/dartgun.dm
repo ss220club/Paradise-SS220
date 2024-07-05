@@ -95,6 +95,7 @@
 	if(!cartridge_loaded)
 		return FALSE
 	user.unEquip(cartridge_loaded)
+	syringes.Cut()
 	cartridge_loaded.update_icon()
 	cartridge_loaded = null
 	update_icon()
