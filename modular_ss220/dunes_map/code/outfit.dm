@@ -135,10 +135,18 @@
 	belt = /obj/item/storage/belt/fannypack
 	r_pocket = /obj/item/clothing/mask/cigarette/pipe
 
+/datum/outfit/redneck/redneck5
+	name = "деревенщина святоша"
+	suit = /obj/item/clothing/suit/witchhunter
+	head = /obj/item/clothing/head/witchhunter_hat
+	belt = /obj/item/storage/belt/fannypack
+	r_pocket = /obj/item/clothing/mask/cigarette/pipe
+	gloves = /obj/item/clothing/gloves/fingerless
+
 /datum/outfit/redneck/redneck_shame
 	name = "позорный деревенщина"
 	uniform = /obj/item/clothing/under/dune/heatprotect
-	suit = /obj/item/clothing/suit/poncho/ponchoshame
+	suit = /obj/item/clothing/suit/poncho/pink
 	belt = /obj/item/storage/belt/fannypack/pink
 	glasses = /obj/item/clothing/glasses/fluff/kamina
 	shoes = /obj/item/clothing/shoes/cowboy/pink
@@ -266,7 +274,7 @@
 	gloves = /obj/item/clothing/gloves/combat
 
 
-/datum/outfit/job/ntnavyofficer
+/datum/outfit/job/ntnavyofficer/traisen
 	name = "Генрих Трейзен"
 	r_hand = /obj/item/storage/belt/rapier/genri_rapier
 	head = /obj/item/clothing/head/ntrep
