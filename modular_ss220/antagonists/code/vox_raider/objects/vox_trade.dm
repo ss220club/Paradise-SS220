@@ -38,7 +38,7 @@
 
 	// делители за параметры
 	var/armor_div = 10
-	var/stack_div = 6
+	var/stack_div = 8
 	var/temp_div = 5
 	var/no_unique_tech_div = 4
 	var/denomination_div = 5

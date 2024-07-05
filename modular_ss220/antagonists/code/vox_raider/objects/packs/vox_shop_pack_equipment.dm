@@ -4,13 +4,6 @@
 
 
 // ============== Misc ==============
-/datum/vox_pack/equipment/flag
-	name = "Флаг"
-	desc = "С ним ценности еще ценнее."
-	reference = "E_FLAG"
-	cost = 100
-	contains = list(/obj/item/flag/vox_raider)
-
 /datum/vox_pack/equipment/card
 	name = "Идентификационная Карта"
 	desc = "Карта для идентификации, смены образов и воровства доступов."
@@ -39,6 +32,12 @@
 	cost = 50
 	contains = list(/obj/item/tank/internals/emergency_oxygen/double/vox)
 
+/datum/vox_pack/equipment/flag
+	name = "Флаг"
+	desc = "С ним ценности еще ценнее."
+	reference = "E_FLAG"
+	cost = 100
+	contains = list(/obj/item/flag/vox_raider)
 
 // TECH
 
