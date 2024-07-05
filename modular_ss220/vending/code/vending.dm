@@ -33,7 +33,7 @@
 	/obj/item/storage/box/tranquilizer - /obj/item/ammo_box/magazine - typesof(/obj/item/ammo_box/magazine/internal)
 	for(var/ammo_type in new_products)
 		products[ammo_type] = 999
-	.=..()
+	. = ..()
 
 /obj/machinery/economy/vending/nta/blue
 	name = "NT ERT Medium Gear & Ammunition"
