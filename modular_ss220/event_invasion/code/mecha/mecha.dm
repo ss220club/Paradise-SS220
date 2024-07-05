@@ -484,6 +484,7 @@
 
 	animate(container, pixel_z = 0, time = 1 SECONDS)
 	sleep(1 SECONDS)
+	new /obj/effect/temp_visual/explosion(landing_loc, 4, FALSE, TRUE)
 	QDEL_NULL(flares)
 	container.open_container()
 

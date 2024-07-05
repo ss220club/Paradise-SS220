@@ -8,7 +8,7 @@
 	layer = 5.5
 	bound_x = -32
 	bound_y = -32
-	pixel_x = 10
+	pixel_y = 8
 	density = TRUE
 	max_integrity = 10000
 	opacity = FALSE
