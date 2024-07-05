@@ -18,7 +18,7 @@
 	name = "Энергощит"
 	desc = "Энергетический компактный ручной щит, пособный отражать энергетические снаряды, но не может блокировать прямые воздействия."
 	reference = "MEL_SH"
-	cost = 2000
+	cost = 4000
 	contains = list(/obj/item/shield/energy)
 
 
@@ -28,7 +28,7 @@
 	name = "Энергосабля"
 	desc = "Энергетическая сабля для абордажей кораблей."
 	reference = "MEL_SW"
-	cost = 2000
+	cost = 4000
 	tiMEL_until_available = 45
 	contains = list(/obj/item/melee/energy/sword/pirate)
 
@@ -36,7 +36,7 @@
 	name = "Энергомеч (Фиолетовый)"
 	desc = "Энергетический меч для прижигания ран отрубленных конечностей неприятеля. Цвет решительности, цвет Рейдеров. Классика Воксов."
 	reference = "MEL_SWP"
-	cost = 4000
+	cost = 8000
 	tiMEL_until_available = 120
 	contains = list(/obj/item/melee/energy/sword/saber/purple)
 
@@ -44,7 +44,7 @@
 	name = "Энергомеч (Синий)"
 	desc = "Энергетический меч для прижигания ран отрубленных конечностей неприятеля. Цвет силы и стойкости. Его носят бастионы мира Воксов."
 	reference = "MEL_SWB"
-	cost = 5200
+	cost = 10000
 	tiMEL_until_available = 120
 	contains = list(/obj/item/melee/energy/sword/saber/blue)
 
@@ -52,7 +52,7 @@
 	name = "Энергомеч (Зелёный)"
 	desc = "Энергетический меч для прижигания ран отрубленных конечностей неприятеля. Цвет миротворцев, тех, кто не любит насилие и причиняет его с большой неохотой. С этим мечом причиняют добро и наносят радость."
 	reference = "MEL_SWG"
-	cost = 5250
+	cost = 10000
 	tiMEL_until_available = 120
 	contains = list(/obj/item/melee/energy/sword/saber/green)
 
@@ -60,7 +60,7 @@
 	name = "Энергомеч (Красный)"
 	desc = "Энергетический меч для прижигания ран отрубленных конечностей неприятеля. Цвет ненависти, гнева и злого злодейства злыхх злыдней. Безвкусица."
 	reference = "MEL_SWR"
-	cost = 6250
+	cost = 12000
 	tiMEL_until_available = 120
 	contains = list(/obj/item/melee/energy/sword/saber/red)
 
