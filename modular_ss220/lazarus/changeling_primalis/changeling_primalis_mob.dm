@@ -25,6 +25,7 @@
 	attack_sound = 'sound/weapons/bite.ogg'
 	see_in_dark = 6
 	layer = MOB_LAYER
+	faction = list("treacherous_flesh")
 
 	var/mob/living/carbon/human/host
 	var/chemicals = 0
@@ -32,11 +33,13 @@
 	var/evolution_points = 0
 	var/evolution_stage = EVOLUTION_STAGE_0
 
+	var/infecting = FALSE
+
 /mob/living/simple_animal/changeling_primalis/Initialize()
 	. = ..()
 	var/datum/atom_hud/U = GLOB.huds[DATA_HUD_MEDICAL_ADVANCED]
 	U.add_hud_to(src)
-	grant_basic_skills()
+	grant_skills()
 	real_name = "[pick("Альфа", "Бэта", "Гамма", "Сигма", "Дельта", "Эпсилон", "Дзета", "Йота", "Пси", "Омега")]-[rand(100, 999)]"
 	name = real_name
 	SSticker.mode.ling_infestors.Add(src)
@@ -52,7 +55,13 @@
 /mob/living/simple_animal/changeling_primalis/Life(second, times_fired)
 	..()
 	if(host)
-		chemicals = clamp(chemicals + PRIMALIS_CHEM_REGEN, 0, PRIMALIS_CHEM_MAX)
+		if(infecting)
+			chemicals = clamp(chemicals - PRIMALIS_CHEM_REGEN * 2, 0, PRIMALIS_CHEM_MAX)
+		else
+			chemicals = clamp(chemicals + PRIMALIS_CHEM_REGEN, 0, PRIMALIS_CHEM_MAX)
+	if(chemicals == 0)
+		disable_passive_abilities()
+
 	if(hud_used?.lingchemdisplay)
 		hud_used.lingchemdisplay.maptext = "<div align='center' valign='middle' style='position:relative; top:0px; left:6px'><font face='Small Fonts' color='#dd66dd'>[round(chemicals)]</font></div>"
 	handle_evolution()
@@ -65,21 +74,25 @@
 				evolution_stage = EVOLUTION_STAGE_1
 				to_chat(src, span_biggerdanger("Мы немного освоились в теле носителя. Теперь мы не просто наблюдатели. Мы можем сообщать в разум носителя мысли и образы, а также использовать наши силы для помощи носителю."))
 				SEND_SOUND(src, 'sound/ambience/antag/ling_alert.ogg')
+				grant_skills()
 		if(EVOLUTION_STAGE_1)
 			if(evolution_points > EVOLUTION_STAGE_2)
 				evolution_stage = EVOLUTION_STAGE_2
 				to_chat(src, span_biggerdanger("Мы забираемся всё глубже внутрь носителя. Его иммунная система сдалась, и мы получили контроль над тканями его тела. Теперь мы можем отращивать на теле носителя новые ткани, преобразуя его в нечто более совершенное."))
 				SEND_SOUND(src, 'sound/ambience/antag/ling_alert.ogg')
+				grant_skills()
 		if(EVOLUTION_STAGE_2)
 			if(evolution_points > EVOLUTION_STAGE_3)
 				evolution_stage = EVOLUTION_STAGE_3
 				to_chat(src, span_biggerdanger("Мы окончательно укоренились в теле носителя. Теперь мы способны на короткий промежуток времени брать его под контроль. Более того, теперь мы способны заражать нашими отпрысками и других гуманойдов."))
 				SEND_SOUND(src, 'sound/ambience/antag/ling_alert.ogg')
+				grant_skills()
 		if(EVOLUTION_STAGE_3)
 			if(evolution_points > EVOLUTION_STAGE_4)
 				evolution_stage = EVOLUTION_STAGE_4
 				to_chat(src, span_biggerdanger("Носитель был ассимилирован. Теперь это не более чем оболочка, сдерживающее наше полностью выросшее, совершенное тело. Носитель более неспособен сопротивляться нашему контролю. Мы готовы вознестись в любой момент."))
 				SEND_SOUND(src, 'sound/ambience/antag/ling_alert.ogg')
+				grant_skills()
 
 
 /mob/living/simple_animal/changeling_primalis/proc/infest(var/mob/living/carbon/human/new_host)
@@ -89,10 +102,14 @@
 		forceMove(new_host)
 		host = new_host
 		new_host.changeling_primalis = src
-		SSticker.mode.ling_hosts.Add(host)
 		for(var/datum/language/lang in host.languages)
 			src.add_language(lang.name)
 		RegisterSignal(host, COMSIG_MOB_DEATH, PROC_REF(on_host_death), override = TRUE)
+		var/datum/atom_hud/antag/hud = GLOB.huds[DATA_HUD_TREACHEROUS_FLESH]
+		hud.add_hud_to(src)
+		hud.add_to_hud(host)
+		var/image/holder = host.hud_list[GLAND_HUD]
+		holder.icon_state = "treacherous_flesh_active"
 
 /mob/living/simple_animal/changeling_primalis/proc/disinfest()
 	if(host)
@@ -115,7 +132,7 @@
 
 /mob/living/simple_animal/changeling_primalis/UnarmedAttack(mob/living/carbon/human/M)
 	if(istype(M))
-		to_chat(src, span_notice("Вы анализируете жизненные показатели [M]."))
+		to_chat(src, span_notice("Мы анализируем жизненные показатели [M]."))
 		healthscan(src, M, 1, TRUE)
 
 /mob/living/simple_animal/changeling_primalis/say(message, verb, sanitize, ignore_speech_problems, ignore_atmospherics, ignore_languages)
@@ -124,19 +141,39 @@
 	return
 
 /mob/living/simple_animal/changeling_primalis/emote(emote_key, type_override, message, intentional, force_silence)
-	to_chat(src, span_warning("Вы не способны на выражение эмоций"))
+	to_chat(src, span_warning("Мы не способны на выражение эмоций"))
 
 /mob/living/simple_animal/changeling_primalis/whisper(message as text)
-	to_chat(src, span_warning("Вы не способны шептать"))
+	to_chat(src, span_warning("Мы не способны шептать"))
+
+/mob/living/simple_animal/changeling_primalis/proc/disable_passive_abilities()
+	for(var/datum/action/changeling_primalis/passive/A in actions)
+		A.disable()
+
+/mob/living/simple_animal/changeling_primalis/proc/announcetoghosts()
 
 // Evolution
 
-/mob/living/simple_animal/changeling_primalis/proc/grant_basic_skills()
+/mob/living/simple_animal/changeling_primalis/proc/grant_skills()
 	var/list/primalis_abilities = list()
-
-	primalis_abilities += new /datum/action/changeling_primalis/contact_host(src)
-	primalis_abilities += new /datum/action/changeling_primalis/speed_up_evolution(src)
-
+	switch(evolution_stage)
+		if(EVOLUTION_STAGE_0)
+			primalis_abilities += new /datum/action/changeling_primalis/contact_host(src)
+			primalis_abilities += new /datum/action/changeling_primalis/speed_up_evolution(src)
+		if(EVOLUTION_STAGE_1)
+			primalis_abilities += new /datum/action/changeling_primalis/fleshmend(src)
+			primalis_abilities += new /datum/action/changeling_primalis/adrenaline(src)
+			primalis_abilities += new /datum/action/changeling_primalis/panacea(src)
+			primalis_abilities += new /datum/action/changeling_primalis/heat_up(src)
+			primalis_abilities += new /datum/action/changeling_primalis/passive/passive_infest(src)
+		if(EVOLUTION_STAGE_2)
+			primalis_abilities += new /datum/action/changeling_primalis/regrow_organs(src)
+			primalis_abilities += new /datum/action/changeling_primalis/toggle/armblade(src)
+			primalis_abilities += new /datum/action/changeling_primalis/toggle/chitin_armor(src)
+		if(EVOLUTION_STAGE_3)
+			to_chat(src, span_warning("Не указаны навыки"))
+		if(EVOLUTION_STAGE_4)
+			to_chat(src, span_warning("Не указаны навыки"))
 	for(var/datum/action/changeling_primalis/ability in primalis_abilities)
 		ability.Grant(src)
 
