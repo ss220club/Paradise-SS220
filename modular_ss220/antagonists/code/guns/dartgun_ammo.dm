@@ -76,7 +76,14 @@
 	name = "medical dart cartridge"
 	overlay_state_color = "teal"
 	desc = "Подставка для полезных дротиков для восстановления."
-	dart_fill_types = list(/obj/item/reagent_containers/syringe/dart/medical)
+	dart_fill_types = list(
+		/obj/item/reagent_containers/syringe/dart/medical,
+		/obj/item/reagent_containers/syringe/dart/medical,
+		/obj/item/reagent_containers/syringe/dart/medical,
+		/obj/item/reagent_containers/syringe/dart/medical/tainted,
+		/obj/item/reagent_containers/syringe/dart/medical/tainted,
+		/obj/item/reagent_containers/syringe/dart/medical/heal,
+	)
 
 /obj/item/storage/dart_cartridge/pain
 	name = "pain dart cartridge"
@@ -115,11 +122,6 @@
 	name = "combat dart"
 	desc = "Боевой дротик, заставляющий цель потерять равновесие и впоследствии обездвижиться."
 	list_reagents = list("space_drugs" = 5, "ether" = 5, "haloperidol" = 5)
-
-/obj/item/reagent_containers/syringe/dart/medical
-	name = "medical dart"
-	desc = "Медицинский дротик для восстановления большинства повреждений."
-	list_reagents = list("silver_sulfadiazine" = 5, "styptic_powder" = 5, "charcoal" = 5)
 
 /obj/item/reagent_containers/syringe/dart/pain
 	name = "pain dart"
@@ -176,3 +178,40 @@
 	name = "pancuronium dart"
 	desc = "Мощный парализующий яд"
 	list_reagents = list("pancuronium" = 15)
+
+
+// ============= Шприцы - Медицинские =============
+
+/obj/item/reagent_containers/syringe/dart/medical
+	name = "medical dart"
+	desc = "Медицинский дротик для восстановления большинства повреждений."
+	list_reagents = list("silver_sulfadiazine" = 5, "styptic_powder" = 5, "charcoal" = 5)
+
+// 1 уровень
+/obj/item/reagent_containers/syringe/dart/medical/tainted
+	name = "tainted medical dart"
+	desc = "На вид будто этой капсулой зачерпнули из первичного бульона. Непонятно кто это сделал, но кажется оно должно лечить. Пахнет мерзко."
+	list_reagents = list("menthol" = 3, "doctorsdelight" = 3, "synthnsoda" = 3, "tomatojuice" = 3, "milk" = 3)
+
+// 2 уровень
+/obj/item/reagent_containers/syringe/dart/medical/heal
+	name = "heal medical dart"
+	desc = "Медицинский дротик для лечения тяжелых травм."
+	list_reagents = list("silver_sulfadiazine" = 5, "styptic_powder" = 5, "synthflesh" = 5)
+
+/obj/item/reagent_containers/syringe/dart/medical/stabilizing
+	name = "stabilizing medical dart"
+	desc = "Медицинский дротик для стабилизации пациента."
+	list_reagents = list("epinephrine" = 5, "salineglucosevirusfood" = 5, "weak_omnizine" = 5)
+
+// 3 уровень (1 час)
+/obj/item/reagent_containers/syringe/dart/medical/advanced
+	name = "advanced medical dart"
+	desc = "Медицинский дротик стимулирующий быструю регенерацию."
+	list_reagents = list("bicaridine" = 5, "kelotane" = 5, "omnizine" = 5)
+
+// 4 уровень (2 час)
+/obj/item/reagent_containers/syringe/dart/medical/combat
+	name = "combat medical dart"
+	desc = "передовой дротик с эксперементальными стимулянтами."
+	list_reagents = list("combatlube" = 5, "surge_plus" = 5, "syndicate_nanites" = 5)

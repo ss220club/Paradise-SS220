@@ -92,9 +92,17 @@
 		/datum/vox_pack/clothes/magboots,
 		/datum/vox_pack/clothes/gloves,
 		/datum/vox_pack/clothes/healthhud,
-		/datum/vox_pack/consumables/blood,
-		/datum/vox_pack/consumables/blood,
-		/datum/vox_pack/consumables/blood,
+		/datum/vox_pack/medicine/blood,
+		/datum/vox_pack/medicine/blood,
+		/datum/vox_pack/medicine/blood,
+		/datum/vox_pack/medicine/dart/heal,
+		/datum/vox_pack/medicine/dart/heal,
+		/datum/vox_pack/medicine/dart/heal,
+		/datum/vox_pack/medicine/dart/heal,
+		/datum/vox_pack/medicine/dart/heal,
+		/datum/vox_pack/medicine/dart/heal,
+		/datum/vox_pack/medicine/dart/stabilizing,
+		/datum/vox_pack/medicine/dart/stabilizing,
 		)
 	contains_addition = list(
 		/obj/item/storage/firstaid/adv,
@@ -215,6 +223,14 @@
 		/datum/vox_pack/dart/cartridge/medical,
 		/datum/vox_pack/dart/cartridge/medical,
 		/datum/vox_pack/dart/cartridge/medical,
+		/datum/vox_pack/medicine/dart/heal,
+		/datum/vox_pack/medicine/dart/heal,
+		/datum/vox_pack/medicine/dart/heal,
+		/datum/vox_pack/medicine/dart/heal,
+		/datum/vox_pack/medicine/dart/heal,
+		/datum/vox_pack/medicine/dart/heal,
+		/datum/vox_pack/medicine/dart/stabilizing,
+		/datum/vox_pack/medicine/dart/stabilizing,
 		)
 	discount_div = 0.65
 	contains_addition = list(

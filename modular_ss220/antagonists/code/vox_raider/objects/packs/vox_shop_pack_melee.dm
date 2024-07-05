@@ -29,7 +29,7 @@
 	desc = "Энергетическая сабля для абордажей кораблей."
 	reference = "MEL_SW"
 	cost = 4000
-	tiMEL_until_available = 45
+	time_until_available = 45
 	contains = list(/obj/item/melee/energy/sword/pirate)
 
 /datum/vox_pack/melee/sword/purple
@@ -37,7 +37,7 @@
 	desc = "Энергетический меч для прижигания ран отрубленных конечностей неприятеля. Цвет решительности, цвет Рейдеров. Классика Воксов."
 	reference = "MEL_SWP"
 	cost = 8000
-	tiMEL_until_available = 120
+	time_until_available = 120
 	contains = list(/obj/item/melee/energy/sword/saber/purple)
 
 /datum/vox_pack/melee/sword/blue
@@ -45,7 +45,7 @@
 	desc = "Энергетический меч для прижигания ран отрубленных конечностей неприятеля. Цвет силы и стойкости. Его носят бастионы мира Воксов."
 	reference = "MEL_SWB"
 	cost = 10000
-	tiMEL_until_available = 120
+	time_until_available = 120
 	contains = list(/obj/item/melee/energy/sword/saber/blue)
 
 /datum/vox_pack/melee/sword/green
@@ -53,7 +53,7 @@
 	desc = "Энергетический меч для прижигания ран отрубленных конечностей неприятеля. Цвет миротворцев, тех, кто не любит насилие и причиняет его с большой неохотой. С этим мечом причиняют добро и наносят радость."
 	reference = "MEL_SWG"
 	cost = 10000
-	tiMEL_until_available = 120
+	time_until_available = 120
 	contains = list(/obj/item/melee/energy/sword/saber/green)
 
 /datum/vox_pack/melee/sword/red
@@ -61,7 +61,7 @@
 	desc = "Энергетический меч для прижигания ран отрубленных конечностей неприятеля. Цвет ненависти, гнева и злого злодейства злыхх злыдней. Безвкусица."
 	reference = "MEL_SWR"
 	cost = 12000
-	tiMEL_until_available = 120
+	time_until_available = 120
 	contains = list(/obj/item/melee/energy/sword/saber/red)
 
 /datum/vox_pack/melee/fly

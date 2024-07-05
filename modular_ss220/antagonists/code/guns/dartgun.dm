@@ -94,7 +94,8 @@
 /obj/item/gun/syringe/dart_gun/proc/cartridge_unload(mob/user)
 	if(!cartridge_loaded)
 		return FALSE
-	user.unEquip(cartridge_loaded)
+	user.put_in_hands(cartridge_loaded)
+	//user.unEquip(cartridge_loaded)
 	syringes.Cut()
 	cartridge_loaded.update_icon()
 	cartridge_loaded = null
@@ -102,10 +103,9 @@
 
 /obj/item/gun/syringe/dart_gun/attack_self(mob/living/user)
 	if(cartridge_loaded)
-		user.put_in_hands(cartridge_loaded)
 		playsound(src, 'modular_ss220/antagonists/sound/guns/m79_unload.ogg', 50, 1)
 		to_chat(user, span_notice("Вы выгрузили [cartridge_loaded] с [src]."))
-		cartridge_loaded = null
+		cartridge_unload(user)
 		process_chamber()
 		return TRUE
 	return ..()

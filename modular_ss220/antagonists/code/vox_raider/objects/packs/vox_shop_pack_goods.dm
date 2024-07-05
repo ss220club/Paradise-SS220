@@ -195,13 +195,6 @@
 	cost = 300
 	contains = list(/obj/item/melee/classic_baton/telescopic)
 
-/datum/vox_pack/goods/clown_grenade
-	name = "Клоунская Граната"
-	desc = "Мясу понравится этот товар."
-	reference = "G_CL_GR"
-	cost = 100
-	contains = list(/obj/item/grenade/clown_grenade)
-
 /datum/vox_pack/goods/clown_gun
 	name = "Клоунская Хлопушка"
 	desc = "Мясу понравится этот товар."
@@ -215,3 +208,17 @@
 	reference = "G_CL_PDA"
 	cost = 200
 	contains = list(/obj/item/pda/clown)
+
+/datum/vox_pack/goods/clown_grenade
+	name = "Клоунская Граната"
+	desc = "Мясу понравится этот товар."
+	reference = "G_CL_GR"
+	cost = 200
+	contains = list(/obj/item/grenade/clusterbuster/honk)
+
+/datum/vox_pack/goods/clown_grenade/evil
+	name = "Клоунская Злая Граната"
+	desc = "Мясу понравится этот товар."
+	reference = "G_CL_GRE"
+	cost = 500
+	contains = list(/obj/item/grenade/clown_grenade)

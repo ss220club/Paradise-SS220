@@ -22,6 +22,13 @@
 
 // EXPLOSIVES
 
+/datum/vox_pack/consumables/smoke
+	name = "Дымовая граната"
+	desc = "Для создания плотных дымовых завес."
+	reference = "CO_SMOKE"
+	cost = 40
+	contains = list(/obj/item/grenade/smokebomb)
+
 /datum/vox_pack/consumables/c4
 	name = "C4"
 	desc = "Взрывчатка для создания аккуратных дыр."
@@ -33,13 +40,12 @@
 	name = "X4"
 	desc = "Осколочно-фугасный заряд. Безопасен для подрывника."
 	reference = "CO_X4"
-	cost = 200
+	cost = 250
 	contains = list(/obj/item/grenade/plastic/c4/x4)
 
 /datum/vox_pack/consumables/t4
 	name = "T4"
 	desc = "Заряд термита, пробивающий стены. Неэффективен против шлюзов."
 	reference = "CO_T4"
-	cost = 300
+	cost = 500
 	contains = list(/obj/item/grenade/plastic/c4/thermite)
-
