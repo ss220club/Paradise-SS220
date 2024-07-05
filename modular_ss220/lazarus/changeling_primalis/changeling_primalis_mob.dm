@@ -105,11 +105,7 @@
 		for(var/datum/language/lang in host.languages)
 			src.add_language(lang.name)
 		RegisterSignal(host, COMSIG_MOB_DEATH, PROC_REF(on_host_death), override = TRUE)
-		var/datum/atom_hud/antag/hud = GLOB.huds[DATA_HUD_TREACHEROUS_FLESH]
-		hud.add_hud_to(src)
-		hud.add_to_hud(host)
-		var/image/holder = host.hud_list[GLAND_HUD]
-		holder.icon_state = "treacherous_flesh_active"
+
 
 /mob/living/simple_animal/changeling_primalis/proc/disinfest()
 	if(host)

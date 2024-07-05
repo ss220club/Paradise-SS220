@@ -18,10 +18,9 @@ TODO:
 	var/chemical_cost = 0
 	/// Reference to user
 	var/mob/living/simple_animal/changeling_primalis/user = null
-	background_icon_state = "bg_flesh"
-	button_icon = 'modular_ss220/lazarus/icons/lazarus_actions.dmi'
-	background_icon = 'modular_ss220/lazarus/icons/lazarus_actions.dmi'
-	icon_icon = 'modular_ss220/lazarus/icons/lazarus_actions.dmi'
+	button_background_icon_state = "bg_flesh"
+	button_overlay_icon = 'modular_ss220/lazarus/icons/lazarus_actions.dmi'
+	button_background_icon = 'modular_ss220/lazarus/icons/lazarus_actions.dmi'
 
 /datum/action/changeling_primalis/New(var/mob/living/simple_animal/changeling_primalis/new_user)
 	user = new_user
@@ -52,7 +51,7 @@ TODO:
 /datum/action/changeling_primalis/message_host
 	name = "Сообщить носителю"
 	desc = "Мы подключаемся к мозгу носителя, и посылаем ему некоторое сообщение. Носитель будет воспринимать наши слова как странный голос в голове. Носитель не может ответить нам, пока мы не установим с ним контакт, но может использовать шёпот, чтобы скрыть разговор с нами."
-	button_icon_state = "message"
+	button_overlay_icon_state = "message"
 	chemical_cost = 0
 
 /datum/action/changeling_primalis/message_host/activate()
@@ -69,7 +68,7 @@ TODO:
 /datum/action/changeling_primalis/contact_host
 	name = "Установить контакт"
 	desc = "Мы закрепляемся в сознании нашего носителя, раскрывая своё существование и устанавливая постоянный контакт. После этого носитель будет знать, что мы находимся в нём и сможет коммуницировать с нами посредством телепатии. Однако наша истинная природа будет ему неизвестна."
-	button_icon_state = "contact_host"
+	button_overlay_icon_state = "contact_host"
 	chemical_cost = 0
 	var/in_use = FALSE
 
@@ -95,7 +94,7 @@ TODO:
 /datum/action/changeling_primalis/communicate_host
 	name = "Разговаривать с носителем"
 	desc = "Мы транслируем сообщение в разум носителя. Носитель поймёт, что оно исходит от нас."
-	button_icon_state = "message"
+	button_overlay_icon_state = "message"
 	chemical_cost = 0
 
 /datum/action/changeling_primalis/communicate_host/activate()
@@ -110,7 +109,7 @@ TODO:
 /datum/action/communicate_parasite
 	name = "Разговаривать с гостем"
 	desc = "Проговорив фразу про себя, вы способны передать её гостю, что обитает в вашем сознании."
-	button_icon_state = "message"
+	button_overlay_icon_state = "message"
 
 /datum/action/communicate_parasite/Trigger(left_click)
 	if(istype(src, /mob/living/carbon/human))
@@ -127,7 +126,7 @@ TODO:
 /datum/action/changeling_primalis/speed_up_evolution
 	name = "Ускорить эволюцию"
 	desc = "Ускоряет процесс нашего развития за счёт химикатов. Даёт намёк на заражение носителю и окружающим людям. Может нанести вред носителю. Используйте тогда, когда ваш носитель и окружающие его люди заняты. Стоит 100 химикатов"
-	button_icon_state = "speed_up_evolution"
+	button_overlay_icon_state = "speed_up_evolution"
 	chemical_cost = 100
 
 /datum/action/changeling_primalis/speed_up_evolution/activate()
@@ -148,7 +147,7 @@ TODO:
 /datum/action/changeling_primalis/fleshmend
 	name = "Быстрое исцеление"
 	desc = "Мы быстро исцеляем нашего носителя. Не лечит переломы, внутреннее кровотечение и органы. При частом использовании эффективность снижается. Стоит 30 химикатов."
-	button_icon_state = "fleshmend"
+	button_overlay_icon_state = "fleshmend"
 	chemical_cost = 30
 
 /datum/action/changeling_primalis/fleshmend/activate()
@@ -167,7 +166,7 @@ TODO:
 /datum/action/changeling_primalis/adrenaline
 	name = "Передозировка адреналином"
 	desc = "Мы вводим в носителя ударную дозу адреналина, снимая оглушение и ускоряя передвижение. При частом использовании может навредить носителю. Стоит 50 химикатов"
-	button_icon_state = "adrenaline"
+	button_overlay_icon_state = "adrenaline"
 	chemical_cost = 50
 
 /datum/action/changeling_primalis/adrenaline/activate()
@@ -194,7 +193,7 @@ TODO:
 /datum/action/changeling_primalis/panacea
 	name = "Анатомическая панацея"
 	desc = "Мы вводим в тело носителя ряд биоактивных элементов, вычищая из него токсины, радиацию и мутировавшие трани, а также восстанавливая нервную систему. Стоит 50 химикатов"
-	button_icon_state = "panacea"
+	button_overlay_icon_state = "panacea"
 	chemical_cost = 50
 
 /datum/action/changeling_primalis/panacea/activate()
@@ -226,7 +225,7 @@ TODO:
 /datum/action/changeling_primalis/regrow_organs
 	name = "Отрастить органы"
 	desc = "Мы вводим в организм большое колличество вещества, стимулярующего производство стволовых клеток. Носитель отращивает все потерянные конечности, а также восстанавлиет и отращивает все органы. Стоит 150 химикатов."
-	button_icon_state = "regrow_organs"
+	button_overlay_icon_state = "regrow_organs"
 	chemical_cost = 150
 
 /datum/action/changeling_primalis/regrow_organs/activate()
@@ -245,11 +244,7 @@ TODO:
 /datum/action/changeling_primalis/heat_up
 	name = "Органическая грелка"
 	desc = "Повышает температуру тела носителя на 1500 единиц, помогая тому согреться или дольше продержаться на улице. Стоит 20 химикатов."
-	button_icon = 'modular_ss220/lazarus/icons/lazarus_actions.dmi'
-	button_icon_state = "heat_up"
-	background_icon = 'modular_ss220/lazarus/icons/lazarus_actions.dmi'
-	background_icon_state = "bg_flesh"
-	icon_icon = 'modular_ss220/lazarus/icons/lazarus_actions.dmi'
+	button_overlay_icon_state = "heat_up"
 	chemical_cost = 20
 
 /datum/action/changeling_primalis/heat_up/activate()
@@ -265,7 +260,7 @@ TODO:
 /datum/action/changeling_primalis/toggle/armblade
 	name = "Рука-лезвие"
 	desc = "Мы преобразуем руку носителя в смертельное лезвие. Стоит 25 химикатов. Поддержание не стоит химикатов."
-	button_icon_state = "armblade"
+	button_overlay_icon_state = "armblade"
 	chemical_cost = 25
 
 /datum/action/changeling_primalis/toggle/armblade/activate()
@@ -302,7 +297,7 @@ TODO:
 /datum/action/changeling_primalis/toggle/chitin_armor
 	name = "Хитиновый панцирь"
 	desc = "Мы покрываем тело носителя прочным хитиновым панцирем. Стоит 40 химикатов. Поддержание не стоит химикатов."
-	button_icon_state = "chitin_armor"
+	button_overlay_icon_state = "chitin_armor"
 	chemical_cost = 40
 
 /datum/action/changeling_primalis/toggle/chitin_armor/activate()
@@ -339,17 +334,17 @@ TODO:
 /datum/action/changeling_primalis/passive/passive_infest
 	name = "Пассивное заражение"
 	desc = "Переключается режим пассивного заражения. Если включено, то вся пища, медикаменты, жидкости и оперируемые пациенты, которых трогал наш носитель, будут заражаться образцами наших тканей. Потребляет много химикатов пока активно."
-	button_icon_state = "passive_infest_off"
+	button_overlay_icon_state = "passive_infest_off"
 
 /datum/action/changeling_primalis/passive/passive_infest/activate()
 	if(user.infecting)
 		to_chat(user, "<span class='notice'>Мы прекратили выделять заражающие ткани.</span>")
 		user.infecting = FALSE
-		button_icon_state = "passive_infest_off"
+		button_overlay_icon_state = "passive_infest_off"
 	else
 		to_chat(user, "<span class='notice'>Мы начинаем выделять заражающие ткани.</span>")
 		user.infecting = TRUE
-		button_icon_state = "passive_infest_on"
+		button_overlay_icon_state = "passive_infest_on"
 	UpdateButtons()
 	return TRUE
 
@@ -357,6 +352,6 @@ TODO:
 	if(user.infecting)
 		to_chat(user, "<span class='notice'>Мы больше не можем поддерживать выделение заражающих тканей</span>")
 		user.infecting = FALSE
-		button_icon_state = "passive_infest_off"
+		button_overlay_icon_state = "passive_infest_off"
 		UpdateButtons()
 
