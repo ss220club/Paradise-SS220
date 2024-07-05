@@ -2813,10 +2813,6 @@
 	icon_state = "darkyellowalt"
 	},
 /area/centcom/ss220/court)
-"bxw" = (
-/obj/structure/reagent_dispensers/beerkeg,
-/turf/simulated/floor/plating/asteroid/ancient/airless,
-/area/space/nearstation/centcom)
 "bxy" = (
 /obj/structure/table,
 /obj/item/paper_bin/nanotrasen{
@@ -4502,6 +4498,24 @@
 /obj/structure/chair/brass,
 /obj/effect/landmark/spawner/vox_raider,
 /turf/simulated/floor/mineral/plastitanium/red/nitrogen,
+/area/vox_base)
+"cmn" = (
+/obj/effect/turf_decal/delivery/hollow,
+/obj/structure/closet/crate/trashcart,
+/obj/effect/spawner/lootdrop/trash,
+/obj/item/grenade/smokebomb{
+	pixel_x = -9
+	},
+/obj/item/grenade/smokebomb,
+/obj/item/grenade/smokebomb{
+	pixel_x = 9
+	},
+/turf/simulated/floor/mineral/plastitanium{
+	color = "#fff894";
+	nitrogen = 103.984;
+	oxygen = 0;
+	name = "vox floor"
+	},
 /area/vox_base)
 "cmK" = (
 /obj/structure/sink/directional/west,
@@ -7939,10 +7953,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/ghost_bar)
-"edO" = (
-/obj/structure/reagent_dispensers/beerkeg/nuke,
-/turf/simulated/floor/plating/asteroid/ancient/airless,
-/area/space/nearstation/centcom)
 "edS" = (
 /obj/machinery/suit_storage_unit/syndicate,
 /turf/simulated/floor/plasteel{
@@ -12078,6 +12088,28 @@
 /obj/structure/flora/ausbushes/sparsegrass,
 /turf/simulated/floor/indestructible/grass/no_creep,
 /area/centcom/ss220/admin1)
+"gis" = (
+/obj/item/reagent_containers/drinks/cans/beer{
+	pixel_x = -6;
+	pixel_y = 4
+	},
+/obj/item/reagent_containers/drinks/cans/beer{
+	pixel_y = 4;
+	pixel_x = 2
+	},
+/obj/item/reagent_containers/drinks/cans/beer{
+	pixel_x = 10;
+	pixel_y = 4
+	},
+/obj/item/reagent_containers/drinks/cans/beer,
+/obj/item/reagent_containers/drinks/cans/beer{
+	pixel_x = -8
+	},
+/obj/item/reagent_containers/drinks/cans/beer{
+	pixel_x = 8
+	},
+/turf/simulated/floor/plating/asteroid/ancient/airless,
+/area/space/nearstation/centcom)
 "giy" = (
 /turf/simulated/floor/wood/fancy/cherry,
 /area/wizard_station)
@@ -16993,10 +17025,10 @@
 /obj/effect/turf_decal/delivery/hollow,
 /obj/structure/closet/crate/trashcart,
 /obj/effect/spawner/lootdrop/trash,
+/obj/item/grenade/smokebomb,
 /obj/item/grenade/smokebomb{
 	pixel_x = -9
 	},
-/obj/item/grenade/smokebomb,
 /obj/item/grenade/smokebomb{
 	pixel_x = 9
 	},
@@ -20998,24 +21030,6 @@
 	},
 /turf/simulated/floor/carpet/black,
 /area/centcom/ss220/admin2)
-"kIm" = (
-/obj/effect/turf_decal/delivery/hollow,
-/obj/structure/closet/crate/trashcart,
-/obj/effect/spawner/lootdrop/trash,
-/obj/item/grenade/smokebomb,
-/obj/item/grenade/smokebomb{
-	pixel_x = -9
-	},
-/obj/item/grenade/smokebomb{
-	pixel_x = 9
-	},
-/turf/simulated/floor/mineral/plastitanium{
-	color = "#fff894";
-	nitrogen = 103.984;
-	oxygen = 0;
-	name = "vox floor"
-	},
-/area/vox_base)
 "kIB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 8
@@ -23353,16 +23367,6 @@
 /obj/item/flag/nt,
 /turf/simulated/floor/carpet/black,
 /area/centcom/ss220/admin1)
-"lMa" = (
-/obj/structure/lattice,
-/obj/machinery/porta_turret/syndicate{
-	faction = "vox";
-	name = "vox turret";
-	eprojectile = /obj/item/projectile/beam/disabler;
-	projectile = /obj/item/projectile/beam/disabler
-	},
-/turf/simulated/floor/plating/airless,
-/area/shuttle/vox)
 "lMl" = (
 /obj/structure/chair/comfy/shuttle{
 	dir = 8
@@ -31357,28 +31361,6 @@
 	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/syndicate_mothership/control)
-"qbn" = (
-/obj/item/reagent_containers/drinks/cans/beer{
-	pixel_x = -6;
-	pixel_y = 4
-	},
-/obj/item/reagent_containers/drinks/cans/beer{
-	pixel_y = 4;
-	pixel_x = 2
-	},
-/obj/item/reagent_containers/drinks/cans/beer{
-	pixel_x = 10;
-	pixel_y = 4
-	},
-/obj/item/reagent_containers/drinks/cans/beer,
-/obj/item/reagent_containers/drinks/cans/beer{
-	pixel_x = -8
-	},
-/obj/item/reagent_containers/drinks/cans/beer{
-	pixel_x = 8
-	},
-/turf/simulated/floor/plating/asteroid/ancient/airless,
-/area/space/nearstation/centcom)
 "qbw" = (
 /obj/machinery/door/airlock/command/glass{
 	name = "Зона ЦК";
@@ -37421,6 +37403,10 @@
 /obj/structure/table/wood/fancy/red,
 /turf/simulated/floor/carpet/red,
 /area/centcom/ss220/bar)
+"sZO" = (
+/obj/structure/reagent_dispensers/beerkeg,
+/turf/simulated/floor/plating/asteroid/ancient/airless,
+/area/space/nearstation/centcom)
 "sZR" = (
 /obj/structure/chair/sofa/corp/left{
 	dir = 4
@@ -41941,7 +41927,13 @@
 /area/syndicate_mothership/jail)
 "vsV" = (
 /obj/structure/lattice,
-/turf/space,
+/obj/machinery/porta_turret/syndicate{
+	faction = "Vox";
+	name = "vox turret";
+	eprojectile = /obj/item/projectile/beam/disabler;
+	projectile = /obj/item/projectile/beam/disabler
+	},
+/turf/simulated/floor/plating/airless,
 /area/shuttle/vox)
 "vti" = (
 /obj/effect/turf_decal/box/corners{
@@ -47238,6 +47230,10 @@
 	icon_state = "darkredcornersalt"
 	},
 /area/syndicate_mothership/control)
+"xWm" = (
+/obj/structure/reagent_dispensers/beerkeg/nuke,
+/turf/simulated/floor/plating/asteroid/ancient/airless,
+/area/space/nearstation/centcom)
 "xWr" = (
 /obj/item/flashlight/lamp,
 /obj/structure/table/wood,
@@ -88684,7 +88680,7 @@ pgB
 gUr
 rqM
 adJ
-lMa
+vsV
 mSw
 mSw
 mSw
@@ -88700,7 +88696,7 @@ mSw
 mSw
 mSw
 mSw
-lMa
+vsV
 adJ
 bnh
 bnh
@@ -89176,7 +89172,7 @@ adJ
 adJ
 fYV
 uOn
-iBt
+cmn
 baG
 baG
 pJw
@@ -89728,7 +89724,7 @@ mSw
 mSw
 mSw
 mSw
-lMa
+vsV
 adJ
 bnh
 bnh
@@ -90461,7 +90457,7 @@ adJ
 adJ
 fYV
 uOn
-kIm
+iBt
 lwr
 aSN
 pJw
@@ -93057,7 +93053,7 @@ adJ
 adJ
 adJ
 jQz
-lMa
+vsV
 mSw
 mSw
 mSw
@@ -93069,7 +93065,7 @@ pqX
 mSw
 mSw
 mSw
-lMa
+vsV
 adJ
 adJ
 adJ
@@ -93316,7 +93312,7 @@ adJ
 adJ
 adJ
 jQz
-lMa
+vsV
 mSw
 mSw
 mSw
@@ -93324,7 +93320,7 @@ nKu
 ojx
 nKu
 mSw
-lMa
+vsV
 jQz
 adJ
 adJ
@@ -93845,7 +93841,7 @@ adJ
 bnh
 bnh
 nNr
-bxw
+sZO
 ijU
 ijU
 adJ
@@ -94102,8 +94098,8 @@ adJ
 nNr
 nNr
 nNr
-bxw
-bxw
+sZO
+sZO
 ijU
 adJ
 adJ
@@ -94359,8 +94355,8 @@ nNr
 nNr
 nNr
 nNr
-qbn
-bxw
+gis
+sZO
 ijU
 adJ
 adJ
@@ -94614,9 +94610,9 @@ ijU
 ijU
 ijU
 ijU
-bxw
-qbn
-edO
+sZO
+gis
+xWm
 ijU
 ijU
 adJ
