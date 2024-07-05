@@ -32,6 +32,10 @@
 /datum/quicksand_victim_holder/proc/on_victim_resist(mob/living/resisting_victim)
 	SIGNAL_HANDLER
 
+	to_chat(resisting_victim, span_notice("Ты пытаешься выбраться из зыбучих песков"))
+	if(!do_after(resisting_victim, current_stage.resist_duration, FALSE, resisting_victim))
+		return
+
 	if(!prob(current_stage.resist_chance) && prob(current_stage.critical_failure_chance))
 		move_to_next_stage()
 		return

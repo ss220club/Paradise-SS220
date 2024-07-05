@@ -78,7 +78,7 @@
 		if(!use_this_dmi)
 			use_this_dmi = 'icons/mob/hud/hud_misc.dmi'
 		var/image/I = image(use_this_dmi, src, "")
-		I.appearance_flags = RESET_COLOR | RESET_TRANSFORM
+		I.appearance_flags = RESET_COLOR | RESET_TRANSFORM | KEEP_APART
 		hud_list[hud] = I
 
 /mob/proc/generate_name()
