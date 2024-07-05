@@ -469,7 +469,7 @@
 	var/obj/structure/container/syndie/container = new(landing_loc)
 	container.pixel_z = 1000
 	forceMove(container)
-	QDEL_NULL(guns_decal)
+	guns_decal.forceMove(container)
 
 	var/obj/effect/flares = new /obj/effect/drop_pod(landing_loc)
 	sleep(5 SECONDS)
