@@ -9,6 +9,17 @@
 
 #define COMSIG_MECHA_EQUIPMENT_CLICK "mecha_action_equipment_click"
 
+/obj/effect/drop_pod
+	icon = 'modular_ss220/event_invasion/icons/drop_pod.dmi'
+	icon_state = "flare"
+	appearance_flags = PIXEL_SCALE
+	name = "МОЩЬ 11 СТВОЛОВ"
+	desc = "Ужасают."
+
+/obj/effect/drop_pod/Initialize(mapload)
+	. = ..()
+	flick("flare_act", src)
+
 /obj/effect/nomad_guns
 	icon = 'modular_ss220/event_invasion/icons/mecha.dmi'
 	icon_state = "weapon_act_up"
@@ -64,13 +75,15 @@
 	normal_step_energy_drain = 3
 	starting_voice = /obj/item/mecha_modkit/voice/syndicate/nomad
 	var/mob/living/carbon/gunner = null
-	var/mob/camera/aiEye/remote/eyeobj
 	var/datum/action/innate/mecha/gunner_mech_eject/gunner_eject_action = new
 	var/datum/action/innate/mecha/strafe/strafing_action = new
 	var/datum/action/innate/mecha/change_stance/change_stance_action = new
 	var/datum/action/innate/mecha/mech_evacuation/mech_evacuate_action = new
 	eject_action = new /datum/action/innate/mecha/mech_eject/nomad
 
+	var/datum/action/innate/mecha/drop_pod/drop_pod_action = new
+	var/datum/action/innate/mecha/drop_pod_launch/drop_launch_action = new
+	var/mob/camera/aiEye/remote/nomad/eyeobj
 	var/strafe = FALSE
 	var/guns_decal_path = /obj/effect/nomad_guns
 	var/obj/effect/guns_decal
@@ -90,6 +103,34 @@
 /obj/mecha/combat/nomad/proc/CreateEye()
 	eyeobj = new()
 	eyeobj.origin = src
+	eyeobj.visible_icon = 1
+	eyeobj.icon = 'modular_ss220/event_invasion/icons/drop_pod.dmi'
+	eyeobj.icon_state = "drop_pod"
+	eyeobj.user_image = image(eyeobj.icon, eyeobj.loc, eyeobj.icon_state,FLY_LAYER)
+	eyeobj.user_image.appearance_flags |= PIXEL_SCALE
+	eyeobj.user_image.transform = eyeobj.user_image.transform.Scale(2, 2)
+
+/obj/mecha/combat/nomad/proc/give_eye_control(mob/user)
+	eyeobj.eye_user = user
+	eyeobj.name = "Camera Eye ([user.name])"
+	user.remote_control = eyeobj
+	if(drop_launch_action)
+		drop_launch_action.Grant(user, src)
+	if(user.client)
+		user.client.images += eyeobj.user_image
+	user.reset_perspective(eyeobj)
+
+/obj/mecha/combat/nomad/proc/remove_eye_control(mob/living/user)
+	if(!user)
+		return
+	if(drop_launch_action)
+		drop_launch_action.Remove(user)
+	GrantActions(user)
+	if(user.client)
+		user.reset_perspective(null)
+		eyeobj.RemoveImages()
+	eyeobj.eye_user = null
+	user.remote_control = null
 
 /obj/mecha/combat/nomad/proc/set_nomad_overlays(state)
 	if(!guns_decal)
@@ -213,6 +254,8 @@
 	strafing_action.Grant(user, src)
 	if(locate(/obj/item/mecha_parts/mecha_equipment/thrusters) in equipment)
 		add_thrusters()
+	if(drop_pod_action)
+		drop_pod_action.Grant(user, src)
 
 /obj/mecha/combat/nomad/proc/GrantGunnerActions(mob/living/user)
 	gunner_eject_action.Grant(user, src)
@@ -227,6 +270,8 @@
 	strafing_action.Remove(user)
 	thrusters_action.Remove(user)
 	stats_action.Remove(user)
+	if(drop_pod_action)
+		drop_pod_action.Remove(user)
 
 /obj/mecha/combat/nomad/RemoveActions(mob/living/user, human_occupant = 0)
 	internals_action.Remove(user)
@@ -417,9 +462,30 @@
 
 /obj/mecha/combat/nomad/Destroy()
 	gunner = null
-	qdel(guns_decal)
-	guns_decal = null
+	QDEL_NULL(guns_decal)
 	. = ..()
+
+/obj/mecha/combat/nomad/proc/drop_pod_launch(var/landing_loc)
+	var/obj/structure/container/syndie/container = new(landing_loc)
+	container.pixel_z = 1000
+	forceMove(container)
+	QDEL_NULL(guns_decal)
+
+	var/obj/effect/flares = new /obj/effect/drop_pod(landing_loc)
+	sleep(5 SECONDS)
+
+	drop_launch_action.Remove(occupant)
+	QDEL_NULL(drop_launch_action)
+	drop_pod_action.Remove(occupant)
+	QDEL_NULL(drop_pod_action)
+
+	remove_eye_control(occupant)
+	QDEL_NULL(eyeobj)
+
+	animate(container, pixel_z = 0, time = 1 SECONDS)
+	sleep(1 SECONDS)
+	QDEL_NULL(flares)
+	container.open_container()
 
 /datum/action/innate/mecha/change_stance
 	name = "Сменить стойку меха"
@@ -595,6 +661,74 @@
 	animate(holder_obj, pixel_z = 0, time = 5)
 	target.forceMove(holder_obj.loc)
 	qdel(holder_obj)
+
+/datum/action/innate/mecha/drop_pod_launch
+	name = "Начать десантирование меха"
+	icon_icon = 'modular_ss220/event_invasion/icons/mech_icon.dmi'
+	button_icon_state = "drop_pod"
+
+/datum/action/innate/mecha/drop_pod_launch/Activate()
+	var/obj/mecha/combat/nomad/parsed_chassis = chassis
+	if(!owner || !parsed_chassis)
+		return
+
+	parsed_chassis.drop_pod_launch(parsed_chassis.eyeobj.loc)
+
+/datum/action/innate/mecha/drop_pod
+	name = "Десантировать мех на планету"
+	icon_icon = 'modular_ss220/event_invasion/icons/mech_icon.dmi'
+	button_icon_state = "drop_pod"
+	var/in_use = FALSE
+
+/datum/action/innate/mecha/drop_pod/Activate()
+	var/obj/mecha/combat/nomad/parsed_chassis = chassis
+	if(!owner || parsed_chassis.occupant != owner)
+		return
+
+	if(!parsed_chassis.eyeobj)
+		parsed_chassis.CreateEye()
+
+	if(in_use)
+		parsed_chassis.remove_eye_control(owner)
+		name = "Десантировать мех на планету"
+		button_icon_state = "drop_pod"
+		UpdateButtons()
+		in_use = FALSE
+		return
+
+	name = "Выйти из режима десантирования"
+	button_icon_state = "cancel_drop_pod"
+	UpdateButtons()
+	in_use = TRUE
+
+	if(!parsed_chassis.eyeobj.eye_initialized)
+		var/eye_location = locate(328, 118, 3)
+		parsed_chassis.eyeobj.eye_initialized = 1
+		parsed_chassis.give_eye_control(owner)
+		parsed_chassis.eyeobj.setLoc(eye_location)
+	else
+		parsed_chassis.give_eye_control(owner)
+		parsed_chassis.eyeobj.setLoc(parsed_chassis.eyeobj.loc)
+
+/mob/camera/aiEye/remote/nomad
+	use_static = FALSE
+
+/mob/camera/aiEye/remote/nomad/Destroy()
+	RemoveImages()
+	QDEL_NULL(user_image)
+	return ..()
+
+
+/mob/camera/aiEye/remote/nomad/setLoc(T)
+	if(!eye_user)
+		return
+	T = get_turf(T)
+	var/old_loc = loc
+	loc = T
+	Moved(old_loc, get_dir(old_loc, loc))
+	if(use_static)
+		GLOB.cameranet.visibility(src, GetViewerClient())
+	user_image.loc = T
 
 #undef DRIVER_SEAT
 #undef GUNNER_SEAT
