@@ -12,13 +12,6 @@
 	cost = 5
 	contains = list(/obj/item/food/snacks/soup/stew)
 
-/datum/vox_pack/consumables/blood
-	name = "Кровь"
-	desc = "Кровь предназначенная для переливания Воксам."
-	reference = "CO_BLOOD"
-	cost = 200
-	contains = list(/obj/item/reagent_containers/iv_bag/blood/vox)
-
 /datum/vox_pack/consumables/flare
 	name = "Фальшфейер"
 	desc = "Пиротехнический огонь."

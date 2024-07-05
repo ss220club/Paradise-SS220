@@ -8,7 +8,7 @@
 /datum/vox_pack/melee/harpoon
 	name = "Гарпун"
 	desc = "Инструмент для охоты на космических китов."
-	reference = "ME_HARP"
+	reference = "MEL_HARP"
 	cost = 100
 	contains = list(/obj/item/harpoon)
 
@@ -17,7 +17,7 @@
 /datum/vox_pack/melee/shield
 	name = "Энергощит"
 	desc = "Энергетический компактный ручной щит, пособный отражать энергетические снаряды, но не может блокировать прямые воздействия."
-	reference = "ME_SH"
+	reference = "MEL_SH"
 	cost = 2000
 	contains = list(/obj/item/shield/energy)
 
@@ -27,47 +27,47 @@
 /datum/vox_pack/melee/sword
 	name = "Энергосабля"
 	desc = "Энергетическая сабля для абордажей кораблей."
-	reference = "ME_SW"
+	reference = "MEL_SW"
 	cost = 2000
-	time_until_available = 45
+	tiMEL_until_available = 45
 	contains = list(/obj/item/melee/energy/sword/pirate)
 
 /datum/vox_pack/melee/sword/purple
 	name = "Энергомеч (Фиолетовый)"
 	desc = "Энергетический меч для прижигания ран отрубленных конечностей неприятеля. Цвет решительности, цвет Рейдеров. Классика Воксов."
-	reference = "ME_SWP"
+	reference = "MEL_SWP"
 	cost = 4000
-	time_until_available = 120
+	tiMEL_until_available = 120
 	contains = list(/obj/item/melee/energy/sword/saber/purple)
 
 /datum/vox_pack/melee/sword/blue
 	name = "Энергомеч (Синий)"
 	desc = "Энергетический меч для прижигания ран отрубленных конечностей неприятеля. Цвет силы и стойкости. Его носят бастионы мира Воксов."
-	reference = "ME_SWB"
+	reference = "MEL_SWB"
 	cost = 5200
-	time_until_available = 120
+	tiMEL_until_available = 120
 	contains = list(/obj/item/melee/energy/sword/saber/blue)
 
 /datum/vox_pack/melee/sword/green
 	name = "Энергомеч (Зелёный)"
 	desc = "Энергетический меч для прижигания ран отрубленных конечностей неприятеля. Цвет миротворцев, тех, кто не любит насилие и причиняет его с большой неохотой. С этим мечом причиняют добро и наносят радость."
-	reference = "ME_SWG"
+	reference = "MEL_SWG"
 	cost = 5250
-	time_until_available = 120
+	tiMEL_until_available = 120
 	contains = list(/obj/item/melee/energy/sword/saber/green)
 
 /datum/vox_pack/melee/sword/red
 	name = "Энергомеч (Красный)"
 	desc = "Энергетический меч для прижигания ран отрубленных конечностей неприятеля. Цвет ненависти, гнева и злого злодейства злыхх злыдней. Безвкусица."
-	reference = "ME_SWR"
+	reference = "MEL_SWR"
 	cost = 6250
-	time_until_available = 120
+	tiMEL_until_available = 120
 	contains = list(/obj/item/melee/energy/sword/saber/red)
 
 /datum/vox_pack/melee/fly
 	name = "Уничтожитель насекомых"
 	desc = "Всеми признанный лучший уничтожитель нианов и киданов."
-	reference = "ME_FLY"
+	reference = "MEL_FLY"
 	cost = 150
 	contains = list(/obj/item/melee/flyswatter)
 
@@ -77,13 +77,13 @@
 /datum/vox_pack/melee/dropwall
 	name = "Генератор щита"
 	desc = "Щитовой развертываемый генератор, активирующий временное укрытие, которое блокирует снаряды и взрывы с определенного направления, в то же время позволяя остальным снарядам свободно проходить сзади."
-	reference = "ME_DW"
+	reference = "MEL_DW"
 	cost = 500
 	contains = list(/obj/item/grenade/barrier/dropwall)
 
 /datum/vox_pack/melee/inflatable
 	name = "Надувной Набор"
 	desc = "Развертываемый надувной набор для заделывания разгерметизаций."
-	reference = "ME_IFL"
+	reference = "MEL_IFL"
 	cost = 200
 	contains = list(/obj/item/storage/briefcase/inflatable)

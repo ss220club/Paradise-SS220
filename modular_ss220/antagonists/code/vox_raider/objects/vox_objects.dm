@@ -9,7 +9,7 @@
 	if(slot == SLOT_HUD_GLASSES)
 		flags = NODROP
 	else
-		flags = 0
+		flags = initial(flags)
 
 /obj/item/clothing/glasses/thermal/cyber/vox
 	name = "Термальный Глаз Воксов"
@@ -22,5 +22,5 @@
 	if(slot == SLOT_HUD_GLASSES)
 		flags = NODROP
 	else
-		flags = 0
+		flags = initial(flags)
 
