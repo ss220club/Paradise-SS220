@@ -274,7 +274,7 @@
 	gloves = /obj/item/clothing/gloves/combat
 
 
-/datum/outfit/job/ntnavyofficer
+/datum/outfit/job/ntnavyofficer/traisen
 	name = "Генрих Трейзен"
 	r_hand = /obj/item/storage/belt/rapier/genri_rapier
 	head = /obj/item/clothing/head/ntrep
