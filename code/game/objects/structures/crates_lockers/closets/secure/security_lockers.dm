@@ -150,6 +150,7 @@
 	new /obj/item/storage/belt/security/full(src)
 	new /obj/item/clothing/accessory/holster(src)
 	new /obj/item/storage/bag/garment/blueshield(src)
+	new /obj/item/sensor_device(src)
 
 /obj/structure/closet/secure_closet/blueshield/empty/populate_contents()
 
