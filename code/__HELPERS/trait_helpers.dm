@@ -182,7 +182,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_NIGHT_VISION		"night_vision"
 #define TRAIT_EMOTE_MUTE		"emote_mute"
 #define TRAIT_PUNCTURE_IMMUNE	"punctureimmune" //prevents RSG syringes from piercing your clothing
-
+#define TRAIT_CANT_BREATH_FROM_ENVIRONMENT "cant_breath_from_environment"
 #define TRAIT_NO_BONES 			"no_bones"
 #define TRAIT_STURDY_LIMBS		"sturdy_limbs"
 #define TRAIT_BURN_WOUND_IMMUNE "burn_immune"

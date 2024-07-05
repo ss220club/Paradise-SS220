@@ -49,12 +49,14 @@
 	ADD_TRAIT(owner, TRAIT_IMMOBILIZED, id)
 	ADD_TRAIT(owner, TRAIT_HANDS_BLOCKED, id)
 	ADD_TRAIT(owner, TRAIT_MUTE, id)
+	ADD_TRAIT(owner, TRAIT_CANT_BREATH_FROM_ENVIRONMENT, id)
 	return TRUE
 
 /datum/status_effect/quicksand_stage_3/on_remove()
 	REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, id)
 	REMOVE_TRAIT(owner, TRAIT_HANDS_BLOCKED, id)
 	REMOVE_TRAIT(owner, TRAIT_MUTE, id)
+	REMOVE_TRAIT(owner, TRAIT_CANT_BREATH_FROM_ENVIRONMENT, id)
 
 /datum/status_effect/quicksand_stage_3/tick()
 	owner.adjustBruteLoss(5, FALSE)
