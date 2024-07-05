@@ -202,12 +202,56 @@
 	cost = 100
 	contains = list(/obj/item/gun/energy/clown)
 
-/datum/vox_pack/goods/clown_pda
-	name = "Клоунский ПДА"
-	desc = "Мясу понравится этот товар."
-	reference = "G_CL_PDA"
-	cost = 200
-	contains = list(/obj/item/pda/clown)
+/datum/vox_pack/goods/clown
+	name = "Клоунское Снаряжение"
+	desc = "Мясу повеселится от этого товара."
+	reference = "G_CL_EQ"
+	cost = 500
+	contains = list(
+		/obj/item/clothing/mask/gas/clown_hat,
+		/obj/item/clothing/shoes/clown_shoes,
+		/obj/item/clothing/under/rank/civilian/clown,
+		/obj/item/pda/clown,
+		/obj/item/flag/clown,
+		/obj/item/id_skin/clown,
+		/obj/item/bikehorn,
+		/obj/item/storage/backpack/clown,
+		/obj/item/food/snacks/grown/banana,
+		/obj/item/stamp/clown,
+		/obj/item/toy/crayon/rainbow,
+		/obj/item/storage/fancy/crayons,
+		/obj/item/reagent_containers/spray/waterflower,
+		/obj/item/reagent_containers/drinks/bottle/bottleofbanana,
+		)
+
+/datum/vox_pack/goods/clown/sec
+	name = "Клоунское Снаряжение Безопасности"
+	desc = "Мясо будет унижено этим товаром."
+	reference = "G_CL_EQS"
+	cost = 1000
+	contains = list(
+		/obj/item/clothing/under/rank/security/officer/clown,
+		/obj/item/clothing/suit/armor/vest/security,
+		/obj/item/clothing/shoes/clown_shoes,
+		/obj/item/clothing/head/helmet,
+		/obj/item/clothing/mask/gas/clown_hat,
+		/obj/item/clothing/gloves/color/red,
+		/obj/item/flag/clown,
+		/obj/item/id_skin/clown,
+		/obj/item/pda/clown,
+		/obj/item/bikehorn,
+		/obj/item/gun/energy/clown/security,
+		/obj/item/food/snacks/grown/banana,
+		/obj/item/stamp/clown,
+		/obj/item/toy/crayon/rainbow,
+		/obj/item/storage/fancy/crayons,
+		/obj/item/reagent_containers/spray/waterflower,
+		/obj/item/reagent_containers/drinks/bottle/bottleofbanana,
+		/obj/item/instrument/bikehorn,
+		/obj/item/restraints/handcuffs/toy,
+		/obj/item/restraints/handcuffs/toy,
+		/obj/item/storage/backpack/clown,
+		)
 
 /datum/vox_pack/goods/clown_grenade
 	name = "Клоунская Граната"
@@ -218,7 +262,14 @@
 
 /datum/vox_pack/goods/clown_grenade/evil
 	name = "Клоунская Злая Граната"
-	desc = "Мясу понравится этот товар."
+	desc = "Мясу НЕ понравится этот товар."
 	reference = "G_CL_GRE"
 	cost = 500
 	contains = list(/obj/item/grenade/clown_grenade)
+
+/datum/vox_pack/goods/clown_bomba
+	name = "Клоунская Бомба"
+	desc = "Мясу НЕ понравится этот товар."
+	reference = "G_CL_BOMBA"
+	cost = 80000
+	contains = list(/obj/item/grenade/clusterbuster/honk)
