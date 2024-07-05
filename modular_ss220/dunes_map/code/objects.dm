@@ -748,11 +748,13 @@
 	item_state = "empty"
 	lefthand_file = 'modular_ss220/dunes_map/icons/cube_left.dmi'
 	righthand_file = 'modular_ss220/dunes_map/icons/cube_right.dmi'
+	var/charged_type = "charged"
+	var/list/mob_name_to_charged_type = list("Миднайт Блэк" = "midn", "Муниверс Нормандия" = "norm")
 
 /obj/item/stock_parts/cell/cube/process()
 	if(percent() == 100)
-		icon_state = "charged"
-		item_state = "charged"
+		icon_state = charged_type
+		item_state = charged_type
 	else
 		icon_state = "empty"
 		item_state = "empty"
@@ -760,6 +762,18 @@
 /obj/item/stock_parts/cell/cube/New()
 	. = ..()
 	charge = 0
+
+/obj/item/stock_parts/cell/cube/pickup(mob/user)
+	. = ..()
+	var/charge_level = percent()
+	if(charge_level < 100)
+		return
+
+	charged_type = mob_name_to_charged_type[user.name] || initial(charged_type)
+
+/obj/item/stock_parts/cell/cube/dropped(mob/user, silent)
+	. = ..()
+	charged_type = initial(charged_type)
 
 /obj/item/stock_parts/cell/cube/Destroy()
 	empulse(get_turf(loc), 4, 10, 1)
@@ -769,7 +783,6 @@
 			qdel(H)
 			return
 	return ..()
-
 
 /obj/machinery/bsa/full/attacked_by(obj/item/I, mob/living/user)
 	if(istype(I, /obj/item/stock_parts/cell/cube ))
