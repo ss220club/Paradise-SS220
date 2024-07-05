@@ -71,11 +71,12 @@
 		/obj/item/mod/core = 1000,
 		/obj/item/mod = 300,
 		/obj/machinery/power/port_gen = 800,
-		/obj/machinery/power = 300,
-		/obj/machinery/the_singularitygen/tesla = 6000,
-		/obj/machinery/the_singularitygen = 4000,
-		/obj/structure/particle_accelerator = 1500,
-		/obj/machinery/power/emitter = 150,
+		/obj/machinery/power = 600,
+		/obj/machinery/the_singularitygen/tesla = 8000,
+		/obj/machinery/the_singularitygen = 6000,
+		/obj/structure/particle_accelerator = 3000,
+		/obj/machinery/power/emitter = 500,
+		/obj/machinery/atmospherics/supermatter_crystal = 15000,
 		)
 	var/list/valuable_guns_dict = list(
 		/obj/item/gun/energy/taser = 300,

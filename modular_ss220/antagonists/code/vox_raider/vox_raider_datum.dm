@@ -10,7 +10,7 @@
 
 /datum/antagonist/vox_raider/add_owner_to_gamemode()
 	SSticker.mode.vox_raiders |= owner
-	if(owner.current)
+	if(owner.current && !("Vox" in owner.current.faction))
 		owner.current.faction |= list("Vox")
 
 /datum/antagonist/vox_raider/remove_owner_from_gamemode()
