@@ -45,7 +45,7 @@
 
 /obj/item/dualsaber/legendary_saber/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/ckey_and_role_locked_pickup, "offstation_role", LEGENDARY_SWORDS_CKEY_WHITELIST, pickup_damage = 10, refusal_text = refusal_text)
+	AddComponent(/datum/component/ckey_and_role_locked_pickup, TRUE, LEGENDARY_SWORDS_CKEY_WHITELIST, pickup_damage = 10, refusal_text = refusal_text)
 
 /obj/item/dualsaber/legendary_saber/update_icon_state()
 	if(HAS_TRAIT(src, TRAIT_WIELDED))

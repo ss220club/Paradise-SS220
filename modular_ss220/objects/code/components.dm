@@ -2,11 +2,11 @@
 	var/pickup_damage
 	var/force = 20
 	var/list/ckeys = list()
-	var/required_role
+	var/offstation_role
 	var/refusal_text
 
-/datum/component/ckey_and_role_locked_pickup/Initialize(required_role, ckey_whitelist, pickup_damage = 0, refusal_text)
-		src.required_role = required_role
+/datum/component/ckey_and_role_locked_pickup/Initialize(offstation_role = TRUE, ckey_whitelist, pickup_damage = 0, refusal_text)
+		src.offstation_role = offstation_role
 		src.ckeys = ckey_whitelist
 		src.pickup_damage = pickup_damage
 		src.refusal_text = refusal_text
@@ -31,7 +31,4 @@
 	if(user.client.ckey in ckeys)
 		return TRUE
 
-	if(required_role in user.mind.vars)
-		if(user.mind.vars[required_role])
-			return TRUE
-	return FALSE
+	return user.mind.offstation_role == offstation_role
