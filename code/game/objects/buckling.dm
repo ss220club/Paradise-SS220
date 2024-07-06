@@ -130,7 +130,7 @@
 
 //Wrapper procs that handle sanity and user feedback
 /atom/movable/proc/user_buckle_mob(mob/living/M, mob/user, check_loc = TRUE)
-	if(!in_range(user, src) || !isturf(user.loc) || user.incapacitated() || M.anchored)
+	if(!in_range(user, src) || !isturf(user.loc) || user.incapacitated() || M.anchored || HAS_TRAIT(M, TRAIT_IMMOVABLE))
 		return FALSE
 
 	if(isguardian(user) && (M.loc == user.loc || user.alpha == 60)) //Alpha is for detecting ranged guardians in scout mode

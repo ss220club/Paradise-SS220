@@ -51,7 +51,7 @@
 	if(!isliving(entering))
 		return
 
-	handle_living_mob(entering)
+	INVOKE_ASYNC(src, PROC_REF(handle_living_mob), entering)
 
 /datum/component/quicksand/proc/on_exited(datum/source, atom/movable/exiting)
 	SIGNAL_HANDLER
@@ -62,7 +62,7 @@
 
 	var/datum/quicksand_victim_holder/handled_victim = victims[exiting]
 	if(handled_victim)
-		remove_victim(handled_victim)
+		INVOKE_ASYNC(handled_victim, PROC_REF(remove_victim), handled_victim)
 
 /datum/component/quicksand/proc/handle_living_mob(mob/victim)
 	PRIVATE_PROC(TRUE)
@@ -89,6 +89,9 @@
 
 /datum/component/quicksand/proc/start_suction(mob/living/victim)
 	PRIVATE_PROC(TRUE)
+
+	if(victim.buckling)
+		victim.buckling.unbuckle_mob(victim, TRUE)
 
 	var/datum/quicksand_victim_holder/victim_holder = new /datum/quicksand_victim_holder(victim, get_stage_prototypes())
 	victims[victim] = victim_holder
