@@ -6,9 +6,6 @@
 	/// Steps that mob will come through
 	/// Assoc list of mob currently being sucked to `/datum/quicksand_victim_holder` object.
 	VAR_PRIVATE/list/victims = list()
-	/// List of `/atom/movable` that were completely devoured by quicksand.
-	/// Includes bulky objects and dead mobs
-	VAR_PRIVATE/list/devoured = list()
 	/// List of stages stage types
 	VAR_PRIVATE/list/stage_types = list(
 		/datum/quicksand_stage/feet,
@@ -51,10 +48,10 @@
 	SIGNAL_HANDLER
 	PRIVATE_PROC(TRUE)
 
-	if(isitem(entering))
-		handle_item(entering)
-	else if(isliving(entering))
-		handle_living_mob(entering)
+	if(!isliving(entering))
+		return
+
+	handle_living_mob(entering)
 
 /datum/component/quicksand/proc/on_exited(datum/source, atom/movable/exiting)
 	SIGNAL_HANDLER
@@ -90,15 +87,6 @@
 
 	return prob(default_mob_catch_chance)
 
-/datum/component/quicksand/proc/handle_item(obj/item/target)
-	PRIVATE_PROC(TRUE)
-
-	// If the item is at least bulky, we just devour it, otherwise it will be left on top of the sands
-	if(target.w_class < WEIGHT_CLASS_BULKY)
-		return
-
-	devour(target)
-
 /datum/component/quicksand/proc/start_suction(mob/living/victim)
 	PRIVATE_PROC(TRUE)
 
@@ -133,6 +121,3 @@
 			cached_stage_prototypes += all_quicksand_stages[stage_path]
 
 	return cached_stage_prototypes
-
-/datum/component/quicksand/proc/devour()
-	return
