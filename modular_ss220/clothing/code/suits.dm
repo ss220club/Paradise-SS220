@@ -269,7 +269,7 @@
 		"Skrell" 			= 	'modular_ss220/clothing/icons/mob/suits.dmi',
 		"Slime People" 		= 	'modular_ss220/clothing/icons/mob/suits.dmi',
 		"Unathi" 			= 	'modular_ss220/clothing/icons/mob/suits.dmi',
-		"Vox" 				= 	'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Vox" 				= 	'modular_ss220/clothing/icons/mob/species/vox/suits.dmi',
 		"Nucleation"		=	'modular_ss220/clothing/icons/mob/suits.dmi',
 		"Kidan" 			= 	'modular_ss220/clothing/icons/mob/species/kidan/suits.dmi',
 		"Tajaran" 			=	'modular_ss220/clothing/icons/mob/species/tajaran/suits.dmi',
@@ -301,7 +301,7 @@
 		"Skrell" 			= 	'modular_ss220/clothing/icons/mob/hats.dmi',
 		"Slime People" 		= 	'modular_ss220/clothing/icons/mob/hats.dmi',
 		"Unathi" 			= 	'modular_ss220/clothing/icons/mob/hats.dmi',
-		"Vox" 				= 	'modular_ss220/clothing/icons/mob/hats.dmi',
+		"Vox" 				= 	'modular_ss220/clothing/icons/mob/species/vox/hats.dmi',
 		"Nucleation"		=	'modular_ss220/clothing/icons/mob/hats.dmi',
 		"Kidan" 			= 	'modular_ss220/clothing/icons/mob/species/kidan/hats.dmi',
 		"Tajaran" 			=	'modular_ss220/clothing/icons/mob/species/tajaran/hats.dmi',
@@ -381,6 +381,22 @@
 /obj/item/clothing/suit/fluff/dusty_jacket
 	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
 
+/obj/item/clothing/head/witchhunter_hat
+	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
+
+/obj/item/clothing/suit/poncho/pink
+	name = "pink poncho"
+	desc = "Your classic, non-racist poncho. This one is pink."
+	icon_state = "ponchoshame"
+	item_state = "ponchoshame"
+
+/obj/item/clothing/suit/jacket/mafia_white
+	name = "белый пиджак"
+	desc = "Два слова: стиль и статус."
+	icon_state = "mafia_white"
+	item_state = "mafia_white"
+	icon = 'modular_ss220/clothing/icons/object/suits.dmi'
+	icon_override = 'modular_ss220/clothing/icons/mob/suits.dmi'
 
 //dune hardsuit
 

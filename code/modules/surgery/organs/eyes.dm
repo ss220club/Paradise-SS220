@@ -130,9 +130,9 @@
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
 	origin_tech = "materials=4;engineering=4;biotech=4;magnets=4"
 
-/obj/item/organ/internal/eyes/cybernetic/meson/insert(mob/living/carbon/human/M, special = FALSE)
-	ADD_TRAIT(M, TRAIT_MESON_VISION, "meson_vision[UID()]")
-	return ..()
+// /obj/item/organ/internal/eyes/cybernetic/meson/insert(mob/living/carbon/human/M, special = FALSE)
+// 	ADD_TRAIT(M, TRAIT_MESON_VISION, "meson_vision[UID()]")
+// 	return ..()
 
 /obj/item/organ/internal/eyes/cybernetic/meson/remove(mob/living/carbon/human/M, special = FALSE)
 	REMOVE_TRAIT(M, TRAIT_MESON_VISION, "meson_vision[UID()]")

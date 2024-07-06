@@ -15,6 +15,7 @@
 	mask = /obj/item/clothing/mask/gas/sechailer
 	glasses = /obj/item/clothing/glasses/hud/security/night
 	l_pocket = /obj/item/tank/internals/emergency_oxygen/double
+	l_ear = /obj/item/radio/headset/centcom
 	r_pocket = /obj/item/reagent_containers/hypospray/combat/nanites
 	back = /obj/item/storage/backpack/security
 	id = /obj/item/card/id/centcom/tanya
@@ -30,14 +31,14 @@
 		/obj/item/gun/projectile/automatic/ar
 	)
 	bio_chips = list(
-		/obj/item/bio_chip/mindshield,
-		/obj/item/bio_chip/dust
+		/obj/item/bio_chip/mindshield
 	)
 	cybernetic_implants = list(
 		/obj/item/organ/internal/cyberimp/chest/nutriment/plus/hardened,
 		/obj/item/organ/internal/cyberimp/arm/combat/centcom,
 		/obj/item/organ/internal/cyberimp/brain/anti_stam/hardened,
-		/obj/item/organ/internal/eyes/cybernetic/xray/hardened
+		/obj/item/organ/internal/eyes/cybernetic/xray/hardened,
+		/obj/item/organ/internal/cyberimp/chest/hydration/hardened
 	)
 
 /datum/outfit/admin/tanya/tanya2
@@ -134,10 +135,18 @@
 	belt = /obj/item/storage/belt/fannypack
 	r_pocket = /obj/item/clothing/mask/cigarette/pipe
 
+/datum/outfit/redneck/redneck5
+	name = "деревенщина святоша"
+	suit = /obj/item/clothing/suit/witchhunter
+	head = /obj/item/clothing/head/witchhunter_hat
+	belt = /obj/item/storage/belt/fannypack
+	r_pocket = /obj/item/clothing/mask/cigarette/pipe
+	gloves = /obj/item/clothing/gloves/fingerless
+
 /datum/outfit/redneck/redneck_shame
 	name = "позорный деревенщина"
 	uniform = /obj/item/clothing/under/dune/heatprotect
-	suit = /obj/item/clothing/suit/poncho/ponchoshame
+	suit = /obj/item/clothing/suit/poncho/pink
 	belt = /obj/item/storage/belt/fannypack/pink
 	glasses = /obj/item/clothing/glasses/fluff/kamina
 	shoes = /obj/item/clothing/shoes/cowboy/pink
@@ -171,3 +180,113 @@
 /datum/outfit/redneck_women/woman2
 	name = "деревенщина-женщина 2"
 	suit = /obj/item/clothing/suit/hooded/abaya/orange
+
+/datum/outfit/job/ntspecops/normandy
+	name = "Мунивёрс Нормандия"
+	suit = /obj/item/clothing/suit/space/deathsquad/officer/soo_brown
+	l_pocket = /obj/item/dualsaber/legendary_saber/normandy_saber
+	cybernetic_implants = list(
+		/obj/item/organ/internal/eyes/cybernetic/xray/hardened,
+		/obj/item/organ/internal/cyberimp/brain/anti_stam/hardened,
+		/obj/item/organ/internal/cyberimp/chest/nutriment/plus/hardened,
+		/obj/item/organ/internal/cyberimp/arm/combat/centcom,
+		/obj/item/organ/internal/cyberimp/chest/hydration/hardened
+	)
+	bio_chips = list(
+		/obj/item/bio_chip/mindshield
+	)
+
+/datum/outfit/admin/syndicate/midnight
+	name = "Миднайт Блэк"
+	uniform = /obj/item/clothing/under/suit/really_black
+	shoes = /obj/item/clothing/shoes/chameleon/noslip
+	uplink_uses = 200
+	id = /obj/item/card/id/midnight
+	cybernetic_implants = list(
+		/obj/item/organ/internal/eyes/cybernetic/thermals/hardened,
+		/obj/item/organ/internal/cyberimp/brain/anti_stam/hardened,
+		/obj/item/organ/internal/cyberimp/chest/nutriment/plus/hardened,
+		/obj/item/organ/internal/cyberimp/chest/hydration/hardened
+	)
+
+// Синди сборы
+/datum/outfit/admin/syndicate/heads
+	name = "Синди Главы НЕ ИСПОЛЬЗОВАТЬ"
+	id = /obj/item/card/id/syndicate/command
+	mask = /obj/item/clothing/mask/chameleon/voice_change
+	l_ear = /obj/item/radio/headset/chameleon
+	cybernetic_implants = list(
+		/obj/item/organ/internal/cyberimp/chest/nutriment/plus/hardened,
+		/obj/item/organ/internal/cyberimp/chest/hydration/hardened
+	)
+
+/datum/outfit/admin/syndicate/heads/cybersun
+	name = "СИНДИКАТ – КИБЕРСАН"
+	uniform = /obj/item/clothing/under/rank/procedure/iaa
+	suit = /obj/item/clothing/suit/armor/hos/jensen
+	gloves = /obj/item/clothing/gloves/color/white
+	shoes = /obj/item/clothing/shoes/laceup
+	glasses = /obj/item/clothing/glasses/hud/security/sunglasses/jensenshades
+	r_hand = /obj/item/cane
+
+
+/datum/outfit/admin/syndicate/heads/donk
+	name = "СИНДИКАТ – ДОНК"
+	uniform = /obj/item/clothing/under/rank/procedure/lawyer/red
+	gloves = /obj/item/clothing/gloves/color/white
+	shoes = /obj/item/clothing/shoes/laceup
+	glasses = /obj/item/clothing/glasses/regular/hipster
+	head = /obj/item/clothing/head/boaterhat
+
+/datum/outfit/admin/syndicate/heads/gorlex
+	name = "СИНДИКАТ – ГОРЛЕКС"
+	uniform = /obj/item/clothing/under/syndicate
+	gloves = /obj/item/clothing/gloves/combat
+	shoes = /obj/item/clothing/shoes/combat
+	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
+	suit = /obj/item/clothing/suit/jacket/syndicatebomber
+
+/datum/outfit/admin/syndicate/heads/vox
+	name = "СИНДИКАТ – ВОКС"
+	uniform = /obj/item/clothing/under/vox/vox_casual
+	shoes = /obj/item/clothing/shoes/magboots/vox
+	glasses = /obj/item/clothing/glasses/eyepatch
+	head = /obj/item/clothing/head/fluff/kaki
+	suit = /obj/item/clothing/suit/pirate_brown
+
+/datum/outfit/admin/syndicate/heads/waffle
+	name = "СИНДИКАТ – ВАФЛЯ"
+	uniform = /obj/item/clothing/under/rank/procedure/lawyer/black
+	gloves = /obj/item/clothing/gloves/color/black
+	shoes = /obj/item/clothing/shoes/laceup
+	glasses = /obj/item/clothing/glasses/monocle
+	head = /obj/item/clothing/head/plaguedoctorhat
+
+/datum/outfit/admin/syndicate/heads/morezzi
+	name = "СИНДИКАТ – МОРЕЦЦИ"
+	uniform = /obj/item/clothing/under/white_pants
+	shoes = /obj/item/clothing/shoes/laceup
+	suit = /obj/item/clothing/suit/jacket/mafia_white
+	glasses = /obj/item/clothing/glasses/sunglasses
+	head = /obj/item/clothing/head/cowboyhat/white
+
+/datum/outfit/admin/syndicate/heads/self
+	name = "СИНДИКАТ – СЕЛФ"
+	suit = /obj/item/clothing/suit/armor/swat
+	shoes = /obj/item/clothing/shoes/jackboots/mecha_noise
+	gloves = /obj/item/clothing/gloves/combat
+
+
+/datum/outfit/job/ntnavyofficer/traisen
+	name = "Генрих Трейзен"
+	r_hand = /obj/item/storage/belt/rapier/genri_rapier
+	head = /obj/item/clothing/head/ntrep
+	mask = /obj/item/clothing/mask/gas/navy_officer
+	suit = /obj/item/clothing/suit/space/deathsquad/officer/field/cloak_nt
+
+/datum/outfit/job/ntnavyofficer
+	cybernetic_implants = list(
+		/obj/item/organ/internal/cyberimp/chest/nutriment/plus/hardened,
+		/obj/item/organ/internal/cyberimp/arm/combat/centcom,
+		/obj/item/organ/internal/cyberimp/chest/hydration/hardened
+	)

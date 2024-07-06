@@ -10,7 +10,7 @@
 	var/ui_title = "Chem Dispenser 5000"
 	var/cell_type = /obj/item/stock_parts/cell/high
 	var/obj/item/stock_parts/cell/cell
-	var/powerefficiency = 0.1
+	var/powerefficiency = 0.35
 	var/amount = 10
 	var/recharge_amount = 100
 	var/recharge_counter = 0
@@ -88,13 +88,15 @@
 
 /obj/machinery/chem_dispenser/RefreshParts()
 	recharge_amount = initial(recharge_amount)
-	var/newpowereff = 0.0666666
+	var/newpowereff = 0.011
 	for(var/obj/item/stock_parts/cell/P in component_parts)
 		cell = P
 	for(var/obj/item/stock_parts/matter_bin/M in component_parts)
-		newpowereff += 0.0166666666 * M.rating
+		newpowereff += 0.004 * M.rating
 	for(var/obj/item/stock_parts/capacitor/C in component_parts)
 		recharge_amount *= C.rating
+		recharge_amount *= 0.1
+		recharge_amount *= 6
 	for(var/obj/item/stock_parts/manipulator/M in component_parts)
 		if(M.rating > 3)
 			dispensable_reagents |= upgrade_reagents

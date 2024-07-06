@@ -11,6 +11,22 @@
 	temperature = T20C
 	planetary_atmos = FALSE
 
+/turf/simulated/floor/indestructible/quicksand
+	name = "dune sand"
+	icon = 'modular_ss220/dunes_map/icons/desert.dmi'
+	icon_state = "quicksand"
+	temperature = DUNE_TEMPERATURE
+	planetary_atmos = TRUE
+	footstep = FOOTSTEP_SAND
+	barefootstep = FOOTSTEP_SAND
+	clawfootstep = FOOTSTEP_SAND
+	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
+	smoothing_groups = list(SMOOTH_GROUP_FLOOR)
+	var/environment_type = "sand"
+	var/obj/item/stack/digResult = /obj/item/stack/ore/glass
+	var/floor_variance = 5
+	var/dug
+
 /turf/simulated/floor/indestructible/dune_sand
 	name = "dune sand"
 	icon = 'modular_ss220/dunes_map/icons/desert.dmi'

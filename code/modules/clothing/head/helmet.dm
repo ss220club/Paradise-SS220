@@ -57,13 +57,13 @@
 
 /obj/item/clothing/head/helmet/meson/equipped(mob/user, slot, initial)
 	. = ..()
-	if(slot == SLOT_HUD_HEAD)
-		ADD_TRAIT(user, TRAIT_MESON_VISION, "meson_helmet[UID()]")
+	// if(slot == SLOT_HUD_HEAD)
+	// 	ADD_TRAIT(user, TRAIT_MESON_VISION, "meson_helmet[UID()]")
 
 /obj/item/clothing/head/helmet/meson/dropped(mob/user)
 	. = ..()
-	if(user)
-		REMOVE_TRAIT(user, TRAIT_MESON_VISION, "meson_helmet[UID()]")
+	// if(user)
+	// 	REMOVE_TRAIT(user, TRAIT_MESON_VISION, "meson_helmet[UID()]")
 
 /obj/item/clothing/head/helmet/material
 	name = "material visor helmet"

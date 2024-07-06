@@ -69,6 +69,7 @@
 	icon_closed = "grave"
 	open_sound = 'sound/effects/shovel_dig.ogg'
 	close_sound = 'sound/effects/shovel_dig.ogg'
+	anchored = TRUE
 
 /obj/structure/closet/crate/grave/gravelead
 	name = "ominous grave mound"

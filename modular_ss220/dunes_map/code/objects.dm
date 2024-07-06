@@ -1,3 +1,6 @@
+#define TRAIT_CUBE_IMPACTED "cubeimpacted"
+#define MACHINERY_TRAIT "machinery"
+
 /obj/item/reagent_containers/food/condiment/milk/empty
 	list_reagents = null
 
@@ -94,7 +97,7 @@
 
 /obj/structure/sink/kolodec
 	name = "\improper колодец"
-	desc = "Главное не упасть..."
+	desc = "Дна не видно. К тому же тут склизко... Главное не упасть..."
 	icon = 'modular_ss220/dunes_map/icons/kolodec.dmi'
 	icon_state = "kolodec"
 	density = TRUE
@@ -102,14 +105,44 @@
 	var/drop_x = 1
 	var/drop_y = 1
 	var/drop_z = -1
+	var/drop_chance = 1
+
+/obj/structure/sink/kolodec/examine_more(mob/user)
+	. = ..()
+	. += "<span class='userdanger'>Если туда упасть - верная смерть.</span>"
+
+/obj/structure/sink/kolodec/attack_hand(mob/user)
+	to_chat(user, "<span class='userdanger'>Вы подходите вплотную к колодцу. Выглядит КРАЙНЕ небезопасно. Может, не стоит?</span>")
+	if(!do_after(user, 3 SECONDS, target = src))
+		return
+	. = ..()
+
+	if(prob(drop_chance))
+		drop(user)
+	else
+		to_chat(user, "<span class='userdanger'>Вы едва не сорвались в колодец. А дна ведь даже и не видно...</span>")
+
+/obj/structure/sink/kolodec/attackby(obj/item/O, mob/user, params)
+	to_chat(user, "<span class='userdanger'>Вы подходите вплотную к колодцу. Выглядит КРАЙНЕ небезопасно. Может, не стоит?</span>")
+	if(!do_after(user, 4 SECONDS, target = src))
+		return
+	. = ..()
+
+	if(prob(drop_chance))
+		drop(user)
+	else
+		to_chat(user, "<span class='userdanger'>Вы едва не сорвались в колодец. А дна ведь даже и не видно...</span>")
+
 
 /obj/structure/sink/kolodec/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/largetransparency)
 
-/obj/structure/sink/kolodec/MouseDrop_T(atom/movable/AM)
+/obj/structure/sink/kolodec/MouseDrop_T(atom/movable/AM, mob/user)
 	. = 0
-	if(!do_after(AM, 1 SECONDS, target = src))
+	if(isliving(AM))
+		visible_message("<span class='userdanger'>[user] начинает скидывать [AM] в колодец!!! </span>")
+	if(!do_after(user, 3 SECONDS, target = src))
 		return
 	AM.forceMove(src.loc)
 	var/thing_to_check = src
@@ -148,6 +181,8 @@
 		fallen_mob.notransform = FALSE
 		if(fallen_mob.stat != DEAD)
 			fallen_mob.adjustBruteLoss(500) //crunch from long fall, want it to be like legion in damage
+			log_admin("[key_name(fallen_mob)] упал в колодец! Руку приложил: [key_name(usr)]")
+			message_admins("[key_name_admin(fallen_mob)] упал в колодец! Руку приложил: [key_name_admin(usr)]")
 		return
 	for(var/mob/M in AM.contents)
 		M.forceMove(src)
@@ -172,41 +207,14 @@
 	anchored = TRUE
 	layer = ABOVE_ALL_MOB_LAYER
 	max_integrity = 50
-	var/list/obj/structure/fillers = list()
-
-/obj/structure/filler_car
-	name = "car part"
-	density = TRUE
-	anchored = TRUE
-	invisibility = 101
-	var/obj/structure/parent
-
-/obj/structure/filler_car/Destroy()
-	parent = null
-	return ..()
-
-/obj/structure/filler_car/ex_act()
-	return
 
 /obj/structure/decorative_structures/car_wreck/Initialize(mapload)
 	. = ..()
 	var/list/car_types = list("coupe", "muscle", "sport", "van")
 	icon_state = "[pick(car_types)]-[rand(1,5)]"
-	AddComponent(/datum/component/largetransparency)
-
-	var/list/occupied = list()
-	for(var/direct in list(EAST))
-		occupied += get_step(src,direct)
-	occupied += locate(x+2,y,z)
-
-	for(var/T in occupied)
-		var/obj/structure/filler/F = new(T)
-		F.parent = src
-		fillers += F
-
-/obj/structure/decorative_structures/car_wreck/Destroy()
-	QDEL_LIST_CONTENTS(fillers)
-	return ..()
+	AddComponent(/datum/component/largetransparency, 0, 1, 2, 0)
+	bound_width = 96
+	bound_height = 32
 
 //statues and stuff
 
@@ -353,6 +361,13 @@
 	desc = "Статуя отвратительной твари выполненная из черного камня."
 	icon_state = "ugly_statue2"
 
+/obj/structure/statue/sandstone/assistant/village
+	name = "Статуя молодого Грейхма Сайлмана"
+	desc = "Легендарная личность для каждого выходца с Хирки."
+	icon = 'modular_ss220/dunes_map/icons/statuelarge.dmi'
+	icon_state = "statue_village"
+	pixel_y = 10
+
 //barricade
 /obj/structure/barricade/beton
 	name = "бетонный фундаментный блок"
@@ -455,14 +470,23 @@
 		"Лопух", "Локатор", "Костыль", "Горбун", "Кубышка", "Мотыль", "Котелок", "Бацилла", "Жаба", "Ворона", "Крыса", "Амеба", "Глиста", "Аскарида",  "Гвоздь", "Робинзон", "Курортник", "Фунт", "Гульден", "Тугрик", "Махно", "Бугор", "Змей", "Лютый", "Шайба", "Мазай", "Абу",
 		)
 	registered_name = "[pick (kidan_name)]"
+	access = list(ACCESS_AWAY01)
 
 /obj/item/card/id/centcom/tanya
-	name = "Таня фон Нормандия's ID card"
-	desc = "An ID straight from Central Command."
+	name = "Дельта 8-1-7's ID card (Normandy Special Forces)"
+	desc = "An ID straight from Normandy Special Forces."
 	icon_state = "centcom"
-	registered_name = "Таня фон Нормандия"
+	registered_name = "Дельта 8-1-7"
 	assignment = "Normandy Special Forces"
 	rank = "Normandy Special Forces"
+
+/obj/item/card/id/midnight
+	name = "Миднайт Блэк's ID card (Syndicate Special Agent)"
+	desc = "An ID straight from Syndicate."
+	registered_name = "Миднайт Блэк"
+	assignment = "Syndicate Special Agent"
+	rank = "Syndicate Special Agent"
+	access = list(ACCESS_MAINT_TUNNELS, ACCESS_SYNDICATE, ACCESS_SYNDICATE_LEADER, ACCESS_SYNDICATE_COMMAND, ACCESS_EXTERNAL_AIRLOCKS)
 
 //sign
 /obj/structure/warn_sign
@@ -673,6 +697,45 @@
 	suit_type = /obj/item/clothing/suit/space/hardsuit/dune/midnight_suit
 	storage_type = /obj/item/tank/internals/oxygen/red
 
+// Tanya camera
+/obj/structure/tanya_camera
+	name = "Колба с Дельта 8-1-7"
+	desc = "Этот юнит еще не готов..."
+	icon = 'modular_ss220/dunes_map/icons/tanya.dmi'
+	icon_state = "clone"
+	density = TRUE
+	max_integrity = 20
+	layer = HITSCAN_LAYER
+	var/breaksound = "shatter"
+	anchored = TRUE
+
+/obj/structure/tanya_broken
+	name = "Разбитая колба"
+	desc = "Все еще не идеальна."
+	icon = 'modular_ss220/dunes_map/icons/tanya.dmi'
+	icon_state = "tanya_broken"
+	density = TRUE
+	max_integrity = 200
+	layer = HITSCAN_LAYER
+	anchored = TRUE
+
+/obj/structure/tanya_camera/Destroy()
+	playsound(src, breaksound, 30, 0)
+	var/turf/T = get_turf(src)
+	new /obj/effect/decal/cleanable/glass(T)
+	new /obj/effect/gibspawner/robot(T)
+	new /obj/effect/decal/cleanable/blood/gibs/body(T)
+	new /obj/structure/tanya_broken(T)
+	..()
+
+// kidan radio
+/obj/item/radio/kidan
+	name = "suspecious handheld radio"
+	desc = "A suspecious shortwave radio. This model is painted in reddish colors, there is some numbers and letters on back of it."
+	icon = 'modular_ss220/devices/icons/radio.dmi'
+	icon_state = "walkietalkie_syndie"
+	frequency = RADIO_LOW_FREQ
+
 //cube and VSA
 
 /obj/item/stock_parts/cell/cube
@@ -682,17 +745,39 @@
 	chargerate = 100
 	icon = 'modular_ss220/dunes_map/icons/cube.dmi'
 	icon_state = "empty"
+	item_state = "empty"
+	lefthand_file = 'modular_ss220/dunes_map/icons/cube_left.dmi'
+	righthand_file = 'modular_ss220/dunes_map/icons/cube_right.dmi'
+	var/charged_type = "charged"
+	var/list/mob_name_to_charged_type = list("Миднайт Блэк" = "midn", "Мунивёрс Нормандия" = "norm")
 
 /obj/item/stock_parts/cell/cube/process()
 	if(percent() == 100)
-		icon_state = "charged"
+		icon_state = charged_type
+		item_state = charged_type
 	else
 		icon_state = "empty"
-
+		item_state = "empty"
 
 /obj/item/stock_parts/cell/cube/New()
 	. = ..()
-	// charge = 0
+	charge = 0
+
+/obj/item/stock_parts/cell/cube/pickup(mob/user)
+	. = ..()
+	var/charge_level = percent()
+	if(charge_level < 100)
+		return
+
+	charged_type = mob_name_to_charged_type[user.name] || initial(charged_type)
+	icon_state = charged_type
+	item_state = charged_type
+
+	user.regenerate_icons()
+
+/obj/item/stock_parts/cell/cube/dropped(mob/user, silent)
+	. = ..()
+	charged_type = initial(charged_type)
 
 /obj/item/stock_parts/cell/cube/Destroy()
 	empulse(get_turf(loc), 4, 10, 1)
@@ -703,28 +788,57 @@
 			return
 	return ..()
 
-
-
 /obj/machinery/bsa/full/attacked_by(obj/item/I, mob/living/user)
 	if(istype(I, /obj/item/stock_parts/cell/cube ))
 		var/obj/item/stock_parts/cell/cube/C = I
 		if(C.charge >= 500000)
-
+			visible_message("<span class = 'sinister'> Орудие начинает пульсировать неестественным светом. <span>")
 			if(!do_after(user, 3 SECONDS, target = src))
 				return
-			name = "Войдспейс Артиллерия"
-			desc = "Эксперементальная дальнобойная артиллерия, несущая в себе необузданную мощь Куба. Да поможет нам Господь..."
-			icon = 'modular_ss220/dunes_map/icons/bsa.dmi'
-			icon_state = "cannon"
-			update_icon()
+
+			ADD_TRAIT(src, TRAIT_CUBE_IMPACTED, MACHINERY_TRAIT)
+			playsound(src, 'modular_ss220/dunes_map/sound/machinery/MV_WALL.ogg', 50, 0)
+			update_appearance()
 			reload_cooldown = 600
 			C.charge = 0
-			pixel_y = -60
+			pixel_y = -50
 			return
 	. = ..()
 
+/obj/machinery/bsa/full/update_name(updates)
+	. = ..()
+	if(HAS_TRAIT(src, TRAIT_CUBE_IMPACTED))
+		name = "Войдспейс Артиллерия"
+	else
+		name = initial(name)
+
+/obj/machinery/bsa/full/update_desc(updates)
+	. = ..()
+	if(HAS_TRAIT(src, TRAIT_CUBE_IMPACTED))
+		desc = "Эксперементальная дальнобойная артиллерия, несущая в себе необузданную мощь Куба. Да поможет нам Господь..."
+	else
+		desc = initial(desc)
+
+/obj/machinery/bsa/full/update_icon(updates)
+	. = ..()
+	if(HAS_TRAIT(src, TRAIT_CUBE_IMPACTED))
+		icon = 'modular_ss220/dunes_map/icons/bsa.dmi'
+	else
+		icon = initial(icon)
+
+/obj/machinery/bsa/full/update_icon_state()
+	. = ..()
+	if(HAS_TRAIT(src, TRAIT_CUBE_IMPACTED))
+		if(cannon_direction == EAST)
+			icon_state = "cannon_east"
+		else
+			icon_state = "cannon"
+	else
+		icon_state = initial(icon_state)
+
+
 /obj/machinery/bsa/full/fire(mob/user, turf/bullseye, target)
-	if(src.name == "Войдспейс Артиллерия")
+	if(HAS_TRAIT(src, TRAIT_CUBE_IMPACTED))
 		var/turf/point = get_front_turf()
 		for(var/turf/T in get_line(get_step(point,dir),get_target_turf()))
 			T.ex_act(1)
@@ -743,9 +857,219 @@
 		log_admin("[key_name(user)] has launched an artillery strike.") // Line below handles logging the explosion to disk
 		explosion(bullseye,ex_power,ex_power*2,ex_power*4)
 
+		// Explosion code is some delicious spaghetti, so this is the easiest way
+		var/mob/living/simple_animal/hostile/cthulhu/boss = locate()
+		if(boss)
+			boss.should_die = TRUE
+			boss.quick_explode_gib()
+
 		reload()
 		return
 	else
 		. = ..()
 
 
+/obj/structure/shipping_container
+	name = "грузовой контейнер"
+	desc = "Стандартный контейнер для транспортировки грузов. Этот без маркировки, поэтому информации о его содержимом нет."
+	icon = 'modular_ss220/dunes_map/icons/containers.dmi'
+	icon_state = "container_blank"
+	max_integrity = 1000
+	density = TRUE
+	anchored = TRUE
+	layer = 4.6
+
+/obj/structure/shipping_container/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/largetransparency, 0, 1, 2, 0)
+	bound_width = 96
+	bound_height = 32
+
+/obj/structure/shipping_container/conarex
+	name = "\improper грузовой контейнер Космического Бюро Контарекс"
+	desc = "Стандартный контейнер для транспортировки грузов. Этот принадлежит Космическому Бюро Контарекс и, скорее всего, используется для перевозки частей космических кораблей (или очередных коррупционных скандалов)."
+	icon_state = "conarex"
+
+/obj/structure/shipping_container/conarex/corrosion
+	icon_state = "conarex_corrosion"
+	desc = "Стандартный контейнер для транспортировки грузов. Этот принадлежит Космическому Бюро Контарекс и, скорее всего, используется для перевозки частей космических кораблей (или очередных коррупционных скандалов). Ни первого, ни второго вы в этом старье не найдете."
+
+/obj/structure/shipping_container/kosmologistika
+	name = "\improper грузовой контейнер Космологистики"
+	desc = "Стандартный контейнер для транспортировки грузов. Этот принадлежит Космологистике - грузотранспортной компании СССП, используемой в пространствах других космических государств."
+	icon_state = "kosmologistika"
+
+/obj/structure/shipping_container/kosmologistika/corrosion
+	icon_state = "kosmologistika_corrosion"
+	desc = "Стандартный контейнер для транспортировки грузов. Этот принадлежит Космологистике - грузотранспортной компании СССП, используемой в пространствах других космических государств. Сейчас это старье может разве что послужить временным убежищем."
+
+/obj/structure/shipping_container/nanotrasen
+	name = "\improper грузовой контейнер корпорации Нанотрейзен"
+	desc = "Стандартный контейнер для транспортировки грузов. Этот промаркирован логотипом Нанотрейзен, поэтому внутри может быть что угодно."
+	icon_state = "nanotrasen"
+
+/obj/structure/shipping_container/nanotrasen/corrosion
+	icon_state = "nanotrasen_corrosion"
+	desc = "Стандартный контейнер для транспортировки грузов. Этот промаркирован логотипом Нанотрейзен, поэтому внутри может быть что угодно. Учитывая его состояние, вы вряд ли найдете что-то стоящее."
+
+/obj/structure/shipping_container/deforest
+	name = "\improper грузовой контейнер медицинской корпорации ДеФорест"
+	desc = "Стандартный контейнер для транспортировки грузов. Этот принадлежит ДеФорест, внутри него - медицинское оборудование."
+	icon_state = "deforest"
+
+/obj/structure/shipping_container/deforest/corrosion
+	icon_state = "deforest_corrosion"
+	desc = "Стандартный контейнер для транспортировки грузов. Этот принадлежит ДеФорест, внутри него - медицинское оборудование. Во всяком случае, было раньше."
+
+/obj/structure/shipping_container/interdyne
+	name = "\improper грузовой контейнер компании Интердайн"
+	desc = "Стандартный контейнер для транспортировки грузов. Этот принадлежит фармкомпании Интердайн и используется для перевозки исключительно лицензированных препаратов."
+	icon_state = "interdyne"
+
+/obj/structure/shipping_container/interdyne/corrosion
+	icon_state = "interdyne_corrosion"
+	desc = "Стандартный контейнер для транспортировки грузов. Этот принадлежит фармкомпании Интердайн и используется для перевозки исключительно лицензированных препаратов. Сейчас в нем ничего нет."
+
+/obj/structure/shipping_container/nakamura
+	name = "\improper грузовой контейнер бюро Накимура"
+	desc = "Стандартный контейнер для транспортировки грузов. Такие используются инженерным бюро Накимура и перевозят оборудование для тяжелой промышленности."
+	icon_state = "nakamura"
+
+/obj/structure/shipping_container/nakamura/corrosion
+	icon_state = "nakamura_corrosion"
+	desc = "Стандартный контейнер для транспортировки грузов. Такие используются инженерным бюро Накимура и перевозят оборудование для тяжелой промышленности. Сейчас это лишь проржавевший остов."
+
+/obj/structure/shipping_container/nthi
+	name = "\improper грузовой контейнер ГДпНТ"
+	desc = "Стандартный контейнер для транспортировки грузов. Этот принадлежит Горнодобывающему подразделению Нанотрейзен, которое специализируется на разработке и добыче полезных ископаемых."
+	icon_state = "nthi"
+
+/obj/structure/shipping_container/nthi/corrosion
+	icon_state = "nthi_corrosion"
+	desc = "Стандартный контейнер для транспортировки грузов. Этот принадлежит Горнодобывающему подразделению Нанотрейзен, которое специализируется на разработке и добыче полезных ископаемых. Сейчас в нем ничего нет."
+
+//Syndies
+/obj/structure/shipping_container/cybersun
+	name = "\improper грузовой контейнер корпорации Киберсана"
+	desc = "Стандартный контейнер для транспортировки грузов. На нем виден логотип Киберсана, поэтому внутри него может находится все что угодно."
+	icon_state = "cybersun"
+
+/obj/structure/shipping_container/cybersun/corrosion
+	icon_state = "cybersun_corrosion"
+	desc = "Стандартный контейнер для транспортировки грузов. На нем виден логотип Киберсана, поэтому внутри него может находится все что угодно. Не стоит даже пытаться его вскрывать."
+
+/obj/structure/shipping_container/donk_co
+	name = "\improper грузовой контейнер Донк&Софт"
+	desc = "Стандартный контейнер для транспортировки грузов. В подобных перевозят всю продукцию Донк&Софт, чаще всего - Donk Pockets."
+	icon_state = "donk"
+
+/obj/structure/shipping_container/donk_co/corrosion
+	icon_state = "donk_corrosion"
+	desc = "Стандартный контейнер для транспортировки грузов. В подобных перевозят всю продукцию Донк&Софт, чаще всего - Donk Pockets. В этом ржавом контейнере ничего не осталось."
+
+/obj/structure/shipping_container/gorlex
+	name = "\improper грузовой контейнер корпорации Горлекс"
+	desc = "Стандартный контейнер для транспортировки грузов. Этот промаркирован логотипом корпорации Горлекс, а значит внутри может быть только одно - военные преступления."
+	icon_state = "gorlex"
+
+/obj/structure/shipping_container/gorlex/corrosion
+	icon_state = "gorlex_corrosion"
+	desc = "Стандартный контейнер для транспортировки грузов. Этот промаркирован логотипом корпорации Горлекс, а значит внутри может быть только одно - военные преступления. Но даже их вам не удастся найти в этом древнем контейнере."
+
+/obj/structure/shipping_container/desert_nt
+	icon_state = "nanotrasen_corrosion_1"
+
+/obj/structure/shipping_container/desert_other
+	icon_state = "gorlex_corrosion_1"
+
+/obj/structure/shipping_container/desert_nt/Initialize(mapload)
+	. = ..()
+	icon_state = "nanotrasen_corrosion_[rand(1,3)]"
+	AddComponent(/datum/component/largetransparency, 0, 1, 2, 0)
+	bound_width = 96
+	bound_height = 32
+	desc = "Стандартный контейнер для транспортировки грузов. Истертый логотип Нанотрейзен все еще узнаваем, а это значит, что внутри может быть все что угодно. Хотя, учитывая его состояние, вы вряд ли найдете что-то стоящее."
+
+/obj/structure/shipping_container/desert_other/Initialize(mapload)
+	. = ..()
+	var/list/container_type = list("gorlex_corrosion", "donk_corrosion", "kosmologistika_corrosion", "conarex_corrosion", "cybersun_corrosion", "deforest_corrosion", "interdyne_corrosion", "nakamura_corrosion", "nthi_corrosion")
+	icon_state = "[pick(container_type)]_[rand(1,3)]"
+	AddComponent(/datum/component/largetransparency, 0, 1, 2, 0)
+	bound_width = 96
+	bound_height = 32
+	desc = "Стандартный контейнер для транспортировки грузов. Маркировочный логотип давно стерся и о его бывших владельцах остается лишь гадать. В любом случае, в этом проржавевшем контейнере не осталось ничего полезного."
+
+/obj/structure/nt_ship
+	name = "Десантный корабль Нанотрейзен"
+	desc = "Многофункциональный десантный корабль, разработанный Департаментом Защиты Активов для проведения быстрых штурмовых операций. На этом судне опозновательные знаки Отдела Специальных Операций системы Эпсилон Эридана."
+	icon = 'modular_ss220/dunes_map/icons/nt_shuttle.dmi'
+	icon_state = "nt_ship_down"
+	max_integrity = INFINITY
+	density = TRUE
+	anchored = TRUE
+	layer = ABOVE_ALL_MOB_LAYER
+
+/obj/structure/nt_ship/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/largetransparency, 0, 1, 3, 0)
+	bound_width = 128
+	bound_height = 64
+
+/obj/structure/nt_ship/open
+	icon_state = "nt_ship_down_open"
+
+/obj/structure/nt_ship/fly
+	icon_state = "nt_ship"
+
+/obj/structure/nt_ship/fly/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/largetransparency, 0, 1, 3, 0)
+	bound_width = 128
+	bound_height = 64
+	animate(src, pixel_y = 10, time = 40, loop = -1, easing = SINE_EASING)
+	animate(pixel_y = 0, time = 40, loop = -1, easing = SINE_EASING)
+
+/obj/structure/nt_ship/fly/fly_open
+	icon_state = "nt_ship_open"
+
+/obj/item/organ/internal/cyberimp/chest/hydration/hardened
+	name = "Hardened Hydration pump implant"
+	desc = "A military-grade version of the standard implant, for more elite forces."
+	emp_proof = TRUE
+
+/obj/structure/mirror/magic/kidan
+	name = "Жучье зеркало"
+	desc = "Тут могло бы быть ваше описани"
+	actually_magical = FALSE
+	race_list = list("Kidan")
+
+/obj/structure/closet/syndicate/nuclear/duna
+	name = "armoury closet"
+	desc = "It's a storage unit for a Syndicate boarding party."
+
+/obj/structure/closet/syndicate/nuclear/populate_contents()
+	new /obj/item/ammo_box/magazine/m10mm(src)
+	new /obj/item/ammo_box/magazine/m10mm(src)
+	new /obj/item/ammo_box/magazine/m10mm(src)
+	new /obj/item/ammo_box/magazine/smgm45(src)
+	new /obj/item/ammo_box/magazine/smgm45(src)
+	new /obj/item/ammo_box/magazine/uzim9mm(src)
+	new /obj/item/storage/box/teargas(src)
+	new /obj/item/storage/box/flashbangs(src)
+	new /obj/item/storage/backpack/duffel/syndie/med(src)
+	new /obj/item/tank/jetpack/oxygen/harness(src)
+	new /obj/item/gun/projectile/automatic/shotgun/bulldog(src)
+	new /obj/item/gun/projectile/automatic/shotgun/bulldog(src)
+	new /obj/item/gun/projectile/automatic/c20r(src)
+	new /obj/item/gun/projectile/automatic/c20r(src)
+	new /obj/item/gun/projectile/automatic/mini_uzi(src)
+
+/obj/effect/portal/to_boss
+	icon_state = "portal-syndicate"
+	var/target_x = 202
+	var/target_y = 324
+	var/target_z = 3
+
+/obj/effect/portal/to_boss/New(loc, turf/_target, obj/creation_object, lifespan = 900, mob/creation_mob, create_sparks = TRUE)
+	. = ..()
+	target = locate(target_x, target_y, target_z)

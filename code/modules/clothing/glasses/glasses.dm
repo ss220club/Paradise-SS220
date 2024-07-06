@@ -103,13 +103,13 @@
 
 /obj/item/clothing/glasses/meson/equipped(mob/user, slot, initial)
 	. = ..()
-	if(active_on_equip && slot == SLOT_HUD_GLASSES)
-		ADD_TRAIT(user, TRAIT_MESON_VISION, "meson_glasses[UID()]")
+	// if(active_on_equip && slot == SLOT_HUD_GLASSES)
+	// 	ADD_TRAIT(user, TRAIT_MESON_VISION, "meson_glasses[UID()]")
 
 /obj/item/clothing/glasses/meson/dropped(mob/user)
 	. = ..()
-	if(user)
-		REMOVE_TRAIT(user, TRAIT_MESON_VISION, "meson_glasses[UID()]")
+	// if(user)
+	// 	REMOVE_TRAIT(user, TRAIT_MESON_VISION, "meson_glasses[UID()]")
 
 /obj/item/clothing/glasses/meson/night
 	name = "night vision optical meson scanner"

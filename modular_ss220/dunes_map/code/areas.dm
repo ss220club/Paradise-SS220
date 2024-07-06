@@ -80,6 +80,10 @@
 	name = "\improper Пустыня - Шаттл"
 	icon_state = "unknown"
 
+/area/awaymission/arrakis/outside/syndi_shuttle
+	name = "\improper Пустыня - Шаттл Синдиката"
+	icon_state = "unknown"
+
 /area/awaymission/arrakis/cave
 	name = "\improper Пустыня - Скалы"
 	dynamic_lighting = DYNAMIC_LIGHTING_FORCED
