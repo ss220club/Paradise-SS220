@@ -10,8 +10,6 @@
 	. = ..()
 	basic_modules |= list(
 		/obj/item/lightreplacer/cyborg,
-		/obj/item/inflatable/cyborg,
-		/obj/item/inflatable/cyborg/door,
 		/obj/item/gps/cyborg,
 		)
 
