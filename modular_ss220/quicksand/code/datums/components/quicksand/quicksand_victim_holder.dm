@@ -13,8 +13,9 @@
 /datum/quicksand_victim_holder/New(mob/living/victim, list/planned_stages)
 	src.victim = victim
 	src.planned_stages = planned_stages
-	move_to_next_stage()
+	RegisterSignal(victim, COMSIG_ATOM_ATTACK_HAND, PROC_REF(on_attack_hand))
 	RegisterSignal(victim, COMSIG_LIVING_RESIST, PROC_REF(on_victim_resist))
+	move_to_next_stage()
 
 /datum/quicksand_victim_holder/Destroy(force, ...)
 	if(stage_change_timer_id)
@@ -29,9 +30,33 @@
 /datum/quicksand_victim_holder/proc/get_victim()
 	return victim
 
+/datum/quicksand_victim_holder/proc/on_attack_hand(atom/target, mob/user)
+	SIGNAL_HANDLER
+
+	if(user.a_intent != INTENT_HELP || user == victim)
+		return
+
+	INVOKE_ASYNC(src, PROC_REF(handle_attack_hand), user)
+	return COMPONENT_CANCEL_ATTACK_CHAIN
+
+/datum/quicksand_victim_holder/proc/handle_attack_hand(mob/user)
+	to_chat(user, span_notice("Ты пытаешься помочь [victim] выбраться из зыбучих песков"))
+	to_chat(victim, span_notice("[user] пытается помочь тебе выбраться из зыбучих песков"))
+	if(!do_after(user, current_stage.resist_duration, TRUE, user))
+		return
+
+	if(!prob(current_stage.assist_chance))
+		to_chat(user, span_notice("[victim] выскальзывает у тебя из рук, и все еще остается в песках"))
+		return
+
+	move_to_previous_stage()
+
 /datum/quicksand_victim_holder/proc/on_victim_resist(mob/living/resisting_victim)
 	SIGNAL_HANDLER
 
+	INVOKE_ASYNC(src, PROC_REF(handle_resisting), resisting_victim)
+
+/datum/quicksand_victim_holder/proc/handle_resisting(mob/living/resisting_victim)
 	to_chat(resisting_victim, span_notice("Ты пытаешься выбраться из зыбучих песков"))
 	if(!do_after(resisting_victim, current_stage.resist_duration, FALSE, resisting_victim))
 		return
@@ -81,6 +106,7 @@
 	PRIVATE_PROC(TRUE)
 
 	remove_current_stage()
+	UnregisterSignal(victim, COMSIG_LIVING_RESIST)
 	SEND_SIGNAL(src, COMSIG_QUICKSAND_VICTIM_RELEASED, victim)
 	victim = null
 

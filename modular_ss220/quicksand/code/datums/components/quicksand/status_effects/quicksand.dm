@@ -8,11 +8,13 @@
 /datum/status_effect/quicksand_stage_1/on_apply()
 	ADD_TRAIT(owner, TRAIT_IMMOBILIZED, id)
 	ADD_TRAIT(owner, TRAIT_FORCED_STANDING, id)
+	ADD_TRAIT(owner, TRAIT_IMMOVABLE, id)
 	return TRUE
 
 /datum/status_effect/quicksand_stage_1/on_remove()
 	REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, id)
 	REMOVE_TRAIT(owner, TRAIT_FORCED_STANDING, id)
+	REMOVE_TRAIT(owner, TRAIT_IMMOVABLE, id)
 
 /atom/movable/screen/alert/status_effect/quicksand_stage_1
 	name = "Зыбучие пески"
@@ -30,11 +32,13 @@
 /datum/status_effect/quicksand_stage_2/on_apply()
 	ADD_TRAIT(owner, TRAIT_IMMOBILIZED, id)
 	ADD_TRAIT(owner, TRAIT_FORCED_STANDING, id)
+	ADD_TRAIT(owner, TRAIT_IMMOVABLE, id)
 	return TRUE
 
 /datum/status_effect/quicksand_stage_2/on_remove()
 	REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, id)
 	REMOVE_TRAIT(owner, TRAIT_FORCED_STANDING, id)
+	REMOVE_TRAIT(owner, TRAIT_IMMOVABLE, id)
 
 /atom/movable/screen/alert/status_effect/quicksand_stage_2
 	name = "Зыбучие пески"
@@ -55,6 +59,7 @@
 	ADD_TRAIT(owner, TRAIT_MUTE, id)
 	ADD_TRAIT(owner, TRAIT_FORCED_STANDING, id)
 	ADD_TRAIT(owner, TRAIT_CANT_BREATH_FROM_ENVIRONMENT, id)
+	ADD_TRAIT(owner, TRAIT_IMMOVABLE, id)
 	owner.become_blind(id)
 	return TRUE
 
@@ -64,6 +69,7 @@
 	REMOVE_TRAIT(owner, TRAIT_MUTE, id)
 	REMOVE_TRAIT(owner, TRAIT_FORCED_STANDING, id)
 	REMOVE_TRAIT(owner, TRAIT_CANT_BREATH_FROM_ENVIRONMENT, id)
+	REMOVE_TRAIT(owner, TRAIT_IMMOVABLE, id)
 	owner.cure_blind(id)
 
 /datum/status_effect/quicksand_stage_3/tick()

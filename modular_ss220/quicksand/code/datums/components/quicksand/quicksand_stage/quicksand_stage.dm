@@ -7,6 +7,8 @@
 	var/resist_chance = 50
 	/// Amount of time resist `do_after` will take
 	var/resist_duration = 1 SECONDS
+	/// Chance in percent of another mob to successfully help to remove this stage from the victim when pulling it.
+	var/assist_chance = 100
 	/// Chance in percent to fail critically and progress to next stage
 	var/critical_failure_chance = 50
 	/// Message that victim recieves when stage is applied

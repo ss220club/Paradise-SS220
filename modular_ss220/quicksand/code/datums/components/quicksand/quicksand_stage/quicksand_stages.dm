@@ -2,6 +2,7 @@
 	duration = 3 SECONDS
 	resist_chance = 50
 	resist_duration = 3 SECONDS
+	assist_chance = 50
 	critical_failure_chance = 50
 	on_apply_message = "Твои ноги засосало в зыбучие пески!"
 	on_successful_resist_message = "Ты освобождаешь свои ноги и выбираешься из зыбучих песков."
@@ -13,6 +14,7 @@
 	duration = 3 SECONDS
 	resist_chance = 25
 	resist_duration = 3 SECONDS
+	assist_chance = 25
 	critical_failure_chance = 25
 	on_apply_message = "Какой ужас! Тебя по грудь поглотили зыбучие пески!"
 	on_successful_resist_message = "Тебе удалось освободить свой торс!"
@@ -24,6 +26,7 @@
 	duration = 3 SECONDS
 	resist_chance = 5
 	resist_duration = 3 SECONDS
+	assist_chance = 10
 	critical_failure_chance = 25
 	on_apply_message = "Песок засыпается тебе прямо в рот, попадает в глаза и уши. Кажется, это конец."
 	on_successful_resist_message = "Ты уже думал что погибнешь, но каким-то чудом освобождаешь свою голову из песков!"
