@@ -284,7 +284,7 @@
 /turf/simulated/floor/wood/fancy/cherry,
 /area/centcom/ss220/admin2)
 "ajH" = (
-/turf/simulated/wall/mineral/titanium,
+/turf/simulated/wall/indestructible/whiteshuttle,
 /area/shuttle/transport)
 "ajI" = (
 /obj/machinery/mech_bay_recharge_port/upgraded,
@@ -3500,7 +3500,9 @@
 /area/syndicate_mothership/control)
 "crp" = (
 /turf/simulated/wall/mineral/titanium,
-/area/space/centcomm)
+/area/awaymission/black_mesa/black_ops_server{
+	name = "Шаттл ТСФ"
+	})
 "crr" = (
 /obj/effect/turf_decal/siding/black{
 	dir = 8
@@ -4405,6 +4407,10 @@
 "cXW" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
+	},
+/obj/effect/bump_teleporter{
+	id = "CC_desant1";
+	id_target = "desant1"
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/ruin/powered)
@@ -5968,7 +5974,9 @@
 "dTS" = (
 /obj/machinery/hologram/holopad,
 /turf/simulated/floor/mineral/plastitanium/red,
-/area/space/centcomm)
+/area/awaymission/black_mesa/black_ops_server{
+	name = "Шаттл СССП"
+	})
 "dUl" = (
 /obj/structure/closet/secure_closet/personal/cabinet,
 /obj/item/clothing/head/kitty,
@@ -14134,7 +14142,9 @@
 "iWV" = (
 /obj/item/flag/ussp,
 /turf/simulated/floor/mineral/plastitanium/red,
-/area/space/centcomm)
+/area/awaymission/black_mesa/black_ops_server{
+	name = "Шаттл СССП"
+	})
 "iXk" = (
 /obj/structure/mirror{
 	pixel_x = 30
@@ -15153,7 +15163,9 @@
 "jJg" = (
 /obj/item/flag/solgov,
 /turf/simulated/floor/mineral/titanium/blue,
-/area/space/centcomm)
+/area/awaymission/black_mesa/black_ops_server{
+	name = "Шаттл ТСФ"
+	})
 "jJn" = (
 /obj/structure/platform{
 	dir = 1;
@@ -18223,6 +18235,12 @@
 	icon_state = "darkyellowaltstrip"
 	},
 /area/syndicate_mothership/control)
+"lNY" = (
+/obj/effect/bump_teleporter{
+	id = "desant1"
+	},
+/turf/simulated/floor/mineral/titanium,
+/area/centcom/ss220/admin1)
 "lOi" = (
 /obj/effect/decal/syndie_logo{
 	icon_state = "logo16"
@@ -18298,6 +18316,16 @@
 "lPt" = (
 /turf/simulated/wall/indestructible/opsglass,
 /area/syndicate_mothership/control)
+"lPw" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/obj/effect/bump_teleporter{
+	id = "CC_desant2";
+	id_target = "desant1"
+	},
+/turf/simulated/floor/plasteel/dark,
+/area/ruin/powered)
 "lPV" = (
 /obj/machinery/door/poddoor/preopen,
 /turf/simulated/floor/plasteel/dark{
@@ -19722,7 +19750,9 @@
 	},
 /mob/living/carbon/human,
 /turf/simulated/floor/mineral/plastitanium/red,
-/area/space/centcomm)
+/area/awaymission/black_mesa/black_ops_server{
+	name = "Шаттл СССП"
+	})
 "mRk" = (
 /obj/machinery/door/poddoor/multi_tile/four_tile_hor{
 	id_tag = "nukeop_ready"
@@ -21861,7 +21891,9 @@
 	},
 /mob/living/carbon/human,
 /turf/simulated/floor/mineral/titanium/blue,
-/area/space/centcomm)
+/area/awaymission/black_mesa/black_ops_server{
+	name = "Шаттл ТСФ"
+	})
 "ooR" = (
 /obj/machinery/sleeper{
 	dir = 1
@@ -24510,6 +24542,12 @@
 	name = "sand"
 	},
 /area/syndicate_mothership/outside)
+"qiY" = (
+/obj/structure/shuttle/engine/propulsion/burst{
+	dir = 1
+	},
+/turf/simulated/wall/indestructible/whiteshuttle,
+/area/shuttle/transport)
 "qjo" = (
 /obj/effect/turf_decal/siding/red{
 	color = "#aa2222";
@@ -30298,11 +30336,10 @@
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/supply)
 "uam" = (
-/obj/structure/shuttle/engine/propulsion/burst{
-	dir = 1
-	},
 /turf/simulated/wall/mineral/titanium,
-/area/shuttle/transport)
+/area/awaymission/black_mesa/black_ops_server{
+	name = "Шаттл СССП"
+	})
 "uaq" = (
 /obj/structure/holosign/barrier,
 /turf/simulated/floor/plating/asteroid/ancient{
@@ -31678,7 +31715,9 @@
 /area/centcom/ss220/admin3)
 "vbF" = (
 /turf/simulated/floor/mineral/plastitanium/red,
-/area/space/centcomm)
+/area/awaymission/black_mesa/black_ops_server{
+	name = "Шаттл СССП"
+	})
 "vce" = (
 /turf/simulated/wall/indestructible/fakeglass,
 /area/centcom/ss220/admin1)
@@ -31972,7 +32011,9 @@
 "vpl" = (
 /obj/machinery/hologram/holopad,
 /turf/simulated/floor/mineral/titanium/blue,
-/area/space/centcomm)
+/area/awaymission/black_mesa/black_ops_server{
+	name = "Шаттл ТСФ"
+	})
 "vpo" = (
 /turf/space/transit/horizontal{
 	dir = 4
@@ -34872,7 +34913,9 @@
 /area/centcom/ss220/admin2)
 "xew" = (
 /turf/simulated/floor/mineral/titanium/blue,
-/area/space/centcomm)
+/area/awaymission/black_mesa/black_ops_server{
+	name = "Шаттл ТСФ"
+	})
 "xeD" = (
 /obj/effect/landmark/damageturf,
 /turf/simulated/floor/plasteel/dark{
@@ -48399,18 +48442,18 @@ nKL
 aSu
 mZR
 nPO
-uam
-ajH
-ajH
-ajH
-ajH
-jlp
-jlp
-ajH
-ajH
-ajH
-ajH
-ajH
+olw
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
 adJ
 adJ
 adJ
@@ -48656,18 +48699,18 @@ qBk
 aSu
 aTe
 mgd
-ajH
-dQy
-vCT
-ajH
-gco
-mQn
-qCW
-uEV
-ajH
-tzn
-eTi
-ajH
+olw
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
 adJ
 adJ
 adJ
@@ -48913,18 +48956,18 @@ sUi
 aSu
 uKn
 rhB
-irV
-dFl
-dFl
-mqs
-nIh
-nIh
-nIh
-nIh
-heh
-dFl
-uik
-jlp
+olw
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
 adJ
 adJ
 adJ
@@ -49170,18 +49213,18 @@ sUi
 aqp
 uKn
 rLQ
-ajH
-dhg
-tgd
-ajH
-qRY
-bsC
-wgX
-lVw
-ajH
-dMg
-aXf
-ajH
+olw
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
 adJ
 adJ
 adJ
@@ -49427,18 +49470,18 @@ qBk
 aqp
 hZc
 nPO
-uam
-ajH
-ajH
-ajH
-ajH
-ajH
-ajH
-ajH
-ajH
-ajH
-ajH
-ajH
+olw
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
+adJ
 adJ
 adJ
 adJ
@@ -53446,7 +53489,7 @@ ngk
 uRK
 wap
 cXW
-uRK
+lPw
 wap
 ngk
 gtc
@@ -65275,7 +65318,7 @@ lJO
 uUb
 uUb
 snC
-snC
+ejA
 tcR
 lLq
 kxZ
@@ -65539,7 +65582,7 @@ snC
 snC
 snC
 snC
-snC
+ejA
 hWD
 jgz
 jgz
@@ -69521,37 +69564,37 @@ kXh
 kXh
 kXh
 adJ
-vpo
-vpo
-vpo
-vpo
-vpo
-vpo
-vpo
-vpo
-vpo
-vpo
-vpo
-vpo
-vpo
-vpo
-vpo
-vpo
-vpo
-vpo
-vpo
-vpo
-vpo
-vpo
-vpo
-vpo
-vpo
-vpo
-vpo
-vpo
-vpo
-vpo
-vpo
+lgH
+lgH
+lgH
+lgH
+lgH
+lgH
+lgH
+lgH
+lgH
+lgH
+lgH
+lgH
+lgH
+lgH
+lgH
+lgH
+lgH
+lgH
+lgH
+lgH
+lgH
+lgH
+lgH
+lgH
+lgH
+lgH
+lgH
+lgH
+lgH
+lgH
+lgH
 adJ
 adJ
 adJ
@@ -74306,11 +74349,11 @@ adJ
 adJ
 adJ
 adJ
-crp
-crp
-crp
-crp
-crp
+uam
+uam
+uam
+uam
+uam
 adJ
 adJ
 adJ
@@ -74563,11 +74606,11 @@ adJ
 adJ
 adJ
 adJ
-crp
+uam
 vbF
 vbF
 vbF
-crp
+uam
 adJ
 adJ
 adJ
@@ -74820,11 +74863,11 @@ adJ
 adJ
 adJ
 adJ
-crp
+uam
 mRf
 dTS
 iWV
-crp
+uam
 adJ
 adJ
 adJ
@@ -75077,11 +75120,11 @@ adJ
 adJ
 adJ
 adJ
-crp
+uam
 vbF
 vbF
 vbF
-crp
+uam
 adJ
 adJ
 adJ
@@ -75334,11 +75377,11 @@ adJ
 adJ
 adJ
 adJ
-crp
-crp
-crp
-crp
-crp
+uam
+uam
+uam
+uam
+uam
 adJ
 adJ
 adJ
@@ -76407,7 +76450,7 @@ uJb
 uJb
 iRI
 lPm
-dOQ
+lNY
 lPm
 iRI
 uJb
@@ -89910,18 +89953,18 @@ adJ
 adJ
 adJ
 adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
+olw
+olw
+olw
+olw
+olw
+olw
+olw
+olw
+olw
+olw
+olw
+olw
 adJ
 adJ
 adJ
@@ -90166,20 +90209,20 @@ adJ
 adJ
 adJ
 adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
+olw
+qiY
+ajH
+ajH
+ajH
+ajH
+jlp
+jlp
+ajH
+ajH
+ajH
+ajH
+ajH
+olw
 adJ
 adJ
 adJ
@@ -90423,20 +90466,20 @@ adJ
 adJ
 adJ
 adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
+olw
+ajH
+dQy
+vCT
+ajH
+gco
+mQn
+qCW
+uEV
+ajH
+tzn
+eTi
+ajH
+olw
 adJ
 adJ
 adJ
@@ -90680,20 +90723,20 @@ adJ
 adJ
 adJ
 adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
+olw
+irV
+dFl
+dFl
+mqs
+nIh
+nIh
+nIh
+nIh
+heh
+dFl
+uik
+jlp
+olw
 adJ
 adJ
 adJ
@@ -90937,20 +90980,20 @@ adJ
 adJ
 adJ
 adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
+olw
+ajH
+dhg
+tgd
+ajH
+qRY
+bsC
+wgX
+lVw
+ajH
+dMg
+aXf
+ajH
+olw
 adJ
 adJ
 adJ
@@ -91194,20 +91237,20 @@ adJ
 adJ
 adJ
 adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
+olw
+qiY
+ajH
+ajH
+ajH
+ajH
+ajH
+ajH
+ajH
+ajH
+ajH
+ajH
+ajH
+olw
 adJ
 adJ
 adJ
@@ -91452,18 +91495,18 @@ adJ
 adJ
 adJ
 adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
-adJ
+olw
+olw
+olw
+olw
+olw
+olw
+olw
+olw
+olw
+olw
+olw
+olw
 adJ
 adJ
 adJ
