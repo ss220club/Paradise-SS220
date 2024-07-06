@@ -78,7 +78,6 @@
 	var/tmp/has_opaque_atom = FALSE
 
 /turf/Initialize(mapload)
-	AddComponent(/datum/component/quicksand, 100, 100)
 	SHOULD_CALL_PARENT(FALSE)
 	if(initialized)
 		stack_trace("Warning: [src]([type]) initialized multiple times!")
