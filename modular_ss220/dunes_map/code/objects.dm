@@ -749,7 +749,7 @@
 	lefthand_file = 'modular_ss220/dunes_map/icons/cube_left.dmi'
 	righthand_file = 'modular_ss220/dunes_map/icons/cube_right.dmi'
 	var/charged_type = "charged"
-	var/list/mob_name_to_charged_type = list("Миднайт Блэк" = "midn", "Муниверс Нормандия" = "norm")
+	var/list/mob_name_to_charged_type = list("Миднайт Блэк" = "midn", "Мунивёрс Нормандия" = "norm")
 
 /obj/item/stock_parts/cell/cube/process()
 	if(percent() == 100)
@@ -770,6 +770,10 @@
 		return
 
 	charged_type = mob_name_to_charged_type[user.name] || initial(charged_type)
+	icon_state = charged_type
+	item_state = charged_type
+
+	user.regenerate_icons()
 
 /obj/item/stock_parts/cell/cube/dropped(mob/user, silent)
 	. = ..()
