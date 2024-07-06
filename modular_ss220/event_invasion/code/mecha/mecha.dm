@@ -673,6 +673,10 @@
 	if(!owner || !parsed_chassis)
 		return
 
+	if(parsed_chassis.nomad_state != NOMAD_DOWN)
+		to_chat(owner, "<span class='warning'>Вы не можете десантироваться пока \"Кочевник\" не в сидячем положении.</span>")
+		return
+
 	parsed_chassis.drop_pod_launch(parsed_chassis.eyeobj.loc)
 
 /datum/action/innate/mecha/drop_pod
@@ -688,6 +692,10 @@
 
 	if(!parsed_chassis.eyeobj)
 		parsed_chassis.CreateEye()
+
+	if(parsed_chassis.nomad_state != NOMAD_DOWN)
+		to_chat(owner, "<span class='warning'>Вы не можете десантироваться пока \"Кочевник\" не в сидячем положении.</span>")
+		return
 
 	if(in_use)
 		parsed_chassis.remove_eye_control(owner)
