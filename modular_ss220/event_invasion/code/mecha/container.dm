@@ -8,7 +8,7 @@
 	layer = 5.5
 	bound_x = -32
 	bound_y = -32
-	pixel_x = 10
+	pixel_y = 8
 	density = TRUE
 	max_integrity = 10000
 	opacity = FALSE
@@ -27,9 +27,6 @@
 	QDEL_NULL(smoke)
 	return ..()
 
-/obj/structure/container/syndie/attack_hand(mob/living/user)
-	open_container()
-
 /obj/structure/container/syndie/proc/prime_smoke()
 	playsound(src.loc, 'sound/effects/smoke.ogg', 50, 1, -3)
 	alpha = 0
@@ -46,7 +43,9 @@
 	qdel(src)
 
 /obj/structure/container/syndie/proc/open_container()
-	new /obj/mecha/combat/nomad(loc)
+	var/turf/container_turf = get_turf(src)
+	for(var/atom/movable/content_atom in src) //Does the same as below but removes the mobs first to avoid forcing players to step on items in the locker (e.g. soap) when opened.
+		content_atom.forceMove(container_turf)
 	new /obj/effect/container_wall/bottom(loc)
 	new /obj/effect/container_wall/up(locate(loc.x, loc.y + 2, loc.z))
 	new /obj/effect/container_wall/down(locate(loc.x, loc.y - 2, loc.z))
