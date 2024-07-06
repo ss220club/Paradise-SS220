@@ -31,14 +31,14 @@
 		/obj/item/gun/projectile/automatic/ar
 	)
 	bio_chips = list(
-		/obj/item/bio_chip/mindshield,
-		/obj/item/bio_chip/dust
+		/obj/item/bio_chip/mindshield
 	)
 	cybernetic_implants = list(
 		/obj/item/organ/internal/cyberimp/chest/nutriment/plus/hardened,
 		/obj/item/organ/internal/cyberimp/arm/combat/centcom,
 		/obj/item/organ/internal/cyberimp/brain/anti_stam/hardened,
-		/obj/item/organ/internal/eyes/cybernetic/xray/hardened
+		/obj/item/organ/internal/eyes/cybernetic/xray/hardened,
+		/obj/item/organ/internal/cyberimp/chest/hydration/hardened
 	)
 
 /datum/outfit/admin/tanya/tanya2
@@ -192,6 +192,9 @@
 		/obj/item/organ/internal/cyberimp/arm/combat/centcom,
 		/obj/item/organ/internal/cyberimp/chest/hydration/hardened
 	)
+	bio_chips = list(
+		/obj/item/bio_chip/mindshield
+	)
 
 /datum/outfit/admin/syndicate/midnight
 	name = "Миднайт Блэк"
@@ -280,3 +283,10 @@
 	head = /obj/item/clothing/head/ntrep
 	mask = /obj/item/clothing/mask/gas/navy_officer
 	suit = /obj/item/clothing/suit/space/deathsquad/officer/field/cloak_nt
+
+/datum/outfit/job/ntnavyofficer
+	cybernetic_implants = list(
+		/obj/item/organ/internal/cyberimp/chest/nutriment/plus/hardened,
+		/obj/item/organ/internal/cyberimp/arm/combat/centcom,
+		/obj/item/organ/internal/cyberimp/chest/hydration/hardened
+	)

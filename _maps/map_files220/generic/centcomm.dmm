@@ -1405,6 +1405,11 @@
 	icon_state = "dark"
 	},
 /area/ghost_bar)
+"aXf" = (
+/obj/structure/table/reinforced,
+/obj/item/clothing/glasses/sunglasses/big,
+/turf/simulated/floor/mineral/titanium,
+/area/shuttle/transport)
 "aXh" = (
 /obj/structure/table/wood/poker,
 /obj/item/reagent_containers/drinks/bottle/vodka{
@@ -1954,13 +1959,21 @@
 /turf/simulated/floor/wood/fancy/cherry,
 /area/centcom/ss220/admin2)
 "bsC" = (
-/obj/structure/chair/comfy/shuttle{
-	dir = 8
+/obj/structure/table/reinforced{
+	color = "#444444"
 	},
-/obj/machinery/light/spot{
-	dir = 4
+/obj/item/food/snacks/salmonsteak{
+	pixel_y = 2
 	},
-/turf/simulated/floor/mineral/titanium,
+/obj/item/kitchen/utensil/fork{
+	pixel_x = -12;
+	pixel_y = 4
+	},
+/obj/item/reagent_containers/drinks/trophy/gold_cup{
+	pixel_y = 18;
+	pixel_x = 8
+	},
+/turf/simulated/floor/carpet,
 /area/shuttle/transport)
 "btd" = (
 /obj/structure/table/glass,
@@ -4341,6 +4354,17 @@
 	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/shuttle/specops)
+"cWE" = (
+/obj/effect/bump_teleporter{
+	id = "Tanya1";
+	id_target = "outside2"
+	},
+/obj/effect/bump_teleporter{
+	id = "Tanya1";
+	id_target = "outside2"
+	},
+/turf/simulated/floor/mineral/titanium,
+/area/centcom/ss220/admin1)
 "cWW" = (
 /obj/effect/turf_decal/arrows{
 	dir = 1
@@ -4683,9 +4707,11 @@
 	},
 /area/centcom/ss220/admin1)
 "dhg" = (
-/obj/structure/closet/crate,
 /obj/machinery/light/spot{
 	dir = 4
+	},
+/obj/structure/chair/comfy/shuttle{
+	dir = 8
 	},
 /turf/simulated/floor/mineral/titanium,
 /area/shuttle/transport)
@@ -5726,6 +5752,9 @@
 "dMg" = (
 /obj/machinery/light/spot{
 	dir = 4
+	},
+/obj/machinery/computer{
+	dir = 8
 	},
 /turf/simulated/floor/mineral/titanium,
 /area/shuttle/transport)
@@ -7507,7 +7536,9 @@
 	},
 /area/centcom/ss220/general)
 "eTi" = (
-/obj/structure/closet/crate,
+/obj/machinery/computer/shuttle/ferry/request{
+	dir = 1
+	},
 /turf/simulated/floor/mineral/titanium,
 /area/shuttle/transport)
 "eTo" = (
@@ -8662,6 +8693,13 @@
 	icon_state = "dark"
 	},
 /area/syndicate_mothership/cargo)
+"fBJ" = (
+/obj/effect/bump_teleporter{
+	id = "Tanya2";
+	id_target = "outside2"
+	},
+/turf/simulated/floor/mineral/titanium,
+/area/centcom/ss220/admin1)
 "fBM" = (
 /obj/structure/chair/stool,
 /obj/machinery/computer/security/telescreen{
@@ -9412,6 +9450,13 @@
 	},
 /turf/simulated/floor/carpet/red,
 /area/centcom/ss220/admin2)
+"gco" = (
+/obj/structure/bookcase/random,
+/obj/structure/sign/flag/nanotrasen{
+	pixel_x = -32
+	},
+/turf/simulated/floor/carpet/black,
+/area/shuttle/transport)
 "gcw" = (
 /obj/effect/turf_decal/loading_area/white{
 	dir = 4
@@ -11124,8 +11169,10 @@
 	},
 /area/syndicate_mothership/jail)
 "heh" = (
-/obj/structure/chair/comfy/shuttle,
-/turf/simulated/floor/mineral/titanium/blue,
+/obj/machinery/door/airlock/titanium{
+	id_tag = "s_docking_airlock"
+	},
+/turf/simulated/floor/wood/fancy/cherry,
 /area/shuttle/transport)
 "heV" = (
 /obj/structure/sign/securearea{
@@ -13263,7 +13310,7 @@
 /area/syndicate_mothership/outside)
 "itp" = (
 /obj/effect/bump_teleporter{
-	id = "Tanya1";
+	id = "Tanya3";
 	id_target = "outside2"
 	},
 /turf/simulated/floor/mineral/titanium,
@@ -14403,6 +14450,7 @@
 /area/centcom/ss220/jail)
 "jlp" = (
 /obj/effect/spawner/window/shuttle,
+/obj/machinery/door/poddoor/impassable,
 /turf/simulated/floor/plating,
 /area/shuttle/transport)
 "jlJ" = (
@@ -18413,11 +18461,11 @@
 /turf/simulated/floor/plasteel/dark,
 /area/shuttle/administration)
 "lVw" = (
-/obj/structure/closet/crate,
-/obj/machinery/light/spot{
-	dir = 8
+/obj/machinery/photocopier,
+/obj/machinery/light/directional/east{
+	light_power = 0.4
 	},
-/turf/simulated/floor/mineral/titanium,
+/turf/simulated/floor/carpet,
 /area/shuttle/transport)
 "lVF" = (
 /obj/structure/rack,
@@ -19046,6 +19094,18 @@
 "mqf" = (
 /turf/simulated/floor/plating/airless,
 /area/shuttle/administration)
+"mqs" = (
+/obj/machinery/door/airlock/titanium{
+	id_tag = "s_docking_airlock"
+	},
+/obj/machinery/door/poddoor/impassable{
+	id_tag = "traisen_ded"
+	},
+/obj/machinery/door_control/no_emag/west{
+	id = "traisen_ded"
+	},
+/turf/simulated/floor/wood/fancy/cherry,
+/area/shuttle/transport)
 "mqw" = (
 /obj/docking_port/stationary/transit{
 	dir = 4;
@@ -19635,13 +19695,8 @@
 /turf/simulated/floor/mineral/plastitanium,
 /area/syndicate_mothership/outside)
 "mQn" = (
-/obj/structure/chair/comfy/shuttle{
-	dir = 4
-	},
-/obj/machinery/light/spot{
-	dir = 8
-	},
-/turf/simulated/floor/mineral/titanium,
+/obj/structure/chair/comfy/corp,
+/turf/simulated/floor/carpet/black,
 /area/shuttle/transport)
 "mQB" = (
 /obj/machinery/door/airlock/centcom{
@@ -21009,6 +21064,9 @@
 	icon_state = "blackfull"
 	},
 /area/syndicate_mothership)
+"nIh" = (
+/turf/simulated/floor/wood/fancy/cherry,
+/area/shuttle/transport)
 "nID" = (
 /obj/effect/decal/cleanable/glass,
 /obj/item/stack/rods,
@@ -25067,10 +25125,24 @@
 /turf/simulated/wall/mineral/plastitanium,
 /area/shuttle/assault_pod)
 "qCW" = (
-/obj/structure/chair/comfy/shuttle{
-	dir = 4
+/obj/structure/table/reinforced{
+	color = "#444444"
 	},
-/turf/simulated/floor/mineral/titanium,
+/obj/item/paper_bin/nanotrasen{
+	pixel_x = 4;
+	pixel_y = 6
+	},
+/obj/item/pen/multi/gold{
+	pixel_y = 3
+	},
+/obj/item/stamp/centcom{
+	pixel_x = 8;
+	pixel_y = -2
+	},
+/obj/item/clothing/accessory/medal/gold{
+	pixel_x = -10
+	},
+/turf/simulated/floor/carpet/black,
 /area/shuttle/transport)
 "qDf" = (
 /obj/structure/table/reinforced,
@@ -25462,6 +25534,13 @@
 /obj/structure/railing,
 /turf/simulated/floor/plasteel/dark,
 /area/ruin/powered)
+"qRY" = (
+/obj/machinery/economy/vending/boozeomat,
+/obj/machinery/light/directional/east{
+	light_power = 0.4
+	},
+/turf/simulated/floor/carpet,
+/area/shuttle/transport)
 "qSC" = (
 /obj/structure/girder/reinforced,
 /turf/simulated/floor/plating,
@@ -29382,6 +29461,14 @@
 	},
 /turf/simulated/floor/mineral/plastitanium,
 /area/centcom/ss220/admin1)
+"tzn" = (
+/obj/machinery/light/spot{
+	dir = 8
+	},
+/obj/structure/chair/comfy/shuttle,
+/obj/machinery/ai_status_display/north,
+/turf/simulated/floor/mineral/titanium,
+/area/shuttle/transport)
 "tzx" = (
 /obj/mecha/combat/gygax,
 /turf/simulated/floor/plasteel/dark{
@@ -30435,7 +30522,7 @@
 /turf/simulated/floor/plating,
 /area/centcom/ss220/admin1)
 "uik" = (
-/obj/machinery/computer/shuttle/ferry/request{
+/obj/machinery/computer{
 	dir = 1
 	},
 /turf/simulated/floor/mineral/titanium/blue,
@@ -31057,6 +31144,13 @@
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/centcom/ss220/supply)
+"uEV" = (
+/obj/item/kirbyplants,
+/obj/structure/sign/flag/nanotrasen{
+	pixel_x = -32
+	},
+/turf/simulated/floor/carpet/black,
+/area/shuttle/transport)
 "uFa" = (
 /obj/structure/flora/junglebush/large,
 /turf/simulated/floor/grass/jungle/no_creep,
@@ -32384,6 +32478,9 @@
 "vCS" = (
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/shuttle/assault_pod)
+"vCT" = (
+/turf/simulated/floor/mineral/titanium,
+/area/shuttle/transport)
 "vCZ" = (
 /obj/structure/bed{
 	dir = 1
@@ -33280,6 +33377,16 @@
 	},
 /turf/simulated/floor/wood,
 /area/centcom/ss220/court)
+"wgX" = (
+/obj/structure/table/reinforced{
+	color = "#444444"
+	},
+/obj/machinery/chem_dispenser/beer/upgraded{
+	dir = 8;
+	pixel_y = 5
+	},
+/turf/simulated/floor/carpet,
+/area/shuttle/transport)
 "whh" = (
 /turf/simulated/floor/mineral/plastitanium,
 /area/shuttle/syndicate)
@@ -48295,11 +48402,11 @@ nPO
 uam
 ajH
 ajH
-jlp
-ajH
 ajH
 ajH
 jlp
+jlp
+ajH
 ajH
 ajH
 ajH
@@ -48550,15 +48657,15 @@ aSu
 aTe
 mgd
 ajH
-lVw
-qCW
-qCW
-qCW
+dQy
+vCT
+ajH
+gco
 mQn
 qCW
-qCW
-qCW
-dQy
+uEV
+ajH
+tzn
 eTi
 ajH
 adJ
@@ -48809,13 +48916,13 @@ rhB
 irV
 dFl
 dFl
-dFl
-dFl
-dFl
-dFl
-dFl
-dFl
+mqs
+nIh
+nIh
+nIh
+nIh
 heh
+dFl
 uik
 jlp
 adJ
@@ -49066,14 +49173,14 @@ rLQ
 ajH
 dhg
 tgd
-tgd
-tgd
+ajH
+qRY
 bsC
-tgd
-tgd
-tgd
+wgX
+lVw
+ajH
 dMg
-eTi
+aXf
 ajH
 adJ
 adJ
@@ -49323,11 +49430,11 @@ nPO
 uam
 ajH
 ajH
-jlp
 ajH
 ajH
 ajH
-jlp
+ajH
+ajH
 ajH
 ajH
 ajH
@@ -77327,8 +77434,8 @@ iRI
 iRI
 iRI
 iRI
-itp
-itp
+fBJ
+cWE
 itp
 iRI
 iRI
