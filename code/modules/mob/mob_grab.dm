@@ -292,7 +292,7 @@
 			animate(affecting, pixel_x =-shift, pixel_y = 0, 5, 1, LINEAR_EASING)
 
 /obj/item/grab/proc/s_click(atom/movable/screen/S)
-	if(!affecting)
+	if(!affecting || HAS_TRAIT(affecting, TRAIT_IMMOVABLE))
 		return
 	if(state >= GRAB_AGGRESSIVE && HAS_TRAIT(assailant, TRAIT_PACIFISM))
 		to_chat(assailant, "<span class='warning'>You don't want to risk hurting [affecting]!</span>")

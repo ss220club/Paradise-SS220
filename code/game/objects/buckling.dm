@@ -1,6 +1,8 @@
 //Interaction
 /atom/movable/attack_hand(mob/living/user)
 	. = ..()
+	if(.)
+		return TRUE
 	if(can_buckle && has_buckled_mobs())
 		if(length(buckled_mobs) > 1)
 			var/unbuckled = tgui_input_list(user, "Who do you wish to unbuckle?", "Unbuckle Who?", buckled_mobs)
@@ -35,6 +37,9 @@
 /atom/movable/proc/buckle_mob(mob/living/M, force = FALSE, check_loc = TRUE)
 	if(!buckled_mobs)
 		buckled_mobs = list()
+
+	if(HAS_TRAIT(M, TRAIT_IMMOVABLE))
+		return FALSE
 
 	if(!istype(M))
 		return FALSE
@@ -125,7 +130,7 @@
 
 //Wrapper procs that handle sanity and user feedback
 /atom/movable/proc/user_buckle_mob(mob/living/M, mob/user, check_loc = TRUE)
-	if(!in_range(user, src) || !isturf(user.loc) || user.incapacitated() || M.anchored)
+	if(!in_range(user, src) || !isturf(user.loc) || user.incapacitated() || M.anchored || HAS_TRAIT(M, TRAIT_IMMOVABLE))
 		return FALSE
 
 	if(isguardian(user) && (M.loc == user.loc || user.alpha == 60)) //Alpha is for detecting ranged guardians in scout mode

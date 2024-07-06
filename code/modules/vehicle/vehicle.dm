@@ -138,7 +138,7 @@
 
 
 /obj/vehicle/user_buckle_mob(mob/living/M, mob/user)
-	if(user.incapacitated())
+	if(user.incapacitated() || HAS_TRAIT(M, TRAIT_IMMOVABLE))
 		return
 	for(var/atom/movable/A in get_turf(src))
 		if(A.density)
