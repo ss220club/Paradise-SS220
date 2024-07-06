@@ -79,10 +79,10 @@
 				var/obj/loc_as_obj = loc
 				breath = loc_as_obj.handle_internal_lifeform(src, BREATH_VOLUME)
 
-			else if(isturf(loc)) //Breathe from loc as turf
+			else if(isturf(loc) && !HAS_TRAIT(src, TRAIT_CANT_BREATH_FROM_ENVIRONMENT)) //Breathe from loc as turf
 				var/breath_moles = 0
 				if(environment)
-					breath_moles = environment.total_moles()*BREATH_PERCENTAGE
+					breath_moles = environment.total_moles() * BREATH_PERCENTAGE
 
 				breath = loc.remove_air(breath_moles)
 		else //Breathe from loc as obj again

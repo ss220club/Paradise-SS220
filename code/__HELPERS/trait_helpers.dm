@@ -182,12 +182,12 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_NIGHT_VISION		"night_vision"
 #define TRAIT_EMOTE_MUTE		"emote_mute"
 #define TRAIT_PUNCTURE_IMMUNE	"punctureimmune" //prevents RSG syringes from piercing your clothing
-
+#define TRAIT_CANT_BREATH_FROM_ENVIRONMENT "cant_breath_from_environment"
 #define TRAIT_NO_BONES 			"no_bones"
 #define TRAIT_STURDY_LIMBS		"sturdy_limbs"
 #define TRAIT_BURN_WOUND_IMMUNE "burn_immune"
 #define TRAIT_IB_IMMUNE			"ib_immune"
-
+#define TRAIT_QUICKSAND_IMMUNE "quicksand_immune"
 #define TRAIT_COMIC_SANS		"comic_sans"
 #define TRAIT_CHAV				"chav"
 #define TRAIT_NOFINGERPRINTS	"no_fingerprints"
@@ -342,6 +342,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_CANNOT_PULL "pullblocked"
 /// Abstract condition that prevents movement if being pulled and might be resisted against. Handcuffs and straight jackets, basically.
 #define TRAIT_RESTRAINED "restrained"
+/// Prevents default movement by pull, grab etc.
+#define TRAIT_IMMOVABLE "immovable"
 
 ///Traits given by station traits
 #define STATION_TRAIT_BANANIUM_SHIPMENTS "station_trait_bananium_shipments"
