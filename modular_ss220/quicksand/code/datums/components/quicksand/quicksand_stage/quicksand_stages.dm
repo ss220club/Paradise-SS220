@@ -1,5 +1,5 @@
 /datum/quicksand_stage/feet
-	duration = 3 SECONDS
+	duration = 30 SECONDS
 	resist_chance = 50
 	resist_duration = 3 SECONDS
 	assist_chance = 50
@@ -11,7 +11,7 @@
 	on_apply_status_effect = /datum/status_effect/quicksand_stage_1
 
 /datum/quicksand_stage/torso
-	duration = 3 SECONDS
+	duration = 30 SECONDS
 	resist_chance = 25
 	resist_duration = 3 SECONDS
 	assist_chance = 25
@@ -23,7 +23,7 @@
 	on_apply_status_effect = /datum/status_effect/quicksand_stage_2
 
 /datum/quicksand_stage/head
-	duration = 3 SECONDS
+	duration = 30 SECONDS
 	resist_chance = 5
 	resist_duration = 3 SECONDS
 	assist_chance = 10

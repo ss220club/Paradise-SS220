@@ -16,6 +16,7 @@
 	RegisterSignal(victim, COMSIG_ATOM_ATTACK_HAND, PROC_REF(on_attack_hand))
 	RegisterSignal(victim, COMSIG_LIVING_RESIST, PROC_REF(on_victim_resist))
 	move_to_next_stage()
+	randomize_victim_pixel_x_in_sand()
 
 /datum/quicksand_victim_holder/Destroy(force, ...)
 	if(stage_change_timer_id)
@@ -26,6 +27,11 @@
 	planned_stages = null
 
 	return ..()
+
+/datum/quicksand_victim_holder/proc/randomize_victim_pixel_x_in_sand()
+	PRIVATE_PROC(TRUE)
+
+	victim.pixel_x = rand(-10, 10)
 
 /datum/quicksand_victim_holder/proc/get_victim()
 	return victim
@@ -106,6 +112,7 @@
 	PRIVATE_PROC(TRUE)
 
 	remove_current_stage()
+	UnregisterSignal(victim, COMSIG_ATOM_ATTACK_HAND)
 	UnregisterSignal(victim, COMSIG_LIVING_RESIST)
 	SEND_SIGNAL(src, COMSIG_QUICKSAND_VICTIM_RELEASED, victim)
 	victim = null
