@@ -7,14 +7,16 @@
 
 /datum/status_effect/quicksand_stage_1/on_apply()
 	ADD_TRAIT(owner, TRAIT_IMMOBILIZED, id)
+	ADD_TRAIT(owner, TRAIT_FORCED_STANDING, id)
 	return TRUE
 
 /datum/status_effect/quicksand_stage_1/on_remove()
 	REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, id)
+	REMOVE_TRAIT(owner, TRAIT_FORCED_STANDING, id)
 
 /atom/movable/screen/alert/status_effect/quicksand_stage_1
 	name = "Зыбучие пески"
-	desc = "Твои ноги попали в зыбучие пески"
+	desc = "Твои ноги попали в зыбучие пески."
 	icon = 'modular_ss220/quicksand/icon/quicksand_status_effects.dmi'
 	icon_state = "feet"
 
@@ -27,14 +29,16 @@
 
 /datum/status_effect/quicksand_stage_2/on_apply()
 	ADD_TRAIT(owner, TRAIT_IMMOBILIZED, id)
+	ADD_TRAIT(owner, TRAIT_FORCED_STANDING, id)
 	return TRUE
 
 /datum/status_effect/quicksand_stage_2/on_remove()
 	REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, id)
+	REMOVE_TRAIT(owner, TRAIT_FORCED_STANDING, id)
 
 /atom/movable/screen/alert/status_effect/quicksand_stage_2
 	name = "Зыбучие пески"
-	desc = "Ты по пояс провалился в зыбучие пески"
+	desc = "Ты по пояс провалился в зыбучие пески."
 	icon = 'modular_ss220/quicksand/icon/quicksand_status_effects.dmi'
 	icon_state = "torso"
 
@@ -49,14 +53,18 @@
 	ADD_TRAIT(owner, TRAIT_IMMOBILIZED, id)
 	ADD_TRAIT(owner, TRAIT_HANDS_BLOCKED, id)
 	ADD_TRAIT(owner, TRAIT_MUTE, id)
+	ADD_TRAIT(owner, TRAIT_FORCED_STANDING, id)
 	ADD_TRAIT(owner, TRAIT_CANT_BREATH_FROM_ENVIRONMENT, id)
+	owner.become_blind(id)
 	return TRUE
 
 /datum/status_effect/quicksand_stage_3/on_remove()
 	REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, id)
 	REMOVE_TRAIT(owner, TRAIT_HANDS_BLOCKED, id)
 	REMOVE_TRAIT(owner, TRAIT_MUTE, id)
+	REMOVE_TRAIT(owner, TRAIT_FORCED_STANDING, id)
 	REMOVE_TRAIT(owner, TRAIT_CANT_BREATH_FROM_ENVIRONMENT, id)
+	owner.cure_blind(id)
 
 /datum/status_effect/quicksand_stage_3/tick()
 	owner.adjustBruteLoss(5, FALSE)

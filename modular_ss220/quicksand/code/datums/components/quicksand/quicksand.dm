@@ -63,7 +63,9 @@
 	if(!isliving(exiting))
 		return
 
-	remove_victim(victims[exiting])
+	var/datum/quicksand_victim_holder/handled_victim = victims[exiting]
+	if(handled_victim)
+		remove_victim(handled_victim)
 
 /datum/component/quicksand/proc/handle_living_mob(mob/victim)
 	PRIVATE_PROC(TRUE)
@@ -75,6 +77,9 @@
 
 /datum/component/quicksand/proc/can_be_catched(mob/victim)
 	PRIVATE_PROC(TRUE)
+
+	if(HAS_TRAIT(victim, TRAIT_QUICKSAND_IMMUNE))
+		return FALSE
 
 	if(!isliving(victim))
 		return prob(default_mob_catch_chance)
@@ -101,6 +106,7 @@
 	victims[victim] = victim_holder
 
 	RegisterSignal(victim_holder, COMSIG_QUICKSAND_VICTIM_RELEASED, PROC_REF(remove_victim))
+	RegisterSignal(victim, SIGNAL_ADDTRAIT(TRAIT_QUICKSAND_IMMUNE), PROC_REF(on_quicksand_trait_add))
 
 /datum/component/quicksand/proc/remove_victim(datum/quicksand_victim_holder/victim_holder_to_remove)
 	SIGNAL_HANDLER
@@ -110,7 +116,14 @@
 
 	victims -= actual_victim_mob
 	UnregisterSignal(victim_holder_to_remove, COMSIG_QUICKSAND_VICTIM_RELEASED)
+	UnregisterSignal(actual_victim_mob, SIGNAL_ADDTRAIT(TRAIT_QUICKSAND_IMMUNE))
 	qdel(victim_holder_to_remove)
+
+/datum/component/quicksand/proc/on_quicksand_trait_add(mob/living/victim)
+	SIGNAL_HANDLER
+	PRIVATE_PROC(TRUE)
+
+	remove_victim(victims[victim])
 
 /datum/component/quicksand/proc/get_stage_prototypes()
 	PRIVATE_PROC(TRUE)

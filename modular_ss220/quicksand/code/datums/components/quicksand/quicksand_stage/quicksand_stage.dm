@@ -13,6 +13,7 @@
 	var/on_apply_message = "Generic message"
 	/// Message that victim recieves when stage is removed
 	var/on_successful_resist_message = "Generic message"
+	var/vertical_slide_size_pixels = 0
 	var/displacement_icon = 'modular_ss220/quicksand/icon/sand_displacement_maps.dmi'
 	var/displacement_icon_state = ""
 	/// Status effect that will be applied in `apply` proc. Null if no status effect should be applied
@@ -28,6 +29,7 @@
 		apply_to.apply_status_effect(on_apply_status_effect)
 
 	apply_to.add_filter(SAND_APLHA_MASK_FILTER_NAME, 1, list("type" = "alpha", "icon" = icon(displacement_icon, displacement_icon_state)))
+	animate(apply_to, pixel_y = vertical_slide_size_pixels, time = 1 SECONDS)
 
 	on_apply(apply_to)
 	to_chat(apply_to, span_danger(on_apply_message))
@@ -42,6 +44,7 @@
 		remove_from.remove_status_effect(on_apply_status_effect)
 
 	remove_from.remove_filter(SAND_APLHA_MASK_FILTER_NAME)
+	remove_from.pixel_y = 0
 
 	on_remove(remove_from)
 	to_chat(remove_from, span_green(on_successful_resist_message))
