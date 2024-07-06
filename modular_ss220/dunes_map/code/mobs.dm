@@ -260,6 +260,8 @@
 	harm_intent_damage = 15
 	melee_damage_lower = 20
 	melee_damage_upper = 25
+	minbodytemp = 0
+	maxbodytemp = 3500
 	a_intent = INTENT_HARM
 	check_friendly_fire = 1
 	status_flags = CANPUSH
@@ -304,6 +306,8 @@
 	harm_intent_damage = 15
 	melee_damage_lower = 20
 	melee_damage_upper = 25
+	minbodytemp = 0
+	maxbodytemp = 3500
 	a_intent = INTENT_HARM
 	check_friendly_fire = 1
 	status_flags = CANPUSH
