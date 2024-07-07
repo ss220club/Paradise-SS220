@@ -1,8 +1,8 @@
 /datum/quicksand_stage/feet
-	duration = 5 SECONDS
+	duration = 10 SECONDS
 	resist_chance = 50
 	resist_duration = 3 SECONDS
-	assist_chance = 50
+	assist_chance = 70
 	critical_failure_chance = 50
 	alpha_mask_y = 8
 	on_apply_status_effect = /datum/status_effect/quicksand_stage_1
@@ -10,10 +10,10 @@
 	on_successful_resist_messages = list("Ты освобождаешь свои ноги и выбираешься из зыбучих песков.")
 
 /datum/quicksand_stage/torso
-	duration = 5 SECONDS
+	duration = 4 SECONDS
 	resist_chance = 25
 	resist_duration = 3 SECONDS
-	assist_chance = 25
+	assist_chance = 40
 	critical_failure_chance = 25
 	alpha_mask_y = 16
 	on_apply_status_effect = /datum/status_effect/quicksand_stage_2
@@ -21,10 +21,10 @@
 	on_successful_resist_messages = list("Тебе удалось освободить свой торс!")
 
 /datum/quicksand_stage/head
-	duration = 5 SECONDS
-	resist_chance = 5
+	duration = 4 SECONDS
+	resist_chance = 0
 	resist_duration = 3 SECONDS
-	assist_chance = 10
+	assist_chance = 20
 	critical_failure_chance = 25
 	alpha_mask_y = 25
 	on_apply_status_effect = /datum/status_effect/quicksand_stage_3

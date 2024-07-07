@@ -28,7 +28,6 @@
 		apply_to.apply_status_effect(on_apply_status_effect)
 
 	on_apply(apply_to)
-	to_chat(apply_to, span_danger(pick(on_apply_messages)))
 
 /**
  * Suction stage must be removed from mob this way. Calls `on_remove`.
@@ -40,7 +39,6 @@
 		remove_from.remove_status_effect(on_apply_status_effect)
 
 	on_remove(remove_from)
-	to_chat(remove_from, span_green(pick(on_successful_resist_messages)))
 
 /**
  * Override if need to do something specific, when this stage is applied to mob.

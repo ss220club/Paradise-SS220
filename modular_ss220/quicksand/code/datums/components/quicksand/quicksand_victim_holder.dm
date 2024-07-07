@@ -48,9 +48,12 @@
 	return COMPONENT_CANCEL_ATTACK_CHAIN
 
 /datum/quicksand_victim_holder/proc/handle_attack_hand(mob/user)
+	if(!current_stage)
+		return
+
 	to_chat(user, span_notice("Ты пытаешься помочь [victim] выбраться из зыбучих песков"))
 	to_chat(victim, span_notice("[user] пытается помочь тебе выбраться из зыбучих песков"))
-	if(!do_after(user, current_stage.resist_duration, TRUE, user))
+	if(!do_after_once(user, current_stage.resist_duration, TRUE, user, attempt_cancel_message = "Ты передумал помогать [victim] выбраться из зыбучих песков"))
 		return
 
 	if(!prob(current_stage.assist_chance))
@@ -66,7 +69,7 @@
 
 /datum/quicksand_victim_holder/proc/handle_resisting(mob/living/resisting_victim)
 	to_chat(resisting_victim, span_notice("Ты пытаешься выбраться из зыбучих песков"))
-	if(!do_after(resisting_victim, current_stage.resist_duration, FALSE, resisting_victim))
+	if(!do_after_once(resisting_victim, current_stage.resist_duration, FALSE, resisting_victim, attempt_cancel_message = "Видимо ты решил передохнуть и дать пескам тебя поглотить..."))
 		return
 
 	if(!prob(current_stage.resist_chance) && prob(current_stage.critical_failure_chance))
@@ -99,6 +102,7 @@
 /datum/quicksand_victim_holder/proc/move_to_previous_stage()
 	PRIVATE_PROC(TRUE)
 
+	to_chat(victim, span_green(pick(current_stage.on_successful_resist_messages)))
 	if(current_stage_number <= 1)
 		release_victim()
 		return
@@ -133,6 +137,8 @@
 
 	stage_to_apply.apply(victim)
 	run_sand_sinking_animation(stage_to_apply)
+	to_chat(victim, span_danger(pick(stage_to_apply.on_apply_messages)))
+
 	current_stage = stage_to_apply
 
 /datum/quicksand_victim_holder/proc/run_sand_sinking_animation(datum/quicksand_stage/stage_to_apply)
