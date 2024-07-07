@@ -507,7 +507,7 @@
 		if(0 to 1000)
 			icon_state = "act3"
 		if(1001 to 2000)
-			icon_state = pick("act2", "act2-1)
+			icon_state = pick("act2", "act2-1")
 		else
 			icon_state = "act"
 
