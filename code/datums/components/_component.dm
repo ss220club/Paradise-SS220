@@ -11,7 +11,7 @@
   */
 /datum/component
 	/**
-	  * Defines how duplicate existing components are handled when added to a datum
+	  * Defines how duplicate existing comp/onents are handled when added to a datum
 	  *
 	  * See [COMPONENT_DUPE_*][COMPONENT_DUPE_ALLOWED] definitions for available options
 	  */
