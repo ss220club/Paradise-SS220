@@ -20,7 +20,7 @@
 /datum/component/quicksand/Initialize(lying_mob_catch_chance, default_mob_catch_chance, list/stage_types)
 	. = ..()
 
-	if(lying_mob_catch_chance >= 0)
+	if(!isnull(lying_mob_catch_chance) && lying_mob_catch_chance >= 0)
 		src.lying_mob_catch_chance = lying_mob_catch_chance
 
 	if(default_mob_catch_chance > 0)
