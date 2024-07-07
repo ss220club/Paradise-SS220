@@ -7,6 +7,8 @@
 	resistance_flags = INDESTRUCTIBLE
 	flags = NODECONSTRUCT
 
+/obj/machinery/computer/shuttle/vox/attack_ai(mob/user)
+	return
 
 /obj/machinery/computer/camera_advanced/shuttle_docker/vox
 	name = "Scavenger navigation computer"
