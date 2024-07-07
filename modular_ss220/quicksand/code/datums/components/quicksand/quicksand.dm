@@ -39,11 +39,14 @@
 /datum/component/quicksand/UnregisterFromParent()
 	UnregisterSignal(parent, COMSIG_ATOM_ENTERED, COMSIG_ATOM_EXITED, COMSIG_TURF_CHANGE)
 
+/datum/component/quicksand/Destroy(force, silent)
+	remove_all_victims()
+	. = ..()
+
 /datum/component/quicksand/proc/on_turf_change()
 	SIGNAL_HANDLER
 	PRIVATE_PROC(TRUE)
 
-	remove_all_victims()
 	qdel(src)
 
 /datum/component/quicksand/proc/remove_all_victims()
