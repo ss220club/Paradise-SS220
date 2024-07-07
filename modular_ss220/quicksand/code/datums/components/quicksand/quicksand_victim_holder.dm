@@ -1,3 +1,5 @@
+#define SAND_APLHA_MASK_FILTER_NAME "sand_alpha_mask"
+
 /datum/quicksand_victim_holder
 	/// Timer id of changing current stage to next planned
 	VAR_PRIVATE/stage_change_timer_id = null
@@ -111,7 +113,7 @@
 /datum/quicksand_victim_holder/proc/release_victim()
 	PRIVATE_PROC(TRUE)
 
-	remove_current_stage()
+	remove_current_stage(FALSE)
 	UnregisterSignal(victim, COMSIG_ATOM_ATTACK_HAND)
 	UnregisterSignal(victim, COMSIG_LIVING_RESIST)
 	SEND_SIGNAL(src, COMSIG_QUICKSAND_VICTIM_RELEASED, victim)
@@ -120,7 +122,7 @@
 /datum/quicksand_victim_holder/proc/change_stage(datum/quicksand_stage/stage_to_change_to)
 	PRIVATE_PROC(TRUE)
 
-	remove_current_stage()
+	remove_current_stage(TRUE)
 	apply_stage(stage_to_change_to)
 
 /datum/quicksand_victim_holder/proc/apply_stage(datum/quicksand_stage/stage_to_apply)
@@ -130,13 +132,34 @@
 		return
 
 	stage_to_apply.apply(victim)
+	run_sand_sinking_animation(stage_to_apply)
 	current_stage = stage_to_apply
 
-/datum/quicksand_victim_holder/proc/remove_current_stage()
+/datum/quicksand_victim_holder/proc/run_sand_sinking_animation(datum/quicksand_stage/stage_to_apply)
+	PRIVATE_PROC(TRUE)
+
+	var/filter = victim.get_filter(SAND_APLHA_MASK_FILTER_NAME)
+	if(!filter)
+		victim.add_filter(SAND_APLHA_MASK_FILTER_NAME, 1, list("type" = "alpha", "icon" = icon('icons/effects/effects.dmi', "white")))
+		filter = victim.get_filter(SAND_APLHA_MASK_FILTER_NAME)
+
+	var/animation_duration = stage_to_apply.duration / 2
+	animate(filter, y = stage_to_apply.alpha_mask_y, time = animation_duration, easing = CUBIC_EASING|EASE_OUT , flags = ANIMATION_PARALLEL)
+	animate(victim, pixel_y = - ceil(stage_to_apply.alpha_mask_y / 2), time = animation_duration, easing = CUBIC_EASING|EASE_OUT, flags = ANIMATION_PARALLEL)
+
+/datum/quicksand_victim_holder/proc/remove_current_stage(stage_transition = FALSE)
 	PRIVATE_PROC(TRUE)
 
 	if(!current_stage)
 		return
 
+	if(!stage_transition)
+		victim.remove_filter(SAND_APLHA_MASK_FILTER_NAME)
+		victim.pixel_x = 0
+		victim.pixel_y = 0
+		animate(victim)
+
 	current_stage.remove(victim)
 	current_stage = null
+
+#undef SAND_APLHA_MASK_FILTER_NAME
