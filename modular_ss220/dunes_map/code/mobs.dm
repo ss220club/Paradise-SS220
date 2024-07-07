@@ -86,6 +86,7 @@
 	icon_state = "osminogmeele"
 	icon_living = "osminogmeele"
 	icon_dead = "osminogmeele"
+	maxbodytemp = INFINITY
 	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	mob_size = MOB_SIZE_LARGE
 	sentience_type = SENTIENCE_OTHER
@@ -235,6 +236,7 @@
 /mob/living/simple_animal/hostile/lizard/gator/desert
 	del_on_death = TRUE
 	butcher_results = null
+	maxbodytemp = INFINITY
 	icon_state = "gator"
 	icon_living = "gator"
 	icon_dead = "gator_dead"
@@ -372,6 +374,7 @@
 	attacktext = "strikes"
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	gold_core_spawnable = HOSTILE_SPAWN
+	maxbodytemp = INFINITY
 	var/venom_per_bite = 0
 
 /mob/living/simple_animal/hostile/poison/giant_scorpio/AttackingTarget()
@@ -413,6 +416,7 @@
 	faction = list("scorpio")
 	del_on_death = TRUE
 	loot = list(/obj/effect/decal/cleanable/spiderling_remains)
+	maxbodytemp = INFINITY
 
 /mob/living/simple_animal/hostile/poison_snake/scorpio_mini/purpl
 	icon_state = "scorpion_mini"
@@ -639,3 +643,9 @@
 	T.hotspot_expose(700, 50, 1)
 	for(var/mob/living/L in T.contents)
 		L.adjustFireLoss(damage)
+
+/mob/living/simple_animal/cow/desert
+	name = "Пустынная корова"
+	desc = "Особо стойкая порода коров, способная выдерживать адские температуры."
+	maxbodytemp = INFINITY
+	var/milk_capacity
