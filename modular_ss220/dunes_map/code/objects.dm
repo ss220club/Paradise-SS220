@@ -106,33 +106,37 @@
 	var/drop_y = 1
 	var/drop_z = -1
 	var/drop_chance = 1
+	var/scorpion_chance = 4
 
 /obj/structure/sink/kolodec/examine_more(mob/user)
 	. = ..()
 	. += "<span class='userdanger'>Если туда упасть - верная смерть.</span>"
 
 /obj/structure/sink/kolodec/attack_hand(mob/user)
-	to_chat(user, "<span class='userdanger'>Вы подходите вплотную к колодцу. Выглядит КРАЙНЕ небезопасно. Может, не стоит?</span>")
-	if(!do_after(user, 3 SECONDS, target = src))
+	if(!check_event(user))
 		return
 	. = ..()
-
-	if(prob(drop_chance))
-		drop(user)
-	else
-		to_chat(user, "<span class='userdanger'>Вы едва не сорвались в колодец. А дна ведь даже и не видно...</span>")
 
 /obj/structure/sink/kolodec/attackby(obj/item/O, mob/user, params)
-	to_chat(user, "<span class='userdanger'>Вы подходите вплотную к колодцу. Выглядит КРАЙНЕ небезопасно. Может, не стоит?</span>")
-	if(!do_after(user, 4 SECONDS, target = src))
+	if(!check_event(user))
 		return
 	. = ..()
 
+/obj/structure/sink/kolodec/proc/check_event(mob/user)
+	to_chat(user, "<span class='userdanger'>Вы подходите вплотную к колодцу. Выглядит КРАЙНЕ небезопасно. Может, не стоит?</span>")
+	if(!do_after_once(user, 3 SECONDS, target = src, attempt_cancel_message = "Вы передумали пользоваться колодцем."))
+		return FALSE
 	if(prob(drop_chance))
 		drop(user)
+		return FALSE
+	else if (prob(scorpion_chance))
+		var/scorpio = pick(typesof(/mob/living/simple_animal/hostile/poison/giant_scorpio))
+		new scorpio(src.loc)
+		visible_message("<span class='sinister'>Из колодца выполз скорпион. </span>")
+		return FALSE
 	else
 		to_chat(user, "<span class='userdanger'>Вы едва не сорвались в колодец. А дна ведь даже и не видно...</span>")
-
+		return TRUE
 
 /obj/structure/sink/kolodec/Initialize(mapload)
 	. = ..()
