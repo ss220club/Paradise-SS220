@@ -34,6 +34,24 @@
 /datum/component/quicksand/RegisterWithParent()
 	RegisterSignal(parent, COMSIG_ATOM_ENTERED, PROC_REF(on_entered))
 	RegisterSignal(parent, COMSIG_ATOM_EXITED, PROC_REF(on_exited))
+	RegisterSignal(parent, COMSIG_TURF_CHANGE, PROC_REF(on_turf_change))
+
+/datum/component/quicksand/UnregisterFromParent()
+	UnregisterSignal(parent, COMSIG_ATOM_ENTERED, COMSIG_ATOM_EXITED, COMSIG_TURF_CHANGE)
+
+/datum/component/quicksand/Destroy(force, silent)
+	remove_all_victims()
+	. = ..()
+
+/datum/component/quicksand/proc/on_turf_change()
+	SIGNAL_HANDLER
+	PRIVATE_PROC(TRUE)
+
+	qdel(src)
+
+/datum/component/quicksand/proc/remove_all_victims()
+	for(var/victim in victims)
+		remove_victim(victim)
 
 /datum/component/quicksand/proc/init_quicksand_stages()
 	PRIVATE_PROC(TRUE)
