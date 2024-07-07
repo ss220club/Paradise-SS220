@@ -39,3 +39,7 @@
 		/obj/item/disk/design_disk,
 		/obj/item/disk/plantgene,
 	)
+
+/obj/structure/morgue/attack_ai(mob/user)
+	add_hiddenprint(user)
+	return attack_hand(user)
