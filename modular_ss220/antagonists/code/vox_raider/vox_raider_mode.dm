@@ -4,7 +4,7 @@
 /datum/game_mode/antag_mix/vox_raider
 	name = "Vox Raiders"
 	config_tag = "vox_raiders"
-	required_players = 30
+	required_players = 45
 
 /datum/game_mode/antag_mix/vox_raider/New()
 	. = ..()

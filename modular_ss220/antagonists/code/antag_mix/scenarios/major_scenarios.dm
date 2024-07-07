@@ -5,13 +5,13 @@
 	antag_role = ROLE_VOX_RAIDER
 	antag_special_role = SPECIAL_ROLE_VOX_RAIDER
 	antag_datum = /datum/antagonist/vox_raider
-	required_players = 30
-	cost = 60
+	required_players = 45
+	cost = 45
 	candidates_required = 2
 	antag_team = /datum/team/vox_raiders
 	weight = 1
-	antag_cap = 6	// 1 команда на сценарий из 2-6 воксов
-	team_size = 6
+	antag_cap = 4	// 1 команда на сценарий из 2-4 воксов
+	team_size = 4
 	execution_once = TRUE
 
 	is_crew_antag = FALSE
