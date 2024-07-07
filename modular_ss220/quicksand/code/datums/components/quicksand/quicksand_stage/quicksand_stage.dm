@@ -1,5 +1,3 @@
-#define SAND_APLHA_MASK_FILTER_NAME "sand_alpha_mask"
-
 /datum/quicksand_stage
 	/// Duration of this stage
 	var/duration = 1 SECONDS
@@ -11,15 +9,14 @@
 	var/assist_chance = 100
 	/// Chance in percent to fail critically and progress to next stage
 	var/critical_failure_chance = 50
-	/// Message that victim recieves when stage is applied
-	var/on_apply_message = "Generic message"
-	/// Message that victim recieves when stage is removed
-	var/on_successful_resist_message = "Generic message"
-	var/vertical_slide_size_pixels = 0
-	var/displacement_icon = 'modular_ss220/quicksand/icon/sand_displacement_maps.dmi'
-	var/displacement_icon_state = ""
+	/// Y position of alpha mask. Used for sinking animation
+	var/alpha_mask_y = 0
 	/// Status effect that will be applied in `apply` proc. Null if no status effect should be applied
 	var/datum/status_effect/on_apply_status_effect = null
+	/// Pool of messages that victim recieves when stage is applied
+	var/list/on_apply_messages = list("Generic message")
+	/// Pool of messages that victim recieves when stage is removed
+	var/list/on_successful_resist_messages = list("Generic message")
 
 /**
  * Suction stage must be applied to mob this way. Calls `on_apply`.
@@ -30,11 +27,8 @@
 	if(on_apply_status_effect)
 		apply_to.apply_status_effect(on_apply_status_effect)
 
-	apply_to.add_filter(SAND_APLHA_MASK_FILTER_NAME, 1, list("type" = "alpha", "icon" = icon(displacement_icon, displacement_icon_state)))
-	animate(apply_to, pixel_y = vertical_slide_size_pixels, time = 1 SECONDS)
-
 	on_apply(apply_to)
-	to_chat(apply_to, span_danger(on_apply_message))
+	to_chat(apply_to, span_danger(pick(on_apply_messages)))
 
 /**
  * Suction stage must be removed from mob this way. Calls `on_remove`.
@@ -45,11 +39,8 @@
 	if(on_apply_status_effect)
 		remove_from.remove_status_effect(on_apply_status_effect)
 
-	remove_from.remove_filter(SAND_APLHA_MASK_FILTER_NAME)
-	remove_from.pixel_y = 0
-
 	on_remove(remove_from)
-	to_chat(remove_from, span_green(on_successful_resist_message))
+	to_chat(remove_from, span_green(pick(on_successful_resist_messages)))
 
 /**
  * Override if need to do something specific, when this stage is applied to mob.

@@ -62,7 +62,7 @@
 
 	var/datum/quicksand_victim_holder/handled_victim = victims[exiting]
 	if(handled_victim)
-		INVOKE_ASYNC(handled_victim, PROC_REF(remove_victim), handled_victim)
+		INVOKE_ASYNC(src, PROC_REF(remove_victim), handled_victim)
 
 /datum/component/quicksand/proc/handle_living_mob(mob/victim)
 	PRIVATE_PROC(TRUE)
