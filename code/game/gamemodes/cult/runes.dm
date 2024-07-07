@@ -354,7 +354,7 @@ structure_check() searches for nearby cultist structures required for the invoca
 				for(var/datum/disease/critical/crit in H.viruses) // cure all crit conditions
 					crit.cure()
 
-		H.uncuff()
+		H.clear_restraints()
 		H.Silence(6 SECONDS) //Prevent "HALP MAINT CULT" before you realise you're converted
 		if(H.reagents?.has_reagent("holywater"))
 			H.reagents.del_reagent("holywater") // Also prevent fill stomach with holy water and "forgot" about it after converting
@@ -1077,7 +1077,7 @@ structure_check() searches for nearby cultist structures required for the invoca
 	for(var/mob/M in GLOB.player_list)
 		if(!isnewplayer(M)) // exclude people in the lobby
 			SEND_SOUND(M, sound('modular_ss220/aesthetics_sounds/sound/narsie/narsie_summon.ogg')) //SS220 EDIT
-			to_chat(M, "<span class='cultitalic'><b>The veil... <span class='big'>is...</span> <span class='reallybig'>TORN!!!--</span></b></span>")
+			to_chat(M, "<span class='cultitalic'><b>Барьер... <span class='big'>между мирами...</span> <span class='reallybig'>ПАЛ!!!--</span></b></span>")
 
 	icon_state = "rune_large_distorted"
 	var/turf/T = get_turf(src)

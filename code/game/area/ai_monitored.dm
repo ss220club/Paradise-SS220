@@ -30,10 +30,7 @@
 			return
 
 /area/station/ai_monitored/storage/eva
-	name = "EVA Storage"
+	name = "Хранилище ВКД"
 	icon_state = "eva"
 	ambientsounds = HIGHSEC_SOUNDS
-
-/area/station/ai_monitored/storage/secure
-	name = "Secure Storage"
-	icon_state = "storage"
+	request_console_name = "EVA"

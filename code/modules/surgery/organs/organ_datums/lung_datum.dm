@@ -249,6 +249,8 @@
 			TC = cold_level_1_damage
 		if(TC)
 			for(var/D in cold_damage_types)
+				if(HAS_TRAIT(H, TRAIT_DRASK_SUPERCOOL))
+					TC *= 4
 				H.apply_damage_type(TC * CM * cold_damage_types[D], D)
 		if(breath_temperature < cold_level_1_threshold)
 			if(prob(20))
@@ -299,10 +301,10 @@
 
 	if(linked_organ.is_bruised())
 		if(prob(2) && !(NO_BLOOD in linked_organ.owner.dna.species.species_traits))
-			linked_organ.owner.custom_emote(EMOTE_VISIBLE, "coughs up blood!")
+			linked_organ.owner.custom_emote(EMOTE_VISIBLE, "кашляет кровью!")
 			linked_organ.owner.bleed(1)
 		if(prob(4))
-			linked_organ.owner.custom_emote(EMOTE_VISIBLE, "gasps for air!")
+			linked_organ.owner.custom_emote(EMOTE_VISIBLE, "задыхается!")
 			linked_organ.owner.AdjustLoseBreath(10 SECONDS)
 
 

@@ -4,23 +4,6 @@
 	icon_state = "mining"
 	has_gravity = TRUE
 
-/area/mine/explored
-	name = "Mine"
-	icon_state = "explored"
-	always_unpowered = TRUE
-	requires_power = TRUE
-	poweralm = FALSE
-	apc_starts_off = TRUE
-	outdoors = TRUE
-	ambientsounds = MINING_SOUNDS
-	flags = NONE
-	sound_environment = SOUND_AREA_STANDARD_STATION
-	min_ambience_cooldown = 70 SECONDS
-	max_ambience_cooldown = 220 SECONDS
-
-/area/mine/dangerous/explored/golem
-	name = "Small Asteroid"
-
 /area/mine/unexplored
 	name = "Mine"
 	icon_state = "unexplored"
@@ -47,9 +30,6 @@
 /area/mine/unexplored/cere/command
 	name = "Command Asteroid"
 
-/area/mine/unexplored/cere/docking
-	name = "Docking Asteroid"
-
 /area/mine/unexplored/cere/engineering
 	name = "Engineering Asteroid"
 
@@ -65,90 +45,90 @@
 /**********************Outpost areas**************************/
 
 /area/mine/outpost
-	name = "Mining Station"
+	name = "Шахтерский Аванпост"
 	icon_state = "mining"
 	sound_environment = SOUND_AREA_STANDARD_STATION
 
 /area/mine/outpost/airlock
-	name = "Mining Station Airlock"
+	name = "Шлюз Шахтерского Аванпоста"
 	icon_state = "mining_eva"
 
 /area/mine/outpost/cafeteria
-	name = "Mining Station Cafeteria"
+	name = "Кафетерий Шахтерского Аванпоста"
 	icon_state = "mining_living"
 
 /// subtype of /surface so storms hit there
 /area/lavaland/surface/outdoors/outpost/catwalk
-	name = "Mining Station Catwalk"
+	name = "Площадка вне Шахтерского Аванпоста"
 	icon_state = "mining"
 
 /area/mine/outpost/comms
-	name = "Mining Station Communications"
+	name = "Отделение Телекоммуникаций Шахтерского Аванпоста"
 	icon_state = "tcomms"
 
 /area/mine/outpost/custodial
-	name = "Mining Station Custodial Storage"
+	name = "Подсобка Шахтерского Аванпоста"
 	icon_state = "janitor"
 
 /// basically engi and atmos combined. I'm keeping it as "engineering" code wise, but "Life Support" sounds cooler in-game
 /area/mine/outpost/engineering
-	name = "Mining Station Life Support"
+	name = "Комната Жизнеобеспечения Шахтерского Аванпоста"
 	icon_state = "engi"
 
 /area/mine/outpost/hallway
-	name = "Mining Station Central Wing"
+	name = "Центральное Крыло Шахтерского Аванпоста"
 	icon_state = "hallC"
 
 /area/mine/outpost/hallway/east
-	name = "Mining Station East Wing"
+	name = "Восточное Крыло Шахтерского Аванпоста"
 	icon_state = "hallS"
 
 /area/mine/outpost/hallway/west
-	name = "Mining Station West Wing"
+	name = "Западное Крыло Шахтерского Аванпоста"
 	icon_state = "hallP"
 
 /area/mine/outpost/lockers
-	name = "Mining Station Locker Room"
+	name = "Раздевалка Шахтерского Аванпоста"
 	icon_state = "locker"
 
 /area/mine/outpost/storage
-	name = "Mining Station Storage"
+	name = "Хранилище Шахтерского Аванпоста"
 	icon_state = "storage"
 
 /area/mine/outpost/maintenance
-	name = "Mining Station Maintenance"
+	name = "Технические Тоннели Шахтерского Аванпоста"
 	icon_state = "maintcentral"
 
 /area/mine/outpost/maintenance/south
-	name = "Mining Station South Maintenance"
+	name = "Южные Технические Тоннели Шахтерского Аванпоста"
 	icon_state = "amaint"
 
 /area/mine/outpost/maintenance/east
-	name = "Mining Station East Maintenance"
+	name = "Восточные Технические Тоннели Шахтерского Аванпоста"
 	icon_state = "smaint"
 
 /area/mine/outpost/medbay
-	name = "Mining Station Infirmary"
+	name = "Лазарет Шахтерского Аванпоста"
 	icon_state = "medbay"
 
 /area/mine/outpost/mechbay
-	name = "Mining Station Mechbay"
+	name = "Мех. Отсек Шахтерского Аванпоста"
 	icon_state = "mechbay"
 
 /area/mine/outpost/production
-	name = "Mining Station Production Room"
+	name = "Производственная Комната Шахтерского Аванпоста"
 	icon_state = "mining_production"
 
 /area/mine/outpost/quartermaster
-	name = "Mining Station Quartermaster's Office"
+	name = "Офис Квартирмейстера Шахтерского Аванпоста"
 	icon_state = "qm"
 
 /area/mine/laborcamp
-	name = "Labor Camp"
+	name = "Трудовой Лагерь"
 	icon_state = "brig"
 
 /area/mine/laborcamp/security
-	name = "Labor Camp Security"
+	name = "Комната Охраны Трудового Лагеря"
 	icon_state = "security"
 	ambientsounds = HIGHSEC_SOUNDS
 
@@ -161,7 +141,7 @@
 	sound_environment = SOUND_AREA_LAVALAND
 
 /area/lavaland/surface
-	name = "Lavaland"
+	name = "Лаваленд"
 	icon_state = "explored"
 	always_unpowered = TRUE
 	poweralm = FALSE
@@ -171,19 +151,8 @@
 	min_ambience_cooldown = 70 SECONDS
 	max_ambience_cooldown = 220 SECONDS
 
-/area/lavaland/underground
-	name = "Lavaland Caves"
-	icon_state = "unexplored"
-	always_unpowered = TRUE
-	requires_power = TRUE
-	poweralm = FALSE
-	apc_starts_off = TRUE
-	ambientsounds = MINING_SOUNDS
-	min_ambience_cooldown = 70 SECONDS
-	max_ambience_cooldown = 220 SECONDS
-
 /area/lavaland/surface/outdoors
-	name = "Lavaland Wastes"
+	name = "Пустоши Лаваленда"
 	outdoors = TRUE
 
 /// monsters and ruins spawn here
@@ -195,4 +164,3 @@
 	icon_state = "danger"
 
 /area/lavaland/surface/outdoors/explored
-	name = "Lavaland Labor Camp"

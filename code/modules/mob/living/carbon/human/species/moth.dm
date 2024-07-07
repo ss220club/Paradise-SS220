@@ -1,8 +1,5 @@
-#define COCOON_WEAVE_DELAY 5 SECONDS
-#define COCOON_EMERGE_DELAY 15 SECONDS
 #define COCOON_HARM_AMOUNT 50
 #define COCOON_NUTRITION_AMOUNT -200
-#define FLYSWATTER_DAMAGE_MULTIPLIER 9
 
 /datum/species/moth
 	name = "Nian"
@@ -30,10 +27,10 @@
 	eyes = "moth_eyes_s"
 	butt_sprite = "nian"
 	siemens_coeff = 1.5
-	blurb = "Nians are large bipedal invertebrates that come from an unknown homeworld. \
-	Known for spendthrift behavior, the Nian civilization has been pressed to the fore of developed space in an effort to resolve material shortages in homeworld sectors.<br/><br/> \
-	Unlike most species in the galactic fold, Nian do not recognize the authority of the Trans-Solar Federation: \
-	having instead established close diplomatic relationships with their splinter faction, the USSP."
+	blurb = "Нианы - вид насекомоподобных двуногих, родом с неизвестной планеты. \
+	Известная своей расточительностью, цивилизация Ниан была вытеснена на передний план развитого космоса в попытке решить проблему нехватки материалов в секторах родного мира.<br/><br/> \
+	В отличие от большинства видов в галактике, Нианы не признают власть Транс-Солнечной Федерации, \
+	установив вместо этого тесные дипломатические отношения с Союзом Советских Социалистических Планет."
 
 	icon_skin_tones = list(
 		1 = "Default Biege",
@@ -50,6 +47,8 @@
 		"brain" =    /obj/item/organ/internal/brain/nian,
 		"eyes" =     /obj/item/organ/internal/eyes/nian
 	)
+
+	primitive_form = /datum/species/monkey/nian_worme
 
 	optional_body_accessory = FALSE
 
@@ -74,7 +73,6 @@
 				new_icobase = 'icons/mob/human_races/nian/r_moth.dmi'
 
 		H.change_icobase(new_icobase, owner_sensitive) //Update the icobase of all our organs, but make sure we don't mess with frankenstein limbs in doing so.
-
 
 /datum/species/moth/on_species_gain(mob/living/carbon/human/H)
 	..()
@@ -160,8 +158,8 @@
 	name = "Cocoon"
 	desc = "Restore your wings and antennae, and heal some damage. If your cocoon is broken externally you will take heavy damage!"
 	check_flags = AB_CHECK_RESTRAINED|AB_CHECK_STUNNED|AB_CHECK_CONSCIOUS|AB_CHECK_TURF
-	icon_icon = 'icons/effects/effects.dmi'
-	button_icon_state = "cocoon1"
+	button_overlay_icon = 'icons/effects/effects.dmi'
+	button_overlay_icon_state = "cocoon1"
 
 /datum/action/innate/cocoon/Activate()
 	var/mob/living/carbon/human/moth/H = owner
@@ -244,8 +242,5 @@
 	id = "cocooned"
 	alert_type = null
 
-#undef COCOON_WEAVE_DELAY
-#undef COCOON_EMERGE_DELAY
 #undef COCOON_HARM_AMOUNT
 #undef COCOON_NUTRITION_AMOUNT
-#undef FLYSWATTER_DAMAGE_MULTIPLIER

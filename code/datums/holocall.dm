@@ -32,10 +32,10 @@
 			dialed_holopads += H
 			var/area/area = get_area(H)
 			LAZYADD(H.holo_calls, src)
-			H.atom_say("[area] pad beeps: Incoming call from [caller]!")
+			H.atom_say("Оповещение с голопада [area]: Входящий звонок от [caller]!")
 
 	if(!length(dialed_holopads))
-		calling_holopad.atom_say("Connection failure.")
+		calling_holopad.atom_say("Соединение не установлено.")
 		qdel(src)
 		return
 
@@ -85,9 +85,9 @@
 /datum/holocall/proc/Disconnect(obj/machinery/hologram/holopad/H)
 	if(H == connected_holopad)
 		var/area/A = get_area(connected_holopad)
-		calling_holopad.atom_say("[A] holopad disconnected.")
+		calling_holopad.atom_say("Связь с голопадом [A] прервана.")
 	else if(H == calling_holopad && connected_holopad)
-		connected_holopad.atom_say("[user] disconnected.")
+		connected_holopad.atom_say("[user] отключился.")
 
 	user.unset_machine(H)
 	if(istype(hangup))
@@ -99,7 +99,7 @@
 /datum/holocall/proc/ConnectionFailure(obj/machinery/hologram/holopad/H, graceful = FALSE)
 	if(H == connected_holopad || H == calling_holopad)
 		if(!graceful && H != calling_holopad)
-			calling_holopad.atom_say("Connection failure.")
+			calling_holopad.atom_say("Соединение прервано.")
 		qdel(src)
 		return
 
@@ -107,7 +107,7 @@
 	dialed_holopads -= H
 	if(!length(dialed_holopads))
 		if(graceful)
-			calling_holopad.atom_say("Call rejected.")
+			calling_holopad.atom_say("Вызов завершен.")
 		qdel(src)
 
 //Answers a call made to a holopad `H` which cannot be the calling holopad. Pads not in the call are ignored
@@ -169,14 +169,14 @@
 		if(!connected_holopad)
 			. = world.time < (call_start_time + HOLOPAD_MAX_DIAL_TIME)
 			if(!.)
-				calling_holopad.atom_say("No answer received.")
+				calling_holopad.atom_say("Ответ не получен.")
 				calling_holopad.temp = ""
 	if(!.)
 		qdel(src)
 
 /datum/action/innate/end_holocall
 	name = "End Holocall"
-	button_icon_state = "camera_off"
+	button_overlay_icon_state = "camera_off"
 	var/datum/holocall/hcall
 
 /datum/action/innate/end_holocall/New(Target, datum/holocall/HC)

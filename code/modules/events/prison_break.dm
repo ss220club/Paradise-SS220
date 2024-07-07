@@ -13,19 +13,17 @@
 /datum/event/prison_break/virology
 	eventDept = "Medical"
 	areaName = list("Virology")
-	areaType = list(/area/station/medical/virology, /area/station/medical/virology/lab)
+	areaType = list(/area/station/medical/virology)
 
 /datum/event/prison_break/xenobiology
 	eventDept = "Science"
 	areaName = list("Xenobiology")
 	areaType = list(/area/station/science/xenobiology)
-	areaNotType = list(/area/station/science/xenobiology/xenoflora, /area/station/science/xenobiology/xenoflora_storage)
 
 /datum/event/prison_break/station
 	eventDept = "Station"
 	areaName = list("Brig","Virology","Xenobiology")
 	areaType = list(/area/station/security/prison, /area/station/security/brig, /area/station/security/permabrig, /area/station/medical/virology, /area/station/medical/virology/lab, /area/station/science/xenobiology)
-	areaNotType = list(/area/station/science/xenobiology/xenoflora, /area/station/science/xenobiology/xenoflora_storage)
 
 
 /datum/event/prison_break/setup()
@@ -37,7 +35,7 @@
 
 /datum/event/prison_break/announce(false_alarm)
 	if(length(areas) || false_alarm)
-		GLOB.minor_announcement.Announce("[pick("Gr3y.T1d3 virus", "S.E.L.F program", "Malignant trojan", "Runtime error", "Cybersun worm", "[pick("Castle", "Felix", "Fractal", "Paradox", "Rubiks", "Portcullis", "Hammer", "Lockpick", "Faust", "Dream")][pick(" 2.0","")] Daemon")] detected in [station_name()] [(eventDept == "Security")? "imprisonment":"containment"] subroutines. Secure any compromised areas immediately. Station AI involvement is recommended.", "[eventDept] Alert")
+		GLOB.minor_announcement.Announce("[pick("Вирус `Gr3y.T1d3`", "S.E.L.F program", "Вредоносный троян", "Runtime error", "Cybersun worm", "[pick("Castle", "Felix", "Fractal", "Paradox", "Rubiks", "Portcullis", "Hammer", "Lockpick", "Faust", "Dream")][pick(" 2.0","")] Daemon")] обнаружен в подсистеме [(eventDept == "Security")? "заключения":"безопасности"] на [station_name()]. Немедленно обеспечьте безопасность всех затронутых отсеков. Рекомендуется вмешательство ИИ станции.", "ВНИМАНИЕ: Аварийное оповещение [eventDept].")
 
 /datum/event/prison_break/start()
 	for(var/area/A in world)

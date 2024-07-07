@@ -69,25 +69,25 @@
 					/obj/item/reagent_containers/drinks/bottle/fernet = 5)
 
 	vend_delay = 15
-	slogan_list = list("I hope nobody asks me for a bloody cup o' tea...",
-						"Alcohol is humanity's friend. Would you abandon a friend?",
-						"Quite delighted to serve you!",
-						"Is nobody thirsty on this station?")
+	slogan_list = list("Надеюсь, никто не попросит меня о чёртовой кружке чая...",
+						"Алкоголь - друг человека. Вы же не бросите друга?",
+						"Очень рад вас обслужить!",
+						"Никто на этой станции не хочет выпить?")
 
-	ads_list = list("Drink up!",
-					"Booze is good for you!",
-					"Alcohol is humanity's best friend.",
-					"Quite delighted to serve you!",
-					"Care for a nice, cold beer?",
-					"Nothing cures you like booze!",
-					"Have a sip!","Have a drink!",
-					"Have a beer!","Beer is good for you!",
-					"Only the finest alcohol!",
-					"Best quality booze since 2053!",
-					"Award-winning wine!",
-					"Maximum alcohol!",
-					"Man loves beer.",
-					"A toast for progress!")
+	ads_list = list("Выпьем!",
+					"Бухло пойдёт вам на пользу!",
+					"Алкоголь - друг человека.",
+					"Очень рад вас обслужить!",
+					"Хотите отличного холодного пива?",
+					"Ничто так не лечит, как бухло!",
+					"Пригубите!","Выпейте!",
+					"Возьмите пивка!","Пиво пойдёт вам на пользу!",
+					"Только лучший алкоголь!",
+					"Бухло лучшего качества с 2053 года!",
+					"Вино со множеством наград!",
+					"Максимум алкоголя!",
+					"Твоё любимое пиво.",
+					"Тост: «За прогресс!»")
 
 	refill_canister = /obj/item/vending_refill/boozeomat
 
@@ -272,6 +272,7 @@
 					/obj/item/clothing/under/color/rainbow = 1)
 
 	contraband = list(/obj/item/clothing/under/syndicate/tacticool = 5,
+					/obj/item/clothing/under/syndicate/greyman = 5,
 					/obj/item/clothing/under/color/orange/prison = 5)
 
 	prices = list(/obj/item/clothing/under/color/black = 30,
@@ -297,6 +298,7 @@
 				/obj/item/clothing/under/color/pink = 50,
 				/obj/item/clothing/under/color/rainbow = 100,
 				/obj/item/clothing/under/syndicate/tacticool = 75,
+				/obj/item/clothing/under/syndicate/greyman = 75,
 				/obj/item/clothing/under/color/orange/prison = 75)
 
 	refill_canister = /obj/item/vending_refill/suitdispenser
@@ -365,12 +367,12 @@
 	icon_state = "clothes"
 	icon_lightmask = "base_drobe"
 	icon_panel = "drobe"
-	slogan_list = list("Dress for success!",
-					"Prepare to look swagalicious!",
-					"Look at all this free swag!",
-					"Why leave style up to fate? Use the ClothesMate!")
+	slogan_list = list("Одевайся и врывайся!",
+					"Готовься выглядеть воскрутительно!",
+					"Посмотрите на эти халявные шмотки!",
+					"Зачем бросать стиль на волю судьбы? Воспользуйтесь ClothesMate!")
 	vend_delay = 15
-	vend_reply = "Thank you for using the ClothesMate!"
+	vend_reply = "Спасибо за использование ClothesMate!"
 	category = VENDOR_TYPE_CLOTHING
 	products = list(/obj/item/clothing/suit/ianshirt = 2,
 					/obj/item/clothing/under/misc/overalls = 2,
@@ -458,6 +460,7 @@
 					/obj/item/clothing/mask/balaclava = 1,
 					/obj/item/clothing/head/ushanka = 1,
 					/obj/item/clothing/under/costume/soviet = 1,
+					/obj/item/clothing/suit/pimpcoat/white = 3,
 					/obj/item/storage/belt/fannypack/black = 1)
 
 	prices = list(/obj/item/clothing/under/suit/navy = 75,
@@ -540,6 +543,7 @@
 				/obj/item/clothing/suit/mantle = 20,
 				/obj/item/clothing/suit/mantle/old = 20,
 				/obj/item/clothing/suit/mantle/regal = 30,
+				/obj/item/clothing/suit/pimpcoat/white = 500,
 				/obj/item/clothing/under/misc/mailman = 100)
 
 	refill_canister = /obj/item/vending_refill/clothing
@@ -551,10 +555,10 @@
 	name = "\improper MagiVend"
 	desc = "A magic vending machine."
 	icon_state = "MagiVend"
-	slogan_list = list("Sling spells the proper way with MagiVend!",
-					"Be your own Houdini! Use MagiVend!")
+	slogan_list = list("Колдуйте правильно с помощью MagiVend!",
+					"Станьте сами себе Гудини! Используйте MagiVend!")
 	vend_delay = 15
-	vend_reply = "Have an enchanted evening!"
+	vend_reply = "Волшебного вечера!"
 	category = VENDOR_TYPE_CLOTHING
 	ads_list = list("FJKLFJSD",
 					"AJKFLBJAKL",
@@ -594,10 +598,10 @@
 	icon_state = "theater"
 	icon_lightmask = "theater"
 	icon_deny = "theater_deny"
-	slogan_list = list("Dress for success!",
-					"Suited and booted!",
-					"It's show time!",
-					"Why leave style up to fate? Use AutoDrobe!")
+	slogan_list = list("Одевайся и врывайся!",
+					"Одетый и обутый!",
+					"Время представления!",
+					"Зачем бросать стиль на волю судьбы? Воспользуйтесь AutoDrobe!")
 
 	vend_delay = 15
 	vend_reply = "Thank you for using AutoDrobe!"
@@ -843,8 +847,8 @@
 /obj/machinery/economy/vending/sustenance
 	name = "\improper Sustenance Vendor"
 	desc = "A vending machine which vends food, as required by section 47-C of the NT's Prisoner Ethical Treatment Agreement."
-	slogan_list = list("Enjoy your meal.",
-					"Enough calories to support strenuous labor.")
+	slogan_list = list("Наслаждайся своей стряпнёй.",
+					"Достаточно калорий чтоб не сдохнуть.")
 
 	ads_list = list("The healthiest!",
 					"Award-winning chocolate bars!",
@@ -895,19 +899,19 @@
 /obj/machinery/economy/vending/snack
 	name = "\improper Getmore Chocolate Corp"
 	desc = "A snack machine courtesy of the Getmore Chocolate Corporation, based out of Mars."
-	slogan_list = list("Try our new nougat bar!",
-					"Twice the calories for half the price!")
+	slogan_list = list("Попробуйте наш новый батончик с нугой!",
+					"Вдвое больше калорий за полцены!")
 
-	ads_list = list("The healthiest!",
-					"Award-winning chocolate bars!",
-					"Mmm! So good!",
-					"Oh my god it's so juicy!",
-					"Have a snack.",
-					"Snacks are good for you!",
-					"Have some more Getmore!",
-					"Best quality snacks straight from mars.",
-					"We love chocolate!",
-					"Try our new jerky!")
+	ads_list = list("Самые полезные!",
+					"Удостоенные наград шоколадные плитки!",
+					"Ммм! Как вкусно!",
+					"Боже мой, какой сочный!",
+					"Перекуси!",
+					"Закуски полезны для вас!",
+					"Запаситесь закусками Getmore!",
+					"Самые качественные закуски прямо с Марса.",
+					"Мы любим шоколад!",
+					"Попробуйте наше новое вяленое мясо!")
 
 	icon_state = "snack"
 	icon_lightmask = "nutri"
@@ -949,10 +953,10 @@
 /obj/machinery/economy/vending/chinese
 	name = "\improper Mr. Chang"
 	desc = "A self-serving Chinese food machine, for all your Chinese food needs."
-	slogan_list = list("Taste 5000 years of culture!",
-					"Mr. Chang, approved for safe consumption in over 10 sectors!",
-					"Chinese food is great for a date night, or a lonely night!",
-					"You can't go wrong with Mr. Chang's authentic Chinese food!")
+	slogan_list = list("Попробуйте 5000 лет культуры!",
+					"Мистер Чанг, одобрен для безопасного потребления в более чем 10 секторах!",
+					"Китайская кухня отлично подходит для вечернего свидания или одинокого вечера!",
+					"Вы не ошибетесь, если попробуете настоящую китайскую кухню от мистера Чанга!")
 
 	icon_state = "chang"
 	icon_lightmask = "chang"
@@ -982,14 +986,14 @@
 	icon_state = "Cola_Machine"
 	icon_lightmask = "Cola_Machine"
 	icon_panel = "thin_vendor"
-	slogan_list = list("Robust Softdrinks: More robust than a toolbox to the head!")
-	ads_list = list("Refreshing!",
-					"Hope you're thirsty!",
-					"Over 1 million drinks sold!",
-					"Thirsty? Why not cola?",
-					"Please, have a drink!",
-					"Drink up!",
-					"The best drinks in space.")
+	slogan_list = list("Робаст Софтдринкс: крепче, чем тулбоксом по голове!")
+	ads_list = list("Освежает!",
+					"Надеюсь, вас одолела жажда!",
+					"Продано больше миллиона бутылок!",
+					"Хотите пить? Почему бы не взять колы?",
+					"Пей на здоровье!",
+					"Освежись!",
+					"Лучшие напитки в космосе.")
 
 	category = VENDOR_TYPE_DRINK
 	products = list(/obj/item/reagent_containers/drinks/cans/cola = 10,
@@ -1019,10 +1023,10 @@
 /obj/machinery/economy/vending/artvend
 	name = "\improper ArtVend"
 	desc = "A vending machine for art supplies."
-	slogan_list = list("Stop by for all your artistic needs!",
-					"Color the floors with crayons, not blood!",
-					"Don't be a starving artist, use ArtVend. ",
-					"Don't fart, do art!")
+	slogan_list = list("Решение для всех ваших творческих нужд!",
+					"Окрашивайте полы мелками, а не кровью!",
+					"Не будьте голодающим художником, используйте ArtVend.",
+					"Не перди, твори!")
 
 	ads_list = list("Just like Kindergarten!",
 					"Now with 1000% more vibrant colors!",
@@ -1108,11 +1112,11 @@
 /obj/machinery/economy/vending/crittercare
 	name = "\improper CritterCare"
 	desc = "A vending machine for pet supplies."
-	slogan_list = list("Stop by for all your animal's needs!",
-					"Cuddly pets deserve a stylish collar!",
-					"Pets in space, what could be more adorable?",
-					"Freshest fish eggs in the system!",
-					"Rocks are the perfect pet, buy one today!")
+	slogan_list = list("Всё необходимое для ваших питомцев!",
+					"Милые питомцы заслуживают стильного ошейника!",
+					"Космические питомцы, что может быть очаровательнее?",
+					"Свежайшая рыбья икра в секторе!",
+					"Камни - идеальные питомцы, купите уже сегодня!")
 
 	ads_list = list("House-training costs extra!",
 					"Now with 1000% more cat hair!",
@@ -1166,6 +1170,118 @@
 /obj/machinery/economy/vending/cigarette
 	name = "\improper ShadyCigs Deluxe"
 	desc = "If you want to get cancer, might as well do it in style."
+	slogan_list = list("Космосигареты хороши на вкус, какими они и должны быть.",
+					"Курение убивает, но не сегодня!",
+					"Курите!",
+					"Не верьте исследованиям - курите сегодня!")
+
+	ads_list = list("Наверняка не вредно!",
+					"Не верьте ученым!",
+					"На здоровье!",
+					"Не бросайте курить, купите ещё!",
+					"Курите!",
+					"Никотиновый рай.",
+					"Лучшие сигареты с 2150 года.",
+					"Сигареты с множеством наград.")
+
+	vend_delay = 34
+	icon_state = "cigs"
+	icon_lightmask = "cigs"
+	category = VENDOR_TYPE_RECREATION
+	products = list(/obj/item/clothing/mask/cigarette/cigar = 2,
+					/obj/item/storage/fancy/cigarettes = 6,
+					/obj/item/storage/fancy/cigarettes/cigpack_carp = 6,
+					/obj/item/storage/fancy/cigarettes/dromedaryco = 6,
+					/obj/item/storage/fancy/cigarettes/cigpack_random = 6,
+					/obj/item/storage/fancy/cigarettes/cigpack_midori = 6,
+					/obj/item/storage/fancy/cigarettes/cigpack_robust = 6,
+					/obj/item/storage/fancy/cigarettes/cigpack_robustgold = 1,
+					/obj/item/storage/fancy/cigarettes/cigpack_shadyjims = 6,
+					/obj/item/storage/fancy/cigarettes/cigpack_uplift = 6,
+					/obj/item/reagent_containers/patch/nicotine = 10,
+					/obj/item/storage/fancy/matches = 10,
+					/obj/item/lighter/random = 4,
+					/obj/item/lighter/zippo = 2)
+
+	contraband = list(/obj/item/storage/fancy/rollingpapers = 5)
+
+	prices = list(/obj/item/clothing/mask/cigarette/cigar = 100,
+				/obj/item/storage/fancy/cigarettes = 25,
+				/obj/item/storage/fancy/cigarettes/cigpack_carp = 25,
+				/obj/item/storage/fancy/cigarettes/dromedaryco = 25,
+				/obj/item/storage/fancy/cigarettes/cigpack_random = 80,
+				/obj/item/storage/fancy/cigarettes/cigpack_midori = 60,
+				/obj/item/storage/fancy/cigarettes/cigpack_robust = 25,
+				/obj/item/storage/fancy/cigarettes/cigpack_robustgold = 120,
+				/obj/item/storage/fancy/cigarettes/cigpack_shadyjims = 50,
+				/obj/item/storage/fancy/cigarettes/cigpack_uplift = 35,
+				/obj/item/reagent_containers/patch/nicotine = 70,
+				/obj/item/storage/fancy/matches = 20,
+				/obj/item/lighter/random = 40,
+				/obj/item/lighter/zippo = 80,
+				/obj/item/storage/fancy/rollingpapers = 30,
+)
+
+	refill_canister = /obj/item/vending_refill/cigarette
+
+/obj/machinery/economy/vending/cigarette/free
+	prices = list()
+
+// The Syndicate version doesn't sell Robust because that is a Nanotrasen-owned brand. It *does* have its special own-brand replacement.
+/obj/machinery/economy/vending/cigarette/syndicate
+	products = list(/obj/item/clothing/mask/cigarette/cigar = 6,
+				/obj/item/storage/fancy/cigarettes = 6,
+				/obj/item/storage/fancy/cigarettes/cigpack_carp = 6,
+				/obj/item/storage/fancy/cigarettes/dromedaryco = 6,
+				/obj/item/storage/fancy/cigarettes/cigpack_random = 6,
+				/obj/item/storage/fancy/cigarettes/cigpack_midori = 6,
+				/obj/item/storage/fancy/cigarettes/cigpack_shadyjims = 6,
+				/obj/item/storage/fancy/cigarettes/cigpack_syndicate = 10,
+				/obj/item/storage/fancy/cigarettes/cigpack_uplift = 6,
+				/obj/item/reagent_containers/patch/nicotine = 10,
+				/obj/item/storage/fancy/matches = 10,
+				/obj/item/lighter/zippo = 6,
+				/obj/item/storage/fancy/rollingpapers = 5)
+
+	contraband = list()
+
+/obj/machinery/economy/vending/cigarette/syndicate/free
+	prices = list()
+
+/// Used in the lavaland_biodome_beach.dmm ruin. As the ultimate in smokable vending, it sells the widest range in the grestest quantity.
+/obj/machinery/economy/vending/cigarette/beach
+	name = "\improper ShadyCigs Ultra"
+	desc = "Now with extra premium products!"
+	slogan_list = list("Включи, настрой, получи!",
+					"С химией жить веселей!",
+					"Затянитесь!",
+					"Сохраняй улыбку на устах и песню в своём сердце!")
+
+	ads_list = list("Наверняка не вредно!",
+					"Допинг проведёт через безденежье лучше, чем деньги через бездопингье!",
+					"На здоровье!")
+
+	products = list(/obj/item/clothing/mask/cigarette/cigar = 6,
+				/obj/item/clothing/mask/cigarette/cigar/cohiba = 6,
+				/obj/item/clothing/mask/cigarette/cigar/havana = 6,
+				/obj/item/storage/fancy/cigarettes = 10,
+				/obj/item/storage/fancy/cigarettes/cigpack_carp = 10,
+				/obj/item/storage/fancy/cigarettes/cigpack_random = 10,
+				/obj/item/storage/fancy/cigarettes/cigpack_midori = 10,
+				/obj/item/storage/fancy/cigarettes/cigpack_robust = 10,
+				/obj/item/storage/fancy/cigarettes/cigpack_robustgold = 10,
+				/obj/item/storage/fancy/cigarettes/cigpack_shadyjims = 10,
+				/obj/item/storage/fancy/cigarettes/cigpack_uplift = 10,
+				/obj/item/reagent_containers/patch/nicotine = 20,
+				/obj/item/storage/fancy/matches = 10,
+				/obj/item/lighter/zippo = 10,
+				/obj/item/storage/fancy/rollingpapers = 10)
+
+	contraband = list()
+	prices = list()
+
+// The finest cigs, available at centcomm for the crew to enjoy after a long, hard day of being brutalized.
+/obj/machinery/economy/vending/cigarette/beach/centcomm
 	slogan_list = list("Space cigs taste good like a cigarette should.",
 					"I'd rather toolbox than switch.",
 					"Smoke!",
@@ -1179,83 +1295,6 @@
 					"Nicotine heaven.",
 					"Best cigarettes since 2150.",
 					"Award-winning cigs.")
-
-	vend_delay = 34
-	icon_state = "cigs"
-	icon_lightmask = "cigs"
-	category = VENDOR_TYPE_RECREATION
-	products = list(/obj/item/storage/fancy/cigarettes/cigpack_robust = 6,
-					/obj/item/storage/fancy/cigarettes/cigpack_carp = 6,
-					/obj/item/storage/fancy/cigarettes/cigpack_uplift = 6,
-					/obj/item/storage/fancy/cigarettes/cigpack_midori = 6,
-					/obj/item/storage/fancy/cigarettes/cigpack_random = 6,
-					/obj/item/storage/fancy/cigarettes/cigpack_robustgold = 1,
-					/obj/item/clothing/mask/cigarette/cigar/havana = 2,
-					/obj/item/reagent_containers/patch/nicotine = 10,
-					/obj/item/storage/fancy/matches = 10,
-					/obj/item/lighter/random = 4,
-					/obj/item/lighter/zippo = 2)
-
-	contraband = list(/obj/item/storage/fancy/rollingpapers = 5)
-
-	prices = list(/obj/item/storage/fancy/cigarettes/cigpack_robust = 25,
-				/obj/item/storage/fancy/cigarettes/cigpack_carp = 25,
-				/obj/item/storage/fancy/cigarettes/cigpack_uplift = 35,
-				/obj/item/storage/fancy/cigarettes/cigpack_midori = 60,
-				/obj/item/storage/fancy/cigarettes/cigpack_random = 80,
-				/obj/item/storage/fancy/cigarettes/cigpack_robustgold = 120,
-				/obj/item/reagent_containers/patch/nicotine = 70,
-				/obj/item/storage/fancy/matches = 20,
-				/obj/item/lighter/random = 40,
-				/obj/item/lighter/zippo = 80,
-				/obj/item/storage/fancy/rollingpapers = 30,
-				/obj/item/clothing/mask/cigarette/cigar/havana = 80)
-
-	refill_canister = /obj/item/vending_refill/cigarette
-
-/obj/machinery/economy/vending/cigarette/free
-	prices = list()
-
-/obj/machinery/economy/vending/cigarette/syndicate
-	products = list(/obj/item/storage/fancy/cigarettes/cigpack_syndicate = 7,
-				/obj/item/storage/fancy/cigarettes/cigpack_uplift = 3,
-				/obj/item/storage/fancy/cigarettes/cigpack_robust = 2,
-				/obj/item/storage/fancy/cigarettes/cigpack_carp = 3,
-				/obj/item/storage/fancy/cigarettes/cigpack_midori = 1,
-				/obj/item/storage/fancy/matches = 10,
-				/obj/item/storage/fancy/rollingpapers = 5)
-
-	contraband = list(/obj/item/lighter/zippo = 4)
-
-/obj/machinery/economy/vending/cigarette/syndicate/free
-	prices = list()
-
-/// Used in the lavaland_biodome_beach.dmm ruin
-/obj/machinery/economy/vending/cigarette/beach
-	name = "\improper ShadyCigs Ultra"
-	desc = "Now with extra premium products!"
-	slogan_list = list("Turn on, tune in, drop out!",
-					"Better living through chemistry!",
-					"Toke!",
-					"Don't forget to keep a smile on your lips and a song in your heart!")
-
-	ads_list = list("Probably not bad for you!",
-					"Dope will get you through times of no money better than money will get you through times of no dope!",
-					"It's good for you!")
-
-	products = list(/obj/item/storage/fancy/cigarettes = 5,
-				/obj/item/storage/fancy/cigarettes/cigpack_uplift = 3,
-				/obj/item/storage/fancy/cigarettes/cigpack_robust = 3,
-				/obj/item/storage/fancy/cigarettes/cigpack_carp = 3,
-				/obj/item/storage/fancy/cigarettes/cigpack_midori = 3,
-				/obj/item/storage/fancy/cigarettes/cigpack_robustgold = 1,
-				/obj/item/clothing/mask/cigarette/cigar/havana = 2,
-				/obj/item/storage/fancy/matches = 10,
-				/obj/item/lighter/zippo = 4,
-				/obj/item/storage/fancy/rollingpapers = 5)
-
-	contraband = list()
-	prices = list()
 
 /obj/machinery/economy/vending/wallmed
 	name = "\improper NanoMed"
@@ -1294,7 +1333,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/economy/vending/wallmed, 32, 32)
 /obj/machinery/economy/vending/cart
 	name = "\improper PTech"
 	desc = "Cartridges for PDA's."
-	slogan_list = list("Carts to go!")
+	slogan_list = list("Карточки в дорогу!")
 
 	icon_state = "cart"
 	icon_lightmask = "med"

@@ -500,13 +500,13 @@
 		var/list/L2 = list()
 		switch(S1.dir)
 			if(NORTH)
-				L2 = block(locate(S1.x-9, S1.y+36, S1.z), locate(S1.x+9, 255, S1.z))
+				L2 = block(S1.x-9, S1.y+36, S1.z, S1.x+9, 255, S1.z)
 			if(SOUTH)
-				L2 = block(locate(S1.x-9, 1, S1.z), locate(S1.x+9, S1.y-36, S1.z))
+				L2 = block(S1.x-9, 1, S1.z, S1.x+9, S1.y-36, S1.z)
 			if(EAST)
-				L2 = block(locate(S1.x+36, S1.y-9, S1.z), locate(255, S1.y+9, S1.z))
+				L2 = block(S1.x+36, S1.y-9, S1.z, 255, S1.y+9, S1.z)
 			if(WEST)
-				L2 = block(locate(1, S1.y-9, S1.z), locate(S1.x-36, S1.y+9, S1.z))
+				L2 = block(1, S1.y-9, S1.z, S1.x-36, S1.y+9, S1.z)
 		mobile_port.shuttle_smash(L2, S1)
 	mobile_port.roadkill(L0, L1, S1.dir)
 
@@ -911,7 +911,7 @@
 			return
 		switch(SSshuttle.moveShuttle(shuttleId, destination, TRUE, usr))
 			if(0)
-				atom_say("Shuttle departing! Please stand away from the doors.")
+				atom_say("Шаттл отправляется! Пожалуйста, отойдите от шлюзов.")
 				usr.create_log(MISC_LOG, "used [src] to call the [shuttleId] shuttle")
 				if(!moved)
 					moved = TRUE
@@ -922,7 +922,7 @@
 			if(2)
 				to_chat(usr, "<span class='notice'>Unable to comply.</span>")
 			if(3)
-				atom_say("Shuttle has already received a pending movement request. Please wait until the movement request is processed.")
+				atom_say("Шаттл уже получил запрос на перемещение. Пожалуйста, подождите, пока запрос на перемещение не будет обработан.")
 
 
 /obj/machinery/computer/shuttle/emag_act(mob/user)
