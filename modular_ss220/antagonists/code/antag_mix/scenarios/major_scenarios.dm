@@ -12,6 +12,7 @@
 	weight = 1
 	antag_cap = 4	// 1 команда на сценарий из 2-4 воксов
 	team_size = 4
+	candidates_required = 2
 	execution_once = TRUE
 
 	is_crew_antag = FALSE
