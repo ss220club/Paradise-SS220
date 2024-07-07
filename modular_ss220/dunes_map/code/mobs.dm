@@ -447,8 +447,8 @@
 	desc = "Мы обречены..."
 	attack_sound = 'sound/misc/demon_attack1.ogg'
 	icon = 'modular_ss220/dunes_map/icons/cthulhu.dmi'
-	icon_state = "cthulhu"
-	icon_living = "cthulhu"
+	icon_state = "act"
+	icon_living = "act"
 	pixel_x = -140
 	pixel_y = -120
 	layer = ABOVE_ALL_MOB_LAYER
@@ -505,11 +505,11 @@
 	. = ..()
 	switch(health)
 		if(0 to 1000)
-			icon_state = "cthulhu_low"
+			icon_state = "act3"
 		if(1001 to 2000)
-			icon_state = "cthulhu_mid"
+			icon_state = pick("act2", "act2-1)
 		else
-			icon_state = "cthulhu"
+			icon_state = "act"
 
 /mob/living/simple_animal/hostile/cthulhu/adjustHealth(damage, updating_health)
 	. = ..()
