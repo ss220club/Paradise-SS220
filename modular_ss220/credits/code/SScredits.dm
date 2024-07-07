@@ -28,7 +28,7 @@ SUBSYSTEM_DEF(credits)
 		end_titles = new /datum/credits/aprils_fool()
 		cinematic_type = /datum/cinematic/credits
 	else
-		end_titles = new /datum/credits/default()
+		end_titles = new /datum/credits/invasion()
 		cinematic_type = /datum/cinematic/credits
 
 	title_music = end_titles.soundtrack
