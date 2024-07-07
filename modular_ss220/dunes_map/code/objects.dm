@@ -709,6 +709,12 @@
 	var/breaksound = "shatter"
 	anchored = TRUE
 
+/obj/structure/tanya_camera/main
+    name = "Колба с оригинальной Таней"
+    desc = "Безобидное создание стало оружием уничтожения. Как иронично."
+    icon_state = "tanya"
+    max_integrity = 50
+
 /obj/structure/tanya_broken
 	name = "Разбитая колба"
 	desc = "Все еще не идеальна."
