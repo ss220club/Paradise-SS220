@@ -458,7 +458,7 @@
 		"Human" = 'modular_ss220/clothing/icons/mob/suits.dmi',
 	)
 	species_restricted = list("Human")
-	helmettype = /obj/item/clothing/suit/space/hardsuit/syndi/erika_dune
+	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/syndi/erika_dune
 	jetpack = /obj/item/tank/jetpack/suit
 
 
