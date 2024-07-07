@@ -20,7 +20,7 @@
 /datum/component/quicksand/Initialize(lying_mob_catch_chance, default_mob_catch_chance, list/stage_types)
 	. = ..()
 
-	if(lying_mob_catch_chance >= 0)
+	if(!isnull(lying_mob_catch_chance) && lying_mob_catch_chance >= 0)
 		src.lying_mob_catch_chance = lying_mob_catch_chance
 
 	if(default_mob_catch_chance > 0)
@@ -96,10 +96,17 @@
 	var/datum/quicksand_victim_holder/victim_holder = new /datum/quicksand_victim_holder(victim, get_stage_prototypes())
 	victims[victim] = victim_holder
 
-	RegisterSignal(victim_holder, COMSIG_QUICKSAND_VICTIM_RELEASED, PROC_REF(remove_victim))
-	RegisterSignal(victim, SIGNAL_ADDTRAIT(TRAIT_QUICKSAND_IMMUNE), PROC_REF(on_quicksand_trait_add))
+	RegisterSignal(victim_holder, COMSIG_QUICKSAND_VICTIM_RELEASED, PROC_REF(remove_victim_holder))
+	RegisterSignal(victim, SIGNAL_ADDTRAIT(TRAIT_QUICKSAND_IMMUNE), PROC_REF(remove_victim))
+	RegisterSignal(victim, COMSIG_LIVING_AHEAL, PROC_REF(remove_victim))
 
-/datum/component/quicksand/proc/remove_victim(datum/quicksand_victim_holder/victim_holder_to_remove)
+/datum/component/quicksand/proc/remove_victim(mob/living/victim)
+	SIGNAL_HANDLER
+	PRIVATE_PROC(TRUE)
+
+	remove_victim_holder(victims[victim])
+
+/datum/component/quicksand/proc/remove_victim_holder(datum/quicksand_victim_holder/victim_holder_to_remove)
 	SIGNAL_HANDLER
 	PRIVATE_PROC(TRUE)
 
@@ -108,13 +115,8 @@
 	victims -= actual_victim_mob
 	UnregisterSignal(victim_holder_to_remove, COMSIG_QUICKSAND_VICTIM_RELEASED)
 	UnregisterSignal(actual_victim_mob, SIGNAL_ADDTRAIT(TRAIT_QUICKSAND_IMMUNE))
+	UnregisterSignal(actual_victim_mob, COMSIG_LIVING_AHEAL)
 	qdel(victim_holder_to_remove)
-
-/datum/component/quicksand/proc/on_quicksand_trait_add(mob/living/victim)
-	SIGNAL_HANDLER
-	PRIVATE_PROC(TRUE)
-
-	remove_victim(victims[victim])
 
 /datum/component/quicksand/proc/get_stage_prototypes()
 	PRIVATE_PROC(TRUE)

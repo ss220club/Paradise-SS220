@@ -121,6 +121,12 @@
 	UnregisterSignal(victim, COMSIG_ATOM_ATTACK_HAND)
 	UnregisterSignal(victim, COMSIG_LIVING_RESIST)
 	SEND_SIGNAL(src, COMSIG_QUICKSAND_VICTIM_RELEASED, victim)
+
+	if(HAS_TRAIT(victim, TRAIT_FLOORED))
+		victim.fall()
+	else if(victim.resting)
+		victim.lay_down()
+
 	victim = null
 
 /datum/quicksand_victim_holder/proc/change_stage(datum/quicksand_stage/stage_to_change_to)
