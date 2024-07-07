@@ -239,10 +239,6 @@
 		to_chat(user, "<span class='warning'>You stop entering the exosuit!</span>")
 
 /obj/mecha/combat/nomad/GrantActions(mob/living/user, human_occupant = 0)
-	internals_action.Grant(user, src)
-	lights_action.Grant(user, src)
-	change_stance_action.Grant(user, src)
-
 	if (user == occupant)
 		GrantDriverActions(user)
 	else if (user == gunner)
@@ -252,6 +248,9 @@
 	eject_action.Grant(user, src)
 	stats_action.Grant(user, src)
 	strafing_action.Grant(user, src)
+	internals_action.Grant(user, src)
+	lights_action.Grant(user, src)
+	change_stance_action.Grant(user, src)
 	if(locate(/obj/item/mecha_parts/mecha_equipment/thrusters) in equipment)
 		add_thrusters()
 	if(drop_pod_action)
@@ -270,13 +269,13 @@
 	strafing_action.Remove(user)
 	thrusters_action.Remove(user)
 	stats_action.Remove(user)
+	internals_action.Remove(user)
+	lights_action.Remove(user)
+	change_stance_action.Remove(user)
 	if(drop_pod_action)
 		drop_pod_action.Remove(user)
 
 /obj/mecha/combat/nomad/RemoveActions(mob/living/user, human_occupant = 0)
-	internals_action.Remove(user)
-	lights_action.Remove(user)
-	change_stance_action.Remove(user)
 	user.client.RemoveViewMod("mecha-auto-zoom")
 	user.client.fit_viewport()
 

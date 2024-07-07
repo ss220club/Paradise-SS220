@@ -445,3 +445,31 @@
 	item_state = "hardsuit0-midnightsuit"
 	item_color = "midnightsuit"
 	armor = list(MELEE = 115, BULLET = 115, LASER = 65, ENERGY = 40, BOMB = 200, RAD = INFINITY, FIRE = INFINITY, ACID = INFINITY)
+
+
+/obj/item/clothing/suit/space/hardsuit/syndi/erika_dune
+	name = "\improper кроваво-красный костюм в обмотках"
+	desc = "Кроваво-красный экзоскелет оперативника Синдиката, дополненный различными подсумками, обмотками и заклепками."
+	icon = 'modular_ss220/clothing/icons/object/suits.dmi'
+	icon_state = "hardsuit1-syndi"
+	item_state = "syndie_hardsuit"
+	item_color = "syndi"
+	sprite_sheets = list(
+		"Human" = 'modular_ss220/clothing/icons/mob/suits.dmi',
+	)
+	species_restricted = list("Human")
+	helmettype = /obj/item/clothing/suit/space/hardsuit/syndi/erika_dune
+	jetpack = /obj/item/tank/jetpack/suit
+
+
+/obj/item/clothing/head/helmet/space/hardsuit/syndi/erika_dune
+	name = "\improper шлем кроваво-красный костюма"
+	desc = "Шлем кроваво-красного экзоскелета оперативника Синдиката, плотно обмотанный тканью для дополнительной защиты от песка."
+	icon = 'modular_ss220/clothing/icons/object/helmet.dmi'
+	icon_state = "hardsuit1-syndi"
+	item_state = "syndie_helm"
+	item_color = "syndi"
+	sprite_sheets = list(
+		"Human" = 'modular_ss220/clothing/icons/mob/helmet.dmi',
+	)
+	species_restricted = list("Human")

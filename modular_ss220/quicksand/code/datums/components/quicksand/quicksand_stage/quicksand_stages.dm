@@ -1,35 +1,32 @@
 /datum/quicksand_stage/feet
-	duration = 15 SECONDS
+	duration = 5 SECONDS
 	resist_chance = 50
 	resist_duration = 3 SECONDS
 	assist_chance = 50
 	critical_failure_chance = 50
-	on_apply_message = "Твои ноги засосало в зыбучие пески!"
-	on_successful_resist_message = "Ты освобождаешь свои ноги и выбираешься из зыбучих песков."
-	vertical_slide_size_pixels = -2
-	displacement_icon_state = "feet"
+	alpha_mask_y = 8
 	on_apply_status_effect = /datum/status_effect/quicksand_stage_1
+	on_apply_messages = list("Твои ноги засосало в зыбучие пески!")
+	on_successful_resist_messages = list("Ты освобождаешь свои ноги и выбираешься из зыбучих песков.")
 
 /datum/quicksand_stage/torso
-	duration = 15 SECONDS
+	duration = 5 SECONDS
 	resist_chance = 25
 	resist_duration = 3 SECONDS
 	assist_chance = 25
 	critical_failure_chance = 25
-	on_apply_message = "Какой ужас! Тебя по грудь поглотили зыбучие пески!"
-	on_successful_resist_message = "Тебе удалось освободить свой торс!"
-	vertical_slide_size_pixels = -4
-	displacement_icon_state = "torso"
+	alpha_mask_y = 16
 	on_apply_status_effect = /datum/status_effect/quicksand_stage_2
+	on_apply_messages = list("Какой ужас! Тебя по грудь поглотили зыбучие пески!")
+	on_successful_resist_messages = list("Тебе удалось освободить свой торс!")
 
 /datum/quicksand_stage/head
-	duration = 15 SECONDS
+	duration = 5 SECONDS
 	resist_chance = 5
 	resist_duration = 3 SECONDS
 	assist_chance = 10
 	critical_failure_chance = 25
-	on_apply_message = "Песок засыпается тебе прямо в рот, попадает в глаза и уши. Кажется, это конец."
-	on_successful_resist_message = "Ты уже думал что погибнешь, но каким-то чудом освобождаешь свою голову из песков!"
-	vertical_slide_size_pixels = -8
-	displacement_icon_state = "head"
+	alpha_mask_y = 25
 	on_apply_status_effect = /datum/status_effect/quicksand_stage_3
+	on_apply_messages = list("Песок засыпается тебе прямо в рот, попадает в глаза и уши. Кажется, это конец.")
+	on_successful_resist_messages = list("Ты уже думал что погибнешь, но каким-то чудом освобождаешь свою голову из песков!")
