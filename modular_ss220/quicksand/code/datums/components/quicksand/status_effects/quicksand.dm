@@ -73,7 +73,7 @@
 	owner.cure_blind(id)
 
 /datum/status_effect/quicksand_stage_3/tick()
-	owner.adjustBruteLoss(5, FALSE)
+	owner.adjustBruteLoss(2, FALSE)
 	to_chat(owner, span_danger("На тебя все сильнее давят зыбучие пески..."))
 
 /atom/movable/screen/alert/status_effect/quicksand_stage_3
