@@ -104,7 +104,7 @@
 	SIGNAL_HANDLER
 	PRIVATE_PROC(TRUE)
 
-	remove_victim(victims[victim])
+	remove_victim_holder(victims[victim])
 
 /datum/component/quicksand/proc/remove_victim_holder(datum/quicksand_victim_holder/victim_holder_to_remove)
 	SIGNAL_HANDLER
@@ -117,12 +117,6 @@
 	UnregisterSignal(actual_victim_mob, SIGNAL_ADDTRAIT(TRAIT_QUICKSAND_IMMUNE))
 	UnregisterSignal(actual_victim_mob, COMSIG_LIVING_AHEAL)
 	qdel(victim_holder_to_remove)
-
-/datum/component/quicksand/proc/on_quicksand_trait_add(mob/living/victim)
-	SIGNAL_HANDLER
-	PRIVATE_PROC(TRUE)
-
-	remove_victim(victims[victim])
 
 /datum/component/quicksand/proc/get_stage_prototypes()
 	PRIVATE_PROC(TRUE)
