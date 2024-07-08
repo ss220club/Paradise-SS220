@@ -105,6 +105,11 @@
 		for(var/datum/language/lang in host.languages)
 			src.add_language(lang.name)
 		RegisterSignal(host, COMSIG_MOB_DEATH, PROC_REF(on_host_death), override = TRUE)
+		var/datum/atom_hud/hud = GLOB.huds[DATA_HUD_TREACHEOUS_FLESH]
+		hud.add_hud_to(src)
+		hud.add_to_hud(host)
+		var/image/holder = host.hud_list[TREACHEOUS_FLESH_HUD]
+		holder.icon_state = "active_hud"
 
 
 /mob/living/simple_animal/changeling_primalis/proc/disinfest()
@@ -172,6 +177,14 @@
 			to_chat(src, span_warning("Не указаны навыки"))
 	for(var/datum/action/changeling_primalis/ability in primalis_abilities)
 		ability.Grant(src)
+
+// Chemicals HUD
+
+/datum/hud/simple_animal/changeling_primalis/New(mob/user)
+	..()
+	lingchemdisplay = new /atom/movable/screen/ling/chems()
+	lingchemdisplay.invisibility = 0
+	infodisplay += lingchemdisplay
 
 #undef PRIMALIS_CHEM_REGEN
 #undef PRIMALIS_CHEM_MAX

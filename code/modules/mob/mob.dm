@@ -75,6 +75,10 @@
 		IMPMINDSHIELD_HUD = 'icons/mob/hud/sechud.dmi',
 		IMPCHEM_HUD = 'icons/mob/hud/sechud.dmi',
 		IMPTRACK_HUD = 'icons/mob/hud/sechud.dmi',
+
+		// SS220 LAZARUS EDIT - START
+		TREACHEOUS_FLESH_HUD = 'modular_ss220/lazarus/icons/treacherous_flesh.dmi',
+		// SS220 LAZARUS EDIT - END
 	)
 
 	for(var/hud in hud_possible)

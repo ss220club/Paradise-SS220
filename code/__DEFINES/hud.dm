@@ -28,6 +28,10 @@
 #define GLAND_HUD 			"23"//Gland indicators for abductors
 #define JANI_HUD			"24" // Sign overlay over cleanable decals
 
+//SS220 LAZARUS EDIT - START
+#define TREACHEOUS_FLESH_HUD "25"
+//SS220 LAZARUS EDIT - END
+
 //by default everything in the hud_list of an atom is an image
 //a value in hud_list with one of these will change that behavior
 #define HUD_LIST_LIST 1
