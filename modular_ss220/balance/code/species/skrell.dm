@@ -1,10 +1,13 @@
 // Dealing toxins when drinking alcohol
-/datum/reagent/consumable/ethanol/on_mob_life(mob/living/M)
+/obj/item/organ/internal/kidneys/skrell/on_life()
 	. = ..()
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		if(istype(H.internal_organs_slot["kidneys"], /obj/item/organ/internal/kidneys/skrell))
-			H.adjustToxLoss(5 * alcohol_perc)
+	var/datum/reagent/consumable/ethanol/drink = locate(/datum/reagent/consumable/ethanol) in owner.reagents.reagent_list
+	if(drink)
+		if(is_broken())
+			owner.adjustToxLoss(1.5 * drink.alcohol_perc * PROCESS_ACCURACY)
+		else
+			owner.adjustToxLoss(0.5 * drink.alcohol_perc * PROCESS_ACCURACY)
+			receive_damage(0.1 * PROCESS_ACCURACY)
 
 // Weak night vision
 /obj/item/organ/internal/eyes/skrell
@@ -12,7 +15,7 @@
 
 // Reagent Scan
 /obj/item/food/examine(mob/user)
-	. += ..()
+	. = ..()
 	if(isskrell(user))
 		. += "<span class='notice'>It contains:</span>"
 		for(var/I in reagents.reagent_list)
