@@ -54,7 +54,7 @@
 /obj/item/clothing/shoes/black/neon/proc/apply_neon_overlay(mob/user)
 	if(!user)
 		return
-	neon_overlay = mutable_appearance('modular_ss220/clothing/icons/mob/shoes.dmi', "neon_overlay", EMISSIVE_PLANE)
+	neon_overlay = mutable_appearance('modular_ss220/clothing/icons/mob/shoes.dmi', "neon_overlay")
 	neon_overlay.color = color
 	user.add_overlay(neon_overlay)
 
@@ -69,19 +69,19 @@
 /obj/item/clothing/shoes/black/neon/proc/reload_neon_overlay(mob/user)
 	if(!user)
 		return
-	var/mob/living/carbon/human/H = user
-	if(neon_overlay)
-		remove_neon_overlay(user)
-		if(H.get_item_by_slot(SLOT_HUD_SHOES))
-			apply_neon_overlay(user)
+	if(!neon_overlay)
+		return
+
+	remove_neon_overlay(user)
+	if(user.get_item_by_slot(SLOT_HUD_SHOES))
+		apply_neon_overlay(user)
 
 /// Toggles neon overlay and light emit
 /obj/item/clothing/shoes/black/neon/proc/toggle_glow(mob/user)
 	if(!user)
 		return
-	var/mob/living/carbon/human/H = user
 	// Toggle neon overlay
-	if(!glow_active && H.get_item_by_slot(SLOT_HUD_SHOES))
+	if(!glow_active && user.get_item_by_slot(SLOT_HUD_SHOES))
 		apply_neon_overlay(user)
 	else if(neon_overlay)
 		remove_neon_overlay(user)
