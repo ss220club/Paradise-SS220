@@ -19,7 +19,7 @@
 		return ELEMENT_INCOMPATIBLE
 
 	RegisterSignal(mob_to_censor, COMSIG_MOB_SAY, PROC_REF(filter_speech), TRUE)
-	RegisterSignal(mob_to_censor, COMSIG_MOB_LOGOUT, PROC_REF(Detach))
+	RegisterSignal(mob_to_censor, COMSIG_MOB_LOGOUT, PROC_REF(Detach), TRUE)
 
 /datum/element/speech_filter/Detach(datum/source, force)
 	. = ..()
