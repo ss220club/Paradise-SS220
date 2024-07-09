@@ -100,6 +100,16 @@
 	name = "Атриум"
 	icon_state = "bar"
 
+/area/station/public/vacant_office/secondary
+
+/area/station/service/chapel/bedroom
+	name = "Каюта Священника"
+	icon_state = "chapeloffice"
+
+/area/station/service/chapel/study
+	name = "Рабочий Кабинет Священника"
+	icon_state = "chapeloffice"
+
 /* CentCom */
 /area/centcom/ss220
 	name = "ЦК"
@@ -159,6 +169,10 @@
 /area/centcom/ss220/jail
 	name = "ЦК - Тюрьма"
 	icon_state = "centcom"
+
+/area/shuttle/assault_pod/nanotrasen
+	name = "Nanotrasen Drop Pod"
+	icon_state = "shuttle"
 
 /* Syndicate Base - Mothership */
 /area/syndicate_mothership

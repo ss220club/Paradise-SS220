@@ -79,7 +79,10 @@
 		var/datum/gear/G = geartype
 
 		var/use_category = initial(G.sort_category)
-
+		// SS220 EDIT - START
+		if(G.removed_from_loadout)
+			continue
+		// SS220 EDIT - END
 		if(G == initial(G.main_typepath))
 			continue
 
@@ -142,7 +145,7 @@
 	for(var/path in subtypesof(/datum/preference_toggle))
 		var/datum/preference_toggle/pref_toggle = path
 		if(initial(pref_toggle.name))
-			GLOB.preference_toggles += new path()
+			GLOB.preference_toggles[path] = new path()
 
 	for(var/path in subtypesof(/datum/objective))
 		var/datum/objective/O = path

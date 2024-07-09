@@ -143,7 +143,7 @@
 /obj/effect/turf_decal/delivery/white,
 /obj/machinery/door_control/shutter/north{
 	id = "Main in";
-	req_access = list(271)
+	req_access = list(301)
 	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/inside/complex)
@@ -246,7 +246,7 @@
 /obj/item/clothing/accessory/stethoscope,
 /obj/machinery/door_control/shutter/west{
 	id = "CMDgate";
-	req_access = list(271)
+	req_access = list(301)
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plasteel{
@@ -392,10 +392,7 @@
 /turf/simulated/floor/indestructible/grass,
 /area/awaymission/jungle_planet/outside/river)
 "aEA" = (
-/obj/machinery/firealarm{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/machinery/firealarm/directional/east,
 /obj/item/reagent_containers/glass/beaker/waterbottle,
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/wood/oak,
@@ -570,8 +567,8 @@
 "aRy" = (
 /obj/machinery/door/airlock/mining{
 	locked = 1;
-	name = "Main Hangar";
-	req_access = list(271);
+	name = "main Hangar";
+	req_access = list(301);
 	id_tag = "commanddoor"
 	},
 /obj/machinery/door/firedoor,
@@ -944,10 +941,7 @@
 /turf/simulated/floor/indestructible/grass,
 /area/awaymission/jungle_planet/outside)
 "bqx" = (
-/obj/machinery/firealarm{
-	name = "north fire alarm";
-	pixel_y = 24
-	},
+/obj/machinery/firealarm/directional/north,
 /turf/simulated/floor/wood/oak,
 /area/awaymission/jungle_planet/inside/complex)
 "bqF" = (
@@ -1775,11 +1769,11 @@
 	},
 /obj/machinery/door/airlock/mining{
 	name = "second hangar";
-	req_access = list(271)
+	req_access = list(301)
 	},
 /obj/machinery/door_control/shutter/north{
 	id = "Cargo out";
-	req_access = list(271)
+	req_access = list(301)
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -2171,7 +2165,7 @@
 /obj/machinery/door/airlock/engineering{
 	locked = 1;
 	name = "engineering";
-	req_access = list(271)
+	req_access = list(301)
 	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/inside/complex)
@@ -2960,7 +2954,7 @@
 /obj/machinery/door_control/shutter/north{
 	name = "Armory Shutters-control";
 	id = "Arm in";
-	req_access = list(271)
+	req_access = list(301)
 	},
 /obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/plasteel{
@@ -3722,7 +3716,7 @@
 "eRi" = (
 /obj/machinery/door_control/shutter/east{
 	id = "Right in";
-	req_access = list(271)
+	req_access = list(301)
 	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/inside/complex)
@@ -4499,10 +4493,7 @@
 /area/awaymission/jungle_planet/outside/river)
 "fTv" = (
 /obj/structure/computerframe,
-/obj/machinery/firealarm{
-	name = "north fire alarm";
-	pixel_y = 24
-	},
+/obj/machinery/firealarm/directional/north,
 /obj/item/stack/cable_coil{
 	amount = 2
 	},
@@ -5170,6 +5161,22 @@
 	name = "ground"
 	},
 /area/awaymission/jungle_planet/outside/cave)
+"gUi" = (
+/obj/machinery/door/airlock/mining{
+	name = "second hangar";
+	locked = 1;
+	req_access = list(301);
+	id_tag = "hang2in"
+	},
+/obj/machinery/door/poddoor/shutters{
+	dir = 8;
+	id_tag = "Cargo in"
+	},
+/turf/simulated/floor/plasteel{
+	dir = 4;
+	icon_state = "darkneutralfull"
+	},
+/area/awaymission/jungle_planet/inside)
 "gUQ" = (
 /obj/effect/spawner/random_spawners/dirt_maybe,
 /obj/item/shovel{
@@ -5291,7 +5298,7 @@
 "hbL" = (
 /obj/machinery/door/airlock/medical{
 	name = "morgue";
-	req_access = list(271)
+	req_access = list(301)
 	},
 /turf/simulated/floor/plasteel{
 	dir = 5;
@@ -6143,10 +6150,7 @@
 /obj/structure/table,
 /obj/item/flashlight/lamp,
 /obj/item/flash,
-/obj/machinery/firealarm{
-	name = "north fire alarm";
-	pixel_y = 24
-	},
+/obj/machinery/firealarm/directional/north,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "red"
@@ -6172,7 +6176,7 @@
 /obj/machinery/door/airlock/security{
 	locked = 1;
 	name = "security";
-	req_access = list(271)
+	req_access = list(301)
 	},
 /obj/machinery/door/poddoor/shutters{
 	id_tag = "Sec in";
@@ -6243,7 +6247,7 @@
 /obj/machinery/door/airlock/mining{
 	locked = 1;
 	name = "main hangar";
-	req_access = list(271)
+	req_access = list(301)
 	},
 /obj/machinery/door/poddoor/shutters{
 	dir = 2;
@@ -6511,7 +6515,7 @@
 "iAq" = (
 /obj/machinery/door/airlock/medical{
 	name = "medbay";
-	req_access = list(271)
+	req_access = list(301)
 	},
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/plasteel,
@@ -7458,7 +7462,7 @@
 /obj/effect/decal/cleanable/blood/old,
 /obj/machinery/door_control/shutter/south{
 	id = "Cargo in";
-	req_access = list(271)
+	req_access = list(301)
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -7649,7 +7653,7 @@
 /obj/machinery/door_control/shutter/south{
 	id = "Sec in";
 	name = "Security Shutters-control";
-	req_access = list(271)
+	req_access = list(301)
 	},
 /obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/plasteel{
@@ -8300,11 +8304,7 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/inside/complex)
 "kIg" = (
-/obj/machinery/firealarm{
-	dir = 1;
-	name = "south fire alarm";
-	pixel_y = -24
-	},
+/obj/machinery/firealarm/directional/south,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "darkneutralfull"
@@ -8360,9 +8360,9 @@
 /area/awaymission/jungle_planet/inside/complex)
 "kLd" = (
 /obj/machinery/economy/vending/medical{
-	req_access = list(271)
+	req_access = list(301)
 	},
-/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/random_spawners/dirt_maybe,
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -9204,7 +9204,7 @@
 	},
 /obj/machinery/door/airlock/mining{
 	name = "second hangar";
-	req_access = list(271)
+	req_access = list(301)
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -9386,10 +9386,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/jungle_planet/inside)
 "mdf" = (
-/obj/machinery/firealarm{
-	name = "north fire alarm";
-	pixel_y = 24
-	},
+/obj/machinery/firealarm/directional/north,
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -9532,12 +9529,8 @@
 /obj/machinery/door/airlock/mining{
 	name = "second hangar";
 	locked = 1;
-	req_access = list(271);
+	req_access = list(301);
 	id_tag = "hang2in"
-	},
-/obj/machinery/door/poddoor/shutters{
-	dir = 8;
-	id_tag = "Cargo in"
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -9556,7 +9549,7 @@
 /obj/machinery/door/airlock/security{
 	locked = 1;
 	name = "security";
-	req_access = list(271)
+	req_access = list(301)
 	},
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/plasteel,
@@ -9641,11 +9634,7 @@
 	},
 /area/awaymission/jungle_planet/inside/complex)
 "mpQ" = (
-/obj/machinery/firealarm{
-	dir = 1;
-	name = "south fire alarm";
-	pixel_y = -24
-	},
+/obj/machinery/firealarm/directional/south,
 /obj/effect/decal/remains/human,
 /obj/effect/spawner/random_spawners/blood_often,
 /turf/simulated/floor/plasteel{
@@ -10255,19 +10244,20 @@
 	pixel_x = 8;
 	id = "Command";
 	name = "command shsutters control";
-	req_access = list(271)
+	req_access = list(301)
 	},
 /obj/machinery/door_control/shutter{
 	pixel_x = -8;
 	name = "shutters control";
 	id = "Hang in";
-	req_access = list(271)
+	req_access = list(301)
 	},
 /obj/machinery/door_control/bolt_control{
 	pixel_y = 8;
 	in_use = 1;
 	desiredstate_open = 1;
-	id = "commanddoor"
+	id = "commanddoor";
+	req_access = list(301)
 	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/inside/complex)
@@ -10652,11 +10642,7 @@
 "nBk" = (
 /obj/item/clothing/head/helmet/old,
 /obj/effect/decal/cleanable/generic,
-/obj/machinery/firealarm{
-	dir = 1;
-	name = "south fire alarm";
-	pixel_y = -24
-	},
+/obj/machinery/firealarm/directional/south,
 /obj/structure/extinguisher_cabinet{
 	pixel_x = 25
 	},
@@ -11331,7 +11317,7 @@
 	},
 /obj/machinery/door/airlock/mining{
 	name = "second hangar";
-	req_access = list(271)
+	req_access = list(301)
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -11779,7 +11765,7 @@
 /obj/machinery/door/airlock/command{
 	locked = 1;
 	name = "command";
-	req_access = list(271)
+	req_access = list(301)
 	},
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
@@ -12022,11 +12008,7 @@
 /turf/simulated/floor/wood/oak,
 /area/awaymission/jungle_planet/outside/cave/pirate)
 "pqt" = (
-/obj/machinery/firealarm{
-	dir = 1;
-	name = "south fire alarm";
-	pixel_y = -24
-	},
+/obj/machinery/firealarm/directional/south,
 /obj/effect/spawner/random_spawners/blood_often,
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plasteel,
@@ -12379,11 +12361,7 @@
 	},
 /area/awaymission/jungle_planet/outside/cave/small)
 "pTC" = (
-/obj/machinery/firealarm{
-	dir = 1;
-	name = "south fire alarm";
-	pixel_y = -24
-	},
+/obj/machinery/firealarm/directional/south,
 /obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/inside/complex)
@@ -12706,7 +12684,7 @@
 /area/awaymission/jungle_planet/outside/abandoned)
 "qph" = (
 /obj/structure/closet/syndicate,
-/obj/item/clothing/suit/jacket/syndicatebomber,
+/obj/item/clothing/suit/jacket/bomber/syndicate,
 /obj/effect/spawner/random_spawners/dirt_often,
 /turf/simulated/floor/mineral/plastitanium,
 /area/awaymission/jungle_planet/outside/abandoned)
@@ -12925,7 +12903,7 @@
 /obj/machinery/door/airlock/mining{
 	locked = 1;
 	name = "main hangar";
-	req_access = list(271)
+	req_access = list(301)
 	},
 /obj/machinery/door/poddoor/shutters{
 	dir = 8;
@@ -13047,7 +13025,7 @@
 /obj/machinery/door/firedoor/closed,
 /obj/machinery/door/airlock/engineering{
 	name = "engineering";
-	req_access = list(271)
+	req_access = list(301)
 	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/inside/complex)
@@ -13740,7 +13718,7 @@
 	},
 /obj/machinery/door/airlock/mining{
 	name = "main hangar";
-	req_access = list(271)
+	req_access = list(301)
 	},
 /obj/machinery/door/poddoor/shutters{
 	dir = 2;
@@ -13964,7 +13942,7 @@
 "rNJ" = (
 /obj/machinery/door_control/shutter/south{
 	id = "Main in";
-	req_access = list(271);
+	req_access = list(301);
 	interact_offline = 1
 	},
 /obj/effect/spawner/random_spawners/dirt_maybe,
@@ -14069,10 +14047,7 @@
 /turf/simulated/floor/engine,
 /area/awaymission/jungle_planet/inside/complex)
 "rSn" = (
-/obj/machinery/firealarm{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/machinery/firealarm/directional/east,
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -14830,7 +14805,7 @@
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/door_control/shutter/south{
 	id = "Cargo in";
-	req_access = list(271)
+	req_access = list(301)
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -15378,7 +15353,7 @@
 /obj/machinery/door/airlock/mining{
 	name = "second hangar";
 	locked = 1;
-	req_access = list(271);
+	req_access = list(301);
 	id_tag = "hang2in"
 	},
 /obj/effect/decal/cleanable/blood/writing{
@@ -15724,7 +15699,7 @@
 /obj/machinery/door/airlock/mining{
 	locked = 1;
 	name = "main hangar";
-	req_access = list(271)
+	req_access = list(301)
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -16081,10 +16056,7 @@
 /obj/item/stack/rods,
 /obj/item/shard,
 /obj/effect/spawner/random_spawners/dirt_maybe,
-/obj/machinery/firealarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/machinery/firealarm/directional/west,
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -17250,7 +17222,7 @@
 /obj/machinery/door/airlock/security{
 	locked = 1;
 	name = "security";
-	req_access = list(271)
+	req_access = list(301)
 	},
 /turf/simulated/floor/plasteel{
 	dir = 1;
@@ -18325,7 +18297,7 @@
 /obj/machinery/door/airlock/command{
 	locked = 1;
 	name = "command";
-	req_access = list(271);
+	req_access = list(301);
 	id_tag = "commanddoor"
 	},
 /obj/machinery/door/firedoor/closed,
@@ -18346,7 +18318,7 @@
 /obj/machinery/door/airlock/security{
 	locked = 1;
 	name = "security";
-	req_access = list(271)
+	req_access = list(301)
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -18427,7 +18399,7 @@
 /obj/machinery/door_control/shutter/south{
 	name = "Armory Shutters-control";
 	id = "Arm in";
-	req_access = list(271)
+	req_access = list(301)
 	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
@@ -18898,7 +18870,7 @@
 "xPr" = (
 /obj/machinery/door/airlock/research{
 	name = "robotech";
-	req_access = list(271)
+	req_access = list(301)
 	},
 /obj/machinery/door/firedoor/closed,
 /turf/simulated/floor/plasteel,
@@ -19003,7 +18975,7 @@
 /obj/machinery/door/airlock/security{
 	locked = 1;
 	name = "security";
-	req_access = list(271)
+	req_access = list(301)
 	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/inside/complex)
@@ -27991,7 +27963,7 @@ wJh
 wJh
 fQm
 fQm
-mky
+gUi
 tzH
 mky
 vPN

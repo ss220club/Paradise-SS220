@@ -17,73 +17,31 @@
 	pixel_x = 22
 	dir = 8
 
-/* WallMed */
-/obj/machinery/economy/vending/wallmed/directional
-	name = "\improper Emergency NanoMed"
-
-/obj/machinery/economy/vending/wallmed/directional/south
-	pixel_y = -32
-
-/obj/machinery/economy/vending/wallmed/directional/north
-	pixel_y = 32
-
-/obj/machinery/economy/vending/wallmed/directional/west
-	pixel_x = -25
-
-/obj/machinery/economy/vending/wallmed/directional/east
-	pixel_x = 24
-
-/obj/machinery/economy/vending/wallmed/emergency_ntmed/directional
-	name = "\improper NTmed"
-
-/obj/machinery/economy/vending/wallmed/emergency_ntmed/directional/south
-	pixel_y = -32
-
-/obj/machinery/economy/vending/wallmed/emergency_ntmed/directional/north
-	pixel_y = 32
-
-/obj/machinery/economy/vending/wallmed/emergency_ntmed/directional/west
-	pixel_x = -25
-
-/obj/machinery/economy/vending/wallmed/emergency_ntmed/directional/east
-	pixel_x = 24
+/* Nanotrasen WallMed */
+MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/economy/vending/wallmed/emergency_ntmed, 32, 32)
 
 /* Fire Alarm */
-/obj/machinery/firealarm/directional
-	name = "\improper fire alarm"
-
+// TODO: Cringe dirs, should be fixed in .dmi
 /obj/machinery/firealarm/directional/south
-	pixel_y = -24
 	dir = 1
 
 /obj/machinery/firealarm/directional/north
-	pixel_y = 24
+	dir = 2
 
-/obj/machinery/firealarm/directional/west
-	pixel_x = -24
-	dir = 8
-
-/obj/machinery/firealarm/directional/east
-	pixel_x = 24
-	dir = 4
-
-/obj/machinery/firealarm/no_alarm
-	name = "\improper fire alarm"
-
-/obj/machinery/firealarm/no_alarm/south
-	pixel_y = -24
+/obj/machinery/firealarm/no_alarm/directional/south
 	dir = 1
 
-/obj/machinery/firealarm/no_alarm/north
-	pixel_y = 24
+/obj/machinery/firealarm/no_alarm/directional/north
+	dir = 2
 
-/obj/machinery/firealarm/no_alarm/west
-	pixel_x = -24
-	dir = 4
+/obj/machinery/firealarm/syndicate/directional/south
+	dir = 1
 
-/obj/machinery/firealarm/no_alarm/east
-	pixel_x = 24
-	dir = 8
+/obj/machinery/firealarm/syndicate/directional/north
+	dir = 2
+
+MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/firealarm/no_alarm, 24, 24)
+MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/firealarm/syndicate, 24, 24)
 
 /* Light Switch */
 /obj/machinery/light_switch
