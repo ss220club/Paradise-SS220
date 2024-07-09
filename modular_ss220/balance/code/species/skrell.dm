@@ -1,10 +1,10 @@
 // Dealing toxins when drinking alcohol
 /datum/reagent/consumable/ethanol/on_mob_life(mob/living/M)
+	. = ..()
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(istype(H.internal_organs_slot["kidneys"], /obj/item/organ/internal/kidneys/skrell))
 			H.adjustToxLoss(5 * alcohol_perc)
-	return ..()
 
 // Weak night vision
 /obj/item/organ/internal/eyes/skrell
