@@ -807,7 +807,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 	set category = "Команды ИИ"
 	set name = "Управление роботами"
 	set desc = "Удалённый контроль роботов."
-	if(stat == 2)
+	if(stat == DEAD)
 		to_chat(src, "<span class='danger'>Критическая ошибка. Система не работает.</span>")
 		return
 
@@ -905,7 +905,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 	if(check_unable())
 		return
 
-	if(usr.stat == 2)
+	if(usr.stat == DEAD)
 		to_chat(usr, "Вы не можете сменить сеть камер поскольку вы мертвы!")
 		return
 
@@ -945,7 +945,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 	set category = "Команды ИИ"
 	set name = "Эмоция ИИ"
 
-	if(usr.stat == 2)
+	if(usr.stat == DEAD)
 		to_chat(usr, "Вы не можете сменить эмоцию поскольку вы мертвы!")
 		return
 

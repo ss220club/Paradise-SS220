@@ -137,7 +137,7 @@
 	set category = "Команды ИИ"
 	set name = "Переключить ускорение камеры"
 
-	if(usr.stat == 2)
+	if(usr.stat == DEAD)
 		return //won't work if dead
 	acceleration = !acceleration
 	to_chat(usr, "Ускорение камеры было [acceleration ? "включено" : "отключено"].")
