@@ -105,8 +105,8 @@
 	var/drop_x = 1
 	var/drop_y = 1
 	var/drop_z = -1
-	var/drop_chance = 1
-	var/scorpion_chance = 4
+	var/drop_chance = 0
+	var/scorpion_chance = 8
 
 /obj/structure/sink/kolodec/examine_more(mob/user)
 	. = ..()
