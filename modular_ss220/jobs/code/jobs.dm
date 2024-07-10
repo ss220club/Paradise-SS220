@@ -8,9 +8,11 @@
 	var/relate_job // for relate positions and landmark
 	var/is_extra_job = FALSE // Special Jobs Window
 	var/is_main_job = TRUE // Are we the main job for this relate?
+	var/shares_slots_with_relate = FALSE
 
 /datum/job/doctor
 	relate_job = "Medical Intern"
+	shares_slots_with_relate = TRUE
 
 /datum/job/doctor/intern
 	relate_job = "Medical Doctor"
@@ -18,6 +20,7 @@
 
 /datum/job/scientist
 	relate_job = "Student Scientist"
+	shares_slots_with_relate = TRUE
 
 /datum/job/scientist/student
 	relate_job = "Scientist"
@@ -25,6 +28,7 @@
 
 /datum/job/engineer
 	relate_job = "Trainee Engineer"
+	shares_slots_with_relate = TRUE
 
 /datum/job/engineer/trainee
 	relate_job = "Station Engineer"
@@ -32,6 +36,7 @@
 
 /datum/job/officer
 	relate_job = "Security Cadet"
+	shares_slots_with_relate = TRUE
 
 /datum/job/officer/cadet
 	relate_job = "Security Officer"
@@ -46,7 +51,7 @@
 		return FALSE
 	if(check_hidden_from_job_prefs())
 		return FALSE
-	if(relate_job)
+	if(relate_job && shares_slots_with_relate)
 		return check_relate_total_positions()
 
 	return ..()
@@ -56,7 +61,7 @@
 		return FALSE
 	if(check_hidden_from_job_prefs())
 		return FALSE
-	if(relate_job)
+	if(relate_job && shares_slots_with_relate)
 		return check_relate_spawn_positions()
 
 	return ..()
