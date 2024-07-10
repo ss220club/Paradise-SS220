@@ -38,7 +38,7 @@
 		/obj/item/bio_chip/death_alarm
 	)
 
-/datum/outfit/job/donor/vip_guest(mob/living/carbon/human/H, visualsOnly = FALSE)
+/datum/outfit/job/donor/vip_guest/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	..()
 	if(visualsOnly)
 		return
