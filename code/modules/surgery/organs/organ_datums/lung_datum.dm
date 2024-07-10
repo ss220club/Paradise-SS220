@@ -254,21 +254,21 @@
 			if(prob(20))
 				to_chat(H, "<span class='warning'>You feel [cold_message] in your [linked_organ.name]!</span>")
 
-	if(!HAS_TRAIT(H, TRAIT_RESISTHEAT)) // HEAT DAMAGE
-		var/HM = abs(H.dna.species.heatmod)
-		var/TH = 0
-		if(breath_temperature > heat_level_1_threshold && breath_temperature < heat_level_2_threshold)
-			TH = heat_level_1_damage
-		if(breath_temperature > heat_level_2_threshold && breath_temperature < heat_level_3_threshold)
-			TH = heat_level_2_damage
-		if(breath_temperature > heat_level_3_threshold)
-			TH = heat_level_3_damage
-		if(TH)
-			for(var/D in heat_damage_types)
-				H.apply_damage_type(TH * HM * heat_damage_types[D], D)
-		if(breath_temperature > heat_level_1_threshold)
-			if(prob(20))
-				to_chat(H, "<span class='warning'>You feel [hot_message] in your [linked_organ.name]!</span>")
+	// if(!HAS_TRAIT(H, TRAIT_RESISTHEAT)) // HEAT DAMAGE
+	// 	var/HM = abs(H.dna.species.heatmod)
+	// 	var/TH = 0
+	// 	if(breath_temperature > heat_level_1_threshold && breath_temperature < heat_level_2_threshold)
+	// 		TH = heat_level_1_damage
+	// 	if(breath_temperature > heat_level_2_threshold && breath_temperature < heat_level_3_threshold)
+	// 		TH = heat_level_2_damage
+	// 	if(breath_temperature > heat_level_3_threshold)
+	// 		TH = heat_level_3_damage
+	// 	if(TH)
+	// 		for(var/D in heat_damage_types)
+	// 			H.apply_damage_type(TH * HM * heat_damage_types[D], D)
+	// 	if(breath_temperature > heat_level_1_threshold)
+	// 		if(prob(20))
+	// 			to_chat(H, "<span class='warning'>You feel [hot_message] in your [linked_organ.name]!</span>")
 
 
 /**
