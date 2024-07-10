@@ -8,24 +8,31 @@
 	var/relate_job // for relate positions and landmark
 	var/is_relate_positions = FALSE	// Slots
 	var/is_extra_job = FALSE // Special Jobs Window
+	var/count_positions = TRUE // Do we add this position's amount for combined total/spawn positions?
 
 /datum/job/doctor
 	relate_job = "Medical Intern"
 	is_relate_positions = TRUE
+
 /datum/job/doctor/intern
 	relate_job = "Medical Doctor"
+	count_positions = FALSE
 
 /datum/job/scientist
 	relate_job = "Student Scientist"
 	is_relate_positions = TRUE
+
 /datum/job/scientist/student
 	relate_job = "Scientist"
+	count_positions = FALSE
 
 /datum/job/engineer
 	relate_job = "Trainee Engineer"
 	is_relate_positions = TRUE
+
 /datum/job/engineer/trainee
 	relate_job = "Station Engineer"
+	count_positions = FALSE
 
 /datum/job/officer
 	relate_job = "Security Cadet"
@@ -33,6 +40,7 @@
 
 /datum/job/officer/cadet
 	relate_job = "Security Officer"
+	count_positions = FALSE
 
 // ==============================
 // PROCS
@@ -65,7 +73,13 @@
 	if(total_positions == -1 || temp.total_positions == -1)
 		return TRUE
 
-	return (current_positions + temp.current_positions < total_positions + temp.total_positions)
+	var/relate_total_positions = 0
+	if(count_positions)
+		relate_total_positions += total_positions
+	if(temp.count_positions)
+		relate_total_positions += temp.total_positions
+
+	return (current_positions + temp.current_positions < relate_total_positions)
 
 /datum/job/proc/check_relate_spawn_positions()
 	var/datum/job/temp = SSjobs.GetJob(relate_job)
@@ -74,7 +88,13 @@
 	if(spawn_positions == -1 || temp.spawn_positions == -1)
 		return TRUE
 
-	return (current_positions + temp.current_positions < spawn_positions + temp.spawn_positions)
+	var/relate_spawn_positions = 0
+	if(count_positions)
+		relate_spawn_positions += spawn_positions
+	if(temp.count_positions)
+		relate_spawn_positions += temp.spawn_positions
+
+	return (current_positions + temp.current_positions < relate_spawn_positions)
 
 /datum/job/proc/check_hidden_from_job_prefs()
 	if(hidden_from_job_prefs)
