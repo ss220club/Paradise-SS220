@@ -460,7 +460,8 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 		"NAD Burn",
 		"Borb",
 		"Bee",
-		"Catamari"
+		"Catamari",
+		"Boykisser"
 		)
 	if(custom_sprite)
 		display_choices += "Custom"
@@ -567,6 +568,8 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 			icon_state = "ai-bee"
 		if("Catamari")
 			icon_state = "ai-catamari"
+		if("Boykisser")
+			icon_state = "ai-boykisser"
 		else
 			icon_state = "ai"
 
