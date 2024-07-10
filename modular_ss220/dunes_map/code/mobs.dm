@@ -34,6 +34,7 @@
 /obj/structure/spawner/desert_depretarors/altar/range
 	mob_types = list(/mob/living/simple_animal/hostile/duna/range)
 
+
 // Снаряды депредов
 /obj/item/projectile/beam/depredator
 	name = "depredator beam"
@@ -409,6 +410,22 @@
 	melee_damage_lower = 10
 	melee_damage_upper = 20
 	move_to_delay = 5
+
+/obj/structure/spawner/scorpio
+	name = "вход в тоннель"
+	desc = "Вам кажется, что на вас пялится 8 светящихся глаз."
+	icon = 'icons/mob/nest.dmi'
+	icon_state = "hole"
+
+	faction = list("scorpio")
+	max_mobs = 2
+	max_integrity = 500
+	density = FALSE
+	mob_types = list(/mob/living/simple_animal/hostile/poison/giant_scorpio)
+	spawn_time = 120 SECONDS
+
+/obj/structure/spawner/scorpio/poison
+	mob_types = list(/mob/living/simple_animal/hostile/poison/giant_scorpio/poison)
 
 /mob/living/simple_animal/hostile/poison_snake
 	maxbodytemp = INFINITY
