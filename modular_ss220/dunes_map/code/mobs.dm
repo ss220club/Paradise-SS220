@@ -410,6 +410,8 @@
 	melee_damage_upper = 20
 	move_to_delay = 5
 
+/mob/living/simple_animal/hostile/poison_snake
+	maxbodytemp = INFINITY
 
 /mob/living/simple_animal/hostile/poison_snake/scorpio_mini
 	name = "скорпион"
