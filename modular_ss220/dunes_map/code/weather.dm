@@ -52,13 +52,16 @@
 		L = L.loc //Matryoshka check
 	return FALSE //RIP you
 
-/datum/weather/ash_storm/sand_storm/weather_act(mob/living/carbon/human/L)
+/datum/weather/ash_storm/sand_storm/weather_act(mob/living/L)
+	if(issimple_animal(L))
+		return
+	if(is_blind_immune(L))
+		return
 	if(!is_ash_immune(L))
 		L.adjustFireLoss(1)
 		L.SetSlowed(5,5)
 		var/blurr_prob = 40
 		if (prob(blurr_prob))
 			L.AdjustEyeBlurry (rand(2 SECONDS, 8 SECONDS))
-	if(is_blind_immune(L))
-		return
+
 	L.AdjustEyeBlind (2 SECONDS)
