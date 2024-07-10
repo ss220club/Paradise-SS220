@@ -7,35 +7,35 @@
 /datum/job
 	var/relate_job // for relate positions and landmark
 	var/is_extra_job = FALSE // Special Jobs Window
-	var/is_sub_job = FALSE // Do we stay under related job slots?
+	var/is_main_job = TRUE // Are we the main job for this relate?
 
 /datum/job/doctor
 	relate_job = "Medical Intern"
 
 /datum/job/doctor/intern
 	relate_job = "Medical Doctor"
-	is_sub_job = TRUE
+	is_main_job = FALSE
 
 /datum/job/scientist
 	relate_job = "Student Scientist"
 
 /datum/job/scientist/student
 	relate_job = "Scientist"
-	is_sub_job = TRUE
+	is_main_job = FALSE
 
 /datum/job/engineer
 	relate_job = "Trainee Engineer"
 
 /datum/job/engineer/trainee
 	relate_job = "Station Engineer"
-	is_sub_job = TRUE
+	is_main_job = FALSE
 
 /datum/job/officer
 	relate_job = "Security Cadet"
 
 /datum/job/officer/cadet
 	relate_job = "Security Officer"
-	is_sub_job = TRUE
+	is_main_job = FALSE
 
 // ==============================
 // PROCS
@@ -65,35 +65,41 @@
 	var/datum/job/temp = SSjobs.GetJob(relate_job)
 	if(!temp)
 		return FALSE
-	var/relate_current_positions = current_positions + temp.current_positions
+	var/combined_current_positions = current_positions + temp.current_positions
+	var/maximum_total_positions = is_main_job ? total_positions : temp.total_positions
 
 	if(total_positions == -1)
-		if(!is_sub_job) // Infinite jobs (inf. SecOffs)
+		if(is_main_job) // Infinite jobs (inf. SecOffs)
 			return TRUE
-		if(is_sub_job) // Infinite subjobs...
-			if(temp.total_positions == -1) // ... AND jobs? We ball (inf. Cadets, period)
+		if(!is_main_job) // Infinite subjobs...
+			if(temp.total_positions == -1) // ... AND jobs? We ball (inf. Cadets AND inf. SecOffs)
 				return TRUE
-			return relate_current_positions < temp.total_positions // ... WITHIN relate job (any number of Cadets within SecOff job)
+			return combined_current_positions < maximum_total_positions // ... WITHIN relate job (any number of Cadets within SecOffs)
 
-	var/relate_total_positions = is_sub_job ? temp.total_positions : total_positions // Subjob (Cadets) check for related (SecOffs), a regular job (SecOffs) just takes itself (SecOffs)
-	return relate_current_positions < relate_total_positions
+	if(!is_main_job && (current_positions >= total_positions)) // SubJobs care about their own limits (limited number of Cadets within SecOffs)
+		return FALSE
+
+	return combined_current_positions < maximum_total_positions
 
 /datum/job/proc/check_relate_spawn_positions()
 	var/datum/job/temp = SSjobs.GetJob(relate_job)
 	if(!temp)
 		return FALSE
-	var/relate_current_positions = current_positions + temp.current_positions
+	var/combined_current_positions = current_positions + temp.current_positions
+	var/maximum_spawn_positions = is_main_job ? spawn_positions : temp.spawn_positions
 
 	if(spawn_positions == -1)
-		if(!is_sub_job) // Infinite jobs (inf. SecOffs)
+		if(is_main_job) // Infinite jobs (inf. SecOffs)
 			return TRUE
-		if(is_sub_job) // Infinite subjobs...
-			if(temp.spawn_positions == -1) // ... AND jobs? We ball (inf. Cadets, period)
+		if(!is_main_job) // Infinite subjobs...
+			if(temp.spawn_positions == -1) // ... AND jobs? We ball (inf. Cadets AND inf. SecOffs)
 				return TRUE
-			return relate_current_positions < temp.spawn_positions // ... WITHIN relate job (any number of Cadets within SecOff job)
+			return combined_current_positions < maximum_spawn_positions // ... WITHIN relate job (any number of Cadets within SecOffs)
 
-	var/relate_spawn_positions = is_sub_job ? temp.spawn_positions : spawn_positions // Subjob (Cadets) check for related (SecOffs), a regular job (SecOffs) just takes itself (SecOffs)
-	return relate_current_positions < relate_spawn_positions
+	if(!is_main_job && (current_positions >= spawn_positions)) // SubJobs care about their own limits (limited number of Cadets within SecOffs)
+		return FALSE
+
+	return combined_current_positions < maximum_spawn_positions
 
 /datum/job/proc/check_hidden_from_job_prefs()
 	if(hidden_from_job_prefs)
