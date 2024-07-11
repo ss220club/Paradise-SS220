@@ -26,6 +26,7 @@
 	see_in_dark = 6
 	layer = MOB_LAYER
 	faction = list("treacherous_flesh")
+	lighting_alpha = LIGHTING_PLANE_ALPHA_NV_TRAIT
 
 	var/mob/living/carbon/human/host
 	var/chemicals = 0
@@ -33,7 +34,8 @@
 	var/evolution_points = 0
 	var/evolution_stage = EVOLUTION_STAGE_0
 
-	var/infecting = FALSE
+	var/infecting = FALSE 		// If TRUE, some actions will start to spread infection
+	var/host_enslaved = FALSE 	// if TRUE, the host obey parasite orders
 
 /mob/living/simple_animal/changeling_primalis/Initialize()
 	. = ..()
@@ -43,13 +45,10 @@
 	real_name = "[pick("Альфа", "Бэта", "Гамма", "Сигма", "Дельта", "Эпсилон", "Дзета", "Йота", "Пси", "Омега")]-[rand(100, 999)]"
 	name = real_name
 	SSticker.mode.ling_infestors.Add(src)
-	add_language("Changeling")
+	add_language("Разум Улья Биомофров")
 
 /mob/living/simple_animal/changeling_primalis/Destroy()
-	var/datum/atom_hud/U = GLOB.huds[DATA_HUD_MEDICAL_ADVANCED]
-	U.remove_hud_from(src)
-	SSticker.mode.ling_infestors.Remove(src)
-	disinfest()
+	disinfest(FALSE)
 	. = ..()
 
 /mob/living/simple_animal/changeling_primalis/Life(second, times_fired)
@@ -107,29 +106,34 @@
 		RegisterSignal(host, COMSIG_MOB_DEATH, PROC_REF(on_host_death), override = TRUE)
 		var/datum/atom_hud/hud = GLOB.huds[DATA_HUD_TREACHEOUS_FLESH]
 		hud.add_hud_to(src)
-		hud.add_to_hud(host)
 		var/image/holder = host.hud_list[TREACHEOUS_FLESH_HUD]
 		holder.icon_state = "active_hud"
 
-
-/mob/living/simple_animal/changeling_primalis/proc/disinfest()
-	if(host)
-		UnregisterSignal(host, COMSIG_MOB_DEATH)
-		for(var/datum/language/lang in host.languages)
-			src.remove_language(lang.name)
-		host.changeling_primalis = null
-		SSticker.mode.ling_hosts.Remove(host)
-		host = null
+/mob/living/simple_animal/changeling_primalis/proc/disinfest(var/delete = TRUE)
+	if(!host)
+		return
+	var/datum/atom_hud/hud = GLOB.huds[DATA_HUD_TREACHEOUS_FLESH]
+	hud.remove_from_hud(host)
+	if(host_enslaved)
+		to_chat(host, "<span class='biggerdanger'>Мой владыка покинул меня... Что теперь со мной будет? Погодите-ка, а что вообще было? Почему я здесь? Я вновь ощущая себя... собой.</span>")
+	UnregisterSignal(host, COMSIG_MOB_DEATH)
+	host.changeling_primalis = null
+	SSticker.mode.ling_hosts.Remove(host)
+	host = null
+	if(delete)
 		qdel(src)
 
-/mob/living/simple_animal/changeling_primalis/proc/on_host_death()
+
+
+/mob/living/simple_animal/changeling_primalis/proc/on_host_death(mob/source, gibbed)
 	SIGNAL_HANDLER
-	disinfest()
+	if(gibbed)
+		qdel(src)
 
 /mob/living/simple_animal/changeling_primalis/get_default_language()
 	if(default_language)
 		return default_language
-	return GLOB.all_languages["Changeling"]
+	return GLOB.all_languages["Разум Улья Биомофров"]
 
 /mob/living/simple_animal/changeling_primalis/UnarmedAttack(mob/living/carbon/human/M)
 	if(istype(M))
@@ -137,7 +141,7 @@
 		healthscan(src, M, 1, TRUE)
 
 /mob/living/simple_animal/changeling_primalis/say(message, verb, sanitize, ignore_speech_problems, ignore_atmospherics, ignore_languages)
-	if(istype(get_default_language(), /datum/language/ling))
+	if(istype(get_default_language(), /datum/language/treacherous_flesh))
 		return ..()
 	return
 
@@ -161,6 +165,7 @@
 		if(EVOLUTION_STAGE_0)
 			primalis_abilities += new /datum/action/changeling_primalis/contact_host(src)
 			primalis_abilities += new /datum/action/changeling_primalis/speed_up_evolution(src)
+			primalis_abilities += new /datum/action/changeling_primalis/leave_the_body(src)
 		if(EVOLUTION_STAGE_1)
 			primalis_abilities += new /datum/action/changeling_primalis/fleshmend(src)
 			primalis_abilities += new /datum/action/changeling_primalis/adrenaline(src)
@@ -171,6 +176,7 @@
 			primalis_abilities += new /datum/action/changeling_primalis/regrow_organs(src)
 			primalis_abilities += new /datum/action/changeling_primalis/toggle/armblade(src)
 			primalis_abilities += new /datum/action/changeling_primalis/toggle/chitin_armor(src)
+			primalis_abilities += new /datum/action/changeling_primalis/enslave_mind(src)
 		if(EVOLUTION_STAGE_3)
 			to_chat(src, span_warning("Не указаны навыки"))
 		if(EVOLUTION_STAGE_4)
@@ -189,9 +195,4 @@
 #undef PRIMALIS_CHEM_REGEN
 #undef PRIMALIS_CHEM_MAX
 
-#undef EVOLUTION_STAGE_0
-#undef EVOLUTION_STAGE_1
-#undef EVOLUTION_STAGE_2
-#undef EVOLUTION_STAGE_3
-#undef EVOLUTION_STAGE_4
 #undef EVOLUTION_GROWTH

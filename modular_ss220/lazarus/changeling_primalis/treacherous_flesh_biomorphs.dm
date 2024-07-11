@@ -3,8 +3,6 @@
 	icon = 'modular_ss220/lazarus/icons/treacherous_flesh.dmi'
 
 /mob/living/simple_animal/hostile/flesh_biomorph/lesser
-	name = "Биоморф"
-	desc = "Какой-то странный биоморф. Наверное, стоит обратиться к богам, чтобы они уничтожили это недоразумение."
 	mob_biotypes = MOB_ORGANIC
 	speak_emote = list("кряхтит")
 	emote_hear = list("кряхтит")

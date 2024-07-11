@@ -1,5 +1,5 @@
 /datum/disease/treacherous_flesh
-	name = "Заражение биоассимилятором"
+	name = "Инкубация биоассимилятора"
 	max_stages = 6
 	spread_text = "Не заразный"
 	spread_flags = NON_CONTAGIOUS
@@ -27,11 +27,16 @@
 				host.contents += spawner
 				spawner.host = host
 				SSticker.mode.ling_hosts += host
+				var/datum/atom_hud/hud = GLOB.huds[DATA_HUD_TREACHEOUS_FLESH]
+				hud.add_to_hud(host)
+				var/image/holder = host.hud_list[TREACHEOUS_FLESH_HUD]
+				holder.icon_state = "infested_hud"
 				cure()
 				notify_ghosts("Зародыш коварной плоти появился внутри организма [host].", enter_link = "<a href=byond://?src=[UID()];activate=1>(Click to control)</a>", source = spawner, action = NOTIFY_ATTACK)
 	else
 		return
 
+// Reagent that cause infection
 /datum/reagent/treacherous_flesh
 	name = "Клетки коварной плоти"
 	id = "treacherous_flesh"
@@ -40,11 +45,6 @@
 	color = "#2c0d0d"
 	taste_description = "flesh"
 
-/mob/living/carbon/human/proc/is_flesh_infecting()
-	if(!changeling_primalis)
-		return FALSE
-	return changeling_primalis.infecting
-
 /datum/reagent/treacherous_flesh/reaction_mob(mob/living/M, method = REAGENT_TOUCH, volume)
 	if(M in SSticker.mode.ling_hosts || M.HasDisease(/datum/disease/treacherous_flesh))
 		return ..()
@@ -52,6 +52,13 @@
 		M.ForceContractDisease(new /datum/disease/treacherous_flesh)
 	return ..()
 
+// Checker for antag infecting
+/mob/living/carbon/human/proc/is_flesh_infecting()
+	if(!changeling_primalis)
+		return FALSE
+	return changeling_primalis.infecting
+
+// Infecting during surgery
 /datum/surgery_step/begin_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
@@ -59,6 +66,7 @@
 			target.ForceContractDisease(new /datum/disease/treacherous_flesh)
 	return ..()
 
+// Adding flesh reagent when picking up food
 /obj/item/food/pickup(mob/living/carbon/user)
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
@@ -66,6 +74,7 @@
 			reagents.check_and_add("treacherous_flesh", 1, 1)
 	return ..()
 
+// Adding flesh reagent when picking up reagent containers
 /obj/item/reagent_containers/pickup(mob/living/carbon/user)
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user

@@ -3,10 +3,11 @@ TODO:
 
 Скилл на общение с хостом. ГОТОВ
 Скилл на ремонт органов. ГОТОВ
-Скилл на крик.
 Скилл на заражение. ГОТОВ
+Cкилл на побег. DONE.
 Скилл на перехват контроля.
 Скилл на вознесение.
+
 */
 
 #define EVOLUTION_BONUS 150
@@ -16,8 +17,13 @@ TODO:
 /datum/action/changeling_primalis
 	/// Amount of chemicals required to use
 	var/chemical_cost = 0
+
 	/// Reference to user
 	var/mob/living/simple_animal/changeling_primalis/user = null
+
+	/// Usable in case of host death
+	var/ignore_death = FALSE
+
 	button_background_icon_state = "bg_flesh"
 	button_overlay_icon = 'modular_ss220/lazarus/icons/lazarus_actions.dmi'
 	button_background_icon = 'modular_ss220/lazarus/icons/lazarus_actions.dmi'
@@ -29,12 +35,16 @@ TODO:
 	return TRUE
 
 /datum/action/changeling_primalis/Trigger(left_click)
-	if(..() != FALSE)
-		if(!user.host)
-			to_chat(user, span_warning("У вас отсутствует носитель. Этого быть не должно. Обратитесь к эвент-мастеру, чтобы вам помогли."))
-			return FALSE
-		return activate()
-	return FALSE
+	if(!..())
+		return FALSE
+	if(!user.host)
+		to_chat(user, span_warning("У вас отсутствует носитель. Этого быть не должно. Обратитесь к эвент-мастеру, чтобы вам помогли."))
+		return FALSE
+	if(!ignore_death && user.host.stat == DEAD)
+		to_chat(user, span_warning("Ваш носитель должен быть жив для совершения данного действия."))
+		return FALSE
+	return activate()
+
 
 /datum/action/changeling_primalis/proc/take_chems()
 	if(user.chemicals < chemical_cost)
@@ -209,7 +219,6 @@ TODO:
 			var/mob/living/carbon/human/C = user.host
 			C.vomit()
 		egg.forceMove(get_turf(user))
-
 	user.host.reagents.add_reagent("mutadone", 1)
 	user.host.apply_status_effect(STATUS_EFFECT_PANACEA)
 	for(var/thing in user.host.viruses)
@@ -331,6 +340,8 @@ TODO:
 /datum/action/changeling_primalis/passive/proc/disable()
 	return
 
+// Passive Infestation
+
 /datum/action/changeling_primalis/passive/passive_infest
 	name = "Пассивное заражение"
 	desc = "Переключается режим пассивного заражения. Если включено, то вся пища, медикаменты, жидкости и оперируемые пациенты, которых трогал наш носитель, будут заражаться образцами наших тканей. Потребляет много химикатов пока активно."
@@ -342,9 +353,10 @@ TODO:
 		user.infecting = FALSE
 		button_overlay_icon_state = "passive_infest_off"
 	else
-		to_chat(user, "<span class='notice'>Мы начинаем выделять заражающие ткани.</span>")
-		user.infecting = TRUE
-		button_overlay_icon_state = "passive_infest_on"
+		if(user.chemicals > 2)
+			to_chat(user, "<span class='notice'>Мы начинаем выделять заражающие ткани.</span>")
+			user.infecting = TRUE
+			button_overlay_icon_state = "passive_infest_on"
 	UpdateButtons()
 	return TRUE
 
@@ -355,3 +367,129 @@ TODO:
 		button_overlay_icon_state = "passive_infest_off"
 		UpdateButtons()
 
+// Enslave Mind
+
+/datum/action/changeling_primalis/enslave_mind
+	name = "Поработить разум"
+	desc = "Мы ассимилируем центральную нервную систему носителя, превращая того в послушного раба, подчиняющегося всем нашим приказам. Во время подчинения носитель будет странно себя вести. Не работает на носителей имлпанта \"Щит разума\". Стоит 150 химикатов. Проверить на наличие импланта можно без траты химикатов."
+	button_overlay_icon_state = "heat_up"
+	chemical_cost = 150
+	var/in_use = FALSE
+
+/datum/action/changeling_primalis/enslave_mind/activate()
+	if(ismindshielded(user.host))
+		to_chat(user, "<span class='warning'>Какая-то железка в мозгу носителя не даёт нам начать ассимиляцию!</span>")
+		return FALSE
+	if(in_use)
+		return FALSE
+	in_use = TRUE
+	var/confirm = alert(usr, "Мы уверены что хотим поработить разум носителя? Столь грубое вмешательство в его организм не может остаться незамеченным как для него, так и для окружающих.","Поработить разум?","Да","Нет")
+	if(confirm != "Да")
+		in_use = FALSE
+		return FALSE
+	if(!take_chems())
+		in_use = FALSE
+		return FALSE
+	to_chat(user, "<span class='notice'>Мы начинаем ассимиляцию нервной системы носителя. Он, вероятно, испытывает сейчас невероятную боль.</span>")
+	to_chat(user.host, "<span class='boldwarning'>Внезапный порыв боли пронзает всё ваше тело. Вы не знаете что происходит, но каждую секунду агония становится всё сильнее.</span>")
+	user.host.emote("scream")
+	user.host.adjustStaminaLoss(30)
+
+	sleep(10 SECONDS)
+
+	user.host.emote("scream")
+	user.host.adjustStaminaLoss(30)
+	user.host.Jitter(45 SECONDS)
+	to_chat(user.host, "<span class='boldwarning'>Всё ваше тело будто варят заживо, а внутренности разрывают на куски. Вы хотите содрать с себя кожу.</span>")
+
+	sleep(5 SECONDS)
+
+	user.host.emote("gasp")
+	user.host.adjustStaminaLoss(30)
+
+	sleep(5 SECONDS)
+
+	user.host.emote("scream")
+	to_chat(user.host, "<span class='biggerdanger'>Вы хотите умереть.</span>")
+	user.host.adjustStaminaLoss(30)
+
+	sleep(10 SECONDS)
+
+	user.host.emote("laugh")
+	SEND_SOUND(user.host, 'sound/ambience/antag/ling_alert.ogg')
+	to_chat(user, "<span class='notice'>Мы окончательно подавили сопротивление носителя. Теперь он будет слушать все наши приказы.</span>")
+	to_chat(user.host, "<span class='biggerdanger'>Боль открыла мне глаза. В моём теле находится величайшее благославление вселенной. Я мессия, призванный принести в этот мир нечто прекрасное. Голос в моей голове скажет что мне нужно делать. Я должен во всём ему подчиняться. Он - мой хозяин и владыка. Мораль, семья, служба - всё это неважно. Я повинуюсь своему господину.</span>")
+	user.host_enslaved = TRUE
+	qdel(src)
+	return TRUE
+
+// Leave the body
+
+/datum/action/changeling_primalis/leave_the_body
+	name = "Покинуть тело"
+	desc = "Мы экстренно покидаем тело носителя, вырываясь в несформированном состоянии низшего биоморфа. При этом мы теряем любой контроль над носителем и сильно раним его тело. Можно использовать даже при смерти носителя."
+	button_overlay_icon_state = "heat_up"
+	ignore_death = TRUE
+	var/in_use = FALSE
+
+/datum/action/changeling_primalis/leave_the_body/activate()
+	if(in_use)
+		return FALSE
+	in_use = TRUE
+	var/confirm = alert(usr, "Мы уверены что хотим покинуть тело? Мы не сможем вернуться и навсегда останемся недоразвитым куском мяса.","Покинуть тело?","Да","Нет")
+	if(confirm != "Да")
+		in_use = FALSE
+		return FALSE
+	user.host.Jitter(8 SECONDS)
+	sleep(8 SECONDS)
+	playsound(user.host.loc, 'sound/effects/bone_break_5.ogg', 100, 0)
+	user.host.emote("scream")
+	user.host.adjustStaminaLoss(100)
+	var/mob/living/simple_animal/hostile/flesh_biomorph/lesser/M
+	switch(user.evolution_stage)
+		if(EVOLUTION_STAGE_0 to EVOLUTION_STAGE_1)
+			user.host.adjustBruteLoss(60)
+			M = new /mob/living/simple_animal/hostile/flesh_biomorph/lesser/small(user.host.loc)
+		if(EVOLUTION_STAGE_2)
+			user.host.adjustBruteLoss(120)
+			M = new /mob/living/simple_animal/hostile/flesh_biomorph/lesser/medium(user.host.loc)
+		if(EVOLUTION_STAGE_3 to EVOLUTION_STAGE_4)
+			user.host.adjustBruteLoss(200)
+			M = new /mob/living/simple_animal/hostile/flesh_biomorph/lesser/large(user.host.loc)
+	M.client = user.client
+	user.disinfest()
+
+/datum/action/changeling_primalis/take_control
+	name = "Захватить контроль"
+	desc = "Мы перехватываем контроль переферией нервной системы носителя, получая возможность управлять всеми его действиями, включая речь и жесты. К сожалению, во время такого контроля мы не способны использовать наши особые силы. Мы сможем вернуть контроль над телом носителю в любой момент."
+	button_overlay_icon_state = "heat_up"
+	var/in_use = FALSE
+	var/mob/living/trapped_mind/host_mind
+
+/datum/action/changeling_primalis/take_control/activate()
+	if(in_use)
+		return FALSE
+	if(!user.host.client)
+		return FALSE
+	if(host_mind)
+		return FALSE
+	in_use = TRUE
+	var/confirm = alert(usr, "Мы уверены что ","Покинуть тело?","Да","Нет")
+	if(confirm != "Да")
+		in_use = FALSE
+		return FALSE
+	host_mind = new()
+	mind.forceMove(user.host)
+	M.client = user.host.client
+	user.host.client = user.client
+
+/datum/action/return_control
+
+/datum/action/return_control
+
+#undef EVOLUTION_BONUS
+#undef EVOLUTION_STAGE_0
+#undef EVOLUTION_STAGE_1
+#undef EVOLUTION_STAGE_2
+#undef EVOLUTION_STAGE_3
+#undef EVOLUTION_STAGE_4

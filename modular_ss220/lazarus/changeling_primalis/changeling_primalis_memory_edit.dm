@@ -23,6 +23,10 @@
 				host.contents += spawner
 				spawner.host = host
 				SSticker.mode.ling_hosts += host
+				var/datum/atom_hud/hud = GLOB.huds[DATA_HUD_TREACHEOUS_FLESH]
+				hud.add_to_hud(host)
+				var/image/holder = host.hud_list[TREACHEOUS_FLESH_HUD]
+				holder.icon_state = "infested_hud"
 			if("infestor")
 				usr.client.holder.show_player_panel(host.changeling_primalis)
 			if("play")
