@@ -45,7 +45,7 @@
  * Replaces the `%(SINGLE,PLURAL)%` or `%(MALE,FEMALE,NEUTER,PLURAL)%` message piece accordingly to user gender.
  * Use `*` to deliberatly skip one genderize word: `%(*,FEMALE,*,PLURAL)%`.
  *
- * Example: var/death_message = "изда%(ет,ют)% тихий гортанный звук, зелёная кровь пузырится из %(его,её,его,их)% пасти..."
+ * Example: var/death_message = genderize_decode(user, "изда%(ет,ют)% тихий гортанный звук, зелёная кровь пузырится из %(его,её,его,их)% пасти...")
  *
  * Arguments:
  * * user - Person which pronouns will be used.
