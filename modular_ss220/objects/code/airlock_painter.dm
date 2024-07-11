@@ -30,7 +30,6 @@
 		return
 
 	var/obj/structure/door_assembly/assembly = initial(airlock.assemblytype)
-
 	if(A.assemblytype == assembly)
 		to_chat(user, "<span class='notice'>This airlock is already painted with the \"[paint_setting]\" color scheme!</span>")
 		return
@@ -41,6 +40,5 @@
 		A.assemblytype = initial(airlock.assemblytype)
 		A.update_icon()
 		return TRUE
-
-	return TRUE
+	return
 
