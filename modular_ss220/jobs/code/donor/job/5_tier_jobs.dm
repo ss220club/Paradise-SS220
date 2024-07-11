@@ -39,7 +39,7 @@
 	)
 
 /datum/outfit/job/donor/vip_guest/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
-	..()
+	. = ..()
 	if(visualsOnly)
 		return
 	for(var/la in GLOB.all_languages)
