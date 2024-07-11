@@ -3,16 +3,17 @@
 /obj/machinery/door/airlock/multi_tile
 	paintable = TRUE
 
+// Special behavior for multi-tile airlocks
 /datum/painter/airlock/paint_atom(atom/target, mob/user)
-	if(!istype(target, /obj/machinery/door/airlock/multi_tile))	// Special behavior for multi-tile airlocks
+	if(!istype(target, /obj/machinery/door/airlock/multi_tile))
 		return ..()
 	if(!paint_setting)
-		to_chat(user, "<span class='warning'>You need to select a paintjob first.</span>")
+		to_chat(user, span_warning("Сперва вам нужно выбрать стиль покраски."))
 		return
 
 	var/obj/machinery/door/airlock/A = target
 	if(!A.paintable)
-		to_chat(user, "<span class='warning'>This type of airlock cannot be painted.</span>")
+		to_chat(user, span_warning("Этот тип шлюза не может быть покрашен."))
 		return
 
 	var/static/list/multi_paint_jobs = list(
@@ -26,19 +27,18 @@
 
 	var/obj/machinery/door/airlock/airlock = multi_paint_jobs["[paint_setting]"]
 	if(isnull(airlock))
-		to_chat(user, "<span class='warning'>У выбранного стиля шлюзов нету двойной версии.</span>")
+		to_chat(user, span_warning("У выбранного стиля шлюзов нету двойной версии."))
 		return
 
 	var/obj/structure/door_assembly/assembly = initial(airlock.assemblytype)
 	if(A.assemblytype == assembly)
-		to_chat(user, "<span class='notice'>This airlock is already painted with the \"[paint_setting]\" color scheme!</span>")
+		to_chat(user, span_notice("Этот шлюз уже покрашен в цветовую схему \"[paint_setting]\"!"))
 		return
 
-	if(do_after(user, 2 SECONDS, FALSE, A))
+	if(do_after_once(user, 2 SECONDS, FALSE, A))
 		A.icon = initial(airlock.icon)
 		A.overlays_file = initial(airlock.overlays_file)
 		A.assemblytype = initial(airlock.assemblytype)
 		A.update_icon()
 		return TRUE
 	return
-
