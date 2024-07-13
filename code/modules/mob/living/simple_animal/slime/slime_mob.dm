@@ -1,5 +1,5 @@
 /mob/living/simple_animal/slime
-	name = "grey baby slime (123)"
+	name = "серый малыш слайм"
 	icon = 'icons/mob/slimes.dmi'
 	icon_state = "grey baby slime"
 	hud_type = /datum/hud/slime
@@ -16,7 +16,7 @@
 	response_help  = "pets"
 	response_disarm = "shoos"
 	response_harm   = "stomps on"
-	emote_see = list("jiggles", "bounces in place")
+	emote_see = list("jiggles", "прыгает на месте")
 	speak_emote = list("blorbles")
 	bubble_icon = "slime"
 
@@ -67,14 +67,14 @@
 
 	///////////TIME FOR SUBSPECIES
 
-	var/colour = "grey"
+	var/colour = "серый"
 	var/coretype = /obj/item/slime_extract/grey
 	var/list/slime_mutation[4]
 
-	var/static/list/slime_colours = list("rainbow", "grey", "purple", "metal", "orange",
-	"blue", "dark blue", "dark purple", "yellow", "silver", "pink", "red",
-	"gold", "green", "adamantine", "oil", "light pink", "bluespace",
-	"cerulean", "sepia", "black", "pyrite")
+	var/static/list/slime_colours = list("радужный", "серый", "фиолетоый", "металлический", "оранжевый",
+	"синий", "тёмносиний", "тёмнофиолетовый", "жёлый", "серебрянный", "розовый", "красный",
+	"золотой", "зеленый", "адамантитовый", "масляный", "светлорозовый", "блюспейс",
+	"лазурный", "сепия", "чёрный", "пиритовый")
 
 	///////////CORE-CROSSING CODE
 
@@ -121,7 +121,7 @@
 	. = ..()
 	if(slime_name_regex.Find(name))
 		number = rand(1, 1000)
-		name = "[colour] [is_adult ? "adult" : "baby"] slime ([number])"
+		name = "[colour] [is_adult ? "взрослый" : "малыш"] слайм ([number])"
 		real_name = name
 
 /mob/living/simple_animal/slime/proc/random_colour()
@@ -312,13 +312,13 @@
 		M.do_attack_animation(src, ATTACK_EFFECT_DISARM)
 		if(buckled == M)
 			if(prob(60))
-				M.visible_message("<span class='warning'>[M] attempts to wrestle \the [name] off!</span>", \
-					"<span class='danger'>You attempt to wrestle \the [name] off!</span>")
+				M.visible_message("<span class='warning'>[M] пытается скинуть [name] с себя!</span>", \
+					"<span class='danger'>Вы пытаетесь скинуть [name] с себя!</span>")
 				playsound(loc, 'sound/weapons/punchmiss.ogg', 25, TRUE, -1)
 
 			else
-				M.visible_message("<span class='warning'>[M] manages to wrestle \the [name] off!</span>", \
-					"<span class='notice'>You manage to wrestle \the [name] off!</span>")
+				M.visible_message("<span class='warning'>[M] пытается снять [name] с себя!</span>", \
+					"<span class='notice'>Вы пытаетесь скинуть [name] с себя!</span>")
 				playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, TRUE, -1)
 
 				discipline_slime(M)
