@@ -7,9 +7,10 @@
       - any-glob-to-any-file: ['**/*.ogg']
 
 'Изменение Карты':
-  - changed-files:
-      - any-glob-to-any-file: ['**/*.dmm']
-      - all-globs-to-all-files: '!_maps/map_files220/stations/*.dmm'
+  - all:
+      - changed-files:
+          - any-glob-to-any-file: ['**/*.dmm']
+          - all-globs-to-all-files: '!_maps/map_files220/stations/*.dmm'
 
 'Кибериада':
   - changed-files:
@@ -50,13 +51,15 @@
 'Частичная модульность':
   - all:
       - changed-files:
-          - all-globs-to-all-files: ['code/**', modular_ss220/**]
+          - any-glob-to-any-file: ['code/**']
+          - any-glob-to-any-file: [modular_ss220/**]
       - base-branch: 'master'
 
 'НЕ МОДУЛЬНО':
   - all:
       - changed-files:
-          - all-globs-to-any-file: ['code/**', '_maps/map_files/**']
+          - any-glob-to-any-file: ['code/**', '_maps/map_files/**']
+          - all-globs-to-all-files: '!modular_ss220/**'
       - base-branch: 'master'
 
 'Перевод':
