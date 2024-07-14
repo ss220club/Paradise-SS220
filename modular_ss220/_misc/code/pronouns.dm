@@ -45,7 +45,15 @@
  *
 */
 /proc/genderize_ru(gender, male_word, female_word, neuter_word, multiple_word)
-	return gender == MALE ? male_word : (gender == FEMALE ? female_word : (gender == NEUTER ? neuter_word : multiple_word))
+	switch(gender)
+		if(MALE)
+			return male_word
+		if(FEMALE)
+			return female_word
+		if(NEUTER)
+			return neuter_word
+		else
+			return multiple_word
 
 /**
  * ВНИМАНИЕ: Не используйте этот прок, используйте genderize_decode!
