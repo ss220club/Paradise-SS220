@@ -385,9 +385,9 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 
 /datum/objective/block
 	name = "Silicon hijack"
-	explanation_text = "Hijack the shuttle by alt-clicking on the shuttle console. Do not let the crew wipe you off of it! \
-	Crew and agents can be on the shuttle when you do this, and may try to wipe you! \
-	Using the doomsday device successfully is also an option."
+	explanation_text = "Угоните шаттл без лояльного к Нанотрейзен экипажа на борту. \
+	Агенты Синдиката, другие враги корпорации, киборги, питомцы/ограниченные заложники, разрешены живыми на шаттле. \
+	Успешное использование устройства судного дня - тоже вариант."
 	martyr_compatible = FALSE
 	needs_target = FALSE
 
@@ -506,8 +506,8 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 	return FALSE
 
 /datum/objective/survive
-	name = "Survive"
-	explanation_text = "Stay alive until the end."
+	name = "Выживание"
+	explanation_text = "Оставайтесь в живых до самого конца."
 	needs_target = FALSE
 
 /datum/objective/survive/check_completion()

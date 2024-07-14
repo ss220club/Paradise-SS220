@@ -38,7 +38,6 @@
 		/obj/item/bio_chip/death_alarm
 	)
 
-
 /datum/job/donor/banker
 	title = "Banker"
 	department_flag = JOBCAT_ENGSEC

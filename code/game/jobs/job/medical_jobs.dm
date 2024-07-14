@@ -5,7 +5,7 @@
 	total_positions = 1
 	spawn_positions = 1
 	job_department_flags = DEP_FLAG_COMMAND | DEP_FLAG_MEDICAL
-	supervisors = "the captain"
+	supervisors = "капитаном"
 	department_head = list("Captain")
 	selection_color = "#ffddf0"
 	req_admin_notify = 1
@@ -33,7 +33,7 @@
 	exp_map = list(EXP_TYPE_MEDICAL = 1200)
 	blacklisted_disabilities = list(DISABILITY_FLAG_BLIND, DISABILITY_FLAG_DEAF, DISABILITY_FLAG_MUTE, DISABILITY_FLAG_DIZZY)
 	outfit = /datum/outfit/job/cmo
-	important_information = "This role requires you to coordinate a department. You are required to be familiar with Standard Operating Procedure (Medical), basic job duties, and act professionally (roleplay)."
+	important_information = "Эта роль требует, чтобы вы координировали работу отдела. От вас требуется знание Стандартных Рабочих Процедур (Медицинских), базовых должностных обязанностей и профессиональных действий."
 
 /datum/outfit/job/cmo
 	name = "Chief Medical Officer"
@@ -62,7 +62,7 @@
 	total_positions = 5
 	spawn_positions = 3
 	job_department_flags = DEP_FLAG_MEDICAL
-	supervisors = "the chief medical officer"
+	supervisors = "главным врачом"
 	department_head = list("Chief Medical Officer")
 	selection_color = "#ffeef0"
 	access = list(ACCESS_MEDICAL, ACCESS_MORGUE, ACCESS_SURGERY, ACCESS_MAINT_TUNNELS)
@@ -97,7 +97,7 @@
 	total_positions = 1
 	spawn_positions = 1
 	job_department_flags = DEP_FLAG_MEDICAL
-	supervisors = "the chief medical officer"
+	supervisors = "главным врачом"
 	department_head = list("Chief Medical Officer")
 	selection_color = "#ffeef0"
 	access = list(ACCESS_MEDICAL, ACCESS_MORGUE, ACCESS_MAINT_TUNNELS)
@@ -158,7 +158,7 @@
 	total_positions = 2
 	spawn_positions = 2
 	job_department_flags = DEP_FLAG_MEDICAL
-	supervisors = "the chief medical officer"
+	supervisors = "главным врачом"
 	department_head = list("Chief Medical Officer")
 	selection_color = "#ffeef0"
 	access = list(ACCESS_MEDICAL, ACCESS_CHEMISTRY, ACCESS_MAINT_TUNNELS, ACCESS_MINERAL_STOREROOM)
@@ -190,7 +190,7 @@
 	total_positions = 2
 	spawn_positions = 2
 	job_department_flags = DEP_FLAG_MEDICAL | DEP_FLAG_SCIENCE
-	supervisors = "the chief medical officer and the research director"
+	supervisors = "главным врачом и директором исследований"
 	department_head = list("Chief Medical Officer", "Research Director")
 	selection_color = "#ffeef0"
 	access = list(ACCESS_MEDICAL, ACCESS_MORGUE, ACCESS_GENETICS, ACCESS_RESEARCH, ACCESS_MAINT_TUNNELS)
@@ -222,7 +222,7 @@
 	total_positions = 1
 	spawn_positions = 1
 	job_department_flags = DEP_FLAG_MEDICAL
-	supervisors = "the chief medical officer"
+	supervisors = "главным врачом"
 	department_head = list("Chief Medical Officer")
 	selection_color = "#ffeef0"
 	access = list(ACCESS_MEDICAL, ACCESS_VIROLOGY, ACCESS_MAINT_TUNNELS, ACCESS_MINERAL_STOREROOM)
@@ -258,7 +258,7 @@
 	total_positions = 1
 	spawn_positions = 1
 	job_department_flags = DEP_FLAG_MEDICAL
-	supervisors = "the chief medical officer"
+	supervisors = "главным врачом"
 	department_head = list("Chief Medical Officer")
 	selection_color = "#ffeef0"
 	access = list(ACCESS_MEDICAL, ACCESS_PSYCHIATRIST, ACCESS_MAINT_TUNNELS)
@@ -295,7 +295,7 @@
 	total_positions = 1
 	spawn_positions = 1
 	job_department_flags = DEP_FLAG_MEDICAL
-	supervisors = "the chief medical officer"
+	supervisors = "главным врачом"
 	department_head = list("Chief Medical Officer")
 	selection_color = "#ffeef0"
 	access = list(
@@ -314,7 +314,7 @@
 	minimal_player_age = 3
 	exp_map = list(EXP_TYPE_CREW = 180)
 	outfit = /datum/outfit/job/paramedic
-	important_information = "You are the first responder to medical emergencies outside the sanctity of the Medbay. You can also respond to Lavaland emergencies via the mining shuttle located in Cargo."
+	important_information = "Вы являетесь первым, кто реагирует на неотложные медицинские ситуации за пределами неприкосновенности медицинского отсека. Вы также можете реагировать на вызовы с Лаваленда с помощью шахтерского шаттла, расположенного в отделе снабжения."
 
 /datum/outfit/job/paramedic
 	name = "Paramedic"
