@@ -106,7 +106,7 @@ GLOBAL_VAR_INIT(announcing_vox, 0) // Stores the time of the last announcement
 		return
 
 	if(GLOB.announcing_vox > world.time)
-		to_chat(src, "<span class='warning'>Пожалуйста подождите [round((GLOB.announcing_vox - world.time) / 10)] секунд.</span>")
+		to_chat(src, "<span class='warning'>Пожалуйста подождите [round((GLOB.announcing_vox - world.time) / 10)] [declension_ru(round((GLOB.announcing_vox - world.time) / 10), "секунду", "секунды", "секунд")].</span>")
 		return
 
 	var/message = tgui_input_text(src, "Внимание: Неправильное использование этой системы может привести к джоббану. Для справки обращайтесь к 'Справочнику оповещений'", "Оповещение", last_announcement)

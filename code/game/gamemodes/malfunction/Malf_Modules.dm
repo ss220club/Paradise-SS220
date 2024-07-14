@@ -288,7 +288,7 @@
 		qdel(src)
 	else
 		if(!(sec_left % 60) && !announced)
-			var/message = "[sec_left] СЕКУНД ДО АКТИВАЦИИ УСТРОЙСТВА СУДНОГО ДНЯ."
+			var/message = "[sec_left] [declension_ru(sec_left, "СЕКУНДА", "СЕКУНДЫ", "СЕКУНД")] ДО АКТИВАЦИИ УСТРОЙСТВА СУДНОГО ДНЯ."
 			GLOB.major_announcement.Announce(message, "ОШИБКА 0IJJU6KA ОIJJIJ(%$^^__+ @#F0E4", 'sound/misc/notice1.ogg')
 			announced = 10
 		announced = max(0, announced-1)
