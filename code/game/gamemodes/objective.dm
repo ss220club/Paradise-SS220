@@ -185,7 +185,7 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 
 /datum/objective/assassinateonce/update_explanation_text()
 	if(target?.current)
-		explanation_text = "Преподайте [target.current.real_name], the [target.assigned_role] урок, который они никогда не забудут. Жертва должна умереть лишь единожды для выполнения цели."
+		explanation_text = "Преподайте [target.current.real_name], [target.assigned_role] незабываемый урок. Жертва должна умереть лишь единожды для выполнения цели."
 		establish_signals()
 	else
 		explanation_text = "Free Objective"
@@ -281,7 +281,7 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 
 /datum/objective/debrain/update_explanation_text()
 	if(target?.current)
-		explanation_text = "Украдите мозг [target.current.real_name], the [target.assigned_role]."
+		explanation_text = "Украдите мозг [target.current.real_name], [target.assigned_role]."
 	else
 		explanation_text = "Free Objective"
 
@@ -337,9 +337,9 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 /datum/objective/hijack
 	name = "Hijack"
 	martyr_compatible = FALSE //Technically you won't get both anyway.
-	explanation_text = "Угоните шаттл без лояльного к НаноТрейзен экипажа на борту. \
-	Агенты Синдиката, другие враги корпорации, киборги, питомцы, а также закованные в наручники/болу заложники могут быть допущены на шаттл живыми. \
-	Альтернативно, взломайте консоль управления шаттлом несколько раз (при помощи альт-клика по консоли) до тех пор, пока курс шаттла не будет нарушен."
+	explanation_text = "Угоните шаттл без лояльного к Нанотрейзен экипажа на борту. \
+	Агенты Синдиката, другие враги корпорации, киборги, питомцы, а также закованные в наручники заложники могут быть допущены на шаттл живыми. \
+	Альтернативно, взломайте консоль управления шаттлом несколько раз (при помощи альт-клика по консоли) до тех пор, пока курс полёта шаттла не будет нарушен."
 	needs_target = FALSE
 
 /datum/objective/hijack/check_completion()
@@ -352,7 +352,7 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 
 /datum/objective/hijackclone
 	name = "Hijack (with clones)"
-	explanation_text = "Угоните шаттл, где только Вы (и Ваши клоны) разрешены на борт."
+	explanation_text = "Угоните шаттл, где только Вы (или Ваши клоны) будут допущены на борт."
 	martyr_compatible = FALSE
 	needs_target = FALSE
 
@@ -407,7 +407,7 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 
 /datum/objective/escape
 	name = "Escape"
-	explanation_text = "Сбегите со станции на шаттле или спасательном поде."
+	explanation_text = "Сбегите со станции на шаттле или эвакуационном поде."
 	needs_target = FALSE
 
 /datum/objective/escape/check_completion()
@@ -447,7 +447,7 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 		return
 	target = assassinate.target
 	target_real_name = assassinate.target.current.real_name
-	explanation_text = "Сбегите на шаттле или спасательном поде в личности [target_real_name], the [target.assigned_role], нося их [target.p_their()] ID-карту."
+	explanation_text = "Сбегите на шаттле или эвакуационном поде под личностью [target_real_name], [target.assigned_role], нося [target.ru_p_them()] ID-карту."
 	has_assassinate_objective = TRUE
 	RegisterSignal(assassinate, COMSIG_OBJECTIVE_TARGET_FOUND, PROC_REF(assassinate_found_target))
 	RegisterSignal(assassinate, COMSIG_OBJECTIVE_CHECK_VALID_TARGET, PROC_REF(assassinate_checking_target))
@@ -461,7 +461,7 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 /datum/objective/escape/escape_with_identity/update_explanation_text()
 	if(target?.current)
 		target_real_name = target.current.real_name
-		explanation_text = "Сбегите на шаттле или спасательном поде в личности [target_real_name], the [target.assigned_role], нося их [target.p_their()] ID-карту."
+		explanation_text = "Сбегите на шаттле или эвакуационном поде под личностью [target_real_name], [target.assigned_role], нося [target.ru_p_them()] ID-карту."
 	else
 		explanation_text = "Free Objective"
 
@@ -520,7 +520,7 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 
 /datum/objective/nuclear
 	name = "Nuke station"
-	explanation_text = "Уничтожьте станцию с помощью ядерной бомбы."
+	explanation_text = "Уничтожьте станцию с помощью ядерной боеголовки."
 	martyr_compatible = TRUE
 	needs_target = FALSE
 
@@ -679,7 +679,7 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 	return target_amount
 
 /datum/objective/absorb/update_explanation_text()
-	explanation_text = "Собeрите [target_amount] совместимых геномов. Способность 'Extract DNA Sting' может быть использована для скрытного получения геномов без нужды убивать кого-нибудь."
+	explanation_text = "Собeрите [target_amount] совместимых геномов. Способность 'Extract DNA Sting' может быть использована для скрытного получения геномов без нужды убивать кого-либо."
 
 /datum/objective/absorb/check_completion()
 	for(var/datum/mind/M in get_owners())
@@ -788,7 +788,7 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 	return target_amount
 
 /datum/objective/blood/update_explanation_text()
-	explanation_text = "Наберите как минимум [target_amount] единиц крови в общем."
+	explanation_text = "Наберите в общей сложности не менее [target_amount] единиц крови."
 
 /datum/objective/blood/check_completion()
 	for(var/datum/mind/M in get_owners())
