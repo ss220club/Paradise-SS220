@@ -10,7 +10,7 @@
   - all:
       - changed-files:
           - any-glob-to-any-file: ['**/*.dmm']
-          - all-globs-to-all-files: '!_maps/map_files220/stations/*.dmm'
+          - all-globs-to-all-files: ['!_maps/map_files220/stations/*.dmm']
 
 'Кибериада':
   - changed-files:
@@ -58,7 +58,7 @@
 'НЕ МОДУЛЬНО':
   - all:
       - changed-files:
-          - any-glob-to-any-file: ['code/**', '_maps/map_files/**']
+          - any-glob-to-any-file: ['code/**', 'icons/**', '_maps/map_files/**']
           - all-globs-to-all-files: '!modular_ss220/**'
       - base-branch: 'master'
 
