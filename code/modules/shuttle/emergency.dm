@@ -332,13 +332,13 @@
 		SSshuttle.emergencyLastCallLoc = null
 	if(canRecall)
 		GLOB.major_announcement.Announce(
-			GLOB.major_announcement.Announce("Был вызван эвакуационный шаттл. [redAlert ? "Красный уровень угрозы подтверждён: отправлен приоритетный шаттл. " : "" ]Он прибудет в течение [timeLeft(600)] [declension_ru(timeLeft(600), "минуту", "минуты", "минут")].[reason][SSshuttle.emergencyLastCallLoc ? "\n\nВызов шаттла отслежен. Результаты можно просмотреть на любой коммуникационной консоли." : "" ]"),
+			GLOB.major_announcement.Announce("Был вызван эвакуационный шаттл. [redAlert ? "Красный уровень угрозы подтверждён: отправлен приоритетный шаттл. " : "" ]Он прибудет в течение [timeLeft(600)] [declension_ru(timeLeft(600), "минуты", "минуты", "минут")].[reason][SSshuttle.emergencyLastCallLoc ? "\n\nВызов шаттла отслежен. Результаты можно просмотреть на любой коммуникационной консоли." : "" ]"),
 			new_title = "Приоритетное оповещение.",
 			new_sound = sound('sound/AI/eshuttle_call.ogg')
 		)
 	else
 		GLOB.major_announcement.Announce(
-			"Был вызван эвакуационный шаттл. [redAlert ? "Красный уровень угрозы подтверждён: отправлен приоритетный шаттл. " : "" ]Он прибудет в течение [timeLeft(600)] [declension_ru(timeLeft(600), "минуту", "минуты", "минут")].[reason]",
+			"Был вызван эвакуационный шаттл. [redAlert ? "Красный уровень угрозы подтверждён: отправлен приоритетный шаттл. " : "" ]Он прибудет в течение [timeLeft(600)] [declension_ru(timeLeft(600), "минуты", "минуты", "минут")].[reason]",
 			new_title = "Приоритетное оповещение.",
 			new_sound = sound('sound/AI/cshuttle.ogg')
 		)
@@ -449,13 +449,13 @@
 				timer = world.time
 				if(canRecall)
 					GLOB.major_announcement.Announce(
-						"Эвакуационный шаттл пристыковался со станцией. У вас есть [timeLeft(600)] [declension_ru(timeLeft(600), "минуту", "минуты", "минут")] чтобы прибыть на борт эвакуационного шаттла.",
+						"Эвакуационный шаттл пристыковался со станцией. У вас есть [timeLeft(600)] [declension_ru(timeLeft(600), "минута", "минуты", "минут")] чтобы прибыть на борт эвакуационного шаттла.",
 						new_title = "Приоритетное оповещение.",
 						new_sound = sound('sound/AI/eshuttle_dock.ogg')
 					)
 				else
 					GLOB.major_announcement.Announce(
-						"Транспортный шаттл пристыковался со станцией. У вас есть [timeLeft(600)] [declension_ru(timeLeft(600), "минуту", "минуты", "минут")] чтобы прибыть на борт транспортного шаттла.",
+						"Транспортный шаттл пристыковался со станцией. У вас есть [timeLeft(600)] [declension_ru(timeLeft(600), "минута", "минуты", "минут")] чтобы прибыть на борт транспортного шаттла.",
 						new_title = "Приоритетное оповещение.",
 						new_sound = sound('sound/AI/cshuttle_dock.ogg')
 					)
@@ -488,7 +488,7 @@
 				mode = SHUTTLE_ESCAPE
 				timer = world.time
 				GLOB.major_announcement.Announce(
-					"Эвакуационный шаттл покинул станцию. Расчетное время прибытия на Центральное Командование: [timeLeft(600)] [declension_ru(timeLeft(600), "минуту", "минуты", "минут")].",
+					"Эвакуационный шаттл покинул станцию. Расчетное время прибытия на Центральное Командование: [timeLeft(600)] [declension_ru(timeLeft(600), "минута", "минуты", "минут")].",
 					new_title = "Приоритетное оповещение."
 				)
 
