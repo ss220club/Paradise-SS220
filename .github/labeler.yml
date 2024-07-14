@@ -10,13 +10,13 @@
   - changed-files:
       - any-glob-to-any-file: ['**/*.dmm']
 
-'Керберос':
-  - changed-files:
-      - any-glob-to-any-file: ['_maps/map_files220/stations/deltastation.dmm']
-
 'Кибериада':
   - changed-files:
       - any-glob-to-any-file: ['_maps/map_files220/stations/boxstation.dmm']
+
+'Керберос':
+  - changed-files:
+      - any-glob-to-any-file: ['_maps/map_files220/stations/deltastation.dmm']
 
 'Цереброн':
   - changed-files:
@@ -49,13 +49,13 @@
 'Частичная модульность':
   - all:
       - changed-files:
-          - any-globs-to-all-file: ['code/**', modular_ss220/**]
+          - all-globs-to-any-file: ['code/**', modular_ss220/**]
       - base-branch: 'master'
 
 'НЕ МОДУЛЬНО':
   - all:
       - changed-files:
-          - any-glob-to-any-file: ['code/**']
+          - all-glob-to-any-file: ['code/**']
       - base-branch: 'master'
 
 'Перевод':
