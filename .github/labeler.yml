@@ -1,39 +1,68 @@
 'TGUI':
-  - 'tgui/**'
+  - changed-files:
+      - any-glob-to-any-file: ['tgui/**']
 
 'Звук':
-  - '**/*.ogg'
+  - changed-files:
+      - any-glob-to-any-file: ['**/*.ogg']
 
 'Изменение Карты':
-  - '**/*.dmm'
-
-'Инструменты':
-  - '.gihub/workflows/**'
-  - 'tools/**'
+  - changed-files:
+      - any-glob-to-any-file: ['**/*.dmm']
 
 'Керберос':
-  - '_maps/map_files220/stations/deltastation.dmm'
+  - changed-files:
+      - any-glob-to-any-file: ['_maps/map_files220/stations/deltastation.dmm']
 
 'Кибериада':
-  - '_maps/map_files220/stations/boxstation.dmm'
+  - changed-files:
+      - any-glob-to-any-file: ['_maps/map_files220/stations/boxstation.dmm']
 
 'Цереброн':
-  - '_maps/map_files220/stations/metastation.dmm'
+  - changed-files:
+      - any-glob-to-any-file: ['_maps/map_files220/stations/metastation.dmm']
 
-'НЕ МОДУЛЬНО':
-  - all: ['code/**']
+'Фаррагус':
+  - changed-files:
+      - any-glob-to-any-file: ['_maps/map_files220/stations/cerestation.dmm']
 
 'Спрайты':
-  - '**/*.dmi'
+  - changed-files:
+      - any-glob-to-any-file: ['**/*.dmi']
+
+'Инструменты':
+  - changed-files:
+      - any-glob-to-any-file: ['.gihub/workflows/**', 'tools/**']
 
 'Требуется изменение конфига':
-  - 'config/**'
+  - changed-files:
+      - any-glob-to-any-file: ['config/**']
 
 'Документация':
-  - '**/*.md'
-
-'Частичная модульность':
-  - all: ['code/**', modular_ss220/**]
+  - changed-files:
+      - any-glob-to-any-file: ['**/*.md']
 
 'SQL':
-  - 'SQL/**'
+  - changed-files:
+      - any-glob-to-any-file: ['SQL/**']
+
+'Частичная модульность':
+  - all:
+      - changed-files:
+          - any-globs-to-all-file: ['code/**', modular_ss220/**]
+      - base-branch: 'master'
+
+'НЕ МОДУЛЬНО':
+  - all:
+      - changed-files:
+          - any-glob-to-any-file: ['code/**']
+      - base-branch: 'master'
+
+'Перевод':
+  - base-branch: 'translate'
+
+'Фикс':
+  - head-branch: ['^fix', 'fix']
+
+':trollface: Фича':
+  - head-branch: ['^feat', 'feat']
