@@ -367,7 +367,7 @@
 		var/timer = input("Enter new shuttle duration (minutes):","Edit Shuttle Timeleft", SSshuttle.emergency.timeLeft(600)) as num
 		SSshuttle.emergency.setTimer(timer MINUTES)
 		log_admin("[key_name(usr)] edited the Emergency Shuttle's timeleft to [timer] minutes")
-		GLOB.minor_announcement.Announce("Эвакуационный шаттл достигнет места назначения через [round(SSshuttle.emergency.timeLeft(600))] минут(-ы).")
+		GLOB.minor_announcement.Announce("Эвакуационный шаттл достигнет места назначения через [round(SSshuttle.emergency.timeLeft(600))] [declension_ru(round(SSshuttle.emergency.timeLeft(600)), "минуту", "минуты", "минут")].")
 		message_admins("<span class='adminnotice'>[key_name_admin(usr)] edited the Emergency Shuttle's timeleft to [timer] minutes</span>")
 		href_list["secrets"] = "check_antagonist"
 
