@@ -9,8 +9,10 @@
 	item_color = "expedition_prime_navy"
 	sprite_sheets = list(
 		"Human" = 'modular_ss220/prime_only/icons/mob/under.dmi',
+		"Vox" = 'modular_ss220/prime_only/icons/mob/species/vox/under/cargo.dmi',
+		"Drask" = 'modular_ss220/prime_only/icons/mob/species/drask/under/cargo.dmi',
+		"Kidan" = 'modular_ss220/prime_only/icons/mob/species/kidan/under/cargo.dmi',
 		)
-
 /obj/item/clothing/under/rank/cargo/expedition_prime/green
 	name = "green expedition uniform"
 	icon_state = "expedition_prime_green"
