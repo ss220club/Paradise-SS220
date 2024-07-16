@@ -13,7 +13,10 @@
 	layer = BELOW_OBJ_LAYER
 
 /obj/machinery/status_display
-	layer = LYING_MOB_LAYER
+	layer = SIGN_LAYER
 
 /obj/machinery/ai_status_display
-	layer = LYING_MOB_LAYER
+	layer = SIGN_LAYER
+
+/obj/machinery/computer/security/telescreen
+	layer = SIGN_LAYER
