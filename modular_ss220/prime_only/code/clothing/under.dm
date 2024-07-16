@@ -1,4 +1,4 @@
-/* Новая одежда для экспедиции, только для прайма */
+// Explorer's outfits
 /obj/item/clothing/under/rank/cargo/expedition_prime
 	name = "navy expedition uniform"
 	desc = "Экспедиционная форма военного образца с опознавательными знаками Нанотрейзен."
@@ -13,21 +13,18 @@
 
 /obj/item/clothing/under/rank/cargo/expedition_prime/green
 	name = "green expedition uniform"
-	desc = "Зеленая экспедиционная форма с опознавательными знаками Нанотрейзен."
 	icon_state = "expedition_prime_green"
 	item_state = "expedition_prime_green"
 	item_color = "expedition_prime_green"
 
 /obj/item/clothing/under/rank/cargo/expedition_prime/tan
 	name = "tan expedition uniform"
-	desc = "Экспедиционная форма с пустынным камуфляжем и опознавательными знаками Нанотрейзен."
 	icon_state = "expedition_prime_tan"
 	item_state = "expedition_prime_tan"
 	item_color = "expedition_prime_tan"
 
 /obj/item/clothing/under/rank/cargo/expedition_prime/grey
 	name = "grey expedition uniform"
-	desc = "Серая экспедиционная форма с опознавательными знаками Нанотрейзен."
 	icon_state = "expedition_prime_grey"
 	item_state = "expedition_prime_grey"
 	item_color = "expedition_prime_grey"
