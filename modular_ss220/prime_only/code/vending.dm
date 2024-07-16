@@ -1,4 +1,4 @@
-// Новые список предметов для экспедиционного вендомата только для прайма
+// New item list for the expedition vendomat
 
 /obj/machinery/economy/vending/exploredrobe/Initialize(mapload)
 	var/list/new_products = list(
