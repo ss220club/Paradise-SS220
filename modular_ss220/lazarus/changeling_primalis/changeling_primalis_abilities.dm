@@ -60,7 +60,7 @@ Cкилл на побег. DONE.
 
 /datum/action/changeling_primalis/message_host
 	name = "Сообщить носителю"
-	desc = "Мы подключаемся к мозгу носителя, и посылаем ему некоторое сообщение. Носитель будет воспринимать наши слова как странный голос в голове. Носитель не может ответить нам, пока мы не установим с ним контакт, но может использовать шёпот, чтобы скрыть разговор с нами."
+	desc = "Мы подключаемся к мозгу носителя, и посылаем ему некоторое сообщение. Носитель будет воспринимать наши слова как странный голос в голове. Носитель не может ответить нам без слов , пока мы не установим с ним контакт, но может использовать шёпот, чтобы скрыть разговор с нами."
 	button_overlay_icon_state = "message"
 	chemical_cost = 0
 
@@ -459,33 +459,95 @@ Cкилл на побег. DONE.
 	M.client = user.client
 	user.disinfest()
 
+// Take Control
 /datum/action/changeling_primalis/take_control
 	name = "Захватить контроль"
 	desc = "Мы перехватываем контроль переферией нервной системы носителя, получая возможность управлять всеми его действиями, включая речь и жесты. К сожалению, во время такого контроля мы не способны использовать наши особые силы. Мы сможем вернуть контроль над телом носителю в любой момент."
 	button_overlay_icon_state = "heat_up"
 	var/in_use = FALSE
-	var/mob/living/trapped_mind/host_mind
 
 /datum/action/changeling_primalis/take_control/activate()
 	if(in_use)
 		return FALSE
-	if(!user.host.client)
-		return FALSE
-	if(host_mind)
+	if(!isnull(user.trapped_mind))
 		return FALSE
 	in_use = TRUE
-	var/confirm = alert(usr, "Мы уверены что ","Покинуть тело?","Да","Нет")
+	var/confirm = alert(usr, "Мы уверены что хотим захватить контроль над телом носителя?","Захватить тело?","Да","Нет")
 	if(confirm != "Да")
 		in_use = FALSE
 		return FALSE
-	host_mind = new()
-	mind.forceMove(user.host)
-	M.client = user.host.client
-	user.host.client = user.client
 
-/datum/action/return_control
+	// HOST TO TRAPPED MIND
+	// Spawning trapped mind
+	var/mob/living/trapped_mind/temp_mind = new /mob/living/trapped_mind(user.host)
+	user.trapped_mind = temp_mind
 
+	// Declaring vars for temp storing
+	var/temp_ip = user.host.lastKnownIP
+	var/temp_cid = user.host.computer_id
+
+	// Clearing host data
+	user.host.lastKnownIP = null
+	user.host.computer_id = null
+
+	// Moving host to trapped mind
+	user.trapped_mind.name = user.host.real_name
+	user.trapped_mind.lastKnownIP = temp_ip
+	user.trapped_mind.computer_id = temp_cid
+	user.trapped_mind.ckey = user.host.ckey
+
+	// FLESH TO HOST BODY
+	// Using vars for temp storing
+	user.host.lastKnownIP = user.lastKnownIP
+	user.host.computer_id = user.computer_id
+	user.host.ckey = user.ckey
+
+	// Granting return action
+	var/datum/action/return_control/A = new()
+	A.Grant(user.host)
+	in_use = FALSE
+
+	return TRUE
+
+// Return Control
 /datum/action/return_control
+	name = "Вернуть контроль"
+	desc = "Мы возвращаем контроль над телом носителю."
+	button_overlay_icon_state = "heat_up"
+	var/in_use = FALSE
+
+/datum/action/return_control/Trigger(left_click)
+	if(!..())
+		return FALSE
+	if(in_use)
+		return FALSE
+	if(!ishuman(owner))
+		return FALSE
+	var/mob/living/carbon/human/host = owner
+	if(isnull(host.changeling_primalis.trapped_mind))
+		return FALSE
+	in_use = TRUE
+	var/confirm = alert(usr, "Мы уверены что хотим вернуть контроль над телом носителю?","Вернуть контроль?","Да","Нет")
+	if(confirm != "Да")
+		in_use = FALSE
+		return FALSE
+
+	// Returning parasite to body
+	host.changeling_primalis.lastKnownIP = host.lastKnownIP
+	host.changeling_primalis.computer_id = host.computer_id
+	host.changeling_primalis.ckey = host.ckey
+
+	// Returning host to body
+	host.lastKnownIP = host.changeling_primalis.trapped_mind.lastKnownIP
+	host.computer_id = host.changeling_primalis.trapped_mind.computer_id
+	host.ckey = host.changeling_primalis.trapped_mind.ckey
+
+	// Clearing
+	qdel(host.changeling_primalis.trapped_mind)
+	host.changeling_primalis.trapped_mind = null // Sometimes garbage collector left it there for some time, but we need this being null for checks
+	qdel(src)
+
+	return TRUE
 
 #undef EVOLUTION_BONUS
 #undef EVOLUTION_STAGE_0

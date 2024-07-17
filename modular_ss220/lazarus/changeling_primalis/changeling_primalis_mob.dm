@@ -34,8 +34,12 @@
 	var/evolution_points = 0
 	var/evolution_stage = EVOLUTION_STAGE_0
 
-	var/infecting = FALSE 		// If TRUE, some actions will start to spread infection
-	var/host_enslaved = FALSE 	// if TRUE, the host obey parasite orders
+	/// If TRUE, some actions will start to spread infection
+	var/infecting = FALSE
+	/// if TRUE, the host obey parasite orders
+	var/host_enslaved = FALSE
+	/// Holder for host trapped mind
+	var/mob/living/trapped_mind/trapped_mind
 
 /mob/living/simple_animal/changeling_primalis/Initialize()
 	. = ..()
@@ -166,6 +170,7 @@
 			primalis_abilities += new /datum/action/changeling_primalis/contact_host(src)
 			primalis_abilities += new /datum/action/changeling_primalis/speed_up_evolution(src)
 			primalis_abilities += new /datum/action/changeling_primalis/leave_the_body(src)
+			primalis_abilities += new /datum/action/changeling_primalis/take_control(src)
 		if(EVOLUTION_STAGE_1)
 			primalis_abilities += new /datum/action/changeling_primalis/fleshmend(src)
 			primalis_abilities += new /datum/action/changeling_primalis/adrenaline(src)
