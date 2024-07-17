@@ -28,7 +28,7 @@
 	box = /obj/item/storage/box/engineer
 	id = /obj/item/card/id/vip_guest
 	backpack_contents = list(
-		/obj/item/stack/spacecash/c1000 = 2,
+		/obj/item/stack/spacecash/c1000 = 1,
 		/obj/item/bio_chip_implanter/death_alarm = 1,
 		/obj/item/lighter/zippo/engraved = 1,
 		/obj/item/clothing/mask/cigarette/cigar/havana = 6,
@@ -37,7 +37,6 @@
 	bio_chips = list(/obj/item/bio_chip/mindshield,
 		/obj/item/bio_chip/death_alarm
 	)
-
 
 /datum/job/donor/banker
 	title = "Banker"
@@ -75,8 +74,7 @@
 	box = /obj/item/storage/box/engineer
 	id = /obj/item/card/id/banker
 	backpack_contents = list(
-		/obj/item/stack/spacecash/c1000 = 5,
-
+		/obj/item/stack/spacecash/c1000 = 1,
 		/obj/item/bio_chip_implanter/death_alarm = 1,
 		/obj/item/lighter/zippo/engraved = 1,
 		/obj/item/clothing/under/rank/procedure/iaa/formal/black = 1,
