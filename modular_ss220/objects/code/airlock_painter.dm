@@ -3,19 +3,7 @@
 /obj/machinery/door/airlock/multi_tile
 	paintable = TRUE
 
-// Special behavior for multi-tile airlocks
-/datum/painter/airlock/paint_atom(atom/target, mob/user)
-	if(!istype(target, /obj/machinery/door/airlock/multi_tile))
-		return ..()
-	if(!paint_setting)
-		to_chat(user, span_warning("Сперва вам нужно выбрать стиль покраски."))
-		return
-
-	var/obj/machinery/door/airlock/A = target
-	if(!A.paintable)
-		to_chat(user, span_warning("Этот тип шлюза не может быть покрашен."))
-		return
-
+/datum/painter/airlock
 	var/static/list/multi_paint_jobs = list(
 		"Atmospherics" = /obj/machinery/door/airlock/multi_tile/atmospheric,
 		"Command" = /obj/machinery/door/airlock/multi_tile/command,
@@ -24,6 +12,20 @@
 		"Public" = /obj/machinery/door/airlock/multi_tile,
 		"Security" = /obj/machinery/door/airlock/multi_tile/security,
 	)
+
+// Special behavior for multi-tile airlocks
+/datum/painter/airlock/paint_atom(atom/target, mob/user)
+	if(!istype(target, /obj/machinery/door/airlock/multi_tile))
+		return ..()
+
+	if(!paint_setting)
+		to_chat(user, span_warning("Сперва вам нужно выбрать стиль покраски."))
+		return
+
+	var/obj/machinery/door/airlock/A = target
+	if(!A.paintable)
+		to_chat(user, span_warning("Этот тип шлюза не может быть покрашен."))
+		return
 
 	var/obj/machinery/door/airlock/airlock = multi_paint_jobs["[paint_setting]"]
 	if(isnull(airlock))
@@ -41,4 +43,3 @@
 		A.assemblytype = initial(airlock.assemblytype)
 		A.update_icon()
 		return TRUE
-	return
