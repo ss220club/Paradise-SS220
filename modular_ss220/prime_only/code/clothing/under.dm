@@ -13,6 +13,7 @@
 		"Drask" = 'modular_ss220/prime_only/icons/mob/species/drask/under/cargo.dmi',
 		"Kidan" = 'modular_ss220/prime_only/icons/mob/species/kidan/under/cargo.dmi',
 		)
+
 /obj/item/clothing/under/rank/cargo/expedition_prime/green
 	name = "green expedition uniform"
 	icon_state = "expedition_prime_green"
