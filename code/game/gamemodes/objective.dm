@@ -407,7 +407,7 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 
 /datum/objective/escape
 	name = "Escape"
-	explanation_text = "Сбегите со станции на шаттле или эвакуационном поде."
+	explanation_text = "Сбегите живым со станции на шаттле или эвакуационном поде."
 	needs_target = FALSE
 
 /datum/objective/escape/check_completion()
@@ -447,7 +447,7 @@ GLOBAL_LIST_INIT(potential_theft_objectives, (subtypesof(/datum/theft_objective)
 		return
 	target = assassinate.target
 	target_real_name = assassinate.target.current.real_name
-	explanation_text = "Сбегите на шаттле или эвакуационном поде под личностью [target_real_name], [target.assigned_role], нося [target.ru_p_them()] ID-карту."
+	explanation_text = "Сбегите живым со станции на шаттле, или эвакуационном поде под личностью [target_real_name], [target.assigned_role], нося [target.ru_p_them()] ID-карту."
 	has_assassinate_objective = TRUE
 	RegisterSignal(assassinate, COMSIG_OBJECTIVE_TARGET_FOUND, PROC_REF(assassinate_found_target))
 	RegisterSignal(assassinate, COMSIG_OBJECTIVE_CHECK_VALID_TARGET, PROC_REF(assassinate_checking_target))
