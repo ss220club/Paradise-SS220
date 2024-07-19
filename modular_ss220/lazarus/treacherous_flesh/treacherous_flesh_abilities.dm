@@ -14,12 +14,12 @@ Cкилл на побег. DONE.
 
 // Basic
 
-/datum/action/changeling_primalis
+/datum/action/treacherous_flesh
 	/// Amount of chemicals required to use
 	var/chemical_cost = 0
 
 	/// Reference to user
-	var/mob/living/simple_animal/changeling_primalis/user = null
+	var/mob/living/treacherous_flesh/user = null
 
 	/// Usable in case of host death
 	var/ignore_death = FALSE
@@ -28,13 +28,13 @@ Cкилл на побег. DONE.
 	button_overlay_icon = 'modular_ss220/lazarus/icons/lazarus_actions.dmi'
 	button_background_icon = 'modular_ss220/lazarus/icons/lazarus_actions.dmi'
 
-/datum/action/changeling_primalis/New(var/mob/living/simple_animal/changeling_primalis/new_user)
+/datum/action/treacherous_flesh/New(var/mob/living/treacherous_flesh/new_user)
 	user = new_user
 
-/datum/action/changeling_primalis/proc/activate()
+/datum/action/treacherous_flesh/proc/activate()
 	return TRUE
 
-/datum/action/changeling_primalis/Trigger(left_click)
+/datum/action/treacherous_flesh/Trigger(left_click)
 	if(!..())
 		return FALSE
 	if(!user.host)
@@ -46,25 +46,25 @@ Cкилл на побег. DONE.
 	return activate()
 
 
-/datum/action/changeling_primalis/proc/take_chems()
+/datum/action/treacherous_flesh/proc/take_chems()
 	if(user.chemicals < chemical_cost)
 		to_chat(usr, span_warning("Для этого вам нужно [chemical_cost] химикатов."))
 		return FALSE
 	user.chemicals -= chemical_cost
 	return TRUE
 
-/datum/action/changeling_primalis/toggle
+/datum/action/treacherous_flesh/toggle
 	var/is_active = FALSE
 
 // Message host
 
-/datum/action/changeling_primalis/message_host
+/datum/action/treacherous_flesh/message_host
 	name = "Сообщить носителю"
 	desc = "Мы подключаемся к мозгу носителя, и посылаем ему некоторое сообщение. Носитель будет воспринимать наши слова как странный голос в голове. Носитель не может ответить нам без слов , пока мы не установим с ним контакт, но может использовать шёпот, чтобы скрыть разговор с нами."
 	button_overlay_icon_state = "message"
 	chemical_cost = 0
 
-/datum/action/changeling_primalis/message_host/activate()
+/datum/action/treacherous_flesh/message_host/activate()
 	var/msg = clean_input("Сообщение:", "Сообщение для носителя")
 	if(!msg)
 		return
@@ -75,22 +75,22 @@ Cкилл на побег. DONE.
 
 // Contact host
 
-/datum/action/changeling_primalis/contact_host
+/datum/action/treacherous_flesh/contact_host
 	name = "Установить контакт"
 	desc = "Мы закрепляемся в сознании нашего носителя, раскрывая своё существование и устанавливая постоянный контакт. После этого носитель будет знать, что мы находимся в нём и сможет коммуницировать с нами посредством телепатии. Однако наша истинная природа будет ему неизвестна."
 	button_overlay_icon_state = "contact_host"
 	chemical_cost = 0
 	var/in_use = FALSE
 
-/datum/action/changeling_primalis/contact_host/activate()
+/datum/action/treacherous_flesh/contact_host/activate()
 	if(!in_use)
 		in_use = TRUE
 		var/confirm = alert(usr, "Вы уверены, что хотите установить контакт с носителем? Он моментально узнает о нашем присутствии и сможет телепатически общаться с нами.","Установить контакт?","Да","Нет")
 		if(confirm == "Да")
 			Remove(user)
-			for(var/datum/action/changeling_primalis/message_host/mes_host in user.actions)
+			for(var/datum/action/treacherous_flesh/message_host/mes_host in user.actions)
 				mes_host.Remove(user)
-			var/datum/action/com_host = new /datum/action/changeling_primalis/communicate_host(user)
+			var/datum/action/com_host = new /datum/action/treacherous_flesh/communicate_host(user)
 			var/datum/action/com_parasite = new /datum/action/communicate_parasite(user)
 			com_host.Grant(user)
 			com_parasite.Grant(user.host)
@@ -101,13 +101,13 @@ Cкилл на побег. DONE.
 
 // Communicate host
 
-/datum/action/changeling_primalis/communicate_host
+/datum/action/treacherous_flesh/communicate_host
 	name = "Разговаривать с носителем"
 	desc = "Мы транслируем сообщение в разум носителя. Носитель поймёт, что оно исходит от нас."
 	button_overlay_icon_state = "message"
 	chemical_cost = 0
 
-/datum/action/changeling_primalis/communicate_host/activate()
+/datum/action/treacherous_flesh/communicate_host/activate()
 	var/msg = clean_input("Сообщение:", "Сообщение для носителя")
 	if(!msg)
 		return
@@ -124,22 +124,22 @@ Cкилл на побег. DONE.
 /datum/action/communicate_parasite/Trigger(left_click)
 	if(istype(src, /mob/living/carbon/human))
 		var/mob/living/carbon/human/host = src
-		if(host.changeling_primalis)
+		if(host.treacherous_flesh)
 			var/msg = clean_input("Сообщение:", "Сообщение для гостя")
 			if(!msg)
 				return
 			to_chat(host, "<b>[host.name]: <i>[msg]</i></b>")
-			to_chat(host.changeling_primalis, "<b>[host.name]: <i>[msg]</i></b>")
+			to_chat(host.treacherous_flesh, "<b>[host.name]: <i>[msg]</i></b>")
 
 // Speed Up Evolution
 
-/datum/action/changeling_primalis/speed_up_evolution
+/datum/action/treacherous_flesh/speed_up_evolution
 	name = "Ускорить эволюцию"
 	desc = "Ускоряет процесс нашего развития за счёт химикатов. Даёт намёк на заражение носителю и окружающим людям. Может нанести вред носителю. Используйте тогда, когда ваш носитель и окружающие его люди заняты. Стоит 100 химикатов"
 	button_overlay_icon_state = "speed_up_evolution"
 	chemical_cost = 100
 
-/datum/action/changeling_primalis/speed_up_evolution/activate()
+/datum/action/treacherous_flesh/speed_up_evolution/activate()
 	if(!take_chems())
 		return FALSE
 	to_chat(user, span_notice("Мы бросаем все наши силы на то, чтобы углубиться в тело носителя, сливаясь с его организмом в единое целое."))
@@ -154,13 +154,13 @@ Cкилл на побег. DONE.
 
 // Fleshmend
 
-/datum/action/changeling_primalis/fleshmend
+/datum/action/treacherous_flesh/fleshmend
 	name = "Быстрое исцеление"
 	desc = "Мы быстро исцеляем нашего носителя. Не лечит переломы, внутреннее кровотечение и органы. При частом использовании эффективность снижается. Стоит 30 химикатов."
 	button_overlay_icon_state = "fleshmend"
 	chemical_cost = 30
 
-/datum/action/changeling_primalis/fleshmend/activate()
+/datum/action/treacherous_flesh/fleshmend/activate()
 	if(!take_chems())
 		return FALSE
 	to_chat(user, span_notice("Вы заставляете тело носителя быстро восстанавливаться."))
@@ -173,13 +173,13 @@ Cкилл на побег. DONE.
 
 // Adrenaline
 
-/datum/action/changeling_primalis/adrenaline
+/datum/action/treacherous_flesh/adrenaline
 	name = "Передозировка адреналином"
 	desc = "Мы вводим в носителя ударную дозу адреналина, снимая оглушение и ускоряя передвижение. При частом использовании может навредить носителю. Стоит 50 химикатов"
 	button_overlay_icon_state = "adrenaline"
 	chemical_cost = 50
 
-/datum/action/changeling_primalis/adrenaline/activate()
+/datum/action/treacherous_flesh/adrenaline/activate()
 	if(!take_chems())
 		return FALSE
 	to_chat(user, "<span class='notice'>От адреналина в крови сердце носителя начинает бешено колотиться.</span>")
@@ -200,13 +200,13 @@ Cкилл на побег. DONE.
 
 // Panacea
 
-/datum/action/changeling_primalis/panacea
+/datum/action/treacherous_flesh/panacea
 	name = "Анатомическая панацея"
 	desc = "Мы вводим в тело носителя ряд биоактивных элементов, вычищая из него токсины, радиацию и мутировавшие трани, а также восстанавливая нервную систему. Стоит 50 химикатов"
 	button_overlay_icon_state = "panacea"
 	chemical_cost = 50
 
-/datum/action/changeling_primalis/panacea/activate()
+/datum/action/treacherous_flesh/panacea/activate()
 	if(!take_chems())
 		return FALSE
 	to_chat(user, "<span class='notice'>Панацея распространяется по телу, зачищая его от ядов.</span>")
@@ -231,13 +231,13 @@ Cкилл на побег. DONE.
 
 // Regrow Organs
 
-/datum/action/changeling_primalis/regrow_organs
+/datum/action/treacherous_flesh/regrow_organs
 	name = "Отрастить органы"
 	desc = "Мы вводим в организм большое колличество вещества, стимулярующего производство стволовых клеток. Носитель отращивает все потерянные конечности, а также восстанавлиет и отращивает все органы. Стоит 150 химикатов."
 	button_overlay_icon_state = "regrow_organs"
 	chemical_cost = 150
 
-/datum/action/changeling_primalis/regrow_organs/activate()
+/datum/action/treacherous_flesh/regrow_organs/activate()
 	if(!take_chems())
 		return FALSE
 	to_chat(user, "<span class='notice'>Химикаты растекаются по телу, за секунды формируя новые ткани, а затем и сложные структуры.</span>")
@@ -250,13 +250,13 @@ Cкилл на побег. DONE.
 
 // Heat Up
 
-/datum/action/changeling_primalis/heat_up
+/datum/action/treacherous_flesh/heat_up
 	name = "Органическая грелка"
 	desc = "Повышает температуру тела носителя на 1500 единиц, помогая тому согреться или дольше продержаться на улице. Стоит 20 химикатов."
 	button_overlay_icon_state = "heat_up"
 	chemical_cost = 20
 
-/datum/action/changeling_primalis/heat_up/activate()
+/datum/action/treacherous_flesh/heat_up/activate()
 	if(!take_chems())
 		return FALSE
 	to_chat(user, "<span class='notice'>Вы тратите часть химикатов на повышения температуры тела носителя</span>")
@@ -266,13 +266,13 @@ Cкилл на побег. DONE.
 
 // Armblade
 
-/datum/action/changeling_primalis/toggle/armblade
+/datum/action/treacherous_flesh/toggle/armblade
 	name = "Рука-лезвие"
 	desc = "Мы преобразуем руку носителя в смертельное лезвие. Стоит 25 химикатов. Поддержание не стоит химикатов."
 	button_overlay_icon_state = "armblade"
 	chemical_cost = 25
 
-/datum/action/changeling_primalis/toggle/armblade/activate()
+/datum/action/treacherous_flesh/toggle/armblade/activate()
 	if(is_active)
 		to_chat(user, "<span class='notice'>Мы преобразуем руку-клинок обратно в нормальную конечность.</span>")
 		to_chat(user.host, "<span class='warning'>Вы вновь чувствуете невероятную боль в руке. Похоже, странная рука-лезвие вновь превратилось в вашу обычную конечность.</span>")
@@ -303,13 +303,13 @@ Cкилл на побег. DONE.
 
 // Chitinous Armor
 
-/datum/action/changeling_primalis/toggle/chitin_armor
+/datum/action/treacherous_flesh/toggle/chitin_armor
 	name = "Хитиновый панцирь"
 	desc = "Мы покрываем тело носителя прочным хитиновым панцирем. Стоит 40 химикатов. Поддержание не стоит химикатов."
 	button_overlay_icon_state = "chitin_armor"
 	chemical_cost = 40
 
-/datum/action/changeling_primalis/toggle/chitin_armor/activate()
+/datum/action/treacherous_flesh/toggle/chitin_armor/activate()
 	if(is_active)
 		to_chat(user, "<span class='notice'>Мы разрушаем панцирь, вновь обнажая уязвимую плоть носителя миру.</span>")
 		to_chat(user.host, "<span class='warning'>Вы вновь чувствуете невероятную боль по всему телу. Панцирь начинает раскалываться и вскоре полностью спадает.</span>")
@@ -337,17 +337,17 @@ Cкилл на побег. DONE.
 		is_active = TRUE
 		return TRUE
 
-/datum/action/changeling_primalis/passive/proc/disable()
+/datum/action/treacherous_flesh/passive/proc/disable()
 	return
 
 // Passive Infestation
 
-/datum/action/changeling_primalis/passive/passive_infest
+/datum/action/treacherous_flesh/passive/passive_infest
 	name = "Пассивное заражение"
 	desc = "Переключается режим пассивного заражения. Если включено, то вся пища, медикаменты, жидкости и оперируемые пациенты, которых трогал наш носитель, будут заражаться образцами наших тканей. Потребляет много химикатов пока активно."
 	button_overlay_icon_state = "passive_infest_off"
 
-/datum/action/changeling_primalis/passive/passive_infest/activate()
+/datum/action/treacherous_flesh/passive/passive_infest/activate()
 	if(user.infecting)
 		to_chat(user, "<span class='notice'>Мы прекратили выделять заражающие ткани.</span>")
 		user.infecting = FALSE
@@ -360,7 +360,7 @@ Cкилл на побег. DONE.
 	UpdateButtons()
 	return TRUE
 
-/datum/action/changeling_primalis/passive/passive_infest/disable()
+/datum/action/treacherous_flesh/passive/passive_infest/disable()
 	if(user.infecting)
 		to_chat(user, "<span class='notice'>Мы больше не можем поддерживать выделение заражающих тканей</span>")
 		user.infecting = FALSE
@@ -369,14 +369,14 @@ Cкилл на побег. DONE.
 
 // Enslave Mind
 
-/datum/action/changeling_primalis/enslave_mind
+/datum/action/treacherous_flesh/enslave_mind
 	name = "Поработить разум"
 	desc = "Мы ассимилируем центральную нервную систему носителя, превращая того в послушного раба, подчиняющегося всем нашим приказам. Во время подчинения носитель будет странно себя вести. Не работает на носителей имлпанта \"Щит разума\". Стоит 150 химикатов. Проверить на наличие импланта можно без траты химикатов."
 	button_overlay_icon_state = "heat_up"
 	chemical_cost = 150
 	var/in_use = FALSE
 
-/datum/action/changeling_primalis/enslave_mind/activate()
+/datum/action/treacherous_flesh/enslave_mind/activate()
 	if(ismindshielded(user.host))
 		to_chat(user, "<span class='warning'>Какая-то железка в мозгу носителя не даёт нам начать ассимиляцию!</span>")
 		return FALSE
@@ -425,14 +425,14 @@ Cкилл на побег. DONE.
 
 // Leave the body
 
-/datum/action/changeling_primalis/leave_the_body
+/datum/action/treacherous_flesh/leave_the_body
 	name = "Покинуть тело"
 	desc = "Мы экстренно покидаем тело носителя, вырываясь в несформированном состоянии низшего биоморфа. При этом мы теряем любой контроль над носителем и сильно раним его тело. Можно использовать даже при смерти носителя."
 	button_overlay_icon_state = "heat_up"
 	ignore_death = TRUE
 	var/in_use = FALSE
 
-/datum/action/changeling_primalis/leave_the_body/activate()
+/datum/action/treacherous_flesh/leave_the_body/activate()
 	if(in_use)
 		return FALSE
 	in_use = TRUE
@@ -460,13 +460,13 @@ Cкилл на побег. DONE.
 	user.disinfest()
 
 // Take Control
-/datum/action/changeling_primalis/take_control
+/datum/action/treacherous_flesh/take_control
 	name = "Захватить контроль"
 	desc = "Мы перехватываем контроль переферией нервной системы носителя, получая возможность управлять всеми его действиями, включая речь и жесты. К сожалению, во время такого контроля мы не способны использовать наши особые силы. Мы сможем вернуть контроль над телом носителю в любой момент."
 	button_overlay_icon_state = "heat_up"
 	var/in_use = FALSE
 
-/datum/action/changeling_primalis/take_control/activate()
+/datum/action/treacherous_flesh/take_control/activate()
 	if(in_use)
 		return FALSE
 	if(!isnull(user.trapped_mind))
@@ -511,7 +511,7 @@ Cкилл на побег. DONE.
 	if(!ishuman(owner))
 		return FALSE
 	var/mob/living/carbon/human/host = owner
-	if(isnull(host.changeling_primalis.trapped_mind))
+	if(isnull(host.treacherous_flesh.trapped_mind))
 		return FALSE
 	in_use = TRUE
 	var/confirm = alert(usr, "Мы уверены что хотим вернуть контроль над телом носителю?","Вернуть контроль?","Да","Нет")
@@ -519,19 +519,13 @@ Cкилл на побег. DONE.
 		in_use = FALSE
 		return FALSE
 
-	// Returning parasite to body
-	//host.changeling_primalis.lastKnownIP = host.lastKnownIP
-	//host.changeling_primalis.computer_id = host.computer_id
-	host.changeling_primalis.ckey = host.ckey
+	host.treacherous_flesh.ckey = host.ckey
 
-	// Returning host to body
-	//host.lastKnownIP = host.changeling_primalis.trapped_mind.lastKnownIP
-	//host.computer_id = host.changeling_primalis.trapped_mind.computer_id
-	host.ckey = host.changeling_primalis.trapped_mind.ckey
+	host.ckey = host.treacherous_flesh.trapped_mind.ckey
 
 	// Clearing
-	qdel(host.changeling_primalis.trapped_mind)
-	host.changeling_primalis.trapped_mind = null // Sometimes garbage collector left it there for some time, but we need this being null for checks
+	qdel(host.treacherous_flesh.trapped_mind)
+	host.treacherous_flesh.trapped_mind = null // Sometimes garbage collector left it there for some time, but we need this being null for checks
 	qdel(src)
 
 	return TRUE

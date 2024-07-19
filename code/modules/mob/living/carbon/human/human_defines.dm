@@ -112,5 +112,5 @@
 	/// HUD element for temperature status
 	var/atom/movable/screen/frostbite/frostbite_screen = null
 
-	/// Infested by this changeling primalis
-	var/mob/living/simple_animal/changeling_primalis/changeling_primalis
+	/// Infested by this treacherous flesh
+	var/mob/living/treacherous_flesh/treacherous_flesh

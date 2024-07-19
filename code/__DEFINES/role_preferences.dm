@@ -40,7 +40,7 @@
 #define ROLE_GHOST				"ghost role"
 #define ROLE_ELITE				"lavaland elite"
 
-#define ROLE_CHANGELING_PRIMALIS	"changeling primalis"
+#define ROLE_TREACHEROUS_FLESH	"treacherous flesh"
 
 // Misc jobban categories
 #define ROLEBAN_AHUD			"AntagHUD"
@@ -68,7 +68,7 @@ GLOBAL_LIST_INIT(special_roles, list(
 	ROLE_VAMPIRE = /datum/game_mode/vampire, 			// Vampire
 	ROLE_ALIEN, 										// Xenomorph
 	ROLE_WIZARD = /datum/game_mode/wizard,				// Wizard
-	ROLE_CHANGELING_PRIMALIS							// Changeling primalis
+	ROLE_TREACHEROUS_FLESH								// Treacherous Flesh
 	// UNUSED/BROKEN ANTAGS
 //	ROLE_HOG_GOD = /datum/game_mode/hand_of_god,
 //	ROLE_HOG_CULTIST = /datum/game_mode/hand_of_god,

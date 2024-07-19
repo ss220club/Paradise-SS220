@@ -9,20 +9,13 @@
 
 #define EVOLUTION_GROWTH 4
 
-/mob/living/simple_animal/changeling_primalis
+/mob/living/treacherous_flesh
 	name = "Meaty worm"
 	icon = 'icons/mob/mob.dmi'
 	icon_state = "headslug"
-	icon_living = "headslug"
-	icon_dead = "headslug_dead"
-	hud_type = /datum/hud/simple_animal/changeling_primalis
+	hud_type = /datum/hud/simple_animal/treacherous_flesh
 	health = 60
 	maxHealth = 60
-	melee_damage_lower = 30
-	melee_damage_upper = 35
-	melee_damage_type = STAMINA
-	attacktext = "gnaws"
-	attack_sound = 'sound/weapons/bite.ogg'
 	see_in_dark = 6
 	layer = MOB_LAYER
 	faction = list("treacherous_flesh")
@@ -41,7 +34,7 @@
 	/// Holder for host trapped mind
 	var/mob/living/trapped_mind/trapped_mind
 
-/mob/living/simple_animal/changeling_primalis/Initialize()
+/mob/living/treacherous_flesh/Initialize()
 	. = ..()
 	var/datum/atom_hud/U = GLOB.huds[DATA_HUD_MEDICAL_ADVANCED]
 	U.add_hud_to(src)
@@ -51,11 +44,11 @@
 	SSticker.mode.ling_infestors.Add(src)
 	add_language("Разум Улья Биомофров")
 
-/mob/living/simple_animal/changeling_primalis/Destroy()
+/mob/living/treacherous_flesh/Destroy()
 	disinfest(FALSE)
 	. = ..()
 
-/mob/living/simple_animal/changeling_primalis/Life(second, times_fired)
+/mob/living/treacherous_flesh/Life(second, times_fired)
 	..()
 	if(host)
 		if(infecting)
@@ -69,7 +62,7 @@
 		hud_used.lingchemdisplay.maptext = "<div align='center' valign='middle' style='position:relative; top:0px; left:6px'><font face='Small Fonts' color='#dd66dd'>[round(chemicals)]</font></div>"
 	handle_evolution()
 
-/mob/living/simple_animal/changeling_primalis/proc/handle_evolution()
+/mob/living/treacherous_flesh/proc/handle_evolution()
 	evolution_points += EVOLUTION_GROWTH
 	switch(evolution_stage)
 		if(EVOLUTION_STAGE_0)
@@ -98,13 +91,13 @@
 				grant_skills()
 
 
-/mob/living/simple_animal/changeling_primalis/proc/infest(var/mob/living/carbon/human/new_host)
-	if(!new_host?.changeling_primalis)
+/mob/living/treacherous_flesh/proc/infest(var/mob/living/carbon/human/new_host)
+	if(!new_host?.treacherous_flesh)
 		if(host != null)
-			host.changeling_primalis = null
+			host.treacherous_flesh = null
 		forceMove(new_host)
 		host = new_host
-		new_host.changeling_primalis = src
+		new_host.treacherous_flesh = src
 		for(var/datum/language/lang in host.languages)
 			src.add_language(lang.name)
 		RegisterSignal(host, COMSIG_MOB_DEATH, PROC_REF(on_host_death), override = TRUE)
@@ -113,7 +106,7 @@
 		var/image/holder = host.hud_list[TREACHEOUS_FLESH_HUD]
 		holder.icon_state = "active_hud"
 
-/mob/living/simple_animal/changeling_primalis/proc/disinfest(var/delete = TRUE)
+/mob/living/treacherous_flesh/proc/disinfest(var/delete = TRUE)
 	if(!host)
 		return
 	var/datum/atom_hud/hud = GLOB.huds[DATA_HUD_TREACHEOUS_FLESH]
@@ -121,7 +114,7 @@
 	if(host_enslaved)
 		to_chat(host, "<span class='biggerdanger'>Мой владыка покинул меня... Что теперь со мной будет? Погодите-ка, а что вообще было? Почему я здесь? Я вновь ощущая себя... собой.</span>")
 	UnregisterSignal(host, COMSIG_MOB_DEATH)
-	host.changeling_primalis = null
+	host.treacherous_flesh = null
 	SSticker.mode.ling_hosts.Remove(host)
 	host = null
 	if(delete)
@@ -129,69 +122,67 @@
 
 
 
-/mob/living/simple_animal/changeling_primalis/proc/on_host_death(mob/source, gibbed)
+/mob/living/treacherous_flesh/proc/on_host_death(mob/source, gibbed)
 	SIGNAL_HANDLER
 	if(gibbed)
 		qdel(src)
 
-/mob/living/simple_animal/changeling_primalis/get_default_language()
+/mob/living/treacherous_flesh/get_default_language()
 	if(default_language)
 		return default_language
 	return GLOB.all_languages["Разум Улья Биомофров"]
 
-/mob/living/simple_animal/changeling_primalis/UnarmedAttack(mob/living/carbon/human/M)
+/mob/living/treacherous_flesh/UnarmedAttack(mob/living/carbon/human/M)
 	if(istype(M))
 		to_chat(src, span_notice("Мы анализируем жизненные показатели [M]."))
 		healthscan(src, M, 1, TRUE)
 
-/mob/living/simple_animal/changeling_primalis/say(message, verb, sanitize, ignore_speech_problems, ignore_atmospherics, ignore_languages)
+/mob/living/treacherous_flesh/say(message, verb, sanitize, ignore_speech_problems, ignore_atmospherics, ignore_languages)
 	if(istype(get_default_language(), /datum/language/treacherous_flesh))
 		return ..()
 	return
 
-/mob/living/simple_animal/changeling_primalis/emote(emote_key, type_override, message, intentional, force_silence)
+/mob/living/treacherous_flesh/emote(emote_key, type_override, message, intentional, force_silence)
 	to_chat(src, span_warning("Мы не способны на выражение эмоций"))
 
-/mob/living/simple_animal/changeling_primalis/whisper(message as text)
+/mob/living/treacherous_flesh/whisper(message as text)
 	to_chat(src, span_warning("Мы не способны шептать"))
 
-/mob/living/simple_animal/changeling_primalis/proc/disable_passive_abilities()
-	for(var/datum/action/changeling_primalis/passive/A in actions)
+/mob/living/treacherous_flesh/proc/disable_passive_abilities()
+	for(var/datum/action/treacherous_flesh/passive/A in actions)
 		A.disable()
-
-/mob/living/simple_animal/changeling_primalis/proc/announcetoghosts()
 
 // Evolution
 
-/mob/living/simple_animal/changeling_primalis/proc/grant_skills()
+/mob/living/treacherous_flesh/proc/grant_skills()
 	var/list/primalis_abilities = list()
 	switch(evolution_stage)
 		if(EVOLUTION_STAGE_0)
-			primalis_abilities += new /datum/action/changeling_primalis/contact_host(src)
-			primalis_abilities += new /datum/action/changeling_primalis/speed_up_evolution(src)
-			primalis_abilities += new /datum/action/changeling_primalis/leave_the_body(src)
-			primalis_abilities += new /datum/action/changeling_primalis/take_control(src)
+			primalis_abilities += new /datum/action/treacherous_flesh/contact_host(src)
+			primalis_abilities += new /datum/action/treacherous_flesh/speed_up_evolution(src)
+			primalis_abilities += new /datum/action/treacherous_flesh/leave_the_body(src)
+			primalis_abilities += new /datum/action/treacherous_flesh/take_control(src)
 		if(EVOLUTION_STAGE_1)
-			primalis_abilities += new /datum/action/changeling_primalis/fleshmend(src)
-			primalis_abilities += new /datum/action/changeling_primalis/adrenaline(src)
-			primalis_abilities += new /datum/action/changeling_primalis/panacea(src)
-			primalis_abilities += new /datum/action/changeling_primalis/heat_up(src)
-			primalis_abilities += new /datum/action/changeling_primalis/passive/passive_infest(src)
+			primalis_abilities += new /datum/action/treacherous_flesh/fleshmend(src)
+			primalis_abilities += new /datum/action/treacherous_flesh/adrenaline(src)
+			primalis_abilities += new /datum/action/treacherous_flesh/panacea(src)
+			primalis_abilities += new /datum/action/treacherous_flesh/heat_up(src)
+			primalis_abilities += new /datum/action/treacherous_flesh/passive/passive_infest(src)
 		if(EVOLUTION_STAGE_2)
-			primalis_abilities += new /datum/action/changeling_primalis/regrow_organs(src)
-			primalis_abilities += new /datum/action/changeling_primalis/toggle/armblade(src)
-			primalis_abilities += new /datum/action/changeling_primalis/toggle/chitin_armor(src)
-			primalis_abilities += new /datum/action/changeling_primalis/enslave_mind(src)
+			primalis_abilities += new /datum/action/treacherous_flesh/regrow_organs(src)
+			primalis_abilities += new /datum/action/treacherous_flesh/toggle/armblade(src)
+			primalis_abilities += new /datum/action/treacherous_flesh/toggle/chitin_armor(src)
+			primalis_abilities += new /datum/action/treacherous_flesh/enslave_mind(src)
 		if(EVOLUTION_STAGE_3)
 			to_chat(src, span_warning("Не указаны навыки"))
 		if(EVOLUTION_STAGE_4)
 			to_chat(src, span_warning("Не указаны навыки"))
-	for(var/datum/action/changeling_primalis/ability in primalis_abilities)
+	for(var/datum/action/treacherous_flesh/ability in primalis_abilities)
 		ability.Grant(src)
 
 // Chemicals HUD
 
-/datum/hud/simple_animal/changeling_primalis/New(mob/user)
+/datum/hud/simple_animal/treacherous_flesh/New(mob/user)
 	..()
 	lingchemdisplay = new /atom/movable/screen/ling/chems()
 	lingchemdisplay.invisibility = 0

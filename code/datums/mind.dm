@@ -561,8 +561,8 @@
 		/** Abductors **/
 		sections["abductor"] = memory_edit_abductor(H)
 		// SS220 LAZARUS EDIT - START
-		/** Changeling Primalis **/
-		sections["changeling_primalis"] = memory_edit_changeling_primalis(H)
+		/** TREACHEROUS FLESH **/
+		sections["treacherous_flesh"] = memory_edit_treacherous_flesh(H)
 		// SS220 LAZARUS EDIT - END
 		/** Zombies **/
 		sections["zombie"] = memory_edit_zombie(H)

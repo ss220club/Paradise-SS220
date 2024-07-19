@@ -54,9 +54,9 @@
 
 // Checker for antag infecting
 /mob/living/carbon/human/proc/is_flesh_infecting()
-	if(!changeling_primalis)
+	if(!treacherous_flesh)
 		return FALSE
-	return changeling_primalis.infecting
+	return treacherous_flesh.infecting
 
 // Infecting during surgery
 /datum/surgery_step/begin_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/surgery/surgery)

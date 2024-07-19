@@ -1,10 +1,10 @@
 /obj/effect/mob_spawn/treacherous_flesh
 	name = "Зародыш коварной плоти"
-	desc = "Небольшой красный сгусток. Похоже, он уже мёртв."
+	desc = "Небольшой красный сгусток. Похоже, это зародыш чего-то ужасного."
 	mob_name = "Коварная Плоть"
 	roundstart = FALSE
 	death = FALSE
-	mob_type = /mob/living/simple_animal/changeling_primalis
+	mob_type = /mob/living/treacherous_flesh
 	description = "Вы паразитический организм, внутри живого органика. Ваша цель - размножение и ассимиляция всего экипажа. Растите, развивайтесь, убивайте."
 	flavour_text = "Вы коварная плоть - паразитический организм, живущий внутри разумного органика. Вы крупный антагонист и имеете право ликвидировать экипаж без особых причин. \
 	Постепенно вы будете эволюционировать, получая новые способности и набирая силу. Когда вы закончите своё развитие - покиньте эту оболочку через специальный навык и помогите молодняку повторить ваш путь. \
@@ -15,7 +15,7 @@
 
 /obj/effect/mob_spawn/treacherous_flesh/create(ckey, flavour = TRUE, name, mob/user = usr)
 	if(!isnull(host) && !isnull(user) && !isnull(ckey))
-		var/mob/living/simple_animal/changeling_primalis/flesh = new mob_type(host.loc)
+		var/mob/living/treacherous_flesh/flesh = new mob_type(host.loc)
 		flesh.ckey = ckey
 		flesh.infest(host)
 		if(flavour)
