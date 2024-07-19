@@ -527,7 +527,28 @@ Cкилл на побег. DONE.
 	qdel(host.treacherous_flesh.trapped_mind)
 	host.treacherous_flesh.trapped_mind = null // Sometimes garbage collector left it there for some time, but we need this being null for checks
 	qdel(src)
+	return TRUE
 
+// Emit Pheromones
+
+/datum/action/treacherous_flesh/passive/emit_pheromones
+	name = "Выделять феромоны"
+	desc = "Переключает режим выделения феромонов. Пока мы выделяем феромоны, мутанты и порождения Матери не будут атаковать нашего носителя, принимая его за своего."
+	button_overlay_icon_state = "pheromones_off"
+	var/is_active = FALSE
+
+/datum/action/treacherous_flesh/passive/emit_pheromones/activate()
+	if(is_active)
+		to_chat(user, "<span class='notice'>Мы прекратили выделять феромоны.</span>")
+		user.host.faction.Remove("treacherous_flesh")
+		is_active = FALSE
+		button_overlay_icon_state = "pheromones_off"
+	else
+		to_chat(user, "<span class='notice'>Мы начинаем выделять феромоны.</span>")
+		user.host.faction.Add("treacherous_flesh")
+		is_active = TRUE
+		button_overlay_icon_state = "pheromones_on"
+	UpdateButtons()
 	return TRUE
 
 #undef EVOLUTION_BONUS

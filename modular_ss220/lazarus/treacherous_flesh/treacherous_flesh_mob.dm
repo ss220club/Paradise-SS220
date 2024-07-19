@@ -113,14 +113,13 @@
 	hud.remove_from_hud(host)
 	if(host_enslaved)
 		to_chat(host, "<span class='biggerdanger'>Мой владыка покинул меня... Что теперь со мной будет? Погодите-ка, а что вообще было? Почему я здесь? Я вновь ощущая себя... собой.</span>")
+	host.faction.Remove("treacherous_flesh")
 	UnregisterSignal(host, COMSIG_MOB_DEATH)
 	host.treacherous_flesh = null
 	SSticker.mode.ling_hosts.Remove(host)
 	host = null
 	if(delete)
 		qdel(src)
-
-
 
 /mob/living/treacherous_flesh/proc/on_host_death(mob/source, gibbed)
 	SIGNAL_HANDLER
@@ -161,20 +160,20 @@
 			primalis_abilities += new /datum/action/treacherous_flesh/contact_host(src)
 			primalis_abilities += new /datum/action/treacherous_flesh/speed_up_evolution(src)
 			primalis_abilities += new /datum/action/treacherous_flesh/leave_the_body(src)
-			primalis_abilities += new /datum/action/treacherous_flesh/take_control(src)
+			primalis_abilities += new /datum/action/treacherous_flesh/passive/emit_pheromones(src)
 		if(EVOLUTION_STAGE_1)
 			primalis_abilities += new /datum/action/treacherous_flesh/fleshmend(src)
 			primalis_abilities += new /datum/action/treacherous_flesh/adrenaline(src)
 			primalis_abilities += new /datum/action/treacherous_flesh/panacea(src)
 			primalis_abilities += new /datum/action/treacherous_flesh/heat_up(src)
-			primalis_abilities += new /datum/action/treacherous_flesh/passive/passive_infest(src)
 		if(EVOLUTION_STAGE_2)
 			primalis_abilities += new /datum/action/treacherous_flesh/regrow_organs(src)
 			primalis_abilities += new /datum/action/treacherous_flesh/toggle/armblade(src)
 			primalis_abilities += new /datum/action/treacherous_flesh/toggle/chitin_armor(src)
-			primalis_abilities += new /datum/action/treacherous_flesh/enslave_mind(src)
 		if(EVOLUTION_STAGE_3)
-			to_chat(src, span_warning("Не указаны навыки"))
+			primalis_abilities += new /datum/action/treacherous_flesh/passive/passive_infest(src)
+			primalis_abilities += new /datum/action/treacherous_flesh/take_control(src)
+			primalis_abilities += new /datum/action/treacherous_flesh/enslave_mind(src)
 		if(EVOLUTION_STAGE_4)
 			to_chat(src, span_warning("Не указаны навыки"))
 	for(var/datum/action/treacherous_flesh/ability in primalis_abilities)
