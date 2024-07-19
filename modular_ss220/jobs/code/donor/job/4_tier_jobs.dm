@@ -2,8 +2,8 @@
 	title = "Adjutant"
 	department_flag = JOBCAT_MEDSCI
 	flag = JOB_ADJUTANT
-	total_positions = 3
-	spawn_positions = 3
+	total_positions = 0
+	spawn_positions = 0
 	ru_title = "Адъютант"
 	alt_titles = list("Адъютант", "Butler", "Дворецкий", "Maid", "Горничная")
 	relate_job = "Internal Affairs Agent"
@@ -98,8 +98,8 @@
 	title = "Butler"
 	department_flag = JOBCAT_MEDSCI
 	flag = JOB_BUTLER
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 0
+	spawn_positions = 0
 	ru_title = "Дворецкий"
 	alt_titles = list("Дворецкий")
 	relate_job = "Vip"
@@ -141,8 +141,8 @@
 	title = "Maid"
 	department_flag = JOBCAT_MEDSCI
 	flag = JOB_MAID
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 0
+	spawn_positions = 0
 	ru_title = "Горничная"
 	alt_titles = list("Горничная")
 	relate_job = "Vip"
@@ -180,8 +180,8 @@
 	title = "Representative TSF"
 	department_flag = JOBCAT_ENGSEC
 	flag = JOB_REPRESENTATIVE_TSF
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 0
+	spawn_positions = 0
 	ru_title = "Представитель ТСФ"
 	alt_titles = list("Представитель ТСФ", "Дипломат ТСФ", "Публицист ТСФ")
 	relate_job = "Vip"
@@ -234,8 +234,8 @@
 	title = "Representative USSP"
 	department_flag = JOBCAT_ENGSEC
 	flag = JOB_REPRESENTATIVE_USSP
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 0
+	spawn_positions = 0
 	ru_title = "Представитель СССП"
 	alt_titles = list("Представитель СССП", "Дипломат СССП", "Пресс-Секретарь СССП")
 	relate_job = "Vip"
@@ -289,8 +289,8 @@
 	title = "Dealer"
 	department_flag = JOBCAT_ENGSEC
 	flag = JOB_DEALER
-	total_positions = 2
-	spawn_positions = 2
+	total_positions = 0
+	spawn_positions = 0
 	ru_title = "Торговец"
 	alt_titles = list("Торговец", "Независимый Торговец", "Сдельщик", "Барахольщик", "Меценат", "Коммерсант")
 	access = list(ACCESS_MAINT_TUNNELS, ACCESS_LIBRARY, ACCESS_RC_ANNOUNCE, ACCESS_MAILSORTING, ACCESS_CARGO, ACCESS_MINERAL_STOREROOM, ACCESS_CONSTRUCTION)

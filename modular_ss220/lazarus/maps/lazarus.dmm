@@ -58,6 +58,7 @@
 /obj/machinery/cryopod{
 	dir = 4
 	},
+/obj/effect/landmark/start/doctor,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/yarilo/living)
 "ah" = (
@@ -450,6 +451,7 @@
 	dir = 2
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/start/engineer,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/yarilo/living/cryo)
 "aZ" = (
@@ -1196,6 +1198,16 @@
 	icon_state = "yellow"
 	},
 /area/lazarus/outpost/yarilo/engi)
+"cK" = (
+/obj/machinery/cryopod{
+	dir = 4
+	},
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/spawner/late/crew,
+/turf/simulated/floor/plasteel{
+	icon_state = "white"
+	},
+/area/lazarus/outpost/yarilo/living/cryo)
 "cL" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -1415,6 +1427,7 @@
 "di" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/machinery/cryopod,
+/obj/effect/landmark/start/engineer,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/yarilo/living)
 "dj" = (
@@ -1861,6 +1874,7 @@
 "eh" = (
 /obj/machinery/cryopod,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/start/shaft_miner,
 /turf/simulated/floor/plasteel{
 	dir = 5;
 	icon_state = "brown"
@@ -2066,6 +2080,7 @@
 	dir = 4
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/start/shaft_miner,
 /turf/simulated/floor/plasteel{
 	dir = 9;
 	icon_state = "brown"
@@ -2832,6 +2847,16 @@
 /obj/effect/spawner/random_spawners/blood_often,
 /turf/simulated/floor/plasteel,
 /area/lazarus/outpost/rod/living/sec)
+"gd" = (
+/obj/machinery/cryopod{
+	dir = 1
+	},
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/start/security_officer,
+/turf/simulated/floor/plasteel{
+	icon_state = "white"
+	},
+/area/lazarus/outpost/rod/living/cryo)
 "ge" = (
 /obj/structure/cable{
 	d2 = 8;
@@ -2854,6 +2879,7 @@
 	dir = 2
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/start/shaft_miner,
 /turf/simulated/floor/plating,
 /area/lazarus/outdoors)
 "gg" = (
@@ -2895,6 +2921,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/lazarus/geotherm/stribog)
+"gj" = (
+/obj/machinery/door/airlock/maintenance_hatch,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors)
 "gk" = (
 /obj/structure/table,
 /obj/machinery/cell_charger{
@@ -2977,6 +3007,19 @@
 	icon_state = "yellow"
 	},
 /area/lazarus/outpost/yarilo/living)
+"gt" = (
+/obj/machinery/power/geothermal_generator,
+/obj/structure/cable{
+	d2 = 2;
+	icon_state = "0-2"
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors)
 "gu" = (
 /obj/structure/fermenting_barrel,
 /turf/simulated/floor/plating/asteroid/lazarus/dirt,
@@ -3132,6 +3175,7 @@
 	dir = 1
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/start/shaft_miner,
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -3266,6 +3310,14 @@
 /obj/effect/spawner/window/reinforced/grilled,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/yarilo/med/cryo)
+"hb" = (
+/obj/machinery/power/geothermal_generator,
+/obj/structure/cable{
+	d2 = 4;
+	icon_state = "0-4"
+	},
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors)
 "hc" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -3374,6 +3426,7 @@
 	dir = 1
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/start/shaft_miner,
 /turf/simulated/floor/plating,
 /area/lazarus/outdoors)
 "hr" = (
@@ -3442,6 +3495,7 @@
 	dir = 4
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/start/security_officer,
 /turf/simulated/floor/plasteel{
 	dir = 10;
 	icon_state = "red"
@@ -3475,6 +3529,11 @@
 	icon_state = "bluecorner"
 	},
 /area/lazarus/outpost/yarilo/living)
+"hC" = (
+/obj/structure/table,
+/obj/item/kitchen/knife/butcher,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors)
 "hD" = (
 /obj/machinery/power/apc/directional/north,
 /obj/structure/cable{
@@ -4218,6 +4277,7 @@
 	dir = 4
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/start/shaft_miner,
 /turf/simulated/floor/plasteel{
 	dir = 10;
 	icon_state = "brown"
@@ -4291,6 +4351,7 @@
 /obj/machinery/cryopod,
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/machinery/light/directional/east,
+/obj/effect/landmark/start/doctor,
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -4699,6 +4760,9 @@
 /area/lazarus/outpost/rod/living/sec)
 "kp" = (
 /obj/structure/chair/office/dark,
+/obj/effect/landmark/start/vip{
+	name = "Syndicate Agent"
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark";
 	dir = 6
@@ -4816,6 +4880,7 @@
 /obj/machinery/cryopod{
 	dir = 4
 	},
+/obj/effect/landmark/start/doctor,
 /turf/simulated/floor/plasteel{
 	dir = 10;
 	icon_state = "blue"
@@ -5033,11 +5098,20 @@
 /obj/structure/cable/yellow,
 /turf/simulated/floor/plating,
 /area/lazarus/geotherm/yarilo)
+"kY" = (
+/obj/machinery/cryopod{
+	dir = 4
+	},
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/spawner/late/crew,
+/turf/simulated/floor/plating,
+/area/lazarus/outpost/yarilo/living/cryo)
 "kZ" = (
 /obj/machinery/cryopod{
 	dir = 4
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/start/security_officer,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/rod/living/sec)
 "la" = (
@@ -5200,6 +5274,10 @@
 	icon_state = "white"
 	},
 /area/lazarus/outpost/yarilo/med/surgery)
+"ls" = (
+/obj/machinery/light/small/directional/south,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors)
 "lt" = (
 /obj/machinery/hydroponics/constructable,
 /obj/effect/spawner/random_spawners/dirt_frequent,
@@ -5509,6 +5587,7 @@
 /obj/machinery/cryopod{
 	dir = 4
 	},
+/obj/effect/landmark/start/doctor,
 /turf/simulated/floor/plasteel{
 	dir = 9;
 	icon_state = "blue"
@@ -5937,6 +6016,7 @@
 	dir = 4
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/start/shaft_miner,
 /turf/simulated/floor/plating,
 /area/lazarus/outdoors)
 "nh" = (
@@ -6865,6 +6945,7 @@
 	},
 /obj/machinery/light/directional/south,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/spawner/late/crew,
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -8482,6 +8563,16 @@
 	},
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/rod/sec/hos)
+"sx" = (
+/obj/machinery/cryopod{
+	dir = 4
+	},
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/start/shaft_miner,
+/turf/simulated/floor/plasteel{
+	icon_state = "white"
+	},
+/area/lazarus/outdoors)
 "sy" = (
 /obj/structure/cable/yellow{
 	d1 = 1;
@@ -8896,6 +8987,13 @@
 	},
 /turf/simulated/floor/wood,
 /area/lazarus/outdoors)
+"tm" = (
+/obj/machinery/light/small/directional/north,
+/obj/effect/landmark/start/vip{
+	name = "Cannibal"
+	},
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors)
 "tn" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plasteel{
@@ -9022,6 +9120,7 @@
 	dir = 8
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/start/assistant,
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -9360,6 +9459,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/yarilo/engi/ce)
+"up" = (
+/obj/machinery/door/airlock/maintenance,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors)
 "uq" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9
@@ -9671,6 +9774,7 @@
 	dir = 4
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/start/security_officer,
 /turf/simulated/floor/plasteel{
 	dir = 9;
 	icon_state = "red"
@@ -9953,6 +10057,7 @@
 	dir = 4
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/start/chef,
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -10519,6 +10624,7 @@
 /obj/machinery/cryopod{
 	dir = 4
 	},
+/obj/effect/landmark/start/doctor,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/yarilo/living)
 "wL" = (
@@ -10621,6 +10727,7 @@
 "wW" = (
 /obj/machinery/cryopod,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/start/doctor,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/yarilo/living/cryo)
 "wX" = (
@@ -10647,6 +10754,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/stribog/storage)
+"xa" = (
+/obj/machinery/cryopod,
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/start/shaft_miner,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors)
 "xb" = (
 /obj/structure/table/reinforced,
 /obj/machinery/door/window/classic/normal{
@@ -10743,6 +10856,16 @@
 	},
 /turf/simulated/floor/plating/asteroid/lazarus/snow,
 /area/lazarus/outdoors/rod)
+"xn" = (
+/obj/machinery/cryopod{
+	dir = 1
+	},
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/start/assistant,
+/turf/simulated/floor/plasteel{
+	icon_state = "white"
+	},
+/area/lazarus/outpost/rod/living/cryo)
 "xo" = (
 /obj/structure/spider/stickyweb,
 /obj/effect/decal/cleanable/blood/splatter,
@@ -10792,6 +10915,7 @@
 	dir = 4
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/start/security_officer,
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -11705,6 +11829,9 @@
 "zx" = (
 /obj/structure/bed,
 /obj/item/bedsheet/syndie,
+/obj/effect/landmark/start/vip{
+	name = "Syndicate Agent"
+	},
 /turf/simulated/floor/plasteel{
 	dir = 6;
 	icon_state = "darkred"
@@ -11857,6 +11984,10 @@
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
+/area/lazarus/outdoors)
+"zN" = (
+/obj/machinery/light/small/directional/west,
+/turf/simulated/floor/plating,
 /area/lazarus/outdoors)
 "zO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -12075,6 +12206,17 @@
 	icon_state = "redcorner"
 	},
 /area/lazarus/outpost/rod/sec)
+"Am" = (
+/obj/machinery/cryopod{
+	dir = 4
+	},
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/start/chef,
+/turf/simulated/floor/plasteel{
+	dir = 10;
+	icon_state = "green"
+	},
+/area/lazarus/outpost/rod/living/crew)
 "An" = (
 /obj/effect/turf_decal/delivery/hollow,
 /obj/structure/ore_box,
@@ -12221,6 +12363,7 @@
 	dir = 4
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/start/assistant,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/yarilo/living/cryo)
 "AC" = (
@@ -12235,6 +12378,11 @@
 /obj/effect/spawner/lootdrop/lazarus/trash,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/yarilo/canteen)
+"AE" = (
+/obj/structure/table,
+/obj/item/kitchen/knife/butcher/meatcleaver,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors)
 "AF" = (
 /obj/item/flag/syndi,
 /obj/effect/spawner/random_spawners/dirt_frequent,
@@ -12250,14 +12398,14 @@
 /area/lazarus/outpost/rod/kitchen)
 "AH" = (
 /obj/machinery/cryopod{
-	dir = 4
+	dir = 2
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
-/obj/effect/mapping_helpers/damaged_window,
+/obj/effect/landmark/start/shaft_miner,
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
-/area/lazarus/outpost/rod/living/cryo)
+/area/lazarus/outdoors)
 "AI" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/spawner/random_spawners/dirt_frequent,
@@ -12859,6 +13007,10 @@
 	icon_state = "brown"
 	},
 /area/lazarus/outdoors)
+"BZ" = (
+/obj/structure/kitchenspike,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors)
 "Ca" = (
 /obj/structure/fence/door,
 /turf/simulated/floor/plating/asteroid/lazarus/snow,
@@ -12957,6 +13109,7 @@
 	dir = 4
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/start/assistant,
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -13174,6 +13327,7 @@
 	dir = 2
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/spawner/late/crew,
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -13302,6 +13456,9 @@
 	dir = 8
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/start/vip{
+	name = "Hermit"
+	},
 /turf/simulated/floor/wood,
 /area/lazarus/outdoors)
 "Dc" = (
@@ -13346,6 +13503,14 @@
 /turf/space,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/stribog/maint)
+"Dh" = (
+/obj/machinery/cryopod,
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/start/assistant,
+/turf/simulated/floor/plasteel{
+	icon_state = "white"
+	},
+/area/lazarus/outpost/yarilo/living/cryo)
 "Di" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plasteel{
@@ -13461,6 +13626,7 @@
 "Dx" = (
 /obj/machinery/cryopod,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/start/security_officer,
 /turf/simulated/floor/plasteel{
 	dir = 5;
 	icon_state = "red"
@@ -13472,7 +13638,7 @@
 	},
 /obj/structure/sign/poster/official/random/south,
 /obj/effect/spawner/random_spawners/dirt_frequent,
-/obj/effect/mapping_helpers/damaged_window,
+/obj/effect/landmark/start/security_officer,
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -13745,6 +13911,10 @@
 	icon_state = "bot"
 	},
 /area/lazarus/outpost/stribog/storage)
+"Ef" = (
+/obj/structure/table,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors)
 "Eg" = (
 /obj/structure/table,
 /obj/item/storage/fancy/donut_box,
@@ -14392,6 +14562,13 @@
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plating,
 /area/lazarus/outdoors)
+"Ft" = (
+/obj/machinery/light/small/directional/east,
+/obj/effect/landmark/start/vip{
+	name = "Cannibal"
+	},
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors)
 "Fu" = (
 /obj/machinery/door/airlock/public/glass,
 /obj/effect/spawner/random_spawners/dirt_frequent,
@@ -14809,6 +14986,7 @@
 	},
 /obj/machinery/light/directional/south,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/start/shaft_miner,
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -14887,6 +15065,12 @@
 	icon_state = "white"
 	},
 /area/lazarus/outdoors)
+"Gz" = (
+/obj/machinery/cryopod,
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/start/assistant,
+/turf/simulated/floor/plating,
+/area/lazarus/outpost/yarilo/living/cryo)
 "GA" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -14909,6 +15093,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/yarilo/med/cmo)
+"GC" = (
+/obj/effect/landmark/start/vip{
+	name = "Abadoned Miner"
+	},
+/turf/simulated/floor/plating/asteroid/lazarus/dirt,
+/area/lazarus/outdoors)
 "GD" = (
 /obj/effect/spawner/window/reinforced/grilled,
 /obj/structure/cable{
@@ -15121,6 +15311,7 @@
 "Hd" = (
 /obj/machinery/cryopod,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/start/chemist,
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -15438,6 +15629,7 @@
 	dir = 4
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/start/botanist,
 /turf/simulated/floor/plasteel{
 	dir = 9;
 	icon_state = "green"
@@ -16095,6 +16287,17 @@
 /obj/effect/spawner/lootdrop/lazarus/trash,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/yarilo/living)
+"Jp" = (
+/obj/machinery/cryopod{
+	dir = 4
+	},
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/start/assistant,
+/turf/simulated/floor/plasteel{
+	dir = 9;
+	icon_state = "green"
+	},
+/area/lazarus/outpost/rod/living/crew)
 "Jq" = (
 /obj/structure/rack,
 /obj/item/melee/energy/sword/saber/red,
@@ -16223,6 +16426,7 @@
 "JF" = (
 /obj/machinery/cryopod,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/start/assistant,
 /turf/simulated/floor/plasteel{
 	dir = 5;
 	icon_state = "green"
@@ -16671,6 +16875,11 @@
 /obj/effect/spawner/lootdrop/lazarus/trash,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/yarilo/engi/ce)
+"KC" = (
+/obj/machinery/light/small/directional/south,
+/obj/structure/table,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors)
 "KD" = (
 /obj/effect/spawner/window/reinforced/grilled,
 /obj/structure/curtain{
@@ -16759,6 +16968,7 @@
 	},
 /obj/machinery/light/directional/north,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/start/botanist,
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -16915,6 +17125,7 @@
 "KZ" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/machinery/cryopod,
+/obj/effect/landmark/start/engineer,
 /turf/simulated/floor/plasteel{
 	dir = 5;
 	icon_state = "yellow"
@@ -17324,6 +17535,14 @@
 	icon_state = "white"
 	},
 /area/lazarus/outpost/yarilo/med/virology)
+"LR" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors)
 "LS" = (
 /obj/effect/spawner/window/reinforced/grilled,
 /obj/structure/barricade/wooden/crude/snow,
@@ -17394,6 +17613,7 @@
 	dir = 2
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/start/security_officer,
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -17429,6 +17649,17 @@
 /obj/effect/decal/cleanable/insectguts,
 /turf/simulated/floor/plating/asteroid/lazarus/dirt,
 /area/lazarus/outdoors)
+"Mg" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dust,
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/start/vip{
+	name = "Crusader"
+	},
+/turf/simulated/floor/wood,
+/area/lazarus/cabin/crusader)
 "Mh" = (
 /obj/machinery/sleeper/upgraded{
 	dir = 2
@@ -17512,6 +17743,7 @@
 "Mq" = (
 /obj/machinery/cryopod,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/start/shaft_miner,
 /turf/simulated/floor/plasteel{
 	dir = 6;
 	icon_state = "brown"
@@ -17714,6 +17946,7 @@
 	dir = 4
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/start/assistant,
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -17963,6 +18196,9 @@
 	dir = 4
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/start/vip{
+	name = "Hermit"
+	},
 /turf/simulated/floor/wood,
 /area/lazarus/outdoors)
 "Nq" = (
@@ -18250,6 +18486,13 @@
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plating,
 /area/lazarus/outdoors)
+"Of" = (
+/obj/structure/table,
+/obj/machinery/light/small/directional/east,
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/start/shaft_miner,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors)
 "Og" = (
 /obj/machinery/power/apc/directional/north,
 /obj/structure/cable{
@@ -18363,6 +18606,10 @@
 	icon_state = "greenfull"
 	},
 /area/lazarus/outpost/rod/botany)
+"Ou" = (
+/obj/machinery/door/airlock/freezer,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors)
 "Ov" = (
 /obj/structure/bookcase/random,
 /obj/effect/spawner/random_spawners/dirt_frequent,
@@ -18382,6 +18629,7 @@
 	},
 /obj/item/stack/tile/plasteel,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/spawner/late/crew,
 /turf/simulated/floor/plating,
 /area/lazarus/outdoors)
 "Oz" = (
@@ -18456,6 +18704,7 @@
 	dir = 4
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/start/botanist,
 /turf/simulated/floor/plasteel{
 	dir = 10;
 	icon_state = "green"
@@ -18732,6 +18981,7 @@
 "Pn" = (
 /obj/machinery/cryopod,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/start/security_officer,
 /turf/simulated/floor/plasteel{
 	dir = 6;
 	icon_state = "red"
@@ -18802,6 +19052,7 @@
 	dir = 1
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/spawner/late/crew,
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -19034,6 +19285,17 @@
 /obj/item/gun/projectile/revolver,
 /turf/simulated/floor/plating/asteroid/lazarus/dirt,
 /area/lazarus/outdoors)
+"PV" = (
+/obj/machinery/cryopod{
+	dir = 4
+	},
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/start/assistant,
+/turf/simulated/floor/plasteel{
+	dir = 10;
+	icon_state = "green"
+	},
+/area/lazarus/outpost/rod/living/crew)
 "PW" = (
 /obj/machinery/conveyor/north,
 /obj/structure/cable{
@@ -19291,10 +19553,26 @@
 	icon_state = "redcorner"
 	},
 /area/lazarus/outpost/rod/sec/interrogation)
+"QD" = (
+/obj/effect/landmark/start/vip{
+	name = "Cannibal"
+	},
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors)
 "QE" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/rod/kitchen)
+"QG" = (
+/obj/machinery/cryopod{
+	dir = 2
+	},
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/start/chef,
+/turf/simulated/floor/plasteel{
+	icon_state = "white"
+	},
+/area/lazarus/outpost/rod/living/cryo)
 "QH" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -19986,6 +20264,7 @@
 "Si" = (
 /obj/machinery/cryopod,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/start/shaft_miner,
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -20085,6 +20364,16 @@
 /obj/effect/mapping_helpers/damaged_window,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/yarilo/med/cmo)
+"Sq" = (
+/obj/machinery/cryopod{
+	dir = 2
+	},
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/start/assistant,
+/turf/simulated/floor/plasteel{
+	icon_state = "white"
+	},
+/area/lazarus/outpost/rod/living/cryo)
 "Sr" = (
 /obj/effect/spawner/window/reinforced/grilled,
 /obj/structure/cable{
@@ -20207,6 +20496,13 @@
 	icon_state = "darkbrown"
 	},
 /area/lazarus/outdoors)
+"SE" = (
+/obj/machinery/light/small/directional/north,
+/obj/machinery/gibber{
+	emagged = 1
+	},
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors)
 "SF" = (
 /obj/structure/table/glass,
 /obj/item/storage/surgical_tray{
@@ -20277,6 +20573,7 @@
 /obj/machinery/cryopod,
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/item/stack/tile,
+/obj/effect/landmark/start/assistant,
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -20361,6 +20658,7 @@
 	},
 /obj/structure/sign/poster/official/random/north,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/start/chef,
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -20673,6 +20971,7 @@
 	dir = 4
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/start/engineer,
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -20762,6 +21061,16 @@
 /obj/effect/spawner/lootdrop/lazarus/trash,
 /turf/simulated/floor/plasteel,
 /area/lazarus/outpost/rod)
+"TT" = (
+/obj/machinery/cryopod{
+	dir = 2
+	},
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/start/botanist,
+/turf/simulated/floor/plasteel{
+	icon_state = "white"
+	},
+/area/lazarus/outpost/rod/living/cryo)
 "TU" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -21054,6 +21363,7 @@
 "Uv" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/machinery/cryopod,
+/obj/effect/landmark/start/engineer,
 /turf/simulated/floor/plasteel{
 	dir = 6;
 	icon_state = "yellow"
@@ -21278,9 +21588,14 @@
 	icon_state = "whitegreenfull"
 	},
 /area/lazarus/outdoors)
+"UU" = (
+/obj/machinery/light/small/directional/east,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors)
 "UV" = (
 /obj/machinery/cryopod,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/start/assistant,
 /turf/simulated/floor/plasteel{
 	dir = 6;
 	icon_state = "green"
@@ -21405,6 +21720,7 @@
 	dir = 2
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/start/doctor,
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -21514,6 +21830,16 @@
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plating,
 /area/lazarus/outdoors)
+"Vx" = (
+/obj/machinery/cryopod{
+	dir = 4
+	},
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/start/assistant,
+/turf/simulated/floor/plasteel{
+	icon_state = "white"
+	},
+/area/lazarus/outpost/yarilo/living/cryo)
 "Vy" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -21959,6 +22285,17 @@
 	icon_state = "neutralcorner"
 	},
 /area/lazarus/outpost/rod/canteen)
+"Ws" = (
+/obj/machinery/cryopod{
+	dir = 4
+	},
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/start/chef,
+/turf/simulated/floor/plasteel{
+	dir = 9;
+	icon_state = "green"
+	},
+/area/lazarus/outpost/rod/living/crew)
 "Wt" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -22263,6 +22600,7 @@
 	dir = 8
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/start/assistant,
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -22466,6 +22804,7 @@
 	},
 /obj/machinery/light/directional/north,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/spawner/late/crew,
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -23409,6 +23748,7 @@
 	},
 /obj/machinery/light/directional/north,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/start/security_officer,
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -23566,6 +23906,14 @@
 /obj/machinery/door/airlock/engineering,
 /turf/simulated/floor/plasteel,
 /area/lazarus/outpost/yarilo/engi/ce)
+"ZV" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/machinery/cryopod{
+	dir = 4
+	},
+/obj/effect/landmark/start/chemist,
+/turf/simulated/floor/plating,
+/area/lazarus/outpost/yarilo/living)
 "ZW" = (
 /obj/machinery/power/geothermal_generator,
 /obj/structure/cable/yellow{
@@ -31481,7 +31829,7 @@ pI
 Ka
 Yw
 Wo
-uz
+Mg
 YZ
 Ka
 pI
@@ -33241,7 +33589,7 @@ pI
 Ka
 PR
 Wo
-uz
+Mg
 uz
 uz
 uz
@@ -37050,10 +37398,10 @@ wr
 wr
 UR
 UR
-AB
-TH
-TH
-TH
+kY
+cK
+cK
+cK
 AB
 UR
 wr
@@ -37754,11 +38102,11 @@ wr
 UR
 aY
 Ju
-Hd
+Dh
 SM
-Hd
-wW
-Hd
+Dh
+Gz
+Dh
 UR
 ec
 zt
@@ -38107,7 +38455,7 @@ Hc
 aY
 Ju
 AB
-TH
+Vx
 TH
 TH
 TH
@@ -38444,7 +38792,7 @@ ag
 BA
 mc
 BD
-ag
+ZV
 BA
 NZ
 NZ
@@ -38810,7 +39158,7 @@ NZ
 UR
 Vh
 jp
-Hd
+Dh
 Ju
 Hd
 ju
@@ -52004,15 +52352,15 @@ ZS
 ZS
 ZS
 hN
-HT
+Jp
 vj
-OI
+PV
 FX
-HT
+Jp
 hO
-OI
+Am
 hN
-HT
+Ws
 Zw
 OI
 hN
@@ -53443,7 +53791,7 @@ eI
 eI
 Zy
 xs
-AH
+xs
 Dy
 eI
 eI
@@ -53797,7 +54145,7 @@ yV
 SW
 Df
 yV
-Pv
+gd
 eI
 ZS
 ZS
@@ -54496,10 +54844,10 @@ ZS
 tx
 ZS
 rz
-Ma
+QG
 yV
-Pv
-Ma
+xn
+Sq
 yV
 Pv
 rz
@@ -54850,8 +55198,8 @@ ZS
 eI
 SX
 nv
-Pv
-Ma
+xn
+Sq
 mz
 Pv
 cq
@@ -55200,10 +55548,10 @@ fg
 fC
 tx
 eI
-Ma
+TT
 Gr
-Pv
-Ma
+xn
+Sq
 Gr
 Pv
 rz
@@ -55552,7 +55900,7 @@ VL
 ZS
 ZS
 cq
-Ma
+TT
 Df
 ML
 Cn
@@ -55904,7 +56252,7 @@ XH
 JZ
 fC
 cq
-Ma
+TT
 VK
 yV
 Gr
@@ -81320,7 +81668,7 @@ vp
 (165,1,1) = {"
 vp
 vp
-pI
+vp
 pI
 pI
 pI
@@ -81673,10 +82021,10 @@ vp
 vp
 vp
 vp
-pI
-pI
-pI
-pI
+vp
+vp
+vp
+vp
 pI
 pI
 pI
@@ -82026,11 +82374,11 @@ vp
 vp
 vp
 vp
-pI
-pI
-pI
-pI
-pI
+vp
+vp
+vp
+vp
+vp
 pI
 pI
 pI
@@ -82379,11 +82727,11 @@ vp
 vp
 vp
 vp
-pI
-pI
-pI
-pI
-pI
+vp
+vp
+vp
+vp
+vp
 pI
 pI
 pI
@@ -82731,11 +83079,11 @@ vp
 vp
 vp
 vp
-pI
-pI
-pI
-pI
-pI
+vp
+vp
+vp
+vp
+vp
 pI
 pI
 pI
@@ -83084,11 +83432,11 @@ vp
 vp
 vp
 vp
-pI
-pI
-pI
-pI
-pI
+vp
+vp
+vp
+vp
+vp
 pI
 pI
 pI
@@ -83437,10 +83785,10 @@ vp
 vp
 vp
 vp
-pI
-pI
-pI
-pI
+vp
+vp
+vp
+vp
 pI
 pI
 pI
@@ -83786,14 +84134,14 @@ vp
 vp
 vp
 vp
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
+vp
+vp
+vp
+vp
+vp
+vp
+vp
+vp
 pI
 pI
 pI
@@ -84136,17 +84484,17 @@ vp
 (173,1,1) = {"
 vp
 vp
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
+vp
+vp
+vp
+vp
+vp
+vp
+vp
+vp
+vp
+vp
+vp
 pI
 pI
 pI
@@ -84488,17 +84836,17 @@ vp
 (174,1,1) = {"
 vp
 vp
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
+vp
+vp
+vp
+vp
+vp
+vp
+vp
+vp
+vp
+vp
+vp
 pI
 pI
 pI
@@ -84839,19 +85187,19 @@ vp
 "}
 (175,1,1) = {"
 vp
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
+vp
+vp
+vp
+vp
+vp
+vp
+vp
+vp
+vp
+vp
+vp
+vp
+vp
 pI
 pI
 pI
@@ -85191,19 +85539,19 @@ vp
 "}
 (176,1,1) = {"
 vp
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
+vp
+vp
+vp
+vp
+vp
+vp
+vp
+vp
+vp
+vp
+vp
+vp
+vp
 pI
 pI
 pI
@@ -85543,20 +85891,20 @@ vp
 "}
 (177,1,1) = {"
 vp
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
+vp
+vp
+vp
+vp
+vp
+vp
+vp
+vp
+vp
+vp
+vp
+vp
+vp
+vp
 pI
 pI
 pI
@@ -85895,21 +86243,21 @@ vp
 "}
 (178,1,1) = {"
 vp
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
+vp
+vp
+vp
+vp
+po
+po
+po
+po
+po
+po
+po
+po
+vp
+vp
+vp
 pI
 pI
 pI
@@ -86247,21 +86595,21 @@ vp
 "}
 (179,1,1) = {"
 vp
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
+vp
+vp
+vp
+vp
+po
+zN
+po
+BZ
+zN
+vc
+BZ
+po
+vp
+vp
+vp
 pI
 pI
 pI
@@ -86599,21 +86947,21 @@ vp
 "}
 (180,1,1) = {"
 vp
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
+vp
+vp
+vp
+vp
+po
+vc
+up
+vc
+vc
+vc
+BZ
+po
+vp
+vp
+vp
 pI
 pI
 pI
@@ -86951,21 +87299,21 @@ vp
 "}
 (181,1,1) = {"
 vp
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
+vp
+vp
+vp
+vp
+po
+po
+po
+vc
+vc
+vc
+BZ
+po
+vp
+vp
+vp
 pI
 pI
 pI
@@ -87304,20 +87652,20 @@ vp
 (182,1,1) = {"
 vp
 vp
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
+vp
+vp
+vp
+po
+UU
+up
+vc
+vc
+vc
+ls
+po
+vp
+vp
+vp
 pI
 pI
 pI
@@ -87656,20 +88004,20 @@ vp
 (183,1,1) = {"
 vp
 vp
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
+vp
+po
+po
+po
+po
+po
+up
+po
+BZ
+AE
+po
+vp
+vp
+vp
 pI
 pI
 pI
@@ -88008,20 +88356,20 @@ vp
 (184,1,1) = {"
 vp
 vp
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
+vp
+po
+BZ
+hC
+Ef
+QD
+vc
+po
+po
+po
+po
+po
+po
+po
 pI
 pI
 pI
@@ -88360,23 +88708,23 @@ vp
 (185,1,1) = {"
 vp
 vp
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
+vp
+po
+tm
+vc
+vc
+vc
+vc
+vc
+vc
+vc
+vc
+vc
+vc
+gj
+Uy
+Uy
+Uy
 pI
 pI
 pI
@@ -88712,23 +89060,23 @@ vp
 (186,1,1) = {"
 vp
 vp
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
+vp
+po
+Ef
+UU
+vc
+vc
+vc
+vc
+vc
+vc
+vc
+vc
+vc
+gj
+rR
+rR
+Uy
 pI
 pI
 pI
@@ -89065,22 +89413,22 @@ vp
 vp
 vp
 vp
+po
+po
+po
+BZ
+QD
+vc
+Ft
+BZ
+po
+up
+po
+po
+po
 pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
+rR
+Uy
 pI
 pI
 pI
@@ -89418,21 +89766,21 @@ vp
 vp
 vp
 vp
+vp
+po
+po
+po
+Ou
+po
+po
+po
+vc
+po
+vp
+vp
 pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
+Uy
+Uy
 pI
 pI
 pI
@@ -89770,20 +90118,20 @@ vp
 vp
 vp
 vp
+vp
+po
+vc
+vc
+vc
+hC
+po
+Ef
+vc
+po
+vp
+vp
 pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
+rR
 pI
 pI
 pI
@@ -90122,20 +90470,20 @@ vp
 vp
 vp
 vp
+vp
+po
+SE
+vc
+vc
+KC
+po
+hb
+vc
+po
+vp
+vp
 pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
+rR
 pI
 pI
 pI
@@ -90475,19 +90823,19 @@ vp
 vp
 vp
 vp
+po
+BZ
+vc
+vc
+Ef
+po
+gt
+ga
+po
+vp
 pI
 pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
+rR
 pI
 pI
 pI
@@ -90826,21 +91174,21 @@ vp
 vp
 vp
 vp
+vp
+po
+po
+po
+po
+po
+po
+po
+po
+po
+vp
 pI
 pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
+rR
+Uy
 pI
 pI
 pI
@@ -91178,21 +91526,21 @@ vp
 vp
 vp
 vp
+vp
+vp
+vp
+vp
+vp
+vp
+vp
+vp
+vp
+vp
 pI
 pI
 pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
+Uy
+Uy
 pI
 pI
 pI
@@ -91530,21 +91878,21 @@ vp
 vp
 vp
 vp
+vp
+vp
+vp
+vp
+vp
+vp
+vp
+vp
+vp
+vp
 pI
 pI
 pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
+Uy
+Uy
 pI
 pI
 pI
@@ -91880,23 +92228,23 @@ vp
 (195,1,1) = {"
 vp
 vp
+vp
+vp
+vp
+vp
+vp
+vp
+vp
+vp
+vp
+vp
+vp
+vp
 pI
 pI
 pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
+rR
+rR
 pI
 pI
 pI
@@ -92232,24 +92580,24 @@ vp
 (196,1,1) = {"
 vp
 vp
+vp
+vp
+vp
+vp
+vp
+vp
+vp
+vp
+vp
+vp
+vp
 pI
 pI
 pI
 pI
 pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
+rR
+Uy
 pI
 pI
 pI
@@ -92584,25 +92932,25 @@ vp
 (197,1,1) = {"
 vp
 vp
+vp
+vp
+vp
+vp
+vp
+vp
+vp
+vp
+vp
+vp
+vp
 pI
 pI
 pI
 pI
 pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
+rR
+rR
+Uy
 pI
 pI
 pI
@@ -92936,6 +93284,16 @@ vp
 (198,1,1) = {"
 vp
 vp
+vp
+vp
+vp
+vp
+vp
+vp
+vp
+vp
+vp
+vp
 pI
 pI
 pI
@@ -92943,18 +93301,8 @@ pI
 pI
 pI
 pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
+rR
+Uy
 pI
 pI
 pI
@@ -93288,6 +93636,15 @@ vp
 (199,1,1) = {"
 vp
 vp
+vp
+vp
+vp
+vp
+vp
+vp
+vp
+vp
+vp
 pI
 pI
 pI
@@ -93296,17 +93653,8 @@ pI
 pI
 pI
 pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
+Uy
+Uy
 pI
 pI
 pI
@@ -93641,6 +93989,13 @@ vp
 vp
 vp
 vp
+vp
+vp
+vp
+vp
+vp
+vp
+vp
 pI
 pI
 pI
@@ -93651,14 +94006,7 @@ pI
 pI
 pI
 pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
+Uy
 pI
 pI
 pI
@@ -93993,6 +94341,13 @@ vp
 vp
 vp
 vp
+vp
+vp
+vp
+vp
+vp
+vp
+vp
 pI
 pI
 pI
@@ -94003,16 +94358,9 @@ pI
 pI
 pI
 pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
+rR
+Uy
+Uy
 pI
 pI
 pI
@@ -94345,6 +94693,12 @@ vp
 vp
 vp
 vp
+vp
+vp
+vp
+vp
+vp
+vp
 pI
 pI
 pI
@@ -94356,15 +94710,9 @@ pI
 pI
 pI
 pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
+rR
+rR
+Uy
 pI
 pI
 pI
@@ -94698,6 +95046,11 @@ vp
 vp
 vp
 vp
+vp
+vp
+vp
+vp
+vp
 pI
 pI
 pI
@@ -94710,14 +95063,9 @@ pI
 pI
 pI
 pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
+rR
+Uy
+Uy
 pI
 pI
 pI
@@ -95052,6 +95400,8 @@ vp
 vp
 vp
 vp
+vp
+vp
 pI
 pI
 pI
@@ -95065,11 +95415,9 @@ pI
 pI
 pI
 pI
-pI
-pI
-pI
-pI
-pI
+rR
+Uy
+Uy
 pI
 pI
 pI
@@ -95404,6 +95752,7 @@ vp
 vp
 vp
 vp
+vp
 pI
 pI
 pI
@@ -95418,10 +95767,9 @@ pI
 pI
 pI
 pI
-pI
-pI
-pI
-pI
+rR
+Uy
+Uy
 pI
 pI
 pI
@@ -95772,7 +96120,7 @@ pI
 pI
 pI
 pI
-pI
+Uy
 pI
 pI
 pI
@@ -96124,7 +96472,7 @@ pI
 pI
 pI
 pI
-pI
+Uy
 pI
 pI
 pI
@@ -96476,9 +96824,9 @@ pI
 pI
 pI
 pI
-pI
-pI
-pI
+rR
+Uy
+Uy
 pI
 pI
 pI
@@ -96828,9 +97176,9 @@ pI
 pI
 pI
 pI
-pI
-pI
-pI
+rR
+rR
+Uy
 pI
 pI
 pI
@@ -97181,9 +97529,9 @@ pI
 pI
 pI
 pI
-pI
-pI
-pI
+rR
+Uy
+Uy
 pI
 pI
 pI
@@ -97533,9 +97881,9 @@ pI
 pI
 pI
 pI
-pI
-pI
-pI
+rR
+Uy
+Uy
 pI
 pI
 pI
@@ -97885,8 +98233,8 @@ pI
 pI
 pI
 pI
-pI
-pI
+rR
+Uy
 pI
 pI
 pI
@@ -98237,8 +98585,8 @@ pI
 pI
 pI
 pI
-pI
-pI
+Uy
+Uy
 pI
 pI
 pI
@@ -98590,8 +98938,8 @@ pI
 pI
 pI
 pI
-pI
-pI
+Uy
+Uy
 pI
 pI
 pI
@@ -98942,8 +99290,8 @@ pI
 pI
 pI
 pI
-pI
-pI
+Uy
+Uy
 pI
 pI
 pI
@@ -99294,9 +99642,9 @@ pI
 pI
 pI
 pI
-pI
-pI
-pI
+rR
+Uy
+Uy
 pI
 pI
 pI
@@ -99646,9 +99994,9 @@ pI
 pI
 pI
 pI
-pI
-pI
-pI
+rR
+rR
+Uy
 pI
 pI
 pI
@@ -99999,8 +100347,8 @@ pI
 pI
 pI
 pI
-pI
-pI
+rR
+Uy
 pI
 pI
 pI
@@ -100351,8 +100699,8 @@ pI
 pI
 pI
 pI
-pI
-pI
+rR
+Uy
 pI
 pI
 pI
@@ -100703,9 +101051,9 @@ pI
 pI
 pI
 pI
-pI
-pI
-pI
+rR
+Uy
+Uy
 pI
 pI
 pI
@@ -101055,9 +101403,9 @@ pI
 pI
 pI
 pI
-pI
-pI
-pI
+Uy
+Uy
+Uy
 pI
 pI
 pI
@@ -101407,7 +101755,7 @@ pI
 pI
 pI
 pI
-pI
+Uy
 pI
 pI
 pI
@@ -101760,7 +102108,7 @@ pI
 pI
 pI
 pI
-pI
+Uy
 pI
 pI
 pI
@@ -102112,8 +102460,8 @@ pI
 pI
 pI
 pI
-pI
-pI
+Uy
+Uy
 pI
 pI
 pI
@@ -102464,8 +102812,8 @@ pI
 pI
 pI
 pI
-pI
-pI
+rR
+Uy
 pI
 pI
 pI
@@ -102816,9 +103164,9 @@ pI
 pI
 pI
 pI
-pI
-pI
-pI
+rR
+Uy
+Uy
 pI
 pI
 pI
@@ -103168,9 +103516,9 @@ pI
 pI
 pI
 pI
-pI
-pI
-pI
+rR
+rR
+Uy
 pI
 pI
 pI
@@ -103521,8 +103869,8 @@ pI
 pI
 pI
 pI
-pI
-pI
+rR
+Uy
 pI
 pI
 pI
@@ -103873,8 +104221,8 @@ pI
 pI
 pI
 pI
-pI
-pI
+Uy
+Uy
 pI
 pI
 pI
@@ -104225,7 +104573,7 @@ pI
 pI
 pI
 pI
-pI
+Uy
 pI
 pI
 pI
@@ -104429,7 +104777,7 @@ rR
 Uy
 Uy
 rR
-Uy
+rR
 Uy
 Uy
 Uy
@@ -104577,7 +104925,7 @@ pI
 pI
 pI
 pI
-pI
+Uy
 pI
 pI
 pI
@@ -104773,7 +105121,7 @@ pI
 rR
 rR
 Uy
-Uy
+rR
 Uy
 Uy
 pI
@@ -104929,8 +105277,8 @@ pI
 pI
 pI
 pI
-pI
-pI
+Uy
+Uy
 pI
 pI
 pI
@@ -105281,200 +105629,200 @@ pI
 pI
 pI
 pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
 rR
-rR
-rR
-rR
-rR
-rR
-rR
-rR
-rR
-rR
-rR
-rR
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-rR
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-rR
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-rR
-rR
-rR
-rR
-rR
-rR
-rR
-rR
-rR
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
-pI
 Uy
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+rR
+rR
+rR
+rR
+rR
+rR
+rR
+rR
+rR
+rR
+rR
+rR
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+rR
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+rR
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+rR
+rR
+rR
+rR
+rR
+rR
+rR
+rR
+rR
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+pI
+rR
 Uy
 pI
 pI
@@ -105633,8 +105981,8 @@ pI
 pI
 pI
 pI
-pI
-pI
+rR
+Uy
 pI
 pI
 pI
@@ -105985,8 +106333,8 @@ pI
 pI
 pI
 pI
-pI
-pI
+rR
+Uy
 pI
 pI
 pI
@@ -106337,8 +106685,8 @@ pI
 pI
 pI
 pI
-pI
-pI
+rR
+Uy
 pI
 pI
 pI
@@ -106689,8 +107037,8 @@ pI
 pI
 pI
 pI
-pI
-pI
+Uy
+Uy
 pI
 pI
 pI
@@ -107040,8 +107388,8 @@ pI
 pI
 pI
 pI
-pI
-pI
+Uy
+Uy
 pI
 pI
 pI
@@ -107392,8 +107740,8 @@ pI
 pI
 pI
 pI
-pI
-pI
+Uy
+Uy
 pI
 pI
 pI
@@ -107744,8 +108092,8 @@ pI
 pI
 pI
 pI
-pI
-pI
+rR
+Uy
 pI
 pI
 pI
@@ -108096,8 +108444,8 @@ pI
 pI
 pI
 pI
-pI
-pI
+rR
+Uy
 pI
 pI
 pI
@@ -108448,8 +108796,8 @@ pI
 pI
 pI
 pI
-pI
-pI
+rR
+Uy
 pI
 pI
 pI
@@ -108800,8 +109148,8 @@ pI
 pI
 pI
 pI
-pI
-pI
+rR
+Uy
 pI
 pI
 pI
@@ -109152,8 +109500,8 @@ pI
 pI
 pI
 pI
-pI
-pI
+Uy
+Uy
 pI
 pI
 pI
@@ -109504,9 +109852,9 @@ pI
 pI
 pI
 pI
-pI
-pI
-pI
+Uy
+Uy
+Uy
 pI
 pI
 pI
@@ -109857,8 +110205,8 @@ pI
 pI
 pI
 pI
-pI
-pI
+rR
+Uy
 pI
 pI
 pI
@@ -110209,9 +110557,9 @@ pI
 pI
 pI
 pI
-pI
-pI
-pI
+rR
+Uy
+Uy
 pI
 pI
 pI
@@ -110561,9 +110909,9 @@ pI
 pI
 pI
 pI
-pI
-pI
-pI
+rR
+rR
+Uy
 pI
 pI
 pI
@@ -110753,7 +111101,7 @@ pI
 pI
 pI
 Uy
-Uy
+rR
 Uy
 Uy
 pI
@@ -110914,9 +111262,9 @@ pI
 pI
 pI
 pI
-pI
-pI
-pI
+rR
+Uy
+Uy
 pI
 pI
 pI
@@ -111266,10 +111614,10 @@ pI
 pI
 pI
 pI
-pI
-pI
-pI
-pI
+Uy
+Uy
+Uy
+Uy
 pI
 pI
 pI
@@ -111619,10 +111967,10 @@ pI
 pI
 pI
 pI
-pI
-pI
-pI
-pI
+Uy
+Uy
+Uy
+Uy
 pI
 pI
 pI
@@ -111972,9 +112320,9 @@ pI
 pI
 pI
 pI
-pI
-pI
-pI
+rR
+rR
+Uy
 pI
 pI
 pI
@@ -112325,8 +112673,8 @@ pI
 pI
 pI
 pI
-pI
-pI
+rR
+Uy
 pI
 pI
 pI
@@ -112677,8 +113025,8 @@ pI
 pI
 pI
 pI
-pI
-pI
+rR
+Uy
 pI
 pI
 pI
@@ -113030,7 +113378,7 @@ pI
 pI
 pI
 pI
-pI
+Uy
 pI
 pI
 pI
@@ -113382,7 +113730,7 @@ pI
 pI
 pI
 pI
-pI
+Uy
 pI
 pI
 pI
@@ -113571,7 +113919,7 @@ pI
 pI
 pI
 pI
-Uy
+rR
 Uy
 pI
 pI
@@ -113734,7 +114082,7 @@ pI
 pI
 pI
 pI
-pI
+Uy
 pI
 pI
 pI
@@ -118496,7 +118844,7 @@ WC
 WC
 yG
 yG
-yG
+WC
 yG
 Jc
 Jc
@@ -134410,7 +134758,7 @@ Qt
 Qt
 Qt
 Qt
-rR
+GC
 rR
 rR
 rR
@@ -139306,7 +139654,7 @@ Qt
 Qt
 rR
 rR
-rR
+GC
 Qt
 Qt
 Qt
@@ -145412,8 +145760,8 @@ pI
 OJ
 CO
 FW
-vx
-vx
+sx
+sx
 bb
 gK
 Pf
@@ -146117,7 +146465,7 @@ Pf
 Pf
 Pf
 Pf
-CO
+AH
 Jb
 gK
 Pf
@@ -148813,7 +149161,7 @@ Qt
 Qt
 Qt
 Qt
-rR
+GC
 rR
 rR
 rR
@@ -151962,7 +152310,7 @@ rR
 rR
 rR
 Qt
-rR
+GC
 rR
 rR
 rR
@@ -153499,20 +153847,20 @@ Ri
 oB
 Pf
 CA
-KP
+xa
 Pf
 pI
 pI
 pI
 Pf
-KP
+xa
 Rd
 Pf
 Ri
 FW
 Pf
 Rd
-KP
+xa
 Pf
 pI
 FN
@@ -154555,7 +154903,7 @@ pF
 jS
 Wt
 pF
-lf
+LR
 bY
 kG
 aL
@@ -156315,14 +156663,14 @@ Ri
 BY
 Pf
 CA
-KP
+xa
 Pf
 pI
 pI
 pI
 Pf
 eh
-Rd
+Of
 Pf
 oB
 BY
@@ -157716,7 +158064,7 @@ pI
 pI
 pI
 Pf
-KP
+xa
 nR
 Pf
 CY
@@ -157729,7 +158077,7 @@ Zn
 aR
 Zn
 Pf
-KP
+xa
 nR
 Pf
 FW

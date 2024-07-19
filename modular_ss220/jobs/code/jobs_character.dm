@@ -208,6 +208,8 @@
 					clothes_s.Blend(new /icon('icons/mob/clothing/back.dmi', "satchel-clown"), ICON_OVERLAY)
 
 
+	// SS220 LAZARUS EDIT - START
+	/*
 	else if(job_support_high)
 		switch(job_support_high)
 			if(JOB_PRISON)
@@ -226,6 +228,7 @@
 					clothes_s.Blend(new /icon('icons/mob/clothing/back.dmi', "backpack"), ICON_OVERLAY)
 				else if(backbag == 3 || backbag == 4)
 					clothes_s.Blend(new /icon('icons/mob/clothing/back.dmi', "satchel"), ICON_OVERLAY)
+	*/
 
 	return clothes_s
 

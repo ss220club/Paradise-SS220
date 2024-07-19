@@ -2,8 +2,8 @@
 	title = "Chief Medical Officer"
 	flag = JOB_CMO
 	department_flag = JOBCAT_MEDSCI
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 0
+	spawn_positions = 0
 	job_department_flags = DEP_FLAG_COMMAND | DEP_FLAG_MEDICAL
 	supervisors = "the captain"
 	department_head = list("Captain")
@@ -59,8 +59,8 @@
 	title = "Medical Doctor"
 	flag = JOB_DOCTOR
 	department_flag = JOBCAT_MEDSCI
-	total_positions = 5
-	spawn_positions = 3
+	total_positions = 0
+	spawn_positions = 0
 	job_department_flags = DEP_FLAG_MEDICAL
 	supervisors = "the chief medical officer"
 	department_head = list("Chief Medical Officer")
@@ -94,8 +94,8 @@
 	title = "Coroner"
 	flag = JOB_CORONER
 	department_flag = JOBCAT_MEDSCI
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 0
+	spawn_positions = 0
 	job_department_flags = DEP_FLAG_MEDICAL
 	supervisors = "the chief medical officer"
 	department_head = list("Chief Medical Officer")
@@ -155,8 +155,8 @@
 	title = "Chemist"
 	flag = JOB_CHEMIST
 	department_flag = JOBCAT_MEDSCI
-	total_positions = 2
-	spawn_positions = 2
+	total_positions = 0
+	spawn_positions = 0
 	job_department_flags = DEP_FLAG_MEDICAL
 	supervisors = "the chief medical officer"
 	department_head = list("Chief Medical Officer")
@@ -187,8 +187,8 @@
 	title = "Geneticist"
 	flag = JOB_GENETICIST
 	department_flag = JOBCAT_MEDSCI
-	total_positions = 2
-	spawn_positions = 2
+	total_positions = 0
+	spawn_positions = 0
 	job_department_flags = DEP_FLAG_MEDICAL | DEP_FLAG_SCIENCE
 	supervisors = "the chief medical officer and the research director"
 	department_head = list("Chief Medical Officer", "Research Director")
@@ -219,8 +219,8 @@
 	title = "Virologist"
 	flag = JOB_VIROLOGIST
 	department_flag = JOBCAT_MEDSCI
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 0
+	spawn_positions = 0
 	job_department_flags = DEP_FLAG_MEDICAL
 	supervisors = "the chief medical officer"
 	department_head = list("Chief Medical Officer")
@@ -255,8 +255,8 @@
 	title = "Psychiatrist"
 	flag = JOB_PSYCHIATRIST
 	department_flag = JOBCAT_MEDSCI
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 0
+	spawn_positions = 0
 	job_department_flags = DEP_FLAG_MEDICAL
 	supervisors = "the chief medical officer"
 	department_head = list("Chief Medical Officer")
@@ -292,8 +292,8 @@
 	title = "Paramedic"
 	flag = JOB_PARAMEDIC
 	department_flag = JOBCAT_MEDSCI
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 0
+	spawn_positions = 0
 	job_department_flags = DEP_FLAG_MEDICAL
 	supervisors = "the chief medical officer"
 	department_head = list("Chief Medical Officer")

@@ -2,8 +2,8 @@
 	title = "Prisoner"
 	department_flag = JOBCAT_SUPPORT
 	flag = JOB_PRISON
-	total_positions = 5
-	spawn_positions = 3
+	total_positions = 0
+	spawn_positions = 0
 	ru_title = "Заключенный"
 	alt_titles = list("Заключенный", "Уголовник", "Законопреступник", "Пермазаключенный", "Нелегальный Мигрант", "Нелегальный Работник",
 		"Пожизненно-Заключенный", "Политический Заключенный", "Заключенный Преступник", "Заключенный Бандит", "Заключенный Мошенник",

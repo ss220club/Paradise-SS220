@@ -2,6 +2,8 @@
 	title = "VIP Corporate Guest"
 	department_flag = JOBCAT_ENGSEC
 	flag = JOB_VIP_GUEST
+	total_positions = 0
+	spawn_positions = 0
 	ru_title = "VIP Гость"
 	alt_titles = list("VIP Гость", "VIP Персона", "VIP Гость NT", "VIP Персона NT", "Гость Корпорации NT")
 	relate_job = "Vip"
@@ -42,8 +44,8 @@
 	title = "Banker"
 	department_flag = JOBCAT_ENGSEC
 	flag = JOB_BANKER
-	total_positions = 2
-	spawn_positions = 2
+	total_positions = 0
+	spawn_positions = 0
 	ru_title = "Банкир"
 	alt_titles = list("Банкир", "Независимый Банкир", "Корпорат", "Бизнесмен", "Банкир NT", "Корпорат NT", "Бизнесмен NT")
 	relate_job = "Vip"
@@ -90,8 +92,8 @@
 	title = "Security Clown"
 	department_flag = JOBCAT_ENGSEC
 	flag = JOB_SECURITY_CLOWN
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 0
+	spawn_positions = 0
 	ru_title = "Клоун Службы Безопасности"
 	alt_titles = list("Клоун Службы Безопасности", "Клоун-Детектив", "Клоун-Смотритель", "Хонкектив", "Клоун Кадет")
 	relate_job = "Security Officer"

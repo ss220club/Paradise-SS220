@@ -635,6 +635,12 @@ SUBSYSTEM_DEF(ticker)
 			var/mob/M = m
 			H.add_hud_to(M)
 
+	// SS220 LAZARUS EDIT - START
+	var/datum/atom_hud/treacherous_flesh/tf_hud = locate(/datum/atom_hud/treacherous_flesh) in GLOB.huds
+	for(var/mob/M as anything in GLOB.player_list)
+		tf_hud.add_hud_to(M)
+	// SS220 LAZARUS EDIT - END
+
 	var/static/list/base_encouragement_messages = list(
 		"Keep on keeping on!",
 		"Great job!",

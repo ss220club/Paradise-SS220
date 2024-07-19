@@ -2006,10 +2006,10 @@
 
 		// ===== SS220 ADD - NEW JOBS ======
 		// ============= START =============
-		if(check_available_extra_job_prefs(user.client))
-			html += "<center><u><b><a href='byond://?_src_=prefs;preference=job;task=extra_job'>Показать [extra_jobs_check ? "основные" : "дополнительные"] работы</a></b></u></center><br>"
-		if(extra_jobs_check)
-			splitJobs = get_split_extra_jobs()
+		//if(check_available_extra_job_prefs(user.client))
+		//	html += "<center><u><b><a href='byond://?_src_=prefs;preference=job;task=extra_job'>Показать [extra_jobs_check ? "основные" : "дополнительные"] работы</a></b></u></center><br>"
+		//if(extra_jobs_check)
+		//	splitJobs = get_split_extra_jobs()
 		// ============== END ==============
 
 		html += "<div align='center'>Left-click to raise an occupation preference, right-click to lower it.<br></div>"

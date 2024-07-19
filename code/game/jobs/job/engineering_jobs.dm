@@ -2,8 +2,8 @@
 	title = "Chief Engineer"
 	flag = JOB_CHIEF
 	department_flag = JOBCAT_ENGSEC
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 0
+	spawn_positions = 0
 	job_department_flags = DEP_FLAG_COMMAND | DEP_FLAG_ENGINEERING
 	supervisors = "the captain"
 	department_head = list("Captain")
@@ -48,8 +48,8 @@
 	title = "Station Engineer"
 	flag = JOB_ENGINEER
 	department_flag = JOBCAT_ENGSEC
-	total_positions = 5
-	spawn_positions = 5
+	total_positions = 0
+	spawn_positions = 0
 	job_department_flags = DEP_FLAG_ENGINEERING
 	supervisors = "the chief engineer"
 	department_head = list("Chief Engineer")
@@ -84,8 +84,8 @@
 	title = "Life Support Specialist"
 	flag = JOB_ATMOSTECH
 	department_flag = JOBCAT_ENGSEC
-	total_positions = 3
-	spawn_positions = 2
+	total_positions = 0
+	spawn_positions = 0
 	job_department_flags = DEP_FLAG_ENGINEERING
 	supervisors = "the chief engineer"
 	department_head = list("Chief Engineer")

@@ -482,24 +482,11 @@ Cкилл на побег. DONE.
 	var/mob/living/trapped_mind/temp_mind = new /mob/living/trapped_mind(user.host)
 	user.trapped_mind = temp_mind
 
-	// Declaring vars for temp storing
-	var/temp_ip = user.host.lastKnownIP
-	var/temp_cid = user.host.computer_id
-
-	// Clearing host data
-	user.host.lastKnownIP = null
-	user.host.computer_id = null
-
 	// Moving host to trapped mind
 	user.trapped_mind.name = user.host.real_name
-	user.trapped_mind.lastKnownIP = temp_ip
-	user.trapped_mind.computer_id = temp_cid
 	user.trapped_mind.ckey = user.host.ckey
 
 	// FLESH TO HOST BODY
-	// Using vars for temp storing
-	user.host.lastKnownIP = user.lastKnownIP
-	user.host.computer_id = user.computer_id
 	user.host.ckey = user.ckey
 
 	// Granting return action
@@ -533,13 +520,13 @@ Cкилл на побег. DONE.
 		return FALSE
 
 	// Returning parasite to body
-	host.changeling_primalis.lastKnownIP = host.lastKnownIP
-	host.changeling_primalis.computer_id = host.computer_id
+	//host.changeling_primalis.lastKnownIP = host.lastKnownIP
+	//host.changeling_primalis.computer_id = host.computer_id
 	host.changeling_primalis.ckey = host.ckey
 
 	// Returning host to body
-	host.lastKnownIP = host.changeling_primalis.trapped_mind.lastKnownIP
-	host.computer_id = host.changeling_primalis.trapped_mind.computer_id
+	//host.lastKnownIP = host.changeling_primalis.trapped_mind.lastKnownIP
+	//host.computer_id = host.changeling_primalis.trapped_mind.computer_id
 	host.ckey = host.changeling_primalis.trapped_mind.ckey
 
 	// Clearing

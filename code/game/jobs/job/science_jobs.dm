@@ -2,8 +2,8 @@
 	title = "Research Director"
 	flag = JOB_RD
 	department_flag = JOBCAT_MEDSCI
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 0
+	spawn_positions = 0
 	job_department_flags = DEP_FLAG_COMMAND | DEP_FLAG_SCIENCE
 	supervisors = "the captain"
 	department_head = list("Captain")
@@ -69,8 +69,8 @@
 	title = "Scientist"
 	flag = JOB_SCIENTIST
 	department_flag = JOBCAT_MEDSCI
-	total_positions = 6
-	spawn_positions = 6
+	total_positions = 0
+	spawn_positions = 0
 	job_department_flags = DEP_FLAG_SCIENCE
 	supervisors = "the research director"
 	department_head = list("Research Director")
@@ -114,8 +114,8 @@
 	title = "Roboticist"
 	flag = JOB_ROBOTICIST
 	department_flag = JOBCAT_MEDSCI
-	total_positions = 2
-	spawn_positions = 2
+	total_positions = 0
+	spawn_positions = 0
 	job_department_flags = DEP_FLAG_SCIENCE
 	supervisors = "the research director"
 	department_head = list("Research Director")

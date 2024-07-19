@@ -602,8 +602,11 @@ SUBSYSTEM_DEF(jobs)
 		if(!J)
 			stack_trace("`[job]` not found while setting max slots. Check for misspellings or alternate titles")
 			continue
-		J.total_positions = text2num(joblist[job])
-		J.spawn_positions = text2num(joblist[job])
+
+		// SS220 LAZARUS EDIT - START
+		//J.total_positions = text2num(joblist[job])
+		//J.spawn_positions = text2num(joblist[job])
+		// SS220 LAZARUS EDIT - END
 
 		if(job == "AI" || job == "Cyborg") //I dont like this here but it will do for now
 			J.total_positions = 0

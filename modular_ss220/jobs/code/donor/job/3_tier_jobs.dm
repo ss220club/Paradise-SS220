@@ -2,8 +2,8 @@
 	title = "Administrator"
 	department_flag = JOBCAT_MEDSCI
 	flag = JOB_ADMINISTRATOR
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 0
+	spawn_positions = 0
 	ru_title = "Сервис-Администратор"
 	alt_titles = list("Сервис-Администратор", "Сервис-Управитель", "Помпадур", "Сервис-Менеджер")
 	relate_job = "Bar"
@@ -46,6 +46,8 @@
 	title = "Tourist TSF"
 	department_flag = JOBCAT_MEDSCI
 	flag = JOB_TOURIST_TSF
+	total_positions = 0
+	spawn_positions = 0
 	ru_title = "Турист ТСФ"
 	alt_titles = list("Турист ТСФ", "Посетитель ТСФ")
 	relate_job = "Assistant"
@@ -85,6 +87,8 @@
 	title = "Tourist USSP"
 	department_flag = JOBCAT_MEDSCI
 	flag = JOB_TOURIST_USSP
+	total_positions = 0
+	spawn_positions = 0
 	ru_title = "Турист СССП"
 	alt_titles = list("Турист СССП", "Посетитель СССП")
 	relate_job = "Assistant"
@@ -127,8 +131,8 @@
 	title = "Cleaning Manager"
 	department_flag = JOBCAT_MEDSCI
 	flag = JOB_MANAGER_JANITOR
-	total_positions = 2
-	spawn_positions = 2
+	total_positions = 0
+	spawn_positions = 0
 	ru_title = "Менеджер по Клинингу"
 	alt_titles = list("Менеджер по Клинингу", "Ловец Крыс", "Уборщик I-разряда", "Уборщик II-разряда", "Уборщик III-разряда", "Уборщик IV-разряда", "Уборщик V-разряда",
 		"Подмастерье", "Ассистент-Механик", "Ассистент I-го разряда", "Ассистент II-го разряда", "Ассистент III-го разряда", "Ассистент IV-го разряда", "Ассистент V-го разряда")
@@ -192,8 +196,8 @@
 	title = "Apprentice"
 	department_flag = JOBCAT_MEDSCI
 	flag = JOB_APPRENTICE
-	total_positions = 3
-	spawn_positions = 3
+	total_positions = 0
+	spawn_positions = 0
 	ru_title = "Подмастерье"
 	alt_titles = list("Подмастерье", "Ассистент-Механик", "Ассистент I-го разряда", "Ассистент II-го разряда", "Ассистент III-го разряда", "Ассистент IV-го разряда", "Ассистент V-го разряда")
 	relate_job = "Assistant"
@@ -233,8 +237,8 @@
 	title = "Guard"
 	department_flag = JOBCAT_MEDSCI
 	flag = JOB_GUARD
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 0
+	spawn_positions = 0
 	ru_title = "Охранник"
 	alt_titles = list("Охранник", "Сторож Сервиса", "Охранник Сервиса", "Вышибала Сервиса")
 	relate_job = "Bar"
@@ -271,6 +275,8 @@
 	title = "Migrant"
 	department_flag = JOBCAT_MEDSCI
 	flag = JOB_MIGRANT
+	total_positions = 0
+	spawn_positions = 0
 	ru_title = "Мигрант"
 	alt_titles = list("Мигрант")
 	relate_job = "Assistant"
@@ -309,6 +315,8 @@
 	title = "Uncertain"
 	department_flag = JOBCAT_MEDSCI
 	flag = JOB_UNCERTAIN
+	total_positions = 0
+	spawn_positions = 0
 	ru_title = "Безработный"
 	alt_titles = list("Безработный", "Безработный Ассистент", "Свободный Ассистент", "Отрабатыващий Ассистент", "Ассистент Технических Тоннелей")
 	access = list(ACCESS_LIBRARY, ACCESS_MAINT_TUNNELS, ACCESS_CONSTRUCTION)

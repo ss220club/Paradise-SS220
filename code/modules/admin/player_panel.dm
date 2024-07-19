@@ -451,7 +451,7 @@
 			for(var/mob/living/simple_animal/changeling_primalis/I in SSticker.mode.ling_infestors)
 				if(I.mind)
 					active_infestors.Add(I.mind)
-			dat += check_role_table("Changeling Primalis Infestors", active_infestors)
+			dat += check_role_table("Treacherous Flesh Infestors", active_infestors)
 		// SS220 LAZARUS EDIT - END
 
 		if(length(SSticker.mode.implanted))

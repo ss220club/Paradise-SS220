@@ -396,6 +396,11 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	for(var/datum/atom_hud/antag/H in GLOB.huds)
 		H.add_hud_to(src)
 
+	// SS220 LAZARUS EDIT - START
+	var/datum/atom_hud/treacherous_flesh/tf_hud = locate(/datum/atom_hud/treacherous_flesh) in GLOB.huds
+	tf_hud.add_hud_to(src)
+	// SS220 LAZARUS EDIT - END
+
 /**
  * Toggles off all HUDs for the ghost player.
  */
@@ -406,6 +411,11 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	antagHUD = FALSE
 	for(var/datum/atom_hud/antag/H in GLOB.huds)
 		H.remove_hud_from(src)
+
+	// SS220 LAZARUS EDIT - START
+	var/datum/atom_hud/treacherous_flesh/tf_hud = locate(/datum/atom_hud/treacherous_flesh) in GLOB.huds
+	tf_hud.add_hud_to(src)
+	// SS220 LAZARUS EDIT - END
 
 /mob/dead/observer/proc/set_radiation_view(enabled)
 	if(enabled)
