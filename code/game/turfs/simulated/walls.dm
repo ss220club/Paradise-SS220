@@ -175,10 +175,14 @@
 	return TRUE
 
 /turf/simulated/wall/proc/break_wall()
+	if(isnull(sheet_type))
+		return
 	new sheet_type(src, sheet_amount)
 	return new girder_type(src)
 
 /turf/simulated/wall/proc/devastate_wall()
+	if(isnull(sheet_type))
+		return
 	new sheet_type(src, sheet_amount)
 	new /obj/item/stack/sheet/metal(src)
 

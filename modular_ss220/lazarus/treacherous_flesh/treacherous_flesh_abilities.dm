@@ -1,15 +1,3 @@
-/*
-TODO:
-
-Скилл на общение с хостом. ГОТОВ
-Скилл на ремонт органов. ГОТОВ
-Скилл на заражение. ГОТОВ
-Cкилл на побег. DONE.
-Скилл на перехват контроля.
-Скилл на вознесение.
-
-*/
-
 #define EVOLUTION_BONUS 150
 
 // Basic
@@ -144,11 +132,33 @@ Cкилл на побег. DONE.
 		return FALSE
 	to_chat(user, span_notice("Мы бросаем все наши силы на то, чтобы углубиться в тело носителя, сливаясь с его организмом в единое целое."))
 	switch(rand(0, 5))
-		if(0 to 5)
+		if(0 to 2)
+			to_chat(user, span_notice("Эволюционный скачок произошёл без проблем. В этот раз нам повезло"))
+		if(3)
+			to_chat(user, span_attack("В ходе эволюционного скачка мы случайно задели нерв в голове носителя, повредив его мозг. Наверное это было больно."))
 			to_chat(user.host, span_attack("Голову пронзает невероятноя боль. Вы едва не теряете сознание от этого. Будто что-то скребёт внутри..."))
 			user.host.adjustBrainLoss(10)
 			user.host.adjustStaminaLoss(50)
 			user.host.pain("head", 90)
+			user.host.emote("scream")
+		if(4)
+			to_chat(user, span_attack("В ходе эволюционного скачка мы случайно повредили вестибулярный аппарат носителя. Это сильно дизориентирует его."))
+			to_chat(user.host, span_attack("Внезапно всё вокруг вас начинает двигаться, а ноги обмякать. Вы теряете равновесие..."))
+			user.host.AdjustDizzy(10 SECONDS)
+			user.host.adjustStaminaLoss(100)
+			user.host.AdjustConfused(10 SECONDS)
+			user.host.emote("scream")
+		if(5)
+			to_chat(user, span_attack("В ходе эволюционного скачка мы случайно отделили от себя незавимого биоморфа, который сразу же начал вырываться наружу из тела носителя."))
+			to_chat(user.host, span_attack("Вы чувствуете острую боль в груди. Через мгновение до вас доходит: непонятное насекомовидное существо прогрызает путь наружу через вашу плоть."))
+			user.host.emote("scream")
+			user.host.adjustBruteLoss(20)
+			user.host.Jitter(5 SECONDS)
+			sleep(5 SECONDS)
+			user.host.emote("scream")
+			user.host.adjustBruteLoss(20)
+			playsound(user.host.loc, 'sound/effects/bone_break_5.ogg', 100, 0)
+			new /mob/living/simple_animal/hostile/flesh_biomorph/lesser/small(user.host.loc)
 	user.evolution_points += EVOLUTION_BONUS
 	return TRUE
 
@@ -372,7 +382,7 @@ Cкилл на побег. DONE.
 /datum/action/treacherous_flesh/enslave_mind
 	name = "Поработить разум"
 	desc = "Мы ассимилируем центральную нервную систему носителя, превращая того в послушного раба, подчиняющегося всем нашим приказам. Во время подчинения носитель будет странно себя вести. Не работает на носителей имлпанта \"Щит разума\". Стоит 150 химикатов. Проверить на наличие импланта можно без траты химикатов."
-	button_overlay_icon_state = "heat_up"
+	button_overlay_icon_state = "enslave_mind"
 	chemical_cost = 150
 	var/in_use = FALSE
 
@@ -428,7 +438,7 @@ Cкилл на побег. DONE.
 /datum/action/treacherous_flesh/leave_the_body
 	name = "Покинуть тело"
 	desc = "Мы экстренно покидаем тело носителя, вырываясь в несформированном состоянии низшего биоморфа. При этом мы теряем любой контроль над носителем и сильно раним его тело. Можно использовать даже при смерти носителя."
-	button_overlay_icon_state = "heat_up"
+	button_overlay_icon_state = "leave_the_body"
 	ignore_death = TRUE
 	var/in_use = FALSE
 
@@ -463,7 +473,7 @@ Cкилл на побег. DONE.
 /datum/action/treacherous_flesh/take_control
 	name = "Захватить контроль"
 	desc = "Мы перехватываем контроль переферией нервной системы носителя, получая возможность управлять всеми его действиями, включая речь и жесты. К сожалению, во время такого контроля мы не способны использовать наши особые силы. Мы сможем вернуть контроль над телом носителю в любой момент."
-	button_overlay_icon_state = "heat_up"
+	button_overlay_icon_state = "take_control"
 	var/in_use = FALSE
 
 /datum/action/treacherous_flesh/take_control/activate()
@@ -500,7 +510,10 @@ Cкилл на побег. DONE.
 /datum/action/return_control
 	name = "Вернуть контроль"
 	desc = "Мы возвращаем контроль над телом носителю."
-	button_overlay_icon_state = "heat_up"
+	button_overlay_icon_state = "return_control"
+	button_background_icon_state = "bg_flesh"
+	button_overlay_icon = 'modular_ss220/lazarus/icons/lazarus_actions.dmi'
+	button_background_icon = 'modular_ss220/lazarus/icons/lazarus_actions.dmi'
 	var/in_use = FALSE
 
 /datum/action/return_control/Trigger(left_click)

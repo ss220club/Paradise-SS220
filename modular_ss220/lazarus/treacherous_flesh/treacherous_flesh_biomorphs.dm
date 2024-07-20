@@ -2,6 +2,11 @@
 	faction = list("treacherous_flesh")
 	icon = 'modular_ss220/lazarus/icons/treacherous_flesh.dmi'
 
+/mob/living/simple_animal/hostile/flesh_biomorph/Initialize(mapload)
+	. = ..()
+	var/datum/atom_hud/hud = GLOB.huds[DATA_HUD_TREACHEOUS_FLESH]
+	hud.add_hud_to(src)
+
 /mob/living/simple_animal/hostile/flesh_biomorph/lesser
 	mob_biotypes = MOB_ORGANIC
 	speak_emote = list("кряхтит")
