@@ -1,14 +1,56 @@
 /obj/structure/flora
 	resistance_flags = FLAMMABLE
 	max_integrity = 150
+	sound
+
+/obj/structure/flora/play_attack_sound(damage_amount, damage_type = BRUTE, damage_flag = 0)
+	switch(damage_type)
+		if(BRUTE)
+			if(damage_amount)
+				playsound(src.loc, 'sound/weapons/slash.ogg', 80, TRUE)
+			else
+				playsound(src, 'sound/weapons/tap.ogg', 50, TRUE)
+		if(BURN)
+			playsound(loc, 'sound/items/welder.ogg', 80, TRUE)
 
 //trees
 /obj/structure/flora/tree
 	name = "tree"
+	max_integrity = 400
 	anchored = TRUE
 	density = TRUE
 	pixel_x = -16
 	layer = 9
+	var/logs = /obj/item/grown/log/tree
+
+/obj/structure/flora/tree/play_attack_sound(damage_amount, damage_type = BRUTE, damage_flag = 0)
+	switch(damage_type)
+		if(BRUTE)
+			if(damage_amount)
+				playsound(src.loc, 'modular_ss220/lazarus/sound/wood_chop.ogg', 80, TRUE)
+			else
+				playsound(src, 'sound/weapons/tap.ogg', 50, TRUE)
+		if(BURN)
+			playsound(loc, 'sound/items/welder.ogg', 80, TRUE)
+
+/obj/structure/flora/tree/Destroy()
+	var/logs_amount = rand(1, 4)
+	for(var/i in 1 to logs_amount)
+		new logs(loc)
+	. = ..()
+
+/obj/structure/flora/tree/attackby(obj/item/P, mob/user, params)
+	if(user.a_intent != INTENT_HELP || (!istype(P, /obj/item/fireaxe) && !istype(P, /obj/item/hatchet)))
+		return ..()
+	playsound(src.loc, 'modular_ss220/lazarus/sound/wood_chop.ogg', 80, 1)
+	user.visible_message("<span class='notice'>[user] начал рубить [name].</span>", "<span class='notice'>Вы начали рубить [name].</span>")
+	if(do_after(user, 8 SECONDS, target = src))
+		user.visible_message("<span class='notice'>[user] срубил [name].</span>", "<span class='notice'>Вы срубили [name].</span>")
+		playsound(src.loc, 'modular_ss220/lazarus/sound/falling_tree.ogg', 50, 1)
+		var/logs_amount = rand(1, 4)
+		for(var/i in 1 to logs_amount)
+			new logs(loc)
+		qdel(src)
 
 //Adds the transparency component, exists to be overridden for different args.
 /obj/structure/flora/tree/Initialize(mapload)
@@ -437,6 +479,16 @@
 	icon = 'icons/obj/flora/rocks.dmi'
 	resistance_flags = FIRE_PROOF
 	anchored = TRUE
+
+/obj/structure/flora/rock/play_attack_sound(damage_amount, damage_type = BRUTE, damage_flag = 0)
+	switch(damage_type)
+		if(BRUTE)
+			if(damage_amount)
+				playsound(src, 'sound/weapons/smash.ogg', 50, TRUE)
+			else
+				playsound(src, 'sound/weapons/tap.ogg', 50, TRUE)
+		if(BURN)
+			playsound(src.loc, 'sound/items/welder.ogg', 100, TRUE)
 
 /obj/structure/flora/rock/Initialize(mapload)
 	. = ..()

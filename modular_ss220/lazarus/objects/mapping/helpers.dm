@@ -2,7 +2,8 @@
 	name = "forest turf"
 	icon = 'modular_ss220/lazarus/icons/mapping.dmi'
 	icon_state = "forest"
-	var/static/result = list(
+	var/dirt_chance = 15
+	var/result = list(
 	/datum/nothing = 15,
 	/obj/structure/flora/tree/pine = 12,
 	/obj/structure/flora/grass/green = 3,
@@ -15,12 +16,27 @@
 
 /turf/simulated/floor/plating/asteroid/lazarus/forest/Initialize(mapload)
 	. = ..()
-	if(prob(15))
+	var/type_to_spawn = pickweight(result)
+	new type_to_spawn(src)
+	if(prob(dirt_chance))
 		ChangeTurf(/turf/simulated/floor/plating/asteroid/lazarus/dirt, keep_icon = FALSE)
 	else
 		ChangeTurf(/turf/simulated/floor/plating/asteroid/lazarus/snow, keep_icon = FALSE)
-	var/type_to_spawn = pickweight(result)
-	new type_to_spawn(src)
+
+/turf/simulated/floor/plating/asteroid/lazarus/forest/edge
+	name = "forest edge turf"
+	icon_state = "forest_edge"
+	dirt_chance = 3
+	result = list(
+	/datum/nothing = 40,
+	/obj/structure/flora/tree/pine = 4,
+	/obj/structure/flora/grass/green = 15,
+	/obj/structure/flora/grass/brown = 15,
+	/obj/structure/flora/grass/both = 15,
+	/obj/structure/flora/bush = 12,
+	/obj/structure/flora/rock/icy = 2,
+	/obj/structure/flora/rock/pile/icy = 2,
+	)
 
 // Destroyed Window Helpers
 /// Parent type for destroyed_window helpers. Do not use in maps

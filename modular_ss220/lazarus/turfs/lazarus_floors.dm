@@ -30,7 +30,7 @@
 
 /turf/simulated/floor/plating/asteroid/lazarus/snow
 	name = "снег"
-	desc = "Большой сугроб. Замедляет вас и понижает температуру при передвижении. Используйте лопату для расчистки снега."
+	desc = "Большой сугроб. Замедляет вас при передвижении. Используйте лопату для расчистки снега."
 	icon = 'modular_ss220/lazarus/icons/lazarus_snow.dmi'
 	icon_state = "snow"
 	base_icon_state = "snow"
@@ -38,9 +38,9 @@
 	smoothing_groups = list(SMOOTH_GROUP_TURF, SMOOTH_GROUP_LAZARUS_SNOW)
 	canSmoothWith = list(SMOOTH_GROUP_LAZARUS_SNOW)
 	layer = SNOW_LAYER
-	footstep = FOOTSTEP_SAND
-	barefootstep = FOOTSTEP_SAND
-	clawfootstep = FOOTSTEP_SAND
+	footstep = FOOTSTEP_SNOW
+	barefootstep = FOOTSTEP_SNOW
+	clawfootstep = FOOTSTEP_SNOW
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 	environment_type = "snow"
 	baseturf = /turf/simulated/floor/plating/asteroid/lazarus/dirt

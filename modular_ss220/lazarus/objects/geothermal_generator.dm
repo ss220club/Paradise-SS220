@@ -63,17 +63,17 @@
 		if(!I.tool_use_check(user, 0))
 			return
 		if(gen_state == GEOTHERMAL_GEN_BROKEN)
-			user.visible_message("<span class='notice'>[user] начал открывать крышку сломанного генератора...", "<span class='notice'>Вы начали открывать крышку сломанного генератора</span>")
+			user.visible_message("<span class='notice'>[user] начал открывать крышку сломанного генератора...</span>", "<span class='notice'>Вы начали открывать крышку сломанного генератора</span>")
 			if(!I.use_tool(src, user, 8 SECONDS, volume = I.tool_volume))
 				return
-			user.visible_message("<span class='notice'>[user] открыл крышку сломанного генератора.", "<span class='notice'>Вы открыли крышку сломанного генератора.</span>")
+			user.visible_message("<span class='notice'>[user] открыл крышку сломанного генератора.</span>", "<span class='notice'>Вы открыли крышку сломанного генератора.</span>")
 			gen_state = GEOTHERMAL_GEN_CABLES
 			update_icon_state()
 		else if(gen_state == GEOTHERMAL_GEN_SCREWDRIVER)
-			user.visible_message("<span class='notice'>[user] начал закрывать крышку генератора...", "<span class='notice'>Вы начали закрывать крышку генератора</span>")
+			user.visible_message("<span class='notice'>[user] начал закрывать крышку генератора...</span>", "<span class='notice'>Вы начали закрывать крышку генератора</span>")
 			if(!I.use_tool(src, user, 8 SECONDS, volume = I.tool_volume))
 				return
-			user.visible_message("<span class='notice'>[user] закрыл крышку генератора.", "<span class='notice'>Вы закрыли крышку генератора.</span>")
+			user.visible_message("<span class='notice'>[user] закрыл крышку генератора.</span>", "<span class='notice'>Вы закрыли крышку генератора.</span>")
 			gen_state = GEOTHERMAL_GEN_ACTIVE
 			update_icon_state()
 			break_timer = addtimer(CALLBACK(src, PROC_REF(break_gen)), rand(20 MINUTES, 40 MINUTES), TIMER_STOPPABLE)
@@ -84,10 +84,10 @@
 		if(!I.tool_use_check(user, 0))
 			return
 		if(gen_state == GEOTHERMAL_GEN_WRENCH)
-			user.visible_message("<span class='notice'>[user] начал закручивать чрезмерную подачу пара.", "<span class='notice'>Вы начали закручивать чрезмерную подачу пара.</span>")
+			user.visible_message("<span class='notice'>[user] начал закручивать чрезмерную подачу пара.</span>", "<span class='notice'>Вы начали закручивать чрезмерную подачу пара.</span>")
 			if(!I.use_tool(src, user, 8 SECONDS, volume = I.tool_volume))
 				return
-			user.visible_message("<span class='notice'>[user] уменьшил подачу пара до оптимального уровня.", "<span class='notice'>Вы уменьшили подачу пара до оптимального уровня.</span>")
+			user.visible_message("<span class='notice'>[user] уменьшил подачу пара до оптимального уровня.</span>", "<span class='notice'>Вы уменьшили подачу пара до оптимального уровня.</span>")
 			gen_state = GEOTHERMAL_GEN_SCREWDRIVER
 			update_icon_state()
 
@@ -97,12 +97,12 @@
 			var/obj/item/stack/cable_coil/C = P
 			if(C.get_amount() >= 5)
 				playsound(src.loc, C.usesound, 50, 1)
-				user.visible_message("<span class='notice'>[user] начал заменять повреждённую проводку.", "<span class='notice'>Вы начали заменять повреждённую проводку.</span>")
+				user.visible_message("<span class='notice'>[user] начал заменять повреждённую проводку.</span>", "<span class='notice'>Вы начали заменять повреждённую проводку.</span>")
 				if(do_after(user, 20 * C.toolspeed, target = src))
 					if(C.get_amount() >= 5)
 						if(gen_state == GEOTHERMAL_GEN_CABLES)
 							C.use(5)
-							user.visible_message("<span class='notice'>[user] заменил повреждённую проводку.", "<span class='notice'>Вы заменили повреждённую проводку.</span>")
+							user.visible_message("<span class='notice'>[user] заменил повреждённую проводку.</span>", "<span class='notice'>Вы заменили повреждённую проводку.</span>")
 							gen_state = GEOTHERMAL_GEN_WRENCH
 							update_icon_state()
 					else
@@ -120,10 +120,10 @@
 		if(!I.tool_use_check(user, 0))
 			return
 		if(gen_state == GEOTHERMAL_GEN_ACTIVE)
-			user.visible_message("<span class='warning'>[user] повреждает панели генератора монтировкой!", "<span class='notice'>Вы начали саботаж геотермального генератора.</span>")
+			user.visible_message("<span class='warning'>[user] повреждает панели генератора монтировкой!</span>", "<span class='notice'>Вы начали саботаж геотермального генератора.</span>")
 			if(!I.use_tool(src, user, 8 SECONDS, volume = I.tool_volume))
 				return
-			user.visible_message("<span class='notice'>[user] вывел генератор из строя!", "<span class='notice'>Вы успешно повредили генератор.</span>")
+			user.visible_message("<span class='notice'>[user] вывел генератор из строя!</span>", "<span class='notice'>Вы успешно повредили генератор.</span>")
 			break_gen()
 
 /obj/machinery/power/geothermal_generator/proc/break_gen()

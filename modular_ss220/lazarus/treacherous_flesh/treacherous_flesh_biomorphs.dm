@@ -50,6 +50,9 @@
 	pass_flags = PASSTABLE | PASSGRILLE | PASSMOB
 	density = FALSE
 	mob_size = MOB_SIZE_TINY
+	universal_speak = FALSE
+	can_hide = TRUE
+	pass_door_while_hidden = TRUE
 
 /mob/living/simple_animal/hostile/flesh_biomorph/lesser/medium
 	name = "Средний биоморф"

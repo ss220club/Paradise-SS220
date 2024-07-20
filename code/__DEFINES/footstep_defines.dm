@@ -9,6 +9,7 @@
 #define FOOTSTEP_MEAT "meat"
 #define FOOTSTEP_GLASS "glass"
 #define FOOTSTEP_CATWALK "catwalk"
+#define FOOTSTEP_SNOW "snow"
 //barefoot sounds
 #define FOOTSTEP_WOOD_BAREFOOT "woodbarefoot"
 #define FOOTSTEP_WOOD_CLAW "woodclaw"
@@ -97,6 +98,11 @@ GLOBAL_LIST_INIT(footstep, list(
 		'sound/effects/footstep/catwalk3.ogg',
 		'sound/effects/footstep/catwalk4.ogg',
 		'sound/effects/footstep/catwalk5.ogg'), 100, 1),
+	FOOTSTEP_SNOW = list(list(
+		'modular_ss220/lazarus/sound/snowstep1.ogg',
+		'modular_ss220/lazarus/sound/snowstep2.ogg',
+		'modular_ss220/lazarus/sound/snowstep3.ogg',
+		'modular_ss220/lazarus/sound/snowstep4.ogg'), 50, 1),
 ))
 //bare footsteps lists
 GLOBAL_LIST_INIT(barefootstep, list(
@@ -150,6 +156,11 @@ GLOBAL_LIST_INIT(barefootstep, list(
 		'sound/effects/footstep/catwalk3.ogg',
 		'sound/effects/footstep/catwalk4.ogg',
 		'sound/effects/footstep/catwalk5.ogg'), 100, 1),
+	FOOTSTEP_SNOW = list(list(
+		'modular_ss220/lazarus/sound/snowstep1.ogg',
+		'modular_ss220/lazarus/sound/snowstep2.ogg',
+		'modular_ss220/lazarus/sound/snowstep3.ogg',
+		'modular_ss220/lazarus/sound/snowstep4.ogg'), 50, 1),
 ))
 
 //claw footsteps lists
@@ -204,6 +215,11 @@ GLOBAL_LIST_INIT(clawfootstep, list(
 		'sound/effects/footstep/catwalk3.ogg',
 		'sound/effects/footstep/catwalk4.ogg',
 		'sound/effects/footstep/catwalk5.ogg'), 100, 1),
+	FOOTSTEP_SNOW = list(list(
+		'modular_ss220/lazarus/sound/snowstep1.ogg',
+		'modular_ss220/lazarus/sound/snowstep2.ogg',
+		'modular_ss220/lazarus/sound/snowstep3.ogg',
+		'modular_ss220/lazarus/sound/snowstep4.ogg'), 50, 1),
 ))
 
 //heavy footsteps list
