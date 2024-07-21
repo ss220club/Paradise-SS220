@@ -38,3 +38,34 @@
 	desc = "Крутой шлем. На вид хлипкий..."
 	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 
+// Amber armor //
+
+/obj/item/clothing/head/helmet/ert/command
+	icon = 'modular_ss220/clothing/icons/object/helmet.dmi'
+	icon_state = "ember_com"
+	item_state = "ember_com"
+	icon_override = 'modular_ss220/clothing/icons/mob/helmet.dmi'
+
+/obj/item/clothing/head/helmet/ert/security
+	icon = 'modular_ss220/clothing/icons/object/helmet.dmi'
+	icon_state = "ember_sec"
+	item_state = "ember_sec"
+	icon_override = 'modular_ss220/clothing/icons/mob/helmet.dmi'
+
+/obj/item/clothing/head/helmet/ert/engineer
+	icon = 'modular_ss220/clothing/icons/object/helmet.dmi'
+	icon_state = "ember_eng"
+	item_state = "ember_eng"
+	icon_override = 'modular_ss220/clothing/icons/mob/helmet.dmi'
+
+/obj/item/clothing/head/helmet/ert/medical
+	icon = 'modular_ss220/clothing/icons/object/helmet.dmi'
+	icon_state = "ember_med"
+	item_state = "ember_med"
+	icon_override = 'modular_ss220/clothing/icons/mob/helmet.dmi'
+
+/obj/item/clothing/head/helmet/ert/janitor
+	icon = 'modular_ss220/clothing/icons/object/helmet.dmi'
+	icon_state = "ember_jan"
+	item_state = "ember_jan"
+	icon_override = 'modular_ss220/clothing/icons/mob/helmet.dmi'

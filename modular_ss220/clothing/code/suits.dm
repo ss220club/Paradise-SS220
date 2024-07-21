@@ -269,3 +269,35 @@
 /* SOO jacket */
 /obj/item/clothing/suit/space/deathsquad/officer/soo_brown
 	icon_state = "brtrenchcoat_open"
+
+// Amber armor //
+
+/obj/item/clothing/suit/armor/vest/ert/command
+	icon = 'modular_ss220/clothing/icons/object/suits.dmi'
+	icon_state = "ember_com"
+	item_state = "ember_com"
+	icon_override = 'modular_ss220/clothing/icons/mob/suits.dmi'
+
+/obj/item/clothing/suit/armor/vest/ert/security
+	icon = 'modular_ss220/clothing/icons/object/suits.dmi'
+	icon_state = "ember_sec"
+	item_state = "ember_sec"
+	icon_override = 'modular_ss220/clothing/icons/mob/suits.dmi'
+
+/obj/item/clothing/suit/armor/vest/ert/engineer
+	icon = 'modular_ss220/clothing/icons/object/suits.dmi'
+	icon_state = "ember_eng"
+	item_state = "ember_eng"
+	icon_override = 'modular_ss220/clothing/icons/mob/suits.dmi'
+
+/obj/item/clothing/suit/armor/vest/ert/medical
+	icon = 'modular_ss220/clothing/icons/object/suits.dmi'
+	icon_state = "ember_med"
+	item_state = "ember_med"
+	icon_override = 'modular_ss220/clothing/icons/mob/suits.dmi'
+
+/obj/item/clothing/suit/armor/vest/ert/janitor
+	icon = 'modular_ss220/clothing/icons/object/suits.dmi'
+	icon_state = "ember_jan"
+	item_state = "ember_jan"
+	icon_override = 'modular_ss220/clothing/icons/mob/suits.dmi'
