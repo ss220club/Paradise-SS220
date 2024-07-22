@@ -284,11 +284,14 @@
 	item_state = "ember_sec"
 	icon_override = 'modular_ss220/clothing/icons/mob/suits.dmi'
 
-/obj/item/clothing/suit/armor/vest/ert/engineer
+/obj/item/clothing/suit/space/engineer
+	name = "emergency response team engineer space suit"
+	desc = "Space suit worn by engineering members of the Nanotrasen Emergency Response Team. Has orange highlights."
 	icon = 'modular_ss220/clothing/icons/object/suits.dmi'
 	icon_state = "ember_eng"
 	item_state = "ember_eng"
 	icon_override = 'modular_ss220/clothing/icons/mob/suits.dmi'
+	armor = list(MELEE = 20, BULLET = 20, LASER = 20, ENERGY = 20, BOMB = 10, RAD = 50, FIRE = 200, ACID = 115)
 
 /obj/item/clothing/suit/armor/vest/ert/medical
 	icon = 'modular_ss220/clothing/icons/object/suits.dmi'
