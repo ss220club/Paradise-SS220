@@ -45,6 +45,59 @@
 	icon_state = "ember_com"
 	item_state = "ember_com"
 	icon_override = 'modular_ss220/clothing/icons/mob/helmet.dmi'
+	actions_types = list(/datum/action/item_action/toggle_nvg)
+	/// Is night vision goggles enabled?
+	var/nvg_enabled = FALSE
+
+/datum/action/item_action/toggle_nvg
+	name = "Toggle Nightvision"
+
+/obj/item/clothing/head/helmet/ert/command/ui_action_click(mob/user, actiontype)
+	if(actiontype == /datum/action/item_action/toggle_nvg)
+		toggle_nvg(user)
+
+/obj/item/clothing/head/helmet/ert/command/item_action_slot_check(slot)
+	if(slot == SLOT_HUD_HEAD)
+		return TRUE
+
+/obj/item/clothing/head/helmet/ert/command/equipped(mob/user, slot, initial)
+	. = ..()
+	if(nvg_enabled && slot == SLOT_HUD_HEAD)
+		ADD_TRAIT(user, TRAIT_NIGHT_VISION, "ert_commander_helmet[UID()]")
+
+/obj/item/clothing/head/helmet/ert/command/dropped(mob/user)
+	. = ..()
+	if(user)
+		REMOVE_TRAIT(user, TRAIT_NIGHT_VISION, "ert_commander_helmet[UID()]")
+
+/obj/item/clothing/head/helmet/ert/command/update_icon_state()
+	. = ..()
+	if(nvg_enabled)
+		icon_state = initial(icon_state) + "_nvg"
+		item_state = initial(item_state) + "_nvg"
+	else
+		icon_state = initial(icon_state)
+		item_state = initial(item_state)
+
+/obj/item/clothing/head/helmet/ert/command/proc/toggle_nvg(mob/user)
+	var/msg
+	if(!HAS_TRAIT_FROM(user, TRAIT_NIGHT_VISION, "ert_commander_helmet[UID()]"))
+		ADD_TRAIT(user, TRAIT_NIGHT_VISION, "ert_commander_helmet[UID()]")
+		msg = "You lowered your night-vision goggles over your eyes."
+		nvg_enabled = TRUE
+	else
+		REMOVE_TRAIT(user, TRAIT_NIGHT_VISION, "ert_commander_helmet[UID()]")
+		msg = "You raised your night-vision goggles."
+		nvg_enabled = FALSE
+
+	if(ishuman(user))
+		var/mob/living/carbon/human/H = user
+		if(H.head == src)
+			H.update_sight()
+
+	update_icon(UPDATE_ICON_STATE)
+	user.update_inv_head()
+	to_chat(user, span_notice("[msg]"))
 
 /obj/item/clothing/head/helmet/ert/security
 	icon = 'modular_ss220/clothing/icons/object/helmet.dmi'
