@@ -130,6 +130,11 @@
 	update_icon()
 
 // MARK: ERT
+/* Commander */
+/datum/outfit/job/centcom/response_team/commander/amber
+	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
+
+/* Engineer */
 /datum/outfit/job/centcom/response_team/engineer/amber
 	suit = /obj/item/clothing/suit/space/ert_engineer
 	head = /obj/item/clothing/head/helmet/space/ert_engineer
