@@ -1,3 +1,4 @@
+// MARK: Miscellaneous
 /obj/item/clothing/head/helmet/bike_helmet
 	name = "байкерский шлем"
 	desc = "Крутой шлем."
@@ -38,8 +39,7 @@
 	desc = "Крутой шлем. На вид хлипкий..."
 	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 
-// Amber armor //
-
+// MARK: ERT
 /obj/item/clothing/head/helmet/ert/command
 	icon = 'modular_ss220/clothing/icons/object/helmet.dmi'
 	icon_state = "ember_com"
@@ -105,7 +105,7 @@
 	item_state = "ember_sec"
 	icon_override = 'modular_ss220/clothing/icons/mob/helmet.dmi'
 
-/obj/item/clothing/head/helmet/space/engineer
+/obj/item/clothing/head/helmet/space/ert_engineer
 	name = "emergency response team engineer space helmet"
 	desc = "Space helmet worn by engineering members of the Nanotrasen Emergency Response Team. Has orange highlights."
 	icon = 'modular_ss220/clothing/icons/object/helmet.dmi'

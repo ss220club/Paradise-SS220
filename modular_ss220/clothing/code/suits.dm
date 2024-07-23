@@ -1,3 +1,4 @@
+// MARK: Miscellaneous
 /obj/item/clothing/suit/v_jacket
 	name = "куртка V"
 	desc = "Куртка так называемого V."
@@ -72,32 +73,6 @@
 /obj/item/clothing/head/hooded/shark_hood/light
 	name = "светло-голубой акулий капюшон"
 	icon_state = "shark_casual_light"
-
-/obj/item/clothing/suit/space/deathsquad/officer/syndie
-	name = "куртка офицера синдиката"
-	desc = "Длинная куртка из высокопрочного волокна."
-	icon = 'modular_ss220/clothing/icons/object/suits.dmi'
-	icon_state = "jacket_syndie"
-	icon_override = 'modular_ss220/clothing/icons/mob/suits.dmi'
-
-/obj/item/clothing/suit/space/deathsquad/officer/field
-	name = "полевая форма офицера флота Нанотрейзен"
-	desc = "Парадный плащ, разработанный в качестве массового варианта формы Верховного Главнокомандующего. У этой униформы нет тех же защитных свойств, что и у оригинала, но она все ещё является довольно удобным и стильным предметом гардероба."
-	icon = 'modular_ss220/clothing/icons/object/suits.dmi'
-	icon_state = "ntsc_uniform"
-	icon_override = 'modular_ss220/clothing/icons/mob/suits.dmi'
-
-/obj/item/clothing/suit/space/deathsquad/officer/field/cloak_nt
-	name = "армированная мантия офицера флота Нанотрейзен"
-	desc = "Один из вариантов торжественного одеяния сотрудников Верховного Командования Нанотрейзен, подойдет для официальной встречи или важного вылета. Сшита из лёгкой и сверхпрочной ткани."
-	icon = 'modular_ss220/clothing/icons/object/cloaks.dmi'
-	icon_state = "ntsc_cloak"
-	icon_override = 'modular_ss220/clothing/icons/mob/cloaks.dmi'
-
-/obj/item/clothing/suit/space/deathsquad/officer/field/cloak_nt/coat_nt
-	name = "полевой плащ офицера флота Нанотрейзен"
-	desc = "Парадный плащ нового образца, внедряемый на объектах компании в последнее время. Отличительной чертой является стоячий воротник и резаный подол. Невысокие показатели защиты нивелируются пафосом, источаемым этим плащом."
-	icon_state = "ntsc_coat"
 
 /obj/item/clothing/suit/hooded/vi_arcane
 	name = "куртка Вай"
@@ -247,15 +222,7 @@
 		"Nucleation"		=	'modular_ss220/clothing/icons/mob/suits.dmi',
 		)
 
-/datum/supply_packs/misc/soundhand
-	name = "Soundhand Fan Crate"
-	contains = list(/obj/item/clothing/suit/storage/soundhand_black_jacket,
-					/obj/item/clothing/suit/storage/soundhand_olive_jacket,
-					/obj/item/clothing/suit/storage/soundhand_brown_jacket)
-	cost = 600
-	containername = "soundhand fan crate"
-
-/* Space Battle */
+// MARK: Space Battle
 /obj/item/clothing/suit/space/hardsuit/security
 	icon = 'modular_ss220/clothing/icons/object/suits.dmi'
 	icon_state = "hardsuit-sec-old"
@@ -266,12 +233,39 @@
 	icon_state = "hardsuit0-sec"
 	icon_override = 'modular_ss220/clothing/icons/mob/helmet.dmi'
 
-/* SOO jacket */
+// MARK: NT & Syndie
+/* NANOTRASEN */
 /obj/item/clothing/suit/space/deathsquad/officer/soo_brown
 	icon_state = "brtrenchcoat_open"
 
-// Amber armor //
+/obj/item/clothing/suit/space/deathsquad/officer/field
+	name = "полевая форма офицера флота Нанотрейзен"
+	desc = "Парадный плащ, разработанный в качестве массового варианта формы Верховного Главнокомандующего. У этой униформы нет тех же защитных свойств, что и у оригинала, но она все ещё является довольно удобным и стильным предметом гардероба."
+	icon = 'modular_ss220/clothing/icons/object/suits.dmi'
+	icon_state = "ntsc_uniform"
+	icon_override = 'modular_ss220/clothing/icons/mob/suits.dmi'
 
+/obj/item/clothing/suit/space/deathsquad/officer/field/cloak_nt
+	name = "армированная мантия офицера флота Нанотрейзен"
+	desc = "Один из вариантов торжественного одеяния сотрудников Верховного Командования Нанотрейзен, подойдет для официальной встречи или важного вылета. Сшита из лёгкой и сверхпрочной ткани."
+	icon = 'modular_ss220/clothing/icons/object/cloaks.dmi'
+	icon_state = "ntsc_cloak"
+	icon_override = 'modular_ss220/clothing/icons/mob/cloaks.dmi'
+
+/obj/item/clothing/suit/space/deathsquad/officer/field/cloak_nt/coat_nt
+	name = "полевой плащ офицера флота Нанотрейзен"
+	desc = "Парадный плащ нового образца, внедряемый на объектах компании в последнее время. Отличительной чертой является стоячий воротник и резаный подол. Невысокие показатели защиты нивелируются пафосом, источаемым этим плащом."
+	icon_state = "ntsc_coat"
+
+/* SYNDICATE */
+/obj/item/clothing/suit/space/deathsquad/officer/syndie
+	name = "куртка офицера синдиката"
+	desc = "Длинная куртка из высокопрочного волокна."
+	icon = 'modular_ss220/clothing/icons/object/suits.dmi'
+	icon_state = "jacket_syndie"
+	icon_override = 'modular_ss220/clothing/icons/mob/suits.dmi'
+
+// MARK: ERT
 /obj/item/clothing/suit/armor/vest/ert/command
 	icon = 'modular_ss220/clothing/icons/object/suits.dmi'
 	icon_state = "ember_com"
@@ -284,7 +278,7 @@
 	item_state = "ember_sec"
 	icon_override = 'modular_ss220/clothing/icons/mob/suits.dmi'
 
-/obj/item/clothing/suit/space/engineer
+/obj/item/clothing/suit/space/ert_engineer
 	name = "emergency response team engineer space suit"
 	desc = "Space suit worn by engineering members of the Nanotrasen Emergency Response Team. Has orange highlights."
 	icon = 'modular_ss220/clothing/icons/object/suits.dmi'
