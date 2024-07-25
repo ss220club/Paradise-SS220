@@ -59,8 +59,6 @@ RESTRICT_TYPE(/datum/antagonist/traitor)
 		slaved.leave_serv_hud(owner)
 		owner.som = null
 
-	// Need to bring this functionality back to TGchat
-	// owner.current.client?.chatOutput?.clear_syndicate_codes()
 	// Try removing their uplink, check PDA
 	var/mob/M = owner.current
 	var/obj/item/uplink_holder = locate(/obj/item/pda) in M.contents
@@ -177,8 +175,6 @@ RESTRICT_TYPE(/datum/antagonist/traitor)
 /datum/antagonist/traitor/proc/give_codewords()
 	if(!owner.current)
 		return
-	// Need to bring this functionality back to TGchat
-	// var/mob/traitor_mob = owner.current
 
 	var/phrases = jointext(GLOB.syndicate_code_phrase, ", ")
 	var/responses = jointext(GLOB.syndicate_code_response, ", ")
@@ -193,8 +189,6 @@ RESTRICT_TYPE(/datum/antagonist/traitor)
 	messages.Add("Используйте эти слова для идентификации других агентов. Действуйте аккуратно, поскольку каждый человек - потенциальный враг.")
 	messages.Add("<b><font color=red>Вы запоминаете кодовые формулировки, определяя их в речи.</font></b>")
 
-	// Need to bring this functionality back to TGchat
-	// traitor_mob.client.chatOutput?.notify_syndicate_codes()
 	return messages
 
 /**
