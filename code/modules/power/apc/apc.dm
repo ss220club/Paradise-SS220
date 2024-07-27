@@ -897,6 +897,9 @@
 
 /// sets nightshift mode on for the APC
 /obj/machinery/power/apc/proc/set_nightshift(on)
+	// SS220 LAZARUS EDIT - START
+	// This proc cause massive lags on large areas. We don't need nightshift in event, so, I just disabled it
+	/*
 	set waitfor = FALSE
 	nightshift_lights = on
 	for(var/obj/machinery/light/L in apc_area)
@@ -904,6 +907,8 @@
 			L.nightshift_enabled = nightshift_lights
 			L.update(FALSE, play_sound = FALSE)
 		CHECK_TICK
+	*/
+	// SS220 LAZARUS EDIT - END
 
 /obj/machinery/power/apc/proc/relock_callback()
 	locked = TRUE
