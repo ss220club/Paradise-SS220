@@ -1,7 +1,7 @@
 //-----BASIC-----//
 
 /area/lazarus
-	icon_state = "outdoors"
+	icon_state = "space_near"
 	has_gravity = TRUE
 	nad_allowed = TRUE
 
