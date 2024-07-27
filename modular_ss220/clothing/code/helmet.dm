@@ -40,11 +40,37 @@
 	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 
 // MARK: ERT
-/obj/item/clothing/head/helmet/ert/command
+/obj/item/clothing/head/helmet/ert
 	icon = 'modular_ss220/clothing/icons/object/helmet.dmi'
+	icon_state = "ember_sec"
+	item_state = "ember_sec"
+	sprite_sheets = list(
+		"Abductor" 			= 	'modular_ss220/clothing/icons/mob/helmet.dmi',
+		"Ancient Skeleton" 	= 	'modular_ss220/clothing/icons/mob/helmet.dmi',
+		"Diona" 			= 	'modular_ss220/clothing/icons/mob/helmet.dmi',
+		"Drask" 			= 	'modular_ss220/clothing/icons/mob/species/drask/helmet.dmi',
+		"Golem" 			= 	'modular_ss220/clothing/icons/mob/helmet.dmi',
+		"Grey" 				= 	'modular_ss220/clothing/icons/mob/helmet.dmi',
+		"Human" 			= 	'modular_ss220/clothing/icons/mob/helmet.dmi',
+		"Kidan" 			= 	'modular_ss220/clothing/icons/mob/helmet.dmi',
+		"Machine"			= 	'modular_ss220/clothing/icons/mob/helmet.dmi',
+		"Monkey" 			= 	'modular_ss220/clothing/icons/mob/helmet.dmi',
+		"Nian" 				= 	'modular_ss220/clothing/icons/mob/helmet.dmi',
+		"Plasmaman" 		= 	'modular_ss220/clothing/icons/mob/helmet.dmi',
+		"Shadow" 			= 	'modular_ss220/clothing/icons/mob/helmet.dmi',
+		"Skrell" 			= 	'modular_ss220/clothing/icons/mob/helmet.dmi',
+		"Slime People" 		= 	'modular_ss220/clothing/icons/mob/helmet.dmi',
+		"Tajaran" 			= 	'modular_ss220/clothing/icons/mob/helmet.dmi',
+		"Unathi" 			= 	'modular_ss220/clothing/icons/mob/helmet.dmi',
+		"Vox" 				= 	'modular_ss220/clothing/icons/mob/species/vox/helmet.dmi',
+		"Vulpkanin" 		= 	'modular_ss220/clothing/icons/mob/species/vulpkanin/helmet.dmi',
+		"Lich" 				= 	'modular_ss220/clothing/icons/mob/helmet.dmi',
+		"Nucleation"		=	'modular_ss220/clothing/icons/mob/helmet.dmi',
+		)
+
+/obj/item/clothing/head/helmet/ert/command
 	icon_state = "ember_com"
 	item_state = "ember_com"
-	icon_override = 'modular_ss220/clothing/icons/mob/helmet.dmi'
 	actions_types = list(/datum/action/item_action/toggle_nvg)
 	/// Is night vision goggles enabled?
 	var/nvg_enabled = FALSE
@@ -100,10 +126,8 @@
 	to_chat(user, span_notice("[msg]"))
 
 /obj/item/clothing/head/helmet/ert/security
-	icon = 'modular_ss220/clothing/icons/object/helmet.dmi'
 	icon_state = "ember_sec"
 	item_state = "ember_sec"
-	icon_override = 'modular_ss220/clothing/icons/mob/helmet.dmi'
 
 /obj/item/clothing/head/helmet/space/ert_engineer
 	name = "emergency response team engineer space helmet"
@@ -111,17 +135,34 @@
 	icon = 'modular_ss220/clothing/icons/object/helmet.dmi'
 	icon_state = "ember_eng"
 	item_state = "ember_eng"
-	icon_override = 'modular_ss220/clothing/icons/mob/helmet.dmi'
+	sprite_sheets = list(
+		"Abductor" 			= 	'modular_ss220/clothing/icons/mob/helmet.dmi',
+		"Ancient Skeleton" 	= 	'modular_ss220/clothing/icons/mob/helmet.dmi',
+		"Diona" 			= 	'modular_ss220/clothing/icons/mob/helmet.dmi',
+		"Drask" 			= 	'modular_ss220/clothing/icons/mob/species/drask/helmet.dmi',
+		"Golem" 			= 	'modular_ss220/clothing/icons/mob/helmet.dmi',
+		"Grey" 				= 	'modular_ss220/clothing/icons/mob/helmet.dmi',
+		"Human" 			= 	'modular_ss220/clothing/icons/mob/helmet.dmi',
+		"Kidan" 			= 	'modular_ss220/clothing/icons/mob/helmet.dmi',
+		"Machine"			= 	'modular_ss220/clothing/icons/mob/helmet.dmi',
+		"Monkey" 			= 	'modular_ss220/clothing/icons/mob/helmet.dmi',
+		"Nian" 				= 	'modular_ss220/clothing/icons/mob/helmet.dmi',
+		"Plasmaman" 		= 	'modular_ss220/clothing/icons/mob/helmet.dmi',
+		"Shadow" 			= 	'modular_ss220/clothing/icons/mob/helmet.dmi',
+		"Skrell" 			= 	'modular_ss220/clothing/icons/mob/helmet.dmi',
+		"Slime People" 		= 	'modular_ss220/clothing/icons/mob/helmet.dmi',
+		"Tajaran" 			= 	'modular_ss220/clothing/icons/mob/species/tajaran/helmet.dmi',
+		"Unathi" 			= 	'modular_ss220/clothing/icons/mob/helmet.dmi',
+		"Vox" 				= 	'modular_ss220/clothing/icons/mob/species/vox/helmet.dmi',
+		"Vulpkanin" 		= 	'modular_ss220/clothing/icons/mob/species/vulpkanin/helmet.dmi',
+		"Nucleation"		=	'modular_ss220/clothing/icons/mob/helmet.dmi',
+		)
 	armor = list(MELEE = 20, BULLET = 20, LASER = 20, ENERGY = 20, BOMB = 10, RAD = 50, FIRE = 200, ACID = 115)
 
 /obj/item/clothing/head/helmet/ert/medical
-	icon = 'modular_ss220/clothing/icons/object/helmet.dmi'
 	icon_state = "ember_med"
 	item_state = "ember_med"
-	icon_override = 'modular_ss220/clothing/icons/mob/helmet.dmi'
 
 /obj/item/clothing/head/helmet/ert/janitor
-	icon = 'modular_ss220/clothing/icons/object/helmet.dmi'
 	icon_state = "ember_jan"
 	item_state = "ember_jan"
-	icon_override = 'modular_ss220/clothing/icons/mob/helmet.dmi'
