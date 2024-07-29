@@ -44,6 +44,7 @@
 		data["activeCamera"] = list(
 			name = active_camera.c_tag,
 			status = active_camera.status,
+			z = active_camera.z,
 		)
 	var/list/cameras = get_available_cameras()
 	data["cameras"] = list()
@@ -56,6 +57,8 @@
 			z = C.z,
 			status = C.status
 		))
+	if(active_camera?.z == level_name_to_num(MINING))
+		data["mapUrl"] = "[MINING]_nanomap_z1.png"
 	return data
 
 /obj/machinery/computer/security/ui_static_data()
