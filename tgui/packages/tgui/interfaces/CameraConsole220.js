@@ -75,7 +75,7 @@ export const CameraConsoleMapContent = (props, context) => {
   const { act, data } = useBackend(context);
   const cameras = selectCameras(data.cameras);
   const [zoom, setZoom] = useLocalState(context, 'zoom', 1);
-  const { mapRef, activeCamera, stationLevel, mapUrl } = data;
+  const { mapRef, activeCamera, stationLevel, mapUrl, current_z_level_index } = data;
   const [prevCameraName, nextCameraName] = prevNextCamera(cameras, activeCamera);
   return (
     <Stack fill>
@@ -87,7 +87,7 @@ export const CameraConsoleMapContent = (props, context) => {
       >
         <NanoMap onZoom={(v) => setZoom(v)} mapUrl={mapUrl}>
           {cameras
-            .filter((cam) => cam.z === (activeCamera?.z || stationLevel))
+            .filter((cam) => cam.z === (current_z_level_index || stationLevel))
             .map((cm) => (
               <NanoMap.NanoButton
                 activeCamera={activeCamera}

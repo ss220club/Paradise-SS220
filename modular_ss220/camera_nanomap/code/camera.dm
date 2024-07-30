@@ -9,17 +9,26 @@
 		nanomap_png = "[MINING]_nanomap_z1.png"
 
 /obj/machinery/computer/security
-	var/list/stored_cameras // Assoc list, ("z_level" = "c_tag")
-	var/list/z_levels = list() // Assoc list, ("z_level" = "nanomap.png")
+	var/list/z_levels = list()
 	var/current_z_level_index
 
 /obj/machinery/computer/security/get_available_cameras()
 	. = ..()
 	z_levels = list()
-	for(var/obj/machinery/camera/camera in .)
-		if(camera.z in z_levels)
+	var/list/z_levels_checked = list()
+	var/list/z_levels_unsorted = list()
+	for(var/key in .)
+		var/obj/machinery/camera/camera = .[key]
+		if(camera.z in z_levels_checked || !camera.nanomap_png)
 			continue
-		z_levels["[camera.z]"] = camera.nanomap_png
+		var/list/z_level_data = list()
+		z_level_data["nanomap"] = camera.nanomap_png
+		z_level_data["z_level"] = camera.z
+		z_levels_unsorted += list(z_level_data)
+		z_levels_checked += camera.z
+	z_levels_unsorted = sortByKey(z_levels_unsorted, "z_level")
+	for(var/i in 1 to length(z_levels_unsorted))
+		z_levels += list("[z_levels_unsorted[i]["z_level"]]" = z_levels_unsorted[i])
 
 /obj/machinery/computer/security/ui_interact(mob/user, datum/tgui/ui = null)
 	// Update UI
@@ -80,7 +89,10 @@
 			z = C.z,
 			status = C.status
 		))
-	data["mapUrl"] = z_levels(current_z_level_index) || null
+	if(!current_z_level_index)
+		current_z_level_index = 1
+	data["mapUrl"] = z_levels["[z_levels[current_z_level_index]]"]["nanomap"]
+	data["current_z_level_index"] = z_levels["[z_levels[current_z_level_index]]"]["z_level"]
 	return data
 
 /obj/machinery/computer/security/ui_static_data()
@@ -93,48 +105,20 @@
 	. = ..()
 	if(. && action == "change_camera")
 		if(active_camera)
-			current_z_level_index = z_levels.Find("[active_camera.z]")
+			current_z_level_index = z_levels.Find("[z_levels["[active_camera.z]"]]")
 		return
 	if(.)
 		return
 
 	if(action == "switch_z_level")
-		if(active_camera)
-			LAZYSET(stored_cameras, "[active_camera.z]", active_camera.c_tag)
 		var/z_dir = params["z_dir"]
-		// TODO: Have a list of available z_levels
-		var/list/cameras = get_available_cameras()
 		switch(z_dir)
 			if(1)
 				if(length(z_levels) >= current_z_level_index + 1)
 					return
 				current_z_level_index += 1
-				active_camera = cameras[LAZYACCESSASSOC(stored_cameras, level_name_to_num(MAIN_STATION), null)] || null
 			if(-1)
 				if(current_z_level_index <= 1)
 					return
 				current_z_level_index -= 1
-				active_camera = cameras[LAZYACCESSASSOC(stored_cameras, level_name_to_num(MINING), null)] || null
-
-		// Below is a copy-paste from "switch-camera". Need to refactor it a little
-		if(!silent_console)
-			playsound(src, get_sfx("terminal_type"), 25, FALSE)
-
-		// Show static if can't use the camera
-		if(!active_camera?.can_use())
-			show_camera_static()
-			return TRUE
-
-		var/list/visible_turfs = list()
-		for(var/turf/T in view(active_camera.view_range, get_turf(active_camera)))
-			visible_turfs += T
-
-		var/list/bbox = get_bbox_of_atoms(visible_turfs)
-		var/size_x = bbox[3] - bbox[1] + 1
-		var/size_y = bbox[4] - bbox[2] + 1
-
-		cam_screen.vis_contents = visible_turfs
-		cam_background.icon_state = "clear"
-		cam_background.fill_rect(1, 1, size_x, size_y)
-
 		return TRUE
