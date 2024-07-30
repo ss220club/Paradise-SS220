@@ -17,6 +17,7 @@
 	z_levels = list()
 	var/list/z_levels_checked = list()
 	var/list/z_levels_unsorted = list()
+	// Get all available z levels for this CCTV
 	for(var/key in .)
 		var/obj/machinery/camera/camera = .[key]
 		if(camera.z in z_levels_checked || !camera.nanomap_png)
@@ -26,9 +27,13 @@
 		z_level_data["z_level"] = camera.z
 		z_levels_unsorted += list(z_level_data)
 		z_levels_checked += camera.z
+	// Sort it by z levels
 	z_levels_unsorted = sortByKey(z_levels_unsorted, "z_level")
 	for(var/i in 1 to length(z_levels_unsorted))
 		z_levels += list("[z_levels_unsorted[i]["z_level"]]" = z_levels_unsorted[i])
+		// If no current_z_level_index, set it to CCTV's z level
+		if(isnull(current_z_level_index) && z == z_levels_unsorted[i]["z_level"])
+			current_z_level_index = i
 
 /obj/machinery/computer/security/ui_interact(mob/user, datum/tgui/ui = null)
 	// Update UI
@@ -92,7 +97,7 @@
 	if(!current_z_level_index)
 		current_z_level_index = 1
 	data["mapUrl"] = z_levels["[z_levels[current_z_level_index]]"]["nanomap"]
-	data["current_z_level_index"] = z_levels["[z_levels[current_z_level_index]]"]["z_level"]
+	data["selected_z_level"] = z_levels["[z_levels[current_z_level_index]]"]["z_level"]
 	return data
 
 /obj/machinery/computer/security/ui_static_data()
@@ -103,7 +108,7 @@
 
 /obj/machinery/computer/security/ui_act(action, params)
 	. = ..()
-	if(. && action == "change_camera")
+	if(. && action == "switch_camera")
 		if(active_camera)
 			current_z_level_index = z_levels.Find("[z_levels["[active_camera.z]"]]")
 		return
@@ -114,7 +119,7 @@
 		var/z_dir = params["z_dir"]
 		switch(z_dir)
 			if(1)
-				if(length(z_levels) >= current_z_level_index + 1)
+				if(current_z_level_index >= length(z_levels))
 					return
 				current_z_level_index += 1
 			if(-1)
