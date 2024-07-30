@@ -109,21 +109,19 @@
 /obj/machinery/computer/security/ui_act(action, params)
 	. = ..()
 	if(. && action == "switch_camera")
-		if(active_camera)
-			current_z_level_index = z_levels.Find("[z_levels["[active_camera.z]"]]")
+		if(!active_camera)
+			return
+		if(active_camera.z == z_levels["[z_levels[current_z_level_index]]"]["z_level"])
+			return
+		for(var/i in 1 to length(z_levels))
+			if(z_levels["[z_levels[current_z_level_index]]"]["z_level"] != active_camera.z)
+				continue
+			current_z_level_index = i
 		return
 	if(.)
 		return
 
 	if(action == "switch_z_level")
 		var/z_dir = params["z_dir"]
-		switch(z_dir)
-			if(1)
-				if(current_z_level_index >= length(z_levels))
-					return
-				current_z_level_index += 1
-			if(-1)
-				if(current_z_level_index <= 1)
-					return
-				current_z_level_index -= 1
+		current_z_level_index = clamp(current_z_level_index + z_dir, 1, length(z_levels))
 		return TRUE
