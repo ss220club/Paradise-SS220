@@ -223,7 +223,11 @@
 	. = ..()
 	if(visualsOnly)
 		return
-	H.add_language("Tradeband")
+	for(var/la in GLOB.all_languages)
+		var/datum/language/new_language = GLOB.all_languages[la]
+		if(new_language.flags & (HIVEMIND|NOLIBRARIAN|NOBABEL|WHITELISTED))
+			continue
+		H.add_language(la)
 
 
 /datum/job/donor/representative_ussp
@@ -275,8 +279,11 @@
 	. = ..()
 	if(visualsOnly)
 		return
-	H.add_language("Neo-Russkiya")
-
+	for(var/la in GLOB.all_languages)
+		var/datum/language/new_language = GLOB.all_languages[la]
+		if(new_language.flags & (HIVEMIND|NOLIBRARIAN|NOBABEL|WHITELISTED))
+			continue
+		H.add_language(la)
 
 /datum/job/donor/dealer
 	title = "Dealer"
@@ -286,7 +293,7 @@
 	spawn_positions = 2
 	ru_title = "Торговец"
 	alt_titles = list("Торговец", "Независимый Торговец", "Сдельщик", "Барахольщик", "Меценат", "Коммерсант")
-	access = list(ACCESS_MAINT_TUNNELS, ACCESS_LIBRARY, ACCESS_RC_ANNOUNCE, ACCESS_MAILSORTING, ACCESS_CARGO, ACCESS_MINT, ACCESS_MINERAL_STOREROOM, ACCESS_CONSTRUCTION)
+	access = list(ACCESS_MAINT_TUNNELS, ACCESS_LIBRARY, ACCESS_RC_ANNOUNCE, ACCESS_MAILSORTING, ACCESS_CARGO, ACCESS_MINERAL_STOREROOM, ACCESS_CONSTRUCTION)
 	selection_color = "#717097"
 	hidden_from_job_prefs = FALSE
 	donator_tier = 4
