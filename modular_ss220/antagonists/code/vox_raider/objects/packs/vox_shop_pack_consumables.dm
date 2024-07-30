@@ -10,7 +10,7 @@
 	desc = "Лучше чем ничего."
 	reference = "CO_FOOD"
 	cost = 5
-	contains = list(/obj/item/food/snacks/soup/stew)
+	contains = list(/obj/item/food/soup/stew)
 
 /datum/vox_pack/consumables/flare
 	name = "Фальшфейер"
