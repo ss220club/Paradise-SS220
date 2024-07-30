@@ -128,7 +128,14 @@ export class NanoMap extends Component {
           <img src={resolveAsset(mapUrl)} style={mapStyle} />
           <Box>{children}</Box>
         </Box>
-        <NanoMapZoomer zoom={zoom} onZoom={this.handleZoom} />
+        <Box>
+          <Box>
+            <NanoMapZoomer zoom={zoom} onZoom={this.handleZoom} />
+          </Box>
+          <Box>
+            <NanoMapZSelector />
+          </Box>
+        </Box>
       </Box>
     );
   }
@@ -155,7 +162,7 @@ const NanoMapZoomer = (props, context) => {
   return (
     <Box className="NanoMap__zoomer">
       <LabeledList>
-        <LabeledList.Item label="Zoom">
+        <LabeledList.Item label="Зумер">
           <Slider
             minValue={1}
             maxValue={8}
@@ -216,3 +223,17 @@ class NanoButton extends Component {
   }
 }
 NanoMap.NanoButton = NanoButton;
+
+const NanoMapZSelector = (props, context) => {
+  const { act, data } = useBackend(context);
+  return (
+    <Box>
+      <Box>
+        <Button icon={'chevron-up'} tooltip={'Уровнем выше'} onClick={() => act('switch_z_level', { z_dir: 1 })} />
+      </Box>
+      <Box>
+        <Button icon={'chevron-down'} tooltip={'Уровнем ниже'} onClick={() => act('switch_z_level', { z_dir: -1 })} />
+      </Box>
+    </Box>
+  );
+};
