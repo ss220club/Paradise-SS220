@@ -12,21 +12,6 @@
 	var/list/z_levels = list() // Assoc list, "z_level":"nanomap.png"
 	var/current_z_level_index
 
-/obj/machinery/computer/security/get_available_cameras()
-	. = ..()
-	z_levels = list()
-	// Get all available z levels for this CCTV
-	for(var/key in .)
-		var/obj/machinery/camera/camera = .[key]
-		if("[camera.z]" in z_levels || !camera.nanomap_png)
-			continue
-		z_levels += list("[camera.z]" = camera.nanomap_png)
-	// Sort it by z levels
-	z_levels = sortAssoc(z_levels)
-	// If no current_z_level_index, set it to CCTV's z level
-	if(isnull(current_z_level_index))
-		current_z_level_index = z_levels.Find("[z]")
-
 /obj/machinery/computer/security/ui_interact(mob/user, datum/tgui/ui = null)
 	// Update UI
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -76,6 +61,7 @@
 		)
 	var/list/cameras = get_available_cameras()
 	data["cameras"] = list()
+	z_levels = list()
 	for(var/i in cameras)
 		var/obj/machinery/camera/C = cameras[i]
 		data["cameras"] += list(list(
@@ -85,10 +71,19 @@
 			z = C.z,
 			status = C.status
 		))
+		if("[C.z]" in z_levels || !C.nanomap_png)
+			continue
+		z_levels += list("[C.z]" = C.nanomap_png)
+		// Sort it by z levels
+	z_levels = sortAssoc(z_levels)
 	if(isnull(current_z_level_index))
-		current_z_level_index = 1
-	data["mapUrl"] = z_levels["[z_levels[current_z_level_index]]"]
-	data["selected_z_level"] = z_levels[current_z_level_index]
+		current_z_level_index = clamp(z_levels.Find("[z]"), 1, length(z_levels))
+	else
+		current_z_level_index = clamp(current_z_level_index, 1, length(z_levels))
+	// On null, it uses map datum value
+	data["mapUrl"] = z_levels["[z_levels[current_z_level_index]]"] || null
+	// On null, it uses station's z level
+	data["selected_z_level"] = z_levels[current_z_level_index] || null
 	return data
 
 /obj/machinery/computer/security/ui_static_data()
