@@ -32,7 +32,7 @@
 ##tile/cherry {\
 	name = "cherry wood floor tiles";\
 	singular_name = "cherry wood floor tile";\
-	color = "#FFECB3";\
+	color = "#643412";\
 	turf_type = ##path/cherry;\
 	merge_type = ##tile/cherry;\
 }\
