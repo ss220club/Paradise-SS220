@@ -10,7 +10,6 @@
 ##tile/oak {\
 	name = "oak wood floor tiles";\
 	singular_name = "oak wood floor tile";\
-	icon = 'modular_ss220/aesthetics/floors/icons/tiles.dmi';\
 	color = "#644526";\
 	turf_type = ##path/oak;\
 	merge_type = ##tile/oak;\
@@ -22,7 +21,6 @@
 ##tile/birch {\
 	name = "birch wood floor tiles";\
 	singular_name = "birch wood floor tile";\
-	icon = 'modular_ss220/aesthetics/floors/icons/tiles.dmi';\
 	color = "#FFECB3";\
 	turf_type = ##path/birch;\
 	merge_type = ##tile/birch;\
@@ -34,7 +32,6 @@
 ##tile/cherry {\
 	name = "cherry wood floor tiles";\
 	singular_name = "cherry wood floor tile";\
-	icon = 'modular_ss220/aesthetics/floors/icons/tiles.dmi';\
 	color = "#FFECB3";\
 	turf_type = ##path/cherry;\
 	merge_type = ##tile/cherry;\
