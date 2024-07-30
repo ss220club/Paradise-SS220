@@ -52,7 +52,7 @@
 	desc = "Случайный товар для продажи."
 	reference = "G_CARP"
 	cost = 50
-	random_subtype = /obj/item/food/snacks
+	random_subtype = /obj/item/food
 
 /datum/vox_pack/goods/toy
 	name = "Игрушка"
