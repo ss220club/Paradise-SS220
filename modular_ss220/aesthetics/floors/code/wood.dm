@@ -5,7 +5,7 @@
 #define WOODEN_FLOOR_HELPER(path, tile)\
 ##path/oak {\
 	color = "#644526";\
-	floor_tile = ##tile;\
+	floor_tile = ##tile/oak;\
 }\
 ##tile/oak {\
 	name = "oak wood floor tiles";\
@@ -16,7 +16,7 @@
 }\
 ##path/birch {\
 	color = "#FFECB3";\
-	floor_tile = ##tile;\
+	floor_tile = ##tile/birch;\
 }\
 ##tile/birch {\
 	name = "birch wood floor tiles";\
@@ -27,7 +27,7 @@
 }\
 ##path/cherry {\
 	color = "#643412";\
-	floor_tile = ##tile;\
+	floor_tile = ##tile/cherry;\
 }\
 ##tile/cherry {\
 	name = "cherry wood floor tiles";\
@@ -87,6 +87,8 @@ WOODEN_FLOOR_HELPER(/turf/simulated/floor/wood/fancy, /obj/item/stack/tile/wood/
 /turf/simulated/floor/wood/parquet/get_broken_states()
 	return list("wood_parquet-broken", "wood_parquet-broken2", "wood_parquet-broken3", "wood_parquet-broken4", "wood_parquet-broken5", "wood_parquet-broken6", "wood_parquet-broken7")
 
+WOODEN_FLOOR_HELPER(/turf/simulated/floor/wood/parquet, /obj/item/stack/tile/wood/parquet)
+
 // Tiled Parquet
 /obj/item/stack/tile/wood/parquet/tile
 	name = "tiled parquet wood floor tiles"
@@ -103,5 +105,7 @@ WOODEN_FLOOR_HELPER(/turf/simulated/floor/wood/fancy, /obj/item/stack/tile/wood/
 
 /turf/simulated/floor/wood/parquet/tile/get_broken_states()
 	return list("wood_tile-broken", "wood_tile-broken2", "wood_tile-broken3")
+
+WOODEN_FLOOR_HELPER(/turf/simulated/floor/wood/parquet/tile, /obj/item/stack/tile/wood/parquet/tile)
 
 #undef WOODEN_FLOOR_HELPER
