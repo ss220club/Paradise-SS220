@@ -5,7 +5,7 @@
 	. = ..()
 	if(z == level_name_to_num(MAIN_STATION))
 		nanomap_png = "[SSmapping.map_datum.technical_name]_nanomap_z1.png"
-	else if (z == level_name_to_num(MINING))
+	else if(z == level_name_to_num(MINING))
 		nanomap_png = "[MINING]_nanomap_z1.png"
 
 /obj/machinery/computer/security
