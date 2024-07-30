@@ -3,7 +3,7 @@ import { filter, sortBy, map, reduce } from 'common/collections';
 import { flow } from 'common/fp';
 import { createSearch } from 'common/string';
 import { Window } from '../layouts';
-import { Box, Section, NoticeBox, Collapsible, Input, ImageButton } from '../components';
+import { Box, Section, NoticeBox, Collapsible, Input, ImageButton, Button } from '../components';
 
 export const StackCraft220 = (props, context) => {
   return (
@@ -24,6 +24,7 @@ const Recipes = (props, context) => {
     recipes,
     createSearch(searchText, (item) => item)
   );
+  const [searchActive, setSearchActive] = useLocalState(context, '', false);
 
   return (
     <Section
@@ -31,12 +32,24 @@ const Recipes = (props, context) => {
       scrollable
       title={'Количество: ' + amount}
       buttons={
-        <Input
-          width={12.5}
-          value={searchText}
-          placeholder={'Найти рецепт'}
-          onInput={(e, value) => setSearchText(value)}
-        />
+        <>
+          {searchActive && (
+            <Input
+              width={12.5}
+              value={searchText}
+              placeholder={'Найти рецепт'}
+              onInput={(e, value) => setSearchText(value)}
+            />
+          )}
+          <Button
+            ml={0.5}
+            tooltip="Поиск"
+            tooltipPosition="bottom-end"
+            icon="magnifying-glass"
+            selected={searchActive}
+            onClick={() => setSearchActive(!searchActive)}
+          />
+        </>
       }
     >
       {filteredRecipes ? <RecipeListBox recipes={filteredRecipes} /> : <NoticeBox>No recipes found!</NoticeBox>}
@@ -185,7 +198,7 @@ const RecipeBox = (props, context) => {
   const { act, data } = useBackend(context);
   const { amount } = data;
   const { title, recipe } = props;
-  const { result_amount, required_amount, max_result_amount, uid, imageID } = recipe;
+  const { result_amount, required_amount, max_result_amount, uid, image } = recipe;
 
   const resAmountLabel = result_amount > 1 ? `${result_amount}x ` : '';
 
@@ -206,9 +219,7 @@ const RecipeBox = (props, context) => {
 
   return (
     <ImageButton
-      asset
-      imageAsset={'stack_recipes32x32'}
-      image={imageID}
+      image={image}
       disabled={!max_possible_multiplier}
       content={buttonName}
       tooltip={tooltipContent}
