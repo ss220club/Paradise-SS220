@@ -73,7 +73,6 @@
 		data["activeCamera"] = list(
 			name = active_camera.c_tag,
 			status = active_camera.status,
-			z = active_camera.z,
 		)
 	var/list/cameras = get_available_cameras()
 	data["cameras"] = list()
