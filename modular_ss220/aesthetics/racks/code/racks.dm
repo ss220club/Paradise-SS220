@@ -2,8 +2,8 @@
 	icon = 'modular_ss220/aesthetics/racks/icons/racks.dmi'
 
 /obj/structure/rack/gunrack
-	name = "gun rack"
-	desc = "A gun rack for storing guns."
+	name = "оружейная стойка"
+	desc = "Стойка для хранения оружия."
 	icon_state = "gunrack"
 
 /obj/item/gun
@@ -27,7 +27,7 @@
 
 /obj/structure/rack/gunrack/MouseDrop_T(obj/O, mob/user)
 	if(!(istype(O, /obj/item/gun)))
-		to_chat(user, span_warning("This item doesn't fit!"))
+		to_chat(user, span_warning("Этот предмет не помещается!"))
 		return
 	. = ..()
 	if(.)
@@ -37,7 +37,7 @@
 
 /obj/structure/rack/gunrack/attackby(obj/item/W, mob/user, params) //TODO: fix logic
 	if(!(istype(W, /obj/item/gun)))
-		to_chat(user, span_warning("This item doesn't fit!"))
+		to_chat(user, span_warning("Этот предмет не помещается!"))
 		return
 	. = ..()
 	if(W.loc == get_turf(src))
@@ -71,8 +71,8 @@
 	qdel(src)
 
 /obj/item/rack_parts/gunrack_parts
-	name = "gun rack parts"
-	desc = "Parts of a gun rack."
+	name = "детали оружейной стойки"
+	desc = "Детали для сборки оружейной стойки."
 	icon = 'modular_ss220/aesthetics/racks/icons/racks.dmi'
 	icon_state = "gunrack_parts"
 
@@ -80,33 +80,33 @@
 	if(building)
 		return
 	building = TRUE
-	to_chat(user, "<span class='notice'>You start constructing a gun rack...</span>")
-	if(do_after(user, 50, target = user, progress=TRUE))
-		if(!user.drop_item(src))
-			return
-		var/obj/structure/rack/gunrack/R = new /obj/structure/rack/gunrack(user.loc)
-		user.visible_message("<span class='notice'>[user] assembles \a [R].\
-			</span>", "<span class='notice'>You assemble \a [R].</span>")
-		R.add_fingerprint(user)
+	to_chat(user, span_notice("Вы начинаете собирать оружейную стойку..."))
+	if(do_after(user, 50, target = user, progress=TRUE) && user.drop_item(src))
+		var/obj/structure/rack/gunrack/G = new /obj/structure/rack/gunrack(user.loc)
+		user.visible_message(span_notice("[user] собирает оружейную стойку."), span_notice("Вы закончили собирать оружейную стойку."))
+		G.add_fingerprint(user)
+		building = FALSE
 		qdel(src)
-	building = FALSE
+	else
+		building = FALSE
+		return
 
 /obj/structure/rack/shelving
-	name = "shelving"
-	desc = "A shelving for storing various goods"
+	name = "стеллаж"
+	desc = "Стеллаж для хранения различных вещей."
 	icon_state = "shelving"
 
-/obj/structure/rack/shelving/attackby(obj/item/W, mob/user, params)
+/obj/structure/rack/shelving/attackby(obj/item/V, mob/user, params)
 	. = ..()
-	if(W.loc == get_turf(src))
+	if(V.loc == get_turf(src))
 		add_fingerprint(user)
 		var/list/click_params = params2list(params)
 		//Center the icon where the user clicked.
 		if(!click_params || !click_params["icon-x"] || !click_params["icon-y"])
 			return
 		//Clamp it so that the icon never moves more than 16 pixels in either direction (thus leaving the table turf)
-		W.pixel_x = clamp(text2num(click_params["icon-x"]) - 16, -(world.icon_size/2), world.icon_size/2)
-		W.pixel_y = clamp(text2num(click_params["icon-y"]) - 16, -(world.icon_size/2), world.icon_size/2)
+		V.pixel_x = clamp(text2num(click_params["icon-x"]) - 16, -(world.icon_size/2), world.icon_size/2)
+		V.pixel_y = clamp(text2num(click_params["icon-y"]) - 16, -(world.icon_size/2), world.icon_size/2)
 
 /obj/structure/rack/shelving/deconstruct(disassembled = TRUE)
 	if(!(flags & NODECONSTRUCT))
@@ -116,8 +116,8 @@
 	qdel(src)
 
 /obj/item/rack_parts/shelving_parts
-	name = "shelving parts"
-	desc = "Parts of a shelving"
+	name = "детали стеллажа"
+	desc = "Детали для сборки стеллажа."
 	icon = 'modular_ss220/aesthetics/racks/icons/racks.dmi'
 	icon_state = "shelving_parts"
 
@@ -125,13 +125,13 @@
 	if(building)
 		return
 	building = TRUE
-	to_chat(user, "<span class='notice'>You start constructing a shelving...</span>")
-	if(do_after(user, 50, target = user, progress=TRUE))
-		if(!user.drop_item(src))
-			return
-		var/obj/structure/rack/shelving/R = new /obj/structure/rack/shelving(user.loc)
-		user.visible_message("<span class='notice'>[user] assembles \a [R].\
-			</span>", "<span class='notice'>You assemble \a [R].</span>")
-		R.add_fingerprint(user)
+	to_chat(user, span_notice("Вы начинаете собирать стеллаж..."))
+	if(do_after(user, 50, target = user, progress=TRUE) && user.drop_item(src))
+		var/obj/structure/rack/shelving/S = new /obj/structure/rack/shelving(user.loc)
+		user.visible_message(span_notice("[user] собирает стеллаж."), span_notice("Вы закончили собирать стеллаж."))
+		S.add_fingerprint(user)
+		building = FALSE
 		qdel(src)
-	building = FALSE
+	else
+		building = FALSE
+		return
