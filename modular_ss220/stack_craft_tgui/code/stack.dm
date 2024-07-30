@@ -51,7 +51,7 @@
 		return FALSE
 
 	if(recipe_to_make.time)
-		to_chat(user, "<span class='notice'>Изготовление [recipe_to_make.title]...</span>")
+		to_chat(user, span_notice("Изготовление [recipe_to_make.title]..."))
 		if(!do_after(user, recipe_to_make.time, target = user))
 			return FALSE
 
@@ -89,26 +89,26 @@
 
 	if(get_amount() < recipe_to_build.req_amount * multiplier)
 		if(recipe_to_build.req_amount * multiplier > 1)
-			to_chat(builder, "<span class='warning'>You haven't got enough [src] to build \the [recipe_to_build.req_amount * multiplier] [recipe_to_build.title]\s!</span>")
+			to_chat(builder, span_warning("У тебя недостаточно [src] для создания [recipe_to_build.req_amount * multiplier] [recipe_to_build.title]!"))
 		else
-			to_chat(builder, "<span class='warning'>You haven't got enough [src] to build \the [recipe_to_build.title]!</span>")
+			to_chat(builder, span_warning("У тебя недостаточно [src] для создания [recipe_to_build.title]!"))
 		return FALSE
 
 	var/turf/target_turf = get_turf(src)
 	if(recipe_to_build.window_checks && !valid_window_location(target_turf, builder.dir))
-		to_chat(builder, "<span class='warning'>\The [recipe_to_build.title] won't fit here!</span>")
+		to_chat(builder, span_warning("[recipe_to_build.title] не помещается здесь!"))
 		return FALSE
 
 	if(recipe_to_build.one_per_turf && (locate(recipe_to_build.result_type) in target_turf))
-		to_chat(builder, "<span class='warning'>There is another [recipe_to_build.title] here!</span>")
+		to_chat(builder, span_warning("Тут уже есть [recipe_to_build.title]!"))
 		return FALSE
 
 	if(recipe_to_build.on_floor && !issimulatedturf(target_turf))
-		to_chat(builder, "<span class='warning'>\The [recipe_to_build.title] must be constructed on the floor!</span>")
+		to_chat(builder, span_warning("[recipe_to_build.title] должно быть собрано на полу!"))
 		return FALSE
 
 	if(recipe_to_build.on_floor_or_lattice && !(issimulatedturf(target_turf) || locate(/obj/structure/lattice) in target_turf))
-		to_chat(builder, "<span class='warning'>\The [recipe_to_build.title] must be constructed on the floor or lattice!</span>")
+		to_chat(builder, span_warning("[recipe_to_build.title] должно быть собрано на полу или решётке!"))
 		return FALSE
 
 	if(recipe_to_build.cult_structure)
@@ -116,7 +116,7 @@
 			return FALSE
 
 		if(!is_level_reachable(builder.z))
-			to_chat(builder, "<span class='warning'>The energies of this place interfere with the metal shaping!</span>")
+			to_chat(builder, span_warning("Энергия этого места вмешивается в процесс сборки!"))
 			return FALSE
 
 	return TRUE
