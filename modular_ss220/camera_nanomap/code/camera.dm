@@ -57,6 +57,7 @@
 			z = C.z,
 			status = C.status
 		))
+	data["mapUrl"] = null
 	if(active_camera?.z == level_name_to_num(MINING))
 		data["mapUrl"] = "[MINING]_nanomap_z1.png"
 	return data
