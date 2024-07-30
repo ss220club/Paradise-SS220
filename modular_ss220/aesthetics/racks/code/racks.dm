@@ -82,9 +82,9 @@
 	building = TRUE
 	to_chat(user, span_notice("Вы начинаете собирать оружейную стойку..."))
 	if(do_after(user, 50, target = user, progress=TRUE) && user.drop_item(src))
-		var/obj/structure/rack/gunrack/G = new /obj/structure/rack/gunrack(user.loc)
+		var/obj/structure/rack/gunrack/rack = new /obj/structure/rack/gunrack(user.loc)
 		user.visible_message(span_notice("[user] собирает оружейную стойку."), span_notice("Вы закончили собирать оружейную стойку."))
-		G.add_fingerprint(user)
+		rack.add_fingerprint(user)
 		building = FALSE
 		qdel(src)
 	else
@@ -96,17 +96,17 @@
 	desc = "Стеллаж для хранения различных вещей."
 	icon_state = "shelving"
 
-/obj/structure/rack/shelving/attackby(obj/item/V, mob/user, params)
+/obj/structure/rack/shelving/attackby(obj/item/stuff, mob/user, params)
 	. = ..()
-	if(V.loc == get_turf(src))
+	if(stuff.loc == get_turf(src))
 		add_fingerprint(user)
 		var/list/click_params = params2list(params)
 		//Center the icon where the user clicked.
 		if(!click_params || !click_params["icon-x"] || !click_params["icon-y"])
 			return
 		//Clamp it so that the icon never moves more than 16 pixels in either direction (thus leaving the table turf)
-		V.pixel_x = clamp(text2num(click_params["icon-x"]) - 16, -(world.icon_size/2), world.icon_size/2)
-		V.pixel_y = clamp(text2num(click_params["icon-y"]) - 16, -(world.icon_size/2), world.icon_size/2)
+		stuff.pixel_x = clamp(text2num(click_params["icon-x"]) - 16, -(world.icon_size/2), world.icon_size/2)
+		stuff.pixel_y = clamp(text2num(click_params["icon-y"]) - 16, -(world.icon_size/2), world.icon_size/2)
 
 /obj/structure/rack/shelving/deconstruct(disassembled = TRUE)
 	if(!(flags & NODECONSTRUCT))
@@ -127,9 +127,9 @@
 	building = TRUE
 	to_chat(user, span_notice("Вы начинаете собирать стеллаж..."))
 	if(do_after(user, 50, target = user, progress=TRUE) && user.drop_item(src))
-		var/obj/structure/rack/shelving/S = new /obj/structure/rack/shelving(user.loc)
+		var/obj/structure/rack/shelving/shelf = new /obj/structure/rack/shelving(user.loc)
 		user.visible_message(span_notice("[user] собирает стеллаж."), span_notice("Вы закончили собирать стеллаж."))
-		S.add_fingerprint(user)
+		shelf.add_fingerprint(user)
 		building = FALSE
 		qdel(src)
 	else
