@@ -87,7 +87,7 @@ export const CameraConsoleMapContent = (props, context) => {
       >
         <NanoMap onZoom={(v) => setZoom(v)} mapUrl={mapUrl}>
           {cameras
-            .filter((cam) => cam.z === (selected_z_level || stationLevel))
+            .filter((cam) => cam.z === (Number(selected_z_level) || stationLevel))
             .map((cm) => (
               <NanoMap.NanoButton
                 activeCamera={activeCamera}
