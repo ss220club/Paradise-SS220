@@ -64,6 +64,7 @@ AI MODULES
 					to_chat(R, "Ваши законы теперь:")
 					R.show_laws()
 			to_chat(usr, "<span class='notice'>Загрузка завершена. Законы ИИ были успешно изменены.</span>")
+			return TRUE
 
 	else if(istype(C, /obj/machinery/computer/borgupload))
 		var/obj/machinery/computer/borgupload/comp = C
