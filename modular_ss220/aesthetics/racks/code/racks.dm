@@ -1,5 +1,15 @@
 /obj/structure/rack
 	icon = 'modular_ss220/aesthetics/racks/icons/racks.dmi'
+	var/parts_type = /obj/item/rack_parts
+
+/obj/structure/rack/deconstruct(disassembled = TRUE)
+	if(flags & NODECONSTRUCT)
+		return
+
+	density = FALSE
+	var/obj/item/rack_parts/newparts = new parts_type(loc)
+	transfer_fingerprints_to(newparts)
+	del(src)
 
 /obj/item/rack_parts
 	var/rack_type = /obj/structure/rack
@@ -24,6 +34,7 @@
 	name = "gun rack"
 	desc = "Стойка для хранения оружия."
 	icon_state = "gunrack"
+	parts_type = /obj/item/rack_parts/gun
 
 /obj/item/gun
 	var/on_rack = FALSE
@@ -91,15 +102,11 @@
 		gun_inside.place_on_rack()
 
 /obj/structure/rack/gunrack/deconstruct(disassembled = TRUE)
-	if(!(flags & NODECONSTRUCT))
-		density = FALSE
-		var/obj/item/rack_parts/gun/newparts = new(loc)
-		transfer_fingerprints_to(newparts)
 	for(var/obj/item/I in loc.contents)
 		if(istype(I, /obj/item/gun))
 			var/obj/item/gun/to_remove = I
 			to_remove.remove_from_rack()
-	qdel(src)
+	. = ..()
 
 /obj/item/rack_parts/gun
 	name = "gun rack parts"
@@ -112,6 +119,7 @@
 	name = "shelving"
 	desc = "Стеллаж для хранения различных вещей."
 	icon_state = "shelving"
+	parts_type = /obj/item/rack_parts/shelf
 
 /obj/structure/rack/shelving/attackby(obj/item/stuff, mob/user, params)
 	. = ..()
@@ -137,13 +145,6 @@
 	//Clamp it so that the icon never moves more than 16 pixels in either direction (thus leaving the table turf)
 	stuff.pixel_x = clamp(text2num(click_icon_x) - 16, min_pixelshift, max_pixelshift)
 	stuff.pixel_y = clamp(text2num(click_icon_y ) - 16, min_pixelshift, max_pixelshift)
-
-/obj/structure/rack/shelving/deconstruct(disassembled = TRUE)
-	if(!(flags & NODECONSTRUCT))
-		density = FALSE
-		var/obj/item/rack_parts/shelf/newparts = new(loc)
-		transfer_fingerprints_to(newparts)
-	qdel(src)
 
 /obj/item/rack_parts/shelf
 	name = "shelving parts"
