@@ -26,4 +26,4 @@
 	if(!isnull(paint) && paint != COLOR_WHITE)
 		result_icon.Blend(paint, ICON_MULTIPLY)
 
-	src.image = "[icon2base64(result_icon)]"
+	image = "[icon2base64(result_icon)]"

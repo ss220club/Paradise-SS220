@@ -25,7 +25,7 @@
 		ui_interact(user)
 
 /obj/item/stack/attack_hand(mob/user)
-	if(!user.is_in_inactive_hand(src) && get_amount() < 1)
+	if(!user.is_in_inactive_hand(src) && get_amount() > 1)
 		..()
 		return
 
