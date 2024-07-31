@@ -19,8 +19,8 @@
 		..()
 		return
 
-	var/obj/item/stack/F = split(user, 1)
-	F.attack_tk(user)
+	var/obj/item/stack/material = split(user, 1)
+	material.attack_tk(user)
 	if(src && user.machine == src)
 		ui_interact(user)
 
