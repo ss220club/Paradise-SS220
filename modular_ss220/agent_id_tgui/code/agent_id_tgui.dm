@@ -35,32 +35,84 @@
 		return
 	. = TRUE
 	switch(action)
+		if("change_name")
+			var/new_name
+			if(params["name"])
+				new_name = params["name"]
+
+			if(params["option"] == "LMB")
+				new_name = ishuman(registered_human) ? registered_human.real_name : registered_human.name
+
+			if(params["option"] == "RMB")
+				new_name = tgui_input_list(registered_human, "Чьё имя вы хотите взять?", "Карта Агента - Имя", GLOB.human_list)
+				if(isnull(new_name))
+					return
+
+			registered_name = reject_bad_name(new_name, TRUE)
+			UpdateName()
+			to_chat(registered_human, span_notice("Имя изменено на: [new_name]."))
+
+		if("change_sex")
+			var/new_sex = params["sex"]
+			sex = new_sex
+			to_chat(registered_human, span_notice("Пол изменён на: [sex]."))
+
+		if("change_age")
+			var/new_age = params["age"]
+			age = clamp(new_age, 17, 300)
+			to_chat(registered_human, span_notice("Возраст изменён на: [new_age]."))
+
+		if("change_occupation")
+			change_occupation()
+
+		if("change_fingerprints")
+			var/new_fingerprint_hash
+			if(params["new_fingerprints"])
+				new_fingerprint_hash = params["new_fingerprints"]
+
+			if(params["option"] == "Self")
+				new_fingerprint_hash = registered_human.dna.uni_identity
+
+			fingerprint_hash = md5(sanitize(new_fingerprint_hash))
+			to_chat(registered_human, span_notice("Отпечатки изменёны: [fingerprint_hash]."))
+
+		if("change_blood_type")
+			var/new_blood_type
+			if(params["new_type"])
+				new_blood_type = params["new_type"]
+
+			if(params["option"] == "Self")
+				new_blood_type = registered_human.dna.blood_type
+
+			blood_type = new_blood_type
+			to_chat(registered_human, span_notice("Тип крови изменён на: [new_blood_type]."))
+
+		if("change_dna_hash")
+			var/new_dna_hash
+			if(params["new_dna"])
+				new_dna_hash = params["new_dna"]
+
+			if(params["option"] == "Self")
+				new_dna_hash = registered_human.dna.unique_enzymes
+
+			dna_hash = sanitize(new_dna_hash)
+			to_chat(registered_human, span_notice("ДНК изменён на: [new_dna_hash]."))
+
+		if("change_money_account")
+			var/new_account = params["new_account"]
+			associated_account_number = clamp(new_account, 1000000, 9999999)
+			to_chat(registered_human, span_notice("Привязанный счёт изменён на: [new_account]."))
+
+		if("change_photo")
+			change_photo()
+		if("change_appearance")
+			change_appearance(params)
 		if("delete_info")
 			delete_info()
 		if("clear_access")
 			clear_access()
 		if("change_ai_tracking")
 			change_ai_tracking()
-		if("change_name")
-			change_name()
-		if("change_photo")
-			change_photo()
-		if("change_appearance")
-			change_appearance(params)
-		if("change_sex")
-			change_sex()
-		if("change_age")
-			change_age()
-		if("change_occupation")
-			change_occupation()
-		if("change_money_account")
-			change_money_account()
-		if("change_blood_type")
-			change_blood_type()
-		if("change_dna_hash")
-			change_dna_hash()
-		if("change_fingerprints")
-			change_fingerprints()
 	RebuildHTML()
 
 /obj/item/card/id/syndicate/ui_data(mob/user)
@@ -91,19 +143,28 @@
 		ui = new(user, src, "AgentCard", name)
 		ui.open()
 
-/obj/item/card/id/syndicate/attack_self(mob/user)
+/obj/item/card/id/syndicate/proc/check_registered_human(mob/user)
 	if(!ishuman(user))
-		return
+		return FALSE
 	if(!registered_human)
 		registered_human = user
 	if(registered_human != user)
-		return flash_card(user)
-	switch(tgui_alert(user, "Вы хотите показать [src] или изменить?", "Выбор", list("Показать", "Изменить")))
-		if("Показать")
-			return flash_card(user)
-		if("Изменить")
-			ui_interact(user)
-			return
+		return FALSE
+	return TRUE
+
+/obj/item/card/id/syndicate/attack_self(mob/user)
+	flash_card(user)
+	return
+
+/obj/item/card/id/syndicate/CtrlClick(mob/user)
+	if(!check_registered_human(user))
+		return
+	ui_interact(user)
+
+/obj/item/card/id/syndicate/examine(mob/user)
+	. = ..()
+	if(check_registered_human(user))
+		. += span_info("<b>Ctrl-Click</b> для открытия интерфейса.")
 
 /obj/item/card/id/proc/flash_card(mob/user)
 	user.visible_message(
@@ -127,7 +188,7 @@
 	photo = null
 	registered_user = null
 	SStgui.close_uis(src)
-	to_chat(registered_human, span_notice("Вся информация с [src] была удалена."))
+	to_chat(registered_human, span_notice("Вся информация с карты агента была удалена."))
 
 /obj/item/card/id/syndicate/proc/clear_access()
 	access = initial_access.Copy()
@@ -136,15 +197,6 @@
 /obj/item/card/id/syndicate/proc/change_ai_tracking()
 	untrackable = !untrackable
 	to_chat(registered_human, span_notice("Эта ID карта[untrackable ? " не" : ""] может быть отслежена ИИ."))
-
-/obj/item/card/id/syndicate/proc/change_name()
-	var/new_name = reject_bad_name(tgui_input_text(registered_human, "Какое имя будет на карте?", "Карта Агента - Имя", ishuman(registered_human) ? registered_human.real_name : registered_human.name), TRUE)
-	if(!Adjacent(registered_human))
-		return
-
-	registered_name = new_name
-	UpdateName()
-	to_chat(registered_human, span_notice("Имя изменено на: [new_name]."))
 
 /obj/item/card/id/syndicate/proc/change_photo()
 	if(!Adjacent(registered_human))
@@ -165,26 +217,6 @@
 	var/choice = params["new_appearance"]
 	icon_state = choice
 	to_chat(usr, span_notice("Внешний вид изменён на: [choice]."))
-
-/obj/item/card/id/syndicate/proc/change_sex()
-	var/new_sex = sanitize(stripped_input(registered_human,"Какой пол будет на карте?","Карта Агента - Пол", ishuman(registered_human) ? capitalize(registered_human.gender) : "Male", MAX_MESSAGE_LEN))
-	if(!Adjacent(registered_human))
-		return
-
-	sex = new_sex
-	to_chat(registered_human, span_notice("Пол изменён на: [new_sex]."))
-
-/obj/item/card/id/syndicate/proc/change_age()
-	var/default = "21"
-	if(ishuman(registered_human))
-		default = registered_human.age
-
-	var/new_age = tgui_input_number(registered_human, "Какой возраст будет на карте?", "Карта Агента - Возраст", default, 300, 17)
-	if(!Adjacent(registered_human))
-		return
-
-	age = new_age
-	to_chat(registered_human, span_notice("Возраст изменён на: [new_age]."))
 
 /obj/item/card/id/syndicate/proc/change_occupation()
 	var/title = "Карта Агента - Должность"
@@ -222,46 +254,3 @@
 	UpdateName()
 	registered_human.sec_hud_set_ID()
 	to_chat(registered_human, span_notice("Должность сменена на [new_job]."))
-
-/obj/item/card/id/syndicate/proc/change_money_account()
-	var/new_account = tgui_input_number(registered_human, "Какой банковский счёт будет привязан к карте?", "Карта Агента - Банковский счёт", 12345, max_value = 9999999)
-	if(!Adjacent(registered_human))
-		return
-	associated_account_number = new_account
-	to_chat(registered_human, span_notice("Привязанный счёт изменён на: [new_account]."))
-
-/obj/item/card/id/syndicate/proc/change_blood_type()
-	var/default
-	if(ishuman(registered_human) && registered_human.dna)
-		default = registered_human.dna.blood_type
-
-	var/new_blood_type = sanitize(tgui_input_text(registered_human,"Какой тип крови будет написан на карте?", "Карта Агента - Тип крови", default))
-	if(!Adjacent(registered_human))
-		return
-
-	blood_type = new_blood_type
-	to_chat(registered_human, span_notice("Тип крови изменён на: [new_blood_type]."))
-
-/obj/item/card/id/syndicate/proc/change_dna_hash()
-	var/default
-	if(ishuman(registered_human) && registered_human.dna)
-		default = registered_human.dna.unique_enzymes
-
-	var/new_dna_hash = sanitize(tgui_input_text(registered_human,"Какой ДНК будет написан на карте?", "Карта Агента - ДНК", default))
-	if(!Adjacent(registered_human))
-		return
-
-	dna_hash = new_dna_hash
-	to_chat(registered_human, span_notice("ДНК изменён на: [new_dna_hash]."))
-
-/obj/item/card/id/syndicate/proc/change_fingerprints()
-	var/default
-	if(ishuman(registered_human) && registered_human.dna)
-		default = md5(registered_human.dna.uni_identity)
-
-	var/new_fingerprint_hash = sanitize(tgui_input_text(registered_human, "Какие отпечатки будут написаны на карте?", "Карта Агента - Отпечатки", default))
-	if(!Adjacent(registered_human))
-		return
-
-	fingerprint_hash = new_fingerprint_hash
-	to_chat(registered_human, span_notice("Отпечатки изменёны: [new_fingerprint_hash]."))
