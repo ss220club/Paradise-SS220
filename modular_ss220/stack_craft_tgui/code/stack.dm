@@ -30,8 +30,8 @@
 		return
 
 	change_stack(user, 1)
-	if(src && usr.machine == src)
-		ui_interact(usr)
+	if(src && user.machine == src)
+		ui_interact(user)
 
 
 /obj/item/stack/change_stack(mob/user,amount)
