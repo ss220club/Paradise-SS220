@@ -54,6 +54,12 @@
 	rack.add_fingerprint(user)
 	qdel(src)
 
+/obj/structure/rack/shelving
+	name = "shelving"
+	desc = "Стеллаж для хранения различных вещей."
+	icon_state = "shelving"
+	parts_type = /obj/item/rack_parts/shelf
+
 /obj/structure/rack/gunrack
 	name = "gun rack"
 	desc = "Стойка для хранения оружия."
@@ -95,9 +101,10 @@
 		return
 	. = ..()
 
-	var/obj/item/gun/our_gun = W
-	our_gun.place_on_rack()
-	W.pixel_y = 0
+	if(user.a_intent != INTENT_HARM)
+		var/obj/item/gun/our_gun = W
+		our_gun.place_on_rack()
+		W.pixel_y = 0
 
 /obj/structure/rack/gunrack/Initialize(mapload)
 	. = ..()
@@ -113,22 +120,16 @@
 			to_remove.remove_from_rack()
 	. = ..()
 
-/obj/item/rack_parts/gun
-	name = "gun rack parts"
-	desc = "Детали для сборки оружейной стойки."
-	icon = 'modular_ss220/aesthetics/racks/icons/racks.dmi'
-	icon_state = "gunrack_parts"
-	rack_type = /obj/structure/rack/gunrack
-
-/obj/structure/rack/shelving
-	name = "shelving"
-	desc = "Стеллаж для хранения различных вещей."
-	icon_state = "shelving"
-	parts_type = /obj/item/rack_parts/shelf
-
 /obj/item/rack_parts/shelf
 	name = "shelving parts"
 	desc = "Детали для сборки стеллажа."
 	icon = 'modular_ss220/aesthetics/racks/icons/racks.dmi'
 	icon_state = "shelving_parts"
 	rack_type = /obj/structure/rack/shelving
+
+/obj/item/rack_parts/gun
+	name = "gun rack parts"
+	desc = "Детали для сборки оружейной стойки."
+	icon = 'modular_ss220/aesthetics/racks/icons/racks.dmi'
+	icon_state = "gunrack_parts"
+	rack_type = /obj/structure/rack/gunrack
