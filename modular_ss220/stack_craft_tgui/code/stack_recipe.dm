@@ -4,7 +4,19 @@
 /datum/stack_recipe/post_build(mob/user, obj/item/stack/S, obj/item/stack/created)
 	return
 
-/datum/stack_recipe/New(title, result_type, req_amount = 1, res_amount = 1, max_res_amount = 1, time = 0, one_per_turf = FALSE, on_floor = FALSE, on_floor_or_lattice = FALSE, window_checks = FALSE, cult_structure = FALSE)
+/datum/stack_recipe/New(
+		title,
+		result_type,
+		req_amount = 1,
+		res_amount = 1,
+		max_res_amount = 1,
+		time = 0,
+		one_per_turf = FALSE,
+		on_floor = FALSE,
+		on_floor_or_lattice = FALSE,
+		window_checks = FALSE,
+		cult_structure = FALSE
+	)
 	. = ..()
 	var/obj/item/result = result_type
 	var/icon/result_icon = icon(initial(result.icon), initial(result.icon_state), SOUTH, 1)
