@@ -4,9 +4,6 @@
 /obj/item/stack/list_recipes(mob/user, recipes_sublist)
 	return
 
-/datum/stack_recipe/post_build(mob/user, obj/item/stack/S, obj/item/stack/created)
-	return
-
 /obj/item/stack/attack_self(mob/user)
 	ui_interact(user)
 
@@ -18,21 +15,24 @@
 		return
 	// Allow remote stack splitting, because telekinetic inventory managing
 	// is really cool
-	if(src in user.tkgrabbed_objects)
-		var/obj/item/stack/F = split(user, 1)
-		F.attack_tk(user)
-		if(src && user.machine == src)
-			ui_interact(user)
-	else
+	if(!(src in user.tkgrabbed_objects))
 		..()
+		return
+
+	var/obj/item/stack/F = split(user, 1)
+	F.attack_tk(user)
+	if(src && user.machine == src)
+		ui_interact(user)
 
 /obj/item/stack/attack_hand(mob/user)
-	if(user.is_in_inactive_hand(src) && get_amount() > 1)
-		change_stack(user, 1)
-		if(src && usr.machine == src)
-			ui_interact(usr)
-	else
+	if(!user.is_in_inactive_hand(src) && get_amount() < 1)
 		..()
+		return
+
+	change_stack(user, 1)
+	if(src && usr.machine == src)
+		ui_interact(usr)
+
 
 /obj/item/stack/change_stack(mob/user,amount)
 	. = ..()

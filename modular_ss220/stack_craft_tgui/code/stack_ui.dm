@@ -48,15 +48,6 @@
 	data["required_amount"] = recipe.req_amount
 	data["result_amount"] = recipe.res_amount
 	data["max_result_amount"] = recipe.max_res_amount
-
-	var/obj/item/result = recipe.result_type
-	var/icon/result_icon = icon(initial(result.icon), initial(result.icon_state), SOUTH, 1)
-	var/paint = initial(result.color)
-
-	result_icon.Scale(32, 32)
-	if(!isnull(paint) && paint != COLOR_WHITE)
-		result_icon.Blend(paint, ICON_MULTIPLY)
-
-	data["image"] = "[icon2base64(result_icon)]"
+	data["image"] = recipe.image
 
 	return data
