@@ -98,7 +98,7 @@
 		registered_human = user
 	if(registered_human != user)
 		return flash_card(user)
-	switch(tgui_alert("Вы хотите показать [src] или изменить?", "Выбор", "Показать", "Изменить"))
+	switch(tgui_alert(user, "Вы хотите показать [src] или изменить?", "Выбор", list("Показать", "Изменить")))
 		if("Показать")
 			return flash_card(user)
 		if("Изменить")
