@@ -1,5 +1,6 @@
-import { useBackend, useLocalState } from '../backend';
-import { Button, LabeledList, Section, Tabs, Icon, Stack } from '../components';
+import { useBackend, useLocalState, useSharedState } from '../backend';
+import { Button, NoticeBox, LabeledList, Section, Tabs, ImageButton, Stack } from '../components';
+import { ImageButtonItem } from '../components/ImageButton';
 import { Window } from '../layouts';
 
 export const AgentCard = (props, context) => {
@@ -16,16 +17,30 @@ export const AgentCard = (props, context) => {
   };
 
   return (
-    <Window width={425} height={500} theme="syndicate">
+    <Window width={405} height={505} theme="syndicate">
       <Window.Content>
         <Stack fill vertical>
           <Stack.Item textAlign="center">
             <Tabs fluid>
-              <Tabs.Tab key="Card Info" selected={0 === tabIndex} onClick={() => setTabIndex(0)}>
-                <Icon name="table" /> Card Info
+              <Tabs.Tab
+                ml={1}
+                mr={0.5}
+                key="Card Info"
+                icon="table"
+                selected={0 === tabIndex}
+                onClick={() => setTabIndex(0)}
+              >
+                Информация
               </Tabs.Tab>
-              <Tabs.Tab key="Appearance" selected={1 === tabIndex} onClick={() => setTabIndex(1)}>
-                <Icon name="id-card" /> Appearance
+              <Tabs.Tab
+                ml={0.5}
+                mr={1}
+                key="Appearance"
+                icon="id-card"
+                selected={1 === tabIndex}
+                onClick={() => setTabIndex(1)}
+              >
+                Внешний вид
               </Tabs.Tab>
             </Tabs>
           </Stack.Item>
@@ -50,59 +65,71 @@ export const AgentCardInfo = (props, context) => {
     photo,
     ai_tracking,
   } = data;
+  const unset = 'Пусто';
 
   return (
     <>
       <Stack.Item>
-        <Section title="Card Info">
+        <NoticeBox m={0}>Изменения информации не влияют на доступы.</NoticeBox>
+      </Stack.Item>
+      <Stack.Item grow>
+        <Section fill scrollable title="Информация">
           <LabeledList>
-            <LabeledList.Item label="Name">
-              <Button content={registered_name ? registered_name : '[UNSET]'} onClick={() => act('change_name')} />
+            <LabeledList.Item label="Имя">
+              <Button content={registered_name ? registered_name : unset} onClick={() => act('change_name')} />
             </LabeledList.Item>
-            <LabeledList.Item label="Sex">
-              <Button iconRight={false} content={sex ? sex : '[UNSET]'} onClick={() => act('change_sex')} />
+            <LabeledList.Item label="Пол">
+              <Button iconRight={false} content={sex ? sex : unset} onClick={() => act('change_sex')} />
             </LabeledList.Item>
-            <LabeledList.Item label="Age">
-              <Button content={age ? age : '[UNSET]'} onClick={() => act('change_age')} />
+            <LabeledList.Item label="Возраст">
+              <Button content={age ? age : unset} onClick={() => act('change_age')} />
             </LabeledList.Item>
-            <LabeledList.Item label="Rank">
-              <Button content={assignment ? assignment : '[UNSET]'} onClick={() => act('change_occupation')} />
+            <LabeledList.Item label="Должность">
+              <Button content={assignment ? assignment : unset} onClick={() => act('change_occupation')} />
             </LabeledList.Item>
-            <LabeledList.Item label="Fingerprints">
+            <LabeledList.Item label="Отпечатки">
               <Button
-                content={fingerprint_hash ? fingerprint_hash : '[UNSET]'}
+                content={fingerprint_hash ? fingerprint_hash : unset}
                 onClick={() => act('change_fingerprints')}
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Blood Type">
-              <Button content={blood_type ? blood_type : '[UNSET]'} onClick={() => act('change_blood_type')} />
+            <LabeledList.Item label="Тип крови">
+              <Button content={blood_type ? blood_type : unset} onClick={() => act('change_blood_type')} />
             </LabeledList.Item>
-            <LabeledList.Item label="DNA Hash">
-              <Button content={dna_hash ? dna_hash : '[UNSET]'} onClick={() => act('change_dna_hash')} />
+            <LabeledList.Item label="ДНК">
+              <Button content={dna_hash ? dna_hash : unset} onClick={() => act('change_dna_hash')} />
             </LabeledList.Item>
-            <LabeledList.Item label="Money Account">
+            <LabeledList.Item label="Банковский счёт">
               <Button
-                content={associated_account_number ? associated_account_number : '[UNSET]'}
+                content={associated_account_number ? associated_account_number : unset}
                 onClick={() => act('change_money_account')}
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Photo">
-              <Button content={photo ? 'Update' : '[UNSET]'} onClick={() => act('change_photo')} />
+            <LabeledList.Item label="Фото">
+              <Button content={photo ? 'Update' : unset} onClick={() => act('change_photo')} />
             </LabeledList.Item>
           </LabeledList>
         </Section>
       </Stack.Item>
-      <Stack.Item grow>
-        <Section fill title="Card Settings">
+      <Stack.Item>
+        <Section fill title="Настройки карты">
           <LabeledList>
-            <LabeledList.Item label="Card Info">
-              <Button content="Delete Card Info" onClick={() => act('delete_info')} />
+            <LabeledList.Item label="Информация">
+              <Button.Confirm
+                content="Удалить всю информацию"
+                confirmContent="Вы уверены?"
+                onClick={() => act('delete_info')}
+              />
             </LabeledList.Item>
-            <LabeledList.Item label="Access">
-              <Button content="Reset Access" onClick={() => act('clear_access')} />
+            <LabeledList.Item label="Доступы">
+              <Button.Confirm
+                content="Сбросить доступы"
+                confirmContent="Вы уверены?"
+                onClick={() => act('clear_access')}
+              />
             </LabeledList.Item>
-            <LabeledList.Item label="AI Tracking">
-              <Button content={ai_tracking ? 'Untrackable' : 'Trackable'} onClick={() => act('change_ai_tracking')} />
+            <LabeledList.Item label="Отслеживание ИИ">
+              <Button content={ai_tracking ? 'Невозможно' : 'Возможно'} onClick={() => act('change_ai_tracking')} />
             </LabeledList.Item>
           </LabeledList>
         </Section>
@@ -113,36 +140,30 @@ export const AgentCardInfo = (props, context) => {
 
 export const AgentCardAppearances = (props, context) => {
   const { act, data } = useBackend(context);
-  const [selectedAppearance, setSelectedAppearance] = useLocalState(context, 'selectedAppearance', null);
+  const [selectedAppearance, setSelectedAppearance] = useSharedState(context, 'selectedAppearance', 'null');
   const { appearances } = data;
   return (
     <Stack.Item grow>
-      <Section fill scrollable title="Card Appearance">
-        {appearances.map((appearance_unit) => (
-          <Button
-            compact
-            m={0.5}
-            color="translucent"
-            key={appearance_unit.name}
-            selected={appearance_unit === selectedAppearance}
-            content={
-              <img
-                src={`data:image/jped;base64,${appearance_unit.image}`}
-                style={{
-                  width: '64px',
-                  'vertical-align': 'middle',
-                  '-ms-interpolation-mode': 'nearest-neighbor',
-                }}
-                onClick={() => {
-                  setSelectedAppearance(appearance_unit);
-                  act('change_appearance', {
-                    new_appearance: appearance_unit.name,
-                  });
-                }}
-              />
-            }
-          />
-        ))}
+      <Section fill scrollable title="Внешний вид">
+        {Object.entries(appearances).map((appearance_unit) => {
+          const [name, image] = appearance_unit;
+          return (
+            <ImageButton
+              m={0.5}
+              vertical
+              key={name}
+              image={image}
+              imageSize={'64px'}
+              selected={selectedAppearance === name}
+              onClick={() => {
+                setSelectedAppearance(name);
+                act('change_appearance', {
+                  new_appearance: name,
+                });
+              }}
+            />
+          );
+        })}
       </Section>
     </Stack.Item>
   );

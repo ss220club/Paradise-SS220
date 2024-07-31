@@ -1,5 +1,7 @@
 /obj/item/card/id/syndicate
-	var/list/card_images
+	dna_hash = null
+	blood_type = null
+	fingerprint_hash = null
 	var/mob/living/carbon/human/registered_human
 	var/static/list/appearances
 	var/static/list/departments = list(
@@ -16,8 +18,15 @@
 
 /obj/item/card/id/syndicate/New()
 	. = ..()
-	var/static/list/restricted_skins = list("admin", "deathsquad", "clownsquad", "data", "ERT_empty", "silver", "gold", "TDred", "TDgreen")
-	appearances = GLOB.card_skins_ss220 + GLOB.card_skins_special_ss220 + GLOB.card_skins_donor_ss220 - restricted_skins
+	var/static/list/final_appearances = list()
+
+	if(length(final_appearances) == 0)
+		var/static/list/restricted_skins = list("admin", "deathsquad", "clownsquad", "data", "ERT_empty", "silver", "gold", "TDred", "TDgreen")
+		var/static/list/raw_appearances = GLOB.card_skins_ss220 + GLOB.card_skins_special_ss220 + GLOB.card_skins_donor_ss220 - restricted_skins
+		for(var/skin in raw_appearances)
+			final_appearances[skin] = "[icon2base64(icon(initial(icon), skin, SOUTH, 1))]"
+
+	appearances = final_appearances
 
 /obj/item/card/id/syndicate/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	if(..())
@@ -70,21 +79,13 @@
 
 /obj/item/card/id/syndicate/ui_static_data(mob/user)
 	var/list/data = list()
-	if(!length(card_images))
-		var/list/new_images = list()
-		for(var/appearance_name in appearances)
-			new_images.Add(list(list(
-				"name" = appearance_name,
-				"image" = "[icon2base64(icon(initial(icon), appearance_name, SOUTH, 1))]"
-			)))
-		card_images = new_images
-	data["appearances"] = card_images
+	data["appearances"] = appearances
 	return data
 
 /obj/item/card/id/syndicate/ui_state(mob/user)
 	return GLOB.default_state
 
-/obj/item/card/id/syndicate/ui_interact(mob/user, datum/tgui/ui = null)
+/obj/item/card/id/syndicate/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "AgentCard", name)
@@ -97,89 +98,93 @@
 		registered_human = user
 	if(registered_human != user)
 		return flash_card(user)
-	switch(alert("Would you like to display \the [src] or edit it?","Choose","Show","Edit"))
-		if("Show")
+	switch(tgui_alert("Вы хотите показать [src] или изменить?", "Выбор", "Показать", "Изменить"))
+		if("Показать")
 			return flash_card(user)
-		if("Edit")
+		if("Изменить")
 			ui_interact(user)
 			return
 
 /obj/item/card/id/proc/flash_card(mob/user)
 	user.visible_message(
-		span_notice("[user] shows you: [bicon(src)] [src.name]. The assignment on the card: [src.assignment]."),
-		span_notice("You flash your ID card: [bicon(src)] [src.name]. The assignment on the card: [src.assignment]."))
+		span_notice("[user] показывает тебе: [bicon(src)] [src.name]. Должность на карте: [src.assignment]."),
+		span_notice("Ты показываешь свою ID карту: [bicon(src)] [src.name]. Должность на карте: [src.assignment]."))
 	if(mining_points)
-		to_chat(user, "There's <b>[mining_points] Mining Points</b> loaded onto this card. This card has earned <b>[total_mining_points] Mining Points</b> this Shift!")
+		to_chat(user, "На ней <b>[mining_points] шахтёрских очков</b>. Всего было получено за смену <b>[total_mining_points] шахтёрских очков</b>!")
 	src.add_fingerprint(user)
 
 /obj/item/card/id/syndicate/proc/delete_info()
-	var/response = alert(registered_human, "Are you sure you want to delete all card info?","Delete Card Info", "No", "Yes")
-	if(response == "Yes")
-		name = initial(name)
-		registered_name = initial(registered_name)
-		icon_state = initial(icon_state)
-		sex = initial(sex)
-		age = initial(age)
-		assignment = initial(assignment)
-		associated_account_number = initial(associated_account_number)
-		blood_type = initial(blood_type)
-		dna_hash = initial(dna_hash)
-		fingerprint_hash = initial(fingerprint_hash)
-		photo = null
-		registered_human = null
+	name = null
+	registered_name = null
+	icon_state = null
+	sex = null
+	age = null
+	assignment = null
+	associated_account_number = null
+	blood_type = null
+	dna_hash = null
+	fingerprint_hash = null
+	photo = null
+	registered_user = null
+	SStgui.close_uis(src)
+	to_chat(registered_human, span_notice("Вся информация с [src] была удалена."))
 
 /obj/item/card/id/syndicate/proc/clear_access()
-	var/response = alert(registered_human, "Are you sure you want to reset access saved on the card?","Reset Access", "No", "Yes")
-	if(response == "Yes")
-		access = initial_access.Copy() // Initial() doesn't work on lists
-		to_chat(registered_human, span_notice("Card access reset."))
+	access = initial_access.Copy()
+	to_chat(registered_human, span_notice("Выполнен сброс доступов."))
 
 /obj/item/card/id/syndicate/proc/change_ai_tracking()
 	untrackable = !untrackable
-	to_chat(registered_human, span_notice("This ID card is now [untrackable ? "untrackable" : "trackable"] by the AI's."))
+	to_chat(registered_human, span_notice("Эта ID карта[untrackable ? " не" : ""] может быть отслежена ИИ."))
 
 /obj/item/card/id/syndicate/proc/change_name()
-	var/new_name = reject_bad_name(input(registered_human,"What name would you like to put on this card?","Agent Card Name", ishuman(registered_human) ? registered_human.real_name : registered_human.name), TRUE)
+	var/new_name = reject_bad_name(tgui_input_text(registered_human, "Какое имя будет на карте?", "Карта Агента - Имя", ishuman(registered_human) ? registered_human.real_name : registered_human.name), TRUE)
 	if(!Adjacent(registered_human))
 		return
+
 	registered_name = new_name
 	UpdateName()
-	to_chat(registered_human, span_notice("Name changed to [new_name]."))
+	to_chat(registered_human, span_notice("Имя изменено на: [new_name]."))
 
 /obj/item/card/id/syndicate/proc/change_photo()
 	if(!Adjacent(registered_human))
 		return
+
 	var/job_clothes = null
 	if(assignment)
 		job_clothes = assignment
+
 	var/icon/newphoto = get_id_photo(registered_human, job_clothes)
 	if(!newphoto)
 		return
+
 	photo = newphoto
-	to_chat(registered_human, span_notice("Photo changed. Select another occupation and take a new photo if you wish to appear with different clothes."))
+	to_chat(registered_human, span_notice("Фото изменено. Если хотите другую одежду, то выберите другую должность и измените снова."))
 
 /obj/item/card/id/syndicate/proc/change_appearance(list/params)
 	var/choice = params["new_appearance"]
 	icon_state = choice
-	to_chat(usr, span_notice("Appearance changed to [choice]."))
+	to_chat(usr, span_notice("Внешний вид изменён на: [choice]."))
 
 /obj/item/card/id/syndicate/proc/change_sex()
-	var/new_sex = sanitize(stripped_input(registered_human,"What sex would you like to put on this card?","Agent Card Sex", ishuman(registered_human) ? capitalize(registered_human.gender) : "Male", MAX_MESSAGE_LEN))
+	var/new_sex = sanitize(stripped_input(registered_human,"Какой пол будет на карте?","Карта Агента - Пол", ishuman(registered_human) ? capitalize(registered_human.gender) : "Male", MAX_MESSAGE_LEN))
 	if(!Adjacent(registered_human))
 		return
+
 	sex = new_sex
-	to_chat(registered_human, span_notice("Sex changed to [new_sex]."))
+	to_chat(registered_human, span_notice("Пол изменён на: [new_sex]."))
 
 /obj/item/card/id/syndicate/proc/change_age()
 	var/default = "21"
 	if(ishuman(registered_human))
-		var/mob/living/carbon/human/H = registered_human
-		default = H.age
-	var/new_age = sanitize(input(registered_human,"What age would you like to be written on this card?","Agent Card Age", default) as text)
+		default = registered_human.age
+
+	var/new_age = tgui_input_number(registered_human, "Какой возраст будет на карте?", "Карта Агента - Возраст", default, 300, 17)
 	if(!Adjacent(registered_human))
 		return
+
 	age = new_age
-	to_chat(registered_human, span_notice("Age changed to [new_age]."))
+	to_chat(registered_human, span_notice("Возраст изменён на: [new_age]."))
 
 /obj/item/card/id/syndicate/proc/change_occupation()
 	var/title = "Карта Агента - Должность"
@@ -219,44 +224,44 @@
 	to_chat(registered_human, span_notice("Должность сменена на [new_job]."))
 
 /obj/item/card/id/syndicate/proc/change_money_account()
-	var/new_account = input(registered_human,"What money account would you like to link to this card?","Agent Card Account",12345) as num
+	var/new_account = tgui_input_number(registered_human, "Какой банковский счёт будет привязан к карте?", "Карта Агента - Банковский счёт", 12345, max_value = 9999999)
 	if(!Adjacent(registered_human))
 		return
 	associated_account_number = new_account
-	to_chat(registered_human, span_notice("Linked money account changed to [new_account]."))
+	to_chat(registered_human, span_notice("Привязанный счёт изменён на: [new_account]."))
 
 /obj/item/card/id/syndicate/proc/change_blood_type()
-	var/default = "\[UNSET\]"
-	if(ishuman(registered_human))
-		var/mob/living/carbon/human/H = registered_human
-		if(H.dna)
-			default = H.dna.blood_type
-	var/new_blood_type = sanitize(input(registered_human,"What blood type would you like to be written on this card?","Agent Card Blood Type",default) as text)
+	var/default
+	if(ishuman(registered_human) && registered_human.dna)
+		default = registered_human.dna.blood_type
+
+	var/new_blood_type = sanitize(tgui_input_text(registered_human,"Какой тип крови будет написан на карте?", "Карта Агента - Тип крови", default))
 	if(!Adjacent(registered_human))
 		return
+
 	blood_type = new_blood_type
-	to_chat(registered_human, span_notice("Blood type changed to [new_blood_type]."))
+	to_chat(registered_human, span_notice("Тип крови изменён на: [new_blood_type]."))
 
 /obj/item/card/id/syndicate/proc/change_dna_hash()
-	var/default = "\[UNSET\]"
-	if(ishuman(registered_human))
-		var/mob/living/carbon/human/H = registered_human
-		if(H.dna)
-			default = H.dna.unique_enzymes
-	var/new_dna_hash = sanitize(input(registered_human,"What DNA hash would you like to be written on this card?","Agent Card DNA Hash",default) as text)
+	var/default
+	if(ishuman(registered_human) && registered_human.dna)
+		default = registered_human.dna.unique_enzymes
+
+	var/new_dna_hash = sanitize(tgui_input_text(registered_human,"Какой ДНК будет написан на карте?", "Карта Агента - ДНК", default))
 	if(!Adjacent(registered_human))
 		return
+
 	dna_hash = new_dna_hash
-	to_chat(registered_human, span_notice(">DNA hash changed to [new_dna_hash]."))
+	to_chat(registered_human, span_notice("ДНК изменён на: [new_dna_hash]."))
 
 /obj/item/card/id/syndicate/proc/change_fingerprints()
-	var/default = "\[UNSET\]"
-	if(ishuman(registered_human))
-		var/mob/living/carbon/human/H = registered_human
-		if(H.dna)
-			default = md5(H.dna.uni_identity)
-	var/new_fingerprint_hash = sanitize(input(registered_human,"What fingerprint hash would you like to be written on this card?","Agent Card Fingerprint Hash",default) as text)
+	var/default
+	if(ishuman(registered_human) && registered_human.dna)
+		default = md5(registered_human.dna.uni_identity)
+
+	var/new_fingerprint_hash = sanitize(tgui_input_text(registered_human, "Какие отпечатки будут написаны на карте?", "Карта Агента - Отпечатки", default))
 	if(!Adjacent(registered_human))
 		return
+
 	fingerprint_hash = new_fingerprint_hash
-	to_chat(registered_human, span_notice("Fingerprint hash changed to [new_fingerprint_hash]."))
+	to_chat(registered_human, span_notice("Отпечатки изменёны: [new_fingerprint_hash]."))
