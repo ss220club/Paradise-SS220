@@ -3,7 +3,7 @@
 	var/mob/living/carbon/human/registered_human
 	var/static/list/appearances
 	var/static/list/departments = list(
-				"Civilian" = null,
+				"Assistant" = null,
 				"Engineering" = GLOB.engineering_positions,
 				"Medical" = GLOB.medical_positions,
 				"Science" = GLOB.science_positions,
@@ -182,28 +182,31 @@
 	to_chat(registered_human, span_notice("Age changed to [new_age]."))
 
 /obj/item/card/id/syndicate/proc/change_occupation()
-	var/new_job = "Civilian"
-	var/new_rank = "Civilian"
-	var/selected_department = tgui_input_list(registered_human,
-		"What job would you like to put on this card?\
-		Choose a department or a custom job title.\
-		Changing occupation will not grant or remove any access levels.", "Agent Card Occupation", departments)
+	var/title = "Карта Агента - Должность"
+	var/department_icon_text = "Какая должность будет показываться с этой картой на ХУДах?"
+	var/department_selection_text = "Какую должность вы хотите присвоить этой карте? Выберите департамент, или можете вписать собственную должность."
+	var/selected_department = tgui_input_list(registered_human, department_selection_text, title, departments)
 	if(isnull(selected_department))
 		return
 
-	if(selected_department == "Custom")
-		new_job = sanitize(tgui_input_text(registered_human, "Choose a custom job title:", "Agent Card Occupation", "Civilian", MAX_MESSAGE_LEN))
-		var/department_icon = tgui_input_list(registered_human,
-			"What job would you like to be shown on this card (for SecHUDs)?\
-			Changing occupation will not grant or remove any access levels.", "Agent Card Occupation", departments)
-		new_rank = tgui_input_list(registered_human,
-			"What job would you like to be shown on this card (for SecHUDs)?\
-			Changing occupation will not grant or remove any access levels.", "Agent Card Occupation", departments[department_icon])
+	var/new_rank
+	var/new_job
+	if(selected_department == "Assistant")
+		new_job = selected_department
+		new_rank = selected_department
 
-	else if(selected_department != "Civilian")
-		new_job = tgui_input_list(registered_human,
-			"What job would you like to put on this card?\
-			Changing occupation will not grant or remove any access levels.", "Agent Card Occupation", departments[selected_department])
+	else if(selected_department == "Custom")
+		new_job = sanitize(tgui_input_text(registered_human, "Введите название своей должности:", title, "Assistant", MAX_MESSAGE_LEN))
+		var/department_icon = tgui_input_list(registered_human, department_icon_text, title, departments - list("Assistant", "Custom"))
+		if(isnull(department_icon))
+			to_chat(registered_human, span_warning("Вы должны выбрать департамент!"))
+			return
+		new_rank = tgui_input_list(registered_human, department_icon_text, title, departments[department_icon])
+
+	else
+		new_job = tgui_input_list(registered_human, "Какую должность вы хотите?", title, departments[selected_department])
+		if(isnull(new_job))
+			new_job = "Assistant"
 		new_rank = new_job
 
 	if(!Adjacent(registered_human))
@@ -213,7 +216,7 @@
 	rank = new_rank
 	UpdateName()
 	registered_human.sec_hud_set_ID()
-	to_chat(registered_human, span_notice("Occupation changed to [new_job]."))
+	to_chat(registered_human, span_notice("Должность сменена на [new_job]."))
 
 /obj/item/card/id/syndicate/proc/change_money_account()
 	var/new_account = input(registered_human,"What money account would you like to link to this card?","Agent Card Account",12345) as num
