@@ -19,8 +19,8 @@
 	)
 	. = ..()
 	var/obj/item/result = result_type
-	var/icon/result_icon = icon(initial(result.icon), initial(result.icon_state), SOUTH, 1)
-	var/paint = initial(result.color)
+	var/icon/result_icon = icon(result::icon, result::icon_state, SOUTH, 1)
+	var/paint = result::color
 
 	result_icon.Scale(32, 32)
 	if(!isnull(paint) && paint != COLOR_WHITE)
