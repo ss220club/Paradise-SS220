@@ -1,58 +1,23 @@
 /obj/item/card/id/syndicate
 	var/list/card_images
 	var/mob/living/carbon/human/registered_human
-	var/list/appearances = list(
-							"data",
-							"id",
-							"gold",
-							"silver",
-							"centcom",
-							"security",
-							"detective",
-							"warden",
-							"internalaffairsagent",
-							"medical",
-							"coroner",
-							"virologist",
-							"chemist",
-							"paramedic",
-							"psychiatrist",
-							"research",
-							"roboticist",
-							"quartermaster",
-							"cargo",
-							"shaftminer",
-							"engineering",
-							"atmostech",
-							"captain",
-							"HoP",
-							"HoS",
-							"CMO",
-							"RD",
-							"CE",
-							"assistant",
-							"clown",
-							"mime",
-							"barber",
-							"botanist",
-							"librarian",
-							"chaplain",
-							"bartender",
-							"chef",
-							"janitor",
-							"explorer",
-							"rainbow",
-							"prisoner",
-							"syndie",
-							"deathsquad",
-							"commander",
-							"ERT_leader",
-							"ERT_security",
-							"ERT_engineering",
-							"ERT_medical",
-							"ERT_janitorial",
-							"ERT_paranormal",
-						)
+	var/static/list/appearances
+	var/static/list/departments = list(
+				"Civilian" = null,
+				"Engineering" = GLOB.engineering_positions,
+				"Medical" = GLOB.medical_positions,
+				"Science" = GLOB.science_positions,
+				"Security" = GLOB.security_positions,
+				"Support" = GLOB.service_positions,
+				"Command" = GLOB.command_positions,
+				"Special" = (get_all_solgov_jobs() + get_all_soviet_jobs() + get_all_centcom_jobs()),
+				"Custom" = null,
+			)
+
+/obj/item/card/id/syndicate/New()
+	. = ..()
+	var/static/list/restricted_skins = list("admin", "deathsquad", "clownsquad", "data", "ERT_empty", "silver", "gold", "TDred", "TDgreen")
+	appearances = GLOB.card_skins_ss220 + GLOB.card_skins_special_ss220 + GLOB.card_skins_donor_ss220 - restricted_skins
 
 /obj/item/card/id/syndicate/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	if(..())
@@ -217,67 +182,38 @@
 	to_chat(registered_human, span_notice("Age changed to [new_age]."))
 
 /obj/item/card/id/syndicate/proc/change_occupation()
-	var/list/departments =list(
-				"Civilian",
-				"Engineering",
-				"Medical",
-				"Science",
-				"Security",
-				"Support",
-				"Command",
-				"Special",
-				"Custom",
-			)
-
-	var/department = tgui_input_list(registered_human, "What job would you like to put on this card?\nChoose a department or a custom job title.\nChanging occupation will not grant or remove any access levels.", "Agent Card Occupation", departments)
 	var/new_job = "Civilian"
 	var/new_rank = "Civilian"
+	var/selected_department = tgui_input_list(registered_human,
+		"What job would you like to put on this card?\
+		Choose a department or a custom job title.\
+		Changing occupation will not grant or remove any access levels.", "Agent Card Occupation", departments)
+	if(isnull(selected_department))
+		return
 
-	if(department == "Custom")
-		new_job = sanitize(stripped_input(registered_human,"Choose a custom job title:","Agent Card Occupation", "Civilian", MAX_MESSAGE_LEN))
-		var/department_icon = tgui_input_list(registered_human, "What job would you like to be shown on this card (for SecHUDs)?\nChanging occupation will not grant or remove any access levels.", "Agent Card Occupation", departments)
-		switch(department_icon)
-			if("Engineering")
-				new_rank = tgui_input_list(registered_human, "What job would you like to be shown on this card (for SecHUDs)?\nChanging occupation will not grant or remove any access levels.", "Agent Card Occupation", GLOB.engineering_positions)
-			if("Medical")
-				new_rank = tgui_input_list(registered_human, "What job would you like to be shown on this card (for SecHUDs)?\nChanging occupation will not grant or remove any access levels.", "Agent Card Occupation", GLOB.medical_positions)
-			if("Science")
-				new_rank = tgui_input_list(registered_human, "What job would you like to be shown on this card (for SecHUDs)?\nChanging occupation will not grant or remove any access levels.", "Agent Card Occupation", GLOB.science_positions)
-			if("Security")
-				new_rank = tgui_input_list(registered_human, "What job would you like to be shown on this card (for SecHUDs)?\nChanging occupation will not grant or remove any access levels.", "Agent Card Occupation", GLOB.security_positions)
-			if("Support")
-				new_rank = tgui_input_list(registered_human, "What job would you like to be shown on this card (for SecHUDs)?\nChanging occupation will not grant or remove any access levels.", "Agent Card Occupation", GLOB.service_positions)
-			if("Command")
-				new_rank = tgui_input_list(registered_human, "What job would you like to be shown on this card (for SecHUDs)?\nChanging occupation will not grant or remove any access levels.", "Agent Card Occupation", GLOB.command_positions)
-			if("Special")
-				new_rank = tgui_input_list(registered_human, "What job would you like to be shown on this card (for SecHUDs)?\nChanging occupation will not grant or remove any access levels.", "Agent Card Occupation", (get_all_solgov_jobs() + get_all_soviet_jobs() + get_all_centcom_jobs()))
-			if("Custom")
-				new_rank = null
-	else if(department != "Civilian")
-		switch(department)
-			if("Engineering")
-				new_job = tgui_input_list(registered_human, "What job would you like to put on this card?\nChanging occupation will not grant or remove any access levels.", "Agent Card Occupation", GLOB.engineering_positions)
-			if("Medical")
-				new_job = tgui_input_list(registered_human, "What job would you like to put on this card?\nChanging occupation will not grant or remove any access levels.", "Agent Card Occupation", GLOB.medical_positions)
-			if("Science")
-				new_job = tgui_input_list(registered_human, "What job would you like to put on this card?\nChanging occupation will not grant or remove any access levels.", "Agent Card Occupation", GLOB.science_positions)
-			if("Security")
-				new_job = tgui_input_list(registered_human, "What job would you like to put on this card?\nChanging occupation will not grant or remove any access levels.", "Agent Card Occupation", GLOB.security_positions)
-			if("Support")
-				new_job = tgui_input_list(registered_human, "What job would you like to put on this card?\nChanging occupation will not grant or remove any access levels.", "Agent Card Occupation", GLOB.service_positions)
-			if("Command")
-				new_job = tgui_input_list(registered_human, "What job would you like to put on this card?\nChanging occupation will not grant or remove any access levels.", "Agent Card Occupation", GLOB.command_positions)
-			if("Special")
-				new_job = tgui_input_list(registered_human, "What job would you like to be shown on this card (for SecHUDs)?\nChanging occupation will not grant or remove any access levels.","Agent Card Occupation", (get_all_solgov_jobs() + get_all_soviet_jobs() + get_all_centcom_jobs()))
+	if(selected_department == "Custom")
+		new_job = sanitize(tgui_input_text(registered_human, "Choose a custom job title:", "Agent Card Occupation", "Civilian", MAX_MESSAGE_LEN))
+		var/department_icon = tgui_input_list(registered_human,
+			"What job would you like to be shown on this card (for SecHUDs)?\
+			Changing occupation will not grant or remove any access levels.", "Agent Card Occupation", departments)
+		new_rank = tgui_input_list(registered_human,
+			"What job would you like to be shown on this card (for SecHUDs)?\
+			Changing occupation will not grant or remove any access levels.", "Agent Card Occupation", departments[department_icon])
+
+	else if(selected_department != "Civilian")
+		new_job = tgui_input_list(registered_human,
+			"What job would you like to put on this card?\
+			Changing occupation will not grant or remove any access levels.", "Agent Card Occupation", departments[selected_department])
 		new_rank = new_job
 
 	if(!Adjacent(registered_human))
 		return
+
 	assignment = new_job
 	rank = new_rank
-	to_chat(registered_human, span_notice("Occupation changed to [new_job]."))
 	UpdateName()
 	registered_human.sec_hud_set_ID()
+	to_chat(registered_human, span_notice("Occupation changed to [new_job]."))
 
 /obj/item/card/id/syndicate/proc/change_money_account()
 	var/new_account = input(registered_human,"What money account would you like to link to this card?","Agent Card Account",12345) as num
