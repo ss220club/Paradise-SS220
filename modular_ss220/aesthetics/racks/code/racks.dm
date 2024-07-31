@@ -11,6 +11,30 @@
 	transfer_fingerprints_to(newparts)
 	del(src)
 
+/obj/structure/rack/attackby(obj/item/item, mob/user, params)
+	. = ..()
+	if(item.loc != get_turf(src))
+		return
+
+	add_fingerprint(user)
+	var/list/click_params = params2list(params)
+	if(!length(click_params))
+		return
+
+	var/click_icon_x = click_params["icon-x"]
+	var/click_icon_y = click_params["icon-y"]
+
+	//Center the icon where the user clicked.
+	if(!click_icon_x || !click_icon_y)
+		return
+
+	var/max_pixelshift =  world.icon_size / 2
+	var/min_pixelshift = -max_pixelshift
+
+	//Clamp it so that the icon never moves more than 16 pixels in either direction (thus leaving the table turf)
+	item.pixel_x = clamp(text2num(click_icon_x) - 16, min_pixelshift, max_pixelshift)
+	item.pixel_y = clamp(text2num(click_icon_y) - 16, min_pixelshift, max_pixelshift)
+
 /obj/item/rack_parts
 	var/rack_type = /obj/structure/rack
 
@@ -70,28 +94,9 @@
 		to_chat(user, span_warning("Этот предмет не помещается!"))
 		return
 	. = ..()
-	if(W.loc != get_turf(src))
-		return
 
-	add_fingerprint(user)
 	var/obj/item/gun/our_gun = W
 	our_gun.place_on_rack()
-	var/list/click_params = params2list(params)
-	if(!length(click_params))
-		return
-
-	var/click_icon_x = click_params["icon-x"]
-	var/click_icon_y = click_params["icon-y"]
-
-	//Center the icon where the user clicked.
-	if(!click_icon_x || !click_icon_y)
-		return
-
-	var/max_pixelshift =  world.icon_size / 2
-	var/min_pixelshift = -max_pixelshift
-
-	//Clamp it so that the icon never moves more than 16 pixels in either direction (thus leaving the table turf)
-	W.pixel_x = clamp(text2num(click_icon_x) - 16, min_pixelshift, max_pixelshift)
 	W.pixel_y = 0
 
 /obj/structure/rack/gunrack/Initialize(mapload)
@@ -120,31 +125,6 @@
 	desc = "Стеллаж для хранения различных вещей."
 	icon_state = "shelving"
 	parts_type = /obj/item/rack_parts/shelf
-
-/obj/structure/rack/shelving/attackby(obj/item/stuff, mob/user, params)
-	. = ..()
-
-	if(stuff.loc != get_turf(src))
-		return
-
-	add_fingerprint(user)
-	var/list/click_params = params2list(params)
-	if(!length(click_params))
-		return
-
-	var/click_icon_x = click_params["icon-x"]
-	var/click_icon_y = click_params["icon-y"]
-
-	//Center the icon where the user clicked.
-	if(!click_icon_x || !click_icon_y )
-		return
-
-	var/max_pixelshift =  world.icon_size / 2
-	var/min_pixelshift = -max_pixelshift
-
-	//Clamp it so that the icon never moves more than 16 pixels in either direction (thus leaving the table turf)
-	stuff.pixel_x = clamp(text2num(click_icon_x) - 16, min_pixelshift, max_pixelshift)
-	stuff.pixel_y = clamp(text2num(click_icon_y ) - 16, min_pixelshift, max_pixelshift)
 
 /obj/item/rack_parts/shelf
 	name = "shelving parts"
