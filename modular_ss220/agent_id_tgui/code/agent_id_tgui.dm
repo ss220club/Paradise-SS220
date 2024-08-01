@@ -107,7 +107,7 @@
 					return
 
 			if(params["option"] == "Primary")
-				new_account = rand(1000, 9999) * 1000
+				new_account = rand(1000, 9999) * 1000 + rand(1000, 9999)
 
 			associated_account_number = clamp(new_account, 1000000, 9999999)
 			to_chat(registered_human, span_notice("Привязанный счёт изменён на: [new_account]."))
