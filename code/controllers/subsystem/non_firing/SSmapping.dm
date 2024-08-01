@@ -123,9 +123,11 @@ SUBSYSTEM_DEF(mapping)
 		var/list/pickable_turfs = list()
 		for(var/turf/turfs in AR)
 			pickable_turfs += turfs
+			CHECK_TICK
 		var/turf/picked = safepick(pickable_turfs)
 		if(picked && is_station_level(picked.z))
 			teleportlocs[AR.name] = AR
+		CHECK_TICK
 
 	teleportlocs = sortAssoc(teleportlocs)
 
@@ -136,8 +138,10 @@ SUBSYSTEM_DEF(mapping)
 		var/list/pickable_turfs = list()
 		for(var/turf/turfs in AR)
 			pickable_turfs += turfs
+			CHECK_TICK
 		if(length(pickable_turfs))
 			ghostteleportlocs[AR.name] = AR
+		CHECK_TICK
 
 	ghostteleportlocs = sortAssoc(ghostteleportlocs)
 
@@ -147,9 +151,11 @@ SUBSYSTEM_DEF(mapping)
 		var/list/pickable_turfs = list()
 		for(var/turf/turfs in AR)
 			pickable_turfs += turfs
+			CHECK_TICK
 		var/turf/picked = safepick(pickable_turfs)
 		if(picked && is_station_level(picked.z))
 			existing_station_areas += AR
+		CHECK_TICK
 
 	// World name
 	if(GLOB.configuration.general.server_name)

@@ -55,6 +55,7 @@
 #define SPECIAL_ROLE_XENOMORPH_SENTINEL "Xenomorph Sentinel"
 #define SPECIAL_ROLE_XENOMORPH_LARVA "Xenomorph Larva"
 #define SPECIAL_ROLE_ZOMBIE "Zombie"
+#define SPECIAL_ROLE_TOURIST "Tourist"
 #define SPECIAL_ROLE_EVENTMISC "Event Role"
 #define SPECIAL_ROLE_TREACHEROUS_FLESH "Treacherous Flesh"
 
