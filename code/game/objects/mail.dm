@@ -54,7 +54,10 @@
 			recipient_job = lowertext(mail_attracted_people.assigned_role)
 			return
 	if(!admin_spawned)
-		log_debug("Failed to find a new name to assign to [src]!")
+		// SS220 LAZARUS EDIT - START
+		// Stop spamming
+		//log_debug("Failed to find a new name to assign to [src]!")
+		// SS220 LAZARUS EDIT - END
 		qdel(src)
 
 /obj/item/envelope/examine(mob/user)

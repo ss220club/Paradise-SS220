@@ -98,8 +98,8 @@
 
 		// MATERIALS
 		/obj/item/stack/rods{amount = 10} = 8,
-		/obj/item/stack/metal{amount = 10} = 8,
-		/obj/item/stack/glass{amount = 10} = 8,
+		/obj/item/stack/sheet/metal{amount = 10} = 8,
+		/obj/item/stack/sheet/glass{amount = 10} = 8,
 	)
 
 /obj/effect/spawner/lootdrop/lazarus/food
@@ -109,13 +109,13 @@
 	lootcount = 1
 	loot = list(
 		// FOOD
-		/obj/item/food/snacks/boiledbuckwheat = 10,
-		/obj/item/food/snacks/friedegg = 10,
-		/obj/item/food/snacks/meatsteak = 10,
-		/obj/item/food/snacks/breadslice = 10,
-		/obj/item/food/snacks/sliceable/bread = 2,
-		/obj/item/food/snacks/vegisalad = 10,
-		/obj/item/food/snacks/oliviersalad = 10,
+		/obj/item/food/boiledbuckwheat = 10,
+		/obj/item/food/friedegg = 10,
+		/obj/item/food/meatsteak = 10,
+		/obj/item/food/breadslice = 10,
+		/obj/item/food/sliceable/bread = 2,
+		/obj/item/food/vegisalad = 10,
+		/obj/item/food/oliviersalad = 10,
 
 		// DRINKS
 		/obj/item/reagent_containers/drinks/chicken_soup = 15,
