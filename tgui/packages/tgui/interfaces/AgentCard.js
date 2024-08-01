@@ -156,7 +156,7 @@ export const AgentCardInfo = (props, context) => {
             <LabeledList.Item label="Тип крови">
               <Stack fill mb={-0.5}>
                 {BLOOD_TYPES.map((type) => (
-                  <Stack.Item grow>
+                  <Stack.Item grow key={type}>
                     <Button
                       fluid
                       content={type}
