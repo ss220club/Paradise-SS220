@@ -367,3 +367,5 @@ TILE_DECAL_SUBTYPE_HELPER(/obj/effect/turf_decal/tile/neutral)
 	icon = 'icons/obj/smooth_structures/lattice.dmi'
 	icon_state = "lattice-255"
 	density = TRUE
+
+#undef WOODEN_DECAL_HELPER
