@@ -39,18 +39,20 @@
 	var/rack_type = /obj/structure/rack
 
 /obj/item/rack_parts/attack_self(mob/user)
+	var/obj/structure/rack/rack = rack_type
+
 	if(building)
 		return
 
 	building = TRUE
-	to_chat(user, span_notice("Вы начинаете строительство..."))
+	to_chat(user, span_notice("Вы начинаете собирать [rack.name]..."))
 
 	if(!do_after(user, 50, target = user, progress=TRUE) || !user.drop_item(src))
 		building = FALSE
 		return
 
-	var/obj/structure/rack/rack = new rack_type(user.loc)
-	user.visible_message(span_notice("[user] собирает [rack]."), span_notice("Вы закончили собирать [rack]."))
+	rack = new rack_type(user.loc)
+	user.visible_message(span_notice("[user] собирает [rack.name]."), span_notice("Вы закончили собирать [rack.name]."))
 	rack.add_fingerprint(user)
 	qdel(src)
 
