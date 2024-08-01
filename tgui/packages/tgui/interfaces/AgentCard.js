@@ -2,11 +2,6 @@ import { useBackend, useLocalState, useSharedState } from '../backend';
 import { Button, NoticeBox, LabeledList, Section, Tabs, ImageButton, Stack, Slider } from '../components';
 import { Window } from '../layouts';
 
-const TABS = [
-  { key: 'Card Info', icon: 'table', label: 'Информация' },
-  { key: 'Appearance', icon: 'id-card', label: 'Внешний вид' },
-];
-
 const GENDERS = [
   { name: 'Male', icon: 'mars' },
   { name: 'Female', icon: 'venus' },
@@ -34,18 +29,12 @@ export const AgentCard = (props, context) => {
         <Stack fill vertical>
           <Stack.Item textAlign="center">
             <Tabs fluid>
-              {TABS.map((tab, i) => (
-                <Tabs.Tab
-                  ml={i === 0 ? 1 : 0.5}
-                  mr={i === 1 ? 1 : 0.5}
-                  key={tab.key}
-                  icon={tab.icon}
-                  selected={i === tabIndex}
-                  onClick={() => setTabIndex(i)}
-                >
-                  {tab.label}
-                </Tabs.Tab>
-              ))}
+              <Tabs.Tab key="Card Info" icon={'table'} selected={0 === tabIndex} onClick={() => setTabIndex(0)}>
+                Информация
+              </Tabs.Tab>
+              <Tabs.Tab key="Appearance" icon={'id-card'} selected={1 === tabIndex} onClick={() => setTabIndex(1)}>
+                Внешний вид
+              </Tabs.Tab>
             </Tabs>
           </Stack.Item>
           {decideTab(tabIndex)}

@@ -6,11 +6,12 @@
 	var/static/list/appearances
 	var/static/list/departments = list(
 				"Assistant" = null,
+				"Service" = GLOB.service_positions,
+				"Supply" = GLOB.supply_positions,
 				"Engineering" = GLOB.engineering_positions,
 				"Medical" = GLOB.medical_positions,
 				"Science" = GLOB.science_positions,
 				"Security" = GLOB.security_positions,
-				"Support" = GLOB.service_positions,
 				"Command" = GLOB.command_positions,
 				"Special" = (get_all_solgov_jobs() + get_all_soviet_jobs() + get_all_centcom_jobs()),
 				"Custom" = null,
@@ -133,7 +134,7 @@
 	data["blood_type"] = blood_type
 	data["dna_hash"] = dna_hash
 	data["fingerprint_hash"] = fingerprint_hash
-	data["photo"] = "[icon2base64(photo)]"
+	data["photo"] = photo
 	data["ai_tracking"] = untrackable
 	return data
 
