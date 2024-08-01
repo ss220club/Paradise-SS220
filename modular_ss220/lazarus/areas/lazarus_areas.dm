@@ -87,9 +87,6 @@
 /area/lazarus/geotherm/svarog
 	name = "Геотермальная электростанция (Сварог)"
 
-/area/lazarus/geotherm/veles
-	name = "Геотермальная электростанция (Велес)"
-
 //-----OUTPOST-----//
 
 /area/lazarus/outpost
@@ -115,10 +112,10 @@
 	icon_state = "cryo"
 
 /area/lazarus/outpost/rod/living/sec
-	name = "Жилой отсек среднего класса 'SEC' (Род)"
+	name = "Жилой отсек среднего класса 'A' (Род)"
 
 /area/lazarus/outpost/rod/living/crew
-	name = "Жилой отсек среднего класса 'CREW' (Род)"
+	name = "Жилой отсек среднего класса 'B' (Род)"
 
 // Sec
 
@@ -291,4 +288,56 @@
 
 /area/lazarus/outpost/stribog/maint
 	name = "Подстанция (Стрибог)"
+	icon_state = "engi"
+
+//---SVAROG---//
+
+/area/lazarus/outpost/svarog
+	name = "Аванпост ''Сварог''"
+
+// Living
+
+/area/lazarus/outpost/svarog/living/a
+	name = "Жилой отсек среднего класса 'A' (Сварог)"
+
+/area/lazarus/outpost/svarog/living/b
+	name = "Жилой отсек среднего класса 'B' (Сварог)"
+
+/area/lazarus/outpost/svarog/living/cryo
+	name = "Жилой отсек низкого класса (Сварог)"
+
+// Mining
+
+/area/lazarus/outpost/svarog/mining
+	name = "Перерабатывающий Завод (Сварог)"
+	icon_state = "cargooffice"
+
+/area/lazarus/outpost/svarog/mining/enter
+	name = "Спуск в шахту (Сварог)"
+	icon_state = "mining"
+
+// Other
+
+/area/lazarus/outpost/svarog/med
+	name = "Медпункт (Сварог)"
+	icon_state = "medbay"
+
+/area/lazarus/outpost/svarog/canteen
+	name = "Столовая (Сварог)"
+	icon_state = "bar"
+
+/area/lazarus/outpost/svarog/kitchen
+	name = "Кухня (Сварог)"
+	icon_state = "kitchen"
+
+/area/lazarus/outpost/svarog/toilet
+	name = "Уборная (Сварог)"
+	icon_state = "toilet"
+
+/area/lazarus/outpost/svarog/qm
+	name = "Офис завхоза (Сварог)"
+	icon_state = "qm"
+
+/area/lazarus/outpost/svarog/maint
+	name = "Подстанция (Сварог)"
 	icon_state = "engi"

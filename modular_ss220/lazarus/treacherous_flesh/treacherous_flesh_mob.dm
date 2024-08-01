@@ -2,10 +2,10 @@
 #define PRIMALIS_CHEM_MAX 150
 
 #define EVOLUTION_STAGE_0 0		///These are used both as required amount of evo points and macro for stage checks
-#define EVOLUTION_STAGE_1 250
-#define EVOLUTION_STAGE_2 1000
-#define EVOLUTION_STAGE_3 3000
-#define EVOLUTION_STAGE_4 10000
+#define EVOLUTION_STAGE_1 300
+#define EVOLUTION_STAGE_2 900
+#define EVOLUTION_STAGE_3 2100
+#define EVOLUTION_STAGE_4 3600
 
 #define EVOLUTION_GROWTH 4
 
@@ -157,6 +157,7 @@
 	var/list/primalis_abilities = list()
 	switch(evolution_stage)
 		if(EVOLUTION_STAGE_0)
+			primalis_abilities += new /datum/action/treacherous_flesh/message_host(src)
 			primalis_abilities += new /datum/action/treacherous_flesh/contact_host(src)
 			primalis_abilities += new /datum/action/treacherous_flesh/speed_up_evolution(src)
 			primalis_abilities += new /datum/action/treacherous_flesh/leave_the_body(src)
@@ -170,8 +171,8 @@
 			primalis_abilities += new /datum/action/treacherous_flesh/regrow_organs(src)
 			primalis_abilities += new /datum/action/treacherous_flesh/toggle/armblade(src)
 			primalis_abilities += new /datum/action/treacherous_flesh/toggle/chitin_armor(src)
-		if(EVOLUTION_STAGE_3)
 			primalis_abilities += new /datum/action/treacherous_flesh/passive/passive_infest(src)
+		if(EVOLUTION_STAGE_3)
 			primalis_abilities += new /datum/action/treacherous_flesh/take_control(src)
 			primalis_abilities += new /datum/action/treacherous_flesh/enslave_mind(src)
 		if(EVOLUTION_STAGE_4)

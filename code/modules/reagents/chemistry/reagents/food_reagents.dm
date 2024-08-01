@@ -95,7 +95,9 @@
 	description = "The organic compound commonly known as table sugar and sometimes called saccharose. This white, odorless, crystalline powder has a pleasing, sweet taste."
 	reagent_state = SOLID
 	color = "#FFFFFF" // rgb: 255, 255, 255
-	nutriment_factor = 5 * REAGENTS_METABOLISM
+	// SS220 LAZARUS EDIT - START
+	nutriment_factor = 0
+	// SS220 LAZARUS EDIT - END
 	overdose_threshold = 200 // Hyperglycaemic shock
 	taste_description = "sweetness"
 	taste_mult = 1.5

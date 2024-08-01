@@ -45,7 +45,9 @@
 	species = "ambrosiadeus"
 	plantname = "Ambrosia Deus"
 	product = /obj/item/food/snacks/grown/ambrosia/deus
-	mutatelist = list(/obj/item/seeds/ambrosia/gaia)
+	// SS220 LAZARUS EDIT - START
+	mutatelist = list()
+	// SS220 LAZARUS EDIT - END
 	reagents_add = list("weak_omnizine" = 0.15, "synaptizine" = 0.15, "space_drugs" = 0.1, "vitamin" = 0.04, "plantmatter" = 0.05)
 	rarity = 40
 

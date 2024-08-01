@@ -245,7 +245,7 @@
 	name = "Отрастить органы"
 	desc = "Мы вводим в организм большое колличество вещества, стимулярующего производство стволовых клеток. Носитель отращивает все потерянные конечности, а также восстанавлиет и отращивает все органы. Стоит 150 химикатов."
 	button_overlay_icon_state = "regrow_organs"
-	chemical_cost = 150
+	chemical_cost = 100
 
 /datum/action/treacherous_flesh/regrow_organs/activate()
 	if(!take_chems())

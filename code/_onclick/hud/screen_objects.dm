@@ -559,6 +559,7 @@
 		var/mob/living/carbon/H = usr
 		H.check_self_for_injuries()
 
+// SS220 LAZARUS EDIT - START
 /atom/movable/screen/frostbite
 	name = "Температура"
 	icon = 'icons/mob/screen_frostbite.dmi'
@@ -573,7 +574,7 @@
 			if(FROSTBITE_VERYHIGH to INFINITY)
 				status_list += "<span class='notice'>Тут очень тепло. Примерно на [H.get_frostbite_delta()] единиц(ы). Я быстро тут согреюсь.</span>"
 			if(FROSTBITE_HIGH to FROSTBITE_VERYHIGH)
-				status_list += "<span class='notice'>Тут довольно тепло. Примерно на [H.get_frostbite_delta()] единиц(ы). Тут можно согреться согреюсь.</span>"
+				status_list += "<span class='notice'>Тут довольно тепло. Примерно на [H.get_frostbite_delta()] единиц(ы). Тут можно согреться.</span>"
 			if(FROSTBITE_LOW to FROSTBITE_HIGH)
 				status_list += "<span class='notice'>Тут нормальная температура. Примерно [H.get_frostbite_delta()] единиц(ы). Я не слишком рискую.</span>"
 			if(FROSTBITE_VERYLOW to FROSTBITE_LOW)
@@ -594,6 +595,7 @@
 		status_list += "<span class='notice'>По ощущениям, моя одежда защищает меня от холода на [H.get_clothes_isolation()] единиц(ы)."
 		status_list += "<span class='notice'>Окружающие меня объекты и погода изменяют температуру на [H.get_around_heat()] единиц(ы)."
 		to_chat(usr, chat_box_examine(status_list.Join("\n")))
+// SS220 LAZARUS EDIT - END
 
 /atom/movable/screen/nutrition
 	name = "nutrition"

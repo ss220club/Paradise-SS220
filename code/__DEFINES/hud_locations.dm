@@ -89,7 +89,7 @@
 #define ui_healthdoll "EAST-1:28,CENTER-1:15"
 #define ui_nutrition "EAST-2:32,CENTER-1:13"
 #define ui_stamina "EAST-1:28,CENTER-2:15"
-#define ui_frostbite "EAST-1:28,CENTER-2:15"
+#define ui_frostbite "EAST-2:30,CENTER-0:13"
 
 //borgs
 #define ui_borg_health "EAST-1:28,CENTER-1:15" //borgs have the health display where humans have the pressure damage indicator.
