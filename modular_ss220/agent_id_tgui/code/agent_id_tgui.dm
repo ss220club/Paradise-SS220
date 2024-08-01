@@ -29,21 +29,20 @@
 	appearances = final_appearances
 
 /obj/item/card/id/syndicate/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
-	if(..())
-		return
-	if(!registered_human)
+	if(..() || !registered_human)
 		return
 	. = TRUE
+
 	switch(action)
 		if("change_name")
 			var/new_name
 			if(params["name"])
 				new_name = params["name"]
 
-			if(params["option"] == "LMB")
+			if(params["option"] == "Primary")
 				new_name = ishuman(registered_human) ? registered_human.real_name : registered_human.name
 
-			if(params["option"] == "RMB")
+			if(params["option"] == "Secondary")
 				new_name = tgui_input_list(registered_human, "Чьё имя вы хотите взять?", "Карта Агента - Имя", GLOB.human_list)
 				if(isnull(new_name))
 					return
@@ -68,20 +67,20 @@
 		if("change_fingerprints")
 			var/new_fingerprint_hash
 			if(params["new_fingerprints"])
-				new_fingerprint_hash = params["new_fingerprints"]
+				new_fingerprint_hash = sanitize(params["new_fingerprints"])
 
-			if(params["option"] == "Self")
-				new_fingerprint_hash = registered_human.dna.uni_identity
+			if(params["option"] == "Primary")
+				new_fingerprint_hash = md5(registered_human.dna.uni_identity)
 
-			fingerprint_hash = md5(sanitize(new_fingerprint_hash))
-			to_chat(registered_human, span_notice("Отпечатки изменёны: [fingerprint_hash]."))
+			fingerprint_hash = new_fingerprint_hash
+			to_chat(registered_human, span_notice("Отпечатки изменёны на: [fingerprint_hash]."))
 
 		if("change_blood_type")
 			var/new_blood_type
 			if(params["new_type"])
 				new_blood_type = params["new_type"]
 
-			if(params["option"] == "Self")
+			if(params["option"] == "Primary")
 				new_blood_type = registered_human.dna.blood_type
 
 			blood_type = new_blood_type
@@ -92,14 +91,23 @@
 			if(params["new_dna"])
 				new_dna_hash = params["new_dna"]
 
-			if(params["option"] == "Self")
+			if(params["option"] == "Primary")
 				new_dna_hash = registered_human.dna.unique_enzymes
 
 			dna_hash = sanitize(new_dna_hash)
 			to_chat(registered_human, span_notice("ДНК изменён на: [new_dna_hash]."))
 
 		if("change_money_account")
-			var/new_account = params["new_account"]
+			var/new_account
+			if(params["new_account"])
+				new_account = params["new_account"]
+				if(!isnum(new_account))
+					to_chat(registered_human, span_warning("Номер аккаунта должен состоять только из цифр!"))
+					return
+
+			if(params["option"] == "Primary")
+				new_account = rand(1000, 9999) * 1000
+
 			associated_account_number = clamp(new_account, 1000000, 9999999)
 			to_chat(registered_human, span_notice("Привязанный счёт изменён на: [new_account]."))
 
@@ -125,7 +133,7 @@
 	data["blood_type"] = blood_type
 	data["dna_hash"] = dna_hash
 	data["fingerprint_hash"] = fingerprint_hash
-	data["photo"] = photo
+	data["photo"] = "[icon2base64(photo)]"
 	data["ai_tracking"] = untrackable
 	return data
 
@@ -215,6 +223,10 @@
 
 /obj/item/card/id/syndicate/proc/change_appearance(list/params)
 	var/choice = params["new_appearance"]
+	if(!(choice in appearances))
+		message_admins("Warning: AgentID href exploit attempted by [key_name(usr)]! Impossible icon_state: [choice].")
+		return
+
 	icon_state = choice
 	to_chat(usr, span_notice("Внешний вид изменён на: [choice]."))
 
