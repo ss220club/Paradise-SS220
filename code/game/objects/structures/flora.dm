@@ -7,7 +7,7 @@
 	switch(damage_type)
 		if(BRUTE)
 			if(damage_amount)
-				playsound(src.loc, 'sound/weapons/slash.ogg', 80, TRUE)
+				playsound(src, 'sound/weapons/slash.ogg', 80, TRUE)
 			else
 				playsound(src, 'sound/weapons/tap.ogg', 50, TRUE)
 		if(BURN)
@@ -27,7 +27,7 @@
 	switch(damage_type)
 		if(BRUTE)
 			if(damage_amount)
-				playsound(src.loc, 'modular_ss220/lazarus/sound/wood_chop.ogg', 80, TRUE)
+				playsound(src, 'modular_ss220/lazarus/sound/wood_chop.ogg', 80, TRUE)
 			else
 				playsound(src, 'sound/weapons/tap.ogg', 50, TRUE)
 		if(BURN)
