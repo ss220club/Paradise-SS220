@@ -159,7 +159,7 @@
 
 // Peas Shooter
 /obj/item/gun/projectile/revolver/peas_shooter
-	name = "peas shooter"
+	name = "Peas Shooter"
 	desc = "Живой горох! Может стрелять горошинами, которые наносят слабый урон самооценке."
 	icon = 'modular_ss220/objects/icons/guns.dmi'
 	icon_state = "peas_shooter"
