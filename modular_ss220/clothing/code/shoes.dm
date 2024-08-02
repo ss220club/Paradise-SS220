@@ -149,3 +149,19 @@
 /obj/item/clothing/shoes/clown_shoes/moffers/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/squeak, list('modular_ss220/clothing/sounds/moffstep01.ogg' = 1), 50, falloff_exponent = 20)
+
+/datum/crafting_recipe/moffers
+	name = "Moffers"
+	reqs = list(
+		/obj/item/clothing/shoes/clown_shoes = 1,
+		/obj/item/stack/sheet/animalhide/mothroach = 2,
+	)
+	result = list(/obj/item/clothing/shoes/clown_shoes/moffers = 1)
+	blacklist = list(
+		/obj/item/clothing/shoes/clown_shoes/false_cluwne_shoes,
+		/obj/item/clothing/shoes/clown_shoes/magical,
+		/obj/item/clothing/shoes/clown_shoes/moffers,
+		/obj/item/clothing/shoes/clown_shoes/nodrop,
+		/obj/item/clothing/shoes/clown_shoes/slippers,
+	)
+	category = CAT_CLOTHING
