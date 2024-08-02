@@ -47,7 +47,7 @@
 	melee_damage_upper = 10
 	icon_state = "small"
 	ventcrawler = VENTCRAWLER_ALWAYS
-	pass_flags = PASSTABLE | PASSGRILLE | PASSMOB
+	pass_flags = PASSTABLE | PASSGRILLE | PASSMOB | PASSFLORA
 	density = FALSE
 	mob_size = MOB_SIZE_TINY
 	universal_speak = FALSE
@@ -64,7 +64,7 @@
 	melee_damage_upper = 20
 	icon_state = "medium"
 	ventcrawler = VENTCRAWLER_ALWAYS
-	pass_flags = PASSTABLE
+	pass_flags = PASSTABLE | PASSFLORA
 	density = FALSE
 	mob_size = MOB_SIZE_SMALL
 	split_to = /mob/living/simple_animal/hostile/flesh_biomorph/lesser/small
