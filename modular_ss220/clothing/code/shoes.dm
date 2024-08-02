@@ -125,7 +125,7 @@
 	righthand_file = 'modular_ss220/clothing/icons/inhands/right_hand.dmi'
 	icon_state = "moffers"
 	item_state = "moffers"
-	icon_override = 'modular_ss220/clothing/icons/mob/shoes.dmi'
+	overlay_icon_file = 'modular_ss220/clothing/icons/mob/shoes.dmi'
 	sprite_sheets = list(
 		"Vox" = 'modular_ss220/clothing/icons/mob/species/vox/shoes.dmi',
 		"Drask" = 'modular_ss220/clothing/icons/mob/species/drask/shoes.dmi',
