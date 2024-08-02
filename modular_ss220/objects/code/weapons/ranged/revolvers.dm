@@ -159,7 +159,7 @@
 
 // Peas Shooter
 /obj/item/gun/projectile/revolver/peas_shooter
-	name = "Peas Shooter"
+	name = "peas shooter"
 	desc = "Живой горох! Может стрелять горошинами, которые наносят слабый урон самооценке."
 	icon = 'modular_ss220/objects/icons/guns.dmi'
 	icon_state = "peas_shooter"
@@ -191,5 +191,5 @@
 
 /obj/item/projectile/bullet/midbullet_r/peas_shooter/on_hit(mob/H)
 	. = ..()
-	if(prob(15))
+	if(isliving(H) && prob(15))
 		H.emote("moan")
