@@ -124,6 +124,7 @@
 	lefthand_file = 'modular_ss220/clothing/icons/inhands/left_hand.dmi'
 	righthand_file = 'modular_ss220/clothing/icons/inhands/right_hand.dmi'
 	icon_state = "moffers"
+	item_state = "moffers"
 	sprite_sheets = list(
 		"Human" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
 		"Tajaran" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
