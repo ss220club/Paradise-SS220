@@ -47,6 +47,19 @@
 	icon_state = "away1"
 	name = "Замёрзшее озеро"
 
+/area/lazarus/outdoors/stribog/landing
+	name = "Посадочная площадка (Стрибог)"
+	icon_state = "escape"
+	always_unpowered = FALSE
+	poweralm = TRUE
+	apc_starts_off = FALSE
+	outdoors = FALSE
+	sound_environment = SOUND_AREA_STANDARD_STATION
+	min_ambience_cooldown = 70 SECONDS
+	max_ambience_cooldown = 220 SECONDS
+
+	temperature = AREA_TEMPERATURE_OUTSIDE
+
 //-----MISC LOCATIONS-----//
 
 //---Cabins---//
@@ -282,8 +295,8 @@
 	name = "Склад (Стрибог)"
 	icon_state = "storage"
 
-/area/lazarus/outpost/stribog/landing
-	name = "Посадочная площадка (Стрибог)"
+/area/lazarus/outpost/stribog/management
+	name = "Управление полётами (Стрибог)"
 	icon_state = "escape"
 
 /area/lazarus/outpost/stribog/maint

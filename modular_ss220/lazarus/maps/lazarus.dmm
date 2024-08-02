@@ -137,6 +137,15 @@
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plasteel,
 /area/lazarus/outpost/rod/botany)
+"agw" = (
+/obj/structure/cable/yellow{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/barricade/sandbags,
+/turf/simulated/floor/plating/asteroid/lazarus/dirt,
+/area/lazarus/outdoors/stribog)
 "ahG" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/effect/spawner/lootdrop/lazarus/trash,
@@ -230,11 +239,22 @@
 /obj/effect/baseturf_helper/lazarus,
 /turf/simulated/floor/plasteel,
 /area/lazarus/outpost/svarog/living/a)
+"amu" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/machinery/computer{
+	dir = 1
+	},
+/obj/effect/mapping_helpers/machinery/damaged,
+/turf/simulated/floor/plasteel{
+	dir = 6;
+	icon_state = "brown"
+	},
+/area/lazarus/outpost/stribog/management)
 "amH" = (
 /turf/simulated/floor/plasteel{
 	icon_state = "darkbluefull"
 	},
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "amS" = (
 /obj/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
@@ -297,6 +317,14 @@
 	icon_state = "cafeteria"
 	},
 /area/lazarus/outpost/svarog/kitchen)
+"aqr" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors/stribog/landing)
 "aqt" = (
 /obj/effect/spawner/window/reinforced/grilled,
 /obj/structure/cable,
@@ -308,9 +336,10 @@
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plating,
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "arI" = (
 /obj/effect/spawner/window/reinforced/grilled,
+/obj/structure/barricade/wooden/crude/snow,
 /turf/space,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/stribog/maint)
@@ -387,9 +416,8 @@
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/effect/spawner/random_spawners/dirt_frequent,
-/obj/machinery/door/airlock/hatch{
-	name = "Аванпост ''Стрибог''"
-	},
+/obj/machinery/door/airlock/hatch,
+/obj/effect/mapping_helpers/airlock/autoname,
 /turf/simulated/floor/plasteel,
 /area/lazarus/outpost/stribog/storage)
 "awz" = (
@@ -511,11 +539,17 @@
 /obj/effect/decal/cleanable/blood/old,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/yarilo/engi/storage)
+"aEc" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
+/obj/structure/barricade/wooden,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors/stribog/landing)
 "aEW" = (
 /obj/structure/sign/fire,
 /obj/effect/spawner/random_spawners/wall_rusted_probably,
 /turf/simulated/wall,
-/area/lazarus/outdoors)
+/area/lazarus/geotherm/rod)
 "aFi" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/effect/decal/cleanable/blood,
@@ -541,6 +575,7 @@
 	amount = 5
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/stribog/storage)
 "aFB" = (
@@ -555,13 +590,9 @@
 	},
 /area/lazarus/outpost/svarog/living/cryo)
 "aGd" = (
-/obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/plating/asteroid/lazarus/forest/edge,
-/area/lazarus/outdoors/svarog)
+/obj/effect/spawner/random_spawners/wall_rusted_probably,
+/turf/simulated/wall,
+/area/lazarus/outpost/stribog/management)
 "aGj" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/effect/landmark/damageturf,
@@ -694,7 +725,7 @@
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plating,
-/area/lazarus/outdoors)
+/area/lazarus/geotherm/rod)
 "aKv" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -719,6 +750,12 @@
 	icon_state = "darkbrown"
 	},
 /area/lazarus/outpost/svarog/qm)
+"aLm" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/damageturf,
+/obj/structure/reagent_dispensers/fueltank,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors/stribog/landing)
 "aLC" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/machinery/autolathe,
@@ -760,6 +797,12 @@
 	icon_state = "yellow"
 	},
 /area/lazarus/outpost/yarilo/engi/storage)
+"aNa" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
+/obj/structure/barricade/sandbags,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors/stribog/landing)
 "aND" = (
 /obj/item/chair,
 /obj/machinery/light_construct/directional/south,
@@ -829,16 +872,25 @@
 	},
 /area/lazarus/outpost/svarog/mining)
 "aRR" = (
-/obj/machinery/power/terminal{
-	dir = 8
-	},
 /obj/structure/cable/yellow{
+	d1 = 1;
 	d2 = 4;
-	icon_state = "0-4"
+	icon_state = "1-4"
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/engineering,
+/obj/effect/landmark/damageturf,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/stribog/maint)
+"aSh" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/structure/chair/office/light{
+	dir = 8
+	},
+/obj/effect/landmark/damageturf,
+/obj/effect/decal/cleanable/blood,
+/turf/simulated/floor/plating,
+/area/lazarus/outpost/stribog/management)
 "aSi" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plasteel{
@@ -883,6 +935,16 @@
 	icon_state = "red"
 	},
 /area/lazarus/outpost/rod/living/sec)
+"aWz" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors/stribog/landing)
 "aWG" = (
 /obj/effect/turf_decal/siding/wood,
 /obj/effect/decal/cleanable/dust,
@@ -981,7 +1043,11 @@
 /turf/simulated/floor/plating/asteroid/lazarus/dirt,
 /area/lazarus/outdoors/rod)
 "aZK" = (
-/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/structure/rack,
+/obj/effect/spawner/lootdrop/lazarus/engineering,
+/obj/effect/spawner/lootdrop/lazarus/engineering,
+/obj/effect/spawner/lootdrop/lazarus/engineering,
+/obj/effect/landmark/damageturf,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/stribog/maint)
 "baK" = (
@@ -1067,13 +1133,24 @@
 /area/lazarus/outpost/svarog/mining)
 "bet" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
-/obj/machinery/power/apc/directional/north,
 /obj/structure/cable{
 	d2 = 2;
 	icon_state = "0-2"
 	},
+/obj/machinery/power/apc/directional/north,
+/obj/effect/landmark/damageturf,
 /turf/simulated/floor/plating,
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
+"bfk" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/structure/rack,
+/obj/effect/spawner/lootdrop/lazarus/medical,
+/obj/effect/spawner/lootdrop/lazarus/medical,
+/turf/simulated/floor/plasteel{
+	dir = 6;
+	icon_state = "brown"
+	},
+/area/lazarus/outpost/stribog/management)
 "bfy" = (
 /obj/item/stack/ore/iron{
 	amount = 5
@@ -1146,6 +1223,8 @@
 	},
 /obj/effect/spawner/lootdrop/maintenance/two,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/medical,
+/obj/effect/spawner/lootdrop/lazarus/engineering,
 /turf/simulated/floor/plasteel{
 	icon_state = "bot"
 	},
@@ -1393,7 +1472,7 @@
 /obj/effect/baseturf_helper/lazarus,
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plating,
-/area/lazarus/outdoors)
+/area/lazarus/geotherm/rod)
 "brI" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plasteel{
@@ -1426,6 +1505,11 @@
 	icon_state = "darkred"
 	},
 /area/lazarus/outpost/rod/sec/arsenal)
+"btc" = (
+/obj/effect/spawner/window/reinforced/grilled,
+/obj/effect/mapping_helpers/destroyed_window/broken_grill,
+/turf/simulated/floor/plating,
+/area/lazarus/outpost/stribog/management)
 "bti" = (
 /obj/structure/flora/ausbushes/grassybush,
 /turf/simulated/floor/grass,
@@ -1494,7 +1578,7 @@
 /obj/structure/cable,
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plating,
-/area/lazarus/outdoors)
+/area/lazarus/geotherm/rod)
 "bxE" = (
 /obj/machinery/power/apc/directional/south,
 /obj/structure/cable,
@@ -1540,23 +1624,12 @@
 /obj/structure/table,
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plating,
-/area/lazarus/outdoors)
+/area/lazarus/geotherm/rod)
 "bxS" = (
-/obj/item/stack/rods{
-	amount = 2
-	},
-/obj/structure/grille/broken,
-/obj/item/shard{
-	pixel_x = 9
-	},
-/obj/item/shard{
-	icon_state = "medium";
-	pixel_x = -7;
-	pixel_y = -10
-	},
-/obj/structure/barricade/wooden,
-/turf/simulated/floor/plating,
-/area/lazarus/outpost/stribog/landing)
+/obj/structure/barricade/sandbags,
+/obj/structure/barricade/sandbags,
+/turf/simulated/floor/plating/asteroid/lazarus/dirt,
+/area/lazarus/outdoors/stribog)
 "bye" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/item/stack/tile,
@@ -2235,6 +2308,7 @@
 	},
 /obj/structure/grille,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/stribog/storage)
 "cgr" = (
@@ -3076,7 +3150,7 @@
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plating,
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "cOl" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plating,
@@ -3084,7 +3158,7 @@
 "cOp" = (
 /obj/effect/spawner/window/plastitanium,
 /turf/simulated/floor/plating,
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "cOP" = (
 /obj/machinery/door/airlock/medical/glass{
 	name = "Операционная"
@@ -3388,6 +3462,18 @@
 	},
 /turf/simulated/floor/plating,
 /area/lazarus/outdoors)
+"dcu" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/effect/spawner/lootdrop/lazarus/trash,
+/obj/structure/barricade/sandbags,
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors/stribog/landing)
 "ddi" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -3426,7 +3512,7 @@
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plating,
-/area/lazarus/outdoors)
+/area/lazarus/geotherm/rod)
 "dec" = (
 /obj/machinery/cryopod,
 /obj/effect/spawner/random_spawners/dirt_frequent,
@@ -3449,9 +3535,12 @@
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/rod/living/sec)
 "deB" = (
-/obj/effect/spawner/window/reinforced/grilled,
+/obj/structure/fence{
+	dir = 4
+	},
+/obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plating,
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "deF" = (
 /obj/structure/cable{
 	d2 = 8;
@@ -3544,6 +3633,13 @@
 /obj/structure/mineral_door/wood,
 /turf/simulated/floor/wood/fancy/oak,
 /area/lazarus/cabin/bar)
+"dkr" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/damageturf,
+/obj/structure/ore_box,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors/stribog/landing)
 "dkz" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/effect/spawner/lootdrop/lazarus/trash,
@@ -4067,6 +4163,12 @@
 	icon_state = "brown"
 	},
 /area/lazarus/outpost/svarog/mining/enter)
+"dDn" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/structure/closet/toolcloset,
+/obj/machinery/light/small/directional/south,
+/turf/simulated/floor/plating,
+/area/lazarus/outpost/stribog/maint)
 "dDp" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/item/stack/sheet/metal{
@@ -4232,7 +4334,7 @@
 /obj/machinery/light/small/directional/south,
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plating,
-/area/lazarus/outdoors)
+/area/lazarus/geotherm/rod)
 "dKT" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -4308,7 +4410,7 @@
 /obj/machinery/light/small/directional/north,
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plating,
-/area/lazarus/outdoors)
+/area/lazarus/geotherm/rod)
 "dNO" = (
 /obj/structure/computerframe,
 /obj/structure/disposalpipe/junction/reversed,
@@ -4351,7 +4453,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "dOO" = (
 /obj/machinery/light/small/directional/east,
 /obj/effect/spawner/random_spawners/dirt_frequent,
@@ -4639,6 +4741,8 @@
 	},
 /obj/item/rack_parts,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/medical,
+/obj/effect/spawner/lootdrop/lazarus/medical,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/stribog/storage)
 "dZN" = (
@@ -4712,6 +4816,11 @@
 	icon_state = "neutralfull"
 	},
 /area/lazarus/outpost/rod/canteen)
+"eaR" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors/stribog/landing)
 "eba" = (
 /obj/effect/spawner/window/reinforced/grilled,
 /obj/effect/mapping_helpers/damaged_window,
@@ -4810,6 +4919,17 @@
 /obj/effect/mapping_helpers/airlock/autoname,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/svarog/living/a)
+"edE" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/effect/landmark/damageturf,
+/obj/structure/closet/crate,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors/stribog/landing)
 "eeI" = (
 /obj/effect/spawner/window/reinforced/grilled,
 /obj/structure/cable{
@@ -4945,6 +5065,11 @@
 	icon_state = "neutral"
 	},
 /area/lazarus/outpost/yarilo)
+"ejE" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/structure/barricade/sandbags,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors/stribog/landing)
 "ejF" = (
 /turf/simulated/wall/indestructible/ice,
 /area/lazarus)
@@ -5053,7 +5178,7 @@
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/effect/spawner/lootdrop/lazarus/trash,
 /turf/simulated/floor/plating,
-/area/lazarus/outdoors)
+/area/lazarus/geotherm/rod)
 "elZ" = (
 /obj/machinery/cryopod{
 	dir = 1
@@ -5154,7 +5279,7 @@
 "esa" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plating,
-/area/lazarus/outdoors)
+/area/lazarus/geotherm/rod)
 "esf" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/effect/baseturf_helper/lazarus,
@@ -5260,7 +5385,7 @@
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/effect/spawner/lootdrop/lazarus/trash,
 /turf/simulated/floor/plating,
-/area/lazarus/outdoors)
+/area/lazarus/geotherm/rod)
 "evz" = (
 /obj/machinery/light/small/directional/south,
 /turf/simulated/floor/plating/asteroid/lazarus/snow,
@@ -5379,6 +5504,17 @@
 /obj/item/kitchen/utensil/fork,
 /turf/simulated/floor/wood,
 /area/lazarus/cabin/bar)
+"eCj" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/effect/landmark/damageturf,
+/obj/structure/closet/crate,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors/stribog/landing)
 "eEm" = (
 /obj/effect/spawner/random_spawners/wall_rusted_probably,
 /turf/simulated/wall,
@@ -5503,6 +5639,8 @@
 	},
 /obj/effect/spawner/lootdrop/maintenance/three,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/engineering,
+/obj/effect/spawner/lootdrop/lazarus/engineering,
 /turf/simulated/floor/plasteel{
 	icon_state = "bot"
 	},
@@ -5700,7 +5838,7 @@
 	dir = 1;
 	icon_state = "dark"
 	},
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "eUG" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -5802,7 +5940,7 @@
 	dir = 4;
 	icon_state = "navybluealt"
 	},
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "eYI" = (
 /obj/machinery/light/directional/north,
 /obj/effect/spawner/random_spawners/dirt_frequent,
@@ -5867,6 +6005,7 @@
 	},
 /obj/item/rack_parts,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/medical,
 /turf/simulated/floor/plasteel{
 	icon_state = "bot"
 	},
@@ -5956,7 +6095,7 @@
 /obj/machinery/door/airlock/maintenance_hatch,
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plating,
-/area/lazarus/outdoors)
+/area/lazarus/geotherm/rod)
 "ffq" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -6036,6 +6175,12 @@
 /obj/effect/spawner/lootdrop/lazarus/trash,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/rod/kitchen)
+"flh" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors/stribog/landing)
 "fls" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/effect/spawner/lootdrop/lazarus/trash,
@@ -6056,6 +6201,14 @@
 	icon_state = "darkbluecorners"
 	},
 /area/lazarus/outpost/yarilo/med/cmo)
+"fmX" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors/stribog/landing)
 "fna" = (
 /obj/structure/closet/crate/wooden/wooden_crate,
 /obj/item/seeds/potato,
@@ -6088,9 +6241,15 @@
 /obj/effect/mapping_helpers/destroyed_window/intact_grill,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/svarog/mining/enter)
+"fnD" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/machinery/floodlight,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors/stribog/landing)
 "fnU" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
-/obj/effect/baseturf_helper/lazarus,
+/obj/structure/table,
+/obj/effect/spawner/lootdrop/lazarus/trash,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/stribog/maint)
 "foy" = (
@@ -6120,7 +6279,7 @@
 /turf/simulated/floor/plasteel{
 	icon_state = "darkbluefull"
 	},
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "fqj" = (
 /obj/machinery/cryopod{
 	dir = 4
@@ -6322,17 +6481,24 @@
 /turf/simulated/floor/plasteel,
 /area/lazarus/outpost/rod/living/crew)
 "fAX" = (
-/obj/effect/spawner/window/reinforced/grilled,
-/obj/structure/barricade/wooden/crude/snow,
-/obj/effect/mapping_helpers/damaged_window,
+/obj/structure/fence,
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/damageturf,
 /turf/simulated/floor/plating,
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "fBR" = (
 /obj/structure/closet,
 /obj/item/stack/tile/plasteel,
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/svarog/living/b)
+"fBS" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/baseturf_helper/lazarus,
+/obj/effect/landmark/damageturf,
+/obj/effect/decal/cleanable/blood,
+/turf/simulated/floor/plating,
+/area/lazarus/outpost/stribog/management)
 "fBU" = (
 /obj/effect/spawner/random_spawners/wall_rusted_probably,
 /obj/structure/girder/reinforced,
@@ -6798,6 +6964,11 @@
 /obj/item/ammo_box/shotgun/buck,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/yarilo/maint)
+"fSc" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/structure/barricade/wooden,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors/stribog/landing)
 "fSw" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/effect/landmark/damageturf,
@@ -6901,7 +7072,7 @@
 	dir = 4;
 	icon_state = "navybluealt"
 	},
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "fXE" = (
 /obj/machinery/disposal,
 /obj/structure/disposalpipe/trunk,
@@ -6911,6 +7082,15 @@
 	icon_state = "red"
 	},
 /area/lazarus/outpost/rod/sec/briefing)
+"fYn" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/structure/chair/sofa/left,
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/plasteel{
+	dir = 5;
+	icon_state = "brown"
+	},
+/area/lazarus/outpost/stribog/management)
 "fYG" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/item/airlock_electronics,
@@ -6927,7 +7107,7 @@
 	dir = 1;
 	icon_state = "dark"
 	},
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "gaf" = (
 /obj/machinery/computer/cryopod{
 	dir = 1;
@@ -6966,6 +7146,7 @@
 /obj/structure/table,
 /obj/effect/spawner/lootdrop/maintenance,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/medical,
 /turf/simulated/floor/plasteel{
 	icon_state = "bot"
 	},
@@ -7084,6 +7265,14 @@
 	icon_state = "redcorner"
 	},
 /area/lazarus/outpost/rod/sec/interrogation)
+"ghn" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/structure/chair/sofa/right,
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "brown"
+	},
+/area/lazarus/outpost/stribog/management)
 "ghK" = (
 /obj/item/stack/sheet/metal,
 /obj/effect/spawner/random_spawners/dirt_frequent,
@@ -7187,6 +7376,15 @@
 	icon_state = "brown"
 	},
 /area/lazarus/outpost/svarog/mining/enter)
+"glw" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/damageturf,
+/obj/structure/ore_box,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors/stribog/landing)
 "gnr" = (
 /obj/effect/turf_decal/delivery/hollow,
 /obj/structure/closet/crate/medical,
@@ -7214,6 +7412,14 @@
 	},
 /turf/simulated/floor/plating/asteroid/lazarus/snow,
 /area/lazarus/outdoors/svarog)
+"gnX" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors/stribog/landing)
 "goc" = (
 /obj/effect/decal/cleanable/glass,
 /obj/item/shard{
@@ -7315,6 +7521,16 @@
 	icon_state = "darkbluefull"
 	},
 /area/lazarus/outpost/yarilo/med/cmo)
+"gsT" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/machinery/computer{
+	dir = 1
+	},
+/obj/effect/mapping_helpers/machinery/destroyed,
+/obj/effect/landmark/damageturf,
+/obj/machinery/light/directional/south,
+/turf/simulated/floor/plating,
+/area/lazarus/outpost/stribog/management)
 "gtx" = (
 /obj/structure/cable/yellow{
 	d1 = 4;
@@ -7377,7 +7593,7 @@
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/effect/spawner/lootdrop/lazarus/trash,
 /turf/simulated/floor/plating,
-/area/lazarus/outdoors)
+/area/lazarus/geotherm/rod)
 "gvD" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -7815,6 +8031,27 @@
 	icon_state = "neutralfull"
 	},
 /area/lazarus/outpost/svarog/canteen)
+"gRe" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/barricade/sandbags,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors/stribog/landing)
+"gRg" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/effect/landmark/damageturf,
+/obj/effect/decal/cleanable/blood,
+/turf/simulated/floor/plasteel,
+/area/lazarus/outpost/stribog/management)
 "gSh" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/effect/landmark/damageturf,
@@ -8126,7 +8363,7 @@
 	dir = 8;
 	icon_state = "navybluealt"
 	},
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "heH" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -8153,6 +8390,13 @@
 /obj/item/trash/plate,
 /turf/simulated/floor/wood,
 /area/lazarus/cabin/bar)
+"hgl" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/structure/chair/sofa/left{
+	dir = 1
+	},
+/turf/simulated/floor/plasteel,
+/area/lazarus/outpost/stribog/management)
 "hgZ" = (
 /obj/structure/chair/comfy/shuttle{
 	dir = 4
@@ -8161,7 +8405,7 @@
 	dir = 4;
 	icon_state = "navybluealt"
 	},
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "hhr" = (
 /obj/structure/spider/stickyweb,
 /obj/structure/spider/stickyweb,
@@ -8197,7 +8441,7 @@
 /obj/structure/table,
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plating,
-/area/lazarus/outdoors)
+/area/lazarus/geotherm/rod)
 "hhQ" = (
 /obj/structure/table/glass,
 /obj/machinery/reagentgrinder{
@@ -8358,6 +8602,17 @@
 /obj/effect/decal/cleanable/blood/old,
 /turf/simulated/floor/plating/asteroid/lazarus/snow,
 /area/lazarus/outdoors/yarilo)
+"hqd" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/effect/spawner/lootdrop/lazarus/trash,
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors/stribog/landing)
 "hqB" = (
 /obj/structure/table,
 /obj/structure/cable{
@@ -8377,14 +8632,14 @@
 /obj/structure/sign/electricshock,
 /obj/effect/spawner/random_spawners/wall_rusted_probably,
 /turf/simulated/wall,
-/area/lazarus/outdoors)
+/area/lazarus/geotherm/rod)
 "hrd" = (
 /obj/machinery/computer/operating,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "dark"
 	},
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "hrY" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/structure/alien/weeds/node/meaty,
@@ -8675,7 +8930,7 @@
 	dir = 1;
 	icon_state = "dark"
 	},
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "hDm" = (
 /obj/machinery/hydroponics/constructable,
 /obj/effect/mapping_helpers/machinery/damaged,
@@ -8760,6 +9015,18 @@
 	},
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/rod/sec/interrogation)
+"hFM" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/machinery/power/apc/directional/north,
+/obj/structure/cable{
+	d2 = 2;
+	icon_state = "0-2"
+	},
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "brown"
+	},
+/area/lazarus/outpost/stribog/management)
 "hGT" = (
 /turf/simulated/wall/r_wall,
 /area/lazarus)
@@ -8773,7 +9040,7 @@
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plating,
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "hHQ" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -9035,6 +9302,7 @@
 	dir = 4
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/medical,
 /turf/simulated/floor/plasteel{
 	icon_state = "bot"
 	},
@@ -9045,7 +9313,7 @@
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plating,
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "hWh" = (
 /obj/structure/table,
 /obj/effect/spawner/random_spawners/dirt_frequent,
@@ -9084,7 +9352,7 @@
 /obj/structure/light_fake/small{
 	dir = 8
 	},
-/turf/simulated/floor/plating/asteroid/lazarus/snow,
+/turf/simulated/floor/plating/asteroid/lazarus/forest/edge,
 /area/lazarus/outpost/stribog/storage)
 "hZx" = (
 /obj/machinery/cryopod{
@@ -9178,6 +9446,17 @@
 /obj/effect/spawner/random_spawners/wall_rusted_probably,
 /turf/simulated/wall/r_wall,
 /area/lazarus/outpost/svarog/mining/enter)
+"idS" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/effect/spawner/lootdrop/lazarus/trash,
+/obj/structure/barricade/sandbags,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors/stribog/landing)
 "iec" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/item/stack/sheet/metal{
@@ -9210,6 +9489,12 @@
 /obj/item/food/beans,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/yarilo/maint)
+"ifo" = (
+/obj/item/flag/syndi,
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors/stribog/landing)
 "ifp" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/structure/bonfire,
@@ -9224,7 +9509,7 @@
 	dir = 4;
 	icon_state = "navybluealt"
 	},
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "igr" = (
 /obj/machinery/optable,
 /obj/effect/mob_spawn/human/lazarus/colonist/survivalist,
@@ -9250,6 +9535,11 @@
 	icon_state = "neutral"
 	},
 /area/lazarus/outpost/svarog)
+"ijv" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors/stribog/landing)
 "ijG" = (
 /obj/structure/bed,
 /obj/item/bedsheet/ce,
@@ -9449,6 +9739,7 @@
 	amount = 5
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/plasteel{
 	icon_state = "brown"
 	},
@@ -9595,7 +9886,7 @@
 	},
 /obj/effect/baseturf_helper/lazarus,
 /turf/simulated/floor/plating,
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "iyg" = (
 /obj/effect/landmark/start/vip{
 	name = "Abadoned Miner"
@@ -9791,6 +10082,8 @@
 /obj/structure/rack,
 /obj/effect/spawner/lootdrop/maintenance/two,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/engineering,
+/obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/plasteel,
 /area/lazarus/outpost/stribog/storage)
 "iGZ" = (
@@ -9821,7 +10114,13 @@
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plating,
-/area/lazarus/outdoors)
+/area/lazarus/geotherm/rod)
+"iHC" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/plating,
+/area/lazarus/outpost/stribog/maint)
 "iHI" = (
 /obj/item/reagent_containers/dropper{
 	pixel_y = -4
@@ -10001,7 +10300,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating,
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "iPB" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -10105,7 +10404,7 @@
 	dir = 8;
 	icon_state = "navybluecornersalt"
 	},
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "iVz" = (
 /obj/machinery/door/airlock/security/glass,
 /obj/structure/cable{
@@ -10179,7 +10478,7 @@
 	dir = 1;
 	icon_state = "navybluecornersalt"
 	},
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "iXD" = (
 /obj/effect/spawner/window/reinforced/grilled,
 /obj/structure/cable{
@@ -10354,6 +10653,12 @@
 	icon_state = "whiteblue"
 	},
 /area/lazarus/outpost/yarilo/med/exam)
+"jel" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/damageturf,
+/obj/structure/closet/crate,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors/stribog/landing)
 "jeL" = (
 /obj/structure/table,
 /obj/effect/spawner/random_spawners/dirt_frequent,
@@ -10407,7 +10712,7 @@
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/plating,
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "jfX" = (
 /obj/structure/rack,
 /obj/effect/spawner/random_spawners/dirt_frequent,
@@ -10565,7 +10870,7 @@
 	dir = 1;
 	icon_state = "navybluealt"
 	},
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "joK" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/structure/disposalpipe/junction{
@@ -11098,6 +11403,17 @@
 /obj/effect/spawner/random_spawners/wall_rusted_probably,
 /turf/simulated/wall,
 /area/lazarus/geotherm/stribog)
+"jUs" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/structure/table,
+/obj/effect/spawner/lootdrop/maintenance/two,
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/medical,
+/obj/effect/decal/cleanable/blood,
+/turf/simulated/floor/plating,
+/area/lazarus/outpost/stribog/storage)
 "jVp" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -11267,6 +11583,16 @@
 	icon_state = "red"
 	},
 /area/lazarus/outpost/rod/living/sec)
+"kdm" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors/stribog/landing)
 "kdr" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -11293,6 +11619,7 @@
 	},
 /area/lazarus/outpost/stribog/storage)
 "keg" = (
+/obj/effect/spawner/random_spawners/wall_rusted_probably,
 /turf/simulated/wall,
 /area/lazarus/outpost/stribog/storage)
 "kew" = (
@@ -11312,6 +11639,7 @@
 	},
 /obj/effect/spawner/lootdrop/maintenance/two,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/medical,
 /turf/simulated/floor/plasteel{
 	icon_state = "bot"
 	},
@@ -11630,7 +11958,7 @@
 	dir = 1;
 	icon_state = "dark"
 	},
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "ktb" = (
 /obj/effect/spawner/window/reinforced/grilled,
 /turf/simulated/floor/plating,
@@ -11745,7 +12073,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/plating,
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "kzW" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -11770,14 +12098,14 @@
 	dir = 1;
 	icon_state = "dark"
 	},
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "kBL" = (
 /obj/machinery/chem_master,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "dark"
 	},
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "kCe" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -12056,7 +12384,7 @@
 	dir = 8;
 	icon_state = "navybluealt"
 	},
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "kJR" = (
 /obj/effect/spawner/window/reinforced/grilled,
 /obj/structure/cable,
@@ -12326,7 +12654,7 @@
 /obj/structure/closet/firecloset,
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plating,
-/area/lazarus/outdoors)
+/area/lazarus/geotherm/rod)
 "lbf" = (
 /obj/effect/spawner/window/reinforced/grilled,
 /obj/effect/mapping_helpers/damaged_window,
@@ -12399,7 +12727,7 @@
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plating,
-/area/lazarus/outdoors)
+/area/lazarus/geotherm/rod)
 "lew" = (
 /obj/structure/extinguisher_cabinet/directional/east,
 /obj/structure/cable{
@@ -12462,7 +12790,7 @@
 /turf/simulated/floor/plasteel{
 	icon_state = "darkbluefull"
 	},
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "lga" = (
 /obj/structure/table,
 /obj/item/taperecorder{
@@ -12498,7 +12826,7 @@
 	dir = 4;
 	icon_state = "navybluecornersalt"
 	},
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "lhJ" = (
 /obj/effect/landmark/damageturf,
 /obj/effect/spawner/random_spawners/dirt_frequent,
@@ -12664,6 +12992,18 @@
 	},
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/rod/living/sec)
+"lmn" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/effect/spawner/lootdrop/lazarus/trash,
+/obj/structure/barricade/sandbags,
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors/stribog/landing)
 "lnr" = (
 /turf/simulated/floor/plating/asteroid/lazarus/snow,
 /area/lazarus/outdoors/rod)
@@ -12756,7 +13096,7 @@
 /turf/simulated/floor/plasteel{
 	icon_state = "navybluealt"
 	},
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "lqy" = (
 /obj/machinery/hydroponics/soil,
 /obj/machinery/hydroponics/soil,
@@ -12910,6 +13250,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/svarog/mining/enter)
+"lwF" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/damageturf,
+/obj/structure/reagent_dispensers/watertank,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors/stribog/landing)
 "lwM" = (
 /obj/structure/flora/ausbushes/grassybush,
 /obj/effect/decal/cleanable/blood/old,
@@ -12949,7 +13295,7 @@
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plating,
-/area/lazarus/outdoors)
+/area/lazarus/geotherm/rod)
 "lzn" = (
 /turf/simulated/wall/mineral/wood/nonmetal,
 /area/lazarus/cabin/bar)
@@ -13019,11 +13365,14 @@
 	},
 /area/lazarus/outpost/rod/sec/range)
 "lFq" = (
-/obj/machinery/power/smes,
 /obj/structure/cable{
+	d1 = 1;
 	d2 = 8;
-	icon_state = "0-8"
+	icon_state = "1-8"
 	},
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/baseturf_helper/lazarus,
+/obj/effect/landmark/damageturf,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/stribog/maint)
 "lFC" = (
@@ -13108,13 +13457,17 @@
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/yarilo/engi)
+"lIH" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors/stribog/landing)
 "lJH" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
-/obj/machinery/power/apc/directional/north,
-/obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2"
-	},
+/obj/effect/spawner/lootdrop/lazarus/engineering,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/stribog/maint)
 "lJL" = (
@@ -13423,9 +13776,6 @@
 "lXB" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/structure/closet/secure_closet/bar,
-/obj/item/gun/projectile/revolver/doublebarrel{
-	pixel_y = 16
-	},
 /obj/item/ammo_casing/shotgun/beanbag,
 /obj/item/ammo_casing/shotgun/beanbag,
 /obj/item/ammo_casing/shotgun/beanbag,
@@ -13433,6 +13783,7 @@
 /obj/item/ammo_casing/shotgun/beanbag,
 /obj/item/ammo_casing/shotgun/beanbag,
 /obj/item/ammo_casing/shotgun/beanbag,
+/obj/item/gun/projectile/revolver/doublebarrel,
 /turf/simulated/floor/carpet/black,
 /area/lazarus/cabin/bar)
 "lXH" = (
@@ -13482,7 +13833,18 @@
 "mal" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plating,
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
+"max" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/barricade/sandbags,
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors/stribog/landing)
 "mbd" = (
 /obj/structure/table,
 /obj/effect/spawner/random_spawners/dirt_frequent,
@@ -13587,6 +13949,11 @@
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/carpet/red,
 /area/lazarus/outpost/rod/iaa)
+"meQ" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/structure/closet/firecloset,
+/turf/simulated/floor/plating,
+/area/lazarus/outpost/stribog/maint)
 "mff" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -13758,6 +14125,13 @@
 /obj/effect/mapping_helpers/damaged_window,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/svarog/med)
+"mlu" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/structure/table,
+/obj/item/flashlight/lamp,
+/obj/effect/decal/cleanable/blood,
+/turf/simulated/floor/plasteel,
+/area/lazarus/outpost/stribog/management)
 "mlC" = (
 /obj/structure/chair/stool{
 	dir = 4
@@ -13919,6 +14293,11 @@
 	icon_state = "dark"
 	},
 /area/lazarus/outpost/yarilo/med/morgue)
+"mwL" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/decal/cleanable/blood,
+/turf/simulated/floor/plating,
+/area/lazarus/outpost/stribog/storage)
 "mwO" = (
 /obj/machinery/light/directional/east,
 /obj/effect/spawner/random_spawners/dirt_frequent,
@@ -13948,6 +14327,14 @@
 /obj/effect/spawner/random_spawners/wall_rusted_probably,
 /turf/simulated/wall,
 /area/lazarus/outpost/rod/sec/range)
+"mxT" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors/stribog/landing)
 "mye" = (
 /obj/effect/spawner/random_spawners/wall_rusted_probably,
 /turf/simulated/wall,
@@ -13988,7 +14375,7 @@
 	dir = 4;
 	icon_state = "navybluealt"
 	},
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "mAF" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -14045,7 +14432,7 @@
 /area/lazarus/outpost/rod/living/crew)
 "mCJ" = (
 /turf/simulated/wall,
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "mCW" = (
 /obj/effect/spawner/window/reinforced/grilled,
 /obj/structure/cable{
@@ -14243,8 +14630,20 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
+/obj/structure/barricade/sandbags,
+/obj/effect/landmark/damageturf,
 /turf/simulated/floor/plating,
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
+"mMR" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/machinery/power/apc/directional/north,
+/obj/structure/cable{
+	d2 = 2;
+	icon_state = "0-2"
+	},
+/obj/effect/spawner/lootdrop/lazarus/trash,
+/turf/simulated/floor/plating,
+/area/lazarus/outpost/stribog/maint)
 "mMZ" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plating,
@@ -14304,7 +14703,7 @@
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plating,
-/area/lazarus/outdoors)
+/area/lazarus/geotherm/rod)
 "mOt" = (
 /turf/simulated/wall,
 /area/lazarus/outpost/yarilo/engi)
@@ -14386,7 +14785,7 @@
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plating,
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "mTN" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/effect/landmark/damageturf,
@@ -14404,6 +14803,14 @@
 /obj/effect/mapping_helpers/damaged_window,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/yarilo/med/chem)
+"mXD" = (
+/obj/structure/light_fake/small{
+	light_range = 6
+	},
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors/stribog/landing)
 "mYb" = (
 /obj/effect/spawner/window/reinforced/grilled,
 /obj/effect/mapping_helpers/damaged_window,
@@ -14431,7 +14838,7 @@
 "mZu" = (
 /obj/structure/shuttle/engine/large,
 /turf/simulated/floor/plating,
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "naR" = (
 /obj/machinery/power/geothermal_generator,
 /obj/structure/cable/yellow{
@@ -14517,7 +14924,7 @@
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plating,
-/area/lazarus/outdoors)
+/area/lazarus/geotherm/rod)
 "ngC" = (
 /obj/structure/extinguisher_cabinet/directional/north,
 /obj/effect/spawner/random_spawners/dirt_frequent,
@@ -14950,7 +15357,7 @@
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plating,
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "nBi" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -14969,6 +15376,10 @@
 /obj/effect/landmark/start/shaft_miner,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/svarog/living/b)
+"nBH" = (
+/obj/effect/spawner/random_spawners/wall_rusted_probably,
+/turf/simulated/wall,
+/area/lazarus/geotherm/rod)
 "nDo" = (
 /obj/effect/spawner/random_spawners/wall_rusted_probably,
 /turf/simulated/wall,
@@ -14987,8 +15398,9 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
+/obj/effect/spawner/lootdrop/lazarus/trash,
 /turf/simulated/floor/plating,
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "nEx" = (
 /obj/effect/turf_decal/delivery/hollow,
 /obj/structure/rack,
@@ -15003,7 +15415,7 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/plating,
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "nGA" = (
 /obj/structure/window/reinforced{
 	color = "#00BFFF";
@@ -15014,7 +15426,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/plating,
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "nGD" = (
 /obj/structure/mineral_door/wood,
 /turf/simulated/floor/wood,
@@ -15129,6 +15541,14 @@
 	},
 /turf/simulated/floor/wood,
 /area/lazarus/cabin/bar)
+"nMw" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/structure/closet/crate/plastic,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors/stribog/landing)
 "nNB" = (
 /obj/effect/turf_decal/stripes/corner{
 	dir = 4
@@ -15159,6 +15579,15 @@
 /obj/effect/decal/cleanable/blood/old,
 /turf/simulated/floor/plasteel,
 /area/lazarus/outpost/rod/sec/briefing)
+"nOu" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/damageturf,
+/obj/structure/closet/crate/mail,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors/stribog/landing)
 "nOx" = (
 /obj/machinery/cryopod{
 	dir = 4
@@ -15327,9 +15756,8 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/door/airlock/hatch{
-	name = "Аванпост ''Стрибог''"
-	},
+/obj/machinery/door/airlock/hatch,
+/obj/effect/mapping_helpers/airlock/autoname,
 /turf/simulated/floor/plasteel,
 /area/lazarus/outpost/stribog/storage)
 "nVX" = (
@@ -15338,7 +15766,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/plating,
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "nXe" = (
 /obj/item/camera,
 /obj/structure/cable{
@@ -15476,6 +15904,18 @@
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/wood,
 /area/lazarus/cabin/crusader)
+"och" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/machinery/power/terminal{
+	dir = 8
+	},
+/obj/structure/cable/yellow{
+	d2 = 2;
+	icon_state = "0-2"
+	},
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/plating,
+/area/lazarus/outpost/stribog/maint)
 "oco" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -15508,6 +15948,12 @@
 	},
 /turf/simulated/floor/wood,
 /area/lazarus/outdoors)
+"oef" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/damageturf,
+/obj/structure/ore_box,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors/stribog/landing)
 "oet" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -15919,6 +16365,7 @@
 	amount = 5
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/plasteel{
 	icon_state = "bot"
 	},
@@ -15942,7 +16389,7 @@
 	dir = 1;
 	icon_state = "navybluealt"
 	},
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "ovJ" = (
 /obj/machinery/light/directional/south,
 /obj/item/soap,
@@ -16000,13 +16447,13 @@
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plating,
-/area/lazarus/outdoors)
+/area/lazarus/geotherm/rod)
 "oAg" = (
 /turf/simulated/floor/plasteel{
 	dir = 2;
 	icon_state = "navybluecornersalt"
 	},
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "oAy" = (
 /obj/structure/sign/electricshock,
 /obj/effect/decal/cleanable/blood/old,
@@ -16146,6 +16593,14 @@
 	},
 /turf/simulated/floor/plating/asteroid/lazarus/dirt,
 /area/lazarus/outdoors/rod)
+"oGS" = (
+/obj/structure/cable/yellow{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/plating/asteroid/lazarus/forest/edge,
+/area/lazarus/outdoors)
 "oGV" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/item/kirbyplants,
@@ -16175,6 +16630,12 @@
 	},
 /turf/simulated/floor/plating/asteroid/lazarus/dirt,
 /area/lazarus/outdoors)
+"oHS" = (
+/obj/structure/fence/end,
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/structure/barricade/wooden,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors/stribog/landing)
 "oIb" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -16224,7 +16685,7 @@
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plating,
-/area/lazarus/outdoors)
+/area/lazarus/geotherm/rod)
 "oKm" = (
 /obj/effect/spawner/window/reinforced/grilled,
 /obj/structure/cable{
@@ -16305,6 +16766,11 @@
 /obj/item/stock_parts/matter_bin,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/yarilo/engi/storage/secured)
+"oMi" = (
+/obj/structure/barricade/sandbags,
+/obj/structure/barricade/sandbags,
+/turf/simulated/floor/plating/asteroid/lazarus/snow,
+/area/lazarus/outdoors/stribog)
 "oMA" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -16468,6 +16934,11 @@
 	},
 /turf/simulated/floor/plating/asteroid/lazarus/snow,
 /area/lazarus/outdoors/rod)
+"oTU" = (
+/obj/structure/fence/corner,
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors/stribog/landing)
 "oUc" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/catwalk,
@@ -16520,7 +16991,7 @@
 /obj/machinery/door/airlock/maintenance_hatch,
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plating,
-/area/lazarus/outdoors)
+/area/lazarus/geotherm/rod)
 "oVS" = (
 /obj/machinery/constructable_frame/machine_frame,
 /obj/effect/spawner/random_spawners/dirt_frequent,
@@ -16540,6 +17011,14 @@
 /obj/item/clothing/under/rank/cargo/miner/lavaland,
 /turf/simulated/floor/wood,
 /area/lazarus/outdoors)
+"oXa" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/machinery/floodlight,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors/stribog/landing)
 "oXe" = (
 /obj/machinery/economy/vending/cigarette,
 /obj/effect/spawner/random_spawners/dirt_frequent,
@@ -16562,7 +17041,7 @@
 /area/lazarus/outpost/yarilo/med/chem)
 "oXr" = (
 /turf/simulated/wall/mineral/plastitanium/nodiagonal,
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "oYf" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -16607,6 +17086,14 @@
 	},
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/yarilo/living)
+"oYB" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/structure/table_frame,
+/obj/item/stack/sheet/metal{
+	amount = 2
+	},
+/turf/simulated/floor/plating,
+/area/lazarus/outpost/stribog/management)
 "oYU" = (
 /obj/machinery/door/airlock/medical/glass{
 	name = "Спальня главного врача"
@@ -16878,6 +17365,7 @@
 	icon_state = "4-8"
 	},
 /obj/effect/mapping_helpers/damaged_window,
+/obj/structure/barricade/wooden/crude/snow,
 /turf/space,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/stribog/maint)
@@ -16944,7 +17432,7 @@
 	dir = 9;
 	icon_state = "navybluealt"
 	},
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "ppi" = (
 /obj/structure/cable/yellow{
 	d1 = 2;
@@ -17031,7 +17519,7 @@
 	dir = 1;
 	icon_state = "dark"
 	},
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "prw" = (
 /obj/structure/girder,
 /obj/effect/landmark/damageturf,
@@ -17061,6 +17549,18 @@
 /obj/effect/spawner/lootdrop/lazarus/trash,
 /turf/simulated/floor/plasteel,
 /area/lazarus/outpost/rod/living/sec)
+"psZ" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors/stribog/landing)
+"ptb" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/structure/closet/crate/plastic,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors/stribog/landing)
 "pth" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -17090,6 +17590,16 @@
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/wood,
 /area/lazarus/cabin/crusader)
+"pup" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/effect/spawner/lootdrop/lazarus/trash,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors/stribog/landing)
 "pvE" = (
 /obj/effect/spawner/window/reinforced/grilled,
 /obj/effect/mapping_helpers/damaged_window,
@@ -17098,6 +17608,11 @@
 	},
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/rod/living/crew)
+"pvS" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/plasteel,
+/area/lazarus/outpost/stribog/management)
 "pwJ" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -17166,6 +17681,13 @@
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/carpet/red,
 /area/lazarus/outpost/rod/iaa)
+"pzH" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
+/obj/effect/landmark/damageturf,
+/obj/effect/decal/cleanable/blood,
+/turf/simulated/floor/plating,
+/area/lazarus/outpost/stribog/management)
 "pAl" = (
 /obj/machinery/power/geothermal_generator,
 /obj/structure/cable/yellow{
@@ -17183,12 +17705,16 @@
 	dir = 8
 	},
 /area/lazarus/outpost/rod)
+"pBp" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
+/turf/simulated/floor/plating,
+/area/lazarus/outpost/stribog/management)
 "pBJ" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/effect/spawner/random_spawners/dirt_frequent,
-/obj/machinery/door/airlock/hatch{
-	name = "Аванпост ''Стрибог''"
-	},
+/obj/machinery/door/airlock/hatch,
+/obj/effect/mapping_helpers/airlock/autoname,
 /turf/simulated/floor/plasteel,
 /area/lazarus/outpost/stribog/storage)
 "pBL" = (
@@ -17341,7 +17867,7 @@
 	dir = 1;
 	icon_state = "dark"
 	},
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "pIb" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/effect/spawner/lootdrop/lazarus/trash,
@@ -17408,6 +17934,16 @@
 /obj/item/wirecutters,
 /turf/simulated/floor/plating,
 /area/lazarus/geotherm/svarog)
+"pLi" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/effect/spawner/lootdrop/lazarus/trash,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors/stribog/landing)
 "pLj" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -17535,7 +18071,7 @@
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plating,
-/area/lazarus/outdoors)
+/area/lazarus/geotherm/rod)
 "pQQ" = (
 /obj/structure/closet,
 /obj/effect/spawner/random_spawners/dirt_frequent,
@@ -17686,6 +18222,11 @@
 /obj/effect/mapping_helpers/damaged_window,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/yarilo/med/chem)
+"pXe" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/structure/closet/crate/plastic,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors/stribog/landing)
 "pXJ" = (
 /obj/machinery/cryopod,
 /obj/effect/spawner/random_spawners/dirt_frequent,
@@ -17784,6 +18325,10 @@
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/catwalk,
 /area/lazarus/outpost/svarog/mining)
+"pZM" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/turf/simulated/floor/plating,
+/area/lazarus/outpost/stribog/management)
 "pZZ" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/item/stack/tile/plasteel,
@@ -17907,7 +18452,7 @@
 /obj/structure/closet/crate,
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plating,
-/area/lazarus/outdoors)
+/area/lazarus/geotherm/rod)
 "qjV" = (
 /obj/machinery/door/airlock/security/glass,
 /obj/structure/cable{
@@ -17960,7 +18505,7 @@
 	dir = 1;
 	icon_state = "dark"
 	},
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "qkp" = (
 /obj/structure/fence{
 	dir = 4
@@ -18212,6 +18757,13 @@
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/svarog/qm)
+"qtE" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/structure/table,
+/obj/effect/spawner/lootdrop/lazarus/engineering,
+/obj/machinery/light/small/directional/south,
+/turf/simulated/floor/plating,
+/area/lazarus/outpost/stribog/maint)
 "quf" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/effect/landmark/damageturf,
@@ -18259,6 +18811,16 @@
 	icon_state = "bluecorner"
 	},
 /area/lazarus/outpost/rod/botany)
+"qwk" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/barricade/sandbags,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors/stribog/landing)
 "qwu" = (
 /obj/effect/spawner/random_spawners/wall_rusted_probably,
 /obj/structure/sign/fire,
@@ -18406,7 +18968,7 @@
 	dir = 1;
 	icon_state = "dark"
 	},
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "qCN" = (
 /obj/machinery/door/airlock/public/glass,
 /obj/effect/spawner/random_spawners/dirt_frequent,
@@ -18416,6 +18978,14 @@
 	dir = 8
 	},
 /area/lazarus/outpost/rod)
+"qDr" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/mob_spawn/human/lazarus/engineer/winter,
+/obj/effect/decal/cleanable/blood,
+/turf/simulated/floor/plasteel{
+	icon_state = "brown"
+	},
+/area/lazarus/outpost/stribog/storage)
 "qDs" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/item/stack/cable_coil{
@@ -18499,6 +19069,15 @@
 	},
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/yarilo/med/cmo)
+"qGx" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/damageturf,
+/obj/effect/decal/cleanable/blood,
+/turf/simulated/floor/plasteel{
+	dir = 8;
+	icon_state = "brown"
+	},
+/area/lazarus/outpost/stribog/management)
 "qGI" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -18613,7 +19192,7 @@
 /area/lazarus/outpost/rod/hop)
 "qLI" = (
 /turf/simulated/floor/plating,
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "qLL" = (
 /obj/item/stack/rods{
 	amount = 2
@@ -18664,7 +19243,7 @@
 /obj/structure/rack,
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plating,
-/area/lazarus/outdoors)
+/area/lazarus/geotherm/rod)
 "qOw" = (
 /obj/structure/closet,
 /obj/effect/spawner/random_spawners/dirt_frequent,
@@ -18766,7 +19345,7 @@
 	dir = 4;
 	icon_state = "navybluealt"
 	},
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "qSE" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/effect/landmark/damageturf,
@@ -18849,6 +19428,14 @@
 /obj/effect/spawner/lootdrop/lazarus/trash,
 /turf/simulated/floor/plating,
 /area/lazarus/geotherm/svarog)
+"qVk" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/structure/chair/sofa/right{
+	dir = 1
+	},
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/plating,
+/area/lazarus/outpost/stribog/management)
 "qVw" = (
 /obj/machinery/recharger,
 /obj/structure/table_frame,
@@ -19081,6 +19668,12 @@
 	icon_state = "white"
 	},
 /area/lazarus/outpost/yarilo/med/chem)
+"riR" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/item/kirbyplants,
+/obj/effect/decal/cleanable/blood,
+/turf/simulated/floor/plating,
+/area/lazarus/outpost/stribog/management)
 "rjJ" = (
 /obj/machinery/light/directional/south,
 /obj/effect/spawner/random_spawners/dirt_frequent,
@@ -19194,7 +19787,7 @@
 /obj/machinery/light/small/directional/west,
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plating,
-/area/lazarus/outdoors)
+/area/lazarus/geotherm/rod)
 "rpP" = (
 /obj/machinery/conveyor/north,
 /obj/machinery/light/directional/east,
@@ -19373,6 +19966,9 @@
 /obj/structure/closet,
 /obj/effect/spawner/lootdrop/maintenance/eight,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/engineering,
+/obj/effect/spawner/lootdrop/lazarus/engineering,
+/obj/effect/spawner/lootdrop/lazarus/engineering,
 /turf/simulated/floor/plasteel{
 	icon_state = "bot"
 	},
@@ -19501,7 +20097,7 @@
 	dir = 1;
 	icon_state = "dark"
 	},
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "rEI" = (
 /obj/structure/table,
 /obj/effect/spawner/random_spawners/dirt_frequent,
@@ -19675,6 +20271,15 @@
 	icon_state = "blue"
 	},
 /area/lazarus/outpost/rod/hop)
+"rKJ" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/mob_spawn/human/lazarus/colonist,
+/obj/effect/decal/cleanable/blood,
+/turf/simulated/floor/plasteel{
+	dir = 8;
+	icon_state = "browncorner"
+	},
+/area/lazarus/outpost/stribog/management)
 "rLk" = (
 /obj/structure/grille/broken,
 /obj/item/shard,
@@ -19708,6 +20313,7 @@
 /area/lazarus/outpost/svarog/qm)
 "rMo" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "brown"
@@ -19718,8 +20324,9 @@
 	dir = 6
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/damageturf,
 /turf/simulated/floor/plating,
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "rMu" = (
 /obj/effect/spawner/random_spawners/wall_rusted_probably,
 /turf/simulated/wall,
@@ -19912,7 +20519,7 @@
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plating,
-/area/lazarus/outdoors)
+/area/lazarus/geotherm/rod)
 "rVg" = (
 /obj/machinery/sleeper{
 	dir = 1
@@ -19939,6 +20546,11 @@
 	icon_state = "brown"
 	},
 /area/lazarus/outpost/svarog/living/b)
+"rVQ" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/machinery/light/small/directional/east,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors/stribog/landing)
 "rXF" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -19981,6 +20593,7 @@
 /obj/structure/rack,
 /obj/effect/spawner/lootdrop/maintenance/three,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/engineering,
 /turf/simulated/floor/plasteel,
 /area/lazarus/outpost/stribog/storage)
 "rZn" = (
@@ -20164,7 +20777,7 @@
 	dir = 8;
 	icon_state = "navybluealt"
 	},
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "sgJ" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/structure/table/wood,
@@ -20259,6 +20872,21 @@
 /obj/effect/baseturf_helper/lazarus,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/svarog/qm)
+"skH" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors/stribog/landing)
 "slD" = (
 /obj/machinery/cryopod{
 	dir = 4
@@ -20273,7 +20901,7 @@
 /obj/effect/spawner/window/reinforced/grilled,
 /obj/structure/barricade/wooden/crude/snow,
 /turf/simulated/floor/plating,
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outpost/stribog/management)
 "smp" = (
 /obj/structure/table,
 /obj/item/folder/yellow{
@@ -20467,6 +21095,11 @@
 /obj/effect/mapping_helpers/airlock/locked,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/svarog/qm)
+"sxe" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/structure/reagent_dispensers/fueltank,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors/stribog/landing)
 "sxv" = (
 /obj/item/chair/stool{
 	dir = 1
@@ -20484,6 +21117,11 @@
 	icon_state = "redcorner"
 	},
 /area/lazarus/outpost/rod/sec)
+"sxG" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/structure/closet/crate/mail,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors/stribog/landing)
 "syd" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -20516,7 +21154,7 @@
 /turf/simulated/floor/plasteel{
 	icon_state = "navybluealt"
 	},
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "sBr" = (
 /obj/effect/baseturf_helper/lazarus,
 /turf/simulated/floor/grass,
@@ -20686,6 +21324,16 @@
 /obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/svarog/med)
+"sIQ" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/plating,
+/area/lazarus/outpost/stribog/maint)
 "sJh" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -20713,6 +21361,7 @@
 /obj/machinery/door/airlock/maintenance_hatch,
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/effect/mapping_helpers/airlock/welded,
+/obj/effect/mapping_helpers/airlock/autoname,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/svarog/maint)
 "sKu" = (
@@ -20765,7 +21414,7 @@
 	},
 /obj/machinery/door/airlock/maintenance_hatch,
 /turf/simulated/floor/plating,
-/area/lazarus/outdoors)
+/area/lazarus/geotherm/rod)
 "sLq" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/structure/mineral_door/wood,
@@ -20924,7 +21573,7 @@
 	dir = 1;
 	icon_state = "dark"
 	},
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "sRo" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plasteel{
@@ -21134,6 +21783,12 @@
 /obj/item/paper/lazarus/mutant,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/yarilo/engi/storage/secured)
+"sYM" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/structure/barricade/sandbags,
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors/stribog/landing)
 "sZB" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/effect/landmark/damageturf,
@@ -21297,6 +21952,12 @@
 /obj/effect/spawner/lootdrop/lazarus/trash,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/svarog/living/cryo)
+"tef" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors/stribog/landing)
 "teU" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/structure/table/wood,
@@ -21344,7 +22005,7 @@
 /obj/item/flag/syndi,
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plating,
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "tfY" = (
 /obj/item/trash/spentcasing,
 /obj/effect/spawner/random_spawners/dirt_frequent,
@@ -21430,6 +22091,13 @@
 /obj/effect/spawner/random_spawners/cobweb_left_frequent,
 /turf/simulated/floor/wood,
 /area/lazarus/cabin/crusader)
+"tia" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/structure/table,
+/obj/effect/spawner/lootdrop/lazarus/food,
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/plating,
+/area/lazarus/outpost/stribog/management)
 "tiR" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/effect/decal/cleanable/blood/old,
@@ -21464,7 +22132,7 @@
 	dir = 1;
 	icon_state = "dark"
 	},
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "tkl" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -21803,7 +22471,7 @@
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/effect/spawner/lootdrop/lazarus/trash,
 /turf/simulated/floor/plating,
-/area/lazarus/outdoors)
+/area/lazarus/geotherm/rod)
 "tAS" = (
 /obj/machinery/cryopod{
 	dir = 4
@@ -22045,6 +22713,11 @@
 	},
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/yarilo/living)
+"tKW" = (
+/obj/structure/fence,
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors/stribog/landing)
 "tLC" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable{
@@ -22060,14 +22733,17 @@
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/yarilo/canteen)
 "tMB" = (
-/obj/effect/spawner/random_spawners/dirt_frequent,
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
+/obj/structure/barricade/sandbags,
+/turf/simulated/floor/plating/asteroid/lazarus/snow,
+/area/lazarus/outdoors/stribog)
+"tMD" = (
+/obj/structure/fence{
+	dir = 4
 	},
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/damageturf,
 /turf/simulated/floor/plating,
-/area/lazarus/outpost/stribog/maint)
+/area/lazarus/outdoors/stribog/landing)
 "tMQ" = (
 /obj/effect/spawner/random_spawners/wall_rusted_probably,
 /turf/simulated/wall,
@@ -22331,6 +23007,7 @@
 	icon_state = "4-8"
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/stribog/maint)
 "tVI" = (
@@ -22382,21 +23059,21 @@
 /obj/effect/spawner/window/reinforced/grilled,
 /obj/effect/mapping_helpers/damaged_window,
 /turf/simulated/floor/plating,
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outpost/stribog/management)
 "tXt" = (
 /obj/item/flag/solgov,
 /turf/simulated/floor/plasteel{
 	dir = 9;
 	icon_state = "navybluealt"
 	},
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "tXx" = (
 /obj/machinery/economy/vending/medical,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "dark"
 	},
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "tXy" = (
 /obj/machinery/power/apc/critical/directional/east,
 /obj/structure/cable{
@@ -22453,6 +23130,12 @@
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/wood/fancy/oak,
 /area/lazarus/cabin/bar)
+"tZc" = (
+/obj/structure/fence/corner{
+	dir = 8
+	},
+/turf/simulated/floor/plating/asteroid/lazarus/dirt,
+/area/lazarus/outdoors)
 "tZC" = (
 /obj/effect/turf_decal/delivery,
 /obj/structure/cable{
@@ -22697,6 +23380,17 @@
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plating,
 /area/lazarus/geotherm/stribog)
+"uiJ" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/effect/landmark/damageturf,
+/obj/structure/ore_box,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors/stribog/landing)
 "uiY" = (
 /obj/effect/landmark/damageturf,
 /obj/effect/spawner/random_spawners/dirt_frequent,
@@ -22742,7 +23436,7 @@
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plating,
-/area/lazarus/outdoors)
+/area/lazarus/geotherm/rod)
 "ujX" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/effect/landmark/damageturf,
@@ -22760,6 +23454,17 @@
 	icon_state = "neutralfull"
 	},
 /area/lazarus/outpost/rod/canteen)
+"uln" = (
+/obj/structure/table,
+/obj/effect/spawner/lootdrop/lazarus/trash,
+/obj/effect/spawner/lootdrop/lazarus/food,
+/obj/effect/landmark/damageturf,
+/obj/machinery/light/directional/east,
+/turf/simulated/floor/plasteel{
+	dir = 4;
+	icon_state = "brown"
+	},
+/area/lazarus/outpost/stribog/management)
 "umr" = (
 /obj/structure/table/glass,
 /obj/machinery/reagentgrinder{
@@ -22903,6 +23608,14 @@
 /obj/effect/decal/cleanable/blood/tracks,
 /turf/simulated/floor/plasteel,
 /area/lazarus/outpost/rod/biodome)
+"utn" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
+/turf/simulated/floor/plasteel{
+	dir = 4;
+	icon_state = "brown"
+	},
+/area/lazarus/outpost/stribog/management)
 "utt" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plating,
@@ -22960,6 +23673,13 @@
 /obj/item/paper/lazarus/rod_maint,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/yarilo/maint)
+"uxW" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/structure/table,
+/obj/item/paper_bin/nanotrasen,
+/obj/item/pen,
+/turf/simulated/floor/plating,
+/area/lazarus/outpost/stribog/management)
 "uyA" = (
 /obj/structure/sink/directional/west,
 /obj/effect/spawner/random_spawners/dirt_frequent,
@@ -22984,7 +23704,7 @@
 /turf/simulated/floor/plasteel{
 	icon_state = "darkbluefull"
 	},
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "uAo" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plasteel{
@@ -23143,6 +23863,11 @@
 /obj/structure/table,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/svarog/living/b)
+"uHK" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/structure/closet/crate,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors/stribog/landing)
 "uIu" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/item/stack/tile/plasteel,
@@ -23308,7 +24033,7 @@
 	dir = 1;
 	icon_state = "dark"
 	},
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "uQq" = (
 /obj/structure/table,
 /obj/structure/cable{
@@ -23365,6 +24090,7 @@
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/yarilo/engi/storage)
 "uTn" = (
+/obj/effect/spawner/random_spawners/wall_rusted_probably,
 /turf/simulated/wall,
 /area/lazarus/outpost/stribog/maint)
 "uTT" = (
@@ -23421,6 +24147,12 @@
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/rod/sec/locker)
+"uWM" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/plating,
+/area/lazarus/outpost/stribog/management)
 "uXB" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plasteel{
@@ -23558,8 +24290,8 @@
 /turf/simulated/floor/plating,
 /area/lazarus/geotherm/svarog)
 "vdq" = (
-/turf/simulated/floor/plating/snow,
-/area/lazarus/outdoors)
+/turf/simulated/floor/plating/asteroid/lazarus/forest/edge,
+/area/lazarus/outdoors/stribog)
 "vdG" = (
 /obj/structure/fence/door,
 /turf/simulated/floor/plating/asteroid/lazarus/dirt,
@@ -23785,12 +24517,36 @@
 	icon_state = "dark"
 	},
 /area/lazarus/outpost/yarilo/med/surgery)
+"vml" = (
+/obj/structure/fence/corner{
+	dir = 8
+	},
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors/stribog/landing)
+"vmy" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/simulated/floor/plating,
+/area/lazarus/outpost/stribog/management)
 "vnB" = (
 /obj/effect/spawner/window/reinforced/grilled,
 /obj/structure/barricade/wooden/crude/snow,
 /obj/effect/mapping_helpers/damaged_window,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/stribog/storage)
+"vnJ" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/structure/table,
+/obj/effect/spawner/lootdrop/lazarus/trash,
+/turf/simulated/floor/plasteel,
+/area/lazarus/outpost/stribog/management)
 "vnM" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 6
@@ -23966,6 +24722,13 @@
 	icon_state = "blue"
 	},
 /area/lazarus/outpost/yarilo/living)
+"vuQ" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/spawner/lootdrop/lazarus/trash,
+/obj/structure/barricade/sandbags,
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors/stribog/landing)
 "vuT" = (
 /obj/effect/spawner/window/reinforced/grilled,
 /obj/structure/cable{
@@ -24090,6 +24853,15 @@
 	icon_state = "white"
 	},
 /area/lazarus/outpost/yarilo/med/virology)
+"vza" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/damageturf,
+/obj/structure/ore_box,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors/stribog/landing)
 "vzF" = (
 /obj/machinery/light/small/directional/east,
 /turf/simulated/floor/plating/asteroid/lazarus/dirt,
@@ -24157,6 +24929,12 @@
 /obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/plating,
 /area/lazarus/geotherm/svarog)
+"vDM" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/structure/chair/office/light,
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/plasteel,
+/area/lazarus/outpost/stribog/management)
 "vEZ" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/effect/landmark/damageturf,
@@ -24167,7 +24945,7 @@
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plating,
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "vFR" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/structure/bed,
@@ -24210,6 +24988,12 @@
 	icon_state = "red"
 	},
 /area/lazarus/outpost/rod/iaa)
+"vHr" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/damageturf,
+/obj/effect/decal/cleanable/blood,
+/turf/simulated/floor/plating,
+/area/lazarus/outpost/stribog/management)
 "vHs" = (
 /obj/effect/spawner/window/reinforced/grilled,
 /obj/structure/cable{
@@ -24271,7 +25055,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "vMC" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/effect/mob_spawn/human/lazarus/chef,
@@ -24310,7 +25094,7 @@
 	dir = 10;
 	icon_state = "navybluealt"
 	},
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "vOj" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/effect/landmark/damageturf,
@@ -24430,6 +25214,7 @@
 /obj/structure/closet,
 /obj/effect/spawner/lootdrop/maintenance/eight,
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/plasteel{
 	icon_state = "bot"
 	},
@@ -24465,7 +25250,7 @@
 /area/lazarus/outpost/svarog/mining/enter)
 "vVz" = (
 /turf/simulated/wall/mineral/plastitanium,
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "vVI" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plating,
@@ -24528,6 +25313,8 @@
 /obj/machinery/door/airlock/maintenance{
 	name = "Подстанция"
 	},
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/effect/spawner/lootdrop/lazarus/trash,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/stribog/maint)
 "vYi" = (
@@ -24540,6 +25327,10 @@
 /obj/structure/reagent_dispensers/fueltank/chem/west,
 /turf/simulated/floor/engine,
 /area/lazarus/outpost/yarilo/med/chem)
+"vYK" = (
+/obj/structure/barricade/sandbags,
+/turf/simulated/floor/plating/asteroid/lazarus/dirt,
+/area/lazarus/outdoors/stribog)
 "vYW" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/effect/spawner/lootdrop/lazarus/trash,
@@ -24550,7 +25341,7 @@
 /obj/structure/cable/yellow,
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plating,
-/area/lazarus/outdoors)
+/area/lazarus/geotherm/rod)
 "vZF" = (
 /obj/machinery/light/small/directional/west,
 /obj/effect/spawner/random_spawners/dirt_frequent,
@@ -24672,8 +25463,9 @@
 	dir = 10
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/damageturf,
 /turf/simulated/floor/plating,
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "wey" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -24784,6 +25576,20 @@
 /obj/machinery/door/airlock/freezer,
 /turf/simulated/floor/plating,
 /area/lazarus/outdoors)
+"wiF" = (
+/obj/effect/spawner/window/reinforced/grilled,
+/obj/effect/mapping_helpers/destroyed_window/intact_grill,
+/turf/simulated/floor/plating,
+/area/lazarus/outpost/stribog/management)
+"wjW" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/machinery/power/smes,
+/obj/structure/cable{
+	d2 = 2;
+	icon_state = "0-2"
+	},
+/turf/simulated/floor/plating,
+/area/lazarus/outpost/stribog/maint)
 "wkd" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plasteel{
@@ -24839,7 +25645,7 @@
 	dir = 5;
 	icon_state = "navybluealt"
 	},
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "wmp" = (
 /obj/machinery/door/airlock/mining,
 /obj/effect/spawner/random_spawners/dirt_frequent,
@@ -24965,13 +25771,24 @@
 /obj/effect/decal/cleanable/blood/old,
 /turf/simulated/floor/grass,
 /area/lazarus/outpost/rod/biodome)
+"wsj" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/effect/landmark/damageturf,
+/obj/effect/decal/cleanable/blood,
+/turf/simulated/floor/plating,
+/area/lazarus/outpost/stribog/management)
 "wsl" = (
 /obj/machinery/economy/vending/cola,
 /turf/simulated/floor/plasteel{
 	dir = 9;
 	icon_state = "navybluealt"
 	},
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "wsq" = (
 /obj/structure/rack,
 /obj/effect/turf_decal/delivery,
@@ -24997,6 +25814,11 @@
 /obj/effect/mapping_helpers/damaged_window,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/yarilo/living)
+"wtL" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/structure/ore_box,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors/stribog/landing)
 "wuc" = (
 /obj/structure/table,
 /obj/machinery/light/directional/south,
@@ -25090,7 +25912,7 @@
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plating,
-/area/lazarus/outdoors)
+/area/lazarus/geotherm/rod)
 "wya" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/effect/spawner/lootdrop/lazarus/trash,
@@ -25277,6 +26099,20 @@
 	},
 /turf/simulated/floor/plating/asteroid/lazarus/dirt,
 /area/lazarus/outdoors/rod)
+"wEp" = (
+/obj/machinery/door/airlock/hatch,
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/effect/mapping_helpers/machinery/damaged,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/effect/landmark/damageturf,
+/obj/effect/decal/cleanable/blood,
+/turf/simulated/floor/plating,
+/area/lazarus/outpost/stribog/management)
 "wFk" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/structure/sign/poster/contraband/random/east,
@@ -25475,7 +26311,7 @@
 	},
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plating,
-/area/lazarus/outdoors)
+/area/lazarus/geotherm/rod)
 "wNw" = (
 /obj/effect/spawner/window/reinforced/grilled,
 /obj/structure/cable{
@@ -25525,6 +26361,14 @@
 /obj/effect/decal/cleanable/blood/old,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/yarilo/kitchen)
+"wPw" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/structure/closet,
+/turf/simulated/floor/plasteel{
+	dir = 9;
+	icon_state = "brown"
+	},
+/area/lazarus/outpost/stribog/management)
 "wPz" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/effect/decal/cleanable/glass,
@@ -25594,7 +26438,7 @@
 	dir = 1;
 	icon_state = "dark"
 	},
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "wRn" = (
 /obj/structure/table,
 /obj/effect/turf_decal/delivery/hollow,
@@ -25614,6 +26458,14 @@
 /obj/effect/spawner/lootdrop/lazarus/trash,
 /turf/simulated/floor/plating,
 /area/lazarus/geotherm/stribog)
+"wSH" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/structure/ore_box,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors/stribog/landing)
 "wSK" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -25644,7 +26496,7 @@
 	dir = 1;
 	icon_state = "dark"
 	},
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "wVl" = (
 /obj/machinery/power/smes{
 	charge = 5e+006
@@ -25918,9 +26770,13 @@
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/rod/botany)
 "xic" = (
+/obj/structure/fence/end{
+	dir = 1
+	},
+/obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/structure/barricade/wooden,
 /turf/simulated/floor/plating,
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "xik" = (
 /obj/effect/spawner/random_spawners/wall_rusted_probably,
 /obj/effect/spawner/random_spawners/wall_rusted_probably,
@@ -26021,6 +26877,17 @@
 /obj/item/pickaxe,
 /turf/simulated/floor/wood,
 /area/lazarus/outdoors)
+"xoA" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/machinery/computer{
+	dir = 1
+	},
+/obj/effect/mapping_helpers/machinery/damaged,
+/turf/simulated/floor/plasteel{
+	dir = 10;
+	icon_state = "brown"
+	},
+/area/lazarus/outpost/stribog/management)
 "xoI" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/structure/table_frame,
@@ -26063,6 +26930,7 @@
 "xrT" = (
 /obj/effect/spawner/window/reinforced/grilled,
 /obj/effect/mapping_helpers/damaged_window,
+/obj/structure/barricade/wooden/crude/snow,
 /turf/space,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/stribog/maint)
@@ -26132,7 +27000,7 @@
 	dir = 1;
 	icon_state = "dark"
 	},
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "xvv" = (
 /obj/effect/spawner/random_spawners/wall_rusted_probably,
 /turf/simulated/wall,
@@ -26746,6 +27614,14 @@
 /obj/effect/landmark/damageturf,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/svarog/living/b)
+"xUs" = (
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/plating/asteroid/lazarus/forest/edge,
+/area/lazarus/outdoors/svarog)
 "xUC" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -26840,6 +27716,14 @@
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/svarog/mining)
+"yba" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors/stribog/landing)
 "ybB" = (
 /obj/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
@@ -26959,6 +27843,17 @@
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plasteel,
 /area/lazarus/outpost/yarilo/living)
+"ygo" = (
+/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/barricade/sandbags,
+/obj/effect/landmark/damageturf,
+/turf/simulated/floor/plating,
+/area/lazarus/outdoors/stribog/landing)
 "ygW" = (
 /obj/machinery/light/directional/north,
 /obj/machinery/power/apc/directional/north,
@@ -26988,7 +27883,7 @@
 	dir = 1;
 	icon_state = "dark"
 	},
-/area/lazarus/outpost/stribog/landing)
+/area/lazarus/outdoors/stribog/landing)
 "yhF" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plating,
@@ -89621,12 +90516,12 @@ cSD
 bcq
 rex
 bcq
-hst
-hst
-hst
-hst
-hst
-hst
+nBH
+nBH
+nBH
+nBH
+nBH
+nBH
 rLp
 bcq
 bcq
@@ -89973,7 +90868,7 @@ cSD
 bcq
 bcq
 bcq
-hst
+nBH
 pQp
 rpc
 bwE
@@ -90325,12 +91220,12 @@ bZk
 bcq
 rex
 bcq
-hst
+nBH
 lyt
 deb
 evu
 qjK
-hst
+nBH
 rLp
 bcq
 rex
@@ -90677,12 +91572,12 @@ cSD
 bcq
 bcq
 bcq
-hst
-hst
-hst
+nBH
+nBH
+nBH
 feY
-hst
-hst
+nBH
+nBH
 rLp
 rLp
 bcq
@@ -91028,14 +91923,14 @@ bcq
 cSD
 bcq
 bcq
-hst
-hst
+nBH
+nBH
 nfE
 laq
 ldO
 vZv
-hst
-hst
+nBH
+nBH
 rLp
 bcq
 cSD
@@ -91380,7 +92275,7 @@ bcq
 bZk
 bcq
 bcq
-hst
+nBH
 dNH
 wNs
 deb
@@ -91732,14 +92627,14 @@ bcq
 cSD
 bcq
 bcq
-hst
+nBH
 aKm
 tzN
 aKm
 bxN
 deb
 vZv
-hst
+nBH
 rLp
 bcq
 bZk
@@ -92084,7 +92979,7 @@ bcq
 cSD
 bcq
 bcq
-hst
+nBH
 aKm
 iHl
 aKm
@@ -92436,14 +93331,14 @@ bcq
 cSD
 bcq
 bcq
-hst
+nBH
 aKm
 oKf
 aKm
 qOh
 deb
 vZv
-hst
+nBH
 vzO
 bcq
 cSD
@@ -92788,7 +93683,7 @@ bcq
 cSD
 bcq
 bcq
-hst
+nBH
 dNH
 mOd
 rUu
@@ -93140,14 +94035,14 @@ bcq
 bZk
 bcq
 bcq
-hst
-hst
+nBH
+nBH
 ozX
 ozX
 ozX
 ozX
-hst
-hst
+nBH
+nBH
 rLp
 bcq
 cSD
@@ -93493,12 +94388,12 @@ cSD
 bcq
 bcq
 bcq
-hst
-hst
-hst
-hst
-hst
-hst
+nBH
+nBH
+nBH
+nBH
+nBH
+nBH
 bcq
 bcq
 bcq
@@ -108526,7 +109421,7 @@ xis
 xis
 xis
 xis
-vdq
+xis
 xis
 xis
 xis
@@ -122312,8 +123207,8 @@ foy
 foy
 foy
 foy
-foy
-foy
+vdq
+vdq
 foy
 foy
 foy
@@ -122632,6 +123527,26 @@ foy
 foy
 foy
 foy
+vdq
+vdq
+foy
+foy
+foy
+foy
+foy
+foy
+vdq
+foy
+foy
+foy
+foy
+foy
+foy
+foy
+foy
+foy
+foy
+vdq
 foy
 foy
 foy
@@ -122643,30 +123558,10 @@ foy
 foy
 foy
 foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
+vdq
+vdq
+vdq
+vdq
 foy
 foy
 foy
@@ -122983,45 +123878,45 @@ foy
 foy
 foy
 foy
+vdq
+vdq
+vdq
+vdq
 foy
 foy
 foy
 foy
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
 foy
 foy
 foy
 foy
+vdq
+vdq
+vdq
+vdq
+foy
+foy
+vdq
+vdq
+vdq
 foy
 foy
 foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
 foy
 foy
 foy
@@ -123334,48 +124229,48 @@ foy
 foy
 foy
 foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
 foy
 foy
 ksn
@@ -123685,52 +124580,52 @@ foy
 foy
 foy
 foy
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
 foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-mpw
 ksn
 ksn
 ksn
@@ -124036,52 +124931,52 @@ foy
 foy
 foy
 foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
+vdq
+vdq
+vdq
+tMB
+vYK
+tMB
+tMB
+vYK
+vdq
+vdq
+vdq
+vdq
+vdq
+tMB
+vYK
+tMB
+tMB
+vYK
+tMB
+tMB
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vYK
+tMB
+tMB
+vYK
+tMB
+vYK
+tMB
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
 foy
 ksn
 ksn
@@ -124387,42 +125282,42 @@ foy
 foy
 foy
 foy
-foy
-foy
-foy
-foy
-foy
-mCJ
-mCJ
-mCJ
+vdq
+vdq
+vdq
+vdq
+tMB
+vml
 deB
 deB
-slI
-slI
-mCJ
-mCJ
-mCJ
-fAX
-tXr
-slI
 deB
-mCJ
-mCJ
-mCJ
-mCJ
-slI
-slI
-slI
-slI
-mCJ
-mCJ
-mCJ
-slI
-bxS
 deB
-slI
-mCJ
-mCJ
+deB
+deB
+tMD
+tMD
+deB
+deB
+tMD
+tMD
+tMD
+tMD
+deB
+deB
+deB
+deB
+deB
+deB
+deB
+deB
+deB
+deB
+deB
+deB
+deB
+tMD
+tMD
+tMD
 keg
 keg
 vnB
@@ -124431,9 +125326,9 @@ keg
 vuv
 keg
 keg
-foy
-foy
-foy
+vdq
+vdq
+vdq
 foy
 ksn
 ksn
@@ -124739,42 +125634,42 @@ foy
 foy
 foy
 foy
-foy
-foy
-foy
-foy
-foy
-mCJ
+vdq
+vdq
+vdq
+vdq
+tMB
+tKW
 mal
 mal
 mal
+eaR
+mal
+ijv
+ijv
+ijv
+ijv
+ijv
+mal
+ijv
+ijv
+mal
+mal
+eaR
 mal
 mal
 mal
+eaR
 mal
 mal
 mal
+eaR
+eaR
 mal
 mal
 mal
-mal
-mal
-mal
-mal
-mal
-mal
-mal
-mal
-mal
-mal
-mal
-mal
-mal
-mal
-mal
-mal
-mal
-arq
+ijv
+mXD
 keg
 qRs
 rwC
@@ -124783,9 +125678,9 @@ hVy
 aFA
 bpN
 keg
-foy
-foy
-foy
+vdq
+vdq
+vdq
 foy
 ksn
 ksn
@@ -125092,52 +125987,52 @@ foy
 foy
 foy
 foy
-foy
-foy
-foy
-foy
-mCJ
+vdq
+vdq
+vdq
+vYK
+tKW
+mal
+ejE
+ejE
+ejE
+ejE
+ejE
+sYM
+sYM
+psZ
+fnD
+mal
+ijv
+wtL
+eaR
+ejE
+ejE
+sYM
+ejE
+ejE
+ejE
+ejE
+ejE
+sxG
 mal
 mal
+ijv
 mal
-mal
-mal
-mal
-mal
-mal
-mal
-mal
-mal
-mal
-mal
-mal
-mal
-mal
-mal
-mal
-mal
-mal
-mal
-mal
-mal
-mal
-mal
-mal
-mal
-mal
-mal
-mal
+ejE
+ejE
+sYM
 vnB
 ugO
 bfy
 fDg
 rMo
-geI
-ijN
+mwL
+jUs
 vnB
-foy
-foy
-foy
+vdq
+vdq
+vdq
 foy
 ksn
 ksn
@@ -125445,10 +126340,18 @@ foy
 foy
 foy
 foy
-foy
-foy
-foy
-slI
+vdq
+vdq
+vdq
+tKW
+mal
+ejE
+tfT
+mal
+mal
+mal
+mal
+ijv
 mal
 mal
 tfT
@@ -125457,25 +126360,17 @@ mal
 mal
 mal
 mal
-mal
-mal
-tfT
-mal
-mal
-mal
-mal
-mal
-mal
-mal
+ijv
+jel
 mal
 tfT
 mal
 mal
 mal
 mal
-mal
-mal
-mal
+ijv
+ijv
+ijv
 tfT
 nEs
 iPz
@@ -125484,13 +126379,13 @@ qcQ
 geI
 dZh
 iGN
-feA
+qDr
 vTw
 keg
-foy
-foy
-foy
-foy
+vdq
+vdq
+vdq
+vdq
 ksn
 ksn
 ksn
@@ -125797,53 +126692,53 @@ foy
 foy
 foy
 foy
-foy
-foy
-foy
-slI
+vdq
+vdq
+vdq
+tKW
 mal
-mal
+ejE
 mal
 nAy
 cNR
 cNR
 cNR
 cNR
+wSH
 cNR
 cNR
 cNR
 cNR
 cNR
 cNR
+fmX
+fmX
+fmX
+fmX
 cNR
 cNR
 cNR
+gnX
 cNR
-cNR
-cNR
-cNR
-cNR
-cNR
-cNR
-cNR
-cNR
+fmX
+fmX
 weu
-mal
-vLI
-mal
+ijv
+pLi
+eaR
 vnB
 geI
 kdI
 rZf
 cgi
-geI
+mwL
 ouG
 keg
+vdq
+vdq
+vdq
+vdq
 foy
-foy
-foy
-foy
-mpw
 ksn
 ksn
 ksn
@@ -126149,15 +127044,17 @@ foy
 foy
 foy
 foy
-foy
-foy
-foy
-deB
+vdq
+vdq
+vdq
+tKW
 mal
-mal
+aNa
 mal
 hHA
 mal
+eaR
+eaR
 mal
 mal
 mal
@@ -126165,22 +127062,20 @@ mal
 mal
 mal
 mal
+ijv
+psZ
+ijv
+ijv
+ijv
+mal
+mal
+eaR
 mal
 mal
 mal
-mal
-mal
-mal
-mal
-mal
-mal
-mal
-mal
-mal
-mal
-mal
-vFG
-mal
+oef
+dkr
+ijv
 vLI
 arq
 keg
@@ -126191,10 +127086,10 @@ aQg
 iqF
 fbw
 lae
-foy
-foy
-foy
-foy
+vdq
+vdq
+vdq
+vdq
 foy
 ksn
 ksn
@@ -126501,25 +127396,28 @@ foy
 foy
 foy
 foy
-foy
-foy
-foy
-fAX
+vdq
+vdq
+vdq
+tKW
 mal
-mal
-mal
-hHA
-mal
-mal
-mal
-mal
-mal
+ejE
+pXe
+aqr
+ijv
 mal
 mal
 mal
 mal
 mal
 mal
+eaR
+eaR
+mal
+mal
+mal
+ijv
+ijv
 mal
 mal
 mal
@@ -126527,10 +127425,7 @@ mal
 mal
 mal
 mal
-mal
-mal
-mal
-mal
+ijv
 vFG
 mal
 ixZ
@@ -126543,8 +127438,8 @@ gpE
 feA
 fcn
 keg
-foy
-foy
+vdq
+vdq
 foy
 foy
 foy
@@ -126852,17 +127747,17 @@ foy
 foy
 foy
 foy
-foy
-foy
-foy
-foy
-mCJ
+vdq
+vdq
+vdq
+vYK
+tKW
 mal
+ejE
 mal
-mal
-hHA
-mal
-mal
+aqr
+ijv
+ijv
 qLI
 qLI
 qLI
@@ -126883,7 +127778,7 @@ vVz
 qLI
 mal
 mal
-vFG
+tef
 mal
 vLI
 mal
@@ -126895,8 +127790,8 @@ uZF
 feA
 uhO
 vnB
-foy
-foy
+vdq
+vdq
 foy
 foy
 foy
@@ -127204,16 +128099,16 @@ foy
 foy
 foy
 foy
-foy
-foy
-foy
-foy
-mCJ
+vdq
+vdq
+vdq
+tMB
+tKW
 mal
 mal
 mal
-hHA
-mal
+aqr
+ijv
 mal
 qLI
 qLI
@@ -127236,7 +128131,7 @@ qLI
 mal
 mal
 vFG
-mal
+fnD
 vLI
 mal
 sqk
@@ -127247,9 +128142,9 @@ cnW
 sRy
 iGE
 keg
-foy
-foy
-foy
+vdq
+vdq
+vdq
 foy
 foy
 ksn
@@ -127556,15 +128451,15 @@ foy
 foy
 foy
 foy
-foy
-foy
-foy
-foy
-mCJ
+vdq
+vdq
+vdq
+tMB
+tKW
 mal
 mal
 mal
-hHA
+aqr
 mal
 mal
 qLI
@@ -127599,8 +128494,8 @@ keD
 feA
 bHC
 keg
-foy
-foy
+vdq
+vdq
 foy
 foy
 foy
@@ -127908,11 +128803,11 @@ foy
 foy
 foy
 foy
-foy
-foy
-foy
-foy
-mCJ
+vdq
+vdq
+vdq
+bxS
+tKW
 mal
 mal
 tfT
@@ -127951,9 +128846,9 @@ wZB
 feA
 ijN
 vuv
-foy
-foy
-foy
+vdq
+vdq
+vdq
 foy
 foy
 ksn
@@ -128261,11 +129156,11 @@ foy
 foy
 foy
 foy
-foy
-foy
-foy
-mCJ
-mal
+vdq
+vdq
+vYK
+tKW
+eaR
 mal
 mal
 hHA
@@ -128289,11 +129184,11 @@ jok
 oXr
 vVz
 kzA
+eaR
 mal
+tef
 mal
-vFG
-mal
-vLI
+edE
 mal
 keg
 bzr
@@ -128303,8 +129198,8 @@ geI
 eXb
 gbB
 keg
-foy
-foy
+vdq
+vdq
 foy
 foy
 foy
@@ -128613,15 +129508,15 @@ foy
 foy
 foy
 foy
-foy
-foy
-foy
-slI
+vdq
+vdq
+tMB
+tKW
 mal
-mal
+uHK
 mal
 hHA
-mal
+sxG
 mal
 cOp
 sQy
@@ -128642,11 +129537,11 @@ wlM
 oXr
 oXr
 mal
-mal
+eaR
 vFG
-mal
-vLI
-arq
+ijv
+ygo
+mXD
 keg
 keg
 vnB
@@ -128655,8 +129550,8 @@ pBJ
 vuv
 keg
 keg
-foy
-foy
+vdq
+vdq
 foy
 foy
 ksn
@@ -128964,16 +129859,16 @@ foy
 foy
 foy
 foy
-foy
-foy
-foy
-foy
-slI
+vdq
+vdq
+vdq
+tMB
+tKW
 mal
-mal
+ejE
 mal
 hHA
-mal
+uHK
 mal
 cOp
 yhj
@@ -128995,19 +129890,19 @@ qkm
 tjY
 mal
 mal
-vFG
-mal
-vLI
-mal
-mCJ
+flh
+ijv
+ygo
+ijv
+fAX
 hXT
+vdq
 ksn
 ksn
-ksn
-mpw
+vdq
 hXT
-foy
-foy
+vdq
+vdq
 foy
 foy
 ksn
@@ -129315,17 +130210,17 @@ foy
 foy
 foy
 foy
-foy
-foy
-foy
-foy
-foy
-slI
+vdq
+vdq
+vdq
+vdq
+vdq
+tKW
 mal
-mal
+ejE
 mal
 hHA
-mal
+eaR
 mal
 cOp
 yhj
@@ -129345,21 +130240,21 @@ jok
 uPQ
 qkm
 tjY
-mal
-mal
+ijv
+ijv
 vFG
-mal
-vLI
-mal
-mCJ
-foy
-foy
+ijv
+dcu
+ijv
+tKW
+vdq
+vdq
 ksn
 ksn
 ksn
-foy
-foy
-foy
+vdq
+vdq
+vdq
 foy
 ksn
 ksn
@@ -129668,14 +130563,14 @@ foy
 foy
 foy
 foy
-foy
-foy
-foy
-foy
-slI
+vdq
+vdq
+vdq
+vdq
+tKW
 mal
-mal
-mal
+ejE
+ijv
 hHA
 mal
 mal
@@ -129697,21 +130592,21 @@ jok
 qkm
 qkm
 tjY
-mal
-mal
+ijv
+ijv
 vFG
+ijv
+ygo
 mal
-vLI
-mal
-mCJ
-foy
-foy
+tKW
+vdq
+vdq
 ksn
 ksn
 ksn
 ksn
-foy
-foy
+vdq
+vdq
 ksn
 ksn
 ksn
@@ -130021,14 +130916,14 @@ foy
 foy
 foy
 foy
-foy
-foy
-foy
-deB
+vdq
+vdq
+vdq
+tKW
 mal
-mal
-mal
-hHA
+ejE
+ijv
+glw
 mal
 mal
 cOp
@@ -130049,16 +130944,16 @@ jok
 tXt
 oXr
 oXr
-mal
+ijv
 mal
 vFG
 mal
-vLI
+gRe
 mal
-mCJ
-foy
-foy
-foy
+tKW
+vdq
+vdq
+vdq
 ksn
 ksn
 ksn
@@ -130374,13 +131269,13 @@ foy
 foy
 foy
 foy
-foy
-foy
-mCJ
-mal
-mal
-mal
-hHA
+vdq
+vdq
+tKW
+ijv
+vuQ
+ijv
+aqr
 mal
 mal
 vVz
@@ -130401,17 +131296,17 @@ jok
 oXr
 vVz
 kzA
-mal
-mal
-vFG
+ijv
+eaR
+tef
 mal
 vLI
 mal
-mCJ
-foy
-foy
-foy
-foy
+tKW
+vdq
+vdq
+vdq
+vdq
 ksn
 ksn
 ksn
@@ -130726,14 +131621,14 @@ foy
 foy
 foy
 foy
-foy
-foy
+vdq
+vdq
 mCJ
 bet
 mMy
-tfT
+ifo
 hHA
-mal
+fnD
 mal
 vVz
 vVz
@@ -130757,12 +131652,12 @@ mal
 mal
 vFG
 tfT
-vLI
+gRe
 mal
-mCJ
-foy
-foy
-ksn
+tKW
+tMB
+tMB
+vdq
 ksn
 ksn
 ksn
@@ -131077,12 +131972,12 @@ foy
 foy
 foy
 foy
-foy
-foy
-foy
-mCJ
+vdq
+vdq
+vdq
+fAX
 mal
-vLI
+ygo
 mal
 hHA
 mal
@@ -131107,13 +132002,13 @@ nVX
 qLI
 mal
 mal
-vFG
+ptb
 mal
-vLI
+gRe
 mal
-xic
+oHS
 ksn
-ksn
+vYK
 ksn
 ksn
 ksn
@@ -131429,12 +132324,12 @@ foy
 foy
 foy
 foy
-foy
-foy
-foy
-mCJ
-mal
-vLI
+vdq
+vdq
+vYK
+fAX
+ijv
+gRe
 mal
 hHA
 mal
@@ -131461,11 +132356,11 @@ mal
 mal
 vFG
 mal
-vLI
+gRe
 mal
-xic
+fSc
 ksn
-ksn
+vYK
 ksn
 ksn
 ksn
@@ -131781,15 +132676,15 @@ foy
 foy
 foy
 foy
-foy
-foy
-foy
-mCJ
-mal
-vLI
+vdq
+vdq
+tMB
+fAX
+ijv
+uiJ
 mal
 hHA
-mal
+eaR
 mal
 qLI
 qLI
@@ -131813,9 +132708,9 @@ mal
 mal
 vFG
 mal
-vLI
-mal
-xic
+gRe
+eaR
+fSc
 ksn
 ksn
 ksn
@@ -132133,14 +133028,20 @@ foy
 foy
 foy
 foy
-foy
-foy
-foy
-slI
-mal
+vdq
+vdq
+vYK
+fAX
+ijv
 vLI
 mal
-hHA
+mxT
+mal
+mal
+mal
+mal
+ijv
+jel
 mal
 mal
 mal
@@ -132149,27 +133050,21 @@ mal
 mal
 mal
 mal
+eaR
 mal
 mal
 mal
 mal
 mal
+eaR
 mal
+flh
 mal
+idS
 mal
-mal
-mal
-mal
-mal
-mal
-mal
-vFG
-mal
-vLI
-mal
-xic
+aEc
 ksn
-ksn
+vYK
 ksn
 ksn
 ksn
@@ -132485,45 +133380,45 @@ foy
 foy
 foy
 foy
-foy
-foy
-foy
+vdq
+vdq
+tMB
 fAX
 mal
 vLI
 mal
 hHA
+ijv
+mal
+mal
+eaR
+ijv
+eaR
+mal
+mal
+mal
+eaR
+mal
+mal
+ijv
 mal
 mal
 mal
 mal
 mal
+eaR
+eaR
 mal
-mal
-mal
-mal
-mal
-mal
-mal
-mal
-mal
-mal
-mal
-mal
-mal
-mal
-mal
-mal
-mal
-vFG
-mal
-vLI
+ijv
+flh
+ijv
+gRe
 mal
 xic
 ksn
-ksn
-foy
-foy
+vYK
+vdq
+vdq
 ksn
 foy
 foy
@@ -132837,45 +133732,45 @@ foy
 foy
 foy
 foy
-foy
-foy
-foy
-tXr
+vdq
+vdq
+tMB
+tKW
 mal
 vLI
 mal
 mTM
+yba
+yba
 hWa
 hWa
 hWa
 hWa
 hWa
 hWa
+lIH
+hWa
+hWa
+yba
+vza
+nOu
+oXa
+nMw
 hWa
 hWa
 hWa
 hWa
-hWa
-hWa
-hWa
-hWa
-hWa
-hWa
-hWa
-hWa
-hWa
-hWa
-hWa
-hWa
+yba
+yba
 rMt
+ijv
+ygo
 mal
-vLI
-mal
-mCJ
-foy
-foy
-foy
-foy
+tKW
+tMB
+tMB
+vdq
+vdq
 ksn
 foy
 foy
@@ -133189,45 +134084,45 @@ foy
 foy
 foy
 foy
-foy
-foy
-foy
-fAX
+vdq
+vdq
+vYK
+tKW
 mal
 vLI
 tfT
+ijv
+ijv
+ijv
+lwF
+aLm
+sxe
+mal
+tfT
 mal
 mal
 mal
-mal
-mal
-mal
-mal
+ijv
+ijv
+ijv
+ijv
+ijv
 tfT
 mal
 mal
 mal
 mal
 mal
-mal
-mal
-mal
-tfT
-mal
-mal
-mal
-mal
-mal
-mal
-mal
-tfT
+ijv
+ijv
+ifo
 vLI
 mal
-mCJ
-foy
-foy
-foy
-foy
+tKW
+vdq
+vdq
+vdq
+vdq
 ksn
 foy
 foy
@@ -133541,43 +134436,43 @@ foy
 foy
 foy
 foy
-foy
-foy
-foy
-mCJ
-mal
+vdq
+vdq
+vYK
+tKW
+eaR
 jfV
 iPz
+pup
+pup
+skH
 iPz
 iPz
 iPz
 iPz
 iPz
+qwk
+qwk
+qwk
+qwk
+lmn
+max
+eCj
 iPz
-iPz
-iPz
-iPz
-iPz
-iPz
-iPz
-iPz
-iPz
-iPz
-iPz
-iPz
-iPz
-iPz
-iPz
-iPz
-iPz
-iPz
-iPz
+qwk
+qwk
+qwk
+qwk
+qwk
+qwk
+aWz
+hqd
 iPz
 nFa
 mal
-mCJ
-foy
-foy
+tKW
+vdq
+vdq
 foy
 foy
 ksn
@@ -133894,41 +134789,41 @@ foy
 foy
 foy
 foy
-foy
-foy
-mCJ
-mal
+vdq
+vdq
+tKW
+rVQ
 vLI
+rVQ
+mal
+rVQ
+kdm
+rVQ
+mal
+mal
+mal
+mal
+rVQ
+mal
+mal
+eaR
+mal
+ijv
+ijv
+mal
+eaR
 mal
 mal
 mal
 mal
 mal
+eaR
 mal
 mal
 mal
 mal
-mal
-mal
-mal
-mal
-mal
-mal
-mal
-mal
-mal
-mal
-mal
-mal
-mal
-mal
-mal
-mal
-mal
-mal
-mal
-mCJ
-foy
+tKW
+vdq
 foy
 foy
 ksn
@@ -134246,41 +135141,41 @@ foy
 foy
 foy
 foy
-foy
-foy
+vdq
+vdq
 uTn
 uTn
 vXU
 uTn
 uTn
-mCJ
-slI
+aGd
+wEp
+aGd
+wiF
+btc
 tXr
-mCJ
-mCJ
-slI
-slI
+aGd
+aGd
 deB
-tXr
-mCJ
-mCJ
-mCJ
-mCJ
-tXr
-fAX
-fAX
-slI
-mCJ
-mCJ
-mCJ
-slI
-tXr
-fAX
-slI
-mCJ
-mCJ
-mCJ
-foy
+deB
+deB
+deB
+deB
+deB
+deB
+deB
+deB
+deB
+deB
+deB
+deB
+deB
+deB
+deB
+deB
+deB
+oTU
+vdq
 foy
 foy
 ksn
@@ -134598,40 +135493,40 @@ foy
 foy
 foy
 foy
-foy
-foy
+vdq
+vdq
 uTn
-aZK
+mMR
+aJm
+qtE
+uTn
+wPw
+gRg
+pzH
+mlu
+oYB
+uxW
+vnJ
+aGd
+vdq
+vdq
+vdq
+vYK
+oMi
 tMB
-aZK
-uTn
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
+tMB
+vYK
+vYK
+vdq
+vdq
+tMB
+tMB
+tMB
+vYK
+vYK
+tMB
+vdq
+vdq
 foy
 foy
 ksn
@@ -134950,42 +135845,42 @@ foy
 foy
 foy
 foy
-foy
-foy
+vdq
+vYK
 uTn
 lJH
-aJm
+sIQ
 fnU
 uTn
+riR
+wsj
+rKJ
+qGx
+aSh
+uWM
+xoA
+aGd
+vdq
+vdq
+vdq
+vdq
 foy
 foy
 foy
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
 foy
 foy
 foy
+vdq
 foy
 foy
 foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-ksn
 ksn
 foy
 foy
@@ -135301,14 +136196,25 @@ foy
 foy
 foy
 foy
-foy
-foy
-foy
+vdq
+vdq
+tMB
 uTn
-aZK
+wjW
 lFq
 aZK
 uTn
+hFM
+vmy
+vHr
+fBS
+pvS
+vDM
+gsT
+aGd
+vdq
+vdq
+vdq
 foy
 foy
 foy
@@ -135316,20 +136222,9 @@ foy
 foy
 foy
 foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
+vdq
+vdq
+vdq
 foy
 foy
 foy
@@ -135338,7 +136233,7 @@ ksn
 ksn
 ksn
 ksn
-foy
+ksn
 foy
 foy
 foy
@@ -135652,24 +136547,24 @@ foy
 foy
 foy
 foy
-foy
-foy
-foy
-foy
+vdq
+vdq
+vdq
+vYK
 uTn
-aZK
+och
 aRR
-aZK
+iHC
 uTn
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
+ghn
+tia
+hgl
+pvS
+pZM
+utn
+amu
+aGd
+vdq
 foy
 foy
 foy
@@ -136004,24 +136899,24 @@ foy
 foy
 foy
 foy
-foy
-foy
-foy
-foy
+vdq
+vdq
+vdq
+vdq
 uTn
-aZK
+meQ
 tVG
-aZK
+dDn
 uTn
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
+fYn
+uln
+qVk
+pBp
+bfk
+aGd
+aGd
+aGd
+vdq
 foy
 foy
 ksn
@@ -136227,9 +137122,9 @@ xis
 xis
 rLp
 rLp
+rLp
+rLp
 tPT
-eFg
-eFg
 eFg
 sRT
 xis
@@ -136357,22 +137252,22 @@ foy
 foy
 foy
 foy
-foy
-foy
-foy
+vdq
+vdq
+vdq
 uTn
 arI
 pmf
 xrT
 uTn
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
+aGd
+aGd
+tXr
+slI
+aGd
+aGd
+ksn
+ksn
 ksn
 ksn
 ksn
@@ -136579,9 +137474,9 @@ xis
 xis
 rLp
 rLp
-aih
 rLp
-rLp
+tPT
+fuV
 xis
 loQ
 eFg
@@ -136709,20 +137604,20 @@ foy
 foy
 foy
 foy
-foy
-foy
-foy
-foy
-foy
-drP
-foy
-foy
-foy
-foy
-foy
-foy
-foy
-foy
+vdq
+vdq
+vdq
+tMB
+tMB
+agw
+tMB
+vYK
+vdq
+vYK
+tMB
+tMB
+vYK
+ksn
 ksn
 ksn
 ksn
@@ -136931,8 +137826,8 @@ xis
 xis
 xis
 rLp
-aih
 rLp
+aih
 xis
 xis
 xis
@@ -137062,22 +137957,22 @@ foy
 foy
 foy
 foy
-foy
-foy
-foy
-foy
+vdq
+vdq
+vdq
+vdq
 drP
-foy
-foy
-foy
-foy
-foy
-foy
+vdq
+vdq
+vdq
+vdq
+vdq
+vdq
 ksn
 ksn
 ksn
-mpw
-mpw
+foy
+foy
 foy
 foy
 foy
@@ -137283,8 +138178,8 @@ xis
 xis
 rLp
 rLp
-aih
-rLp
+tPT
+fuV
 xis
 xis
 xis
@@ -137414,16 +138309,16 @@ foy
 foy
 foy
 foy
-foy
-foy
-foy
-foy
+vdq
+vdq
+vdq
+vdq
 drP
+vdq
 foy
 foy
-foy
-foy
-foy
+vdq
+vdq
 ksn
 ksn
 foy
@@ -137767,11 +138662,11 @@ foy
 foy
 foy
 foy
-foy
-foy
-foy
+vdq
+vdq
+vdq
 drP
-foy
+vdq
 foy
 foy
 foy
@@ -138691,8 +139586,8 @@ xis
 xis
 rLp
 rLp
-aih
-rLp
+loQ
+sRT
 xis
 xis
 xis
@@ -139043,9 +139938,9 @@ xis
 xis
 xis
 rLp
-aih
 rLp
-rLp
+loQ
+sRT
 xis
 xis
 xis
@@ -139395,9 +140290,9 @@ xis
 xis
 xis
 rLp
+rLp
+rLp
 aih
-rLp
-rLp
 xis
 xis
 xis
@@ -139747,10 +140642,10 @@ xis
 xis
 xis
 xis
-aih
 rLp
 rLp
-rLp
+loQ
+sRT
 xis
 xis
 xis
@@ -140099,10 +140994,10 @@ xis
 xis
 xis
 xis
-loQ
-eFg
-eFg
-sRT
+rLp
+rLp
+rLp
+aih
 xis
 xis
 xis
@@ -140454,8 +141349,8 @@ xis
 xis
 rLp
 rLp
-aih
-rLp
+loQ
+sRT
 rLp
 rLp
 xis
@@ -140806,10 +141701,10 @@ xis
 xis
 rLp
 rLp
-aih
 rLp
-rLp
-rLp
+loQ
+eFg
+sRT
 rLp
 rLp
 xis
@@ -141158,12 +142053,12 @@ xis
 xis
 xis
 rLp
-aih
 rLp
 rLp
 rLp
-rLp
-rLp
+loQ
+eFg
+sRT
 rLp
 rLp
 rLp
@@ -141510,13 +142405,13 @@ xis
 xis
 xis
 rLp
-aih
 rLp
 rLp
 rLp
 rLp
 rLp
-rLp
+loQ
+sRT
 rLp
 rLp
 rLp
@@ -141862,21 +142757,21 @@ xis
 xis
 xis
 xis
+rLp
+rLp
+rLp
+rLp
+rLp
+rLp
 loQ
 eFg
 eFg
 eFg
 eFg
-eFg
-eFg
-eFg
-eFg
-eFg
-eFg
-eFg
-eFg
-eFg
 sRT
+rLp
+rLp
+rLp
 xis
 xis
 xis
@@ -142225,10 +143120,10 @@ rLp
 rLp
 rLp
 rLp
+loQ
+sRT
 rLp
 rLp
-rLp
-aih
 rLp
 xis
 xis
@@ -142578,9 +143473,9 @@ xis
 rLp
 rLp
 rLp
-rLp
-rLp
-aih
+loQ
+eFg
+sRT
 rLp
 rLp
 xis
@@ -146444,12 +147339,12 @@ lMG
 lMG
 lMG
 uBG
-bfU
-ptv
-ptv
-uIT
-uIT
-uIT
+uBG
+uBG
+uBG
+bcq
+bcq
+oGS
 uIT
 uIT
 fuV
@@ -146796,12 +147691,12 @@ lMG
 lMG
 lMG
 uBG
-aGd
 uBG
-uBG
-uBG
-uBG
-uBG
+bfU
+ptv
+ptv
+ptv
+xUs
 uBG
 uBG
 uBu
@@ -147148,8 +148043,8 @@ lMG
 lMG
 lMG
 uBG
-aGd
-uBG
+bfU
+xUs
 uBG
 uBG
 uBG
@@ -152086,7 +152981,7 @@ uBu
 uBu
 uBu
 uBu
-uBG
+uBu
 uBG
 uBG
 uBG
@@ -154164,7 +155059,7 @@ uBu
 uBu
 uBu
 uBu
-qWj
+uBu
 uBu
 uBu
 uBu
@@ -154201,7 +155096,7 @@ fKt
 uBu
 uBu
 uBG
-lMG
+uBG
 lMG
 lMG
 lMG
@@ -154516,7 +155411,7 @@ uBu
 uBu
 uBu
 uBu
-uBu
+qWj
 uBu
 uBu
 uBu
@@ -154554,9 +155449,9 @@ uBu
 uBu
 uBG
 uBG
-lMG
 uBG
-lMG
+uBG
+uBG
 lMG
 lMG
 xis
@@ -154907,7 +155802,7 @@ uBu
 uBG
 uBG
 uBG
-lMG
+uBG
 lMG
 lMG
 lMG
@@ -155961,7 +156856,7 @@ fKt
 uBu
 uBu
 uBu
-uBu
+pmH
 uBu
 uBu
 uBu
@@ -159780,7 +160675,7 @@ xis
 xis
 xis
 xis
-xis
+lMG
 lMG
 uBG
 uBG
@@ -160132,8 +161027,8 @@ xis
 xis
 xis
 xis
-xis
-xis
+lMG
+lMG
 uBG
 uBG
 uBG
@@ -160484,8 +161379,8 @@ xis
 xis
 xis
 xis
-xis
-bcq
+lMG
+uBG
 uBG
 uBG
 uBG
@@ -160836,8 +161731,8 @@ xis
 xis
 xis
 xis
-xis
-bcq
+uBG
+uBG
 uBG
 uBG
 uBG
@@ -161188,9 +162083,9 @@ xis
 xis
 xis
 xis
-xis
-bcq
-lMG
+uBG
+uBG
+uBG
 uBG
 uBG
 kwR
@@ -161338,7 +162233,7 @@ xis
 rLp
 xis
 bcq
-wdy
+tZc
 dCG
 dCG
 dCG
@@ -161541,7 +162436,7 @@ xis
 xis
 xis
 xis
-bcq
+uBG
 uBG
 uBG
 uBG
@@ -161690,7 +162585,7 @@ xis
 rLp
 bcq
 bcq
-cSD
+bZk
 bcq
 bcq
 bcq
@@ -165210,7 +166105,7 @@ xis
 xis
 xis
 bcq
-cSD
+bZk
 bcq
 bcq
 pdr
