@@ -1251,7 +1251,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 	. = TRUE
 	if(anchored)
 		user.visible_message("<span class='notice'>[user] начинает откручивать [src] от пола...</span>")
-		if(I.use_tool(src, user, 4 SECONDS, 0, 50))
+		if(!I.use_tool(src, user, 4 SECONDS, 0, 50))
 			user.visible_message("<span class='notice'>[user] решает не откручивать [src].</span>")
 			return
 		user.visible_message("<span class='notice'>[user] закончил открутку [src]!</span>")
