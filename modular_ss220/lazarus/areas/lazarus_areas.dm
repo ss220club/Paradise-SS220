@@ -77,7 +77,22 @@
 /area/lazarus/cabin/bar
 	name = "Тайный бар"
 
+/area/lazarus/cabin/sectarian
+	name = "Убежище Сектантов"
+
 //---Other---//
+
+/area/lazarus/abandoned_bunker
+	icon_state = "kitchen"
+	name = "Заброшенный бункер"
+	sound_environment = SOUND_AREA_TUNNEL_ENCLOSED
+	temperature = AREA_TEMPERATURE_INSIDE
+
+/area/lazarus/syndie_shelter
+	icon_state = "syndie-control"
+	name = "Убежище"
+	sound_environment = SOUND_AREA_STANDARD_STATION
+	temperature = AREA_TEMPERATURE_INSIDE
 
 //Geotherm
 
