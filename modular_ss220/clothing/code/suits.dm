@@ -349,11 +349,6 @@
 	item_state = "brtrenchcoat"
 
 	sprite_sheets = list(
-		SPECIES_PLASMAMAN = 'modular_ss220/clothing/icons/mob/species/monkey/suits.dmi',
-		SPECIES_VOX = 'modular_ss220/clothing/icons/mob/species/vox/suits.dmi',
-		SPECIES_MONKEY = 'modular_ss220/clothing/icons/mob/species/monkey/suits.dmi',
-		SPECIES_FARWA = 'modular_ss220/clothing/icons/mob/species/monkey/suits.dmi',
-		SPECIES_WOLPIN = 'modular_ss220/clothing/icons/mob/species/monkey/suits.dmi',
-		SPECIES_NEARA = 'modular_ss220/clothing/icons/mob/species/monkey/suits.dmi',
-		SPECIES_STOK = 'modular_ss220/clothing/icons/mob/species/monkey/suits.dmi'
+		"Vox"			 = 'modular_ss220/clothing/icons/mob/species/vox/suits.dmi',
+		"Monkey"		 = 'modular_ss220/clothing/icons/mob/species/monkey/suits.dmi',
 		)
