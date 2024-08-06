@@ -85,27 +85,35 @@
 		return
 	icon_state = "red"
 
+/obj/item/golden_idol/proc/set_storage(var/new_value)
+	idol_storage = new_value
+
+// Used to get not read-only air mixture
+/datum/milla_safe/golden_idol_get_air/on_run(obj/item/golden_idol/idol, var/turf/L)
+	var/datum/gas_mixture/env = get_turf_air(L)
+	idol.set_storage(env.remove(env.total_moles()))
+
 /obj/item/golden_idol/afterattack(atom/target, mob/user, proximity, params)
 	if(!proximity)
 		return
 	if(idol_in_use && idol_verb == IDOL_VERB_DECREASE)
-		to_chat(user, span_warning("У вас не получается активировать идол. Он дрожит от наполняющей его энергии. Вам нужно выпустить ей!"))
+		to_chat(user, span_warning("У вас не получается активировать идол. Он дрожит от наполняющей его энергии. Вам нужно выпустить её!"))
 		return
 	if(!idol_in_use && idol_verb == IDOL_VERB_INCREASE)
 		to_chat(user, span_warning("Вы нажимаете на рычажок идола, но ничего не происходит. Вы что-то делаете не так."))
 		return
 
-	// spawn & despawn items
+	// Hold items
 	if(idol_noun == IDOL_NOUN_MATTER && idol_addition == IDOL_NOUN_EMPTY)
 		if(idol_in_use)
 			if(isnull(idol_storage))
 				return
-			if(!isturf(target.loc))
+			if(!isturf(target.loc) && !isturf(target))
 				return
 			if(!isitem(idol_storage))
 				return
 			var/obj/item/I = idol_storage
-			I.forceMove(get_turf(I))
+			I.forceMove(get_turf(target))
 			idol_storage = null
 			visible_message(span_warning("[I] появляется в луче света, идущем от самоцвета в золотом идоле."))
 			playsound(src, 'sound/items/pshoom.ogg', 50, TRUE)
@@ -119,7 +127,27 @@
 			visible_message(span_warning("[I] растворяется в луче света, идущем от самоцвета в золотом идоле."))
 			playsound(src, 'sound/items/pshoom.ogg', 50, TRUE)
 			idol_in_use = TRUE
-		return
+
+	// Transfer Air
+	else if(idol_noun == IDOL_NOUN_AIR && idol_addition == IDOL_NOUN_EMPTY)
+		if(idol_in_use)
+			var/turf/simulated/L = get_turf(target)
+			var/datum/gas_mixture/air = idol_storage
+			if(!istype(air) || !istype(L))
+				return
+			L.blind_release_air(air)
+			visible_message(span_warning("Идол выплёскивает волну газа!."))
+			playsound(src, 'sound/items/pshoom.ogg', 50, TRUE)
+			idol_in_use = FALSE
+		else
+			var/turf/simulated/L = get_turf(target)
+			if(!istype(L))
+				return
+			var/datum/milla_safe/golden_idol_get_air/milla = new()
+			milla.invoke_async(src, L)
+			visible_message(span_warning("Идол поглощает газ вокруг себя!"))
+			playsound(src, 'sound/items/pshoom.ogg', 50, TRUE)
+			idol_in_use = TRUE
 	else
 		to_chat(user, span_warning("Вы нажимаете на рычажок идола, но ничего не происходит. Вы что-то делаете не так."))
 	update_icon_state()
