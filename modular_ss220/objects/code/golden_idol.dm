@@ -89,7 +89,7 @@
 	idol_storage = new_value
 
 // Used to get not read-only air mixture
-/datum/milla_safe/golden_idol_get_air/on_run(obj/item/golden_idol/idol, /turf/L)
+/datum/milla_safe/golden_idol_get_air/on_run(obj/item/golden_idol/idol, turf/L)
 	var/datum/gas_mixture/env = get_turf_air(L)
 	idol.set_storage(env.remove(env.total_moles()))
 
