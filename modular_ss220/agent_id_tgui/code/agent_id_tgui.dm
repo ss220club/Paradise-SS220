@@ -37,16 +37,16 @@
 	switch(action)
 		if("change_name")
 			var/new_name
-			if(params["name"])
-				new_name = params["name"]
-
 			if(params["option"] == "Primary")
 				new_name = ishuman(registered_human) ? registered_human.real_name : registered_human.name
 
-			if(params["option"] == "Secondary")
+			else if(params["option"] == "Secondary")
 				new_name = tgui_input_list(registered_human, "Чьё имя вы хотите взять?", "Карта Агента - Имя", GLOB.human_list)
 				if(isnull(new_name))
 					return
+
+			else
+				new_name = params["name"]
 
 			registered_name = reject_bad_name(new_name, TRUE)
 			UpdateName()
@@ -66,48 +66,44 @@
 			change_occupation()
 
 		if("change_fingerprints")
-			var/new_fingerprint_hash
-			if(params["new_fingerprints"])
-				new_fingerprint_hash = sanitize(params["new_fingerprints"])
-
 			if(params["option"] == "Primary")
-				new_fingerprint_hash = md5(registered_human.dna.uni_identity)
+				fingerprint_hash = md5(registered_human.dna.uni_identity)
+			else
+				var/fingerprints_param  = params["new_fingerprints"]
+				if(fingerprints_param)
+					fingerprint_hash = fingerprints_param
 
-			fingerprint_hash = new_fingerprint_hash
 			to_chat(registered_human, span_notice("Отпечатки изменёны на: [fingerprint_hash]."))
 
 		if("change_blood_type")
-			var/new_blood_type
-			if(params["new_type"])
-				new_blood_type = params["new_type"]
-
 			if(params["option"] == "Primary")
-				new_blood_type = registered_human.dna.blood_type
+				blood_type = registered_human.dna.blood_type
+			else
+				var/blood_param = params["new_type"]
+				if(blood_param)
+					blood_type = blood_param
 
-			blood_type = new_blood_type
 			to_chat(registered_human, span_notice("Тип крови изменён на: [new_blood_type]."))
 
 		if("change_dna_hash")
-			var/new_dna_hash
-			if(params["new_dna"])
-				new_dna_hash = params["new_dna"]
-
 			if(params["option"] == "Primary")
-				new_dna_hash = registered_human.dna.unique_enzymes
+				dna_hash = registered_human.dna.unique_enzymes
+			else
+				var/dna_param = params["new_dna"]
+				if(dna_param)
+					dna_hash = dna_param
 
-			dna_hash = sanitize(new_dna_hash)
 			to_chat(registered_human, span_notice("ДНК изменён на: [new_dna_hash]."))
 
 		if("change_money_account")
 			var/new_account
-			if(params["new_account"])
+			if(params["option"] == "Primary")
+				new_account = rand(1000, 9999) * 1000 + rand(1000, 9999)
+			else
 				new_account = params["new_account"]
 				if(!isnum(new_account))
 					to_chat(registered_human, span_warning("Номер аккаунта должен состоять только из цифр!"))
 					return
-
-			if(params["option"] == "Primary")
-				new_account = rand(1000, 9999) * 1000 + rand(1000, 9999)
 
 			associated_account_number = clamp(new_account, 1000000, 9999999)
 			to_chat(registered_human, span_notice("Привязанный счёт изменён на: [new_account]."))
