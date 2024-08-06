@@ -7,6 +7,9 @@
 #define IDOL_VERB_DECREASE "NAGANA"
 #define IDOL_VERB_INCREASE "TEGANA"
 
+#define IDOL_COOLING_TARGET 100 // In kelvins
+#define IDOL_HEATING_MAX 4000 // In kelvins
+
 /obj/item/golden_idol
 	name = "золотой идол"
 	desc = "Причудливая статуэтка, отлитая из бронзы и покрытая золотом. На её спине расположено три глифа и небольшой рычажок. Один взгляд на идол пробуждает в вас желание власти."
@@ -89,9 +92,29 @@
 	idol_storage = new_value
 
 // Used to get not read-only air mixture
-/datum/milla_safe/golden_idol_get_air/on_run(obj/item/golden_idol/idol, turf/L)
-	var/datum/gas_mixture/env = get_turf_air(L)
-	idol.set_storage(env.remove(env.total_moles()))
+/datum/milla_safe/golden_idol/get_air/on_run(obj/item/golden_idol/idol, turf/L)
+	var/datum/gas_mixture/air = get_turf_air(L)
+	idol.set_storage(air.remove(air.total_moles()))
+
+/datum/milla_safe/golden_idol/absorb_heat/on_run(obj/item/golden_idol/idol, turf/L)
+	var/datum/gas_mixture/air = get_turf_air(L)
+	if(!isnull(air))
+		return
+	if(!air.heat_capacity())
+		return
+	if(air.temperature() > IDOL_COOLING_TARGET)
+		idol.set_storage((air.temperature() - IDOL_COOLING_TARGET) * air.heat_capacity())
+		air.set_temperature(IDOL_COOLING_TARGET)
+
+/datum/milla_safe/golden_idol/release_heat/on_run(obj/item/golden_idol/idol, turf/L)
+	var/datum/gas_mixture/air = get_turf_air(L)
+	if(!isnull(air))
+		return
+	if(!air.heat_capacity())
+		return
+	if(air.temperature() < IDOL_HEATING_MAX)
+		air.set_temperature(max(air.temperature() + (idol.idol_storage / air.heat_capacity()), IDOL_HEATING_MAX))
+		idol.set_storage(null)
 
 /obj/item/golden_idol/afterattack(atom/target, mob/user, proximity, params)
 	if(!proximity)
@@ -143,9 +166,31 @@
 			var/turf/simulated/L = get_turf(target)
 			if(!istype(L))
 				return
-			var/datum/milla_safe/golden_idol_get_air/milla = new()
+			var/datum/milla_safe/golden_idol/get_air/milla = new()
 			milla.invoke_async(src, L)
 			visible_message(span_warning("Идол поглощает газ вокруг себя!"))
+			playsound(src, 'sound/items/pshoom.ogg', 50, TRUE)
+			idol_in_use = TRUE
+
+	// Transfering heat
+	else if(idol_noun == IDOL_NOUN_AIR && idol_addition == IDOL_NOUN_HEAT)
+		if(idol_in_use)
+			var/turf/simulated/L = get_turf(target)
+			var/datum/gas_mixture/air = idol_storage
+			if(!istype(air) || !istype(L))
+				return
+			var/datum/milla_safe/golden_idol/release_heat/milla = new()
+			milla.invoke_async(src, L)
+			visible_message(span_warning("Идол нагревает газ вокруг себя!."))
+			playsound(src, 'sound/items/pshoom.ogg', 50, TRUE)
+			idol_in_use = FALSE
+		else
+			var/turf/simulated/L = get_turf(target)
+			if(!istype(L))
+				return
+			var/datum/milla_safe/golden_idol/absorb_heat/milla = new()
+			milla.invoke_async(src, L)
+			visible_message(span_warning("Идол охлаждает газ вокруг себя!"))
 			playsound(src, 'sound/items/pshoom.ogg', 50, TRUE)
 			idol_in_use = TRUE
 	else
@@ -162,3 +207,6 @@
 
 #undef IDOL_VERB_DECREASE
 #undef IDOL_VERB_INCREASE
+
+#undef IDOL_COOLING_TARGET
+#undef IDOL_HEATING_MAX
