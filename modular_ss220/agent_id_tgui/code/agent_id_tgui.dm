@@ -83,7 +83,7 @@
 				if(blood_param)
 					blood_type = blood_param
 
-			to_chat(registered_human, span_notice("Тип крови изменён на: [new_blood_type]."))
+			to_chat(registered_human, span_notice("Тип крови изменён на: [blood_type]."))
 
 		if("change_dna_hash")
 			if(params["option"] == "Primary")
@@ -93,7 +93,7 @@
 				if(dna_param)
 					dna_hash = dna_param
 
-			to_chat(registered_human, span_notice("ДНК изменён на: [new_dna_hash]."))
+			to_chat(registered_human, span_notice("ДНК изменён на: [dna_hash]."))
 
 		if("change_money_account")
 			var/new_account
