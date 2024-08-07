@@ -16,7 +16,7 @@
 				body,
 				html {
 					font-family: Verdana, Geneva, sans-serif;
-					font-size: 14px;
+					font-size: 1.2vw;
 					overflow: hidden;
 					text-align: center;
 					-ms-user-select: none;
@@ -28,6 +28,10 @@
 
 				img {
 					border-style: none;
+				}
+
+				hr {
+					border: 0.1em solid rgba(255, 255, 255, 0.1);
 				}
 
 				.bg {
@@ -75,7 +79,7 @@
 					left: 0;
 					width: 22.5em;
 					height: 100vh;
-					background: linear-gradient(90deg, rgba(0,0,0,0.75) 90%, rgba(0,0,0,0) 100%);
+					background: linear-gradient(90deg, rgba(0,0,0,0.8) 91%, rgba(0,0,0,0) 100%);
 					z-index: 2;
 				}
 
@@ -83,32 +87,41 @@
 					display: flex;
 					flex-direction: column;
 					align-items: center;
-					margin: 1em 1.5em;
+					margin: 1em 2em 1em 0;
 				}
 
 				.logo {
-					width: 20vw;
+					width: 17.5vw;
 				}
 
-				.character_slot {
+				.character {
 					width: 100%;
+					margin: 0 1em;
 					font-weight: bold;
-					font-size: 1.25rem;
-					margin-top: 1em;
+					font-size: 1.2rem;
+					text-align: right;
 					color: #d4dfec;
+				}
+
+				.character:first-of-type {
+					margin: 1.25em 0 0.5em 1.5em;
+					font-weight: normal;
+					font-size: 1.1rem;
+					text-align: left;
+					color: #898989;
 				}
 
 				.container_buttons {
 					flex: 1;
 					text-align: left;
-					margin: 5em 1em 2.5em 0;
+					margin: 5em 2em 2.5em 0;
 				}
 
 				.menu_button {
 					display: block;
 					cursor: pointer;
 					overflow: hidden;
-					font-size: 1.5rem;
+					font-size: 1.4rem;
 					text-decoration: none;
 					box-sizing: border-box;
 					width: 100%;
@@ -142,14 +155,7 @@
 					font-size: 1.5rem;
 					padding: 0.5em;
 					color: #898989;
-				}
-
-				.unchecked {
-					color: #F44;
-				}
-
-				.checked {
-					color: #4F4;
+					transition: color 0.2s, background-color 0.2s;
 				}
 			</style>
 		</head>

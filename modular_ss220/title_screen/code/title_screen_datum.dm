@@ -61,8 +61,8 @@
 	html += {"
 		<div class="container_logo">
 		<img class="logo" src="[SSassets.transport.get_asset_url(asset_name = "SS220_Logo.png")]">
-		<span id="character_slot">На смену прибывает...</span>
-		<span id="character_slot">[viewer.prefs.active_character.real_name]</span>
+		<span class="character">На смену прибывает...</span>
+		<span class="character" id="character_slot">[viewer.prefs.active_character.real_name]</span>
 		</div>
 	"}
 	html += {"<div class="container_buttons">"}
@@ -128,7 +128,7 @@
 
 			var character_name_slot = document.getElementById("character_slot");
 			function update_current_character(name) {
-				character_name_slot.textContent = name.toUpperCase();
+				character_name_slot.textContent = name;
 			}
 		</script>
 		"}

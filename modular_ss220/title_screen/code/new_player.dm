@@ -20,12 +20,12 @@
 		client.setup_character()
 
 	if(href_list["wiki"])
-		if(!tgui_alert(usr, "Вики", "Хотите открыть нашу вики?", list("Да", "Нет")) != "Да")
+		if(tgui_alert(usr, "Хотите открыть нашу вики?", "Вики", list("Да", "Нет")) != "Да")
 			return
 		client << link("https://wiki.ss220.club")
 
 	if(href_list["discord"])
-		if(!tgui_alert(usr, "Дискорд", "Хотите перейти в наш дискорд сервер?", list("Да", "Нет")) != "Да")
+		if(tgui_alert(usr, "Хотите перейти в наш дискорд сервер?", "Дискорд", list("Да", "Нет")) != "Да")
 			return
 		client << link("https://discord.gg/ss220")
 
