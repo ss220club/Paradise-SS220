@@ -24,26 +24,27 @@
 	if(!viewer)
 		return
 
-	winset(viewer, "title_browser", "is-disabled=true;is-visible=true")
-	winset(viewer, "status_bar", "is-visible=false")
+	winset(viewer, "title_browser", "is-disabled=false;is-visible=true")
+	winset(viewer, "paramapwindow.status_bar", "is-visible=false")
 
 	var/datum/asset/lobby_asset = get_asset_datum(/datum/asset/simple/lobby_fonts)
 	lobby_asset.send(viewer)
 
 	SSassets.transport.send_assets(viewer, screen_image.name)
 
-	viewer << browse(get_title_html(), "window=title_browser")
+	viewer << browse(get_title_html(viewer, viewer.mob), "window=title_browser")
 
 /datum/title_screen/proc/hide_from(client/viewer)
 	if(viewer?.mob)
 		winset(viewer, "title_browser", "is-disabled=true;is-visible=false")
-		winset(viewer, "status_bar", "is-visible=true")
+		winset(viewer, "paramapwindow.status_bar", "is-visible=true")
 
 /**
  * Get the HTML of title screen.
  */
-/datum/title_screen/proc/get_title_html()
+/datum/title_screen/proc/get_title_html(client/viewer, mob/user)
 	var/list/html = list(title_html)
+	var/mob/new_player/player = user
 
 	var/screen_image_url = SSassets.transport.get_asset_url(asset_cache_item = screen_image)
 	if(screen_image_url)
@@ -55,6 +56,68 @@
 			<p class="menu_notice">[notice]</p>
 		</div>
 	"}
+
+	html += {"<div class="container_nav">"}
+
+	if(!SSticker || SSticker.current_state <= GAME_STATE_PREGAME)
+		html += {"<a id="ready" class="menu_button" href='byond://?src=[player.UID()];ready=1'>[player.ready ? "<span class='checked'>☑</span> ГОТОВ" : "<span class='unchecked'>☒</span> НЕ ГОТОВ"]</a>"}
+	else
+		html += {"
+			<a class="menu_button" href='byond://?src=[player.UID()];late_join=1'>ПРИСОЕДИНИТЬСЯ</a>
+			<a class="menu_button" href='byond://?src=[player.UID()];manifest=1'>МАНИФЕСТ</a>
+		"}
+
+	html += {"<a class="menu_button" href='byond://?src=[player.UID()];observe=1'>НАБЛЮДАТЬ</a>"}
+
+	html += {"
+		<hr>
+		<a class="menu_button" href='byond://?src=[player.UID()];show_preferences=1'>SETUP CHARACTER (<span id="character_slot">[uppertext(viewer.prefs.active_character.real_name)]</span>)</a>
+		<a class="menu_button" href='byond://?src=[player.UID()];preference=1'>GAME OPTIONS</a>
+		<a id="be_antag" class="menu_button" href='byond://?src=[player.UID()];skip_antag=1'>[viewer.skip_antag ? "Антагонист: Выключен" : "Антагонист: Включен"]</a>
+		<hr>
+		<a class="menu_button" href='byond://?src=[player.UID()];server_swap=1'>SWAP SERVERS</a>
+	"}
+
+	html += "</div>"
+	html += {"
+		<script language="JavaScript">
+			var ready_int = 0;
+			var ready_mark = document.getElementById("ready");
+			var ready_marks = \[ "<span class='unchecked'>☒</span> READY", "<span class='checked'>☑</span> READY" \];
+			function ready(setReady) {
+				if(setReady) {
+					ready_int = setReady;
+					ready_mark.innerHTML = ready_marks\[ready_int\];
+				}
+				else {
+					ready_int++;
+					if (ready_int === ready_marks.length)
+						ready_int = 0;
+					ready_mark.innerHTML = ready_marks\[ready_int\];
+				}
+			}
+			var antag_int = 0;
+			var antag_mark = document.getElementById("be_antag");
+			var antag_marks = \[ "<span class='unchecked'>☒</span> BE ANTAGONIST", "<span class='checked'>☑</span> BE ANTAGONIST" \];
+			function skip_antag(setAntag) {
+				if(setAntag) {
+					antag_int = setAntag;
+					antag_mark.innerHTML = antag_marks\[antag_int\];
+				}
+				else {
+					antag_int++;
+					if (antag_int === antag_marks.length)
+						antag_int = 0;
+					antag_mark.innerHTML = antag_marks\[antag_int\];
+				}
+			}
+
+			var character_name_slot = document.getElementById("character_slot");
+			function update_current_character(name) {
+				character_name_slot.textContent = name.toUpperCase();
+			}
+		</script>
+		"}
 
 	html += "</body></html>"
 

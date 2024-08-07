@@ -125,6 +125,7 @@
 					if(isnewplayer(user))
 						var/mob/new_player/N = user
 						N.new_player_panel_proc()
+					user.client << output(active_character.real_name, "title_browser:update_current_character") // SS220 ADDITION - Title Screen
 				if("age")
 					active_character.age = rand(S.min_age , S.max_age)
 				if("hair")
@@ -199,6 +200,7 @@
 							if(isnewplayer(user))
 								var/mob/new_player/N = user
 								N.new_player_panel_proc()
+							user.client << output(new_name, "title_browser:update_current_character") // SS220 ADDITION - Title Screen
 						else
 							to_chat(user, "<font color='red'>Invalid name. Your name should be at least 2 and at most [MAX_NAME_LEN] characters long. It may only contain the characters A-Z, a-z, -, ' and .</font>")
 
