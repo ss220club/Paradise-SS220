@@ -206,6 +206,8 @@ GLOBAL_LIST_INIT(special_role_times, list( //minimum age (in days) for accounts 
 			dat += "<b>Пол:</b> <a href='byond://?_src_=prefs;preference=gender'>[active_character.gender == MALE ? "Male" : (active_character.gender == FEMALE ? "Female" : "Genderless")]</a><br>"
 			dat += "<b>Тип тела:</b> <a href='byond://?_src_=prefs;preference=body_type'>[active_character.body_type == MALE ? "Masculine" : "Feminine"]</a>"
 			dat += "<br>"
+			dat += "<b>Runechat Color:</b> "
+			dat += "<a href='byond://?_src_=prefs;preference=runechat_color;task=input'>Color</a> [color_square(active_character.runechat_color)]<br>"
 			if(active_character.species == "Vox") // Purge these bastards
 				dat += "<b>Баллон с N2:</b> <a href='byond://?_src_=prefs;preference=speciesprefs;task=input'>[active_character.speciesprefs ? "Large N2 Tank" : "Specialized N2 Tank"]</a><br>"
 			if(active_character.species == "Plasmaman")
