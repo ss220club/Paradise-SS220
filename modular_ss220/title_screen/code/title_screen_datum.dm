@@ -27,7 +27,7 @@
 	winset(viewer, "title_browser", "is-disabled=false;is-visible=true")
 	winset(viewer, "paramapwindow.status_bar", "is-visible=false")
 
-	var/datum/asset/lobby_asset = get_asset_datum(/datum/asset/simple/lobby_fonts)
+	var/datum/asset/lobby_asset = get_asset_datum(/datum/asset/simple/lobby)
 	lobby_asset.send(viewer)
 
 	SSassets.transport.send_assets(viewer, screen_image.name)
@@ -57,25 +57,39 @@
 		</div>
 	"}
 
-	html += {"<div class="container_nav">"}
-
+	html += {"<div class="container_menu">"}
+	html += {"
+		<div class="container_logo">
+		<img class="logo" src="[SSassets.transport.get_asset_url(asset_name = "SS220_Logo.png")]">
+		<span id="character_slot">На смену прибывает...</span>
+		<span id="character_slot">[viewer.prefs.active_character.real_name]</span>
+		</div>
+	"}
+	html += {"<div class="container_buttons">"}
 	if(!SSticker || SSticker.current_state <= GAME_STATE_PREGAME)
-		html += {"<a id="ready" class="menu_button" href='byond://?src=[player.UID()];ready=1'>[player.ready ? "<span class='checked'>☑</span> ГОТОВ" : "<span class='unchecked'>☒</span> НЕ ГОТОВ"]</a>"}
+		html += {"<a id="ready" class="menu_button" href='byond://?src=[player.UID()];ready=1'>[player.ready ? "Готов" : "Не готов"]</a>"}
 	else
 		html += {"
-			<a class="menu_button" href='byond://?src=[player.UID()];late_join=1'>ПРИСОЕДИНИТЬСЯ</a>
-			<a class="menu_button" href='byond://?src=[player.UID()];manifest=1'>МАНИФЕСТ</a>
+			<a class="menu_button" href='byond://?src=[player.UID()];late_join=1'>Присоединиться</a>
+			<a class="menu_button" href='byond://?src=[player.UID()];manifest=1'>Список экипажа</a>
 		"}
 
-	html += {"<a class="menu_button" href='byond://?src=[player.UID()];observe=1'>НАБЛЮДАТЬ</a>"}
-
+	html += {"<a class="menu_button" href='byond://?src=[player.UID()];observe=1'>Наблюдать</a>"}
 	html += {"
 		<hr>
-		<a class="menu_button" href='byond://?src=[player.UID()];show_preferences=1'>SETUP CHARACTER (<span id="character_slot">[uppertext(viewer.prefs.active_character.real_name)]</span>)</a>
-		<a class="menu_button" href='byond://?src=[player.UID()];preference=1'>GAME OPTIONS</a>
-		<a id="be_antag" class="menu_button" href='byond://?src=[player.UID()];skip_antag=1'>[viewer.skip_antag ? "Антагонист: Выключен" : "Антагонист: Включен"]</a>
+		<a class="menu_button" id="be_antag" href='byond://?src=[player.UID()];skip_antag=1'>[viewer.skip_antag ? "Включить антагонистов" : "Выключить антагонистов"]</a>
+		<a class="menu_button" href='byond://?src=[player.UID()];show_preferences=1'>Настройка персонажа</a>
+		<a class="menu_button" href='byond://?src=[player.UID()];game_preferences=1'>Настройки игры</a>
 		<hr>
-		<a class="menu_button" href='byond://?src=[player.UID()];server_swap=1'>SWAP SERVERS</a>
+		<a class="menu_button" href='byond://?src=[player.UID()];server_swap=1'>Сменить сервер</a>
+	"}
+	html += {"</div>"}
+	html += {"
+		<div class="container_links">
+		<a class="link_button" href='byond://?src=[player.UID()];wiki=1'><i class="fab fa-wikipedia-w"></i></a>
+		<a class="link_button" href='byond://?src=[player.UID()];discord=1'><i class="fab fa-discord"></i></a>
+		<a class="link_button" href='byond://?src=[player.UID()];changelog=1'><i class="fas fa-newspaper"></i></a>
+		</div>
 	"}
 
 	html += "</div>"
@@ -83,7 +97,7 @@
 		<script language="JavaScript">
 			var ready_int = 0;
 			var ready_mark = document.getElementById("ready");
-			var ready_marks = \[ "<span class='unchecked'>☒</span> READY", "<span class='checked'>☑</span> READY" \];
+			var ready_marks = \[ "Не готов", "Готов" \];
 			function ready(setReady) {
 				if(setReady) {
 					ready_int = setReady;
@@ -98,7 +112,7 @@
 			}
 			var antag_int = 0;
 			var antag_mark = document.getElementById("be_antag");
-			var antag_marks = \[ "<span class='unchecked'>☒</span> BE ANTAGONIST", "<span class='checked'>☑</span> BE ANTAGONIST" \];
+			var antag_marks = \[ "Включить антагонистов", "Выключить антагонистов" \];
 			function skip_antag(setAntag) {
 				if(setAntag) {
 					antag_int = setAntag;

@@ -154,11 +154,11 @@
 		// SS220 ADDITION END
 
 		ready = !ready
-		/* new_player_panel_proc() */  src << output(ready, "title_browser:ready") // SS220 REPLACEMENT - TITLE SCREEN
+		new_player_panel_proc()
 
 	if(href_list["skip_antag"])
 		client.skip_antag = !client.skip_antag
-		/* new_player_panel_proc() */ src << output(client.skip_antag, "title_browser:skip_antag") // SS220 REPLACEMENT - TITLE SCREEN
+		new_player_panel_proc()
 
 	if(href_list["refresh"])
 		src << browse(null, "window=playersetup") //closes the player setup window

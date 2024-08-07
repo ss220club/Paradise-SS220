@@ -3,9 +3,11 @@
 #define DEFAULT_TITLE_HTML {"
 	<html>
 		<head>
+			<title>Title Screen</title>
 			<meta http-equiv="X-UA-Compatible" content="IE=edge">
 			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-			<title>Title Screen</title>
+			<link rel="stylesheet" type="text/css" href="v4shim.css">
+			<link rel="stylesheet" type="text/css" href="font-awesome.css">
 			<style type='text/css'>
 				@font-face {
 					font-family: "Fixedsys";
@@ -13,17 +15,19 @@
 				}
 				body,
 				html {
-					margin: 0;
+					font-family: Verdana, Geneva, sans-serif;
+					font-size: 14px;
 					overflow: hidden;
 					text-align: center;
-					background-color: black;
-					padding-top: 5vmin;
 					-ms-user-select: none;
+					user-select: none;
 					cursor: default;
+					margin: 0;
+					background-color: black;
 				}
 
 				img {
-					border-style:none;
+					border-style: none;
 				}
 
 				.bg {
@@ -33,7 +37,7 @@
 					min-width: 100vmin;
 					min-height: 100vmin;
 					top: 50%;
-					left:50%;
+					left: 50%;
 					transform: translate(-50%, -50%);
 					z-index: 0;
 				}
@@ -42,17 +46,14 @@
 					position: absolute;
 					box-sizing: border-box;
 					width: auto;
-					padding-top: 1vmin;
 					top: calc(50% - 10vmin);
-					left:50%;
+					right: 25%;
 					transform: translate(-50%, -50%);
 					z-index: 1;
 				}
 
 				.menu_notice {
 					display: inline-block;
-					font-family: "Fixedsys";
-					font-weight: lighter;
 					text-decoration: none;
 					width: 100%;
 					text-align: left;
@@ -64,127 +65,83 @@
 					line-height: 2vmin;
 				}
 
-				.container_nav {
+				.container_menu {
+					display: flex;
+					flex-direction: column;
+					justify-content: space-between;
 					position: absolute;
 					box-sizing: border-box;
-					width: 90vmin;
-					min-height: 10vmin;
-					top: calc(50% + 22.5vmin);
-					left:50%;
-					transform: translate(-50%, -50%);
-					z-index: 1;
-					border: 2px solid white;
-					border-radius: 4px;
-					box-shadow: 2px 2px #333, inset 1px 1px #333;
-					background: linear-gradient(to bottom, rgba(68, 68, 204, 0.9), rgba(0, 0, 102, 0.9));
-					opacity: 75%;
-					padding: 1em;
+					bottom: 0;
+					left: 0;
+					width: 22.5em;
+					height: 100vh;
+					background: linear-gradient(90deg, rgba(0,0,0,0.75) 90%, rgba(0,0,0,0) 100%);
+					z-index: 2;
 				}
 
-				.container_nav hr {
-					height: 2px;
-					background-color: #cde;
-					border: none;
-					box-shadow: 2px 2px black;
+				.container_logo {
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+					margin: 1em 1.5em;
+				}
+
+				.logo {
+					width: 20vw;
+				}
+
+				.character_slot {
+					width: 100%;
+					font-weight: bold;
+					font-size: 1.25rem;
+					margin-top: 1em;
+					color: #d4dfec;
+				}
+
+				.container_buttons {
+					flex: 1;
+					text-align: left;
+					margin: 5em 1em 2.5em 0;
 				}
 
 				.menu_button {
 					display: block;
-					box-sizing: border-box;
-					font-family: "Fixedsys";
-					font-weight: lighter;
-					text-decoration: none;
-					font-size: 4vmin;
-					text-shadow: 2px 2px black;
-					line-height: 4vmin;
-					width: 100%;
-					text-align: left;
-					color: #cde;
-					height: 4vmin;
-					padding-left: 5vmin;
-					letter-spacing: 1px;
 					cursor: pointer;
-					white-space: nowrap;
 					overflow: hidden;
-				}
-
-				.menu_button:hover {
-					padding-left: 0px;
-					color: yellow;
-				}
-
-				.menu_button:active {
-					padding-left: 0px;
-					transform: translate(2px, 2px);
-				}
-
-				.menu_button:hover::before {
-					content: "☞";
-					text-align: center;
-					width: 5vmin;
-					display: inline-block;
-				}
-
-				@keyframes pulse_button {
-					0% {transform: translateX(0px);}
-					100% {transform: translateX(2px);}
-				}
-
-				.menu_button:active::before {
-					content: "☛";
-					text-align: center;
-					width: 5vmin;
-					animation: pulse_button 0.25s infinite alternate;
-				}
-
-				@keyframes pollsbox {
-					0% {color: #cde;}
-					50% {color: #f80;}
-				}
-
-				.menu_newpoll {
-					animation: pollsbox 2s step-start infinite;
-					padding-left: 0px;
-				}
-
-				.menu_newpoll::before {
-					content: "→";
-					text-align: center;
-					width: 5vmin;
-					display: inline-block;
-				}
-
-				.menu_newpoll::after {
-					content: "←";
-					text-align: center;
-					width: 5vmin;
-					display: inline-block;
-				}
-
-				.container_notice {
-					position: absolute;
-					box-sizing: border-box;
-					width: auto;
-					padding-top: 1vmin;
-					top: calc(50% - 10vmin);
-					left:50%;
-					transform: translate(-50%, -50%);
-					z-index: 1;
-				}
-
-				.menu_notice {
-					display: inline-block;
-					font-family: "Fixedsys";
-					font-weight: lighter;
+					font-size: 1.5rem;
 					text-decoration: none;
+					box-sizing: border-box;
 					width: 100%;
-					text-align: left;
-					color: red;
-					text-shadow: 1px 0px black, -1px 0px black, 0px 1px black, 0px -1px black, 2px 0px black, -2px 0px black, 0px 2px black, 0px -2px black;
-					margin-right: 0%;
-					margin-top: 0px;
-					font-size: 3vmin;
-					line-height: 2vmin;
+					margin-bottom: 0.25em;
+					padding: 0.25em 0.5em;
+					color: #898989;
+					border-radius: 0 0.25em 0.25em 0;
+					transition: color 0.2s, background-color 0.2s;
+				}
+
+				.menu_button:hover,
+				.link_button:hover {
+					background-color: rgba(255, 255, 255, 0.075);
+					color: #d4dfec;
+				}
+
+				.menu_button:active
+				.link_button:active {
+					background-color: rgba(255,255,255, 0.125);
+					color: #d4dfec;
+				}
+
+				.container_links {
+					display: flex;
+					margin-right: 1em;
+				}
+
+				.link_button {
+					cursor: pointer;
+					width: 100%;
+					font-size: 1.5rem;
+					padding: 0.5em;
+					color: #898989;
 				}
 
 				.unchecked {
