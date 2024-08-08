@@ -63,6 +63,7 @@
 					background-color: rgba(22, 22, 22, 0.85);
 					border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 					transition: left 0.2s, padding 0.2s;
+					backdrop-filter: blur(24px);
 					z-index: 1;
 				}
 
@@ -94,6 +95,7 @@
 					border-right: 1px solid rgba(255, 255, 255, 0.1);
 					box-shadow: 0.5em 0 1.25em rgba(0, 0 ,0, 0.5);
 					transition: transform 0.2s, box-shadow 0.2s;
+					backdrop-filter: blur(24px);
 					z-index: 2;
 				}
 
@@ -260,6 +262,7 @@
 					border: 1px solid rgba(255, 255, 255, 0.1);
 					border-width: 0 1px 1px 0;
 					transition: color 0.2s, left 0.2s;
+					backdrop-filter: blur(24px);
 				}
 
 				.hide_button i {
