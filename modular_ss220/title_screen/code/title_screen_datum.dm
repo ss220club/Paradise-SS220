@@ -80,7 +80,7 @@
 	html += {"<a class="menu_button" href='byond://?src=[player.UID()];observe=1'>Наблюдать</a>"}
 	html += {"
 		<hr>
-		<a class="menu_button good" id="be_antag" href='byond://?src=[player.UID()];skip_antag=1'>[viewer.skip_antag ? "Включить антагонистов" : "Выключить антагонистов"]</a>
+		<a class="menu_button good" id="be_antag" href='byond://?src=[player.UID()];skip_antag=1'>[viewer.skip_antag ? "Антагонисты: Выкл." : "Антагонисты: Вкл."]</a>
 		<a class="menu_button" href='byond://?src=[player.UID()];show_preferences=1'>Настройка персонажа</a>
 		<a class="menu_button" href='byond://?src=[player.UID()];game_preferences=1'>Настройки игры</a>
 		<hr>
@@ -94,8 +94,8 @@
 			<a class="link_button" href='byond://?src=[player.UID()];changelog=1'><i class="fas fa-newspaper"></i></a>
 		</div>
 	"}
-	html += {"<label class="hide_button" for="hide_menu"><i class="fas fa-angles-left"></i></label>"}
 	html += {"</div>"}
+	html += {"<label class="hide_button" for="hide_menu"><i class="fas fa-angles-left"></i></label>"}
 	html += {"
 		<script language="JavaScript">
 			let ready_int = 0;
@@ -119,7 +119,7 @@
 			}
 			let antag_int = 0;
 			const antagID = document.getElementById("be_antag");
-			const antag_marks = \[ "Выключить антагонистов", "Включить антагонистов"\];
+			const antag_marks = \[ "Антагонисты: Вкл.", "Антагонисты: Выкл."\];
 			const antag_class = \[ "good", "bad" \];
 			function skip_antag(setAntag) {
 				if(setAntag) {

@@ -57,7 +57,7 @@
 					position: absolute;
 					box-sizing: border-box;
 					width: 100vw;
-					top: 0;
+					bottom: 0;
 					left: 20em;
 					padding-right: 20em;
 					background-color: rgba(22, 22, 22, 0.85);
@@ -74,7 +74,8 @@
 				.menu_notice {
 					margin: 0.75em 0.5em;
 					line-height: 1.75rem;
-					font-size: 1.5rem;
+					font-size: 1.75rem;
+					font-family: Fixedsys;
 					color: #bd2020;
 				}
 
@@ -91,12 +92,14 @@
 					height: 100vh;
 					background-color: rgba(22, 22, 22, 0.85);
 					border-right: 1px solid rgba(255, 255, 255, 0.1);
-					transition: transform 0.2s;
+					box-shadow: 0.5em 0 1.25em rgba(0, 0 ,0, 0.5);
+					transition: transform 0.2s, box-shadow 0.2s;
 					z-index: 2;
 				}
 
 				#hide_menu:checked ~ .container_menu {
 					transform: translateX(-100%);
+					box-shadow: none;
 				}
 
 				.container_logo {
@@ -108,7 +111,7 @@
 				}
 
 				.logo {
-					width: 17.5vw;
+					width: 12.5rem;
 					padding: 1em;
 					transform: scale(0.9);
 				}
@@ -164,7 +167,7 @@
 					transition: color 0.2s, background-color 0.2s, border-color 0.2s;
 				}
 
-				.menu_button::after {
+				.menu_button::before {
 					content: '';
 					position: absolute;
 					top: 50%;
@@ -176,7 +179,7 @@
 					transition: height 0.2s, background-color 0.2s;
 				}
 
-				.menu_button:hover::after {
+				.menu_button:hover::before {
 					height: 100%;
 				}
 
@@ -194,7 +197,7 @@
 					color: #2fb94f;
 				}
 
-				.good::after {
+				.good::before {
 					background-color: #2fb94f;
 				}
 
@@ -206,7 +209,7 @@
 					color: #d93f3f;
 				}
 
-				.bad::after {
+				.bad::before {
 					background-color: #d93f3f;
 				}
 
@@ -221,10 +224,11 @@
 					font-size: 1.5rem;
 					padding: 0.5em;
 					color: #898989;
+					border-top: 1px solid transparent;
 					transition: color 0.2s, background-color 0.2s;
 				}
 
-				.link_button::after {
+				.link_button::before {
 					content: '';
 					position: absolute;
 					left: 50%;
@@ -236,21 +240,21 @@
 					transition: width 0.2s;
 				}
 
-				.link_button:hover::after {
+				.link_button:hover::before {
 					width: 100%;
 				}
 
 				.hide_button {
 					cursor: pointer;
 					position: fixed;
-					bottom: 0;
+					top: 0;
 					left: 20em;
 					padding: 0.9em;
 					vertical-align: middle;
 					background-color: rgba(22, 22, 22, 0.85);
 					color: #898989;
 					border: 1px solid rgba(255, 255, 255, 0.1);
-					border-width: 1px 1px 0 0;
+					border-width: 0 1px 1px 0;
 					transition: color 0.2s, left 0.2s;
 				}
 
@@ -262,11 +266,11 @@
 					color: #d4dfec;
 				}
 
-				#hide_menu:checked ~ .container_menu .hide_button {
+				#hide_menu:checked ~ .hide_button {
 					left: 0;
 				}
 
-				#hide_menu:checked ~ .container_menu .hide_button i {
+				#hide_menu:checked ~ .hide_button i {
 					transform: rotate(180deg);
 				}
 			</style>
