@@ -46,6 +46,8 @@
 	var/list/html = list(title_html)
 	var/mob/new_player/player = user
 
+	html += {"<input type="checkbox" id="hide_menu">"}
+
 	var/screen_image_url = SSassets.transport.get_asset_url(asset_cache_item = screen_image)
 	if(screen_image_url)
 		html += {"<img src="[screen_image_url]" class="bg" alt="">"}
@@ -56,13 +58,14 @@
 			<p class="menu_notice">[notice]</p>
 		</div>
 	"}
-
 	html += {"<div class="container_menu">"}
 	html += {"
 		<div class="container_logo">
-		<img class="logo" src="[SSassets.transport.get_asset_url(asset_name = "SS220_Logo.png")]">
-		<span class="character">На смену прибывает...</span>
-		<span class="character" id="character_slot">[viewer.prefs.active_character.real_name]</span>
+		<img class="logo" src="[SSassets.transport.get_asset_url(asset_name = "logo.png")]">
+			<div class="character_info">
+			<span class="character">На смену прибывает...</span>
+			<span class="character" id="character_slot">[viewer.prefs.active_character.real_name]</span>
+			</div>
 		</div>
 	"}
 	html += {"<div class="container_buttons">"}
@@ -86,39 +89,37 @@
 	html += {"</div>"}
 	html += {"
 		<div class="container_links">
-		<a class="link_button" href='byond://?src=[player.UID()];wiki=1'><i class="fab fa-wikipedia-w"></i></a>
-		<a class="link_button" href='byond://?src=[player.UID()];discord=1'><i class="fab fa-discord"></i></a>
-		<a class="link_button" href='byond://?src=[player.UID()];changelog=1'><i class="fas fa-newspaper"></i></a>
+			<a class="link_button" href='byond://?src=[player.UID()];wiki=1'><i class="fab fa-wikipedia-w"></i></a>
+			<a class="link_button" href='byond://?src=[player.UID()];discord=1'><i class="fab fa-discord"></i></a>
+			<a class="link_button" href='byond://?src=[player.UID()];changelog=1'><i class="fas fa-newspaper"></i></a>
 		</div>
 	"}
-
-	html += "</div>"
+	html += {"<label class="hide_button" for="hide_menu"><i class="fas fa-angles-left"></i></label>"}
+	html += {"</div>"}
 	html += {"
 		<script language="JavaScript">
-			var ready_int = 0;
-			var ready_mark = document.getElementById("ready");
-			var ready_marks = \[ "Не готов", "Готов" \];
+			let ready_int = 0;
+			const ready_mark = document.getElementById("ready");
+			const ready_marks = \[ "Не готов", "Готов" \];
 			function ready(setReady) {
 				if(setReady) {
 					ready_int = setReady;
 					ready_mark.innerHTML = ready_marks\[ready_int\];
-				}
-				else {
+				} else {
 					ready_int++;
 					if (ready_int === ready_marks.length)
 						ready_int = 0;
 					ready_mark.innerHTML = ready_marks\[ready_int\];
 				}
 			}
-			var antag_int = 0;
-			var antag_mark = document.getElementById("be_antag");
-			var antag_marks = \[ "Включить антагонистов", "Выключить антагонистов" \];
+			let antag_int = 0;
+			const antag_mark = document.getElementById("be_antag");
+			const antag_marks = \[ "Выключить антагонистов", "Включить антагонистов"\];
 			function skip_antag(setAntag) {
 				if(setAntag) {
 					antag_int = setAntag;
 					antag_mark.innerHTML = antag_marks\[antag_int\];
-				}
-				else {
+				} else {
 					antag_int++;
 					if (antag_int === antag_marks.length)
 						antag_int = 0;
@@ -126,7 +127,7 @@
 				}
 			}
 
-			var character_name_slot = document.getElementById("character_slot");
+			const character_name_slot = document.getElementById("character_slot");
 			function update_current_character(name) {
 				character_name_slot.textContent = name;
 			}
