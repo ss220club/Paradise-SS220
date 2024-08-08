@@ -80,6 +80,9 @@
 /area/lazarus/cabin/sectarian
 	name = "Убежище Сектантов"
 
+/area/lazarus/cabin/tourists
+	name = "Туристическая база"
+
 //---Other---//
 
 /area/lazarus/abandoned_bunker
