@@ -290,9 +290,8 @@
 
 		if(istype(I, /obj/item/disk/tech_disk))
 			var/obj/item/disk/tech_disk/disk = I
-			var/datum/tech/tech = disk.stored
-			if(tech)
-				I.origin_tech = "[tech.id]=[tech.level]"
+			if(disk.tech_id)
+				I.origin_tech = "[disk.tech_id]=[disk.tech_level]"
 
 		if(I.origin_tech)
 			var/list/tech_list = params2list(I.origin_tech)
