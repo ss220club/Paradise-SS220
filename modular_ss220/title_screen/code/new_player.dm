@@ -19,6 +19,9 @@
 	if(href_list["game_preferences"])
 		client.setup_character()
 
+	if(href_list["swap_server"])
+		swap_server()
+
 	if(href_list["wiki"])
 		if(tgui_alert(usr, "Хотите открыть нашу вики?", "Вики", list("Да", "Нет")) != "Да")
 			return
@@ -31,6 +34,30 @@
 
 	if(href_list["changelog"])
 		SSchangelog.OpenChangelog(client)
+
+/mob/new_player/proc/swap_server()
+	var/list/servers =  GLOB.configuration.ss220_misc.cross_server_list
+	if(LAZYLEN(servers) < 1)
+		return
+
+	var/server_name
+	var/server_ip
+	if(LAZYLEN(servers) > 1)
+		server_name = tgui_input_list(src, "Пожалуйста, выберите сервер куда собираетесь отправиться...", "Смена сервера!", servers)
+		if(!server_name)
+			return
+		server_ip = servers[server_name]
+
+	if(LAZYLEN(servers) == 1)
+		server_name = servers[1]
+		server_ip = servers[server_name]
+
+	var/confirm = tgui_alert(src, "Вы уверены что хотите перейти на [server_name] ([server_ip])?", "Смена сервера!", list("Поехали", "Побуду тут..."))
+	if(confirm != "Поехали")
+		return
+
+	to_chat_immediate(src, "Удачной охоты, сталкер.")
+	src.client << link(server_ip)
 
 /datum/preferences/process_link(mob/user, list/href_list)
 	. = ..()

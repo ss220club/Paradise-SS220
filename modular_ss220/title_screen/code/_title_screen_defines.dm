@@ -244,6 +244,10 @@
 					width: 100%;
 				}
 
+				.link_button i {
+					width: 2em;
+				}
+
 				.hide_button {
 					cursor: pointer;
 					position: fixed;

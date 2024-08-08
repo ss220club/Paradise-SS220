@@ -58,6 +58,7 @@
 			<p class="menu_notice">[notice]</p>
 		</div>
 	"}
+
 	html += {"<div class="container_menu">"}
 	html += {"
 		<div class="container_logo">
@@ -69,6 +70,7 @@
 		</div>
 	"}
 	html += {"<div class="container_buttons">"}
+
 	if(!SSticker || SSticker.current_state <= GAME_STATE_PREGAME)
 		html += {"<a class="menu_button bad" id="ready" href='byond://?src=[player.UID()];ready=1'>[player.ready ? "Готов" : "Не готов"]</a>"}
 	else
@@ -84,14 +86,14 @@
 		<a class="menu_button" href='byond://?src=[player.UID()];show_preferences=1'>Настройка персонажа</a>
 		<a class="menu_button" href='byond://?src=[player.UID()];game_preferences=1'>Настройки игры</a>
 		<hr>
-		<a class="menu_button" href='byond://?src=[player.UID()];server_swap=1'>Сменить сервер</a>
+		<a class="menu_button" href='byond://?src=[player.UID()];swap_server=1'>Сменить сервер</a>
 	"}
 	html += {"</div>"}
 	html += {"
 		<div class="container_links">
 			<a class="link_button" href='byond://?src=[player.UID()];wiki=1'><i class="fab fa-wikipedia-w"></i></a>
 			<a class="link_button" href='byond://?src=[player.UID()];discord=1'><i class="fab fa-discord"></i></a>
-			<a class="link_button" href='byond://?src=[player.UID()];changelog=1'><i class="fas fa-newspaper"></i></a>
+			<a class="link_button" title="Чейнджлог" href='byond://?src=[player.UID()];changelog=1'><i class="fas fa-newspaper"></i></a>
 		</div>
 	"}
 	html += {"</div>"}
@@ -110,7 +112,7 @@
 					readyID.classList.remove(ready_class\[1 - ready_int\]);
 				} else {
 					ready_int++;
-					if (ready_int === ready_marks.length)
+					if(ready_int === ready_marks.length)
 						ready_int = 0;
 					readyID.innerHTML = ready_marks\[ready_int\];
 					readyID.classList.add("good");
@@ -129,7 +131,7 @@
 					antagID.classList.remove(antag_class\[1 - antag_int\]);
 				} else {
 					antag_int++;
-					if (antag_int === antag_marks.length)
+					if(antag_int === antag_marks.length)
 						antag_int = 0;
 					antagID.innerHTML = antag_marks\[antag_int\];
 					antagID.classList.add("good");
