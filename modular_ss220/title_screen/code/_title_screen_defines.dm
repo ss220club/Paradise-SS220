@@ -41,6 +41,10 @@
 					transition: transform 0.2s;
 				}
 
+				input {
+					display: none;
+				}
+
 				.bg {
 					position: absolute;
 					width: auto;
