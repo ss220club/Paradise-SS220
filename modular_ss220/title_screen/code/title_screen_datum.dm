@@ -70,7 +70,7 @@
 	"}
 	html += {"<div class="container_buttons">"}
 	if(!SSticker || SSticker.current_state <= GAME_STATE_PREGAME)
-		html += {"<a id="ready" class="menu_button" href='byond://?src=[player.UID()];ready=1'>[player.ready ? "Готов" : "Не готов"]</a>"}
+		html += {"<a class="menu_button bad" id="ready" href='byond://?src=[player.UID()];ready=1'>[player.ready ? "Готов" : "Не готов"]</a>"}
 	else
 		html += {"
 			<a class="menu_button" href='byond://?src=[player.UID()];late_join=1'>Присоединиться</a>
@@ -80,7 +80,7 @@
 	html += {"<a class="menu_button" href='byond://?src=[player.UID()];observe=1'>Наблюдать</a>"}
 	html += {"
 		<hr>
-		<a class="menu_button" id="be_antag" href='byond://?src=[player.UID()];skip_antag=1'>[viewer.skip_antag ? "Включить антагонистов" : "Выключить антагонистов"]</a>
+		<a class="menu_button good" id="be_antag" href='byond://?src=[player.UID()];skip_antag=1'>[viewer.skip_antag ? "Включить антагонистов" : "Выключить антагонистов"]</a>
 		<a class="menu_button" href='byond://?src=[player.UID()];show_preferences=1'>Настройка персонажа</a>
 		<a class="menu_button" href='byond://?src=[player.UID()];game_preferences=1'>Настройки игры</a>
 		<hr>
@@ -99,31 +99,41 @@
 	html += {"
 		<script language="JavaScript">
 			let ready_int = 0;
-			const ready_mark = document.getElementById("ready");
+			const readyID = document.getElementById("ready");
 			const ready_marks = \[ "Не готов", "Готов" \];
+			const ready_class = \[ "bad", "good" \];
 			function ready(setReady) {
 				if(setReady) {
 					ready_int = setReady;
-					ready_mark.innerHTML = ready_marks\[ready_int\];
+					readyID.innerHTML = ready_marks\[ready_int\];
+					readyID.classList.add(ready_class\[ready_int\]);
+					readyID.classList.remove(ready_class\[1 - ready_int\]);
 				} else {
 					ready_int++;
 					if (ready_int === ready_marks.length)
 						ready_int = 0;
-					ready_mark.innerHTML = ready_marks\[ready_int\];
+					readyID.innerHTML = ready_marks\[ready_int\];
+					readyID.classList.add("good");
+					readyID.classList.remove("bad");
 				}
 			}
 			let antag_int = 0;
-			const antag_mark = document.getElementById("be_antag");
+			const antagID = document.getElementById("be_antag");
 			const antag_marks = \[ "Выключить антагонистов", "Включить антагонистов"\];
+			const antag_class = \[ "good", "bad" \];
 			function skip_antag(setAntag) {
 				if(setAntag) {
 					antag_int = setAntag;
-					antag_mark.innerHTML = antag_marks\[antag_int\];
+					antagID.innerHTML = antag_marks\[antag_int\];
+					antagID.classList.add(antag_class\[antag_int\]);
+					antagID.classList.remove(antag_class\[1 - antag_int\]);
 				} else {
 					antag_int++;
 					if (antag_int === antag_marks.length)
 						antag_int = 0;
-					antag_mark.innerHTML = antag_marks\[antag_int\];
+					antagID.innerHTML = antag_marks\[antag_int\];
+					antagID.classList.add("good");
+					antagID.classList.remove("bad");
 				}
 			}
 

@@ -159,8 +159,9 @@
 					margin-bottom: 0.25em;
 					padding: 0.25em 0.25em 0.25em 0.5em;
 					color: #898989;
+					border: 1px solid transparent;
 					border-radius: 0 0.25em 0.25em 0;
-					transition: color 0.2s, background-color 0.2s;
+					transition: color 0.2s, background-color 0.2s, border-color 0.2s;
 				}
 
 				.menu_button::after {
@@ -172,7 +173,7 @@
 					height: 0;
 					background-color: #d4dfec;
 					transform: translateY(-50%);
-					transition: height 0.2s;
+					transition: height 0.2s, background-color 0.2s;
 				}
 
 				.menu_button:hover::after {
@@ -183,6 +184,30 @@
 				.link_button:hover {
 					background-color: rgba(255, 255, 255, 0.075);
 					color: #d4dfec;
+				}
+
+				.good {
+					color: #1b9638;
+				}
+
+				.good:hover {
+					color: #2fb94f;
+				}
+
+				.good::after {
+					background-color: #2fb94f;
+				}
+
+				.bad {
+					color: #bd2020;
+				}
+
+				.bad:hover {
+					color: #d93f3f;
+				}
+
+				.bad::after {
+					background-color: #d93f3f;
 				}
 
 				.container_links {
