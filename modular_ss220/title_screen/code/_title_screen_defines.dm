@@ -3,7 +3,7 @@
 #define DEFAULT_TITLE_HTML {"
 	<html>
 		<head>
-			<title>Title Screen</title>
+			<title>Lobby Screen</title>
 			<meta http-equiv="X-UA-Compatible" content="IE=edge">
 			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 			<link rel="stylesheet" type="text/css" href="v4shim.css">
@@ -27,6 +27,7 @@
 				}
 
 				img {
+					pointer-events: none;
 					border-style: none;
 				}
 
@@ -171,6 +172,7 @@
 					border: 1px solid transparent;
 					border-radius: 0 0.25em 0.25em 0;
 					transition: color 0.2s, background-color 0.2s, border-color 0.2s;
+					-webkit-user-drag: none;
 				}
 
 				.menu_button::before {
@@ -232,6 +234,7 @@
 					color: #898989;
 					border-top: 1px solid transparent;
 					transition: color 0.2s, background-color 0.2s;
+					-webkit-user-drag: none;
 				}
 
 				.link_button::before {

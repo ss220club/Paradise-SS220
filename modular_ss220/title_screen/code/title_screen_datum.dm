@@ -28,7 +28,9 @@
 	winset(viewer, "paramapwindow.status_bar", "is-visible=false")
 
 	var/datum/asset/lobby_asset = get_asset_datum(/datum/asset/simple/lobby)
+	var/datum/asset/fontawesome = get_asset_datum(/datum/asset/simple/namespaced/fontawesome)
 	lobby_asset.send(viewer)
+	fontawesome.send(viewer)
 
 	SSassets.transport.send_assets(viewer, screen_image.name)
 
