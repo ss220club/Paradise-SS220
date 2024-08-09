@@ -1,12 +1,12 @@
 /datum/title_screen
 	/// The preamble html that includes all styling and layout.
-	var/title_html = DEFAULT_TITLE_HTML
+	var/title_html
 	/// The current notice text, or null.
 	var/notice
 	/// The current title screen being displayed, as `/datum/asset_cache_item`
 	var/datum/asset_cache_item/screen_image
 
-/datum/title_screen/New(title_html = DEFAULT_TITLE_HTML, notice, screen_image_file)
+/datum/title_screen/New(title_html, notice, screen_image_file)
 	src.title_html = title_html
 	src.notice = notice
 	set_screen_image(screen_image_file)
