@@ -68,3 +68,7 @@
 	if(href_list["task"] == "input" && href_list["preference"] == "name")
 		user.client << output(active_character.real_name, "title_browser:update_current_character")
 		return TRUE
+
+	if(href_list["preference"] == "changeslot")
+		user.client << output(active_character.real_name, "title_browser:update_current_character")
+		return TRUE

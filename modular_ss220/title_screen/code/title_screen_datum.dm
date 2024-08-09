@@ -37,7 +37,7 @@
 /datum/title_screen/proc/hide_from(client/viewer)
 	if(viewer?.mob)
 		winset(viewer, "title_browser", "is-disabled=true;is-visible=false")
-		winset(viewer, "paramapwindow.status_bar", "is-visible=true")
+		winset(viewer, "paramapwindow.status_bar", "is-visible=true;focus=true")
 
 /**
  * Get the HTML of title screen.
