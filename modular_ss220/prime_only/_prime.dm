@@ -3,7 +3,7 @@
 /datum/modpack/prime_only
 	name = "Эксклюзивы прайма"
 	desc = "Всё что попросили стримеры эксклюзивно для прайма."
-	author = "Все кто сюда полез."
+	author = "dj-34, Vallat и все кто сюда полез в принципе."
 
 /datum/modpack/prime_only/pre_initialize()
 	. = ..()
