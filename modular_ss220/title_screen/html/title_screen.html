@@ -11,6 +11,12 @@
 				font-family: "Fixedsys";
 				src: url("FixedsysExcelsior3.01Regular.ttf");
 			}
+
+			* {
+				/* No animations for IE users. Laggy. */
+				-ms-transition: none !important;
+			}
+
 			body,
 			html {
 				font-family: Verdana, Geneva, sans-serif;
