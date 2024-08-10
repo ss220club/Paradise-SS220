@@ -6,7 +6,7 @@
 /obj/item/radio/spy_spider
 	name = "шпионский жучок"
 	desc = "Кажется, ты видел такого в фильмах про шпионов."
-	icon = 'modular_ss220/spy_spider/icons/spy_spider.dmi'
+	icon = 'modular_ss220/prime_only/icons/object/spy_spider.dmi'
 	icon_state = "spy_spider"
 	frequency = SPY_SPIDER_FREQ
 	freqlock = SPY_SPIDER_FREQ
@@ -28,7 +28,7 @@
 
 /obj/item/encryptionkey/spy_spider
 	name = "Spy Encryption Key"
-	icon = 'modular_ss220/spy_spider/icons/spy_spider.dmi'
+	icon = 'modular_ss220/prime_only/icons/object/spy_spider.dmi'
 	icon_state = "spy_cypherkey"
 	channels = list("Spy Spider" = TRUE)
 
@@ -45,6 +45,10 @@
 	new /obj/item/radio/spy_spider(src)
 	new /obj/item/encryptionkey/spy_spider(src)
 	new /obj/item/encryptionkey/spy_spider(src)
+
+/obj/structure/closet/secure_closet/detective/populate_contents()
+	. = ..()
+	new /obj/item/storage/lockbox/spy_kit(src)
 
 /**
  * CLOTHING PART
