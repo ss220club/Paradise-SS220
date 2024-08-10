@@ -12,8 +12,12 @@
 				src: url("FixedsysExcelsior3.01Regular.ttf");
 			}
 
+			/* No animations for IE users. Laggy. */
 			* {
-				/* No animations for IE users. Laggy. */
+				-ms-transition: none !important;
+			}
+
+			*::before {
 				-ms-transition: none !important;
 			}
 
