@@ -43,10 +43,6 @@
 	icon_state = "awaycontent5"
 	name = "Окрестности аванпост ''Велес''"
 
-/area/lazarus/outdoors/ice_lake
-	icon_state = "away1"
-	name = "Замёрзшее озеро"
-
 /area/lazarus/outdoors/stribog/landing
 	name = "Посадочная площадка (Стрибог)"
 	icon_state = "escape"
@@ -59,6 +55,48 @@
 	max_ambience_cooldown = 220 SECONDS
 
 	temperature = AREA_TEMPERATURE_OUTSIDE
+
+//-----UNDERGROUND-----//
+
+/area/lazarus/underground
+	icon_state = "awaycontent10"
+	name = "Подземелье"
+	always_unpowered = TRUE
+	requires_power = TRUE
+	poweralm = FALSE
+	apc_starts_off = TRUE
+	outdoors = FALSE
+	ambientsounds = MINING_SOUNDS
+	flags = NONE
+	sound_environment = SOUND_AREA_ASTEROID
+	min_ambience_cooldown = 70 SECONDS
+	max_ambience_cooldown = 220 SECONDS
+
+// Powered
+
+/area/lazarus/underground/powered
+	icon_state = "awaycontent10"
+	name = "Подземелье"
+	always_unpowered = FALSE
+	poweralm = TRUE
+	apc_starts_off = FALSE
+	outdoors = FALSE
+
+/area/lazarus/underground/powered/outpost
+	icon_state = "mining"
+	name = "Шахтёрский аванпост"
+
+/area/lazarus/underground/powered/geotherm
+	name = "Геотермальная электростанция"
+	icon_state = "engine"
+
+	temperature = AREA_TEMPERATURE_INSIDE
+
+/area/lazarus/underground/powered/geotherm/mining
+	name = "Геотермальная электростанция (Подземелье)"
+
+/area/lazarus/underground/powered/geotherm/veles
+	name = "Геотермальная электростанция (Велес)"
 
 //-----MISC LOCATIONS-----//
 

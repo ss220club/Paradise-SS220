@@ -1,11 +1,18 @@
 /mob/living/simple_animal/hostile/flesh_biomorph
 	faction = list("treacherous_flesh")
 	icon = 'modular_ss220/lazarus/icons/treacherous_flesh.dmi'
+	var/weeds_heal_amount = 5
 
 /mob/living/simple_animal/hostile/flesh_biomorph/Initialize(mapload)
 	. = ..()
 	var/datum/atom_hud/hud = GLOB.huds[DATA_HUD_TREACHEOUS_FLESH]
 	hud.add_hud_to(src)
+
+/mob/living/simple_animal/hostile/flesh_biomorph/Life(seconds, times_fired)
+	. = ..()
+	if(locate(/obj/structure/alien/weeds/meaty) in loc)
+		if(health < maxHealth && weeds_heal_amount)
+			heal_organ_damage(weeds_heal_amount / 2, weeds_heal_amount / 2)
 
 /mob/living/simple_animal/hostile/flesh_biomorph/lesser
 	mob_biotypes = MOB_ORGANIC

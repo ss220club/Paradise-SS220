@@ -7,7 +7,35 @@
 /obj/structure/alien/wallweed/meaty
 	icon = 'modular_ss220/lazarus/icons/meaty_weeds.dmi'
 
-/obj/structure/alien/weeds/check_surroundings()
+/obj/structure/alien/resin/wall/meaty
+	icon = 'modular_ss220/lazarus/icons/meaty_wall.dmi'
+
+/obj/structure/alien/resin/door/meaty
+	icon = 'modular_ss220/lazarus/icons/meaty_door.dmi'
+
+/obj/structure/alien/resin/door/try_to_operate(mob/user, bumped_open = FALSE)
+	if(is_operating)
+		return
+	if(user.faction.Find("treacherous_flesh"))
+		operate(bumped_open)
+
+/obj/structure/alien/resin/door/attack_animal(mob/living/simple_animal/M)
+	if(M.a_intent != INTENT_HARM)
+		try_to_operate(M)
+		return
+
+/obj/structure/alien/resin/Initialize(mapload)
+	recalculate_atmos_connectivity()
+	if(!is_alien)
+		return ..()
+	for(var/obj/structure/alien/weeds/node/W in get_turf(src))
+		qdel(W)
+	if(locate(/obj/structure/alien/weeds) in get_turf(src))
+		return ..()
+	new /obj/structure/alien/weeds/meaty(loc, src)
+	return ..()
+
+/obj/structure/alien/weeds/meaty/check_surroundings()
 	var/turf/T = get_turf(src)
 	var/list/nearby_dense_turfs = T.AdjacentTurfs(cardinal_only = FALSE, dense_only = TRUE)
 	if(!length(nearby_dense_turfs)) // There is no dense turfs around it

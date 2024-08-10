@@ -76,7 +76,7 @@
 			user.visible_message("<span class='notice'>[user] закрыл крышку генератора.</span>", "<span class='notice'>Вы закрыли крышку генератора.</span>")
 			gen_state = GEOTHERMAL_GEN_ACTIVE
 			update_icon_state()
-			break_timer = addtimer(CALLBACK(src, PROC_REF(break_gen)), rand(20 MINUTES, 40 MINUTES), TIMER_STOPPABLE)
+			break_timer = addtimer(CALLBACK(src, PROC_REF(break_gen)), rand(40 MINUTES, 60 MINUTES), TIMER_STOPPABLE)
 
 /obj/machinery/power/geothermal_generator/wrench_act(mob/living/user, obj/item/I)
 	if(user.a_intent == INTENT_HELP)
