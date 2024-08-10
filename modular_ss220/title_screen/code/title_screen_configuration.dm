@@ -7,5 +7,5 @@
 	// Load server list data
 	if(islist(data["cross_server_list"]))
 		cross_server_list.Cut()
-		for(var/list/server in data["cross_server_list"])
+		for(var/list/server as anything in data["cross_server_list"])
 			cross_server_list["[server["name"]]"] = server["ip"]
