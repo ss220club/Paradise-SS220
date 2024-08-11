@@ -52,7 +52,7 @@
 
 	var/screen_image_url = SSassets.transport.get_asset_url(asset_cache_item = screen_image)
 	if(screen_image_url)
-		html += {"<img src="[screen_image_url]" class="bg" alt="">"}
+		html += {"<img class="bg" src="[screen_image_url]">"}
 
 	if(notice)
 		html += {"
@@ -156,6 +156,16 @@
 			function update_current_character(name) {
 				character_name_slot.textContent = name;
 			}
+
+			/* Return focus to Byond after click */
+			function reFocus() {
+				var focus = new XMLHttpRequest();
+				focus.open("GET", "?src=[player.UID()];focus=1");
+				focus.send();
+			}
+
+			document.addEventListener('mouseup', reFocus);
+			document.addEventListener('keyup', reFocus);
 		</script>
 		"}
 

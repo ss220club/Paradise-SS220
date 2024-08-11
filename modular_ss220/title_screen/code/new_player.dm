@@ -41,6 +41,10 @@
 	else if(href_list["changelog"])
 		SSchangelog.OpenChangelog(client)
 
+	else if(href_list["focus"])
+		winset(client, "paramapwindow.map", "focus=true")
+		return
+
 /mob/new_player/proc/swap_server()
 	var/list/servers =  GLOB.configuration.ss220_misc.cross_server_list
 	if(length(servers) == 0)
