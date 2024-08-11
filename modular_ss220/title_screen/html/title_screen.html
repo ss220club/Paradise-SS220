@@ -35,6 +35,14 @@
 				height: 100%;
 				margin: 0;
 				background-color: black;
+				scrollbar-base-color: #1c1c1c;
+				scrollbar-face-color: #3b3b3b;
+				scrollbar-3dlight-color: #252525;
+				scrollbar-highlight-color: #252525;
+				scrollbar-track-color: #1c1c1c;
+				scrollbar-arrow-color: #929292;
+				scrollbar-shadow-color: #3b3b3b;
+				scrollbar-color: #363636 #181818;
 			}
 
 			img {
@@ -167,6 +175,7 @@
 
 			.container_buttons {
 				flex: 1;
+				overflow: auto;
 				text-align: left;
 				margin: 0.5em 0.5em 0.5em 0
 			}
@@ -192,12 +201,12 @@
 			.menu_button::before {
 				content: '';
 				position: absolute;
-				top: 50%;
+				bottom: 50%;
 				left: 0;
 				width: 2px;
 				height: 0;
 				background-color: #d4dfec;
-				transform: translateY(-50%);
+				transform: translateY(50%);
 				transition: height 0.2s, background-color 0.2s;
 			}
 
