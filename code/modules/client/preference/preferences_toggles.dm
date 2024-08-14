@@ -36,6 +36,11 @@
 		if(PREFTOGGLE_TOGGLE2)
 			our_prefs.toggles2 ^= preftoggle_bitflag
 			to_chat(user, "<span class='notice'>[(our_prefs.toggles2 & preftoggle_bitflag) ? enable_message : disable_message]</span>")
+		// SS220 ADDITION - START
+		if(PREFTOGGLE_TOGGLE220)
+			our_prefs.toggles220 ^= preftoggle_bitflag
+			to_chat(user, "<span class='notice'>[(our_prefs.toggles220 & preftoggle_bitflag) ? enable_message : disable_message]</span>")
+		// SS220 ADDITION - END
 		if(PREFTOGGLE_SOUND)
 			our_prefs.sound ^= preftoggle_bitflag
 			to_chat(user, "<span class='notice'>[(our_prefs.sound & preftoggle_bitflag) ? enable_message : disable_message]</span>")
