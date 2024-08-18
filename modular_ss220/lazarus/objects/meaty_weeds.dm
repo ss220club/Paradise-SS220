@@ -3,6 +3,9 @@
 
 /obj/structure/alien/weeds/node/meaty
 	icon = 'modular_ss220/lazarus/icons/meaty_weeds.dmi'
+	light_color = "A91515"
+	light_power = 0.8
+	light_range = 3
 
 /obj/structure/alien/wallweed/meaty
 	icon = 'modular_ss220/lazarus/icons/meaty_weeds.dmi'

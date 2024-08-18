@@ -410,3 +410,87 @@
 /area/lazarus/outpost/svarog/maint
 	name = "Подстанция (Сварог)"
 	icon_state = "engi"
+
+//---VELES---//
+
+/area/lazarus/outpost/veles
+	name = "Аванпост ''Велес''"
+
+// Living
+
+/area/lazarus/outpost/veles/living
+	name = "Жилой отсек среднего класса (Велес)"
+
+/area/lazarus/outpost/veles/living/cryo
+	name = "Жилой отсек низкого класса (Велес)"
+	icon_state = "cryo"
+
+// RnD
+
+/area/lazarus/outpost/veles/rnd
+	name = "Исследователький центр (Велес)"
+	icon_state = "sci"
+
+/area/lazarus/outpost/veles/rnd/workshop
+	name = "Мастерская РНД (Велес)"
+	icon_state = "rnd"
+
+/area/lazarus/outpost/veles/rnd/robo
+	name = "Робототехника (Велес)"
+	icon_state = "robo"
+
+/area/lazarus/outpost/veles/rnd/xeno
+	name = "Ксенобиология (Велес)"
+	icon_state = "xenobio"
+
+/area/lazarus/outpost/veles/rnd/abyss
+	name = "Спуск в бездну (Велес)"
+	icon_state = "mining"
+
+// Sec
+
+/area/lazarus/outpost/veles/sec
+	name = "Отсек охраны (Велес)"
+	icon_state = "security"
+
+/area/lazarus/outpost/veles/sec/post
+	name = "Сторожка (Велес)"
+	icon_state = "securityoffice"
+
+/area/lazarus/outpost/veles/sec/armory
+	name = "Оружейная (Велес)"
+	icon_state = "armory"
+
+/area/lazarus/outpost/veles/sec/prison
+	name = "Оружейная (Велес)"
+	icon_state = "sec_prison"
+
+// Other
+
+/area/lazarus/outpost/veles/med
+	name = "Медпункт (Велес)"
+	icon_state = "medbay"
+
+/area/lazarus/outpost/veles/canteen
+	name = "Столовая (Велес)"
+	icon_state = "bar"
+
+/area/lazarus/outpost/veles/kitchen
+	name = "Кухня (Велес)"
+	icon_state = "kitchen"
+
+/area/lazarus/outpost/veles/toilet
+	name = "Уборная (Велес)"
+	icon_state = "toilet"
+
+/area/lazarus/outpost/veles/engi
+	name = "Инженерный отдел (Велес)"
+	icon_state = "engi"
+
+/area/lazarus/outpost/veles/storage
+	name = "Кладовка (Велес)"
+	icon_state = "storage"
+
+/area/lazarus/outpost/veles/hatch
+	name = "Шлюз (Велес)"
+	icon_state = "entry"
