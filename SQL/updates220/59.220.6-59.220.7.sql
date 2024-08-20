@@ -3,7 +3,24 @@
 
 DROP TABLE IF EXISTS `player_220`;
 CREATE TABLE `player_220` (
-	`ckey` VARCHAR(64) NOT NULL COLLATE 'utf8mb4_general_ci',
-	`toggles_220` int(11) DEFAULT NULL,
+	`ckey` VARCHAR(32) NOT NULL COLLATE utf8mb4_unicode_ci,
+	`toggles` int(11) DEFAULT NULL,
 	PRIMARY KEY (`ckey`) USING BTREE
-) COLLATE = 'utf8mb4_general_ci' ENGINE = InnoDB;
+) COLLATE = utf8mb4_unicode_ci ENGINE = InnoDB;
+
+ALTER TABLE `player_220`
+ADD CONSTRAINT `fk_player_220_ckey`
+FOREIGN KEY (`ckey`) REFERENCES `player`(`ckey`)
+ON DELETE CASCADE
+ON UPDATE CASCADE;
+
+DELIMITER //
+CREATE TRIGGER `player_insert`
+AFTER INSERT ON `player`
+FOR EACH ROW
+BEGIN
+    INSERT INTO `player_220` (`ckey`)
+    VALUES (NEW.ckey);
+END;
+//
+DELIMITER ;
