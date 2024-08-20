@@ -13,7 +13,7 @@
 	if(!.)
 		return
 
-	return save_custom_preferences()
+	return save_custom_preferences(C)
 
 /datum/preference_toggle/set_toggles(client/user)
 	var/datum/preferences/our_prefs = user.prefs
@@ -43,11 +43,12 @@
 	qdel(preferences_query)
 	return TRUE
 
-/datum/preferences/proc/save_custom_preferences()
+/datum/preferences/proc/save_custom_preferences(client/C)
 	var/datum/db_query/query = SSdbcore.NewQuery({"UPDATE player_220 SET
 		toggles=:toggles
 		WHERE ckey=:ckey"}, list(
 			"toggles" = num2text(toggles220, CEILING(log(10, (TOGGLES_220_TOTAL)), 1)),
+			"ckey" = C.ckey,
 		))
 
 	if(!query.warn_execute())
