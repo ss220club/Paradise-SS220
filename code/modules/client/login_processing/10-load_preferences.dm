@@ -31,8 +31,7 @@
 		keybindings,
 		server_region,
 		muted_adminsounds_ckeys,
-		viewrange,
-		toggles_220
+		viewrange
 		FROM player
 		WHERE ckey=:ckey"}, list(
 			"ckey" = C.ckey

@@ -32,7 +32,6 @@
 		server_region = query.item[25]
 		raw_muted_admins = query.item[26]
 		viewrange = query.item[27]
-		toggles220 = text2num(query.item[28]) // SS220 ADDITTION
 
 	lastchangelog_2 = lastchangelog // Clone please
 
@@ -42,7 +41,6 @@
 	default_slot	= sanitize_integer(default_slot, 1, max_save_slots, initial(default_slot))
 	toggles			= sanitize_integer(toggles, 0, TOGGLES_TOTAL, initial(toggles))
 	toggles2		= sanitize_integer(toggles2, 0, TOGGLES_2_TOTAL, initial(toggles2))
-	toggles220		= sanitize_integer(toggles220, 0, TOGGLES_220_TOTAL, initial(toggles220))
 	sound			= sanitize_integer(sound, 0, 65535, initial(sound))
 	UI_style_color	= sanitize_hexcolor(UI_style_color, initial(UI_style_color))
 	UI_style_alpha	= sanitize_integer(UI_style_alpha, 0, 255, initial(UI_style_alpha))
@@ -106,8 +104,7 @@
 		keybindings=:keybindings,
 		server_region=:server_region,
 		muted_adminsounds_ckeys=:muted_adminsounds_ckeys,
-		viewrange=:viewrange,
-		toggles_220=:toggles220
+		viewrange=:viewrange
 		WHERE ckey=:ckey"}, list(
 			// OH GOD THE PARAMETERS
 			"ooccolour" = ooccolor,
@@ -136,8 +133,7 @@
 			"ckey" = C.ckey,
 			"server_region" = server_region,
 			"muted_adminsounds_ckeys" = json_encode(admin_sound_ckey_ignore),
-			"viewrange" = viewrange,
-			"toggles220" = num2text(toggles220, CEILING(log(10, (TOGGLES_220_TOTAL)), 1)) // SS220 ADDITION
+			"viewrange" = viewrange
 		))
 
 	if(!query.warn_execute())
