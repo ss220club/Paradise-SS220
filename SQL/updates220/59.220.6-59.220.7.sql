@@ -14,6 +14,7 @@ FOREIGN KEY (`ckey`) REFERENCES `player`(`ckey`)
 ON DELETE CASCADE
 ON UPDATE CASCADE;
 
+DROP TRIGGER IF EXISTS `player_insert`;
 DELIMITER //
 CREATE TRIGGER `player_insert`
 AFTER INSERT ON `player`
@@ -24,3 +25,7 @@ BEGIN
 END;
 //
 DELIMITER ;
+
+INSERT INTO `player_220` (`ckey`)
+SELECT `ckey`
+FROM `player`;
