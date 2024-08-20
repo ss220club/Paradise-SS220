@@ -4,6 +4,6 @@
 DROP TABLE IF EXISTS `player_220`;
 CREATE TABLE `player_220` (
 	`ckey` VARCHAR(64) NOT NULL COLLATE 'utf8mb4_general_ci',
-	`toggles_220` int(11) DEFAULT NULL
-	PRIMARY KEY (`ckey`) USING BTREE,
+	`toggles_220` int(11) DEFAULT NULL,
+	PRIMARY KEY (`ckey`) USING BTREE
 ) COLLATE = 'utf8mb4_general_ci' ENGINE = InnoDB;
