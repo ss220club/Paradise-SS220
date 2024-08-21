@@ -85,7 +85,7 @@
 	\nКостюм разведчика не сковывает движение и помогает владельцу удобней двигаться в условиях невесомости."
 	icon_state = "vox-raider-scout"
 	item_color = "vox-raider-scout"
-	armor = list(MELEE = 10, BULLET = 20, LASER = 40, ENERGY = 30, BOMB = 15, RAD = 115, FIRE = 80, ACID = 200)
+	armor = list(MELEE = 10, BULLET = 20, LASER = 30, ENERGY = 30, BOMB = 15, RAD = 115, FIRE = 80, ACID = 200)
 	strip_delay = 6 SECONDS
 	put_on_delay = 4 SECONDS
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/vox/scout
@@ -95,7 +95,7 @@
 	name = "vox raider scout helmet"
 	icon_state = "vox-raider-scout"
 	item_color = "vox-raider-scout"
-	armor = list(MELEE = 10, BULLET = 20, LASER = 40, ENERGY = 30, BOMB = 15, RAD = 115, FIRE = 80, ACID = 200)
+	armor = list(MELEE = 10, BULLET = 20, LASER = 30, ENERGY = 30, BOMB = 15, RAD = 115, FIRE = 80, ACID = 200)
 
 
 // Medic
