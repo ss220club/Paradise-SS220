@@ -72,6 +72,7 @@
 		/datum/vox_pack/clothes/gloves,
 		/datum/vox_pack/clothes/sechud,
 		/datum/vox_pack/clothes/radio/alt,
+		/datum/vox_pack/clothes/belt,
 		/datum/vox_pack/spike/gun,
 		/datum/vox_pack/spike/cell,
 		/datum/vox_pack/spike/cell,
@@ -138,6 +139,7 @@
 		/datum/vox_pack/clothes/magboots/heavy,
 		/datum/vox_pack/clothes/gloves/insulated,
 		/datum/vox_pack/clothes/radio/alt,
+		/datum/vox_pack/clothes/belt/bio,
 		/datum/vox_pack/consumables/c4,
 		/datum/vox_pack/consumables/c4,
 		/datum/vox_pack/consumables/c4,
@@ -172,6 +174,7 @@
 		/datum/vox_pack/clothes/sechud,
 		/datum/vox_pack/clothes/radio/alt,
 		/datum/vox_pack/spike/gun/long,
+		/datum/vox_pack/clothes/belt,
 		/datum/vox_pack/spike/cell,
 		/datum/vox_pack/spike/cell,
 		/datum/vox_pack/spike/cell,
@@ -217,6 +220,7 @@
 		/datum/vox_pack/clothes/gloves,
 		/datum/vox_pack/clothes/healthhud,
 		/datum/vox_pack/dart/gun,
+		/datum/vox_pack/clothes/belt/bio,
 		/datum/vox_pack/dart/cartridge/medical,
 		/datum/vox_pack/dart/cartridge/medical,
 		/datum/vox_pack/dart/cartridge/medical,
@@ -276,6 +280,7 @@
 		/datum/vox_pack/clothes/gloves/insulated,
 		/datum/vox_pack/clothes/sechud,
 		/datum/vox_pack/clothes/radio/alt,
+		/datum/vox_pack/clothes/belt
 		)
 	contains_addition = list(
 		/obj/item/clothing/mask/breath/vox/respirator,
@@ -364,6 +369,7 @@
 		/datum/vox_pack/clothes/gloves/insulated,
 		/datum/vox_pack/melee/shield,
 		/datum/vox_pack/bio/gun,
+		/datum/vox_pack/clothes/belt/bio,
 		/datum/vox_pack/bio/core/kusaka,
 		/datum/vox_pack/bio/core/kusaka,
 		/datum/vox_pack/bio/core/kusaka,

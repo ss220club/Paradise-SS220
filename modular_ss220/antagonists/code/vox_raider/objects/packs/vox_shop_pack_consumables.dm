@@ -33,19 +33,19 @@
 	name = "C4"
 	desc = "Взрывчатка для создания аккуратных дыр."
 	reference = "CO_C4"
-	cost = 100
+	cost = 250
 	contains = list(/obj/item/grenade/plastic/c4)
 
 /datum/vox_pack/consumables/x4
 	name = "X4"
 	desc = "Осколочно-фугасный заряд. Безопасен для подрывника."
 	reference = "CO_X4"
-	cost = 250
+	cost = 450
 	contains = list(/obj/item/grenade/plastic/c4/x4)
 
 /datum/vox_pack/consumables/t4
 	name = "T4"
 	desc = "Заряд термита, пробивающий стены. Неэффективен против шлюзов."
 	reference = "CO_T4"
-	cost = 500
+	cost = 700
 	contains = list(/obj/item/grenade/plastic/c4/thermite)

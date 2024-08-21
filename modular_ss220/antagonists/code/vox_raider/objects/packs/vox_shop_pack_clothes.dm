@@ -174,7 +174,7 @@
 		)
 
 
-// ============== BACKPACK ==============
+// ============== STORAGE ==============
 
 /datum/vox_pack/clothes/backpack
 	name = "Рюкзак"
@@ -196,3 +196,18 @@
 	reference = "C_BPS"
 	cost = 150
 	contains = list(/obj/item/storage/backpack/satchel_flat/vox)
+
+
+/datum/vox_pack/clothes/belt
+	name = "Пояс Рейдера"
+	desc = "Пояс вмещающий в себя инструменты и запасные батареи. Вмещает 7 предметов."
+	reference = "C_BELT"
+	cost = 1000
+	contains = list(/obj/item/storage/belt/vox)
+
+/datum/vox_pack/clothes/belt/bio
+	name = "Пояс Био-Рейдера"
+	desc = "Пояс вмещающий в себя биоядра, дротики и взрывчатку. Вмещает 21 тяжелых предметов."
+	reference = "C_BELT_BIO"
+	cost = 1300
+	contains = list(/obj/item/storage/belt/vox/bio)
