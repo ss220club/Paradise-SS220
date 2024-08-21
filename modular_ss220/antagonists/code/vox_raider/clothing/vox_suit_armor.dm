@@ -108,7 +108,7 @@
 	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
 	strip_delay = 12 SECONDS
 	put_on_delay = 8 SECONDS
-	slowdown = 2
+	slowdown = 1.5
 
 /obj/item/clothing/head/helmet/vox_merc/bomber
 	name = "vox mercenary bomber helmet"
@@ -146,7 +146,7 @@
 	name = "vox mercenary laminar scout vest"
 	desc = "Компактный и мобильный костюм сформированный из лёгких пластин и за счет их особого размещения, увеличивает погашение импульсов перенаправляя их в ускорение носителя, но взамен теряя значимые защитные свойства. "
 	armor = list(MELEE = 20, BULLET = 20, LASER = 10, ENERGY = 40, BOMB = 40, RAD = 20, FIRE = 20, ACID = 20)
-	slowdown = -0.25
+	slowdown = -0.35
 
 
 // Stealth

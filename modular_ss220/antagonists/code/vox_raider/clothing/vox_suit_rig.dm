@@ -85,17 +85,17 @@
 	\nКостюм разведчика не сковывает движение и помогает владельцу удобней двигаться в условиях невесомости."
 	icon_state = "vox-raider-scout"
 	item_color = "vox-raider-scout"
-	armor = list(MELEE = 10, BULLET = 20, LASER = 50, ENERGY = 30, BOMB = 15, RAD = 115, FIRE = 80, ACID = 200)
+	armor = list(MELEE = 10, BULLET = 20, LASER = 40, ENERGY = 30, BOMB = 15, RAD = 115, FIRE = 80, ACID = 200)
 	strip_delay = 6 SECONDS
 	put_on_delay = 4 SECONDS
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/vox/scout
-	slowdown = -0.35
+	slowdown = -0.25
 
 /obj/item/clothing/head/helmet/space/hardsuit/vox/scout
 	name = "vox raider scout helmet"
 	icon_state = "vox-raider-scout"
 	item_color = "vox-raider-scout"
-	armor = list(MELEE = 10, BULLET = 20, LASER = 50, ENERGY = 30, BOMB = 15, RAD = 115, FIRE = 80, ACID = 200)
+	armor = list(MELEE = 10, BULLET = 20, LASER = 40, ENERGY = 30, BOMB = 15, RAD = 115, FIRE = 80, ACID = 200)
 
 
 // Medic
@@ -135,7 +135,7 @@
 	item_color = "vox-raider-mechanic"
 	max_heat_protection_temperature = FIRE_IMMUNITY_MAX_TEMP_PROTECT
 	armor = list(MELEE = 20, BULLET = 20, LASER = 75, ENERGY = 50, BOMB = 150, RAD = INFINITY, FIRE = INFINITY, ACID = INFINITY)
-	slowdown = 1
+	slowdown = 2
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/vox/mechanic
 	allowed = list(/obj/item/flashlight, /obj/item/tank/internals, /obj/item/t_scanner, /obj/item/rcd, /obj/item/rpd,
 		/obj/item/gun, /obj/item/ammo_box,/obj/item/ammo_casing, /obj/item/melee/baton,
