@@ -22,7 +22,7 @@
 	desc = "Маленький самозаряжающийся кристаллический шип испускающий энергетический вайб."
 	icon_state = "magspear"
 	armour_penetration_flat = 20
-	damage = 8
+	damage = 7
 	knockdown = 0
 	var/bleed_loss = 5
 
@@ -51,8 +51,14 @@
 
 /obj/item/projectile/bullet/vox_spike/big
 	damage = 15
-	stamina = 10
+	stamina = 50
 	stutter = 2 SECONDS
 	jitter = 4 SECONDS
 	speed = 2
 	bleed_loss = 10
+
+	tile_dropoff = 1	//how much damage should be decremented as the bullet moves
+	tile_dropoff_s = 2.5	//same as above but for stamina
+
+	ricochets_max = 3
+	ricochet_chance = 50
