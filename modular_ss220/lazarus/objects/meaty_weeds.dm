@@ -1,14 +1,20 @@
 /obj/structure/alien/weeds/meaty
 	icon = 'modular_ss220/lazarus/icons/meaty_weeds.dmi'
+	name = "мясистая плоть"
+	desc = "Мясистый ковёр из плоти, устилающий пол. Он постоянно движется, наращивая всё новые слои."
 
 /obj/structure/alien/weeds/node/meaty
 	icon = 'modular_ss220/lazarus/icons/meaty_weeds.dmi'
 	light_color = "A91515"
 	light_power = 0.8
 	light_range = 3
+	name = "глазной отросток"
+	desc = "Отросток, на котором растёт множество белых глазных яблок. Они смотрят прямо на вас..."
 
 /obj/structure/alien/wallweed/meaty
 	icon = 'modular_ss220/lazarus/icons/meaty_weeds.dmi'
+	name = "мясистая плоть"
+	desc = "Мясистый ковёр из плоти, устилающий стены. Он постоянно движется, наращивая всё новые слои."
 
 /obj/structure/alien/resin/wall/meaty
 	icon = 'modular_ss220/lazarus/icons/meaty_wall.dmi'
@@ -16,7 +22,9 @@
 /obj/structure/alien/resin/door/meaty
 	icon = 'modular_ss220/lazarus/icons/meaty_door.dmi'
 
-/obj/structure/alien/resin/door/try_to_operate(mob/user, bumped_open = FALSE)
+/obj/structure/alien/resin/door/meaty/try_to_operate(mob/user, bumped_open = FALSE)
+	if(!ismob(user))	// It's strange, but sometimes effects try to operate doors
+		return
 	if(is_operating)
 		return
 	if(user.faction.Find("treacherous_flesh"))
@@ -39,6 +47,45 @@
 	return ..()
 
 /obj/structure/alien/weeds/meaty/check_surroundings()
+	var/turf/T = get_turf(src)
+	var/list/nearby_dense_turfs = T.AdjacentTurfs(cardinal_only = FALSE, dense_only = TRUE)
+	if(!length(nearby_dense_turfs)) // There is no dense turfs around it
+		clear_wall_weed()
+		return
+
+	var/list/wall_dirs = list()
+	for(var/turf/W in nearby_dense_turfs)
+		if(iswallturf(W))
+			wall_dirs.Add(get_dir(W, T))
+	if(!length(wall_dirs)) // There is no walls around it
+		clear_wall_weed()
+		return
+
+	var/list/nearby_open_turfs = T.AdjacentTurfs(open_only = TRUE, cardinal_only = TRUE)
+
+	for(var/turf/W in nearby_open_turfs) // This handles removal of corner-weeds when they are to be replaced with a full side-weed instead
+		if(locate(/obj/structure/alien/weeds, W))
+			var/dirs = get_dir(W, T)
+			switch(dirs)
+				if(NORTH)
+					wall_dirs.Remove(NORTHEAST, NORTHWEST)
+				if(SOUTH)
+					wall_dirs.Remove(SOUTHEAST, SOUTHWEST)
+				if(EAST)
+					wall_dirs.Remove(NORTHEAST, SOUTHEAST)
+				if(WEST)
+					wall_dirs.Remove(NORTHWEST, SOUTHWEST)
+
+	if(!length(wall_dirs)) // No weeds will be applied, better off deleting it
+		clear_wall_weed()
+		return
+
+	if(!wall_weed || QDELETED(wall_weed))
+		wall_weed = new /obj/structure/alien/wallweed/meaty(T, src)
+
+	wall_weed.compare_overlays(wall_dirs)
+
+/obj/structure/alien/weeds/node/meaty/check_surroundings()
 	var/turf/T = get_turf(src)
 	var/list/nearby_dense_turfs = T.AdjacentTurfs(cardinal_only = FALSE, dense_only = TRUE)
 	if(!length(nearby_dense_turfs)) // There is no dense turfs around it
