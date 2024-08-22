@@ -5,9 +5,6 @@
 #define JOB_SECTARIAN		(1<<19)
 #define JOB_SYNDI_AGENT		(1<<20)
 
-/datum/job
-	var/true_title
-
 /datum/job/assistant
 	hidden_from_job_prefs = FALSE
 	selection_color = "#566f77"
@@ -105,7 +102,6 @@
 
 /datum/job/cannibal
 	title = "Cannibal"
-	true_title = "Cannibal"
 	total_positions = 2
 	spawn_positions = 2
 	flag = JOB_CANNIBAL
@@ -134,7 +130,6 @@
 
 /datum/job/sectarian
 	title = "Sectarian"
-	true_title = "Sectarian"
 	total_positions = 2
 	spawn_positions = 2
 	flag = JOB_SECTARIAN

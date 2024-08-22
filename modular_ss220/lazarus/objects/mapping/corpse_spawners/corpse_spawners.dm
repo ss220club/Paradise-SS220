@@ -3,7 +3,6 @@
 /obj/effect/mob_spawn/human/lazarus
 	name = "Lazarus corpse spawner"
 	mob_name = "Placeholder"
-	id_job = "Placeholder"
 
 	brute_damage = 300
 	oxy_damage = 300

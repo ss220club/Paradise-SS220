@@ -17,9 +17,13 @@
 	desc = "Мясистый ковёр из плоти, устилающий стены. Он постоянно движется, наращивая всё новые слои."
 
 /obj/structure/alien/resin/wall/meaty
+	name = "мясистая стена"
+	desc = "Огромный ком плоти, образующий некоторое подобие стены."
 	icon = 'modular_ss220/lazarus/icons/meaty_wall.dmi'
 
 /obj/structure/alien/resin/door/meaty
+	name = "мясистая дверь"
+	desc = "Отвратительная арка, заросшая мясистой плотью."
 	icon = 'modular_ss220/lazarus/icons/meaty_door.dmi'
 
 /obj/structure/alien/resin/door/meaty/try_to_operate(mob/user, bumped_open = FALSE)
