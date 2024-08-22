@@ -70,10 +70,10 @@ GLOBAL_VAR_INIT(deathsquad_sent, FALSE)
 	var/list/commando_ghosts = list()
 	if(alert("Would you like to custom pick your Deathsquad?", null, "Yes", "No") == "Yes")
 		var/image/source = image('icons/obj/cardboard_cutout.dmi', "cutout_deathsquad")
-		commando_ghosts = pollCandidatesWithVeto(src, usr, commando_number, "Join the DeathSquad?", null, 21, 45 SECONDS, TRUE, GLOB.role_playtime_requirements[ROLE_DEATHSQUAD], TRUE, FALSE, source = source)
+		commando_ghosts = pollCandidatesWithVeto(src, usr, commando_number, "Join the DeathSquad?", null, 21, 5 SECONDS, TRUE, GLOB.role_playtime_requirements[ROLE_DEATHSQUAD], TRUE, FALSE, source = source)
 	else
 		var/image/source = image('icons/obj/cardboard_cutout.dmi', "cutout_deathsquad")
-		commando_ghosts = SSghost_spawns.poll_candidates("Join the Deathsquad?", null, GLOB.responseteam_age, 45 SECONDS, TRUE, GLOB.role_playtime_requirements[ROLE_DEATHSQUAD], TRUE, FALSE, source = source)
+		commando_ghosts = SSghost_spawns.poll_candidates("Join the Deathsquad?", null, GLOB.responseteam_age, 5 SECONDS, TRUE, GLOB.role_playtime_requirements[ROLE_DEATHSQUAD], TRUE, FALSE, source = source)
 		if(length(commando_ghosts) > commando_number)
 			commando_ghosts.Cut(commando_number + 1) //cuts the ghost candidates down to the amount requested
 	if(!length(commando_ghosts))
@@ -161,6 +161,7 @@ GLOBAL_VAR_INIT(deathsquad_sent, FALSE)
 			new_commando.mind.store_memory("<b>Nuke Code:</b> <span class='warning'>[nuke_code].</span>")
 		new_commando.mind.store_memory("<b>Mission:</b> <span class='warning'>[mission].</span>")
 		to_chat(new_commando, "<span class='userdanger'>You are a Deathsquad [is_leader ? "<b>TEAM LEADER</b>" : "commando"] in the service of Central Command. Check the table ahead for detailed instructions.\nYour current mission is: <span class='danger'>[mission]</span></span>")
+		addtimer(CALLBACK(new_commando, /mob/living/carbon/human/proc/show_ert_blurb, new_commando.client, new_commando.mind), 1 SECONDS) // SS220 EDIT - ADDITION
 
 /client/proc/create_deathsquad_commando(obj/spawn_location, is_leader = FALSE)
 	var/mob/living/carbon/human/new_commando = new(spawn_location.loc)

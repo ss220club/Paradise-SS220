@@ -134,6 +134,7 @@ GLOBAL_LIST_EMPTY(ert_request_messages)
 				new_commando.key = M.key
 				dust_if_respawnable(M)
 				new_commando.update_icons()
+				addtimer(CALLBACK(new_commando, /mob/living/carbon/human/proc/show_ert_blurb, new_commando.client, new_commando.mind), 1 SECONDS) // SS220 EDIT - ADDITION
 				break
 	GLOB.send_emergency_team = FALSE
 
