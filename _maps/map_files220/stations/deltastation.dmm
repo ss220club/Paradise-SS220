@@ -82274,6 +82274,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+/obj/effect/mapping_helpers/airlock/polarized{
+	id = "RD"
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "darkpurplefull"
 	},
@@ -99750,8 +99753,11 @@
 /obj/machinery/door/firedoor,
 /obj/effect/mapping_helpers/airlock/access/any/science/rd,
 /obj/effect/mapping_helpers/airlock/autoname,
-/obj/machinery/door/airlock/command/rd{
+/obj/machinery/door/airlock/command/rd/glass{
 	id_tag = "rdofficedoor"
+	},
+/obj/effect/mapping_helpers/airlock/polarized{
+	id = "RD"
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "darkpurplefull"
@@ -111668,7 +111674,7 @@
 	req_access_txt = "30"
 	},
 /obj/effect/turf_decal/delivery/hollow,
-/obj/machinery/door_control/shutter/south{
+/obj/machinery/door_control/normal/south{
 	id = "rdofficedoor";
 	name = "Office Door";
 	req_one_access_txt = "30";
