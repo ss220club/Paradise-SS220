@@ -75,38 +75,38 @@
 		GLOB.pai_software_by_key[P.id] = P
 
 	// Setup loadout gear
-	for(var/geartype in subtypesof(/datum/gear))
-		var/datum/gear/G = geartype
+	for(var/gear_type in subtypesof(/datum/gear))
+		var/datum/gear/gear = gear_type
 
-		var/use_category = initial(G.sort_category)
-		// SS220 EDIT - START
-		if(G.removed_from_loadout)
-			continue
-		// SS220 EDIT - END
-		if(G == initial(G.main_typepath))
+		if(gear.removed_from_loadout)
 			continue
 
-		if(!initial(G.display_name))
-			stack_trace("Loadout - Missing display name: [G]")
-			continue
-		if(!initial(G.cost))
-			stack_trace("Loadout - Missing cost: [G]")
-			continue
-		if(!initial(G.path))
-			stack_trace("Loadout - Missing path definition: [G]")
+		if(gear == initial(gear.main_typepath))
 			continue
 
-		if(!GLOB.loadout_categories[use_category])
-			GLOB.loadout_categories[use_category] = new /datum/loadout_category(use_category)
-		var/datum/loadout_category/LC = GLOB.loadout_categories[use_category]
-		GLOB.gear_datums[geartype] = new geartype
-		LC.gear[geartype] = GLOB.gear_datums[geartype]
+		if(!initial(gear.display_name))
+			stack_trace("Loadout - Missing display name: [gear]")
+			continue
+		if(!initial(gear.cost))
+			stack_trace("Loadout - Missing cost: [gear]")
+			continue
+		if(!initial(gear.path))
+			stack_trace("Loadout - Missing path definition: [gear]")
+			continue
 
-	GLOB.loadout_categories = sortAssoc(GLOB.loadout_categories)
-	for(var/loadout_category in GLOB.loadout_categories)
-		var/datum/loadout_category/LC = GLOB.loadout_categories[loadout_category]
-		LC.gear = sortAssoc(LC.gear)
-
+		gear = new gear_type
+		var/obj/gear_item = gear.path
+		GLOB.gear_datums[gear_type] += list(list(
+			"name" = gear.display_name,
+			"desc" = gear.description,
+			"icon" = gear_item.icon,
+			"icon_state" = gear_item.icon_state,
+			"category" = gear.sort_category,
+			"cost" = gear.cost,
+			"tweaks" = gear.gear_tweaks,
+			"allowed_roles" = gear.allowed_roles,
+			"gear_tier" = gear.donator_tier,
+		))
 
 	// Setup a list of robolimbs
 	GLOB.basic_robolimb = new()
