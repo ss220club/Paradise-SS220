@@ -40225,9 +40225,11 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/closet,
-/obj/effect/spawner/lootdrop/maintenance,
-/turf/simulated/floor/plating,
+/obj/structure/grille/broken,
+/turf/simulated/floor/plasteel{
+	dir = 8;
+	icon_state = "neutral"
+	},
 /area/station/maintenance/apmaint)
 "dhS" = (
 /obj/effect/mapping_helpers/airlock/autoname,
@@ -40894,6 +40896,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/effect/spawner/random_spawners/grille_maybe,
 /turf/simulated/floor/plating,
 /area/station/maintenance/port)
 "dkC" = (
@@ -43551,8 +43554,10 @@
 /area/station/medical/morgue)
 "dwZ" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/random_spawners/grille_often,
+/obj/structure/closet/crate,
+/obj/effect/spawner/lootdrop/maintenance/two,
 /turf/simulated/floor/plasteel{
+	dir = 4;
 	icon_state = "neutral"
 	},
 /area/station/maintenance/apmaint)
@@ -60086,17 +60091,23 @@
 /turf/simulated/wall/r_wall,
 /area/station/maintenance/turbine)
 "huN" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
+/obj/structure/disposalpipe/segment{
+	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/closet/crate,
-/obj/effect/spawner/lootdrop/maintenance/two,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/effect/spawner/random_spawners/grille_maybe,
 /turf/simulated/floor/plating,
-/area/station/maintenance/apmaint)
+/area/station/maintenance/port)
 "huY" = (
 /obj/effect/turf_decal/delivery/hollow,
 /obj/structure/closet/secure_closet/engineering_electrical,
@@ -63237,12 +63248,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/station/maintenance/old_kitchen)
-"ipi" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/closet/crate,
-/obj/effect/spawner/lootdrop/maintenance/two,
-/turf/simulated/floor/plating,
-/area/station/maintenance/apmaint)
 "ipj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -75161,6 +75166,8 @@
 "lPS" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/crate,
+/obj/effect/spawner/lootdrop/maintenance,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "loadingareadirty1"
@@ -75939,16 +75946,11 @@
 /turf/simulated/floor/plating,
 /area/station/medical/virology/lab)
 "mdd" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/grille,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet,
+/obj/effect/spawner/lootdrop/maintenance/two,
 /turf/simulated/floor/plasteel{
-	dir = 8;
+	dir = 4;
 	icon_state = "neutral"
 	},
 /area/station/maintenance/apmaint)
@@ -85000,6 +85002,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+/obj/effect/spawner/lootdrop/trash,
 /turf/simulated/floor/plating,
 /area/station/maintenance/apmaint)
 "oMf" = (
@@ -87430,13 +87433,9 @@
 /area/station/maintenance/starboard2)
 "pvh" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/closet/crate,
-/obj/effect/spawner/lootdrop/maintenance,
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "neutral"
-	},
-/area/station/maintenance/apmaint)
+/obj/effect/spawner/random_spawners/grille_maybe,
+/turf/simulated/floor/plating,
+/area/station/maintenance/port)
 "pvo" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel,
@@ -88262,6 +88261,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/effect/spawner/random_spawners/grille_maybe,
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/port)
 "pJb" = (
@@ -88988,15 +88988,9 @@
 /turf/simulated/floor/plating,
 /area/station/legal/lawoffice)
 "pVG" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/grille,
+/obj/structure/closet/crate,
+/obj/effect/spawner/lootdrop/maintenance,
 /turf/simulated/floor/plating,
 /area/station/maintenance/apmaint)
 "pVN" = (
@@ -105008,24 +105002,6 @@
 	icon_state = "brown"
 	},
 /area/station/maintenance/disposal/east)
-"uLI" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/effect/spawner/random_spawners/grille_often,
-/turf/simulated/floor/plating,
-/area/station/maintenance/apmaint)
 "uMd" = (
 /obj/structure/flora/grass/both,
 /turf/simulated/floor/grass/no_creep,
@@ -140555,7 +140531,7 @@ cAB
 cDJ
 bXU
 dkB
-drn
+dlM
 cIH
 cIM
 cIM
@@ -144921,9 +144897,9 @@ cxV
 czy
 bZK
 bYj
-dhG
+pvh
 dlM
-gJG
+huN
 cIH
 cIO
 cKp
@@ -146206,7 +146182,7 @@ nLA
 cnl
 cAW
 bYj
-dhG
+pvh
 dlM
 pIR
 cIH
@@ -146754,8 +146730,8 @@ lfc
 dOO
 ddy
 dcQ
-djA
-dbp
+mdd
+pVG
 hFn
 dzb
 gWP
@@ -147007,8 +146983,8 @@ spW
 oKw
 cIG
 lMM
-uLI
-dwZ
+uUM
+rQu
 ddy
 ddy
 ddy
@@ -147266,10 +147242,10 @@ gNi
 lMM
 twD
 tiN
-pVG
+pVP
 dhP
-huN
-mdd
+pVP
+pVP
 sQr
 spp
 nYH
@@ -147523,10 +147499,10 @@ kkB
 dwi
 rDS
 vbA
-xVf
-ipi
-pvh
-xVf
+dwZ
+dEi
+vbA
+vbA
 pFT
 hIE
 oLR
