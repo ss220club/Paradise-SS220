@@ -3626,7 +3626,6 @@
 /turf/simulated/floor/plating/asteroid/lazarus/dirt,
 /area/lazarus/underground)
 "cna" = (
-/obj/machinery/door/airlock/research/glass,
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
@@ -3644,7 +3643,7 @@
 	},
 /obj/effect/mapping_helpers/airlock/locked,
 /obj/effect/mapping_helpers/airlock/welded,
-/obj/effect/spawner/random_spawners/dirt_frequent,
+/obj/machinery/door/airlock/command/rd/glass,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -5235,6 +5234,13 @@
 	icon_state = "dark"
 	},
 /area/lazarus/outpost/veles/sec)
+"dkb" = (
+/obj/machinery/door/airlock/command,
+/turf/simulated/floor/plasteel{
+	dir = 5;
+	icon_state = "darkfull"
+	},
+/area/lazarus/underground)
 "dkz" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/effect/spawner/lootdrop/lazarus/trash,
@@ -10115,6 +10121,16 @@
 /obj/item/stack/tile,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/yarilo/med/virology)
+"ggd" = (
+/obj/structure/ladder_teleporter{
+	icon_state = "down";
+	ladder_id = "ShelterUp";
+	target_id = "ShelterDown";
+	pixel_x = 0;
+	pixel_y = 5
+	},
+/turf/simulated/floor/plating,
+/area/lazarus/underground)
 "ggK" = (
 /obj/machinery/light/small/directional/north,
 /obj/structure/closet/cabinet,
@@ -21535,6 +21551,14 @@
 /obj/item/food/grown/apple,
 /turf/simulated/floor/plating,
 /area/lazarus/outpost/rod/botany)
+"njn" = (
+/obj/structure/ladder_teleporter{
+	icon_state = "up";
+	ladder_id = "ShelterDown";
+	target_id = "ShelterUp"
+	},
+/turf/simulated/floor/plating,
+/area/lazarus/underground)
 "njo" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/effect/spawner/lootdrop/lazarus/trash,
@@ -39715,6 +39739,10 @@
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /turf/simulated/floor/plasteel,
 /area/lazarus/outpost/yarilo/living)
+"yfO" = (
+/obj/machinery/door/airlock/command,
+/turf/simulated/floor/plating,
+/area/lazarus/underground)
 "ygo" = (
 /obj/effect/spawner/random_spawners/dirt_frequent,
 /obj/structure/cable{
@@ -41506,7 +41534,7 @@ rkk
 ykx
 ykx
 ykx
-ykx
+dkb
 ykx
 ykx
 qxJ
@@ -42562,7 +42590,7 @@ rkk
 ykx
 ykx
 ykx
-iDQ
+gJD
 iDQ
 iDQ
 uxk
@@ -43616,7 +43644,7 @@ kie
 kie
 hGT
 hGT
-iDQ
+yfO
 hGT
 hGT
 kie
@@ -44320,7 +44348,7 @@ kie
 kie
 hGT
 iDQ
-iDQ
+ggd
 iDQ
 hGT
 kie
@@ -100762,7 +100790,7 @@ qIs
 aGs
 sSe
 ctQ
-xRE
+njn
 lJl
 rkG
 rmf
