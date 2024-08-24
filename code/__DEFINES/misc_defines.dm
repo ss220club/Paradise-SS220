@@ -2,12 +2,14 @@
 #define CANDLE_LUM 3 //For how bright candles are
 
 //Security levels
-#define SEC_LEVEL_GREEN	0
-#define SEC_LEVEL_BLUE	1
-#define SEC_LEVEL_RED	2
-#define SEC_LEVEL_GAMMA	3
-#define SEC_LEVEL_EPSILON	4
-#define SEC_LEVEL_DELTA	5
+#define SEC_LEVEL_GREEN		0
+#define SEC_LEVEL_BLUE		1
+#define SEC_LEVEL_VIOLET	2
+#define SEC_LEVEL_ORANGE	3
+#define SEC_LEVEL_RED		4
+#define SEC_LEVEL_GAMMA		5
+#define SEC_LEVEL_EPSILON	6
+#define SEC_LEVEL_DELTA		7
 
 //Click cooldowns, in tenths of a second
 #define CLICK_CD_MELEE 8
