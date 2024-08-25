@@ -16,4 +16,4 @@
 	)
 	var/list/actual = SSsecurity_level.available_levels
 	if(!compare_list(expected, actual))
-		Fail("Security levels order is invalid.\nExpected: [expected]\nActual: [actual]")
+		Fail("Security levels order is invalid.\nExpected: [expected.Join(", ")]\nActual: [actual.Join(", ")]")
