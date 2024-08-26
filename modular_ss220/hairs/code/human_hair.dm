@@ -543,3 +543,67 @@
 	name = "Tomahawk Spiker"
 	icon_state = "tomahawk_spiker"
 	species_allowed = list("Human", "Slime People")
+	
+///////////////////////////////////
+/////////OT Sirstaniya////////////
+//////////////////////////////////
+/* New human hair */
+/datum/sprite_accessory/hair/twosideup
+	icon = 'modular_ss220/hairs/icons/human_hair.dmi'
+	name = "Two Side Up"
+	icon_state = "twosideup"
+	species_allowed = list("Human", "Slime People")
+
+/datum/sprite_accessory/hair/lowbraid
+	icon = 'modular_ss220/hairs/icons/human_hair.dmi'
+	name = "Low Braid"
+	icon_state = "lowbraid"
+	species_allowed = list("Human", "Slime People")
+
+/datum/sprite_accessory/hair/glamour_short
+	icon = 'modular_ss220/hairs/icons/human_hair.dmi'
+	name = "Glamour Short"
+	icon_state = "glamour_short"
+	species_allowed = list("Human", "Slime People")
+
+/datum/sprite_accessory/hair/glamour_long
+	icon = 'modular_ss220/hairs/icons/human_hair.dmi'
+	name = "Glamour Long"
+	icon_state = "glamour_long"
+	species_allowed = list("Human", "Slime People")
+
+/datum/sprite_accessory/hair/stasy
+	icon = 'modular_ss220/hairs/icons/human_hair.dmi'
+	name = "Stasy"
+	icon_state = "stasy"
+	species_allowed = list("Human", "Slime People")
+
+/datum/sprite_accessory/hair/stasy_morning
+	icon = 'modular_ss220/hairs/icons/human_hair.dmi'
+	name = "Stasy Morning"
+	icon_state = "stasy_morning"
+	species_allowed = list("Human", "Slime People")
+
+/datum/sprite_accessory/hair/spike_pod
+	icon = 'modular_ss220/hairs/icons/human_hair.dmi'
+	name = "Spike Pod"
+	icon_state = "spike_pod"
+	species_allowed = list("Human", "Slime People")
+
+/datum/sprite_accessory/hair/hikka
+	icon = 'modular_ss220/hairs/icons/human_hair.dmi'
+	name = "Hikka"
+	icon_state = "hikka"
+	species_allowed = list("Human", "Slime People")
+
+/datum/sprite_accessory/hair/inari
+	icon = 'modular_ss220/hairs/icons/human_hair.dmi'
+	name = "Inari"
+	icon_state = "inari"
+	species_allowed = list("Human", "Slime People")
+
+/datum/sprite_accessory/hair/drow
+	icon = 'modular_ss220/hairs/icons/human_hair.dmi'
+	name = "Drow"
+	icon_state = "drow"
+	secondary_theme = "webbing"
