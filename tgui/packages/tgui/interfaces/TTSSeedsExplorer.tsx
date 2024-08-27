@@ -92,7 +92,10 @@ export const TTSSeedsExplorerContent = (props, context) => {
 
   const { providers, seeds, selected_seed, phrases, donator_level, character_gender } = data;
 
-  const categories = seeds.map((seed) => seed.category).filter((category, i, a) => a.indexOf(category) === i);
+  const categories = seeds
+    .map((seed) => seed.category)
+    .filter((category, i, a) => a.indexOf(category) === i)
+    .sort((a, b) => a.localeCompare(b));
   const genders = seeds.map((seed) => seed.gender).filter((gender, i, a) => a.indexOf(gender) === i);
   const donatorLevels = seeds
     .map((seed) => seed.required_donator_level)
@@ -261,10 +264,10 @@ export const TTSSeedsExplorerContent = (props, context) => {
           <Stack.Item>
             <Section>
               <BlockQuote>
-                <Box>
+                <Box fontSize="11px">
                   {`Для поддержания и развития сообщества в условиях растущих расходов часть голосов пришлось сделать доступными только за материальную поддержку сообщества.`}
                 </Box>
-                <Box mt={2} italic>
+                <Box mt={1.5} italic color="gray" fontSize="10px">
                   {`Подробнее об этом можно узнать в нашем Discord-сообществе.`}
                 </Box>
               </BlockQuote>
