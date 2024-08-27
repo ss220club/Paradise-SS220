@@ -34479,7 +34479,7 @@
 /area/station/security/permabrig)
 "cIG" = (
 /obj/structure/cable,
-/obj/effect/spawner/window/reinforced/grilled,
+/obj/effect/spawner/window/reinforced/plasma/grilled,
 /turf/simulated/floor/plating,
 /area/station/science/server/coldroom)
 "cIH" = (
@@ -43492,6 +43492,7 @@
 	},
 /area/station/command/office/rd)
 "dwk" = (
+/obj/structure/fans/tiny,
 /turf/simulated/floor/plasteel/dark,
 /area/station/science/server)
 "dwl" = (
@@ -85140,7 +85141,9 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
-/obj/machinery/door/airlock/command/glass,
+/obj/machinery/door/airlock/command/glass{
+	superconductivity = 0
+	},
 /turf/simulated/floor/engine,
 /area/station/science/server/coldroom)
 "oKN" = (
@@ -97303,7 +97306,7 @@
 	d2 = 2;
 	icon_state = "0-2"
 	},
-/obj/effect/spawner/window/reinforced/grilled,
+/obj/effect/spawner/window/reinforced/plasma/grilled,
 /turf/simulated/floor/plating,
 /area/station/science/server/coldroom)
 "sqb" = (
