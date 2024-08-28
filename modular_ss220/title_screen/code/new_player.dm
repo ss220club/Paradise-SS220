@@ -93,7 +93,7 @@
 	. = ..()
 	for(var/player as anything in GLOB.new_player_mobs)
 		var/mob/new_player/lobby_player = player
-		var/datum/character_save/active_character = new
-		active_character.update_preview_icon()
-		lobby_player << browse_rsc(active_character.preview_icon_front, "previewicon.png")
-		SStitle.set_character_preview(lobby_player.client)
+		var/client/viewer = lobby_player.client
+		viewer.prefs.active_character.update_preview_icon()
+		viewer << browse_rsc(viewer.prefs.active_character.preview_icon_front, "previewicon.png")
+		SStitle.set_character_preview(viewer)
