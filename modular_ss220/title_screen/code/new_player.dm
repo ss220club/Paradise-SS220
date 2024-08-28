@@ -87,10 +87,7 @@
 
 /datum/preferences/ShowChoices(mob/user)
 	. = ..()
-	if(usr.client.byond_version < 516)
-		user.client << output("", "title_browser:update_preview_515")
-	else
-		user.client << output("", "title_browser:update_preview")
+	SStitle.set_character_preview(user.client)
 
 /datum/controller/subsystem/atoms/Initialize()
 	. = ..()
@@ -99,8 +96,4 @@
 		var/datum/character_save/active_character = new
 		active_character.update_preview_icon()
 		lobby_player << browse_rsc(active_character.preview_icon_front, "previewicon.png")
-
-		if(lobby_player.client.byond_version < 516)
-			lobby_player.client << output("", "title_browser:update_preview_515")
-		else
-			lobby_player.client << output("", "title_browser:update_preview")
+		SStitle.set_character_preview(lobby_player.client)

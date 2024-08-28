@@ -39,11 +39,7 @@
 	if(SSatoms.initialized)
 		viewer.prefs.active_character.update_preview_icon()
 		viewer << browse_rsc(viewer.prefs.active_character.preview_icon_front, "previewicon.png")
-
-		if(viewer.byond_version < 516)
-			viewer << output("", "title_browser:update_preview_515")
-		else
-			viewer << output("", "title_browser:update_preview")
+		SStitle.set_character_preview(viewer)
 
 /datum/title_screen/proc/hide_from(client/viewer)
 	if(viewer?.mob)

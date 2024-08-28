@@ -122,6 +122,12 @@
 
 	show_title_screen_to_all_new_players()
 
+/datum/controller/subsystem/title/proc/set_character_preview(client/viewer)
+	if(viewer.byond_version < 516)
+		viewer << output("", "title_browser:update_preview_515")
+	else
+		viewer << output("", "title_browser:update_preview")
+
 /**
  * Picks title image from `title_images_pool` list. If the list is empty, `DEFAULT_TITLE_HTML` is returned
  */
