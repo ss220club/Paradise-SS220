@@ -14346,11 +14346,6 @@
 /turf/simulated/floor/plasteel/white,
 /area/station/service/kitchen)
 "bjy" = (
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
@@ -14358,9 +14353,9 @@
 	dir = 9
 	},
 /obj/structure/cable{
-	d1 = 2;
+	d1 = 4;
 	d2 = 8;
-	icon_state = "2-8"
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/science/server)
@@ -43504,14 +43499,20 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/science/server)
 "dwl" = (
-/obj/machinery/light/directional/south,
 /obj/structure/chair/office/light{
 	dir = 8
 	},
 /obj/effect/landmark/start/research_director,
+/obj/machinery/power/apc/directional/south,
+/obj/structure/cable,
 /turf/simulated/floor/plasteel/dark,
 /area/station/science/server)
 "dwm" = (
@@ -91574,11 +91575,10 @@
 	},
 /area/station/service/kitchen)
 "qFj" = (
-/obj/machinery/power/apc/directional/south,
-/obj/structure/cable,
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
 	},
+/obj/machinery/light/directional/south,
 /turf/simulated/floor/plasteel/dark,
 /area/station/science/server)
 "qFk" = (
