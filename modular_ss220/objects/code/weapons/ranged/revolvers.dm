@@ -89,7 +89,7 @@
 	icon_state = "44_box"
 
 /obj/item/gun/projectile/revolver/reclinable/judge
-	name = "\improper Judge 12 GA"
+	name = "\improper Judge"
 	desc = "Тяжёлый револьвер ружейного калибра. Несмотря на короткий ствол и высокую отдачу крайне эффективное оружие ближней дистанции."
 	mag_type = /obj/item/ammo_box/magazine/internal/cylinder/ga12
 	lefthand_file = 'modular_ss220/objects/icons/inhands/guns_lefthand.dmi'
@@ -100,7 +100,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	fire_sound = 'modular_ss220/objects/sound/weapons/gunshots/gunshot_judge.ogg'
 	spread = 10
-	recoil = 1
+	recoil = 2
 	fire_delay = 5
 
 /obj/item/ammo_box/magazine/internal/cylinder/ga12
