@@ -14356,6 +14356,12 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 9
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/science/server)
 "bjz" = (
@@ -35926,6 +35932,7 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
+/obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/plasteel/dark,
 /area/station/science/server)
 "cOF" = (
@@ -36156,8 +36163,9 @@
 	},
 /area/station/science/lobby)
 "cPr" = (
-/obj/machinery/r_n_d/server/robotics,
+/obj/machinery/r_n_d/server/core,
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging,
+/obj/machinery/light/directional/north,
 /turf/simulated/floor/bluegrid/telecomms/server,
 /area/station/science/server/coldroom)
 "cPt" = (
@@ -41274,6 +41282,12 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/firealarm/directional/north,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/science/server)
 "dmS" = (
@@ -43484,6 +43498,12 @@
 	},
 /area/station/command/office/rd)
 "dwk" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 5
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/science/server)
 "dwl" = (
@@ -48428,6 +48448,12 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/alarm/directional/north,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/science/server)
 "dWm" = (
@@ -48930,6 +48956,12 @@
 	icon_state = "4-8"
 	},
 /obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
 /turf/simulated/floor/plasteel{
@@ -55995,7 +56027,6 @@
 /turf/simulated/floor/plasteel,
 /area/station/engineering/control)
 "gbh" = (
-/obj/machinery/light/directional/north,
 /obj/structure/cable{
 	d2 = 2;
 	icon_state = "0-2"
@@ -58307,10 +58338,10 @@
 /turf/simulated/floor/plasteel/dark,
 /area/station/security/armory/secure)
 "gNi" = (
+/obj/machinery/firealarm/directional/south,
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 5
 	},
-/obj/machinery/firealarm/directional/south,
 /turf/simulated/floor/bluegrid/telecomms/server,
 /area/station/science/server/coldroom)
 "gNj" = (
@@ -70083,14 +70114,14 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/fore2)
 "kkB" = (
-/obj/machinery/atmospherics/pipe/simple/heat_exchanging{
-	dir = 9
-	},
-/obj/machinery/r_n_d/server/core,
 /obj/machinery/camera{
 	c_tag = "Server Room";
 	dir = 1;
 	network = list("SS13","Research")
+	},
+/obj/machinery/r_n_d/server/robotics,
+/obj/machinery/atmospherics/pipe/simple/heat_exchanging{
+	dir = 9
 	},
 /turf/simulated/floor/bluegrid/telecomms/server,
 /area/station/science/server/coldroom)
@@ -85155,6 +85186,12 @@
 /obj/effect/mapping_helpers/airlock/access/any/science/rd,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/machinery/door/airlock/command/glass,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/science/server)
 "oKV" = (
@@ -91539,6 +91576,9 @@
 "qFj" = (
 /obj/machinery/power/apc/directional/south,
 /obj/structure/cable,
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 1
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/science/server)
 "qFk" = (
@@ -98737,8 +98777,12 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 8
+	},
 /turf/simulated/floor/plasteel/white,
 /area/station/science/research)
 "sJD" = (
