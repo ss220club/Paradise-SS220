@@ -12,7 +12,7 @@
 	new /obj/item/paper/pamphlet/gateway(src)
 
 /obj/structure/closet/crate/freezer/iv_storage/organ
-	name = "Organ freezer"
+	name = "organ freezer"
 	desc = "Холодильник для хранения органов и пакетов с кровью."
 	icon = 'modular_ss220/objects/icons/closets.dmi'
 	icon_state = "organ_freezer"
