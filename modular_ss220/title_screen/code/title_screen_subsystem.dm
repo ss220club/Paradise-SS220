@@ -19,11 +19,7 @@
 	title_images_pool = SStitle.title_images_pool
 
 /datum/controller/subsystem/title/proc/import_html()
-	if(!fexists("config/title_screen.html"))
-		log_debug("Cannot found custom Title Screen HTML in config folder. Using default one.")
-		base_html = file2text(DEFAULT_TITLE_SCREEN_HTML_PATH)
-	else
-		base_html = file2text(TITLE_SCREEN_HTML)
+	base_html = file2text(DEFAULT_TITLE_SCREEN_HTML_PATH)
 
 /**
  * Iterates over all files in `TITLE_SCREENS_LOCATION` and loads all valid title screens to `title_screens` var.
