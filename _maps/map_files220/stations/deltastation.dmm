@@ -6907,6 +6907,14 @@
 	icon_state = "neutral"
 	},
 /area/station/maintenance/fore)
+"aEu" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/oil_maybe,
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "neutral"
+	},
+/area/station/maintenance/port)
 "aEx" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -14286,7 +14294,7 @@
 	},
 /area/station/service/hydroponics)
 "bjk" = (
-/obj/machinery/light/directional/south,
+/obj/machinery/light_switch/south,
 /turf/simulated/floor/plasteel{
 	icon_state = "whitepurple"
 	},
@@ -31880,7 +31888,6 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
 	},
-/obj/machinery/light/directional/south,
 /turf/simulated/floor/plasteel/airless,
 /area/station/science/toxins/test)
 "cxQ" = (
@@ -35676,6 +35683,8 @@
 /area/space/nearstation)
 "cNo" = (
 /obj/effect/spawner/lootdrop/trash,
+/obj/effect/spawner/lootdrop/trash,
+/obj/effect/spawner/lootdrop/trash,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "neutral"
@@ -38877,7 +38886,6 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
 	},
-/obj/machinery/light/directional/north,
 /turf/simulated/floor/plasteel/airless,
 /area/station/science/toxins/test)
 "daL" = (
@@ -39331,6 +39339,8 @@
 /area/station/maintenance/abandonedbar)
 "dcY" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/lootdrop/trash,
+/obj/effect/spawner/lootdrop/trash,
 /obj/effect/spawner/lootdrop/trash,
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -40928,6 +40938,8 @@
 "dkA" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/spawner/lootdrop/trash,
+/obj/effect/spawner/lootdrop/trash,
+/obj/effect/spawner/lootdrop/trash,
 /turf/simulated/floor/plasteel{
 	dir = 5;
 	icon_state = "neutral"
@@ -41309,6 +41321,8 @@
 	},
 /area/station/science/research)
 "dmX" = (
+/obj/effect/spawner/lootdrop/trash,
+/obj/effect/spawner/lootdrop/trash,
 /obj/effect/spawner/lootdrop/trash,
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -42041,7 +42055,7 @@
 /area/station/science/robotics)
 "dqq" = (
 /obj/machinery/camera{
-	c_tag = "Research West Hallway";
+	c_tag = "Research North Hallway";
 	network = list("Research","SS13")
 	},
 /turf/simulated/floor/plasteel{
@@ -44159,7 +44173,6 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
 	},
-/obj/machinery/light/directional/north,
 /turf/simulated/floor/plasteel/airless,
 /area/station/science/toxins/test)
 "dBf" = (
@@ -45066,10 +45079,12 @@
 	},
 /area/station/bridge/checkpoint/south)
 "dFw" = (
-/obj/machinery/door/window/classic/reversed,
 /obj/effect/mapping_helpers/airlock/windoor/access/any/science/robotics,
 /obj/effect/turf_decal/delivery/partial{
 	dir = 1
+	},
+/obj/machinery/door/window/reinforced/reversed{
+	name = "Captains seat"
 	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/science/robotics)
@@ -48884,6 +48899,8 @@
 "dYr" = (
 /obj/machinery/light/small/directional/east,
 /obj/effect/spawner/lootdrop/trash,
+/obj/effect/spawner/lootdrop/trash,
+/obj/effect/spawner/lootdrop/trash,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "neutral"
@@ -48937,6 +48954,8 @@
 "dYC" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/spawner/lootdrop/trash,
+/obj/effect/spawner/lootdrop/trash,
+/obj/effect/spawner/random_spawners/oil_often,
 /turf/simulated/floor/plating,
 /area/station/maintenance/port)
 "dYD" = (
@@ -50732,6 +50751,14 @@
 	icon_state = "whitegreencorner"
 	},
 /area/station/public/sleep)
+"evu" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random_spawners/oil_often,
+/turf/simulated/floor/plasteel{
+	dir = 4;
+	icon_state = "neutral"
+	},
+/area/station/maintenance/port)
 "evx" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel{
@@ -52558,6 +52585,16 @@
 	},
 /turf/simulated/floor/engine/o2,
 /area/station/engineering/atmos)
+"eYd" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/lootdrop/trash,
+/obj/effect/spawner/random_spawners/oil_maybe,
+/obj/effect/spawner/lootdrop/trash,
+/obj/effect/spawner/lootdrop/trash,
+/obj/effect/spawner/lootdrop/trash,
+/obj/effect/spawner/lootdrop/trash,
+/turf/simulated/floor/plating,
+/area/station/maintenance/port)
 "eYr" = (
 /obj/structure/chair/barber{
 	dir = 1
@@ -60920,6 +60957,7 @@
 	pixel_y = 3
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/directional/east,
 /turf/simulated/floor/plasteel{
 	dir = 6;
 	icon_state = "whitepurple"
@@ -63486,9 +63524,9 @@
 	dir = 8
 	},
 /obj/machinery/disposal,
-/obj/machinery/light_switch/east,
 /obj/effect/turf_decal/delivery/hollow,
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/directional/east,
 /turf/simulated/floor/plasteel{
 	dir = 5;
 	icon_state = "whitepurple"
@@ -64141,6 +64179,15 @@
 	icon_state = "neutralfull"
 	},
 /area/station/hallway/primary/aft)
+"iyA" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/lootdrop/trash,
+/obj/effect/spawner/lootdrop/trash,
+/obj/effect/spawner/lootdrop/trash,
+/obj/effect/spawner/lootdrop/trash,
+/obj/effect/spawner/random_spawners/oil_maybe,
+/turf/simulated/floor/plating,
+/area/station/maintenance/port)
 "iyC" = (
 /obj/machinery/atmospherics/trinary/tvalve/digital{
 	dir = 8
@@ -74680,7 +74727,7 @@
 /area/station/service/chapel)
 "lGl" = (
 /obj/machinery/camera{
-	c_tag = "Research South Hallway";
+	c_tag = "Research West Hallway";
 	network = list("Research","SS13");
 	dir = 8
 	},
@@ -78237,6 +78284,10 @@
 	dir = 4;
 	icon_state = "neutral"
 	},
+/area/station/maintenance/port)
+"mOI" = (
+/obj/effect/spawner/random_spawners/oil_maybe,
+/turf/simulated/floor/plating,
 /area/station/maintenance/port)
 "mOS" = (
 /obj/structure/closet/secure_closet/brig{
@@ -83090,6 +83141,17 @@
 	icon_state = "white"
 	},
 /area/station/maintenance/fsmaint)
+"ocg" = (
+/obj/effect/spawner/lootdrop/trash,
+/obj/effect/spawner/random_spawners/oil_maybe,
+/obj/effect/spawner/lootdrop/trash,
+/obj/effect/spawner/lootdrop/trash,
+/obj/effect/spawner/lootdrop/trash,
+/turf/simulated/floor/plasteel{
+	dir = 4;
+	icon_state = "neutral"
+	},
+/area/station/maintenance/port)
 "oci" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/disposalpipe/segment,
@@ -86269,7 +86331,6 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 6
 	},
-/obj/machinery/light/directional/south,
 /turf/simulated/floor/plasteel/airless,
 /area/station/science/toxins/test)
 "pbt" = (
@@ -92616,7 +92677,6 @@
 	pixel_y = 32;
 	dir = 1
 	},
-/obj/effect/spawner/lootdrop/officetoys,
 /turf/simulated/floor/plasteel{
 	icon_state = "darkpurplefull"
 	},
@@ -94720,7 +94780,7 @@
 /area/station/security/brig)
 "ryH" = (
 /obj/machinery/camera{
-	c_tag = "Research South Hallway";
+	c_tag = "Research East Hallway";
 	dir = 4;
 	network = list("Research","SS13");
 	pixel_y = -22
@@ -97036,6 +97096,14 @@
 /area/station/maintenance/port2)
 "smh" = (
 /obj/structure/table/reinforced,
+/obj/item/paper_bin{
+	pixel_y = 4;
+	pixel_x = -6
+	},
+/obj/item/pen/multi{
+	pixel_y = 6;
+	pixel_x = -6
+	},
 /obj/item/taperecorder,
 /obj/item/tape/random{
 	pixel_x = 3;
@@ -98137,6 +98205,11 @@
 	},
 /turf/simulated/floor/plating/airless,
 /area/space/nearstation)
+"sAA" = (
+/obj/effect/spawner/lootdrop/trash,
+/obj/effect/spawner/lootdrop/trash,
+/turf/simulated/floor/plating,
+/area/station/maintenance/port)
 "sAG" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -108432,7 +108505,8 @@
 "vHE" = (
 /obj/machinery/mass_driver{
 	dir = 8;
-	id_tag = "toxinsdriver"
+	id_tag = "toxinsdriver";
+	drive_range = 66
 	},
 /turf/simulated/floor/plating,
 /area/station/science/toxins/launch)
@@ -108913,6 +108987,9 @@
 "vPh" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/cardboard,
+/obj/effect/spawner/lootdrop/trash,
+/obj/effect/spawner/lootdrop/trash,
+/obj/effect/spawner/lootdrop/trash,
 /obj/effect/spawner/lootdrop/trash,
 /turf/simulated/floor/plating,
 /area/station/maintenance/port)
@@ -141174,9 +141251,9 @@ qqy
 cNJ
 qqy
 cIH
-czF
+aEu
 dkz
-oJn
+sAA
 vXM
 cIJ
 dmT
@@ -141433,7 +141510,7 @@ qqy
 cIH
 dkA
 dri
-drn
+mOI
 bDp
 bDp
 vXM
@@ -141691,12 +141768,12 @@ cIH
 tJc
 kFg
 djg
-drn
+mOI
 cNo
 dpX
-dYC
+iyA
 vPh
-dYC
+eYd
 dhJ
 drk
 dsr
@@ -141947,11 +142024,11 @@ cIH
 deM
 cMS
 xPG
-dtP
+evu
 dcY
-drn
+mOI
 dmX
-dmX
+ocg
 dYr
 dYC
 dhJ
