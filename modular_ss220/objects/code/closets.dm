@@ -13,6 +13,7 @@
 
 /obj/structure/closet/secure_closet/geneticist
 	name = "geneticist's locker"
+	icon = 'modular_ss220/objects/icons/closets.dmi'
 	icon_state = "gen_secure"
 	icon_opened = "gen_open"
 	open_door_sprite = "white_secure_door"
