@@ -21,7 +21,7 @@
 	icon_state = "contraband3"
 
 /obj/structure/sign/poster/contraband/wanted
-	name = "Никодим Жураковский"
+	name = "Никодим Парадайзович"
 	desc = "На плакате вы видите: лысый, черноглазый мужчина, лет 40, и его разыскивают на просторах всего космоса. Что он <b>не</b> сделал, чтобы его так разыскивали..."
 	icon = 'modular_ss220/objects/icons/posters.dmi'
 	icon_state = "contraband4"
