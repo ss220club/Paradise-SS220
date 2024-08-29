@@ -543,18 +543,18 @@
 	name = "Tomahawk Spiker"
 	icon_state = "tomahawk_spiker"
 	species_allowed = list("Human", "Slime People")
-	
+
 /datum/sprite_accessory/hair/twosideup
 	icon = 'modular_ss220/hairs/icons/human_hair.dmi'
 	name = "Two Side Up"
 	icon_state = "twosideup"
-	species_allowed = list("Human", "Slime People", "Tajaran")
+	species_allowed = list("Human", "Slime People")
 
 /datum/sprite_accessory/hair/lowbraid
 	icon = 'modular_ss220/hairs/icons/human_hair.dmi'
 	name = "Low Braid"
 	icon_state = "lowbraid"
-	species_allowed = list("Human", "Slime People", "Tajaran")
+	species_allowed = list("Human", "Slime People")
 
 /datum/sprite_accessory/hair/glamour_short
 	icon = 'modular_ss220/hairs/icons/human_hair.dmi'
@@ -584,7 +584,7 @@
 	icon = 'modular_ss220/hairs/icons/human_hair.dmi'
 	name = "Spike Pod"
 	icon_state = "spike_pod"
-	species_allowed = list("Human", "Slime People", "Tajaran")
+	species_allowed = list("Human", "Slime People")
 
 /datum/sprite_accessory/hair/hikka
 	icon = 'modular_ss220/hairs/icons/human_hair.dmi'
