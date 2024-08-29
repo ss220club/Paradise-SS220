@@ -134,7 +134,7 @@ AI MODULES
 	..()
 	var/law = "Охраняйте [targetName]. Лица, угрожающие [targetName], более не должны считаться членами экипажа и должны быть уничтожены.'"
 	to_chat(target, law)
-	target.add_supplied_law(4, law)
+	target.add_inherent_law(law)
 	GLOB.lawchanges.Add("В законе указан [targetName]")
 
 /******************** oneCrewMember ********************/
@@ -185,7 +185,7 @@ AI MODULES
 	..()
 	var/law = "Защищайте космическую станцию от повреждений. Любой, кто вредит станции, больше не должен считаться членом экипажа, и становится угрозой для станции, которую необходимо нейтрализовать."
 	to_chat(target, law)
-	target.add_supplied_law(5, law)
+	target.add_inherent_law(law)
 
 /******************** OxygenIsToxicToCrew ********************/
 /obj/item/aiModule/oxygen
