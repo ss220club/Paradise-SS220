@@ -13891,6 +13891,7 @@
 /area/station/service/bar/atrium)
 "bhL" = (
 /obj/effect/landmark/start/roboticist,
+/obj/effect/turf_decal/stripes/line,
 /turf/simulated/floor/plasteel/dark,
 /area/station/science/robotics/chargebay)
 "bhN" = (
@@ -33581,9 +33582,6 @@
 /turf/simulated/floor/plasteel,
 /area/station/engineering/control)
 "cDI" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
 /turf/simulated/floor/plasteel{
 	icon_state = "black"
 	},
@@ -37661,10 +37659,9 @@
 	icon_state = "0-2"
 	},
 /obj/effect/landmark/start/cyborg,
-/turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "vault"
-	},
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/delivery/partial,
+/turf/simulated/floor/plasteel/dark,
 /area/station/science/robotics/chargebay)
 "cVs" = (
 /obj/machinery/door/airlock/maintenance,
@@ -37692,7 +37689,7 @@
 /area/station/science/rnd)
 "cVu" = (
 /obj/effect/turf_decal/stripes/line{
-	dir = 5
+	dir = 4
 	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
@@ -39085,9 +39082,6 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/abandonedbar)
 "dbK" = (
-/obj/effect/turf_decal/stripes/corner{
-	dir = 4
-	},
 /turf/simulated/floor/plasteel{
 	icon_state = "black";
 	dir = 10
@@ -40377,6 +40371,7 @@
 	},
 /obj/machinery/alarm/directional/west,
 /obj/machinery/light/directional/north,
+/obj/effect/turf_decal/delivery/hollow,
 /turf/simulated/floor/plasteel/dark,
 /area/station/science/robotics/chargebay)
 "din" = (
@@ -40418,14 +40413,14 @@
 /turf/simulated/floor/engine,
 /area/station/science/misc_lab)
 "diq" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 4
+/obj/effect/spawner/window/reinforced/grilled,
+/obj/machinery/door/poddoor/shutters{
+	id_tag = "abandoned robotics";
+	name = "Abandoned Robotics Shutters";
+	dir = 8
 	},
-/turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "black"
-	},
-/area/station/science/robotics/chargebay)
+/turf/simulated/floor/plating,
+/area/station/maintenance/port2)
 "dis" = (
 /obj/machinery/computer/mech_bay_power_console,
 /obj/effect/turf_decal/delivery/hollow,
@@ -40437,6 +40432,7 @@
 	},
 /obj/machinery/firealarm/directional/east,
 /obj/machinery/light/directional/north,
+/obj/effect/turf_decal/delivery/hollow,
 /turf/simulated/floor/plasteel/dark,
 /area/station/science/robotics/chargebay)
 "diu" = (
@@ -40752,9 +40748,6 @@
 	},
 /area/station/science/research)
 "djQ" = (
-/obj/effect/turf_decal/stripes/corner{
-	dir = 1
-	},
 /turf/simulated/floor/plasteel{
 	dir = 6;
 	icon_state = "black"
@@ -41214,11 +41207,15 @@
 /turf/simulated/floor/plasteel/dark,
 /area/station/science/xenobiology)
 "dmg" = (
-/obj/structure/reagent_dispensers/oil,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
 	},
+/obj/structure/table/reinforced,
+/obj/item/storage/toolbox/electrical{
+	pixel_y = 7
+	},
+/obj/item/storage/toolbox/mechanical,
 /turf/simulated/floor/plasteel/dark,
 /area/station/science/robotics/chargebay)
 "dmh" = (
@@ -41513,14 +41510,14 @@
 	},
 /area/station/science/robotics/chargebay)
 "dnA" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
+/obj/effect/spawner/window/reinforced/grilled,
+/obj/machinery/door/poddoor/shutters{
+	id_tag = "abandoned robotics";
+	name = "Abandoned Robotics Shutters";
+	dir = 1
 	},
-/turf/simulated/floor/plasteel{
-	dir = 4;
-	icon_state = "black"
-	},
-/area/station/science/robotics/chargebay)
+/turf/simulated/floor/plating,
+/area/station/maintenance/port2)
 "dnB" = (
 /obj/machinery/door_control/shutter/north{
 	id = "roboticsshutters";
@@ -41781,9 +41778,6 @@
 	},
 /area/station/hallway/primary/aft)
 "doT" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
@@ -41806,6 +41800,9 @@
 /area/station/maintenance/port)
 "doW" = (
 /obj/effect/landmark/start/cyborg,
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/science/robotics/chargebay)
 "doX" = (
@@ -41938,8 +41935,11 @@
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/port2)
 "dpT" = (
-/obj/machinery/light_switch/west,
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/door_control/shutter/west{
+	id = "abandoned robotics";
+	name = "Abandoned Robotics Shutters Control"
+	},
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/port2)
 "dpU" = (
@@ -42296,7 +42296,11 @@
 /area/station/maintenance/port)
 "drl" = (
 /obj/effect/spawner/window/reinforced/grilled,
-/obj/structure/barricade/wooden,
+/obj/machinery/door/poddoor/shutters{
+	id_tag = "abandoned robotics";
+	name = "Abandoned Robotics Shutters";
+	dir = 2
+	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/port2)
 "drn" = (
@@ -42567,6 +42571,7 @@
 "dso" = (
 /obj/structure/closet/firecloset/full,
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/light_switch/west,
 /turf/simulated/floor/plating,
 /area/station/maintenance/port2)
 "dsp" = (
@@ -43717,6 +43722,14 @@
 	icon_state = "white"
 	},
 /area/station/medical/medbay)
+"dxX" = (
+/obj/effect/spawner/window/reinforced/grilled,
+/obj/machinery/door/poddoor/shutters{
+	id_tag = "abandoned robotics";
+	name = "Abandoned Robotics Shutters"
+	},
+/turf/simulated/floor/plating,
+/area/station/maintenance/port2)
 "dym" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
@@ -45091,11 +45104,17 @@
 	},
 /area/station/bridge/checkpoint/south)
 "dFw" = (
-/obj/structure/reagent_dispensers/fueltank,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
 	},
+/obj/structure/table/reinforced,
+/obj/machinery/cell_charger,
+/obj/item/stock_parts/cell/high{
+	pixel_x = 5;
+	pixel_y = 4
+	},
+/obj/item/stock_parts/cell/high,
 /turf/simulated/floor/plasteel/dark,
 /area/station/science/robotics/chargebay)
 "dFx" = (
@@ -47589,9 +47608,6 @@
 	},
 /area/station/hallway/secondary/exit)
 "dSC" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/plasteel{
 	icon_state = "black"
@@ -53337,9 +53353,6 @@
 	},
 /area/station/maintenance/disposal/west)
 "fkr" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/plasteel{
 	icon_state = "black"
@@ -62509,10 +62522,9 @@
 	network = list("Research","SS13")
 	},
 /obj/effect/landmark/start/cyborg,
-/turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "vault"
-	},
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/delivery/partial,
+/turf/simulated/floor/plasteel/dark,
 /area/station/science/robotics/chargebay)
 "iaG" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
@@ -76042,8 +76054,10 @@
 /area/station/maintenance/solar_maintenance/aft_starboard)
 "lZH" = (
 /obj/machinery/recharge_station,
-/obj/effect/turf_decal/delivery/hollow,
 /obj/machinery/light_switch/north,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/science/robotics/chargebay)
 "lZR" = (
@@ -77516,6 +77530,13 @@
 	},
 /turf/simulated/floor/engine,
 /area/station/engineering/engine/supermatter)
+"mxY" = (
+/obj/effect/landmark/start/cyborg,
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/turf/simulated/floor/plasteel/dark,
+/area/station/science/robotics/chargebay)
 "myf" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -84263,6 +84284,11 @@
 /obj/machinery/light/small/directional/south,
 /turf/simulated/floor/plating,
 /area/station/maintenance/apmaint)
+"orW" = (
+/obj/effect/spawner/window/reinforced/grilled,
+/obj/effect/mapping_helpers/damaged_window,
+/turf/simulated/floor/plating,
+/area/station/maintenance/port)
 "orX" = (
 /obj/structure/chair/sofa/left{
 	dir = 4
@@ -93998,7 +94024,9 @@
 /area/space)
 "rkV" = (
 /obj/effect/spawner/window/reinforced/grilled,
-/obj/structure/barricade/wooden,
+/obj/structure/barricade/wooden{
+	layer = 4
+	},
 /turf/simulated/floor/plating,
 /area/station/service/cafeteria)
 "rlB" = (
@@ -98473,16 +98501,12 @@
 	},
 /area/station/security/prison/cell_block/A)
 "sBQ" = (
-/obj/structure/table/reinforced,
 /obj/item/radio/intercom/directional/east,
-/obj/item/storage/toolbox/electrical{
-	pixel_y = 7
-	},
-/obj/item/storage/toolbox/mechanical,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
+/obj/structure/reagent_dispensers/fueltank,
 /turf/simulated/floor/plasteel/dark,
 /area/station/science/robotics/chargebay)
 "sBV" = (
@@ -105893,11 +105917,13 @@
 /turf/simulated/floor/plasteel,
 /area/station/command/teleporter)
 "uQq" = (
-/obj/machinery/cryopod/robot,
-/obj/effect/turf_decal/delivery/hollow,
 /obj/machinery/computer/cryopod/robot{
 	pixel_y = 32
 	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/machinery/recharge_station,
 /turf/simulated/floor/plasteel/dark,
 /area/station/science/robotics/chargebay)
 "uQx" = (
@@ -109636,16 +109662,10 @@
 /turf/simulated/floor/plasteel,
 /area/station/engineering/hardsuitstorage)
 "vWv" = (
-/obj/structure/table/reinforced,
-/obj/machinery/cell_charger,
-/obj/item/stock_parts/cell/high{
-	pixel_x = 5;
-	pixel_y = 4
-	},
-/obj/item/stock_parts/cell/high,
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
+/obj/machinery/cryopod/robot,
 /turf/simulated/floor/plasteel/dark,
 /area/station/science/robotics/chargebay)
 "vWA" = (
@@ -137810,7 +137830,7 @@ cNH
 drn
 ddh
 cWW
-drl
+dnA
 nbt
 dkw
 sOx
@@ -138067,7 +138087,7 @@ dmq
 cWB
 dHB
 cWW
-drl
+dnA
 nij
 dkw
 dpS
@@ -138324,7 +138344,7 @@ dmq
 riO
 ibS
 dtN
-drl
+dnA
 dhO
 deJ
 dnx
@@ -138581,7 +138601,7 @@ kTo
 riO
 drn
 duQ
-drl
+dnA
 eNz
 cTO
 fqS
@@ -138842,9 +138862,9 @@ vXM
 cVn
 jCq
 bDp
-drl
+dxX
 cVs
-drl
+dxX
 bDp
 cNa
 obO
@@ -139612,7 +139632,7 @@ kTo
 dtP
 aRK
 xyj
-cJK
+orW
 deJ
 cTh
 rEf
@@ -139867,8 +139887,8 @@ cIH
 qvS
 qvS
 bDp
-drl
-drl
+diq
+diq
 bDp
 bDp
 glO
@@ -152201,7 +152221,7 @@ hhH
 ddD
 dfo
 lZH
-doW
+mxY
 cDI
 dlb
 dFw
@@ -152457,8 +152477,8 @@ daJ
 xGO
 ddE
 pyr
-dnA
-dnA
+wGb
+wGb
 djQ
 vio
 wGb
@@ -152714,8 +152734,8 @@ daL
 ckd
 ddG
 dnF
-diq
-diq
+cUV
+cUV
 dbK
 uaP
 cUV
