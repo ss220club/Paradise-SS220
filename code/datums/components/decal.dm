@@ -46,11 +46,6 @@
 	pic = new(temp_image)
 	pic.color = _color
 	pic.alpha = _alpha
-	/* SS220 EDIT - START */
-	var/atom/master = parent
-	if(master::color && _color)
-		pic.appearance_flags |= RESET_COLOR
-	/* SS220 EDIT - END */
 	return TRUE
 
 /datum/component/decal/proc/apply(atom/thing)
