@@ -554,6 +554,7 @@
 	icon = 'modular_ss220/hairs/icons/human_hair.dmi'
 	name = "Low Braid"
 	icon_state = "lowbraid"
+	secondary_theme = "bow"
 	species_allowed = list("Human", "Slime People")
 
 /datum/sprite_accessory/hair/glamour_short
@@ -584,12 +585,14 @@
 	icon = 'modular_ss220/hairs/icons/human_hair.dmi'
 	name = "Spike Pod"
 	icon_state = "spike_pod"
+	secondary_theme = "acs"
 	species_allowed = list("Human", "Slime People")
 
 /datum/sprite_accessory/hair/hikka
 	icon = 'modular_ss220/hairs/icons/human_hair.dmi'
 	name = "Hikka"
 	icon_state = "hikka"
+	secondary_theme = "acs"
 	species_allowed = list("Human", "Slime People", "Tajaran")
 
 /datum/sprite_accessory/hair/inari
@@ -603,4 +606,90 @@
 	name = "Drow"
 	icon_state = "drow"
 	secondary_theme = "webbing"
+	species_allowed = list("Human", "Slime People", "Tajaran")
+
+/datum/sprite_accessory/hair/harpy
+	icon = 'modular_ss220/hairs/icons/human_hair.dmi'
+	name = "Harpy"
+	icon_state = "harpy"
+	species_allowed = list("Human", "Slime People", "Tajaran")
+
+/datum/sprite_accessory/hair/harpy_braid
+	icon = 'modular_ss220/hairs/icons/human_hair.dmi'
+	name = "Harpy Long Braid"
+	icon_state = "harpy_braid"
+	secondary_theme = "bow"
+	species_allowed = list("Human", "Slime People")
+
+/datum/sprite_accessory/hair/long_buns_alt
+	icon = 'modular_ss220/hairs/icons/human_hair.dmi'
+	name = "Long Buns Alt"
+	icon_state = "long_buns_alt"
+	secondary_theme = "webbing"
+	species_allowed = list("Human", "Slime People")
+
+/datum/sprite_accessory/hair/harpy_twinbraids
+	icon = 'modular_ss220/hairs/icons/human_hair.dmi'
+	name = "Harpy Twinbraids"
+	icon_state = "harpy_twinbraids"
+	secondary_theme = "bow"
+	species_allowed = list("Human", "Slime People", "Tajaran")
+
+/datum/sprite_accessory/hair/cotton
+	icon = 'modular_ss220/hairs/icons/human_hair.dmi'
+	name = "Cotton"
+	icon_state = "cotton"
+	secondary_theme = "ribb"
+	species_allowed = list("Human", "Slime People", "Tajaran")
+
+/datum/sprite_accessory/hair/kisaragi
+	icon = 'modular_ss220/hairs/icons/human_hair.dmi'
+	name = "Kisaragi"
+	icon_state = "kisaragi"
+	species_allowed = list("Human", "Slime People")
+
+/datum/sprite_accessory/hair/rockstar
+	icon = 'modular_ss220/hairs/icons/human_hair.dmi'
+	name = "Rockstar"
+	icon_state = "rockstar"
+	species_allowed = list("Human", "Slime People", "Tajaran")
+
+/datum/sprite_accessory/hair/tribun
+	icon = 'modular_ss220/hairs/icons/human_hair.dmi'
+	name = "Tri-bun"
+	icon_state = "tribun"
+	species_allowed = list("Human", "Slime People")
+
+/datum/sprite_accessory/hair/longtwintails
+	icon = 'modular_ss220/hairs/icons/human_hair.dmi'
+	name = "Long Twintails"
+	icon_state = "longtwintails"
+	species_allowed = list("Human", "Slime People", "Tajaran")
+
+/datum/sprite_accessory/hair/long_strand
+	icon = 'modular_ss220/hairs/icons/human_hair.dmi'
+	name = "Long Strand Lock"
+	icon_state = "long_strand"
+	secondary_theme = "lock"
+	species_allowed = list("Human", "Slime People")
+
+/datum/sprite_accessory/hair/eighties_alt
+	icon = 'modular_ss220/hairs/icons/human_hair.dmi'
+	name = "80s Alt"
+	icon_state = "eighties_alt"
+	secondary_theme = "acs"
+	species_allowed = list("Human", "Slime People")
+
+/datum/sprite_accessory/hair/eighties_alt_tajaran
+	icon = 'modular_ss220/hairs/icons/human_hair.dmi'
+	name = "Tajaran 80s Alt"
+	icon_state = "eighties_alt_tajaran"
+	secondary_theme = "acs"
+	species_allowed = list("Tajaran")
+
+/datum/sprite_accessory/hair/punk_lying
+	icon = 'modular_ss220/hairs/icons/human_hair.dmi'
+	name = "Punk Lying"
+	icon_state = "punk_lying"
+	secondary_theme = "acs"
 	species_allowed = list("Human", "Slime People", "Tajaran")
