@@ -14,15 +14,15 @@ cd "$original_dir"
 
 # update rust-g
 if [ ! -d "rust-g" ]; then
-echo "Cloning rust-g..."
-git clone https://github.com/ParadiseSS13/rust-g
-cd rust-g
-~/.cargo/bin/rustup target add i686-unknown-linux-gnu
+	echo "Cloning rust-g..."
+	git clone https://github.com/ParadiseSS13/rust-g
+	cd rust-g
+	~/.cargo/bin/rustup target add i686-unknown-linux-gnu
 else
-echo "Fetching rust-g..."
-cd rust-g
-git fetch
-~/.cargo/bin/rustup target add i686-unknown-linux-gnu
+	echo "Fetching rust-g..."
+	cd rust-g
+	git fetch
+	~/.cargo/bin/rustup target add i686-unknown-linux-gnu
 fi
 
 echo "Deploying rust-g..."
@@ -34,15 +34,15 @@ mv target/i686-unknown-linux-gnu/release/librust_g.so "$1/librust_g.so"
 cd ../../
 
 if [ ! -d "rust-utils" ]; then
-echo "Cloning rust-utils..."
-git clone https://github.com/ss220club/rust-utils
-cd rust-utils
-~/.cargo/bin/rustup target add i686-unknown-linux-gnu
+	echo "Cloning rust-utils..."
+	git clone https://github.com/ss220club/rust-utils
+	cd rust-utils
+	~/.cargo/bin/rustup target add i686-unknown-linux-gnu
 else
-echo "Fetching rust-utils..."
-cd rust-utils
-git fetch
-~/.cargo/bin/rustup target add i686-unknown-linux-gnu
+	echo "Fetching rust-utils..."
+	cd rust-utils
+	git fetch
+	~/.cargo/bin/rustup target add i686-unknown-linux-gnu
 fi
 
 echo "Deploying rustutils..."
