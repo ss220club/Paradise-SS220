@@ -1,5 +1,6 @@
 /obj/item/paper_bin
 	name = "paper bin"
+	desc = "The second-most important part of bureaucracy, after the pen of course."
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "paper_bin1"
 	item_state = "sheet-metal"
@@ -68,14 +69,24 @@
 			update_icon()
 
 		var/obj/item/paper/P
-		if(papers.len > 0)	//If there's any custom paper on the stack, use that instead of creating a new paper.
-			P = papers[papers.len]
+		if(length(papers) > 0)	//If there's any custom paper on the stack, use that instead of creating a new paper.
+			P = papers[length(papers)]
 			papers.Remove(P)
 		else
-			if(letterhead_type && alert("Choose a style", null,"Letterhead","Blank")=="Letterhead")
-				P = new letterhead_type
-			else
-				P = new /obj/item/paper
+			var/choice = letterhead_type ? tgui_alert(user, "Choose a style", "Paperbin", list("Letterhead", "Blank", "Cancel")) : "Blank"
+			if(isnull(choice) || !Adjacent(user))
+				return
+			switch(choice)
+				if("Letterhead")
+					P = new letterhead_type
+				if("Blank")
+					P = new /obj/item/paper
+				if("Cancel")
+					return
+
+			if(isnull(P))
+				return
+
 			if(SSholiday.holidays && SSholiday.holidays[APRIL_FOOLS])
 				if(prob(30))
 					P.info = "<font face=\"[P.crayonfont]\" color=\"red\"><b>HONK HONK HONK HONK HONK HONK HONK<br>HOOOOOOOOOOOOOOOOOOOOOONK<br>APRIL FOOLS</b></font>"
@@ -132,8 +143,8 @@
 			update_icon()
 
 		var/obj/item/paper/carbon/P
-		if(papers.len > 0)	//If there's any custom paper on the stack, use that instead of creating a new paper.
-			P = papers[papers.len]
+		if(length(papers) > 0)	//If there's any custom paper on the stack, use that instead of creating a new paper.
+			P = papers[length(papers)]
 			papers.Remove(P)
 		else
 			P = new /obj/item/paper/carbon

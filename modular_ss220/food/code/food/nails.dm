@@ -4,7 +4,7 @@
 	icon = 'modular_ss220/food/icons/food.dmi'
 	icon_state = "nails"
 
-/obj/item/food/snacks/nails
+/obj/item/food/nails
 	name = "жаренные гвозди"
 	desc = "Жаренных гвоздей не хочешь, не?"
 	icon = 'modular_ss220/food/icons/food.dmi'
@@ -15,9 +15,9 @@
 	list_reagents = list("iron" = 8, "nutriment" = 1)
 	tastes = list("гвозди" = 1)
 
-/obj/item/food/snacks/nails/On_Consume(mob/living/carbon/human/user)
+/obj/item/food/nails/On_Consume(mob/living/carbon/human/user)
 	. = ..()
-	to_chat(user, "<span class='warning'>Ты чувствуешь адскую боль во рту!</span>")
+	to_chat(user, span_warning("Ты чувствуешь адскую боль во рту!"))
 	playsound(user.loc, "bonebreak", 60, TRUE)
 	user.apply_damage(5, BRUTE, "head")
 
@@ -42,4 +42,4 @@
 
 /datum/deepfryer_special/nails
 	input = /obj/item/nails
-	output = /obj/item/food/snacks/nails
+	output = /obj/item/food/nails

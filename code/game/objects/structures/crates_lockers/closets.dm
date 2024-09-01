@@ -57,8 +57,9 @@
 			break
 
 // Fix for #383 - C4 deleting fridges with corpses
-/obj/structure/closet/Destroy()
-	dump_contents()
+/obj/structure/closet/Destroy(force)
+	if(!force)
+		dump_contents()
 	return ..()
 
 /obj/structure/closet/CanPass(atom/movable/mover, turf/target, height=0)
@@ -90,6 +91,10 @@
 			step(AM2, dir)
 	if(throwing)
 		throwing.finalize(FALSE)
+
+/obj/structure/closet/extinguish_light(force)
+	for(var/atom/A in contents)
+		A.extinguish_light(force)
 
 /obj/structure/closet/proc/open()
 	if(opened)
@@ -335,7 +340,7 @@
 	return TRUE
 
 /obj/structure/closet/container_resist(mob/living/L)
-	var/breakout_time = 2 //2 minutes by default
+	var/breakout_time = 2 MINUTES
 	if(opened)
 		if(L.loc == src)
 			L.forceMove(get_turf(src)) // Let's just be safe here
@@ -353,7 +358,7 @@
 
 
 	spawn(0)
-		if(do_after(L,(breakout_time*60*10), target = src)) //minutes * 60seconds * 10deciseconds
+		if(do_after(L, breakout_time, target = src, allow_moving = TRUE, allow_moving_target = TRUE))
 			if(!src || !L || L.stat != CONSCIOUS || L.loc != src || opened) //closet/user destroyed OR user dead/unconcious OR user no longer in closet OR closet opened
 				return
 
@@ -374,7 +379,7 @@
 
 /obj/structure/closet/get_remote_view_fullscreens(mob/user)
 	if(user.stat == DEAD || !(user.sight & (SEEOBJS|SEEMOBS)))
-		user.overlay_fullscreen("remote_view", /atom/movable/screen/fullscreen/impaired, 1)
+		user.overlay_fullscreen("remote_view", /atom/movable/screen/fullscreen/stretch/impaired, 1)
 
 /obj/structure/closet/ex_act(severity)
 	for(var/atom/A in contents)
@@ -441,7 +446,7 @@
 	if(T.density)
 		return
 	for(var/atom/A in T.contents)
-		if(A.density && istype(A, /obj/machinery/door))
+		if(A.density && isairlock(A))
 			return
 	UpdateTransparency(src, NewLoc)
 	forceMove(NewLoc)

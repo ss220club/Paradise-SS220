@@ -1,39 +1,82 @@
-"TGUI":
-- 'tgui/**'
+'TGUI':
+  - changed-files:
+      - any-glob-to-any-file: ['tgui/**']
 
-"Звук":
-- '**/*.ogg'
+':sound: Звук':
+  - changed-files:
+      - any-glob-to-any-file: ['**/*.ogg']
 
-"Изменение Карты":
-- '**/*.dmm'
+':world_map: Изменение Карты':
+  - all:
+      - changed-files:
+          - any-glob-to-any-file: ['**/*.dmm']
+          - all-globs-to-all-files: ['!_maps/map_files220/stations/*.dmm']
 
-"Инструменты":
-- '.gihub/workflows/**'
-- 'tools/**'
+'Кибериада':
+  - changed-files:
+      - any-glob-to-any-file: ['_maps/map_files220/stations/boxstation.dmm']
 
-"Керберос":
-- '_maps/map_files220/delta/delta.dmm'
+'Керберос':
+  - changed-files:
+      - any-glob-to-any-file: ['_maps/map_files220/stations/deltastation.dmm']
 
-"Кибериада":
-- '_maps/map_files220/cyberiad/cyberiad.dmm'
+'Цереброн':
+  - changed-files:
+      - any-glob-to-any-file: ['_maps/map_files220/stations/metastation.dmm']
 
-"Цереброн":
-- '_maps/map_files220/MetaStation/MetaStation.dmm'
+'Фаррагус':
+  - changed-files:
+      - any-glob-to-any-file: ['_maps/map_files220/stations/cerestation.dmm']
 
-"НЕ МОДУЛЬНО":
-- all: ['code/**']
+':paintbrush: Спрайты':
+  - changed-files:
+      - any-glob-to-any-file: ['**/*.dmi']
 
-"Спрайты":
-- '**/*.dmi'
+':guitar: Инструменты':
+  - changed-files:
+      - any-glob-to-any-file: ['.gihub/**', 'tools/**', '.vscode/**', '.bin/**']
 
-"Требуется изменение конфига":
-- 'config/**'
+':floppy_disk: Изменение конфига':
+  - changed-files:
+      - any-glob-to-any-file: ['config/**']
 
-"Документация":
-- '**/*.md'
+':neckbeard: Документация':
+  - changed-files:
+      - any-glob-to-any-file: ['**/*.md']
 
-"Частичная модульность":
-- all: ['code/**', modular_ss220/**]
+':cd: SQL':
+  - changed-files:
+      - any-glob-to-any-file: ['SQL/**']
 
-"SQL":
-- 'SQL/**'
+':feelsgood: Частичная модульность':
+  - all:
+      - changed-files:
+          - any-glob-to-any-file: ['code/**', 'icons/**', 'sounds/**', '_maps/map_files/**', 'tgui/**']
+          - any-glob-to-any-file: [modular_ss220/**]
+      - base-branch: 'master'
+      - head-branch: '!merge-upstream'
+
+':finnadie: НЕ МОДУЛЬНО':
+  - all:
+      - changed-files:
+          - any-glob-to-any-file: ['code/**', 'icons/**', 'sounds/**', '_maps/map_files/**']
+          - all-globs-to-all-files: '!modular_ss220/**'
+      - base-branch: 'master'
+      - head-branch: '!merge-upstream'
+
+':pray: Слияние с восходящим потоком':
+  - all:
+      - base-branch: 'master'
+      - head-branch: 'merge-upstream'
+
+':pencil: Перевод':
+  - base-branch: 'translate'
+
+':wrench: Фикс':
+  - head-branch: ['^fix', 'fix']
+
+':trollface: Фича':
+  - head-branch: ['^feat', 'feat']
+
+':shipit: Улучшение':
+  - head-branch: ['^tweak', 'tweak']

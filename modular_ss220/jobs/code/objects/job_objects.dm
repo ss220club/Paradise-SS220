@@ -123,6 +123,7 @@
 /obj/item/storage/box/legal_loot/populate_contents()
 	// "увеличиваем" шансы на выпадение коллекционного хлама
 	possible_type_loot |= subtypesof(/obj/item/toy) + subtypesof(/obj/item/clothing/head/collectable) + subtypesof(/obj/item/poster) + subtypesof(/obj/item/storage/fancy/cigarettes) + subtypesof(/obj/item/lighter/zippo) + subtypesof(/obj/item/id_skin)
+	possible_type_loot -= list(/obj/item/lighter/zippo/fluff, /obj/item/toy/plushie, /obj/item/toy/character, /obj/item/toy/desk, /obj/item/toy/plushie/fluff, /obj/item/toy/random)
 	for(var/i in 1 to loot_amount)
 		var/loot_type = pick(possible_type_loot)
 		new loot_type(src)
@@ -168,3 +169,13 @@
 /obj/item/gun/energy/clown/security/warden
 	name = "Личное ХОНК-ружье смотрителя"
 	desc = "Личное смертоносное оружие клоуна-смотрителя, выданное за заслуги перед НТ и \[ДАННЫЕ ХОНКНУТЫ\]. Ходят слухи что это один из первых экземпляров произведенных во время войны мимов и клоунов на родной планете клоунов."
+
+// JANITOR //
+/obj/item/storage/belt/janitor/full/donor/populate_contents()
+	new /obj/item/holosign_creator/janitor(src)
+	new /obj/item/reagent_containers/spray/cleaner(src)
+	new /obj/item/storage/bag/trash(src)
+	new /obj/item/soap/nanotrasen/prime(src)
+	new /obj/item/grenade/chem_grenade/cleaner(src)
+	new /obj/item/grenade/chem_grenade/cleaner(src)
+	update_icon()

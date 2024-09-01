@@ -124,7 +124,7 @@
 /obj/structure/shuttle/engine/large
 	name = "engine"
 	opacity = 1
-	icon = 'modular_ss220/maps220/icons/2x2.dmi'
+	icon = 'icons/obj/2x2.dmi'
 	icon_state = "large_engine"
 	desc = "A very large bluespace engine used to propel very large ships."
 //	bound_width = 64
@@ -143,8 +143,8 @@
 //	bound_height = 96
 	appearance_flags = 0
 
-/obj/structure/shuttle/engine/large/Initialize()
-	..()
+/obj/structure/shuttle/engine/large/Initialize(mapload)
+	. = ..()
 	var/list/occupied = list()
 	for(var/direct in list(EAST,NORTH,NORTHEAST))
 		occupied += get_step(src,direct)
@@ -154,8 +154,8 @@
 		F.parent = src
 		fillers += F
 
-/obj/structure/shuttle/engine/huge/Initialize()
-	..()
+/obj/structure/shuttle/engine/huge/Initialize(mapload)
+	. = ..()
 	var/list/occupied = list()
 	for(var/direct in list(EAST,WEST,NORTH,SOUTH,SOUTHEAST,SOUTHWEST,NORTHEAST,NORTHWEST))
 		occupied += get_step(src,direct)
@@ -179,8 +179,6 @@
 	icon_closed = "tac"
 	icon_opened = "tac_open"
 	open_door_sprite = "syndicate_door"
-
-
 
 /obj/structure/closet/secure_closet/syndicate/medbay/populate_contents()
 	new /obj/item/storage/backpack/duffel/syndie/med/surgery
@@ -297,7 +295,7 @@
 
 	else
 		undead.set_species(/datum/species/skeleton) // OP skellybones
-		undead.visible_message(span_warning ("[undead] отторгает бренную оболочку и предстает в виде скелета!"))
+		undead.visible_message(span_warning("[undead] отторгает бренную оболочку и предстает в виде скелета!"))
 		undead.grab_ghost() // yoinks the ghost if its not in the body
 		undead.revive()
 		equip_undead(undead)
@@ -576,7 +574,6 @@
 	/// How many shields we have protecting us
 	var/shield_count = 0
 	faction = list("xen")
-	tts_seed = "Vortiger"
 	gold_core_spawnable = NO_SPAWN
 	del_on_death = TRUE
 

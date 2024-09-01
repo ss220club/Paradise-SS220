@@ -160,10 +160,11 @@
 	return
 
 /turf/simulated/floor/lava/lava_land_surface
-	temperature = 500
-	oxygen = 8
-	nitrogen = 14
-	planetary_atmos = TRUE
+	oxygen = LAVALAND_OXYGEN
+	nitrogen = LAVALAND_NITROGEN
+	temperature = LAVALAND_TEMPERATURE
+	atmos_mode = ATMOS_MODE_EXPOSED_TO_ENVIRONMENT
+	atmos_environment = ENVIRONMENT_LAVALAND
 	baseturf = /turf/simulated/floor/chasm/straight_down/lava_land_surface
 
 /turf/simulated/floor/lava/lava_land_surface/plasma
@@ -180,7 +181,7 @@
 
 /turf/simulated/floor/lava/lava_land_surface/plasma/examine(mob/user)
 	. = ..()
-	. += "<span class='info'>Some <b>liquid plasma<b> could probably be scooped up with a <b>container</b>.</span>"
+	. += "<span class='notice'>Some <b>liquid plasma<b> could probably be scooped up with a <b>container</b>.</span>"
 
 /turf/simulated/floor/lava/lava_land_surface/plasma/attackby(obj/item/I, mob/user, params)
 	if(!I.is_open_container())
@@ -256,11 +257,18 @@
 	icon_state = "mappinglava"
 	base_icon_state = "mappinglava"
 	baseturf = /turf/simulated/floor/lava/mapping_lava
-	temperature = 500
-	oxygen = 8
-	nitrogen = 14
-	planetary_atmos = TRUE
+	oxygen = LAVALAND_OXYGEN
+	nitrogen = LAVALAND_NITROGEN
+	temperature = LAVALAND_TEMPERATURE
+	atmos_mode = ATMOS_MODE_EXPOSED_TO_ENVIRONMENT
+	atmos_environment = ENVIRONMENT_LAVALAND
 
+/turf/simulated/floor/lava/mapping_lava/normal_air
+	oxygen = MOLES_O2STANDARD
+	nitrogen = MOLES_N2STANDARD
+	temperature = T20C
+	atmos_mode = ATMOS_MODE_SEALED
+	atmos_environment = null
 
 /turf/simulated/floor/lava/mapping_lava/Initialize(mapload)
 	. = ..()

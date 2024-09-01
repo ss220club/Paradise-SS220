@@ -16,9 +16,9 @@
 	name = "wiring splicing spawner 30%"
 
 /obj/effect/spawner/wire_splicing/thirty/Initialize(mapload)
+	. = ..()
 	if(prob(70))
 		return INITIALIZE_HINT_QDEL
-	. = ..()
 
 /obj/structure/wire_splicing
 	name = "wire splicing"
@@ -139,7 +139,9 @@
 		return
 	if(shock(user, 50))
 		return
-	user.visible_message(span_notice("[user] cuts the splicing."), span_notice("You cut the splicing."))
+	user.visible_message(
+		span_notice("[user] cuts the splicing."),
+		span_notice("You cut the splicing."))
 	investigate_log("was cut by [key_name(usr)] in [AREACOORD(src)]", "wires")
 	qdel(src)
 

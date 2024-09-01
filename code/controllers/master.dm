@@ -84,7 +84,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 /datum/controller/master/New()
 	if(!random_seed)
 		#ifdef UNIT_TESTS
-		random_seed = 2200 // SS220 EDIT - Unit Test fix
+		random_seed = 29051994
 		#else
 		random_seed = rand(1, 1e9)
 		#endif
@@ -182,7 +182,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 				msg = "The [BadBoy.name] subsystem was the last to fire for 2 controller restarts. It will be recovered now and disabled if it happens again."
 				FireHim = TRUE
 			if(3)
-				msg = "The [BadBoy.name] subsystem seems to be destabilizing the MC and will be offlined. <span class='info'>The following implications are now in effect: [BadBoy.offline_implications]</span>"
+				msg = "The [BadBoy.name] subsystem seems to be destabilizing the MC and will be offlined. <span class='notice'>The following implications are now in effect: [BadBoy.offline_implications]</span>"
 				BadBoy.flags |= SS_NO_FIRE
 		if(msg)
 			to_chat(GLOB.admins, "<span class='boldannounceooc'>[msg]</span>")
@@ -332,9 +332,9 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 		var/ss_runlevels = SS.runlevels
 		var/added_to_any = FALSE
-		for(var/I in 1 to GLOB.bitflags.len)
+		for(var/I in 1 to length(GLOB.bitflags))
 			if(ss_runlevels & GLOB.bitflags[I])
-				while(runlevel_sorted_subsystems.len < I)
+				while(length(runlevel_sorted_subsystems) < I)
 					runlevel_sorted_subsystems += list(list())
 				runlevel_sorted_subsystems[I] += SS
 				added_to_any = TRUE

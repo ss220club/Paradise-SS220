@@ -4,13 +4,15 @@
 		icon = initial(icon)
 		return
 	var/datum/reagent/reagent = reagents.get_master_reagent()
-	if(!istype(reagent, /datum/reagent/consumable/ethanol))
+	if(!istype(reagent, /datum/reagent/consumable))
 		icon = initial(icon)
-		return
-	var/datum/reagent/consumable/ethanol/booze = reagent
-	icon = booze.drinking_glass_icon
+	else
+		var/datum/reagent/consumable/drink = reagent
+		icon = drink.drinking_glass_icon
+	if(!reagent.drink_icon)
+		icon_state = "glass_empty"
 
-/datum/reagent/consumable/ethanol
+/datum/reagent/consumable
 	var/drinking_glass_icon = 'icons/obj/drinks.dmi'
 
 /obj/machinery/chem_dispenser/beer/Initialize(mapload)
@@ -198,7 +200,7 @@
 	if(iscarbon(M))
 		if(method == REAGENT_TOUCH)
 			M.adjustFireLoss(-volume * 0.7)
-			to_chat(M, "<span class='notice'>The diluted silver sulfadiazine soothes your burns.</span>")
+			to_chat(M, span_notice("The diluted silver sulfadiazine soothes your burns."))
 	return STATUS_UPDATE_NONE
 
 /datum/chemical_reaction/alcomender
@@ -379,7 +381,7 @@
 	. = ..()
 	if(volume > 20)
 		if(prob(50)) //no spam here :p
-			M.visible_message("<span class='warning'>Глаза [M] ослепительно вспыхивают!</span>")
+			M.visible_message(span_warning("Глаза [M] ослепительно вспыхивают!"))
 
 /datum/chemical_reaction/vampiro
 	name = "Vampiro"
@@ -552,7 +554,7 @@
 			if(prob(10))
 				M.emote(pick("twitch","giggle"))
 			if(prob(5))
-				to_chat(M, "<span class='notice'>Rebooting..</span>")
+				to_chat(M, span_notice("Rebooting.."))
 		if(14)
 			playsound(get_turf(M),'modular_ss220/food/sound/restart-shutdown.ogg', 200, 1)
 		if(15 to 23)
@@ -584,3 +586,104 @@
 	required_reagents = list("trinary" = 1, "codelibre" = 1, "rewriter" = 1, "irishempbomb" = 1, "synthanol" = 1  )
 	result_amount = 5
 	mix_sound = 'sound/goonstation/misc/drinkfizz.ogg'
+
+/datum/reagent/consumable/ethanol/kvass
+	name = "Alcoholic Kvass"
+	id = "alco_kvass"
+	description = "Алкогольный напиток, полученный путём ферментации хлеба"
+	color = "#775a1c"
+	nutriment_factor = 1 * REAGENTS_METABOLISM
+	alcohol_perc = 0.2
+	drink_icon = "alco_kvass"
+	drinking_glass_icon = 'modular_ss220/food/icons/drinks.dmi'
+	drink_name = "Стакан алкогольного кваса"
+	drink_desc = "Освежающий горьковато-сладкий напиток прямиком из СССП"
+	taste_description = "квас"
+
+/datum/reagent/consumable/drink/kvass
+	name = "Kvass"
+	id = "kvass"
+	description = "Квас без алкоголя. Что отличает его от обычной газировки?"
+	color = "#574113"
+	adj_sleepy = -4 SECONDS
+	drink_icon = "kvass"
+	drinking_glass_icon = 'modular_ss220/food/icons/drinks.dmi'
+	drink_name = "Стакан безалкогольного кваса"
+	drink_desc = "Квас без алкоголя. Освежает, но по вкусу как-то... блекло?"
+	harmless = FALSE
+	taste_description = "скучный квас"
+
+/datum/chemical_reaction/kvass
+	name = "Kvass"
+	id = "kvass"
+	result = "kvass"
+	required_reagents = list("alco_kvass" = 5, "antihol" = 1)
+	result_amount = 5
+	mix_sound = 'sound/goonstation/misc/drinkfizz.ogg'
+
+/datum/reagent/consumable/ethanol/narsour
+	name = "Nar'Sour"
+	id = "narsour"
+	description = "Побочные эффекты включают в себя склонность к суициду и складирование пластали."
+	color = "#9e0f0f"
+	alcohol_perc = 0.3
+	dizzy_adj = 4 SECONDS
+	taste_description = "bloody"
+	drink_icon = "narsour"
+	drinking_glass_icon = 'modular_ss220/food/icons/drinks.dmi'
+	drink_desc = "Новый хит-коктейль, вдохновлённый пивоварнями фирмы \"THE ARM\", что заставит вас выкрикивать Fuu ma'jin без остановки!"
+	drink_name = "Nar'Sour"
+
+/datum/chemical_reaction/narsour
+	name = "Nar'Sour"
+	id = "narsour"
+	result = "narsour"
+	result_amount = 2
+	required_reagents = list("blood" = 1, "bloodymary" = 1, "lemonjuice" = 1)
+	mix_message = "Смесь излучает зловещее сияние."
+	mix_sound = 'sound/goonstation/misc/drinkfizz.ogg'
+
+/datum/reagent/consumable/ethanol/narsour/on_mob_life(mob/living/carbon/M)
+	. = ..()
+	M.CultSlur(10 SECONDS)
+
+// fermenting_barrel don't have behavior for non-plant food, so we need some proc for bread
+/obj/structure/fermenting_barrel/proc/make_drink(obj/item/I, drink_id, amount)
+	reagents.add_reagent(drink_id, amount)
+	qdel(I)
+	playsound(src, 'sound/effects/bubbles.ogg', 50, TRUE)
+
+/obj/structure/fermenting_barrel/attackby(obj/item/I, mob/user, params)
+	if(istype(I, /obj/item/food/sliceable/bread))
+		if(!user.drop_item())
+			to_chat(user, "<span class='warning'>[I] is stuck to your hand!</span>")
+			return FALSE
+		I.forceMove(src)
+		to_chat(user, "<span class='notice'>You place [I] into [src] to start the fermentation process.</span>")
+		addtimer(CALLBACK(src, PROC_REF(make_drink), I, "alco_kvass", 35), rand(80, 120) * speed_multiplier)
+		return
+	return ..()
+
+/obj/item/reagent_containers/drinks/cans/kvass
+	name = "Квас"
+	desc = "Банка кваса. На этикетке написано \"Сделано в СССП\""
+	icon_state = "kvass_can"
+	icon = 'modular_ss220/food/icons/drinks.dmi'
+	list_reagents = list("kvass" = 50)
+
+/obj/machinery/chem_dispenser/soda/Initialize(mapload)
+	dispensable_reagents += "kvass"
+	return ..()
+
+/obj/item/handheld_chem_dispenser/soda/Initialize(mapload)
+	dispensable_reagents += "kvass"
+	return ..()
+
+/obj/machinery/economy/vending/boozeomat/Initialize(mapload)
+	products += list(/obj/item/reagent_containers/drinks/cans/kvass = 8)
+	return ..()
+
+/obj/machinery/economy/vending/cola/Initialize(mapload)
+	products += list(/obj/item/reagent_containers/drinks/cans/kvass = 10)
+	prices += list(/obj/item/reagent_containers/drinks/cans/kvass = 50)
+	return ..()

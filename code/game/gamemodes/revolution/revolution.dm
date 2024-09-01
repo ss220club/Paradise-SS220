@@ -4,15 +4,10 @@
 #define REV_VICTORY 1
 #define STATION_VICTORY 2
 
-/datum/game_mode
-	var/list/datum/mind/head_revolutionaries = list()
-	var/list/datum/mind/revolutionaries = list()
-	var/datum/team/revolution/rev_team
-
 /datum/game_mode/revolution
 	name = "revolution"
 	config_tag = "revolution"
-	restricted_jobs = list("Security Officer", "Warden", "Detective", "Internal Affairs Agent", "AI", "Cyborg","Captain", "Head of Personnel", "Head of Security", "Chief Engineer", "Research Director", "Chief Medical Officer", "Blueshield", "Nanotrasen Representative", "Magistrate")
+	restricted_jobs = list("Security Officer", "Warden", "Detective", "Internal Affairs Agent", "AI", "Cyborg","Captain", "Head of Personnel", "Head of Security", "Chief Engineer", "Research Director", "Chief Medical Officer", "Blueshield", "Nanotrasen Representative", "Magistrate", "Quartermaster")
 	required_players = 20
 	required_enemies = 1
 	recommended_enemies = 3
@@ -44,6 +39,7 @@
 		var/datum/mind/new_headrev = pick_n_take(possible_revolutionaries)
 		pre_revolutionaries |= new_headrev
 		new_headrev.restricted_roles = restricted_jobs
+		new_headrev.special_role = SPECIAL_ROLE_HEAD_REV
 
 	if(length(pre_revolutionaries) < required_enemies)
 		return FALSE

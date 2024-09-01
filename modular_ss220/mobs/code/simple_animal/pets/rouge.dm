@@ -16,7 +16,6 @@
 	speak_emote = list("hisses")
 	emote_hear = list("Зевает", "Шипит", "Дурачится", "Толкается")
 	emote_see = list("Высовывает язык", "Кружится", "Трясёт хвостом")
-	tts_seed = "Ladyvashj"
 	health = 20
 	maxHealth = 20
 	attacktext = "кусает"
@@ -113,19 +112,6 @@
 	..(gibbed)
 	regenerate_icons()
 
-/mob/living/simple_animal/hostile/retaliate/poison/snake/rouge/show_inv(mob/user)
-	if(user.incapacitated() || !Adjacent(user))
-		return
-	user.set_machine(src)
-
-	var/dat = 	{"<meta charset="UTF-8"><div align='center'><b>Inventory of [name]</b></div><p>"}
-	dat += "<br><B>Head:</B> <A href='?src=[UID()];[inventory_head ? "remove_inv=head'>[inventory_head]" : "add_inv=head'>Nothing"]</A>"
-	dat += "<br><B>Collar:</B> <A href='?src=[UID()];[pcollar ? "remove_inv=collar'>[pcollar]" : "add_inv=collar'>Nothing"]</A>"
-
-	var/datum/browser/popup = new(user, "mob[UID()]", "[src]", 440, 250)
-	popup.set_content(dat)
-	popup.open()
-
 /mob/living/simple_animal/hostile/retaliate/poison/snake/rouge/getarmor(def_zone, type)
 	var/armorval = inventory_head?.armor.getRating(type)
 	if(!def_zone)
@@ -133,57 +119,6 @@
 	else if(def_zone != "head")
 		armorval = 0
 	return armorval
-
-/mob/living/simple_animal/hostile/retaliate/poison/snake/rouge/Topic(href, href_list)
-	if(!(iscarbon(usr) || isrobot(usr)) || usr.incapacitated() || !Adjacent(usr))
-		usr << browse(null, "window=mob[UID()]")
-		usr.unset_machine()
-		return
-
-	//Removing from inventory
-	if(href_list["remove_inv"])
-		var/remove_from = href_list["remove_inv"]
-		switch(remove_from)
-			if("head")
-				if(inventory_head)
-					if(inventory_head.flags & NODROP)
-						to_chat(usr, "<span class='warning'>\The [inventory_head] is stuck too hard to [src] for you to remove!</span>")
-						return
-					drop_item(inventory_head)
-					usr.put_in_hands(inventory_head)
-					inventory_head = null
-					update_snek_fluff()
-					regenerate_icons()
-				else
-					to_chat(usr, "<span class='danger'>There is nothing to remove from its [remove_from].</span>")
-					return
-			if("collar")
-				if(pcollar)
-					var/the_collar = pcollar
-					drop_item(pcollar)
-					usr.put_in_hands(the_collar)
-					pcollar = null
-					update_snek_fluff()
-					regenerate_icons()
-
-		show_inv(usr)
-
-	//Adding things to inventory
-	else if(href_list["add_inv"])
-		var/add_to = href_list["add_inv"]
-
-		switch(add_to)
-			if("collar")
-				add_collar(usr.get_active_hand(), usr)
-				update_snek_fluff()
-
-			if("head")
-				place_on_head(usr.get_active_hand(),usr)
-
-		show_inv(usr)
-	else
-		return ..()
-
 
 /mob/living/simple_animal/hostile/retaliate/poison/snake/rouge/proc/place_on_head(obj/item/item_to_add, mob/user)
 
@@ -193,16 +128,18 @@
 
 	if(inventory_head)
 		if(user)
-			to_chat(user, "<span class='warning'>You can't put more than one hat on [src]!</span>")
+			to_chat(user, span_warning("You can't put more than one hat on [src]!"))
 		return
 	if(!item_to_add)
-		user.visible_message("<span class='notice'>[user] pets [src].</span>", "<span class='notice'>You rest your hand on [src]'s head for a moment.</span>")
+		user.visible_message(
+			span_notice("[user] pets [src]."),
+			span_notice("You rest your hand on [src]'s head for a moment."))
 		if(flags_2 & HOLOGRAM_2)
 			return
 		return
 
 	if(user && !user.unEquip(item_to_add))
-		to_chat(user, "<span class='warning'>\The [item_to_add] is stuck to your hand, you cannot put it on [src]'s head!</span>")
+		to_chat(user, span_warning("\The [item_to_add] is stuck to your hand, you cannot put it on [src]'s head!"))
 		return 0
 
 	var/valid = FALSE
@@ -211,17 +148,18 @@
 
 	if(valid)
 		if(health <= 0)
-			to_chat(user, "<span class='notice'>Безжизненный взгляд в глазах [real_name] никак не меняется, когда вы надеваете [item_to_add] на неё.</span>")
+			to_chat(user, span_notice("Безжизненный взгляд в глазах [real_name] никак не меняется, когда вы надеваете [item_to_add] на неё."))
 		else if(user)
-			user.visible_message("<span class='notice'>[user] надевает [item_to_add] на центральную голову [real_name]. [src] смотрит на [user] и довольно шипит.</span>",
-				"<span class='notice'>Вы надеваете [item_to_add] на голову [real_name]. [src] озадачено смотрит на вас, пока другие головы смотрят на центральную с завистью.</span>",
-				"<span class='italics'>Вы слышите дружелюбное шипение.</span>")
+			user.visible_message(
+				span_notice("[user] надевает [item_to_add] на центральную голову [real_name]. [src] смотрит на [user] и довольно шипит."),
+				span_notice("Вы надеваете [item_to_add] на голову [real_name]. [src] озадачено смотрит на вас, пока другие головы смотрят на центральную с завистью."),
+				span_italics("Вы слышите дружелюбное шипение."))
 		item_to_add.forceMove(src)
 		inventory_head = item_to_add
 		update_snek_fluff()
 		regenerate_icons()
 	else
-		to_chat(user, "<span class='warning'>Вы надеваете [item_to_add] на голову [src], но она скидывает [item_to_add] с себя!</span>")
+		to_chat(user, span_warning("Вы надеваете [item_to_add] на голову [src], но она скидывает [item_to_add] с себя!"))
 		item_to_add.forceMove(drop_location())
 		if(prob(25))
 			step_rand(item_to_add)

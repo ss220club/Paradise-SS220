@@ -184,7 +184,7 @@
 	relate_job = "Cargo Technician"
 	supervisors = "главой персонала и квартирмейстером"
 	department_head = list("Head of Personnel", "Quartermaster")
-	access = list(ACCESS_MAINT_TUNNELS, ACCESS_MAILSORTING, ACCESS_CARGO, ACCESS_MINT, ACCESS_MINERAL_STOREROOM)
+	access = list(ACCESS_MAINT_TUNNELS, ACCESS_MAILSORTING, ACCESS_CARGO, ACCESS_MINERAL_STOREROOM)
 	selection_color = "#558758"
 	hidden_from_job_prefs = FALSE
 	donator_tier = 2
@@ -228,8 +228,8 @@
 				shoes = /obj/item/clothing/shoes/laceup
 				head = /obj/item/clothing/head/mailman
 			if("Доставщик")
-				uniform = /obj/item/clothing/under/rank/cargo/deliveryboy
-				head = /obj/item/clothing/head/soft/deliverysoft
+				uniform = /obj/item/clothing/under/rank/cargo/tech/delivery
+				head = /obj/item/clothing/head/soft/cargo
 
 
 /datum/job/donor/wrestler
@@ -386,7 +386,7 @@
 	name = "Actor"
 	jobtype = /datum/job/donor/actor
 
-	uniform = /obj/item/clothing/under/rank/procedure/lawyer/red
+	uniform = /obj/item/clothing/under/rank/procedure/iaa/formal/red
 	shoes = /obj/item/clothing/shoes/laceup
 	head = /obj/item/clothing/head/bowlerhat
 	gloves = /obj/item/clothing/gloves/color/white
@@ -404,7 +404,7 @@
 /datum/outfit/job/donor/actor/pre_equip(mob/living/carbon/human/H, visualsOnly)
 	. = ..()
 	if(H.gender == FEMALE)
-		uniform = /obj/item/clothing/under/rank/procedure/lawyer/red/skirt
+		uniform = /obj/item/clothing/under/rank/procedure/iaa/formal/red/skirt
 
 	if(H.mind && H.mind.role_alt_title)
 		switch(H.mind.role_alt_title)

@@ -1,6 +1,5 @@
 /mob/living/simple_animal/pet/dog
 	icon = 'modular_ss220/mobs/icons/mob/pets.dmi'
-	tts_seed = "Stetmann"
 	maxHealth = 50
 	health = 50
 	melee_damage_type = STAMINA
@@ -9,7 +8,7 @@
 	attacktext = "кусает"
 	var/growl_sound = list('modular_ss220/mobs/sound/creatures/dog_grawl1.ogg','modular_ss220/mobs/sound/creatures/dog_grawl2.ogg') //Used in emote.
 
-	butcher_results = list(/obj/item/food/snacks/meat/dog = 4)
+	butcher_results = list(/obj/item/food/meat/dog = 4)
 	collar_type = "dog"
 
 /mob/living/simple_animal/pet/dog/wuv(change, mob/M)
@@ -35,7 +34,6 @@
 	melee_damage_type = STAMINA	//Пади ниц!
 	melee_damage_lower = 50
 	melee_damage_upper = 100
-	tts_seed = "Mannoroth"
 
 /*	// При добавлении Ратвара
 /mob/living/simple_animal/pet/dog/corgi/ratvar
@@ -51,7 +49,6 @@
 	unique_pet = TRUE
 	maxHealth = 100
 	health = 100
-	tts_seed = "Clockwerk"
 
 /mob/living/simple_animal/pet/dog/corgi/ratvar/update_corgi_fluff()
 	..()
@@ -67,13 +64,11 @@
 /mob/living/simple_animal/pet/dog/corgi/puppy
 	maxHealth = 20
 	health = 20
-	butcher_results = list(/obj/item/food/snacks/meat/corgi = 1)
-	tts_seed = "Jaina"
+	butcher_results = list(/obj/item/food/meat/corgi = 1)
 
 /mob/living/simple_animal/pet/dog/corgi/puppy/void
 	maxHealth = 60
 	health = 60
-	tts_seed = "Kael"
 	holder_type = /obj/item/holder/void_puppy
 
 /mob/living/simple_animal/pet/dog/corgi/puppy/slime
@@ -89,15 +84,12 @@
 	maxbodytemp = INFINITY
 
 /mob/living/simple_animal/pet/dog/corgi/Lisa
-	tts_seed = "Luna"
 	holder_type = /obj/item/holder/lisa
 
 /mob/living/simple_animal/pet/dog/corgi/borgi
-	tts_seed = "Glados"
 	holder_type = /obj/item/holder/borgi
 
 /mob/living/simple_animal/pet/dog/pug
-	tts_seed = "Kleiner"
 	holder_type = /obj/item/holder/pug
 	maxHealth = 30
 	health = 30
@@ -110,7 +102,6 @@
 	icon_state = "bullterrier"
 	icon_living = "bullterrier"
 	icon_dead = "bullterrier_dead"
-	tts_seed = "Kleiner"
 	holder_type = /obj/item/holder/bullterrier
 
 /mob/living/simple_animal/pet/dog/tamaskan
@@ -122,7 +113,6 @@
 	icon_living = "tamaskan"
 	icon_dead = "tamaskan_dead"
 	holder_type = /obj/item/holder/bullterrier
-	tts_seed = "Kleiner"
 
 /mob/living/simple_animal/pet/dog/german
 	name = "german"
@@ -132,7 +122,6 @@
 	icon_state = "german"
 	icon_living = "german"
 	icon_dead = "german_dead"
-	tts_seed = "Kleiner"
 
 /mob/living/simple_animal/pet/dog/brittany
 	name = "brittany"

@@ -611,8 +611,9 @@
 /area/holodeck/source_basketball)
 "jK" = (
 /obj/structure/table/wood,
-/obj/item/paper{
-	info = "Я так понял был энфорсер с Сибилом."
+/obj/item/gun/projectile/revolver/reclinable/anaconda,
+/obj/item/gun/projectile/revolver/reclinable/rsh12{
+	pixel_y = -12
 	},
 /turf/simulated/floor/wood/oak,
 /area/admin)
@@ -691,13 +692,13 @@
 /area/admin)
 "kQ" = (
 /obj/structure/table,
-/obj/item/food/snacks/grown/citrus/lemon,
-/obj/item/food/snacks/grown/berries,
-/obj/item/food/snacks/grown/banana,
-/obj/item/food/snacks/grown/cherries,
-/obj/item/food/snacks/grown/citrus/orange,
-/obj/item/food/snacks/grown/corn,
-/obj/item/food/snacks/grown/mushroom/amanita,
+/obj/item/food/grown/citrus/lemon,
+/obj/item/food/grown/berries,
+/obj/item/food/grown/banana,
+/obj/item/food/grown/cherries,
+/obj/item/food/grown/citrus/orange,
+/obj/item/food/grown/corn,
+/obj/item/food/grown/mushroom/amanita,
 /turf/simulated/floor/wood/oak,
 /area/admin)
 "kT" = (
@@ -958,7 +959,7 @@
 /obj/item/dnainjector/hulkmut,
 /obj/item/dnainjector/insulation,
 /obj/item/dnainjector/m2h,
-/obj/item/dnainjector/midgit,
+/obj/item/dnainjector/small_size,
 /obj/item/dnainjector/morph,
 /obj/item/dnainjector/nobreath,
 /obj/item/dnainjector/noprints,
@@ -1486,7 +1487,7 @@
 /area/holodeck/source_snowfield)
 "wJ" = (
 /obj/structure/chair,
-/obj/structure/sign/barsign{
+/obj/machinery/barsign{
 	pixel_y = 32
 	},
 /obj/effect/landmark/spawner/tdomeobserve,
@@ -1519,7 +1520,7 @@
 /obj/item/dnainjector/antihallucination,
 /obj/item/dnainjector/antihulk,
 /obj/item/dnainjector/antiinsulation,
-/obj/item/dnainjector/antimidgit,
+/obj/item/dnainjector/anti_small_size,
 /obj/item/dnainjector/antimorph,
 /obj/item/dnainjector/antinobreath,
 /obj/item/dnainjector/antinoprints,
@@ -1618,6 +1619,12 @@
 "yC" = (
 /obj/structure/table/wood,
 /obj/item/gun/magic/staff/slipping,
+/turf/simulated/floor/wood/oak,
+/area/admin)
+"yE" = (
+/obj/machinery/economy/vending/nta/admin{
+	req_access = "0"
+	},
 /turf/simulated/floor/wood/oak,
 /area/admin)
 "yH" = (
@@ -1774,9 +1781,7 @@
 /area/admin)
 "Bl" = (
 /obj/structure/table/wood,
-/obj/item/paper{
-	info = "Тут ничего не было. Я серьёзно."
-	},
+/obj/item/gun/projectile/automatic/ak814,
 /turf/simulated/floor/wood/oak,
 /area/admin)
 "Bo" = (
@@ -10279,7 +10284,7 @@ Hc
 mB
 gd
 UO
-UO
+yE
 Up
 Up
 Up
