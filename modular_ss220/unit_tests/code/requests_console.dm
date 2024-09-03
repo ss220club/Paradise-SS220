@@ -25,7 +25,9 @@
 
 	for(var/obj/machinery/requests_console/console in GLOB.allRequestConsoles)
 		if(!(console.department in expected_departments))
-			Fail("Requests console has unknown department.\nExpected: [jointext(expected_departments, ", ")]\nActual: [console.department]")
+			var/message = "Requests console ([console.x]; [console.y]) has unknown department."
+			message += "\nExpected: [jointext(expected_departments, ", ")]\nActual: [console.department]"
+			Fail(message)
 
 #undef ENGI_AREAS
 #undef SEC_AREAS
