@@ -101,6 +101,9 @@
 /area/station/medical/chemistry
 	request_console_name = "Chemistry"
 
+/area/station/medical/paramedic
+	request_console_name = "Paramedic"
+
 /area/station/medical/morgue
 	request_console_name = "Morgue"
 
