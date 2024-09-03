@@ -5,7 +5,7 @@
 #define COM_AREAS list("Blueshield", "NT Representative", "Head of Personnel's Desk", "Captain's Desk", "Bridge")
 #define SCI_AREAS list("Robotics", "Science", "Research Director's Desk", "Genetics", "Xenobiology")
 #define SUPPLY_AREAS list("Cargo Bay", "Mining Dock", "Mining Outpost", "Quartermaster's Desk", "Mining", "Expedition")
-#define OTHER_AREAS list("Arrival Shuttle", "Crew Quarters", "Tool Storage", "EVA", "AI")
+#define OTHER_AREAS list("Arrival Shuttle", "Crew Quarters", "Tool Storage", "EVA", "Labor Camp", "AI")
 
 /datum/unit_test/requests_console
 
