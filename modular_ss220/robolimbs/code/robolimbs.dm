@@ -25,7 +25,7 @@
 	selectable = 0
 	has_subtypes = null
 
-/datum/sprite_accessory/body_markings/head/optics
+/datum/sprite_accessory/body_markings/head/optics/etamin_alt
 	icon = 'icons/mob/sprite_accessories/ipc/ei_optic.dmi'
 	name = "EI Optics"
 	species_allowed = list("Machine")
