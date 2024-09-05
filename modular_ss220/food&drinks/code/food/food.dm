@@ -11,11 +11,11 @@
 
 /obj/machinery/economy/vending/snack/Initialize(mapload)
 	products += list(
-		/obj/item/food/doshik = 6,
-		/obj/item/food/doshik_spicy = 6,)
+		/obj/item/food/fancy/doshik = 6,
+		/obj/item/food/fancy/doshik_spicy = 6,)
 	prices += list(
-		/obj/item/food/doshik = 100,
-		/obj/item/food/doshik_spicy = 120,)
+		/obj/item/food/fancy/doshik = 100,
+		/obj/item/food/fancy/doshik_spicy = 120,)
 	. = ..()
 
 // Boiled Buckwheat
@@ -545,35 +545,6 @@
 		/obj/item/food/meatball)
 	result = /obj/item/food/sliceable/pizza/diablo
 
-// Doshik
-/obj/item/food/doshik
-	name = "дошик"
-	desc = "Очень известная лапша быстрого приготовления. При открытии заваривается моментально. Вау."
-	icon = 'modular_ss220/food&drinks/icons/food.dmi'
-	icon_state = "doshik"
-	bitesize = 3
-	trash = /obj/item/trash/doshik
-	list_reagents = list("dry_ramen" = 30)
-	junkiness = 25
-	tastes = list("курятина" = 1, "лапша" = 1)
-
-/obj/item/food/doshik_spicy
-	name = "острый дошик"
-	desc = "Очень известная лапша быстрого приготовления. При открытии заваривается моментально. Вау. Кажется, что в ней есть острые специи."
-	icon = 'modular_ss220/food&drinks/icons/food.dmi'
-	icon_state = "doshikspicy"
-	bitesize = 3
-	trash = /obj/item/trash/doshik
-	list_reagents = list("dry_ramen" = 30,"capsaicin" = 5)
-	junkiness = 30
-	tastes = list("говядина" = 1, "лапша" = 1)
-
-/obj/item/trash/doshik
-	name = "упаковка из под дошика"
-	icon = 'modular_ss220/food&drinks/icons/food.dmi'
-	icon_state = "doshik-empty"
-	desc = "Всё ещё вкусно пахнет."
-
 // Chocolate Cake
 /obj/item/food/sliceable/choccherrycake
 	name = "шоколадно-вишневый торт"
@@ -1005,7 +976,7 @@
 
 /obj/item/trash/pan
 	name = "дырявая сковорода"
-	icon = 'modular_ss220/food&drinks/icons/food.dmi'
+	icon = 'modular_ss220/food&drinks/icons/trash.dmi'
 	icon_state = "pan"
 
 // Infinite Pizza Box

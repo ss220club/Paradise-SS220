@@ -710,7 +710,7 @@
 	color = "#CE5643"
 	drinking_glass_icon = 'modular_ss220/food&drinks/icons/drinks.dmi'
 	drink_icon = "MV_milkshake_straw"
-	drink_name = "Red Fox's Strawberry Milk"
+	drink_name = "Strawberry Milkshake"
 	drink_desc = "Клубничный молочный коктейль ярко-красного цвета, вкус детства!"
 	harmless = FALSE
 	taste_description = "клубничное молоко"
@@ -735,7 +735,7 @@
 	color = "#CEE03A"
 	drinking_glass_icon = 'modular_ss220/food&drinks/icons/drinks.dmi'
 	drink_icon = "MV_milkshake_banana"
-	drink_name = "Red Fox's Banana Milk"
+	drink_name = "Banana Milkshake"
 	drink_desc = "Банановый молочный коктейль, вкус вашего детства, если вы, конечно, клоун."
 	harmless = FALSE
 	taste_description = "банановое молоко"
@@ -760,7 +760,7 @@
 	color = "#434333"
 	drinking_glass_icon = 'modular_ss220/food&drinks/icons/drinks.dmi'
 	drink_icon = "MV_milkshake_choco"
-	drink_name = "Red Fox's Chocolate Milk"
+	drink_name = "Chocolate Milkshake"
 	drink_desc = "Шоколадный молочный коктейль, вкус детства!"
 	harmless = FALSE
 	taste_description = "шоколадное молоко"
