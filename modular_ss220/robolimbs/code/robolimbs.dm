@@ -25,21 +25,17 @@
 	selectable = 0
 	has_subtypes = null
 
-/datum/sprite_accessory/body_markings/head/optics/etamin_alt
+/datum/sprite_accessory/body_markings/head/optics/etamin
 	icon = 'modular_ss220/robolimbs/icons/ei_optic.dmi'
 	name = "EI Optics"
 	species_allowed = list("Machine")
 	icon_state = "ei_standart"
 	models_allowed = list("Etamin Industry King Series")
 
-/datum/sprite_accessory/body_markings/head/optics/altoptic2
-	icon = 'modular_ss220/robolimbs/icons/ei_optic.dmi'
+/datum/sprite_accessory/body_markings/head/optics/etamin/alt1
 	name = "EI Optics Alt"
 	icon_state = "ei_alt1"
-	models_allowed = list("Etamin Industry King Series")
 
-/datum/sprite_accessory/body_markings/head/optics/altoptic3
-	icon = 'modular_ss220/robolimbs/icons/ei_optic.dmi'
+/datum/sprite_accessory/body_markings/head/optics/etamin/alt2
 	name = "EI Optics Alt 2"
 	icon_state = "ei_alt2"
-	models_allowed = list("Etamin Industry King Series")
