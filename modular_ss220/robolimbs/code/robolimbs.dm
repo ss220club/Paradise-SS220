@@ -33,13 +33,13 @@
 	models_allowed = list("Etamin Industry King Series")
 
 /datum/sprite_accessory/body_markings/head/optics/altoptic2
-	icon = 'icons/mob/sprite_accessories/ipc/ei_optic_alt.dmi'
+	icon = 'modular_ss220/robolimbs/icons/ei_optic.dmi'
 	name = "EI Optics Alt"
-	icon_state = "altoptics1"
+	icon_state = "ei_alt1"
 	models_allowed = list("Etamin Industry King Series")
 
 /datum/sprite_accessory/body_markings/head/optics/altoptic3
-	icon = 'icons/mob/sprite_accessories/ipc/ei_optic_alt2.dmi'
+	icon = 'modular_ss220/robolimbs/icons/ei_optic.dmi'
 	name = "EI Optics Alt 2"
-	icon_state = "altoptics2"
-	models_allowed = list("Etamin Industry King Series") 
+	icon_state = "ei_alt2"
+	models_allowed = list("Etamin Industry King Series")
