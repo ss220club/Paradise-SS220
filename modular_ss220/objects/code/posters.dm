@@ -80,3 +80,9 @@
 	desc = "Рекламный постер с новой линейкой продукции “Большой Укус” от ресторана быстрого питания МакВульпикс."
 	icon = 'modular_ss220/objects/icons/posters.dmi'
 	icon_state = "legit6"
+
+/obj/item/poster/mac_vulpix
+	name = "Постер MacVulpix"
+	desc = "Рекламный постер с новой линейкой продукции “Большой Укус” от ресторана быстрого питания МакВульпикс."
+	icon_state = "rolled_poster_legit"
+	poster_type = /obj/structure/sign/poster/official/mac_vulpix

@@ -24,6 +24,5 @@
 		/obj/item/reagent_containers/drinks/bottle/vulpix_milk/choco = 50,
 	)
 	contraband = list(
-		/obj/item/cartridge/clown = 1,
-		/obj/item/cartridge/mime = 1
+		/obj/item/poster/mac_vulpix = 3,
 	)
