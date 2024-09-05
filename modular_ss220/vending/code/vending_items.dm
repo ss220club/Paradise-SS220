@@ -8,7 +8,7 @@
 	icon_state = "refill_medical"
 
 /obj/item/vending_refill/vulpix
-	machine_name = "Mac Vulpix"
+	machine_name = "MacVulpix Deluxe Food"
 	icon = 'modular_ss220/vending/icons/vending_restock.dmi'
 	icon_state = "refill_vulpix"
 
