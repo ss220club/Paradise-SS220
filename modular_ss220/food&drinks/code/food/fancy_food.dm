@@ -4,6 +4,8 @@
 	var/desc_open
 	/// Is it ready to be eaten?
 	var/opened = FALSE
+	/// The sound that will be played when you open a food.
+	var/open_sound = 'modular_ss220/aesthetics_sounds/sound/food_open.ogg'
 	COOLDOWN_DECLARE(try_open)
 
 /obj/item/food/fancy/update_icon_state()
@@ -21,7 +23,7 @@
 		return
 
 	COOLDOWN_START(src, try_open, 2 SECONDS) // Prevent sound spamming
-	playsound(loc, 'modular_ss220/aesthetics_sounds/sound/food_open.ogg', 50)
+	playsound(loc, open_sound, 50)
 	if(!do_after(user, 1 SECONDS, target = src, allow_moving = TRUE, must_be_held = TRUE))
 		return
 
@@ -103,6 +105,7 @@
 	desc = "Особый бургер из линейки “Большой Укус” с трюфельным и ягодным соусом, только для ценителей необычного!"
 	icon = 'modular_ss220/food&drinks/icons/food.dmi'
 	icon_state = "MV-burgerbox"
+	open_sound = 'sound/machines/cardboard_box.ogg'
 	var/obj/item/food/burger
 
 /obj/item/food/fancy/macvulpburger/New()
