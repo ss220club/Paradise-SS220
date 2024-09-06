@@ -43,7 +43,7 @@
 /obj/item/food/fancy/doshik
 	name = "\improper дошик"
 	desc = "Очень известная лапша быстрого приготовления. При открытии заваривается моментально. Вау."
-	icon = 'modular_ss220/food&drinks/icons/food.dmi'
+	icon = 'modular_ss220/food_and_drinks/icons/food.dmi'
 	icon_state = "doshik"
 	trash = /obj/item/trash/doshik
 	bitesize = 3
@@ -54,7 +54,7 @@
 /obj/item/food/fancy/doshik_spicy
 	name = "\improper острый дошик"
 	desc = "Очень известная лапша быстрого приготовления. При открытии заваривается моментально. Вау. Кажется, что в ней есть острые специи."
-	icon = 'modular_ss220/food&drinks/icons/food.dmi'
+	icon = 'modular_ss220/food_and_drinks/icons/food.dmi'
 	icon_state = "doshikspicy"
 	trash = /obj/item/trash/doshik
 	bitesize = 3
@@ -64,7 +64,7 @@
 
 /obj/item/trash/doshik
 	name = "\improper упаковка из под дошика"
-	icon = 'modular_ss220/food&drinks/icons/trash.dmi'
+	icon = 'modular_ss220/food_and_drinks/icons/trash.dmi'
 	icon_state = "doshik-empty"
 	desc = "Всё ещё вкусно пахнет."
 
@@ -73,7 +73,7 @@
 	name = "\improper MacVulpix Original Taste"
 	desc = "Классический вкус вульпиксов, проверенный временем, в удобной порционной упаковке."
 	desc_open = "Пластиковый контейнер доверху наполненный вкуснейшими и ароматными мясными шариками с кетчупом."
-	icon = 'modular_ss220/food&drinks/icons/food.dmi'
+	icon = 'modular_ss220/food_and_drinks/icons/food.dmi'
 	icon_state = "MV-vulpixs"
 	trash = /obj/item/trash/macvulpix
 	bitesize = 2
@@ -85,7 +85,7 @@
 	name = "\improper MacVulpix Triple-Cheese"
 	desc = "Классические вульпиксы - теперь с тройной сырной добавкой!"
 	desc_open = "Пластиковый контейнер доверху наполненный вкуснейшими и ароматными мясными шариками с сырным соусом."
-	icon = 'modular_ss220/food&drinks/icons/food.dmi'
+	icon = 'modular_ss220/food_and_drinks/icons/food.dmi'
 	icon_state = "MV-vulpixs-cheese"
 	trash = /obj/item/trash/macvulpix
 	bitesize = 2
@@ -95,7 +95,7 @@
 
 /obj/item/trash/macvulpix
 	name = "\improper упаковка из под MacVulpix"
-	icon = 'modular_ss220/food&drinks/icons/trash.dmi'
+	icon = 'modular_ss220/food_and_drinks/icons/trash.dmi'
 	icon_state = "MV-vulpixs"
 	desc = "Всё ещё вкусно пахнет."
 
@@ -103,7 +103,7 @@
 /obj/item/food/fancy/macvulpburger
 	name = "\improper MacVulpBurger Gourmet"
 	desc = "Особый бургер из линейки “Большой Укус” с трюфельным и ягодным соусом, только для ценителей необычного!"
-	icon = 'modular_ss220/food&drinks/icons/food.dmi'
+	icon = 'modular_ss220/food_and_drinks/icons/food.dmi'
 	icon_state = "MV-burgerbox"
 	open_sound = 'sound/machines/cardboard_box.ogg'
 	var/obj/item/food/burger
@@ -137,7 +137,7 @@
 /obj/item/food/burger/macvulp
 	name = "\improper MacVulpBurger Gourmet"
 	desc = "Огромный, аппетитный и сочащийся соками бургер с двойной говяжей котлетой, трюфельным и ягодным соусом."
-	icon = 'modular_ss220/food&drinks/icons/food.dmi'
+	icon = 'modular_ss220/food_and_drinks/icons/food.dmi'
 	icon_state = "MV_burger"
 	bitesize = 2
 	list_reagents = list("nutriment" = 6, "protein" = 6, "vitamin" = 1)
