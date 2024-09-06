@@ -16,18 +16,20 @@
 		"You can't go wrong with Mr. Chang's authentic Chinese food!"
 	)
 	products = list(
+		/obj/item/food/fancy/macvulpix_original = 3,
+		/obj/item/food/fancy/macvulpix_cheese = 3,
+		/obj/item/pizzabox/vulpix = 5,
 		/obj/item/reagent_containers/drinks/bottle/vulpix_milk/berry = 3,
 		/obj/item/reagent_containers/drinks/bottle/vulpix_milk/banana = 3,
 		/obj/item/reagent_containers/drinks/bottle/vulpix_milk/choco = 3,
-		/obj/item/food/fancy/macvulpix_original = 3,
-		/obj/item/food/fancy/macvulpix_cheese = 3,
 	)
 	prices = list(
+		/obj/item/food/fancy/macvulpix_original = 100,
+		/obj/item/food/fancy/macvulpix_cheese = 100,
+		/obj/item/pizzabox/vulpix = 150,
 		/obj/item/reagent_containers/drinks/bottle/vulpix_milk/berry = 50,
 		/obj/item/reagent_containers/drinks/bottle/vulpix_milk/banana = 50,
 		/obj/item/reagent_containers/drinks/bottle/vulpix_milk/choco = 50,
-		/obj/item/food/fancy/macvulpix_original = 100,
-		/obj/item/food/fancy/macvulpix_cheese = 100,
 	)
 	contraband = list(
 		/obj/item/poster/mac_vulpix = 3,

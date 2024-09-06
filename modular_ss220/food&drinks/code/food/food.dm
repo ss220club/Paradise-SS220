@@ -1037,3 +1037,46 @@
 		/obj/item/food/grown/berries,
 	)
 	result = /obj/item/food/plov
+
+// MARK: Vulpix Pizza
+/obj/item/pizzabox/vulpix
+	name = "MacVulPizza Extra Pepperoni"
+	icon = 'modular_ss220/food&drinks/icons/containers.dmi'
+	icon_state = "MV-pizzabox1"
+
+/obj/item/pizzabox/vulpix/update_icon_state()
+	if(open)
+		icon_state = "MV-pizzabox_open"
+		return
+
+	icon_state = "MV-pizzabox[boxes.len + 1]"
+
+// Спасибо блять старому коду за хардкод путь до иконки...
+/obj/item/pizzabox/vulpix/update_overlays()
+	. = ..()
+	if(open && pizza)
+		var/image/pizzaimg = image("icon" = 'modular_ss220/food&drinks/icons/food.dmi', icon_state = pizza.icon_state)
+		. += pizzaimg
+		return
+
+/obj/item/pizzabox/vulpix/Initialize(mapload)
+	pizza = new /obj/item/food/sliceable/pizza/vulpix(src)
+	. = ..()
+
+/obj/item/food/sliceable/pizza/vulpix
+	name = "MacVulPizza Extra Pepperoni"
+	desc = "Хорошо выглядящая пицца с тройной порцией пепперони, большим количеством моцареллы и ярким томатным соусом."
+	icon = 'modular_ss220/food&drinks/icons/food.dmi'
+	icon_state = "MV_pizza_pep"
+	slice_path = /obj/item/food/vulpix_pizza_slice
+	list_reagents = list("protein" = 30, "tomatojuice" = 6, "vitamin" = 8)
+	filling_color = "#ffe45d"
+	tastes = list("сыр" = 3, "пепперони" = 3, "жир" = 1)
+
+/obj/item/food/vulpix_pizza_slice
+	name = "кусочек пиццы 'MacVulPizza Extra Pepperoni'"
+	desc = "Хорошо выглядящий кусочек пиццы с тройной порцией пепперони, большим количеством моцареллы и ярким томатным соусом."
+	icon = 'modular_ss220/food&drinks/icons/food.dmi'
+	icon_state = "MV_pizza_pep_slice"
+	filling_color = "#ffe45d"
+	tastes = list("сыр" = 3, "пепперони" = 3, "жир" = 1)
