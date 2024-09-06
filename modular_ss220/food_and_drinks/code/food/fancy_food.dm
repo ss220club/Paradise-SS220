@@ -136,7 +136,7 @@
 
 /obj/item/food/burger/macvulp
 	name = "\improper MacVulpBurger Gourmet"
-	desc = "Огромный аппетитный и сочащийся соками бургер с двойной говяжьей котлетой и трюфельно-ягодным соусом.""
+	desc = "Огромный аппетитный и сочащийся соками бургер с двойной говяжьей котлетой и трюфельно-ягодным соусом."
 	icon = 'modular_ss220/food_and_drinks/icons/food.dmi'
 	icon_state = "MV_burger"
 	bitesize = 2
