@@ -1084,6 +1084,7 @@
 /obj/item/food/vulpix_chips
 	name = "\improper MacNachos Diablo"
 	desc = "Лис на упаковке словно говорит вам “Это, черт возьми, остро!”"
+	icon = 'modular_ss220/food&drinks/icons/food.dmi'
 	icon_state = "MV-chips"
 	bitesize = 1
 	trash = /obj/item/trash/vulpix_chips
@@ -1091,7 +1092,7 @@
 	junkiness = 20
 	antable = FALSE
 	list_reagents = list("nutriment" = 1, "sodiumchloride" = 1, "capsaicin" = 3)
-	tastes = list("кукуруза" = 1, "острота" = 3)
+	tastes = list("кукуруза" = 1)
 
 /obj/item/trash/vulpix_chips
 	name = "MacNachos Diablo"
