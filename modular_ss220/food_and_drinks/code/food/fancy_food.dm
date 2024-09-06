@@ -79,7 +79,7 @@
 	bitesize = 2
 	junkiness = 20
 	list_reagents = list("nutriment" = 4, "protein" = 4)
-	tastes = list("собачатина" = 2, "кетчуп" = 2)
+	tastes = list("напоминающего курицу" = 2, "кетчуп" = 2)
 
 /obj/item/food/fancy/macvulpix_cheese
 	name = "\improper MacVulpix Triple-Cheese"
@@ -91,7 +91,7 @@
 	bitesize = 2
 	junkiness = 20
 	list_reagents = list("nutriment" = 4, "protein" = 4)
-	tastes = list("собачатина" = 2, "сыр" = 6)
+	tastes = list("напоминающего курицу" = 2, "сыр" = 6)
 
 /obj/item/trash/macvulpix
 	name = "\improper упаковка из под MacVulpix"
