@@ -96,3 +96,42 @@
 	icon = 'modular_ss220/food&drinks/icons/trash.dmi'
 	icon_state = "MV-vulpixs"
 	desc = "Всё ещё вкусно пахнет."
+
+// MARK: MacVulpBurger
+/obj/item/food/fancy/macvulpburger
+	name = "\improper MacVulpBurger Gourmet"
+	desc = "Особый бургер из линейки “Большой Укус” с трюфельным и ягодным соусом, только для ценителей необычного!"
+	icon = 'modular_ss220/food&drinks/icons/food.dmi'
+	icon_state = "MV-burgerbox"
+	var/obj/item/food/burger
+
+/obj/item/food/fancy/macvulpburger/New()
+	. = ..()
+	burger = new /obj/item/food/burger/macvulp(src)
+
+// Just template, we can't eat it
+/obj/item/food/fancy/macvulpburger/attack(mob/M, mob/user, def_zone)
+	if(opened)
+		return FALSE
+	..()
+
+// But we can eject it from the box and eat it
+/obj/item/food/fancy/macvulpburger/attack_hand(mob/user)
+	if(opened)
+		if(!user.get_active_hand() && Adjacent(user))
+			user.put_in_hands(burger)
+		else
+			burger.forceMove(get_turf(user))
+
+		qdel(src)
+		return
+	..()
+
+/obj/item/food/burger/macvulp
+	name = "\improper MacVulpBurger Gourmet"
+	desc = "Огромный, аппетитный и сочащийся соками бургер с двойной говяжей котлетой, трюфельным и ягодным соусом."
+	icon = 'modular_ss220/food&drinks/icons/food.dmi'
+	icon_state = "MV_burger"
+	bitesize = 2
+	list_reagents = list("nutriment" = 6, "protein" = 6, "vitamin" = 1)
+	tastes = list("булка" = 1, "говядина" = 4, "трюфельный соус" = 1, "ягодный соус" = 1)

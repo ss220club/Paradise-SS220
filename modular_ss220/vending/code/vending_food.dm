@@ -9,15 +9,18 @@
 	icon_lightmask = "McVulpix"
 	category = VENDOR_TYPE_FOOD
 	refill_canister = /obj/item/vending_refill/vulpix
+	vend_reply = "Спасибо что выбрали МакВульпикс!"
 	slogan_list = list(
-		"Taste 5000 years of culture!",
-		"Mr. Chang, approved for safe consumption in over 10 sectors!",
-		"Chinese food is great for a date night, or a lonely night!",
-		"You can't go wrong with Mr. Chang's authentic Chinese food!"
+		"Не любите вульп? Вы просто не умеете их готовить!",
+		"Если вам понравились вульпиксы - ингредиенты погибли не зря!",
+		"МакВульпикс! То что я люблю!",
+		"МакВульпикс - выбор настоящего гурмана, одобрено девятью из десяти диетологами!",
+		"Если чревоугодие — это грех, то добро пожаловать в ад!"
 	)
 	products = list(
 		/obj/item/food/fancy/macvulpix_original = 3,
 		/obj/item/food/fancy/macvulpix_cheese = 3,
+		/obj/item/food/burger/macvulp = 3,
 		/obj/item/pizzabox/vulpix = 5,
 		/obj/item/food/vulpix_chips = 5,
 		/obj/item/reagent_containers/drinks/bottle/vulpix_milk/berry = 3,
@@ -27,6 +30,7 @@
 	prices = list(
 		/obj/item/food/fancy/macvulpix_original = 100,
 		/obj/item/food/fancy/macvulpix_cheese = 100,
+		/obj/item/food/burger/macvulp = 125,
 		/obj/item/pizzabox/vulpix = 150,
 		/obj/item/food/vulpix_chips = 60,
 		/obj/item/reagent_containers/drinks/bottle/vulpix_milk/berry = 50,
