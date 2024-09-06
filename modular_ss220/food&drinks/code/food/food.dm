@@ -1080,3 +1080,22 @@
 	icon_state = "MV_pizza_pep_slice"
 	filling_color = "#ffe45d"
 	tastes = list("сыр" = 3, "пепперони" = 3, "жир" = 1)
+
+/obj/item/food/vulpix_chips
+	name = "\improper MacNachos Diablo"
+	desc = "Лис на упаковке словно говорит вам “Это, черт возьми, остро!”"
+	icon_state = "MV-chips"
+	bitesize = 1
+	trash = /obj/item/trash/vulpix_chips
+	filling_color = "#e8791e"
+	junkiness = 20
+	antable = FALSE
+	list_reagents = list("nutriment" = 1, "sodiumchloride" = 1, "capsaicin" = 3)
+	tastes = list("кукуруза" = 1, "острота" = 3)
+
+/obj/item/trash/vulpix_chips
+	name = "MacNachos Diablo"
+	desc = "Когда-то это были вкусные чипсы."
+	icon = 'modular_ss220/food&drinks/icons/trash.dmi'
+	icon_state = "MV-chips"
+	item_state = "chips"
