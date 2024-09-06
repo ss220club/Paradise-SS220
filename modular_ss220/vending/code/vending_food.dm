@@ -18,14 +18,14 @@
 		"Если чревоугодие — это грех, то добро пожаловать в ад!"
 	)
 	products = list(
-		/obj/item/food/fancy/macvulpix_original = 3,
-		/obj/item/food/fancy/macvulpix_cheese = 3,
-		/obj/item/food/fancy/macvulpburger = 3,
-		/obj/item/pizzabox/vulpix = 5,
+		/obj/item/food/fancy/macvulpix_original = 5,
+		/obj/item/food/fancy/macvulpix_cheese = 5,
+		/obj/item/food/fancy/macvulpburger = 5,
+		/obj/item/pizzabox/vulpix = 3,
 		/obj/item/food/vulpix_chips = 5,
-		/obj/item/reagent_containers/drinks/bottle/vulpix_milk/berry = 3,
-		/obj/item/reagent_containers/drinks/bottle/vulpix_milk/banana = 3,
-		/obj/item/reagent_containers/drinks/bottle/vulpix_milk/choco = 3,
+		/obj/item/reagent_containers/drinks/bottle/vulpix_milk/berry = 5,
+		/obj/item/reagent_containers/drinks/bottle/vulpix_milk/banana = 5,
+		/obj/item/reagent_containers/drinks/bottle/vulpix_milk/choco = 5,
 		/obj/item/reagent_containers/drinks/cans/vulpbeer = 5,
 	)
 	prices = list(
@@ -40,5 +40,6 @@
 		/obj/item/reagent_containers/drinks/cans/vulpbeer = 30,
 	)
 	contraband = list(
+		/obj/item/toy/plushie/macvulpix = 3,
 		/obj/item/poster/mac_vulpix = 3,
 	)

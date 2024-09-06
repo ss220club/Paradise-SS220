@@ -119,16 +119,20 @@
 	..()
 
 // But we can eject it from the box and eat it
-/obj/item/food/fancy/macvulpburger/attack_hand(mob/user)
-	if(opened)
-		if(!user.get_active_hand() && Adjacent(user))
-			user.put_in_hands(burger)
-		else
-			burger.forceMove(get_turf(user))
-
-		qdel(src)
+/obj/item/food/fancy/macvulpburger/AltClick(mob/user)
+	if(user.stat || HAS_TRAIT(user, TRAIT_HANDS_BLOCKED) || user.restrained())
+		to_chat(user, span_warning("У вас нет возможности взять [burger.name]!"))
 		return
-	..()
+
+	if(!opened)
+		return
+
+	if(!user.get_active_hand() && Adjacent(user))
+		user.put_in_hands(burger)
+	else
+		burger.forceMove(get_turf(user))
+
+	qdel(src)
 
 /obj/item/food/burger/macvulp
 	name = "\improper MacVulpBurger Gourmet"
