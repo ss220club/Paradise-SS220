@@ -12,6 +12,11 @@
 	/// Equiped glasses on plushie
 	var/obj/item/clothing/glasses/glasses
 
+/obj/item/toy/plushie/macvulpix/Destroy()
+	. = ..()
+	QDEL_NULL(glasses)
+	return ..()
+
 /obj/item/toy/plushie/macvulpix/update_icon_state()
 	if(glasses)
 		icon_state = "[initial(icon_state)]_glasses"
@@ -19,6 +24,11 @@
 	else
 		icon_state = "[initial(icon_state)]"
 		item_state = "[initial(item_state)]"
+
+	if(ismob(loc))
+		var/mob/M = loc
+		M.update_inv_r_hand()
+		M.update_inv_l_hand()
 
 /obj/item/toy/plushie/macvulpix/attackby(obj/item/clothing/glasses/sunglasses, mob/living/user, params)
 	. = ..()
@@ -31,11 +41,11 @@
 		return TRUE
 
 /obj/item/toy/plushie/macvulpix/AltClick(mob/user)
-	if(user.stat || HAS_TRAIT(user, TRAIT_HANDS_BLOCKED) || user.restrained())
-		to_chat(user, span_warning("У вас нет возможности снять очки с [src]!"))
+	if(!glasses)
 		return
 
-	if(!glasses)
+	if(user.stat || HAS_TRAIT(user, TRAIT_HANDS_BLOCKED) || user.restrained())
+		to_chat(user, span_warning("У вас нет возможности снять очки с [src]!"))
 		return
 
 	if(!user.get_active_hand() && Adjacent(user))
