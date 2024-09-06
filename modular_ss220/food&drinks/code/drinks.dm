@@ -771,3 +771,24 @@
 	result = "vulpix_milk_choco"
 	required_reagents = list("milk" = 4, "chocolate" = 1)
 	result_amount = 5
+
+// MARK: Vulpix Beer
+/obj/item/reagent_containers/drinks/cans/vulpbeer
+	name = "MacVulpBeer Citrus"
+	desc = "Баночка пробуждающего аппетит и дешевого цитрусового пива от МакВульпикс."
+	icon_state = "vulpbeer_can"
+	icon = 'modular_ss220/food&drinks/icons/drinks.dmi'
+	list_reagents = list("vulpbeer" = 50)
+
+/datum/reagent/consumable/ethanol/vulpbeer
+	name = "MacVulpBeer Citrus"
+	id = "vulpbeer"
+	description = "Обычное пиво с добавлением цитрусовых."
+	color = "#b86a21"
+	nutriment_factor = 1 * REAGENTS_METABOLISM
+	alcohol_perc = 0.15
+	drink_icon = "vulpbeer"
+	drinking_glass_icon = 'modular_ss220/food&drinks/icons/drinks.dmi'
+	drink_name = "Citrus Beer"
+	drink_desc = "Обычное пиво оранжевого оттенка, пахнет апельсинами."
+	taste_description = "кисленькое пиво"

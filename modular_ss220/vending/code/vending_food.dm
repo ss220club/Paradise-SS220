@@ -26,6 +26,7 @@
 		/obj/item/reagent_containers/drinks/bottle/vulpix_milk/berry = 3,
 		/obj/item/reagent_containers/drinks/bottle/vulpix_milk/banana = 3,
 		/obj/item/reagent_containers/drinks/bottle/vulpix_milk/choco = 3,
+		/obj/item/reagent_containers/drinks/cans/vulpbeer = 5,
 	)
 	prices = list(
 		/obj/item/food/fancy/macvulpix_original = 100,
@@ -36,6 +37,7 @@
 		/obj/item/reagent_containers/drinks/bottle/vulpix_milk/berry = 50,
 		/obj/item/reagent_containers/drinks/bottle/vulpix_milk/banana = 50,
 		/obj/item/reagent_containers/drinks/bottle/vulpix_milk/choco = 50,
+		/obj/item/reagent_containers/drinks/cans/vulpbeer = 30,
 	)
 	contraband = list(
 		/obj/item/poster/mac_vulpix = 3,
