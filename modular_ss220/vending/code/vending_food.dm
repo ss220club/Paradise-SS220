@@ -3,13 +3,13 @@
 
 /obj/machinery/economy/vending/vulpix
 	name = "\improper MacVulpix Deluxe Food"
-	desc = "Торговый автомат сети ресторанов быстрого питания МакВульпикс, с забавным лисом на логотипе."
+	desc = "Торговый автомат сети ресторанов быстрого питания МакВульпикс с забавным лисом на логотипе."
 	icon = 'modular_ss220/vending/icons/vending.dmi'
 	icon_state = "McVulpix"
 	icon_lightmask = "McVulpix"
 	category = VENDOR_TYPE_FOOD
 	refill_canister = /obj/item/vending_refill/vulpix
-	vend_reply = "Спасибо что выбрали МакВульпикс!"
+	vend_reply = "Спасибо, что выбрали МакВульпикс!"
 	slogan_list = list(
 		"Не любите вульп? Вы просто не умеете их готовить!",
 		"Если вам понравились вульпиксы - ингредиенты погибли не зря!",

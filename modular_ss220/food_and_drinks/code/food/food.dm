@@ -1060,8 +1060,8 @@
 		return
 
 /obj/item/pizzabox/vulpix/Initialize(mapload)
-	pizza = new /obj/item/food/sliceable/pizza/vulpix(src)
 	. = ..()
+	pizza = new /obj/item/food/sliceable/pizza/vulpix(src)
 
 /obj/item/food/sliceable/pizza/vulpix
 	name = "MacVulPizza Extra Pepperoni"

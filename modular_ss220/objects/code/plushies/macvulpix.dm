@@ -1,6 +1,6 @@
 /obj/item/toy/plushie/macvulpix
 	name = "Business Red Fox"
-	desc = "Мягкая, и приятная на ощупь, игрушка важного рыжего лиса в пальто."
+	desc = "Мягкая и приятная на ощупь игрушка важного рыжего лиса в пальто."
 	icon = 'modular_ss220/objects/icons/plushies.dmi'
 	icon_state = "macvulpix"
 	item_state = "macvulpix"
@@ -36,7 +36,7 @@
 		user.drop_item()
 		sunglasses.forceMove(src)
 		glasses = sunglasses
-		desc = "Мягкая, и приятная на ощупь, игрушка важного рыжего лиса в пальто и солнечных очках! Oh yeah!"
+		desc = "Мягкая и приятная на ощупь игрушка важного рыжего лиса в пальто и солнечных очках! Oh yeah!"
 		update_icon(UPDATE_ICON_STATE)
 		return TRUE
 

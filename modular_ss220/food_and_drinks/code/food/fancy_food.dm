@@ -37,7 +37,7 @@
 	if(!opened)
 		to_chat(user, span_warning("[src] сначала нужно открыть!"))
 		return FALSE
-	. = ..()
+	return ..()
 
 // MARK: Doshik
 /obj/item/food/fancy/doshik
@@ -72,7 +72,7 @@
 /obj/item/food/fancy/macvulpix_original
 	name = "\improper MacVulpix Original Taste"
 	desc = "Классический вкус вульпиксов, проверенный временем, в удобной порционной упаковке."
-	desc_open = "Пластиковый контейнер доверху наполненный вкуснейшими и ароматными мясными шариками с кетчупом."
+	desc_open = "Пластиковый контейнер, доверху наполненный вкуснейшими и ароматными мясными шариками с кетчупом."
 	icon = 'modular_ss220/food_and_drinks/icons/food.dmi'
 	icon_state = "MV-vulpixs"
 	trash = /obj/item/trash/macvulpix
@@ -84,7 +84,7 @@
 /obj/item/food/fancy/macvulpix_cheese
 	name = "\improper MacVulpix Triple-Cheese"
 	desc = "Классические вульпиксы - теперь с тройной сырной добавкой!"
-	desc_open = "Пластиковый контейнер доверху наполненный вкуснейшими и ароматными мясными шариками с сырным соусом."
+	desc_open = "Пластиковый контейнер, доверху наполненный вкуснейшими и ароматными мясными шариками с сырным соусом."
 	icon = 'modular_ss220/food_and_drinks/icons/food.dmi'
 	icon_state = "MV-vulpixs-cheese"
 	trash = /obj/item/trash/macvulpix
@@ -102,7 +102,7 @@
 // MARK: MacVulpBurger
 /obj/item/food/fancy/macvulpburger
 	name = "\improper MacVulpBurger Gourmet"
-	desc = "Особый бургер из линейки “Большой Укус” с трюфельным и ягодным соусом, только для ценителей необычного!"
+	desc = "Особый бургер из линейки “Большой Укус” с трюфельно-ягодным соусом, только для ценителей необычного!"
 	icon = 'modular_ss220/food_and_drinks/icons/food.dmi'
 	icon_state = "MV-burgerbox"
 	open_sound = 'sound/machines/cardboard_box.ogg'
@@ -116,7 +116,7 @@
 /obj/item/food/fancy/macvulpburger/attack(mob/M, mob/user, def_zone)
 	if(opened)
 		return FALSE
-	..()
+	return ..()
 
 // But we can eject it from the box and eat it
 /obj/item/food/fancy/macvulpburger/AltClick(mob/user)
@@ -136,7 +136,7 @@
 
 /obj/item/food/burger/macvulp
 	name = "\improper MacVulpBurger Gourmet"
-	desc = "Огромный, аппетитный и сочащийся соками бургер с двойной говяжей котлетой, трюфельным и ягодным соусом."
+	desc = "Огромный аппетитный и сочащийся соками бургер с двойной говяжьей котлетой и трюфельно-ягодным соусом.""
 	icon = 'modular_ss220/food_and_drinks/icons/food.dmi'
 	icon_state = "MV_burger"
 	bitesize = 2
