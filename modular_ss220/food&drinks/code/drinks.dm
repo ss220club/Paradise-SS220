@@ -744,7 +744,7 @@
 	name = "Red Fox's Banana Milk"
 	id = "vulpix_milk_banana"
 	result = "vulpix_milk_banana"
-	required_reagents = list("milk" = 4, "bananajuice" = 1)
+	required_reagents = list("milk" = 4, "banana" = 1)
 	result_amount = 5
 
 // Chocolate Milk
