@@ -1,1 +1,2 @@
 #define MODPACK_CHAT_BADGES
+#define MODPACK_MAIN_ONLY
