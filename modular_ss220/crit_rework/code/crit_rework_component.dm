@@ -23,7 +23,6 @@
 	ADD_TRAIT(parent, TRAIT_HANDS_BLOCKED, OLD_CRIT_TRAIT)
 
 /datum/component/softcrit/proc/softcrit_removed()
-	SIGNAL_HANDLER
 	REMOVE_TRAIT(parent, TRAIT_FLOORED, OLD_CRIT_TRAIT)
 	REMOVE_TRAIT(parent, TRAIT_HANDS_BLOCKED, OLD_CRIT_TRAIT)
 	qdel(src)
