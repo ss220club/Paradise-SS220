@@ -36,6 +36,10 @@
 	open(user)
 	update_icon(UPDATE_ICON_STATE)
 
+/**
+ * Try to open food box
+ * Returns TRUE if it can be opened
+ */
 /obj/item/food/fancy/proc/try_open(mob/user)
 	if(user.stat || HAS_TRAIT(user, TRAIT_HANDS_BLOCKED) || user.restrained())
 		to_chat(user, span_warning("У вас нет возможности открыть [src]!"))
@@ -46,6 +50,9 @@
 
 	return TRUE
 
+/**
+ * Opens food box
+ */
 /obj/item/food/fancy/proc/open(mob/user)
 	COOLDOWN_START(src, try_open, 2 SECONDS) // Prevent sound spamming
 	playsound(loc, open_sound, 50)
@@ -56,7 +63,10 @@
 	if(desc_open)
 		desc = desc_open
 
-/// Action on second alt-click
+/**
+ * Second action on Alt+Click
+ * Called only when food is opened
+ */
 /obj/item/food/fancy/proc/opened_act(mob/user)
 	return FALSE
 
