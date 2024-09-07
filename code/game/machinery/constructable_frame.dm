@@ -300,7 +300,7 @@ to destroy them and players will be able to make replacements.
 	set_type(choice)
 
 /obj/item/circuitboard/vendor/proc/set_type(type)
-	var/static/list/buildable_vendors = station_vendors + unique_vendors
+	var/static/list/buildable_vendors = station_vendors + unique_vendors + ss220_vendors // SS220 ADDITION - ss220_vendors
 	var/obj/machinery/economy/vending/typepath = buildable_vendors[type]
 	build_path = typepath
 	board_name = "[type] Vendor"
@@ -549,6 +549,13 @@ to destroy them and players will be able to make replacements.
 							/obj/item/stock_parts/matter_bin = 1,
 							/obj/item/stock_parts/manipulator = 1)
 
+/obj/item/circuitboard/washing_machine
+	board_name = "Washing Machine"
+	icon_state = "generic"
+	build_path = /obj/machinery/washing_machine
+	board_type = "machine"
+	origin_tech = "programming=1"
+
 /obj/item/circuitboard/smartfridge
 	board_name = "Smartfridge"
 	build_path = /obj/machinery/smartfridge
@@ -713,6 +720,10 @@ to destroy them and players will be able to make replacements.
 	name = "Circuit board (Syndi Autolathe)"
 	icon_state = "engineering"
 	build_path = /obj/machinery/autolathe/syndicate
+
+/obj/item/circuitboard/autolathe/trapped
+	board_name = "Modified Autolathe"
+	build_path = /obj/machinery/autolathe/trapped
 
 /obj/item/circuitboard/protolathe
 	board_name = "Protolathe"
