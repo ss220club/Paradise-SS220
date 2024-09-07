@@ -14,14 +14,39 @@
 
 	icon_state = "[initial(icon_state)]_open"
 
-/obj/item/food/fancy/attack_self(mob/user)
-	if(opened)
+/obj/item/food/fancy/attack(mob/M, mob/user, def_zone)
+	if(!opened)
+		to_chat(user, span_warning("[src] сначала нужно открыть!"))
+		return FALSE
+	return ..()
+
+/obj/item/food/fancy/examine(mob/user)
+	. = ..()
+	if(!opened)
+		. += span_notice("Нажмите <b>Alt-Click</b> чтобы открыть.")
+
+/obj/item/food/fancy/AltClick(mob/user)
+	if(!try_open(user))
+		return
+
+	if(opened && !opened_act(user))
 		to_chat(user, span_warning("[src] уже открыт!"))
 		return
 
-	if(!COOLDOWN_FINISHED(src, try_open))
-		return
+	open(user)
+	update_icon(UPDATE_ICON_STATE)
 
+/obj/item/food/fancy/proc/try_open(mob/user)
+	if(user.stat || HAS_TRAIT(user, TRAIT_HANDS_BLOCKED) || user.restrained())
+		to_chat(user, span_warning("У вас нет возможности открыть [src]!"))
+		return FALSE
+
+	if(!COOLDOWN_FINISHED(src, try_open))
+		return FALSE
+
+	return TRUE
+
+/obj/item/food/fancy/proc/open(mob/user)
 	COOLDOWN_START(src, try_open, 2 SECONDS) // Prevent sound spamming
 	playsound(loc, open_sound, 50)
 	if(!do_after(user, 1 SECONDS, target = src, allow_moving = TRUE, must_be_held = TRUE))
@@ -31,13 +56,9 @@
 	if(desc_open)
 		desc = desc_open
 
-	update_icon(UPDATE_ICON_STATE)
-
-/obj/item/food/fancy/attack(mob/M, mob/user, def_zone)
-	if(!opened)
-		to_chat(user, span_warning("[src] сначала нужно открыть!"))
-		return FALSE
-	return ..()
+/// Action on second alt-click
+/obj/item/food/fancy/proc/opened_act(mob/user)
+	return FALSE
 
 // MARK: Doshik
 /obj/item/food/fancy/doshik
@@ -118,21 +139,21 @@
 		return FALSE
 	return ..()
 
+/obj/item/food/fancy/macvulpburger/examine(mob/user)
+	. = ..()
+	if(opened)
+		. += span_notice("Нажмите <b>Alt-Click</b> чтобы достать бургер.")
+
 // But we can eject it from the box and eat it
-/obj/item/food/fancy/macvulpburger/AltClick(mob/user)
-	if(user.stat || HAS_TRAIT(user, TRAIT_HANDS_BLOCKED) || user.restrained())
-		to_chat(user, span_warning("У вас нет возможности взять [burger.name]!"))
-		return
-
-	if(!opened)
-		return
-
+/obj/item/food/fancy/macvulpburger/opened_act(mob/user)
+	user.drop_item()
 	if(!user.get_active_hand() && Adjacent(user))
 		user.put_in_hands(burger)
 	else
 		burger.forceMove(get_turf(user))
 
 	qdel(src)
+	return TRUE
 
 /obj/item/food/burger/macvulp
 	name = "\improper MacVulpBurger Gourmet"
