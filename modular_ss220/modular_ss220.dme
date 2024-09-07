@@ -84,25 +84,20 @@
 #include "redis220/_redis220.dme"
 #include "robolimbs/_robolimbs.dme"
 
-// --- MAIN ONLY --- //
-// #define MODPACK_MAIN_ONLY
-// Чтобы отключить модпаки НА прайме, нужно добавить строку выше в code/__DEFINES/_ss220.dm.
-// Изначально они включены. Сделано так, по двум причинам.
-// 1. Добавить новый дефайн на мейне на хосте куда проще, чем на прайме.
-// 2. Так модпаки прайма будут включены в тестах и линтере.
-#ifndef MODPACK_MAIN_ONLY
-#include "crit_rework/_crit_rework.dme"
-#endif
-
 // --- PRIME ONLY --- //
 // #define MODPACK_PRIME_ONLY
-// Чтобы отключить модпаки прайма, нужно добавить строку выше в code/__DEFINES/_ss220.dm.
-// Изначально они включены. Сделано так, по двум причинам.
-// 1. Добавить новый дефайн на мейне на хосте куда проще, чем на прайме.
-// 2. Так модпаки прайма будут включены в тестах и линтере.
-#ifndef MODPACK_PRIME_ONLY
+// Чтобы включить модпаки прайма, нужно добавить строку выше в code/__DEFINES/_ss220.dm.
+// Изначально они включены для тестов и линтера.
+#ifdef MODPACK_PRIME_ONLY
 #include "security_redalert_accesses/_security_redalert_accesses.dme"
 #include "prime_only/_prime.dme"
+#endif
+
+// --- MAIN ONLY --- //
+// #define MODPACK_MAIN_ONLY
+// Аналогично с блоком выше.
+#ifdef MODPACK_MAIN_ONLY
+#include "crit_rework/_crit_rework.dme"
 #endif
 
 // --- UNUSED MODS --- //
