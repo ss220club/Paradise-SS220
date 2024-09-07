@@ -896,6 +896,8 @@
 		update_flags |= M.adjustBrainLoss(-1, FALSE)
 	holder.remove_reagent("histamine", 15)
 	M.AdjustLoseBreath(-2 SECONDS, bound_lower = 6 SECONDS)
+	if(M.getOxyLoss() > 35)
+		update_flags |= M.adjustOxyLoss(-10*REAGENTS_EFFECT_MULTIPLIER, FALSE)
 	// SS220 EDIT START - Softcrit
 	if(M.health <= HEALTH_THRESHOLD_CRIT)
 		update_flags |= M.adjustToxLoss(-1*REAGENTS_EFFECT_MULTIPLIER, FALSE)
