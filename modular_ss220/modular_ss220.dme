@@ -89,18 +89,18 @@
 #include "robolimbs/_robolimbs.dme"
 
 // --- PRIME ONLY --- //
-// #define MODPACK_PRIME_ONLY
-// Чтобы включить модпаки прайма, нужно добавить строку выше в code/__DEFINES/_ss220.dm.
+// #define MODPACK_EXCLUDE_PRIME_ONLY
+// Чтобы отключить модпаки прайма, нужно добавить строку выше в code/__DEFINES/_ss220.dm.
 // Изначально они включены для тестов и линтера.
-#ifdef MODPACK_PRIME_ONLY
+#ifndef MODPACK_EXCLUDE_PRIME_ONLY
 #include "security_redalert_accesses/_security_redalert_accesses.dme"
 #include "prime_only/_prime.dme"
 #endif
 
 // --- MAIN ONLY --- //
-// #define MODPACK_MAIN_ONLY
+// #define MODPACK_EXCLUDE_MAIN_ONLY
 // Аналогично с блоком выше.
-#ifdef MODPACK_MAIN_ONLY
+#ifndef MODPACK_EXCLUDE_MAIN_ONLY
 #include "crit_rework/_crit_rework.dme"
 #endif
 
