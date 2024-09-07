@@ -55,6 +55,9 @@
  */
 /obj/item/food/fancy/proc/open(mob/user)
 	COOLDOWN_START(src, try_open, 2 SECONDS) // Prevent sound spamming
+	if(src.loc != user)
+		return
+
 	playsound(loc, open_sound, 50)
 	if(!do_after(user, 1 SECONDS, target = src, allow_moving = TRUE, must_be_held = TRUE))
 		return
