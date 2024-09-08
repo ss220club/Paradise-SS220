@@ -1818,6 +1818,10 @@
 	},
 /turf/simulated/floor/wood,
 /area/ghost_bar/outdoor/beach)
+"gw" = (
+/mob/living/simple_animal/butterfly,
+/turf/simulated/floor/grass,
+/area/ghost_bar/outdoor)
 "gx" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/damageturf,
@@ -2377,6 +2381,15 @@
 	},
 /turf/simulated/floor/plating/abductor,
 /area/abductor_ship)
+"iu" = (
+/obj/structure/railing/cap/reversed{
+	dir = 8;
+	pixel_y = -4
+	},
+/turf/simulated/floor/indestructible/cobble/side{
+	dir = 8
+	},
+/area/ghost_bar/outdoor)
 "iv" = (
 /obj/structure/table/wood{
 	color = "#996633"
@@ -3802,8 +3815,13 @@
 	icon_state = "grimy"
 	},
 /area/holodeck/source_meetinghall)
+"nl" = (
+/obj/structure/flora/ausbushes/ywflowers,
+/obj/effect/turf_decal/siding/white/corner,
+/turf/simulated/floor/grass/no_creep,
+/area/ghost_bar/outdoor)
 "nm" = (
-/obj/machinery/jukebox/bar,
+/obj/machinery/jukebox,
 /turf/simulated/floor/wood/cherry,
 /area/ghost_bar/indoor)
 "nn" = (
@@ -4238,12 +4256,6 @@
 	name = "vox floor"
 	},
 /area/shuttle/vox)
-"oP" = (
-/obj/effect/turf_decal/siding/wideplating/corner{
-	dir = 1
-	},
-/turf/simulated/floor/grass/no_creep,
-/area/ghost_bar/outdoor)
 "oQ" = (
 /obj/machinery/computer/security/camera_bug{
 	dir = 8
@@ -4335,11 +4347,6 @@
 	icon_state = "grimy"
 	},
 /area/trader_station/sol)
-"pf" = (
-/obj/structure/flora/ausbushes/ppflowers,
-/mob/living/simple_animal/butterfly,
-/turf/simulated/floor/grass,
-/area/ghost_bar/outdoor)
 "pg" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/spawner/lootdrop/trash,
@@ -4718,15 +4725,6 @@
 /obj/structure/sink/directional/west,
 /turf/simulated/floor/wood/parquet/tile,
 /area/ghost_bar/indoor)
-"qF" = (
-/obj/structure/railing/cap/normal{
-	dir = 8;
-	pixel_y = 4
-	},
-/turf/simulated/floor/indestructible/cobble/side{
-	dir = 8
-	},
-/area/ghost_bar/outdoor)
 "qG" = (
 /turf/simulated/floor/plasteel{
 	dir = 1;
@@ -5562,6 +5560,11 @@
 	icon_state = "cafeteria"
 	},
 /area/ninja/holding)
+"tv" = (
+/obj/structure/flora/ausbushes/reedbush,
+/obj/effect/mapping_helpers/light,
+/turf/simulated/floor/grass,
+/area/ghost_bar/outdoor)
 "tx" = (
 /obj/machinery/computer/syndicate_depot/teleporter{
 	name = "Redspace Teleporter Console"
@@ -6631,8 +6634,10 @@
 /turf/simulated/floor/mineral/plastitanium,
 /area/shuttle/vox)
 "wV" = (
-/obj/effect/turf_decal/siding/white/corner,
-/turf/simulated/floor/plating/dirt,
+/obj/effect/turf_decal/siding/white/corner{
+	dir = 4
+	},
+/turf/simulated/floor/grass/no_creep,
 /area/ghost_bar/outdoor)
 "wW" = (
 /obj/machinery/economy/vending/hydrodrobe{
@@ -7922,10 +7927,6 @@
 /obj/effect/baseturf_helper/asteroid,
 /turf/simulated/wall/indestructible/rock,
 /area/ghost_bar/outdoor)
-"Bj" = (
-/mob/living/simple_animal/butterfly,
-/turf/simulated/floor/grass,
-/area/ghost_bar/outdoor)
 "Bk" = (
 /obj/structure/bookcase/random,
 /turf/simulated/floor/wood/oak,
@@ -8107,10 +8108,10 @@
 /turf/simulated/floor/grass,
 /area/ghost_bar/outdoor)
 "BP" = (
-/obj/effect/turf_decal/siding/white{
-	dir = 4
+/obj/effect/turf_decal/siding/wideplating{
+	dir = 1
 	},
-/turf/simulated/floor/plating/dirt,
+/turf/simulated/floor/grass/no_creep,
 /area/ghost_bar/outdoor)
 "BQ" = (
 /obj/structure/rack{
@@ -8432,14 +8433,11 @@
 	},
 /area/ghost_bar/indoor)
 "CP" = (
-/obj/item/cardboard_cutout{
-	icon = 'icons/mob/mob.dmi';
-	icon_state = "ghost2";
-	name = "призрак";
-	desc = "А, это просто картонка..."
+/obj/effect/turf_decal/siding/wideplating/corner{
+	dir = 1
 	},
-/turf/simulated/floor/cobblestone/dungeon,
-/area/ghost_bar/indoor/cave)
+/turf/simulated/floor/grass/no_creep,
+/area/ghost_bar/outdoor)
 "CQ" = (
 /obj/structure/light_fake{
 	dir = 4
@@ -9281,9 +9279,7 @@
 /area/ghost_bar/indoor)
 "FJ" = (
 /mob/living/simple_animal/turtle,
-/turf/simulated/floor/beach/away/water{
-	water_overlay_image = null
-	},
+/turf/simulated/floor/beach/away/water,
 /area/ghost_bar/outdoor)
 "FK" = (
 /obj/effect/turf_decal/sand,
@@ -9947,13 +9943,10 @@
 /turf/simulated/floor/carpet,
 /area/ghost_bar/indoor)
 "Ib" = (
-/obj/structure/railing/cap/reversed{
-	dir = 8;
-	pixel_y = -4
+/obj/effect/turf_decal/siding/white{
+	dir = 4
 	},
-/turf/simulated/floor/indestructible/cobble/side{
-	dir = 8
-	},
+/turf/simulated/floor/plating/dirt,
 /area/ghost_bar/outdoor)
 "Id" = (
 /obj/structure/closet{
@@ -11356,13 +11349,6 @@
 	dir = 4
 	},
 /area/ghost_bar/outdoor)
-"MZ" = (
-/obj/structure/flora/ausbushes/fullgrass,
-/obj/effect/turf_decal/siding/white/corner{
-	dir = 4
-	},
-/turf/simulated/floor/grass/no_creep,
-/area/ghost_bar/outdoor)
 "Na" = (
 /obj/structure/closet/cabinet/wizard,
 /turf/simulated/floor/carpet/black,
@@ -11910,12 +11896,6 @@
 	icon_state = "alienvault"
 	},
 /area/admin)
-"OT" = (
-/obj/effect/turf_decal/siding/white/corner{
-	dir = 4
-	},
-/turf/simulated/floor/grass/no_creep,
-/area/ghost_bar/outdoor)
 "OU" = (
 /obj/machinery/economy/vending/shoedispenser/free,
 /turf/simulated/floor/mineral/plastitanium{
@@ -11945,6 +11925,15 @@
 /obj/structure/light_fake,
 /turf/simulated/floor/wood,
 /area/ghost_bar/indoor)
+"OZ" = (
+/obj/structure/railing/cap/normal{
+	dir = 8;
+	pixel_y = 4
+	},
+/turf/simulated/floor/indestructible/cobble/side{
+	dir = 8
+	},
+/area/ghost_bar/outdoor)
 "Pa" = (
 /turf/simulated/wall/indestructible/fakeglass/brass,
 /area/ghost_bar/indoor)
@@ -12177,8 +12166,9 @@
 	},
 /area/vox_base)
 "PO" = (
-/obj/effect/turf_decal/siding/wideplating{
-	dir = 1
+/obj/structure/flora/ausbushes/fullgrass,
+/obj/effect/turf_decal/siding/white/corner{
+	dir = 4
 	},
 /turf/simulated/floor/grass/no_creep,
 /area/ghost_bar/outdoor)
@@ -12863,6 +12853,15 @@
 	icon_state = "snow"
 	},
 /area/holodeck/source_snowfield)
+"Sd" = (
+/obj/item/cardboard_cutout{
+	icon = 'icons/mob/mob.dmi';
+	icon_state = "ghost2";
+	name = "призрак";
+	desc = "А, это просто картонка..."
+	},
+/turf/simulated/floor/cobblestone/dungeon,
+/area/ghost_bar/indoor/cave)
 "Se" = (
 /obj/effect/turf_decal/box,
 /obj/effect/turf_decal/caution/stand_clear,
@@ -13957,8 +13956,8 @@
 /turf/simulated/floor/wood/fancy/birch,
 /area/ghost_bar/outdoor/beach)
 "VR" = (
-/obj/structure/flora/ausbushes/reedbush,
-/obj/effect/mapping_helpers/light,
+/obj/structure/flora/ausbushes/ppflowers,
+/mob/living/simple_animal/butterfly,
 /turf/simulated/floor/grass,
 /area/ghost_bar/outdoor)
 "VS" = (
@@ -14107,9 +14106,7 @@
 	},
 /area/ninja/holding)
 "Wo" = (
-/turf/simulated/floor/beach/away/water{
-	water_overlay_image = null
-	},
+/turf/simulated/floor/beach/away/water,
 /area/ghost_bar/outdoor)
 "Wp" = (
 /obj/structure/closet/secure_closet/personal,
@@ -14433,11 +14430,6 @@
 "Xv" = (
 /turf/simulated/wall/indestructible/wood,
 /area/wizard_station)
-"Xw" = (
-/obj/structure/flora/ausbushes/ywflowers,
-/obj/effect/turf_decal/siding/white/corner,
-/turf/simulated/floor/grass/no_creep,
-/area/ghost_bar/outdoor)
 "Xy" = (
 /obj/structure/table/wood,
 /obj/item/gun/energy/kinetic_accelerator/crossbow/large/cyborg,
@@ -15118,6 +15110,10 @@
 /obj/item/grenade/clusterbuster/mega_syndieminibomb,
 /turf/simulated/floor/wood/oak,
 /area/admin)
+"ZC" = (
+/obj/effect/turf_decal/siding/white/corner,
+/turf/simulated/floor/plating/dirt,
+/area/ghost_bar/outdoor)
 "ZD" = (
 /obj/structure/decorative_structures/metal/statue/sun,
 /turf/simulated/wall/indestructible/fakeglass/brass,
@@ -59885,7 +59881,7 @@ kc
 kc
 nE
 gm
-Xw
+nl
 aI
 nr
 aI
@@ -59898,11 +59894,11 @@ aI
 aI
 TL
 aI
-MZ
+PO
 gm
+ZC
+Ib
 wV
-BP
-OT
 kc
 kc
 gm
@@ -60159,7 +60155,7 @@ Xu
 tK
 xO
 TV
-PO
+BP
 To
 Gm
 kc
@@ -60178,7 +60174,7 @@ Gz
 Gz
 in
 in
-CP
+Sd
 Zs
 in
 kH
@@ -60412,11 +60408,11 @@ XR
 an
 DE
 DE
-qF
+OZ
 ec
-Ib
+iu
 Hj
-PO
+BP
 zU
 gm
 kc
@@ -60673,7 +60669,7 @@ NS
 DE
 DE
 Hj
-PO
+BP
 kc
 gm
 gm
@@ -60900,7 +60896,7 @@ in
 bv
 kc
 jL
-pf
+VR
 bv
 ol
 os
@@ -60930,7 +60926,7 @@ DF
 Fg
 DE
 Hj
-PO
+BP
 kc
 ao
 QG
@@ -61154,7 +61150,7 @@ in
 in
 in
 in
-Bj
+gw
 To
 Hn
 nE
@@ -61187,7 +61183,7 @@ YO
 DE
 DE
 Hj
-PO
+BP
 QG
 kc
 kc
@@ -61444,7 +61440,7 @@ Va
 Va
 Va
 Gc
-PO
+BP
 kc
 kc
 kc
@@ -61701,7 +61697,7 @@ vW
 dO
 GC
 ZQ
-oP
+CP
 kc
 kc
 kc
@@ -64277,7 +64273,7 @@ kc
 QG
 QG
 QG
-VR
+tv
 vG
 Yy
 kc
