@@ -7,7 +7,7 @@
 	icon_state = "wire_splicing"
 
 /obj/effect/spawner/wire_splicing/Initialize()
-	. = ..()
+	..()
 	new /obj/structure/wire_splicing(get_turf(src))
 	return INITIALIZE_HINT_QDEL
 
@@ -16,9 +16,9 @@
 	name = "wiring splicing spawner 30%"
 
 /obj/effect/spawner/wire_splicing/thirty/Initialize(mapload)
-	. = ..()
 	if(prob(70))
 		return INITIALIZE_HINT_QDEL
+	return ..()
 
 /obj/structure/wire_splicing
 	name = "wire splicing"
