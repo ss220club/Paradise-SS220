@@ -2,6 +2,7 @@
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "Autolathe220", name)
+		ui.set_autoupdate(FALSE)
 		ui.open()
 
 /obj/machinery/autolathe/ui_assets(mob/user)
