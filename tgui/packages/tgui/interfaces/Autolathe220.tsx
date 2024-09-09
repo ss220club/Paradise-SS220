@@ -50,11 +50,14 @@ const canBeMade = (recipe, mavail, gavail, multi) => {
 };
 
 const roundMaterials = (amount, multiplier) => {
-  const roundedMaterial = Math.floor(((amount * multiplier) / 2000) * 100) / 100;
-  if (roundedMaterial < 0.01) {
+  const calculatedAmount = (amount * multiplier) / 2000;
+  if (calculatedAmount === 0) {
+    return 0;
+  }
+  if (calculatedAmount < 0.01 && calculatedAmount > 0) {
     return <Box fontSize={0.75}>{'< 0.01'}</Box>;
   }
-  return roundedMaterial;
+  return Math.floor(calculatedAmount * 100) / 100;
 };
 
 export const Autolathe220 = (props, context) => {
@@ -84,14 +87,15 @@ export const Autolathe220 = (props, context) => {
 };
 
 const Categories = (props, context) => {
-  const { act, data } = useBackend<Autolathe>(context);
+  const { data } = useBackend<Autolathe>(context);
   const { category, setCategory } = props;
   const { categories } = data;
 
+  const allCategories = ['All', ...categories];
   return (
     <Section fill scrollable title="Categories">
       <Tabs vertical>
-        {categories.map((name) => (
+        {allCategories.map((name) => (
           <Tabs.Tab
             key={name}
             mb={0.5}
@@ -110,12 +114,15 @@ const Categories = (props, context) => {
 
 const Recipes = (props, context) => {
   const { act, data } = useBackend<Autolathe>(context);
-  const { busyname, busyamt, metal_amount, glass_amount, recipes } = data;
+  const { metal_amount, glass_amount, recipes } = data;
   const { category } = props;
 
-  const [searchText, setSearchText] = useSharedState(context, 'search_text', '');
+  const [searchText, setSearchText] = useSharedState(context, 'searchText', '');
   const recipesToShow = flow([
-    filter((recipe) => (recipe.category.includes(category) || searchText) && (data.showhacked || !recipe.hacked)),
+    filter(
+      (recipe) =>
+        category === 'All' || recipe.category.includes(category) || (searchText && (data.showhacked || !recipe.hacked))
+    ),
     searchText && filter(createSearch(searchText, (recipe: Recipe) => recipe.name)),
     sortBy((recipe) => recipe.name.toLowerCase()),
   ])(recipes);
@@ -123,7 +130,6 @@ const Recipes = (props, context) => {
   const MultiplierButton = (recipe, multiplier) => (
     <Button
       translucent
-      width="32px"
       tooltip={materialsTooltip(recipe, multiplier)}
       tooltipPosition="top"
       disabled={!canBeMade(recipe, metal_amount, glass_amount, multiplier)}
@@ -155,9 +161,9 @@ const Recipes = (props, context) => {
     <Section fill title={`Build (${category})`}>
       <Stack fill vertical>
         <Stack.Item>
-          <Input fluid placeholder="Search for..." onInput={(e, v) => setSearchText(v)} mb={1} />
+          <Input fluid placeholder="Search for..." onInput={(e, value) => setSearchText(value)} />
         </Stack.Item>
-        <Stack.Item mt={-0.5} mb={-2} grow>
+        <Stack.Item mt={0.5} mb={-2.33} grow>
           <Section fill scrollable>
             {recipesToShow.map((recipe) => (
               <ImageButton
@@ -166,7 +172,9 @@ const Recipes = (props, context) => {
                 base64={recipe.image}
                 imageSize={32}
                 textAlign="left"
+                color={recipe.category.includes('hacked') && 'brown'}
                 tooltip={materialsTooltip(recipe, 1)}
+                tooltipPosition="top"
                 disabled={!canBeMade(recipe, metal_amount, glass_amount, 1)}
                 buttons={
                   recipe.max_multiplier > 1 && (
@@ -195,13 +203,14 @@ const Recipes = (props, context) => {
 };
 
 const Materials = (props, context) => {
-  const { act, data } = useBackend<Autolathe>(context);
+  const { data } = useBackend<Autolathe>(context);
   const { metal_amount, glass_amount, fill_percent } = data;
 
   const MaterialButton = (material, amount) => (
     <ImageButton
       fluid
       asset={['materials32x32', material]}
+      color="nope" // Not existed color, special for full transparent and borderless
       buttons={
         <Box backgroundColor="rgba(255, 255, 255, 0.05)" width="45px">
           {roundMaterials(amount, 1)}
@@ -226,7 +235,7 @@ const Materials = (props, context) => {
 };
 
 const Building = (props, context) => {
-  const { act, data } = useBackend<Autolathe>(context);
+  const { data } = useBackend<Autolathe>(context);
   const { recipes, busyname, busyamt } = data;
   const recipe = recipes.find((recipe) => recipe.name === busyname);
 
