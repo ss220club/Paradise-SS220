@@ -1667,16 +1667,23 @@
 /area/shuttle/vox)
 "fT" = (
 /obj/structure/table/glass,
-/obj/item/storage/box/gloves{
-	pixel_x = 3;
-	pixel_y = 3
-	},
-/obj/item/storage/box/masks,
 /obj/structure/light_fake{
 	dir = 8
 	},
 /obj/effect/turf_decal/tile/blue/half/contrasted{
 	dir = 8
+	},
+/obj/item/bodyanalyzer/advanced{
+	pixel_y = 4;
+	pixel_x = 4
+	},
+/obj/item/storage/box/masks{
+	pixel_y = 2;
+	pixel_x = -4
+	},
+/obj/item/storage/box/gloves{
+	pixel_y = 6;
+	pixel_x = -4
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
@@ -3213,6 +3220,16 @@
 	},
 /turf/simulated/floor/carpet/purple,
 /area/wizard_station)
+"lg" = (
+/obj/structure/table/wood,
+/obj/item/storage/fancy/rollingpapers,
+/obj/machinery/smartfridge/disks{
+	pixel_y = 2
+	},
+/obj/item/gun/energy/floragun,
+/obj/item/hatchet,
+/turf/simulated/floor/plasteel/dark,
+/area/ghost_bar/indoor)
 "lh" = (
 /obj/machinery/processor,
 /obj/structure/light_fake{
@@ -3467,13 +3484,7 @@
 /turf/simulated/floor/wood/cherry,
 /area/ghost_bar/indoor)
 "ma" = (
-/obj/structure/table/wood,
-/obj/item/gun/energy/floragun,
-/obj/machinery/smartfridge/disks{
-	pixel_y = 2
-	},
-/obj/item/storage/fancy/rollingpapers,
-/obj/item/hatchet,
+/obj/machinery/plantgenes,
 /turf/simulated/floor/plasteel/dark,
 /area/ghost_bar/indoor)
 "md" = (
@@ -3819,6 +3830,10 @@
 /obj/effect/spawner/lootdrop/trade_sol/vehicle,
 /turf/simulated/floor/wood/fancy/birch,
 /area/shuttle/trade/sol)
+"np" = (
+/obj/structure/closet/crate,
+/turf/simulated/floor/plasteel/freezer,
+/area/ghost_bar/indoor)
 "nr" = (
 /obj/structure/flora/ausbushes/fullgrass,
 /obj/effect/turf_decal/siding/white{
@@ -4143,6 +4158,11 @@
 "oz" = (
 /obj/structure/chair/sofa/corner,
 /turf/simulated/floor/wood,
+/area/ghost_bar/indoor)
+"oA" = (
+/obj/structure/sink/directional/north,
+/obj/item/reagent_containers/glass/bucket,
+/turf/simulated/floor/plasteel/dark,
 /area/ghost_bar/indoor)
 "oB" = (
 /obj/structure/table/wood,
@@ -5501,14 +5521,6 @@
 /obj/effect/landmark/damageturf,
 /turf/simulated/floor/mineral/plastitanium/red/nitrogen,
 /area/vox_base)
-"tn" = (
-/obj/item/stack/sheet/glass/fifty,
-/obj/item/stack/sheet/glass/fifty,
-/obj/item/stack/sheet/metal/fifty,
-/obj/item/stack/sheet/metal/fifty,
-/obj/structure/table,
-/turf/simulated/floor/plasteel/smooth,
-/area/ghost_bar/indoor)
 "to" = (
 /obj/structure/table/wood,
 /obj/item/kitchen/knife/combat/survival,
@@ -8482,6 +8494,8 @@
 /obj/item/storage/bag/plants/portaseeder,
 /obj/item/reagent_containers/glass/bucket/wooden,
 /obj/item/reagent_containers/glass/bucket/wooden,
+/obj/item/clothing/glasses/hud/hydroponic,
+/obj/item/clothing/glasses/hud/hydroponic,
 /obj/structure/closet,
 /turf/simulated/floor/plasteel/dark,
 /area/ghost_bar/indoor)
@@ -9109,7 +9123,6 @@
 /turf/simulated/floor/wood/oak,
 /area/admin)
 "Fl" = (
-/obj/structure/closet/crate,
 /obj/machinery/door_control/shutter/south{
 	id = "ghostcafekitchen"
 	},
@@ -11432,6 +11445,11 @@
 /obj/item/stack/sheet/cardboard{
 	amount = 10
 	},
+/obj/item/stack/sheet/glass/fifty,
+/obj/item/stack/sheet/glass/fifty,
+/obj/item/stack/sheet/metal/fifty,
+/obj/item/stack/sheet/metal/fifty,
+/obj/structure/table,
 /turf/simulated/floor/plasteel/smooth,
 /area/ghost_bar/indoor)
 "ND" = (
@@ -14379,15 +14397,6 @@
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
-/area/ghost_bar/indoor)
-"Xp" = (
-/obj/effect/turf_decal/box,
-/obj/effect/turf_decal/caution/stand_clear,
-/obj/machinery/door/airlock/wood{
-	name = "Kitchen"
-	},
-/obj/structure/fans/tiny/invisible,
-/turf/simulated/floor/plasteel/freezer,
 /area/ghost_bar/indoor)
 "Xr" = (
 /obj/structure/chair/sofa/left{
@@ -61906,7 +61915,7 @@ KP
 sL
 sL
 sL
-Xp
+Ae
 Kl
 Kl
 If
@@ -62416,7 +62425,7 @@ in
 in
 in
 ol
-sL
+np
 sL
 sL
 yx
@@ -62671,7 +62680,7 @@ kH
 in
 in
 in
-ol
+in
 ol
 ol
 qf
@@ -62930,7 +62939,7 @@ in
 in
 ol
 ol
-xX
+oA
 QO
 CY
 CY
@@ -63959,7 +63968,7 @@ UY
 VI
 Ry
 fp
-yF
+up
 FF
 oR
 xP
@@ -64474,7 +64483,7 @@ xP
 xP
 oR
 Qr
-up
+xX
 oR
 xP
 ol
@@ -65243,10 +65252,10 @@ in
 in
 ol
 ol
-ol
-ol
-fC
-Em
+yF
+lg
+QO
+QO
 ol
 ol
 ol
@@ -65499,13 +65508,13 @@ in
 in
 in
 in
-in
 ol
-ZR
-Cg
-Cg
+ol
+ol
+fC
+Em
+ol
 Hy
-tn
 NA
 ol
 rl
@@ -65758,7 +65767,7 @@ in
 in
 in
 ol
-Cg
+ZR
 Cg
 Cg
 Dn
