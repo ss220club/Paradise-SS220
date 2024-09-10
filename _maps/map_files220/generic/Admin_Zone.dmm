@@ -3102,7 +3102,13 @@
 	},
 /area/admin)
 "kN" = (
-/obj/structure/shuttle/engine/huge,
+/obj/structure/shuttle/engine/platform{
+	dir = 8;
+	layer = 2.9
+	},
+/obj/structure/shuttle/engine/huge{
+	dir = 4
+	},
 /turf/simulated/floor/plating/airless,
 /area/shuttle/vox)
 "kP" = (
@@ -11841,10 +11847,8 @@
 	},
 /area/ghost_bar/indoor)
 "ON" = (
-/obj/structure/shuttle/engine/huge{
-	dir = 4
-	},
-/turf/simulated/floor/plating/airless,
+/obj/structure/shuttle/engine/huge,
+/turf/simulated/floor/catwalk/airless,
 /area/shuttle/vox)
 "OO" = (
 /obj/machinery/computer/camera_advanced/abductor{
@@ -48577,7 +48581,7 @@ kI
 km
 XY
 Zf
-nj
+ON
 kH
 kH
 kH
@@ -48833,7 +48837,7 @@ ts
 ts
 oS
 XY
-kN
+Zf
 nj
 kH
 kH
@@ -52685,7 +52689,7 @@ fS
 fS
 Qo
 Qo
-Qo
+kN
 fS
 fS
 fS
@@ -52941,7 +52945,7 @@ fS
 fS
 fS
 Zf
-ON
+Zf
 Zf
 fS
 hD
