@@ -426,5 +426,6 @@
 	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
 	vary = TRUE
 	sound = 'modular_ss220/emotes/audio/vulpkanin/purr.ogg'
+	cooldown = 10 SECONDS
 	volume = 50
 	muzzled_noises = list("слабо")
