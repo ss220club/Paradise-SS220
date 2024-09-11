@@ -1,6 +1,6 @@
 #define SHUTTLE_ROADKILL_TELEPORTATION_RANGE 24
 
-/obj/docking_port/mobile/proc/roadkill_living(var/mob/living/L)	// Used in /obj/docking_port/mobile/proc/roadkill for modular behavior
+/obj/docking_port/mobile/proc/roadkill_living(mob/living/L)	// Used in /obj/docking_port/mobile/proc/roadkill for modular behavior
 	if(L.incorporeal_move || L.status_flags & GODMODE)
 		return TRUE	// Calls 'continue'
 	L.stop_pulling()
