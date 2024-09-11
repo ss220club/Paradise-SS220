@@ -76,7 +76,7 @@
 		do_teleport(src, get_turf(src), SHUTTLE_ROADKILL_TELEPORTATION_RANGE, sound_in = 'sound/effects/phasein.ogg')
 	else
 		pilot.visible_message(
-			span_warning("Тело [pilot] разрывается на куски, от приземлившегося шаттла!"),
+			span_warning("Тело [pilot] разрывается на куски от приземлившегося шаттла!"),
 			span_userdanger("Вы чувствуете, как ваше тело раздавило огромным весом прилетевшего шаттла!")
 		)
 		go_out(TRUE)
