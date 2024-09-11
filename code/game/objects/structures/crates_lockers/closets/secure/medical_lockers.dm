@@ -247,3 +247,20 @@
 	new /obj/item/reagent_containers/glass/bottle/reagent/diethylamine(src)
 
 /obj/structure/closet/secure_closet/reagents/empty/populate_contents()
+
+/obj/structure/closet/secure_closet/genetics
+	name = "genetics test subject locker"
+	desc = "Storage for lesser form cubes."
+	icon_state = "genetics"
+	open_door_sprite = "med_door"
+	icon_opened = "med_open"
+	req_access = list(ACCESS_GENETICS)
+
+/obj/structure/closet/secure_closet/genetics/populate_contents()
+	new /obj/item/storage/box/monkeycubes(src)
+	new /obj/item/storage/box/monkeycubes/farwacubes(src)
+	new /obj/item/storage/box/monkeycubes/neaeracubes(src)
+	new /obj/item/storage/box/monkeycubes/nian_worme_cubes(src)
+	new /obj/item/storage/box/monkeycubes/stokcubes(src)
+	new /obj/item/storage/box/monkeycubes/wolpincubes(src)
+
