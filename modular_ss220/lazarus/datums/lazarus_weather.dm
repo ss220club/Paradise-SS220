@@ -1,4 +1,4 @@
-/*
+
 /datum/weather/ash_storm/blizzard
 	name = "blizzard"
 	desc = "Снежная буря, окутываюшая снежный лес"
@@ -12,7 +12,7 @@
 	end_message = "<span class='boldannounceic'>Рёв ветра постепенно стихает, а землю укрывает одеяло из осевшего снега. Теперь вновь возможно выйти на улицу.</span>"
 	end_overlay = "light_snow"
 
-	area_type = /area/lazarus/cabin
+	area_type = /area/lazarus/outdoors
 	target_trait = STATION_LEVEL
 	weather_color = "#fcfcfc"
 	immunity_type = "snow"
@@ -64,4 +64,3 @@
 		if (prob(blurr_prob))
 			L.AdjustEyeBlurry (rand(2 SECONDS, 8 SECONDS))
 	L.AdjustEyeBlind (2 SECONDS)
-*/
