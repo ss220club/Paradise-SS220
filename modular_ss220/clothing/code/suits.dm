@@ -252,10 +252,10 @@
 	icon_state = "ntsc_cloak"
 	icon_override = 'modular_ss220/clothing/icons/mob/cloaks.dmi'
 
-/obj/item/clothing/suit/space/deathsquad/officer/field/cloak_nt/red
+/obj/item/clothing/suit/space/deathsquad/officer/field/cloak_nt/gold
 	name = "накидка офицера флота Нанотрейзен"
 	desc = "Выдержанный плащ высокопоставленного офицера Нанотрейзен. Сшит из уникальной ткани. Сочетает в себе лёгкость и прочность. Идеально подходит для официальных встреч и выездных мероприятий."
-	icon_state = "ntsc_cloak_red"
+	icon_state = "nt_cloak_gold"
 
 /obj/item/clothing/suit/space/deathsquad/officer/field/cloak_nt/coat_nt
 	name = "полевой плащ офицера флота Нанотрейзен"
