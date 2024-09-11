@@ -71,7 +71,7 @@
 	if(isspaceturf(get_turf(src)))
 		pilot.visible_message(
 			span_warning("[src] иcчезает в спышке блюспейс излучения в тот момент, когда шаттл материализуется в нашем пространстве!"),
-			span_userdanger("Вы чувствует, будто вас сейчас стошнит. Блю-спейс прыжок шаттла телепортировал вас в другое место!")
+			span_userdanger("Вы чувствуете, будто вас сейчас стошнит. Блюспейс прыжок шаттла телепортировал вас в другое место!")
 		)
 		do_teleport(src, get_turf(src), SHUTTLE_ROADKILL_TELEPORTATION_RANGE, sound_in = 'sound/effects/phasein.ogg')
 	else
