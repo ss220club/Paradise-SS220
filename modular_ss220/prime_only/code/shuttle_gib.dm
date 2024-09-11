@@ -67,7 +67,6 @@
 		target.gib()
 
 /obj/mecha/get_out_and_die()
-
 	var/mob/living/pilot = occupant
 	if(isspaceturf(get_turf(src)))
 		pilot.visible_message(
