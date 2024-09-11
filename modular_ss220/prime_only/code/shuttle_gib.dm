@@ -61,7 +61,7 @@
 		return TRUE // Calls 'continue' to avoid qdeling of mob
 	else
 		target.visible_message(
-			span_warning("Тело [target] разрывается на куски, от приземлившегося шаттла!"),
+			span_warning("Тело [target] разрывается на куски от приземлившегося шаттла!"),
 			span_userdanger("Вы чуствуете как ваше тело раздавило огромным весом прилетевшего шаттла!")
 		)
 		target.gib()
