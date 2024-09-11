@@ -645,20 +645,18 @@
 				var/obj/mecha/mech = AM
 				if(mech.occupant)
 					INVOKE_ASYNC(mech, TYPE_PROC_REF(/obj/mecha, get_out_and_die))
+					// SS220 PRIME EDIT - START
+					continue // It's required to avoid qdeling of mech in case of space turf. Non space turf are handled by get_out_and_die() proc
+					// SS220 PRIME EDIT - END
 			if(ismob(AM))
 				var/mob/M = AM
 				if(M.buckled)
 					M.buckled.unbuckle_mob(M, force = TRUE)
 				if(isliving(AM))
-					var/mob/living/L = AM
-					if(L.incorporeal_move || L.status_flags & GODMODE)
+					// SS220 PRIME EDIT - START
+					if(roadkill_living(AM))
 						continue
-					L.stop_pulling()
-					L.visible_message("<span class='warning'>[L] is hit by \
-									a hyperspace ripple!</span>",
-									"<span class='userdanger'>You feel an immense \
-									crushing pressure as the space around you ripples.</span>")
-					L.gib()
+					// SS220 PRIME EDIT - END
 			else if(lance_docking) //corrupt the child, destroy them all
 				if(!AM.simulated)
 					continue
