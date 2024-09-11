@@ -48,7 +48,7 @@
 				if(AM.simulated) // Don't qdel lighting overlays, they are static
 					qdel(AM)
 
-/obj/docking_port/mobile/proc/roadkill_living(mob/living/target)	// Used in /obj/docking_port/mobile/proc/roadkill for modular behavior
+/obj/docking_port/mobile/proc/roadkill_living(mob/living/target)
 	if(target.incorporeal_move || target.status_flags & GODMODE)
 		return TRUE	// Calls 'continue'
 	target.stop_pulling()
