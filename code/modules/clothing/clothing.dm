@@ -38,7 +38,6 @@
 	var/cooldown = 0
 	var/species_disguise = null
 	var/magical = FALSE
-	var/dyeable = FALSE
 	/// Do we block AI tracking?
 	var/blockTracking
 	w_class = WEIGHT_CLASS_SMALL
@@ -271,14 +270,17 @@
 	body_parts_covered = HANDS
 	slot_flags = SLOT_FLAG_GLOVES
 	attack_verb = list("challenged")
+	strip_delay = 2 SECONDS
+	put_on_delay = 4 SECONDS
+	dyeing_key = DYE_REGISTRY_GLOVES
+
 	var/transfer_prints = FALSE
 	///Master pickpocket?
 	var/pickpocket = FALSE
 	var/clipped = FALSE
 	///Do they protect the wearer from poison ink?
 	var/safe_from_poison = FALSE
-	strip_delay = 20
-	put_on_delay = 40
+
 	///Amount of times touching something with these gloves will spill blood on it
 	var/transfer_blood = 0
 
@@ -418,9 +420,11 @@
 	icon = 'icons/obj/clothing/masks.dmi'
 	body_parts_covered = HEAD
 	slot_flags = SLOT_FLAG_MASK
+	strip_delay = 4 SECONDS
+	put_on_delay = 4 SECONDS
+	dyeable = FALSE
+
 	var/adjusted_flags = null
-	strip_delay = 40
-	put_on_delay = 40
 
 	isolation = FB_ISOLATION_LOW
 
@@ -503,18 +507,11 @@
 	icon = 'icons/obj/clothing/shoes.dmi'
 	desc = "Comfortable-looking shoes."
 	gender = PLURAL //Carn: for grammatically correct text-parsing
-	var/chained = FALSE
-	var/can_cut_open = FALSE
-	var/cut_open = FALSE
-	var/no_slip = FALSE
-	var/knife_slot = FALSE
-	var/obj/item/kitchen/knife/combat/hidden_blade
 
 	body_parts_covered = FEET
 	slot_flags = SLOT_FLAG_FEET
-
-	var/blood_state = BLOOD_STATE_NOT_BLOODY
-	var/list/bloody_shoes = list(BLOOD_STATE_HUMAN = 0, BLOOD_STATE_XENO = 0, BLOOD_STATE_NOT_BLOODY = 0, BLOOD_BASE_ALPHA = BLOODY_FOOTPRINT_BASE_ALPHA)
+	dyeable = TRUE
+	dyeing_key = DYE_REGISTRY_SHOES
 
 	permeability_coefficient = 0.50
 	slowdown = SHOES_SLOWDOWN
@@ -522,7 +519,20 @@
 	sprite_sheets = list(
 		"Vox" = 'icons/mob/clothing/species/vox/shoes.dmi',
 		"Drask" = 'icons/mob/clothing/species/drask/shoes.dmi'
-		)
+	)
+
+	var/chained = FALSE
+	var/can_cut_open = FALSE
+	var/cut_open = FALSE
+	var/no_slip = FALSE
+	var/knife_slot = FALSE
+	var/obj/item/kitchen/knife/combat/hidden_blade
+
+
+	var/blood_state = BLOOD_STATE_NOT_BLOODY
+	var/list/bloody_shoes = list(BLOOD_STATE_HUMAN = 0, BLOOD_STATE_XENO = 0, BLOOD_STATE_NOT_BLOODY = 0, BLOOD_BASE_ALPHA = BLOODY_FOOTPRINT_BASE_ALPHA)
+
+
 
 	isolation = FB_ISOLATION_LOW
 
@@ -631,12 +641,14 @@
 /obj/item/clothing/suit
 	name = "suit"
 	icon = 'icons/obj/clothing/suits.dmi'
-	var/fire_resist = T0C+100
 	allowed = list(/obj/item/tank/internals/emergency_oxygen)
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, RAD = 0, FIRE = 0, ACID = 0)
 	drop_sound = 'sound/items/handling/cloth_drop.ogg'
 	pickup_sound =  'sound/items/handling/cloth_pickup.ogg'
 	slot_flags = SLOT_FLAG_OCLOTHING
+	dyeable = FALSE
+
+	var/fire_resist = T0C + 100
 	var/blood_overlay_type = "suit"
 	var/suit_toggled = FALSE
 	var/suit_adjusted = FALSE
@@ -647,7 +659,6 @@
 	var/max_suit_w = WEIGHT_CLASS_BULKY
 	///How long to break out of the suits
 	var/breakouttime
-
 	isolation = FB_ISOLATION_MEDIUM
 
 /obj/item/clothing/suit/Initialize(mapload)
@@ -804,7 +815,6 @@
 	resistance_flags = NONE
 	dog_fashion = null
 
-
 /obj/item/clothing/suit/space
 	name = "space suit"
 	desc = "A suit that protects against low pressure environments. Has a big 13 on the back."
@@ -844,6 +854,7 @@
 	equip_sound = 'sound/items/equip/jumpsuit_equip.ogg'
 	drop_sound = 'sound/items/handling/cloth_drop.ogg'
 	pickup_sound =  'sound/items/handling/cloth_pickup.ogg'
+	dyeing_key = DYE_REGISTRY_UNDER
 
 	sprite_sheets = list(
 		"Vox" = 'icons/mob/clothing/species/vox/under/misc.dmi',
