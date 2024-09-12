@@ -118,6 +118,8 @@
 	var/can_spawn_saved = FALSE
 	/// Storage in which loadout gear is placed
 	var/loadout_storage_type = /obj/item/storage/backpack
+	/// Job name for an ID photo
+	var/id_photo_job
 
 /obj/effect/mob_spawn/human/alive/attack_ghost(mob/user)
 	if(!valid_to_spawn(user))
@@ -145,6 +147,16 @@
 /obj/effect/mob_spawn/human/alive/proc/create_saved(ckey, mob/user = usr, datum/character_save/save)
 	var/mob/living/carbon/human/H = create(ckey, name = save.real_name)
 	save.copy_to(H)
+
+	var/obj/item/card/id/id_card = H.wear_id
+	if(id_card)
+		id_card.registered_name = H.real_name
+		id_card.UpdateName()
+		id_card.SetOwnerInfo(H)
+		id_card.photo = get_id_photo(H, id_photo_job)
+		id_card.owner_uid = H.UID()
+		id_card.owner_ckey = ckey
+		id_card.RebuildHTML()
 
 	var/obj/item/storage/backpack/loadout_storage = new loadout_storage_type(loc)
 	for(var/gear in save.loadout_gear)
@@ -349,3 +361,4 @@
 /obj/effect/mob_spawn/human/alive/spacebase_syndicate
 	can_spawn_saved = TRUE
 	loadout_storage_type = /obj/item/storage/backpack/duffel/syndie
+	id_photo_job = "Syndicate Agent"
