@@ -113,6 +113,53 @@
 	icon = 'icons/obj/drinks.dmi'
 	. = ..()
 
+/obj/effect/mob_spawn/human/alive
+	/// Tells if it can spawn saved characters
+	var/can_spawn_saved = FALSE
+	/// Storage in which loadout gear is placed
+	var/loadout_storage_type = /obj/item/storage/backpack
+
+/obj/effect/mob_spawn/human/alive/attack_ghost(mob/user)
+	if(!valid_to_spawn(user))
+		return
+	if(can_spawn_saved && tgui_alert(user, "Хотите ли Вы использовать одного из сохраненных персонажей?", "Syndicate Space Base", list("Да", "Нет")) == "Да")
+		var/list/our_characters_names = list()
+		var/list/our_character_saves = list()
+		for(var/index in 1 to length(user.client.prefs.character_saves))
+			var/datum/character_save/saves = user.client.prefs.character_saves[index]
+			var/slot_name = "[saves.real_name] (Слот #[index])"
+			our_characters_names += slot_name
+			our_character_saves += list("[slot_name]" = saves)
+
+		var/character_name = tgui_input_list(user, "Выберите персонажа", "Выбор персонажа", our_characters_names)
+		if(!character_name || QDELETED(user))
+			return
+		if(!loc || !uses && !permanent || QDELETED(src))
+			to_chat(user, span_warning("[name] больше не доступен!"))
+			return
+		var/datum/character_save/save_to_load = our_character_saves[character_name]
+		create_saved(user.ckey, user, save_to_load)
+	else
+		return ..()
+
+/obj/effect/mob_spawn/human/alive/proc/create_saved(ckey, mob/user = usr, datum/character_save/save)
+	var/mob/living/carbon/human/H = create(ckey, name = save.real_name)
+	save.copy_to(H)
+
+	var/obj/item/storage/backpack/loadout_storage = new loadout_storage_type(loc)
+	for(var/gear in save.loadout_gear)
+		var/datum/gear/G = GLOB.gear_datums[text2path(gear) || gear]
+		if(isnull(G))
+			continue
+		if(G.allowed_roles)
+			continue
+		G.spawn_item(loadout_storage)
+	if(length(loadout_storage.contents))
+		H.put_in_any_hand_if_possible(loadout_storage)
+		to_chat(H, span_notice("Доступные предметы из лодаута помещены в сумку."))
+	else
+		qdel(loadout_storage)
+
 /* Space Battle */
 /obj/effect/mob_spawn/human/corpse/spacebattle
 	var/list/pocketloot = list(/obj/item/storage/fancy/cigarettes/cigpack_robust,
@@ -298,3 +345,7 @@
 	uniform = /obj/item/clothing/under/retro/science
 	shoes = /obj/item/clothing/shoes/black
 	suit = /obj/item/clothing/suit/storage/labcoat/science
+
+/obj/effect/mob_spawn/human/alive/spacebase_syndicate
+	can_spawn_saved = TRUE
+	loadout_storage_type = /obj/item/storage/backpack/duffel/syndie
