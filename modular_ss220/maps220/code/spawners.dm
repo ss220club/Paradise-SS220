@@ -158,7 +158,7 @@
 		id_card.owner_ckey = ckey
 		id_card.RebuildHTML()
 
-	var/obj/item/storage/backpack/loadout_storage = new loadout_storage_type(loc)
+	var/obj/item/storage/backpack/loadout_storage = new loadout_storage_type(get_turf(loc))
 	for(var/gear in save.loadout_gear)
 		var/datum/gear/G = GLOB.gear_datums[text2path(gear) || gear]
 		if(isnull(G))
