@@ -388,7 +388,6 @@
 	set category = "Эмоции"
 	emote("rumble", intentional = TRUE)
 
-
 /mob/living/carbon/human/proc/emote_quill()
 	set name = "< " + EMOTE_HUMAN_QUILL + " >"
 	set category = "Эмоции"
