@@ -388,10 +388,10 @@
 	set category = "Эмоции"
 	emote("rumble", intentional = TRUE)
 
-/mob/living/carbon/human/proc/emote_unathi_hiss()
-	set name = "< " + EMOTE_HUMAN_HISS + " >"
-	set category = "Эмоции"
-	emote("hiss", intentional = TRUE)
+// /mob/living/carbon/human/proc/emote_unathi_hiss()
+//	set name = "< " + EMOTE_HUMAN_HISS + " >"
+//	set category = "Эмоции"
+//	emote("uhiss", intentional = TRUE)
 
 /mob/living/carbon/human/proc/emote_quill()
 	set name = "< " + EMOTE_HUMAN_QUILL + " >"
