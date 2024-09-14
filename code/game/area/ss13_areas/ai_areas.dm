@@ -29,6 +29,9 @@
 /area/station/aisat/hall
 	name = "Коридор Спутника ИИ"
 
+/area/station/aisat/breakroom
+	name = "\improper AI Satellite Break Room Hallway"
+
 /area/station/aisat/service
 	name = "Сервисная Комната Спутника ИИ"
 
