@@ -1,7 +1,7 @@
 // SyndiChem
 /obj/machinery/economy/vending/syndichem
 	name = "\improper SyndiChem"
-	desc = "A vending machine full of grenades and grenade accessories. Sponsored by DonkCo(tm)."
+	desc = "Раздатчик, полный гранат и аксессуаров к ним. Проспонсирован ДонкКо(ТМ)."
 	req_access = list(ACCESS_SYNDICATE)
 	products = list(/obj/item/stack/cable_coil/random = 5,
 					/obj/item/assembly/igniter = 20,
@@ -23,15 +23,15 @@
 
 // Spawners
 /obj/effect/mob_spawn/human/alive/spacebase_syndicate
-	name = "Syndicate Researcher sleeper"
+	name = "Слипер Исследователя Синдиката"
 	mob_name = "Syndicate Researcher"
 	roundstart = FALSE
 	death = FALSE
 	icon = 'icons/obj/cryogenic2.dmi'
 	icon_state = "sleeper_s"
-	important_info = "Do not work against traitors or nukies. Do not leave the base."
-	description = "Experiment with deadly chems, plants, viruses, etc in peace."
-	flavour_text = "You are a syndicate agent, employed in a top secret research facility developing biological weapons. Continue your research as best you can, and try to keep a low profile. Do not leave your base or let non-syndicate enter it."
+	important_info = "Не работайте против предателей и Ядерных Оперативников. Не покидайте базу."
+	description = "Экспериментируйте с опасными химикатами, вирусами, растениями и прочим в спокойствии."
+	flavour_text = "Вы - агент синдиката, нанятый для работы на сверхсекретной научной базе, занимающейся разработкой биологического оружия. Продолжайте свои исследования как можно лучше и старайтесь не выдать своё местоположение. Не покидайте свою базу, а также не позволяйте не агентам попасть на неё."
 	outfit = /datum/outfit/spacebase_syndicate
 	assignedrole = "Syndicate Researcher"
 	del_types = list() // Necessary to prevent del_types from removing radio!
