@@ -567,6 +567,7 @@
 	sections["traitor"] = memory_edit_traitor()
 	// SS220 EDIT - START
 	sections["blood_brother"] = memory_edit_blood_brother()
+	sections["vox_raider"] = memory_edit_vox_raider()
 	// SS220 EDIT - END
 	if(!issilicon(current))
 		/** CULT ***/
@@ -602,8 +603,11 @@
 		if(sections[i])
 			out.Add(sections[i])
 
+	out.Add("<b>Organization:</b> ")
+	for(var/datum/antagonist/D in antag_datums)
+		if(D.organization)
+			out.Add("[D.organization.name]")
 	out.Add(memory_edit_uplink())
-
 	out.Add("<b>Memory:</b>")
 	out.Add(memory)
 	out.Add("<a href='byond://?src=[UID()];memory_edit=1'>Edit memory</a><br>")

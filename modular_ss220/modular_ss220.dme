@@ -4,6 +4,7 @@
 // #include "example/_example.dme"
 
 // --- MAINTENANCE --- //
+#include "_rust_utils/_rust_utils.dme"
 #include "_components/_components.dme"
 #include "_defines220/_defines220.dme"
 #include "_signals220/_signals220.dme"
@@ -23,7 +24,7 @@
 #include "barsigns/_barsigns.dme"
 #include "clothing/_clothing.dme"
 #include "devices/_devices.dme"
-#include "food/_food.dme"
+#include "food_and_drinks/_food_and_drinks.dme"
 #include "gateway/_gateway.dme"
 #include "hydroponics/hydroponics.dme"
 #include "objects/_objects.dme"
@@ -39,6 +40,8 @@
 
 // --- MISC --- //
 #include "administration/_administration.dme"
+#include "autolathe_tgui/_autolathe_tgui.dme"
+#include "preferences/_preferences.dme"
 #include "aesthetics_sounds/_aesthetics_sounds.dme"
 #include "agent_id_tgui/_agent_id_tgui.dme"
 #include "balance/_balance.dme"
@@ -79,8 +82,10 @@
 #include "species/_species.dme"
 #include "species_whitelist/_species_whitelist.dme"
 #include "antagonists/_antagonists.dme"
+#include "antagonists/_antagonists_vox_raiders.dme"
 #include "uplink_items/_uplink_items.dme"
 #include "shuttles/_shuttles.dme"
+#include "speech_filter/_speech_filter.dme"
 #include "redis220/_redis220.dme"
 #include "robolimbs/_robolimbs.dme"
 
@@ -106,3 +111,8 @@
  ---------------------------------------------------------------------*/
 
 // #include "crit_rework/_crit_rework.dme"
+
+// --- TESTING --- //
+#ifdef UNIT_TESTS
+#include "unit_tests/_unit_tests.dme"
+#endif

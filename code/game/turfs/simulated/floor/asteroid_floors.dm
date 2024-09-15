@@ -166,6 +166,15 @@
 	color = COLOR_FLOOR_HARD_ROCK
 	baseturf = /turf/simulated/floor/lava/lava_land_surface
 
+/turf/simulated/floor/plating/asteroid/basalt/plasma
+	temperature = 1000
+	oxygen = 0
+	nitrogen = 0
+	carbon_dioxide = 1.2
+	toxins = 10
+	turf_type = /turf/simulated/floor/plating/asteroid/basalt/plasma
+	atmos_mode = ATMOS_MODE_NO_DECAY
+
 /turf/simulated/floor/plating/asteroid/airless
 	temperature = TCMB
 	oxygen = 0
@@ -416,6 +425,7 @@ GLOBAL_LIST_INIT(megafauna_spawn_list, list(/mob/living/simple_animal/hostile/me
 			megafauna_spawn_list.Remove(randumb)
 
 		new randumb(T)
+		SSblackbox.record_feedback("tally", "lavaland_mob_spawns", 1, "[randumb]")
 
 #undef SPAWN_MEGAFAUNA
 #undef SPAWN_BUBBLEGUM

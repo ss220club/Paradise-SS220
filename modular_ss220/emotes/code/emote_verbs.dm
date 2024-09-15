@@ -94,6 +94,11 @@
 	set category = "Эмоции"
 	emote("wbark", intentional = TRUE)
 
+/mob/living/carbon/human/proc/emote_ururu()
+	set name = "▷ " + EMOTE_HUMAN_RUMBLE + " "
+	set category = "Эмоции"
+	emote("ururu", intentional = TRUE)
+
 /// Action Emotes ///
 /mob/living/carbon/human/verb/emote_collapse()
 	set name = "○ " + EMOTE_COLLAPSE + " "
@@ -382,11 +387,6 @@
 	set name = "< " + EMOTE_HUMAN_RUMBLE + " >"
 	set category = "Эмоции"
 	emote("rumble", intentional = TRUE)
-
-/mob/living/carbon/human/proc/emote_unathi_hiss()
-	set name = "< " + EMOTE_HUMAN_HISS + " >"
-	set category = "Эмоции"
-	emote("uhiss", intentional = TRUE)
 
 /mob/living/carbon/human/proc/emote_quill()
 	set name = "< " + EMOTE_HUMAN_QUILL + " >"
