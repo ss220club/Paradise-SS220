@@ -275,7 +275,6 @@
 	name = "Syndicate Space Base"
 	id = "syndie-space-base"
 	description = "A secret base researching illegal bioweapons, it is closely guarded by an elite team of syndicate agents."
-	prefix = "_maps/map_files220/RandomRuins/SpaceRuins/"
 	suffix = "syndie_space_base.dmm"
 	cost = 0
 	always_place = TRUE
