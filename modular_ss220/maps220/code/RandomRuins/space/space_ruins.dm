@@ -86,4 +86,8 @@
 	allow_duplicates = FALSE
 
 /datum/map_template/ruin/space/syndicate_space_base
-    prefix = "_maps/map_files220/RandomRuins/SpaceRuins/"
+	ci_exclude = /datum/map_template/ruin/space/syndicate_space_base
+
+/datum/map_template/ruin/space/syndicate_space_base/ss220
+	id = "syndie-space-base220"
+	prefix = "_maps/map_files220/RandomRuins/SpaceRuins/"
