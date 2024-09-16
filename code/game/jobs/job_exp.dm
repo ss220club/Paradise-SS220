@@ -30,8 +30,10 @@ GLOBAL_LIST_INIT(role_playtime_requirements, list(
 	ROLE_CULTIST = 20,
 	ROLE_ALIEN = 10,
 	ROLE_ABDUCTOR = 20,
+	// SS220 ADDITION - START
 	ROLE_VOX_RAIDER = 20,
 	ROLE_BLOOD_BROTHER = 20,
+	// SS220 ADDITION - END
 ))
 
 // Admin Verbs
