@@ -1,3 +1,5 @@
+// Basic
+
 /datum/spell/shadowling
 	school = "shadowling"
 	action_background_icon_state = "shadow_demon_bg"
@@ -22,3 +24,8 @@
 		return TRUE
 
 	return FALSE
+
+// Self
+
+/datum/spell/shadowling/self/create_new_targeting()
+	return new /datum/spell_targeting/self
