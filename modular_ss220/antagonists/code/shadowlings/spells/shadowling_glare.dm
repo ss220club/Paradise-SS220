@@ -67,10 +67,10 @@
 				to_chat(user, span_warning("Ваши глаза закрыты! Взгляд не работает!"))
 				return
 	user.mob_light(LIGHT_COLOR_BLOOD_MAGIC, 3, _duration = 2)
-	user.visible_message(span_warning("Вы используйете очарование своих глав, вводя в замешательство окружающих"))
+	user.visible_message(span_warning("Вы используйете очарование своих глаз, вводя в замешательство окружающих"))
 
 	for(var/mob/living/target in targets)
-		if(!shadowling_check(target))
+		if(shadowling_check(target))
 			continue
 
 		var/deviation

@@ -6,6 +6,17 @@
 	human_req = TRUE
 	clothes_req = FALSE
 
+	/// If true, can be casted while using shadowstep and other incorporeal abilities
+	var/cast_incorporeal = FALSE
+
+/datum/spell/shadowling/can_cast(mob/user, charge_check, show_message)
+	if(isliving(user))
+		var/mob/living/living_user = user
+		if(living_user.incorporeal_move != NO_INCORPOREAL_MOVE)
+			to_chat(user, span_warning("Вы не можете использовать эту способность не в физической форме!"))
+			return
+	return ..()
+
 /datum/spell/shadowling/proc/get_light_level(mob/living/target)
 	var/light_amount = 0
 	if(isturf(target.loc))
