@@ -47,7 +47,6 @@
 	if(anchored)
 		to_chat(user, span_warning("[src] is anchored to the floor!"))
 		return
-	user.changeNext_move(CLICK_CD_MELEE)
 	setDir(turn(dir, 90))
 
 /obj/structure/fluff/carpet/blue
