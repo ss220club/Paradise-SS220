@@ -11,7 +11,7 @@
 #define GLARE_REQUIRED_DARKNESS 4
 
 /datum/spell/shadowling/glare
-	name = "Завораживающий взгляд"
+	name = "Блик"
 	desc = "Ваши красные глаза сверкают, завораживая и очаровывая смертных перед вами. Для лучшего эффекта необходим близкий зрительный контакт и тёмное окружение."
 	action_icon_state = "vampire_glare"
 	base_cooldown = 40 SECONDS
