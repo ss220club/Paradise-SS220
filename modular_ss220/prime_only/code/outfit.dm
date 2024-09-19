@@ -146,7 +146,7 @@
 	suit = /obj/item/clothing/suit/space/deathsquad/officer/field/cloak_nt
 	l_pocket = /obj/item/dualsaber/legendary_saber/flame
 
-/datum/outfit/job/ntnavyofficer/field/get_rock_paper_scissors_move(mob/living/carbon/user)
+/datum/outfit/job/ntnavyofficer/field/gromov
 	l_pocket = /obj/item/dualsaber/legendary_saber/flame = /obj/item/dualsaber/legendary_saber/sorrow_catcher
 	head = /obj/item/clothing/head/helmet/space/deathsquad/beret
 	mask = /obj/item/clothing/mask/breath/breathscarf
