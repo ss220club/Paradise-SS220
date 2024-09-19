@@ -129,14 +129,7 @@
 
 /datum/outfit/job/ntnavyofficer/traisen
 	name = "Генрих Трейзен"
-	r_hand = /obj/item/storage/belt/rapier/genri_rapier
-	head = /obj/item/clothing/head/ntrep
-	mask = /obj/item/clothing/mask/gas/navy_officer
-	suit = /obj/item/clothing/suit/space/deathsquad/officer/field/cloak_nt
-
-/datum/outfit/job/ntnavyofficer/traisen
-	name = "Генрих Трейзен"
-	r_hand = /obj/item/storage/belt/rapier/genri_rapier
+	r_hand = /obj/item/storage/belt/rapier/cane_rapier
 	head = /obj/item/clothing/head/ntrep
 	mask = /obj/item/clothing/mask/gas/navy_officer
 	suit = /obj/item/clothing/suit/space/deathsquad/officer/field/cloak_nt
