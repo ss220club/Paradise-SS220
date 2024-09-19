@@ -223,17 +223,3 @@
 	registered_name = "Дельта 8-1-7"
 	assignment = "Normandy Special Forces"
 	rank = "Normandy Special Forces"
-
-/obj/item/storage/belt/rapier/genri_rapier
-	name = "Трость-рапира"
-	desc = "Ножны стилизованной под трость рапиры. Их корпус вырезан из черного дерева и щедро украшен позолотой. Их владелец обладает неоспоримый богатством и властью в известной Галактике."
-	icon_state = "trsheath"
-	item_state = "trsheath"
-	icon = 'modular_ss220/prime_only/icons/saber.dmi'
-	lefthand_file = 'modular_ss220/prime_only/icons/saber_left.dmi'
-	righthand_file = 'modular_ss220/prime_only/icons/saber_right.dmi'
-	can_hold = list(/obj/item/melee/rapier/genri_rapier)
-
-/obj/item/storage/belt/rapier/genri_rapier/populate_contents()
-	new /obj/item/melee/rapier/genri_rapier(src)
-	update_icon()
