@@ -40,7 +40,6 @@
 		/obj/item/organ/internal/cyberimp/arm/combat/centcom,
 		/obj/item/organ/internal/cyberimp/brain/anti_stam/hardened,
 		/obj/item/organ/internal/eyes/cybernetic/xray/hardened,
-		/obj/item/organ/internal/cyberimp/chest/hydration/hardened
 	)
 
 /datum/outfit/admin/tanya/tanya2
@@ -147,6 +146,6 @@
 	l_pocket = /obj/item/dualsaber/legendary_saber/flame
 
 /datum/outfit/job/ntnavyofficer/field/gromov
-	l_pocket = /obj/item/dualsaber/legendary_saber/flame = /obj/item/dualsaber/legendary_saber/sorrow_catcher
+	l_pocket = /obj/item/dualsaber/legendary_saber/sorrow_catcher
 	head = /obj/item/clothing/head/helmet/space/deathsquad/beret
 	mask = /obj/item/clothing/mask/breath/breathscarf
