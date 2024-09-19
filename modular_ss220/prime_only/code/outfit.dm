@@ -104,7 +104,7 @@
 /datum/outfit/job/ntspecops/normandy
 	name = "Мунивёрс Нормандия"
 	suit = /obj/item/clothing/suit/space/deathsquad/officer/soo_brown
-	l_pocket = /obj/item/dualsaber/legendary_saber/normandy_saber
+	l_pocket = /obj/item/dualsaber/legendary_saber/sister
 	cybernetic_implants = list(
 		/obj/item/organ/internal/eyes/cybernetic/xray/hardened,
 		/obj/item/organ/internal/cyberimp/brain/anti_stam/hardened,

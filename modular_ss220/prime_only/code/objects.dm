@@ -207,3 +207,33 @@
 
 	if(HAS_TRAIT(S, TRAIT_WIELDED))
 		charge(user, target, S)
+
+/obj/item/card/id/midnight
+	name = "Миднайт Блэк's ID card (Syndicate Special Agent)"
+	desc = "An ID straight from Syndicate."
+	registered_name = "Миднайт Блэк"
+	assignment = "Syndicate Special Agent"
+	rank = "Syndicate Special Agent"
+	access = list(ACCESS_MAINT_TUNNELS, ACCESS_SYNDICATE, ACCESS_SYNDICATE_LEADER, ACCESS_SYNDICATE_COMMAND, ACCESS_EXTERNAL_AIRLOCKS)
+
+/obj/item/card/id/centcom/tanya
+	name = "Дельта 8-1-7's ID card (Normandy Special Forces)"
+	desc = "An ID straight from Normandy Special Forces."
+	icon_state = "centcom"
+	registered_name = "Дельта 8-1-7"
+	assignment = "Normandy Special Forces"
+	rank = "Normandy Special Forces"
+
+/obj/item/storage/belt/rapier/genri_rapier
+	name = "Трость-рапира"
+	desc = "Ножны стилизованной под трость рапиры. Их корпус вырезан из черного дерева и щедро украшен позолотой. Их владелец обладает неоспоримый богатством и властью в известной Галактике."
+	icon_state = "trsheath"
+	item_state = "trsheath"
+	icon = 'modular_ss220/prime_only/icons/saber.dmi'
+	lefthand_file = 'modular_ss220/prime_only/icons/saber_left.dmi'
+	righthand_file = 'modular_ss220/prime_only/icons/saber_right.dmi'
+	can_hold = list(/obj/item/melee/rapier/genri_rapier)
+
+/obj/item/storage/belt/rapier/genri_rapier/populate_contents()
+	new /obj/item/melee/rapier/genri_rapier(src)
+	update_icon()
