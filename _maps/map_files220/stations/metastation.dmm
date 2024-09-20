@@ -5876,6 +5876,11 @@
 "aFd" = (
 /obj/structure/chair/comfy/brown,
 /obj/effect/landmark/start/magistrate,
+/obj/structure/cable/yellow{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
 /turf/simulated/floor/carpet,
 /area/station/legal/magistrate)
 "aFe" = (
@@ -7761,7 +7766,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9
+	dir = 4
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "cult"
@@ -27919,8 +27924,8 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/fpmaint)
 "bWp" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 8
 	},
 /turf/simulated/floor/carpet,
 /area/station/legal/magistrate)
@@ -48715,7 +48720,7 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/fpmaint)
 "frX" = (
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/photocopier,
 /turf/simulated/floor/plasteel{
 	icon_state = "cult"
 	},
@@ -54246,7 +54251,6 @@
 /area/station/science/toxins/mixing)
 "hQZ" = (
 /obj/structure/closet/secure_closet/magistrate,
-/obj/machinery/alarm/directional/north,
 /obj/item/megaphone,
 /turf/simulated/floor/plasteel{
 	icon_state = "cult"
@@ -58746,6 +58750,9 @@
 	pixel_y = -4
 	},
 /obj/item/clothing/head/helmet/skull/Yorick,
+/obj/item/radio/intercom/department/security{
+	pixel_y = 22
+	},
 /turf/simulated/floor/carpet,
 /area/station/legal/magistrate)
 "jXo" = (
@@ -61150,9 +61157,6 @@
 /area/station/engineering/control)
 "lcg" = (
 /obj/structure/filingcabinet,
-/obj/machinery/atmospherics/unary/vent_scrubber/on{
-	dir = 8
-	},
 /turf/simulated/floor/plasteel{
 	icon_state = "cult"
 	},
@@ -65266,11 +65270,10 @@
 	},
 /area/station/medical/storage)
 "mUi" = (
-/obj/structure/cable/yellow{
-	d2 = 2;
-	icon_state = "0-2"
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 8
 	},
-/obj/machinery/power/apc/directional/east,
+/obj/machinery/alarm/directional/east,
 /turf/simulated/floor/plasteel{
 	icon_state = "cult"
 	},
@@ -67970,11 +67973,6 @@
 /area/station/security/brig)
 "och" = (
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
-/obj/structure/cable/yellow{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
@@ -69799,6 +69797,11 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/carpet,
 /area/station/legal/magistrate)
 "pds" = (
@@ -79497,6 +79500,11 @@
 	},
 /obj/item/stamp/magistrate,
 /obj/effect/spawner/lootdrop/officetoys,
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/carpet,
 /area/station/legal/magistrate)
 "tHA" = (
@@ -80139,8 +80147,10 @@
 /turf/simulated/floor/plating,
 /area/station/engineering/break_room)
 "uaU" = (
-/obj/item/radio/intercom/department/security{
-	pixel_y = 22
+/obj/machinery/power/apc/directional/north,
+/obj/structure/cable/yellow{
+	d2 = 8;
+	icon_state = "0-8"
 	},
 /turf/simulated/floor/carpet,
 /area/station/legal/magistrate)
@@ -83529,6 +83539,14 @@
 "vHD" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "cult"
 	},
@@ -84324,6 +84342,14 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 9
+	},
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
 /turf/simulated/floor/plasteel{
