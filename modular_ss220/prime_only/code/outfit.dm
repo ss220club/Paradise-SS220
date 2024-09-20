@@ -135,10 +135,17 @@
 	suit = /obj/item/clothing/suit/space/deathsquad/officer/field/cloak_nt
 
 /datum/outfit/job/ntnavyofficer/field/sharlotta
+	name = "Дитерхис"
 	suit = /obj/item/clothing/suit/space/deathsquad/officer/field/cloak_nt
 	l_pocket = /obj/item/dualsaber/legendary_saber/flame
 
 /datum/outfit/job/ntnavyofficer/field/gromov
+	name = "Громов"
 	l_pocket = /obj/item/dualsaber/legendary_saber/sorrow_catcher
 	head = /obj/item/clothing/head/helmet/space/deathsquad/beret
+	mask = /obj/item/clothing/mask/breath/breathscarf
+
+/datum/outfit/job/ntnavyofficer/field/fane
+	name = "Фейн"
+	suit = /obj/item/clothing/suit/space/deathsquad/officer/field/cloak_nt/gold
 	mask = /obj/item/clothing/mask/breath/breathscarf
