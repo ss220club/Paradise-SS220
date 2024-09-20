@@ -9,16 +9,15 @@
 	COOLDOWN_DECLARE(try_open)
 
 /obj/item/food/fancy/update_icon_state()
-	if(!opened)
-		return
-
-	icon_state = "[initial(icon_state)]_open"
+	if(opened)
+		icon_state = "[initial(icon_state)]_open"
 
 /obj/item/food/fancy/attack(mob/M, mob/user, def_zone)
-	if(!opened)
-		to_chat(user, span_warning("[src] сначала нужно открыть!"))
-		return FALSE
-	return ..()
+	to_chat(user, span_warning("[src] сначала нужно открыть!"))
+	return
+
+/obj/item/food/fancy/attack_self(mob/user)
+	AltClick(user)
 
 /obj/item/food/fancy/examine(mob/user)
 	. = ..()
@@ -142,15 +141,9 @@
 	open_sound = 'sound/machines/cardboard_box.ogg'
 	var/obj/item/food/burger
 
-/obj/item/food/fancy/macvulpburger/New()
+/obj/item/food/fancy/macvulpburger/Initialize(mapload)
 	. = ..()
 	burger = new /obj/item/food/burger/macvulp(src)
-
-// Just template, we can't eat it
-/obj/item/food/fancy/macvulpburger/attack(mob/M, mob/user, def_zone)
-	if(opened)
-		return FALSE
-	return ..()
 
 /obj/item/food/fancy/macvulpburger/examine(mob/user)
 	. = ..()
@@ -176,3 +169,133 @@
 	bitesize = 2
 	list_reagents = list("nutriment" = 6, "protein" = 6, "vitamin" = 1)
 	tastes = list("булка" = 1, "говядина" = 4, "трюфельный соус" = 1, "ягодный соус" = 1)
+
+// MARK: NT Food
+/obj/item/food/fancy/foodpack_nt
+	name = "\improper Nanotrasen Foodpack"
+	desc = "Большой набор еды, с различным содержимым."
+	icon = 'modular_ss220/food_and_drinks/icons/food.dmi'
+	icon_state = "foodpack_nt"
+	open_sound = 'sound/machines/cardboard_box.ogg'
+	var/list/possible_food = list(
+		/obj/item/food/foodtray_sad_steak,
+		/obj/item/food/foodtray_chicken_sandwich,
+		/obj/item/food/foodtray_noodle,
+		/obj/item/food/foodtray_sushi,
+		/obj/item/food/foodtray_beef_and_rice,
+		/obj/item/food/foodtray_pesto_pizza,
+		/obj/item/food/foodtray_rice_and_grilled_cheese,
+		/obj/item/food/foodtray_fried_shrooms
+	)
+
+/obj/item/food/fancy/foodpack_nt/Initialize(mapload)
+	. = ..()
+	var/item = pick(possible_food)
+	new item(src)
+
+/obj/item/food/fancy/foodpack_nt/examine(mob/user)
+	. = ..()
+	if(opened)
+		. += span_notice("Нажмите <b>Alt-Click</b> чтобы достать еду из упаковки.")
+
+/obj/item/food/fancy/foodpack_nt/attack(mob/M, mob/user, def_zone)
+	to_chat(user, span_warning("[src] сначала нужно открыть!"))
+	return
+
+/obj/item/food/fancy/foodpack_nt/opened_act(mob/user)
+	user.drop_item()
+
+	for(var/obj/item/food/foodtray in contents)
+		if(!user.get_active_hand() && Adjacent(user))
+			user.put_in_hands(foodtray)
+		else
+			foodtray.forceMove(get_turf(user))
+
+	qdel(src)
+	return TRUE
+
+/obj/item/food/foodtray_sad_steak
+	name = "\improper mashed potatoes and steak"
+	desc = "Суховатое пюре с таким себе стейком, скорее всего, соевого мяса."
+	icon = 'modular_ss220/food_and_drinks/icons/food.dmi'
+	icon_state = "foodtray_sad_steak"
+	trash = /obj/item/trash/foodtray
+	bitesize = 2
+	list_reagents = list("nutriment" = 8, "protein" = 4, "vitamin" = 8)
+	tastes = list("соус" = 1, "картофель" = 1, "напоминающего мяса" = 4)
+
+/obj/item/food/foodtray_chicken_sandwich
+	name = "\improper chicken sandwich"
+	desc = "Сэндвич с безвкусной курицей."
+	icon = 'modular_ss220/food_and_drinks/icons/food.dmi'
+	icon_state = "foodtray_chicken_sandwich"
+	trash = /obj/item/trash/foodtray
+	bitesize = 2
+	list_reagents = list("nutriment" = 8, "protein" = 4, "vitamin" = 5)
+	tastes = list("соус" = 1, "булка" = 1, "курица" = 1)
+
+/obj/item/food/foodtray_noodle
+	name = "\improper noodles"
+	desc = "Спагетти Болоньезе, или нет... Но очень похоже."
+	icon = 'modular_ss220/food_and_drinks/icons/food.dmi'
+	icon_state = "foodtray_chicken_sandwich"
+	trash = /obj/item/trash/foodtray
+	bitesize = 2
+	list_reagents = list("nutriment" = 5, "vitamin" = 3)
+	tastes = list("соус болоньезе" = 4, "спагетти" = 1)
+
+/obj/item/food/foodtray_sushi
+	name = "\improper sushi"
+	desc = "Свежие суши, с неплохим балансом между рисом и рыбой."
+	icon = 'modular_ss220/food_and_drinks/icons/food.dmi'
+	icon_state = "foodtray_sushi"
+	trash = /obj/item/trash/foodtray
+	bitesize = 2
+	list_reagents = list("nutriment" = 10, "protein" = 2, "vitamin" = 5)
+	tastes = list("рыба" = 4, "рис" = 2, "водоросли" = 1)
+
+/obj/item/food/foodtray_beef_and_rice
+	name = "\improper beef and rice"
+	desc = "Питательная порция говядины с рисом."
+	icon = 'modular_ss220/food_and_drinks/icons/food.dmi'
+	icon_state = "foodtray_beef_and_rice"
+	trash = /obj/item/trash/foodtray
+	bitesize = 2
+	list_reagents = list("nutriment" = 10, "protein" = 20, "vitamin" = 5)
+	tastes = list("говядина" = 4, "рис" = 2, "специи" = 1)
+
+/obj/item/food/foodtray_pesto_pizza
+	name = "\improper pesto pizza"
+	desc = "Пицца с песто. В меру питательная и слегка пресная. Хороший выбор для тех, кто не ждет многого от обеда."
+	icon = 'modular_ss220/food_and_drinks/icons/food.dmi'
+	icon_state = "foodtray_pesto_pizza"
+	trash = /obj/item/trash/foodtray
+	bitesize = 2
+	list_reagents = list("nutriment" = 10, "vitamin" = 2)
+	tastes = list("песто" = 3, "сыр" = 2, "тесто" = 1)
+
+/obj/item/food/foodtray_rice_and_grilled_cheese
+	name = "\improper rice and grilled cheese"
+	desc = "Странное сочетание риса и жареного сыра."
+	icon = 'modular_ss220/food_and_drinks/icons/food.dmi'
+	icon_state = "foodtray_rice_and_grilled_cheese"
+	trash = /obj/item/trash/foodtray
+	bitesize = 2
+	list_reagents = list("nutriment" = 10, "vitamin" = 2)
+	tastes = list("рис" = 2, "жареный сыр" = 3)
+
+/obj/item/food/foodtray_fried_shrooms
+	name = "\improper fried shrooms"
+	desc = "Простая порция жареных грибов, хрустящих снаружи и мягких внутри. Непритязательное, но питательное блюдо."
+	icon = 'modular_ss220/food_and_drinks/icons/food.dmi'
+	icon_state = "foodtray_fried_shrooms"
+	trash = /obj/item/trash/foodtray
+	bitesize = 2
+	list_reagents = list("nutriment" = 10, "vitamin" = 5)
+	tastes = list("грибы" = 4, "масло" = 2)
+
+/obj/item/trash/foodtray
+	name = "\improper food tray"
+	desc = "Пустой лоток из под еды."
+	icon = 'modular_ss220/food_and_drinks/icons/trash.dmi'
+	icon_state = "foodtray"
