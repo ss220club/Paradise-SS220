@@ -88,7 +88,7 @@
 // Structure
 /obj/structure/shuttle/engine
 	icon = 'modular_ss220/maps220/icons/shuttle.dmi'
-	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF
 	var/arbitraryatmosblockingvar = 1
 
 // Engines provide atmos blocking, for they move to locations with different atmos
@@ -102,6 +102,7 @@
 	recalculate_atmos_connectivity()
 	return ..()
 
+// Copy-pastes tiny fans
 /obj/structure/shuttle/engine/CanAtmosPass(direction)
 	return !arbitraryatmosblockingvar
 

@@ -1286,17 +1286,6 @@
 	water_overlay_image = null
 	},
 /area/syndicate_mothership/outside)
-"aRU" = (
-/obj/docking_port/stationary/transit{
-	dir = 8;
-	dwidth = 3;
-	height = 5;
-	id = "mining_transit";
-	name = "mining in transit";
-	width = 7
-	},
-/turf/space/transit,
-/area/space/centcomm)
 "aRZ" = (
 /obj/structure/light_fake/small{
 	dir = 8
@@ -11339,18 +11328,19 @@
 	id_tag = "s_docking_airlock"
 	},
 /obj/structure/fans/tiny,
-/obj/docking_port/stationary{
-	area_type = /area/lavaland/surface/outdoors;
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/docking_port/stationary/transit{
 	dir = 8;
 	dwidth = 2;
 	height = 5;
-	id = "laborcamp_away";
-	name = "labor camp";
-	turf_type = /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface;
-	width = 9
+	id = "laborcamp_transit";
+	name = "labor in transit";
+	width = 9;
+	pixel_x = 32
 	},
-/obj/docking_port/mobile/labour,
-/obj/effect/mapping_helpers/airlock/autoname,
+/obj/docking_port/mobile/labour{
+	roundstart_move = "laborcamp_away"
+	},
 /turf/simulated/floor/plating,
 /area/shuttle/siberia)
 "gOQ" = (
@@ -38244,18 +38234,19 @@
 	},
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/structure/fans/tiny,
-/obj/docking_port/stationary{
-	area_type = /area/lavaland/surface/outdoors;
+/obj/effect/mapping_helpers/airlock/access/any/supply/mining,
+/obj/docking_port/stationary/transit{
 	dir = 8;
 	dwidth = 3;
 	height = 5;
-	id = "mining_away";
-	name = "lavaland mine";
-	turf_type = /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface;
-	width = 7
+	id = "mining_transit";
+	name = "mining in transit";
+	width = 7;
+	pixel_x = 32
 	},
-/obj/docking_port/mobile/mining,
-/obj/effect/mapping_helpers/airlock/access/any/supply/mining,
+/obj/docking_port/mobile/mining{
+	roundstart_move = "mining_away"
+	},
 /turf/simulated/floor/plating,
 /area/shuttle/mining)
 "wDR" = (
@@ -38921,17 +38912,6 @@
 	},
 /turf/simulated/floor/wood/oak,
 /area/syndicate_mothership)
-"xau" = (
-/obj/docking_port/stationary/transit{
-	dir = 8;
-	dwidth = 2;
-	height = 5;
-	id = "laborcamp_transit";
-	name = "labor in transit";
-	width = 9
-	},
-/turf/space/transit,
-/area/space/centcomm)
 "xaH" = (
 /obj/effect/decal/nanotrasen_logo_circle{
 	icon_state = "ntlogo_sec";
@@ -80629,7 +80609,7 @@ lgH
 lgH
 lgH
 lgH
-aRU
+lgH
 lgH
 lgH
 lgH
@@ -87570,7 +87550,7 @@ lgH
 lgH
 lgH
 lgH
-xau
+lgH
 lgH
 lgH
 lgH
