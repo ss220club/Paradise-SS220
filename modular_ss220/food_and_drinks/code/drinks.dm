@@ -799,6 +799,7 @@
 	desc = "Холодный чёрный чай, натуральный и полезный."
 	icon = 'modular_ss220/food_and_drinks/icons/drinks.dmi'
 	icon_state = "tea_bottle_grey"
+	item_state = "beer"
 	list_reagents = list("icetea" = 30)
 
 /obj/item/reagent_containers/drinks/cans/nt_iced_green_tea
@@ -806,6 +807,7 @@
 	desc = "Холодный зелёный чай, натуральный и полезный."
 	icon = 'modular_ss220/food_and_drinks/icons/drinks.dmi'
 	icon_state = "tea_bottle"
+	item_state = "beer"
 	list_reagents = list("icetea" = 30)
 
 /obj/item/reagent_containers/drinks/cans/nt_iced_mint_tea
@@ -813,6 +815,7 @@
 	desc = "Освежающий холодный чай с листьями мяты."
 	icon = 'modular_ss220/food_and_drinks/icons/drinks.dmi'
 	icon_state = "tea_bottle_blue"
+	item_state = "beer"
 	list_reagents = list("icetea" = 30)
 
 /obj/item/reagent_containers/drinks/cans/nt_iced_berry_tea
@@ -820,4 +823,5 @@
 	desc = "Холодный чай с натуральными ягодами без сахара."
 	icon = 'modular_ss220/food_and_drinks/icons/drinks.dmi'
 	icon_state = "tea_bottle_pink"
+	item_state = "beer"
 	list_reagents = list("icetea" = 30)
