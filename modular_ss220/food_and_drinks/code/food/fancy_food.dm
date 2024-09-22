@@ -1,9 +1,14 @@
-/* Fancy food need to be opened first. */
+/**
+ * MARK: | Fancy Food
+ * Fancy food need to be opened first.
+ */
 /obj/item/food/fancy
 	/// Description when opened.
 	var/desc_open
 	/// Is it ready to be eaten?
 	var/opened = FALSE
+	/// Does it need to be taken out of the box?
+	var/need_takeout = FALSE
 	/// The sound that will be played when you open a food.
 	var/open_sound = 'modular_ss220/aesthetics_sounds/sound/food_open.ogg'
 	COOLDOWN_DECLARE(try_open)
@@ -13,8 +18,13 @@
 		icon_state = "[initial(icon_state)]_open"
 
 /obj/item/food/fancy/attack(mob/M, mob/user, def_zone)
-	to_chat(user, span_warning("[src] сначала нужно открыть!"))
-	return
+	if(!opened)
+		to_chat(user, span_warning("[src] сначала нужно открыть!"))
+		return
+	if(opened && need_takeout)
+		to_chat(user, span_warning("Сначала вытащите еду из упаковки!"))
+		return
+	return ..()
 
 /obj/item/food/fancy/attack_self(mob/user)
 	AltClick(user)
@@ -23,6 +33,8 @@
 	. = ..()
 	if(!opened)
 		. += span_notice("Нажмите <b>Alt-Click</b> чтобы открыть.")
+	if(opened && need_takeout)
+		. += span_notice("Нажмите <b>Alt-Click</b> чтобы достать еду из упаковки.")
 
 /obj/item/food/fancy/AltClick(mob/user)
 	if(!try_open(user))
@@ -66,7 +78,7 @@
 		desc = desc_open
 
 /**
- * Second action on Alt+Click
+ * Second action on Alt+Click.
  * Called only when food is opened
  */
 /obj/item/food/fancy/proc/opened_act(mob/user)
@@ -132,34 +144,51 @@
 	icon_state = "MV-vulpixs"
 	desc = "Всё ещё вкусно пахнет."
 
+/**
+ * MARK: | Packed Fancy Food
+ * This type of food should be double opened
+ */
+/obj/item/food/fancy/packed
+	need_takeout = TRUE
+	var/list/possible_food
+
+/obj/item/food/fancy/packed/Initialize(mapload)
+	. = ..()
+	LAZYINITLIST(possible_food)
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/item/food/fancy/packed/LateInitialize()
+	if(!possible_food || !LAZYLEN(possible_food))
+		stack_trace("List 'possible_food' is empty or not initialized in [src.type] subtype! Deleting...")
+		qdel(src)
+		return
+	// Picks random from the list, works also if one item is in the list
+	var/item = pick(possible_food)
+	new item(src)
+
+/obj/item/food/fancy/packed/opened_act(mob/user)
+	user.drop_item()
+
+	for(var/obj/item/food/internal_food in contents)
+		if(!user.get_active_hand() && Adjacent(user))
+			user.put_in_hands(internal_food)
+		else
+			internal_food.forceMove(get_turf(user))
+
+	qdel(src)
+	return TRUE
+
 // MARK: MacVulpBurger
-/obj/item/food/fancy/macvulpburger
+/obj/item/food/fancy/packed/macvulpburger
 	name = "\improper MacVulpBurger Gourmet"
 	desc = "Особый бургер из линейки “Большой Укус” с трюфельно-ягодным соусом, только для ценителей необычного!"
 	icon = 'modular_ss220/food_and_drinks/icons/food.dmi'
 	icon_state = "MV-burgerbox"
 	open_sound = 'sound/machines/cardboard_box.ogg'
-	var/obj/item/food/burger
 
-/obj/item/food/fancy/macvulpburger/Initialize(mapload)
+/obj/item/food/fancy/packed/macvulpburger/Initialize(mapload)
 	. = ..()
-	burger = new /obj/item/food/burger/macvulp(src)
-
-/obj/item/food/fancy/macvulpburger/examine(mob/user)
-	. = ..()
-	if(opened)
-		. += span_notice("Нажмите <b>Alt-Click</b> чтобы достать бургер.")
-
-// But we can eject it from the box and eat it
-/obj/item/food/fancy/macvulpburger/opened_act(mob/user)
-	user.drop_item()
-	if(!user.get_active_hand() && Adjacent(user))
-		user.put_in_hands(burger)
-	else
-		burger.forceMove(get_turf(user))
-
-	qdel(src)
-	return TRUE
+	possible_food = list(/obj/item/food/burger/macvulp)
 
 /obj/item/food/burger/macvulp
 	name = "\improper MacVulpBurger Gourmet"
@@ -171,13 +200,16 @@
 	tastes = list("булка" = 1, "говядина" = 4, "трюфельный соус" = 1, "ягодный соус" = 1)
 
 // MARK: NT Food
-/obj/item/food/fancy/foodpack_nt
+/obj/item/food/fancy/packed/foodpack_nt
 	name = "\improper Nanotrasen Foodpack"
 	desc = "Большой набор еды, с различным содержимым."
 	icon = 'modular_ss220/food_and_drinks/icons/food.dmi'
 	icon_state = "foodpack_nt"
 	open_sound = 'sound/machines/cardboard_box.ogg'
-	var/list/possible_food = list(
+
+/obj/item/food/fancy/packed/foodpack_nt/Initialize(mapload)
+	. = ..()
+	possible_food = list(
 		/obj/item/food/foodtray_sad_steak,
 		/obj/item/food/foodtray_chicken_sandwich,
 		/obj/item/food/foodtray_noodle,
@@ -187,32 +219,6 @@
 		/obj/item/food/foodtray_rice_and_grilled_cheese,
 		/obj/item/food/foodtray_fried_shrooms
 	)
-
-/obj/item/food/fancy/foodpack_nt/Initialize(mapload)
-	. = ..()
-	var/item = pick(possible_food)
-	new item(src)
-
-/obj/item/food/fancy/foodpack_nt/examine(mob/user)
-	. = ..()
-	if(opened)
-		. += span_notice("Нажмите <b>Alt-Click</b> чтобы достать еду из упаковки.")
-
-/obj/item/food/fancy/foodpack_nt/attack(mob/M, mob/user, def_zone)
-	to_chat(user, span_warning("[src] сначала нужно открыть!"))
-	return
-
-/obj/item/food/fancy/foodpack_nt/opened_act(mob/user)
-	user.drop_item()
-
-	for(var/obj/item/food/foodtray in contents)
-		if(!user.get_active_hand() && Adjacent(user))
-			user.put_in_hands(foodtray)
-		else
-			foodtray.forceMove(get_turf(user))
-
-	qdel(src)
-	return TRUE
 
 /obj/item/food/foodtray_sad_steak
 	name = "\improper mashed potatoes and steak"

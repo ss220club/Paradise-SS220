@@ -21,7 +21,7 @@
 	products = list(
 		/obj/item/food/fancy/macvulpix_original = 5,
 		/obj/item/food/fancy/macvulpix_cheese = 5,
-		/obj/item/food/fancy/macvulpburger = 5,
+		/obj/item/food/fancy/packed/macvulpburger = 5,
 		/obj/item/pizzabox/vulpix = 3,
 		/obj/item/food/vulpix_chips = 5,
 		/obj/item/reagent_containers/drinks/bottle/vulpix_milk/berry = 5,
@@ -32,7 +32,7 @@
 	prices = list(
 		/obj/item/food/fancy/macvulpix_original = 100,
 		/obj/item/food/fancy/macvulpix_cheese = 100,
-		/obj/item/food/fancy/macvulpburger = 125,
+		/obj/item/food/fancy/packed/macvulpburger = 125,
 		/obj/item/pizzabox/vulpix = 150,
 		/obj/item/food/vulpix_chips = 60,
 		/obj/item/reagent_containers/drinks/bottle/vulpix_milk/berry = 50,
@@ -63,14 +63,14 @@
 		"Бесперебойная работа, даже если вокруг будет царить хаос!"
 	)
 	products = list(
-		/obj/item/food/fancy/foodpack_nt = 10,
+		/obj/item/food/fancy/packed/foodpack_nt = 10,
 		/obj/item/reagent_containers/drinks/cans/nt_iced_black_tea = 10,
 		/obj/item/reagent_containers/drinks/cans/nt_iced_green_tea = 10,
 		/obj/item/reagent_containers/drinks/cans/nt_iced_mint_tea = 10,
 		/obj/item/reagent_containers/drinks/cans/nt_iced_berry_tea = 10,
 	)
 	prices = list(
-		/obj/item/food/fancy/foodpack_nt = 50,
+		/obj/item/food/fancy/packed/foodpack_nt = 50,
 		/obj/item/reagent_containers/drinks/cans/nt_iced_black_tea = 15,
 		/obj/item/reagent_containers/drinks/cans/nt_iced_green_tea = 15,
 		/obj/item/reagent_containers/drinks/cans/nt_iced_mint_tea = 15,
