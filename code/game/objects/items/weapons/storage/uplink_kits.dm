@@ -228,14 +228,14 @@
 	name = "box (CK)"
 
 /obj/item/storage/box/syndie_kit/boolets
-	name = "shotgun shells"
+	name = "патроны на дробовик"
 
 /obj/item/storage/box/syndie_kit/boolets/populate_contents()
 	for(var/I in 1 to 6)
 		new /obj/item/ammo_casing/shotgun/fakebeanbag(src)
 
 /obj/item/storage/box/syndie_kit/emp
-	name = "boxed EMP kit"
+	name = "коробка с набором ЭМИ"
 
 /obj/item/storage/box/syndie_kit/emp/populate_contents()
 	new /obj/item/grenade/empgrenade(src)
@@ -243,28 +243,28 @@
 	new /obj/item/bio_chip_implanter/emp/(src)
 
 /obj/item/storage/box/syndie_kit/poisoner
-	name = "poisoner's kit"
+	name = "набор травителя"
 
 /obj/item/storage/box/syndie_kit/poisoner/populate_contents()
 	new /obj/item/pen/multi/poison(src)
 	new /obj/item/clothing/gloves/color/black/poisoner(src)
 
 /obj/item/storage/box/syndie_kit/c4
-	name = "pack of C-4 explosives"
+	name = "набор с взрывчаткой C-4"
 
 /obj/item/storage/box/syndie_kit/c4/populate_contents()
 	for(var/I in 1 to 5)
 		new /obj/item/grenade/plastic/c4(src)
 
 /obj/item/storage/box/syndie_kit/frag_grenades
-	name = "pack of fragmentation grenades"
+	name = "набор осколочных гранат"
 
 /obj/item/storage/box/syndie_kit/frag_grenades/populate_contents()
 	for(var/I in 1 to 5)
 		new /obj/item/grenade/frag(src)
 
 /obj/item/storage/box/syndie_kit/throwing_weapons
-	name = "boxed throwing kit"
+	name = "коробка с метательным набором"
 	can_hold = list(/obj/item/throwing_star, /obj/item/restraints/legcuffs/bola/tactical)
 	max_combined_w_class = 16
 	max_w_class = WEIGHT_CLASS_NORMAL
@@ -285,14 +285,14 @@
 	new /obj/item/grenade/chem_grenade/saringas(src)
 
 /obj/item/storage/box/syndie_kit/bioterror
-	name = "bioterror syringe box"
+	name = "коробка со шприцом биотеррора"
 
 /obj/item/storage/box/syndie_kit/bioterror/populate_contents()
 	for(var/I in 1 to 7)
 		new /obj/item/reagent_containers/syringe/bioterror(src)
 
 /obj/item/storage/box/syndie_kit/caneshotgun
-	name = "cane gun kit"
+	name = "набор ствола из трости"
 
 
 /obj/item/storage/box/syndie_kit/caneshotgun/populate_contents()
@@ -301,26 +301,26 @@
 	new /obj/item/gun/projectile/revolver/doublebarrel/improvised/cane(src)
 
 /obj/item/storage/box/syndie_kit/fake_minibomb
-	name = "trick minibomb kit"
+	name = "набор с шуточной минибомбой"
 
 /obj/item/storage/box/syndie_kit/fake_minibomb/populate_contents()
 	new /obj/item/grenade/syndieminibomb/fake(src)
 
 /obj/item/storage/box/syndie_kit/fake_revolver
-	name = "trick revolver kit"
+	name = "набор с шуточным револьвером"
 
 /obj/item/storage/box/syndie_kit/fake_revolver/populate_contents()
 	new /obj/item/gun/projectile/revolver/fake(src)
 
 /obj/item/storage/box/syndie_kit/mimery
-	name = "advanced mimery kit"
+	name = "набор продвинутых пантомим"
 
 /obj/item/storage/box/syndie_kit/mimery/populate_contents()
 	new /obj/item/spellbook/oneuse/mime/greaterwall(src)
 	new	/obj/item/spellbook/oneuse/mime/fingergun(src)
 
 /obj/item/storage/box/syndie_kit/combat_baking
-	name = "combat bakery kit"
+	name = "набор боевой кулинарии"
 
 /obj/item/storage/box/syndie_kit/combat_baking/populate_contents()
 	new /obj/item/food/snacks/baguette/combat(src)
@@ -329,7 +329,7 @@
 	new /obj/item/book/granter/crafting_recipe/combat_baking(src)
 
 /obj/item/storage/box/syndie_kit/atmosn2ogrenades
-	name = "atmos N2O grenades"
+	name = "гранаты с N2O"
 
 /obj/item/storage/box/syndie_kit/atmosn2ogrenades/populate_contents()
 	new /obj/item/grenade/clusterbuster/n2o(src)
@@ -337,7 +337,7 @@
 
 
 /obj/item/storage/box/syndie_kit/atmosfiregrenades
-	name = "plasma fire grenades"
+	name = "гранаты с огнём из плазмы"
 
 /obj/item/storage/box/syndie_kit/atmosfiregrenades/populate_contents()
 	new /obj/item/grenade/clusterbuster/plasma(src)
@@ -345,7 +345,7 @@
 
 
 /obj/item/storage/box/syndie_kit/missionary_set
-	name = "Missionary Starter Kit"
+	name = "Стартовый Набор Мессионера"
 
 /obj/item/storage/box/syndie_kit/missionary_set/populate_contents()
 	new /obj/item/nullrod/missionary_staff(src)
@@ -358,7 +358,7 @@
 
 
 /obj/item/storage/box/syndie_kit/cutouts
-	name = "Fortified Artistic Box"
+	name = "Укрепленная артистическая коробка"
 
 /obj/item/storage/box/syndie_kit/cutouts/populate_contents()
 	for(var/i in 1 to 3)
@@ -366,8 +366,8 @@
 	new/obj/item/toy/crayon/spraycan(src)
 
 /obj/item/storage/box/syndie_kit/safecracking
-	name = "Safe-cracking Kit"
-	desc = "Everything you need to quietly open a mechanical combination safe."
+	name = "Набор для взлома сейфов"
+	desc = "Всё, что вам требуется для тихого вскрытия сейфа с механическим замком."
 
 /obj/item/storage/box/syndie_kit/safecracking/populate_contents()
 	new /obj/item/clothing/gloves/color/latex/nitrile(src)
@@ -376,7 +376,7 @@
 	new /obj/item/book/manual/wiki/hacking(src)
 
 /obj/item/storage/box/syndie_kit/chameleon
-	name = "chameleon kit"
+	name = "набор хамелеон"
 
 /obj/item/storage/box/syndie_kit/chameleon/populate_contents()
 	new /obj/item/clothing/under/chameleon(src)
@@ -392,7 +392,7 @@
 	new /obj/item/pda/chameleon(src)
 
 /obj/item/storage/box/syndie_kit/dart_gun
-	name = "dart gun kit"
+	name = "набор с дротикомётом"
 
 /obj/item/storage/box/syndie_kit/dart_gun/populate_contents()
 	new /obj/item/gun/syringe/syndicate(src)
@@ -401,8 +401,8 @@
 	new /obj/item/reagent_containers/syringe/pancuronium(src)
 
 /obj/item/storage/box/syndie_kit/nuke
-	name = "box"  //Bit of stealth, since you spawn with it
-	desc = "It's just an ordinary box."
+	name = "коробка"  //Bit of stealth, since you spawn with it
+	desc = "Это просто обычная коробка."
 	icon_state = "box"
 
 /obj/item/storage/box/syndie_kit/nuke/populate_contents()
@@ -411,8 +411,8 @@
 	new /obj/item/paper/guides/antag/nuke_instructions(src)
 
 /obj/item/storage/box/syndie_kit/supermatter
-	name = "box"
-	desc = "It's just an ordinary box."
+	name = "коробка"
+	desc = "Это просто обычная коробка."
 	icon_state = "box"
 
 /obj/item/storage/box/syndie_kit/supermatter/populate_contents()
@@ -422,15 +422,15 @@
 	new /obj/item/paper/guides/antag/supermatter_sliver(src)
 
 /obj/item/storage/box/syndie_kit/revolver
-	name = "\improper .357 revolver kit"
+	name = "набор с револьвером .357 калибра"
 
 /obj/item/storage/box/syndie_kit/revolver/populate_contents()
 	new /obj/item/gun/projectile/revolver(src)
 	new /obj/item/ammo_box/a357(src)
 
 /obj/item/storage/box/syndie_kit/stechkin
-	name = "\improper FK-69 Stechkin kit"
-	desc = "A box marked with Neo-Russkiyan characters. It appears to contain a 10mm pistol and two magazines."
+	name = "набор с FK-69 Стечкиным"
+	desc = "Коробка с символами на Нео-Русском. Кажется, в ней находится пистолет 10мм и два магазина."
 
 /obj/item/storage/box/syndie_kit/stechkin/populate_contents()
 	new /obj/item/gun/projectile/automatic/pistol(src)
@@ -438,7 +438,7 @@
 	new /obj/item/ammo_box/magazine/m10mm(src)
 
 /obj/item/storage/box/syndie_kit/camera_bug
-	name = "\improper Camera Bug kit"
+	name = "Набор с Камера Багом"
 
 /obj/item/storage/box/syndie_kit/camera_bug/populate_contents()
 	var/camera = new /obj/item/camera_bug(src)
@@ -447,14 +447,14 @@
 		new /obj/item/wall_bug(src, camera)
 
 /obj/item/storage/box/syndie_kit/prescan
-	name = "\improper Technocracy Advanced Cloning System Kit"
+	name = "Набор с продвинутой системой клонирования Технократии"
 
 /obj/item/storage/box/syndie_kit/prescan/populate_contents()
 	new /obj/item/bio_chip_implanter/grey_autocloner(src)
 	new /obj/item/radio/beacon/syndicate/bomb/grey_autocloner(src)
 
 /obj/item/storage/box/syndie_kit/pen_bomb
-	name = "\improper Pen bomb"
+	name = "Ручка-бомба"
 
 /obj/item/storage/box/syndie_kit/pen_bomb/populate_contents()
 	new /obj/item/grenade/syndieminibomb/pen(src)
