@@ -76,3 +76,6 @@
 		/obj/item/reagent_containers/drinks/cans/nt_iced_mint_tea = 15,
 		/obj/item/reagent_containers/drinks/cans/nt_iced_berry_tea = 15,
 	)
+
+/obj/machinery/economy/vending/nt_food/free
+	prices = list()
