@@ -64,6 +64,12 @@ GLOBAL_LIST_EMPTY(frozen_atom_list) // A list of admin-frozen atoms.
 		revive()
 
 /mob/living/simple_animal/admin_Freeze(admin)
+	// If we were frozen before this call, make sure we
+	// reset our health before attempting a rejuvenate,
+	// as removing status effects can perform stat calls.
+	if(frozen && del_on_death)
+		health = admin_prev_health
+
 	if(..()) // The result of the parent call here will be the value of the mob's `frozen` variable after they get (un)frozen.
 		admin_prev_health = health
 		health = 0
@@ -93,12 +99,12 @@ GLOBAL_LIST_EMPTY(frozen_atom_list) // A list of admin-frozen atoms.
 /obj/machinery/atmospherics/supermatter_crystal/admin_Freeze(client/admin)
 	var/obj/effect/overlay/adminoverlay/freeze_overlay = new
 	if(processes)
-		radio.autosay("Внимание: Неизвестное вмешательство заморозило процесс разрушения вокруг кристалла. Оно не развивается в местном временном пространстве.", name, "Engineering", list(z))
+		radio.autosay("Внимание: Неизвестное вмешательство заморозило процесс разрушения вокруг кристалла. Оно не развивается в местном временном пространстве.", name, "Engineering")
 		GLOB.frozen_atom_list += src
 		processes = FALSE
 		add_overlay(freeze_overlay)
 	else
-		radio.autosay("Внимание: Неизвестное воздействие на кристалл прекращено. Время вокруг кристалла вернулось в привычное течение.", name, "Engineering", list(z))
+		radio.autosay("Внимание: Неизвестное воздействие на кристалл прекращено. Время вокруг кристалла вернулось в привычное течение.", name, "Engineering")
 		GLOB.frozen_atom_list -= src
 		processes = TRUE
 		cut_overlay(freeze_overlay)

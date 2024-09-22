@@ -227,7 +227,7 @@
 			var/mob/living/carbon/human/H = M
 			var/datum/dna/D = data["dna"]
 			if(!D.species.is_small)
-				H.change_dna(D, TRUE, TRUE)
+				H.change_dna(D, TRUE)
 
 	return ..()
 
@@ -438,13 +438,13 @@
 	description = "A toxin that affects the stamina of a person when injected into the bloodstream."
 	reagent_state = LIQUID
 	color = "#6E2828"
-	data = 13
 	taste_description = "bitterness"
+	var/damage_per_cycle = 13
 
 /datum/reagent/staminatoxin/on_mob_life(mob/living/M)
 	var/update_flags = STATUS_UPDATE_NONE
-	update_flags |= M.adjustStaminaLoss(REAGENTS_EFFECT_MULTIPLIER * data, FALSE)
-	data = max(data - 1, 3)
+	update_flags |= M.adjustStaminaLoss(damage_per_cycle * REAGENTS_EFFECT_MULTIPLIER, FALSE)
+	damage_per_cycle = max(damage_per_cycle - 1, 3)
 	return ..() | update_flags
 
 
@@ -468,12 +468,11 @@
 	id = "beer2"
 	description = "An alcoholic beverage made from malted grains, hops, yeast, and water."
 	color = "#664300" // rgb: 102, 67, 0
-	metabolization_rate = 0.1 * REAGENTS_METABOLISM
+	metabolization_rate = 0.1
 	drink_icon ="beerglass"
 	drink_name = "Beer glass"
 	drink_desc = "A freezing pint of beer"
 	taste_description = "beer"
-	taste_description = "piss water"
 
 /datum/reagent/beer2/on_mob_life(mob/living/M)
 	var/update_flags = STATUS_UPDATE_NONE

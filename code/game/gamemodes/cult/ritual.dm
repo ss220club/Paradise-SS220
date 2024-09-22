@@ -20,8 +20,8 @@
 	force = 16
 	scribe_multiplier = 0.1
 
-/obj/item/melee/cultblade/dagger/New()
-	..()
+/obj/item/melee/cultblade/dagger/Initialize(mapload)
+	. = ..()
 	icon_state = GET_CULT_DATA(dagger_icon, "blood_dagger")
 	item_state = GET_CULT_DATA(dagger_icon, "blood_dagger")
 
@@ -136,7 +136,7 @@
 	var/turf/runeturf = get_turf(user)
 	var/datum/game_mode/gamemode = SSticker.mode
 	if(ispath(rune, /obj/effect/rune/summon))
-		if(!is_station_level(runeturf.z) || istype(A, /area/space))
+		if(!is_station_level(runeturf.z) || isspacearea(A))
 			to_chat(user, "<span class='cultitalic'>The veil is not weak enough here to summon a cultist, you must be on station!</span>")
 			return
 
@@ -153,7 +153,7 @@
 		if(!(A in summon_areas)) // Check again to make sure they didn't move
 			to_chat(user, "<span class='cultlarge'>The ritual can only begin where the veil is weak - in [english_list(summon_areas)]!</span>")
 			return
-		GLOB.major_announcement.Announce("Образы древнего богоподобного существа соединяются воединно в [A.map_name] из неизвестного измерения. Прервите ритуал любой ценой, пока станция не была уничтожена! Действие космических законов и стандартных рабочих процедур приостановлено. Всему экипажу - ликвидировать культистов на месте.", "Отдел по делам Высших Измерений.", 'sound/AI/spanomalies.ogg')
+		GLOB.major_announcement.Announce("Образы древнего богоподобного существа соединяются воединно в [A.map_name] из неизвестного измерения. Прервите ритуал любой ценой, пока станция не была уничтожена! Действие космических законов и стандартных рабочих процедур приостановлено. Всему экипажу - ликвидировать культистов на месте.", "Отдел по делам Высших Измерений", 'sound/AI/cult_summon.ogg')
 		for(var/I in spiral_range_turfs(1, user, 1))
 			var/turf/T = I
 			var/obj/machinery/shield/cult/narsie/N = new(T)

@@ -17,6 +17,10 @@
 /obj/item/organ/internal/cyberimp/emp_act()
 	return // These shouldn't be hurt by EMPs in the standard way
 
+/obj/item/organ/internal/cyberimp/examine(mob/user)
+	. = ..()
+	. += "<span class='notice'>It looks like it belongs in the [parse_zone(parent_organ)].</span>"
+
 //[[[[BRAIN]]]]
 
 /obj/item/organ/internal/cyberimp/brain
@@ -377,8 +381,8 @@
 /datum/action/item_action/organ_action/toggle/sensory_enhancer
 	name = "Activate Qani-Laaca System"
 	desc = "Activates your Qani-Laaca computer and grants you its powers. LMB: Short, safer activation. ALT/MIDDLE: Longer, more powerful, more dangerous activation."
-	button_icon = 'icons/obj/surgery.dmi'
-	button_icon_state = "sandy"
+	button_overlay_icon = 'icons/obj/surgery.dmi'
+	button_overlay_icon_state = "sandy"
 	check_flags = AB_CHECK_CONSCIOUS
 	/// Keeps track of how much mephedrone we inject into people on activation
 	var/injection_amount = 10
@@ -417,7 +421,7 @@
 	playsound(human_owner, 'sound/goonstation/items/hypo.ogg', 80, TRUE)
 
 	var/obj/item/telegraph_vial = new /obj/item/qani_laaca_telegraph(get_turf(owner))
-	var/turf/turf_we_throw_at = get_edge_target_turf(owner, reverse_direction(owner.dir))
+	var/turf/turf_we_throw_at = get_edge_target_turf(owner, REVERSE_DIR(owner.dir))
 	telegraph_vial.throw_at(turf_we_throw_at, 5, 1)
 
 	// Safety net in case the injection amount doesn't get reset. Apparently it happened to someone in a round.
@@ -739,12 +743,12 @@
 	if(crit_fail)
 		return
 	if(owner.maxHealth == owner.health)
-		owner.adjust_nutrition(-0.5)
+		owner.adjust_nutrition(-0.25)
 		return //Passive damage scanning
 
 	owner.adjustBruteLoss(-0.5, robotic = TRUE)
 	owner.adjustFireLoss(-0.5, robotic = TRUE)
-	owner.adjust_nutrition(-4) //Very power inefficent. Hope you got an APC nearby.
+	owner.adjust_nutrition(-2) //Very power inefficent. Hope you got an APC nearby.
 
 /obj/item/organ/internal/cyberimp/chest/ipc_repair/emp_act(severity)
 	if(!owner || emp_proof || crit_fail)

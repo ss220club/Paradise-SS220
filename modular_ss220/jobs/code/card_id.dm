@@ -18,21 +18,6 @@
 
 	. = ..()
 
-GLOBAL_LIST_INIT(card_skins_ss220, list(
-	"intern", "student", "trainee", "cadet",	// novice
-))
-
-GLOBAL_LIST_INIT(card_skins_donor_ss220, list(
-	"barber", "bath", "casino", "waiter", "acolyte", "deliverer", "wrestler", "painter", "musician", "actor",			// 2 tier
-	"administrator", "touristtsf", "touristussp", "cliningmanajer", "apprentice", "guard", "migrant", "uncertain",	// 3 tier
-	"adjutant", "butler", "maid", "representativetsf", "representativeussp", "dealer", // 4 tier
-	"vipcorporateguest", "banker", "securityclown",	// 5 tier
-))
-
-/obj/item/card/id/syndicate/Initialize()
-	. = ..()
-	appearances |= GLOB.card_skins_ss220 + GLOB.card_skins_donor_ss220
-
 /obj/item/card/id/medical/intern
 	name = "Intern ID"
 	registered_name = "Intern"
@@ -90,7 +75,7 @@ GLOBAL_LIST_INIT(card_skins_donor_ss220, list(
 
 /obj/item/card/id/courier
 	name = "Deliverer ID"
-	access = list(ACCESS_MAINT_TUNNELS, ACCESS_MAILSORTING, ACCESS_CARGO, ACCESS_MINT, ACCESS_MINERAL_STOREROOM)
+	access = list(ACCESS_MAINT_TUNNELS, ACCESS_MAILSORTING, ACCESS_CARGO, ACCESS_MINERAL_STOREROOM)
 	icon = 'modular_ss220/aesthetics/better_ids/icons/better_ids.dmi'
 	icon_state = "deliverer"
 
@@ -140,7 +125,7 @@ GLOBAL_LIST_INIT(card_skins_donor_ss220, list(
 	name = "Clining Manager ID"
 	access = list(ACCESS_JANITOR, ACCESS_MAINT_TUNNELS, ACCESS_EXTERNAL_AIRLOCKS, ACCESS_MEDICAL)
 	icon = 'modular_ss220/aesthetics/better_ids/icons/better_ids.dmi'
-	icon_state = "cleaningmanager"
+	icon_state = "managerjanitor"
 
 /obj/item/card/id/apprentice
 	name = "Apprentice ID"
@@ -168,20 +153,20 @@ GLOBAL_LIST_INIT(card_skins_donor_ss220, list(
 
 /obj/item/card/id/adjutant
 	name = "Adjutant ID"
-	access = list(ACCESS_LIBRARY, ACCESS_HEADS, ACCESS_EVA, ACCESS_LAWYER, ACCESS_COURT, ACCESS_SEC_DOORS, ACCESS_MAINT_TUNNELS, ACCESS_RESEARCH, ACCESS_MEDICAL, ACCESS_CONSTRUCTION, ACCESS_MAILSORTING)
+	access = list(ACCESS_LIBRARY, ACCESS_HEADS, ACCESS_EVA, ACCESS_INTERNAL_AFFAIRS, ACCESS_COURT, ACCESS_SEC_DOORS, ACCESS_MAINT_TUNNELS, ACCESS_RESEARCH, ACCESS_MEDICAL, ACCESS_CONSTRUCTION, ACCESS_MAILSORTING)
 	icon = 'modular_ss220/aesthetics/better_ids/icons/better_ids.dmi'
 	icon_state = "adjutant"
 	item_state = "silver-id"
 
 /obj/item/card/id/butler
 	name = "Butler ID"
-	access = list(ACCESS_MAINT_TUNNELS, ACCESS_LIBRARY, ACCESS_HEADS, ACCESS_EVA, ACCESS_LAWYER)
+	access = list(ACCESS_MAINT_TUNNELS, ACCESS_LIBRARY, ACCESS_HEADS, ACCESS_EVA, ACCESS_INTERNAL_AFFAIRS)
 	icon = 'modular_ss220/aesthetics/better_ids/icons/better_ids.dmi'
 	icon_state = "butler"
 
 /obj/item/card/id/maid
 	name = "Maid ID"
-	access = list(ACCESS_MAINT_TUNNELS, ACCESS_LIBRARY, ACCESS_HEADS, ACCESS_EVA, ACCESS_LAWYER)
+	access = list(ACCESS_MAINT_TUNNELS, ACCESS_LIBRARY, ACCESS_HEADS, ACCESS_EVA, ACCESS_INTERNAL_AFFAIRS)
 	icon = 'modular_ss220/aesthetics/better_ids/icons/better_ids.dmi'
 	icon_state = "maid"
 
@@ -201,7 +186,7 @@ GLOBAL_LIST_INIT(card_skins_donor_ss220, list(
 
 /obj/item/card/id/dealer
 	name = "Dealer ID"
-	access = list(ACCESS_MAINT_TUNNELS, ACCESS_LIBRARY, ACCESS_RC_ANNOUNCE, ACCESS_MAILSORTING, ACCESS_CARGO, ACCESS_MINT, ACCESS_MINERAL_STOREROOM, ACCESS_CONSTRUCTION)
+	access = list(ACCESS_MAINT_TUNNELS, ACCESS_LIBRARY, ACCESS_RC_ANNOUNCE, ACCESS_MAILSORTING, ACCESS_CARGO, ACCESS_MINERAL_STOREROOM, ACCESS_CONSTRUCTION)
 	icon = 'modular_ss220/aesthetics/better_ids/icons/better_ids.dmi'
 	icon_state = "dealer"
 

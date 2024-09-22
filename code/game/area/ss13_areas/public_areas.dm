@@ -86,8 +86,19 @@
 /area/station/hallway/primary/central/se
 
 /area/station/hallway/spacebridge
-	sound_environment = SOUND_AREA_LARGE_ENCLOSED
 	icon_state = "hall_space"
+
+/area/station/hallway/spacebridge/security
+	icon_state = "hall_space"
+	name = "\improper Security Space Bridge"
+
+/area/station/hallway/spacebridge/security/west
+	icon_state = "hall_space"
+	name = "\improper Security West Space Bridge"
+
+/area/station/hallway/spacebridge/security/south
+	icon_state = "hall_space"
+	name = "\improper Security South Space Bridge"
 
 /area/station/hallway/spacebridge/dockmed
 	name = "Docking-Medical Bridge"
@@ -149,10 +160,7 @@
 	name = "Дормитории"
 	icon_state = "dorms"
 	sound_environment = SOUND_AREA_STANDARD_STATION
-
-
-/area/crew_quarters/toilet/aux
-	name = "Вспомогательные Туалеты"
+	request_console_name = "Crew Quarters"
 
 /area/station/public/sleep
 	name = "Криохранилище Дормитория"
@@ -166,6 +174,7 @@
 /area/station/public/locker
 	name = "Бытовое Помещение"
 	icon_state = "locker"
+	request_console_name = "Crew Quarters"
 
 /area/station/public/toilet
 	name = "Туалеты Дормиторий"
@@ -181,6 +190,7 @@
 /area/station/public/fitness
 	name = "Фитнес-Зал"
 	icon_state = "fitness"
+	request_console_name = "Crew Quarters"
 
 /area/station/public/arcade
 	name = "Аркаданый Зал"
@@ -198,7 +208,9 @@
 	name = "Свободный Офис"
 	icon_state = "vacantoffice"
 
-/area/station/public/vacant_office/secondary
+/area/station/public/storefront
+	name = "\improper Storefront"
+	icon_state = "vacantoffice"
 
 //Storage
 /area/station/public/storage
@@ -211,6 +223,7 @@
 /area/station/public/storage/tools
 	name = "Основное Хранилище Инструментов"
 	icon_state = "primarystorage"
+	request_console_name = "Tool Storage"
 
 /area/station/public/storage/art
 	name = "Хранилище Художественных Принадлежностей"
@@ -245,3 +258,17 @@
 
 /area/station/public/quantum/cargo
 	name = "Cargo Quantum Pad"
+
+/area/station/public/quantum/service
+	name = "Service Quantum Pad"
+
+/area/station/public/quantum/medbay
+	name = "Medbay Quantum Pad"
+
+/area/station/public/park
+	name = "Public Nature Reserve"
+	icon_state = "park"
+
+/area/station/public/shops
+	name = "Dorms Public Storefront"
+	icon_state = "shop"

@@ -26,7 +26,7 @@ To draw a rune, use a ritual dagger.
 	mouse_opacity = MOUSE_OPACITY_OPAQUE // So that runes aren't so hard to click
 	var/visibility = 0
 	var/view_range = 7
-	invisibility = 25
+	invisibility = INVISIBILITY_RUNES
 	layer = SIGIL_LAYER
 	color = COLOR_BLOOD_BASE
 
@@ -57,8 +57,8 @@ To draw a rune, use a ritual dagger.
 	/// The color of the rune. (Based on species blood color)
 	var/rune_blood_color = COLOR_BLOOD_BASE
 
-/obj/effect/rune/New(loc, set_keyword)
-	..()
+/obj/effect/rune/Initialize(mapload, set_keyword)
+	. = ..()
 	if(set_keyword)
 		keyword = set_keyword
 	var/image/blood = image(loc = src)
@@ -354,8 +354,10 @@ structure_check() searches for nearby cultist structures required for the invoca
 				for(var/datum/disease/critical/crit in H.viruses) // cure all crit conditions
 					crit.cure()
 
-		H.uncuff()
+		H.clear_restraints()
 		H.Silence(6 SECONDS) //Prevent "HALP MAINT CULT" before you realise you're converted
+		if(H.reagents?.has_reagent("holywater"))
+			H.reagents.del_reagent("holywater") // Also prevent fill stomach with holy water and "forgot" about it after converting
 
 		var/obj/item/melee/cultblade/dagger/D = new(get_turf(src))
 		if(H.equip_to_slot_if_possible(D, SLOT_HUD_IN_BACKPACK, FALSE, TRUE))
@@ -400,7 +402,7 @@ structure_check() searches for nearby cultist structures required for the invoca
 				to_chat(M, "<span class='cultitalic'>You are now able to construct mirror shields inside the daemon forge.</span>")
 				SSticker.mode.cult_team.mirror_shields_active = TRUE
 		else
-			if(ishuman(offering) && offering.mind?.offstation_role && offering.mind.special_role != SPECIAL_ROLE_ERT) //If you try it on a ghost role, you get nothing
+			if((ishuman(offering) && offering.mind?.offstation_role && offering.mind.special_role != SPECIAL_ROLE_ERT) || HAS_MIND_TRAIT(offering, TRAIT_XENOBIO_SPAWNED_HUMAN)) //If you try it on a ghost role, or an envolved caterpillar/nymph, you get nothing
 				to_chat(M, "<span class='cultlarge'>\"This soul is of no use to either of us.\"</span>")
 				worthless = TRUE
 			else if(ishuman(offering) || isrobot(offering))
@@ -438,8 +440,8 @@ structure_check() searches for nearby cultist structures required for the invoca
 	var/obj/effect/temp_visual/cult/rune_spawn/rune2/outer_portal
 	var/listkey
 
-/obj/effect/rune/teleport/New(loc, set_keyword)
-	..()
+/obj/effect/rune/teleport/Initialize(mapload, set_keyword)
+	. = ..()
 	var/area/A = get_area(src)
 	var/locname = initial(A.name)
 	listkey = set_keyword ? "[set_keyword] [locname]":"[locname]"
@@ -511,7 +513,7 @@ structure_check() searches for nearby cultist structures required for the invoca
 		..()
 		if(is_mining_level(z) && !is_mining_level(target.z)) //No effect if you stay on lavaland
 			actual_selected_rune.handle_portal("lava")
-		else if(!is_station_level(z) || istype(get_area(src), /area/space))
+		else if(!is_station_level(z) || isspacearea(get_area(src)))
 			actual_selected_rune.handle_portal("space", T)
 		user.visible_message("<span class='warning'>There is a sharp crack of inrushing air, and everything above the rune disappears!</span>",
 							"<span class='cult'>You[moveuser ? "r vision blurs, and you suddenly appear somewhere else":" send everything above the rune away"].</span>")
@@ -907,7 +909,7 @@ structure_check() searches for nearby cultist structures required for the invoca
 
 	var/choice = tgui_alert(user, "You tear open a connection to the spirit realm...", "Invoke", list("Summon a Cult Ghost", "Ascend as a Dark Spirit", "Cancel"))
 	if(choice == "Summon a Cult Ghost")
-		if(!is_station_level(z) || istype(get_area(src), /area/space))
+		if(!is_station_level(z) || isspacearea(get_area(src)))
 			to_chat(user, "<span class='cultitalic'>The veil is not weak enough here to manifest spirits, you must be on station!</span>")
 			fail_invoke()
 			log_game("Manifest rune failed - not on station")
@@ -937,6 +939,8 @@ structure_check() searches for nearby cultist structures required for the invoca
 		if(IS_CULTIST(O) || jobban_isbanned(O, ROLE_CULTIST))
 			continue
 		if(!HAS_TRAIT(O, TRAIT_RESPAWNABLE) || QDELETED(src) || QDELETED(O))
+			continue
+		if(!O.mind)
 			continue
 		if(O.mind.current && HAS_TRAIT(O.mind.current, SCRYING))
 			continue
@@ -1041,8 +1045,8 @@ structure_check() searches for nearby cultist structures required for the invoca
 	scribe_damage = 10 //how much damage you take doing it
 	var/used = FALSE
 
-/obj/effect/rune/narsie/New()
-	..()
+/obj/effect/rune/narsie/Initialize(mapload)
+	. = ..()
 	cultist_name = "Summon [GET_CULT_DATA(entity_name, "your god")]"
 	cultist_desc = "tears apart dimensional barriers, calling forth [GET_CULT_DATA(entity_title3, "your god")]."
 
@@ -1075,7 +1079,7 @@ structure_check() searches for nearby cultist structures required for the invoca
 	for(var/mob/M in GLOB.player_list)
 		if(!isnewplayer(M)) // exclude people in the lobby
 			SEND_SOUND(M, sound('modular_ss220/aesthetics_sounds/sound/narsie/narsie_summon.ogg')) //SS220 EDIT
-			to_chat(M, "<span class='cultitalic'><b>The veil... <span class='big'>is...</span> <span class='reallybig'>TORN!!!--</span></b></span>")
+			to_chat(M, "<span class='cultitalic'><b>Барьер... <span class='big'>между мирами...</span> <span class='reallybig'>ПАЛ!!!--</span></b></span>")
 
 	icon_state = "rune_large_distorted"
 	var/turf/T = get_turf(src)

@@ -212,10 +212,10 @@
 	attacktext = "claw"
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	a_intent = INTENT_HARM
-	loot = list(/obj/effect/spawner/lootdrop/maintenance = 1)
+	loot = list(/obj/effect/spawner/random/maintenance = 1)
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_plas" = 0, "max_plas" = 1, "min_co2" = 0, "max_co2" = 5, "min_n2" = 5, "max_n2" = 0)
 	unsuitable_atmos_damage = 7.5
-	faction = list("vox")
+	faction = list("Vox")
 	check_friendly_fire = TRUE
 	status_flags = CANPUSH
 	del_on_death = TRUE
@@ -229,7 +229,7 @@
 	icon_dead = "voxmeleedead"
 	melee_damage_lower = 15
 	melee_damage_upper = 15
-	loot = list(/obj/effect/spawner/lootdrop/maintenance/two = 1)
+	loot = list(/obj/effect/spawner/lootdrop/maintenance/three = 1)
 	attacktext = "slash"
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	status_flags = 0
@@ -263,7 +263,7 @@
 	melee_damage_upper = 20
 	projectiletype = /obj/item/projectile/beam/laser
 	projectilesound = 'sound/weapons/laser.ogg'
-	loot = list(/obj/effect/spawner/lootdrop/maintenance = 1)
+	loot = list(/obj/effect/spawner/random/maintenance = 1)
 
 /mob/living/simple_animal/hostile/vox/ranged_laser/space
 	name = "Vox Helmsman"
@@ -950,7 +950,7 @@
 	retreat_distance = 5
 	minimum_distance = 5
 	dodging = TRUE
-	butcher_results = list(/obj/item/food/snacks/monstermeat/xenomeat = 2)
+	butcher_results = list(/obj/item/food/monstermeat/xenomeat = 2)
 	projectiletype = /obj/item/projectile/bullet/bullsquid
 	projectilesound = 'modular_ss220/aesthetics_sounds/sound/mobs/bullsquid/goo_attack3.ogg'
 	melee_damage_upper = 18
@@ -1002,7 +1002,7 @@
 	melee_damage_upper = 20
 	rapid_melee = 2
 	del_on_death = FALSE
-	butcher_results = list(/obj/item/food/snacks/monstermeat/xenomeat = 3)
+	butcher_results = list(/obj/item/food/monstermeat/xenomeat = 3)
 	attack_sound = 'sound/weapons/bite.ogg'
 	gold_core_spawnable = HOSTILE_SPAWN
 	minbodytemp = 0
@@ -1344,7 +1344,7 @@
 	switch(RollForLoot)
 		// 16%
 		if(1 to 8)
-			pick(SynMobDrop = /obj/item/food/snacks/syndicake,
+			pick(SynMobDrop = /obj/item/food/syndicake,
 				SynMobDrop = /obj/item/poster/random_contraband)
 		// 14%
 		if(8 to 15)
@@ -1364,7 +1364,7 @@
 		if(24 to 27)
 			pick(SynMobDrop = /obj/item/reagent_containers/patch/styptic/small,
 				SynMobDrop = /obj/item/reagent_containers/patch/silver_sulf/small,
-				SynMobDrop = /obj/item/food/snacks/donkpocket)
+				SynMobDrop = /obj/item/food/donkpocket)
 		// 4%
 		if(27 to 29)
 			pick(SynMobDrop = /obj/item/reagent_containers/patch/styptic,
@@ -1385,7 +1385,7 @@
 	switch(rand(1,100))
 		// 1%
 		if(1)
-			SynSpace = /obj/item/clothing/suit/space/hardsuit/syndi
+			SynSpace = /obj/item/mod/control/pre_equipped/nuclear
 		else
 			SynSpace = /obj/item/ammo_casing/c10mm
 	return ..()

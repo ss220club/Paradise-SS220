@@ -97,9 +97,9 @@ GLOBAL_LIST_EMPTY(PDAs)
 
 /obj/item/pda/examine(mob/user)
 	. = ..()
-	. += "<span class='info'><b>Alt-Click</b> [src] to remove its ID card.</span>"
-	. += "<span class='info'><b>Ctrl-Click</b> [src] to remove its pen.</span>"
-	. += "<span class='info'>Use a screwdriver on [src] to reset it.</span>"
+	. += "<span class='notice'><b>Alt-Click</b> [src] to remove its ID card.</span>"
+	. += "<span class='notice'><b>Ctrl-Click</b> [src] to remove its pen.</span>"
+	. += "<span class='notice'>Use a screwdriver on [src] to reset it.</span>"
 
 /obj/item/pda/proc/can_use()
 	if(!ismob(loc))
@@ -312,9 +312,6 @@ GLOBAL_LIST_EMPTY(PDAs)
 			add_pen(C)
 			to_chat(user, "<span class='notice'>You slide \the [C] into \the [src].</span>")
 			playsound(src, 'sound/machines/pda_button1.ogg', 50, TRUE)
-	else if(istype(C, /obj/item/nanomob_card))
-		if(cartridge && istype(cartridge, /obj/item/cartridge/mob_hunt_game))
-			cartridge.attackby(C, user, params)
 
 /obj/item/pda/proc/add_pen(obj/item/P)
 	P.forceMove(src)

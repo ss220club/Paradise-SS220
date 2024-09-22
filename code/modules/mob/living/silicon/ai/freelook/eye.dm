@@ -42,6 +42,10 @@
 /mob/camera/aiEye/Move()
 	return 0
 
+/mob/camera/aiEye/Process_Spacemove(movement_dir)
+	// Nothing in space can stop us from moving.
+	return 1
+
 /mob/camera/aiEye/proc/GetViewerClient()
 	if(ai)
 		return ai.client
@@ -137,7 +141,7 @@
 	set category = "Команды ИИ"
 	set name = "Переключить ускорение камеры"
 
-	if(usr.stat == 2)
+	if(usr.stat == DEAD)
 		return //won't work if dead
 	acceleration = !acceleration
 	to_chat(usr, "Ускорение камеры было [acceleration ? "включено" : "отключено"].")

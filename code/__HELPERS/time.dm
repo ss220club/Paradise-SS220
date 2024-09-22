@@ -5,9 +5,9 @@
 // So you can be all 10 SECONDS
 #define SECONDS *10
 
-#define MINUTES SECONDS*60
+#define MINUTES *600
 
-#define HOURS MINUTES*60
+#define HOURS *36000
 
 #define TICKS *world.tick_lag
 
@@ -121,7 +121,7 @@
 /proc/seconds_to_time(seconds as num)
 	var/numSeconds = seconds % 60
 	var/numMinutes = (seconds - numSeconds) / 60
-	return "[numMinutes] [(numMinutes % 10) != 1 ? "минут(ы)" : "минута"] и [numSeconds] секунд"
+	return "[numMinutes] [declension_ru(numMinutes, "минута", "минуты", "минут")] и [numSeconds] [declension_ru(numSeconds, "секунда", "секунды", "секунд")]"
 
 /// Take a value in seconds and makes it display like a clock. Hours are stripped. (mm:ss)
 /proc/seconds_to_clock(seconds as num)

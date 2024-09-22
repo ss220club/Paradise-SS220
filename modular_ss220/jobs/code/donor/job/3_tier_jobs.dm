@@ -34,7 +34,7 @@
 	pda = /obj/item/pda/librarian
 	id = /obj/item/card/id/administrator
 	backpack_contents = list(
-		/obj/item/clothing/under/rank/procedure/lawyer/black = 1,
+		/obj/item/clothing/under/rank/procedure/iaa/formal/black = 1,
 		/obj/item/clothing/under/misc/waiter = 1,
 		/obj/item/eftpos = 1,
 		/obj/item/clipboard = 1,
@@ -148,11 +148,11 @@
 
 	uniform = /obj/item/clothing/under/rank/civilian/janitor
 	suit = /obj/item/clothing/suit/apron/overalls
-	shoes = /obj/item/clothing/shoes/galoshes/dry
+	shoes = /obj/item/clothing/shoes/galoshes/dry/lightweight
 	gloves = /obj/item/clothing/gloves/color/purple
 	mask = /obj/item/clothing/mask/bandana/purple
 	head = /obj/item/clothing/head/soft/purple
-	belt = /obj/item/storage/belt/janitor/full
+	belt = /obj/item/storage/belt/janitor/full/donor
 	r_pocket = /obj/item/door_remote/janikeyring
 	l_ear = /obj/item/radio/headset/headset_service
 	pda = /obj/item/pda/janitor
@@ -161,6 +161,7 @@
 		/obj/item/clothing/head/beret/purple_normal = 1,
 		/obj/item/clothing/suit/storage/iaa/purplejacket = 1,
 		/obj/item/clipboard = 1,
+		/obj/item/reagent_containers/spray/cleaner = 1,
 	)
 
 
@@ -174,7 +175,7 @@
 				back = /obj/item/storage/backpack
 				shoes = /obj/item/clothing/shoes/workboots
 				mask = /obj/item/clothing/mask/gas
-				head = /obj/item/clothing/head/soft/grey
+				head = /obj/item/clothing/head/soft
 				belt = /obj/item/storage/belt/fannypack/white
 				gloves = /obj/item/clothing/gloves/color/grey
 				l_hand = /obj/item/storage/toolbox/mechanical
@@ -215,7 +216,7 @@
 	back = /obj/item/storage/backpack
 	shoes = /obj/item/clothing/shoes/workboots
 	mask = /obj/item/clothing/mask/gas
-	head = /obj/item/clothing/head/soft/grey
+	head = /obj/item/clothing/head/soft
 	belt = /obj/item/storage/belt/fannypack/white
 	gloves = /obj/item/clothing/gloves/color/grey
 	l_hand = /obj/item/storage/toolbox/mechanical
@@ -295,10 +296,10 @@
 	id = /obj/item/card/id/migrant
 	backpack_contents = list(
 		/obj/item/reagent_containers/drinks/bottle/tequila = 1,
-		/obj/item/food/snacks/taco = 6,
-		/obj/item/food/snacks/nachos = 3,
-		/obj/item/food/snacks/cheesenachos = 3,
-		/obj/item/food/snacks/cubannachos = 3,
+		/obj/item/food/taco = 6,
+		/obj/item/food/nachos = 3,
+		/obj/item/food/cheesenachos = 3,
+		/obj/item/food/cubannachos = 3,
 		/obj/item/clothing/suit/poncho/red = 1,
 		/obj/item/clothing/suit/poncho/green = 1,
 		)
@@ -336,8 +337,8 @@
 	backpack_contents = list(
 		/obj/item/reagent_containers/drinks/bottle/vodka = 1,
 		/obj/item/storage/fancy/cigarettes/cigpack_random = 2,
-		/obj/item/food/snacks/doshik = 3,
-		/obj/item/food/snacks/doshik_spicy = 3,
+		/obj/item/food/fancy/doshik = 3,
+		/obj/item/food/fancy/doshik_spicy = 3,
 		/obj/item/clothing/suit/mantle/old = 1,
 		/obj/item/clothing/head/flatcap = 1,
 		/obj/item/clothing/suit/browntrenchcoat = 1,

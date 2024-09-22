@@ -27,6 +27,7 @@ CREATE TABLE `characters` (
   `real_name` varchar(55) COLLATE utf8mb4_unicode_ci NOT NULL,
   `name_is_always_random` tinyint(1) NOT NULL,
   `gender` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `body_type` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL,
   `age` smallint(4) NOT NULL,
   `species` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
   `language` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -79,8 +80,8 @@ CREATE TABLE `characters` (
   `hair_gradient_colour` varchar(7) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '#000000',
   `hair_gradient_alpha` tinyint(3) UNSIGNED NOT NULL DEFAULT '255',
   `custom_emotes` LONGTEXT COLLATE 'utf8mb4_unicode_ci' DEFAULT NULL,
+  `runechat_color` VARCHAR(7) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '#FFFFFF',
   `cyborg_brain_type` ENUM('MMI', 'Robobrain', 'Positronic') NOT NULL DEFAULT 'MMI',
-  `tts_seed` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `ckey` (`ckey`)
 ) ENGINE=InnoDB AUTO_INCREMENT=125467 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -280,6 +281,8 @@ CREATE TABLE `player` (
   `toggles` int(11) DEFAULT NULL,
   `toggles_2` int(11) DEFAULT NULL,
   `sound` mediumint(8) DEFAULT '31',
+  `light` MEDIUMINT(3) NOT NULL DEFAULT '7',
+  `glowlevel` TINYINT(1) NOT NULL DEFAULT '1',
   `volume_mixer` LONGTEXT COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `lastchangelog` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
   `exp` LONGTEXT COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -298,7 +301,6 @@ CREATE TABLE `player` (
   `server_region` VARCHAR(32) NULL DEFAULT NULL COLLATE 'utf8mb4_general_ci',
   `muted_adminsounds_ckeys` MEDIUMTEXT NULL DEFAULT NULL COLLATE 'utf8mb4_general_ci',
   `viewrange` VARCHAR(5) NOT NULL DEFAULT '19x15' COLLATE 'utf8mb4_general_ci',
-  `species_whitelist` LONGTEXT COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `ckey` (`ckey`),
   KEY `lastseen` (`lastseen`),
@@ -405,8 +407,11 @@ CREATE TABLE `notes` (
   `server` varchar(50) NOT NULL,
   `crew_playtime` mediumint(8) UNSIGNED DEFAULT '0',
   `automated` TINYINT(3) UNSIGNED NULL DEFAULT '0',
+  `deleted` TINYINT(4) NOT NULL DEFAULT '0',
+  `deletedby` VARCHAR(32) NULL DEFAULT NULL COLLATE 'utf8mb4_general_ci',
   PRIMARY KEY (`id`),
-  KEY `ckey` (`ckey`)
+  KEY `ckey` (`ckey`),
+  KEY `deleted` (`deleted`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -502,7 +507,7 @@ CREATE TABLE `connection_log` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `datetime` datetime NOT NULL,
   `ckey` varchar(32) NOT NULL,
-  `ip` varchar(32) NOT NULL,
+  `ip` INT UNSIGNED NOT NULL,
   `computerid` varchar(32) NOT NULL,
   `server_id` VARCHAR(50) NULL DEFAULT NULL,
   `result` ENUM('ESTABLISHED','DROPPED - IPINTEL','DROPPED - BANNED','DROPPED - INVALID') NOT NULL DEFAULT 'ESTABLISHED' COLLATE 'utf8mb4_general_ci',
@@ -642,8 +647,13 @@ CREATE TABLE `json_datum_saves` (
 
 
 --
--- SS220 ADDITION AND EDITS
+-- SS220 ADDITIONS AND EDITS
 --
+
+# Updating DB from 49 to 49.220.1
+# Adds characters.tts_seed ~furior
+
+ALTER TABLE `characters` ADD `tts_seed` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL AFTER `custom_emotes`;
 
 --
 -- Table structure for table `ckey_whitelist`
@@ -674,3 +684,58 @@ CREATE TABLE `admin_wl` (
 	KEY `ckey` (`ckey`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+CREATE TABLE IF NOT EXISTS `discord_links` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ckey` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `discord_id` bigint(20) DEFAULT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
+  `one_time_token` varchar(100) NOT NULL,
+  `valid` tinyint(1) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE `budget` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`date` DATETIME NOT NULL DEFAULT current_timestamp(),
+	`ckey` VARCHAR(32) NULL DEFAULT NULL COLLATE 'utf8mb4_unicode_ci',
+	`amount` INT(10) UNSIGNED NOT NULL,
+	`source` VARCHAR(32) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`date_start` DATETIME NOT NULL DEFAULT current_timestamp(),
+	`date_end` DATETIME NULL DEFAULT (current_timestamp() + interval 1 month),
+	`is_valid` TINYINT(1) NOT NULL DEFAULT '1',
+	`discord_id` bigint(20) DEFAULT NULL,
+	PRIMARY KEY (`id`) USING BTREE
+) COLLATE='utf8mb4_general_ci' ENGINE=InnoDB;
+
+# Updating DB from 53.220.5 to 53.220.6
+# Adds species whitelist ~legendaxe
+
+ALTER TABLE `player` ADD `species_whitelist` LONGTEXT COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT ('["human"]');
+
+# Updating DB from 59.220.6 to 59.220.7
+# Adds SS220 toggle prefs ~Maxiemar
+
+DROP TABLE IF EXISTS `player_220`;
+CREATE TABLE `player_220` (
+	`ckey` VARCHAR(32) NOT NULL COLLATE utf8mb4_unicode_ci,
+	`toggles` int(11) DEFAULT NULL,
+	PRIMARY KEY (`ckey`) USING BTREE
+) COLLATE = utf8mb4_unicode_ci ENGINE = InnoDB;
+
+ALTER TABLE `player_220`
+ADD CONSTRAINT `fk_player_220_ckey`
+FOREIGN KEY (`ckey`) REFERENCES `player`(`ckey`)
+ON DELETE CASCADE
+ON UPDATE CASCADE;
+
+DROP TRIGGER IF EXISTS `player_insert`;
+DELIMITER //
+CREATE TRIGGER `player_insert`
+AFTER INSERT ON `player`
+FOR EACH ROW
+BEGIN
+    INSERT INTO `player_220` (`ckey`)
+    VALUES (NEW.ckey);
+END;
+//
+DELIMITER ;

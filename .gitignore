@@ -29,6 +29,7 @@ stddef.dm
 *.vscode/*
 !/.vscode/extensions.json
 !/.vscode/tasks.json
+!/.vscode/launch.json
 
 # ignore DMI tool build cache
 /tools/dmitool/bin/
@@ -68,5 +69,16 @@ $RECYCLE.BIN
 # Linux libs
 /*.so
 
+# VIM swap files.
+*.swp
+
+# Rust output.
+/milla/target/*
+
+# mkdocs output.
+site
+
 # SS220 EDIT
 sound/tts_cache/*
+config/lobby_music/sounds/*
+config/jukebox_music/sounds/*

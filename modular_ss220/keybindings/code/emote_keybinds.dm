@@ -73,6 +73,18 @@
 	linked_emote = /datum/emote/exercise/pushup
 	name = EMOTE_PUSHUP
 
+/datum/keybinding/emote/carbon/human/bark
+	linked_emote = /datum/emote/living/carbon/human/bark
+	name = EMOTE_HUMAN_BARK
+
+/datum/keybinding/emote/carbon/human/wbark
+	linked_emote = /datum/emote/living/carbon/human/wbark
+	name = EMOTE_HUMAN_WBARK
+
+/datum/keybinding/emote/carbon/human/ururu
+	linked_emote = /datum/emote/living/carbon/human/ururu
+	name = EMOTE_HUMAN_RUMBLE
+
 /datum/keybinding/emote/carbon/human/drask_talk/New()
 	..()
 	name += " (драск)"

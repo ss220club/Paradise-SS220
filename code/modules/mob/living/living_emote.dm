@@ -11,7 +11,6 @@
 	. = ..()
 	if(user.mind?.miming)
 		return FALSE  // shh
-	return .
 
 /datum/emote/living/blush
 	key = "blush"
@@ -74,12 +73,11 @@
 	muzzle_ignore = TRUE // makes sure that sound is played upon death
 	bypass_unintentional_cooldown = TRUE  // again, this absolutely MUST play when a user dies, if it can.
 	message = "цепенеет и расслабляется, взгляд становится пустым и безжизненным..."
-	message_alien = "цепенеет и расслабляется, взгляд становится пустым и безжизненным..."
-	message_robot = "на мгновение вздрагивает и замирает, глаза медленно темнеют."
+	message_alien = "издает затихающий гортанный визг, из его пасти пузырится зеленая кровь..."
+	message_robot = "издаёт короткую серию пронзительных звуковых сигналов, вздрагивает и падает, не функционируя."
 	message_AI = "скрипит, мерцая экраном, пока системы медленно выключаются."
-	message_alien = "издает ослабевающий крик, зеленая кровь пузырится из пасти..."
 	message_larva = "с тошнотворным шипением выдыхает воздух и падает на пол..."
-	message_monkey = "издаёт слабый звон, падает и перестаёт двигаться..."
+	message_monkey = "издаёт слабый визг, падает и перестаёт двигаться..."
 	message_simple = "перестаёт двигаться..."
 
 	mob_type_blacklist_typecache = list(
@@ -120,7 +118,7 @@
 	if(!istype(H))
 		return ..()
 	// special handling here: we don't want monkeys' gasps to sound through walls so you can actually walk past xenobio
-	playsound(user.loc, sound_path, sound_volume, TRUE, -8, frequency = H.get_age_pitch(H.dna.species.max_age), ignore_walls = !isnull(user.mind))
+	playsound(user.loc, sound_path, sound_volume, TRUE, -8, frequency = H.get_age_pitch(H.dna.species.max_age) * alter_emote_pitch(user), ignore_walls = !isnull(user.mind))
 
 /datum/emote/living/drool
 	key = "drool"
@@ -208,7 +206,7 @@
 				message_param = "пытается указать ногой на %t."
 			else
 				// nugget
-				message_param = "<span class='userdanger>ударяется головой о землю</span>, пытаясь двигаться в направлении %t."
+				message_param = "<span class='userdanger'>ударяется головой о землю</span>, пытаясь двигаться в направлении %t."
 
 	return ..()
 

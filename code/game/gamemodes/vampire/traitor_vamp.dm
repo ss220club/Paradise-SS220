@@ -2,7 +2,7 @@
 	name = "traitor_vampire"
 	config_tag = "traitorvamp"
 	traitors_possible = 3 //hard limit on traitors if scaling is turned off
-	protected_jobs = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Blueshield", "Nanotrasen Representative", "Magistrate", "Internal Affairs Agent", "Nanotrasen Navy Officer", "Special Operations Officer", "Solar Federation General")
+	protected_jobs = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Blueshield", "Nanotrasen Representative", "Magistrate", "Internal Affairs Agent", "Nanotrasen Navy Officer", "Special Operations Officer", "Trans-Solar Federation General")
 	restricted_jobs = list("Cyborg")
 	secondary_restricted_jobs = list("AI", "Chaplain")
 	required_players = 10
@@ -28,7 +28,7 @@
 		if((player.mind in possible_vampires) && (player.client.prefs.active_character.species in secondary_protected_species))
 			possible_vampires -= player.mind
 
-	if(possible_vampires.len > 0)
+	if(length(possible_vampires) > 0)
 		for(var/I in possible_vampires)
 			if(length(pre_vampires) >= secondary_enemies)
 				break

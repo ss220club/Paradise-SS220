@@ -29,7 +29,7 @@
 			/obj/item/disk/nuclear,
 			/obj/machinery/nuclearbomb),
 		"homing beacons" = list(
-			/obj/item/radio/beacon,
+			/obj/item/beacon,
 			/obj/machinery/quantumpad,
 			/obj/machinery/teleport/station,
 			/obj/machinery/teleport/hub,
@@ -53,7 +53,7 @@
 	var/blocking_item = "ERR_UNKNOWN"
 
 /obj/docking_port/mobile/supply/Initialize()
-	..()
+	. = ..()
 	for(var/T in subtypesof(/datum/economy/simple_seller))
 		var/datum/economy/simple_seller/seller = new T
 		simple_sellers += seller
@@ -75,7 +75,7 @@
 		return 2
 	return ..()
 
-/obj/docking_port/mobile/supply/dock(port)
+/obj/docking_port/mobile/supply/dock(obj/docking_port/stationary/port)
 	. = ..()
 	if(.)
 		return
@@ -84,11 +84,11 @@
 		// Ignore transit ports.
 		return
 
-	if(is_station_level(z))
+	if(is_station_level(port.z))
 		// Buy when arriving at the station.
 		buy()
 
-	if(z == level_name_to_num(CENTCOMM))
+	if(port.z == level_name_to_num(CENTCOMM))
 		// Sell when arriving at CentComm.
 		sell()
 
@@ -177,11 +177,11 @@
 			return CARGO_PREVENT_SHUTTLE
 		var/sellable = SEND_SIGNAL(src, COMSIG_CARGO_CHECK_SELL, AM)
 		manifest.items_to_sell[AM] = sellable
-		if(top_level && !(sellable & COMSIG_CARGO_IS_SECURED))
-			manifest.loose_cargo = TRUE
-		if(sellable & COMSIG_CARGO_SELL_PRIORITY)
-			if(top_level)
-				return CARGO_OK
+		if(top_level)
+			if(!AM.anchored && !(sellable & COMSIG_CARGO_IS_SECURED))
+				manifest.loose_cargo = TRUE
+			return CARGO_OK
+		if(found_priority || sellable & COMSIG_CARGO_SELL_PRIORITY)
 			return CARGO_HAS_PRIORITY
 
 	return CARGO_OK
@@ -220,9 +220,6 @@
 		if(E.is_cleanable())
 			return CARGO_OK
 
-	if(AM.anchored && !istype(AM, /obj/mecha/working))
-		return CARGO_SKIP_ATOM
-
 	return CARGO_OK
 
 
@@ -253,7 +250,7 @@
 			SSeconomy.sold_atoms += "[AM.name](mess)"
 			qdel_atoms += AM
 			continue
-		else if(!(sellable & COMSIG_CARGO_SELL_SKIP))
+		else if(!AM.anchored && !(sellable & COMSIG_CARGO_SELL_SKIP))
 			manifest.sent_trash = TRUE
 
 		rescue_atoms += AM
@@ -297,6 +294,7 @@
 	var/msg = "<center>---[station_time_timestamp()]---</center><br>"
 
 	var/list/credit_changes = list()
+	var/list/department_messages = list()
 	for(var/datum/economy/line_item/item in manifest.line_items)
 		if(!credit_changes[item.account])
 			credit_changes[item.account] = 0
@@ -309,6 +307,13 @@
 		else
 			msg += "<span class='bad'>[item.account.account_name] [item.credits]</span>: [item.reason]<br>"
 
+		if(item.requests_console_department)
+			if(!department_messages[item.requests_console_department])
+				department_messages[item.requests_console_department] = list()
+			if(!department_messages[item.requests_console_department][item.reason])
+				department_messages[item.requests_console_department][item.reason] = 0
+			department_messages[item.requests_console_department][item.reason]++
+
 	for(var/datum/money_account/account in credit_changes)
 		if(account.account_type == ACCOUNT_TYPE_DEPARTMENT)
 			SSblackbox.record_feedback("tally", "cargo profits", credit_changes[account], "[account.account_name]")
@@ -319,6 +324,15 @@
 			GLOB.station_money_database.credit_account(account, credit_changes[account], "Supply Shuttle Exports Payment", "Central Command Supply Master", supress_log = FALSE)
 		else
 			GLOB.station_money_database.charge_account(account, -credit_changes[account], "Supply Shuttle Fine", "Central Command Supply Master", allow_overdraft = TRUE, supress_log = FALSE)
+
+	for(var/department in department_messages)
+		var/list/rc_message = list()
+		for(var/message_piece in department_messages[department])
+			var/count = ""
+			if(department_messages[department][message_piece] > 1)
+				count = " (x[department_messages[department][message_piece]])"
+			rc_message += "[message_piece][count]"
+		send_requests_console_message(rc_message, "Central Command", department, "Stamped with the Central Command rubber stamp.", "Verified by the Central Command receiving department.", RQ_NORMALPRIORITY)
 
 	SSeconomy.centcom_message += "[msg]<hr>"
 	manifest = new
@@ -490,6 +504,22 @@
 
 	var/obj/item/paper/manifest/slip = AM
 
+	var/error = FALSE
+	if(/obj/item/stamp/denied in slip.stamped)
+		error = "Package [slip.ordernumber] rejected. A Nanotrasen supply department official will reach out to you in 2-3 business days."
+		SSblackbox.record_feedback("tally", "cargo manifests rejected", 1, "amount")
+	else if(!(/obj/item/stamp/granted in slip.stamped))
+		error = "Received unstamped manifest for package [slip.ordernumber]. Remember to stamp all manifests before returning them."
+		SSblackbox.record_feedback("tally", "cargo manifests not stamped", 1, "amount")
+
+	if(error)
+		var/datum/economy/line_item/item = new
+		item.account = SSeconomy.cargo_account
+		item.credits = 0
+		item.reason = error
+		manifest.line_items += item
+		return
+
 	var/datum/economy/line_item/item = new
 	item.account = SSeconomy.cargo_account
 	item.credits = SSeconomy.credits_per_manifest
@@ -508,16 +538,29 @@
 /datum/economy/simple_seller/tech_levels/begin_sell(obj/docking_port/mobile/supply/S)
 	temp_tech_levels = SSeconomy.tech_levels.Copy()
 
+/datum/economy/simple_seller/tech_levels/proc/get_price(tech_rarity, tech_level, sold_level = null)
+	// Calculates tech disk's supply points sell cost
+	if(!sold_level)
+		sold_level = 1
+
+	if(sold_level >= tech_level)
+		return 0
+
+	var/cost = 0
+	for(var/i in (sold_level + 1) to tech_level)
+		cost += i * 5 * tech_rarity
+
+	return cost
+
 /datum/economy/simple_seller/tech_levels/check_sell(obj/docking_port/mobile/supply/S, atom/movable/AM)
 	if(istype(AM, /obj/item/disk/tech_disk))
 		var/obj/item/disk/tech_disk/disk = AM
-		if(!disk.stored)
+		if(!disk.tech_id)
 			return COMSIG_CARGO_SELL_WRONG
-		var/datum/tech/tech = disk.stored
 
-		var/cost = tech.getCost(temp_tech_levels[tech.id])
+		var/cost = get_price(disk.tech_rarity, disk.tech_level, temp_tech_levels[disk.tech_id])
 		if(cost)
-			temp_tech_levels[tech.id] = tech.level
+			temp_tech_levels[disk.tech_id] = disk.tech_level
 			return COMSIG_CARGO_SELL_NORMAL
 		return COMSIG_CARGO_SELL_WRONG
 
@@ -526,28 +569,27 @@
 		return
 
 	var/obj/item/disk/tech_disk/disk = AM
-	if(!disk.stored)
+	if(!disk.tech_id)
 		return
-	var/datum/tech/tech = disk.stored
 
-	var/cost = tech.getCost(SSeconomy.tech_levels[tech.id])
+	var/cost = get_price(disk.tech_rarity, disk.tech_level, SSeconomy.tech_levels[disk.tech_id])
 	if(!cost)
 		return
 
-	SSeconomy.tech_levels[tech.id] = tech.level
+	SSeconomy.tech_levels[disk.tech_id] = disk.tech_level
 	SSblackbox.record_feedback("tally", "cargo tech disks sold", 1, "amount")
 	SSblackbox.record_feedback("tally", "cargo tech disks sold", cost, "credits")
 
 	var/datum/economy/line_item/cargo_item = new
 	cargo_item.account = SSeconomy.cargo_account
 	cargo_item.credits = cost / 2
-	cargo_item.reason = "[tech.name] - new data."
+	cargo_item.reason = "[disk.tech_name] - new data."
 	manifest.line_items += cargo_item
 
 	var/datum/economy/line_item/science_item = new
 	science_item.account = GLOB.station_money_database.get_account_by_department(DEPARTMENT_SCIENCE)
 	science_item.credits = cost / 2
-	science_item.reason = "[tech.name] - new data."
+	science_item.reason = "[disk.tech_name] - new data."
 	manifest.line_items += science_item
 
 /datum/economy/simple_seller/tech_levels/sell_wrong(obj/docking_port/mobile/supply/S, atom/movable/AM, datum/economy/cargo_shuttle_manifest/manifest)
@@ -559,16 +601,15 @@
 	item.credits = 0
 
 	var/obj/item/disk/tech_disk/disk = AM
-	if(!disk.stored)
+	if(!disk.tech_id)
 		item.reason = "Blank tech disk."
 		manifest.line_items += item
 		SSblackbox.record_feedback("tally", "cargo tech disks sold", 1, "blank")
 		return
 
-	var/datum/tech/tech = disk.stored
-	var/cost = tech.getCost(SSeconomy.tech_levels[tech.id])
+	var/cost = get_price(disk.tech_rarity, disk.tech_level, SSeconomy.tech_levels[disk.tech_id])
 	if(!cost)
-		item.reason = "[tech.name] - no new data."
+		item.reason = "[disk.tech_name] - no new data."
 		manifest.line_items += item
 		SSblackbox.record_feedback("tally", "cargo tech disks sold", 1, "repeat")
 
@@ -768,7 +809,7 @@
 
 /datum/economy/simple_seller/mechs/check_sell(obj/docking_port/mobile/supply/S, atom/movable/AM)
 	if(istype(AM, /obj/mecha/working))
-		return COMSIG_CARGO_SELL_NORMAL | COMSIG_CARGO_IS_SECURED
+		return COMSIG_CARGO_SELL_NORMAL
 
 
 // Skip mech parts to avoid complaining about them.
@@ -778,6 +819,34 @@
 	if(istype(AM.loc, /obj/mecha/working))
 		return COMSIG_CARGO_SELL_SKIP
 
+/datum/economy/simple_seller/explorer_salvage
+	var/list/salvage_counts = list()
+
+/datum/economy/simple_seller/explorer_salvage/begin_sell(obj/docking_port/mobile/supply/S)
+	LAZYCLEARLIST(salvage_counts)
+
+/datum/economy/simple_seller/explorer_salvage/check_sell(obj/docking_port/mobile/supply/S, atom/movable/AM)
+	if(istype(AM, /obj/item/salvage))
+		return COMSIG_CARGO_SELL_NORMAL
+
+/datum/economy/simple_seller/explorer_salvage/sell_normal(obj/docking_port/mobile/supply/S, atom/movable/AM, datum/economy/cargo_shuttle_manifest/manifest)
+	if(!..())
+		return
+
+	salvage_counts[AM.name]++
+
+/datum/economy/simple_seller/explorer_salvage/end_sell(obj/docking_port/mobile/supply/S, datum/economy/cargo_shuttle_manifest/manifest)
+	if(!salvage_counts)
+		return
+	for(var/salvage_name in salvage_counts)
+		var/datum/economy/line_item/item = new
+		item.account = SSeconomy.cargo_account
+		var/count = salvage_counts[salvage_name]
+		item.credits = count * SSeconomy.credits_per_salvage
+		item.reason = "Received [count] haul(s) of [salvage_name]."
+		manifest.line_items += item
+		SSblackbox.record_feedback("nested tally", "cargo salvage sold", count, list(salvage_name, "count"))
+		SSblackbox.record_feedback("nested tally", "cargo salvage sold", item.credits, list(salvage_name, "credits"))
 
 /datum/economy/cargo_shuttle_manifest
 	var/list/items_to_sell = list()
@@ -789,6 +858,7 @@
 
 /datum/economy/line_item
 	var/datum/money_account/account
+	var/requests_console_department
 	var/credits
 	var/reason
 	var/zero_is_good = FALSE

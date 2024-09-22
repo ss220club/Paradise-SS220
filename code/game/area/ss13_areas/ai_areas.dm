@@ -7,15 +7,12 @@
 	icon_state = "ai_upload"
 	sound_environment = SOUND_AREA_SMALL_ENCLOSED
 
-/area/station/turret_protected/ai_upload/foyer
-	name = "Фойе Аплоуда ИИ"
-	icon_state = "ai_foyer"
-	sound_environment = SOUND_AREA_SMALL_ENCLOSED
-
 /area/station/turret_protected/ai
 	name = "Зона Содержания ИИ"
 	icon_state = "ai_chamber"
 	ambientsounds = list('sound/ambience/ambitech.ogg', 'sound/ambience/ambitech2.ogg', 'sound/ambience/ambiatmos.ogg', 'sound/ambience/ambiatmos2.ogg')
+	request_console_flags = RC_ASSIST | RC_INFO
+	request_console_name = "AI"
 
 /area/station/turret_protected/aisat
 	name = "Спутник ИИ"
@@ -26,19 +23,14 @@
 	name = "Внешняя Комната Спутника ИИ"
 	icon_state = "ai"
 
-/area/station/aisat/entrance
-	name = "Вход Спутника ИИ"
-	icon_state = "ai"
-
-/area/station/aisat/maintenance
-	name = "Технические Тоннели Спутника ИИ"
-	icon_state = "ai"
-
 /area/station/aisat/atmos
 	name = "Атмос Спутника ИИ"
 
 /area/station/aisat/hall
 	name = "Коридор Спутника ИИ"
+
+/area/station/aisat/breakroom
+	name = "\improper AI Satellite Break Room Hallway"
 
 /area/station/aisat/service
 	name = "Сервисная Комната Спутника ИИ"
@@ -62,21 +54,7 @@
 	icon_state = "tcomms"
 
 // These areas are needed for MetaStation's AI sat
-/area/station/turret_protected/tcomfoyer
-	name = "Фойе Телекоммуникаций"
-	icon_state = "tcomms"
-	ambientsounds = list('sound/ambience/ambisin2.ogg', 'sound/ambience/signal.ogg', 'sound/ambience/signal.ogg', 'sound/ambience/ambigen10.ogg')
-
-/area/station/turret_protected/tcomeast
-	name = "Восточное Крыло Телекоммуникаций"
-	icon_state = "tcomms"
-	ambientsounds = list('sound/ambience/ambisin2.ogg', 'sound/ambience/signal.ogg', 'sound/ambience/signal.ogg', 'sound/ambience/ambigen10.ogg')
-
 /area/station/telecomms/computer
 	name = "Комната Управления Телекоммуникациями"
 	icon_state = "tcomms"
 	sound_environment = SOUND_AREA_MEDIUM_SOFTFLOOR
-
-/area/station/telecomms/server
-	name = "Серверная Комната Телекоммуникаций"
-	icon_state = "tcomms"

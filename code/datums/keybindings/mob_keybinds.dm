@@ -42,6 +42,22 @@
 	. = ..()
 	C.mob.swap_hand()
 
+/datum/keybinding/mob/hand_right
+	name = "Сменить на/Активировать правую руку"
+
+/datum/keybinding/mob/hand_right/down(client/C)
+	. = ..()
+	if(!C.mob.activate_hand(HAND_BOOL_RIGHT))
+		C.mob.mode()
+
+/datum/keybinding/mob/hand_left
+	name = "Сменить на/Активировать левую руку"
+
+/datum/keybinding/mob/hand_left/down(client/C)
+	. = ..()
+	if(!C.mob.activate_hand(HAND_BOOL_LEFT))
+		C.mob.mode()
+
 // Intents
 /datum/keybinding/mob/prev_intent
 	name = "Previous Intent"

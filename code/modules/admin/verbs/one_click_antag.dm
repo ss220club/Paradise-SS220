@@ -13,14 +13,20 @@
 /datum/admins/proc/one_click_antag()
 
 	var/dat = {"<B>One-click Antagonist</B><br>
-		<a href='?src=[UID()];makeAntag=1'>Make Traitors</a><br>
-		<a href='?src=[UID()];makeAntag=2'>Make Changelings</a><br>
-		<a href='?src=[UID()];makeAntag=3'>Make Revolutionaries</a><br>
-		<a href='?src=[UID()];makeAntag=4'>Make Cult</a><br>
-		<a href='?src=[UID()];makeAntag=5'>Make Wizard (Requires Ghosts)</a><br>
-		<a href='?src=[UID()];makeAntag=6'>Make Vampires</a><br>
-		<a href='?src=[UID()];makeAntag=7'>Make Abductor Team (Requires Ghosts)</a><br>
+		<a href='byond://?src=[UID()];makeAntag=1'>Make Traitors</a><br>
+		<a href='byond://?src=[UID()];makeAntag=2'>Make Changelings</a><br>
+		<a href='byond://?src=[UID()];makeAntag=3'>Make Revolutionaries</a><br>
+		<a href='byond://?src=[UID()];makeAntag=4'>Make Cult</a><br>
+		<a href='byond://?src=[UID()];makeAntag=5'>Make Wizard (Requires Ghosts)</a><br>
+		<a href='byond://?src=[UID()];makeAntag=6'>Make Vampires</a><br>
+		<a href='byond://?src=[UID()];makeAntag=7'>Make Abductor Team (Requires Ghosts)</a><br>
 		"}
+	// SS220 ADD - Start
+	dat += {"
+		<a href='byond://?src=[UID()];makeAntag=8'>Make Blood Brothers Team</a><br>
+		<a href='byond://?src=[UID()];makeAntag=9'>Make Vox Raiders</a><br>
+		"}
+	// SS220 ASS - End
 	usr << browse(dat, "window=oneclickantag;size=400x400")
 	return
 
@@ -60,8 +66,8 @@
 		if(CandCheck(ROLE_TRAITOR, applicant, temp))
 			candidates += applicant
 
-	if(candidates.len)
-		var/numTraitors = min(candidates.len, antnum)
+	if(length(candidates))
+		var/numTraitors = min(length(candidates), antnum)
 
 		for(var/i = 0, i<numTraitors, i++)
 			H = pick(candidates)
@@ -91,8 +97,8 @@
 		if(CandCheck(ROLE_CHANGELING, applicant, temp))
 			candidates += applicant
 
-	if(candidates.len)
-		var/numChangelings = min(candidates.len, antnum)
+	if(length(candidates))
+		var/numChangelings = min(length(candidates), antnum)
 
 		for(var/i = 0, i<numChangelings, i++)
 			H = pick(candidates)
@@ -121,8 +127,8 @@
 		if(CandCheck(ROLE_REV, applicant, temp))
 			candidates += applicant
 
-	if(candidates.len)
-		var/numRevs = min(candidates.len, antnum)
+	if(length(candidates))
+		var/numRevs = min(length(candidates), antnum)
 
 		for(var/i = 0, i<numRevs, i++)
 			H = pick(candidates)
@@ -142,7 +148,7 @@
 	log_admin("[key_name(owner)] tried making a Wizard with One-Click-Antag")
 	message_admins("[key_name_admin(owner)] tried making a Wizard with One-Click-Antag")
 
-	if(candidates.len)
+	if(length(candidates))
 		var/mob/dead/observer/selected = pick(candidates)
 		candidates -= selected
 
@@ -230,8 +236,8 @@
 
 /datum/admins/proc/create_syndicate_death_commando(obj/spawn_location, syndicate_leader_selected = 0)
 	var/mob/living/carbon/human/new_syndicate_commando = new(spawn_location.loc)
-	var/syndicate_commando_leader_rank = pick("Lieutenant", "Captain", "Major")
-	var/syndicate_commando_rank = pick("Corporal", "Sergeant", "Staff Sergeant", "Sergeant 1st Class", "Master Sergeant", "Sergeant Major")
+	var/syndicate_commando_leader_rank = pick("Лейтенант", "Капитан", "Майор")
+	var/syndicate_commando_rank = pick("Капрал", "Сержант", "Старший Сержант", "Сержант 1-го Класса", "Мастер-Сержант", "Сержант-Майор")
 	var/syndicate_commando_name = pick(GLOB.last_names)
 
 	var/datum/character_save/S = new //Randomize appearance for the commando.
@@ -276,8 +282,8 @@
 		if(CandCheck(ROLE_VAMPIRE, applicant, temp))
 			candidates += applicant
 
-	if(candidates.len)
-		var/numVampires = min(candidates.len, antnum)
+	if(length(candidates))
+		var/numVampires = min(length(candidates), antnum)
 
 		for(var/i = 0, i<numVampires, i++)
 			H = pick(candidates)

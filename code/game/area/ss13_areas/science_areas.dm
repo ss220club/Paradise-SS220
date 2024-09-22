@@ -3,6 +3,8 @@
 /area/station/science/robotics
 	name = "Робототехника"
 	icon_state = "robo"
+	request_console_flags = RC_SUPPLY
+	request_console_name = "Robotics"
 
 /area/station/science/robotics/chargebay
 	name = "Мех. Отсек РНД"
@@ -17,6 +19,8 @@
 /area/station/science/explab
 	name = "Лаборатория E.X.P.E.R.I-MENTOR"
 	icon_state = "scilab"
+	request_console_flags = RC_SUPPLY
+	request_console_name = "Science"
 
 /area/station/science/explab/chamber
 	name = "Камера E.X.P.E.R.I-MENTOR"
@@ -26,6 +30,10 @@
 	name = "Отдел Исследований"
 	icon_state = "sci"
 
+/area/station/science/lobby
+	name = "Фойе Отдела Исследований"
+	icon_state = "sci"
+
 /area/station/science/break_room
 	name = "Комната Отдыха РНД"
 	icon_state = "scibreak"
@@ -33,7 +41,8 @@
 /area/station/science/genetics
 	name = "Лаборатория Генетики"
 	icon_state = "genetics"
-
+	request_console_flags = RC_ASSIST
+	request_console_name = "Genetics"
 
 /area/station/science
 	sound_environment = SOUND_AREA_STANDARD_STATION
@@ -41,27 +50,19 @@
 /area/station/science/rnd
 	name = "Отдел Исследований"
 	icon_state = "rnd"
+	request_console_flags = RC_SUPPLY
+	request_console_name = "Science"
 
 /area/station/science/hallway
 	name = "Коридор РНД"
 	icon_state = "sci"
 
-/area/station/science/supermatter
-	name = "Лаборатория Суперматерии"
-	icon_state = "scilab"
-
 /area/station/science/xenobiology
 	name = "Лаборатория Ксенобиологии"
 	icon_state = "xenobio"
 	xenobiology_compatible = TRUE
-
-/area/station/science/xenobiology/xenoflora_storage
-	name = "Хранилище Ксенофлоры"
-	icon_state = "scilab"
-
-/area/station/science/xenobiology/xenoflora
-	name = "Лаборатория Ксенофлоры"
-	icon_state = "scilab"
+	request_console_flags = RC_ASSIST | RC_INFO
+	request_console_name = "Xenobiology"
 
 /area/station/science/storage
 	name = "Хранилище Токсинов РНД"
@@ -75,14 +76,20 @@
 /area/station/science/toxins/mixing
 	name = "Комната Смешивания Токсинов РНД"
 	icon_state = "toxmix"
+	request_console_flags = RC_SUPPLY
+	request_console_name = "Science"
 
 /area/station/science/toxins/launch
 	name = "Комната Запуска Токсинов РНД"
 	icon_state = "toxlaunch"
+	request_console_flags = RC_SUPPLY
+	request_console_name = "Science"
 
 /area/station/science/misc_lab
 	name = "Лаборатория Химии РНД"
 	icon_state = "scichem"
+	request_console_flags = RC_SUPPLY
+	request_console_name = "Science"
 
 /area/station/science/test_chamber
 	name = "Камера Химии РНД"

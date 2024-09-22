@@ -11,7 +11,7 @@
 
 /datum/event/spider_terror/announce(false_alarm)
 	if(successSpawn || false_alarm)
-		GLOB.major_announcement.Announce("Вспышка биологической угрозы уровня 3-ЭС зафиксирована на борту станции [station_name()]. Всему персоналу надлежит сдержать её распространение любой ценой!", "ВНИМАНИЕ: Биологическая угроза.", 'sound/effects/siren-spooky.ogg', new_sound2 = 'sound/AI/outbreak3.ogg')
+		GLOB.major_announcement.Announce("На борту [station_name()] обнаружены биологические сигнатуры заражения пауками Ужаса. Всему персоналу надлежит немедленно приступить к сдерживанию.", "ВНИМАНИЕ: Обнаружена биоугроза.", 'sound/effects/siren-spooky.ogg', new_sound2 = 'sound/AI/outbreak_terror.ogg')
 	else
 		log_and_message_admins("Warning: Could not spawn any mobs for event Terror Spiders")
 

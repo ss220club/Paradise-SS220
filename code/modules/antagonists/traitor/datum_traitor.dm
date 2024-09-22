@@ -1,3 +1,4 @@
+RESTRICT_TYPE(/datum/antagonist/traitor)
 
 // Syndicate Traitors.
 /datum/antagonist/traitor
@@ -11,6 +12,8 @@
 	clown_gain_text = "Your syndicate training has allowed you to overcome your clownish nature, allowing you to wield weapons without harming yourself."
 	clown_removal_text = "You lose your syndicate training and return to your own clumsy, clownish self."
 	wiki_page_name = "Traitor"
+	targeted_by_antag_message = "Our intelligence suggests that you are likely to be the target of a rival member of the Syndicate. \
+		Remain vigilant, they know who you are and what you can do."
 	/// Should the traitor get codewords?
 	var/give_codewords = TRUE
 	/// Should we give the traitor their uplink?
@@ -58,8 +61,6 @@
 		slaved.leave_serv_hud(owner)
 		owner.som = null
 
-	// Need to bring this functionality back to TGchat
-	// owner.current.client?.chatOutput?.clear_syndicate_codes()
 	// Try removing their uplink, check PDA
 	var/mob/M = owner.current
 	var/obj/item/uplink_holder = locate(/obj/item/pda) in M.contents
@@ -80,6 +81,14 @@
 		qdel(uplink_implant)
 
 	return ..()
+
+/datum/antagonist/traitor/select_organization()
+	var/chaos = pickweight(list(ORG_CHAOS_HUNTER = ORG_PROB_HUNTER, ORG_CHAOS_MILD = ORG_PROB_MILD, ORG_CHAOS_AVERAGE = ORG_PROB_AVERAGE, ORG_CHAOS_HIJACK = ORG_PROB_HIJACK))
+	for(var/org_type in shuffle(subtypesof(/datum/antag_org/syndicate)))
+		var/datum/antag_org/org = org_type
+		if(initial(org.chaos_level) == chaos)
+			organization = new org_type(src)
+			return
 
 /datum/antagonist/traitor/add_owner_to_gamemode()
 	SSticker.mode.traitors |= owner
@@ -105,23 +114,31 @@
  * Create and assign a full set of randomized human traitor objectives.
  */
 /datum/antagonist/traitor/proc/forge_human_objectives()
-	// Hijack objective.
-	if(prob(2) && !(locate(/datum/objective/hijack) in owner.get_all_objectives())) // SS220 EDIT prob(10 -> 2)
-		add_antag_objective(/datum/objective/hijack)
-		return // Hijack should be their only objective (normally), so return.
+	var/iteration = 1
+	var/can_succeed_if_dead = TRUE
+	// If our org has forced objectives, give them to us guaranteed.
+	if(organization && length(organization.forced_objectives))
+		for(var/forced_objectives in organization.forced_objectives)
+			var/datum/objective/forced_obj = forced_objectives
+			if(!ispath(forced_obj, /datum/objective/hijack) && delayed_objectives) // Hijackers know their objective immediately
+				forced_obj = new /datum/objective/delayed(forced_obj)
+			add_antag_objective(forced_obj)
+			iteration++
 
-	// Will give normal steal/kill/etc. type objectives.
-	for(var/i in 1 to GLOB.configuration.gamemode.traitor_objectives_amount)
+	if(locate(/datum/objective/hijack) in owner.get_all_objectives())
+		return //Hijackers only get hijack.
+
+	// Will give objectives from our org or random objectives.
+	for(var/i in iteration to GLOB.configuration.gamemode.traitor_objectives_amount)
 		forge_single_human_objective()
 
-	var/can_succeed_if_dead = TRUE
 	for(var/objective in owner.get_all_objectives())
 		var/datum/objective/O = objective
-		if(!O.martyr_compatible) // Check if our current objectives can co-exist with martyr.
+		if(!O.martyr_compatible) // Check if we need to stay alive in order to accomplish our objectives (Steal item, etc)
 			can_succeed_if_dead  = FALSE
 			break
 
-	// Give them an escape objective if they don't have one already.
+	// Give them an escape objective if they don't have one. 20 percent chance not to have escape if we can greentext without staying alive.
 	if(!(locate(/datum/objective/escape) in owner.get_all_objectives()) && (!can_succeed_if_dead || prob(80)))
 		add_antag_objective(/datum/objective/escape)
 
@@ -137,25 +154,41 @@
  * Create and assign a single randomized human traitor objective.
  */
 /datum/antagonist/traitor/proc/forge_single_human_objective()
-	if(prob(50))
-		if(length(active_ais()) && prob(100 / length(GLOB.player_list)))
-			add_antag_objective(/datum/objective/destroy)
-		else if(prob(5))
-			add_antag_objective(/datum/objective/debrain)
-		else if(prob(30))
-			add_antag_objective(/datum/objective/maroon)
-		else if(prob(30))
-			add_antag_objective(/datum/objective/assassinateonce)
-		else
-			add_antag_objective(/datum/objective/assassinate)
+	var/datum/objective/objective_to_add
+
+	// If our org has an objectives list, give one to us if we pass a roll on the org's focus
+	if(organization && length(organization.objectives) && prob(organization.focus))
+		objective_to_add = pick(organization.objectives)
 	else
-		add_antag_objective(/datum/objective/steal)
+		if(prob(50))
+			if(length(active_ais()) && prob(100 / length(GLOB.player_list)))
+				objective_to_add = /datum/objective/destroy
+
+			else if(prob(5))
+				objective_to_add = /datum/objective/debrain
+
+			else if(prob(30))
+				objective_to_add = /datum/objective/maroon
+
+			else if(prob(30))
+				objective_to_add = /datum/objective/assassinateonce
+
+			else
+				objective_to_add = /datum/objective/assassinate
+		else
+			objective_to_add = /datum/objective/steal
+
+	if(delayed_objectives)
+		objective_to_add = new /datum/objective/delayed(objective_to_add)
+	add_antag_objective(objective_to_add)
 
 /**
  * Give human traitors their uplink, and AI traitors their law 0. Play the traitor an alert sound.
  */
 /datum/antagonist/traitor/finalize_antag()
 	var/list/messages = list()
+	if(organization)
+		antag_memory += "<b>Organization</b>: [organization.name]<br>"
 	if(give_codewords)
 		messages.Add(give_codewords())
 	if(isAI(owner.current))
@@ -176,8 +209,6 @@
 /datum/antagonist/traitor/proc/give_codewords()
 	if(!owner.current)
 		return
-	// Need to bring this functionality back to TGchat
-	// var/mob/traitor_mob = owner.current
 
 	var/phrases = jointext(GLOB.syndicate_code_phrase, ", ")
 	var/responses = jointext(GLOB.syndicate_code_response, ", ")
@@ -192,8 +223,6 @@
 	messages.Add("Используйте эти слова для идентификации других агентов. Действуйте аккуратно, поскольку каждый человек - потенциальный враг.")
 	messages.Add("<b><font color=red>Вы запоминаете кодовые формулировки, определяя их в речи.</font></b>")
 
-	// Need to bring this functionality back to TGchat
-	// traitor_mob.client.chatOutput?.notify_syndicate_codes()
 	return messages
 
 /**
@@ -272,3 +301,16 @@
 
 /datum/antagonist/traitor/custom_blurb()
 	return "[GLOB.current_date_string], [station_time_timestamp()]\n[station_name()], [get_area_name(owner.current, TRUE)]\nBEGIN_MISSION"
+
+/datum/antagonist/traitor/proc/reveal_delayed_objectives()
+	for(var/datum/objective/delayed/delayed_obj in objective_holder.objectives)
+		delayed_obj.reveal_objective()
+
+	if(!owner?.current)
+		return
+	SEND_SOUND(owner.current, sound('sound/ambience/alarm4.ogg'))
+	if(targeted_by_antag || prob(ORG_PROB_PARANOIA)) // Low chance of fake 'You are targeted' notification
+		to_chat(owner.current, "<span class='userdanger'>[targeted_by_antag_message]</span>")
+	var/list/messages = owner.prepare_announce_objectives()
+	to_chat(owner.current, chat_box_red(messages.Join("<br>")))
+	delayed_objectives = FALSE

@@ -288,7 +288,7 @@
 		qdel(src)
 	else
 		if(!(sec_left % 60) && !announced)
-			var/message = "[sec_left] СЕКУНД ДО АКТИВАЦИИ УСТРОЙСТВА СУДНОГО ДНЯ."
+			var/message = "[sec_left] [declension_ru(sec_left, "СЕКУНДА", "СЕКУНДЫ", "СЕКУНД")] ДО АКТИВАЦИИ УСТРОЙСТВА СУДНОГО ДНЯ."
 			GLOB.major_announcement.Announce(message, "ОШИБКА 0IJJU6KA ОIJJIJ(%$^^__+ @#F0E4", 'sound/misc/notice1.ogg')
 			announced = 10
 		announced = max(0, announced-1)
@@ -326,7 +326,7 @@
 	module_name = "Агрессивный Локдаун Станции"
 	mod_pick_name = "lockdown"
 	description = "Перегружает все шлюзы, противопожарные и взрывоустойчивые двери, закрывая их. Внимание! Эта команда также электрифицирует все шлюзы. Сеть автоматически перезапустится через 90 секунд \
-	 открывая все шлюзы на короткий промежуток времени."
+	открывая все шлюзы на короткий промежуток времени."
 	cost = 30
 	one_purchase = TRUE
 	power_type = /datum/spell/ai_spell/lockdown
@@ -375,7 +375,7 @@
 	module_name = "Разблокировка доминации мехов"
 	mod_pick_name = "mechjack"
 	description = "Позволяет вам взломать бортовой компьютер меха, загрузив все свои процессы в него, а также выкидывая пилота. Как только вы загрузитесь в меха, выйти будет невозможно \
-	 Не позволяйте меху покинуть станцию или быть уничтоженным" // А тут какого-то хуя перекинулось
+	Не позволяйте меху покинуть станцию или быть уничтоженным"
 	cost = 30
 	upgrade = TRUE
 	unlock_text = "<span class='notice'>Вирусный пакет скомпилирован. Вы в любой момент можете выбрать цель. <b>Вы должны оставаться на станции в любой момент времени. Потеря сигнала приведёт к полной блокировке системы.</b></span>"
@@ -464,14 +464,15 @@
 
 	user.playsound_local(user, "sparks", 50, FALSE, use_reverb = FALSE)
 	adjust_uses(-1, user)
-	target.audible_message("<span class='italics'>Вы слышите громкое электрическое жужжание из [target]!</span>")
+	target.audible_message("<span class='danger'>Вы слышите громкое электрическое жужжание из [target]!</span>")
+	playsound(target, 'sound/goonstation/misc/fuse.ogg', 50, FALSE, use_reverb = FALSE)
 	addtimer(CALLBACK(src, PROC_REF(detonate_machine), target), 5 SECONDS) //kaboom!
 	to_chat(user, "<span class='warning'>Перегружаем платы машины...</span>")
 	return TRUE
 
 /datum/spell/ai_spell/ranged/overload_machine/proc/detonate_machine(obj/machinery/M)
 	if(M && !QDELETED(M))
-		explosion(get_turf(M), 0, 3, 5, 0)
+		explosion(get_turf(M), 0, 2, 3, 0)
 		if(M) //to check if the explosion killed it before we try to delete it
 			qdel(M)
 
@@ -505,7 +506,7 @@
 	user.playsound_local(user, 'sound/misc/interference.ogg', 50, FALSE, use_reverb = FALSE)
 	adjust_uses(-1, user)
 	target.audible_message("<span class='userdanger'>Вы слышите громкое электрическое жужжание из [target]!</span>")
-	addtimer(CALLBACK(src, PROC_REF(animate_machine), target), 5 SECONDS) //kabeep!
+	addtimer(CALLBACK(src, PROC_REF(animate_machine), target, user), 5 SECONDS) //kabeep!
 	to_chat(user, "<span class='danger'>Посылаем сигнал перезаписи...</span>")
 	return TRUE
 
@@ -543,7 +544,7 @@
 	if(!user.can_place_transformer(src))
 		return
 	in_use = TRUE
-	if(tgui_alert(user, "Вы уверены, что хотите поставить машину тут?", "Вы уверены?", list("Да", "Нет")) != "Yes")
+	if(tgui_alert(user, "Вы уверены, что хотите поставить машину тут?", "Вы уверены?", list("Да", "Нет")) != "Да")
 		active = FALSE
 		return
 	if(!user.can_place_transformer(src))
@@ -590,17 +591,17 @@
 
 //Turret Assembly: Assemble an AI turret at the chosen location. One use per purchase
 /datum/AI_Module/place_turret
-	module_name = "Deploy Turret"
+	module_name = "Установка турели"
 	mod_pick_name = "turretdeployer"
-	description = "Build a turret anywhere that lethally targets organic life in sight."
+	description = "Развертывает турель в любом месте, которая летально нейтрализует органиков."
 	cost = 30
 	power_type = /datum/spell/ai_spell/place_turret
-	unlock_text = "<span class='notice'>You prepare an energy turret for deployment.</span>"
+	unlock_text = "<span class='notice'>Вы готовите энергетическую турель к развертыванию.</span>"
 	unlock_sound = 'sound/items/rped.ogg'
 
 /datum/spell/ai_spell/place_turret
-	name = "Deploy Turret"
-	desc = "Build a turret anywhere that lethally targets organic life in sight."
+	name = "Установка турели"
+	desc = "Где угодно ставит турель, стреляющую во всех органиков лазером."
 	action_icon_state = "deploy_turret"
 	uses = 1
 	auto_use_uses = FALSE
@@ -613,12 +614,12 @@
 
 /datum/spell/ai_spell/place_turret/cast(list/targets, mob/living/silicon/ai/user)
 	if(in_use)
-		to_chat(user, "<span class='notice'>Your assemblers can only construct one turret at a time.</span>")
+		to_chat(user, "<span class='notice'>Вы можете ставить только одну турель за раз.</span>")
 		return
 	if(!user.can_place_turret(src))
 		return
 	in_use = TRUE
-	if(tgui_alert(user, "Are you sure you want to place a turret here? Deployment will take a few seconds to complete, in which the turret will be vulnerable.", "Are you sure?", list("No", "Yes")) != "Yes")
+	if(tgui_alert(user, "Вы уверены, что хотите поставить турель тут? Установка займёт некоторое время, в течении которого турель будет уязвима.", "Вы уверены?", list("Нет", "Да")) != "Да")
 		in_use = FALSE
 		return
 	if(!user.can_place_turret(src))
@@ -633,7 +634,7 @@
 	//Handles the turret construction and configuration
 	playsound(T, 'sound/items/rped.ogg', 100, TRUE) //Plays a sound both at the location of the construction to alert players and to the user as feedback
 	user.playsound_local(user, 'sound/items/rped.ogg', 50, FALSE, use_reverb = FALSE)
-	to_chat(user, "<span class='notice'>You order your electronics to assemble a turret. This will take a few seconds.</span>")
+	to_chat(user, "<span class='notice'>Вы приказываете электронике поставить турель. Это займёт некоторое время.</span>")
 	var/obj/effect/temp_visual/rcd_effect/spawning_effect = new(T)
 	QDEL_IN(spawning_effect, 5 SECONDS)
 
@@ -674,14 +675,14 @@
 	var/datum/camerachunk/C = GLOB.cameranet.getCameraChunk(deploylocation.x, deploylocation.y, deploylocation.z)
 
 	if(!istype(deploylocation))
-		to_chat(src, "<span class='warning'>There isn't enough room! Make sure you are placing the machine in a clear area and on a floor.</span>")
+		to_chat(src, "<span class='warning'>Недостаточно места! Убедитесь, что вы ставите турель на свободном тайле пола.</span>")
 		return FALSE
 	if(!C.visibleTurfs[deploylocation])
-		to_chat(src, "<span class='warning'>You don't have camera vision of this location!</span>")
+		to_chat(src, "<span class='warning'>У вас нет видимости там!</span>")
 		addtimer(CALLBACK(src, PROC_REF(remove_transformer_image), client, I, deploylocation), 3 SECONDS)
 		return FALSE
 	if(is_blocked_turf(deploylocation))
-		to_chat(src, "<span class='warning'>That area must be clear of objects!</span>")
+		to_chat(src, "<span class='warning'>Эта зона должна быть очищена от объектов!</span>")
 		addtimer(CALLBACK(src, PROC_REF(remove_transformer_image), client, I, deploylocation), 3 SECONDS)
 		return FALSE
 
@@ -813,26 +814,24 @@
 		AI.cracked_camera = TRUE
 		QDEL_NULL(AI.builtInCamera)
 
-/datum/AI_Module/engi_upgrade
-	module_name = "Улучшение на эмиттер для инженерного киборга"
-	mod_pick_name = "emitter"
-	description = "Скачивает ПО, разблокирующее эмиттер на всех инженерных киборгах. Киборги, построенные после улучшения, будут иметь его по умолчанию."
-	cost = 50 // IDK look into this
+/datum/AI_Module/borg_upgrade
+	module_name = "Боевое обновление ПО киборгов"
+	mod_pick_name = "combatborgs"
+	description = "Скачивает ПО, активирующее встроенное боевое оборудование киборгов. Киборги, построенные после покупки улучшения, будут автоматически идти с боевыми улучшениями."
+	cost = 70 // IDK look into this
 	one_purchase = TRUE
 	upgrade = TRUE
-	unlock_text = "<span class='notice'>ПО загружено. Баги устранены. Встроенные эмиттеры работают с эффективностью 73%.</span>"
+	unlock_text = "<span class='notice'>ПО загружено. Баги устранены. Эффективность боевых подсистем киборгов - 73%.</span>"
 	unlock_sound = 'sound/items/rped.ogg'
 
-/datum/AI_Module/engi_upgrade/upgrade(mob/living/silicon/ai/AI)
-	AI.purchased_modules += /obj/item/robot_module/engineering
-	log_game("[key_name(usr)] purchased emitters for all engineering cyborgs.")
-	message_admins("<span class='notice'>[key_name_admin(usr)] purchased emitters for all engineering cyborgs!</span>")
+/datum/AI_Module/borg_upgrade/upgrade(mob/living/silicon/ai/AI)
+	AI.purchased_modules = list(/obj/item/robot_module/engineering, /obj/item/robot_module/janitor, /obj/item/robot_module/medical, /obj/item/robot_module/miner, /obj/item/robot_module/butler)
+	log_game("[key_name(usr)] purchased combat upgrades for all cyborgs.")
+	message_admins("<span class='notice'>[key_name_admin(usr)] purchased combat upgrades for all cyborgs!</span>")
 	for(var/mob/living/silicon/robot/R in AI.connected_robots)
-		if(!istype(R.module, /obj/item/robot_module/engineering))
-			continue
 		R.module.malfhacked = TRUE
 		R.module.rebuild_modules()
-		to_chat(R, "<span class='notice'Новое ПО загружено. Эмиттеры теперь активны.</span>")
+		to_chat(R, "<span class='notice'>Новое ПО загружено. Активированы боевые улучшения.</span>")
 
 /datum/AI_Module/repair_cyborg
 	module_name = "Починка киборгов"
@@ -852,12 +851,6 @@
 	selection_activated_message = "<span class='notice'>Вызов процесса 0FFFFFFF в логике ЛКП, ожидается ответ пользователя.</span>"
 	selection_deactivated_message = "<span class='notice'>Логика ЛКП сбрасывается...</span>"
 	var/is_active = FALSE
-
-/datum/spell/ai_spell/ranged/repair_cyborg/create_new_targeting()
-	var/datum/spell_targeting/click/T = new
-	T.allowed_type = /mob/living/silicon/robot
-	T.try_auto_target = FALSE
-	return T
 
 /datum/spell/ai_spell/ranged/repair_cyborg/cast(list/targets, mob/user)
 	var/mob/living/silicon/robot/robot_target = targets[1]

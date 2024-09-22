@@ -1,21 +1,25 @@
-#define TITLE_SCREENS_LOCATION "config/title_screens/images/"
-
 /datum/controller/subsystem/title
 	flags = SS_NO_FIRE
 	init_order = INIT_ORDER_TITLE
+	/// Basic html that includes styles. Can be customised by host
+	var/base_html
 	/// Currently set title screen
 	var/datum/title_screen/current_title_screen
 	/// The list of image files available to be picked for title screen
 	var/list/title_images_pool = list()
 
 /datum/controller/subsystem/title/Initialize()
+	import_html()
 	fill_title_images_pool()
-	current_title_screen = new(title_html = get_title_html(), screen_image_file = pick_title_image())
+	current_title_screen = new(title_html = base_html, screen_image_file = pick_title_image())
 	show_title_screen_to_all_new_players()
 
 /datum/controller/subsystem/title/Recover()
 	current_title_screen = SStitle.current_title_screen
 	title_images_pool = SStitle.title_images_pool
+
+/datum/controller/subsystem/title/proc/import_html()
+	base_html = file2text(DEFAULT_TITLE_SCREEN_HTML_PATH)
 
 /**
  * Iterates over all files in `TITLE_SCREENS_LOCATION` and loads all valid title screens to `title_screens` var.
@@ -118,21 +122,16 @@
 
 	show_title_screen_to_all_new_players()
 
+/datum/controller/subsystem/title/proc/set_character_preview(client/viewer)
+	if(viewer.byond_version < 516)
+		viewer << output("", "title_browser:update_preview_515")
+	else
+		viewer << output("", "title_browser:update_preview")
+
 /**
  * Picks title image from `title_images_pool` list. If the list is empty, `DEFAULT_TITLE_HTML` is returned
  */
 /datum/controller/subsystem/title/proc/pick_title_image()
 	return length(title_images_pool) ? pick(title_images_pool) : DEFAULT_TITLE_SCREEN_IMAGE_PATH
-
-
-/**
- * Tries to read title html from config, if none found - backups to `DEFAULT_TITLE_HTML`
- */
-/datum/controller/subsystem/title/proc/get_title_html()
-	if(!fexists("config/title_html.txt"))
-		error(span_boldwarning("Unable to read title_html.txt, reverting to backup title html, please check your server config and ensure this file exists."))
-		return DEFAULT_TITLE_HTML
-	else
-		return file2text("config/title_html.txt")
 
 #undef TITLE_SCREENS_LOCATION

@@ -1,20 +1,27 @@
 /atom/movable/screen/ai
 	icon = 'icons/mob/screen_ai.dmi'
 
+/atom/movable/screen/ai/Click()
+	if(isobserver(usr) || usr.incapacitated())
+		return TRUE
+
 /atom/movable/screen/ai/aicore
 	name = "Ядро ИИ"
 	icon_state = "ai_core"
 
 /atom/movable/screen/ai/aicore/Click()
-	if(isAI(usr))
-		var/mob/living/silicon/ai/AI = usr
-		AI.view_core()
+	if(..())
+		return
+	var/mob/living/silicon/ai/AI = usr
+	AI.view_core()
 
 /atom/movable/screen/ai/camera_list
 	name = "Показать список камер"
 	icon_state = "camera"
 
 /atom/movable/screen/ai/camera_list/Click()
+	if(..())
+		return
 	var/mob/living/silicon/ai/AI = usr
 	var/camera = tgui_input_list(AI, "Выберите камеру для просмотра", "Камеры", AI.get_camera_list())
 	AI.ai_camera_list(camera)
@@ -24,70 +31,80 @@
 	icon_state = "track"
 
 /atom/movable/screen/ai/camera_track/Click()
-	if(isAI(usr))
-		var/mob/living/silicon/ai/AI = usr
-		var/target_name = tgui_input_list(AI, "Выберите цель для отслеживания", "Отслеживание", AI.trackable_mobs())
-		if(target_name)
-			AI.ai_camera_track(target_name)
+	if(..())
+		return
+	var/mob/living/silicon/ai/AI = usr
+	var/target_name = tgui_input_list(AI, "Выберите цель для отслеживания", "Отслеживание", AI.trackable_mobs())
+	if(target_name)
+		AI.ai_camera_track(target_name)
 
 /atom/movable/screen/ai/camera_light
 	name = "Переключить фонарик камеры"
 	icon_state = "camera_light"
 
 /atom/movable/screen/ai/camera_light/Click()
-	if(isAI(usr))
-		var/mob/living/silicon/ai/AI = usr
-		AI.toggle_camera_light()
+	if(..())
+		return
+	var/mob/living/silicon/ai/AI = usr
+	AI.toggle_camera_light()
 
 /atom/movable/screen/ai/crew_monitor
 	name = "Консоль отслеживания экипажа"
 	icon_state = "crew_monitor"
 
 /atom/movable/screen/ai/crew_monitor/Click()
-	if(isAI(usr))
-		var/mob/living/silicon/ai/AI = usr
-		AI.subsystem_crew_monitor()
+	if(..())
+		return
+	var/mob/living/silicon/ai/AI = usr
+	AI.subsystem_crew_monitor()
 
 /atom/movable/screen/ai/crew_manifest
 	name = "Манифест экипажа"
 	icon_state = "manifest"
 
 /atom/movable/screen/ai/crew_manifest/Click()
-	if(isAI(usr))
-		var/mob/living/silicon/ai/AI = usr
-		AI.ai_roster()
+	if(..())
+		return
+	var/mob/living/silicon/ai/AI = usr
+	AI.ai_roster()
 
 /atom/movable/screen/ai/alerts
 	name = "Показать тревоги"
 	icon_state = "alerts"
 
 /atom/movable/screen/ai/alerts/Click()
-	if(isAI(usr))
-		var/mob/living/silicon/ai/AI = usr
-		AI.ai_alerts()
+	if(..())
+		return
+	var/mob/living/silicon/ai/AI = usr
+	AI.ai_alerts()
 
 /atom/movable/screen/ai/announcement
 	name = "Сделать оповещение"
 	icon_state = "announcement"
 
 /atom/movable/screen/ai/announcement/Click()
+	if(..())
+		return
 	var/mob/living/silicon/ai/AI = usr
 	AI.announcement()
 
 /atom/movable/screen/ai/call_shuttle
-	name = "Вызавать эвакуационный шаттл"
+	name = "Вызвать эвакуационный шаттл"
 	icon_state = "call_shuttle"
 
 /atom/movable/screen/ai/call_shuttle/Click()
-	if(isAI(usr))
-		var/mob/living/silicon/ai/AI = usr
-		AI.ai_call_shuttle()
+	if(..())
+		return
+	var/mob/living/silicon/ai/AI = usr
+	AI.ai_call_shuttle()
 
 /atom/movable/screen/ai/state_laws
 	name = "Менеджер законов"
 	icon_state = "state_laws"
 
 /atom/movable/screen/ai/state_laws/Click()
+	if(..())
+		return
 	if(isAI(usr))
 		var/mob/living/silicon/ai/AI = usr
 		AI.subsystem_law_manager()
@@ -97,42 +114,48 @@
 	icon_state = "pda_send"
 
 /atom/movable/screen/ai/pda_msg_send/Click()
-	if(isAI(usr))
-		var/mob/living/silicon/ai/AI = usr
-		AI.aiPDA.cmd_send_pdamesg()
+	if(..())
+		return
+	var/mob/living/silicon/ai/AI = usr
+	AI.aiPDA.cmd_send_pdamesg()
 
 /atom/movable/screen/ai/pda_msg_show
 	name = "PDA - Показать лог сообщений"
 	icon_state = "pda_receive"
 
 /atom/movable/screen/ai/pda_msg_show/Click()
-	if(isAI(usr))
-		var/mob/living/silicon/ai/AI = usr
-		AI.aiPDA.cmd_show_message_log()
+	if(..())
+		return
+	var/mob/living/silicon/ai/AI = usr
+	AI.aiPDA.cmd_show_message_log()
 
 /atom/movable/screen/ai/image_take
 	name = "Сделать снимок"
 	icon_state = "take_picture"
 
 /atom/movable/screen/ai/image_take/Click()
-	if(isAI(usr))
-		var/mob/living/silicon/ai/AI = usr
-		AI.aiCamera.toggle_camera_mode()
+	if(..())
+		return
+	var/mob/living/silicon/ai/AI = usr
+	AI.aiCamera.toggle_camera_mode()
 
 /atom/movable/screen/ai/image_view
 	name = "Просмотреть снимки"
 	icon_state = "view_images"
 
 /atom/movable/screen/ai/image_view/Click()
-	if(isAI(usr))
-		var/mob/living/silicon/ai/AI = usr
-		AI.aiCamera.viewpictures()
+	if(..())
+		return
+	var/mob/living/silicon/ai/AI = usr
+	AI.aiCamera.viewpictures()
 
 /atom/movable/screen/ai/sensors
 	name = "Переключение HUD сенсоров"
 	icon_state = "ai_sensor"
 
 /atom/movable/screen/ai/sensors/Click()
+	if(..())
+		return
 	if(isAI(usr))
 		var/mob/living/silicon/ai/AI = usr
 		AI.sensor_mode()

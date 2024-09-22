@@ -121,9 +121,9 @@
 	status_display_mode = STATUS_DISPLAY_ALERT
 	status_display_data = "epsilonalert"
 	lowering_to_announcement_title = "ВНИМАНИЕ! КОД ЭПСИЛОН!"
-	lowering_to_announcement_text = "Центральным командованием был установлен код ЭПСИЛОН. Все контракты расторгнуты."
+	lowering_to_announcement_text = "Центральным Командованием был установлен код ЭПСИЛОН. Все контракты расторгнуты."
 	elevating_to_announcement_title = "ВНИМАНИЕ! КОД ЭПСИЛОН!"
-	elevating_to_announcement_text = "Центральным командованием был установлен код ЭПСИЛОН. Все контракты расторгнуты."
+	elevating_to_announcement_text = "Центральным Командованием был установлен код ЭПСИЛОН. Все контракты расторгнуты."
 
 /datum/security_level/epsilon/pre_change()
 	sound_to_playing_players_on_station_level(S = sound('sound/effects/powerloss.ogg'))
@@ -142,4 +142,4 @@
 	status_display_mode = STATUS_DISPLAY_ALERT
 	status_display_data = "deltaalert"
 	elevating_to_announcement_title = "ВНИМАНИЕ! КОД ДЕЛЬТА!"
-	elevating_to_announcement_text = "Механизм самоуничтожения станции задействован. Все члены экипажа обязан подчиняться всем указаниям, данными Главами отделов. Любые нарушения этих приказов наказуемы уничтожением на месте. Это не учебная тревога."
+	elevating_to_announcement_text = "Механизм самоуничтожения станции задействован. Все члены экипажа обязаны подчиняться всем указаниям, данными Главами отделов. Любые нарушения этих приказов наказуемы уничтожением на месте. Это не учебная тревога."
