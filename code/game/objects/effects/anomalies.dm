@@ -98,6 +98,7 @@
 	icon_state = "shield2"
 	density = FALSE
 	appearance_flags = PIXEL_SCALE|LONG_GLIDE
+	layer = OBJ_LAYER // Mobs will appear above this
 	var/boing = FALSE
 	var/knockdown = FALSE
 	aSignal = /obj/item/assembly/signaler/anomaly/grav
@@ -274,9 +275,9 @@
 	var/turf/T = pick(get_area_turfs(impact_area))
 	if(T)
 		// Calculate new position (searches through beacons in world)
-		var/obj/item/radio/beacon/chosen
+		var/obj/item/beacon/chosen
 		var/list/possible = list()
-		for(var/obj/item/radio/beacon/W in GLOB.beacons)
+		for(var/obj/item/beacon/W in GLOB.beacons)
 			if(!is_station_level(W.z))
 				continue
 			possible += W
@@ -300,7 +301,7 @@
 			var/y_distance = turf_to.y - turf_from.y
 			var/x_distance = turf_to.x - turf_from.x
 			for(var/atom/movable/A in urange(BLUESPACE_MASS_TELEPORT_RANGE, turf_from)) // iterate thru list of mobs in the area
-				if(istype(A, /obj/item/radio/beacon))
+				if(istype(A, /obj/item/beacon))
 					continue // don't teleport beacons because that's just insanely stupid
 				if(A.anchored || A.move_resist == INFINITY)
 					continue
@@ -355,7 +356,11 @@
 		ticks = 0
 	var/turf/simulated/T = get_turf(src)
 	if(istype(T))
-		T.atmos_spawn_air(LINDA_SPAWN_HEAT | LINDA_SPAWN_TOXINS | LINDA_SPAWN_OXYGEN, 20)
+		var/datum/gas_mixture/air = new()
+		air.set_temperature(1000)
+		air.set_toxins(20)
+		air.set_oxygen(20)
+		T.blind_release_air(air)
 
 /obj/effect/anomaly/pyro/detonate()
 	if(produces_slime)
@@ -364,7 +369,12 @@
 /obj/effect/anomaly/pyro/proc/makepyroslime()
 	var/turf/simulated/T = get_turf(src)
 	if(istype(T))
-		T.atmos_spawn_air(LINDA_SPAWN_HEAT | LINDA_SPAWN_TOXINS | LINDA_SPAWN_OXYGEN, 500) //Make it hot and burny for the new slime
+		//Make it hot and burny for the new slime
+		var/datum/gas_mixture/air = new()
+		air.set_temperature(1000)
+		air.set_toxins(500)
+		air.set_oxygen(500)
+		T.blind_release_air(air)
 	var/new_colour = pick("red", "orange")
 	var/mob/living/simple_animal/slime/S = new(T, new_colour)
 	S.rabid = TRUE
@@ -396,20 +406,14 @@
 	for(var/turf/T in oview(get_turf(src), 7))
 		turf_targets += T
 
+	var/list/mob_targets = list()
+	for(var/mob/M in oview(get_turf(src), 7))
+		if(!isliving(M))
+			continue
+		mob_targets += M
+
 	for(var/mob/living/carbon/human/H in view(get_turf(src), 3))
 		shootAt(H)
-
-	for(var/I in 1 to rand(1, 3))
-		var/turf/target = pick(turf_targets)
-		shootAt(target)
-
-	if(prob(50))
-		for(var/turf/simulated/floor/nearby_floor in oview(get_turf(src), (drops_core ? 2 : 1)))
-			nearby_floor.MakeSlippery((drops_core? TURF_WET_PERMAFROST : TURF_WET_ICE), (drops_core? null : rand(10, 20 SECONDS)))
-
-		var/turf/simulated/T = get_turf(src)
-		if(istype(T))
-			T.atmos_spawn_air(LINDA_SPAWN_COLD | LINDA_SPAWN_N2O | LINDA_SPAWN_CO2, 20)
 
 	if(prob(10))
 		var/obj/effect/nanofrost_container/A = new /obj/effect/nanofrost_container(get_turf(src))
@@ -417,6 +421,27 @@
 			step_towards(A, pick(turf_targets))
 			sleep(2)
 		A.Smoke()
+
+	// This has to be in the end because we're adding mobs to a turf list
+	var/shots = drops_core ? rand(3, 5) : rand(1, 3)
+	for(var/i in 1 to shots)
+		if(length(mob_targets))
+			turf_targets += mob_targets
+		shootAt(pick(turf_targets))
+
+	if(prob(50))
+		for(var/turf/possible_floor in view(get_turf(src), (drops_core ? 2 : 1)))
+			if(isfloorturf(possible_floor))
+				var/turf/simulated/floor/nearby_floor = possible_floor
+				nearby_floor.MakeSlippery((drops_core ? TURF_WET_PERMAFROST : TURF_WET_ICE), (drops_core ? null : rand(10, 20 SECONDS)))
+
+		var/turf/simulated/T = get_turf(src)
+		if(istype(T))
+			var/datum/gas_mixture/air = new()
+			air.set_temperature(TCMB)
+			air.set_sleeping_agent(80)
+			air.set_carbon_dioxide(80)
+			T.blind_release_air(air)
 
 /obj/effect/anomaly/cryo/proc/shootAt(atom/movable/target)
 	var/turf/T = get_turf(src)
@@ -436,7 +461,11 @@
 /obj/effect/anomaly/cryo/detonate()
 	var/turf/simulated/T = get_turf(src)
 	if(istype(T) && drops_core)
-		T.atmos_spawn_air(LINDA_SPAWN_COLD | LINDA_SPAWN_CO2, 1000)
+		var/datum/gas_mixture/air = new()
+		air.set_temperature(TCMB)
+		air.set_sleeping_agent(3000)
+		air.set_carbon_dioxide(3000)
+		T.blind_release_air(air)
 
 /////////////////////
 
@@ -445,14 +474,20 @@
 	icon_state = "bhole3"
 	desc = "That's a nice station you have there. It'd be a shame if something happened to it."
 	aSignal = /obj/item/assembly/signaler/anomaly/vortex
+	/// The timer that will give us an extra proccall of ripping the floors up
+	var/timer
 
 /obj/effect/anomaly/bhole/anomalyEffect()
 	..()
 	if(!isturf(loc)) //blackhole cannot be contained inside anything. Weird stuff might happen
 		qdel(src)
 		return
+	rip_and_tear()
+	// We queue up another `rip_and_tear` in a second, effectively making it tick once per second without having to switch this anomaly to another SS
+	timer = addtimer(CALLBACK(src, PROC_REF(rip_and_tear)), 1 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_DELETE_ME)
 
-	grav(rand(0, 3), rand(2, 3), 100, 30)
+/obj/effect/anomaly/bhole/proc/rip_and_tear()
+	grav(rand(1, 4), rand(2, 3), 100, 30)
 
 	//Throwing stuff around!
 	for(var/obj/O in range(3, src))
@@ -465,12 +500,15 @@
 		else
 			O.ex_act(EXPLODE_HEAVY)
 
-/obj/effect/anomaly/bhole/proc/grav(r, ex_act_force, pull_chance, turf_removal_chance)
-	for(var/t = -r, t < r, t++)
-		affect_coord(x + t, y - r, ex_act_force, pull_chance, turf_removal_chance)
-		affect_coord(x - t, y + r, ex_act_force, pull_chance, turf_removal_chance)
-		affect_coord(x + r, y + t, ex_act_force, pull_chance, turf_removal_chance)
-		affect_coord(x - r, y - t, ex_act_force, pull_chance, turf_removal_chance)
+/obj/effect/anomaly/bhole/proc/grav(radius = 0, ex_act_force, pull_chance, turf_removal_chance)
+	if(radius <= 0 || prob(25)) // Base 25% chance of not damaging any floors or pulling mobs
+		return
+
+	for(var/t in -radius to (radius - 1))
+		affect_coord(x + t, y - radius, ex_act_force, pull_chance, turf_removal_chance)
+		affect_coord(x - t, y + radius, ex_act_force, pull_chance, turf_removal_chance)
+		affect_coord(x + radius, y + t, ex_act_force, pull_chance, turf_removal_chance)
+		affect_coord(x - radius, y - t, ex_act_force, pull_chance, turf_removal_chance)
 
 /obj/effect/anomaly/bhole/proc/affect_coord(x, y, ex_act_force, pull_chance, turf_removal_chance)
 	//Get turf at coordinate

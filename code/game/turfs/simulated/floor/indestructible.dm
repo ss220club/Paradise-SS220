@@ -44,10 +44,11 @@
 	icon = 'icons/turf/floors.dmi'
 	icon_state = "necro1"
 	baseturf = /turf/simulated/floor/indestructible/necropolis
-	oxygen = 8
-	nitrogen = 14
-	temperature = 500
-	planetary_atmos = TRUE
+	oxygen = LAVALAND_OXYGEN
+	nitrogen = LAVALAND_NITROGEN
+	temperature = LAVALAND_TEMPERATURE
+	atmos_mode = ATMOS_MODE_EXPOSED_TO_ENVIRONMENT
+	atmos_environment = ENVIRONMENT_LAVALAND
 	footstep = FOOTSTEP_LAVA
 	barefootstep = FOOTSTEP_LAVA
 	clawfootstep = FOOTSTEP_LAVA
@@ -58,10 +59,12 @@
 	if(prob(12))
 		icon_state = "necro[rand(2,3)]"
 
-/turf/simulated/floor/indestructible/necropolis/air
+/turf/simulated/floor/indestructible/necropolis/normal_air
 	oxygen = MOLES_O2STANDARD
 	nitrogen = MOLES_N2STANDARD
 	temperature = T20C
+	atmos_mode = ATMOS_MODE_SEALED
+	atmos_environment = null
 
 /// you put stone tiles on this and use it as a base
 /turf/simulated/floor/indestructible/boss
@@ -69,27 +72,45 @@
 	icon = 'icons/turf/floors/boss_floors.dmi'
 	icon_state = "boss"
 	baseturf = /turf/simulated/floor/indestructible/boss
-	oxygen = 8
-	nitrogen = 14
-	temperature = 500
-	planetary_atmos = TRUE
+	oxygen = LAVALAND_OXYGEN
+	nitrogen = LAVALAND_NITROGEN
+	temperature = LAVALAND_TEMPERATURE
+	atmos_mode = ATMOS_MODE_EXPOSED_TO_ENVIRONMENT
+	atmos_environment = ENVIRONMENT_LAVALAND
 
-/turf/simulated/floor/indestructible/boss/air
+/turf/simulated/floor/indestructible/boss/normal_air
 	oxygen = MOLES_O2STANDARD
 	nitrogen = MOLES_N2STANDARD
 	temperature = T20C
+	atmos_mode = ATMOS_MODE_SEALED
+	atmos_environment = null
 
 /turf/simulated/floor/indestructible/hierophant
 	name = "floor"
 	icon = 'icons/turf/floors/hierophant_floor.dmi'
 	icon_state = "floor"
-	oxygen = 8
-	nitrogen = 14
-	temperature = 500
-	planetary_atmos = TRUE
+	oxygen = LAVALAND_OXYGEN
+	nitrogen = LAVALAND_NITROGEN
+	temperature = LAVALAND_TEMPERATURE
+	atmos_mode = ATMOS_MODE_EXPOSED_TO_ENVIRONMENT
+	atmos_environment = ENVIRONMENT_LAVALAND
 	smoothing_flags = SMOOTH_CORNERS
+
+/turf/simulated/floor/indestructible/hierophant/normal_air
+	oxygen = MOLES_O2STANDARD
+	nitrogen = MOLES_N2STANDARD
+	temperature = T20C
+	atmos_mode = ATMOS_MODE_SEALED
+	atmos_environment = null
 
 /turf/simulated/floor/indestructible/hierophant/get_smooth_underlay_icon(mutable_appearance/underlay_appearance, turf/asking_turf, adjacency_dir)
 	return FALSE
 
 /turf/simulated/floor/indestructible/hierophant/two
+
+/turf/simulated/floor/indestructible/hierophant/two/normal_air
+	oxygen = MOLES_O2STANDARD
+	nitrogen = MOLES_N2STANDARD
+	temperature = T20C
+	atmos_mode = ATMOS_MODE_SEALED
+	atmos_environment = null

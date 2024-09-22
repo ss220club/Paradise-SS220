@@ -67,3 +67,9 @@ GLOBAL_LIST_EMPTY(looping_sounds)
 
 /// List of possible crits from things tipping over
 GLOBAL_LIST_EMPTY(tilt_crits)
+
+/// Stores a list of the cached seed icons. Used in the seed extractor and the gene modder
+GLOBAL_LIST_EMPTY(seeds_cached_base64_icons)
+
+/// Assoc list of all RND techs with ID to name
+GLOBAL_LIST_EMPTY(rnd_tech_id_to_name)

@@ -156,7 +156,7 @@
 		var/mob/living/carbon/human/H = M
 		var/obj/item/organ/external/affecting = H.get_organ(user.zone_selected)
 		for(var/obj/item/organ/external/E in H.bodyparts)
-			if(E.open == ORGAN_ORGANIC_OPEN)
+			if(E.open >= ORGAN_ORGANIC_OPEN)
 				to_chat(user, "<span class='warning'>[E] is cut open, you'll need more than a bandage!</span>")
 				return
 		affecting.germ_level = 0
@@ -212,6 +212,7 @@
 	healverb = "salve"
 	heal_burn = 10
 	dynamic_icon_state = TRUE
+	merge_type = /obj/item/stack/medical/ointment
 
 /obj/item/stack/medical/ointment/apply(mob/living/M, mob/user)
 	if(..())
@@ -258,6 +259,7 @@
 	belt_icon = "burnkit"
 	heal_burn = 25
 	dynamic_icon_state = FALSE
+	merge_type = /obj/item/stack/medical/ointment/advanced
 
 /obj/item/stack/medical/ointment/advanced/cyborg
 	energy_type = /datum/robot_storage/energy/medical/adv_burn_kit
@@ -308,6 +310,7 @@
 	icon_state = "splint"
 	unique_handling = TRUE
 	self_delay = 100
+	merge_type = /obj/item/stack/medical/splint
 	var/other_delay = 0
 
 /obj/item/stack/medical/splint/apply(mob/living/M, mob/user)

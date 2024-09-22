@@ -28,8 +28,9 @@ GLOBAL_PROTECT(log_end)
 #define testing(msg)
 #endif
 
-/proc/log_admin(text)
-	GLOB.admin_log.Add(text)
+/proc/log_admin(text, skip_glob = FALSE)
+	if(!skip_glob)
+		GLOB.admin_log.Add(text)
 	if(GLOB.configuration.logging.admin_logging)
 		rustg_log_write(GLOB.world_game_log, "ADMIN: [text][GLOB.log_end]")
 
@@ -102,6 +103,10 @@ GLOBAL_PROTECT(log_end)
 /proc/log_mentorsay(text, mob/speaker)
 	if(GLOB.configuration.logging.adminchat_logging)
 		rustg_log_write(GLOB.world_game_log, "MENTORSAY: [speaker.simple_info_line()]: [html_decode(text)][GLOB.log_end]")
+
+/proc/log_devsay(text, mob/speaker)
+	if(GLOB.configuration.logging.adminchat_logging)
+		rustg_log_write(GLOB.world_game_log, "DEVSAY: [speaker.simple_info_line()]: [html_decode(text)][GLOB.log_end]")
 
 /proc/log_ghostsay(text, mob/speaker)
 	if(GLOB.configuration.logging.say_logging)

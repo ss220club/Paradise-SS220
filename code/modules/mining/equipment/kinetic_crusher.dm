@@ -36,7 +36,7 @@
 
 /obj/item/kinetic_crusher/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/parry, _stamina_constant = 2, _stamina_coefficient = 0.7, _parryable_attack_types = MELEE_ATTACK, _parry_cooldown = (7 / 3) SECONDS ) // 2.3333 seconds of cooldown for 30% uptime
+	AddComponent(/datum/component/parry, _stamina_constant = 2, _stamina_coefficient = 0.7, _parryable_attack_types = MELEE_ATTACK, _parry_cooldown = (10 / 3) SECONDS, _requires_two_hands = TRUE) // 2.3333 seconds of cooldown for 30% uptime
 	AddComponent(/datum/component/two_handed, force_wielded = force_wielded, force_unwielded = force)
 
 /obj/item/kinetic_crusher/Destroy()
@@ -47,6 +47,8 @@
 	. = ..()
 	. += "<span class='notice'>Mark a large creature with the destabilizing force, then hit them in melee to do <b>[force + detonation_damage]</b> damage.</span>"
 	. += "<span class='notice'>Does <b>[force + detonation_damage + backstab_bonus]</b> damage if the target is backstabbed, instead of <b>[force + detonation_damage]</b>.</span>"
+	if(length(trophies))
+		. += "<span class='notice'>You can use a crowbar on it to remove its attached trophies.</span>"
 	for(var/t in trophies)
 		var/obj/item/crusher_trophy/T = t
 		. += "<span class='notice'>It has \a [T] attached, which causes [T.effect_desc()].</span>"
@@ -97,27 +99,32 @@
 	if(!QDELETED(C) && !QDELETED(target))
 		C.total_damage += target_health - target.health //we did some damage, but let's not assume how much we did
 
+/obj/item/kinetic_crusher/proc/get_turf_for_projectile(atom/user)
+	if(ismob(user) && isturf(user.loc))
+		return user.loc
+
 /obj/item/kinetic_crusher/afterattack(atom/target, mob/living/user, proximity_flag, clickparams)
 	. = ..()
 	if(!HAS_TRAIT(src, TRAIT_WIELDED))
 		return
 	if(user.has_status_effect(STATUS_EFFECT_DASH) && user.a_intent == INTENT_HELP)
 		if(user.throw_at(target, range = 3, speed = 3, spin = FALSE, diagonals_first = TRUE))
-			playsound(src, 'sound/effects/stealthoff.ogg', 50, 1, 1)
+			playsound(src, 'sound/effects/stealthoff.ogg', 50, TRUE, 1)
 			user.visible_message("<span class='warning'>[user] dashes!</span>")
 		else
 			to_chat(user, "<span class='warning'>Something prevents you from dashing!</span>")
 		user.remove_status_effect(STATUS_EFFECT_DASH)
 		return
 	if(!proximity_flag && charged)//Mark a target, or mine a tile.
-		var/turf/proj_turf = user.loc
+		var/turf/proj_turf = get_turf_for_projectile(user)
 		if(!isturf(proj_turf))
 			return
 		var/obj/item/projectile/destabilizer/D = new /obj/item/projectile/destabilizer(proj_turf)
 		for(var/t in trophies)
 			var/obj/item/crusher_trophy/T = t
 			T.on_projectile_fire(D, user)
-		D.preparePixelProjectile(target, get_turf(target), user, clickparams)
+		var/modifiers = params2list(clickparams)
+		D.preparePixelProjectile(target, user, modifiers)
 		D.firer = user
 		D.firer_source_atom = src
 		D.hammer_synced = src

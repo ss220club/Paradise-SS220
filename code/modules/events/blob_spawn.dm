@@ -5,7 +5,7 @@
 
 /datum/event/blob/announce(false_alarm)
 	if(successSpawn || false_alarm)
-		GLOB.major_announcement.Announce("Вспышка биологической угрозы 5-го уровня зафиксирована на борту станции [station_name()]. Всему персоналу надлежит сдержать её распространение любой ценой!", "ВНИМАНИЕ: Биологическая угроза.", 'sound/AI/outbreak5.ogg')
+		GLOB.major_announcement.Announce("На борту [station_name()] обнаружено неизвестное биологическое образование. Всему персоналу надлежит немедленно приступить к сдерживанию.", "ВНИМАНИЕ: Обнаружена биоугроза.", 'sound/effects/siren-spooky.ogg', new_sound2 = 'sound/AI/outbreak_blob.ogg')
 	else
 		log_and_message_admins("Warning: Could not spawn any mobs for event Blob")
 

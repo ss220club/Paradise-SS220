@@ -88,7 +88,7 @@
 			for(var/res in results)
 				if(res in winning_options)
 					// Make it stand out
-					to_chat(world, "<span class='info'><code>[res]</code> - [results[res]] vote\s</span>")
+					to_chat(world, "<span class='interface'><code>[res]</code> - [results[res]] vote\s</span>")
 				else
 					// Make it normal
 					to_chat(world, "<span class='interface'><code>[res]</code> - [results[res]] vote\s</span>")
@@ -118,8 +118,8 @@
 /datum/vote/proc/announce(start_text)
 	to_chat(world, chat_box_purple(
 		"<span><font color='purple'><b>[start_text]</b></br></br>\
-		<a href='?src=[SSvote.UID()];vote=open'>Нажмите здесь или введите <code>Vote</code>, чтобы оставить голос.</a></br>\
-		У вас [GLOB.configuration.vote.vote_time / 10] секунд на выбор.</span>"))
+		<a href='byond://?src=[SSvote.UID()];vote=open'>Нажмите здесь или введите <code>Vote</code>, чтобы оставить голос.</a></br>\
+		У вас [GLOB.configuration.vote.vote_time / 10] секунд на выбор.</span>"), MESSAGE_TYPE_OOC)
 	SEND_SOUND(world, sound('sound/ambience/alarm4.ogg'))
 
 

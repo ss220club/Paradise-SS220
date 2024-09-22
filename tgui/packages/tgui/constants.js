@@ -140,6 +140,13 @@ export const RADIO_CHANNELS = [
     freq: 1459,
     color: '#1ecc43',
   },
+  // SS220 ADD - Start
+  {
+    name: 'VoxCom',
+    freq: 1220,
+    color: '#952aa5',
+  },
+  // SS220 ADD - End
 ];
 
 const GASES = [
@@ -237,19 +244,13 @@ const GASES = [
 
 export const getGasLabel = (gasId, fallbackValue) => {
   const gasSearchString = String(gasId).toLowerCase();
-  const gas = GASES.find(
-    (gas) =>
-      gas.id === gasSearchString || gas.name.toLowerCase() === gasSearchString
-  );
+  const gas = GASES.find((gas) => gas.id === gasSearchString || gas.name.toLowerCase() === gasSearchString);
   return (gas && gas.label) || fallbackValue || gasId;
 };
 
 export const getGasColor = (gasId) => {
   const gasSearchString = String(gasId).toLowerCase();
-  const gas = GASES.find(
-    (gas) =>
-      gas.id === gasSearchString || gas.name.toLowerCase() === gasSearchString
-  );
+  const gas = GASES.find((gas) => gas.id === gasSearchString || gas.name.toLowerCase() === gasSearchString);
   return gas && gas.color;
 };
 

@@ -25,6 +25,16 @@
 		/obj/item/ammo_box/a40mm = 4,
 		/obj/item/ammo_box/magazine/smgm9mm = 12)
 
+/obj/machinery/economy/vending/nta/admin/Initialize(mapload)
+	products = list()
+	var/list/new_products = list() + subtypesof(/obj/item/ammo_box) + /obj/item/storage/box/rubbershot +\
+	/obj/item/storage/box/buck + /obj/item/storage/box/dragonsbreath + /obj/item/storage/box/holy +\
+	/obj/item/storage/box/rubbershot + /obj/item/storage/box/slug + /obj/item/storage/box/stun +\
+	/obj/item/storage/box/tranquilizer - /obj/item/ammo_box/magazine - typesof(/obj/item/ammo_box/magazine/internal)
+	for(var/ammo_type in new_products)
+		products[ammo_type] = 999
+	. = ..()
+
 /obj/machinery/economy/vending/nta/blue
 	name = "NT ERT Medium Gear & Ammunition"
 	desc = "A ERT Medium equipment vendor."
@@ -210,4 +220,25 @@
 						/obj/item/clothing/under/yellow_skirt = 50,
 						/obj/item/clothing/under/prisoner_skirt = 175,
 						/obj/item/clothing/under/rainbow_skirt = 100)
+	. = ..()
+
+/obj/machinery/economy/vending/wallmed/emergency_ntmed
+	name = "\improper Advanced Nanomed"
+	desc = "Продвинутая экстренная аптечка на все случаи жизни."
+	products = list(
+		/obj/item/reagent_containers/applicator/dual = 1,
+		/obj/item/reagent_containers/syringe/charcoal = 4,
+		/obj/item/reagent_containers/hypospray/autoinjector/nt_emergency = 4,
+		/obj/item/healthanalyzer/advanced = 1
+		)
+	refill_canister = /obj/item/vending_refill/adv_ntmed
+
+/obj/item/reagent_containers/hypospray/autoinjector/nt_emergency
+	name = "advanced emergency autoinjector"
+	desc = "Компания всегда ставит жизни и здоровье своих сотрудников превыше всего."
+	list_reagents = list("nanites" = 10)
+
+/obj/machinery/economy/vending/shoedispenser/Initialize(mapload)
+	contraband |= list(/obj/item/clothing/shoes/clown_shoes/moffers = 1)
+	prices |= list(/obj/item/clothing/shoes/clown_shoes/moffers = 80)
 	. = ..()

@@ -57,6 +57,8 @@
 #define EMOTE_TARGET_BHVR_RAW 4
 /// The emote target should be just a number. Anything else will be rejected.
 #define EMOTE_TARGET_BHVR_NUM 5
+/// The emote target is used elsewhere, and processing should be skipped.
+#define EMOTE_TARGET_BHVR_IGNORE 6
 
 // This set determines the type of target that we want to check for.
 
@@ -75,3 +77,12 @@
 
 /// List of emotes useable by ghosties
 #define USABLE_DEAD_EMOTES list("*flip", "*spin")
+
+// Strings used for the rock paper scissors emote and status effect
+#define RPS_EMOTE_ROCK 		"камень"
+#define RPS_EMOTE_PAPER 	"бумага"
+#define RPS_EMOTE_SCISSORS 	"ножницы"
+
+#define RPS_EMOTE_THEY_WIN		"блин..."
+#define RPS_EMOTE_WE_WIN		"ура!"
+#define RPS_EMOTE_TIE			"ничья"

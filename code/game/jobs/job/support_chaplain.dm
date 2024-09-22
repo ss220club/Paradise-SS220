@@ -9,7 +9,12 @@
 	supervisors = "главой персонала"
 	department_head = list("Head of Personnel")
 	selection_color = "#dddddd"
-	access = list(ACCESS_MORGUE, ACCESS_CHAPEL_OFFICE, ACCESS_CREMATORIUM, ACCESS_MAINT_TUNNELS)
+	access = list(
+		ACCESS_CHAPEL_OFFICE,
+		ACCESS_CREMATORIUM,
+		ACCESS_MAINT_TUNNELS,
+		ACCESS_MORGUE
+	)
 	outfit = /datum/outfit/job/chaplain
 
 /datum/outfit/job/chaplain
@@ -32,10 +37,11 @@
 	if(visualsOnly)
 		return
 
-	if(istype(H.mind))
-		ADD_TRAIT(H.mind, TRAIT_HOLY, ROUNDSTART_TRAIT)
-
 	INVOKE_ASYNC(src, PROC_REF(religion_pick), H)
+
+/datum/outfit/job/chaplain/on_mind_initialize(mob/living/carbon/human/H)
+	. = ..()
+	ADD_TRAIT(H.mind, TRAIT_HOLY, ROUNDSTART_TRAIT)
 
 /datum/outfit/job/chaplain/proc/religion_pick(mob/living/carbon/human/user)
 	var/obj/item/storage/bible/B = new /obj/item/storage/bible(get_turf(user))

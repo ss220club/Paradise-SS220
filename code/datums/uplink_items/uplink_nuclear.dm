@@ -1,6 +1,8 @@
 // NUCLEAR AGENT ONLY GEAR
 
-// DANGEROUS WEAPONS
+////////////////////////////////////////
+// MARK: DANGEROUS WEAPONS
+////////////////////////////////////////
 
 /datum/uplink_item/dangerous/aps
 	name = "Stechkin APS Pistol"
@@ -56,12 +58,11 @@
 
 /datum/uplink_item/dangerous/flamethrower
 	name = "Flamethrower"
-	desc = "A flamethrower, fuelled by a portion of highly flammable bio-toxins stolen previously from Nanotrasen stations. Make a statement by roasting the filth in their own greed. Use with caution."
-	reference = "FT"
-	item = /obj/item/flamethrower/full/tank
-	cost = 3
+	desc = "A chemical flamethrower, fueled by a volatile mix of fuel and napalm. Comes prefilled with two canisters. Do not use with caution."
+	reference = "CHEM_THROWER"
+	item = /obj/item/chemical_flamethrower/extended/nuclear
+	cost = 40 // In contrary to the gas flamethrower, this one is a very strong area denial tool that can't be countered by an AI
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
-	surplus = 40
 
 /datum/uplink_item/dangerous/combat_defib
 	name = "Combat Defibrillator Module"
@@ -89,7 +90,9 @@
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 	surplus = 0
 
-// SUPPORT AND MECHAS
+////////////////////////////////////////
+// MARK: SUPPORT AND MECHAS
+////////////////////////////////////////
 
 /datum/uplink_item/support
 	category = "Support and Mechanized Exosuits"
@@ -120,7 +123,7 @@
 	refund_path = /obj/item/antag_spawner/nuke_ops
 	cost = 100
 	refundable = TRUE
-	cant_discount = TRUE
+	can_discount = FALSE
 
 /datum/uplink_item/support/reinforcement/assault_borg
 	name = "Syndicate Assault Cyborg"
@@ -150,7 +153,9 @@
 	refund_path = /obj/item/antag_spawner/nuke_ops/borg_tele/saboteur
 	cost = 125
 
-// AMMUNITION
+////////////////////////////////////////
+// MARK: AMMUNITION
+////////////////////////////////////////
 
 /datum/uplink_item/ammo/aps
 	name = "Stechkin APS - 10mm Magazine"
@@ -272,6 +277,14 @@
 	cost = 30
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
+/datum/uplink_item/ammo/chemical_canister
+	name = "Box of chemical flamethrower canisters"
+	desc = "A box filled with 2 canisters of flamethrower fuel, exactly enough to fully refill your flamethrower once!"
+	reference = "CHEM_CAN"
+	item = /obj/item/storage/box/syndie_kit/chemical_canister
+	cost = 30
+	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
+
 /datum/uplink_item/ammo/machinegun
 	name = "L6 SAW - 5.56x45mm Box Magazine"
 	desc = "A 50-round magazine of 5.56x45mm ammunition for use in the L6 SAW machine gun. By the time you need to use this, you'll already be on a pile of corpses."
@@ -337,9 +350,9 @@
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 	surplus = 0
 
-// STEALTHY WEAPONS
-
-// EXPLOSIVES
+////////////////////////////////////////
+// MARK: EXPLOSIVES
+////////////////////////////////////////
 
 /datum/uplink_item/explosives/c4bag
 	name = "Bag of C-4 explosives"
@@ -347,7 +360,7 @@
 	reference = "C4B"
 	item = /obj/item/storage/backpack/duffel/syndie/c4
 	cost = 40 //20% discount!
-	cant_discount = TRUE
+	can_discount = FALSE
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 /datum/uplink_item/explosives/breaching_charge
@@ -366,7 +379,7 @@
 	reference = "X4B"
 	item = /obj/item/storage/backpack/duffel/syndie/x4
 	cost = 20
-	cant_discount = TRUE
+	can_discount = FALSE
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
 /datum/uplink_item/explosives/grenadier
@@ -387,7 +400,15 @@
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 	surplus = 35
 
-// STEALTHY TOOLS
+////////////////////////////////////////
+// MARK: STEALTHY WEAPONS
+////////////////////////////////////////
+
+// There's no nukie only stealthy weapons right now, but if you want to add one, put it here.
+
+////////////////////////////////////////
+// MARK: STEALTHY TOOLS
+////////////////////////////////////////
 
 /datum/uplink_item/stealthy_tools/clownkit
 	name = "Honk Brand Infiltration Kit"
@@ -398,7 +419,9 @@
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 	surplus = 0
 
-// DEVICES AND TOOLS
+////////////////////////////////////////
+// MARK: DEVICES AND TOOLS
+////////////////////////////////////////
 
 /datum/uplink_item/device_tools/diamond_drill
 	name = "Amplifying Diamond Tipped Thermal Safe Drill"
@@ -486,7 +509,9 @@
 	cost = 75
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
-// SPACE SUITS
+////////////////////////////////////////
+// MARK: SPACE SUITS
+////////////////////////////////////////
 
 /datum/uplink_item/suits/elite_nukie
 	name = "Elite Syndicate MODsuit"
@@ -509,7 +534,9 @@
 	excludefrom = list()
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
-// IMPLANTS
+////////////////////////////////////////
+// MARK: IMPLANTS
+////////////////////////////////////////
 
 /datum/uplink_item/bio_chips/krav_implant
 	name = "Krav Maga Implant"
@@ -582,7 +609,9 @@
 	surplus = 0
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
-// BUNDLES
+////////////////////////////////////////
+// MARK: BUNDLES
+////////////////////////////////////////
 
 /datum/uplink_item/bundles_TC/bulldog
 	name = "Bulldog Bundle"
@@ -628,10 +657,9 @@
 	cost = 90 // normally 115
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
-
-// ---------------------------------
-// PRICES OVERRIDE FOR TRAITOR ITEMS
-// ---------------------------------
+////////////////////////////////////////
+// MARK: PRICES OVERRIDE FOR TRAITOR ITEMS
+////////////////////////////////////////
 
 /datum/uplink_item/stealthy_weapons/cqc/nuke
 	reference = "NCQC"
@@ -643,7 +671,6 @@
 	cost = 55
 	excludefrom = list(UPLINK_TYPE_TRAITOR, UPLINK_TYPE_SIT)
 	surplus = 0
-	cant_discount = TRUE
 	hijack_only = FALSE
 
 /datum/uplink_item/explosives/emp_bomb/nuke
@@ -651,18 +678,18 @@
 	cost = 50
 	excludefrom = list(UPLINK_TYPE_TRAITOR, UPLINK_TYPE_SIT)
 	surplus = 0
-	cant_discount = TRUE
+	can_discount = FALSE
 
 /datum/uplink_item/explosives/atmosfiregrenades/nuke
 	reference = "NAPG"
-	hijack_only = FALSE
 	cost = 60
 	excludefrom = list(UPLINK_TYPE_TRAITOR, UPLINK_TYPE_SIT)
 	surplus = 0
-	cant_discount = TRUE
+	hijack_only = TRUE
 
 /datum/uplink_item/stealthy_tools/chameleon/nuke
 	reference = "NCHAM"
+	item = /obj/item/storage/box/syndie_kit/chameleon/nuke
 	cost = 30
 	excludefrom = list(UPLINK_TYPE_TRAITOR, UPLINK_TYPE_SIT)
 
@@ -678,9 +705,9 @@
 	excludefrom = list()
 	uplinktypes = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 
-// ---------------------------------
-// NUKIE ONLY POINTLESS BADASSERY
-// ---------------------------------
+////////////////////////////////////////
+// MARK: NUKIE ONLY POINTLESS BADASSERY
+////////////////////////////////////////
 
 /datum/uplink_item/badass/confettidrum
 	name = "Bulldog - 12g party Magazine"

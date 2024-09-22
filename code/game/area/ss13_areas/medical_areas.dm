@@ -8,6 +8,7 @@
 /area/station/medical/medbay
 	name = "Медицинский Отдел"
 	icon_state = "medbay"
+	request_console_flags = RC_ASSIST
 
 //Medbay is a large area, these additional areas help level out APC load.
 /area/station/medical/medbay2
@@ -21,14 +22,20 @@
 /area/station/medical/storage
 	name = "Склад Медицинского Отдела"
 	icon_state = "medbaystorage"
+	request_console_flags = RC_ASSIST
+	request_console_name = "Medbay"
 
 /area/station/medical/reception
 	name = "Ресепшен Медицинского Отдела"
 	icon_state = "medbaylobby"
+	request_console_flags = RC_ASSIST
+	request_console_name = "Medbay"
 
 /area/station/medical/psych
 	name = "Офис Психолога"
 	icon_state = "medbaypsych"
+	request_console_flags = RC_SUPPLY
+	request_console_name = "Psychiatrist"
 
 /area/station/medical/break_room
 	name = "Комната Отдыха Медицинского Отдела"
@@ -49,10 +56,6 @@
 	icon_state = "patients"
 	sound_environment = SOUND_AREA_SMALL_SOFTFLOOR
 
-/area/station/medical/ward
-	name = "Комната Ожидания Медицинского Отдела"
-	icon_state = "patientsward"
-
 /area/station/medical/coldroom
 	name = "Морозильная Камера Медицинского Отдела"
 	icon_state = "coldroom"
@@ -64,6 +67,7 @@
 /area/station/medical/virology
 	name = "Вирусология"
 	icon_state = "virology"
+	request_console_flags = RC_ASSIST | RC_SUPPLY
 
 /area/station/medical/virology/lab
 	name = "Лаборатория Вирусологии"
@@ -75,10 +79,12 @@
 	ambientsounds = SPOOKY_SOUNDS
 	is_haunted = TRUE
 	sound_environment = SOUND_AREA_SMALL_ENCLOSED
+	request_console_flags = RC_ASSIST | RC_INFO
 
 /area/station/medical/chemistry
 	name = "Химическая Лаборатория Медицинского Отдела"
 	icon_state = "chem"
+	request_console_flags = RC_ASSIST | RC_SUPPLY
 
 /area/station/medical/surgery
 	name = "Операционное Отделение"
@@ -115,3 +121,4 @@
 /area/station/medical/paramedic
 	name = "Офис Парамедика"
 	icon_state = "paramedic"
+	request_console_flags = RC_ASSIST

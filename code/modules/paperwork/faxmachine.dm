@@ -7,6 +7,7 @@ GLOBAL_LIST_EMPTY(fax_blacklist)
 
 /obj/machinery/photocopier/faxmachine
 	name = "fax machine"
+	desc = "Because just talking to your coworkers is too efficient."
 	icon = 'icons/obj/library.dmi'
 	icon_state = "fax"
 	insert_anim = "faxsend"
@@ -18,7 +19,7 @@ GLOBAL_LIST_EMPTY(fax_blacklist)
 
 	/// Can we send messages off-station?
 	var/long_range_enabled = FALSE
-	req_one_access = list(ACCESS_LAWYER, ACCESS_HEADS, ACCESS_ARMORY)
+	req_one_access = list(ACCESS_INTERNAL_AFFAIRS, ACCESS_HEADS, ACCESS_ARMORY)
 
 	idle_power_consumption = 30
 	active_power_consumption = 200
@@ -50,7 +51,7 @@ GLOBAL_LIST_EMPTY(fax_blacklist)
 
 /obj/machinery/photocopier/faxmachine/examine(mob/user)
 	. = ..()
-	. += "<span class='info'><b>Alt-Click</b> [src] to remove its currently stored ID.</span>"
+	. += "<span class='notice'><b>Alt-Click</b> [src] to remove its currently stored ID.</span>"
 
 /obj/machinery/photocopier/faxmachine/proc/update_network()
 	if(department != "Unknown")
@@ -59,6 +60,7 @@ GLOBAL_LIST_EMPTY(fax_blacklist)
 
 /obj/machinery/photocopier/faxmachine/longrange
 	name = "long range fax machine"
+	desc = "A fax machine of the ancient days, now using modern entanglement networks, all the better to snitch on your coworkers."
 	fax_network = "Central Command Quantum Entanglement Network"
 	long_range_enabled = TRUE
 
@@ -68,6 +70,7 @@ GLOBAL_LIST_EMPTY(fax_blacklist)
 
 /obj/machinery/photocopier/faxmachine/longrange/syndie
 	name = "syndicate long range fax machine"
+	desc = "For requesting supplies from your benefactors, not that they'll send you any."
 	emagged = TRUE
 	syndie_restricted = TRUE
 	req_one_access = list(ACCESS_SYNDICATE)
@@ -204,7 +207,7 @@ GLOBAL_LIST_EMPTY(fax_blacklist)
 				var/n_name = tgui_input_text(usr, "What would you like to label the fax?", "Fax Labelling", copyitem.name)
 				if(!n_name)
 					return
-				if(copyitem && copyitem.loc == src && usr.stat == 0)
+				if(copyitem && copyitem.loc == src && usr.stat == CONSCIOUS)
 					if(istype(copyitem, /obj/item/paper))
 						copyitem.name = "[(n_name ? "[n_name]" : initial(copyitem.name))]"
 						copyitem.desc = "This is a paper titled '" + copyitem.name + "'."
@@ -336,6 +339,30 @@ GLOBAL_LIST_EMPTY(fax_blacklist)
 
 	use_power(active_power_consumption)
 
+/obj/machinery/photocopier/faxmachine/proc/log_fax(mob/sender, destination)
+	// Logging for sending photos
+	if(istype(copyitem, /obj/item/photo))
+		log_admin("[key_name(sender)] has sent a photo by fax to [destination]")
+		return
+
+	// Logging for single paper message
+	if(istype(copyitem, /obj/item/paper))
+		var/obj/item/paper/fax_message = copyitem
+		log_admin("[key_name(sender)] has sent a message by fax to [destination] reading [fax_message.info]")
+		return
+
+	// Logging for paper bundle messages
+	if(istype(copyitem, /obj/item/paper_bundle))
+		var/obj/item/paper_bundle/paper_bundle = copyitem
+		// Incremented by one for each paper in the bundle
+		var/page_count = 1
+
+		// Loop through the contents of the paper bundle and grab the message from each page
+		for(var/obj/item/paper/page in paper_bundle.contents)
+			log_admin("[key_name(sender)] has sent a bundled message by fax to [destination] - Page [page_count]: [page.info]")
+			page_count ++
+		return
+
 /obj/machinery/photocopier/faxmachine/proc/send_admin_fax(mob/sender, destination)
 	use_power(active_power_consumption)
 
@@ -362,6 +389,7 @@ GLOBAL_LIST_EMPTY(fax_blacklist)
 		if(F.department == destination)
 			F.receivefax(copyitem)
 	visible_message("[src] beeps, \"Message transmitted successfully.\"")
+	log_fax(sender, destination)
 
 /obj/machinery/photocopier/faxmachine/proc/cooldown_seconds()
 	if(sendcooldown < world.time)
@@ -369,7 +397,7 @@ GLOBAL_LIST_EMPTY(fax_blacklist)
 	return round((sendcooldown - world.time) / 10)
 
 /obj/machinery/photocopier/faxmachine/proc/message_admins(mob/sender, faxname, faxtype, obj/item/sent, font_colour="#9A04D1")
-	var/msg = "<span class='boldnotice'><font color='[font_colour]'>[faxname]: </font> [key_name_admin(sender)] | REPLY: (<A HREF='?_src_=holder;[faxname == "SYNDICATE FAX" ? "SyndicateReply" : "CentcommReply"]=[sender.UID()]'>RADIO</A>) (<a href='?_src_=holder;AdminFaxCreate=\ref[sender];originfax=\ref[src];faxtype=[faxtype];replyto=\ref[sent]'>FAX</a>) ([ADMIN_SM(sender,"SM")]) | REJECT: (<A HREF='?_src_=holder;FaxReplyTemplate=[sender.UID()];originfax=\ref[src]'>TEMPLATE</A>) ([ADMIN_BSA(sender,"BSA")]) (<A HREF='?_src_=holder;EvilFax=[sender.UID()];originfax=\ref[src]'>EVILFAX</A>) </span>: Receiving '[sent.name]' via secure connection... <a href='?_src_=holder;AdminFaxView=\ref[sent]'>view message</a>"
+	var/msg = "<span class='boldnotice'><font color='[font_colour]'>[faxname]: </font> [key_name_admin(sender)] | REPLY: (<A href='byond://?_src_=holder;[faxname == "SYNDICATE FAX" ? "SyndicateReply" : "CentcommReply"]=[sender.UID()]'>RADIO</A>) (<a href='byond://?_src_=holder;AdminFaxCreate=\ref[sender];originfax=\ref[src];faxtype=[faxtype];replyto=\ref[sent]'>FAX</a>) ([ADMIN_SM(sender,"SM")]) | REJECT: (<A href='byond://?_src_=holder;FaxReplyTemplate=[sender.UID()];originfax=\ref[src]'>TEMPLATE</A>) ([ADMIN_BSA(sender,"BSA")]) (<A href='byond://?_src_=holder;EvilFax=[sender.UID()];originfax=\ref[src]'>EVILFAX</A>) </span>: Receiving '[sent.name]' via secure connection... <a href='byond://?_src_=holder;AdminFaxView=\ref[sent]'>view message</a>"
 	var/fax_sound = sound('sound/effects/adminhelp.ogg')
 	for(var/client/C in GLOB.admins)
 		if(check_rights(R_EVENT, 0, C.mob))

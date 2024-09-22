@@ -79,6 +79,7 @@
 	armor = list(MELEE = 35, BULLET = 35, LASER = 20, ENERGY = 10, BOMB = 20, RAD = 20, FIRE = 200, ACID = 285)
 	heat_protection = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	max_heat_protection_temperature = SPACE_SUIT_MAX_TEMP_PROTECT
+	dyeable = FALSE
 	icon = 'icons/obj/clothing/species/vox/suits.dmi'
 	species_restricted = list("Vox")
 	sprite_sheets = list(
@@ -219,7 +220,7 @@
 			return
 		var/mob/living/carbon/human/H = user
 		if(H.shoes != src)
-			to_chat(user, "<span class='warning>You will have to put on [src] before you can do that.</span>")
+			to_chat(user, "<span class='warning'>You will have to put on [src] before you can do that.</span>")
 			return
 		flags |= NODROP	//kinda hard to take off magclaws when you are gripping them tightly.
 		to_chat(user, "You dig your claws deeply into the flooring, bracing yourself.")

@@ -36,6 +36,9 @@
 		if(DSAY_CHANNEL)
 			client.dsay(entry)
 			return TRUE
+		if(DEV_CHANNEL)
+			client.cmd_dev_say(entry)
+			return TRUE
 	return FALSE
 
 /**
@@ -52,7 +55,7 @@
 		qdel(usr.client)
 		message_admins("[hacker_man_ckey] was kicked for attemping to send a null message to TGUI-say.")
 		CRASH("[hacker_man_ckey] entered in a null payload to the chat window.")
-	if(length(payload["entry"]) > MAX_MESSAGE_LEN)
+	if(length_char(payload["entry"]) > MAX_MESSAGE_LEN)
 		var/hacker_man_ckey = usr.client.ckey
 		qdel(usr.client)
 		message_admins("[hacker_man_ckey] was kicked for attemping to bypass TGUI-say character limits.")

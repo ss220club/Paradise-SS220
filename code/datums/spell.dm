@@ -20,6 +20,8 @@ GLOBAL_LIST_INIT(spells, typesof(/datum/spell))
 		user.ranged_ability.remove_ranged_ability(user)
 		return TRUE //TRUE for failed, FALSE for passed.
 	user.face_atom(A)
+	if(targeting)
+		targeting.InterceptClickOn(user, params, A, src)
 	return FALSE
 
 /datum/spell/proc/add_ranged_ability(mob/user, msg)
@@ -65,8 +67,6 @@ GLOBAL_LIST_INIT(spells, typesof(/datum/spell))
 /datum/spell
 	var/name = "Spell" // Only rename this if the spell you're making is not abstract
 	var/desc = "A wizard spell"
-	var/panel = "Spells"//What panel the proc holder needs to go on.
-
 	var/school = "evocation" //not relevant at now, but may be important later if there are changes to how spells work. the ones I used for now will probably be changed... maybe spell presets? lacking flexibility but with some other benefit?
 	///recharge time in deciseconds
 	var/base_cooldown = 10 SECONDS
@@ -112,6 +112,7 @@ GLOBAL_LIST_INIT(spells, typesof(/datum/spell))
 	var/datum/action/spell_action/action = null
 	var/action_icon = 'icons/mob/actions/actions.dmi'
 	var/action_icon_state = "spell_default"
+	var/action_background_icon = 'icons/mob/actions/actions.dmi'
 	var/action_background_icon_state = "bg_spell"
 
 	var/sound = null //The sound the spell makes when it is cast
@@ -269,13 +270,6 @@ GLOBAL_LIST_INIT(spells, typesof(/datum/spell))
 
 /datum/spell/proc/AltClick(mob/user)
 	return Click()
-
-/datum/spell/InterceptClickOn(mob/user, params, atom/A)
-	. = ..()
-	if(.)
-		return
-	if(targeting)
-		targeting.InterceptClickOn(user, params, A, src)
 
 ///Lets the spell have a special effect applied to it when upgraded. By default, does nothing.
 /datum/spell/proc/on_purchase_upgrade()

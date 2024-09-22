@@ -280,6 +280,9 @@
 /datum/emote/living/carbon/human/highfive/handshake
 	name = EMOTE_HUMAN_HANDSHAKE
 
+/datum/emote/living/carbon/human/highfive/rps
+	name = EMOTE_HUMAN_RPS
+
 /datum/emote/living/carbon/human/hug
 	name = EMOTE_HUMAN_HUG
 
@@ -360,6 +363,15 @@
 
 /datum/emote/living/carbon/human/monkey/scratch
 	name = EMOTE_HUMAN_SCRATCH
+
+/datum/emote/living/carbon/human/bark
+	name = EMOTE_HUMAN_BARK
+
+/datum/emote/living/carbon/human/wbark
+	name = EMOTE_HUMAN_WBARK
+
+/datum/emote/living/carbon/human/ururu
+	name = EMOTE_HUMAN_RUMBLE
 
 /// Emote Silicon
 

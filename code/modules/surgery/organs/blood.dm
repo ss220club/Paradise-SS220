@@ -58,9 +58,9 @@
 			if(BP.is_robotic())
 				continue
 
-			//We want an accurate reading of .len
+			//We want an accurate reading of length()
 			listclearnulls(BP.embedded_objects)
-			temp_bleed += 0.5*BP.embedded_objects.len
+			temp_bleed += 0.5 * length(BP.embedded_objects)
 
 			if(brutedamage >= 20)
 				temp_bleed += (brutedamage * 0.013)
@@ -107,7 +107,7 @@
 	if(blood_volume)
 		blood_volume = max(blood_volume - amt, 0)
 		if(prob(10 * amt)) // +5% chance per internal bleeding site that we'll cough up blood on a given tick.
-			custom_emote(EMOTE_VISIBLE, "coughs up blood!")
+			custom_emote(EMOTE_VISIBLE, "кашляет кровью!")
 			add_splatter_floor(loc, 1, emittor_intertia = inertia_next_move > world.time ? last_movement_dir : null)
 			return 1
 		else if(amt >= 1 && prob(5 * amt)) // +2.5% chance per internal bleeding site that we'll cough up blood on a given tick. Must be bleeding internally in more than one place to have a chance at this.
@@ -191,7 +191,7 @@
 			blood_data["viruses"] += D.Copy()
 
 		blood_data["blood_DNA"] = copytext(dna.unique_enzymes,1,0)
-		if(resistances && resistances.len)
+		if(resistances && length(resistances))
 			blood_data["resistances"] = resistances.Copy()
 		var/list/temp_chem = list()
 		for(var/datum/reagent/R in reagents.reagent_list)
@@ -278,7 +278,10 @@
 				drop.overlays |= I
 
 				drop.transfer_mob_blood_dna(src)
-				drop.basecolor = b_data["blood_color"]
+				if(b_data && !isnull(b_data["blood_color"]))
+					drop.basecolor = b_data["blood_color"]
+				else
+					drop.basecolor = "#A10808"
 				drop.update_icon()
 			else
 				temp_blood_DNA = list()
@@ -287,7 +290,10 @@
 		else
 			drop = new(T)
 			drop.transfer_mob_blood_dna(src)
-			drop.basecolor = b_data["blood_color"]
+			if(b_data && !isnull(b_data["blood_color"]))
+				drop.basecolor = b_data["blood_color"]
+			else
+				drop.basecolor = "#A10808"
 			drop.update_icon()
 			if(emittor_intertia)
 				drop.newtonian_move(emittor_intertia)

@@ -87,83 +87,15 @@
 
 // Structure
 /obj/structure/shuttle/engine
-	name = "engine"
 	icon = 'modular_ss220/maps220/icons/shuttle.dmi'
 	resistance_flags = INDESTRUCTIBLE // То что у нас двигатели ломаются от пары пуль - бред
-	var/list/obj/structure/fillers = list() // Для коллизии более больших двигателей
 
 /obj/structure/shuttle/engine/Initialize(mapload)
 	. = ..()
 	set_light(2)
 
-/obj/structure/shuttle/engine/heater
-	name = "heater"
-	icon_state = "heater"
-
-/obj/structure/shuttle/engine/platform
-	name = "platform"
-	icon_state = "platform"
-
-/obj/structure/shuttle/engine/propulsion
-	name = "propulsion"
-	icon_state = "propulsion"
-	opacity = 1
-
-/obj/structure/shuttle/engine/propulsion/burst
-
-/obj/structure/shuttle/engine/propulsion/burst/left
-	icon_state = "burst_l"
-
-/obj/structure/shuttle/engine/propulsion/burst/right
-	icon_state = "burst_r"
-
-/obj/structure/shuttle/engine/router
-	name = "router"
-	icon_state = "router"
-
-/obj/structure/shuttle/engine/large
-	name = "engine"
-	opacity = 1
-	icon = 'modular_ss220/maps220/icons/2x2.dmi'
-	icon_state = "large_engine"
-	desc = "A very large bluespace engine used to propel very large ships."
-//	bound_width = 64
-//	bound_height = 64
-	appearance_flags = 0
-
 /obj/structure/shuttle/engine/huge
-	name = "engine"
-	opacity = 1
 	icon = 'modular_ss220/maps220/icons/3x3.dmi'
-	icon_state = "huge_engine"
-	desc = "Almost gigantic bluespace engine used to propel very large ships at very high speed."
-	pixel_x = -32
-	pixel_y = -32
-//	bound_width = 96
-//	bound_height = 96
-	appearance_flags = 0
-
-/obj/structure/shuttle/engine/large/Initialize()
-	..()
-	var/list/occupied = list()
-	for(var/direct in list(EAST,NORTH,NORTHEAST))
-		occupied += get_step(src,direct)
-
-	for(var/T in occupied)
-		var/obj/structure/filler/F = new(T)
-		F.parent = src
-		fillers += F
-
-/obj/structure/shuttle/engine/huge/Initialize()
-	..()
-	var/list/occupied = list()
-	for(var/direct in list(EAST,WEST,NORTH,SOUTH,SOUTHEAST,SOUTHWEST,NORTHEAST,NORTHWEST))
-		occupied += get_step(src,direct)
-
-	for(var/T in occupied)
-		var/obj/structure/filler/F = new(T)
-		F.parent = src
-		fillers += F
 
 /obj/structure/chair/comfy/shuttle/dark
 	icon = 'modular_ss220/maps220/icons/chairs.dmi'
@@ -179,8 +111,6 @@
 	icon_closed = "tac"
 	icon_opened = "tac_open"
 	open_door_sprite = "syndicate_door"
-
-
 
 /obj/structure/closet/secure_closet/syndicate/medbay/populate_contents()
 	new /obj/item/storage/backpack/duffel/syndie/med/surgery
@@ -297,7 +227,7 @@
 
 	else
 		undead.set_species(/datum/species/skeleton) // OP skellybones
-		undead.visible_message(span_warning ("[undead] отторгает бренную оболочку и предстает в виде скелета!"))
+		undead.visible_message(span_warning("[undead] отторгает бренную оболочку и предстает в виде скелета!"))
 		undead.grab_ghost() // yoinks the ghost if its not in the body
 		undead.revive()
 		equip_undead(undead)

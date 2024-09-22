@@ -17,7 +17,7 @@
 	mob_size = MOB_SIZE_SMALL
 	animal_species = /mob/living/simple_animal/pet/cat
 	childtype = list(/mob/living/simple_animal/pet/cat/kitten)
-	butcher_results = list(/obj/item/food/snacks/meat = 3)
+	butcher_results = list(/obj/item/food/meat = 3)
 	response_help  = "pets"
 	response_disarm = "gently pushes aside"
 	response_harm   = "kicks"
@@ -121,7 +121,7 @@
 	collar_type = "[initial(collar_type)]_sit"
 
 /mob/living/simple_animal/pet/cat/handle_automated_action()
-	if(!stat && !buckled)
+	if(stat == CONSCIOUS && !buckled)
 		if(prob(1))
 			custom_emote(EMOTE_VISIBLE, pick("stretches out for a belly rub.", "wags its tail.", "lies down."))
 			lay_down()
@@ -142,6 +142,7 @@
 				M.death()
 				M.splat()
 				movement_target = null
+				walk(src, 0)
 				stop_automated_movement = FALSE
 				break
 		for(var/obj/item/toy/cattoy/T in view(1, src))
@@ -156,7 +157,7 @@
 
 	turns_since_scan++
 	if(turns_since_scan > 5)
-		walk_to(src,0)
+		walk(src, 0)
 		turns_since_scan = 0
 	if((movement_target) && !(isturf(movement_target.loc) || ishuman(movement_target.loc)))
 		movement_target = null
@@ -164,13 +165,14 @@
 	if(!movement_target || !(movement_target.loc in oview(src, 3)))
 		movement_target = null
 		stop_automated_movement = FALSE
+		walk(src, 0)
 		for(var/mob/living/simple_animal/mouse/snack in oview(src,3))
 			if(isturf(snack.loc) && !snack.stat)
 				movement_target = snack
 				break
 	if(movement_target)
 		stop_automated_movement = TRUE
-		walk_to(src,movement_target,0,3)
+		walk(src, movement_target, 0, 3)
 
 /mob/living/simple_animal/pet/cat/Proc
 	name = "Proc"
@@ -233,8 +235,8 @@
 	butcher_results = list(
 		/obj/item/organ/internal/brain = 1,
 		/obj/item/organ/internal/heart = 1,
-		/obj/item/food/snacks/birthdaycakeslice = 3,
-		/obj/item/food/snacks/meat/slab = 2
+		/obj/item/food/birthdaycakeslice = 3,
+		/obj/item/food/meat/slab = 2
 	)
 	response_harm = "takes a bite out of"
 	attacked_sound = "sound/items/eatfood.ogg"
@@ -254,7 +256,7 @@
 	final_bites = 0
 	if(health < maxHealth)
 		adjustBruteLoss(-4)
-	for(var/obj/item/food/snacks/donut/D in range(1, src))
+	for(var/obj/item/food/donut/D in range(1, src))
 		if(D.icon_state != "donut2")
 			D.name = "frosted donut"
 			D.icon_state = "donut2"
@@ -271,7 +273,7 @@
 	if(stat == DEAD)
 		if(++final_bites >= total_final_bites)
 			visible_message("<span class='danger'>[L] finished eating [src], there's nothing left!</span>")
-			to_chat(L, "<span class='info'>Whoa, that last bite tasted weird.</span>")
+			to_chat(L, "<span class='notice'>Whoa, that last bite tasted weird.</span>")
 			L.reagents.add_reagent("teslium", 5)
 			qdel(src)
 
@@ -288,6 +290,7 @@
 	so quickly that it generally doesn't matter. You're remarkably resilient to any damage besides this and it's hard for you to really die at all. You should go around and bring happiness and \
 	free cake to the station!</b>")
 	var/new_name = tgui_input_text(src, "Enter your name, or press \"Cancel\" to stick with Keeki.", "Name Change", name)
-	if(new_name)
-		to_chat(src, "<span class='notice'>Your name is now <b>\"[new_name]\"</b>!</span>")
-		name = new_name
+	if(!new_name)
+		return
+	to_chat(src, "<span class='notice'>Your name is now <b>\"[new_name]\"</b>!</span>")
+	name = new_name

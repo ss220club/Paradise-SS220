@@ -1,6 +1,6 @@
 /mob/living/silicon/ai/examine(mob/user)
 	. = ..()
-	var/msg = "<span class='info'>"
+	var/msg = "<span class='notice'>"
 	if(src.stat == DEAD)
 		msg += "<span class='deadsay'>Выглядит отключённым.</span>\n"
 	else

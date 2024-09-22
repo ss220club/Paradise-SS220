@@ -74,7 +74,7 @@
 /mob/living/carbon/human/get_screen_colour() //Fetch the colour matrix from wherever (e.g. eyes) so it can be compared to client.color.
 	. = ..()
 	if(.)
-		return .
+		return
 
 	var/obj/item/clothing/glasses/worn_glasses = glasses
 	var/obj/item/organ/internal/eyes/eyes = get_int_organ(/obj/item/organ/internal/eyes)
@@ -158,16 +158,26 @@
 		return U.sensor_mode
 	return SUIT_SENSOR_OFF
 
-/proc/offer_control(mob/M)
-	to_chat(M, "Control of your mob has been offered to dead players.")
+/proc/offer_control(mob/M, hours, hide_role)
+	if(HAS_TRAIT(M, TRAIT_BEING_OFFERED))
+		return
+	var/minhours
+	ADD_TRAIT(M, TRAIT_BEING_OFFERED, "admin_offer")
 	log_admin("[key_name(usr)] has offered control of ([key_name(M)]) to ghosts.")
-	var/minhours = input(usr, "Minimum hours required to play [M]?", "Set Min Hrs", 10) as num
-	message_admins("[key_name_admin(usr)] has offered control of ([key_name_admin(M)]) to ghosts with [minhours] hrs playtime")
 	var/question = "Do you want to play as [M.real_name ? M.real_name : M.name][M.job ? " ([M.job])" : ""]"
-	if(alert("Do you want to show the antag status?","Show antag status","Yes","No") == "Yes")
+	if(!hours)
+		minhours = input(usr, "Minimum hours required to play [M]?", "Set Min Hrs", 10) as num
+	else
+		minhours = hours
+	if(isnull(hide_role))
+		if(alert("Do you want to show the antag status?","Show antag status","Yes","No") == "Yes")
+			question += ", [M.mind?.special_role || "No special role"]"
+	else if(!hide_role)
 		question += ", [M.mind?.special_role ? M.mind?.special_role : "No special role"]"
+	message_admins("[key_name_admin(usr)] has offered control of ([key_name_admin(M)]) to ghosts with [minhours] hrs playtime")
 	var/list/mob/dead/observer/candidates = SSghost_spawns.poll_candidates("[question]?", poll_time = 10 SECONDS, min_hours = minhours, source = M)
 	var/mob/dead/observer/theghost = null
+	REMOVE_TRAIT(M, TRAIT_BEING_OFFERED, "admin_offer")
 
 	if(length(candidates))
 		if(QDELETED(M))
@@ -175,7 +185,8 @@
 		theghost = pick(candidates)
 		to_chat(M, "Your mob has been taken over by a ghost!")
 		message_admins("[key_name_admin(theghost)] has taken control of ([key_name_admin(M)])")
-		M.ghostize()
+		var/mob/dead/observer/ghost = M.ghostize(TRUE) // Keep them respawnable
+		ghost?.can_reenter_corpse = FALSE // but keep them out of their old body
 		M.key = theghost.key
 		dust_if_respawnable(theghost)
 	else
@@ -580,12 +591,6 @@
 		return FALSE
 	return TRUE
 
-/mob/proc/switch_to_camera(obj/machinery/camera/C)
-	if(!C.can_use() || incapacitated() || (get_dist(C, src) > 1 || machine != src || !has_vision()))
-		return FALSE
-	check_eye(src)
-	return TRUE
-
 /mob/proc/rename_character(oldname, newname)
 	if(!newname)
 		return FALSE
@@ -593,7 +598,7 @@
 	name = newname
 	if(mind)
 		mind.name = newname
-		if(mind.initial_account?.account_name == oldname)
+		if(!isnull(oldname) && mind?.initial_account?.account_name == oldname)
 			mind.initial_account.account_name = newname
 	if(dna)
 		dna.real_name = real_name

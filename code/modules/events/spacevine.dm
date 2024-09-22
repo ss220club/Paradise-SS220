@@ -10,12 +10,12 @@
 
 	qdel(SV)
 
-	if(turfs.len) //Pick a turf to spawn at if we can
+	if(length(turfs)) //Pick a turf to spawn at if we can
 		var/turf/T = pick(turfs)
 		var/obj/structure/spacevine_controller/SC = new /obj/structure/spacevine_controller(T, null, rand(30,70),rand(5,2)) //spawn a controller at turf
 
 		// Make the event start fun - give the vine a random hostile mutation
-		if(SC.vines.len)
+		if(length(SC.vines))
 			SV = SC.vines[1]
 			var/list/mutations = subtypesof(/datum/spacevine_mutation)
 			while(mutations)
@@ -81,8 +81,9 @@
 /turf/simulated/floor/vines
 	color = "#aa77aa"
 	icon_state = "vinefloor"
-	broken_states = list()
 
+/turf/simulated/floor/vines/get_broken_states()
+	return list()
 
 //All of this shit is useless for vines
 
@@ -102,7 +103,7 @@
 	return
 
 /turf/simulated/floor/vines/ex_act(severity)
-	if(severity < 3)
+	if(severity < EXPLODE_LIGHT)
 		ChangeTurf(baseturf)
 
 /turf/simulated/floor/vines/narsie_act()
@@ -208,7 +209,7 @@
 	nofun = TRUE
 
 /datum/spacevine_mutation/explosive/on_explosion(explosion_severity, obj/structure/spacevine/holder)
-	if(explosion_severity < 3)
+	if(explosion_severity < EXPLODE_LIGHT)
 		qdel(holder)
 	else
 		addtimer(CALLBACK(holder, TYPE_PROC_REF(/obj/structure/spacevine, wither)), 5)
@@ -305,10 +306,11 @@
 	holder.obj_integrity = holder.max_integrity
 
 /datum/spacevine_mutation/woodening/on_hit(obj/structure/spacevine/holder, mob/living/hitter, obj/item/I, expected_damage)
+	. = expected_damage
+	if(!I)
+		return
 	if(!I.sharp)
-		. = expected_damage * 0.5
-	else
-		. = expected_damage
+		return expected_damage * 0.5
 
 /datum/spacevine_mutation/flowering
 	name = "flowering"
@@ -395,6 +397,7 @@
 	mouse_opacity = MOUSE_OPACITY_OPAQUE //Clicking anywhere on the turf is good enough
 	pass_flags = PASSTABLE | PASSGRILLE
 	max_integrity = 50
+	unbuckle_time = 5 SECONDS
 	var/energy = 0
 	var/obj/structure/spacevine_controller/master = null
 	var/list/mutations = list()
@@ -429,7 +432,7 @@
 	if(master)
 		master.vines -= src
 		master.growth_queue -= src
-		if(!master.vines.len)
+		if(!length(master.vines))
 			var/obj/item/seeds/kudzu/KZ = new(loc)
 			for(var/mutation in mutations)
 				KZ.mutations += mutation
@@ -510,10 +513,14 @@
 	wither()
 
 /obj/structure/spacevine/Crossed(mob/crosser, oldloc)
-	if(isliving(crosser))
-		for(var/SM_type in mutations)
-			var/datum/spacevine_mutation/SM = mutations[SM_type]
-			SM.on_cross(src, crosser)
+	if(!isliving(crosser))
+		return
+	for(var/SM_type in mutations)
+		var/datum/spacevine_mutation/SM = mutations[SM_type]
+		SM.on_cross(src, crosser)
+
+	if(prob(30 * energy))
+		entangle(crosser)
 
 /obj/structure/spacevine/attack_hand(mob/user)
 	for(var/SM_type in mutations)
@@ -531,12 +538,16 @@
 	var/spread_multiplier = 5
 	var/spread_cap = 30
 	var/mutativeness = 1
+	var/list/protected_areas = list(/area/shuttle/arrival/station)
 
 /obj/structure/spacevine_controller/New(loc, list/muts, potency, production)
 	color = "#ffffff"
 	spawn_spacevine_piece(loc, null, muts)
 	START_PROCESSING(SSobj, src)
-	if(potency != null && potency > 0)
+	if(!potency)
+		mutativeness = 0
+	else
+		// 0 mutativeness at 1 potency
 		// 1 mutativeness at 10 potency
 		// 4 mutativeness at 100 potency
 		mutativeness = log(10, potency) ** 2
@@ -588,7 +599,7 @@
 		SM.on_birth(SV)
 
 /obj/structure/spacevine_controller/process()
-	if(!vines || !vines.len)
+	if(!vines || !length(vines))
 		qdel(src) //space vines exterminated. Remove the controller
 		return
 	if(!growth_queue)
@@ -597,7 +608,7 @@
 
 	var/length = 0
 
-	length = min( spread_cap , max( 1 , vines.len / spread_multiplier ) )
+	length = min( spread_cap , max( 1 , length(vines) / spread_multiplier ) )
 	var/i = 0
 	var/list/obj/structure/spacevine/queue_end = list()
 
@@ -660,7 +671,7 @@
 	for(var/SM_type in mutations)
 		var/datum/spacevine_mutation/SM = mutations[SM_type]
 		spread_search |= SM.on_search(src)
-	while(dir_list.len)
+	while(length(dir_list))
 		var/direction = pick(dir_list)
 		dir_list -= direction
 		var/turf/stepturf = get_step(src,direction)
@@ -670,7 +681,7 @@
 			spread_success |= SM.on_spread(src, stepturf) // If this returns 1, spreading succeeded
 		if(!locate(/obj/structure/spacevine, stepturf))
 			// snowflake for space turf, but space turf is super common and a big deal
-			if(!isspaceturf(stepturf) && stepturf.Enter(src))
+			if(!isspaceturf(stepturf) && !is_type_in_list(get_area(stepturf), master.protected_areas) && stepturf.Enter(src))
 				if(master)
 					master.spawn_spacevine_piece(stepturf, src)
 				spread_success = TRUE
@@ -694,7 +705,7 @@
 	if(!override)
 		wither()
 
-/obj/structure/spacevine/CanPass(atom/movable/mover, turf/target, height=0)
+/obj/structure/spacevine/CanPass(atom/movable/mover, turf/target)
 	if(isvineimmune(mover))
 		. = TRUE
 	else

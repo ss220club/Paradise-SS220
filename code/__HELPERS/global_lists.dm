@@ -79,7 +79,10 @@
 		var/datum/gear/G = geartype
 
 		var/use_category = initial(G.sort_category)
-
+		// SS220 EDIT - START
+		if(G.removed_from_loadout)
+			continue
+		// SS220 EDIT - END
 		if(G == initial(G.main_typepath))
 			continue
 
@@ -139,6 +142,11 @@
 		if(initial(D.name))
 			GLOB.keybindings += new path()
 
+	for(var/path in subtypesof(/datum/preference_toggle))
+		var/datum/preference_toggle/pref_toggle = path
+		if(initial(pref_toggle.name))
+			GLOB.preference_toggles[path] = new path()
+
 	for(var/path in subtypesof(/datum/objective))
 		var/datum/objective/O = path
 		if(isnull(initial(O.name)))
@@ -151,6 +159,10 @@
 			continue
 		crit = new path()
 		GLOB.tilt_crits[path] = crit
+
+	for(var/path in subtypesof(/datum/tech))
+		var/datum/tech/T = path
+		GLOB.rnd_tech_id_to_name[initial(T.id)] = initial(T.name)
 
 /* // Uncomment to debug chemical reaction list.
 /client/verb/debug_chemical_list()

@@ -53,8 +53,6 @@
 		U.accessories += M
 		M.on_attached(U)
 
-
-
 /datum/job/hop
 	title = "Head of Personnel"
 	flag = JOB_HOP
@@ -91,7 +89,7 @@
 		ACCESS_JANITOR,
 		ACCESS_KEYCARD_AUTH,
 		ACCESS_KITCHEN,
-		ACCESS_LAWYER,
+		ACCESS_INTERNAL_AFFAIRS,
 		ACCESS_LIBRARY,
 		ACCESS_MAINT_TUNNELS,
 		ACCESS_MEDICAL,
@@ -125,8 +123,6 @@
 	)
 
 	bio_chips = list()
-
-
 
 /datum/job/nanotrasenrep
 	title = "Nanotrasen Representative"
@@ -163,7 +159,7 @@
 		ACCESS_JANITOR,
 		ACCESS_KEYCARD_AUTH,
 		ACCESS_KITCHEN,
-		ACCESS_LAWYER,
+		ACCESS_INTERNAL_AFFAIRS,
 		ACCESS_LIBRARY,
 		ACCESS_MAILSORTING,
 		ACCESS_MAINT_TUNNELS,
@@ -200,8 +196,6 @@
 		/obj/item/melee/classic_baton/ntcane = 1
 	)
 	bio_chips = list(/obj/item/bio_chip/mindshield)
-
-
 
 /datum/job/blueshield
 	title = "Blueshield"
@@ -258,7 +252,6 @@
 	satchel = /obj/item/storage/backpack/satchel_blueshield
 	dufflebag = /obj/item/storage/backpack/duffel/blueshield
 
-
 /datum/job/judge
 	title = "Magistrate"
 	flag = JOB_JUDGE
@@ -277,7 +270,7 @@
 		ACCESS_BRIG,
 		ACCESS_COURT,
 		ACCESS_HEADS,
-		ACCESS_LAWYER,
+		ACCESS_INTERNAL_AFFAIRS,
 		ACCESS_MAGISTRATE,
 		ACCESS_MAINT_TUNNELS,
 		ACCESS_RC_ANNOUNCE,
@@ -300,7 +293,7 @@
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
 	id = /obj/item/card/id/magistrate
 	l_pocket = /obj/item/flash
-	r_pocket = /obj/item/clothing/accessory/lawyers_badge
+	r_pocket = /obj/item/clothing/accessory/legal_badge
 	pda = /obj/item/pda/heads/magistrate
 	backpack_contents = list(
 		/obj/item/melee/classic_baton/telescopic = 1
@@ -309,10 +302,9 @@
 	satchel = /obj/item/storage/backpack/satchel_sec
 	dufflebag = /obj/item/storage/backpack/duffel/security
 
-
-/datum/job/lawyer
+/datum/job/iaa
 	title = "Internal Affairs Agent"
-	flag = JOB_LAWYER
+	flag = JOB_INTERNAL_AFFAIRS
 	department_flag = JOBCAT_SUPPORT
 	total_positions = 2
 	spawn_positions = 2
@@ -324,7 +316,7 @@
 		ACCESS_CARGO,
 		ACCESS_CONSTRUCTION,
 		ACCESS_COURT,
-		ACCESS_LAWYER,
+		ACCESS_INTERNAL_AFFAIRS,
 		ACCESS_MAILSORTING,
 		ACCESS_MAINT_TUNNELS,
 		ACCESS_MEDICAL,
@@ -335,12 +327,12 @@
 	minimal_player_age = 30
 	exp_map = list(EXP_TYPE_CREW = 600)
 	blacklisted_disabilities = list(DISABILITY_FLAG_DEAF, DISABILITY_FLAG_MUTE, DISABILITY_FLAG_NERVOUS, DISABILITY_FLAG_LISP)
-	outfit = /datum/outfit/job/lawyer
+	outfit = /datum/outfit/job/iaa
 	important_information = "Ваша работа заключается в решении вопросов, касающихся Стандартных Рабочих Процедур. Вы не отвечаете за вопросы Космического Закона и не можете его отменять. Вы не являетесь адвокатом заключенных."
 
-/datum/outfit/job/lawyer
+/datum/outfit/job/iaa
 	name = "Internal Affairs Agent"
-	jobtype = /datum/job/lawyer
+	jobtype = /datum/job/iaa
 	uniform = /obj/item/clothing/under/rank/procedure/iaa
 	suit = /obj/item/clothing/suit/storage/iaa/blackjacket
 	shoes = /obj/item/clothing/shoes/brown
@@ -348,9 +340,9 @@
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
 	id = /obj/item/card/id/internalaffairsagent
 	l_pocket = /obj/item/laser_pointer
-	r_pocket = /obj/item/clothing/accessory/lawyers_badge
+	r_pocket = /obj/item/clothing/accessory/legal_badge/iaa
 	l_hand = /obj/item/storage/briefcase
-	pda = /obj/item/pda/lawyer
+	pda = /obj/item/pda/iaa
 	backpack_contents = list(
 		/obj/item/flash = 1
 	)

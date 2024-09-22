@@ -9,6 +9,13 @@
 	dir = 8
 	},
 /area/awaymission/space_battle/engine)
+"ab" = (
+/obj/structure/table/reinforced{
+	color = "#444444"
+	},
+/obj/item/salvage/loot/syndicate,
+/turf/simulated/floor/mineral/plastitanium/red,
+/area/awaymission/space_battle/syndicate/syndicate2)
 "ac" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/landmark/awaymissions/spacebattle/mob_spawn/melee{
@@ -42,10 +49,8 @@
 /turf/space,
 /area/space)
 "ag" = (
-/obj/machinery/suit_storage_unit{
-	suit_type = /obj/item/clothing/suit/space/hardsuit/syndi/damaged;
-	mask_type = /obj/item/clothing/mask/gas/syndicate;
-	boots_type = /obj/item/clothing/shoes/magboots/syndie
+/obj/machinery/suit_storage_unit/syndicate{
+	state_open = 1
 	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/space_battle/syndicate)
@@ -89,10 +94,7 @@
 /area/awaymission/space_battle/syndicate)
 "ap" = (
 /obj/machinery/computer/nonfunctional{
-	name = "broken computer";
-	desc = "A computer long since rendered non-functional due to lack of maintenance. Spitting out error messages.";
-	icon_state = "computer";
-	dir = 2
+	desc = "A computer long since rendered non-functional due to lack of maintenance. Spitting out error messages."
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "blue";
@@ -322,11 +324,19 @@
 	icon_state = "floor_large"
 	},
 /area/awaymission/space_battle/cruiser)
+"aX" = (
+/obj/structure/disposalpipe/trunk{
+	dir = 1
+	},
+/obj/machinery/disposal/deliveryChute,
+/turf/simulated/floor/plating,
+/area/awaymission/space_battle/hallway11)
 "aY" = (
 /obj/structure/table/reinforced{
 	color = "#444444"
 	},
 /mob/living/simple_animal/hostile/viscerator,
+/obj/item/salvage/loot/syndicate,
 /turf/simulated/floor/mineral/plastitanium/red/nitrogen,
 /area/awaymission/space_battle/syndicate)
 "aZ" = (
@@ -379,7 +389,6 @@
 /area/awaymission/space_battle/syndicate/syndicate5)
 "bg" = (
 /obj/structure/sign/directions/cargo{
-	dir = 2;
 	pixel_y = 11
 	},
 /obj/structure/sign/directions/engineering{
@@ -387,7 +396,6 @@
 	pixel_y = 4
 	},
 /obj/structure/sign/directions/medical{
-	dir = 2;
 	pixel_y = -3
 	},
 /obj/structure/sign/directions/security{
@@ -460,7 +468,7 @@
 /obj/structure/shuttle/engine/heater{
 	icon_state = "heater3x3_side_inv"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/plating/airless,
 /area/awaymission/space_battle/cruiser)
 "br" = (
 /turf/simulated/floor/plasteel{
@@ -501,6 +509,11 @@
 	},
 /turf/simulated/wall/indestructible/whiteshuttle,
 /area/awaymission/space_battle/cruiser)
+"bw" = (
+/obj/effect/turf_decal/delivery/hollow,
+/obj/item/salvage/ruin/russian,
+/turf/simulated/floor/plasteel,
+/area/awaymission/space_battle/sec_storage)
 "bx" = (
 /obj/machinery/light/small/directional/west,
 /turf/simulated/floor/plating,
@@ -532,7 +545,6 @@
 /obj/machinery/cryopod/offstation{
 	icon_state = "sleeper_s";
 	occupied_icon_state = "sleeper_s";
-	dir = 8;
 	base_icon_state = "sleeper_s-open"
 	},
 /obj/effect/turf_decal/siding/black{
@@ -849,7 +861,7 @@
 /obj/structure/closet/crate/medical,
 /obj/item/roller_holder,
 /obj/item/roller_holder,
-/obj/effect/spawner/lootdrop/maintenance,
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "whiteblue"
@@ -945,7 +957,6 @@
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/space_battle/syndicate/syndicate2)
 "cV" = (
-/obj/machinery/cooking,
 /turf/simulated/floor/plasteel{
 	icon_state = "blueyellowfull"
 	},
@@ -973,8 +984,8 @@
 /area/awaymission/space_battle/syndicate)
 "da" = (
 /obj/structure/closet/cardboard,
-/obj/item/food/snacks/beans,
-/obj/item/food/snacks/beans,
+/obj/item/food/beans,
+/obj/item/food/beans,
 /obj/machinery/light/directional/west,
 /turf/simulated/floor/mineral/titanium,
 /area/awaymission/space_battle/storage)
@@ -1104,9 +1115,9 @@
 /area/awaymission/space_battle/hallway1)
 "dz" = (
 /obj/structure/closet/crate/freezer,
-/obj/item/food/snacks/meat,
-/obj/item/food/snacks/meat,
-/obj/item/food/snacks/meat,
+/obj/item/food/meat,
+/obj/item/food/meat,
+/obj/item/food/meat,
 /turf/simulated/floor/plasteel/freezer,
 /area/awaymission/space_battle/kitchen)
 "dA" = (
@@ -1248,6 +1259,7 @@
 /area/awaymission/space_battle/syndicate/syndicate1)
 "ec" = (
 /obj/structure/table/reinforced,
+/obj/item/salvage/ruin/nanotrasen,
 /turf/simulated/floor/plasteel{
 	icon_state = "blue";
 	dir = 6
@@ -1329,7 +1341,6 @@
 /area/awaymission/space_battle/syndicate/syndicate3)
 "eq" = (
 /obj/machinery/computer/nonfunctional{
-	name = "broken computer";
 	desc = "A computer long since rendered non-functional due to lack of maintenance. Spitting out error messages.";
 	icon_state = "control_boxp";
 	dir = 8;
@@ -1370,13 +1381,6 @@
 	dir = 4
 	},
 /area/awaymission/space_battle/hallway2)
-"ew" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 2
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plasteel,
-/area/awaymission/space_battle/sec_storage)
 "ex" = (
 /obj/machinery/light/small/directional/west,
 /turf/simulated/floor/plating,
@@ -1467,7 +1471,7 @@
 /obj/machinery/atmospherics/binary/circulator{
 	icon_state = "circ8-off"
 	},
-/turf/simulated/floor/engine,
+/turf/simulated/floor/engine/airless,
 /area/awaymission/space_battle/cruiser)
 "eN" = (
 /mob/living/simple_animal/hostile/syndicate/ranged/space/autogib/spacebattle,
@@ -1641,9 +1645,9 @@
 /area/awaymission/space_battle)
 "fn" = (
 /obj/structure/closet/crate/wooden/barrel,
-/obj/item/food/snacks/honeycomb,
-/obj/item/food/snacks/honeycomb,
-/obj/item/food/snacks/honeycomb,
+/obj/item/food/honeycomb,
+/obj/item/food/honeycomb,
+/obj/item/food/honeycomb,
 /turf/simulated/floor/wood/cherry,
 /area/awaymission/space_battle)
 "fo" = (
@@ -1750,7 +1754,7 @@
 "fA" = (
 /obj/effect/turf_decal/box/corners,
 /obj/structure/closet/crate/secure/gear,
-/obj/effect/spawner/lootdrop/maintenance,
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/mineral/plastitanium,
 /area/awaymission/space_battle/syndicate/syndicate1)
 "fC" = (
@@ -1820,7 +1824,8 @@
 	dir = 8
 	},
 /obj/machinery/door/window/reinforced/normal{
-	dir = 1
+	dir = 1;
+	req_access = list(301)
 	},
 /obj/structure/rack,
 /turf/simulated/floor/plasteel/dark,
@@ -2026,7 +2031,7 @@
 "gr" = (
 /obj/effect/turf_decal/delivery/hollow,
 /obj/structure/rack,
-/obj/effect/spawner/lootdrop/maintenance,
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/sec_storage)
 "gs" = (
@@ -2235,7 +2240,8 @@
 	dir = 8
 	},
 /obj/machinery/door/window/reinforced/normal{
-	dir = 1
+	dir = 1;
+	req_access = list(301)
 	},
 /obj/structure/rack,
 /obj/item/ammo_box/magazine/enforcer/lethal,
@@ -2674,7 +2680,7 @@
 	icon_state = "heater3x3_side";
 	dir = 1
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/plating/airless,
 /area/awaymission/space_battle/cruiser)
 "ii" = (
 /obj/machinery/constructable_frame,
@@ -2753,6 +2759,11 @@
 /obj/structure/rack/gunrack,
 /turf/simulated/floor/mineral/plastitanium,
 /area/awaymission/space_battle/syndicate)
+"iv" = (
+/obj/effect/turf_decal/delivery/hollow,
+/obj/item/salvage/ruin/pirate,
+/turf/simulated/floor/mineral/plastitanium,
+/area/awaymission/space_battle/syndicate/syndicate2)
 "iw" = (
 /obj/structure/chair/office{
 	dir = 1
@@ -2780,6 +2791,14 @@
 	dir = 1
 	},
 /turf/simulated/floor/plating/airless,
+/area/awaymission/space_battle/syndicate/syndicate1)
+"iB" = (
+/obj/structure/table/reinforced{
+	color = "#444444"
+	},
+/obj/machinery/light/directional/east,
+/obj/item/salvage/loot/syndicate,
+/turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/space_battle/syndicate/syndicate1)
 "iC" = (
 /obj/effect/turf_decal/stripes/line{
@@ -2855,11 +2874,10 @@
 	dir = 1
 	},
 /obj/structure/shuttle/engine/heater{
-	icon_state = "heater3x3";
-	dir = 2
+	icon_state = "heater3x3"
 	},
 /obj/structure/cable,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/plating/airless,
 /area/awaymission/space_battle/cruiser)
 "iL" = (
 /turf/simulated/floor/plasteel/airless{
@@ -2922,9 +2940,8 @@
 /obj/machinery/door/airlock{
 	id_tag = "t3"
 	},
-/obj/effect/decal/cleanable/blood/tracks{
-	dir = 1;
-	icon_state = "wheels2"
+/obj/effect/decal/cleanable/blood/tracks/mapped{
+	dir = 1
 	},
 /obj/effect/mapping_helpers/airlock/locked,
 /turf/simulated/floor/plasteel,
@@ -3159,6 +3176,15 @@
 	},
 /turf/space,
 /area/awaymission/space_battle/syndicate/syndicate6)
+"jB" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/obj/item/salvage/ruin/brick,
+/turf/simulated/floor/plating,
+/area/awaymission/space_battle/hallway3)
 "jC" = (
 /obj/effect/turf_decal/stripes/line,
 /turf/simulated/floor/mineral/plastitanium,
@@ -3469,12 +3495,6 @@
 /obj/machinery/light/small/directional/east,
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/space_battle/syndicate/syndicate1)
-"kz" = (
-/obj/structure/shuttle/engine/huge{
-	dir = 4
-	},
-/turf/space,
-/area/awaymission/space_battle/syndicate/syndicate6)
 "kA" = (
 /turf/simulated/floor/plasteel{
 	icon_state = "neutralcorner"
@@ -3511,9 +3531,8 @@
 /obj/item/shard{
 	icon_state = "medium"
 	},
-/obj/effect/decal/cleanable/blood/tracks{
-	dir = 4;
-	icon_state = "xeno2"
+/obj/effect/decal/cleanable/blood/tracks/mapped{
+	dir = 4
 	},
 /obj/effect/decal/cleanable/blood/drip{
 	icon_state = "5"
@@ -3533,7 +3552,7 @@
 /area/awaymission/space_battle/hallway6)
 "kI" = (
 /obj/effect/turf_decal/delivery,
-/obj/effect/spawner/lootdrop/maintenance/two,
+/obj/effect/spawner/random/maintenance,
 /mob/living/simple_animal/hostile/mimic/crate{
 	faction = list("syndicate");
 	health = 80;
@@ -3551,7 +3570,7 @@
 /area/awaymission/space_battle/cruiser)
 "kK" = (
 /obj/structure/closet/crate/can,
-/obj/effect/spawner/lootdrop/maintenance,
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/plasteel{
 	icon_state = "neutral";
 	dir = 6
@@ -3574,9 +3593,8 @@
 /obj/effect/decal/cleanable/blood/drip{
 	icon_state = "3"
 	},
-/obj/effect/decal/cleanable/blood/tracks{
-	dir = 1;
-	icon_state = "paw2"
+/obj/effect/decal/cleanable/blood/tracks/mapped{
+	dir = 1
 	},
 /obj/effect/landmark/awaymissions/spacebattle/mine_spawner{
 	id = "toilet"
@@ -3604,8 +3622,8 @@
 /area/awaymission/space_battle/syndicate/syndicate6)
 "kR" = (
 /obj/structure/closet/cardboard,
-/obj/item/food/snacks/beans,
-/obj/item/food/snacks/beans,
+/obj/item/food/beans,
+/obj/item/food/beans,
 /turf/simulated/floor/mineral/titanium,
 /area/awaymission/space_battle/storage)
 "kS" = (
@@ -3631,9 +3649,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/effect/decal/cleanable/blood/tracks{
-	dir = 2
-	},
+/obj/effect/decal/cleanable/blood/tracks/mapped,
 /turf/simulated/floor/plasteel/dark,
 /area/awaymission/space_battle/hallway4)
 "kX" = (
@@ -3742,7 +3758,7 @@
 	icon_opened = "cardboard_open_syndicate";
 	icon_state = "cardboard_syndicate"
 	},
-/obj/effect/spawner/lootdrop/maintenance/eight,
+/obj/effect/spawner/random/maintenance,
 /obj/machinery/light/small/directional/west,
 /turf/simulated/floor/mineral/plastitanium,
 /area/awaymission/space_battle/syndicate/syndicate2)
@@ -4058,7 +4074,7 @@
 /turf/simulated/floor/mineral/plastitanium/red/airless,
 /area/awaymission/space_battle/syndicate/syndicate2)
 "mq" = (
-/obj/effect/decal/cleanable/blood/tracks,
+/obj/effect/decal/cleanable/blood/tracks/mapped,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
@@ -4111,7 +4127,7 @@
 /obj/machinery/atmospherics/binary/circulator{
 	icon_state = "circ4-off"
 	},
-/turf/simulated/floor/engine,
+/turf/simulated/floor/engine/airless,
 /area/awaymission/space_battle/cruiser)
 "mz" = (
 /obj/item/robotanalyzer,
@@ -4157,6 +4173,13 @@
 	},
 /turf/simulated/floor/engine,
 /area/awaymission/space_battle/engine)
+"mF" = (
+/obj/structure/table/reinforced{
+	color = "#444444"
+	},
+/obj/item/salvage/loot/pirate,
+/turf/simulated/floor/mineral/plastitanium/red,
+/area/awaymission/space_battle/syndicate/syndicate1)
 "mG" = (
 /obj/item/stack/rods,
 /obj/effect/landmark/damageturf,
@@ -4208,7 +4231,7 @@
 "mU" = (
 /obj/effect/turf_decal/delivery/hollow,
 /obj/structure/closet/cardboard,
-/obj/effect/spawner/lootdrop/maintenance,
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/sec_storage)
 "mV" = (
@@ -4216,9 +4239,8 @@
 /turf/simulated/floor/plasteel/freezer,
 /area/awaymission/space_battle/kitchen)
 "mX" = (
-/obj/effect/decal/cleanable/blood/tracks{
-	dir = 4;
-	icon_state = "blood1"
+/obj/effect/decal/cleanable/blood/tracks/mapped{
+	dir = 4
 	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/hallway3)
@@ -4228,6 +4250,10 @@
 /area/awaymission/space_battle)
 "na" = (
 /obj/structure/table/reinforced,
+/obj/item/salvage/ruin/nanotrasen{
+	pixel_y = 5;
+	pixel_x = 5
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "blue"
 	},
@@ -4363,7 +4389,6 @@
 "nu" = (
 /obj/effect/spawner/window/plastitanium,
 /obj/machinery/door/poddoor/shutters{
-	dir = 4;
 	layer = 2.9
 	},
 /turf/simulated/floor/plating/airless,
@@ -4430,10 +4455,7 @@
 	},
 /area/awaymission/space_battle/server)
 "nI" = (
-/obj/effect/decal/cleanable/blood/tracks{
-	dir = 2;
-	icon_state = "blood1"
-	},
+/obj/effect/decal/cleanable/blood/tracks/mapped,
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/hallway4)
 "nJ" = (
@@ -4473,7 +4495,7 @@
 	},
 /area/awaymission/space_battle/hallway11)
 "nN" = (
-/obj/effect/decal/cleanable/blood/tracks{
+/obj/effect/decal/cleanable/blood/tracks/mapped{
 	dir = 8
 	},
 /turf/simulated/floor/plasteel,
@@ -4628,7 +4650,7 @@
 	icon_opened = "cardboard_open_syndicate";
 	icon_state = "cardboard_syndicate"
 	},
-/obj/effect/spawner/lootdrop/maintenance/two,
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/space_battle/syndicate/syndicate5)
 "oj" = (
@@ -4708,6 +4730,11 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/hallway6)
+"os" = (
+/obj/effect/turf_decal/delivery,
+/obj/item/salvage/ruin/russian,
+/turf/simulated/floor/mineral/plastitanium,
+/area/awaymission/space_battle/syndicate/syndicate2)
 "ou" = (
 /obj/structure/window/plasmareinforced{
 	dir = 1
@@ -4715,11 +4742,11 @@
 /obj/machinery/atmospherics/binary/circulator{
 	icon_state = "circ8-off"
 	},
-/turf/simulated/floor/engine,
+/turf/simulated/floor/engine/airless,
 /area/awaymission/space_battle/cruiser)
 "ov" = (
 /obj/structure/closet/crate/secure/gear,
-/obj/effect/spawner/lootdrop/maintenance,
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/mineral/plastitanium,
 /area/awaymission/space_battle/syndicate)
 "ow" = (
@@ -4741,9 +4768,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 2
-	},
+/obj/effect/turf_decal/stripes/line,
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/sec_storage)
 "oA" = (
@@ -4773,13 +4798,6 @@
 /obj/item/stack/ore/glass,
 /turf/simulated/floor/plating/asteroid/airless,
 /area/space)
-"oF" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 2
-	},
-/obj/effect/decal/cleanable/blood,
-/turf/simulated/floor/plasteel,
-/area/awaymission/space_battle/sec_storage)
 "oH" = (
 /obj/machinery/economy/vending/cola/free,
 /turf/simulated/floor/plasteel{
@@ -4797,10 +4815,13 @@
 /turf/simulated/floor/engine,
 /area/awaymission/space_battle/hallway3)
 "oN" = (
-/obj/structure/toilet,
 /obj/machinery/door_control/bolt_control/north{
 	id = "t2"
 	},
+/obj/item/salvage/ruin/brick{
+	pixel_y = -5
+	},
+/obj/structure/toilet,
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/hallway3)
 "oO" = (
@@ -5121,11 +5142,11 @@
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/space_battle/syndicate)
 "pO" = (
-/obj/structure/shuttle/engine/large{
+/obj/structure/shuttle/engine/huge{
 	dir = 1
 	},
 /turf/simulated/floor/plating/airless,
-/area/awaymission/space_battle/syndicate/syndicate1)
+/area/awaymission/space_battle/cruiser)
 "pP" = (
 /obj/structure/chair/comfy/shuttle/dark{
 	dir = 8
@@ -5140,6 +5161,9 @@
 	},
 /obj/structure/window/plasmareinforced{
 	color = "red"
+	},
+/obj/structure/shuttle/engine/huge{
+	dir = 1
 	},
 /turf/simulated/floor/plating/airless,
 /area/awaymission/space_battle/syndicate/syndicate2)
@@ -5348,7 +5372,7 @@
 /area/awaymission/space_battle/sec_storage)
 "qH" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/power/apc/off_station/empty_charge/north,
+/obj/machinery/power/apc/off_station/empty_charge/directional/north,
 /obj/structure/cable{
 	d2 = 4;
 	icon_state = "0-4"
@@ -5359,11 +5383,14 @@
 	},
 /area/awaymission/space_battle/engineering)
 "qI" = (
+/obj/structure/window/plasmareinforced{
+	color = "red"
+	},
 /obj/structure/shuttle/engine/huge{
 	dir = 1
 	},
-/turf/simulated/wall/indestructible/whiteshuttle,
-/area/awaymission/space_battle/cruiser)
+/turf/simulated/floor/plating/airless,
+/area/awaymission/space_battle/syndicate/syndicate1)
 "qJ" = (
 /obj/structure/chair/comfy/shuttle/dark{
 	dir = 4
@@ -5478,7 +5505,7 @@
 	},
 /area/awaymission/space_battle/hallway11)
 "rc" = (
-/obj/effect/decal/cleanable/blood/tracks{
+/obj/effect/decal/cleanable/blood/tracks/mapped{
 	dir = 1
 	},
 /turf/simulated/floor/plasteel,
@@ -5529,6 +5556,7 @@
 "rl" = (
 /obj/structure/table/reinforced,
 /obj/machinery/light/directional/south,
+/obj/item/salvage/ruin/nanotrasen,
 /turf/simulated/floor/plasteel{
 	icon_state = "neutral"
 	},
@@ -5552,6 +5580,11 @@
 	},
 /turf/simulated/floor/plating/airless,
 /area/awaymission/space_battle/syndicate/syndicate1)
+"ro" = (
+/obj/effect/turf_decal/delivery/hollow,
+/obj/item/salvage/ruin/russian,
+/turf/simulated/floor/mineral/plastitanium,
+/area/awaymission/space_battle/syndicate/syndicate2)
 "rp" = (
 /obj/effect/turf_decal/caution/red,
 /turf/simulated/floor/plasteel/dark,
@@ -5834,7 +5867,7 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/hallway1)
 "sl" = (
-/obj/effect/decal/cleanable/blood/tracks{
+/obj/effect/decal/cleanable/blood/tracks/mapped{
 	dir = 8
 	},
 /turf/simulated/floor/plasteel{
@@ -5971,6 +6004,7 @@
 /obj/machinery/recharger/wallcharger{
 	pixel_x = 32
 	},
+/obj/item/salvage/loot/syndicate,
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/space_battle/syndicate)
 "sI" = (
@@ -6081,16 +6115,13 @@
 /obj/machinery/door/airlock/security{
 	name = "Turret Room"
 	},
-/obj/effect/decal/cleanable/blood/tracks{
-	dir = 4;
-	icon_state = "blood1"
+/obj/effect/decal/cleanable/blood/tracks/mapped{
+	dir = 4
 	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/hallway6)
 "tc" = (
-/obj/effect/turf_decal/stripes/corner{
-	dir = 2
-	},
+/obj/effect/turf_decal/stripes/corner,
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
@@ -6273,9 +6304,9 @@
 /area/awaymission/space_battle/syndicate/syndicate1)
 "tH" = (
 /obj/structure/closet/crate/freezer,
-/obj/item/food/snacks/meat,
-/obj/item/food/snacks/meat,
-/obj/item/food/snacks/meat,
+/obj/item/food/meat,
+/obj/item/food/meat,
+/obj/item/food/meat,
 /obj/machinery/light/small/directional/south,
 /turf/simulated/floor/plasteel/freezer,
 /area/awaymission/space_battle/kitchen)
@@ -6333,7 +6364,8 @@
 	dir = 8
 	},
 /obj/machinery/door/window/reinforced/normal{
-	dir = 1
+	dir = 1;
+	req_access = list(301)
 	},
 /obj/structure/rack,
 /obj/item/clothing/head/helmet,
@@ -6428,9 +6460,7 @@
 /area/awaymission/space_battle/syndicate)
 "ud" = (
 /obj/machinery/computer/nonfunctional{
-	name = "broken computer";
 	desc = "A computer long since rendered non-functional due to lack of maintenance. Spitting out error messages.";
-	icon_state = "computer";
 	dir = 1
 	},
 /obj/machinery/light/directional/south,
@@ -6549,7 +6579,6 @@
 	dir = 1
 	},
 /obj/machinery/computer/nonfunctional{
-	dir = 2;
 	name = "computer"
 	},
 /turf/simulated/floor/plasteel,
@@ -6602,7 +6631,7 @@
 	icon_state = "heater3x3_side_inv";
 	dir = 1
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/plating/airless,
 /area/awaymission/space_battle/cruiser)
 "uI" = (
 /obj/effect/decal/syndie_logo{
@@ -6611,11 +6640,15 @@
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/space_battle/syndicate/syndicate1)
 "uJ" = (
+/obj/structure/window/plasmareinforced{
+	color = "red";
+	dir = 8
+	},
 /obj/structure/shuttle/engine/huge{
-	dir = 1
+	dir = 4
 	},
 /turf/space,
-/area/awaymission/space_battle/syndicate/syndicate2)
+/area/awaymission/space_battle/syndicate/syndicate6)
 "uK" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -6631,9 +6664,8 @@
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/space_battle/syndicate)
 "uM" = (
-/obj/effect/decal/cleanable/blood/tracks{
-	dir = 1;
-	icon_state = "blood2"
+/obj/effect/decal/cleanable/blood/tracks/mapped{
+	dir = 1
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "neutral";
@@ -6655,6 +6687,13 @@
 	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/space_battle/syndicate/syndicate1)
+"uR" = (
+/obj/effect/decal/cleanable/blood,
+/obj/item/salvage/ruin/carp,
+/turf/simulated/floor/plasteel{
+	icon_state = "blueyellowfull"
+	},
+/area/awaymission/space_battle/kitchen)
 "uS" = (
 /obj/structure/grille/broken,
 /obj/effect/decal/cleanable/glass,
@@ -6852,6 +6891,16 @@
 /obj/structure/lattice,
 /turf/space,
 /area/awaymission/space_battle/hallway2)
+"vx" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/transit_tube,
+/obj/machinery/constructable_frame{
+	layer = 4;
+	icon = 'icons/obj/singularity.dmi';
+	icon_state = "TheSingGen"
+	},
+/turf/simulated/floor/plating,
+/area/awaymission/space_battle/hallway11)
 "vy" = (
 /obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/plasteel{
@@ -7000,6 +7049,9 @@
 	color = "red";
 	dir = 8
 	},
+/obj/structure/shuttle/engine/huge{
+	dir = 1
+	},
 /turf/simulated/floor/plating/airless,
 /area/awaymission/space_battle/syndicate/syndicate1)
 "vX" = (
@@ -7147,7 +7199,7 @@
 "wy" = (
 /obj/effect/turf_decal/delivery,
 /obj/structure/rack,
-/obj/effect/spawner/lootdrop/maintenance,
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/sec_storage)
 "wz" = (
@@ -7278,9 +7330,7 @@
 	color = "red";
 	dir = 4
 	},
-/obj/machinery/alarm/syndicate{
-	pixel_y = 32
-	},
+/obj/machinery/alarm/syndicate/directional/north,
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/space_battle/syndicate/syndicate6)
 "wQ" = (
@@ -7339,7 +7389,7 @@
 "wW" = (
 /obj/structure/closet/crate/can,
 /obj/item/reagent_containers/patch/styptic,
-/obj/effect/spawner/lootdrop/maintenance,
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/plasteel{
 	icon_state = "neutral";
 	dir = 6
@@ -7578,9 +7628,7 @@
 /area/awaymission/space_battle/cruiser)
 "xN" = (
 /obj/machinery/computer/nonfunctional{
-	name = "broken computer";
 	desc = "A computer long since rendered non-functional due to lack of maintenance. Spitting out error messages.";
-	icon_state = "computer";
 	dir = 8
 	},
 /turf/simulated/floor/plasteel{
@@ -7769,9 +7817,8 @@
 	},
 /area/awaymission/space_battle/hallway10)
 "yv" = (
-/obj/effect/decal/cleanable/blood/tracks{
-	dir = 1;
-	icon_state = "blood2"
+/obj/effect/decal/cleanable/blood/tracks/mapped{
+	dir = 1
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
@@ -8287,6 +8334,7 @@
 "zX" = (
 /obj/effect/turf_decal/delivery,
 /obj/effect/decal/cleanable/dirt,
+/obj/item/salvage/ruin/russian,
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/sec_storage)
 "zY" = (
@@ -8294,9 +8342,7 @@
 /area/awaymission/space_battle/hallway1)
 "Ab" = (
 /obj/machinery/computer/nonfunctional{
-	name = "broken computer";
 	desc = "A computer long since rendered non-functional due to lack of maintenance. Spitting out error messages.";
-	icon_state = "computer";
 	dir = 1
 	},
 /turf/simulated/floor/plasteel/dark{
@@ -8323,9 +8369,7 @@
 /turf/simulated/floor/mineral/titanium,
 /area/awaymission/space_battle/storage)
 "Ag" = (
-/obj/effect/turf_decal/stripes/corner{
-	dir = 2
-	},
+/obj/effect/turf_decal/stripes/corner,
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/space_battle/syndicate/syndicate2)
 "Ah" = (
@@ -8404,15 +8448,6 @@
 	icon_state = "dark_large"
 	},
 /area/awaymission/space_battle/hallway4)
-"As" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 9
-	},
-/obj/effect/turf_decal/stripes/corner{
-	dir = 2
-	},
-/turf/simulated/floor/plasteel,
-/area/awaymission/space_battle/sec_storage)
 "At" = (
 /obj/structure/table/reinforced,
 /obj/machinery/cell_charger,
@@ -8465,7 +8500,7 @@
 /area/awaymission/space_battle/sec_storage)
 "AF" = (
 /obj/effect/turf_decal/delivery/hollow,
-/obj/effect/spawner/lootdrop/maintenance/two,
+/obj/effect/spawner/random/maintenance,
 /mob/living/simple_animal/hostile/mimic/crate{
 	faction = list("syndicate");
 	health = 80;
@@ -8562,7 +8597,7 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/engine)
 "AY" = (
-/obj/effect/decal/cleanable/blood/tracks,
+/obj/effect/decal/cleanable/blood/tracks/mapped,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "whiteblue"
@@ -8632,9 +8667,8 @@
 	},
 /area/awaymission/space_battle/hallway2)
 "Bg" = (
-/obj/effect/decal/cleanable/blood/tracks{
-	dir = 8;
-	icon_state = "xeno2"
+/obj/effect/decal/cleanable/blood/tracks/mapped{
+	dir = 8
 	},
 /turf/simulated/floor/plating/airless,
 /area/awaymission/space_battle/hallway10)
@@ -8805,7 +8839,6 @@
 "BF" = (
 /obj/structure/table/reinforced,
 /obj/machinery/computer/nonfunctional{
-	name = "broken computer";
 	desc = "A computer long since rendered non-functional due to lack of maintenance. Spitting out error messages.";
 	icon_state = "laptop";
 	dir = 8;
@@ -8856,9 +8889,16 @@
 /turf/simulated/floor/plasteel/airless,
 /area/awaymission/space_battle/engineering)
 "BM" = (
-/obj/structure/shuttle/engine/huge,
-/turf/simulated/wall/indestructible/whiteshuttle,
-/area/awaymission/space_battle/cruiser)
+/obj/structure/window/plasmareinforced{
+	color = "red";
+	dir = 8
+	},
+/obj/structure/shuttle/engine/huge{
+	dir = 4;
+	layer = 2
+	},
+/turf/space,
+/area/awaymission/space_battle/syndicate/syndicate6)
 "BN" = (
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/space_battle/syndicate/syndicate2)
@@ -8972,9 +9012,7 @@
 /area/awaymission/space_battle/hallway4)
 "Cf" = (
 /obj/machinery/computer/nonfunctional{
-	name = "broken computer";
 	desc = "A computer long since rendered non-functional due to lack of maintenance. Spitting out error messages.";
-	icon_state = "computer";
 	dir = 1
 	},
 /turf/simulated/floor/plasteel{
@@ -9029,7 +9067,6 @@
 /obj/machinery/cryopod/offstation{
 	icon_state = "sleeper_s";
 	occupied_icon_state = "sleeper_s";
-	dir = 8;
 	base_icon_state = "sleeper_s-open"
 	},
 /turf/simulated/floor/mineral/plastitanium/red,
@@ -9253,7 +9290,7 @@
 /area/awaymission/space_battle/hallway5)
 "CU" = (
 /obj/effect/landmark/damageturf,
-/obj/effect/decal/cleanable/blood/tracks{
+/obj/effect/decal/cleanable/blood/tracks/mapped{
 	dir = 8
 	},
 /turf/simulated/floor/plasteel,
@@ -9717,7 +9754,7 @@
 /obj/effect/turf_decal/delivery/hollow,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/rack,
-/obj/effect/spawner/lootdrop/maintenance,
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/sec_storage)
 "Ep" = (
@@ -9979,7 +10016,7 @@
 /area/awaymission)
 "EZ" = (
 /obj/structure/closet/crate/can,
-/obj/effect/spawner/lootdrop/maintenance,
+/obj/effect/spawner/random/maintenance,
 /obj/machinery/light/directional/south,
 /obj/item/trash/plate,
 /turf/simulated/floor/plasteel{
@@ -10071,9 +10108,8 @@
 	},
 /area/awaymission/space_battle/hallway2)
 "Fs" = (
-/obj/effect/decal/cleanable/blood/tracks{
-	dir = 4;
-	icon_state = "xeno2"
+/obj/effect/decal/cleanable/blood/tracks/mapped{
+	dir = 4
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "bar"
@@ -10243,7 +10279,6 @@
 /area/awaymission/space_battle/syndicate/syndicate5)
 "FO" = (
 /turf/simulated/floor/plasteel{
-	dir = 2;
 	icon_state = "whiteblue"
 	},
 /area/awaymission/space_battle/medbay)
@@ -10370,10 +10405,7 @@
 /area/awaymission/space_battle/hallway9)
 "Gj" = (
 /obj/machinery/computer/nonfunctional{
-	name = "broken computer";
-	desc = "A computer long since rendered non-functional due to lack of maintenance. Spitting out error messages.";
-	icon_state = "computer";
-	dir = 2
+	desc = "A computer long since rendered non-functional due to lack of maintenance. Spitting out error messages."
 	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/sec_storage)
@@ -10410,7 +10442,6 @@
 /obj/structure/table/reinforced,
 /obj/item/storage/firstaid,
 /turf/simulated/floor/plasteel{
-	dir = 2;
 	icon_state = "whiteblue"
 	},
 /area/awaymission/space_battle/medbay)
@@ -10466,7 +10497,7 @@
 	id = "cargodeliverySB"
 	},
 /obj/structure/closet/crate,
-/obj/effect/spawner/lootdrop/maintenance,
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/plating,
 /area/awaymission/space_battle/sec_storage)
 "GA" = (
@@ -10535,7 +10566,6 @@
 /area/awaymission/space_battle/hallway2)
 "GI" = (
 /obj/machinery/computer/nonfunctional{
-	dir = 2;
 	icon_keyboard = "syndie_key";
 	icon_screen = "syndinavigation";
 	name = "computer"
@@ -10600,7 +10630,7 @@
 	d2 = 4;
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/off_station/empty_charge/south,
+/obj/machinery/power/apc/off_station/empty_charge/directional/south,
 /turf/simulated/floor/plating,
 /area/awaymission/space_battle/turret7)
 "GR" = (
@@ -10735,7 +10765,7 @@
 "Hk" = (
 /obj/machinery/door/airlock/security{
 	name = "Armory";
-	req_access = list(271)
+	req_access = list(301)
 	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/hallway8)
@@ -10770,7 +10800,7 @@
 	},
 /area/awaymission/space_battle/engine)
 "Hq" = (
-/obj/effect/decal/cleanable/blood/tracks{
+/obj/effect/decal/cleanable/blood/tracks/mapped{
 	dir = 4
 	},
 /turf/simulated/floor/plasteel{
@@ -10945,6 +10975,7 @@
 "HU" = (
 /obj/effect/turf_decal/delivery,
 /obj/machinery/light/small/directional/east,
+/obj/item/salvage/ruin/russian,
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/sec_storage)
 "HV" = (
@@ -10966,7 +10997,6 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/poddoor/shutters{
-	dir = 4;
 	id_tag = "spacebattlestorage";
 	name = "Secure Storage"
 	},
@@ -11042,7 +11072,6 @@
 /area/awaymission/space_battle/cruiser)
 "If" = (
 /obj/machinery/computer/nonfunctional{
-	dir = 2;
 	icon_keyboard = "syndie_key";
 	icon_screen = "syndinavigation";
 	name = "computer"
@@ -11286,18 +11315,9 @@
 /turf/simulated/wall/indestructible/whiteshuttle,
 /area/awaymission/space_battle/engineering)
 "IS" = (
-/obj/effect/decal/cleanable/blood/tracks,
+/obj/effect/decal/cleanable/blood/tracks/mapped,
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/hallway8)
-"IT" = (
-/obj/structure/closet/cardboard{
-	icon_closed = "cardboard_syndicate";
-	icon_opened = "cardboard_open_syndicate";
-	icon_state = "cardboard_syndicate"
-	},
-/obj/effect/spawner/lootdrop/maintenance,
-/turf/simulated/floor/mineral/plastitanium/red,
-/area/awaymission/space_battle/syndicate/syndicate5)
 "IU" = (
 /turf/simulated/floor/plasteel{
 	icon_state = "neutral";
@@ -11360,10 +11380,13 @@
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/space_battle/syndicate/syndicate2)
 "Je" = (
+/obj/structure/window/plasmareinforced{
+	color = "red"
+	},
 /obj/structure/shuttle/engine/huge{
 	dir = 1
 	},
-/turf/space,
+/turf/simulated/floor/plating/airless,
 /area/awaymission/space_battle/syndicate)
 "Jf" = (
 /turf/simulated/floor/grass/no_creep,
@@ -11393,6 +11416,9 @@
 	color = "red";
 	dir = 8
 	},
+/obj/structure/shuttle/engine/huge{
+	dir = 4
+	},
 /turf/space,
 /area/awaymission/space_battle/syndicate/syndicate6)
 "Jk" = (
@@ -11414,9 +11440,8 @@
 /obj/effect/turf_decal/stripes/corner{
 	dir = 1
 	},
-/obj/effect/decal/cleanable/blood/tracks{
-	dir = 8;
-	icon_state = "blood1"
+/obj/effect/decal/cleanable/blood/tracks/mapped{
+	dir = 8
 	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/sec_storage)
@@ -11577,12 +11602,6 @@
 /obj/effect/decal/cleanable/glass,
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/sec_storage)
-"JQ" = (
-/obj/effect/decal/cleanable/blood/tracks{
-	dir = 2
-	},
-/turf/simulated/floor/plasteel,
-/area/awaymission/space_battle/hallway4)
 "JR" = (
 /obj/machinery/light/small/directional/west,
 /turf/simulated/floor/plating,
@@ -11625,7 +11644,7 @@
 /area/awaymission/space_battle/bridge)
 "JX" = (
 /obj/structure/closet/crate/can,
-/obj/effect/spawner/lootdrop/maintenance,
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/plasteel{
 	icon_state = "neutral"
 	},
@@ -11718,7 +11737,8 @@
 /obj/machinery/door/airlock/highsecurity,
 /obj/machinery/door/poddoor{
 	layer = 3.2;
-	id_tag = "GATE"
+	id_tag = "GATE";
+	interact_offline = 1
 	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/sec_storage)
@@ -11808,7 +11828,7 @@
 /obj/structure/shuttle/engine/heater{
 	icon_state = "heater3x3_side"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/plating/airless,
 /area/awaymission/space_battle/cruiser)
 "KH" = (
 /obj/effect/landmark/damageturf,
@@ -12118,7 +12138,7 @@
 	health = 80;
 	maxHealth = 80
 	},
-/obj/effect/spawner/lootdrop/maintenance/two,
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/mineral/plastitanium,
 /area/awaymission/space_battle/syndicate/syndicate2)
 "LC" = (
@@ -12196,12 +12216,6 @@
 "LM" = (
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/space_battle/syndicate)
-"LN" = (
-/obj/structure/shuttle/engine/huge{
-	dir = 1
-	},
-/turf/space,
-/area/awaymission/space_battle/syndicate/syndicate1)
 "LP" = (
 /obj/item/chair{
 	dir = 4
@@ -12229,6 +12243,10 @@
 /area/awaymission/space_battle/syndicate)
 "LS" = (
 /obj/structure/table/reinforced,
+/obj/item/salvage/ruin/nanotrasen{
+	pixel_y = 5;
+	pixel_x = 5
+	},
 /obj/item/folder,
 /obj/item/pen,
 /turf/simulated/floor/plasteel/dark{
@@ -12322,7 +12340,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/space_battle/turret2)
 "Mg" = (
-/obj/effect/decal/cleanable/blood/tracks{
+/obj/effect/decal/cleanable/blood/tracks/mapped{
 	dir = 1
 	},
 /turf/simulated/floor/plasteel{
@@ -12392,6 +12410,7 @@
 /obj/structure/table/reinforced{
 	color = "#444444"
 	},
+/obj/item/salvage/loot/syndicate,
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/space_battle/syndicate/syndicate1)
 "Mr" = (
@@ -12495,7 +12514,7 @@
 	d2 = 2;
 	icon_state = "0-2"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/plating/airless,
 /area/awaymission/space_battle/cruiser)
 "MG" = (
 /obj/machinery/constructable_frame{
@@ -12549,7 +12568,6 @@
 	layer = 3.3
 	},
 /obj/machinery/door/poddoor/shutters{
-	dir = 4;
 	id_tag = "spacebattlestorage";
 	name = "Secure Storage"
 	},
@@ -12778,6 +12796,9 @@
 /area/space)
 "NC" = (
 /obj/structure/table/reinforced,
+/obj/item/salvage/ruin/nanotrasen{
+	pixel_y = 5
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "blue";
 	dir = 5
@@ -12864,6 +12885,13 @@
 	},
 /turf/space,
 /area/space)
+"NK" = (
+/obj/structure/table/reinforced,
+/obj/item/salvage/ruin/nanotrasen,
+/turf/simulated/floor/plasteel{
+	icon_state = "blue"
+	},
+/area/awaymission/space_battle/bridge)
 "NL" = (
 /obj/structure/table/reinforced{
 	color = "#444444"
@@ -12914,6 +12942,7 @@
 	pixel_x = 5;
 	pixel_y = 5
 	},
+/obj/item/salvage/ruin/nanotrasen,
 /turf/simulated/floor/plasteel/dark{
 	icon_state = "dark_large"
 	},
@@ -12927,7 +12956,6 @@
 "NT" = (
 /obj/effect/landmark/damageturf,
 /turf/simulated/floor/plasteel{
-	dir = 2;
 	icon_state = "whiteblue"
 	},
 /area/awaymission/space_battle/medbay)
@@ -13227,6 +13255,11 @@
 	},
 /turf/simulated/floor/fakespace,
 /area/awaymission/space_battle/sec_storage)
+"OW" = (
+/obj/effect/turf_decal/delivery,
+/obj/item/salvage/ruin/pirate,
+/turf/simulated/floor/mineral/plastitanium,
+/area/awaymission/space_battle/syndicate/syndicate2)
 "OX" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -13574,7 +13607,7 @@
 /obj/machinery/atmospherics/binary/circulator{
 	icon_state = "circ4-off"
 	},
-/turf/simulated/floor/engine,
+/turf/simulated/floor/engine/airless,
 /area/awaymission/space_battle/cruiser)
 "PY" = (
 /obj/machinery/power/treadmill{
@@ -13641,7 +13674,7 @@
 /area/awaymission/space_battle/syndicate/syndicate2)
 "Qm" = (
 /obj/structure/closet/crate/secure/gear,
-/obj/effect/spawner/lootdrop/maintenance,
+/obj/effect/spawner/random/maintenance,
 /obj/machinery/light/directional/south,
 /turf/simulated/floor/mineral/plastitanium,
 /area/awaymission/space_battle/syndicate)
@@ -13755,6 +13788,13 @@
 	icon_state = "titanium_white"
 	},
 /area/awaymission/space_battle/syndicate)
+"QA" = (
+/obj/structure/table/reinforced{
+	color = "#444444"
+	},
+/obj/item/salvage/loot/syndicate,
+/turf/simulated/floor/mineral/plastitanium/red,
+/area/awaymission/space_battle/syndicate)
 "QB" = (
 /obj/effect/landmark/awaymissions/spacebattle/mob_spawn/melee_space{
 	id = "hangar"
@@ -13762,10 +13802,8 @@
 /turf/space,
 /area/space)
 "QC" = (
-/obj/machinery/suit_storage_unit{
-	suit_type = /obj/item/clothing/suit/space/hardsuit/syndi/damaged;
-	mask_type = /obj/item/clothing/mask/gas/syndicate;
-	boots_type = /obj/item/clothing/shoes/magboots/syndie
+/obj/machinery/suit_storage_unit/syndicate{
+	state_open = 1
 	},
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/space_battle/syndicate/syndicate1)
@@ -13828,9 +13866,7 @@
 /area/awaymission/space_battle/syndicate/syndicate6)
 "QN" = (
 /obj/machinery/computer/nonfunctional{
-	name = "broken computer";
 	desc = "A computer long since rendered non-functional due to lack of maintenance. Spitting out error messages.";
-	icon_state = "computer";
 	dir = 4
 	},
 /turf/simulated/floor/plasteel/dark{
@@ -13888,7 +13924,6 @@
 "QX" = (
 /obj/structure/shuttle/engine/heater{
 	icon_state = "heater3x3";
-	dir = 2;
 	layer = 3.1
 	},
 /obj/structure/window/plasmareinforced{
@@ -13937,12 +13972,9 @@
 	},
 /area/awaymission/space_battle/hallway10)
 "Rf" = (
-/obj/structure/shuttle/engine/huge{
-	dir = 4;
-	layer = 2
-	},
-/turf/space,
-/area/awaymission/space_battle/syndicate/syndicate6)
+/obj/structure/shuttle/engine/huge,
+/turf/simulated/floor/plating/airless,
+/area/awaymission/space_battle/cruiser)
 "Rg" = (
 /obj/effect/turf_decal/stripes/corner{
 	dir = 1
@@ -14090,7 +14122,6 @@
 	layer = 3.3
 	},
 /obj/machinery/door/poddoor/shutters{
-	dir = 4;
 	id_tag = "spacebattlestorage";
 	name = "Secure Storage"
 	},
@@ -14197,7 +14228,6 @@
 /obj/machinery/economy/vending/wallmed/directional/south,
 /obj/machinery/iv_drip,
 /turf/simulated/floor/plasteel{
-	dir = 2;
 	icon_state = "whiteblue"
 	},
 /area/awaymission/space_battle/medbay)
@@ -14330,9 +14360,7 @@
 /area/space)
 "Ss" = (
 /obj/machinery/computer/nonfunctional{
-	name = "broken computer";
 	desc = "A computer long since rendered non-functional due to lack of maintenance. Spitting out error messages.";
-	icon_state = "computer";
 	dir = 8
 	},
 /obj/item/paper/docs_part/spacebattle/bridge2,
@@ -14397,6 +14425,14 @@
 /obj/effect/turf_decal/stripes/corner,
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/sec_storage)
+"SF" = (
+/obj/item/salvage/ruin/nanotrasen{
+	pixel_y = 5
+	},
+/turf/simulated/floor/plasteel/dark{
+	icon_state = "dark_diagonal"
+	},
+/area/awaymission/space_battle/server)
 "SG" = (
 /obj/effect/turf_decal/delivery,
 /obj/structure/closet/coffin/sarcophagus,
@@ -14411,7 +14447,8 @@
 	dir = 8
 	},
 /obj/machinery/door/window/reinforced/normal{
-	dir = 1
+	dir = 1;
+	req_access = list(301)
 	},
 /obj/structure/rack,
 /obj/item/clothing/shoes/jackboots/noisy{
@@ -14480,9 +14517,8 @@
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/space_battle/syndicate/syndicate1)
 "SS" = (
-/obj/effect/decal/cleanable/blood/tracks{
-	dir = 8;
-	icon_state = "blood1"
+/obj/effect/decal/cleanable/blood/tracks/mapped{
+	dir = 8
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
@@ -14667,7 +14703,6 @@
 /area/awaymission/space_battle/cruiser)
 "Tz" = (
 /obj/machinery/computer/nonfunctional{
-	dir = 2;
 	icon_state = "broken";
 	icon_screen = "broken";
 	icon_keyboard = "generic_key_broken"
@@ -14736,7 +14771,7 @@
 /area/awaymission/space_battle/living)
 "TL" = (
 /obj/structure/closet/crate,
-/obj/effect/spawner/lootdrop/maintenance,
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/plasteel{
 	icon_state = "neutral";
 	dir = 9
@@ -14942,7 +14977,7 @@
 /area/awaymission/space_battle/kitchen)
 "Ux" = (
 /obj/structure/closet/secure_closet/freezer/meat/open,
-/obj/item/food/snacks/amanitajelly,
+/obj/item/food/amanitajelly,
 /turf/simulated/floor/plasteel/freezer,
 /area/awaymission/space_battle/kitchen)
 "Uy" = (
@@ -15010,10 +15045,7 @@
 /turf/simulated/floor/mineral/titanium,
 /area/awaymission/space_battle/storage)
 "UI" = (
-/obj/effect/decal/cleanable/blood/tracks{
-	dir = 2;
-	icon_state = "blood1"
-	},
+/obj/effect/decal/cleanable/blood/tracks/mapped,
 /turf/simulated/floor/plasteel{
 	icon_state = "neutral"
 	},
@@ -15183,6 +15215,13 @@
 /obj/machinery/light/small/directional/east,
 /turf/simulated/floor/plating,
 /area/awaymission/space_battle/turret1)
+"Vh" = (
+/obj/structure/table/reinforced{
+	color = "#444444"
+	},
+/obj/item/salvage/loot/pirate,
+/turf/simulated/floor/mineral/plastitanium/red,
+/area/awaymission/space_battle/syndicate)
 "Vi" = (
 /obj/item/wirecutters,
 /turf/simulated/floor/plasteel{
@@ -15237,9 +15276,7 @@
 /obj/item/stack/rods{
 	amount = 15
 	},
-/obj/effect/decal/cleanable/blood/tracks{
-	dir = 2
-	},
+/obj/effect/decal/cleanable/blood/tracks/mapped,
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/hallway4)
 "Vo" = (
@@ -15279,7 +15316,6 @@
 "Vw" = (
 /obj/structure/table/reinforced,
 /turf/simulated/floor/plasteel{
-	dir = 2;
 	icon_state = "whiteblue"
 	},
 /area/awaymission/space_battle/medbay)
@@ -15539,6 +15575,17 @@
 	},
 /turf/simulated/wall/indestructible/syndishuttle,
 /area/awaymission/space_battle/syndicate/syndicate6)
+"Wj" = (
+/obj/effect/turf_decal/delivery,
+/obj/item/salvage/ruin/pirate,
+/turf/simulated/floor/plasteel,
+/area/awaymission/space_battle/sec_storage)
+"Wk" = (
+/obj/item/salvage/ruin/brick,
+/turf/simulated/floor/plasteel{
+	icon_state = "neutral"
+	},
+/area/awaymission/space_battle/hallway6)
 "Wl" = (
 /obj/machinery/atmospherics/pipe/manifold/visible,
 /turf/simulated/floor/mineral/plastitanium/red{
@@ -15563,12 +15610,6 @@
 	icon_state = "whiteblue"
 	},
 /area/awaymission/space_battle/medbay)
-"Wp" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 2
-	},
-/turf/simulated/floor/plasteel,
-/area/awaymission/space_battle/sec_storage)
 "Wq" = (
 /obj/machinery/mass_driver_frame{
 	dir = 8;
@@ -15695,9 +15736,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 2
-	},
+/obj/effect/turf_decal/stripes/line,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/sec_storage)
@@ -15745,6 +15784,7 @@
 /obj/structure/table/reinforced,
 /obj/item/kitchen/rollingpin,
 /obj/item/kitchen/knife,
+/obj/item/food/carpmeat,
 /turf/simulated/floor/plasteel{
 	icon_state = "blueyellowfull"
 	},
@@ -15801,10 +15841,7 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/hallway9)
 "Xf" = (
-/obj/effect/decal/cleanable/blood/tracks{
-	dir = 2;
-	icon_state = "xeno2"
-	},
+/obj/effect/decal/cleanable/blood/tracks/mapped,
 /obj/effect/decal/cleanable/blood/drip{
 	icon_state = "3"
 	},
@@ -15888,7 +15925,7 @@
 	},
 /area/awaymission/space_battle/syndicate/syndicate1)
 "Xr" = (
-/obj/effect/decal/cleanable/blood/tracks,
+/obj/effect/decal/cleanable/blood/tracks/mapped,
 /turf/simulated/floor/plasteel{
 	icon_state = "neutral";
 	dir = 1
@@ -16075,7 +16112,7 @@
 /area/awaymission/space_battle/sec_storage)
 "XQ" = (
 /obj/machinery/door/airlock,
-/obj/effect/decal/cleanable/blood/tracks,
+/obj/effect/decal/cleanable/blood/tracks/mapped,
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/hallway3)
 "XR" = (
@@ -16554,11 +16591,6 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/sec_storage)
-"Zi" = (
-/turf/simulated/floor/plasteel{
-	icon_state = "blueyellowfull"
-	},
-/area/awaymission/space_battle/kitchen)
 "Zj" = (
 /turf/simulated/floor/plasteel/airless{
 	icon_state = "neutral";
@@ -16588,7 +16620,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/effect/decal/cleanable/blood/tracks{
+/obj/effect/decal/cleanable/blood/tracks/mapped{
 	dir = 8
 	},
 /turf/simulated/floor/plasteel{
@@ -16787,7 +16819,6 @@
 /obj/machinery/cryopod/offstation{
 	icon_state = "sleeper_s";
 	occupied_icon_state = "sleeper_s";
-	dir = 8;
 	base_icon_state = "sleeper_s-open"
 	},
 /turf/simulated/floor/mineral/plastitanium/red/nitrogen,
@@ -32363,9 +32394,9 @@ bI
 YM
 Pa
 Eb
+uJ
 Eb
-Eb
-Eb
+BM
 Eb
 Jj
 YM
@@ -32619,11 +32650,11 @@ YM
 bI
 YM
 Tp
-kz
 Tp
-Rf
 Tp
-kz
+Tp
+Tp
+Tp
 Tp
 YM
 bI
@@ -34331,8 +34362,8 @@ yG
 yG
 yG
 yG
-uF
-pO
+go
+VW
 uF
 ps
 yG
@@ -34589,7 +34620,7 @@ yG
 yG
 yG
 go
-eb
+lQ
 uF
 uF
 uF
@@ -35615,7 +35646,7 @@ yG
 yG
 yG
 go
-LN
+go
 JF
 uF
 gv
@@ -38186,7 +38217,7 @@ yG
 yG
 go
 go
-JF
+qI
 uF
 gv
 gF
@@ -38442,7 +38473,7 @@ yG
 yG
 yG
 go
-LN
+go
 JF
 uF
 gv
@@ -38713,7 +38744,7 @@ aL
 wu
 uP
 US
-BZ
+mF
 mA
 xG
 Na
@@ -39227,7 +39258,7 @@ yG
 uF
 uF
 US
-Tc
+iB
 mA
 uF
 uF
@@ -40562,8 +40593,8 @@ yG
 Iq
 bb
 XG
-pq
-cq
+vx
+aX
 vS
 ND
 mf
@@ -41098,7 +41129,7 @@ gr
 Aw
 dh
 Ej
-ew
+rP
 wy
 gr
 wy
@@ -41352,10 +41383,10 @@ ql
 WM
 Eo
 wy
-Zy
-wE
+bw
+Wj
 Ej
-Wp
+qD
 Jw
 zr
 mU
@@ -41608,11 +41639,11 @@ Xh
 kD
 oz
 wE
-Zy
+bw
 zX
-Zy
+bw
 Ej
-oF
+bG
 VV
 mU
 wy
@@ -41862,7 +41893,7 @@ VC
 pS
 uy
 Ow
-As
+XI
 OB
 yp
 DM
@@ -42634,9 +42665,9 @@ zr
 zr
 GA
 Jo
-Zy
+bw
 HU
-Zy
+bw
 Ej
 qD
 fP
@@ -48025,9 +48056,9 @@ CB
 Fz
 VC
 NS
-Zi
-Zi
-Zi
+cV
+cV
+cV
 FK
 dY
 dY
@@ -48283,8 +48314,8 @@ ij
 VC
 CO
 KH
-Zi
-Zi
+cV
+cV
 KO
 KO
 KO
@@ -48702,7 +48733,7 @@ yG
 yG
 aV
 aV
-Zr
+Je
 QL
 Ee
 LM
@@ -48796,7 +48827,7 @@ CB
 Fb
 VC
 Rx
-Zt
+uR
 Kw
 Zt
 MV
@@ -48958,7 +48989,7 @@ yG
 yG
 yG
 aV
-Je
+aV
 Zr
 QL
 LM
@@ -49055,7 +49086,7 @@ VC
 he
 WU
 cV
-Zi
+cV
 KO
 Ux
 JB
@@ -49069,7 +49100,7 @@ SN
 Fw
 sm
 Fw
-zV
+SF
 Ic
 VC
 qQ
@@ -49494,7 +49525,7 @@ aY
 wF
 hy
 QL
-Zg
+Vh
 Zg
 JA
 yG
@@ -49814,9 +49845,9 @@ yG
 yG
 yG
 yG
-yG
-VC
-Ui
+VE
+VE
+pO
 uG
 MQ
 VC
@@ -49851,9 +49882,9 @@ Qi
 VC
 RN
 bq
-Ui
-VC
-ki
+VE
+VE
+Rf
 yG
 yG
 yG
@@ -49987,7 +50018,7 @@ yG
 yG
 aV
 aV
-Zr
+Je
 QL
 QL
 QL
@@ -50071,9 +50102,9 @@ yG
 yG
 yG
 yG
-yG
-qI
-Ui
+VE
+VE
+VE
 MF
 UU
 VC
@@ -50108,9 +50139,9 @@ iN
 VC
 dA
 iK
-Ui
-BM
-ki
+VE
+VE
+VE
 yG
 yG
 yG
@@ -50243,7 +50274,7 @@ yG
 yG
 yG
 aV
-Je
+aV
 Zr
 QL
 AL
@@ -50328,9 +50359,9 @@ yG
 yG
 yG
 yG
-yG
-VC
-Ui
+VE
+VE
+VE
 ih
 MQ
 VC
@@ -50365,9 +50396,9 @@ Qi
 cf
 RN
 KF
-Ui
-VC
-ki
+VE
+VE
+VE
 yG
 yG
 yG
@@ -50507,7 +50538,7 @@ Ee
 pW
 pW
 Zg
-Zg
+QA
 uL
 LM
 QL
@@ -50762,7 +50793,7 @@ kv
 QL
 fi
 Zg
-Zg
+QA
 Zg
 Be
 uL
@@ -50866,7 +50897,7 @@ JE
 JE
 mb
 JE
-na
+NK
 VC
 VC
 VC
@@ -51272,13 +51303,13 @@ yG
 yG
 aV
 aV
-Zr
+Je
 QL
 LM
 Mx
 Mx
-Zg
-Zg
+QA
+QA
 uL
 LM
 QL
@@ -51528,7 +51559,7 @@ yG
 yG
 yG
 aV
-Je
+aV
 Zr
 QL
 Ee
@@ -52322,7 +52353,7 @@ ov
 Qm
 QL
 sH
-Zg
+QA
 JA
 yG
 yG
@@ -52555,9 +52586,9 @@ yG
 yG
 yG
 yG
-yG
 aV
-Zr
+aV
+Je
 QL
 LM
 LM
@@ -52812,8 +52843,8 @@ yG
 yG
 yG
 yG
-yG
-Je
+aV
+aV
 Zr
 QL
 LM
@@ -53069,7 +53100,7 @@ yG
 yG
 yG
 yG
-yG
+aV
 aV
 Zr
 QL
@@ -54467,7 +54498,7 @@ Mn
 VC
 VC
 cb
-uY
+jB
 cf
 VC
 LA
@@ -56009,7 +56040,7 @@ VC
 cf
 nK
 Vn
-JQ
+nI
 nI
 kW
 rh
@@ -59595,7 +59626,7 @@ cM
 VF
 Lu
 or
-po
+Wk
 Mn
 yG
 Dg
@@ -62854,9 +62885,9 @@ nz
 Ks
 BN
 pG
-Od
+os
 xg
-Od
+os
 dN
 Ks
 hf
@@ -63111,9 +63142,9 @@ BN
 Ks
 BN
 pG
-xg
+iv
 Od
-xg
+iv
 oD
 Ks
 Ks
@@ -63368,7 +63399,7 @@ Ts
 Ks
 ZJ
 ac
-Od
+os
 LB
 BB
 Rg
@@ -63874,7 +63905,7 @@ yG
 yG
 yG
 Pv
-uJ
+Pv
 QX
 gK
 BN
@@ -64654,7 +64685,7 @@ lu
 Tv
 zn
 jC
-xg
+iv
 vH
 AF
 lp
@@ -64912,7 +64943,7 @@ Mt
 zn
 jC
 Od
-xg
+iv
 SG
 yN
 Sf
@@ -65171,7 +65202,7 @@ jC
 xg
 oC
 ej
-Od
+OW
 YG
 oC
 Ks
@@ -65418,18 +65449,18 @@ yG
 yG
 yG
 Pv
-uJ
+Pv
 QX
 Ks
 gu
 Mt
 zn
 jC
-Od
+os
+ro
+os
 xg
-Od
-xg
-Od
+os
 xg
 lu
 BN
@@ -65693,7 +65724,7 @@ BN
 BN
 xV
 eZ
-aB
+ab
 RL
 BN
 xV
@@ -66189,19 +66220,19 @@ yG
 yG
 yG
 Pv
-uJ
+Pv
 QX
 Ks
 Ql
 li
 zn
 jC
-xg
+ro
 Od
-xg
+ro
 Od
-xg
-Od
+ro
+OW
 lu
 BN
 BN
@@ -66710,8 +66741,8 @@ GU
 li
 zn
 jC
-xg
-Od
+ro
+os
 Kc
 uW
 Kc
@@ -67729,7 +67760,7 @@ yG
 yG
 yG
 Pv
-uJ
+Pv
 QX
 gK
 BN
@@ -68251,8 +68282,8 @@ Ts
 Ks
 ZJ
 pG
-Od
-xg
+os
+iv
 yx
 cS
 Ks
@@ -68509,7 +68540,7 @@ Ks
 BN
 pG
 xg
-Od
+os
 AF
 oD
 Ks
@@ -68766,8 +68797,8 @@ Ks
 BN
 pG
 kI
-xg
-Od
+ro
+os
 dN
 Ks
 VP
@@ -76571,7 +76602,7 @@ eN
 ks
 UJ
 XH
-IT
+oi
 ks
 eN
 Nu

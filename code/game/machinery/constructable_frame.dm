@@ -58,12 +58,12 @@
 
 	var/hasContent = 0
 	desc = "Requires"
-	for(var/i = 1 to req_components.len)
+	for(var/i = 1 to length(req_components))
 		var/tname = req_components[i]
 		var/amt = req_components[tname]
 		if(amt == 0)
 			continue
-		var/use_and = i == req_components.len
+		var/use_and = i == length(req_components)
 		desc += "[(hasContent ? (use_and ? ", and" : ",") : "")] [amt] [amt == 1 ? req_component_names[tname] : "[req_component_names[tname]]\s"]"
 		hasContent = 1
 
@@ -92,8 +92,8 @@
 					to_chat(user, "<span class='warning'>You need five lengths of cable to wire the frame.</span>")
 				return
 
-			if(istype(P, /obj/item/wrench))
-				playsound(src.loc, P.usesound, 75, 1)
+			if(iswrench(P))
+				P.play_tool_sound(src)
 				to_chat(user, "<span class='notice'>You dismantle the frame.</span>")
 				deconstruct(TRUE)
 				return
@@ -128,12 +128,12 @@
 				A.amount = 5
 				return
 		if(3)
-			if(istype(P, /obj/item/crowbar))
+			if(P.tool_behaviour == TOOL_CROWBAR)
 				playsound(src.loc, P.usesound, 50, 1)
 				state = 2
 				circuit.loc = src.loc
 				circuit = null
-				if(components.len == 0)
+				if(length(components) == 0)
 					to_chat(user, "<span class='notice'>You remove the circuit board.</span>")
 				else
 					to_chat(user, "<span class='notice'>You remove the circuit board and other components.</span>")
@@ -146,7 +146,7 @@
 				icon_state = "box_1"
 				return
 
-			if(istype(P, /obj/item/storage/part_replacer) && P.contents.len && get_req_components_amt())
+			if(istype(P, /obj/item/storage/part_replacer) && length(P.contents) && get_req_components_amt())
 				var/obj/item/storage/part_replacer/replacer = P
 				var/list/added_components = list()
 				var/list/part_list = list()
@@ -154,6 +154,9 @@
 				//Assemble a list of current parts, then sort them by their rating!
 				for(var/obj/item/stock_parts/co in replacer)
 					part_list += co
+
+				for(var/obj/item/reagent_containers/glass/beaker/be in replacer)
+					part_list += be
 
 				for(var/path in req_components)
 					while(req_components[path] > 0 && (locate(path) in part_list))
@@ -163,7 +166,7 @@
 						req_components[path]--
 						part_list -= part
 
-				for(var/obj/item/stock_parts/part in added_components)
+				for(var/obj/item/part in added_components)
 					components += part
 					to_chat(user, "<span class='notice'>[part.name] applied.</span>")
 				replacer.play_rped_sound()
@@ -277,6 +280,7 @@ to destroy them and players will be able to make replacements.
 		"EngiDrobe" =							/obj/machinery/economy/vending/engidrobe,
 		"AtmosDrobe" =							/obj/machinery/economy/vending/atmosdrobe,
 		"CargoDrobe" =							/obj/machinery/economy/vending/cargodrobe,
+		"ExploreDrobe" =						/obj/machinery/economy/vending/exploredrobe,
 		"ChefDrobe" =							/obj/machinery/economy/vending/chefdrobe,
 		"BarDrobe" =							/obj/machinery/economy/vending/bardrobe,
 		"HydroDrobe" =							/obj/machinery/economy/vending/hydrodrobe,
@@ -290,13 +294,13 @@ to destroy them and players will be able to make replacements.
 	. = TRUE
 	if(!I.use_tool(src, user, 0, volume = I.tool_volume))
 		return
-	var/choice = tgui_input_list(user, "Choose a new brand", "Select an Item", station_vendors)
+	var/choice = tgui_input_list(user, "Choose a new brand", "Select an Item", station_vendors + ss220_vendors) // SS220 ADDITION - ss220_vendors
 	if(!choice)
 		return
 	set_type(choice)
 
 /obj/item/circuitboard/vendor/proc/set_type(type)
-	var/static/list/buildable_vendors = station_vendors + unique_vendors
+	var/static/list/buildable_vendors = station_vendors + unique_vendors + ss220_vendors // SS220 ADDITION - ss220_vendors
 	var/obj/machinery/economy/vending/typepath = buildable_vendors[type]
 	build_path = typepath
 	board_name = "[type] Vendor"
@@ -545,6 +549,13 @@ to destroy them and players will be able to make replacements.
 							/obj/item/stock_parts/matter_bin = 1,
 							/obj/item/stock_parts/manipulator = 1)
 
+/obj/item/circuitboard/washing_machine
+	board_name = "Washing Machine"
+	icon_state = "generic"
+	build_path = /obj/machinery/washing_machine
+	board_type = "machine"
+	origin_tech = "programming=1"
+
 /obj/item/circuitboard/smartfridge
 	board_name = "Smartfridge"
 	build_path = /obj/machinery/smartfridge
@@ -709,6 +720,10 @@ to destroy them and players will be able to make replacements.
 	name = "Circuit board (Syndi Autolathe)"
 	icon_state = "engineering"
 	build_path = /obj/machinery/autolathe/syndicate
+
+/obj/item/circuitboard/autolathe/trapped
+	board_name = "Modified Autolathe"
+	build_path = /obj/machinery/autolathe/trapped
 
 /obj/item/circuitboard/protolathe
 	board_name = "Protolathe"
@@ -1051,6 +1066,11 @@ to destroy them and players will be able to make replacements.
 	board_name = "Labour Equipment Vendor"
 	icon_state = "generic"
 	build_path = /obj/machinery/mineral/equipment_vendor/labor
+
+/obj/item/circuitboard/mining_equipment_vendor/explorer
+	board_name = "Explorer Equipment Vendor"
+	icon_state = "supply"
+	build_path = /obj/machinery/mineral/equipment_vendor/explorer
 
 /obj/item/circuitboard/clawgame
 	board_name = "Claw Game"

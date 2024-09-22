@@ -34,7 +34,7 @@
 	wander = FALSE
 	attacktext = "glomps"
 	attack_sound = 'sound/effects/blobattack.ogg'
-	butcher_results = list(/obj/item/food/snacks/meat/slab = 2)
+	butcher_results = list(/obj/item/food/meat/slab = 2)
 
 	/// If the morph is disguised or not
 	var/morphed = FALSE
@@ -113,6 +113,7 @@
 			var/obj/item/clothing/under/U = H.w_uniform
 			U.turn_sensors_off()
 
+		A.pulledby?.stop_pulling()
 		A.extinguish_light()
 		A.forceMove(src)
 		var/food_value = calc_food_gained(A)

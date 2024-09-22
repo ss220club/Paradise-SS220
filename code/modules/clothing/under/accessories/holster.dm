@@ -36,7 +36,7 @@
 		to_chat(user, "<span class='warning'>There is already a [holstered] holstered here!</span>")
 		return
 
-	if(!istype(I, /obj/item/gun))
+	if(!isgun(I))
 		to_chat(user, "<span class='warning'>Only guns can be holstered!</span>")
 		return
 
@@ -50,7 +50,7 @@
 		return
 
 	holstered = W
-	user.unEquip(holstered)
+	user.unEquip(holstered, silent = TRUE) // SS220 EDIT: silent = TRUE
 	holstered.loc = src
 	holstered.add_fingerprint(user)
 	user.visible_message("<span class='notice'>[user] holsters [holstered].</span>", "<span class='notice'>You holster [holstered].</span>")

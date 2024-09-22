@@ -7,12 +7,13 @@
 
 	maxHealth = 25
 	health = 25
+	butcher_results = list(/obj/item/food/monstermeat/xenomeat = 1)
 	density = FALSE
 
 	var/temperature_resistance = T0C+75
 	var/amount_grown = 0
 	var/max_grown = 200
-	death_message = "lets out a waning high-pitched cry."
+	death_message = "издаёт истошный высокочастотный рёв, затем ослабев падает на пол."
 	death_sound = null
 	hud_type = /datum/hud/larva
 
@@ -82,9 +83,6 @@
 
 // new damage icon system
 // now constructs damage icon for each organ from mask * damage field
-
-/mob/living/carbon/alien/larva/show_inv(mob/user as mob)
-	return
 
 /mob/living/carbon/alien/larva/start_pulling(atom/movable/AM, state, force = pull_force, show_message = FALSE)
 	return FALSE

@@ -4861,3 +4861,393 @@
 	value = "slovo_patsana_main"
 	category = TTS_CATEGORY_BOYS_WORD
 	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/hg_poppy
+	name = "hg_poppy"
+	value = "hogwarts_poppy_sweeting"
+	category = TTS_CATEGORY_HOGWARTS
+	gender = TTS_GENDER_FEMALE
+
+/datum/tts_seed/silero/hg_sebastian
+	name = "hg_sebastian"
+	value = "hogwarts_sebastian_sallow"
+	category = TTS_CATEGORY_HOGWARTS
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/hg_player_female
+	name = "hg_player_female"
+	value = "hogwarts_player_female"
+	category = TTS_CATEGORY_HOGWARTS
+	gender = TTS_GENDER_FEMALE
+
+/datum/tts_seed/silero/hg_goblin_generic_a
+	name = "hg_goblin_generic_a"
+	value = "hogwarts_goblin_generic_a"
+	category = TTS_CATEGORY_HOGWARTS
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/hg_player_male
+	name = "hg_player_male"
+	value = "hogwarts_player_male"
+	category = TTS_CATEGORY_HOGWARTS
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/hg_natsai
+	name = "hg_natsai"
+	value = "hogwarts_natsai_onai"
+	category = TTS_CATEGORY_HOGWARTS
+	gender = TTS_GENDER_FEMALE
+
+/datum/tts_seed/silero/hg_eleazar_fig
+	name = "hg_eleazar_fig"
+	value = "hogwarts_eleazar_fig"
+	category = TTS_CATEGORY_HOGWARTS
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/hg_aesop_sharp
+	name = "hg_aesop_sharp"
+	value = "hogwarts_aesop_sharp"
+	category = TTS_CATEGORY_HOGWARTS
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/hg_ominis_gaunt
+	name = "hg_ominis_gaunt"
+	value = "hogwarts_ominis_gaunt"
+	category = TTS_CATEGORY_HOGWARTS
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/hg_sophronia_franklin
+	name = "hg_sophronia_franklin"
+	value = "hogwarts_sophronia_franklin"
+	category = TTS_CATEGORY_HOGWARTS
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/hg_abraham_ronen
+	name = "hg_abraham_ronen"
+	value = "hogwarts_abraham_ronen"
+	category = TTS_CATEGORY_HOGWARTS
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/hg_cuthbert_binns
+	name = "hg_cuthbert_binns"
+	value = "hogwarts_cuthbert_binns"
+	category = TTS_CATEGORY_HOGWARTS
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/hg_lodgok
+	name = "hg_lodgok"
+	value = "hogwarts_lodgok"
+	category = TTS_CATEGORY_HOGWARTS
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/hg_matilda_weasley
+	name = "hg_matilda_weasley"
+	value = "hogwarts_matilda_weasley"
+	category = TTS_CATEGORY_HOGWARTS
+	gender = TTS_GENDER_FEMALE
+
+/datum/tts_seed/silero/hg_mirabel_garlick
+	name = "hg_mirabel_garlick"
+	value = "hogwarts_mirabel_garlick"
+	category = TTS_CATEGORY_HOGWARTS
+	gender = TTS_GENDER_FEMALE
+
+/datum/tts_seed/silero/hg_dinah_hecat
+	name = "hg_dinah_hecat"
+	value = "hogwarts_dinah_hecat"
+	category = TTS_CATEGORY_HOGWARTS
+	gender = TTS_GENDER_FEMALE
+
+/datum/tts_seed/silero/halflife_gman
+	name = "halflife_gman"
+	value = "halflife_gman"
+	category = TTS_CATEGORY_HALFLIFE_ALYX
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/halflife_vortigaunt
+	name = "halflife_vortigaunt"
+	value = "halflife_vortigaunt"
+	category = TTS_CATEGORY_HALFLIFE_ALYX
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/halflife_larry
+	name = "halflife_larry"
+	value = "halflife_larry"
+	category = TTS_CATEGORY_HALFLIFE_ALYX
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/halflife_olga
+	name = "halflife_olga"
+	value = "halflife_olga"
+	category = TTS_CATEGORY_HALFLIFE_ALYX
+	gender = TTS_GENDER_FEMALE
+
+/datum/tts_seed/silero/halflife_alyx
+	name = "halflife_alyx"
+	value = "halflife_alyx"
+	category = TTS_CATEGORY_HALFLIFE_ALYX
+	gender = TTS_GENDER_FEMALE
+
+/datum/tts_seed/silero/stronghold_richard
+	name = "stronghold_richard"
+	value = "stronghold_richard"
+	category = TTS_CATEGORY_STRONGHOLD
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/stronghold_sultan
+	name = "stronghold_sultan"
+	value = "stronghold_sultan"
+	category = TTS_CATEGORY_STRONGHOLD
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/stronghold_emir
+	name = "stronghold_emir"
+	value = "stronghold_emir"
+	category = TTS_CATEGORY_STRONGHOLD
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/stronghold_saladin
+	name = "stronghold_saladin"
+	value = "stronghold_saladin"
+	category = TTS_CATEGORY_STRONGHOLD
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/stronghold_abbot
+	name = "stronghold_abbot"
+	value = "stronghold_abbot"
+	category = TTS_CATEGORY_STRONGHOLD
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/stronghold_rat
+	name = "stronghold_rat"
+	value = "stronghold_rat"
+	category = TTS_CATEGORY_STRONGHOLD
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/stronghold_halif
+	name = "stronghold_halif"
+	value = "stronghold_halif"
+	category = TTS_CATEGORY_STRONGHOLD
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/stronghold_snake
+	name = "stronghold_snake"
+	value = "stronghold_snake"
+	category = TTS_CATEGORY_STRONGHOLD
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/stronghold_friedrich
+	name = "stronghold_friedrich"
+	value = "stronghold_friedrich"
+	category = TTS_CATEGORY_STRONGHOLD
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/stronghold_boar
+	name = "stronghold_boar"
+	value = "stronghold_boar"
+	category = TTS_CATEGORY_STRONGHOLD
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/stalker_metro_bandit02
+	name = "stalker_metro_bandit02"
+	value = "stalker_metro_bandit02"
+	category = TTS_CATEGORY_STALKER
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/stalker_metro_degtyarev
+	name = "stalker_metro_degtyarev"
+	value = "stalker_metro_degtyarev"
+	category = TTS_CATEGORY_STALKER
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/stalker_metro_novice02
+	name = "stalker_metro_novice02"
+	value = "stalker_metro_novice02"
+	category = TTS_CATEGORY_STALKER
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/stalker_metro_pavel
+	name = "stalker_metro_pavel"
+	value = "stalker_metro_pavel"
+	category = TTS_CATEGORY_STALKER
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/stalker_metro_saharov
+	name = "stalker_metro_saharov"
+	value = "stalker_metro_saharov"
+	category = TTS_CATEGORY_STALKER
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/stalker_metro_soldier
+	name = "stalker_metro_soldier"
+	value = "stalker_metro_soldier"
+	category = TTS_CATEGORY_STALKER
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/stalker_metro_stalker01
+	name = "stalker_metro_stalker01"
+	value = "stalker_metro_stalker01"
+	category = TTS_CATEGORY_STALKER
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/stalker_metro_newbie01
+	name = "stalker_metro_newbie01"
+	value = "stalker_metro_newbie01"
+	category = TTS_CATEGORY_STALKER
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/warcraft_garrosh
+	name = "warcraft_garrosh"
+	value = "warcraft_garrosh"
+	category = TTS_CATEGORY_WARCRAFT3
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/cyberpunk_male_v
+	name = "Cyberpunk_male_v"
+	value = "Cyberpunk_male_v"
+	category = TTS_CATEGORY_CYBERPUNK
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/cyberpunk_johny
+	name = "Cyberpunk_johny"
+	value = "Cyberpunk_johny"
+	category = TTS_CATEGORY_CYBERPUNK
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/cyberpunk_takemura
+	name = "Cyberpunk_takemura"
+	value = "Cyberpunk_takemura"
+	category = TTS_CATEGORY_CYBERPUNK
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/cyberpunk_sobchak
+	name = "Cyberpunk_sobchak"
+	value = "Cyberpunk_sobchak"
+	category = TTS_CATEGORY_CYBERPUNK
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/cyberpunk_jackie
+	name = "Cyberpunk_jackie"
+	value = "Cyberpunk_jackie"
+	category = TTS_CATEGORY_CYBERPUNK
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/cyberpunk_kerry
+	name = "Cyberpunk_kerry"
+	value = "Cyberpunk_kerry"
+	category = TTS_CATEGORY_CYBERPUNK
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/cyberpunk_mitch
+	name = "Cyberpunk_mitch"
+	value = "Cyberpunk_mitch"
+	category = TTS_CATEGORY_CYBERPUNK
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/cyberpunk_saul
+	name = "Cyberpunk_saul"
+	value = "Cyberpunk_saul"
+	category = TTS_CATEGORY_CYBERPUNK
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/cyberpunk_haru
+	name = "Cyberpunk_haru"
+	value = "Cyberpunk_haru"
+	category = TTS_CATEGORY_CYBERPUNK
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/cyberpunk_victor
+	name = "Cyberpunk_victor"
+	value = "Cyberpunk_victor"
+	category = TTS_CATEGORY_CYBERPUNK
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/cyberpunk_placide
+	name = "Cyberpunk_placide"
+	value = "Cyberpunk_placide"
+	category = TTS_CATEGORY_CYBERPUNK
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/cyberpunk_dexter
+	name = "Cyberpunk_dexter"
+	value = "Cyberpunk_dexter"
+	category = TTS_CATEGORY_CYBERPUNK
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/cyberpunk_sebastian
+	name = "Cyberpunk_sebastian"
+	value = "Cyberpunk_sebastian"
+	category = TTS_CATEGORY_CYBERPUNK
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/cyberpunk_jefferson
+	name = "Cyberpunk_jefferson"
+	value = "Cyberpunk_jefferson"
+	category = TTS_CATEGORY_CYBERPUNK
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/cyberpunk_joshua
+	name = "Cyberpunk_joshua"
+	value = "Cyberpunk_joshua"
+	category = TTS_CATEGORY_CYBERPUNK
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/tlou_ellie
+	name = "tlou_ellie"
+	value = "tlou_ellie"
+	category = TTS_CATEGORY_TLOU
+	gender = TTS_GENDER_FEMALE
+
+/datum/tts_seed/silero/tlou_joel
+	name = "tlou_joel"
+	value = "tlou_joel"
+	category = TTS_CATEGORY_TLOU
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/tlou_tess
+	name = "tlou_tess"
+	value = "tlou_tess"
+	category = TTS_CATEGORY_TLOU
+	gender = TTS_GENDER_FEMALE
+
+/datum/tts_seed/silero/drg_mission_control
+	name = "Deep_rock_galactic_mission_control"
+	value = "Deep_rock_galactic_mission_control"
+	category = TTS_CATEGORY_DEEP_ROCK_GALACTIC
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/drg_dwarves
+	name = "Deep_rock_galactic_dwarves"
+	value = "Deep_rock_galactic_dwarves"
+	category = TTS_CATEGORY_DEEP_ROCK_GALACTIC
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/aag_inner
+	name = "an_alt_girl_inner"
+	value = "an_alt_girl_inner"
+	category = TTS_CATEGORY_SUNBOY
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/aag_sunboy_s
+	name = "an_alt_girl_sunboy_s"
+	value = "an_alt_girl_sunboy_s"
+	category = TTS_CATEGORY_SUNBOY
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/aag_sunboy_n
+	name = "an_alt_girl_dlc_sunboy_n"
+	value = "an_alt_girl_dlc_sunboy_n"
+	category = TTS_CATEGORY_SUNBOY
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/aag_sunboy_k
+	name = "an_alt_girl_dlc_sunboy_k"
+	value = "an_alt_girl_dlc_sunboy_k"
+	category = TTS_CATEGORY_SUNBOY
+	gender = TTS_GENDER_MALE
+
+/datum/tts_seed/silero/last_years_snow_narrator
+	name = "last_years_snow_narrator"
+	value = "last_years_snow_narrator"
+	category = TTS_CATEGORY_OTHER
+	gender = TTS_GENDER_MALE

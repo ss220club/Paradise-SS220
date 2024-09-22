@@ -91,10 +91,10 @@
 /datum/crafting_recipe/throwing_croissant
 	name = "Throwing croissant"
 	reqs = list(
-		/obj/item/food/snacks/croissant = 1,
+		/obj/item/food/croissant = 1,
 		/obj/item/stack/rods = 1
 	)
-	result = list(/obj/item/food/snacks/croissant/throwing)
+	result = list(/obj/item/food/croissant/throwing)
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
 	always_available = FALSE
@@ -221,6 +221,21 @@
 	..()
 	blacklist += subtypesof(/obj/item/gun/energy/laser)
 
+/datum/crafting_recipe/sparker
+	name = "SPRK-12 Pistol"
+	tools = list(TOOL_SCREWDRIVER, TOOL_WIRECUTTER)
+	result = list(/obj/item/gun/energy/sparker)
+	reqs = list(/obj/item/gun/energy/gun/mini = 1,
+				/obj/item/stack/cable_coil = 5,
+				/obj/item/weaponcrafting/gunkit/sparker = 1)
+	time = 10 SECONDS
+	category = CAT_WEAPONRY
+	subcategory = CAT_WEAPON
+
+/datum/crafting_recipe/sparker/New()
+	..()
+	blacklist += subtypesof(/obj/item/gun/energy/gun/mini)
+
 /datum/crafting_recipe/teslarevolver
 	name = "Arc Revolver"
 	tools = list(TOOL_SCREWDRIVER, TOOL_WIRECUTTER)
@@ -280,6 +295,18 @@
 /datum/crafting_recipe/silencer/New()
 	..()
 	blacklist += subtypesof(/obj/item/gun/energy/disabler)
+
+/datum/crafting_recipe/flamethrower_extended
+	name = "Extended Chemical Flamethrower"
+	tools = list(TOOL_SCREWDRIVER, TOOL_WIRECUTTER)
+	result = list(/obj/item/chemical_flamethrower/extended)
+	reqs = list(/obj/item/chemical_flamethrower = 1,
+			/obj/item/stack/cable_coil = 5,
+			/obj/item/weaponcrafting/gunkit/chemical_flamethrower = 1)
+	time = 10 SECONDS
+	category = CAT_WEAPONRY
+	subcategory = CAT_WEAPON
+	alert_admins_on_craft = TRUE
 
 /datum/crafting_recipe/ed209
 	name = "ED209"
@@ -473,9 +500,19 @@
 	reqs = list(/obj/item/restraints/handcuffs/cable = 1,
 				/obj/item/shard = 1,
 				/obj/item/stack/rods = 1)
+	parts = list(/obj/item/shard = 1)
 	time = 40
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
+
+/datum/crafting_recipe/spear_primal // alternative recipe for Ash Walkers
+	name = "Spear"
+	result = list(/obj/item/spear)
+	reqs = list(/obj/item/restraints/handcuffs/sinew = 1,
+				/obj/item/shard = 1,
+				/obj/item/stack/rods = 1)
+	time = 4 SECONDS
+	category = CAT_PRIMAL
 
 /datum/crafting_recipe/spooky_camera
 	name = "Camera Obscura"
@@ -885,11 +922,21 @@
 	pathtools = list(/obj/item/reagent_containers/glass/rag = 1) //need something to paint with it
 	category = CAT_MISC
 
+/datum/crafting_recipe/fake_tactical_medkit
+	name = "Tactical First-Aid Kit"
+	result = list(/obj/item/storage/firstaid/fake_tactical)
+	time = 40
+	reqs = list(/datum/reagent/paint/blue = 10,
+				/datum/reagent/paint/black = 30,
+				/obj/item/storage/firstaid = 1)
+	pathtools = list(/obj/item/reagent_containers/glass/rag = 1)
+	category = CAT_MISC
+
 /datum/crafting_recipe/snowman
 	name = "Snowman"
 	result = list(/obj/structure/snowman/built)
 	reqs = list(/obj/item/snowball = 10,
-				/obj/item/food/snacks/grown/carrot = 1,
+				/obj/item/food/grown/carrot = 1,
 				/obj/item/grown/log = 2)
 	time = 50
 	category = CAT_MISC

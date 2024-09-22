@@ -234,19 +234,15 @@
 				return
 
 			if(!M.brainmob.key)
-				var/ghost_can_reenter = FALSE
-				if(M.brainmob.mind)
-					for(var/mob/dead/observer/G in GLOB.player_list)
-						if(G.can_reenter_corpse && G.mind == M.brainmob.mind)
-							ghost_can_reenter = TRUE
-							if(M.next_possible_ghost_ping < world.time)
-								G.notify_cloning("Somebody is trying to borg you! Re-enter your corpse if you want to be borged!", 'sound/voice/liveagain.ogg', src)
-								M.next_possible_ghost_ping = world.time + 30 SECONDS // Avoid spam
-							break
-				if(!ghost_can_reenter)
-					to_chat(user, "<span class='notice'>[M] is completely unresponsive; there's no point.</span>")
+				var/mob/dead/observer/G = M.brainmob.get_ghost()
+				if(G)
+					if(M.next_possible_ghost_ping < world.time)
+						G.notify_cloning("Somebody is trying to borg you! Re-enter your corpse if you want to be borged!", 'sound/voice/liveagain.ogg', src)
+						M.next_possible_ghost_ping = world.time + 30 SECONDS // Avoid spam
 				else
-					to_chat(user, "<span class='warning'>[M] is currently inactive. Try again later.</span>")
+					to_chat(user, "<span class='notice'>[M] is completely unresponsive; there's no point.</span>")
+					return
+				to_chat(user, "<span class='warning'>[M] is currently inactive. Try again later.</span>")
 				return
 
 			if(M.brainmob.stat == DEAD)
@@ -296,7 +292,6 @@
 
 			var/datum/robot_component/cell_component = O.components["power cell"]
 			cell_component.install(chest.cell)
-			chest.cell.forceMove(O)
 			chest.cell = null
 
 			M.forceMove(O) //Should fix cybros run time erroring when blown up. It got deleted before, along with the frame.
@@ -326,13 +321,13 @@
 	return
 
 /obj/item/robot_parts/robot_suit/proc/Interact(mob/user)
-			var/t1 = "Designation: <A href='?src=[UID()];Name=1'>[(created_name ? "[created_name]" : "Default Cyborg")]</a><br>\n"
-			t1 += "Master AI: <A href='?src=[UID()];Master=1'>[(forced_ai ? "[forced_ai.name]" : "Automatic")]</a><br><br>\n"
+			var/t1 = "Designation: <A href='byond://?src=[UID()];Name=1'>[(created_name ? "[created_name]" : "Default Cyborg")]</a><br>\n"
+			t1 += "Master AI: <A href='byond://?src=[UID()];Master=1'>[(forced_ai ? "[forced_ai.name]" : "Automatic")]</a><br><br>\n"
 
-			t1 += "LawSync Port: <A href='?src=[UID()];Law=1'>[(lawsync ? "Open" : "Closed")]</a><br>\n"
-			t1 += "AI Connection Port: <A href='?src=[UID()];AI=1'>[(aisync ? "Open" : "Closed")]</a><br>\n"
-			t1 += "Servo Motor Functions: <A href='?src=[UID()];Loco=1'>[(locomotion ? "Unlocked" : "Locked")]</a><br>\n"
-			t1 += "Panel Lock: <A href='?src=[UID()];Panel=1'>[(panel_locked ? "Engaged" : "Disengaged")]</a><br>\n"
+			t1 += "LawSync Port: <A href='byond://?src=[UID()];Law=1'>[(lawsync ? "Open" : "Closed")]</a><br>\n"
+			t1 += "AI Connection Port: <A href='byond://?src=[UID()];AI=1'>[(aisync ? "Open" : "Closed")]</a><br>\n"
+			t1 += "Servo Motor Functions: <A href='byond://?src=[UID()];Loco=1'>[(locomotion ? "Unlocked" : "Locked")]</a><br>\n"
+			t1 += "Panel Lock: <A href='byond://?src=[UID()];Panel=1'>[(panel_locked ? "Engaged" : "Disengaged")]</a><br>\n"
 			var/datum/browser/popup = new(user, "robotdebug", "Cyborg Boot Debug", 310, 220)
 			popup.set_content(t1)
 			popup.open()
