@@ -1,5 +1,5 @@
 /**
- * MARK: Fancy Food
+ * MARK: | Fancy Food
  * Fancy food need to be opened first.
  */
 /obj/item/food/fancy
