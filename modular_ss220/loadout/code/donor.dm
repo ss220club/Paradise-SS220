@@ -353,7 +353,7 @@
 	cost = 1
 
 /datum/gear/donor/ei_coat
-	display_name = "Офицерский плащ E.I"
+	display_name = "Офицерский плащ EI"
 	path = /obj/item/clothing/suit/storage/ei_coat
 	donator_tier = 4
 	cost = 4
