@@ -393,7 +393,7 @@
 
 /obj/item/clothing/suit/storage/ei_coat
 	name = "Офицерский плащ E.I"
-	desc = "Этот плащ был создан специально для офицеров корпорации Etamin Industry. Если вы видите его на ком-то, то либо перед вами офицер корпорации, либо тот, кто отдал бешенные бабки за этот плащ."
+	desc = "Этот плащ был создан специально для офицеров корпорации Etamin Industry. Если вы видите его на ком-то, то либо перед вами офицер корпорации, либо тот, кто отдал бешеные бабки за этот плащ."
 	icon = 'modular_ss220/clothing/icons/object/suits.dmi'
 	icon_state = "ei_coat"
 	species_restricted = list("Human", "Tajaran", "Vulpkanin", "Skrell", "Nucleation", "Skeleton", "Slime People", "Unathi", "Abductor", "Golem", "Machine", "Shadow")
