@@ -360,7 +360,7 @@
 
 /* EI suits */
 /obj/item/clothing/suit/storage/ei_jacket
-	name = "Кожаная куртка Rock on Black"
+	name = "кожаная куртка Rock on Black"
 	desc = "Сочетание настоящего рокерского духа и современного стиля. При взгляде на вас, у каждого возникнет лишь одна мысль: «Это настоящий рок спирит!»"
 	icon = 'modular_ss220/clothing/icons/object/suits.dmi'
 	icon_state = "ei_jacket_open"
@@ -392,7 +392,7 @@
 	righthand_file = 'modular_ss220/clothing/icons/inhands/right_hand.dmi'
 
 /obj/item/clothing/suit/storage/ei_coat
-	name = "Офицерский плащ E.I"
+	name = "офицерский плащ EI"
 	desc = "Этот плащ был создан специально для офицеров корпорации Etamin Industry. Если вы видите его на ком-то, то либо перед вами офицер корпорации, либо тот, кто отдал бешеные бабки за этот плащ."
 	icon = 'modular_ss220/clothing/icons/object/suits.dmi'
 	icon_state = "ei_coat"

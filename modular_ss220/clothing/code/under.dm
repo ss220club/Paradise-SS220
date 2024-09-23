@@ -451,7 +451,7 @@
 
 /* EI uniform */
 /obj/item/clothing/under/ei_combat
-	name = "Тактическая водолазка Gold on Black"
+	name = "тактическая водолазка Gold on Black"
 	desc = "Все то же удобство, но в прекрасной гамме угольных оттенков."
 	icon = 'modular_ss220/clothing/icons/object/under.dmi'
 	icon_state = "ei_combat"
@@ -480,7 +480,7 @@
 	)
 
 /obj/item/clothing/under/ei_skirt
-	name = "Блузка с юбкой Gold on Black"
+	name = "блузка с юбкой Gold on Black"
 	desc = "Не волнуйтесь, запачкать её будет крайне сложно, так что вы всегда будете прелестны и очаровательны. Даже если руки по локоть в крови."
 	icon = 'modular_ss220/clothing/icons/object/under.dmi'
 	icon_state = "ei_skirt"
@@ -509,7 +509,7 @@
 	)
 
 /obj/item/clothing/under/ei_skirt_alt
-	name = "Юбка «Солнце» от EI"
+	name = "юбка «Солнце» от EI"
 	desc = "Юбка «Солнце» в классических цветах корпорации EI"
 	icon = 'modular_ss220/clothing/icons/object/under.dmi'
 	icon_state = "ei_skirt_alt"

@@ -12,7 +12,7 @@
 
 /* EI cloak */
 /obj/item/clothing/suit/hooded/ei_cloak
-	name = "Плащ Gold On Black"
+	name = "плащ Gold On Black"
 	desc = "Корпоративный плащ, выполненный в угольных тонах все с тем же золотым покрытием и специальным логотипом от Etamin Industry – золотой звездой."
 	icon = 'modular_ss220/clothing/icons/object/cloaks.dmi'
 	icon_state = "ei_cloak"
@@ -39,7 +39,7 @@
 	hoodtype = /obj/item/clothing/head/hooded/ei_hood
 
 /obj/item/clothing/head/hooded/ei_hood
-	name = "Капюшон Gold On Black"
+	name = "капюшон Gold On Black"
 	desc = "Капюшон, прикрепленный к плащу Gold On Black"
 	icon = 'modular_ss220/clothing/icons/object/hats.dmi'
 	icon_state = "ei_hood"

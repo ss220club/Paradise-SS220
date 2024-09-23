@@ -7,7 +7,7 @@
 
 /* EI gloves */
 /obj/item/clothing/gloves/color/ei_gloves
-	name = "Перчатки Gold On Black"
+	name = "перчатки Gold On Black"
 	desc = "Качественные перчатки с золотой вставкой 999 пробы."
 	icon = 'modular_ss220/clothing/icons/object/gloves.dmi'
 	icon_state = "ei_gloves"
