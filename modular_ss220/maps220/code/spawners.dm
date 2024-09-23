@@ -69,6 +69,9 @@
 	. = ..()
 	spawn_loot_count = 5
 
+/obj/effect/spawner/random/trash
+	icon = 'modular_ss220/maps220/icons/spawner_icons.dmi'
+
 /obj/effect/spawner/random/trash/Initialize(mapload)
 	. = ..()
 	loot += list(
