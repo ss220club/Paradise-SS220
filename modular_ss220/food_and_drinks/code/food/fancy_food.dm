@@ -20,10 +20,10 @@
 /obj/item/food/fancy/attack(mob/M, mob/user, def_zone)
 	if(!opened)
 		to_chat(user, span_warning("[src] сначала нужно открыть!"))
-		return
+		return FALSE
 	if(opened && need_takeout)
 		to_chat(user, span_warning("Сначала вытащите еду из упаковки!"))
-		return
+		return FALSE
 	return ..()
 
 /obj/item/food/fancy/attack_self(mob/user)
@@ -32,9 +32,9 @@
 /obj/item/food/fancy/examine(mob/user)
 	. = ..()
 	if(!opened)
-		. += span_notice("Нажмите <b>Alt-Click</b> чтобы открыть.")
+		. += span_notice("Нажмите <b>Alt-Click</b>, чтобы открыть.")
 	if(opened && need_takeout)
-		. += span_notice("Нажмите <b>Alt-Click</b> чтобы достать еду из упаковки.")
+		. += span_notice("Нажмите <b>Alt-Click</b>, чтобы достать еду из упаковки.")
 
 /obj/item/food/fancy/AltClick(mob/user)
 	if(!try_open(user))
@@ -108,7 +108,7 @@
 	tastes = list("говядина" = 1, "лапша" = 1)
 
 /obj/item/trash/doshik
-	name = "\improper упаковка из под дошика"
+	name = "\improper упаковка из-под дошика"
 	icon = 'modular_ss220/food_and_drinks/icons/trash.dmi'
 	icon_state = "doshik-empty"
 	desc = "Всё ещё вкусно пахнет."
@@ -139,7 +139,7 @@
 	tastes = list("напоминающего курицу" = 2, "сыр" = 6)
 
 /obj/item/trash/macvulpix
-	name = "\improper упаковка из под MacVulpix"
+	name = "\improper упаковка из-под MacVulpix"
 	icon = 'modular_ss220/food_and_drinks/icons/trash.dmi'
 	icon_state = "MV-vulpixs"
 	desc = "Всё ещё вкусно пахнет."
@@ -158,7 +158,7 @@
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/item/food/fancy/packed/LateInitialize()
-	if(!possible_food || !LAZYLEN(possible_food))
+	if(!LAZYLEN(possible_food))
 		stack_trace("List 'possible_food' is empty or not initialized in [src.type] subtype! Deleting...")
 		qdel(src)
 		return
@@ -185,9 +185,6 @@
 	icon = 'modular_ss220/food_and_drinks/icons/food.dmi'
 	icon_state = "MV-burgerbox"
 	open_sound = 'sound/machines/cardboard_box.ogg'
-
-/obj/item/food/fancy/packed/macvulpburger/Initialize(mapload)
-	. = ..()
 	possible_food = list(/obj/item/food/burger/macvulp)
 
 /obj/item/food/burger/macvulp
@@ -202,13 +199,10 @@
 // MARK: NT Food
 /obj/item/food/fancy/packed/foodpack_nt
 	name = "\improper Nanotrasen Foodpack"
-	desc = "Большой набор еды, с различным содержимым."
+	desc = "Большой набор еды с различным содержимым."
 	icon = 'modular_ss220/food_and_drinks/icons/food.dmi'
 	icon_state = "foodpack_nt"
 	open_sound = 'sound/machines/cardboard_box.ogg'
-
-/obj/item/food/fancy/packed/foodpack_nt/Initialize(mapload)
-	. = ..()
 	possible_food = list(
 		/obj/item/food/foodtray_sad_steak,
 		/obj/item/food/foodtray_chicken_sandwich,
@@ -222,7 +216,7 @@
 
 /obj/item/food/foodtray_sad_steak
 	name = "\improper mashed potatoes and steak"
-	desc = "Суховатое пюре с таким себе стейком, скорее всего, соевого мяса."
+	desc = "Суховатое пюре с таким себе стейком, скорее всего это даже не мясо."
 	icon = 'modular_ss220/food_and_drinks/icons/food.dmi'
 	icon_state = "foodtray_sad_steak"
 	trash = /obj/item/trash/foodtray
@@ -244,7 +238,7 @@
 	name = "\improper noodles"
 	desc = "Спагетти Болоньезе, или нет... Но очень похоже."
 	icon = 'modular_ss220/food_and_drinks/icons/food.dmi'
-	icon_state = "foodtray_chicken_sandwich"
+	icon_state = "foodtray_noodle"
 	trash = /obj/item/trash/foodtray
 	bitesize = 2
 	list_reagents = list("nutriment" = 5, "vitamin" = 3)
@@ -252,7 +246,7 @@
 
 /obj/item/food/foodtray_sushi
 	name = "\improper sushi"
-	desc = "Свежие суши, с неплохим балансом между рисом и рыбой."
+	desc = "Свежие суши с неплохим балансом между рисом и рыбой."
 	icon = 'modular_ss220/food_and_drinks/icons/food.dmi'
 	icon_state = "foodtray_sushi"
 	trash = /obj/item/trash/foodtray
@@ -302,6 +296,6 @@
 
 /obj/item/trash/foodtray
 	name = "\improper food tray"
-	desc = "Пустой лоток из под еды."
+	desc = "Пустой лоток из-под еды."
 	icon = 'modular_ss220/food_and_drinks/icons/trash.dmi'
 	icon_state = "foodtray"
