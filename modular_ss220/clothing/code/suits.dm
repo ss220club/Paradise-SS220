@@ -365,7 +365,7 @@
 	icon = 'modular_ss220/clothing/icons/object/suits.dmi'
 	icon_state = "ei_jacket_open"
 	ignore_suitadjust = FALSE
-	suit_adjusted = 1
+	suit_adjusted = TRUE
 	actions_types = list(/datum/action/item_action/openclose)
 	adjust_flavour = "unzip"
 	sprite_sheets = list(
