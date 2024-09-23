@@ -364,7 +364,7 @@
 	desc = "Сочетание настоящего рокерского духа и современного стиля. При взгляде на вас, у каждого возникнет лишь одна мысль: «Это настоящий рок спирит!»"
 	icon = 'modular_ss220/clothing/icons/object/suits.dmi'
 	icon_state = "ei_jacket_open"
-	ignore_suitadjust = 0
+	ignore_suitadjust = FALSE
 	suit_adjusted = 1
 	actions_types = list(/datum/action/item_action/openclose)
 	adjust_flavour = "unzip"
