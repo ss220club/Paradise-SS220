@@ -2426,7 +2426,8 @@
 	autoclose = 0;
 	heat_proof = 1;
 	id_tag = "turbine_door_int";
-	locked = 1
+	locked = 1;
+	superconductivity = 0
 	},
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/structure/cable{
@@ -3804,11 +3805,6 @@
 	icon_state = "freezerfloor"
 	},
 /area/station/maintenance/fore)
-"atq" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/random_spawners/wall_rusted_maybe,
-/turf/simulated/wall,
-/area/station/maintenance/fore)
 "atr" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/damageturf,
@@ -4272,10 +4268,6 @@
 /obj/effect/landmark/damageturf,
 /turf/simulated/floor/wood/oak,
 /area/station/maintenance/fore)
-"auO" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/wall,
-/area/station/maintenance/fore2)
 "auP" = (
 /obj/structure/rack,
 /obj/machinery/light/small/directional/north,
@@ -6566,7 +6558,8 @@
 /area/station/engineering/controlroom)
 "aCZ" = (
 /obj/machinery/door/airlock/atmos/glass{
-	heat_proof = 1
+	heat_proof = 1;
+	superconductivity = 0
 	},
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/machinery/door_control/bolt_control/west{
@@ -17187,10 +17180,13 @@
 "bvW" = (
 /obj/structure/rack,
 /obj/item/circuitboard/robotics{
-	pixel_x = -3;
-	pixel_y = 3
+	pixel_x = -4;
+	pixel_y = 4
 	},
-/obj/item/circuitboard/mecha_control,
+/obj/item/circuitboard/mecha_control{
+	pixel_x = -2;
+	pixel_y = 2
+	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
 	},
@@ -17198,6 +17194,11 @@
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
+	},
+/obj/item/circuitboard/rnd_backup_console,
+/obj/item/circuitboard/rnd_network_controller{
+	pixel_x = 2;
+	pixel_y = -2
 	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/tech_storage)
@@ -19463,7 +19464,7 @@
 "bEG" = (
 /obj/machinery/gravity_generator/main/station,
 /turf/simulated/floor/plasteel{
-	dir = 1;
+	dir = 8;
 	icon_state = "vault"
 	},
 /area/station/engineering/gravitygenerator)
@@ -26509,7 +26510,6 @@
 /area/space/nearstation)
 "cbB" = (
 /obj/structure/sign/poster/official/random/north,
-/obj/effect/decal/cleanable/dirt,
 /turf/simulated/wall,
 /area/station/maintenance/port)
 "cbE" = (
@@ -30101,12 +30101,12 @@
 	},
 /area/station/hallway/secondary/bridge)
 "cpZ" = (
-/obj/effect/spawner/window/reinforced/grilled,
 /obj/structure/cable{
 	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/effect/spawner/window/reinforced/plasma/grilled,
 /turf/simulated/floor/plating,
 /area/station/science/xenobiology)
 "cqb" = (
@@ -36117,7 +36117,7 @@
 	},
 /area/station/science/lobby)
 "cPr" = (
-/obj/machinery/r_n_d/server/core,
+/obj/machinery/r_n_d/server/station,
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging,
 /obj/machinery/light/directional/north,
 /turf/simulated/floor/bluegrid/telecomms/server,
@@ -38004,11 +38004,11 @@
 	},
 /area/station/science/misc_lab)
 "cWD" = (
-/obj/effect/spawner/window/reinforced/grilled,
 /obj/structure/cable{
 	d2 = 8;
 	icon_state = "0-8"
 	},
+/obj/effect/spawner/window/reinforced/plasma/grilled,
 /turf/simulated/floor/plating,
 /area/station/science/xenobiology)
 "cWE" = (
@@ -41872,7 +41872,7 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/port)
 "dpQ" = (
-/obj/machinery/computer/rdservercontrol{
+/obj/machinery/computer/rnd_network_controller/station{
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -42340,8 +42340,8 @@
 /turf/simulated/floor/engine,
 /area/station/science/misc_lab)
 "drE" = (
-/obj/machinery/mecha_part_fabricator,
 /obj/effect/turf_decal/delivery/hollow,
+/obj/machinery/mecha_part_fabricator/station,
 /turf/simulated/floor/plasteel/dark,
 /area/station/science/robotics)
 "drF" = (
@@ -43542,7 +43542,7 @@
 	},
 /area/station/science/robotics)
 "dws" = (
-/obj/machinery/computer/rdconsole/robotics{
+/obj/machinery/computer/rdconsole/core{
 	dir = 1
 	},
 /obj/effect/turf_decal/delivery/hollow,
@@ -44204,10 +44204,6 @@
 /obj/effect/mapping_helpers/airlock/access/any/medical/general,
 /turf/simulated/floor/plasteel/dark,
 /area/station/maintenance/aft)
-"dBo" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/wall,
-/area/station/maintenance/starboard)
 "dBp" = (
 /obj/machinery/atmospherics/pipe/simple/visible/purple{
 	dir = 4
@@ -65754,7 +65750,9 @@
 	icon_state = "2-4"
 	},
 /obj/effect/mapping_helpers/airlock/access/any/science/xenobio,
-/obj/machinery/door/airlock/research/glass,
+/obj/machinery/door/airlock/research/glass{
+	superconductivity = 0
+	},
 /turf/simulated/floor/engine/xenobio,
 /area/station/science/xenobiology)
 "iYd" = (
@@ -66966,10 +66964,6 @@
 	icon_state = "yellow"
 	},
 /area/station/engineering/control)
-"joi" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/wall,
-/area/station/security/permabrig)
 "jol" = (
 /obj/structure/cable{
 	d2 = 2;
@@ -68798,10 +68792,6 @@
 	icon_state = "darkredcorners"
 	},
 /area/station/security/permabrig)
-"jRa" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/wall,
-/area/station/maintenance/fsmaint)
 "jRf" = (
 /obj/machinery/light/small/directional/east,
 /obj/effect/decal/cleanable/dirt,
@@ -70233,7 +70223,7 @@
 	dir = 1;
 	network = list("SS13","Research")
 	},
-/obj/machinery/r_n_d/server/robotics,
+/obj/machinery/r_n_d/server/station,
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 9
 	},
@@ -73221,7 +73211,7 @@
 /turf/simulated/floor/engine,
 /area/station/science/test_chamber)
 "liC" = (
-/obj/machinery/economy/vending/snack,
+/obj/machinery/economy/vending/vulpix,
 /obj/effect/turf_decal/delivery,
 /turf/simulated/floor/plasteel{
 	icon_state = "neutralfull"
@@ -77480,7 +77470,8 @@
 /obj/machinery/door/airlock/atmos/glass{
 	heat_proof = 1;
 	id_tag = "smint";
-	locked = 1
+	locked = 1;
+	superconductivity = 0
 	},
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/effect/mapping_helpers/airlock/access/any/engineering/general,
@@ -91760,6 +91751,10 @@
 	},
 /obj/machinery/light/directional/south,
 /obj/item/radio/intercom/directional/south,
+/obj/machinery/computer/rnd_backup/station{
+	dir = 8
+	},
+/obj/item/disk/rnd_backup_disk,
 /turf/simulated/floor/plasteel/dark,
 /area/station/science/server)
 "qFk" = (
@@ -102270,7 +102265,7 @@
 	dir = 1
 	},
 /obj/machinery/alarm/directional/west,
-/obj/machinery/economy/vending/vulpix,
+/obj/machinery/economy/vending/snack,
 /turf/simulated/floor/plasteel/dark,
 /area/station/public/locker)
 "tIF" = (
@@ -109312,7 +109307,8 @@
 	autoclose = 0;
 	heat_proof = 1;
 	id_tag = "turbine_door_ext";
-	locked = 1
+	locked = 1;
+	superconductivity = 0
 	},
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/structure/cable{
@@ -134195,7 +134191,7 @@ bwN
 bzE
 bBi
 bBj
-bEG
+bBi
 bGB
 bwN
 abj
@@ -134452,7 +134448,7 @@ bwN
 bzE
 bBj
 bDc
-bBj
+bEG
 bzE
 bwN
 abj
@@ -149054,7 +149050,7 @@ apM
 aqJ
 arB
 aoo
-atq
+aVK
 aVK
 azb
 hGO
@@ -157526,7 +157522,7 @@ axm
 auu
 cnx
 auu
-auO
+axm
 jvC
 auu
 rPv
@@ -162181,7 +162177,7 @@ eNt
 eNt
 wyT
 bwA
-jRa
+eNt
 rDp
 rDp
 rDp
@@ -167913,7 +167909,7 @@ gnn
 kVr
 ixf
 ixf
-dBo
+ixf
 ixf
 itT
 hhF
@@ -168166,7 +168162,7 @@ rTt
 tyI
 tOf
 oNd
-dBo
+ixf
 ixf
 ixf
 oRB
@@ -175292,7 +175288,7 @@ eoX
 eoX
 rlS
 wJO
-joi
+rRb
 bNH
 ioR
 qzZ
