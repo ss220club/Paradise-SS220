@@ -98,7 +98,9 @@
 			/obj/item/trash/tapetrash,
 			/obj/item/trash/tastybread,
 			/obj/item/trash/tray,
-			/obj/item/trash/waffles
+			/obj/item/trash/waffles,
+			/obj/item/trash/vulpix_chips,
+			/obj/item/trash/foodtray,
 		) = 5,
 	)
 
