@@ -76,6 +76,7 @@
 	flags_cover = MASKCOVERSMOUTH
 	flags_inv = HIDEFACE|HIDEEARS|HIDEEYES
 	modifies_speech = TRUE
+	species_restricted = list("Human","Kidan","Nian","Skrell","Slime People","Diona","Skeleton","Shadow")
 
 /obj/item/clothing/mask/richard
 	name = "Маска Петуха"
