@@ -68,3 +68,31 @@
 	icon = 'modular_ss220/clothing/icons/object/masks.dmi'
 	icon_override = 'modular_ss220/clothing/icons/mob/mask.dmi'
 	icon_state = "breathscarf"
+
+/* EI mask */
+/obj/item/clothing/mask/breath/ei_mask
+	name = "Дыхательная маска от EI"
+	desc = "Качество и надежность, а самое главное - безопасность"
+	icon = 'modular_ss220/clothing/icons/object/masks.dmi'
+	icon_state = "ei_mask"
+	flags = BLOCK_GAS_SMOKE_EFFECT | AIRTIGHT
+	species_restricted = list("Human", "Tajaran", "Vulpkanin", "Kidan", "Skrell", "Nucleation", "Skeleton", "Slime People", "Unathi", "Grey", "Abductor", "Golem", "Machine", "Diona", "Nian", "Shadow", "Drask")
+	sprite_sheets = list(
+		"Human" = 'modular_ss220/clothing/icons/mob/mask.dmi',
+		"Tajaran" = 'modular_ss220/clothing/icons/mob/mask.dmi',
+		"Vulpkanin" = 'modular_ss220/clothing/icons/mob/species/vulpkanin/mask.dmi',
+		"Kidan" = 'modular_ss220/clothing/icons/mob/species/kidan/mask.dmi',
+		"Skrell" = 'modular_ss220/clothing/icons/mob/mask.dmi',
+		"Nucleation" = 'modular_ss220/clothing/icons/mob/mask.dmi',
+		"Skeleton" = 'modular_ss220/clothing/icons/mob/mask.dmi',
+		"Slime People" = 'modular_ss220/clothing/icons/mob/mask.dmi',
+		"Unathi" = 'modular_ss220/clothing/icons/mob/mask.dmi',
+		"Grey" = 'modular_ss220/clothing/icons/mob/species/grey/mask.dmi',
+		"Abductor" = 'modular_ss220/clothing/icons/mob/mask.dmi',
+		"Golem" = 'modular_ss220/clothing/icons/mob/mask.dmi',
+		"Machine" = 'modular_ss220/clothing/icons/mob/mask.dmi',
+		"Diona" = 'modular_ss220/clothing/icons/mob/mask.dmi',
+		"Nian" = 'modular_ss220/clothing/icons/mob/mask.dmi',
+		"Shadow" = 'modular_ss220/clothing/icons/mob/mask.dmi',
+		"Drask" = 'modular_ss220/clothing/icons/mob/species/drask/mask.dmi',
+	)
