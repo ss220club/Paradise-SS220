@@ -170,7 +170,7 @@
 /* EI shoes */
 /obj/item/clothing/shoes/ei_shoes
 	name = "ботинки Gold On Black"
-	desc = "Черный ботинки в классическом стиле с легким золотым напылением от корпорации Etamin Industry"
+	desc = "Черный ботинки в классическом стиле с легким золотым напылением от корпорации Etamin Industry."
 	icon = 'modular_ss220/clothing/icons/object/shoes.dmi'
 	icon_state = "ei_shoes"
 	lefthand_file = 'modular_ss220/clothing/icons/inhands/left_hand.dmi'

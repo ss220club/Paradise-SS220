@@ -40,7 +40,7 @@
 
 /obj/item/clothing/head/hooded/ei_hood
 	name = "капюшон Gold On Black"
-	desc = "Капюшон, прикрепленный к плащу Gold On Black"
+	desc = "Капюшон, прикрепленный к плащу Gold On Black."
 	icon = 'modular_ss220/clothing/icons/object/hats.dmi'
 	icon_state = "ei_hood"
 	sprite_sheets = list(

@@ -72,7 +72,7 @@
 /* EI mask */
 /obj/item/clothing/mask/breath/ei_mask
 	name = "дыхательная маска от EI"
-	desc = "Качество и надежность, а самое главное - безопасность"
+	desc = "Качество и надежность, а самое главное - безопасность."
 	icon = 'modular_ss220/clothing/icons/object/masks.dmi'
 	icon_state = "ei_mask"
 	flags = BLOCK_GAS_SMOKE_EFFECT | AIRTIGHT

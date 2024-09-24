@@ -510,7 +510,7 @@
 
 /obj/item/clothing/under/ei_skirt_alt
 	name = "юбка «Солнце» от EI"
-	desc = "Юбка «Солнце» в классических цветах корпорации EI"
+	desc = "Юбка «Солнце» в классических цветах корпорации EI."
 	icon = 'modular_ss220/clothing/icons/object/under.dmi'
 	icon_state = "ei_skirt_alt"
 	item_color = "ei_skirt_alt"

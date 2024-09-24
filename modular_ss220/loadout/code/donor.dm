@@ -321,7 +321,7 @@
 	donator_tier = 4
 	cost = 5
 
-//MARK: EI clothes
+// MARK: EI clothes
 /datum/gear/donor/ei_cloak
 	display_name = "Плащ Gold On Black"
 	path = /obj/item/clothing/suit/hooded/ei_cloak
