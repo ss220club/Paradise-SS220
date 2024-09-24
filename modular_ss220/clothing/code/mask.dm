@@ -79,8 +79,8 @@
 	species_restricted = list("Human","Kidan","Nian","Skrell","Slime People","Diona","Skeleton","Shadow")
 
 /obj/item/clothing/mask/richard
-	name = "Маска Петуха"
-	desc = "Прямо из Острой дороги космо-Майами, Со встроенными фразами."
+	name = "маска петуха"
+	desc = "Прямо из Острой дороги космо-Майами. Со встроенными фразами."
 	icon = 'modular_ss220/clothing/icons/object/masks.dmi'
 	icon_override = 'modular_ss220/clothing/icons/mob/mask.dmi'
 	icon_state = "richard_mask"
