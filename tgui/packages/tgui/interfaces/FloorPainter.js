@@ -1,47 +1,30 @@
 import { useBackend, useLocalState } from '../backend';
-import { Button, DmIcon, LabeledList, Section, Table, Dropdown, Flex, Icon, Box } from '../components';
+import { Button, LabeledList, Section, Table, Dropdown, Flex, Icon, ImageButton, Box } from '../components';
 import { Window } from '../layouts';
 
 const SelectableTile = (props, context) => {
   const { act, data } = useBackend(context);
-  const { icon_state, dir, isSelected, onSelect } = props;
+  const { icon_state, direction, isSelected, onSelect } = props;
+
   return (
-    <DmIcon
-      icon={data.icon}
-      icon_state={icon_state}
-      direction={dir}
+    <ImageButton
+      m={-0.25}
+      color="none"
+      imageSize={32}
+      dmIcon={data.icon}
+      dmIconState={icon_state}
+      dmDirection={direction}
       onClick={onSelect}
-      style={{
-        'border-style': (isSelected && 'solid') || 'none',
-        'border-width': '2px',
-        'border-color': 'orange',
-        padding: (isSelected && '2px') || '4px',
-      }}
+      style={{ 'border': '1px solid transparent', 'border-color': isSelected && 'orange', 'border-radius': '0.5em' }}
     />
   );
 };
 
-const dirToNum = (dir) => {
-  switch (dir) {
-    case 'north':
-      return 1;
-    case 'south':
-      return 2;
-    case 'east':
-      return 4;
-    case 'west':
-      return 8;
-    case 'northeast':
-      return 1 | 4;
-    case 'northwest':
-      return 1 | 8;
-    case 'southeast':
-      return 2 | 4;
-    case 'southwest':
-      return 2 | 8;
-    default:
-      return 2;
-  }
+const Dir = {
+  NORTH: 1,
+  SOUTH: 2,
+  EAST: 4,
+  WEST: 8,
 };
 
 export const FloorPainter = (props, context) => {
@@ -75,7 +58,7 @@ export const FloorPainter = (props, context) => {
           <Box mt="5px" mb="5px">
             <Flex
               overflowY="auto" // scroll
-              maxHeight="220px" // a bit more than half of all tiles fit in this box at once.
+              maxHeight="230px" // a bit more than half of all tiles fit in this box at once.
               wrap="wrap"
             >
               {availableStyles.map((style) => (
@@ -93,9 +76,9 @@ export const FloorPainter = (props, context) => {
           <LabeledList>
             <LabeledList.Item label="Direction">
               <Table style={{ display: 'inline' }}>
-                {['north', '', 'south'].map((latitude) => (
+                {[Dir.NORTH, null, Dir.SOUTH].map((latitude) => (
                   <Table.Row key={latitude}>
-                    {[latitude + 'west', latitude, latitude + 'east'].map((dir) => (
+                    {[latitude + Dir.WEST, latitude, latitude + Dir.EAST].map((dir) => (
                       <Table.Cell
                         key={dir}
                         style={{
@@ -103,12 +86,12 @@ export const FloorPainter = (props, context) => {
                           'text-align': 'center',
                         }}
                       >
-                        {dir === '' ? (
+                        {dir === null ? (
                           <Icon name="arrows-alt" size={3} />
                         ) : (
                           <SelectableTile
                             icon_state={selectedStyle}
-                            dir={dirToNum(dir)}
+                            direction={dir}
                             isSelected={dir === selectedDir}
                             onSelect={() => act('select_direction', { direction: dir })}
                           />

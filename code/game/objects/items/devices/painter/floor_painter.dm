@@ -48,22 +48,20 @@
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "FloorPainter", module_name)
-		// Disable automatic updates, because:
-		// 1) we are the only user of the item, and don't expect to observe external changes
-		// 2) generating and sending the icon each tick is a bit expensive, and creates small but noticeable lag
+		// Disable automatic updates, because we are the only user of the item, and don't expect to observe external changes
 		ui.set_autoupdate(FALSE)
 		ui.open()
 
 /datum/painter/floor/ui_data(mob/user)
 	var/list/data = list()
 	data["selectedStyle"] = floor_state
-	data["selectedDir"] = dir2text(floor_dir)
+	data["selectedDir"] = floor_dir
 	return data
 
 /datum/painter/floor/ui_static_data(mob/user)
 	var/list/data = list()
-	data["availableStyles"] = allowed_states
 	data["icon"] = floor_icon
+	data["availableStyles"] = allowed_states
 	return data
 
 /datum/painter/floor/ui_act(action, params)
@@ -85,7 +83,7 @@
 		floor_state = allowed_states[index]
 
 	if(action == "select_direction")
-		var/dir = text2dir(params["direction"])
+		var/dir = params["direction"]
 		if(dir != 0)
 			floor_dir = dir
 

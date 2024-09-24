@@ -21,7 +21,7 @@ const VendingRow = (props, context) => {
   return (
     <Table.Row>
       <Table.Cell collapsing>
-        <DmIcon icon={productIcon} icon_state={productIconState} verticalAlign="middle" />
+        <DmIcon verticalAlign="middle" icon={productIcon} icon_state={productIconState} />
       </Table.Cell>
       <Table.Cell bold>{product.name}</Table.Cell>
       <Table.Cell collapsing textAlign="center">

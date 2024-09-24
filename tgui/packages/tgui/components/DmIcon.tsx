@@ -4,7 +4,7 @@ import { fetchRetry } from '../http';
 import { BoxProps } from './Box';
 import { Image } from './Image';
 
-enum Direction {
+export enum Direction {
   NORTH = 1,
   SOUTH = 2,
   EAST = 4,
@@ -57,16 +57,6 @@ export class DmIcon extends Component<Props, { iconRef: string }> {
     }
   }
 
-  componentDidUpdate(prevProps: Props) {
-    if (prevProps.icon !== this.props.icon) {
-      if (refMap) {
-        this.setState({ iconRef: refMap[this.props.icon] });
-      } else {
-        this.fetchRefMap();
-      }
-    }
-  }
-
   render() {
     const {
       className,
@@ -81,7 +71,7 @@ export class DmIcon extends Component<Props, { iconRef: string }> {
 
     const query = `${iconRef}?state=${icon_state}&dir=${direction}&movement=${!!movement}&frame=${frame}`;
 
-    if (!iconRef) return fallback || null;
+    if (!iconRef) return fallback;
 
     return <Image fixErrors src={query} {...rest} />;
   }
