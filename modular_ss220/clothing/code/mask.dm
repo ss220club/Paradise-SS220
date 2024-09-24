@@ -69,23 +69,22 @@
 	icon_override = 'modular_ss220/clothing/icons/mob/mask.dmi'
 	icon_state = "breathscarf"
 
-//RICHARD_MASK//
-/obj/item/clothing/mask/richard
+//ROOSTER_MASK//
+/obj/item/clothing/mask/rooster
 	w_class = WEIGHT_CLASS_SMALL
-	flags = BLOCKHAIR
+	flags = BLOCKHAIR | HIDEFACE | HIDEEARS | HIDEEYES
 	flags_cover = MASKCOVERSMOUTH
-	flags_inv = HIDEFACE|HIDEEARS|HIDEEYES
 	modifies_speech = TRUE
 	species_restricted = list("Human","Kidan","Nian","Skrell","Slime People","Diona","Skeleton","Shadow")
 
-/obj/item/clothing/mask/richard
+/obj/item/clothing/mask/rooster
 	name = "Маска Петуха"
 	desc = "Прямо из Острой дороги космо-Майами, Со встроенными фразами."
 	icon = 'modular_ss220/clothing/icons/object/masks.dmi'
 	icon_override = 'modular_ss220/clothing/icons/mob/mask.dmi'
-	icon_state = "richard_mask"
+	icon_state = "rooster_mask"
 
-/obj/item/clothing/mask/richard/handle_speech(datum/source, list/speech_args)
+/obj/item/clothing/mask/rooster/handle_speech(datum/source, list/speech_args)
 	var/message = speech_args[SPEECH_MESSAGE]
 	if(prob(3))
 		message += pick(". Тебе нравится причинять людям боль?",". Вы вернулись, да?",". Что, бля, за неуважение")
