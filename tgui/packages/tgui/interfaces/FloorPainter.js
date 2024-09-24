@@ -1,27 +1,52 @@
 import { useBackend, useLocalState } from '../backend';
-import { Button, LabeledList, Section, Table, Dropdown, Flex, Icon, Box } from '../components';
+import { Button, DmIcon, LabeledList, Section, Table, Dropdown, Flex, Icon, Box } from '../components';
 import { Window } from '../layouts';
 
 const SelectableTile = (props, context) => {
   const { act, data } = useBackend(context);
-  const { image, isSelected, onSelect } = props;
+  const { icon_state, dir, isSelected, onSelect } = props;
   return (
-    <img
-      src={`data:image/jpeg;base64,${image}`}
+    <DmIcon
+      icon={data.icon}
+      icon_state={icon_state}
+      direction={dir}
+      onClick={onSelect}
       style={{
         'border-style': (isSelected && 'solid') || 'none',
         'border-width': '2px',
         'border-color': 'orange',
         padding: (isSelected && '2px') || '4px',
       }}
-      onClick={onSelect}
     />
   );
 };
 
+const dirToNum = (dir) => {
+  switch (dir) {
+    case 'north':
+      return 1;
+    case 'south':
+      return 2;
+    case 'east':
+      return 4;
+    case 'west':
+      return 8;
+    case 'northeast':
+      return 1 | 4;
+    case 'northwest':
+      return 1 | 8;
+    case 'southeast':
+      return 2 | 4;
+    case 'southwest':
+      return 2 | 8;
+    default:
+      return 2;
+  }
+};
+
 export const FloorPainter = (props, context) => {
   const { act, data } = useBackend(context);
-  const { availableStyles, selectedStyle, selectedDir, directionsPreview, allStylesPreview } = data;
+  const { availableStyles, selectedStyle, selectedDir } = data;
   return (
     <Window width={405} height={475}>
       <Window.Content scrollable>
@@ -56,7 +81,7 @@ export const FloorPainter = (props, context) => {
               {availableStyles.map((style) => (
                 <Flex.Item key="{style}">
                   <SelectableTile
-                    image={allStylesPreview[style]}
+                    icon_state={style}
                     isSelected={selectedStyle === style}
                     onSelect={() => act('select_style', { style: style })}
                   />
@@ -82,7 +107,8 @@ export const FloorPainter = (props, context) => {
                           <Icon name="arrows-alt" size={3} />
                         ) : (
                           <SelectableTile
-                            image={directionsPreview[dir]}
+                            icon_state={selectedStyle}
+                            dir={dirToNum(dir)}
                             isSelected={dir === selectedDir}
                             onSelect={() => act('select_direction', { direction: dir })}
                           />
