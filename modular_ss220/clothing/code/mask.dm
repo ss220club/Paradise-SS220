@@ -86,7 +86,7 @@
 		"Nucleation" = 'modular_ss220/clothing/icons/mob/mask.dmi',
 		"Skeleton" = 'modular_ss220/clothing/icons/mob/mask.dmi',
 		"Slime People" = 'modular_ss220/clothing/icons/mob/mask.dmi',
-		"Unathi" = 'modular_ss220/clothing/icons/mob/mask.dmi',
+		"Unathi" = 'modular_ss220/clothing/icons/mob/species/unathi/mask.dmi',
 		"Grey" = 'modular_ss220/clothing/icons/mob/species/grey/mask.dmi',
 		"Abductor" = 'modular_ss220/clothing/icons/mob/mask.dmi',
 		"Golem" = 'modular_ss220/clothing/icons/mob/mask.dmi',
