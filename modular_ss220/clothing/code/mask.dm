@@ -78,8 +78,8 @@
 	species_restricted = list("Human","Kidan","Nian","Skrell","Slime People","Diona","Skeleton","Shadow")
 
 /obj/item/clothing/mask/rooster
-	name = "маска петуха"
-	desc = "Прямо из Острой дороги космо-Майами. Со встроенными фразами."
+	name = "Маска Петуха"
+	desc = "Прямо из Острой дороги космо-Майами, Со встроенными фразами."
 	icon = 'modular_ss220/clothing/icons/object/masks.dmi'
 	icon_override = 'modular_ss220/clothing/icons/mob/mask.dmi'
 	icon_state = "rooster_mask"
@@ -87,5 +87,5 @@
 /obj/item/clothing/mask/rooster/handle_speech(datum/source, list/speech_args)
 	var/message = speech_args[SPEECH_MESSAGE]
 	if(prob(3))
-		message += pick(". Тебе нравится причинять людям боль?",". Вы вернулись, да?",". Что, бля, за неуважение!")
+		message += pick(". Тебе нравится причинять людям боль?",". Вы вернулись, да?",". Что, бля, за неуважение")
 	speech_args[SPEECH_MESSAGE] = trim(message)
