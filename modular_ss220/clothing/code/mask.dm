@@ -88,5 +88,5 @@
 /obj/item/clothing/mask/richard/handle_speech(datum/source, list/speech_args)
 	var/message = speech_args[SPEECH_MESSAGE]
 	if(prob(3))
-		message += pick(". Тебе нравится причинять людям боль?",". Вы вернулись, да?",". Что, бля, за неуважение")
+		message += pick(". Тебе нравится причинять людям боль?",". Вы вернулись, да?",". Что, бля, за неуважение!")
 	speech_args[SPEECH_MESSAGE] = trim(message)
