@@ -10,3 +10,11 @@
 	. = ..()
 	if(amount)
 		nutrition = min(NUTRITION_LEVEL_FAT, nutrition + round(amount / 10))
+
+/mob/living/carbon/human
+	var/atom/movable/loaded = null
+	var/mob/living/passenger = null
+
+/mob/living/carbon/human/serpentid/Initialize(mapload)
+	. = ..(mapload, /datum/species/serpentid)
+
