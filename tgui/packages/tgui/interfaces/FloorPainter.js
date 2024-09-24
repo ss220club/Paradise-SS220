@@ -62,7 +62,7 @@ export const FloorPainter = (props, context) => {
               wrap="wrap"
             >
               {availableStyles.map((style) => (
-                <Flex.Item key="{style}">
+                <Flex.Item key={style}>
                   <SelectableTile
                     icon_state={style}
                     isSelected={selectedStyle === style}
