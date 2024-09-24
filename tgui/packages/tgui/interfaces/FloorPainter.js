@@ -1,5 +1,5 @@
 import { useBackend, useLocalState } from '../backend';
-import { Button, LabeledList, Section, Table, Dropdown, Flex, Icon, ImageButton, Box } from '../components';
+import { Button, DmIcon, LabeledList, Section, Table, Dropdown, Flex, Icon, Box } from '../components';
 import { Window } from '../layouts';
 
 const SelectableTile = (props, context) => {
@@ -7,15 +7,17 @@ const SelectableTile = (props, context) => {
   const { icon_state, direction, isSelected, onSelect } = props;
 
   return (
-    <ImageButton
-      m={-0.25}
-      color="none"
-      imageSize={32}
-      dmIcon={data.icon}
-      dmIconState={icon_state}
-      dmDirection={direction}
+    <DmIcon
+      icon={data.icon}
+      icon_state={icon_state}
+      direction={direction}
       onClick={onSelect}
-      style={{ 'border': '1px solid transparent', 'border-color': isSelected && 'orange', 'border-radius': '0.5em' }}
+      style={{
+        'border-style': (isSelected && 'solid') || 'none',
+        'border-width': '2px',
+        'border-color': 'orange',
+        padding: (isSelected && '0px') || '2px',
+      }}
     />
   );
 };
@@ -58,7 +60,7 @@ export const FloorPainter = (props, context) => {
           <Box mt="5px" mb="5px">
             <Flex
               overflowY="auto" // scroll
-              maxHeight="230px" // a bit more than half of all tiles fit in this box at once.
+              maxHeight="239px" // a bit more than half of all tiles fit in this box at once.
               wrap="wrap"
             >
               {availableStyles.map((style) => (
