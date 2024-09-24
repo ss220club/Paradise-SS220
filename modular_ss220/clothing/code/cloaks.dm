@@ -6,7 +6,7 @@
 	icon_override = 'modular_ss220/clothing/icons/mob/cloaks.dmi'
 	item_state = "capcloak_black"
 
-/obj/item/clothing/suit/mantle/armor/captain_black/Initialize(mapload)
+/obj/item/clothing/suit/mantle/armor/captain/black/Initialize(mapload)
 	. = ..()
 	desc = "Носится верховным лидером станции [station_name()]."
 
