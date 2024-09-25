@@ -69,7 +69,6 @@
 	icon_override = 'modular_ss220/clothing/icons/mob/mask.dmi'
 	icon_state = "breathscarf"
 
-//ROOSTER_MASK//
 /obj/item/clothing/mask/rooster
 	w_class = WEIGHT_CLASS_SMALL
 	flags = BLOCKHAIR
