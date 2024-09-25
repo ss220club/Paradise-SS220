@@ -103,7 +103,6 @@
 	icon = 'modular_ss220/clothing/icons/object/masks.dmi'
 	icon_state = "ei_mask"
 	flags = BLOCK_GAS_SMOKE_EFFECT | AIRTIGHT
-	species_restricted = list("Human", "Tajaran", "Vulpkanin", "Kidan", "Skrell", "Nucleation", "Skeleton", "Slime People", "Unathi", "Grey", "Abductor", "Golem", "Machine", "Diona", "Nian", "Shadow", "Drask")
 	sprite_sheets = list(
 		"Human" = 'modular_ss220/clothing/icons/mob/mask.dmi',
 		"Tajaran" = 'modular_ss220/clothing/icons/mob/mask.dmi',
@@ -121,5 +120,6 @@
 		"Diona" = 'modular_ss220/clothing/icons/mob/mask.dmi',
 		"Nian" = 'modular_ss220/clothing/icons/mob/mask.dmi',
 		"Shadow" = 'modular_ss220/clothing/icons/mob/mask.dmi',
+		"Vox" = 'modular_ss220/clothing/icons/mob/species/vox/mask.dmi',
 		"Drask" = 'modular_ss220/clothing/icons/mob/species/drask/mask.dmi',
 	)
