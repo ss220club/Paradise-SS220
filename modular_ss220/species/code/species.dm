@@ -11,7 +11,7 @@
 	return TRUE
 
 /datum/species/nucleation
-	required_playtimes_minutes = -1 // 200 часов
+	required_playtimes_minutes = 12000 // 200 часов
 
 /datum/species/serpentid
-	required_playtimes_minutes = -1 // 200 часов
+	required_playtimes_minutes = -1 // 400 часов

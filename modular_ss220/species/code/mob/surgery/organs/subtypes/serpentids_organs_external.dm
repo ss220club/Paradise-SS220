@@ -7,24 +7,51 @@
 	action_icon = list(/datum/action/item_action/organ_action/toggle = 'icons/obj/items_cyborg.dmi')
 	action_icon_state = list(/datum/action/item_action/organ_action/toggle = "knife")
 	origin_tech = "biotech=6;"
+	var/blade_on = FALSE
 
 /obj/item/organ/internal/cyberimp/arm/toolset/serpentblade/l
 	parent_organ = "l_arm"
 	slot = "l_arm_device"
 
-/obj/item/organ/internal/cyberimp/arm/toolset/ui_action_click()
+/obj/item/organ/internal/cyberimp/arm/toolset/serpentblade/l/on_life()
 	. = ..()
 	var/obj/item/organ/internal/cyberimp/arm/toolset/serpentblade/pair_implant = null
 	var/list/organs = owner.internal_organs
 	for(var/obj/item/organ/internal/O in organs)
 		if (istype(O, /obj/item/organ/internal/cyberimp/arm/toolset/serpentblade) && src != O)
 			pair_implant = O
+	if (isnull(pair_implant))
+		action_icon = initial(action_icon)
+		action_icon_state = initial(action_icon_state)
+		actions_types = initial(actions_types)
+	else
+		action_icon = null
+		action_icon_state = null
+		actions_types = null
+
+/obj/item/organ/internal/cyberimp/arm/toolset/serpentblade/proc/synchonize_blades()
+	var/obj/item/organ/internal/cyberimp/arm/toolset/serpentblade/pair_implant = null
+	var/list/organs = owner.internal_organs
+	for(var/obj/item/organ/internal/O in organs)
+		if (istype(O, /obj/item/organ/internal/cyberimp/arm/toolset/serpentblade) && src != O)
+			pair_implant = O
 	if (!isnull(pair_implant))
-		if(!pair_implant.holder || (pair_implant.holder in src))
-			pair_implant.holder = null
-			pair_implant.Extend(pair_implant.contents[1])
-		else
-			pair_implant.Retract()
+		if (src.blade_on != pair_implant.blade_on)
+			if(src.blade_on)
+				pair_implant.holder = null
+				pair_implant.Extend(pair_implant.contents[1])
+			else
+				pair_implant.Retract()
+
+/obj/item/organ/internal/cyberimp/arm/toolset/serpentblade/Extend()
+	. = .. ()
+	blade_on = TRUE
+	synchonize_blades()
+
+/obj/item/organ/internal/cyberimp/arm/toolset/serpentblade/Retract()
+	. = .. ()
+	blade_on = FALSE
+	synchonize_blades()
 
 /obj/item/kitchen/knife/combat/serpentblade
 	name = "serpentid mantis blade"

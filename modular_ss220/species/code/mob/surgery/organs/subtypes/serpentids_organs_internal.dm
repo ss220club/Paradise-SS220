@@ -1,11 +1,27 @@
 // ============ Органы внутренние ============
-///почки - базовые c добавлением дикея
+///почки - базовые c добавлением дикея, вырабатывают энзимы, которые позволяют ГБС скрываться
 /obj/item/organ/internal/kidneys/serpentid
 	name = "serpentid kidneys"
 	icon = 'icons/obj/species_organs/unathi.dmi'
 	decayable = TRUE
 	recoverable = TRUE
 	decay_rate = 4
+	actions_types = list(/datum/action/item_action/organ_action/use)
+
+/obj/item/organ/internal/kidneys/serpentid/ui_action_click()
+	switch_mode()
+
+/obj/item/organ/internal/kidneys/serpentid/switch_mode(var/force_off = FALSE)
+	.=..()
+	var/datum/species/serpentid/spiece = owner.dna.species
+	if (istype(spiece, /datum/species/serpentid))
+		if(!force_off && owner.get_chemical_value(SERPENTID_CHEM_REAGENT_ID) >= GAS_ORGAN_CHEMISTRY_KIDNEYS && !spiece.cloak_engaged)
+			spiece.cloak_engaged = TRUE
+			chemical_consuption = GAS_ORGAN_CHEMISTRY_KIDNEYS
+		else
+			spiece.cloak_engaged = FALSE
+			chemical_consuption = 0
+
 
 ///печень - вырабатывает глутамат натрия из нутриентов
 /obj/item/organ/internal/liver/serpentid
@@ -57,12 +73,12 @@
 
 /obj/item/organ/internal/lungs/serpentid/switch_mode(var/force_off = FALSE)
 	.=..()
-	if(!salb_secretion && !force_off && owner.get_chemical_value(SERPENTID_CHEM_REAGENT_ID) > 0)
+	if(!salb_secretion && !force_off && owner.get_chemical_value(SERPENTID_CHEM_REAGENT_ID) >= GAS_ORGAN_CHEMISTRY_LUNGS)
 		salb_secretion = TRUE
-		chemical_consuption += GAS_ORGAN_CHEMISTRY_LUNGS
+		chemical_consuption = GAS_ORGAN_CHEMISTRY_LUNGS
 	else
 		salb_secretion = FALSE
-		chemical_consuption -= 0
+		chemical_consuption = 0
 
 /obj/item/organ/internal/lungs/serpentid/on_life()
 	.=..()
@@ -80,7 +96,7 @@
 
 /obj/item/organ/internal/heart/serpentid/ui_action_click()
 	var/mob/living/heart_owner = owner
-	if(!owner.get_chemical_value(SERPENTID_CHEM_REAGENT_ID) > GAS_ORGAN_CHEMISTRY_HEART && heart_owner.get_damage_amount(STAMINA) < STAMINA_DAMAGE_ON_MEPH)
+	if(!owner.get_chemical_value(SERPENTID_CHEM_REAGENT_ID) >= GAS_ORGAN_CHEMISTRY_HEART && heart_owner.get_damage_amount(STAMINA) <= STAMINA_DAMAGE_ON_MEPH)
 		var/mob/living/carbon/human/human_owner = owner
 		var/datum/reagent/chem = owner.get_chemical_path(SERPENTID_CHEM_REAGENT_ID)
 		chem.holder.remove_reagent(SERPENTID_CHEM_REAGENT_ID, GAS_ORGAN_CHEMISTRY_HEART)
@@ -100,12 +116,12 @@
 
 /obj/item/organ/internal/ears/serpentid/switch_mode(var/force_off = FALSE)
 	.=..()
-	if(!sonar_active && !force_off && owner.get_chemical_value(SERPENTID_CHEM_REAGENT_ID) > 0)
+	if(!sonar_active && !force_off && owner.get_chemical_value(SERPENTID_CHEM_REAGENT_ID) >= GAS_ORGAN_CHEMISTRY_EARS)
 		sonar_active = TRUE
-		chemical_consuption += GAS_ORGAN_CHEMISTRY_EARS
+		chemical_consuption = GAS_ORGAN_CHEMISTRY_EARS
 	else
 		sonar_active = FALSE
-		chemical_consuption -= 0
+		chemical_consuption = 0
 
 /obj/item/organ/internal/ears/serpentid/on_life()
 	.=..()
@@ -143,32 +159,33 @@
 
 /obj/item/organ/internal/eyes/serpentid/ui_action_click()
 	switch_mode()
-	owner.update_sight()
 
 /obj/item/organ/internal/eyes/serpentid/switch_mode(var/force_off = FALSE)
 	.=..()
 	vision_flags = initial(vision_flags)
-	if(lighting_alpha == LIGHTING_PLANE_ALPHA_VISIBLE && !force_off && owner.get_chemical_value(SERPENTID_CHEM_REAGENT_ID) > 0)
+	if(lighting_alpha == LIGHTING_PLANE_ALPHA_VISIBLE && !force_off && owner.get_chemical_value(SERPENTID_CHEM_REAGENT_ID) >= GAS_ORGAN_CHEMISTRY_EYES)
 		lighting_alpha = LIGHTING_PLANE_ALPHA_INVISIBLE
 		see_in_dark = 8
-		chemical_consuption += GAS_ORGAN_CHEMISTRY_EYES
+		chemical_consuption = GAS_ORGAN_CHEMISTRY_EYES
+		owner.update_sight()
 	else
 		lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
 		see_in_dark = 1
 		vision_flags &= ~SEE_BLACKNESS
-		chemical_consuption -= 0
+		chemical_consuption = 0
+		owner.update_sight()
 
 /obj/item/organ/internal/eyes/serpentid/on_life()
 	. = ..()
 	if(!isnull(owner))
 		var/mob/mob = owner
 		mob.update_client_colour(time = 10)
-		owner.invisibility = 0
 
 /obj/item/organ/internal/eyes/serpentid/get_colourmatrix() //Returns a special colour matrix
-	var/chem_value = owner.get_chemical_value(SERPENTID_CHEM_REAGENT_ID)/100
-	var/vision_chem = clamp(chem_value + SERPENTID_EYES_LOW_VISIBLE_VALUE, SERPENTID_EYES_LOW_VISIBLE_VALUE, SERPENTID_EYES_MAX_VISIBLE_VALUE)
-	var/vision_adjust = clamp((SERPENTID_EYES_LOW_VISIBLE_VALUE - chem_value)*2, 0, SERPENTID_EYES_LOW_VISIBLE_VALUE)
+	var/chem_value = owner.get_chemical_value(SERPENTID_CHEM_REAGENT_ID)/GAS_ORGAN_CHEMISTRY_MAX
+	var/vision_chem = clamp(chem_value, SERPENTID_EYES_LOW_VISIBLE_VALUE, SERPENTID_EYES_MAX_VISIBLE_VALUE)
+	var/vision_concentration = (1 - vision_chem/SERPENTID_EYES_MAX_VISIBLE_VALUE)*SERPENTID_EYES_LOW_VISIBLE_VALUE
+	var/vision_adjust = clamp(vision_concentration, 0, SERPENTID_EYES_LOW_VISIBLE_VALUE)
 	var/vision_matrix = list(vision_chem, vision_adjust, vision_adjust,\
 		vision_adjust, vision_chem, vision_adjust,\
 		vision_adjust, vision_adjust, vision_chem)

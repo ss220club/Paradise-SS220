@@ -2,7 +2,6 @@
 #define SERPENTID_CARAPICE_MAX_STATE 50
 #define SERPENTID_CARAPICE_BROKEN_STATE 30
 #define SERPENTID_CARAPICE_CHAMELION_STATE 48
-#define SERPENTID_CARAPICE_CHAMELION_CHEM 1
 #define SERPENTID_CARAPICE_NOPRESSURE_STATE 40
 
 #define SERPENTID_CHEM_CARAPICE_HEAL_REAGENT_ID "synthflesh"
@@ -103,14 +102,14 @@
 
 /datum/species/serpentid/handle_reagents(mob/living/carbon/human/H, datum/reagent/R)
 	. = .. ()
-	if (R.id == SERPENTID_CHEM_REAGENT_ID)
-		return FALSE
-		//Хитин лечится синтплотью онли
+	//Хитин лечится синтплотью онли
 	if (R.id == SERPENTID_CHEM_CARAPICE_HEAL_REAGENT_ID)
 		for(var/obj/item/organ/external/limb in H.bodyparts)
 			if (limb.carapice_limb < SERPENTID_CARAPICE_MAX_STATE)
 				limb.carapice_limb += SERPENTID_CHEM_CARAPICE_HEAL_COUNT * SERPENTID_CHEM_CARAPICE_HEAL_MULTIPLAYER
 				R.holder.remove_reagent(SERPENTID_CHEM_CARAPICE_HEAL_REAGENT_ID, SERPENTID_CHEM_CARAPICE_HEAL_COUNT)
+		return FALSE
+	else if (R.id == SERPENTID_CHEM_REAGENT_ID)
 		return FALSE
 	else
 		return TRUE
@@ -178,19 +177,14 @@
 	. = ..()
 
 /datum/species/serpentid/proc/sneak(mob/living/M) //look if a ghost gets this, its an admins problem
-	var/mob/living/carbon/human/H = M
-	if((world.time - M.last_movement) >= 10 && !M.stat && (M.mobility_flags & MOBILITY_STAND) && !M.restrained() && (H.get_chemical_value(SERPENTID_CHEM_REAGENT_ID) >= SERPENTID_CARAPICE_CHAMELION_CHEM) && cloak_engaged)
+	if((world.time - M.last_movement) >= 10 && !M.stat && (M.mobility_flags & MOBILITY_STAND) && !M.restrained() && cloak_engaged)
 		if(M.invisibility != INVISIBILITY_LEVEL_TWO)
 			M.alpha -= 51
-		var/datum/reagent/chemical = H.get_chemical_path(SERPENTID_CHEM_REAGENT_ID)
-		chemical.holder.remove_reagent(SERPENTID_CHEM_REAGENT_ID, SERPENTID_CARAPICE_CHAMELION_CHEM)
 	else
 		M.reset_visibility()
 		M.alpha = 255
 	if(M.alpha == 0)
 		M.make_invisible()
-
-
 
 /datum/species/serpentid/on_species_gain(mob/living/carbon/human/H)
 	..()

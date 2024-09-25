@@ -5,6 +5,7 @@
 #define GAS_ORGAN_CHEMISTRY_EARS 0.25
 #define GAS_ORGAN_CHEMISTRY_HEART 25
 #define GAS_ORGAN_CHEMISTRY_LUNGS 0.5
+#define GAS_ORGAN_CHEMISTRY_KIDNEYS 0.6
 
 #define SERPENTID_CHEM_MULT_CONSUPTION 0.75
 #define SERPENTID_CHEM_MULT_PRODUCTION 0.6
@@ -78,7 +79,7 @@
 		//Если коилчества недостаточно - выключить режим
 		switch_mode(force_off = TRUE)
 	else
-		if(!isnull(chemical))
+		if(!isnull(chemical) && chemical_consuption > 0)
 			//Убрать количество глутамата из тела
 			chemical.holder.remove_reagent(SERPENTID_CHEM_REAGENT_ID, chemical_consuption)
 
