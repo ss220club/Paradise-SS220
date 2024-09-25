@@ -7,7 +7,8 @@
 		)
 	prices += list(
 		/obj/item/clothing/head/ratge = 75,
-		/obj/item/clothing/mask/rooster= 100)
+		/obj/item/clothing/mask/rooster = 100,
+		)
 	. = ..()
 
 /obj/machinery/economy/vending/chefdrobe/Initialize(mapload)
