@@ -9,7 +9,7 @@
 #define SERPENTID_CHEM_CARAPICE_HEAL_MULTIPLAYER 0.5
 
 #define SERPENTID_GENE_DEGRADATION_BASIC 0.02
-#define SERPENTID_GENE_DEGRADATION_EXTRA 0.05
+#define SERPENTID_GENE_DEGRADATION_EXTRA 0.1
 #define SERPENTID_GENE_DEGRADATION_CD 60
 
 #define SERPENTID_HEAT_THRESHOLD_LEVEL_BASE 350
@@ -116,7 +116,7 @@
 
 /datum/species/serpentid/handle_life(mob/living/carbon/human/H)
 	var/blood_percent = round((H.blood_volume / BLOOD_VOLUME_NORMAL)*100)
-	speed_mod = (90 - blood_percent)/100
+	speed_mod = (95 - blood_percent)/100
 
 	var/armor_count = 0
 	var/gene_degradation = 0

@@ -4,7 +4,7 @@
 #define GAS_ORGAN_CHEMISTRY_EYES 0.75
 #define GAS_ORGAN_CHEMISTRY_EARS 0.25
 #define GAS_ORGAN_CHEMISTRY_HEART 25
-#define GAS_ORGAN_CHEMISTRY_LUNGS 0.5
+#define GAS_ORGAN_CHEMISTRY_LUNGS 1
 #define GAS_ORGAN_CHEMISTRY_KIDNEYS 0.6
 
 #define SERPENTID_CHEM_MULT_CONSUPTION 0.75
@@ -103,7 +103,7 @@
 /obj/item/organ/external/receive_damage(brute, burn, sharp, used_weapon = null, list/forbidden_limbs = list(), ignore_resists = FALSE, updating_health = TRUE)
 	. = ..()
 	if (carapice_limb)
-		carapice_state -= brute
+		carapice_state -= brute + burn
 		if (carapice_state < SERPENTID_CARAPICE_BROKEN_STATE)
 			fracture()
 		for(var/obj/item/organ/internal/O in internal_organs)

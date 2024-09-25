@@ -31,17 +31,19 @@
 	alcohol_intensity = 2
 	decayable = TRUE
 	recoverable = TRUE
+	max_value = GAS_ORGAN_CHEMISTRY_MAX
 	decay_rate = 4
 
 /obj/item/organ/internal/liver/serpentid/on_life()
 	. = ..()
-	if (owner.get_chemical_value(SERPENTID_CHEM_REAGENT_ID) < GAS_ORGAN_CHEMISTRY_MAX)
+	max_value = clamp((((max_damage - damage)/max_damage)*100),0,GAS_ORGAN_CHEMISTRY_MAX)
+	if (owner.get_chemical_value(SERPENTID_CHEM_REAGENT_ID) < max_value)
 		for(var/datum/reagent/consumable/chemical in owner.reagents.reagent_list)
 			if(!isnull(chemical))
 				chemical.holder.remove_reagent(chemical.id, SERPENTID_CHEM_MULT_CONSUPTION*chemical.nutriment_factor)
 				owner.reagents.add_reagent(SERPENTID_CHEM_REAGENT_ID, SERPENTID_CHEM_MULT_PRODUCTION*chemical.nutriment_factor)
 	else
-		var/excess_value = owner.get_chemical_value(SERPENTID_CHEM_REAGENT_ID) - GAS_ORGAN_CHEMISTRY_MAX
+		var/excess_value = owner.get_chemical_value(SERPENTID_CHEM_REAGENT_ID) - max_value
 		var/datum/reagent/chem = owner.get_chemical_path(SERPENTID_CHEM_REAGENT_ID)
 		chem.holder.remove_reagent(SERPENTID_CHEM_REAGENT_ID, excess_value)
 

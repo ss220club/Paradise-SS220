@@ -17,3 +17,15 @@
 	if(affected.carapice_limb && !(affected.status & ORGAN_BROKEN))
 		return TRUE
 	return FALSE
+
+/datum/surgery_step/open_encased/saw/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/surgery/surgery)
+	var/obj/item/organ/external/affected = target.get_organ(user.zone_selected)
+	if(affected.carapice_limb && !(affected.status & ORGAN_BROKEN))
+		carapice_state = 0
+	. = .. ()
+
+/datum/surgery_step/finish_bone/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/surgery/surgery)
+	var/obj/item/organ/external/affected = target.get_organ(user.zone_selected)
+	if(affected.carapice_limb && !(affected.status & ORGAN_BROKEN))
+		carapice_state = SERPENTID_CARAPICE_MAX_STATE
+	. = .. ()
