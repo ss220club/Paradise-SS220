@@ -3,7 +3,7 @@
  * ORIGINAL: #include "map_files\generic\centcomm.dmm"
  * Uncomment define bellow if you need faster init for testing.
  */
-#define ENABLE_TEST_CC
+//#define ENABLE_TEST_CC
 
 #ifndef ENABLE_TEST_CC
 #include "map_files220\generic\centcomm.dmm"
