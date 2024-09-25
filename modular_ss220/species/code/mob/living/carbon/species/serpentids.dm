@@ -1,7 +1,9 @@
 #define SERPENTID_CHEM_REAGENT_ID "msg"
 #define SERPENTID_CARAPICE_MAX_STATE 50
 #define SERPENTID_CARAPICE_BROKEN_STATE 30
-#define SERPENTID_CARAPICE_CHAMELION_STATE 45
+#define SERPENTID_CARAPICE_CHAMELION_STATE 48
+#define SERPENTID_CARAPICE_CHAMELION_CHEM 1
+#define SERPENTID_CARAPICE_NOPRESSURE_STATE 40
 
 #define SERPENTID_CHEM_CARAPICE_HEAL_REAGENT_ID "synthflesh"
 #define SERPENTID_CHEM_CARAPICE_HEAL_COUNT 2
@@ -10,6 +12,15 @@
 #define SERPENTID_GENE_DEGRADATION_BASIC 0.02
 #define SERPENTID_GENE_DEGRADATION_EXTRA 0.05
 #define SERPENTID_GENE_DEGRADATION_CD 60
+
+#define SERPENTID_HEAT_THRESHOLD_LEVEL_BASE 350
+#define SERPENTID_HEAT_THRESHOLD_LEVEL_UP 50
+#define SERPENTID_ARMORED_HEAT_THRESHOLD 380
+
+#define SERPENTID_COLD_THRESHOLD_LEVEL_BASE 250
+#define SERPENTID_COLD_THRESHOLD_LEVEL_DOWN 80
+#define SERPENTID_ARMORED_COLD_THRESHOLD 70
+
 
 /datum/species/serpentid
 	name = "Giant Armored Serpentid"
@@ -21,10 +32,13 @@
 	brute_mod = 0.6
 	siemens_coeff = 2.0
 	stun_mod = 2
-	armor = 20
+	armor = 10
+	coldmod = 2
+	heatmod = 4
+	hunger_drain = 0.5
 
 	species_traits = list(LIPS, NO_HAIR)
-	inherent_traits = list(TRAIT_CHUNKYFINGERS, TRAIT_RESISTHEAT, TRAIT_RESISTHIGHPRESSURE, TRAIT_NOPAIN)
+	inherent_traits = list(TRAIT_CHUNKYFINGERS, TRAIT_RESISTHEAT, TRAIT_RESISTHIGHPRESSURE, TRAIT_RESISTLOWPRESSURE, TRAIT_NOPAIN)
 	inherent_biotypes = MOB_ORGANIC | MOB_HUMANOID | MOB_REPTILE
 	dies_at_threshold = TRUE
 
@@ -83,11 +97,11 @@
 		)
 
 	var/can_stealth = TRUE
-	var/armor_count = 0
 	var/load_mode = FALSE
 	var/list/valid_organs = list()
 	var/list/valid_limbs = list()
 	var/gene_lastcall = 0
+	var/cloak_engaged = FALSE
 
 /datum/species/serpentid/handle_reagents(mob/living/carbon/human/H, datum/reagent/R)
 	. = .. ()
@@ -107,14 +121,16 @@
 	var/blood_percent = round((H.blood_volume / BLOOD_VOLUME_NORMAL)*100)
 	speed_mod = (90 - blood_percent)/100
 
+	var/armor_count = 0
 	var/gene_degradation = 0
 	for(var/obj/item/organ/external/limb in H.bodyparts)
-		var/gene_affected = SERPENTID_GENE_DEGRADATION_BASIC
+		var/gene_affected = 0
 		if (!(limb.type in valid_limbs))
 			gene_affected += SERPENTID_GENE_DEGRADATION_EXTRA
 		var/limb_armor = limb.carapice_state
 		armor_count += limb_armor
 		gene_degradation += gene_affected
+	gene_degradation += SERPENTID_GENE_DEGRADATION_BASIC
 
 	for(var/obj/item/organ/internal/organ in H.bodyparts)
 		var/gene_affected = SERPENTID_GENE_DEGRADATION_BASIC
@@ -140,20 +156,49 @@
 	else
 		brute_mod = (100 + SERPENTID_CARAPICE_BROKEN_STATE - armor_count) / 100
 		burn_mod = brute_mod + 0.2
+
+	var/up = SERPENTID_COLD_THRESHOLD_LEVEL_DOWN
+	var/down = SERPENTID_COLD_THRESHOLD_LEVEL_DOWN
+	var/cold = SERPENTID_COLD_THRESHOLD_LEVEL_BASE
+	var/heat = SERPENTID_HEAT_THRESHOLD_LEVEL_BASE
+	if (armor_count >= SERPENTID_CARAPICE_NOPRESSURE_STATE)
+		hazard_high_pressure = 1000
+		warning_high_pressure = 1000
+		warning_low_pressure = -1
+		hazard_low_pressure = -1
+		cold = SERPENTID_ARMORED_COLD_THRESHOLD
+		heat = SERPENTID_ARMORED_HEAT_THRESHOLD
+	else
+		hazard_high_pressure = HAZARD_HIGH_PRESSURE
+		warning_high_pressure = WARNING_HIGH_PRESSURE
+		warning_low_pressure = WARNING_LOW_PRESSURE
+		hazard_low_pressure = HAZARD_LOW_PRESSURE
+	cold_level_1 = cold
+	cold_level_2 = cold_level_1 - down
+	cold_level_3 = cold_level_2 - down
+	heat_level_1 = heat
+	heat_level_2 = heat_level_1 + up
+	heat_level_3 = heat_level_2 + up
+
 	if (can_stealth)
 		sneak(H)
 
 	. = ..()
 
 /datum/species/serpentid/proc/sneak(mob/living/M) //look if a ghost gets this, its an admins problem
-	if((world.time - M.last_movement) >= 300 && !M.stat && (M.mobility_flags & MOBILITY_STAND) && !M.restrained())
+	var/mob/living/carbon/human/H = M
+	if((world.time - M.last_movement) >= 10 && !M.stat && (M.mobility_flags & MOBILITY_STAND) && !M.restrained() && (H.get_chemical_value(SERPENTID_CHEM_REAGENT_ID) >= SERPENTID_CARAPICE_CHAMELION_CHEM) && cloak_engaged)
 		if(M.invisibility != INVISIBILITY_LEVEL_TWO)
-			M.alpha -= 25
+			M.alpha -= 51
+		var/datum/reagent/chemical = H.get_chemical_path(SERPENTID_CHEM_REAGENT_ID)
+		chemical.holder.remove_reagent(SERPENTID_CHEM_REAGENT_ID, SERPENTID_CARAPICE_CHAMELION_CHEM)
 	else
 		M.reset_visibility()
 		M.alpha = 255
 	if(M.alpha == 0)
 		M.make_invisible()
+
+
 
 /datum/species/serpentid/on_species_gain(mob/living/carbon/human/H)
 	..()
@@ -162,6 +207,7 @@
 	H.buckle_lying = 0
 	H.update_transform()
 	H.AddComponent(/datum/component/footstep, FOOTSTEP_MOB_SLIME, 1, -6)
+	H.reagents.add_reagent(SERPENTID_CHEM_REAGENT_ID, 20)
 	for (var/organ_name in has_organ)
 		valid_organs += has_organ[organ_name]
 	for (var/limb_name in has_limbs)
@@ -174,8 +220,7 @@
 	. = .. ()
 
 /mob/living/carbon/human/MouseDrop_T(atom/movable/AM, mob/user)
-	var/datum/dna/genetic_info = user.dna
-	var/datum/species/spiece = genetic_info.species
+	var/datum/species/spiece = user.dna.species
 	if((user.a_intent == "grab") && spiece.type == /datum/species/serpentid)
 		if(user.incapacitated() || HAS_TRAIT(user, TRAIT_HANDS_BLOCKED) || get_dist(user, src) > 1)
 			return

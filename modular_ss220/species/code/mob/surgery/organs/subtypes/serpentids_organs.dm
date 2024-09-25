@@ -1,8 +1,8 @@
 #define GAS_ORGAN_MULT_DAMAGE 0.1
 #define GAS_ORGAN_MULT_RECOVER 0.02
 #define BASIC_DECAY_VALUE 1
-#define GAS_ORGAN_CHEMISTRY_EYES 0.3
-#define GAS_ORGAN_CHEMISTRY_EARS 0.75
+#define GAS_ORGAN_CHEMISTRY_EYES 0.75
+#define GAS_ORGAN_CHEMISTRY_EARS 0.25
 #define GAS_ORGAN_CHEMISTRY_HEART 25
 #define GAS_ORGAN_CHEMISTRY_LUNGS 0.5
 
@@ -13,6 +13,11 @@
 #define SERPENTID_TOX_LIVER_LOSS 0.01
 #define SERPENTID_TOX_KIDNEY_LOSS 0.1
 #define SERPENTID_TOX_ORGAN_LOSS 0.025
+
+#define SERPENTID_EYES_LOW_VISIBLE_VALUE 0.33
+#define SERPENTID_EYES_MAX_VISIBLE_VALUE 1
+
+#define GAS_ORGAN_CHEMISTRY_MAX 100
 
 /obj/item/organ/internal
 	var/decayable = FALSE
@@ -52,18 +57,14 @@
 				receive_damage(owner.get_damage_amount(TOX) * SERPENTID_TOX_ORGAN_LOSS, 1)
 		chems_process()
 
-/obj/item/organ/internal/proc/get_chemical_value(var/id)
-	if(isnull(owner))
-		return TRUE
-	for(var/datum/reagent/R in owner.reagents.reagent_list)
+/mob/living/carbon/human/proc/get_chemical_value(var/id)
+	for(var/datum/reagent/R in src.reagents.reagent_list)
 		if (R.id == id)
 			return R.volume
 	return 0
 
-/obj/item/organ/internal/proc/get_chemical_path(var/id)
-	if(isnull(owner))
-		return TRUE
-	for(var/datum/reagent/R in owner.reagents.reagent_list)
+/mob/living/carbon/human/proc/get_chemical_path(var/id)
+	for(var/datum/reagent/R in src.reagents.reagent_list)
 		if (R.id == id)
 			return R
 	return null
@@ -71,8 +72,8 @@
 /obj/item/organ/internal/proc/chems_process()
 	if(isnull(owner))
 		return TRUE
-	var/chemical_volume = get_chemical_value(SERPENTID_CHEM_REAGENT_ID)
-	var/datum/reagent/chemical = get_chemical_path(SERPENTID_CHEM_REAGENT_ID)
+	var/chemical_volume = owner.get_chemical_value(SERPENTID_CHEM_REAGENT_ID)
+	var/datum/reagent/chemical = owner.get_chemical_path(SERPENTID_CHEM_REAGENT_ID)
 	if (chemical_volume < chemical_consuption)
 		//Если коилчества недостаточно - выключить режим
 		switch_mode(force_off = TRUE)

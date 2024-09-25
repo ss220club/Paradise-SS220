@@ -17,4 +17,3 @@
 
 /mob/living/carbon/human/serpentid/Initialize(mapload)
 	. = ..(mapload, /datum/species/serpentid)
-

@@ -19,10 +19,14 @@
 
 /obj/item/organ/internal/liver/serpentid/on_life()
 	. = ..()
-	for(var/datum/reagent/consumable/chemical in owner.reagents.reagent_list)
-		if(!isnull(chemical))
-			chemical.holder.remove_reagent(chemical.id, SERPENTID_CHEM_MULT_CONSUPTION*chemical.nutriment_factor)
-			owner.reagents.add_reagent(SERPENTID_CHEM_REAGENT_ID, SERPENTID_CHEM_MULT_PRODUCTION*chemical.nutriment_factor)
+	if (owner.get_chemical_value(SERPENTID_CHEM_REAGENT_ID) < GAS_ORGAN_CHEMISTRY_MAX)
+		for(var/datum/reagent/consumable/chemical in owner.reagents.reagent_list)
+			if(!isnull(chemical))
+				chemical.holder.remove_reagent(chemical.id, SERPENTID_CHEM_MULT_CONSUPTION*chemical.nutriment_factor)
+				owner.reagents.add_reagent(SERPENTID_CHEM_REAGENT_ID, SERPENTID_CHEM_MULT_PRODUCTION*chemical.nutriment_factor)
+	else
+		var/excess_value = owner.get_chemical_value(SERPENTID_CHEM_REAGENT_ID) - GAS_ORGAN_CHEMISTRY_MAX
+		chemical.holder.remove_reagent(SERPENTID_CHEM_REAGENT_ID, excess_value)
 
 ///Легкие - вырабатывают сальбутамол при наличии глутамата натрия
 /obj/item/organ/internal/lungs/serpentid
@@ -38,20 +42,21 @@
 /datum/organ/lungs/serpentid
 	safe_oxygen_min = 21
 	safe_toxins_max = 5
-	heat_level_1_threshold = 350
-	heat_level_2_threshold = 400
-	heat_level_3_threshold = 450
 
-	cold_level_1_threshold = 250
-	cold_level_2_threshold = 180
-	cold_level_3_threshold = 100
+	cold_level_1_threshold = SERPENTID_COLD_THRESHOLD_LEVEL_BASE
+	cold_level_2_threshold = SERPENTID_COLD_THRESHOLD_LEVEL_BASE - SERPENTID_COLD_THRESHOLD_LEVEL_DOWN
+	cold_level_3_threshold = SERPENTID_COLD_THRESHOLD_LEVEL_BASE - 2*SERPENTID_COLD_THRESHOLD_LEVEL_DOWN
+
+	heat_level_1_threshold = SERPENTID_HEAT_THRESHOLD_LEVEL_BASE
+	heat_level_2_threshold = SERPENTID_HEAT_THRESHOLD_LEVEL_BASE + SERPENTID_HEAT_THRESHOLD_LEVEL_UP
+	heat_level_3_threshold = SERPENTID_HEAT_THRESHOLD_LEVEL_BASE + 2*SERPENTID_HEAT_THRESHOLD_LEVEL_UP
 
 /obj/item/organ/internal/lungs/serpentid/ui_action_click()
 	switch_mode()
 
 /obj/item/organ/internal/lungs/serpentid/switch_mode(var/force_off = FALSE)
 	.=..()
-	if(!salb_secretion && !force_off && get_chemical_value(SERPENTID_CHEM_REAGENT_ID) > 0)
+	if(!salb_secretion && !force_off && owner.get_chemical_value(SERPENTID_CHEM_REAGENT_ID) > 0)
 		salb_secretion = TRUE
 		chemical_consuption += GAS_ORGAN_CHEMISTRY_LUNGS
 	else
@@ -74,9 +79,9 @@
 
 /obj/item/organ/internal/heart/serpentid/ui_action_click()
 	var/mob/living/heart_owner = owner
-	if(!get_chemical_value(SERPENTID_CHEM_REAGENT_ID) > GAS_ORGAN_CHEMISTRY_HEART && heart_owner.get_damage_amount(STAMINA) < STAMINA_DAMAGE_ON_MEPH)
+	if(!owner.get_chemical_value(SERPENTID_CHEM_REAGENT_ID) > GAS_ORGAN_CHEMISTRY_HEART && heart_owner.get_damage_amount(STAMINA) < STAMINA_DAMAGE_ON_MEPH)
 		var/mob/living/carbon/human/human_owner = owner
-		var/datum/reagent/chem = get_chemical_path(SERPENTID_CHEM_REAGENT_ID)
+		var/datum/reagent/chem = owner.get_chemical_path(SERPENTID_CHEM_REAGENT_ID)
 		chem.holder.remove_reagent(SERPENTID_CHEM_REAGENT_ID, GAS_ORGAN_CHEMISTRY_HEART)
 		human_owner.reagents.add_reagent("mephedrone", GAS_ORGAN_CHEMISTRY_HEART * SERPENTID_CHEM_MULT_PRODUCTION)
 		heart_owner.apply_damage(STAMINA_DAMAGE_ON_MEPH, STAMINA)
@@ -94,7 +99,7 @@
 
 /obj/item/organ/internal/ears/serpentid/switch_mode(var/force_off = FALSE)
 	.=..()
-	if(!sonar_active && !force_off && get_chemical_value(SERPENTID_CHEM_REAGENT_ID) > 0)
+	if(!sonar_active && !force_off && owner.get_chemical_value(SERPENTID_CHEM_REAGENT_ID) > 0)
 		sonar_active = TRUE
 		chemical_consuption += GAS_ORGAN_CHEMISTRY_EARS
 	else
@@ -107,9 +112,8 @@
 		sense_creatures()
 
 /obj/item/organ/internal/ears/serpentid/proc/sense_creatures()
-	playsound(owner, 'sound/mecha/skyfall_power_up.ogg', vol = 20, vary = TRUE, extrarange = SHORT_RANGE_SOUND_EXTRARANGE)
 	for(var/mob/living/creature in range(9, owner))
-		if(creature == owner || creature.stat == DEAD)
+		if(creature == owner || creature.stat == DEAD || (world.time - creature.l_move_time) < 50)
 			continue
 		new /obj/effect/temp_visual/sonar_ping(owner.loc, owner, creature)
 
@@ -125,6 +129,7 @@
 	flash_protect = FLASH_PROTECTION_VERYVUNERABLE
 	lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
 	actions_types = list(/datum/action/item_action/organ_action/use)
+	see_invisible = 20
 
 /obj/item/organ/internal/eyes/serpentid/generate_icon(mob/living/carbon/human/HA)
 	var/mob/living/carbon/human/H = HA
@@ -142,7 +147,7 @@
 /obj/item/organ/internal/eyes/serpentid/switch_mode(var/force_off = FALSE)
 	.=..()
 	vision_flags = initial(vision_flags)
-	if(lighting_alpha == LIGHTING_PLANE_ALPHA_VISIBLE && !force_off && get_chemical_value(SERPENTID_CHEM_REAGENT_ID) > 0)
+	if(lighting_alpha == LIGHTING_PLANE_ALPHA_VISIBLE && !force_off && owner.get_chemical_value(SERPENTID_CHEM_REAGENT_ID) > 0)
 		lighting_alpha = LIGHTING_PLANE_ALPHA_INVISIBLE
 		see_in_dark = 8
 		chemical_consuption += GAS_ORGAN_CHEMISTRY_EYES
@@ -152,13 +157,21 @@
 		vision_flags &= ~SEE_BLACKNESS
 		chemical_consuption -= 0
 
-/obj/item/organ/internal/eyes/serpentid/insert(mob/living/carbon/M, special = 0, dont_remove_slot = 0)
+/obj/item/organ/internal/eyes/serpentid/on_life()
 	. = ..()
-	ADD_TRAIT(M, TRAIT_COLORBLIND, ROUNDSTART_TRAIT)
+	if(!isnull(owner))
+		var/mob/mob = owner
+		mob.update_client_colour(time = 10)
+		owner.invisibility = 0
 
-/obj/item/organ/internal/eyes/serpentid/remove(mob/living/carbon/M, special = 0)
-	. = ..()
-	REMOVE_TRAIT(M, TRAIT_COLORBLIND, ROUNDSTART_TRAIT)
+/obj/item/organ/internal/eyes/serpentid/get_colourmatrix() //Returns a special colour matrix
+	var/chem_value = owner.get_chemical_value(SERPENTID_CHEM_REAGENT_ID)/100
+	var/vision_chem = clamp(chem_value + SERPENTID_EYES_LOW_VISIBLE_VALUE, SERPENTID_EYES_LOW_VISIBLE_VALUE, SERPENTID_EYES_MAX_VISIBLE_VALUE)
+	var/vision_adjust = clamp((SERPENTID_EYES_LOW_VISIBLE_VALUE - chem_value)*2, 0, SERPENTID_EYES_LOW_VISIBLE_VALUE)
+	var/vision_matrix = list(vision_chem, vision_adjust, vision_adjust,\
+		vision_adjust, vision_chem, vision_adjust,\
+		vision_adjust, vision_adjust, vision_chem)
+	return vision_matrix
 
 /obj/item/organ/internal/brain/serpentid
 	name = "serpentid brain"
