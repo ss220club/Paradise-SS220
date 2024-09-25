@@ -72,7 +72,8 @@
 //ROOSTER_MASK//
 /obj/item/clothing/mask/rooster
 	w_class = WEIGHT_CLASS_SMALL
-	flags = BLOCKHAIR | HIDEFACE | HIDEEARS | HIDEEYES
+	flags = BLOCKHAIR
+	flags_inv = HIDEEARS | HIDEEYES | HIDEFACE
 	flags_cover = MASKCOVERSMOUTH
 	modifies_speech = TRUE
 	species_restricted = list("Human","Kidan","Nian","Skrell","Slime People","Diona","Skeleton","Shadow")
