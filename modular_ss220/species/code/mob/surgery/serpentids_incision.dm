@@ -2,5 +2,5 @@
 	var/obj/item/organ/external/limb = target.get_organ(target_zone)
 	if(limb.carapice_limb && limb.carapice_state > 0)
 		user.visible_message("<span class='notice'>Эта конечность [target] покрыта крепким хитином. Сломайте его, прежде чем начать операцию .</span>")
-		return FALSE
+		return SURGERY_BEGINSTEP_ABORT
 	. = .. ()

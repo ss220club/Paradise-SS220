@@ -4,7 +4,7 @@
 //////////////////////////////////////////////////////////////////
 ///Surgery Datums
 /datum/surgery/carapice_break
-	name = "Bone Repair"
+	name = "Break Carapice"
 	steps = list(
 		/datum/surgery_step/open_encased/saw,
 		/datum/surgery_step/open_encased/retract
@@ -14,6 +14,6 @@
 
 /datum/surgery/carapice_break/can_start(mob/user, mob/living/carbon/target)
 	var/obj/item/organ/external/affected = target.get_organ(user.zone_selected)
-	if(limb.carapice_limb && !(affected.status & ORGAN_BROKEN))
+	if(affected.carapice_limb && !(affected.status & ORGAN_BROKEN))
 		return TRUE
 	return FALSE

@@ -28,8 +28,6 @@
 	icobase = 'modular_ss220/species/icons/mob/human_races/r_serpentid.dmi'
 	blurb = "TODO"
 	language = "Stok"
-	burn_mod = 0.8
-	brute_mod = 0.6
 	siemens_coeff = 2.0
 	stun_mod = 2
 	armor = 10
@@ -146,16 +144,10 @@
 
 	armor_count = armor_count/H.bodyparts.len
 	if (armor_count >= SERPENTID_CARAPICE_BROKEN_STATE)
-		brute_mod = 0.6
-		burn_mod = brute_mod + 0.2
-
 		if (armor_count >= SERPENTID_CARAPICE_CHAMELION_STATE)
 			can_stealth = TRUE
 		else
 			can_stealth = FALSE
-	else
-		brute_mod = (100 + SERPENTID_CARAPICE_BROKEN_STATE - armor_count) / 100
-		burn_mod = brute_mod + 0.2
 
 	var/up = SERPENTID_COLD_THRESHOLD_LEVEL_DOWN
 	var/down = SERPENTID_COLD_THRESHOLD_LEVEL_DOWN

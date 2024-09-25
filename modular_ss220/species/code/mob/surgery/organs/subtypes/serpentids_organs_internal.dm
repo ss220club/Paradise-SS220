@@ -26,7 +26,8 @@
 				owner.reagents.add_reagent(SERPENTID_CHEM_REAGENT_ID, SERPENTID_CHEM_MULT_PRODUCTION*chemical.nutriment_factor)
 	else
 		var/excess_value = owner.get_chemical_value(SERPENTID_CHEM_REAGENT_ID) - GAS_ORGAN_CHEMISTRY_MAX
-		chemical.holder.remove_reagent(SERPENTID_CHEM_REAGENT_ID, excess_value)
+		var/datum/reagent/chem = owner.get_chemical_path(SERPENTID_CHEM_REAGENT_ID)
+		chem.holder.remove_reagent(SERPENTID_CHEM_REAGENT_ID, excess_value)
 
 ///Легкие - вырабатывают сальбутамол при наличии глутамата натрия
 /obj/item/organ/internal/lungs/serpentid
