@@ -6,7 +6,7 @@
 /datum/surgery/carapace_break
 	name = "Break carapace"
 	steps = list(
-		/datum/surgery_step/saw_carapace/serpentid,
+		/datum/surgery_step/saw_carapace,
 		/datum/surgery_step/cut_carapace,
 		/datum/surgery_step/retract_carapace
 	)

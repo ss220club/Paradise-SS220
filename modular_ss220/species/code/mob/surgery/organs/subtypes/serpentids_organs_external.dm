@@ -1,5 +1,61 @@
+#define CARAPACE_BROKEN_STATE 20
+#define CARAPACE_BASIC_BRUTE_RESISTANCE 0.8
+#define CHEM_CARAPACE_HEAL_REAGENT_ID "synthflesh"
+#define CHEM_CARAPACE_HEAL_REAGENT_COUNT 10
+#define CHEM_CARAPACE_HEAL_REAGENT_PROB 50
+
+/obj/item/organ/external
+
+	var/can_change_visual = FALSE
+	var/change_visual = FALSE
+	var/alt_visual_icon = null
+
+	var/carapace_limb = FALSE
+	var/carapace_heal_reagent_id = CHEM_CARAPACE_HEAL_REAGENT_ID
+	var/carapace_broken_treshold = CARAPACE_BROKEN_STATE
+	var/carapace_brute_resistance = CARAPACE_BASIC_BRUTE_RESISTANCE
+
+/obj/item/organ/external/proc/update_visual()
+	if (can_change_visual && change_visual)
+		icon_name = alt_visual_icon
+	if (can_change_visual && !(change_visual))
+		icon_name = initial(icon_name)
+	owner.update_body()
+
+/obj/item/organ/external/proc/update_resistance()
+	if (status & ORGAN_BROKEN)
+		brute_mod = (100 + get_damage())/100
+	else
+		brute_mod = carapace_brute_resistance
+	burn_mod = brute_mod + 0.2
+
+/obj/item/organ/external/receive_damage(brute, burn, sharp, used_weapon = null, list/forbidden_limbs = list(), ignore_resists = FALSE, updating_health = TRUE)
+	. = ..()
+	if (carapace_limb)
+		if (get_damage() > carapace_broken_treshold)
+			fracture()
+		var/obj/item/organ/internal/O = pick(internal_organs)
+		O.receive_damage(burn * get_damage())
+		update_resistance()
+	return
+
+/obj/item/organ/external/heal_damage(brute, burn, internal = 0, robo_repair = 0, updating_health = TRUE)
+	. = .. ()
+	if ((status & ORGAN_BROKEN) && get_damage() < carapace_broken_treshold)
+		for(var/datum/reagent/consumable/chemical in owner.reagents.reagent_list)
+			if(istype(chemical, owner.get_chemical_path(carapace_heal_reagent_id)) && owner.get_chemical_value(carapace_heal_reagent_id) >= CHEM_CARAPACE_HEAL_REAGENT_COUNT)
+				chemical.holder.remove_reagent(carapace_heal_reagent_id, CHEM_CARAPACE_HEAL_REAGENT_COUNT)
+				if (prob(CHEM_CARAPACE_HEAL_REAGENT_PROB))
+					mend_fracture()
+	update_resistance()
+	return
+
 // ============ Органы внешние ============
 ///Руки - аналогичные богомолам имлпанты, но при изъятии сжирают по 10 стамины
+/obj/item/organ/internal/cyberimp/arm/
+	var/can_work_in_pair = FALSE
+	var/state_active = FALSE
+
 /obj/item/organ/internal/cyberimp/arm/toolset/serpentblade
 	name = "hidden blade implant"
 	desc = "A blade designed to be hidden just beneath the skin. The brain is directly linked to this bad boy, allowing it to spring into action."
@@ -7,7 +63,8 @@
 	action_icon = list(/datum/action/item_action/organ_action/toggle = 'icons/obj/items_cyborg.dmi')
 	action_icon_state = list(/datum/action/item_action/organ_action/toggle = "knife")
 	origin_tech = "biotech=6;"
-	var/blade_on = FALSE
+	can_work_in_pair = TRUE
+	state_active = FALSE
 
 /obj/item/organ/internal/cyberimp/arm/toolset/serpentblade/l
 	parent_organ = "l_arm"
@@ -29,29 +86,31 @@
 			action_candidate.Grant(owner)
 	owner.update_action_buttons()
 
-/obj/item/organ/internal/cyberimp/arm/toolset/serpentblade/proc/synchonize_blades()
+/obj/item/organ/internal/cyberimp/arm/proc/synchonize_implants()
 	var/obj/item/organ/internal/cyberimp/arm/toolset/serpentblade/pair_implant = null
 	var/list/organs = owner.internal_organs
 	for(var/obj/item/organ/internal/O in organs)
-		if (istype(O, /obj/item/organ/internal/cyberimp/arm/toolset/serpentblade) && src != O)
+		if (istype(O, /obj/item/organ/internal/cyberimp/arm) && istype(src, /obj/item/organ/internal/cyberimp/arm) && src != O)
 			pair_implant = O
 	if (!isnull(pair_implant))
-		if (src.blade_on != pair_implant.blade_on)
-			if(src.blade_on)
+		if (src.state_active != pair_implant.state_active)
+			if(src.state_active)
 				pair_implant.holder = null
 				pair_implant.Extend(pair_implant.contents[1])
 			else
 				pair_implant.Retract()
 
-/obj/item/organ/internal/cyberimp/arm/toolset/serpentblade/Extend()
+/obj/item/organ/internal/cyberimp/arm/Retract()
 	. = .. ()
-	blade_on = TRUE
-	synchonize_blades()
+	state_active = FALSE
+	if (can_work_in_pair)
+		synchonize_implants()
 
-/obj/item/organ/internal/cyberimp/arm/toolset/serpentblade/Retract()
+/obj/item/organ/internal/cyberimp/arm/Extend()
 	. = .. ()
-	blade_on = FALSE
-	synchonize_blades()
+	state_active = TRUE
+	if (can_work_in_pair)
+		synchonize_implants()
 
 /obj/item/kitchen/knife/combat/serpentblade
 	name = "serpentid mantis blade"

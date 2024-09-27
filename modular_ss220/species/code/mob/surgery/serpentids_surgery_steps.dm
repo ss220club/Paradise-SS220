@@ -27,15 +27,9 @@
 
 /datum/surgery_step/generic/cut_open/begin_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	var/obj/item/organ/external/limb = target.get_organ(target_zone)
-	if(limb.carapace_limb && limb.carapace_state > 0)
+	if(limb.carapace_limb && !(limb.status & ORGAN_BROKEN))
 		user.visible_message("<span class='notice'>Эта конечность [target] покрыта крепким хитином. Сломайте его, прежде чем начать операцию .</span>")
 		return SURGERY_BEGINSTEP_ABORT
-	. = .. ()
-
-/datum/surgery_step/saw_carapace/serpentid/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	var/obj/item/organ/external/affected = target.get_organ(user.zone_selected)
-	if(affected.carapace_limb && !(affected.status & ORGAN_BROKEN))
-		affected.carapace_state = 0
 	. = .. ()
 
 /datum/surgery_step/retract_carapace/end_step(mob/living/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
@@ -44,11 +38,6 @@
 		affected.fracture()
 	. = .. ()
 
-/datum/surgery_step/finish_bone/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	var/obj/item/organ/external/affected = target.get_organ(user.zone_selected)
-	if(affected.carapace_limb && !(affected.status & ORGAN_BROKEN))
-		affected.carapace_state = SERPENTID_CARAPACE_MAX_STATE
-	. = .. ()
 
 /datum/surgery_step/set_bone/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(user.zone_selected)

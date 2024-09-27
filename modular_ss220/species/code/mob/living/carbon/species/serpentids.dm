@@ -1,12 +1,7 @@
 #define SERPENTID_CHEM_REAGENT_ID "msg"
-#define SERPENTID_CARAPACE_MAX_STATE 50
-#define SERPENTID_CARAPACE_BROKEN_STATE 30
-#define SERPENTID_CARAPACE_CHAMELION_STATE 48
-#define SERPENTID_CARAPACE_NOPRESSURE_STATE 40
 
-#define SERPENTID_CHEM_CARAPACE_HEAL_REAGENT_ID "synthflesh"
-#define SERPENTID_CHEM_CARAPACE_HEAL_COUNT 2
-#define SERPENTID_CHEM_CARAPACE_HEAL_MULTIPLAYER 0.5
+#define SERPENTID_CARAPACE_CHAMELION_STATE 5
+#define SERPENTID_CARAPACE_NOPRESSURE_STATE 10
 
 #define SERPENTID_GENE_DEGRADATION_BASIC 0.02
 #define SERPENTID_GENE_DEGRADATION_EXTRA 0.1
@@ -19,6 +14,20 @@
 #define SERPENTID_COLD_THRESHOLD_LEVEL_BASE 250
 #define SERPENTID_COLD_THRESHOLD_LEVEL_DOWN 80
 #define SERPENTID_ARMORED_COLD_THRESHOLD 70
+
+#define GAS_ORGAN_CHEMISTRY_EYES 0.75
+#define GAS_ORGAN_CHEMISTRY_EARS 0.25
+#define GAS_ORGAN_CHEMISTRY_HEART 25
+#define GAS_ORGAN_CHEMISTRY_LUNGS 1
+#define GAS_ORGAN_CHEMISTRY_KIDNEYS 0.6
+
+#define SERPENTID_CHEM_MULT_CONSUPTION 0.75
+#define SERPENTID_CHEM_MULT_PRODUCTION 0.6
+
+#define SERPENTID_EYES_LOW_VISIBLE_VALUE 0.33
+#define SERPENTID_EYES_MAX_VISIBLE_VALUE 1
+
+#define GAS_ORGAN_CHEMISTRY_MAX 100
 
 #define SPIECES_BAN_HEADS_JOB (1<<12)
 
@@ -112,15 +121,7 @@
 	var/cloak_engaged = FALSE
 
 /datum/species/serpentid/handle_reagents(mob/living/carbon/human/H, datum/reagent/R)
-	. = .. ()
-	//Хитин лечится синтплотью онли
-	if (R.id == SERPENTID_CHEM_CARAPACE_HEAL_REAGENT_ID)
-		for(var/obj/item/organ/external/limb in H.bodyparts)
-			if (limb.carapace_limb < SERPENTID_CARAPACE_MAX_STATE)
-				limb.carapace_limb += SERPENTID_CHEM_CARAPACE_HEAL_COUNT * SERPENTID_CHEM_CARAPACE_HEAL_MULTIPLAYER
-				R.holder.remove_reagent(SERPENTID_CHEM_CARAPACE_HEAL_REAGENT_ID, SERPENTID_CHEM_CARAPACE_HEAL_COUNT)
-		return FALSE
-	else if (R.id == SERPENTID_CHEM_REAGENT_ID)
+	if (R.id == SERPENTID_CHEM_REAGENT_ID)
 		return FALSE
 	else
 		return TRUE
@@ -135,7 +136,7 @@
 		var/gene_affected = 0
 		if (!(limb.type in valid_limbs))
 			gene_affected += SERPENTID_GENE_DEGRADATION_EXTRA
-		var/limb_armor = limb.carapace_state
+		var/limb_armor = limb.damage
 		armor_count += limb_armor
 		gene_degradation += gene_affected
 	gene_degradation += SERPENTID_GENE_DEGRADATION_BASIC
@@ -153,17 +154,16 @@
 		gene_lastcall += 1
 
 	armor_count = armor_count/H.bodyparts.len
-	if (armor_count >= SERPENTID_CARAPACE_BROKEN_STATE)
-		if (armor_count >= SERPENTID_CARAPACE_CHAMELION_STATE)
-			can_stealth = TRUE
-		else
-			can_stealth = FALSE
+	if (armor_count <= SERPENTID_CARAPACE_CHAMELION_STATE)
+		can_stealth = TRUE
+	else
+		can_stealth = FALSE
 
 	var/up = SERPENTID_COLD_THRESHOLD_LEVEL_DOWN
 	var/down = SERPENTID_COLD_THRESHOLD_LEVEL_DOWN
 	var/cold = SERPENTID_COLD_THRESHOLD_LEVEL_BASE
 	var/heat = SERPENTID_HEAT_THRESHOLD_LEVEL_BASE
-	if (armor_count >= SERPENTID_CARAPACE_NOPRESSURE_STATE)
+	if (armor_count <= SERPENTID_CARAPACE_NOPRESSURE_STATE)
 		hazard_high_pressure = 1000
 		warning_high_pressure = 1000
 		warning_low_pressure = -1
@@ -188,9 +188,9 @@
 	. = ..()
 
 /datum/species/serpentid/proc/sneak(mob/living/M) //look if a ghost gets this, its an admins problem
-	if((world.time - M.last_movement) >= 10 && !M.stat && (M.mobility_flags & MOBILITY_STAND) && !M.restrained() && cloak_engaged)
+	if(((world.time - M.last_movement) >= 10 || M.move_speed < 30)&& !M.stat && (M.mobility_flags & MOBILITY_STAND) && !M.restrained() && cloak_engaged)
 		if(M.invisibility != INVISIBILITY_LEVEL_TWO)
-			M.alpha -= 51
+			M.alpha -= 125
 	else
 		M.reset_visibility()
 		M.alpha = 255
