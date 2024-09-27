@@ -1,12 +1,12 @@
 #define SERPENTID_CHEM_REAGENT_ID "msg"
-#define SERPENTID_CARAPICE_MAX_STATE 50
-#define SERPENTID_CARAPICE_BROKEN_STATE 30
-#define SERPENTID_CARAPICE_CHAMELION_STATE 48
-#define SERPENTID_CARAPICE_NOPRESSURE_STATE 40
+#define SERPENTID_CARAPACE_MAX_STATE 50
+#define SERPENTID_CARAPACE_BROKEN_STATE 30
+#define SERPENTID_CARAPACE_CHAMELION_STATE 48
+#define SERPENTID_CARAPACE_NOPRESSURE_STATE 40
 
-#define SERPENTID_CHEM_CARAPICE_HEAL_REAGENT_ID "synthflesh"
-#define SERPENTID_CHEM_CARAPICE_HEAL_COUNT 2
-#define SERPENTID_CHEM_CARAPICE_HEAL_MULTIPLAYER 0.5
+#define SERPENTID_CHEM_CARAPACE_HEAL_REAGENT_ID "synthflesh"
+#define SERPENTID_CHEM_CARAPACE_HEAL_COUNT 2
+#define SERPENTID_CHEM_CARAPACE_HEAL_MULTIPLAYER 0.5
 
 #define SERPENTID_GENE_DEGRADATION_BASIC 0.02
 #define SERPENTID_GENE_DEGRADATION_EXTRA 0.1
@@ -20,6 +20,10 @@
 #define SERPENTID_COLD_THRESHOLD_LEVEL_DOWN 80
 #define SERPENTID_ARMORED_COLD_THRESHOLD 70
 
+#define SPIECES_BAN_HEADS_JOB (1<<12)
+
+/datum/species
+	var/disabilities = 0
 
 /datum/species/serpentid
 	name = "Giant Armored Serpentid"
@@ -32,7 +36,7 @@
 	armor = 10
 	coldmod = 2
 	heatmod = 4
-	hunger_drain = 0.5
+	hunger_drain = 0.3
 
 	species_traits = list(LIPS, NO_HAIR)
 	inherent_traits = list(TRAIT_CHUNKYFINGERS, TRAIT_RESISTHEAT, TRAIT_RESISTHIGHPRESSURE, TRAIT_RESISTLOWPRESSURE, TRAIT_NOPAIN)
@@ -68,17 +72,17 @@
 		)
 
 	has_limbs = list(
-		"chest" =  list("path" = /obj/item/organ/external/chest/carapice, "descriptor" = "chest"),
-		"groin" =  list("path" = /obj/item/organ/external/groin/carapice, "descriptor" = "groin"),
-		"head" =   list("path" = /obj/item/organ/external/head/carapice, "descriptor" = "head"),
-		"l_arm" =  list("path" = /obj/item/organ/external/arm/carapice, "descriptor" = "left arm"),
-		"r_arm" =  list("path" = /obj/item/organ/external/arm/right/carapice, "descriptor" = "right arm"),
-		"l_leg" =  list("path" = /obj/item/organ/external/leg/carapice, "descriptor" = "left leg"),
-		"r_leg" =  list("path" = /obj/item/organ/external/leg/right/carapice, "descriptor" = "right leg"),
-		"l_hand" = list("path" = /obj/item/organ/external/hand/carapice, "descriptor" = "left hand"),
-		"r_hand" = list("path" = /obj/item/organ/external/hand/right/carapice, "descriptor" = "right hand"),
-		"l_foot" = list("path" = /obj/item/organ/external/foot/carapice, "descriptor" = "left foot"),
-		"r_foot" = list("path" = /obj/item/organ/external/foot/right/carapice, "descriptor" = "right foot"))
+		"chest" =  list("path" = /obj/item/organ/external/chest/carapace, "descriptor" = "chest"),
+		"groin" =  list("path" = /obj/item/organ/external/groin/carapace, "descriptor" = "groin"),
+		"head" =   list("path" = /obj/item/organ/external/head/carapace, "descriptor" = "head"),
+		"l_arm" =  list("path" = /obj/item/organ/external/arm/carapace, "descriptor" = "left arm"),
+		"r_arm" =  list("path" = /obj/item/organ/external/arm/right/carapace, "descriptor" = "right arm"),
+		"l_leg" =  list("path" = /obj/item/organ/external/leg/carapace, "descriptor" = "left leg"),
+		"r_leg" =  list("path" = /obj/item/organ/external/leg/right/carapace, "descriptor" = "right leg"),
+		"l_hand" = list("path" = /obj/item/organ/external/hand/carapace, "descriptor" = "left hand"),
+		"r_hand" = list("path" = /obj/item/organ/external/hand/right/carapace, "descriptor" = "right hand"),
+		"l_foot" = list("path" = /obj/item/organ/external/foot/carapace, "descriptor" = "left foot"),
+		"r_foot" = list("path" = /obj/item/organ/external/foot/right/carapace, "descriptor" = "right foot"))
 
 	suicide_messages = list(
 		"is attempting to bite their tongue off!",
@@ -93,6 +97,8 @@
 			"x" = list("ks", "kss", "ksss")
 		)
 
+	disabilities = SPIECES_BAN_HEADS_JOB
+
 	var/can_stealth = TRUE
 	var/load_mode = FALSE
 	var/list/valid_organs = list()
@@ -103,11 +109,11 @@
 /datum/species/serpentid/handle_reagents(mob/living/carbon/human/H, datum/reagent/R)
 	. = .. ()
 	//Хитин лечится синтплотью онли
-	if (R.id == SERPENTID_CHEM_CARAPICE_HEAL_REAGENT_ID)
+	if (R.id == SERPENTID_CHEM_CARAPACE_HEAL_REAGENT_ID)
 		for(var/obj/item/organ/external/limb in H.bodyparts)
-			if (limb.carapice_limb < SERPENTID_CARAPICE_MAX_STATE)
-				limb.carapice_limb += SERPENTID_CHEM_CARAPICE_HEAL_COUNT * SERPENTID_CHEM_CARAPICE_HEAL_MULTIPLAYER
-				R.holder.remove_reagent(SERPENTID_CHEM_CARAPICE_HEAL_REAGENT_ID, SERPENTID_CHEM_CARAPICE_HEAL_COUNT)
+			if (limb.carapace_limb < SERPENTID_CARAPACE_MAX_STATE)
+				limb.carapace_limb += SERPENTID_CHEM_CARAPACE_HEAL_COUNT * SERPENTID_CHEM_CARAPACE_HEAL_MULTIPLAYER
+				R.holder.remove_reagent(SERPENTID_CHEM_CARAPACE_HEAL_REAGENT_ID, SERPENTID_CHEM_CARAPACE_HEAL_COUNT)
 		return FALSE
 	else if (R.id == SERPENTID_CHEM_REAGENT_ID)
 		return FALSE
@@ -124,7 +130,7 @@
 		var/gene_affected = 0
 		if (!(limb.type in valid_limbs))
 			gene_affected += SERPENTID_GENE_DEGRADATION_EXTRA
-		var/limb_armor = limb.carapice_state
+		var/limb_armor = limb.carapace_state
 		armor_count += limb_armor
 		gene_degradation += gene_affected
 	gene_degradation += SERPENTID_GENE_DEGRADATION_BASIC
@@ -142,8 +148,8 @@
 		gene_lastcall += 1
 
 	armor_count = armor_count/H.bodyparts.len
-	if (armor_count >= SERPENTID_CARAPICE_BROKEN_STATE)
-		if (armor_count >= SERPENTID_CARAPICE_CHAMELION_STATE)
+	if (armor_count >= SERPENTID_CARAPACE_BROKEN_STATE)
+		if (armor_count >= SERPENTID_CARAPACE_CHAMELION_STATE)
 			can_stealth = TRUE
 		else
 			can_stealth = FALSE
@@ -152,7 +158,7 @@
 	var/down = SERPENTID_COLD_THRESHOLD_LEVEL_DOWN
 	var/cold = SERPENTID_COLD_THRESHOLD_LEVEL_BASE
 	var/heat = SERPENTID_HEAT_THRESHOLD_LEVEL_BASE
-	if (armor_count >= SERPENTID_CARAPICE_NOPRESSURE_STATE)
+	if (armor_count >= SERPENTID_CARAPACE_NOPRESSURE_STATE)
 		hazard_high_pressure = 1000
 		warning_high_pressure = 1000
 		warning_low_pressure = -1
@@ -349,3 +355,21 @@
 		loaded = null
 
 	update_icon(UPDATE_OVERLAYS)
+
+/datum/job
+	var/additional_restrictions = 0
+
+/datum/job/captain/
+	additional_restrictions = SPIECES_BAN_HEADS_JOB
+
+/datum/job/New()
+	. = .. ()
+	blacklisted_disabilities += additional_restrictions
+
+/datum/character_save/update_preview_icon(for_observer=0)
+	. = .. ()
+	var/datum/species/selected_specie = GLOB.all_species[species]
+	var/user_selected_disabilities = disabilities & 0xFFF
+	disabilities = user_selected_disabilities
+	disabilities |= selected_specie.disabilities
+

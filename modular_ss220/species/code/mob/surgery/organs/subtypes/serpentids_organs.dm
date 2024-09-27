@@ -87,8 +87,8 @@
 	return
 
 /obj/item/organ/external
-	var/carapice_state = SERPENTID_CARAPICE_MAX_STATE
-	var/carapice_limb = FALSE
+	var/carapace_state = SERPENTID_CARAPACE_MAX_STATE
+	var/carapace_limb = FALSE
 	var/can_change_visual = FALSE
 	var/change_visual = FALSE
 	var/alt_visual_icon = null
@@ -102,22 +102,22 @@
 
 /obj/item/organ/external/receive_damage(brute, burn, sharp, used_weapon = null, list/forbidden_limbs = list(), ignore_resists = FALSE, updating_health = TRUE)
 	. = ..()
-	if (carapice_limb)
-		carapice_state -= brute + burn
-		if (carapice_state < SERPENTID_CARAPICE_BROKEN_STATE)
+	if (carapace_limb)
+		carapace_state -= brute + burn
+		if (carapace_state < SERPENTID_CARAPACE_BROKEN_STATE)
 			fracture()
 		for(var/obj/item/organ/internal/O in internal_organs)
-			O.receive_damage(burn * ((SERPENTID_CARAPICE_MAX_STATE - carapice_state)/SERPENTID_CARAPICE_MAX_STATE))
+			O.receive_damage(burn * ((SERPENTID_CARAPACE_MAX_STATE - carapace_state)/SERPENTID_CARAPACE_MAX_STATE))
 		if (status & ORGAN_BROKEN)
-			brute_mod = (100 + SERPENTID_CARAPICE_BROKEN_STATE - carapice_state)/100
+			brute_mod = (100 + SERPENTID_CARAPACE_BROKEN_STATE - carapace_state)/100
 		else
 			brute_mod = 0.6
 		burn_mod = brute_mod + 0.2
-		if (carapice_state  < 0)
-			carapice_state  = 0
-		if ((status & ORGAN_BROKEN) && carapice_state  > SERPENTID_CARAPICE_BROKEN_STATE)
+		if (carapace_state  < 0)
+			carapace_state  = 0
+		if ((status & ORGAN_BROKEN) && carapace_state  > SERPENTID_CARAPACE_BROKEN_STATE)
 			mend_fracture()
-		if (carapice_state  > SERPENTID_CARAPICE_MAX_STATE)
-			carapice_state  = SERPENTID_CARAPICE_MAX_STATE
+		if (carapace_state  > SERPENTID_CARAPACE_MAX_STATE)
+			carapace_state  = SERPENTID_CARAPACE_MAX_STATE
 	return
 

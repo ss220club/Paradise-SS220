@@ -31,8 +31,8 @@
 	alcohol_intensity = 2
 	decayable = TRUE
 	recoverable = TRUE
-	max_value = GAS_ORGAN_CHEMISTRY_MAX
 	decay_rate = 4
+	var/max_value = GAS_ORGAN_CHEMISTRY_MAX
 
 /obj/item/organ/internal/liver/serpentid/on_life()
 	. = ..()
@@ -187,7 +187,12 @@
 	var/chem_value = owner.get_chemical_value(SERPENTID_CHEM_REAGENT_ID)/GAS_ORGAN_CHEMISTRY_MAX
 	var/vision_chem = clamp(chem_value, SERPENTID_EYES_LOW_VISIBLE_VALUE, SERPENTID_EYES_MAX_VISIBLE_VALUE)
 	var/vision_concentration = (1 - vision_chem/SERPENTID_EYES_MAX_VISIBLE_VALUE)*SERPENTID_EYES_LOW_VISIBLE_VALUE
+
+	// Коэффициент смещения
+	var/k = 2  // Смещаем на 20% ближе к SERPENTID_EYES_LOW_VISIBLE_VALUE
+	vision_concentration = SERPENTID_EYES_LOW_VISIBLE_VALUE * (1 - chem_value**k)
 	var/vision_adjust = clamp(vision_concentration, 0, SERPENTID_EYES_LOW_VISIBLE_VALUE)
+
 	var/vision_matrix = list(vision_chem, vision_adjust, vision_adjust,\
 		vision_adjust, vision_chem, vision_adjust,\
 		vision_adjust, vision_adjust, vision_chem)

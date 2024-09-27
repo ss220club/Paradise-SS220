@@ -20,14 +20,14 @@
 	for(var/obj/item/organ/internal/O in organs)
 		if (istype(O, /obj/item/organ/internal/cyberimp/arm/toolset/serpentblade) && src != O)
 			pair_implant = O
-	if (isnull(pair_implant))
-		action_icon = initial(action_icon)
-		action_icon_state = initial(action_icon_state)
-		actions_types = initial(actions_types)
+	var/datum/action/action_candidate = src.actions[1]
+	if (!isnull(pair_implant))
+		if (action_candidate in owner.actions)
+			action_candidate.Remove(owner)
 	else
-		action_icon = null
-		action_icon_state = null
-		actions_types = null
+		if (!(action_candidate in owner.actions))
+			action_candidate.Grant(owner)
+	owner.update_action_buttons()
 
 /obj/item/organ/internal/cyberimp/arm/toolset/serpentblade/proc/synchonize_blades()
 	var/obj/item/organ/internal/cyberimp/arm/toolset/serpentblade/pair_implant = null
@@ -92,65 +92,65 @@
 	attack_in_progress = FALSE
 
 ///Хитиновые конечности
-/obj/item/organ/external/chest/carapice
+/obj/item/organ/external/chest/carapace
 	encased = "chitin"
 	min_broken_damage = 20
-	carapice_limb = TRUE
+	carapace_limb = TRUE
 
-/obj/item/organ/external/groin/carapice
+/obj/item/organ/external/groin/carapace
 	encased = "chitin"
 	min_broken_damage = 20
-	carapice_limb = TRUE
+	carapace_limb = TRUE
 
-/obj/item/organ/external/head/carapice
+/obj/item/organ/external/head/carapace
 	encased = "chitin"
 	min_broken_damage = 20
-	carapice_limb = TRUE
+	carapace_limb = TRUE
 
-/obj/item/organ/external/arm/carapice
+/obj/item/organ/external/arm/carapace
 	encased = "chitin"
 	min_broken_damage = 20
-	carapice_limb = TRUE
+	carapace_limb = TRUE
 	can_change_visual = TRUE
 	alt_visual_icon = "l_arm_agressive"
 
-/obj/item/organ/external/arm/right/carapice
+/obj/item/organ/external/arm/right/carapace
 	encased = "chitin"
 	min_broken_damage = 20
-	carapice_limb = TRUE
+	carapace_limb = TRUE
 	can_change_visual = TRUE
 	alt_visual_icon = "r_arm_agressive"
 
-/obj/item/organ/external/leg/carapice
+/obj/item/organ/external/leg/carapace
 	encased = "chitin"
 	min_broken_damage = 20
-	carapice_limb = TRUE
+	carapace_limb = TRUE
 
-/obj/item/organ/external/leg/right/carapice
+/obj/item/organ/external/leg/right/carapace
 	encased = "chitin"
 	min_broken_damage = 20
-	carapice_limb = TRUE
+	carapace_limb = TRUE
 
-/obj/item/organ/external/hand/carapice
+/obj/item/organ/external/hand/carapace
 	encased = "chitin"
 	min_broken_damage = 20
-	carapice_limb = TRUE
+	carapace_limb = TRUE
 	can_change_visual = TRUE
 	alt_visual_icon = "l_arm_agressive"
 
-/obj/item/organ/external/hand/right/carapice
+/obj/item/organ/external/hand/right/carapace
 	encased = "chitin"
 	min_broken_damage = 20
-	carapice_limb = TRUE
+	carapace_limb = TRUE
 	can_change_visual = TRUE
 	alt_visual_icon = "r_arm_agressive"
 
-/obj/item/organ/external/foot/carapice
+/obj/item/organ/external/foot/carapace
 	encased = "chitin"
 	min_broken_damage = 20
-	carapice_limb = TRUE
+	carapace_limb = TRUE
 
-/obj/item/organ/external/foot/right/carapice
+/obj/item/organ/external/foot/right/carapace
 	encased = "chitin"
 	min_broken_damage = 20
-	carapice_limb = TRUE
+	carapace_limb = TRUE
