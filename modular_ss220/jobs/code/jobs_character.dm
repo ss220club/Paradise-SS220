@@ -56,6 +56,11 @@
 /datum/character_save/update_preview_icon(for_observer=0)
 	. = ..()
 
+	var/datum/species/selected_specie = GLOB.all_species[species]
+	var/user_selected_disabilities = disabilities & 0xFFF
+	disabilities = user_selected_disabilities
+	disabilities |= selected_specie.disabilities
+
 	var/icon/clothes_s = get_clothes_icon()
 
 	if(clothes_s)

@@ -1,4 +1,5 @@
 /datum/species
+	var/disabilities = 0
 	var/required_playtimes_minutes = -1
 
 /datum/species/proc/is_available(mob/M)
