@@ -179,7 +179,7 @@
 		"Human" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
 		"Tajaran" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
 		"Vulpkanin" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
-		"Kidan" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
+		"Kidan" = 'modular_ss220/clothing/icons/mob/species/kidan/shoes.dmi',
 		"Skrell" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
 		"Nucleation" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
 		"Skeleton" = 'modular_ss220/clothing/icons/mob/shoes.dmi',
