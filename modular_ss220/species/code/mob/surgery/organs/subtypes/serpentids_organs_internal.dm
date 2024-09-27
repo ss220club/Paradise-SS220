@@ -22,7 +22,6 @@
 		receive_damage(decay_rate, 1)
 	if((damage <= (max_damage/4)) && (damage > 0) && !is_destroying && recoverable)
 		heal_internal_damage(recover_rate, FALSE)
-	. = ..()
 	if (decayable)
 		var/is_dead = (owner.stat == DEAD)
 		var/is_no_owner = isnull(owner)
@@ -47,6 +46,7 @@
 				receive_damage(owner.get_damage_amount(TOX) * organ_process_toxins, 1)
 	if (can_chem_process)
 		chems_process()
+	. = ..()
 
 /mob/living/carbon/human/proc/get_chemical_value(var/id)
 	for(var/datum/reagent/R in src.reagents.reagent_list)
