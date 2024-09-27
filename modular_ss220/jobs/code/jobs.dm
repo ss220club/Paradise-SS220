@@ -1,21 +1,20 @@
 // =======================================
 // relate jobs for relate job slots
 // =======================================
-#define SPIECES_BAN_HEADS_JOB (1<<12) // define bit flag for com roles disability
+#define SPIECES_BAN_HEADS_JOB (1<<12) // define bit flag for com jobs disability
 
 /datum/job/proc/try_relate_jobs()
 	return FALSE
 
 /datum/job
-	var/additional_restrictions = 0 // for races disabilities
+	var/race_restrictions = 0 // for races jobs restriction
 	var/relate_job // for relate positions and landmark
 	var/is_extra_job = FALSE // Special Jobs Window
 	var/is_main_job = TRUE // Are we the main job for this relate?
 	var/shares_slots_with_relate = FALSE
 
-	
 /datum/job/captain/
-	additional_restrictions = SPIECES_BAN_HEADS_JOB // for example
+	race_restrictions = SPIECES_BAN_HEADS_JOB // for example
 
 /datum/job/doctor
 	relate_job = "Medical Intern"
@@ -55,7 +54,7 @@
 
 /datum/job/New()
 	. = .. ()
-	blacklisted_disabilities += additional_restrictions
+	blacklisted_disabilities += race_restrictions
 
 /datum/job/is_position_available()
 	if(job_banned_gamemode)

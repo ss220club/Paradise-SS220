@@ -1,3 +1,5 @@
+#define MAX_PLAYER_AVALIABLE_DISABILITES 0xFFF // Max available bit mask for disablities
+
 // Будь прокляты те кто вставлял списки прямо в код. Это не ТОГЭ. Поэтому оставь здравомыслие всяк сюда входящий.
 /datum/species/plasmaman/before_equip_job(datum/job/J, mob/living/carbon/human/H, visualsOnly = FALSE)
 	. = ..()
@@ -74,7 +76,7 @@
 
 /datum/character_save/proc/rescrict_jobs()
 	var/datum/species/selected_specie = GLOB.all_species[species]
-	var/user_selected_disabilities = disabilities & 0xFFF
+	var/user_selected_disabilities = disabilities & MAX_PLAYER_AVALIABLE_DISABILITES
 	disabilities = user_selected_disabilities
 	disabilities |= selected_specie.disabilities
 
