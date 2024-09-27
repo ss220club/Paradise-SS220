@@ -22,8 +22,12 @@
 
 #define SPIECES_BAN_HEADS_JOB (1<<12)
 
+#define SERPENTID_MOVE_RESIST 1100
+
 /datum/species
 	var/disabilities = 0
+	var/can_buckle = FALSE
+	var/buckle_lying = TRUE
 
 /datum/species/serpentid
 	name = "Giant Armored Serpentid"
@@ -98,9 +102,10 @@
 		)
 
 	disabilities = SPIECES_BAN_HEADS_JOB
+	can_buckle = TRUE
+	buckle_lying = FALSE
 
 	var/can_stealth = TRUE
-	var/load_mode = FALSE
 	var/list/valid_organs = list()
 	var/list/valid_limbs = list()
 	var/gene_lastcall = 0
@@ -195,11 +200,11 @@
 /datum/species/serpentid/on_species_gain(mob/living/carbon/human/H)
 	..()
 	H.resize = 1
-	H.can_buckle = TRUE
-	H.buckle_lying = 0
+	H.can_buckle = can_buckle
+	H.buckle_lying = buckle_lying
 	H.update_transform()
 	H.AddComponent(/datum/component/footstep, FOOTSTEP_MOB_SLIME, 1, -6)
-	H.reagents.add_reagent(SERPENTID_CHEM_REAGENT_ID, 20)
+	H.move_resist = SERPENTID_MOVE_RESIST
 	for (var/organ_name in has_organ)
 		valid_organs += has_organ[organ_name]
 	for (var/limb_name in has_limbs)
