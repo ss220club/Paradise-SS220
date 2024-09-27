@@ -56,10 +56,7 @@
 /datum/character_save/update_preview_icon(for_observer=0)
 	. = ..()
 
-	var/datum/species/selected_specie = GLOB.all_species[species]
-	var/user_selected_disabilities = disabilities & 0xFFF
-	disabilities = user_selected_disabilities
-	disabilities |= selected_specie.disabilities
+	rescrict_jobs()
 
 	var/icon/clothes_s = get_clothes_icon()
 
@@ -71,6 +68,15 @@
 
 	qdel(clothes_s)
 
+/datum/character_save/New()
+	. = ..()
+	rescrict_jobs()
+
+/datum/character_save/proc/rescrict_jobs()
+	var/datum/species/selected_specie = GLOB.all_species[species]
+	var/user_selected_disabilities = disabilities & 0xFFF
+	disabilities = user_selected_disabilities
+	disabilities |= selected_specie.disabilities
 
 /datum/character_save/proc/get_clothes_icon()
 	var/icon/clothes_s = null
