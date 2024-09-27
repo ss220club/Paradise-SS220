@@ -31,8 +31,6 @@
 
 #define SPIECES_BAN_HEADS_JOB (1<<12)
 
-#define SERPENTID_MOVE_RESIST 1100
-
 /datum/species
 	var/disabilities = 0
 	var/can_buckle = FALSE
@@ -204,7 +202,6 @@
 	H.buckle_lying = buckle_lying
 	H.update_transform()
 	H.AddComponent(/datum/component/footstep, FOOTSTEP_MOB_SLIME, 1, -6)
-	H.move_resist = SERPENTID_MOVE_RESIST
 	for (var/organ_name in has_organ)
 		valid_organs += has_organ[organ_name]
 	for (var/limb_name in has_limbs)
