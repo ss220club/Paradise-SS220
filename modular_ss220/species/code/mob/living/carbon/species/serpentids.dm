@@ -17,7 +17,7 @@
 
 #define GAS_ORGAN_CHEMISTRY_EYES 0.75
 #define GAS_ORGAN_CHEMISTRY_EARS 0.25
-#define GAS_ORGAN_CHEMISTRY_HEART 25
+#define GAS_ORGAN_CHEMISTRY_HEART 50
 #define GAS_ORGAN_CHEMISTRY_LUNGS 1
 #define GAS_ORGAN_CHEMISTRY_KIDNEYS 0.6
 
@@ -188,7 +188,7 @@
 	. = ..()
 
 /datum/species/serpentid/proc/sneak(mob/living/M) //look if a ghost gets this, its an admins problem
-	if(((world.time - M.last_movement) >= 10 || M.move_speed < 30)&& !M.stat && (M.mobility_flags & MOBILITY_STAND) && !M.restrained() && cloak_engaged)
+	if(((world.time - M.last_movement) >= 10 || M.move_speed >= 5)&& !M.stat && (M.mobility_flags & MOBILITY_STAND) && !M.restrained() && cloak_engaged)
 		if(M.invisibility != INVISIBILITY_LEVEL_TWO)
 			M.alpha -= 125
 	else

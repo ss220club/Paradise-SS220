@@ -2,7 +2,8 @@
 #define BASIC_DECAY_VALUE 1
 #define TOX_ORGANS_PROCESS 1
 
-#define SERPENTID_STAMINA_DAMAGE_ON_MEPH 50
+#define SERPENTID_STAMINA_DAMAGE_ON_MEPH 100
+#define GAS_METH_HEART_COUNT 2.5
 
 /obj/item/organ/internal
 	var/decayable = FALSE
@@ -187,11 +188,11 @@
 
 /obj/item/organ/internal/heart/serpentid/ui_action_click()
 	var/mob/living/heart_owner = owner
-	if(!owner.get_chemical_value(chemical_id) >= GAS_ORGAN_CHEMISTRY_HEART && heart_owner.get_damage_amount(STAMINA) <= SERPENTID_STAMINA_DAMAGE_ON_MEPH)
+	if(owner.get_chemical_value(chemical_id) >= GAS_ORGAN_CHEMISTRY_HEART && heart_owner.get_damage_amount(STAMINA) <= SERPENTID_STAMINA_DAMAGE_ON_MEPH)
 		var/mob/living/carbon/human/human_owner = owner
 		var/datum/reagent/chem = owner.get_chemical_path(chemical_id)
 		chem.holder.remove_reagent(chemical_id, GAS_ORGAN_CHEMISTRY_HEART)
-		human_owner.reagents.add_reagent("mephedrone", GAS_ORGAN_CHEMISTRY_HEART * SERPENTID_CHEM_MULT_PRODUCTION)
+		human_owner.reagents.add_reagent("mephedrone", GAS_METH_HEART_COUNT)
 		heart_owner.apply_damage(SERPENTID_STAMINA_DAMAGE_ON_MEPH, STAMINA)
 
 /obj/item/organ/internal/ears/serpentid
@@ -224,7 +225,7 @@
 
 /obj/item/organ/internal/ears/serpentid/proc/sense_creatures()
 	for(var/mob/living/creature in range(9, owner))
-		if(creature == owner || creature.stat == DEAD || (world.time - creature.l_move_time) < 50)
+		if(creature == owner || creature.stat == DEAD || (world.time - creature.l_move_time) > 50)
 			continue
 		new /obj/effect/temp_visual/sonar_ping(owner.loc, owner, creature)
 
