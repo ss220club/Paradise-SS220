@@ -35,11 +35,13 @@
 	var/disabilities = 0
 	var/can_buckle = FALSE
 	var/buckle_lying = TRUE
+	var/eyes_icon = 'icons/mob/human_face.dmi'
 
 /datum/species/serpentid
 	name = "Giant Armored Serpentid"
 	name_plural = "Serpentids"
 	icobase = 'modular_ss220/species/icons/mob/human_races/r_serpentid.dmi'
+	eyes_icon = 'modular_ss220/species/icons/mob/human_races/serpentid_eyes.dmi'
 	blurb = "TODO"
 	language = "Stok"
 	siemens_coeff = 2.0
@@ -59,7 +61,7 @@
 	allowed_consumed_mobs = list(/mob/living/simple_animal/mouse, /mob/living/simple_animal/lizard, /mob/living/simple_animal/chick, /mob/living/simple_animal/chicken,
 								/mob/living/simple_animal/crab, /mob/living/simple_animal/butterfly, /mob/living/simple_animal/parrot, /mob/living/simple_animal/hostile/poison/bees)
 
-	bodyflags = HAS_SKIN_COLOR | TAIL_OVERLAPPED | BALD | SHAVED
+	bodyflags = HAS_SKIN_COLOR | BALD | SHAVED
 	skinned_type = /obj/item/stack/sheet/animalhide/lizard
 	flesh_color = "#34AF10"
 	base_color = "#066000"
@@ -375,3 +377,24 @@
 	disabilities = user_selected_disabilities
 	disabilities |= selected_specie.disabilities
 
+	var/icon/face_s = new/icon("icon" = selected_specie.eyes_icon, "icon_state" = "bald_s")
+	if(!(selected_specie.bodyflags & NO_EYES))
+		var/icon/eyes_s = new/icon("icon" = selected_specie.eyes_icon, "icon_state" = selected_specie ? selected_specie.eyes : "eyes_s")
+		eyes_s.Blend(e_colour, ICON_ADD)
+		face_s.Blend(eyes_s, ICON_OVERLAY)
+
+	preview_icon.Blend(face_s, ICON_OVERLAY)
+	preview_icon_front = new(preview_icon, dir = SOUTH)
+	preview_icon_side = new(preview_icon, dir = WEST)
+
+/mob/living/carbon/human/serpentid/get_eyecon()
+	var/obj/item/organ/internal/eyes/eyes = get_int_organ(/obj/item/organ/internal/eyes)
+	if(istype(dna.species) && dna.species.eyes)
+		var/icon/eyes_icon
+		if(eyes)
+			eyes_icon = eyes.generate_icon()
+		else //Error 404: Eyes not found!
+			eyes_icon = new('modular_ss220/species/icons/mob/human_races/serpentid_eyes.dmi', dna.species.eyes)
+			eyes_icon.Blend("#800000", ICON_ADD)
+
+		return eyes_icon
