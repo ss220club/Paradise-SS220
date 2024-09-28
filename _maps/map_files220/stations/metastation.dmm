@@ -9076,7 +9076,7 @@
 	},
 /area/station/public/toilet/lockerroom)
 "aQh" = (
-/obj/machinery/porta_turret/ai_turret,
+/obj/machinery/porta_turret,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -9863,7 +9863,9 @@
 /turf/simulated/floor/plating,
 /area/station/engineering/smes)
 "aSU" = (
-/obj/machinery/porta_turret/ai_turret,
+/obj/machinery/porta_turret{
+	dir = 4
+	},
 /turf/simulated/floor/bluegrid,
 /area/station/turret_protected/ai_upload)
 "aSW" = (
@@ -9873,7 +9875,9 @@
 	},
 /area/station/turret_protected/ai_upload)
 "aSY" = (
-/obj/machinery/porta_turret/ai_turret,
+/obj/machinery/porta_turret{
+	dir = 8
+	},
 /turf/simulated/floor/redgrid,
 /area/station/turret_protected/ai_upload)
 "aTa" = (
@@ -11230,6 +11234,14 @@
 	icon_state = "dark"
 	},
 /area/station/turret_protected/ai_upload)
+"aWZ" = (
+/obj/machinery/porta_turret{
+	dir = 1
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/station/turret_protected/ai_upload)
 "aXb" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock,
@@ -11960,7 +11972,9 @@
 	id = "AI";
 	pixel_y = -24
 	},
-/obj/machinery/porta_turret/ai_turret,
+/obj/machinery/porta_turret{
+	dir = 1
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -40617,6 +40631,7 @@
 /area/station/maintenance/apmaint)
 "cPL" = (
 /obj/structure/closet/firecloset,
+/obj/machinery/firealarm/directional/north,
 /turf/simulated/floor/plasteel{
 	icon_state = "darkneutralfull"
 	},
@@ -41070,15 +41085,10 @@
 	},
 /area/station/medical/medbay)
 "cRO" = (
-/obj/machinery/firealarm/directional/east{
-	pixel_y = -6
-	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
 	},
-/obj/machinery/light_switch/east{
-	pixel_y = 6
-	},
+/obj/machinery/light_switch/east,
 /turf/simulated/floor/plasteel,
 /area/station/hallway/secondary/exit)
 "cRP" = (
@@ -45178,13 +45188,6 @@
 	icon_state = "darkbluecorners"
 	},
 /area/station/engineering/ai_transit_tube)
-"dJu" = (
-/obj/structure/table,
-/obj/item/candle,
-/obj/effect/turf_decal/delivery,
-/obj/machinery/light_switch/west,
-/turf/simulated/floor/plasteel,
-/area/station/hallway/secondary/exit)
 "dJx" = (
 /obj/structure/filingcabinet,
 /turf/simulated/floor/plasteel{
@@ -79463,6 +79466,13 @@
 	icon_state = "yellow"
 	},
 /area/station/engineering/break_room)
+"tEG" = (
+/obj/structure/table,
+/obj/item/candle,
+/obj/effect/turf_decal/delivery,
+/obj/machinery/light_switch/west,
+/turf/simulated/floor/plasteel,
+/area/station/hallway/secondary/exit)
 "tEL" = (
 /obj/structure/cable/yellow{
 	d1 = 1;
@@ -113722,7 +113732,7 @@ bZU
 cxX
 wqk
 fgC
-dJu
+tEG
 cSO
 cSO
 cSO
@@ -114411,7 +114421,7 @@ bOA
 hxD
 wfs
 beA
-aQh
+aWZ
 aOG
 bco
 aOG

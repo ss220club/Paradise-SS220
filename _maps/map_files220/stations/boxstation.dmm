@@ -10141,12 +10141,7 @@
 	},
 /area/station/maintenance/fsmaint)
 "aLx" = (
-/obj/machinery/firealarm/directional/west{
-	pixel_y = -6
-	},
-/obj/machinery/light_switch/west{
-	pixel_y = 6
-	},
+/obj/machinery/light_switch/west,
 /turf/simulated/floor/wood/fancy,
 /area/station/legal/courtroom)
 "aLA" = (
@@ -11836,6 +11831,7 @@
 /area/station/science/lobby)
 "aRP" = (
 /obj/machinery/economy/vending/coffee,
+/obj/machinery/firealarm/directional/south,
 /turf/simulated/floor/wood/fancy,
 /area/station/legal/courtroom)
 "aRQ" = (
@@ -14886,6 +14882,7 @@
 	dir = 8
 	},
 /obj/machinery/light/directional/east,
+/obj/machinery/firealarm/directional/east,
 /turf/simulated/floor/carpet/arcade,
 /area/station/public/arcade)
 "bcn" = (
@@ -25626,7 +25623,6 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
 	},
-/obj/structure/extinguisher_cabinet/directional/south,
 /obj/machinery/camera{
 	c_tag = "Medbay Cryogenics";
 	dir = 1
@@ -25634,6 +25630,7 @@
 /obj/item/reagent_containers/spray/cleaner{
 	pixel_y = 4
 	},
+/obj/machinery/firealarm/directional/south,
 /turf/simulated/floor/plasteel{
 	dir = 10;
 	icon_state = "whiteblue"
@@ -29967,6 +29964,7 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
 	},
+/obj/structure/extinguisher_cabinet/directional/south,
 /turf/simulated/floor/plasteel{
 	dir = 6;
 	icon_state = "whiteblue"
@@ -32827,12 +32825,7 @@
 /area/station/medical/surgery/primary)
 "czY" = (
 /obj/item/kirbyplants,
-/obj/machinery/firealarm/directional/north{
-	pixel_x = 6
-	},
-/obj/machinery/light_switch/north{
-	pixel_x = -6
-	},
+/obj/machinery/light_switch/north,
 /turf/simulated/floor/plasteel{
 	dir = 9;
 	icon_state = "whiteblue"
@@ -42826,13 +42819,8 @@
 	c_tag = "Engineering Atmos Center North";
 	network = list("SS13","Engineering")
 	},
-/obj/machinery/firealarm/directional/north{
-	pixel_x = -6
-	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
-/obj/machinery/light_switch/north{
-	pixel_x = 6
-	},
+/obj/machinery/light_switch/north,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "yellow"
@@ -45843,12 +45831,7 @@
 	},
 /area/station/security/brig)
 "dGj" = (
-/obj/machinery/firealarm/directional/south{
-	pixel_x = -6
-	},
-/obj/machinery/light_switch/south{
-	pixel_x = 6
-	},
+/obj/machinery/light_switch/south,
 /turf/simulated/floor/wood/oak,
 /area/station/command/office/ntrep)
 "dGn" = (
@@ -49781,18 +49764,13 @@
 	},
 /area/station/command/office/captain)
 "fdd" = (
-/obj/machinery/firealarm/directional/south{
-	pixel_x = 6
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
 /obj/structure/disposalpipe/junction/y{
 	dir = 1
 	},
-/obj/machinery/light_switch/south{
-	pixel_x = -6
-	},
+/obj/machinery/light_switch/south,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -59298,17 +59276,12 @@
 	},
 /area/station/engineering/atmos)
 "ism" = (
-/obj/machinery/firealarm/directional/south{
-	pixel_x = 6
-	},
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/light_switch/south{
-	pixel_x = -6
-	},
+/obj/machinery/light_switch/south,
 /turf/simulated/floor/wood/oak,
 /area/station/command/office/blueshield)
 "isv" = (
@@ -67679,6 +67652,16 @@
 	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/fpmaint)
+"lwn" = (
+/obj/structure/mirror{
+	pixel_y = -34
+	},
+/obj/structure/sink/directional/south,
+/obj/machinery/firealarm/directional/west,
+/turf/simulated/floor/plasteel{
+	icon_state = "hydrofloor"
+	},
+/area/station/public/toilet/unisex)
 "lwt" = (
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -70825,12 +70808,7 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/asmaint)
 "mxM" = (
-/obj/machinery/firealarm/directional/south{
-	pixel_x = 6
-	},
-/obj/machinery/light_switch/south{
-	pixel_x = -6
-	},
+/obj/machinery/light_switch/south,
 /turf/simulated/floor/carpet/arcade,
 /area/station/public/arcade)
 "mxP" = (
@@ -85881,6 +85859,13 @@
 	},
 /turf/simulated/floor/wood/fancy,
 /area/station/public/sleep_male)
+"rOu" = (
+/obj/machinery/firealarm/directional/north,
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "yellow"
+	},
+/area/station/engineering/atmos)
 "rPa" = (
 /obj/effect/decal/cleanable/dust,
 /obj/effect/landmark/damageturf,
@@ -88124,6 +88109,7 @@
 /area/station/security/prisonlockers)
 "sBi" = (
 /obj/structure/filingcabinet,
+/obj/machinery/firealarm/directional/south,
 /turf/simulated/floor/wood/oak,
 /area/station/command/office/ntrep)
 "sBx" = (
@@ -95531,6 +95517,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/light/small/directional/south,
+/obj/machinery/firealarm/directional/south,
 /turf/simulated/floor/wood/oak,
 /area/station/command/office/blueshield)
 "vfJ" = (
@@ -97085,6 +97072,7 @@
 /obj/structure/sign/poster/official/high_class_martini{
 	pixel_y = 32
 	},
+/obj/machinery/firealarm/directional/east,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -103864,12 +103852,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/firealarm/directional/north{
-	pixel_x = 6
-	},
-/obj/machinery/light_switch/north{
-	pixel_x = -6
-	},
+/obj/machinery/light_switch/north,
 /turf/simulated/floor/plasteel{
 	icon_state = "hydrofloor"
 	},
@@ -133041,7 +133024,7 @@ xcg
 lrJ
 lZV
 deO
-gei
+rOu
 cSd
 fXt
 cRh
@@ -143487,7 +143470,7 @@ vNh
 wCZ
 aUQ
 xZQ
-kua
+lwn
 aUQ
 aGJ
 aOF

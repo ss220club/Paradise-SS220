@@ -5262,6 +5262,7 @@
 /obj/effect/turf_decal/delivery/hollow,
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/directional/north,
+/obj/machinery/alarm/directional/north,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "brown"
@@ -8135,13 +8136,9 @@
 /turf/simulated/floor/plasteel,
 /area/station/engineering/controlroom)
 "aIF" = (
-/obj/machinery/firealarm/directional/south{
-	pixel_x = -6
-	},
 /obj/effect/turf_decal/stripes/line,
-/obj/machinery/light_switch/south{
-	pixel_x = 6
-	},
+/obj/machinery/light_switch/south,
+/obj/machinery/light_switch/south,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/controlroom)
 "aIG" = (
@@ -8504,13 +8501,8 @@
 /obj/structure/sign/nosmoking_2{
 	pixel_y = 32
 	},
-/obj/machinery/firealarm/directional/east{
-	pixel_y = 6
-	},
 /obj/effect/turf_decal/delivery/hollow,
-/obj/machinery/light_switch/east{
-	pixel_y = -6
-	},
+/obj/machinery/light_switch/east,
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/turbine)
 "aJV" = (
@@ -9147,6 +9139,7 @@
 "aMK" = (
 /obj/structure/reagent_dispensers/watertank,
 /obj/effect/turf_decal/delivery/hollow,
+/obj/machinery/firealarm/directional/south,
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/turbine)
 "aML" = (
@@ -9757,7 +9750,6 @@
 /area/station/maintenance/turbine)
 "aPy" = (
 /obj/machinery/light/directional/north,
-/obj/structure/extinguisher_cabinet/directional/north,
 /obj/item/kirbyplants,
 /turf/simulated/floor/plasteel{
 	dir = 8;
@@ -9769,7 +9761,7 @@
 /obj/item/clothing/suit/storage/hazardvest,
 /obj/item/clothing/gloves/color/black,
 /obj/item/clothing/mask/gas,
-/obj/item/radio/intercom/directional/north,
+/obj/structure/extinguisher_cabinet/directional/north,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "vault"
@@ -51456,12 +51448,12 @@
 /area/station/command/office/hop)
 "eEd" = (
 /obj/effect/turf_decal/stripes/line,
-/obj/item/radio/intercom/directional/south,
 /obj/structure/cable/yellow{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/machinery/firealarm/directional/south,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/controlroom)
 "eEl" = (
@@ -57545,6 +57537,9 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
+/obj/item/radio/intercom/directional/north{
+	pixel_y = 34
+	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/engine/supermatter)
 "gxr" = (
@@ -59650,16 +59645,11 @@
 /area/station/science/xenobiology)
 "hfm" = (
 /obj/machinery/light/directional/west,
-/obj/machinery/firealarm/directional/west{
-	pixel_y = -6
-	},
 /obj/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
 	dir = 4
 	},
-/obj/machinery/light_switch/west{
-	pixel_y = 6
-	},
+/obj/machinery/light_switch/west,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "caution"
@@ -79836,6 +79826,7 @@
 /obj/machinery/atmospherics/portable/canister/air,
 /obj/effect/turf_decal/delivery/hollow,
 /obj/machinery/atmospherics/pipe/simple/visible/cyan,
+/obj/machinery/firealarm/directional/east,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos/control)
 "nfF" = (
@@ -80060,14 +80051,9 @@
 /turf/simulated/floor/plasteel/dark,
 /area/station/maintenance/port2)
 "niB" = (
-/obj/machinery/firealarm/directional/north{
-	pixel_x = -6
-	},
+/obj/machinery/firealarm/directional/north,
 /obj/effect/turf_decal/delivery/hollow,
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/light_switch/north{
-	pixel_x = 6
-	},
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "brown"
@@ -88406,9 +88392,6 @@
 /area/station/hallway/primary/central/west)
 "pAg" = (
 /obj/machinery/atmospherics/portable/canister/air,
-/obj/structure/sign/nosmoking_2{
-	pixel_x = 32
-	},
 /obj/effect/turf_decal/delivery/hollow,
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 10;
@@ -97748,6 +97731,14 @@
 	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/starboard)
+"snP" = (
+/obj/item/kirbyplants,
+/obj/item/radio/intercom/directional/north,
+/turf/simulated/floor/plasteel{
+	dir = 8;
+	icon_state = "vault"
+	},
+/area/station/engineering/atmos)
 "sol" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
@@ -99151,6 +99142,9 @@
 /obj/machinery/atmospherics/portable/canister/oxygen,
 /obj/effect/turf_decal/delivery/hollow,
 /obj/machinery/light/small/directional/north,
+/obj/structure/sign/nosmoking_2{
+	pixel_y = 32
+	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos/control)
 "sFp" = (
@@ -99368,7 +99362,7 @@
 /turf/simulated/floor/catwalk,
 /area/station/maintenance/dormitory_maintenance)
 "sIQ" = (
-/obj/machinery/alarm/directional/north,
+/obj/structure/extinguisher_cabinet/directional/north,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "brown"
@@ -102431,10 +102425,10 @@
 	},
 /area/station/security/warden)
 "tFf" = (
-/obj/structure/extinguisher_cabinet/directional/north,
 /obj/machinery/camera{
 	c_tag = "Cargo Dock North"
 	},
+/obj/machinery/light_switch/north,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "brown"
@@ -140010,7 +140004,7 @@ lZR
 aLs
 aML
 aOg
-aQZ
+snP
 aQT
 aSD
 oQJ
@@ -143626,8 +143620,8 @@ bkQ
 aOW
 wkD
 wkD
-wkD
 qaQ
+wkD
 iyh
 uqf
 yhb
