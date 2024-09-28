@@ -115,7 +115,7 @@
 			return TRUE
 	return FALSE
 
-/datum/job/proc/job_spieces_ban(client/C)
+/datum/job/proc/species_ban(client/C)
     var/list/job_ban = GLOB.configuration.jobs.blacklist_species.Copy()
 
     if(!C || !length(job_ban))

@@ -514,10 +514,10 @@ job_slot_amounts = [
 	# Misc
 	{ name = "Assistant", lowpop = -1, highpop = -1 },
 ]
-# Job blacklist marks. Add spieces datum to ban job for specific spieces
-job_spieces_blacklist = [
-    # Example
-    # { name = "Proffesion", species_blacklist = ["Species name 1", "Species name n"]},
+# Should enable job ban for species
+allow_to_ban_job_for_species = false
+# Job blacklist marks. Add specie name to ban job for a specific specie
+job_species_blacklist = [
 	# Commmand
 	{ name = "Captain", species_blacklist = [] },
 	{ name = "Head of Personnel", species_blacklist = [] },
@@ -560,7 +560,7 @@ job_spieces_blacklist = [
 	{ name = "AI", species_blacklist = [] },
 	{ name = "Cyborg", species_blacklist = [] },
 	# Misc
-	{ name = "Assistant", species_blacklist = []-1 },
+	{ name = "Assistant", species_blacklist = [] },
 ]
 
 ################################################################
