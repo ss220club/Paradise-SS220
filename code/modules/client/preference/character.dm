@@ -2080,6 +2080,9 @@
 			if(job.barred_by_disability(user.client))
 				html += "<del class='dark'>[rank]</del></td><td class='bad'><b> \[DISABILITY\]</b></td></tr>"
 				continue
+			if(job.job_spieces_ban(user.client))
+				html += "<del class='dark'>[rank]</del></td><td class='bad'><b> \[RESTRICTION\]</b></td></tr>"
+				continue
 			if(job.barred_by_missing_limbs(user.client))
 				html += "<del class='dark'>[rank]</del></td><td class='bad'><b> \[MISSING LIMBS\]</b></td></tr>"
 				continue
