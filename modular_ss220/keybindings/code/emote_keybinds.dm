@@ -87,7 +87,11 @@
 
 /datum/keybinding/emote/carbon/human/meow
 	linked_emote = /datum/emote/living/carbon/human/meow
-	name = "[EMOTE_HUMAN_MEOW] (таяр)"
+	name = EMOTE_HUMAN_MEOW
+
+/datum/keybinding/emote/carbon/human/meow/New()
+	. = ..()
+	name += " (таяр)"
 
 /datum/keybinding/emote/carbon/human/mrow
 	linked_emote = /datum/emote/living/carbon/human/mrow
