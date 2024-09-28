@@ -1,5 +1,5 @@
 /datum/station_trait/darkness
-	name = "Экономия Света"
+	name = "Electricity Saving"
 	trait_type = STATION_TRAIT_NEUTRAL
 	weight = 5
 	show_in_report = TRUE
