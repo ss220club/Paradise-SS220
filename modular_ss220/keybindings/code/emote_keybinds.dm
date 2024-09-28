@@ -91,7 +91,7 @@
 
 /datum/keybinding/emote/carbon/human/mrow
 	linked_emote = /datum/emote/living/carbon/human/mrow
-	name = EMOTE_HUMAN_MROW
+	name = "[EMOTE_HUMAN_MROW] (таяр)"
 
 /datum/keybinding/emote/carbon/human/drask_talk/New()
 	..()
