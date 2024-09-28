@@ -1,5 +1,3 @@
-#define MAX_PLAYER_AVALIABLE_DISABILITES 0xFFF // Max available bit mask for disablities
-
 // Будь прокляты те кто вставлял списки прямо в код. Это не ТОГЭ. Поэтому оставь здравомыслие всяк сюда входящий.
 /datum/species/plasmaman/before_equip_job(datum/job/J, mob/living/carbon/human/H, visualsOnly = FALSE)
 	. = ..()
@@ -67,6 +65,7 @@
 	preview_icon_side = new(preview_icon, dir = WEST)
 
 	qdel(clothes_s)
+
 
 /datum/character_save/proc/get_clothes_icon()
 	var/icon/clothes_s = null
