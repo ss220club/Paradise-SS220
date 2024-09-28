@@ -121,6 +121,6 @@
 	if(!C || !length(job_ban))
 		return FALSE
 	for(var/job_data in job_ban)
-		if ((src.title == job_data["name"]) && (C.prefs.active_character.species in job_data["species_blacklist"]))
+		if((src.title == job_data["name"]) && (C.prefs.active_character.species in job_data["species_blacklist"]))
 			return TRUE
 	return FALSE
