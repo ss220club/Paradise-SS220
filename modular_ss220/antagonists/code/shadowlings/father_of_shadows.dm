@@ -21,14 +21,12 @@
 	speed = 1
 
 	var/thrown_alert
+	var/list/obj/structure/shadow_trap/placed_traps = list()
 
 /mob/living/simple_animal/demon/shadow_father/Initialize(mapload)
 	. = ..()
 	add_overlay(emissive_appearance(icon, "father_of_shadows_eye_glow_overlay"))
-	var/datum/spell/bloodcrawl/shadow_crawl/S = new
-	AddSpell(S)
-	whisper_action.button_overlay_icon_state = "shadow_whisper"
-	whisper_action.button_background_icon_state = "shadow_demon_bg"
+	grant_spells()
 
 /mob/living/simple_animal/demon/shadow_father/Life(seconds, times_fired)
 	. = ..()
@@ -57,3 +55,19 @@
 		alpha = 125
 		speed = 0.5
 	return lum_count
+
+/mob/living/simple_animal/demon/shadow_father/proc/grant_spells()
+	whisper_action.button_overlay_icon_state = "shadow_whisper"
+	whisper_action.button_background_icon_state = "shadow_demon_bg"
+
+	var/list/datum/spell/spells_to_grant = list(
+		new /datum/spell/bloodcrawl/shadow_crawl,
+		new /datum/spell/shadowling/veil,
+		new /datum/spell/shadowling/screech,
+		new /datum/spell/shadowling/glare,
+		new /datum/spell/shadowling/self/place_trap/stun,
+		new /datum/spell/shadowling/self/place_trap/poison,
+		new /datum/spell/shadowling/self/place_trap/blindness,
+	)
+	for(var/datum/spell/spell in spells_to_grant)
+		AddSpell(spell)
