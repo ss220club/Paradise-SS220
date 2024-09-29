@@ -997,6 +997,12 @@
 	items = list(/obj/item/stack/sheet/wood = 1)
 	result = /obj/item/food/soup/sawdust_soup
 
+/obj/item/food/soup/sawdust_soup/On_Consume(mob/M, mob/user)
+	. = ..()
+	var/mob/living/carbon/consumer = user
+	if(prob(10))
+		consumer.vomit(nutritional_value * 2.5)
+
 // Infinite Pizza Box
 /obj/item/pizzabox/infinite
 	resistance_flags = FIRE_PROOF | LAVA_PROOF | ACID_PROOF
