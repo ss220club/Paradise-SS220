@@ -1,14 +1,36 @@
 /obj/structure/shadow_trap
 	name = "тёмное пятно"
 	desc = "Большое тёмное пятно на полу, стенах и потолке. Вы не уверены что это такое, но лучше держаться подальше."
-	var/trap_name = "сломанная"
+	var/trap_adjective = "сломанная"
 	var/shadowling_desc = "Эта ловушка, похоже, сломана."
+	var/hud_icon_state = "broken"
+	icon = 'modular_ss220/antagonists/icons/shadowlings/shadowlings_traps.dmi'
+	icon_state = "trap"
 	anchored = TRUE
 	opacity = FALSE
 	layer = ABOVE_OBJ_LAYER
 	max_integrity = 50
+	hud_possible = list(SPECIALROLE_HUD)
 
 	var/created_by
+
+/obj/structure/shadow_trap/Initialize(mapload)
+	. = ..()
+	prepare_huds()
+
+/// This one is used to change path to special role hud icon file for modular behavior
+/obj/structure/shadow_trap/prepare_huds()
+	..()
+	// Changing path to special_role HUD
+	var/image/I = image('modular_ss220/antagonists/icons/shadowlings/shadowlings_traps.dmi', src, "")
+	I.appearance_flags = RESET_COLOR | RESET_TRANSFORM
+	hud_list[SPECIALROLE_HUD] = I
+	// Toggle visibility
+	var/datum/atom_hud/hud = GLOB.huds[ANTAG_HUD_SHADOW]
+	hud.add_to_hud(src)
+	// Changing icon_state of holder
+	I.icon_state = hud_icon_state
+
 
 /obj/structure/shadow_trap/Crossed(atom/movable/AM, oldloc)
 	. = ..()
@@ -17,7 +39,7 @@
 	if(!trap_activate(AM))	// Returns false if trap isn't triggered by this type
 		return
 	if(created_by)
-		to_chat(created_by, span_purple("Ваша [trap_name] сработала на [AM] в [get_turf(AM.loc)]"))
+		to_chat(created_by, span_purple("Ваша [trap_adjective] ловушка сработала на [AM] в [get_turf(AM.loc)]"))
 	else
 		created_by = "Admin spawn"
 	add_attack_logs(AM, AM, "activated shadowling trap placed by [created_by]", ATKLOG_ALL)
@@ -35,8 +57,9 @@
 // Disable headset, stun for 6 seconds and disable light
 
 /obj/structure/shadow_trap/stun
-	trap_name = "оглущающая"
+	trap_adjective = "оглущающая"
 	shadowling_desc = "Это оглушающая ловушка."
+	hud_icon_state = "stun"
 
 /obj/structure/shadow_trap/stun/trap_activate(mob/living/target)
 	if(ishuman(target))
