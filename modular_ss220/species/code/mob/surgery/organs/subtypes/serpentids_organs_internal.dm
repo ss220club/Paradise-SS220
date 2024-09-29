@@ -308,7 +308,7 @@
 	if (danger_air)
 		if (!owner.internal)
 			owner.internal = serpentid_vault
-		var/inner_oxygen_value = serpentid_vault.volume < 10
+		var/inner_oxygen_value = serpentid_vault.volume < 100
 		if(inner_oxygen_value && serpentid_vault && can_secretion)
 			serpentid_vault.air_contents.set_oxygen((ONE_ATMOSPHERE) * serpentid_vault.volume / (R_IDEAL_GAS_EQUATION * T20C))
 			chemical.holder.remove_reagent(chemical_id, chemical_consuption)
@@ -402,7 +402,8 @@
 
 /obj/item/organ/internal/ears/serpentid/on_life()
 	.=..()
-	sense_creatures()
+	if (prob((max_damage - damage)/max_damage) * 100)
+		sense_creatures()
 
 /obj/item/organ/internal/ears/serpentid/proc/sense_creatures()
 	for(var/mob/living/creature in range(9, owner))

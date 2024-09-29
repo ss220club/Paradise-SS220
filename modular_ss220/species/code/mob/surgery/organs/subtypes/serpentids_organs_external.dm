@@ -140,7 +140,7 @@
 	if(crit_fail || (!holder_l && !length(contents)) && (!holder_r && !length(contents)))
 		to_chat(owner, "<span class='warning'>The implant doesn't respond. It seems to be broken...</span>")
 		return
-	if(do_after(owner, 20))
+	if(do_after(owner, 20, FALSE, owner))
 		if(holder_l && !(holder_l in src) && holder_r && !(holder_r in src))
 			Retract()
 		else
