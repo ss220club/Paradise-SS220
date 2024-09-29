@@ -1000,7 +1000,7 @@
 /obj/item/food/soup/sawdust_soup/On_Consume(mob/M, mob/user)
 	. = ..()
 	var/mob/living/carbon/consumer = user
-	if(prob(10))
+	if(prob(5))
 		consumer.vomit(nutritional_value * 2.5)
 
 // Infinite Pizza Box
