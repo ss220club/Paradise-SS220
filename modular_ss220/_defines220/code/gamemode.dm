@@ -3,3 +3,5 @@
 #define SPECIAL_ROLE_SHADOWLING "Shadowling"
 
 #define isvoxcash(W) (istype(W, /obj/item/stack/vox_cash))
+
+#define TARGET_INVALID_SAME_TEAM (-1)
