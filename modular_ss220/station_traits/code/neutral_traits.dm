@@ -5,7 +5,6 @@
 	show_in_report = TRUE
 	report_message = "Предыдущая смена позаботилась об экономии энергии перед уходом."
 	blacklist = list(/datum/station_trait/rave)
-	force = TRUE
 
 /datum/station_trait/darkness/on_round_start()
 	. = ..()
