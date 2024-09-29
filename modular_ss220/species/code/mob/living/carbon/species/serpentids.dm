@@ -3,8 +3,7 @@
 #define SERPENTID_CARAPACE_CHAMELION_STATE 5
 #define SERPENTID_CARAPACE_NOPRESSURE_STATE 10
 
-#define SERPENTID_GENE_DEGRADATION_BASIC 0.02
-#define SERPENTID_GENE_DEGRADATION_EXTRA 0.1
+#define SERPENTID_GENE_DEGRADATION_DAMAGE 0.5
 #define SERPENTID_GENE_DEGRADATION_CD 60
 
 #define SERPENTID_HEAT_THRESHOLD_LEVEL_BASE 350
@@ -24,7 +23,7 @@
 #define SERPENTID_CHEM_MULT_CONSUPTION 0.75
 #define SERPENTID_CHEM_MULT_PRODUCTION 0.6
 
-#define SERPENTID_EYES_LOW_VISIBLE_VALUE 0.33
+#define SERPENTID_EYES_LOW_VISIBLE_VALUE 0.5
 #define SERPENTID_EYES_MAX_VISIBLE_VALUE 1
 
 #define GAS_ORGAN_CHEMISTRY_MAX 100
@@ -80,8 +79,9 @@
 		"brain" =    /obj/item/organ/internal/brain/serpentid,
 		"eyes" =     /obj/item/organ/internal/eyes/serpentid,
 		"ears" =     /obj/item/organ/internal/ears/serpentid,
-		"l_arm" =  /obj/item/organ/internal/cyberimp/arm/toolset/serpentblade/l,
-		"r_arm" =  /obj/item/organ/internal/cyberimp/arm/toolset/serpentblade
+		//"l_hand" =  /obj/item/organ/internal/cyberimp/arm/toolset/serpentblade/l,
+		//"r_hand" =  /obj/item/organ/internal/cyberimp/arm/toolset/serpentblade,
+		"chest" =  /obj/item/organ/internal/cyberimp/chest/serpentid_blades,
 		)
 
 	has_limbs = list(
@@ -96,6 +96,7 @@
 		"r_hand" = list("path" = /obj/item/organ/external/hand/right/carapace, "descriptor" = "right hand"),
 		"l_foot" = list("path" = /obj/item/organ/external/foot/carapace, "descriptor" = "left foot"),
 		"r_foot" = list("path" = /obj/item/organ/external/foot/right/carapace, "descriptor" = "right foot"))
+
 
 	suicide_messages = list(
 		"is attempting to bite their tongue off!",
@@ -115,7 +116,6 @@
 	buckle_lying = FALSE
 
 	var/can_stealth = TRUE
-	var/list/valid_organs = list()
 	var/list/valid_limbs = list()
 	var/gene_lastcall = 0
 	var/cloak_engaged = FALSE
@@ -133,19 +133,10 @@
 	var/armor_count = 0
 	var/gene_degradation = 0
 	for(var/obj/item/organ/external/limb in H.bodyparts)
-		var/gene_affected = 0
 		if (!(limb.type in valid_limbs))
-			gene_affected += SERPENTID_GENE_DEGRADATION_EXTRA
+			gene_degradation += SERPENTID_GENE_DEGRADATION_DAMAGE
 		var/limb_armor = limb.damage
 		armor_count += limb_armor
-		gene_degradation += gene_affected
-	gene_degradation += SERPENTID_GENE_DEGRADATION_BASIC
-
-	for(var/obj/item/organ/internal/organ in H.bodyparts)
-		var/gene_affected = SERPENTID_GENE_DEGRADATION_BASIC
-		if (!(organ.type in valid_organs))
-			gene_affected += SERPENTID_GENE_DEGRADATION_EXTRA
-		gene_degradation += gene_affected
 
 	if (gene_lastcall >= SERPENTID_GENE_DEGRADATION_CD)
 		H.adjustCloneLoss(gene_degradation)
@@ -204,8 +195,6 @@
 	H.buckle_lying = buckle_lying
 	H.update_transform()
 	H.AddComponent(/datum/component/footstep, FOOTSTEP_MOB_SLIME, 1, -6)
-	for (var/organ_name in has_organ)
-		valid_organs += has_organ[organ_name]
 	for (var/limb_name in has_limbs)
 		valid_limbs += has_limbs[limb_name]["path"]
 
