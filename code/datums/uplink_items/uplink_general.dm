@@ -940,9 +940,9 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/cyber_implants/scope_eyes
 	name = "Hardened Kaleido Optics Eyes Autoimplanter"
-	desc = "These cybernetic eye implants will let you zoom in on far away objects. \
-	Many users find it disorienting, and find it hard to interact with things near them when active. \
-	This pair has been hardened for special operations personnel."
+	desc = "Эти кибернетические импланты на глаза позволят вам приближать изображение на удаленные объекты\
+	Дизориентирующий для многих пользователей и им сложно взаимодействовать с предметами возле себя, пока данный имплант активен. \
+	Эта пара была усилена для персонала специальных операций."
 	reference = "KOE"
 	item = /obj/item/autosurgeon/organ/syndicate/oneuse/scope_eyes
 	cost = 10
@@ -958,7 +958,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/badass/pen
 	name = "Syndicate Fountain Pen"
-	desc = "A slick Syndicate-branded pen, to show everyone at the meeting that you mean business."
+	desc = "Изящная ручка с логотипом Синдиката, чтобы показать всем на встрече, что вы настроены серьёзно."
 	reference = "PEN"
 	item = /obj/item/pen/multi/syndicate
 	cost = 1
