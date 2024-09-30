@@ -178,7 +178,7 @@
 /// 215TC + Tactical Grenadier Belt
 /obj/item/storage/box/syndie_kit/bundle/grenadier
 	name = "Grenade Bundle"
-	desc = "A variety of grenades and pyrotechnics to ensure you can blast your way through any situation."
+	desc = "Разнообразие гранат и пиротехники для прорыва своего пути из любой ситуации."
 	items = list(
 		/obj/item/storage/belt/grenade/tactical, // ~60TC Contains 2 Frag and EMP grenades, 5 C4 Explosives, 5 Smoke and Gluon grenades and 1 Minibomb grenade
 		/obj/item/storage/box/syndie_kit/stechkin, // 26TC. 20TC for stechkin, plus the 2 mags at 3TC

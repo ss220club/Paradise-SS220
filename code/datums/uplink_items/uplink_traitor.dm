@@ -3,7 +3,7 @@
 // JOB SPECIFIC GEAR
 
 /datum/uplink_item/jobspecific
-	category = "Job Specific Tools"
+	category = "Уникальные для работы инструменты"
 	excludefrom = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST) // Stops the job specific category appearing for nukies
 
 //Clown
@@ -157,8 +157,8 @@
 
 /datum/uplink_item/jobspecific/titaniumbroom
 	name = "Titanium Push Broom"
-	desc = "A push broom with a reinforced handle and a metal wire brush, perfect for giving yourself more work by beating up assistants. \
-			When wielded hitting people will have different effects based on your intent. "
+	desc = "Метла с усиленной рукояткой и щёткой из металлической проволоки, идеальна для создания самому себе большей работы избиванием ассистентов. \
+	Когда находится в двух руках, вы будете отражать снаряды, а избивание людей будет иметь разные эффекты в зависимости от вашего интента."
 	reference = "TPBR"
 	item = /obj/item/push_broom/traitor
 	cost = 60
@@ -430,8 +430,8 @@
 /datum/uplink_item/dangerous/guardian
 	name = "Holoparasites"
 	reference = "HPA"
-	desc = "Though capable of near sorcerous feats via use of hardlight holograms and nanomachines, they require an organic host as a home base and source of fuel. \
-			The holoparasites are unable to incoporate themselves to changeling and vampire agents."
+	desc = "Хотя голопаразиты и способны на фантастические подвиги лишь только с помощью голограмм и наномашин, они всё также нуждаются в органическом носителе в качестве дома и источника питания. \
+			Голопаразиты не способны включить себя в тела генокрадов и вампиров."
 	item = /obj/item/storage/box/syndie_kit/guardian/uplink
 	excludefrom = list(UPLINK_TYPE_NUCLEAR, UPLINK_TYPE_SST)
 	cost = 60
@@ -638,8 +638,8 @@
 	else if(!AT)
 		to_chat(usr, "<span class='warning'>Ошибка: Встроенные реквизиты Синдиката не найдены.</span>")
 		return
-	else if(IS_CHANGELING(usr) || mind.has_antag_datum(/datum/antagonist/vampire))
-		to_chat(usr, "<span class='warning'>Error: Embedded Syndicate credentials contain an abnormal signature. Aborting.</span>")
+	else if(ischangeling(usr) || mind.has_antag_datum(/datum/antagonist/vampire))
+		to_chat(usr, "<span class='warning'>Ошибка: Встроенные реквизиты Синдиката содержат странную сигнатуру. Отмена.</span>")
 		return
 
 	var/obj/item/I = ..()
@@ -730,8 +730,8 @@
 
 /datum/uplink_item/stealthy_tools/chameleon
 	name = "Chameleon Kit"
-	desc = "A set of items that contain chameleon technology allowing you to disguise as pretty much anything on the station, and more! \
-			Due to budget cuts, the shoes don't provide protection against slipping."
+	desc = "Набор одежды, что содержат хамелеон технологию, позволяющая замаскироваться под любого на станции и даже больше! \
+			Из-за проблем с бюджетом ботинки не предоставляют защиту от скользских поверхностей. Набор поставляется вместе с хамелеон печатью."
 	reference = "CHAM"
 	item = /obj/item/storage/box/syndie_kit/chameleon
 	cost = 10

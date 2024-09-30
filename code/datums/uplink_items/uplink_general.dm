@@ -270,9 +270,11 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 ////////////////////////////////////////
 
 /datum/uplink_item/ammo
+<<<<<<<<< Temporary merge branch 1
 	category = "Ammunition"
 	surplus = 0 // Getting these in a discount or surplus is not a good time.
 	can_discount = FALSE
+
 
 /datum/uplink_item/ammo/pistol
 	name = "Stechkin - 10mm Magazine"
@@ -417,7 +419,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/explosives/plastic_explosives
 	name = "Composition C-4"
-	desc = "C-4 is plastic explosive of the common variety Composition C. Reliably destroys the object it's placed on, assuming it isn't bomb resistant. Remarkably good for disposing bodies, or tired crewmates. Will only destroy station floors if placed directly on it. It has a modifiable timer with a minimum setting of 10 seconds."
+	desc = "С-4 это пластичная взрывчатка, распространённая вариация композита C. Надёжно уничтожает объект, на который установлена, за исключением взрывоустойчивых. Не липнет к членам экипажа. Уничтожит только напольные покрытия в случае установки на них. Есть настраиваемый таймер с минимумом в 10 секунд."
 	reference = "C4"
 	item = /obj/item/grenade/plastic/c4
 	cost = 5
@@ -651,7 +653,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/device_tools/bonerepair
 	name = "Prototype Nanite Autoinjector"
-	desc = "Stolen prototype full body repair nanites. On injection it will shut down body systems as it revitilizes limbs and organs. Heals organics organs, cybernetic organs, and limbs to fully operational conditions."
+	desc = "Украденный прототип с нанитами, лечащими всё тело. При инъекции выключает системы в теле, пока наниты оживляют органы и конечности."
 	reference = "NCAI"
 	item = /obj/item/reagent_containers/hypospray/autoinjector/nanocalcium
 	cost = 10
@@ -771,9 +773,9 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/suits/space_suit
 	name = "Syndicate Space Suit"
-	desc = "This armoured red and black Syndicate space suit is less encumbering than Nanotrasen variants, \
-			fits inside bags, and has a weapon slot. Comes packaged with internals. Nanotrasen crewmembers are trained to report red space suit \
-			sightings, however. "
+	desc = "Этот красно-черный скафандр Синдиката менее загруженный, чем варианты Нанотрэйзен, \
+	помещается в рюкзак, а также имеет оружейный слот. Поставляется с баллоном воздуха. Но всё же, члены команды Нанотрейзен научены докладывать о \
+	красно-черных скафандрах."
 	reference = "SS"
 	item = /obj/item/storage/box/syndie_kit/space
 	cost = 20
