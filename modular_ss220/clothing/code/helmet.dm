@@ -128,6 +128,32 @@
 /obj/item/clothing/head/helmet/ert/security
 	icon_state = "ember_sec"
 	item_state = "ember_sec"
+/obj/item/clothing/head/helmet/ert/security/paranormal
+	icon = 'icons/obj/clothing/hats.dmi'
+	icon_state = "knight_templar"
+	item_state = "knight_templar"
+	sprite_sheets = list(
+		"Abductor" 			= 	'icons/mob/clothing/head.dmi',
+		"Ancient Skeleton" 	= 	'icons/mob/clothing/head.dmi',
+		"Diona" 			= 	'icons/mob/clothing/head.dmi',
+		"Drask" 			= 	'icons/mob/clothing/head.dmi',
+		"Golem" 			= 	'icons/mob/clothing/head.dmi',
+		"Grey" 				= 	'icons/mob/clothing/head.dmi',
+		"Human" 			= 	'icons/mob/clothing/head.dmi',
+		"Kidan" 			= 	'icons/mob/clothing/head.dmi',
+		"Machine"			= 	'icons/mob/clothing/head.dmi',
+		"Monkey" 			= 	'icons/mob/clothing/head.dmi',
+		"Nian" 				= 	'icons/mob/clothing/head.dmi',
+		"Plasmaman" 		= 	'icons/mob/clothing/head.dmi',
+		"Shadow" 			= 	'icons/mob/clothing/head.dmi',
+		"Skrell" 			= 	'icons/mob/clothing/head.dmi',
+		"Slime People" 		= 	'icons/mob/clothing/head.dmi',
+		"Tajaran" 			= 	'icons/mob/clothing/head.dmi',
+		"Unathi" 			= 	'icons/mob/clothing/head.dmi',
+		"Vox" 				= 	'icons/mob/clothing/head.dmi',
+		"Vulpkanin" 		= 	'icons/mob/clothing/head.dmi',
+		"Nucleation"		=	'icons/mob/clothing/head.dmi',
+		)
 
 /obj/item/clothing/head/helmet/space/ert_engineer
 	name = "emergency response team engineer space helmet"

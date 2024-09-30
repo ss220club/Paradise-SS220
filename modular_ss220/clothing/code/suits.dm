@@ -306,6 +306,34 @@
 	icon_state = "ember_sec"
 	item_state = "ember_sec"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+
+/obj/item/clothing/suit/armor/vest/ert/security/paranormal
+	icon = 'icons/obj/clothing/suits.dmi'
+	icon_state = "knight_templar"
+	item_state = "knight_templar"
+	sprite_sheets = list(
+		"Abductor" 			= 	'icons/mob/clothing/suit.dmi',
+		"Ancient Skeleton" 	= 	'icons/mob/clothing/suit.dmi',
+		"Diona" 			= 	'icons/mob/clothing/suit.dmi',
+		"Drask" 			= 	'icons/mob/clothing/suit.dmi',
+		"Golem" 			= 	'icons/mob/clothing/suit.dmi',
+		"Grey" 				= 	'icons/mob/clothing/suit.dmi',
+		"Human" 			= 	'icons/mob/clothing/suit.dmi',
+		"Kidan" 			= 	'icons/mob/clothing/suit.dmi',
+		"Machine"			= 	'icons/mob/clothing/suit.dmi',
+		"Monkey" 			= 	'icons/mob/clothing/suit.dmi',
+		"Nian" 				= 	'icons/mob/clothing/suit.dmi',
+		"Plasmaman" 		= 	'icons/mob/clothing/suit.dmi',
+		"Shadow" 			= 	'icons/mob/clothing/suit.dmi',
+		"Skrell" 			= 	'icons/mob/clothing/suit.dmi',
+		"Slime People" 		= 	'icons/mob/clothing/suit.dmi',
+		"Tajaran" 			= 	'icons/mob/clothing/suit.dmi',
+		"Unathi" 			= 	'icons/mob/clothing/suit.dmi',
+		"Vox" 				= 	'icons/mob/clothing/suit.dmi',
+		"Vulpkanin" 		= 	'icons/mob/clothing/suit.dmi',
+		"Nucleation"		=	'icons/mob/clothing/suit.dmi',
+		)
+
 /obj/item/clothing/suit/space/ert_engineer
 	name = "emergency response team engineer space suit"
 	desc = "Space suit worn by engineering members of the Nanotrasen Emergency Response Team. Has orange highlights."
