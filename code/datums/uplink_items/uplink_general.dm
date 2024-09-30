@@ -271,11 +271,9 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 ////////////////////////////////////////
 
 /datum/uplink_item/ammo
-<<<<<<<<< Temporary merge branch 1
 	category = "Ammunition"
 	surplus = 0 // Getting these in a discount or surplus is not a good time.
 	can_discount = FALSE
-
 
 /datum/uplink_item/ammo/pistol
 	name = "Stechkin - 10mm Magazine"
