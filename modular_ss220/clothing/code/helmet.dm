@@ -128,13 +128,14 @@
 /obj/item/clothing/head/helmet/ert/security
 	icon_state = "ember_sec"
 	item_state = "ember_sec"
+
 /obj/item/clothing/head/helmet/ert/security/paranormal
 	icon_state = "knight_templar"
 	item_state = "knight_templar"
 	sprite_sheets = list(
-		"Drask" 			= 	'modular_ss220/clothing/icons/mob/helmet.dmi',
-		"Vox" 				= 	'modular_ss220/clothing/icons/mob/helmet.dmi',
-		"Vulpkanin" 		= 	'modular_ss220/clothing/icons/mob/helmet.dmi',
+		"Vox" = 'icons/mob/clothing/species/vox/helmet.dmi',
+		"Drask" = 'icons/mob/clothing/species/drask/helmet.dmi',
+		"Grey" = 'icons/mob/clothing/species/grey/helmet.dmi'
 		)
 
 /obj/item/clothing/head/helmet/space/ert_engineer

@@ -311,9 +311,7 @@
 	icon_state = "knight_templar"
 	item_state = "knight_templar"
 	sprite_sheets = list(
-		"Drask" 			= 	'modular_ss220/clothing/icons/mob/suits.dmi',
-		"Kidan" 			= 	'modular_ss220/clothing/icons/mob/suits.dmi',
-		"Vox" 				= 	'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Vox" = 'icons/mob/clothing/species/vox/suit.dmi'
 		)
 
 /obj/item/clothing/suit/space/ert_engineer
