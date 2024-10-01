@@ -34,7 +34,7 @@
 /obj/item/ammo_casing/s310
 	name = ".310 round"
 	desc = "A .310 rifle cartridge"
-	icon = 'modular_ss220/maps220/icons/ammo.dmi'
+	icon = 'modular_ss220/objects/icons/ammo.dmi'
 	icon_state = "310-casing"
 	caliber = "s310"
 	projectile_type = /obj/item/projectile/bullet/midbullet3/hp
