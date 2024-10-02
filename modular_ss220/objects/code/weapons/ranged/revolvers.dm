@@ -212,7 +212,7 @@
 	var/additional_zombie_damage = 10
 
 /obj/item/projectile/bullet/midbullet_r/peas_shooter/on_hit(mob/H)
-	if(HAS_TRAIT(target, TRAIT_I_WANT_BRAINS))
+	if(HAS_TRAIT(H, TRAIT_I_WANT_BRAINS))
 		damage += additional_zombie_damage
 	. = ..()
 	if(ishuman(H) && prob(15))
