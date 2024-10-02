@@ -1,10 +1,10 @@
 /datum/spell/shadowling/veil
 	name = "Пелена"
 	desc = "Вы отключаете большинство источников освещения в радиусе 5-и клеток"
-	action_icon_state = "vampire_glare"
 	base_cooldown = 15 SECONDS
 	stat_allowed = UNCONSCIOUS
 	create_attack_logs = FALSE	// Required to stop turf spam to logs
+	action_icon_state = "veil"
 
 /datum/spell/shadowling/veil/create_new_targeting()
 	var/datum/spell_targeting/aoe/turf/T = new

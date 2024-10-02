@@ -117,8 +117,8 @@
 
 /datum/spell/shadowling/self/place_trap/stun
 	name = "Установить оглущающую ловушку"
-	action_icon_state = "vampire_glare"
 	trap_type = /obj/structure/shadow_trap/stun
+	action_icon_state = "stun_trap"
 
 // Poison Trap
 // Deal burn + toxin damage to target and force them to sleep
@@ -141,8 +141,8 @@
 
 /datum/spell/shadowling/self/place_trap/poison
 	name = "Установить ядовитую ловушку"
-	action_icon_state = "vampire_glare"
 	trap_type = /obj/structure/shadow_trap/poison
+	action_icon_state = "poison_trap"
 
 // Blindness Trap
 // Deal damage to eyes and create blindsmoke cloud
@@ -169,5 +169,6 @@
 
 /datum/spell/shadowling/self/place_trap/blindness
 	name = "Установить ослепляющую ловушку"
-	action_icon_state = "vampire_glare"
 	trap_type = /obj/structure/shadow_trap/blindness
+	action_icon_state = "blindness_trap"
+

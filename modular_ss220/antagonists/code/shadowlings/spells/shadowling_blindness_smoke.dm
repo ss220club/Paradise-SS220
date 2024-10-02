@@ -1,9 +1,10 @@
 /datum/spell/shadowling/self/blindness_smoke
 	name = "Ослепляющий дым"
 	desc = "Вы выдыхаете облако густого ослепляющего врагов дыма, однако лечащего лояльных тьме слуг."
-	action_icon_state = "vampire_glare"
 	base_cooldown = 30 SECONDS
 	stat_allowed = UNCONSCIOUS
+	action_icon_state = "blindness_smoke"
+
 
 /datum/spell/shadowling/self/blindness_smoke/cast(list/targets, mob/user)
 	user.visible_message(span_warning("[user] внезапно выдыхает облако чёрного дыма, который начинает быстро распространяться!"))

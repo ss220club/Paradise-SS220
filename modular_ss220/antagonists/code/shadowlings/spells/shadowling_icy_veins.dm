@@ -1,9 +1,9 @@
 /datum/spell/shadowling/icy_veins
 	name = "Стынущие жилы"
 	desc = "Вы замораживаете кровь в венах окружающих вас врагов в радиусе 4-х клеток, замедляя их и нанося им урон от холода."
-	action_icon_state = "vampire_glare"
 	base_cooldown = 35 SECONDS
 	stat_allowed = UNCONSCIOUS
+	action_icon_state = "icy_veins"
 
 /datum/spell/shadowling/icy_veins/create_new_targeting()
 	var/datum/spell_targeting/aoe/T = new

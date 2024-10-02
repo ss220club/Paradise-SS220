@@ -13,9 +13,9 @@
 /datum/spell/shadowling/glare
 	name = "Блик"
 	desc = "Ваши красные глаза сверкают, завораживая и очаровывая смертных перед вами. Для лучшего эффекта необходим близкий зрительный контакт и тёмное окружение."
-	action_icon_state = "vampire_glare"
 	base_cooldown = 40 SECONDS
 	stat_allowed = UNCONSCIOUS
+	action_icon_state = "glare"
 
 /datum/spell/shadowling/glare/can_cast(mob/user, charge_check, show_message)
 	. = ..()

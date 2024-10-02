@@ -80,7 +80,8 @@
 	return lum_count
 
 /mob/living/simple_animal/demon/shadow_father/proc/grant_spells()
-	whisper_action.button_overlay_icon_state = "shadow_whisper"
+	whisper_action.button_overlay_icon = 'modular_ss220/antagonists/icons/shadowlings/shadowlings_actions.dmi'
+	whisper_action.button_overlay_icon_state = "father_whisper"
 	whisper_action.button_background_icon_state = "shadow_demon_bg"
 
 	var/list/datum/spell/spells_to_grant = list(
