@@ -653,14 +653,14 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 	log_admin("[key_name(usr)] changed the equipment of [key_name(M)] to [dresscode].")
 	message_admins("<span class='notice'>[key_name_admin(usr)] changed the equipment of [key_name_admin(M)] to [dresscode].</span>", 1)
 
-/client/proc/robust_dress_shop()
+/client/proc/robust_dress_shop() 	//SS220 EDIT // Добавил "Admin Job..."
 	var/list/special_outfits = list(
 		"Naked",
 		"As Job...",
 		"Custom...",
 		"Admin Job..."
 	)
-
+									//SS220 NO EDIT
 	var/list/outfits = list()
 	var/list/paths = subtypesof(/datum/outfit) - typesof(/datum/outfit/job) - list(/datum/outfit/varedit, /datum/outfit/admin, typesof(/datum/outfit/job/admin))
 	for(var/path in paths)
@@ -690,7 +690,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 		if(isnull(dresscode))
 			return
 
-	if(dresscode == "Admin Job...")
+	if(dresscode == "Admin Job...")	//SS220 EDIT // собственно сама менюшка
 		var/list/admin_job_paths = subtypesof(/datum/outfit/job/admin)
 		var/list/admin_job_outfits = list()
 		for(var/path in admin_job_paths)
@@ -699,11 +699,11 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 				admin_job_outfits[initial(O.name)] = path
 		admin_job_outfits = sortTim(admin_job_outfits, GLOBAL_PROC_REF(cmp_text_asc))
 
-		dresscode = input("Select job equipment", "Robust quick dress shop") as null|anything in admin_job_outfits
+		dresscode = input("Select equipment", "Сhoose your fighter") as null|anything in admin_job_outfits
 		dresscode = admin_job_outfits[dresscode]
 		if(isnull(dresscode))
 			return
-
+									//SS220 NO EDIT
 	if(dresscode == "Custom...")
 		var/list/custom_names = list()
 		for(var/datum/outfit/D in GLOB.custom_outfits)
