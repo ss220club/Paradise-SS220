@@ -1,10 +1,10 @@
 /datum/spell/shadowling/screech
 	name = "Вопль"
 	desc = "Вы громко вопите, дизориентируя врагов, отключая боргов и повреждая стёкла в радиусе 5-и клеток."
-	action_icon_state = "vampire_glare"
 	base_cooldown = 40 SECONDS
 	stat_allowed = UNCONSCIOUS
 	create_attack_logs = FALSE	// Required to stop turf spam to logs
+	action_icon_state = "screech"
 
 /datum/spell/shadowling/screech/create_new_targeting()
 	var/datum/spell_targeting/aoe/turf/T = new

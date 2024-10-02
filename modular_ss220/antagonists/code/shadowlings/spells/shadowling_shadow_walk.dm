@@ -1,9 +1,9 @@
 /datum/spell/shadowling/self/shadow_walk
 	name = "Шаг в тень"
 	desc = "Вы просачиваетесь в пространство меж миров, получая способность быстро перемещаться сквозь стены на 4 секунды. Свет по-прежнему опасен для вас."
-	action_icon_state = "shadow_crawl"
 	base_cooldown = 60 SECONDS
 	stat_allowed = UNCONSCIOUS
+	action_icon_state = "shadowling_crawl"
 
 /datum/spell/shadowling/self/shadow_walk/cast(list/targets, mob/living/user = usr)
 	playsound(user.loc, 'sound/effects/bamf.ogg', 50, 1)
