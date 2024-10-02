@@ -657,11 +657,12 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 	var/list/special_outfits = list(
 		"Naked",
 		"As Job...",
-		"Custom..."
+		"Custom...",
+		"Admin Job..."
 	)
 
 	var/list/outfits = list()
-	var/list/paths = subtypesof(/datum/outfit) - typesof(/datum/outfit/job) - list(/datum/outfit/varedit, /datum/outfit/admin)
+	var/list/paths = subtypesof(/datum/outfit) - typesof(/datum/outfit/job) - list(/datum/outfit/varedit, /datum/outfit/admin, typesof(/datum/outfit/job/admin))
 	for(var/path in paths)
 		var/datum/outfit/O = path //not much to initalize here but whatever
 		if(initial(O.can_be_admin_equipped))
@@ -686,6 +687,20 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 
 		dresscode = input("Select job equipment", "Robust quick dress shop") as null|anything in job_outfits
 		dresscode = job_outfits[dresscode]
+		if(isnull(dresscode))
+			return
+
+	if(dresscode == "Admin Job...")
+		var/list/admin_job_paths = subtypesof(/datum/outfit/job/admin)
+		var/list/admin_job_outfits = list()
+		for(var/path in admin_job_paths)
+			var/datum/outfit/O = path
+			if(initial(O.can_be_admin_equipped))
+				admin_job_outfits[initial(O.name)] = path
+		admin_job_outfits = sortTim(admin_job_outfits, GLOBAL_PROC_REF(cmp_text_asc))
+
+		dresscode = input("Select job equipment", "Robust quick dress shop") as null|anything in admin_job_outfits
+		dresscode = admin_job_outfits[dresscode]
 		if(isnull(dresscode))
 			return
 
