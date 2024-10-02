@@ -66,19 +66,22 @@
 /datum/spell/shadowling/self/place_trap
 	name = "Установить ловушку"
 	action_icon_state = "vampire_glare"
-	base_cooldown = 10 SECONDS
+	base_cooldown = 30 SECONDS
 	stat_allowed = UNCONSCIOUS
 	var/trap_type = /obj/structure/shadow_trap
 
 /datum/spell/shadowling/self/place_trap/cast(list/targets, mob/user)
 	if(!istype(user, /mob/living/simple_animal/demon/shadow_father))
-		to_chat(user, span_boldwarning("Вы должны быть отцом тьмы для установки ловушек."))
+		to_chat(user, span_warning("Вы должны быть отцом тьмы для установки ловушек."))
 		return
 	var/mob/living/simple_animal/demon/shadow_father/father = user
-	if(father.placed_traps.len >= MAX_SHADOWLING_TRAPS)
-		to_chat(user, span_boldwarning("Вы построили уже построили максимум ([MAX_SHADOWLING_TRAPS]) ловушек. Разрушьте старые для установки новых."))
+	if(ismob(father.pulling))
+		to_chat(user, span_warning("Вы не можете устанавливать ловушки, пока тащите кого-то."))
 		return
-	var/obj/structure/shadow_trap/trap = new trap_type(father.loc)
+	if(father.placed_traps.len >= MAX_SHADOWLING_TRAPS)
+		to_chat(user, span_warning("Вы построили уже построили максимум ([MAX_SHADOWLING_TRAPS]) ловушек. Разрушьте старые для установки новых."))
+		return
+	var/obj/structure/shadow_trap/trap = new trap_type(get_turf(father))
 	father.placed_traps.Add(trap)
 	trap.created_by = father
 

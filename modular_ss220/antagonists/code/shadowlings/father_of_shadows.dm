@@ -19,9 +19,32 @@
 	see_in_dark = 10
 	death_sound = 'sound/shadowdemon/shadowdeath.ogg'
 	speed = 1
+	maxHealth = 350
+	health = 350
 
 	var/thrown_alert
 	var/list/obj/structure/shadow_trap/placed_traps = list()
+	var/is_converting = FALSE
+
+/mob/living/simple_animal/demon/shadow_father/Login()
+	. = ..()
+	var/list/L = list(
+		"<span class='deadsay'><font size=3><b>Вы Отец Тьмы!</b></font></span>",
+		"<b>Вы коварный и подлый антагонист, который должен подготовить эту станцию для прихода своих детей.</b>",
+		"<b>Свет - ваш худший враг, но вы не получаете от него урона, находясь в астральной форме.</b>",
+		"<b>Подготавливайте ловушки и засады в технических туннелях, после чего заманивайте в них жертв.</b>",
+		"<b>Погружайте в тень тела погибших членов экипажа, чтобы, в будущем, превратить их в своих детей.</b>",
+		"<b>Накопив достаточно погружённых, издайте свой последний вопль и призовите на станцию тенелингов.</b>",
+		"<b><i></i></b>",
+		"<br><span class='motd'>Для подробной информации, посетите вики: [wiki_link("Shadowlings")]</span>"
+	)
+	to_chat(src, chat_box_red(L.Join("<br>")))
+	if(!mind)
+		return
+	var/datum/atom_hud/hud = GLOB.huds[ANTAG_HUD_SHADOW]
+	hud.add_hud_to(src)
+
+
 
 /mob/living/simple_animal/demon/shadow_father/Initialize(mapload)
 	. = ..()
@@ -61,7 +84,7 @@
 	whisper_action.button_background_icon_state = "shadow_demon_bg"
 
 	var/list/datum/spell/spells_to_grant = list(
-		new /datum/spell/bloodcrawl/shadow_crawl,
+		new /datum/spell/bloodcrawl/shadow_crawl/father,
 		new /datum/spell/shadowling/veil,
 		new /datum/spell/shadowling/screech,
 		new /datum/spell/shadowling/glare,
@@ -71,3 +94,38 @@
 	)
 	for(var/datum/spell/spell in spells_to_grant)
 		AddSpell(spell)
+
+/mob/living/simple_animal/demon/shadow_father/hitby(atom/movable/AM, skipcatch, hitpush, blocked, datum/thrownthing/throwingdatum)
+	if(isliving(AM)) // when a living creature is thrown at it, dont knock it back
+		return
+	..()
+
+/mob/living/simple_animal/demon/shadow_father/UnarmedAttack(atom/A)
+	// Pick a random attack sound for each attack
+	attack_sound = pick('sound/shadowdemon/shadowattack2.ogg', 'sound/shadowdemon/shadowattack3.ogg', 'sound/shadowdemon/shadowattack4.ogg')
+	if(!ishuman(A))
+		if(isitem(A))
+			A.extinguish_light()
+		return ..()
+	var/mob/living/carbon/human/target = A
+	if(target.stat != DEAD)
+		return ..()
+
+	if(isLivingSSD(target) && client.send_ssd_warning(target)) //Similar to revenants, only wrap SSD targets if you've accepted the SSD warning
+		return
+
+	if(is_converting)
+		to_chat(src, "<span class='notice'>We are already wrapping something.</span>")
+		return
+
+	visible_message("<span class='danger'>[src] begins wrapping [target] in shadowy threads.</span>")
+	is_converting = TRUE
+	if(!do_after(src, 4 SECONDS, FALSE, target = target))
+		is_converting = FALSE
+		return
+
+	target.visible_message("<span class='warning'><b>[src] envelops [target] into an ethereal cocoon, and darkness begins to creep from it.</b></span>")
+	var/obj/structure/shadowcocoon/C = new(get_turf(target))
+	target.extinguish_light() // may as well be safe
+	target.forceMove(C)
+	is_converting = FALSE

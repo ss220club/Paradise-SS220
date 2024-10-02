@@ -11,6 +11,12 @@
 	T.range = 5
 	return T
 
+/datum/spell/shadowling/veil/can_cast(mob/user, charge_check, show_message)
+	. = ..()
+	// Veil shouldn't work in shadow crawl
+	if(istype(user.loc, /obj/effect/dummy/slaughter))
+		return FALSE
+
 /datum/spell/shadowling/veil/cast(list/targets, mob/user = usr)
 	add_attack_logs(user, user, "cast the spell [name]", ATKLOG_ALL)
 	to_chat(user, span_purple("Вы бесшумно отключаете источники света поблизости."))

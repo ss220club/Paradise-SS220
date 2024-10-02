@@ -17,6 +17,12 @@
 	base_cooldown = 40 SECONDS
 	stat_allowed = UNCONSCIOUS
 
+/datum/spell/shadowling/glare/can_cast(mob/user, charge_check, show_message)
+	. = ..()
+	// Veil shouldn't work in shadow crawl
+	if(istype(user.loc, /obj/effect/dummy/slaughter))
+		return FALSE
+
 /datum/spell/shadowling/glare/create_new_targeting()
 	var/datum/spell_targeting/aoe/T = new
 	T.allowed_type = /mob/living
