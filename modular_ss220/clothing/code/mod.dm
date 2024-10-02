@@ -1,101 +1,70 @@
-// Modular MOD's clothes
-// Сюда новые моды для людей и остальных рас
-/obj/item/clothing/head/mod/modular_mods
+// MARK: MODsuit clothes
+/obj/item/clothing/head/mod/exclusive
 	icon = 'modular_ss220/clothing/icons/object/mod_clothing.dmi'
 	item_state = 'modular_ss220/clothing/icons/mob/mod_clothing.dmi'
 	icon_override = 'modular_ss220/clothing/icons/mob/mod_clothing.dmi'
-	icon_state = "skrell_elite-helmet"
 	sprite_sheets = list(
-		"Human" 			= 	'modular_ss220/clothing/icons/mob/mod_clothing.dmi',
-		"Skrell" 			= 	'modular_ss220/clothing/icons/mob/species/skrell/mod_clothing.dmi',
+		"Human" = 'modular_ss220/clothing/icons/mob/mod_clothing.dmi',
+		"Skrell" = 'modular_ss220/clothing/icons/mob/species/skrell/mod_clothing.dmi',
 		)
 
-/obj/item/clothing/suit/mod/modular_mods
+/obj/item/clothing/suit/mod/exclusive
 	icon = 'modular_ss220/clothing/icons/object/mod_clothing.dmi'
 	item_state = 'modular_ss220/clothing/icons/mob/mod_clothing.dmi'
 	icon_override = 'modular_ss220/clothing/icons/mob/mod_clothing.dmi'
-	icon_state = "skrell_elite-chestplate"
 	sprite_sheets = list(
-		"Human" 			= 	'modular_ss220/clothing/icons/mob/mod_clothing.dmi',
-		"Skrell" 			= 	'modular_ss220/clothing/icons/mob/species/skrell/mod_clothing.dmi',
+		"Human" = 'modular_ss220/clothing/icons/mob/mod_clothing.dmi',
+		"Skrell" = 'modular_ss220/clothing/icons/mob/species/skrell/mod_clothing.dmi',
 		)
 
-/obj/item/clothing/gloves/mod/modular_mods
+/obj/item/clothing/gloves/mod/exclusive
 	icon = 'modular_ss220/clothing/icons/object/mod_clothing.dmi'
 	item_state = 'modular_ss220/clothing/icons/mob/mod_clothing.dmi'
 	icon_override = 'modular_ss220/clothing/icons/mob/mod_clothing.dmi'
-	icon_state = "skrell_elite-gauntlets"
 	sprite_sheets = list(
-		"Human" 			= 	'modular_ss220/clothing/icons/mob/mod_clothing.dmi',
-		"Skrell" 			= 	'modular_ss220/clothing/icons/mob/species/skrell/mod_clothing.dmi',
+		"Human" = 'modular_ss220/clothing/icons/mob/mod_clothing.dmi',
+		"Skrell" = 'modular_ss220/clothing/icons/mob/species/skrell/mod_clothing.dmi',
 		)
 
-/obj/item/clothing/shoes/mod/modular_mods
+/obj/item/clothing/shoes/mod/exclusive
 	icon = 'modular_ss220/clothing/icons/object/mod_clothing.dmi'
 	item_state = 'modular_ss220/clothing/icons/mob/mod_clothing.dmi'
 	icon_override = 'modular_ss220/clothing/icons/mob/mod_clothing.dmi'
-	icon_state = "skrell_elite-boots"
 	sprite_sheets = list(
-		"Human" 			= 	'modular_ss220/clothing/icons/mob/mod_clothing.dmi',
-		"Skrell" 			= 	'modular_ss220/clothing/icons/mob/species/skrell/mod_clothing.dmi',
+		"Human" = 'modular_ss220/clothing/icons/mob/mod_clothing.dmi',
+		"Skrell" = 'modular_ss220/clothing/icons/mob/species/skrell/mod_clothing.dmi',
 		)
 
-// Modular MOD's control
+// MARK: MODsuit control
+/obj/item/mod/control/proc/build_head()
+	return new /obj/item/clothing/head/mod(src)
 
-/obj/item/mod/control/modular_mods
+/obj/item/mod/control/proc/build_suit()
+	return new /obj/item/clothing/suit/mod(src)
+
+/obj/item/mod/control/proc/build_gloves()
+	return new /obj/item/clothing/gloves/mod(src)
+
+/obj/item/mod/control/proc/build_shoes()
+	return new /obj/item/clothing/shoes/mod(src)
+
+/obj/item/mod/control/pre_equipped/exclusive
 	icon = 'modular_ss220/clothing/icons/object/mod_clothing.dmi'
 	icon_override = 'modular_ss220/clothing/icons/mob/mod_clothing.dmi'
 
-/obj/item/mod/control/modular_mods/Initialize(mapload, datum/mod_theme/new_theme, new_skin, obj/item/mod/core/new_core)
-	. = ..()
-	if(new_theme)
-		theme = new_theme
-	theme = GLOB.mod_themes[theme]
-	slot_flags = theme.slot_flags
-	extended_desc = theme.extended_desc
-	slowdown_inactive = theme.slowdown_inactive
-	slowdown_active = theme.slowdown_active
-	complexity_max = theme.complexity_max
-	ui_theme = theme.ui_theme
-	charge_drain = theme.charge_drain
-	wires = new/datum/wires/mod(src)
-	if(length(req_access))
-		locked = TRUE
-	new_core?.install(src)
-	helmet = new /obj/item/clothing/shoes/mod/modular_mods(src)
-	mod_parts += helmet
-	chestplate = new /obj/item/clothing/shoes/mod/modular_mods(src)
-	chestplate.allowed += theme.allowed_suit_storage
-	mod_parts += chestplate
-	gauntlets = new /obj/item/clothing/shoes/mod/modular_mods(src)
-	mod_parts += gauntlets
-	boots = new /obj/item/clothing/shoes/mod/modular_mods(src)
-	mod_parts += boots
-	var/list/all_parts = mod_parts + src
-	for(var/obj/item/part as anything in all_parts)
-		part.name = "[theme.name] [part.name]"
-		part.desc = "[part.desc] [theme.desc]"
-		part.armor = part.armor.attachArmor(theme.armor_type_2.armor)
-		part.resistance_flags = theme.resistance_flags
-		part.flags |= theme.atom_flags //flags like initialization or admin spawning are here, so we cant set, have to add
-		part.heat_protection = NONE
-		part.cold_protection = NONE
-		part.max_heat_protection_temperature = theme.max_heat_protection_temperature
-		part.min_cold_protection_temperature = theme.min_cold_protection_temperature
-		part.siemens_coefficient = theme.siemens_coefficient
-		part.flags_2 = theme.flag_2_flags
-	for(var/obj/item/part as anything in mod_parts)
-		RegisterSignal(part, COMSIG_OBJ_DECONSTRUCT, PROC_REF(on_part_destruction)) //look into
-		RegisterSignal(part, COMSIG_PARENT_QDELETING, PROC_REF(on_part_deletion))
-	set_mod_skin(new_skin || theme.default_skin)
-	update_speed()
-	RegisterSignal(src, COMSIG_ATOM_EXITED, PROC_REF(on_exit))
-	for(var/obj/item/mod/module/module as anything in theme.inbuilt_modules)
-		module = new module(src)
-		install(module)
-	ADD_TRAIT(src, TRAIT_ADJACENCY_TRANSPARENT, ROUNDSTART_TRAIT)
+/obj/item/mod/control/pre_equipped/exclusive/build_head()
+	return new /obj/item/clothing/head/mod/exclusive(src)
 
-//Skrell elite mod
+/obj/item/mod/control/pre_equipped/exclusive/build_suit()
+	return new /obj/item/clothing/suit/mod/exclusive(src)
+
+/obj/item/mod/control/pre_equipped/exclusive/build_gloves()
+	return new /obj/item/clothing/gloves/mod/exclusive(src)
+
+/obj/item/mod/control/pre_equipped/exclusive/build_shoes()
+	return new /obj/item/clothing/shoes/mod/exclusive(src)
+
+// MARK: Skrell elite MODsuit
 /datum/mod_theme/skrell_elite
 	name = "skrell"
 	desc = "A high-speed rescue suit by Nanotrasen, intended for its' emergency response teams."
@@ -154,9 +123,6 @@
 /obj/item/mod/armor/mod_theme_skrell_elite
 	armor = list(MELEE = 40, BULLET = 25, LASER = 25, ENERGY = 20, BOMB = 25, RAD = INFINITY, FIRE = 200, ACID = 200)
 
-
-// Pre equipped
-
-/obj/item/mod/control/pre_equipped/skrell_elite
+/obj/item/mod/control/pre_equipped/exclusive/skrell_elite
 	theme = /datum/mod_theme/skrell_elite
 	applied_cell = /obj/item/stock_parts/cell/bluespace
