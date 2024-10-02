@@ -209,11 +209,12 @@
 	item_state = "peashooter_bullet"
 	stamina = 5
 	damage = 0
-	var/additional_damage = 10
+	var/additional_zombie_damage = 10
 
 /obj/item/projectile/bullet/midbullet_r/peas_shooter/prehit(atom/target)
+	damage = src::damage
 	if(HAS_TRAIT(target, TRAIT_I_WANT_BRAINS))
-		damage += additional_damage
+		damage += additional_zombie_damage
 	return ..()
 
 /obj/item/projectile/bullet/midbullet_r/peas_shooter/on_hit(mob/H)
