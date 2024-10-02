@@ -1,6 +1,6 @@
 /datum/spell/shadowling/self/blindness_smoke
 	name = "Ослепляющий дым"
-	desc = "Вы выдыхаете облако густого ослепляющего врагов дыма, однако лечащего лояльных тьме слуг"
+	desc = "Вы выдыхаете облако густого ослепляющего врагов дыма, однако лечащего лояльных тьме слуг."
 	action_icon_state = "vampire_glare"
 	base_cooldown = 30 SECONDS
 	stat_allowed = UNCONSCIOUS
@@ -28,7 +28,7 @@
 		to_chat(M, span_boldwarning("Вы вдыхаете чёрный дым и ваши глаза начинают ужасно болеть!"))
 		M.EyeBlind(10 SECONDS)
 		if(prob(25))
-			M.visible_message(span_warning("[M] трёс свои глаза"))
+			M.visible_message(span_warning("[M] трёт свои глаза."))
 			M.Stun(4 SECONDS)
 	else
 		to_chat(M, span_notice("Вы вдыхаете чёрный дым и чувствуете облегчение!"))

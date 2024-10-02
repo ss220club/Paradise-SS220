@@ -3,7 +3,6 @@
 /datum/spell/shadowling
 	school = "shadowling"
 	action_background_icon_state = "shadow_demon_bg"
-	human_req = TRUE
 	clothes_req = FALSE
 
 	/// If true, can be casted while using shadowstep and other incorporeal abilities

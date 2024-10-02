@@ -19,7 +19,6 @@
 		if(shadowling_check(target))
 			to_chat(target, span_warning("Вы чувствуете волну холода, но для вас она безвредна"))
 			continue
-
 		to_chat(target, span_danger("Вас пронзает волна холода! У вас буквально стынет кровь в жилах!"))
 		target.Stun(2 SECONDS)
 		target.apply_damage(10, BURN)
