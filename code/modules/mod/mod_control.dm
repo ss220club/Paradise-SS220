@@ -127,7 +127,7 @@
 	if(length(req_access))
 		locked = TRUE
 	new_core?.install(src)
-	helmet = helmet = build_head() // SS220 EDIT - original: new /obj/item/clothing/head/mod(src)
+	helmet = build_head() // SS220 EDIT - original: new /obj/item/clothing/head/mod(src)
 	mod_parts += helmet
 	chestplate = build_suit() // SS220 EDIT - original: new /obj/item/clothing/suit/mod(src)
 	chestplate.allowed += theme.allowed_suit_storage
