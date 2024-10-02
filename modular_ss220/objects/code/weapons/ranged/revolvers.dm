@@ -212,7 +212,6 @@
 	var/additional_zombie_damage = 10
 
 /obj/item/projectile/bullet/midbullet_r/peas_shooter/prehit(atom/target)
-	. = ..()
 	if(HAS_TRAIT(target, TRAIT_I_WANT_BRAINS))
 		damage += additional_zombie_damage
 	return ..()
