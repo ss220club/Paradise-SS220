@@ -134,10 +134,10 @@
 	mask = /obj/item/clothing/mask/holo_cigar
 	suit = /obj/item/clothing/suit/space/deathsquad/officer/field/cloak_nt/coat_nt
 	shoes = /obj/item/clothing/shoes/fluff/noble_boot
-	r_hand = /obj/item/melee/classic_baton/ntcane
+	belt = /obj/item/melee/classic_baton/ntcane
 
-/datum/outfit/job/admin/ntnavyofficer/alt.2
-	name = "NT Navy Officer alt. cloak NT, holo."
+/datum/outfit/job/admin/ntnavyofficer/alt2
+	name = "NT Navy Officer alt. Cloak NT, holo."
 	suit = /obj/item/clothing/suit/space/deathsquad/officer/field/cloak_nt
 	mask = /obj/item/clothing/mask/holo_cigar
 
@@ -160,7 +160,7 @@
 	)
 
 /datum/outfit/job/admin/ntnavyofficer/field/alt
-	name = "Nanotrasen Navy Field Officer alt. ring, mateba, holster."
+	name = "Nanotrasen Navy Field Officer alt. Ring, mateba, holster."
 	gloves =/obj/item/clothing/gloves/ring/silver
 	mask = /obj/item/clothing/mask/holo_cigar
 	backpack_contents = list(
