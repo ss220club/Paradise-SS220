@@ -118,7 +118,7 @@
 	suit_store = /obj/item/ammo_box/box_mm127
 
 /datum/outfit/job/admin/ntnavyofficer/alt
-	name = "NT Navy Officer alt. Coat NT, holo, nooble, cane"
+	name = "NT Navy Officer alt. Coat NT, holo, noble, cane"
 	mask = /obj/item/clothing/mask/holo_cigar
 	suit = /obj/item/clothing/suit/space/deathsquad/officer/field/cloak_nt/coat_nt
 	shoes = /obj/item/clothing/shoes/fluff/noble_boot
