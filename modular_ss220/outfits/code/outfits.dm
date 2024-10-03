@@ -109,6 +109,7 @@
 	name = "Specops Mooniverse"
 	suit = /obj/item/clothing/suit/space/deathsquad/officer/soo_brown
 	backpack_contents = list(
+		/obj/item/clothing/shoes/magboots/advance,
 		/obj/item/gun/projectile/revolver/mateba,
 		/obj/item/ammo_box/a357,
 		/obj/item/ammo_box/a357,
@@ -134,10 +135,6 @@
 	shoes = /obj/item/clothing/shoes/fluff/noble_boot
 	r_hand = /obj/item/melee/classic_baton/ntcane
 
-/datum/outfit/job/admin/ntnavyofficer/torvin
-	name = "NT Navy Officer Torvin"
-	head = /obj/item/clothing/head/drillsgt
-
 /datum/outfit/job/admin/ntnavyofficer/cifi
 	name = "NT Navy Officer Cifi"
 	suit = /obj/item/clothing/suit/space/deathsquad/officer/field/cloak_nt
@@ -161,6 +158,21 @@
 		/obj/item/organ/internal/eyes/cybernetic/thermals/hardened
 	)
 
+/datum/outfit/job/admin/ntnavyofficer/field/zerus
+	name = "Nanotrasen Navy Field Officer Zerus"
+	gloves =/obj/item/clothing/gloves/ring/silver
+	mask = /obj/item/clothing/mask/holo_cigar
+	backpack_contents = list(
+		/obj/item/clothing/accessory/scarf/purple,
+		/obj/item/clothing/gloves/combat,
+		/obj/item/gun/projectile/revolver/mateba,
+		/obj/item/ammo_box/a357,
+		/obj/item/ammo_box/a357,
+		/obj/item/ammo_box/a357,
+		/obj/item/clothing/accessory/holster
+	)
+
+
 /datum/outfit/job/admin/nt_navy_captain
 	name = "NT Navy Captain (Advanced)"
 
@@ -177,6 +189,7 @@
 	backpack_contents = list(
 		/obj/item/storage/box/centcomofficer,
 		/obj/item/bio_chip_implanter/death_alarm,
+		/obj/item/stamp/centcom,
 		/obj/item/gun/projectile/revolver/reclinable/rsh12,
 		/obj/item/ammo_box/speed_loader_mm127,
 		/obj/item/ammo_box/speed_loader_mm127
@@ -209,7 +222,39 @@
 	var/obj/item/card/id/I = H.wear_id
 	if(istype(I))
 		apply_to_card(I, H, get_centcom_access("Nanotrasen Navy Officer"), "Nanotrasen Navy Field Officer")
-	I.assignment = "Nanotrasen Navy Officer"
+	I.rank = "Nanotrasen Navy Officer"
+	I.assignment = "Nanotrasen Navy Field Officer"
+	H.sec_hud_set_ID()
+
+/datum/outfit/job/admin/ntnavyofficer/intern
+	name = "NT Intern"
+	uniform = /obj/item/clothing/under/rank/centcom/intern
+	head = /obj/item/clothing/head/beret/centcom/intetn
+	glasses = /obj/item/clothing/glasses/hud/skills/sunglasses
+	gloves = /obj/item/clothing/gloves/fingerless
+	id = /obj/item/card/id/centcom
+	backpack_contents = list(
+		/obj/item/stamp/centcom,
+		/obj/item/clipboard,
+		/obj/item/stack/spacecash/c200
+	)
+	bio_chips = list(
+		/obj/item/bio_chip/mindshield
+	)
+	cybernetic_implants = list(
+		/obj/item/organ/internal/cyberimp/chest/nutriment/plus/hardened
+	)
+
+/datum/outfit/job/admin/ntnavyofficer/intern/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+	. = ..()
+	if(visualsOnly)
+		return
+
+	var/obj/item/card/id/I = H.wear_id
+	if(istype(I))
+		apply_to_card(I, H, get_centcom_access("Nanotrasen Navy Officer"), "Nanotrasen CentCom Intern")
+	I.rank= "Nanotrasen Navy Officer"
+	I.assignment = "Nanotrasen CentCom Intern"
 	H.sec_hud_set_ID()
 
 /obj/item/clothing/head/helmet/space/deathsquad/beret/field
