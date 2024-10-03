@@ -118,7 +118,7 @@
 	)
 
 /datum/outfit/job/admin/ntspecops/alt
-	name = "Specops alt. RSH-12, saber, bandana."
+	name = "Specops alt. RSH-12, saber, bandana"
 	belt = /obj/item/storage/belt/sheath/saber
 	backpack_contents = list(
 		/obj/item/gun/projectile/revolver/reclinable/rsh12,
@@ -130,14 +130,14 @@
 	suit_store = /obj/item/ammo_box/box_mm127
 
 /datum/outfit/job/admin/ntnavyofficer/alt
-	name = "NT Navy Officer alt. Coat NT, holo, nooble, cane."
+	name = "NT Navy Officer alt. Coat NT, holo, nooble, cane"
 	mask = /obj/item/clothing/mask/holo_cigar
 	suit = /obj/item/clothing/suit/space/deathsquad/officer/field/cloak_nt/coat_nt
 	shoes = /obj/item/clothing/shoes/fluff/noble_boot
 	belt = /obj/item/melee/classic_baton/ntcane
 
 /datum/outfit/job/admin/ntnavyofficer/alt2
-	name = "NT Navy Officer alt. Cloak NT, holo."
+	name = "NT Navy Officer alt. Cloak NT, holo"
 	suit = /obj/item/clothing/suit/space/deathsquad/officer/field/cloak_nt
 	mask = /obj/item/clothing/mask/holo_cigar
 
@@ -160,7 +160,7 @@
 	)
 
 /datum/outfit/job/admin/ntnavyofficer/field/alt
-	name = "Nanotrasen Navy Field Officer alt. Ring, mateba, holster."
+	name = "Nanotrasen Navy Field Officer alt. Ring, mateba, holster"
 	gloves =/obj/item/clothing/gloves/ring/silver
 	mask = /obj/item/clothing/mask/holo_cigar
 	backpack_contents = list(
