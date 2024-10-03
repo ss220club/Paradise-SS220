@@ -702,7 +702,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 		dresscode = admin_job_outfits[dresscode]
 		if(isnull(dresscode))
 			return
-	//SS220 EDIT END
+	// SS220 EDIT END
 	if(dresscode == "Custom...")
 		var/list/custom_names = list()
 		for(var/datum/outfit/D in GLOB.custom_outfits)
