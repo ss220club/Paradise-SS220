@@ -105,18 +105,6 @@
 	. = ..()
 	H.mind.offstation_role = TRUE
 
-/datum/outfit/job/admin/ntspecops/mooniverse
-	name = "Specops Mooniverse"
-	suit = /obj/item/clothing/suit/space/deathsquad/officer/soo_brown
-	backpack_contents = list(
-		/obj/item/clothing/shoes/magboots/advance,
-		/obj/item/gun/projectile/revolver/mateba,
-		/obj/item/ammo_box/a357,
-		/obj/item/ammo_box/a357,
-		/obj/item/ammo_box/a357,
-		/obj/item/clothing/accessory/holster
-	)
-
 /datum/outfit/job/admin/ntspecops/alt
 	name = "Specops alt. RSH-12, saber, bandana"
 	belt = /obj/item/storage/belt/sheath/saber
