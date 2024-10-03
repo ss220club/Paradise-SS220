@@ -116,8 +116,9 @@
 		/obj/item/ammo_box/a357,
 		/obj/item/clothing/accessory/holster
 	)
+
 /datum/outfit/job/admin/ntspecops/phoneix
-	name = "Specops Phoenix"
+	name = "Specops alt. RSH-12, saber, bandana."
 	belt = /obj/item/storage/belt/sheath/saber
 	head = /obj/item/clothing/mask/bandana/red
 	backpack_contents = list(
@@ -128,15 +129,15 @@
 	)
 	suit_store = /obj/item/ammo_box/box_mm127
 
-/datum/outfit/job/admin/ntnavyofficer/kar4es
-	name = "NT Navy Officer Kar4es"
+/datum/outfit/job/admin/ntnavyofficer/alt
+	name = "NT Navy Officer alt. Coat NT, holo, nooble, cane."
 	mask = /obj/item/clothing/mask/holo_cigar
 	suit = /obj/item/clothing/suit/space/deathsquad/officer/field/cloak_nt/coat_nt
 	shoes = /obj/item/clothing/shoes/fluff/noble_boot
 	r_hand = /obj/item/melee/classic_baton/ntcane
 
-/datum/outfit/job/admin/ntnavyofficer/cifi
-	name = "NT Navy Officer Cifi"
+/datum/outfit/job/admin/ntnavyofficer/alt.2
+	name = "NT Navy Officer alt. cloak NT, holo."
 	suit = /obj/item/clothing/suit/space/deathsquad/officer/field/cloak_nt
 	mask = /obj/item/clothing/mask/holo_cigar
 
@@ -158,8 +159,8 @@
 		/obj/item/organ/internal/eyes/cybernetic/thermals/hardened
 	)
 
-/datum/outfit/job/admin/ntnavyofficer/field/zerus
-	name = "Nanotrasen Navy Field Officer Zerus"
+/datum/outfit/job/admin/ntnavyofficer/field/alt
+	name = "Nanotrasen Navy Field Officer alt. ring, mateba, holster."
 	gloves =/obj/item/clothing/gloves/ring/silver
 	mask = /obj/item/clothing/mask/holo_cigar
 	backpack_contents = list(
@@ -171,7 +172,6 @@
 		/obj/item/ammo_box/a357,
 		/obj/item/clothing/accessory/holster
 	)
-
 
 /datum/outfit/job/admin/nt_navy_captain
 	name = "NT Navy Captain (Advanced)"
@@ -203,6 +203,7 @@
 		/obj/item/organ/internal/cyberimp/brain/anti_stam/hardened,
 		/obj/item/organ/internal/cyberimp/chest/nutriment/plus/hardened
 	)
+
 /datum/outfit/job/admin/nt_navy_captain/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	. = ..()
 	if(visualsOnly)
@@ -212,7 +213,6 @@
 	if(istype(I))
 		apply_to_card(I, H, get_centcom_access("Nanotrasen Navy Captain"), "Nanotrasen Navy Captain")
 	H.sec_hud_set_ID()
-
 
 /datum/outfit/job/admin/ntnavyofficer/field/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	. = ..()
