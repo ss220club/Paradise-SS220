@@ -276,6 +276,7 @@
 		"Grey" = 'icons/mob/clothing/species/grey/under/procedure.dmi',
 		"Kidan" = 'icons/mob/clothing/species/kidan/under/procedure.dmi'
 		)
+
 /* SYNDICATE */
 /obj/item/clothing/suit/space/deathsquad/officer/syndie
 	name = "куртка офицера синдиката"
