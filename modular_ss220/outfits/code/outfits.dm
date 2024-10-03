@@ -28,7 +28,7 @@
 	)
 
 // MARK: NT & Syndie Officers
-/datum/outfit/admin/syndicateofficer
+/datum/outfit/job/syndicateofficer
 	suit = /obj/item/clothing/suit/space/deathsquad/officer/syndie
 
 /datum/outfit/job/ntnavyofficer
