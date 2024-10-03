@@ -657,7 +657,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 	var/list/special_outfits = list(
 		"Naked",
 		"As Job...",
-		"As Admin Job...", //SS220 EDIT - Добавил "As Admin Job..."
+		"As Admin Job...", // SS220 EDIT - Добавил "As Admin Job..."
 		"Custom..."
 	)
 	var/list/outfits = list()
