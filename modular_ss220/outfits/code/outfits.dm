@@ -241,7 +241,7 @@
 	var/obj/item/card/id/I = H.wear_id
 	if(istype(I))
 		apply_to_card(I, H, get_centcom_access("Nanotrasen Navy Officer"), "Nanotrasen CentCom Intern")
-	I.rank= "Nanotrasen Navy Officer"
+	I.rank = "Nanotrasen Navy Officer"
 	I.assignment = "Nanotrasen CentCom Intern"
 	H.sec_hud_set_ID()
 
