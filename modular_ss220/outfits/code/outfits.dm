@@ -117,15 +117,15 @@
 		/obj/item/clothing/accessory/holster
 	)
 
-/datum/outfit/job/admin/ntspecops/phoneix
+/datum/outfit/job/admin/ntspecops/alt
 	name = "Specops alt. RSH-12, saber, bandana."
 	belt = /obj/item/storage/belt/sheath/saber
-	head = /obj/item/clothing/mask/bandana/red
 	backpack_contents = list(
 		/obj/item/gun/projectile/revolver/reclinable/rsh12,
 		/obj/item/ammo_box/speed_loader_mm127,
 		/obj/item/ammo_box/speed_loader_mm127,
-		/obj/item/ammo_box/speed_loader_mm127
+		/obj/item/ammo_box/speed_loader_mm127,
+		/obj/item/clothing/mask/bandana/red
 	)
 	suit_store = /obj/item/ammo_box/box_mm127
 
@@ -229,7 +229,7 @@
 /datum/outfit/job/admin/ntnavyofficer/intern
 	name = "NT Intern"
 	uniform = /obj/item/clothing/under/rank/centcom/intern
-	head = /obj/item/clothing/head/beret/centcom/intetn
+	head = /obj/item/clothing/head/beret/centcom/intern
 	glasses = /obj/item/clothing/glasses/hud/skills/sunglasses
 	gloves = /obj/item/clothing/gloves/fingerless
 	id = /obj/item/card/id/centcom
@@ -259,7 +259,6 @@
 
 /obj/item/clothing/head/helmet/space/deathsquad/beret/field
 	icon_state = "beret_centcom_officer"
-
 
 // MARK: SRT
 /datum/outfit/admin/srt

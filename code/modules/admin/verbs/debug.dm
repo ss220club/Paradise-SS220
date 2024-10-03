@@ -657,7 +657,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 	var/list/special_outfits = list(
 		"Naked",
 		"As Job...",
-		"Admin Job...",//SS220 EDIT // Добавил "Admin Job..."
+		"As Admin Job...", //SS220 EDIT - Добавил "As Admin Job..."
 		"Custom..."
 	)
 	var/list/outfits = list()
@@ -689,7 +689,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 		if(isnull(dresscode))
 			return
 	// SS220 EDIT START - собственно сама менюшка
-	if(dresscode == "Admin Job...")
+	if(dresscode == "As Admin Job...")
 		var/list/admin_job_paths = subtypesof(/datum/outfit/job/admin)
 		var/list/admin_job_outfits = list()
 		for(var/path in admin_job_paths)
