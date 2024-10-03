@@ -410,7 +410,7 @@
 	if(prob(input_level - (safe_levels + stabilizers * overhead) + (emagged * 5)))
 		var/area/our_area = get_area(src)
 		if(!length(active_nether_portals))
-			GLOB.major_announcement.Announce("Unexpected power spike during Bluespace Harvester Operation. Extra-dimensional intruder alert. Expected location: [our_area.name]. [emagged ? "DANGER: Emergency shutdown failed! Please proceed with manual shutdown." : auto_shutdown ? "Emergency shutdown initiated." : "Automatic shutdown disabled."]", "Bluespace Harvester Malfunction", 'sound/AI/harvester.ogg')
+			GLOB.major_announcement.Announce("Произошел непредвиденный скачок напряжения во время работы Блюспейс-сборщика. Обнаружено внепространственное вторжение! Ожидаемое местоположение: [our_area.name]. [emagged ? "ОПАСНОСТЬ: Аварийное отключение не удалось! Пожалуйста, перейдите к ручному отключению." : auto_shutdown ? "Начато аварийное отключение." : "Automatic shutdown disabled."]", "ВНИМАНИЕ: Обнаружена неисправность Блюспейс-сборщика!", 'sound/AI/harvester.ogg')
 		if(!emagged && auto_shutdown)
 			input_level = 0	//emergency shutdown unless it is disabled
 			desired_level = 0

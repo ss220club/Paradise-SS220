@@ -109,8 +109,8 @@
 
 // Return to the Core.
 /mob/living/silicon/ai/proc/core()
-	set category = "AI Commands"
-	set name = "AI Core"
+	set category = "Команды ИИ"
+	set name = "Ядро ИИ"
 
 	view_core()
 
@@ -138,13 +138,13 @@
 	eyeobj.name = "[name] (AI Eye)"
 
 /mob/living/silicon/ai/proc/toggle_acceleration()
-	set category = "AI Commands"
-	set name = "Toggle Camera Acceleration"
+	set category = "Команды ИИ"
+	set name = "Переключить ускорение камеры"
 
 	if(usr.stat == DEAD)
 		return //won't work if dead
 	acceleration = !acceleration
-	to_chat(usr, "Camera acceleration has been toggled [acceleration ? "on" : "off"].")
+	to_chat(usr, "Ускорение камеры было [acceleration ? "включено" : "отключено"].")
 
 /mob/camera/aiEye/hear_say(list/message_pieces, verb = "says", italics = 0, mob/speaker = null, sound/speech_sound, sound_vol, sound_frequency, use_voice = TRUE)
 	if(relay_speech)
