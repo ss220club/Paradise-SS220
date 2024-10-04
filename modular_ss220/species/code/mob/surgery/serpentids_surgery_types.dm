@@ -1,8 +1,7 @@
-//Procedures in this file: carapace break surgery
 //////////////////////////////////////////////////////////////////
-//						carapace SURGERY							//
+//					Хирургия для панциря						//
 //////////////////////////////////////////////////////////////////
-///Surgery Datums
+///Датумы для операций
 /datum/surgery/carapace_break
 	name = "Break carapace"
 	steps = list(

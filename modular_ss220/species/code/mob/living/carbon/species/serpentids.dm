@@ -1,7 +1,8 @@
 #define SERPENTID_CHEM_REAGENT_ID "msg"
 
-#define SERPENTID_CARAPACE_CHAMELION_STATE 5
-#define SERPENTID_CARAPACE_NOPRESSURE_STATE 10
+#define SERPENTID_CARAPACE_NOARMOR_STATE 60
+#define SERPENTID_CARAPACE_NOCHAMELION_STATE 30
+#define SERPENTID_CARAPACE_NOPRESSURE_STATE 90
 
 #define SERPENTID_GENE_DEGRADATION_DAMAGE 0.5
 #define SERPENTID_GENE_DEGRADATION_CD 60
@@ -12,18 +13,18 @@
 
 #define SERPENTID_COLD_THRESHOLD_LEVEL_BASE 250
 #define SERPENTID_COLD_THRESHOLD_LEVEL_DOWN 80
-#define SERPENTID_ARMORED_COLD_THRESHOLD 70
+#define SERPENTID_ARMORED_COLD_THRESHOLD 0
 
 #define GAS_ORGAN_CHEMISTRY_EYES 0.75
 #define GAS_ORGAN_CHEMISTRY_EARS 0.25
-#define GAS_ORGAN_CHEMISTRY_HEART 50
+#define GAS_ORGAN_CHEMISTRY_HEART 25
 #define GAS_ORGAN_CHEMISTRY_LUNGS 1
 #define GAS_ORGAN_CHEMISTRY_KIDNEYS 0.6
 
 #define SERPENTID_CHEM_MULT_CONSUPTION 0.75
 #define SERPENTID_CHEM_MULT_PRODUCTION 0.6
 
-#define SERPENTID_EYES_LOW_VISIBLE_VALUE 0.5
+#define SERPENTID_EYES_LOW_VISIBLE_VALUE 0.7
 #define SERPENTID_EYES_MAX_VISIBLE_VALUE 1
 
 #define GAS_ORGAN_CHEMISTRY_MAX 100
@@ -31,24 +32,27 @@
 #define SPIECES_BAN_HEADS_JOB (1<<12)
 
 /datum/species
-	var/disabilities = 0
 	var/can_buckle = FALSE
 	var/buckle_lying = TRUE
 	var/eyes_icon = 'icons/mob/human_face.dmi'
+	var/eyes_faces = 'icons/mob/human_face.dmi'
+	var/default_face = "bald_s"
+	var/action_mult = 1
 
 /datum/species/serpentid
-	name = "Giant Armored Serpentid"
+	name = "Serpentid"
 	name_plural = "Serpentids"
 	icobase = 'modular_ss220/species/icons/mob/human_races/r_serpentid.dmi'
 	eyes_icon = 'modular_ss220/species/icons/mob/human_races/serpentid_eyes.dmi'
 	blurb = "TODO"
 	language = "Stok"
 	siemens_coeff = 2.0
-	stun_mod = 2
-	armor = 10
-	coldmod = 2
-	heatmod = 4
+	coldmod = 0.9
+	heatmod = 1.2
 	hunger_drain = 0.3
+	action_mult = 1
+	tox_mod = 1.5
+
 
 	species_traits = list(LIPS, NO_HAIR)
 	inherent_traits = list(TRAIT_CHUNKYFINGERS, TRAIT_RESISTHEAT, TRAIT_RESISTHIGHPRESSURE, TRAIT_RESISTLOWPRESSURE, TRAIT_NOPAIN)
@@ -79,8 +83,8 @@
 		"brain" =    /obj/item/organ/internal/brain/serpentid,
 		"eyes" =     /obj/item/organ/internal/eyes/serpentid,
 		"ears" =     /obj/item/organ/internal/ears/serpentid,
-		//"l_hand" =  /obj/item/organ/internal/cyberimp/arm/toolset/serpentblade/l,
-		//"r_hand" =  /obj/item/organ/internal/cyberimp/arm/toolset/serpentblade,
+		//"l_hand" =  /obj/item/organ/internal/cyberimp/arm/toolset/mantisblade/l,
+		//"r_hand" =  /obj/item/organ/internal/cyberimp/arm/toolset/mantisblade,
 		"chest" =  /obj/item/organ/internal/cyberimp/chest/serpentid_blades,
 		)
 
@@ -111,7 +115,6 @@
 			"x" = list("ks", "kss", "ksss")
 		)
 
-	disabilities = SPIECES_BAN_HEADS_JOB
 	can_buckle = TRUE
 	buckle_lying = FALSE
 
@@ -119,6 +122,7 @@
 	var/list/valid_limbs = list()
 	var/gene_lastcall = 0
 	var/cloak_engaged = FALSE
+	var/cloaked = FALSE
 
 /datum/species/serpentid/handle_reagents(mob/living/carbon/human/H, datum/reagent/R)
 	if (R.id == SERPENTID_CHEM_REAGENT_ID)
@@ -127,15 +131,13 @@
 		return TRUE
 
 /datum/species/serpentid/handle_life(mob/living/carbon/human/H)
-	var/blood_percent = round((H.blood_volume / BLOOD_VOLUME_NORMAL)*100)
-	speed_mod = (95 - blood_percent)/100
 
 	var/armor_count = 0
 	var/gene_degradation = 0
 	for(var/obj/item/organ/external/limb in H.bodyparts)
 		if (!(limb.type in valid_limbs))
 			gene_degradation += SERPENTID_GENE_DEGRADATION_DAMAGE
-		var/limb_armor = limb.damage
+		var/limb_armor = limb.brute_dam + limb.burn_dam
 		armor_count += limb_armor
 
 	if (gene_lastcall >= SERPENTID_GENE_DEGRADATION_CD)
@@ -144,16 +146,35 @@
 	else
 		gene_lastcall += 1
 
-	armor_count = armor_count/H.bodyparts.len
-	if (armor_count <= SERPENTID_CARAPACE_CHAMELION_STATE)
-		can_stealth = TRUE
+	//Потеря брони при первом трешхолде
+	if (armor_count <= SERPENTID_CARAPACE_NOARMOR_STATE)
+		brute_mod = 0.6
+		burn_mod = 0.8
+		ADD_TRAIT(H, TRAIT_PIERCEIMMUNE, "carapace_state")
+		H.clear_alert("carapace_break_armor")
 	else
+		brute_mod = 1.3
+		burn_mod = 1.5
+		REMOVE_TRAIT(H, TRAIT_PIERCEIMMUNE, "carapace_state")
+		H.throw_alert("carapace_break_armor", /atom/movable/screen/alert/carapace_break_armor)
+
+	//Потеря стелса при втором трешхолде
+	if (armor_count <= SERPENTID_CARAPACE_NOCHAMELION_STATE)
+		can_stealth = TRUE
+		H.clear_alert("carapace_break_cloak")
+	else
+		H.throw_alert("carapace_break_cloak", /atom/movable/screen/alert/carapace_break_cloak)
 		can_stealth = FALSE
 
-	var/up = SERPENTID_COLD_THRESHOLD_LEVEL_DOWN
-	var/down = SERPENTID_COLD_THRESHOLD_LEVEL_DOWN
+	//Потеря рига при третьем трешхолде
 	var/cold = SERPENTID_COLD_THRESHOLD_LEVEL_BASE
 	var/heat = SERPENTID_HEAT_THRESHOLD_LEVEL_BASE
+	hazard_high_pressure = HAZARD_HIGH_PRESSURE
+	warning_high_pressure = WARNING_HIGH_PRESSURE
+	warning_low_pressure = WARNING_LOW_PRESSURE
+	hazard_low_pressure = HAZARD_LOW_PRESSURE
+	cold = SERPENTID_ARMORED_COLD_THRESHOLD
+	heat = SERPENTID_ARMORED_HEAT_THRESHOLD
 	if (armor_count <= SERPENTID_CARAPACE_NOPRESSURE_STATE)
 		hazard_high_pressure = 1000
 		warning_high_pressure = 1000
@@ -161,11 +182,11 @@
 		hazard_low_pressure = -1
 		cold = SERPENTID_ARMORED_COLD_THRESHOLD
 		heat = SERPENTID_ARMORED_HEAT_THRESHOLD
+		H.clear_alert("carapace_break_rig")
 	else
-		hazard_high_pressure = HAZARD_HIGH_PRESSURE
-		warning_high_pressure = WARNING_HIGH_PRESSURE
-		warning_low_pressure = WARNING_LOW_PRESSURE
-		hazard_low_pressure = HAZARD_LOW_PRESSURE
+		H.throw_alert("carapace_break_rig", /atom/movable/screen/alert/carapace_break_rig)
+	var/up = SERPENTID_COLD_THRESHOLD_LEVEL_DOWN
+	var/down = SERPENTID_COLD_THRESHOLD_LEVEL_DOWN
 	cold_level_1 = cold
 	cold_level_2 = cold_level_1 - down
 	cold_level_3 = cold_level_2 - down
@@ -178,15 +199,27 @@
 
 	. = ..()
 
-/datum/species/serpentid/proc/sneak(mob/living/M) //look if a ghost gets this, its an admins problem
-	if(((world.time - M.last_movement) >= 10 || M.move_speed >= 5)&& !M.stat && (M.mobility_flags & MOBILITY_STAND) && !M.restrained() && cloak_engaged)
+/datum/species/serpentid/proc/sneak(mob/living/M)
+	if(((world.time - M.last_movement) >= 10 || M.move_speed >= 7)&& !M.stat && (M.mobility_flags & MOBILITY_STAND) && !M.restrained() && cloak_engaged)
 		if(M.invisibility != INVISIBILITY_LEVEL_TWO)
-			M.alpha -= 125
+			M.alpha -= 25.5
 	else
 		M.reset_visibility()
 		M.alpha = 255
+		cloaked = FALSE
 	if(M.alpha == 0)
 		M.make_invisible()
+		cloaked = TRUE
+
+//Модификация граба для хвата из стелса
+/datum/species/grab(mob/living/carbon/human/user, mob/living/carbon/human/target, datum/martial_art/attacker_style)
+	. = .. ()
+	if (istype(user.dna.species, /datum/species/serpentid))
+		if (user.dna.species.cloaked)
+			for(var/X in target.grabbed_by)
+				var/obj/item/grab/G = X
+				G.state = GRAB_AGGRESSIVE
+				G.icon_state = "grabbed1"
 
 /datum/species/serpentid/on_species_gain(mob/living/carbon/human/H)
 	..()
@@ -195,178 +228,56 @@
 	H.buckle_lying = buckle_lying
 	H.update_transform()
 	H.AddComponent(/datum/component/footstep, FOOTSTEP_MOB_SLIME, 1, -6)
+	H.AddComponent(/datum/component/gadom_living)
+	H.AddComponent(/datum/component/gadom_cargo)
 	for (var/limb_name in has_limbs)
 		valid_limbs += has_limbs[limb_name]["path"]
 
+//Блокировка ботинок
 /datum/species/serpentid/can_equip(obj/item/I, slot, disable_warning = FALSE, mob/living/carbon/human/H)
 	switch(slot)
 		if(SLOT_HUD_SHOES)
 			return FALSE
 	. = .. ()
 
-/mob/living/carbon/human/MouseDrop_T(atom/movable/AM, mob/user)
-	var/datum/species/spiece = user.dna.species
-	if((user.a_intent == "grab") && spiece.type == /datum/species/serpentid)
-		if(user.incapacitated() || HAS_TRAIT(user, TRAIT_HANDS_BLOCKED) || get_dist(user, src) > 1)
-			return
-
-		if(!istype(AM))
-			return
-
-		load(AM)
-		return TRUE
+//Ограничение на роли антагов (генокрад онли)
+/datum/antag_scenario/vampire/New()
+	restricted_species += list("Serpentid")
 	. = .. ()
 
-/datum/species/serpentid/grab(mob/living/carbon/human/user, mob/living/carbon/human/target, datum/martial_art/attacker_style)
-	if (!isnull(user.loaded))
-		user.unload(user.dir)
+/datum/antag_scenario/traitor/New()
+	restricted_species += list("Serpentid")
 	. = .. ()
 
-/datum/element/strippable/mouse_drop_onto(datum/source, atom/over, mob/user)
-	var/mob/living/carbon/human/puppet = user
-	var/datum/dna/genetic_info = user.dna
-	var/datum/species/spiece = genetic_info.species
-	if((user.a_intent == "grab") && spiece.type == /datum/species/serpentid)
-		if(user.incapacitated() || HAS_TRAIT(user, TRAIT_HANDS_BLOCKED) || get_dist(user, source) > 1)
-			return
-		if(!istype(source))
-			return
-		puppet.load(source)
-		return TRUE
-
+/datum/antag_scenario/team/blood_brothers/New()
+	restricted_species += list("Serpentid")
 	. = .. ()
 
-/mob/living/carbon/human/proc/load(atom/movable/AM)
-	if(loaded || AM.anchored || get_dist(src, AM) > 1)
-		return
+//Добавление новых алертов
+/atom/movable/screen/alert/carapace_break_armor
+	name = "Слабые повреждения панциря."
+	desc = "Ваш панцирь поврежден. Нарушение целостности снизило сопротивление урону."
+	icon_state = "carapace_break_armor"
+	icon = 'modular_ss220/species/icons/mob/screen_alert.dmi'
 
-	//I'm sure someone will come along and ask why this is here... well people were dragging screen items onto the mule, and that was not cool.
-	//So this is a simple fix that only allows a selection of item types to be considered. Further narrowing-down is below.
-	if(!isitem(AM) && !ismachinery(AM) && !isstructure(AM) && !ismob(AM))
-		return
-	if(!isturf(AM.loc)) //To prevent the loading from stuff from someone's inventory or screen icons.
-		return
+/atom/movable/screen/alert/carapace_break_cloak
+	name = "Средние повреждения панциря"
+	desc = "Ваш панцирь поврежден. Нарушения целостности лишило вас возможность скрывать себя."
+	icon_state = "carapace_break_cloak"
+	icon = 'modular_ss220/species/icons/mob/screen_alert.dmi'
 
-	var/obj/structure/closet/crate/CRATE
-	if(istype(AM,/obj/structure/closet/crate))
-		CRATE = AM
-		if(CRATE) // if it's a crate, close before loading
-			CRATE.close()
+/atom/movable/screen/alert/carapace_break_rig
+	name = "Сильные повреждения панциря"
+	desc = "Ваш панцирь поврежден. Нарушения целостности лишило вас сопротивлению окружающей среде."
+	icon_state = "carapace_break_rig"
+	icon = 'modular_ss220/species/icons/mob/screen_alert.dmi'
 
-	if(isobj(AM))
-		var/obj/O = AM
-		if(O.has_buckled_mobs() || (locate(/mob) in AM)) //can't load non crates objects with mobs buckled to it or inside it.
-			return
-
-	if(isliving(AM))
-		if(!load_mob(AM))
-			return
-	else
-		AM.crate_carrying_person = src
-		AM.forceMoveCrate(src)
-
-	loaded = AM
-	update_icon()
-
-/atom/movable/proc/forceMoveCrate(atom/destination)
-	var/turf/old_loc = loc
-	loc = destination.loc
-	moving_diagonally = 0
-
-	if(old_loc)
-		old_loc.Exited(src, destination)
-		for(var/atom/movable/AM in old_loc)
-			AM.Uncrossed(src)
-
-	if(destination)
-		destination.Entered(src)
-		for(var/atom/movable/AM in destination)
-			if(AM == src)
-				continue
-			AM.Crossed(src, old_loc)
-		var/turf/oldturf = get_turf(old_loc)
-		var/turf/destturf = get_turf(destination)
-		var/old_z = (oldturf ? oldturf.z : null)
-		var/dest_z = (destturf ? destturf.z : null)
-		if(old_z != dest_z)
-			onTransitZ(old_z, dest_z)
-
-
-	Moved(old_loc, NONE)
-
-	return TRUE
-
-
-/atom/movable/Move(atom/newloc, direct = 0, movetime)
-	. = .. ()
-	var/mob/living/carbon/human/puppet = src
-	if(ishuman(puppet))
-		if(!isnull(puppet.loaded))
-			puppet.loaded.forceMoveCrate(puppet)
-
-/atom/movable
-	var/mob/living/carbon/human/crate_carrying_person = null
-
-/mob/living/carbon/human/proc/load_mob(mob/living/M)
-	can_buckle = TRUE
-	if(buckle_mob(M))
-		passenger = M
-		loaded = M
-		can_buckle = FALSE
-		return TRUE
-	return FALSE
-
-/mob/living/carbon/human/post_buckle_mob(mob/living/M)
-	.=..()
-	M.pixel_y = initial(M.pixel_y) + 2
-	M.layer = layer - 2
-
-/mob/living/carbon/human/post_unbuckle_mob(mob/living/M)
-	.=..()
-	loaded = null
-	passenger = null
-	M.layer = initial(M.layer)
-	M.pixel_y = initial(M.pixel_y)
-
-/mob/living/carbon/human/proc/unload(dirn)
-	if(!loaded)
-		return
-
-	unbuckle_all_mobs()
-
-	if(loaded)
-		loaded.forceMove(loc)
-		loaded.pixel_y = initial(loaded.pixel_y)
-		loaded.layer = initial(loaded.layer)
-		loaded.plane = initial(loaded.plane)
-		if(dirn)
-			var/turf/T = loc
-			var/turf/newT = get_step(T,dirn)
-			if(loaded.CanPass(loaded,newT)) //Can't get off onto anything that wouldn't let you pass normally
-				step(loaded, dirn)
-		loaded.crate_carrying_person = null
-		loaded = null
-
-	update_icon(UPDATE_OVERLAYS)
-
-/datum/job
-	var/additional_restrictions = 0
-
-/datum/job/captain/
-	additional_restrictions = SPIECES_BAN_HEADS_JOB
-
-/datum/job/New()
-	. = .. ()
-	blacklisted_disabilities += additional_restrictions
-
+//Обновление иконок для кастомных рас
 /datum/character_save/update_preview_icon(for_observer=0)
 	. = .. ()
 	var/datum/species/selected_specie = GLOB.all_species[species]
-	var/user_selected_disabilities = disabilities & 0xFFF
-	disabilities = user_selected_disabilities
-	disabilities |= selected_specie.disabilities
 
-	var/icon/face_s = new/icon("icon" = selected_specie.eyes_icon, "icon_state" = "bald_s")
+	var/icon/face_s = new/icon("icon" = selected_specie.eyes_faces, "icon_state" = selected_specie.default_face)
 	if(!(selected_specie.bodyflags & NO_EYES))
 		var/icon/eyes_s = new/icon("icon" = selected_specie.eyes_icon, "icon_state" = selected_specie ? selected_specie.eyes : "eyes_s")
 		eyes_s.Blend(e_colour, ICON_ADD)
@@ -383,7 +294,7 @@
 		if(eyes)
 			eyes_icon = eyes.generate_icon()
 		else //Error 404: Eyes not found!
-			eyes_icon = new('modular_ss220/species/icons/mob/human_races/serpentid_eyes.dmi', dna.species.eyes)
+			eyes_icon = new(dna.species.eyes_icon, dna.species.eyes)
 			eyes_icon.Blend("#800000", ICON_ADD)
 
 		return eyes_icon

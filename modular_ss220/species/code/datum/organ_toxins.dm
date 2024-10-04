@@ -1,0 +1,48 @@
+/*
+=== Органы-токсины ===
+Реализует процесс повреждения урона если в орагнизме обнаружен токсинный урон
+*/
+
+#define TOX_ORGANS_PROCESS 1
+
+#define COMSIG_ORGAN_TOX_HANDLE "tox_handle_organ"
+
+/datum/component/organ_toxin_damage
+	var/obj/item/organ/internal/organ = null
+	var/toxin_damage_rate
+
+/datum/component/organ_toxin_damage/Initialize(var/tox_rate = TOX_ORGANS_PROCESS)
+	. = ..()
+	organ = parent
+	toxin_damage_rate = tox_rate
+
+/datum/component/organ_toxin_damage/RegisterWithParent()
+	RegisterSignal(parent, COMSIG_ORGAN_TOX_HANDLE, PROC_REF(tox_handle_organ))
+
+/datum/component/organ_toxin_damage/UnregisterFromParent()
+	UnregisterSignal(parent, COMSIG_ORGAN_TOX_HANDLE)
+
+/datum/component/organ_toxin_damage/proc/tox_handle_organ()
+	if(organ.status & ORGAN_DEAD)
+		return
+	if(organ.owner.get_damage_amount(TOX) > 0)
+		var/list/organs = organ.owner.internal_organs
+		var/obj/item/organ/internal/liver/target_liver = null
+		var/obj/item/organ/internal/kidneys/target_kidney = null
+		for(var/obj/item/organ/internal/O in organs)
+			if (istype(O, /obj/item/organ/internal/liver))
+				target_liver = O
+			if (istype(O, /obj/item/organ/internal/kidneys))
+				target_kidney = O
+		if (src == target_kidney)
+			organ.receive_damage(organ.owner.get_damage_amount(TOX) * toxin_damage_rate, 1)
+			organ.owner.adjustToxLoss(-1 * organ.owner.get_damage_amount(TOX) * toxin_damage_rate)
+		else if (target_kidney.status == ORGAN_DEAD && src == target_liver)
+			organ.receive_damage(organ.owner.get_damage_amount(TOX) * toxin_damage_rate, 1)
+			organ.owner.adjustToxLoss(-1 * organ.owner.get_damage_amount(TOX) * toxin_damage_rate)
+		else if (target_liver.status == ORGAN_DEAD && target_kidney.status == ORGAN_DEAD)
+			organ.receive_damage(organ.owner.get_damage_amount(TOX) * toxin_damage_rate, 1)
+
+/obj/item/organ/internal/process()
+	SEND_SIGNAL(src, COMSIG_ORGAN_TOX_HANDLE)
+	. = .. ()
