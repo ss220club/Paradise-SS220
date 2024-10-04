@@ -42,8 +42,8 @@
 /datum/species/serpentid
 	name = "Serpentid"
 	name_plural = "Serpentids"
-	icobase = 'modular_ss220/species/icons/mob/human_races/r_serpentid.dmi'
-	eyes_icon = 'modular_ss220/species/icons/mob/human_races/serpentid_eyes.dmi'
+	icobase = 'modular_ss220/species/serpentids/icons/mob/r_serpentid.dmi'
+	eyes_icon = 'modular_ss220/species/serpentids/icons/mob/serpentid_eyes.dmi'
 	blurb = "TODO"
 	language = "Stok"
 	siemens_coeff = 2.0
@@ -121,8 +121,6 @@
 	var/can_stealth = TRUE
 	var/list/valid_limbs = list()
 	var/gene_lastcall = 0
-	var/cloak_engaged = FALSE
-	var/cloaked = FALSE
 
 /datum/species/serpentid/handle_reagents(mob/living/carbon/human/H, datum/reagent/R)
 	if (R.id == SERPENTID_CHEM_REAGENT_ID)
@@ -194,32 +192,20 @@
 	heat_level_2 = heat_level_1 + up
 	heat_level_3 = heat_level_2 + up
 
-	if (can_stealth)
-		sneak(H)
-
 	. = ..()
-
-/datum/species/serpentid/proc/sneak(mob/living/M)
-	if(((world.time - M.last_movement) >= 10 || M.move_speed >= 7)&& !M.stat && (M.mobility_flags & MOBILITY_STAND) && !M.restrained() && cloak_engaged)
-		if(M.invisibility != INVISIBILITY_LEVEL_TWO)
-			M.alpha -= 25.5
-	else
-		M.reset_visibility()
-		M.alpha = 255
-		cloaked = FALSE
-	if(M.alpha == 0)
-		M.make_invisible()
-		cloaked = TRUE
 
 //Модификация граба для хвата из стелса
 /datum/species/grab(mob/living/carbon/human/user, mob/living/carbon/human/target, datum/martial_art/attacker_style)
 	. = .. ()
-	if (istype(user.dna.species, /datum/species/serpentid))
-		if (user.dna.species.cloaked)
+	var/datum/species/serpentid/active_spieces =  user.dna.species
+	if (istype(active_spieces, /datum/species/serpentid))
+		if (user.invisibility == INVISIBILITY_LEVEL_TWO)
 			for(var/X in target.grabbed_by)
 				var/obj/item/grab/G = X
 				G.state = GRAB_AGGRESSIVE
 				G.icon_state = "grabbed1"
+				user.reset_visibility()
+
 
 /datum/species/serpentid/on_species_gain(mob/living/carbon/human/H)
 	..()

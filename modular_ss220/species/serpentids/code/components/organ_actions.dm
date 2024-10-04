@@ -4,7 +4,7 @@
 
 /obj/item/organ/internal
 	var/radial_additive_state = ""
-	var/radial_additive_icon = 'modular_ss220/species/icons/mob/human_races/organs.dmi'
+	var/radial_additive_icon = 'modular_ss220/species/serpentids/icons/organs.dmi'
 
 /obj/item/organ/internal/proc/check_actions(mob/user)
 	return (owner && owner == user && owner.stat != DEAD && (src in owner.internal_organs))

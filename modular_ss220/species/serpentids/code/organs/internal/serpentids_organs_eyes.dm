@@ -7,12 +7,12 @@
 	see_in_dark = 2
 	flash_protect = FLASH_PROTECTION_EXTRA_SENSITIVE
 	tint = FLASH_PROTECTION_NONE
-	actions_types = 		list(/datum/action/item_action/organ_action/use)
-	action_icon = 			list(/datum/action/item_action/organ_action/use = 'modular_ss220/species/icons/mob/human_races/organs.dmi')
-	action_icon_state = 	list(/datum/action/item_action/organ_action/use = "gas_abilities")
+	//ctions_types = 		list(/datum/action/item_action/organ_action/use)
+	//action_icon = 			list(/datum/action/item_action/organ_action/use = 'modular_ss220/species/serpentids/icons/organs.dmi')
+	//action_icon_state = 	list(/datum/action/item_action/organ_action/use = "gas_abilities")
 	chemical_id = SERPENTID_CHEM_REAGENT_ID
-	radial_additive_state = "gas_eyes_0"
-	var/eye_shielded = FALSE
+	//radial_additive_state = "gas_eyes_0"
+
 	var/decay_rate = 1
 	var/decay_recovery = BASIC_RECOVER_VALUE
 	var/organ_process_toxins = 0.35
@@ -27,11 +27,13 @@
 	var/mob/living/carbon/human/H = HA
 	if(!istype(H))
 		H = owner
-	var/icon/eyes_icon = new /icon('modular_ss220/species/icons/mob/human_races/serpentid_eyes.dmi', H.dna.species.eyes)
+	var/icon/eyes_icon = new /icon('modular_ss220/species/serpentids/icons/mob/serpentid_eyes.dmi', H.dna.species.eyes)
 	eyes_icon.Blend(eye_color, ICON_ADD)
 
 	return eyes_icon
 
+/*
+Оставлено на случай радиального меню
 /obj/item/organ/internal/eyes/serpentid/insert(mob/living/carbon/M, special = 0, dont_remove_slot = 0)
 	. = .. ()
 	buttons_resort()
@@ -42,19 +44,7 @@
 
 /obj/item/organ/internal/eyes/serpentid/ui_action_click()
 	open_actions(owner)
-
-/obj/item/organ/internal/eyes/serpentid/switch_mode(var/force_off = FALSE)
-	if(eye_shielded)
-		flash_protect = initial(flash_protect)
-		tint = initial(tint)
-		owner.update_sight()
-		eye_shielded = FALSE
-	else
-		flash_protect = FLASH_PROTECTION_WELDER //Adjust the user's eyes' flash protection
-		tint = FLASH_PROTECTION_FLASH
-		owner.update_sight()
-		eye_shielded = TRUE
-	radial_additive_state = "gas_eyes_[eye_shielded]"
+*/
 
 /obj/item/organ/internal/eyes/serpentid/on_life()
 	. = ..()

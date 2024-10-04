@@ -1,3 +1,21 @@
+/obj/item/seeds/cabbage/New()
+	. = .. ()
+	reagents_add += list("cabbagilium" = 0.01)
+
+/datum/reagent/cabbagilium
+	name = "Cabbagilium"
+	id = "cabbagilium"
+	description = "An unsual reagent that can be found in cabbages and helpful in toxic treatments."
+	reagent_state = LIQUID
+	color = "#335517"
+	taste_description = "awful but healthy"
+	goal_department = "Science"
+	goal_difficulty = REAGENT_GOAL_SKIP
+
+/datum/reagent/cabbagilium/on_mob_life(mob/living/M)
+	var/update_flags = STATUS_UPDATE_NONE
+	update_flags |= M.adjustCloneLoss(-0.02*REAGENTS_EFFECT_MULTIPLIER, FALSE)
+
 //Расширение на химикаты - новый химикат для серпентидов
 //Химикат позволяет ускорять в 2 раза действия серпентидов (погрузка людей/ящиков, активация клинков)
 //Для остальных видов он ускоряет действия при движении по прямой (если не двигаться более 1 секунды или сменить направление, бонус сбросится)
@@ -11,7 +29,7 @@
 	id = "serpadrone"
 	description = "An unsual reagent that allows serptentids to haste their long-term actions and speed up them."
 	reagent_state = LIQUID
-	color = "#c22a44"
+	color = "#ff002b"
 	taste_description = "television static"
 	metabolization_rate = 0.1
 	process_flags = ORGANIC
@@ -81,6 +99,8 @@
 		REMOVE_TRAIT(L, TRAIT_GOTTAGONOTSOFAST, id)
 	new /obj/effect/temp_visual/decoy/serpadrone_afterimage(old_loc, L, 0.75 SECONDS)
 	last_move = L.last_movement_dir
+/*
+Временное отключение урона сердцу (временное, ибо для баланса)
 
 /datum/reagent/serpadrone/on_mob_life(mob/living/carbon/L)
 	. = ..()
@@ -93,6 +113,7 @@
 			if(datum_heart)
 				var/obj/item/organ/internal/our_heart = datum_heart.linked_organ
 				our_heart.receive_damage(heart_damage, TRUE)
+				*/
 
 /// So. If a person changes up their hud settings (Changing their ui theme), the visual effects for this reagent will break, and they will be able to see easily. This 3 part proc waits for the plane controlers to be setup, and over 2 other procs, rengages the visuals
 /datum/reagent/serpadrone/proc/no_hud_cheese(mob/living/carbon/L)
@@ -126,3 +147,12 @@
 
 #undef SERPADRONE_SCREEN_FILTER
 #undef SERPADRONE_SCREEN_BLUR
+
+/datum/chemical_reaction/serpadrone
+	name = "Serpadrone"
+	id = "serpadrone"
+	result = "serpadrone"
+	required_reagents = list("msg" = 5, "cabbagilium" = 10)
+	result_amount = 1
+	mix_message = "The mixture fizzes into a vibrant red solution that doesn't stay still."
+	mix_sound = 'sound/goonstation/misc/fuse.ogg'
