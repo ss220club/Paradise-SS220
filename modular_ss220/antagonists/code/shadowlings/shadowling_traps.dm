@@ -70,20 +70,29 @@
 	stat_allowed = UNCONSCIOUS
 	var/trap_type = /obj/structure/shadow_trap
 
-/datum/spell/shadowling/self/place_trap/cast(list/targets, mob/user)
+/datum/spell/shadowling/self/place_trap/can_cast(mob/user, charge_check, show_message)
+	. = ..()
 	if(!istype(user, /mob/living/simple_animal/demon/shadow_father))
 		to_chat(user, span_warning("Вы должны быть отцом тьмы для установки ловушек."))
-		return
+		return FALSE
 	var/mob/living/simple_animal/demon/shadow_father/father = user
 	if(ismob(father.pulling))
 		to_chat(user, span_warning("Вы не можете устанавливать ловушки, пока тащите кого-то."))
-		return
+		return FALSE
 	if(father.placed_traps.len >= MAX_SHADOWLING_TRAPS)
 		to_chat(user, span_warning("Вы построили уже построили максимум ([MAX_SHADOWLING_TRAPS]) ловушек. Разрушьте старые для установки новых."))
-		return
+		return FALSE
+	return
+
+/datum/spell/shadowling/self/place_trap/cast(list/targets, mob/user)
+	var/mob/living/simple_animal/demon/shadow_father/father = user
 	var/obj/structure/shadow_trap/trap = new trap_type(get_turf(father))
 	father.placed_traps.Add(trap)
 	trap.created_by = father
+
+	for(var/datum/spell/shadowling/self/place_trap/spell in user.mob_spell_list)
+		if(spell != src)
+			spell.cooldown_handler.start_recharge()
 
 // Stun Trap
 // Disable headset, stun for 6 seconds and disable light

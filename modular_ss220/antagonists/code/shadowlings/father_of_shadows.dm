@@ -1,3 +1,6 @@
+#define HEALTH_DECREASING_AMOUNT 70
+#define MAX_CONSUMED_CORPSES 5
+
 /mob/living/simple_animal/demon/shadow_father	// Can't inherit from demon/shadow because of 'initialize' proc
 	name = "отец теней"
 	desc = "Крупное демоническое существо, сотканное из теней. Из его красных глаз сочится потусторонняя энергия."
@@ -19,12 +22,13 @@
 	see_in_dark = 10
 	death_sound = 'sound/shadowdemon/shadowdeath.ogg'
 	speed = 1
-	maxHealth = 350
-	health = 350
+	maxHealth = 400
+	health = 400
 
 	var/thrown_alert
 	var/list/obj/structure/shadow_trap/placed_traps = list()
-	var/is_converting = FALSE
+	var/is_consuming = FALSE
+	var/consumed = 0
 
 /mob/living/simple_animal/demon/shadow_father/Login()
 	. = ..()
@@ -43,8 +47,6 @@
 		return
 	var/datum/atom_hud/hud = GLOB.huds[ANTAG_HUD_SHADOW]
 	hud.add_hud_to(src)
-
-
 
 /mob/living/simple_animal/demon/shadow_father/Initialize(mapload)
 	. = ..()
@@ -112,21 +114,34 @@
 	if(target.stat != DEAD)
 		return ..()
 
-	if(isLivingSSD(target) && client.send_ssd_warning(target)) //Similar to revenants, only wrap SSD targets if you've accepted the SSD warning
+	if(isLivingSSD(target) && client.send_ssd_warning(target) || isnull(target.mind))
 		return
 
-	if(is_converting)
-		to_chat(src, "<span class='notice'>We are already wrapping something.</span>")
+	if(is_consuming)
+		to_chat(src, span_notice("Мы уже поглощаем кого-то."))
 		return
 
-	visible_message("<span class='danger'>[src] begins wrapping [target] in shadowy threads.</span>")
-	is_converting = TRUE
-	if(!do_after(src, 4 SECONDS, FALSE, target = target))
-		is_converting = FALSE
+	if(consumed == MAX_CONSUMED_CORPSES)
 		return
 
-	target.visible_message("<span class='warning'><b>[src] envelops [target] into an ethereal cocoon, and darkness begins to creep from it.</b></span>")
-	var/obj/structure/shadowcocoon/C = new(get_turf(target))
-	target.extinguish_light() // may as well be safe
-	target.forceMove(C)
-	is_converting = FALSE
+	visible_message(span_danger("[src] начинает окутывать [target] теневой пеленой!"))
+	is_consuming = TRUE
+	playsound(src, 'modular_ss220/antagonists/sound/shadowlings/shadow_consumption_start.ogg', 50, TRUE)
+	if(!do_after(src, 15 SECONDS, FALSE, target = target))
+		is_consuming = FALSE
+		return
+
+	target.visible_message(span_danger("[src] полностью [target] тенями и тело исчезает в потусторонней пелене! [src], похоже, стал слабее!"))
+	qdel(target)
+	playsound(src, 'modular_ss220/antagonists/sound/shadowlings/shadow_consumption_end.ogg', 50, TRUE)
+	maxHealth -= HEALTH_DECREASING_AMOUNT
+	health = clamp(health, 0, maxHealth)
+	consumed++
+	if(consumed < MAX_CONSUMED_CORPSES)
+		to_chat(src, span_purple("Мы успешно погрузили тело жервты во тьму. Мы слабеем, но теперь после нашей смерти в мир явится больше тенелингов. Мы можем поглотить ещё [MAX_CONSUMED_CORPSES - consumed] тел."))
+	else
+		to_chat(src, span_purple("Это была последняя жертва. Всё что мы теперь можем сделать, это начать прорыв завесы."))
+	is_consuming = FALSE
+
+#undef HEALTH_DECREASING_AMOUNT
+#undef MAX_CONSUMED_CORPSES
