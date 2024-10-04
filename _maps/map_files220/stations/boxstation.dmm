@@ -276,21 +276,20 @@
 /turf/simulated/floor/plasteel,
 /area/station/security/main)
 "acH" = (
-/obj/structure/shelf/security,
-/obj/effect/turf_decal/delivery/red/hollow,
-/obj/item/grenade/barrier{
-	pixel_x = 5;
-	pixel_y = 5
+/obj/structure/table/reinforced,
+/obj/item/storage/box/trackimp{
+	pixel_y = 8;
+	pixel_x = -6
 	},
-/obj/item/grenade/barrier{
-	pixel_x = 3;
-	pixel_y = 3
+/obj/item/storage/box/chemimp{
+	pixel_x = 6;
+	pixel_y = 8
 	},
-/obj/item/grenade/barrier,
-/obj/item/grenade/barrier{
-	pixel_x = -3;
-	pixel_y = -3
+/obj/item/storage/lockbox/mindshield,
+/obj/item/storage/lockbox/mindshield{
+	pixel_y = 4
 	},
+/obj/item/storage/toolbox/mechanical,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "vault"
@@ -392,14 +391,28 @@
 /area/station/maintenance/aft)
 "adb" = (
 /obj/structure/shelf/security,
-/obj/item/storage/lockbox/mindshield,
-/obj/item/storage/box/trackimp,
-/obj/item/storage/box/chemimp{
-	pixel_x = 4;
-	pixel_y = 3
+/obj/item/grenade/barrier{
+	pixel_x = -6;
+	pixel_y = 4
 	},
-/obj/item/storage/toolbox/mechanical,
-/obj/effect/turf_decal/delivery/red/hollow,
+/obj/item/grenade/barrier{
+	pixel_y = 4
+	},
+/obj/item/grenade/barrier{
+	pixel_y = 4;
+	pixel_x = 6
+	},
+/obj/item/grenade/barrier{
+	pixel_x = -6;
+	pixel_y = -4
+	},
+/obj/item/grenade/barrier{
+	pixel_y = -4
+	},
+/obj/item/grenade/barrier{
+	pixel_y = -4;
+	pixel_x = 6
+	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "vault"
@@ -817,7 +830,6 @@
 /obj/machinery/camera{
 	c_tag = "Brig Secure Armory North"
 	},
-/obj/effect/turf_decal/delivery/red/hollow,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "vault"
@@ -1094,7 +1106,6 @@
 /area/station/maintenance/asmaint2)
 "agS" = (
 /obj/machinery/flasher/portable,
-/obj/effect/turf_decal/delivery/red/hollow,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "vault"
@@ -1369,21 +1380,24 @@
 /area/station/security/brig)
 "aif" = (
 /obj/structure/shelf/security,
-/obj/item/storage/box/teargas{
-	pixel_x = -3;
-	pixel_y = -3
-	},
-/obj/item/storage/box/handcuffs,
 /obj/item/storage/box/flashbangs{
-	pixel_x = -2;
-	pixel_y = -2
+	pixel_x = -6;
+	pixel_y = 8
+	},
+/obj/item/storage/box/teargas{
+	pixel_y = 8
+	},
+/obj/item/storage/box/seccarts{
+	pixel_y = 8;
+	pixel_x = 6
+	},
+/obj/item/storage/box/handcuffs{
+	pixel_x = -6
 	},
 /obj/item/storage/box/handcuffs,
-/obj/item/storage/box/seccarts{
-	pixel_x = 3;
-	pixel_y = 2
+/obj/item/storage/box/handcuffs{
+	pixel_x = 6
 	},
-/obj/effect/turf_decal/delivery/red/hollow,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "vault"
@@ -1828,7 +1842,6 @@
 "akl" = (
 /obj/machinery/flasher/portable,
 /obj/machinery/status_display/directional/north,
-/obj/effect/turf_decal/delivery/red/hollow,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "vault"
@@ -79791,7 +79804,6 @@
 /area/station/maintenance/apmaint)
 "pEE" = (
 /obj/machinery/flasher/portable,
-/obj/effect/turf_decal/delivery/red/hollow,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "vault"
@@ -134092,7 +134104,7 @@ akl
 pEE
 ahV
 aiq
-aiN
+aiB
 ajr
 guL
 kAr
@@ -134349,7 +134361,7 @@ aeR
 agS
 jUf
 aip
-aiB
+aiN
 ajq
 ahG
 dCA
