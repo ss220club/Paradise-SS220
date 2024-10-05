@@ -6685,6 +6685,16 @@
 	icon_state = "brown"
 	},
 /area/station/supply/qm)
+"aDM" = (
+/obj/structure/closet/secure_closet/explorer,
+/obj/item/gun/energy/laser/awaymission_aeg/rnd,
+/obj/item/radio/off,
+/obj/effect/turf_decal/delivery/hollow,
+/turf/simulated/floor/plasteel{
+	dir = 8;
+	icon_state = "darkbrown"
+	},
+/area/station/supply/expedition)
 "aDN" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -14450,15 +14460,7 @@
 "bjG" = (
 /obj/effect/turf_decal/delivery/hollow,
 /obj/structure/rack,
-/obj/item/storage/firstaid/regular{
-	pixel_y = 10
-	},
-/obj/item/storage/firstaid/regular{
-	pixel_y = 6
-	},
-/obj/item/storage/firstaid/regular{
-	pixel_y = 2
-	},
+/obj/item/storage/firstaid/regular,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "purple"
@@ -31209,6 +31211,7 @@
 	d2 = 4;
 	icon_state = "0-4"
 	},
+/obj/effect/landmark/start/explorer,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "darkbrowncorners"
@@ -31442,6 +31445,7 @@
 /area/station/engineering/control)
 "cuX" = (
 /obj/machinery/light_switch/north,
+/obj/effect/landmark/start/explorer,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "darkbrowncorners"
@@ -31481,6 +31485,9 @@
 	pixel_y = -3
 	},
 /obj/item/crowbar,
+/obj/item/stack/rods{
+	amount = 8
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/ai_monitored/storage/eva)
 "cvu" = (
@@ -31497,9 +31504,8 @@
 /turf/simulated/floor/plasteel/dark,
 /area/station/security/range)
 "cvB" = (
-/obj/structure/table/reinforced,
-/obj/machinery/cell_charger,
-/obj/item/stock_parts/cell/high,
+/obj/structure/dispenser/oxygen,
+/obj/effect/turf_decal/delivery/hollow,
 /turf/simulated/floor/plasteel/dark,
 /area/station/ai_monitored/storage/eva)
 "cvE" = (
@@ -31522,8 +31528,8 @@
 	},
 /area/station/hallway/secondary/bridge)
 "cvJ" = (
-/obj/machinery/recharge_station,
 /obj/effect/turf_decal/delivery/hollow,
+/obj/machinery/suit_storage_unit/expedition,
 /turf/simulated/floor/plasteel{
 	dir = 5;
 	icon_state = "darkbrown"
@@ -31956,7 +31962,10 @@
 /area/station/engineering/control)
 "cxJ" = (
 /obj/structure/extinguisher_cabinet/directional/east,
-/obj/machinery/suit_storage_unit/expedition,
+/obj/structure/closet/secure_closet/explorer,
+/obj/item/gun/energy/laser/awaymission_aeg/rnd,
+/obj/item/radio/off,
+/obj/effect/turf_decal/delivery/hollow,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "darkbrown"
@@ -32128,9 +32137,9 @@
 	},
 /obj/machinery/light/directional/west,
 /obj/structure/closet/secure_closet/explorer,
-/obj/effect/turf_decal/delivery/hollow,
 /obj/item/gun/energy/laser/awaymission_aeg/rnd,
 /obj/item/radio/off,
+/obj/effect/turf_decal/delivery/hollow,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "darkbrown"
@@ -32243,9 +32252,9 @@
 /obj/machinery/light/directional/east,
 /obj/item/radio/intercom/directional/east,
 /obj/structure/closet/secure_closet/explorer,
-/obj/effect/turf_decal/delivery/hollow,
 /obj/item/gun/energy/laser/awaymission_aeg/rnd,
 /obj/item/radio/off,
+/obj/effect/turf_decal/delivery/hollow,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "darkbrown"
@@ -32660,10 +32669,7 @@
 	},
 /area/station/supply/expedition)
 "czW" = (
-/obj/structure/closet/secure_closet/explorer,
-/obj/effect/turf_decal/delivery/hollow,
-/obj/item/gun/energy/laser/awaymission_aeg/rnd,
-/obj/item/radio/off,
+/obj/machinery/economy/vending/exploredrobe,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "darkbrown"
@@ -32679,6 +32685,7 @@
 /obj/effect/turf_decal/siding/yellow{
 	dir = 5
 	},
+/obj/structure/closet/crate/internals,
 /turf/simulated/floor/plasteel/dark,
 /area/station/hallway/secondary/bridge)
 "cAb" = (
@@ -32983,11 +32990,9 @@
 /turf/simulated/floor/plasteel/dark,
 /area/station/ai_monitored/storage/eva)
 "cBm" = (
-/obj/structure/table/reinforced,
 /obj/machinery/alarm/directional/east,
-/obj/item/stack/rods{
-	amount = 8
-	},
+/obj/structure/dispenser/oxygen,
+/obj/effect/turf_decal/delivery/hollow,
 /turf/simulated/floor/plasteel/dark,
 /area/station/ai_monitored/storage/eva)
 "cBn" = (
@@ -33059,7 +33064,6 @@
 /area/station/supply/expedition)
 "cBw" = (
 /obj/machinery/firealarm/directional/west,
-/obj/machinery/economy/vending/exploredrobe,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "darkbrown"
@@ -33330,8 +33334,17 @@
 /area/station/ai_monitored/storage/eva)
 "cCK" = (
 /obj/structure/table/reinforced,
-/obj/item/storage/belt/utility,
-/obj/item/radio/alternative,
+/obj/item/storage/belt/utility{
+	pixel_y = -6
+	},
+/obj/item/stack/packageWrap{
+	pixel_y = 6;
+	pixel_x = -2
+	},
+/obj/item/hand_labeler{
+	pixel_y = 7;
+	pixel_x = 3
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/ai_monitored/storage/eva)
 "cCL" = (
@@ -33394,7 +33407,7 @@
 /turf/simulated/floor/carpet,
 /area/station/public/vacant_office/secondary)
 "cCV" = (
-/obj/machinery/mineral/equipment_vendor/explorer,
+/obj/structure/closet/secure_closet/personal,
 /turf/simulated/floor/plasteel{
 	dir = 10;
 	icon_state = "darkbrown"
@@ -33402,6 +33415,7 @@
 /area/station/supply/expedition)
 "cCW" = (
 /obj/machinery/light_switch/south,
+/obj/structure/closet/secure_closet/personal,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "darkbrowncorners"
@@ -33439,7 +33453,7 @@
 /turf/simulated/floor/plating,
 /area/station/supply/expedition)
 "cDa" = (
-/obj/structure/dispenser/oxygen,
+/obj/structure/closet/secure_closet/personal,
 /turf/simulated/floor/plasteel{
 	dir = 6;
 	icon_state = "darkbrown"
@@ -33516,9 +33530,11 @@
 /area/station/public/fitness)
 "cDs" = (
 /obj/structure/table/reinforced,
-/obj/item/stack/packageWrap,
-/obj/item/hand_labeler,
-/obj/machinery/newscaster/directional/east,
+/obj/machinery/cell_charger,
+/obj/item/stock_parts/cell/high,
+/obj/item/radio/alternative{
+	pixel_x = 5
+	},
 /turf/simulated/floor/plasteel/dark,
 /area/station/ai_monitored/storage/eva)
 "cDt" = (
@@ -42857,43 +42873,8 @@
 /turf/simulated/floor/plating,
 /area/station/science/genetics)
 "dte" = (
-/obj/structure/closet/crate/internals,
-/obj/item/clothing/suit/storage/hazardvest,
-/obj/item/clothing/suit/storage/hazardvest,
-/obj/item/clothing/suit/storage/hazardvest,
-/obj/item/clothing/suit/storage/hazardvest,
-/obj/item/clothing/suit/storage/hazardvest,
-/obj/item/tank/internals/emergency_oxygen/double,
-/obj/item/tank/internals/emergency_oxygen/double,
-/obj/item/tank/internals/emergency_oxygen/double,
-/obj/item/tank/internals/emergency_oxygen/double,
-/obj/item/tank/internals/emergency_oxygen/double,
-/obj/item/clothing/mask/breath,
-/obj/item/clothing/mask/breath,
-/obj/item/clothing/mask/breath,
-/obj/item/clothing/mask/breath,
-/obj/item/clothing/mask/breath,
-/obj/item/clothing/head/hardhat/orange{
-	name = "protective hat";
-	pixel_y = 8
-	},
-/obj/item/clothing/head/hardhat/orange{
-	name = "protective hat";
-	pixel_y = 8
-	},
-/obj/item/clothing/head/hardhat/orange{
-	name = "protective hat";
-	pixel_y = 8
-	},
-/obj/item/clothing/head/hardhat/orange{
-	name = "protective hat";
-	pixel_y = 8
-	},
-/obj/item/clothing/head/hardhat/orange{
-	name = "protective hat";
-	pixel_y = 8
-	},
 /obj/machinery/alarm/directional/south,
+/obj/structure/closet/secure_closet/personal,
 /turf/simulated/floor/plasteel{
 	icon_state = "darkbrowncorners"
 	},
@@ -47908,10 +47889,7 @@
 	},
 /area/station/security/range)
 "dTu" = (
-/obj/structure/closet/secure_closet/explorer,
-/obj/effect/turf_decal/delivery/hollow,
-/obj/item/gun/energy/laser/awaymission_aeg/rnd,
-/obj/item/radio/off,
+/obj/machinery/mineral/equipment_vendor/explorer,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "darkbrown"
@@ -55478,12 +55456,8 @@
 	},
 /area/station/maintenance/abandoned_garden)
 "fQh" = (
-/obj/structure/table,
-/obj/item/storage/firstaid/regular{
-	pixel_y = 6
-	},
-/obj/item/storage/firstaid/regular,
 /obj/machinery/requests_console/directional/west,
+/obj/machinery/suit_storage_unit/expedition,
 /turf/simulated/floor/plasteel{
 	dir = 9;
 	icon_state = "darkbrown"
@@ -68972,6 +68946,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
+/obj/effect/turf_decal/caution,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "darkblue"
@@ -76708,6 +76683,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
+/obj/effect/turf_decal/caution,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "darkblue"
@@ -89052,6 +89028,7 @@
 	d2 = 2;
 	icon_state = "0-2"
 	},
+/obj/structure/closet/secure_closet/exile,
 /turf/simulated/floor/plasteel/dark,
 /area/station/ai_monitored/storage/eva)
 "pKK" = (
@@ -93141,13 +93118,12 @@
 	},
 /area/station/medical/medbay)
 "qUb" = (
-/obj/structure/dispenser/oxygen,
-/obj/effect/turf_decal/delivery/hollow,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/machinery/recharge_station,
 /turf/simulated/floor/plasteel/dark,
 /area/station/ai_monitored/storage/eva)
 "qUc" = (
@@ -104511,7 +104487,6 @@
 /turf/simulated/floor/plating,
 /area/station/engineering/ai_transit_tube)
 "unT" = (
-/obj/structure/rack,
 /obj/effect/turf_decal/delivery/hollow,
 /obj/item/storage/toolbox/emergency{
 	pixel_y = 10
@@ -104522,6 +104497,7 @@
 /obj/item/pickaxe,
 /obj/item/pickaxe,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/shelf/supply,
 /turf/simulated/floor/plasteel{
 	dir = 5;
 	icon_state = "brown"
@@ -156461,7 +156437,7 @@ cvG
 csV
 fQh
 nKu
-nKu
+aDM
 cyr
 czW
 cBw
@@ -156720,7 +156696,7 @@ cul
 cBv
 cBv
 cyt
-cBv
+cCX
 cCX
 cCW
 csV
@@ -157234,7 +157210,7 @@ cuX
 cBv
 cBv
 cyu
-cBv
+cCX
 ciY
 dte
 csV
