@@ -7,6 +7,7 @@
 	righthand_file = 'modular_ss220/objects/icons/inhands/guns_righthand.dmi'
 	item_state = "skrell_carbine"
 	icon_state = "skrell_carbine"
+	fire_sound = 'modular_ss220/objects/sound/weapons/gunshots/blaster.ogg'
 	cell_type = /obj/item/stock_parts/cell/skrell_carbine_cell
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/skrell_light, /obj/item/ammo_casing/energy/laser/skrell_assault)
 	origin_tech = "combat=6;magnets=5"
@@ -21,7 +22,6 @@
 	projectile_type = /obj/item/projectile/beam/laser/skrell_light
 	muzzle_flash_color = LIGHT_COLOR_LAVENDER
 	select_name = "light"
-	e_cost
 
 /obj/item/ammo_casing/energy/laser/skrell_assault
 	projectile_type = /obj/item/projectile/beam/pulse/skrell_laser_assault
@@ -37,19 +37,18 @@
 
 /obj/item/projectile/beam/laser/skrell_light
 	name = "laser"
-	icon_state = "bluelaser"
+	icon_state = "purple_laser"
 	damage = 23
 	impact_effect_type = /obj/effect/temp_visual/impact_effect/purple_laser
 	light_color = LIGHT_COLOR_LAVENDER
-	forcedodge = 1
 
 /obj/item/projectile/beam/pulse/skrell_laser_assault
 	name = "heavy laser"
 	icon_state = "u_laser_alt"
 	damage = 10
-	stamina = 60
-	impact_effect_type = /obj/effect/temp_visual/impact_effect/purple_laser
-	light_color = LIGHT_COLOR_LAVENDER
+	stamina = 80
+	impact_effect_type = /obj/effect/temp_visual/impact_effect/blue_laser
+	light_color = LIGHT_COLOR_DARK_BLUE
 	weakened_against_rwalls = TRUE
 
 /obj/item/stock_parts/cell/skrell_carbine_cell
@@ -68,14 +67,14 @@
 	item_state = "sniper"
 	fire_sound = 'modular_ss220/objects/sound/weapons/gunshots/railgun.ogg'
 	recoil = 0
-	fire_delay = 25
+	fire_delay = 35
 	slot_flags = SLOT_FLAG_BELT
 	zoomable = FALSE
 	can_suppress = FALSE
 	mag_type = /obj/item/ammo_box/magazine/skrell_magazine
 
 /obj/item/gun/projectile/automatic/sniper_rifle/skrell_rifle/elite
-	fire_delay = 15
+	fire_delay = 20
 	zoomable = TRUE
 	mag_type = /obj/item/ammo_box/magazine/skrell_magazine/skrell_magazine_elite
 
@@ -94,6 +93,7 @@
 	icon_state = "skrell_magazine_elite"
 	multi_sprite_step = 7
 	max_ammo = 8
+	ammo_type = /obj/item/ammo_casing/railgun/railgun_strong
 
 /obj/item/ammo_casing/railgun
 	name = "railgun bullet"
@@ -103,9 +103,18 @@
 	caliber = "railgun"
 	projectile_type = /obj/item/projectile/bullet/railgun
 
+/obj/item/ammo_casing/railgun/railgun_strong
+	projectile_type = /obj/item/projectile/bullet/railgun/railgun_strong
+
 /obj/item/projectile/bullet/railgun
-	damage = 45
-	weaken = 0.5 SECONDS
-	armour_penetration_flat = 30
+	damage = 30
+	armour_penetration_flat = 50
 	pass_flags = PASSTABLE | PASSGRILLE | PASSGIRDER
-	speed = 0.5
+	speed = 0
+	icon_state = "gauss_silenced"
+	light_color = LIGHT_COLOR_LIGHT_CYAN
+
+/obj/item/projectile/bullet/railgun/railgun_strong
+	damage = 45
+	armour_penetration_flat = 30
+	weaken = 0.2
