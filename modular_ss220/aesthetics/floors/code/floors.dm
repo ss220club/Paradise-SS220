@@ -23,9 +23,6 @@
 	icon_state = "smooth"
 
 // MARK: LIGHT FLOORS
-/turf/simulated/floor/light
-	icon = 'icons/turf/floors.dmi'
-
 /turf/simulated/floor/light/red
 	color = "#f23030"
 	light_color = "#f23030"
