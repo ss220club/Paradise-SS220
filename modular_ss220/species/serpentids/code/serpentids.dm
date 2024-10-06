@@ -1,16 +1,8 @@
-/datum/species
-	var/can_buckle = FALSE
-	var/buckle_lying = TRUE
-	var/eyes_icon = 'icons/mob/human_face.dmi'
-	var/eyes_faces = 'icons/mob/human_face.dmi'
-	var/default_face = "bald_s"
-	var/action_mult = 1
-
 /datum/species/serpentid
 	name = "Serpentid"
 	name_plural = "Serpentids"
 	icobase = 'modular_ss220/species/serpentids/icons/mob/r_serpentid.dmi'
-	eyes_icon = 'modular_ss220/species/serpentids/icons/mob/serpentid_eyes.dmi'
+	eyes_icon = 'modular_ss220/species/serpentids/icons/mob/r_serpentid_eyes.dmi'
 	blurb = "TODO"
 	language = "Stok"
 	siemens_coeff = 2.0
@@ -19,7 +11,7 @@
 	hunger_drain = 0.3
 	action_mult = 1
 	tox_mod = 1.5
-
+	eyes = "serpentid_eyes_s"
 
 	species_traits = list(LIPS, NO_HAIR)
 	inherent_traits = list(TRAIT_CHUNKYFINGERS, TRAIT_RESISTHEAT, TRAIT_RESISTHIGHPRESSURE, TRAIT_RESISTLOWPRESSURE, TRAIT_NOPAIN)
@@ -35,7 +27,6 @@
 	skinned_type = /obj/item/stack/sheet/animalhide/lizard
 	flesh_color = "#34AF10"
 	base_color = "#066000"
-	eyes = "serpentid_eyes_s"
 
 	exotic_blood = "facid"
 	blood_color = "#b0fc22"

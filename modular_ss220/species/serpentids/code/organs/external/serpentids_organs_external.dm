@@ -32,7 +32,7 @@
 		eye_shielded = FALSE
 	else
 		E.flash_protect = FLASH_PROTECTION_WELDER //Adjust the user's eyes' flash protection
-		E.tint = FLASH_PROTECTION_FLASH
+		E.tint = FLASH_PROTECTION_WELDER
 		owner.update_sight()
 		eye_shielded = TRUE
 

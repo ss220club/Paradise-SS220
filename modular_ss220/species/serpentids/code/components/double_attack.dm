@@ -47,12 +47,12 @@
 	SEND_SIGNAL(offhand_item, COMSIG_DOUBLEATTACK_SYNC, state_attack)
 	if (offhand_item)
 		addtimer(CALLBACK(src, PROC_REF(offhand_attack), target, user, def_zone), (user.next_move_modifier / 5) SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(offhand_post_attack)), (user.next_move_modifier / 2) SECONDS)
 
 /datum/component/double_attack/proc/offhand_attack(mob/living/target, mob/living/user, def_zone)
 	if(QDELETED(src) || QDELETED(target) || user != offhand_item.loc  || !user.Adjacent(target))
 		return
 	offhand_item.attack(target, user, def_zone)
-	addtimer(CALLBACK(src, PROC_REF(offhand_post_attack)), (user.next_move_modifier / 2) SECONDS)
 
 /datum/component/double_attack/proc/offhand_post_attack()
 	state_attack = FALSE

@@ -2,7 +2,10 @@
 #define GAS_METH_HEART_COUNT 1
 
 /obj/item/organ/internal/heart/serpentid
-	name = "serpentid heart"
+	name = "double heart"
+	icon = 'modular_ss220/species/serpentids/icons/organs.dmi'
+	icon_state = "h0_on"
+	desc = "A pair of hearts."
 	chemical_id = SERPENTID_CHEM_REAGENT_ID
 
 	var/decay_rate = 5

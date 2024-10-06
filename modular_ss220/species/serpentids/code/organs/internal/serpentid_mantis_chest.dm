@@ -3,7 +3,6 @@
 	name = "serpentid blade implant"
 	desc = "implants for the organs in your torso."
 	icon_state = "chest_implant"
-	implant_overlay = "chest_implant_overlay"
 	parent_organ = "chest"
 	actions_types = list(/datum/action/item_action/organ_action/toggle/switch_blades)
 	contents = newlist(/obj/item/kitchen/knife/combat/serpentblade,/obj/item/kitchen/knife/combat/serpentblade)
@@ -11,6 +10,11 @@
 	action_icon_state = list(/datum/action/item_action/organ_action/toggle/switch_blades = "gas_hand_act")
 	var/obj/item/holder_l = null
 	var/obj/item/holder_r = null
+	var/icon_file = 'modular_ss220/species/serpentids/icons/mob/r_serpentid.dmi'
+	var/new_icon_state = "blades_0"
+	var/mutable_appearance/old_overlay
+	var/mutable_appearance/new_overlay
+	var/overlay_color
 	emp_proof = TRUE
 
 /datum/action/item_action/organ_action/toggle/switch_blades
@@ -19,16 +23,59 @@
 	button_overlay_icon = 'modular_ss220/species/serpentids/icons/organs.dmi'
 	button_overlay_icon_state = "gas_hand_act"
 
+/obj/item/organ/internal/cyberimp/chest/serpentid_blades/New(mapload)
+	. = .. ()
+	if (owner)
+		owner.update_body()
+
+/obj/item/organ/internal/cyberimp/chest/serpentid_blades/Initialize(mapload)
+	. = .. ()
+	if (owner)
+		owner.update_body()
+
+/obj/item/organ/internal/cyberimp/chest/serpentid_blades/insert(mob/living/carbon/M, special, dont_remove_slot)
+	. = .. ()
+	if (owner)
+		owner.update_body()
+
+/obj/item/organ/internal/cyberimp/chest/serpentid_blades/remove(mob/living/carbon/M, special, dont_remove_slot)
+	if (owner)
+		owner.update_body()
+	. = .. ()
+
+/mob/living/carbon/human/proc/update_blades_overlays()
+	var/obj/item/organ/internal/cyberimp/chest/serpentid_blades/target_implant = get_int_organ(/obj/item/organ/internal/cyberimp/chest/serpentid_blades)
+	if(target_implant)
+		target_implant.update_overlays()
+
+/mob/living/carbon/human/update_body(rebuild_base = FALSE)
+	. = .. ()
+	update_blades_overlays()
+
 /obj/item/organ/internal/cyberimp/chest/serpentid_blades/ui_action_click()
 	if(crit_fail || (!holder_l && !length(contents)) && (!holder_r && !length(contents)))
 		to_chat(owner, "<span class='warning'>The implant doesn't respond. It seems to be broken...</span>")
 		return
-	if(holder_l && !(holder_l in src) && holder_r && !(holder_r in src))
+	var/extended = holder_l && !(holder_l in src) && holder_r && !(holder_r in src)
+	if(extended)
 		Retract()
 	else if(do_after(owner, 20*(owner.dna.species.action_mult), FALSE, owner))
 		holder_l = null
 		holder_r = null
 		Extend(contents[1],contents[2])
+
+/obj/item/organ/internal/cyberimp/chest/serpentid_blades/update_overlays()
+	. = .. ()
+	if (old_overlay)
+		owner.overlays -= old_overlay
+	if (owner)
+		var/icon/blades_icon = new/icon("icon" = icon_file, "icon_state" = new_icon_state)
+		var/obj/item/organ/external/chest/torso = owner.get_limb_by_name("chest")
+		var/body_color = torso.s_col
+		blades_icon.Blend(body_color, ICON_ADD)
+		new_overlay = mutable_appearance(blades_icon)
+		old_overlay = new_overlay
+		owner.overlays += new_overlay
 
 /obj/item/organ/internal/cyberimp/chest/serpentid_blades/proc/check_cuffs()
 	if(owner.handcuffed)
@@ -76,6 +123,8 @@
 		return
 
 	playsound(get_turf(owner), 'sound/mecha/mechmove03.ogg', 50, 1)
+	new_icon_state = "blades_1"
+	owner.update_body()
 	return TRUE
 
 /obj/item/organ/internal/cyberimp/chest/serpentid_blades/proc/Retract()
@@ -91,4 +140,6 @@
 	holder_r = null
 	holder_l = null
 	playsound(get_turf(owner), 'sound/mecha/mechmove03.ogg', 50, 1)
+	new_icon_state = "blades_0"
+	owner.update_body()
 //==Конец клинков через грудной имплант==

@@ -1,8 +1,9 @@
 ///печень - вырабатывает глутамат натрия из нутриентов
 /obj/item/organ/internal/liver/serpentid
-	name = "serpentid liver"
-	icon = 'icons/obj/species_organs/unathi.dmi'
-	desc = "A large looking liver."
+	name = "chemical processor"
+	icon = 'modular_ss220/species/serpentids/icons/organs.dmi'
+	icon_state = "liver0"
+	desc = "A large looking liver with some storages."
 	alcohol_intensity = 2
 	chemical_id = SERPENTID_CHEM_REAGENT_ID
 	var/max_value = GAS_ORGAN_CHEMISTRY_MAX

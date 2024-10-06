@@ -61,6 +61,8 @@
 
 /datum/reagent/serpadrone/on_mob_delete(mob/living/carbon/L)
 	UnregisterSignal(L, COMSIG_MOVABLE_MOVED)
+	REMOVE_TRAIT(L, TRAIT_GOTTAGOFAST, id)
+	REMOVE_TRAIT(L, TRAIT_GOTTAGONOTSOFAST, id)
 	L.next_move_modifier = initial(L.next_move_modifier)
 	var/mob/living/carbon/human/H = L
 	if (istype(H.dna.species, /datum/species/serpentid))
@@ -73,6 +75,7 @@
 	game_plane_master_controller.remove_filter(SERPADRONE_SCREEN_BLUR)
 	last_move_count = 0
 	last_move = null
+
 	if(IS_CHANGELING(L))
 		var/datum/antagonist/changeling/cling = L.mind.has_antag_datum(/datum/antagonist/changeling)
 		cling.chem_recharge_slowdown -= 1

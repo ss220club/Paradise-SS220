@@ -1,8 +1,9 @@
 ///Легкие - вырабатывают сальбутамол при наличии глутамата натрия, имеют собственный мешок, из которого дышат, мешок заполняется в безопасной среде
 /obj/item/organ/internal/lungs/serpentid
-	name = "serpentid lungs"
+	name = "thacheal bag"
 	icon = 'icons/obj/species_organs/unathi.dmi'
 	organ_datums = list(/datum/organ/lungs/serpentid)
+	desc = "A large looking lugns with big breating bag."
 	chemical_id = SERPENTID_CHEM_REAGENT_ID
 	chemical_consuption = 1
 	var/obj/item/tank/internals/oxygen/serpentid_vault = new /obj/item/tank/internals/oxygen/serpentid_vault_tank

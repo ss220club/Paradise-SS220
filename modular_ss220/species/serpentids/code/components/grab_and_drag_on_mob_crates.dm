@@ -107,7 +107,7 @@
 	if(!isliving(AM))
 		AM.crate_carrying_person = carrier
 		//AM.forceMove(carrier) - //блокировка стандартного прока
-		AM.forceMoveCrate(src)
+		AM.forceMoveCrate(carrier)
 
 	carrier.loaded = AM
 	carrier.update_icon()

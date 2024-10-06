@@ -54,7 +54,7 @@
 
 /datum/component/carapace/proc/block_operation()
 	SIGNAL_HANDLER
-	return ((limb.status & ORGAN_BROKEN) ? CARAPACE_STOP_SURGERY_STEP : FALSE)
+	return ((limb.status & ORGAN_BROKEN) ? FALSE : CARAPACE_STOP_SURGERY_STEP)
 
 //Прок на обновление сопротивления урона
 /datum/component/carapace/proc/update_resistance(var/affected_limb)

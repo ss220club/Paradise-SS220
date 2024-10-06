@@ -1,6 +1,9 @@
 //Уши серпентидов позволяют постоянно сканировать окружение в поисках существ в зависимости от их состояния
 /obj/item/organ/internal/ears/serpentid
-	name = "serpentid ears"
+	name = "acoustic sensor"
+	icon = 'modular_ss220/species/serpentids/icons/organs.dmi'
+	icon_state = "ears"
+	desc = "An organ that can sense vibrations."
 	var/decay_rate = 2
 	var/decay_recovery = BASIC_RECOVER_VALUE
 	var/organ_process_toxins = 0.25
