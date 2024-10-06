@@ -318,9 +318,9 @@
 
 /datum/uplink_item/jobspecific/tarot_generator
 	name = "Enchanted Tarot Card Deck"
-	desc = "A magic tarot card deck \"borrowed\" from a Wizard federation storage unit. \
-	Capable of producing magic tarot cards of the 22 major arcana, and their reversed versions. Each card has a different effect. \
-	Throw the card at someone to use it on them, or use it in hand to apply it to yourself. Unlimited uses, 25 second cooldown, can have up to 3 cards in the world."
+	desc = "Колода магических карт Таро, \"позаимствованные\" из хранилища Федерации Магов. \
+	Может произвести любую из 22 карт главных аркан, а также их обратные версии. У каждой карты свой эффект. \
+	Киньте карту Таро в кого-нибудь для применении к цели или используйте в руке для применения на себе. Бесконечное количество использований, перезарядка 25 секунд, можно иметь до трёх карт в мире."
 	reference = "tarot"
 	item = /obj/item/tarot_generator
 	cost = 55 //This can do a lot of stuff, but is quite random. As such, higher price.
@@ -407,8 +407,8 @@
 // Unathi
 /datum/uplink_item/species_restricted/breach_cleaver
 	name = "Breach Cleaver"
-	desc = "This massive blade harkens back to the wars on Moghes. Wielding it imbues you with the unquenchable desire for martial prowess. \
-	Requires two hands to be wielded. Comes in a scabbard. Has different effects based on intent."
+	desc = "Этот массивный клинок напоминает о войнах на Могесе. Владение им наделяет вас неугасимым стремлением к воинскому мастерству. \
+	Требует две руки для использования. Покупается с ножнами. Имеет разные эффекты в зависимости от интента."
 	reference = "CLV"
 	item = /obj/item/storage/belt/sheath/breach_cleaver
 	cost = 65 // Incredibly strong melee weapon on par with a chainsaw.
@@ -496,8 +496,8 @@
 
 /datum/uplink_item/stealthy_tools/voice_changer
 	name = "Chameleon Voice Changer Mask"
-	desc = "A syndicate gas mask equipped with chameleon technology and a voice changer for disguising your voice. \
-			Use it to impersonate or obfuscate your identity when talking and make nobody the wiser!"
+	desc = "Противогаз Синдиката с технологией Хамелеон и модулятором голоса для маскировки Вашего голоса. \
+			Используйте его для выдачи себя за другого или спрятать свою личность при разговорах и обведите всех вокруг пальца!"
 	reference = "CVCM"
 	item = /obj/item/clothing/mask/chameleon/voice_change
 	cost = 10
