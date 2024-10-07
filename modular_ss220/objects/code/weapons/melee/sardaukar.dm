@@ -52,21 +52,21 @@
 
 /obj/item/melee/sardaukar/attack(mob/living/carbon/human/target, mob/living/carbon/human/user)
 	var/list/obj/item/organ/external/cutoff = list ("l_arm", "r_arm", "l_hand", "r_hand", "l_leg", "r_leg", "r_foot", "l_foot")
-	if (energy == 5)
+	if(energy == 5)
 		target.adjustBruteLoss (5)
 		energy -= 5
-	if (energy == 10)
+	if(energy == 10)
 		target.adjustBruteLoss (10)
 		energy -= 10
-	if (energy == 15)
+	if(energy == 15)
 		target.adjustBruteLoss (10)
 		target.Weaken(1 SECONDS)
 		energy -= 15
-	if (energy == 20)
+	if(energy == 20)
 		target.adjustBruteLoss (10)
 		var/obj/item/organ/external/pick_organ = pick(cutoff)
 		var/obj/item/organ/external/lucky_organ = target.get_organ(pick_organ)
-		if (!lucky_organ)
+		if(!lucky_organ)
 			energy -= 20
 		else
 			lucky_organ.droplimb(1, DROPLIMB_SHARP, 0, 1)
