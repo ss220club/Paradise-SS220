@@ -88,6 +88,7 @@
 		/obj/item/flash,
 		/obj/item/melee/baton,
 		/obj/item/gun,
+		/obj/item/melee/sardaukar,
 	)
 	skins = list(
 		"skrell_elite" = list(
@@ -163,6 +164,7 @@
 		/obj/item/flash,
 		/obj/item/melee/baton,
 		/obj/item/gun,
+		/obj/item/melee/sardaukar,
 	)
 	skins = list(
 		"skrell_white" = list(
