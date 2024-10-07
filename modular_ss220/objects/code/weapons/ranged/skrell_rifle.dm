@@ -1,13 +1,12 @@
 // Skrellian carbine
 /obj/item/gun/energy/gun/skrell_carbine
-	name = "\improper skrellian carbine"
-	desc = "The Vuu'Xqu*ix T-3, known as 'VT-3' by TSF. Rarely seen out in the wild by anyone outside of a Skrellian SDTF. "
+	name = "\improper скреллианский энергитический карабин"
+	desc = "Энергитический карабин Vuu'Xqu*ix T-3, более известный в ТСФ как 'VT-3'. Это оружие редко можно увидеть где-то помимо ОСС. "
 	icon = 'modular_ss220/objects/icons/guns.dmi'
 	lefthand_file = 'modular_ss220/objects/icons/inhands/guns_lefthand.dmi'
 	righthand_file = 'modular_ss220/objects/icons/inhands/guns_righthand.dmi'
 	item_state = "skrell_carbine"
 	icon_state = "skrell_carbine"
-	fire_sound = 'modular_ss220/objects/sound/weapons/gunshots/blaster.ogg'
 	cell_type = /obj/item/stock_parts/cell/skrell_carbine_cell
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/skrell_light, /obj/item/ammo_casing/energy/laser/skrell_assault)
 	origin_tech = "combat=6;magnets=5"
@@ -15,19 +14,22 @@
 	execution_speed = 3 SECONDS
 
 /obj/item/gun/energy/gun/skrell_carbine/elite
-	name = "\improper elite skrellian carbine"
+	name = "\improper элитный скреллианский энергитический карабин"
+	desc = "Энергитический карабин Vuu'Xqu*ix T-3, более известный в ТСФ как 'VT-3'. Это оружие редко можно увидеть где-то помимо ОСС. Этот экземпляр обладает батареей повышенной емкости, а так же дополнительными стабилизаторами стрельбы."
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/skrell_light/elite, /obj/item/ammo_casing/energy/laser/skrell_assault/elite)
 
 /obj/item/ammo_casing/energy/laser/skrell_light
 	projectile_type = /obj/item/projectile/beam/laser/skrell_light
 	muzzle_flash_color = LIGHT_COLOR_LAVENDER
 	select_name = "light"
+	fire_sound = 'modular_ss220/objects/sound/weapons/gunshots/blaster.ogg'
 
 /obj/item/ammo_casing/energy/laser/skrell_assault
 	projectile_type = /obj/item/projectile/beam/pulse/skrell_laser_assault
 	muzzle_flash_color = LIGHT_COLOR_LAVENDER
 	select_name = "assault"
 	e_cost = 1600
+	fire_sound = 'modular_ss220/objects/sound/weapons/gunshots/blaster.ogg'
 
 /obj/item/ammo_casing/energy/laser/skrell_light/elite
 	e_cost = 60
@@ -58,8 +60,8 @@
 // Skrellian railgun rifle
 
 /obj/item/gun/projectile/automatic/sniper_rifle/skrell_rifle
-	name = "\improper skrellian rifle"
-	desc = "The Zquiv*Tzuuli-8, or ZT-8, is a railgun rarely seen by anyone other than those within Skrellian SDTF ranks. The rotary magazine houses a cylinder with individual chambers, that press against the barrel when loaded."
+	name = "\improper скреллианский рельсовая винтовка"
+	desc = "Винтовка Zquiv*Tzuuli-8, или ''ZT-8'' - это рельсотрон, стоящий на вооружении тяжелых штурмовых отрядов Раскинта из ОСС. Имеет цилендрический магазин заряжания, разгонный магнитный блок и стабилизаторы для точной стрельбы."
 	icon = 'modular_ss220/objects/icons/guns.dmi'
 	lefthand_file = 'modular_ss220/objects/icons/inhands/guns_lefthand.dmi'
 	righthand_file = 'modular_ss220/objects/icons/inhands/guns_righthand.dmi'
@@ -74,13 +76,15 @@
 	mag_type = /obj/item/ammo_box/magazine/skrell_magazine
 
 /obj/item/gun/projectile/automatic/sniper_rifle/skrell_rifle/elite
+	name = "\improper элитная скреллианская рельсовая винтовка"
+	desc = "Винтовка Zquiv*Tzuuli-8, или ''ZT-8'' - это рельсотрон, стоящий на вооружении тяжелых штурмовых отрядов Раскинта из ОСС. Имеет цилендрический магазин заряжания, разгонный магнитный блок и стабилизаторы для точной стрельбы. Этот экземпляр обладает расширенным магазинным гнездом, а так же оптическим прицелом."
 	fire_delay = 20
 	zoomable = TRUE
 	mag_type = /obj/item/ammo_box/magazine/skrell_magazine/skrell_magazine_elite
 
 /obj/item/ammo_box/magazine/skrell_magazine
-	name = "flechette cylinder"
-	desc = "A magazine containing flechettes, the design harkening back to cylinders on revolvers."
+	name = "\improper цилиндр с боекомплектом"
+	desc = "Цилиндровый магазин для рельсотрона."
 	icon = 'modular_ss220/objects/icons/ammo.dmi'
 	icon_state = "skrell_magazine"
 	multi_sprite_step = 3
@@ -96,8 +100,8 @@
 	ammo_type = /obj/item/ammo_casing/railgun/railgun_strong
 
 /obj/item/ammo_casing/railgun
-	name = "railgun bullet"
-	desc = "A bullet for a high-tech railgun. It consists of a striking element and a detachable magnetic stabilizer."
+	name = "\improper пуля рельсотрона"
+	desc = "Снаряд для рельсотрона. Состоит из поражающего элемента и магнитного стабилизатора."
 	icon = 'modular_ss220/objects/icons/ammo.dmi'
 	icon_state = "railgun-casing"
 	caliber = "railgun"
@@ -110,7 +114,7 @@
 	damage = 30
 	armour_penetration_flat = 50
 	pass_flags = PASSTABLE | PASSGRILLE | PASSGIRDER
-	speed = 0
+	speed = 0.2
 	icon_state = "gauss_silenced"
 	light_color = LIGHT_COLOR_LIGHT_CYAN
 
@@ -118,3 +122,4 @@
 	damage = 45
 	armour_penetration_flat = 30
 	weaken = 0.2
+	speed = 0.2
