@@ -1,28 +1,40 @@
 /*
-Расширение на органы для работы с запасами химикатов
+Компонент на органы для работы с запасами химикатов
 */
 
-/obj/item/organ/internal
-	var/chemical_consuption = 0
-	var/can_chem_process = FALSE
+#define COMSIG_ORGAN_CHEM_CALL "chems_process"
+
+#define COMSIG_ORGAN_GROUP_ACTION_ICON "get_return_icon"
+#define COMSIG_ORGAN_GROUP_ACTION_STATE "get_return_state"
+	#define ORGAN_GROUP_ACTION_ICON (1 << 0)
+	#define ORGAN_GROUP_ACTION_STATE (1 << 0)
+
+/datum/component/chemistry_organ
+	var/obj/item/organ/internal/organ
 	var/chemical_id = ""
 
-/obj/item/organ/internal/process()
-	. = ..()
-	if (can_chem_process)
-		chems_process()
+/datum/component/chemistry_organ/Initialize(var/reagent_id)
+	..()
+	organ = parent
+	chemical_id = reagent_id
 
-/obj/item/organ/internal/proc/chems_process()
-	if(isnull(owner))
+/datum/component/chemistry_organ/RegisterWithParent()
+	RegisterSignal(parent, COMSIG_ORGAN_CHEM_CALL, PROC_REF(chems_process))
+
+/datum/component/chemistry_organ/UnregisterFromParent()
+	UnregisterSignal(parent, COMSIG_ORGAN_CHEM_CALL)
+
+/datum/component/chemistry_organ/proc/chems_process(var/holder, var/consuption_count)
+	if(isnull(organ.owner))
 		return TRUE
-	var/chemical_volume = owner.get_chemical_value(chemical_id)
-	var/datum/reagent/chemical = owner.get_chemical_path(chemical_id)
-	if (chemical_volume < chemical_consuption)
+	var/chemical_volume = organ.owner.get_chemical_value(chemical_id)
+	var/datum/reagent/chemical = organ.owner.get_chemical_path(chemical_id)
+	if (chemical_volume < consuption_count || chemical_volume == 0)
 		//Если количества недостаточно - выключить режим
-		switch_mode(force_off = TRUE)
+		organ.switch_mode(force_off = TRUE)
 	else
-		if(!isnull(chemical) && chemical_consuption > 0)
-			chemical.holder.remove_reagent(chemical_id, chemical_consuption)
+		if(!isnull(chemical) && consuption_count > 0)
+			chemical.holder.remove_reagent(chemical_id, consuption_count)
 
 //Переписываемый прок, который вызывается когда заканчивается запас химического препарата
 /obj/item/organ/internal/proc/switch_mode(var/force_off = FALSE)

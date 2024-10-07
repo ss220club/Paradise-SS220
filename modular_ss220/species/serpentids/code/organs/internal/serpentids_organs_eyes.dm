@@ -4,15 +4,10 @@
 	icon = 'modular_ss220/species/serpentids/icons/organs.dmi'
 	desc = "A large looking eyes with some chemical enchanments."
 	icon_state = "eyes01"
-	see_in_dark = 2
+	see_in_dark = 8
 	flash_protect = FLASH_PROTECTION_EXTRA_SENSITIVE
 	tint = FLASH_PROTECTION_NONE
-	//ctions_types = 		list(/datum/action/item_action/organ_action/use)
-	//action_icon = 			list(/datum/action/item_action/organ_action/use = 'modular_ss220/species/serpentids/icons/organs.dmi')
-	//action_icon_state = 	list(/datum/action/item_action/organ_action/use = "gas_abilities")
-	chemical_id = SERPENTID_CHEM_REAGENT_ID
-	//radial_additive_state = "gas_eyes_0"
-
+	var/chemical_id = SERPENTID_CHEM_REAGENT_ID
 	var/decay_rate = 1
 	var/decay_recovery = BASIC_RECOVER_VALUE
 	var/organ_process_toxins = 0.35
@@ -32,20 +27,6 @@
 	eyes_icon.Blend(eye_color, ICON_ADD)
 
 	return eyes_icon
-
-/*
-Оставлено на случай радиального меню
-/obj/item/organ/internal/eyes/serpentid/insert(mob/living/carbon/M, special = 0, dont_remove_slot = 0)
-	. = .. ()
-	buttons_resort()
-
-/obj/item/organ/internal/eyes/serpentid/remove(mob/living/carbon/M, special = 0)
-	. = .. ()
-	buttons_resort()
-
-/obj/item/organ/internal/eyes/serpentid/ui_action_click()
-	open_actions(owner)
-*/
 
 /obj/item/organ/internal/eyes/serpentid/on_life()
 	. = ..()

@@ -45,7 +45,7 @@
 			return
 		if(!istype(target))
 			return
-		if(do_after(puppet, 20 * puppet.dna.species.action_mult, FALSE, target))
+		if(do_after(puppet, 20 * puppet.dna.species.action_mult, FALSE, target)) //Закоментить если линтер начнет брыкаться - оно работает, но прикол с SpacemanDMM_should_not_sleep
 			load(puppet, target)
 
 

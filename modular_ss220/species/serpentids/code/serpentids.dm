@@ -4,7 +4,7 @@
 	icobase = 'modular_ss220/species/serpentids/icons/mob/r_serpentid.dmi'
 	eyes_icon = 'modular_ss220/species/serpentids/icons/mob/r_serpentid_eyes.dmi'
 	blurb = "TODO"
-	language = "Stok"
+	language = "Nabberian"
 	siemens_coeff = 2.0
 	coldmod = 0.9
 	heatmod = 1.2
@@ -12,6 +12,8 @@
 	action_mult = 1
 	tox_mod = 1.5
 	eyes = "serpentid_eyes_s"
+	butt_sprite_icon = 'modular_ss220/species/serpentids/icons/mob/r_serpentid_butt.dmi'
+	butt_sprite = "serpentid"
 
 	species_traits = list(LIPS, NO_HAIR)
 	inherent_traits = list(TRAIT_CHUNKYFINGERS, TRAIT_RESISTHEAT, TRAIT_RESISTHIGHPRESSURE, TRAIT_RESISTLOWPRESSURE, TRAIT_NOPAIN)
@@ -57,25 +59,68 @@
 		"l_hand" = list("path" = /obj/item/organ/external/hand/carapace, "descriptor" = "left hand"),
 		"r_hand" = list("path" = /obj/item/organ/external/hand/right/carapace, "descriptor" = "right hand"),
 		"l_foot" = list("path" = /obj/item/organ/external/foot/carapace, "descriptor" = "left foot"),
-		"r_foot" = list("path" = /obj/item/organ/external/foot/right/carapace, "descriptor" = "right foot"))
-
-
-	suicide_messages = list(
-		"is attempting to bite their tongue off!",
-		"is jamming their claws into their eye sockets!",
-		"is twisting their own neck!",
-		"is holding their breath!")
+		"r_foot" = list("path" = /obj/item/organ/external/foot/right/carapace, "descriptor" = "right foot")
+		)
 
 	autohiss_basic_map = list(
-			"s" = list("ss", "sss", "ssss")
-		)
+			"z" = list("zz", "zzz", "zzzz"),
+			"v" = list("vv", "vvv", "vvvv"),
+			"з" = list("зз", "ззз", "зззз"),
+			"в" = list("вв", "ввв", "вввв"),
+			"s" = list("ss", "sss", "ssss"),
+			"с" = list("сс", "ссс", "сссс"))
 	autohiss_extra_map = list(
-			"x" = list("ks", "kss", "ksss")
-		)
+			"x" = list("ks", "kss", "ksss"),
+			"ш" = list("шш", "шшш", "шшшш"),
+			"ч" = list("щ", "щщ", "щщщ"))
+	autohiss_exempt = list("Chittin")
+
+	scream_verb = "утробно ревёт"
+	speech_sounds = list(
+		'modular_ss220/species/serpentids/sounds/serpentid_talk_1.ogg',
+		'modular_ss220/species/serpentids/sounds/serpentid_talk_2.ogg')
+	speech_chance = 20
+	male_scream_sound = 'modular_ss220/species/serpentids/sounds/serpentid_shreak.ogg'
+	female_scream_sound = 'modular_ss220/species/serpentids/sounds/serpentid_shreak.ogg'
+	male_cry_sound = list(
+		'modular_ss220/emotes/audio/kidan/cry_kidan_1.ogg')
+	female_cry_sound = list(
+		'modular_ss220/emotes/audio/kidan/cry_kidan_1.ogg')
+	male_giggle_sound = list(
+		'modular_ss220/species/serpentids/sounds/serpentid_laugh.ogg')
+	female_giggle_sound = list(
+		'modular_ss220/species/serpentids/sounds/serpentid_laugh.ogg')
+	male_laugh_sound = list(
+		'modular_ss220/species/serpentids/sounds/serpentid_laugh.ogg')
+	female_laugh_sound = list(
+		'modular_ss220/species/serpentids/sounds/serpentid_laugh.ogg')
+	male_sigh_sound = list(
+		'modular_ss220/species/serpentids/sounds/serpentid_sigh.ogg')
+	female_sigh_sound = list(
+		'modular_ss220/species/serpentids/sounds/serpentid_sigh.ogg')
+	male_moan_sound = list('modular_ss220/species/serpentids/sounds/serpentid_moan.ogg')
+	female_moan_sound = list('modular_ss220/species/serpentids/sounds/serpentid_moan.ogg')
+	male_cough_sounds = list('modular_ss220/species/serpentids/sounds/serpentid_cough.ogg')
+	female_cough_sounds = list('modular_ss220/species/serpentids/sounds/serpentid_cough.ogg')
+	male_sneeze_sound = list(
+		'modular_ss220/species/serpentids/sounds/serpentid_sneeze.ogg')
+	female_sneeze_sound = list(
+		'modular_ss220/species/serpentids/sounds/serpentid_sneeze.ogg')
+	male_dying_gasp_sounds = list(
+		'modular_ss220/species/serpentids/sounds/serpentid_dying.ogg')
+	female_dying_gasp_sounds = list(
+		'modular_ss220/species/serpentids/sounds/serpentid_dying.ogg')
+	death_sounds = 'modular_ss220/species/serpentids/sounds/serpentid_death.ogg'
+	suicide_messages = list(
+		"пытается откусить себе усики!",
+		"вонзает когти в свои глазницы!",
+		"сворачивает себе шею!",
+		"разбивает себе панцирь",
+		"протыкает себя клинками!",
+		"задерживает дыхание!")
 
 	can_buckle = TRUE
 	buckle_lying = FALSE
-
 	var/can_stealth = TRUE
 	var/list/valid_limbs = list()
 	var/gene_lastcall = 0
@@ -174,13 +219,29 @@
 	H.AddComponent(/datum/component/footstep, FOOTSTEP_MOB_SLIME, 1, -6)
 	H.AddComponent(/datum/component/gadom_living)
 	H.AddComponent(/datum/component/gadom_cargo)
+	H.verbs += /mob/living/carbon/human/proc/emote_gbsroar
+	H.verbs += /mob/living/carbon/human/proc/emote_gbshiss
+	H.verbs += /mob/living/carbon/human/proc/emote_gbswhip
+	H.verbs += /mob/living/carbon/human/proc/emote_gbswhips
+	H.verbs += /mob/living/carbon/human/proc/emote_gbswiggles
 	for (var/limb_name in has_limbs)
 		valid_limbs += has_limbs[limb_name]["path"]
+
+/datum/species/moth/on_species_loss(mob/living/carbon/human/H)
+	..()
+	H.verbs -= /mob/living/carbon/human/proc/emote_gbsroar
+	H.verbs -= /mob/living/carbon/human/proc/emote_gbshiss
+	H.verbs -= /mob/living/carbon/human/proc/emote_gbswhip
+	H.verbs -= /mob/living/carbon/human/proc/emote_gbswhips
+	H.verbs -= /mob/living/carbon/human/proc/emote_gbswiggles
 
 //Блокировка ботинок
 /datum/species/serpentid/can_equip(obj/item/I, slot, disable_warning = FALSE, mob/living/carbon/human/H)
 	switch(slot)
 		if(SLOT_HUD_SHOES)
+			return FALSE
+	for(var/queip_type in equipment_black_list)
+		if(istype(I, queip_type))
 			return FALSE
 	. = .. ()
 

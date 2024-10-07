@@ -6,8 +6,7 @@
 	icon = 'modular_ss220/species/serpentids/icons/organs.dmi'
 	icon_state = "h0_on"
 	desc = "A pair of hearts."
-	chemical_id = SERPENTID_CHEM_REAGENT_ID
-
+	var/chemical_id = SERPENTID_CHEM_REAGENT_ID
 	var/decay_rate = 5
 	var/decay_recovery = BASIC_RECOVER_VALUE
 	var/organ_process_toxins = 0.1

@@ -4,8 +4,8 @@
 	icon = 'icons/obj/species_organs/unathi.dmi'
 	organ_datums = list(/datum/organ/lungs/serpentid)
 	desc = "A large looking lugns with big breating bag."
-	chemical_id = SERPENTID_CHEM_REAGENT_ID
-	chemical_consuption = 1
+	var/chemical_id = SERPENTID_CHEM_REAGENT_ID
+	var/chemical_consuption = 1
 	var/obj/item/tank/internals/oxygen/serpentid_vault = new /obj/item/tank/internals/oxygen/serpentid_vault_tank
 	var/decay_rate = 3
 	var/decay_recovery = BASIC_RECOVER_VALUE
@@ -91,6 +91,7 @@
 
 /obj/item/organ/internal/lungs/serpentid/on_life()
 	.=..()
+	SEND_SIGNAL(src, COMSIG_ORGAN_CHEM_CALL, chemical_consuption)
 	var/turf/T = get_turf(owner)
 	var/datum/gas_mixture/environment = get_turf_air(T)
 	var/datum/gas_mixture/breath

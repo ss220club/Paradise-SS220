@@ -15,9 +15,6 @@
 #define SERPENTID_COLD_THRESHOLD_LEVEL_DOWN 80
 #define SERPENTID_ARMORED_COLD_THRESHOLD 0
 
-#define GAS_ORGAN_CHEMISTRY_EYES 0.75
-#define GAS_ORGAN_CHEMISTRY_EARS 0.25
-#define GAS_ORGAN_CHEMISTRY_HEART 25
 #define GAS_ORGAN_CHEMISTRY_LUNGS 1
 #define GAS_ORGAN_CHEMISTRY_KIDNEYS 0.6
 
@@ -38,6 +35,8 @@
 	var/face_icon = 'icons/mob/human_face.dmi'
 	var/face_icon_state = "bald_s"
 	var/action_mult = 1
+	var/equipment_black_list = list()
+	var/butt_sprite_icon = 'icons/obj/butts.dmi'
 
 //Добавление новых алертов
 /atom/movable/screen/alert/carapace_break_armor
@@ -86,3 +85,136 @@
 			eyes_icon.Blend("#800000", ICON_ADD)
 
 		return eyes_icon
+
+/mob/living/carbon/human/proc/emote_gbsroar()
+	set name = "< " + EMOTE_HUMAN_ROAR + " >"
+	set category = "Эмоции"
+	emote("gbsroar", intentional = TRUE)
+
+/mob/living/carbon/human/proc/emote_gbshiss()
+	set name = "< " + EMOTE_HUMAN_HISS + " >"
+	set category = "Эмоции"
+	emote("gbshiss", intentional = TRUE)
+
+/mob/living/carbon/human/proc/emote_gbswhip()
+	set name = "< " + EMOTE_HUMAN_WHIP + " >"
+	set category = "Эмоции"
+	emote("gbswhip", intentional = TRUE)
+
+/mob/living/carbon/human/proc/emote_gbswhips()
+	set name = "< " + EMOTE_HUMAN_WHIPS + " >"
+	set category = "Эмоции"
+	emote("gbswhips", intentional = TRUE)
+
+/mob/living/carbon/human/proc/emote_gbswiggles()
+	set name = "< " + EMOTE_HUMAN_WIGGLES + " >"
+	set category = "Эмоции"
+	emote("gbswiggles", intentional = TRUE)
+
+/datum/emote/living/carbon/human/roar/gbs
+	key = "gbsroar"
+	key_third_person = "roar"
+	message = "утробно рычит."
+	message_mime = "бесшумно рычит."
+	message_param = "утробно рычит на %t."
+	species_type_whitelist_typecache = list(/datum/species/serpentid)
+	volume = 50
+	muzzled_noises = list("раздражённый")
+	emote_type = EMOTE_VISIBLE | EMOTE_MOUTH | EMOTE_AUDIBLE
+	age_based = TRUE
+
+/datum/emote/living/carbon/human/roar/gbs/get_sound(mob/living/user)
+	return pick(
+		'modular_ss220/species/serpentids/sounds/serpentid_roar.ogg')
+
+/datum/emote/living/carbon/human/hiss/gbs/
+	key = "gbshiss"
+	key_third_person = "hisses"
+	message = "шипит."
+	message_param = "шипит на %t."
+	species_type_whitelist_typecache = list(/datum/species/serpentid)
+	emote_type = EMOTE_AUDIBLE | EMOTE_MOUTH
+	age_based = TRUE
+	// Credit to Jamius (freesound.org) for the sound.
+	sound = "modular_ss220/species/serpentids/sounds/serpentid_hiss.ogg"
+	muzzled_noises = list("weak hissing")
+
+/datum/emote/living/carbon/human/whip/gbs
+	key = "gbswhip"
+	key_third_person = "whip"
+	message = "гремит хвостом."
+	message_mime = "взмахивает хвостом и трясет кончиком в воздухе."
+	message_postfix = ", грозно смотря на %t."
+	message_param = EMOTE_PARAM_USE_POSTFIX
+	species_type_whitelist_typecache = list(/datum/species/serpentid)
+	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
+	volume = 75
+	audio_cooldown = 3 SECONDS
+	sound = 'modular_ss220/emotes/audio/unathi/whip_short_unathi.ogg'
+
+/datum/emote/living/carbon/human/whip/whip_l/gbs
+	key = "gbswhips"
+	key_third_person = "whips"
+	message = "хлестает хвостом."
+	species_type_whitelist_typecache = list(/datum/species/serpentid)
+	audio_cooldown = 6 SECONDS
+	sound = 'modular_ss220/emotes/audio/unathi/whip_unathi.ogg'
+
+/datum/emote/living/carbon/human/wiggles/gbs
+	key = "wiggles"
+	key_third_person = "wiggles"
+	message = "шевелит усиками."
+	message_param = "шевелит усиками в сторону %t."
+	cooldown = 5 SECONDS
+	species_type_whitelist_typecache = list(/datum/species/serpentid)
+	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE | EMOTE_MOUTH
+	age_based = TRUE
+	volume = 80
+	muzzled_noises = list("слабо")
+	sound = 'modular_ss220/species/serpentids/sounds/serpentid_wiggle.ogg'
+
+//не-не, я понмаю, что это не сюда, но!
+/obj/machinery/photocopier/copyass(scanning = FALSE)
+	if(!scanning) //If we're just storing this as a file inside the copier then we don't expend toner
+		if(toner < 5)
+			visible_message("<span class='notice'>A yellow light on [src] flashes, indicating there's not enough toner to finish the operation.</span>")
+			return null
+		total_copies++
+
+	var/icon/temp_img
+
+	if(emagged)
+		if(ishuman(copymob))
+			var/mob/living/carbon/human/H = copymob
+			var/obj/item/organ/external/G = H.get_organ("groin")
+			G.receive_damage(0, 30)
+			H.emote("scream")
+		else
+			copymob.apply_damage(30, BURN)
+		to_chat(copymob, "<span class='notice'>Something smells toasty...</span>")
+	if(ishuman(copymob)) //Suit checks are in check_mob
+		var/mob/living/carbon/human/H = copymob
+		temp_img = icon(H.dna.species.butt_sprite_icon, H.dna.species.butt_sprite)
+	else if(isdrone(copymob))
+		temp_img = icon('icons/obj/butts.dmi', "drone")
+	else if(isnymph(copymob))
+		temp_img = icon('icons/obj/butts.dmi', "nymph")
+	else if(isalien(copymob) || istype(copymob,/mob/living/simple_animal/hostile/alien)) //Xenos have their own asses, thanks to Pybro.
+		temp_img = icon('icons/obj/butts.dmi', "xeno")
+	else
+		return
+	var/obj/item/photo/p = new /obj/item/photo (loc)
+	if(scanning)
+		p.forceMove(src)
+	else if(folder)
+		p.forceMove(folder)
+	p.desc = "You see [copymob]'s ass on the photo."
+	p.pixel_x = rand(-10, 10)
+	p.pixel_y = rand(-10, 10)
+	p.img = temp_img
+	var/icon/small_img = icon(temp_img) //Icon() is needed or else temp_img will be rescaled too >.>
+	var/icon/ic = icon('icons/obj/items.dmi',"photo")
+	small_img.Scale(8, 8)
+	ic.Blend(small_img,ICON_OVERLAY, 10, 13)
+	p.icon = ic
+	return p

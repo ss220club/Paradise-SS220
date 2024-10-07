@@ -5,7 +5,7 @@
 	icon_state = "liver0"
 	desc = "A large looking liver with some storages."
 	alcohol_intensity = 2
-	chemical_id = SERPENTID_CHEM_REAGENT_ID
+	var/chemical_id = SERPENTID_CHEM_REAGENT_ID
 	var/max_value = GAS_ORGAN_CHEMISTRY_MAX
 	var/decay_rate = 4
 	var/decay_recovery = BASIC_RECOVER_VALUE
