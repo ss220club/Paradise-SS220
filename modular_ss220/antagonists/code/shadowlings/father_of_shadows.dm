@@ -1,5 +1,5 @@
 #define HEALTH_DECREASING_AMOUNT 70
-#define MAX_CONSUMED_CORPSES 5
+#define MAX_CONSUMED_CORPSES 4
 
 /mob/living/simple_animal/demon/shadow_father	// Can't inherit from demon/shadow because of 'initialize' proc
 	name = "отец теней"
@@ -67,6 +67,11 @@
 	else
 		adjustBruteLoss(-20)
 
+/mob/living/simple_animal/demon/shadow_father/death(gibbed)
+	if(consumed > 0)
+		SSticker.mode.begin_shadowling_invasion(src, FALSE)
+	. = ..()
+
 /mob/living/simple_animal/demon/shadow_father/proc/check_darkness()
 	var/turf/T = get_turf(src)
 	var/lum_count = T.get_lumcount()
@@ -97,6 +102,7 @@
 		new /datum/spell/shadowling/self/place_trap/stun,
 		new /datum/spell/shadowling/self/place_trap/poison,
 		new /datum/spell/shadowling/self/place_trap/blindness,
+		new /datum/spell/shadowling/self/tear_the_reality,
 	)
 	for(var/datum/spell/spell in spells_to_grant)
 		AddSpell(spell)
@@ -134,7 +140,7 @@
 		is_consuming = FALSE
 		return
 
-	target.visible_message(span_danger("[src] полностью [target] тенями и тело исчезает в потусторонней пелене! [src], похоже, стал слабее!"))
+	target.visible_message(span_danger("[src] полностью окутывает [target] тенями и тело исчезает в потусторонней пелене! [src], похоже, стал слабее!"))
 	qdel(target)
 	playsound(src, 'modular_ss220/antagonists/sound/shadowlings/shadow_consumption_end.ogg', 50, TRUE)
 	maxHealth -= HEALTH_DECREASING_AMOUNT

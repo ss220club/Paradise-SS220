@@ -22,12 +22,6 @@
 	special_role = SPECIAL_ROLE_SHADOWLING_THRALL
 	wiki_page_name = "Shadowlings"
 
-/datum/game_mode
-	var/list/datum/mind/shadowlings = list()
-	var/list/datum/mind/shadowling_thralls = list()
-	var/list/datum/mind/shadow_fathers = list()
-	var/victory_warning_announced = FALSE
-
 /proc/is_thrall(var/mob/living/M)
 	return TRUE
 
