@@ -1,22 +1,38 @@
+/datum/antagonist/shadowling
+	name = "Shadowling"
+	antag_hud_type = ANTAG_HUD_SHADOW
+	antag_hud_name = "hudshadowling"
+	job_rank = ROLE_SHADOWLING
+	special_role = SPECIAL_ROLE_SHADOWLING
+	wiki_page_name = "Shadowlings"
+
+/datum/antagonist/shadow_father
+	name = "Shadow Father"
+	antag_hud_type = ANTAG_HUD_SHADOW
+	antag_hud_name = "hudshadowfather"
+	job_rank = ROLE_SHADOWLING	// I don't change it, so there is no different database line for shadowling roles
+	special_role = SPECIAL_ROLE_SHADOW_FATHER
+	wiki_page_name = "Shadowlings"
+
+/datum/antagonist/shadowling_thrall
+	name = "Shadowling Thrall"
+	antag_hud_type = ANTAG_HUD_SHADOW
+	antag_hud_name = "hudshadowlingthrall"
+	job_rank = ROLE_SHADOWLING	// I don't change it, so there is no different database line for shadowling roles
+	special_role = SPECIAL_ROLE_SHADOWLING_THRALL
+	wiki_page_name = "Shadowlings"
+
 /datum/game_mode
-	var/list/datum/mind/shadows = list()
+	var/list/datum/mind/shadowlings = list()
 	var/list/datum/mind/shadowling_thralls = list()
-	var/list/shadow_objectives = list()
-	var/required_thralls = 15 //How many thralls are needed (hardcoded for now)
-	var/shadowling_ascended = 0 //If at least one shadowling has ascended
-	var/shadowling_dead = 0 //is shadowling kill
-	var/objective_explanation
-	var/warning_threshold
+	var/list/datum/mind/shadow_fathers = list()
 	var/victory_warning_announced = FALSE
-	var/thrall_ratio = 1
 
 /proc/is_thrall(var/mob/living/M)
-	return istype(M) && M.mind && SSticker && SSticker.mode && (M.mind in SSticker.mode.shadowling_thralls)
-
+	return TRUE
 
 /proc/is_shadow_or_thrall(var/mob/living/M)
-	return istype(M) && M.mind && SSticker && SSticker.mode && ((M.mind in SSticker.mode.shadowling_thralls) || (M.mind in SSticker.mode.shadows))
-
+	return TRUE
 
 /proc/is_shadow(var/mob/living/M)
-	return istype(M) && M.mind && SSticker && SSticker.mode && (M.mind in SSticker.mode.shadows)
+	return TRUE

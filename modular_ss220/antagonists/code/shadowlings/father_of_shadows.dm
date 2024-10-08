@@ -21,6 +21,7 @@
 	speed = 1
 	maxHealth = 350
 	health = 350
+	var/mind_initialized = FALSE
 
 	var/thrown_alert
 	var/list/obj/structure/shadow_trap/placed_traps = list()
@@ -39,11 +40,12 @@
 		"<br><span class='motd'>Для подробной информации, посетите вики: [wiki_link("Shadowlings")]</span>"
 	)
 	to_chat(src, chat_box_red(L.Join("<br>")))
-	if(!mind)
+	if(!mind || mind_initialized)
 		return
+	mind_initialized = TRUE
 	var/datum/atom_hud/hud = GLOB.huds[ANTAG_HUD_SHADOW]
 	hud.add_hud_to(src)
-
+	mind.add_antag_datum(/datum/antagonist/shadow_father)
 
 
 /mob/living/simple_animal/demon/shadow_father/Initialize(mapload)
