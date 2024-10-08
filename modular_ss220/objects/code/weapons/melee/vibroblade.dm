@@ -1,12 +1,10 @@
-/obj/item/melee/sardaukar
+/obj/item/melee/vibroblade
 	name = "\improper виброклинок"
-	desc = "Виброклинок гвардейцев Императора. Микрогенератор ультразвука в рукояти позволяет лезвию вибрировать \
-	с огромной частотой, что позволяет при его достаточной зарядке наносить глубокие раны даже ударами по касательной. \
-	Воины Куи'кверр-Кэтиш обучаются мастерству ближнего боя с детства, поэтому в их руках он особо опасен и жесток. \
-	Каждый будущий гвардеец добывает свой клинок в ритуальном бою и его сохранность есть вопрос жизни и смерти владельца."
+	desc = "Виброклинок воинов Раскинта. Микрогенератор ультразвука в рукояти позволяет лезвию вибрировать \
+	с огромной частотой, что позволяет при его достаточной зарядке наносить глубокие раны даже ударами по касательной."
 	icon = 'modular_ss220/objects/icons/melee.dmi'
-	icon_state = "sardaukar"
-	item_state = "sardaukar"
+	icon_state = "vibroblade"
+	item_state = "vibroblade"
 	lefthand_file = 'modular_ss220/objects/icons/inhands/melee_lefthand.dmi'
 	righthand_file = 'modular_ss220/objects/icons/inhands/melee_righthand.dmi'
 	hitsound = 'modular_ss220/objects/sound/weapons/melee/sardaukar/knifehit1.ogg'
@@ -25,13 +23,13 @@
 	flags = CONDUCT
 	var/energy = 0
 	var/max_energy = 20
-	var/charge_time = 5 SECONDS
+	var/charge_time = 10 SECONDS
 
-/obj/item/melee/sardaukar/Initialize(mapload)
+/obj/item/melee/vibroblade/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/parry, _stamina_constant = 2, _stamina_coefficient = 0.5, _parryable_attack_types = ALL_ATTACK_TYPES)
 
-/obj/item/melee/sardaukar/attack_self(mob/living/user)
+/obj/item/melee/vibroblade/attack_self(mob/living/user)
 	var/msg_for_all = span_warning("[user.name] пытается зарядить [src], но кнопка на рукояти не поддается!")
 	var/msg_for_user = span_notice("Вы пытаетесь нажать на кнопку зарядки [src], но она заблокирована.")
 	var/msg_recharge_all = span_notice("[user.name] нажимает на кнопку зарядки [src]...")
@@ -50,7 +48,7 @@
 	energy += 5
 	. = ..()
 
-/obj/item/melee/sardaukar/attack(mob/living/carbon/human/target, mob/living/carbon/human/user)
+/obj/item/melee/vibroblade/attack(mob/living/carbon/human/target, mob/living/carbon/human/user)
 	var/list/obj/item/organ/external/cutoff = list ("l_arm", "r_arm", "l_hand", "r_hand", "l_leg", "r_leg", "r_foot", "l_foot")
 	if(energy == 5)
 		target.adjustBruteLoss (5)
@@ -72,3 +70,14 @@
 			lucky_organ.droplimb(1, DROPLIMB_SHARP, 0, 1)
 			energy -= 20
 	..()
+
+/obj/item/melee/vibroblade/sardaukar
+	name = "\improper виброклинок гвардейца"
+	desc = "Виброклинок гвардейцев Императора. Микрогенератор ультразвука в рукояти позволяет лезвию вибрировать \
+	с огромной частотой, что позволяет при его достаточной зарядке наносить глубокие раны даже ударами по касательной. \
+	Воины Куи'кверр-Кэтиш обучаются мастерству ближнего боя с детства, поэтому в их руках он особо опасен и жесток. \
+	Каждый будущий гвардеец добывает свой клинок в ритуальном бою и его сохранность есть вопрос жизни и смерти владельца."
+	icon_state = "vibroblade_elite"
+	item_state = "vibroblade_elite"
+	force = 25
+	charge_time = 3 SECONDS

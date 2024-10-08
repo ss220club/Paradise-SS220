@@ -66,7 +66,7 @@
 
 // MARK: Skrell elite MODsuit
 /datum/mod_theme/skrell_raskinta
-	name = "\improper ме'керр"
+	name = "\improper raskinta"
 	desc = "Боевая броня с функцией костюма для ВКД, созданная для войнов Раскинта Ме'керр-Кетиш."
 	extended_desc = "Массивный бронекостюм, выполненный в черно-синих цветах, является отлечительной чертой  \
 		военных формирований Раскинта-Кэтиш. Защитные пластины состоят из укрепленной керамики, в то время как\
@@ -88,7 +88,7 @@
 		/obj/item/flash,
 		/obj/item/melee/baton,
 		/obj/item/gun,
-		/obj/item/melee/sardaukar,
+		/obj/item/melee/vibroblade,
 	)
 	skins = list(
 		"skrell_elite" = list(
@@ -127,7 +127,6 @@
 	applied_cell = /obj/item/stock_parts/cell/super
 	applied_modules = list(
 		/obj/item/mod/module/storage/syndicate,
-		/obj/item/mod/module/welding,
 		/obj/item/mod/module/emp_shield,
 		/obj/item/mod/module/status_readout,
 		/obj/item/mod/module/flashlight,
@@ -141,7 +140,7 @@
 
 
 /datum/mod_theme/skrell_sardaukars
-	name = "\improper куи'кверр"
+	name = "\improper emperor guard"
 	desc = "Элитная боевая броня гвардейцев Императора Скреллианской империи."
 	extended_desc = "Благодаря высшим технологическим достижениям скреллов, этот костюм сочетает в себе  \
 		невероятные показатели защищенности и мобильности, являясь незаменимой вещью на вооружении свирепых Куи'кверр-Кэтиш. \
@@ -164,7 +163,7 @@
 		/obj/item/flash,
 		/obj/item/melee/baton,
 		/obj/item/gun,
-		/obj/item/melee/sardaukar,
+		/obj/item/melee/vibroblade,
 	)
 	skins = list(
 		"skrell_white" = list(
@@ -203,16 +202,18 @@
 	applied_cell = /obj/item/stock_parts/cell/bluespace
 	applied_modules = list(
 		/obj/item/mod/module/storage/bluespace,
-		/obj/item/mod/module/welding,
 		/obj/item/mod/module/emp_shield,
 		/obj/item/mod/module/flashlight,
 		/obj/item/mod/module/jetpack/advanced,
 		/obj/item/mod/module/status_readout,
 		/obj/item/mod/module/magboot/advanced,
+		/obj/item/mod/module/energy_shield,
+		/obj/item/mod/module/visor/thermal
 	)
 	default_pins = list(
 		/obj/item/mod/module/jetpack/advanced,
 		/obj/item/mod/module/magboot/advanced,
+		/obj/item/mod/module/visor/thermal
 	)
 
 /obj/item/mod/control/pre_equipped/exclusive/skrell_sardaukars/Initialize(mapload, new_theme, new_skin, new_core, new_access)

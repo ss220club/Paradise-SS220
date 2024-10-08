@@ -12,6 +12,7 @@
 	origin_tech = "combat=6;magnets=5"
 	modifystate = 2
 	execution_speed = 3 SECONDS
+	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/gun/energy/gun/skrell_carbine/elite
 	name = "\improper элитный скреллианский энергитический карабин"
@@ -69,7 +70,7 @@
 	item_state = "sniper"
 	fire_sound = 'modular_ss220/objects/sound/weapons/gunshots/railgun.ogg'
 	recoil = 0
-	fire_delay = 35
+	fire_delay = 25
 	slot_flags = SLOT_FLAG_BELT
 	zoomable = FALSE
 	can_suppress = FALSE
@@ -123,3 +124,20 @@
 	armour_penetration_flat = 30
 	weaken = 0.2
 	speed = 0.2
+
+// Skrellian pistol
+
+/obj/item/gun/energy/gun/skrell_pistol
+	name = "\improper скреллианский энергитический пистолет"
+	desc = "Энергетический пистолет Qua'l*Sarqzix-44x, известный на территориях ТСФ как QS-44. Компактный и удобный в использовании, имеет два режима мощности энерголуча: 'летальный' и 'нейтрализующий'."
+	icon = 'modular_ss220/objects/icons/guns.dmi'
+	icon_state = "skrell_pistol"
+	item_state = "skrell_pistol"
+	lefthand_file = 'modular_ss220/objects/icons/inhands/guns_lefthand.dmi'
+	righthand_file = 'modular_ss220/objects/icons/inhands/guns_righthand.dmi'
+	ammo_type = list(/obj/item/ammo_casing/energy/laser/skrell_light, /obj/item/ammo_casing/energy/disabler)
+	w_class = WEIGHT_CLASS_SMALL
+	shaded_charge = FALSE
+	can_holster = TRUE
+	execution_speed = 4 SECONDS
+	selfcharge = TRUE

@@ -316,3 +316,133 @@
 /datum/outfit/job/centcom/response_team/engineer/amber
 	suit = /obj/item/clothing/suit/space/ert_engineer
 	head = /obj/item/clothing/head/helmet/space/ert_engineer
+
+// MARK: Skrell
+/datum/outfit/admin/sdtf
+	name = "Skrellian Defence Task Forces Marine"
+	uniform = /obj/item/clothing/under/solgov/srt
+	back = /obj/item/mod/control/pre_equipped/exclusive/skrell_raskinta
+	belt = /obj/item/melee/vibroblade
+	glasses = /obj/item/clothing/glasses/night
+	gloves = /obj/item/clothing/gloves/combat
+	shoes = /obj/item/clothing/shoes/combat
+	l_ear = /obj/item/radio/headset/skrellian
+	id = /obj/item/card/id
+	l_hand = /obj/item/gun/energy/gun/skrell_carbine/elite
+	r_pocket = /obj/item/flashlight/seclite
+	l_pocket = /obj/item/reagent_containers/hypospray/autoinjector/nt_emergency/skrell
+	mask = /obj/item/clothing/mask/gas/swat
+	backpack_contents = list(
+		/obj/item/storage/box/responseteam,
+		/obj/item/storage/box/smoke_grenades,
+		/obj/item/grenade/plastic/c4/x4,
+		/obj/item/reagent_containers/hypospray/autoinjector/nt_emergency/skrell = 1,
+		/obj/item/storage/box/handcuffs,
+		/obj/item/tank/internals/emergency_oxygen/double,
+		/obj/item/clothing/accessory/holster,
+		/obj/item/gun/energy/gun/skrell_pistol
+	)
+	cybernetic_implants = list(
+		/obj/item/organ/internal/cyberimp/chest/nutriment/plus,
+		/obj/item/organ/internal/cyberimp/brain/anti_drop,
+		/obj/item/organ/internal/cyberimp/eyes/hud/medical,
+	)
+	var/is_sardaukar = FALSE
+
+/datum/outfit/admin/sdtf/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+	. = ..()
+	if(visualsOnly)
+		return
+
+	H.add_language("Skrellian")
+	H.set_default_language(GLOB.all_languages["Skrellian"])
+
+	var/obj/item/card/id/I = H.wear_id
+	if(istype(I) && !is_sardaukar)
+		apply_to_card(I, H, list(ACCESS_MAINT_TUNNELS), "SDTF Raskinta-Katish", "retro_medical")
+		I.rank = "SDTF forces"
+		I.assignment = "Raskinta-Katish Warrior"
+	else
+		apply_to_card(I, H, list(ACCESS_MAINT_TUNNELS), "Emperor Guard", "retro_medical")
+		I.rank = "Qerr-Koal Raskinta-Katish"
+		I.assignment = "Emperor Guard"
+	H.sec_hud_set_ID()
+
+/datum/outfit/admin/sdtf/rifleman
+	name = "Skrellian Defence Task Forces Officer"
+	l_hand = /obj/item/gun/projectile/automatic/sniper_rifle/skrell_rifle
+	belt = /obj/item/storage/belt/military/assault/skrell
+	backpack_contents = list(
+		/obj/item/gun/energy/gun/skrell_carbine/elite,
+		/obj/item/melee/vibroblade,
+		/obj/item/storage/box/responseteam,
+		/obj/item/storage/box/smoke_grenades,
+		/obj/item/grenade/plastic/c4/x4,
+		/obj/item/reagent_containers/hypospray/autoinjector/nt_emergency/skrell = 1,
+		/obj/item/tank/internals/emergency_oxygen/double,
+		/obj/item/clothing/accessory/holster,
+		/obj/item/gun/energy/gun/skrell_pistol
+	)
+
+/datum/outfit/admin/sdtf/sardaukar
+	name = "Skrellian Defence Task Forces Emperor Guard"
+	l_hand = /obj/item/gun/projectile/automatic/sniper_rifle/skrell_rifle/elite
+	belt = /obj/item/storage/belt/military/assault/skrell_elite
+	back = /obj/item/mod/control/pre_equipped/exclusive/skrell_sardaukars
+	l_pocket = /obj/item/reagent_containers/hypospray/combat/nanites
+	backpack_contents = list(
+		/obj/item/gun/energy/gun/skrell_carbine/elite,
+		/obj/item/melee/vibroblade/sardaukar,
+		/obj/item/storage/box/responseteam,
+		/obj/item/storage/box/smoke_grenades,
+		/obj/item/grenade/plastic/c4/x4,
+		/obj/item/tank/internals/emergency_oxygen/double,
+		/obj/item/clothing/accessory/holster,
+		/obj/item/CQC_manual,
+		/obj/item/shield/energy,
+		/obj/item/gun/energy/gun/skrell_pistol
+	)
+	cybernetic_implants = list(
+		/obj/item/organ/internal/cyberimp/chest/nutriment/plus,
+		/obj/item/organ/internal/cyberimp/brain/anti_drop,
+		/obj/item/organ/internal/cyberimp/eyes/hud/medical,
+		/obj/item/organ/internal/cyberimp/brain/sensory_enhancer,
+		/obj/item/organ/internal/cyberimp/brain/anti_stam
+	)
+	is_sardaukar = TRUE
+
+/obj/item/radio/headset/skrellian
+	name = "skrellian bowman headset"
+	desc = "Used by SDFT forces. Protects ears from flashbangs."
+	flags = EARBANGPROTECT
+	origin_tech = "syndicate=3"
+	icon_state = "com_headset_alt"
+	item_state = "com_headset_alt"
+	ks1type = /obj/item/encryptionkey/skrell
+	requires_tcomms = FALSE
+
+/obj/item/encryptionkey/skrell
+	name = "skrellian encryption key"
+	icon_state = "cypherkey"
+	channels = list("Special Ops" = 1)
+	origin_tech = "syndicate=4"
+
+/obj/item/reagent_containers/hypospray/autoinjector/nt_emergency/skrell
+	desc = "Одноразовый автоинжектор с нанитами."
+	list_reagents = list("nanites" = 10)
+
+/obj/item/storage/belt/military/assault/skrell/populate_contents()
+	new /obj/item/ammo_box/magazine/skrell_magazine(src)
+	new /obj/item/ammo_box/magazine/skrell_magazine(src)
+	new /obj/item/ammo_box/magazine/skrell_magazine(src)
+	new /obj/item/ammo_box/magazine/skrell_magazine(src)
+	new /obj/item/ammo_box/magazine/skrell_magazine(src)
+	new /obj/item/restraints/legcuffs/bola/energy(src)
+
+/obj/item/storage/belt/military/assault/skrell_elite/populate_contents()
+	new /obj/item/ammo_box/magazine/skrell_magazine/skrell_magazine_elite(src)
+	new /obj/item/ammo_box/magazine/skrell_magazine/skrell_magazine_elite(src)
+	new /obj/item/ammo_box/magazine/skrell_magazine/skrell_magazine_elite(src)
+	new /obj/item/ammo_box/magazine/skrell_magazine/skrell_magazine_elite(src)
+	new /obj/item/ammo_box/magazine/skrell_magazine/skrell_magazine_elite(src)
+	new /obj/item/restraints/legcuffs/bola/energy(src)
