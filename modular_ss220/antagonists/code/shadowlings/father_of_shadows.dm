@@ -24,12 +24,12 @@
 	speed = 1
 	maxHealth = 350
 	health = 350
-	var/mind_initialized = FALSE
 
 	var/thrown_alert
 	var/list/obj/structure/shadow_trap/placed_traps = list()
 	var/is_consuming = FALSE
 	var/consumed = 0
+	var/mind_initialized = FALSE
 
 /mob/living/simple_animal/demon/shadow_father/Login()
 	. = ..()
@@ -49,8 +49,7 @@
 	mind_initialized = TRUE
 	var/datum/atom_hud/hud = GLOB.huds[ANTAG_HUD_SHADOW]
 	hud.add_hud_to(src)
-
-
+	mind.add_antag_datum(/datum/antagonist/shadow_father)
 
 /mob/living/simple_animal/demon/shadow_father/Initialize(mapload)
 	. = ..()
