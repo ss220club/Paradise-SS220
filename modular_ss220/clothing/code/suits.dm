@@ -437,3 +437,16 @@
 	lefthand_file = 'modular_ss220/clothing/icons/inhands/left_hand.dmi'
 	righthand_file = 'modular_ss220/clothing/icons/inhands/right_hand.dmi'
 
+//sec swag//
+/obj/item/clothing/suit/armor/coat/cop
+	name = "серая шинель"
+	desc = "не забудьте про шлем любителя свежего воздуха."
+	icon = 'modular_ss220/clothing/icons/object/suits.dmi'
+	icon_override = 'modular_ss220/clothing/icons/mob/suits.dmi'
+	icon_state = "armored_coat"
+	item_state = "armored_coat"
+	species_restricted = list("Human", "Skrell", "Slime People", "Skeleton", "Shadow", "Nucleation", "Vulpkanin", "Unathi", "Tajaran", "Nian", "Machine")
+	armor = list(MELEE = 30, BULLET = 30, LASER = 30, ENERGY = 5, BOMB = 1, RAD = 0, FIRE = 100, ACID = 400)
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
+	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS
+	heat_protection = UPPER_TORSO|LOWER_TORSO|ARMS
