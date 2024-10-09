@@ -9,7 +9,7 @@
 	flags = RESTRICTED | WHITELISTED
 	syllables = list("click","clack","cling","clang","cland","clog")
 
-/datum/language/serpentid/get_random_name()
+/datum/language/serpentid/get_random_name(gender)
 	var/new_name = ""
 	if(gender == FEMALE)
 		new_name = capitalize(pick(GLOB.first_names_female))

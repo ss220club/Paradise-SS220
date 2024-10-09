@@ -4,13 +4,14 @@
 	icon = 'modular_ss220/species/serpentids/icons/organs.dmi'
 	desc = "A large looking eyes with some chemical enchanments."
 	icon_state = "eyes01"
-	see_in_dark = 8
+	see_in_dark = 0
 	flash_protect = FLASH_PROTECTION_EXTRA_SENSITIVE
 	tint = FLASH_PROTECTION_NONE
 	var/chemical_id = SERPENTID_CHEM_REAGENT_ID
 	var/decay_rate = 1
 	var/decay_recovery = BASIC_RECOVER_VALUE
 	var/organ_process_toxins = 0.35
+	var/chemical_consuption = GAS_ORGAN_CHEMISTRY_EYES
 
 
 /obj/item/organ/internal/eyes/serpentid/Initialize(mapload)
@@ -33,6 +34,7 @@
 	if(!isnull(owner))
 		var/mob/mob = owner
 		mob.update_client_colour(time = 10)
+	switch_mode()
 
 /obj/item/organ/internal/eyes/serpentid/get_colourmatrix()
 	var/chem_value = (owner.get_chemical_value(chemical_id) + GAS_ORGAN_CHEMISTRY_MAX/2)/GAS_ORGAN_CHEMISTRY_MAX
@@ -47,3 +49,12 @@
 		vision_adjust, vision_chem, vision_adjust,\
 		vision_adjust, vision_adjust, vision_chem)
 	return vision_matrix
+
+/obj/item/organ/internal/eyes/serpentid/switch_mode(var/force_off = FALSE)
+	.=..()
+	if(!force_off && owner.get_chemical_value(chemical_id) >= chemical_consuption && !(status & ORGAN_DEAD))
+		see_in_dark = 8
+		chemical_consuption = chemical_consuption + chemical_consuption * (max_damage - damage / max_damage)
+	else
+		see_in_dark = 0
+		chemical_consuption = 0

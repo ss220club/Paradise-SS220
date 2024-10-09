@@ -26,7 +26,7 @@
 /obj/item/organ/internal/kidneys/serpentid/on_life()
 	. = .. ()
 	SEND_SIGNAL(src, COMSIG_ORGAN_CHEM_CALL, chemical_consuption)
-	if((owner.m_intent != MOVE_INTENT_RUN || owner.body_position == LYING_DOWN || (world.time - owner.last_movement) >= 10) && (!owner.stat && (owner.mobility_flags & MOBILITY_STAND) && !owner.restrained() && cloak_engaged))
+	if((owner.m_intent != MOVE_INTENT_RUN || owner.body_position == LYING_DOWN || (world.time - owner.last_movement) >= 5) && (!owner.stat && (owner.mobility_flags & MOBILITY_STAND) && !owner.restrained() && cloak_engaged))
 		if(owner.invisibility != INVISIBILITY_LEVEL_TWO)
 			owner.alpha -= 51
 	else
@@ -37,9 +37,9 @@
 
 /obj/item/organ/internal/kidneys/serpentid/switch_mode(var/force_off = FALSE)
 	.=..()
-	if(!force_off && owner.get_chemical_value(chemical_id) >= GAS_ORGAN_CHEMISTRY_KIDNEYS && !cloak_engaged && !(status & ORGAN_DEAD))
+	if(!force_off && owner.get_chemical_value(chemical_id) >= chemical_consuption && !cloak_engaged && !(status & ORGAN_DEAD))
 		cloak_engaged = TRUE
-		chemical_consuption = GAS_ORGAN_CHEMISTRY_KIDNEYS + GAS_ORGAN_CHEMISTRY_KIDNEYS * (max_damage - damage / max_damage)
+		chemical_consuption = chemical_consuption + chemical_consuption * (max_damage - damage / max_damage)
 	else
 		cloak_engaged = FALSE
 		chemical_consuption = 0

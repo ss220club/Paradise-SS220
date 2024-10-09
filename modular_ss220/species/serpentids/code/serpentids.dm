@@ -20,7 +20,7 @@
 	inherent_biotypes = MOB_ORGANIC | MOB_HUMANOID | MOB_REPTILE
 	dies_at_threshold = TRUE
 
-	dietflags = DIET_CARN
+	dietflags = DIET_OMNI
 	taste_sensitivity = TASTE_SENSITIVITY_SHARP
 	allowed_consumed_mobs = list(/mob/living/simple_animal/mouse, /mob/living/simple_animal/lizard, /mob/living/simple_animal/chick, /mob/living/simple_animal/chicken,
 								/mob/living/simple_animal/crab, /mob/living/simple_animal/butterfly, /mob/living/simple_animal/parrot, /mob/living/simple_animal/hostile/poison/bees)
@@ -131,6 +131,7 @@
 	else
 		return TRUE
 
+//Перенести на карапас/грудь
 /datum/species/serpentid/handle_life(mob/living/carbon/human/H)
 
 	var/armor_count = 0
@@ -147,68 +148,7 @@
 	else
 		gene_lastcall += 1
 
-	//Потеря брони при первом трешхолде
-	if (armor_count <= SERPENTID_CARAPACE_NOARMOR_STATE)
-		brute_mod = 0.6
-		burn_mod = 0.8
-		ADD_TRAIT(H, TRAIT_PIERCEIMMUNE, "carapace_state")
-		H.clear_alert("carapace_break_armor")
-	else
-		brute_mod = 1.3
-		burn_mod = 1.5
-		REMOVE_TRAIT(H, TRAIT_PIERCEIMMUNE, "carapace_state")
-		H.throw_alert("carapace_break_armor", /atom/movable/screen/alert/carapace_break_armor)
-
-	//Потеря стелса при втором трешхолде
-	if (armor_count <= SERPENTID_CARAPACE_NOCHAMELION_STATE)
-		can_stealth = TRUE
-		H.clear_alert("carapace_break_cloak")
-	else
-		H.throw_alert("carapace_break_cloak", /atom/movable/screen/alert/carapace_break_cloak)
-		can_stealth = FALSE
-
-	//Потеря рига при третьем трешхолде
-	var/cold = SERPENTID_COLD_THRESHOLD_LEVEL_BASE
-	var/heat = SERPENTID_HEAT_THRESHOLD_LEVEL_BASE
-	hazard_high_pressure = HAZARD_HIGH_PRESSURE
-	warning_high_pressure = WARNING_HIGH_PRESSURE
-	warning_low_pressure = WARNING_LOW_PRESSURE
-	hazard_low_pressure = HAZARD_LOW_PRESSURE
-	cold = SERPENTID_ARMORED_COLD_THRESHOLD
-	heat = SERPENTID_ARMORED_HEAT_THRESHOLD
-	if (armor_count <= SERPENTID_CARAPACE_NOPRESSURE_STATE)
-		hazard_high_pressure = 1000
-		warning_high_pressure = 1000
-		warning_low_pressure = -1
-		hazard_low_pressure = -1
-		cold = SERPENTID_ARMORED_COLD_THRESHOLD
-		heat = SERPENTID_ARMORED_HEAT_THRESHOLD
-		H.clear_alert("carapace_break_rig")
-	else
-		H.throw_alert("carapace_break_rig", /atom/movable/screen/alert/carapace_break_rig)
-	var/up = SERPENTID_COLD_THRESHOLD_LEVEL_DOWN
-	var/down = SERPENTID_COLD_THRESHOLD_LEVEL_DOWN
-	cold_level_1 = cold
-	cold_level_2 = cold_level_1 - down
-	cold_level_3 = cold_level_2 - down
-	heat_level_1 = heat
-	heat_level_2 = heat_level_1 + up
-	heat_level_3 = heat_level_2 + up
-
 	. = ..()
-
-//Модификация граба для хвата из стелса
-/datum/species/grab(mob/living/carbon/human/user, mob/living/carbon/human/target, datum/martial_art/attacker_style)
-	. = .. ()
-	var/datum/species/serpentid/active_spieces =  user.dna.species
-	if (istype(active_spieces, /datum/species/serpentid))
-		if (user.invisibility == INVISIBILITY_LEVEL_TWO)
-			for(var/X in target.grabbed_by)
-				var/obj/item/grab/G = X
-				G.state = GRAB_AGGRESSIVE
-				G.icon_state = "grabbed1"
-				user.reset_visibility()
-
 
 /datum/species/serpentid/on_species_gain(mob/living/carbon/human/H)
 	..()
@@ -235,7 +175,7 @@
 	H.verbs -= /mob/living/carbon/human/proc/emote_gbswhips
 	H.verbs -= /mob/living/carbon/human/proc/emote_gbswiggles
 
-//Блокировка ботинок
+//Блокировка ботинок - перенести на ноги/ступни
 /datum/species/serpentid/can_equip(obj/item/I, slot, disable_warning = FALSE, mob/living/carbon/human/H)
 	switch(slot)
 		if(SLOT_HUD_SHOES)

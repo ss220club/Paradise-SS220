@@ -1,7 +1,7 @@
 //===Клинки через грудной имплант===
 /obj/item/organ/internal/cyberimp/chest/serpentid_blades
-	name = "serpentid blade implant"
-	desc = "implants for the organs in your torso."
+	name = "neuronodule of blades"
+	desc = "control organ of upper blades"
 	icon_state = "chest_implant"
 	parent_organ = "chest"
 	actions_types = list(/datum/action/item_action/organ_action/toggle/switch_blades)

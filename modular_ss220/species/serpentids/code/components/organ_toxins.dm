@@ -26,14 +26,9 @@
 	if(organ.status & ORGAN_DEAD)
 		return
 	if(organ.owner.get_damage_amount(TOX) > 0)
-		var/list/organs = organ.owner.internal_organs
-		var/obj/item/organ/internal/liver/target_liver = null
-		var/obj/item/organ/internal/kidneys/target_kidney = null
-		for(var/obj/item/organ/internal/O in organs)
-			if (istype(O, /obj/item/organ/internal/liver))
-				target_liver = O
-			if (istype(O, /obj/item/organ/internal/kidneys))
-				target_kidney = O
+		var/obj/item/organ/internal/liver/target_liver = organ.owner.get_int_organ(/obj/item/organ/internal/liver)
+		var/obj/item/organ/internal/kidneys/target_kidney = organ.owner.get_int_organ(/obj/item/organ/internal/kidneys)
+
 		if (organ == target_kidney)
 			organ.receive_damage(organ.owner.get_damage_amount(TOX) * toxin_damage_rate, 1)
 			organ.owner.adjustToxLoss(-1 * organ.owner.get_damage_amount(TOX) * toxin_damage_rate)

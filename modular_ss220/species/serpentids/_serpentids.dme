@@ -1,19 +1,25 @@
 #include "code/defines.dm"
+#include "code/language.dm"
 
 #include "code/components/reagents.dm"
 #include "code/components/organ_decay.dm"
 #include "code/components/organ_chemistry.dm"
 #include "code/components/organ_toxins.dm"
 //#include "code/components/organ_actions_expansion.dm" - не используется (органы через расширение)
-//#include "code/components/organ_actions_component.dm" - не используется (пойдет в ТГ)
+//#include "code/components/organ_actions_component.dm" - не используется
 #include "code/components/heart_defib.dm"
 #include "code/components/carapace.dm"
+#include "code/components/carapace_shell.dm"
 #include "code/components/paired_implants.dm"
 #include "code/components/double_attack.dm"
 #include "code/components/grab_and_drag_on_mob_mobs.dm"
 #include "code/components/grab_and_drag_on_mob_crates.dm"
 
-#include "code/organs/external/serpentids_organs_external.dm"
+#include "code/organs/external/serpentids_organs_other.dm"
+#include "code/organs/external/serpentids_organs_hands.dm"
+#include "code/organs/external/serpentids_organs_head.dm"
+#include "code/organs/external/serpentids_organs_torso.dm"
+
 #include "code/organs/internal/serpentid_mantis_blades.dm"
 #include "code/organs/internal/serpentid_mantis_chest.dm"
 #include "code/organs/internal/serpentid_mantis_hand.dm"
@@ -26,12 +32,3 @@
 #include "code/organs/internal/serpentids_organs_additionals.dm"
 
 #include "code/serpentids.dm"
-// BEGIN_INTERNALS
-// END_INTERNALS
-// BEGIN_FILE_DIR
-#define FILE_DIR .
-// END_FILE_DIR
-// BEGIN_PREFERENCES
-// END_PREFERENCES
-// BEGIN_INCLUDE
-// END_INCLUDE
