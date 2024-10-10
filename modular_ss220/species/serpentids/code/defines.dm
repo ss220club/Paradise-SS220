@@ -115,7 +115,7 @@
 
 /datum/emote/living/carbon/human/roar/gbs
 	key = "gbsroar"
-	key_third_person = "roar"
+	key_third_person = "gbsroar"
 	message = "утробно рычит."
 	message_mime = "бесшумно рычит."
 	message_param = "утробно рычит на %t."
@@ -129,9 +129,9 @@
 	return pick(
 		'modular_ss220/species/serpentids/sounds/serpentid_roar.ogg')
 
-/datum/emote/living/carbon/human/hiss/gbs/
+/datum/emote/living/carbon/human/hiss/gbs
 	key = "gbshiss"
-	key_third_person = "hisses"
+	key_third_person = "gbshisses"
 	message = "шипит."
 	message_param = "шипит на %t."
 	species_type_whitelist_typecache = list(/datum/species/serpentid)
@@ -141,30 +141,9 @@
 	sound = "modular_ss220/species/serpentids/sounds/serpentid_hiss.ogg"
 	muzzled_noises = list("weak hissing")
 
-/datum/emote/living/carbon/human/whip/gbs
-	key = "gbswhip"
-	key_third_person = "whip"
-	message = "гремит хвостом."
-	message_mime = "взмахивает хвостом и трясет кончиком в воздухе."
-	message_postfix = ", грозно смотря на %t."
-	message_param = EMOTE_PARAM_USE_POSTFIX
-	species_type_whitelist_typecache = list(/datum/species/serpentid)
-	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
-	volume = 75
-	audio_cooldown = 3 SECONDS
-	sound = 'modular_ss220/emotes/audio/unathi/whip_short_unathi.ogg'
-
-/datum/emote/living/carbon/human/whip/whip_l/gbs
-	key = "gbswhips"
-	key_third_person = "whips"
-	message = "хлестает хвостом."
-	species_type_whitelist_typecache = list(/datum/species/serpentid)
-	audio_cooldown = 6 SECONDS
-	sound = 'modular_ss220/emotes/audio/unathi/whip_unathi.ogg'
-
 /datum/emote/living/carbon/human/wiggles/gbs
-	key = "wiggles"
-	key_third_person = "wiggles"
+	key = "gbswiggles"
+	key_third_person = "gbswiggles"
 	message = "шевелит усиками."
 	message_param = "шевелит усиками в сторону %t."
 	cooldown = 5 SECONDS

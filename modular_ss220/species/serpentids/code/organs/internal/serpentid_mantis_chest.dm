@@ -23,24 +23,22 @@
 	button_overlay_icon = 'modular_ss220/species/serpentids/icons/organs.dmi'
 	button_overlay_icon_state = "gas_hand_act"
 
-/obj/item/organ/internal/cyberimp/chest/serpentid_blades/New(mapload)
-	. = .. ()
-	if (owner)
-		owner.update_body()
-
-/obj/item/organ/internal/cyberimp/chest/serpentid_blades/Initialize(mapload)
-	. = .. ()
-	if (owner)
-		owner.update_body()
-
 /obj/item/organ/internal/cyberimp/chest/serpentid_blades/insert(mob/living/carbon/M, special, dont_remove_slot)
 	. = .. ()
-	if (owner)
+	if (owner && owner.real_name != "unknown")
 		owner.update_body()
+	else
+		spawn(1)
+			if (owner && owner.real_name != "unknown")
+				owner.update_body()
 
 /obj/item/organ/internal/cyberimp/chest/serpentid_blades/remove(mob/living/carbon/M, special, dont_remove_slot)
-	if (owner)
+	if (owner && owner.real_name != "unknown")
 		owner.update_body()
+	else
+		spawn(1)
+			if (owner && owner.real_name != "unknown")
+				owner.update_body()
 	. = .. ()
 
 /mob/living/carbon/human/proc/update_blades_overlays()

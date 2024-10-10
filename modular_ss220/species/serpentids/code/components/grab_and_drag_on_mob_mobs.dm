@@ -31,8 +31,9 @@
 	UnregisterSignal(parent, COMSIG_GADOM_MOB_UNLOAD)
 	UnregisterSignal(parent, COMSIG_GADOM_MOB_CAN_GRAB)
 
-/datum/component/gadom_living/proc/block_operation()
+/datum/component/gadom_living/proc/block_operation(datum/component_holder, var/signal_result)
 	SIGNAL_HANDLER
+	signal_result = carrier.a_intent == "grab"
 	return GADOM_MOB_ALLOW_TO_GRAB
 
 /datum/component/gadom_living/proc/try_load_mob(datum/component_holder, mob/user, mob/target)
@@ -107,11 +108,17 @@
 	if(IsFrozen(src) && !is_admin(usr))
 		to_chat(usr, "<span class='boldannounceic'>Interacting with admin-frozen players is not permitted.</span>")
 		return
-	if (SEND_SIGNAL(usr, COMSIG_GADOM_MOB_CAN_GRAB) && GADOM_MOB_ALLOW_TO_GRAB)
+	var/signal_result
+	var/signal_call	= SEND_SIGNAL(usr, COMSIG_GADOM_MOB_CAN_GRAB, signal_result)
+	if ((signal_call & GADOM_MOB_ALLOW_TO_GRAB) && signal_result)
 		SEND_SIGNAL(usr, COMSIG_GADOM_MOB_LOAD, usr, src)
+		return
+	. = .. ()
 
 /datum/species/spec_attack_hand(mob/living/carbon/human/M, mob/living/carbon/human/H, datum/martial_art/attacker_style)
-	if (SEND_SIGNAL(H, COMSIG_GADOM_MOB_CAN_GRAB) && GADOM_MOB_ALLOW_TO_GRAB && H.loaded)
+	var/signal_result
+	var/signal_call	= SEND_SIGNAL(usr, COMSIG_GADOM_MOB_CAN_GRAB, signal_result)
+	if ((signal_call & GADOM_MOB_ALLOW_TO_GRAB) && signal_result && H.loaded)
 		SEND_SIGNAL(H, COMSIG_GADOM_MOB_UNLOAD, M)
 	. = .. ()
 

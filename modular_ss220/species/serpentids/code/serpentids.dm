@@ -157,13 +157,13 @@
 	H.buckle_lying = buckle_lying
 	H.update_transform()
 	H.AddComponent(/datum/component/footstep, FOOTSTEP_MOB_SLIME, 1, -6)
+	H.AddComponent(/datum/component/mob_overlay_shift, shift_y_hand = 3, shift_y_belt = 7, shift_y_back = 7) //shift_xs_hand = 12
 	H.AddComponent(/datum/component/gadom_living)
 	H.AddComponent(/datum/component/gadom_cargo)
 	H.verbs += /mob/living/carbon/human/proc/emote_gbsroar
 	H.verbs += /mob/living/carbon/human/proc/emote_gbshiss
-	H.verbs += /mob/living/carbon/human/proc/emote_gbswhip
-	H.verbs += /mob/living/carbon/human/proc/emote_gbswhips
 	H.verbs += /mob/living/carbon/human/proc/emote_gbswiggles
+	SEND_SIGNAL(H, COMSIG_MOB_OVERLAY_SHIFT_UPDATE)
 	for (var/limb_name in has_limbs)
 		valid_limbs += has_limbs[limb_name]["path"]
 
@@ -171,11 +171,9 @@
 	..()
 	H.verbs -= /mob/living/carbon/human/proc/emote_gbsroar
 	H.verbs -= /mob/living/carbon/human/proc/emote_gbshiss
-	H.verbs -= /mob/living/carbon/human/proc/emote_gbswhip
-	H.verbs -= /mob/living/carbon/human/proc/emote_gbswhips
 	H.verbs -= /mob/living/carbon/human/proc/emote_gbswiggles
 
-//Блокировка ботинок - перенести на ноги/ступни
+//Работа с инвентарем
 /datum/species/serpentid/can_equip(obj/item/I, slot, disable_warning = FALSE, mob/living/carbon/human/H)
 	switch(slot)
 		if(SLOT_HUD_SHOES)
