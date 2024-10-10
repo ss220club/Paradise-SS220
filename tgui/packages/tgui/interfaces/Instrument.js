@@ -341,26 +341,15 @@ const InstrumentStatus = (properties, context) => {
         </LabeledList.Item>
         <LabeledList.Item label="Tempo">
           <Box>
-            <Button
-              disabled={tempo >= maxTempo}
-              content="-"
-              as="span"
-              mr="0.5rem"
-              onClick={() =>
-                act('tempo', {
-                  new: tempo + tickLag,
-                })
-              }
-            />
-            {round(600 / tempo)} BPM
-            <Button
-              disabled={tempo <= minTempo}
-              content="+"
-              as="span"
-              ml="0.5rem"
-              onClick={() =>
-                act('tempo', {
-                  new: tempo - tickLag,
+            <Slider
+              minValue={round(600 / maxTempo)}
+              maxValue={round(600 / minTempo)}
+              value={round(600 / tempo)}
+              stepPixelSize={1}
+              format={(v) => v + ' BPM'}
+              onDrag={(_e, v) =>
+                act('setbpm', {
+                  new: v,
                 })
               }
             />
