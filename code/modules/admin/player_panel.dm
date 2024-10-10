@@ -437,18 +437,16 @@
 			dat += check_role_table("Cultists", SSticker.mode.cult_team.members)
 			dat += "<a href='byond://?src=[UID()];check_teams=1'>View Cult Team & Controls</a><br>"
 
+		if(length(SSticker.mode.traitors))
+			dat += check_role_table("Traitors", SSticker.mode.traitors)
+
 		// SS220 EDIT - START
 		if(length(SSticker.mode.blood_brothers))
 			dat += check_role_table("Blood Brothers", SSticker.mode.blood_brothers)
-			dat += "<a href='byond://?src=[UID()];check_teams=1'>View Blood Brothers Team & Controls</a><br>"
 
 		if(length(SSticker.mode.vox_raiders))
 			dat += check_role_table("Vox Raiders", SSticker.mode.vox_raiders)
-			dat += "<a href='byond://?src=[UID()];check_teams=1'>View Vox Raiders Team & Controls</a><br>"
 		// SS220 EDIT - END
-
-		if(length(SSticker.mode.traitors))
-			dat += check_role_table("Traitors", SSticker.mode.traitors)
 
 		if(length(SSticker.mode.implanted))
 			dat += check_role_table("Mindslaves", SSticker.mode.implanted)
