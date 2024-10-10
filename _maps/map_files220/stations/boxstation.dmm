@@ -16271,21 +16271,14 @@
 	dir = 8
 	},
 /obj/machinery/ai_status_display/north,
-/obj/item/radio{
-	pixel_y = 12
+/obj/machinery/cell_charger{
+	pixel_x = 2;
+	pixel_y = 4
 	},
-/obj/item/radio{
-	pixel_y = 6
+/obj/item/stock_parts/cell/high{
+	pixel_y = 4;
+	pixel_x = 2
 	},
-/obj/item/radio{
-	pixel_x = 8;
-	pixel_y = 6
-	},
-/obj/item/radio{
-	pixel_y = 6;
-	pixel_x = -8
-	},
-/obj/item/radio,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "darkblue"
@@ -18687,7 +18680,7 @@
 /area/station/maintenance/port)
 "bso" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/closet/wardrobe/miner,
+/obj/structure/closet/secure_closet/personal,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "brown"
@@ -26139,7 +26132,6 @@
 "cao" = (
 /obj/machinery/recharge_station,
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/random_spawners/cobweb_left_frequent,
 /turf/simulated/floor/plasteel{
 	dir = 9;
 	icon_state = "brown"
@@ -26181,7 +26173,6 @@
 	},
 /obj/machinery/disposal,
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/random_spawners/cobweb_right_frequent,
 /turf/simulated/floor/plasteel{
 	dir = 5;
 	icon_state = "brown"
@@ -26611,12 +26602,16 @@
 /area/station/medical/cryo)
 "cbH" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/table,
+/obj/item/gps/mining,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "brown"
 	},
 /area/station/supply/miningdock)
 "cbI" = (
+/obj/structure/table,
+/obj/item/clothing/accessory/stethoscope,
 /turf/simulated/floor/plasteel{
 	dir = 9;
 	icon_state = "brown"
@@ -26624,8 +26619,10 @@
 /area/station/supply/miningdock)
 "cbJ" = (
 /obj/structure/table,
-/obj/item/folder/yellow,
-/obj/item/gps/mining,
+/obj/item/storage/toolbox/mechanical,
+/obj/item/stack/cable_coil{
+	amount = 15
+	},
 /turf/simulated/floor/plasteel{
 	dir = 5;
 	icon_state = "brown"
@@ -27406,6 +27403,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/table,
 /obj/machinery/cell_charger,
+/obj/item/rcs,
 /turf/simulated/floor/plasteel{
 	icon_state = "brown"
 	},
@@ -27482,7 +27480,8 @@
 "cfc" = (
 /obj/machinery/light/directional/east,
 /obj/structure/table,
-/obj/item/storage/firstaid/regular,
+/obj/item/folder/yellow,
+/obj/item/pen,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "brown"
@@ -28544,7 +28543,7 @@
 	},
 /area/station/engineering/supermatter_room)
 "cjU" = (
-/obj/structure/closet/secure_closet/miner,
+/obj/structure/closet/secure_closet/personal,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "brown"
@@ -28592,16 +28591,12 @@
 /turf/space,
 /area/space)
 "cko" = (
-/obj/structure/rack,
-/obj/item/storage/toolbox/mechanical{
-	pixel_x = -2;
-	pixel_y = -1
-	},
 /obj/machinery/camera{
 	c_tag = "Mining Dock";
 	dir = 8
 	},
 /obj/machinery/light_switch/east,
+/obj/structure/closet/secure_closet/personal,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "brown"
@@ -28661,6 +28656,8 @@
 "ckx" = (
 /obj/structure/closet/secure_closet/explorer,
 /obj/machinery/light/directional/west,
+/obj/item/gun/energy/laser/awaymission_aeg/rnd,
+/obj/item/radio/off,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "brown"
@@ -29639,10 +29636,24 @@
 	},
 /area/station/command/office/cmo)
 "cnS" = (
-/obj/structure/table,
-/obj/item/folder/yellow,
-/obj/item/pen,
 /obj/machinery/alarm/directional/west,
+/obj/item/storage/belt/utility{
+	pixel_x = 3;
+	pixel_y = 2
+	},
+/obj/item/storage/toolbox/mechanical{
+	pixel_x = -3;
+	pixel_y = -4
+	},
+/obj/item/pickaxe{
+	pixel_x = 5
+	},
+/obj/item/shovel{
+	pixel_x = -5
+	},
+/obj/item/storage/firstaid/regular,
+/obj/item/storage/box/donkpockets,
+/obj/structure/shelf/supply,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "brown"
@@ -30229,7 +30240,7 @@
 /area/station/maintenance/apmaint)
 "cqG" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/closet/wardrobe/miner,
+/obj/structure/closet/secure_closet/miner,
 /turf/simulated/floor/plasteel{
 	dir = 6;
 	icon_state = "brown"
@@ -33938,9 +33949,8 @@
 	},
 /area/station/engineering/control)
 "cES" = (
-/obj/structure/table,
-/obj/item/rcs,
 /obj/item/radio/intercom/directional/west,
+/obj/structure/closet/secure_closet/personal,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "brown"
@@ -34407,7 +34417,7 @@
 /area/station/engineering/control)
 "cGV" = (
 /obj/item/radio/intercom/directional/west,
-/obj/structure/closet/secure_closet/expedition,
+/obj/structure/closet/secure_closet/personal,
 /turf/simulated/floor/plasteel{
 	dir = 5;
 	icon_state = "darkblue"
@@ -39520,11 +39530,11 @@
 	},
 /area/station/engineering/gravitygenerator)
 "cYN" = (
-/obj/structure/closet/secure_closet/expedition,
 /obj/machinery/camera/motion{
 	c_tag = "Gateway Motion Sensor";
 	dir = 1
 	},
+/obj/structure/closet/secure_closet/personal,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "darkblue"
@@ -39606,7 +39616,7 @@
 	icon_state = "0-8"
 	},
 /obj/machinery/light_switch/south,
-/obj/structure/closet/secure_closet/expedition,
+/obj/structure/closet/secure_closet/personal,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "darkblue"
@@ -46130,7 +46140,6 @@
 	},
 /area/station/maintenance/abandonedbar)
 "dNi" = (
-/obj/effect/landmark/start/shaft_miner,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable{
@@ -47772,6 +47781,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/effect/landmark/start/shaft_miner,
 /turf/simulated/floor/plasteel,
 /area/station/supply/miningdock)
 "esG" = (
@@ -53793,7 +53803,6 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/fpmaint2)
 "gAk" = (
-/obj/effect/landmark/start/shaft_miner,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable{
@@ -54619,6 +54628,12 @@
 	icon_state = "floorgrime"
 	},
 /area/station/engineering/gravitygenerator)
+"gMS" = (
+/obj/effect/landmark/start/shaft_miner,
+/turf/simulated/floor/plasteel{
+	icon_state = "brown"
+	},
+/area/station/supply/miningdock)
 "gNe" = (
 /obj/structure/table/reinforced,
 /obj/machinery/flasher{
@@ -61583,6 +61598,18 @@
 	icon_state = "darkyellowcorners"
 	},
 /area/station/engineering/hallway)
+"jou" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/effect/landmark/start/shaft_miner,
+/turf/simulated/floor/plasteel,
+/area/station/supply/miningdock)
 "jov" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -65622,11 +65649,7 @@
 /area/station/maintenance/asmaint)
 "kMd" = (
 /obj/machinery/firealarm/directional/west,
-/obj/structure/table,
-/obj/item/paper_bin{
-	pixel_x = 1;
-	pixel_y = 9
-	},
+/obj/structure/closet/secure_closet/personal,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "brown"
@@ -67629,9 +67652,7 @@
 /turf/simulated/floor/carpet/black,
 /area/station/service/bar/atrium)
 "lxA" = (
-/obj/machinery/computer/shuttle/mining{
-	dir = 1
-	},
+/obj/structure/closet/secure_closet/miner,
 /turf/simulated/floor/plasteel,
 /area/station/supply/miningdock)
 "lxB" = (
@@ -69598,6 +69619,7 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
+/obj/effect/landmark/start/shaft_miner,
 /turf/simulated/floor/plasteel,
 /area/station/supply/miningdock)
 "mdX" = (
@@ -69879,7 +69901,6 @@
 	},
 /area/station/maintenance/aft)
 "mii" = (
-/obj/effect/landmark/start/shaft_miner,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -72009,6 +72030,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/electrical)
+"mYs" = (
+/obj/effect/landmark/start/shaft_miner,
+/turf/simulated/floor/plasteel,
+/area/station/supply/miningdock)
 "mYv" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
@@ -73164,6 +73189,8 @@
 /obj/structure/closet/secure_closet/explorer,
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/requests_console/directional/west,
+/obj/item/gun/energy/laser/awaymission_aeg/rnd,
+/obj/item/radio/off,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "brown"
@@ -74378,6 +74405,8 @@
 /obj/structure/closet/secure_closet/explorer,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/radio/intercom/directional/west,
+/obj/item/gun/energy/laser/awaymission_aeg/rnd,
+/obj/item/radio/off,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "brown"
@@ -75323,6 +75352,14 @@
 	icon_state = "whitehall"
 	},
 /area/station/maintenance/aft)
+"ogF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/wardrobe/miner,
+/turf/simulated/floor/plasteel{
+	dir = 8;
+	icon_state = "brown"
+	},
+/area/station/supply/miningdock)
 "ogH" = (
 /obj/effect/spawner/random_spawners/wall_rusted_maybe,
 /turf/simulated/wall,
@@ -79507,9 +79544,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
-/obj/machinery/computer/security/mining{
-	dir = 1
-	},
+/obj/structure/closet/secure_closet/miner,
 /turf/simulated/floor/plasteel,
 /area/station/supply/miningdock)
 "pzF" = (
@@ -82105,7 +82140,7 @@
 	},
 /area/station/maintenance/asmaint)
 "qvo" = (
-/obj/structure/closet/secure_closet/expedition,
+/obj/structure/closet/secure_closet/personal,
 /turf/simulated/floor/plasteel{
 	dir = 9;
 	icon_state = "darkblue"
@@ -85542,9 +85577,9 @@
 	},
 /area/station/ai_monitored/storage/eva)
 "rJo" = (
-/obj/structure/closet/secure_closet/miner,
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/directional/south,
+/obj/structure/closet/secure_closet/miner,
 /turf/simulated/floor/plasteel{
 	icon_state = "brown"
 	},
@@ -86184,12 +86219,12 @@
 /obj/effect/turf_decal/caution{
 	dir = 4
 	},
-/obj/effect/landmark/start/shaft_miner,
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/effect/landmark/start/shaft_miner,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "brown"
@@ -86563,9 +86598,9 @@
 /area/station/public/toilet/unisex)
 "scB" = (
 /obj/structure/table,
-/obj/item/storage/toolbox/mechanical,
-/obj/item/stack/cable_coil{
-	amount = 15
+/obj/item/paper_bin{
+	pixel_x = 1;
+	pixel_y = 9
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -94932,7 +94967,6 @@
 /turf/simulated/floor/plating,
 /area/station/engineering/supermatter_room)
 "uXM" = (
-/obj/effect/landmark/start/shaft_miner,
 /obj/structure/disposalpipe/segment/corner{
 	dir = 1
 	},
@@ -94949,6 +94983,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
+/obj/effect/landmark/start/shaft_miner,
 /turf/simulated/floor/plasteel,
 /area/station/supply/miningdock)
 "uYw" = (
@@ -100210,7 +100245,7 @@
 /area/station/security/prisonlockers)
 "wQa" = (
 /obj/machinery/requests_console/directional/west,
-/obj/effect/landmark/start/shaft_miner,
+/obj/structure/closet/secure_closet/personal,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "brown"
@@ -101399,6 +101434,8 @@
 /obj/structure/closet/secure_closet/explorer,
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/alarm/directional/west,
+/obj/item/gun/energy/laser/awaymission_aeg/rnd,
+/obj/item/radio/off,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "brown"
@@ -102497,15 +102534,8 @@
 /area/station/maintenance/fsmaint)
 "xHr" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/rack,
-/obj/item/storage/belt/utility,
-/obj/item/shovel{
-	pixel_x = -5
-	},
-/obj/item/pickaxe{
-	pixel_x = 5
-	},
 /obj/machinery/light/small/directional/north,
+/obj/machinery/computer/security/mining,
 /turf/simulated/floor/plasteel,
 /area/station/supply/miningdock)
 "xHs" = (
@@ -102613,6 +102643,13 @@
 /obj/item/poster/random_contraband,
 /turf/simulated/floor/plating,
 /area/station/maintenance/asmaint)
+"xIK" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/computer/shuttle/mining{
+	dir = 1
+	},
+/turf/simulated/floor/plasteel,
+/area/station/supply/miningdock)
 "xJa" = (
 /obj/effect/turf_decal/stripes/white/line{
 	dir = 6
@@ -103377,12 +103414,12 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/aft)
 "xTR" = (
-/obj/effect/landmark/start/shaft_miner,
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/effect/landmark/start/shaft_miner,
 /turf/simulated/floor/plasteel,
 /area/station/supply/miningdock)
 "xTV" = (
@@ -125709,7 +125746,7 @@ aaa
 cam
 xHr
 qat
-qat
+xIK
 cam
 aaa
 aab
@@ -126473,7 +126510,7 @@ bYI
 bzJ
 cbI
 fGH
-eKd
+ogF
 wQa
 cES
 kMd
@@ -126730,7 +126767,7 @@ bYH
 bzJ
 cbH
 kpA
-cfb
+mYs
 jVE
 cfb
 kQY
@@ -126989,7 +127026,7 @@ cbK
 kum
 cfm
 dNi
-cfm
+jou
 cfm
 gAk
 unR
@@ -127251,7 +127288,7 @@ cko
 cnT
 qat
 mii
-cno
+gMS
 cam
 fMn
 tQa
