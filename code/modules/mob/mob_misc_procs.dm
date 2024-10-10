@@ -275,7 +275,7 @@
 		lowerletter = lowertext(newletter)
 
 		// Character conversion
-		if(rand(1, 3) == 3)
+		if(prob(33.33))
 			switch(lowerletter)
 				if("o")
 					newletter = "u"
@@ -299,15 +299,14 @@
 					newletter = "сц"
 
 		// Random case replacement and adding characters from the slurletters list
-		switch(rand(1, 15))
-			if(1, 3, 5, 8)
-				newletter = lowerletter
-			if(2, 4, 6, 15)
-				newletter = uppertext(newletter)
-			if(7)
+		if(prob(60))
+			if(prob(11.11))
 				newletter += pick(slurletters)
 			else
-				pass()
+				if(prob(50))
+					newletter = lowerletter
+				else
+					newletter = uppertext(newletter)
 
 		// Additional phrases
 		if(rand(1, 100) <= strength * 0.25)
