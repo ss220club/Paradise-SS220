@@ -9,7 +9,7 @@
 /// 222TC
 /obj/item/storage/box/syndie_kit/bundle/spy
 	name = "Spy Bundle"
-	desc = "Complete your objectives quietly with this compilation of stealthy items."
+	desc = "Скрытно выполняйте свои цели с этим набором предметов."
 	items = list(
 		/obj/item/storage/box/syndie_kit/chameleon, // 10TC
 		/obj/item/card/id/syndicate, // 10TC
@@ -28,7 +28,7 @@
 /// 142TC
 /obj/item/storage/box/syndie_kit/bundle/agent13
 	name = "Agent 13 Bundle"
-	desc = "Find and eliminate your targets quietly and effectively with this kit."
+	desc = "Найдите и тихо и эффективно устраните свою цель с этим набором."
 	items = list(
 		/obj/item/clothing/under/chameleon, // 1TC. 10TC divided over 10 items from the chameleon kit.
 		/obj/item/card/id/syndicate, // 10TC
@@ -46,8 +46,8 @@
 
 /// 160TC
 /obj/item/storage/box/syndie_kit/bundle/thief
-	name = "Thief Bundle"
-	desc = "Steal from friends, enemies, and interstellar megacorporations alike!"
+	name = "Набор Вора"
+	desc = "Воруйте у друзей, врагов и медзвёздных корпораций!"
 	items = list(
 		/obj/item/gun/energy/kinetic_accelerator/crossbow, // 60TC
 		/obj/item/chameleon, // 25TC
@@ -59,8 +59,8 @@
 
 /// 176TC
 /obj/item/storage/box/syndie_kit/bundle/bond
-	name = "Agent 007 Bundle"
-	desc = "Shake your Martini and stir up trouble with this bundle of lethal equipment mixed with a spritz of gadgetry to keep things interesting."
+	name = "Набор Агента 007"
+	desc = "Взболнтине свой Мартини и начните беду с этим набором смертельного снаряжения с каплей гаджетов для того, чтобы всё оставалось интереснее."
 	items = list(
 		/obj/item/storage/briefcase/false_bottomed, // 10TC
 		/obj/item/suppressor, // 5TC
@@ -79,8 +79,8 @@
 
 /// 145TC + RCD & Mesons Autoimplanter
 /obj/item/storage/box/syndie_kit/bundle/infiltrator
-	name = "Infiltration Bundle"
-	desc = "Use your teleporter, krav maga and other support tools to jump right into your desired location, quickly leaving as though you were never there."
+	name = "Набор Проникновения"
+	desc = "Используйте свой телепортатор, крав магу и другие устройства поддержки для проникновения в нужное место, быстро и бесследно исчезая оттуда."
 	items = list(
 		/obj/item/storage/box/syndie_kit/teleporter, // 40TC
 		/obj/item/clothing/gloves/color/black/krav_maga, // 50TC
@@ -94,7 +94,7 @@
 /// 188TC
 /obj/item/storage/box/syndie_kit/bundle/payday
 	name = "Heist Bundle"
-	desc = "Alright guys, today we're performing a heist on a space station owned by a greedy corporation. Drain the vault of all its worth so we can get that pay dirt!11"
+	desc = "Окей парни, мы грабим станцию, которой владеет жадная корпорация. Выкачайте хранилище досуха чтобы мы смогли получить эту грязную наличку!11"
 	items = list(
 		/obj/item/gun/projectile/revolver, // 65 TC
 		/obj/item/ammo_box/a357, // 15 TC
@@ -114,7 +114,7 @@
 /// 175TC
 /obj/item/storage/box/syndie_kit/bundle/implant
 	name = "Bio-chip Bundle"
-	desc = "A few useful bio-chips to give you some options for when you inevitably get captured by the Security."
+	desc = "Несколько полезных био-чипов, предоставляющие вам варианты для побега из под неизбежного заключения СБ."
 	items = list(
 		/obj/item/bio_chip_implanter/freedom, // 25TC
 		/obj/item/bio_chip_implanter/stealth, // 45 TC
@@ -127,7 +127,7 @@
 /// 220TC
 /obj/item/storage/box/syndie_kit/bundle/hacker
 	name = "Hacker Bundle"
-	desc = "A kit with everything you need to hack into and disrupt the Station, AI, its cyborgs and the Security team. HACK THE PLANET!"
+	desc = "Набор со всем, что вам потребуется для взлома станции, ИИ, его киборгов and Службы Безопасности. ВЗЛОМАЙТЕ ЭТУ ПЛАНЕТУ!"
 	items = list(
 		/obj/item/melee/energy/sword/saber/blue, // 40TC
 		/obj/item/autosurgeon/organ/syndicate/oneuse/hackerman_deck, // 30TC
@@ -147,7 +147,7 @@
 /// 170TC + Telekinesis
 /obj/item/storage/box/syndie_kit/bundle/darklord
 	name = "Dark Lord Bundle"
-	desc = "Turn your anger into hate and your hate into suffering with a mix of energy swords and magical powers. DO IT."
+	desc = "Превратите свою злость и ненависть в страдания с комбинацией энергетических мечей и магических мечей. СДЕЛАЙТЕ ЭТО."
 	items = list(
 		/obj/item/melee/energy/sword/saber/red, // 40TC
 		/obj/item/melee/energy/sword/saber/red, // 40TC
@@ -163,7 +163,7 @@
 /// 164TC
 /obj/item/storage/box/syndie_kit/bundle/professional
 	name = "Sniper Bundle"
-	desc = "Suit up and handle yourself like a professional with a long-distance sniper rifle, additional .50 standard and penetrator rounds and thermal glasses to easily scope out your target."
+	desc = "Оденьтесь и ведите себя как профессионал с дальнобойной снайперской винтовкой, дополнительными обычными и пробивающими патронами .50 калибра и термальными очками для лёгкого выслеживания своих целей."
 	items = list(
 		/obj/item/gun/projectile/automatic/sniper_rifle/syndicate, // 80TC
 		/obj/item/ammo_box/magazine/sniper_rounds, // 15TC
@@ -178,7 +178,7 @@
 /// 215TC + Tactical Grenadier Belt
 /obj/item/storage/box/syndie_kit/bundle/grenadier
 	name = "Grenade Bundle"
-	desc = "A variety of grenades and pyrotechnics to ensure you can blast your way through any situation."
+	desc = "Разнообразие гранат и пиротехники для прорыва своего пути из любой ситуации."
 	items = list(
 		/obj/item/storage/belt/grenade/tactical, // ~60TC Contains 2 Frag and EMP grenades, 5 C4 Explosives, 5 Smoke and Gluon grenades and 1 Minibomb grenade
 		/obj/item/storage/box/syndie_kit/stechkin, // 26TC. 20TC for stechkin, plus the 2 mags at 3TC
@@ -195,7 +195,7 @@
 /// 80TC + modules + laser gun
 /obj/item/storage/box/syndie_kit/bundle/metroid
 	name = "Modsuit Bundle"
-	desc = "Don the equipment of an intergalactic bounty hunter and blast your way through the station!"
+	desc = "Наденьте снаряжение межгалактического охотника за головами и прорвитесь через станцию!"
 	items = list(
 		/obj/item/mod/control/pre_equipped/traitor_elite, // 45TC
 		/obj/item/mod/module/visor/thermal, // 15TC
@@ -450,7 +450,7 @@
 
 /obj/item/storage/box/syndie_kit/safecracking
 	name = "Safe-cracking Kit"
-	desc = "Everything you need to quietly open a mechanical combination safe."
+	desc = "Всё, что вам требуется для тихого вскрытия сейфа с механическим замком."
 
 /obj/item/storage/box/syndie_kit/safecracking/populate_contents()
 	new /obj/item/clothing/gloves/color/latex/nitrile(src)
@@ -500,7 +500,7 @@
 
 /obj/item/storage/box/syndie_kit/nuke
 	name = "box"  //Bit of stealth, since you spawn with it
-	desc = "It's just an ordinary box."
+	desc = "Это просто обычная коробка."
 	icon_state = "box"
 
 /obj/item/storage/box/syndie_kit/nuke/populate_contents()
@@ -510,7 +510,7 @@
 
 /obj/item/storage/box/syndie_kit/supermatter
 	name = "box"
-	desc = "It's just an ordinary box."
+	desc = "Это просто обычная коробка."
 	icon_state = "box"
 
 /obj/item/storage/box/syndie_kit/supermatter/populate_contents()
@@ -528,7 +528,7 @@
 
 /obj/item/storage/box/syndie_kit/stechkin
 	name = "\improper FK-69 Stechkin kit"
-	desc = "A box marked with Neo-Russkiyan characters. It appears to contain a 10mm pistol and two magazines."
+	desc = "Коробка с символами на Нео-Русском. Кажется, в ней находится пистолет 10мм и два магазина."
 
 /obj/item/storage/box/syndie_kit/stechkin/populate_contents()
 	new /obj/item/gun/projectile/automatic/pistol(src)
