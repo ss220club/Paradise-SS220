@@ -23,14 +23,14 @@
 	var/obj/item/organ/internal/cyberimp/arm/assigned_implant = processed_implant
 	var/list/organs = assigned_implant.owner.internal_organs
 	for(var/obj/item/organ/internal/O in organs)
-		if (istype(O, /obj/item/organ/internal/cyberimp/arm) && assigned_implant != O)
+		if(istype(O, /obj/item/organ/internal/cyberimp/arm) && assigned_implant != O)
 			pair_implant = O
 	var/datum/action/action_candidate = assigned_implant.actions[1]
-	if (!isnull(pair_implant))
-		if (action_candidate in assigned_implant.owner.actions)
+	if(!isnull(pair_implant))
+		if(action_candidate in assigned_implant.owner.actions)
 			action_candidate.Remove(assigned_implant.owner)
 	else
-		if (!(action_candidate in assigned_implant.owner.actions))
+		if(!(action_candidate in assigned_implant.owner.actions))
 			action_candidate.Grant(assigned_implant.owner)
 	assigned_implant.owner.update_action_buttons()
 
@@ -39,20 +39,20 @@
 	var/obj/item/organ/internal/cyberimp/arm/assigned_implant = processed_implant
 	var/list/organs = assigned_implant.owner.internal_organs
 	for(var/obj/item/organ/internal/O in organs)
-		if (istype(O, /obj/item/organ/internal/cyberimp/arm) && istype(assigned_implant, /obj/item/organ/internal/cyberimp/arm) && assigned_implant != O)
+		if(istype(O, /obj/item/organ/internal/cyberimp/arm) && istype(assigned_implant, /obj/item/organ/internal/cyberimp/arm) && assigned_implant != O)
 			pair_implant = O
 
-	if (!isnull(pair_implant))
+	if(!isnull(pair_implant))
 		var/main_implant_retracted = !assigned_implant.holder || (assigned_implant.holder in assigned_implant)
 		var/pair_implant_retracted = !pair_implant.holder || (pair_implant.holder in pair_implant)
 
-		if (main_implant_retracted != pair_implant_retracted)
+		if(main_implant_retracted != pair_implant_retracted)
 			if(!main_implant_retracted)
 				pair_implant.holder = null
-				if (assigned_implant.holder)
+				if(assigned_implant.holder)
 					var/content_object = assigned_implant.holder.type
 					for(var/obj/item/candidate in pair_implant.contents)
-						if (istype(candidate,content_object))
+						if(istype(candidate,content_object))
 							pair_implant.Extend(candidate)
 							break
 			else

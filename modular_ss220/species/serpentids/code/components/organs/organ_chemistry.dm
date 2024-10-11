@@ -4,11 +4,6 @@
 
 #define COMSIG_ORGAN_CHEM_CALL "chems_process"
 
-#define COMSIG_ORGAN_GROUP_ACTION_ICON "get_return_icon"
-#define COMSIG_ORGAN_GROUP_ACTION_STATE "get_return_state"
-	#define ORGAN_GROUP_ACTION_ICON (1 << 0)
-	#define ORGAN_GROUP_ACTION_STATE (1 << 0)
-
 /datum/component/chemistry_organ
 	var/obj/item/organ/internal/organ
 	var/chemical_id = ""
@@ -29,7 +24,7 @@
 		return TRUE
 	var/chemical_volume = organ.owner.get_chemical_value(chemical_id)
 	var/datum/reagent/chemical = organ.owner.get_chemical_path(chemical_id)
-	if (chemical_volume < consuption_count || chemical_volume == 0)
+	if(chemical_volume < consuption_count || chemical_volume == 0)
 		//Если количества недостаточно - выключить режим
 		organ.switch_mode(force_off = TRUE)
 	else
@@ -43,12 +38,12 @@
 //Пара помощников - получить количество и путь химиката по его ID
 /mob/living/carbon/human/proc/get_chemical_value(var/id)
 	for(var/datum/reagent/R in src.reagents.reagent_list)
-		if (R.id == id)
+		if(R.id == id)
 			return R.volume
 	return 0
 
 /mob/living/carbon/human/proc/get_chemical_path(var/id)
 	for(var/datum/reagent/R in src.reagents.reagent_list)
-		if (R.id == id)
+		if(R.id == id)
 			return R
 	return null

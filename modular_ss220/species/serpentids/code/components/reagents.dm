@@ -43,7 +43,7 @@
 	RegisterSignal(L, COMSIG_MOVABLE_MOVED, PROC_REF(on_movement))
 	RegisterSignal(L, COMSIG_HUMAN_CREATE_MOB_HUD, PROC_REF(no_hud_cheese))
 	var/mob/living/carbon/human/H = L
-	if (istype(H.dna.species, /datum/species/serpentid))
+	if(istype(H.dna.species, /datum/species/serpentid))
 		var/datum/species/spicie = H.dna.species
 		spicie.action_mult = 0.5
 	if(!L.hud_used)
@@ -65,7 +65,7 @@
 	REMOVE_TRAIT(L, TRAIT_GOTTAGONOTSOFAST, id)
 	L.next_move_modifier = initial(L.next_move_modifier)
 	var/mob/living/carbon/human/H = L
-	if (istype(H.dna.species, /datum/species/serpentid))
+	if(istype(H.dna.species, /datum/species/serpentid))
 		var/datum/species/spicie = H.dna.species
 		spicie.action_mult = initial(spicie.action_mult)
 	if(!L.hud_used)
@@ -86,10 +86,10 @@
 	if(HAS_TRAIT(L, TRAIT_IMMOBILIZED)) //No, dead people floating through space do not need afterimages
 		return NONE
 	if(last_move == L.last_movement_dir && world.time - L.last_movement < 10)
-		if (last_move_count >= 5)
+		if(last_move_count >= 5)
 			if(!HAS_TRAIT(L, TRAIT_GOTTAGONOTSOFAST))
 				ADD_TRAIT(L, TRAIT_GOTTAGONOTSOFAST, id)
-			if (last_move_count >= 15)
+			if(last_move_count >= 15)
 				REMOVE_TRAIT(L, TRAIT_GOTTAGONOTSOFAST, id)
 				ADD_TRAIT(L, TRAIT_GOTTAGOFAST, id)
 			else
@@ -111,7 +111,7 @@
 	if(ishuman(L))
 		var/heart_damage = 0.5
 		var/mob/living/carbon/human/H = L
-		if (istype(H.dna.species, /datum/species/serpentid))
+		if(istype(H.dna.species, /datum/species/serpentid))
 			var/datum/organ/heart/datum_heart = H.get_int_organ_datum(ORGAN_DATUM_HEART)
 			if(datum_heart)
 				var/obj/item/organ/internal/our_heart = datum_heart.linked_organ

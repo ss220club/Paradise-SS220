@@ -134,12 +134,12 @@
 
 //Расширение прока для переноса ящика на моба
 /mob/living/carbon/human/MouseDrop_T(atom/movable/AM, mob/user)
-	if (SEND_SIGNAL(usr, COMSIG_GADOM_UNMOB_CAN_GRAB) & GADOM_UNMOB_ALLOW_TO_GRAB)
+	if(SEND_SIGNAL(usr, COMSIG_GADOM_UNMOB_CAN_GRAB) & GADOM_UNMOB_ALLOW_TO_GRAB)
 		SEND_SIGNAL(usr, COMSIG_GADOM_UNMOB_LOAD, usr, AM)
 	. = .. ()
 
 //Расширение прока на отстегивание ящика
 /datum/species/spec_attack_hand(mob/living/carbon/human/M, mob/living/carbon/human/H, datum/martial_art/attacker_style)
-	if (SEND_SIGNAL(H, COMSIG_GADOM_UNMOB_CAN_GRAB) & GADOM_UNMOB_ALLOW_TO_GRAB && H.loaded)
+	if(SEND_SIGNAL(H, COMSIG_GADOM_UNMOB_CAN_GRAB) & GADOM_UNMOB_ALLOW_TO_GRAB && H.loaded)
 		SEND_SIGNAL(H, COMSIG_GADOM_UNMOB_UNLOAD, M)
 	. = .. ()

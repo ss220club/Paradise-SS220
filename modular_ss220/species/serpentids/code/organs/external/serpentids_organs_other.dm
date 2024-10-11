@@ -27,6 +27,22 @@
 	encased = "chitin"
 	min_broken_damage = 20
 
+/obj/item/organ/external/hand/carapace
+	encased = "chitin"
+	min_broken_damage = 20
+
+/obj/item/organ/external/hand/carapace/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/carapace, src, TRUE, min_broken_damage)
+
+/obj/item/organ/external/hand/right/carapace
+	encased = "chitin"
+	min_broken_damage = 20
+
+/obj/item/organ/external/hand/right/carapace/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/carapace, src, TRUE, min_broken_damage)
+
 /obj/item/organ/external/leg/carapace/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/carapace, src, TRUE, min_broken_damage)

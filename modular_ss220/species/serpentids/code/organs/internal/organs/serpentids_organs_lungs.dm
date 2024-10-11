@@ -10,7 +10,7 @@
 	var/decay_rate = 3
 	var/decay_recovery = BASIC_RECOVER_VALUE
 	var/organ_process_toxins = 0.25
-	var/chem_to_oxy_mult = 0.1
+	var/chem_to_oxy_mult = 30
 
 /obj/item/organ/internal/lungs/serpentid/Initialize(mapload)
 	. = ..()
@@ -130,21 +130,21 @@
 	var/datum/organ/lungs/serpentid/lung_data = organ_datums[organ_tag]
 	var/danger_air = lung_data.in_danger_zone(breath)
 	var/datum/reagent/chemical = owner.get_chemical_path(chemical_id)
-	if (danger_air)
-		if (!owner.internal)
+	if(danger_air)
+		if(!owner.internal)
 			owner.internal = serpentid_vault
 	else
-		if (owner.internal)
+		if(owner.internal)
 			owner.internal = null
 
 	var/datum/gas_mixture/int_tank_air = serpentid_vault.air_contents
 	var/pressure_value = int_tank_air.return_pressure()
 	if(pressure_value < 100)
 		var/replenish_value = 0
-		if (danger_air && can_secretion)
+		if(danger_air && can_secretion)
 			replenish_value = chemical_consuption * chem_to_oxy_mult
 			chemical.holder.remove_reagent(chemical_id, chemical_consuption)
-		if (!danger_air)
+		if(!danger_air)
 			var/turf/T = get_turf(owner)
 			var/datum/gas_mixture/environment = get_turf_air(T)
 			var/breath_moles = 0
@@ -155,7 +155,7 @@
 		var/oxygen_value = ((ONE_ATMOSPHERE) * serpentid_vault.volume  * replenish_value + pressure_value)
 		var/gas_mix_value = (R_IDEAL_GAS_EQUATION * T20C)
 		var/value_to_replenish = ( oxygen_value / gas_mix_value )
-		if (value_to_replenish > 0)
+		if(value_to_replenish > 0)
 			serpentid_vault.air_contents.set_oxygen(value_to_replenish)
 
 
@@ -168,11 +168,11 @@
 /mob/living/carbon/breathe(datum/gas_mixture/environment)
 	var/obj/item/organ/internal/lungs/lugns = null
 	for(var/obj/item/organ/internal/O in src.internal_organs)
-		if (istype(O, /obj/item/organ/internal/lungs))
+		if(istype(O, /obj/item/organ/internal/lungs))
 			lugns = O
 	if(istype(lugns, /obj/item/organ/internal/lungs/serpentid))
 		var/obj/item/organ/internal/lungs/serpentid/serpentid_lungs = lugns
-		if (src.internal == serpentid_lungs.serpentid_vault)
+		if(src.internal == serpentid_lungs.serpentid_vault)
 			var/mob/living/carbon/human/puppet = src
 			var/breath = puppet.serpen_lugns(BREATH_VOLUME)
 

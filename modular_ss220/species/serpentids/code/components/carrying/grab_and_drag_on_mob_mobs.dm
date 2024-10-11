@@ -110,7 +110,7 @@
 		return
 	var/signal_result
 	var/signal_call	= SEND_SIGNAL(usr, COMSIG_GADOM_MOB_CAN_GRAB, signal_result)
-	if ((signal_call & GADOM_MOB_ALLOW_TO_GRAB) && signal_result)
+	if((signal_call & GADOM_MOB_ALLOW_TO_GRAB) && signal_result)
 		SEND_SIGNAL(usr, COMSIG_GADOM_MOB_LOAD, usr, src)
 		return
 	. = .. ()
@@ -118,7 +118,7 @@
 /datum/species/spec_attack_hand(mob/living/carbon/human/M, mob/living/carbon/human/H, datum/martial_art/attacker_style)
 	var/signal_result
 	var/signal_call	= SEND_SIGNAL(usr, COMSIG_GADOM_MOB_CAN_GRAB, signal_result)
-	if ((signal_call & GADOM_MOB_ALLOW_TO_GRAB) && signal_result && H.loaded)
+	if((signal_call & GADOM_MOB_ALLOW_TO_GRAB) && signal_result && H.loaded)
 		SEND_SIGNAL(H, COMSIG_GADOM_MOB_UNLOAD, M)
 	. = .. ()
 

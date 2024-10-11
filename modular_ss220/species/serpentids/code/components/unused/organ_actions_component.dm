@@ -56,7 +56,7 @@
 	var/list/choices = list()
 	var/list/organs_list = list()
 	for(var/obj/item/organ/internal/O in organ.owner.internal_organs)
-		if (O.actions_types.len > 0 && !istype(O, /obj/item/organ/internal/cyberimp))
+		if(O.actions_types.len > 0 && !istype(O, /obj/item/organ/internal/cyberimp))
 			organs_list += O
 
 	for(var/obj/item/organ/internal/I in organs_list)
@@ -64,7 +64,7 @@
 		var/datum/component/organ_action/return_icon
 		var/icon_override_returns = SEND_SIGNAL(user, COMSIG_ORGAN_GROUP_ACTION_ICON, return_icon)
 		var/state_override_returns = SEND_SIGNAL(user, COMSIG_ORGAN_GROUP_ACTION_STATE, return_state)
-		if ((icon_override_returns & ORGAN_GROUP_ACTION_ICON) && (state_override_returns & ORGAN_GROUP_ACTION_STATE))
+		if((icon_override_returns & ORGAN_GROUP_ACTION_ICON) && (state_override_returns & ORGAN_GROUP_ACTION_STATE))
 			choices["[I.name]"] = image(icon = return_icon.radial_additive_icon, icon_state = return_state.radial_additive_state)
 
 	var/choice = show_radial_menu(user, user, choices, custom_check = CALLBACK(src, PROC_REF(check_actions), user))
@@ -85,20 +85,20 @@
 	SIGNAL_HANDLER
 
 	var/list/organs_list = list()
-	if (organ.owner)
+	if(organ.owner)
 		for(var/obj/item/organ/internal/O in organ.owner.internal_organs)
-			if (O.actions_types.len > 0 && !istype(O, /obj/item/organ/internal/cyberimp))
+			if(O.actions_types.len > 0 && !istype(O, /obj/item/organ/internal/cyberimp))
 				organs_list += O
 
 		for(var/obj/item/organ/internal/O in organs_list)
 			organs_list -= O
 			for(var/obj/item/organ/internal/D in organs_list)
 				var/datum/action/action_candidate = O.actions[1]
-				if (D != O)
-					if (action_candidate in organ.owner.actions)
+				if(D != O)
+					if(action_candidate in organ.owner.actions)
 						action_candidate.Remove(organ.owner)
 				else
-					if (!(action_candidate in organ.owner.actions))
+					if(!(action_candidate in organ.owner.actions))
 						action_candidate.Grant(organ.owner)
 				break
 

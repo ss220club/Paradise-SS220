@@ -24,7 +24,9 @@
 	RegisterSignal(parent, COMSIG_DOUBLEATTACK_SYNC, PROC_REF(sync_states))
 
 /datum/component/double_attack/UnregisterFromParent()
-	UnregisterSignal(parent, COMSIG_DOUBLEIMP_SYNCHONIZE)
+	UnregisterSignal(parent, COMSIG_DOUBLEATTACK_PROCESS)
+	UnregisterSignal(parent, COMSIG_DOUBLEATTACK_CHECK)
+	UnregisterSignal(parent, COMSIG_DOUBLEATTACK_SYNC)
 
 //Проверка, что оружие запустило атаку (для избегания цепи атак)
 /datum/component/double_attack/proc/check_state()
@@ -41,11 +43,11 @@
 	offhand_item = user.get_inactive_hand()
 	if(offhand_item.type != mainhand_item.type)
 		return
-	if (SEND_SIGNAL(offhand_item, COMSIG_DOUBLEATTACK_CHECK) && DOUBLEATTACK_CHECK_ACTIVE)
+	if(SEND_SIGNAL(offhand_item, COMSIG_DOUBLEATTACK_CHECK) && DOUBLEATTACK_CHECK_ACTIVE)
 		return
 	state_attack = TRUE
 	SEND_SIGNAL(offhand_item, COMSIG_DOUBLEATTACK_SYNC, state_attack)
-	if (offhand_item)
+	if(offhand_item)
 		addtimer(CALLBACK(src, PROC_REF(offhand_attack), target, user, def_zone), (user.next_move_modifier / 5) SECONDS)
 		addtimer(CALLBACK(src, PROC_REF(offhand_post_attack)), (user.next_move_modifier / 2) SECONDS)
 

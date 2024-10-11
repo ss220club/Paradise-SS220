@@ -56,15 +56,15 @@
 
 //Проки, срабатываемые при получении или исцелении урона
 /datum/component/carapace/proc/receive_damage(var/affected_limb, brute, burn, sharp, used_weapon = null, list/forbidden_limbs = list(), ignore_resists = FALSE, updating_health = TRUE)
-	if (limb.get_damage() > broken_treshold)
+	if(limb.get_damage() > broken_treshold)
 		limb.fracture()
-	if (limb.internal_organs.len > 0)
+	if(limb.internal_organs.len > 0)
 		var/obj/item/organ/internal/O = pick(limb.internal_organs)
 		O.receive_damage(burn * limb.burn_dam)
 
 /datum/component/carapace/proc/heal_damage(var/affected_limb, brute, burn, internal = 0, robo_repair = 0, updating_health = TRUE)
-	if ((limb.status & ORGAN_BROKEN) && limb.get_damage() == 0)
-		if (self_medning)
+	if((limb.status & ORGAN_BROKEN) && limb.get_damage() == 0)
+		if(self_medning)
 			limb.mend_fracture()
 		else if(prob(CARAPACE_HEAL_BROKEN_PROB))
 			limb.mend_fracture()
@@ -122,7 +122,7 @@
 	var/obj/item/organ/external/affected = target.get_organ(user.zone_selected)
 	if((SEND_SIGNAL(affected, COMSIG_CARAPACE_SURGERY_CAN_START) & CARAPACE_STOP_SURGERY_STEP) && !(affected.status & ORGAN_BROKEN))
 		return FALSE
-	if (src.type in CARAPACE_BLOCK_OPERATION)//отключить стандартные операции класса "манипуляция органов", восстановить кость.
+	if(src.type in CARAPACE_BLOCK_OPERATION)//отключить стандартные операции класса "манипуляция органов", восстановить кость.
 		return FALSE
 	. = .. ()
 

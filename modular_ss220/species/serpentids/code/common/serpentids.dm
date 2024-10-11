@@ -115,7 +115,7 @@
 	var/gene_lastcall = 0
 
 /datum/species/serpentid/handle_reagents(mob/living/carbon/human/H, datum/reagent/R)
-	if (R.id == SERPENTID_CHEM_REAGENT_ID)
+	if(R.id == SERPENTID_CHEM_REAGENT_ID)
 		return FALSE
 	else
 		return TRUE
@@ -126,12 +126,12 @@
 	var/armor_count = 0
 	var/gene_degradation = 0
 	for(var/obj/item/organ/external/limb in H.bodyparts)
-		if (!(limb.type in valid_limbs))
+		if(!(limb.type in valid_limbs))
 			gene_degradation += SERPENTID_GENE_DEGRADATION_DAMAGE
 		var/limb_armor = limb.brute_dam + limb.burn_dam
 		armor_count += limb_armor
 
-	if (gene_lastcall >= SERPENTID_GENE_DEGRADATION_CD)
+	if(gene_lastcall >= SERPENTID_GENE_DEGRADATION_CD)
 		H.adjustCloneLoss(gene_degradation)
 		gene_lastcall = 0
 	else

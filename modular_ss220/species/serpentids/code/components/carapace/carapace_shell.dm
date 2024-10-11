@@ -24,7 +24,7 @@
 	var/datum/species/specie = H.dna.species
 
 	//Потеря брони при первом трешхолде
-	if (character_damage <= SERPENTID_CARAPACE_NOARMOR_STATE)
+	if(character_damage <= SERPENTID_CARAPACE_NOARMOR_STATE)
 		specie.brute_mod = 0.6
 		specie.burn_mod = 1.1
 		ADD_TRAIT(H, TRAIT_PIERCEIMMUNE, "carapace_state")
@@ -37,19 +37,19 @@
 
 	//Потеря стелса при втором трешхолде
 	var/obj/item/organ/internal/kidneys/serpentid/organ = H.get_int_organ("kidneys")
-	if (character_damage <= SERPENTID_CARAPACE_NOCHAMELION_STATE)
+	if(character_damage <= SERPENTID_CARAPACE_NOCHAMELION_STATE)
 		H.clear_alert("carapace_break_cloak")
 	else
 		H.throw_alert("carapace_break_cloak", /atom/movable/screen/alert/carapace_break_cloak)
 		H.clear_alert("carapace_break_armor")
-		if (istype(organ, /obj/item/organ/internal/kidneys/serpentid))
+		if(istype(organ, /obj/item/organ/internal/kidneys/serpentid))
 			organ.switch_mode(force_off = TRUE)
 
 	//Потеря рига при третьем трешхолде
 	var/cold = SERPENTID_ARMORED_COLD_THRESHOLD
 	var/heat = SERPENTID_ARMORED_HEAT_THRESHOLD
 
-	if (character_damage <= SERPENTID_CARAPACE_NOPRESSURE_STATE)
+	if(character_damage <= SERPENTID_CARAPACE_NOPRESSURE_STATE)
 		specie.hazard_high_pressure = INFINITY
 		specie.warning_high_pressure = INFINITY
 		specie.warning_low_pressure = -INFINITY

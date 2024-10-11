@@ -1,5 +1,5 @@
 //===Клинки через грудной имплант===
-/obj/item/organ/internal/cyberimp/chest/serpentid_blades
+/obj/item/organ/internal/cyberimp/chest/serpentid_blades_arms
 	name = "neuronodule of blades"
 	desc = "control organ of upper blades"
 	icon_state = "chest_implant"
@@ -23,34 +23,34 @@
 	button_overlay_icon = 'modular_ss220/species/serpentids/icons/organs.dmi'
 	button_overlay_icon_state = "gas_hand_act"
 
-/obj/item/organ/internal/cyberimp/chest/serpentid_blades/insert(mob/living/carbon/M, special, dont_remove_slot)
+/obj/item/organ/internal/cyberimp/chest/serpentid_blades_arms/insert(mob/living/carbon/M, special, dont_remove_slot)
 	. = .. ()
-	if (owner && owner.real_name != "unknown")
+	if(owner && owner.real_name != "unknown")
 		owner.update_body()
 	else
 		spawn(1)
-			if (owner && owner.real_name != "unknown")
+			if(owner && owner.real_name != "unknown")
 				owner.update_body()
 
-/obj/item/organ/internal/cyberimp/chest/serpentid_blades/remove(mob/living/carbon/M, special, dont_remove_slot)
-	if (owner && owner.real_name != "unknown")
+/obj/item/organ/internal/cyberimp/chest/serpentid_blades_arms/remove(mob/living/carbon/M, special, dont_remove_slot)
+	if(owner && owner.real_name != "unknown")
 		owner.update_body()
 	else
 		spawn(1)
-			if (owner && owner.real_name != "unknown")
+			if(owner && owner.real_name != "unknown")
 				owner.update_body()
 	. = .. ()
 
-/mob/living/carbon/human/proc/update_blades_overlays()
-	var/obj/item/organ/internal/cyberimp/chest/serpentid_blades/target_implant = get_int_organ(/obj/item/organ/internal/cyberimp/chest/serpentid_blades)
+/mob/living/carbon/human/proc/update_blades__arms_overlays()
+	var/obj/item/organ/internal/cyberimp/chest/serpentid_blades_arms/target_implant = get_int_organ(/obj/item/organ/internal/cyberimp/chest/serpentid_blades_arms)
 	if(target_implant)
 		target_implant.update_overlays()
 
 /mob/living/carbon/human/update_body(rebuild_base = FALSE)
 	. = .. ()
-	update_blades_overlays()
+	update_blades__arms_overlays()
 
-/obj/item/organ/internal/cyberimp/chest/serpentid_blades/ui_action_click()
+/obj/item/organ/internal/cyberimp/chest/serpentid_blades_arms/ui_action_click()
 	if(crit_fail || (!holder_l && !length(contents)) && (!holder_r && !length(contents)))
 		to_chat(owner, "<span class='warning'>The implant doesn't respond. It seems to be broken...</span>")
 		return
@@ -62,11 +62,11 @@
 		holder_r = null
 		Extend(contents[1],contents[2])
 
-/obj/item/organ/internal/cyberimp/chest/serpentid_blades/update_overlays()
+/obj/item/organ/internal/cyberimp/chest/serpentid_blades_arms/update_overlays()
 	. = .. ()
-	if (old_overlay)
+	if(old_overlay)
 		owner.overlays -= old_overlay
-	if (owner)
+	if(owner)
 		var/icon/blades_icon = new/icon("icon" = icon_file, "icon_state" = new_icon_state)
 		var/obj/item/organ/external/chest/torso = owner.get_limb_by_name("chest")
 		var/body_color = torso.s_col
@@ -75,12 +75,12 @@
 		old_overlay = new_overlay
 		owner.overlays += new_overlay
 
-/obj/item/organ/internal/cyberimp/chest/serpentid_blades/proc/check_cuffs()
+/obj/item/organ/internal/cyberimp/chest/serpentid_blades_arms/proc/check_cuffs()
 	if(owner.handcuffed)
 		to_chat(owner, "<span class='warning'>The handcuffs interfere with [src]!</span>")
 		return TRUE
 
-/obj/item/organ/internal/cyberimp/chest/serpentid_blades/proc/Extend(obj/item/item_l, obj/item/item_r)
+/obj/item/organ/internal/cyberimp/chest/serpentid_blades_arms/proc/Extend(obj/item/item_l, obj/item/item_r)
 	if(!(item_l in src) && !(item_r in src) && check_cuffs())
 		return
 	if(status & ORGAN_DEAD)
@@ -125,7 +125,7 @@
 	owner.update_body()
 	return TRUE
 
-/obj/item/organ/internal/cyberimp/chest/serpentid_blades/proc/Retract()
+/obj/item/organ/internal/cyberimp/chest/serpentid_blades_arms/proc/Retract()
 	if((!holder_l || (holder_l in src)) && (!holder_r || (holder_r in src)))
 		return
 	if(status & ORGAN_DEAD)
