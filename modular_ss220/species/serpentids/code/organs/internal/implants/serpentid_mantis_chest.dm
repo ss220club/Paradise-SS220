@@ -9,7 +9,6 @@
 	action_icon = list(/datum/action/item_action/organ_action/toggle/switch_blades = 'modular_ss220/species/serpentids/icons/organs.dmi')
 	action_icon_state = list(/datum/action/item_action/organ_action/toggle/switch_blades = "gas_hand_act")
 	var/obj/item/holder_l = null
-	var/obj/item/holder_r = null
 	var/icon_file = 'modular_ss220/species/serpentids/icons/mob/r_serpentid.dmi'
 	var/new_icon_state = "blades_0"
 	var/mutable_appearance/old_overlay
@@ -53,16 +52,15 @@
 	update_blades_overlays()
 
 /obj/item/organ/internal/cyberimp/chest/serpentid_blades/ui_action_click()
-	if(crit_fail || (!holder_l && !length(contents)) && (!holder_r && !length(contents)))
+	if(crit_fail || (!holder_l && !length(contents)))
 		to_chat(owner, "<span class='warning'>The implant doesn't respond. It seems to be broken...</span>")
 		return
-	var/extended = holder_l && !(holder_l in src) && holder_r && !(holder_r in src)
+	var/extended = holder_l && !(holder_l in src)
 	if(extended)
 		Retract()
 	else if(do_after(owner, 20*(owner.dna.species.action_mult), FALSE, owner))
 		holder_l = null
-		holder_r = null
-		Extend(contents[1],contents[2])
+		Extend()
 
 /obj/item/organ/internal/cyberimp/chest/serpentid_blades/update_overlays()
 	. = .. ()
@@ -77,10 +75,35 @@
 		old_overlay = new_overlay
 		owner.overlays += new_overlay
 
-/obj/item/organ/internal/cyberimp/chest/serpentid_blades/proc/Extend(obj/item/item_l, obj/item/item_r)
-	if(!(item_l in src) && !(item_r in src))
+/obj/item/organ/internal/cyberimp/chest/serpentid_blades/proc/Extend()
+	if(!(contents[1] in src))
 		return
 	if(status & ORGAN_DEAD)
+		return
+
+	holder_l = contents[1]
+
+	holder_l.flags |= NODROP
+	holder_l.resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+	holder_l.slot_flags = null
+	holder_l.w_class = WEIGHT_CLASS_HUGE
+	holder_l.materials = null
+
+	for(var/arm_slot in list(SLOT_HUD_LEFT_HAND,SLOT_HUD_RIGHT_HAND))
+		var/obj/item/arm_item = owner.get_item_by_slot(arm_slot)
+
+		if(arm_item)
+			if(istype(arm_item, /obj/item/offhand))
+				var/obj/item/offhand_arm_item = owner.get_active_hand()
+				to_chat(owner, "<span class='warning'>Your hands are too encumbered wielding [offhand_arm_item] to deploy [src]!</span>")
+				return
+			else if(!owner.unEquip(arm_item))
+				to_chat(owner, "<span class='warning'>Your [arm_item] interferes with [src]!</span>")
+				return
+			else
+				to_chat(owner, "<span class='notice'>You drop [arm_item] to activate [src]!</span>")
+
+	if(!owner.put_in_l_hand(holder_l))
 		return
 
 	blades_active = TRUE
@@ -90,8 +113,6 @@
 	return TRUE
 
 /obj/item/organ/internal/cyberimp/chest/serpentid_blades/proc/Retract()
-	if((!holder_l || (holder_l in src)) && (!holder_r || (holder_r in src)))
-		return
 	if(status & ORGAN_DEAD)
 		return
 
@@ -104,44 +125,144 @@
 /datum/species/spec_attack_hand(mob/living/carbon/human/M, mob/living/carbon/human/H, datum/martial_art/attacker_style) //Handles any species-specific attackhand events.
 	if(!istype(M))
 		return
+	var/obj/item/organ/internal/cyberimp/chest/serpentid_blades/blades_implant = M.get_int_organ(/obj/item/organ/internal/cyberimp/chest/serpentid_blades)
+	if(blades_implant)
+		if(blades_implant)
+			if((M != H) && M.a_intent != INTENT_HELP && H.check_shields(M, 0, M.name, attack_type = UNARMED_ATTACK))
+				add_attack_logs(M, H, "Melee attacked with blades (miss/block)")
+				H.visible_message("<span class='warning'>[M] attempted to touch [H]!</span>")
+				return FALSE
 
-	if(istype(M))
-		var/obj/item/organ/external/temp = M.bodyparts_by_name["r_hand"]
-		if(M.hand)
-			temp = M.bodyparts_by_name["l_hand"]
-		if(!temp || !temp.is_usable())
-			to_chat(M, "<span class='warning'>You can't use your hand.</span>")
-			return
+			switch(M.a_intent)
+				if(INTENT_HELP)
+					help(M, H, attacker_style)
 
-	if(M.mind)
-		attacker_style = M.mind.martial_art
+				if(INTENT_GRAB)
+					blades_grab(M, H, attacker_style)
 
-	if((M != H) && M.a_intent != INTENT_HELP && H.check_shields(M, 0, M.name, attack_type = UNARMED_ATTACK))
-		add_attack_logs(M, H, "Melee attacked with blades (miss/block)")
-		H.visible_message("<span class='warning'>[M] attempted to touch [H]!</span>")
+				if(INTENT_HARM)
+					blades_harm(M, H, attacker_style)
+
+				if(INTENT_DISARM)
+					blades_disarm(M, H, attacker_style)
+		else
+			. = ..()
+	else
+		. = ..()
+
+//Модификация усиленного граба
+/datum/species/proc/blades_grab(mob/living/carbon/human/user, mob/living/carbon/human/target, datum/martial_art/attacker_style)
+	if(target.check_block())
+		target.visible_message("<span class='warning'>[target] blocks [user]'s grab attempt!</span>")
 		return FALSE
-
-	switch(M.a_intent)
-		if(INTENT_HELP)
-			help(M, H, attacker_style)
-
-		if(INTENT_GRAB)
-			grab(M, H, attacker_style)
-
-		if(INTENT_HARM)
-			harm(M, H, attacker_style)
-
-		if(INTENT_DISARM)
-			disarm(M, H, attacker_style)
-
-//Модификация граба для хвата из стелса
-/datum/species/grab(mob/living/carbon/human/user, mob/living/carbon/human/target, datum/martial_art/attacker_style)
-	. = .. ()
+	if(!attacker_style && target.buckled)
+		target.buckled.user_unbuckle_mob(target, user)
+		return TRUE
+	if (user.hand)
+		user.swap_hand()
+	target.grabbedby(user)
 	var/obj/item/grab/grab_item = user.get_active_hand()
-	var/limb_name = (user.l_hand == grab_item ? "l_hand" : "r_hand")
-	var/obj/item/organ/external/hand/active_hand = user.get_limb_by_name(limb_name)
-	if(istype(active_hand, /obj/item/organ/external/hand/carapace) || istype(active_hand, /obj/item/organ/external/hand/right/carapace))
-		if(user.invisibility == INVISIBILITY_LEVEL_TWO)
-			grab_item.state = GRAB_AGGRESSIVE
-			grab_item.icon_state = "grabbed1"
-			user.reset_visibility()
+	grab_item.state = GRAB_AGGRESSIVE
+	grab_item.icon_state = "grabbed1"
+	user.reset_visibility()
+
+//Модификация усиленного дизарма
+/datum/species/proc/blades_disarm(mob/living/carbon/human/user, mob/living/carbon/human/target, datum/martial_art/attacker_style)
+	if(user == target)
+		return FALSE
+	if(target.check_block())
+		target.visible_message("<span class='warning'>[target] blocks [user]'s disarm attempt!</span>")
+		return FALSE
+	if(SEND_SIGNAL(target, COMSIG_HUMAN_ATTACKED, user) & COMPONENT_CANCEL_ATTACK_CHAIN)
+		return FALSE
+	if(target.absorb_stun(0))
+		target.visible_message("<span class='warning'>[target] is not affected by [user]'s disarm attempt!</span>")
+		user.do_attack_animation(target, ATTACK_EFFECT_DISARM)
+		playsound(target.loc, 'sound/weapons/punchmiss.ogg', 25, TRUE, -1)
+		return FALSE
+	user.do_attack_animation(target, ATTACK_EFFECT_DISARM)
+	if(target.move_resist > (user.pull_force * 2))
+		return FALSE
+	if(!(target.status_flags & CANPUSH))
+		return FALSE
+	if(target.anchored)
+		return FALSE
+	if(target.buckled)
+		target.buckled.unbuckle_mob(target)
+
+	for(var/i = 1; i <= 2; i++)
+		var/shove_dir = get_dir(user.loc, target.loc)
+		var/turf/shove_to = get_step(target.loc, shove_dir)
+		playsound(shove_to, 'sound/weapons/thudswoosh.ogg', 50, TRUE, -1)
+
+		if(shove_to == user.loc)
+			return FALSE
+
+		//Directional checks to make sure that we're not shoving through a windoor or something like that
+		var/directional_blocked = FALSE
+		var/target_turf = get_turf(target)
+		if(shove_dir in list(NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST)) // if we are moving diagonially, we need to check if there are dense walls either side of us
+			var/turf/T = get_step(target.loc, turn(shove_dir, 45)) // check to the left for a dense turf
+			if(T.density)
+				directional_blocked = TRUE
+			else
+				T = get_step(target.loc, turn(shove_dir, -45)) // check to the right for a dense turf
+				if(T.density)
+					directional_blocked = TRUE
+
+		if(!directional_blocked)
+			for(var/obj/obj_content in target_turf) // check the tile we are on for border
+				if(obj_content.flags & ON_BORDER && obj_content.dir & shove_dir && obj_content.density)
+					directional_blocked = TRUE
+					break
+		if(!directional_blocked)
+			for(var/obj/obj_content in shove_to) // check tile we are moving to for borders
+				if(obj_content.flags & ON_BORDER && obj_content.dir & turn(shove_dir, 180) && obj_content.density)
+					directional_blocked = TRUE
+					break
+
+		if(!directional_blocked)
+			for(var/atom/movable/AM in shove_to)
+				if(AM.shove_impact(target, user)) // check for special interactions EG. tabling someone
+					return TRUE
+
+		var/moved = target.Move(shove_to, shove_dir)
+		if(!moved) //they got pushed into a dense object
+			add_attack_logs(user, target, "Disarmed into a dense object", ATKLOG_ALL)
+			target.visible_message("<span class='warning'>[user] slams [target] into an obstacle!</span>", \
+									"<span class='userdanger'>You get slammed into the obstacle by [user]!</span>", \
+									"You hear a loud thud.")
+			if(!HAS_TRAIT(target, TRAIT_FLOORED))
+				target.KnockDown(3 SECONDS)
+				addtimer(CALLBACK(target, TYPE_PROC_REF(/mob/living, SetKnockDown), 0), 3 SECONDS) // so you cannot chain stun someone
+			else if(!user.IsStunned())
+				target.Stun(0.5 SECONDS)
+		else
+			var/obj/item/active_hand = target.get_active_hand()
+			if(target.IsSlowed() && active_hand && !IS_HORIZONTAL(user) && !HAS_TRAIT(active_hand, TRAIT_WIELDED) && !istype(active_hand, /obj/item/grab))
+				target.drop_item()
+				add_attack_logs(user, target, "Disarmed object out of hand", ATKLOG_ALL)
+			else
+				target.Slowed(2.5 SECONDS, 0.5)
+				var/obj/item/I = target.get_active_hand()
+				if(I)
+					to_chat(target, "<span class='warning'>Your grip on [I] loosens!</span>")
+				add_attack_logs(user, target, "Disarmed, shoved back", ATKLOG_ALL)
+		target.stop_pulling()
+
+//Модификация усиленного дизарма
+/datum/species/proc/blades_harm(mob/living/carbon/human/user, mob/living/carbon/human/target, datum/martial_art/attacker_style)
+	if(HAS_TRAIT(user, TRAIT_PACIFISM))
+		to_chat(user, "<span class='warning'>You don't want to harm [target]!</span>")
+		return FALSE
+	if(target != user && handle_harm_antag(user, target))
+		return FALSE
+	if(target.check_block())
+		target.visible_message("<span class='warning'>[target] blocks [user]'s attack!</span>")
+		return FALSE
+	if(SEND_SIGNAL(target, COMSIG_HUMAN_ATTACKED, user) & COMPONENT_CANCEL_ATTACK_CHAIN)
+		return FALSE
+	if (!user.hand)
+		user.swap_hand()
+	var/obj/item/kitchen/knife/combat/serpentblade/blade = user.get_active_hand()
+	blade.attack(target, user)

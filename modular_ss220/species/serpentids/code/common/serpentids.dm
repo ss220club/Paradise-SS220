@@ -35,6 +35,8 @@
 
 	reagent_tag = PROCESS_ORG
 
+	punchdamagehigh = 10
+
 	has_organ = list(
 		"heart" =    /obj/item/organ/internal/heart/serpentid,
 		"lungs" =    /obj/item/organ/internal/lungs/serpentid,
@@ -185,3 +187,4 @@
 /datum/antag_scenario/team/blood_brothers/New()
 	restricted_species += list("Serpentid")
 	. = .. ()
+
