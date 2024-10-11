@@ -57,10 +57,10 @@
 /client/create_deathsquad_commando(obj/spawn_location, is_leader = FALSE)
 	. = ..()
 	var/mob/living/carbon/human/new_commando = .
-	var/commando_leader_rank = pick("Немезис", "Оверлорд", "Ординал")
+	var/commando_leader_rank = "Ординал"
 	var/commando_name = pick(GLOB.deathsquad_names)
 
 	if(is_leader)
-		new_commando.real_name = "[commando_leader_rank] [commando_name] - [rand(100, 999)]"
+		new_commando.real_name = "[commando_leader_rank] [commando_name] - [rand(1, 99)]"
 	else
 		new_commando.real_name = "[commando_name] - [rand(100, 999)]"
