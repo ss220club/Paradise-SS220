@@ -1,11 +1,14 @@
-/// Floor icon_states for floor painter
+// MARK: Floor painter
+/datum/painter/floor
+	floor_icon = 'modular_ss220/aesthetics/floors/icons/floors.dmi'
+
 /datum/painter/floor/New()
+	. = ..()
 	allowed_states |= list("darkneutralcorner", "darkneutral", "darkneutralfull", "navybluecorners", "navyblue", "navybluefull",
 		"navybluealt", "navybluealtstrip", "navybluecornersalt", "darkbluealt", "darkbluealtstrip", "darkbluecornersalt",
 		"darkredalt", "darkredaltstrip", "darkredcornersalt", "darkyellowalt", "darkyellowaltstrip", "darkyellowcornersalt",
 		"whitebrowncorner", "whitebrown"
 		)
-	. = ..()
 
 /turf/simulated/floor
 	icon = 'modular_ss220/aesthetics/floors/icons/floors.dmi'
@@ -19,9 +22,9 @@
 /turf/simulated/floor/plasteel/smooth
 	icon_state = "smooth"
 
-// LIGHT FLOORS
-/turf/simulated/floor/light
-	icon = 'icons/turf/floors.dmi'
+// MARK: LIGHT FLOORS
+/obj/item/stack/light_w
+	icon = 'modular_ss220/aesthetics/floors/icons/tiles.dmi'
 
 /turf/simulated/floor/light/red
 	color = "#f23030"
