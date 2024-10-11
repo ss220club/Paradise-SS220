@@ -8,7 +8,7 @@
 /datum/component/carapace_shell
 	var/mob/living/carbon/human/H
 
-/datum/component/carapace_shell/Initialize(var/caller)
+/datum/component/carapace_shell/Initialize(caller)
 	..()
 	H = caller
 

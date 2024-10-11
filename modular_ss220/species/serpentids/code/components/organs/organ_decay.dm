@@ -13,7 +13,7 @@
 	var/recover_rate
 	var/decay_rate
 
-/datum/component/organ_decay/Initialize(var/income_decay_rate = BASIC_RECOVER_VALUE, var/income_recover_rate = BASIC_DECAY_VALUE)
+/datum/component/organ_decay/Initialize(income_decay_rate = BASIC_RECOVER_VALUE, income_recover_rate = BASIC_DECAY_VALUE)
 	. = ..()
 	organ = parent
 	recover_rate = income_recover_rate

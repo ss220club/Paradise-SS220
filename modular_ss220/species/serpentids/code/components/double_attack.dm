@@ -33,7 +33,7 @@
 	return state_attack ? DOUBLEATTACK_CHECK_ACTIVE : 0
 
 //Синхронизация состояния атак, чтобы оба оружия понимали, что они запустили атаку
-/datum/component/double_attack/proc/sync_states(weapon, var/newstate)
+/datum/component/double_attack/proc/sync_states(weapon, newstate)
 	SIGNAL_HANDLER
 	state_attack = newstate
 
