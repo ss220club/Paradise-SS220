@@ -50,7 +50,7 @@
 		vision_adjust, vision_adjust, vision_chem)
 	return vision_matrix
 
-/obj/item/organ/internal/eyes/serpentid/switch_mode(var/force_off = FALSE)
+/obj/item/organ/internal/eyes/serpentid/switch_mode(force_off = FALSE)
 	.=..()
 	if(!force_off && owner.get_chemical_value(chemical_id) >= chemical_consuption && !(status & ORGAN_DEAD))
 		see_in_dark = 8

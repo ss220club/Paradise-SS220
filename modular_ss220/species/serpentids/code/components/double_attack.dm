@@ -14,7 +14,7 @@
 	var/obj/item/hand_item = null
 	var/state_attack = FALSE
 
-/datum/component/double_attack/Initialize(var/obj/item/weapon)
+/datum/component/double_attack/Initialize(obj/item/weapon)
 	hand_item = weapon
 
 /datum/component/double_attack/RegisterWithParent()
@@ -33,11 +33,11 @@
 	return state_attack ? DOUBLEATTACK_CHECK_ACTIVE : 0
 
 //Синхронизация состояния атак, чтобы оба оружия понимали, что они запустили атаку
-/datum/component/double_attack/proc/sync_states(var/weapon, var/newstate)
+/datum/component/double_attack/proc/sync_states(weapon, var/newstate)
 	SIGNAL_HANDLER
 	state_attack = newstate
 
-/datum/component/double_attack/proc/hand_pre_attack(var/obj/item/weapon, mob/living/target, mob/living/user, def_zone)
+/datum/component/double_attack/proc/hand_pre_attack(obj/item/weapon, mob/living/target, mob/living/user, def_zone)
 	SIGNAL_HANDLER
 	hand_item = user.get_active_hand()
 	if(SEND_SIGNAL(hand_item, COMSIG_DOUBLEATTACK_CHECK) && DOUBLEATTACK_CHECK_ACTIVE)

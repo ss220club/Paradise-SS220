@@ -35,7 +35,7 @@
 	if(owner.alpha == 0)
 		owner.make_invisible()
 
-/obj/item/organ/internal/kidneys/serpentid/switch_mode(var/force_off = FALSE)
+/obj/item/organ/internal/kidneys/serpentid/switch_mode(force_off = FALSE)
 	.=..()
 	if(!force_off && owner.get_chemical_value(chemical_id) >= chemical_consuption && !cloak_engaged && !(status & ORGAN_DEAD))
 		cloak_engaged = TRUE

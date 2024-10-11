@@ -161,7 +161,7 @@
 	if(!attacker_style && target.buckled)
 		target.buckled.user_unbuckle_mob(target, user)
 		return TRUE
-	if (user.hand)
+	if(user.hand)
 		user.swap_hand()
 	target.grabbedby(user)
 	var/obj/item/grab/grab_item = user.get_active_hand()
@@ -265,7 +265,7 @@
 		return FALSE
 	if(SEND_SIGNAL(target, COMSIG_HUMAN_ATTACKED, user) & COMPONENT_CANCEL_ATTACK_CHAIN)
 		return FALSE
-	if (!user.hand)
+	if(!user.hand)
 		user.swap_hand()
 	var/obj/item/kitchen/knife/combat/serpentblade/blade = user.get_active_hand()
 	blade.attack(target, user)

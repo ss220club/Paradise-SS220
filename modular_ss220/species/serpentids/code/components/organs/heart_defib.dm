@@ -6,7 +6,7 @@
 	var/mob/living/carbon/human/owner = null
 	var/chemical_id = ""
 
-/datum/component/defib_heart/Initialize(var/human, var/income_chemical_id = "")
+/datum/component/defib_heart/Initialize(human, income_chemical_id = "")
 	. = ..()
 	owner = human
 	chemical_id = income_chemical_id

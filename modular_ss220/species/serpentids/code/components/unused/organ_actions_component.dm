@@ -15,7 +15,7 @@
 	var/radial_additive_state
 	var/radial_additive_icon
 
-/datum/component/organ_action/Initialize(var/caller_organ, var/state, var/icon)
+/datum/component/organ_action/Initialize(caller_organ, state, icon)
 	..()
 	organ = caller_organ
 	radial_additive_state = state
@@ -33,13 +33,13 @@
 	UnregisterSignal(parent, COMSIG_ORGAN_GROUP_ACTION_ICON)
 	UnregisterSignal(parent, COMSIG_ORGAN_GROUP_ACTION_STATE)
 
-/datum/component/organ_action/proc/get_return_icon(datum/source, var/return_icon)
+/datum/component/organ_action/proc/get_return_icon(datum/source, return_icon)
 	SIGNAL_HANDLER
 
 	return_icon = radial_additive_icon
 	return ORGAN_GROUP_ACTION_ICON
 
-/datum/component/organ_action/proc/get_return_state(datum/source, var/return_state)
+/datum/component/organ_action/proc/get_return_state(datum/source, return_state)
 	SIGNAL_HANDLER
 
 	return_state = radial_additive_state

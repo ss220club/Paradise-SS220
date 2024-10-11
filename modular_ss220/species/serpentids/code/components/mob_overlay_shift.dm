@@ -38,7 +38,7 @@
 	var/shift_x_front_back = 0
 	var/shift_y_front_back = 0
 
-/datum/component/mob_overlay_shift/Initialize(var/caller_mob, var/shift_xs_hand = 0, var/shift_ys_hand = 0, var/shift_xf_hand = 0, var/shift_yf_hand = 0, var/shift_x_hand = 0, var/shift_y_hand = 0, var/shift_xs_belt = 0, var/shift_ys_belt = 0, var/shift_xf_belt = 0, var/shift_yf_belt = 0, var/shift_x_belt = 0, var/shift_y_belt = 0, var/shift_xs_back = 0, var/shift_ys_back = 0, var/shift_xf_back = 0, var/shift_yf_back = 0, var/shift_x_back = 0, var/shift_y_back = 0)
+/datum/component/mob_overlay_shift/Initialize(caller_mob, shift_xs_hand = 0, shift_ys_hand = 0, shift_xf_hand = 0, shift_yf_hand = 0, shift_x_hand = 0, shift_y_hand = 0, shift_xs_belt = 0, shift_ys_belt = 0, shift_xf_belt = 0, shift_yf_belt = 0, shift_x_belt = 0, shift_y_belt = 0, shift_xs_back = 0, shift_ys_back = 0, shift_xf_back = 0, shift_yf_back = 0, shift_x_back = 0, shift_y_back = 0)
 	..()
 	mob = parent
 

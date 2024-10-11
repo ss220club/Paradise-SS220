@@ -31,7 +31,7 @@
 	UnregisterSignal(parent, COMSIG_GADOM_MOB_UNLOAD)
 	UnregisterSignal(parent, COMSIG_GADOM_MOB_CAN_GRAB)
 
-/datum/component/gadom_living/proc/block_operation(datum/component_holder, var/signal_result)
+/datum/component/gadom_living/proc/block_operation(datum/component_holder, signal_result)
 	SIGNAL_HANDLER
 	signal_result = carrier.a_intent == "grab"
 	return GADOM_MOB_ALLOW_TO_GRAB

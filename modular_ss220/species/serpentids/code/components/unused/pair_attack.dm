@@ -15,7 +15,7 @@
 	var/obj/item/offhand_item = null
 	var/state_attack = FALSE
 
-/datum/component/pair_attack/Initialize(var/obj/item/weapon)
+/datum/component/pair_attack/Initialize(obj/item/weapon)
 	mainhand_item = weapon
 
 /datum/component/pair_attack/RegisterWithParent()
@@ -34,11 +34,11 @@
 	return state_attack ? PAIRATTACK_CHECK_ACTIVE : 0
 
 //Синхронизация состояния атак, чтобы оба оружия понимали, что они запустили атаку
-/datum/component/pair_attack/proc/sync_states(var/weapon, var/newstate)
+/datum/component/pair_attack/proc/sync_states(weapon, newstate)
 	SIGNAL_HANDLER
 	state_attack = newstate
 
-/datum/component/pair_attack/proc/offhand_pre_attack(var/obj/item/weapon, mob/living/target, mob/living/user, def_zone)
+/datum/component/pair_attack/proc/offhand_pre_attack(obj/item/weapon, mob/living/target, mob/living/user, def_zone)
 	SIGNAL_HANDLER
 	offhand_item = user.get_inactive_hand()
 	if(offhand_item.type != mainhand_item.type)

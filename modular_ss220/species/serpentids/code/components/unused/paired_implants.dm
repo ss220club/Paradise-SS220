@@ -18,7 +18,7 @@
 	UnregisterSignal(target, COMSIG_DOUBLEIMP_ACTION_REBUILD)
 	return ..()
 
-/datum/element/paired_implants/proc/action_rebuild(var/processed_implant)
+/datum/element/paired_implants/proc/action_rebuild(processed_implant)
 	var/obj/item/organ/internal/cyberimp/arm/pair_implant = null
 	var/obj/item/organ/internal/cyberimp/arm/assigned_implant = processed_implant
 	var/list/organs = assigned_implant.owner.internal_organs
@@ -34,7 +34,7 @@
 			action_candidate.Grant(assigned_implant.owner)
 	assigned_implant.owner.update_action_buttons()
 
-/datum/element/paired_implants/proc/synchonize_implants(var/processed_implant)
+/datum/element/paired_implants/proc/synchonize_implants(processed_implant)
 	var/obj/item/organ/internal/cyberimp/arm/pair_implant = null
 	var/obj/item/organ/internal/cyberimp/arm/assigned_implant = processed_implant
 	var/list/organs = assigned_implant.owner.internal_organs

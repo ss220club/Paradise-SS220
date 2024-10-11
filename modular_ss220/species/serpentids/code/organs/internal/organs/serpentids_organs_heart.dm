@@ -19,7 +19,7 @@
 
 /*
 Старый режим работы сердца - ввод серпадрона
-/obj/item/organ/internal/heart/serpentid/switch_mode(var/force_off = FALSE)
+/obj/item/organ/internal/heart/serpentid/switch_mode(force_off = FALSE)
 	.=..()
 	if(owner.get_chemical_value(chemical_id) >= GAS_ORGAN_CHEMISTRY_HEART)
 		var/mob/living/carbon/human/human_owner = owner

@@ -11,7 +11,7 @@
 	var/obj/item/organ/internal/organ = null
 	var/toxin_damage_rate
 
-/datum/component/organ_toxin_damage/Initialize(var/tox_rate = TOX_ORGANS_PROCESS)
+/datum/component/organ_toxin_damage/Initialize(tox_rate = TOX_ORGANS_PROCESS)
 	. = ..()
 	organ = parent
 	toxin_damage_rate = tox_rate

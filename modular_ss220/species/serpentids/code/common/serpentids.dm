@@ -156,7 +156,7 @@
 	H.verbs += /mob/living/carbon/human/proc/emote_gbswiggles
 	H.chat_message_y_offset = 11
 	SEND_SIGNAL(H, COMSIG_MOB_OVERLAY_SHIFT_UPDATE)
-	for (var/limb_name in has_limbs)
+	for(var/limb_name in has_limbs)
 		valid_limbs += has_limbs[limb_name]["path"]
 
 /datum/species/moth/on_species_loss(mob/living/carbon/human/H)

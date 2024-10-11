@@ -34,7 +34,7 @@
 	var/self_medning = FALSE
 	var/broken_treshold = CARAPACE_BROKEN_STATE
 
-/datum/component/carapace/Initialize(var/caller_limb, var/allow_self_medning, var/break_threshold, var/control_node = FALSE)
+/datum/component/carapace/Initialize(caller_limb, allow_self_medning, break_threshold, control_node = FALSE)
 	..()
 	limb = parent
 	self_medning = allow_self_medning
@@ -55,14 +55,14 @@
 	return ((limb.status & ORGAN_BROKEN) ? FALSE : CARAPACE_STOP_SURGERY_STEP)
 
 //Проки, срабатываемые при получении или исцелении урона
-/datum/component/carapace/proc/receive_damage(var/affected_limb, brute, burn, sharp, used_weapon = null, list/forbidden_limbs = list(), ignore_resists = FALSE, updating_health = TRUE)
+/datum/component/carapace/proc/receive_damage(affected_limb, brute, burn, sharp, used_weapon = null, list/forbidden_limbs = list(), ignore_resists = FALSE, updating_health = TRUE)
 	if(limb.get_damage() > broken_treshold)
 		limb.fracture()
 	if(limb.internal_organs.len > 0)
 		var/obj/item/organ/internal/O = pick(limb.internal_organs)
 		O.receive_damage(burn * limb.burn_dam)
 
-/datum/component/carapace/proc/heal_damage(var/affected_limb, brute, burn, internal = 0, robo_repair = 0, updating_health = TRUE)
+/datum/component/carapace/proc/heal_damage(affected_limb, brute, burn, internal = 0, robo_repair = 0, updating_health = TRUE)
 	if((limb.status & ORGAN_BROKEN) && limb.get_damage() == 0)
 		if(self_medning)
 			limb.mend_fracture()
