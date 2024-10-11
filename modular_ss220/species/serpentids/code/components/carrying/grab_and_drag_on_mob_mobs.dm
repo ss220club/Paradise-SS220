@@ -42,13 +42,12 @@
 	var/mob/living/carbon/human/puppet = component_holder
 	var/datum/dna/genetic_info = carrier.dna
 	var/datum/species/spiece = genetic_info.species
-	if((puppet.a_intent == "grab") && (spiece.type in allowed_races))
-		if(user.incapacitated() || HAS_TRAIT(user, TRAIT_HANDS_BLOCKED) || get_dist(user, puppet) > 1)
-			return
-		if(!istype(target))
-			return
-		if(do_after(puppet, 20 * puppet.dna.species.action_mult, FALSE, target))
-			load(puppet, target)
+	if(user.incapacitated() || HAS_TRAIT(user, TRAIT_HANDS_BLOCKED) || get_dist(user, puppet) > 1)
+		return
+	if(!istype(target))
+		return
+	if(do_after(puppet, 20 * puppet.dna.species.action_mult, FALSE, target))
+		load(puppet, target)
 
 
 /datum/component/gadom_living/proc/load(mob/living/carbon/human/puppet, atom/movable/AM)
@@ -110,7 +109,7 @@
 		to_chat(usr, "<span class='boldannounceic'>Interacting with admin-frozen players is not permitted.</span>")
 		return
 	var/signal_call	= SEND_SIGNAL(usr, COMSIG_GADOM_MOB_CAN_GRAB)
-	if((signal_call & GADOM_MOB_ALLOW_TO_GRAB))
+	if(signal_call & GADOM_MOB_ALLOW_TO_GRAB)
 		SEND_SIGNAL(usr, COMSIG_GADOM_MOB_LOAD, usr, src)
 		return
 	. = .. ()
