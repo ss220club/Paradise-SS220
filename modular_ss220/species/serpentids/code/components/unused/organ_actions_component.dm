@@ -51,8 +51,6 @@
 
 //Прок, вызывается непосредственно в кнопке действия органа
 /datum/component/organ_action/proc/open_actions(mob/user)
-	SIGNAL_HANDLER
-
 	var/list/choices = list()
 	var/list/organs_list = list()
 	for(var/obj/item/organ/internal/O in organ.owner.internal_organs)

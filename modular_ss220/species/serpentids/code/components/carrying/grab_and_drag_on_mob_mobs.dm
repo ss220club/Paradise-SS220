@@ -33,21 +33,19 @@
 
 /datum/component/gadom_living/proc/block_operation(datum/component_holder, signal_result)
 	SIGNAL_HANDLER
-	signal_result = carrier.a_intent == "grab"
-	return GADOM_MOB_ALLOW_TO_GRAB
+	var/datum/species/spiece = carrier.dna.genetic_info.species
+	signal_result = (((carrier.a_intent != "grab") && (spiece.type in allowed_races)) ? FALSE : GADOM_MOB_ALLOW_TO_GRAB)
+	return signal_result
 
 /datum/component/gadom_living/proc/try_load_mob(datum/component_holder, mob/user, mob/target)
-	SIGNAL_HANDLER
-	var/mob/living/carbon/human/puppet = component_holder
-	var/datum/dna/genetic_info = puppet.dna
-	var/datum/species/spiece = genetic_info.species
-	if((puppet.a_intent == "grab") && (spiece.type in allowed_races))
-		if(user.incapacitated() || HAS_TRAIT(user, TRAIT_HANDS_BLOCKED) || get_dist(user, puppet) > 1)
+	var/datum/species/spiece = carrier.dna.genetic_info.species
+	if((carrier.a_intent == "grab") && (spiece.type in allowed_races))
+		if(user.incapacitated() || HAS_TRAIT(user, TRAIT_HANDS_BLOCKED) || get_dist(user, carrier) > 1)
 			return
 		if(!istype(target))
 			return
-		if(do_after(puppet, 20 * puppet.dna.species.action_mult, FALSE, target)) //Закоментить если линтер начнет брыкаться - оно работает, но прикол с SpacemanDMM_should_not_sleep
-			load(puppet, target)
+		if(do_after(carrier, 20 * carrier.dna.species.action_mult, FALSE, target))
+			load(carrier, target)
 
 
 /datum/component/gadom_living/proc/load(mob/living/carbon/human/puppet, atom/movable/AM)
@@ -108,17 +106,15 @@
 	if(IsFrozen(src) && !is_admin(usr))
 		to_chat(usr, "<span class='boldannounceic'>Interacting with admin-frozen players is not permitted.</span>")
 		return
-	var/signal_result
-	var/signal_call	= SEND_SIGNAL(usr, COMSIG_GADOM_MOB_CAN_GRAB, signal_result)
-	if((signal_call & GADOM_MOB_ALLOW_TO_GRAB) && signal_result)
+	var/signal_call	= SEND_SIGNAL(usr, COMSIG_GADOM_MOB_CAN_GRAB)
+	if((signal_call & GADOM_MOB_ALLOW_TO_GRAB))
 		SEND_SIGNAL(usr, COMSIG_GADOM_MOB_LOAD, usr, src)
 		return
 	. = .. ()
 
 /datum/species/spec_attack_hand(mob/living/carbon/human/M, mob/living/carbon/human/H, datum/martial_art/attacker_style)
-	var/signal_result
-	var/signal_call	= SEND_SIGNAL(usr, COMSIG_GADOM_MOB_CAN_GRAB, signal_result)
-	if((signal_call & GADOM_MOB_ALLOW_TO_GRAB) && signal_result && H.loaded)
+	var/signal_call	= SEND_SIGNAL(usr, COMSIG_GADOM_MOB_CAN_GRAB)
+	if((signal_call & GADOM_MOB_ALLOW_TO_GRAB) && H.loaded)
 		SEND_SIGNAL(H, COMSIG_GADOM_MOB_UNLOAD, M)
 	. = .. ()
 
