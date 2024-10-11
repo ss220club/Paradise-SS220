@@ -116,6 +116,9 @@
 	if(status & ORGAN_DEAD)
 		return
 
+	owner.unEquip(holder_l, 1)
+	holder_l.forceMove(src)
+	holder_l = null
 	blades_active = FALSE
 	playsound(get_turf(owner), 'sound/mecha/mechmove03.ogg', 50, 1)
 	new_icon_state = "blades_0"
