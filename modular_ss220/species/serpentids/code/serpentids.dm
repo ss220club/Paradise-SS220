@@ -62,18 +62,7 @@
 		"r_foot" = list("path" = /obj/item/organ/external/foot/right/carapace, "descriptor" = "right foot")
 		)
 
-	autohiss_basic_map = list(
-			"z" = list("zz", "zzz", "zzzz"),
-			"v" = list("vv", "vvv", "vvvv"),
-			"з" = list("зз", "ззз", "зззз"),
-			"в" = list("вв", "ввв", "вввв"),
-			"s" = list("ss", "sss", "ssss"),
-			"с" = list("сс", "ссс", "сссс"))
-	autohiss_extra_map = list(
-			"x" = list("ks", "kss", "ksss"),
-			"ш" = list("шш", "шшш", "шшшш"),
-			"ч" = list("щ", "щщ", "щщщ"))
-	autohiss_exempt = list("Chittin")
+	autohiss_exempt = list("Nabberian")
 
 	scream_verb = "утробно ревёт"
 	speech_sounds = list(
