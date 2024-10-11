@@ -31,21 +31,24 @@
 	UnregisterSignal(parent, COMSIG_GADOM_MOB_UNLOAD)
 	UnregisterSignal(parent, COMSIG_GADOM_MOB_CAN_GRAB)
 
-/datum/component/gadom_living/proc/block_operation(datum/component_holder, signal_result)
+/datum/component/gadom_living/proc/block_operation(datum/component_holder)
 	SIGNAL_HANDLER
-	var/datum/species/spiece = carrier.dna.genetic_info.species
-	signal_result = (((carrier.a_intent != "grab") && (spiece.type in allowed_races)) ? FALSE : GADOM_MOB_ALLOW_TO_GRAB)
+	var/datum/dna/genetic_info = carrier.dna
+	var/datum/species/spiece = genetic_info.species
+	var/signal_result = (((carrier.a_intent != "grab") && (spiece.type in allowed_races)) ? FALSE : GADOM_MOB_ALLOW_TO_GRAB)
 	return signal_result
 
 /datum/component/gadom_living/proc/try_load_mob(datum/component_holder, mob/user, mob/target)
-	var/datum/species/spiece = carrier.dna.genetic_info.species
-	if((carrier.a_intent == "grab") && (spiece.type in allowed_races))
-		if(user.incapacitated() || HAS_TRAIT(user, TRAIT_HANDS_BLOCKED) || get_dist(user, carrier) > 1)
+	var/mob/living/carbon/human/puppet = component_holder
+	var/datum/dna/genetic_info = carrier.dna
+	var/datum/species/spiece = genetic_info.species
+	if((puppet.a_intent == "grab") && (spiece.type in allowed_races))
+		if(user.incapacitated() || HAS_TRAIT(user, TRAIT_HANDS_BLOCKED) || get_dist(user, puppet) > 1)
 			return
 		if(!istype(target))
 			return
-		if(do_after(carrier, 20 * carrier.dna.species.action_mult, FALSE, target))
-			load(carrier, target)
+		if(do_after(puppet, 20 * puppet.dna.species.action_mult, FALSE, target))
+			load(puppet, target)
 
 
 /datum/component/gadom_living/proc/load(mob/living/carbon/human/puppet, atom/movable/AM)
