@@ -30,7 +30,7 @@
 		owner.update_body()
 		var/isleft = owner.hand
 		var/obj/item/item = (isleft ? owner.get_inactive_hand() : owner.get_active_hand())
-		if (!istype(item, /obj/item/grab))
+		if(!istype(item, /obj/item/grab))
 			owner.drop_r_hand()
 
 /obj/item/organ/internal/cyberimp/chest/serpentid_blades/insert(mob/living/carbon/M, special, dont_remove_slot)
