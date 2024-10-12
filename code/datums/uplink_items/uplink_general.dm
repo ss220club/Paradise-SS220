@@ -892,7 +892,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/bio_chips/basic_adrenal
 	name = "Basic-Adrenal Bio-chip"
-	desc = "A single-use bio-chip injected into the body and later activated manually to inject a chemical cocktail. This one has a worse healing effect than regular adrenaline. It can be activated once for 3/4 of the effect of the original."
+	desc = "Одноразовый био-чипп, вводимый в тело и активируемый для впрыска химического коктейля. У данной версии лечащее действие хуже обычного адреналина. Его можно активировать единожды для полученния эффекта как от 3/4 оригинала."
 	reference = "BAI"
 	item = /obj/item/bio_chip_implanter/basic_adrenalin
 	cost = 20
@@ -900,7 +900,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/bio_chips/proto_adrenal
 	name = "Proto-Adrenal Bio-chip"
-	desc = "A old prototype of the Adrenalin implant, that grants the user 4 seconds of antistun, getting them back on their feet instantly once, but nothing more. Speed and healing sold seperately."
+	desc = "Старый прототип био-чипа Адреналин, дающий пользователю 4 секунды антистана, единожды поднимая его на ноги, но ничего более. Скорость и лечение продаются отдельно."
 	reference = "PAI"
 	item = /obj/item/bio_chip_implanter/proto_adrenalin
 	cost = 10
