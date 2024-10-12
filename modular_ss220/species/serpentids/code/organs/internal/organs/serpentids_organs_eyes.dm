@@ -18,6 +18,7 @@
 	. = ..()
 	AddComponent(/datum/component/organ_decay, decay_rate, decay_recovery)
 	AddComponent(/datum/component/organ_toxin_damage, organ_process_toxins)
+	AddComponent(/datum/component/chemistry_organ, chemical_id)
 
 //Прок на получение цвета глаз
 /obj/item/organ/internal/eyes/serpentid/generate_icon(mob/living/carbon/human/HA)
@@ -54,7 +55,7 @@
 	.=..()
 	if(!force_off && owner.get_chemical_value(chemical_id) >= chemical_consuption && !(status & ORGAN_DEAD))
 		see_in_dark = 8
-		chemical_consuption = chemical_consuption + chemical_consuption * (max_damage - damage / max_damage)
+		chemical_consuption = GAS_ORGAN_CHEMISTRY_EYES + GAS_ORGAN_CHEMISTRY_EYES * (max_damage - damage / max_damage)
 	else
 		see_in_dark = 0
 		chemical_consuption = 0

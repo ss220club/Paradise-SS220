@@ -14,11 +14,13 @@
 	. = ..()
 	AddComponent(/datum/component/organ_decay, decay_rate, decay_recovery)
 	AddComponent(/datum/component/organ_toxin_damage, organ_process_toxins)
+	AddComponent(/datum/component/chemistry_organ, chemical_id)
 
 /obj/item/organ/internal/ears/serpentid/on_life()
 	.=..()
-	if(prob(((max_damage - damage)/max_damage) * 100) && chemical_consuption > owner.get_chemical_value(chemical_id))
-		sense_creatures()
+	if(chemical_consuption <= owner.get_chemical_value(chemical_id))
+		if(prob(((max_damage - damage)/max_damage) * 100))
+			sense_creatures()
 
 /obj/item/organ/internal/ears/serpentid/proc/sense_creatures()
 	for(var/mob/living/creature in range(9, owner))
