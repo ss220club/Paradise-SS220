@@ -40,8 +40,6 @@
 
 /datum/component/gadom_living/proc/try_load_mob(datum/component_holder, mob/user, mob/target)
 	var/mob/living/carbon/human/puppet = component_holder
-	var/datum/dna/genetic_info = carrier.dna
-	var/datum/species/spiece = genetic_info.species
 	if(user.incapacitated() || HAS_TRAIT(user, TRAIT_HANDS_BLOCKED) || get_dist(user, puppet) > 1)
 		return
 	if(!istype(target))
