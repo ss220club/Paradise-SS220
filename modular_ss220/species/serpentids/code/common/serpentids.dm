@@ -22,8 +22,14 @@
 
 	dietflags = DIET_OMNI
 	taste_sensitivity = TASTE_SENSITIVITY_SHARP
-	allowed_consumed_mobs = list(/mob/living/simple_animal/mouse, /mob/living/simple_animal/lizard, /mob/living/simple_animal/chick, /mob/living/simple_animal/chicken,
-								/mob/living/simple_animal/crab, /mob/living/simple_animal/butterfly, /mob/living/simple_animal/parrot, /mob/living/simple_animal/hostile/poison/bees)
+	allowed_consumed_mobs = list(/mob/living/simple_animal/mouse,
+		/mob/living/simple_animal/lizard,
+		/mob/living/simple_animal/chick,
+		/mob/living/simple_animal/chicken,
+		/mob/living/simple_animal/crab,
+		/mob/living/simple_animal/butterfly,
+		/mob/living/simple_animal/parrot,
+		/mob/living/simple_animal/hostile/poison/bees)
 
 	bodyflags = HAS_SKIN_COLOR | BALD | SHAVED
 	skinned_type = /obj/item/stack/sheet/animalhide/lizard
@@ -106,14 +112,13 @@
 		"пытается откусить себе усики!",
 		"вонзает когти в свои глазницы!",
 		"сворачивает себе шею!",
-		"разбивает себе панцирь",
+		"разбивает себе панцирь!",
 		"протыкает себя клинками!",
 		"задерживает дыхание!")
 
 	can_buckle = TRUE
 	buckle_lying = FALSE
 	var/can_stealth = TRUE
-	var/list/valid_limbs = list()
 	var/gene_lastcall = 0
 
 /datum/species/serpentid/handle_reagents(mob/living/carbon/human/H, datum/reagent/R)
@@ -124,7 +129,6 @@
 
 //Перенести на карапас/грудь
 /datum/species/serpentid/handle_life(mob/living/carbon/human/H)
-
 	var/armor_count = 0
 	var/gene_degradation = 0
 	for(var/obj/item/organ/external/limb in H.bodyparts)
@@ -143,7 +147,6 @@
 
 /datum/species/serpentid/on_species_gain(mob/living/carbon/human/H)
 	..()
-	H.resize = 1
 	H.can_buckle = can_buckle
 	H.buckle_lying = buckle_lying
 	H.update_transform()
@@ -156,8 +159,6 @@
 	H.verbs += /mob/living/carbon/human/proc/emote_gbswiggles
 	H.chat_message_y_offset = 11
 	SEND_SIGNAL(H, COMSIG_MOB_OVERLAY_SHIFT_UPDATE)
-	for(var/limb_name in has_limbs)
-		valid_limbs += has_limbs[limb_name]["path"]
 
 /datum/species/moth/on_species_loss(mob/living/carbon/human/H)
 	..()

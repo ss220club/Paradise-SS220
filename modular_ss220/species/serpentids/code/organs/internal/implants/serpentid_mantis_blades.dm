@@ -10,12 +10,14 @@
 	force = 7
 	armour_penetration_flat = 3
 	tool_behaviour = TOOL_SAW
+	var/stamina_constant = 2
+	var/stamina_coefficient = 0.5
 
 /obj/item/kitchen/knife/combat/serpentblade/Initialize(mapload)
 	. = ..()
 	ADD_TRAIT(src, TRAIT_ADVANCED_SURGICAL, ROUNDSTART_TRAIT)
 	ADD_TRAIT(src, TRAIT_FORCES_OPEN_DOORS_ITEM, ROUNDSTART_TRAIT)
-	AddComponent(/datum/component/parry, _stamina_constant = 2, _stamina_coefficient = 0.5, _parryable_attack_types = NON_PROJECTILE_ATTACKS)
+	AddComponent(/datum/component/parry, _stamina_constant = stamina_constant, _stamina_coefficient = stamina_coefficient, _parryable_attack_types = NON_PROJECTILE_ATTACKS)
 	AddComponent(/datum/component/double_attack, weapon = src)
 
 /obj/item/melee/serpentblade/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)

@@ -4,7 +4,7 @@
 	icon = 'modular_ss220/species/serpentids/icons/organs.dmi'
 	desc = "A large looking eyes with some chemical enchanments."
 	icon_state = "eyes01"
-	see_in_dark = 0
+	see_in_dark = 8
 	flash_protect = FLASH_PROTECTION_EXTRA_SENSITIVE
 	tint = FLASH_PROTECTION_NONE
 	var/chemical_id = SERPENTID_CHEM_REAGENT_ID
@@ -12,6 +12,8 @@
 	var/decay_recovery = BASIC_RECOVER_VALUE
 	var/organ_process_toxins = 0.35
 	var/chemical_consuption = GAS_ORGAN_CHEMISTRY_EYES
+	var/vision_ajust_coefficient = 0.4
+	var/update_time_client_colour = 10
 
 
 /obj/item/organ/internal/eyes/serpentid/Initialize(mapload)
@@ -34,7 +36,7 @@
 	. = ..()
 	if(!isnull(owner))
 		var/mob/mob = owner
-		mob.update_client_colour(time = 10)
+		mob.update_client_colour(time = update_time_client_colour)
 	switch_mode()
 
 /obj/item/organ/internal/eyes/serpentid/get_colourmatrix()
@@ -42,8 +44,7 @@
 	var/vision_chem = clamp(chem_value, SERPENTID_EYES_LOW_VISIBLE_VALUE, SERPENTID_EYES_MAX_VISIBLE_VALUE)
 	var/vision_concentration = (1 - vision_chem/SERPENTID_EYES_MAX_VISIBLE_VALUE)*SERPENTID_EYES_LOW_VISIBLE_VALUE
 
-	var/k = 0.4
-	vision_concentration = SERPENTID_EYES_LOW_VISIBLE_VALUE * (1 - chem_value**k)
+	vision_concentration = SERPENTID_EYES_LOW_VISIBLE_VALUE * (1 - chem_value ** vision_ajust_coefficient)
 	var/vision_adjust = clamp(vision_concentration, 0, SERPENTID_EYES_LOW_VISIBLE_VALUE/2)
 
 	var/vision_matrix = list(vision_chem, vision_adjust, vision_adjust,\
@@ -54,7 +55,7 @@
 /obj/item/organ/internal/eyes/serpentid/switch_mode(force_off = FALSE)
 	.=..()
 	if(!force_off && owner.get_chemical_value(chemical_id) >= chemical_consuption && !(status & ORGAN_DEAD))
-		see_in_dark = 8
+		see_in_dark = initial(see_in_dark)
 		chemical_consuption = GAS_ORGAN_CHEMISTRY_EYES + GAS_ORGAN_CHEMISTRY_EYES * (max_damage - damage / max_damage)
 	else
 		see_in_dark = 0

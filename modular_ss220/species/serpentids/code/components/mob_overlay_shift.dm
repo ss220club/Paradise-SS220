@@ -7,7 +7,7 @@
 #define COMSIG_MOB_OVERLAY_SHIFT_CALL "shift_call"
 #define COMSIG_MOB_OVERLAY_SHIFT_UPDATE "update_call"
 #define COMSIG_MOB_OVERLAY_SHIFT_CHECK "module_available"
-	#define MOB_OVERLAY_SHIFT_CHECK (1<<0)
+#define MOB_OVERLAY_SHIFT_CHECK (1<<0)
 
 /datum/component/mob_overlay_shift
 	var/mob/living/carbon/human/mob

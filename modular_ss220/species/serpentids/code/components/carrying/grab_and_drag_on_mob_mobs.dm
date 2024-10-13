@@ -7,7 +7,7 @@
 #define COMSIG_GADOM_MOB_UNLOAD "try_unload_mob"
 
 #define COMSIG_GADOM_MOB_CAN_GRAB "block_operation"
-	#define GADOM_MOB_ALLOW_TO_GRAB (1<<0)
+#define GADOM_MOB_ALLOW_TO_GRAB (1<<0)
 
 /mob/living/carbon/human
 	var/atom/movable/loaded = null
@@ -44,7 +44,7 @@
 		return
 	if(!istype(target))
 		return
-	if(do_after(puppet, 20 * puppet.dna.species.action_mult, FALSE, target))
+	if(do_after(puppet, 2 SECONDS * puppet.dna.species.action_mult, FALSE, target))
 		load(puppet, target)
 
 

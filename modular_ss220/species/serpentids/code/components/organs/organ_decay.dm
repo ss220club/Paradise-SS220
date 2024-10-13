@@ -34,5 +34,5 @@
 	var/is_destroying = (is_dead || (is_no_owner && !organ.is_in_freezer))
 	if(is_destroying)
 		organ.receive_damage(decay_rate, 1)
-	if((organ.damage <= (organ.max_damage/4)) && (organ.damage > 0) && !is_destroying)
+	if((organ.damage <= (organ.max_damage / 4)) && (organ.damage > 0) && !is_destroying)
 		organ.heal_internal_damage(recover_rate, FALSE)

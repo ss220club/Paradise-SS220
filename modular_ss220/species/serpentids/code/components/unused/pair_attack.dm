@@ -8,7 +8,7 @@
 #define COMSIG_PAIRATTACK_PROCESS "offhand_pre_attack"
 #define COMSIG_PAIRATTACK_SYNC "sync_states"
 #define COMSIG_PAIRATTACK_CHECK "check_state"
-	#define PAIRATTACK_CHECK_ACTIVE (1<<0)
+#define PAIRATTACK_CHECK_ACTIVE (1<<0)
 
 /datum/component/pair_attack
 	var/obj/item/mainhand_item = null

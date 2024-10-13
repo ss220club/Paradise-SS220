@@ -7,7 +7,7 @@
 #define COMSIG_GADOM_UNMOB_UNLOAD "try_unload_cargo"
 
 #define COMSIG_GADOM_UNMOB_CAN_GRAB "block_operation"
-	#define GADOM_UNMOB_ALLOW_TO_GRAB (1<<0)
+#define GADOM_UNMOB_ALLOW_TO_GRAB (1<<0)
 
 //Для отслеживания кто несет объект
 /atom/movable
@@ -77,12 +77,11 @@
 	if((user.a_intent == "grab") && (spiece.type in allowed_races))
 		if(user.incapacitated() || HAS_TRAIT(user, TRAIT_HANDS_BLOCKED) || get_dist(user, AM) > 1)
 			return
-
 		if(!istype(AM))
 			return
-
-		if(do_after(user, 20 * user.dna.species.action_mult, FALSE, AM))
-			load(AM)
+		if(!do_after(user, 20 * user.dna.species.action_mult, FALSE, AM))
+			return
+		load(AM)
 
 /datum/component/gadom_cargo/proc/load(atom/movable/AM)
 	if(carrier.loaded || AM.anchored || get_dist(carrier, AM) > 1)
@@ -93,11 +92,11 @@
 	if(!isturf(AM.loc))
 		return
 
-	var/obj/structure/closet/crate/CRATE
-	if(istype(AM,/obj/structure/closet/crate))
-		CRATE = AM
-		if(CRATE)
-			CRATE.close()
+	var/obj/structure/closet/crate/holding_crate
+    if(istype(AM,/obj/structure/closet/crate))
+        holding_crate = AM
+        if(holding_crate)
+            holding_crate.close()
 
 	if(isobj(AM))
 		var/obj/O = AM
@@ -118,19 +117,18 @@
 		return
 
 	if(carrier.loaded)
-		carrier.loaded.forceMove(carrier.loc)
-		carrier.loaded.pixel_y = initial(carrier.loaded.pixel_y)
-		carrier.loaded.layer = initial(carrier.loaded.layer)
-		carrier.loaded.plane = initial(carrier.loaded.plane)
-		if(dirn)
-			var/turf/T = carrier.loc
-			var/turf/newT = get_step(T,dirn)
-			if(carrier.loaded.CanPass(carrier.loaded, newT))
-				step(carrier.loaded, dirn)
-		carrier.loaded.crate_carrying_person = null
-		carrier.loaded = null
-
-	carrier.update_icon(UPDATE_OVERLAYS)
+        carrier.loaded.forceMove(carrier.loc)
+        carrier.loaded.pixel_y = initial(carrier.loaded.pixel_y)
+        carrier.loaded.layer = initial(carrier.loaded.layer)
+        carrier.loaded.plane = initial(carrier.loaded.plane)
+        if(dirn)
+            var/turf/T = carrier.loc
+            var/turf/newT = get_step(T,dirn)
+            if(carrier.loaded.CanPass(carrier.loaded, newT))
+                step(carrier.loaded, dirn)
+        carrier.loaded.crate_carrying_person = null
+        carrier.loaded = null
+    carrier.update_icon(UPDATE_OVERLAYS)
 
 //Расширение прока для переноса ящика на моба
 /mob/living/carbon/human/MouseDrop_T(atom/movable/AM, mob/user)

@@ -23,8 +23,9 @@
 			sense_creatures()
 
 /obj/item/organ/internal/ears/serpentid/proc/sense_creatures()
+	var/last_movement_threshold = 5 SECONDS
 	for(var/mob/living/creature in range(9, owner))
 		var/last_movement_timer = world.time - creature.l_move_time
-		if(creature == owner || creature.stat == DEAD || last_movement_timer > 50)
+		if(creature == owner || creature.stat == DEAD || last_movement_timer > last_movement_threshold)
 			continue
 		new /obj/effect/temp_visual/sonar_ping(owner.loc, owner, creature)

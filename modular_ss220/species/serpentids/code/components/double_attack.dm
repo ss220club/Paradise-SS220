@@ -8,7 +8,7 @@
 #define COMSIG_DOUBLEATTACK_PROCESS "hand_pre_attack"
 #define COMSIG_DOUBLEATTACK_SYNC "sync_states"
 #define COMSIG_DOUBLEATTACK_CHECK "check_state"
-	#define DOUBLEATTACK_CHECK_ACTIVE (1<<0)
+#define DOUBLEATTACK_CHECK_ACTIVE (1<<0)
 
 /datum/component/double_attack
 	var/obj/item/hand_item = null

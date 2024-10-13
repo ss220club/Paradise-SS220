@@ -27,7 +27,7 @@
 #define COMSIG_CARAPACE_HEAL_DAMAGE "heal_damage"
 
 #define COMSIG_CARAPACE_SURGERY_CAN_START "block_operation"
-	#define CARAPACE_STOP_SURGERY_STEP (1<<0)
+#define CARAPACE_STOP_SURGERY_STEP (1<<0)
 
 /datum/component/carapace
 	var/obj/item/organ/external/limb
@@ -58,7 +58,7 @@
 /datum/component/carapace/proc/receive_damage(affected_limb, brute, burn, sharp, used_weapon = null, list/forbidden_limbs = list(), ignore_resists = FALSE, updating_health = TRUE)
 	if(limb.get_damage() > broken_treshold)
 		limb.fracture()
-	if(limb.internal_organs.len > 0)
+	if(length(limb.internal_organs) > 0)
 		var/obj/item/organ/internal/O = pick(limb.internal_organs)
 		O.receive_damage(burn * limb.burn_dam)
 

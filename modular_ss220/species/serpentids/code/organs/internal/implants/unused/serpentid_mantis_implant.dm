@@ -57,7 +57,7 @@
 	var/extended = holder_l && !(holder_l in src) && holder_r && !(holder_r in src)
 	if(extended)
 		Retract()
-	else if(do_after(owner, 20*(owner.dna.species.action_mult), FALSE, owner))
+	else if(do_after(owner, 2 SECONDS * (owner.dna.species.action_mult), FALSE, owner))
 		holder_l = null
 		holder_r = null
 		Extend(contents[1],contents[2])

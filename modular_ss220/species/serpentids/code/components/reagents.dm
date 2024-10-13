@@ -11,10 +11,11 @@
 	taste_description = "awful but healthy"
 	goal_department = "Science"
 	goal_difficulty = REAGENT_GOAL_SKIP
+	var/clone_damage_heal = -0.02
 
 /datum/reagent/cabbagilium/on_mob_life(mob/living/M)
 	var/update_flags = STATUS_UPDATE_NONE
-	update_flags |= M.adjustCloneLoss(-0.02*REAGENTS_EFFECT_MULTIPLIER, FALSE)
+	update_flags |= M.adjustCloneLoss(clone_damage_heal * REAGENTS_EFFECT_MULTIPLIER, FALSE)
 
 //Расширение на химикаты - новый химикат для серпентидов
 //Химикат позволяет ускорять в 2 раза действия серпентидов (погрузка людей/ящиков, активация клинков)
@@ -49,7 +50,10 @@
 	if(!L.hud_used)
 		return
 	var/atom/movable/plane_master_controller/game_plane_master_controller = L.hud_used?.plane_master_controllers[PLANE_MASTERS_GAME]
-	var/static/list/col_filter_green = list(1,0,0,0, 0,0.66,0,0, 0,0,0.66,0, 0,0,0,1)
+	var/static/list/col_filter_green = list(1,0,0,0, /
+		0, 0.66, 0, 0, /
+		0, 0, 0.66, 0, /
+		0, 0, 0, 1)
 	game_plane_master_controller.add_filter(SERPADRONE_SCREEN_FILTER, 10, color_matrix_filter(col_filter_green, FILTER_COLOR_RGB))
 	game_plane_master_controller.add_filter(SERPADRONE_SCREEN_BLUR, 1, list("type" = "radial_blur", "size" = 0.02))
 	last_move_count = 0
@@ -137,9 +141,17 @@
 /obj/effect/temp_visual/decoy/serpadrone_afterimage
 	duration = 0.75 SECONDS
 	/// The color matrix it should be at spawn
-	var/list/matrix_start = list(1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1, 0.8,0,0.1,0)
+	var/list/matrix_start = list(1, 0, 0, 0, /
+		0, 1, 0, 0, /
+		0, 0, 1, 0, /
+		0, 0, 0, 1, /
+		0.8, 0, 0.1, 0)
 	/// The color matrix it should be by the time it despawns
-	var/list/matrix_end = list(1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1, 0.75,0,0.75,0)
+	var/list/matrix_end = list(1, 0, 0, 0, /
+		0, 1, 0, 0, /
+		0, 0, 1, 0, /
+		0, 0, 0, 1, /
+		0.75, 0, 0.75, 0)
 
 /obj/effect/temp_visual/decoy/serpadrone_afterimage/Initialize(mapload, atom/mimiced_atom, our_duration = 0.75 SECONDS)
 	duration = our_duration
