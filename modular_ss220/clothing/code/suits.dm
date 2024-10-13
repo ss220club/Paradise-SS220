@@ -440,7 +440,7 @@
 //sec swag//
 /obj/item/clothing/suit/armor/coat/cop
 	name = "серая шинель"
-	desc = "не забудьте про шлем любителя свежего воздуха."
+	desc = "Не забудьте про шлем любителя свежего воздуха."
 	icon = 'modular_ss220/clothing/icons/object/suits.dmi'
 	icon_override = 'modular_ss220/clothing/icons/mob/suits.dmi'
 	icon_state = "armored_coat"
