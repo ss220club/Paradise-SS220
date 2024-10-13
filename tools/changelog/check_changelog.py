@@ -42,7 +42,8 @@ def build_changelog(pr: dict) -> dict:
         # Check if "NPFC" is in the PR body
         if "NPFC" in pr.body:
             pr.add_to_labels(CL_NOT_NEEDED)
-            raise Exception("Changelog tags (:cl: or 🆑) are missing, but 'NPFC' is present. Skipping changelog validation.")
+            print("Changelog tags (:cl: or 🆑) are missing, but 'NPFC' is present. Skipping changelog validation.")
+            return None  # Return None to truly skip changelog generation
 
     changelog = parse_changelog(pr.body)
     changelog["author"] = changelog["author"] or pr.user.login
@@ -162,6 +163,9 @@ if not cl_required:
 
 try:
     cl = build_changelog(pr)
+    if cl is None:
+        exit(0)
+
     cl_emoji = emojify_changelog(cl)
     cl_emoji["author"] = cl_emoji["author"] or pr_author
     validate_changelog(cl_emoji)
