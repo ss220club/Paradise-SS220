@@ -32,7 +32,7 @@
 	contraband += list(
 		/obj/item/clothing/head/helmet/cop = 2,
 		/obj/item/clothing/head/helmet/cop/v2 = 1,
-		/obj/item/clothing/suit/armor/coat/cop = 3,
+		/obj/item/clothing/suit/armor/cop = 3,
 		)
 	prices += list(
 		/obj/item/clothing/head/helmet/cop = 200,
