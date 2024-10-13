@@ -194,18 +194,5 @@
 	max_heat_protection_temperature = HELMET_MAX_TEMP_PROTECT
 
 /obj/item/clothing/head/helmet/cop/v2
-	name = "шлем обороняющего гражданских"
-	desc = "шлем любителей свежего воздуха. Подними эту банку!"
-	flags = BLOCKHAIR
-	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE
-	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
-	icon = 'modular_ss220/clothing/icons/object/helmet.dmi'
-	icon_override = 'modular_ss220/clothing/icons/mob/helmet.dmi'
 	icon_state = "cop1"
 	item_state = "cop1"
-	species_restricted = list("Human", "Skrell", "Slime People", "Skeleton", "Shadow", "Nucleation")
-	armor = list(MELEE = 35, BULLET = 20, LASER = 10, ENERGY = 15, BOMB = 1, RAD = 0, FIRE = 50, ACID = 50)
-	cold_protection = HEAD
-	min_cold_protection_temperature = HELMET_MIN_TEMP_PROTECT
-	heat_protection = HEAD
-	max_heat_protection_temperature = HELMET_MAX_TEMP_PROTECT
