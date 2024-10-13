@@ -2,7 +2,7 @@
 DO NOT MANUALLY RUN THIS SCRIPT.
 ---------------------------------
 
-Expected envrionmental variables:
+Expected environmental variables:
 -----------------------------------
 GITHUB_REPOSITORY: Github action variable representing the active repo (Action provided)
 BOT_TOKEN: A repository account token, this will allow the action to push the changes (Action provided)
@@ -37,6 +37,13 @@ DISCORD_TAG_EMOJI = {
 
 
 def build_changelog(pr: dict) -> dict:
+    # Check for the presence of :cl: or 🆑 tags in the PR body
+    if not (":cl:" in pr.body or "🆑" in pr.body):
+        # Check if "NPFC" is in the PR body
+        if "NPFC" in pr.body:
+            pr.add_to_labels(CL_NOT_NEEDED)
+            raise Exception("Changelog tags (:cl: or 🆑) are missing, but 'NPFC' is present. Skipping changelog validation.")
+
     changelog = parse_changelog(pr.body)
     changelog["author"] = changelog["author"] or pr.user.login
     return changelog
@@ -146,7 +153,7 @@ if pr_is_mirror:
     cl_required = False
 
 if not cl_required:
-    # remove invalid, remove valid
+    # Remove invalid, remove valid
     if has_invalid_label:
         pr.remove_from_labels(CL_INVALID)
     if has_valid_label:
@@ -162,14 +169,14 @@ except Exception as e:
     print("Changelog parsing error:")
     print(e)
 
-    # add invalid, remove valid
+    # Add invalid, remove valid
     if not has_invalid_label:
         pr.add_to_labels(CL_INVALID)
     if has_valid_label:
         pr.remove_from_labels(CL_VALID)
     exit(1)
 
-# remove invalid, add valid
+# Remove invalid, add valid
 if has_invalid_label:
     pr.remove_from_labels(CL_INVALID)
 if not has_valid_label:
