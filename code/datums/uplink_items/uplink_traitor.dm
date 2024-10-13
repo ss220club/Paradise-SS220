@@ -397,7 +397,7 @@
 // Drask
 /datum/uplink_item/species_restricted/cryoregenerative_enhancer
 	name = "Cryoregenerative Enhancer"
-	desc = "Specially designed nanomachines that enhance the low-temperature regenerative capabilities of drask. Requires supercooled air in the enviroment or internals to function."
+	desc = "Специально разработанные наномашины, увеличивающие регенеративные способности драсков при низкой температуре. Требуется очень холодный воздух в атмосфере или в баллоне для работы."
 	reference = "CRE"
 	item = /obj/item/cryoregenerative_enhancer
 	cost = 25
@@ -638,7 +638,7 @@
 	else if(!AT)
 		to_chat(usr, "<span class='warning'>Ошибка: Встроенные реквизиты Синдиката не найдены.</span>")
 		return
-	else if(ischangeling(usr) || mind.has_antag_datum(/datum/antagonist/vampire))
+	else if(IS_CHANGELING(usr) || mind.has_antag_datum(/datum/antagonist/vampire))
 		to_chat(usr, "<span class='warning'>Ошибка: Встроенные реквизиты Синдиката содержат странную сигнатуру. Отмена.</span>")
 		return
 
