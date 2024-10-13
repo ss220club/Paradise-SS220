@@ -37,6 +37,6 @@
 	prices += list(
 		/obj/item/clothing/head/helmet/cop = 200,
 		/obj/item/clothing/head/helmet/cop/v2 = 200,
-		/obj/item/clothing/suit/armor/coat/cop = 200,
+		/obj/item/clothing/suit/armor/cop = 200,
 		)
 	. = ..()
