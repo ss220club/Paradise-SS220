@@ -3,7 +3,7 @@
 	. = .. ()
 	//Это ужасно,но так можно кастомным расам выдавать кастомные глаза (я хз, почему сработало так, нужны разьяснения)
 	var/datum/species/selected_specie = GLOB.all_species[species]
-	if (istype(selected_specie, /datum/species/serpentid))
+	if(istype(selected_specie, /datum/species/serpentid))
 		qdel(preview_icon_front)
 		qdel(preview_icon_side)
 		qdel(preview_icon)

@@ -97,7 +97,7 @@
 
 //Проки, срабатываемые при получении или исцелении урона
 /datum/component/mob_overlay_shift/proc/shift_call(mob, new_dir)
-	if (new_dir)
+	if(new_dir)
 		dir = new_dir
 	switch(dir)
 		if(EAST)
