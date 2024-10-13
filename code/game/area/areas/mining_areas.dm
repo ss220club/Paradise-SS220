@@ -160,6 +160,9 @@
 	name = "Пустоши Лаваленда"
 	outdoors = TRUE
 
+/area/lavaland/surface/outdoors/legion_arena
+	name = "Legion Arena"
+
 /// monsters and ruins spawn here
 /area/lavaland/surface/outdoors/unexplored
 	icon_state = "unexplored"
