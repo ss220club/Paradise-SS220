@@ -12,27 +12,10 @@
 		if(body_type == FEMALE)
 			g = "f"
 
-		var/icon/icobase
-		if(selected_specie.bodyflags & HAS_ICON_SKIN_TONE) //Handling species-specific icon-based skin tones by flagged race.
-			var/mob/living/carbon/human/H = new
-			H.dna.species = selected_specie
-			H.s_tone = s_tone
-			H.dna.species.updatespeciescolor(H, 0) //The mob's species wasn't set, so it's almost certainly different than the character's species at the moment. Thus, we need to be owner-insensitive.
-			var/obj/item/organ/external/chest/C = H.get_organ("chest")
-			icobase = C.icobase ? C.icobase : C.dna.species.icobase
-			qdel(H)
-		else
-			icobase = selected_specie.icobase
-
+		var/icon/icobase = selected_specie.icobase
 		preview_icon = new /icon(icobase, "torso_[g]")
 		preview_icon.Blend(new /icon(icobase, "groin_[g]"), ICON_OVERLAY)
-		var/head = "head"
-		if(alt_head && selected_specie.bodyflags & HAS_ALT_HEADS)
-			var/datum/sprite_accessory/alt_heads/H = GLOB.alt_heads_list[alt_head]
-			if(H.icon_state)
-				head = H.icon_state
-		preview_icon.Blend(new /icon(icobase, "[head]_[g]"), ICON_OVERLAY)
-
+		preview_icon.Blend(new /icon(icobase, "head_[g]"), ICON_OVERLAY)
 		for(var/name in list("chest", "groin", "head", "r_arm", "r_hand", "r_leg", "r_foot", "l_leg", "l_foot", "l_arm", "l_hand"))
 			if(organ_data[name] == "amputated") continue
 			if(organ_data[name] == "cyborg")
@@ -57,10 +40,9 @@
 				preview_icon.Blend(rgb(-s_tone,  -s_tone,  -s_tone), ICON_SUBTRACT)
 
 		var/icon/face_s = new/icon("icon" = selected_specie.eyes_icon, "icon_state" = selected_specie.eyes)
-		if(!(selected_specie.bodyflags & NO_EYES))
-			var/icon/eyes_s = new/icon("icon" = selected_specie.eyes_icon, "icon_state" = selected_specie ? selected_specie.eyes : "eyes_s")
-			eyes_s.Blend(e_colour, ICON_ADD)
-			face_s.Blend(eyes_s, ICON_OVERLAY)
+		var/icon/eyes_s = new/icon("icon" = selected_specie.eyes_icon, "icon_state" = selected_specie ? selected_specie.eyes : "eyes_s")
+		eyes_s.Blend(e_colour, ICON_ADD)
+		face_s.Blend(eyes_s, ICON_OVERLAY)
 
 		preview_icon.Blend(face_s, ICON_OVERLAY)
 		preview_icon_front = new(preview_icon, dir = SOUTH)
