@@ -27,16 +27,3 @@
 		/obj/item/storage/belt/chef/apron/red = 75,
 		)
 	. = ..()
-
-/obj/machinery/economy/vending/secdrobe/Initialize(mapload)
-	contraband += list(
-		/obj/item/clothing/head/helmet/cop = 2,
-		/obj/item/clothing/head/helmet/cop/v2 = 1,
-		/obj/item/clothing/suit/armor/cop = 3,
-		)
-	prices += list(
-		/obj/item/clothing/head/helmet/cop = 200,
-		/obj/item/clothing/head/helmet/cop/v2 = 200,
-		/obj/item/clothing/suit/armor/cop = 200,
-		)
-	. = ..()
