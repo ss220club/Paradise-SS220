@@ -14,6 +14,7 @@
 	eyes = "serpentid_eyes_s"
 	butt_sprite_icon = 'modular_ss220/species/serpentids/icons/mob/r_serpentid_butt.dmi'
 	butt_sprite = "serpentid"
+	nojumpsuit = TRUE
 
 	species_traits = list(LIPS, NO_HAIR)
 	inherent_traits = list(TRAIT_CHUNKYFINGERS, TRAIT_RESISTHEAT, TRAIT_RESISTHIGHPRESSURE, TRAIT_RESISTLOWPRESSURE, TRAIT_NOPAIN)
@@ -55,6 +56,8 @@
 		//"r_hand" =  /obj/item/organ/internal/cyberimp/arm/toolset/mantisblade,
 		"chest" =  /obj/item/organ/internal/cyberimp/chest/serpentid_blades,
 		)
+
+	bio_chips = list(/obj/item/bio_chip/tracking)
 
 	has_limbs = list(
 		"chest" =  list("path" = /obj/item/organ/external/chest/carapace, "descriptor" = "chest"),
@@ -151,7 +154,7 @@
 	H.buckle_lying = buckle_lying
 	H.update_transform()
 	H.AddComponent(/datum/component/footstep, FOOTSTEP_MOB_SLIME, 1, -6)
-	H.AddComponent(/datum/component/mob_overlay_shift, shift_y_hand = 3, shift_y_belt = 7, shift_y_back = 7) //shift_xs_hand = 12
+	H.AddComponent(/datum/component/mob_overlay_shift, shift_y_hand = 3, shift_xs_belt = 5, shift_y_belt = 7, shift_y_back = 7, shift_y_head = 10, shift_xs_head = 3) //shift_xs_hand = 12
 	H.AddComponent(/datum/component/gadom_living)
 	H.AddComponent(/datum/component/gadom_cargo)
 	H.verbs += /mob/living/carbon/human/proc/emote_gbsroar
@@ -171,8 +174,9 @@
 	switch(slot)
 		if(SLOT_HUD_SHOES)
 			return FALSE
-	for(var/queip_type in equipment_black_list)
-		if(istype(I, queip_type))
+		if(SLOT_HUD_JUMPSUIT)
+			return FALSE
+		if(SLOT_HUD_OUTER_SUIT)
 			return FALSE
 	. = .. ()
 

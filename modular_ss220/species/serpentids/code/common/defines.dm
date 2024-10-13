@@ -39,3 +39,11 @@
 	var/action_mult = 1
 	var/equipment_black_list = list()
 	var/butt_sprite_icon = 'icons/obj/butts.dmi'
+	var/bio_chips = list()
+
+/datum/species/on_species_gain(mob/living/carbon/human/H)
+	.. ()
+	if(bio_chips)
+		for(var/bio_chip_type in bio_chips)
+			var/obj/item/bio_chip/I = new bio_chip_type(H)
+			I.implant(H, null)
