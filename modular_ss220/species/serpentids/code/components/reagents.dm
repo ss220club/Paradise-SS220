@@ -50,9 +50,9 @@
 	if(!L.hud_used)
 		return
 	var/atom/movable/plane_master_controller/game_plane_master_controller = L.hud_used?.plane_master_controllers[PLANE_MASTERS_GAME]
-	var/static/list/col_filter_green = list(1,0,0,0, /
-		0, 0.66, 0, 0, /
-		0, 0, 0.66, 0, /
+	var/static/list/col_filter_green = list(1,0,0,0, \
+		0, 0.66, 0, 0, \
+		0, 0, 0.66, 0, \
 		0, 0, 0, 1)
 	game_plane_master_controller.add_filter(SERPADRONE_SCREEN_FILTER, 10, color_matrix_filter(col_filter_green, FILTER_COLOR_RGB))
 	game_plane_master_controller.add_filter(SERPADRONE_SCREEN_BLUR, 1, list("type" = "radial_blur", "size" = 0.02))
@@ -141,16 +141,16 @@
 /obj/effect/temp_visual/decoy/serpadrone_afterimage
 	duration = 0.75 SECONDS
 	/// The color matrix it should be at spawn
-	var/list/matrix_start = list(1, 0, 0, 0, /
-		0, 1, 0, 0, /
-		0, 0, 1, 0, /
-		0, 0, 0, 1, /
+	var/list/matrix_start = list(1, 0, 0, 0, \
+		0, 1, 0, 0, \
+		0, 0, 1, 0, \
+		0, 0, 0, 1, \
 		0.8, 0, 0.1, 0)
 	/// The color matrix it should be by the time it despawns
-	var/list/matrix_end = list(1, 0, 0, 0, /
-		0, 1, 0, 0, /
-		0, 0, 1, 0, /
-		0, 0, 0, 1, /
+	var/list/matrix_end = list(1, 0, 0, 0, \
+		0, 1, 0, 0, \
+		0, 0, 1, 0, \
+		0, 0, 0, 1, \
 		0.75, 0, 0.75, 0)
 
 /obj/effect/temp_visual/decoy/serpadrone_afterimage/Initialize(mapload, atom/mimiced_atom, our_duration = 0.75 SECONDS)

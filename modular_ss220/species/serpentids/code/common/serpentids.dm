@@ -132,7 +132,7 @@
 	var/armor_count = 0
 	var/gene_degradation = 0
 	for(var/obj/item/organ/external/limb in H.bodyparts)
-		if(!(limb.type in valid_limbs))
+		if(!(limb.type in has_limbs[limb.limb_name]["path"]))
 			gene_degradation += SERPENTID_GENE_DEGRADATION_DAMAGE
 		var/limb_armor = limb.brute_dam + limb.burn_dam
 		armor_count += limb_armor

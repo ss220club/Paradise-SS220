@@ -93,10 +93,10 @@
 		return
 
 	var/obj/structure/closet/crate/holding_crate
-    if(istype(AM,/obj/structure/closet/crate))
-        holding_crate = AM
-        if(holding_crate)
-            holding_crate.close()
+	if(istype(AM,/obj/structure/closet/crate))
+		holding_crate = AM
+		if(holding_crate)
+			holding_crate.close()
 
 	if(isobj(AM))
 		var/obj/O = AM
@@ -117,18 +117,18 @@
 		return
 
 	if(carrier.loaded)
-        carrier.loaded.forceMove(carrier.loc)
-        carrier.loaded.pixel_y = initial(carrier.loaded.pixel_y)
-        carrier.loaded.layer = initial(carrier.loaded.layer)
-        carrier.loaded.plane = initial(carrier.loaded.plane)
-        if(dirn)
-            var/turf/T = carrier.loc
-            var/turf/newT = get_step(T,dirn)
-            if(carrier.loaded.CanPass(carrier.loaded, newT))
-                step(carrier.loaded, dirn)
-        carrier.loaded.crate_carrying_person = null
-        carrier.loaded = null
-    carrier.update_icon(UPDATE_OVERLAYS)
+		carrier.loaded.forceMove(carrier.loc)
+		carrier.loaded.pixel_y = initial(carrier.loaded.pixel_y)
+		carrier.loaded.layer = initial(carrier.loaded.layer)
+		carrier.loaded.plane = initial(carrier.loaded.plane)
+		if(dirn)
+			var/turf/T = carrier.loc
+			var/turf/newT = get_step(T,dirn)
+			if(carrier.loaded.CanPass(carrier.loaded, newT))
+				step(carrier.loaded, dirn)
+		carrier.loaded.crate_carrying_person = null
+		carrier.loaded = null
+	carrier.update_icon(UPDATE_OVERLAYS)
 
 //Расширение прока для переноса ящика на моба
 /mob/living/carbon/human/MouseDrop_T(atom/movable/AM, mob/user)

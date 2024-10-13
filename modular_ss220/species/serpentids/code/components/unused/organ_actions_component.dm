@@ -7,8 +7,8 @@
 
 #define COMSIG_ORGAN_GROUP_ACTION_ICON "get_return_icon"
 #define COMSIG_ORGAN_GROUP_ACTION_STATE "get_return_state"
-	#define ORGAN_GROUP_ACTION_ICON (1 << 0)
-	#define ORGAN_GROUP_ACTION_STATE (1 << 0)
+#define ORGAN_GROUP_ACTION_ICON (1 << 0)
+#define ORGAN_GROUP_ACTION_STATE (1 << 0)
 
 /datum/component/organ_action
 	var/obj/item/organ/internal/organ
@@ -54,7 +54,7 @@
 	var/list/choices = list()
 	var/list/organs_list = list()
 	for(var/obj/item/organ/internal/O in organ.owner.internal_organs)
-		if(O.actions_types.len > 0 && !istype(O, /obj/item/organ/internal/cyberimp))
+		if(length(O.actions_types) > 0 && !istype(O, /obj/item/organ/internal/cyberimp))
 			organs_list += O
 
 	for(var/obj/item/organ/internal/I in organs_list)
@@ -85,7 +85,7 @@
 	var/list/organs_list = list()
 	if(organ.owner)
 		for(var/obj/item/organ/internal/O in organ.owner.internal_organs)
-			if(O.actions_types.len > 0 && !istype(O, /obj/item/organ/internal/cyberimp))
+			if(length(O.actions_types.len) > 0 && !istype(O, /obj/item/organ/internal/cyberimp))
 				organs_list += O
 
 		for(var/obj/item/organ/internal/O in organs_list)
