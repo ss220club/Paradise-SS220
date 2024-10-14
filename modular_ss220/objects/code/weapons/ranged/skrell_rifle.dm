@@ -1,7 +1,7 @@
 // Skrellian carbine
 /obj/item/gun/energy/gun/skrell_carbine
-	name = "\improper скреллианский энергитический карабин"
-	desc = "Энергитический карабин Vuu'Xqu*ix T-3, более известный в ТСФ как 'VT-3'. Это оружие редко можно увидеть где-то помимо ОСС. "
+	name = "\improper скреллианский энергетический карабин"
+	desc = "Энергетический карабин Vuu'Xqu*ix T-3, более известный в ТСФ как 'VT-3'. Это оружие редко можно увидеть где-то помимо ОСС. "
 	icon = 'modular_ss220/objects/icons/guns.dmi'
 	lefthand_file = 'modular_ss220/objects/icons/inhands/guns_lefthand.dmi'
 	righthand_file = 'modular_ss220/objects/icons/inhands/guns_righthand.dmi'
@@ -15,8 +15,8 @@
 	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/gun/energy/gun/skrell_carbine/elite
-	name = "\improper элитный скреллианский энергитический карабин"
-	desc = "Энергитический карабин Vuu'Xqu*ix T-3, более известный в ТСФ как 'VT-3'. Это оружие редко можно увидеть где-то помимо ОСС. Этот экземпляр обладает батареей повышенной емкости, а так же дополнительными стабилизаторами стрельбы."
+	name = "\improper элитный скреллианский энергетический карабин"
+	desc = "Энергетический карабин Vuu'Xqu*ix T-3, более известный в ТСФ как 'VT-3'. Это оружие редко можно увидеть где-то помимо ОСС. Этот экземпляр обладает батареей повышенной емкости, а так же дополнительными стабилизаторами стрельбы."
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/skrell_light/elite, /obj/item/ammo_casing/energy/laser/skrell_assault/elite)
 
 /obj/item/ammo_casing/energy/laser/skrell_light
@@ -128,7 +128,7 @@
 // Skrellian pistol
 
 /obj/item/gun/energy/gun/skrell_pistol
-	name = "\improper скреллианский энергитический пистолет"
+	name = "\improper самозарядный скреллианский энергетический пистолет"
 	desc = "Энергетический пистолет Qua'l*Sarqzix-44x, известный на территориях ТСФ как QS-44. Компактный и удобный в использовании, имеет два режима мощности энерголуча: 'летальный' и 'нейтрализующий'."
 	icon = 'modular_ss220/objects/icons/guns.dmi'
 	icon_state = "skrell_pistol"
