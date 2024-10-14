@@ -242,3 +242,14 @@
 	contraband |= list(/obj/item/clothing/shoes/clown_shoes/moffers = 1)
 	prices |= list(/obj/item/clothing/shoes/clown_shoes/moffers = 80)
 	. = ..()
+
+
+/obj/machinery/economy/vending/tool/Initialize(mapload)
+	products += list(
+			/obj/item/clothing/gloves/color/yellow/vox = 1
+		)
+
+	prices = list(
+			/obj/item/clothing/gloves/color/yellow/vox = 250
+		)
+	. = ..()
