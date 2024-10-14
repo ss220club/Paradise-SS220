@@ -178,7 +178,7 @@
 
 /obj/item/clothing/head/helmet/cop
 	name = "шлем обороняющего гражданских"
-	desc = "Шлем любителей свежего воздуха. Подними эту банку!"
+	desc = "Шлем для любителей свежего воздуха. Подними эту банку!"
 	flags = BLOCKHAIR
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
