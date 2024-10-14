@@ -112,13 +112,11 @@
 
 /mob/living/carbon/human/change_dna(datum/dna/new_dna, include_species_change)
 	if(istype(back, /obj/item/mod/control))
-		// var/obj/item/mod/control/modsuit_control = back
 		INVOKE_ASYNC(back, TYPE_PROC_REF(/obj/item/mod/control, pre_species_gain), new_dna.species)
 	return ..()
 
 /mob/living/carbon/human/set_species(datum/species/new_species, use_default_color = FALSE, delay_icon_update = FALSE, skip_same_check = FALSE, retain_damage = FALSE, transformation = FALSE, keep_missing_bodyparts = FALSE)
 	if(istype(back, /obj/item/mod/control))
-		// var/obj/item/mod/control/modsuit_control = back
 		INVOKE_ASYNC(back, TYPE_PROC_REF(/obj/item/mod/control, pre_species_gain), new_species)
 	return ..()
 
