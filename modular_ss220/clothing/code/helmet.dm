@@ -180,7 +180,7 @@
 	name = "шлем обороняющего гражданских"
 	desc = "Шлем для любителей свежего воздуха. Подними эту банку!"
 	flags = BLOCKHAIR
-	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE
+	flags_inv = HIDEMASK | HIDEEARS | HIDEEYES | HIDEFACE
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
 	icon = 'modular_ss220/clothing/icons/object/helmet.dmi'
 	icon_override = 'modular_ss220/clothing/icons/mob/helmet.dmi'
