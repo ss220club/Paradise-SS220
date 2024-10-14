@@ -187,7 +187,7 @@
 	icon_state = "cop0"
 	item_state = "cop0"
 	species_restricted = list("Human", "Skrell", "Slime People", "Skeleton", "Shadow", "Nucleation")
-	armor = list(MELEE = 35, BULLET = 20, LASER = 10, ENERGY = 15, BOMB = 1, RAD = 0, FIRE = 50, ACID = 50)
+	armor = list(MELEE = 10, BULLET = 20, LASER = 10, ENERGY = 15, BOMB = 1, RAD = 0, FIRE = 50, ACID = 50)
 
 /obj/item/clothing/head/helmet/cop/v2
 	icon_state = "cop1"
