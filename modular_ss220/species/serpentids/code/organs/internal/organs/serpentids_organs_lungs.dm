@@ -76,11 +76,11 @@
 		human_owner.reagents.add_reagent("salbutamol", chemical_consuption)
 		chemical.holder.remove_reagent(chemical_id, chemical_consuption)
 
-	if (!hand_active)
+	if(!hand_active)
 		if(danger_air && (owner.stat == UNCONSCIOUS))
 			if(!owner.internal)
 				owner.internal = serpentid_vault
-		else if (!danger_air && owner.internal == serpentid_vault)
+		else if(!danger_air && owner.internal == serpentid_vault)
 			owner.internal = null
 
 	var/datum/gas_mixture/int_tank_air = serpentid_vault.air_contents
