@@ -1,27 +1,22 @@
-/mob/living/carbon/human/proc/emote_gbsroar()
+/mob/living/carbon/human/verb/emote_gbsroar()
 	set name = "< " + EMOTE_HUMAN_ROAR + " >"
 	set category = "Эмоции"
 	emote("gbsroar", intentional = TRUE)
 
-/mob/living/carbon/human/proc/emote_gbshiss()
+/mob/living/carbon/human/verb/emote_gbshiss()
 	set name = "< " + EMOTE_HUMAN_HISS + " >"
 	set category = "Эмоции"
 	emote("gbshiss", intentional = TRUE)
 
-/mob/living/carbon/human/proc/emote_gbswhip()
-	set name = "< " + EMOTE_HUMAN_WHIP + " >"
-	set category = "Эмоции"
-	emote("gbswhip", intentional = TRUE)
-
-/mob/living/carbon/human/proc/emote_gbswhips()
-	set name = "< " + EMOTE_HUMAN_WHIPS + " >"
-	set category = "Эмоции"
-	emote("gbswhips", intentional = TRUE)
-
-/mob/living/carbon/human/proc/emote_gbswiggles()
+/mob/living/carbon/human/verb/emote_gbswiggles()
 	set name = "< " + EMOTE_HUMAN_WIGGLES + " >"
 	set category = "Эмоции"
 	emote("gbswiggles", intentional = TRUE)
+
+/mob/living/carbon/human/verb/emote_gbsblink()
+	set name = "< " + EMOTE_CARBON_BLINK + " >"
+	set category = "Эмоции"
+	emote("gbsblink", intentional = TRUE)
 
 /datum/emote/living/carbon/human/roar/gbs
 	key = "gbsroar"
@@ -63,3 +58,13 @@
 	volume = 80
 	muzzled_noises = list("слабо")
 	sound = 'modular_ss220/species/serpentids/sounds/serpentid_wiggle.ogg'
+
+/datum/emote/living/carbon/human/blink/gbs
+	key = "gbsblink"
+	key_third_person = "gbsblink"
+	message = "протирает клинками глаза."
+	message_param = "протирает клинками глаза в сторону %t."
+	cooldown = 5 SECONDS
+	species_type_whitelist_typecache = list(/datum/species/serpentid)
+	emote_type = EMOTE_VISIBLE | EMOTE_MOUTH
+	age_based = TRUE
