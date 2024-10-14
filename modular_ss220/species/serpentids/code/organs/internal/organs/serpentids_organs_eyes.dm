@@ -8,7 +8,7 @@
 	flash_protect = FLASH_PROTECTION_EXTRA_SENSITIVE
 	tint = FLASH_PROTECTION_NONE
 	var/chemical_id = SERPENTID_CHEM_REAGENT_ID
-	var/decay_rate = 1
+	var/decay_rate = 0.1
 	var/decay_recovery = BASIC_RECOVER_VALUE
 	var/organ_process_toxins = 0.35
 	var/chemical_consuption = GAS_ORGAN_CHEMISTRY_EYES

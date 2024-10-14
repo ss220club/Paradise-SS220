@@ -9,7 +9,7 @@
 	action_icon_state = 	list(/datum/action/item_action/organ_action/toggle = "gas_stealth")
 	var/chemical_id = SERPENTID_CHEM_REAGENT_ID
 	var/chemical_consuption = GAS_ORGAN_CHEMISTRY_KIDNEYS
-	var/decay_rate = 4
+	var/decay_rate = 0.4
 	var/decay_recovery = BASIC_RECOVER_VALUE
 	var/organ_process_toxins = 0.1
 	var/cloak_engaged = FALSE

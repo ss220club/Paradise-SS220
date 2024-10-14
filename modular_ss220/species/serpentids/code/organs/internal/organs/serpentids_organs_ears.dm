@@ -4,7 +4,7 @@
 	icon = 'modular_ss220/species/serpentids/icons/organs.dmi'
 	icon_state = "ears"
 	desc = "An organ that can sense vibrations."
-	var/decay_rate = 2
+	var/decay_rate = 0.2
 	var/decay_recovery = BASIC_RECOVER_VALUE
 	var/organ_process_toxins = 0.25
 	var/chemical_consuption = GAS_ORGAN_CHEMISTRY_EARS

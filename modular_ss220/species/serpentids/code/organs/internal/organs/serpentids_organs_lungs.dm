@@ -7,7 +7,7 @@
 	var/chemical_id = SERPENTID_CHEM_REAGENT_ID
 	var/chemical_consuption = 1
 	var/obj/item/tank/internals/oxygen/serpentid_vault = new /obj/item/tank/internals/oxygen/serpentid_vault_tank
-	var/decay_rate = 3
+	var/decay_rate = 0.3
 	var/decay_recovery = BASIC_RECOVER_VALUE
 	var/organ_process_toxins = 0.25
 	var/chem_to_oxy_mult = 0.3
