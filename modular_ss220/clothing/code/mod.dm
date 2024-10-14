@@ -253,7 +253,7 @@
 	)
 
 /obj/item/mod/armor/mod_theme_skrell_sardaukars
-	armor = list(MELEE = 100, BULLET = 100, LASER = 50, ENERGY = 50, BOMB = 100, RAD = INFINITY, FIRE = INFINITY, ACID = INFINITY)
+	armor = list(MELEE = 120, BULLET = 120, LASER = 100, ENERGY = 50, BOMB = 100, RAD = INFINITY, FIRE = INFINITY, ACID = INFINITY)
 
 /obj/item/mod/control/pre_equipped/exclusive/skrell_sardaukars
 	theme = /datum/mod_theme/skrell_sardaukars
@@ -265,7 +265,6 @@
 		/obj/item/mod/module/jetpack/advanced,
 		/obj/item/mod/module/status_readout,
 		/obj/item/mod/module/magboot/advanced,
-		/obj/item/mod/module/energy_shield,
 		/obj/item/mod/module/visor/thermal
 	)
 	default_pins = list(

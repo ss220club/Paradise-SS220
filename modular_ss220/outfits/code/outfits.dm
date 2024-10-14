@@ -359,12 +359,12 @@
 
 	var/obj/item/card/id/I = H.wear_id
 	if(istype(I) && !is_sardaukar)
-		apply_to_card(I, H, list(ACCESS_MAINT_TUNNELS), "SDTF Raskinta-Katish", "retro_medical")
-		I.rank = "SDTF forces"
-		I.assignment = "Raskinta-Katish Warrior"
+		apply_to_card(I, H, list(ACCESS_MAINT_TUNNELS), "SDTF Raskinta Katish", "retro_medical")
+		I.rank = "SDTF Raskinta Katish"
+		I.assignment = "SDTF Raskinta Katish"
 	else
 		apply_to_card(I, H, list(ACCESS_MAINT_TUNNELS), "Emperor Guard", "retro_medical")
-		I.rank = "Qerr-Koal Raskinta-Katish"
+		I.rank = "Emperor Guard"
 		I.assignment = "Emperor Guard"
 	H.sec_hud_set_ID()
 
@@ -424,7 +424,7 @@
 /obj/item/encryptionkey/skrell
 	name = "skrellian encryption key"
 	icon_state = "cypherkey"
-	channels = list("Special Ops" = 1)
+	channels = list("Special Ops" = 1, "Security" = 1, "Command" = 1)
 	origin_tech = "syndicate=4"
 
 /obj/item/reagent_containers/hypospray/autoinjector/nt_emergency/skrell
