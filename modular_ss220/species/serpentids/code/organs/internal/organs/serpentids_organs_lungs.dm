@@ -13,8 +13,9 @@
 	var/decay_rate = 0.3
 	var/decay_recovery = BASIC_RECOVER_VALUE
 	var/organ_process_toxins = 0.25
-	var/chem_to_oxy_mult = 0.3
+	var/chem_to_oxy_mult = 0.1
 	var/danger_air = FALSE
+	var/hand_active = FALSE
 	radial_action_state = "tank"
 	radial_action_icon = 'modular_ss220/species/serpentids/icons/organs.dmi'
 
@@ -29,8 +30,8 @@
 	volume = 5
 
 /obj/item/tank/internals/oxygen/serpentid_vault_tank/populate_gas()
-	air_contents.set_oxygen((ONE_ATMOSPHERE) * volume / (R_IDEAL_GAS_EQUATION * T20C))
-	distribute_pressure = distribute_pressure * 1.5
+	air_contents.set_oxygen((0.5 * ONE_ATMOSPHERE) * volume / (R_IDEAL_GAS_EQUATION * T20C))
+	distribute_pressure = 22
 
 /datum/organ/lungs/serpentid
 	safe_oxygen_min = 21
@@ -44,16 +45,14 @@
 	heat_level_2_threshold = SERPENTID_HEAT_THRESHOLD_LEVEL_BASE + SERPENTID_HEAT_THRESHOLD_LEVEL_UP
 	heat_level_3_threshold = SERPENTID_HEAT_THRESHOLD_LEVEL_BASE + 2*SERPENTID_HEAT_THRESHOLD_LEVEL_UP
 
-/obj/item/tank/internals/oxygen/serpentid_vault_tank/populate_gas()
-	air_contents.set_oxygen((ONE_ATMOSPHERE) * volume / (R_IDEAL_GAS_EQUATION * T20C))
-	distribute_pressure = distribute_pressure * 1.5
-
 /obj/item/organ/internal/lungs/serpentid/switch_mode(force_off = FALSE)
 	.=..()
-	if(owner.internal != serpentid_vault)
+	if(!hand_active)
 		owner.internal = serpentid_vault
+		hand_active = TRUE
 	else
 		owner.internal = null
+		hand_active = FALSE
 
 /obj/item/organ/internal/lungs/serpentid/on_life()
 	.=..()
@@ -77,15 +76,16 @@
 		human_owner.reagents.add_reagent("salbutamol", chemical_consuption)
 		chemical.holder.remove_reagent(chemical_id, chemical_consuption)
 
-	if(danger_air && (owner.stat == UNCONSCIOUS))
-		if(!owner.internal)
-			owner.internal = serpentid_vault
-	else if (!danger_air && owner.internal == serpentid_vault)
-		owner.internal = null
+	if (!hand_active)
+		if(danger_air && (owner.stat == UNCONSCIOUS))
+			if(!owner.internal)
+				owner.internal = serpentid_vault
+		else if (!danger_air && owner.internal == serpentid_vault)
+			owner.internal = null
 
 	var/datum/gas_mixture/int_tank_air = serpentid_vault.air_contents
 	var/pressure_value = int_tank_air.return_pressure()
-	if(pressure_value < 100)
+	if(pressure_value < 50)
 		var/replenish_value = 0
 		if(danger_air && can_secretion)
 			replenish_value = chemical_consuption * chem_to_oxy_mult
@@ -95,11 +95,11 @@
 				breath_moles = environment.total_moles()*BREATH_PERCENTAGE
 			var/datum/gas_mixture/replenish_gas = environment.get_by_amount(breath_moles)
 			replenish_value = replenish_gas.private_oxygen
-		var/oxygen_value = ((ONE_ATMOSPHERE) * serpentid_vault.volume  * replenish_value + pressure_value)
-		var/gas_mix_value = (R_IDEAL_GAS_EQUATION * T20C)
+		var/oxygen_value = (0.5 * ONE_ATMOSPHERE) * serpentid_vault.volume  * replenish_value
+		var/gas_mix_value = R_IDEAL_GAS_EQUATION * T20C
 		var/value_to_replenish = ( oxygen_value / gas_mix_value )
 		if(value_to_replenish > 0)
-			serpentid_vault.air_contents.set_oxygen(value_to_replenish)
+			serpentid_vault.air_contents.set_oxygen(serpentid_vault.air_contents.oxygen() + value_to_replenish)
 
 //Без этого псевдо-баллон не работает (отрубается так как не проходит проверки основы)
 /mob/living/carbon/breathe(datum/gas_mixture/environment)
