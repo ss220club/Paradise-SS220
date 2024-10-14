@@ -24,11 +24,15 @@
 	speed = 1
 	maxHealth = 350
 	health = 350
-
+	/// Used to check light exposure alert state
 	var/thrown_alert
+	/// Contain list of all traps placed by this shadow father
 	var/list/obj/structure/shadow_trap/placed_traps = list()
+	/// Used to check state in consumption logic
 	var/is_consuming = FALSE
+	/// Amount of bodies, consumed by the shadow father
 	var/consumed = 0
+	/// Used to initialize hud
 	var/mind_initialized = FALSE
 
 /mob/living/simple_animal/demon/shadow_father/Login()
@@ -68,9 +72,10 @@
 		adjustBruteLoss(-20)
 
 /mob/living/simple_animal/demon/shadow_father/death(gibbed)
-	if(consumed > 0)
-		SSticker.mode.begin_shadowling_invasion(src, FALSE)
-	. = ..()
+	for(var/trap in placed_traps)
+		qdel(trap)
+	INVOKE_ASYNC(SSticker.mode, TYPE_PROC_REF(/datum/game_mode, begin_shadowling_invasion), src, FALSE)
+	return ..(gibbed)
 
 /mob/living/simple_animal/demon/shadow_father/proc/check_darkness()
 	var/turf/T = get_turf(src)
@@ -113,6 +118,9 @@
 	..()
 
 /mob/living/simple_animal/demon/shadow_father/UnarmedAttack(atom/A)
+	// Prevent self-attack
+	if(A == src)
+		return
 	// Pick a random attack sound for each attack
 	attack_sound = pick('sound/shadowdemon/shadowattack2.ogg', 'sound/shadowdemon/shadowattack3.ogg', 'sound/shadowdemon/shadowattack4.ogg')
 	if(!ishuman(A))

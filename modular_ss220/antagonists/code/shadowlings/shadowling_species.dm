@@ -7,6 +7,8 @@
 	name = "Shadowling"
 	name_plural = "Shadowlings"
 
+	default_language = "Шёпот из тени"
+	language = "Шёпот из тени"
 	icobase = 'modular_ss220/antagonists/icons/shadowlings/r_shadowling.dmi'
 	blacklisted = TRUE
 
@@ -18,12 +20,6 @@
 
 	burn_mod = 1.25
 	heatmod = 1.5
-
-	has_organ = list(
-		INTERNAL_ORGAN_BRAIN = /obj/item/organ/internal/brain,
-		INTERNAL_ORGAN_EYES = /obj/item/organ/internal/eyes,
-		INTERNAL_ORGAN_EARS = /obj/item/organ/internal/ears,
-	)
 
 /datum/species/shadow/ling/proc/handle_light(mob/living/carbon/human/H)
 	var/light_amount = 0
@@ -37,7 +33,7 @@
 			else
 				H.take_overall_damage(0, LIGHT_DAMAGE_TAKEN)
 			if(H.stat != DEAD)
-				to_chat(H, "<span class='userdanger'>Свет жжёт вас!</span>")//Message spam to say "GET THE FUCK OUT"
+				to_chat(H, "<span class='userdanger'>Свет жжёт вас!</span>")/
 				H << 'sound/weapons/sear.ogg'
 		else if(light_amount < LIGHT_HEAL_THRESHOLD)
 			H.clear_alert("lightexposure")
@@ -49,7 +45,7 @@
 			else
 				H.heal_overall_damage(5, 7)
 			H.adjustToxLoss(-5)
-			H.adjustBrainLoss(-25) //Shad O. Ling gibbers, "CAN U BE MY THRALL?!!"
+			H.adjustBrainLoss(-25)
 			H.AdjustEyeBlurry(-2 SECONDS)
 			H.adjustCloneLoss(-1)
 			H.SetWeakened(0)
@@ -71,7 +67,7 @@
 	flesh_color = "#AAAAAA"
 
 	burn_mod = 1.1
-	heatmod = 1.1
+	heatmod = 1.2
 
 #undef LIGHT_DAM_THRESHOLD
 #undef LIGHT_HEAL_THRESHOLD
