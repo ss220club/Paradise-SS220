@@ -507,7 +507,7 @@
 /obj/effect/turf_decal/delivery/hollow,
 /obj/effect/spawner/lootdrop/crate_spawner,
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/lootdrop/trash,
+/obj/effect/spawner/random/trash,
 /turf/simulated/floor/mineral/plastitanium{
 	color = "#fff894";
 	nitrogen = 103.984;
@@ -1442,7 +1442,7 @@
 	},
 /area/trader_station/sol)
 "eV" = (
-/obj/effect/spawner/lootdrop/trash,
+/obj/effect/spawner/random/trash,
 /turf/simulated/floor/mineral/plastitanium/red/nitrogen,
 /area/vox_base)
 "eX" = (
@@ -1657,7 +1657,7 @@
 /turf/simulated/floor/plasteel/dark,
 /area/vox_base)
 "fQ" = (
-/obj/effect/spawner/lootdrop/trash,
+/obj/effect/spawner/random/trash,
 /obj/effect/landmark/damageturf,
 /obj/item/flag/species/vox,
 /turf/simulated/floor/mineral/plastitanium{
@@ -1844,7 +1844,7 @@
 /area/vox_base)
 "gz" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/lootdrop/trash,
+/obj/effect/spawner/random/trash,
 /turf/simulated/floor/mineral/plastitanium/red/nitrogen,
 /area/shuttle/vox)
 "gA" = (
@@ -1893,7 +1893,7 @@
 /obj/effect/turf_decal/delivery/hollow,
 /obj/structure/closet/crate/trashcart,
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/lootdrop/trash,
+/obj/effect/spawner/random/trash,
 /obj/effect/landmark/damageturf,
 /obj/item/clothing/glasses/meson{
 	pixel_x = 5
@@ -1927,6 +1927,10 @@
 /obj/structure/fluff/beach_umbrella/engine,
 /turf/simulated/floor/beach/away/sand_alternative,
 /area/ghost_bar/indoor/cave)
+"gK" = (
+/obj/machinery/tcomms/relay/cc,
+/turf/simulated/floor/ash,
+/area/ghost_bar/outdoor)
 "gL" = (
 /obj/structure/alien/weeds,
 /obj/effect/decal/remains/human,
@@ -2947,7 +2951,7 @@
 /area/vox_base)
 "kk" = (
 /obj/structure/table/wood/fancy/purple,
-/obj/effect/spawner/lootdrop/trash,
+/obj/effect/spawner/random/trash,
 /turf/simulated/floor/mineral/plastitanium{
 	nitrogen = 103.984;
 	oxygen = 0;
@@ -3519,7 +3523,7 @@
 /obj/structure/table{
 	color = "#73d1cb"
 	},
-/obj/effect/spawner/lootdrop/officetoys,
+/obj/effect/spawner/random/officetoys,
 /turf/simulated/floor/mineral/plastitanium{
 	color = "#00ffea";
 	nitrogen = 103.984;
@@ -3672,9 +3676,9 @@
 /area/tdome/tdomeobserve)
 "mD" = (
 /obj/machinery/light/directional/north,
-/obj/effect/spawner/lootdrop/trash,
-/obj/effect/spawner/lootdrop/trash,
-/obj/effect/spawner/lootdrop/trash,
+/obj/effect/spawner/random/trash,
+/obj/effect/spawner/random/trash,
+/obj/effect/spawner/random/trash,
 /turf/simulated/floor/mineral/plastitanium/red/nitrogen,
 /area/shuttle/vox)
 "mF" = (
@@ -4242,10 +4246,10 @@
 /obj/machinery/light/directional/west,
 /obj/effect/turf_decal/delivery/hollow,
 /obj/structure/closet/crate/trashcart,
-/obj/effect/spawner/lootdrop/trash,
+/obj/effect/spawner/random/trash,
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/lootdrop/trash,
-/obj/effect/spawner/lootdrop/trash,
+/obj/effect/spawner/random/trash,
+/obj/effect/spawner/random/trash,
 /obj/item/grenade/smokebomb,
 /obj/item/grenade/smokebomb{
 	pixel_x = 9
@@ -4364,7 +4368,7 @@
 /area/trader_station/sol)
 "pg" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/lootdrop/trash,
+/obj/effect/spawner/random/trash,
 /obj/structure/closet/crate/secure/bin{
 	anchored = 1;
 	color = "#996633"
@@ -4991,8 +4995,8 @@
 "ru" = (
 /obj/effect/turf_decal/delivery/hollow,
 /obj/structure/closet/crate/trashcart,
-/obj/effect/spawner/lootdrop/trash,
-/obj/effect/spawner/lootdrop/trash,
+/obj/effect/spawner/random/trash,
+/obj/effect/spawner/random/trash,
 /obj/item/food/disk{
 	pixel_x = -8
 	},
@@ -5037,7 +5041,7 @@
 	},
 /area/shuttle/vox)
 "rz" = (
-/obj/effect/spawner/lootdrop/trash,
+/obj/effect/spawner/random/trash,
 /turf/simulated/floor/mineral/plastitanium{
 	nitrogen = 103.984;
 	oxygen = 0;
@@ -5275,9 +5279,17 @@
 /obj/structure/light_fake{
 	dir = 4
 	},
-/obj/machinery/economy/vending/secdrobe{
-	prices = list()
-	},
+/obj/structure/closet,
+/obj/item/clothing/suit/armor/secjacket,
+/obj/item/clothing/head/helmet,
+/obj/item/clothing/glasses/sunglasses,
+/obj/item/storage/belt/security/full,
+/obj/item/clothing/head/soft/sec/corp,
+/obj/item/storage/backpack/security,
+/obj/item/clothing/suit/armor/vest/security,
+/obj/item/clothing/under/rank/security/officer,
+/obj/item/clothing/gloves/color/black,
+/obj/item/clothing/shoes/jackboots,
 /turf/simulated/floor/plasteel/dark{
 	icon_state = "darkredaltstrip";
 	dir = 5
@@ -5306,7 +5318,7 @@
 /obj/machinery/light/directional/south,
 /obj/effect/turf_decal/delivery/hollow,
 /obj/structure/closet/crate/trashcart,
-/obj/effect/spawner/lootdrop/trash,
+/obj/effect/spawner/random/trash,
 /obj/item/grenade/smokebomb{
 	pixel_x = 5
 	},
@@ -5368,7 +5380,7 @@
 	color = "#00eafa"
 	},
 /obj/effect/turf_decal/box/red,
-/obj/effect/spawner/lootdrop/trash,
+/obj/effect/spawner/random/trash,
 /obj/item/jammer{
 	pixel_x = 4
 	},
@@ -5816,7 +5828,7 @@
 	},
 /area/vox_base)
 "uj" = (
-/obj/effect/spawner/lootdrop/trash,
+/obj/effect/spawner/random/trash,
 /turf/simulated/floor/plating/nitrogen,
 /area/vox_base)
 "uk" = (
@@ -6167,7 +6179,7 @@
 "vt" = (
 /obj/effect/turf_decal/delivery/hollow,
 /obj/structure/closet/crate/trashcart,
-/obj/effect/spawner/lootdrop/trash,
+/obj/effect/spawner/random/trash,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/reagent_containers/syringe/dart/medical/tainted,
 /obj/item/reagent_containers/syringe/dart/medical/tainted,
@@ -6725,7 +6737,7 @@
 "xg" = (
 /obj/effect/turf_decal/delivery/hollow,
 /obj/structure/closet/crate/trashcart,
-/obj/effect/spawner/lootdrop/trash,
+/obj/effect/spawner/random/trash,
 /obj/item/reagent_containers/syringe/dart/medical/tainted,
 /obj/item/reagent_containers/syringe/dart/medical/tainted{
 	pixel_y = -5;
@@ -7424,7 +7436,7 @@
 "zt" = (
 /obj/effect/turf_decal/delivery/hollow,
 /obj/structure/closet/crate/trashcart,
-/obj/effect/spawner/lootdrop/trash,
+/obj/effect/spawner/random/trash,
 /obj/item/storage/box/legal_loot/amount_2,
 /turf/simulated/floor/mineral/plastitanium{
 	color = "#fff894";
@@ -8239,7 +8251,7 @@
 	pixel_y = -5
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/lootdrop/trash,
+/obj/effect/spawner/random/trash,
 /turf/simulated/floor/plasteel/dark,
 /area/vox_base)
 "Cp" = (
@@ -8499,6 +8511,9 @@
 /obj/item/clothing/glasses/hud/hydroponic,
 /obj/item/clothing/glasses/hud/hydroponic,
 /obj/structure/closet,
+/obj/item/storage/box/disks_plantgene,
+/obj/item/storage/box/disks_plantgene,
+/obj/item/storage/box/disks_plantgene,
 /turf/simulated/floor/plasteel/dark,
 /area/ghost_bar/indoor)
 "Db" = (
@@ -9148,7 +9163,7 @@
 "Fq" = (
 /obj/effect/turf_decal/delivery/hollow,
 /obj/structure/closet/crate/trashcart,
-/obj/effect/spawner/lootdrop/trash,
+/obj/effect/spawner/random/trash,
 /obj/item/grenade/smokebomb{
 	pixel_x = -9
 	},
@@ -9974,8 +9989,8 @@
 /obj/effect/turf_decal/delivery/hollow,
 /obj/structure/closet/crate/trashcart,
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/lootdrop/trash,
-/obj/effect/spawner/lootdrop/trash,
+/obj/effect/spawner/random/trash,
+/obj/effect/spawner/random/trash,
 /obj/item/food/disk{
 	pixel_x = -8
 	},
@@ -10089,7 +10104,7 @@
 /area/holodeck/source_knightarena)
 "Ix" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/lootdrop/trash,
+/obj/effect/spawner/random/trash,
 /obj/effect/landmark/damageturf,
 /obj/item/flag/species/vox,
 /turf/simulated/floor/plating/nitrogen,
@@ -10310,7 +10325,7 @@
 "Jl" = (
 /obj/structure/table/wood/fancy/purple,
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/lootdrop/officetoys,
+/obj/effect/spawner/random/officetoys,
 /turf/simulated/floor/mineral/plastitanium/red/nitrogen,
 /area/vox_base)
 "Jm" = (
@@ -10419,14 +10434,15 @@
 "JF" = (
 /obj/structure/table/wood,
 /obj/machinery/computer/library{
-	pixel_y = 8
+	pixel_y = 8;
+	req_one_access = null
 	},
 /turf/simulated/floor/wood/oak,
 /area/ghost_bar/indoor)
 "JH" = (
 /obj/structure/table/wood/fancy/purple,
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/lootdrop/trash,
+/obj/effect/spawner/random/trash,
 /turf/simulated/floor/mineral/plastitanium/red/nitrogen,
 /area/vox_base)
 "JI" = (
@@ -10546,9 +10562,9 @@
 /obj/effect/turf_decal/delivery/hollow,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/crate/trashcart,
-/obj/effect/spawner/lootdrop/trash,
-/obj/effect/spawner/lootdrop/trash,
-/obj/effect/spawner/lootdrop/trash,
+/obj/effect/spawner/random/trash,
+/obj/effect/spawner/random/trash,
+/obj/effect/spawner/random/trash,
 /obj/item/food/fancy/doshik_spicy{
 	pixel_x = -3
 	},
@@ -11306,7 +11322,7 @@
 /area/ghost_bar/indoor)
 "MU" = (
 /obj/item/restraints/handcuffs,
-/obj/effect/spawner/lootdrop/trash,
+/obj/effect/spawner/random/trash,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel/dark,
 /area/vox_base)
@@ -11401,7 +11417,7 @@
 "Nr" = (
 /obj/effect/turf_decal/delivery/hollow,
 /obj/effect/spawner/lootdrop/crate_spawner,
-/obj/effect/spawner/lootdrop/trash,
+/obj/effect/spawner/random/trash,
 /turf/simulated/floor/mineral/plastitanium{
 	color = "#fff894";
 	nitrogen = 103.984;
@@ -12008,7 +12024,7 @@
 /area/ghost_bar/indoor)
 "Pm" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/lootdrop/trash,
+/obj/effect/spawner/random/trash,
 /obj/machinery/light/directional/south,
 /turf/simulated/floor/mineral/plastitanium/red/nitrogen,
 /area/vox_base)
@@ -12528,7 +12544,7 @@
 /area/holodeck/source_knightarena)
 "QV" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/lootdrop/trash,
+/obj/effect/spawner/random/trash,
 /obj/effect/landmark/damageturf,
 /turf/simulated/floor/mineral/plastitanium/red/nitrogen,
 /area/vox_base)
@@ -13250,8 +13266,8 @@
 /obj/effect/turf_decal/delivery/hollow,
 /obj/structure/closet/crate/trashcart,
 /obj/item/storage/box/legal_loot/amount_5,
-/obj/effect/spawner/lootdrop/trash,
-/obj/effect/spawner/lootdrop/trash,
+/obj/effect/spawner/random/trash,
+/obj/effect/spawner/random/trash,
 /obj/item/trash/doshik{
 	pixel_y = -14;
 	pixel_x = 7
@@ -14050,7 +14066,7 @@
 "Wf" = (
 /obj/effect/turf_decal/delivery/hollow,
 /obj/structure/closet/crate/trashcart,
-/obj/effect/spawner/lootdrop/trash,
+/obj/effect/spawner/random/trash,
 /obj/item/grenade/smokebomb,
 /obj/item/grenade/smokebomb{
 	pixel_x = -9
@@ -14499,7 +14515,7 @@
 "XI" = (
 /obj/effect/turf_decal/delivery/hollow,
 /obj/structure/closet/crate/trashcart,
-/obj/effect/spawner/lootdrop/trash,
+/obj/effect/spawner/random/trash,
 /obj/item/reagent_containers/syringe/dart/medical/tainted,
 /obj/item/reagent_containers/syringe/dart/medical/tainted{
 	pixel_y = -5;
@@ -14711,10 +14727,7 @@
 /obj/structure/table/reinforced{
 	color = "#cc52c0"
 	},
-/obj/effect/spawner/lootdrop/officetoys{
-	pixel_x = -5;
-	pixel_y = 6
-	},
+/obj/effect/spawner/random/officetoys,
 /obj/item/paper_bin{
 	pixel_x = 10
 	},
@@ -14850,7 +14863,7 @@
 "YR" = (
 /obj/effect/turf_decal/delivery/hollow,
 /obj/structure/closet/crate/trashcart,
-/obj/effect/spawner/lootdrop/trash,
+/obj/effect/spawner/random/trash,
 /obj/item/reagent_containers/syringe/dart/medical/tainted,
 /turf/simulated/floor/mineral/plastitanium{
 	color = "#fff894";
@@ -66786,7 +66799,7 @@ kH
 kH
 kH
 in
-in
+gK
 in
 in
 in

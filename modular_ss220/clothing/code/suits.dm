@@ -262,6 +262,21 @@
 	desc = "Парадный плащ нового образца, внедряемый на объектах компании в последнее время. Отличительной чертой является стоячий воротник и резаный подол. Невысокие показатели защиты нивелируются пафосом, источаемым этим плащом."
 	icon_state = "ntsc_coat"
 
+/obj/item/clothing/under/rank/centcom/intern
+	name = "nanotrasen intern uniform"
+	desc = "Стандартная униформа стажера НТ. Обладает не самым хорошим качеством, однако вполне сгодится для удовлетворения амбиций стажера. В комплекте идёт зеленый галстук. Слава НТ!"
+	icon = 'icons/obj/clothing/under/procedure.dmi'
+	icon_state = "iaa"
+	item_state = "iaa"
+	item_color = "iaa"
+	sprite_sheets = list(
+		"Human" = 'icons/mob/clothing/under/procedure.dmi',
+		"Vox" = 'icons/mob/clothing/species/vox/under/procedure.dmi',
+		"Drask" = 'icons/mob/clothing/species/drask/under/procedure.dmi',
+		"Grey" = 'icons/mob/clothing/species/grey/under/procedure.dmi',
+		"Kidan" = 'icons/mob/clothing/species/kidan/under/procedure.dmi'
+		)
+
 /* SYNDICATE */
 /obj/item/clothing/suit/space/deathsquad/officer/syndie
 	name = "куртка офицера синдиката"
@@ -306,6 +321,14 @@
 	icon_state = "ember_sec"
 	item_state = "ember_sec"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+
+/obj/item/clothing/suit/armor/vest/ert/security/paranormal
+	icon_state = "knight_templar"
+	item_state = "knight_templar"
+	sprite_sheets = list(
+		"Vox" = 'icons/mob/clothing/species/vox/suit.dmi'
+		)
+
 /obj/item/clothing/suit/space/ert_engineer
 	name = "emergency response team engineer space suit"
 	desc = "Space suit worn by engineering members of the Nanotrasen Emergency Response Team. Has orange highlights."
@@ -357,3 +380,60 @@
 		"Vox"			 = 'modular_ss220/clothing/icons/mob/species/vox/suits.dmi',
 		"Monkey"		 = 'modular_ss220/clothing/icons/mob/species/monkey/suits.dmi',
 		)
+
+/* EI suits */
+/obj/item/clothing/suit/storage/ei_jacket
+	name = "кожаная куртка Rock on Black"
+	desc = "Сочетание настоящего рокерского духа и современного стиля. При взгляде на вас, у каждого возникнет лишь одна мысль: «Это настоящий рок спирит!»."
+	icon = 'modular_ss220/clothing/icons/object/suits.dmi'
+	icon_state = "ei_jacket_open"
+	ignore_suitadjust = FALSE
+	suit_adjusted = TRUE
+	actions_types = list(/datum/action/item_action/openclose)
+	adjust_flavour = "unzip"
+	sprite_sheets = list(
+		"Human" = 'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Tajaran" = 'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Vulpkanin" = 'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Kidan" = 'modular_ss220/clothing/icons/mob/species/kidan/suits.dmi',
+		"Skrell" = 'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Nucleation" = 'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Skeleton" = 'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Slime People" = 'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Unathi" = 'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Grey" = 'modular_ss220/clothing/icons/mob/species/grey/suits.dmi',
+		"Abductor" = 'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Golem" = 'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Machine" = 'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Diona" = 'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Nian" = 'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Shadow" = 'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Vox" = 'modular_ss220/clothing/icons/mob/species/vox/suits.dmi',
+		"Drask" = 'modular_ss220/clothing/icons/mob/species/drask/suits.dmi',
+	)
+	lefthand_file = 'modular_ss220/clothing/icons/inhands/left_hand.dmi'
+	righthand_file = 'modular_ss220/clothing/icons/inhands/right_hand.dmi'
+
+/obj/item/clothing/suit/storage/ei_coat
+	name = "офицерский плащ EI"
+	desc = "Этот плащ был создан специально для офицеров корпорации Etamin Industry. Если вы видите его на ком-то, то либо перед вами офицер корпорации, либо тот, кто отдал бешеные бабки за этот плащ."
+	icon = 'modular_ss220/clothing/icons/object/suits.dmi'
+	icon_state = "ei_coat"
+	species_restricted = list("Human", "Tajaran", "Vulpkanin", "Skrell", "Nucleation", "Skeleton", "Slime People", "Unathi", "Abductor", "Golem", "Machine", "Shadow")
+	sprite_sheets = list(
+		"Human" = 'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Tajaran" = 'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Vulpkanin" = 'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Skrell" = 'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Nucleation" = 'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Skeleton" = 'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Slime People" = 'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Unathi" = 'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Abductor" = 'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Golem" = 'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Machine" = 'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Shadow" = 'modular_ss220/clothing/icons/mob/suits.dmi',
+	)
+	lefthand_file = 'modular_ss220/clothing/icons/inhands/left_hand.dmi'
+	righthand_file = 'modular_ss220/clothing/icons/inhands/right_hand.dmi'
+

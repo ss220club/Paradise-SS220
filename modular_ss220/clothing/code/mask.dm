@@ -68,3 +68,58 @@
 	icon = 'modular_ss220/clothing/icons/object/masks.dmi'
 	icon_override = 'modular_ss220/clothing/icons/mob/mask.dmi'
 	icon_state = "breathscarf"
+
+/obj/item/clothing/mask/rooster
+	w_class = WEIGHT_CLASS_SMALL
+	flags = BLOCKHAIR
+	flags_inv = HIDEEARS | HIDEEYES | HIDEFACE
+	flags_cover = MASKCOVERSMOUTH
+	modifies_speech = TRUE
+	species_restricted = list("Human", "Nian", "Skrell", "Slime People", "Diona", "Skeleton", "Shadow")
+
+/obj/item/clothing/mask/rooster
+	name = "маска петуха"
+	desc = "Прямо из Острой дороги космо-Майами. Со встроенными фразами."
+	icon = 'modular_ss220/clothing/icons/object/masks.dmi'
+	icon_override = 'modular_ss220/clothing/icons/mob/mask.dmi'
+	icon_state = "rooster_mask"
+
+/obj/item/clothing/mask/rooster/handle_speech(datum/source, list/speech_args)
+	var/message = speech_args[SPEECH_MESSAGE]
+	if(!length(message))
+		return
+	if(prob(3))
+		message += pick(
+			". Тебе нравится причинять людям боль?",
+			". Вы вернулись, да?",
+			". Что, бля, за неуважение?",
+			)
+	speech_args[SPEECH_MESSAGE] = trim(message)
+
+/* EI mask */
+/obj/item/clothing/mask/breath/ei_mask
+	name = "дыхательная маска от EI"
+	desc = "Качество и надежность, а самое главное - безопасность."
+	icon = 'modular_ss220/clothing/icons/object/masks.dmi'
+	icon_state = "ei_mask"
+	flags = BLOCK_GAS_SMOKE_EFFECT | AIRTIGHT
+	sprite_sheets = list(
+		"Human" = 'modular_ss220/clothing/icons/mob/mask.dmi',
+		"Tajaran" = 'modular_ss220/clothing/icons/mob/mask.dmi',
+		"Vulpkanin" = 'modular_ss220/clothing/icons/mob/species/vulpkanin/mask.dmi',
+		"Kidan" = 'modular_ss220/clothing/icons/mob/species/kidan/mask.dmi',
+		"Skrell" = 'modular_ss220/clothing/icons/mob/mask.dmi',
+		"Nucleation" = 'modular_ss220/clothing/icons/mob/mask.dmi',
+		"Skeleton" = 'modular_ss220/clothing/icons/mob/mask.dmi',
+		"Slime People" = 'modular_ss220/clothing/icons/mob/mask.dmi',
+		"Unathi" = 'modular_ss220/clothing/icons/mob/species/unathi/mask.dmi',
+		"Grey" = 'modular_ss220/clothing/icons/mob/species/grey/mask.dmi',
+		"Abductor" = 'modular_ss220/clothing/icons/mob/mask.dmi',
+		"Golem" = 'modular_ss220/clothing/icons/mob/mask.dmi',
+		"Machine" = 'modular_ss220/clothing/icons/mob/mask.dmi',
+		"Diona" = 'modular_ss220/clothing/icons/mob/mask.dmi',
+		"Nian" = 'modular_ss220/clothing/icons/mob/mask.dmi',
+		"Shadow" = 'modular_ss220/clothing/icons/mob/mask.dmi',
+		"Vox" = 'modular_ss220/clothing/icons/mob/species/vox/mask.dmi',
+		"Drask" = 'modular_ss220/clothing/icons/mob/species/drask/mask.dmi',
+	)
