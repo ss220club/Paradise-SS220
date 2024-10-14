@@ -54,8 +54,6 @@
 		specie.warning_high_pressure = INFINITY
 		specie.warning_low_pressure = -INFINITY
 		specie.hazard_low_pressure = -INFINITY
-		cold = SERPENTID_ARMORED_COLD_THRESHOLD
-		heat = SERPENTID_ARMORED_HEAT_THRESHOLD
 		H.clear_alert("carapace_break_rig")
 	else
 		specie.hazard_high_pressure = HAZARD_HIGH_PRESSURE
@@ -68,14 +66,12 @@
 		cold = SERPENTID_COLD_THRESHOLD_LEVEL_BASE
 		heat = SERPENTID_HEAT_THRESHOLD_LEVEL_BASE
 
-	var/up = SERPENTID_COLD_THRESHOLD_LEVEL_DOWN
-	var/down = SERPENTID_COLD_THRESHOLD_LEVEL_DOWN
 	specie.cold_level_1 = cold
-	specie.cold_level_2 = specie.cold_level_1 - down
-	specie.cold_level_3 = specie.cold_level_2 - down
+	specie.cold_level_2 = specie.cold_level_1 - SERPENTID_COLD_THRESHOLD_LEVEL_DOWN
+	specie.cold_level_3 = specie.cold_level_2 - SERPENTID_COLD_THRESHOLD_LEVEL_DOWN
 	specie.heat_level_1 = heat
-	specie.heat_level_2 = specie.heat_level_1 + up
-	specie.heat_level_3 = specie.heat_level_2 + up
+	specie.heat_level_2 = specie.heat_level_1 + SERPENTID_COLD_THRESHOLD_LEVEL_DOWN
+	specie.heat_level_3 = specie.heat_level_2 + SERPENTID_COLD_THRESHOLD_LEVEL_DOWN
 
 //Расширение проков урона и лечения для обращения к компоненту
 /datum/species/handle_life(mob/living/carbon/human/H)

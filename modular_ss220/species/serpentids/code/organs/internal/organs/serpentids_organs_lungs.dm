@@ -10,7 +10,8 @@
 	var/decay_rate = 3
 	var/decay_recovery = BASIC_RECOVER_VALUE
 	var/organ_process_toxins = 0.25
-	var/chem_to_oxy_mult = 30
+	var/chem_to_oxy_mult = 0.3
+	var/danger_air = FALSE
 
 /obj/item/organ/internal/lungs/serpentid/Initialize(mapload)
 	. = ..()
@@ -23,6 +24,7 @@
 
 /obj/item/tank/internals/oxygen/serpentid_vault_tank/populate_gas()
 	air_contents.set_oxygen((ONE_ATMOSPHERE) * volume / (R_IDEAL_GAS_EQUATION * T20C))
+	distribute_pressure = distribute_pressure * 1.5
 
 /datum/organ/lungs/serpentid
 	safe_oxygen_min = 21
@@ -95,12 +97,14 @@
 	var/turf/T = get_turf(owner)
 	var/datum/gas_mixture/environment = get_turf_air(T)
 	var/datum/gas_mixture/breath
-	breath = owner.serpen_lugns(BREATH_VOLUME)
-	if(!breath)
-		var/breath_moles = 0
-		if(environment)
-			breath_moles = environment.total_moles()*BREATH_PERCENTAGE
-		breath = environment.get_by_amount(breath_moles)
+	var/datum/organ/lungs/serpentid/lung_data = organ_datums[organ_tag]
+	var/breath_moles = 0
+	if(environment)
+		breath_moles = environment.total_moles()*BREATH_PERCENTAGE
+	breath = environment.get_by_amount(breath_moles)
+	danger_air = lung_data.in_danger_zone(breath)
+	if(danger_air)
+		breath = owner.serpen_lugns(BREATH_VOLUME)
 	breath_secretion(breath)
 
 #define QUANTIZE(variable)		(round(variable, 0.0001))
@@ -127,8 +131,6 @@
 /obj/item/organ/internal/lungs/serpentid/proc/breath_secretion(datum/gas_mixture/breath)
 	var/can_secretion = owner.get_chemical_value(chemical_id) > chemical_consuption
 	var/danger_state = owner.getOxyLoss() > 0
-	var/datum/organ/lungs/serpentid/lung_data = organ_datums[organ_tag]
-	var/danger_air = lung_data.in_danger_zone(breath)
 	var/datum/reagent/chemical = owner.get_chemical_path(chemical_id)
 	if(danger_air)
 		if(!owner.internal)
