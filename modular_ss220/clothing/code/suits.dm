@@ -437,7 +437,7 @@
 	lefthand_file = 'modular_ss220/clothing/icons/inhands/left_hand.dmi'
 	righthand_file = 'modular_ss220/clothing/icons/inhands/right_hand.dmi'
 
-//sec swag//
+/* Security */
 /obj/item/clothing/suit/armor/cop
 	name = "серая шинель"
 	desc = "Не забудьте про шлем любителя свежего воздуха."
