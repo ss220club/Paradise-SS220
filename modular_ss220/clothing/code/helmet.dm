@@ -186,8 +186,66 @@
 	icon_override = 'modular_ss220/clothing/icons/mob/helmet.dmi'
 	icon_state = "cop0"
 	item_state = "cop0"
-	species_restricted = list("Human", "Skrell", "Slime People", "Skeleton", "Shadow", "Nucleation")
-	armor = list(MELEE = 10, BULLET = 20, LASER = 10, ENERGY = 15, BOMB = 1, RAD = 0, FIRE = 50, ACID = 50)
+	sprite_sheets = list(
+		"Abductor" 			= 	'modular_ss220/clothing/icons/mob/helmet.dmi',
+		"Ancient Skeleton" 	= 	'modular_ss220/clothing/icons/mob/helmet.dmi',
+		"Diona" 			= 	'modular_ss220/clothing/icons/mob/helmet.dmi',
+		"Drask" 			= 	'modular_ss220/clothing/icons/mob/helmet.dmi',
+		"Golem" 			= 	'modular_ss220/clothing/icons/mob/helmet.dmi',
+		"Grey" 				= 	'modular_ss220/clothing/icons/mob/helmet.dmi',
+		"Human" 			= 	'modular_ss220/clothing/icons/mob/helmet.dmi',
+		"Kidan" 			= 	'modular_ss220/clothing/icons/mob/helmet.dmi',
+		"Machine"			= 	'modular_ss220/clothing/icons/mob/helmet.dmi',
+		"Monkey" 			= 	'modular_ss220/clothing/icons/mob/helmet.dmi',
+		"Nian" 				= 	'modular_ss220/clothing/icons/mob/helmet.dmi',
+		"Plasmaman" 		= 	'modular_ss220/clothing/icons/mob/helmet.dmi',
+		"Shadow" 			= 	'modular_ss220/clothing/icons/mob/helmet.dmi',
+		"Skrell" 			= 	'modular_ss220/clothing/icons/mob/helmet.dmi',
+		"Slime People" 		= 	'modular_ss220/clothing/icons/mob/helmet.dmi',
+		"Tajaran" 			= 	'modular_ss220/clothing/icons/mob/helmet.dmi',
+		"Unathi" 			= 	'modular_ss220/clothing/icons/mob/helmet.dmi',
+		"Vox" 				= 	'modular_ss220/clothing/icons/mob/species/vox/helmet.dmi',
+		"Vulpkanin" 		= 	'modular_ss220/clothing/icons/mob/helmet.dmi',
+		"Nucleation"		=	'modular_ss220/clothing/icons/mob/helmet.dmi',
+	)
+	armor = list(MELEE = 35, BULLET = 20, LASER = 10, ENERGY = 15, BOMB = 1, RAD = 0, FIRE = 50, ACID = 50)
+	var/on = FALSE
+	var/brightness_on = 2
+	actions_types = list(/datum/action/item_action/toggle_helmet_light)
+
+/obj/item/clothing/head/helmet/cop/attack_self(mob/living/user)
+	toggle_helmet_light(user)
+
+/obj/item/clothing/head/helmet/cop/proc/toggle_helmet_light(mob/living/user)
+	on = !on
+	if(on)
+		turn_on(user)
+	else
+		turn_off(user)
+	update_icon(UPDATE_ICON_STATE)
+
+/obj/item/clothing/head/helmet/cop/update_icon_state()
+	icon_state = "cop[on]"
+	item_state = "cop[on]"
+	if(ishuman(loc))
+		var/mob/living/carbon/human/H = loc
+		H.update_inv_head()
+	for(var/X in actions)
+		var/datum/action/A = X
+		A.UpdateButtons()
+
+/obj/item/clothing/head/helmet/cop/proc/turn_on(mob/user)
+	set_light(brightness_on)
+
+/obj/item/clothing/head/helmet/cop/proc/turn_off(mob/user)
+	set_light(0)
+
+/obj/item/clothing/head/helmet/cop/extinguish_light(force = FALSE)
+	if(on)
+		on = FALSE
+		turn_off()
+		update_icon(UPDATE_ICON_STATE)
+		visible_message("<span class='danger'>[src]'s light fades and turns off.</span>")
 
 /obj/item/clothing/head/helmet/cop/v2
 	icon_state = "cop1"
