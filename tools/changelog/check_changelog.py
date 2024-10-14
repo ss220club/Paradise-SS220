@@ -136,6 +136,7 @@ pr = repo.get_pull(event_data['number'])
 pr_body = pr.body or ""
 pr_author = pr.user.login
 pr_labels = pr.labels
+pr_branch = pr.head.ref
 
 CL_INVALID = ":scroll: CL невалиден"
 CL_VALID = ":scroll: CL валиден"
@@ -157,6 +158,9 @@ for label in pr_labels:
         has_invalid_label = True
 
 if pr_is_mirror:
+    cl_required = False
+
+if pr_branch == "nanomap-render":
     cl_required = False
 
 if not cl_required:
