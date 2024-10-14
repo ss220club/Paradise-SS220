@@ -37,15 +37,11 @@ DISCORD_TAG_EMOJI = {
 
 
 def build_changelog(pr: dict) -> dict:
-    # Check for the presence of :cl: or 🆑 tags in the PR body
-    if not (":cl:" in pr.body or "🆑" in pr.body):
-        # Check if "NPFC" is in the PR body
-        if "NPFC" in pr.body:
-            pr.add_to_labels(CL_NOT_NEEDED)
-            print("Changelog tags (:cl: or 🆑) are missing, but 'NPFC' is present. Skipping changelog validation.")
-            return None  # Return None to truly skip changelog generation
-
-    changelog = parse_changelog(pr.body)
+    # Returns the result of changelog parsing through parse_changelog
+    changelog = parse_changelog(pr.body, pr)
+    if changelog["changes"] is None:
+        # If there are no changes (e.g., "NPFC" or no tags), return None
+        return None
     changelog["author"] = changelog["author"] or pr.user.login
     return changelog
 
@@ -66,19 +62,29 @@ def validate_changelog(changelog: dict):
     if not changelog["author"]:
         raise Exception("The changelog has no author.")
     if len(changelog["changes"]) == 0:
-        raise Exception("No changes found in the changelog. Use special label if changelog is not expected.")
+        raise Exception("No changes found in the changelog. Use special label, or write 'NPFC' in PR's Changelog body if changelog is not expected.")
     message = "\n".join(map(lambda change: f"{change['tag']} {change['message']}", changelog["changes"]))
     if len(message) > DISCORD_EMBED_DESCRIPTION_LIMIT:
         raise Exception(f"The changelog exceeds the length limit ({DISCORD_EMBED_DESCRIPTION_LIMIT}). Shorten it.")
 
 
-def parse_changelog(message: str) -> dict:
+def parse_changelog(message: str, pr: dict) -> dict:
+    # Check for the presence of :cl: or 🆑 tags in the PR body
+    if not (":cl:" in message or "🆑" in message):
+        if "NPFC" in message:
+            pr.add_to_labels(CL_NOT_NEEDED)
+            print("Changelog tags (:cl: or 🆑) are missing, but 'NPFC' is present. Skipping changelog validation.")
+        # Return changes=None if changelog is not required
+        return {"author": None, "changes": None}
+
     with open(Path.cwd().joinpath("tags.yml")) as file:
         yaml = YAML(typ = 'safe', pure = True)
         tags_config = yaml.load(file)
+
     cl_parse_result = CL_BODY.search(message)
     if cl_parse_result is None:
         raise Exception("Failed to parse the changelog. Check changelog format.")
+
     cl_changes = []
     for cl_line in cl_parse_result.group("content").splitlines():
         if not cl_line:
@@ -99,7 +105,6 @@ def parse_changelog(message: str) -> dict:
                 "tag": tags_config['tags'][tag],
                 "message": message
             })
-        # Append line without tag to the previous change
         else:
             if len(cl_changes):
                 prev_change = cl_changes[-1]
@@ -109,8 +114,9 @@ def parse_changelog(message: str) -> dict:
 
     if len(cl_changes) == 0:
         raise Exception("No changes found in the changelog. Use special label if changelog is not expected.")
+
     return {
-        "author": str.strip(cl_parse_result.group("author") or "") or None,  # I want this to be None, not empty
+        "author": str.strip(cl_parse_result.group("author") or "") or None, # I want this to be None, not empty
         "changes": cl_changes
     }
 
@@ -164,6 +170,9 @@ if not cl_required:
 try:
     cl = build_changelog(pr)
     if cl is None:
+        pr.remove_from_labels(CL_INVALID)
+        pr.remove_from_labels(CL_VALID)
+        pr.add_to_labels(CL_NOT_NEEDED)
         exit(0)
 
     cl_emoji = emojify_changelog(cl)
