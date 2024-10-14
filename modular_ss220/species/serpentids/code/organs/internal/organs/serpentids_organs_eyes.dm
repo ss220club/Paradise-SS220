@@ -4,7 +4,10 @@
 	icon = 'modular_ss220/species/serpentids/icons/organs.dmi'
 	desc = "A large looking eyes with some chemical enchanments."
 	icon_state = "eyes01"
-	see_in_dark = 8
+	see_in_dark = 0
+	actions_types = 		list(/datum/action/item_action/organ_action/toggle)
+	action_icon = 			list(/datum/action/item_action/organ_action/toggle = 'modular_ss220/species/serpentids/icons/organs.dmi')
+	action_icon_state = 	list(/datum/action/item_action/organ_action/toggle = "gas_abilities")
 	flash_protect = FLASH_PROTECTION_EXTRA_SENSITIVE
 	tint = FLASH_PROTECTION_NONE
 	var/chemical_id = SERPENTID_CHEM_REAGENT_ID
@@ -14,13 +17,15 @@
 	var/chemical_consuption = GAS_ORGAN_CHEMISTRY_EYES
 	var/vision_ajust_coefficient = 0.4
 	var/update_time_client_colour = 10
-
+	radial_action_state = "eyes02"
+	radial_action_icon = 'modular_ss220/species/serpentids/icons/organs.dmi'
 
 /obj/item/organ/internal/eyes/serpentid/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/organ_decay, decay_rate, decay_recovery)
 	AddComponent(/datum/component/organ_toxin_damage, organ_process_toxins)
 	AddComponent(/datum/component/chemistry_organ, chemical_id)
+	AddComponent(/datum/component/organ_action, caller_organ = src, state = radial_action_state, icon = radial_action_icon)
 
 //Прок на получение цвета глаз
 /obj/item/organ/internal/eyes/serpentid/generate_icon(mob/living/carbon/human/HA)
@@ -37,7 +42,6 @@
 	if(!isnull(owner))
 		var/mob/mob = owner
 		mob.update_client_colour(time = update_time_client_colour)
-	switch_mode()
 
 /obj/item/organ/internal/eyes/serpentid/get_colourmatrix()
 	var/chem_value = (owner.get_chemical_value(chemical_id) + GAS_ORGAN_CHEMISTRY_MAX/2)/GAS_ORGAN_CHEMISTRY_MAX

@@ -5,11 +5,6 @@
 #define COMSIG_ORGAN_GROUP_ACTION_CALL "open_actions"
 #define COMSIG_ORGAN_GROUP_ACTION_RESORT "resort_buttons"
 
-#define COMSIG_ORGAN_GROUP_ACTION_ICON "get_return_icon"
-#define COMSIG_ORGAN_GROUP_ACTION_STATE "get_return_state"
-#define ORGAN_GROUP_ACTION_ICON (1 << 0)
-#define ORGAN_GROUP_ACTION_STATE (1 << 0)
-
 /datum/component/organ_action
 	var/obj/item/organ/internal/organ
 	var/radial_additive_state
@@ -24,26 +19,10 @@
 /datum/component/organ_action/RegisterWithParent()
 	RegisterSignal(parent, COMSIG_ORGAN_GROUP_ACTION_CALL, PROC_REF(open_actions))
 	RegisterSignal(parent, COMSIG_ORGAN_GROUP_ACTION_RESORT, PROC_REF(resort_buttons))
-	RegisterSignal(parent, COMSIG_ORGAN_GROUP_ACTION_ICON, PROC_REF(get_return_icon))
-	RegisterSignal(parent, COMSIG_ORGAN_GROUP_ACTION_STATE, PROC_REF(get_return_state))
 
 /datum/component/organ_action/UnregisterFromParent()
 	UnregisterSignal(parent, COMSIG_ORGAN_GROUP_ACTION_CALL)
 	UnregisterSignal(parent, COMSIG_ORGAN_GROUP_ACTION_RESORT)
-	UnregisterSignal(parent, COMSIG_ORGAN_GROUP_ACTION_ICON)
-	UnregisterSignal(parent, COMSIG_ORGAN_GROUP_ACTION_STATE)
-
-/datum/component/organ_action/proc/get_return_icon(datum/source, return_icon)
-	SIGNAL_HANDLER
-
-	return_icon = radial_additive_icon
-	return ORGAN_GROUP_ACTION_ICON
-
-/datum/component/organ_action/proc/get_return_state(datum/source, return_state)
-	SIGNAL_HANDLER
-
-	return_state = radial_additive_state
-	return ORGAN_GROUP_ACTION_STATE
 
 
 /datum/component/organ_action/proc/check_actions(mob/user)
@@ -58,12 +37,8 @@
 			organs_list += O
 
 	for(var/obj/item/organ/internal/I in organs_list)
-		var/datum/component/organ_action/return_state
-		var/datum/component/organ_action/return_icon
-		var/icon_override_returns = SEND_SIGNAL(user, COMSIG_ORGAN_GROUP_ACTION_ICON, return_icon)
-		var/state_override_returns = SEND_SIGNAL(user, COMSIG_ORGAN_GROUP_ACTION_STATE, return_state)
-		if((icon_override_returns & ORGAN_GROUP_ACTION_ICON) && (state_override_returns & ORGAN_GROUP_ACTION_STATE))
-			choices["[I.name]"] = image(icon = return_icon.radial_additive_icon, icon_state = return_state.radial_additive_state)
+		if(I.radial_action_state && I.radial_action_icon)
+			choices["[I.name]"] = image(icon = I.radial_action_icon, icon_state = I.radial_action_state)
 
 	var/choice = show_radial_menu(user, user, choices, custom_check = CALLBACK(src, PROC_REF(check_actions), user))
 	if(!check_actions(user))
@@ -85,7 +60,7 @@
 	var/list/organs_list = list()
 	if(organ.owner)
 		for(var/obj/item/organ/internal/O in organ.owner.internal_organs)
-			if(length(O.actions_types.len) > 0 && !istype(O, /obj/item/organ/internal/cyberimp))
+			if(length(O.actions_types) > 0 && !istype(O, /obj/item/organ/internal/cyberimp))
 				organs_list += O
 
 		for(var/obj/item/organ/internal/O in organs_list)
@@ -100,6 +75,10 @@
 						action_candidate.Grant(organ.owner)
 				break
 
+/obj/item/organ/internal
+	var/radial_action_state
+	var/radial_action_icon
+
 /obj/item/organ/internal/insert(mob/living/carbon/M, special = 0, dont_remove_slot = 0)
 	. = .. ()
 	SEND_SIGNAL(src, COMSIG_ORGAN_GROUP_ACTION_RESORT)
@@ -109,5 +88,5 @@
 	SEND_SIGNAL(src, COMSIG_ORGAN_GROUP_ACTION_RESORT)
 
 /obj/item/organ/internal/ui_action_click()
-	SEND_SIGNAL(src, COMSIG_ORGAN_GROUP_ACTION_CALL, owner)
+	SEND_SIGNAL(src, COMSIG_ORGAN_GROUP_ACTION_CALL, user = owner)
 

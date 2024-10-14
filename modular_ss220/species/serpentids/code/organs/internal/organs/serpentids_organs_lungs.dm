@@ -4,6 +4,9 @@
 	icon = 'icons/obj/species_organs/unathi.dmi'
 	organ_datums = list(/datum/organ/lungs/serpentid)
 	desc = "A large looking lugns with big breating bag."
+	actions_types = 		list(/datum/action/item_action/organ_action/toggle)
+	action_icon = 			list(/datum/action/item_action/organ_action/toggle = 'modular_ss220/species/serpentids/icons/organs.dmi')
+	action_icon_state = 	list(/datum/action/item_action/organ_action/toggle = "gas_abilities")
 	var/chemical_id = SERPENTID_CHEM_REAGENT_ID
 	var/chemical_consuption = 1
 	var/obj/item/tank/internals/oxygen/serpentid_vault = new /obj/item/tank/internals/oxygen/serpentid_vault_tank
@@ -12,15 +15,18 @@
 	var/organ_process_toxins = 0.25
 	var/chem_to_oxy_mult = 0.3
 	var/danger_air = FALSE
+	radial_action_state = "tank"
+	radial_action_icon = 'modular_ss220/species/serpentids/icons/organs.dmi'
 
 /obj/item/organ/internal/lungs/serpentid/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/organ_decay, decay_rate, decay_recovery)
 	AddComponent(/datum/component/organ_toxin_damage, organ_process_toxins)
+	AddComponent(/datum/component/organ_action, caller_organ = src, state = radial_action_state, icon = radial_action_icon)
 
 /obj/item/tank/internals/oxygen/serpentid_vault_tank
 	name = "serpentid oxygen vault"
-	volume = 1
+	volume = 5
 
 /obj/item/tank/internals/oxygen/serpentid_vault_tank/populate_gas()
 	air_contents.set_oxygen((ONE_ATMOSPHERE) * volume / (R_IDEAL_GAS_EQUATION * T20C))
@@ -37,6 +43,125 @@
 	heat_level_1_threshold = SERPENTID_HEAT_THRESHOLD_LEVEL_BASE
 	heat_level_2_threshold = SERPENTID_HEAT_THRESHOLD_LEVEL_BASE + SERPENTID_HEAT_THRESHOLD_LEVEL_UP
 	heat_level_3_threshold = SERPENTID_HEAT_THRESHOLD_LEVEL_BASE + 2*SERPENTID_HEAT_THRESHOLD_LEVEL_UP
+
+/obj/item/tank/internals/oxygen/serpentid_vault_tank/populate_gas()
+	air_contents.set_oxygen((ONE_ATMOSPHERE) * volume / (R_IDEAL_GAS_EQUATION * T20C))
+	distribute_pressure = distribute_pressure * 1.5
+
+/obj/item/organ/internal/lungs/serpentid/switch_mode(force_off = FALSE)
+	.=..()
+	if(owner.internal != serpentid_vault)
+		owner.internal = serpentid_vault
+	else
+		owner.internal = null
+
+/obj/item/organ/internal/lungs/serpentid/on_life()
+	.=..()
+	SEND_SIGNAL(src, COMSIG_ORGAN_CHEM_CALL, chemical_consuption)
+	var/can_secretion = owner.get_chemical_value(chemical_id) > chemical_consuption
+	var/danger_state = owner.getOxyLoss() > 0
+	var/datum/reagent/chemical = owner.get_chemical_path(chemical_id)
+	var/datum/gas_mixture/breath
+	var/datum/organ/lungs/serpentid/lung_data = organ_datums[organ_tag]
+	var/breath_moles = 0
+	var/turf/T = get_turf(owner)
+	var/datum/gas_mixture/environment = get_turf_air(T)
+
+	if(environment)
+		breath_moles = environment.total_moles()*BREATH_PERCENTAGE
+	breath = environment.get_by_amount(breath_moles)
+	danger_air = lung_data.in_danger_zone(breath)
+
+	if(danger_state && can_secretion)
+		var/mob/living/carbon/human/human_owner = owner
+		human_owner.reagents.add_reagent("salbutamol", chemical_consuption)
+		chemical.holder.remove_reagent(chemical_id, chemical_consuption)
+
+	if(danger_air && (owner.stat == UNCONSCIOUS))
+		if(!owner.internal)
+			owner.internal = serpentid_vault
+	else if (!danger_air && owner.internal == serpentid_vault)
+		owner.internal = null
+
+	var/datum/gas_mixture/int_tank_air = serpentid_vault.air_contents
+	var/pressure_value = int_tank_air.return_pressure()
+	if(pressure_value < 100)
+		var/replenish_value = 0
+		if(danger_air && can_secretion)
+			replenish_value = chemical_consuption * chem_to_oxy_mult
+			chemical.holder.remove_reagent(chemical_id, chemical_consuption)
+		if(!danger_air)
+			if(environment)
+				breath_moles = environment.total_moles()*BREATH_PERCENTAGE
+			var/datum/gas_mixture/replenish_gas = environment.get_by_amount(breath_moles)
+			replenish_value = replenish_gas.private_oxygen
+		var/oxygen_value = ((ONE_ATMOSPHERE) * serpentid_vault.volume  * replenish_value + pressure_value)
+		var/gas_mix_value = (R_IDEAL_GAS_EQUATION * T20C)
+		var/value_to_replenish = ( oxygen_value / gas_mix_value )
+		if(value_to_replenish > 0)
+			serpentid_vault.air_contents.set_oxygen(value_to_replenish)
+
+//Без этого псевдо-баллон не работает (отрубается так как не проходит проверки основы)
+/mob/living/carbon/breathe(datum/gas_mixture/environment)
+	var/obj/item/organ/internal/lungs/lugns = null
+	for(var/obj/item/organ/internal/O in src.internal_organs)
+		if(istype(O, /obj/item/organ/internal/lungs))
+			lugns = O
+	if(istype(lugns, /obj/item/organ/internal/lungs/serpentid))
+		var/obj/item/organ/internal/lungs/serpentid/serpentid_lungs = lugns
+		if(src.internal == serpentid_lungs.serpentid_vault)
+			var/mob/living/carbon/human/puppet = src
+			var/breath = puppet.serpen_lugns(BREATH_VOLUME)
+			check_breath(breath)
+			if(breath)
+				environment.merge(breath)
+				if(ishuman(src) && !internal && environment.temperature() < 273 && environment.return_pressure() > 20) //foggy breath :^)
+					new /obj/effect/frosty_breath(loc, src)
+
+			return
+	. = ..()
+
+/mob/living/carbon/human/proc/serpen_lugns(volume_needed)
+	if(internal)
+		return internal.remove_air_volume(volume_needed)
+	return null
+
+#define QUANTIZE(variable)		(round(variable, 0.0001))
+/datum/gas_mixture/proc/get_by_amount(amount)
+
+	var/sum = total_moles()
+	amount = min(amount, sum) //Can not take more air than tile has!
+	if(amount <= 0)
+		return null
+
+	var/datum/gas_mixture/atmo_value = new
+
+	atmo_value.private_oxygen = QUANTIZE((private_oxygen / sum) * amount)
+	atmo_value.private_nitrogen = QUANTIZE((private_nitrogen/  sum) * amount)
+	atmo_value.private_carbon_dioxide = QUANTIZE((private_carbon_dioxide / sum) * amount)
+	atmo_value.private_toxins = QUANTIZE((private_toxins / sum) * amount)
+	atmo_value.private_sleeping_agent = QUANTIZE((private_sleeping_agent / sum) * amount)
+	atmo_value.private_agent_b = QUANTIZE((private_agent_b / sum) * amount)
+	atmo_value.private_temperature = private_temperature
+
+	return atmo_value
+#undef QUANTIZE
+
+/obj/item/organ/internal/lungs/serpentid/proc/get_turf_air(turf/T)
+	RETURN_TYPE(/datum/gas_mixture)
+	// This is one of two intended places to call this otherwise-unsafe proc.
+	var/datum/gas_mixture/bound_to_turf/air = T.private_unsafe_get_air()
+	if(air.lastread < SSair.times_fired)
+		var/list/milla_tile = new/list(MILLA_TILE_SIZE)
+		get_tile_atmos(T, milla_tile)
+		air.copy_from_milla(milla_tile)
+		air.lastread = SSair.times_fired
+		air.readonly = null
+		air.dirty = FALSE
+	if(!air.synchronized)
+		air.synchronized = TRUE
+		SSair.bound_mixtures += air
+	return air
 
 /datum/organ/lungs/serpentid/proc/in_danger_zone(datum/gas_mixture/breath)
 
@@ -74,22 +199,10 @@
 	var/danger_zone = O2_pp || N2_pp || Toxins_pp || CO2_pp || SA_pp
 
 	return danger_zone
+/*
 
-/obj/item/organ/internal/lungs/serpentid/proc/get_turf_air(turf/T)
-	RETURN_TYPE(/datum/gas_mixture)
-	// This is one of two intended places to call this otherwise-unsafe proc.
-	var/datum/gas_mixture/bound_to_turf/air = T.private_unsafe_get_air()
-	if(air.lastread < SSair.times_fired)
-		var/list/milla_tile = new/list(MILLA_TILE_SIZE)
-		get_tile_atmos(T, milla_tile)
-		air.copy_from_milla(milla_tile)
-		air.lastread = SSair.times_fired
-		air.readonly = null
-		air.dirty = FALSE
-	if(!air.synchronized)
-		air.synchronized = TRUE
-		SSair.bound_mixtures += air
-	return air
+
+
 
 /obj/item/organ/internal/lungs/serpentid/on_life()
 	.=..()
@@ -107,26 +220,7 @@
 		breath = owner.serpen_lugns(BREATH_VOLUME)
 	breath_secretion(breath)
 
-#define QUANTIZE(variable)		(round(variable, 0.0001))
-/datum/gas_mixture/proc/get_by_amount(amount)
 
-	var/sum = total_moles()
-	amount = min(amount, sum) //Can not take more air than tile has!
-	if(amount <= 0)
-		return null
-
-	var/datum/gas_mixture/atmo_value = new
-
-	atmo_value.private_oxygen = QUANTIZE((private_oxygen / sum) * amount)
-	atmo_value.private_nitrogen = QUANTIZE((private_nitrogen/  sum) * amount)
-	atmo_value.private_carbon_dioxide = QUANTIZE((private_carbon_dioxide / sum) * amount)
-	atmo_value.private_toxins = QUANTIZE((private_toxins / sum) * amount)
-	atmo_value.private_sleeping_agent = QUANTIZE((private_sleeping_agent / sum) * amount)
-	atmo_value.private_agent_b = QUANTIZE((private_agent_b / sum) * amount)
-	atmo_value.private_temperature = private_temperature
-
-	return atmo_value
-#undef QUANTIZE
 
 /obj/item/organ/internal/lungs/serpentid/proc/breath_secretion(datum/gas_mixture/breath)
 	var/can_secretion = owner.get_chemical_value(chemical_id) > chemical_consuption
@@ -160,35 +254,8 @@
 		if(value_to_replenish > 0)
 			serpentid_vault.air_contents.set_oxygen(value_to_replenish)
 
-
 	if(danger_state && can_secretion)
 		var/mob/living/carbon/human/human_owner = owner
 		human_owner.reagents.add_reagent("salbutamol", chemical_consuption)
 		chemical.holder.remove_reagent(chemical_id, chemical_consuption)
-
-//Без этого псевдо-баллон не работает (отрубается так как не проходит проверки основы)
-/mob/living/carbon/breathe(datum/gas_mixture/environment)
-	var/obj/item/organ/internal/lungs/lugns = null
-	for(var/obj/item/organ/internal/O in src.internal_organs)
-		if(istype(O, /obj/item/organ/internal/lungs))
-			lugns = O
-	if(istype(lugns, /obj/item/organ/internal/lungs/serpentid))
-		var/obj/item/organ/internal/lungs/serpentid/serpentid_lungs = lugns
-		if(src.internal == serpentid_lungs.serpentid_vault)
-			var/mob/living/carbon/human/puppet = src
-			var/breath = puppet.serpen_lugns(BREATH_VOLUME)
-
-			check_breath(breath)
-			if(breath)
-				environment.merge(breath)
-				if(ishuman(src) && !internal && environment.temperature() < 273 && environment.return_pressure() > 20) //foggy breath :^)
-					new /obj/effect/frosty_breath(loc, src)
-
-			return
-	. = ..()
-
-/mob/living/carbon/human/proc/serpen_lugns(volume_needed)
-	if(internal)
-		return internal.remove_air_volume(volume_needed)
-	return null
-
+*/

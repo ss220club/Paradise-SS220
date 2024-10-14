@@ -6,22 +6,22 @@
 	desc = "A large looking organ, that can inject chemicals."
 	actions_types = 		list(/datum/action/item_action/organ_action/toggle)
 	action_icon = 			list(/datum/action/item_action/organ_action/toggle = 'modular_ss220/species/serpentids/icons/organs.dmi')
-	action_icon_state = 	list(/datum/action/item_action/organ_action/toggle = "gas_stealth")
+	action_icon_state = 	list(/datum/action/item_action/organ_action/toggle = "gas_abilities")
 	var/chemical_id = SERPENTID_CHEM_REAGENT_ID
 	var/chemical_consuption = GAS_ORGAN_CHEMISTRY_KIDNEYS
 	var/decay_rate = 0.4
 	var/decay_recovery = BASIC_RECOVER_VALUE
 	var/organ_process_toxins = 0.1
 	var/cloak_engaged = FALSE
+	radial_action_state = "gas_stealth"
+	radial_action_icon = 'modular_ss220/species/serpentids/icons/organs.dmi'
 
 /obj/item/organ/internal/kidneys/serpentid/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/organ_decay, decay_rate, decay_recovery)
 	AddComponent(/datum/component/organ_toxin_damage, organ_process_toxins)
 	AddComponent(/datum/component/chemistry_organ, chemical_id)
-
-/obj/item/organ/internal/kidneys/serpentid/ui_action_click()
-	switch_mode()
+	AddComponent(/datum/component/organ_action, caller_organ = src, state = radial_action_state, icon = radial_action_icon)
 
 /obj/item/organ/internal/kidneys/serpentid/on_life()
 	. = .. ()
