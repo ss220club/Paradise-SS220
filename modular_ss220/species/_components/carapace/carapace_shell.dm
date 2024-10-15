@@ -7,10 +7,23 @@
 
 /datum/component/carapace_shell
 	var/mob/living/carbon/human/H
+	var/state_1_threshold = 0
+	var/state_2_threshold = 0
+	var/state_3_threshold = 0
+	var/armored_cold_threshold = 0
+	var/armored_heat_threshold = 0
+	var/armored_temp_progression = 0
 
-/datum/component/carapace_shell/Initialize(caller)
+/datum/component/carapace_shell/Initialize(caller, treshold_1, treshold_2, treshold_3, threshold_cold, threshold_heat, temp_progression)
 	..()
 	H = caller
+
+	state_1_threshold = treshold_1
+	state_2_threshold = treshold_2
+	state_3_threshold = treshold_3
+	armored_cold_threshold = threshold_cold
+	armored_heat_threshold = threshold_heat
+	armored_temp_progression = temp_progression
 
 /datum/component/carapace_shell/RegisterWithParent()
 	RegisterSignal(H, COMSIG_CARAPACE_SHELL_PROCESS, PROC_REF(process_shell))
@@ -24,7 +37,7 @@
 	var/datum/species/specie = H.dna.species
 
 	//Потеря брони при первом трешхолде
-	if(character_damage <= SERPENTID_CARAPACE_NOARMOR_STATE)
+	if(character_damage <= state_1_threshold)
 		specie.brute_mod = 0.6
 		specie.burn_mod = 1.1
 		ADD_TRAIT(H, TRAIT_PIERCEIMMUNE, "carapace_state")
@@ -37,7 +50,7 @@
 
 	//Потеря стелса при втором трешхолде
 	var/obj/item/organ/internal/kidneys/serpentid/organ = H.get_int_organ("kidneys")
-	if(character_damage <= SERPENTID_CARAPACE_NOCHAMELION_STATE)
+	if(character_damage <= state_2_threshold)
 		H.clear_alert("carapace_break_cloak")
 	else
 		H.throw_alert("carapace_break_cloak", /atom/movable/screen/alert/carapace_break_cloak)
@@ -46,10 +59,10 @@
 			organ.switch_mode(force_off = TRUE)
 
 	//Потеря рига при третьем трешхолде
-	var/cold = SERPENTID_ARMORED_COLD_THRESHOLD
-	var/heat = SERPENTID_ARMORED_HEAT_THRESHOLD
+	var/cold = armored_cold_threshold
+	var/heat = armored_heat_threshold
 
-	if(character_damage <= SERPENTID_CARAPACE_NOPRESSURE_STATE)
+	if(character_damage <= state_3_threshold)
 		specie.hazard_high_pressure = INFINITY
 		specie.warning_high_pressure = INFINITY
 		specie.warning_low_pressure = -INFINITY
@@ -63,15 +76,15 @@
 		H.throw_alert("carapace_break_rig", /atom/movable/screen/alert/carapace_break_rig)
 		H.clear_alert("carapace_break_armor")
 		H.clear_alert("carapace_break_cloak")
-		cold = SERPENTID_COLD_THRESHOLD_LEVEL_BASE
-		heat = SERPENTID_HEAT_THRESHOLD_LEVEL_BASE
+		cold = initial(specie.cold_level_1)
+		heat = initial(specie.heat_level_2)
 
 	specie.cold_level_1 = cold
-	specie.cold_level_2 = specie.cold_level_1 - SERPENTID_COLD_THRESHOLD_LEVEL_DOWN
-	specie.cold_level_3 = specie.cold_level_2 - SERPENTID_COLD_THRESHOLD_LEVEL_DOWN
+	specie.cold_level_2 = specie.cold_level_1 - armored_temp_progression
+	specie.cold_level_3 = specie.cold_level_2 - armored_temp_progression
 	specie.heat_level_1 = heat
-	specie.heat_level_2 = specie.heat_level_1 + SERPENTID_COLD_THRESHOLD_LEVEL_DOWN
-	specie.heat_level_3 = specie.heat_level_2 + SERPENTID_COLD_THRESHOLD_LEVEL_DOWN
+	specie.heat_level_2 = specie.heat_level_1 + armored_temp_progression
+	specie.heat_level_3 = specie.heat_level_2 + armored_temp_progression
 
 //Расширение проков урона и лечения для обращения к компоненту
 /datum/species/handle_life(mob/living/carbon/human/H)

@@ -2,6 +2,7 @@
 === Компонент запуска сердца ===
 Отслеживает смерть носителя, и в случае чего - запускает сердце с неким шансом
 */
+#define AUTO_DEFIBRILATION_THRESHOLD 100
 /datum/component/defib_heart
 	var/mob/living/carbon/human/owner = null
 	var/chemical_id = ""
@@ -20,7 +21,7 @@
 	if(!(owner))
 		var/obj/item/organ/internal/limb = parent
 		owner = limb.owner
-	else if(owner.get_chemical_value(chemical_id) >= 0 && owner.stat == DEAD && owner.get_damage_amount() <= SERPENTID_CARAPACE_NOPRESSURE_STATE)
+	else if(owner.get_chemical_value(chemical_id) >= 0 && owner.stat == DEAD && owner.get_damage_amount() <= AUTO_DEFIBRILATION_THRESHOLD)
 		var/defib_chance = owner.get_chemical_value(chemical_id)
 		var/datum/reagent/chem = owner.get_chemical_path(chemical_id)
 		if(chem)

@@ -1,34 +1,18 @@
-#include "code/common/defines.dm"
-#include "code/common/language.dm"
-#include "code/common/alerts.dm"
-#include "code/common/emotes.dm"
-#include "code/copy_butt.dm"
-#include "code/chat_offset.dm"
-#include "code/update_icons.dm"
+#include "code/_defines/alerts.dm"
+#include "code/_defines/common.dm"
 
-#include "code/components/reagents.dm"
-#include "code/components/organs/organ_decay.dm"
-#include "code/components/organs/organ_chemistry.dm"
-#include "code/components/organs/organ_toxins.dm"
-#include "code/components/organs/heart_defib.dm"
-#include "code/components/organs/organ_actions_component.dm"
-#include "code/components/carapace/carapace.dm"
-#include "code/components/carapace/carapace_shell.dm"
-#include "code/components/unused/pair_attack.dm"
-#include "code/components/unused/paired_implants.dm"
-#include "code/components/carrying/grab_and_drag_on_mob_mobs.dm"
-#include "code/components/carrying/grab_and_drag_on_mob_crates.dm"
-#include "code/components/mob_overlay_shift.dm"
-#include "code/components/double_attack.dm"
+#include "code/_procs_overrides/copy_butt.dm"
+#include "code/_procs_overrides/chat_offset.dm"
+#include "code/_procs_overrides/update_icons.dm"
+
+#include "code/mob/language.dm"
+#include "code/mob/emotes.dm"
+#include "code/mob/serpentids.dm"
 
 #include "code/organs/external/serpentids_organs_other.dm"
 #include "code/organs/external/serpentids_organs_head.dm"
 #include "code/organs/external/serpentids_organs_torso.dm"
 
-#include "code/organs/internal/implants/unused/serpentid_mantis_hand.dm"
-#include "code/organs/internal/implants/unused/serpentid_mantis_implant.dm"
-#include "code/organs/internal/implants/serpentid_mantis_blades.dm"
-#include "code/organs/internal/implants/serpentid_mantis_chest.dm"
 #include "code/organs/internal/organs/serpentids_organs_eyes.dm"
 #include "code/organs/internal/organs/serpentids_organs_ears.dm"
 #include "code/organs/internal/organs/serpentids_organs_lungs.dm"
@@ -37,13 +21,8 @@
 #include "code/organs/internal/organs/serpentids_organs_liver.dm"
 #include "code/organs/internal/organs/serpentids_organs_additionals.dm"
 
-#include "code/common/serpentids.dm"
-// BEGIN_INTERNALS
-// END_INTERNALS
-// BEGIN_FILE_DIR
-#define FILE_DIR .
-// END_FILE_DIR
-// BEGIN_PREFERENCES
-// END_PREFERENCES
-// BEGIN_INCLUDE
-// END_INCLUDE
+#include "code/organs/internal/implants/serpentid_mantis_blades.dm"
+#include "code/organs/internal/implants/serpentid_mantis_chest.dm"
+
+#include "code/organs/internal/implants/unused/serpentid_mantis_hand.dm"
+#include "code/organs/internal/implants/unused/serpentid_mantis_implant.dm"

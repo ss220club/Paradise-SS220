@@ -1,7 +1,7 @@
 /datum/species/nucleation
 	name = "Nucleation"
 	name_plural = "Nucleations"
-	icobase = 'modular_ss220/species/icons/mob/human_races/r_nucleation.dmi'
+	icobase = 'modular_ss220/species/nucleations/icons/mob/human_races/r_nucleation.dmi'
 	blurb = "A sub-race of unfortunates who have been exposed to too much supermatter radiation. As a result, \
 	supermatter crystal clusters have begun to grow across their bodies. Research to find a cure for this ailment \
 	has been slow, and so this is a common fate for veteran engineers. The supermatter crystals produce oxygen, \

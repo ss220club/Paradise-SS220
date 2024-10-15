@@ -1,4 +1,9 @@
 ///Легкие - вырабатывают сальбутамол при наличии глутамата натрия, имеют собственный мешок, из которого дышат, мешок заполняется в безопасной среде
+#define SERPENTID_COLD_THRESHOLD_LEVEL_BASE 100
+#define SERPENTID_COLD_THRESHOLD_LEVEL_DOWN 40
+#define SERPENTID_HEAT_THRESHOLD_LEVEL_BASE 350
+#define SERPENTID_HEAT_THRESHOLD_LEVEL_UP 60
+
 /obj/item/organ/internal/lungs/serpentid
 	name = "thacheal bag"
 	icon = 'icons/obj/species_organs/unathi.dmi'
@@ -259,3 +264,8 @@
 		human_owner.reagents.add_reagent("salbutamol", chemical_consuption)
 		chemical.holder.remove_reagent(chemical_id, chemical_consuption)
 */
+
+#undef SERPENTID_COLD_THRESHOLD_LEVEL_BASE
+#undef SERPENTID_COLD_THRESHOLD_LEVEL_DOWN
+#undef SERPENTID_HEAT_THRESHOLD_LEVEL_BASE
+#undef SERPENTID_HEAT_THRESHOLD_LEVEL_UP

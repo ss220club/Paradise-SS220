@@ -61,4 +61,3 @@
 /obj/item/attack(mob/living/M, mob/living/user, def_zone)
 	. = .. ()
 	SEND_SIGNAL(src, COMSIG_DOUBLEATTACK_PROCESS, M, user, def_zone)
-

@@ -3,7 +3,7 @@
 
 /obj/item/organ/internal/nucleation
 	name = "nucleation organ"
-	icon = 'modular_ss220/species/icons/obj/surgery.dmi'
+	icon = 'modular_ss220/species/nucleations/icons/obj/surgery.dmi'
 	desc = "A crystalized human organ. /red It has a strangely iridescent glow."
 	max_integrity = 500
 	is_special_effect = TRUE
@@ -140,7 +140,7 @@
 
 /obj/item/organ/internal/ears/resonant_crystal
 	name = "resonant crystal"
-	icon = 'modular_ss220/species/icons/obj/surgery.dmi'
+	icon = 'modular_ss220/species/nucleations/icons/obj/surgery.dmi'
 	icon_state = "resonant-crystal"
 	organ_tag = "resonant crystal"
 	parent_organ = "head"
@@ -152,7 +152,7 @@
 
 /obj/item/organ/internal/eyes/luminescent_crystal
 	name = "luminescent eyes"
-	icon = 'modular_ss220/species/icons/obj/surgery.dmi'
+	icon = 'modular_ss220/species/nucleations/icons/obj/surgery.dmi'
 	icon_state = "crystal-eyes"
 	organ_tag = "luminescent eyes"
 	light_color = "#1C1C00"
@@ -166,7 +166,7 @@
 
 /obj/item/organ/internal/brain/crystal
 	name = "crystallized brain"
-	icon = 'modular_ss220/species/icons/obj/surgery.dmi'
+	icon = 'modular_ss220/species/nucleations/icons/obj/surgery.dmi'
 	icon_state = "crystal-brain"
 	organ_tag = "crystallized brain"
 

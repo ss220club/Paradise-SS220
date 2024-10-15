@@ -1,5 +1,5 @@
 /datum/sprite_accessory/hair/nucleation
-	icon = 'modular_ss220/species/icons/mob/sprite_accessories/nucleation/nucleation_face.dmi'
+	icon = 'modular_ss220/species/nucleations/icons/mob/sprite_accessories/nucleation/nucleation_face.dmi'
 	species_allowed = list("Nucleation")
 	glasses_over = 1
 
