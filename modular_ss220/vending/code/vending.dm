@@ -251,7 +251,7 @@
 
 /obj/machinery/economy/vending/tool/Initialize(mapload)
 	contraband |= list(/obj/item/clothing/gloves/color/yellow/vox = 1)
-	prices |= list(/obj/item/clothing/gloves/color/yellow/vox = 250)
+	prices |= list(/obj/item/clothing/gloves/color/yellow/vox = 500)
 	. = ..()
 
 /obj/machinery/economy/vending/tool/free
