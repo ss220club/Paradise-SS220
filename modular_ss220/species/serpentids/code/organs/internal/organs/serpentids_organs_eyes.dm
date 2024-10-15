@@ -59,8 +59,8 @@
 /obj/item/organ/internal/eyes/serpentid/switch_mode(force_off = FALSE)
 	.=..()
 	if(!force_off && owner.get_chemical_value(chemical_id) >= chemical_consuption && !(status & ORGAN_DEAD))
-		see_in_dark = initial(see_in_dark)
+		see_in_dark = 8
 		chemical_consuption = GAS_ORGAN_CHEMISTRY_EYES + GAS_ORGAN_CHEMISTRY_EYES * (max_damage - damage / max_damage)
 	else
-		see_in_dark = 0
+		see_in_dark = initial(see_in_dark)
 		chemical_consuption = 0
