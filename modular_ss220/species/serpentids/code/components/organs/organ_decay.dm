@@ -7,6 +7,7 @@
 
 #define BASIC_RECOVER_VALUE 0.02
 #define BASIC_DECAY_VALUE 0.5
+#define ORGAN_RECOVERY_THRESHOLD 4 //25%
 
 /datum/component/organ_decay
 	var/obj/item/organ/internal/organ = null
@@ -34,5 +35,5 @@
 	var/is_destroying = (is_dead || (is_no_owner && !organ.is_in_freezer))
 	if(is_destroying)
 		organ.receive_damage(decay_rate, 1)
-	if((organ.damage <= (organ.max_damage / 4)) && (organ.damage > 0) && !is_destroying)
+	if((organ.damage <= (organ.max_damage / ORGAN_RECOVERY_THRESHOLD)) && (organ.damage > 0) && !is_destroying)
 		organ.heal_internal_damage(recover_rate, FALSE)

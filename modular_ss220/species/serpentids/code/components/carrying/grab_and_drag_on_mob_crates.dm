@@ -5,6 +5,7 @@
 
 #define COMSIG_GADOM_UNMOB_LOAD "try_load_cargo"
 #define COMSIG_GADOM_UNMOB_UNLOAD "try_unload_cargo"
+#define GADOM_BASIC_LOAD_TIMER_CRATE 2 SECONDS
 
 #define COMSIG_GADOM_UNMOB_CAN_GRAB "block_operation"
 #define GADOM_UNMOB_ALLOW_TO_GRAB (1<<0)
@@ -45,7 +46,6 @@
 		if(old_z != dest_z)
 			onTransitZ(old_z, dest_z)
 
-
 	Moved(old_loc, NONE)
 
 	return TRUE
@@ -79,7 +79,7 @@
 			return
 		if(!istype(AM))
 			return
-		if(!do_after(user, 20 * user.dna.species.action_mult, FALSE, AM))
+		if(!do_after(user, GADOM_BASIC_LOAD_TIMER_CRATE * user.dna.species.action_mult, FALSE, AM))
 			return
 		load(AM)
 

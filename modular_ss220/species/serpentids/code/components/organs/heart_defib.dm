@@ -20,7 +20,7 @@
 	if(!(owner))
 		var/obj/item/organ/internal/limb = parent
 		owner = limb.owner
-	else if(owner.get_chemical_value(chemical_id) >= 0 && owner.stat == DEAD && owner.get_damage_amount() <= 100)
+	else if(owner.get_chemical_value(chemical_id) >= 0 && owner.stat == DEAD && owner.get_damage_amount() <= SERPENTID_CARAPACE_NOPRESSURE_STATE)
 		var/defib_chance = owner.get_chemical_value(chemical_id)
 		var/datum/reagent/chem = owner.get_chemical_path(chemical_id)
 		if(chem)

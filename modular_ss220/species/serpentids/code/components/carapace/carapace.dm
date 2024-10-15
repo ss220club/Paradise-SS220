@@ -64,9 +64,7 @@
 
 /datum/component/carapace/proc/heal_damage(affected_limb, brute, burn, internal = 0, robo_repair = 0, updating_health = TRUE)
 	if((limb.status & ORGAN_BROKEN) && limb.get_damage() == 0)
-		if(self_medning)
-			limb.mend_fracture()
-		else if(prob(CARAPACE_HEAL_BROKEN_PROB))
+		else if(self_medning || prob(CARAPACE_HEAL_BROKEN_PROB))
 			limb.mend_fracture()
 
 //Расширение проков урона и лечения для обращения к компоненту
