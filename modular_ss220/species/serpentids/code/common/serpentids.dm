@@ -160,7 +160,6 @@
 	H.verbs |= /mob/living/carbon/human/verb/emote_gbsroar
 	H.verbs |= /mob/living/carbon/human/verb/emote_gbshiss
 	H.verbs |= /mob/living/carbon/human/verb/emote_gbswiggles
-	H.verbs |= /mob/living/carbon/human/verb/emote_gbsblink
 	H.verbs -= /mob/living/carbon/human/verb/emote_cough
 	H.verbs -= /mob/living/carbon/human/verb/emote_sneeze
 	H.verbs -= /mob/living/carbon/human/verb/emote_sniff
@@ -175,7 +174,6 @@
 	H.verbs -= /mob/living/carbon/human/verb/emote_gbsroar
 	H.verbs -= /mob/living/carbon/human/verb/emote_gbshiss
 	H.verbs -= /mob/living/carbon/human/verb/emote_gbswiggles
-	H.verbs -= /mob/living/carbon/human/verb/emote_gbsblink
 	H.verbs |= /mob/living/carbon/human/verb/emote_cough
 	H.verbs |= /mob/living/carbon/human/verb/emote_sneeze
 	H.verbs |= /mob/living/carbon/human/verb/emote_sniff
