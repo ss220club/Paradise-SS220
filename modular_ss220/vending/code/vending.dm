@@ -222,7 +222,7 @@
 						/obj/item/clothing/under/rainbow_skirt = 100)
 	. = ..()
 
-/obj/machinery/economy/vending/suitdispenser/free/Initialize(mapload)
+/obj/machinery/economy/vending/suitdispenser/free
 	prices = list()
 
 /obj/machinery/economy/vending/wallmed/emergency_ntmed
@@ -246,7 +246,7 @@
 	prices |= list(/obj/item/clothing/shoes/clown_shoes/moffers = 80)
 	. = ..()
 
-/obj/machinery/economy/vending/shoedispenser/free/Initialize(mapload)
+/obj/machinery/economy/vending/shoedispenser/free
 	prices = list()
 
 /obj/machinery/economy/vending/tool/Initialize(mapload)
@@ -254,5 +254,5 @@
 	prices |= list(/obj/item/clothing/gloves/color/yellow/vox = 250)
 	. = ..()
 
-/obj/machinery/economy/vending/tool/free/Initialize(mapload)
+/obj/machinery/economy/vending/tool/free
 	prices = list()

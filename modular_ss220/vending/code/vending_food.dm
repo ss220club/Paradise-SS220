@@ -45,7 +45,7 @@
 		/obj/item/poster/mac_vulpix = 3,
 	)
 
-/obj/machinery/economy/vending/vulpix/free/Initialize(mapload)
+/obj/machinery/economy/vending/vulpix/free
 	prices = list()
 
 // MARK: Nanotrasen Food
