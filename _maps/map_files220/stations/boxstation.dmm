@@ -134,14 +134,9 @@
 /area/station/security/armory/secure)
 "abP" = (
 /obj/machinery/suit_storage_unit/security/secure,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
 /turf/simulated/floor/plasteel{
-	icon_state = "dark"
+	dir = 8;
+	icon_state = "vault"
 	},
 /area/station/security/armory/secure)
 "abY" = (
@@ -281,24 +276,23 @@
 /turf/simulated/floor/plasteel,
 /area/station/security/main)
 "acH" = (
-/obj/structure/rack,
-/obj/effect/turf_decal/delivery/red/hollow,
-/obj/structure/window/reinforced,
-/obj/item/grenade/barrier{
-	pixel_x = 5;
-	pixel_y = 5
+/obj/structure/table/reinforced,
+/obj/item/storage/box/trackimp{
+	pixel_y = 8;
+	pixel_x = -6
 	},
-/obj/item/grenade/barrier{
-	pixel_x = 3;
-	pixel_y = 3
+/obj/item/storage/box/chemimp{
+	pixel_x = 6;
+	pixel_y = 8
 	},
-/obj/item/grenade/barrier,
-/obj/item/grenade/barrier{
-	pixel_x = -3;
-	pixel_y = -3
+/obj/item/storage/lockbox/mindshield,
+/obj/item/storage/lockbox/mindshield{
+	pixel_y = 4
 	},
+/obj/item/storage/toolbox/mechanical,
 /turf/simulated/floor/plasteel{
-	icon_state = "dark"
+	dir = 8;
+	icon_state = "vault"
 	},
 /area/station/security/armory/secure)
 "acK" = (
@@ -396,42 +390,39 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/aft)
 "adb" = (
-/obj/structure/rack,
-/obj/item/storage/lockbox/mindshield,
-/obj/item/storage/box/trackimp,
-/obj/item/storage/box/chemimp{
-	pixel_x = 4;
-	pixel_y = 3
+/obj/structure/shelf/security,
+/obj/item/grenade/barrier{
+	pixel_x = -6;
+	pixel_y = 4
 	},
-/obj/item/storage/toolbox/mechanical,
-/obj/effect/turf_decal/delivery/red/hollow,
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 8
+/obj/item/grenade/barrier{
+	pixel_y = 4
+	},
+/obj/item/grenade/barrier{
+	pixel_y = 4;
+	pixel_x = 6
+	},
+/obj/item/grenade/barrier{
+	pixel_x = -6;
+	pixel_y = -4
+	},
+/obj/item/grenade/barrier{
+	pixel_y = -4
+	},
+/obj/item/grenade/barrier{
+	pixel_y = -4;
+	pixel_x = 6
 	},
 /turf/simulated/floor/plasteel{
-	icon_state = "dark"
+	dir = 8;
+	icon_state = "vault"
 	},
 /area/station/security/armory/secure)
 "adg" = (
 /obj/structure/dispenser/oxygen,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
 /turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
-/area/station/security/armory/secure)
-"adh" = (
-/obj/machinery/suit_storage_unit/security/secure,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
+	dir = 8;
+	icon_state = "vault"
 	},
 /area/station/security/armory/secure)
 "adi" = (
@@ -547,8 +538,7 @@
 /turf/simulated/floor/plasteel,
 /area/station/security/permabrig)
 "adP" = (
-/obj/structure/rack,
-/obj/structure/rack,
+/obj/structure/shelf/security,
 /obj/item/storage/box/rubbershot{
 	pixel_y = -3
 	},
@@ -566,12 +556,6 @@
 	},
 /obj/item/storage/box/beanbag{
 	pixel_y = 3
-	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 4
 	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
@@ -846,7 +830,6 @@
 /obj/machinery/camera{
 	c_tag = "Brig Secure Armory North"
 	},
-/obj/effect/turf_decal/delivery/red/hollow,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "vault"
@@ -907,24 +890,8 @@
 /turf/simulated/floor/plasteel,
 /area/station/security/prisonershuttle)
 "afe" = (
-/obj/structure/window/reinforced,
-/obj/structure/rack/gunrack,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/item/gun/energy/disabler{
-	pixel_x = -8
-	},
-/obj/item/gun/energy/disabler{
-	pixel_x = -4
-	},
-/obj/item/gun/energy/disabler,
-/obj/item/gun/energy/disabler{
-	pixel_x = 4
-	},
-/obj/item/gun/energy/disabler{
-	pixel_x = 8
-	},
+/obj/structure/shelf/security,
+/obj/item/storage/box/tranquilizer,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "vault"
@@ -1139,7 +1106,6 @@
 /area/station/maintenance/asmaint2)
 "agS" = (
 /obj/machinery/flasher/portable,
-/obj/effect/turf_decal/delivery/red/hollow,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "vault"
@@ -1296,13 +1262,7 @@
 /turf/space,
 /area/shuttle/gamma/station)
 "ahG" = (
-/obj/structure/rack/gunrack,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
+/obj/structure/gunrack,
 /obj/item/gun/projectile/shotgun/riot{
 	pixel_x = 8
 	},
@@ -1419,28 +1379,28 @@
 	},
 /area/station/security/brig)
 "aif" = (
-/obj/structure/rack,
-/obj/item/storage/box/teargas{
-	pixel_x = -3;
-	pixel_y = -3
-	},
-/obj/item/storage/box/handcuffs,
+/obj/structure/shelf/security,
 /obj/item/storage/box/flashbangs{
-	pixel_x = -2;
-	pixel_y = -2
+	pixel_x = -6;
+	pixel_y = 8
+	},
+/obj/item/storage/box/teargas{
+	pixel_y = 8
+	},
+/obj/item/storage/box/seccarts{
+	pixel_y = 8;
+	pixel_x = 6
+	},
+/obj/item/storage/box/handcuffs{
+	pixel_x = -6
 	},
 /obj/item/storage/box/handcuffs,
-/obj/item/storage/box/seccarts{
-	pixel_x = 3;
-	pixel_y = 2
-	},
-/obj/effect/turf_decal/delivery/red/hollow,
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 4
+/obj/item/storage/box/handcuffs{
+	pixel_x = 6
 	},
 /turf/simulated/floor/plasteel{
-	icon_state = "dark"
+	dir = 8;
+	icon_state = "vault"
 	},
 /area/station/security/armory/secure)
 "aig" = (
@@ -1472,34 +1432,16 @@
 	},
 /area/station/security/armory/secure)
 "aip" = (
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/rack,
-/obj/item/storage/box/tranquilizer,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
+/obj/structure/gunrack,
+/obj/item/gun/energy/ionrifle,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "vault"
 	},
 /area/station/security/armory/secure)
 "aiq" = (
-/obj/structure/rack/gunrack,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/item/gun/energy/laser{
-	pixel_x = -4
-	},
-/obj/item/gun/energy/laser,
-/obj/item/gun/energy/laser{
-	pixel_x = 4
-	},
+/obj/structure/rack,
+/obj/item/clothing/suit/hooded/ablative,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "vault"
@@ -1559,12 +1501,20 @@
 	},
 /area/station/security/armory/secure)
 "aiB" = (
-/obj/structure/rack,
-/obj/structure/window/reinforced{
-	dir = 8
+/obj/structure/gunrack,
+/obj/item/gun/energy/disabler{
+	pixel_x = -8
 	},
-/obj/item/clothing/suit/hooded/ablative,
-/obj/item/gun/energy/ionrifle,
+/obj/item/gun/energy/disabler{
+	pixel_x = -4
+	},
+/obj/item/gun/energy/disabler,
+/obj/item/gun/energy/disabler{
+	pixel_x = 4
+	},
+/obj/item/gun/energy/disabler{
+	pixel_x = 8
+	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "vault"
@@ -1581,10 +1531,7 @@
 	},
 /area/station/security/brig)
 "aiN" = (
-/obj/structure/rack/gunrack,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
+/obj/structure/gunrack,
 /obj/item/gun/energy/gun{
 	pixel_x = -4
 	},
@@ -1743,27 +1690,13 @@
 	},
 /area/station/security/brig)
 "ajq" = (
-/obj/structure/rack,
-/obj/structure/window/reinforced{
-	dir = 8
+/obj/structure/gunrack,
+/obj/item/gun/energy/laser{
+	pixel_x = -4
 	},
-/obj/item/clothing/suit/armor/bulletproof/sec{
-	pixel_x = -3
-	},
-/obj/item/clothing/suit/armor/bulletproof/sec,
-/obj/item/clothing/suit/armor/bulletproof/sec{
-	pixel_x = 3
-	},
-/obj/item/clothing/head/helmet/alt{
-	pixel_y = 8;
-	pixel_x = -3
-	},
-/obj/item/clothing/head/helmet/alt{
-	pixel_y = 8
-	},
-/obj/item/clothing/head/helmet/alt{
-	pixel_y = 8;
-	pixel_x = 3
+/obj/item/gun/energy/laser,
+/obj/item/gun/energy/laser{
+	pixel_x = 4
 	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
@@ -1771,7 +1704,7 @@
 	},
 /area/station/security/armory/secure)
 "ajr" = (
-/obj/structure/rack/gunrack,
+/obj/structure/gunrack,
 /obj/item/gun/projectile/automatic/sslr{
 	pixel_x = -4
 	},
@@ -1781,9 +1714,6 @@
 	},
 /obj/item/gun/projectile/automatic/sslr{
 	pixel_x = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 4
 	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
@@ -1830,21 +1760,24 @@
 	},
 /area/station/security/brig)
 "ajK" = (
-/obj/structure/rack,
-/obj/structure/window/reinforced{
-	dir = 1
+/obj/structure/shelf/security,
+/obj/item/clothing/suit/armor/bulletproof/sec{
+	pixel_x = -6
 	},
-/obj/structure/window/reinforced{
-	dir = 4
+/obj/item/clothing/suit/armor/bulletproof/sec,
+/obj/item/clothing/suit/armor/bulletproof/sec{
+	pixel_x = 6
 	},
-/obj/item/clothing/head/helmet/riot{
-	pixel_y = 3;
-	pixel_x = 3
+/obj/item/clothing/head/helmet/alt{
+	pixel_y = 8;
+	pixel_x = -6
 	},
-/obj/item/clothing/head/helmet/riot,
-/obj/item/clothing/head/helmet/riot{
-	pixel_y = -3;
-	pixel_x = -3
+/obj/item/clothing/head/helmet/alt{
+	pixel_y = 8
+	},
+/obj/item/clothing/head/helmet/alt{
+	pixel_y = 8;
+	pixel_x = 6
 	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
@@ -1909,7 +1842,6 @@
 "akl" = (
 /obj/machinery/flasher/portable,
 /obj/machinery/status_display/directional/north,
-/obj/effect/turf_decal/delivery/red/hollow,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "vault"
@@ -1942,18 +1874,24 @@
 	},
 /area/station/security/permabrig)
 "akt" = (
-/obj/structure/rack,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
+/obj/structure/shelf/security,
 /obj/item/clothing/suit/armor/riot/sec{
-	pixel_x = 3;
-	pixel_y = 3
+	pixel_x = -6
 	},
 /obj/item/clothing/suit/armor/riot/sec,
 /obj/item/clothing/suit/armor/riot/sec{
-	pixel_y = -3;
-	pixel_x = -3
+	pixel_x = 6
+	},
+/obj/item/clothing/head/helmet/riot{
+	pixel_y = 8;
+	pixel_x = -6
+	},
+/obj/item/clothing/head/helmet/riot{
+	pixel_y = 8
+	},
+/obj/item/clothing/head/helmet/riot{
+	pixel_y = 8;
+	pixel_x = 6
 	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
@@ -1961,19 +1899,13 @@
 	},
 /area/station/security/armory/secure)
 "aku" = (
-/obj/structure/rack,
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
+/obj/structure/shelf/security,
 /obj/item/shield/riot{
-	pixel_x = 3;
-	pixel_y = 3
+	pixel_x = -6
 	},
 /obj/item/shield/riot,
 /obj/item/shield/riot{
-	pixel_x = -3;
-	pixel_y = -3
+	pixel_x = 6
 	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
@@ -2259,7 +2191,7 @@
 	},
 /area/station/security/brig)
 "als" = (
-/obj/effect/spawner/random_spawners/fungus_probably,
+/obj/effect/spawner/random/fungus/probably,
 /turf/simulated/wall,
 /area/station/maintenance/asmaint2)
 "alt" = (
@@ -2712,7 +2644,7 @@
 	},
 /area/station/security/storage)
 "amH" = (
-/obj/structure/rack,
+/obj/structure/table/reinforced,
 /obj/machinery/recharger/wallcharger{
 	pixel_y = 25
 	},
@@ -2720,14 +2652,16 @@
 	pixel_y = 35
 	},
 /obj/item/assembly/timer{
-	pixel_x = 3;
-	pixel_y = -8
+	pixel_y = 4;
+	pixel_x = 6
+	},
+/obj/item/flash{
+	pixel_y = 6;
+	pixel_x = -4
 	},
 /obj/item/assembly/timer{
-	pixel_y = -6
+	pixel_x = 6
 	},
-/obj/item/flash,
-/obj/effect/turf_decal/delivery/red/hollow,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "red"
@@ -2740,31 +2674,30 @@
 /turf/simulated/floor/plasteel,
 /area/station/security/storage)
 "amJ" = (
-/obj/structure/rack,
+/obj/structure/table/reinforced,
 /obj/structure/reagent_dispensers/peppertank/north,
 /obj/machinery/light/directional/north,
-/obj/effect/turf_decal/delivery/red/hollow,
 /obj/item/clothing/accessory/holster{
-	pixel_x = -6;
-	pixel_y = 6
+	pixel_x = -8
 	},
 /obj/item/clothing/accessory/holster{
-	pixel_x = -3;
-	pixel_y = 3
-	},
-/obj/item/clothing/accessory/holster{
-	pixel_x = 3;
-	pixel_y = -3
-	},
-/obj/item/clothing/accessory/holster{
-	pixel_x = 6;
-	pixel_y = -6
+	pixel_x = -4
 	},
 /obj/item/clothing/accessory/holster,
-/obj/item/restraints/handcuffs{
-	pixel_y = -4
+/obj/item/clothing/accessory/holster{
+	pixel_x = 4
 	},
-/obj/item/restraints/handcuffs,
+/obj/item/clothing/accessory/holster{
+	pixel_x = 8
+	},
+/obj/item/restraints/handcuffs{
+	pixel_y = 8;
+	pixel_x = -4
+	},
+/obj/item/restraints/handcuffs{
+	pixel_y = 8;
+	pixel_x = 4
+	},
 /turf/simulated/floor/plasteel{
 	dir = 5;
 	icon_state = "red"
@@ -2943,7 +2876,7 @@
 /area/station/engineering/solar/fore_starboard)
 "anp" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/random_spawners/grille_often,
+/obj/effect/spawner/random/barrier/grille_often,
 /turf/simulated/floor/plating,
 /area/station/engineering/utility)
 "anq" = (
@@ -4221,7 +4154,7 @@
 	},
 /area/station/public/dorms)
 "asf" = (
-/obj/effect/spawner/random_barrier/possibly_welded_airlock,
+/obj/effect/spawner/random/barrier/possibly_welded_airlock,
 /turf/simulated/floor/plating,
 /area/station/maintenance/fore)
 "asg" = (
@@ -6915,7 +6848,7 @@
 /turf/simulated/floor/wood/fancy/cherry,
 /area/station/legal/lawoffice)
 "aAH" = (
-/obj/effect/spawner/random_barrier/obstruction,
+/obj/effect/spawner/random/barrier/obstruction,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4
 	},
@@ -7604,7 +7537,7 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/abandonedbar)
 "aCN" = (
-/obj/effect/decal/cleanable/fungus,
+/obj/effect/spawner/random/fungus/frequent,
 /turf/simulated/wall,
 /area/station/maintenance/abandonedbar)
 "aCO" = (
@@ -7982,7 +7915,7 @@
 /area/station/legal/courtroom)
 "aDR" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/random_spawners/grille_often,
+/obj/effect/spawner/random/barrier/grille_often,
 /turf/simulated/floor/plating,
 /area/station/maintenance/asmaint2)
 "aDS" = (
@@ -8675,7 +8608,7 @@
 /turf/simulated/floor/wood/oak,
 /area/station/maintenance/abandonedbar)
 "aGd" = (
-/obj/effect/decal/cleanable/fungus,
+/obj/effect/spawner/random/fungus/frequent,
 /obj/effect/spawner/random_spawners/wall_rusted_always,
 /turf/simulated/wall,
 /area/station/maintenance/abandonedbar)
@@ -8865,7 +8798,7 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/fsmaint)
 "aGL" = (
-/obj/effect/spawner/random_spawners/fungus_maybe,
+/obj/effect/spawner/random/fungus/maybe,
 /turf/simulated/wall,
 /area/station/maintenance/fore)
 "aGM" = (
@@ -9016,7 +8949,7 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/fpmaint2)
 "aHi" = (
-/obj/effect/spawner/random_spawners/fungus_maybe,
+/obj/effect/spawner/random/fungus/maybe,
 /turf/simulated/wall/r_wall,
 /area/station/maintenance/fpmaint2)
 "aHj" = (
@@ -9191,7 +9124,7 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/fsmaint)
 "aHP" = (
-/obj/effect/decal/cleanable/fungus,
+/obj/effect/spawner/random/fungus/frequent,
 /turf/simulated/wall,
 /area/station/maintenance/fsmaint)
 "aHR" = (
@@ -9321,7 +9254,7 @@
 /turf/simulated/floor/plasteel,
 /area/station/public/dorms)
 "aIq" = (
-/obj/effect/decal/cleanable/fungus,
+/obj/effect/spawner/random/fungus/frequent,
 /turf/simulated/wall,
 /area/station/maintenance/fore)
 "aIu" = (
@@ -9474,7 +9407,7 @@
 /area/station/maintenance/fpmaint)
 "aIS" = (
 /obj/structure/grille,
-/obj/effect/spawner/random_barrier/obstruction,
+/obj/effect/spawner/random/barrier/obstruction,
 /turf/simulated/floor/plating,
 /area/station/maintenance/fpmaint)
 "aIT" = (
@@ -9670,7 +9603,7 @@
 /area/station/maintenance/fore)
 "aJy" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/random_barrier/obstruction,
+/obj/effect/spawner/random/barrier/obstruction,
 /turf/simulated/floor/plating,
 /area/station/maintenance/fsmaint)
 "aJz" = (
@@ -10013,7 +9946,7 @@
 /turf/simulated/floor/carpet/black,
 /area/station/maintenance/fsmaint)
 "aKW" = (
-/obj/effect/spawner/random_spawners/fungus_maybe,
+/obj/effect/spawner/random/fungus/maybe,
 /turf/simulated/wall,
 /area/station/maintenance/fpmaint2)
 "aKX" = (
@@ -10627,7 +10560,7 @@
 /turf/simulated/floor/plasteel,
 /area/station/public/storage/tools)
 "aNw" = (
-/obj/effect/spawner/random_spawners/fungus_maybe,
+/obj/effect/spawner/random/fungus/maybe,
 /turf/simulated/wall,
 /area/station/hallway/secondary/entry)
 "aNx" = (
@@ -10728,7 +10661,7 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/fore)
 "aNZ" = (
-/obj/effect/spawner/random_spawners/grille_often,
+/obj/effect/spawner/random/barrier/grille_often,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
@@ -10823,11 +10756,11 @@
 	},
 /area/station/maintenance/fpmaint)
 "aOr" = (
-/obj/effect/spawner/random_spawners/fungus_maybe,
+/obj/effect/spawner/random/fungus/maybe,
 /turf/simulated/wall,
 /area/station/maintenance/fpmaint)
 "aOs" = (
-/obj/effect/spawner/random_barrier/obstruction,
+/obj/effect/spawner/random/barrier/obstruction,
 /turf/simulated/floor/plating,
 /area/station/maintenance/fpmaint)
 "aOv" = (
@@ -11026,7 +10959,7 @@
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/fpmaint2)
 "aPc" = (
-/obj/effect/decal/cleanable/fungus,
+/obj/effect/spawner/random/fungus/frequent,
 /turf/simulated/wall,
 /area/station/maintenance/fpmaint2)
 "aPd" = (
@@ -11070,7 +11003,7 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/fpmaint)
 "aPj" = (
-/obj/effect/decal/cleanable/fungus,
+/obj/effect/spawner/random/fungus/frequent,
 /turf/simulated/wall,
 /area/station/maintenance/fpmaint)
 "aPk" = (
@@ -11107,7 +11040,7 @@
 	},
 /area/station/maintenance/fpmaint)
 "aPv" = (
-/obj/effect/spawner/random_spawners/grille_often,
+/obj/effect/spawner/random/barrier/grille_often,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
@@ -11330,7 +11263,7 @@
 /turf/simulated/floor/mineral/tranquillite,
 /area/station/service/mime)
 "aQe" = (
-/obj/effect/spawner/random_barrier/obstruction,
+/obj/effect/spawner/random/barrier/obstruction,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4
 	},
@@ -11718,7 +11651,7 @@
 /obj/structure/sign/electricshock{
 	pixel_y = -32
 	},
-/obj/effect/spawner/random_spawners/grille_often,
+/obj/effect/spawner/random/barrier/grille_often,
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
@@ -12663,7 +12596,7 @@
 /turf/simulated/floor/plating,
 /area/station/engineering/dronefabricator)
 "aUY" = (
-/obj/effect/decal/cleanable/fungus,
+/obj/effect/spawner/random/fungus/frequent,
 /turf/simulated/wall,
 /area/station/maintenance/electrical)
 "aUZ" = (
@@ -12696,7 +12629,7 @@
 /turf/simulated/floor/plasteel,
 /area/station/hallway/secondary/garden)
 "aVg" = (
-/obj/effect/decal/cleanable/fungus,
+/obj/effect/spawner/random/fungus/frequent,
 /turf/simulated/wall,
 /area/station/public/storage/tools)
 "aVh" = (
@@ -12881,7 +12814,7 @@
 /turf/simulated/floor/plating,
 /area/shuttle/arrival/station)
 "aWb" = (
-/obj/effect/spawner/random_spawners/grille_often,
+/obj/effect/spawner/random/barrier/grille_often,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/plating,
@@ -16511,7 +16444,7 @@
 	},
 /area/station/hallway/primary/central/north)
 "biL" = (
-/obj/effect/spawner/random_spawners/fungus_probably,
+/obj/effect/spawner/random/fungus/probably,
 /turf/simulated/wall/r_wall,
 /area/station/security/brig)
 "biM" = (
@@ -16960,7 +16893,7 @@
 /turf/simulated/floor/plasteel,
 /area/station/hallway/primary/starboard/west)
 "bkD" = (
-/obj/effect/spawner/random_spawners/grille_maybe,
+/obj/effect/spawner/random/barrier/grille_maybe,
 /turf/simulated/floor/plating,
 /area/station/maintenance/fsmaint)
 "bkE" = (
@@ -17211,7 +17144,7 @@
 /turf/simulated/wall,
 /area/station/public/storage/emergency/port)
 "blT" = (
-/obj/effect/spawner/random_spawners/fungus_maybe,
+/obj/effect/spawner/random/fungus/maybe,
 /turf/simulated/wall,
 /area/station/public/storage/emergency/port)
 "blU" = (
@@ -19066,7 +18999,7 @@
 /turf/simulated/floor/carpet,
 /area/station/public/vacant_office)
 "btE" = (
-/obj/effect/spawner/random_spawners/grille_maybe,
+/obj/effect/spawner/random/barrier/grille_maybe,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
@@ -19103,7 +19036,7 @@
 /turf/simulated/floor/plasteel,
 /area/station/supply/expedition)
 "btL" = (
-/obj/effect/spawner/random_spawners/grille_maybe,
+/obj/effect/spawner/random/barrier/grille_maybe,
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable{
 	d1 = 1;
@@ -19371,7 +19304,7 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/apmaint)
 "bvq" = (
-/obj/effect/spawner/random_spawners/fungus_maybe,
+/obj/effect/spawner/random/fungus/maybe,
 /turf/simulated/wall,
 /area/station/public/locker)
 "bvr" = (
@@ -20049,7 +19982,7 @@
 	},
 /area/station/hallway/secondary/exit)
 "bym" = (
-/obj/effect/decal/cleanable/fungus,
+/obj/effect/spawner/random/fungus/frequent,
 /turf/simulated/wall,
 /area/station/public/toilet/lockerroom)
 "byn" = (
@@ -20182,7 +20115,7 @@
 	},
 /area/station/medical/morgue)
 "bzk" = (
-/obj/machinery/smartfridge,
+/obj/machinery/smartfridge/food/chef,
 /turf/simulated/floor/plating,
 /area/station/service/kitchen)
 "bzm" = (
@@ -21888,7 +21821,7 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/asmaint2)
 "bGH" = (
-/obj/effect/spawner/random_barrier/possibly_welded_airlock,
+/obj/effect/spawner/random/barrier/possibly_welded_airlock,
 /turf/simulated/floor/plating,
 /area/station/maintenance/asmaint)
 "bGK" = (
@@ -22909,7 +22842,7 @@
 /turf/simulated/floor/plating,
 /area/station/science/robotics)
 "bLJ" = (
-/obj/effect/spawner/random_spawners/fungus_maybe,
+/obj/effect/spawner/random/fungus/maybe,
 /turf/simulated/wall,
 /area/station/public/storage/tools/auxiliary)
 "bLK" = (
@@ -24001,7 +23934,7 @@
 /turf/simulated/floor/transparent/glass,
 /area/station/command/bridge)
 "bQq" = (
-/obj/effect/spawner/random_spawners/grille_often,
+/obj/effect/spawner/random/barrier/grille_often,
 /turf/simulated/floor/plating,
 /area/station/maintenance/storage)
 "bQs" = (
@@ -24866,7 +24799,7 @@
 "bTX" = (
 /obj/effect/decal/cleanable/dust,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
-/obj/effect/spawner/random_barrier/obstruction,
+/obj/effect/spawner/random/barrier/obstruction,
 /turf/simulated/floor/plating,
 /area/station/maintenance/fsmaint)
 "bTZ" = (
@@ -25097,6 +25030,7 @@
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/structure/disposalpipe/segment,
 /obj/effect/mapping_helpers/airlock/access/any/supply/mail_sorting,
+/obj/effect/mapping_helpers/airlock/access/any/supply/expedition,
 /turf/simulated/floor/plasteel,
 /area/station/supply/sorting)
 "bVl" = (
@@ -25291,7 +25225,7 @@
 /turf/simulated/wall,
 /area/station/medical/cryo)
 "bWb" = (
-/obj/effect/spawner/random_spawners/grille_often,
+/obj/effect/spawner/random/barrier/grille_often,
 /turf/simulated/floor/plating,
 /area/station/maintenance/aft)
 "bWd" = (
@@ -28234,7 +28168,7 @@
 /turf/simulated/floor/plasteel,
 /area/station/science/storage)
 "cig" = (
-/obj/effect/spawner/random_spawners/grille_often,
+/obj/effect/spawner/random/barrier/grille_often,
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
@@ -28411,7 +28345,7 @@
 /turf/simulated/wall,
 /area/station/maintenance/asmaint)
 "cja" = (
-/obj/effect/spawner/random_barrier/obstruction,
+/obj/effect/spawner/random/barrier/obstruction,
 /turf/simulated/floor/plating,
 /area/station/maintenance/asmaint)
 "cjc" = (
@@ -28837,7 +28771,7 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/asmaint2)
 "ckM" = (
-/obj/effect/spawner/random_spawners/fungus_maybe,
+/obj/effect/spawner/random/fungus/maybe,
 /turf/simulated/wall,
 /area/station/supply/miningdock)
 "ckN" = (
@@ -31186,7 +31120,7 @@
 /turf/simulated/floor/plasteel,
 /area/station/hallway/primary/aft)
 "cuc" = (
-/obj/effect/decal/cleanable/fungus,
+/obj/effect/spawner/random/fungus/frequent,
 /turf/simulated/wall,
 /area/station/maintenance/aft)
 "cud" = (
@@ -31419,7 +31353,7 @@
 /area/station/medical/surgery/primary)
 "cuI" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/random_spawners/grille_maybe,
+/obj/effect/spawner/random/barrier/grille_maybe,
 /turf/simulated/floor/plating,
 /area/station/maintenance/asmaint2)
 "cuJ" = (
@@ -31467,7 +31401,7 @@
 /area/station/maintenance/asmaint2)
 "cuS" = (
 /obj/effect/spawner/random_spawners/wall_rusted_maybe,
-/obj/effect/spawner/random_spawners/fungus_maybe,
+/obj/effect/spawner/random/fungus/maybe,
 /turf/simulated/wall,
 /area/station/maintenance/asmaint2)
 "cuW" = (
@@ -31821,7 +31755,7 @@
 	},
 /area/station/medical/reception)
 "cwl" = (
-/obj/effect/spawner/random_spawners/grille_maybe,
+/obj/effect/spawner/random/barrier/grille_maybe,
 /turf/simulated/floor/plating,
 /area/station/maintenance/apmaint)
 "cwo" = (
@@ -32259,7 +32193,7 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/incinerator)
 "cyp" = (
-/obj/effect/spawner/random_spawners/grille_often,
+/obj/effect/spawner/random/barrier/grille_often,
 /turf/simulated/floor/plating,
 /area/station/maintenance/port)
 "cyq" = (
@@ -32490,7 +32424,7 @@
 /turf/space,
 /area/station/engineering/solar/port)
 "cyP" = (
-/obj/effect/spawner/random_barrier/obstruction,
+/obj/effect/spawner/random/barrier/obstruction,
 /turf/simulated/floor/plating,
 /area/station/maintenance/aft)
 "cyQ" = (
@@ -32924,7 +32858,7 @@
 	},
 /area/station/medical/reception)
 "cAu" = (
-/obj/effect/spawner/random_spawners/grille_maybe,
+/obj/effect/spawner/random/barrier/grille_maybe,
 /turf/simulated/floor/plating,
 /area/station/maintenance/aft)
 "cAv" = (
@@ -32937,7 +32871,7 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/asmaint)
 "cAz" = (
-/obj/effect/spawner/random_barrier/possibly_welded_airlock,
+/obj/effect/spawner/random/barrier/possibly_welded_airlock,
 /turf/simulated/floor/plating,
 /area/station/maintenance/aft)
 "cAB" = (
@@ -33056,7 +32990,7 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/aft)
 "cBe" = (
-/obj/effect/spawner/random_spawners/grille_maybe,
+/obj/effect/spawner/random/barrier/grille_maybe,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/station/maintenance/asmaint)
@@ -33574,7 +33508,7 @@
 /turf/simulated/wall/r_wall,
 /area/station/engineering/supermatter_room)
 "cDm" = (
-/obj/effect/spawner/random_spawners/fungus_maybe,
+/obj/effect/spawner/random/fungus/maybe,
 /turf/simulated/wall,
 /area/station/maintenance/aft)
 "cDo" = (
@@ -33932,7 +33866,7 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/port)
 "cEx" = (
-/obj/effect/spawner/random_spawners/fungus_probably,
+/obj/effect/spawner/random/fungus/probably,
 /turf/simulated/wall,
 /area/station/maintenance/aft)
 "cEy" = (
@@ -33973,7 +33907,7 @@
 	},
 /area/station/maintenance/aft)
 "cEE" = (
-/obj/effect/spawner/random_spawners/grille_maybe,
+/obj/effect/spawner/random/barrier/grille_maybe,
 /turf/simulated/floor/plating,
 /area/station/maintenance/asmaint2)
 "cEH" = (
@@ -35248,7 +35182,7 @@
 	},
 /area/station/hallway/primary/central/ne)
 "cJa" = (
-/obj/effect/spawner/random_spawners/grille_maybe,
+/obj/effect/spawner/random/barrier/grille_maybe,
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable{
 	d1 = 1;
@@ -35670,7 +35604,7 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/aft)
 "cKE" = (
-/obj/effect/decal/cleanable/fungus,
+/obj/effect/spawner/random/fungus/frequent,
 /turf/simulated/wall,
 /area/station/maintenance/asmaint)
 "cKF" = (
@@ -37072,7 +37006,7 @@
 /turf/simulated/wall,
 /area/station/maintenance/asmaint)
 "cQx" = (
-/obj/effect/spawner/random_barrier/possibly_welded_airlock,
+/obj/effect/spawner/random/barrier/possibly_welded_airlock,
 /turf/simulated/floor/plating,
 /area/station/maintenance/asmaint2)
 "cQy" = (
@@ -37784,7 +37718,7 @@
 	},
 /area/station/engineering/smes)
 "cSz" = (
-/obj/effect/spawner/random_spawners/grille_maybe,
+/obj/effect/spawner/random/barrier/grille_maybe,
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
@@ -38845,7 +38779,7 @@
 	},
 /area/station/engineering/equipmentstorage)
 "cVR" = (
-/obj/effect/spawner/random_spawners/grille_often,
+/obj/effect/spawner/random/barrier/grille_often,
 /turf/simulated/floor/plating,
 /area/station/maintenance/apmaint)
 "cVS" = (
@@ -43385,7 +43319,7 @@
 /area/station/maintenance/assembly_line)
 "dmJ" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/random_spawners/grille_often,
+/obj/effect/spawner/random/barrier/grille_often,
 /turf/simulated/floor/plating,
 /area/station/maintenance/aft)
 "dmK" = (
@@ -45145,7 +45079,7 @@
 /turf/simulated/floor/engine/xenobio,
 /area/station/science/xenobiology)
 "dvY" = (
-/obj/effect/decal/cleanable/fungus,
+/obj/effect/spawner/random/fungus/frequent,
 /turf/simulated/wall,
 /area/station/maintenance/port)
 "dwg" = (
@@ -45243,7 +45177,7 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/fpmaint2)
 "dyn" = (
-/obj/effect/spawner/random_barrier/obstruction,
+/obj/effect/spawner/random/barrier/obstruction,
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
@@ -46116,7 +46050,7 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/aft)
 "dMb" = (
-/obj/effect/spawner/random_spawners/fungus_probably,
+/obj/effect/spawner/random/fungus/probably,
 /turf/simulated/wall,
 /area/station/maintenance/fsmaint)
 "dMc" = (
@@ -46423,7 +46357,7 @@
 /turf/simulated/floor/wood/oak,
 /area/station/maintenance/fsmaint)
 "dSu" = (
-/obj/effect/spawner/random_spawners/fungus_maybe,
+/obj/effect/spawner/random/fungus/maybe,
 /turf/simulated/wall,
 /area/station/maintenance/asmaint)
 "dTF" = (
@@ -47293,7 +47227,7 @@
 	},
 /area/station/maintenance/fsmaint)
 "egW" = (
-/obj/effect/spawner/random_spawners/fungus_maybe,
+/obj/effect/spawner/random/fungus/maybe,
 /turf/simulated/wall/r_wall,
 /area/station/maintenance/aft)
 "ehb" = (
@@ -47472,7 +47406,7 @@
 /turf/simulated/floor/plating/airless,
 /area/space/nearstation)
 "ejH" = (
-/obj/effect/spawner/random_barrier/obstruction,
+/obj/effect/spawner/random/barrier/obstruction,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4
 	},
@@ -47658,7 +47592,7 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/fsmaint)
 "enO" = (
-/obj/effect/spawner/random_spawners/grille_maybe,
+/obj/effect/spawner/random/barrier/grille_maybe,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /turf/simulated/floor/plating,
 /area/station/maintenance/asmaint2)
@@ -48294,7 +48228,7 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/asmaint)
 "ezU" = (
-/obj/effect/spawner/random_spawners/grille_maybe,
+/obj/effect/spawner/random/barrier/grille_maybe,
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable{
 	d1 = 1;
@@ -48338,7 +48272,7 @@
 	},
 /area/station/engineering/equipmentstorage)
 "eAu" = (
-/obj/effect/spawner/random_barrier/obstruction,
+/obj/effect/spawner/random/barrier/obstruction,
 /turf/simulated/floor/plating,
 /area/station/medical/patients_rooms)
 "eAF" = (
@@ -48438,7 +48372,7 @@
 	},
 /area/station/engineering/atmos/control)
 "eDB" = (
-/obj/effect/decal/cleanable/fungus,
+/obj/effect/spawner/random/fungus/frequent,
 /turf/simulated/wall/r_wall,
 /area/station/ai_monitored/storage/eva)
 "eDE" = (
@@ -49724,7 +49658,7 @@
 /area/station/public/dorms)
 "fcM" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/random_barrier/possibly_welded_airlock,
+/obj/effect/spawner/random/barrier/possibly_welded_airlock,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /turf/simulated/floor/plating,
 /area/station/maintenance/asmaint)
@@ -51057,7 +50991,7 @@
 /turf/simulated/floor/bluegrid,
 /area/station/turret_protected/ai)
 "fBj" = (
-/obj/effect/spawner/random_spawners/fungus_maybe,
+/obj/effect/spawner/random/fungus/maybe,
 /turf/simulated/wall,
 /area/station/public/toilet/lockerroom)
 "fBk" = (
@@ -53033,7 +52967,7 @@
 	},
 /area/station/engineering/hallway)
 "gmu" = (
-/obj/effect/spawner/random_spawners/grille_maybe,
+/obj/effect/spawner/random/barrier/grille_maybe,
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/aft)
 "gmE" = (
@@ -53573,11 +53507,7 @@
 /turf/simulated/floor/engine,
 /area/station/maintenance/fsmaint)
 "guL" = (
-/obj/structure/window/reinforced,
 /obj/structure/rack,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
 /obj/item/ammo_box/magazine/sslr{
 	pixel_y = 12;
 	pixel_x = -4
@@ -53786,7 +53716,7 @@
 	},
 /area/station/service/chapel)
 "gyA" = (
-/obj/effect/spawner/random_spawners/grille_maybe,
+/obj/effect/spawner/random/barrier/grille_maybe,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -54971,7 +54901,7 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/apmaint)
 "gQN" = (
-/obj/effect/spawner/random_barrier/possibly_welded_airlock,
+/obj/effect/spawner/random/barrier/possibly_welded_airlock,
 /turf/simulated/floor/plating,
 /area/station/maintenance/fsmaint)
 "gRe" = (
@@ -55469,7 +55399,7 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/aft)
 "gYs" = (
-/obj/effect/spawner/random_spawners/fungus_maybe,
+/obj/effect/spawner/random/fungus/maybe,
 /turf/simulated/wall,
 /area/station/maintenance/apmaint)
 "gYM" = (
@@ -56105,7 +56035,7 @@
 "hiQ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/spawner/random_spawners/oil_maybe,
-/obj/effect/spawner/random_spawners/grille_often,
+/obj/effect/spawner/random/barrier/grille_often,
 /turf/simulated/floor/plating,
 /area/station/maintenance/asmaint2)
 "hju" = (
@@ -56405,7 +56335,7 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/solar_maintenance/fore_port)
 "hoJ" = (
-/obj/effect/spawner/random_spawners/fungus_probably,
+/obj/effect/spawner/random/fungus/probably,
 /turf/simulated/wall,
 /area/station/maintenance/disposal)
 "hpd" = (
@@ -56702,7 +56632,7 @@
 /area/station/security/permabrig)
 "htV" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/random_spawners/grille_maybe,
+/obj/effect/spawner/random/barrier/grille_maybe,
 /turf/simulated/floor/plating,
 /area/station/maintenance/port)
 "htY" = (
@@ -57182,7 +57112,7 @@
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/aft)
 "hCG" = (
-/obj/effect/spawner/random_spawners/grille_often,
+/obj/effect/spawner/random/barrier/grille_often,
 /turf/simulated/floor/plating,
 /area/station/maintenance/fsmaint)
 "hCY" = (
@@ -58444,7 +58374,7 @@
 /turf/simulated/floor/plating/airless,
 /area/station/engineering/control)
 "hZZ" = (
-/obj/effect/spawner/random_spawners/grille_maybe,
+/obj/effect/spawner/random/barrier/grille_maybe,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
@@ -60364,7 +60294,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/random_spawners/grille_often,
+/obj/effect/spawner/random/barrier/grille_often,
 /turf/simulated/floor/plating,
 /area/station/maintenance/asmaint2)
 "iOY" = (
@@ -60451,7 +60381,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/spawner/random_spawners/grille_often,
+/obj/effect/spawner/random/barrier/grille_often,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
@@ -60948,7 +60878,7 @@
 	},
 /area/station/security/brig)
 "iZV" = (
-/obj/effect/spawner/random_spawners/grille_often,
+/obj/effect/spawner/random/barrier/grille_often,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/asmaint)
@@ -61015,7 +60945,7 @@
 /turf/simulated/floor/plasteel,
 /area/station/engineering/smes)
 "jbB" = (
-/obj/effect/spawner/random_spawners/fungus_maybe,
+/obj/effect/spawner/random/fungus/maybe,
 /turf/simulated/wall,
 /area/station/public/dorms)
 "jbO" = (
@@ -61328,7 +61258,7 @@
 /area/station/security/permabrig)
 "jgA" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/random_spawners/grille_often,
+/obj/effect/spawner/random/barrier/grille_often,
 /turf/simulated/floor/plating,
 /area/station/maintenance/asmaint)
 "jgP" = (
@@ -61696,7 +61626,7 @@
 /area/station/science/robotics)
 "jpc" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/random_spawners/grille_maybe,
+/obj/effect/spawner/random/barrier/grille_maybe,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
@@ -61945,7 +61875,7 @@
 	},
 /area/station/maintenance/aft)
 "jsn" = (
-/obj/effect/spawner/random_spawners/grille_maybe,
+/obj/effect/spawner/random/barrier/grille_maybe,
 /obj/structure/cable{
 	d1 = 2;
 	d2 = 4;
@@ -63544,7 +63474,7 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/fsmaint)
 "jYQ" = (
-/obj/effect/spawner/random_spawners/grille_maybe,
+/obj/effect/spawner/random/barrier/grille_maybe,
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plating,
 /area/station/maintenance/apmaint)
@@ -64621,7 +64551,7 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/fsmaint)
 "ksJ" = (
-/obj/effect/spawner/random_spawners/grille_often,
+/obj/effect/spawner/random/barrier/grille_often,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /turf/simulated/floor/plating,
 /area/station/maintenance/asmaint)
@@ -66664,7 +66594,7 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/fsmaint)
 "lcL" = (
-/obj/effect/spawner/random_barrier/wall_probably,
+/obj/effect/spawner/random/barrier/wall_probably,
 /turf/simulated/floor/plating,
 /area/station/maintenance/asmaint)
 "lcZ" = (
@@ -66793,7 +66723,7 @@
 /turf/simulated/floor/plating,
 /area/station/supply/sorting)
 "lfX" = (
-/obj/effect/spawner/random_barrier/obstruction,
+/obj/effect/spawner/random/barrier/obstruction,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable{
 	d1 = 1;
@@ -67175,7 +67105,7 @@
 /turf/simulated/floor/plating,
 /area/station/engineering/tech_storage)
 "lnV" = (
-/obj/effect/spawner/random_spawners/fungus_maybe,
+/obj/effect/spawner/random/fungus/maybe,
 /turf/simulated/wall/r_wall,
 /area/station/maintenance/incinerator)
 "lon" = (
@@ -68799,7 +68729,7 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/disposal)
 "lQx" = (
-/obj/effect/spawner/random_spawners/fungus_maybe,
+/obj/effect/spawner/random/fungus/maybe,
 /turf/simulated/wall,
 /area/station/legal/courtroom)
 "lQE" = (
@@ -68871,7 +68801,7 @@
 	},
 /area/station/science/toxins/mixing)
 "lRt" = (
-/obj/effect/spawner/random_barrier/possibly_welded_airlock,
+/obj/effect/spawner/random/barrier/possibly_welded_airlock,
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
@@ -70026,7 +69956,7 @@
 /turf/simulated/wall,
 /area/station/engineering/dronefabricator)
 "mjg" = (
-/obj/effect/spawner/random_spawners/fungus_maybe,
+/obj/effect/spawner/random/fungus/maybe,
 /turf/simulated/wall/r_wall,
 /area/station/medical/virology)
 "mjh" = (
@@ -70746,7 +70676,7 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/aft)
 "mwL" = (
-/obj/effect/spawner/random_spawners/fungus_maybe,
+/obj/effect/spawner/random/fungus/maybe,
 /turf/simulated/wall,
 /area/station/supply/storage)
 "mwO" = (
@@ -70975,7 +70905,7 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/asmaint)
 "mBl" = (
-/obj/effect/spawner/random_spawners/fungus_maybe,
+/obj/effect/spawner/random/fungus/maybe,
 /turf/simulated/wall,
 /area/station/maintenance/port)
 "mBE" = (
@@ -73282,7 +73212,7 @@
 	},
 /area/station/maintenance/apmaint)
 "nsA" = (
-/obj/effect/spawner/random_spawners/grille_maybe,
+/obj/effect/spawner/random/barrier/grille_maybe,
 /obj/effect/decal/cleanable/glass,
 /turf/simulated/floor/plating,
 /area/station/maintenance/aft)
@@ -74191,7 +74121,7 @@
 	},
 /area/station/medical/cloning)
 "nJo" = (
-/obj/effect/spawner/random_spawners/fungus_maybe,
+/obj/effect/spawner/random/fungus/maybe,
 /turf/simulated/wall,
 /area/station/legal/courtroom/gallery)
 "nJz" = (
@@ -76236,7 +76166,7 @@
 /area/station/science/storage)
 "otX" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/random_barrier/possibly_welded_airlock,
+/obj/effect/spawner/random/barrier/possibly_welded_airlock,
 /turf/simulated/floor/plating,
 /area/station/maintenance/fore)
 "otY" = (
@@ -76402,7 +76332,7 @@
 "oxf" = (
 /obj/effect/landmark/burnturf,
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/random_spawners/grille_maybe,
+/obj/effect/spawner/random/barrier/grille_maybe,
 /turf/simulated/floor/plating,
 /area/station/maintenance/asmaint)
 "oxy" = (
@@ -78385,7 +78315,7 @@
 /area/station/legal/courtroom/gallery)
 "pfF" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/random_spawners/grille_maybe,
+/obj/effect/spawner/random/barrier/grille_maybe,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
@@ -78435,7 +78365,7 @@
 	},
 /area/station/engineering/control)
 "pgV" = (
-/obj/effect/spawner/random_barrier/obstruction,
+/obj/effect/spawner/random/barrier/obstruction,
 /turf/simulated/floor/plating,
 /area/station/maintenance/apmaint)
 "pgW" = (
@@ -79758,7 +79688,7 @@
 	},
 /area/station/legal/courtroom)
 "pBP" = (
-/obj/effect/spawner/random_spawners/grille_often,
+/obj/effect/spawner/random/barrier/grille_often,
 /turf/simulated/floor/plating,
 /area/station/maintenance/asmaint2)
 "pCe" = (
@@ -79866,7 +79796,7 @@
 /area/station/hallway/secondary/entry)
 "pEu" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/random_spawners/grille_maybe,
+/obj/effect/spawner/random/barrier/grille_maybe,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4
 	},
@@ -79874,7 +79804,6 @@
 /area/station/maintenance/apmaint)
 "pEE" = (
 /obj/machinery/flasher/portable,
-/obj/effect/turf_decal/delivery/red/hollow,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "vault"
@@ -81349,7 +81278,7 @@
 /area/station/maintenance/fpmaint)
 "qhK" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/random_spawners/grille_maybe,
+/obj/effect/spawner/random/barrier/grille_maybe,
 /turf/simulated/floor/plating,
 /area/station/maintenance/apmaint)
 "qhO" = (
@@ -82542,7 +82471,7 @@
 	},
 /area/station/engineering/hallway)
 "qCk" = (
-/obj/effect/spawner/random_spawners/fungus_maybe,
+/obj/effect/spawner/random/fungus/maybe,
 /turf/simulated/wall,
 /area/station/supply/warehouse)
 "qCv" = (
@@ -83690,7 +83619,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/effect/spawner/random_spawners/grille_maybe,
+/obj/effect/spawner/random/barrier/grille_maybe,
 /turf/simulated/floor/plating,
 /area/station/maintenance/fsmaint)
 "qTO" = (
@@ -84363,7 +84292,7 @@
 	},
 /area/station/security/permabrig)
 "rgs" = (
-/obj/effect/decal/cleanable/fungus,
+/obj/effect/spawner/random/fungus/frequent,
 /turf/simulated/wall,
 /area/station/maintenance/apmaint)
 "rgv" = (
@@ -84408,7 +84337,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/effect/spawner/random_spawners/grille_often,
+/obj/effect/spawner/random/barrier/grille_often,
 /turf/simulated/floor/plating,
 /area/station/maintenance/asmaint2)
 "rhk" = (
@@ -84627,7 +84556,7 @@
 /turf/space,
 /area/space/nearstation)
 "rmi" = (
-/obj/effect/spawner/random_spawners/grille_often,
+/obj/effect/spawner/random/barrier/grille_often,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -84690,7 +84619,7 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/aft)
 "rng" = (
-/obj/effect/spawner/random_spawners/grille_often,
+/obj/effect/spawner/random/barrier/grille_often,
 /turf/simulated/floor/plating,
 /area/station/maintenance/asmaint)
 "rnu" = (
@@ -85042,7 +84971,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/effect/spawner/random_spawners/grille_maybe,
+/obj/effect/spawner/random/barrier/grille_maybe,
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/aft)
 "rwI" = (
@@ -85066,7 +84995,7 @@
 /area/station/science/robotics/chargebay)
 "rxm" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/random_spawners/grille_often,
+/obj/effect/spawner/random/barrier/grille_often,
 /turf/simulated/floor/plating,
 /area/station/maintenance/fsmaint)
 "rxp" = (
@@ -85265,7 +85194,7 @@
 /turf/simulated/floor/wood/fancy/cherry,
 /area/station/service/theatre)
 "rCg" = (
-/obj/effect/spawner/random_spawners/fungus_probably,
+/obj/effect/spawner/random/fungus/probably,
 /turf/simulated/wall,
 /area/station/maintenance/asmaint)
 "rCn" = (
@@ -85593,7 +85522,7 @@
 	},
 /area/station/science/explab)
 "rID" = (
-/obj/effect/spawner/random_spawners/grille_maybe,
+/obj/effect/spawner/random/barrier/grille_maybe,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/asmaint)
@@ -86031,7 +85960,7 @@
 	},
 /area/station/security/permabrig)
 "rRt" = (
-/obj/effect/spawner/random_spawners/grille_often,
+/obj/effect/spawner/random/barrier/grille_often,
 /turf/simulated/floor/plating,
 /area/station/engineering/utility)
 "rRy" = (
@@ -87436,7 +87365,7 @@
 /area/station/security/permabrig)
 "sqc" = (
 /obj/effect/decal/cleanable/dust,
-/obj/effect/spawner/random_spawners/grille_often,
+/obj/effect/spawner/random/barrier/grille_often,
 /turf/simulated/floor/plating,
 /area/station/maintenance/fore)
 "sqf" = (
@@ -88707,7 +88636,7 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/asmaint)
 "sKS" = (
-/obj/effect/decal/cleanable/fungus,
+/obj/effect/spawner/random/fungus/frequent,
 /turf/simulated/wall,
 /area/station/medical/patients_rooms)
 "sLe" = (
@@ -91845,7 +91774,7 @@
 /area/station/maintenance/turbine)
 "tSN" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/random_spawners/grille_maybe,
+/obj/effect/spawner/random/barrier/grille_maybe,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -92711,7 +92640,7 @@
 	},
 /area/station/hallway/primary/central/nw)
 "ugC" = (
-/obj/effect/spawner/random_spawners/grille_maybe,
+/obj/effect/spawner/random/barrier/grille_maybe,
 /turf/simulated/floor/plating,
 /area/station/maintenance/asmaint)
 "ugT" = (
@@ -92867,7 +92796,7 @@
 	},
 /area/station/engineering/ai_transit_tube)
 "ujX" = (
-/obj/effect/spawner/random_spawners/fungus_maybe,
+/obj/effect/spawner/random/fungus/maybe,
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 4
 	},
@@ -92890,7 +92819,7 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/abandonedbar)
 "uki" = (
-/obj/effect/spawner/random_spawners/grille_maybe,
+/obj/effect/spawner/random/barrier/grille_maybe,
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/fsmaint)
@@ -93547,7 +93476,7 @@
 /area/station/turret_protected/aisat/interior)
 "uwi" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/random_spawners/grille_maybe,
+/obj/effect/spawner/random/barrier/grille_maybe,
 /obj/structure/sign/xenobio{
 	pixel_x = -31
 	},
@@ -93902,7 +93831,7 @@
 /turf/simulated/floor/plating,
 /area/station/command/office/cmo)
 "uBz" = (
-/obj/effect/spawner/random_barrier/obstruction,
+/obj/effect/spawner/random/barrier/obstruction,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /turf/simulated/floor/plating,
 /area/station/maintenance/port)
@@ -94208,7 +94137,7 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/asmaint)
 "uIf" = (
-/obj/effect/spawner/random_spawners/fungus_maybe,
+/obj/effect/spawner/random/fungus/maybe,
 /turf/simulated/wall,
 /area/station/maintenance/asmaint2)
 "uIg" = (
@@ -94236,7 +94165,7 @@
 /area/station/maintenance/apmaint)
 "uJq" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/random_spawners/grille_often,
+/obj/effect/spawner/random/barrier/grille_often,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
@@ -95342,7 +95271,7 @@
 /turf/simulated/floor/bluegrid,
 /area/station/aisat/hall)
 "vdx" = (
-/obj/effect/spawner/random_spawners/fungus_maybe,
+/obj/effect/spawner/random/fungus/maybe,
 /turf/simulated/wall,
 /area/station/maintenance/disposal)
 "vdL" = (
@@ -96273,7 +96202,7 @@
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/apmaint)
 "vve" = (
-/obj/effect/spawner/random_spawners/fungus_maybe,
+/obj/effect/spawner/random/fungus/maybe,
 /turf/simulated/wall,
 /area/station/public/vacant_store)
 "vvq" = (
@@ -96681,7 +96610,7 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/asmaint)
 "vBG" = (
-/obj/effect/spawner/random_spawners/grille_often,
+/obj/effect/spawner/random/barrier/grille_often,
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
@@ -97777,7 +97706,7 @@
 /turf/simulated/floor/wood/fancy/cherry,
 /area/station/command/office/captain)
 "vUq" = (
-/obj/effect/spawner/random_spawners/grille_maybe,
+/obj/effect/spawner/random/barrier/grille_maybe,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
@@ -98267,7 +98196,7 @@
 	},
 /area/station/legal/courtroom/gallery)
 "wcG" = (
-/obj/effect/spawner/random_spawners/fungus_maybe,
+/obj/effect/spawner/random/fungus/maybe,
 /turf/simulated/wall/r_wall,
 /area/station/maintenance/apmaint)
 "wcS" = (
@@ -98397,7 +98326,7 @@
 "wgA" = (
 /obj/effect/landmark/burnturf,
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/random_barrier/obstruction,
+/obj/effect/spawner/random/barrier/obstruction,
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/asmaint)
 "wgG" = (
@@ -99940,7 +99869,7 @@
 /turf/simulated/floor/plasteel,
 /area/station/public/storage/office)
 "wJg" = (
-/obj/effect/spawner/random_spawners/fungus_maybe,
+/obj/effect/spawner/random/fungus/maybe,
 /turf/simulated/wall,
 /area/station/maintenance/storage)
 "wJn" = (
@@ -100253,7 +100182,7 @@
 /turf/simulated/floor/bluegrid,
 /area/station/maintenance/asmaint)
 "wPx" = (
-/obj/effect/decal/cleanable/fungus,
+/obj/effect/spawner/random/fungus/frequent,
 /turf/simulated/wall/r_wall,
 /area/station/maintenance/fore)
 "wPF" = (
@@ -100470,7 +100399,7 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/aft)
 "wTp" = (
-/obj/effect/spawner/random_spawners/fungus_probably,
+/obj/effect/spawner/random/fungus/probably,
 /turf/simulated/wall,
 /area/station/maintenance/fpmaint2)
 "wTE" = (
@@ -101152,7 +101081,7 @@
 	},
 /area/station/security/interrogation)
 "xfQ" = (
-/obj/effect/spawner/random_spawners/grille_often,
+/obj/effect/spawner/random/barrier/grille_often,
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
@@ -102878,7 +102807,7 @@
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/apmaint)
 "xLs" = (
-/obj/effect/spawner/random_barrier/obstruction,
+/obj/effect/spawner/random/barrier/obstruction,
 /obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/plating,
 /area/station/maintenance/fsmaint)
@@ -103054,7 +102983,7 @@
 /area/station/engineering/break_room)
 "xOA" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/random_spawners/grille_maybe,
+/obj/effect/spawner/random/barrier/grille_maybe,
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/apmaint)
 "xOH" = (
@@ -133401,7 +133330,7 @@ aaa
 aab
 aaa
 aiv
-ahG
+afe
 aor
 acj
 acH
@@ -133662,7 +133591,7 @@ adP
 ajj
 acj
 aif
-adh
+abP
 ajj
 vET
 vBJ
@@ -134175,7 +134104,7 @@ akl
 pEE
 ahV
 aiq
-aiN
+aiB
 ajr
 guL
 kAr
@@ -134432,9 +134361,9 @@ aeR
 agS
 jUf
 aip
-aiB
+aiN
 ajq
-afe
+ahG
 dCA
 alX
 amI
