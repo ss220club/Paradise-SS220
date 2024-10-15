@@ -1,7 +1,7 @@
 // MARK: Vox
 
 /datum/gear/racial/vox_sandal
-	display_name = "vox sandals"
+	display_name = "Vox sandals"
 	path = /obj/item/clothing/shoes/roman/vox
 	slot = SLOT_HUD_SHOES
 
@@ -11,32 +11,32 @@
 	slot = SLOT_HUD_GLOVES
 
 /datum/gear/racial/vox_jumpsuit
-	display_name = "vox work jumpsuit"
+	display_name = "Vox work jumpsuit"
 	description = "These loose clothes are optimized for the labors of the lower castes onboard the arkships. Large openings in the top allow for breathability while the pants are durable yet flexible enough to not restrict movement."
 	path = /obj/item/clothing/under/vox/jumpsuit
 	slot = SLOT_HUD_JUMPSUIT
 
 /datum/gear/racial/vox_jumpsuit/red
-	display_name = "vox red jumpsuit"
+	display_name = "Vox red jumpsuit"
 	path = /obj/item/clothing/under/vox/jumpsuit/red
 
 /datum/gear/racial/vox_jumpsuit/teal
-	display_name = "vox teal jumpsuit"
+	display_name = "Vox teal jumpsuit"
 	path = /obj/item/clothing/under/vox/jumpsuit/teal
 
 /datum/gear/racial/vox_jumpsuit/blue
-	display_name = "vox blue jumpsuit"
+	display_name = "Vox blue jumpsuit"
 	path = /obj/item/clothing/under/vox/jumpsuit/blue
 
 /datum/gear/racial/vox_jumpsuit/green
-	display_name = "vox green jumpsuit"
+	display_name = "Vox green jumpsuit"
 	path = /obj/item/clothing/under/vox/jumpsuit/green
 
 /datum/gear/racial/vox_jumpsuit/yellow
-	display_name = "vox yellow jumpsuit"
+	display_name = "Vox yellow jumpsuit"
 	path = /obj/item/clothing/under/vox/jumpsuit/yellow
 
 /datum/gear/racial/vox_jumpsuit/purple
-	display_name = "vox purple jumpsuit"
+	display_name = "Vox purple jumpsuit"
 	path = /obj/item/clothing/under/vox/jumpsuit/purple
 

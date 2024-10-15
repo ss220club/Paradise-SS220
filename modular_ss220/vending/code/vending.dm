@@ -222,6 +222,9 @@
 						/obj/item/clothing/under/rainbow_skirt = 100)
 	. = ..()
 
+/obj/machinery/economy/vending/suitdispenser/free/Initialize(mapload)
+	prices = list()
+
 /obj/machinery/economy/vending/wallmed/emergency_ntmed
 	name = "\improper Advanced Nanomed"
 	desc = "Продвинутая экстренная аптечка на все случаи жизни."
@@ -243,12 +246,13 @@
 	prices |= list(/obj/item/clothing/shoes/clown_shoes/moffers = 80)
 	. = ..()
 
-/obj/machinery/economy/vending/tool/Initialize(mapload)
-	products += list(
-			/obj/item/clothing/gloves/color/yellow/vox = 1
-		)
+/obj/machinery/economy/vending/shoedispenser/free/Initialize(mapload)
+	prices = list()
 
-	prices = list(
-			/obj/item/clothing/gloves/color/yellow/vox = 250
-		)
+/obj/machinery/economy/vending/tool/Initialize(mapload)
+	contraband |= list(/obj/item/clothing/gloves/color/yellow/vox = 1)
+	prices |= list(/obj/item/clothing/gloves/color/yellow/vox = 250)
 	. = ..()
+
+/obj/machinery/economy/vending/tool/free/Initialize(mapload)
+	prices = list()
