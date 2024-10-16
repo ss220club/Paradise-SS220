@@ -24,7 +24,6 @@
 	var/max_energy = 20
 	var/charge_time = 10 SECONDS
 	var/new_icon_state
-	var/new_item_state = null
 
 /obj/item/melee/vibroblade/Initialize(mapload)
 	. = ..()
@@ -77,10 +76,8 @@
 /obj/item/melee/vibroblade/update_icon_state()
 	icon_state = initial(icon_state)
 	new_icon_state = "[icon_state]_[energy]"
-	new_item_state = "[item_state]_[energy]"
 	if(energy>=0)
 		icon_state = new_icon_state
-		item_state = new_item_state
 
 /obj/item/melee/vibroblade/sardaukar
 	name = "\improper виброклинок гвардейца"
