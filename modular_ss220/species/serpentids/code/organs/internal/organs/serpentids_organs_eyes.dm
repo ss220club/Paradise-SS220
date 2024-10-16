@@ -13,7 +13,7 @@
 	var/chemical_id = SERPENTID_CHEM_REAGENT_ID
 	var/decay_rate = 0.1
 	var/decay_recovery = BASIC_RECOVER_VALUE
-	var/organ_process_toxins = 0.035
+	var/organ_process_toxins = 0.04
 	var/chemical_consuption = GAS_ORGAN_CHEMISTRY_EYES
 	var/vision_ajust_coefficient = 0.4
 	var/update_time_client_colour = 10

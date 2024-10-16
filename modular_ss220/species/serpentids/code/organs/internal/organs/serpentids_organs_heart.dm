@@ -9,7 +9,7 @@
 	var/chemical_id = SERPENTID_CHEM_REAGENT_ID
 	var/decay_rate = 0.5
 	var/decay_recovery = BASIC_RECOVER_VALUE
-	var/organ_process_toxins = 0.01
+	var/organ_process_toxins = 0.03
 
 /obj/item/organ/internal/heart/serpentid/Initialize(mapload)
 	. = ..()

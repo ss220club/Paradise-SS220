@@ -29,7 +29,7 @@
 		var/obj/item/organ/internal/liver/target_liver = organ.owner.get_int_organ(/obj/item/organ/internal/liver)
 		var/obj/item/organ/internal/kidneys/target_kidney = organ.owner.get_int_organ(/obj/item/organ/internal/kidneys)
 
-		if(organ == target_kidney || organ == target_liver )
+		if(organ == target_kidney || organ == target_liver)
 			organ.receive_damage(organ.owner.get_damage_amount(TOX) * toxin_damage_rate, 1)
 			organ.owner.adjustToxLoss(-1 * organ.owner.get_damage_amount(TOX) * toxin_damage_rate)
 		else if(target_liver.status == ORGAN_DEAD && target_kidney.status == ORGAN_DEAD)

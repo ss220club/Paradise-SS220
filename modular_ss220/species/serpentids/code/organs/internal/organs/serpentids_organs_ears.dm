@@ -9,7 +9,7 @@
 	action_icon_state = 	list(/datum/action/item_action/organ_action/toggle = "gas_abilities")
 	var/decay_rate = 0.2
 	var/decay_recovery = BASIC_RECOVER_VALUE
-	var/organ_process_toxins = 0.025
+	var/organ_process_toxins = 0.05
 	var/chemical_consuption = GAS_ORGAN_CHEMISTRY_EARS
 	var/chemical_id = SERPENTID_CHEM_REAGENT_ID
 	var/active = FALSE
