@@ -1,9 +1,9 @@
-// Sakhno rifle
+// MARK: Sakhno rifle
 /obj/item/gun/projectile/shotgun/boltaction/sakhno
 	name = "\improper Sakhno Precision Rifle"
-	desc = "A Sakhno Precision Rifle, a bolt action weapon that was (and certainly still is) popular with \
-		frontiersmen, cargo runners, private security forces, explorers, and other unsavoury types. This particular \
-		pattern of the rifle dates back all the way to 2440."
+	desc = "Высокоточная винтовка Sakhno со скользящим затвором, которая была (и, безусловно, остается) крайне популярной среди \
+		покорителей фронтира, контрабандистов, ЧОП'овцев, исследователей, и прочих рисковых ребят. Эта модель \
+		была разработана и производится с 2440 года."
 	icon = 'modular_ss220/objects/icons/wide_guns.dmi'
 	icon_state = "sakhno"
 	item_state = "sakhno"
@@ -22,6 +22,7 @@
 	max_ammo = 5
 	multiload = 1
 
+// MARK: .310
 /obj/item/ammo_box/s310
 	name = "stripper clip (.310)"
 	desc = "A stripper clip for .310 cartridges, used in Sakhno rifles. Five round capacity."

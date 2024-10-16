@@ -1,7 +1,8 @@
 // Skrellian carbine
 /obj/item/gun/energy/gun/skrell_carbine
-	name = "\improper скреллианский энергетический карабин"
-	desc = "Энергетический карабин Vuu'Xqu*ix T-3, более известный в ТСФ как 'VT-3'. Это оружие редко можно увидеть где-то помимо ОСС. "
+	name = "\improper skrellian carbine"
+	desc = "Энергетический карабин Vuu'Xqu*ix T-3, более известный в ТСФ как 'VT-3'. Это оружие редко можно увидеть где-то, помимо ОСС. \
+		Имеет два режима мощности энерголуча: 'летальный' и 'штурмовой'. Второй предназначен для прорыва сквозь укрпеления противника."
 	icon = 'modular_ss220/objects/icons/guns.dmi'
 	lefthand_file = 'modular_ss220/objects/icons/inhands/guns_lefthand.dmi'
 	righthand_file = 'modular_ss220/objects/icons/inhands/guns_righthand.dmi'
@@ -15,8 +16,10 @@
 	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/gun/energy/gun/skrell_carbine/elite
-	name = "\improper элитный скреллианский энергетический карабин"
-	desc = "Энергетический карабин Vuu'Xqu*ix T-3, более известный в ТСФ как 'VT-3'. Это оружие редко можно увидеть где-то помимо ОСС. Этот экземпляр обладает батареей повышенной емкости, а так же дополнительными стабилизаторами стрельбы."
+	name = "\improper elite skrellian carbine"
+	desc = "Энергетический карабин Vuu'Xqu*ix T-3, более известный в ТСФ как 'VT-3'. Это оружие редко можно увидеть где-то, помимо ОСС. \
+		Этот экземпляр обладает батареей повышенной емкости, а так же дополнительными стабилизаторами стрельбы. \
+		Имеет два режима мощности энерголуча: 'летальный' и 'штурмовой'. Второй предназначен для прорыва сквозь укрпеления противника."
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/skrell_light/elite, /obj/item/ammo_casing/energy/laser/skrell_assault/elite)
 
 /obj/item/ammo_casing/energy/laser/skrell_light
@@ -33,7 +36,7 @@
 	fire_sound = 'modular_ss220/objects/sound/weapons/gunshots/blaster.ogg'
 
 /obj/item/ammo_casing/energy/laser/skrell_light/elite
-	e_cost = 60
+	e_cost = 50
 
 /obj/item/ammo_casing/energy/laser/skrell_assault/elite
 	e_cost = 200
@@ -58,11 +61,12 @@
 	name = "\improper Vuu'Xqu*ix T-3 gun power cell"
 	maxcharge = 1600
 
-// Skrellian railgun rifle
+// MARK: Skrellian railgun rifle
 
 /obj/item/gun/projectile/automatic/sniper_rifle/skrell_rifle
-	name = "\improper скреллианский рельсовая винтовка"
-	desc = "Винтовка Zquiv*Tzuuli-8, или ''ZT-8'' - это рельсотрон, стоящий на вооружении тяжелых штурмовых отрядов Раскинта из ОСС. Имеет цилендрический магазин заряжания, разгонный магнитный блок и стабилизаторы для точной стрельбы."
+	name = "\improper skrellian rifle"
+	desc = "Винтовка Zquiv*Tzuuli-8, или ''ZT-8'' - это рельсотрон, стоящий на вооружении тяжелых штурмовых отрядов Раскинта из ОСС. \
+		Имеет цилиндрический магазин заряжания, разгонный магнитный блок и стабилизаторы для точной стрельбы."
 	icon = 'modular_ss220/objects/icons/guns.dmi'
 	lefthand_file = 'modular_ss220/objects/icons/inhands/guns_lefthand.dmi'
 	righthand_file = 'modular_ss220/objects/icons/inhands/guns_righthand.dmi'
@@ -77,14 +81,16 @@
 	mag_type = /obj/item/ammo_box/magazine/skrell_magazine
 
 /obj/item/gun/projectile/automatic/sniper_rifle/skrell_rifle/elite
-	name = "\improper элитная скреллианская рельсовая винтовка"
-	desc = "Винтовка Zquiv*Tzuuli-8, или ''ZT-8'' - это рельсотрон, стоящий на вооружении тяжелых штурмовых отрядов Раскинта из ОСС. Имеет цилендрический магазин заряжания, разгонный магнитный блок и стабилизаторы для точной стрельбы. Этот экземпляр обладает расширенным магазинным гнездом, а так же оптическим прицелом."
+	name = "\improper elite skrellian rifle"
+	desc = "Винтовка Zquiv*Tzuuli-8, или ''ZT-8'' - это рельсотрон, стоящий на вооружении тяжелых штурмовых отрядов Раскинта из ОСС. \
+		Имеет цилиндрический магазин заряжания, разгонный магнитный блок и стабилизаторы для точной стрельбы. \
+		Этот экземпляр обладает расширенным магазинным гнездом, а так же оптическим прицелом."
 	fire_delay = 20
 	zoomable = TRUE
 	mag_type = /obj/item/ammo_box/magazine/skrell_magazine/skrell_magazine_elite
 
 /obj/item/ammo_box/magazine/skrell_magazine
-	name = "\improper цилиндр с боекомплектом"
+	name = "\improper ammo cylinder"
 	desc = "Цилиндровый магазин для рельсотрона."
 	icon = 'modular_ss220/objects/icons/ammo.dmi'
 	icon_state = "skrell_magazine"
@@ -92,7 +98,7 @@
 	ammo_type = /obj/item/ammo_casing/railgun
 	max_ammo = 4
 	caliber = "railgun"
-	multiload = 1
+	multiload = TRUE
 
 /obj/item/ammo_box/magazine/skrell_magazine/skrell_magazine_elite
 	icon_state = "skrell_magazine_elite"
@@ -101,7 +107,7 @@
 	ammo_type = /obj/item/ammo_casing/railgun/railgun_strong
 
 /obj/item/ammo_casing/railgun
-	name = "\improper пуля рельсотрона"
+	name = "\improper railgun ammo casing"
 	desc = "Снаряд для рельсотрона. Состоит из поражающего элемента и магнитного стабилизатора."
 	icon = 'modular_ss220/objects/icons/ammo.dmi'
 	icon_state = "railgun-casing"
@@ -125,10 +131,10 @@
 	weaken = 0.2
 	speed = 0.2
 
-// Skrellian pistol
+// MARK: Skrellian pistol
 
 /obj/item/gun/energy/gun/skrell_pistol
-	name = "\improper самозарядный скреллианский энергетический пистолет"
+	name = "\improper self-charge skrellian pistol"
 	desc = "Энергетический пистолет Qua'l*Sarqzix-44x, известный на территориях ТСФ как QS-44. Компактный и удобный в использовании, имеет два режима мощности энерголуча: 'летальный' и 'нейтрализующий'."
 	icon = 'modular_ss220/objects/icons/guns.dmi'
 	icon_state = "skrell_pistol"

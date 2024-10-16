@@ -358,14 +358,15 @@
 	H.set_default_language(GLOB.all_languages["Skrellian"])
 
 	var/obj/item/card/id/I = H.wear_id
-	if(istype(I) && !is_sardaukar)
-		apply_to_card(I, H, list(ACCESS_MAINT_TUNNELS), "SDTF Raskinta Katish", "retro_medical")
-		I.rank = "SDTF Raskinta Katish"
-		I.assignment = "SDTF Raskinta Katish"
-	else
-		apply_to_card(I, H, list(ACCESS_MAINT_TUNNELS), "Emperor Guard", "retro_medical")
-		I.rank = "Emperor Guard"
-		I.assignment = "Emperor Guard"
+	if(istype(I))
+		if(!is_sardaukar)
+			apply_to_card(I, H, list(ACCESS_MAINT_TUNNELS), "SDTF Raskinta Katish", "retro_medical")
+			I.rank = "SDTF Raskinta Katish"
+			I.assignment = "SDTF Raskinta Katish"
+		else
+			apply_to_card(I, H, list(ACCESS_MAINT_TUNNELS), "Emperor Guard", "retro_medical")
+			I.rank = "Emperor Guard"
+			I.assignment = "Emperor Guard"
 	H.sec_hud_set_ID()
 
 /datum/outfit/admin/sdtf/rifleman
