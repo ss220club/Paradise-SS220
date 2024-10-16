@@ -445,7 +445,6 @@
 	icon_override = 'modular_ss220/clothing/icons/mob/suits.dmi'
 	icon_state = "armored_coat"
 	item_state = "armored_coat"
-	species_restricted = list("Human", "Skrell", "Slime People", "Skeleton", "Shadow", "Nucleation", "Vulpkanin", "Unathi", "Tajaran", "Nian", "Machine")
 	armor = list(MELEE = 25, BULLET = 25, LASER = 15, ENERGY = 5, BOMB = 1, RAD = 0, FIRE = 50, ACID = 50)
 	body_parts_covered = UPPER_TORSO | LOWER_TORSO | ARMS
 	cold_protection = UPPER_TORSO | LOWER_TORSO | ARMS
