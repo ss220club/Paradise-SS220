@@ -8,7 +8,6 @@
 	lefthand_file = 'modular_ss220/objects/icons/inhands/melee_lefthand.dmi'
 	righthand_file = 'modular_ss220/objects/icons/inhands/melee_righthand.dmi'
 	hitsound = 'modular_ss220/objects/sound/weapons/melee/sardaukar/knifehit1.ogg'
-	equip_sound = 'modular_ss220/objects/sound/weapons/melee/sardaukar/pickup.ogg'
 	drop_sound = 'modular_ss220/aesthetics_sounds/sound/handling/drop/knife.ogg'
 	pickup_sound = 'modular_ss220/objects/sound/weapons/melee/sardaukar/equip.ogg'
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
