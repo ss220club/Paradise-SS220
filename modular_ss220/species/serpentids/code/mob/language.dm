@@ -15,5 +15,5 @@
 		new_name = capitalize(pick(GLOB.first_names_female))
 	else
 		new_name = capitalize(pick(GLOB.first_names_male))
-	new_name += "[rand(10000)]"
+	new_name += " [rand(10000)]"
 	return new_name

@@ -139,7 +139,8 @@
 		return
 	var/obj/item/organ/internal/cyberimp/chest/serpentid_blades/blades_implant = M.get_int_organ(/obj/item/organ/internal/cyberimp/chest/serpentid_blades)
 	if(blades_implant)
-		if(blades_implant)
+		blades_implant.owner.reset_visibility()
+		if(blades_implant.blades_active)
 			if((M != H) && M.a_intent != INTENT_HELP && H.check_shields(M, 0, M.name, attack_type = UNARMED_ATTACK))
 				add_attack_logs(M, H, "Melee attacked with blades (miss/block)")
 				H.visible_message("<span class='warning'>[M] attempted to touch [H]!</span>")
@@ -148,6 +149,7 @@
 			switch(M.a_intent)
 				if(INTENT_HELP)
 					help(M, H, attacker_style)
+
 
 				if(INTENT_GRAB)
 					blades_grab(M, H, attacker_style)
@@ -176,7 +178,6 @@
 	var/obj/item/grab/grab_item = user.get_active_hand()
 	grab_item.state = GRAB_AGGRESSIVE
 	grab_item.icon_state = "grabbed1"
-	user.reset_visibility()
 
 //Модификация усиленного дизарма
 /datum/species/proc/blades_disarm(mob/living/carbon/human/user, mob/living/carbon/human/target, datum/martial_art/attacker_style)
