@@ -66,3 +66,15 @@
 	volume = 80
 	muzzled_noises = list("слабо")
 	sound = 'modular_ss220/species/serpentids/sounds/serpentid_wiggle.ogg'
+
+/datum/keybinding/emote/carbon/human/gbsroar
+	linked_emote = /datum/emote/living/carbon/human/gbsroar
+	name = EMOTE_HUMAN_GBSROAR
+
+/datum/keybinding/emote/carbon/human/gbshiss
+	linked_emote = /datum/emote/living/carbon/human/gbshiss
+	name = EMOTE_HUMAN_GBSHISS
+
+/datum/keybinding/emote/carbon/human/gbswiggles
+	linked_emote = /datum/emote/living/carbon/human/gbswiggles
+	name = EMOTE_HUMAN_GBSWIGGLE

@@ -126,6 +126,7 @@
 	var/obj/item/organ/external/affected = target.get_organ(user.zone_selected)
 	if((SEND_SIGNAL(affected, COMSIG_CARAPACE_SURGERY_CAN_START) & CARAPACE_STOP_SURGERY_STEP))
 		return FALSE
+	. = .. ()
 
 /datum/surgery/bone_repair/carapace/can_start(mob/user, mob/living/carbon/target)
 	var/obj/item/organ/external/affected = target.get_organ(user.zone_selected)
@@ -140,12 +141,6 @@
 	return FALSE
 
 /datum/surgery/organ_manipulation/carapace/can_start(mob/user, mob/living/carbon/target)
-	var/obj/item/organ/external/affected = target.get_organ(user.zone_selected)
-	if((SEND_SIGNAL(affected, COMSIG_CARAPACE_SURGERY_CAN_START) & CARAPACE_STOP_SURGERY_STEP) && (affected.status & ORGAN_BROKEN))
-		return TRUE
-	return FALSE
-
-/datum/surgery/bone_repair/carapace/can_start(mob/user, mob/living/carbon/target)
 	var/obj/item/organ/external/affected = target.get_organ(user.zone_selected)
 	if((SEND_SIGNAL(affected, COMSIG_CARAPACE_SURGERY_CAN_START) & CARAPACE_STOP_SURGERY_STEP) && (affected.status & ORGAN_BROKEN))
 		return TRUE
