@@ -22,7 +22,6 @@
 #define CARAPACE_HEAL_BROKEN_PROB 50
 //Список операций, которые будут заблокированы пока панцирь не будет сломан
 #define CARAPACE_BLOCK_OPERATION list(/datum/surgery/bone_repair,/datum/surgery/bone_repair/skull,/datum/surgery/organ_manipulation)
-
 #define COMSIG_CARAPACE_RECEIVE_DAMAGE "receive_damage"
 #define COMSIG_CARAPACE_HEAL_DAMAGE "heal_damage"
 
@@ -91,17 +90,17 @@
 		/datum/surgery_step/retract_carapace
 	)
 
-	possible_locs = list(BODY_ZONE_CHEST, BODY_ZONE_L_ARM, BODY_ZONE_PRECISE_L_HAND, BODY_ZONE_R_ARM, BODY_ZONE_PRECISE_R_HAND, BODY_ZONE_R_LEG, BODY_ZONE_PRECISE_R_FOOT, BODY_ZONE_L_LEG, BODY_ZONE_PRECISE_L_FOOT, BODY_ZONE_PRECISE_GROIN)
+	possible_locs = list(BODY_ZONE_HEAD, BODY_ZONE_CHEST, BODY_ZONE_L_ARM, BODY_ZONE_PRECISE_L_HAND, BODY_ZONE_R_ARM, BODY_ZONE_PRECISE_R_HAND, BODY_ZONE_R_LEG, BODY_ZONE_PRECISE_R_FOOT, BODY_ZONE_L_LEG, BODY_ZONE_PRECISE_L_FOOT, BODY_ZONE_PRECISE_GROIN)
 	requires_organic_bodypart = TRUE
 
 /datum/surgery/organ_manipulation/carapace
-	name = "Organ manipulation"
+	name = "Organ Manipulation"
 	steps = list(
 		/datum/surgery_step/open_encased/retract,
 		/datum/surgery_step/proxy/manipulate_organs,
 		/datum/surgery_step/internal/manipulate_organs/finish,
 	)
-	possible_locs = list(BODY_ZONE_CHEST, BODY_ZONE_L_ARM, BODY_ZONE_PRECISE_L_HAND, BODY_ZONE_R_ARM, BODY_ZONE_PRECISE_R_HAND, BODY_ZONE_R_LEG, BODY_ZONE_PRECISE_R_FOOT, BODY_ZONE_L_LEG, BODY_ZONE_PRECISE_L_FOOT, BODY_ZONE_PRECISE_GROIN)
+	possible_locs = list(BODY_ZONE_HEAD, BODY_ZONE_CHEST, BODY_ZONE_L_ARM, BODY_ZONE_PRECISE_L_HAND, BODY_ZONE_R_ARM, BODY_ZONE_PRECISE_R_HAND, BODY_ZONE_R_LEG, BODY_ZONE_PRECISE_R_FOOT, BODY_ZONE_L_LEG, BODY_ZONE_PRECISE_L_FOOT, BODY_ZONE_PRECISE_GROIN)
 	requires_organic_bodypart = TRUE
 
 /datum/surgery/bone_repair/carapace
@@ -112,16 +111,15 @@
 		/datum/surgery_step/finish_bone,
 		/datum/surgery_step/generic/cauterize
 	)
-	possible_locs = list(BODY_ZONE_CHEST, BODY_ZONE_L_ARM, BODY_ZONE_PRECISE_L_HAND, BODY_ZONE_R_ARM, BODY_ZONE_PRECISE_R_HAND, BODY_ZONE_R_LEG, BODY_ZONE_PRECISE_R_FOOT, BODY_ZONE_L_LEG, BODY_ZONE_PRECISE_L_FOOT, BODY_ZONE_PRECISE_GROIN)
+	possible_locs = list(BODY_ZONE_HEAD, BODY_ZONE_CHEST, BODY_ZONE_L_ARM, BODY_ZONE_PRECISE_L_HAND, BODY_ZONE_R_ARM, BODY_ZONE_PRECISE_R_HAND, BODY_ZONE_R_LEG, BODY_ZONE_PRECISE_R_FOOT, BODY_ZONE_L_LEG, BODY_ZONE_PRECISE_L_FOOT, BODY_ZONE_PRECISE_GROIN)
 	requires_organic_bodypart = TRUE
 
 //Оверрайды для операций, которые могут применяться для панциря.
 /datum/surgery/can_start(mob/user, mob/living/carbon/target)
 	var/obj/item/organ/external/affected = target.get_organ(user.zone_selected)
-	if((SEND_SIGNAL(affected, COMSIG_CARAPACE_SURGERY_CAN_START) & CARAPACE_STOP_SURGERY_STEP) && !(affected.status & ORGAN_BROKEN))
-		return FALSE
-	if(src.type in CARAPACE_BLOCK_OPERATION)//отключить стандартные операции класса "манипуляция органов", восстановить кость.
-		return FALSE
+	if(affected)
+		if((SEND_SIGNAL(affected, COMSIG_CARAPACE_SURGERY_CAN_START) & CARAPACE_STOP_SURGERY_STEP) && (!(affected.status & ORGAN_BROKEN) || (src.type in CARAPACE_BLOCK_OPERATION))) //отключить стандартные операции класса "манипуляция органов", восстановить кость.
+			return FALSE
 	. = .. ()
 
 /datum/surgery/bone_repair/can_start(mob/user, mob/living/carbon/target)
@@ -138,6 +136,18 @@
 /datum/surgery/carapace_break/can_start(mob/user, mob/living/carbon/target)
 	var/obj/item/organ/external/affected = target.get_organ(user.zone_selected)
 	if((SEND_SIGNAL(affected, COMSIG_CARAPACE_SURGERY_CAN_START) & CARAPACE_STOP_SURGERY_STEP) && !(affected.status & ORGAN_BROKEN))
+		return TRUE
+	return FALSE
+
+/datum/surgery/organ_manipulation/carapace/can_start(mob/user, mob/living/carbon/target)
+	var/obj/item/organ/external/affected = target.get_organ(user.zone_selected)
+	if((SEND_SIGNAL(affected, COMSIG_CARAPACE_SURGERY_CAN_START) & CARAPACE_STOP_SURGERY_STEP) && (affected.status & ORGAN_BROKEN))
+		return TRUE
+	return FALSE
+
+/datum/surgery/bone_repair/carapace/can_start(mob/user, mob/living/carbon/target)
+	var/obj/item/organ/external/affected = target.get_organ(user.zone_selected)
+	if((SEND_SIGNAL(affected, COMSIG_CARAPACE_SURGERY_CAN_START) & CARAPACE_STOP_SURGERY_STEP) && (affected.status & ORGAN_BROKEN))
 		return TRUE
 	return FALSE
 
