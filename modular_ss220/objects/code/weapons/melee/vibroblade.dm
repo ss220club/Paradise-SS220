@@ -24,6 +24,8 @@
 	var/energy = 0
 	var/max_energy = 20
 	var/charge_time = 10 SECONDS
+	var/new_icon_state
+	var/new_item_state = null
 
 /obj/item/melee/vibroblade/Initialize(mapload)
 	. = ..()
@@ -46,6 +48,7 @@
 	if(!do_after_once(user, charge_time, target = src))
 		return
 	energy += 5
+	update_icon_state()
 	. = ..()
 
 /obj/item/melee/vibroblade/attack(mob/living/carbon/human/target, mob/living/carbon/human/user)
@@ -69,7 +72,16 @@
 		else
 			lucky_organ.droplimb(1, DROPLIMB_SHARP, 0, 1)
 			energy -= 20
+	update_icon_state()
 	..()
+
+/obj/item/melee/vibroblade/update_icon_state()
+	icon_state = initial(icon_state)
+	new_icon_state = "[icon_state]_[energy]"
+	new_item_state = "[item_state]_[energy]"
+	if(energy>=0)
+		icon_state = new_icon_state
+		item_state = new_item_state
 
 /obj/item/melee/vibroblade/sardaukar
 	name = "\improper виброклинок гвардейца"
