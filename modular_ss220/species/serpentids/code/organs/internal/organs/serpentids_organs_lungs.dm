@@ -17,7 +17,7 @@
 	var/obj/item/tank/internals/oxygen/serpentid_vault = new /obj/item/tank/internals/oxygen/serpentid_vault_tank
 	var/decay_rate = 0.3
 	var/decay_recovery = BASIC_RECOVER_VALUE
-	var/organ_process_toxins = 0.25
+	var/organ_process_toxins = 0.025
 	var/chem_to_oxy_mult = 0.1
 	var/danger_air = FALSE
 	var/hand_active = FALSE
