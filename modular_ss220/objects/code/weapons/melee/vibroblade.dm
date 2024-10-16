@@ -22,18 +22,32 @@
 	flags = CONDUCT
 	var/energy = 0
 	var/max_energy = 20
-	var/charge_time = 10 SECONDS
+	var/charge_time = 8 SECONDS
 	var/new_icon_state
 
 /obj/item/melee/vibroblade/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/parry, _stamina_constant = 2, _stamina_coefficient = 0.5, _parryable_attack_types = ALL_ATTACK_TYPES)
 
+/obj/item/melee/vibroblade/update_icon_state()
+	icon_state = initial(icon_state)
+	new_icon_state = "[icon_state]_[energy]"
+	if(energy>=0)
+		icon_state = new_icon_state
+
+/obj/item/melee/vibroblade/examine(mob/user)
+	. = ..()
+	if (energy == 0)
+		. += span_notice("Виброклинок не заряжен.")
+	if (energy > 0)
+		. += span_notice("Виброклинок заряжен на [(energy / max_energy)*100]%. [energy == max_energy ? "Следующий удар будет крайне травмирующим!" : "Следующий удар будет усиленным!"]")
+	. += span_notice("Используйте виброклинок в руке что бы повысить уровень заряда. При достижения максимального значения, зарядка будет заблокирована")
+
 /obj/item/melee/vibroblade/attack_self(mob/living/user)
 	var/msg_for_all = span_warning("[user.name] пытается зарядить [src], но кнопка на рукояти не поддается!")
 	var/msg_for_user = span_notice("Вы пытаетесь нажать на кнопку зарядки [src], но она заблокирована.")
 	var/msg_recharge_all = span_notice("[user.name] нажимает на кнопку зарядки [src]...")
-	var/msg_recharge_user = span_notice("Вы нажимаете на кнопку зарядки [src], пытаясь зарядить микрогенератор...")
+	var/msg_recharge_user = span_notice("Вы нажимаете на кнопку зарядки [src], заряжая микрогенератор...")
 
 	if(energy >= max_energy)
 		user.visible_message(msg_for_all, msg_for_user)
@@ -52,35 +66,39 @@
 /obj/item/melee/vibroblade/attack(mob/living/carbon/human/target, mob/living/carbon/human/user)
 	var/list/obj/item/organ/external/cutoff = list ("l_arm", "r_arm", "l_hand", "r_hand", "l_leg", "r_leg", "r_foot", "l_foot")
 	if(energy == 5)
-		target.adjustBruteLoss (5)
+		target.adjustBruteLoss (10)
 		energy -= 5
 	if(energy == 10)
-		target.adjustBruteLoss (10)
+		target.adjustBruteLoss (15)
 		energy -= 10
 	if(energy == 15)
 		target.adjustBruteLoss (10)
-		target.Weaken(1 SECONDS)
+		target.Weaken(1.5 SECONDS)
 		energy -= 15
 	if(energy == 20)
 		target.adjustBruteLoss (10)
 		var/obj/item/organ/external/pick_organ = pick(cutoff)
 		var/obj/item/organ/external/lucky_organ = target.get_organ(pick_organ)
+		var/slayermsg_for_all = span_warning("[user.name] изящно и непринужденно отсекает [lucky_organ.name] [target.name]!")
+		var/slayermsg_for_user = span_biggerdanger("Вы искусно отсекаете [lucky_organ.name] [target.name]!")
 		if(!lucky_organ)
 			energy -= 20
 		else
 			lucky_organ.droplimb(1, DROPLIMB_SHARP, 0, 1)
 			energy -= 20
+			user.visible_message(slayermsg_for_all, slayermsg_for_user)
 	update_icon_state()
 	..()
 
-/obj/item/melee/vibroblade/update_icon_state()
-	icon_state = initial(icon_state)
-	new_icon_state = "[icon_state]_[energy]"
-	if(energy>=0)
-		icon_state = new_icon_state
+/obj/item/melee/vibroblade/suicide_act(mob/living/carbon/human/user)
+	var/obj/item/organ/external/head = user.get_organ ("head")
+	user.visible_message("<span class='suicide'>[user] прижимает лезвие [src] к своей шее и нажимает на кнопку зарядки микрогенератора. Кажется, он хочет покончить со своей жизнью! </span>")
+	user.atom_say("Слава Вечной Империи!")
+	head.droplimb(1, DROPLIMB_SHARP, 0, 1)
+	return BRUTELOSS
 
 /obj/item/melee/vibroblade/sardaukar
-	name = "\improper виброклинок гвардейца"
+	name = "\improper emperor guard vibroblade"
 	desc = "Виброклинок гвардейцев Императора. Микрогенератор ультразвука в рукояти позволяет лезвию вибрировать \
 	с огромной частотой, что позволяет при его достаточной зарядке наносить глубокие раны даже ударами по касательной. \
 	Воины Куи'кверр-Кэтиш обучаются мастерству ближнего боя с детства, поэтому в их руках он особо опасен и жесток. \
