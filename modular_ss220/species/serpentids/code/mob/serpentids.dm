@@ -157,9 +157,9 @@
 	H.AddComponent(/datum/component/mob_overlay_shift, shift_y_hand = 3, shift_xs_belt = 5, shift_y_belt = 7, shift_y_back = 7, shift_y_head = 10, shift_xs_head = 3) //shift_xs_hand = 12
 	H.AddComponent(/datum/component/gadom_living)
 	H.AddComponent(/datum/component/gadom_cargo)
-	H.verbs |= /mob/living/carbon/human/verb/emote_gbsroar
-	H.verbs |= /mob/living/carbon/human/verb/emote_gbshiss
-	H.verbs |= /mob/living/carbon/human/verb/emote_gbswiggles
+	H.verbs |= /mob/living/carbon/human/proc/emote_gbsroar
+	H.verbs |= /mob/living/carbon/human/proc/emote_gbshiss
+	H.verbs |= /mob/living/carbon/human/proc/emote_gbswiggles
 	H.verbs -= /mob/living/carbon/human/verb/emote_cough
 	H.verbs -= /mob/living/carbon/human/verb/emote_sneeze
 	H.verbs -= /mob/living/carbon/human/verb/emote_sniff
@@ -169,11 +169,11 @@
 	H.chat_message_y_offset = 11
 	SEND_SIGNAL(H, COMSIG_MOB_OVERLAY_SHIFT_UPDATE)
 
-/datum/species/moth/on_species_loss(mob/living/carbon/human/H)
+/datum/species/serpentid/on_species_loss(mob/living/carbon/human/H)
 	..()
-	H.verbs -= /mob/living/carbon/human/verb/emote_gbsroar
-	H.verbs -= /mob/living/carbon/human/verb/emote_gbshiss
-	H.verbs -= /mob/living/carbon/human/verb/emote_gbswiggles
+	H.verbs -= /mob/living/carbon/human/proc/emote_gbsroar
+	H.verbs -= /mob/living/carbon/human/proc/emote_gbshiss
+	H.verbs -= /mob/living/carbon/human/proc/emote_gbswiggles
 	H.verbs |= /mob/living/carbon/human/verb/emote_cough
 	H.verbs |= /mob/living/carbon/human/verb/emote_sneeze
 	H.verbs |= /mob/living/carbon/human/verb/emote_sniff

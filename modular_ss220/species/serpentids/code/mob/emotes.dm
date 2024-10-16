@@ -1,19 +1,32 @@
-/mob/living/carbon/human/verb/emote_gbsroar()
+#define EMOTE_HUMAN_GBSROAR 			"Рычать"
+#define EMOTE_HUMAN_GBSHISS 			"Шипеть"
+#define EMOTE_HUMAN_GBSWIGGLE 			"Шевелить усиками"
+
+/mob/living/carbon/human/proc/emote_gbsroar()
 	set name = "< " + EMOTE_HUMAN_ROAR + " >"
 	set category = "Эмоции"
 	emote("gbsroar", intentional = TRUE)
 
-/mob/living/carbon/human/verb/emote_gbshiss()
+/mob/living/carbon/human/proc/emote_gbshiss()
 	set name = "< " + EMOTE_HUMAN_HISS + " >"
 	set category = "Эмоции"
 	emote("gbshiss", intentional = TRUE)
 
-/mob/living/carbon/human/verb/emote_gbswiggles()
+/mob/living/carbon/human/proc/emote_gbswiggles()
 	set name = "< " + EMOTE_HUMAN_WIGGLES + " >"
 	set category = "Эмоции"
 	emote("gbswiggles", intentional = TRUE)
 
-/datum/emote/living/carbon/human/roar/gbs
+/datum/emote/living/carbon/human/gbsroar
+	name = EMOTE_HUMAN_GBSROAR
+
+/datum/emote/living/carbon/human/gbshiss
+	name = EMOTE_HUMAN_GBSHISS
+
+/datum/emote/living/carbon/human/gbswiggles
+	name = EMOTE_HUMAN_GBSWIGGLE
+
+/datum/emote/living/carbon/human/gbsroar
 	key = "gbsroar"
 	key_third_person = "gbsroar"
 	message = "утробно рычит."
@@ -25,11 +38,11 @@
 	emote_type = EMOTE_VISIBLE | EMOTE_MOUTH | EMOTE_AUDIBLE
 	age_based = TRUE
 
-/datum/emote/living/carbon/human/roar/gbs/get_sound(mob/living/user)
+/datum/emote/living/carbon/human/gbsroar/get_sound(mob/living/user)
 	return pick(
 		'modular_ss220/species/serpentids/sounds/serpentid_roar.ogg')
 
-/datum/emote/living/carbon/human/hiss/gbs
+/datum/emote/living/carbon/human/gbshiss
 	key = "gbshiss"
 	key_third_person = "gbshisses"
 	message = "шипит."
@@ -41,7 +54,7 @@
 	sound = "modular_ss220/species/serpentids/sounds/serpentid_hiss.ogg"
 	muzzled_noises = list("weak hissing")
 
-/datum/emote/living/carbon/human/wiggles/gbs
+/datum/emote/living/carbon/human/gbswiggles
 	key = "gbswiggles"
 	key_third_person = "gbswiggles"
 	message = "шевелит усиками."
