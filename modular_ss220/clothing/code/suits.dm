@@ -449,3 +449,9 @@
 	body_parts_covered = UPPER_TORSO | LOWER_TORSO | ARMS
 	cold_protection = UPPER_TORSO | LOWER_TORSO | ARMS
 	heat_protection = UPPER_TORSO | LOWER_TORSO | ARMS
+	sprite_sheets = list(
+		"Drask" 			= 	'modular_ss220/clothing/icons/mob/species/drask/suits.dmi',
+		"Grey" 				= 	'modular_ss220/clothing/icons/mob/species/grey/suits.dmi',
+		"Kidan" 			= 	'modular_ss220/clothing/icons/mob/species/kidan/suits.dmi',
+		"Vox" 				= 	'modular_ss220/clothing/icons/mob/species/vox/suits.dmi',
+		)
