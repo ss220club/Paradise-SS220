@@ -32,16 +32,16 @@
 /obj/item/melee/vibroblade/update_icon_state()
 	icon_state = initial(icon_state)
 	new_icon_state = "[icon_state]_[energy]"
-	if(energy>=0)
+	if(energy >= 0)
 		icon_state = new_icon_state
 
 /obj/item/melee/vibroblade/examine(mob/user)
 	. = ..()
+	. += span_notice("Используйте виброклинок в руке что бы повысить уровень заряда. При достижения максимального значения, зарядка будет заблокирована")
 	if(energy == 0)
 		. += span_notice("Виброклинок не заряжен.")
 	if(energy > 0)
 		. += span_notice("Виброклинок заряжен на [(energy / max_energy)*100]%. [energy == max_energy ? "Следующий удар будет крайне травмирующим!" : "Следующий удар будет усиленным!"]")
-	. += span_notice("Используйте виброклинок в руке что бы повысить уровень заряда. При достижения максимального значения, зарядка будет заблокирована")
 
 /obj/item/melee/vibroblade/attack_self(mob/living/user)
 	var/msg_for_all = span_warning("[user.name] пытается зарядить [src], но кнопка на рукояти не поддается!")
@@ -91,8 +91,9 @@
 	..()
 
 /obj/item/melee/vibroblade/suicide_act(mob/living/carbon/human/user)
+	var/suicide_msg = span_suicide("[user] прижимает лезвие [src] к своей шее и нажимает на кнопку зарядки микрогенератора. Кажется, он хочет покончить со своей жизнью!")
 	var/obj/item/organ/external/head = user.get_organ ("head")
-	user.visible_message("<span class='suicide'>[user] прижимает лезвие [src] к своей шее и нажимает на кнопку зарядки микрогенератора. Кажется, он хочет покончить со своей жизнью! </span>")
+	user.visible_message(suicide_msg)
 	user.atom_say("Слава Вечной Империи!")
 	head.droplimb(1, DROPLIMB_SHARP, 0, 1)
 	return BRUTELOSS

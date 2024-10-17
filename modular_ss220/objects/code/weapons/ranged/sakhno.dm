@@ -1,6 +1,6 @@
 // MARK: Sakhno rifle
 /obj/item/gun/projectile/shotgun/boltaction/sakhno
-	name = "\improper Sakhno Precision Rifle"
+	name = "\improper Sakhno precision rifle"
 	desc = "Высокоточная винтовка Sakhno со скользящим затвором, которая была (и, безусловно, остается) крайне популярной среди \
 		покорителей фронтира, контрабандистов, ЧОП'овцев, исследователей, и прочих рисковых ребят. Эта модель \
 		была разработана и производится с 2440 года."

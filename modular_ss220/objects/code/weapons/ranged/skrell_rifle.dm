@@ -1,4 +1,4 @@
-// Skrellian carbine
+// MARK: Skrellian carbine
 /obj/item/gun/energy/gun/skrell_carbine
 	name = "\improper skrellian carbine"
 	desc = "Энергетический карабин Vuu'Xqu*ix T-3, более известный в ТСФ как 'VT-3'. Это оружие редко можно увидеть где-то, помимо ОСС. \
