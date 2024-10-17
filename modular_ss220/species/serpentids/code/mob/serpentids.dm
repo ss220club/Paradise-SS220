@@ -118,27 +118,27 @@
 	var/can_stealth = TRUE
 	var/gene_lastcall = 0
 	var/list/shift_data = list(
-    "head" = list(
-        "center" = list("x" = 0, "y" = 10),
-        "side" = list("x" = 3, "y" = 0),
-        "front" = list("x" = 0, "y" = 0)
-    ),
-    "inhand" = list(
-        "center" = list("x" = 0, "y" = 3),
-        "side" = list("x" = 0, "y" = 0),
-        "front" = list("x" = 0, "y" = 0)
-    ),
-    "belt" = list(
-        "center" = list("x" = 0, "y" = 7),
-        "side" = list("x" = 5, "y" = 0),
-        "front" = list("x" = 0, "y" = 0)
-    ),
-    "back" = list(
-        "center" = list("x" = 0, "y" = 7),
-        "side" = list("x" = 0, "y" = 0),
-        "front" = list("x" = 0, "y" = 0)
-    )
-)
+	"head" = list(
+		"center" = list("x" = 0, "y" = 10),
+		"side" = list("x" = 3, "y" = 0),
+		"front" = list("x" = 0, "y" = 0)
+	),
+	"inhand" = list(
+		"center" = list("x" = 0, "y" = 3),
+		"side" = list("x" = 0, "y" = 0),
+		"front" = list("x" = 0, "y" = 0)
+	),
+	"belt" = list(
+		"center" = list("x" = 0, "y" = 7),
+		"side" = list("x" = 5, "y" = 0),
+		"front" = list("x" = 0, "y" = 0)
+	),
+	"back" = list(
+		"center" = list("x" = 0, "y" = 7),
+		"side" = list("x" = 0, "y" = 0),
+		"front" = list("x" = 0, "y" = 0)
+	)
+	)
 
 
 /datum/species/serpentid/handle_reagents(mob/living/carbon/human/H, datum/reagent/R)

@@ -73,7 +73,7 @@
 	return signal_result
 
 /datum/component/gadom_cargo/proc/try_load_cargo(datum/component_holder, mob/user, atom/movable/AM)
-	if((user.a_intent == "grab"))
+	if(user.a_intent == "grab")
 		if(user.incapacitated() || HAS_TRAIT(user, TRAIT_HANDS_BLOCKED) || get_dist(user, AM) > 1)
 			return
 		if(!istype(AM))

@@ -14,11 +14,11 @@
 	var/list/positions = list("center", "side", "front")
 
 	// Initialize shifts using the provided shift_data list or default to zero
-	for (var/body_part in body_parts)
+	for(var/body_part in body_parts)
 		// Create a nested list for each body part if it doesn't exist
 		shift_data[body_part] = shift_list[body_part] ? shift_list[body_part] : list()
 
-		for (var/position in positions)
+		for(var/position in positions)
 			// Create a nested list for each position within the body part
 			shift_data[body_part][position] = shift_list[body_part][position] ? shift_list[body_part][position] : list()
 
@@ -54,7 +54,7 @@
 	var/flip = (dir == WEST || dir == SOUTH) ? -1 : 1
 
 	// Update shift values based on direction
-	for (var/body_part in body_parts)
+	for(var/body_part in body_parts)
 		var/x_shift_key = "shift_x"
 		var/y_shift_key = "shift_y"
 
