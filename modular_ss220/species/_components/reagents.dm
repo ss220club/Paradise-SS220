@@ -16,6 +16,7 @@
 /datum/reagent/cabbagilium/on_mob_life(mob/living/M)
 	var/update_flags = STATUS_UPDATE_NONE
 	update_flags |= M.adjustCloneLoss(clone_damage_heal * REAGENTS_EFFECT_MULTIPLIER, FALSE)
+	return ..() | update_flags
 
 //Расширение на химикаты - новый химикат для серпентидов
 //Химикат позволяет ускорять в 2 раза действия серпентидов (погрузка людей/ящиков, активация клинков)
