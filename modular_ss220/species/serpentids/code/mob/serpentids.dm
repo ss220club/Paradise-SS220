@@ -182,7 +182,6 @@
 	H.verbs -= /mob/living/carbon/human/verb/emote_blink
 	H.verbs -= /mob/living/carbon/human/verb/emote_blink_r
 	H.chat_message_y_offset = 11
-	SEND_SIGNAL(H, COMSIG_MOB_OVERLAY_SHIFT_UPDATE)
 
 /datum/species/serpentid/on_species_loss(mob/living/carbon/human/H)
 	..()

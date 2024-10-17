@@ -3,8 +3,6 @@
 Цепляется на конечность (в идеале торс).area
 Опреедляет возможности тела серпентида, которые зависят от общего состояния хитина всех конечностей
 */
-#define COMSIG_CARAPACE_SHELL_PROCESS "process_shell"
-
 /datum/component/carapace_shell
 	var/mob/living/carbon/human/H
 	var/state_1_threshold = 0
@@ -25,10 +23,10 @@
 	armored_temp_progression = temp_progression
 
 /datum/component/carapace_shell/RegisterWithParent()
-	RegisterSignal(H, COMSIG_CARAPACE_SHELL_PROCESS, PROC_REF(process_shell))
+	RegisterSignal(H, COMSIG_LIVING_LIFE, PROC_REF(process_shell))
 
 /datum/component/carapace_shell/UnregisterFromParent()
-	UnregisterSignal(H, COMSIG_CARAPACE_SHELL_PROCESS)
+	UnregisterSignal(H, COMSIG_LIVING_LIFE)
 
 //Прок на обновление сопротивления урона
 /datum/component/carapace_shell/proc/process_shell()
@@ -84,10 +82,3 @@
 	specie.heat_level_1 = heat
 	specie.heat_level_2 = specie.heat_level_1 + armored_temp_progression
 	specie.heat_level_3 = specie.heat_level_2 + armored_temp_progression
-
-//Расширение проков урона и лечения для обращения к компоненту
-/datum/species/handle_life(mob/living/carbon/human/H)
-	. = ..()
-	SEND_SIGNAL(H, COMSIG_CARAPACE_SHELL_PROCESS)
-	return
-

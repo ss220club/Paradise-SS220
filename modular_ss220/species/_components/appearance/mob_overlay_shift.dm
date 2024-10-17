@@ -3,12 +3,6 @@
 Компонент должен цепляться на моба.
 При инициализации предаются сдвиги.
 */
-//Базовый трешхолд урона, при достижение или выше которого будет слом.
-#define COMSIG_MOB_OVERLAY_SHIFT_CALL "shift_call"
-#define COMSIG_MOB_OVERLAY_SHIFT_UPDATE "update_call"
-#define COMSIG_MOB_OVERLAY_SHIFT_CHECK "module_available"
-#define MOB_OVERLAY_SHIFT_CHECK (1<<0)
-
 /datum/component/mob_overlay_shift
 	var/dir = NORTH
 
@@ -33,15 +27,15 @@
 			shift_data[body_part][position]["y"] = shift_list[body_part][position]["y"] ? shift_list[body_part][position]["y"] : 0
 
 /datum/component/mob_overlay_shift/RegisterWithParent()
-	RegisterSignal(parent, COMSIG_MOB_OVERLAY_SHIFT_CALL, PROC_REF(shift_call))
-	RegisterSignal(parent, COMSIG_MOB_OVERLAY_SHIFT_UPDATE, PROC_REF(update_call))
+	RegisterSignal(parent, COMSIG_ATOM_DIR_CHANGE, PROC_REF(shift_call))
+	RegisterSignal(parent, COMSIG_LIVING_LIFE, PROC_REF(update_call))
 
 /datum/component/mob_overlay_shift/UnregisterFromParent()
-	UnregisterSignal(parent, COMSIG_MOB_OVERLAY_SHIFT_CALL)
-	UnregisterSignal(parent, COMSIG_MOB_OVERLAY_SHIFT_UPDATE)
+	UnregisterSignal(parent, COMSIG_ATOM_DIR_CHANGE)
+	UnregisterSignal(parent, COMSIG_LIVING_LIFE)
 
 //Проки, срабатываемые при получении или исцелении урона
-/datum/component/mob_overlay_shift/proc/shift_call(mob/living/carbon/human/mob, new_dir)
+/datum/component/mob_overlay_shift/proc/shift_call(mob/living/carbon/human/mob, old_dir, new_dir)
 	if(new_dir)
 		dir = new_dir
 
@@ -314,11 +308,3 @@
 
 	mob.apply_overlay(LEFT_EAR_LAYER)
 	mob.apply_overlay(RIGHT_EAR_LAYER)
-
-/mob/living/carbon/human/setDir(new_dir)
-	. = ..()
-	SEND_SIGNAL(src, COMSIG_MOB_OVERLAY_SHIFT_CALL, new_dir)
-
-/mob/living/carbon/human/Life(seconds, times_fired)
-	. = ..()
-	SEND_SIGNAL(src, COMSIG_MOB_OVERLAY_SHIFT_CALL)

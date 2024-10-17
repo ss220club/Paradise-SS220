@@ -25,6 +25,7 @@
 
 /obj/item/organ/internal/ears/serpentid/on_life()
 	.=..()
+	SEND_SIGNAL(src, COMSIG_ORGAN_CHEM_CALL, chemical_consuption)
 	if(chemical_consuption <= owner.get_chemical_value(chemical_id) && active)
 		if(prob(((max_damage - damage)/max_damage) * 100))
 			sense_creatures()
@@ -33,8 +34,10 @@
 	.=..()
 	if(!force_off && owner.get_chemical_value(chemical_id) >= chemical_consuption && !(status & ORGAN_DEAD))
 		active = TRUE
+		chemical_consuption = initial(chemical_consuption)
 	else
 		active = FALSE
+		chemical_consuption = 0
 
 /obj/item/organ/internal/ears/serpentid/proc/sense_creatures()
 	var/last_movement_threshold = 5 SECONDS

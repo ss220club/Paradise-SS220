@@ -39,6 +39,7 @@
 
 /obj/item/organ/internal/eyes/serpentid/on_life()
 	. = ..()
+	SEND_SIGNAL(src, COMSIG_ORGAN_CHEM_CALL, chemical_consuption)
 	if(!isnull(owner))
 		var/mob/mob = owner
 		mob.update_client_colour(time = update_time_client_colour)

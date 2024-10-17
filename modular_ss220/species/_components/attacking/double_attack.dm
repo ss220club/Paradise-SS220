@@ -5,18 +5,14 @@
 Срабатывает только, если оружие одинаковое.
 */
 
-#define COMSIG_DOUBLEATTACK_PROCESS "hand_pre_attack"
-#define COMSIG_DOUBLEATTACK_CHECK "check_state"
-#define DOUBLEATTACK_CHECK_ACTIVE (1<<0)
-
 /datum/component/double_attack
 	var/state_attack = FALSE
 
 /datum/component/double_attack/RegisterWithParent()
-	RegisterSignal(parent, COMSIG_DOUBLEATTACK_PROCESS, PROC_REF(hand_pre_attack))
+	RegisterSignal(parent, COMSIG_MOB_ITEM_ATTACK, PROC_REF(hand_pre_attack))
 
 /datum/component/double_attack/UnregisterFromParent()
-	UnregisterSignal(parent, COMSIG_DOUBLEATTACK_PROCESS)
+	UnregisterSignal(parent, COMSIG_MOB_ITEM_ATTACK)
 
 /datum/component/double_attack/proc/hand_pre_attack(obj/item/weapon, mob/living/target, mob/living/user, def_zone)
 	SIGNAL_HANDLER
@@ -30,8 +26,3 @@
 		return
 	hand_item.attack(target, user, def_zone)
 	state_attack = FALSE
-
-//Расширение базового прока атаки для запуска сигнала
-/obj/item/attack(mob/living/M, mob/living/user, def_zone)
-	. = .. ()
-	SEND_SIGNAL(src, COMSIG_DOUBLEATTACK_PROCESS, M, user, def_zone)

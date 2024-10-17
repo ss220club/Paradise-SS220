@@ -5,7 +5,7 @@
 Срабатывает только, если оружие одинаковое.
 */
 
-#define COMSIG_PAIRATTACK_PROCESS "offhand_pre_attack"
+#define COMSIG_ITEM_ATTACK_PROCESS "offhand_pre_attack"
 #define COMSIG_PAIRATTACK_SYNC "sync_states"
 #define COMSIG_PAIRATTACK_CHECK "check_state"
 #define PAIRATTACK_CHECK_ACTIVE (1<<0)
@@ -15,12 +15,12 @@
 	var/state_attack = FALSE
 
 /datum/component/pair_attack/RegisterWithParent()
-	RegisterSignal(parent, COMSIG_PAIRATTACK_PROCESS, PROC_REF(offhand_pre_attack))
+	RegisterSignal(parent, COMSIG_ITEM_ATTACK_PROCESS, PROC_REF(offhand_pre_attack))
 	RegisterSignal(parent, COMSIG_PAIRATTACK_CHECK, PROC_REF(check_state))
 	RegisterSignal(parent, COMSIG_PAIRATTACK_SYNC, PROC_REF(sync_states))
 
 /datum/component/pair_attack/UnregisterFromParent()
-	UnregisterSignal(parent, COMSIG_PAIRATTACK_PROCESS)
+	UnregisterSignal(parent, COMSIG_ITEM_ATTACK_PROCESS)
 	UnregisterSignal(parent, COMSIG_PAIRATTACK_CHECK)
 	UnregisterSignal(parent, COMSIG_PAIRATTACK_SYNC)
 
@@ -59,4 +59,4 @@
 //Расширение базового прока атаки для запуска сигнала
 /obj/item/attack(mob/living/M, mob/living/user, def_zone)
 	. = .. ()
-	SEND_SIGNAL(src, COMSIG_PAIRATTACK_PROCESS, M, user, def_zone)
+	SEND_SIGNAL(src, COMSIG_ITEM_ATTACK_PROCESS, M, user, def_zone)

@@ -22,11 +22,10 @@
 #define CARAPACE_HEAL_BROKEN_PROB 50
 //Список операций, которые будут заблокированы пока панцирь не будет сломан
 #define CARAPACE_BLOCK_OPERATION list(/datum/surgery/bone_repair,/datum/surgery/bone_repair/skull,/datum/surgery/organ_manipulation)
-#define COMSIG_CARAPACE_RECEIVE_DAMAGE "receive_damage"
-#define COMSIG_CARAPACE_HEAL_DAMAGE "heal_damage"
-
 #define CARAPACE_ENCASE_WORD "chitin"
 
+#define COMSIG_LIMB_RECIEVE_DAMAGE "receive_damage"
+#define COMSIG_LIMB_HEAL_DAMAGE "heal_damage"
 
 /datum/component/carapace
 	var/self_medning = FALSE
@@ -39,12 +38,12 @@
 	affected_limb.encased = CARAPACE_ENCASE_WORD
 
 /datum/component/carapace/RegisterWithParent()
-	RegisterSignal(parent, COMSIG_CARAPACE_RECEIVE_DAMAGE, PROC_REF(receive_damage))
-	RegisterSignal(parent, COMSIG_CARAPACE_HEAL_DAMAGE, PROC_REF(heal_damage))
+	RegisterSignal(parent, COMSIG_LIMB_RECIEVE_DAMAGE, PROC_REF(receive_damage))
+	RegisterSignal(parent, COMSIG_LIMB_HEAL_DAMAGE, PROC_REF(heal_damage))
 
 /datum/component/carapace/UnregisterFromParent()
-	UnregisterSignal(parent, COMSIG_CARAPACE_RECEIVE_DAMAGE)
-	UnregisterSignal(parent, COMSIG_CARAPACE_HEAL_DAMAGE)
+	UnregisterSignal(parent, COMSIG_LIMB_RECIEVE_DAMAGE)
+	UnregisterSignal(parent, COMSIG_LIMB_HEAL_DAMAGE)
 
 //Проки, срабатываемые при получении или исцелении урона
 /datum/component/carapace/proc/receive_damage(obj/item/organ/external/affected_limb, brute, burn, sharp, used_weapon = null, list/forbidden_limbs = list(), ignore_resists = FALSE, updating_health = TRUE)
@@ -62,12 +61,12 @@
 //Расширение проков урона и лечения для обращения к компоненту
 /obj/item/organ/external/receive_damage(brute, burn, sharp, used_weapon = null, list/forbidden_limbs = list(), ignore_resists = FALSE, updating_health = TRUE)
 	. = ..()
-	SEND_SIGNAL(src, COMSIG_CARAPACE_RECEIVE_DAMAGE, brute, burn, sharp, used_weapon, forbidden_limbs, ignore_resists, updating_health)
+	SEND_SIGNAL(src, COMSIG_LIMB_RECIEVE_DAMAGE, brute, burn, sharp, used_weapon, forbidden_limbs, ignore_resists, updating_health)
 	return
 
 /obj/item/organ/external/heal_damage(brute, burn, internal = 0, robo_repair = 0, updating_health = TRUE)
 	. = ..()
-	SEND_SIGNAL(src, COMSIG_CARAPACE_HEAL_DAMAGE, brute, burn, internal, robo_repair, updating_health)
+	SEND_SIGNAL(src, COMSIG_LIMB_HEAL_DAMAGE, brute, burn, internal, robo_repair, updating_health)
 	return
 
 //////////////////////////////////////////////////////////////////
