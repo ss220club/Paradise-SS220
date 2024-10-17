@@ -3,13 +3,10 @@
 	name_plural = "Serpentids"
 	icobase = 'modular_ss220/species/serpentids/icons/mob/r_serpentid.dmi'
 	eyes_icon = 'modular_ss220/species/serpentids/icons/mob/r_serpentid_eyes.dmi'
-	blurb = "TODO"
+	blurb = "TODO" //NOT MERGE - Я еще не доработал
 	language = "Nabberian"
-	siemens_coeff = 2.0
 	coldmod = 0.9
 	heatmod = 1.2
-	hunger_drain = 0.3
-	action_mult = 1
 	tox_mod = 1.5
 	eyes = "serpentid_eyes_s"
 	butt_sprite_icon = 'modular_ss220/species/serpentids/icons/mob/r_serpentid_butt.dmi'
@@ -17,9 +14,8 @@
 	nojumpsuit = TRUE
 
 	species_traits = list(LIPS, NO_HAIR)
-	inherent_traits = list(TRAIT_CHUNKYFINGERS, TRAIT_RESISTHEAT, TRAIT_RESISTHIGHPRESSURE, TRAIT_RESISTLOWPRESSURE, TRAIT_NOPAIN)
+	inherent_traits = list(TRAIT_NOPAIN)
 	inherent_biotypes = MOB_ORGANIC | MOB_HUMANOID | MOB_REPTILE
-	dies_at_threshold = TRUE
 
 	dietflags = DIET_OMNI
 	taste_sensitivity = TASTE_SENSITIVITY_SHARP
@@ -56,8 +52,6 @@
 		//"r_hand" =  /obj/item/organ/internal/cyberimp/arm/toolset/mantisblade,
 		"chest" =  /obj/item/organ/internal/cyberimp/chest/serpentid_blades,
 		)
-
-	bio_chips = list(/obj/item/bio_chip/tracking)
 
 	has_limbs = list(
 		"chest" =  list("path" = /obj/item/organ/external/chest/carapace, "descriptor" = "chest"),
@@ -123,19 +117,40 @@
 	buckle_lying = FALSE
 	var/can_stealth = TRUE
 	var/gene_lastcall = 0
+	var/list/shift_data = list(
+    "head" = list(
+        "center" = list("x" = 0, "y" = 10),
+        "side" = list("x" = 3, "y" = 0),
+        "front" = list("x" = 0, "y" = 0)
+    ),
+    "inhand" = list(
+        "center" = list("x" = 0, "y" = 3),
+        "side" = list("x" = 0, "y" = 0),
+        "front" = list("x" = 0, "y" = 0)
+    ),
+    "belt" = list(
+        "center" = list("x" = 0, "y" = 7),
+        "side" = list("x" = 5, "y" = 0),
+        "front" = list("x" = 0, "y" = 0)
+    ),
+    "back" = list(
+        "center" = list("x" = 0, "y" = 7),
+        "side" = list("x" = 0, "y" = 0),
+        "front" = list("x" = 0, "y" = 0)
+    )
+)
+
 
 /datum/species/serpentid/handle_reagents(mob/living/carbon/human/H, datum/reagent/R)
-	if(R.id == SERPENTID_CHEM_REAGENT_ID)
-		return FALSE
-	else
-		return TRUE
+	return (R.id != SERPENTID_CHEM_REAGENT_ID)
 
 //Перенести на карапас/грудь
 /datum/species/serpentid/handle_life(mob/living/carbon/human/H)
 	var/armor_count = 0
 	var/gene_degradation = 0
 	for(var/obj/item/organ/external/limb in H.bodyparts)
-		if(!(limb.type in has_limbs[limb.limb_name]["path"]))
+		var/allow_part = has_limbs[limb.limb_name]["path"]
+		if(limb.type != allow_part)
 			gene_degradation += SERPENTID_GENE_DEGRADATION_DAMAGE
 		var/limb_armor = limb.brute_dam + limb.burn_dam
 		armor_count += limb_armor
@@ -154,12 +169,12 @@
 	H.buckle_lying = buckle_lying
 	H.update_transform()
 	H.AddComponent(/datum/component/footstep, FOOTSTEP_MOB_SLIME, 1, -6)
-	H.AddComponent(/datum/component/mob_overlay_shift, shift_y_hand = 3, shift_xs_belt = 5, shift_y_belt = 7, shift_y_back = 7, shift_y_head = 10, shift_xs_head = 3) //shift_xs_hand = 12
+	H.AddComponent(/datum/component/mob_overlay_shift, shift_data) //shift_xs_hand = 12
 	H.AddComponent(/datum/component/gadom_living)
 	H.AddComponent(/datum/component/gadom_cargo)
-	H.verbs |= /mob/living/carbon/human/proc/emote_gbsroar
-	H.verbs |= /mob/living/carbon/human/proc/emote_gbshiss
-	H.verbs |= /mob/living/carbon/human/proc/emote_gbswiggles
+	H.verbs |= /mob/living/carbon/human/proc/emote_gasroar
+	H.verbs |= /mob/living/carbon/human/proc/emote_gashiss
+	H.verbs |= /mob/living/carbon/human/proc/emote_gaswiggles
 	H.verbs -= /mob/living/carbon/human/verb/emote_cough
 	H.verbs -= /mob/living/carbon/human/verb/emote_sneeze
 	H.verbs -= /mob/living/carbon/human/verb/emote_sniff
@@ -171,9 +186,9 @@
 
 /datum/species/serpentid/on_species_loss(mob/living/carbon/human/H)
 	..()
-	H.verbs -= /mob/living/carbon/human/proc/emote_gbsroar
-	H.verbs -= /mob/living/carbon/human/proc/emote_gbshiss
-	H.verbs -= /mob/living/carbon/human/proc/emote_gbswiggles
+	H.verbs -= /mob/living/carbon/human/proc/emote_gasroar
+	H.verbs -= /mob/living/carbon/human/proc/emote_gashiss
+	H.verbs -= /mob/living/carbon/human/proc/emote_gaswiggles
 	H.verbs |= /mob/living/carbon/human/verb/emote_cough
 	H.verbs |= /mob/living/carbon/human/verb/emote_sneeze
 	H.verbs |= /mob/living/carbon/human/verb/emote_sniff
@@ -185,6 +200,8 @@
 /datum/species/serpentid/can_equip(obj/item/I, slot, disable_warning = FALSE, mob/living/carbon/human/H)
 	switch(slot)
 		if(SLOT_HUD_SHOES)
+			return FALSE
+		if(SLOT_HUD_GLOVES)
 			return FALSE
 		if(SLOT_HUD_JUMPSUIT)
 			return FALSE

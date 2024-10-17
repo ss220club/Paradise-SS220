@@ -25,46 +25,39 @@
 #define COMSIG_CARAPACE_RECEIVE_DAMAGE "receive_damage"
 #define COMSIG_CARAPACE_HEAL_DAMAGE "heal_damage"
 
-#define COMSIG_CARAPACE_SURGERY_CAN_START "block_operation"
-#define CARAPACE_STOP_SURGERY_STEP (1<<0)
+#define CARAPACE_ENCASE_WORD "chitin"
+
 
 /datum/component/carapace
-	var/obj/item/organ/external/limb
 	var/self_medning = FALSE
 	var/broken_treshold = CARAPACE_BROKEN_STATE
 
-/datum/component/carapace/Initialize(caller_limb, allow_self_medning, break_threshold, control_node = FALSE)
-	..()
-	limb = parent
+/datum/component/carapace/Initialize(allow_self_medning, break_threshold, control_node = FALSE)
 	self_medning = allow_self_medning
 	broken_treshold = break_threshold
+	var/obj/item/organ/external/affected_limb = parent
+	affected_limb.encased = CARAPACE_ENCASE_WORD
 
 /datum/component/carapace/RegisterWithParent()
 	RegisterSignal(parent, COMSIG_CARAPACE_RECEIVE_DAMAGE, PROC_REF(receive_damage))
 	RegisterSignal(parent, COMSIG_CARAPACE_HEAL_DAMAGE, PROC_REF(heal_damage))
-	RegisterSignal(parent, COMSIG_CARAPACE_SURGERY_CAN_START, PROC_REF(block_operation))
 
 /datum/component/carapace/UnregisterFromParent()
 	UnregisterSignal(parent, COMSIG_CARAPACE_RECEIVE_DAMAGE)
 	UnregisterSignal(parent, COMSIG_CARAPACE_HEAL_DAMAGE)
-	UnregisterSignal(parent, COMSIG_CARAPACE_SURGERY_CAN_START)
-
-/datum/component/carapace/proc/block_operation()
-	SIGNAL_HANDLER
-	return ((limb.status & ORGAN_BROKEN) ? FALSE : CARAPACE_STOP_SURGERY_STEP)
 
 //Проки, срабатываемые при получении или исцелении урона
-/datum/component/carapace/proc/receive_damage(affected_limb, brute, burn, sharp, used_weapon = null, list/forbidden_limbs = list(), ignore_resists = FALSE, updating_health = TRUE)
-	if(limb.get_damage() > broken_treshold)
-		limb.fracture()
-	if(length(limb.internal_organs) > 0)
-		var/obj/item/organ/internal/O = pick(limb.internal_organs)
-		O.receive_damage(burn * limb.burn_dam)
+/datum/component/carapace/proc/receive_damage(obj/item/organ/external/affected_limb, brute, burn, sharp, used_weapon = null, list/forbidden_limbs = list(), ignore_resists = FALSE, updating_health = TRUE)
+	if(affected_limb.get_damage() > broken_treshold)
+		affected_limb.fracture()
+	if(length(affected_limb.internal_organs) > 0)
+		var/obj/item/organ/internal/O = pick(affected_limb.internal_organs)
+		O.receive_damage(burn * affected_limb.burn_dam)
 
-/datum/component/carapace/proc/heal_damage(affected_limb, brute, burn, internal = 0, robo_repair = 0, updating_health = TRUE)
-	if((limb.status & ORGAN_BROKEN) && limb.get_damage() == 0)
+/datum/component/carapace/proc/heal_damage(obj/item/organ/external/affected_limb, brute, burn, internal = 0, robo_repair = 0, updating_health = TRUE)
+	if((affected_limb.status & ORGAN_BROKEN) && affected_limb.get_damage() == 0)
 		if(self_medning || prob(CARAPACE_HEAL_BROKEN_PROB))
-			limb.mend_fracture()
+			affected_limb.mend_fracture()
 
 //Расширение проков урона и лечения для обращения к компоненту
 /obj/item/organ/external/receive_damage(brute, burn, sharp, used_weapon = null, list/forbidden_limbs = list(), ignore_resists = FALSE, updating_health = TRUE)
@@ -76,7 +69,6 @@
 	. = ..()
 	SEND_SIGNAL(src, COMSIG_CARAPACE_HEAL_DAMAGE, brute, burn, internal, robo_repair, updating_health)
 	return
-
 
 //////////////////////////////////////////////////////////////////
 //					Хирургия для панциря						//
@@ -117,50 +109,56 @@
 //Оверрайды для операций, которые могут применяться для панциря.
 /datum/surgery/can_start(mob/user, mob/living/carbon/target)
 	var/obj/item/organ/external/affected = target.get_organ(user.zone_selected)
-	if(affected)
-		if((SEND_SIGNAL(affected, COMSIG_CARAPACE_SURGERY_CAN_START) & CARAPACE_STOP_SURGERY_STEP) && (!(affected.status & ORGAN_BROKEN) || (src.type in CARAPACE_BLOCK_OPERATION))) //отключить стандартные операции класса "манипуляция органов", восстановить кость.
+	if(affected.encased == CARAPACE_ENCASE_WORD)
+		if((src.type in CARAPACE_BLOCK_OPERATION) || !(affected.status & ORGAN_BROKEN)) //отключить стандартные операции класса "манипуляция органов", восстановить кость/череп.
 			return FALSE
 	. = .. ()
 
+//Общие операции - проверка, на доступной карапасовых карапасовым и vice versa
 /datum/surgery/bone_repair/can_start(mob/user, mob/living/carbon/target)
 	var/obj/item/organ/external/affected = target.get_organ(user.zone_selected)
-	if((SEND_SIGNAL(affected, COMSIG_CARAPACE_SURGERY_CAN_START) & CARAPACE_STOP_SURGERY_STEP))
+	if(affected.encased == CARAPACE_ENCASE_WORD)
 		return FALSE
 	. = .. ()
 
+//Чинить карапас можно если он сломан
 /datum/surgery/bone_repair/carapace/can_start(mob/user, mob/living/carbon/target)
 	var/obj/item/organ/external/affected = target.get_organ(user.zone_selected)
-	if((SEND_SIGNAL(affected, COMSIG_CARAPACE_SURGERY_CAN_START) & CARAPACE_STOP_SURGERY_STEP) && (affected.status & ORGAN_BROKEN))
+	if((affected.encased == CARAPACE_ENCASE_WORD) && (affected.status & ORGAN_BROKEN))
 		return TRUE
 	return FALSE
 
+//Ломать карапас можно если он цел
 /datum/surgery/carapace_break/can_start(mob/user, mob/living/carbon/target)
 	var/obj/item/organ/external/affected = target.get_organ(user.zone_selected)
-	if((SEND_SIGNAL(affected, COMSIG_CARAPACE_SURGERY_CAN_START) & CARAPACE_STOP_SURGERY_STEP) && !(affected.status & ORGAN_BROKEN))
+	if((affected.encased == CARAPACE_ENCASE_WORD) && !(affected.status & ORGAN_BROKEN))
 		return TRUE
 	return FALSE
 
+//Манипуляция органов возможна если карапас и он сломан
 /datum/surgery/organ_manipulation/carapace/can_start(mob/user, mob/living/carbon/target)
 	var/obj/item/organ/external/affected = target.get_organ(user.zone_selected)
-	if((SEND_SIGNAL(affected, COMSIG_CARAPACE_SURGERY_CAN_START) & CARAPACE_STOP_SURGERY_STEP) && (affected.status & ORGAN_BROKEN))
+	if((affected.encased == CARAPACE_ENCASE_WORD) && (affected.status & ORGAN_BROKEN))
 		return TRUE
 	return FALSE
 
+//Блокировка простого скальпеля (базовый начальный шаг любой операции), если карапас не был сломан, но появилась какая-то операция, которая не должна быть
 /datum/surgery_step/generic/cut_open/begin_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	if((SEND_SIGNAL(affected, COMSIG_CARAPACE_SURGERY_CAN_START) & CARAPACE_STOP_SURGERY_STEP) && !(affected.status & ORGAN_BROKEN))
+	if((affected.encased == CARAPACE_ENCASE_WORD) && !(affected.status & ORGAN_BROKEN))
 		user.visible_message("<span class='notice'>Эта конечность [target] покрыта крепким хитином. Сломайте его, прежде чем начать операцию .</span>")
 		return SURGERY_BEGINSTEP_ABORT
 	. = .. ()
 
 /datum/surgery_step/retract_carapace/end_step(mob/living/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	var/obj/item/organ/external/affected = target.get_organ(user.zone_selected)
-	if((SEND_SIGNAL(affected, COMSIG_CARAPACE_SURGERY_CAN_START) & CARAPACE_STOP_SURGERY_STEP) && !(affected.status & ORGAN_BROKEN))
+	if((affected.encased == CARAPACE_ENCASE_WORD) && !(affected.status & ORGAN_BROKEN))
 		affected.fracture()
 	. = .. ()
 
 /datum/surgery_step/set_bone/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(user.zone_selected)
-	if((SEND_SIGNAL(affected, COMSIG_CARAPACE_SURGERY_CAN_START) & CARAPACE_STOP_SURGERY_STEP) && !(affected.status & ORGAN_BROKEN))
+	if((affected.encased == CARAPACE_ENCASE_WORD) && !(affected.status & ORGAN_BROKEN))
 		affected.mend_fracture()
 	. = .. ()
+

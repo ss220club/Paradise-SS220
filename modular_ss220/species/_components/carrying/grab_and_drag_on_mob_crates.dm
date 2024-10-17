@@ -52,7 +52,6 @@
 
 /datum/component/gadom_cargo
 	var/mob/living/carbon/human/carrier = null
-	var/list/allowed_races = list(/datum/species/serpentid)
 
 /datum/component/gadom_cargo/Initialize()
 	..()
@@ -70,11 +69,11 @@
 
 /datum/component/gadom_cargo/proc/block_operation()
 	SIGNAL_HANDLER
-	return GADOM_UNMOB_ALLOW_TO_GRAB
+	var/signal_result = (carrier.a_intent != "grab" ? FALSE : GADOM_MOB_ALLOW_TO_GRAB)
+	return signal_result
 
 /datum/component/gadom_cargo/proc/try_load_cargo(datum/component_holder, mob/user, atom/movable/AM)
-	var/datum/species/spiece = user.dna.species
-	if((user.a_intent == "grab") && (spiece.type in allowed_races))
+	if((user.a_intent == "grab"))
 		if(user.incapacitated() || HAS_TRAIT(user, TRAIT_HANDS_BLOCKED) || get_dist(user, AM) > 1)
 			return
 		if(!istype(AM))
@@ -105,7 +104,6 @@
 
 	if(!isliving(AM))
 		AM.crate_carrying_person = carrier
-		//AM.forceMove(carrier) - //блокировка стандартного прока
 		AM.forceMoveCrate(carrier)
 
 	carrier.loaded = AM
@@ -132,12 +130,14 @@
 
 //Расширение прока для переноса ящика на моба
 /mob/living/carbon/human/MouseDrop_T(atom/movable/AM, mob/user)
-	if(SEND_SIGNAL(usr, COMSIG_GADOM_UNMOB_CAN_GRAB) & GADOM_UNMOB_ALLOW_TO_GRAB)
+	var/signal_call	= SEND_SIGNAL(usr, COMSIG_GADOM_UNMOB_CAN_GRAB)
+	if(signal_call & GADOM_UNMOB_ALLOW_TO_GRAB)
 		SEND_SIGNAL(usr, COMSIG_GADOM_UNMOB_LOAD, usr, AM)
 	. = .. ()
 
 //Расширение прока на отстегивание ящика
 /datum/species/spec_attack_hand(mob/living/carbon/human/M, mob/living/carbon/human/H, datum/martial_art/attacker_style)
-	if(SEND_SIGNAL(H, COMSIG_GADOM_UNMOB_CAN_GRAB) & GADOM_UNMOB_ALLOW_TO_GRAB && H.loaded)
-		SEND_SIGNAL(H, COMSIG_GADOM_UNMOB_UNLOAD, M)
+	var/signal_call	= SEND_SIGNAL(usr, COMSIG_GADOM_UNMOB_CAN_GRAB)
+	if((signal_call & GADOM_UNMOB_ALLOW_TO_GRAB) && H.loaded)
+		SEND_SIGNAL(H, COMSIG_GADOM_UNMOB_UNLOAD)
 	. = .. ()

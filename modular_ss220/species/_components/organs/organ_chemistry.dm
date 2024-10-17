@@ -9,7 +9,6 @@
 	var/chemical_id = ""
 
 /datum/component/chemistry_organ/Initialize(reagent_id)
-	..()
 	organ = parent
 	chemical_id = reagent_id
 

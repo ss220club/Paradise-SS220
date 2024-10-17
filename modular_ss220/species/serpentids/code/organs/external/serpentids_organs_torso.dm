@@ -7,12 +7,12 @@
 #define SERPENTID_ARMORED_STEP_TEMP 30
 
 /obj/item/organ/external/chest/carapace
-	encased = "chitin"
 	min_broken_damage = 40
+	encased = CARAPACE_ENCASE_WORD
 
 /obj/item/organ/external/chest/carapace/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/carapace, src, FALSE, min_broken_damage)
+	AddComponent(/datum/component/carapace, FALSE, min_broken_damage)
 
 /obj/item/organ/external/chest/carapace/replaced()
 	.=..()

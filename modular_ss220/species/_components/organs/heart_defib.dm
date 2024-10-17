@@ -8,7 +8,6 @@
 	var/chemical_id = ""
 
 /datum/component/defib_heart/Initialize(human, income_chemical_id = "")
-	. = ..()
 	owner = human
 	chemical_id = income_chemical_id
 	START_PROCESSING(SSdcs, src)

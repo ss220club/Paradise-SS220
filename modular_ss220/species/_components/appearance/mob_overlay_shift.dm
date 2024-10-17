@@ -10,144 +10,82 @@
 #define MOB_OVERLAY_SHIFT_CHECK (1<<0)
 
 /datum/component/mob_overlay_shift
-	var/dir = 1
+	var/dir = NORTH
 
-	var/mob/living/carbon/human/mob
-	var/shift_x_inhand = 0
-	var/shift_x_center_inhand = 0
-	var/shift_y_inhand = 0
-	var/shift_y_center_inhand = 0
-	var/shift_x_side_inhand = 0
-	var/shift_y_side_inhand = 0
-	var/shift_x_front_inhand = 0
-	var/shift_y_front_inhand = 0
+	var/list/shift_data = list()
 
-	var/shift_x_belt = 0
-	var/shift_x_center_belt = 0
-	var/shift_y_belt = 0
-	var/shift_y_center_belt = 0
-	var/shift_x_side_belt = 0
-	var/shift_y_side_belt = 0
-	var/shift_x_front_belt = 0
-	var/shift_y_front_belt = 0
+/datum/component/mob_overlay_shift/Initialize(list/shift_list)
+	// Define body parts and positions
+	var/list/body_parts = list("inhand", "belt", "back", "head")
+	var/list/positions = list("center", "side", "front")
 
-	var/shift_x_back = 0
-	var/shift_x_center_back = 0
-	var/shift_y_back = 0
-	var/shift_y_center_back = 0
-	var/shift_x_side_back = 0
-	var/shift_y_side_back = 0
-	var/shift_x_front_back = 0
-	var/shift_y_front_back = 0
+	// Initialize shifts using the provided shift_data list or default to zero
+	for (var/body_part in body_parts)
+		// Create a nested list for each body part if it doesn't exist
+		shift_data[body_part] = shift_list[body_part] ? shift_list[body_part] : list()
 
-	var/shift_x_head = 0
-	var/shift_x_center_head = 0
-	var/shift_y_head = 0
-	var/shift_y_center_head = 0
-	var/shift_x_side_head = 0
-	var/shift_y_side_head = 0
-	var/shift_x_front_head = 0
-	var/shift_y_front_head = 0
+		for (var/position in positions)
+			// Create a nested list for each position within the body part
+			shift_data[body_part][position] = shift_list[body_part][position] ? shift_list[body_part][position] : list()
 
-/datum/component/mob_overlay_shift/Initialize(caller_mob, shift_xs_hand = 0, shift_ys_hand = 0, shift_xf_hand = 0, shift_yf_hand = 0, shift_x_hand = 0, shift_y_hand = 0, shift_xs_belt = 0, shift_ys_belt = 0, shift_xf_belt = 0, shift_yf_belt = 0, shift_x_belt = 0, shift_y_belt = 0, shift_xs_back = 0, shift_ys_back = 0, shift_xf_back = 0, shift_yf_back = 0, shift_x_back = 0, shift_y_back = 0, shift_xs_head = 0, shift_ys_head = 0, shift_xf_head = 0, shift_yf_head = 0, shift_x_head = 0, shift_y_head = 0)
-	..()
-	mob = parent
-
-	shift_x_center_inhand = shift_x_hand
-	shift_y_center_inhand = shift_y_hand
-	shift_x_side_inhand = shift_xs_hand
-	shift_y_side_inhand = shift_ys_hand
-	shift_x_front_inhand = shift_xf_hand
-	shift_y_front_inhand = shift_yf_hand
-
-	shift_x_center_belt = shift_x_belt
-	shift_y_center_belt = shift_y_belt
-	shift_x_side_belt = shift_xs_belt
-	shift_y_side_belt = shift_ys_belt
-	shift_x_front_belt = shift_xf_belt
-	shift_y_front_belt = shift_yf_belt
-
-	shift_x_center_back = shift_x_back
-	shift_y_center_back = shift_y_back
-	shift_x_side_back = shift_xs_back
-	shift_y_side_back = shift_ys_back
-	shift_x_front_back = shift_xf_back
-	shift_y_front_back = shift_yf_back
-
-	shift_x_center_head = shift_x_head
-	shift_y_center_head = shift_y_head
-	shift_x_side_head = shift_xs_head
-	shift_y_side_head = shift_ys_head
-	shift_x_front_head = shift_xf_head
-	shift_y_front_head = shift_yf_head
+			// Set default values for x and y shifts if not provided
+			shift_data[body_part][position]["x"] = shift_list[body_part][position]["x"] ? shift_list[body_part][position]["x"] : 0
+			shift_data[body_part][position]["y"] = shift_list[body_part][position]["y"] ? shift_list[body_part][position]["y"] : 0
 
 /datum/component/mob_overlay_shift/RegisterWithParent()
 	RegisterSignal(parent, COMSIG_MOB_OVERLAY_SHIFT_CALL, PROC_REF(shift_call))
-	RegisterSignal(parent, COMSIG_MOB_OVERLAY_SHIFT_CHECK, PROC_REF(module_available))
 	RegisterSignal(parent, COMSIG_MOB_OVERLAY_SHIFT_UPDATE, PROC_REF(update_call))
 
 /datum/component/mob_overlay_shift/UnregisterFromParent()
 	UnregisterSignal(parent, COMSIG_MOB_OVERLAY_SHIFT_CALL)
-	UnregisterSignal(parent, COMSIG_MOB_OVERLAY_SHIFT_CHECK)
 	UnregisterSignal(parent, COMSIG_MOB_OVERLAY_SHIFT_UPDATE)
 
-/datum/component/mob_overlay_shift/proc/module_available()
-	SIGNAL_HANDLER
-	return MOB_OVERLAY_SHIFT_CHECK
-
 //Проки, срабатываемые при получении или исцелении урона
-/datum/component/mob_overlay_shift/proc/shift_call(mob, new_dir)
+/datum/component/mob_overlay_shift/proc/shift_call(mob/living/carbon/human/mob, new_dir)
 	if(new_dir)
 		dir = new_dir
+
+	var/list/body_parts = list("inhand", "belt", "back", "head")
+	var/position
 	switch(dir)
 		if(EAST)
-			shift_x_inhand = shift_x_side_inhand + shift_x_center_inhand
-			shift_y_inhand = shift_y_side_inhand + shift_y_center_inhand
-			shift_x_belt = shift_x_side_belt + shift_x_center_belt
-			shift_y_belt = shift_y_side_belt + shift_y_center_belt
-			shift_x_back = shift_x_side_back + shift_x_center_back
-			shift_y_back = shift_y_side_back + shift_y_center_back
-			shift_x_head = shift_x_side_head + shift_x_center_head
-			shift_y_head = shift_y_side_head + shift_y_center_head
-		if(WEST)
-			shift_x_inhand = -shift_x_side_inhand + shift_x_center_inhand
-			shift_y_inhand = -shift_y_side_inhand + shift_y_center_inhand
-			shift_x_belt = -shift_x_side_belt + shift_x_center_belt
-			shift_y_belt = -shift_y_side_belt + shift_y_center_belt
-			shift_x_back = -shift_x_side_back + shift_x_center_back
-			shift_y_back = -shift_y_side_back + shift_y_center_back
-			shift_x_head = -shift_x_side_head + shift_x_center_head
-			shift_y_head = -shift_y_side_head + shift_y_center_head
-		if(NORTH)
-			shift_x_inhand = shift_x_front_inhand + shift_x_center_inhand
-			shift_y_inhand = shift_y_front_inhand + shift_y_center_inhand
-			shift_x_belt = shift_x_front_belt + shift_x_center_belt
-			shift_y_belt = shift_y_front_belt + shift_y_center_belt
-			shift_x_back = shift_x_front_back + shift_x_center_back
-			shift_y_back = shift_y_front_back + shift_y_center_back
-			shift_x_head = shift_x_front_head + shift_x_center_head
-			shift_y_head = shift_y_front_head + shift_y_center_head
+			position = "side"
 		if(SOUTH)
-			shift_x_inhand = -shift_x_front_inhand + shift_x_center_inhand
-			shift_y_inhand = -shift_y_front_inhand + shift_y_center_inhand
-			shift_x_belt = -shift_x_front_belt + shift_x_center_belt
-			shift_y_belt = -shift_y_front_belt + shift_y_center_belt
-			shift_x_back = -shift_x_front_back + shift_x_center_back
-			shift_y_back = -shift_y_front_back + shift_y_center_back
-			shift_x_head = -shift_x_front_head + shift_x_center_head
-			shift_y_head = -shift_y_front_head + shift_y_center_head
-	update_call()
+			position = "front"
+		if(WEST)
+			position = "side"
+		if(NORTH)
+			position = "front"
 
-/datum/component/mob_overlay_shift/proc/update_call()
-	update_inv_r_hand()
-	update_inv_l_hand()
-	update_inv_belt()
-	update_inv_back()
-	update_inv_head()
-	update_inv_glasses()
-	update_inv_ears()
+	var/flip = (dir == WEST || dir == SOUTH) ? -1 : 1
 
-/datum/component/mob_overlay_shift/proc/update_inv_belt()
+	// Update shift values based on direction
+	for (var/body_part in body_parts)
+		var/x_shift_key = "shift_x"
+		var/y_shift_key = "shift_y"
+
+		var/x_shift_value = shift_data[body_part][position]["x"]
+		var/y_shift_value = shift_data[body_part][position]["y"]
+		var/x_central_value = shift_data[body_part]["center"]["x"]
+		var/y_central_value = shift_data[body_part]["center"]["y"]
+
+		shift_data[body_part][x_shift_key] = flip * x_shift_value + x_central_value
+		shift_data[body_part][y_shift_key] = flip * y_shift_value + y_central_value
+
+	update_call(mob)
+
+/datum/component/mob_overlay_shift/proc/update_call(mob/living/carbon/human/mob)
+	update_inv_r_hand(mob)
+	update_inv_l_hand(mob)
+	update_inv_belt(mob)
+	update_inv_back(mob)
+	update_inv_head(mob)
+	update_inv_glasses(mob)
+	update_inv_ears(mob)
+
+//TODO: Отправить на оффы
+//Проки сделаны, так как нет прямой возможности влиять на положение mutable_apperance после его применения на спрайт кулы, только удалять/добавлять сами
+/datum/component/mob_overlay_shift/proc/update_inv_belt(mob/living/carbon/human/mob)
 	mob.remove_overlay(BELT_LAYER)
 	mob.remove_overlay(SPECIAL_BELT_LAYER)
 	var/overlay_layer = BELT_LAYER
@@ -186,13 +124,13 @@
 			standing = mutable_appearance(mob.belt.sprite_sheets[mob.dna.species.sprite_sheet_name], "[t_state]", layer = -overlay_layer)
 		else
 			standing = mutable_appearance('icons/mob/clothing/belt.dmi', "[t_state]", layer = -overlay_layer)
-		standing.pixel_x = shift_x_belt
-		standing.pixel_y = shift_y_belt
+		standing.pixel_x = shift_data["belt"]["shift_y"]
+		standing.pixel_y = shift_data["belt"]["shift_y"]
 		mob.overlays_standing[overlay_layer] = standing
 	mob.apply_overlay(BELT_LAYER)
 	mob.apply_overlay(SPECIAL_BELT_LAYER)
 
-/datum/component/mob_overlay_shift/proc/update_inv_back()
+/datum/component/mob_overlay_shift/proc/update_inv_back(mob/living/carbon/human/mob)
 	mob.remove_overlay(BACK_LAYER)
 	if(mob.back)
 		mob.update_hud_back(mob.back)
@@ -211,12 +149,12 @@
 		//create the image
 		standing.alpha = mob.back.alpha
 		standing.color = mob.back.color
-		standing.pixel_x = shift_x_back
-		standing.pixel_y = shift_y_back
+		standing.pixel_x = shift_data["back"]["shift_x"]
+		standing.pixel_y = shift_data["back"]["shift_y"]
 		mob.overlays_standing[BACK_LAYER] = standing
 	mob.apply_overlay(BACK_LAYER)
 
-/datum/component/mob_overlay_shift/proc/update_inv_r_hand()
+/datum/component/mob_overlay_shift/proc/update_inv_r_hand(mob/living/carbon/human/mob)
 	mob.remove_overlay(R_HAND_LAYER)
 	if(mob.r_hand)
 		mob.show_hand_to_observers(mob.r_hand, left = FALSE)
@@ -231,13 +169,13 @@
 		else
 			standing = mutable_appearance(mob.r_hand.righthand_file, "[t_state]", layer = -R_HAND_LAYER, color = mob.r_hand.color)
 			standing = center_image(standing, (mob.r_hand.inhand_x_dimension), (mob.r_hand.inhand_y_dimension))
-			standing.pixel_x = shift_x_inhand
-			standing.pixel_y = shift_y_inhand
+			standing.pixel_x = shift_data["inhand"]["shift_x"]
+			standing.pixel_y = shift_data["inhand"]["shift_y"]
 		mob.overlays_standing[R_HAND_LAYER] = standing
 	mob.apply_overlay(R_HAND_LAYER)
 
 
-/datum/component/mob_overlay_shift/proc/update_inv_l_hand()
+/datum/component/mob_overlay_shift/proc/update_inv_l_hand(mob/living/carbon/human/mob)
 	mob.remove_overlay(L_HAND_LAYER)
 	if(mob.l_hand)
 		mob.show_hand_to_observers(mob.l_hand, left = TRUE)
@@ -252,12 +190,12 @@
 		else
 			standing = mutable_appearance(mob.l_hand.lefthand_file, "[t_state]", layer = -L_HAND_LAYER, color = mob.l_hand.color)
 			standing = center_image(standing, mob.l_hand.inhand_x_dimension, mob.l_hand.inhand_y_dimension)
-			standing.pixel_x = shift_x_inhand
-			standing.pixel_y = shift_y_inhand
+			standing.pixel_x = shift_data["inhand"]["shift_x"]
+			standing.pixel_y = shift_data["inhand"]["shift_y"]
 		mob.overlays_standing[L_HAND_LAYER] = standing
 	mob.apply_overlay(L_HAND_LAYER)
 
-/datum/component/mob_overlay_shift/proc/update_inv_head()
+/datum/component/mob_overlay_shift/proc/update_inv_head(mob/living/carbon/human/mob)
 	mob.remove_overlay(HEAD_LAYER)
 	if(mob.client && mob.hud_used)
 		var/atom/movable/screen/inventory/inv = mob.hud_used.inv_slots[SLOT_HUD_HEAD]
@@ -284,12 +222,12 @@
 			standing.overlays += bloodsies
 		standing.alpha = mob.head.alpha
 		standing.color = mob.head.color
-		standing.pixel_x = shift_x_head
-		standing.pixel_y = shift_y_head
+		standing.pixel_x = shift_data["head"]["shift_x"]
+		standing.pixel_y = shift_data["head"]["shift_y"]
 		mob.overlays_standing[HEAD_LAYER] = standing
 	mob.apply_overlay(HEAD_LAYER)
 
-/datum/component/mob_overlay_shift/proc/update_inv_glasses()
+/datum/component/mob_overlay_shift/proc/update_inv_glasses(mob/living/carbon/human/mob)
 	mob.remove_overlay(GLASSES_LAYER)
 	mob.remove_overlay(GLASSES_OVER_LAYER)
 	mob.remove_overlay(OVER_MASK_LAYER)
@@ -311,8 +249,8 @@
 		else
 			new_glasses = mutable_appearance('icons/mob/clothing/eyes.dmi', "[mob.glasses.icon_state]", layer = -GLASSES_LAYER)
 
-		new_glasses.pixel_x = shift_x_head
-		new_glasses.pixel_y = shift_y_head
+		new_glasses.pixel_x = shift_data["head"]["shift_x"]
+		new_glasses.pixel_y = shift_data["head"]["shift_y"]
 
 		var/datum/sprite_accessory/hair/hair_style = GLOB.hair_styles_full_list[head_organ.h_style]
 		var/obj/item/clothing/glasses/G = mob.glasses
@@ -330,7 +268,7 @@
 
 	mob.update_misc_effects()
 
-/datum/component/mob_overlay_shift/proc/update_inv_ears()
+/datum/component/mob_overlay_shift/proc/update_inv_ears(mob/living/carbon/human/mob)
 	mob.remove_overlay(LEFT_EAR_LAYER)
 	mob.remove_overlay(RIGHT_EAR_LAYER)
 
@@ -354,8 +292,8 @@
 			left_ear_icon = mob.l_ear.icon_override
 
 		var/mutable_appearance/standing = mutable_appearance(left_ear_icon, left_ear_item_state, layer = -LEFT_EAR_LAYER)
-		standing.pixel_x = shift_x_head
-		standing.pixel_y = shift_y_head
+		standing.pixel_x = shift_data["head"]["shift_x"]
+		standing.pixel_y = shift_data["head"]["shift_y"]
 		mob.overlays_standing[LEFT_EAR_LAYER] = standing
 
 	if(mob.r_ear)
@@ -370,8 +308,8 @@
 			right_ear_icon = mob.r_ear.icon_override
 
 		var/mutable_appearance/standing = mutable_appearance(right_ear_icon, right_ear_item_state, layer = -RIGHT_EAR_LAYER)
-		standing.pixel_x = shift_x_head
-		standing.pixel_y = shift_y_head
+		standing.pixel_x = shift_data["head"]["shift_x"]
+		standing.pixel_y = shift_data["head"]["shift_y"]
 		mob.overlays_standing[RIGHT_EAR_LAYER] = standing
 
 	mob.apply_overlay(LEFT_EAR_LAYER)
@@ -379,10 +317,8 @@
 
 /mob/living/carbon/human/setDir(new_dir)
 	. = ..()
-	if(SEND_SIGNAL(src, COMSIG_MOB_OVERLAY_SHIFT_CHECK) & MOB_OVERLAY_SHIFT_CHECK)
-		SEND_SIGNAL(src, COMSIG_MOB_OVERLAY_SHIFT_CALL, new_dir)
+	SEND_SIGNAL(src, COMSIG_MOB_OVERLAY_SHIFT_CALL, new_dir)
 
 /mob/living/carbon/human/Life(seconds, times_fired)
 	. = ..()
-	if(SEND_SIGNAL(src, COMSIG_MOB_OVERLAY_SHIFT_CHECK) & MOB_OVERLAY_SHIFT_CHECK)
-		SEND_SIGNAL(src, COMSIG_MOB_OVERLAY_SHIFT_CALL)
+	SEND_SIGNAL(src, COMSIG_MOB_OVERLAY_SHIFT_CALL)

@@ -11,7 +11,6 @@
 	var/radial_additive_icon
 
 /datum/component/organ_action/Initialize(caller_organ, state, icon)
-	..()
 	organ = caller_organ
 	radial_additive_state = state
 	radial_additive_icon = icon
@@ -23,7 +22,6 @@
 /datum/component/organ_action/UnregisterFromParent()
 	UnregisterSignal(parent, COMSIG_ORGAN_GROUP_ACTION_CALL)
 	UnregisterSignal(parent, COMSIG_ORGAN_GROUP_ACTION_RESORT)
-
 
 /datum/component/organ_action/proc/check_actions(mob/user)
 	return (organ.owner && organ.owner == user && organ.owner.stat != DEAD && (organ in organ.owner.internal_organs))

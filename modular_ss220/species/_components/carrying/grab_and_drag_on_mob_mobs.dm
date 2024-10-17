@@ -15,10 +15,8 @@
 
 /datum/component/gadom_living
 	var/mob/living/carbon/human/carrier = null
-	var/list/allowed_races = list(/datum/species/serpentid)
 
 /datum/component/gadom_living/Initialize()
-	..()
 	carrier = parent
 
 /datum/component/gadom_living/RegisterWithParent()
@@ -33,20 +31,21 @@
 
 /datum/component/gadom_living/proc/block_operation(datum/component_holder)
 	SIGNAL_HANDLER
-	var/datum/dna/genetic_info = carrier.dna
-	var/datum/species/spiece = genetic_info.species
-	var/signal_result = (((carrier.a_intent != "grab") && (spiece.type in allowed_races)) ? FALSE : GADOM_MOB_ALLOW_TO_GRAB)
+	var/signal_result = (carrier.a_intent != "grab" ? FALSE : GADOM_MOB_ALLOW_TO_GRAB)
 	return signal_result
 
 /datum/component/gadom_living/proc/try_load_mob(datum/component_holder, mob/user, mob/target)
+	SIGNAL_HANDLER
+	INVOKE_ASYNC(src, PROC_REF(pre_load), component_holder, user, target)
+
+/datum/component/gadom_living/proc/pre_load(datum/component_holder, mob/user, mob/target)
 	var/mob/living/carbon/human/puppet = component_holder
 	if(user.incapacitated() || HAS_TRAIT(user, TRAIT_HANDS_BLOCKED) || get_dist(user, puppet) > 1)
 		return
 	if(!istype(target))
 		return
-	if(do_after(puppet, GADOM_BASIC_LOAD_TIMER_MOB * puppet.dna.species.action_mult, FALSE, target))
+	if((do_after(puppet, GADOM_BASIC_LOAD_TIMER_MOB * puppet.dna.species.action_mult, FALSE, target))) //Асинх не помогает (?!)
 		load(puppet, target)
-
 
 /datum/component/gadom_living/proc/load(mob/living/carbon/human/puppet, atom/movable/AM)
 	if(carrier.loaded|| AM.anchored || get_dist(puppet, AM) > 1)

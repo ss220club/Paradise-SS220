@@ -11,12 +11,8 @@
 #define PAIRATTACK_CHECK_ACTIVE (1<<0)
 
 /datum/component/pair_attack
-	var/obj/item/mainhand_item = null
 	var/obj/item/offhand_item = null
 	var/state_attack = FALSE
-
-/datum/component/pair_attack/Initialize(obj/item/weapon)
-	mainhand_item = weapon
 
 /datum/component/pair_attack/RegisterWithParent()
 	RegisterSignal(parent, COMSIG_PAIRATTACK_PROCESS, PROC_REF(offhand_pre_attack))
@@ -41,9 +37,9 @@
 /datum/component/pair_attack/proc/offhand_pre_attack(obj/item/weapon, mob/living/target, mob/living/user, def_zone)
 	SIGNAL_HANDLER
 	offhand_item = user.get_inactive_hand()
-	if(offhand_item.type != mainhand_item.type)
+	if(offhand_item.type != weapon.type)
 		return
-	if(SEND_SIGNAL(offhand_item, COMSIG_PAIRATTACK_CHECK) && PAIRATTACK_CHECK_ACTIVE)
+	if(SEND_SIGNAL(offhand_item, COMSIG_PAIRATTACK_CHECK) & PAIRATTACK_CHECK_ACTIVE)
 		return
 	state_attack = TRUE
 	SEND_SIGNAL(offhand_item, COMSIG_PAIRATTACK_SYNC, state_attack)
