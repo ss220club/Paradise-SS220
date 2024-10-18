@@ -14149,25 +14149,15 @@
 	},
 /area/station/ai_monitored/storage/eva)
 "baj" = (
-/obj/structure/rack,
-/obj/item/clothing/shoes/magboots{
-	pixel_x = 2;
-	pixel_y = 2
-	},
-/obj/item/clothing/shoes/magboots{
-	pixel_x = -3;
-	pixel_y = -3
-	},
 /obj/effect/turf_decal/delivery/blue/hollow,
-/obj/item/clothing/shoes/magboots{
-	pixel_x = -3;
-	pixel_y = -3
-	},
-/obj/item/clothing/shoes/magboots{
-	pixel_x = 2;
-	pixel_y = 2
-	},
 /obj/machinery/light/small/directional/north,
+/obj/structure/shelf/command,
+/obj/item/clothing/shoes/magboots,
+/obj/item/tank/jetpack/carbondioxide,
+/obj/item/clothing/shoes/magboots,
+/obj/item/clothing/shoes/magboots,
+/obj/item/tank/jetpack/carbondioxide,
+/obj/item/clothing/shoes/magboots,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -15185,9 +15175,15 @@
 /area/station/command/office/hop)
 "bdA" = (
 /obj/structure/rack,
-/obj/item/tank/jetpack/carbondioxide,
 /obj/effect/turf_decal/delivery/white/hollow,
-/obj/item/tank/jetpack/carbondioxide,
+/obj/item/tank/jetpack/carbondioxide{
+	pixel_x = 2;
+	pixel_y = 8
+	},
+/obj/item/tank/jetpack/carbondioxide{
+	pixel_x = -4;
+	pixel_y = 4
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -16363,41 +16359,36 @@
 /turf/simulated/wall/r_wall,
 /area/station/security/brig)
 "biM" = (
-/obj/structure/table/reinforced,
-/obj/item/stack/sheet/glass{
-	amount = 50
-	},
-/obj/item/stack/sheet/glass{
-	amount = 50
-	},
-/obj/item/stack/sheet/glass{
-	amount = 50
-	},
-/obj/item/stack/sheet/rglass{
-	amount = 50;
-	pixel_x = -2;
-	pixel_y = 2
-	},
-/obj/item/stack/rods{
-	amount = 50
-	},
 /obj/effect/turf_decal/delivery/white/hollow,
 /obj/machinery/requests_console/directional/north,
+/obj/structure/shelf/command,
+/obj/item/stack/sheet/metal/fifty,
+/obj/item/stack/sheet/metal/fifty,
+/obj/item/stack/sheet/metal/fifty,
+/obj/item/stack/sheet/glass/fifty,
+/obj/item/stack/sheet/glass/fifty,
+/obj/item/stack/sheet/glass/fifty,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
 /area/station/ai_monitored/storage/eva)
 "biN" = (
 /obj/structure/table/reinforced,
-/obj/item/assembly/signaler,
-/obj/item/assembly/signaler,
+/obj/item/assembly/signaler{
+	pixel_x = -6;
+	pixel_y = 12
+	},
 /obj/item/storage/toolbox/electrical{
-	pixel_x = 4;
-	pixel_y = 4
+	pixel_x = 2;
+	pixel_y = 8
 	},
 /obj/machinery/light/directional/east,
 /obj/structure/extinguisher_cabinet/directional/east,
 /obj/effect/turf_decal/delivery/white/hollow,
+/obj/item/assembly/signaler{
+	pixel_x = -6;
+	pixel_y = 4
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -17737,21 +17728,23 @@
 /area/station/maintenance/aft)
 "bor" = (
 /obj/structure/table/reinforced,
-/obj/item/stack/sheet/metal{
-	amount = 50;
-	pixel_x = 2;
-	pixel_y = 2
-	},
-/obj/item/stack/sheet/metal{
-	amount = 50
-	},
-/obj/item/stack/sheet/metal{
-	amount = 50;
-	pixel_x = -2;
-	pixel_y = -2
-	},
 /obj/machinery/firealarm/directional/east,
 /obj/effect/turf_decal/delivery/white/hollow,
+/obj/item/stack/sheet/rglass/fifty{
+	pixel_x = 0;
+	pixel_y = 12
+	},
+/obj/item/stack/rods/fifty{
+	pixel_y = -4
+	},
+/obj/item/stack/cable_coil{
+	pixel_x = 0;
+	pixel_y = 8
+	},
+/obj/item/stack/cable_coil{
+	pixel_x = 0;
+	pixel_y = 2
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -35239,8 +35232,18 @@
 	c_tag = "EVA Motion Sensor";
 	dir = 4
 	},
-/obj/item/book/manual/evaguide,
-/obj/item/stack/tape_roll,
+/obj/item/book/manual/evaguide{
+	pixel_x = -6;
+	pixel_y = 4
+	},
+/obj/item/stack/tape_roll{
+	pixel_x = 6;
+	pixel_y = 6
+	},
+/obj/item/stock_parts/cell/high/plus{
+	pixel_x = 6;
+	pixel_y = 0
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -37311,13 +37314,28 @@
 /area/station/engineering/hallway)
 "cRN" = (
 /obj/structure/table/reinforced,
-/obj/item/clothing/head/welding,
-/obj/item/storage/belt/utility,
-/obj/item/multitool,
+/obj/item/storage/belt/utility{
+	pixel_x = -6;
+	pixel_y = 6
+	},
 /obj/item/radio/intercom/directional/east,
 /obj/effect/turf_decal/delivery/white/hollow,
-/obj/item/storage/belt/utility,
-/obj/item/multitool,
+/obj/item/storage/belt/utility{
+	pixel_x = -6;
+	pixel_y = 10
+	},
+/obj/item/multitool{
+	pixel_x = 8;
+	pixel_y = 12
+	},
+/obj/item/multitool{
+	pixel_x = 8;
+	pixel_y = 2
+	},
+/obj/item/clothing/head/welding{
+	pixel_x = -6;
+	pixel_y = 4
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -40231,16 +40249,13 @@
 /area/station/engineering/utility)
 "dbO" = (
 /obj/structure/table/reinforced,
-/obj/machinery/cell_charger,
-/obj/item/stock_parts/cell/high/plus,
-/obj/item/stock_parts/cell/high/plus,
-/obj/item/stack/cable_coil{
-	pixel_x = 3;
-	pixel_y = -7
+/obj/machinery/cell_charger{
+	pixel_x = 2;
+	pixel_y = 4
 	},
-/obj/item/stack/cable_coil{
-	pixel_x = 3;
-	pixel_y = -7
+/obj/item/stock_parts/cell/high/plus{
+	pixel_x = 2;
+	pixel_y = 4
 	},
 /obj/effect/turf_decal/delivery/white/hollow,
 /obj/machinery/camera{
@@ -46629,6 +46644,11 @@
 /obj/item/candle,
 /turf/simulated/floor/plating,
 /area/station/maintenance/asmaint)
+"ecg" = (
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/station/ai_monitored/storage/eva)
 "ech" = (
 /obj/machinery/light/small/directional/west,
 /turf/simulated/floor/plating,
@@ -130962,7 +130982,7 @@ aRw
 baj
 bbP
 bdA
-bdA
+ecg
 bit
 vgd
 bdX
