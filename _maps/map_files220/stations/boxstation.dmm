@@ -16610,20 +16610,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/alarm/directional/north,
-/obj/structure/table,
-/obj/item/reagent_containers/condiment/enzyme{
-	pixel_x = 8;
-	pixel_y = 8
-	},
-/obj/item/book/manual/wiki/sop_service{
-	pixel_x = -4;
-	pixel_y = 2
-	},
-/obj/item/eftpos{
-	pixel_x = -4;
-	pixel_y = 4
-	},
+/obj/structure/closet/secure_closet/freezer/products,
 /turf/simulated/floor/plasteel{
 	icon_state = "cafeteria"
 	},
@@ -21327,6 +21314,7 @@
 /area/station/supply/warehouse)
 "bFq" = (
 /obj/structure/sign/poster/contraband/random/south,
+/obj/structure/shelf/supply,
 /turf/simulated/floor/plasteel,
 /area/station/supply/warehouse)
 "bFr" = (
@@ -26140,21 +26128,11 @@
 	},
 /area/station/supply/expedition)
 "cau" = (
-/obj/structure/table,
-/obj/item/reagent_containers/spray/cleaner{
-	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
-	name = "Surgery Cleaner";
-	pixel_x = 8;
-	pixel_y = 12
-	},
+/obj/structure/shelf/science,
 /obj/item/radio/intercom/directional/west,
 /obj/structure/reagent_dispensers/fueltank/chem/north,
-/obj/item/mmi{
-	pixel_y = 8
-	},
-/obj/item/mmi{
-	pixel_y = 4
-	},
+/obj/item/mmi,
+/obj/item/mmi,
 /obj/item/mmi,
 /turf/simulated/floor/plasteel{
 	icon_state = "freezerfloor"
@@ -26162,12 +26140,18 @@
 /area/station/science/robotics)
 "cav" = (
 /obj/structure/table,
-/obj/item/scalpel{
-	pixel_y = 12
+/obj/item/retractor{
+	pixel_x = 8;
+	pixel_y = 0
 	},
-/obj/item/hemostat,
-/obj/item/retractor,
 /obj/machinery/light_switch/north,
+/obj/item/hemostat{
+	pixel_x = -4;
+	pixel_y = 0
+	},
+/obj/item/scalpel{
+	pixel_y = 16
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "freezerfloor"
 	},
@@ -56161,9 +56145,17 @@
 "hnY" = (
 /obj/machinery/light/directional/north,
 /obj/structure/table,
-/obj/item/bonegel,
-/obj/item/bonesetter,
-/obj/item/FixOVein,
+/obj/item/FixOVein{
+	pixel_x = 9;
+	pixel_y = 7
+	},
+/obj/item/bonegel{
+	pixel_y = 6
+	},
+/obj/item/bonesetter{
+	pixel_x = -6;
+	pixel_y = 2
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "freezerfloor"
 	},
@@ -65628,6 +65620,10 @@
 	},
 /turf/simulated/floor/carpet/royalblue,
 /area/station/command/office/captain)
+"kOt" = (
+/obj/structure/shelf/supply,
+/turf/simulated/floor/plasteel,
+/area/station/supply/warehouse)
 "kPs" = (
 /obj/effect/spawner/window/reinforced/polarized/grilled{
 	id = "hos_room"
@@ -74519,9 +74515,7 @@
 /area/station/engineering/supermatter_room)
 "nTN" = (
 /obj/structure/table,
-/obj/item/reagent_containers/glass/beaker/large{
-	pixel_y = 3
-	},
+/obj/item/reagent_containers/glass/beaker/large,
 /turf/simulated/floor/plasteel{
 	icon_state = "cafeteria"
 	},
@@ -74594,6 +74588,8 @@
 	},
 /obj/machinery/firealarm/directional/east,
 /obj/machinery/light/small/directional/east,
+/obj/item/reagent_containers/glass/bucket,
+/obj/item/reagent_containers/glass/bucket,
 /turf/simulated/floor/plasteel{
 	icon_state = "hydrofloor"
 	},
@@ -75047,9 +75043,24 @@
 /area/station/public/dorms)
 "ocX" = (
 /obj/structure/table,
-/obj/item/circular_saw,
-/obj/item/surgicaldrill,
-/obj/item/cautery,
+/obj/item/cautery{
+	pixel_x = -6;
+	pixel_y = 8
+	},
+/obj/item/reagent_containers/spray/cleaner{
+	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
+	name = "Surgery Cleaner";
+	pixel_x = 8;
+	pixel_y = 12
+	},
+/obj/item/surgicaldrill{
+	pixel_x = 1;
+	pixel_y = 3
+	},
+/obj/item/circular_saw{
+	pixel_x = 0;
+	pixel_y = 0
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "freezerfloor"
 	},
@@ -78730,8 +78741,14 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/closet/secure_closet/freezer/kitchen,
 /obj/structure/extinguisher_cabinet/directional/north,
+/obj/structure/shelf/service,
+/obj/item/reagent_containers/condiment/flour,
+/obj/item/reagent_containers/condiment/flour,
+/obj/item/reagent_containers/condiment/flour,
+/obj/item/reagent_containers/condiment/sugar,
+/obj/item/reagent_containers/condiment/enzyme,
+/obj/item/reagent_containers/condiment/rice,
 /turf/simulated/floor/plasteel{
 	icon_state = "cafeteria"
 	},
@@ -85155,7 +85172,12 @@
 "rDV" = (
 /obj/structure/table,
 /obj/item/reagent_containers/drinks/bottle/cream{
-	pixel_y = 8
+	pixel_y = 10;
+	pixel_x = 6
+	},
+/obj/item/reagent_containers/glass/beaker{
+	pixel_x = -5;
+	pixel_y = 4
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "cafeteria"
@@ -88678,10 +88700,16 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/closet/secure_closet/freezer/fridge,
 /obj/machinery/camera{
 	c_tag = "Kitchen"
 	},
+/obj/structure/shelf/service,
+/obj/item/reagent_containers/condiment/soymilk,
+/obj/item/reagent_containers/condiment/soymilk,
+/obj/item/reagent_containers/condiment/soymilk,
+/obj/item/reagent_containers/condiment/soymilk,
+/obj/item/reagent_containers/condiment/soymilk,
+/obj/item/reagent_containers/condiment/soymilk,
 /turf/simulated/floor/plasteel{
 	icon_state = "cafeteria"
 	},
@@ -94177,14 +94205,6 @@
 	dir = 1
 	},
 /obj/structure/table,
-/obj/item/reagent_containers/glass/bucket{
-	pixel_x = -5;
-	pixel_y = 2
-	},
-/obj/item/reagent_containers/glass/bucket{
-	pixel_x = 6;
-	pixel_y = 2
-	},
 /obj/machinery/camera{
 	c_tag = "Hydroponics Pasture";
 	dir = 9
@@ -94192,6 +94212,14 @@
 /obj/structure/sign/poster/official/random/east,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
+	},
+/obj/item/eftpos{
+	pixel_x = 6;
+	pixel_y = 4
+	},
+/obj/item/eftpos{
+	pixel_x = -6;
+	pixel_y = 4
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "hydrofloor"
@@ -98963,19 +98991,17 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/table,
-/obj/item/storage/box/donkpockets{
-	pixel_x = -4;
-	pixel_y = 6
-	},
-/obj/item/reagent_containers/glass/beaker{
-	pixel_x = 6;
-	pixel_y = 4
-	},
+/obj/structure/shelf/service,
 /obj/structure/sign/poster/official/fruit_bowl{
 	pixel_y = 32
 	},
 /obj/machinery/light/directional/north,
+/obj/item/reagent_containers/condiment/milk,
+/obj/item/reagent_containers/condiment/milk,
+/obj/item/reagent_containers/condiment/milk,
+/obj/item/reagent_containers/condiment/milk,
+/obj/item/reagent_containers/condiment/milk,
+/obj/item/reagent_containers/condiment/milk,
 /turf/simulated/floor/plasteel{
 	icon_state = "cafeteria"
 	},
@@ -99005,6 +99031,7 @@
 /obj/item/stack/packageWrap{
 	pixel_y = 1
 	},
+/obj/item/book/manual/wiki/sop_service,
 /turf/simulated/floor/plasteel{
 	icon_state = "cafeteria"
 	},
@@ -126075,7 +126102,7 @@ ulv
 bBj
 bCz
 ulv
-ulv
+kOt
 wAO
 bIW
 crC
