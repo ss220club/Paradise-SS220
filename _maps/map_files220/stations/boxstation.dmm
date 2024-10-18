@@ -21691,14 +21691,18 @@
 /area/station/medical/reception)
 "bGB" = (
 /obj/structure/shelf/science,
-/obj/item/stack/sheet/glass,
+/obj/item/stock_parts/cell/high/plus,
+/obj/item/stock_parts/cell/high/plus,
+/obj/item/stock_parts/cell/high/plus,
+/obj/item/stack/sheet/glass{
+	amount = 10
+	},
 /obj/item/stack/sheet/plasteel{
 	amount = 10
 	},
-/obj/item/stack/sheet/glass,
-/obj/item/stock_parts/cell/high/plus,
-/obj/item/stock_parts/cell/high/plus,
-/obj/item/stock_parts/cell/high/plus,
+/obj/item/stack/sheet/glass{
+	amount = 10
+	},
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "whitepurple"
@@ -21750,12 +21754,12 @@
 "bGF" = (
 /obj/machinery/requests_console/directional/north,
 /obj/structure/shelf/science,
-/obj/item/stack/sheet/metal,
-/obj/item/stack/sheet/metal,
-/obj/item/stack/sheet/metal,
-/obj/item/stack/sheet/metal,
-/obj/item/stack/sheet/metal,
-/obj/item/stack/sheet/metal,
+/obj/item/stack/sheet/metal/fifty,
+/obj/item/stack/sheet/metal/fifty,
+/obj/item/stack/sheet/metal/fifty,
+/obj/item/stack/sheet/metal/fifty,
+/obj/item/stack/sheet/metal/fifty,
+/obj/item/stack/sheet/metal/fifty,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "whitepurple"
@@ -38020,21 +38024,13 @@
 	},
 /area/station/engineering/supermatter_room)
 "cTF" = (
-/obj/structure/table,
+/obj/structure/shelf/engineering,
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 4
 	},
-/obj/item/radio{
-	pixel_y = 4;
-	pixel_x = -8
-	},
-/obj/item/radio{
-	pixel_y = 4
-	},
-/obj/item/radio{
-	pixel_x = 8;
-	pixel_y = 4
-	},
+/obj/item/radio,
+/obj/item/radio,
+/obj/item/radio,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -39507,13 +39503,14 @@
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/turbine)
 "cZc" = (
-/obj/structure/table,
-/obj/item/clothing/glasses/welding,
-/obj/item/clothing/glasses/welding,
-/obj/item/clothing/gloves/color/black,
-/obj/item/clothing/gloves/color/black,
-/obj/item/clothing/gloves/color/black,
+/obj/structure/shelf/engineering,
 /obj/machinery/alarm/directional/south,
+/obj/item/clothing/gloves/color/black,
+/obj/item/clothing/gloves/color/black,
+/obj/item/clothing/gloves/color/black,
+/obj/item/clothing/glasses/welding,
+/obj/item/clothing/glasses/welding,
+/obj/item/clothing/glasses/welding,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -83404,6 +83401,15 @@
 /area/station/maintenance/asmaint)
 "qRs" = (
 /obj/machinery/light/directional/south,
+/obj/structure/table,
+/obj/item/eftpos{
+	pixel_x = 8;
+	pixel_y = 2
+	},
+/obj/item/eftpos{
+	pixel_x = -6;
+	pixel_y = 2
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -100563,9 +100569,7 @@
 /obj/item/clothing/glasses/hud/hydroponic,
 /obj/item/clothing/glasses/hud/hydroponic,
 /obj/item/clothing/glasses/hud/hydroponic,
-/obj/item/eftpos,
 /obj/item/watertank,
-/obj/item/eftpos,
 /obj/structure/cable{
 	d2 = 4;
 	icon_state = "0-4"
