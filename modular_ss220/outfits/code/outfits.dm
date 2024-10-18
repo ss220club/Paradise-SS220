@@ -335,7 +335,7 @@
 	backpack_contents = list(
 		/obj/item/storage/box/skrell,
 		/obj/item/storage/box/smoke_grenades,
-		/obj/item/grenade/plastic/c4/x4 = 2,
+		/obj/item/grenade/plastic/c4 = 2,
 		/obj/item/storage/box/handcuffs,
 		/obj/item/clothing/accessory/holster,
 		/obj/item/gun/energy/gun/skrell_pistol
@@ -376,7 +376,7 @@
 		/obj/item/gun/energy/gun/skrell_carbine/elite,
 		/obj/item/melee/vibroblade,
 		/obj/item/storage/box/smoke_grenades,
-		/obj/item/grenade/plastic/c4/x4 = 2,
+		/obj/item/grenade/plastic/c4 = 2,
 		/obj/item/clothing/accessory/holster,
 		/obj/item/gun/energy/gun/skrell_pistol
 	)
@@ -392,7 +392,7 @@
 		/obj/item/melee/vibroblade/sardaukar,
 		/obj/item/storage/box/skrell,
 		/obj/item/storage/box/smoke_grenades,
-		/obj/item/grenade/plastic/c4/x4 = 2,
+		/obj/item/grenade/plastic/c4 = 2,
 		/obj/item/clothing/accessory/holster,
 		/obj/item/CQC_manual,
 		/obj/item/shield/energy,
