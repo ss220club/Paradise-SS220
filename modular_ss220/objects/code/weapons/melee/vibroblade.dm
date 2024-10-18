@@ -99,7 +99,7 @@
 		
 		// We compare these in case the body part hasn't been cut off by standard attack logic
 		if(after_attack_bodypart == selected_bodypart)
-			after_attack_bodypart.droplimb(clean = TRUE, disintegrate = DROPLIMB_SHARP)
+			after_attack_bodypart.droplimb(clean = TRUE, disintegrate = DROPLIMB_SHARP, ignore_children = FALSE, nodamage = FALSE)
 		user.visible_message(
 			span_danger("[user] изящно и непринужденно отсекает [selected_bodypart] [target]!"),
 			span_biggerdanger("Вы искусно отсекаете [selected_bodypart] [target]!")
@@ -114,7 +114,7 @@
 	user.visible_message(span_suicide("[user] прижимает лезвие [src] к своей шее и нажимает на кнопку зарядки микрогенератора. \
 		Кажется, это попытка самоубийства!"))
 	user.atom_say("Слава Вечной Империи!")
-	head.droplimb(clean = TRUE, disintegrate = DROPLIMB_SHARP, nodamage = TRUE)
+	head.droplimb(clean = TRUE, disintegrate = DROPLIMB_SHARP, ignore_children = FALSE, nodamage = TRUE)
 	return BRUTELOSS
 
 /obj/item/melee/vibroblade/emp_act(severity)
