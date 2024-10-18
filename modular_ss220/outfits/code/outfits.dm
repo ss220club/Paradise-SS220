@@ -329,16 +329,14 @@
 	l_ear = /obj/item/radio/headset/skrellian
 	id = /obj/item/card/id
 	l_hand = /obj/item/gun/energy/gun/skrell_carbine/elite
-	r_pocket = /obj/item/flashlight/seclite
-	l_pocket = /obj/item/reagent_containers/hypospray/autoinjector/nt_emergency/skrell
+	r_pocket = /obj/item/reagent_containers/hypospray/autoinjector/nt_emergency/skrell
+	l_pocket = 	/obj/item/tank/internals/emergency_oxygen/double
 	mask = /obj/item/clothing/mask/gas/swat
 	backpack_contents = list(
-		/obj/item/storage/box/responseteam,
+		/obj/item/storage/box/skrell,
 		/obj/item/storage/box/smoke_grenades,
-		/obj/item/grenade/plastic/c4/x4,
-		/obj/item/reagent_containers/hypospray/autoinjector/nt_emergency/skrell = 1,
+		/obj/item/grenade/plastic/c4/x4 = 2,
 		/obj/item/storage/box/handcuffs,
-		/obj/item/tank/internals/emergency_oxygen/double,
 		/obj/item/clothing/accessory/holster,
 		/obj/item/gun/energy/gun/skrell_pistol
 	)
@@ -374,13 +372,11 @@
 	l_hand = /obj/item/gun/projectile/automatic/sniper_rifle/skrell_rifle
 	belt = /obj/item/storage/belt/military/assault/skrell
 	backpack_contents = list(
+		/obj/item/storage/box/skrell,
 		/obj/item/gun/energy/gun/skrell_carbine/elite,
 		/obj/item/melee/vibroblade,
-		/obj/item/storage/box/responseteam,
 		/obj/item/storage/box/smoke_grenades,
-		/obj/item/grenade/plastic/c4/x4,
-		/obj/item/reagent_containers/hypospray/autoinjector/nt_emergency/skrell = 1,
-		/obj/item/tank/internals/emergency_oxygen/double,
+		/obj/item/grenade/plastic/c4/x4 = 2,
 		/obj/item/clothing/accessory/holster,
 		/obj/item/gun/energy/gun/skrell_pistol
 	)
@@ -390,14 +386,13 @@
 	l_hand = /obj/item/gun/projectile/automatic/sniper_rifle/skrell_rifle/elite
 	belt = /obj/item/storage/belt/military/assault/skrell_elite
 	back = /obj/item/mod/control/pre_equipped/exclusive/skrell_sardaukars
-	l_pocket = /obj/item/reagent_containers/hypospray/combat/nanites
+	r_pocket = /obj/item/reagent_containers/hypospray/combat/nanites
 	backpack_contents = list(
 		/obj/item/gun/energy/gun/skrell_carbine/elite,
 		/obj/item/melee/vibroblade/sardaukar,
-		/obj/item/storage/box/responseteam,
+		/obj/item/storage/box/skrell,
 		/obj/item/storage/box/smoke_grenades,
-		/obj/item/grenade/plastic/c4/x4,
-		/obj/item/tank/internals/emergency_oxygen/double,
+		/obj/item/grenade/plastic/c4/x4 = 2,
 		/obj/item/clothing/accessory/holster,
 		/obj/item/CQC_manual,
 		/obj/item/shield/energy,
@@ -429,8 +424,23 @@
 	origin_tech = "syndicate=4"
 
 /obj/item/reagent_containers/hypospray/autoinjector/nt_emergency/skrell
+	name = "nanites emergency autoinjector"
 	desc = "Одноразовый автоинжектор с нанитами."
 	list_reagents = list("nanites" = 10)
+
+/obj/item/storage/box/skrell
+	name = "boxed survival kit"
+	desc = "A standard issue SDTF survival kit."
+	icon = 'modular_ss220/objects/icons/boxes.dmi'
+	icon_state = "skrell_box"
+
+/obj/item/storage/box/skrell/populate_contents()
+	new /obj/item/tank/internals/emergency_oxygen/engi(src)
+	new /obj/item/crowbar/small(src)
+	new /obj/item/flashlight/flare(src)
+	new /obj/item/kitchen/knife/combat(src)
+	new /obj/item/reagent_containers/hypospray/autoinjector/nt_emergency/skrell(src)
+	new /obj/item/reagent_containers/hypospray/autoinjector/nt_emergency/skrell(src)
 
 /obj/item/storage/belt/military/assault/skrell/populate_contents()
 	new /obj/item/ammo_box/magazine/skrell_magazine(src)
