@@ -34841,13 +34841,13 @@
 	},
 /area/station/maintenance/aft)
 "cIo" = (
-/obj/structure/table,
-/obj/item/reagent_containers/spray/cleaner,
-/obj/item/key/janitor,
-/obj/item/grenade/chem_grenade/cleaner,
-/obj/item/grenade/chem_grenade/cleaner,
-/obj/item/grenade/chem_grenade/cleaner,
+/obj/structure/shelf/service,
 /obj/structure/reagent_dispensers/spacecleanertank/north,
+/obj/item/grenade/chem_grenade/cleaner,
+/obj/item/grenade/chem_grenade/cleaner,
+/obj/item/grenade/chem_grenade/cleaner,
+/obj/item/key/janitor,
+/obj/item/reagent_containers/spray/cleaner,
 /turf/simulated/floor/plasteel,
 /area/station/service/janitor)
 "cIp" = (
@@ -35123,9 +35123,6 @@
 /obj/item/clothing/gloves/color/black,
 /obj/item/clothing/gloves/color/black,
 /obj/item/clothing/gloves/color/black,
-/obj/item/clothing/glasses/welding,
-/obj/item/clothing/glasses/welding,
-/obj/item/clothing/glasses/welding,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -42290,11 +42287,6 @@
 /area/station/engineering/atmos)
 "djp" = (
 /obj/structure/table,
-/obj/item/storage/briefcase/inflatable{
-	pixel_x = -2;
-	pixel_y = 4
-	},
-/obj/item/storage/briefcase/inflatable,
 /obj/machinery/computer/security/telescreen{
 	desc = "Used for watching engines.";
 	layer = 4;
@@ -42306,6 +42298,13 @@
 /obj/machinery/camera{
 	c_tag = "Engineering Reception";
 	network = list("SS13","Engineering")
+	},
+/obj/item/storage/briefcase/inflatable{
+	pixel_y = 8
+	},
+/obj/item/storage/briefcase/inflatable{
+	pixel_y = 2;
+	pixel_x = 0
 	},
 /turf/simulated/floor/plasteel,
 /area/station/engineering/controlroom)
