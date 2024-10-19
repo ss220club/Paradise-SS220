@@ -4,9 +4,9 @@
 	icon = 'modular_ss220/species/serpentids/icons/organs.dmi'
 	icon_state = "kidneys00"
 	desc = "A large looking organ, that can inject chemicals."
-	actions_types = 		list(/datum/action/item_action/organ_action/toggle)
-	action_icon = 			list(/datum/action/item_action/organ_action/toggle = 'modular_ss220/species/serpentids/icons/organs.dmi')
-	action_icon_state = 	list(/datum/action/item_action/organ_action/toggle = "gas_abilities")
+	actions_types = 		list(/datum/action/item_action/organ_action/toggle/gas)
+	action_icon = 			list(/datum/action/item_action/organ_action/toggle/gas = 'modular_ss220/species/serpentids/icons/organs.dmi')
+	action_icon_state = 	list(/datum/action/item_action/organ_action/toggle/gas = "gas_abilities")
 	var/chemical_id = SERPENTID_CHEM_REAGENT_ID
 	var/chemical_consuption = GAS_ORGAN_CHEMISTRY_KIDNEYS
 	var/decay_rate = 0.4

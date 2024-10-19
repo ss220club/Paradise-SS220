@@ -155,7 +155,7 @@
 		var/limb_armor = limb.brute_dam + limb.burn_dam
 		armor_count += limb_armor
 
-	if(gene_lastcall >= SERPENTID_GENE_DEGRADATION_CD)
+	if(gene_lastcall >= SERPENTID_GENE_DEGRADATION_CD && gene_degradation > 0)
 		H.adjustCloneLoss(gene_degradation)
 		gene_lastcall = 0
 	else
@@ -221,3 +221,9 @@
 	restricted_species += list("Serpentid")
 	. = .. ()
 
+//Расширение для действий органов серпентидов
+/datum/action/item_action/organ_action/toggle/gas
+
+/datum/action/item_action/organ_action/toggle/gas/New(Target)
+	..()
+	name = "GAS organ selection"

@@ -4,9 +4,9 @@
 	icon = 'modular_ss220/species/serpentids/icons/organs.dmi'
 	icon_state = "ears"
 	desc = "An organ that can sense vibrations."
-	actions_types = 		list(/datum/action/item_action/organ_action/toggle)
-	action_icon = 			list(/datum/action/item_action/organ_action/toggle = 'modular_ss220/species/serpentids/icons/organs.dmi')
-	action_icon_state = 	list(/datum/action/item_action/organ_action/toggle = "gas_abilities")
+	actions_types = 		list(/datum/action/item_action/organ_action/toggle/gas)
+	action_icon = 			list(/datum/action/item_action/organ_action/toggle/gas = 'modular_ss220/species/serpentids/icons/organs.dmi')
+	action_icon_state = 	list(/datum/action/item_action/organ_action/toggle/gas = "gas_abilities")
 	var/decay_rate = 0.2
 	var/decay_recovery = BASIC_RECOVER_VALUE
 	var/organ_process_toxins = 0.05

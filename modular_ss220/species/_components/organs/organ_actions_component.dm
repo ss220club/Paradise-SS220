@@ -65,7 +65,7 @@
 		for(var/obj/item/organ/internal/O in organs_list)
 			organs_list -= O
 			for(var/obj/item/organ/internal/D in organs_list)
-				var/datum/action/action_candidate = O.actions[1]
+				var/datum/action/action_candidate = D.actions[1]
 				if(D != O)
 					if(action_candidate in organ.owner.actions)
 						action_candidate.Remove(organ.owner)
