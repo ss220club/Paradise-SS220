@@ -40,7 +40,6 @@
 /obj/structure/closet/secure_closet/freezer/products
 	name = "refrigerator"
 	icon_state = "freezer"
-	open_door_sprite = "freezer_door"
 
 /obj/structure/closet/secure_closet/freezer/products/populate_contents()
 	for(var/i in 1 to 2)

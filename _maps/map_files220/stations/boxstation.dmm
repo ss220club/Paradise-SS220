@@ -391,12 +391,30 @@
 /area/station/maintenance/aft)
 "adb" = (
 /obj/structure/shelf/security,
-/obj/item/grenade/barrier,
-/obj/item/grenade/barrier,
-/obj/item/grenade/barrier,
-/obj/item/grenade/barrier,
-/obj/item/grenade/barrier,
-/obj/item/grenade/barrier,
+/obj/item/grenade/barrier{
+	pixel_x = -6;
+	pixel_y = 12
+	},
+/obj/item/grenade/barrier{
+	pixel_x = 1;
+	pixel_y = 12
+	},
+/obj/item/grenade/barrier{
+	pixel_x = 8;
+	pixel_y = 12
+	},
+/obj/item/grenade/barrier{
+	pixel_x = -6;
+	pixel_y = 0
+	},
+/obj/item/grenade/barrier{
+	pixel_x = 1;
+	pixel_y = 0
+	},
+/obj/item/grenade/barrier{
+	pixel_x = 8;
+	pixel_y = 0
+	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "vault"
@@ -951,12 +969,27 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/item/clothing/glasses/sunglasses_fake,
+/obj/item/clothing/glasses/sunglasses_fake{
+	pixel_x = -6;
+	pixel_y = -4
+	},
 /obj/item/storage/box/flashbangs,
-/obj/item/clothing/glasses/sunglasses_fake,
-/obj/item/clothing/ears/earmuffs,
-/obj/item/paper/firingrange,
-/obj/item/clothing/ears/earmuffs,
+/obj/item/clothing/glasses/sunglasses_fake{
+	pixel_x = 6;
+	pixel_y = -4
+	},
+/obj/item/clothing/ears/earmuffs{
+	pixel_x = -6;
+	pixel_y = 10
+	},
+/obj/item/paper/firingrange{
+	pixel_x = 0;
+	pixel_y = 10
+	},
+/obj/item/clothing/ears/earmuffs{
+	pixel_x = 6;
+	pixel_y = 10
+	},
 /turf/simulated/floor/plasteel,
 /area/station/security/range)
 "afK" = (
@@ -1250,11 +1283,23 @@
 /area/shuttle/gamma/station)
 "ahG" = (
 /obj/structure/gunrack,
+/obj/item/gun/projectile/shotgun/riot{
+	pixel_x = 0;
+	pixel_y = 12
+	},
+/obj/item/gun/projectile/shotgun/riot{
+	pixel_x = 0;
+	pixel_y = 8
+	},
+/obj/item/gun/projectile/shotgun/riot{
+	pixel_x = 0;
+	pixel_y = 4
+	},
 /obj/item/gun/projectile/shotgun/riot,
-/obj/item/gun/projectile/shotgun/riot,
-/obj/item/gun/projectile/shotgun/riot,
-/obj/item/gun/projectile/shotgun/riot,
-/obj/item/gun/projectile/shotgun/riot,
+/obj/item/gun/projectile/shotgun/riot{
+	pixel_x = 0;
+	pixel_y = -4
+	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "vault"
@@ -1359,12 +1404,30 @@
 /area/station/security/brig)
 "aif" = (
 /obj/structure/shelf/security,
-/obj/item/storage/box/handcuffs,
-/obj/item/storage/box/handcuffs,
-/obj/item/storage/box/handcuffs,
-/obj/item/storage/box/teargas,
-/obj/item/storage/box/seccarts,
-/obj/item/storage/box/flashbangs,
+/obj/item/storage/box/handcuffs{
+	pixel_x = -8;
+	pixel_y = -4
+	},
+/obj/item/storage/box/handcuffs{
+	pixel_x = 0;
+	pixel_y = -4
+	},
+/obj/item/storage/box/handcuffs{
+	pixel_x = 8;
+	pixel_y = -4
+	},
+/obj/item/storage/box/teargas{
+	pixel_x = -8;
+	pixel_y = 10
+	},
+/obj/item/storage/box/seccarts{
+	pixel_x = 0;
+	pixel_y = 10
+	},
+/obj/item/storage/box/flashbangs{
+	pixel_x = 8;
+	pixel_y = 10
+	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "vault"
@@ -1378,12 +1441,27 @@
 /area/station/command/office/hos)
 "aij" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/target/syndicate,
-/obj/item/target/syndicate,
-/obj/item/target/syndicate,
+/obj/item/target/syndicate{
+	pixel_x = -8;
+	pixel_y = 8
+	},
+/obj/item/target/syndicate{
+	pixel_x = 8;
+	pixel_y = 8
+	},
+/obj/item/target/syndicate{
+	pixel_x = 0;
+	pixel_y = 8
+	},
 /obj/item/target,
-/obj/item/target,
-/obj/item/target,
+/obj/item/target{
+	pixel_x = 8;
+	pixel_y = 0
+	},
+/obj/item/target{
+	pixel_x = -8;
+	pixel_y = 0
+	},
 /obj/structure/shelf/security,
 /turf/simulated/floor/plasteel,
 /area/station/security/range)
@@ -1408,7 +1486,10 @@
 /area/station/security/armory/secure)
 "aiq" = (
 /obj/structure/rack,
-/obj/item/clothing/suit/hooded/ablative,
+/obj/item/clothing/suit/hooded/ablative{
+	pixel_x = 0;
+	pixel_y = 0
+	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "vault"
@@ -1469,11 +1550,26 @@
 /area/station/security/armory/secure)
 "aiB" = (
 /obj/structure/gunrack,
-/obj/item/gun/energy/disabler,
-/obj/item/gun/energy/disabler,
-/obj/item/gun/energy/disabler,
-/obj/item/gun/energy/disabler,
-/obj/item/gun/energy/disabler,
+/obj/item/gun/energy/disabler{
+	pixel_x = 0;
+	pixel_y = 8
+	},
+/obj/item/gun/energy/disabler{
+	pixel_x = 0;
+	pixel_y = 4
+	},
+/obj/item/gun/energy/disabler{
+	pixel_x = 0;
+	pixel_y = 0
+	},
+/obj/item/gun/energy/disabler{
+	pixel_x = 0;
+	pixel_y = -4
+	},
+/obj/item/gun/energy/disabler{
+	pixel_x = 0;
+	pixel_y = -8
+	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "vault"
@@ -1491,9 +1587,18 @@
 /area/station/security/brig)
 "aiN" = (
 /obj/structure/gunrack,
-/obj/item/gun/energy/gun,
-/obj/item/gun/energy/gun,
-/obj/item/gun/energy/gun,
+/obj/item/gun/energy/gun{
+	pixel_x = 0;
+	pixel_y = 8
+	},
+/obj/item/gun/energy/gun{
+	pixel_x = 0;
+	pixel_y = 0
+	},
+/obj/item/gun/energy/gun{
+	pixel_x = 0;
+	pixel_y = -8
+	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "vault"
@@ -1646,9 +1751,15 @@
 /area/station/security/brig)
 "ajq" = (
 /obj/structure/gunrack,
+/obj/item/gun/energy/laser{
+	pixel_x = 0;
+	pixel_y = 8
+	},
 /obj/item/gun/energy/laser,
-/obj/item/gun/energy/laser,
-/obj/item/gun/energy/laser,
+/obj/item/gun/energy/laser{
+	pixel_x = 0;
+	pixel_y = -8
+	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "vault"
@@ -1656,10 +1767,19 @@
 /area/station/security/armory/secure)
 "ajr" = (
 /obj/structure/gunrack,
+/obj/item/gun/projectile/automatic/sslr{
+	pixel_x = 0;
+	pixel_y = 8
+	},
+/obj/item/gun/projectile/automatic/sslr{
+	pixel_x = 0;
+	pixel_y = 4
+	},
 /obj/item/gun/projectile/automatic/sslr,
-/obj/item/gun/projectile/automatic/sslr,
-/obj/item/gun/projectile/automatic/sslr,
-/obj/item/gun/projectile/automatic/sslr,
+/obj/item/gun/projectile/automatic/sslr{
+	pixel_x = 0;
+	pixel_y = -4
+	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "vault"
@@ -2570,12 +2690,30 @@
 /area/station/security/warden)
 "amG" = (
 /obj/structure/shelf/security,
-/obj/item/reagent_containers/spray/pepper,
-/obj/item/reagent_containers/spray/pepper,
-/obj/item/reagent_containers/spray/pepper,
-/obj/item/reagent_containers/spray/pepper,
-/obj/item/reagent_containers/spray/pepper,
-/obj/item/reagent_containers/spray/pepper,
+/obj/item/reagent_containers/spray/pepper{
+	pixel_x = 0;
+	pixel_y = 12
+	},
+/obj/item/reagent_containers/spray/pepper{
+	pixel_x = 0;
+	pixel_y = 0
+	},
+/obj/item/reagent_containers/spray/pepper{
+	pixel_x = 8;
+	pixel_y = 12
+	},
+/obj/item/reagent_containers/spray/pepper{
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/obj/item/reagent_containers/spray/pepper{
+	pixel_x = -8;
+	pixel_y = 0
+	},
+/obj/item/reagent_containers/spray/pepper{
+	pixel_x = 8;
+	pixel_y = 0
+	},
 /turf/simulated/floor/plasteel{
 	dir = 9;
 	icon_state = "red"
@@ -3109,12 +3247,30 @@
 /area/station/security/warden)
 "aoz" = (
 /obj/structure/shelf/security,
-/obj/item/radio/security,
-/obj/item/radio/security,
-/obj/item/radio/security,
-/obj/item/radio/security,
-/obj/item/radio/security,
-/obj/item/radio/security,
+/obj/item/radio/security{
+	pixel_x = 0;
+	pixel_y = 12
+	},
+/obj/item/radio/security{
+	pixel_x = 0;
+	pixel_y = 0
+	},
+/obj/item/radio/security{
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/obj/item/radio/security{
+	pixel_x = 8;
+	pixel_y = 12
+	},
+/obj/item/radio/security{
+	pixel_x = 8;
+	pixel_y = 0
+	},
+/obj/item/radio/security{
+	pixel_x = -8;
+	pixel_y = 0
+	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "red"
@@ -21625,9 +21781,18 @@
 /area/station/medical/reception)
 "bGw" = (
 /obj/structure/shelf/science,
-/obj/item/storage/toolbox/mechanical,
-/obj/item/storage/toolbox/electrical,
-/obj/item/storage/toolbox/mechanical,
+/obj/item/storage/toolbox/mechanical{
+	pixel_x = -6;
+	pixel_y = -2
+	},
+/obj/item/storage/toolbox/electrical{
+	pixel_x = 0;
+	pixel_y = -2
+	},
+/obj/item/storage/toolbox/mechanical{
+	pixel_x = 6;
+	pixel_y = -2
+	},
 /turf/simulated/floor/plasteel{
 	dir = 9;
 	icon_state = "darkyellow"
@@ -21664,15 +21829,29 @@
 /area/station/medical/reception)
 "bGB" = (
 /obj/structure/shelf/science,
-/obj/item/stock_parts/cell/high/plus,
-/obj/item/stock_parts/cell/high/plus,
-/obj/item/stock_parts/cell/high/plus,
 /obj/item/stack/sheet/glass{
-	amount = 10
+	amount = 10;
+	pixel_x = -6;
+	pixel_y = -4
 	},
-/obj/item/stack/sheet/plasteel/fifteen,
+/obj/item/stack/sheet/plasteel/fifteen{
+	pixel_y = -4
+	},
 /obj/item/stack/sheet/glass{
-	amount = 10
+	amount = 10;
+	pixel_x = 6;
+	pixel_y = -4
+	},
+/obj/item/stock_parts/cell/high/plus{
+	pixel_x = -8;
+	pixel_y = 8
+	},
+/obj/item/stock_parts/cell/high/plus{
+	pixel_y = 8
+	},
+/obj/item/stock_parts/cell/high/plus{
+	pixel_x = 8;
+	pixel_y = 8
 	},
 /turf/simulated/floor/plasteel{
 	dir = 1;
@@ -21725,12 +21904,28 @@
 "bGF" = (
 /obj/machinery/requests_console/directional/north,
 /obj/structure/shelf/science,
-/obj/item/stack/sheet/metal/fifty,
-/obj/item/stack/sheet/metal/fifty,
-/obj/item/stack/sheet/metal/fifty,
-/obj/item/stack/sheet/metal/fifty,
-/obj/item/stack/sheet/metal/fifty,
-/obj/item/stack/sheet/metal/fifty,
+/obj/item/stack/sheet/metal/fifty{
+	pixel_y = 4;
+	pixel_x = -6
+	},
+/obj/item/stack/sheet/metal/fifty{
+	pixel_y = 4
+	},
+/obj/item/stack/sheet/metal/fifty{
+	pixel_y = 4;
+	pixel_x = 6
+	},
+/obj/item/stack/sheet/metal/fifty{
+	pixel_y = -4;
+	pixel_x = -6
+	},
+/obj/item/stack/sheet/metal/fifty{
+	pixel_y = -4
+	},
+/obj/item/stack/sheet/metal/fifty{
+	pixel_y = -4;
+	pixel_x = 6
+	},
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "whitepurple"
@@ -22407,12 +22602,28 @@
 	dir = 4
 	},
 /obj/machinery/requests_console/directional/west,
-/obj/item/reagent_containers/dropper/precision,
-/obj/item/reagent_containers/dropper/precision,
-/obj/item/reagent_containers/dropper/precision,
-/obj/item/reagent_containers/dropper,
-/obj/item/reagent_containers/dropper,
-/obj/item/reagent_containers/dropper,
+/obj/item/reagent_containers/dropper/precision{
+	pixel_y = -6;
+	pixel_x = -8
+	},
+/obj/item/reagent_containers/dropper/precision{
+	pixel_y = -6
+	},
+/obj/item/reagent_containers/dropper/precision{
+	pixel_y = -6;
+	pixel_x = 8
+	},
+/obj/item/reagent_containers/dropper{
+	pixel_y = 6;
+	pixel_x = -8
+	},
+/obj/item/reagent_containers/dropper{
+	pixel_y = 6
+	},
+/obj/item/reagent_containers/dropper{
+	pixel_y = 6;
+	pixel_x = 8
+	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "whiteyellow"
@@ -23601,14 +23812,24 @@
 	},
 /obj/machinery/alarm/directional/east,
 /obj/structure/shelf/medbay,
-/obj/item/storage/box/iv_bags,
-/obj/item/storage/box/syringes,
-/obj/item/storage/box/beakers,
-/obj/item/storage/box/iv_bags,
-/obj/item/eftpos{
-	pixel_y = 4
+/obj/item/storage/box/beakers{
+	pixel_y = -6;
+	pixel_x = -8
 	},
-/obj/item/storage/box/beakers,
+/obj/item/storage/box/iv_bags{
+	pixel_y = -6
+	},
+/obj/item/storage/box/syringes{
+	pixel_y = -6;
+	pixel_x = 8
+	},
+/obj/item/storage/box/beakers{
+	pixel_y = 8;
+	pixel_x = -8
+	},
+/obj/item/storage/box/iv_bags{
+	pixel_y = 8
+	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "whiteyellow"
@@ -23924,7 +24145,9 @@
 "bQS" = (
 /obj/structure/table/glass,
 /obj/machinery/firealarm/directional/east,
-/obj/item/stack/sheet/mineral/plasma,
+/obj/item/eftpos{
+	pixel_y = 4
+	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "whiteyellow"
@@ -24598,12 +24821,16 @@
 /area/station/hallway/primary/central/se)
 "bTI" = (
 /obj/structure/table/glass,
-/obj/item/hand_labeler{
-	pixel_y = 2
-	},
 /obj/machinery/light/directional/west,
 /obj/structure/sign/poster/official/science{
 	pixel_x = -32
+	},
+/obj/item/stack/sheet/mineral/plasma{
+	pixel_x = 0;
+	pixel_y = 12
+	},
+/obj/item/hand_labeler{
+	pixel_y = 2
 	},
 /turf/simulated/floor/plasteel{
 	dir = 10;
@@ -26112,9 +26339,17 @@
 /obj/structure/shelf/science,
 /obj/item/radio/intercom/directional/west,
 /obj/structure/reagent_dispensers/fueltank/chem/north,
-/obj/item/mmi,
-/obj/item/mmi,
-/obj/item/mmi,
+/obj/item/mmi{
+	pixel_y = -4;
+	pixel_x = -6
+	},
+/obj/item/mmi{
+	pixel_y = -4
+	},
+/obj/item/mmi{
+	pixel_y = -4;
+	pixel_x = 6
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "freezerfloor"
 	},
@@ -26336,12 +26571,28 @@
 /area/station/science/hallway)
 "caV" = (
 /obj/structure/shelf/medbay,
-/obj/item/storage/box/pillbottles,
-/obj/item/storage/box/patch_packs,
-/obj/item/storage/box/iv_bags,
-/obj/item/storage/box/pillbottles,
-/obj/item/storage/box/patch_packs,
-/obj/item/storage/box/iv_bags,
+/obj/item/storage/box/iv_bags{
+	pixel_y = -6;
+	pixel_x = -8
+	},
+/obj/item/storage/box/patch_packs{
+	pixel_y = -6
+	},
+/obj/item/storage/box/pillbottles{
+	pixel_y = -6;
+	pixel_x = 8
+	},
+/obj/item/storage/box/iv_bags{
+	pixel_y = 8;
+	pixel_x = -8
+	},
+/obj/item/storage/box/patch_packs{
+	pixel_y = 8
+	},
+/obj/item/storage/box/pillbottles{
+	pixel_y = 8;
+	pixel_x = 8
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "whitebluefull"
 	},
@@ -28215,12 +28466,28 @@
 /area/station/medical/surgery/observation)
 "ciQ" = (
 /obj/structure/shelf/medbay,
-/obj/item/storage/belt/medical,
-/obj/item/storage/belt/medical,
-/obj/item/storage/belt/medical,
-/obj/item/storage/belt/medical,
-/obj/item/storage/belt/medical,
-/obj/item/storage/belt/medical,
+/obj/item/storage/belt/medical{
+	pixel_y = -6;
+	pixel_x = -8
+	},
+/obj/item/storage/belt/medical{
+	pixel_y = -6
+	},
+/obj/item/storage/belt/medical{
+	pixel_y = -6;
+	pixel_x = 8
+	},
+/obj/item/storage/belt/medical{
+	pixel_y = 8;
+	pixel_x = -8
+	},
+/obj/item/storage/belt/medical{
+	pixel_y = 8
+	},
+/obj/item/storage/belt/medical{
+	pixel_y = 8;
+	pixel_x = 8
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "whiteblue"
 	},
@@ -31527,12 +31794,28 @@
 "cvO" = (
 /obj/structure/shelf/medbay,
 /obj/machinery/light_switch/south,
-/obj/item/storage/box/monkeycubes/farwacubes,
-/obj/item/storage/box/monkeycubes/neaeracubes,
-/obj/item/storage/box/monkeycubes/nian_worme_cubes,
-/obj/item/storage/box/monkeycubes/stokcubes,
-/obj/item/storage/box/monkeycubes/wolpincubes,
-/obj/item/storage/box/monkeycubes,
+/obj/item/storage/box/monkeycubes/wolpincubes{
+	pixel_y = -6;
+	pixel_x = -8
+	},
+/obj/item/storage/box/monkeycubes/stokcubes{
+	pixel_y = -6
+	},
+/obj/item/storage/box/monkeycubes/neaeracubes{
+	pixel_x = 8;
+	pixel_y = -6
+	},
+/obj/item/storage/box/monkeycubes{
+	pixel_y = 8;
+	pixel_x = -8
+	},
+/obj/item/storage/box/monkeycubes/farwacubes{
+	pixel_y = 8
+	},
+/obj/item/storage/box/monkeycubes/nian_worme_cubes{
+	pixel_y = 8;
+	pixel_x = 8
+	},
 /turf/simulated/floor/plasteel{
 	dir = 10;
 	icon_state = "whitegreen"
@@ -56743,8 +57026,14 @@
 	dir = 1
 	},
 /obj/structure/gunrack,
-/obj/item/gun/energy/laser/practice,
-/obj/item/gun/energy/laser/practice,
+/obj/item/gun/energy/laser/practice{
+	pixel_x = 0;
+	pixel_y = 4
+	},
+/obj/item/gun/energy/laser/practice{
+	pixel_x = 0;
+	pixel_y = -4
+	},
 /turf/simulated/floor/plasteel,
 /area/station/security/range)
 "hyQ" = (
@@ -59609,12 +59898,28 @@
 /area/station/maintenance/aft)
 "iEg" = (
 /obj/structure/shelf/medbay,
-/obj/item/storage/box/beakers,
-/obj/item/storage/box/syringes,
-/obj/item/storage/box/autoinjectors,
-/obj/item/storage/box/beakers,
-/obj/item/storage/box/syringes,
-/obj/item/storage/box/autoinjectors,
+/obj/item/storage/box/autoinjectors{
+	pixel_x = -8;
+	pixel_y = -6
+	},
+/obj/item/storage/box/syringes{
+	pixel_y = -6
+	},
+/obj/item/storage/box/beakers{
+	pixel_y = -6;
+	pixel_x = 8
+	},
+/obj/item/storage/box/autoinjectors{
+	pixel_x = -8;
+	pixel_y = 8
+	},
+/obj/item/storage/box/syringes{
+	pixel_y = 8
+	},
+/obj/item/storage/box/beakers{
+	pixel_y = 8;
+	pixel_x = 8
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "whitebluefull"
 	},
@@ -61288,12 +61593,27 @@
 /area/station/public/dorms)
 "jmB" = (
 /obj/structure/shelf,
+/obj/item/reagent_containers/glass/bottle/nutrient/ez{
+	pixel_x = -8;
+	pixel_y = 0
+	},
 /obj/item/reagent_containers/glass/bottle/nutrient/ez,
-/obj/item/reagent_containers/glass/bottle/nutrient/ez,
-/obj/item/reagent_containers/glass/bottle/nutrient/ez,
-/obj/item/reagent_containers/spray/pestspray,
-/obj/item/storage/bag/plants/seed_sorting_tray,
-/obj/item/reagent_containers/spray/pestspray,
+/obj/item/reagent_containers/glass/bottle/nutrient/ez{
+	pixel_x = 8;
+	pixel_y = 0
+	},
+/obj/item/reagent_containers/spray/pestspray{
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/obj/item/storage/bag/plants/seed_sorting_tray{
+	pixel_x = 0;
+	pixel_y = 12
+	},
+/obj/item/reagent_containers/spray/pestspray{
+	pixel_x = 8;
+	pixel_y = 12
+	},
 /turf/simulated/floor/grass,
 /area/station/security/permabrig)
 "jmU" = (
@@ -62015,13 +62335,29 @@
 /area/station/medical/virology)
 "jyI" = (
 /obj/structure/shelf/medbay,
+/obj/item/clothing/glasses/hud/health{
+	pixel_y = -4;
+	pixel_x = -8
+	},
+/obj/item/clothing/glasses/hud/health{
+	pixel_y = -4
+	},
+/obj/item/clothing/glasses/hud/health{
+	pixel_y = -4;
+	pixel_x = 8
+	},
+/obj/item/clothing/glasses/hud/health{
+	pixel_y = 8;
+	pixel_x = -8
+	},
+/obj/item/clothing/glasses/hud/health{
+	pixel_y = 8
+	},
+/obj/item/clothing/glasses/hud/health{
+	pixel_y = 8;
+	pixel_x = 8
+	},
 /obj/item/radio/intercom/directional/south,
-/obj/item/clothing/glasses/hud/health,
-/obj/item/clothing/glasses/hud/health,
-/obj/item/clothing/glasses/hud/health,
-/obj/item/clothing/glasses/hud/health,
-/obj/item/clothing/glasses/hud/health,
-/obj/item/clothing/glasses/hud/health,
 /turf/simulated/floor/plasteel{
 	icon_state = "whiteblue"
 	},
@@ -67122,12 +67458,27 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/item/clothing/glasses/sunglasses_fake,
+/obj/item/clothing/glasses/sunglasses_fake{
+	pixel_x = -6;
+	pixel_y = -4
+	},
 /obj/item/storage/box/flashbangs,
-/obj/item/clothing/glasses/sunglasses_fake,
-/obj/item/clothing/ears/earmuffs,
-/obj/item/paper/firingrange,
-/obj/item/clothing/ears/earmuffs,
+/obj/item/clothing/glasses/sunglasses_fake{
+	pixel_x = 6;
+	pixel_y = -4
+	},
+/obj/item/clothing/ears/earmuffs{
+	pixel_x = -6;
+	pixel_y = 10
+	},
+/obj/item/paper/firingrange{
+	pixel_x = 0;
+	pixel_y = 10
+	},
+/obj/item/clothing/ears/earmuffs{
+	pixel_x = 6;
+	pixel_y = 10
+	},
 /turf/simulated/floor/plasteel,
 /area/station/security/range)
 "lrJ" = (
@@ -75157,12 +75508,30 @@
 "oeO" = (
 /obj/machinery/alarm/directional/north,
 /obj/structure/shelf/science,
-/obj/item/healthanalyzer,
-/obj/item/healthanalyzer,
-/obj/item/healthanalyzer,
-/obj/item/storage/firstaid/regular/empty,
-/obj/item/storage/firstaid/regular/empty,
-/obj/item/storage/firstaid/regular/empty,
+/obj/item/storage/firstaid/regular/empty{
+	pixel_x = -6;
+	pixel_y = -6
+	},
+/obj/item/storage/firstaid/regular/empty{
+	pixel_x = 0;
+	pixel_y = -6
+	},
+/obj/item/storage/firstaid/regular/empty{
+	pixel_x = 6;
+	pixel_y = -6
+	},
+/obj/item/healthanalyzer{
+	pixel_x = -6;
+	pixel_y = 8
+	},
+/obj/item/healthanalyzer{
+	pixel_x = 0;
+	pixel_y = 8
+	},
+/obj/item/healthanalyzer{
+	pixel_x = 6;
+	pixel_y = 8
+	},
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "whitepurple"
@@ -88187,12 +88556,28 @@
 /area/station/service/theatre)
 "sEn" = (
 /obj/structure/shelf/medbay,
-/obj/item/tank/internals/emergency_oxygen/nitrogen,
-/obj/item/tank/internals/emergency_oxygen/nitrogen,
-/obj/item/tank/internals/emergency_oxygen/nitrogen,
-/obj/item/tank/internals/emergency_oxygen/plasma,
-/obj/item/tank/internals/emergency_oxygen/plasma,
-/obj/item/tank/internals/emergency_oxygen/plasma,
+/obj/item/tank/internals/emergency_oxygen/plasma{
+	pixel_y = -6;
+	pixel_x = -8
+	},
+/obj/item/tank/internals/emergency_oxygen/plasma{
+	pixel_y = -6
+	},
+/obj/item/tank/internals/emergency_oxygen/plasma{
+	pixel_y = -6;
+	pixel_x = 8
+	},
+/obj/item/tank/internals/emergency_oxygen/nitrogen{
+	pixel_y = 8;
+	pixel_x = -8
+	},
+/obj/item/tank/internals/emergency_oxygen/nitrogen{
+	pixel_y = 8
+	},
+/obj/item/tank/internals/emergency_oxygen/nitrogen{
+	pixel_y = 8;
+	pixel_x = 8
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "whitebluefull"
 	},
@@ -88276,12 +88661,30 @@
 /area/station/maintenance/asmaint)
 "sFE" = (
 /obj/structure/shelf,
-/obj/item/shovel/spade,
-/obj/item/cultivator,
-/obj/item/plant_analyzer,
-/obj/item/shovel/spade,
-/obj/item/cultivator,
-/obj/item/clothing/gloves/botanic_leather,
+/obj/item/shovel/spade{
+	pixel_x = -8;
+	pixel_y = -4
+	},
+/obj/item/plant_analyzer{
+	pixel_x = 0;
+	pixel_y = -4
+	},
+/obj/item/cultivator{
+	pixel_x = 8;
+	pixel_y = -4
+	},
+/obj/item/shovel/spade{
+	pixel_x = -8;
+	pixel_y = 8
+	},
+/obj/item/clothing/gloves/botanic_leather{
+	pixel_x = 0;
+	pixel_y = 8
+	},
+/obj/item/cultivator{
+	pixel_x = 8;
+	pixel_y = 8
+	},
 /turf/simulated/floor/grass,
 /area/station/security/permabrig)
 "sFQ" = (
@@ -98470,12 +98873,28 @@
 /area/station/maintenance/port)
 "wna" = (
 /obj/structure/shelf/medbay,
-/obj/item/storage/box/masks,
-/obj/item/storage/box/bodybags,
-/obj/item/storage/box/gloves,
-/obj/item/storage/box/masks,
-/obj/item/storage/box/bodybags,
-/obj/item/storage/box/gloves,
+/obj/item/storage/box/gloves{
+	pixel_y = -6;
+	pixel_x = -8
+	},
+/obj/item/storage/box/bodybags{
+	pixel_y = -6
+	},
+/obj/item/storage/box/masks{
+	pixel_y = -6;
+	pixel_x = 8
+	},
+/obj/item/storage/box/gloves{
+	pixel_y = 8;
+	pixel_x = -8
+	},
+/obj/item/storage/box/bodybags{
+	pixel_y = 8
+	},
+/obj/item/storage/box/masks{
+	pixel_y = 8;
+	pixel_x = 8
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "whitebluefull"
 	},
