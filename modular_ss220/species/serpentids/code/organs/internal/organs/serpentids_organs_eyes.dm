@@ -17,7 +17,7 @@
 	var/chemical_consuption = GAS_ORGAN_CHEMISTRY_EYES
 	var/vision_ajust_coefficient = 0.4
 	var/update_time_client_colour = 10
-	radial_action_state = "eyes02"
+	radial_action_state = "nvg_green"
 	radial_action_icon = 'modular_ss220/species/serpentids/icons/organs.dmi'
 
 /obj/item/organ/internal/eyes/serpentid/Initialize(mapload)

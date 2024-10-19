@@ -21,7 +21,7 @@
 	var/chem_to_oxy_mult = 0.1
 	var/danger_air = FALSE
 	var/hand_active = FALSE
-	radial_action_state = "tank"
+	radial_action_state = "ballon"
 	radial_action_icon = 'modular_ss220/species/serpentids/icons/organs.dmi'
 
 /obj/item/organ/internal/lungs/serpentid/Initialize(mapload)

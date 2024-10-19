@@ -17,13 +17,11 @@
 
 /datum/component/organ_action/RegisterWithParent()
 	RegisterSignal(parent, COMSIG_ORGAN_GROUP_ACTION_CALL, PROC_REF(open_actions))
-	RegisterSignal(parent, COMSIG_CARBON_GAIN_ORGAN, PROC_REF(resort_buttons))
-	RegisterSignal(parent, COMSIG_CARBON_LOSE_ORGAN, PROC_REF(resort_buttons))
+	RegisterSignal(parent, COMSIG_ORGAN_GROUP_ACTION_RESORT, PROC_REF(resort_buttons))
 
 /datum/component/organ_action/UnregisterFromParent()
 	UnregisterSignal(parent, COMSIG_ORGAN_GROUP_ACTION_CALL)
-	UnregisterSignal(parent, COMSIG_CARBON_GAIN_ORGAN)
-	UnregisterSignal(parent, COMSIG_CARBON_LOSE_ORGAN)
+	UnregisterSignal(parent, COMSIG_ORGAN_GROUP_ACTION_RESORT)
 
 
 /datum/component/organ_action/proc/check_actions(mob/user)
