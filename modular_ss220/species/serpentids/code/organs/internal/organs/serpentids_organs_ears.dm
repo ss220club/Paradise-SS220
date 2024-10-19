@@ -32,7 +32,7 @@
 
 /obj/item/organ/internal/ears/serpentid/switch_mode(force_off = FALSE)
 	.=..()
-	if(!force_off && owner?.get_chemical_value(chemical_id) >= chemical_consuption && !(status & ORGAN_DEAD))
+	if(!force_off && owner?.get_chemical_value(chemical_id) >= chemical_consuption && !(status & ORGAN_DEAD) && !active)
 		active = TRUE
 		chemical_consuption = initial(chemical_consuption)
 	else

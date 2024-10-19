@@ -17,6 +17,7 @@
 	var/chemical_consuption = GAS_ORGAN_CHEMISTRY_EYES
 	var/vision_ajust_coefficient = 0.4
 	var/update_time_client_colour = 10
+	var/active = FALSE
 	radial_action_state = "nvg_green"
 	radial_action_icon = 'modular_ss220/species/serpentids/icons/organs.dmi'
 
@@ -59,9 +60,12 @@
 
 /obj/item/organ/internal/eyes/serpentid/switch_mode(force_off = FALSE)
 	.=..()
-	if(!force_off && owner?.get_chemical_value(chemical_id) >= chemical_consuption && !(status & ORGAN_DEAD))
+	if(!force_off && owner?.get_chemical_value(chemical_id) >= chemical_consuption && !(status & ORGAN_DEAD) && !active)
 		see_in_dark = 8
 		chemical_consuption = GAS_ORGAN_CHEMISTRY_EYES + GAS_ORGAN_CHEMISTRY_EYES * (max_damage - damage / max_damage)
+		active = TRUE
 	else
 		see_in_dark = initial(see_in_dark)
 		chemical_consuption = 0
+		active = FALSE
+	owner?.update_sight()
