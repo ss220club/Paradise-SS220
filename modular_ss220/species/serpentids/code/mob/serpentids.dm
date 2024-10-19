@@ -155,7 +155,7 @@
 		var/limb_armor = limb.brute_dam + limb.burn_dam
 		armor_count += limb_armor
 
-	if(gene_lastcall >= SERPENTID_GENE_DEGRADATION_CD && gene_degradation > 0)
+	if(gene_lastcall >= SERPENTID_GENE_DEGRADATION_CD && gene_degradation)
 		H.adjustCloneLoss(gene_degradation)
 		gene_lastcall = 0
 	else

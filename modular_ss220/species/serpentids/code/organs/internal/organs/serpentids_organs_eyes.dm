@@ -40,12 +40,12 @@
 /obj/item/organ/internal/eyes/serpentid/on_life()
 	. = ..()
 	SEND_SIGNAL(src, COMSIG_ORGAN_CHEM_CALL, chemical_consuption)
-	if(!isnull(owner))
+	if(owner)
 		var/mob/mob = owner
 		mob.update_client_colour(time = update_time_client_colour)
 
 /obj/item/organ/internal/eyes/serpentid/get_colourmatrix()
-	var/chem_value = (owner.get_chemical_value(chemical_id) + GAS_ORGAN_CHEMISTRY_MAX/2)/GAS_ORGAN_CHEMISTRY_MAX
+	var/chem_value = (owner?.get_chemical_value(chemical_id) + GAS_ORGAN_CHEMISTRY_MAX/2)/GAS_ORGAN_CHEMISTRY_MAX
 	var/vision_chem = clamp(chem_value, SERPENTID_EYES_LOW_VISIBLE_VALUE, SERPENTID_EYES_MAX_VISIBLE_VALUE)
 	var/vision_concentration = (1 - vision_chem/SERPENTID_EYES_MAX_VISIBLE_VALUE)*SERPENTID_EYES_LOW_VISIBLE_VALUE
 
@@ -59,7 +59,7 @@
 
 /obj/item/organ/internal/eyes/serpentid/switch_mode(force_off = FALSE)
 	.=..()
-	if(!force_off && owner.get_chemical_value(chemical_id) >= chemical_consuption && !(status & ORGAN_DEAD))
+	if(!force_off && owner?.get_chemical_value(chemical_id) >= chemical_consuption && !(status & ORGAN_DEAD))
 		see_in_dark = 8
 		chemical_consuption = GAS_ORGAN_CHEMISTRY_EYES + GAS_ORGAN_CHEMISTRY_EYES * (max_damage - damage / max_damage)
 	else

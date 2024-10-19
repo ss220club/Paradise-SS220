@@ -62,9 +62,9 @@
 /obj/item/organ/internal/lungs/serpentid/on_life()
 	.=..()
 	SEND_SIGNAL(src, COMSIG_ORGAN_CHEM_CALL, chemical_consuption)
-	var/can_secretion = owner.get_chemical_value(chemical_id) > chemical_consuption
+	var/can_secretion = owner?.get_chemical_value(chemical_id) > chemical_consuption
 	var/danger_state = owner.getOxyLoss() > 0
-	var/datum/reagent/chemical = owner.get_chemical_path(chemical_id)
+	var/datum/reagent/chemical = owner?.get_chemical_path(chemical_id)
 	var/datum/gas_mixture/breath
 	var/datum/organ/lungs/serpentid/lung_data = organ_datums[organ_tag]
 	var/breath_moles = 0
@@ -228,9 +228,9 @@
 
 
 /obj/item/organ/internal/lungs/serpentid/proc/breath_secretion(datum/gas_mixture/breath)
-	var/can_secretion = owner.get_chemical_value(chemical_id) > chemical_consuption
+	var/can_secretion = owner?.get_chemical_value(chemical_id) > chemical_consuption
 	var/danger_state = owner.getOxyLoss() > 0
-	var/datum/reagent/chemical = owner.get_chemical_path(chemical_id)
+	var/datum/reagent/chemical = owner?.get_chemical_path(chemical_id)
 	if(danger_air)
 		if(!owner.internal)
 			owner.internal = serpentid_vault

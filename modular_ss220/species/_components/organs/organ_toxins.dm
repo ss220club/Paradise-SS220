@@ -24,7 +24,7 @@
 /datum/component/organ_toxin_damage/proc/tox_handle_organ()
 	if(organ.status & ORGAN_DEAD)
 		return
-	if(organ.owner.get_damage_amount(TOX) > 0)
+	if(organ.owner?.get_damage_amount(TOX))
 		var/obj/item/organ/internal/liver/target_liver = organ.owner.get_int_organ(/obj/item/organ/internal/liver)
 		var/obj/item/organ/internal/kidneys/target_kidney = organ.owner.get_int_organ(/obj/item/organ/internal/kidneys)
 

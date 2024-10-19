@@ -20,11 +20,11 @@
 	if(!(owner))
 		var/obj/item/organ/internal/limb = parent
 		owner = limb.owner
-	else if(owner.get_chemical_value(chemical_id) >= 0 && owner.stat == DEAD && owner.get_damage_amount() <= AUTO_DEFIBRILATION_THRESHOLD)
-		var/defib_chance = owner.get_chemical_value(chemical_id)
-		var/datum/reagent/chem = owner.get_chemical_path(chemical_id)
+	else if(owner?.get_chemical_value(chemical_id) >= 0 && owner.stat == DEAD && owner.get_damage_amount() <= AUTO_DEFIBRILATION_THRESHOLD)
+		var/defib_chance = owner?.get_chemical_value(chemical_id)
+		var/datum/reagent/chem = owner?.get_chemical_path(chemical_id)
 		if(chem)
-			chem.holder.remove_reagent(chemical_id, owner.get_chemical_value(chemical_id))
+			chem.holder.remove_reagent(chemical_id, owner?.get_chemical_value(chemical_id))
 			if(prob(defib_chance))
 				owner.setOxyLoss(0)
 				owner.set_heartattack(FALSE)

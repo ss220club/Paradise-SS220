@@ -21,8 +21,8 @@
 /datum/component/chemistry_organ/proc/chems_process(holder, consuption_count)
 	if(isnull(organ.owner))
 		return TRUE
-	var/chemical_volume = organ.owner.get_chemical_value(chemical_id)
-	var/datum/reagent/chemical = organ.owner.get_chemical_path(chemical_id)
+	var/chemical_volume = organ.owner?.get_chemical_value(chemical_id)
+	var/datum/reagent/chemical = organ.owner?.get_chemical_path(chemical_id)
 	if(chemical_volume < consuption_count || chemical_volume == 0)
 		//Если количества недостаточно - выключить режим
 		organ.switch_mode(force_off = TRUE)
