@@ -91,7 +91,7 @@ GLOBAL_LIST_INIT(all_donor_jobs, donor_tier_1_jobs + donor_tier_2_jobs + donor_t
 GLOBAL_LIST_INIT(service_donor_jobs, all_donor_jobs - security_donor_jobs - assistant_donor_jobs - supply_donor_jobs)
 
 // Работы которые нельзя выбрать нигде
-GLOBAL_LIST_INIT(jobs_excluded_from_selection, list("Donor", "Event"))
+GLOBAL_LIST_INIT(jobs_excluded_from_selection, list("Donor"))
 
 
 // ====================== SPECIAL ======================

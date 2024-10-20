@@ -330,7 +330,7 @@
 	id = /obj/item/card/id
 	l_hand = /obj/item/gun/energy/gun/skrell_carbine/elite
 	r_pocket = /obj/item/reagent_containers/hypospray/autoinjector/nt_emergency/skrell
-	l_pocket = 	/obj/item/tank/internals/emergency_oxygen/double
+	l_pocket = /obj/item/tank/internals/emergency_oxygen/double
 	mask = /obj/item/clothing/mask/gas/swat
 	backpack_contents = list(
 		/obj/item/storage/box/skrell,
@@ -357,24 +357,18 @@
 
 	var/obj/item/card/id/I = H.wear_id
 	if(istype(I))
-		if(!is_sardaukar)
-			apply_to_card(I, H, list(ACCESS_MAINT_TUNNELS), "SDTF Raskinta Katish", "retro_medical")
-			I.rank = "SDTF Raskinta Katish"
-			I.assignment = "SDTF Raskinta Katish"
-		else
-			apply_to_card(I, H, list(ACCESS_MAINT_TUNNELS), "Emperor Guard", "retro_medical")
-			I.rank = "Emperor Guard"
-			I.assignment = "Emperor Guard"
+		var/applied_rank = is_sardaukar ? "Emperor Guard" : "SDTF Raskinta Katish"
+		apply_to_card(I, H, list(ACCESS_MAINT_TUNNELS), applied_rank, /obj/item/card/id/away/old/med::icon_state)
 	H.sec_hud_set_ID()
 
 /datum/outfit/admin/sdtf/rifleman
 	name = "Skrellian Defence Task Forces Officer"
 	l_hand = /obj/item/gun/projectile/automatic/sniper_rifle/skrell_rifle
 	belt = /obj/item/storage/belt/military/assault/skrell
+	suit_store = /obj/item/melee/vibroblade
 	backpack_contents = list(
 		/obj/item/storage/box/skrell,
 		/obj/item/gun/energy/gun/skrell_carbine/elite,
-		/obj/item/melee/vibroblade,
 		/obj/item/storage/box/smoke_grenades,
 		/obj/item/grenade/plastic/c4 = 2,
 		/obj/item/clothing/accessory/holster,
@@ -387,9 +381,9 @@
 	belt = /obj/item/storage/belt/military/assault/skrell_elite
 	back = /obj/item/mod/control/pre_equipped/exclusive/skrell_sardaukars
 	r_pocket = /obj/item/reagent_containers/hypospray/combat/nanites
+	suit_store = /obj/item/melee/vibroblade/sardaukar
 	backpack_contents = list(
 		/obj/item/gun/energy/gun/skrell_carbine/elite,
-		/obj/item/melee/vibroblade/sardaukar,
 		/obj/item/storage/box/skrell,
 		/obj/item/storage/box/smoke_grenades,
 		/obj/item/grenade/plastic/c4 = 2,
