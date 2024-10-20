@@ -450,8 +450,24 @@
 	cold_protection = UPPER_TORSO | LOWER_TORSO | ARMS
 	heat_protection = UPPER_TORSO | LOWER_TORSO | ARMS
 	sprite_sheets = list(
+		"Abductor" 			= 	'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Ancient Skeleton" 	= 	'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Diona" 			= 	'modular_ss220/clothing/icons/mob/suits.dmi',
 		"Drask" 			= 	'modular_ss220/clothing/icons/mob/species/drask/suits.dmi',
+		"Golem" 			= 	'modular_ss220/clothing/icons/mob/suits.dmi',
 		"Grey" 				= 	'modular_ss220/clothing/icons/mob/species/grey/suits.dmi',
+		"Human" 			= 	'modular_ss220/clothing/icons/mob/suits.dmi',
 		"Kidan" 			= 	'modular_ss220/clothing/icons/mob/species/kidan/suits.dmi',
+		"Machine"			= 	'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Monkey" 			= 	'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Nian" 				= 	'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Plasmaman" 		= 	'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Shadow" 			= 	'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Skrell" 			= 	'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Slime People" 		= 	'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Tajaran" 			= 	'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Unathi" 			= 	'modular_ss220/clothing/icons/mob/suits.dmi',
 		"Vox" 				= 	'modular_ss220/clothing/icons/mob/species/vox/suits.dmi',
+		"Vulpkanin" 		= 	'modular_ss220/clothing/icons/mob/suits.dmi',
+		"Nucleation"		=	'modular_ss220/clothing/icons/mob/suits.dmi',
 		)
