@@ -38,6 +38,9 @@
 		)
 
 /* Lootdrop */
+/obj/effect/spawner/random/maintenance
+	icon = 'modular_ss220/maps220/icons/spawner_icons.dmi'
+
 /obj/effect/spawner/random/trash
 	icon = 'modular_ss220/maps220/icons/spawner_icons.dmi'
 
