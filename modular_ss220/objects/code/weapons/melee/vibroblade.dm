@@ -140,6 +140,7 @@
 		set_charge_level(CHARGE_LEVEL_NONE)
 
 /obj/item/melee/vibroblade/proc/thrown(datum/thrownthing/thrown_thing, spin)
+	SIGNAL_HANDLER
 	if(hold_to_be_charged)
 		set_charge_level(CHARGE_LEVEL_NONE)
 
