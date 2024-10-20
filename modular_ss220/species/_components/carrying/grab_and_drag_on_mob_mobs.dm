@@ -7,7 +7,6 @@
 #define COMSIG_GADOM_MOB_UNLOAD "try_unload_mob"
 #define GADOM_BASIC_LOAD_TIMER_MOB 2 SECONDS
 #define COMSIG_GADOM_MOB_CAN_GRAB "block_operation"
-#define GADOM_MOB_ALLOW_TO_GRAB (1<<0)
 
 /mob/living/carbon/human
 	var/atom/movable/loaded = null
@@ -31,7 +30,7 @@
 
 /datum/component/gadom_living/proc/block_operation(datum/component_holder)
 	SIGNAL_HANDLER
-	var/signal_result = (carrier.a_intent != "grab" ? FALSE : GADOM_MOB_ALLOW_TO_GRAB)
+	var/signal_result = carrier.a_intent == "grab"
 	return signal_result
 
 /datum/component/gadom_living/proc/try_load_mob(datum/component_holder, mob/user, mob/target)
@@ -39,8 +38,8 @@
 	INVOKE_ASYNC(src, PROC_REF(pre_load), component_holder, user, target)
 
 /datum/component/gadom_living/proc/pre_load(datum/component_holder, mob/user, mob/target)
-	var/mob/living/carbon/human/puppet = component_holder
-	if(user.incapacitated() || HAS_TRAIT(user, TRAIT_HANDS_BLOCKED) || get_dist(user, puppet) > 1)
+	var/mob/living/carbon/human/puppet = user
+	if(user.incapacitated() || HAS_TRAIT(user, TRAIT_HANDS_BLOCKED) || get_dist(target, user) > 1)
 		return
 	if(!istype(target))
 		return
@@ -48,7 +47,7 @@
 		load(puppet, target)
 
 /datum/component/gadom_living/proc/load(mob/living/carbon/human/puppet, atom/movable/AM)
-	if(carrier.loaded|| AM.anchored || get_dist(puppet, AM) > 1)
+	if(puppet.loaded || puppet.passenger || AM.anchored || get_dist(puppet, AM) > 1)
 		return
 
 	if(!isitem(AM) && !ismachinery(AM) && !isstructure(AM) && !ismob(AM))
@@ -56,20 +55,18 @@
 	if(!isturf(AM.loc))
 		return
 
-	if(isliving(AM))
-		if(!load_mob(AM))
-			return
+	if(!load_mob(puppet, AM))
+		return
 
-	carrier.loaded = AM
-	carrier.update_icon()
+	puppet.loaded = AM
+	puppet.update_icon()
 
-/datum/component/gadom_living/proc/load_mob(mob/living/M)
-	carrier.can_buckle = TRUE
-	carrier.buckle_lying = FALSE
-	if(carrier.buckle_mob(M))
-		carrier.passenger = M
-		carrier.loaded = M
-		carrier.can_buckle = FALSE
+/datum/component/gadom_living/proc/load_mob(mob/living/carbon/human/puppet, mob/living/M)
+	puppet.can_buckle = TRUE
+	puppet.buckle_lying = FALSE
+	if(puppet.buckle_mob(M))
+		puppet.passenger = M
+		puppet.can_buckle = FALSE
 
 		return TRUE
 	return FALSE
@@ -106,14 +103,14 @@
 		to_chat(usr, "<span class='boldannounceic'>Interacting with admin-frozen players is not permitted.</span>")
 		return
 	var/signal_call	= SEND_SIGNAL(usr, COMSIG_GADOM_MOB_CAN_GRAB)
-	if(signal_call & GADOM_MOB_ALLOW_TO_GRAB)
+	if(signal_call)
 		SEND_SIGNAL(usr, COMSIG_GADOM_MOB_LOAD, usr, src)
 		return
 	. = .. ()
 
 /datum/species/spec_attack_hand(mob/living/carbon/human/M, mob/living/carbon/human/H, datum/martial_art/attacker_style)
-	var/signal_call	= SEND_SIGNAL(usr, COMSIG_GADOM_MOB_CAN_GRAB)
-	if((signal_call & GADOM_MOB_ALLOW_TO_GRAB) && H.loaded)
+	var/signal_call	= SEND_SIGNAL(H, COMSIG_GADOM_MOB_CAN_GRAB)
+	if(signal_call && H.passenger)
 		SEND_SIGNAL(H, COMSIG_GADOM_MOB_UNLOAD, M)
 	. = .. ()
 

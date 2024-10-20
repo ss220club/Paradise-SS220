@@ -8,7 +8,6 @@
 #define GADOM_BASIC_LOAD_TIMER_CRATE 2 SECONDS
 
 #define COMSIG_GADOM_UNMOB_CAN_GRAB "block_operation"
-#define GADOM_UNMOB_ALLOW_TO_GRAB (1<<0)
 
 //Для отслеживания кто несет объект
 /atom/movable
@@ -69,7 +68,7 @@
 
 /datum/component/gadom_cargo/proc/block_operation()
 	SIGNAL_HANDLER
-	var/signal_result = (carrier.a_intent != "grab" ? FALSE : GADOM_MOB_ALLOW_TO_GRAB)
+	var/signal_result = carrier.a_intent == "grab"
 	return signal_result
 
 /datum/component/gadom_cargo/proc/try_load_cargo(datum/component_holder, mob/user, atom/movable/AM)
@@ -83,7 +82,7 @@
 		load(AM)
 
 /datum/component/gadom_cargo/proc/load(atom/movable/AM)
-	if(carrier.loaded || AM.anchored || get_dist(carrier, AM) > 1)
+	if(carrier.loaded || carrier.passenger || AM.anchored || get_dist(carrier, AM) > 1)
 		return
 
 	if(!isitem(AM) && !ismachinery(AM) && !isstructure(AM) && !ismob(AM))
@@ -131,13 +130,13 @@
 //Расширение прока для переноса ящика на моба
 /mob/living/carbon/human/MouseDrop_T(atom/movable/AM, mob/user)
 	var/signal_call	= SEND_SIGNAL(usr, COMSIG_GADOM_UNMOB_CAN_GRAB)
-	if(signal_call & GADOM_UNMOB_ALLOW_TO_GRAB)
+	if(signal_call)
 		SEND_SIGNAL(usr, COMSIG_GADOM_UNMOB_LOAD, usr, AM)
 	. = .. ()
 
 //Расширение прока на отстегивание ящика
 /datum/species/spec_attack_hand(mob/living/carbon/human/M, mob/living/carbon/human/H, datum/martial_art/attacker_style)
-	var/signal_call	= SEND_SIGNAL(usr, COMSIG_GADOM_UNMOB_CAN_GRAB)
-	if((signal_call & GADOM_UNMOB_ALLOW_TO_GRAB) && H.loaded)
+	var/signal_call	= SEND_SIGNAL(H, COMSIG_GADOM_UNMOB_CAN_GRAB)
+	if(signal_call && H.loaded)
 		SEND_SIGNAL(H, COMSIG_GADOM_UNMOB_UNLOAD)
 	. = .. ()

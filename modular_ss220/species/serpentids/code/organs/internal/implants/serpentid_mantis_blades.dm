@@ -1,8 +1,8 @@
 // ============ Органы внешние ============
 /obj/item/kitchen/knife/combat/serpentblade
 	name = "serpentid mantis blade"
-	icon = 'icons/obj/items_cyborg.dmi'
-	icon_state = "knife"
+	icon = 'modular_ss220/species/serpentids/icons/organs.dmi'
+	icon_state = "left_blade"
 	lefthand_file = null
 	righthand_file = null
 	desc = "Biological melee weapon. Sharp and durable. It can cut off some heads, or maybe not..."
