@@ -13,7 +13,7 @@
 
 /datum/design/blutrash
 	name = "Trash Bag of Holding"
-	desc = "Продвинутый мусорный мешок, использующий технологии синего пространства; способен вмещать огромное количество мусора."
+	desc = "Продвинутый мусорный мешок, использующий технологии блюспейса. Способен вмещать огромное количество мусора."
 	id = "blutrash"
 	req_tech = list("materials" = 5, "bluespace" = 4, "engineering" = 4, "plasmatech" = 3)
 	build_type = PROTOLATHE
