@@ -5,14 +5,12 @@
 */
 /datum/component/mob_overlay_shift
 	var/dir = NORTH
-
 	var/list/shift_data = list()
 
 /datum/component/mob_overlay_shift/Initialize(list/shift_list)
 	// Define body parts and positions
 	var/list/body_parts = list("inhand", "belt", "back", "head")
 	var/list/positions = list("center", "side", "front")
-
 	// Initialize shifts using the provided shift_data list or default to zero
 	for(var/body_part in body_parts)
 		// Create a nested list for each body part if it doesn't exist
@@ -25,19 +23,21 @@
 			// Set default values for x and y shifts if not provided
 			shift_data[body_part][position]["x"] = shift_list[body_part][position]["x"] ? shift_list[body_part][position]["x"] : 0
 			shift_data[body_part][position]["y"] = shift_list[body_part][position]["y"] ? shift_list[body_part][position]["y"] : 0
+	shift_call(parent)
 
 /datum/component/mob_overlay_shift/RegisterWithParent()
 	RegisterSignal(parent, COMSIG_ATOM_DIR_CHANGE, PROC_REF(shift_call))
-	RegisterSignal(parent, COMSIG_LIVING_LIFE, PROC_REF(update_call))
+	RegisterSignal(parent, COMSIG_COMPONENT_CLEAN_ACT, PROC_REF(shift_call))
 
 /datum/component/mob_overlay_shift/UnregisterFromParent()
-	UnregisterSignal(parent, COMSIG_ATOM_DIR_CHANGE)
-	UnregisterSignal(parent, COMSIG_LIVING_LIFE)
+	UnregisterSignal(parent, list(COMSIG_ATOM_DIR_CHANGE, COMSIG_COMPONENT_CLEAN_ACT))
 
-//Проки, срабатываемые при получении или исцелении урона
-/datum/component/mob_overlay_shift/proc/shift_call(mob/living/carbon/human/mob, old_dir, new_dir)
-	if(new_dir)
-		dir = new_dir
+//datum/component/mob_overlay_shift/process()
+	//shift_call(parent)
+
+/datum/component/mob_overlay_shift/proc/shift_call(mob/living/carbon/human/mob)
+	if(mob.dir)
+		dir = mob.dir
 
 	var/list/body_parts = list("inhand", "belt", "back", "head")
 	var/position
@@ -308,3 +308,15 @@
 
 	mob.apply_overlay(LEFT_EAR_LAYER)
 	mob.apply_overlay(RIGHT_EAR_LAYER)
+
+/mob/equip_to_slot(obj/item/W, slot, initial = FALSE)
+	. = .. ()
+	SEND_SIGNAL(src, COMSIG_ATOM_DIR_CHANGE)
+
+/mob/facedir(ndir)
+	. = .. ()
+	SEND_SIGNAL(src, COMSIG_ATOM_DIR_CHANGE)
+
+/mob/ClickOn(atom/A, params)
+	. = .. ()
+	SEND_SIGNAL(src, COMSIG_ATOM_DIR_CHANGE)

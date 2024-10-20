@@ -119,12 +119,12 @@
 	var/gene_lastcall = 0
 	var/list/shift_data = list(
 	"head" = list(
-		"center" = list("x" = 0, "y" = 10),
+		"center" = list("x" = 0, "y" = 9),
 		"side" = list("x" = 3, "y" = 0),
 		"front" = list("x" = 0, "y" = 0)
 	),
 	"inhand" = list(
-		"center" = list("x" = 0, "y" = 3),
+		"center" = list("x" = 0, "y" = 1),
 		"side" = list("x" = 0, "y" = 0),
 		"front" = list("x" = 0, "y" = 0)
 	),
@@ -169,7 +169,7 @@
 	H.buckle_lying = buckle_lying
 	H.update_transform()
 	H.AddComponent(/datum/component/footstep, FOOTSTEP_MOB_SLIME, 1, -6)
-	H.AddComponent(/datum/component/mob_overlay_shift, shift_data) //shift_xs_hand = 12
+	H.AddComponent(/datum/component/mob_overlay_shift, shift_data)
 	H.AddComponent(/datum/component/gadom_living)
 	H.AddComponent(/datum/component/gadom_cargo)
 	H.verbs |= /mob/living/carbon/human/proc/emote_gasroar

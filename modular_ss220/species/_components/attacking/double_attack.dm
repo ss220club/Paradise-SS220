@@ -17,8 +17,8 @@
 /datum/component/double_attack/proc/hand_pre_attack(obj/item/weapon, mob/living/target, mob/living/user, def_zone)
 	SIGNAL_HANDLER
 	var/hand_item = user.get_active_hand()
-	state_attack = TRUE
-	if(hand_item && state_attack)
+	if(hand_item && !state_attack)
+		state_attack = TRUE
 		addtimer(CALLBACK(src, PROC_REF(hand_attack), target, user, def_zone, hand_item), (user.next_move_modifier / 5) SECONDS)
 
 /datum/component/double_attack/proc/hand_attack(mob/living/target, mob/living/user, def_zone, obj/item/hand_item)

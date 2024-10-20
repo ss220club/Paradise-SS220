@@ -107,6 +107,7 @@
 
 	carrier.loaded = AM
 	carrier.update_icon()
+	carrier.throw_alert("holding", /atom/movable/screen/alert/carrying)
 
 /datum/component/gadom_cargo/proc/try_unload_cargo()
 	var/dirn = carrier.dir
@@ -125,6 +126,7 @@
 				step(carrier.loaded, dirn)
 		carrier.loaded.crate_carrying_person = null
 		carrier.loaded = null
+		carrier.clear_alert("holding")
 	carrier.update_icon(UPDATE_OVERLAYS)
 
 //Расширение прока для переноса ящика на моба
