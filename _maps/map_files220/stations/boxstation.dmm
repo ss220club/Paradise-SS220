@@ -14271,12 +14271,28 @@
 /obj/effect/turf_decal/delivery/blue/hollow,
 /obj/machinery/light/small/directional/north,
 /obj/structure/shelf/command,
-/obj/item/clothing/shoes/magboots,
-/obj/item/tank/jetpack/carbondioxide,
-/obj/item/clothing/shoes/magboots,
-/obj/item/clothing/shoes/magboots,
-/obj/item/tank/jetpack/carbondioxide,
-/obj/item/clothing/shoes/magboots,
+/obj/item/clothing/shoes/magboots{
+	pixel_x = -8;
+	pixel_y = -4
+	},
+/obj/item/clothing/shoes/magboots{
+	pixel_y = -4
+	},
+/obj/item/clothing/shoes/magboots{
+	pixel_y = -4;
+	pixel_x = 8
+	},
+/obj/item/tank/jetpack/carbondioxide{
+	pixel_y = 8;
+	pixel_x = -8
+	},
+/obj/item/clothing/shoes/magboots{
+	pixel_y = 8
+	},
+/obj/item/tank/jetpack/carbondioxide{
+	pixel_y = 8;
+	pixel_x = 8
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -22611,33 +22627,17 @@
 	},
 /area/station/supply/sorting)
 "bJF" = (
-/obj/structure/shelf/medbay,
 /obj/machinery/camera{
 	c_tag = "Medbay Chemistry";
 	dir = 4
 	},
 /obj/machinery/requests_console/directional/west,
-/obj/item/reagent_containers/dropper/precision{
-	pixel_y = -6;
-	pixel_x = -8
+/obj/structure/table/glass,
+/obj/item/stack/sheet/mineral/plasma{
+	pixel_y = 12
 	},
-/obj/item/reagent_containers/dropper/precision{
-	pixel_y = -6
-	},
-/obj/item/reagent_containers/dropper/precision{
-	pixel_y = -6;
-	pixel_x = 8
-	},
-/obj/item/reagent_containers/dropper{
-	pixel_y = 6;
-	pixel_x = -8
-	},
-/obj/item/reagent_containers/dropper{
-	pixel_y = 6
-	},
-/obj/item/reagent_containers/dropper{
-	pixel_y = 6;
-	pixel_x = 8
+/obj/item/hand_labeler{
+	pixel_y = 2
 	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
@@ -23830,24 +23830,9 @@
 	dir = 8
 	},
 /obj/machinery/alarm/directional/east,
-/obj/structure/shelf/medbay,
-/obj/item/storage/box/beakers{
-	pixel_y = -6;
-	pixel_x = -8
-	},
-/obj/item/storage/box/iv_bags{
-	pixel_y = -6
-	},
-/obj/item/storage/box/syringes{
-	pixel_y = -6;
-	pixel_x = 8
-	},
-/obj/item/storage/box/beakers{
-	pixel_y = 8;
-	pixel_x = -8
-	},
-/obj/item/storage/box/iv_bags{
-	pixel_y = 8
+/obj/structure/table/glass,
+/obj/item/eftpos{
+	pixel_y = 4
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -24162,10 +24147,25 @@
 /turf/simulated/wall/r_wall,
 /area/station/medical/paramedic)
 "bQS" = (
-/obj/structure/table/glass,
 /obj/machinery/firealarm/directional/east,
-/obj/item/eftpos{
-	pixel_y = 4
+/obj/structure/shelf/medbay,
+/obj/item/storage/box/beakers{
+	pixel_y = -6;
+	pixel_x = -8
+	},
+/obj/item/storage/box/iv_bags{
+	pixel_y = -6
+	},
+/obj/item/storage/box/syringes{
+	pixel_y = -6;
+	pixel_x = 8
+	},
+/obj/item/storage/box/beakers{
+	pixel_y = 8;
+	pixel_x = -8
+	},
+/obj/item/storage/box/iv_bags{
+	pixel_y = 8
 	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
@@ -24839,16 +24839,32 @@
 /turf/simulated/floor/plasteel,
 /area/station/hallway/primary/central/se)
 "bTI" = (
-/obj/structure/table/glass,
 /obj/machinery/light/directional/west,
 /obj/structure/sign/poster/official/science{
 	pixel_x = -32
 	},
-/obj/item/stack/sheet/mineral/plasma{
-	pixel_y = 12
+/obj/structure/shelf/medbay,
+/obj/item/reagent_containers/dropper/precision{
+	pixel_y = -6;
+	pixel_x = -8
 	},
-/obj/item/hand_labeler{
-	pixel_y = 2
+/obj/item/reagent_containers/dropper/precision{
+	pixel_y = -6
+	},
+/obj/item/reagent_containers/dropper/precision{
+	pixel_y = -6;
+	pixel_x = 8
+	},
+/obj/item/reagent_containers/dropper{
+	pixel_y = 6;
+	pixel_x = -8
+	},
+/obj/item/reagent_containers/dropper{
+	pixel_y = 6
+	},
+/obj/item/reagent_containers/dropper{
+	pixel_y = 6;
+	pixel_x = 8
 	},
 /turf/simulated/floor/plasteel{
 	dir = 10;
@@ -33432,7 +33448,30 @@
 /area/station/service/janitor)
 "cBL" = (
 /obj/machinery/firealarm/directional/south,
-/obj/structure/closet/jcloset,
+/obj/structure/shelf/service,
+/obj/item/grenade/chem_grenade/cleaner{
+	pixel_x = -6;
+	pixel_y = -4
+	},
+/obj/item/grenade/chem_grenade/cleaner{
+	pixel_x = 2;
+	pixel_y = -4
+	},
+/obj/item/grenade/chem_grenade/cleaner{
+	pixel_x = 10;
+	pixel_y = -4
+	},
+/obj/item/storage/box/lights/mixed{
+	pixel_y = 8;
+	pixel_x = -8
+	},
+/obj/item/reagent_containers/spray/cleaner{
+	pixel_y = 8
+	},
+/obj/item/storage/box/lights/mixed{
+	pixel_y = 8;
+	pixel_x = 8
+	},
 /turf/simulated/floor/plasteel,
 /area/station/service/janitor)
 "cBN" = (
@@ -34059,7 +34098,9 @@
 /area/station/engineering/supermatter_room)
 "cEj" = (
 /obj/machinery/light/directional/south,
-/obj/machinery/economy/vending/janidrobe,
+/obj/vehicle/janicart{
+	dir = 1
+	},
 /turf/simulated/floor/plasteel,
 /area/station/service/janitor)
 "cEk" = (
@@ -35214,13 +35255,8 @@
 	},
 /area/station/maintenance/aft)
 "cIo" = (
-/obj/structure/shelf/service,
 /obj/structure/reagent_dispensers/spacecleanertank/north,
-/obj/item/grenade/chem_grenade/cleaner,
-/obj/item/grenade/chem_grenade/cleaner,
-/obj/item/grenade/chem_grenade/cleaner,
-/obj/item/key/janitor,
-/obj/item/reagent_containers/spray/cleaner,
+/obj/machinery/economy/vending/janidrobe,
 /turf/simulated/floor/plasteel,
 /area/station/service/janitor)
 "cIp" = (
@@ -44164,11 +44200,8 @@
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/turbine)
 "dot" = (
-/obj/structure/rack,
-/obj/item/storage/box/lights/mixed,
-/obj/item/storage/box/lights/mixed,
-/obj/item/restraints/legcuffs/beartrap,
-/obj/item/restraints/legcuffs/beartrap,
+/obj/structure/table,
+/obj/item/key/janitor,
 /turf/simulated/floor/plasteel,
 /area/station/service/janitor)
 "dou" = (
@@ -45427,6 +45460,18 @@
 	},
 /turf/simulated/floor/engine/xenobio,
 /area/station/science/xenobiology)
+"dvX" = (
+/obj/structure/rack,
+/obj/item/restraints/legcuffs/beartrap{
+	pixel_y = 12
+	},
+/obj/item/restraints/legcuffs/beartrap{
+	pixel_y = 6
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "floorgrime"
+	},
+/area/station/service/janitor)
 "dvY" = (
 /obj/effect/spawner/random/fungus/frequent,
 /turf/simulated/wall,
@@ -46541,7 +46586,6 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/item/clothing/mask/gas,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "yellowcorner"
@@ -77583,7 +77627,7 @@
 /area/station/service/bar/atrium)
 "oJu" = (
 /obj/machinery/newscaster/directional/north,
-/obj/vehicle/janicart,
+/obj/structure/closet/jcloset,
 /turf/simulated/floor/plasteel,
 /area/station/service/janitor)
 "oJw" = (
@@ -136186,7 +136230,7 @@ pxz
 cAu
 ctZ
 cmR
-cDa
+dvX
 cmG
 cBU
 cvx
