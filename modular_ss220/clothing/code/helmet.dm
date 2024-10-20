@@ -197,9 +197,9 @@
 		"Vulpkanin" 		= 	'modular_ss220/clothing/icons/mob/species/vulpkanin/helmet.dmi',
 	)
 	armor = list(MELEE = 10, BULLET = 20, LASER = 10, ENERGY = 15, BOMB = 1, RAD = 0, FIRE = 50, ACID = 50)
+	actions_types = list(/datum/action/item_action/toggle_helmet_light)
 	var/on = FALSE
 	var/brightness_on = 2
-	actions_types = list(/datum/action/item_action/toggle_helmet_light)
 
 /obj/item/clothing/head/helmet/cop/attack_self(mob/living/user)
 	toggle_helmet_light(user)
