@@ -42,7 +42,7 @@
 	icon_state = "freezer"
 
 /obj/structure/closet/secure_closet/freezer/products/populate_contents()
-	for(var/i in 1 to 2)
-		new /obj/item/storage/box/donkpockets(src)
-	for(var/i in 1 to 2)
-		new /obj/item/storage/fancy/egg_box(src)
+	new /obj/item/storage/box/donkpockets(src)
+	new /obj/item/storage/box/donkpockets(src)
+	new /obj/item/storage/fancy/egg_box(src)
+	new /obj/item/storage/fancy/egg_box(src)
