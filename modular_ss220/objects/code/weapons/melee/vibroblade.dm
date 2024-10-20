@@ -28,7 +28,10 @@
 	flags = CONDUCT
 	var/charge_level = CHARGE_LEVEL_NONE 
 	var/max_charge_level = CHARGE_LEVEL_OVERCHARGE
+	/// How long does it take to reach next level of charge.
 	var/charge_time = 4 SECONDS
+	/// TRUE if the item keeps charge only when is held in hands. FALSE if the item always keeps charge.
+	var/hold_to_be_charged = TRUE
 	var/emp_proof = FALSE
 	/// Body parts that can be cut off.
 	var/list/cutoff_candidates = list(
@@ -44,7 +47,12 @@
 
 /obj/item/melee/vibroblade/Initialize(mapload)
 	. = ..()
+	RegisterSignal(src, COMSIG_MOVABLE_POST_THROW, PROC_REF(thrown))
 	AddComponent(/datum/component/parry, _stamina_constant = 2, _stamina_coefficient = 0.5, _parryable_attack_types = ALL_ATTACK_TYPES)
+
+/obj/item/melee/vibroblade/Destroy()
+	. = ..()
+	UnregisterSignal(src, COMSIG_MOVABLE_POST_THROW)
 
 /obj/item/melee/vibroblade/update_icon_state()
 	icon_state = initial(icon_state) + (charge_level > CHARGE_LEVEL_NONE ? "_[charge_level]" : "")
@@ -79,8 +87,7 @@
 		return
 	playsound(loc, 'sound/effects/sparks3.ogg', vol = 10, vary = TRUE)
 	do_sparks(1, TRUE, src)
-	charge_level++
-	update_icon_state()
+	set_charge_level(charge_level + 1)
 
 /obj/item/melee/vibroblade/pre_attack(atom/A, mob/living/user, params)
 	. = ..()
@@ -105,9 +112,7 @@
 			span_biggerdanger("Вы искусно отсекаете [selected_bodypart] [target]!")
 		)
 
-	charge_level = CHARGE_LEVEL_NONE
-	force = initial(force)
-	update_icon_state()
+	set_charge_level(CHARGE_LEVEL_NONE)
 
 /obj/item/melee/vibroblade/suicide_act(mob/living/carbon/human/user)
 	var/obj/item/organ/external/head = user.get_organ(BODY_ZONE_HEAD)
@@ -115,17 +120,36 @@
 		Кажется, это попытка самоубийства!"))
 	user.atom_say("Слава Вечной Империи!")
 	head.droplimb(TRUE, DROPLIMB_SHARP, FALSE, TRUE)
+	set_charge_level(CHARGE_LEVEL_NONE)
 	return BRUTELOSS
 
 /obj/item/melee/vibroblade/emp_act(severity)
 	. = ..()
 	if(emp_proof)
 		return
-	charge_level = CHARGE_LEVEL_NONE
-	update_icon_state()
+	set_charge_level(CHARGE_LEVEL_NONE)
+
+/obj/item/melee/vibroblade/equipped(mob/user, slot, initial)
+	. = ..()
+	if(hold_to_be_charged && slot != SLOT_HUD_LEFT_HAND && slot != SLOT_HUD_RIGHT_HAND)
+		set_charge_level(CHARGE_LEVEL_NONE)
+
+/obj/item/melee/vibroblade/dropped(mob/user, silent)
+	. = ..()
+	if(hold_to_be_charged && !silent)
+		set_charge_level(CHARGE_LEVEL_NONE)
+
+/obj/item/melee/vibroblade/proc/thrown(datum/thrownthing/thrown_thing, spin)
+	if(hold_to_be_charged)
+		set_charge_level(CHARGE_LEVEL_NONE)
 
 /obj/item/melee/vibroblade/proc/get_damage_factor()
 	return 1 + 0.25 * clamp(charge_level, CHARGE_LEVEL_NONE, max_charge_level)
+
+/obj/item/melee/vibroblade/proc/set_charge_level(charge_level)
+	src.charge_level = charge_level
+	force = initial(force) * get_damage_factor()
+	update_icon_state()
 
 /obj/item/melee/vibroblade/sardaukar
 	name = "\improper emperor guard vibroblade"
@@ -137,6 +161,7 @@
 	item_state = "vibroblade_elite"
 	force = 25
 	charge_time = 2 SECONDS
+	hold_to_be_charged = FALSE
 	emp_proof = TRUE
 
 #undef CHARGE_LEVEL_NONE
