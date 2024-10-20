@@ -60,7 +60,7 @@
 
 	puppet.loaded = AM
 	puppet.update_icon()
-	puppet.throw_alert("holding", /atom/movable/screen/alert/carrying)
+	puppet.throw_alert("gas_holding", /atom/movable/screen/alert/carrying)
 
 /datum/component/gadom_living/proc/load_mob(mob/living/carbon/human/puppet, mob/living/M)
 	puppet.can_buckle = TRUE
@@ -82,7 +82,7 @@
 	carrier.unbuckle_all_mobs()
 	carrier.can_buckle = TRUE
 	carrier.update_icon(UPDATE_OVERLAYS)
-	carrier.clear_alert("holding")
+	carrier.clear_alert("gas_holding")
 
 //Обновление при отстегивании для восстановления слоя моба
 /mob/living/carbon/human/post_unbuckle_mob(mob/living/M)
