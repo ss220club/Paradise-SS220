@@ -459,9 +459,14 @@
 "adm" = (
 /obj/structure/table/reinforced,
 /obj/machinery/recharger{
-	pixel_y = 4
+	pixel_y = 4;
+	pixel_x = 6
 	},
 /obj/machinery/firealarm/directional/east,
+/obj/item/paper/firingrange{
+	pixel_y = 4;
+	pixel_x = -6
+	},
 /turf/simulated/floor/plating,
 /area/station/security/range)
 "ado" = (
@@ -977,9 +982,6 @@
 	},
 /obj/item/clothing/ears/earmuffs{
 	pixel_x = -6;
-	pixel_y = 10
-	},
-/obj/item/paper/firingrange{
 	pixel_y = 10
 	},
 /obj/item/clothing/ears/earmuffs{
@@ -4679,7 +4681,9 @@
 "atY" = (
 /obj/machinery/light_switch/west,
 /obj/structure/rack,
-/obj/machinery/syndicatebomb/training,
+/obj/machinery/syndicatebomb/training{
+	pixel_y = 3
+	},
 /turf/simulated/floor/plasteel,
 /area/station/security/range)
 "aua" = (
@@ -57327,12 +57331,9 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/structure/gunrack,
+/obj/structure/table/reinforced,
 /obj/item/gun/energy/laser/practice{
 	pixel_y = 4
-	},
-/obj/item/gun/energy/laser/practice{
-	pixel_y = -4
 	},
 /turf/simulated/floor/plasteel,
 /area/station/security/range)
@@ -60503,7 +60504,12 @@
 "iIQ" = (
 /obj/structure/table/reinforced,
 /obj/machinery/recharger{
-	pixel_y = 4
+	pixel_y = 4;
+	pixel_x = -6
+	},
+/obj/item/paper/firingrange{
+	pixel_y = 4;
+	pixel_x = 6
 	},
 /turf/simulated/floor/plating,
 /area/station/security/range)
@@ -67799,9 +67805,6 @@
 	},
 /obj/item/clothing/ears/earmuffs{
 	pixel_x = -6;
-	pixel_y = 10
-	},
-/obj/item/paper/firingrange{
 	pixel_y = 10
 	},
 /obj/item/clothing/ears/earmuffs{
