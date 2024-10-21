@@ -5,6 +5,8 @@
 Срабатывает только, если оружие одинаковое.
 */
 
+#define PAIRATTACK_RECOIL_MULT 2.5
+
 #define COMSIG_ITEM_ATTACK_PROCESS "offhand_pre_attack"
 #define COMSIG_PAIRATTACK_SYNC "sync_states"
 #define COMSIG_PAIRATTACK_CHECK "check_state"
@@ -13,6 +15,10 @@
 /datum/component/pair_attack
 	var/obj/item/offhand_item = null
 	var/state_attack = FALSE
+	var/attack_CD = 0
+
+/datum/component/pair_attack/Initialize(attack_CD_OVR = 0)
+	attack_CD = attack_CD_OVR
 
 /datum/component/pair_attack/RegisterWithParent()
 	RegisterSignal(parent, COMSIG_ITEM_ATTACK_PROCESS, PROC_REF(offhand_pre_attack))
@@ -44,8 +50,10 @@
 	state_attack = TRUE
 	SEND_SIGNAL(offhand_item, COMSIG_PAIRATTACK_SYNC, state_attack)
 	if(offhand_item)
-		addtimer(CALLBACK(src, PROC_REF(offhand_attack), target, user, def_zone), (user.next_move_modifier / 5) SECONDS)
-		addtimer(CALLBACK(src, PROC_REF(offhand_post_attack)), (user.next_move_modifier / 2) SECONDS)
+		var/attack_haste = attack_CD ? attack_CD : user.next_move_modifier / 5
+		var/attack_recoil = attack_haste * PAIRATTACK_RECOIL_MULT
+		addtimer(CALLBACK(src, PROC_REF(offhand_attack), target, user, def_zone), attack_haste SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(offhand_post_attack)), attack_recoil SECONDS)
 
 /datum/component/pair_attack/proc/offhand_attack(mob/living/target, mob/living/user, def_zone)
 	if(QDELETED(src) || QDELETED(target) || user != offhand_item.loc  || !user.Adjacent(target))

@@ -14,18 +14,16 @@
 	var/mob/living/carbon/human/crate_carrying_person = null
 
 //Для расширения движения (иначе возникает графический глич и ящик пропадает при движении)
-/atom/movable/Move(atom/newloc, direct = 0, movetime)
+/mob/living/carbon/human/Move(NewLoc, direct)
 	. = .. ()
 	var/mob/living/carbon/human/puppet = src
-	if(ishuman(puppet))
-		if(!isnull(puppet.loaded))
-			puppet.loaded.forceMoveCrate(puppet)
+	if(puppet.loaded)
+		puppet.loaded.forceMoveCrate(puppet)
 
 //Клонированый и изменны прок движения, чтобы не трогать основной
 /atom/movable/proc/forceMoveCrate(atom/destination)
 	var/turf/old_loc = loc
 	loc = destination.loc //изменение здесь (добавлено .loc)
-	moving_diagonally = 0
 
 	if(old_loc)
 		old_loc.Exited(src, destination)

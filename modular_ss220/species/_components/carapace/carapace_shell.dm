@@ -3,6 +3,13 @@
 Цепляется на конечность (в идеале торс).area
 Опреедляет возможности тела серпентида, которые зависят от общего состояния хитина всех конечностей
 */
+
+
+#define CARAPACE_SHELL_ARMORED_BRUTE 0.6
+#define CARAPACE_SHELL_ARMORED_BURN 0.8
+#define CARAPACE_SHELL_BROKEN_BRUTE 1
+#define CARAPACE_SHELL_BROKEN_BURN 1
+
 /datum/component/carapace_shell
 	var/mob/living/carbon/human/H
 	var/state_1_threshold = 0
@@ -12,7 +19,9 @@
 	var/armored_heat_threshold = 0
 	var/armored_temp_progression = 0
 
-/datum/component/carapace_shell/Initialize(caller, treshold_1, treshold_2, treshold_3, threshold_cold, threshold_heat, temp_progression)
+/datum/component/carapace_shell/Initialize(mob/living/carbon/human/caller, treshold_1, treshold_2, treshold_3, threshold_cold, threshold_heat, temp_progression)
+	if(!istype(caller))
+		return
 	H = caller
 
 	state_1_threshold = treshold_1
@@ -35,24 +44,21 @@
 
 	//Потеря брони при первом трешхолде
 	if(character_damage <= state_1_threshold)
-		specie.brute_mod = 0.6
-		specie.burn_mod = 1.1
+		specie.brute_mod = CARAPACE_SHELL_ARMORED_BRUTE
+		specie.burn_mod = CARAPACE_SHELL_ARMORED_BURN
 		ADD_TRAIT(H, TRAIT_PIERCEIMMUNE, "carapace_state")
-		H.clear_alert("carapace_break_armor")
+		H.clear_alert("carapace_break")
 	else
-		specie.brute_mod = 1.3
-		specie.burn_mod = 1.5
+		specie.brute_mod = CARAPACE_SHELL_BROKEN_BRUTE
+		specie.burn_mod = CARAPACE_SHELL_BROKEN_BURN
 		REMOVE_TRAIT(H, TRAIT_PIERCEIMMUNE, "carapace_state")
-		H.throw_alert("carapace_break_armor", /atom/movable/screen/alert/carapace/break_armor)
+		H.throw_alert("carapace_break", /atom/movable/screen/alert/carapace/break_armor)
 
 	//Потеря стелса при втором трешхолде
 	var/obj/item/organ/internal/kidneys/serpentid/organ = H.get_int_organ("kidneys")
-	if(character_damage <= state_2_threshold)
-		H.clear_alert("carapace_break_cloak")
-	else
-		H.throw_alert("carapace_break_cloak", /atom/movable/screen/alert/carapace/break_cloak)
-		H.clear_alert("carapace_break_armor")
-		if(istype(organ, /obj/item/organ/internal/kidneys/serpentid))
+	if(character_damage > state_2_threshold)
+		H.throw_alert("carapace_break", /atom/movable/screen/alert/carapace/break_cloak)
+		if(istype(organ))
 			organ.switch_mode(force_off = TRUE)
 
 	//Потеря рига при третьем трешхолде
@@ -64,15 +70,12 @@
 		specie.warning_high_pressure = INFINITY
 		specie.warning_low_pressure = -INFINITY
 		specie.hazard_low_pressure = -INFINITY
-		H.clear_alert("carapace_break_rig")
 	else
 		specie.hazard_high_pressure = HAZARD_HIGH_PRESSURE
 		specie.warning_high_pressure = WARNING_HIGH_PRESSURE
 		specie.warning_low_pressure = WARNING_LOW_PRESSURE
 		specie.hazard_low_pressure = HAZARD_LOW_PRESSURE
-		H.throw_alert("carapace_break_rig", /atom/movable/screen/alert/carapace/break_rig)
-		H.clear_alert("carapace_break_armor")
-		H.clear_alert("carapace_break_cloak")
+		H.throw_alert("carapace_break", /atom/movable/screen/alert/carapace/break_rig)
 		cold = initial(specie.cold_level_1)
 		heat = initial(specie.heat_level_2)
 

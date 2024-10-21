@@ -8,6 +8,7 @@
 #define CHAT_MESSAGE_WIDTH			96
 #define CHAT_MESSAGE_GRACE_PERIOD 	(0.2 SECONDS)
 
+//Отрпавить на оффы - так можно кастомно выводить рунчат сообщения (выше/ниже верхней границы спрайта)
 /mob
 	var/chat_message_y_offset = 0
 

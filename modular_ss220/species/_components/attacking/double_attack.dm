@@ -7,6 +7,10 @@
 
 /datum/component/double_attack
 	var/state_attack = FALSE
+	var/attack_CD = 0
+
+/datum/component/double_attack/Initialize(attack_CD_OVR = 0)
+	attack_CD = attack_CD_OVR
 
 /datum/component/double_attack/RegisterWithParent()
 	RegisterSignal(parent, COMSIG_MOB_ITEM_ATTACK, PROC_REF(hand_pre_attack))
@@ -19,7 +23,8 @@
 	var/hand_item = user.get_active_hand()
 	if(hand_item && !state_attack)
 		state_attack = TRUE
-		addtimer(CALLBACK(src, PROC_REF(hand_attack), target, user, def_zone, hand_item), (user.next_move_modifier / 5) SECONDS)
+		var/attack_haste = attack_CD ? attack_CD : user.next_move_modifier / 5
+		addtimer(CALLBACK(src, PROC_REF(hand_attack), target, user, def_zone, hand_item), attack_haste SECONDS)
 
 /datum/component/double_attack/proc/hand_attack(mob/living/target, mob/living/user, def_zone, obj/item/hand_item)
 	if(QDELETED(src) || QDELETED(target) || user != hand_item.loc  || !user.Adjacent(target))

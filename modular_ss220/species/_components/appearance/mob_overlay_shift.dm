@@ -3,14 +3,26 @@
 Компонент должен цепляться на моба.
 При инициализации предаются сдвиги.
 */
+#define MOB_OVERLAY_SHIFT_HAND "inhand"
+#define MOB_OVERLAY_SHIFT_BELT "belt"
+#define MOB_OVERLAY_SHIFT_BACK "back"
+#define MOB_OVERLAY_SHIFT_HEAD "head"
+#define MOB_OVERLAY_SHIFT_SIDE "side"
+#define MOB_OVERLAY_SHIFT_FRONT "front"
+#define MOB_OVERLAY_SHIFT_CENTER "center"
+
+#define COMSIG_MOB_OVERLAY_SHIFT_ON_EQUIP "on_equip"
+#define COMSIG_MOB_OVERLAY_SHIFT_ON_CLICK "on_click"
+
+
 /datum/component/mob_overlay_shift
 	var/dir = NORTH
 	var/list/shift_data = list()
 
 /datum/component/mob_overlay_shift/Initialize(list/shift_list)
 	// Define body parts and positions
-	var/list/body_parts = list("inhand", "belt", "back", "head")
-	var/list/positions = list("center", "side", "front")
+	var/list/body_parts = list(MOB_OVERLAY_SHIFT_HAND, MOB_OVERLAY_SHIFT_BELT, MOB_OVERLAY_SHIFT_BACK, MOB_OVERLAY_SHIFT_HEAD)
+	var/list/positions = list(MOB_OVERLAY_SHIFT_CENTER, MOB_OVERLAY_SHIFT_SIDE, MOB_OVERLAY_SHIFT_FRONT)
 	// Initialize shifts using the provided shift_data list or default to zero
 	for(var/body_part in body_parts)
 		// Create a nested list for each body part if it doesn't exist
@@ -21,35 +33,36 @@
 			shift_data[body_part][position] = shift_list[body_part][position] ? shift_list[body_part][position] : list()
 
 			// Set default values for x and y shifts if not provided
-			shift_data[body_part][position]["x"] = shift_list[body_part][position]["x"] ? shift_list[body_part][position]["x"] : 0
-			shift_data[body_part][position]["y"] = shift_list[body_part][position]["y"] ? shift_list[body_part][position]["y"] : 0
+			shift_data[body_part][position]["x"] = shift_list[body_part][position]["x"] || 0
+			shift_data[body_part][position]["y"] = shift_list[body_part][position]["y"] || 0
+
 	shift_call(parent)
 
 /datum/component/mob_overlay_shift/RegisterWithParent()
 	RegisterSignal(parent, COMSIG_ATOM_DIR_CHANGE, PROC_REF(shift_call))
 	RegisterSignal(parent, COMSIG_COMPONENT_CLEAN_ACT, PROC_REF(shift_call))
+	RegisterSignal(parent, COMSIG_MOB_OVERLAY_SHIFT_ON_EQUIP, PROC_REF(shift_call))
+	RegisterSignal(parent, COMSIG_MOB_OVERLAY_SHIFT_ON_CLICK, PROC_REF(shift_call))
+
 
 /datum/component/mob_overlay_shift/UnregisterFromParent()
-	UnregisterSignal(parent, list(COMSIG_ATOM_DIR_CHANGE, COMSIG_COMPONENT_CLEAN_ACT))
-
-//datum/component/mob_overlay_shift/process()
-	//shift_call(parent)
+	UnregisterSignal(parent, list(COMSIG_ATOM_DIR_CHANGE, COMSIG_COMPONENT_CLEAN_ACT, COMSIG_MOB_OVERLAY_SHIFT_ON_EQUIP, COMSIG_MOB_OVERLAY_SHIFT_ON_CLICK))
 
 /datum/component/mob_overlay_shift/proc/shift_call(mob/living/carbon/human/mob)
 	if(mob.dir)
 		dir = mob.dir
 
-	var/list/body_parts = list("inhand", "belt", "back", "head")
+	var/list/body_parts = list(MOB_OVERLAY_SHIFT_HAND, MOB_OVERLAY_SHIFT_BELT, MOB_OVERLAY_SHIFT_BACK, MOB_OVERLAY_SHIFT_HEAD)
 	var/position
 	switch(dir)
 		if(EAST)
-			position = "side"
+			position = MOB_OVERLAY_SHIFT_SIDE
 		if(SOUTH)
-			position = "front"
+			position = MOB_OVERLAY_SHIFT_FRONT
 		if(WEST)
-			position = "side"
+			position = MOB_OVERLAY_SHIFT_SIDE
 		if(NORTH)
-			position = "front"
+			position = MOB_OVERLAY_SHIFT_FRONT
 
 	var/flip = (dir == WEST || dir == SOUTH) ? -1 : 1
 
@@ -60,8 +73,8 @@
 
 		var/x_shift_value = shift_data[body_part][position]["x"]
 		var/y_shift_value = shift_data[body_part][position]["y"]
-		var/x_central_value = shift_data[body_part]["center"]["x"]
-		var/y_central_value = shift_data[body_part]["center"]["y"]
+		var/x_central_value = shift_data[body_part][MOB_OVERLAY_SHIFT_CENTER]["x"]
+		var/y_central_value = shift_data[body_part][MOB_OVERLAY_SHIFT_CENTER]["y"]
 
 		shift_data[body_part][x_shift_key] = flip * x_shift_value + x_central_value
 		shift_data[body_part][y_shift_key] = flip * y_shift_value + y_central_value
@@ -118,8 +131,8 @@
 			standing = mutable_appearance(mob.belt.sprite_sheets[mob.dna.species.sprite_sheet_name], "[t_state]", layer = -overlay_layer)
 		else
 			standing = mutable_appearance('icons/mob/clothing/belt.dmi', "[t_state]", layer = -overlay_layer)
-		standing.pixel_x = shift_data["belt"]["shift_y"]
-		standing.pixel_y = shift_data["belt"]["shift_y"]
+		standing.pixel_x = shift_data[MOB_OVERLAY_SHIFT_BELT]["shift_y"]
+		standing.pixel_y = shift_data[MOB_OVERLAY_SHIFT_BELT]["shift_y"]
 		mob.overlays_standing[overlay_layer] = standing
 	mob.apply_overlay(BELT_LAYER)
 	mob.apply_overlay(SPECIAL_BELT_LAYER)
@@ -143,8 +156,8 @@
 		//create the image
 		standing.alpha = mob.back.alpha
 		standing.color = mob.back.color
-		standing.pixel_x = shift_data["back"]["shift_x"]
-		standing.pixel_y = shift_data["back"]["shift_y"]
+		standing.pixel_x = shift_data[MOB_OVERLAY_SHIFT_BACK]["shift_x"]
+		standing.pixel_y = shift_data[MOB_OVERLAY_SHIFT_BACK]["shift_y"]
 		mob.overlays_standing[BACK_LAYER] = standing
 	mob.apply_overlay(BACK_LAYER)
 
@@ -163,8 +176,8 @@
 		else
 			standing = mutable_appearance(mob.r_hand.righthand_file, "[t_state]", layer = -R_HAND_LAYER, color = mob.r_hand.color)
 			standing = center_image(standing, (mob.r_hand.inhand_x_dimension), (mob.r_hand.inhand_y_dimension))
-			standing.pixel_x = shift_data["inhand"]["shift_x"]
-			standing.pixel_y = shift_data["inhand"]["shift_y"]
+			standing.pixel_x = shift_data[MOB_OVERLAY_SHIFT_HAND]["shift_x"]
+			standing.pixel_y = shift_data[MOB_OVERLAY_SHIFT_HAND]["shift_y"]
 		mob.overlays_standing[R_HAND_LAYER] = standing
 	mob.apply_overlay(R_HAND_LAYER)
 
@@ -184,8 +197,8 @@
 		else
 			standing = mutable_appearance(mob.l_hand.lefthand_file, "[t_state]", layer = -L_HAND_LAYER, color = mob.l_hand.color)
 			standing = center_image(standing, mob.l_hand.inhand_x_dimension, mob.l_hand.inhand_y_dimension)
-			standing.pixel_x = shift_data["inhand"]["shift_x"]
-			standing.pixel_y = shift_data["inhand"]["shift_y"]
+			standing.pixel_x = shift_data[MOB_OVERLAY_SHIFT_HAND]["shift_x"]
+			standing.pixel_y = shift_data[MOB_OVERLAY_SHIFT_HAND]["shift_y"]
 		mob.overlays_standing[L_HAND_LAYER] = standing
 	mob.apply_overlay(L_HAND_LAYER)
 
@@ -216,8 +229,8 @@
 			standing.overlays += bloodsies
 		standing.alpha = mob.head.alpha
 		standing.color = mob.head.color
-		standing.pixel_x = shift_data["head"]["shift_x"]
-		standing.pixel_y = shift_data["head"]["shift_y"]
+		standing.pixel_x = shift_data[MOB_OVERLAY_SHIFT_HEAD]["shift_x"]
+		standing.pixel_y = shift_data[MOB_OVERLAY_SHIFT_HEAD]["shift_y"]
 		mob.overlays_standing[HEAD_LAYER] = standing
 	mob.apply_overlay(HEAD_LAYER)
 
@@ -233,7 +246,7 @@
 
 	if(mob.glasses)
 		var/mutable_appearance/new_glasses
-		var/obj/item/organ/external/head/head_organ = mob.get_organ("head")
+		var/obj/item/organ/external/head/head_organ = mob.get_organ(MOB_OVERLAY_SHIFT_HEAD)
 		mob.update_hud_glasses(mob.glasses)
 
 		if(mob.glasses.icon_override)
@@ -243,8 +256,8 @@
 		else
 			new_glasses = mutable_appearance('icons/mob/clothing/eyes.dmi', "[mob.glasses.icon_state]", layer = -GLASSES_LAYER)
 
-		new_glasses.pixel_x = shift_data["head"]["shift_x"]
-		new_glasses.pixel_y = shift_data["head"]["shift_y"]
+		new_glasses.pixel_x = shift_data[MOB_OVERLAY_SHIFT_HEAD]["shift_x"]
+		new_glasses.pixel_y = shift_data[MOB_OVERLAY_SHIFT_HEAD]["shift_y"]
 
 		var/datum/sprite_accessory/hair/hair_style = GLOB.hair_styles_full_list[head_organ.h_style]
 		var/obj/item/clothing/glasses/G = mob.glasses
@@ -286,8 +299,8 @@
 			left_ear_icon = mob.l_ear.icon_override
 
 		var/mutable_appearance/standing = mutable_appearance(left_ear_icon, left_ear_item_state, layer = -LEFT_EAR_LAYER)
-		standing.pixel_x = shift_data["head"]["shift_x"]
-		standing.pixel_y = shift_data["head"]["shift_y"]
+		standing.pixel_x = shift_data[MOB_OVERLAY_SHIFT_HEAD]["shift_x"]
+		standing.pixel_y = shift_data[MOB_OVERLAY_SHIFT_HEAD]["shift_y"]
 		mob.overlays_standing[LEFT_EAR_LAYER] = standing
 
 	if(mob.r_ear)
@@ -302,8 +315,8 @@
 			right_ear_icon = mob.r_ear.icon_override
 
 		var/mutable_appearance/standing = mutable_appearance(right_ear_icon, right_ear_item_state, layer = -RIGHT_EAR_LAYER)
-		standing.pixel_x = shift_data["head"]["shift_x"]
-		standing.pixel_y = shift_data["head"]["shift_y"]
+		standing.pixel_x = shift_data[MOB_OVERLAY_SHIFT_HEAD]["shift_x"]
+		standing.pixel_y = shift_data[MOB_OVERLAY_SHIFT_HEAD]["shift_y"]
 		mob.overlays_standing[RIGHT_EAR_LAYER] = standing
 
 	mob.apply_overlay(LEFT_EAR_LAYER)
@@ -311,12 +324,14 @@
 
 /mob/equip_to_slot(obj/item/W, slot, initial = FALSE)
 	. = .. ()
-	SEND_SIGNAL(src, COMSIG_ATOM_DIR_CHANGE)
+	SEND_SIGNAL(src, COMSIG_MOB_OVERLAY_SHIFT_ON_EQUIP)
 
+//Вызов сигнала при повоторе через ctrl+wasd
 /mob/facedir(ndir)
 	. = .. ()
 	SEND_SIGNAL(src, COMSIG_ATOM_DIR_CHANGE)
 
+//Вызов сигнала при повороте через ЛКМы
 /mob/ClickOn(atom/A, params)
 	. = .. ()
-	SEND_SIGNAL(src, COMSIG_ATOM_DIR_CHANGE)
+	SEND_SIGNAL(src, COMSIG_MOB_OVERLAY_SHIFT_ON_CLICK)

@@ -10,14 +10,15 @@
 	qdel(preview_icon_side)
 	qdel(preview_icon)
 
-	var/g = "m"
+	//Переменные взяты с оффов, обновил
+	var/gender = "m"
 	if(body_type == FEMALE)
-		g = "f"
+		gender = "f"
 
 	var/icon/icobase = selected_specie.icobase
-	preview_icon = new /icon(icobase, "torso_[g]")
-	preview_icon.Blend(new /icon(icobase, "groin_[g]"), ICON_OVERLAY)
-	preview_icon.Blend(new /icon(icobase, "head_[g]"), ICON_OVERLAY)
+	preview_icon = new /icon(icobase, "torso_[gender]")
+	preview_icon.Blend(new /icon(icobase, "groin_[gender]"), ICON_OVERLAY)
+	preview_icon.Blend(new /icon(icobase, "head_[gender]"), ICON_OVERLAY)
 	for(var/name in list("chest", "groin", "head", "r_arm", "r_hand", "r_leg", "r_foot", "l_leg", "l_foot", "l_arm", "l_hand"))
 		if(organ_data[name] == "amputated") continue
 		if(organ_data[name] == "cyborg")
