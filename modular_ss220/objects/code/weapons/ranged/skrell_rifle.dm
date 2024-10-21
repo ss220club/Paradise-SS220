@@ -62,7 +62,6 @@
 	maxcharge = 1600
 
 // MARK: Skrellian railgun rifle
-
 /obj/item/gun/projectile/automatic/sniper_rifle/skrell_rifle
 	name = "\improper skrellian rifle"
 	desc = "Винтовка Zquiv*Tzuuli-8, или ''ZT-8'' - это рельсотрон, стоящий на вооружении тяжелых штурмовых отрядов Раскинта из ОСС. \
@@ -132,7 +131,6 @@
 	speed = 0.2
 
 // MARK: Skrellian pistol
-
 /obj/item/gun/energy/gun/skrell_pistol
 	name = "\improper self-charge skrellian pistol"
 	desc = "Энергетический пистолет Qua'l*Sarqzix-44x, известный на территориях ТСФ как QS-44. Компактный и удобный в использовании, имеет два режима мощности энерголуча: 'летальный' и 'нейтрализующий'. \

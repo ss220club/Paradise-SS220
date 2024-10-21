@@ -1,3 +1,4 @@
+// MARK: Vibroblade
 #define CHARGE_LEVEL_NONE 0
 #define CHARGE_LEVEL_LOW 1
 #define CHARGE_LEVEL_MEDIUM 2
@@ -26,7 +27,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	sharp = TRUE
 	flags = CONDUCT
-	var/charge_level = CHARGE_LEVEL_NONE 
+	var/charge_level = CHARGE_LEVEL_NONE
 	var/max_charge_level = CHARGE_LEVEL_OVERCHARGE
 	/// How long does it take to reach next level of charge.
 	var/charge_time = 4 SECONDS
@@ -103,7 +104,7 @@
 		target.Weaken(1.5 SECONDS)
 	else if(charge_level == CHARGE_LEVEL_OVERCHARGE && selected_bodypart && istype(target, /mob/living/carbon/human))
 		var/obj/item/organ/external/after_attack_bodypart = target.get_organ(user.zone_selected)
-		
+
 		// We compare these in case the body part hasn't been cut off by standard attack logic
 		if(after_attack_bodypart == selected_bodypart)
 			after_attack_bodypart.droplimb(TRUE, DROPLIMB_SHARP)
