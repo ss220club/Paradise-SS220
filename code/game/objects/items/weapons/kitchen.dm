@@ -253,42 +253,42 @@
 
 /obj/item/kitchen/mould/bear
 	name = "bear-shaped candy mould"
-	desc = "На ней отпечатана форма маленького медведя."
+	desc = "Форма в виде маленького медведя."
 	icon_state = "mould_bear"
 
 /obj/item/kitchen/mould/worm
 	name = "worm-shaped candy mould"
-	desc = "На ней отпечатана форма червячка."
+	desc = "Форма в виде червячка."
 	icon_state = "mould_worm"
 
 /obj/item/kitchen/mould/bean
 	name = "bean-shaped candy mould"
-	desc = "На ней отпечатана форма боба."
+	desc = "Форма в виде боба."
 	icon_state = "mould_bean"
 
 /obj/item/kitchen/mould/ball
 	name = "ball-shaped candy mould"
-	desc = "На ней отпечатана маленькая сфера."
+	desc = "Форма в виде маленькой сферы"
 	icon_state = "mould_ball"
 
 /obj/item/kitchen/mould/cane
 	name = "cane-shaped candy mould"
-	desc = "На ней отпечатана форма трости."
+	desc = "Форма в виде трости."
 	icon_state = "mould_cane"
 
 /obj/item/kitchen/mould/cash
 	name = "cash-shaped candy mould"
-	desc = "На ней отпечатана форма и дизайн фальшивых денег."
+	desc = "Форма в виде фальшивых денег"
 	icon_state = "mould_cash"
 
 /obj/item/kitchen/mould/coin
 	name = "coin-shaped candy mould"
-	desc = "На ней отпечатана форма монеты."
+	desc = "Форма в виде монеты."
 	icon_state = "mould_coin"
 
 /obj/item/kitchen/mould/loli
 	name = "sucker mould"
-	desc = "На ней отпечатана форма леденца."
+	desc = "Форма в виде леденца."
 	icon_state = "mould_loli"
 
 /*
