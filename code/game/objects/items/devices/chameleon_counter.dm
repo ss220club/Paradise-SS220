@@ -1,5 +1,6 @@
 /obj/item/chameleon_counterfeiter
 	name = "chameleon counterfeiter"
+	desc = "This device projects an image of a scanned item. You can also hide something inside the image."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "cham_counter"
 	flags = CONDUCT
@@ -79,10 +80,6 @@
 	matter_toggle(user)
 
 /obj/item/chameleon_counterfeiter/attackby(obj/item/W  as obj, mob/user as mob)
-
-	if(FALSE) // For cheeks
-		return
-
 	if(dummy_active && !dummy_is_hiding_item) // Hologram is active and empty
 		to_chat(user, "<span class='warning'>You secsesfuly hide \the [W] under projection</span>")
 		dummy_is_hiding_item = TRUE
@@ -94,14 +91,11 @@
 		return ..() // А надо ли?
 
 /obj/item/chameleon_counterfeiter/attack_hand(mob/user as mob)
-	if(FALSE)
-		return
-
 	if(dummy_is_hiding_item)
 		to_chat(user, "<span class='warning'>Something was bihind [saved_name] </span>")
 		dummy_is_hiding_item = FALSE
 		user.put_in_hands(stored_item)
 		stored_item = null
 	else
-		return ..()
+		return ..() // А надо ли?
 
