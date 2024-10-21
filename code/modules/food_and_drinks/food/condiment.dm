@@ -20,21 +20,21 @@
 	"ketchup" = list("ketchup", "ketchup bottle", "Кровь томатов!"),
 	"capsaicin" = list("hotsauce", "hotsauce bottle", "Попробуй на вкус ИЗЖОГУ!"),
 	"enzyme" = list("enzyme", "universal enzyme bottle", "Используется для готовки множества блюд."),
-	"soysauce" = list("soysauce", "Соленый соевый соус. Если попал на одежду - то замочи в нём её всю."),
+	"soysauce" = list("soysauce", "soy sauce bottle", "Соленый соевый соус. Если попал на одежду - то замочи в нём её всю."),
 	"frostoil" = list("coldsauce", "coldsauce bottle", "Пробирает до мурашек и оставляет язык онемевшим после потребления."),
 	"sodiumchloride" = list("saltshakersmall", "salt shaker", "Соль. Предположительно, из космических океанов."),
 	"blackpepper" = list("peppermillsmall", "pepper mill", "Часто используется для придания пряного вкуса блюдам или заставить кого-то чихнуть."),
 	"cornoil" = list("cornoil", "corn oil bottle", "Кукурузное масло пришедшее на замену пальмовому маслу, мировые запасы которого давно закончились."),
 	"oliveoil" = list("oliveoil","olive oil bottle", "Высококачественное масло, используемое в различных кухнях. Сделано из оливок."),
 	"wasabi" = list("wasabibottle", "wasabi bottle", "Пикантная паста, обычно подаваемая в небольших количествах с суши. Острая!"),
-	"sugar" = list("emptycondiment", "sugar bottle", "Вкусный космический сахар!"),
+	"sugar" = list("emptycondiment", "sugar bottle", "Сахарница с космическим сахаром"),
 	"vinegar" = list("vinegar", "vinegar", "Уксус прекрасно подходит для дезинфекции, консервации, удаления накипи, устранения запахов, полоскания рта, убирания ржавчины, удаление пятна с одежды, обработку зуда после укусов, а также для заправки салатов, соусов и блюд."),
 	"mayonnaise" = list("mayonnaise", "mayonnaise bottle", "Прекрасная заправка для всего и прекрасное сочетание с кетчупом."),
 	"yogurt" = list("yogurt", "yogurt tub", "Йогурт, произведённый путём бактериальной ферментации молока. Вкусно!"),
 	"cherryjelly" = list("cherryjelly", "Повидло из красной вишни."),
 	"peanutbutter" = list("peanutbutter", "Нежная, ореховая паста. Отлично подходит для бутербродов и аллергиков."),
 	"honey" = list("honey", "honey jar", "Сладкое вещество, производимое пчёлами."),
-	"sugar" = list("sugar", "sugar sack", "Вкусный космический сахар!"),
+	"sugar" = list("sugar", "sugar sack", "Большой мешок сахара. Отлично подходит для сладостей!"),
 	"flour" = list("flour", "flour sack", "Большой мешок муки. Отлично подходит для выпечки!"),
 	"rice" = list("rice", "rice sack", "Большой мешок риса. Отлично подходит для готовки!"))
 	var/originalname = "condiment" //Can't use initial(name) for this. This stores the name set by condimasters.
@@ -130,7 +130,7 @@
 
 /obj/item/reagent_containers/condiment/sugar
 	name = "sugar sack"
-	desc = "Вкусный космический сахар!"
+	desc = "Космический сахар. Слаще, чем кажется."
 	icon_state = "sugar"
 	item_state = "sugar"
 	list_reagents = list("sugar" = 50)
@@ -315,7 +315,7 @@
 	"sodiumchloride" = list("condi_salt", "Salt Shaker", "Соль. Предположительно, из космических океанов."),
 	"blackpepper" = list("condi_pepper", "Pepper Mill", "Часто используется для придания вкуса блюдам или чтобы заставить кого-то чихнуть."),
 	"cornoil" = list("condi_cornoil", "Corn Oil", "Вкусное масло, используемое в кулинарии. Сделано из кукурузы."),
-	"sugar" = list("condi_sugar", "Sugar", "Вкусный космический сахар!"),
+	"sugar" = list("condi_sugar", "Sugar", "Небольшой пакетик с сахаром."),
 	"vinegar" =list("condi_mixed", "vinegar", "Идеально подходит для чипсов, если вы чувствуете себя космическим британцем."))
 
 /obj/item/reagent_containers/condiment/pack/attack(mob/M, mob/user, def_zone) //Can't feed these to people directly.
