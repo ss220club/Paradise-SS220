@@ -97,9 +97,9 @@ GLOBAL_LIST_EMPTY(PDAs)
 
 /obj/item/pda/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'><b>Alt-Click</b> [src] чтобы достать ID-карту.</span>"
-	. += "<span class='notice'><b>Ctrl-Click</b> [src] чтобы достать ручку.</span>"
-	. += "<span class='notice'>Примените отвертку на [src] чтобы сбросить его до заводских настроек.</span>"
+	. += "<span class='notice'><b>Alt-Click</b> - достать ID-карту.</span>"
+	. += "<span class='notice'><b>Ctrl-Click</b> - достать ручку.</span>"
+	. += "<span class='notice'>Примените отвертку на [src], чтобы сбросить его до заводских настроек.</span>"
 
 /obj/item/pda/proc/can_use()
 	if(!ismob(loc))
