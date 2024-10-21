@@ -6489,7 +6489,6 @@
 /turf/simulated/floor/plasteel,
 /area/station/security/permabrig)
 "aCE" = (
-/obj/item/flag/cargo,
 /obj/machinery/firealarm/directional/west,
 /turf/simulated/floor/plasteel{
 	dir = 8;
@@ -68601,6 +68600,10 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/item/destTagger{
+	pixel_x = 11;
+	pixel_y = 6
+	},
 /obj/effect/spawner/random/officetoys,
 /turf/simulated/floor/plasteel{
 	dir = 8;
@@ -70152,6 +70155,7 @@
 /obj/structure/cable,
 /obj/machinery/power/apc/directional/south,
 /obj/effect/decal/cleanable/dirt,
+/obj/item/flag/cargo,
 /turf/simulated/floor/plasteel{
 	icon_state = "brown"
 	},
@@ -84411,15 +84415,6 @@
 "nSC" = (
 /turf/simulated/wall/r_wall,
 /area/station/command/office/cmo)
-"nSQ" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/shelf/supply,
-/obj/effect/spawner/random/maintenance,
-/turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "brown"
-	},
-/area/station/supply/storage)
 "nSV" = (
 /turf/simulated/floor/plasteel{
 	dir = 8;
@@ -107760,9 +107755,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
-	},
-/obj/item/destTagger{
-	pixel_x = -4
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "purple"
@@ -159051,7 +159043,7 @@ enA
 ayD
 azC
 aAO
-nSQ
+aNt
 aCE
 aDN
 mIc
