@@ -16,9 +16,9 @@
 	volume = 50
 	//Possible_states has the reagent id as key and a list of, in order, the icon_state, the name and the desc as values. Used in the on_reagent_change() to change names, descs and sprites.
 	var/list/possible_states = list(
-	"bbqsauce" = list("bbqsauce", "BBQ sauce bottle", "Сладкий, пикантный и проникающий всюду. Идеален для гриля."),
-	"ketchup" = list("ketchup", "ketchup bottle", "Настоящий американский вкус!"),
-	"capsaicin" = list("hotsauce", "hotsauce bottle", "На вкус как язва желудка!"),
+	"bbqsauce" = list("bbqsauce", "BBQ sauce bottle", "Сладкий и пикантный для добавок всюду. Идеален для гриля."),
+	"ketchup" = list("ketchup", "ketchup bottle", "Кровь томатов!"),
+	"capsaicin" = list("hotsauce", "hotsauce bottle", "Попробуй на вкус ИЗЖОГУ!"),
 	"enzyme" = list("enzyme", "universal enzyme bottle", "Используется для приготовления различных блюд."),
 	"soysauce" = list("soysauce", "soy sauce bottle", "Соленый соевый соус."),
 	"frostoil" = list("coldsauce", "coldsauce bottle", "Оставляет язык онемевшим после потребления."),
