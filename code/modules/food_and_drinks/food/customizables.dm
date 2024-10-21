@@ -56,7 +56,7 @@ do {\
 
 /obj/item/food/customizable
 	name = "sandwich"
-	desc = "Это сэндвич. Вечная классика!"
+	desc = "Это сэндвич. Брат близнец бутерброда."
 	icon = 'icons/obj/food/custom.dmi'
 	icon_state = "sandwichcustom"
 	var/baseicon = "sandwichcustom"
@@ -82,7 +82,7 @@ do {\
 
 /obj/item/food/customizable/sandwich
 	name = "sandwich"
-	desc = "Это сэндвич. Вечная классика!"
+	desc = "Это сэндвич. Брат близнец бутерброда."
 	icon_state = "sandwichcustom"
 	baseicon = "sandwichcustom"
 	basename = "sandwich"

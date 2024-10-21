@@ -67,7 +67,7 @@
 
 /obj/item/kitchen/utensil/fork
 	name = "fork"
-	desc = "Это вилка. Действительно острая."
+	desc = "Это вилка. Один удар - четыре дырки."
 	icon_state = "fork"
 
 /obj/item/kitchen/utensil/pfork
@@ -77,7 +77,7 @@
 
 /obj/item/kitchen/utensil/spoon
 	name = "spoon"
-	desc = "Это ложка. В ней можно увидеть свое перевернутое отражение."
+	desc = "Это ложка. Ей можно стукнуть по лбу и увидеть свое перевернутое отражение."
 	icon_state = "spoon"
 	attack_verb = list("attacked", "poked")
 
@@ -89,13 +89,13 @@
 
 /obj/item/kitchen/utensil/spork
 	name = "spork"
-	desc = "Это вилколожка. Восхитись её инновационным дизайном."
+	desc = "Это вилколожка. Восхитительный инновационный дизайн."
 	icon_state = "spork"
 	attack_verb = list("attacked", "sporked")
 
 /obj/item/kitchen/utensil/pspork
 	name = "plastic spork"
-	desc = "Это пластиковая вилколожка. Это вилочная сторона ложки!"
+	desc = "Это пластиковая вилколожка. Не соответствует ничьим ожиданиям!"
 	icon_state = "pspork"
 	attack_verb = list("attacked", "sporked")
 
@@ -105,7 +105,7 @@
 /obj/item/kitchen/knife
 	name = "kitchen knife"
 	icon_state = "knife"
-	desc = "Универсальный поварской нож производства SpaceCook Incorporated. Гарантированно остаётся острым на долгие годы."
+	desc = "Универсальный поварской нож производства компании Космическая Нарезка. Гарантированно остаётся острым на долгие годы."
 	flags = CONDUCT
 	force = 10
 	w_class = WEIGHT_CLASS_SMALL
@@ -153,7 +153,7 @@
 
 /obj/item/kitchen/knife/shiv/carrot
 	name = "carrot shiv"
-	desc = "В отличие от других морковок, эту, вероятно, стоит держать подальше от глаз."
+	desc = "В отличие от других морковок, эта вредна для глаз."
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "carrotshiv"
 	item_state = "carrotshiv"
@@ -167,7 +167,7 @@
 /obj/item/kitchen/knife/butcher
 	name = "butcher's cleaver"
 	icon_state = "butch"
-	desc = "Огромный предмет, используемый для рубки мяса и его обработки. Это так же включает клоунов и продукты из клоунов."
+	desc = "Огромный предмет, используемый для рубки мяса и его нарезки. Это так же включает продукцию из клоунов."
 	flags = CONDUCT
 	force = 15
 	throwforce = 8
@@ -296,7 +296,7 @@
  */
 /obj/item/kitchen/sushimat
 	name = "Sushi Mat"
-	desc = "Деревянный коврик, используемый для эффективного приготовления суши."
+	desc = "Деревянный коврик для эффективного приготовления суши."
 	icon_state = "sushi_mat"
 	force = 5
 	throwforce = 5
