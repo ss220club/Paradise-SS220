@@ -16,6 +16,8 @@
 	var/saved_overlays
 	var/saved_underlays
 	var/dummy_active = FALSE
+	var/dummy_is_hiding_item = FALSE
+	var/obj/item/stored_item = null
 
 /obj/item/chameleon_counterfeiter/examine(mob/user)
 	. = ..()
@@ -75,3 +77,31 @@
 
 /obj/item/chameleon_counterfeiter/attack_self(mob/living/user)
 	matter_toggle(user)
+
+/obj/item/chameleon_counterfeiter/attackby(obj/item/W  as obj, mob/user as mob)
+
+	if(FALSE) // For cheeks
+		return
+
+	if(dummy_active && !dummy_is_hiding_item) // Hologram is active and empty
+		to_chat(user, "<span class='warning'>You secsesfuly hide \the [W] under projection</span>")
+		dummy_is_hiding_item = TRUE
+		user.drop_item()
+		W.forceMove(src)
+		stored_item = W
+
+	else
+		return ..() // А надо ли?
+
+/obj/item/chameleon_counterfeiter/attack_hand(mob/user as mob)
+	if(FALSE)
+		return
+
+	if(dummy_is_hiding_item)
+		to_chat(user, "<span class='warning'>Something was bihind [saved_name] </span>")
+		dummy_is_hiding_item = FALSE
+		user.put_in_hands(stored_item)
+		stored_item = null
+	else
+		return ..()
+
