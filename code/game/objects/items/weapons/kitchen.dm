@@ -167,7 +167,7 @@
 /obj/item/kitchen/knife/butcher
 	name = "butcher's cleaver"
 	icon_state = "butch"
-	desc = "Огромный предмет, используемый для рубки мяса и его нарезки. Это так же включает продукцию из клоунов."
+	desc = "Огромный нож, используемый для рубки мяса и его нарезки. Это так же включает продукцию из клоунов."
 	flags = CONDUCT
 	force = 15
 	throwforce = 8
