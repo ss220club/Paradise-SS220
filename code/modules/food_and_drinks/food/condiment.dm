@@ -351,7 +351,7 @@
 			desc = "Небольшая упаковка с приправой. На ярлыке написано, что она содержит [originalname]."
 	else
 		icon_state = "condi_empty"
-		desc = "Небольшая упаковка для приправ. Она пуста.."
+		desc = "Небольшая упаковка для приправ. Она пуста."
 
 //Ketchup
 /obj/item/reagent_containers/condiment/pack/ketchup
