@@ -223,28 +223,28 @@
 
 /obj/item/reagent_containers/condiment/mayonnaise
 	name = "mayonnaise"
-	desc = "Масляный соус, сделанный из яичных желтков."
+	desc = "Прекрасная заправка для всего и прекрасное сочетание с кетчупом."
 	icon_state = "mayonnaise"
 	list_reagents = list("mayonnaise" = 50)
 	possible_states = list()
 
 /obj/item/reagent_containers/condiment/yogurt
 	name = "yogurt tub"
-	desc = "Немного йогурта, произведённого путём бактериальной ферментации молока. Вкусно!"
+	desc = "Йогурт, произведённый путём бактериальной ферментации молока. Вкусно!"
 	icon_state = "yogurt"
 	list_reagents = list("yogurt" = 50)
 	possible_states = list()
 
 /obj/item/reagent_containers/condiment/cherryjelly
 	name = "cherry jelly"
-	desc = "Сладкое желе из красной вишни."
+	desc = "Повидло из красной вишни."
 	icon_state = "cherryjelly"
 	list_reagents = list("cherryjelly" = 50)
 	possible_states = list()
 
 /obj/item/reagent_containers/condiment/peanutbutter
 	name = "peanut butter"
-	desc = "Нежная, ореховая паста. Отлично подходит для сэндвичей."
+	desc = "Нежная, ореховая паста. Отлично подходит для бутербродов и аллергиков."
 	icon_state = "peanutbutter"
 	list_reagents = list("peanutbutter" = 50)
 	possible_states = list()
@@ -258,21 +258,21 @@
 
 /obj/item/reagent_containers/condiment/oliveoil
 	name = "olive oil"
-	desc = "Высококачественное масло, получаемое из оливок."
+	desc = "Высококачественное масло, используемое в различных кухнях. Сделано из оливок."
 	icon_state = "oliveoil"
 	list_reagents = list("oliveoil" = 50)
 	possible_states = list()
 
 /obj/item/reagent_containers/condiment/frostoil
 	name = "cold sauce"
-	desc = "Особый соус, заметно охлаждающий тело. Изготовлен из ледяных перцев."
+	desc = "Пробирает до мурашек и оставляет язык онемевшим после потребления."
 	icon_state = "coldsauce"
 	list_reagents = list("frostoil" = 50)
 	possible_states = list()
 
 /obj/item/reagent_containers/condiment/capsaicin
 	name = "hot sauce"
-	desc = "На вкус, как язва желудка!"
+	desc = "Попробуй на вкус ИЗЖОГУ!"
 	icon_state = "hotsauce"
 	list_reagents = list("capsaicin" = 50)
 	possible_states = list()
@@ -293,7 +293,7 @@
 
 /obj/item/reagent_containers/condiment/ketchup
 	name = "ketchup"
-	desc = "Настоящий американский вкус!"
+	desc = "Кровь томатов!"
 	icon_state = "ketchup"
 	list_reagents = list("ketchup" = 50)
 	possible_states = list()
@@ -308,15 +308,15 @@
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = null
 	possible_states = list(
-	"ketchup" = list("condi_ketchup", "Ketchup", "Настоящий американский вкус!"),
-	"capsaicin" = list("condi_hotsauce", "Hotsauce", "На вкус как язва желудка!"),
-	"soysauce" = list("condi_soysauce", "Soy Sauce", "Соленый соевый соус."),
-	"frostoil" = list("condi_frostoil", "Coldsauce", "Оставляет язык онемевшим после потребления."),
+	"ketchup" = list("condi_ketchup", "Ketchup", "Кровь томатов!"),
+	"capsaicin" = list("condi_hotsauce", "Hotsauce", "Попробуй на вкус ИЗЖОГУ!"),
+	"soysauce" = list("condi_soysauce", "Soy Sauce", "Соленый соевый соус. Если попал на одежду - то замочи в нём её всю."),
+	"frostoil" = list("condi_frostoil", "Coldsauce", "Пробирает до мурашек и оставляет язык онемевшим после потребления."),
 	"sodiumchloride" = list("condi_salt", "Salt Shaker", "Соль. Предположительно, из космических океанов."),
 	"blackpepper" = list("condi_pepper", "Pepper Mill", "Часто используется для придания вкуса блюдам или чтобы заставить кого-то чихнуть."),
-	"cornoil" = list("condi_cornoil", "Corn Oil", "Вкусное масло, используемое в кулинарии. Сделано из кукурузы."),
+	"cornoil" = list("condi_cornoil", "Corn Oil", "Кукурузное масло пришедшее на замену пальмовому маслу, мировые запасы которого давно закончились."),
 	"sugar" = list("condi_sugar", "Sugar", "Небольшой пакетик с сахаром."),
-	"vinegar" =list("condi_mixed", "vinegar", "Идеально подходит для чипсов, если вы чувствуете себя космическим британцем."))
+	"vinegar" =list("condi_mixed", "vinegar", "Уксус прекрасно подходит для дезинфекции, консервации, удаления накипи, устранения запахов, полоскания рта, убирания ржавчины, удаление пятна с одежды, обработку зуда после укусов, а также для заправки салатов, соусов и блюд."))
 
 /obj/item/reagent_containers/condiment/pack/attack(mob/M, mob/user, def_zone) //Can't feed these to people directly.
 	return
