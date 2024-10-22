@@ -21,6 +21,7 @@
 	var/chem_to_oxy_mult = 0.1
 	var/danger_air = FALSE
 	var/hand_active = FALSE
+	var/salbutamol_production = 0.5
 	radial_action_state = "ballon"
 	radial_action_icon = 'modular_ss220/species/serpentids/icons/organs.dmi'
 
@@ -77,7 +78,7 @@
 
 	if(danger_state && can_secretion)
 		var/mob/living/carbon/human/human_owner = owner
-		human_owner.reagents.add_reagent("salbutamol", chemical_consuption)
+		human_owner.reagents.add_reagent("salbutamol", salbutamol_production)
 		chemical.holder.remove_reagent(chemical_id, chemical_consuption)
 
 	if(!hand_active)
