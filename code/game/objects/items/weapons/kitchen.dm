@@ -77,7 +77,7 @@
 
 /obj/item/kitchen/utensil/spoon
 	name = "spoon"
-	desc = "Это ложка. Ей можно стукнуть по лбу и увидеть свое перевернутое отражение."
+	desc = "Это ложка. Ей можно стукнуть по лбу, а также увидеть в ней свое перевернутое отражение."
 	icon_state = "spoon"
 	attack_verb = list("attacked", "poked")
 
@@ -153,7 +153,7 @@
 
 /obj/item/kitchen/knife/shiv/carrot
 	name = "carrot shiv"
-	desc = "В отличие от других морковок, эта вредна для глаз."
+	desc = "В отличие от других морковок, эту, вероятно, стоит держать подальше от глаз."
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "carrotshiv"
 	item_state = "carrotshiv"
@@ -216,7 +216,7 @@
 	name = "cyborg knife"
 	icon = 'icons/obj/items_cyborg.dmi'
 	icon_state = "knife"
-	desc = "Пласталевый нож, предназначенный для киборгов. Крайне острый и прочный."
+	desc = "Пласталевый нож, устанавливаемый киборгам. Крайне острый и прочный."
 	origin_tech = null
 
 /*

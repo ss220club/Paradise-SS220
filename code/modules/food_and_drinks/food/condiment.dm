@@ -19,20 +19,20 @@
 	"bbqsauce" = list("bbqsauce", "BBQ sauce bottle", "Сладкий и пикантный для добавок всюду. Идеален для гриля."),
 	"ketchup" = list("ketchup", "ketchup bottle", "Кровь томатов!"),
 	"capsaicin" = list("hotsauce", "hotsauce bottle", "Попробуй на вкус ИЗЖОГУ!"),
-	"enzyme" = list("enzyme", "universal enzyme bottle", "Используется для готовки множества блюд."),
-	"soysauce" = list("soysauce", "soy sauce bottle", "Соленый соевый соус. Если попал на одежду - то замочи в нём её всю."),
+	"enzyme" = list("enzyme", "universal enzyme bottle", "Используется для приготовления различных блюд."),
+	"soysauce" = list("soysauce", "soy sauce bottle", "Соленый соевый соус. Если попал на одежду, то замочи в нём её всю."),
 	"frostoil" = list("coldsauce", "coldsauce bottle", "Пробирает до мурашек и оставляет язык онемевшим после потребления."),
 	"sodiumchloride" = list("saltshakersmall", "salt shaker", "Соль. Предположительно, из космических океанов."),
-	"blackpepper" = list("peppermillsmall", "pepper mill", "Часто используется для придания пряного вкуса блюдам или заставить кого-то чихнуть."),
-	"cornoil" = list("cornoil", "corn oil bottle", "Кукурузное масло пришедшее на замену пальмовому маслу, мировые запасы которого давно закончились."),
+	"blackpepper" = list("peppermillsmall", "pepper mill", "Часто используется для придания пряного вкуса блюдам или чтобы заставить кого-то чихнуть."),
+	"cornoil" = list("cornoil", "corn oil bottle", "Вкусное масло, используемое в кулинарии. Сделано из кукурузы."),
 	"oliveoil" = list("oliveoil","olive oil bottle", "Высококачественное масло, используемое в различных кухнях. Сделано из оливок."),
 	"wasabi" = list("wasabibottle", "wasabi bottle", "Пикантная паста, обычно подаваемая в небольших количествах с суши. Острая!"),
-	"sugar" = list("emptycondiment", "sugar bottle", "Сахарница с космическим сахаром"),
+	"sugar" = list("emptycondiment", "sugar bottle", "Вкусный космический сахар!"),
 	"vinegar" = list("vinegar", "vinegar", "Уксус прекрасно подходит для дезинфекции, консервации, удаления накипи, устранения запахов, полоскания рта, убирания ржавчины, удаление пятна с одежды, обработку зуда после укусов, а также для заправки салатов, соусов и блюд."),
-	"mayonnaise" = list("mayonnaise", "mayonnaise bottle", "Прекрасная заправка для всего и прекрасное сочетание с кетчупом."),
+	"mayonnaise" = list("mayonnaise", "mayonnaise bottle", "Прекрасная заправка для всего и отличное сочетание с кетчупом."),
 	"yogurt" = list("yogurt", "yogurt tub", "Йогурт, произведённый путём бактериальной ферментации молока. Вкусно!"),
 	"cherryjelly" = list("cherryjelly", "Повидло из красной вишни."),
-	"peanutbutter" = list("peanutbutter", "Нежная, ореховая паста. Отлично подходит для бутербродов и аллергиков."),
+	"peanutbutter" = list("peanutbutter", "Нежная ореховая паста. Отлично подходит для бутербродов и аллергиков."),
 	"honey" = list("honey", "honey jar", "Сладкое вещество, производимое пчёлами."),
 	"sugar" = list("sugar", "sugar sack", "Большой мешок сахара. Отлично подходит для сладостей!"),
 	"flour" = list("flour", "flour sack", "Большой мешок муки. Отлично подходит для выпечки!"),
@@ -161,7 +161,7 @@
 
 /obj/item/reagent_containers/condiment/peppermill
 	name = "pepper mill"
-	desc = "Часто используется для придания пряного вкуса блюдам или заставить кого-то чихнуть."
+	desc = "Часто используется для придания пряного вкуса блюдам или чтобы заставить кого-то чихнуть."
 	icon_state = "peppermillsmall"
 	possible_transfer_amounts = list(1,20) //for clown turning the lid off
 	amount_per_transfer_from_this = 1
@@ -187,14 +187,14 @@
 
 /obj/item/reagent_containers/condiment/bbqsauce
 	name = "BBQ sauce"
-	desc = "Сладкий и пикантный для добавок всюду. Идеален для гриля."
+	desc = "Сладкий и пикантный, подходит в качестве добавки всюду. Идеален для гриля."
 	icon_state = "bbqsauce"
 	list_reagents = list("bbqsauce" = 50)
 	possible_states = list()
 
 /obj/item/reagent_containers/condiment/soymilk
 	name = "soy milk"
-	desc = "Это соевое молоко. Подходит, если у вас непереносимость лактозы"
+	desc = "Это соевое молоко. Подходит, если у вас непереносимость лактозы."
 	icon_state = "soymilk"
 	item_state = "carton"
 	list_reagents = list("soymilk" = 50)
@@ -210,20 +210,20 @@
 
 /obj/item/reagent_containers/condiment/soysauce
 	name = "soy sauce"
-	desc = "Соленый соевый соус. Если попал на одежду - то замочи в нём её всю."
+	desc = "Соленый соевый соус. Если попал на одежду, то замочи в нём её всю."
 	icon_state = "soysauce"
 	list_reagents = list("soysauce" = 50)
 	possible_states = list()
 
 /obj/item/reagent_containers/condiment/syndisauce
 	name = "\improper Chef Excellence's Special Sauce"
-	desc = "Мощный соус, изготовленный из ядовитых грибов-амманитов. Смерть никогда не имела такого вкусного привкуса."
+	desc = "Мощный соус, изготовленный из ядовитых грибов-амманитов. Смерть никогда не имела такого восхитительного привкуса."
 	list_reagents = list("amanitin" = 50)
 	possible_states = list()
 
 /obj/item/reagent_containers/condiment/mayonnaise
 	name = "mayonnaise"
-	desc = "Прекрасная заправка для всего и прекрасное сочетание с кетчупом."
+	desc = "Прекрасная заправка для всего и отличное сочетание с кетчупом."
 	icon_state = "mayonnaise"
 	list_reagents = list("mayonnaise" = 50)
 	possible_states = list()
@@ -244,7 +244,7 @@
 
 /obj/item/reagent_containers/condiment/peanutbutter
 	name = "peanut butter"
-	desc = "Нежная, ореховая паста. Отлично подходит для бутербродов и аллергиков."
+	desc = "Нежная ореховая паста. Отлично подходит для бутербродов и аллергиков."
 	icon_state = "peanutbutter"
 	list_reagents = list("peanutbutter" = 50)
 	possible_states = list()
@@ -310,11 +310,11 @@
 	possible_states = list(
 	"ketchup" = list("condi_ketchup", "Ketchup", "Кровь томатов!"),
 	"capsaicin" = list("condi_hotsauce", "Hotsauce", "Попробуй на вкус ИЗЖОГУ!"),
-	"soysauce" = list("condi_soysauce", "Soy Sauce", "Соленый соевый соус. Если попал на одежду - то замочи в нём её всю."),
+	"soysauce" = list("condi_soysauce", "Soy Sauce", "Соленый соевый соус. Если попал на одежду, то замочи в нём её всю."),
 	"frostoil" = list("condi_frostoil", "Coldsauce", "Пробирает до мурашек и оставляет язык онемевшим после потребления."),
 	"sodiumchloride" = list("condi_salt", "Salt Shaker", "Соль. Предположительно, из космических океанов."),
 	"blackpepper" = list("condi_pepper", "Pepper Mill", "Часто используется для придания вкуса блюдам или чтобы заставить кого-то чихнуть."),
-	"cornoil" = list("condi_cornoil", "Corn Oil", "Кукурузное масло пришедшее на замену пальмовому маслу, мировые запасы которого давно закончились."),
+	"cornoil" = list("condi_cornoil", "Corn Oil", "Вкусное масло, используемое в кулинарии. Сделано из кукурузы."),
 	"sugar" = list("condi_sugar", "Sugar", "Небольшой пакетик с сахаром."),
 	"vinegar" =list("condi_mixed", "vinegar", "Уксус прекрасно подходит для дезинфекции, консервации, удаления накипи, устранения запахов, полоскания рта, убирания ржавчины, удаление пятна с одежды, обработку зуда после укусов, а также для заправки салатов, соусов и блюд."))
 

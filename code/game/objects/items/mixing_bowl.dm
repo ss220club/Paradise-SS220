@@ -1,7 +1,7 @@
 
 /obj/item/mixing_bowl
 	name = "mixing bowl"
-	desc = "Смешай всё что есть на кухне!"
+	desc = "Смешай всё, что есть на кухне!"
 	container_type = OPENCONTAINER
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "mixing_bowl"
