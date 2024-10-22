@@ -61,7 +61,6 @@
 
 /obj/item/organ/internal/lungs/serpentid/on_life()
 	.=..()
-	SEND_SIGNAL(src, COMSIG_ORGAN_CHEM_CALL, chemical_consuption)
 	var/can_secretion = owner?.get_chemical_value(chemical_id) > chemical_consuption
 	var/danger_state = owner.getOxyLoss() > 0
 	var/datum/reagent/chemical = owner?.get_chemical_path(chemical_id)
@@ -204,66 +203,6 @@
 	var/danger_zone = O2_pp || N2_pp || Toxins_pp || CO2_pp || SA_pp
 
 	return danger_zone
-/*
-
-
-
-
-/obj/item/organ/internal/lungs/serpentid/on_life()
-	.=..()
-	SEND_SIGNAL(src, COMSIG_ORGAN_CHEM_CALL, chemical_consuption)
-	var/turf/T = get_turf(owner)
-	var/datum/gas_mixture/environment = get_turf_air(T)
-	var/datum/gas_mixture/breath
-	var/datum/organ/lungs/serpentid/lung_data = organ_datums[organ_tag]
-	var/breath_moles = 0
-	if(environment)
-		breath_moles = environment.total_moles()*BREATH_PERCENTAGE
-	breath = environment.get_by_amount(breath_moles)
-	danger_air = lung_data.in_danger_zone(breath)
-	if(danger_air)
-		breath = owner.serpen_lugns(BREATH_VOLUME)
-	breath_secretion(breath)
-
-
-
-/obj/item/organ/internal/lungs/serpentid/proc/breath_secretion(datum/gas_mixture/breath)
-	var/can_secretion = owner?.get_chemical_value(chemical_id) > chemical_consuption
-	var/danger_state = owner.getOxyLoss() > 0
-	var/datum/reagent/chemical = owner?.get_chemical_path(chemical_id)
-	if(danger_air)
-		if(!owner.internal)
-			owner.internal = serpentid_vault
-	else
-		if(owner.internal)
-			owner.internal = null
-
-	var/datum/gas_mixture/int_tank_air = serpentid_vault.air_contents
-	var/pressure_value = int_tank_air.return_pressure()
-	if(pressure_value < 100)
-		var/replenish_value = 0
-		if(danger_air && can_secretion)
-			replenish_value = chemical_consuption * chem_to_oxy_mult
-			chemical.holder.remove_reagent(chemical_id, chemical_consuption)
-		if(!danger_air)
-			var/turf/T = get_turf(owner)
-			var/datum/gas_mixture/environment = get_turf_air(T)
-			var/breath_moles = 0
-			if(environment)
-				breath_moles = environment.total_moles()*BREATH_PERCENTAGE
-			var/datum/gas_mixture/replenish_gas = environment.get_by_amount(breath_moles)
-			replenish_value = replenish_gas.private_oxygen
-		var/oxygen_value = ((ONE_ATMOSPHERE) * serpentid_vault.volume  * replenish_value + pressure_value)
-		var/gas_mix_value = (R_IDEAL_GAS_EQUATION * T20C)
-		var/value_to_replenish = ( oxygen_value / gas_mix_value )
-		if(value_to_replenish > 0)
-			serpentid_vault.air_contents.set_oxygen(value_to_replenish)
-
-	if(danger_state && can_secretion)
-		var/mob/living/carbon/human/human_owner = owner
-		human_owner.reagents.add_reagent("salbutamol", chemical_consuption)
-		chemical.holder.remove_reagent(chemical_id, chemical_consuption)
-*/
 
 #undef SERPENTID_COLD_THRESHOLD_LEVEL_BASE
 #undef SERPENTID_COLD_THRESHOLD_LEVEL_DOWN
