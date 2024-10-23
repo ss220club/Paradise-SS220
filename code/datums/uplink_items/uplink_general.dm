@@ -102,7 +102,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 	if(hijack_only && !(usr.mind.special_role == SPECIAL_ROLE_NUKEOPS))//nukies get items that regular traitors only get with hijack. If a hijack-only item is not for nukies, then exclude it via the gamemode list.
 		if(!(locate(/datum/objective/hijack) in usr.mind.get_all_objectives()) && U.uplink_type != UPLINK_TYPE_ADMIN)
-			to_chat(usr, "<span class='warning'>The Syndicate will only issue this extremely dangerous item to agents assigned the Hijack objective.</span>")
+			to_chat(usr, "<span class='warning'>Синдикат выдаст это очень опасное оружие только агентам с целью Угон.</span>")
 			return
 
 	U.uses -= max(cost, 0)
@@ -174,40 +174,40 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 //Discounts (dynamically filled above)
 /datum/uplink_item/discounts
-	category = "Discounted Gear"
+	category = "Снаряжение со скидкой"
 
 ////////////////////////////////////////
 // MARK: DANGEROUS WEAPONS
 ////////////////////////////////////////
 
 /datum/uplink_item/dangerous
-	category = "Highly Visible and Dangerous Weapons"
+	category = "Легкозаметные и опасные виды оружия"
 
 /datum/uplink_item/dangerous/pistol
 	name = "FK-69 Stechkin Pistol"
 	reference = "SPI"
-	desc = "A small, easily concealable handgun that uses 10mm auto rounds in 8-round magazines and is compatible with suppressors."
+	desc = "Маленький, легкоскрываемый пистолет, использующий патроны 10мм в магазине ёмкостью 8 патронов. Совместим с глушителями."
 	item = /obj/item/gun/projectile/automatic/pistol
 	cost = 20
 
 /datum/uplink_item/dangerous/revolver
 	name = "Syndicate .357 Revolver"
 	reference = "SR"
-	desc = "A brutally simple syndicate revolver that fires .357 Magnum cartridges and has 7 chambers. Comes with a spare speed loader."
+	desc = "Предельно простой револьвер Синдиката, стреляющий патронами калибра .357 Magnum и имеющий 7-зарядный. Поставляется с дополнительным спидлоадером."
 	item = /obj/item/storage/box/syndie_kit/revolver
 	cost = 65
 	surplus = 50
 
 /datum/uplink_item/dangerous/rapid
 	name = "Gloves of the North Star"
-	desc = "These gloves let the user help, shove, grab, and punch people very fast. Does not improve weapon attack speed. Can be combined with martial arts for a deadly weapon."
+	desc = "Эти перчатки позволяют очень быстро помогать, толкать, хватать и бить людей. Не увеличивает скорость атаки оружием. Может быть совмещено с боевыми искусствами для ещё большей смертоносности."
 	reference = "RPGD"
 	item = /obj/item/clothing/gloves/fingerless/rapid
 	cost = 40
 
 /datum/uplink_item/dangerous/sword
 	name = "Energy Sword"
-	desc = "The energy sword is an edged weapon with a blade of pure energy. The sword is small enough to be pocketed when inactive. Activating it produces a loud, distinctive noise."
+	desc = "Энергетический меч - это меч с клинком из чистой энергии. В неактивном состоянии меч можно спрятать в кармане. Активация производит характерный громкий звук."
 	reference = "ES"
 	item = /obj/item/melee/energy/sword/saber
 	cost = 40
@@ -228,17 +228,17 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/dangerous/powerfist
 	name = "Power Fist"
-	desc = "The power-fist is a metal gauntlet with a built-in piston-ram powered by an external gas supply. \
-		Upon hitting a target, the piston-ram will extend forward to make contact for some serious damage. \
-		Using a wrench on the piston valve will allow you to tweak the amount of gas used per punch to \
-		deal extra damage and hit targets further. Use a screwdriver to take out any attached tanks."
+	desc = "Силовая перчатка - металлическая перчатся со встроенным гидравлическим поршнем , приводящимся в движение внешним источником газа. \
+		При ударе цели поршень выдвинется вперед, увеличивая урон от контакта. \
+		Использование гаечного ключа на клапане поршня позволит регулировать количество газа на удар, \
+		используемое для нанесения увеличенного урона и отталкивания целей на большие расстояния. Использование отвёртки снимает баллон."
 	reference = "PF"
 	item = /obj/item/melee/powerfist
 	cost = 50
 
 /datum/uplink_item/dangerous/chainsaw
 	name = "Chainsaw"
-	desc = "A high powered chainsaw for cutting up ...you know...."
+	desc = "Высокомощная бензопила для разрезания... ну вы понимаете..."
 	reference = "CH"
 	item = /obj/item/butcher_chainsaw
 	cost = 65
@@ -247,21 +247,21 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/dangerous/universal_gun_kit
 	name = "Universal Self Assembling Gun Kit"
-	desc = "A universal gun kit, that can be combined with any weapon kit to make a functioning RND gun of your own. Uses built in allen keys to self assemble, just combine the kits by hitting them together."
+	desc = "Универсальный оружейный набор, который можно совместить с любым набором оружейных деталей, получая таким образом функционирующее оружие из РнД. Использует встроенные шестигранники для сборки. Просто совместите наборы, ударив один об другой."
 	reference = "IKEA"
 	item = /obj/item/weaponcrafting/gunkit/universal_gun_kit
 	cost = 20
 
 /datum/uplink_item/dangerous/batterer
 	name = "Mind Batterer"
-	desc = "A dangerous syndicate device focused on crowd control and escapes. Causes brain damage, confusion, and other nasty effects to those surrounding the user. Has 5 charges."
+	desc = "Опасное устройство синдиката, ориентированное на контроль толпы и побеги. Вызывает урон мозгу, головокружение, а также другие неприятные эффекты на всех, кто находится рядом. Имеет 5 зарядов."
 	reference = "BTR"
 	item = /obj/item/batterer
 	cost = 25
 
 /datum/uplink_item/dangerous/porta_turret
 	name = "Portable Turret"
-	desc = "A pop-up syndicate turret, shoots anyone who didn't prime the grenade. The turret cannot be moved after it's deployed."
+	desc = "Саморазвёртывающаяся турель Синдиката, которая атакует любого, кто не взвёл эту гранату. Турель нельзя передвинуть после развёртывания."
 	reference = "MIS"
 	item = /obj/item/grenade/turret
 	cost = 20
@@ -277,35 +277,35 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/ammo/pistol
 	name = "Stechkin - 10mm Magazine"
-	desc = "An additional 8-round 10mm magazine for use in the syndicate pistol, loaded with rounds that are cheap but around half as effective as .357"
+	desc = "Дополнительный 8-зарядный 10мм магазин для пистолета Синдиката, заряженный дешевыми патронами, в половину уступающими калибру .357"
 	reference = "10MM"
 	item = /obj/item/ammo_box/magazine/m10mm
 	cost = 3
 
 /datum/uplink_item/ammo/pistolap
 	name = "Stechkin - 10mm Armour Piercing Magazine"
-	desc = "An additional 8-round 10mm magazine for use in the syndicate pistol, loaded with rounds that are less effective at injuring the target but penetrate protective gear."
+	desc = "Дополнительный 8-зарядный 10мм магазин для пистолета Синдиката, заряженный патронами, которые менее эффективны в ранении цели, но пробивающие защитное снаряжение."
 	reference = "10MMAP"
 	item = /obj/item/ammo_box/magazine/m10mm/ap
 	cost = 6
 
 /datum/uplink_item/ammo/pistolfire
 	name = "Stechkin - 10mm Incendiary Magazine"
-	desc = "An additional 8-round 10mm magazine for use in the syndicate pistol, loaded with incendiary rounds which ignite the target."
+	desc = "Дополнительный 8-зарядный 10мм магазин для пистолета Синдиката, заряженный зажигательными патронами поджигающими цель."
 	reference = "10MMFIRE"
 	item = /obj/item/ammo_box/magazine/m10mm/fire
 	cost = 9
 
 /datum/uplink_item/ammo/pistolhp
 	name = "Stechkin - 10mm Hollow Point Magazine"
-	desc = "An additional 8-round 10mm magazine for use in the syndicate pistol, loaded with rounds which are more damaging but ineffective against armour."
+	desc = "Дополнительный 8-зарядный 10мм магазин для пистолета Синдиката, заряженный патронами, которые наносят больше урона, но  неэффективны против брони."
 	reference = "10MMHP"
 	item = /obj/item/ammo_box/magazine/m10mm/hp
 	cost = 7
 
 /datum/uplink_item/ammo/revolver
 	name = ".357 Revolver - Speedloader"
-	desc = "A speed loader that contains seven additional .357 Magnum rounds for the syndicate revolver. For when you really need a lot of things dead."
+	desc = "Спидлоудер, содержащий 7 патронов для револьвера .357 Синдиката. Когда вам нужно реально много трупов."
 	reference = "357"
 	item = /obj/item/ammo_box/a357
 	cost = 15
@@ -315,43 +315,43 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 ////////////////////////////////////////
 
 /datum/uplink_item/stealthy_weapons
-	category = "Stealthy and Inconspicuous Weapons"
+	category = "Скрытное и незаметное оружие"
 
 /datum/uplink_item/stealthy_weapons/garrote
 	name = "Fiber Wire Garrote"
-	desc = "A length of fiber wire between two wooden handles, perfect for the discrete assassin. This weapon, when used on a target from behind \
-			will instantly put them in your grasp and silence them, as well as causing rapid suffocation. Does not work on those who do not need to breathe."
+	desc = "отрезон волоконного шнура с двумя деревянными рукоятками, идеально для убийцы-одиночки. Это оружие, будучи использовано на цели со спины, \
+			моментально захватит и лишит её возможности говорить, а также вызовет быстрое удушье. Не сработает на тех, кому не требуется дыхание."
 	item = /obj/item/garrote
 	reference = "GAR"
 	cost = 30
 
 /datum/uplink_item/stealthy_weapons/cameraflash
 	name = "Camera Flash"
-	desc = "A flash disguised as a camera with a self-charging safety system preventing the flash from burning out. \
-			Due to its design, this flash cannot be overcharged like regular flashes can. \
-			Useful for stunning borgs and individuals without eye protection or blinding a crowd for a get away."
+	desc = "Вспышка, замаскированная под камеру с самозарядной системой защиты от перегорания. \
+			Из-за своего устройства, данная вспышка не может быть перегружена как обычные вспышки. \
+			Полезна для оглушения киборгов и людей без защиты глаз или ослепления толпы для побега."
 	reference = "CF"
 	item = /obj/item/flash/cameraflash
 	cost = 5
 
 /datum/uplink_item/stealthy_weapons/throwingweapons
 	name = "Box of Throwing Weapons"
-	desc = "A box of shurikens and reinforced bolas from ancient Earth martial arts. They are highly effective \
-			throwing weapons. The bolas can knock a target down and the shurikens will embed into limbs."
+	desc = "Коробка сюрекенов и усиленных бол из древнего Земного боевого искусства. Это очень эффективное \
+			метательное оружие. Болы могут сбить цель с ног, а сюрикены гарантированно застрянут в конечностях."
 	reference = "STK"
 	item = /obj/item/storage/box/syndie_kit/throwing_weapons
 	cost = 15
 
 /datum/uplink_item/stealthy_weapons/edagger
 	name = "Energy Dagger"
-	desc = "A dagger made of energy that looks and functions as a pen when off."
+	desc = "Кинжал из энергии, который выглядит и функционирует как ручка в выключенном состоянии."
 	reference = "EDP"
 	item = /obj/item/pen/edagger
 	cost = 10
 
 /datum/uplink_item/stealthy_weapons/foampistol
 	name = "Toy Gun (with Stun Darts)"
-	desc = "An innocent looking toy pistol designed to fire foam darts. Comes loaded with riot grade darts, to incapacitate a target."
+	desc = "Безобидно выглядящий игрушечный пистолет, предназначенный для стрельбы вспененными зарядами. Поставляется заряженным резиновыми патронами для оглушения цели."
 	reference = "FSPI"
 	item = /obj/item/gun/projectile/automatic/toy/pistol/riot
 	cost = 15
@@ -359,14 +359,14 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/stealthy_weapons/false_briefcase
 	name = "False Bottomed Briefcase"
-	desc = "A modified briefcase capable of storing and firing a gun under a false bottom. Use a screwdriver to pry away the false bottom and make modifications. Distinguishable upon close examination due to the added weight."
+	desc = "Модифицированный чемодан, способный хранить и стрелять из оружия под ложным дном. Используйте отвёртку для открытия дна и модификации. Отличим при ближайшем рассмотрении из-за дополнительного веса."
 	reference = "FBBC"
 	item = /obj/item/storage/briefcase/false_bottomed
 	cost = 10
 
 /datum/uplink_item/stealthy_weapons/soap
 	name = "Syndicate Soap"
-	desc = "A sinister-looking surfactant used to clean blood stains to hide murders and prevent DNA analysis. You can also drop it underfoot to slip people."
+	desc = "Зловеще выглядящий сурфактант, используемый для очистки кровавых следов на месте убийства и предотвращения ДНК-анализа. Вы также можете бросать его под ноги людям."
 	reference = "SOAP"
 	item = /obj/item/soap/syndie
 	cost = 5
@@ -374,14 +374,14 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/stealthy_weapons/RSG
 	name = "Rapid Syringe Gun"
-	desc = "A syndicate rapid syringe gun able to fill and fire syringes automatically from an internal reagent reservoir. Comes pre-loaded with 7 empty syringes, and has a maximum capacity of 14 syringes and 300u of reagents."
+	desc = "Скоростной шприцемет Синдиката, способный заправлять шприцы и стрелять ими автоматически из внутреннего хранилища реагентов. Поставляется заряженным  7 пустыми шприцами, максимальная ёмкость - 14 шприцов и 300 юнитов реагентов."
 	reference = "RSG"
 	item = /obj/item/gun/syringe/rapidsyringe/preloaded/half
 	cost = 60
 
 /datum/uplink_item/stealthy_weapons/poisonbottle
 	name = "Poison Bottle"
-	desc = "The Syndicate will ship a bottle containing 40 units of a randomly selected poison. The poison can range from highly irritating to incredibly lethal."
+	desc = "Синдикат поставит вам один пузырёк с 40 юнитами случайного яда. Яд варьируется от очень раздражающего до невероятно смертельного."
 	reference = "TPB"
 	item = /obj/item/reagent_containers/glass/bottle/traitor
 	cost = 10
@@ -389,7 +389,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/stealthy_weapons/silencer
 	name = "Universal Suppressor"
-	desc = "Fitted for use on any small caliber weapon with a threaded barrel, this suppressor will silence the shots of the weapon for increased stealth and superior ambushing capability."
+	desc = "Подходящий для любого оружия малого калибра с нарезным стволом, этот глушитель способен заглушить звуки выстрелов для большей скрытности и преимущества в засадах."
 	reference = "US"
 	item = /obj/item/suppressor
 	cost = 5
@@ -397,14 +397,14 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/stealthy_weapons/dehy_carp
 	name = "Dehydrated Space Carp"
-	desc = "Just add water to make your very own hostile to everything space carp. It looks just like a plushie. The first person to squeeze it will be registered as its owner, who it will not attack. If no owner is registered, it'll just attack everyone."
+	desc = "Просто добавьте воды для создания ручного карпа, враждебного ко всему. Выглядит как плюшевая игрушка. Первый человек, сжавший игрушку, будет считаться владельцем, на которого карп не будет нападать. Если владельца нет, он будет атаковать вообще всех."
 	reference = "DSC"
 	item = /obj/item/toy/plushie/carpplushie/dehy_carp
 	cost = 4
 
 /datum/uplink_item/stealthy_weapons/knuckleduster
 	name = "Syndicate Knuckleduster"
-	desc = "A straightforward and fairly concealable melee weapon for bludgeoning someone to death in brutal fashion. This one is designed specifically to cause severe organ damage to the victim."
+	desc = "Прямолинейное и достаточно легко скрываемое оружие ближнего боя для избиения кого-либо в брутальном стиле. Конкретно это оружие спроектировано специально для нанесения большого урон внутренним органам жертвы."
 	reference = "SKD"
 	item = /obj/item/melee/knuckleduster/syndie
 	cost = 10
@@ -414,46 +414,46 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 ////////////////////////////////////////
 
 /datum/uplink_item/explosives
-	category = "Grenades and Explosives"
+	category = "Гранаты и взрывчатка"
 
 /datum/uplink_item/explosives/plastic_explosives
 	name = "Composition C-4"
-	desc = "C-4 is plastic explosive of the common variety Composition C. Reliably destroys the object it's placed on, assuming it isn't bomb resistant. Remarkably good for disposing bodies, or tired crewmates. Will only destroy station floors if placed directly on it. It has a modifiable timer with a minimum setting of 10 seconds."
+	desc = "С-4 это пластичная взрывчатка, распространённая вариация композита C. Надёжно уничтожает объект, на который установлена, за исключением взрывоустойчивых. Не липнет к членам экипажа. Уничтожит только напольные покрытия в случае установки на них. Есть настраиваемый таймер с минимумом в 10 секунд."
 	reference = "C4"
 	item = /obj/item/grenade/plastic/c4
 	cost = 5
 
 /datum/uplink_item/explosives/plastic_explosives_pack
 	name = "Pack of 5 C-4 Explosives"
-	desc = "A package containing 5 C-4 Explosives at a discounted price. For when you need that little bit extra for your sabotaging needs."
+	desc = "Упаковка, содержащая 5 взрывчаток C-4 по скидочной цене. Для тех случаев, когда для ваших саботажей требуется слегка больше."
 	reference = "C4P"
 	item = /obj/item/storage/box/syndie_kit/c4
 	cost = 20
 
 /datum/uplink_item/explosives/syndicate_minibomb
 	name = "Syndicate Minibomb"
-	desc = "The minibomb is a grenade with a five-second fuse."
+	desc = "Минибомба, граната с пятисекундным взрывателем"
 	reference = "SMB"
 	item = /obj/item/grenade/syndieminibomb
 	cost = 30
 
 /datum/uplink_item/explosives/frag_grenade
 	name = "Fragmentation Grenade"
-	desc = "A frag grenade. Upon detonation, releases shrapnel that can embed in nearby victims."
+	desc = "Осколочная граната. При детонации выпускает шрапнель, застревающую в ближайших жертв."
 	reference = "FG"
 	item = /obj/item/grenade/frag
 	cost = 10
 
 /datum/uplink_item/explosives/frag_grenade_pack
-	name = "Pack of 5 Fragmentation Grenades"
-	desc = "A box of 5 frag grenades. Upon detonation, releases shrapnel that can embed in nearby victims. And it seems you'll have a LOT of victims."
+	name = "Набор из 5 осколочных гранат"
+	desc = "Коробка с пятью осколочными гранатами. При детонации выпускает шрапнель, застревающую в ближайших жертвах. И похоже будет МНОГО жертв."
 	reference = "FGP"
 	item = /obj/item/storage/box/syndie_kit/frag_grenades
 	cost = 40
 
 /datum/uplink_item/explosives/pizza_bomb
 	name = "Pizza Bomb"
-	desc = "A pizza box with a bomb taped inside of it. The timer needs to be set by opening the box; afterwards, opening the box again will trigger the detonation."
+	desc = "Коробка из под пиццы с бомбой, приклеенной внутри. Сначала таймер надо настроить, открыв коробку. Повторное открытие провоцирует детонацию."
 	reference = "PB"
 	item = /obj/item/pizzabox/pizza_bomb
 	cost = 30
@@ -461,15 +461,15 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/explosives/atmosn2ogrenades
 	name = "Knockout Gas Grenades"
-	desc = "A box of two (2) grenades that spread knockout gas over a large area. Equip internals before using one of these."
+	desc = "Коробка с двумя (2) гранатами, распространяющими усыпляющий газ на большой территории. Экипируйте баллон с воздухом перед их использованием."
 	reference = "ANG"
 	item = /obj/item/storage/box/syndie_kit/atmosn2ogrenades
 	cost = 40
 
 /datum/uplink_item/explosives/emp
 	name = "EMP Grenades and bio-chip implanter Kit"
-	desc = "A box that contains two EMP grenades and an EMP implant with 2 uses. Useful to disrupt communication, \
-			security's energy weapons, and silicon lifeforms when you're in a tight spot."
+	desc = "Коробка, содержащая две ЭМИ гранаты и ЭМИ имплант на два использования. Полезно для отключения коммуникаций, \
+			энергетического оружия СБ и синтетических форм жизни, когда вас прижмут."
 	reference = "EMPK"
 	item = /obj/item/storage/box/syndie_kit/emp
 	cost = 10
@@ -492,12 +492,12 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 ////////////////////////////////////////
 
 /datum/uplink_item/stealthy_tools
-	category = "Stealth and Camouflage Items"
+	category = "Скрытные и камуфляжные предметы"
 
 /datum/uplink_item/stealthy_tools/chameleon_stamp
 	name = "Chameleon Stamp"
-	desc = "A stamp that can be activated to imitate an official Nanotrasen Stamp. The disguised stamp will work exactly like the real stamp and will allow you to forge false documents to gain access or equipment; \
-	it can also be used in a washing machine to forge clothing."
+	desc = "Штамп, который может быть активирован для имитации официального штампа НаноТрэйзен. Замаскированный штамп будет работать точно также как настоящий, позволяя вам подделывать документы для получения дополнительных доступов и оборудования. \
+	Также может быть использовано в стиральной машине для подделывания одежды."
 	reference = "CHST"
 	item = /obj/item/stamp/chameleon
 	cost = 1
@@ -505,7 +505,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/stealthy_tools/chameleonflag
 	name = "Chameleon Flag"
-	desc = "A flag that can be disguised as any other known flag. There is a hidden spot in the pole to boobytrap the flag with a grenade or minibomb, which will detonate some time after the flag is set on fire."
+	desc = "Флаг, который может быть замаскирован под любой известный флаг. Есть скрытое место в флагштоке для минирования гранатой или минибомбой, которая подорвётся через некоторое время после поджога флага."
 	reference = "CHFLAG"
 	item = /obj/item/flag/chameleon
 	cost = 1
@@ -513,14 +513,14 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/stealthy_tools/chamsechud
 	name = "Chameleon Security HUD"
-	desc = "A stolen Nanotrasen Security HUD with Syndicate chameleon technology implemented into it. Similarly to a chameleon jumpsuit, the HUD can be morphed into various other eyewear, while retaining the HUD qualities when worn."
+	desc = "Сворованный ХУД СБ со встроенной хамелеон технологией Синдиката. Сходно комбинезону хамелеон, ХУД может превратиться в любые очки, сохраняя свой функционал когда они надеты."
 	reference = "CHHUD"
 	item = /obj/item/clothing/glasses/hud/security/chameleon
 	cost = 10
 
 /datum/uplink_item/stealthy_tools/thermal
 	name = "Thermal Chameleon Glasses"
-	desc = "These glasses are thermals with Syndicate chameleon technology built into them. They allow you to see organisms through walls by capturing the upper portion of the infra-red light spectrum, emitted as heat and light by objects. Hotter objects, such as warm bodies, cybernetic organisms and artificial intelligence cores emit more of this light than cooler objects like walls and airlocks."
+	desc = "Это термальные очки со встроенной хамелеон технологией Синдиката. Они позволят вам видеть организмы через стены, улавливая верхнюю часть инфракрасного спектра, излучаемую в виде тепла и света от объектов. Горячие объекты, вроде теплых тел, кибернетических организмов и ядер ИИ излучают больше этого света, чем более холодные объекты, такие как стены и шлюзы."
 	reference = "THIG"
 	item = /obj/item/clothing/glasses/chameleon/thermal
 	cost = 15
@@ -534,28 +534,28 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/stealthy_tools/agent_card
 	name = "Agent ID Card"
-	desc = "Agent cards prevent artificial intelligences from tracking the wearer, and can copy access from other identification cards. The access is cumulative, so scanning one card does not erase the access gained from another."
+	desc = "Карта агента предотвращает отслеживание носителя со стороны ИИ, а также позволяет копировать доступы с других идентификационных карт. Эффект суммируется, поэтому сканирование одних карт не стирает доступы, полученные от других."
 	reference = "AIDC"
 	item = /obj/item/card/id/syndicate
 	cost = 10
 
 /datum/uplink_item/stealthy_tools/chameleon_proj
 	name = "Chameleon-Projector"
-	desc = "Projects an image across a user, disguising them as an object scanned with it, as long as they don't move the projector from their hand. The disguised user cannot run and projectiles pass over them."
+	desc = "Проецирует картинку на пользователя, маскируя его как отсканированный объект пока проектор находится в руке. Замаскированный пользователь не может бегать, и снаряды будут пролетать мимо него."
 	reference = "CP"
 	item = /obj/item/chameleon
 	cost = 25
 
 /datum/uplink_item/stealthy_tools/chameleon_counter
 	name = "Chameleon Counterfeiter"
-	desc = "This device disguises itself as any object scanned by it. The disguise is not a perfect replica and can be noticed when examined by an observer."
+	desc = "Это устройство маскирует себя как любой отсканированный объект. Маскировка - не идеальная реплика и может быть распознана при осмотре наблюдателем."
 	reference = "CC"
 	item = /obj/item/chameleon_counterfeiter
 	cost = 10
 
 /datum/uplink_item/stealthy_tools/camera_bug
 	name = "Camera Bug"
-	desc = "Enables you to view all cameras on the network to track a target. Also has 5 sticky hidden cameras, allowing you remote view of any object you can stick a camera on."
+	desc = "Позволяет вам просматривать все камеры в сети для отслеживания цели. Также даёт 5 скрытых камер, позволяя вам удалённо смотреть за объектом, на который вы прицепили камеру."
 	reference = "CB"
 	item = /obj/item/storage/box/syndie_kit/camera_bug
 	cost = 5
@@ -563,14 +563,14 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/stealthy_tools/dnascrambler
 	name = "DNA Scrambler"
-	desc = "A syringe with one injection that randomizes appearance and name upon use. A cheaper but less versatile alternative to an agent card and voice changer."
+	desc = "Шприц с одной инъекцией, меняющей имя и внешность на случайные. Более дешевая, но менее универсальная альтернатива карте агента и модулятору голоса."
 	reference = "DNAS"
 	item = /obj/item/dnascrambler
 	cost = 7
 
 /datum/uplink_item/stealthy_tools/smugglersatchel
 	name = "Smuggler's Satchel"
-	desc = "This satchel is thin enough to be hidden in the gap between plating and tiling, great for stashing your stolen goods. Comes with a crowbar and a floor tile inside."
+	desc = "Эта сумка достаточно тонкая для укладки между обшивкой и полом, отлично подходит для прятанья ворованных вещей. Поставляется с ломом и напольной плиткой внутри."
 	reference = "SMSA"
 	item = /obj/item/storage/backpack/satchel_flat
 	cost = 10
@@ -578,8 +578,8 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/stealthy_tools/emplight
 	name = "EMP Flashlight"
-	desc = "A small, self-charging, short-ranged EMP device disguised as a flashlight. \
-		Useful for disrupting headsets, cameras, and borgs during stealth operations."
+	desc = "Маленькое, самозарядное устройство ЭМИ, замаскированное под фонарик. Работает на короткой дистанции. \
+		Полезно для отключения наушников, камер, и боргов во время скрытных операций."
 	reference = "EMPL"
 	item = /obj/item/flashlight/emp
 	cost = 20
@@ -592,8 +592,8 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/stealthy_tools/cutouts
 	name = "Adaptive Cardboard Cutouts"
-	desc = "These cardboard cutouts are coated with a thin material that prevents discoloration and makes the images on them appear more lifelike. This pack contains three as well as a \
-	spraycan for changing their appearances."
+	desc = "Эти картонные аппликации покрыты тонким материалом, предотвращающим выцветание и делающим изображения более похожими на реальные. В наборе их 3, а также \
+	баллончик с краской для смены их вида."
 	reference = "ADCC"
 	item = /obj/item/storage/box/syndie_kit/cutouts
 	cost = 1
@@ -601,7 +601,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/stealthy_tools/safecracking
 	name = "Safe-cracking Kit"
-	desc = "Everything you need to quietly open a mechanical combination safe."
+	desc = "Всё что вам требуется для тихого открытия механического сейфа."
 	reference = "SCK"
 	item = /obj/item/storage/box/syndie_kit/safecracking
 	cost = 5
@@ -609,7 +609,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/stealthy_tools/handheld_mirror
 	name = "Hand Held Mirror"
-	desc = "A pocket sized mirror. Allows you to change all your hair and facial features, from color to style, instantly while in your hand."
+	desc = "Карманное зеркало. Позволяет вам мгновенно менять причёску и особенности лица, от цвета до стиля, моментально, пока зеркало находится в руке."
 	reference = "HM"
 	item = /obj/item/handheld_mirror
 	cost = 5
@@ -619,59 +619,59 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 ////////////////////////////////////////
 
 /datum/uplink_item/device_tools
-	category = "Devices and Tools"
+	category = "Устройства и инструменты"
 	abstract = 1
 
 /datum/uplink_item/device_tools/emag
 	name = "Cryptographic Sequencer"
-	desc = "The cryptographic sequencer, also known as an emag, is a small card that unlocks hidden functions in electronic devices, subverts intended functions and characteristically breaks security mechanisms."
+	desc = "Криптографический сиквенсер, также известный как емаг, это маленькая карта, открывающая скрытые функции элнетронных устройств, искажает изначальные функции и характерно ломает системы безопасности."
 	reference = "EMAG"
 	item = /obj/item/card/emag
 	cost = 30
 
 /datum/uplink_item/device_tools/access_tuner
 	name = "Access Tuner"
-	desc = "The access tuner is a small device that can interface with airlocks from range. It takes a few seconds to connect and can change the bolt state, open the door, or toggle emergency access."
+	desc = "Настройщик доступа - это маленькое устройство, взаимодействующее со шлюзами на расстоянии. Этот процесс занимает несколько секунд и позволяет болтировать, открывать шлюзы и переключать экстренный доступ."
 	reference = "HACK"
 	item = /obj/item/door_remote/omni/access_tuner
 	cost = 30
 
 /datum/uplink_item/device_tools/toolbox
 	name = "Fully Loaded Toolbox"
-	desc = "The syndicate toolbox is a suspicious black and red. Aside from tools, it comes with insulated gloves and a multitool."
+	desc = "Подозрительный красно-чёрный ящик с инструментами Синдиката. Помимо инструментов, поставляется с изолированными перчатками и мультитулом."
 	reference = "FLTB"
 	item = /obj/item/storage/toolbox/syndicate
 	cost = 5
 
 /datum/uplink_item/device_tools/surgerybag
 	name = "Syndicate Surgery Duffelbag"
-	desc = "The Syndicate surgery duffelbag comes with a full set of surgery tools, a straightjacket and a muzzle. The bag itself is also made of very light materials and won't slow you down while it is equipped."
+	desc = "Хирургическая сумка Синдиката поставляется с полным набором хирургических инструментов, смирительной рубашкой и кляпом. Сама сумка сделана из очень лёгких материалов, поэтому не будет замедлять вас, пока экипирована"
 	reference = "SSDB"
 	item = /obj/item/storage/backpack/duffel/syndie/med/surgery
 	cost = 10
 
 /datum/uplink_item/device_tools/bonerepair
 	name = "Prototype Nanite Autoinjector"
-	desc = "Stolen prototype full body repair nanites. On injection it will shut down body systems as it revitilizes limbs and organs. Heals organics organs, cybernetic organs, and limbs to fully operational conditions."
+	desc = "Украденный прототип с нанитами, лечащими всё тело. При инъекции выключает системы в теле, пока наниты оживляют органы и конечности."
 	reference = "NCAI"
 	item = /obj/item/reagent_containers/hypospray/autoinjector/nanocalcium
 	cost = 10
 
 /datum/uplink_item/device_tools/syndicate_teleporter
 	name = "Experimental Syndicate Teleporter"
-	desc = "The Syndicate teleporter is a handheld device that teleports the user 4-8 meters forward. \
-			Beware, teleporting into a wall will make the teleporter do a parallel emergency teleport, \
-			but if that emergency teleport fails, it will kill you. \
-			Has 4 charges, recharges, warranty voided if exposed to EMP. \
-			Comes with free chameleon mesons, to help you stay stylish while seeing through walls."
+	desc = "Телепортатор Синдиката это переносное устройство, переносящее пользователя на 4-8 метров вперед. \
+			Осторожно, телепортация в стену заставит телепортатор сделать экстренный параллельный телепорт, \
+			но если экстренный телепорт даст сбой, он вас убьет. \
+			Имеет четыре заряда, перезаряжается, гарантия недействительна при воздействии ЭМИ. \
+			Поставляется мезонными очками хамелеон, чтобы вы оставались стильным, имея возможность видеть сквозь стены."
 	reference = "TELE"
 	item = /obj/item/storage/box/syndie_kit/teleporter
 	cost = 40
 
 /datum/uplink_item/device_tools/organ_extractor
 	name = "Organ Extractor"
-	desc = "A device that can remove organs or cybernetic implants from a target, and stores them inside. \
-	Stored organs can be implanted into the user, or into other targets. Synthesizes chemicals to keep the organs fresh."
+	desc = "Устройство, используемое для извлечения и хранения органов и кибернетических имплантов жертвы. \
+	Хранящиеся органы можно имплантиовать в пользователя или в другие цели. Синтезирует химикаты для сохранения органов свежими."
 	reference = "OREX"
 	item = /obj/item/organ_extractor
 	cost = 20
@@ -767,21 +767,21 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 ////////////////////////////////////////
 
 /datum/uplink_item/suits
-	category = "Space Suits and MODsuits"
+	category = "Скафандры и MODsuit'ы"
 	surplus = 10 //I am setting this to 10 as there are a bunch of modsuit parts in here that should be weighted to 10. Suits and modsuits adjusted below.
 
 /datum/uplink_item/suits/space_suit
 	name = "Syndicate Space Suit"
-	desc = "This armoured red and black Syndicate space suit is less encumbering than Nanotrasen variants, \
-			fits inside bags, and has a weapon slot. Comes packaged with internals. Nanotrasen crewmembers are trained to report red space suit \
-			sightings, however. "
+	desc = "Этот красно-черный скафандр Синдиката менее загруженный, чем варианты Нанотрэйзен, \
+	помещается в рюкзак, а также имеет оружейный слот. Поставляется с баллоном воздуха. Но всё же, члены команды Нанотрейзен научены докладывать о \
+	красно-черных скафандрах."
 	reference = "SS"
 	item = /obj/item/storage/box/syndie_kit/space
 	cost = 20
 
 /datum/uplink_item/suits/thermal
 	name = "MODsuit Thermal Visor Module"
-	desc = "A visor for a MODsuit. Lets you see living beings through walls. Also provides night vision."
+	desc = "Визор для MODsuit'а. Позволяет вам видеть живых существ через стены. Также даёт ночное зрение."
 	reference = "MSTV"
 	item = /obj/item/mod/module/visor/thermal
 	cost = 15 // Don't forget, you need to get a modsuit to go with this
@@ -789,7 +789,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/suits/night
 	name = "MODsuit Night Visor Module"
-	desc = "A visor for a MODsuit. Lets you see clearer in the dark."
+	desc = "Визор для MODsuit'а. Позволяет вам лучше видеть в темноте."
 	reference = "MSNV"
 	item = /obj/item/mod/module/visor/night
 	cost = 5 // It's night vision, rnd pumps out those goggles for anyone man.
@@ -797,36 +797,36 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/suits/plate_compression
 	name = "MODsuit Plate Compression Module"
-	desc = "A MODsuit module that lets the suit compress into a smaller size. Not compatible with storage modules, \
-	you will have to take that module out first."
+	desc = "Модуль на MODsuit, позволяющий ему сжаться до меньших размеров. Несовместим с модулями хранилища, \
+	сначала вам придётся извлечь такой модуль."
 	reference = "MSPC"
 	item = /obj/item/mod/module/plate_compression
 	cost = 10
 
 /datum/uplink_item/suits/chameleon_module
 	name = "MODsuit Chameleon Module"
-	desc = "A module using chameleon technology to disguise an undeployed modsuit as another object. Note: the disguise will not work once the modsuit is deployed, but can be toggled again when retracted."
+	desc = "Модуль, использующий технологию хамелеон для маскировки сложенного MODsuit'а под другой предмет. Примечание: маскировка выключится при развертывании MODsuit'а, но может быть активирована повторно после складывания."
 	reference = "MSCM"
 	item = /obj/item/mod/module/chameleon
 	cost = 10
 
 /datum/uplink_item/suits/noslip
 	name = "MODsuit Anti-Slip Module"
-	desc = "A MODsuit module preventing the user from slipping on water. Already installed in the uplink modsuits."
+	desc = "Модуль на MODsuit, предотвращающий поскальзывание на воде. Предустановлен в MODsuit'ы из аплинка."
 	reference = "MSNS"
 	item = /obj/item/mod/module/noslip
 	cost = 5
 
 /datum/uplink_item/suits/springlock_module
 	name = "Heavily Modified Springlock MODsuit Module"
-	desc = "A module that spans the entire size of the MOD unit, sitting under the outer shell. \
-		This mechanical exoskeleton pushes out of the way when the user enters and it helps in booting \
-		up, but was taken out of modern suits because of the springlock's tendency to \"snap\" back \
-		into place when exposed to humidity. You know what it's like to have an entire exoskeleton enter you? \
-		This version of the module has been modified to allow for near instant activation of the MODsuit. \
-		Useful for quickly getting your MODsuit on/off, or for taking care of a target via a tragic accident. \
-		It is hidden as a DNA lock module. It will block retraction for 10 seconds by default to allow you to follow \
-		up with smoke, but you can multitool the module to disable that."
+	desc = "Модуль, простирающийся на всю длину MODsuit, находящийся под внешней оболочкой. \
+		Этот механический экзоскелет отодвигается при входе пользователя и ускоряет запуск, \
+		но он был изъят из современных костюмов из-за тенденции \"срываться\" в \
+		исходное положение при попадании влаги. Вы знаете, каково это — чувствовать вхождение в себя экзоскелета? \
+		Эта версия модуля была улучшена таким образом, что позволяет практически моментально активировать MODsuit. \
+		Полезен для быстрого снятия MODsuit или для убийства цели при помощи трагичного несчастного случая. \
+		Этот модуль спрятан как ДНК-замок. Он заблокирует складывание модуля на 5 секунд по умолчанию, позволяя вам \
+		использовать дым, но вы можете отключить данный функционал модуля, используя мультитул."
 	reference = "FNAF"
 	item = /obj/item/mod/module/springlock/bite_of_87
 	cost = 5
@@ -834,7 +834,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/suits/hidden_holster
 	name = "Hidden Holster Module"
-	desc = "A holster module disguised to look like a tether module. Requires a modsuit to put it in of course. Gun not included."
+	desc = "Модуль кобуры, замаскированный под крюк-кошку. Требует MODsuit для установки, естественно. Ствол приобретается отдельно."
 	reference = "HHM"
 	item = /obj/item/mod/module/holster/hidden
 	cost = 5
@@ -842,7 +842,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/suits/smoke_grenade
 	name = "Smoke Grenade Module"
-	desc = "A module that dispenses primed smoke grenades to disperse crowds."
+	desc = "Модуль на MODsuit, который выпускает взведенные дымовые гранаты для разгона толпы."
 	reference = "SGM"
 	item = /obj/item/mod/module/dispenser/smoke
 	cost = 10
@@ -853,46 +853,46 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 ////////////////////////////////////////
 
 /datum/uplink_item/bio_chips
-	category = "Bio-chips"
+	category = "Био-чипы"
 
 /datum/uplink_item/bio_chips/freedom
 	name = "Freedom Bio-chip"
-	desc = "A bio-chip injected into the body and later activated manually to break out of any restraints or grabs. Can be activated up to 4 times."
+	desc = "Био-чип, вживляемый в тело и позже активируемый для того, чтобы вырваться из любых оков. Может быть активирован до 4 раз."
 	reference = "FI"
 	item = /obj/item/bio_chip_implanter/freedom
 	cost = 25
 
 /datum/uplink_item/bio_chips/protofreedom
 	name = "Prototype Freedom Bio-chip"
-	desc = "A prototype bio-chip injected into the body and later activated manually to break out of any restraints or grabs. Can only be activated a singular time."
+	desc = "Прототип био-чипа, вживляемый в тело и позже активируемый для того, чтобы вырваться из любых оков. Может быть активирован лишь единожды."
 	reference = "PFI"
 	item = /obj/item/bio_chip_implanter/freedom/prototype
 	cost = 10
 
 /datum/uplink_item/bio_chips/storage
 	name = "Storage Bio-chip"
-	desc = "A bio-chip injected into the body, and later activated at the user's will. It will open a small subspace pocket capable of storing two items."
+	desc = "Био-чип, вживляемый в тело и активируемый по воле владельца. Открывает маленький субпространственный карман, способный вместить 2 предмета."
 	reference = "ESI"
 	item = /obj/item/bio_chip_implanter/storage
 	cost = 40
 
 /datum/uplink_item/bio_chips/mindslave
 	name = "Mindslave Bio-chip"
-	desc = "A box containing a bio-chip implanter filled with a mindslave bio-chip that when injected into another person makes them loyal to you and your cause, unless of course they're already implanted by someone else. Loyalty ends if the implant is no longer in their system."
+	desc = "Коробка с имплантером с био-чипом подчинения, который при вживлении в другого человека делает их верным вам и вашему делу, кроме случаев, если они уже проимплантированы кем-то другим. Лояльность кончается при извлечении импланта из тела."
 	reference = "MI"
 	item = /obj/item/bio_chip_implanter/traitor
 	cost = 50
 
 /datum/uplink_item/bio_chips/adrenal
 	name = "Adrenal Bio-chip"
-	desc = "A bio-chip injected into the body, and later activated manually to inject a chemical cocktail, which has a mild healing effect along with removing and reducing the time of all stuns and increasing movement speed. Can be activated up to 3 times."
+	desc = "Био-чип, вводимый в тело и позже активируемый в ручную для впрыскивания химического коктейля, имеющего средние исцеляющие способности, а также убирает текущие ослабления и уменьшает время всех последующих, дополнительно увеличивая скорость передвижения. Может быть активирован до 3 раз."
 	reference = "AI"
 	item = /obj/item/bio_chip_implanter/adrenalin
 	cost = 40
 
 /datum/uplink_item/bio_chips/basic_adrenal
 	name = "Basic-Adrenal Bio-chip"
-	desc = "A single-use bio-chip injected into the body and later activated manually to inject a chemical cocktail. This one has a worse healing effect than regular adrenaline. It can be activated once for 3/4 of the effect of the original."
+	desc = "Одноразовый био-чип, вводимый в тело и активируемый для впрыска химического коктейля. У данной версии лечащее действие хуже обычного адреналина. Его можно активировать единожды для полученния эффекта как от 3/4 оригинала."
 	reference = "BAI"
 	item = /obj/item/bio_chip_implanter/basic_adrenalin
 	cost = 20
@@ -900,15 +900,15 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/bio_chips/proto_adrenal
 	name = "Proto-Adrenal Bio-chip"
-	desc = "A old prototype of the Adrenalin implant, that grants the user 4 seconds of antistun, getting them back on their feet instantly once, but nothing more. Speed and healing sold seperately."
+	desc = "Старый прототип био-чипа Адреналин, дающий пользователю 4 секунды антистана, единожды поднимая его на ноги, но ничего более. Скорость и лечение продаются отдельно."
 	reference = "PAI"
 	item = /obj/item/bio_chip_implanter/proto_adrenalin
 	cost = 10
 
 /datum/uplink_item/bio_chips/stealthimplant
 	name = "Stealth Bio-chip"
-	desc = "This one-of-a-kind implant will make you almost invisible if you play your cards right. \
-			On activation, it will conceal you inside a chameleon cardboard box that is only revealed once someone bumps into it."
+	desc = "Этот уникальный имплант делает вас практически невидимым, если вы правильно разыграете карты. \
+			При активации, он спрячет вас внутри картонной коробки, которую можно обнаружить, только если кто-то врежется в вас."
 	reference = "SI"
 	item = /obj/item/bio_chip_implanter/stealth
 	cost = 45
@@ -918,31 +918,31 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 ////////////////////////////////////////
 
 /datum/uplink_item/cyber_implants
-	category = "Cybernetic Implants"
+	category = "Кибернетические имланты"
 
 /datum/uplink_item/cyber_implants/hackerman_deck
 	name = "Binyat Wireless Hacking System Autoimplanter"
-	desc = "This implant will allow you to wirelessly emag from a distance. However, it will slightly burn you \
-	on use, and will be quite visual as you are emaging the object. \
-	Will not show on unupgraded body scanners. Incompatible with the Qani-Laaca Sensory Computer."
+	desc = "Этот имплант позволит вам взламывать устройства на расстоянии. Однако, он слегка обжигает \
+	при использовании, и процесс взлома сопровождается заметным эффектом. \
+	Нельзя увидеть на неулучшенных сканерах тела. Несовместим с Qani-Laaca Sensory Computer."
 	reference = "HKR"
 	item = /obj/item/autosurgeon/organ/syndicate/oneuse/hackerman_deck
 	cost = 30 // Probably slightly less useful than an emag with heat / cooldown, but I am not going to make it cheaper or everyone picks it over emag
 
 /datum/uplink_item/cyber_implants/razorwire
 	name = "Razorwire Spool Arm Implant Autoimplanter"
-	desc = "A long length of monomolecular filament, built into the back of your hand. \
-		Impossibly thin and flawlessly sharp, it should slice through organic materials with no trouble; \
-		even from a few steps away. However, results against anything more durable will heavily vary."
+	desc = "Длинная мономолекулярная нить, встроенная прямо в тыльную сторону ладони. \
+		Невероятно тонкая и безупречно острая, она без проблем прорежет любую органику \
+		даже на расстоянии нескольких шагов. Однако, против чего-либо более стойкого результаты могут варьироваться."
 	reference = "RZR"
 	item = /obj/item/autosurgeon/organ/syndicate/oneuse/razorwire
 	cost = 20
 
 /datum/uplink_item/cyber_implants/scope_eyes
 	name = "Hardened Kaleido Optics Eyes Autoimplanter"
-	desc = "These cybernetic eye implants will let you zoom in on far away objects. \
-	Many users find it disorienting, and find it hard to interact with things near them when active. \
-	This pair has been hardened for special operations personnel."
+	desc = "Эти кибернетические импланты на глаза позволят вам приближать изображение на удаленные объекты\
+	Дизориентирующий для многих пользователей и им сложно взаимодействовать с предметами возле себя, пока данный имплант активен. \
+	Эта пара была усилена для персонала специальных операций."
 	reference = "KOE"
 	item = /obj/item/autosurgeon/organ/syndicate/oneuse/scope_eyes
 	cost = 10
@@ -953,34 +953,34 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 ////////////////////////////////////////
 
 /datum/uplink_item/badass
-	category = "(Pointless) Badassery"
+	category = "(Бесполезно) Понты"
 	surplus = 0
 
 /datum/uplink_item/badass/pen
 	name = "Syndicate Fountain Pen"
-	desc = "A slick Syndicate-branded pen, to show everyone at the meeting that you mean business."
+	desc = "Изящная ручка с логотипом Синдиката, чтобы показать всем на встрече, что вы настроены серьёзно."
 	reference = "PEN"
 	item = /obj/item/pen/multi/syndicate
 	cost = 1
 
 /datum/uplink_item/badass/syndiecigs
 	name = "Syndicate Smokes"
-	desc = "Strong flavor, dense smoke, infused with omnizine."
+	desc = "Сильный вкус, плотный дым, пропитаны омнизином."
 	reference = "SYSM"
 	item = /obj/item/storage/fancy/cigarettes/cigpack_syndicate
 	cost = 7
 
 /datum/uplink_item/badass/syndiecash
 	name = "Syndicate Briefcase Full of Cash"
-	desc = "A secure briefcase containing 600 space credits. Useful for bribing personnel, or purchasing goods and services at lucrative prices. \
-	The briefcase also feels a little heavier to hold; it has been manufactured to pack a little bit more of a punch if your client needs some convincing."
+	desc = "Чемодан с паролем, содержащий в себе 600 космокредитов. Полезно для подкупа персонала или покупки товаров и услуг по заманчивым ценам. \
+	Чемодан также кажется слегка тяжелее; он был спроектирован, чтобы от него было чуть больше пользы в случае, если клиенту требуется немного \"убеждения\"."
 	reference = "CASH"
 	item = /obj/item/storage/secure/briefcase/syndie
 	cost = 5
 
 /datum/uplink_item/badass/balloon
 	name = "For showing that you are The Boss"
-	desc = "A useless red balloon with the syndicate logo on it, which can blow the deepest of covers."
+	desc = "Бесполезный красный шарик с логотипом Синдиката на нём. Подрывает даже глубочайшее прикрытие."
 	reference = "BABA"
 	item = /obj/item/toy/syndicateballoon
 	cost = 100
@@ -988,14 +988,14 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/badass/bomber
 	name = "Syndicate Bomber Jacket"
-	desc = "An awesome jacket to help you style on Nanotrasen with. The lining is made of a thin polymer to provide a small amount of armor. Does not provide any extra storage space."
+	desc = "Крутая куртка, чтоб выделываться перед НаноТрэйзен. Подкладка сделана из тонкого полимера для защиты. Не даёт дополнительное место для хранения вещей."
 	reference = "JCKT"
 	item = /obj/item/clothing/suit/jacket/bomber/syndicate
 	cost = 3
 
 /datum/uplink_item/badass/tpsuit
 	name = "Syndicate Two-Piece Suit"
-	desc = "A snappy two-piece suit that any self-respecting Syndicate agent should wear. Perfect for professionals trying to go undetected, but moderately armored with experimental nanoweave in case things do get loud. Comes with two cashmere-lined pockets for maximum style and comfort."
+	desc = "Чёткий костюм-двойка, который должен носить каждый уважающий cебя агент Синдиката. Идеален для профессионалов, действующих скрытно, но также несколько бронирован экспериментальной нанотканью на случай, если всё пойдёт не по плану. Поставляется с двумя карманами на кашемировой подкладке для максимального стиля и комфорта."
 	reference = "SUIT"
 	item = /obj/item/clothing/suit/storage/iaa/blackjacket/armored
 	cost = 3
@@ -1005,41 +1005,41 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 ////////////////////////////////////////
 
 /datum/uplink_item/bundles_TC
-	category = "Bundles and Telecrystals"
+	category = "Наборы и телекристаллы"
 	surplus = 0
 	can_discount = FALSE
 
 /datum/uplink_item/bundles_TC/telecrystal
 	name = "Raw Telecrystal"
-	desc = "Telecrystal in its rawest and purest form; can be utilized on active uplinks to increase their telecrystal count."
+	desc = "Телекристалл в своей чистейшей форме, может быть использован для увеличения счета телекристаллов на активных аплинках."
 	reference = "RTC"
 	item = /obj/item/stack/telecrystal
 	cost = 1
 
 /datum/uplink_item/bundles_TC/telecrystal/five
 	name = "5 Raw Telecrystals"
-	desc = "Five telecrystals in their rawest and purest form; can be utilized on active uplinks to increase their telecrystal count."
+	desc = "Пять телекристаллов в своей чистейшей форме, может быть использован для увеличения счета телекристаллов на активных аплинках."
 	reference = "RTCF"
 	item = /obj/item/stack/telecrystal/five
 	cost = 5
 
 /datum/uplink_item/bundles_TC/telecrystal/twenty
 	name = "20 Raw Telecrystals"
-	desc = "Twenty telecrystals in their rawest and purest form; can be utilized on active uplinks to increase their telecrystal count."
+	desc = "Двадцать телекристаллов в своей чистейшей форме, могут быть использованы для увеличения счета телекристаллов на активных аплинках."
 	reference = "RTCT"
 	item = /obj/item/stack/telecrystal/twenty
 	cost = 20
 
 /datum/uplink_item/bundles_TC/telecrystal/fifty
 	name = "50 Raw Telecrystals"
-	desc = "Fifty telecrystals in their rawest and purest form; can be utilized on active uplinks to increase their telecrystal count."
+	desc = "Пятьдесят телекристаллов в своей чистейшей форме, могут быть использованы для увеличения счета телекристаллов на активных аплинках."
 	reference = "RTCB"
 	item = /obj/item/stack/telecrystal/fifty
 	cost = 50
 
 /datum/uplink_item/bundles_TC/telecrystal/hundred
 	name = "100 Raw Telecrystals"
-	desc = "One-hundred telecrystals in their rawest and purest form; can be utilized on active uplinks to increase their telecrystal count."
+	desc = "Одна сотня телекристаллов в своей чистейшей форме, могут быть использованы для увеличения счета телекристаллов на активных аплинках."
 	reference = "RTCH"
 	item = /obj/item/stack/telecrystal/hundred
 	cost = 100
