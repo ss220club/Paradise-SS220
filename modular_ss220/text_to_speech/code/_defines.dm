@@ -89,6 +89,6 @@
 #define COMSIG_ATOM_TTS_TRAIT_ADD "atom_tts_trait_add"
 //from base of atom/tts_trait_remove(): (atom/user, trait)
 #define COMSIG_ATOM_TTS_TRAIT_REMOVE "atom_tts_trait_remove"
-//from base of atom/cast_tts(): (mob/listener, message, atom/location, is_local = TRUE, effect = SOUND_EFFECT_NONE, traits = TTS_TRAIT_RATE_FASTER, preSFX, postSFX)
+//from base of atom/cast_tts(): (atom/speaker, mob/listener, message, atom/location, is_local, effect, traits, preSFX, postSFX)
 #define COMSIG_ATOM_PRE_TTS_CAST "atom_pre_tts_cast"
 	#define COMPONENT_TTS_INTERRUPT (1<<0)
