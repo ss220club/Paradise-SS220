@@ -249,6 +249,7 @@
 	to_chat(syndicate.current, chat_box_red(messages.Join("<br>")))
 	syndicate.current.create_log(MISC_LOG, "[syndicate.current] was made into a nuclear operative")
 
+	addtimer(CALLBACK(syndicate.current, /mob/living/carbon/human/proc/show_custom_blurb, syndicate.current.client, syndicate.current.mind), 1 SECONDS) // SS220 EDIT - ADDITION
 
 /datum/game_mode/proc/random_radio_frequency()
 	return 1337 // WHY??? -- Doohl
