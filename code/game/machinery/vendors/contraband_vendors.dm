@@ -13,7 +13,7 @@
 					"Don't you want some?",
 					"Ping!")
 
-	req_access_txt = "150"
+	req_access = list(ACCESS_SYNDICATE)
 	products = list(/obj/item/stack/medical/bruise_pack = 2,
 					/obj/item/stack/medical/ointment = 2,
 					/obj/item/reagent_containers/syringe/charcoal = 4,
@@ -107,7 +107,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/economy/vending/wallmed/syndicate, 32
 	desc = "An overwhelming amount of <b>ancient patriotism</b> washes over you just by looking at the machine."
 	icon_state = "liberationstation"
 	icon_lightmask = "liberationstation"
-	req_access_txt = "1"
+	req_access = list(ACCESS_SECURITY)
 	slogan_list = list("Liberation Station: Ваш универсальный магазин для всех вещей, связанных со второй поправкой!",
 					"Будь сегодня патриотом, возьми оружие!",
 					"Качественное оружие по низким ценам!",

@@ -443,7 +443,7 @@
 
 /obj/item/clothing/head/cone
 	name = "warning cone"
-	desc = "This cone is trying to warn you of something!"
+	desc = "Этот конус пытается вас о чём-то предупредить!"
 	icon = 'icons/obj/janitor.dmi'
 	icon_state = "cone"
 	item_state = "cone"
@@ -536,6 +536,7 @@
 	icon_state = "crown"
 	armor = list(MELEE = 10, BULLET = 0, LASER = 0, ENERGY = 10, BOMB = 0, RAD = 0, FIRE = INFINITY, ACID = 50)
 	resistance_flags = FIRE_PROOF
+	can_be_hat = FALSE
 
 /obj/item/clothing/head/crown/fancy
 	name = "magnificent crown"
