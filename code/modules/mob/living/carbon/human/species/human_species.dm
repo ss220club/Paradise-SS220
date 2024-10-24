@@ -14,7 +14,8 @@
 	Постоянно стремясь к колонизации и распространению своего влияния на другие виды, они начали заключать союзы и заводить врагов. \
 	Являются одними из самых узнаваемых и распространенных видов во всей галактике."
 
-	icon_skin_tones = list( //Organized to be from Light to Dark.
+	/// Organized to be from Light to Dark.
+	icon_skin_tones = list(
 		1 = "Default White",
 		2 = "Pale",
 		3 = "Classic",
@@ -28,7 +29,7 @@
 		11 = "Caramel",
 		12 = "Coffee",
 		13 = "Chestnut"
-		)
+	)
 	reagent_tag = PROCESS_ORG
 
 
