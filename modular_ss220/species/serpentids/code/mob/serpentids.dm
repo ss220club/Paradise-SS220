@@ -13,7 +13,7 @@
 	butt_sprite = "serpentid"
 	nojumpsuit = TRUE
 
-	species_traits = list(LIPS, NO_HAIR)
+	species_traits = list(LIPS, NO_HAIR, TTS_TRAIT_ROBOTIZE)
 	inherent_traits = list(TRAIT_NOPAIN)
 	inherent_biotypes = MOB_ORGANIC | MOB_HUMANOID | MOB_REPTILE
 

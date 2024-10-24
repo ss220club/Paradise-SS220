@@ -54,7 +54,7 @@
 /mob/living/carbon/human/proc/update_blades_overlays()
 	var/obj/item/organ/internal/cyberimp/chest/serpentid_blades/target_implant = get_int_organ(/obj/item/organ/internal/cyberimp/chest/serpentid_blades)
 	if(target_implant)
-		target_implant.update_icon(UPDATE_OVERLAYS)()
+		target_implant.update_icon(UPDATE_OVERLAYS)
 
 /mob/living/carbon/human/update_body(rebuild_base = FALSE)
 	. = .. ()
