@@ -5,7 +5,7 @@
 /datum/reagent/cabbagilium
 	name = "Cabbagilium"
 	id = "cabbagilium"
-	description = "An unsual reagent that can be found in cabbages and helpful in toxic treatments."
+	description = "An unusual reagent that can be found in cabbages and helpful in toxic treatments."
 	reagent_state = LIQUID
 	color = "#335517"
 	taste_description = "awful but healthy"
