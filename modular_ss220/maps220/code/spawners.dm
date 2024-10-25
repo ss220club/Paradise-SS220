@@ -41,34 +41,6 @@
 /obj/effect/spawner/random/maintenance
 	icon = 'modular_ss220/maps220/icons/spawner_icons.dmi'
 
-/obj/effect/spawner/random/maintenance/one
-	icon_state = "loot"
-
-/obj/effect/spawner/random/maintenance/one/Initialize(mapload)
-	. = ..()
-	spawn_loot_count = 1
-
-/obj/effect/spawner/random/maintenance/two
-	icon_state = "doubleloot"
-
-/obj/effect/spawner/random/maintenance/two/Initialize(mapload)
-	. = ..()
-	spawn_loot_count = 2
-
-/obj/effect/spawner/random/maintenance/three
-	icon_state = "tripleloot"
-
-/obj/effect/spawner/random/maintenance/three/Initialize(mapload)
-	. = ..()
-	spawn_loot_count = 3
-
-/obj/effect/spawner/random/maintenance/five
-	icon_state = "moreloot"
-
-/obj/effect/spawner/random/maintenance/five/Initialize(mapload)
-	. = ..()
-	spawn_loot_count = 5
-
 /obj/effect/spawner/random/trash
 	icon = 'modular_ss220/maps220/icons/spawner_icons.dmi'
 
@@ -243,7 +215,7 @@
 			suit_store = /obj/item/gun/projectile/shotgun/riot
 			backpack_contents = list(
 				/obj/item/storage/box/survival = 1,
-				/obj/item/storage/box/buck = 1
+				/obj/item/storage/fancy/shell/buck = 1
 				)
 	return ..()
 
@@ -328,7 +300,7 @@
 		/obj/item/reagent_containers/patch/silver_sulf/small,
 		/obj/item/reagent_containers/patch/styptic/small,
 		/obj/item/stock_parts/cell/high = 1,
-		/obj/item/storage/box/buck = 1
+		/obj/item/storage/fancy/shell/buck = 1
 		)
 	return ..()
 
