@@ -4,7 +4,7 @@
 	return ..()
 
 /obj/item/radio/spy_spider
-	name = "шпионский жучок"
+	name = "Шпионский Жучок"
 	desc = "Кажется, ты видел такого в фильмах про шпионов."
 	icon = 'modular_ss220/spy_spider/icons/spy_spider.dmi'
 	icon_state = "spy_spider"
@@ -33,7 +33,7 @@
 	channels = list("Spy Spider" = TRUE)
 
 /obj/item/storage/lockbox/spy_kit
-	name = "набор жучков"
+	name = "Набор Жучков"
 	desc = "Не самый легальный из способов достать информацию, но какая разница, если никто не узнает?"
 	storage_slots = 5
 	req_access = list(ACCESS_FORENSICS_LOCKERS)
@@ -83,8 +83,8 @@
 	return TRUE
 
 /obj/item/clothing/proc/remove_spy_spider()
-	set name = "Снять жучок"
-	set category = "Object"
+	// set name = "Снять жучок"
+	// set category = "Object"
 	set src in range(1, usr)
 
 	if(!ishuman(usr))
@@ -96,8 +96,6 @@
 			var/turf/user_loc = get_turf(user)
 			spy_spider_attached.forceMove(user_loc)
 		spy_spider_attached = null
-
-	verbs -= /obj/item/clothing/proc/remove_spy_spider
 
 /**
  * HUMAN PART
@@ -138,19 +136,15 @@
 // Spy spider detection
 /obj/item/detective_scanner/scan(atom/A, mob/user)
 	. = ..()
-	var/found_spy_device = FALSE
+
 	if(!scanning)
 		scanning = TRUE
 
 		if(istype(A, /obj/item/clothing))
 			var/obj/item/clothing/scanned_clothing = A
 			if(scanned_clothing.spy_spider_attached)
-				found_spy_device = TRUE
-
-		if(found_spy_device)
-			sleep(1 SECONDS)
-			add_log(span_info("<B>Найдено шпионское устройство!</B>"))
-			if(!(/obj/item/clothing/proc/remove_spy_spider in A.verbs))
-				add_verb(A, /obj/item/clothing/proc/remove_spy_spider)
+				sleep(1 SECONDS)
+				add_log(span_info("<B>Найдено шпионское устройство!</B>"))
+				scanned_clothing.remove_spy_spider()
 
 		scanning = FALSE
