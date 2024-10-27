@@ -7,7 +7,7 @@
 	actions_types = list(/datum/action/item_action/organ_action/toggle/switch_blades)
 	contents = newlist(/obj/item/kitchen/knife/combat/serpentblade,/obj/item/kitchen/knife/combat/serpentblade)
 	action_icon = list(/datum/action/item_action/organ_action/toggle/switch_blades = 'modular_ss220/species/serpentids/icons/organs.dmi')
-	action_icon_state = list(/datum/action/item_action/organ_action/toggle/switch_blades = "gas_hand_act")
+	action_icon_state = list(/datum/action/item_action/organ_action/toggle/switch_blades = "serpentid_hand_act")
 	var/obj/item/holder_l = null
 	var/icon_file = 'modular_ss220/species/serpentids/icons/mob/r_serpentid.dmi'
 	var/new_icon_state = "blades_0"
@@ -22,43 +22,27 @@
 	name = "Switch Threat Mode"
 	desc = "Switch your stance to show other your intentions"
 	button_overlay_icon = 'modular_ss220/species/serpentids/icons/organs.dmi'
-	button_overlay_icon_state = "gas_hand_act"
+	button_overlay_icon_state = "serpentid_hand_act"
 
 /obj/item/organ/internal/cyberimp/chest/serpentid_blades/on_life()
 	. = ..()
 	if(blades_active)
-		owner.update_body()
 		var/isleft = owner.hand
 		var/obj/item/item = (isleft ? owner.get_inactive_hand() : owner.get_active_hand())
 		if(!istype(item, /obj/item/grab))
 			owner.drop_r_hand()
 
+/obj/item/organ/internal/cyberimp/chest/serpentid_blades/Initialize(mapload)
+	. = .. ()
+	addtimer(CALLBACK(src, PROC_REF(update_overlays_blades)), 1 SECONDS)
+
 /obj/item/organ/internal/cyberimp/chest/serpentid_blades/insert(mob/living/carbon/M, special, dont_remove_slot)
 	. = .. ()
-	if(owner && owner.real_name != "unknown")
-		owner.update_body()
-	else
-		spawn(1)
-			if(owner && owner.real_name != "unknown")
-				owner.update_body()
+	addtimer(CALLBACK(src, PROC_REF(update_overlays_blades)), 1 SECONDS)
 
 /obj/item/organ/internal/cyberimp/chest/serpentid_blades/remove(mob/living/carbon/M, special, dont_remove_slot)
-	if(owner && owner.real_name != "unknown")
-		owner.update_body()
-	else
-		spawn(1)
-			if(owner && owner.real_name != "unknown")
-				owner.update_body()
+	update_overlays()
 	. = .. ()
-
-/mob/living/carbon/human/proc/update_blades_overlays()
-	var/obj/item/organ/internal/cyberimp/chest/serpentid_blades/target_implant = get_int_organ(/obj/item/organ/internal/cyberimp/chest/serpentid_blades)
-	if(target_implant)
-		target_implant.update_icon(UPDATE_OVERLAYS)
-
-/mob/living/carbon/human/update_body(rebuild_base = FALSE)
-	. = .. ()
-	update_blades_overlays()
 
 /obj/item/organ/internal/cyberimp/chest/serpentid_blades/ui_action_click()
 	if(crit_fail || (!holder_l && !length(contents)))
@@ -70,6 +54,9 @@
 	else if(do_after(owner, 20*(owner.dna.species.action_mult), FALSE, owner))
 		holder_l = null
 		Extend()
+
+/obj/item/organ/internal/cyberimp/chest/serpentid_blades/proc/update_overlays_blades()
+	update_overlays()
 
 /obj/item/organ/internal/cyberimp/chest/serpentid_blades/update_overlays()
 	. = .. ()
@@ -118,7 +105,7 @@
 	blades_active = TRUE
 	playsound(get_turf(owner), 'sound/mecha/mechmove03.ogg', 50, 1)
 	new_icon_state = "blades_1"
-	owner.update_body()
+	update_overlays()
 	return TRUE
 
 /obj/item/organ/internal/cyberimp/chest/serpentid_blades/proc/Retract()
@@ -131,7 +118,7 @@
 	blades_active = FALSE
 	playsound(get_turf(owner), 'sound/mecha/mechmove03.ogg', 50, 1)
 	new_icon_state = "blades_0"
-	owner.update_body()
+	update_overlays()
 
 //Проки на обработку при поднятом клинке
 /datum/species/spec_attack_hand(mob/living/carbon/human/M, mob/living/carbon/human/H, datum/martial_art/attacker_style) //Handles any species-specific attackhand events.

@@ -16,7 +16,7 @@
 	encased = CARAPACE_ENCASE_WORD
 	actions_types = 		list(/datum/action/item_action/organ_action/toggle)
 	action_icon = 			list(/datum/action/item_action/organ_action/toggle = 'modular_ss220/species/serpentids/icons/organs.dmi')
-	action_icon_state = 	list(/datum/action/item_action/organ_action/toggle = "gas_eyes_0")
+	action_icon_state = 	list(/datum/action/item_action/organ_action/toggle = "serpentid_eyes_0")
 	var/eye_shielded = FALSE
 
 /obj/item/organ/external/head/carapace/Initialize(mapload)
@@ -26,10 +26,10 @@
 /obj/item/organ/external/head/carapace/ui_action_click()
 	var/obj/item/organ/internal/eyes/E = owner.get_int_organ(/obj/item/organ/internal/eyes)
 	eye_shielded = !eye_shielded
-	E.flash_protect = eye_shielded ? FLASH_PROTECTION_WELDER : initial(E.flash_protect)
-	E.tint = eye_shielded ? FLASH_PROTECTION_WELDER : initial(E.tint)
+	E.flash_protect = eye_shielded ? FLASH_PROTECTION_WELDER : E::flash_protect
+	E.tint = eye_shielded ? FLASH_PROTECTION_WELDER : E::tint
 	owner.update_sight()
 
 	for(var/datum/action/item_action/T in actions)
-		T.button_overlay_icon_state ="gas_eyes_[eye_shielded]"
+		T.button_overlay_icon_state ="serpentid_eyes_[eye_shielded]"
 		T.UpdateButtons()

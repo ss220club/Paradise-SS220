@@ -1,30 +1,11 @@
-///Сердце - вырабатывают особое вещество (серпадрон) за глютамат натрия.
-#define GAS_METH_HEART_COUNT 1
-
 /obj/item/organ/internal/heart/serpentid
 	name = "double heart"
 	icon = 'modular_ss220/species/serpentids/icons/organs.dmi'
-	icon_state = "h0_on"
+	icon_state = "heart"
 	desc = "A pair of hearts."
-	var/chemical_id = SERPENTID_CHEM_REAGENT_ID
-	var/decay_rate = 0.5
-	var/decay_recovery = BASIC_RECOVER_VALUE
-	var/organ_process_toxins = 0.03
 
 /obj/item/organ/internal/heart/serpentid/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/organ_decay, decay_rate, decay_recovery)
-	AddComponent(/datum/component/organ_toxin_damage, organ_process_toxins)
-	AddComponent(/datum/component/defib_heart, owner, chemical_id)
-
-/*
-Старый режим работы сердца - ввод серпадрона
-/obj/item/organ/internal/heart/serpentid/switch_mode(force_off = FALSE)
-	.=..()
-	if(owner?.get_chemical_value(chemical_id) >= GAS_ORGAN_CHEMISTRY_HEART)
-		var/mob/living/carbon/human/human_owner = owner
-		var/datum/reagent/chem = owner?.get_chemical_path(chemical_id)
-		chem.holder.remove_reagent(chemical_id, GAS_ORGAN_CHEMISTRY_HEART)
-		human_owner.reagents.add_reagent(inject_drug_id, GAS_METH_HEART_COUNT)
-		meph_injected = TRUE
-*/
+	AddComponent(/datum/component/organ_decay, 0.5, BASIC_RECOVER_VALUE)
+	AddComponent(/datum/component/organ_toxin_damage, 0.03)
+	AddComponent(/datum/component/defib_heart, owner, SERPENTID_CHEM_REAGENT_ID)

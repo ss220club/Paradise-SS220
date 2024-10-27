@@ -2,13 +2,6 @@
 === Перенос ящиков ===
 Компонент для переноса ящиков карго на мобах. Срабатывает в случае граб-интента, драг-энд-дропа ящика на модель
 */
-
-#define COMSIG_GADOM_UNMOB_LOAD "try_load_cargo"
-#define COMSIG_GADOM_UNMOB_UNLOAD "try_unload_cargo"
-#define GADOM_BASIC_LOAD_TIMER_CRATE 2 SECONDS
-
-#define COMSIG_GADOM_UNMOB_CAN_GRAB "block_operation"
-
 //Для отслеживания кто несет объект
 /atom/movable
 	var/mob/living/carbon/human/crate_carrying_person = null
@@ -18,34 +11,7 @@
 	. = .. ()
 	var/mob/living/carbon/human/puppet = src
 	if(puppet.loaded)
-		puppet.loaded.forceMoveCrate(puppet)
-
-//Клонированый и изменны прок движения, чтобы не трогать основной
-/atom/movable/proc/forceMoveCrate(atom/destination)
-	var/turf/old_loc = loc
-	loc = destination.loc //изменение здесь (добавлено .loc)
-
-	if(old_loc)
-		old_loc.Exited(src, destination)
-		for(var/atom/movable/AM in old_loc)
-			AM.Uncrossed(src)
-
-	if(destination)
-		destination.Entered(src)
-		for(var/atom/movable/AM in destination)
-			if(AM == src)
-				continue
-			AM.Crossed(src, old_loc)
-		var/turf/oldturf = get_turf(old_loc)
-		var/turf/destturf = get_turf(destination)
-		var/old_z = (oldturf ? oldturf.z : null)
-		var/dest_z = (destturf ? destturf.z : null)
-		if(old_z != dest_z)
-			onTransitZ(old_z, dest_z)
-
-	Moved(old_loc, NONE)
-
-	return TRUE
+		puppet.loaded.forceMove(puppet.loc)
 
 /datum/component/gadom_cargo
 	var/mob/living/carbon/human/carrier = null
@@ -55,27 +21,30 @@
 	carrier = parent
 
 /datum/component/gadom_cargo/RegisterWithParent()
-	RegisterSignal(parent, COMSIG_GADOM_UNMOB_LOAD, PROC_REF(try_load_cargo))
-	RegisterSignal(parent, COMSIG_GADOM_UNMOB_UNLOAD, PROC_REF(try_unload_cargo))
-	RegisterSignal(parent, COMSIG_GADOM_UNMOB_CAN_GRAB, PROC_REF(block_operation))
+	RegisterSignal(parent, COMSIG_GADOM_LOAD, PROC_REF(try_load_cargo))
+	RegisterSignal(parent, COMSIG_GADOM_UNLOAD, PROC_REF(try_unload_cargo))
+	RegisterSignal(parent, COMSIG_GADOM_CAN_GRAB, PROC_REF(block_operation))
 
 /datum/component/gadom_cargo/UnregisterFromParent()
-	UnregisterSignal(parent, COMSIG_GADOM_UNMOB_LOAD)
-	UnregisterSignal(parent, COMSIG_GADOM_UNMOB_UNLOAD)
-	UnregisterSignal(parent, COMSIG_GADOM_UNMOB_CAN_GRAB)
+	UnregisterSignal(parent, COMSIG_GADOM_LOAD)
+	UnregisterSignal(parent, COMSIG_GADOM_UNLOAD)
+	UnregisterSignal(parent, COMSIG_GADOM_CAN_GRAB)
 
 /datum/component/gadom_cargo/proc/block_operation()
 	SIGNAL_HANDLER
-	var/signal_result = carrier.a_intent == "grab"
-	return signal_result
+	return carrier.a_intent == "grab" ? GADOM_CAN_GRAB : FALSE
 
 /datum/component/gadom_cargo/proc/try_load_cargo(datum/component_holder, mob/user, atom/movable/AM)
+	SIGNAL_HANDLER
+	INVOKE_ASYNC(src, PROC_REF(pre_load), component_holder, user, AM)
+
+/datum/component/gadom_cargo/proc/pre_load(datum/component_holder, mob/user, mob/AM)
 	if(user.a_intent == "grab")
 		if(user.incapacitated() || HAS_TRAIT(user, TRAIT_HANDS_BLOCKED) || get_dist(user, AM) > 1)
 			return
-		if(!istype(AM))
+		if(!istype(AM, /obj/structure/closet/crate/))
 			return
-		if(!do_after(user, GADOM_BASIC_LOAD_TIMER_CRATE * user.dna.species.action_mult, FALSE, AM))
+		if(!do_after(user, GADOM_BASIC_LOAD_TIMER * user.dna.species.action_mult, FALSE, AM))
 			return
 		load(AM)
 
@@ -101,13 +70,14 @@
 
 	if(!isliving(AM))
 		AM.crate_carrying_person = carrier
-		AM.forceMoveCrate(carrier)
+		AM.forceMove(carrier.loc)
 
 	carrier.loaded = AM
 	carrier.update_icon()
-	carrier.throw_alert("gas_holding", /atom/movable/screen/alert/carrying)
+	carrier.throw_alert("serpentid_holding", /atom/movable/screen/alert/carrying)
 
 /datum/component/gadom_cargo/proc/try_unload_cargo()
+	SIGNAL_HANDLER
 	var/dirn = carrier.dir
 	if(!carrier.loaded)
 		return
@@ -124,19 +94,5 @@
 				step(carrier.loaded, dirn)
 		carrier.loaded.crate_carrying_person = null
 		carrier.loaded = null
-		carrier.clear_alert("gas_holding")
+		carrier.clear_alert("serpentid_holding")
 	carrier.update_icon(UPDATE_OVERLAYS)
-
-//Расширение прока для переноса ящика на моба
-/mob/living/carbon/human/MouseDrop_T(atom/movable/AM, mob/user)
-	var/signal_call	= SEND_SIGNAL(usr, COMSIG_GADOM_UNMOB_CAN_GRAB)
-	if(signal_call)
-		SEND_SIGNAL(usr, COMSIG_GADOM_UNMOB_LOAD, usr, AM)
-	. = .. ()
-
-//Расширение прока на отстегивание ящика
-/datum/species/spec_attack_hand(mob/living/carbon/human/M, mob/living/carbon/human/H, datum/martial_art/attacker_style)
-	var/signal_call	= SEND_SIGNAL(H, COMSIG_GADOM_UNMOB_CAN_GRAB)
-	if(signal_call && H.loaded)
-		SEND_SIGNAL(H, COMSIG_GADOM_UNMOB_UNLOAD)
-	. = .. ()

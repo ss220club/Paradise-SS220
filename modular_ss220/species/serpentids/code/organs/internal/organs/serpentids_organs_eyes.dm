@@ -3,29 +3,25 @@
 	name = "visual sensor"
 	icon = 'modular_ss220/species/serpentids/icons/organs.dmi'
 	desc = "A large looking eyes with some chemical enchanments."
-	icon_state = "eyes01"
+	icon_state = "eyes"
 	see_in_dark = 0
-	actions_types = 		list(/datum/action/item_action/organ_action/toggle/gas)
-	action_icon = 			list(/datum/action/item_action/organ_action/toggle/gas = 'modular_ss220/species/serpentids/icons/organs.dmi')
-	action_icon_state = 	list(/datum/action/item_action/organ_action/toggle/gas = "gas_abilities")
+	actions_types = 		list(/datum/action/item_action/organ_action/toggle/serpentid)
+	action_icon = 			list(/datum/action/item_action/organ_action/toggle/serpentid = 'modular_ss220/species/serpentids/icons/organs.dmi')
+	action_icon_state = 	list(/datum/action/item_action/organ_action/toggle/serpentid = "serpentid_abilities")
 	flash_protect = FLASH_PROTECTION_EXTRA_SENSITIVE
 	tint = FLASH_PROTECTION_NONE
-	var/chemical_id = SERPENTID_CHEM_REAGENT_ID
-	var/decay_rate = 0.1
-	var/decay_recovery = BASIC_RECOVER_VALUE
-	var/organ_process_toxins = 0.04
-	var/chemical_consuption = GAS_ORGAN_CHEMISTRY_EYES
+	var/chemical_consuption = SERPENTID_ORGAN_CHEMISTRY_EYES
 	var/vision_ajust_coefficient = 0.4
 	var/update_time_client_colour = 10
 	var/active = FALSE
-	radial_action_state = "nvg_green"
+	radial_action_state = "serpentid_nvg"
 	radial_action_icon = 'modular_ss220/species/serpentids/icons/organs.dmi'
 
 /obj/item/organ/internal/eyes/serpentid/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/organ_decay, decay_rate, decay_recovery)
-	AddComponent(/datum/component/organ_toxin_damage, organ_process_toxins)
-	AddComponent(/datum/component/chemistry_organ, chemical_id)
+	AddComponent(/datum/component/organ_decay, 0.04, BASIC_RECOVER_VALUE)
+	AddComponent(/datum/component/organ_toxin_damage, 0.02)
+	AddComponent(/datum/component/chemistry_organ, SERPENTID_CHEM_REAGENT_ID)
 	AddComponent(/datum/component/organ_action, caller_organ = src, state = radial_action_state, icon = radial_action_icon)
 
 //Прок на получение цвета глаз
@@ -40,13 +36,12 @@
 
 /obj/item/organ/internal/eyes/serpentid/on_life()
 	. = ..()
-	SEND_SIGNAL(src, COMSIG_ORGAN_CHEM_CALL, chemical_consuption)
 	if(owner)
 		var/mob/mob = owner
 		mob.update_client_colour(time = update_time_client_colour)
 
 /obj/item/organ/internal/eyes/serpentid/get_colourmatrix()
-	var/chem_value = (owner?.get_chemical_value(chemical_id) + GAS_ORGAN_CHEMISTRY_MAX/2)/GAS_ORGAN_CHEMISTRY_MAX
+	var/chem_value = (owner?.get_chemical_value(SERPENTID_CHEM_REAGENT_ID) + SERPENTID_ORGAN_CHEMISTRY_MAX/2)/SERPENTID_ORGAN_CHEMISTRY_MAX
 	var/vision_chem = clamp(chem_value, SERPENTID_EYES_LOW_VISIBLE_VALUE, SERPENTID_EYES_MAX_VISIBLE_VALUE)
 	var/vision_concentration = (1 - vision_chem/SERPENTID_EYES_MAX_VISIBLE_VALUE)*SERPENTID_EYES_LOW_VISIBLE_VALUE
 
@@ -59,13 +54,14 @@
 	return vision_matrix
 
 /obj/item/organ/internal/eyes/serpentid/switch_mode(force_off = FALSE)
-	.=..()
-	if(!force_off && owner?.get_chemical_value(chemical_id) >= chemical_consuption && !(status & ORGAN_DEAD) && !active)
+	. = ..()
+	if(!force_off && owner?.get_chemical_value(SERPENTID_CHEM_REAGENT_ID) >= chemical_consuption && !(status & ORGAN_DEAD) && !active)
 		see_in_dark = 8
-		chemical_consuption = GAS_ORGAN_CHEMISTRY_EYES + GAS_ORGAN_CHEMISTRY_EYES * (max_damage - damage / max_damage)
+		chemical_consuption = SERPENTID_ORGAN_CHEMISTRY_EYES
 		active = TRUE
 	else
 		see_in_dark = initial(see_in_dark)
 		chemical_consuption = 0
 		active = FALSE
 	owner?.update_sight()
+	SEND_SIGNAL(src, COMSIG_ORGAN_CHANGE_CHEM_CONSUPTION, chemical_consuption)

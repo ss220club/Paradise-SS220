@@ -5,8 +5,6 @@
 
 #define TOX_ORGANS_PROCESS 1
 
-#define COMSIG_ORGAN_TOX_HANDLE "tox_handle_organ"
-
 /datum/component/organ_toxin_damage
 	var/obj/item/organ/internal/organ = null
 	var/toxin_damage_rate
@@ -22,6 +20,7 @@
 	UnregisterSignal(parent, COMSIG_ORGAN_TOX_HANDLE)
 
 /datum/component/organ_toxin_damage/proc/tox_handle_organ()
+	SIGNAL_HANDLER
 	if(organ.status & ORGAN_DEAD)
 		return
 	if(organ.owner?.get_damage_amount(TOX))
@@ -34,7 +33,4 @@
 		else if(target_liver.status == ORGAN_DEAD && target_kidney.status == ORGAN_DEAD)
 			organ.receive_damage(organ.owner.get_damage_amount(TOX) * toxin_damage_rate, 1)
 
-
-/obj/item/organ/internal/process()
-	SEND_SIGNAL(src, COMSIG_ORGAN_TOX_HANDLE)
-	. = .. ()
+#undef TOX_ORGANS_PROCESS

@@ -48,8 +48,6 @@
 		"brain" =    /obj/item/organ/internal/brain/serpentid,
 		"eyes" =     /obj/item/organ/internal/eyes/serpentid,
 		"ears" =     /obj/item/organ/internal/ears/serpentid,
-		//"l_hand" =  /obj/item/organ/internal/cyberimp/arm/toolset/mantisblade/l,
-		//"r_hand" =  /obj/item/organ/internal/cyberimp/arm/toolset/mantisblade,
 		"chest" =  /obj/item/organ/internal/cyberimp/chest/serpentid_blades,
 		)
 
@@ -172,9 +170,9 @@
 	H.AddComponent(/datum/component/mob_overlay_shift, shift_data)
 	H.AddComponent(/datum/component/gadom_living)
 	H.AddComponent(/datum/component/gadom_cargo)
-	H.verbs |= /mob/living/carbon/human/proc/emote_gasroar
-	H.verbs |= /mob/living/carbon/human/proc/emote_gashiss
-	H.verbs |= /mob/living/carbon/human/proc/emote_gaswiggles
+	H.verbs |= /mob/living/carbon/human/proc/emote_serpentidroar
+	H.verbs |= /mob/living/carbon/human/proc/emote_serpentidhiss
+	H.verbs |= /mob/living/carbon/human/proc/emote_serpentidwiggles
 	H.verbs -= /mob/living/carbon/human/verb/emote_cough
 	H.verbs -= /mob/living/carbon/human/verb/emote_sneeze
 	H.verbs -= /mob/living/carbon/human/verb/emote_sniff
@@ -185,9 +183,9 @@
 
 /datum/species/serpentid/on_species_loss(mob/living/carbon/human/H)
 	..()
-	H.verbs -= /mob/living/carbon/human/proc/emote_gasroar
-	H.verbs -= /mob/living/carbon/human/proc/emote_gashiss
-	H.verbs -= /mob/living/carbon/human/proc/emote_gaswiggles
+	H.verbs -= /mob/living/carbon/human/proc/emote_serpentidroar
+	H.verbs -= /mob/living/carbon/human/proc/emote_serpentidhiss
+	H.verbs -= /mob/living/carbon/human/proc/emote_serpentidwiggles
 	H.verbs |= /mob/living/carbon/human/verb/emote_cough
 	H.verbs |= /mob/living/carbon/human/verb/emote_sneeze
 	H.verbs |= /mob/living/carbon/human/verb/emote_sniff
@@ -222,8 +220,8 @@
 	. = .. ()
 
 //Расширение для действий органов серпентидов
-/datum/action/item_action/organ_action/toggle/gas
+/datum/action/item_action/organ_action/toggle/serpentid
 
-/datum/action/item_action/organ_action/toggle/gas/New(Target)
+/datum/action/item_action/organ_action/toggle/serpentid/New(Target)
 	..()
-	name = "GAS organ selection"
+	name = "serpentid organ selection"

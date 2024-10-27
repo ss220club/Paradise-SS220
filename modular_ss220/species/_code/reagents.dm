@@ -1,5 +1,5 @@
-/obj/item/seeds/cabbage/New()
-	. = .. ()
+/obj/item/seeds/cabbage/Initialize(mapload)
+	. = ..()
 	reagents_add += list("cabbagilium" = 0.01)
 
 /datum/reagent/cabbagilium

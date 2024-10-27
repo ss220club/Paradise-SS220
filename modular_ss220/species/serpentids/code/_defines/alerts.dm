@@ -19,15 +19,15 @@
 
 /atom/movable/screen/alert/carapace/break_armor/Click()
 	if(isliving(usr) && ..())
-		to_chat(usr, "<span class='notice'>Вы понесли значительный урон. Обратитесь в мед, чтобы восстановить свою защиту тела.</span>")
+		to_chat(usr, span_notice("Вы понесли значительный урон. Обратитесь в мед, чтобы восстановить свою защиту тела."))
 
 /atom/movable/screen/alert/carapace/break_cloak/Click()
 	if(isliving(usr) && ..())
-		to_chat(usr, "<span class='notice'>Вы понесли крупный урон. Обратитесь в мед, чтобы восстановить свою возможность маскировки.</span>")
+		to_chat(usr, span_notice("Вы понесли крупный урон. Обратитесь в мед, чтобы восстановить свою возможность маскировки."))
 
 /atom/movable/screen/alert/carapace/break_rig/Click()
 	if(isliving(usr) && ..())
-		to_chat(usr, "<span class='notice'>Вы понесли критический урон. Обратитесь в мед, чтобы восстановить герметичность панциря.</span>")
+		to_chat(usr, span_notice("Вы понесли критический урон. Обратитесь в мед, чтобы восстановить герметичность панциря."))
 
 /atom/movable/screen/alert/carrying
 	name = "Перенос"
@@ -35,7 +35,3 @@
 	icon = 'modular_ss220/species/serpentids/icons/screen_alert.dmi'
 	icon_state = "holding"
 
-/atom/movable/screen/alert/carrying/Click()
-	if(isliving(usr) && ..())
-		SEND_SIGNAL(usr, COMSIG_GADOM_MOB_UNLOAD)
-		SEND_SIGNAL(usr, COMSIG_GADOM_UNMOB_UNLOAD)

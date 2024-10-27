@@ -24,29 +24,27 @@
 #define CARAPACE_BLOCK_OPERATION list(/datum/surgery/bone_repair,/datum/surgery/bone_repair/skull,/datum/surgery/organ_manipulation)
 #define CARAPACE_ENCASE_WORD "chitin"
 
-#define COMSIG_LIMB_RECIEVE_DAMAGE "receive_damage"
-#define COMSIG_LIMB_HEAL_DAMAGE "heal_damage"
-
 /datum/component/carapace
 	var/self_mending = FALSE
 	var/broken_treshold = CARAPACE_BROKEN_STATE
 
-/datum/component/carapace/Initialize(allow_self_mending, break_threshold, control_node = FALSE)
+/datum/component/carapace/Initialize(allow_self_mending, break_threshold)
 	src.self_mending = allow_self_mending
-	broken_treshold = break_threshold
+	src.broken_treshold = break_threshold
 	var/obj/item/organ/external/affected_limb = parent
 	affected_limb.encased = CARAPACE_ENCASE_WORD
 
 /datum/component/carapace/RegisterWithParent()
-	RegisterSignal(parent, COMSIG_LIMB_RECIEVE_DAMAGE, PROC_REF(receive_damage))
+	RegisterSignal(parent, COMSIG_LIMB_RECEIVE_DAMAGE, PROC_REF(receive_damage))
 	RegisterSignal(parent, COMSIG_LIMB_HEAL_DAMAGE, PROC_REF(heal_damage))
 
 /datum/component/carapace/UnregisterFromParent()
-	UnregisterSignal(parent, COMSIG_LIMB_RECIEVE_DAMAGE)
+	UnregisterSignal(parent, COMSIG_LIMB_RECEIVE_DAMAGE)
 	UnregisterSignal(parent, COMSIG_LIMB_HEAL_DAMAGE)
 
 //Проки, срабатываемые при получении или исцелении урона
 /datum/component/carapace/proc/receive_damage(obj/item/organ/external/affected_limb, brute, burn, sharp, used_weapon = null, list/forbidden_limbs = list(), ignore_resists = FALSE, updating_health = TRUE)
+	SIGNAL_HANDLER
 	if(affected_limb.get_damage() > broken_treshold)
 		affected_limb.fracture()
 	if(length(affected_limb.internal_organs))
@@ -54,18 +52,10 @@
 		O.receive_damage(burn * affected_limb.burn_dam)
 
 /datum/component/carapace/proc/heal_damage(obj/item/organ/external/affected_limb, brute, burn, internal = 0, robo_repair = 0, updating_health = TRUE)
+	SIGNAL_HANDLER
 	if((affected_limb.status & ORGAN_BROKEN) && affected_limb.get_damage() == 0)
 		if(self_mending || prob(CARAPACE_HEAL_BROKEN_PROB))
 			affected_limb.mend_fracture()
-
-//Расширение проков урона и лечения для обращения к компоненту
-/obj/item/organ/external/receive_damage(brute, burn, sharp, used_weapon = null, list/forbidden_limbs = list(), ignore_resists = FALSE, updating_health = TRUE)
-	. = ..()
-	SEND_SIGNAL(src, COMSIG_LIMB_RECIEVE_DAMAGE, brute, burn, sharp, used_weapon, forbidden_limbs, ignore_resists, updating_health)
-
-/obj/item/organ/external/heal_damage(brute, burn, internal = 0, robo_repair = 0, updating_health = TRUE)
-	. = ..()
-	SEND_SIGNAL(src, COMSIG_LIMB_HEAL_DAMAGE, brute, burn, internal, robo_repair, updating_health)
 
 //////////////////////////////////////////////////////////////////
 //					Хирургия для панциря						//
@@ -144,7 +134,7 @@
 /datum/surgery_step/generic/cut_open/begin_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	if((affected?.encased == CARAPACE_ENCASE_WORD) && !(affected.status & ORGAN_BROKEN))
-		to_chat(user, span_notice("Эта конечность [target] покрыта крепким хитином. Сломайте его, прежде чем начать операцию."))
+		to_chat(user, span_notice("[capitalize(target.declent_ru(NOMINATIVE))] покрыта крепким хитином. Сломайте его, прежде чем начать операцию."))
 		return SURGERY_BEGINSTEP_ABORT
 	. = .. ()
 
@@ -160,3 +150,9 @@
 		affected.mend_fracture()
 	. = .. ()
 
+#undef CARAPACE_BROKEN_STATE
+#undef CARAPACE_BASIC_BRUTE_VULNERABILITY
+#undef CARAPACE_ADDITIVE_BURN_VULNERABILITY
+#undef CARAPACE_DAMAGE_TRANSFER_PERCENTAGES
+#undef CARAPACE_HEAL_BROKEN_PROB
+#undef CARAPACE_BLOCK_OPERATION

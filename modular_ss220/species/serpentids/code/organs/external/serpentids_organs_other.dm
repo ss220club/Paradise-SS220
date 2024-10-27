@@ -1,4 +1,4 @@
-///Хитиновые конечности = прочее
+///Хитиновые конечности - прочее
 /obj/item/organ/external/groin/carapace
 	min_broken_damage = 40
 	encased = CARAPACE_ENCASE_WORD

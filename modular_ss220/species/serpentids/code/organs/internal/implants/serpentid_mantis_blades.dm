@@ -8,7 +8,7 @@
 	desc = "Biological melee weapon. Sharp and durable. It can cut off some heads, or maybe not..."
 	origin_tech = null
 	force = 11
-	armour_penetration_flat = 3
+	armour_penetration_flat = 30
 	tool_behaviour = TOOL_SAW
 	var/stamina_constant = 2
 	var/stamina_coefficient = 0.5

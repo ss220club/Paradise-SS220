@@ -31,8 +31,3 @@
 		return
 	hand_item.attack(target, user, def_zone)
 	state_attack = FALSE
-
-//Расширение базового прока атаки для запуска сигнала
-/obj/item/attack(mob/living/M, mob/living/user, def_zone)
-	. = .. ()
-	SEND_SIGNAL(src, COMSIG_MOB_ITEM_ATTACK, M, user, def_zone)

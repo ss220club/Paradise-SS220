@@ -2,9 +2,6 @@
 Компонент на органы, который бы позволяли объединять многочисленные действия органов в одну радиальную кнопку
 */
 
-#define COMSIG_ORGAN_GROUP_ACTION_CALL "open_actions"
-#define COMSIG_ORGAN_GROUP_ACTION_RESORT "resort_buttons"
-
 /datum/component/organ_action
 	var/obj/item/organ/internal/organ
 	var/radial_additive_state
@@ -16,7 +13,7 @@
 	radial_additive_icon = icon
 
 /datum/component/organ_action/RegisterWithParent()
-	RegisterSignal(parent, COMSIG_ORGAN_GROUP_ACTION_CALL, PROC_REF(open_actions))
+	RegisterSignal(parent, COMSIG_ORGAN_GROUP_ACTION_CALL, PROC_REF(call_actions))
 	RegisterSignal(parent, COMSIG_ORGAN_GROUP_ACTION_RESORT, PROC_REF(resort_buttons))
 
 /datum/component/organ_action/UnregisterFromParent()
@@ -28,6 +25,10 @@
 	return (organ.owner && organ.owner == user && organ.owner.stat != DEAD && (organ in organ.owner.internal_organs))
 
 //Прок, вызывается непосредственно в кнопке действия органа
+/datum/component/organ_action/proc/call_actions(mob/user)
+	SIGNAL_HANDLER
+	INVOKE_ASYNC(src, PROC_REF(open_actions), user)
+
 /datum/component/organ_action/proc/open_actions(mob/user)
 	var/list/choices = list()
 	var/list/organs_list = list()
@@ -77,15 +78,3 @@
 /obj/item/organ/internal
 	var/radial_action_state
 	var/radial_action_icon
-
-/obj/item/organ/internal/insert(mob/living/carbon/M, special = 0, dont_remove_slot = 0)
-	. = .. ()
-	SEND_SIGNAL(src, COMSIG_ORGAN_GROUP_ACTION_RESORT)
-
-/obj/item/organ/internal/remove(mob/living/carbon/M, special = 0)
-	. = .. ()
-	SEND_SIGNAL(src, COMSIG_ORGAN_GROUP_ACTION_RESORT)
-
-/obj/item/organ/internal/ui_action_click()
-	SEND_SIGNAL(src, COMSIG_ORGAN_GROUP_ACTION_CALL, user = owner)
-

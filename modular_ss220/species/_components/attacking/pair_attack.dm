@@ -7,7 +7,6 @@
 
 #define PAIRATTACK_RECOIL_MULT 2.5
 
-#define COMSIG_ITEM_ATTACK_PROCESS "offhand_pre_attack"
 #define COMSIG_PAIRATTACK_SYNC "sync_states"
 #define COMSIG_PAIRATTACK_CHECK "check_state"
 #define PAIRATTACK_CHECK_ACTIVE (1<<0)
@@ -21,12 +20,12 @@
 	attack_CD = attack_CD_OVR
 
 /datum/component/pair_attack/RegisterWithParent()
-	RegisterSignal(parent, COMSIG_ITEM_ATTACK_PROCESS, PROC_REF(offhand_pre_attack))
+	RegisterSignal(parent, COMSIG_MOB_ITEM_ATTACK, PROC_REF(offhand_pre_attack))
 	RegisterSignal(parent, COMSIG_PAIRATTACK_CHECK, PROC_REF(check_state))
 	RegisterSignal(parent, COMSIG_PAIRATTACK_SYNC, PROC_REF(sync_states))
 
 /datum/component/pair_attack/UnregisterFromParent()
-	UnregisterSignal(parent, COMSIG_ITEM_ATTACK_PROCESS)
+	UnregisterSignal(parent, COMSIG_MOB_ITEM_ATTACK)
 	UnregisterSignal(parent, COMSIG_PAIRATTACK_CHECK)
 	UnregisterSignal(parent, COMSIG_PAIRATTACK_SYNC)
 
@@ -64,7 +63,7 @@
 	state_attack = FALSE
 	SEND_SIGNAL(offhand_item, COMSIG_PAIRATTACK_SYNC, state_attack)
 
-//Расширение базового прока атаки для запуска сигнала
-/obj/item/attack(mob/living/M, mob/living/user, def_zone)
-	. = .. ()
-	SEND_SIGNAL(src, COMSIG_ITEM_ATTACK_PROCESS, M, user, def_zone)
+#undef PAIRATTACK_RECOIL_MULT
+#undef COMSIG_PAIRATTACK_SYNC
+#undef COMSIG_PAIRATTACK_CHECK
+#undef PAIRATTACK_CHECK_ACTIVE

@@ -50,16 +50,3 @@
 	preview_icon.Blend(face_s, ICON_OVERLAY)
 	preview_icon_front = new(preview_icon, dir = SOUTH)
 	preview_icon_side = new(preview_icon, dir = WEST)
-
-//Прок на получение иконки глаз кастомных рас (перезапись, возможно стоит расширить?)
-/mob/living/carbon/human/get_eyecon()
-	var/obj/item/organ/internal/eyes/eyes = get_int_organ(/obj/item/organ/internal/eyes)
-	if(istype(dna.species) && dna.species.eyes)
-		var/icon/eyes_icon
-		if(eyes)
-			eyes_icon = eyes.generate_icon()
-		else //Error 404: Eyes not found!
-			eyes_icon = new(dna.species.eyes_icon, dna.species.eyes)//eyes_icon = new('modular_ss220/species/serpentids/icons/mob/r_serpentid_eyes.dmi', "serp_eyes_s")//
-			eyes_icon.Blend("#800000", ICON_ADD)
-
-		return eyes_icon

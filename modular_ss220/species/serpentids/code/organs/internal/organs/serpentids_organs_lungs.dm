@@ -6,18 +6,15 @@
 
 /obj/item/organ/internal/lungs/serpentid
 	name = "thacheal bag"
-	icon = 'icons/obj/species_organs/unathi.dmi'
+	icon = 'modular_ss220/species/serpentids/icons/organs.dmi'
 	organ_datums = list(/datum/organ/lungs/serpentid)
 	desc = "A large looking lugns with big breating bag."
-	actions_types = 		list(/datum/action/item_action/organ_action/toggle/gas)
-	action_icon = 			list(/datum/action/item_action/organ_action/toggle/gas = 'modular_ss220/species/serpentids/icons/organs.dmi')
-	action_icon_state = 	list(/datum/action/item_action/organ_action/toggle/gas = "gas_abilities")
-	var/chemical_id = SERPENTID_CHEM_REAGENT_ID
+	icon_state = "lungs"
+	actions_types = 		list(/datum/action/item_action/organ_action/toggle/serpentid)
+	action_icon = 			list(/datum/action/item_action/organ_action/toggle/serpentid = 'modular_ss220/species/serpentids/icons/organs.dmi')
+	action_icon_state = 	list(/datum/action/item_action/organ_action/toggle/serpentid = "serpentid_abilities")
 	var/chemical_consuption = 1
 	var/obj/item/tank/internals/oxygen/serpentid_vault = new /obj/item/tank/internals/oxygen/serpentid_vault_tank
-	var/decay_rate = 0.3
-	var/decay_recovery = BASIC_RECOVER_VALUE
-	var/organ_process_toxins = 0.05
 	var/chem_to_oxy_mult = 0.1
 	var/danger_air = FALSE
 	var/hand_active = FALSE
@@ -27,8 +24,8 @@
 
 /obj/item/organ/internal/lungs/serpentid/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/organ_decay, decay_rate, decay_recovery)
-	AddComponent(/datum/component/organ_toxin_damage, organ_process_toxins)
+	AddComponent(/datum/component/organ_decay, 0.05, BASIC_RECOVER_VALUE)
+	AddComponent(/datum/component/organ_toxin_damage, 0.05)
 	AddComponent(/datum/component/organ_action, caller_organ = src, state = radial_action_state, icon = radial_action_icon)
 
 /obj/item/tank/internals/oxygen/serpentid_vault_tank
@@ -62,9 +59,9 @@
 
 /obj/item/organ/internal/lungs/serpentid/on_life()
 	.=..()
-	var/can_secretion = owner?.get_chemical_value(chemical_id) > chemical_consuption
+	var/can_secretion = owner?.get_chemical_value(SERPENTID_CHEM_REAGENT_ID) > chemical_consuption
 	var/danger_state = owner.getOxyLoss() > 0
-	var/datum/reagent/chemical = owner?.get_chemical_path(chemical_id)
+	var/datum/reagent/chemical = owner?.get_chemical_path(SERPENTID_CHEM_REAGENT_ID)
 	var/datum/gas_mixture/breath
 	var/datum/organ/lungs/serpentid/lung_data = organ_datums[organ_tag]
 	var/breath_moles = 0
@@ -79,7 +76,7 @@
 	if(danger_state && can_secretion)
 		var/mob/living/carbon/human/human_owner = owner
 		human_owner.reagents.add_reagent("salbutamol", salbutamol_production)
-		chemical.holder.remove_reagent(chemical_id, chemical_consuption)
+		chemical.holder.remove_reagent(SERPENTID_CHEM_REAGENT_ID, chemical_consuption)
 
 	if(!hand_active)
 		if(danger_air && (owner.stat == UNCONSCIOUS))
@@ -94,7 +91,7 @@
 		var/replenish_value = 0
 		if(danger_air && can_secretion)
 			replenish_value = chemical_consuption * chem_to_oxy_mult
-			chemical.holder.remove_reagent(chemical_id, chemical_consuption)
+			chemical.holder.remove_reagent(SERPENTID_CHEM_REAGENT_ID, chemical_consuption)
 		if(!danger_air)
 			if(environment)
 				breath_moles = environment.total_moles()*BREATH_PERCENTAGE
