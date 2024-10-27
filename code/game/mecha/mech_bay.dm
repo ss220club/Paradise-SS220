@@ -1,5 +1,6 @@
 /turf/simulated/floor/mech_bay_recharge_floor
 	name = "mech bay recharge station"
+	desc = "Станция для зарядки экзокостюмов. Управляется с консоли."
 	icon = 'icons/mecha/mech_bay.dmi'
 	icon_state = "recharge_floor"
 
@@ -122,6 +123,7 @@
 
 /obj/machinery/computer/mech_bay_power_console
 	name = "mech bay power control console"
+	desc = "Консоль управления станции зарядки для мехов."
 	density = TRUE
 	anchored = TRUE
 	icon = 'icons/obj/computer.dmi'
