@@ -30,8 +30,8 @@
 
 /obj/item/mecha_parts/mecha_equipment/Destroy()//missiles detonating, teleporter creating singularity?
 	if(chassis)
-		chassis.occupant_message("<span class='danger'>[src] is destroyed!</span>")
-		chassis.log_append_to_last("[src] is destroyed.",1)
+		chassis.occupant_message("<span class='danger'>[src] уничтожен!!</span>")
+		chassis.log_append_to_last("[src] уничтожен.",1)
 		if(istype(src, /obj/item/mecha_parts/mecha_equipment/weapon))
 			SEND_SOUND(chassis.occupant, sound(chassis.weapdestrsound, volume = 50))
 		else
@@ -107,7 +107,7 @@
 	M.equipment += src
 	chassis = M
 	loc = M
-	M.log_message("[src] initialized.")
+	M.log_message("Модуль [src] инициализирован.")
 	if(!M.selected)
 		M.selected = src
 	update_chassis_page()
@@ -129,7 +129,7 @@
 			chassis.selected = null
 		update_chassis_page()
 		remove_targeted_action()
-		chassis.log_message("[src] removed from equipment.")
+		chassis.log_message("[src] удалён из оборудования.")
 		chassis = null
 		set_ready_state(1)
 

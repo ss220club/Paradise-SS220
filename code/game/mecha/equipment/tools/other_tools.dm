@@ -8,7 +8,7 @@
 
 /obj/item/mecha_parts/mecha_equipment/teleporter
 	name = "mounted teleporter"
-	desc = "An exosuit module that allows exosuits to teleport to any position in view."
+	desc = "Модуль для экзокостюма, который позволяет телепортироваться в любую видимую позицию."
 	icon_state = "mecha_teleport"
 	origin_tech = "bluespace=7"
 	equip_cooldown = 150
@@ -27,7 +27,7 @@
 
 /obj/item/mecha_parts/mecha_equipment/teleporter/precise
 	name = "upgraded teleporter"
-	desc = "An exosuit module that allows exosuits to teleport to any position in view. This is the high-precision, energy-efficient version."
+	desc = "Модуль для экзокостюма, который позволяет телепортироваться в любую видимую позицию. Это версия с высокой точностью и энергоэффективностью."
 	origin_tech = "bluespace=7"
 	energy_drain = 1000
 	tele_precision = 1
@@ -36,7 +36,7 @@
 
 /obj/item/mecha_parts/mecha_equipment/gravcatapult
 	name = "mounted gravitational catapult"
-	desc = "An exosuit mounted Gravitational Catapult."
+	desc = "Гравитационная катапульта для экзокостюмов."
 	icon_state = "mecha_teleport"
 	origin_tech = "bluespace=3;magnets=3;engineering=4"
 	equip_cooldown = 10
@@ -50,16 +50,16 @@
 	if(!action_checks(target))
 		return
 	if(cooldown_timer > world.time)
-		occupant_message("<span class='warning'>[src] is still recharging.</span>")
+		occupant_message("<span class='warning'>[src] всё еще заряжается.</span>")
 		return
 	switch(mode)
 		if(MECH_GRAVCAT_MODE_GRAVSLING)
 			if(!locked)
 				if(!istype(target) || target.anchored)
-					occupant_message("Unable to lock on [target]")
+					occupant_message("Невозможно зафиксировать [target].")
 					return
 				locked = target
-				occupant_message("Locked on [target]")
+				occupant_message("Зафиксировано на [target].")
 				send_byjax(chassis.occupant,"exosuit.browser","\ref[src]",get_equip_info())
 			else if(target!=locked)
 				if(locked in view(chassis))
@@ -70,7 +70,7 @@
 					return 1
 				else
 					locked = null
-					occupant_message("Lock on [locked] disengaged.")
+					occupant_message("Фиксация на [locked] отключена.")
 					send_byjax(chassis.occupant,"exosuit.browser","\ref[src]",get_equip_info())
 		if(MECH_GRAVCAT_MODE_GRAVPUSH)
 			var/list/atoms = list()
@@ -87,7 +87,7 @@
 						sleep(2)
 			var/turf/T = get_turf(target)
 			cooldown_timer = world.time + 3 SECONDS
-			log_game("[key_name(chassis.occupant)] used a Gravitational Catapult in ([T.x],[T.y],[T.z])")
+			log_game("[key_name(chassis.occupant)] использовал гравитационную катапульту в координатах ([T.x],[T.y],[T.z])")
 			return
 
 
@@ -105,7 +105,7 @@
 /// what is that noise? A BAWWW from TK mutants.
 /obj/item/mecha_parts/mecha_equipment/anticcw_armor_booster
 	name = "armor booster module (Close combat weaponry)"
-	desc = "Boosts exosuit armor against armed melee attacks. Requires energy to operate."
+	desc = "Увеличивает броню экзокостюма против ближних атак. Для работы требуется энергия."
 	icon_state = "mecha_abooster_ccw"
 	origin_tech = "materials=4;combat=4"
 	equip_cooldown = 10
@@ -123,7 +123,7 @@
 
 /obj/item/mecha_parts/mecha_equipment/antiproj_armor_booster
 	name = "armor booster module (Ranged weaponry)"
-	desc = "Boosts exosuit armor against ranged attacks. Requires energy to operate."
+	desc = "Увеличивает броню экзокостюма против дальних атак. Для работы требуется энергия."
 	icon_state = "mecha_abooster_proj"
 	origin_tech = "materials=4;combat=3;engineering=3"
 	equip_cooldown = 10
@@ -143,7 +143,7 @@
 
 /obj/item/mecha_parts/mecha_equipment/repair_droid
 	name = "repair droid"
-	desc = "Automated repair droid. Scans exosuit for damage and repairs it. Can fix almost all types of external or internal damage."
+	desc = "Автоматизированный ремонтный дроид. Сканирует экзокостюм на наличие повреждений и выполняет ремонт. Способен исправить почти все виды внешних и внутренних повреждений."
 	icon_state = "repair_droid"
 	origin_tech ="magnets=3;programming=3;engineering=4"
 	equip_cooldown = 20
@@ -228,7 +228,7 @@
 
 /obj/item/mecha_parts/mecha_equipment/tesla_energy_relay
 	name = "exosuit energy relay"
-	desc = "An exosuit module that wirelessly drains energy from any available power channel in an area. The performance index barely compensates for movement costs."
+	desc = "Модуль экзокостюма, который беспроводным образом извлекает энергию из любых доступных источников питания в области. КПД едва компенсирует затраты на движение."
 	icon_state = "tesla"
 	origin_tech = "magnets=4;powerstorage=4;engineering=4"
 	energy_drain = 0
@@ -289,7 +289,7 @@
 	if(isnull(cur_charge) || !chassis.cell)
 		STOP_PROCESSING(SSobj, src)
 		set_ready_state(1)
-		occupant_message("No powercell detected.")
+		occupant_message("Батарея не обнаружена.")
 		return
 	if(cur_charge < chassis.cell.maxcharge)
 		var/area/A = get_area(chassis)
@@ -308,7 +308,7 @@
 
 /obj/item/mecha_parts/mecha_equipment/generator
 	name = "exosuit plasma converter"
-	desc = "An exosuit module that generates power using solid plasma as fuel. Pollutes the environment."
+	desc = "Модуль для экзокостюма, который генерирует энергию, используя твёрдую плазму в качестве топлива. Загрязняет окружающую среду плазмой при повреждении."
 	icon_state = "tesla"
 	origin_tech = "plasmatech=2;powerstorage=2;engineering=2"
 	range = MECHA_MELEE
@@ -337,11 +337,11 @@
 		if(equip_ready) //inactive
 			set_ready_state(0)
 			START_PROCESSING(SSobj, src)
-			log_message("Activated.")
+			log_message("Активировано.")
 		else
 			set_ready_state(1)
 			STOP_PROCESSING(SSobj, src)
-			log_message("Deactivated.")
+			log_message("Деактивировано.")
 
 /obj/item/mecha_parts/mecha_equipment/generator/get_equip_info()
 	var/output = ..()
@@ -365,7 +365,7 @@
 			return 0
 
 		if(fuel_amount >= max_fuel)
-			occupant_message("Unit is full.")
+			occupant_message("Генератор полностью заполнен.")
 			return 0
 
 		var/obj/item/stack/sheet/P = I
@@ -376,7 +376,7 @@
 			var/added_fuel = units * P.perunit
 			fuel_amount += added_fuel
 			P.use(units)
-			occupant_message("[units] unit\s of [fuel_name] successfully loaded.")
+			occupant_message("[units] юнитов [fuel_name] успешно загружено.")
 			return added_fuel
 
 	else if(istype(I, /obj/structure/ore_box))
@@ -388,7 +388,7 @@
 		return fuel_added
 
 	else
-		occupant_message("<span class='warning'>[fuel_name] traces in target minimal! [I] cannot be used as fuel.</span>")
+		occupant_message("<span class='warning'>[fuel_name] на минимуме! [I] не может использоваться в качестве топлива.</span>")
 		return 0
 
 /obj/item/mecha_parts/mecha_equipment/generator/attackby(weapon,mob/user, params)
@@ -401,13 +401,13 @@
 		return
 	if(fuel_amount<=0)
 		STOP_PROCESSING(SSobj, src)
-		log_message("Deactivated - no fuel.")
+		log_message("Леактивировано - нет топлива")
 		set_ready_state(1)
 		return
 	var/cur_charge = chassis.get_charge()
 	if(isnull(cur_charge))
 		set_ready_state(1)
-		occupant_message("No powercell detected.")
+		occupant_message("Батарея не обнаружена")
 		log_message("Deactivated.")
 		STOP_PROCESSING(SSobj, src)
 		return
@@ -421,7 +421,7 @@
 
 /obj/item/mecha_parts/mecha_equipment/generator/nuclear
 	name = "exonuclear reactor"
-	desc = "An exosuit module that generates power using uranium as fuel. Pollutes the environment."
+	desc = "Ядерный блок для экзокостюма, который генерирует энергию, используя уран в качестве топлива. Загрязняет окружающую среду при повреждении."
 	icon_state = "tesla"
 	origin_tech = "powerstorage=4;engineering=4"
 	fuel_name = "uranium" // Our fuel name as a string
@@ -438,7 +438,7 @@
 
 /obj/item/mecha_parts/mecha_equipment/thrusters
 	name = "exosuit ion thrusters"
-	desc = "Ion thrusters to be attached to an exosuit. Drains power even while not in flight."
+	desc = "Ионные ускорители, предназначенные для установки на экзокостюм. Потребляют энергию даже в состоянии покоя."
 	icon_state = "tesla"
 	origin_tech = "powerstorage=4;engineering=4"
 	range = 0

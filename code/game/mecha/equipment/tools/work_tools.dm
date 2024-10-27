@@ -7,7 +7,7 @@
 
 /obj/item/mecha_parts/mecha_equipment/hydraulic_clamp
 	name = "hydraulic clamp"
-	desc = "Equipment for engineering exosuits. Lifts objects and loads them into cargo."
+	desc = "Оборудование для экзокостюмов. Поднимает объекты и загружает их в грузовой отсек."
 	icon_state = "mecha_clamp"
 	equip_cooldown = 15
 	energy_drain = 10
@@ -39,17 +39,17 @@
 		if(istype(target, /obj/machinery/atmospherics/supermatter_crystal)) //No, you can't pick up the SM with this you moron, did you think you were clever?
 			var/obj/mecha/working/ripley/R = chassis
 			QDEL_LIST_CONTENTS(R.cargo) //We don't want to drop cargo that just spam hits the SM, let's delete it
-			occupant_message("<span class='userdanger'>You realise in horror what you have done as [chassis] starts warping around you!</span>")
+			occupant_message("<span class='userdanger'>Вы с ужасом осознаёте, что вы сделали, когда [chassis] начинает искривляться вокруг вас!</span>")
 			chassis.occupant.dust()
 			target.Bumped(chassis)
 			return
 		if(O.anchored)
-			occupant_message("<span class='warning'>[target] is firmly secured!</span>")
+			occupant_message("<span class='warning'>[target] надежно зафиксирован!</span>")
 			return
 		if(length(cargo_holder.cargo) >= cargo_holder.cargo_capacity)
-			occupant_message("<span class='warning'>Not enough room in cargo compartment!</span>")
+			occupant_message("<span class='warning'>Недостаточно места в грузовом отсеке!</span>")
 			return
-		chassis.visible_message("<span class='notice'>[chassis] lifts [target] and starts to load it into cargo compartment.</span>")
+		chassis.visible_message("<span class='notice'>[chassis] поднимает [target] и начинает загружать его в грузовой отсек.</span>")
 		var/anchor_state_before_load = O.anchored
 		O.anchored = TRUE
 		if(!do_after_cooldown(target))
@@ -58,7 +58,7 @@
 		cargo_holder.cargo += O
 		O.forceMove(chassis)
 		O.anchored = FALSE
-		occupant_message("<span class='notice'>[target] was successfully loaded.</span>")
+		occupant_message("<span class='notice'>[target] успешно загружен.</span>")
 		log_message("Loaded [O]. Cargo compartment capacity: [cargo_holder.cargo_capacity - length(cargo_holder.cargo)]")
 		return
 
@@ -71,21 +71,21 @@
 			if(!M)
 				return
 			M.adjustOxyLoss(round(dam_force/2))
-			target.visible_message("<span class='danger'>[chassis] squeezes [target].</span>", \
-								"<span class='userdanger'>[chassis] squeezes [target].</span>",\
-								"<span class='italics'>You hear something crack.</span>")
+			target.visible_message("<span class='danger'>[chassis] сжимает [target].</span>", \
+								"<span class='userdanger'>[chassis] сжимает [target].</span>",\
+								"<span class='italics'>Вы слышите, как что-то хрустит.</span>")
 			add_attack_logs(chassis.occupant, M, "Squeezed with [src] ([uppertext(chassis.occupant.a_intent)]) ([uppertext(damtype)])")
 			start_cooldown()
 			return
 		step_away(M, chassis)
-		occupant_message("<span class='notice'>You push [target] out of the way.</span>")
-		chassis.visible_message("<span class='notice'>[chassis] pushes [target] out of the way.</span>")
+		occupant_message("<span class='notice'>Ты толкаешь [target] с дороги.</span>")
+		chassis.visible_message("<span class='notice'>[chassis] толкает [target] с дороги.</span>")
 
 
 //This is pretty much just for the death-ripley
 /obj/item/mecha_parts/mecha_equipment/hydraulic_clamp/kill
 	name = "\improper KILL CLAMP"
-	desc = "They won't know what clamped them!"
+	desc = "Они не поймут, что их сжало!"
 	energy_drain = 0
 
 /obj/item/mecha_parts/mecha_equipment/hydraulic_clamp/kill/action(atom/target)
@@ -95,40 +95,40 @@
 		var/obj/O = target
 		if(!O.anchored)
 			if(length(cargo_holder.cargo) < cargo_holder.cargo_capacity)
-				chassis.visible_message("[chassis] lifts [target] and starts to load it into cargo compartment.")
+				chassis.visible_message("[chassis] поднимает [target] и начинает загружать его в грузовой отсек.")
 				O.anchored = TRUE
 				if(do_after_cooldown(target))
 					cargo_holder.cargo += O
 					O.forceMove(chassis)
 					O.anchored = FALSE
-					occupant_message("<span class='notice'>[target] successfully loaded.</span>")
+					occupant_message("<span class='notice'>[target] успешно загружен.</span>")
 					log_message("Loaded [O]. Cargo compartment capacity: [cargo_holder.cargo_capacity - length(cargo_holder.cargo)]")
 				else
 					O.anchored = initial(O.anchored)
 			else
-				occupant_message("<span class='warning'>Not enough room in cargo compartment!</span>")
+				occupant_message("<span class='warning'>Недостаточно места в грузовом отсеке!</span>")
 		else
-			occupant_message("<span class='warning'>[target] is firmly secured!</span>")
+			occupant_message("<span class='warning'>[target] надежно зафиксирован!</span>")
 
 	else if(isliving(target))
 		var/mob/living/M = target
 		if(M.stat == DEAD) return
 		if(chassis.occupant.a_intent == INTENT_HARM)
-			target.visible_message("<span class='danger'>[chassis] destroys [target] in an unholy fury.</span>",
-								"<span class='userdanger'>[chassis] destroys [target] in an unholy fury.</span>")
+			target.visible_message("<span class='danger'>[chassis] уничтожает [target] в нечестивой ярости.</span>",
+								"<span class='userdanger'>[chassis] уничтожает [target] в нечестивой ярости.</span>")
 			M.gib()
 		/*if(chassis.occupant.a_intent == INTENT_DISARM)
 			target.visible_message("<span class='danger'>[chassis] rips [target]'s arms off.</span>",
 								"<span class='userdanger'>[chassis] rips [target]'s arms off.</span>")*/
 		else
 			step_away(M,chassis)
-			target.visible_message("[chassis] tosses [target] like a piece of paper.")
+			target.visible_message("[chassis] бросает [target], словно комок бумаги.")
 			return
 
 
 /obj/item/mecha_parts/mecha_equipment/extinguisher
 	name = "exosuit extinguisher"
-	desc = "Equipment for engineering exosuits. A rapid-firing high capacity fire extinguisher."
+	desc = "Оборудование для инженерных экзокостюмов. Огнетушитель с высокой ёмкостью и скоростью работы."
 	icon_state = "mecha_exting"
 	equip_cooldown = 5
 	energy_drain = 0
@@ -197,7 +197,7 @@
 
 /obj/item/mecha_parts/mecha_equipment/rcd
 	name = "mounted RCD"
-	desc = "An exosuit-mounted Rapid Construction Device. (Can be attached to: Any exosuit)"
+	desc = "Устройство быстрого строительства для экзокостюмов. Можно установить на все экзокостюмы."
 	icon_state = "mecha_rcd"
 	origin_tech = "materials=4;bluespace=3;magnets=4;powerstorage=4;engineering=4"
 	equip_cooldown = 10
@@ -241,14 +241,14 @@
 					playsound(W, usesound, 50, 1)
 			else if(isfloorturf(target))
 				var/turf/simulated/floor/F = target
-				occupant_message("Deconstructing [target]...")
+				occupant_message("Деконструкция [target]...")
 				if(do_after_cooldown(F))
 					chassis.spark_system.start()
 					F.ChangeTurf(F.baseturf)
 					F.recalculate_atmos_connectivity()
 					playsound(F, usesound, 50, 1)
 			else if(istype(target, /obj/machinery/door/airlock))
-				occupant_message("Deconstructing [target]...")
+				occupant_message("Деконструкция [target]...")
 				if(do_after_cooldown(target))
 					chassis.spark_system.start()
 					qdel(target)
@@ -256,21 +256,21 @@
 		if(MECH_RCD_MODE_WALL_OR_FLOOR)
 			if(isspaceturf(target) || ischasm(target))
 				var/turf/space/S = target
-				occupant_message("Building Floor...")
+				occupant_message("Постройка пола...")
 				if(do_after_cooldown(S))
 					S.ChangeTurf(/turf/simulated/floor/plating)
 					playsound(S, usesound, 50, 1)
 					chassis.spark_system.start()
 			else if(isfloorturf(target))
 				var/turf/simulated/floor/F = target
-				occupant_message("Building Wall...")
+				occupant_message("Постройка стены...")
 				if(do_after_cooldown(F))
 					F.ChangeTurf(/turf/simulated/wall)
 					playsound(F, usesound, 50, 1)
 					chassis.spark_system.start()
 		if(MECH_RCD_MODE_AIRLOCK)
 			if(isfloorturf(target))
-				occupant_message("Building Airlock...")
+				occupant_message("Постройка шлюза...")
 				if(do_after_cooldown(target))
 					chassis.spark_system.start()
 					var/obj/machinery/door/airlock/T = new /obj/machinery/door/airlock(target)
@@ -285,11 +285,11 @@
 		mode = text2num(href_list["mode"])
 		switch(mode)
 			if(MECH_RCD_MODE_DECONSTRUCT)
-				occupant_message("Switched RCD to Deconstruct.")
+				occupant_message("Режим RCD переключён на деконструкцию.")
 			if(MECH_RCD_MODE_WALL_OR_FLOOR)
-				occupant_message("Switched RCD to Construct.")
+				occupant_message("Режим RCD переключён на постройку.")
 			if(MECH_RCD_MODE_AIRLOCK)
-				occupant_message("Switched RCD to Construct Airlock.")
+				occupant_message("Режим RCD переключён на постройку шлюза.")
 
 /obj/item/mecha_parts/mecha_equipment/rcd/get_equip_info()
 	return "[..()] \[<a href='byond://?src=[UID()];mode=0'>D</a>|<a href='byond://?src=[UID()];mode=1'>C</a>|<a href='byond://?src=[UID()];mode=2'>A</a>\]"
@@ -297,7 +297,7 @@
 
 /obj/item/mecha_parts/mecha_equipment/mimercd
 	name = "mounted MRCD"
-	desc = "An exosuit-mounted Mime Rapid Construction Device. (Can be attached to: Reticence)"
+	desc = "Устройство быстрого строительства Мима для экзокостюмов. Можно установить на Reticence"
 	icon_state = "mecha_rcd"
 	origin_tech = "materials=4;bluespace=3;magnets=4;powerstorage=4;engineering=4"
 	equip_cooldown = 10
@@ -319,7 +319,7 @@
 		return
 
 	if(isfloorturf(target))
-		occupant_message("Building Wall...")
+		occupant_message("Постройка стены...")
 		if(do_after_cooldown(target))
 			new /obj/structure/barricade/mime/mrcd(target)
 			chassis.spark_system.start()
@@ -328,7 +328,7 @@
 
 /obj/item/mecha_parts/mecha_equipment/cable_layer
 	name = "cable layer"
-	desc = "Equipment for engineering exosuits. Lays cable along the exosuit's path."
+	desc = "Кабельная катушка для инженерных экзокостюмов. Прокладывает кабель вдоль пути экзокостюма."
 	icon_state = "mecha_wire"
 	var/obj/structure/cable/last_piece
 	var/obj/item/stack/cable_coil/cable
@@ -366,12 +366,12 @@
 				cable.amount = 0
 			cable.amount += to_load
 			target.use(to_load)
-			occupant_message("<span class='notice'>[to_load] meters of cable successfully loaded.</span>")
+			occupant_message("<span class='notice'>[to_load] метров кабеля успешно загружено.</span>")
 			send_byjax(chassis.occupant,"exosuit.browser","\ref[src]",src.get_equip_info())
 		else
-			occupant_message("<span class='warning'>Reel is full.</span>")
+			occupant_message("<span class='warning'>Катушка полностью заполнена.</span>")
 	else
-		occupant_message("<span class='warning'>Unable to load [target] - no cable found.</span>")
+		occupant_message("<span class='warning'>Невозможно загрузить [target] - кабель не найден.</span>")
 
 
 /obj/item/mecha_parts/mecha_equipment/cable_layer/Topic(href,href_list)
@@ -390,7 +390,7 @@
 				var/obj/item/stack/cable_coil/CC = new (get_turf(chassis))
 				CC.amount = m
 		else
-			occupant_message("There's no more cable on the reel.")
+			occupant_message("На катушке больше нет кабеля.")
 
 /obj/item/mecha_parts/mecha_equipment/cable_layer/get_equip_info()
 	var/output = ..()
@@ -400,11 +400,11 @@
 /obj/item/mecha_parts/mecha_equipment/cable_layer/proc/use_cable(amount)
 	if(!cable || cable.amount<1)
 		set_ready_state(1)
-		occupant_message("Cable depleted, [src] deactivated.")
-		log_message("Cable depleted, [src] deactivated.")
+		occupant_message("Кабель исчерпан, [src] деактивирован.")
+		log_message("Кабель исчерпан, [src] деактивирован.")
 		return FALSE
 	if(cable.amount < amount)
-		occupant_message("No enough cable to finish the task.")
+		occupant_message("Недостаточно кабеля для завершения задачи.")
 		return FALSE
 	cable.use(amount)
 	update_equip_info()
@@ -457,7 +457,7 @@
 
 /obj/item/mecha_parts/mecha_equipment/mech_crusher
 	name = "exosuit crusher"
-	desc = "A mech mounted crusher. For crushing bigger things."
+	desc = "Кинетический крашер для экзокостюмов. Идеален для разрушения больших объектов."
 	icon_state = "mecha_crusher"
 	equip_cooldown = 1.2 SECONDS
 	energy_drain = 3000
