@@ -728,7 +728,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 
 		. = list() //SS220 EDIT
 		SEND_SIGNAL(src, COMSIG_MOB_GET_OVERLAY_SHIFTS_LIST, "head", .)
-		if (.)
+		if(.)
 			new_glasses.pixel_x = .["shift_x"]
 			new_glasses.pixel_y = .["shift_y"]
 
@@ -775,7 +775,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		var/mutable_appearance/standing = mutable_appearance(left_ear_icon, left_ear_item_state, layer = -LEFT_EAR_LAYER) //SS220 EDIT
 		. = list()
 		SEND_SIGNAL(src, COMSIG_MOB_GET_OVERLAY_SHIFTS_LIST, "head", .)
-		if (.)
+		if(.)
 			standing.pixel_x = .["shift_x"]
 			standing.pixel_y = .["shift_y"]
 		overlays_standing[LEFT_EAR_LAYER] = standing
@@ -794,7 +794,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		var/mutable_appearance/standing = mutable_appearance(right_ear_icon, right_ear_item_state, layer = -RIGHT_EAR_LAYER) //SS220 EDIT
 		. = list()
 		SEND_SIGNAL(src, COMSIG_MOB_GET_OVERLAY_SHIFTS_LIST, "head", .)
-		if (.)
+		if(.)
 			standing.pixel_x = .["shift_x"]
 			standing.pixel_y = .["shift_y"]
 		overlays_standing[RIGHT_EAR_LAYER] = standing
@@ -903,7 +903,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 
 		. = list() //SS220 EDIT
 		SEND_SIGNAL(src, COMSIG_MOB_GET_OVERLAY_SHIFTS_LIST, "head", .)
-		if (.)
+		if(.)
 			standing.pixel_x = .["shift_x"]
 			standing.pixel_y = .["shift_y"]
 		overlays_standing[HEAD_LAYER] = standing
@@ -963,7 +963,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 
 		. = list() //SS220 EDIT
 		SEND_SIGNAL(src, COMSIG_MOB_GET_OVERLAY_SHIFTS_LIST, "belt", .)
-		if (.)
+		if(.)
 			standing.pixel_x = .["shift_x"]
 			standing.pixel_y = .["shift_y"]
 		overlays_standing[overlay_layer] = standing
@@ -1086,7 +1086,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 
 			. = list() //SS220 EDIT
 			SEND_SIGNAL(src, COMSIG_MOB_GET_OVERLAY_SHIFTS_LIST, "head", .)
-			if (.)
+			if(.)
 				standing.pixel_x = .["shift_x"]
 				standing.pixel_y = .["shift_y"]
 			overlays_standing[FACEMASK_LAYER] = standing
@@ -1116,7 +1116,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 
 		. = list() //SS220 EDIT
 		SEND_SIGNAL(src, COMSIG_MOB_GET_OVERLAY_SHIFTS_LIST, "back", .)
-		if (.)
+		if(.)
 			standing.pixel_x = .["shift_x"]
 			standing.pixel_y = .["shift_y"]
 		overlays_standing[BACK_LAYER] = standing
@@ -1155,7 +1155,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 
 		. = list() //SS220 EDIT
 		SEND_SIGNAL(src, COMSIG_MOB_GET_OVERLAY_SHIFTS_LIST, "inhand", .)
-		if (.)
+		if(.)
 			standing.pixel_x = .["shift_x"]
 			standing.pixel_y = .["shift_y"]
 		overlays_standing[R_HAND_LAYER] = standing
@@ -1181,7 +1181,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 
 		. = list() //SS220 EDIT
 		SEND_SIGNAL(src, COMSIG_MOB_GET_OVERLAY_SHIFTS_LIST, "inhand", .)
-		if (.)
+		if(.)
 			standing.pixel_x = .["shift_x"]
 			standing.pixel_y = .["shift_y"]
 		overlays_standing[L_HAND_LAYER] = standing

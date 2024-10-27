@@ -41,7 +41,7 @@
 	addtimer(CALLBACK(src, PROC_REF(update_overlays_blades)), 1 SECONDS)
 
 /obj/item/organ/internal/cyberimp/chest/serpentid_blades/remove(mob/living/carbon/M, special, dont_remove_slot)
-	update_overlays()
+	update_icon(UPDATE_OVERLAYS)
 	. = .. ()
 
 /obj/item/organ/internal/cyberimp/chest/serpentid_blades/ui_action_click()
@@ -56,7 +56,7 @@
 		Extend()
 
 /obj/item/organ/internal/cyberimp/chest/serpentid_blades/proc/update_overlays_blades()
-	update_overlays()
+	update_icon(UPDATE_OVERLAYS)
 
 /obj/item/organ/internal/cyberimp/chest/serpentid_blades/update_overlays()
 	. = .. ()
@@ -105,7 +105,7 @@
 	blades_active = TRUE
 	playsound(get_turf(owner), 'sound/mecha/mechmove03.ogg', 50, 1)
 	new_icon_state = "blades_1"
-	update_overlays()
+	update_icon(UPDATE_OVERLAYS)
 	return TRUE
 
 /obj/item/organ/internal/cyberimp/chest/serpentid_blades/proc/Retract()
@@ -118,7 +118,7 @@
 	blades_active = FALSE
 	playsound(get_turf(owner), 'sound/mecha/mechmove03.ogg', 50, 1)
 	new_icon_state = "blades_0"
-	update_overlays()
+	update_icon(UPDATE_OVERLAYS)
 
 //Проки на обработку при поднятом клинке
 /datum/species/spec_attack_hand(mob/living/carbon/human/M, mob/living/carbon/human/H, datum/martial_art/attacker_style) //Handles any species-specific attackhand events.

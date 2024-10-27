@@ -124,7 +124,7 @@
 	if(character_damage >= state_1_threshold)
 		if(broken_stage < 1)
 			stage_1_break()
-	else if (can_self_repair && broken_stage < 2)
+	else if(can_self_repair && broken_stage < 2)
 		stage_1_repair()
 		last_time_action = world.time
 
@@ -132,7 +132,7 @@
 	if(character_damage >= state_2_threshold)
 		if(broken_stage < 2)
 			stage_2_break()
-	else if (can_self_repair && broken_stage < 3)
+	else if(can_self_repair && broken_stage < 3)
 		stage_2_repair()
 		last_time_action = world.time
 
@@ -140,7 +140,7 @@
 	if(character_damage >= state_3_threshold)
 		if(broken_stage < 3)
 			stage_3_break()
-	else if (can_self_repair && broken_stage > 2)
+	else if(can_self_repair && broken_stage > 2)
 		stage_3_repair()
 		last_time_action = world.time
 
