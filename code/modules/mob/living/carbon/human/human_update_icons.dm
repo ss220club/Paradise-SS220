@@ -103,8 +103,6 @@ If you have any questions/constructive-comments/bugs-to-report/or have a massivl
 Please contact me on #coderbus IRC. ~Carn x
 */
 
-#define COMSIG_MOB_GET_OVERLAY_SHIFTS_LIST "get_list" //SS220 EDIT
-
 /mob/living/carbon/human/proc/apply_overlay(cache_index)
 	. = overlays_standing[cache_index]
 	if(.)
@@ -1631,3 +1629,4 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 				. += "[part.s_tone]"
 
 	. = "[.][!!husk][!!hulk][!!skeleton]"
+

@@ -206,3 +206,5 @@
 
 /// called when a living mob's stun status is cleared: ()
 #define COMSIG_LIVING_CLEAR_STUNS "living_clear_stuns"
+
+#define COMSIG_MOB_GET_OVERLAY_SHIFTS_LIST "get_list" //SS220 EDIT
