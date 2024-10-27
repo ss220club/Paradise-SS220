@@ -1,31 +1,12 @@
 // Signals for /mob/living/carbon
+/// вызывается через /datum/component/mob_overlay_shift/proc/shift_call(mob/living/carbon/human/mob) : (/datum/component/mob_overlay_shift)
 #define COMSIG_MOB_ON_EQUIP "on_equip"
 #define COMSIG_MOB_ON_CLICK "on_click"
 
+/// вызывается через /datum/component/gadom_cargo/proc/block_operation() : (/datum/component/gadom_cargo) (/datum/component/gadom_living)
 #define COMSIG_GADOM_CAN_GRAB "block_operation"
 	#define GADOM_CAN_GRAB (1 << 0)
 
+/// вызывается через datum/component/gadom_living/proc/try_load_mob()  : (/datum/component/gadom_cargo)
+/// вызывается через datum/component/gadom_cargo/proc/try_load_cargo() : (/datum/component/gadom_living)
 #define COMSIG_GADOM_LOAD "try_load"
-
-//Расширение прока для переноса ящика на моба
-/mob/living/carbon/human/MouseDrop_T(atom/movable/AM, mob/user)
-	if(SEND_SIGNAL(usr, COMSIG_GADOM_CAN_GRAB) & GADOM_CAN_GRAB)
-		SEND_SIGNAL(usr, COMSIG_GADOM_LOAD, usr, AM)
-	. = .. ()
-
-//Расширение для пристегивания моба
-/mob/MouseDrop(mob/M as mob, src_location, over_location, src_control, over_control, params)
-	if((M != usr) || !istype(M))
-		..()
-		return
-	if(usr == src)
-		return
-	if(!Adjacent(usr))
-		return
-	if(IsFrozen(src) && !is_admin(usr))
-		to_chat(usr, "<span class='boldannounceic'>Interacting with admin-frozen players is not permitted.</span>")
-		return
-	if((SEND_SIGNAL(usr, COMSIG_GADOM_CAN_GRAB) & GADOM_CAN_GRAB))
-		SEND_SIGNAL(usr, COMSIG_GADOM_LOAD, usr, src)
-		return
-	. = .. ()

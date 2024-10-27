@@ -1,3 +1,5 @@
+#define SERPENTID_EARS_SENSE_TIME 5 SECONDS
+
 //Уши серпентидов позволяют постоянно сканировать окружение в поисках существ в зависимости от их состояния
 /obj/item/organ/internal/ears/serpentid
 	name = "acoustic sensor"
@@ -26,7 +28,7 @@
 			sense_creatures()
 
 /obj/item/organ/internal/ears/serpentid/switch_mode(force_off = FALSE)
-	.=..()
+	. = ..()
 	if(!force_off && owner?.get_chemical_value(SERPENTID_CHEM_REAGENT_ID) >= chemical_consuption && !(status & ORGAN_DEAD) && !active)
 		active = TRUE
 		chemical_consuption = initial(chemical_consuption)
@@ -36,9 +38,10 @@
 	SEND_SIGNAL(src, COMSIG_ORGAN_CHANGE_CHEM_CONSUPTION, chemical_consuption)
 
 /obj/item/organ/internal/ears/serpentid/proc/sense_creatures()
-	var/last_movement_threshold = 5 SECONDS
 	for(var/mob/living/creature in range(9, owner))
 		var/last_movement_timer = world.time - creature.l_move_time
-		if(creature == owner || creature.stat == DEAD || last_movement_timer > last_movement_threshold)
+		if(creature == owner || creature.stat == DEAD || last_movement_timer > SERPENTID_EARS_SENSE_TIME)
 			continue
 		new /obj/effect/temp_visual/sonar_ping(owner.loc, owner, creature)
+
+#undef SERPENTID_EARS_SENSE_TIME

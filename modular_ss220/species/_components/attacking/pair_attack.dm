@@ -55,13 +55,14 @@
 		addtimer(CALLBACK(src, PROC_REF(offhand_post_attack)), attack_recoil SECONDS)
 
 /datum/component/pair_attack/proc/offhand_attack(mob/living/target, mob/living/user, def_zone)
-	if(QDELETED(src) || QDELETED(target) || user != offhand_item.loc  || !user.Adjacent(target))
+	if(QDELETED(src) || QDELETED(target) || user != offhand_item.loc  || !user.Adjacent(target) || !offhand_item)
 		return
 	offhand_item.attack(target, user, def_zone)
 
 /datum/component/pair_attack/proc/offhand_post_attack()
 	state_attack = FALSE
-	SEND_SIGNAL(offhand_item, COMSIG_PAIRATTACK_SYNC, state_attack)
+	if(offhand_item)
+		SEND_SIGNAL(offhand_item, COMSIG_PAIRATTACK_SYNC, state_attack)
 
 #undef PAIRATTACK_RECOIL_MULT
 #undef COMSIG_PAIRATTACK_SYNC

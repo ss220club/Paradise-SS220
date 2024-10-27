@@ -35,19 +35,16 @@
 	taste_description = "television static"
 	metabolization_rate = 0.1
 	process_flags = ORGANIC
-	goal_department = "Science"
-	goal_difficulty = REAGENT_GOAL_SKIP
 	var/last_move_count = 0
 	var/last_move = null
 
 /datum/reagent/serpadrone/on_mob_add(mob/living/carbon/L)
-	L.next_move_modifier = initial(L.next_move_modifier)
 	RegisterSignal(L, COMSIG_MOVABLE_MOVED, PROC_REF(on_movement))
 	RegisterSignal(L, COMSIG_HUMAN_CREATE_MOB_HUD, PROC_REF(no_hud_cheese))
 	var/mob/living/carbon/human/H = L
-	if(istype(H.dna.species, /datum/species/serpentid))
+	if(isserpentid(H))
 		var/datum/species/spicie = H.dna.species
-		spicie.action_mult = 0.5
+		spicie.action_mult = spicie.action_mult / 2
 	if(!L.hud_used)
 		return
 	var/atom/movable/plane_master_controller/game_plane_master_controller = L.hud_used?.plane_master_controllers[PLANE_MASTERS_GAME]
@@ -59,20 +56,15 @@
 	game_plane_master_controller.add_filter(SERPADRONE_SCREEN_BLUR, 1, list("type" = "radial_blur", "size" = 0.02))
 	last_move_count = 0
 	last_move = null
-	if(!IS_CHANGELING(L))
-		return
-	var/datum/antagonist/changeling/cling = L.mind.has_antag_datum(/datum/antagonist/changeling)
-	cling.chem_recharge_slowdown += 1
 
 /datum/reagent/serpadrone/on_mob_delete(mob/living/carbon/L)
 	UnregisterSignal(L, COMSIG_MOVABLE_MOVED)
 	REMOVE_TRAIT(L, TRAIT_GOTTAGOFAST, id)
 	REMOVE_TRAIT(L, TRAIT_GOTTAGONOTSOFAST, id)
-	L.next_move_modifier = initial(L.next_move_modifier)
 	var/mob/living/carbon/human/H = L
-	if(istype(H.dna.species, /datum/species/serpentid))
+	if(isserpentid(H))
 		var/datum/species/spicie = H.dna.species
-		spicie.action_mult = initial(spicie.action_mult)
+		spicie.action_mult = spicie.action_mult * 2
 	if(!L.hud_used)
 		return
 	var/atom/movable/plane_master_controller/game_plane_master_controller = L.hud_used?.plane_master_controllers[PLANE_MASTERS_GAME]
@@ -80,10 +72,6 @@
 	game_plane_master_controller.remove_filter(SERPADRONE_SCREEN_BLUR)
 	last_move_count = 0
 	last_move = null
-
-	if(IS_CHANGELING(L))
-		var/datum/antagonist/changeling/cling = L.mind.has_antag_datum(/datum/antagonist/changeling)
-		cling.chem_recharge_slowdown -= 1
 
 /// Leaves an afterimage behind the mob when they move
 /datum/reagent/serpadrone/proc/on_movement(mob/living/carbon/L, atom/old_loc)
@@ -107,21 +95,6 @@
 		REMOVE_TRAIT(L, TRAIT_GOTTAGONOTSOFAST, id)
 	new /obj/effect/temp_visual/decoy/serpadrone_afterimage(old_loc, L, 0.75 SECONDS)
 	last_move = L.last_movement_dir
-/*
-Временное отключение урона сердцу (временное, ибо для баланса)
-
-/datum/reagent/serpadrone/on_mob_life(mob/living/carbon/L)
-	. = ..()
-
-	if(ishuman(L))
-		var/heart_damage = 0.5
-		var/mob/living/carbon/human/H = L
-		if(istype(H.dna.species, /datum/species/serpentid))
-			var/datum/organ/heart/datum_heart = H.get_int_organ_datum(ORGAN_DATUM_HEART)
-			if(datum_heart)
-				var/obj/item/organ/internal/our_heart = datum_heart.linked_organ
-				our_heart.receive_damage(heart_damage, TRUE)
-				*/
 
 /// So. If a person changes up their hud settings (Changing their ui theme), the visual effects for this reagent will break, and they will be able to see easily. This 3 part proc waits for the plane controlers to be setup, and over 2 other procs, rengages the visuals
 /datum/reagent/serpadrone/proc/no_hud_cheese(mob/living/carbon/L)

@@ -223,5 +223,5 @@
 /datum/action/item_action/organ_action/toggle/serpentid
 
 /datum/action/item_action/organ_action/toggle/serpentid/New(Target)
-	..()
+	. = ..()
 	name = "serpentid organ selection"

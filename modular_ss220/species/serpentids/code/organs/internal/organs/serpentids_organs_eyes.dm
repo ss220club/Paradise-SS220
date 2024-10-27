@@ -26,10 +26,9 @@
 
 //Прок на получение цвета глаз
 /obj/item/organ/internal/eyes/serpentid/generate_icon(mob/living/carbon/human/HA)
-	var/mob/living/carbon/human/H = HA
-	if(!istype(H))
-		H = owner
-	var/icon/eyes_icon = new /icon(H.dna.species.eyes_icon, H.dna.species.eyes)
+	if(!HA)
+		return
+	var/icon/eyes_icon = new /icon(HA.dna.species.eyes_icon, HA.dna.species.eyes)
 	eyes_icon.Blend(eye_color, ICON_ADD)
 
 	return eyes_icon

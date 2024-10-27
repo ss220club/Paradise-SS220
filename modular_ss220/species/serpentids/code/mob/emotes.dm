@@ -36,11 +36,8 @@
 	volume = 50
 	muzzled_noises = list("раздражённый")
 	emote_type = EMOTE_VISIBLE | EMOTE_MOUTH | EMOTE_AUDIBLE
+	sound = "modular_ss220/species/serpentids/sounds/serpentid_roar.ogg"
 	age_based = TRUE
-
-/datum/emote/living/carbon/human/serpentidroar/get_sound(mob/living/user)
-	return pick(
-		'modular_ss220/species/serpentids/sounds/serpentid_roar.ogg')
 
 /datum/emote/living/carbon/human/serpentidhiss
 	key = "serpentidhiss"

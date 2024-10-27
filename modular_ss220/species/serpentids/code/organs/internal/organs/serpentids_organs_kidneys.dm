@@ -31,7 +31,7 @@
 		owner.make_invisible()
 
 /obj/item/organ/internal/kidneys/serpentid/switch_mode(force_off = FALSE)
-	.=..()
+	. = ..()
 	if(!force_off && owner?.get_chemical_value(SERPENTID_CHEM_REAGENT_ID) >= chemical_consuption && !cloak_engaged && !(status & ORGAN_DEAD))
 		cloak_engaged = TRUE
 		chemical_consuption = SERPENTID_ORGAN_CHEMISTRY_KIDNEYS

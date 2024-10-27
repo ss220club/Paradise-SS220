@@ -39,7 +39,7 @@
 	RegisterSignal(parent, list(COMSIG_MOB_GET_OVERLAY_SHIFTS_LIST), PROC_REF(get_list))
 
 /datum/component/mob_overlay_shift/UnregisterFromParent()
-	UnregisterSignal(parent, list(COMSIG_ATOM_DIR_CHANGE, COMSIG_COMPONENT_CLEAN_ACT, COMSIG_MOB_ON_EQUIP, COMSIG_MOB_ON_CLICK))
+	UnregisterSignal(parent, list(COMSIG_ATOM_DIR_CHANGE, COMSIG_COMPONENT_CLEAN_ACT, COMSIG_MOB_ON_EQUIP, COMSIG_MOB_ON_CLICK, COMSIG_MOB_GET_OVERLAY_SHIFTS_LIST))
 
 /datum/component/mob_overlay_shift/proc/shift_call(mob/living/carbon/human/mob)
 	SIGNAL_HANDLER

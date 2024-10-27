@@ -1,12 +1,11 @@
 //Может и на оффы, но пока увы. Я не против, если этот код отправит на оффы КТО угодно.
 /obj/item/organ/external/head/carapace/replaced()
-	.=..()
-	for(var/X in actions)
-		var/datum/action/A = X
-		A.Grant(owner)
+	. = ..()
+	for(var/datum/action/action as anything in actions)
+		action.Grant(owner)
 
 /obj/item/organ/external/head/carapace/droplimb()
-	.=..()
+	. = ..()
 	for(var/X in actions)
 		var/datum/action/A = X
 		A.Remove(owner)

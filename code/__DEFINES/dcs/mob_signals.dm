@@ -206,5 +206,5 @@
 
 /// called when a living mob's stun status is cleared: ()
 #define COMSIG_LIVING_CLEAR_STUNS "living_clear_stuns"
-
+/// вызывается через /datum/component/mob_overlay_shift/proc/get_list(mob/component_holder, overlay, list/info_data) : (/datum/component/mob_overlay_shift)
 #define COMSIG_MOB_GET_OVERLAY_SHIFTS_LIST "get_list" //SS220 EDIT

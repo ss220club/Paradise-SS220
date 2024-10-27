@@ -80,7 +80,7 @@
 
 //Обновление при отстегивании для восстановления слоя моба
 /mob/living/carbon/human/post_unbuckle_mob(mob/living/M)
-	.=..()
+	. = ..()
 	loaded = null
 	passenger = null
 	M.layer = initial(M.layer)

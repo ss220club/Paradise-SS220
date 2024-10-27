@@ -37,7 +37,7 @@
 	distribute_pressure = 22
 
 /datum/organ/lungs/serpentid
-	safe_oxygen_min = 21
+	safe_oxygen_min = 16
 	safe_toxins_max = 5
 
 	cold_level_1_threshold = SERPENTID_COLD_THRESHOLD_LEVEL_BASE
@@ -49,7 +49,7 @@
 	heat_level_3_threshold = SERPENTID_HEAT_THRESHOLD_LEVEL_BASE + 2*SERPENTID_HEAT_THRESHOLD_LEVEL_UP
 
 /obj/item/organ/internal/lungs/serpentid/switch_mode(force_off = FALSE)
-	.=..()
+	. = ..()
 	if(!hand_active)
 		owner.internal = serpentid_vault
 		hand_active = TRUE
@@ -58,10 +58,13 @@
 		hand_active = FALSE
 
 /obj/item/organ/internal/lungs/serpentid/on_life()
-	.=..()
-	var/can_secretion = owner?.get_chemical_value(SERPENTID_CHEM_REAGENT_ID) > chemical_consuption
+	. = ..()
+	if(!owner)
+		return
+
+	var/can_secretion = owner.get_chemical_value(SERPENTID_CHEM_REAGENT_ID) > chemical_consuption
 	var/danger_state = owner.getOxyLoss() > 0
-	var/datum/reagent/chemical = owner?.get_chemical_path(SERPENTID_CHEM_REAGENT_ID)
+	var/datum/reagent/chemical = owner.get_chemical_path(SERPENTID_CHEM_REAGENT_ID)
 	var/datum/gas_mixture/breath
 	var/datum/organ/lungs/serpentid/lung_data = organ_datums[organ_tag]
 	var/breath_moles = 0
