@@ -70,38 +70,25 @@
 	scream_verb = "утробно ревёт"
 	speech_sounds = list(
 		'modular_ss220/species/serpentids/sounds/serpentid_talk_1.ogg',
-		'modular_ss220/species/serpentids/sounds/serpentid_talk_2.ogg')
+		'modular_ss220/species/serpentids/sounds/serpentid_talk_2.ogg',
+		'modular_ss220/species/serpentids/sounds/serpentid_talk_3.ogg')
 	speech_chance = 20
-	male_scream_sound = 'modular_ss220/species/serpentids/sounds/serpentid_shreak.ogg'
-	female_scream_sound = 'modular_ss220/species/serpentids/sounds/serpentid_shreak.ogg'
-	male_cry_sound = list(
-		'modular_ss220/emotes/audio/kidan/cry_kidan_1.ogg')
-	female_cry_sound = list(
-		'modular_ss220/emotes/audio/kidan/cry_kidan_1.ogg')
+	male_scream_sound = 'modular_ss220/species/serpentids/sounds/serpentid_scream.ogg'
+	female_scream_sound = 'modular_ss220/species/serpentids/sounds/serpentid_scream.ogg'
 	male_giggle_sound = list(
-		'modular_ss220/species/serpentids/sounds/serpentid_laugh.ogg')
+		'modular_ss220/species/serpentids/sounds/serpentid_chuckle.ogg')
 	female_giggle_sound = list(
-		'modular_ss220/species/serpentids/sounds/serpentid_laugh.ogg')
+		'modular_ss220/species/serpentids/sounds/serpentid_chuckle.ogg')
 	male_laugh_sound = list(
 		'modular_ss220/species/serpentids/sounds/serpentid_laugh.ogg')
 	female_laugh_sound = list(
 		'modular_ss220/species/serpentids/sounds/serpentid_laugh.ogg')
-	male_sigh_sound = list(
-		'modular_ss220/species/serpentids/sounds/serpentid_sigh.ogg')
-	female_sigh_sound = list(
-		'modular_ss220/species/serpentids/sounds/serpentid_sigh.ogg')
 	male_moan_sound = list('modular_ss220/species/serpentids/sounds/serpentid_moan.ogg')
 	female_moan_sound = list('modular_ss220/species/serpentids/sounds/serpentid_moan.ogg')
-	male_cough_sounds = list('modular_ss220/species/serpentids/sounds/serpentid_cough.ogg')
-	female_cough_sounds = list('modular_ss220/species/serpentids/sounds/serpentid_cough.ogg')
-	male_sneeze_sound = list(
-		'modular_ss220/species/serpentids/sounds/serpentid_sneeze.ogg')
-	female_sneeze_sound = list(
-		'modular_ss220/species/serpentids/sounds/serpentid_sneeze.ogg')
 	male_dying_gasp_sounds = list(
-		'modular_ss220/species/serpentids/sounds/serpentid_dying.ogg')
+		'modular_ss220/species/serpentids/sounds/serpentid_death.ogg')
 	female_dying_gasp_sounds = list(
-		'modular_ss220/species/serpentids/sounds/serpentid_dying.ogg')
+		'modular_ss220/species/serpentids/sounds/serpentid_death.ogg')
 	death_sounds = 'modular_ss220/species/serpentids/sounds/serpentid_death.ogg'
 	suicide_messages = list(
 		"пытается откусить себе усики!",
@@ -173,10 +160,12 @@
 	H.verbs |= /mob/living/carbon/human/proc/emote_serpentidroar
 	H.verbs |= /mob/living/carbon/human/proc/emote_serpentidhiss
 	H.verbs |= /mob/living/carbon/human/proc/emote_serpentidwiggles
+	H.verbs -= /mob/living/carbon/human/verb/emote_cry
 	H.verbs -= /mob/living/carbon/human/verb/emote_cough
 	H.verbs -= /mob/living/carbon/human/verb/emote_sneeze
 	H.verbs -= /mob/living/carbon/human/verb/emote_sniff
 	H.verbs -= /mob/living/carbon/human/verb/emote_snore
+	H.verbs -= /mob/living/carbon/human/verb/emote_sigh
 	H.verbs -= /mob/living/carbon/human/verb/emote_blink
 	H.verbs -= /mob/living/carbon/human/verb/emote_blink_r
 	H.chat_message_y_offset = 11
@@ -187,9 +176,11 @@
 	H.verbs -= /mob/living/carbon/human/proc/emote_serpentidhiss
 	H.verbs -= /mob/living/carbon/human/proc/emote_serpentidwiggles
 	H.verbs |= /mob/living/carbon/human/verb/emote_cough
+	H.verbs |= /mob/living/carbon/human/verb/emote_cry
 	H.verbs |= /mob/living/carbon/human/verb/emote_sneeze
 	H.verbs |= /mob/living/carbon/human/verb/emote_sniff
 	H.verbs |= /mob/living/carbon/human/verb/emote_snore
+	H.verbs |= /mob/living/carbon/human/verb/emote_sigh
 	H.verbs |= /mob/living/carbon/human/verb/emote_blink
 	H.verbs |= /mob/living/carbon/human/verb/emote_blink_r
 

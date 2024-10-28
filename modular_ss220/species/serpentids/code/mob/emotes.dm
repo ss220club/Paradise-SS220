@@ -61,7 +61,7 @@
 	age_based = TRUE
 	volume = 80
 	muzzled_noises = list("слабо")
-	sound = 'modular_ss220/species/serpentids/sounds/serpentid_wiggle.ogg'
+	sound = 'modular_ss220/species/serpentids/sounds/serpentid_tendrils.ogg'
 
 /datum/keybinding/emote/carbon/human/serpentidroar
 	linked_emote = /datum/emote/living/carbon/human/serpentidroar
