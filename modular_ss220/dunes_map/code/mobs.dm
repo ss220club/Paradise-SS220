@@ -136,7 +136,6 @@
 	var/list/meele_type= list("gold", "silver", "platinum")
 	icon_state = "osminogmeele_[pick(meele_type)]"
 
-	ADD_TRAIT(src, TRAIT_QUICKSAND_IMMUNE, "innate")
 
 /mob/living/simple_animal/hostile/duna/Aggro()
 	if(!alert_sounds)
@@ -380,9 +379,6 @@
 	maxbodytemp = INFINITY
 	var/venom_per_bite = 0
 
-/mob/living/simple_animal/hostile/poison/giant_scorpio/Initialize(mapload)
-	. = ..()
-	ADD_TRAIT(src, TRAIT_QUICKSAND_IMMUNE, "innate")
 
 /mob/living/simple_animal/hostile/poison/giant_scorpio/AttackingTarget()
 	. = ..()
