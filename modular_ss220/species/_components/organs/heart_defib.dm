@@ -22,7 +22,7 @@
 		owner = limb.owner
 	if(!owner)
 		qdel(src)
-	if(owner?.get_chemical_value(chemical_id) < 0 || owner.stat == DEAD || owner.get_damage_amount() > AUTO_DEFIBRILATION_THRESHOLD)
+	if(owner?.get_chemical_value(chemical_id) < 0 || owner.stat != DEAD || owner.get_damage_amount() > AUTO_DEFIBRILATION_THRESHOLD)
 		return
 	var/defib_chance = owner?.get_chemical_value(chemical_id)
 	var/datum/reagent/chem = owner?.get_chemical_path(chemical_id)
