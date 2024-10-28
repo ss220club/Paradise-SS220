@@ -7310,6 +7310,11 @@
 	icon_state = "whiteyellow"
 	},
 /area/awaymission/arrakis/bunker/medbay)
+"aue" = (
+/obj/machinery/gateway,
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/plating,
+/area/awaymission/arrakis/bunker/engie)
 "auf" = (
 /obj/effect/decal/cleanable/dust,
 /obj/structure/table/wood,
@@ -9640,6 +9645,13 @@
 	icon_state = "darkblue"
 	},
 /area/awaymission/arrakis/bunker/bridge)
+"aBd" = (
+/obj/machinery/gateway{
+	dir = 5
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/plating,
+/area/awaymission/arrakis/bunker/engie)
 "aBe" = (
 /turf/simulated/floor/indestructible/dune_sand/smooth,
 /area/awaymission/arrakis/cave)
@@ -18241,24 +18253,6 @@
 /obj/structure/table_frame,
 /turf/simulated/floor/plating,
 /area/awaymission/arrakis/bunker/brig)
-"blM" = (
-/obj/structure/chair/office/dark{
-	dir = 1
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/simulated/floor/plasteel{
-	icon_state = "dark"
-	},
-/area/awaymission/arrakis/bunker/bridge)
 "blP" = (
 /obj/effect/turf_decal/siding/black/corner{
 	dir = 10
@@ -19173,6 +19167,13 @@
 	floor_variance = null
 	},
 /area/awaymission/arrakis/outside_building)
+"bWf" = (
+/obj/machinery/gateway{
+	dir = 9
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/plating,
+/area/awaymission/arrakis/bunker/engie)
 "bWt" = (
 /obj/item/vending_refill/boozeomat,
 /turf/simulated/floor/indestructible/dune_sand{
@@ -19379,6 +19380,9 @@
 "cdM" = (
 /obj/effect/mapping_helpers/airlock/locked,
 /obj/effect/decal/cleanable/dust,
+/obj/machinery/door/airlock/vault{
+	req_one_access_txt = "114"
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -19647,13 +19651,6 @@
 	icon_state = "dark"
 	},
 /area/awaymission/arrakis/bunker)
-"csj" = (
-/obj/machinery/gateway{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plating,
-/area/awaymission/arrakis/bunker/engie)
 "csw" = (
 /obj/structure/flora/rock/pile,
 /turf/simulated/floor/indestructible/dune_sand,
@@ -20154,13 +20151,6 @@
 	icon_state = "dark_large"
 	},
 /area/awaymission/arrakis/bunker/tanya_cyborg_blyat_lab)
-"cNs" = (
-/obj/machinery/gateway{
-	dir = 9
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plating,
-/area/awaymission/arrakis/bunker/engie)
 "cNA" = (
 /obj/effect/decal/cleanable/dust,
 /obj/item/kirbyplants/dead,
@@ -23190,10 +23180,9 @@
 /turf/simulated/floor/indestructible/dune_sand,
 /area/awaymission/arrakis/outside/outside2)
 "ffg" = (
-/obj/machinery/gateway,
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plating,
-/area/awaymission/arrakis/bunker/engie)
+/obj/structure/fans/tiny/invisible,
+/turf/simulated/floor/indestructible/dune_sand,
+/area/awaymission/arrakis/outside/outside3)
 "fgm" = (
 /obj/structure/table/wood,
 /obj/item/flashlight/lamp/green{
@@ -23839,9 +23828,8 @@
 /turf/simulated/floor/wood/cherry,
 /area/awaymission/arrakis/cave/cave1)
 "fLg" = (
-/obj/machinery/gateway/centeraway{
-	interact_offline = 1;
-	calibrated = 0
+/obj/machinery/gateway{
+	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
@@ -24121,14 +24109,6 @@
 /obj/structure/rubble/house,
 /turf/simulated/floor/indestructible/dune_sand,
 /area/awaymission/arrakis/outside/outside2)
-"fYi" = (
-/obj/effect/turf_decal/siding/wood{
-	dir = 1
-	},
-/obj/effect/decal/cleanable/dust,
-/obj/structure/chair/sofa/right,
-/turf/simulated/floor/wood/fancy/oak,
-/area/awaymission/arrakis/bunker/bedrooms)
 "fYV" = (
 /obj/effect/decal/cleanable/dust,
 /obj/item/pen,
@@ -28235,7 +28215,7 @@
 /turf/simulated/floor/carpet/green,
 /area/awaymission/arrakis/bunker/bedrooms)
 "jyP" = (
-/obj/effect/mapping_helpers/airlock/locked,
+/obj/structure/falsewall/reinforced,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -28465,6 +28445,14 @@
 /obj/effect/mapping_helpers/light,
 /turf/simulated/floor/chasm/straight_down/lava_land_surface/dune,
 /area/awaymission/arrakis/outside/mining_town)
+"jKT" = (
+/obj/machinery/gateway/centeraway{
+	interact_offline = 1;
+	calibrated = 0
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/plating,
+/area/awaymission/arrakis/bunker/engie)
 "jLq" = (
 /obj/structure/chair{
 	dir = 1
@@ -29494,11 +29482,6 @@
 	icon_state = "darkred"
 	},
 /area/awaymission/arrakis/bunker/brig)
-"kNh" = (
-/obj/effect/decal/cleanable/glass,
-/obj/effect/landmark/awaystart,
-/turf/simulated/floor/plating,
-/area/awaymission/arrakis/bunker/engie)
 "kNq" = (
 /obj/effect/decal/cleanable/dust,
 /obj/item/chair/wood,
@@ -29847,13 +29830,6 @@
 	},
 /turf/simulated/floor/carpet/purple,
 /area/awaymission/arrakis/bunker/bedrooms)
-"lch" = (
-/obj/machinery/gateway{
-	dir = 8
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plating,
-/area/awaymission/arrakis/bunker/engie)
 "lcH" = (
 /obj/effect/decal/cleanable/trash,
 /turf/simulated/floor/indestructible/dune_sand{
@@ -31860,6 +31836,13 @@
 /obj/structure/table/wood,
 /turf/simulated/floor/wood/oak,
 /area/awaymission/arrakis/cave/cave1)
+"mRx" = (
+/obj/machinery/gateway{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/plating,
+/area/awaymission/arrakis/bunker/engie)
 "mRB" = (
 /obj/structure/barricade/beton{
 	dir = 1;
@@ -37680,6 +37663,11 @@
 /obj/item/stack/sheet/mineral/sandstone,
 /turf/simulated/floor/indestructible/dune_sand/smooth,
 /area/awaymission/arrakis/outside/outside3)
+"rxk" = (
+/obj/effect/decal/cleanable/glass,
+/obj/effect/landmark/awaystart,
+/turf/simulated/floor/plating,
+/area/awaymission/arrakis/bunker/engie)
 "rxw" = (
 /obj/effect/turf_decal/sand,
 /obj/structure/table_frame,
@@ -37690,6 +37678,24 @@
 	floor_variance = null
 	},
 /area/awaymission/arrakis/outside/outside2)
+"ryt" = (
+/obj/structure/chair/office/dark{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/awaymission/arrakis/bunker/bridge)
 "ryu" = (
 /obj/structure/fence/post{
 	dir = 4;
@@ -38042,10 +38048,6 @@
 	floor_variance = null
 	},
 /area/awaymission/arrakis/outside/outside2)
-"rRY" = (
-/obj/effect/landmark/awaystart,
-/turf/simulated/floor/plating,
-/area/awaymission/arrakis/bunker/engie)
 "rSr" = (
 /obj/structure/railing/cap{
 	dir = 4;
@@ -38683,6 +38685,10 @@
 	},
 /turf/simulated/floor/chasm/straight_down/lava_land_surface/dune,
 /area/awaymission/arrakis/outside/mining_town)
+"sxW" = (
+/obj/effect/landmark/awaystart,
+/turf/simulated/floor/plating,
+/area/awaymission/arrakis/bunker/engie)
 "syk" = (
 /obj/effect/decal/cleanable/dust,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -39158,10 +39164,6 @@
 	},
 /turf/simulated/floor/wood/fancy/oak,
 /area/awaymission/arrakis/outside_building/hermit_shack)
-"sTy" = (
-/obj/structure/fans/tiny/invisible,
-/turf/simulated/floor/indestructible/dune_sand,
-/area/awaymission/arrakis/outside/outside3)
 "sTE" = (
 /obj/machinery/door/poddoor/shutters{
 	name = "Secure Armory";
@@ -39661,6 +39663,14 @@
 /obj/structure/flora/tree/cactus/little,
 /turf/simulated/floor/indestructible/dune_sand,
 /area/awaymission/arrakis/outside/mining_town)
+"ttD" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dust,
+/obj/structure/chair/sofa/right,
+/turf/simulated/floor/wood/fancy/oak,
+/area/awaymission/arrakis/bunker/bedrooms)
 "ttE" = (
 /obj/item/firealarm_electronics,
 /turf/simulated/floor/indestructible/dune_sand,
@@ -39679,13 +39689,6 @@
 	},
 /turf/simulated/floor/indestructible/dune_sand/smooth,
 /area/awaymission/arrakis/outside/outside2)
-"tuR" = (
-/obj/machinery/gateway{
-	dir = 5
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plating,
-/area/awaymission/arrakis/bunker/engie)
 "tvb" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 1
@@ -39963,6 +39966,13 @@
 "tJd" = (
 /turf/simulated/wall/r_wall,
 /area/awaymission/arrakis/bunker/brig/bsa)
+"tJi" = (
+/obj/machinery/gateway{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/simulated/floor/plating,
+/area/awaymission/arrakis/bunker/engie)
 "tJY" = (
 /obj/structure/bed,
 /obj/effect/decal/cleanable/dirt,
@@ -40785,11 +40795,6 @@
 	icon_state = "neutralfull"
 	},
 /area/awaymission/arrakis/bunker/dorms)
-"uzo" = (
-/turf/simulated/floor/plasteel{
-	icon_state = "darkredfull"
-	},
-/area/awaymission/arrakis/bunker/brig)
 "uzx" = (
 /obj/item/gun/projectile/automatic/pistol/enforcer/lethal{
 	pixel_y = 10
@@ -42837,9 +42842,6 @@
 /mob/living/simple_animal/hostile/poison_snake/scorpio_mini,
 /turf/simulated/floor/indestructible/dune_sand/smooth/cold,
 /area/awaymission/arrakis/cave/cave)
-"wjM" = (
-/turf/simulated/floor/indestructible/dune_sand/smooth/cold,
-/area/awaymission/arrakis/outside/outside5)
 "wjN" = (
 /obj/structure/table,
 /obj/effect/decal/cleanable/dirt,
@@ -42878,6 +42880,9 @@
 	icon_state = "wood-birch"
 	},
 /area/awaymission/arrakis/outside/mining_town)
+"wlb" = (
+/turf/simulated/floor/indestructible/dune_sand/smooth/cold,
+/area/awaymission/arrakis/outside/outside5)
 "wlw" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/constructable_frame/machine_frame,
@@ -44374,13 +44379,6 @@
 	icon = 'modular_ss220/aesthetics/floors/icons/floors.dmi'
 	},
 /area/awaymission/arrakis/outside/outside2)
-"xBP" = (
-/obj/machinery/gateway{
-	dir = 1
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plating,
-/area/awaymission/arrakis/bunker/engie)
 "xBV" = (
 /obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/indestructible/dune_sand/smooth/cold,
@@ -44866,11 +44864,6 @@
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /obj/structure/sign/nuke{
 	pixel_y = 32
-	},
-/obj/machinery/door_control/bolt_control{
-	color = "red";
-	id = "dune_secret";
-	pixel_y = 25
 	},
 /turf/simulated/floor/wood/oak,
 /area/awaymission/arrakis/bunker/brig)
@@ -49686,7 +49679,7 @@ aog
 aog
 aog
 aog
-uzo
+aog
 aog
 aog
 aog
@@ -50018,11 +50011,11 @@ acS
 aod
 auR
 akh
-cNs
-lch
+bWf
+fLg
 adN
 alE
-kNh
+rxk
 amL
 akh
 atz
@@ -50275,11 +50268,11 @@ awV
 ahD
 auR
 akh
-xBP
-fLg
-ffg
+tJi
+jKT
+aue
 alE
-rRY
+sxW
 aUx
 akh
 atz
@@ -50532,11 +50525,11 @@ azP
 aZf
 aiY
 akh
-tuR
-csj
+aBd
+mRx
 qro
 aAc
-rRY
+sxW
 awX
 akh
 aFU
@@ -55941,7 +55934,7 @@ nSt
 aqo
 aro
 aSy
-blM
+ryt
 aqU
 aLo
 axb
@@ -56969,7 +56962,7 @@ bBl
 aqo
 aro
 aUP
-blM
+ryt
 aGB
 aLo
 aea
@@ -63260,9 +63253,9 @@ ayO
 ayO
 adM
 adM
-wjM
-wjM
-wjM
+wlb
+wlb
+wlb
 ayO
 ayO
 aTW
@@ -65433,7 +65426,7 @@ aEy
 wmP
 aOZ
 qrC
-fYi
+ttD
 aCz
 abA
 aCk
@@ -65575,7 +65568,7 @@ gUs
 tDb
 ayO
 aBv
-sTy
+ffg
 aJs
 aeA
 aJs
@@ -65832,7 +65825,7 @@ gUs
 gUs
 soE
 gUs
-sTy
+ffg
 aeA
 aeA
 aeA
@@ -67746,7 +67739,7 @@ aOZ
 aOZ
 aOZ
 veH
-fYi
+ttD
 tWq
 abA
 ozm
