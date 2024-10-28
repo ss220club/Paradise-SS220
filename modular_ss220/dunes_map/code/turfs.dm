@@ -29,10 +29,6 @@
 	var/floor_variance = 5
 	var/dug
 
-/turf/simulated/floor/indestructible/quicksand/Initialize(mapload)
-	. = ..()
-	AddComponent(/datum/component/quicksand)
-
 /turf/simulated/floor/indestructible/dune_sand
 	name = "dune sand"
 	icon = 'modular_ss220/dunes_map/icons/desert.dmi'

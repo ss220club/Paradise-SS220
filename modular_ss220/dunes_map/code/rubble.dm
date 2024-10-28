@@ -136,15 +136,6 @@
 /obj/structure/rubble/house
 	trash_types = list("junk_pile2", "junk_pile4","trash_pile1", "trash_pile2")
 	loot = list(
-		/obj/item/food/snacks/chips,
-		/obj/item/food/snacks/chinese/rice,
-		/obj/item/food/snacks/chinese/chowmein,
-		/obj/item/food/snacks/doshik,
-		/obj/item/food/snacks/doshik_spicy,
-		/obj/item/food/snacks/fathersoup,
-		/obj/item/food/snacks/pickles,
-		/obj/item/food/snacks/disk,
-		/obj/item/food/snacks/beans,
 		/obj/item/kitchen/knife,
 		/obj/item/reagent_containers/drinks/cans/starkist,
 		/obj/item/reagent_containers/drinks/cans/space_up,

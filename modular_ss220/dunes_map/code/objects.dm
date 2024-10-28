@@ -696,11 +696,6 @@
 
 //Midniht suit storage
 
-/obj/machinery/suit_storage_unit/syndicate/midnight
-	name = "хранилище экзоскелета Миднайта"
-	suit_type = /obj/item/clothing/suit/space/hardsuit/dune/midnight_suit
-	storage_type = /obj/item/tank/internals/oxygen/red
-
 // Tanya camera
 /obj/structure/tanya_camera
 	name = "Колба с Дельта 8-1-7"
