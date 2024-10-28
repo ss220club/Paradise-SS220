@@ -129,7 +129,7 @@
 	if(prob(drop_chance))
 		drop(user)
 		return FALSE
-	else if (prob(scorpion_chance))
+	else if(prob(scorpion_chance))
 		var/scorpio = pick(typesof(/mob/living/simple_animal/hostile/poison/giant_scorpio))
 		new scorpio(src.loc)
 		visible_message("<span class='sinister'>Из колодца выполз скорпион. </span>")

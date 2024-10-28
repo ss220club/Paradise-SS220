@@ -57,7 +57,7 @@
 			"<span class='notice'> \The [user] starts clearing away \the [src] with \a [tool_type].",
 			"<span class='notice'> You start clearing away \the [src] with \the [tool_type]."
 		)
-		if (lootleft && prob(1))
+		if(lootleft && prob(1))
 			var/booty = pickweight(loot)
 			new booty(loc)
 		user.visible_message(

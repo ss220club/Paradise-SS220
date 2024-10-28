@@ -456,7 +456,7 @@
 	- [+] толкать его нельзя
 */
 
-/mob/living/simple_animal/hostile/cthulhu
+/*/mob/living/simple_animal/hostile/cthulhu
 	// Visual
 	name = "Старший"
 	desc = "Мы обречены..."
@@ -663,6 +663,7 @@
 	T.hotspot_expose(700, 50, 1)
 	for(var/mob/living/L in T.contents)
 		L.adjustFireLoss(damage)
+*/
 
 /mob/living/simple_animal/cow/desert
 	name = "Пустынная корова"
