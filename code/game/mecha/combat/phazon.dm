@@ -1,5 +1,5 @@
 /obj/mecha/combat/phazon
-	desc = "An experimental, phase-shifting exosuit developed by Nanotrasen's research division"
+	desc = "Экспериментальный экзокостюм разработанный Nanotrasen"
 	name = "Phazon"
 	icon_state = "phazon"
 	initial_icon = "phazon"
@@ -50,10 +50,10 @@
 
 /obj/mecha/combat/phazon/examine_more(mob/user)
 	. = ..()
-	. += "<i>The Phazon is an experimental Nanotrasen combat design, using a Bluespace Anomaly Core as its heart. \
-	This odd crystal allows the mech to phase part way out of reality, allowing it to pass through walls, floors, and other structures as if they never existed in the first place. \
-	Designed by an NT research team, the design has recently been distributed to their science stations for testing and preliminary production.</i>"
+	. += "<i>Фазон — это экспериментальный боевой экзокостюм Nanotrasen, в основе которой лежит ядро блюспейс-аномалии. \
+	Этот странный кристалл позволяет механизму частично выйти из реальности, позволяя ему проходить сквозь стены, полы и другие препятствия, как если бы их вообще не существовало. \
+	Разработанный исследовательской группой Nanotrasen, проект недавно был отправлен на их научные станции для тестирования и предварительного производства.</i>"
 	. += ""
-	. += "<i>Due to the nature of finding Anomaly Cores, Phazons are exceedingly rare. \
-	It seems to hum with stored energy, the edges of its chassis blurry in the eyes of others, even at rest. \
-	Early test pilots report strange hallucinations and “visions” after extensive use of the phasing ability.</i>"
+	. += "<i>Из-за особенностей обнаружения ядер блюспейс-аномалий Фазоны встречаются чрезвычайно редко. \
+	Кажется, что он гудит от накопленной энергии, а края его корпуса размыты для глаз окружающих, даже в состоянии покоя. \
+	Первые пилоты-испытатели сообщали о странных галлюцинациях и видениях после интенсивного использования способности фазирования.</i>"
