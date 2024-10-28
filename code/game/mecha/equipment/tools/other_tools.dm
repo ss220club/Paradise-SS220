@@ -27,7 +27,7 @@
 
 /obj/item/mecha_parts/mecha_equipment/teleporter/precise
 	name = "upgraded teleporter"
-	desc = "Модуль для экзокостюма, который позволяет телепортироваться в любую видимую позицию. Это версия с высокой точностью и энергоэффективностью."
+	desc = "Модуль для экзокостюма, который позволяет телепортироваться в любую видимую позицию. Это версия с более высокой точностью и энергоэффективностью."
 	origin_tech = "bluespace=7"
 	energy_drain = 1000
 	tele_precision = 1
@@ -182,12 +182,12 @@
 		if(equip_ready)
 			START_PROCESSING(SSobj, src)
 			droid_overlay = new(icon, icon_state = "repair_droid_a")
-			log_message("Activated.")
+			log_message("Активирован.")
 			set_ready_state(0)
 		else
 			STOP_PROCESSING(SSobj, src)
 			droid_overlay = new(icon, icon_state = "repair_droid")
-			log_message("Deactivated.")
+			log_message("Деактивирован.")
 			set_ready_state(1)
 		chassis.overlays += droid_overlay
 		send_byjax(chassis.occupant,"exosuit.browser","\ref[src]",get_equip_info())
@@ -228,7 +228,7 @@
 
 /obj/item/mecha_parts/mecha_equipment/tesla_energy_relay
 	name = "exosuit energy relay"
-	desc = "Модуль экзокостюма, который беспроводным образом извлекает энергию из любых доступных источников питания в области. КПД едва компенсирует затраты на движение."
+	desc = "Модуль для экзокостюма, который беспроводным образом извлекает энергию из любых доступных источников питания в области. КПД едва компенсирует затраты на движение."
 	icon_state = "tesla"
 	origin_tech = "magnets=4;powerstorage=4;engineering=4"
 	energy_drain = 0
@@ -269,11 +269,11 @@
 		if(equip_ready) //inactive
 			START_PROCESSING(SSobj, src)
 			set_ready_state(0)
-			log_message("Activated.")
+			log_message("Активирован.")
 		else
 			STOP_PROCESSING(SSobj, src)
 			set_ready_state(1)
-			log_message("Deactivated.")
+			log_message("Деактивирован.")
 
 /obj/item/mecha_parts/mecha_equipment/tesla_energy_relay/get_equip_info()
 	if(!chassis) return
@@ -337,11 +337,11 @@
 		if(equip_ready) //inactive
 			set_ready_state(0)
 			START_PROCESSING(SSobj, src)
-			log_message("Активировано.")
+			log_message("Активирован.")
 		else
 			set_ready_state(1)
 			STOP_PROCESSING(SSobj, src)
-			log_message("Деактивировано.")
+			log_message("Деактивирован.")
 
 /obj/item/mecha_parts/mecha_equipment/generator/get_equip_info()
 	var/output = ..()
@@ -401,7 +401,7 @@
 		return
 	if(fuel_amount<=0)
 		STOP_PROCESSING(SSobj, src)
-		log_message("Леактивировано - нет топлива")
+		log_message("Деактивировано - нет топлива")
 		set_ready_state(1)
 		return
 	var/cur_charge = chassis.get_charge()
@@ -421,7 +421,7 @@
 
 /obj/item/mecha_parts/mecha_equipment/generator/nuclear
 	name = "exonuclear reactor"
-	desc = "Ядерный блок для экзокостюма, который генерирует энергию, используя уран в качестве топлива. Загрязняет окружающую среду при повреждении."
+	desc = "Ядерный реактор для экзокостюма, который генерирует энергию, используя уран в качестве топлива. Некоторые называют его «ядерным блоком». Загрязняет окружающую среду при повреждении."
 	icon_state = "tesla"
 	origin_tech = "powerstorage=4;engineering=4"
 	fuel_name = "uranium" // Our fuel name as a string

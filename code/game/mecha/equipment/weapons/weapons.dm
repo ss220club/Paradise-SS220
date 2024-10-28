@@ -98,7 +98,7 @@
 /obj/item/mecha_parts/mecha_equipment/weapon/energy/ion
 	equip_cooldown = 4 SECONDS
 	name = "mkIV Ion Heavy Scatter Cannon"
-	desc = "Ионный дробовик, который при выстреле предоставляет меху секунду ЭМИ-защиты с избыточной энергией от разряда."
+	desc = "Ионный дробовик для боевых экзокостюмов. При выстреле предоставляет меху секунду ЭМИ-защиты с избыточной энергией от разряда."
 	icon_state = "mecha_ion"
 	origin_tech = "materials=4;combat=5;magnets=4"
 	energy_drain = 215 // This is per shot + 1x cost, so ~1500 per shotgun shot
@@ -126,7 +126,7 @@
 /obj/item/mecha_parts/mecha_equipment/weapon/energy/xray
 	equip_cooldown = 3.5 SECONDS
 	name = "\improper S-1 X-Ray Projector"
-	desc = "Оружие для боевых экзокостюмов. Стреляет лучами рентгеновских лучей, которые проникают через твердые материалы."
+	desc = "Оружие для боевых экзокостюмов. Стреляет лучами рентгеновских лучей, которые проникают даже через самые твердые материалы."
 	icon_state = "mecha_xray"
 	origin_tech = "materials=3;combat=5;magnets=2;syndicate=2"
 	energy_drain = 80

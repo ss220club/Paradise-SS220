@@ -12,7 +12,7 @@
 
 /obj/item/mecha_parts/mecha_equipment/janitor/mega_mop
 	name = "\improper WLLY mega mop"
-	desc = "Увеличенная усовершенствованная швабра, предназначенная для использования в экзокостюмах."
+	desc = "Увеличенная усовершенствованная швабра, предназначенная для экзокостюмов."
 	icon_state = "mecha_mop"
 	equip_cooldown = 1.5 SECONDS
 	energy_drain = 1
@@ -50,7 +50,7 @@
 	if(istype(target, /obj/structure/reagent_dispensers/watertank) && get_dist(chassis,target) <= 1)
 		var/obj/structure/reagent_dispensers/watertank/WT = target
 		WT.reagents.trans_to(src, 1000)
-		occupant_message("<span class='notice'>Бак с водой для мега-швабры пополнен</span>")
+		occupant_message("<span class='notice'>Бак с водой для мега-швабры пополнен.</span>")
 		playsound(chassis, 'sound/effects/refill.ogg', 50, TRUE, -6)
 		return
 	if(reagents.total_volume > 0)
@@ -104,7 +104,7 @@
 // Light Replacer
 /obj/item/mecha_parts/mecha_equipment/janitor/light_replacer
 	name = "\improper NT-12 illuminator"
-	desc = "Модифицированный заменитель ламп для экзокостюма, который мгновенно устанавливает лампы на место."
+	desc = "Модифицированный лампозаменитель для экзокостюмов, который мгновенно устанавливает лампы на место."
 	icon_state = "mecha_light_replacer"
 	equip_cooldown = 1.5 SECONDS
 	energy_drain = 100
@@ -125,7 +125,7 @@
 // Mecha spray
 /obj/item/mecha_parts/mecha_equipment/janitor/mega_spray
 	name = "\improper JS-33 super spray"
-	desc = "Пульверизатор, увеличенный для экзокостюма. Идеально подходит для массовой санитарной обработки"
+	desc = "Увеличенный пульверизатор для экзокостюмов. Идеально подходит для массовой санитарной обработки."
 	icon_state = "mecha_spray"
 	equip_cooldown = 1.5 SECONDS
 	energy_drain = 200
@@ -156,7 +156,7 @@
 /obj/item/mecha_parts/mecha_equipment/janitor/mega_spray/emag_act(mob/user)
 	. = ..()
 	emagged = TRUE
-	to_chat(user, "<span class='warning'>Вы выводите из строя автоматическую систему полива на[src].</span>")
+	to_chat(user, "<span class='warning'>Вы выводите из строя автоматическую систему полива на [src].</span>")
 	spray_controller.reagents.clear_reagents()
 	refill_reagent = "lube"
 	refill_cost = 50
@@ -268,7 +268,7 @@
 		chassis.occupant.visible_message(
 			"<span class='notice'>[chassis.occupant] опустошает [src] в мусорку.</span>",
 			"<span class='notice'>Вы опустошаете [src] в мусорку.</span>",
-			"<span class='notice'>Вы слышите, как кто-то опустошает что-то в мусорку.</span>"
+			"<span class='notice'>Вы слышите, как кто-то выбрасывает что-то в мусорку.</span>"
 		)
 		chassis.Beam(target, icon_state = "rped_upgrade", icon = 'icons/effects/effects.dmi', time = 5)
 		playsound(src, 'sound/items/pshoom.ogg', 40, 1)

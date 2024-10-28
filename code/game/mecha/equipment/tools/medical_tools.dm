@@ -472,7 +472,7 @@
 	if(!A.reagents || ismob(A))
 		occupant_message("<span class='alert'>Информация о реактивах [A] не получена.</span>")
 		return FALSE
-	occupant_message("Analyzing reagents...")
+	occupant_message("Анализ реагентов...")
 	for(var/datum/reagent/R as anything in A.reagents.reagent_list)
 		if(initial(R.id) in GLOB.blocked_chems)
 			occupant_message("Реагент не подлежит анализу, производится его удаление из анализатора.")
@@ -480,7 +480,7 @@
 		if(add_known_reagent(R.id, R.name))
 			occupant_message("Реагент проанализирован, идентифицирован как [R.name] и добавлен в базу данных.")
 			send_byjax(chassis.occupant,"msyringegun.browser","reagents_form",get_reagents_form())
-	occupant_message("Analysis complete.")
+	occupant_message("Анализ завершён.")
 	return TRUE
 
 /obj/item/mecha_parts/mecha_equipment/medical/syringe_gun/proc/add_known_reagent(r_id,r_name)
@@ -538,8 +538,8 @@
 								"<span class='notice'[chassis] аккуратно тыкает [target] в нос. В последний момент гидравлика шипит и предохранители смягчают жёсткий удар.</span>")
 		else
 			push_aside(chassis, M)//out of the way, I have people to save!
-			occupant_message("<span class='notice'>Вы аккуратно отодвигаете [target] в сторону.</span>")
-			chassis.visible_message("<span class='notice'>[chassis] аккуратно отодвигает [target] в сторону.</span>")
+			occupant_message("<span class='notice'>Вы аккуратно отодвигаете [target] с дороги.</span>")
+			chassis.visible_message("<span class='notice'>[chassis] аккуратно отодвигает [target] с дороги.р</span>")
 
 /obj/item/mecha_parts/mecha_equipment/medical/rescue_jaw/proc/push_aside(obj/mecha/M, mob/living/L)
 	switch(get_dir(M, L))

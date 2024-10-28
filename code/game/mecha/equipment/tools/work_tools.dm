@@ -7,7 +7,7 @@
 
 /obj/item/mecha_parts/mecha_equipment/hydraulic_clamp
 	name = "hydraulic clamp"
-	desc = "Оборудование для экзокостюмов. Поднимает объекты и загружает их в грузовой отсек."
+	desc = "Оборудование для экзокостюмов. Позволяет поднимать объекты и загружать их в грузовой отсек."
 	icon_state = "mecha_clamp"
 	equip_cooldown = 15
 	energy_drain = 10
@@ -44,7 +44,7 @@
 			target.Bumped(chassis)
 			return
 		if(O.anchored)
-			occupant_message("<span class='warning'>[target] надежно зафиксирован!</span>")
+			occupant_message("<span class='warning'>[target] надёжно зафиксирован!</span>")
 			return
 		if(length(cargo_holder.cargo) >= cargo_holder.cargo_capacity)
 			occupant_message("<span class='warning'>Недостаточно места в грузовом отсеке!</span>")
@@ -95,20 +95,20 @@
 		var/obj/O = target
 		if(!O.anchored)
 			if(length(cargo_holder.cargo) < cargo_holder.cargo_capacity)
-				chassis.visible_message("[chassis] поднимает [target] и начинает загружать его в грузовой отсек.")
+				chassis.visible_message("[chassis] поднимает [target] и начинает загружать в грузовой отсек.")
 				O.anchored = TRUE
 				if(do_after_cooldown(target))
 					cargo_holder.cargo += O
 					O.forceMove(chassis)
 					O.anchored = FALSE
 					occupant_message("<span class='notice'>[target] успешно загружен.</span>")
-					log_message("Loaded [O]. Cargo compartment capacity: [cargo_holder.cargo_capacity - length(cargo_holder.cargo)]")
+					log_message("Загружен [O]. Свободного места в грузовом отсеке: [cargo_holder.cargo_capacity - length(cargo_holder.cargo)]")
 				else
 					O.anchored = initial(O.anchored)
 			else
 				occupant_message("<span class='warning'>Недостаточно места в грузовом отсеке!</span>")
 		else
-			occupant_message("<span class='warning'>[target] надежно зафиксирован!</span>")
+			occupant_message("<span class='warning'>[target] надёжно зафиксирован!</span>")
 
 	else if(isliving(target))
 		var/mob/living/M = target
@@ -234,7 +234,7 @@
 				if((isreinforcedwallturf(target) && !canRwall) || istype(target, /turf/simulated/wall/indestructible))
 					return 0
 				var/turf/simulated/wall/W = target
-				occupant_message("Deconstructing [target]...")
+				occupant_message("Деконструкция [target]...")
 				if(do_after_cooldown(W))
 					chassis.spark_system.start()
 					W.ChangeTurf(/turf/simulated/floor/plating)
@@ -289,7 +289,7 @@
 			if(MECH_RCD_MODE_WALL_OR_FLOOR)
 				occupant_message("Режим RCD переключён на постройку.")
 			if(MECH_RCD_MODE_AIRLOCK)
-				occupant_message("Режим RCD переключён на постройку шлюза.")
+				occupant_message("Режим RCD переключён на постройку шлюзов.")
 
 /obj/item/mecha_parts/mecha_equipment/rcd/get_equip_info()
 	return "[..()] \[<a href='byond://?src=[UID()];mode=0'>D</a>|<a href='byond://?src=[UID()];mode=1'>C</a>|<a href='byond://?src=[UID()];mode=2'>A</a>\]"
@@ -383,7 +383,7 @@
 		return
 	if(href_list["cut"])
 		if(cable && cable.amount)
-			var/m = round(input(chassis.occupant,"Please specify the length of cable to cut","Cut cable",min(cable.amount,30)) as num, 1)
+			var/m = round(input(chassis.occupant,"Пожалуйста, укажите длину кабеля для резки","Отрезать кабель",min(cable.amount,30)) as num, 1)
 			m = min(m, cable.amount)
 			if(m)
 				use_cable(m)
