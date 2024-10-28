@@ -1,5 +1,7 @@
 /obj/structure/closet/walllocker
 	icon = 'modular_ss220/aesthetics/wallcloset/icons/wallclosets.dmi'
+	door_anim_time = 2.0
+	enable_door_overlay = TRUE
 
 /obj/structure/closet/walllocker/firelocker
 	icon_state = "firecloset"
