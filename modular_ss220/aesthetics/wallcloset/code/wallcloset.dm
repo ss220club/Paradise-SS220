@@ -3,6 +3,15 @@
 	door_anim_time = 2.0
 	enable_door_overlay = TRUE
 
+/obj/structure/closet/walllocker/emerglocker
+	door_anim_time = 2.0
+
+/obj/structure/closet/walllocker/firelocker
+	door_anim_time = 2.0
+
+/obj/structure/closet/walllocker/medlocker
+	door_anim_time = 2.0
+
 /obj/structure/closet/walllocker/firelocker
 	icon_state = "firecloset"
 	icon_closed = "firecloset"
