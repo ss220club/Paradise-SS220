@@ -52,7 +52,7 @@
 /obj/structure/rubble/tool_act(mob/living/user, obj/item/I, tool_type)
 	. = ..()
 	// Pickaxe - Clear rubble
-	if (istype(tool_type, /obj/item/pickaxe))
+	if(istype(tool_type, /obj/item/pickaxe))
 		user.visible_message(
 			"<span class='notice'> \The [user] starts clearing away \the [src] with \a [tool_type].",
 			"<span class='notice'> You start clearing away \the [src] with \the [tool_type]."
