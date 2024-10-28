@@ -14,3 +14,4 @@
 /atom/movable/screen/alert/Click()
 	if(isliving(usr) && ..())
 		SEND_SIGNAL(usr, COMSIG_GADOM_UNLOAD)
+	. = ..()
