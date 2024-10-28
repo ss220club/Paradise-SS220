@@ -7,8 +7,6 @@
 	temperature = DUNE_TEMPERATURE
 	atmos_mode = ATMOS_MODE_SEALED
 
-/turf/simulated/floor/lava/dune
-
 /turf/simulated/floor/brick/cold
 	temperature = T20C
 	atmos_mode = ATMOS_MODE_SEALED
