@@ -25,8 +25,9 @@
 		if(owner.invisibility != INVISIBILITY_LEVEL_TWO)
 			owner.alpha -= 51
 	else
-		owner.reset_visibility()
-		owner.alpha = 255
+		if(owner.invisibility != INVISIBILITY_OBSERVER)
+			owner.reset_visibility()
+			owner.alpha = 255
 	if(owner.alpha == 0)
 		owner.make_invisible()
 

@@ -126,7 +126,8 @@
 		return
 	var/obj/item/organ/internal/cyberimp/chest/serpentid_blades/blades_implant = M.get_int_organ(/obj/item/organ/internal/cyberimp/chest/serpentid_blades)
 	if(blades_implant)
-		blades_implant.owner.reset_visibility()
+		if(blades_implant.owner.invisibility != INVISIBILITY_OBSERVER)
+			blades_implant.owner.reset_visibility()
 		if(blades_implant.blades_active)
 			if((M != H) && M.a_intent != INTENT_HELP && H.check_shields(M, 0, M.name, attack_type = UNARMED_ATTACK))
 				add_attack_logs(M, H, "Melee attacked with blades (miss/block)")
