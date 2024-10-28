@@ -727,9 +727,9 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		// SS220 EDIT START - Species overlay shift
 		. = list()
 		SEND_SIGNAL(src, COMSIG_MOB_GET_OVERLAY_SHIFTS_LIST, "head", .)
-		if(.)
-			new_glasses.pixel_x = .["shift_x"]
-			new_glasses.pixel_y = .["shift_y"]
+		if(length(.) > 0)
+			new_glasses.pixel_x += .["shift_x"]
+			new_glasses.pixel_y += .["shift_y"]
 		// SS220 EDIT END
 
 		var/datum/sprite_accessory/hair/hair_style = GLOB.hair_styles_full_list[head_organ.h_style]
@@ -775,9 +775,9 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		var/mutable_appearance/standing = mutable_appearance(left_ear_icon, left_ear_item_state, layer = -LEFT_EAR_LAYER)
 		. = list()
 		SEND_SIGNAL(src, COMSIG_MOB_GET_OVERLAY_SHIFTS_LIST, "head", .)
-		if(.)
-			standing.pixel_x = .["shift_x"]
-			standing.pixel_y = .["shift_y"]
+		if(length(.) > 0)
+			standing.pixel_x += .["shift_x"]
+			standing.pixel_y += .["shift_y"]
 		overlays_standing[LEFT_EAR_LAYER] = standing
 		// SS220 EDIT END
 
@@ -796,9 +796,9 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		var/mutable_appearance/standing = mutable_appearance(right_ear_icon, right_ear_item_state, layer = -RIGHT_EAR_LAYER)
 		. = list()
 		SEND_SIGNAL(src, COMSIG_MOB_GET_OVERLAY_SHIFTS_LIST, "head", .)
-		if(.)
-			standing.pixel_x = .["shift_x"]
-			standing.pixel_y = .["shift_y"]
+		if(length(.) > 0)
+			standing.pixel_x += .["shift_x"]
+			standing.pixel_y += .["shift_y"]
 		overlays_standing[RIGHT_EAR_LAYER] = standing
 		// SS220 EDIT END
 
@@ -907,9 +907,9 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		// SS220 EDIT START - Species overlay shift
 		. = list()
 		SEND_SIGNAL(src, COMSIG_MOB_GET_OVERLAY_SHIFTS_LIST, "head", .)
-		if(.)
-			standing.pixel_x = .["shift_x"]
-			standing.pixel_y = .["shift_y"]
+		if(length(.) > 0)
+			standing.pixel_x += .["shift_x"]
+			standing.pixel_y += .["shift_y"]
 		// SS220 EDIT END
 
 		overlays_standing[HEAD_LAYER] = standing
@@ -971,9 +971,9 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		// SS220 EDIT START - Species overlay shift
 		. = list()
 		SEND_SIGNAL(src, COMSIG_MOB_GET_OVERLAY_SHIFTS_LIST, "belt", .)
-		if(.)
-			standing.pixel_x = .["shift_x"]
-			standing.pixel_y = .["shift_y"]
+		if(length(.) > 0)
+			standing.pixel_x += .["shift_x"]
+			standing.pixel_y += .["shift_y"]
 		// SS220 EDIT END
 
 		overlays_standing[overlay_layer] = standing
@@ -1097,9 +1097,9 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 			// SS220 EDIT START - Species overlay shift
 			. = list()
 			SEND_SIGNAL(src, COMSIG_MOB_GET_OVERLAY_SHIFTS_LIST, "head", .)
-			if(.)
-				standing.pixel_x = .["shift_x"]
-				standing.pixel_y = .["shift_y"]
+			if(length(.) > 0)
+				standing.pixel_x += .["shift_x"]
+				standing.pixel_y += .["shift_y"]
 			// SS220 EDIT END
 
 			overlays_standing[FACEMASK_LAYER] = standing
@@ -1130,9 +1130,9 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		// SS220 EDIT START - Species overlay shift
 		. = list()
 		SEND_SIGNAL(src, COMSIG_MOB_GET_OVERLAY_SHIFTS_LIST, "back", .)
-		if(.)
-			standing.pixel_x = .["shift_x"]
-			standing.pixel_y = .["shift_y"]
+		if(length(.) > 0)
+			standing.pixel_x += .["shift_x"]
+			standing.pixel_y += .["shift_y"]
 		// SS220 EDIT END
 
 		overlays_standing[BACK_LAYER] = standing
@@ -1172,9 +1172,9 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		// SS220 EDIT START - Species overlay shift
 		. = list()
 		SEND_SIGNAL(src, COMSIG_MOB_GET_OVERLAY_SHIFTS_LIST, "inhand", .)
-		if(.)
-			standing.pixel_x = .["shift_x"]
-			standing.pixel_y = .["shift_y"]
+		if(length(.) > 0)
+			standing.pixel_x += .["shift_x"]
+			standing.pixel_y += .["shift_y"]
 		// SS220 EDIT END
 
 		overlays_standing[R_HAND_LAYER] = standing
@@ -1201,9 +1201,9 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		// SS220 EDIT START - Species overlay shift
 		. = list()
 		SEND_SIGNAL(src, COMSIG_MOB_GET_OVERLAY_SHIFTS_LIST, "inhand", .)
-		if(.)
-			standing.pixel_x = .["shift_x"]
-			standing.pixel_y = .["shift_y"]
+		if(length(.) > 0)
+			standing.pixel_x += .["shift_x"]
+			standing.pixel_y += .["shift_y"]
 		// SS220 EDIT END
 
 		overlays_standing[L_HAND_LAYER] = standing
