@@ -5,8 +5,8 @@
 	name = "brick floor"
 	icon = 'modular_ss220/dunes_map/icons/desert.dmi'
 	icon_state = "brick"
-	atmos_mode = ATMOS_MODE_NO_DECAY
-	temperature = DESERT_SUMMER
+	atmos_mode = ATMOS_MODE_EXPOSED_TO_ENVIRONMENT
+	atmos_environment = ENVIRONMENT_TEMPERATE
 
 /turf/simulated/floor/plating/ice
 
@@ -20,8 +20,8 @@
 	name = "dune sand"
 	icon = 'modular_ss220/dunes_map/icons/desert.dmi'
 	icon_state = "sand"
-	atmos_mode = ATMOS_MODE_NO_DECAY
-	temperature = DESERT_SUMMER
+	atmos_mode = ATMOS_MODE_EXPOSED_TO_ENVIRONMENT
+	atmos_environment = ENVIRONMENT_TEMPERATE
 	footstep = FOOTSTEP_SAND
 	barefootstep = FOOTSTEP_SAND
 	clawfootstep = FOOTSTEP_SAND
@@ -163,7 +163,7 @@
 	icon_state = "water"
 	baseturf = /turf/simulated/floor/beach/away/water/desert_water
 	water_overlay_image = null
-	atmos_mode = ATMOS_MODE_NO_DECAY
+	atmos_mode = ATMOS_MODE_SEALED
 	temperature = DESERT_SUMMER
 
 /turf/simulated/wall/indestructible/rock/mineral/dune_rock
@@ -178,7 +178,8 @@
 	icon = 'modular_ss220/dunes_map/icons/chasm.dmi'
 	oxygen = 21.8366
 	nitrogen = 82.1472
-	atmos_mode = ATMOS_MODE_SEALED
+	atmos_mode = ATMOS_MODE_EXPOSED_TO_ENVIRONMENT
+	atmos_environment = ENVIRONMENT_TEMPERATE
 
 /turf/simulated/floor/lava/dune
 	icon = 'modular_ss220/dunes_map/icons/lava.dmi'
@@ -273,6 +274,8 @@
 	icon = 'modular_ss220/dunes_map/icons/cave_floor.dmi'
 	icon_state = "boss0"
 	footstep = FOOTSTEP_CARPET
+	atmos_environment = ENVIRONMENT_TEMPERATE
+	temperature = T20C
 	barefootstep = FOOTSTEP_CARPET
 	clawfootstep = FOOTSTEP_CARPET
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY

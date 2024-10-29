@@ -376,8 +376,8 @@
 	attacktext = "strikes"
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	gold_core_spawnable = HOSTILE_SPAWN
-	minbodytemp = INFINITY
 	var/venom_per_bite = 0
+	unsuitable_atmos_damage = 0
 
 
 /mob/living/simple_animal/hostile/poison/giant_scorpio/AttackingTarget()
@@ -407,6 +407,7 @@
 	melee_damage_upper = 20
 	move_to_delay = 5
 
+
 /obj/structure/spawner/scorpio
 	name = "вход в тоннель"
 	desc = "Вам кажется, что на вас пялится 8 светящихся глаз."
@@ -435,6 +436,7 @@
 	del_on_death = TRUE
 	loot = list(/obj/effect/decal/cleanable/spiderling_remains)
 	maxbodytemp = INFINITY
+	unsuitable_atmos_damage = 0
 
 /mob/living/simple_animal/hostile/poison_snake/scorpio_mini/purpl
 	icon_state = "scorpion_mini"
