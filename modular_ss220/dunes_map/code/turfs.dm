@@ -1,38 +1,21 @@
-#define DUNE_TEMPERATURE 20 // Жарко пиздец
 
 /turf/simulated/floor/brick
 	name = "brick floor"
 	icon = 'modular_ss220/dunes_map/icons/desert.dmi'
 	icon_state = "brick"
-	temperature = DUNE_TEMPERATURE
-	atmos_mode = ATMOS_MODE_SEALED
+	atmos_mode = ATMOS_MODE_EXPOSED_TO_ENVIRONMENT
+	atmos_environment = ENVIRONMENT_COLD
+
 
 /turf/simulated/floor/brick/cold
-	temperature = T20C
-	atmos_mode = ATMOS_MODE_SEALED
-
-/turf/simulated/floor/indestructible/quicksand
-	name = "dune sand"
-	icon = 'modular_ss220/dunes_map/icons/desert.dmi'
-	icon_state = "quicksand"
-	temperature = DUNE_TEMPERATURE
-	atmos_mode = ATMOS_MODE_SEALED
-	footstep = FOOTSTEP_SAND
-	barefootstep = FOOTSTEP_SAND
-	clawfootstep = FOOTSTEP_SAND
-	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
-	smoothing_groups = list(SMOOTH_GROUP_FLOOR)
-	var/environment_type = "sand"
-	var/obj/item/stack/digResult = /obj/item/stack/ore/glass
-	var/floor_variance = 5
-	var/dug
+	atmos_environment = ENVIRONMENT_TEMPERATE
 
 /turf/simulated/floor/indestructible/dune_sand
 	name = "dune sand"
 	icon = 'modular_ss220/dunes_map/icons/desert.dmi'
 	icon_state = "sand"
-	temperature = DUNE_TEMPERATURE
-	atmos_mode = ATMOS_MODE_SEALED
+	atmos_mode = ATMOS_MODE_EXPOSED_TO_ENVIRONMENT
+	atmos_environment = ENVIRONMENT_COLD
 	footstep = FOOTSTEP_SAND
 	barefootstep = FOOTSTEP_SAND
 	clawfootstep = FOOTSTEP_SAND
@@ -136,14 +119,12 @@
 	smoothing_groups = null
 
 /turf/simulated/floor/indestructible/dune_sand/dark/cold
-	temperature = T20C
-	atmos_mode = ATMOS_MODE_SEALED
+	atmos_environment = ENVIRONMENT_TEMPERATE
 
 /turf/simulated/floor/indestructible/dune_sand/cold
 	color = "#E6E6E6"
-	temperature = T20C
 	baseturf = /turf/simulated/floor/indestructible/dune_sand/dug/cold
-	atmos_mode = ATMOS_MODE_SEALED
+	atmos_environment = ENVIRONMENT_TEMPERATE
 
 /turf/simulated/floor/indestructible/dune_sand/smooth
 	icon = 'modular_ss220/dunes_map/icons/sand_smooth.dmi'
@@ -155,9 +136,8 @@
 
 /turf/simulated/floor/indestructible/dune_sand/smooth/cold
 	color = "#E6E6E6"
-	temperature = T20C
 	baseturf = /turf/simulated/floor/indestructible/dune_sand/dug/cold
-	atmos_mode = ATMOS_MODE_SEALED
+	atmos_environment = ENVIRONMENT_TEMPERATE
 
 /turf/simulated/floor/indestructible/dune_sand/dug
 	name = "sand dug"
@@ -165,9 +145,8 @@
 
 /turf/simulated/floor/indestructible/dune_sand/dug/cold
 	color = "#E6E6E6"
-	temperature = T20C
 	baseturf = /turf/simulated/floor/indestructible/dune_sand/dug/cold
-	atmos_mode = ATMOS_MODE_SEALED
+	atmos_environment = ENVIRONMENT_TEMPERATE
 
 /turf/simulated/floor/beach/away/water/desert_water
 	icon = 'modular_ss220/dunes_map/icons/desert.dmi'
