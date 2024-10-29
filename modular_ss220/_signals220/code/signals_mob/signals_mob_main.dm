@@ -1,20 +1,20 @@
 // Signals for /mob
-//Вызов сигнала при экипировке любой вещи
+// Вызов сигнала при экипировке любой вещи
 /mob/equip_to_slot(obj/item/W, slot, initial = FALSE)
 	. = .. ()
 	SEND_SIGNAL(src, COMSIG_MOB_ON_EQUIP)
 
-//Вызов сигнала при повоторе через ctrl+wasd
+// Вызов сигнала при повоторе через ctrl+wasd
 /mob/facedir(ndir)
 	. = .. ()
 	SEND_SIGNAL(src, COMSIG_ATOM_DIR_CHANGE)
 
-//Вызов сигнала при повороте через ЛКМы
+// Вызов сигнала при повороте через ЛКМы
 /mob/ClickOn(atom/A, params)
 	. = .. ()
 	SEND_SIGNAL(src, COMSIG_MOB_ON_CLICK)
 
-//Расширение для пристегивания моба
+// Расширение для пристегивания моба
 /mob/MouseDrop(mob/M as mob, src_location, over_location, src_control, over_control, params)
 	if((M != usr) || !istype(M))
 		..()

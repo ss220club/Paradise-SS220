@@ -8,7 +8,7 @@
 #define MATERIAL_CLASS_RAD		4
 #define MATERIAL_CLASS_PLASMA	5
 
-///Базовое время погрузки ящиков/мобов на куклу
+/// Базовое время погрузки ящиков/мобов на куклу
 #define GADOM_BASIC_LOAD_TIMER 2 SECONDS
 
 #define isserpentid(A) (is_species(A, /datum/species/serpentid))

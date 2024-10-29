@@ -1,7 +1,7 @@
-//Обновление иконок для кастомных рас
+// Обновление иконок для кастомных рас
 /datum/character_save/update_preview_icon(for_observer=0)
 	. = .. ()
-	//Это ужасно,но так можно кастомным расам выдавать кастомные глаза (я хз, почему сработало так, нужны разьяснения)
+	// Это ужасно,но так можно кастомным расам выдавать кастомные глаза (я хз, почему сработало так, нужны разьяснения)
 	var/datum/species/selected_specie = GLOB.all_species[species]
 	if(!istype(selected_specie, /datum/species/serpentid))
 		return
@@ -10,7 +10,7 @@
 	qdel(preview_icon_side)
 	qdel(preview_icon)
 
-	//Переменные взяты с оффов, обновил
+	// Переменные взяты с оффов, обновил
 	var/gender = "m"
 	if(body_type == FEMALE)
 		gender = "f"

@@ -1,4 +1,4 @@
-//Может и на оффы, но пока увы. Я не против, если этот код отправит на оффы КТО угодно.
+// Может и на оффы, но пока увы. Я не против, если этот код отправит на оффы КТО угодно.
 /obj/item/organ/external/head/carapace/replaced()
 	. = ..()
 	for(var/datum/action/action as anything in actions)

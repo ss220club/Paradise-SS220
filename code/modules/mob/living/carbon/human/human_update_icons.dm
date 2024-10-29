@@ -959,6 +959,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		if(!t_state)
 			t_state = belt.icon_state
 
+		// SS220 EDIT создание единой переменной и ее изменения через логические проверки
 		var/mutable_appearance/standing
 		if(belt.icon_override)
 			t_state = "[t_state]_be"
@@ -968,15 +969,15 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		else
 			standing = mutable_appearance('icons/mob/clothing/belt.dmi', "[t_state]", layer = -overlay_layer)
 
-		// SS220 EDIT START - Species overlay shift
+		// SS220 EDIT START - вызов сдвигов
 		. = list()
 		SEND_SIGNAL(src, COMSIG_MOB_GET_OVERLAY_SHIFTS_LIST, "belt", .)
 		if(length(.) > 0)
 			standing.pixel_x += .["shift_x"]
 			standing.pixel_y += .["shift_y"]
-		// SS220 EDIT END
 
 		overlays_standing[overlay_layer] = standing
+		// SS220 EDIT END
 
 	apply_overlay(BELT_LAYER)
 	apply_overlay(SPECIAL_BELT_LAYER)

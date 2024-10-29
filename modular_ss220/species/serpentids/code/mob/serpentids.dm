@@ -69,16 +69,16 @@
 
 	scream_verb = "утробно ревёт"
 	speech_sounds = list(
-		'modular_ss220/species/serpentids/sounds/serpentid_talk_1.ogg',
-		'modular_ss220/species/serpentids/sounds/serpentid_talk_2.ogg',
-		'modular_ss220/species/serpentids/sounds/serpentid_talk_3.ogg')
+		'modular_ss220/species/serpentids/sounds/serpentid_talk1.ogg',
+		'modular_ss220/species/serpentids/sounds/serpentid_talk2.ogg',
+		'modular_ss220/species/serpentids/sounds/serpentid_talk3.ogg')
 	speech_chance = 20
 	male_scream_sound = 'modular_ss220/species/serpentids/sounds/serpentid_scream.ogg'
 	female_scream_sound = 'modular_ss220/species/serpentids/sounds/serpentid_scream.ogg'
 	male_giggle_sound = list(
-		'modular_ss220/species/serpentids/sounds/serpentid_chuckle.ogg')
+		'modular_ss220/species/serpentids/sounds/serpentid_giggle.ogg')
 	female_giggle_sound = list(
-		'modular_ss220/species/serpentids/sounds/serpentid_chuckle.ogg')
+		'modular_ss220/species/serpentids/sounds/serpentid_giggle.ogg')
 	male_laugh_sound = list(
 		'modular_ss220/species/serpentids/sounds/serpentid_laugh.ogg')
 	female_laugh_sound = list(

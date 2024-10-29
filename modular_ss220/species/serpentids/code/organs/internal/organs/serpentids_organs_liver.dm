@@ -1,4 +1,4 @@
-///печень - вырабатывает глутамат натрия из нутриентов
+/// печень - вырабатывает глутамат натрия из нутриентов
 /obj/item/organ/internal/liver/serpentid
 	name = "chemical processor"
 	icon = 'modular_ss220/species/serpentids/icons/organs.dmi'

@@ -1,4 +1,4 @@
-//Глаза - включают режим щитков, но очень уязвивым к вспышкам (в 2 раза сильнее молиных глаз)
+// Глаза - включают режим щитков, но очень уязвивым к вспышкам (в 2 раза сильнее молиных глаз)
 /obj/item/organ/internal/eyes/serpentid
 	name = "visual sensor"
 	icon = 'modular_ss220/species/serpentids/icons/organs.dmi'
@@ -24,7 +24,7 @@
 	AddComponent(/datum/component/chemistry_organ, SERPENTID_CHEM_REAGENT_ID)
 	AddComponent(/datum/component/organ_action, caller_organ = src, state = radial_action_state, icon = radial_action_icon)
 
-//Прок на получение цвета глаз
+// Прок на получение цвета глаз
 /obj/item/organ/internal/eyes/serpentid/generate_icon(mob/living/carbon/human/HA)
 	if(!HA)
 		return

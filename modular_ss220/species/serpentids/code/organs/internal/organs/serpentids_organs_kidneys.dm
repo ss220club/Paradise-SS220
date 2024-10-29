@@ -1,4 +1,4 @@
-///почки - базовые c добавлением дикея, вырабатывают энзимы, которые позволяют ГБС скрываться
+/// почки - базовые c добавлением дикея, вырабатывают энзимы, которые позволяют ГБС скрываться
 /obj/item/organ/internal/kidneys/serpentid
 	name = "secreting organ"
 	icon = 'modular_ss220/species/serpentids/icons/organs.dmi'
