@@ -648,5 +648,5 @@ GLOBAL_LIST_INIT(ru_attack_verbs, list(
 	"ineffectively pierces" = "неэффективно пробивает",
 ))
 
-/proc/ru_attack_verb(attack_verb, var/list/attack_type = GLOB.ru_attack_verbs)
+/proc/ru_attack_verb(attack_verb, list/attack_type = GLOB.ru_attack_verbs)
 	return attack_type[attack_verb] || attack_verb
