@@ -4,7 +4,7 @@
 	requires_power = FALSE
 	has_gravity = TRUE
 	always_unpowered = TRUE
-	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
+	dynamic_lighting = DYNAMIC_LIGHTING_FORCED
 	there_can_be_many = TRUE
 	nad_allowed = TRUE
 	min_ambience_cooldown = 3 MINUTES

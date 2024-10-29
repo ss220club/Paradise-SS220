@@ -12,8 +12,8 @@
 	end_overlay = "light_sand"
 
 	area_type = /area/awaymission/arrakis/outside
-	target_trait = STATION_LEVEL
-	weather_color = "#86857a"
+	target_trait = AWAY_LEVEL
+	weather_color = "#dadad3"
 	immunity_type = "sand"
 
 /datum/weather/ash_storm/sand_storm/update_areas()

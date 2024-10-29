@@ -238,7 +238,7 @@
 /mob/living/simple_animal/hostile/lizard/gator/desert
 	del_on_death = TRUE
 	butcher_results = null
-	maxbodytemp = INFINITY
+	minbodytemp = INFINITY
 	icon_state = "gator"
 	icon_living = "gator"
 	icon_dead = "gator_dead"
@@ -376,7 +376,7 @@
 	attacktext = "strikes"
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	gold_core_spawnable = HOSTILE_SPAWN
-	maxbodytemp = INFINITY
+	minbodytemp = INFINITY
 	var/venom_per_bite = 0
 
 
@@ -423,9 +423,6 @@
 /obj/structure/spawner/scorpio/poison
 	mob_types = list(/mob/living/simple_animal/hostile/poison/giant_scorpio/poison)
 
-/mob/living/simple_animal/hostile/poison_snake
-	maxbodytemp = INFINITY
-
 /mob/living/simple_animal/hostile/poison_snake/scorpio_mini
 	name = "скорпион"
 	desc = "Небольшое проворливое членистоногое обитающие в засушливом климате. Для охоты и защиты использует жало с сильным нейропаралитическим ядом."
@@ -437,7 +434,7 @@
 	faction = list("scorpio")
 	del_on_death = TRUE
 	loot = list(/obj/effect/decal/cleanable/spiderling_remains)
-	maxbodytemp = INFINITY
+	minbodytemp = INFINITY
 
 /mob/living/simple_animal/hostile/poison_snake/scorpio_mini/purpl
 	icon_state = "scorpion_mini"
@@ -447,5 +444,5 @@
 /mob/living/simple_animal/cow/desert
 	name = "Пустынная корова"
 	desc = "Особо стойкая порода коров, способная выдерживать адские температуры."
-	maxbodytemp = INFINITY
+	minbodytemp = INFINITY
 	var/milk_capacity

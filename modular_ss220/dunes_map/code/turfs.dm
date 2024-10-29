@@ -6,7 +6,6 @@
 	atmos_mode = ATMOS_MODE_EXPOSED_TO_ENVIRONMENT
 	atmos_environment = ENVIRONMENT_COLD
 
-
 /turf/simulated/floor/brick/cold
 	atmos_environment = ENVIRONMENT_TEMPERATE
 
