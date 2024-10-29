@@ -1,12 +1,12 @@
 #define DESERT_WINTER 180
+#define DESERT_SUMMER 430
 
 /turf/simulated/floor/brick
 	name = "brick floor"
 	icon = 'modular_ss220/dunes_map/icons/desert.dmi'
 	icon_state = "brick"
-	atmos_mode = ATMOS_MODE_EXPOSED_TO_ENVIRONMENT
-	atmos_environment = ENVIRONMENT_COLD
-	temperature = DESERT_WINTER
+	atmos_mode = ATMOS_MODE_NO_DECAY
+	temperature = DESERT_SUMMER
 
 /turf/simulated/floor/plating/ice
 
@@ -20,9 +20,8 @@
 	name = "dune sand"
 	icon = 'modular_ss220/dunes_map/icons/desert.dmi'
 	icon_state = "sand"
-	atmos_mode = ATMOS_MODE_EXPOSED_TO_ENVIRONMENT
-	atmos_environment = ENVIRONMENT_COLD
-	temperature = DESERT_WINTER
+	atmos_mode = ATMOS_MODE_NO_DECAY
+	temperature = DESERT_SUMMER
 	footstep = FOOTSTEP_SAND
 	barefootstep = FOOTSTEP_SAND
 	clawfootstep = FOOTSTEP_SAND
@@ -164,9 +163,8 @@
 	icon_state = "water"
 	baseturf = /turf/simulated/floor/beach/away/water/desert_water
 	water_overlay_image = null
-	temperature = DESERT_WINTER
-	atmos_mode = ATMOS_MODE_EXPOSED_TO_ENVIRONMENT
-	atmos_environment = ENVIRONMENT_COLD
+	atmos_mode = ATMOS_MODE_NO_DECAY
+	temperature = DESERT_SUMMER
 
 /turf/simulated/wall/indestructible/rock/mineral/dune_rock
 	name = "dune rock"
@@ -325,3 +323,4 @@
 	light_range = 0
 
 #undef DESERT_WINTER
+#undef DESERT_SUMMER
