@@ -7,15 +7,8 @@
 	door_anim_time = 2.0
 
 /obj/structure/closet/walllocker/firelocker
-	door_anim_time = 2.0
-
-/obj/structure/closet/walllocker/medlocker
-	door_anim_time = 2.0
-
-/obj/structure/closet/walllocker/firelocker
 	icon_state = "firecloset"
-	icon_closed = "firecloset"
-	icon_opened = "firecloset_open"
+	door_anim_time = 2.0
 
 /obj/structure/closet/walllocker/firelocker/north
 	pixel_y = 32
@@ -42,8 +35,7 @@
 
 /obj/structure/closet/walllocker/medlocker
 	icon_state = "medcloset"
-	icon_closed = "medcloset"
-	icon_opened = "medcloset_open"
+	door_anim_time = 2.0
 
 /obj/structure/closet/walllocker/medlocker/north
 	pixel_y = 32
