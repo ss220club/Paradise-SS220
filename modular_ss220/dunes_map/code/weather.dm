@@ -2,18 +2,18 @@
 	name = "sand storm"
 	desc = "Печально известные песчанные бури Хирки."
 
-	telegraph_message = "<span class='boldwarning'>Хирка печально известна своими песчаными бурями. Одну из таких вы примечаете на горизонте в виде стремительно нарастающей стены песка и пыли. Стоит поскорее найти укрытие.</span>"
+	telegraph_message = "<span class='boldwarning'>Хирка печально известна своими песчаными бурями. Во время долгой зимы они особенно опасны. Одну из таких вы примечаете на горизонте в виде стремительно нарастающей стены пыли и снега. Стоит поскорее найти укрытие.</span>"
 	telegraph_overlay = "light_sand"
 
-	weather_message = "<span class='userdanger'><i>Буря молниеносно застилает все вокруге, горячий песок обжигает и застилает свет. Планета погружается в полумрак. Без специального снаряжения наружу лучше не выходить...</i></span>"
+	weather_message = "<span class='userdanger'><i>Буря молниеносно застилает все вокруге. Без специального снаряжения наружу лучше не выходить...</i></span>"
 	weather_overlay = "sand_storm"
 
-	end_message = "<span class='boldannounceic'>Рёв ветра постепенно стихает, песчаные облака улетучиваются всё дальше и дальше. К поверхности снова пробивается свет. Кажется, теперь можно покинуть свое укрытие.</span>"
+	end_message = "<span class='boldannounceic'>Рёв ветра постепенно стихает, снежные и пылевые облака улетучиваются всё дальше и дальше. Опасность миновала.</span>"
 	end_overlay = "light_sand"
 
 	area_type = /area/awaymission/arrakis/outside
 	target_trait = STATION_LEVEL
-	weather_color = "#e7de83"
+	weather_color = "#86857a"
 	immunity_type = "sand"
 
 /datum/weather/ash_storm/sand_storm/update_areas()

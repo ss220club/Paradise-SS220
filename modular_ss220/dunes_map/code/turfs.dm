@@ -151,7 +151,6 @@
 /turf/simulated/floor/beach/away/water/desert_water
 	icon = 'modular_ss220/dunes_map/icons/desert.dmi'
 	icon_state = "water"
-	temperature = DUNE_TEMPERATURE
 	baseturf = /turf/simulated/floor/beach/away/water/desert_water
 	water_overlay_image = null
 
@@ -167,21 +166,17 @@
 	icon = 'modular_ss220/dunes_map/icons/chasm.dmi'
 	oxygen = 21.8366
 	nitrogen = 82.1472
-	temperature = DUNE_TEMPERATURE
 	atmos_mode = ATMOS_MODE_SEALED
 
 /turf/simulated/floor/lava/dune
 	icon = 'modular_ss220/dunes_map/icons/lava.dmi'
 	atmos_mode = ATMOS_MODE_SEALED
-	temperature = DUNE_TEMPERATURE
 
 /turf/simulated/floor/engine/cult/dune
 	icon_state = "cult"
-	temperature = DUNE_TEMPERATURE
 	atmos_mode = ATMOS_MODE_SEALED
 
 /turf/simulated/floor/indestructible/dune
-	temperature = DUNE_TEMPERATURE
 	atmos_mode = ATMOS_MODE_SEALED
 
 //cave turfs
@@ -277,7 +272,6 @@
 	name = "floor"
 	icon = 'modular_ss220/dunes_map/icons/cave_floor.dmi'
 	icon_state = "boss0"
-	temperature = DUNE_TEMPERATURE
 	atmos_mode = ATMOS_MODE_SEALED
 	footstep = FOOTSTEP_CARPET
 	barefootstep = FOOTSTEP_CARPET
@@ -317,17 +311,13 @@
 	return
 
 /turf/simulated/floor/plating/asteroid/basalt/dune
-	temperature = DUNE_TEMPERATURE
 	atmos_mode = ATMOS_MODE_SEALED
 
 /turf/simulated/floor/lava/dune_basalt
-	temperature = DUNE_TEMPERATURE
 	atmos_mode = ATMOS_MODE_SEALED
 
 /turf/simulated/floor/chasm/straight_down/lava_land_surface/dune_basalt
-	temperature = DUNE_TEMPERATURE
 	atmos_mode = ATMOS_MODE_SEALED
 	oxygen = 21.8366
 	nitrogen = 82.1472
 
-#undef DUNE_TEMPERATURE
