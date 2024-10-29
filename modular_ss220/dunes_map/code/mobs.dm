@@ -434,7 +434,7 @@
 	faction = list("scorpio")
 	del_on_death = TRUE
 	loot = list(/obj/effect/decal/cleanable/spiderling_remains)
-	minbodytemp = INFINITY
+	maxbodytemp = INFINITY
 
 /mob/living/simple_animal/hostile/poison_snake/scorpio_mini/purpl
 	icon_state = "scorpion_mini"
@@ -444,5 +444,111 @@
 /mob/living/simple_animal/cow/desert
 	name = "Пустынная корова"
 	desc = "Особо стойкая порода коров, способная выдерживать адские температуры."
-	minbodytemp = INFINITY
+	maxbodytemp = INFINITY
 	var/milk_capacity
+
+/mob/living/simple_animal/hostile/raider_kidan
+	name = "raider"
+	desc = "Кидан-рейдер. Только не опять... Этот вооружен кинетическим топором. Массивный и устрашающий противник."
+	icon = 'modular_ss220/dunes_map/icons/kidan.dmi'
+	icon_state = "raider6"
+	icon_living = "raider6"
+	icon_dead = "raiderdead"
+	mob_biotypes =  MOB_ORGANIC | MOB_HUMANOID
+	sentience_type = SENTIENCE_OTHER
+	speak_chance = 1
+	speak_emote = list("жужжит", "стрекочет", "пищит","киданит")
+	turns_per_move = 5
+	speed = 0.5
+	move_to_delay = 2.8
+	stat_attack = UNCONSCIOUS
+	robust_searching = TRUE
+	maxHealth = 300
+	health = 300
+	obj_damage = 10
+	harm_intent_damage = 15
+	melee_damage_lower = 15
+	melee_damage_upper = 35
+	del_on_death = FALSE
+	dodging = TRUE
+	attack_sound = 'sound/weapons/genhit1.ogg'
+	attacktext = list("рубит", "крушит", "дробит", "разрубает")
+	faction = list("kidan")
+	unsuitable_atmos_damage = 0
+	maxbodytemp = 3500
+	wander = FALSE
+
+/mob/living/simple_animal/hostile/raider_kidan/Initialize(mapload)
+	. = ..()
+	add_language("Kidan")
+	default_language = GLOB.all_languages["Kidan"]
+
+/mob/living/simple_animal/hostile/raider_kidan/add_tts_component()
+	AddComponent(/datum/component/tts_component, /datum/tts_seed/silero/awilo)
+
+/mob/living/simple_animal/hostile/raider_kidan/spear
+	desc = "Кидан-рейдер. Только не опять... Этот вооружен киданским копьем. Крайне быстрый и юркий противник"
+	icon_state = "raider5"
+	icon_living = "raider5"
+	speed = -0.2
+	maxHealth = 180
+	health = 180
+	obj_damage = 2
+	harm_intent_damage = 5
+	melee_damage_lower = 13
+	melee_damage_upper = 18
+	rapid_melee = 2
+	attack_sound = 'sound/weapons/bladeslice.ogg'
+	attacktext = list("укалывает", "протыкает", "ударяет", "вонзает")
+
+/mob/living/simple_animal/hostile/raider_kidan/gun
+	desc = "Кидан-рейдер. Только не опять... Этот вооружен мощной винтовкой."
+	icon_state = "raider1"
+	icon_living = "raider1"
+	obj_damage = 2
+	melee_damage_lower = 8
+	melee_damage_upper = 8
+	maxHealth = 220
+	health = 220
+	ranged = TRUE
+	check_friendly_fire = TRUE
+	dodging = TRUE
+	retreat_distance = 8
+	minimum_distance = 8
+	casingtype = /obj/item/ammo_casing/s310
+	projectilesound = 'modular_ss220/objects/sound/weapons/gunshots/shot_heavy.ogg'
+	attack_sound = 'sound/weapons/genhit1.ogg'
+	attacktext = "ударяет"
+
+/mob/living/simple_animal/hostile/raider_kidan/gun/shotgun
+	desc = "Кидан-рейдер. Только не опять... Этот вооружен обрезом дробовика."
+	icon_state = "raider2"
+	icon_living = "raider2"
+	casingtype = /obj/item/ammo_casing/shotgun
+	projectilesound = 'sound/weapons/gunshots/gunshot_shotgun.ogg'
+
+/mob/living/simple_animal/hostile/raider_kidan/gun/rifle
+	desc = "Кидан-рейдер. Только не опять... Этот вооружен импровизированной винтовкой."
+	icon_state = "raider4"
+	icon_living = "raider4"
+	casingtype = /obj/item/ammo_casing/a556
+	projectilesound = 'sound/weapons/gunshots/gunshot_smg.ogg'
+
+/mob/living/simple_animal/hostile/raider_kidan/laser
+	desc = "Кидан-рейдер. Только не опять... Этот вооружен энерговинтовкой."
+	icon_state = "raider3"
+	icon_living = "raider3"
+	obj_damage = 2
+	melee_damage_lower = 8
+	melee_damage_upper = 8
+	maxHealth = 220
+	health = 220
+	ranged = TRUE
+	check_friendly_fire = TRUE
+	dodging = TRUE
+	retreat_distance = 8
+	minimum_distance = 8
+	rapid = 2
+	projectiletype = /obj/item/projectile/beam/laser
+	projectilesound = 'sound/weapons/laser.ogg'
+	attacktext = "ударяет"
