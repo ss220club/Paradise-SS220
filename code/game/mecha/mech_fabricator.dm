@@ -303,10 +303,10 @@
   */
 /obj/machinery/mecha_part_fabricator/proc/can_insert_materials(mob/user)
 	if(panel_open)
-		to_chat(user, "<span class='warning'>В [chassis.declent_ru(NOMINATIVE)] не может быть загружены новые материалы, пока панель открыта!</span>")
+		to_chat(user, "<span class='warning'>В [chassis] не может быть загружены новые материалы, пока панель открыта!</span>")
 		return FALSE
 	if(being_built)
-		to_chat(user, "<span class='warning'>[chassis.declent_ru(NOMINATIVE)] в данный момент печатает деталь! Пожалуйста, дождитесь завершения.</span>")
+		to_chat(user, "<span class='warning'>[chassis] в данный момент печатает деталь! Пожалуйста, дождитесь завершения.</span>")
 		return FALSE
 	return TRUE
 
