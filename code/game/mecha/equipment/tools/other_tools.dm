@@ -50,16 +50,16 @@
 	if(!action_checks(target))
 		return
 	if(cooldown_timer > world.time)
-		occupant_message("<span class='warning'>[src] всё еще заряжается.</span>")
+		occupant_message("<span class='warning'>[declent_ru(NOMINATIVE)] всё еще заряжается.</span>")
 		return
 	switch(mode)
 		if(MECH_GRAVCAT_MODE_GRAVSLING)
 			if(!locked)
 				if(!istype(target) || target.anchored)
-					occupant_message("Невозможно зафиксировать [target].")
+					occupant_message("Невозможно зафиксировать [target.declent_ru(GENITIVE)].")
 					return
 				locked = target
-				occupant_message("Зафиксировано на [target].")
+				occupant_message("Зафиксировано на [target.declent_ru(PREPOSITIONAL)].")
 				send_byjax(chassis.occupant,"exosuit.browser","\ref[src]",get_equip_info())
 			else if(target!=locked)
 				if(locked in view(chassis))
@@ -70,7 +70,7 @@
 					return 1
 				else
 					locked = null
-					occupant_message("Фиксация на [locked] отключена.")
+					occupant_message("Фиксация на [target.declent_ru(PREPOSITIONAL)] отключена.")
 					send_byjax(chassis.occupant,"exosuit.browser","\ref[src]",get_equip_info())
 		if(MECH_GRAVCAT_MODE_GRAVPUSH)
 			var/list/atoms = list()
@@ -337,11 +337,11 @@
 		if(equip_ready) //inactive
 			set_ready_state(0)
 			START_PROCESSING(SSobj, src)
-			log_message("Активирован.")
+			log_message("declent_ru(NOMINATIVE)] активирован.")
 		else
 			set_ready_state(1)
 			STOP_PROCESSING(SSobj, src)
-			log_message("Деактивирован.")
+			log_message("declent_ru(NOMINATIVE)] деактивирован.")
 
 /obj/item/mecha_parts/mecha_equipment/generator/get_equip_info()
 	var/output = ..()

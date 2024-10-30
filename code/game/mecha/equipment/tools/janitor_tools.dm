@@ -39,7 +39,7 @@
 /obj/item/mecha_parts/mecha_equipment/janitor/mega_mop/emag_act(mob/user)
 	. = ..()
 	emagged = TRUE
-	to_chat(user, "<span class='warning'>Вы выводите из строя автоматическую систему полива на [src].</span>")
+	to_chat(user, "<span class='warning'>Вы выводите из строя автоматическую систему полива на [declent_ru(PREPOSITIONAL)].</span>")
 	reagents.clear_reagents()
 	refill_reagent = "lube"
 	refill_cost = 50
@@ -61,11 +61,11 @@
 		var/turf/target_turf = get_turf(target)
 		if(!istype(target_turf) || iswallturf(target_turf))
 			return
-		chassis.occupant.visible_message("<span class='warning'>[chassis] begins to mop \the [target_turf] with \the [src].</span>", "<span class='warning'>You begin to mop \the [target_turf] with \the [src].</span>")
+		chassis.occupant.visible_message("<span class='warning'>[chassis.declent_ru(NOMINATIVE)] начинает мыть [target_turf] с помощью [declent_ru(INSTRUMENTAL)].</span>", "<span class='warning'>Вы начинаете мыть [target_turf] с помощью [declent_ru(INSTRUMENTAL)].</span>")
 		if(do_after(chassis.occupant, mop_speed, target = target, allow_moving = 0))
 			for(var/turf/current_target_turf in view(1, target))
 				current_target_turf.cleaning_act(chassis.occupant, src, mop_speed, "mop", ".", skip_do_after = TRUE)
-			chassis.occupant_message("You mop \the [target].")
+			chassis.occupant_message("Вы моете [target.declent_ru(GENITIVE)].")
 
 /obj/item/mecha_parts/mecha_equipment/janitor/mega_mop/post_clean(atom/target, mob/user)
 	var/turf/T = get_turf(target)
@@ -113,7 +113,7 @@
 /obj/item/mecha_parts/mecha_equipment/janitor/light_replacer/emag_act(mob/user)
 	. = ..()
 	emagged = TRUE
-	to_chat(user, "<span class='notice'>Вы выводите из строя предохранители на [src].</span>")
+	to_chat(user, "<span class='notice'>Вы выводите из строя предохранители на [declent_ru(PREPOSITIONAL)].</span>")
 
 /obj/item/mecha_parts/mecha_equipment/janitor/light_replacer/action(atom/target)
 	if(istype(target, /obj/machinery/light))
@@ -156,7 +156,7 @@
 /obj/item/mecha_parts/mecha_equipment/janitor/mega_spray/emag_act(mob/user)
 	. = ..()
 	emagged = TRUE
-	to_chat(user, "<span class='warning'>Вы выводите из строя автоматическую систему полива на [src].</span>")
+	to_chat(user, "<span class='warning'>Вы выводите из строя автоматическую систему полива на [declent_ru(PREPOSITIONAL)].</span>")
 	spray_controller.reagents.clear_reagents()
 	refill_reagent = "lube"
 	refill_cost = 50
@@ -266,8 +266,8 @@
 
 	if(istype(target, /obj/machinery/disposal)) // Emptying stuff into disposals
 		chassis.occupant.visible_message(
-			"<span class='notice'>[chassis.occupant] опустошает [src] в мусорку.</span>",
-			"<span class='notice'>Вы опустошаете [src] в мусорку.</span>",
+			"<span class='notice'>[chassis.occupant] опустошает [declent_ru(NOMINATIVE)] в мусорку.</span>",
+			"<span class='notice'>Вы опустошаете [declent_ru(NOMINATIVE)] в мусорку.</span>",
 			"<span class='notice'>Вы слышите, как кто-то выбрасывает что-то в мусорку.</span>"
 		)
 		chassis.Beam(target, icon_state = "rped_upgrade", icon = 'icons/effects/effects.dmi', time = 5)
@@ -292,10 +292,10 @@
 			for(var/obj/item/I in target_turf.contents)
 				if(storage_controller.can_be_inserted(I))
 					storage_controller.handle_item_insertion(I, null, TRUE)
-		chassis.occupant_message("Вы подбираете все предметы с помощью [src]. Оставшаяся вместимость грузового отсека:[storage_controller.max_combined_w_class - length(storage_controller.contents)]")
+		chassis.occupant_message("Вы подбираете все предметы с помощью [declent_ru(GENITIVE)]. Оставшаяся вместимость грузового отсека:[storage_controller.max_combined_w_class - length(storage_controller.contents)]")
 
 	else // Dumping
 		for(var/obj/item/I in storage_controller.contents)
 			storage_controller.remove_from_storage(I, target_turf)
-		chassis.occupant_message("<span class='notice'>Вы высыпаете всё из[src].")
+		chassis.occupant_message("<span class='notice'>Вы высыпаете всё из [declent_ru(GENITIVE)] в [declent_ru(NOMINATIVE)].")
 	update_equip_info()

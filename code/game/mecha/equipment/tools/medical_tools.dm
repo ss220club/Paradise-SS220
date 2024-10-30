@@ -58,8 +58,8 @@
 		return
 	if(!patient_insertion_check(target))
 		return
-	occupant_message("<span class='notice'>Вы начинаете помещать [target] в [src]...</span>")
-	chassis.visible_message("<span class='warning'>[chassis] начинает помещать [target] в \the [src].</span>")
+	occupant_message("<span class='notice'>Вы начинаете помещать [target.declent_ru(GENITIVE)] в [declent_ru(NOMINATIVE)]...</span>")
+	chassis.visible_message("<span class='warning'>[chassis.declent_ru(NOMINATIVE)] начинает помещать [target.declent_ru(GENITIVE)] в [declent_ru(NOMINATIVE)].</span>")
 	if(do_after_cooldown(target))
 		if(!patient_insertion_check(target))
 			return
@@ -67,9 +67,9 @@
 		patient = target
 		START_PROCESSING(SSobj, src)
 		update_equip_info()
-		occupant_message("<span class='notice'>Пациент [target] успешно помещён в [src]. Функции жизнеобеспечения включены.</span>")
-		chassis.visible_message("<span class='warning'>[chassis] помещает [target] в [src].</span>")
-		log_message("[target] помещён в [src]. Функции жизнеобеспечения включены.")
+		occupant_message("<span class='notice'>Пациент [target.declent_ru(NOMINATIVE)] успешно помещён в [declent_ru(NOMINATIVE)]. Функции жизнеобеспечения включены.</span>")
+		chassis.visible_message("<span class='warning'>[chassis.declent_ru(NOMINATIVE)] помещает [target.declent_ru(GENITIVE)] в [declent_ru(NOMINATIVE)].</span>")
+		log_message("[target.declent_ru(NOMINATIVE)] помещён в [declent_ru(NOMINATIVE)]. Функции жизнеобеспечения включены.")
 
 /obj/item/mecha_parts/mecha_equipment/medical/sleeper/proc/patient_insertion_check(mob/living/carbon/target)
 	if(target.buckled)
@@ -95,7 +95,7 @@
 
 /obj/item/mecha_parts/mecha_equipment/medical/sleeper/detach()
 	if(patient)
-		occupant_message("<span class='warning'>Невозможно отсоединить [src] — оборудование занято!</span>")
+		occupant_message("<span class='warning'>Невозможно отсоединить [declent_ru(NOMINATIVE)] — оборудование занято!</span>")
 		return
 	STOP_PROCESSING(SSobj, src)
 	return ..()
@@ -218,7 +218,7 @@
 	if(!chassis.has_charge(energy_drain))
 		set_ready_state(1)
 		log_message("Деактивировано.")
-		occupant_message("[src] деактивирован - нет энергии.")
+		occupant_message("[declent_ru(NOMINATIVE)] деактивирован - нет энергии.")
 		STOP_PROCESSING(SSobj, src)
 		return
 	var/mob/living/carbon/M = patient
@@ -306,7 +306,7 @@
 	mechsyringe.icon = 'icons/obj/chemical.dmi'
 	mechsyringe.icon_state = "syringeproj"
 	playsound(chassis, 'sound/items/syringeproj.ogg', 50, 1)
-	log_message("Launched [mechsyringe] from [src], targeting [target].")
+	log_message("Запущен [mechsyringe.declent_ru(NOMINATIVE)] из [declent_ru(GENITIVE)], нацелен в [target.declent_ru(GENITIVE)].")
 	var/mob/originaloccupant = chassis.occupant
 	var/original_target_zone = originaloccupant.zone_selected
 	spawn(0)
@@ -330,7 +330,7 @@
 						for(var/datum/reagent/A in mechsyringe.reagents.reagent_list)
 							R += A.id + " ("
 							R += num2text(A.volume) + "),"
-					add_attack_logs(originaloccupant, M, "Уколот [src], содержащим [R], передано [mechsyringe.reagents.total_volume] юнитов.")
+					add_attack_logs(originaloccupant, M, "Уколот [declent_ru(INSTRUMENTAL)], содержащим [R], передано [mechsyringe.reagents.total_volume] юнитов.")
 					mechsyringe.reagents.reaction(M, REAGENT_INGEST)
 					mechsyringe.reagents.trans_to(M, mechsyringe.reagents.total_volume)
 					if(!mechsyringe.reagents.total_volume)
@@ -462,7 +462,7 @@
 		occupant_message("Шприц загружен.")
 		update_equip_info()
 		return TRUE
-	occupant_message("[src] запас шприцов полон.")
+	occupant_message("Запас шприцов в [declent_ru(PREPOSITIONAL)] полон.")
 	return FALSE
 
 /obj/item/mecha_parts/mecha_equipment/medical/syringe_gun/proc/analyze_reagents(atom/A)

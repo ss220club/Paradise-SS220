@@ -122,7 +122,7 @@
 	if(!I.tool_start_check(src, user, 0))
 		return
 	output_dir = turn(output_dir, -90)
-	to_chat(user, "<span class='notice'>Вы поворачиваете выход [src] на [dir2text(output_dir)].</span>")
+	to_chat(user, "<span class='notice'>Вы поворачиваете выход [declent_ru(PREPOSITIONAL)] на [dir2text(output_dir)].</span>")
 
 /obj/machinery/mecha_part_fabricator/RefreshParts()
 	var/coef_mats = 0
@@ -303,10 +303,10 @@
   */
 /obj/machinery/mecha_part_fabricator/proc/can_insert_materials(mob/user)
 	if(panel_open)
-		to_chat(user, "<span class='warning'>В [src] не может быть загружены новые материалы, пока панель открыта!</span>")
+		to_chat(user, "<span class='warning'>В [chassis.declent_ru(NOMINATIVE)] не может быть загружены новые материалы, пока панель открыта!</span>")
 		return FALSE
 	if(being_built)
-		to_chat(user, "<span class='warning'>[src] в данный момент печатает деталь! Пожалуйста, дождитесь завершения.</span>")
+		to_chat(user, "<span class='warning'>[chassis.declent_ru(NOMINATIVE)] в данный момент печатает деталь! Пожалуйста, дождитесь завершения.</span>")
 		return FALSE
 	return TRUE
 

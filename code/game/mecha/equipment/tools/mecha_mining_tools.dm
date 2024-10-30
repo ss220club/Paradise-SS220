@@ -59,29 +59,29 @@
 
 /turf/simulated/wall/drill_act(obj/item/mecha_parts/mecha_equipment/drill/drill)
 	if(drill.do_after_mecha(src, 60 / drill.drill_level))
-		drill.log_message("Бурение [src] завершено")
+		drill.log_message("Бурение [declent_ru(GENITIVE)] завершено")
 		dismantle_wall(TRUE, FALSE)
 
 /turf/simulated/wall/r_wall/drill_act(obj/item/mecha_parts/mecha_equipment/drill/drill)
 	if(drill.drill_level >= DRILL_HARDENED)
 		if(drill.do_after_mecha(src, 120 / drill.drill_level))
-			drill.log_message("Бурение [src] завершено")
+			drill.log_message("Бурение [declent_ru(GENITIVE)] завершено")
 			dismantle_wall(TRUE, FALSE)
 	else
-		drill.occupant_message("<span class='danger'>Бур недостаточно мощный, чтобы пробить [src]</span>")
+		drill.occupant_message("<span class='danger'>Бур недостаточно мощный, чтобы пробить [declent_ru(NOMINATIVE)]</span>")
 
 /turf/simulated/mineral/drill_act(obj/item/mecha_parts/mecha_equipment/drill/drill)
 	for(var/turf/simulated/mineral/M in range(drill.chassis, 1))
 		if(get_dir(drill.chassis, M) & drill.chassis.dir)
 			M.gets_drilled()
-	drill.log_message("Бурение [src] завершено")
+	drill.log_message("Бурение [declent_ru(GENITIVE)] завершено")
 	drill.move_ores()
 
 /turf/simulated/floor/plating/asteroid/drill_act(obj/item/mecha_parts/mecha_equipment/drill/drill)
 	for(var/turf/simulated/floor/plating/asteroid/M in range(1, drill.chassis))
 		if((get_dir(drill.chassis, M) & drill.chassis.dir) && !M.dug)
 			M.getDug()
-	drill.log_message("Бурение [src] завершено")
+	drill.log_message("Бурение [declent_ru(GENITIVE)] завершено")
 	drill.move_ores()
 
 /obj/item/mecha_parts/mecha_equipment/drill/proc/move_ores()
@@ -96,9 +96,9 @@
 	return FALSE
 
 /obj/item/mecha_parts/mecha_equipment/drill/proc/drill_mob(mob/living/target, mob/user)
-	target.visible_message("<span class='danger'>[chassis] бурит [target] с помощью [src]!</span>",
-						"<span class='userdanger'>[chassis] бурит вас с помощью [src]!</span>")
-	add_attack_logs(user, target, "ПРОБУРЕН с помощью [src] ([uppertext(user.a_intent)]) ([uppertext(damtype)])")
+	target.visible_message("<span class='danger'>[chassis.declent_ru(NOMINATIVE)] бурит [target.declent_ru(GENITIVE)] с помощью [declent_ru(GENITIVE)]!</span>",
+						"<span class='userdanger'>[chassis.declent_ru(NOMINATIVE)] бурит вас с помощью [declent_ru(GENITIVE)]!</span>")
+	add_attack_logs(user, target, "ПРОБУРЕН с помощью [declent_ru(GENITIVE)] ([uppertext(user.a_intent)]) ([uppertext(damtype)])")
 	if(target.stat == DEAD && target.getBruteLoss() >= 200)
 		add_attack_logs(user, target, "gibbed")
 		if(LAZYLEN(target.butcher_results))

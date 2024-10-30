@@ -371,7 +371,7 @@
 		else
 			occupant_message("<span class='warning'>Катушка полностью заполнена.</span>")
 	else
-		occupant_message("<span class='warning'>Невозможно загрузить [target] - кабель не найден.</span>")
+		occupant_message("<span class='warning'>Невозможно загрузить [target.declent_ru(NOMINATIVE)] - кабель не найден.</span>")
 
 
 /obj/item/mecha_parts/mecha_equipment/cable_layer/Topic(href,href_list)
@@ -400,8 +400,8 @@
 /obj/item/mecha_parts/mecha_equipment/cable_layer/proc/use_cable(amount)
 	if(!cable || cable.amount<1)
 		set_ready_state(1)
-		occupant_message("Кабель исчерпан, [src] деактивирован.")
-		log_message("Кабель исчерпан, [src] деактивирован.")
+		occupant_message("Кабель исчерпан, [declent_ru(NOMINATIVE)] деактивирован.")
+		log_message("Кабель исчерпан, [declent_ru(NOMINATIVE)] деактивирован.")
 		return FALSE
 	if(cable.amount < amount)
 		occupant_message("Недостаточно кабеля для завершения задачи.")
