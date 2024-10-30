@@ -59,10 +59,6 @@
 /obj/item/stack/ore/glass,
 /turf/simulated/floor/indestructible/dune_sand/dug,
 /area/awaymission/arrakis/outside/outside2)
-"afc" = (
-/obj/item/stack/ore/strange,
-/turf/simulated/wall/indestructible/rock/mineral/dune_rock,
-/area/awaymission/arrakis/cave)
 "agn" = (
 /obj/machinery/light/directional/west,
 /obj/machinery/door_control{
@@ -154,10 +150,7 @@
 	},
 /area/awaymission/arrakis/outside/outside2)
 "akc" = (
-/obj/machinery/autolathe/upgraded{
-	hacked = 1
-	},
-/obj/effect/mapping_helpers/machinery/destroyed,
+/obj/machinery/autolathe/upgraded/gamma,
 /turf/simulated/floor/indestructible/dune_sand{
 	icon_state = "plastitanium_red";
 	icon = 'modular_ss220/aesthetics/floors/icons/floors.dmi'
@@ -316,6 +309,10 @@
 	icon_state = "brick_boss"
 	},
 /area/awaymission/arrakis/cave/cave)
+"avU" = (
+/obj/item/stack/ore/strange,
+/turf/simulated/floor/indestructible/dune_sand/cave/cavedeep/dark,
+/area/awaymission/arrakis/cave)
 "avY" = (
 /obj/effect/decal/cleanable/dust,
 /obj/structure/closet/crate,
@@ -544,6 +541,14 @@
 	color = "#45260f"
 	},
 /area/awaymission/arrakis/cave/cave1)
+"aRS" = (
+/obj/effect/turf_decal/sand,
+/obj/item/gun/energy/immolator,
+/turf/simulated/floor/indestructible/dune_sand{
+	icon_state = "plastitanium_red";
+	icon = 'modular_ss220/aesthetics/floors/icons/floors.dmi'
+	},
+/area/awaymission/arrakis/outside/outside2)
 "aSi" = (
 /obj/structure/flora/tree/cactus/circle,
 /turf/simulated/floor/indestructible/dune_sand,
@@ -1094,6 +1099,10 @@
 	floor_variance = null
 	},
 /area/awaymission/arrakis/outside/outside2)
+"bXb" = (
+/obj/item/stack/ore/strange,
+/turf/simulated/floor/indestructible/dune_sand/cave/cavedeep,
+/area/awaymission/arrakis/cave)
 "bYO" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/oil/streak,
@@ -4646,6 +4655,8 @@
 	dir = 4
 	},
 /obj/structure/rack,
+/obj/item/gun/energy/gun/nuclear,
+/obj/item/gun/energy/gun/nuclear,
 /turf/simulated/floor/indestructible/dune_sand{
 	icon_state = "plastitanium_red";
 	icon = 'modular_ss220/aesthetics/floors/icons/floors.dmi'
@@ -6883,10 +6894,6 @@
 /obj/item/crowbar,
 /turf/simulated/floor/wood/oak,
 /area/awaymission/arrakis/cave/cave1)
-"pwn" = (
-/obj/item/stack/ore/strange,
-/turf/simulated/floor/indestructible/dune_sand/cave/cavedeep/dark,
-/area/awaymission/arrakis/cave)
 "pwx" = (
 /obj/structure/closet/crate/wooden/wooden_crate,
 /obj/item/stock_parts/cell/empty,
@@ -7450,6 +7457,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/brick/cold,
 /area/awaymission/arrakis/cave/cave1)
+"qXC" = (
+/obj/item/stack/ore/strange,
+/turf/simulated/wall/indestructible/rock/mineral/dune_rock,
+/area/awaymission/arrakis/cave)
 "qYT" = (
 /obj/machinery/constructable_frame{
 	icon_state = "box_2"
@@ -7867,10 +7878,6 @@
 	},
 /turf/simulated/floor/engine,
 /area/awaymission/arrakis/outside_building/mining_storage_outpost)
-"sax" = (
-/obj/item/stack/ore/strange,
-/turf/simulated/floor/indestructible/dune_sand,
-/area/awaymission/arrakis/outside/outside3)
 "sbE" = (
 /obj/effect/turf_decal/sand/plating,
 /obj/effect/decal/cleanable/glass,
@@ -8173,6 +8180,10 @@
 	floor_variance = null
 	},
 /area/awaymission/arrakis/outside/outside2)
+"sKM" = (
+/obj/item/stack/ore/strange,
+/turf/simulated/floor/indestructible/dune_sand,
+/area/awaymission/arrakis/outside/outside3)
 "sKS" = (
 /obj/item/shard{
 	icon_state = "medium";
@@ -9245,10 +9256,6 @@
 	icon = 'modular_ss220/aesthetics/floors/icons/floors.dmi'
 	},
 /area/awaymission/arrakis/outside/outside2)
-"vmy" = (
-/obj/item/stack/ore/strange,
-/turf/simulated/floor/indestructible/dune_sand/cave/cavedeep,
-/area/awaymission/arrakis/cave)
 "vmS" = (
 /obj/structure/spawner/scorpio,
 /turf/simulated/floor/indestructible/dune_sand/cold,
@@ -11063,9 +11070,9 @@ ayO
 ayO
 ayO
 cth
-vmy
-vmy
-vmy
+bXb
+bXb
+bXb
 cth
 uId
 cth
@@ -11322,7 +11329,7 @@ cth
 cth
 uId
 uId
-pwn
+avU
 cth
 cth
 uId
@@ -11576,7 +11583,7 @@ ayO
 ayO
 ayO
 cth
-vmy
+bXb
 cth
 cth
 uId
@@ -11840,8 +11847,8 @@ cth
 cth
 cth
 uId
-pwn
-pwn
+avU
+avU
 cth
 tbI
 tbI
@@ -12099,7 +12106,7 @@ cth
 tbI
 cth
 uId
-pwn
+avU
 cth
 cth
 cth
@@ -12132,7 +12139,7 @@ uId
 uId
 cth
 cth
-vmy
+bXb
 cth
 tbI
 cth
@@ -12389,7 +12396,7 @@ uId
 cth
 cth
 cth
-vmy
+bXb
 cth
 cth
 cth
@@ -12620,9 +12627,9 @@ uId
 uId
 uId
 cth
-vmy
-vmy
-pwn
+bXb
+bXb
+avU
 uId
 uId
 cth
@@ -12645,8 +12652,8 @@ cth
 cth
 cth
 cth
-vmy
-vmy
+bXb
+bXb
 cth
 cth
 cth
@@ -12668,7 +12675,7 @@ cth
 uId
 uId
 uId
-pwn
+avU
 uId
 uId
 uId
@@ -12879,8 +12886,8 @@ cth
 cth
 uId
 uId
-pwn
-pwn
+avU
+avU
 uId
 cth
 uId
@@ -12909,7 +12916,7 @@ cth
 cth
 cth
 cth
-vmy
+bXb
 cth
 cth
 cth
@@ -12926,7 +12933,7 @@ ayO
 ayO
 ayO
 uId
-pwn
+avU
 uId
 uId
 uId
@@ -13137,8 +13144,8 @@ cth
 uId
 uId
 cth
-pwn
-pwn
+avU
+avU
 cth
 uId
 uId
@@ -13164,8 +13171,8 @@ cth
 tbI
 tbI
 cth
-vmy
-vmy
+bXb
+bXb
 cth
 cth
 cth
@@ -13184,8 +13191,8 @@ uId
 ayO
 uId
 uId
-pwn
-pwn
+avU
+avU
 uId
 uId
 uId
@@ -13392,7 +13399,7 @@ tbI
 rPq
 uId
 uId
-vmy
+bXb
 uId
 uId
 uId
@@ -13405,11 +13412,11 @@ uId
 tbI
 cth
 cth
-vmy
+bXb
 uId
 uId
 cth
-vmy
+bXb
 cth
 tbI
 tbI
@@ -13442,7 +13449,7 @@ ayO
 ayO
 uId
 uId
-pwn
+avU
 uId
 uId
 aSK
@@ -13649,7 +13656,7 @@ ayO
 cth
 cth
 uId
-pwn
+avU
 uId
 uId
 uId
@@ -13661,8 +13668,8 @@ uId
 cth
 cth
 cth
-vmy
-pwn
+bXb
+avU
 uId
 cth
 cth
@@ -13699,7 +13706,7 @@ ayO
 uId
 uId
 uId
-pwn
+avU
 uId
 uId
 aSK
@@ -13906,8 +13913,8 @@ ayO
 cth
 cth
 uId
-pwn
-pwn
+avU
+avU
 uId
 uId
 uId
@@ -13918,7 +13925,7 @@ uId
 cth
 cth
 cth
-pwn
+avU
 uId
 uId
 uId
@@ -13944,7 +13951,7 @@ cth
 cth
 cth
 cth
-vmy
+bXb
 cth
 cth
 cth
@@ -13956,7 +13963,7 @@ ayO
 ayO
 uId
 uId
-pwn
+avU
 uId
 uId
 aSK
@@ -14164,7 +14171,7 @@ ayO
 cth
 cth
 uId
-pwn
+avU
 uId
 uId
 uId
@@ -14174,7 +14181,7 @@ uId
 cth
 cth
 cth
-pwn
+avU
 uId
 cth
 cth
@@ -14186,7 +14193,7 @@ cth
 cth
 cth
 cth
-vmy
+bXb
 cth
 tbI
 cth
@@ -14201,7 +14208,7 @@ cth
 cth
 cth
 cth
-vmy
+bXb
 cth
 cth
 cth
@@ -14213,7 +14220,7 @@ uId
 ayO
 ayO
 uId
-pwn
+avU
 uId
 uId
 aSK
@@ -14422,7 +14429,7 @@ cth
 uId
 cth
 uId
-pwn
+avU
 uId
 uId
 uId
@@ -14430,8 +14437,8 @@ uId
 uId
 cth
 uId
-pwn
-pwn
+avU
+avU
 cth
 cth
 cth
@@ -14442,7 +14449,7 @@ cth
 cth
 cth
 cth
-vmy
+bXb
 cth
 cth
 cth
@@ -14459,8 +14466,8 @@ cth
 cth
 cth
 cth
-vmy
-vmy
+bXb
+bXb
 uId
 uId
 uId
@@ -14698,7 +14705,7 @@ tbI
 cth
 cth
 cth
-vmy
+bXb
 cth
 cth
 cth
@@ -14954,8 +14961,8 @@ tbI
 cth
 cth
 cth
-vmy
-vmy
+bXb
+bXb
 cth
 cth
 cth
@@ -14993,8 +15000,8 @@ fmF
 fmF
 uId
 uId
-pwn
-pwn
+avU
+avU
 uId
 uId
 fmF
@@ -15211,7 +15218,7 @@ cth
 cth
 cth
 cth
-vmy
+bXb
 cth
 cth
 cth
@@ -15240,8 +15247,8 @@ uId
 uId
 ayO
 uId
-pwn
-pwn
+avU
+avU
 uId
 uId
 uId
@@ -15249,9 +15256,9 @@ fmF
 fmF
 uId
 uId
-pwn
-pwn
-pwn
+avU
+avU
+avU
 uId
 uId
 uId
@@ -15497,18 +15504,18 @@ uId
 uId
 uId
 uId
-pwn
-pwn
-pwn
+avU
+avU
+avU
 uId
 uId
 fmF
 uId
 uId
-pwn
-pwn
+avU
+avU
 uId
-pwn
+avU
 uId
 uId
 uId
@@ -15710,7 +15717,7 @@ ayO
 tbI
 tbI
 uId
-pwn
+avU
 cth
 ayO
 ayO
@@ -15755,17 +15762,17 @@ uId
 uId
 uId
 uId
-pwn
+avU
 uId
-pwn
-uId
-uId
+avU
 uId
 uId
-pwn
-pwn
-pwn
-pwn
+uId
+uId
+avU
+avU
+avU
+avU
 uId
 ayO
 ayO
@@ -16013,16 +16020,16 @@ uId
 ayO
 uId
 uId
-pwn
-pwn
-pwn
+avU
+avU
+avU
 uId
 uId
-pwn
+avU
 uId
-pwn
+avU
 uId
-pwn
+avU
 uId
 ayO
 ayO
@@ -16766,9 +16773,9 @@ cth
 tbI
 cth
 cth
-vmy
-vmy
-pwn
+bXb
+bXb
+avU
 uId
 uId
 uId
@@ -17023,8 +17030,8 @@ cth
 cth
 cth
 cth
-vmy
-vmy
+bXb
+bXb
 uId
 uId
 uId
@@ -17050,8 +17057,8 @@ uId
 ayO
 uId
 uId
-pwn
-pwn
+avU
+avU
 uId
 ayO
 ayO
@@ -17280,8 +17287,8 @@ cth
 cth
 cth
 cth
-vmy
-vmy
+bXb
+bXb
 uId
 uId
 ayO
@@ -17306,9 +17313,9 @@ uId
 uId
 ayO
 uId
-pwn
+avU
 uId
-pwn
+avU
 uId
 ayO
 ayO
@@ -17535,7 +17542,7 @@ cth
 cth
 cth
 cth
-vmy
+bXb
 cth
 cth
 cth
@@ -17550,7 +17557,7 @@ uId
 rPq
 uId
 uId
-pwn
+avU
 uId
 uId
 uId
@@ -17563,9 +17570,9 @@ uId
 uId
 ayO
 uId
-pwn
+avU
 uId
-pwn
+avU
 uId
 ayO
 ayO
@@ -17791,8 +17798,8 @@ uId
 cth
 cth
 cth
-vmy
-vmy
+bXb
+bXb
 cth
 uId
 uId
@@ -17805,8 +17812,8 @@ uId
 uId
 uId
 uId
-pwn
-pwn
+avU
+avU
 uId
 uId
 uId
@@ -17820,9 +17827,9 @@ uId
 uId
 ayO
 uId
-pwn
+avU
 uId
-pwn
+avU
 uId
 ayO
 ayO
@@ -18048,20 +18055,20 @@ uId
 uId
 cth
 cth
-vmy
-vmy
+bXb
+bXb
 cth
 uId
 ayO
 ayO
 uId
 uId
-afc
-pwn
-pwn
-pwn
-pwn
-pwn
+qXC
+avU
+avU
+avU
+avU
+avU
 uId
 uId
 uId
@@ -18077,9 +18084,9 @@ uId
 uId
 ayO
 uId
-pwn
+avU
 uId
-pwn
+avU
 uId
 ayO
 ayO
@@ -18278,7 +18285,7 @@ ayO
 ayO
 aeA
 aeA
-sax
+sKM
 aeA
 aeA
 aeA
@@ -18305,18 +18312,18 @@ uId
 uId
 uId
 uId
-pwn
-vmy
+avU
+bXb
 uId
 uId
 uId
 ayO
 ayO
 uId
-pwn
-pwn
-pwn
-pwn
+avU
+avU
+avU
+avU
 uId
 uId
 uId
@@ -18334,8 +18341,8 @@ uId
 uId
 uId
 ayO
-pwn
-pwn
+avU
+avU
 uId
 uId
 ayO
@@ -18562,17 +18569,17 @@ ayO
 uId
 uId
 uId
-pwn
-vmy
-pwn
+avU
+bXb
+avU
 uId
 uId
 uId
 uId
 uId
 uId
-pwn
-pwn
+avU
+avU
 uId
 ayO
 ayO
@@ -18592,8 +18599,8 @@ uId
 uId
 dqZ
 uId
-pwn
-pwn
+avU
+avU
 uId
 ayO
 ayO
@@ -18789,7 +18796,7 @@ aeA
 aeA
 aeA
 aeA
-sax
+sKM
 aeA
 aeA
 aeA
@@ -18818,12 +18825,12 @@ ayO
 ayO
 uId
 uId
-pwn
-pwn
+avU
+avU
 cth
-pwn
-pwn
-pwn
+avU
+avU
+avU
 uId
 uId
 uId
@@ -18848,9 +18855,9 @@ uId
 uId
 fmF
 uId
-pwn
-pwn
-pwn
+avU
+avU
+avU
 uId
 ayO
 ayO
@@ -19075,12 +19082,12 @@ ayO
 ayO
 ayO
 uId
-pwn
-pwn
-pwn
+avU
+avU
+avU
 uId
 uId
-pwn
+avU
 uId
 uId
 uId
@@ -19105,10 +19112,10 @@ uId
 fmF
 uId
 uId
-pwn
-pwn
-pwn
-pwn
+avU
+avU
+avU
+avU
 uId
 uId
 ayO
@@ -19308,7 +19315,7 @@ aeA
 aeA
 aeA
 aeA
-sax
+sKM
 aeA
 ayO
 ayO
@@ -19333,8 +19340,8 @@ ayO
 ayO
 ayO
 uId
-pwn
-pwn
+avU
+avU
 uId
 uId
 uId
@@ -19362,9 +19369,9 @@ fmF
 fmF
 fmF
 fmF
-pwn
-pwn
-pwn
+avU
+avU
+avU
 uId
 uId
 uId
@@ -19565,8 +19572,8 @@ aeA
 aeA
 aeA
 aeA
-sax
-sax
+sKM
+sKM
 ayO
 ayO
 ayO
@@ -19620,7 +19627,7 @@ uId
 fmF
 uId
 uId
-pwn
+avU
 uId
 uId
 uId
@@ -19814,7 +19821,7 @@ aeA
 ayO
 ayO
 aeA
-sax
+sKM
 aeA
 aeA
 aeA
@@ -19823,7 +19830,7 @@ aeA
 aeA
 aeA
 aeA
-sax
+sKM
 ayO
 ayO
 ayO
@@ -21156,9 +21163,9 @@ uId
 uId
 uId
 uId
-pwn
-pwn
-pwn
+avU
+avU
+avU
 uId
 ayO
 uId
@@ -21366,7 +21373,7 @@ aeA
 aeA
 aeA
 aeA
-sax
+sKM
 aeA
 aeA
 aeA
@@ -21412,8 +21419,8 @@ uId
 ayO
 ayO
 uId
-pwn
-pwn
+avU
+avU
 uId
 uId
 uId
@@ -21669,11 +21676,11 @@ uId
 ayO
 ayO
 uId
-pwn
+avU
 uId
 uId
 uId
-pwn
+avU
 uId
 uId
 uId
@@ -21928,9 +21935,9 @@ ayO
 uId
 uId
 uId
-pwn
-pwn
-pwn
+avU
+avU
+avU
 uId
 ayO
 ayO
@@ -22186,8 +22193,8 @@ ayO
 ayO
 ayO
 uId
-pwn
-pwn
+avU
+avU
 uId
 ayO
 ayO
@@ -23714,7 +23721,7 @@ uId
 uId
 ayO
 ayO
-pwn
+avU
 uId
 uId
 uId
@@ -23972,8 +23979,8 @@ uId
 ayO
 uId
 uId
-pwn
-pwn
+avU
+avU
 uId
 ayO
 ayO
@@ -24230,7 +24237,7 @@ ayO
 uId
 uId
 uId
-pwn
+avU
 uId
 uId
 uId
@@ -24740,8 +24747,8 @@ ayO
 uId
 uId
 uId
-pwn
-pwn
+avU
+avU
 uId
 fmF
 uId
@@ -24995,12 +25002,12 @@ ayO
 ayO
 ayO
 uId
-pwn
-pwn
-pwn
-pwn
-pwn
-pwn
+avU
+avU
+avU
+avU
+avU
+avU
 fmF
 uId
 uId
@@ -25256,8 +25263,8 @@ ayO
 uId
 uId
 uId
-pwn
-pwn
+avU
+avU
 fmF
 uId
 uId
@@ -67630,7 +67637,7 @@ nwy
 nwy
 ame
 nwy
-nwy
+aRS
 lII
 aXZ
 aXZ
