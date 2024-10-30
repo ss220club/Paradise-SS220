@@ -8,7 +8,7 @@
 	pixel_x = -64
 	pixel_y = -42
 
-/obj/structure/necropolis_arch/boss_arch/Initialize()
+/obj/structure/necropolis_arch/boss_arch/Initialize(mapload)
 	. = ..()
 	icon_state = "bossarch_bottom"
 	top_overlay = mutable_appearance('modular_ss220/dunes_map/icons/arch.dmi', "bossarch_top")

@@ -20,7 +20,7 @@
 		lootleft = 1
 	..()
 
-/obj/structure/rubble/Initialize()
+/obj/structure/rubble/Initialize(mapload)
 	. = ..()
 	icon_state = "[pick(trash_types)]"
 	update_icon()
