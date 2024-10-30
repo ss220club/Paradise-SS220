@@ -467,8 +467,8 @@
 	move_to_delay = 2.8
 	stat_attack = UNCONSCIOUS
 	robust_searching = TRUE
-	maxHealth = 300
-	health = 300
+	maxHealth = 250
+	health = 250
 	obj_damage = 10
 	harm_intent_damage = 15
 	melee_damage_lower = 15

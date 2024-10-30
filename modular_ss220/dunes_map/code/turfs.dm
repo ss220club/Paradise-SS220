@@ -180,7 +180,8 @@
 	icon = 'modular_ss220/dunes_map/icons/chasm.dmi'
 	oxygen = 21.8366
 	nitrogen = 82.1472
-	atmos_mode = ATMOS_MODE_SEALED
+	atmos_environment = ENVIRONMENT_COLD
+	temperature = DESERT_WINTER
 
 /turf/simulated/floor/lava/dune
 	icon = 'modular_ss220/dunes_map/icons/lava.dmi'
@@ -277,6 +278,8 @@
 	footstep = FOOTSTEP_CARPET
 	barefootstep = FOOTSTEP_CARPET
 	clawfootstep = FOOTSTEP_CARPET
+	atmos_environment = ENVIRONMENT_TEMPERATE
+	atmos_mode = ATMOS_MODE_EXPOSED_TO_ENVIRONMENT
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 	smoothing_groups = list(SMOOTH_GROUP_FLOOR)
 	var/environment_type = "boss"
@@ -310,17 +313,16 @@
 	return
 
 /turf/simulated/floor/plating/asteroid/basalt/dune
-	atmos_mode = ATMOS_MODE_SEALED
+	atmos_environment = ENVIRONMENT_TEMPERATE
+	atmos_mode = ATMOS_MODE_EXPOSED_TO_ENVIRONMENT
 
 /turf/simulated/floor/lava/dune_basalt
-	atmos_mode = ATMOS_MODE_SEALED
+	atmos_environment = ENVIRONMENT_TEMPERATE
+	atmos_mode = ATMOS_MODE_EXPOSED_TO_ENVIRONMENT
 
 /turf/simulated/floor/chasm/straight_down/lava_land_surface/dune_basalt
 	atmos_mode = ATMOS_MODE_EXPOSED_TO_ENVIRONMENT
 	atmos_environment = ENVIRONMENT_TEMPERATE
-	temperature = T20C
-	oxygen = 21.8366
-	nitrogen = 82.1472
 	light_power = 0
 	light_range = 0
 
