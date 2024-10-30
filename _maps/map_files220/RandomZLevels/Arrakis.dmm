@@ -41,14 +41,6 @@
 	},
 /turf/simulated/floor/indestructible/dune_sand,
 /area/awaymission/arrakis/outside/outside2)
-"adV" = (
-/obj/effect/mapping_helpers/light,
-/turf/simulated/floor/indestructible/dune_sand{
-	icon_state = "asteroidfloor";
-	icon = 'modular_ss220/aesthetics/floors/icons/floors.dmi';
-	floor_variance = null
-	},
-/area/awaymission/arrakis/outside/outside2)
 "aec" = (
 /obj/structure/shelf{
 	color = "#e0ac7b"
@@ -67,6 +59,10 @@
 /obj/item/stack/ore/glass,
 /turf/simulated/floor/indestructible/dune_sand/dug,
 /area/awaymission/arrakis/outside/outside2)
+"afc" = (
+/obj/item/stack/ore/strange,
+/turf/simulated/wall/indestructible/rock/mineral/dune_rock,
+/area/awaymission/arrakis/cave)
 "agn" = (
 /obj/machinery/light/directional/west,
 /obj/machinery/door_control{
@@ -80,6 +76,13 @@
 	icon_state = "plastitanium_red";
 	icon = 'modular_ss220/aesthetics/floors/icons/floors.dmi'
 	},
+/area/awaymission/arrakis/outside/outside2)
+"agp" = (
+/obj/effect/decal/snow/clean/edge{
+	color = "decfc3";
+	dir = 5
+	},
+/turf/simulated/floor/indestructible/dune_sand,
 /area/awaymission/arrakis/outside/outside2)
 "agL" = (
 /obj/effect/decal/cleanable/dust,
@@ -337,10 +340,8 @@
 /turf/simulated/wall/indestructible/rock/mineral/dune_rock,
 /area/awaymission/arrakis/cave)
 "aAJ" = (
-/obj/machinery/hydroponics/soil,
-/obj/effect/mapping_helpers/light,
-/turf/simulated/floor/indestructible/dune_sand,
-/area/awaymission/arrakis/outside/outside2)
+/turf/simulated/wall/indestructible/rock/mineral/dune_rock,
+/area/awaymission/arrakis/outside/outside3)
 "aBe" = (
 /obj/structure/girder,
 /obj/effect/turf_decal/sand,
@@ -364,6 +365,17 @@
 	color = "#e0ac7b"
 	},
 /area/awaymission/arrakis/cave/cave1)
+"aCH" = (
+/obj/effect/decal/snow/clean/edge{
+	color = "decfc3";
+	dir = 8
+	},
+/obj/effect/decal/snow/clean/edge{
+	color = "decfc3";
+	dir = 4
+	},
+/turf/simulated/floor/indestructible/dune_sand,
+/area/awaymission/arrakis/outside/outside2)
 "aCZ" = (
 /obj/structure/lattice/lava{
 	color = "#e0ac7b"
@@ -405,6 +417,17 @@
 	},
 /turf/simulated/floor/indestructible/dune_sand,
 /area/awaymission/arrakis/outside/outside2)
+"aGY" = (
+/obj/effect/decal/snow/clean/edge{
+	color = "decfc3";
+	dir = 8
+	},
+/turf/simulated/floor/indestructible/dune_sand{
+	icon_state = "asteroidfloor";
+	icon = 'modular_ss220/aesthetics/floors/icons/floors.dmi';
+	floor_variance = null
+	},
+/area/awaymission/arrakis/outside/outside2)
 "aHr" = (
 /turf/simulated/floor/indestructible/dune_sand,
 /area/awaymission/arrakis/cave)
@@ -432,6 +455,7 @@
 /obj/effect/landmark/burnturf,
 /obj/effect/turf_decal/sand/plating,
 /turf/simulated/floor/plasteel/stairs{
+	temperature = 430;
 	dir = 1
 	},
 /area/awaymission/arrakis/outside/outside2)
@@ -498,7 +522,6 @@
 /obj/effect/turf_decal/siding/wood{
 	dir = 6
 	},
-/obj/structure/bookcase/random,
 /turf/simulated/floor/wood/fancy/birch{
 	color = "#45260f"
 	},
@@ -517,7 +540,6 @@
 /obj/effect/turf_decal/siding/wood{
 	dir = 10
 	},
-/obj/structure/bookcase/random,
 /turf/simulated/floor/wood/fancy/birch{
 	color = "#45260f"
 	},
@@ -587,6 +609,13 @@
 /obj/effect/landmark/burnturf,
 /turf/simulated/floor/indestructible/dune_sand,
 /area/awaymission/arrakis/outside/outside3)
+"aUv" = (
+/obj/structure/flora/rock/icy,
+/obj/effect/decal/snow/clean{
+	color = "decfc3"
+	},
+/turf/simulated/floor/indestructible/dune_sand,
+/area/awaymission/arrakis/outside/outside2)
 "aVh" = (
 /obj/effect/landmark/burnturf,
 /obj/effect/decal/remains/human,
@@ -611,6 +640,13 @@
 	color = "#45260f"
 	},
 /area/awaymission/arrakis/cave/cave1)
+"aWY" = (
+/obj/effect/decal/snow/clean/edge{
+	color = "decfc3";
+	dir = 4
+	},
+/turf/simulated/floor/indestructible/dune_sand,
+/area/awaymission/arrakis/outside/outside2)
 "aWZ" = (
 /obj/structure/table/reinforced/brass,
 /obj/effect/decal/cleanable/dust,
@@ -667,6 +703,7 @@
 /obj/effect/landmark/damageturf,
 /obj/effect/turf_decal/sand,
 /turf/simulated/floor/plasteel/stairs{
+	temperature = 430;
 	dir = 1
 	},
 /area/awaymission/arrakis/outside/outside2)
@@ -778,6 +815,12 @@
 /obj/machinery/jukebox,
 /turf/simulated/floor/wood/fancy/oak,
 /area/awaymission/arrakis/cave/cave1)
+"bka" = (
+/obj/machinery/gateway{
+	dir = 5
+	},
+/turf/simulated/floor/plating/asteroid/basalt/dune,
+/area/awaymission/arrakis/cave/cave)
 "bme" = (
 /obj/effect/turf_decal/sand/plating,
 /turf/simulated/floor/indestructible/dune_sand{
@@ -820,6 +863,12 @@
 /obj/structure/rubble/war,
 /turf/simulated/floor/indestructible/dune_sand,
 /area/awaymission/arrakis/outside/outside2)
+"brG" = (
+/obj/effect/decal/snow/clean{
+	color = "decfc3"
+	},
+/turf/simulated/floor/indestructible/dune_sand,
+/area/awaymission/arrakis/outside/outside2)
 "brK" = (
 /obj/machinery/door/airlock/command{
 	locked = 1
@@ -850,15 +899,6 @@
 	icon_state = "brick_boss"
 	},
 /area/awaymission/arrakis/cave/cave)
-"bvz" = (
-/obj/effect/turf_decal/sand,
-/obj/effect/mapping_helpers/light,
-/turf/simulated/floor/indestructible/dune_sand{
-	icon_state = "asteroidfloor";
-	icon = 'modular_ss220/aesthetics/floors/icons/floors.dmi';
-	floor_variance = null
-	},
-/area/awaymission/arrakis/outside/outside2)
 "bwE" = (
 /obj/item/chair/stool,
 /obj/effect/landmark/damageturf,
@@ -878,6 +918,7 @@
 /obj/item/stack/sheet/wood,
 /obj/effect/turf_decal/sand/plating,
 /turf/simulated/floor/plasteel/stairs{
+	temperature = 430;
 	dir = 4
 	},
 /area/awaymission/arrakis/outside/outside3)
@@ -887,6 +928,13 @@
 	icon_state = "brick_boss2"
 	},
 /area/awaymission/arrakis/cave/cave)
+"byu" = (
+/obj/structure/gunrack{
+	color = "#e0ac7b"
+	},
+/obj/item/gun/projectile/shotgun/boltaction/sakhno,
+/turf/simulated/floor/wood/oak,
+/area/awaymission/arrakis/cave/cave1)
 "byK" = (
 /obj/item/stack/cable_coil/random{
 	pixel_y = -8
@@ -933,6 +981,10 @@
 	color = "#e0ac7b"
 	},
 /area/awaymission/arrakis/cave/cave1)
+"bFi" = (
+/obj/structure/bonfire,
+/turf/simulated/floor/plating/asteroid/basalt/dune,
+/area/awaymission/arrakis/cave/cave)
 "bGM" = (
 /obj/structure/closet/crate,
 /obj/effect/decal/cleanable/dust,
@@ -1061,7 +1113,7 @@
 /obj/item/gps/mining,
 /obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/wood/fancy/oak,
-/area/awaymission/arrakis/outside/outside2)
+/area/awaymission/arrakis/outside_building/hermit_shack)
 "caN" = (
 /obj/effect/turf_decal/sand,
 /obj/effect/decal/cleanable/glass,
@@ -1132,6 +1184,10 @@
 	icon = 'modular_ss220/aesthetics/floors/icons/floors.dmi'
 	},
 /area/awaymission/arrakis/outside/outside2)
+"chF" = (
+/obj/machinery/gateway,
+/turf/simulated/floor/plating/asteroid/basalt/dune,
+/area/awaymission/arrakis/cave/cave)
 "cjn" = (
 /obj/effect/turf_decal/sand,
 /obj/item/shard{
@@ -1141,6 +1197,17 @@
 	icon_state = "plastitanium_red";
 	icon = 'modular_ss220/aesthetics/floors/icons/floors.dmi'
 	},
+/area/awaymission/arrakis/outside/outside2)
+"cky" = (
+/obj/effect/decal/snow/clean/edge{
+	color = "decfc3";
+	dir = 4
+	},
+/obj/effect/decal/snow/clean/edge{
+	color = "decfc3";
+	dir = 4
+	},
+/turf/simulated/floor/indestructible/dune_sand,
 /area/awaymission/arrakis/outside/outside2)
 "clb" = (
 /obj/effect/decal/cleanable/dust,
@@ -1184,6 +1251,12 @@
 	color = "#e0ac7b"
 	},
 /area/awaymission/arrakis/cave/cave1)
+"cnX" = (
+/obj/effect/baseturf_helper{
+	baseturf = /turf/simulated/floor/indestructible/dune_sand/cave/cavedeep/dark/dark_basalt
+	},
+/turf/simulated/wall/indestructible/rock/mineral,
+/area/awaymission/arrakis/cave/cave)
 "cnY" = (
 /turf/simulated/floor/indestructible/dune_sand/cold,
 /area/awaymission/arrakis/cave/cave)
@@ -1302,6 +1375,17 @@
 /obj/effect/turf_decal/sand,
 /turf/simulated/floor/indestructible/dune_sand{
 	icon_state = "plating";
+	icon = 'modular_ss220/aesthetics/floors/icons/floors.dmi';
+	floor_variance = null
+	},
+/area/awaymission/arrakis/outside/outside2)
+"cLM" = (
+/obj/effect/decal/snow/clean/edge{
+	color = "decfc3";
+	dir = 1
+	},
+/turf/simulated/floor/indestructible/dune_sand{
+	icon_state = "asteroidfloor";
 	icon = 'modular_ss220/aesthetics/floors/icons/floors.dmi';
 	floor_variance = null
 	},
@@ -1520,6 +1604,13 @@
 	floor_variance = null
 	},
 /area/awaymission/arrakis/outside/outside2)
+"dpp" = (
+/obj/effect/decal/snow/clean/edge{
+	color = "decfc3";
+	dir = 8
+	},
+/turf/simulated/floor/indestructible/dune_sand,
+/area/awaymission/arrakis/outside/outside2)
 "dqN" = (
 /obj/structure/rack,
 /obj/item/storage/fancy/shell/buck{
@@ -1596,6 +1687,12 @@
 	floor_variance = null
 	},
 /area/awaymission/arrakis/outside/outside3)
+"dxV" = (
+/obj/effect/baseturf_helper{
+	baseturf = /turf/simulated/floor/indestructible/dune_sand/dug
+	},
+/turf/simulated/wall/indestructible/rock/mineral,
+/area/awaymission/arrakis/outside/outside2)
 "dyY" = (
 /obj/machinery/cooker/deepfryer,
 /turf/simulated/floor/plasteel{
@@ -1646,11 +1743,6 @@
 	},
 /turf/simulated/floor/wood/fancy/oak,
 /area/awaymission/arrakis/cave/cave1)
-"dBZ" = (
-/obj/structure/flora/tree/cactus/circle,
-/obj/effect/mapping_helpers/light,
-/turf/simulated/floor/indestructible/dune_sand,
-/area/awaymission/arrakis/outside/outside3)
 "dEG" = (
 /obj/structure/decorative_structures/car_wreck,
 /obj/effect/turf_decal/sand,
@@ -1717,6 +1809,12 @@
 	color = "#45260f"
 	},
 /area/awaymission/arrakis/cave/cave1)
+"dIh" = (
+/obj/machinery/gateway{
+	dir = 8
+	},
+/turf/simulated/floor/plating/asteroid/basalt/dune,
+/area/awaymission/arrakis/cave/cave)
 "dNe" = (
 /obj/effect/turf_decal/stripes/corner{
 	dir = 8
@@ -1732,7 +1830,9 @@
 "dNJ" = (
 /obj/effect/decal/cleanable/generic,
 /obj/effect/turf_decal/sand,
-/turf/simulated/floor/wood/oak,
+/turf/simulated/floor/wood/oak{
+	temperature = 430
+	},
 /area/awaymission/arrakis/outside/outside2)
 "dOZ" = (
 /obj/structure/table/wood/poker,
@@ -1749,6 +1849,10 @@
 	floor_variance = null
 	},
 /area/awaymission/arrakis/outside/outside2)
+"dSA" = (
+/obj/item/kitchen/knife/combat/survival,
+/turf/simulated/floor/indestructible/dune_sand/cave/cavedeep/dark/dark_basalt,
+/area/awaymission/arrakis/cave/cave)
 "dSX" = (
 /obj/structure/table/wood/poker,
 /obj/effect/decal/cleanable/dust,
@@ -1833,9 +1937,17 @@
 /obj/effect/landmark/damageturf,
 /obj/effect/turf_decal/sand/plating,
 /turf/simulated/floor/plasteel/stairs{
+	temperature = 430;
 	dir = 4
 	},
 /area/awaymission/arrakis/outside/outside3)
+"ehn" = (
+/obj/machinery/gateway/centeraway{
+	interact_offline = 1;
+	calibrated = 0
+	},
+/turf/simulated/floor/plating/asteroid/basalt/dune,
+/area/awaymission/arrakis/cave/cave)
 "ehy" = (
 /obj/structure/shuttle/engine/propulsion/burst{
 	dir = 4
@@ -1857,6 +1969,12 @@
 	icon = 'modular_ss220/aesthetics/floors/icons/floors.dmi'
 	},
 /area/awaymission/arrakis/outside/outside2)
+"eiF" = (
+/obj/effect/rune/blood_boil,
+/turf/simulated/floor/brick{
+	icon_state = "brick_boss2"
+	},
+/area/awaymission/arrakis/cave/cave)
 "eiP" = (
 /obj/structure/fluff/desert_construction/huge_columns/statue1,
 /turf/simulated/floor/brick{
@@ -1920,9 +2038,24 @@
 /turf/simulated/floor/indestructible/dune_sand/cave/cold_rock,
 /area/awaymission/arrakis/cave)
 "erR" = (
-/obj/structure/flora/tree/desert/joshua,
-/turf/simulated/floor/indestructible/dune_sand,
-/area/awaymission/arrakis/outside/outside3)
+/obj/structure/closet/crate/wooden/wooden_crate,
+/obj/item/pickaxe/mini,
+/obj/item/pickaxe/mini,
+/obj/item/food/grown/mushroom/chanterelle,
+/obj/item/food/grown/mushroom/chanterelle,
+/obj/item/food/grown/mushroom/chanterelle,
+/obj/item/food/grown/mushroom/fungus,
+/obj/item/food/grown/mushroom/fungus,
+/obj/item/food/grown/mushroom/fungus,
+/obj/item/food/grown/ash_flora/mushroom_leaf,
+/obj/item/food/grown/ash_flora/mushroom_leaf,
+/obj/item/food/grown/ash_flora/mushroom_leaf,
+/obj/item/food/grown/ash_flora/mushroom_stem,
+/obj/item/food/grown/ash_flora/mushroom_stem,
+/turf/simulated/floor/brick{
+	icon_state = "brick_boss2"
+	},
+/area/awaymission/arrakis/cave/cave)
 "esE" = (
 /obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/wood/fancy/oak,
@@ -1945,7 +2078,7 @@
 	},
 /obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/wood/fancy/oak,
-/area/awaymission/arrakis/outside/outside2)
+/area/awaymission/arrakis/outside_building/hermit_shack)
 "euz" = (
 /obj/effect/turf_decal/sand/plating,
 /obj/effect/turf_decal/sand,
@@ -2041,9 +2174,26 @@
 	},
 /turf/simulated/floor/indestructible/dune_sand,
 /area/awaymission/arrakis/outside/outside2)
+"eKz" = (
+/obj/effect/decal/snow/clean/edge{
+	color = "decfc3";
+	dir = 4
+	},
+/turf/simulated/floor/plating/ice{
+	color = "#acb78e"
+	},
+/area/awaymission/arrakis/outside/outside2)
 "eLx" = (
 /turf/simulated/wall/indestructible,
 /area/awaymission/arrakis/outside/outside3)
+"eLQ" = (
+/obj/effect/decal/snow/clean/edge{
+	color = "decfc3";
+	dir = 1
+	},
+/obj/structure/barricade/beton,
+/turf/simulated/floor/indestructible/dune_sand,
+/area/awaymission/arrakis/outside/outside2)
 "ePZ" = (
 /obj/structure/closet/crate/internals,
 /obj/item/tank/internals/oxygen/red,
@@ -2150,11 +2300,11 @@
 /obj/structure/rack/skeletal_bar/left,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/gun/projectile/shotgun/boltaction/sakhno,
-/obj/item/ammo_box/magazine/internal/boltaction/sakhno,
-/obj/item/ammo_box/magazine/internal/boltaction/sakhno,
-/obj/item/ammo_box/magazine/internal/boltaction/sakhno,
-/obj/item/ammo_box/magazine/internal/boltaction/sakhno,
-/obj/item/ammo_box/magazine/internal/boltaction/sakhno,
+/obj/item/ammo_box/s310,
+/obj/item/ammo_box/s310,
+/obj/item/ammo_box/s310,
+/obj/item/ammo_box/s310,
+/obj/item/ammo_box/s310,
 /turf/simulated/floor/brick/cold,
 /area/awaymission/arrakis/cave/cave1)
 "eZS" = (
@@ -2245,6 +2395,31 @@
 /obj/item/stack/ore/plasma,
 /turf/simulated/floor/indestructible/dune_sand/cave/cavedeep/dark,
 /area/awaymission/arrakis/cave)
+"fmJ" = (
+/obj/effect/decal/snow/clean/edge{
+	color = "decfc3";
+	dir = 10
+	},
+/turf/simulated/floor/indestructible/dune_sand,
+/area/awaymission/arrakis/outside/outside2)
+"fmW" = (
+/obj/structure/shelf{
+	color = "#e0ac7b"
+	},
+/obj/item/reagent_containers/drinks/chicken_soup{
+	pixel_y = 10
+	},
+/obj/item/reagent_containers/drinks/chicken_soup{
+	pixel_y = 10
+	},
+/obj/item/reagent_containers/drinks/chicken_soup{
+	pixel_y = -5
+	},
+/obj/item/reagent_containers/drinks/chicken_soup{
+	pixel_y = -5
+	},
+/turf/simulated/floor/plating/asteroid/basalt/dune,
+/area/awaymission/arrakis/cave/cave)
 "fmY" = (
 /obj/item/storage/bag/plants,
 /turf/simulated/floor/indestructible/dune_sand,
@@ -2322,21 +2497,31 @@
 	color = "#9b5839"
 	},
 /turf/simulated/floor/wood/fancy/oak,
-/area/awaymission/arrakis/outside/outside2)
+/area/awaymission/arrakis/outside_building/hermit_shack)
 "fAH" = (
 /obj/structure/closet,
 /obj/item/reagent_containers/drinks/bottle/whiskey,
 /obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/wood/fancy/oak,
-/area/awaymission/arrakis/outside/outside2)
+/area/awaymission/arrakis/outside_building/hermit_shack)
 "fCt" = (
 /obj/structure/closet/cabinet,
 /turf/simulated/floor/wood/fancy/oak,
 /area/awaymission/arrakis/cave/cave1)
+"fCP" = (
+/obj/structure/gunrack{
+	color = "#e0ac7b"
+	},
+/obj/item/gun/projectile/shotgun/boltaction/sakhno,
+/obj/item/gun/projectile/shotgun/boltaction/sakhno,
+/turf/simulated/floor/wood/oak,
+/area/awaymission/arrakis/cave/cave1)
 "fDK" = (
-/obj/effect/mapping_helpers/light,
-/turf/simulated/floor/indestructible/dune_sand,
-/area/awaymission/arrakis/outside/outside2)
+/obj/structure/bookcase/random,
+/turf/simulated/floor/wood/fancy/birch{
+	color = "#45260f"
+	},
+/area/awaymission/arrakis/cave/cave1)
 "fEs" = (
 /obj/item/wrench,
 /turf/simulated/floor/indestructible/dune_sand{
@@ -2360,6 +2545,12 @@
 /obj/structure/shelf{
 	color = "#e0ac7b"
 	},
+/obj/item/ammo_box/s310,
+/obj/item/ammo_box/s310,
+/obj/item/ammo_box/s310,
+/obj/item/ammo_box/s310,
+/obj/item/ammo_box/s310,
+/obj/item/ammo_box/s310,
 /turf/simulated/floor/wood/oak,
 /area/awaymission/arrakis/cave/cave1)
 "fFC" = (
@@ -2427,6 +2618,14 @@
 	},
 /turf/simulated/floor/wood/fancy/oak,
 /area/awaymission/arrakis/cave/cave1)
+"fIU" = (
+/obj/structure/flora/rock/pile,
+/obj/effect/decal/snow/clean/edge{
+	color = "decfc3";
+	dir = 8
+	},
+/turf/simulated/floor/indestructible/dune_sand,
+/area/awaymission/arrakis/outside/outside2)
 "fJW" = (
 /obj/effect/turf_decal/sand,
 /obj/machinery/constructable_frame{
@@ -2454,7 +2653,9 @@
 "fNm" = (
 /obj/effect/landmark/damageturf,
 /obj/effect/turf_decal/sand,
-/turf/simulated/floor/wood/oak,
+/turf/simulated/floor/wood/oak{
+	temperature = 430
+	},
 /area/awaymission/arrakis/outside/outside2)
 "fNq" = (
 /obj/effect/turf_decal/delivery,
@@ -2542,6 +2743,12 @@
 	icon = 'modular_ss220/aesthetics/floors/icons/floors.dmi'
 	},
 /area/awaymission/arrakis/outside/outside2)
+"gbo" = (
+/obj/effect/baseturf_helper{
+	baseturf = /turf/simulated/floor/indestructible/dune_sand/dug
+	},
+/turf/simulated/wall/indestructible/rock/mineral,
+/area/awaymission/arrakis/outside_building)
 "gbz" = (
 /obj/effect/landmark/burnturf,
 /turf/simulated/floor/indestructible/dune_sand,
@@ -2587,11 +2794,6 @@
 	floor_variance = null
 	},
 /area/awaymission/arrakis/outside/outside2)
-"giH" = (
-/obj/structure/flora/tree/desert/african,
-/obj/effect/mapping_helpers/light,
-/turf/simulated/floor/indestructible/dune_sand,
-/area/awaymission/arrakis/outside/outside2)
 "gjK" = (
 /obj/effect/turf_decal/siding/wood,
 /obj/structure/statue/cheese/cheesus{
@@ -2613,7 +2815,13 @@
 /area/awaymission/arrakis/outside/outside3)
 "gnS" = (
 /turf/simulated/wall/mineral/wood,
-/area/awaymission/arrakis/outside/outside2)
+/area/awaymission/arrakis/outside_building/hermit_shack)
+"goJ" = (
+/obj/machinery/gateway{
+	dir = 1
+	},
+/turf/simulated/floor/plating/asteroid/basalt/dune,
+/area/awaymission/arrakis/cave/cave)
 "gpf" = (
 /obj/structure/closet/crate,
 /obj/effect/decal/cleanable/dust,
@@ -2795,7 +3003,14 @@
 /obj/effect/decal/cleanable/dust,
 /obj/structure/fans/tiny/invisible,
 /turf/simulated/floor/wood/fancy/oak,
-/area/awaymission/arrakis/outside/outside2)
+/area/awaymission/arrakis/outside_building/hermit_shack)
+"gIG" = (
+/obj/effect/decal/snow/clean{
+	color = "decfc3"
+	},
+/obj/structure/fans/tiny/invisible,
+/turf/simulated/floor/indestructible/dune_sand/cave/cavedeep,
+/area/awaymission/arrakis/cave)
 "gJh" = (
 /obj/machinery/door/airlock/vault{
 	name = "Mining Outpost - Storage"
@@ -2933,6 +3148,12 @@
 	baseturf = /turf/simulated/floor/indestructible/dune_sand
 	},
 /area/awaymission/arrakis/outside/outside3)
+"gXm" = (
+/obj/effect/baseturf_helper{
+	baseturf = /turf/simulated/floor/indestructible/dune_sand/dug
+	},
+/turf/simulated/wall/indestructible/rock/mineral,
+/area/awaymission/arrakis/outside/outside3)
 "gYl" = (
 /obj/structure/fence/cut/large{
 	color = "#e0ac7b";
@@ -3030,6 +3251,16 @@
 	},
 /turf/simulated/floor/indestructible/dune_sand,
 /area/awaymission/arrakis/outside/outside2)
+"hgv" = (
+/obj/item/clothing/suit/hooded/wintercoat,
+/turf/simulated/floor/indestructible/dune_sand/cave/cavedeep/dark/dark_basalt,
+/area/awaymission/arrakis/cave/cave)
+"hhb" = (
+/obj/effect/landmark/awaystart,
+/turf/simulated/floor/brick{
+	icon_state = "brick_boss2"
+	},
+/area/awaymission/arrakis/cave/cave)
 "hhS" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/sand/plating,
@@ -3111,6 +3342,10 @@
 /obj/effect/mob_spawn/human/corpse/skeleton,
 /turf/simulated/floor/indestructible/dune_sand,
 /area/awaymission/arrakis/outside/outside3)
+"hqn" = (
+/obj/item/storage/backpack/satchel/explorer,
+/turf/simulated/floor/plating/asteroid/basalt/dune,
+/area/awaymission/arrakis/cave/cave)
 "hrf" = (
 /obj/effect/turf_decal/sand/plating,
 /obj/structure/rubble/war,
@@ -3166,6 +3401,15 @@
 	color = "#e0ac7b"
 	},
 /area/awaymission/arrakis/cave/cave1)
+"hze" = (
+/obj/structure/shelf{
+	color = "#e0ac7b"
+	},
+/obj/item/reagent_containers/glass/beaker/waterbottle/large,
+/obj/item/reagent_containers/glass/beaker/waterbottle/large,
+/obj/item/reagent_containers/glass/beaker/waterbottle/large,
+/turf/simulated/floor/indestructible/dune_sand/cave/cavedeep/dark/dark_basalt,
+/area/awaymission/arrakis/cave/cave)
 "hzg" = (
 /obj/effect/spawner/random_spawners/wall_rusted_always,
 /obj/effect/spawner/random_spawners/wall_rusted_always,
@@ -3232,6 +3476,16 @@
 /obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/wood/fancy/cherry,
 /area/awaymission/arrakis/cave/cave1)
+"hHe" = (
+/obj/effect/decal/snow/clean/edge{
+	color = "decfc3";
+	dir = 1
+	},
+/obj/effect/decal/snow/clean/edge{
+	color = "decfc3"
+	},
+/turf/simulated/floor/indestructible/dune_sand,
+/area/awaymission/arrakis/outside/outside2)
 "hJD" = (
 /obj/structure/rubble/outside,
 /turf/simulated/floor/indestructible/dune_sand{
@@ -3266,6 +3520,14 @@
 /obj/structure/flora/rock,
 /turf/simulated/floor/indestructible/dune_sand/cave/cavedeep/dark/dark_basalt,
 /area/awaymission/arrakis/cave)
+"hNr" = (
+/obj/effect/decal/remains/human,
+/obj/item/clothing/shoes/cowboy{
+	pixel_x = -15;
+	pixel_y = 11
+	},
+/turf/simulated/floor/plating/asteroid/basalt/dune,
+/area/awaymission/arrakis/cave/cave)
 "hRS" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/crate/secure,
@@ -3283,7 +3545,7 @@
 	},
 /obj/structure/fans/tiny/invisible,
 /turf/simulated/floor/wood/fancy/oak,
-/area/awaymission/arrakis/outside/outside2)
+/area/awaymission/arrakis/outside_building/hermit_shack)
 "hTE" = (
 /obj/structure/table/wood{
 	color = "#633717"
@@ -3327,6 +3589,17 @@
 	icon = 'modular_ss220/aesthetics/floors/icons/floors.dmi'
 	},
 /area/awaymission/arrakis/outside/outside2)
+"iaD" = (
+/obj/item/flashlight/lantern{
+	anchored = 1;
+	layer = 5;
+	light_color = "#FF9F40";
+	on = 1;
+	pixel_x = -1;
+	pixel_y = 10
+	},
+/turf/simulated/floor/plating/asteroid/basalt/dune,
+/area/awaymission/arrakis/cave/cave)
 "ica" = (
 /obj/effect/landmark/burnturf,
 /obj/item/stack/sheet/mineral/plastitanium,
@@ -3365,6 +3638,14 @@
 /obj/item/vending_refill/engineering,
 /turf/simulated/floor/indestructible/dune_sand,
 /area/awaymission/arrakis/outside/outside2)
+"ift" = (
+/obj/item/clothing/suit/hooded/wintercoat{
+	pixel_x = -8;
+	pixel_y = 11
+	},
+/obj/effect/decal/cleanable/trash,
+/turf/simulated/floor/plating/asteroid/basalt/dune,
+/area/awaymission/arrakis/cave/cave)
 "ifB" = (
 /obj/item/airlock_electronics/destroyed,
 /turf/simulated/floor/indestructible/dune_sand,
@@ -3382,16 +3663,19 @@
 	floor_variance = null
 	},
 /area/awaymission/arrakis/outside/outside3)
+"ijw" = (
+/obj/effect/decal/snow/clean/edge{
+	color = "decfc3";
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral/full,
+/turf/simulated/floor/brick,
+/area/awaymission/arrakis/outside/outside2)
 "ijV" = (
 /obj/item/stock_parts/capacitor/super,
 /obj/item/shard,
 /turf/simulated/floor/indestructible/dune_sand,
 /area/awaymission/arrakis/outside/outside2)
-"imI" = (
-/obj/effect/decal/cleanable/blood/old,
-/obj/effect/mapping_helpers/light,
-/turf/simulated/floor/indestructible/dune_sand,
-/area/awaymission/arrakis/outside/outside3)
 "imN" = (
 /turf/simulated/floor/indestructible/dune_sand{
 	icon_state = "asteroidfloor";
@@ -3466,6 +3750,13 @@
 "ivE" = (
 /obj/effect/turf_decal/sand,
 /obj/structure/rubble/war,
+/turf/simulated/floor/indestructible/dune_sand,
+/area/awaymission/arrakis/outside/outside2)
+"ivS" = (
+/obj/effect/decal/snow/clean/edge{
+	color = "decfc3";
+	dir = 9
+	},
 /turf/simulated/floor/indestructible/dune_sand,
 /area/awaymission/arrakis/outside/outside2)
 "iwi" = (
@@ -3568,6 +3859,13 @@
 	},
 /turf/simulated/floor/indestructible/dune_sand,
 /area/awaymission/arrakis/outside/outside2)
+"iHv" = (
+/obj/effect/decal/snow/clean/edge{
+	color = "decfc3";
+	dir = 1
+	},
+/turf/simulated/floor/indestructible/dune_sand,
+/area/awaymission/arrakis/outside/outside2)
 "iHF" = (
 /obj/effect/decal/cleanable/dust,
 /obj/structure/flora/corn_stalk/alt_2,
@@ -3594,6 +3892,19 @@
 /obj/structure/barricade/wooden/crude,
 /turf/simulated/floor/indestructible/dune_sand,
 /area/awaymission/arrakis/outside/outside3)
+"iIw" = (
+/turf/simulated/floor/plating/ice{
+	color = "#acb78e"
+	},
+/area/awaymission/arrakis/outside/outside2)
+"iJc" = (
+/obj/effect/decal/remains/human,
+/obj/item/clothing/accessory/cowboyshirt{
+	pixel_x = 11;
+	pixel_y = 1
+	},
+/turf/simulated/floor/indestructible/dune_sand/cave/cavedeep/dark/dark_basalt,
+/area/awaymission/arrakis/cave/cave)
 "iJe" = (
 /obj/effect/landmark/burnturf,
 /obj/effect/turf_decal/sand,
@@ -3617,6 +3928,12 @@
 /obj/item/stack/tile/brass,
 /turf/simulated/floor/indestructible/dune_sand,
 /area/awaymission/arrakis/outside/outside2)
+"iNy" = (
+/obj/structure/bed/mattress/dirty,
+/turf/simulated/floor/brick{
+	icon_state = "brick_boss"
+	},
+/area/awaymission/arrakis/cave/cave)
 "iNE" = (
 /obj/effect/turf_decal/sand,
 /obj/structure/girder/reinforced,
@@ -3630,6 +3947,13 @@
 /obj/structure/shipping_container/desert_other,
 /turf/simulated/floor/indestructible/dune_sand,
 /area/awaymission/arrakis/outside/outside2)
+"iQp" = (
+/obj/item/clothing/suit/hooded/wintercoat{
+	pixel_x = 15;
+	pixel_y = 0
+	},
+/turf/simulated/floor/indestructible/dune_sand/cave/cavedeep/dark/dark_basalt,
+/area/awaymission/arrakis/cave/cave)
 "iRs" = (
 /obj/structure/table/wood,
 /obj/item/stack/packageWrap{
@@ -3645,6 +3969,16 @@
 /area/awaymission/arrakis/cave/cave1)
 "iRG" = (
 /obj/structure/flora/ash/rock/style_random,
+/turf/simulated/floor/plating/asteroid/basalt/dune,
+/area/awaymission/arrakis/cave/cave)
+"iSe" = (
+/obj/structure/flora/rock/pile,
+/obj/effect/decal/remains/human,
+/obj/item/clothing/under/pants/khaki,
+/obj/item/clothing/head/cowboyhat{
+	pixel_x = -16;
+	pixel_y = -11
+	},
 /turf/simulated/floor/plating/asteroid/basalt/dune,
 /area/awaymission/arrakis/cave/cave)
 "iTA" = (
@@ -3691,6 +4025,12 @@
 /obj/item/bedsheet/black,
 /turf/simulated/floor/wood/fancy/oak,
 /area/awaymission/arrakis/outside/outside2)
+"jdG" = (
+/obj/structure/reagent_dispensers/watertank,
+/turf/simulated/floor/brick{
+	icon_state = "brick_boss"
+	},
+/area/awaymission/arrakis/cave/cave)
 "jfh" = (
 /obj/effect/decal/cleanable/dust,
 /obj/structure/table/wood,
@@ -3755,7 +4095,7 @@
 	},
 /obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/wood/fancy/oak,
-/area/awaymission/arrakis/outside/outside2)
+/area/awaymission/arrakis/outside_building/hermit_shack)
 "jhp" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/safe,
@@ -3823,7 +4163,7 @@
 /turf/simulated/floor/wood/fancy/oak{
 	icon_state = "fancy-wood-oak-broken2"
 	},
-/area/awaymission/arrakis/outside/outside2)
+/area/awaymission/arrakis/outside_building/hermit_shack)
 "jpK" = (
 /obj/item/tank/internals/anesthetic,
 /obj/effect/turf_decal/sand,
@@ -3836,6 +4176,10 @@
 /obj/structure/spawner/scorpio,
 /turf/simulated/floor/indestructible/dune_sand,
 /area/awaymission/arrakis/outside/outside2)
+"jsW" = (
+/obj/effect/decal/remains/human,
+/turf/simulated/floor/indestructible/dune_sand/cave/cavedeep/dark/dark_basalt,
+/area/awaymission/arrakis/cave/cave)
 "jtU" = (
 /obj/machinery/atmospherics/portable/canister/oxygen,
 /turf/simulated/floor/wood/oak,
@@ -4123,8 +4467,16 @@
 "kdF" = (
 /obj/effect/decal/cleanable/glass,
 /obj/effect/turf_decal/sand,
-/turf/simulated/floor/wood/oak,
+/turf/simulated/floor/wood/oak{
+	temperature = 430
+	},
 /area/awaymission/arrakis/outside/outside2)
+"kfz" = (
+/obj/effect/baseturf_helper{
+	baseturf = /turf/simulated/floor/indestructible/dune_sand/dug
+	},
+/turf/simulated/wall/indestructible/rock/mineral,
+/area/awaymission/arrakis/outside_building/hermit_shack)
 "kgE" = (
 /obj/effect/decal/cleanable/glass,
 /turf/simulated/floor/indestructible/dune_sand,
@@ -4137,6 +4489,12 @@
 /obj/structure/closet/crate/freezer,
 /turf/simulated/floor/wood/oak,
 /area/awaymission/arrakis/cave/cave1)
+"kjo" = (
+/obj/effect/decal/cleanable/blood/old,
+/turf/simulated/floor/brick{
+	icon_state = "brick_boss"
+	},
+/area/awaymission/arrakis/cave/cave)
 "kjO" = (
 /obj/structure/table/wood,
 /obj/item/reagent_containers/condiment/saltshaker{
@@ -4254,6 +4612,15 @@
 	icon = 'modular_ss220/aesthetics/floors/icons/floors.dmi'
 	},
 /area/awaymission/arrakis/outside/outside2)
+"kvY" = (
+/obj/effect/decal/snow/clean/edge{
+	color = "decfc3";
+	dir = 5
+	},
+/turf/simulated/floor/plating/ice{
+	color = "#acb78e"
+	},
+/area/awaymission/arrakis/outside/outside2)
 "kwp" = (
 /obj/item/clothing/head/welding,
 /obj/effect/decal/cleanable/dirt,
@@ -4351,7 +4718,6 @@
 /obj/item/stack/sheet/wood,
 /obj/effect/landmark/damageturf,
 /obj/effect/turf_decal/sand/plating,
-/obj/effect/mapping_helpers/light,
 /turf/simulated/floor/indestructible/dune_sand{
 	icon_state = "darkfull";
 	icon = 'modular_ss220/aesthetics/floors/icons/floors.dmi';
@@ -4383,7 +4749,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/wood/fancy/oak,
-/area/awaymission/arrakis/outside/outside2)
+/area/awaymission/arrakis/outside_building/hermit_shack)
 "kEp" = (
 /turf/simulated/floor/indestructible/dune_sand/cave/cavedeep/dark/dark_basalt,
 /area/awaymission/arrakis/cave/cave)
@@ -4525,6 +4891,26 @@
 	floor_variance = null
 	},
 /area/awaymission/arrakis/outside/outside2)
+"lbh" = (
+/obj/structure/closet/crate/wooden/wooden_crate,
+/obj/item/reagent_containers/drinks/cans/beer,
+/obj/item/reagent_containers/drinks/cans/beer,
+/obj/item/reagent_containers/drinks/cans/beer,
+/obj/item/reagent_containers/drinks/cans/beer,
+/obj/item/reagent_containers/drinks/cans/beer,
+/obj/item/reagent_containers/drinks/cans/beer,
+/obj/item/reagent_containers/drinks/cans/beer,
+/obj/item/reagent_containers/drinks/bottle/whiskey,
+/obj/item/reagent_containers/drinks/bottle/whiskey,
+/obj/item/reagent_containers/drinks/bottle/whiskey,
+/turf/simulated/floor/brick{
+	icon_state = "brick_boss"
+	},
+/area/awaymission/arrakis/cave/cave)
+"lbr" = (
+/obj/effect/mob_spawn/human/corpse/skeleton,
+/turf/simulated/floor/plating/asteroid/basalt/dune,
+/area/awaymission/arrakis/cave/cave)
 "lcH" = (
 /obj/effect/decal/cleanable/trash,
 /turf/simulated/floor/indestructible/dune_sand{
@@ -4579,7 +4965,7 @@
 /obj/item/hemostat,
 /obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/wood/fancy/oak,
-/area/awaymission/arrakis/outside/outside2)
+/area/awaymission/arrakis/outside_building/hermit_shack)
 "lfs" = (
 /obj/structure/coatrack,
 /obj/item/clothing/suit/browntrenchcoat{
@@ -4592,7 +4978,7 @@
 	},
 /obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/wood/fancy/oak,
-/area/awaymission/arrakis/outside/outside2)
+/area/awaymission/arrakis/outside_building/hermit_shack)
 "lfD" = (
 /obj/effect/decal/remains/human,
 /turf/simulated/floor/indestructible/dune_sand,
@@ -4618,6 +5004,16 @@
 	icon_state = "podfloor_light"
 	},
 /area/awaymission/arrakis/outside/outside2)
+"lgX" = (
+/obj/effect/decal/snow/clean{
+	color = "decfc3"
+	},
+/turf/simulated/floor/indestructible/dune_sand{
+	icon_state = "asteroidfloor";
+	icon = 'modular_ss220/aesthetics/floors/icons/floors.dmi';
+	floor_variance = null
+	},
+/area/awaymission/arrakis/outside/outside2)
 "lhl" = (
 /obj/structure/flora/ash/rock/style_random,
 /turf/simulated/floor/brick{
@@ -4627,7 +5023,9 @@
 "liz" = (
 /obj/effect/decal/cleanable/ash,
 /obj/effect/turf_decal/sand,
-/turf/simulated/floor/wood/oak,
+/turf/simulated/floor/wood/oak{
+	temperature = 430
+	},
 /area/awaymission/arrakis/outside/outside2)
 "lja" = (
 /obj/structure/closet/crate,
@@ -4847,6 +5245,11 @@
 	icon = 'modular_ss220/aesthetics/floors/icons/floors.dmi'
 	},
 /area/awaymission/arrakis/outside/outside2)
+"lHd" = (
+/obj/structure/bed/mattress/dirty,
+/obj/item/clothing/suit/jacket/leather/overcoat,
+/turf/simulated/floor/indestructible/dune_sand/cave/cavedeep/dark/dark_basalt,
+/area/awaymission/arrakis/cave/cave)
 "lHp" = (
 /obj/effect/turf_decal/sand,
 /turf/simulated/floor/indestructible/dune_sand{
@@ -5005,6 +5408,7 @@
 	icon_state = "0-2"
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/power/apc/off_station/directional/north,
 /turf/simulated/floor/brick/cold,
 /area/awaymission/arrakis/cave/cave1)
 "lVX" = (
@@ -5101,7 +5505,6 @@
 "miU" = (
 /obj/effect/landmark/damageturf,
 /obj/effect/turf_decal/sand/plating,
-/obj/effect/mapping_helpers/light,
 /turf/simulated/floor/indestructible/dune_sand{
 	icon_state = "caution";
 	icon = 'modular_ss220/aesthetics/floors/icons/floors.dmi';
@@ -5270,7 +5673,7 @@
 	name = "шторы из кожи"
 	},
 /turf/simulated/floor/wood/fancy/oak,
-/area/awaymission/arrakis/outside/outside2)
+/area/awaymission/arrakis/outside_building/hermit_shack)
 "mCF" = (
 /obj/effect/turf_decal/sand/plating,
 /obj/structure/table_frame,
@@ -5285,6 +5688,14 @@
 /obj/effect/landmark/damageturf,
 /turf/simulated/floor/wood/fancy/oak,
 /area/awaymission/arrakis/cave/cave1)
+"mFg" = (
+/obj/effect/decal/snow/clean/edge{
+	color = "decfc3";
+	dir = 8
+	},
+/obj/structure/flora/rock/pile/icy,
+/turf/simulated/floor/indestructible/dune_sand,
+/area/awaymission/arrakis/outside/outside2)
 "mHm" = (
 /obj/effect/turf_decal/sand,
 /obj/item/stack/rods,
@@ -5311,13 +5722,24 @@
 	},
 /obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/wood/fancy/oak,
-/area/awaymission/arrakis/outside/outside2)
+/area/awaymission/arrakis/outside_building/hermit_shack)
 "mJS" = (
 /obj/structure/chair/sofa/right{
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/wood/fancy/oak,
+/area/awaymission/arrakis/outside_building/hermit_shack)
+"mMb" = (
+/obj/effect/decal/snow/clean/edge{
+	color = "decfc3";
+	dir = 9
+	},
+/turf/simulated/floor/indestructible/dune_sand{
+	icon_state = "asteroidfloor";
+	icon = 'modular_ss220/aesthetics/floors/icons/floors.dmi';
+	floor_variance = null
+	},
 /area/awaymission/arrakis/outside/outside2)
 "mNf" = (
 /obj/item/stock_parts/capacitor/adv{
@@ -5330,11 +5752,6 @@
 	icon = 'modular_ss220/aesthetics/floors/icons/floors.dmi';
 	floor_variance = null
 	},
-/area/awaymission/arrakis/outside/outside2)
-"mOq" = (
-/obj/structure/rubble/war,
-/obj/effect/mapping_helpers/light,
-/turf/simulated/floor/indestructible/dune_sand,
 /area/awaymission/arrakis/outside/outside2)
 "mQu" = (
 /obj/structure/chair/sofa/pew/left{
@@ -5413,7 +5830,7 @@
 /obj/effect/landmark/damageturf,
 /mob/living/simple_animal/hostile/poison_snake/scorpio_mini/purpl,
 /turf/simulated/floor/wood/fancy/oak,
-/area/awaymission/arrakis/outside/outside2)
+/area/awaymission/arrakis/outside_building/hermit_shack)
 "mVg" = (
 /obj/structure/fluff/desert_construction/huge_columns/black_obelisk2,
 /turf/simulated/floor/brick{
@@ -5461,6 +5878,13 @@
 /obj/structure/bed/mattress/dirty,
 /turf/simulated/floor/plating/asteroid/basalt/dune,
 /area/awaymission/arrakis/cave/cave)
+"neS" = (
+/obj/effect/decal/snow/clean/edge{
+	color = "decfc3";
+	dir = 6
+	},
+/turf/simulated/floor/indestructible/dune_sand,
+/area/awaymission/arrakis/outside/outside2)
 "neV" = (
 /obj/item/stack/ore/plasma,
 /turf/simulated/floor/indestructible/dune_sand/cold,
@@ -5483,6 +5907,12 @@
 "nhE" = (
 /obj/structure/flora/ash/rock/style_random,
 /turf/simulated/floor/indestructible/dune_sand/cave/cavedeep/dark/dark_basalt,
+/area/awaymission/arrakis/cave/cave)
+"nku" = (
+/obj/machinery/gateway{
+	dir = 9
+	},
+/turf/simulated/floor/plating/asteroid/basalt/dune,
 /area/awaymission/arrakis/cave/cave)
 "nly" = (
 /obj/effect/decal/cleanable/dust,
@@ -5573,11 +6003,6 @@
 /obj/structure/girder/displaced,
 /turf/simulated/floor/indestructible/dune_sand,
 /area/awaymission/arrakis/outside/outside2)
-"nsf" = (
-/obj/structure/flora/tree/cactus/circle,
-/obj/effect/mapping_helpers/light,
-/turf/simulated/floor/indestructible/dune_sand,
-/area/awaymission/arrakis/outside/outside2)
 "nsU" = (
 /obj/item/storage/toolbox/mechanical{
 	pixel_y = 5
@@ -5595,7 +6020,7 @@
 	name = "шторы из кожи"
 	},
 /turf/simulated/floor/wood/fancy/oak,
-/area/awaymission/arrakis/outside/outside2)
+/area/awaymission/arrakis/outside_building/hermit_shack)
 "nuI" = (
 /turf/simulated/floor/indestructible/dune_sand{
 	icon_state = "brick"
@@ -5616,6 +6041,12 @@
 	icon = 'modular_ss220/aesthetics/floors/icons/floors.dmi'
 	},
 /area/awaymission/arrakis/outside/outside2)
+"nwM" = (
+/obj/machinery/gateway{
+	dir = 10
+	},
+/turf/simulated/floor/plating/asteroid/basalt/dune,
+/area/awaymission/arrakis/cave/cave)
 "nzr" = (
 /obj/structure/firelock_frame,
 /obj/effect/turf_decal/sand/plating,
@@ -5676,6 +6107,13 @@
 /obj/effect/turf_decal/sand/plating,
 /turf/simulated/floor/indestructible/dune_sand,
 /area/awaymission/arrakis/outside/outside3)
+"nEg" = (
+/obj/effect/decal/snow/clean/edge{
+	color = "decfc3"
+	},
+/obj/effect/turf_decal/tile/neutral/full,
+/turf/simulated/floor/brick,
+/area/awaymission/arrakis/outside/outside2)
 "nGj" = (
 /obj/item/stack/cable_coil/random,
 /turf/simulated/floor/indestructible/dune_sand,
@@ -5691,6 +6129,10 @@
 /obj/structure/punji_sticks/spikes,
 /turf/simulated/floor/indestructible/dune_sand,
 /area/awaymission/arrakis/outside/outside2)
+"nMg" = (
+/obj/item/clothing/suit/storage/browntrenchcoat,
+/turf/simulated/floor/plating/asteroid/basalt/dune,
+/area/awaymission/arrakis/cave/cave)
 "nNy" = (
 /obj/vehicle/motorcycle/desert{
 	dir = 1
@@ -5713,7 +6155,7 @@
 "nRG" = (
 /obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/wood/fancy/oak,
-/area/awaymission/arrakis/outside/outside2)
+/area/awaymission/arrakis/outside_building/hermit_shack)
 "nRJ" = (
 /obj/effect/turf_decal/sand,
 /obj/effect/turf_decal/sand/plating,
@@ -5869,7 +6311,9 @@
 /area/awaymission/arrakis/outside/outside2)
 "omB" = (
 /obj/effect/turf_decal/sand,
-/turf/simulated/floor/wood/oak,
+/turf/simulated/floor/wood/oak{
+	temperature = 430
+	},
 /area/awaymission/arrakis/outside/outside2)
 "onQ" = (
 /obj/effect/decal/cleanable/glass,
@@ -5909,17 +6353,8 @@
 "oqX" = (
 /obj/effect/turf_decal/sand,
 /turf/simulated/floor/plasteel/stairs{
+	temperature = 430;
 	dir = 8
-	},
-/area/awaymission/arrakis/outside/outside2)
-"osN" = (
-/obj/structure/girder/reinforced,
-/obj/effect/turf_decal/sand,
-/obj/effect/mapping_helpers/light,
-/turf/simulated/floor/indestructible/dune_sand{
-	icon_state = "plating";
-	icon = 'modular_ss220/aesthetics/floors/icons/floors.dmi';
-	floor_variance = null
 	},
 /area/awaymission/arrakis/outside/outside2)
 "otL" = (
@@ -6055,6 +6490,14 @@
 /obj/item/hatchet/unathiknife,
 /turf/simulated/floor/indestructible/dune_sand,
 /area/awaymission/arrakis/outside/outside2)
+"oFh" = (
+/obj/effect/decal/snow/clean/edge{
+	color = "decfc3";
+	dir = 8
+	},
+/obj/structure/rubble/outside,
+/turf/simulated/floor/indestructible/dune_sand,
+/area/awaymission/arrakis/outside/outside2)
 "oFN" = (
 /obj/effect/decal/straw/light,
 /turf/simulated/floor/indestructible/dune_sand,
@@ -6095,10 +6538,6 @@
 	floor_variance = null
 	},
 /area/awaymission/arrakis/outside/outside2)
-"oJg" = (
-/obj/effect/mapping_helpers/light,
-/turf/simulated/floor/indestructible/dune_sand/dug,
-/area/awaymission/arrakis/outside/outside3)
 "oJP" = (
 /obj/item/stack/rods,
 /obj/effect/turf_decal/sand,
@@ -6189,9 +6628,25 @@
 /turf/simulated/floor/indestructible/dune_sand,
 /area/awaymission/arrakis/outside/outside2)
 "oWe" = (
-/obj/structure/flora/tree/desert/joshua,
-/turf/simulated/floor/indestructible/dune_sand,
-/area/awaymission/arrakis/outside/outside2)
+/obj/structure/table/wood,
+/obj/item/reagent_containers/drinks/trophy/bronze_cup{
+	pixel_x = -8;
+	pixel_y = 4
+	},
+/obj/item/storage/fancy/matches{
+	pixel_x = 7;
+	pixel_y = -3
+	},
+/obj/item/food/grown/ash_flora/mushroom_stem{
+	pixel_x = 4;
+	pixel_y = 8
+	},
+/obj/item/food/grown/ash_flora/mushroom_cap{
+	pixel_x = 9;
+	pixel_y = 9
+	},
+/turf/simulated/floor/indestructible/dune_sand/cave/cavedeep/dark/dark_basalt,
+/area/awaymission/arrakis/cave/cave)
 "oWG" = (
 /obj/effect/turf_decal/stripes/asteroid/line{
 	dir = 1
@@ -6231,7 +6686,10 @@
 /obj/structure/fence{
 	color = "#e0ac7b"
 	},
-/obj/structure/closet/crate/wooden/wooden_crate,
+/obj/structure/gunrack{
+	color = "#e0ac7b"
+	},
+/obj/item/gun/projectile/shotgun/boltaction/sakhno,
 /turf/simulated/floor/wood/oak,
 /area/awaymission/arrakis/cave/cave1)
 "paD" = (
@@ -6268,7 +6726,7 @@
 	pixel_y = 3
 	},
 /turf/simulated/floor/wood/fancy/oak,
-/area/awaymission/arrakis/outside/outside2)
+/area/awaymission/arrakis/outside_building/hermit_shack)
 "pfo" = (
 /obj/effect/turf_decal/sand/plating,
 /obj/item/stack/sheet/mineral/sandstone,
@@ -6298,6 +6756,12 @@
 	icon = 'modular_ss220/aesthetics/floors/icons/floors.dmi'
 	},
 /area/awaymission/arrakis/outside/outside2)
+"piQ" = (
+/obj/effect/decal/snow/clean{
+	color = "decfc3"
+	},
+/turf/simulated/floor/indestructible/dune_sand/cave/cavedeep,
+/area/awaymission/arrakis/cave)
 "ply" = (
 /obj/item/stack/sheet/metal,
 /turf/simulated/floor/indestructible/dune_sand,
@@ -6387,7 +6851,9 @@
 "puh" = (
 /obj/structure/table/wood,
 /obj/effect/turf_decal/sand,
-/turf/simulated/floor/wood/oak,
+/turf/simulated/floor/wood/oak{
+	temperature = 430
+	},
 /area/awaymission/arrakis/outside/outside2)
 "puR" = (
 /obj/structure/mineral_door/wood{
@@ -6417,6 +6883,10 @@
 /obj/item/crowbar,
 /turf/simulated/floor/wood/oak,
 /area/awaymission/arrakis/cave/cave1)
+"pwn" = (
+/obj/item/stack/ore/strange,
+/turf/simulated/floor/indestructible/dune_sand/cave/cavedeep/dark,
+/area/awaymission/arrakis/cave)
 "pwx" = (
 /obj/structure/closet/crate/wooden/wooden_crate,
 /obj/item/stock_parts/cell/empty,
@@ -6425,10 +6895,20 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/brick/cold,
 /area/awaymission/arrakis/cave/cave1)
-"pxE" = (
-/obj/effect/mapping_helpers/light,
+"pxB" = (
+/obj/effect/decal/snow/clean{
+	color = "decfc3"
+	},
+/obj/effect/decal/snow/clean{
+	color = "decfc3"
+	},
 /turf/simulated/floor/indestructible/dune_sand,
-/area/awaymission/arrakis/outside/outside3)
+/area/awaymission/arrakis/outside/outside2)
+"pxE" = (
+/obj/effect/decal/cleanable/blood/old,
+/obj/item/paper/crumpled/bloody/hirka/caves,
+/turf/simulated/floor/plating/asteroid/basalt/dune,
+/area/awaymission/arrakis/cave/cave)
 "pyb" = (
 /obj/effect/decal/cleanable/dust,
 /obj/structure/mineral_door/wood,
@@ -6443,6 +6923,10 @@
 	color = "#e0ac7b"
 	},
 /area/awaymission/arrakis/cave/cave1)
+"pzn" = (
+/obj/effect/decal/cleanable/blood/old,
+/turf/simulated/floor/indestructible/dune_sand/cave/cavedeep/dark/dark_basalt,
+/area/awaymission/arrakis/cave/cave)
 "pzO" = (
 /turf/simulated/floor/indestructible/dune_sand{
 	icon_state = "plastitanium_red";
@@ -6929,7 +7413,6 @@
 /area/awaymission/arrakis/outside/outside2)
 "qUw" = (
 /obj/effect/turf_decal/siding/wood,
-/obj/structure/bookcase/random,
 /turf/simulated/floor/wood/fancy/birch{
 	color = "#45260f"
 	},
@@ -7090,6 +7573,13 @@
 "rhG" = (
 /turf/simulated/floor/wood/oak,
 /area/awaymission/arrakis/cave/cave1)
+"riD" = (
+/obj/structure/flora/rock/pile,
+/obj/effect/landmark/awaystart,
+/turf/simulated/floor/brick{
+	icon_state = "brick_boss"
+	},
+/area/awaymission/arrakis/cave/cave)
 "rje" = (
 /obj/structure/rubble/outside,
 /turf/simulated/floor/indestructible/dune_sand{
@@ -7211,6 +7701,12 @@
 	icon_state = "plastitanium_red";
 	icon = 'modular_ss220/aesthetics/floors/icons/floors.dmi'
 	},
+/area/awaymission/arrakis/outside/outside2)
+"rwT" = (
+/obj/effect/decal/snow/clean/edge{
+	color = "decfc3"
+	},
+/turf/simulated/floor/indestructible/dune_sand,
 /area/awaymission/arrakis/outside/outside2)
 "rxs" = (
 /obj/machinery/computer/nonfunctional{
@@ -7342,11 +7838,13 @@
 /turf/simulated/floor/wood/fancy/oak{
 	icon_state = "fancy-wood-oak-broken"
 	},
-/area/awaymission/arrakis/outside/outside2)
+/area/awaymission/arrakis/outside_building/hermit_shack)
 "rTD" = (
-/obj/effect/mapping_helpers/light,
-/turf/simulated/floor/indestructible/dune_sand/dug,
-/area/awaymission/arrakis/outside/outside2)
+/obj/structure/falsewall/bookcase,
+/turf/simulated/floor/wood/fancy/birch{
+	color = "#45260f"
+	},
+/area/awaymission/arrakis/cave/cave1)
 "rVw" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/rubble/war,
@@ -7369,6 +7867,10 @@
 	},
 /turf/simulated/floor/engine,
 /area/awaymission/arrakis/outside_building/mining_storage_outpost)
+"sax" = (
+/obj/item/stack/ore/strange,
+/turf/simulated/floor/indestructible/dune_sand,
+/area/awaymission/arrakis/outside/outside3)
 "sbE" = (
 /obj/effect/turf_decal/sand/plating,
 /obj/effect/decal/cleanable/glass,
@@ -7378,6 +7880,12 @@
 	floor_variance = null
 	},
 /area/awaymission/arrakis/outside/outside2)
+"scz" = (
+/obj/effect/rune/manifest,
+/turf/simulated/floor/brick{
+	icon_state = "brick_boss2"
+	},
+/area/awaymission/arrakis/cave/cave)
 "sex" = (
 /obj/effect/landmark/damageturf,
 /turf/simulated/floor/wood/fancy/birch{
@@ -7510,12 +8018,11 @@
 /turf/simulated/floor/indestructible/dune_sand,
 /area/awaymission/arrakis/outside/outside2)
 "sxM" = (
-/obj/structure/decorative_structures/car_wreck{
-	dir = 4
+/obj/effect/landmark/awaystart,
+/turf/simulated/floor/brick{
+	icon_state = "brick_boss"
 	},
-/obj/effect/mapping_helpers/light,
-/turf/simulated/floor/indestructible/dune_sand,
-/area/awaymission/arrakis/outside/outside2)
+/area/awaymission/arrakis/cave/cave)
 "sxX" = (
 /obj/machinery/light{
 	dir = 4
@@ -7567,6 +8074,14 @@
 	floor_variance = null
 	},
 /area/awaymission/arrakis/outside/outside2)
+"sAz" = (
+/obj/effect/decal/snow/clean/edge{
+	color = "decfc3";
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral/full,
+/turf/simulated/floor/brick,
+/area/awaymission/arrakis/outside/outside2)
 "sBU" = (
 /obj/structure/rack,
 /obj/structure/window/reinforced{
@@ -7593,7 +8108,7 @@
 	},
 /obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/wood/fancy/oak,
-/area/awaymission/arrakis/outside/outside2)
+/area/awaymission/arrakis/outside_building/hermit_shack)
 "sCH" = (
 /obj/machinery/recharger/wallcharger{
 	pixel_y = 25
@@ -7707,6 +8222,14 @@
 	floor_variance = null
 	},
 /area/awaymission/arrakis/outside/outside2)
+"sQw" = (
+/obj/effect/decal/snow/clean/edge{
+	color = "decfc3";
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral/full,
+/turf/simulated/floor/brick,
+/area/awaymission/arrakis/outside/outside2)
 "sTd" = (
 /obj/structure/fluff/desert_construction/stone2,
 /turf/simulated/floor/indestructible/dune_sand,
@@ -7761,7 +8284,7 @@
 /obj/effect/decal/cleanable/cobweb2,
 /obj/structure/rubble/house,
 /turf/simulated/floor/wood/fancy/oak,
-/area/awaymission/arrakis/outside/outside2)
+/area/awaymission/arrakis/outside_building/hermit_shack)
 "tbI" = (
 /obj/item/stack/ore/glass/basalt,
 /turf/simulated/floor/indestructible/dune_sand/cave/cavedeep,
@@ -7937,6 +8460,12 @@
 /obj/item/firealarm_electronics,
 /turf/simulated/floor/indestructible/dune_sand,
 /area/awaymission/arrakis/outside/outside2)
+"ttF" = (
+/obj/effect/baseturf_helper{
+	baseturf = /turf/simulated/floor/indestructible/dune_sand/dug
+	},
+/turf/simulated/wall/indestructible/rock/mineral,
+/area/awaymission/arrakis/cave/cave1)
 "ttK" = (
 /obj/structure/fence{
 	color = "#e0ac7b"
@@ -7968,7 +8497,7 @@
 	name = "шторы из кожи"
 	},
 /turf/simulated/floor/wood/fancy/oak,
-/area/awaymission/arrakis/outside/outside2)
+/area/awaymission/arrakis/outside_building/hermit_shack)
 "tyL" = (
 /obj/effect/turf_decal/sand/plating,
 /obj/machinery/power/port_gen/pacman/upgraded,
@@ -8045,7 +8574,7 @@
 	},
 /obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/wood/fancy/oak,
-/area/awaymission/arrakis/outside/outside2)
+/area/awaymission/arrakis/outside_building/hermit_shack)
 "tIo" = (
 /obj/machinery/constructable_frame{
 	icon_state = "box_2"
@@ -8155,7 +8684,9 @@
 	pixel_y = 10
 	},
 /obj/effect/turf_decal/sand,
-/turf/simulated/floor/wood/oak,
+/turf/simulated/floor/wood/oak{
+	temperature = 430
+	},
 /area/awaymission/arrakis/outside/outside2)
 "tTm" = (
 /obj/effect/decal/cleanable/dust,
@@ -8227,16 +8758,17 @@
 	icon = 'modular_ss220/aesthetics/floors/icons/floors.dmi'
 	},
 /area/awaymission/arrakis/outside/outside2)
-"uie" = (
-/obj/structure/rubble/outside,
-/obj/effect/mapping_helpers/light,
-/turf/simulated/floor/indestructible/dune_sand,
-/area/awaymission/arrakis/outside/outside2)
+"ueO" = (
+/obj/item/storage/backpack/industrial,
+/turf/simulated/floor/indestructible/dune_sand/cave/cavedeep/dark/dark_basalt,
+/area/awaymission/arrakis/cave/cave)
 "uii" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
+/obj/effect/turf_decal/sand/plating,
 /turf/simulated/floor/plasteel/stairs{
+	temperature = 430;
 	dir = 4
 	},
 /area/awaymission/arrakis/outside/outside3)
@@ -8369,6 +8901,15 @@
 	floor_variance = null
 	},
 /area/awaymission/arrakis/outside/outside3)
+"uDG" = (
+/obj/effect/decal/snow/clean/edge{
+	color = "decfc3";
+	dir = 6
+	},
+/turf/simulated/floor/plating/ice{
+	color = "#acb78e"
+	},
+/area/awaymission/arrakis/outside/outside2)
 "uEg" = (
 /obj/item/shard{
 	icon_state = "medium";
@@ -8420,7 +8961,7 @@
 /obj/effect/decal/cleanable/dust,
 /obj/structure/rubble/house,
 /turf/simulated/floor/wood/fancy/oak,
-/area/awaymission/arrakis/outside/outside2)
+/area/awaymission/arrakis/outside_building/hermit_shack)
 "uLo" = (
 /obj/machinery/constructable_frame/machine_frame,
 /turf/simulated/floor/plasteel{
@@ -8526,6 +9067,19 @@
 	},
 /turf/simulated/floor/wood/fancy/cherry,
 /area/awaymission/arrakis/cave/cave1)
+"uUY" = (
+/obj/structure/table/wood,
+/obj/item/flashlight/lantern{
+	anchored = 1;
+	layer = 5;
+	light_color = "#FF9F40";
+	on = 1;
+	pixel_x = -1;
+	pixel_y = 10
+	},
+/obj/item/gun/projectile/revolver,
+/turf/simulated/floor/wood/oak,
+/area/awaymission/arrakis/cave/cave1)
 "uVl" = (
 /obj/item/stack/rods,
 /obj/effect/landmark/burnturf,
@@ -8564,13 +9118,19 @@
 /obj/effect/decal/straw,
 /turf/simulated/floor/indestructible/dune_sand,
 /area/awaymission/arrakis/outside/outside2)
+"vcr" = (
+/obj/machinery/gateway{
+	dir = 6
+	},
+/turf/simulated/floor/plating/asteroid/basalt/dune,
+/area/awaymission/arrakis/cave/cave)
 "vcT" = (
 /obj/structure/chair/wood{
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/wood/fancy/oak,
-/area/awaymission/arrakis/outside/outside2)
+/area/awaymission/arrakis/outside_building/hermit_shack)
 "vcZ" = (
 /obj/structure/railing{
 	dir = 8;
@@ -8685,6 +9245,10 @@
 	icon = 'modular_ss220/aesthetics/floors/icons/floors.dmi'
 	},
 /area/awaymission/arrakis/outside/outside2)
+"vmy" = (
+/obj/item/stack/ore/strange,
+/turf/simulated/floor/indestructible/dune_sand/cave/cavedeep,
+/area/awaymission/arrakis/cave)
 "vmS" = (
 /obj/structure/spawner/scorpio,
 /turf/simulated/floor/indestructible/dune_sand/cold,
@@ -8700,20 +9264,34 @@
 	},
 /obj/effect/landmark/damageturf,
 /turf/simulated/floor/wood/fancy/oak,
-/area/awaymission/arrakis/outside/outside2)
+/area/awaymission/arrakis/outside_building/hermit_shack)
 "vqv" = (
 /obj/structure/decorative_structures/car_wreck{
 	dir = 4
 	},
 /turf/simulated/floor/indestructible/dune_sand,
 /area/awaymission/arrakis/outside/outside2)
+"vqA" = (
+/obj/structure/closet/crate/wooden/wooden_crate,
+/obj/item/flashlight/flare,
+/obj/item/flashlight/flare,
+/obj/item/flashlight/flare,
+/obj/item/stack/sheet/wood{
+	amount = 50
+	},
+/turf/simulated/floor/brick{
+	icon_state = "brick_boss2"
+	},
+/area/awaymission/arrakis/cave/cave)
 "vqH" = (
 /obj/item/chair/wood{
 	pixel_y = -6;
 	pixel_x = 13
 	},
 /obj/effect/turf_decal/sand,
-/turf/simulated/floor/wood/oak,
+/turf/simulated/floor/wood/oak{
+	temperature = 430
+	},
 /area/awaymission/arrakis/outside/outside2)
 "vqT" = (
 /obj/structure/table/wood,
@@ -8790,6 +9368,13 @@
 /obj/effect/turf_decal/sand/plating,
 /turf/simulated/floor/brick,
 /area/awaymission/arrakis/outside/outside2)
+"vzO" = (
+/obj/effect/decal/snow/clean/edge{
+	color = "decfc3";
+	dir = 4
+	},
+/turf/simulated/floor/indestructible/dune_sand/cave/cavedeep,
+/area/awaymission/arrakis/cave)
 "vBv" = (
 /obj/effect/turf_decal/sand/plating,
 /obj/item/stack/ore/glass,
@@ -8856,6 +9441,10 @@
 /obj/item/ammo_casing/a762,
 /turf/simulated/floor/indestructible/dune_sand,
 /area/awaymission/arrakis/outside/outside3)
+"vIr" = (
+/obj/item/tank/internals/emergency_oxygen/double,
+/turf/simulated/floor/indestructible/dune_sand/cave/cavedeep/dark/dark_basalt,
+/area/awaymission/arrakis/cave/cave)
 "vKk" = (
 /obj/effect/spawner/window/plastitanium,
 /turf/simulated/floor/indestructible/dune_sand{
@@ -8914,6 +9503,10 @@
 	},
 /turf/simulated/floor/indestructible/dune_sand,
 /area/awaymission/arrakis/outside/outside2)
+"vTI" = (
+/obj/item/clothing/mask/gas/mime,
+/turf/simulated/floor/plating/asteroid/basalt/dune,
+/area/awaymission/arrakis/cave/cave)
 "vTZ" = (
 /obj/effect/decal/cleanable/glass,
 /turf/simulated/floor/indestructible/dune_sand{
@@ -8945,6 +9538,10 @@
 /obj/effect/decal/straw,
 /turf/simulated/floor/indestructible/dune_sand,
 /area/awaymission/arrakis/outside/outside2)
+"vVM" = (
+/obj/item/gun/projectile/revolver/doublebarrel,
+/turf/simulated/floor/plating/asteroid/basalt/dune,
+/area/awaymission/arrakis/cave/cave)
 "vWd" = (
 /obj/item/shard{
 	icon_state = "small"
@@ -9133,6 +9730,14 @@
 	icon = 'modular_ss220/aesthetics/floors/icons/floors.dmi'
 	},
 /area/awaymission/arrakis/outside/outside2)
+"wrZ" = (
+/obj/effect/decal/remains/human,
+/obj/item/clothing/shoes/cowboy/black{
+	pixel_x = -10;
+	pixel_y = 15
+	},
+/turf/simulated/floor/indestructible/dune_sand/cave/cavedeep/dark/dark_basalt,
+/area/awaymission/arrakis/cave/cave)
 "wtf" = (
 /obj/structure/dresser,
 /obj/item/flashlight/lantern{
@@ -9146,6 +9751,12 @@
 /obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/wood,
 /area/awaymission/arrakis/outside/outside2)
+"wtp" = (
+/obj/machinery/gateway{
+	dir = 4
+	},
+/turf/simulated/floor/plating/asteroid/basalt/dune,
+/area/awaymission/arrakis/cave/cave)
 "wtE" = (
 /turf/simulated/floor/plasteel{
 	icon_state = "dark";
@@ -9183,6 +9794,16 @@
 	icon_state = "brick_boss"
 	},
 /area/awaymission/arrakis/cave/cave)
+"wyj" = (
+/obj/effect/decal/snow/clean/edge{
+	color = "decfc3";
+	dir = 4
+	},
+/obj/effect/decal/snow/clean/edge{
+	color = "decfc3"
+	},
+/turf/simulated/floor/indestructible/dune_sand,
+/area/awaymission/arrakis/outside/outside2)
 "wyT" = (
 /obj/structure{
 	icon = 'icons/obj/pipes/disposal.dmi';
@@ -9249,10 +9870,10 @@
 	},
 /area/awaymission/arrakis/cave/cave)
 "wLI" = (
-/obj/structure/fence/corner{
-	color = "#e0ac7b"
+/obj/effect/decal/snow/clean/surround{
+	color = "decfc3";
+	dir = 1
 	},
-/obj/effect/mapping_helpers/light,
 /turf/simulated/floor/indestructible/dune_sand,
 /area/awaymission/arrakis/outside/outside2)
 "wMz" = (
@@ -9285,6 +9906,10 @@
 	floor_variance = null
 	},
 /area/awaymission/arrakis/outside/outside2)
+"wRp" = (
+/obj/effect/decal/cleanable/blood/old,
+/turf/simulated/floor/plating/asteroid/basalt/dune,
+/area/awaymission/arrakis/cave/cave)
 "wTC" = (
 /obj/effect/turf_decal/sand,
 /obj/item/stack/rods,
@@ -9339,7 +9964,9 @@
 /obj/structure/table_frame/wood,
 /obj/effect/decal/cleanable/cobweb2,
 /obj/effect/turf_decal/sand,
-/turf/simulated/floor/wood/oak,
+/turf/simulated/floor/wood/oak{
+	temperature = 430
+	},
 /area/awaymission/arrakis/outside/outside2)
 "xgI" = (
 /obj/item/stack/tile{
@@ -9404,8 +10031,9 @@
 	},
 /area/awaymission/arrakis/outside/outside2)
 "xoN" = (
-/obj/structure/flora/rock/pile/icy,
-/obj/effect/mapping_helpers/light,
+/obj/effect/decal/snow/clean/surround{
+	color = "decfc3"
+	},
 /turf/simulated/floor/indestructible/dune_sand,
 /area/awaymission/arrakis/outside/outside2)
 "xpI" = (
@@ -9463,8 +10091,7 @@
 	},
 /area/awaymission/arrakis/outside_building/mining_storage_outpost)
 "xvb" = (
-/obj/effect/mapping_helpers/light,
-/turf/simulated/floor/beach/away/water/desert_water,
+/turf/simulated/wall/indestructible/rock/mineral/dune_rock,
 /area/awaymission/arrakis/outside/outside2)
 "xvo" = (
 /obj/effect/turf_decal/siding/wood{
@@ -9474,6 +10101,12 @@
 	color = "#45260f"
 	},
 /area/awaymission/arrakis/cave/cave1)
+"xxY" = (
+/obj/effect/baseturf_helper{
+	baseturf = /turf/simulated/floor/indestructible/dune_sand/cave/cavedeep/dark/dark_basalt
+	},
+/turf/simulated/wall/indestructible/rock/mineral,
+/area/awaymission/arrakis/cave)
 "xAh" = (
 /obj/effect/landmark/burnturf,
 /obj/effect/landmark/burnturf,
@@ -9715,10 +10348,6 @@
 /obj/item/bedsheet/black,
 /turf/simulated/floor/wood/fancy/oak,
 /area/awaymission/arrakis/cave/cave1)
-"ydt" = (
-/obj/effect/mapping_helpers/light,
-/turf/simulated/floor/chasm/straight_down/lava_land_surface/dune,
-/area/awaymission/arrakis/outside/outside2)
 "ygc" = (
 /obj/structure/chair/comfy/shuttle{
 	dir = 1
@@ -9730,11 +10359,6 @@
 	icon_state = "titanium_blue";
 	icon = 'modular_ss220/aesthetics/floors/icons/floors.dmi'
 	},
-/area/awaymission/arrakis/outside/outside2)
-"ygG" = (
-/obj/structure/flora/rock/icy,
-/obj/effect/mapping_helpers/light,
-/turf/simulated/floor/indestructible/dune_sand,
 /area/awaymission/arrakis/outside/outside2)
 "yhP" = (
 /obj/effect/spawner/window/reinforced/tinted/grilled,
@@ -9763,8 +10387,8 @@
 /area/awaymission/arrakis/outside/outside2)
 
 (1,1,1) = {"
-aNV
-aNV
+gXm
+xxY
 aNV
 aNV
 aNV
@@ -10020,8 +10644,8 @@ ayO
 ayO
 "}
 (2,1,1) = {"
-aNV
-aNV
+dxV
+gbo
 aNV
 aNV
 aNV
@@ -10277,8 +10901,8 @@ ayO
 ayO
 "}
 (3,1,1) = {"
-aNV
-aNV
+ttF
+kfz
 aNV
 aNV
 aNV
@@ -10439,9 +11063,9 @@ ayO
 ayO
 ayO
 cth
-cth
-cth
-cth
+vmy
+vmy
+vmy
 cth
 uId
 cth
@@ -10534,7 +11158,7 @@ ayO
 ayO
 "}
 (4,1,1) = {"
-aNV
+cnX
 aNV
 aNV
 aNV
@@ -10698,7 +11322,7 @@ cth
 cth
 uId
 uId
-uId
+pwn
 cth
 cth
 uId
@@ -10952,7 +11576,7 @@ ayO
 ayO
 ayO
 cth
-cth
+vmy
 cth
 cth
 uId
@@ -11216,8 +11840,8 @@ cth
 cth
 cth
 uId
-uId
-uId
+pwn
+pwn
 cth
 tbI
 tbI
@@ -11475,7 +12099,7 @@ cth
 tbI
 cth
 uId
-uId
+pwn
 cth
 cth
 cth
@@ -11508,7 +12132,7 @@ uId
 uId
 cth
 cth
-cth
+vmy
 cth
 tbI
 cth
@@ -11765,7 +12389,7 @@ uId
 cth
 cth
 cth
-cth
+vmy
 cth
 cth
 cth
@@ -11996,9 +12620,9 @@ uId
 uId
 uId
 cth
-cth
-cth
-uId
+vmy
+vmy
+pwn
 uId
 uId
 cth
@@ -12021,8 +12645,8 @@ cth
 cth
 cth
 cth
-cth
-cth
+vmy
+vmy
 cth
 cth
 cth
@@ -12044,7 +12668,7 @@ cth
 uId
 uId
 uId
-uId
+pwn
 uId
 uId
 uId
@@ -12255,8 +12879,8 @@ cth
 cth
 uId
 uId
-uId
-uId
+pwn
+pwn
 uId
 cth
 uId
@@ -12285,7 +12909,7 @@ cth
 cth
 cth
 cth
-cth
+vmy
 cth
 cth
 cth
@@ -12302,7 +12926,7 @@ ayO
 ayO
 ayO
 uId
-uId
+pwn
 uId
 uId
 uId
@@ -12513,8 +13137,8 @@ cth
 uId
 uId
 cth
-uId
-uId
+pwn
+pwn
 cth
 uId
 uId
@@ -12540,8 +13164,8 @@ cth
 tbI
 tbI
 cth
-cth
-cth
+vmy
+vmy
 cth
 cth
 cth
@@ -12560,8 +13184,8 @@ uId
 ayO
 uId
 uId
-uId
-uId
+pwn
+pwn
 uId
 uId
 uId
@@ -12663,7 +13287,7 @@ aNV
 jLN
 wxJ
 hnk
-cIO
+sxM
 lQv
 lhl
 wjL
@@ -12768,7 +13392,7 @@ tbI
 rPq
 uId
 uId
-cth
+vmy
 uId
 uId
 uId
@@ -12781,11 +13405,11 @@ uId
 tbI
 cth
 cth
-cth
+vmy
 uId
 uId
 cth
-cth
+vmy
 cth
 tbI
 tbI
@@ -12818,7 +13442,7 @@ ayO
 ayO
 uId
 uId
-uId
+pwn
 uId
 uId
 aSK
@@ -12920,8 +13544,8 @@ lQv
 cIO
 siG
 muK
-pCA
-cIO
+riD
+sxM
 cIO
 qzu
 wjL
@@ -12995,9 +13619,9 @@ aeA
 aeA
 aeA
 aeA
-pxE
 aeA
 aeA
+aeA
 ayO
 ayO
 ayO
@@ -13025,7 +13649,7 @@ ayO
 cth
 cth
 uId
-uId
+pwn
 uId
 uId
 uId
@@ -13037,8 +13661,8 @@ uId
 cth
 cth
 cth
-cth
-uId
+vmy
+pwn
 uId
 cth
 cth
@@ -13075,7 +13699,7 @@ ayO
 uId
 uId
 uId
-uId
+pwn
 uId
 uId
 aSK
@@ -13177,8 +13801,8 @@ lQv
 cIO
 rRj
 jud
-cIO
-cIO
+sxM
+sxM
 wjL
 wjL
 wjL
@@ -13282,8 +13906,8 @@ ayO
 cth
 cth
 uId
-uId
-uId
+pwn
+pwn
 uId
 uId
 uId
@@ -13294,7 +13918,7 @@ uId
 cth
 cth
 cth
-uId
+pwn
 uId
 uId
 uId
@@ -13320,7 +13944,7 @@ cth
 cth
 cth
 cth
-cth
+vmy
 cth
 cth
 cth
@@ -13332,7 +13956,7 @@ ayO
 ayO
 uId
 uId
-uId
+pwn
 uId
 uId
 aSK
@@ -13432,9 +14056,9 @@ lQv
 aNV
 aNV
 uNB
-cIO
-siG
-cIO
+sxM
+hhb
+sxM
 lhl
 cIO
 rbf
@@ -13506,7 +14130,7 @@ aeA
 aeA
 aeA
 aeA
-pxE
+aeA
 aeA
 aeA
 aeA
@@ -13540,7 +14164,7 @@ ayO
 cth
 cth
 uId
-uId
+pwn
 uId
 uId
 uId
@@ -13550,7 +14174,7 @@ uId
 cth
 cth
 cth
-uId
+pwn
 uId
 cth
 cth
@@ -13562,7 +14186,7 @@ cth
 cth
 cth
 cth
-cth
+vmy
 cth
 tbI
 cth
@@ -13577,7 +14201,7 @@ cth
 cth
 cth
 cth
-cth
+vmy
 cth
 cth
 cth
@@ -13589,7 +14213,7 @@ uId
 ayO
 ayO
 uId
-uId
+pwn
 uId
 uId
 aSK
@@ -13689,9 +14313,9 @@ lQv
 aNV
 aNV
 aNV
-siG
-siG
-cIO
+hhb
+hhb
+sxM
 lQv
 akB
 cIO
@@ -13769,7 +14393,7 @@ aeA
 aeA
 aeA
 aeA
-pxE
+aeA
 aeA
 aeA
 aeA
@@ -13798,7 +14422,7 @@ cth
 uId
 cth
 uId
-uId
+pwn
 uId
 uId
 uId
@@ -13806,8 +14430,8 @@ uId
 uId
 cth
 uId
-uId
-uId
+pwn
+pwn
 cth
 cth
 cth
@@ -13818,7 +14442,7 @@ cth
 cth
 cth
 cth
-cth
+vmy
 cth
 cth
 cth
@@ -13835,8 +14459,8 @@ cth
 cth
 cth
 cth
-cth
-cth
+vmy
+vmy
 uId
 uId
 uId
@@ -14074,7 +14698,7 @@ tbI
 cth
 cth
 cth
-cth
+vmy
 cth
 cth
 cth
@@ -14262,7 +14886,7 @@ aeA
 aeA
 aeA
 aeA
-dBZ
+aSi
 aeA
 aeA
 aeA
@@ -14330,8 +14954,8 @@ tbI
 cth
 cth
 cth
-cth
-cth
+vmy
+vmy
 cth
 cth
 cth
@@ -14369,8 +14993,8 @@ fmF
 fmF
 uId
 uId
-uId
-uId
+pwn
+pwn
 uId
 uId
 fmF
@@ -14515,7 +15139,6 @@ ayO
 ayO
 ayO
 ayO
-pxE
 aeA
 aeA
 aeA
@@ -14525,10 +15148,11 @@ aeA
 aeA
 aeA
 aeA
-pxE
 aeA
 aeA
-pxE
+aeA
+aeA
+aeA
 aeA
 aeA
 aeA
@@ -14545,7 +15169,7 @@ aeA
 aeA
 aeA
 aeA
-pxE
+aeA
 aeA
 aeA
 aeA
@@ -14587,7 +15211,7 @@ cth
 cth
 cth
 cth
-cth
+vmy
 cth
 cth
 cth
@@ -14616,8 +15240,8 @@ uId
 uId
 ayO
 uId
-uId
-uId
+pwn
+pwn
 uId
 uId
 uId
@@ -14625,9 +15249,9 @@ fmF
 fmF
 uId
 uId
-uId
-uId
-uId
+pwn
+pwn
+pwn
 uId
 uId
 uId
@@ -14807,7 +15431,7 @@ auT
 aeA
 aeA
 aeA
-pxE
+aeA
 aeA
 aeA
 aeA
@@ -14873,18 +15497,18 @@ uId
 uId
 uId
 uId
-uId
-uId
-uId
+pwn
+pwn
+pwn
 uId
 uId
 fmF
 uId
 uId
+pwn
+pwn
 uId
-uId
-uId
-uId
+pwn
 uId
 uId
 uId
@@ -15086,7 +15710,7 @@ ayO
 tbI
 tbI
 uId
-uId
+pwn
 cth
 ayO
 ayO
@@ -15131,17 +15755,17 @@ uId
 uId
 uId
 uId
+pwn
+uId
+pwn
 uId
 uId
 uId
 uId
-uId
-uId
-uId
-uId
-uId
-uId
-uId
+pwn
+pwn
+pwn
+pwn
 uId
 ayO
 ayO
@@ -15389,16 +16013,16 @@ uId
 ayO
 uId
 uId
+pwn
+pwn
+pwn
 uId
 uId
+pwn
 uId
+pwn
 uId
-uId
-uId
-uId
-uId
-uId
-uId
+pwn
 uId
 ayO
 ayO
@@ -15599,7 +16223,7 @@ ayO
 ayO
 ayO
 cth
-fGf
+uId
 ayO
 ayO
 ayO
@@ -15839,10 +16463,10 @@ aeA
 aeA
 aeA
 aeA
-pxE
 aeA
 aeA
 aeA
+aeA
 ayO
 ayO
 ayO
@@ -15856,7 +16480,7 @@ ayO
 ayO
 ayO
 ayO
-ayO
+uId
 ayO
 ayO
 ayO
@@ -16056,7 +16680,7 @@ ayO
 ayO
 ayO
 weQ
-pxE
+aeA
 aeA
 aeA
 aeA
@@ -16113,7 +16737,7 @@ ayO
 ayO
 ayO
 ayO
-ayO
+uId
 ayO
 ayO
 ayO
@@ -16142,9 +16766,9 @@ cth
 tbI
 cth
 cth
-cth
-cth
-uId
+vmy
+vmy
+pwn
 uId
 uId
 uId
@@ -16370,7 +16994,7 @@ ayO
 ayO
 ayO
 ayO
-ayO
+fGf
 ayO
 ayO
 ayO
@@ -16399,8 +17023,8 @@ cth
 cth
 cth
 cth
-cth
-cth
+vmy
+vmy
 uId
 uId
 uId
@@ -16426,8 +17050,8 @@ uId
 ayO
 uId
 uId
-uId
-uId
+pwn
+pwn
 uId
 ayO
 ayO
@@ -16656,8 +17280,8 @@ cth
 cth
 cth
 cth
-cth
-cth
+vmy
+vmy
 uId
 uId
 ayO
@@ -16682,9 +17306,9 @@ uId
 uId
 ayO
 uId
+pwn
 uId
-uId
-uId
+pwn
 uId
 ayO
 ayO
@@ -16869,7 +17493,7 @@ aeA
 aeA
 aeA
 aeA
-pxE
+aeA
 aeA
 aeA
 aeA
@@ -16911,7 +17535,7 @@ cth
 cth
 cth
 cth
-cth
+vmy
 cth
 cth
 cth
@@ -16926,7 +17550,7 @@ uId
 rPq
 uId
 uId
-uId
+pwn
 uId
 uId
 uId
@@ -16939,9 +17563,9 @@ uId
 uId
 ayO
 uId
+pwn
 uId
-uId
-uId
+pwn
 uId
 ayO
 ayO
@@ -17167,8 +17791,8 @@ uId
 cth
 cth
 cth
-cth
-cth
+vmy
+vmy
 cth
 uId
 uId
@@ -17181,8 +17805,8 @@ uId
 uId
 uId
 uId
-uId
-uId
+pwn
+pwn
 uId
 uId
 uId
@@ -17196,9 +17820,9 @@ uId
 uId
 ayO
 uId
+pwn
 uId
-uId
-uId
+pwn
 uId
 ayO
 ayO
@@ -17424,20 +18048,20 @@ uId
 uId
 cth
 cth
+vmy
+vmy
 cth
-cth
-cth
 uId
 ayO
 ayO
 uId
 uId
-ayO
-uId
-uId
-uId
-uId
-uId
+afc
+pwn
+pwn
+pwn
+pwn
+pwn
 uId
 uId
 uId
@@ -17453,9 +18077,9 @@ uId
 uId
 ayO
 uId
+pwn
 uId
-uId
-uId
+pwn
 uId
 ayO
 ayO
@@ -17599,7 +18223,7 @@ ayO
 ayO
 ayO
 aeA
-pxE
+aeA
 aeA
 aeA
 laO
@@ -17654,11 +18278,11 @@ ayO
 ayO
 aeA
 aeA
+sax
 aeA
 aeA
 aeA
 aeA
-aeA
 ayO
 ayO
 ayO
@@ -17681,8 +18305,19 @@ uId
 uId
 uId
 uId
+pwn
+vmy
 uId
-cth
+uId
+uId
+ayO
+ayO
+uId
+pwn
+pwn
+pwn
+pwn
+uId
 uId
 uId
 uId
@@ -17697,21 +18332,10 @@ uId
 uId
 uId
 uId
-ayO
-ayO
-uId
-uId
-uId
-uId
-uId
-uId
-uId
-uId
-uId
 uId
 ayO
-uId
-uId
+pwn
+pwn
 uId
 uId
 ayO
@@ -17912,11 +18536,11 @@ aeA
 aeA
 aeA
 aeA
-pxE
 aeA
 aeA
 aeA
 aeA
+aeA
 ayO
 ayO
 ayO
@@ -17938,17 +18562,17 @@ ayO
 uId
 uId
 uId
-uId
-cth
-uId
-uId
-uId
+pwn
+vmy
+pwn
 uId
 uId
 uId
 uId
 uId
 uId
+pwn
+pwn
 uId
 ayO
 ayO
@@ -17968,8 +18592,8 @@ uId
 uId
 dqZ
 uId
-uId
-uId
+pwn
+pwn
 uId
 ayO
 ayO
@@ -18165,7 +18789,7 @@ aeA
 aeA
 aeA
 aeA
-aeA
+sax
 aeA
 aeA
 aeA
@@ -18194,12 +18818,12 @@ ayO
 ayO
 uId
 uId
-uId
-uId
+pwn
+pwn
 cth
-uId
-uId
-uId
+pwn
+pwn
+pwn
 uId
 uId
 uId
@@ -18224,9 +18848,9 @@ uId
 uId
 fmF
 uId
-uId
-uId
-uId
+pwn
+pwn
+pwn
 uId
 ayO
 ayO
@@ -18375,7 +18999,7 @@ aeA
 aeA
 aeA
 aeA
-imI
+mmW
 aeA
 mmW
 aeA
@@ -18420,7 +19044,7 @@ ayO
 ayO
 ayO
 aeA
-pxE
+aeA
 aeA
 aeA
 aeA
@@ -18451,12 +19075,12 @@ ayO
 ayO
 ayO
 uId
+pwn
+pwn
+pwn
 uId
 uId
-uId
-uId
-uId
-uId
+pwn
 uId
 uId
 uId
@@ -18481,10 +19105,10 @@ uId
 fmF
 uId
 uId
-uId
-uId
-uId
-uId
+pwn
+pwn
+pwn
+pwn
 uId
 uId
 ayO
@@ -18684,8 +19308,8 @@ aeA
 aeA
 aeA
 aeA
+sax
 aeA
-aeA
 ayO
 ayO
 ayO
@@ -18709,8 +19333,8 @@ ayO
 ayO
 ayO
 uId
-uId
-uId
+pwn
+pwn
 uId
 uId
 uId
@@ -18738,9 +19362,9 @@ fmF
 fmF
 fmF
 fmF
-uId
-uId
-uId
+pwn
+pwn
+pwn
 uId
 uId
 uId
@@ -18894,7 +19518,7 @@ aeA
 aeA
 aeA
 aeA
-pxE
+aeA
 aeA
 aeA
 aeA
@@ -18941,8 +19565,8 @@ aeA
 aeA
 aeA
 aeA
-aeA
-aeA
+sax
+sax
 ayO
 ayO
 ayO
@@ -18996,7 +19620,7 @@ uId
 fmF
 uId
 uId
-uId
+pwn
 uId
 uId
 uId
@@ -19182,7 +19806,7 @@ aeA
 aeA
 aeA
 aeA
-pxE
+aeA
 aeA
 aeA
 aeA
@@ -19190,6 +19814,7 @@ aeA
 ayO
 ayO
 aeA
+sax
 aeA
 aeA
 aeA
@@ -19198,8 +19823,7 @@ aeA
 aeA
 aeA
 aeA
-aeA
-aeA
+sax
 ayO
 ayO
 ayO
@@ -19669,7 +20293,7 @@ aeA
 aeA
 aeA
 aeA
-pxE
+aeA
 aeA
 aeA
 aeA
@@ -20532,9 +21156,9 @@ uId
 uId
 uId
 uId
-uId
-uId
-uId
+pwn
+pwn
+pwn
 uId
 ayO
 uId
@@ -20701,7 +21325,7 @@ ayO
 ayO
 aeA
 aeA
-pxE
+aeA
 aeA
 aeA
 aeA
@@ -20741,8 +21365,8 @@ aeA
 aeA
 aeA
 aeA
-pxE
 aeA
+sax
 aeA
 aeA
 aeA
@@ -20788,8 +21412,8 @@ uId
 ayO
 ayO
 uId
-uId
-uId
+pwn
+pwn
 uId
 uId
 uId
@@ -20984,7 +21608,7 @@ aeA
 aeA
 auT
 aeA
-pxE
+aeA
 aeA
 aeA
 aeA
@@ -20992,7 +21616,7 @@ aeA
 ayO
 aeA
 aeA
-pxE
+aeA
 aeA
 aeA
 aeA
@@ -21045,11 +21669,11 @@ uId
 ayO
 ayO
 uId
+pwn
 uId
 uId
 uId
-uId
-uId
+pwn
 uId
 uId
 uId
@@ -21263,13 +21887,13 @@ aeA
 aeA
 aeA
 aeA
-pxE
 aeA
 aeA
 aeA
 aeA
 aeA
 aeA
+aeA
 ayO
 ayO
 ayO
@@ -21304,9 +21928,9 @@ ayO
 uId
 uId
 uId
-uId
-uId
-uId
+pwn
+pwn
+pwn
 uId
 ayO
 ayO
@@ -21456,13 +22080,13 @@ aeA
 aeA
 aeA
 aeA
-pxE
 aeA
 aeA
 aeA
 aeA
 aeA
-pxE
+aeA
+aeA
 aeA
 aeA
 ayO
@@ -21562,8 +22186,8 @@ ayO
 ayO
 ayO
 uId
-uId
-uId
+pwn
+pwn
 uId
 ayO
 ayO
@@ -21781,7 +22405,7 @@ aeA
 aeA
 aeA
 aeA
-pxE
+aeA
 aeA
 aeA
 ayO
@@ -22223,7 +22847,7 @@ ayO
 aeA
 aeA
 aeA
-pxE
+aeA
 aeA
 aeA
 aeA
@@ -22243,7 +22867,7 @@ aeA
 aeA
 aeA
 aeA
-oJg
+aNX
 aeA
 aeA
 aeA
@@ -22480,7 +23104,7 @@ aeA
 aeA
 aeA
 aeA
-pxE
+aeA
 aeA
 aeA
 aeA
@@ -22493,7 +23117,7 @@ mCF
 uZr
 kvg
 aeA
-pxE
+aeA
 aeA
 ayO
 ayO
@@ -22791,7 +23415,7 @@ ayO
 aeA
 aeA
 aeA
-pxE
+aeA
 aeA
 aeA
 aeA
@@ -23090,7 +23714,7 @@ uId
 uId
 ayO
 ayO
-uId
+pwn
 uId
 uId
 uId
@@ -23325,9 +23949,9 @@ aeA
 aeA
 aeA
 aeA
-pxE
 aeA
 aeA
+aeA
 ayO
 ayO
 ayO
@@ -23348,8 +23972,8 @@ uId
 ayO
 uId
 uId
-uId
-uId
+pwn
+pwn
 uId
 ayO
 ayO
@@ -23504,7 +24128,7 @@ aJs
 aJs
 aJs
 aeA
-pxE
+aeA
 aeA
 aeA
 aeA
@@ -23551,35 +24175,6 @@ aeA
 aeA
 aeA
 aeA
-pxE
-aeA
-aeA
-aeA
-aeA
-ayO
-ayO
-aeA
-aeA
-aeA
-aeA
-aeA
-aeA
-aeA
-aeA
-aeA
-aeA
-aeA
-aeA
-aeA
-aeA
-aeA
-aeA
-aeA
-aeA
-aeA
-aeA
-aeA
-aeA
 aeA
 aeA
 aeA
@@ -23587,6 +24182,33 @@ aeA
 aeA
 ayO
 ayO
+aeA
+aeA
+aeA
+aeA
+aeA
+aeA
+aeA
+aeA
+aeA
+aeA
+aeA
+aeA
+aeA
+aeA
+aeA
+aeA
+aeA
+aeA
+aeA
+aeA
+aeA
+aeA
+aeA
+aeA
+aeA
+aeA
+aeA
 ayO
 ayO
 ayO
@@ -23600,13 +24222,15 @@ ayO
 ayO
 ayO
 ayO
-uId
 ayO
 ayO
 uId
+ayO
+ayO
 uId
 uId
 uId
+pwn
 uId
 uId
 uId
@@ -23816,7 +24440,7 @@ aeA
 ayO
 ayO
 aeA
-pxE
+aeA
 aeA
 aeA
 aeA
@@ -24042,7 +24666,7 @@ ayO
 ayO
 aeA
 aeA
-pxE
+aeA
 aeA
 aeA
 aeA
@@ -24116,8 +24740,8 @@ ayO
 uId
 uId
 uId
-uId
-uId
+pwn
+pwn
 uId
 fmF
 uId
@@ -24293,7 +24917,7 @@ hXc
 aeA
 vHj
 wnE
-pxE
+aeA
 aeA
 aeA
 ayO
@@ -24371,12 +24995,12 @@ ayO
 ayO
 ayO
 uId
-uId
-uId
-uId
-uId
-uId
-uId
+pwn
+pwn
+pwn
+pwn
+pwn
+pwn
 fmF
 uId
 uId
@@ -24610,10 +25234,10 @@ aeA
 aeA
 aeA
 aeA
-pxE
 aeA
 aeA
 aeA
+aeA
 ayO
 ayO
 ayO
@@ -24632,8 +25256,8 @@ ayO
 uId
 uId
 uId
-uId
-uId
+pwn
+pwn
 fmF
 uId
 uId
@@ -25301,7 +25925,7 @@ aJs
 aJs
 aJs
 aeA
-pxE
+aeA
 aeA
 aeA
 aeA
@@ -25329,7 +25953,7 @@ aeA
 ayO
 aeA
 aeA
-pxE
+aeA
 aeA
 aeA
 aeA
@@ -25353,7 +25977,7 @@ aeA
 aeA
 aeA
 aeA
-pxE
+aeA
 aSi
 aeA
 aeA
@@ -25601,7 +26225,7 @@ aeA
 aeA
 aeA
 aeA
-pxE
+aeA
 aeA
 aeA
 aeA
@@ -26093,7 +26717,6 @@ aeA
 kvg
 aeA
 aeA
-pxE
 aeA
 aeA
 aeA
@@ -26153,7 +26776,8 @@ aeA
 aeA
 aeA
 aeA
-pxE
+aeA
+aeA
 aeA
 aeA
 aeA
@@ -26354,7 +26978,7 @@ aeA
 aeA
 aeA
 aeA
-pxE
+aeA
 aeA
 aeA
 aeA
@@ -26633,7 +27257,7 @@ aeA
 aeA
 aeA
 aeA
-pxE
+aeA
 aeA
 aeA
 aeA
@@ -27103,7 +27727,7 @@ aJs
 aJs
 aeA
 aeA
-pxE
+aeA
 aeA
 aeA
 aeA
@@ -27185,7 +27809,7 @@ aeA
 aeA
 aeA
 aeA
-pxE
+aeA
 aeA
 ayO
 ayO
@@ -27240,10 +27864,10 @@ ayO
 "}
 (69,1,1) = {"
 aNV
-aNV
-aNV
-aNV
-aNV
+wjL
+wjL
+wjL
+wjL
 aNV
 aNV
 aNV
@@ -27497,10 +28121,10 @@ ayO
 "}
 (70,1,1) = {"
 aNV
-aNV
-aNV
-aNV
-aNV
+nku
+dIh
+nwM
+wjL
 aNV
 aNV
 aNV
@@ -27754,10 +28378,10 @@ ayO
 "}
 (71,1,1) = {"
 aNV
-aNV
-aNV
-aNV
-aNV
+goJ
+ehn
+chF
+wjL
 aNV
 aNV
 aNV
@@ -27872,7 +28496,7 @@ aJs
 wHm
 aeA
 aeA
-pxE
+aeA
 aeA
 aeA
 aeA
@@ -28011,10 +28635,10 @@ ayO
 "}
 (72,1,1) = {"
 aNV
-aNV
-aNV
-aNV
-aNV
+bka
+wtp
+vcr
+wjL
 aNV
 aNV
 aNV
@@ -28136,7 +28760,7 @@ aeA
 aeA
 aeA
 aeA
-pxE
+aeA
 aeA
 aeA
 aeA
@@ -28268,10 +28892,10 @@ ayO
 "}
 (73,1,1) = {"
 aNV
-aNV
-aNV
-aNV
-aNV
+wjL
+wjL
+wjL
+wjL
 aNV
 aNV
 aNV
@@ -28656,7 +29280,7 @@ aeA
 aeA
 aeA
 aeA
-pxE
+aeA
 aeA
 aeA
 aeA
@@ -28733,7 +29357,7 @@ aeA
 aeA
 aeA
 aeA
-pxE
+aeA
 aeA
 aeA
 aeA
@@ -28919,7 +29543,7 @@ aeA
 aeA
 aeA
 aeA
-pxE
+aeA
 aeA
 aeA
 aeA
@@ -29694,7 +30318,6 @@ aeA
 aeA
 aeA
 aeA
-pxE
 aeA
 aeA
 aeA
@@ -29702,7 +30325,6 @@ aeA
 aeA
 aeA
 aeA
-pxE
 aeA
 aeA
 aeA
@@ -29766,7 +30388,9 @@ aeA
 aeA
 aeA
 aeA
-pxE
+aeA
+aeA
+aeA
 aeA
 aeA
 ayO
@@ -29965,7 +30589,7 @@ aeA
 aeA
 aeA
 aeA
-pxE
+aeA
 aeA
 aeA
 aeA
@@ -30162,7 +30786,7 @@ aNV
 aNV
 aNV
 aNV
-wjL
+hqn
 wjL
 wjL
 wjL
@@ -30201,7 +30825,7 @@ aeA
 aeA
 aeA
 aeA
-pxE
+aeA
 aeA
 ayO
 ayO
@@ -30449,11 +31073,11 @@ aJs
 aJs
 aeA
 aeA
-pxE
 aeA
 aeA
 aeA
-pxE
+aeA
+aeA
 aeA
 aeA
 aeA
@@ -30799,7 +31423,7 @@ aeA
 aeA
 aeA
 aeA
-pxE
+aeA
 aeA
 aeA
 aeA
@@ -31001,7 +31625,7 @@ aeA
 aeA
 aeA
 aeA
-pxE
+aeA
 aeA
 aeA
 aeA
@@ -31226,7 +31850,7 @@ kFW
 aeA
 aeA
 aeA
-pxE
+aeA
 aeA
 xBM
 aBv
@@ -31318,7 +31942,7 @@ aeA
 aeA
 aeA
 aeA
-pxE
+aeA
 aeA
 aeA
 aeA
@@ -31476,7 +32100,7 @@ aJs
 aJs
 aJs
 aeA
-pxE
+aeA
 aeA
 aeA
 aeA
@@ -31735,7 +32359,7 @@ aJs
 aeA
 aeA
 aeA
-pxE
+aeA
 aeA
 aeA
 ayO
@@ -32034,7 +32658,7 @@ aeA
 aeA
 aeA
 aeA
-pxE
+aeA
 aeA
 aeA
 aeA
@@ -32351,14 +32975,14 @@ aeA
 aeA
 aeA
 aeA
-pxE
 aeA
 aeA
 aeA
 aeA
 aeA
 aeA
-pxE
+aeA
+aeA
 aeA
 aeA
 aeA
@@ -32621,7 +33245,7 @@ aeA
 aeA
 aeA
 aeA
-pxE
+aeA
 aeA
 aeA
 aeA
@@ -33016,11 +33640,11 @@ aJs
 aJs
 aeA
 aeA
-pxE
 aeA
 aeA
 aeA
-pxE
+aeA
+aeA
 aeA
 aeA
 ayO
@@ -33138,7 +33762,7 @@ aeA
 aeA
 aeA
 aeA
-pxE
+aeA
 aeA
 aeA
 aeA
@@ -33326,7 +33950,7 @@ aeA
 aeA
 aeA
 aeA
-pxE
+aeA
 aeA
 aeA
 aeA
@@ -33499,7 +34123,7 @@ aNV
 ddb
 wjL
 wjL
-wjL
+vTI
 wjL
 wjL
 aNV
@@ -34011,7 +34635,7 @@ ddb
 ddb
 ddb
 ddb
-iRG
+wjL
 wjL
 wjL
 wjL
@@ -34267,7 +34891,7 @@ wjL
 wjL
 wjL
 ddb
-iRG
+wjL
 wjL
 ddb
 ddb
@@ -34307,7 +34931,7 @@ nVH
 aUt
 aeA
 aeA
-pxE
+aeA
 aeA
 ayO
 ayO
@@ -34358,7 +34982,7 @@ ayO
 aeA
 aeA
 aeA
-pxE
+aeA
 aeA
 aeA
 aeA
@@ -34524,7 +35148,7 @@ kEp
 wjL
 wjL
 wjL
-iRG
+wjL
 ddb
 ddb
 ddb
@@ -34640,7 +35264,7 @@ aeA
 aeA
 aeA
 aeA
-erR
+tGt
 aeA
 aeA
 aeA
@@ -34934,7 +35558,7 @@ aeA
 aeA
 aeA
 aeA
-pxE
+aeA
 aeA
 aeA
 aeA
@@ -35137,7 +35761,7 @@ aeA
 aeA
 aeA
 aeA
-pxE
+aeA
 aeA
 aeA
 aeA
@@ -35665,7 +36289,7 @@ aeA
 aeA
 aeA
 aeA
-pxE
+aeA
 aeA
 aeA
 aeA
@@ -35850,7 +36474,7 @@ aeA
 iJN
 aeA
 aeA
-pxE
+aeA
 aeA
 aeA
 aeA
@@ -35914,7 +36538,7 @@ aeA
 aeA
 aeA
 aeA
-pxE
+aeA
 auT
 aeA
 aeA
@@ -35958,7 +36582,7 @@ aeA
 aeA
 aeA
 aeA
-pxE
+aeA
 aeA
 aeA
 aeA
@@ -36099,7 +36723,7 @@ aJs
 aJs
 aeA
 aeA
-pxE
+aeA
 aeA
 aeA
 aeA
@@ -36190,7 +36814,7 @@ aeA
 aeA
 aeA
 aeA
-pxE
+aeA
 aeA
 aeA
 aeA
@@ -36722,7 +37346,7 @@ aeA
 aeA
 aeA
 aeA
-erR
+tGt
 aeA
 aeA
 aeA
@@ -36887,7 +37511,7 @@ aeA
 aeA
 aeA
 aeA
-pxE
+aeA
 aeA
 aeA
 aeA
@@ -37224,7 +37848,6 @@ aeA
 aeA
 aeA
 aeA
-pxE
 aeA
 aeA
 aeA
@@ -37239,7 +37862,8 @@ aeA
 aeA
 aeA
 aeA
-pxE
+aeA
+aeA
 aeA
 aeA
 aeA
@@ -37383,7 +38007,7 @@ aJs
 aeA
 aeA
 aeA
-pxE
+aeA
 aeA
 aeA
 aeA
@@ -37488,7 +38112,7 @@ aeA
 aeA
 aeA
 aeA
-pxE
+aeA
 aeA
 aeA
 aeA
@@ -37912,7 +38536,7 @@ aeA
 aeA
 aeA
 aeA
-pxE
+aeA
 aeA
 aeA
 aeA
@@ -38259,8 +38883,8 @@ aeA
 aeA
 aeA
 aeA
-ayO
-ayO
+aAJ
+aAJ
 aeA
 aeA
 aeA
@@ -38408,7 +39032,7 @@ aJs
 aeA
 aeA
 aeA
-pxE
+aeA
 aeA
 aeA
 aeA
@@ -39177,7 +39801,7 @@ aJs
 aJs
 aeA
 aeA
-pxE
+aeA
 aeA
 aeA
 aeA
@@ -39707,37 +40331,6 @@ aXZ
 aXZ
 aXZ
 aXZ
-fDK
-aXZ
-aXZ
-aXZ
-aXZ
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-aXZ
-aXZ
 aXZ
 aXZ
 aXZ
@@ -39754,6 +40347,24 @@ ayO
 ayO
 ayO
 ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+aXZ
+aXZ
+aXZ
+aXZ
+aXZ
 aXZ
 aXZ
 ayO
@@ -39765,6 +40376,19 @@ ayO
 ayO
 ayO
 ayO
+ayO
+ayO
+aXZ
+aXZ
+xvb
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
 aXZ
 ayO
 ayO
@@ -39777,7 +40401,7 @@ aXZ
 aXZ
 ayO
 ayO
-ayO
+xvb
 aXZ
 aXZ
 aXZ
@@ -39995,7 +40619,7 @@ aXZ
 aXZ
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 aXZ
@@ -40265,10 +40889,10 @@ aXZ
 aXZ
 ayO
 aXZ
+xvb
 ayO
 ayO
 ayO
-ayO
 aXZ
 aXZ
 aXZ
@@ -40291,7 +40915,7 @@ aXZ
 aXZ
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 aXZ
@@ -40482,7 +41106,7 @@ aXZ
 aXZ
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 ayO
 ayO
@@ -40504,7 +41128,7 @@ iae
 aXZ
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 oXa
@@ -40535,7 +41159,7 @@ aXZ
 aXZ
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 iOC
@@ -40543,7 +41167,7 @@ aXZ
 aXZ
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 aXZ
@@ -40557,13 +41181,13 @@ ncD
 ncD
 aXZ
 aXZ
-fDK
 aXZ
 aXZ
 aXZ
 aXZ
 aXZ
-fDK
+aXZ
+aXZ
 aXZ
 aXZ
 diP
@@ -40745,14 +41369,14 @@ qJH
 aXZ
 aXZ
 ayO
+xvb
 ayO
 ayO
 ayO
 ayO
 ayO
 ayO
-ayO
-ayO
+xvb
 aXZ
 aXZ
 aXZ
@@ -40775,7 +41399,7 @@ aXZ
 aXZ
 aXZ
 aXZ
-fDK
+aXZ
 bpA
 aXZ
 aXZ
@@ -40786,7 +41410,7 @@ aXZ
 aXZ
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 mWo
 aXZ
@@ -40828,7 +41452,7 @@ aXZ
 aXZ
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 aXZ
@@ -40974,7 +41598,7 @@ aJs
 aJs
 aJs
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 aXZ
@@ -41039,7 +41663,7 @@ aXZ
 aXZ
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 aXZ
@@ -41090,7 +41714,7 @@ aXZ
 aXZ
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 aXZ
@@ -41526,7 +42150,7 @@ aXZ
 aXZ
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 aXZ
@@ -41704,13 +42328,13 @@ wjL
 wjL
 wjL
 kEp
+iaD
 wjL
 wjL
 wjL
 wjL
 wjL
-wjL
-wjL
+vVM
 wjL
 wjL
 aNV
@@ -41776,7 +42400,7 @@ aXZ
 aXZ
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 aXZ
@@ -41966,7 +42590,7 @@ wjL
 wjL
 wjL
 viQ
-qzu
+iSe
 aNV
 aNV
 aNV
@@ -42220,8 +42844,8 @@ kEp
 smJ
 kEp
 kEp
-aNV
-aNV
+kEp
+kEp
 aNV
 aNV
 aNV
@@ -42477,9 +43101,9 @@ kEp
 kEp
 kEp
 aNV
-aNV
-aNV
-aNV
+kEp
+kEp
+kEp
 aNV
 aNV
 aNV
@@ -42517,7 +43141,7 @@ aJs
 aJs
 aXZ
 aXZ
-fDK
+aXZ
 cYX
 atv
 dWt
@@ -42597,7 +43221,7 @@ mWo
 ceh
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 aXZ
@@ -42735,18 +43359,18 @@ kEp
 wjL
 aNV
 kEp
+kEp
+vIr
+kEp
+kEp
 aNV
 aNV
 aNV
-aNV
-aNV
-aNV
-aNV
-aNV
-aNV
-aNV
-aNV
-aNV
+wjL
+kEp
+smJ
+kEp
+kEp
 aNV
 aNV
 aNV
@@ -42894,7 +43518,7 @@ aXZ
 aXZ
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 aXZ
@@ -42994,17 +43618,17 @@ viQ
 kEp
 aNV
 aNV
+kEp
+kEp
+aNV
+aNV
+wjL
+wjL
 aNV
 aNV
 aNV
-aNV
-aNV
-aNV
-aNV
-aNV
-aNV
-aNV
-aNV
+kEp
+kEp
 aNV
 aNV
 aNV
@@ -43108,7 +43732,7 @@ aXZ
 aXZ
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 aXZ
@@ -43250,12 +43874,12 @@ wjL
 kEp
 kEp
 aNV
+kEp
+kEp
 aNV
 aNV
-aNV
-aNV
-aNV
-aNV
+kEp
+wjL
 aNV
 aNV
 aNV
@@ -43380,7 +44004,7 @@ aXZ
 aXZ
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 iae
@@ -43507,11 +44131,11 @@ wjL
 kEp
 kEp
 aNV
+kEp
 aNV
 aNV
-aNV
-aNV
-aNV
+kEp
+wjL
 aNV
 aNV
 aNV
@@ -43616,7 +44240,7 @@ aXZ
 aXZ
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 aXZ
@@ -43764,10 +44388,10 @@ wjL
 kEp
 kEp
 aNV
-aNV
-aNV
-aNV
-aNV
+kEp
+kEp
+kEp
+kEp
 aNV
 aNV
 aNV
@@ -44021,9 +44645,9 @@ smJ
 kEp
 kEp
 aNV
-aNV
-aNV
-aNV
+kEp
+kEp
+kEp
 aNV
 aNV
 aNV
@@ -44440,7 +45064,7 @@ aXZ
 aXZ
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 ayO
@@ -44800,8 +45424,8 @@ aNV
 aNV
 aNV
 aNV
-kEp
-kEp
+neh
+lHd
 aNV
 kEp
 kEp
@@ -44833,7 +45457,7 @@ aXZ
 aXZ
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 ukQ
 aXZ
@@ -44927,7 +45551,7 @@ ayO
 aXZ
 aXZ
 aXZ
-uie
+ncD
 auk
 auk
 auk
@@ -45055,10 +45679,10 @@ aNV
 aNV
 aNV
 aNV
-kEp
-kEp
-kEp
-kEp
+ift
+wjL
+hNr
+pzn
 aNV
 kEp
 aNV
@@ -45152,7 +45776,7 @@ aXZ
 aXZ
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 aXZ
@@ -45312,17 +45936,17 @@ aNV
 aNV
 aNV
 aNV
-kEp
-kEp
-kEp
-kEp
-lQv
-cIO
 wjL
+bFi
 wjL
+oWe
 lQv
-siG
-siG
+hgv
+wjL
+ueO
+lQv
+vqA
+erR
 wjL
 kEp
 smJ
@@ -45361,7 +45985,7 @@ aXZ
 hAH
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 aXZ
@@ -45569,14 +46193,14 @@ aNV
 aNV
 aNV
 aNV
-kEp
+wRp
 wjL
+dSA
 kEp
-kEp
+jsW
 cIO
 cIO
-cIO
-wjL
+wRp
 siG
 kEp
 kEp
@@ -45826,15 +46450,15 @@ aNV
 aNV
 aNV
 aNV
-kEp
-kEp
-kEp
+fmW
+jsW
+iQp
 lQv
-cIO
+iNy
 cIO
 cIO
 wjL
-cIO
+wrZ
 neh
 lQv
 kEp
@@ -45860,7 +46484,7 @@ aJs
 aXZ
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 aXZ
@@ -45983,7 +46607,7 @@ oXa
 aXZ
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 ayO
@@ -46083,15 +46707,15 @@ aNV
 aNV
 aNV
 aNV
+hze
 kEp
-kEp
-kEp
+iJc
 lQv
 lQv
 cIO
 aIP
-siG
-cIO
+eiF
+pzn
 cOf
 lQv
 kEp
@@ -46126,7 +46750,7 @@ aXZ
 aXZ
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 ayO
@@ -46347,7 +46971,7 @@ aNV
 lQv
 cIO
 gig
-cIO
+scz
 cIO
 lQv
 kEp
@@ -46394,7 +47018,7 @@ ayO
 aXZ
 aXZ
 uvD
-fDK
+aXZ
 aXZ
 aXZ
 aXZ
@@ -46602,7 +47226,7 @@ aNV
 aNV
 lQv
 lQv
-siG
+kjo
 cIO
 cIO
 wjL
@@ -46610,7 +47234,7 @@ lQv
 kEp
 lQv
 wjL
-kEp
+wRp
 aNV
 aNV
 aNV
@@ -46858,16 +47482,16 @@ aNV
 aNV
 aNV
 lQv
+jdG
 cIO
-cIO
-siG
-cIO
+neh
+cOf
 lQv
 lQv
 kEp
 kEp
-kEp
-kEp
+wRp
+pxE
 aNV
 aNV
 aNV
@@ -46889,7 +47513,7 @@ aJs
 aJs
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 aXZ
@@ -46965,7 +47589,7 @@ kzM
 exG
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 aXZ
@@ -47117,14 +47741,14 @@ aNV
 lQv
 lQv
 lQv
-cIO
+lbh
 lQv
 lQv
 kEp
 kEp
 wjL
-kEp
-kEp
+nMg
+lbr
 aNV
 aNV
 aNV
@@ -47216,7 +47840,7 @@ aXZ
 aXZ
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 aXZ
@@ -47242,7 +47866,7 @@ aXZ
 aXZ
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 tIE
@@ -47270,7 +47894,7 @@ aXZ
 aXZ
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 ayO
 ayO
@@ -47376,7 +48000,7 @@ aNV
 lQv
 lQv
 lQv
-kEp
+pzn
 wjL
 aNV
 wjL
@@ -47409,7 +48033,7 @@ aXZ
 aXZ
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 ayO
@@ -47917,7 +48541,7 @@ aJs
 aJs
 aJs
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 aXZ
@@ -47938,7 +48562,7 @@ ayO
 lJi
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 ncD
@@ -48001,7 +48625,7 @@ aXZ
 aXZ
 tIE
 aXZ
-fDK
+aXZ
 jDg
 wfQ
 aXZ
@@ -48265,7 +48889,7 @@ aXZ
 iTJ
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 aXZ
@@ -48556,7 +49180,7 @@ aXZ
 aXZ
 gAE
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 ayO
@@ -48691,7 +49315,7 @@ aXZ
 aXZ
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 ayO
 ayO
@@ -48798,7 +49422,7 @@ aXZ
 aXZ
 aXZ
 aXZ
-oWe
+cWw
 aXZ
 aXZ
 aXZ
@@ -49202,7 +49826,7 @@ aXZ
 aXZ
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 aXZ
@@ -49320,7 +49944,7 @@ aXZ
 aXZ
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 aXZ
@@ -49737,7 +50361,7 @@ aXZ
 aXZ
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 aXZ
@@ -50247,7 +50871,7 @@ ayO
 ayO
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 aXZ
@@ -50346,7 +50970,7 @@ aXZ
 aXZ
 aXZ
 qJH
-fDK
+aXZ
 aXZ
 aXZ
 auk
@@ -50486,13 +51110,13 @@ aJs
 aXZ
 aXZ
 aXZ
-fDK
 aXZ
 aXZ
 aXZ
 aXZ
 aXZ
-fDK
+aXZ
+aXZ
 aXZ
 aXZ
 ayO
@@ -51592,7 +52216,7 @@ aXZ
 aXZ
 aXZ
 aXZ
-oWe
+cWw
 aXZ
 aXZ
 aXZ
@@ -51889,7 +52513,7 @@ aXZ
 aXZ
 qJH
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 auk
@@ -52049,7 +52673,7 @@ ayO
 ayO
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 aXZ
@@ -52286,12 +52910,12 @@ aJs
 aJs
 aXZ
 aXZ
-fDK
 aXZ
 aXZ
 aXZ
 aXZ
-fDK
+aXZ
+aXZ
 ayO
 ayO
 ayO
@@ -53182,7 +53806,7 @@ aXZ
 aXZ
 aXZ
 mgV
-fDK
+aXZ
 aXZ
 aXZ
 ayO
@@ -53593,7 +54217,7 @@ aXZ
 aXZ
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 aXZ
@@ -53832,7 +54456,7 @@ aXZ
 aXZ
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 ayO
@@ -54084,7 +54708,7 @@ aJs
 aJs
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 aXZ
@@ -54773,7 +55397,7 @@ ayO
 ayO
 cth
 cth
-cth
+vzO
 ayO
 ayO
 ayO
@@ -54881,7 +55505,7 @@ aXZ
 aXZ
 uvD
 uvD
-fDK
+aXZ
 aXZ
 aXZ
 aXZ
@@ -55030,7 +55654,7 @@ ayO
 ayO
 iip
 ayO
-cth
+piQ
 ayO
 ayO
 ayO
@@ -55236,7 +55860,7 @@ aXZ
 aXZ
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 ncD
 ncD
@@ -55287,7 +55911,7 @@ ayO
 ayO
 ayO
 ayO
-wXZ
+gIG
 ayO
 ayO
 ayO
@@ -55372,7 +55996,7 @@ aXZ
 aXZ
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 ayO
@@ -55541,13 +56165,13 @@ ayO
 ayO
 ayO
 ayO
-aXZ
-aXZ
-aXZ
-aXZ
-aXZ
-aXZ
-aXZ
+brG
+brG
+hHe
+brG
+brG
+brG
+brG
 ayO
 ayO
 ayO
@@ -55626,7 +56250,7 @@ aXZ
 aXZ
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 aXZ
@@ -55649,7 +56273,7 @@ aXZ
 aXZ
 iae
 aXZ
-fDK
+aXZ
 uvD
 aXZ
 aXZ
@@ -55798,15 +56422,15 @@ ayO
 ayO
 ayO
 ayO
+brG
+ivS
 aXZ
-aXZ
-aXZ
-aXZ
-fDK
-utW
-aXZ
+dpp
+dpp
+fIU
+dpp
 auU
-auU
+iIw
 ayO
 ayO
 ayO
@@ -56053,13 +56677,13 @@ ayO
 ayO
 ayO
 aXZ
+fmJ
+brG
+ivS
 aXZ
 aXZ
 aXZ
-aXZ
-aXZ
-aXZ
-auU
+iIw
 auU
 auU
 auU
@@ -56144,7 +56768,7 @@ aXZ
 aXZ
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 aXZ
@@ -56311,14 +56935,14 @@ aXZ
 aXZ
 aXZ
 aXZ
-fDK
+dpp
 aXZ
 aXZ
 aXZ
+iIw
+iIw
 auU
 auU
-auU
-xvb
 auU
 auU
 ayO
@@ -56406,7 +57030,7 @@ aXZ
 aXZ
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 hAH
@@ -56415,7 +57039,7 @@ aXZ
 aXZ
 aXZ
 uvD
-bvz
+uvD
 aXZ
 ncD
 aXZ
@@ -56566,18 +57190,18 @@ ayO
 aXZ
 aXZ
 aXZ
-auU
+iIw
 aXZ
-auU
+iIw
 aXZ
 aXZ
+iIw
 auU
 auU
 auU
 auU
 auU
-auU
-auU
+iIw
 ayO
 ayO
 ayO
@@ -56621,7 +57245,7 @@ aXZ
 aXZ
 iOC
 aXZ
-fDK
+aXZ
 aXZ
 ncD
 ayO
@@ -56669,7 +57293,7 @@ aXZ
 qJH
 aXZ
 aXZ
-sxM
+vqv
 aXZ
 aXZ
 qip
@@ -56822,19 +57446,19 @@ ayO
 aXZ
 aXZ
 aXZ
-fDK
 aXZ
+aXZ
+iIw
+iIw
+iIw
 auU
 auU
 auU
 auU
 auU
+eKz
 auU
-auU
-auU
-auU
-auU
-auU
+iIw
 ayO
 ayO
 ayO
@@ -57033,7 +57657,7 @@ aXZ
 aXZ
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 aXZ
@@ -57078,18 +57702,18 @@ ayO
 aXZ
 aXZ
 aXZ
-auU
+iIw
 aXZ
+iIw
+iIw
 auU
 auU
 auU
-auU
-auU
-auU
-xvb
-auU
-auU
-aXZ
+iIw
+iIw
+eKz
+uDG
+brG
 ayO
 ayO
 ayO
@@ -57334,59 +57958,59 @@ ayO
 ayO
 aXZ
 aXZ
+iIw
+iIw
 auU
 auU
 auU
 auU
-auU
-auU
-auU
-auU
+iIw
+iIw
+aXZ
+neS
+brG
+brG
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
 aXZ
 aXZ
-aXZ
-aXZ
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-aXZ
-aXZ
-fDK
+aWY
 aXZ
 aXZ
 aXZ
@@ -57506,7 +58130,7 @@ aXZ
 aXZ
 aXZ
 aXZ
-oWe
+cWw
 aXZ
 aXZ
 aXZ
@@ -57594,13 +58218,13 @@ aXZ
 aXZ
 auU
 auU
-auU
-auU
-auU
+iIw
+iIw
+iIw
 aXZ
 aXZ
-aXZ
-aXZ
+neS
+pxB
 ayO
 ayO
 ayO
@@ -57642,55 +58266,55 @@ ayO
 ayO
 ncD
 ncD
+rwT
+brG
+iHv
+aXZ
+cWw
+aXZ
+aXZ
+ayO
+aXZ
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
 aXZ
 aXZ
 aXZ
-aXZ
-oWe
-aXZ
-aXZ
-ayO
-aXZ
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-aXZ
-aXZ
-fDK
 aXZ
 aXZ
 aXZ
@@ -57848,15 +58472,15 @@ ayO
 aXZ
 cWw
 aXZ
+iIw
 auU
-auU
-auU
+iIw
 aXZ
 aXZ
 aXZ
 aXZ
-aXZ
-aXZ
+neS
+brG
 ayO
 ayO
 ayO
@@ -57899,9 +58523,9 @@ ayO
 ncD
 ncD
 aXZ
-aXZ
-aXZ
-aGc
+rwT
+brG
+eLQ
 aXZ
 aXZ
 aXZ
@@ -58104,15 +58728,15 @@ ayO
 ayO
 aXZ
 aXZ
-fDK
+aXZ
 auU
-auU
+iIw
 aXZ
 aXZ
+aWY
 aXZ
-aXZ
-aXZ
-aXZ
+rwT
+brG
 ayO
 ayO
 ayO
@@ -58156,12 +58780,12 @@ aXZ
 ncD
 aXZ
 aXZ
+rwT
+brG
+eLQ
 aXZ
 aXZ
-aGc
 aXZ
-aXZ
-fDK
 aXZ
 ayO
 ayO
@@ -58361,15 +58985,15 @@ ayO
 ayO
 aXZ
 aXZ
+iIw
 auU
-auU
-auU
+iIw
 aXZ
-aXZ
-aXZ
-aXZ
-fDK
-suO
+neS
+brG
+iHv
+rwT
+aUv
 ayO
 ayO
 ayO
@@ -58414,7 +59038,7 @@ aXZ
 aXZ
 aXZ
 aXZ
-aXZ
+dpp
 aGc
 bpA
 bpA
@@ -58613,18 +59237,18 @@ ayO
 ayO
 ayO
 aXZ
+aWY
 aXZ
 aXZ
 aXZ
 aXZ
-aXZ
+iIw
 auU
-auU
 aXZ
-aXZ
-aXZ
-aXZ
-aXZ
+rwT
+brG
+brG
+iHv
 aXZ
 ayO
 ayO
@@ -58672,7 +59296,7 @@ aXZ
 aXZ
 aXZ
 aXZ
-auU
+iIw
 aXZ
 aXZ
 aXZ
@@ -58869,19 +59493,19 @@ ayO
 ayO
 aXZ
 aXZ
-aXZ
-fDK
-aXZ
+neS
+brG
+iHv
 pOQ
 aXZ
 aXZ
 auU
 auU
 aXZ
-aXZ
-aXZ
-aXZ
-aXZ
+rwT
+brG
+brG
+iHv
 aXZ
 ayO
 ayO
@@ -58925,13 +59549,13 @@ ayO
 ayO
 aXZ
 aXZ
-fDK
 aXZ
 aXZ
 aXZ
 aXZ
-auU
-auU
+aXZ
+iIw
+iIw
 aXZ
 aXZ
 aXZ
@@ -58980,7 +59604,7 @@ aXZ
 aXZ
 hAH
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 aXZ
@@ -59125,10 +59749,10 @@ ayO
 aXZ
 aXZ
 aXZ
-aXZ
-aXZ
-aXZ
-aXZ
+rwT
+brG
+brG
+iHv
 aXZ
 aXZ
 aXZ
@@ -59136,8 +59760,8 @@ auU
 auU
 aXZ
 aXZ
-fDK
-aXZ
+dpp
+dpp
 aXZ
 aXZ
 ayO
@@ -59183,7 +59807,7 @@ ayO
 aXZ
 aXZ
 aXZ
-auU
+iIw
 aXZ
 aXZ
 aXZ
@@ -59192,11 +59816,11 @@ auU
 auU
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 tIE
 aXZ
-aXZ
+aWY
 aXZ
 ayO
 ayO
@@ -59381,15 +60005,15 @@ aXZ
 aXZ
 aXZ
 aXZ
-giH
+loS
 aXZ
+fmJ
+brG
+iHv
 aXZ
-aXZ
-aXZ
-aXZ
-auU
-auU
-auU
+iIw
+iIw
+iIw
 auU
 aXZ
 aXZ
@@ -59426,7 +60050,7 @@ ayO
 ayO
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 aXZ
@@ -59436,25 +60060,25 @@ aXZ
 nHE
 aMi
 aXZ
+iIw
+auU
+iIw
+iIw
+aXZ
+iIw
+aXZ
+iIw
+iIw
+aXZ
 auU
 auU
-auU
-auU
-aXZ
-auU
-aXZ
-auU
-auU
-aXZ
-auU
-auU
 aXZ
 aXZ
 aXZ
 aXZ
-aXZ
-aXZ
-aXZ
+rwT
+brG
+iHv
 ayO
 ayO
 ayO
@@ -59603,7 +60227,7 @@ aXZ
 aXZ
 aXZ
 aXZ
-fDK
+aXZ
 iae
 aXZ
 ayO
@@ -59628,9 +60252,9 @@ ayO
 ayO
 ayO
 ayO
-aXZ
-aXZ
-fDK
+pxB
+brG
+iHv
 aXZ
 pOQ
 aXZ
@@ -59641,10 +60265,10 @@ aXZ
 aXZ
 aXZ
 aXZ
+dpp
 aXZ
 aXZ
-aXZ
-auU
+iIw
 auU
 auU
 aXZ
@@ -59689,18 +60313,18 @@ cWw
 aXZ
 prb
 ncD
-fDK
-aXZ
-auU
-aXZ
-auU
 aXZ
 aXZ
+iIw
 aXZ
 auU
 aXZ
 aXZ
 aXZ
+iIw
+aXZ
+aXZ
+aXZ
 aXZ
 aXZ
 aXZ
@@ -59710,7 +60334,7 @@ auU
 aXZ
 aXZ
 aXZ
-aXZ
+dpp
 aXZ
 ayO
 ayO
@@ -59885,13 +60509,13 @@ ayO
 ayO
 ayO
 ayO
+brG
+ivS
 aXZ
 aXZ
 aXZ
 aXZ
 aXZ
-aXZ
-fDK
 aXZ
 aXZ
 aXZ
@@ -59903,7 +60527,7 @@ aXZ
 aXZ
 auU
 auU
-auU
+iIw
 aXZ
 aXZ
 aXZ
@@ -59948,7 +60572,7 @@ aXZ
 aXZ
 aXZ
 aXZ
-auU
+iIw
 aXZ
 aXZ
 aXZ
@@ -60141,8 +60765,8 @@ ayO
 ayO
 ayO
 ayO
-aXZ
-aXZ
+brG
+brG
 ocM
 ocM
 ocM
@@ -60151,16 +60775,16 @@ ocM
 ocM
 ocM
 ocM
+agp
 aXZ
 aXZ
 aXZ
 aXZ
 aXZ
-aXZ
+iIw
 auU
 auU
-auU
-auU
+iIw
 aXZ
 aXZ
 aXZ
@@ -60208,7 +60832,7 @@ nHE
 aMi
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 aXZ
@@ -60224,7 +60848,7 @@ aXZ
 aXZ
 aXZ
 aXZ
-auU
+iIw
 aXZ
 aXZ
 ayO
@@ -60408,15 +61032,15 @@ qHF
 tCP
 aQS
 ocM
-aXZ
-aXZ
-oWe
+brG
+iHv
+cWw
 aXZ
 aXZ
 aXZ
 auU
-xvb
 auU
+iIw
 aXZ
 aXZ
 ayO
@@ -60452,9 +61076,9 @@ ayO
 ayO
 ayO
 aXZ
-fDK
 aXZ
-aXZ
+aWY
+aWY
 aXZ
 aXZ
 aXZ
@@ -60471,7 +61095,6 @@ aXZ
 aXZ
 aXZ
 lYl
-fDK
 aXZ
 aXZ
 aXZ
@@ -60481,7 +61104,8 @@ aXZ
 aXZ
 aXZ
 aXZ
-xvb
+aXZ
+iIw
 aXZ
 ayO
 ayO
@@ -60523,7 +61147,7 @@ ayO
 aXZ
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 aXZ
@@ -60665,15 +61289,15 @@ sYu
 sYu
 qUw
 ocM
-aXZ
-aXZ
-aXZ
+brG
+agp
+aWY
 aXZ
 aXZ
 aXZ
 auU
 auU
-auU
+iIw
 aXZ
 ayO
 ayO
@@ -60709,10 +61333,10 @@ ayO
 ayO
 ayO
 aXZ
-aXZ
-aXZ
-aXZ
-aXZ
+rwT
+brG
+brG
+iHv
 aXZ
 aXZ
 aXZ
@@ -60922,14 +61546,14 @@ bOF
 sYu
 gjK
 ocM
+brG
+brG
+brG
+iHv
 aXZ
-aXZ
-aXZ
-aXZ
-aXZ
+iIw
 auU
-auU
-auU
+iIw
 ayO
 ayO
 ayO
@@ -60967,8 +61591,8 @@ ayO
 ayO
 ayO
 aXZ
-aXZ
-aXZ
+dpp
+dpp
 aXZ
 aXZ
 aXZ
@@ -61179,20 +61803,20 @@ sYu
 sex
 qUw
 ocM
-aXZ
-aXZ
-aXZ
-aXZ
+brG
+brG
+brG
+iHv
 aXZ
 auU
-auU
+iIw
 ayO
 ayO
 ayO
 ayO
 aXZ
 aXZ
-ygG
+suO
 aXZ
 aXZ
 aXZ
@@ -61203,7 +61827,7 @@ aXZ
 aXZ
 aXZ
 aXZ
-fDK
+aXZ
 suO
 ayO
 ayO
@@ -61229,7 +61853,7 @@ aXZ
 aXZ
 aXZ
 aXZ
-xvb
+auU
 aXZ
 aXZ
 ayO
@@ -61403,7 +62027,7 @@ wfQ
 aXZ
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 pOQ
 sxy
@@ -61436,54 +62060,54 @@ xvo
 xvo
 aOV
 ocM
-aXZ
-aXZ
-aXZ
-aXZ
-fDK
-auU
-ayO
-ayO
-aXZ
-fDK
-aXZ
-aXZ
-aXZ
-aXZ
-aXZ
-aXZ
-aXZ
-aXZ
-aXZ
-fDK
-aXZ
-aXZ
-aXZ
-aXZ
-aXZ
-aXZ
-aXZ
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-aXZ
-aXZ
+dpp
+fmJ
+brG
+iHv
 aXZ
 auU
+ayO
+ayO
+aXZ
+aXZ
+aXZ
+aXZ
+aXZ
+aXZ
+aXZ
+aXZ
+aXZ
+aXZ
+aXZ
+aXZ
+aXZ
+aXZ
+aXZ
+aXZ
+aXZ
+aXZ
+aXZ
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+aXZ
+aXZ
+aXZ
 auU
+iIw
 auU
 auU
 auU
@@ -61694,9 +62318,9 @@ puR
 ocM
 ocM
 aXZ
-aXZ
-aXZ
-aXZ
+rwT
+brG
+iHv
 aXZ
 aXZ
 aXZ
@@ -61919,7 +62543,7 @@ aXZ
 aXZ
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 ayO
@@ -61941,18 +62565,18 @@ ayO
 ayO
 ayO
 aXZ
-fDK
-ocM
-wtE
-wtE
-wtE
-wtE
-wtE
-wtE
-ocM
-oWe
 aXZ
+rTD
+wtE
+wtE
+wtE
+wtE
+wtE
+wtE
+ocM
+cWw
 aXZ
+dpp
 aXZ
 ocM
 ocM
@@ -61975,7 +62599,7 @@ paD
 paD
 mCL
 ocM
-aXZ
+aWY
 aXZ
 ayO
 ayO
@@ -61994,7 +62618,7 @@ aXZ
 aXZ
 aMi
 aXZ
-fDK
+aXZ
 aXZ
 auU
 auU
@@ -62026,8 +62650,8 @@ ayO
 ayO
 aXZ
 aXZ
-auU
-fDK
+iIw
+aXZ
 aXZ
 ayO
 ayO
@@ -62199,7 +62823,7 @@ ayO
 ayO
 aXZ
 aXZ
-ocM
+fDK
 wtE
 aWu
 sYu
@@ -62210,7 +62834,7 @@ ocM
 aXZ
 aXZ
 aXZ
-auU
+iIw
 ocM
 dGd
 esE
@@ -62232,8 +62856,8 @@ esE
 nUz
 lAv
 ocM
-aXZ
-aXZ
+brG
+iHv
 aXZ
 ayO
 ayO
@@ -62255,10 +62879,10 @@ aXZ
 auU
 aXZ
 aXZ
-fDK
 aXZ
 aXZ
-fDK
+aXZ
+aXZ
 auU
 aXZ
 ayO
@@ -62283,7 +62907,7 @@ ayO
 ayO
 ayO
 aXZ
-auU
+iIw
 aXZ
 aXZ
 ayO
@@ -62319,7 +62943,7 @@ ayO
 ayO
 ayO
 aXZ
-fDK
+aXZ
 hAH
 aXZ
 aXZ
@@ -62456,7 +63080,7 @@ ayO
 ayO
 aXZ
 aXZ
-ocM
+fDK
 wtE
 vYV
 hTE
@@ -62489,22 +63113,22 @@ esE
 uUB
 mTj
 ocM
+dpp
+aXZ
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+aXZ
+aWY
+aWY
 aXZ
 aXZ
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
 aXZ
-aXZ
-aXZ
-aXZ
-aXZ
-fDK
 aXZ
 aXZ
 aXZ
@@ -62673,7 +63297,7 @@ imN
 ukQ
 aXZ
 imN
-oWe
+cWw
 fQh
 fox
 fox
@@ -62746,7 +63370,7 @@ esE
 kjO
 qcF
 ocM
-nsf
+pOQ
 aXZ
 aXZ
 ayO
@@ -62756,10 +63380,10 @@ ayO
 ayO
 ayO
 ayO
-aXZ
-fDK
-aXZ
-aXZ
+rwT
+brG
+brG
+iHv
 aXZ
 aXZ
 aXZ
@@ -62773,7 +63397,7 @@ ayO
 aXZ
 aXZ
 aXZ
-aXZ
+aWY
 aXZ
 aXZ
 ayO
@@ -62798,7 +63422,7 @@ ayO
 ayO
 ayO
 aXZ
-auU
+iIw
 aXZ
 ayO
 ayO
@@ -63013,9 +63637,9 @@ ayO
 ayO
 ayO
 aXZ
-aXZ
-aXZ
-aXZ
+neS
+brG
+ivS
 vRg
 aXZ
 aXZ
@@ -63029,10 +63653,10 @@ ayO
 ayO
 ayO
 aXZ
-aXZ
-aXZ
-aXZ
-auU
+rwT
+brG
+iHv
+iIw
 aXZ
 ayO
 ayO
@@ -63055,7 +63679,7 @@ ayO
 ayO
 ayO
 aXZ
-auU
+iIw
 vqv
 ayO
 ayO
@@ -63225,7 +63849,7 @@ ayO
 ayO
 ayO
 ayO
-aXZ
+agp
 aXZ
 ocM
 mQu
@@ -63269,15 +63893,15 @@ ayO
 ayO
 ayO
 ayO
+rwT
+brG
+brG
+iHv
 aXZ
 aXZ
 aXZ
 aXZ
 aXZ
-aXZ
-aXZ
-aXZ
-fDK
 aXZ
 ayO
 ayO
@@ -63286,9 +63910,9 @@ ayO
 ayO
 ayO
 aXZ
-aXZ
-aXZ
-aXZ
+rwT
+brG
+iHv
 aXZ
 aXZ
 aXZ
@@ -63482,8 +64106,8 @@ ayO
 ayO
 ayO
 ayO
-fDK
-aXZ
+brG
+iHv
 ocM
 hvF
 udj
@@ -63495,7 +64119,7 @@ ocM
 aXZ
 aXZ
 aXZ
-auU
+iIw
 aXZ
 bzD
 bzD
@@ -63526,9 +64150,9 @@ ayO
 ayO
 ayO
 ayO
-aXZ
-aXZ
-aXZ
+rwT
+brG
+ivS
 aXZ
 aXZ
 cSm
@@ -63544,11 +64168,11 @@ ayO
 ayO
 ncD
 aXZ
-fDK
+dpp
 nHE
 aMi
 aXZ
-fDK
+aXZ
 aXZ
 ayO
 ayO
@@ -63567,7 +64191,7 @@ ayO
 ayO
 ayO
 aXZ
-aXZ
+aWY
 aXZ
 aXZ
 aXZ
@@ -63715,14 +64339,14 @@ aXZ
 aXZ
 sxy
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 aXZ
 ayO
 ayO
 aXZ
-fDK
+aXZ
 ayO
 ayO
 ayO
@@ -63739,8 +64363,8 @@ ayO
 ayO
 ayO
 ayO
-aXZ
-aXZ
+brG
+iHv
 ocM
 gKV
 rAC
@@ -63751,9 +64375,9 @@ rAC
 ocM
 aXZ
 aXZ
-oWe
+cWw
 aXZ
-aXZ
+aWY
 bzD
 aXZ
 aXZ
@@ -63784,7 +64408,7 @@ ayO
 ayO
 ayO
 ayO
-aXZ
+dpp
 aXZ
 aXZ
 aXZ
@@ -63801,7 +64425,7 @@ ayO
 ayO
 ncD
 aXZ
-aXZ
+aWY
 nHE
 aMi
 aXZ
@@ -63823,43 +64447,43 @@ ayO
 ayO
 ayO
 ayO
-aXZ
-aXZ
-aXZ
-aXZ
-aXZ
-aXZ
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
+neS
+brG
+iHv
 aXZ
 aXZ
 aXZ
 ayO
 ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
 aXZ
 aXZ
-fDK
+aXZ
+ayO
+ayO
+aXZ
+aXZ
+aXZ
 aXZ
 aXZ
 hAH
@@ -63996,7 +64620,7 @@ ayO
 ayO
 ayO
 ayO
-aXZ
+ivS
 aXZ
 ocM
 qLH
@@ -64009,11 +64633,11 @@ ocM
 aXZ
 aXZ
 aXZ
+neS
+brG
+sAz
 aXZ
-aXZ
-bzD
-aXZ
-auU
+iIw
 aXZ
 ocM
 gsn
@@ -64032,7 +64656,7 @@ paD
 jBh
 ocM
 aXZ
-fDK
+aXZ
 ayO
 ayO
 ayO
@@ -64057,8 +64681,8 @@ ayO
 ayO
 ayO
 ayO
-aXZ
-aXZ
+rwT
+brG
 ayO
 ayO
 aXZ
@@ -64080,11 +64704,11 @@ aHr
 ayO
 ayO
 ayO
+brG
+brG
+iHv
+cWw
 aXZ
-aXZ
-aXZ
-oWe
-fDK
 aXZ
 aXZ
 ayO
@@ -64265,13 +64889,13 @@ ocM
 ocM
 aXZ
 aXZ
+rwT
+brG
+brG
+sAz
 aXZ
 aXZ
-aXZ
-bzD
-aXZ
-aXZ
-auU
+iIw
 ocM
 xAx
 mnu
@@ -64288,7 +64912,7 @@ upj
 ocM
 ocM
 ocM
-aXZ
+aWY
 aXZ
 ayO
 ayO
@@ -64315,7 +64939,7 @@ ayO
 ayO
 ayO
 ncD
-ncD
+oFh
 ayO
 ayO
 ayO
@@ -64337,9 +64961,9 @@ aHr
 fOE
 ayO
 ayO
-aXZ
-aXZ
-aXZ
+fmJ
+brG
+iHv
 aXZ
 aXZ
 lYl
@@ -64523,8 +65147,8 @@ aXZ
 aXZ
 bzD
 bzD
-bzD
-bzD
+sQw
+sQw
 bzD
 aXZ
 aXZ
@@ -64544,9 +65168,9 @@ bzD
 bzD
 bzD
 aXZ
-aXZ
-aXZ
-aXZ
+rwT
+brG
+iHv
 cWw
 aXZ
 ayO
@@ -64559,8 +65183,8 @@ aXZ
 aXZ
 aXZ
 aXZ
-fDK
-auU
+aXZ
+iIw
 aXZ
 vRg
 ayO
@@ -64595,11 +65219,11 @@ aHr
 ayO
 ayO
 aXZ
+dpp
 aXZ
 aXZ
 aXZ
 aXZ
-aXZ
 ayO
 ayO
 ayO
@@ -64625,7 +65249,7 @@ aXZ
 aXZ
 aXZ
 aXZ
-adV
+imN
 imN
 aXZ
 imN
@@ -64801,10 +65425,10 @@ aXZ
 bzD
 aXZ
 aXZ
-aXZ
-aXZ
-aXZ
-aXZ
+rwT
+brG
+agp
+aWY
 aXZ
 ayO
 ayO
@@ -64812,7 +65436,7 @@ ayO
 ayO
 ayO
 qSX
-fDK
+aXZ
 aXZ
 aXZ
 lYl
@@ -64834,11 +65458,11 @@ ayO
 ayO
 ayO
 aXZ
-fDK
+aXZ
 aXZ
 auU
 lYl
-fDK
+aXZ
 aXZ
 aXZ
 cWw
@@ -64999,7 +65623,7 @@ aXZ
 aXZ
 iae
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 aXZ
@@ -65027,7 +65651,7 @@ ayO
 ayO
 ayO
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 bzD
@@ -65058,11 +65682,11 @@ aXZ
 aXZ
 aXZ
 bzD
-aXZ
-aXZ
-aXZ
-aXZ
-aXZ
+rwT
+brG
+brG
+brG
+iHv
 aXZ
 aXZ
 aXZ
@@ -65073,7 +65697,7 @@ aXZ
 aXZ
 aXZ
 aXZ
-auU
+iIw
 aXZ
 aXZ
 ayO
@@ -65262,7 +65886,7 @@ aXZ
 aXZ
 ayO
 ayO
-fDK
+aXZ
 ayO
 ayO
 ayO
@@ -65298,7 +65922,7 @@ qvT
 paD
 ocM
 aXZ
-auU
+iIw
 aXZ
 ocM
 fCt
@@ -65315,11 +65939,11 @@ aXZ
 aXZ
 bzD
 bzD
-aXZ
-aXZ
-aXZ
-fDK
-aXZ
+rwT
+brG
+brG
+brG
+iHv
 aXZ
 aXZ
 aXZ
@@ -65357,7 +65981,7 @@ aXZ
 aXZ
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 ayO
 ayO
@@ -65555,7 +66179,7 @@ ocM
 ocM
 ocM
 aXZ
-auU
+iIw
 aXZ
 ocM
 ahW
@@ -65573,13 +66197,13 @@ aXZ
 aXZ
 aXZ
 aXZ
+dpp
+fmJ
+brG
+iHv
 aXZ
 aXZ
 aXZ
-aXZ
-aXZ
-aXZ
-fDK
 aXZ
 aMi
 nHE
@@ -65643,11 +66267,11 @@ ayO
 ayO
 suO
 aXZ
+aWY
+aXZ
+aWY
 aXZ
 aXZ
-aXZ
-aXZ
-fDK
 aXZ
 aXZ
 aXZ
@@ -65692,7 +66316,7 @@ ukQ
 aXZ
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 aXZ
@@ -65812,7 +66436,7 @@ esE
 esE
 ocM
 aXZ
-auU
+iIw
 aXZ
 ocM
 ocM
@@ -65831,9 +66455,9 @@ aXZ
 bzD
 bzD
 aXZ
-aXZ
-aXZ
-aXZ
+rwT
+brG
+iHv
 aXZ
 aXZ
 aXZ
@@ -65843,7 +66467,7 @@ aXZ
 aXZ
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 aXZ
@@ -65865,7 +66489,7 @@ aXZ
 ncD
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 aXZ
@@ -65899,11 +66523,11 @@ ayO
 ayO
 ayO
 aXZ
-aXZ
-aXZ
-aXZ
-aXZ
-aXZ
+rwT
+brG
+hHe
+brG
+iHv
 aXZ
 aXZ
 aXZ
@@ -65943,7 +66567,7 @@ qJH
 aXZ
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 aXZ
@@ -66051,7 +66675,7 @@ ayO
 ayO
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 aXZ
@@ -66069,7 +66693,7 @@ paD
 ycH
 ocM
 aXZ
-auU
+iIw
 aXZ
 ocM
 xdI
@@ -66089,7 +66713,7 @@ aXZ
 bzD
 aXZ
 aXZ
-lYl
+mFg
 aXZ
 aXZ
 aXZ
@@ -66099,7 +66723,7 @@ pPU
 bpA
 nHE
 nHE
-auU
+iIw
 aXZ
 aXZ
 ayO
@@ -66154,12 +66778,12 @@ ayO
 ayO
 ayO
 ayO
+agp
 aXZ
 aXZ
+aCH
 aXZ
-aXZ
-aXZ
-aXZ
+dpp
 aXZ
 cWw
 aXZ
@@ -66171,7 +66795,7 @@ aXZ
 aXZ
 aXZ
 aXZ
-aXZ
+aWY
 aXZ
 aXZ
 aXZ
@@ -66212,7 +66836,7 @@ aXZ
 aXZ
 aXZ
 aXZ
-uie
+ncD
 aXZ
 aXZ
 aXZ
@@ -66312,7 +66936,7 @@ aXZ
 aXZ
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 aXZ
@@ -66381,41 +67005,41 @@ ayO
 ayO
 aXZ
 aXZ
+aWY
 aXZ
 aXZ
 aXZ
-aXZ
 ayO
 ayO
 aXZ
-ayO
-ayO
-ayO
-ayO
-aXZ
-aXZ
-aXZ
-aXZ
-aXZ
-fDK
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
 ayO
 ayO
 ayO
 ayO
 aXZ
 aXZ
-fDK
 aXZ
 aXZ
+aXZ
+aXZ
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+brG
+agp
+wyj
+brG
+iHv
 aXZ
 aXZ
 aXZ
@@ -66427,9 +67051,9 @@ imN
 aXZ
 aXZ
 prb
-fDK
-aXZ
-aXZ
+rwT
+brG
+iHv
 aXZ
 aXZ
 hAH
@@ -66545,7 +67169,7 @@ aXZ
 aXZ
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 aXZ
@@ -66582,7 +67206,7 @@ clb
 paD
 esE
 ocM
-aXZ
+aWY
 auU
 aXZ
 ocM
@@ -66612,7 +67236,7 @@ aXZ
 aXZ
 aXZ
 aMi
-auU
+iIw
 nHE
 ayO
 ayO
@@ -66637,18 +67261,18 @@ ayO
 ayO
 ayO
 diP
+rwT
+brG
+agp
 aXZ
-aXZ
-aXZ
-aXZ
-auU
+iIw
 ayO
 aXZ
 aXZ
 aXZ
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 iOC
@@ -66668,10 +67292,10 @@ ayO
 ayO
 ayO
 ayO
-aXZ
-aXZ
-aXZ
-aXZ
+brG
+brG
+brG
+ivS
 aXZ
 aXZ
 aXZ
@@ -66685,7 +67309,7 @@ aXZ
 aXZ
 aXZ
 aXZ
-aXZ
+dpp
 aXZ
 aXZ
 aXZ
@@ -66711,7 +67335,7 @@ aXZ
 diP
 aXZ
 qJH
-fDK
+aXZ
 aXZ
 aXZ
 ncD
@@ -66790,13 +67414,13 @@ aXZ
 qCe
 aXZ
 aXZ
-oWe
+cWw
 amh
 pUq
 tiI
 aXZ
 aXZ
-rTD
+iae
 aXZ
 aXZ
 aXZ
@@ -66826,9 +67450,9 @@ auU
 gWs
 aXZ
 gWs
-auU
+iIw
 gWs
-auU
+iIw
 gWs
 aXZ
 gWs
@@ -66839,8 +67463,8 @@ ocM
 ycH
 esE
 ocM
-aXZ
-auU
+brG
+kvY
 aXZ
 ocM
 thF
@@ -66863,12 +67487,12 @@ aXZ
 aXZ
 aXZ
 aXZ
+cky
 aXZ
 aXZ
 aXZ
 aXZ
-aXZ
-auU
+iIw
 ayO
 cUR
 ayO
@@ -66894,18 +67518,18 @@ ayO
 ayO
 ayO
 aXZ
-aXZ
-fDK
+rwT
+brG
+brG
+iHv
+iIw
+iIw
 aXZ
 aXZ
 auU
 auU
-aXZ
-aXZ
 auU
-auU
-auU
-auU
+iIw
 aXZ
 aXZ
 aXZ
@@ -66925,9 +67549,9 @@ ayO
 ayO
 ayO
 ayO
-imN
-imN
-imN
+lgX
+lgX
+mMb
 imN
 imN
 aXZ
@@ -67063,7 +67687,7 @@ ncD
 ncD
 ayO
 aXZ
-fDK
+aXZ
 ayO
 ayO
 ayO
@@ -67078,14 +67702,14 @@ ayO
 ayO
 ayO
 aXZ
-aAJ
-aXZ
-gWs
-auU
 gWs
 aXZ
 gWs
 auU
+gWs
+aXZ
+gWs
+iIw
 gWs
 aXZ
 gWs
@@ -67096,9 +67720,9 @@ ocM
 ocM
 ocM
 ocM
-aXZ
-aXZ
-aXZ
+brG
+brG
+iHv
 ocM
 ocM
 ocM
@@ -67111,17 +67735,17 @@ ocM
 ocM
 aXZ
 aXZ
-oWe
+cWw
 aXZ
 bzD
 bzD
 aXZ
 aXZ
-auU
-auU
-aXZ
-aXZ
-aXZ
+iIw
+iIw
+rwT
+brG
+iHv
 aXZ
 aXZ
 loS
@@ -67152,27 +67776,25 @@ ayO
 ayO
 aXZ
 aXZ
-aXZ
-aXZ
-aXZ
-ayO
-aXZ
-aXZ
-auU
-aXZ
-aXZ
-aXZ
-aXZ
-aXZ
-aXZ
-aXZ
-aXZ
-aXZ
-aXZ
-aXZ
+dpp
+dpp
 aXZ
 ayO
-ayO
+aXZ
+aXZ
+eKz
+aXZ
+aXZ
+aXZ
+aXZ
+aXZ
+aXZ
+aXZ
+aXZ
+aXZ
+aXZ
+aXZ
+aXZ
 ayO
 ayO
 ayO
@@ -67182,18 +67804,20 @@ ayO
 ayO
 ayO
 ayO
-imN
-imN
-imN
-imN
-aXZ
-imN
+ayO
+ayO
+lgX
+lgX
+cLM
 imN
 aXZ
 imN
 imN
+aXZ
 imN
-fDK
+imN
+imN
+aXZ
 aXZ
 ayO
 ayO
@@ -67352,10 +67976,10 @@ bzD
 aXZ
 aXZ
 aXZ
-aXZ
-aXZ
-aXZ
-aXZ
+rwT
+brG
+brG
+iHv
 aXZ
 aXZ
 aXZ
@@ -67374,50 +67998,50 @@ bzD
 bzD
 aXZ
 auU
-auU
+iIw
 aXZ
 aXZ
+aCH
 aXZ
-aXZ
-auU
-auU
-auU
-aXZ
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
+iIw
+iIw
+iIw
 aXZ
 ayO
 ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
 aXZ
+ayO
+ayO
+rwT
+brG
+iHv
 aXZ
-aXZ
-fDK
 aXZ
 aXZ
 aXZ
@@ -67439,8 +68063,8 @@ ayO
 ayO
 ayO
 ayO
-imN
-imN
+lgX
+mMb
 imN
 aXZ
 aXZ
@@ -67501,7 +68125,7 @@ ayO
 ayO
 ayO
 aXZ
-fDK
+aXZ
 aXZ
 iwi
 aCZ
@@ -67602,8 +68226,8 @@ aXZ
 auU
 auU
 auU
-auU
-auU
+iIw
+iIw
 bzD
 bzD
 ocM
@@ -67614,8 +68238,8 @@ ocM
 ocM
 ocM
 aXZ
-aXZ
-auU
+aWY
+iIw
 auU
 auU
 aXZ
@@ -67632,59 +68256,59 @@ bzD
 auU
 aXZ
 aXZ
+aWY
+rwT
+brG
+iHv
+aXZ
+aXZ
+aXZ
+aXZ
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
 aXZ
 aXZ
 aXZ
 aXZ
 aXZ
 aXZ
-fDK
-aXZ
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
 aXZ
 aXZ
 aXZ
 aXZ
 aXZ
 aXZ
-aXZ
-aXZ
-aXZ
-aXZ
-aXZ
-fDK
 bhM
 ayO
 ayO
@@ -67696,7 +68320,7 @@ ayO
 ayO
 ayO
 ayO
-imN
+aGY
 imN
 aXZ
 aXZ
@@ -67716,7 +68340,7 @@ ayO
 ayO
 aXZ
 aXZ
-fDK
+aXZ
 hAH
 aXZ
 aXZ
@@ -67870,9 +68494,9 @@ jtU
 cVF
 tfX
 ocM
-aXZ
-aXZ
-aXZ
+rwT
+brG
+iHv
 aXZ
 aXZ
 cWw
@@ -67886,12 +68510,12 @@ bzD
 bzD
 aXZ
 bzD
-auU
+iIw
 aXZ
-aXZ
-aXZ
-aXZ
-aXZ
+rwT
+brG
+iHv
+dpp
 aXZ
 aXZ
 aXZ
@@ -67956,7 +68580,7 @@ ayO
 aXZ
 imN
 imN
-fDK
+aXZ
 aXZ
 aXZ
 aXZ
@@ -68032,13 +68656,13 @@ aXZ
 aXZ
 aXZ
 jXU
-fDK
 aXZ
 aXZ
 aXZ
 aXZ
 aXZ
-fDK
+aXZ
+aXZ
 aXZ
 aXZ
 aXZ
@@ -68086,7 +68710,7 @@ ayO
 ayO
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 aXZ
@@ -68109,7 +68733,7 @@ aXZ
 gWs
 aXZ
 gWs
-auU
+iIw
 gWs
 auU
 gWs
@@ -68127,31 +68751,31 @@ rhG
 rhG
 fPj
 ocM
+neS
+brG
+iHv
+aXZ
+bzD
+bzD
+bzD
+bzD
+bzD
+bzD
+ijw
+ijw
+bzD
+bzD
+bzD
+bzD
 aXZ
 aXZ
 aXZ
-aXZ
-bzD
-bzD
-bzD
-bzD
-bzD
-bzD
-bzD
-bzD
-bzD
-bzD
-bzD
-bzD
+dpp
 aXZ
 aXZ
+cWw
 aXZ
-aXZ
-aXZ
-aXZ
-oWe
-aXZ
-xoN
+lYl
 aXZ
 ayO
 ayO
@@ -68196,7 +68820,7 @@ ayO
 aXZ
 aXZ
 auU
-xvb
+iIw
 aXZ
 prb
 aXZ
@@ -68211,7 +68835,7 @@ ayO
 ayO
 aXZ
 imN
-adV
+imN
 imN
 prb
 aXZ
@@ -68252,7 +68876,7 @@ fgr
 fgr
 fgr
 fgr
-wLI
+exG
 aXZ
 aXZ
 aXZ
@@ -68277,14 +68901,14 @@ aXZ
 aXZ
 aXZ
 aXZ
-osN
+cdF
 gCi
 mNf
 ccl
 jVk
 aXZ
 wfQ
-fDK
+aXZ
 aXZ
 aXZ
 aXZ
@@ -68299,7 +68923,7 @@ aXZ
 aXZ
 aXZ
 cqJ
-fDK
+aXZ
 aXZ
 aXZ
 aXZ
@@ -68364,15 +68988,15 @@ ayO
 aXZ
 aXZ
 gWs
-xvb
+iIw
 gWs
-auU
+iIw
 gWs
 aXZ
 gWs
-auU
+iIw
 gWs
-auU
+iIw
 gWs
 aXZ
 bzD
@@ -68384,19 +69008,19 @@ fPj
 fQQ
 nnv
 ocM
-aXZ
-aXZ
-bzD
-bzD
-bzD
-bzD
-aXZ
+brG
+brG
+sAz
 bzD
 bzD
 bzD
 aXZ
-aXZ
-aXZ
+bzD
+bzD
+nEg
+brG
+brG
+iHv
 aXZ
 bzD
 bzD
@@ -68491,11 +69115,11 @@ ayO
 aXZ
 aXZ
 aXZ
-fDK
 aXZ
 aXZ
 aXZ
-fDK
+aXZ
+aXZ
 aXZ
 aXZ
 aXZ
@@ -68560,7 +69184,7 @@ aXZ
 aXZ
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 aXZ
@@ -68591,7 +69215,7 @@ aXZ
 iae
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 ayO
@@ -68641,8 +69265,8 @@ dUB
 aUm
 aUm
 ocM
-aXZ
-aXZ
+dpp
+dpp
 bzD
 bzD
 aXZ
@@ -68651,8 +69275,8 @@ aXZ
 aXZ
 bzD
 aXZ
-aXZ
-aXZ
+dpp
+dpp
 aXZ
 aXZ
 bzD
@@ -68761,7 +69385,7 @@ aXZ
 aXZ
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 ncD
@@ -69014,7 +69638,7 @@ aXZ
 aXZ
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 aXZ
@@ -69083,7 +69707,6 @@ aXZ
 aXZ
 aXZ
 aXZ
-fDK
 aXZ
 aXZ
 aXZ
@@ -69108,7 +69731,8 @@ aXZ
 aXZ
 aXZ
 aXZ
-fDK
+aXZ
+aXZ
 aXZ
 ayO
 ayO
@@ -69227,14 +69851,14 @@ ayO
 ayO
 aXZ
 aXZ
-auU
+iIw
 aXZ
 aXZ
 aXZ
 aXZ
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 aXZ
@@ -69357,7 +69981,7 @@ iae
 aXZ
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 aXZ
@@ -69484,18 +70108,18 @@ ayO
 ayO
 aXZ
 aXZ
-fDK
+aXZ
 auU
 aXZ
 aXZ
 aXZ
+aWY
 aXZ
 aXZ
 aXZ
 aXZ
 aXZ
-aXZ
-adV
+imN
 aXZ
 aXZ
 ayO
@@ -69609,7 +70233,7 @@ aXZ
 aXZ
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 aXZ
@@ -69692,7 +70316,7 @@ rhG
 ocM
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 ayO
 ayO
@@ -69745,9 +70369,9 @@ aXZ
 auU
 aXZ
 aXZ
-aXZ
-aXZ
-aXZ
+rwT
+brG
+agp
 aXZ
 aXZ
 aXZ
@@ -69927,7 +70551,7 @@ bzD
 bzD
 aXZ
 aXZ
-oWe
+cWw
 aXZ
 aXZ
 aXZ
@@ -70002,10 +70626,10 @@ aXZ
 aXZ
 aXZ
 aXZ
-aXZ
-aXZ
-aXZ
-aXZ
+neS
+pxB
+brG
+iHv
 aXZ
 prb
 aXZ
@@ -70118,7 +70742,7 @@ aXZ
 aXZ
 aXZ
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 ayO
@@ -70258,10 +70882,10 @@ aXZ
 aXZ
 aXZ
 aXZ
-aXZ
-aXZ
-aXZ
-aXZ
+rwT
+brG
+brG
+ivS
 aXZ
 aXZ
 aXZ
@@ -70443,7 +71067,7 @@ idZ
 cmh
 aXZ
 ocM
-fQQ
+fCP
 paB
 rhG
 rhG
@@ -70508,6 +71132,7 @@ ayO
 ayO
 ayO
 aXZ
+aWY
 aXZ
 aXZ
 aXZ
@@ -70515,15 +71140,14 @@ aXZ
 aXZ
 aXZ
 aXZ
+xoN
+pxB
+iHv
 aXZ
 aXZ
 aXZ
 aXZ
 aXZ
-aXZ
-aXZ
-aXZ
-fDK
 aXZ
 aXZ
 ayO
@@ -70714,69 +71338,69 @@ ocM
 ocM
 ocM
 ocM
-ocM
-aXZ
-fDK
-aXZ
-aXZ
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
+fkj
 aXZ
 aXZ
 aXZ
 aXZ
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+ayO
+brG
+iHv
 aXZ
 aXZ
 aXZ
 aXZ
 aXZ
-aXZ
-aXZ
-aXZ
+rwT
+brG
+brG
+iHv
+aWY
 aXZ
 aXZ
 aXZ
@@ -70960,7 +71584,7 @@ ocM
 qig
 rhG
 rhG
-fQQ
+byu
 mbe
 nnv
 ocM
@@ -71022,19 +71646,19 @@ ayO
 ayO
 ayO
 ayO
-aXZ
+dpp
 aXZ
 aXZ
 ayO
 aXZ
 aXZ
 aXZ
-fDK
 aXZ
-aXZ
-aXZ
-aXZ
-aXZ
+dpp
+dpp
+rwT
+brG
+iHv
 aXZ
 aXZ
 aXZ
@@ -71194,15 +71818,15 @@ ayO
 aXZ
 aXZ
 aXZ
-aXZ
-aXZ
+aWY
+aWY
 aXZ
 man
 man
 aXZ
 bhM
 fkj
-xlC
+omB
 fNm
 omB
 omB
@@ -71225,7 +71849,7 @@ aXZ
 aXZ
 loS
 aXZ
-fDK
+aXZ
 aXZ
 aXZ
 aXZ
@@ -71290,7 +71914,7 @@ aXZ
 aXZ
 aXZ
 aXZ
-aXZ
+dpp
 aXZ
 aXZ
 aXZ
@@ -71450,12 +72074,12 @@ ayO
 ayO
 aXZ
 aXZ
-fDK
+rwT
+brG
+pxB
+iHv
 aXZ
 aXZ
-aXZ
-aXZ
-fDK
 aXZ
 bhM
 fkj
@@ -71474,7 +72098,7 @@ ocM
 fFh
 rhG
 fFh
-cVF
+uUY
 jPO
 tfX
 ocM
@@ -71544,7 +72168,7 @@ ayO
 ayO
 aXZ
 aXZ
-oWe
+cWw
 aXZ
 aXZ
 aXZ
@@ -71708,8 +72332,8 @@ ayO
 aXZ
 aXZ
 pOQ
-aXZ
-aXZ
+dpp
+dpp
 aXZ
 aXZ
 aXZ
@@ -71983,14 +72607,14 @@ aXZ
 aXZ
 aXZ
 aXZ
+wyj
+brG
+brG
+iHv
 aXZ
 aXZ
 aXZ
 aXZ
-aXZ
-aXZ
-aXZ
-fDK
 aXZ
 aXZ
 aXZ
@@ -72239,10 +72863,10 @@ aXZ
 loS
 aXZ
 aXZ
-fDK
-aXZ
-aXZ
-aXZ
+rwT
+brG
+brG
+wLI
 aXZ
 aXZ
 suO
@@ -72316,7 +72940,7 @@ ayO
 ayO
 aXZ
 bhM
-mOq
+bhM
 aXZ
 aXZ
 aXZ
@@ -72491,17 +73115,17 @@ aXZ
 aXZ
 ayO
 aXZ
-fDK
 aXZ
 aXZ
 aXZ
 aXZ
 aXZ
 aXZ
+dpp
+fmJ
+brG
+iHv
 aXZ
-aXZ
-aXZ
-fDK
 aXZ
 aXZ
 pOQ
@@ -72582,7 +73206,7 @@ kEq
 ojF
 ojF
 tiL
-ydt
+tiL
 tiL
 tiL
 tiL
@@ -72756,7 +73380,7 @@ ayO
 ayO
 ayO
 aXZ
-aXZ
+dpp
 aXZ
 aXZ
 aXZ
@@ -73099,7 +73723,7 @@ kEq
 tiL
 tiL
 tiL
-ydt
+tiL
 tiL
 tiL
 tiL
@@ -73857,7 +74481,7 @@ tiL
 tiL
 tiL
 tiL
-ydt
+tiL
 tiL
 tiL
 tiL
@@ -74639,7 +75263,7 @@ tiL
 tiL
 tiL
 tiL
-ydt
+tiL
 tiL
 tiL
 tiL
@@ -74881,7 +75505,7 @@ ayO
 tiL
 tiL
 tiL
-ydt
+tiL
 tiL
 tiL
 tiL

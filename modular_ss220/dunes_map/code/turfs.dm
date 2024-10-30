@@ -1,12 +1,12 @@
 #define DESERT_WINTER 180
-#define DESERT_SUMMER 430
 
 /turf/simulated/floor/brick
 	name = "brick floor"
 	icon = 'modular_ss220/dunes_map/icons/desert.dmi'
 	icon_state = "brick"
 	atmos_mode = ATMOS_MODE_EXPOSED_TO_ENVIRONMENT
-	atmos_environment = ENVIRONMENT_TEMPERATE
+	atmos_environment = ENVIRONMENT_COLD
+	temperature = DESERT_WINTER
 
 /turf/simulated/floor/plating/ice
 
@@ -21,7 +21,8 @@
 	icon = 'modular_ss220/dunes_map/icons/desert.dmi'
 	icon_state = "sand"
 	atmos_mode = ATMOS_MODE_EXPOSED_TO_ENVIRONMENT
-	atmos_environment = ENVIRONMENT_TEMPERATE
+	atmos_environment = ENVIRONMENT_COLD
+	temperature = DESERT_WINTER
 	footstep = FOOTSTEP_SAND
 	barefootstep = FOOTSTEP_SAND
 	clawfootstep = FOOTSTEP_SAND
@@ -29,7 +30,7 @@
 	smoothing_groups = list(SMOOTH_GROUP_FLOOR)
 	var/environment_type = "sand"
 	var/obj/item/stack/digResult = /obj/item/stack/ore/glass
-	var/floor_variance = 5
+	var/floor_variance = 10
 	var/dug
 
 /turf/simulated/floor/indestructible/dune_sand/Initialize(mapload)
@@ -163,8 +164,9 @@
 	icon_state = "water"
 	baseturf = /turf/simulated/floor/beach/away/water/desert_water
 	water_overlay_image = null
-	atmos_mode = ATMOS_MODE_SEALED
-	temperature = DESERT_SUMMER
+	temperature = DESERT_WINTER
+	atmos_mode = ATMOS_MODE_EXPOSED_TO_ENVIRONMENT
+	atmos_environment = ENVIRONMENT_COLD
 
 /turf/simulated/wall/indestructible/rock/mineral/dune_rock
 	name = "dune rock"
@@ -178,8 +180,7 @@
 	icon = 'modular_ss220/dunes_map/icons/chasm.dmi'
 	oxygen = 21.8366
 	nitrogen = 82.1472
-	atmos_mode = ATMOS_MODE_EXPOSED_TO_ENVIRONMENT
-	atmos_environment = ENVIRONMENT_TEMPERATE
+	atmos_mode = ATMOS_MODE_SEALED
 
 /turf/simulated/floor/lava/dune
 	icon = 'modular_ss220/dunes_map/icons/lava.dmi'
@@ -274,8 +275,6 @@
 	icon = 'modular_ss220/dunes_map/icons/cave_floor.dmi'
 	icon_state = "boss0"
 	footstep = FOOTSTEP_CARPET
-	atmos_environment = ENVIRONMENT_TEMPERATE
-	temperature = T20C
 	barefootstep = FOOTSTEP_CARPET
 	clawfootstep = FOOTSTEP_CARPET
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
@@ -326,4 +325,3 @@
 	light_range = 0
 
 #undef DESERT_WINTER
-#undef DESERT_SUMMER

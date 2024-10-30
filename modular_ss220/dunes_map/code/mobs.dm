@@ -435,6 +435,7 @@
 	faction = list("scorpio")
 	del_on_death = TRUE
 	loot = list(/obj/effect/decal/cleanable/spiderling_remains)
+	minbodytemp = 0
 	maxbodytemp = INFINITY
 	unsuitable_atmos_damage = 0
 
@@ -446,6 +447,7 @@
 /mob/living/simple_animal/cow/desert
 	name = "Пустынная корова"
 	desc = "Особо стойкая порода коров, способная выдерживать адские температуры."
+	minbodytemp = 0
 	maxbodytemp = INFINITY
 	var/milk_capacity
 
@@ -477,6 +479,7 @@
 	attacktext = list("рубит", "крушит", "дробит", "разрубает")
 	faction = list("kidan")
 	unsuitable_atmos_damage = 0
+	minbodytemp = 0
 	maxbodytemp = 3500
 	wander = FALSE
 

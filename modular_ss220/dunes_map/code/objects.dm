@@ -1004,10 +1004,7 @@
 		<br> ... <br> ... <br> Сегодня я прикончу <b> сраного </b> Бобби, что бы он передал своему <b> сраному </b> папаше привет. \
 		А так же самому <b> сраному </b> Сайлману. <br> ... <br> ... <br> Немогутерпетьэтустатуюнемогутерпетьэтустатуюнемогутерпетьэтустатуюне м оуг стеьв дю </i></p>"
 
-/obj/item/paper/crumpled/bloody/spacebattle
-
-/obj/item/paper/crumpled/bloody
-
-/obj/item/paper/crumpled/bloody/ruins
-
-/obj/item/paper/crumpled/bloody/ruins/lavaland
+/obj/item/stack/ore/strange
+	name = "strange ore"
+	desc = "Кусок странной породы, не отображающийся на датчиках сканирования полезных ископаемых. Скорее всего бесполезен."
+	singular_name = "strange ore chunk"
