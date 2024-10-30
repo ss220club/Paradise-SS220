@@ -323,6 +323,7 @@
 /turf/simulated/floor/chasm/straight_down/lava_land_surface/dune_basalt
 	atmos_mode = ATMOS_MODE_EXPOSED_TO_ENVIRONMENT
 	atmos_environment = ENVIRONMENT_TEMPERATE
+	temperature = T20C
 	light_power = 0
 	light_range = 0
 

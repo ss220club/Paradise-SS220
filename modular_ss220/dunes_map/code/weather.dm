@@ -47,7 +47,7 @@
 		if(ishuman(L)) //Are you immune?
 			var/mob/living/carbon/human/H = L
 			var/eye_protection = H.check_eye_prot()
-			if(eye_protection >= FLASH_PROTECTION_WELDER)
+			if(eye_protection >= FLASH_PROTECTION_FLASH)
 				return TRUE
 		L = L.loc //Matryoshka check
 	return FALSE //RIP you
@@ -58,8 +58,8 @@
 	if(is_blind_immune(L))
 		return
 	if(!is_ash_immune(L))
-		L.adjustFireLoss(1)
-		L.SetSlowed(5,5)
+		L.adjustFireLoss(1.3)
+		L.SetSlowed(7,7)
 		var/blurr_prob = 40
 		if(prob(blurr_prob))
 			L.AdjustEyeBlurry (rand(2 SECONDS, 8 SECONDS))
