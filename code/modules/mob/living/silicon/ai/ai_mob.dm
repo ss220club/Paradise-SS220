@@ -641,6 +641,10 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 	set category = "Команды ИИ"
 	set name = "Переключить прикручивание к полу"
 
+	if(stat == DEAD)
+		to_chat(src, "<span class='warning'>You are dead!</span>")
+		return
+
 	if(!isturf(loc)) // if their location isn't a turf
 		return // stop
 

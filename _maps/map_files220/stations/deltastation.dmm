@@ -1101,6 +1101,7 @@
 "ahW" = (
 /obj/machinery/light/directional/south,
 /obj/machinery/hologram/holopad,
+/obj/structure/closet/walllocker/emerglocker/south,
 /turf/simulated/floor/mineral/titanium/blue,
 /area/shuttle/arrival/station)
 "aik" = (
@@ -1329,6 +1330,7 @@
 /area/space)
 "aka" = (
 /obj/machinery/light/directional/north,
+/obj/structure/closet/walllocker/emerglocker/north,
 /turf/simulated/floor/mineral/titanium/blue,
 /area/shuttle/arrival/station)
 "akb" = (
@@ -32946,7 +32948,14 @@
 /turf/simulated/floor/plasteel/dark,
 /area/station/ai_monitored/storage/eva)
 "cyg" = (
-/turf/simulated/wall,
+/obj/machinery/requests_console/directional/east,
+/obj/machinery/light/directional/east,
+/obj/machinery/camera{
+	c_tag = "EVA Storage";
+	dir = 8
+	},
+/obj/structure/closet/secure_closet/exile,
+/turf/simulated/floor/plasteel/dark,
 /area/station/ai_monitored/storage/eva)
 "cyh" = (
 /obj/structure/window/reinforced{
@@ -33875,15 +33884,6 @@
 	icon_state = "neutralcorner"
 	},
 /area/station/public/locker)
-"cBk" = (
-/obj/machinery/camera{
-	c_tag = "EVA Storage";
-	dir = 8
-	},
-/obj/machinery/requests_console/directional/east,
-/obj/machinery/light/directional/east,
-/turf/simulated/floor/plasteel/dark,
-/area/station/ai_monitored/storage/eva)
 "cBm" = (
 /obj/structure/table/reinforced,
 /obj/machinery/alarm/directional/east,
@@ -154749,7 +154749,7 @@ csK
 cEr
 cEr
 cEr
-cBk
+cEr
 cEr
 cEr
 cEN
