@@ -40,7 +40,7 @@
 		mob.update_client_colour(time = update_time_client_colour)
 
 /obj/item/organ/internal/eyes/serpentid/get_colourmatrix()
-	if (!owner)
+	if(!owner)
 		return
 	var/chem_value = owner.nutrition/NUTRITION_LEVEL_WELL_FED
 	var/vision_chem = clamp(chem_value, SERPENTID_EYES_LOW_VISIBLE_VALUE, SERPENTID_EYES_MAX_VISIBLE_VALUE)
