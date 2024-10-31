@@ -850,6 +850,36 @@
 	else
 		return ..()
 
+/obj/item/toy/plushie/catrazumist
+	name = "Razumist Cat"
+	desc = "Cat with warning cone on it. Wonder what do itself so smart?"
+	icon = 'icons/obj/toy.dmi'
+	icon_state = "razymist_cat"
+	COOLDOWN_DECLARE(cooldown)
+
+/obj/item/toy/plushie/catrazumist/attack_self(mob/user)
+	. = ..()
+	if(. || !COOLDOWN_FINISHED(src, cooldown))
+		return .
+	var/razumisttext = pick("I know everything about everything, please ask me something!", "I'm feeling extra wise today!", "Mrow!", "Purr!")
+	user.visible_message("<span class='notice'>[razumisttext]</span>")
+	COOLDOWN_START(src, cooldown, 3 SECONDS)
+
+/obj/item/toy/plushie/catwithfunnyhat
+	name = "Rice Cat"
+	desc = "White cat plushie with straw hat for hard work on rice field!"
+	icon = 'icons/obj/toy.dmi'
+	icon_state = "ricehat_cat"
+	COOLDOWN_DECLARE(cooldown)
+
+/obj/item/toy/plushie/catwithfunnyhat/attack_self(mob/user)
+	. = ..()
+	if(. || !COOLDOWN_FINISHED(src, cooldown))
+		return .
+	var/ricetext = pick("Welcome to the rice fields!", "Where is my rice!", "Mrow!", "Purr!")
+	user.visible_message("<span class='notice'>[ricetext]</span>")
+	COOLDOWN_START(src, cooldown, 3 SECONDS)
+
 //New generation TG plushies
 
 /obj/item/toy/plushie/lizardplushie
