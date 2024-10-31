@@ -1,24 +1,27 @@
-#define SERPENTID_CHEM_REAGENT_ID "msg"
-
+//Количество урона карапасу, когда не работает броня
 #define SERPENTID_CARAPACE_NOARMOR_STATE 30
+//Количество урона карапасу, когда не работает скрытность
 #define SERPENTID_CARAPACE_NOCHAMELION_STATE 60
+//Количество урона карапасу, когда не работает "риг"
 #define SERPENTID_CARAPACE_NOPRESSURE_STATE 90
-
+//Количество урона, если присоединить конечность (не протез) другого вида
 #define SERPENTID_GENE_DEGRADATION_DAMAGE 0.5
+//Количество времени, через сколько происходит нанесение генетического урона
 #define SERPENTID_GENE_DEGRADATION_CD 60
 
-#define SERPENTID_ORGAN_CHEMISTRY_LUNGS 1
-#define SERPENTID_ORGAN_CHEMISTRY_KIDNEYS 0.5
-#define SERPENTID_ORGAN_CHEMISTRY_EYES 0.05
-#define SERPENTID_ORGAN_CHEMISTRY_EARS 0.1
+//Сколько голода потребляют легкие (сальбутамол и подвыработка кислорода)
+#define SERPENTID_ORGAN_HUNGER_LUNGS 1
+//Сколько голода потребляют почки (скрытность)
+#define SERPENTID_ORGAN_HUNGER_KIDNEYS 0.5
+//Сколько голода потребляют глаза (ПНВ)
+#define SERPENTID_ORGAN_HUNGER_EYES 0.05
+//Сколько голода потребляют уши (сонар)
+#define SERPENTID_ORGAN_HUNGER_EARS 0.1
 
-#define SERPENTID_CHEM_MULT_CONSUPTION 0.75
-#define SERPENTID_CHEM_MULT_PRODUCTION 0.6
-
-#define SERPENTID_EYES_LOW_VISIBLE_VALUE 0.7
+//минимальное цветовосприятие
+#define SERPENTID_EYES_LOW_VISIBLE_VALUE 0.5
+//Максимальное цветовосприяте
 #define SERPENTID_EYES_MAX_VISIBLE_VALUE 1
-
-#define SERPENTID_ORGAN_CHEMISTRY_MAX 100
 
 /datum/species
 	var/can_buckle = FALSE

@@ -86,9 +86,9 @@
 	male_moan_sound = list('modular_ss220/species/serpentids/sounds/serpentid_moan.ogg')
 	female_moan_sound = list('modular_ss220/species/serpentids/sounds/serpentid_moan.ogg')
 	male_dying_gasp_sounds = list(
-		'modular_ss220/species/serpentids/sounds/serpentid_death.ogg')
+		'modular_ss220/species/serpentids/sounds/serpentid_gasp.ogg')
 	female_dying_gasp_sounds = list(
-		'modular_ss220/species/serpentids/sounds/serpentid_death.ogg')
+		'modular_ss220/species/serpentids/sounds/serpentid_gasp.ogg')
 	death_sounds = 'modular_ss220/species/serpentids/sounds/serpentid_death.ogg'
 	suicide_messages = list(
 		"пытается откусить себе усики!",
@@ -125,9 +125,6 @@
 	)
 	)
 
-
-/datum/species/serpentid/handle_reagents(mob/living/carbon/human/H, datum/reagent/R)
-	return (R.id != SERPENTID_CHEM_REAGENT_ID)
 
 //Перенести на карапас/грудь
 /datum/species/serpentid/handle_life(mob/living/carbon/human/H)

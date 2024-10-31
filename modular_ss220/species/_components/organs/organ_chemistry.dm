@@ -17,6 +17,7 @@
 
 /datum/component/chemistry_organ/UnregisterFromParent()
 	UnregisterSignal(parent, COMSIG_ORGAN_ON_LIFE)
+	UnregisterSignal(parent, COMSIG_ORGAN_CHANGE_CHEM_CONSUPTION)
 
 /datum/component/chemistry_organ/proc/chems_process(holder)
 	SIGNAL_HANDLER
@@ -39,15 +40,3 @@
 /obj/item/organ/internal/proc/switch_mode(force_off = FALSE)
 	return
 
-//Пара помощников - получить количество и путь химиката по его ID
-/mob/living/carbon/human/proc/get_chemical_value(id)
-	for(var/datum/reagent/R in src.reagents.reagent_list)
-		if(R.id == id)
-			return R.volume
-	return 0
-
-/mob/living/carbon/human/proc/get_chemical_path(id)
-	for(var/datum/reagent/R in src.reagents.reagent_list)
-		if(R.id == id)
-			return R
-	return null

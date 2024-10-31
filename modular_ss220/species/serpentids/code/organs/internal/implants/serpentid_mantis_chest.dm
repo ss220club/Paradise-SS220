@@ -49,11 +49,15 @@
 		to_chat(owner, "<span class='warning'>The implant doesn't respond. It seems to be broken...</span>")
 		return
 	var/extended = holder_l && !(holder_l in src)
+	var/activation_in_progress = TRUE
 	if(extended)
-		Retract()
+		if(!activation_in_progress)
+			Retract()
 	else if(do_after(owner, 20*(owner.dna.species.action_mult), FALSE, owner))
-		holder_l = null
-		Extend()
+		if(!activation_in_progress)
+			holder_l = null
+			Extend()
+	activation_in_progress = FALSE
 
 /obj/item/organ/internal/cyberimp/chest/serpentid_blades/proc/update_overlays_blades()
 	update_icon(UPDATE_OVERLAYS)

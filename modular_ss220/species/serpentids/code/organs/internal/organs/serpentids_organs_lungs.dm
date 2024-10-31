@@ -62,9 +62,8 @@
 	if(!owner)
 		return
 
-	var/can_secretion = owner.get_chemical_value(SERPENTID_CHEM_REAGENT_ID) > chemical_consuption
+	var/can_secretion = owner.nutrition > chemical_consuption
 	var/danger_state = owner.getOxyLoss() > 0
-	var/datum/reagent/chemical = owner.get_chemical_path(SERPENTID_CHEM_REAGENT_ID)
 	var/datum/gas_mixture/breath
 	var/datum/organ/lungs/serpentid/lung_data = organ_datums[organ_tag]
 	var/breath_moles = 0
@@ -77,9 +76,8 @@
 	danger_air = lung_data.in_danger_zone(breath)
 
 	if(danger_state && can_secretion)
-		var/mob/living/carbon/human/human_owner = owner
-		human_owner.reagents.add_reagent("salbutamol", salbutamol_production)
-		chemical.holder.remove_reagent(SERPENTID_CHEM_REAGENT_ID, chemical_consuption)
+		owner.reagents.add_reagent("salbutamol", salbutamol_production)
+		owner.adjust_nutrition(-chemical_consuption)
 
 	if(!hand_active)
 		if(danger_air && (owner.stat == UNCONSCIOUS))
@@ -94,7 +92,7 @@
 		var/replenish_value = 0
 		if(danger_air && can_secretion)
 			replenish_value = chemical_consuption * chem_to_oxy_mult
-			chemical.holder.remove_reagent(SERPENTID_CHEM_REAGENT_ID, chemical_consuption)
+			owner.adjust_nutrition(-chemical_consuption)
 		if(!danger_air)
 			if(environment)
 				breath_moles = environment.total_moles()*BREATH_PERCENTAGE

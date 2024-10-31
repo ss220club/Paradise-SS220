@@ -145,3 +145,18 @@
 	result_amount = 1
 	mix_message = "The mixture fizzes into a vibrant red solution that doesn't stay still."
 	mix_sound = 'sound/goonstation/misc/fuse.ogg'
+
+
+//Пара помощников - получить количество и путь химиката по его ID в теле куклы
+/mob/living/carbon/human/proc/get_chemical_value(id)
+	for(var/datum/reagent/R in src.reagents.reagent_list)
+		if(R.id == id)
+			return R.volume
+	return 0
+
+//Пара помощников - получить количество и путь химиката по его ID в теле куклы
+/mob/living/carbon/human/proc/get_chemical_path(id)
+	for(var/datum/reagent/R in src.reagents.reagent_list)
+		if(R.id == id)
+			return R
+	return null

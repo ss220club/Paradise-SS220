@@ -9,7 +9,7 @@
 	actions_types = 		list(/datum/action/item_action/organ_action/toggle/serpentid)
 	action_icon = 			list(/datum/action/item_action/organ_action/toggle/serpentid = 'modular_ss220/species/serpentids/icons/organs.dmi')
 	action_icon_state = 	list(/datum/action/item_action/organ_action/toggle/serpentid = "serpentid_abilities")
-	var/chemical_consuption = SERPENTID_ORGAN_CHEMISTRY_EARS
+	var/chemical_consuption = SERPENTID_ORGAN_HUNGER_EARS
 	var/active = FALSE
 	radial_action_state = "serpentid_hear"
 	radial_action_icon = 'modular_ss220/species/serpentids/icons/organs.dmi'
@@ -18,18 +18,18 @@
 	. = ..()
 	AddComponent(/datum/component/organ_decay, 0.05, BASIC_RECOVER_VALUE)
 	AddComponent(/datum/component/organ_toxin_damage, 0.05)
-	AddComponent(/datum/component/chemistry_organ, SERPENTID_CHEM_REAGENT_ID)
+	AddComponent(/datum/component/hunger_organ)
 	AddComponent(/datum/component/organ_action, caller_organ = src, state = radial_action_state, icon = radial_action_icon)
 
 /obj/item/organ/internal/ears/serpentid/on_life()
 	. = ..()
-	if(chemical_consuption <= owner?.get_chemical_value(SERPENTID_CHEM_REAGENT_ID) && active)
+	if(chemical_consuption <= owner?.nutrition && active)
 		if(prob(((max_damage - damage)/max_damage) * 100))
 			sense_creatures()
 
 /obj/item/organ/internal/ears/serpentid/switch_mode(force_off = FALSE)
 	. = ..()
-	if(!force_off && owner?.get_chemical_value(SERPENTID_CHEM_REAGENT_ID) >= chemical_consuption && !(status & ORGAN_DEAD) && !active)
+	if(!force_off && owner?.nutrition >= chemical_consuption && !(status & ORGAN_DEAD) && !active)
 		active = TRUE
 		chemical_consuption = initial(chemical_consuption)
 	else

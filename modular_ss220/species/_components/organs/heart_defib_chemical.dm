@@ -3,20 +3,21 @@
 Отслеживает смерть носителя, и в случае чего - запускает сердце с неким шансом
 */
 #define AUTO_DEFIBRILATION_THRESHOLD 100
-/datum/component/defib_heart
-	var/mob/living/carbon/human/owner = null
+/datum/component/defib_heart_chemical
 	var/chemical_id = ""
+	var/obj/item/organ/internal/organ
 
-/datum/component/defib_heart/Initialize(human, income_chemical_id = "")
-	owner = human
+/datum/component/defib_heart_chemical/Initialize(income_chemical_id = "")
 	chemical_id = income_chemical_id
+	organ = parent
 	START_PROCESSING(SSdcs, src)
 
-/datum/component/defib_heart/Destroy(force, silent)
+/datum/component/defib_heart_chemical/Destroy(force, silent)
 	STOP_PROCESSING(SSdcs, src)
 	. = ..()
 
-/datum/component/defib_heart/process()
+/datum/component/defib_heart_chemical/process()
+	var/mob/living/carbon/human/owner = organ.owner
 	if(!owner)
 		var/obj/item/organ/internal/limb = parent
 		owner = limb.owner

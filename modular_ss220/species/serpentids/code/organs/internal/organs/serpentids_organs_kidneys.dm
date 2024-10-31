@@ -7,7 +7,7 @@
 	actions_types = 		list(/datum/action/item_action/organ_action/toggle/serpentid)
 	action_icon = 			list(/datum/action/item_action/organ_action/toggle/serpentid = 'modular_ss220/species/serpentids/icons/organs.dmi')
 	action_icon_state = 	list(/datum/action/item_action/organ_action/toggle/serpentid = "serpentid_abilities")
-	var/chemical_consuption = SERPENTID_ORGAN_CHEMISTRY_KIDNEYS
+	var/chemical_consuption = SERPENTID_ORGAN_HUNGER_KIDNEYS
 	var/cloak_engaged = FALSE
 	radial_action_state = "serpentid_stealth"
 	radial_action_icon = 'modular_ss220/species/serpentids/icons/organs.dmi'
@@ -16,7 +16,7 @@
 	. = ..()
 	AddComponent(/datum/component/organ_decay, 0.03, BASIC_RECOVER_VALUE)
 	AddComponent(/datum/component/organ_toxin_damage, 0.15)
-	AddComponent(/datum/component/chemistry_organ, SERPENTID_CHEM_REAGENT_ID)
+	AddComponent(/datum/component/hunger_organ)
 	AddComponent(/datum/component/organ_action, caller_organ = src, state = radial_action_state, icon = radial_action_icon)
 
 /obj/item/organ/internal/kidneys/serpentid/on_life()
@@ -33,9 +33,9 @@
 
 /obj/item/organ/internal/kidneys/serpentid/switch_mode(force_off = FALSE)
 	. = ..()
-	if(!force_off && owner?.get_chemical_value(SERPENTID_CHEM_REAGENT_ID) >= chemical_consuption && !cloak_engaged && !(status & ORGAN_DEAD))
+	if(!force_off && owner?.nutrition >= chemical_consuption && !cloak_engaged && !(status & ORGAN_DEAD))
 		cloak_engaged = TRUE
-		chemical_consuption = SERPENTID_ORGAN_CHEMISTRY_KIDNEYS
+		chemical_consuption = initial(chemical_consuption)
 	else
 		cloak_engaged = FALSE
 		chemical_consuption = 0

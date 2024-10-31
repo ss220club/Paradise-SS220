@@ -5,7 +5,8 @@
 	icon_state = "liver"
 	desc = "A large looking liver with some storages."
 	alcohol_intensity = 2
-	var/max_value = SERPENTID_ORGAN_CHEMISTRY_MAX
+	var/serp_production = 1
+	var/serp_consuption = 5
 
 /obj/item/organ/internal/liver/serpentid/Initialize(mapload)
 	. = ..()
@@ -14,17 +15,11 @@
 
 /obj/item/organ/internal/liver/serpentid/on_life()
 	. = ..()
-	max_value = clamp((((max_damage - damage)/max_damage)*100), 0, SERPENTID_ORGAN_CHEMISTRY_MAX)
 	if(!owner)
 		return
-	if(owner.get_chemical_value(SERPENTID_CHEM_REAGENT_ID) < max_value)
-		for(var/datum/reagent/consumable/chemical in owner.reagents.reagent_list)
-			if(!isnull(chemical))
-				if(chemical.nutriment_factor > 0)
-					chemical.holder.remove_reagent(chemical.id, SERPENTID_CHEM_MULT_CONSUPTION*chemical.nutriment_factor)
-					owner.reagents.add_reagent(SERPENTID_CHEM_REAGENT_ID, SERPENTID_CHEM_MULT_PRODUCTION*chemical.nutriment_factor)
-	else
-		var/excess_value = owner.get_chemical_value(SERPENTID_CHEM_REAGENT_ID) - max_value
-		var/datum/reagent/chem = owner?.get_chemical_path(SERPENTID_CHEM_REAGENT_ID)
-		chem?.holder.remove_reagent(SERPENTID_CHEM_REAGENT_ID, excess_value)
+	for(var/datum/reagent/chemical in owner.reagents.reagent_list)
+		if(!isnull(chemical))
+			if(istype(chemical,/datum/reagent/cabbagilium) && owner.get_chemical_value(chemical.id) > serp_consuption)
+				chemical.holder.remove_reagent(chemical.id, serp_consuption)
+				owner.reagents.add_reagent("serpadrone", serp_production)
 

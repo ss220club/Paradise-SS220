@@ -10,7 +10,7 @@
 	action_icon_state = 	list(/datum/action/item_action/organ_action/toggle/serpentid = "serpentid_abilities")
 	flash_protect = FLASH_PROTECTION_EXTRA_SENSITIVE
 	tint = FLASH_PROTECTION_NONE
-	var/chemical_consuption = SERPENTID_ORGAN_CHEMISTRY_EYES
+	var/chemical_consuption = SERPENTID_ORGAN_HUNGER_EYES
 	var/vision_ajust_coefficient = 0.4
 	var/update_time_client_colour = 10
 	var/active = FALSE
@@ -21,7 +21,7 @@
 	. = ..()
 	AddComponent(/datum/component/organ_decay, 0.04, BASIC_RECOVER_VALUE)
 	AddComponent(/datum/component/organ_toxin_damage, 0.02)
-	AddComponent(/datum/component/chemistry_organ, SERPENTID_CHEM_REAGENT_ID)
+	AddComponent(/datum/component/hunger_organ)
 	AddComponent(/datum/component/organ_action, caller_organ = src, state = radial_action_state, icon = radial_action_icon)
 
 // Прок на получение цвета глаз
@@ -40,12 +40,14 @@
 		mob.update_client_colour(time = update_time_client_colour)
 
 /obj/item/organ/internal/eyes/serpentid/get_colourmatrix()
-	var/chem_value = (owner?.get_chemical_value(SERPENTID_CHEM_REAGENT_ID) + SERPENTID_ORGAN_CHEMISTRY_MAX/2)/SERPENTID_ORGAN_CHEMISTRY_MAX
+	if (!owner)
+		return
+	var/chem_value = owner.nutrition/NUTRITION_LEVEL_WELL_FED
 	var/vision_chem = clamp(chem_value, SERPENTID_EYES_LOW_VISIBLE_VALUE, SERPENTID_EYES_MAX_VISIBLE_VALUE)
 	var/vision_concentration = (1 - vision_chem/SERPENTID_EYES_MAX_VISIBLE_VALUE)*SERPENTID_EYES_LOW_VISIBLE_VALUE
 
 	vision_concentration = SERPENTID_EYES_LOW_VISIBLE_VALUE * (1 - chem_value ** vision_ajust_coefficient)
-	var/vision_adjust = clamp(vision_concentration, 0, SERPENTID_EYES_LOW_VISIBLE_VALUE/2)
+	var/vision_adjust = clamp(vision_concentration, 0, SERPENTID_EYES_LOW_VISIBLE_VALUE)
 
 	var/vision_matrix = list(vision_chem, vision_adjust, vision_adjust,\
 		vision_adjust, vision_chem, vision_adjust,\
@@ -54,9 +56,9 @@
 
 /obj/item/organ/internal/eyes/serpentid/switch_mode(force_off = FALSE)
 	. = ..()
-	if(!force_off && owner?.get_chemical_value(SERPENTID_CHEM_REAGENT_ID) >= chemical_consuption && !(status & ORGAN_DEAD) && !active)
+	if(!force_off && owner?.nutrition >= chemical_consuption && !(status & ORGAN_DEAD) && !active)
 		see_in_dark = 8
-		chemical_consuption = SERPENTID_ORGAN_CHEMISTRY_EYES
+		chemical_consuption = initial(chemical_consuption)
 		active = TRUE
 	else
 		see_in_dark = initial(see_in_dark)
