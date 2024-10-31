@@ -1,0 +1,29 @@
+/obj/item/clothing/under/rank/medical/paramedic/suit
+	name = "Форма парамедика"
+	desc = "Форма парамедика, смотрится стильно и просто."
+	icon = 'modular_ss220/newmed/icons/object/under.dmi'
+	icon_state = "paramed2"
+	item_color = "paramed2"
+	icon_override = 'modular_ss220/newmed/icons/mob/under.dmi'
+	sprite_sheets = list(
+		"Abductor" 			= 	'modular_ss220/newmed/icons/mob/under.dmi',
+		"Ancient Skeleton" 	= 	'modular_ss220/newmed/icons/mob/under.dmi',
+		"Diona" 			= 	'modular_ss220/newmed/icons/mob/under.dmi',
+		"Drask" 			= 	'modular_ss220/newmed/icons/mob/species/drask/under.dmi',
+		"Golem" 			= 	'modular_ss220/newmed/icons/mob/under.dmi',
+		"Grey" 				= 	'modular_ss220/newmed/icons/mob/species/grey/under.dmi',
+		"Human" 			= 	'modular_ss220/newmed/icons/mob/under.dmi',
+		"Kidan" 			= 	'modular_ss220/newmed/icons/mob/under.dmi',
+		"Machine"			= 	'modular_ss220/newmed/icons/mob/under.dmi',
+		"Monkey" 			= 	'modular_ss220/newmed/icons/mob/under.dmi',
+		"Nian" 				= 	'modular_ss220/newmed/icons/mob/under.dmi',
+		"Plasmaman" 		= 	'modular_ss220/newmed/icons/mob/under.dmi',
+		"Shadow" 			= 	'modular_ss220/newmed/icons/mob/under.dmi',
+		"Skrell" 			= 	'modular_ss220/newmed/icons/mob/under.dmi',
+		"Slime People" 		= 	'modular_ss220/newmed/icons/mob/under.dmi',
+		"Tajaran" 			= 	'modular_ss220/newmed/icons/mob/under.dmi',
+		"Unathi" 			= 	'modular_ss220/newmed/icons/mob/species/unathi/under.dmi',
+		"Vox" 				= 	'modular_ss220/newmed/icons/mob/species/vox/under.dmi',
+		"Vulpkanin" 		= 	'modular_ss220/newmed/icons/mob/under.dmi',
+		"Nucleation"		=	'modular_ss220/newmed/icons/mob/under.dmi',
+		)
