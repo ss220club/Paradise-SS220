@@ -15,6 +15,7 @@
 	var/mutable_appearance/new_overlay
 	var/overlay_color
 	var/blades_active = FALSE
+	var/activation_in_progress = FALSE
 	unremovable = TRUE
 	emp_proof = TRUE
 
@@ -37,18 +38,19 @@
 	return our_MA
 
 /obj/item/organ/internal/cyberimp/chest/serpentid_blades/ui_action_click()
+	if(activation_in_progress)
+		return
 	if(crit_fail || (!holder_l && !length(contents)))
 		to_chat(owner, "<span class='warning'>The implant doesn't respond. It seems to be broken...</span>")
 		return
 	var/extended = holder_l && !(holder_l in src)
-	var/activation_in_progress = FALSE
 	if(extended)
 		if(!activation_in_progress)
 			activation_in_progress = TRUE
 			Retract()
-	else if(do_after(owner, 20*(owner.dna.species.action_mult), FALSE, owner))
-		if(!activation_in_progress)
-			activation_in_progress = TRUE
+	else if(!activation_in_progress)
+		activation_in_progress = TRUE
+		if(do_after(owner, 20*(owner.dna.species.action_mult), FALSE, owner))
 			holder_l = null
 			Extend()
 	activation_in_progress = FALSE

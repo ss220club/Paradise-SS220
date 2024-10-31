@@ -2,6 +2,8 @@
 === Компонент запуска сердца ===
 Отслеживает смерть носителя, и в случае чего - запускает сердце с неким шансом
 */
+#define AUTO_DEFIBRILATION_THRESHOLD 100
+
 /datum/component/defib_heart_hunger
 	var/obj/item/organ/internal/organ
 
@@ -36,3 +38,5 @@
 		owner.med_hud_set_status()
 		add_attack_logs(owner, owner, "Revived by heart")
 		SSblackbox.record_feedback("tally", "players_revived", 1, "self_revived")
+
+#undef AUTO_DEFIBRILATION_THRESHOLD
