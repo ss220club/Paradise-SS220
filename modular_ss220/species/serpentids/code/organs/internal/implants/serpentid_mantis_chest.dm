@@ -32,35 +32,26 @@
 		if(!istype(item, /obj/item/grab))
 			owner.drop_r_hand()
 
-/obj/item/organ/internal/cyberimp/chest/serpentid_blades/Initialize(mapload)
-	. = .. ()
-	addtimer(CALLBACK(src, PROC_REF(update_overlays_blades)), 1 SECONDS)
-
-/obj/item/organ/internal/cyberimp/chest/serpentid_blades/insert(mob/living/carbon/M, special, dont_remove_slot)
-	. = .. ()
-	addtimer(CALLBACK(src, PROC_REF(update_overlays_blades)), 1 SECONDS)
-
-/obj/item/organ/internal/cyberimp/chest/serpentid_blades/remove(mob/living/carbon/M, special, dont_remove_slot)
-	update_icon(UPDATE_OVERLAYS)
-	. = .. ()
+/obj/item/organ/internal/cyberimp/chest/serpentid_blades/render()
+	var/mutable_appearance/our_MA = mutable_appearance(icon_file, new_icon_state, layer = -INTORGAN_LAYER)
+	return our_MA
 
 /obj/item/organ/internal/cyberimp/chest/serpentid_blades/ui_action_click()
 	if(crit_fail || (!holder_l && !length(contents)))
 		to_chat(owner, "<span class='warning'>The implant doesn't respond. It seems to be broken...</span>")
 		return
 	var/extended = holder_l && !(holder_l in src)
-	var/activation_in_progress = TRUE
+	var/activation_in_progress = FALSE
 	if(extended)
 		if(!activation_in_progress)
+			activation_in_progress = TRUE
 			Retract()
 	else if(do_after(owner, 20*(owner.dna.species.action_mult), FALSE, owner))
 		if(!activation_in_progress)
+			activation_in_progress = TRUE
 			holder_l = null
 			Extend()
 	activation_in_progress = FALSE
-
-/obj/item/organ/internal/cyberimp/chest/serpentid_blades/proc/update_overlays_blades()
-	update_icon(UPDATE_OVERLAYS)
 
 /obj/item/organ/internal/cyberimp/chest/serpentid_blades/update_overlays()
 	. = .. ()
