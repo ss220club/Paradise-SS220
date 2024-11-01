@@ -1,6 +1,6 @@
 /obj/item/storage/belt/medical/medicalwebbing
-	name = "Медицинский разгрузочный жилет"
-	desc = "Медицинский разгрузочный жилет, смотрится круто и тактикульно, самое то для парамедика."
+	name = "Медицинский разгрузочный пояс"
+	desc = "Медицинский разгрузочный пояс с большим количеством карманов, что отлично подойдет для хранения и переноски различных медикаментов."
 	icon = 'modular_ss220/newmed/icons/object/belts.dmi'
 	icon_state = "medicalwebbing"
 	item_state = "medicalwebbing"
