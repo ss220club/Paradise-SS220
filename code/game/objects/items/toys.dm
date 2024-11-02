@@ -858,8 +858,7 @@
 	COOLDOWN_DECLARE(cooldown)
 
 /obj/item/toy/plushie/catrazumist/attack_self(mob/user)
-	. = ..()
-	if(. || !COOLDOWN_FINISHED(src, cooldown))
+	if(!COOLDOWN_FINISHED(src, cooldown))
 		return .
 	var/razumisttext = pick("I know everything about everything, please ask me something!", "I'm feeling extra wise today!", "Mrow!", "Purr!")
 	user.visible_message("<span class='notice'>[razumisttext]</span>")
