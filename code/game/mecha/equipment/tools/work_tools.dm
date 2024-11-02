@@ -7,7 +7,7 @@
 
 /obj/item/mecha_parts/mecha_equipment/hydraulic_clamp
 	name = "hydraulic clamp"
-	desc = "Оборудование для экзокостюмов. Позволяет поднимать объекты и загружать их в грузовой отсек."
+	desc = "Оборудование для экзокостюмов. Позволяет поднимать объекты и помещать их в грузовой отсек."
 	icon_state = "mecha_clamp"
 	equip_cooldown = 15
 	energy_drain = 10
@@ -49,7 +49,7 @@
 		if(length(cargo_holder.cargo) >= cargo_holder.cargo_capacity)
 			occupant_message("<span class='warning'>Недостаточно места в грузовом отсеке!</span>")
 			return
-		chassis.visible_message("<span class='notice'>[chassis] поднимает [target] и начинает загружать его в грузовой отсек.</span>")
+		chassis.visible_message("<span class='notice'>[chassis] поднимает [target] и начинает помещать в грузовой отсек.</span>")
 		var/anchor_state_before_load = O.anchored
 		O.anchored = TRUE
 		if(!do_after_cooldown(target))
@@ -95,7 +95,7 @@
 		var/obj/O = target
 		if(!O.anchored)
 			if(length(cargo_holder.cargo) < cargo_holder.cargo_capacity)
-				chassis.visible_message("[chassis] поднимает [target] и начинает загружать в грузовой отсек.")
+				chassis.visible_message("[chassis] поднимает [target] и начинает помещать в грузовой отсек.")
 				O.anchored = TRUE
 				if(do_after_cooldown(target))
 					cargo_holder.cargo += O
@@ -372,7 +372,7 @@
 		else
 			occupant_message("<span class='warning'>Катушка полностью заполнена.</span>")
 	else
-		occupant_message("<span class='warning'>Невозможно загрузить [target.declent_ru(NOMINATIVE)] - кабель не найден.</span>")
+		occupant_message("<span class='warning'>Невозможно загрузить [target.declent_ru(ACCUSATIVE)] - кабель не найден.</span>")
 
 
 /obj/item/mecha_parts/mecha_equipment/cable_layer/Topic(href,href_list)

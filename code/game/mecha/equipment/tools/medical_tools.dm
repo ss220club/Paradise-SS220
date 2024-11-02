@@ -29,7 +29,7 @@
 
 /obj/item/mecha_parts/mecha_equipment/medical/sleeper
 	name = "mounted sleeper"
-	desc = "Слипер для медицинских экзокостюмов. Навесной слипер, который поддерживает состояние пациентов и позволяет вводить медикаменты из запасов экзокостюма."
+	desc = "Слипер для медицинских экзокостюмов, который поддерживает состояние пациентов и позволяет вводить медикаменты из запасов экзокостюма."
 	icon = 'icons/obj/cryogenic2.dmi'
 	icon_state = "sleeper"
 	origin_tech = "engineering=3;biotech=3;plasmatech=2"
@@ -58,8 +58,8 @@
 		return
 	if(!patient_insertion_check(target))
 		return
-	occupant_message("<span class='notice'>Вы начинаете помещать [target.declent_ru(GENITIVE)] в [declent_ru(NOMINATIVE)]...</span>")
-	chassis.visible_message("<span class='warning'>[chassis.declent_ru(NOMINATIVE)] начинает помещать [target.declent_ru(GENITIVE)] в [declent_ru(NOMINATIVE)].</span>")
+	occupant_message("<span class='notice'>Вы начинаете помещать [target.declent_ru(ACCUSATIVE)] в [declent_ru(ACCUSATIVE)]...</span>")
+	chassis.visible_message("<span class='warning'>[chassis.declent_ru(NOMINATIVE)] начинает помещать [target.declent_ru(ACCUSATIVE)] в [declent_ru(ACCUSATIVE)].</span>")
 	if(do_after_cooldown(target))
 		if(!patient_insertion_check(target))
 			return
@@ -67,9 +67,9 @@
 		patient = target
 		START_PROCESSING(SSobj, src)
 		update_equip_info()
-		occupant_message("<span class='notice'>Пациент [target.declent_ru(NOMINATIVE)] успешно помещён в [declent_ru(NOMINATIVE)]. Функции жизнеобеспечения включены.</span>")
-		chassis.visible_message("<span class='warning'>[chassis.declent_ru(NOMINATIVE)] помещает [target.declent_ru(GENITIVE)] в [declent_ru(NOMINATIVE)].</span>")
-		log_message("[target.declent_ru(NOMINATIVE)] помещён в [declent_ru(NOMINATIVE)]. Функции жизнеобеспечения включены.")
+		occupant_message("<span class='notice'>Пациент [target.declent_ru(NOMINATIVE)] успешно помещён в [declent_ru(ACCUSATIVE)]. Функции жизнеобеспечения включены.</span>")
+		chassis.visible_message("<span class='warning'>[chassis.declent_ru(NOMINATIVE)] помещает [target.declent_ru(ACCUSATIVE)] в [declent_ru(ACCUSATIVE)].</span>")
+		log_message("[target.declent_ru(NOMINATIVE)] помещён в [declent_ru(ACCUSATIVE)]. Функции жизнеобеспечения включены.")
 
 /obj/item/mecha_parts/mecha_equipment/medical/sleeper/proc/patient_insertion_check(mob/living/carbon/target)
 	if(target.buckled)
@@ -95,7 +95,7 @@
 
 /obj/item/mecha_parts/mecha_equipment/medical/sleeper/detach()
 	if(patient)
-		occupant_message("<span class='warning'>Невозможно отсоединить [declent_ru(NOMINATIVE)] — оборудование занято!</span>")
+		occupant_message("<span class='warning'>Невозможно отсоединить [declent_ru(ACCUSATIVE)] — оборудование занято!</span>")
 		return
 	STOP_PROCESSING(SSobj, src)
 	return ..()
@@ -219,7 +219,7 @@
 	if(!chassis.has_charge(energy_drain))
 		set_ready_state(1)
 		log_message("Деактивировано.")
-		occupant_message("[declent_ru(NOMINATIVE)] деактивирован - нет энергии.")
+		occupant_message("[declent_ru(NOMINATIVE)] деактивирован - нет питания.")
 		STOP_PROCESSING(SSobj, src)
 		return
 	var/mob/living/carbon/M = patient
@@ -296,7 +296,7 @@
 		occupant_message("<span class='alert'>Шприцы не загружены.</span>")
 		return
 	if(reagents.total_volume<=0)
-		occupant_message("<span class='alert'>Нет доступных реагентов для загрузки шприца..</span>")
+		occupant_message("<span class='alert'>Нет доступных реагентов для заполнения шприца.</span>")
 		return
 	var/turf/trg = get_turf(target)
 	var/obj/item/reagent_containers/syringe/mechsyringe = syringes[1]
@@ -307,7 +307,7 @@
 	mechsyringe.icon = 'icons/obj/chemical.dmi'
 	mechsyringe.icon_state = "syringeproj"
 	playsound(chassis, 'sound/items/syringeproj.ogg', 50, 1)
-	log_message("Запущен [mechsyringe.declent_ru(NOMINATIVE)] из [declent_ru(GENITIVE)], нацелен в [target.declent_ru(GENITIVE)].")
+	log_message("Запущен [mechsyringe.declent_ru(NOMINATIVE)] из [declent_ru(GENITIVE)], нацелен в [target.declent_ru(ACCUSATIVE)].")
 	var/mob/originaloccupant = chassis.occupant
 	var/original_target_zone = originaloccupant.zone_selected
 	spawn(0)
@@ -541,7 +541,7 @@
 		else
 			push_aside(chassis, M)//out of the way, I have people to save!
 			occupant_message("<span class='notice'>Вы аккуратно отодвигаете [target] с дороги.</span>")
-			chassis.visible_message("<span class='notice'>[chassis] аккуратно отодвигает [target] с дороги.р</span>")
+			chassis.visible_message("<span class='notice'>[chassis] аккуратно отодвигает [target] с дороги.</span>")
 
 /obj/item/mecha_parts/mecha_equipment/medical/rescue_jaw/proc/push_aside(obj/mecha/M, mob/living/L)
 	switch(get_dir(M, L))

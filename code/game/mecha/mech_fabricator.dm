@@ -122,7 +122,7 @@
 	if(!I.tool_start_check(src, user, 0))
 		return
 	output_dir = turn(output_dir, -90)
-	to_chat(user, "<span class='notice'>Вы поворачиваете выход [declent_ru(PREPOSITIONAL)] на [dir2text(output_dir)].</span>")
+	to_chat(user, "<span class='notice'>Вы поворачиваете выход [declent_ru(GENITIVE)] на [dir2text(output_dir)].</span>")
 
 /obj/machinery/mecha_part_fabricator/RefreshParts()
 	var/coef_mats = 0
@@ -261,7 +261,7 @@
 			var/list/lockbox_access
 			for(var/access in L.req_access)
 				lockbox_access += "[get_access_desc(access)] "
-				L.desc = "Запертая коробка. Закрыта на [lockbox_access] доступ"
+				L.desc = "Запертая коробка. Закрыта на [lockbox_access]доступ"
 
 	// Clean up
 	being_built = null
@@ -303,7 +303,7 @@
   */
 /obj/machinery/mecha_part_fabricator/proc/can_insert_materials(mob/user)
 	if(panel_open)
-		to_chat(user, "<span class='warning'>В [declent_ru(NOMINATIVE)] не может быть загружены новые материалы, пока панель открыта!</span>")
+		to_chat(user, "<span class='warning'>В [declent_ru(ACCUSATIVE)] не может быть загружены новые материалы, пока панель открыта!</span>")
 		return FALSE
 	if(being_built)
 		to_chat(user, "<span class='warning'>[declent_ru(NOMINATIVE)] в данный момент печатает деталь! Пожалуйста, дождитесь завершения.</span>")

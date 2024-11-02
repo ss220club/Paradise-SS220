@@ -56,7 +56,7 @@
 		if(MECH_GRAVCAT_MODE_GRAVSLING)
 			if(!locked)
 				if(!istype(target) || target.anchored)
-					occupant_message("Невозможно зафиксировать [target.declent_ru(GENITIVE)].")
+					occupant_message("Невозможно зафиксировать [target.declent_ru(ACCUSATIVE)].")
 					return
 				locked = target
 				occupant_message("Зафиксировано на [target.declent_ru(PREPOSITIONAL)].")

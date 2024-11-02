@@ -6,7 +6,7 @@
 
 /obj/item/mecha_parts/mecha_equipment/drill
 	name = "exosuit drill"
-	desc = "Бур для шахтёрских экзокостюмов. Пробурит почти всё!"
+	desc = "Бур для шахтёрских экзокостюмов. Этот бур пронзит небеса!"
 	icon_state = "mecha_drill"
 	equip_cooldown = 15
 	energy_drain = 10
@@ -68,7 +68,7 @@
 			drill.log_message("Бурение [declent_ru(GENITIVE)] завершено")
 			dismantle_wall(TRUE, FALSE)
 	else
-		drill.occupant_message("<span class='danger'>Бур недостаточно мощный, чтобы пробить [declent_ru(NOMINATIVE)]</span>")
+		drill.occupant_message("<span class='danger'>Бур недостаточно мощный, чтобы пробить [declent_ru(ACCUSATIVE)]</span>")
 
 /turf/simulated/mineral/drill_act(obj/item/mecha_parts/mecha_equipment/drill/drill)
 	for(var/turf/simulated/mineral/M in range(drill.chassis, 1))
@@ -96,7 +96,7 @@
 	return FALSE
 
 /obj/item/mecha_parts/mecha_equipment/drill/proc/drill_mob(mob/living/target, mob/user)
-	target.visible_message("<span class='danger'>[chassis.declent_ru(NOMINATIVE)] бурит [target.declent_ru(GENITIVE)] с помощью [declent_ru(GENITIVE)]!</span>",
+	target.visible_message("<span class='danger'>[chassis.declent_ru(NOMINATIVE)] бурит [target.declent_ru(ACCUSATIVE)] с помощью [declent_ru(GENITIVE)]!</span>",
 						"<span class='userdanger'>[chassis.declent_ru(NOMINATIVE)] бурит вас с помощью [declent_ru(GENITIVE)]!</span>")
 	add_attack_logs(user, target, "ПРОБУРЕН с помощью [declent_ru(GENITIVE)] ([uppertext(user.a_intent)]) ([uppertext(damtype)])")
 	if(target.stat == DEAD && target.getBruteLoss() >= 200)
@@ -125,7 +125,7 @@
 
 /obj/item/mecha_parts/mecha_equipment/drill/diamonddrill
 	name = "diamond-tipped exosuit drill"
-	desc = "Бур с алмазным наконечником для шахтёрских экзокостюмов. Пробурит уж точно всё!"
+	desc = "Бур с алмазным наконечником для шахтёрских экзокостюмов. Улучшенная версия бура, который пронзит небеса!"
 	icon_state = "mecha_diamond_drill"
 	origin_tech = "materials=4;engineering=4"
 	equip_cooldown = 10

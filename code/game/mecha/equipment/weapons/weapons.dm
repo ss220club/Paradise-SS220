@@ -394,7 +394,7 @@
 
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/cleaner
 	name = "\improper N23 Rotary Janitation Launcher"
-	desc = "Инструмент для массовой уборки. Запускает заранее подготовленные гранаты с очистительным пеной. Высокая опасность поскользнуться!"
+	desc = "Инструмент для массовой уборки. Запускает заранее подготовленные гранаты с очистительной пеной. Высокая опасность поскользнуться!"
 	icon_state = "mecha_grenadelnchr"
 	origin_tech = "combat=4;engineering=4"
 	projectile = /obj/item/grenade/chem_grenade/cleaner
