@@ -873,7 +873,7 @@
 
 /obj/item/toy/plushie/catwithfunnyhat/attack_self(mob/user)
 	if(!COOLDOWN_FINISHED(src, cooldown))
-		return .
+		return
 	var/ricetext = pick("Welcome to the rice fields!", "Where is my rice!", "Mrow!", "Purr!")
 	user.visible_message("<span class='notice'>[ricetext]</span>")
 	COOLDOWN_START(src, cooldown, 3 SECONDS)
