@@ -61,7 +61,7 @@
 		var/turf/target_turf = get_turf(target)
 		if(!istype(target_turf) || iswallturf(target_turf))
 			return
-		chassis.occupant.visible_message("<span class='warning'>[chassis.declent_ru(NOMINATIVE)] начинает мыть [target_turf] с помощью [declent_ru(GENITIVE)].</span>", "<span class='warning'>Вы начинаете мыть [target_turf] с помощью [declent_ru(GENITIVE)].</span>")
+		chassis.occupant.visible_message("<span class='warning'>[capitalize(chassis.declent_ru(NOMINATIVE))] начинает мыть [target_turf.declent_ru(GENITIVE)] с помощью [declent_ru(GENITIVE)].</span>", "<span class='warning'>Вы начинаете мыть [target_turf.declent_ru(GENITIVE)] с помощью [declent_ru(GENITIVE)].</span>")
 		if(do_after(chassis.occupant, mop_speed, target = target, allow_moving = 0))
 			for(var/turf/current_target_turf in view(1, target))
 				current_target_turf.cleaning_act(chassis.occupant, src, mop_speed, "mop", ".", skip_do_after = TRUE)

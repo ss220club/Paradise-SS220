@@ -29,8 +29,8 @@
 		visible_message("<span class='notice'>Этот камень, похоже, устойчив ко всем инструментам для добычи, кроме кирок!</span>")
 		return
 
-	target.visible_message("<span class='warning'>[chassis] начинает бурить [target].</span>",
-					"<span class='userdanger'>[chassis] начинает бурить [target]...</span>",
+	target.visible_message("<span class='warning'>[capitalize(chassis.declent_ru(NOMINATIVE))] начинает бурить [target.declent_ru(ACCUSATIVE)].</span>",
+					"<span class='userdanger'>[capitalize(chassis.declent_ru(NOMINATIVE))] начинает бурить [target.declent_ru(ACCUSATIVE)]...</span>",
 					"<span class='italics'>Вы слышите шум бурения.</span>")
 
 	if(do_after_cooldown(target))

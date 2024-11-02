@@ -107,7 +107,7 @@
 	M.equipment += src
 	chassis = M
 	loc = M
-	M.log_message("Модуль [declent_ru(NOMINATIVE)] инициализирован.")
+	M.log_message("[src] initialized.")
 	if(!M.selected)
 		M.selected = src
 	update_chassis_page()
@@ -129,7 +129,7 @@
 			chassis.selected = null
 		update_chassis_page()
 		remove_targeted_action()
-		chassis.log_message("[declent_ru(NOMINATIVE)] удалён из оборудования.")
+		chassis.log_message("[src] initialized.")
 		chassis = null
 		set_ready_state(1)
 

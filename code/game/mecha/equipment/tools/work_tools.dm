@@ -102,7 +102,7 @@
 					O.forceMove(chassis)
 					O.anchored = FALSE
 					occupant_message("<span class='notice'>[target] успешно загружен.</span>")
-					log_message("Загружен [O]. Свободного места в грузовом отсеке: [cargo_holder.cargo_capacity - length(cargo_holder.cargo)]")
+					log_message("Loaded [O]. Cargo compartment capacity: [cargo_holder.cargo_capacity - length(cargo_holder.cargo)]")
 				else
 					O.anchored = initial(O.anchored)
 			else
@@ -403,7 +403,7 @@
 	if(!cable || cable.amount<1)
 		set_ready_state(1)
 		occupant_message("Кабель исчерпан, [declent_ru(NOMINATIVE)] деактивирован.")
-		log_message("Кабель исчерпан, [declent_ru(NOMINATIVE)] деактивирован.")
+		log_message("Cable depleted, [src] deactivated.")
 		return FALSE
 	if(cable.amount < amount)
 		occupant_message("Недостаточно кабеля для завершения задачи.")

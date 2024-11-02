@@ -69,14 +69,14 @@
 		update_equip_info()
 		occupant_message("<span class='notice'>Пациент [target.declent_ru(NOMINATIVE)] успешно помещён в [declent_ru(ACCUSATIVE)]. Функции жизнеобеспечения включены.</span>")
 		chassis.visible_message("<span class='warning'>[chassis.declent_ru(NOMINATIVE)] помещает [target.declent_ru(ACCUSATIVE)] в [declent_ru(ACCUSATIVE)].</span>")
-		log_message("[target.declent_ru(NOMINATIVE)] помещён в [declent_ru(ACCUSATIVE)]. Функции жизнеобеспечения включены.")
+		log_message("[target] loaded. Life support functions engaged.")
 
 /obj/item/mecha_parts/mecha_equipment/medical/sleeper/proc/patient_insertion_check(mob/living/carbon/target)
 	if(target.buckled)
-		occupant_message("<span class='warning'>Пациент [target] не может быть помещён в стабилизатор, потому что пристегнут к [target.buckled]!</span>")
+		occupant_message("<span class='warning'>Пациент [target.declent_ru(ACCUSATIVE)] не может быть помещён в слипер, потому что пристегнут к [target.buckled.declent_ru(NOMINATIVE)]!</span>")
 		return FALSE
 	if(target.has_buckled_mobs())
-		occupant_message("<span class='warning'>Пациент [target] не может быть помещён в слипер из-за существ, прикреплённых к нему!</span>")
+		occupant_message("<span class='warning'>Пациент [target.declent_ru(ACCUSATIVE)] не может быть помещён в слипер из-за существ, прикреплённых к нему!</span>")
 		return FALSE
 	if(patient)
 		occupant_message("<span class='warning'>В слипере уже есть пациент!</span>")
@@ -88,7 +88,7 @@
 		return
 	patient.forceMove(get_turf(src))
 	occupant_message("Пациент [patient] был извлечён. Функции жизнеобеспечения отключены.")
-	log_message("Пациент [patient] был извлечён. Функции жизнеобеспечения отключены.")
+	log_message("[patient] ejected. Life support functions disabled.")
 	STOP_PROCESSING(SSobj, src)
 	patient = null
 	update_equip_info()
@@ -195,7 +195,7 @@
 	var/to_inject = min(R.volume, inject_amount)
 	if(to_inject && patient.reagents.get_reagent_amount(R.id) + to_inject <= inject_amount*2)
 		occupant_message("Введение [patient] [to_inject] юнитов [R.name].")
-		log_message("Введение [patient] [to_inject] юнитов [R.name].")
+		log_message("Injecting [patient] with [to_inject] units of [R.name].")
 		add_attack_logs(chassis.occupant, patient, "Введён [name] содержащий [R], переведенно [to_inject] юнитов", R.harmless ? ATKLOG_ALMOSTALL : null)
 		SG.reagents.trans_id_to(patient,R.id,to_inject)
 		update_equip_info()
@@ -218,7 +218,7 @@
 		return
 	if(!chassis.has_charge(energy_drain))
 		set_ready_state(1)
-		log_message("Деактивировано.")
+		log_message("Deactivated.")
 		occupant_message("[declent_ru(NOMINATIVE)] деактивирован - нет питания.")
 		STOP_PROCESSING(SSobj, src)
 		return
@@ -307,7 +307,7 @@
 	mechsyringe.icon = 'icons/obj/chemical.dmi'
 	mechsyringe.icon_state = "syringeproj"
 	playsound(chassis, 'sound/items/syringeproj.ogg', 50, 1)
-	log_message("Запущен [mechsyringe.declent_ru(NOMINATIVE)] из [declent_ru(GENITIVE)], нацелен в [target.declent_ru(ACCUSATIVE)].")
+	log_message("Launched [mechsyringe] from [src], targeting [target].")
 	var/mob/originaloccupant = chassis.occupant
 	var/original_target_zone = originaloccupant.zone_selected
 	spawn(0)
@@ -373,7 +373,7 @@
 			START_PROCESSING(SSobj, src)
 			occupant_message(message)
 			occupant_message("Обработка реактивов начата.")
-			log_message("Обработка реактивов начата.")
+			log_message("Reagent processing started.")
 		return
 	if(afilter.get("show_reagents"))
 		chassis.occupant << browse(get_reagents_page(),"window=msyringegun")
@@ -472,7 +472,7 @@
 		occupant_message("Объект слишком далеко.")
 		return FALSE
 	if(!A.reagents || ismob(A))
-		occupant_message("<span class='alert'>Информация о реактивах [A] не получена.</span>")
+		occupant_message("<span class='alert'>Информация о реагентах [A.declent_ru(GENITIVE)] не получена.</span>")
 		return FALSE
 	occupant_message("Анализ реагентов...")
 	for(var/datum/reagent/R as anything in A.reagents.reagent_list)
@@ -507,7 +507,7 @@
 		return
 	if(!length(processed_reagents) || reagents.total_volume >= reagents.maximum_volume || !chassis.has_charge(energy_drain))
 		occupant_message("<span class='alert'>Обработка реактивов остановлена.</a>")
-		log_message("Обработка реактивов остановлена.")
+		log_message("Reagent processing stopped.")
 		STOP_PROCESSING(SSobj, src)
 		return
 	var/amount = synth_speed / length(processed_reagents)
@@ -536,12 +536,12 @@
 	if(isliving(target))	//interact with living beings
 		var/mob/living/M = target
 		if(chassis.occupant.a_intent == INTENT_HARM)//the patented, medical rescue claw is incapable of doing harm. Worry not.
-			target.visible_message("<span class='notice'>[chassis] аккуратно тыкает [target] в нос. В последний момент гидравлика шипит и предохранители смягчают жёсткий удар.</span>", \
-								"<span class='notice'[chassis] аккуратно тыкает [target] в нос. В последний момент гидравлика шипит и предохранители смягчают жёсткий удар.</span>")
+			target.visible_message("<span class='notice'>[chassis.declent_ru(NOMINATIVE)] аккуратно тыкает [declent_ru(NOMINATIVE)] в нос. В последний момент гидравлика шипит и предохранители смягчают жёсткий удар.</span>", \
+								"<span class='notice'[chassis.declent_ru(NOMINATIVE)] аккуратно тыкает [target.declent_ru(ACCUSATIVE)] в нос. В последний момент гидравлика шипит и предохранители смягчают жёсткий удар.</span>")
 		else
 			push_aside(chassis, M)//out of the way, I have people to save!
-			occupant_message("<span class='notice'>Вы аккуратно отодвигаете [target] с дороги.</span>")
-			chassis.visible_message("<span class='notice'>[chassis] аккуратно отодвигает [target] с дороги.</span>")
+			occupant_message("<span class='notice'>Вы аккуратно отодвигаете [declent_ru(NOMINATIVE)] с дороги.</span>")
+			chassis.visible_message("<span class='notice'>[chassis.declent_ru(NOMINATIVE)] аккуратно отодвигает [declent_ru(NOMINATIVE)] с дороги.</span>")
 
 /obj/item/mecha_parts/mecha_equipment/medical/rescue_jaw/proc/push_aside(obj/mecha/M, mob/living/L)
 	switch(get_dir(M, L))

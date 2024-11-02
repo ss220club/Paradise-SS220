@@ -184,12 +184,12 @@
 		if(equip_ready)
 			START_PROCESSING(SSobj, src)
 			droid_overlay = new(icon, icon_state = "repair_droid_a")
-			log_message("Активирован.")
+			log_message("Activated.")
 			set_ready_state(0)
 		else
 			STOP_PROCESSING(SSobj, src)
 			droid_overlay = new(icon, icon_state = "repair_droid")
-			log_message("Деактивирован.")
+			log_message("Deactivated.")
 			set_ready_state(1)
 		chassis.overlays += droid_overlay
 		send_byjax(chassis.occupant,"exosuit.browser","\ref[src]",get_equip_info())
@@ -272,11 +272,11 @@
 		if(equip_ready) //inactive
 			START_PROCESSING(SSobj, src)
 			set_ready_state(0)
-			log_message("Активирован.")
+			log_message("Activated.")
 		else
 			STOP_PROCESSING(SSobj, src)
 			set_ready_state(1)
-			log_message("Деактивирован.")
+			log_message("Deactivated.")
 
 /obj/item/mecha_parts/mecha_equipment/tesla_energy_relay/get_equip_info()
 	if(!chassis) return
@@ -341,11 +341,11 @@
 		if(equip_ready) //inactive
 			set_ready_state(0)
 			START_PROCESSING(SSobj, src)
-			log_message("declent_ru(NOMINATIVE)] активирован.")
+			log_message("Activated.")
 		else
 			set_ready_state(1)
 			STOP_PROCESSING(SSobj, src)
-			log_message("declent_ru(NOMINATIVE)] деактивирован.")
+			log_message("Deactivated.")
 
 /obj/item/mecha_parts/mecha_equipment/generator/get_equip_info()
 	var/output = ..()
@@ -380,7 +380,7 @@
 			var/added_fuel = units * P.perunit
 			fuel_amount += added_fuel
 			P.use(units)
-			occupant_message("[units] юнитов [fuel_name] успешно загружено.")
+			occupant_message("[units] единиц[declension_ru(units, "а", "ы", "")] [fuel_name] успешно загружено.")
 			return added_fuel
 
 	else if(istype(I, /obj/structure/ore_box))
@@ -392,7 +392,7 @@
 		return fuel_added
 
 	else
-		occupant_message("<span class='warning'>[fuel_name] на минимуме! [I] не может использоваться в качестве топлива.</span>")
+		occupant_message("<span class='warning'>[capitalize(fuel_name)] на минимуме! [I.declent_ru(NOMINATIVE)] не может использоваться в качестве топлива.</span>")
 		return 0
 
 /obj/item/mecha_parts/mecha_equipment/generator/attackby(weapon,mob/user, params)
@@ -405,13 +405,13 @@
 		return
 	if(fuel_amount<=0)
 		STOP_PROCESSING(SSobj, src)
-		log_message("Деактивировано - нет топлива")
+		log_message("Deactivated - no fuel.")
 		set_ready_state(1)
 		return
 	var/cur_charge = chassis.get_charge()
 	if(isnull(cur_charge))
 		set_ready_state(1)
-		occupant_message("Батарея не обнаружена")
+		occupant_message("No powercell detected.")
 		log_message("Deactivated.")
 		STOP_PROCESSING(SSobj, src)
 		return

@@ -235,11 +235,11 @@
 					if(thingy)
 						walk(thingy,0)
 	for(var/obj/mecha/combat/reticence/R in oview(6, chassis))
-		R.occupant_message("\The [R] защитил вас от ХОНК [chassis] ценой части энергии.")
+		R.occupant_message("[R] защитил вас от ХОНК [chassis] ценой части энергии.")
 		R.use_power(R.get_charge() / 4)
 
 	chassis.use_power(energy_drain)
-	log_message("Хонкнут [name]. ХОНК!")
+	log_message("Honked from [name]. HONK!")
 	var/turf/T = get_turf(src)
 	add_attack_logs(chassis.occupant, target, "used a Mecha Honker", ATKLOG_MOST)
 	log_game("[key_name(chassis.occupant)] used a Mecha Honker in [T.x], [T.y], [T.z]")
