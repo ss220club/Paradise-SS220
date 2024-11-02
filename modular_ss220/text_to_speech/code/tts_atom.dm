@@ -29,3 +29,23 @@
 
 /atom/proc/tts_trait_remove(trait)
 	SEND_SIGNAL(src, COMSIG_ATOM_TTS_TRAIT_REMOVE, trait)
+
+/mob/add_language(language, force)
+	. = ..()
+	if(language == "Nabberian")
+		var/atom/A = src
+		RegisterSignal(A, COMSIG_ATOM_PRE_TTS_CAST, PROC_REF(atom_pre_tts_cast_mob))
+
+/mob/remove_language(rem_language, force)
+	. = ..()
+	if(rem_language == "Nabberian")
+		var/atom/A = src
+		UnregisterSignal(A, COMSIG_ATOM_PRE_TTS_CAST)
+
+/mob/proc/atom_pre_tts_cast_mob(atom, listener, message, location, is_local, effect, traits, preSFX, postSFX)
+	SIGNAL_HANDLER
+	var/processed = FALSE
+	for(var/datum/multilingual_say_piece/phrase in message)
+		if(istype(phrase.speaking,/datum/language/serpentid))
+			processed = TRUE
+	return processed ? COMPONENT_TTS_INTERRUPT : processed
