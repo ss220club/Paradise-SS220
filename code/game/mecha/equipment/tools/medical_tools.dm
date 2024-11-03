@@ -59,7 +59,7 @@
 	if(!patient_insertion_check(target))
 		return
 	occupant_message("<span class='notice'>Вы начинаете помещать [target.declent_ru(ACCUSATIVE)] в [declent_ru(ACCUSATIVE)]...</span>")
-	chassis.visible_message("<span class='warning'>[chassis.declent_ru(NOMINATIVE)] начинает помещать [target.declent_ru(ACCUSATIVE)] в [declent_ru(ACCUSATIVE)].</span>")
+	chassis.visible_message("<span class='warning'>[capitalize(chassis.declent_ru(NOMINATIVE))] начинает помещать [target.declent_ru(ACCUSATIVE)] в [declent_ru(ACCUSATIVE)].</span>")
 	if(do_after_cooldown(target))
 		if(!patient_insertion_check(target))
 			return
@@ -68,7 +68,7 @@
 		START_PROCESSING(SSobj, src)
 		update_equip_info()
 		occupant_message("<span class='notice'>Пациент [target.declent_ru(NOMINATIVE)] успешно помещён в [declent_ru(ACCUSATIVE)]. Функции жизнеобеспечения включены.</span>")
-		chassis.visible_message("<span class='warning'>[chassis.declent_ru(NOMINATIVE)] помещает [target.declent_ru(ACCUSATIVE)] в [declent_ru(ACCUSATIVE)].</span>")
+		chassis.visible_message("<span class='warning'>[capitalize(chassis.declent_ru(NOMINATIVE))] помещает [target.declent_ru(ACCUSATIVE)] в [declent_ru(ACCUSATIVE)].</span>")
 		log_message("[target] loaded. Life support functions engaged.")
 
 /obj/item/mecha_parts/mecha_equipment/medical/sleeper/proc/patient_insertion_check(mob/living/carbon/target)
