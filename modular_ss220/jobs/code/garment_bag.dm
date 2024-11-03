@@ -1,0 +1,6 @@
+/obj/item/storage/bag/garment/chief_medical_officer/populate_contents()
+	. = ..()
+	new /obj/item/clothing/suit/mantle/cmo(src)
+	new /obj/item/clothing/under/rank/medical/chief_medical_officer/skirt2(src)
+	new /obj/item/clothing/under/rank/medical/chief_medical_officer/suit(src)
+	new /obj/item/clothing/head/beret/cmo(src)
