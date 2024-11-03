@@ -33,6 +33,11 @@
 	armored_heat_threshold = threshold_heat
 	armored_temp_progression = temp_progression
 	self_repair_cooldown = heal_cooldown
+	//Выдача настроек при иницилазации карапаса
+	stage_1_repair()
+	stage_2_repair()
+	stage_3_repair()
+	broken_stage = 0
 
 /datum/component/carapace_shell/RegisterWithParent()
 	RegisterSignal(H, COMSIG_LIVING_LIFE, PROC_REF(process_shell))

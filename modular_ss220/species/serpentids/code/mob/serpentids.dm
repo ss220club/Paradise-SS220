@@ -12,6 +12,7 @@
 	butt_sprite_icon = 'modular_ss220/species/serpentids/icons/mob/r_serpentid_butt.dmi'
 	butt_sprite = "serpentid"
 	nojumpsuit = TRUE
+	dangerous_existence = TRUE
 
 	species_traits = list(LIPS, NO_HAIR, TTS_TRAIT_ROBOTIZE)
 	inherent_traits = list(TRAIT_NOPAIN)
