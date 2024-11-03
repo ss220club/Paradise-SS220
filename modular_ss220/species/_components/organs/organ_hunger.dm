@@ -27,7 +27,7 @@
 		organ.switch_mode(force_off = TRUE)
 	else
 		if(consuption_count)
-			organ.owner.adjust_nutrition(consuption_count)
+			organ.owner.adjust_nutrition(-consuption_count)
 
 /datum/component/hunger_organ/proc/hunger_change_consuption(holder, new_consuption_count)
 	SIGNAL_HANDLER

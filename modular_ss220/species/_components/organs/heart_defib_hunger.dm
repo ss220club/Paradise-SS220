@@ -25,8 +25,8 @@
 	if(owner?.nutrition < NUTRITION_LEVEL_FED || owner.stat != DEAD || owner.get_damage_amount() > AUTO_DEFIBRILATION_THRESHOLD)
 		return
 	var/defib_chance = owner.nutrition - NUTRITION_LEVEL_FED
+	owner.adjust_nutrition(-defib_chance)
 	if(prob(defib_chance))
-		owner.adjust_nutrition(defib_chance)
 		owner.setOxyLoss(0)
 		owner.set_heartattack(FALSE)
 		owner.update_revive()

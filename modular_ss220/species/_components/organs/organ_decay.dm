@@ -30,7 +30,7 @@
 
 	var/is_no_owner = isnull(organ.owner)
 	var/is_dead = (is_no_owner ? FALSE : organ.owner.stat == DEAD)
-	var/formaldehyde_found = owner?.get_chemical_value("formaldehyde") > 0
+	var/formaldehyde_found = organ.owner?.get_chemical_value("formaldehyde") > 0
 	var/is_destroying = (is_dead || (is_no_owner && !organ.is_in_freezer))
 	if(is_destroying && !formaldehyde_found)
 		organ.receive_damage(decay_rate, 1)
