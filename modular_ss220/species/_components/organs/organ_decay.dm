@@ -30,9 +30,9 @@
 
 	var/is_no_owner = isnull(organ.owner)
 	var/is_dead = (is_no_owner ? FALSE : organ.owner.stat == DEAD)
-
+	var/formaldehyde_found = owner?.get_chemical_value("formaldehyde") > 0
 	var/is_destroying = (is_dead || (is_no_owner && !organ.is_in_freezer))
-	if(is_destroying)
+	if(is_destroying && !formaldehyde_found)
 		organ.receive_damage(decay_rate, 1)
 	if((organ.damage <= (organ.max_damage / ORGAN_RECOVERY_THRESHOLD)) && (organ.damage > 0) && !is_destroying)
 		organ.heal_internal_damage(recover_rate, FALSE)
