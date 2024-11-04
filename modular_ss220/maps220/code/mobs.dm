@@ -212,7 +212,7 @@
 	attacktext = "claw"
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	a_intent = INTENT_HARM
-	loot = list(/obj/effect/spawner/random/maintenance/one = 1)
+	loot = list(/obj/effect/spawner/random/maintenance = 1)
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_plas" = 0, "max_plas" = 1, "min_co2" = 0, "max_co2" = 5, "min_n2" = 5, "max_n2" = 0)
 	unsuitable_atmos_damage = 7.5
 	faction = list("Vox")
@@ -229,7 +229,7 @@
 	icon_dead = "voxmeleedead"
 	melee_damage_lower = 15
 	melee_damage_upper = 15
-	loot = list(/obj/effect/spawner/random/maintenance/two = 1)
+	loot = list(/obj/effect/spawner/random/maintenance = 1)
 	attacktext = "slash"
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	status_flags = 0
@@ -247,7 +247,7 @@
 	minimum_distance = 5
 	casingtype = /obj/item/ammo_casing/c45
 	projectilesound = 'sound/weapons/gunshots/gunshot_strong.ogg'
-	loot = list(/obj/effect/spawner/random/maintenance/three = 1)
+	loot = list(/obj/effect/spawner/random/maintenance = 1)
 
 /mob/living/simple_animal/hostile/vox/ranged_laser
 	name = "Vox Laser Gunman"
@@ -263,7 +263,7 @@
 	melee_damage_upper = 20
 	projectiletype = /obj/item/projectile/beam/laser
 	projectilesound = 'sound/weapons/laser.ogg'
-	loot = list(/obj/effect/spawner/random/maintenance/one = 1)
+	loot = list(/obj/effect/spawner/random/maintenance = 1)
 
 /mob/living/simple_animal/hostile/vox/ranged_laser/space
 	name = "Vox Helmsman"
@@ -274,7 +274,7 @@
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	wander = FALSE
 	minbodytemp = 0
-	loot = list(/obj/effect/spawner/random/maintenance/three = 1)
+	loot = list(/obj/effect/spawner/random/maintenance = 1)
 
 /* Jungle Mob */
 /mob/living/simple_animal/hostile/jungle_lizard
@@ -566,7 +566,7 @@
 	melee_damage_upper = 25
 	attacktext = "моргает на"
 	attack_sound = 'sound/weapons/pierce.ogg'
-	flying = TRUE
+	initial_traits = list(TRAIT_FLYING)
 
 	faction = list("spooky")
 	del_on_death = TRUE
@@ -1092,7 +1092,7 @@
 	status_flags = NONE
 	wander = TRUE
 	loot = list(/obj/effect/gibspawner/xeno, /obj/item/stack/ore/bluespace_crystal/refined = 30, /obj/item/card/id/xen_key, /obj/item/gun/energy/wormhole_projector)
-	flying = TRUE
+	initial_traits = list(TRAIT_FLYING)
 	death_sound = 'modular_ss220/aesthetics_sounds/sound/mobs/nihilanth/nihilanth_pain01.ogg'
 
 /obj/item/card/id/xen_key
@@ -1339,7 +1339,7 @@
 	//Лут с дальников
 	var/SynRange
 
-/mob/living/simple_animal/hostile/syndicate/Initialize()
+/mob/living/simple_animal/hostile/syndicate/Initialize(mapload)
 	var/RollForLoot = rand(1,50)
 	switch(RollForLoot)
 		// 16%
@@ -1381,7 +1381,7 @@
 			SynMobDrop = /obj/item/ammo_casing/c10mm
 	. = ..()
 
-/mob/living/simple_animal/hostile/syndicate/Initialize()
+/mob/living/simple_animal/hostile/syndicate/Initialize(mapload)
 	switch(rand(1,100))
 		// 1%
 		if(1)
@@ -1390,7 +1390,7 @@
 			SynSpace = /obj/item/ammo_casing/c10mm
 	return ..()
 
-/mob/living/simple_animal/hostile/syndicate/melee/Initialize()
+/mob/living/simple_animal/hostile/syndicate/melee/Initialize(mapload)
 	switch(rand(1,100))
 		// 1%
 		if(1)
@@ -1402,7 +1402,7 @@
 			SynMelee = /obj/item/ammo_casing/c10mm
 	return ..()
 
-/mob/living/simple_animal/hostile/syndicate/ranged/Initialize()
+/mob/living/simple_animal/hostile/syndicate/ranged/Initialize(mapload)
 	switch(rand(rand(1,100)))
 		// 10%
 		if(25 to 35)
@@ -1430,7 +1430,7 @@
 	maxHealth = 160
 	health = 160
 
-/mob/living/simple_animal/hostile/syndicate/melee/autogib/spacebattle/Initialize()
+/mob/living/simple_animal/hostile/syndicate/melee/autogib/spacebattle/Initialize(mapload)
 	. = ..()
 	loot = list(/obj/effect/decal/cleanable/ash, SynMobDrop, SynMelee)
 	return .
@@ -1442,7 +1442,7 @@
 	maxHealth = 200
 	health = 200
 
-/mob/living/simple_animal/hostile/syndicate/melee/space/autogib/spacebattle/Initialize()
+/mob/living/simple_animal/hostile/syndicate/melee/space/autogib/spacebattle/Initialize(mapload)
 	. = ..()
 	loot = list(/obj/effect/decal/cleanable/ash, SynMobDrop, SynMelee, SynSpace)
 	return .
@@ -1452,7 +1452,7 @@
 	maxHealth = 150
 	health = 150
 
-/mob/living/simple_animal/hostile/syndicate/ranged/autogib/spacebattle/Initialize()
+/mob/living/simple_animal/hostile/syndicate/ranged/autogib/spacebattle/Initialize(mapload)
 	. = ..()
 	loot = list(/obj/effect/decal/cleanable/ash, SynMobDrop, SynRange)
 	return .
@@ -1461,7 +1461,7 @@
 	maxHealth = 180
 	health = 180
 
-/mob/living/simple_animal/hostile/syndicate/ranged/space/autogib/spacebattle/Initialize()
+/mob/living/simple_animal/hostile/syndicate/ranged/space/autogib/spacebattle/Initialize(mapload)
 	. = ..()
 	loot = list(/obj/effect/decal/cleanable/ash, SynMobDrop, SynRange, SynSpace)
 	return .
