@@ -28,8 +28,8 @@
 	var/bloodtiles = 8  // number of tiles with blood while pulling
 
 /obj/structure/decorative_structures/corpse/Initialize(mapload)
+	. = ..()
 	START_PROCESSING(SSobj, src)
-	..()
 
 /obj/structure/decorative_structures/corpse/Destroy()
 	playsound(src, 'sound/goonstation/effects/gib.ogg', 30, 0)
