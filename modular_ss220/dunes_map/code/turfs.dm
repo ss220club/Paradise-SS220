@@ -327,4 +327,35 @@
 	light_power = 0
 	light_range = 0
 
+/turf/simulated/mineral/bscrystal/hirka
+	atmos_mode = ATMOS_MODE_EXPOSED_TO_ENVIRONMENT
+	atmos_environment = ENVIRONMENT_TEMPERATE
+	temperature = T20C
+	baseturf = /turf/simulated/floor/plating/asteroid/basalt/dune
+
+/turf/simulated/mineral/diamond/hirka
+	atmos_mode = ATMOS_MODE_EXPOSED_TO_ENVIRONMENT
+	atmos_environment = ENVIRONMENT_TEMPERATE
+	temperature = T20C
+	baseturf = /turf/simulated/floor/plating/asteroid/basalt/dune
+
+/turf/simulated/mineral/random/high_chance/hirka
+	atmos_mode = ATMOS_MODE_EXPOSED_TO_ENVIRONMENT
+	atmos_environment = ENVIRONMENT_TEMPERATE
+	temperature = T20C
+	baseturf = /turf/simulated/floor/plating/asteroid/basalt/dune
+
+/turf/simulated/mineral/random/low_chance/hirka
+	atmos_mode = ATMOS_MODE_EXPOSED_TO_ENVIRONMENT
+	atmos_environment = ENVIRONMENT_TEMPERATE
+	temperature = T20C
+	baseturf = /turf/simulated/floor/plating/asteroid/basalt/dune
+
+/turf/simulated/mineral/volcanic/hirka
+	atmos_mode = ATMOS_MODE_EXPOSED_TO_ENVIRONMENT
+	atmos_environment = ENVIRONMENT_TEMPERATE
+	temperature = T20C
+	baseturf = /turf/simulated/floor/plating/asteroid/basalt/dune
+
+
 #undef DESERT_WINTER

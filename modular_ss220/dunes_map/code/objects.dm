@@ -885,46 +885,18 @@
 	desc = "Кусок странной породы, не отображающийся на датчиках сканирования полезных ископаемых. Скорее всего бесполезен."
 	singular_name = "strange ore chunk"
 
-/datum/action/item_action/chameleon/stealth
-	name = "стелс-режим"
-	button_overlay_icon_state = "mech_lights_off"
-	var/stealth_alpha = 75
-	var/equiped = 0
+/obj/structure/closet/grave // не спрашивайте
+	name = "могилка"
+	desc = "Выкопанная на скорую руку могилка."
+	icon = 'modular_ss220/maps220/icons/crates.dmi'
+	icon_state = "grave"
+	icon_opened = "graveopen"
+	icon_closed = "grave"
+	open_sound = 'sound/effects/shovel_dig.ogg'
+	close_sound = 'sound/effects/shovel_dig.ogg'
 
-/datum/action/item_action/chameleon/stealth/Grant(mob/M)
-	..()
-
-/datum/action/item_action/chameleon/change/Remove(mob/M)
-	if(M && (M == owner))
-		M.alpha = initial(M.alpha)
-		LAZYREMOVE(M.actions, src)
-	..()
-
-/datum/action/item_action/chameleon/stealth/Trigger(left_click)
-	. = ..()
-	set_stealth(owner)
-
-/datum/action/item_action/chameleon/stealth/proc/set_stealth(mob/user)
-	if(user.alpha != stealth_alpha)
-		user.alpha = stealth_alpha
-	else
-		user.alpha = initial(user.alpha)
-
-/obj/item/clothing/suit/chameleon/stealth
-	var/datum/action/item_action/chameleon/stealth/stealth_action
-
-/obj/item/clothing/suit/chameleon/stealth/Initialize(mapload)
-	. = ..()
-	stealth_action = new(src)
-
-/obj/item/clothing/suit/chameleon/stealth/Destroy()
-	QDEL_NULL(stealth_action)
-	return ..()
-
-
-/obj/item/clothing/suit/chameleon/stealth/item_action_slot_check(slot, mob/user)
-	. = ..()
-	if(slot == SLOT_HUD_OUTER_SUIT)
-		return TRUE
-	else
-		user.alpha = initial(user.alpha)
+/obj/structure/closet/grave/gravelead
+	name = "ухоженная могилка"
+	icon_state = "Выкопанная на скорую руку могилка, украшенная надгробный камнем."
+	icon_opened = "grave_leadopen"
+	icon_closed = "grave_lead"
