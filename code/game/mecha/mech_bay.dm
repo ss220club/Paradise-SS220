@@ -123,7 +123,7 @@
 
 /obj/machinery/computer/mech_bay_power_console
 	name = "mech bay power control console"
-	desc = "Консоль управления станции зарядки для мехов."
+	desc = "Консоль управления станции зарядки для экзокостюмов."
 	density = TRUE
 	anchored = TRUE
 	icon = 'icons/obj/computer.dmi'

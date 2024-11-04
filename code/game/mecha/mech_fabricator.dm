@@ -306,7 +306,7 @@
 		to_chat(user, "<span class='warning'>В [declent_ru(ACCUSATIVE)] не может быть загружены новые материалы, пока панель открыта!</span>")
 		return FALSE
 	if(being_built)
-		to_chat(user, "<span class='warning'>[declent_ru(NOMINATIVE)] в данный момент печатает деталь! Пожалуйста, дождитесь завершения.</span>")
+		to_chat(user, "<span class='warning'>[capitalize(declent_ru(NOMINATIVE))] в данный момент печатает деталь! Пожалуйста, дождитесь завершения.</span>")
 		return FALSE
 	return TRUE
 

@@ -39,17 +39,17 @@
 		if(istype(target, /obj/machinery/atmospherics/supermatter_crystal)) //No, you can't pick up the SM with this you moron, did you think you were clever?
 			var/obj/mecha/working/ripley/R = chassis
 			QDEL_LIST_CONTENTS(R.cargo) //We don't want to drop cargo that just spam hits the SM, let's delete it
-			occupant_message("<span class='userdanger'>Вы с ужасом осознаёте, что вы сделали, когда [chassis] начинает искривляться вокруг вас!</span>")
+			occupant_message("<span class='userdanger'>Вы с ужасом осознаёте, что вы сделали, когда [chassis.declent_ru(NOMINATIVE)] начинает искривляться вокруг вас!</span>")
 			chassis.occupant.dust()
 			target.Bumped(chassis)
 			return
 		if(O.anchored)
-			occupant_message("<span class='warning'>[target] надёжно зафиксирован!</span>")
+			occupant_message("<span class='warning'>[capitalize(target.declent_ru(NOMINATIVE))] надёжно зафиксирован!</span>")
 			return
 		if(length(cargo_holder.cargo) >= cargo_holder.cargo_capacity)
 			occupant_message("<span class='warning'>Недостаточно места в грузовом отсеке!</span>")
 			return
-		chassis.visible_message("<span class='notice'>[chassis] поднимает [target] и начинает помещать в грузовой отсек.</span>")
+		chassis.visible_message("<span class='notice'>[capitalize(chassis.declent_ru(NOMINATIVE))] поднимает [target.declent_ru(ACCUSATIVE)] и начинает помещать в грузовой отсек.</span>")
 		var/anchor_state_before_load = O.anchored
 		O.anchored = TRUE
 		if(!do_after_cooldown(target))
@@ -58,7 +58,7 @@
 		cargo_holder.cargo += O
 		O.forceMove(chassis)
 		O.anchored = FALSE
-		occupant_message("<span class='notice'>[target] успешно загружен.</span>")
+		occupant_message("<span class='notice'>[capitalize(target.declent_ru(NOMINATIVE))] успешно загружен.</span>")
 		log_message("Loaded [O]. Cargo compartment capacity: [cargo_holder.cargo_capacity - length(cargo_holder.cargo)]")
 		return
 
@@ -71,15 +71,15 @@
 			if(!M)
 				return
 			M.adjustOxyLoss(round(dam_force/2))
-			target.visible_message("<span class='danger'>[chassis] сжимает [target].</span>", \
-								"<span class='userdanger'>[chassis] сжимает [target].</span>",\
+			target.visible_message("<span class='danger'>[capitalize(chassis.declent_ru(NOMINATIVE))] сжимает [target.declent_ru(ACCUSATIVE)].</span>", \
+								"<span class='userdanger'>[capitalize(chassis.declent_ru(NOMINATIVE))] сжимает [target.declent_ru(ACCUSATIVE)].</span>",\
 								"<span class='italics'>Вы слышите, как что-то хрустит.</span>")
 			add_attack_logs(chassis.occupant, M, "Squeezed with [src] ([uppertext(chassis.occupant.a_intent)]) ([uppertext(damtype)])")
 			start_cooldown()
 			return
 		step_away(M, chassis)
-		occupant_message("<span class='notice'>Ты толкаешь [target] с дороги.</span>")
-		chassis.visible_message("<span class='notice'>[chassis] толкает [target] с дороги.</span>")
+		occupant_message("<span class='notice'>Вы толкаете [target.declent_ru(ACCUSATIVE)] с дороги.</span>")
+		chassis.visible_message("<span class='notice'>[capitalize(chassis.declent_ru(NOMINATIVE))] толкает [target.declent_ru(ACCUSATIVE)] с дороги.</span>")
 
 
 //This is pretty much just for the death-ripley
@@ -95,34 +95,34 @@
 		var/obj/O = target
 		if(!O.anchored)
 			if(length(cargo_holder.cargo) < cargo_holder.cargo_capacity)
-				chassis.visible_message("[chassis] поднимает [target] и начинает помещать в грузовой отсек.")
+				chassis.visible_message("[capitalize(chassis.declent_ru(NOMINATIVE))] поднимает [target.declent_ru(ACCUSATIVE)] и начинает помещать в грузовой отсек.")
 				O.anchored = TRUE
 				if(do_after_cooldown(target))
 					cargo_holder.cargo += O
 					O.forceMove(chassis)
 					O.anchored = FALSE
-					occupant_message("<span class='notice'>[target] успешно загружен.</span>")
+					occupant_message("<span class='notice'>[capitalize(target.declent_ru(NOMINATIVE))] успешно загружен.</span>")
 					log_message("Loaded [O]. Cargo compartment capacity: [cargo_holder.cargo_capacity - length(cargo_holder.cargo)]")
 				else
 					O.anchored = initial(O.anchored)
 			else
 				occupant_message("<span class='warning'>Недостаточно места в грузовом отсеке!</span>")
 		else
-			occupant_message("<span class='warning'>[target] надёжно зафиксирован!</span>")
+			occupant_message("<span class='warning'>[capitalize(target.declent_ru(NOMINATIVE))] надёжно зафиксирован!</span>")
 
 	else if(isliving(target))
 		var/mob/living/M = target
 		if(M.stat == DEAD) return
 		if(chassis.occupant.a_intent == INTENT_HARM)
-			target.visible_message("<span class='danger'>[chassis] уничтожает [target] в нечестивой ярости.</span>",
-								"<span class='userdanger'>[chassis] уничтожает [target] в нечестивой ярости.</span>")
+			target.visible_message("<span class='danger'>[capitalize(chassis.declent_ru(NOMINATIVE))] уничтожает [target.declent_ru(ACCUSATIVE)] в нечестивой ярости.</span>",
+								"<span class='userdanger'>[capitalize(chassis.declent_ru(NOMINATIVE))] уничтожает [target.declent_ru(ACCUSATIVE)] в нечестивой ярости.</span>")
 			M.gib()
 		/*if(chassis.occupant.a_intent == INTENT_DISARM)
 			target.visible_message("<span class='danger'>[chassis] rips [target]'s arms off.</span>",
 								"<span class='userdanger'>[chassis] rips [target]'s arms off.</span>")*/
 		else
 			step_away(M,chassis)
-			target.visible_message("[chassis] бросает [target], словно комок бумаги.")
+			target.visible_message("[capitalize(chassis.declent_ru(NOMINATIVE))] бросает [target.declent_ru(ACCUSATIVE)], словно комок бумаги.")
 			return
 
 
@@ -234,21 +234,21 @@
 				if((isreinforcedwallturf(target) && !canRwall) || istype(target, /turf/simulated/wall/indestructible))
 					return 0
 				var/turf/simulated/wall/W = target
-				occupant_message("Деконструкция [target]...")
+				occupant_message("Деконструкция [target.declent_ru(ACCUSATIVE)]...")
 				if(do_after_cooldown(W))
 					chassis.spark_system.start()
 					W.ChangeTurf(/turf/simulated/floor/plating)
 					playsound(W, usesound, 50, 1)
 			else if(isfloorturf(target))
 				var/turf/simulated/floor/F = target
-				occupant_message("Деконструкция [target]...")
+				occupant_message("Деконструкция [target.declent_ru(ACCUSATIVE)]...")
 				if(do_after_cooldown(F))
 					chassis.spark_system.start()
 					F.ChangeTurf(F.baseturf)
 					F.recalculate_atmos_connectivity()
 					playsound(F, usesound, 50, 1)
 			else if(istype(target, /obj/machinery/door/airlock))
-				occupant_message("Деконструкция [target]...")
+				occupant_message("Деконструкция [target.declent_ru(ACCUSATIVE)]...")
 				if(do_after_cooldown(target))
 					chassis.spark_system.start()
 					qdel(target)

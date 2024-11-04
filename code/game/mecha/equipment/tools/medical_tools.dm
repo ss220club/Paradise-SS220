@@ -325,7 +325,7 @@
 			var/mob/living/carbon/M = safepick(mobs)
 			if(M)
 				var/R
-				mechsyringe.visible_message("<span class='attack'> [M] был поражён шприцем!</span>")
+				mechsyringe.visible_message("<span class='attack'> [capitalize(M.declent_ru(ACCUSATIVE))] был поражён шприцем!</span>")
 				if(M.can_inject(originaloccupant, TRUE, original_target_zone))
 					if(mechsyringe.reagents)
 						for(var/datum/reagent/A in mechsyringe.reagents.reagent_list)
@@ -536,12 +536,12 @@
 	if(isliving(target))	//interact with living beings
 		var/mob/living/M = target
 		if(chassis.occupant.a_intent == INTENT_HARM)//the patented, medical rescue claw is incapable of doing harm. Worry not.
-			target.visible_message("<span class='notice'>[chassis.declent_ru(NOMINATIVE)] аккуратно тыкает [declent_ru(NOMINATIVE)] в нос. В последний момент гидравлика шипит и предохранители смягчают жёсткий удар.</span>", \
-								"<span class='notice'[chassis.declent_ru(NOMINATIVE)] аккуратно тыкает [target.declent_ru(ACCUSATIVE)] в нос. В последний момент гидравлика шипит и предохранители смягчают жёсткий удар.</span>")
+			target.visible_message("<span class='notice'>[capitalize(chassis.declent_ru(NOMINATIVE))] аккуратно тыкает [target.declent_ru(ACCUSATIVE)] в нос. В последний момент гидравлика шипит и предохранители смягчают жёсткий удар.</span>", \
+								"<span class='notice'[capitalize(chassis.declent_ru(NOMINATIVE))] аккуратно тыкает [target.declent_ru(ACCUSATIVE)] в нос. В последний момент гидравлика шипит и предохранители смягчают жёсткий удар.</span>")
 		else
 			push_aside(chassis, M)//out of the way, I have people to save!
-			occupant_message("<span class='notice'>Вы аккуратно отодвигаете [declent_ru(NOMINATIVE)] с дороги.</span>")
-			chassis.visible_message("<span class='notice'>[chassis.declent_ru(NOMINATIVE)] аккуратно отодвигает [declent_ru(NOMINATIVE)] с дороги.</span>")
+			occupant_message("<span class='notice'>Вы аккуратно отодвигаете [target.declent_ru(ACCUSATIVE)] с дороги.</span>")
+			chassis.visible_message("<span class='notice'>[capitalize(chassis.declent_ru(NOMINATIVE))] аккуратно отодвигает [target.declent_ru(ACCUSATIVE)] с дороги.</span>")
 
 /obj/item/mecha_parts/mecha_equipment/medical/rescue_jaw/proc/push_aside(obj/mecha/M, mob/living/L)
 	switch(get_dir(M, L))

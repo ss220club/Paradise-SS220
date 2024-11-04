@@ -129,7 +129,7 @@
 			chassis.selected = null
 		update_chassis_page()
 		remove_targeted_action()
-		chassis.log_message("[capitalize(declent_ru(NOMINATIVE))] removed from equipment.")
+		chassis.log_message("[capitalize(declent_ru(NOMINATIVE))] снят с оборудования.")
 		chassis = null
 		set_ready_state(1)
 

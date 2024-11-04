@@ -50,7 +50,7 @@
 	if(!action_checks(target))
 		return
 	if(cooldown_timer > world.time)
-		occupant_message("<span class='warning'>[declent_ru(NOMINATIVE)] всё еще заряжается.</span>")
+		occupant_message("<span class='warning'>[capitalize(declent_ru(NOMINATIVE))] всё еще заряжается.</span>")
 		return
 	switch(mode)
 		if(MECH_GRAVCAT_MODE_GRAVSLING)
