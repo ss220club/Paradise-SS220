@@ -37,7 +37,7 @@
 	new /obj/effect/decal/cleanable/blood/gibs(T)
 	new /obj/effect/decal/cleanable/blood(T)
 	STOP_PROCESSING(SSobj, src)
-	..()
+	return ..()
 
 /obj/structure/decorative_structures/corpse/attack_hand(mob/living/user)
 	take_damage(pick(2,3), BRUTE, "melee")
