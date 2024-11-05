@@ -10,7 +10,7 @@
 /datum/element/red_alert_access/Detach(obj/item/card/id/source, force)
 	UnregisterSignal(source, COMSIG_ID_GET_ACCESS)
 	UnregisterSignal(source, COMSIG_PARENT_EXAMINE)
-	. = ..()
+	return ..()
 
 /datum/element/red_alert_access/proc/add_access(obj/item/card/id/source, list/new_access = list())
 	SIGNAL_HANDLER
