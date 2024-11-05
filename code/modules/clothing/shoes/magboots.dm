@@ -208,7 +208,7 @@
 	var/obj/item/assembly/signaler/anomaly/grav/core = null
 	var/obj/item/stock_parts/cell/cell = null
 
-/obj/item/clothing/shoes/magboots/gravity/Initialize()
+/obj/item/clothing/shoes/magboots/gravity/Initialize(mapload)
 	. = ..()
 	style = new()
 
@@ -348,4 +348,5 @@
 		recharging_time = world.time + recharging_rate
 		cell.use(dash_cost)
 	else
+		REMOVE_TRAIT(user, TRAIT_FLYING, "gravity_boots")
 		to_chat(user, "<span class='warning'>Something prevents you from dashing forward!</span>")
