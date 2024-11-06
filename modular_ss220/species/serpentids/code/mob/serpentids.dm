@@ -143,7 +143,7 @@
 			var/limb_armor = limb.brute_dam + limb.burn_dam
 			armor_count += limb_armor
 
-		if (gene_degradation)
+		if(gene_degradation)
 			H.adjustCloneLoss(gene_degradation)
 
 		gene_lastcall = 0

@@ -29,18 +29,3 @@
 
 /atom/proc/tts_trait_remove(trait)
 	SEND_SIGNAL(src, COMSIG_ATOM_TTS_TRAIT_REMOVE, trait)
-
-/mob/add_language(language, force)
-	. = ..()
-	RegisterSignal(src, COMSIG_ATOM_PRE_TTS_CAST, PROC_REF(atom_pre_tts_cast_mob))
-
-/mob/remove_language(rem_language, force)
-	. = ..()
-	UnregisterSignal(src, COMSIG_ATOM_PRE_TTS_CAST)
-
-/mob/proc/atom_pre_tts_cast_mob(atom, listener, message, location, is_local, effect, traits, preSFX, postSFX)
-	SIGNAL_HANDLER
-	for(var/datum/multilingual_say_piece/phrase in message)
-		if(phrase.speaking.no_tts)
-			return COMPONENT_TTS_INTERRUPT
-	return FALSE
