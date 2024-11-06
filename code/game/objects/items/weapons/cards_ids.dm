@@ -1189,6 +1189,8 @@
 			return "Thunderdome Red"
 		if("TDgreen")
 			return "Thunderdome Green"
+		if("brigphysician")
+			return "Security Medic"	//SS220 ADDICTION - add brig physician
 		else
 			return capitalize(skin)
 

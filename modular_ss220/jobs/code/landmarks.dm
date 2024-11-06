@@ -42,3 +42,8 @@
 	icon = 'modular_ss220/jobs/icons/landmarks.dmi'
 	name = "Bath"
 	icon_state = "bath"
+
+/obj/effect/landmark/start/brigphysician
+	icon = 'modular_ss220/jobs/icons/landmarks.dmi'
+	name = "Security Medic"
+	icon_state = "brigphysician"

@@ -13,6 +13,7 @@ GLOBAL_LIST_INIT(engineering_positions_ss220, list(
 ))
 
 GLOBAL_LIST_INIT(security_positions_ss220, list(
+	"Security Medic",
 	"Security Cadet",
 ))
 

@@ -186,6 +186,8 @@
 	H.dna.SetSEState(GLOB.soberblock, TRUE)
 	H.check_mutations = 1
 
+datum/job/brigphysic	// SS220 ADDITION - add brig physician
+
 /datum/job/officer
 	title = "Security Officer"
 	flag = JOB_OFFICER

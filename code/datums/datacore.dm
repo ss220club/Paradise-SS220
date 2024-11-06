@@ -533,6 +533,11 @@ GLOBAL_VAR_INIT(record_id_num, 1001)
 			clothes_s = new /icon('modular_ss220/jobs/icons/clothing/mob/uniform.dmi', "trainee_s")
 			clothes_s.Blend(new /icon('icons/mob/clothing/feet.dmi', "orange"), ICON_UNDERLAY)
 			clothes_s.Blend(new /icon('icons/mob/clothing/belt.dmi', "utility"), ICON_OVERLAY)
+
+		if("Security Medic")
+			clothes_s = new /icon('modular_ss220/jobs/icons/clothing/mob/uniform.dmi', "sec_medic_s")
+			clothes_s.Blend(new /icon('icons/mob/clothing/feet.dmi', "laceups"), ICON_UNDERLAY)
+			clothes_s.Blend(new /icon('icons/mob/clothing/suit.dmi', "labcoat_open"), ICON_OVERLAY)
 		// SS220 ADDITION - END
 
 		if("Syndicate Agent")

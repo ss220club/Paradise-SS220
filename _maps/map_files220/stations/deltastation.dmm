@@ -4724,11 +4724,10 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/fore2)
 "awv" = (
-/obj/machinery/computer/security,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dust,
+/obj/machinery/computer/med_data,
+/obj/machinery/light/directional/north,
 /turf/simulated/floor/plasteel/dark,
-/area/station/security/podpilot)
+/area/station/security/brigmed)
 "aww" = (
 /obj/structure/cable{
 	d2 = 8;
@@ -8060,17 +8059,25 @@
 	},
 /area/station/maintenance/disposal/west)
 "aIe" = (
-/obj/machinery/door/airlock/security/glass,
+/obj/machinery/door/airlock/security/glass{
+	id_tag = "brigmed"
+	},
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/structure/barricade/wooden,
-/obj/effect/mapping_helpers/airlock/access/any/security/general,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/airlock/access/any/security/brig,
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/plasteel/dark,
-/area/station/security/podpilot)
+/area/station/security/brigmed)
 "aIf" = (
 /obj/machinery/door/window/brigdoor{
 	dir = 1;
@@ -9113,7 +9120,6 @@
 /turf/space,
 /area/space/nearstation)
 "aLV" = (
-/obj/effect/spawner/window/reinforced/grilled,
 /obj/structure/cable{
 	d2 = 2;
 	icon_state = "0-2"
@@ -9123,8 +9129,11 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/effect/spawner/window/reinforced/polarized/grilled{
+	id = "BP"
+	},
 /turf/simulated/floor/plating,
-/area/station/security/podpilot)
+/area/station/security/brigmed)
 "aLW" = (
 /obj/structure/table,
 /obj/item/paper_bin{
@@ -9199,7 +9208,6 @@
 	},
 /area/station/engineering/mechanic)
 "aMe" = (
-/obj/effect/spawner/window/reinforced/grilled,
 /obj/structure/cable{
 	d2 = 2;
 	icon_state = "0-2"
@@ -9209,12 +9217,14 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
-/obj/machinery/door/poddoor/preopen{
-	id_tag = "Secure Gate";
-	name = "Security Blast Door"
+/obj/machinery/door/firedoor/border_only{
+	dir = 1
+	},
+/obj/effect/spawner/window/reinforced/polarized/grilled{
+	id = "BP"
 	},
 /turf/simulated/floor/plating,
-/area/station/security/podpilot)
+/area/station/security/brigmed)
 "aMf" = (
 /obj/structure/sign/vacuum/external,
 /turf/simulated/wall,
@@ -10771,15 +10781,19 @@
 	},
 /area/station/hallway/primary/central/se)
 "aTw" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dust,
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/plating,
-/area/station/security/podpilot)
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
+	},
+/turf/simulated/floor/plasteel/dark,
+/area/station/security/brigmed)
 "aTz" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/effect/decal/cleanable/dirt,
@@ -10811,12 +10825,19 @@
 /turf/simulated/floor/transparent/glass/reinforced,
 /area/station/public/pool)
 "aTD" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dust,
-/obj/effect/decal/cleanable/blood/oil/streak,
-/obj/item/clothing/head/welding,
-/turf/simulated/floor/plating,
-/area/station/security/podpilot)
+/obj/structure/table/reinforced,
+/obj/item/autopsy_scanner,
+/obj/machinery/light_switch/west{
+	pixel_x = -24;
+	pixel_y = -5
+	},
+/obj/machinery/button/windowtint/west{
+	pixel_x = -25;
+	pixel_y = 6;
+	id = "BP"
+	},
+/turf/simulated/floor/plasteel/dark,
+/area/station/security/brigmed)
 "aTE" = (
 /obj/structure/cable,
 /obj/effect/spawner/window/reinforced/polarized/grilled{
@@ -14311,16 +14332,12 @@
 /turf/simulated/floor/greengrid,
 /area/station/turret_protected/ai)
 "biJ" = (
-/obj/structure/table/reinforced,
-/obj/item/wrench{
-	name = "PodPilot Wrench";
-	desc = "Этим ключом явно много работали, но сейчас он покрыт пылью."
+/obj/machinery/alarm/directional/south,
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 1
 	},
-/obj/item/crowbar,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dust,
-/turf/simulated/floor/plating,
-/area/station/security/podpilot)
+/turf/simulated/floor/plasteel/dark,
+/area/station/security/brigmed)
 "biK" = (
 /turf/simulated/floor/engine/n20,
 /area/station/engineering/atmos)
@@ -14781,7 +14798,10 @@
 	},
 /area/station/security/prisonershuttle)
 "bjO" = (
-/obj/machinery/door/airlock/security/glass,
+/obj/machinery/door/airlock/security/glass{
+	id_tag = "brigmed";
+	id = "BP"
+	},
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/structure/cable{
 	d1 = 1;
@@ -14793,10 +14813,19 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
-/obj/structure/barricade/wooden,
-/obj/effect/mapping_helpers/airlock/access/any/security/general,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/airlock/access/any/security/brig,
+/obj/machinery/door/firedoor,
+/obj/effect/mapping_helpers/airlock/polarized{
+	id = "BP"
+	},
 /turf/simulated/floor/plasteel/dark,
-/area/station/security/podpilot)
+/area/station/security/brigmed)
 "bjP" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
@@ -14861,21 +14890,9 @@
 /turf/simulated/floor/plating,
 /area/station/public/vacant_office/secondary)
 "bkd" = (
-/obj/structure/table/reinforced,
-/obj/item/paper_bin/nanotrasen{
-	pixel_x = -6;
-	pixel_y = 4
-	},
-/obj/item/pen/multi{
-	pixel_x = -4;
-	pixel_y = 5
-	},
-/obj/item/restraints/handcuffs,
-/obj/effect/decal/cleanable/cobweb2,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dust,
+/obj/machinery/optable,
 /turf/simulated/floor/plasteel/dark,
-/area/station/security/podpilot)
+/area/station/security/brigmed)
 "bke" = (
 /obj/machinery/door/firedoor,
 /obj/structure/table/reinforced,
@@ -15251,12 +15268,8 @@
 /turf/simulated/floor/plasteel/grimy,
 /area/station/command/office/ce)
 "blN" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dust,
-/obj/structure/table/reinforced,
-/obj/item/storage/toolbox/fakesyndi,
-/turf/simulated/floor/plating,
-/area/station/security/podpilot)
+/turf/simulated/floor/plasteel/dark,
+/area/station/security/brigmed)
 "blO" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -23301,16 +23314,13 @@
 /turf/simulated/floor/plasteel,
 /area/station/engineering/tech_storage)
 "bOl" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dust,
-/obj/structure/sign/poster/ripped{
-	pixel_x = -32
-	},
 /obj/structure/chair{
 	dir = 4
 	},
+/obj/machinery/newscaster/security_unit/west,
+/obj/effect/landmark/start/brigphysician,
 /turf/simulated/floor/plasteel/dark,
-/area/station/security/podpilot)
+/area/station/security/brigmed)
 "bOn" = (
 /obj/structure/table,
 /obj/machinery/light_switch/west,
@@ -27126,10 +27136,13 @@
 /turf/simulated/floor/plasteel/dark,
 /area/station/command/office/hop)
 "caT" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dust,
+/obj/structure/morgue,
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
 /turf/simulated/floor/plasteel/dark,
-/area/station/security/podpilot)
+/area/station/security/brigmed)
 "caV" = (
 /obj/item/kirbyplants,
 /obj/machinery/light/directional/north,
@@ -37598,13 +37611,15 @@
 /turf/simulated/floor/engine,
 /area/station/science/toxins/mixing)
 "cRA" = (
-/obj/effect/spawner/window/reinforced/grilled,
 /obj/structure/cable{
 	d2 = 2;
 	icon_state = "0-2"
 	},
+/obj/effect/spawner/window/reinforced/polarized/grilled{
+	id = "BP"
+	},
 /turf/simulated/floor/plating,
-/area/station/security/podpilot)
+/area/station/security/brigmed)
 "cRD" = (
 /turf/simulated/wall/mineral/titanium,
 /area/shuttle/pod_2)
@@ -39394,10 +39409,11 @@
 /turf/simulated/floor/carpet,
 /area/station/legal/lawoffice)
 "cXS" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dust,
-/turf/simulated/floor/plating,
-/area/station/security/podpilot)
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 8
+	},
+/turf/simulated/floor/plasteel/dark,
+/area/station/security/brigmed)
 "cXT" = (
 /obj/effect/spawner/random/fungus/maybe,
 /turf/simulated/wall,
@@ -39465,11 +39481,18 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/starboard2)
 "cYh" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dust,
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/crematorium{
+	dir = 1;
+	id = 2
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel/dark,
-/area/station/security/podpilot)
+/area/station/security/brigmed)
 "cYi" = (
 /obj/structure/disposaloutlet{
 	name = "evidence outlet"
@@ -41616,22 +41639,13 @@
 	},
 /area/station/maintenance/fore)
 "diL" = (
-/obj/effect/decal/cleanable/cobweb,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dust,
-/obj/structure/rack,
-/obj/item/secbot_assembly{
-	desc = "Мы не ценим то что имеем пока не потеряем.";
-	pixel_y = 6;
-	name = "Podsky"
+/obj/structure/morgue,
+/obj/structure/window/reinforced{
+	dir = 1
 	},
-/obj/machinery/door_control/shutter/north{
-	id = "secpilot";
-	req_access = list(63);
-	name = "\improper SecPilot pod door"
-	},
+/obj/structure/window/reinforced,
 /turf/simulated/floor/plasteel/dark,
-/area/station/security/podpilot)
+/area/station/security/brigmed)
 "diN" = (
 /obj/machinery/door/airlock/maintenance,
 /obj/effect/mapping_helpers/airlock/access/any/engineering/maintenance,
@@ -55125,16 +55139,9 @@
 /turf/simulated/floor/carpet/black,
 /area/station/service/chapel/bedroom)
 "fqo" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/effect/decal/cleanable/blood/old,
-/obj/structure/closet/cardboard,
+/obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/plasteel/dark,
-/area/station/security/podpilot)
+/area/station/security/brigmed)
 "fqr" = (
 /turf/simulated/floor/plasteel{
 	dir = 5;
@@ -58973,11 +58980,11 @@
 	},
 /area/station/medical/morgue)
 "gBh" = (
-/obj/effect/decal/cleanable/cobweb2,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dust,
-/turf/simulated/floor/plating,
-/area/station/security/podpilot)
+/obj/structure/closet/secure_closet/medical2,
+/obj/item/defibrillator/loaded,
+/obj/item/handheld_defibrillator,
+/turf/simulated/floor/plasteel/dark,
+/area/station/security/brigmed)
 "gBo" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -61453,11 +61460,18 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/starboard)
 "hov" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dust,
 /obj/machinery/light/small/directional/south,
+/obj/structure/morgue{
+	dir = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel/dark,
-/area/station/security/podpilot)
+/area/station/security/brigmed)
 "hox" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
@@ -63530,15 +63544,24 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/fore)
 "hSp" = (
-/obj/item/flashlight,
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/sign/poster/ripped{
-	pixel_x = -32
+/obj/structure/shelf/medbay,
+/obj/item/reagent_containers/spray/cleaner{
+	pixel_y = 10;
+	pixel_x = -8
 	},
-/obj/structure/rack,
-/obj/machinery/light/small/directional/west,
+/obj/item/clothing/glasses/hud/health{
+	pixel_y = 10;
+	pixel_x = 5
+	},
+/obj/item/storage/belt/medical{
+	pixel_y = -6
+	},
+/obj/machinery/camera{
+	dir = 4;
+	c_tag = "Brig Med 1"
+	},
 /turf/simulated/floor/plasteel/dark,
-/area/station/security/podpilot)
+/area/station/security/brigmed)
 "hSK" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -64158,11 +64181,8 @@
 /area/station/maintenance/aft)
 "idf" = (
 /obj/machinery/computer/secure_data,
-/obj/effect/decal/cleanable/cobweb,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/plasteel/dark,
-/area/station/security/podpilot)
+/area/station/security/brigmed)
 "ido" = (
 /obj/machinery/economy/vending/wallmed/directional/east,
 /turf/simulated/floor/plasteel{
@@ -64746,9 +64766,9 @@
 	},
 /area/station/medical/medbay)
 "ilT" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/simulated/floor/plating,
-/area/station/security/podpilot)
+/obj/structure/sign/poster/official/taa,
+/turf/simulated/wall/r_wall,
+/area/station/security/brigmed)
 "ilY" = (
 /obj/structure/table/reinforced,
 /obj/machinery/door/firedoor,
@@ -65556,13 +65576,12 @@
 	},
 /area/station/maintenance/apmaint)
 "iwi" = (
-/obj/structure/closet/crate,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dust,
 /obj/structure/cable,
 /obj/machinery/power/apc/directional/south,
+/obj/structure/bed/roller,
+/obj/machinery/iv_drip,
 /turf/simulated/floor/plasteel/dark,
-/area/station/security/podpilot)
+/area/station/security/brigmed)
 "iwz" = (
 /obj/machinery/door/airlock/security/glass,
 /obj/effect/mapping_helpers/airlock/autoname,
@@ -68473,6 +68492,12 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
+	},
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "red"
@@ -69714,6 +69739,7 @@
 	dir = 8
 	},
 /obj/machinery/firealarm/directional/east,
+/obj/effect/landmark/start/brigphysician,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "red"
@@ -71802,14 +71828,18 @@
 /turf/simulated/floor/plating,
 /area/station/science/research)
 "kjw" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
+/obj/machinery/crema_switch{
+	pixel_y = 0;
+	id = 2;
+	idle_power_consumption = 5000;
+	pixel_x = 25
+	},
+/obj/item/radio/intercom/directional/east{
+	pixel_x = 31;
+	pixel_y = 0
 	},
 /turf/simulated/floor/plasteel/dark,
-/area/station/security/podpilot)
+/area/station/security/brigmed)
 "kjB" = (
 /obj/structure/chair/stool{
 	dir = 8
@@ -74835,6 +74865,7 @@
 /obj/structure/chair{
 	dir = 4
 	},
+/obj/effect/landmark/start/brigphysician,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "darkred"
@@ -83397,7 +83428,6 @@
 	},
 /area/station/medical/medbay2)
 "nGR" = (
-/obj/effect/decal/cleanable/dirt,
 /obj/structure/cable{
 	d1 = 2;
 	d2 = 4;
@@ -83408,8 +83438,14 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
-/turf/simulated/floor/plating,
-/area/station/security/podpilot)
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
+	},
+/turf/simulated/floor/plasteel/dark,
+/area/station/security/brigmed)
 "nGZ" = (
 /obj/machinery/alarm/directional/east,
 /obj/structure/table/reinforced,
@@ -86619,12 +86655,17 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/solar_maintenance/aft_port)
 "ozs" = (
-/obj/structure/closet/secure_closet/security,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/cobweb,
 /obj/machinery/light_switch/north,
+/obj/item/roller_holder,
+/obj/item/roller_holder,
+/obj/machinery/light/small/directional/north,
+/obj/machinery/firealarm/directional/west,
+/obj/structure/closet/secure_closet/brigphysic,
+/obj/item/soap/deluxe/laundry,
+/obj/item/clothing/under/rank/security/brigphysic,
+/obj/item/clothing/under/rank/security/brigphysic/skirt,
 /turf/simulated/floor/plasteel/dark,
-/area/station/security/podpilot)
+/area/station/security/brigmed)
 "ozw" = (
 /obj/structure/filingcabinet/chestdrawer,
 /obj/machinery/light/directional/north,
@@ -87755,15 +87796,21 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/aft)
 "oRu" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dust,
-/obj/structure/sign/poster/contraband/fun_police{
-	pixel_x = 32
+/obj/structure/table/reinforced,
+/obj/item/paper_bin/nanotrasen{
+	pixel_x = -6;
+	pixel_y = 4
 	},
-/obj/structure/closet,
-/obj/item/melee/baton,
+/obj/item/pen/multi{
+	pixel_x = -4;
+	pixel_y = 5
+	},
+/obj/machinery/photocopier{
+	pixel_x = 0;
+	pixel_y = 32
+	},
 /turf/simulated/floor/plasteel/dark,
-/area/station/security/podpilot)
+/area/station/security/brigmed)
 "oRx" = (
 /obj/machinery/door/airlock/maintenance,
 /obj/structure/disposalpipe/segment{
@@ -87999,7 +88046,7 @@
 /area/station/command/office/hop)
 "oVL" = (
 /turf/simulated/wall/r_wall,
-/area/station/security/podpilot)
+/area/station/security/brigmed)
 "oVN" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 8
@@ -92173,15 +92220,19 @@
 	},
 /area/station/security/processing)
 "qfb" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dust,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 8;
 	icon_state = "1-8"
 	},
-/turf/simulated/floor/plating,
-/area/station/security/podpilot)
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
+	},
+/turf/simulated/floor/plasteel/dark,
+/area/station/security/brigmed)
 "qfc" = (
 /obj/structure/table/wood,
 /obj/item/radio/security{
@@ -93296,10 +93347,12 @@
 	},
 /area/station/hallway/primary/fore)
 "qvV" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/ore_box,
-/turf/simulated/floor/plating,
-/area/station/security/podpilot)
+/obj/machinery/sleeper{
+	pixel_x = 3
+	},
+/obj/structure/window/reinforced,
+/turf/simulated/floor/plasteel/dark,
+/area/station/security/brigmed)
 "qwd" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -93593,12 +93646,14 @@
 	},
 /area/station/security/interrogation/observation)
 "qBe" = (
-/obj/structure/fans/tiny,
-/obj/machinery/door/poddoor/multi_tile/two_tile_ver{
-	id_tag = "secpilot"
+/obj/machinery/sleeper{
+	pixel_x = 3
 	},
-/turf/simulated/floor/plating,
-/area/station/security/podpilot)
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/turf/simulated/floor/plasteel/dark,
+/area/station/security/brigmed)
 "qBo" = (
 /obj/structure/grille/broken,
 /obj/effect/decal/cleanable/dirt,
@@ -94636,19 +94691,13 @@
 	},
 /area/station/supply/warehouse)
 "qPu" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dust,
-/obj/item/storage/toolbox/electrical{
-	pixel_y = 5
-	},
-/obj/structure/table/reinforced,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/plating,
-/area/station/security/podpilot)
+/turf/simulated/floor/plasteel/dark,
+/area/station/security/brigmed)
 "qPD" = (
 /obj/effect/spawner/random_spawners/wall_rusted_maybe,
 /turf/simulated/wall,
@@ -94683,12 +94732,6 @@
 /obj/structure/disposalpipe/junction/reversed{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 4
-	},
 /obj/structure/cable{
 	d1 = 2;
 	d2 = 4;
@@ -94699,6 +94742,8 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
+/obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
+/obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
 /turf/simulated/floor/plasteel{
 	icon_state = "redfull"
 	},
@@ -96776,9 +96821,17 @@
 /turf/simulated/floor/plating,
 /area/station/security/interrogation)
 "ruC" = (
-/obj/structure/fans/tiny,
-/turf/simulated/floor/plating,
-/area/station/security/podpilot)
+/obj/machinery/computer/operating{
+	dir = 8
+	},
+/obj/machinery/light/small/directional/east,
+/obj/machinery/firealarm/directional/east,
+/obj/machinery/camera{
+	dir = 8;
+	c_tag = "Brig Med 2"
+	},
+/turf/simulated/floor/plasteel/dark,
+/area/station/security/brigmed)
 "ruI" = (
 /obj/structure/table,
 /obj/item/reagent_containers/drinks/coffee{
@@ -96956,11 +97009,13 @@
 /turf/simulated/wall,
 /area/station/service/barber)
 "rwX" = (
-/obj/structure/dispenser/oxygen,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dust,
+/obj/machinery/bodyscanner,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/machinery/light/small/directional/east,
 /turf/simulated/floor/plasteel/dark,
-/area/station/security/podpilot)
+/area/station/security/brigmed)
 "rwY" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -102183,6 +102238,7 @@
 /obj/effect/turf_decal/siding/wood{
 	dir = 8
 	},
+/obj/item/cartridge/secmed,
 /turf/simulated/floor/wood,
 /area/station/command/office/hos)
 "sYI" = (
@@ -107157,10 +107213,10 @@
 /turf/simulated/floor/carpet/royalblack,
 /area/station/legal/magistrate)
 "uxJ" = (
-/obj/structure/closet/crate,
-/obj/effect/decal/cleanable/dirt,
+/obj/machinery/economy/vending/medical,
+/obj/item/radio/intercom/directional/south,
 /turf/simulated/floor/plasteel/dark,
-/area/station/security/podpilot)
+/area/station/security/brigmed)
 "uyc" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -107808,9 +107864,12 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 1
+	},
 /turf/simulated/floor/plasteel/dark,
-/area/station/security/podpilot)
+/area/station/security/brigmed)
 "uJH" = (
 /obj/machinery/atmospherics/unary/vent_pump{
 	autolink_id = "n2o_out";
@@ -109581,17 +109640,18 @@
 	},
 /area/station/security/storage)
 "viW" = (
-/obj/effect/spawner/window/reinforced/grilled,
 /obj/structure/cable{
 	d2 = 8;
 	icon_state = "0-8"
 	},
-/obj/machinery/door/poddoor/preopen{
-	id_tag = "Secure Gate";
-	name = "Security Blast Door"
+/obj/effect/spawner/window/reinforced/polarized/grilled{
+	id = "BP"
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 1
 	},
 /turf/simulated/floor/plating,
-/area/station/security/podpilot)
+/area/station/security/brigmed)
 "viY" = (
 /turf/simulated/floor/plasteel{
 	dir = 1;
@@ -114550,15 +114610,14 @@
 /turf/simulated/floor/plasteel/white,
 /area/station/service/kitchen)
 "wKy" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dust,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/plating,
-/area/station/security/podpilot)
+/obj/machinery/atmospherics/unary/vent_pump/on,
+/turf/simulated/floor/plasteel/dark,
+/area/station/security/brigmed)
 "wLe" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -114807,9 +114866,9 @@
 	},
 /area/station/maintenance/port)
 "wPa" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/crate/freezer/iv_storage,
 /turf/simulated/floor/plasteel/dark,
-/area/station/security/podpilot)
+/area/station/security/brigmed)
 "wPb" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -118925,11 +118984,17 @@
 	},
 /area/station/science/genetics)
 "xVq" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dust,
-/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/morgue{
+	dir = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel/dark,
-/area/station/security/podpilot)
+/area/station/security/brigmed)
 "xVw" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -175288,7 +175353,7 @@ oVL
 oVL
 oVL
 ozs
-kjw
+aTw
 uxJ
 siM
 vix
@@ -175799,9 +175864,9 @@ vUE
 oyu
 nSd
 awv
-caT
-ilT
-wPa
+blN
+blN
+fqo
 uJu
 biJ
 oVL
@@ -176055,11 +176120,11 @@ xFq
 jqC
 xAF
 nSd
-bkd
+blN
 oRu
-wPa
+qBe
 qvV
-fqo
+aTw
 rwX
 oVL
 pTD
@@ -176313,7 +176378,7 @@ qPc
 hFx
 nSd
 oVL
-oVL
+ilT
 cRA
 aLV
 bjO
@@ -177086,7 +177151,7 @@ abj
 aaa
 viW
 blN
-cXS
+bkd
 cXS
 cYh
 oVL
@@ -177343,8 +177408,8 @@ aaa
 abj
 oVL
 gBh
-caT
-caT
+ruC
+kjw
 xVq
 oVL
 sCQ
@@ -177600,8 +177665,8 @@ aaa
 abj
 oVL
 oVL
-ruC
-qBe
+oVL
+oVL
 oVL
 oVL
 abj
@@ -177856,10 +177921,10 @@ aaa
 aaa
 abj
 abj
-aaa
-aaa
-aaa
-aaa
+abj
+abj
+abj
+abj
 abj
 abj
 aaa

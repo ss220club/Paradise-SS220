@@ -179,3 +179,24 @@
 	new /obj/item/grenade/chem_grenade/cleaner(src)
 	new /obj/item/grenade/chem_grenade/cleaner(src)
 	update_icon()
+
+// Гарнитура Бриг-Медика //
+/obj/item/encryptionkey/headset_secmedical
+	name = "Security-Medical Radio Encryption Key"
+	icon_state = "sec_cypherkey"
+	channels = list("Security" = 1, "Medical" = 1)
+
+/obj/item/radio/headset/headset_secmedical
+	name = "Security-medical radio headset"
+	desc = "Это используется вашим элитным медиком службы безопасности."
+	icon_state = "sec_headset"
+	item_state = "headset"
+	ks2type = /obj/item/encryptionkey/headset_secmedical
+
+
+/obj/item/radio/headset/headset_secmedical/alt
+	name = "Security-medical bowman headset"
+	desc = "Это используется вашим элитным медиком службы безопасности. Защищает уши от светошумовых гранат."
+	flags = EARBANGPROTECT
+	icon_state = "sec_headset_alt"
+	item_state = "sec_headset_alt"

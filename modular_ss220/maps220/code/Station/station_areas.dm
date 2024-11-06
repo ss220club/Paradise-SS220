@@ -20,6 +20,12 @@
 	icon_state = "security"
 	request_console_name = "Security"
 
+/area/station/security/brigmed
+	name = "Медпункт отдела Службы Безопасности"
+	icon = 'modular_ss220/maps220/icons/areas.dmi'
+	icon_state = "brigmed"
+	request_console_name = "Security"
+
 /area/mine/laborcamp
 	request_console_name = "Labor Camp"
 

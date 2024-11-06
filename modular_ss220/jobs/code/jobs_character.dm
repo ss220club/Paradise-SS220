@@ -5,7 +5,7 @@
 	var/datum/outfit/plasmaman/O = new /datum/outfit/plasmaman
 	switch(current_job)
 
-		if("Security Cadet")
+		if("Security Cadet", "Security Medic")
 			O = new /datum/outfit/plasmaman/security
 
 		if("Medical Intern")
@@ -207,6 +207,19 @@
 				else if(backbag == 3 || backbag == 4)
 					clothes_s.Blend(new /icon('icons/mob/clothing/back.dmi', "satchel-clown"), ICON_OVERLAY)
 
+			if(JOB_BRIGPHYSICIAN)
+				clothes_s = new /icon('modular_ss220/jobs/icons/clothing/mob/uniform.dmi', "sec_medic[g ? "_skirt" : ""]_s")
+				clothes_s.Blend(new /icon('icons/mob/clothing/feet.dmi', "laceups"), ICON_UNDERLAY)
+				clothes_s.Blend(new /icon('icons/mob/clothing/hands.dmi', "bgloves"), ICON_UNDERLAY)
+				clothes_s.Blend(new /icon('icons/mob/clothing/head/beret.dmi',"beret_officer"), ICON_UNDERLAY)
+				clothes_s.Blend(new /icon('icons/mob/clothing/suit.dmi', "labcoat_open"), ICON_OVERLAY)
+				switch(backbag)
+					if(1)
+						clothes_s.Blend(new /icon('icons/mob/clothing/back.dmi', "securitypack"), ICON_OVERLAY)
+					if(2)
+						clothes_s.Blend(new /icon('icons/mob/clothing/back.dmi', "satchel-sec"), ICON_OVERLAY)
+					if(3)
+						clothes_s.Blend(new /icon('icons/mob/clothing/back.dmi', "satchel"), ICON_OVERLAY)
 
 	else if(job_support_high)
 		switch(job_support_high)

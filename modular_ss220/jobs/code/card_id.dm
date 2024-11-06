@@ -209,3 +209,11 @@
 	access = list(ACCESS_CLOWN, ACCESS_THEATRE, ACCESS_MAINT_TUNNELS, ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_BRIG, ACCESS_COURT)
 	icon = 'modular_ss220/aesthetics/better_ids/icons/better_ids.dmi'
 	icon_state = "securityclown"
+
+/obj/item/card/id/brigphysician
+	name = "Security Medic ID"
+	icon = 'modular_ss220/aesthetics/better_ids/icons/better_ids.dmi'
+	icon_state = "brigphysician"
+	registered_name = "Security Medic"
+	access = list(ACCESS_BRIG, ACCESS_COURT, ACCESS_EVA, ACCESS_MAINT_TUNNELS, ACCESS_MEDICAL, ACCESS_MORGUE, ACCESS_SEC_DOORS, ACCESS_SECURITY, ACCESS_SURGERY, ACCESS_WEAPONS, ACCESS_CREMATORIUM)
+

@@ -1,7 +1,7 @@
 GLOBAL_LIST_INIT(card_skins_ss220, list(
 	"id", "silver", "gold", "data",
 	"assistant", "civilian", "librarian", "chaplain", "janitor", "botanist", "chef", "bartender", "clown", "mime",
-	"intern", "medical", "paramedic", "psychiatrist", "coroner", "virologist", "chemist", "warden", "internalaffairsagent",
+	"intern", "medical", "paramedic", "psychiatrist", "coroner", "virologist", "chemist", "brigphysician", "warden", "internalaffairsagent",
 	"geneticist", "student", "research", "roboticist", "cadet", "security", "detective", "quartermaster", "cargo", "explorer",
 	"shaftminer", "trainee", "engineering", "atmostech", "captain", "HoP", "HoS", "CMO", "RD", "CE", "prisoner", "rainbow"
 ))
