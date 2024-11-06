@@ -9,14 +9,15 @@
 //Количество времени, через сколько происходит нанесение генетического урона
 #define SERPENTID_GENE_DEGRADATION_CD 60
 
+//Обычный, здоровый ГБС без дополнительных химикатов и болезней потребляет 0.1 единицы голода в тик (2 секунды), считаем от хорошо насыщенного до истощения
 //Сколько голода потребляют легкие (сальбутамол и подвыработка кислорода)
-#define SERPENTID_ORGAN_HUNGER_LUNGS 1
+#define SERPENTID_ORGAN_HUNGER_LUNGS 1 //11 минут
 //Сколько голода потребляют почки (скрытность)
-#define SERPENTID_ORGAN_HUNGER_KIDNEYS 0.5
+#define SERPENTID_ORGAN_HUNGER_KIDNEYS 0.5 //19 минут
 //Сколько голода потребляют глаза (ПНВ)
-#define SERPENTID_ORGAN_HUNGER_EYES 0.05
+#define SERPENTID_ORGAN_HUNGER_EYES 0.05  //58 минут
 //Сколько голода потребляют уши (сонар)
-#define SERPENTID_ORGAN_HUNGER_EARS 0.1
+#define SERPENTID_ORGAN_HUNGER_EARS 0.1  //78 минут
 
 //минимальное цветовосприятие
 #define SERPENTID_EYES_LOW_VISIBLE_VALUE 0.5

@@ -1,19 +1,19 @@
 #define EMOTE_HUMAN_SERPENTIDROAR 			"Рычать"
 #define EMOTE_HUMAN_SERPENTIDHISS 			"Шипеть"
-#define EMOTE_HUMAN_SERPENTIDWIGGLE 			"Шевелить усиками"
+#define EMOTE_HUMAN_SERPENTIDWIGGLE 		"Шевелить усиками"
 
 /mob/living/carbon/human/proc/emote_serpentidroar()
-	set name = "< " + EMOTE_HUMAN_ROAR + " >"
+	set name = "< " + EMOTE_HUMAN_SERPENTIDROAR + " >"
 	set category = "Эмоции"
 	emote("serpentidroar", intentional = TRUE)
 
 /mob/living/carbon/human/proc/emote_serpentidhiss()
-	set name = "< " + EMOTE_HUMAN_HISS + " >"
+	set name = "< " + EMOTE_HUMAN_SERPENTIDHISS + " >"
 	set category = "Эмоции"
 	emote("serpentidhiss", intentional = TRUE)
 
 /mob/living/carbon/human/proc/emote_serpentidwiggles()
-	set name = "< " + EMOTE_HUMAN_WIGGLES + " >"
+	set name = "< " + EMOTE_HUMAN_SERPENTIDWIGGLE + " >"
 	set category = "Эмоции"
 	emote("serpentidwiggles", intentional = TRUE)
 

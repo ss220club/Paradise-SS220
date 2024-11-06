@@ -133,17 +133,19 @@
 
 //Перенести на карапас/грудь
 /datum/species/serpentid/handle_life(mob/living/carbon/human/H)
-	var/armor_count = 0
-	var/gene_degradation = 0
-	for(var/obj/item/organ/external/limb in H.bodyparts)
-		var/allow_part = has_limbs[limb.limb_name]["path"]
-		if(limb.type != allow_part)
-			gene_degradation += SERPENTID_GENE_DEGRADATION_DAMAGE
-		var/limb_armor = limb.brute_dam + limb.burn_dam
-		armor_count += limb_armor
+	if(gene_lastcall >= SERPENTID_GENE_DEGRADATION_CD)
+		var/armor_count = 0
+		var/gene_degradation = 0
+		for(var/obj/item/organ/external/limb in H.bodyparts)
+			var/allow_part = has_limbs[limb.limb_name]["path"]
+			if(limb.type != allow_part)
+				gene_degradation += SERPENTID_GENE_DEGRADATION_DAMAGE
+			var/limb_armor = limb.brute_dam + limb.burn_dam
+			armor_count += limb_armor
 
-	if(gene_lastcall >= SERPENTID_GENE_DEGRADATION_CD && gene_degradation)
-		H.adjustCloneLoss(gene_degradation)
+		if (gene_degradation)
+			H.adjustCloneLoss(gene_degradation)
+
 		gene_lastcall = 0
 	else
 		gene_lastcall += 1
@@ -214,7 +216,4 @@
 
 //Расширение для действий органов серпентидов
 /datum/action/item_action/organ_action/toggle/serpentid
-
-/datum/action/item_action/organ_action/toggle/serpentid/New(Target)
-	. = ..()
 	name = "serpentid organ selection"

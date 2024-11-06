@@ -13,11 +13,12 @@
 	actions_types = 		list(/datum/action/item_action/organ_action/toggle/serpentid)
 	action_icon = 			list(/datum/action/item_action/organ_action/toggle/serpentid = 'modular_ss220/species/serpentids/icons/organs.dmi')
 	action_icon_state = 	list(/datum/action/item_action/organ_action/toggle/serpentid = "serpentid_abilities")
-	var/chemical_consuption = 1
+	var/chemical_consuption = SERPENTID_ORGAN_HUNGER_LUNGS
 	var/obj/item/tank/internals/oxygen/serpentid_vault = new /obj/item/tank/internals/oxygen/serpentid_vault_tank
 	var/chem_to_oxy_mult = 0.1
 	var/danger_air = FALSE
 	var/hand_active = FALSE
+	var/active_secretion = FALSE
 	var/salbutamol_production = 0.5
 	radial_action_state = "ballon"
 	radial_action_icon = 'modular_ss220/species/serpentids/icons/organs.dmi'
@@ -26,7 +27,8 @@
 	. = ..()
 	AddComponent(/datum/component/organ_decay, 0.05, BASIC_RECOVER_VALUE)
 	AddComponent(/datum/component/organ_toxin_damage, 0.05)
-	AddComponent(/datum/component/organ_action, caller_organ = src, state = radial_action_state, icon = radial_action_icon)
+	AddComponent(/datum/component/organ_action, radial_action_state, radial_action_icon)
+	AddComponent(/datum/component/hunger_organ)
 
 /obj/item/tank/internals/oxygen/serpentid_vault_tank
 	name = "serpentid oxygen vault"
@@ -62,8 +64,6 @@
 	if(!owner)
 		return
 
-	var/can_secretion = owner.nutrition > chemical_consuption
-	var/danger_state = owner.getOxyLoss() > 0
 	var/datum/gas_mixture/breath
 	var/datum/organ/lungs/serpentid/lung_data = organ_datums[organ_tag]
 	var/breath_moles = 0
@@ -75,9 +75,14 @@
 	breath = environment.get_by_amount(breath_moles)
 	danger_air = lung_data.in_danger_zone(breath)
 
-	if(danger_state && can_secretion)
-		owner.reagents.add_reagent("salbutamol", salbutamol_production)
-		owner.adjust_nutrition(-chemical_consuption)
+	if(owner.getOxyLoss())
+		if(!active_secretion)
+			switch_mode(FALSE)
+		else
+			owner.reagents.add_reagent("salbutamol", salbutamol_production)
+	else
+		if(active_secretion)
+			switch_mode(TRUE)
 
 	if(!hand_active)
 		if(danger_air && (owner.stat == UNCONSCIOUS))
@@ -90,10 +95,14 @@
 	var/pressure_value = int_tank_air.return_pressure()
 	if(pressure_value < 50)
 		var/replenish_value = 0
-		if(danger_air && can_secretion)
-			replenish_value = chemical_consuption * chem_to_oxy_mult
-			owner.adjust_nutrition(-chemical_consuption)
-		if(!danger_air)
+		if(danger_air)
+			if(!active_secretion)
+				switch_mode(FALSE)
+			else
+				replenish_value = chemical_consuption * chem_to_oxy_mult
+		else
+			if(active_secretion)
+				switch_mode(TRUE)
 			if(environment)
 				breath_moles = environment.total_moles()*BREATH_PERCENTAGE
 			var/datum/gas_mixture/replenish_gas = environment.get_by_amount(breath_moles)
@@ -202,6 +211,16 @@
 	var/danger_zone = O2_pp || N2_pp || Toxins_pp || CO2_pp || SA_pp
 
 	return danger_zone
+
+/obj/item/organ/internal/lungs/serpentid/switch_mode(force_off = FALSE)
+	. = ..()
+	if(!force_off && owner?.nutrition >= NUTRITION_LEVEL_HYPOGLYCEMIA && !(status & ORGAN_DEAD))
+		active_secretion = TRUE
+		chemical_consuption = initial(chemical_consuption)
+	else
+		active_secretion = FALSE
+		chemical_consuption = 0
+	SEND_SIGNAL(src, COMSIG_ORGAN_CHANGE_CHEM_CONSUPTION, chemical_consuption)
 
 #undef SERPENTID_COLD_THRESHOLD_LEVEL_BASE
 #undef SERPENTID_COLD_THRESHOLD_LEVEL_DOWN

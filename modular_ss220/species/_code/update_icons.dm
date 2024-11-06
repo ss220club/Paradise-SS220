@@ -20,7 +20,8 @@
 	preview_icon.Blend(new /icon(icobase, "groin_[gender]"), ICON_OVERLAY)
 	preview_icon.Blend(new /icon(icobase, "head_[gender]"), ICON_OVERLAY)
 	for(var/name in list("chest", "groin", "head", "r_arm", "r_hand", "r_leg", "r_foot", "l_leg", "l_foot", "l_arm", "l_hand"))
-		if(organ_data[name] == "amputated") continue
+		if(organ_data[name] == "amputated")
+			continue
 		if(organ_data[name] == "cyborg")
 			var/datum/robolimb/R
 			if(rlimb_data[name]) R = GLOB.all_robolimbs[rlimb_data[name]]

@@ -21,13 +21,11 @@
 	SIGNAL_HANDLER
 	if(isnull(organ.owner))
 		return TRUE
-	//var/chemical_volume = organ.owner?.get_chemical_value(chemical_id)
-	if(organ.owner.nutrition < consuption_count)
-		//Если количества недостаточно - выключить режим
+	if(consuption_count && organ.owner.nutrition > NUTRITION_LEVEL_HYPOGLYCEMIA)
+		organ.owner.adjust_nutrition(-consuption_count)
+	else //Если количества недостаточно - выключить режим
 		organ.switch_mode(force_off = TRUE)
-	else
-		if(consuption_count)
-			organ.owner.adjust_nutrition(-consuption_count)
+
 
 /datum/component/hunger_organ/proc/hunger_change_consuption(holder, new_consuption_count)
 	SIGNAL_HANDLER

@@ -17,7 +17,7 @@
 	AddComponent(/datum/component/organ_decay, 0.03, BASIC_RECOVER_VALUE)
 	AddComponent(/datum/component/organ_toxin_damage, 0.15)
 	AddComponent(/datum/component/hunger_organ)
-	AddComponent(/datum/component/organ_action, caller_organ = src, state = radial_action_state, icon = radial_action_icon)
+	AddComponent(/datum/component/organ_action, radial_action_state, radial_action_icon)
 
 /obj/item/organ/internal/kidneys/serpentid/on_life()
 	. = .. ()
@@ -33,7 +33,7 @@
 
 /obj/item/organ/internal/kidneys/serpentid/switch_mode(force_off = FALSE)
 	. = ..()
-	if(!force_off && owner?.nutrition >= chemical_consuption && !cloak_engaged && !(status & ORGAN_DEAD))
+	if(!force_off && owner?.nutrition >= NUTRITION_LEVEL_HYPOGLYCEMIA && !cloak_engaged && !(status & ORGAN_DEAD))
 		cloak_engaged = TRUE
 		chemical_consuption = initial(chemical_consuption)
 	else

@@ -41,7 +41,7 @@
 	if(activation_in_progress)
 		return
 	if(crit_fail || (!holder_l && !length(contents)))
-		to_chat(owner, "<span class='warning'>The implant doesn't respond. It seems to be broken...</span>")
+		to_chat(owner, span_warning("Вы не можете поднять клинки"))
 		return
 	var/extended = holder_l && !(holder_l in src)
 	if(extended)

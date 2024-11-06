@@ -1,3 +1,6 @@
+/datum/language/
+	var/no_tts = FALSE
+
 /datum/language/serpentid
 	name = "Nabberian"
 	desc = "Звук, издаваемый этим языком похоже на кононаду из скрежета мандибул, лезвий, стука конечностей, трения антенн и утробного рева"
@@ -8,6 +11,7 @@
 	key = "g"
 	flags = RESTRICTED | WHITELISTED
 	syllables = list("click","clack","cling","clang","cland","clog")
+	no_tts = TRUE
 
 /datum/language/serpentid/get_random_name(gender)
 	var/new_name = ""

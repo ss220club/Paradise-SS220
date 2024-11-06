@@ -39,3 +39,8 @@
 	SEND_SIGNAL(src, COMSIG_ORGAN_TOX_HANDLE)
 	SEND_SIGNAL(src, COMSIG_ORGAN_ON_LIFE)
 	. = .. ()
+
+/atom/movable/screen/alert/Click()
+	if(isliving(usr) && ..())
+		SEND_SIGNAL(usr, COMSIG_GADOM_UNLOAD)
+	. = ..()

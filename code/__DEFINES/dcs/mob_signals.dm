@@ -212,6 +212,3 @@
 /// Sent from datum/spell/ethereal_jaunt/cast, before the mob enters jaunting as a pre-check: (mob/jaunter)
 #define COMSIG_MOB_PRE_JAUNT "spell_mob_pre_jaunt"
 	#define COMPONENT_BLOCK_JAUNT (1<<0)
-
-/// called by /datum/component/mob_overlay_shift/proc/get_list(mob/component_holder, overlay, list/info_data) : (/datum/component/mob_overlay_shift)
-#define COMSIG_MOB_GET_OVERLAY_SHIFTS_LIST "get_list" // SS220 EDIT

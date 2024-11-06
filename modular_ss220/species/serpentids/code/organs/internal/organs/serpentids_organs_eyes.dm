@@ -22,7 +22,7 @@
 	AddComponent(/datum/component/organ_decay, 0.04, BASIC_RECOVER_VALUE)
 	AddComponent(/datum/component/organ_toxin_damage, 0.02)
 	AddComponent(/datum/component/hunger_organ)
-	AddComponent(/datum/component/organ_action, caller_organ = src, state = radial_action_state, icon = radial_action_icon)
+	AddComponent(/datum/component/organ_action, radial_action_state, radial_action_icon)
 
 // Прок на получение цвета глаз
 /obj/item/organ/internal/eyes/serpentid/generate_icon(mob/living/carbon/human/HA)
@@ -56,7 +56,7 @@
 
 /obj/item/organ/internal/eyes/serpentid/switch_mode(force_off = FALSE)
 	. = ..()
-	if(!force_off && owner?.nutrition >= chemical_consuption && !(status & ORGAN_DEAD) && !active)
+	if(!force_off && owner?.nutrition >= NUTRITION_LEVEL_HYPOGLYCEMIA && !(status & ORGAN_DEAD) && !active)
 		see_in_dark = 8
 		chemical_consuption = initial(chemical_consuption)
 		active = TRUE

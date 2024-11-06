@@ -913,7 +913,6 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		// SS220 EDIT END
 
 		overlays_standing[HEAD_LAYER] = standing
-
 	apply_overlay(HEAD_LAYER)
 
 /mob/living/carbon/human/update_inv_belt()
@@ -959,7 +958,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		if(!t_state)
 			t_state = belt.icon_state
 
-		// SS220 EDIT создание единой переменной и ее изменения через логические проверки
+		// SS220 EDIT START создание единой переменной и ее изменения через логические проверки
 		var/mutable_appearance/standing
 		if(belt.icon_override)
 			t_state = "[t_state]_be"
@@ -969,7 +968,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		else
 			standing = mutable_appearance('icons/mob/clothing/belt.dmi', "[t_state]", layer = -overlay_layer)
 
-		// SS220 EDIT START - вызов сдвигов
+		// SS220 EDIT - вызов сдвигов
 		. = list()
 		SEND_SIGNAL(src, COMSIG_MOB_GET_OVERLAY_SHIFTS_LIST, "belt", .)
 		if(length(.) > 0)
@@ -1654,4 +1653,3 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 				. += "[part.s_tone]"
 
 	. = "[.][!!husk][!!hulk][!!skeleton]"
-
