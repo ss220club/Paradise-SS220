@@ -115,7 +115,3 @@
 
 	if(H.gender == FEMALE)
 		uniform = /obj/item/clothing/under/rank/security/brigphysic/skirt
-
-var/list/blacklisted_partial = list(
-	/datum/job/brigphysic
-)
