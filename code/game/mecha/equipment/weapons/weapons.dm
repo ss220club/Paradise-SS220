@@ -235,7 +235,7 @@
 					if(thingy)
 						walk(thingy,0)
 	for(var/obj/mecha/combat/reticence/R in oview(6, chassis))
-		R.occupant_message("[R] защитил вас от ХОНК [chassis] ценой части энергии.")
+		R.occupant_message("[R.declent_ru(NOMINATIVE)] защитил вас от ХОНК [chassis.declent_ru(NOMINATIVE)] ценой части энергии.")
 		R.use_power(R.get_charge() / 4)
 
 	chassis.use_power(energy_drain)

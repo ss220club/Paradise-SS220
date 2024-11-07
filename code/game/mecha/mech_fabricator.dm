@@ -10,7 +10,7 @@
   */
 /obj/machinery/mecha_part_fabricator
 	name = "exosuit fabricator"
-	desc = "Фабрикатор экзокостюмов, предназначенный для печати деталей для мехов, киборгов, КПБ, MOD-костюмов, а также имплантов."
+	desc = "На данный момент ничего не печатает."
 	icon = 'icons/obj/robotics.dmi'
 	icon_state = "fab-idle"
 	density = TRUE
@@ -270,7 +270,7 @@
 	desc = initial(desc)
 	change_power_mode(IDLE_POWER_USE)
 	cut_overlays()
-	atom_say("Печать [A] завершена.")
+	atom_say("Печать [A.declent_ru(GENITIVE)] завершена.")
 
 	// Keep the queue processing going if it's on
 	process_queue()
