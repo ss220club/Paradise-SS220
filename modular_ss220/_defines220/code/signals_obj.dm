@@ -1,5 +1,9 @@
-/// from base of [/obj/proc/atom_destruction]: (damage_flag)
+/// from base of /obj/proc/atom_destruction: (damage_flag)
 #define COMSIG_OBJ_DESTRUCTION "atom_destruction"
+
+/// from base of /obj/item/card/id: (list/access)
+#define COMSIG_ID_GET_ACCESS "id_get_access"
+
 /// called by /obj/item/organ/external/receive_damage() : (/datum/component/carapace)
 #define COMSIG_LIMB_RECEIVE_DAMAGE "limb_receive_damage"
 /// called by /obj/item/organ/external/heal_damage() : (/datum/component/carapace)
