@@ -98,7 +98,7 @@
 /obj/item/mecha_parts/mecha_equipment/drill/proc/drill_mob(mob/living/target, mob/user)
 	target.visible_message("<span class='danger'>[capitalize(chassis.declent_ru(NOMINATIVE))] бурит [target.declent_ru(ACCUSATIVE)] с помощью [declent_ru(GENITIVE)]!</span>",
 						"<span class='userdanger'>[capitalize(chassis.declent_ru(NOMINATIVE))] бурит вас с помощью [declent_ru(GENITIVE)]!</span>")
-	add_attack_logs(user, target, "ПРОБУРЕН с помощью [declent_ru(GENITIVE)] ([uppertext(user.a_intent)]) ([uppertext(damtype)])")
+	add_attack_logs(user, target, "DRILLED with [src] ([uppertext(user.a_intent)]) ([uppertext(damtype)])")
 	if(target.stat == DEAD && target.getBruteLoss() >= 200)
 		add_attack_logs(user, target, "gibbed")
 		if(LAZYLEN(target.butcher_results))

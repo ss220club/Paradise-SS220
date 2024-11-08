@@ -196,7 +196,7 @@
 	if(to_inject && patient.reagents.get_reagent_amount(R.id) + to_inject <= inject_amount*2)
 		occupant_message("Введение [patient] [to_inject] юнитов [R.name].")
 		log_message("Injecting [patient] with [to_inject] units of [R.name].")
-		add_attack_logs(chassis.occupant, patient, "Введён [name] содержащий [R], переведенно [to_inject] юнитов", R.harmless ? ATKLOG_ALMOSTALL : null)
+		add_attack_logs(chassis.occupant, patient, "Injected with [name] containing [R], transferred [to_inject] units", R.harmless ? ATKLOG_ALMOSTALL : null)
 		SG.reagents.trans_id_to(patient,R.id,to_inject)
 		update_equip_info()
 
@@ -331,7 +331,7 @@
 						for(var/datum/reagent/A in mechsyringe.reagents.reagent_list)
 							R += A.id + " ("
 							R += num2text(A.volume) + "),"
-					add_attack_logs(originaloccupant, M, "Уколот [declent_ru(INSTRUMENTAL)], содержащим [R], передано [mechsyringe.reagents.total_volume] юнитов.")
+					add_attack_logs(originaloccupant, M, "Shot with [src] containing [R], transferred [mechsyringe.reagents.total_volume] units")
 					mechsyringe.reagents.reaction(M, REAGENT_INGEST)
 					mechsyringe.reagents.trans_to(M, mechsyringe.reagents.total_volume)
 					if(!mechsyringe.reagents.total_volume)
