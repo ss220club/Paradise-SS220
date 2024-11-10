@@ -32,15 +32,30 @@
 	var/static/system_message = file2text('strings/ahelp_system_message.txt')
 	var/question = T.title
 
-	GLOB.gpt220.request_completition(system_message, question, CALLBACK(src, PROC_REF(ai_respond_callback), N))
+	GLOB.gpt220.request_completition(system_message, question, CALLBACK(src, PROC_REF(ai_respond_callback), N, TRUE))
 
-/datum/controller/subsystem/tickets/proc/ai_respond_callback(N, datum/http_response/response)
+/datum/controller/subsystem/tickets/proc/ai_respond_callback(N, resolve_ticket = FALSE, datum/http_response/response)
 	response = json_decode(response.body)
 	var/ai_response = response["choices"][1]["message"]["content"]
 	var/datum/ticket/T = allTickets[N]
 
-	to_chat_safe(returnClient(N), "<span class='[span_class]'>AI is autoresponding with: <span/> <span class='adminticketalt'> [ai_response] </span>")
+	to_chat_safe(returnClient(N), "<span class='[span_class]'>AI is autoresponding with:<span/><span class='adminticketalt'> [ai_response] </span>")
 	message_staff("AI autoresponded with: [ai_response]")
 	T.lastStaffResponse = "AI Autoresponse: [ai_response]"
 
-	resolveTicket(N)
+	if(resolve_ticket)
+		resolveTicket(N)
+
+/datum/controller/subsystem/tickets/mentor_tickets/newTicket(client/C, passedContent, title)
+	var/datum/ticket/T = ..()
+	var/list/mentorcounter = staff_countup(R_MENTOR)
+	var/mentor_count = mentorcounter[1]
+	if(mentor_count > 0)
+		return
+
+	SEND_SOUND(C, sound('sound/effects/adminhelp.ogg'))
+	to_chat(C, "<span class='[span_class]'>Сейчас на сервере нет свободных менторов. На ваш вопрос ответит ИИ. ИИ может быть неточным и давать неправильные ответы.</span>")
+
+	var/static/system_message = file2text('strings/ahelp_system_message.txt')
+	var/question = T.title
+	GLOB.gpt220.request_completition(system_message, question, CALLBACK(src, PROC_REF(ai_respond_callback), T.ticketNum))
