@@ -55,7 +55,7 @@
 		return
 
 	SEND_SOUND(C, sound('sound/effects/adminhelp.ogg'))
-	to_chat(C, "<span class='[span_class]'>Сейчас на сервере нет свободных менторов. На ваш вопрос ответит ИИ. ИИ может быть неточным и давать неправильные ответы.</span>")
+	to_chat(C, "<span class='[span_class]'>Сейчас на сервере нет свободных менторов. На ваш вопрос ответит ИИ. Он может быть неточным и давать неправильные ответы.</span>")
 
 	var/static/system_message = file2text('strings/ahelp_system_message.txt')
 	var/question = T.title
