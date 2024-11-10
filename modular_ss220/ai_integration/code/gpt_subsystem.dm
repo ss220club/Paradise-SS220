@@ -16,7 +16,7 @@ GLOBAL_DATUM_INIT(gpt220, /datum/gpt220, new())
 				"content" = prompt
 			)
 		),
-		"temperature" = 1,
+		"temperature" = 0.1,
 		"top_p" = 1,
 		"max_tokens" = 100,
 		"model" = GLOB.configuration.gpt.model
