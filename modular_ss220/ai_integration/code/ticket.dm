@@ -16,7 +16,7 @@
 	if(!check_rights(rights_needed))
 		return
 
-	if(tgui_alert(usr, "Are you sure you want to auto respond to this ticket with AI?", "Warning", list("Yes", "No")) != "Yes")
+	if(tgui_alert(usr, "Вы действительно хотите использовать авто-ответ с помощью ИИ? Он может дать некорректный ответ.", "Предупреждение", list("Да", "Нет")) != "Да")
 		return
 
 	var/datum/ticket/T = allTickets[N]
