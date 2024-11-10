@@ -1,7 +1,9 @@
+// MARK: Prime sabers
+
 #define LEGENDARY_SWORDS_CKEY_WHITELIST list("mooniverse")
 
-/obj/item/melee/rapier/cane_rapier
-	name = "Трость-рапира"
+/obj/item/melee/saber/cane_rapier
+	name = "трость-рапира"
 	desc = "Стилизованная под трость рапира, чье элегантное и обоюдоострое лезвие усажено на роскошно украшенную рукоять. Одни лишь инкрустированные в неё драгоценные камни стоят как целая звездная система."
 	icon = 'modular_ss220/prime_only/icons/saber.dmi'
 	icon_state = "trrapier"
@@ -10,18 +12,18 @@
 	lefthand_file = 'modular_ss220/prime_only/icons/saber_left.dmi'
 	righthand_file = 'modular_ss220/prime_only/icons/saber_right.dmi'
 
-/obj/item/storage/belt/rapier/cane_rapier
-	name = "Трость-рапира"
+/obj/item/storage/belt/sheath/saber/cane_rapier
+	name = "трость-рапира"
 	desc = "Ножны стилизованной под трость рапиры. Их корпус вырезан из черного дерева и щедро украшен позолотой. Их владелец обладает неоспоримый богатством и властью в известной Галактике."
 	icon_state = "trsheath"
 	item_state = "trsheath"
 	icon = 'modular_ss220/prime_only/icons/saber.dmi'
 	lefthand_file = 'modular_ss220/prime_only/icons/saber_left.dmi'
 	righthand_file = 'modular_ss220/prime_only/icons/saber_right.dmi'
-	can_hold = list(/obj/item/melee/rapier/cane_rapier)
+	can_hold = list(/obj/item/melee/saber/cane_rapier)
 
-/obj/item/storage/belt/rapier/cane_rapier/populate_contents()
-	new /obj/item/melee/rapier/cane_rapier(src)
+/obj/item/storage/belt/sheath/saber/cane_rapier/populate_contents()
+	new /obj/item/melee/saber/cane_rapier(src)
 	update_icon()
 
 /obj/item/dualsaber/legendary_saber
@@ -207,3 +209,13 @@
 
 	if(HAS_TRAIT(S, TRAIT_WIELDED))
 		charge(user, target, S)
+
+// MARK: Prime ID Cards
+
+/obj/item/card/id/centcom/tanya
+	name = "Дельта 8-1-7's ID card (Normandy Special Forces)"
+	desc = "An ID straight from Normandy Special Forces."
+	icon_state = "centcom"
+	registered_name = "Дельта 8-1-7"
+	assignment = "Normandy Special Forces"
+	rank = "Normandy Special Forces"
