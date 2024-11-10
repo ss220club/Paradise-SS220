@@ -189,6 +189,7 @@
 	mask = /obj/item/clothing/mask/gas/navy_officer
 	head = /obj/item/clothing/head/beret/centcom/officer/blueshield_chef
 	gloves = /obj/item/clothing/gloves/color/white
+	l_pocket = /obj/item/dualsaber/legendary_saber/aaron
 
 /datum/outfit/job/admin/ntnavyofficer/field/candros/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	. = ..()
