@@ -1,8 +1,9 @@
-SUBSYSTEM_DEF(gpt220)
-	name = "GPT 220"
-	flags = SS_NO_FIRE | SS_NO_INIT
+GLOBAL_DATUM_INIT(gpt220, /datum/gpt220, new())
 
-/datum/controller/subsystem/gpt220/proc/request_completition(system_message, prompt, datum/callback/callback)
+/// AI Chatbot interface adapter
+/datum/gpt220
+
+/datum/gpt220/proc/request_completition(system_message, prompt, datum/callback/callback)
 	var/endpoint = GLOB.configuration.gpt.endpoint
 	var/list/body = json_encode(list(
 		"messages" = list(

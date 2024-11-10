@@ -32,7 +32,7 @@
 	var/static/system_message = file2text('strings/ahelp_system_message.txt')
 	var/question = T.title
 
-	SSgpt220.request_completition(system_message, question, CALLBACK(src, PROC_REF(ai_respond_callback), N))
+	GLOB.gpt220.request_completition(system_message, question, CALLBACK(src, PROC_REF(ai_respond_callback), N))
 
 /datum/controller/subsystem/tickets/proc/ai_respond_callback(N, datum/http_response/response)
 	response = json_decode(response.body)
