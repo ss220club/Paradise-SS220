@@ -65,7 +65,7 @@
 	desc = "Мундир командиров локальных подразделений ''Синий Щит'' контролирующих работу сотрудников как с Административных Объектов Нанотрейзен, так и непосредственно на местах. \
 	Как правило, его носители имеют старшее офицерское звание как в организации ''Щитов'', так и во флоте компании."
 	icon = 'modular_ss220/prime_only/icons/object/suits.dmi'
-	icon_state = "kandros_coat"
+	icon_state = "blueshield_chef_coat"
 	icon_override = 'modular_ss220/prime_only/icons/mob/suits.dmi'
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
 	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS

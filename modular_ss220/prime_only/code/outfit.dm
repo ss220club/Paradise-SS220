@@ -6,7 +6,7 @@
 	backpack = /obj/item/storage/backpack
 	satchel = /obj/item/storage/backpack/satchel_norm
 
-/datum/outfit/job/admin/tanya
+/datum/outfit/job/admin/delta817
 	name = "Delta 817 - ARG, no armor"
 	uniform = /obj/item/clothing/under/solgov/srt
 	belt = /obj/item/storage/belt/military/assault/srt
@@ -41,7 +41,7 @@
 		/obj/item/organ/internal/eyes/cybernetic/xray/hardened,
 	)
 
-/datum/outfit/job/admin/tanya/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+/datum/outfit/job/admin/delta817/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	. = ..()
 	if(visualsOnly)
 		return
@@ -53,11 +53,11 @@
 	I.assignment = "Normandy Special Forces"
 	H.sec_hud_set_ID()
 
-/datum/outfit/job/admin/tanya/tanya2
+/datum/outfit/job/admin/delta817/arg
 	name = "Delta 817 - ARG, armor"
 	back = /obj/item/mod/control/pre_equipped/responsory/commander
 
-/datum/outfit/job/admin/tanya/tanya3
+/datum/outfit/job/admin/delta817/nf10
 	name = "Delta 817 - NF10, armor"
 	back = /obj/item/mod/control/pre_equipped/responsory/commander
 	backpack_contents = list(
@@ -71,7 +71,7 @@
 		/obj/item/gun/projectile/automatic/proto
 	)
 
-/datum/outfit/job/admin/tanya/tanya4
+/datum/outfit/job/admin/delta817/l6saw
 	name = "Delta 817 - l6saw, armor"
 	back = /obj/item/mod/control/pre_equipped/apocryphal
 	r_hand = /obj/item/gun/projectile/automatic/l6_saw
@@ -85,7 +85,7 @@
 		/obj/item/shield/energy,
 	)
 
-/datum/outfit/job/admin/tanya/tanya5
+/datum/outfit/job/admin/delta817/ikmk2
 	name = "Delta 817 - IK-M2, armor"
 	back = /obj/item/mod/control/pre_equipped/responsory/security
 	r_hand = /obj/item/gun/projectile/automatic/lasercarbine
@@ -99,7 +99,7 @@
 		/obj/item/shield/energy,
 	)
 
-/datum/outfit/job/admin/tanya/tanya6
+/datum/outfit/job/admin/delta817/pulse
 	name = "Delta 817 - pulse, armor"
 	back = /obj/item/mod/control/pre_equipped/apocryphal
 	r_hand = /obj/item/shield/energy
@@ -147,14 +147,14 @@
 	I.assignment = "Nanotrasen Chief Executive Officer"
 	H.sec_hud_set_ID()
 
-/datum/outfit/job/admin/ntnavyofficer/field/sharlotta
+/datum/outfit/job/admin/ntnavyofficer/field/hr_officer
 	name = "Central HR Officer"
 	suit = /obj/item/clothing/suit/space/deathsquad/officer/field/cloak_nt
 	l_pocket = /obj/item/dualsaber/legendary_saber/flame
 	gloves = /obj/item/clothing/gloves/color/white
 	uniform = /obj/item/clothing/under/rank/procedure/representative
 
-/datum/outfit/job/admin/ntnavyofficer/field/gromov
+/datum/outfit/job/admin/ntnavyofficer/field/secretary_officer
 	name = "Special Operations Secretary"
 	l_pocket = /obj/item/dualsaber/legendary_saber/sorrow_catcher
 	head = /obj/item/clothing/head/helmet/space/deathsquad/beret
@@ -166,7 +166,7 @@
 		/obj/item/clothing/accessory/holster,
 	)
 
-/datum/outfit/job/admin/ntnavyofficer/field/gromov/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+/datum/outfit/job/admin/ntnavyofficer/field/secretary_officer/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	. = ..()
 	if(visualsOnly)
 		return
@@ -178,20 +178,20 @@
 	I.assignment = "Special Operations Secretary"
 	H.sec_hud_set_ID()
 
-/datum/outfit/job/admin/ntnavyofficer/field/fane
+/datum/outfit/job/admin/ntnavyofficer/field/alt2
 	name = "NT Navy Officer alt. Cloak gold, scarf"
 	suit = /obj/item/clothing/suit/space/deathsquad/officer/field/cloak_nt/gold
 	mask = /obj/item/clothing/mask/breath/breathscarf
 
-/datum/outfit/job/admin/ntnavyofficer/field/candros
+/datum/outfit/job/admin/ntnavyofficer/field/operational_officer
 	name = "Operational Group Commander"
 	suit = /obj/item/clothing/suit/browntrenchcoat/blueshield_chef
 	mask = /obj/item/clothing/mask/gas/navy_officer
 	head = /obj/item/clothing/head/beret/centcom/officer/blueshield_chef
 	gloves = /obj/item/clothing/gloves/color/white
-	l_pocket = /obj/item/dualsaber/legendary_saber/aaron
+	l_pocket = /obj/item/dualsaber/legendary_saber/eris_star
 
-/datum/outfit/job/admin/ntnavyofficer/field/candros/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+/datum/outfit/job/admin/ntnavyofficer/field/operational_officer/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	. = ..()
 	if(visualsOnly)
 		return
@@ -203,7 +203,7 @@
 	I.assignment = "Operational Group Commander"
 	H.sec_hud_set_ID()
 
-/datum/outfit/job/admin/ntnavyofficer/field/rizu
+/datum/outfit/job/admin/ntnavyofficer/field/alt3
 	name = "NT Navy Officer alt. Hat, m1911, cane"
 	suit = /obj/item/clothing/suit/space/deathsquad/officer
 	uniform = /obj/item/clothing/under/pants/classicjeans

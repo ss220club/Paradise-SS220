@@ -5,7 +5,7 @@
 	name = "берет начальника подразделения ''Синий Щит''"
 	desc = "Отличительный берет начальника локальным подразделением ''Синий Щит''. Выполнен в традиционных для компании цветах."
 	icon = 'modular_ss220/prime_only/icons/object/head.dmi'
-	icon_state = "kandros_beret"
+	icon_state = "blueshield_chef_beret"
 	icon_override = 'modular_ss220/prime_only/icons/mob/head.dmi'
 
 /obj/item/clothing/head/helmet/space/hardsuit/midnight_suit
