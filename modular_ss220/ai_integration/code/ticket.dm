@@ -47,7 +47,8 @@
 		resolveTicket(N)
 
 /datum/controller/subsystem/tickets/mentor_tickets/newTicket(client/C, passedContent, title)
-	var/datum/ticket/T = ..()
+	. = ..()
+	var/datum/ticket/T = .
 	var/list/mentorcounter = staff_countup(R_MENTOR)
 	var/mentor_count = mentorcounter[1]
 	if(mentor_count > 0)
@@ -58,4 +59,4 @@
 
 	var/static/system_message = file2text('strings/ahelp_system_message.txt')
 	var/question = T.title
-	GLOB.gpt220.request_completition(system_message, question, CALLBACK(src, PROC_REF(ai_respond_callback), T.ticketNum))
+	GLOB.gpt220.request_completition(system_message, question, CALLBACK(src, PROC_REF(ai_respond_callback), T.ticketNum, FALSE))
