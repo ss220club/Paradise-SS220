@@ -1,14 +1,6 @@
 SUBSYSTEM_DEF(gpt220)
 	name = "GPT 220"
-	init_order = INIT_ORDER_DEFAULT
-	wait = 1 SECONDS
-	runlevels = RUNLEVEL_LOBBY | RUNLEVELS_DEFAULT
-
-/datum/controller/subsystem/gpt220/Initialize()
-	return
-
-/datum/controller/subsystem/gpt220/fire(resumed = FALSE)
-	return
+	flags = SS_NO_FIRE | SS_NO_INIT
 
 /datum/controller/subsystem/gpt220/proc/request_completition(system_message, prompt, datum/callback/callback)
 	var/endpoint = GLOB.configuration.gpt.endpoint
