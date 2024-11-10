@@ -393,10 +393,7 @@
 		if(T)
 			var/obj/singularity/energy_ball/E = new(T)
 			E.energy = 200 //Gets us about 9 balls
-//	else if(power > EVENT_POWER_PENALTY_THRESHOLD && prob(power/50) && !istype(src, /obj/machinery/atmospherics/supermatter_crystal/shard))
-//		var/datum/round_event_control/crystal_invasion/crystals = new/datum/round_event_control/crystal_invasion
-//		crystals.runEvent()
-//		return //No boom for me sir
+
 	//Dear mappers, balance the sm max explosion radius to 17.5, 37, 39, 41
 	playsound(src, 'modular_ss220/aesthetics_sounds/sound/supermatter/explode.ogg', 100, FALSE, 40, 30, falloff_distance = 10) //SS220 EDIT - ADDITION
 	if(forced_gasmix_power_ratio)
@@ -604,7 +601,7 @@
 	//After this point power is lowered
 	//This wraps around to the begining of the function
 	//Handle high power zaps/anomaly generation
-	if(power > POWER_PENALTY_THRESHOLD || damage > damage_penalty_point) //If the power is above 5000 or if the damage is above 550
+	if(power > POWER_PENALTY_THRESHOLD || damage > damage_penalty_point || combined_gas > MOLE_CRUNCH_THRESHOLD) //If the power is above 5000, if the damage is above 550, or mole crushing
 		var/range = 4
 		zap_cutoff = 1500
 		if(removed && removed.return_pressure() > 0 && removed.temperature() > 0)
@@ -643,9 +640,9 @@
 
 		if(prob(5))
 			supermatter_anomaly_gen(src, FLUX_ANOMALY, rand(5, 10))
-		if(power > SEVERE_POWER_PENALTY_THRESHOLD && prob(5) || prob(1))
+		if(power > SEVERE_POWER_PENALTY_THRESHOLD && prob(5) || prob(1) || combined_gas > MOLE_CRUNCH_THRESHOLD && prob(5))
 			supermatter_anomaly_gen(src, GRAVITATIONAL_ANOMALY, rand(5, 10))
-		if((power > SEVERE_POWER_PENALTY_THRESHOLD && prob(2)) || (prob(0.3) && power > POWER_PENALTY_THRESHOLD))
+		if((power > SEVERE_POWER_PENALTY_THRESHOLD && prob(2)) || (prob(0.3) && power > POWER_PENALTY_THRESHOLD) || combined_gas > MOLE_CRUNCH_THRESHOLD && prob(2))
 			supermatter_anomaly_gen(src, BLUESPACE_ANOMALY, rand(5, 10))
 
 	if(prob(15))
