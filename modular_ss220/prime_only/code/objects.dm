@@ -209,13 +209,3 @@
 
 	if(HAS_TRAIT(S, TRAIT_WIELDED))
 		charge(user, target, S)
-
-// MARK: Prime ID Cards
-
-/obj/item/card/id/centcom/tanya
-	name = "Дельта 8-1-7's ID card (Normandy Special Forces)"
-	desc = "An ID straight from Normandy Special Forces."
-	icon_state = "centcom"
-	registered_name = "Дельта 8-1-7"
-	assignment = "Normandy Special Forces"
-	rank = "Normandy Special Forces"
