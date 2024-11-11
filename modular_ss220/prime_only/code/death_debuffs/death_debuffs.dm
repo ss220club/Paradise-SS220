@@ -1,0 +1,16 @@
+#include "death_debuffs_defines.dm"
+
+#include "dd_brain_traumas.dm"
+#include "dd_ears_traumas.dm"
+#include "dd_eyes_traumas.dm"
+#include "dd_kidney_traumas.dm"
+#include "dd_liver_traumas.dm"
+#include "dd_lungs_traumas.dm"
+#include "dd_heart_traumas.dm"
+
+#include "dd_head_trauma.dm"
+#include "dd_limb_failure.dm"
+#include "dd_spazms.dm"
+#include "dd_paralyze.dm"
+
+#include "death_debuff_component.dm"
