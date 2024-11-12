@@ -166,6 +166,25 @@
 		/obj/item/clothing/accessory/holster,
 	)
 
+	var/list/spell_paths = list(/datum/spell/flayer/self/overclock/no_heat,
+							/datum/spell/flayer/self/rejuv,
+							/datum/spell/flayer/self/terminator_form)
+
+/datum/outfit/job/admin/ntnavyofficer/field/secretary_officer/on_mind_initialize(mob/living/carbon/human/H)
+	. = ..()
+	//flayer spells
+	for(var/spell_path in spell_paths)
+		var/datum/spell/flayer/S = new spell_path
+		S.level = S.max_level
+		S.cooldown_handler.recharge_duration = S.base_cooldown / 5
+		H.mind.AddSpell(S)
+
+	//summon sword
+	var/datum/spell/summonitem/summon = new /datum/spell/summonitem
+	summon.invocation = "Скорбь!! Ко мне!"
+	summon.marked_item = H.l_store
+	H.mind.AddSpell(summon)
+
 /datum/outfit/job/admin/ntnavyofficer/field/secretary_officer/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	. = ..()
 	if(visualsOnly)
