@@ -1,6 +1,6 @@
 /obj/mecha/combat/phazon
-	desc = "Экспериментальный экзокостюм разработанный Nanotrasen, обладающий способностью фазового сдвига."
 	name = "Phazon"
+	desc = "Экспериментальный экзокостюм разработанный Nanotrasen, обладающий способностью фазового сдвига."
 	icon_state = "phazon"
 	initial_icon = "phazon"
 	step_in = 2
