@@ -62,7 +62,7 @@
 
 /datum/component/death_debuff/proc/apply_debuffs()
 	SIGNAL_HANDLER
-	if (world.time - death_time > DD_THRESHOLD)
+	if(world.time - death_time > DD_THRESHOLD)
 		death_count += 1
 	//Наложить случайный дебафф
 
@@ -70,7 +70,7 @@
 		var/datum/death_debuff/debuff_selected = select_debuff()
 
 		// Если найден подходящий дебафф, применяем его
-		if (debuff_selected)
+		if(debuff_selected)
 			debuff_selected.apply_debuff(brain_item.owner)
 			applied_debuffs += debuff_selected
 

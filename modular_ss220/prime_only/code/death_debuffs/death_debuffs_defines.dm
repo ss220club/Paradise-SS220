@@ -47,7 +47,7 @@
 /datum/death_debuff/proc/threatment_chemical()
 	var/reagent_count = 0
 	for(var/datum/reagent/R in H.reagents.reagent_list)
-		if (R in reagent_list)
+		if(R in reagent_list)
 			reagent_count++
 
 	return (length(reagent_list) == reagent_count)
