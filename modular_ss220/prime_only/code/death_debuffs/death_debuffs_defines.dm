@@ -1,15 +1,18 @@
+#define DD_BASIC_PROGRESS_FACTOR 0.2
 #define DD_BASIC_HEALING_FACTOR 0.1
-#define DD_BASIC_STRENGTH_FACTOR 0.2
+#define DD_BASIC_STATE 100
 #define COMSIG_BRAIN_UNDEBUFFED  "brain_undebuffed"
 
 /datum/death_debuff
 	var/name = "basic death debuff"
-	var/state = 1
+	var/state = DD_BASIC_STATE
 	var/list/datum/reagent/reagent_list = list(/datum/reagent/msg)
 	var/affected_zone = "brain"
 	var/mob/living/carbon/human/H
 	var/applied_text = ""
 	var/removed_text = ""
+	var/healing_speed = DD_BASIC_HEALING_FACTOR
+	var/progress_speed = DD_BASIC_PROGRESS_FACTOR
 
 /datum/death_debuff/process()
 	dd_effect()
@@ -19,17 +22,17 @@
 		remove_debuff()
 
 	threatment()
-	state = clamp(state, 0, 100)
+	state = clamp(state, 0, initial(state))
 	if(state == 0)
 		remove_debuff()
 
 /datum/death_debuff/proc/threatment()
-	var/healing_factor = threatment_chemical() ? DD_BASIC_HEALING_FACTOR : 0
-	healing_factor += threatment_medical() ? DD_BASIC_HEALING_FACTOR : 0
-	healing_factor += (threatment_rest()) ? DD_BASIC_HEALING_FACTOR : 0
+	var/healing_factor = threatment_chemical() ? healing_speed : 0
+	healing_factor += threatment_medical() ? healing_speed : 0
+	healing_factor += (threatment_rest()) ? healing_speed : 0
 	//Добавить механизм нарастания эффекта, если игрок движется вне медицинского блока ходит
 	if(danger_condition())
-		state += DD_BASIC_STRENGTH_FACTOR
+		state += progress_speed
 	else
 		state -= healing_factor
 
@@ -80,20 +83,20 @@
 	qdel(src)
 
 /datum/death_debuff/proc/get_adv_analyzer_info()
-	var/description = "WARNING! [name] detected! Affected: "
+	var/description = "Внимание! Обнаружено: [name]! Зона поражения: "
 	switch(affected_zone)
 		if("l_arm")
-			description += "left arm"
+			description += "левая рука"
 		if("r_arm")
-			description += "right arm"
+			description += "правая рука"
 		if("l_leg")
-			description += "left leg"
+			description += "левая нога"
 		if("r_leg")
-			description += "right leg"
+			description += "правая нога"
 		else
 			description += affected_zone
 
-	description += "\n Threatment: "
+	description += "\n Лечение: "
 
 	var/reagents_string
 	for(var/type in reagent_list)
@@ -107,7 +110,8 @@
 	return description
 
 #undef DD_BASIC_HEALING_FACTOR
-#undef DD_BASIC_STRENGTH_FACTOR
+#undef DD_BASIC_PROGRESS_FACTOR
+#undef DD_BASIC_STATE
 
 /atom/movable/screen/alert/death_debuff
 	icon = 'icons/mob/screen_alert.dmi'

@@ -2,7 +2,7 @@
 #define COMSIG_MOB_ADV_SCANNED "mob_adv_scanned"
 #define COMSIG_MOB_CLONNED "mob_bio_scanned"
 #define COMSIG_MOB_GET_OLD_DDS "mob_get_old_dds"
-#define DD_THRESHOLD 1 SECONDS //60 SECONDS
+#define DD_THRESHOLD 60 SECONDS
 
 /datum/component/death_debuff
 	var/death_count = 0
