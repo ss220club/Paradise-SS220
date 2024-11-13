@@ -181,7 +181,7 @@
 	suit = /obj/item/clothing/suit/space/deathsquad/officer/field
 	backpack_contents = list(
 		/obj/item/gun/projectile/revolver/reclinable/rsh12,
-		/obj/item/ammo_box/speed_loader_mm127,
+		/obj/item/ammo_box/speed_loader_mm127 = 3,
 		/obj/item/clothing/accessory/holster,
 	)
 
@@ -229,6 +229,11 @@
 	head = /obj/item/clothing/head/beret/centcom/officer/blueshield_chef
 	gloves = /obj/item/clothing/gloves/color/white
 	l_pocket = /obj/item/dualsaber/legendary_saber/eris_star
+	backpack_contents = list(
+		/obj/item/gun/projectile/automatic/pistol/beretta,
+		/obj/item/ammo_box/magazine/beretta/mm919 = 3,
+		/obj/item/clothing/accessory/holster,
+	)
 
 /datum/outfit/job/admin/ntnavyofficer/field/operational_officer/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	. = ..()
@@ -299,3 +304,55 @@
 	I.rank = "Nanotrasen Navy Officer"
 	I.assignment = "Information Security Chief"
 	H.sec_hud_set_ID()
+
+/datum/outfit/job/admin/syndicate
+	name = "Syndicate Agent"
+
+	uniform = /obj/item/clothing/under/syndicate
+	back = /obj/item/storage/backpack
+	belt = /obj/item/storage/belt/utility/full/multitool
+	gloves = /obj/item/clothing/gloves/combat
+	shoes = /obj/item/clothing/shoes/combat
+	l_ear = /obj/item/radio/headset/syndicate
+	id = /obj/item/card/id/syndicate
+	r_pocket = /obj/item/radio/uplink
+	backpack_contents = list(
+		/obj/item/storage/box/engineer = 1,
+		/obj/item/flashlight = 1,
+		/obj/item/card/emag = 1,
+		/obj/item/food/syndidonkpocket = 1
+	)
+
+	var/id_icon = "syndie"
+	var/id_access = "Syndicate Operative"
+	var/uplink_uses = 100
+
+/datum/outfit/admin/syndicate/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+	. = ..()
+	if(visualsOnly)
+		return
+
+	var/obj/item/card/id/I = H.wear_id
+	if(istype(I))
+		apply_to_card(I, H, get_syndicate_access(id_access), name, id_icon)
+
+	var/obj/item/radio/uplink/U = H.r_store
+	if(istype(U))
+		U.hidden_uplink.uplink_owner = "[H.key]"
+		U.hidden_uplink.uses = uplink_uses
+
+	var/obj/item/radio/R = H.l_ear
+	if(istype(R))
+		R.set_frequency(SYND_FREQ)
+	H.faction += "syndicate"
+
+/datum/outfit/job/admin/syndicate/midnight
+	name = "Midnight Agent"
+	uniform = /obj/item/clothing/under/midnight_under
+	belt = /obj/item/storage/belt/utility/full/multitool
+	suit = /obj/item/clothing/suit/midnight_coat
+	l_pocket = /obj/item/dualsaber/legendary_saber
+	mask = /obj/item/clothing/mask/breath/breathscarf/midnight
+	head = /obj/item/clothing/head/soft/midnight_cap
+
+	uplink_uses = 250

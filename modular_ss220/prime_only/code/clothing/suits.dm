@@ -1,10 +1,10 @@
 // MARK: Coats
 
-/obj/item/clothing/suit/browntrenchcoat/midnight_coat
+/obj/item/clothing/suit/midnight_coat
 	name = "потрёпанное пальто"
 	desc = "Чёрное пальто с меховым воротником, подкладка которого подшита плотным слоем дюраткани. На внутренней стороне имеется нашивка в виде букв ''M.B.'', вплетенных в символ звезды."
 	icon = 'modular_ss220/prime_only/icons/object/suits.dmi'
-	icon_state = "midnight_coat_open"
+	icon_state = "midnight_coat"
 	icon_override = 'modular_ss220/prime_only/icons/mob/suits.dmi'
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
 	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS
@@ -42,15 +42,15 @@
 	else
 		user.alpha = initial(user.alpha)
 
-/obj/item/clothing/suit/browntrenchcoat/midnight_coat/Initialize(mapload)
+/obj/item/clothing/suit/midnight_coat/Initialize(mapload)
 	. = ..()
 	stealth_action = new(src)
 
-/obj/item/clothing/suit/browntrenchcoat/midnight_coat/Destroy()
+/obj/item/clothing/suit/midnight_coat/Destroy()
 	QDEL_NULL(stealth_action)
 	return ..()
 
-/obj/item/clothing/suit/browntrenchcoat/midnight_coat/item_action_slot_check(slot, mob/user)
+/obj/item/clothing/suit/midnight_coat/item_action_slot_check(slot, mob/user)
 	. = ..()
 	if(slot == SLOT_HUD_OUTER_SUIT)
 		return TRUE
