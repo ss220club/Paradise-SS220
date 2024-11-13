@@ -42,7 +42,7 @@
 	var/hit_unwield = "swing_hit"
 	var/ranged = FALSE
 	var/power = 1
-	var/refusal_text = "Злоба неподвластна твоей воле, усмрить её сможет лишь сильнейший."
+	var/refusal_text = "Злоба неподвластна твоей воле, усмирить её сможет лишь сильнейший."
 	var/datum/enchantment/enchant = new/datum/enchantment/dash
 
 /obj/item/dualsaber/legendary_saber/Initialize(mapload)
@@ -106,12 +106,13 @@
 	hit_wield = 'modular_ss220/prime_only/sound/weapons/kir_saberhit.ogg'
 
 /obj/item/dualsaber/legendary_saber/sister
-	name = "Сестра"
+	name = "Светлая Сестра"
 	desc = "\"Светлая Сестра\" - один из легендарных энергетических мечей Галактики. Имеет крайне редкий кристалл с ярко-белым, \"светлым\" свечением. Меч явно создавался под женскую руку и имеет прекрасный баланс. По легендам, в свое время этим мечом был сражен один из лидеров Синдиката - \"Красавка\". \nТекущий Владелец: Мунивёрс Нормандия."
 	icon_state = "norm_dualsaber0"
 	blade_color = "normandy"
 	refusal_text = "Ты не принадлежишь Сестре, верни её законному владельцу."
-	colormap = LIGHT_COLOR_HOLY_MAGIC
+	colormap = LIGHT_COLOR_HALOGEN
+	brightness_on = 3
 	saber_name = "norm"
 	wieldsound = 'modular_ss220/prime_only/sound/weapons/norm_saberon.ogg'
 	unwieldsound = 'modular_ss220/prime_only/sound/weapons/norm_saberoff.ogg'

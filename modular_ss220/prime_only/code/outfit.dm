@@ -116,6 +116,11 @@
 	name = "SOO Normandy"
 	suit = /obj/item/clothing/suit/space/deathsquad/officer/soo_brown
 	l_pocket = /obj/item/dualsaber/legendary_saber/sister
+	backpack_contents = list(
+		/obj/item/gun/projectile/revolver/mateba,
+		/obj/item/ammo_box/a357 = 3,
+		/obj/item/clothing/accessory/holster,
+	)
 	cybernetic_implants = list(
 		/obj/item/organ/internal/eyes/cybernetic/xray/hardened,
 		/obj/item/organ/internal/cyberimp/brain/anti_stam/hardened,
@@ -148,11 +153,23 @@
 	H.sec_hud_set_ID()
 
 /datum/outfit/job/admin/ntnavyofficer/field/hr_officer
-	name = "Central HR Officer"
+	name = "Chief HR Officer"
 	suit = /obj/item/clothing/suit/space/deathsquad/officer/field/cloak_nt
 	l_pocket = /obj/item/dualsaber/legendary_saber/flame
 	gloves = /obj/item/clothing/gloves/color/white
 	uniform = /obj/item/clothing/under/rank/procedure/representative
+
+/datum/outfit/job/admin/ntnavyofficer/field/hr_officer/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+	. = ..()
+	if(visualsOnly)
+		return
+
+	var/obj/item/card/id/I = H.wear_id
+	if(istype(I))
+		apply_to_card(I, H, get_centcom_access("Nanotrasen Navy Officer"), "Chief HR Officer")
+	I.rank = "Nanotrasen Navy Officer"
+	I.assignment = "Chief HR Officer"
+	H.sec_hud_set_ID()
 
 /datum/outfit/job/admin/ntnavyofficer/field/secretary_officer
 	name = "Special Operations Secretary"
@@ -222,8 +239,8 @@
 	I.assignment = "Operational Group Commander"
 	H.sec_hud_set_ID()
 
-/datum/outfit/job/admin/ntnavyofficer/field/alt3
-	name = "NT Navy Officer alt. Hat, m1911, cane"
+/datum/outfit/job/admin/ntnavyofficer/field/counterintelligence
+	name = "Counterintelligence Chief Officer"
 	suit = /obj/item/clothing/suit/space/deathsquad/officer
 	uniform = /obj/item/clothing/under/pants/classicjeans
 	head = /obj/item/clothing/head/cowboyhat
@@ -241,6 +258,18 @@
 		/obj/item/flashlight/seclite
 	)
 
+/datum/outfit/job/admin/ntnavyofficer/field/counterintelligence/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+	. = ..()
+	if(visualsOnly)
+		return
+
+	var/obj/item/card/id/I = H.wear_id
+	if(istype(I))
+		apply_to_card(I, H, get_centcom_access("Nanotrasen Navy Officer"), "Counterintelligence Chief Officer")
+	I.rank = "Nanotrasen Navy Officer"
+	I.assignment = "Counterintelligence Chief Officer"
+	H.sec_hud_set_ID()
+
 /obj/item/storage/belt/military/assault/m1911/populate_contents()
 	new /obj/item/ammo_box/magazine/m45 (src)
 	new /obj/item/ammo_box/magazine/m45 (src)
@@ -248,3 +277,21 @@
 	new /obj/item/ammo_box/magazine/m45 (src)
 	new /obj/item/ammo_box/magazine/m45 (src)
 	new /obj/item/ammo_box/magazine/m45 (src)
+
+/datum/outfit/job/admin/ntnavyofficer/field/information_security
+	name = "Information Security Chief"
+	suit = /obj/item/clothing/suit/armor/hos
+	mask = /obj/item/clothing/mask/gas/navy_officer
+	l_pocket = /obj/item/dualsaber/legendary_saber/devotion
+
+/datum/outfit/job/admin/ntnavyofficer/field/information_security/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+	. = ..()
+	if(visualsOnly)
+		return
+
+	var/obj/item/card/id/I = H.wear_id
+	if(istype(I))
+		apply_to_card(I, H, get_centcom_access("Nanotrasen Navy Officer"), "Information Security Chief")
+	I.rank = "Nanotrasen Navy Officer"
+	I.assignment = "Information Security Chief"
+	H.sec_hud_set_ID()
