@@ -1,11 +1,10 @@
-/datum/death_debuff/brain_hallucination
+/datum/death_debuff/brain/hallucination
 	name = "посттравматическое стрессовое расстройство"
 	reagent_list = list(/datum/reagent/medicine/mannitol,/datum/reagent/medicine/sterilizine)
-	affected_zone = "brain"
 	applied_text = "Вы начинаете видеть необычные вещи."
 	removed_text = "Похоже призраки прошлого решили оставить вас."
 
-/datum/death_debuff/brain_hallucination/dd_effect()
+/datum/death_debuff/brain/hallucination/dd_effect()
 	. = ..()
 	var/obj/item/organ/organ = H.get_organ_slot(affected_zone)
 	if(!organ)
@@ -14,14 +13,13 @@
 	//Вызывает эффект галлюцинаций
 	H.AdjustHallucinate(2 SECONDS)
 
-/datum/death_debuff/brain_confusion
+/datum/death_debuff/brain/confusion
 	name = "сильное сотрясение мозга"
 	reagent_list = list(/datum/reagent/medicine/mannitol,/datum/reagent/medicine/omnizine)
-	affected_zone = "brain"
 	applied_text = "Либо вы, либо весь мир решил кружиться в вальсе."
 	removed_text = "Вы снова нормально видите этот мир."
 
-/datum/death_debuff/brain_confusion/dd_effect()
+/datum/death_debuff/brain/confusion/dd_effect()
 	. = ..()
 	var/obj/item/organ/organ = H.get_organ_slot(affected_zone)
 	if(!organ)

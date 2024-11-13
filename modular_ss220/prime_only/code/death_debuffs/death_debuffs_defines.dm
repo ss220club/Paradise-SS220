@@ -8,6 +8,7 @@
 	var/state = DD_BASIC_STATE
 	var/list/datum/reagent/reagent_list = list(/datum/reagent/msg)
 	var/affected_zone = "brain"
+	var/scanned_zone = "мозг"
 	var/mob/living/carbon/human/H
 	var/applied_text = ""
 	var/removed_text = ""
@@ -94,7 +95,7 @@
 		if("r_leg")
 			description += "правая нога"
 		else
-			description += affected_zone
+			description += scanned_zone
 
 	description += "\n Лечение: "
 

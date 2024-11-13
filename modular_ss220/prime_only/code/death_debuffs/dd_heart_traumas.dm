@@ -1,11 +1,10 @@
-/datum/death_debuff/heart_failure
+/datum/death_debuff/heart/failure
 	name = "прогрессирующий инфаркт"
 	reagent_list = list(/datum/reagent/medicine/mitocholide,/datum/reagent/medicine/epinephrine)
-	affected_zone = "heart"
 	applied_text = "Ваше сердце пронзает резкая боль, и кажется, она становится только сильнее."
 	removed_text = "Боль в сердце отступила."
 
-/datum/death_debuff/heart_failure/dd_effect()
+/datum/death_debuff/heart/failure/dd_effect()
 	. = ..()
 	var/obj/item/organ/organ = H.get_organ_slot(affected_zone)
 	if(!organ)
@@ -17,14 +16,13 @@
 		CA = new /datum/disease/critical/heart_failure
 		H.ForceContractDisease(CA)
 
-/datum/death_debuff/heart_mailfunction
+/datum/death_debuff/heart/mailfunction
 	name = "брадикардия"
 	reagent_list = list(/datum/reagent/medicine/mitocholide,/datum/reagent/medicine/ephedrine)
-	affected_zone = "heart"
 	applied_text = "Ваше сердце издает медленное, успокаивающее биение, и силы покидают вас."
 	removed_text = "Вы снова чувствуете прилив сил."
 
-/datum/death_debuff/heart_mailfunction/dd_effect()
+/datum/death_debuff/heart/mailfunction/dd_effect()
 	. = ..()
 	var/obj/item/organ/organ = H.get_organ_slot(affected_zone)
 	if(!organ)

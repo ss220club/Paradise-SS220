@@ -9,6 +9,16 @@
 	var/list/applied_debuffs = list()
 	var/obj/item/organ/internal/brain/brain_item
 	var/death_time = 0
+	var/dd_blacklist = list(
+		/datum/death_debuff/brain,
+		/datum/death_debuff/ears,
+		/datum/death_debuff/eyes,
+		/datum/death_debuff/heart,
+		/datum/death_debuff/lungs,
+		/datum/death_debuff/liver,
+		/datum/death_debuff/kidneys,
+		/datum/death_debuff/head
+	)
 
 /datum/component/death_debuff/Initialize()
 	. = ..()
@@ -76,7 +86,7 @@
 
 /datum/component/death_debuff/proc/select_debuff()
 	var/dd_candidate = null
-	var/list/available_debuffs = subtypesof(/datum/death_debuff) - applied_debuffs
+	var/list/available_debuffs = subtypesof(/datum/death_debuff) - dd_blacklist - applied_debuffs
 	var/list/affected_zones = list()
 
 	for(var/datum/death_debuff/dd_check in applied_debuffs)
