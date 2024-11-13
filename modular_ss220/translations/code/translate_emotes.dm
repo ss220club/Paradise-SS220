@@ -18,4 +18,6 @@
 	message_param = ru_emote_message(message_param)
 
 /datum/keybinding/emote/proc/update_to_ru()
-	name = capitalize(ru_emote_name(lowertext(src::name)))
+	// Need to finish the name list first, I'm not doing it right now
+	// name = capitalize(ru_emote_name(lowertext(src::name)))
+	return
