@@ -1,5 +1,5 @@
 /proc/ru_emote_name(emote_name)
-	return GLOB.ru_emote_names[emote_name] || emote_name
+	return GLOB.ru_emote_names[lowertext(emote_name)] || emote_name
 
 /proc/ru_emote_message(emote_message)
 	return GLOB.ru_emote_messages[emote_message] || emote_message
@@ -19,5 +19,5 @@
 
 /datum/keybinding/emote/proc/update_to_ru()
 	// Need to finish the name list first, I'm not doing it right now
-	// name = capitalize(ru_emote_name(lowertext(src::name)))
+	// name = capitalize(ru_emote_name(src::name))
 	return
