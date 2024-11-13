@@ -1,5 +1,4 @@
-// MARK: Prime Event clothes
-/* HEADS */
+// MARK: Heads
 
 /obj/item/clothing/head/beret/centcom/officer/blueshield_chef
 	name = "берет начальника подразделения ''Синий Щит''"

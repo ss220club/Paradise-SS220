@@ -1,10 +1,12 @@
-// MARK: Prime outfits
+// MARK: Explorer
 
 /datum/outfit/job/explorer
 	uniform = /obj/item/clothing/under/rank/cargo/expedition_prime
 	head = /obj/item/clothing/head/soft/black
 	backpack = /obj/item/storage/backpack
 	satchel = /obj/item/storage/backpack/satchel_norm
+
+// MARK: Event outfits
 
 /datum/outfit/job/admin/delta817
 	name = "Delta 817 - ARG, no armor"
@@ -278,6 +280,7 @@
 	new /obj/item/ammo_box/magazine/m45 (src)
 	new /obj/item/ammo_box/magazine/m45 (src)
 	new /obj/item/ammo_box/magazine/m45 (src)
+	update_icon()
 
 /datum/outfit/job/admin/ntnavyofficer/field/information_security
 	name = "Information Security Chief"

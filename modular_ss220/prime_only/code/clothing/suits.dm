@@ -1,11 +1,10 @@
-// MARK: Prime Event clothes
-/* COATS */
+// MARK: Coats
 
 /obj/item/clothing/suit/browntrenchcoat/midnight_coat
 	name = "потрёпанное пальто"
 	desc = "Чёрное пальто с меховым воротником, подкладка которого подшита плотным слоем дюраткани. На внутренней стороне имеется нашивка в виде букв ''M.B.'', вплетенных в символ звезды."
 	icon = 'modular_ss220/prime_only/icons/object/suits.dmi'
-	icon_state = "midnight_coat"
+	icon_state = "midnight_coat_open"
 	icon_override = 'modular_ss220/prime_only/icons/mob/suits.dmi'
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
 	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS
@@ -43,7 +42,6 @@
 	else
 		user.alpha = initial(user.alpha)
 
-
 /obj/item/clothing/suit/browntrenchcoat/midnight_coat/Initialize(mapload)
 	. = ..()
 	stealth_action = new(src)
@@ -51,7 +49,6 @@
 /obj/item/clothing/suit/browntrenchcoat/midnight_coat/Destroy()
 	QDEL_NULL(stealth_action)
 	return ..()
-
 
 /obj/item/clothing/suit/browntrenchcoat/midnight_coat/item_action_slot_check(slot, mob/user)
 	. = ..()
@@ -61,11 +58,11 @@
 		user.alpha = initial(user.alpha)
 
 /obj/item/clothing/suit/browntrenchcoat/blueshield_chef
-	name = "одеяния начальника подразделения ''Синий Щит''"
+	name = "одеяния начальника подразделения \"Синий Щит\""
 	desc = "Мундир командиров локальных подразделений ''Синий Щит'' контролирующих работу сотрудников как с Административных Объектов Нанотрейзен, так и непосредственно на местах. \
 	Как правило, его носители имеют старшее офицерское звание как в организации ''Щитов'', так и во флоте компании."
 	icon = 'modular_ss220/prime_only/icons/object/suits.dmi'
-	icon_state = "blueshield_chef_coat"
+	icon_state = "blueshield_chef_coat_open"
 	icon_override = 'modular_ss220/prime_only/icons/mob/suits.dmi'
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
 	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS
@@ -77,7 +74,7 @@
 		"Drask" = 'modular_ss220/prime_only/icons/mob/species/drask/suits/suits.dmi',
 	)
 
-/* HARDSUITS */
+// MARK: Hardsuit
 /obj/item/clothing/suit/space/hardsuit/midnight_suit
 	name = "\improper модернизированный элитный экзоскелет"
 	desc = "Экзоскелет ударной группы синдиката, модернизированный по спецзаказу Миднайта Блэка."
