@@ -46,8 +46,5 @@ GLOBAL_LIST_EMPTY(ru_emote_messages)
 		var/list/emote_list = GLOB.emote_list[emote_key]
 		for(var/datum/emote/emote in emote_list)
 			emote.update_to_ru()
-	for(var/emote_kb_key as anything in GLOB.keybindings)
-		var/datum/keybinding/emote/emote_kb = GLOB.keybindings[emote_kb_key]
-		if(!istype(emote_kb))
-			continue
+	for(var/datum/keybinding/emote/emote_kb in GLOB.keybindings)
 		emote_kb.update_to_ru()

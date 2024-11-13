@@ -13,9 +13,9 @@
 	message_robot = ru_emote_message(message_robot)
 	message_AI = ru_emote_message(message_AI)
 	message_monkey = ru_emote_message(message_monkey)
-	message_simple = ru_emote_message(message_animal_or_basic)
+	message_simple = ru_emote_message(message_simple)
 	message_observer = ru_emote_message(message_observer)
 	message_param = ru_emote_message(message_param)
 
 /datum/keybinding/emote/proc/update_to_ru()
-	name = capitalize(ru_emote_message(linked_emote::name))
+	name = capitalize(ru_emote_name(linked_emote::name || linked_emote::key))
