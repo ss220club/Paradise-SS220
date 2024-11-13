@@ -307,7 +307,6 @@
 
 /datum/outfit/job/admin/syndicate
 	name = "Syndicate Agent"
-
 	uniform = /obj/item/clothing/under/syndicate
 	back = /obj/item/storage/backpack
 	belt = /obj/item/storage/belt/utility/full/multitool
@@ -322,7 +321,6 @@
 		/obj/item/card/emag = 1,
 		/obj/item/food/syndidonkpocket = 1
 	)
-
 	var/id_icon = "syndie"
 	var/id_access = "Syndicate Operative"
 	var/uplink_uses = 100
@@ -354,5 +352,4 @@
 	l_pocket = /obj/item/dualsaber/legendary_saber
 	mask = /obj/item/clothing/mask/breath/breathscarf/midnight
 	head = /obj/item/clothing/head/soft/midnight_cap
-
 	uplink_uses = 250
