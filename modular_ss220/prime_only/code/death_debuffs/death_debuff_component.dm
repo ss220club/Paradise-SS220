@@ -72,6 +72,9 @@
 
 /datum/component/death_debuff/proc/apply_debuffs()
 	SIGNAL_HANDLER
+	if(IS_CHANGELING(brain_item.owner))
+		return
+
 	if(world.time - death_time > DD_THRESHOLD)
 		death_count += 1
 	//Наложить случайный дебафф
@@ -108,7 +111,9 @@
 
 /obj/item/organ/internal/brain/Initialize(mapload, datum/species/new_species)
 	. = ..()
-	AddComponent(/datum/component/death_debuff)
+	if(!IS_CHANGELING(owner))
+		AddComponent(/datum/component/death_debuff)
+
 
 #undef DD_THRESHOLD
 
