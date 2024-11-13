@@ -1,5 +1,8 @@
-/datum/spell_handler/flayer/can_cast(mob/user, charge_check, show_message, datum/spell/spell)
-	if(user.mind.offstation_role == 1)
+/datum/spell/flayer
+	var/requiers_antag_datum = TRUE
+
+/datum/spell_handler/flayer/can_cast(mob/user, charge_check, show_message, datum/spell/flayer/spell)
+	if(!spell.requiers_antag_datum)
 		return TRUE
 	return ..()
 

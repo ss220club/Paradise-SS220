@@ -194,6 +194,7 @@
 		var/datum/spell/flayer/S = new spell_path
 		S.level = S.max_level
 		S.cooldown_handler.recharge_duration = S.base_cooldown / 5
+		S.requiers_antag_datum = FALSE
 		H.mind.AddSpell(S)
 
 	//summon sword
