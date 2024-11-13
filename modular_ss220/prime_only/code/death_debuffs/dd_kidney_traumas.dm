@@ -12,8 +12,8 @@
 
 	//Почки начинают выбрасывать в организм токсины, в зависимости от силы дебаффа
 	organ.status |= ORGAN_DEAD
-	if(prob(50))
-		H.adjustToxLoss(state * 0.01)
+	if(prob(50) && H.stat != DEAD)
+		H.adjustToxLoss(state * 0.001)
 
 /datum/death_debuff/kidneys/mailfunction
 	name = "почечная недостаточность"

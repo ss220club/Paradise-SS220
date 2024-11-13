@@ -1,5 +1,9 @@
 #define DD_BASIC_PROGRESS_FACTOR 0.2
-#define DD_BASIC_HEALING_FACTOR 0.1
+#define DD_BASIC_CHEMICAL_FACTOR 0.3
+#define DD_BASIC_HEALING_CHEM_FACTOR 0.3
+#define DD_BASIC_HEALING_MED_FACTOR 0.2
+#define DD_BASIC_HEALING_CARE_FACTOR 0.2
+#define DD_BASIC_HEALING_SLEEP_FACTOR 0.1
 #define DD_BASIC_STATE 100
 #define COMSIG_BRAIN_UNDEBUFFED  "brain_undebuffed"
 
@@ -12,7 +16,10 @@
 	var/mob/living/carbon/human/H
 	var/applied_text = ""
 	var/removed_text = ""
-	var/healing_speed = DD_BASIC_HEALING_FACTOR
+	var/healing_chemical_factor = DD_BASIC_HEALING_CHEM_FACTOR
+	var/healing_medical_factor = DD_BASIC_HEALING_MED_FACTOR
+	var/healing_care_factor = DD_BASIC_HEALING_CARE_FACTOR
+	var/healing_sleep_factor = DD_BASIC_HEALING_SLEEP_FACTOR
 	var/progress_speed = DD_BASIC_PROGRESS_FACTOR
 
 /datum/death_debuff/process()
@@ -21,16 +28,18 @@
 /datum/death_debuff/proc/dd_effect()
 	if(!H)
 		remove_debuff()
+		return
 
 	threatment()
 	state = clamp(state, 0, initial(state))
 	if(state == 0)
 		remove_debuff()
+		return
 
 /datum/death_debuff/proc/threatment()
-	var/healing_factor = threatment_chemical() ? healing_speed : 0
-	healing_factor += threatment_medical() ? healing_speed : 0
-	healing_factor += (threatment_rest()) ? healing_speed : 0
+	var/healing_factor = threatment_chemical() ? healing_chemical_factor : 0
+	healing_factor += threatment_medical() ? healing_medical_factor : 0
+	healing_factor += threatment_rest() ? healing_sleep_factor : 0
 	//Добавить механизм нарастания эффекта, если игрок движется вне медицинского блока ходит
 	if(danger_condition())
 		state += progress_speed
@@ -61,6 +70,11 @@
 			return TRUE
 
 	return FALSE
+
+/datum/death_debuff/proc/threatment_care(nurse_person)
+	if(threatment_medical())
+		state -= healing_care_factor
+		to_chat(H, span_notice("[nurse_person] ухаживает за вами, и Вы начинаете чувствовать себя чуть лучше"))
 
 /datum/death_debuff/proc/threatment_rest()
 	var/resting_in_med = threatment_medical() && threatment_chemical() && H.IsSleeping()
@@ -108,9 +122,14 @@
 		qdel(temp_reagent)
 	description += reagents_string
 
+	var/progress = ((initial(state) - state)/initial(state)) * 100
+	description += "\n Прогресс лечения: [progress]%"
 	return description
 
-#undef DD_BASIC_HEALING_FACTOR
+#undef DD_BASIC_HEALING_CHEM_FACTOR
+#undef DD_BASIC_HEALING_MED_FACTOR
+#undef DD_BASIC_HEALING_CARE_FACTOR
+#undef DD_BASIC_HEALING_SLEEP_FACTOR
 #undef DD_BASIC_PROGRESS_FACTOR
 #undef DD_BASIC_STATE
 

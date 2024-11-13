@@ -11,4 +11,5 @@
 		return
 
 	//Накладывает эффект дееспособности на конечность (считается словно ампутированная)
-	H.adjustBrainLoss(0.02)
+	if(H.stat != DEAD)
+		H.adjustBrainLoss(0.02)

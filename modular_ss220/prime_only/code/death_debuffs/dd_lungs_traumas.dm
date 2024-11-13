@@ -11,7 +11,7 @@
 		return
 
 	//Легкие плохо работают и в итоге персонаж испытывает удушье
-	if(prob(50))
+	if(prob(50) && H.stat != DEAD)
 		H.adjustOxyLoss(state * 0.1)
 
 /datum/death_debuff/lungs/mailfunction

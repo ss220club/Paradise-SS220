@@ -1,7 +1,8 @@
 #define COMSIG_MOB_REVIVED "mob_revived"
 #define COMSIG_MOB_ADV_SCANNED "mob_adv_scanned"
 #define COMSIG_MOB_CLONNED "mob_bio_scanned"
-#define COMSIG_MOB_GET_OLD_DDS "mob_get_old_dds"
+#define COMSIG_MOB_GET_DDS "mob_get_old_dds"
+#define COMSIG_MOB_GIVES_CARE "mob_gives_care"
 #define DD_THRESHOLD 60 SECONDS
 
 /datum/component/death_debuff
@@ -19,6 +20,7 @@
 		/datum/death_debuff/kidneys,
 		/datum/death_debuff/head
 	)
+	var/currently_care = FALSE
 
 /datum/component/death_debuff/Initialize()
 	. = ..()
@@ -31,7 +33,8 @@
 	RegisterSignal(parent, COMSIG_BRAIN_UNDEBUFFED, PROC_REF(remove_debuff))
 	RegisterSignal(parent, COMSIG_MOB_ADV_SCANNED, PROC_REF(brain_scan))
 	RegisterSignal(parent, COMSIG_MOB_CLONNED, PROC_REF(clonning_transfer))
-	RegisterSignal(parent, COMSIG_MOB_GET_OLD_DDS, PROC_REF(get_list))
+	RegisterSignal(parent, COMSIG_MOB_GET_DDS, PROC_REF(get_list))
+	RegisterSignal(parent, COMSIG_MOB_GIVES_CARE, PROC_REF(pre_give_threatment))
 
 /datum/component/death_debuff/UnregisterFromParent()
 	UnregisterSignal(parent, COMSIG_MOB_REVIVED)
@@ -39,25 +42,27 @@
 	UnregisterSignal(parent, COMSIG_BRAIN_UNDEBUFFED)
 	UnregisterSignal(parent, COMSIG_MOB_ADV_SCANNED)
 	UnregisterSignal(parent, COMSIG_MOB_CLONNED)
-	UnregisterSignal(parent, COMSIG_MOB_GET_OLD_DDS)
+	UnregisterSignal(parent, COMSIG_MOB_GET_DDS)
+	UnregisterSignal(parent, COMSIG_MOB_GIVES_CARE)
 
 /datum/component/death_debuff/proc/clonning_transfer(obj/item/organ/internal/brain/new_brain, obj/item/organ/internal/brain/old_brain,)
 	SIGNAL_HANDLER
 	. = list()
-	SEND_SIGNAL(old_brain, COMSIG_MOB_GET_OLD_DDS, .)
+	SEND_SIGNAL(old_brain, COMSIG_MOB_GET_DDS, .)
 	applied_debuffs = .
 	for(var/datum/death_debuff/debuff_selected in applied_debuffs)
 		debuff_selected.apply_debuff(brain_item.owner, debuff_selected.state)
 
-/datum/component/death_debuff/proc/get_list(obj/item/organ/internal/brain/source, list/income_list)
+/datum/component/death_debuff/proc/get_list(obj/item/organ/internal/brain/component_holder, list/income_list)
+	SIGNAL_HANDLER
 	income_list = applied_debuffs
 
-/datum/component/death_debuff/proc/bio_scan(obj/item/organ/internal/brain/source, list/scan_list)
+/datum/component/death_debuff/proc/bio_scan(obj/item/organ/internal/brain/component_holder, list/scan_list)
 	SIGNAL_HANDLER
 	for(var/datum/death_debuff/dd_check in applied_debuffs)
 		scan_list += dd_check.name
 
-/datum/component/death_debuff/proc/brain_scan(obj/item/organ/internal/brain/source, list/scan_list)
+/datum/component/death_debuff/proc/brain_scan(obj/item/organ/internal/brain/component_holder, list/scan_list)
 	SIGNAL_HANDLER
 	for(var/datum/death_debuff/dd_check in applied_debuffs)
 		scan_list += dd_check.get_adv_analyzer_info()
@@ -75,7 +80,8 @@
 	if(IS_CHANGELING(brain_item.owner))
 		return
 
-	if(world.time - death_time > DD_THRESHOLD)
+	var/death_timer = world.time - death_time
+	if(death_timer > DD_THRESHOLD)
 		death_count += 1
 	//Наложить случайный дебафф
 
@@ -108,6 +114,21 @@
 
 	var/datum/death_debuff/debuff = new dd_candidate
 	return debuff
+
+/datum/component/death_debuff/proc/pre_give_threatment(obj/item/organ/internal/brain/component_holder, mob/living/carbon/human/user)
+	SIGNAL_HANDLER
+	if(currently_care)
+		return
+	INVOKE_ASYNC(src, PROC_REF(give_threatment), user)
+
+/datum/component/death_debuff/proc/give_threatment(mob/living/carbon/human/nurse)
+	var/mob/living/carbon/human/victim = brain_item.owner
+	currently_care = TRUE
+	while(do_mob(nurse, victim, 3 SECONDS) && victim.stat != DEAD && length(applied_debuffs) > 0)
+		var/datum/death_debuff/dd = pick(applied_debuffs)
+		dd.threatment_care(nurse)
+
+	currently_care = FALSE
 
 /obj/item/organ/internal/brain/Initialize(mapload, datum/species/new_species)
 	. = ..()
@@ -146,5 +167,15 @@
 	var/mob/living/carbon/human/original = locateUID(patient_mind.original_mob_UID)
 	var/obj/item/organ/internal/brain/old_brain = original.get_int_organ_tag("brain")
 	var/obj/item/organ/internal/brain/new_brain = clone.get_int_organ_tag("brain")
-	SEND_SIGNAL(new_brain, COMSIG_MOB_GET_OLD_DDS, old_brain)
+	SEND_SIGNAL(new_brain, COMSIG_MOB_GET_DDS, old_brain)
 	. = ..()
+
+/mob/living/carbon/help_shake_act(mob/living/carbon/M)
+	. = ..()
+	if(ishuman(M) && ishuman(src))
+		var/obj/item/organ/internal/brain/brain_item = src.get_int_organ_tag("brain")
+		SEND_SIGNAL(brain_item, COMSIG_MOB_GIVES_CARE, M)
+//В хелп интенте клик по кукле
+//проверка на ДДс
+//Начинается уход если да
+//За каждый тик ухода выбирается случайный дебафф и применяется его метод лечения

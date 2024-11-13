@@ -12,7 +12,7 @@
 
 	//Сердце бьется неровно и вот-вот будет инфаркт
 	var/datum/disease/critical/heart_failure/CA
-	if(!(organ.owner.HasDisease(/datum/disease/critical/heart_failure)))
+	if(!(H.HasDisease(/datum/disease/critical/heart_failure)) && H.stat != DEAD)
 		CA = new /datum/disease/critical/heart_failure
 		H.ForceContractDisease(CA)
 
@@ -29,4 +29,5 @@
 		return
 
 	//Сердце медленно бьется и пациент испытывает слабость
-	H.adjustStaminaLoss(state * 0.5)
+	if(H.stat != DEAD)
+		H.adjustStaminaLoss(state * 0.5)

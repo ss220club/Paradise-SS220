@@ -12,8 +12,8 @@
 
 	//Печень отмирает и начинает выбрасывать по 2 токсина в тело
 	organ.status |= ORGAN_DEAD
-	if(prob(33))
-		H.adjustToxLoss(0.5)
+	if(prob(33) && H.stat != DEAD)
+		H.adjustToxLoss(0.25)
 
 /datum/death_debuff/liver/mailfunction
 	name = "нарушение обмена веществ"
