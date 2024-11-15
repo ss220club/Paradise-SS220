@@ -35,6 +35,9 @@
 	GLOB.gpt220.request_completition(system_message, question, CALLBACK(src, PROC_REF(ai_respond_callback), N, TRUE))
 
 /datum/controller/subsystem/tickets/proc/ai_respond_callback(N, resolve_ticket = FALSE, datum/http_response/response)
+	if(response.errored)
+		CRASH("AI failed to respond with code: [response.status_code]")
+
 	response = json_decode(response.body)
 	var/ai_response = response["choices"][1]["message"]["content"]
 	var/datum/ticket/T = allTickets[N]
