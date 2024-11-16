@@ -11,9 +11,11 @@
 /obj/machinery/light/small
 	icon = 'icons/obj/lighting.dmi'
 	layer = ABOVE_MOB_LAYER
+	brightness_color = "#FFF780"
 
 /obj/machinery/light/floor
 	icon = 'icons/obj/lighting.dmi'
+	brightness_color = "#FFF780"
 
 /obj/machinery/light_construct
 	icon = 'modular_ss220/aesthetics/lights/icons/lights.dmi'
