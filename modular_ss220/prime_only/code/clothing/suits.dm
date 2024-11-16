@@ -52,7 +52,7 @@
 
 /obj/item/clothing/suit/midnight_coat/item_action_slot_check(slot, mob/user)
 	. = ..()
-	if(slot == SLOT_HUD_OUTER_SUIT)
+	if(slot == ITEM_SLOT_OUTER_SUIT)
 		return TRUE
 	else
 		user.alpha = initial(user.alpha)
