@@ -44,7 +44,7 @@
 			target.Bumped(chassis)
 			return
 		if(O.anchored)
-			occupant_message("<span class='warning'>[capitalize(target.declent_ru(NOMINATIVE))] надёжно зафиксирован!</span>")
+			occupant_message("<span class='warning'>[capitalize(target.declent_ru(NOMINATIVE))] надёжно фиксируется!</span>")
 			return
 		if(length(cargo_holder.cargo) >= cargo_holder.cargo_capacity)
 			occupant_message("<span class='warning'>Недостаточно места в грузовом отсеке!</span>")
@@ -58,7 +58,7 @@
 		cargo_holder.cargo += O
 		O.forceMove(chassis)
 		O.anchored = FALSE
-		occupant_message("<span class='notice'>[capitalize(target.declent_ru(NOMINATIVE))] успешно загружен.</span>")
+		occupant_message("<span class='notice'>[capitalize(target.declent_ru(NOMINATIVE))] успешно загружается.</span>")
 		log_message("Loaded [O]. Cargo compartment capacity: [cargo_holder.cargo_capacity - length(cargo_holder.cargo)]")
 		return
 
@@ -101,14 +101,14 @@
 					cargo_holder.cargo += O
 					O.forceMove(chassis)
 					O.anchored = FALSE
-					occupant_message("<span class='notice'>[capitalize(target.declent_ru(NOMINATIVE))] успешно загружен.</span>")
+					occupant_message("<span class='notice'>[capitalize(target.declent_ru(NOMINATIVE))] успешно загружается.</span>")
 					log_message("Loaded [O]. Cargo compartment capacity: [cargo_holder.cargo_capacity - length(cargo_holder.cargo)]")
 				else
 					O.anchored = initial(O.anchored)
 			else
 				occupant_message("<span class='warning'>Недостаточно места в грузовом отсеке!</span>")
 		else
-			occupant_message("<span class='warning'>[capitalize(target.declent_ru(NOMINATIVE))] надёжно зафиксирован!</span>")
+			occupant_message("<span class='warning'>[capitalize(target.declent_ru(NOMINATIVE))] надёжно фиксируется!</span>")
 
 	else if(isliving(target))
 		var/mob/living/M = target
@@ -234,21 +234,21 @@
 				if((isreinforcedwallturf(target) && !canRwall) || istype(target, /turf/simulated/wall/indestructible))
 					return 0
 				var/turf/simulated/wall/W = target
-				occupant_message("Деконструкция [target.declent_ru(ACCUSATIVE)]...")
+				occupant_message("Деконструкция [target.declent_ru(GENITIVE)]...")
 				if(do_after_cooldown(W))
 					chassis.spark_system.start()
 					W.ChangeTurf(/turf/simulated/floor/plating)
 					playsound(W, usesound, 50, 1)
 			else if(isfloorturf(target))
 				var/turf/simulated/floor/F = target
-				occupant_message("Деконструкция [target.declent_ru(ACCUSATIVE)]...")
+				occupant_message("Деконструкция [target.declent_ru(GENITIVE)]...")
 				if(do_after_cooldown(F))
 					chassis.spark_system.start()
 					F.ChangeTurf(F.baseturf)
 					F.recalculate_atmos_connectivity()
 					playsound(F, usesound, 50, 1)
 			else if(istype(target, /obj/machinery/door/airlock))
-				occupant_message("Деконструкция [target.declent_ru(ACCUSATIVE)]...")
+				occupant_message("Деконструкция [target.declent_ru(GENITIVE)]...")
 				if(do_after_cooldown(target))
 					chassis.spark_system.start()
 					qdel(target)
@@ -367,7 +367,7 @@
 				cable.amount = 0
 			cable.amount += to_load
 			target.use(to_load)
-			occupant_message("<span class='notice'>[to_load] метров кабеля успешно загружено.</span>")
+			occupant_message("<span class='notice'>[to_load] метр[declension_ru(to_load, "", "а", "ов")] кабеля успешно загружено.</span>")
 			send_byjax(chassis.occupant,"exosuit.browser","\ref[src]",src.get_equip_info())
 		else
 			occupant_message("<span class='warning'>Катушка полностью заполнена.</span>")
@@ -402,7 +402,7 @@
 /obj/item/mecha_parts/mecha_equipment/cable_layer/proc/use_cable(amount)
 	if(!cable || cable.amount<1)
 		set_ready_state(1)
-		occupant_message("Кабель исчерпан, [declent_ru(NOMINATIVE)] деактивирован.")
+		occupant_message("Кабель исчерпан, [declent_ru(NOMINATIVE)] деактивируется.")
 		log_message("Cable depleted, [src] deactivated.")
 		return FALSE
 	if(cable.amount < amount)

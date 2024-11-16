@@ -392,7 +392,7 @@
 		return fuel_added
 
 	else
-		occupant_message("<span class='warning'>[capitalize(fuel_name)] на минимуме! [I.declent_ru(NOMINATIVE)] не может использоваться в качестве топлива.</span>")
+		occupant_message("<span class='warning'>[capitalize(fuel_name)] на минимуме! [capitalize(I.declent_ru(NOMINATIVE))] не может использоваться в качестве топлива.</span>")
 		return 0
 
 /obj/item/mecha_parts/mecha_equipment/generator/attackby(weapon,mob/user, params)

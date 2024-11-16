@@ -87,7 +87,7 @@
 	if(!patient)
 		return
 	patient.forceMove(get_turf(src))
-	occupant_message("Пациент [patient] был извлечён. Функции жизнеобеспечения отключены.")
+	occupant_message("Пациент [patient.declent_ru(NOMINATIVE)] был извлечён. Функции жизнеобеспечения отключены.")
 	log_message("[patient] ejected. Life support functions disabled.")
 	STOP_PROCESSING(SSobj, src)
 	patient = null
@@ -194,7 +194,7 @@
 		return
 	var/to_inject = min(R.volume, inject_amount)
 	if(to_inject && patient.reagents.get_reagent_amount(R.id) + to_inject <= inject_amount*2)
-		occupant_message("Введение [patient] [to_inject] юнитов [R.name].")
+		occupant_message("Введение [patient.declent_ru(GENITIVE)] [to_inject] юнит[declension_ru(to_inject, "", "а", "ов")] [R.name].")
 		log_message("Injecting [patient] with [to_inject] units of [R.name].")
 		add_attack_logs(chassis.occupant, patient, "Injected with [name] containing [R], transferred [to_inject] units", R.harmless ? ATKLOG_ALMOSTALL : null)
 		SG.reagents.trans_id_to(patient,R.id,to_inject)
@@ -219,7 +219,7 @@
 	if(!chassis.has_charge(energy_drain))
 		set_ready_state(1)
 		log_message("Deactivated.")
-		occupant_message("[declent_ru(NOMINATIVE)] деактивирован - нет питания.")
+		occupant_message("[capitalize(declent_ru(NOMINATIVE))] деактивирован - нет питания.")
 		STOP_PROCESSING(SSobj, src)
 		return
 	var/mob/living/carbon/M = patient
@@ -325,7 +325,7 @@
 			var/mob/living/carbon/M = safepick(mobs)
 			if(M)
 				var/R
-				mechsyringe.visible_message("<span class='attack'> [capitalize(M.declent_ru(ACCUSATIVE))] был поражён шприцем!</span>")
+				mechsyringe.visible_message("<span class='attack'> [capitalize(M.declent_ru(ACCUSATIVE))] поражается шприцом!</span>") //
 				if(M.can_inject(originaloccupant, TRUE, original_target_zone))
 					if(mechsyringe.reagents)
 						for(var/datum/reagent/A in mechsyringe.reagents.reagent_list)
@@ -372,7 +372,7 @@
 			message += " added to production"
 			START_PROCESSING(SSobj, src)
 			occupant_message(message)
-			occupant_message("Обработка реактивов начата.")
+			occupant_message("Обработка реагентов начата.")
 			log_message("Reagent processing started.")
 		return
 	if(afilter.get("show_reagents"))
