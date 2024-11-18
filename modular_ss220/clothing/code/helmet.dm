@@ -178,6 +178,7 @@
 		"Vulpkanin" 		= 	'modular_ss220/clothing/icons/mob/species/vulpkanin/helmet.dmi',
 		"Nucleation"		=	'modular_ss220/clothing/icons/mob/helmet.dmi',
 		)
+	armor = list(MELEE = 20, BULLET = 20, LASER = 20, ENERGY = 20, BOMB = 10, RAD = 50, FIRE = 200, ACID = 115)
 
 /obj/item/clothing/head/helmet/cop
 	name = "шлем обороняющего гражданских"
