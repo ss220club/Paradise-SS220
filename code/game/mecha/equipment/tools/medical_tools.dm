@@ -73,10 +73,10 @@
 
 /obj/item/mecha_parts/mecha_equipment/medical/sleeper/proc/patient_insertion_check(mob/living/carbon/target)
 	if(target.buckled)
-		occupant_message("<span class='warning'>Пациент [target.declent_ru(ACCUSATIVE)] не может быть помещён в слипер, потому что пристегнут к [target.buckled.declent_ru(NOMINATIVE)]!</span>")
+		occupant_message("<span class='warning'>Пациент [target.declent_ru(NOMINATIVE)] не может быть помещён в слипер, потому что пристегнут к [target.buckled.declent_ru(GENITIVE)]!</span>")
 		return FALSE
 	if(target.has_buckled_mobs())
-		occupant_message("<span class='warning'>Пациент [target.declent_ru(ACCUSATIVE)] не может быть помещён в слипер из-за существ, прикреплённых к нему!</span>")
+		occupant_message("<span class='warning'>Пациент [target.declent_ru(NOMINATIVE)] не может быть помещён в слипер из-за существ, прикреплённых к нему!</span>")
 		return FALSE
 	if(patient)
 		occupant_message("<span class='warning'>В слипере уже есть пациент!</span>")
@@ -325,7 +325,7 @@
 			var/mob/living/carbon/M = safepick(mobs)
 			if(M)
 				var/R
-				mechsyringe.visible_message("<span class='attack'> [capitalize(M.declent_ru(ACCUSATIVE))] поражается шприцом!</span>") //
+				mechsyringe.visible_message("<span class='attack'> Шприц попадает по [M.declent_ru(DATIVE)]!</span>")
 				if(M.can_inject(originaloccupant, TRUE, original_target_zone))
 					if(mechsyringe.reagents)
 						for(var/datum/reagent/A in mechsyringe.reagents.reagent_list)
