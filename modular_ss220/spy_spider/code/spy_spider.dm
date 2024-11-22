@@ -84,6 +84,9 @@
 
 /obj/item/clothing/Topic(href, href_list)
 	if(!usr.stat && !HAS_TRAIT(usr, TRAIT_HANDS_BLOCKED) && !usr.restrained())
+		if(isnull(src.spy_spider_attached))
+			to_chat(usr, span_info("Ты уже снял жучок с [src]."))
+			return
 		if(!in_range(src, usr))
 			to_chat(usr, span_info("Тебе нужно подойти ближе, чтобы снять жучок с [src]."))
 			return
