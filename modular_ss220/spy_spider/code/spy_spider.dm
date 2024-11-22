@@ -51,12 +51,6 @@
  */
 /obj/item/clothing
 	var/obj/item/radio/spy_spider/spy_spider_attached
-	var/mob/living/carbon/human/found_by = null
-
-/obj/item/clothing/examine(mob/user)
-	. = ..()
-	if (found_by == user)
-		. += "\t<a href='byond://?src=[UID()];remove_spy_spider=[spy_spider_attached.UID()];' class='warning'>Снять жучок</a>"
 
 /obj/item/clothing/Destroy()
 	QDEL_NULL(spy_spider_attached)
@@ -88,26 +82,19 @@
 	to_chat(user, span_info("Ты незаметно прикрепляешь жучок к [src]."))
 	return TRUE
 
-/obj/item/clothing/proc/on_spy_spider_detect()
-	var/obj/item/clothing/I = src
-	I.found_by = usr
-
 /obj/item/clothing/Topic(href, href_list)
-
 	if(!usr.stat && !HAS_TRAIT(usr, TRAIT_HANDS_BLOCKED) && !usr.restrained())
 		if(!in_range(src, usr))
 			to_chat(usr, span_info("Тебе нужно подойти ближе, чтобы снять жучок с [src]."))
 			return
 		if(href_list["remove_spy_spider"])
-			var/time_taken = 5
 			var/obj/item/I = locate(href_list["remove_spy_spider"])
-			if(do_after(usr, time_taken, needhand = 1, target = src))
+			if(do_after(usr, 3 SECONDS, needhand = 1, target = src))
 				I.forceMove(get_turf(src))
 				usr.put_in_hands(I)
-				usr.emote("scream") // remove
 				usr.visible_message("[usr] Что-то снимает с [src] !","<span class='notice'>Вы успешно снимаете жучок с [src].</span>")
 				src.spy_spider_attached = null
-				src.found_by = null
+	. = ..()
 
 
 /**
@@ -157,7 +144,6 @@
 		var/obj/item/clothing/scanned_clothing = A
 		if(scanned_clothing.spy_spider_attached)
 			sleep(1 SECONDS)
-			add_log(span_info("<B>Найдено шпионское устройство!</B>"))
-			scanned_clothing.on_spy_spider_detect()
-
+			// Triger /obj/item/clothing/Topic
+			add_log(span_info("<a href='byond://?src=[scanned_clothing.UID()];remove_spy_spider=[scanned_clothing.spy_spider_attached.UID()];' class='warning'><b>Найдено шпионское устройство!</b></a>"))
 	scanning = FALSE
