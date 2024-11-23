@@ -118,6 +118,7 @@
 		icon_state = "emptycondiment"
 		name = "condiment bottle"
 		desc = "Пустая бутылка для соуса"
+	update_appearance(UPDATE_NAME)
 
 /obj/item/reagent_containers/condiment/enzyme
 	name = "universal enzyme"
