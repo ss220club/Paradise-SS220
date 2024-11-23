@@ -82,7 +82,7 @@
 	holder_l.w_class = WEIGHT_CLASS_HUGE
 	holder_l.materials = null
 
-	for(var/arm_slot in list(SLOT_HUD_LEFT_HAND,SLOT_HUD_RIGHT_HAND))
+	for(var/arm_slot in list(ITEM_SLOT_LEFT_HAND,ITEM_SLOT_RIGHT_HAND))
 		var/obj/item/arm_item = owner.get_item_by_slot(arm_slot)
 
 		if(arm_item)

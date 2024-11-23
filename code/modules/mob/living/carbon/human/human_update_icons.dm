@@ -777,15 +777,15 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 				left_ear_item_state = "[left_ear_item_state]_l"
 				left_ear_icon = l_ear.icon_override
 
-		// SS220 EDIT START - Species overlay shift
-		var/mutable_appearance/standing = mutable_appearance(left_ear_icon, left_ear_item_state, layer = -LEFT_EAR_LAYER)
-		. = list()
-		SEND_SIGNAL(src, COMSIG_MOB_GET_OVERLAY_SHIFTS_LIST, "head", .)
-		if(length(.) > 0)
-			standing.pixel_x += .["shift_x"]
-			standing.pixel_y += .["shift_y"]
-		overlays_standing[LEFT_EAR_LAYER] = standing
-		// SS220 EDIT END
+			// SS220 EDIT START - Species overlay shift
+			var/mutable_appearance/standing = mutable_appearance(left_ear_icon, left_ear_item_state, layer = -LEFT_EAR_LAYER)
+			. = list()
+			SEND_SIGNAL(src, COMSIG_MOB_GET_OVERLAY_SHIFTS_LIST, "head", .)
+			if(length(.) > 0)
+				standing.pixel_x += .["shift_x"]
+				standing.pixel_y += .["shift_y"]
+			overlays_standing[LEFT_EAR_LAYER] = standing
+			// SS220 EDIT END
 
 	if(r_ear)
 		update_hud_r_ear(r_ear)
@@ -800,15 +800,15 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 				right_ear_icon = "[right_ear_item_state]_l"
 				right_ear_icon = r_ear.icon_override
 
-		// SS220 EDIT START - Species overlay shift
-		var/mutable_appearance/standing = mutable_appearance(right_ear_icon, right_ear_item_state, layer = -RIGHT_EAR_LAYER)
-		. = list()
-		SEND_SIGNAL(src, COMSIG_MOB_GET_OVERLAY_SHIFTS_LIST, "head", .)
-		if(length(.) > 0)
-			standing.pixel_x += .["shift_x"]
-			standing.pixel_y += .["shift_y"]
-		overlays_standing[RIGHT_EAR_LAYER] = standing
-		// SS220 EDIT END
+			// SS220 EDIT START - Species overlay shift
+			var/mutable_appearance/standing = mutable_appearance(right_ear_icon, right_ear_item_state, layer = -RIGHT_EAR_LAYER)
+			. = list()
+			SEND_SIGNAL(src, COMSIG_MOB_GET_OVERLAY_SHIFTS_LIST, "head", .)
+			if(length(.) > 0)
+				standing.pixel_x += .["shift_x"]
+				standing.pixel_y += .["shift_y"]
+			overlays_standing[RIGHT_EAR_LAYER] = standing
+			// SS220 EDIT END
 
 	apply_overlay(LEFT_EAR_LAYER)
 	apply_overlay(RIGHT_EAR_LAYER)

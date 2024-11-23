@@ -191,13 +191,13 @@
 //Работа с инвентарем
 /datum/species/serpentid/can_equip(obj/item/I, slot, disable_warning = FALSE, mob/living/carbon/human/H)
 	switch(slot)
-		if(SLOT_HUD_SHOES)
+		if(ITEM_SLOT_SHOES)
 			return FALSE
-		if(SLOT_HUD_GLOVES)
+		if(ITEM_SLOT_GLOVES)
 			return FALSE
-		if(SLOT_HUD_JUMPSUIT)
+		if(ITEM_SLOT_JUMPSUIT)
 			return FALSE
-		if(SLOT_HUD_OUTER_SUIT)
+		if(ITEM_SLOT_OUTER_SUIT)
 			return FALSE
 	. = .. ()
 
