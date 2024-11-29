@@ -124,12 +124,12 @@
 		/obj/item/bio_chip_implanter/storage, // 40TC
 		/obj/item/encryptionkey/syndicate) // 10TC
 
-/// 220TC
+/// 200TC
 /obj/item/storage/box/syndie_kit/bundle/hacker
 	name = "Hacker Bundle"
 	desc = "Набор со всем, что вам потребуется для взлома станции, ИИ, его киборгов and Службы Безопасности. ВЗЛОМАЙТЕ ЭТУ ПЛАНЕТУ!"
 	items = list(
-		/obj/item/melee/energy/sword/saber/blue, // 40TC
+		/obj/item/autosurgeon/organ/syndicate/oneuse/razorwire, // 20TC
 		/obj/item/autosurgeon/organ/syndicate/oneuse/hackerman_deck, // 30TC
 		/obj/item/door_remote/omni/access_tuner, // 30TC, HACK EVERYTHING
 		/obj/item/encryptionkey/syndicate, // 10TC
@@ -529,7 +529,6 @@
 /obj/item/storage/box/syndie_kit/stechkin
 	name = "\improper FK-69 Stechkin kit"
 	desc = "Коробка с символами на Нео-Русском. Кажется, в ней находится пистолет 10мм и два магазина."
-
 /obj/item/storage/box/syndie_kit/stechkin/populate_contents()
 	new /obj/item/gun/projectile/automatic/pistol(src)
 	new /obj/item/ammo_box/magazine/m10mm(src)
@@ -570,3 +569,10 @@
 /obj/item/storage/box/syndie_kit/decoy/populate_contents()
 	for(var/i in 1 to 5)
 		new /obj/item/grenade/firecracker/decoy(src)
+
+/obj/item/storage/box/syndie_kit/forgers_kit
+	name = "\improper Forger's kit"
+
+/obj/item/storage/box/syndie_kit/forgers_kit/populate_contents()
+	new /obj/item/stamp/chameleon(src)
+	new /obj/item/pen/chameleon(src)
