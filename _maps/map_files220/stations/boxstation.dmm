@@ -16644,12 +16644,6 @@
 /area/station/public/mrchangs)
 "biZ" = (
 /obj/machinery/hologram/holopad,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 6
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 5
-	},
 /turf/simulated/floor/carpet/royalblue,
 /area/station/command/meeting_room)
 "bjg" = (
@@ -21429,16 +21423,6 @@
 /obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/plating,
 /area/station/maintenance/port)
-"bFe" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/table/wood/fancy/black,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/turf/simulated/floor/carpet/royalblue,
-/area/station/command/meeting_room)
 "bFi" = (
 /obj/machinery/navbeacon{
 	codes_txt = "patrol;next_patrol=Dorm";
@@ -39546,13 +39530,17 @@
 	pixel_y = 21
 	},
 /obj/structure/table/glass,
-/obj/item/book/manual/wiki/sop_command{
-	pixel_x = -4
+/obj/item/paper_bin{
+	pixel_y = 3
 	},
-/obj/item/folder/blue{
-	pixel_x = 4
+/obj/item/pen{
+	pixel_x = 9;
+	pixel_y = 7
 	},
-/obj/item/pen/multi/fountain,
+/obj/item/pen{
+	pixel_x = 11;
+	pixel_y = 10
+	},
 /turf/simulated/floor/wood/fancy/oak,
 /area/station/command/meeting_room)
 "cXs" = (
@@ -40062,7 +40050,9 @@
 /turf/simulated/floor/plating/airless,
 /area/space/nearstation)
 "cZj" = (
-/obj/structure/extinguisher_cabinet/directional/east,
+/obj/structure/sign/poster/official/nanotrasen_logo{
+	pixel_x = 32
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "bluecorner"
 	},
@@ -55757,6 +55747,20 @@
 	icon_state = "red"
 	},
 /area/station/security/permabrig)
+"gXg" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 4
+	},
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 1
+	},
+/turf/simulated/floor/wood/fancy/oak,
+/area/station/command/meeting_room)
 "gXj" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/railing/cap/reversed{
@@ -57297,6 +57301,17 @@
 /obj/structure/reagent_dispensers/fueltank,
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/apmaint)
+"hyz" = (
+/obj/effect/turf_decal/siding/wood/oak{
+	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/wood/fancy/oak,
+/area/station/command/meeting_room)
 "hyE" = (
 /obj/machinery/door/airlock/freezer{
 	req_access = list(28)
@@ -60734,7 +60749,6 @@
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos)
 "iOD" = (
-/obj/machinery/hologram/holopad,
 /obj/structure/table/wood/fancy/black,
 /obj/item/storage/fancy/donut_box,
 /turf/simulated/floor/carpet/royalblue,
@@ -62065,7 +62079,7 @@
 	icon_state = "1-2"
 	},
 /obj/structure/disposalpipe/segment/corner{
-	dir = 1
+	dir = 8
 	},
 /turf/simulated/floor/wood/fancy/oak,
 /area/station/command/meeting_room)
@@ -63456,9 +63470,6 @@
 /turf/simulated/floor/plasteel,
 /area/station/science/xenobiology)
 "jPi" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
 /obj/structure/cable{
 	d1 = 2;
 	d2 = 4;
@@ -63470,8 +63481,12 @@
 /obj/structure/chair/comfy/brown{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
+/obj/structure/chair/comfy/brown{
+	color = "#514E58";
+	dir = 8
+	},
+/obj/structure/chair/comfy/teal{
+	dir = 8
 	},
 /turf/simulated/floor/carpet/royalblue,
 /area/station/command/meeting_room)
@@ -68110,15 +68125,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos)
-"lwH" = (
-/obj/effect/turf_decal/siding/wood/oak{
-	dir = 8
-	},
-/obj/structure/sign/poster/official/nanotrasen_logo{
-	pixel_x = -32
-	},
-/turf/simulated/floor/carpet/royalblue,
-/area/station/command/meeting_room)
 "lwN" = (
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/simulated/floor/plasteel{
@@ -68831,6 +68837,19 @@
 /obj/effect/turf_decal/delivery/hollow,
 /turf/simulated/floor/plating,
 /area/station/engineering/secure_storage)
+"lJw" = (
+/obj/structure/chair/comfy/brown{
+	dir = 4
+	},
+/obj/structure/chair/comfy/brown{
+	color = "#514E58";
+	dir = 4
+	},
+/obj/structure/chair/comfy/red{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/royalblue,
+/area/station/command/meeting_room)
 "lJK" = (
 /obj/structure/table/glass/reinforced/plastitanium,
 /obj/item/storage/bible{
@@ -72773,17 +72792,16 @@
 /obj/machinery/light/directional/north,
 /obj/machinery/button/windowtint{
 	id = "conference";
-	pixel_x = 8;
-	pixel_y = 41
+	pixel_x = -10;
+	pixel_y = 21
 	},
 /obj/machinery/door_control/shutter{
-	pixel_x = 8;
-	pixel_y = 32;
+	pixel_y = 21;
 	id = "heads_meeting"
 	},
 /obj/machinery/door_control/bolt_control{
-	pixel_x = 8;
-	pixel_y = 23;
+	pixel_x = 10;
+	pixel_y = 21;
 	id = "conference"
 	},
 /obj/structure/table/glass,
@@ -78996,6 +79014,21 @@
 /obj/structure/railing/cap,
 /turf/simulated/floor/wood/fancy/cherry,
 /area/station/service/theatre)
+"phe" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/turf/simulated/floor/plasteel{
+	dir = 8;
+	icon_state = "blue"
+	},
+/area/station/command/bridge)
 "phl" = (
 /obj/structure/disposalpipe/junction{
 	dir = 8
@@ -82568,14 +82601,13 @@
 /area/space/nearstation)
 "qsV" = (
 /obj/machinery/power/apc/directional/north,
-/obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2"
-	},
 /obj/effect/turf_decal/siding/wood/oak{
 	dir = 5
 	},
-/obj/machinery/photocopier,
+/obj/item/kirbyplants{
+	pixel_y = 10
+	},
+/obj/machinery/ai_status_display/east,
 /turf/simulated/floor/wood/fancy/oak,
 /area/station/command/meeting_room)
 "qsX" = (
@@ -83921,15 +83953,13 @@
 	},
 /area/station/medical/surgery/observation)
 "qNB" = (
-/obj/machinery/disposal,
 /obj/machinery/light_switch/south,
 /obj/effect/turf_decal/siding/wood/oak{
 	dir = 6
 	},
-/obj/structure/disposalpipe/trunk{
+/obj/machinery/computer/account_database{
 	dir = 8
 	},
-/obj/machinery/ai_status_display/east,
 /turf/simulated/floor/wood/fancy/oak,
 /area/station/command/meeting_room)
 "qNM" = (
@@ -85648,17 +85678,6 @@
 /turf/simulated/floor/bluegrid,
 /area/station/turret_protected/ai)
 "rxV" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
@@ -85666,6 +85685,17 @@
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
 	},
 /turf/simulated/floor/wood/fancy/oak,
 /area/station/command/meeting_room)
@@ -87516,14 +87546,10 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/fsmaint)
 "siC" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/effect/turf_decal/siding/wood/oak{
 	dir = 4
 	},
+/obj/machinery/atmospherics/unary/vent_scrubber/on,
 /turf/simulated/floor/wood/fancy/oak,
 /area/station/command/meeting_room)
 "siM" = (
@@ -88686,10 +88712,10 @@
 /turf/simulated/floor/wood/oak,
 /area/station/maintenance/fsmaint)
 "sBO" = (
-/obj/machinery/atmospherics/unary/vent_pump/on{
-	dir = 1
-	},
 /obj/structure/table/wood/fancy/black,
+/obj/item/stack/packageWrap,
+/obj/item/assembly/timer,
+/obj/item/hand_labeler,
 /turf/simulated/floor/carpet/royalblue,
 /area/station/command/meeting_room)
 "sBR" = (
@@ -89699,6 +89725,10 @@
 /obj/structure/chair/comfy/brown{
 	dir = 1
 	},
+/obj/structure/chair/comfy/brown{
+	color = "#514E58";
+	dir = 1
+	},
 /turf/simulated/floor/carpet/royalblue,
 /area/station/command/meeting_room)
 "sSP" = (
@@ -90424,9 +90454,6 @@
 /turf/simulated/floor/plasteel,
 /area/station/supply/expedition)
 "tgt" = (
-/obj/effect/turf_decal/siding/wood/oak{
-	dir = 8
-	},
 /obj/structure/chair/comfy/brown{
 	dir = 4
 	},
@@ -90766,12 +90793,12 @@
 /turf/simulated/floor/plasteel,
 /area/station/engineering/atmos)
 "tli" = (
-/obj/machinery/computer/account_database{
-	dir = 8
-	},
 /obj/effect/turf_decal/siding/wood/oak{
 	dir = 4
 	},
+/obj/machinery/photocopier,
+/obj/structure/cable,
+/obj/machinery/ai_status_display/east,
 /turf/simulated/floor/wood/fancy/oak,
 /area/station/command/meeting_room)
 "tlj" = (
@@ -94219,7 +94246,7 @@
 "uwP" = (
 /obj/effect/turf_decal/siding/wood/oak,
 /obj/machinery/light/directional/south,
-/obj/machinery/economy/vending/vulpix,
+/obj/structure/reagent_dispensers/water_cooler,
 /turf/simulated/floor/wood/fancy/oak,
 /area/station/command/meeting_room)
 "uwU" = (
@@ -94770,6 +94797,17 @@
 	},
 /turf/simulated/floor/plating,
 /area/station/maintenance/fpmaint)
+"uHz" = (
+/obj/structure/table/wood/fancy/black,
+/obj/item/book/manual/wiki/sop_command{
+	pixel_x = -4
+	},
+/obj/item/folder/blue{
+	pixel_x = 4
+	},
+/obj/item/pen/multi/fountain,
+/turf/simulated/floor/carpet/royalblue,
+/area/station/command/meeting_room)
 "uHA" = (
 /obj/structure/railing/corner{
 	dir = 8
@@ -95664,7 +95702,10 @@
 /area/station/maintenance/apmaint)
 "uYW" = (
 /obj/effect/turf_decal/siding/wood/oak,
-/obj/structure/reagent_dispensers/water_cooler,
+/obj/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 4
+	},
 /turf/simulated/floor/wood/fancy/oak,
 /area/station/command/meeting_room)
 "uZe" = (
@@ -98451,6 +98492,13 @@
 	icon_state = "whitegreen"
 	},
 /area/station/medical/virology)
+"vVe" = (
+/obj/structure/extinguisher_cabinet/directional/west,
+/turf/simulated/floor/plasteel{
+	dir = 8;
+	icon_state = "browncorner"
+	},
+/area/station/hallway/primary/central/nw)
 "vVF" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -99029,12 +99077,6 @@
 /obj/effect/spawner/random/barrier/obstruction,
 /turf/simulated/floor/plasteel,
 /area/station/maintenance/asmaint)
-"wgG" = (
-/obj/effect/turf_decal/siding/wood/oak{
-	dir = 8
-	},
-/turf/simulated/floor/carpet/royalblue,
-/area/station/command/meeting_room)
 "wgI" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -129766,7 +129808,7 @@ cdX
 bun
 bun
 gzl
-bun
+vVe
 bxi
 urU
 bzM
@@ -130540,7 +130582,7 @@ xPg
 bAy
 gaY
 gaY
-gaY
+ehi
 ehi
 ehi
 ehi
@@ -130797,11 +130839,11 @@ xPg
 bAB
 gaY
 bvV
-lwH
+kBQ
 tgt
+lJw
 tgt
-tgt
-wgG
+kBQ
 qRS
 iZE
 upp
@@ -131055,7 +131097,7 @@ bAA
 gaY
 cXq
 kBQ
-ewS
+uHz
 ewS
 ewS
 sSN
@@ -131570,7 +131612,7 @@ gaY
 nOD
 kBQ
 ewS
-bFe
+ewS
 ewS
 sSN
 ckn
@@ -132082,11 +132124,11 @@ vQV
 jSf
 bCw
 qsV
-siC
+pMj
 siC
 rxV
-ckn
-pMj
+gXg
+hyz
 tli
 qNB
 bKJ
@@ -132597,7 +132639,7 @@ xJG
 lvd
 bxr
 oYe
-oYe
+phe
 bSU
 bBy
 bBy
