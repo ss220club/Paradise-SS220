@@ -16647,10 +16647,6 @@
 	dir = 4
 	},
 /obj/structure/table/wood/fancy/black,
-/obj/item/pen{
-	pixel_x = -23;
-	pixel_y = -26
-	},
 /turf/simulated/floor/carpet/black,
 /area/station/command/meeting_room)
 "bjg" = (
@@ -48439,6 +48435,18 @@
 "ewS" = (
 /obj/structure/table/wood/fancy/black,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/item/pen{
+	pixel_y = 2;
+	pixel_x = 6
+	},
+/obj/item/pen{
+	pixel_y = 7;
+	pixel_x = 7
+	},
+/obj/item/paper_bin{
+	pixel_x = -4;
+	pixel_y = 3
+	},
 /turf/simulated/floor/carpet/black,
 /area/station/command/meeting_room)
 "ewU" = (
@@ -52164,14 +52172,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/station/maintenance/fsmaint)
-"fOM" = (
-/obj/machinery/door_control/shutter{
-	pixel_x = 8;
-	pixel_y = -66;
-	id = "heads_meeting"
-	},
-/turf/simulated/floor/carpet/black,
-/area/station/command/meeting_room)
 "fOP" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable{
@@ -65128,20 +65128,6 @@
 	icon_state = "whitepurple"
 	},
 /area/station/science/explab)
-"ktC" = (
-/obj/effect/turf_decal/siding/wood/oak{
-	dir = 8
-	},
-/obj/structure/sign/poster/official/nanotrasen_logo{
-	pixel_x = -32
-	},
-/obj/machinery/door_control/bolt_control{
-	pixel_x = 40;
-	pixel_y = -76;
-	id = "conference"
-	},
-/turf/simulated/floor/wood/fancy/oak,
-/area/station/command/meeting_room)
 "ktF" = (
 /obj/item/radio/intercom/custom{
 	pixel_y = 22
@@ -67465,6 +67451,16 @@
 	id = "conference";
 	pixel_x = 8;
 	pixel_y = 8
+	},
+/obj/machinery/door_control/shutter{
+	pixel_x = 8;
+	pixel_y = -2;
+	id = "heads_meeting"
+	},
+/obj/machinery/door_control/bolt_control{
+	pixel_x = 8;
+	pixel_y = -12;
+	id = "conference"
 	},
 /turf/simulated/floor/carpet/black,
 /area/station/command/meeting_room)
@@ -83890,12 +83886,6 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/fsmaint)
 "qMB" = (
-/obj/item/phone{
-	desc = "Предположительно, это прямая линия с центральным командованием Нанотрейзен. Он даже не подключен.";
-	name = "красный телефон";
-	pixel_x = -74;
-	pixel_y = -48
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/wood/fancy/oak,
 /area/station/command/meeting_room)
@@ -88704,10 +88694,6 @@
 	icon_state = "1-2"
 	},
 /obj/structure/disposalpipe/segment,
-/obj/item/pen{
-	pixel_x = -85;
-	pixel_y = 9
-	},
 /turf/simulated/floor/carpet/black,
 /area/station/command/meeting_room)
 "sBh" = (
@@ -88754,12 +88740,15 @@
 /area/station/maintenance/fsmaint)
 "sBO" = (
 /obj/structure/table/wood/fancy/black,
-/obj/item/paper_bin{
-	pixel_x = -32
-	},
 /obj/item/lighter/zippo/engraved{
 	pixel_x = 8;
 	pixel_y = 2
+	},
+/obj/item/phone{
+	desc = "Предположительно, это прямая линия с центральным командованием Нанотрейзен. Он даже не подключен.";
+	name = "красный телефон";
+	pixel_x = -2;
+	pixel_y = 6
 	},
 /turf/simulated/floor/carpet/black,
 /area/station/command/meeting_room)
@@ -130869,7 +130858,7 @@ xPg
 bAB
 gaY
 bvV
-ktC
+qRS
 xBa
 tgt
 tgt
@@ -131126,7 +131115,7 @@ bwN
 bAA
 gaY
 cXq
-fOM
+dqh
 mbC
 liy
 ewS
