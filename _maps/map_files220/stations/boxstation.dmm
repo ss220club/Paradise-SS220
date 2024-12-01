@@ -19763,7 +19763,6 @@
 "bxk" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/status_display/directional/east,
-/obj/item/radio/intercom/directional/east,
 /turf/simulated/floor/plasteel{
 	icon_state = "bluecorner"
 	},
@@ -25704,6 +25703,12 @@
 	icon_state = "whiteblue"
 	},
 /area/station/medical/cryo)
+"bXY" = (
+/obj/structure/extinguisher_cabinet/directional/east,
+/turf/simulated/floor/plasteel{
+	icon_state = "bluecorner"
+	},
+/area/station/hallway/primary/central/west)
 "bYb" = (
 /obj/structure/flora/ausbushes/leafybush,
 /obj/structure/flora/ausbushes/ywflowers,
@@ -80743,9 +80748,7 @@
 	dir = 4
 	},
 /obj/structure/chair/sofa/corp/right{
-	dir = 8;
-	pixel_x = 4;
-	pixel_y = 8
+	dir = 8
 	},
 /turf/simulated/floor/wood/fancy/oak,
 /area/station/command/meeting_room)
@@ -87503,9 +87506,7 @@
 	dir = 4
 	},
 /obj/structure/chair/sofa/corp/left{
-	dir = 8;
-	pixel_x = 4;
-	pixel_y = 8
+	dir = 8
 	},
 /turf/simulated/floor/wood/fancy/oak,
 /area/station/command/meeting_room)
@@ -98453,13 +98454,6 @@
 	icon_state = "whitegreen"
 	},
 /area/station/medical/virology)
-"vVe" = (
-/obj/structure/extinguisher_cabinet/directional/west,
-/turf/simulated/floor/plasteel{
-	dir = 8;
-	icon_state = "browncorner"
-	},
-/area/station/hallway/primary/central/nw)
 "vVF" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -101182,9 +101176,20 @@
 	dir = 1
 	},
 /obj/structure/table/wood,
-/obj/machinery/photocopier/faxmachine/longrange{
-	department = "Head of Personnel's Office";
-	pixel_y = 4
+/obj/item/paper_bin/nanotrasen{
+	pixel_x = -4;
+	pixel_y = 3
+	},
+/obj/item/pen/multi{
+	pixel_x = -4;
+	pixel_y = 5
+	},
+/obj/item/pen/multi{
+	pixel_y = 9
+	},
+/obj/item/eftpos{
+	pixel_x = 4;
+	pixel_y = 2
 	},
 /turf/simulated/floor/wood/oak,
 /area/station/command/office/hop)
@@ -101304,20 +101309,9 @@
 /area/station/engineering/utility)
 "wYq" = (
 /obj/structure/table/wood,
-/obj/item/paper_bin/nanotrasen{
-	pixel_x = -4;
-	pixel_y = 3
-	},
-/obj/item/pen/multi{
-	pixel_x = -4;
-	pixel_y = 5
-	},
-/obj/item/pen/multi{
-	pixel_y = 9
-	},
-/obj/item/eftpos{
-	pixel_x = 4;
-	pixel_y = 2
+/obj/machinery/photocopier/faxmachine/longrange{
+	department = "Head of Personnel's Office";
+	pixel_y = 4
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "grimy"
@@ -129789,7 +129783,7 @@ cdX
 bun
 bun
 gzl
-vVe
+bun
 bxi
 urU
 bzM
@@ -130305,7 +130299,7 @@ bnP
 xPg
 bAz
 bxk
-byF
+bXY
 byF
 byF
 byF
