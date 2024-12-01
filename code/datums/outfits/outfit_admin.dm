@@ -589,8 +589,8 @@
 		return
 	H.real_name = "[capitalize(pick(GLOB.first_names_soviet))] [capitalize(pick(GLOB.last_names_soviet))]"
 	H.name = H.real_name
-	H.add_language("Neo-Russkiya")
-	H.set_default_language(GLOB.all_languages["Neo-Russkiya"])
+	H.add_language("Neo-Russkiya") // SS220 EDIT - Zvezhan -> Neo-Russkiya
+	H.set_default_language(GLOB.all_languages["Neo-Russkiya"]) // SS220 EDIT - Zvezhan -> Neo-Russkiya
 	var/obj/item/card/id/I = H.wear_id
 	if(istype(I))
 		apply_to_card(I, H, list(ACCESS_MAINT_TUNNELS), name)
@@ -1251,7 +1251,7 @@
 	if(istype(C))
 		C.name = "ancient robes"
 		C.hood.name = "ancient hood"
-		H.equip_to_slot_or_del(C, SLOT_HUD_IN_BACKPACK)
+		H.equip_to_slot_or_del(C, ITEM_SLOT_IN_BACKPACK)
 
 	var/obj/item/card/id/I = H.wear_id
 	if(istype(I))
@@ -1293,7 +1293,7 @@
 	if(istype(C))
 		C.name = "ancient robes"
 		C.hood.name = "ancient hood"
-		H.equip_to_slot_or_del(C, SLOT_HUD_IN_BACKPACK)
+		H.equip_to_slot_or_del(C, ITEM_SLOT_IN_BACKPACK)
 
 	var/obj/item/card/id/I = H.wear_id
 	if(istype(I))
@@ -1606,7 +1606,7 @@
 	H.update_dna()
 
 	H.wear_mask.adjustmask(H) // push it back on the head
-	equip_item(H, /obj/item/clothing/mask/cigarette/cigar, SLOT_HUD_WEAR_MASK) // get them their cigar
+	equip_item(H, /obj/item/clothing/mask/cigarette/cigar, ITEM_SLOT_MASK) // get them their cigar
 	if(istype(H.glasses, /obj/item/clothing/glasses)) // this is gonna be always true
 		var/obj/item/clothing/glasses/glassass = H.glasses
 		glassass.over_mask = TRUE

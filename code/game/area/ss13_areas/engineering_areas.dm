@@ -85,6 +85,10 @@
 	name = "Генератор Гравитации"
 	icon_state = "gravgen"
 
+/area/station/engineering/transmission_laser
+	name = "\improper Power Transmission Laser"
+	icon_state = "engi"
+
 /area/station/engineering/ai_transit_tube
 	name = "Транзитная Труба Спутника ИИ"
 	icon_state = "ai"

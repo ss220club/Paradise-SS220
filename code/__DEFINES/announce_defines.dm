@@ -6,3 +6,4 @@
 #define ANNOUNCE_KIND_MAJOR		"Оповещение с NAS Трурль"
 #define ANNOUNCE_KIND_EVENT		"Оповещение с NAS Трурль"  // Intentionally the same as above
 #define ANNOUNCE_KIND_AI		"Оповещение И.И."
+#define ANNOUNCE_KIND_PTL		"Power Transmission Laser report"
