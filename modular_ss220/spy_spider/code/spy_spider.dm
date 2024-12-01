@@ -82,22 +82,28 @@
 	to_chat(user, span_info("Ты незаметно прикрепляешь жучок к [src]."))
 	return TRUE
 
+/obj/item/clothing/proc/remove_spy_spider(cloth_uid, spider_uid)
+	if(!in_range(src, usr))
+		to_chat(usr, span_info("Тебе нужно подойти ближе, чтобы снять жучок с [src.declent_ru(GENITIVE)]."))
+		return
+	if(usr.stat || HAS_TRAIT(usr, TRAIT_HANDS_BLOCKED) || usr.restrained())
+		to_chat(usr, span_info("Тебе нужны свободные руки для этого")
+		return
+	if(isnull(src.spy_spider_attached))
+		to_chat(usr, span_info("На [src.declent_ru(PREPOSITIONAL)] нет жучка."))
+		return
+
+	var/obj/item/I = locate(spider_uid)
+	if(do_after(usr, 3 SECONDS, needhand = 1, target = src))
+			I.forceMove(get_turf(src))
+			usr.put_in_hands(I)
+			usr.visible_message("[usr] Что-то снимает с [src.declent_ru(GENITIVE)] !","<span class='notice'>Вы успешно снимаете жучок с [src.declent_ru(ACCUSATIVE)].</span>")
+			spy_spider_attached = null
+
+
 /obj/item/clothing/Topic(href, href_list)
-	if(!usr.stat && !HAS_TRAIT(usr, TRAIT_HANDS_BLOCKED) && !usr.restrained())
-		if(isnull(src.spy_spider_attached))
-			to_chat(usr, span_info("Ты уже снял жучок с [src]."))
-			return
-		if(!in_range(src, usr))
-			to_chat(usr, span_info("Тебе нужно подойти ближе, чтобы снять жучок с [src]."))
-			return
-		if(href_list["remove_spy_spider"])
-			var/obj/item/I = locate(href_list["remove_spy_spider"])
-			if(do_after(usr, 3 SECONDS, needhand = 1, target = src))
-				I.forceMove(get_turf(src))
-				usr.put_in_hands(I)
-				usr.visible_message("[usr] Что-то снимает с [src] !","<span class='notice'>Вы успешно снимаете жучок с [src].</span>")
-				src.spy_spider_attached = null
 	. = ..()
+	remove_spy_spider( href_list["src"], href_list["remove_spy_spider"])
 
 
 /**
@@ -108,7 +114,7 @@
 		return ..()
 
 	if(!(w_uniform || wear_suit))
-		to_chat(user, span_warning("У тебя нет желания лезть к [src] в трусы. Жучок надо крепить на одежду!"))
+		to_chat(user, span_warning("У тебя нет желания лезть к [src.declent_ru(GENITIVE)] в трусы. Жучок надо крепить на одежду!"))
 		return TRUE
 
 	var/obj/item/radio/spy_spider/spy_spider = I
@@ -128,7 +134,7 @@
 	user.unEquip(spy_spider)
 	spy_spider.forceMove(clothing_for_attach)
 	clothing_for_attach.spy_spider_attached = spy_spider
-	to_chat(user, span_info("Ты незаметно прикрепляешь жучок к одежде [src]."))
+	to_chat(user, span_info("Ты незаметно прикрепляешь жучок к одежде [src.declent_ru(ACCUSATIVE)]."))
 	return TRUE
 
 /obj/item/clothing/suit/storage/attackby(obj/item/W as obj, mob/user as mob, params)
