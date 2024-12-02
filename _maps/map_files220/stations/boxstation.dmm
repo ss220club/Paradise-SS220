@@ -46134,7 +46134,7 @@
 /area/station/maintenance/asmaint2)
 "dIa" = (
 /obj/machinery/alarm/directional/east,
-/obj/structure/filingcabinet/security,
+/obj/structure/filingcabinet/medical,
 /turf/simulated/floor/wood/oak,
 /area/station/command/office/hop)
 "dIc" = (
@@ -49459,11 +49459,13 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
-/obj/structure/disposalpipe/segment,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
+	},
+/obj/structure/disposalpipe/segment/corner{
+	dir = 1
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "grimy"
@@ -56656,10 +56658,10 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plasteel{
 	icon_state = "grimy"
 	},
@@ -58810,7 +58812,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/computer/account_database{
+/obj/machinery/computer/secure_data{
 	dir = 4
 	},
 /turf/simulated/floor/wood/oak,
@@ -60651,6 +60653,9 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
+/obj/structure/chair{
+	dir = 8
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "grimy"
 	},
@@ -62431,10 +62436,6 @@
 /area/station/maintenance/fsmaint)
 "juZ" = (
 /obj/machinery/light_switch/east,
-/obj/machinery/disposal,
-/obj/structure/disposalpipe/trunk{
-	dir = 8
-	},
 /turf/simulated/floor/wood/oak,
 /area/station/command/office/hop)
 "jva" = (
@@ -75413,12 +75414,9 @@
 /area/station/hallway/secondary/exit)
 "nYX" = (
 /obj/structure/table/wood,
-/obj/item/megaphone{
-	pixel_y = 8;
-	pixel_x = -4
-	},
 /obj/effect/spawner/random/officetoys{
-	pixel_x = 4
+	pixel_x = -2;
+	pixel_y = -8
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "grimy"
@@ -80801,9 +80799,6 @@
 /area/station/engineering/break_room)
 "pNG" = (
 /obj/machinery/firealarm/directional/south,
-/obj/structure/chair{
-	dir = 8
-	},
 /turf/simulated/floor/wood/oak,
 /area/station/command/office/hop)
 "pNL" = (
@@ -81474,12 +81469,12 @@
 /turf/simulated/floor/plasteel,
 /area/station/supply/miningdock)
 "qaA" = (
-/obj/structure/disposalpipe/segment/corner,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/structure/disposalpipe/segment/corner,
 /turf/simulated/floor/plasteel{
 	icon_state = "grimy"
 	},
@@ -83888,9 +83883,14 @@
 /obj/effect/turf_decal/siding/wood/oak{
 	dir = 4
 	},
-/obj/machinery/light_switch/east,
+/obj/machinery/light_switch/east{
+	pixel_y = -4
+	},
 /obj/structure/disposalpipe/trunk{
 	dir = 1
+	},
+/obj/machinery/firealarm/directional/east{
+	pixel_y = 4
 	},
 /turf/simulated/floor/wood/fancy/oak,
 /area/station/command/meeting_room)
@@ -85667,11 +85667,11 @@
 /area/station/maintenance/turbine)
 "rzA" = (
 /obj/machinery/power/apc/directional/north,
-/obj/structure/bookcase/sop,
 /obj/structure/cable{
 	d2 = 8;
 	icon_state = "0-8"
 	},
+/obj/structure/bookcase/sop,
 /turf/simulated/floor/wood/oak,
 /area/station/command/office/hop)
 "rzF" = (
@@ -86343,7 +86343,10 @@
 /obj/machinery/keycard_auth/east{
 	pixel_y = -12
 	},
-/obj/structure/filingcabinet/medical,
+/obj/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 8
+	},
 /turf/simulated/floor/wood/oak,
 /area/station/command/office/hop)
 "rNj" = (
@@ -90684,8 +90687,10 @@
 /obj/effect/turf_decal/siding/wood/oak{
 	dir = 4
 	},
-/obj/machinery/papershredder,
 /obj/structure/disposalpipe/segment,
+/obj/machinery/computer/account_database{
+	dir = 8
+	},
 /turf/simulated/floor/wood/fancy/oak,
 /area/station/command/meeting_room)
 "tlj" = (
@@ -99172,9 +99177,7 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/aft)
 "wkM" = (
-/obj/machinery/computer/secure_data{
-	dir = 4
-	},
+/obj/structure/filingcabinet/chestdrawer,
 /turf/simulated/floor/wood/oak,
 /area/station/command/office/hop)
 "wkQ" = (
@@ -100087,9 +100090,6 @@
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
-	},
-/obj/structure/disposalpipe/segment/corner{
-	dir = 1
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "grimy"
@@ -101168,9 +101168,6 @@
 	dir = 1
 	},
 /obj/structure/table/wood,
-/obj/machinery/smartfridge/id{
-	density = 0
-	},
 /obj/machinery/door_control/normal{
 	id = "hopofficedoor";
 	name = "Office Door";
@@ -101179,6 +101176,10 @@
 	req_access = list(57)
 	},
 /obj/machinery/requests_console/directional/south,
+/obj/item/megaphone{
+	pixel_y = 8;
+	pixel_x = -4
+	},
 /turf/simulated/floor/wood/oak,
 /area/station/command/office/hop)
 "wWf" = (
@@ -101296,9 +101297,13 @@
 /turf/simulated/floor/plating,
 /area/station/engineering/utility)
 "wYq" = (
-/obj/structure/filingcabinet/chestdrawer,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
+	},
+/obj/structure/table/wood,
+/obj/machinery/photocopier/faxmachine/longrange{
+	department = "Head of Personnel's Office";
+	pixel_y = 4
 	},
 /turf/simulated/floor/plasteel{
 	icon_state = "grimy"
@@ -103047,9 +103052,8 @@
 "xCt" = (
 /obj/item/radio/intercom/directional/west,
 /obj/structure/table/wood,
-/obj/machinery/photocopier/faxmachine/longrange{
-	department = "Head of Personnel's Office";
-	pixel_y = 4
+/obj/machinery/smartfridge/id{
+	density = 0
 	},
 /turf/simulated/floor/wood/oak,
 /area/station/command/office/hop)
