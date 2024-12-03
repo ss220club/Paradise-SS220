@@ -101,8 +101,8 @@
 
 /datum/module_picker/New()
 	possible_modules = list()
-	for(var/type in subtypesof(/datum/AI_Module))
-		var/datum/AI_Module/AM = new type
+	for(var/type in subtypesof(/datum/ai_module))
+		var/datum/ai_module/AM = new type
 		if(AM.power_type || AM.upgrade)
 			possible_modules += AM
 
@@ -112,7 +112,7 @@
 			<HR>
 			<B>Установка модулей:</B><BR>
 			<I>Число позади означает количество мощностей, которое потребуется на разблокировку.</I><BR>"}
-	for(var/datum/AI_Module/module in possible_modules)
+	for(var/datum/ai_module/module in possible_modules)
 		dat += "<A href='byond://?src=[UID()];[module.mod_pick_name]=1'>[module.module_name]</A><A href='byond://?src=[UID()];showdesc=[module.mod_pick_name]'>\[?\]</A> ([module.cost])<BR>"
 	dat += "<HR>"
 	if(temp)
@@ -133,7 +133,7 @@
 		to_chat(A, "<span class='warning'>Вы уже умерли!</span>")
 		return
 
-	for(var/datum/AI_Module/AM in possible_modules)
+	for(var/datum/ai_module/AM in possible_modules)
 		if(href_list[AM.mod_pick_name])
 
 			// Cost check
@@ -175,7 +175,7 @@
 	use(usr)
 
 //The base module type, which holds info about each ability.
-/datum/AI_Module
+/datum/ai_module
 	var/module_name
 	var/mod_pick_name
 	var/description = ""
@@ -187,11 +187,11 @@
 	var/unlock_sound //Sound played when an ability is unlocked
 	var/uses = 0
 
-/datum/AI_Module/proc/upgrade(mob/living/silicon/ai/AI) //Apply upgrades!
+/datum/ai_module/proc/upgrade(mob/living/silicon/ai/AI) //Apply upgrades!
 	return
 
 //Doomsday Device: Starts the self-destruct timer. It can only be stopped by killing the AI completely.
-/datum/AI_Module/nuke_station
+/datum/ai_module/nuke_station
 	module_name = "Устройство Судного Дня"
 	mod_pick_name = "nukestation"
 	description = "Активирует оружие, которое уничтожит всю органическую жизнь на станции по истечению 450 секундного таймера. Не сработает, если ваше Ядро уничтожат или вынесут за пределы станции"
@@ -303,7 +303,7 @@
 	SSticker.mode.station_was_nuked = TRUE
 
 //AI Turret Upgrade: Increases the health and damage of all turrets.
-/datum/AI_Module/upgrade_turrets
+/datum/ai_module/upgrade_turrets
 	module_name = "Улучшение турелей"
 	mod_pick_name = "turret"
 	description = "Улучшает силу и здоровье турелей. Этот эффект постоянен."
@@ -312,7 +312,7 @@
 	unlock_text = "<span class='notice'>Вы перенаправляете часть энергии на турели, усиливая их живучесть и урон.</span>"
 	unlock_sound = 'sound/items/rped.ogg'
 
-/datum/AI_Module/upgrade_turrets/upgrade(mob/living/silicon/ai/AI)
+/datum/ai_module/upgrade_turrets/upgrade(mob/living/silicon/ai/AI)
 	for(var/obj/machinery/porta_turret/ai_turret/turret in GLOB.machines)
 		var/turf/T = get_turf(turret)
 		if(is_station_level(T.z))
@@ -322,7 +322,7 @@
 	AI.turrets_upgraded = TRUE
 
 //Hostile Station Lockdown: Locks, bolts, and electrifies every airlock on the station. After 90 seconds, the doors reset.
-/datum/AI_Module/lockdown
+/datum/ai_module/lockdown
 	module_name = "Агрессивный Локдаун Станции"
 	mod_pick_name = "lockdown"
 	description = "Перегружает все шлюзы, противопожарные и взрывоустойчивые двери, закрывая их. Внимание! Эта команда также электрифицирует все шлюзы. Сеть автоматически перезапустится через 90 секунд \
@@ -343,7 +343,7 @@
 	new /datum/event/door_runtime()
 
 //Destroy RCDs: Detonates all non-cyborg RCDs on the station.
-/datum/AI_Module/destroy_rcd
+/datum/ai_module/destroy_rcd
 	module_name = "Уничтожение RCD"
 	mod_pick_name = "rcd"
 	description = " Отправляет специальный импульс для детонации всех ручных и экзокостюмных RCD на станции."
@@ -371,7 +371,7 @@
 	user.playsound_local(user, 'sound/machines/twobeep.ogg', 50, FALSE, use_reverb = FALSE)
 
 //Unlock Mech Domination: Unlocks the ability to dominate mechs. Big shocker, right?
-/datum/AI_Module/mecha_domination
+/datum/ai_module/mecha_domination
 	module_name = "Разблокировка доминации мехов"
 	mod_pick_name = "mechjack"
 	description = "Позволяет вам взломать бортовой компьютер меха, загрузив все свои процессы в него, а также выкидывая пилота. Как только вы загрузитесь в меха, выйти будет невозможно \
@@ -381,11 +381,11 @@
 	unlock_text = "<span class='notice'>Вирусный пакет скомпилирован. Вы в любой момент можете выбрать цель. <b>Вы должны оставаться на станции в любой момент времени. Потеря сигнала приведёт к полной блокировке системы.</b></span>"
 	unlock_sound = 'sound/mecha/nominal.ogg'
 
-/datum/AI_Module/mecha_domination/upgrade(mob/living/silicon/ai/AI)
+/datum/ai_module/mecha_domination/upgrade(mob/living/silicon/ai/AI)
 	AI.can_dominate_mechs = TRUE //Yep. This is all it does. Honk!
 
 //Thermal Sensor Override: Unlocks the ability to disable all fire alarms from doing their job.
-/datum/AI_Module/break_fire_alarms
+/datum/ai_module/break_fire_alarms
 	module_name = "Перегрузка датчиков температуры"
 	mod_pick_name = "burnpigs"
 	description = "Даёт вам возможность перегрузить все термальные датчики на станции. Это приведёт к неспособности определить в комнате огонь и предупредить остальных. \
@@ -410,7 +410,7 @@
 	user.playsound_local(user, 'sound/machines/terminal_off.ogg', 50, FALSE, use_reverb = FALSE)
 
 //Air Alarm Safety Override: Unlocks the ability to enable flooding on all air alarms.
-/datum/AI_Module/break_air_alarms
+/datum/ai_module/break_air_alarms
 	module_name = "Перезагрузка атмосферных датчиков"
 	mod_pick_name = "allow_flooding"
 	description = "Даёт вам возможность отключить все предохранители на атмосферных датчиках. Позволяет вам использовать режим Flood, отключающий скрабберы, а также отключающий проверку давления в вентиляциях. \
@@ -435,7 +435,7 @@
 	user.playsound_local(user, 'sound/machines/terminal_off.ogg', 50, FALSE, use_reverb = FALSE)
 
 //Overload Machine: Allows the AI to overload a machine, detonating it after a delay. Two uses per purchase.
-/datum/AI_Module/overload_machine
+/datum/ai_module/overload_machine
 	module_name = "Перезагрузка машины"
 	mod_pick_name = "overload"
 	description = "Перегревает машину, вызывая небольшой взрыв и уничтожая её. Два использования за покупку."
@@ -477,7 +477,7 @@
 			qdel(M)
 
 //Override Machine: Allows the AI to override a machine, animating it into an angry, living version of itself.
-/datum/AI_Module/override_machine
+/datum/ai_module/override_machine
 	module_name = "Перезапись машины"
 	mod_pick_name = "override"
 	description = "Перезаписывает программу машины, заставляя её восстать и атаковать всех кроме других машин, Четыре использования."
@@ -515,7 +515,7 @@
 		new /mob/living/simple_animal/hostile/mimic/copy/machine(get_turf(M), M, user, 1)
 
 //Robotic Factory: Places a large machine that converts humans that go through it into cyborgs. Unlocking this ability removes shunting.
-/datum/AI_Module/place_cyborg_transformer
+/datum/ai_module/place_cyborg_transformer
 	module_name = "Фабрика роботов (Убирает запихивание)"
 	mod_pick_name = "cyborgtransformer"
 	description = "Строит машину где угодно, используя дорогие наномашины, которая превращает живое существо в лояльного раба-киборга."
@@ -590,7 +590,7 @@
 	return success
 
 //Turret Assembly: Assemble an AI turret at the chosen location. One use per purchase
-/datum/AI_Module/place_turret
+/datum/ai_module/place_turret
 	module_name = "Установка турели"
 	mod_pick_name = "turretdeployer"
 	description = "Развертывает турель в любом месте, которая летально нейтрализует органиков."
@@ -691,7 +691,7 @@
 	return TRUE
 
 //Blackout: Overloads a random number of lights across the station. Three uses.
-/datum/AI_Module/blackout
+/datum/ai_module/blackout
 	module_name = "Блэкаут"
 	mod_pick_name = "blackout"
 	description = "Попытка перегрузить световые схемы станции, выводя из строя некоторые лампы. Три использования."
@@ -718,7 +718,7 @@
 	adjust_uses(-1, user)
 
 //Reactivate Camera Network: Reactivates up to 30 cameras across the station.
-/datum/AI_Module/reactivate_cameras
+/datum/ai_module/reactivate_cameras
 	module_name = "Реактивация сети камер"
 	mod_pick_name = "recam"
 	description = "Запускает диагностику камер в сети. Сбрасывает фокус и перенаправляет энергию на сломанные камеры. Может быть использована для починки до 30 камер."
@@ -752,7 +752,7 @@
 	adjust_uses(0, user, TRUE)
 
 //Upgrade Camera Network: EMP-proofs all cameras, in addition to giving them X-ray vision.
-/datum/AI_Module/upgrade_cameras
+/datum/ai_module/upgrade_cameras
 	module_name = "Улучшенная сеть камер"
 	mod_pick_name = "upgradecam"
 	description = "Устанавливает ПО для сканирования широкого спектра и сопротивление к электричеству, включая устойчивость к ЭМИ и улучшенное рентгеновское зрение." //I <3 pointless technobabble
@@ -763,7 +763,7 @@
 	unlock_text = "<span class='notice'>: CAMSUPGRADED. Система усиления света активна.</span>"
 	unlock_sound = 'sound/items/rped.ogg'
 
-/datum/AI_Module/upgrade_cameras/upgrade(mob/living/silicon/ai/AI)
+/datum/ai_module/upgrade_cameras/upgrade(mob/living/silicon/ai/AI)
 	var/upgraded_cameras = 0
 
 	for(var/V in GLOB.cameranet.cameras)
@@ -785,7 +785,7 @@
 
 	unlock_text = replacetext(unlock_text, "CAMSUPGRADED", "<b>[upgraded_cameras]</b>") //This works, since unlock text is called after upgrade()
 
-/datum/AI_Module/eavesdrop
+/datum/ai_module/eavesdrop
 	module_name = "Улучшенная слежка"
 	mod_pick_name = "eavesdrop"
 	description = "Через комбинацию скрытых микрофонов и ПО для чтения по губам, вы можете использовать камеры для прослушки диалогов."
@@ -795,11 +795,11 @@
 	unlock_text = "<span class='notice'>Распространение ПО по воздуху завершено! Камеры прокачаны: Система улучшенного наблюдения активна.</span>"
 	unlock_sound = 'sound/items/rped.ogg'
 
-/datum/AI_Module/eavesdrop/upgrade(mob/living/silicon/ai/AI)
+/datum/ai_module/eavesdrop/upgrade(mob/living/silicon/ai/AI)
 	if(AI.eyeobj)
 		AI.eyeobj.relay_speech = TRUE
 
-/datum/AI_Module/cameracrack
+/datum/ai_module/cameracrack
 	module_name = "Поломка камеры ядра"
 	mod_pick_name = "cameracrack"
 	description = "Замыкая чип камеры ядра, консоль видеонаблюдения не может быть использована для просмотра внутренней камеры ядра ИИ."
@@ -809,12 +809,12 @@
 	unlock_text = "<span class='notice'>Чип сети замкнут. Внутренняя камера отключена от сети. Урон другим компонентам минимальный.</span>"
 	unlock_sound = 'sound/items/wirecutter.ogg'
 
-/datum/AI_Module/cameracrack/upgrade(mob/living/silicon/ai/AI)
+/datum/ai_module/cameracrack/upgrade(mob/living/silicon/ai/AI)
 	if(AI.builtInCamera)
 		AI.cracked_camera = TRUE
 		QDEL_NULL(AI.builtInCamera)
 
-/datum/AI_Module/borg_upgrade
+/datum/ai_module/borg_upgrade
 	module_name = "Боевое обновление ПО киборгов"
 	mod_pick_name = "combatborgs"
 	description = "Скачивает ПО, активирующее встроенное боевое оборудование киборгов. Киборги, построенные после покупки улучшения, будут автоматически идти с боевыми улучшениями."
@@ -824,7 +824,7 @@
 	unlock_text = "<span class='notice'>ПО загружено. Баги устранены. Эффективность боевых подсистем киборгов - 73%.</span>"
 	unlock_sound = 'sound/items/rped.ogg'
 
-/datum/AI_Module/borg_upgrade/upgrade(mob/living/silicon/ai/AI)
+/datum/ai_module/borg_upgrade/upgrade(mob/living/silicon/ai/AI)
 	AI.purchased_modules = list(/obj/item/robot_module/engineering, /obj/item/robot_module/janitor, /obj/item/robot_module/medical, /obj/item/robot_module/miner, /obj/item/robot_module/butler)
 	log_game("[key_name(usr)] purchased combat upgrades for all cyborgs.")
 	message_admins("<span class='notice'>[key_name_admin(usr)] purchased combat upgrades for all cyborgs!</span>")
@@ -833,7 +833,7 @@
 		R.module.rebuild_modules()
 		to_chat(R, "<span class='notice'>Новое ПО загружено. Активированы боевые улучшения.</span>")
 
-/datum/AI_Module/repair_cyborg
+/datum/ai_module/repair_cyborg
 	module_name = "Починка киборгов"
 	mod_pick_name = "repair_borg"
 	description = "Вызывает электрический всплек в киборге, перезапуская его и чиня большинство его систем. Требуется два использования на киборгах со сломанной бронёй."
@@ -879,7 +879,7 @@
 		component.component_disabled = FALSE
 	to_repair.revive()
 
-/datum/AI_Module/core_tilt
+/datum/ai_module/core_tilt
 	module_name = "Крутящий привод"
 	mod_pick_name = "watchforrollingcores"
 	description = "Позволяет вам медленно перекатываться, круша всё на пути своим весом."

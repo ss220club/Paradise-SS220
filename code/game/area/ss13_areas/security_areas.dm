@@ -51,7 +51,7 @@
 	name = "Тюремный Блок"
 	icon_state = "brig"
 
-/area/station/security/prison/cell_block/A
+/area/station/security/prison/cell_block/a
 	name = "Тюремный Блок А"
 	icon_state = "brigcella"
 
