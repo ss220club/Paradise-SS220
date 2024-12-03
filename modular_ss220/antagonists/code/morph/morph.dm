@@ -14,5 +14,5 @@ GLOBAL_VAR_INIT(MORPHS_ANNOUNCED, FALSE)
 /mob/living/simple_animal/hostile/morph/death(gibbed)
 	. = ..()
 
-	if (.)
+	if(.)
 		GLOB.MORPHS_NUMBER--
