@@ -63,9 +63,9 @@
 	prefix = "_maps/map_files220/RandomRuins/SpaceRuins/"
 	suffix = "whiteship.dmm"
 	description = "An old, abandoned NT medical ship. Its computer can navigate to other landmarks within space with ease."
-	allow_duplicates = FALSE 
-	always_place = TRUE 
-	cost = 0 
+	allow_duplicates = FALSE
+	always_place = TRUE
+	cost = 0
 
 /datum/map_template/ruin/space/voxraiders_1
 	name = "Vox Raiders"
@@ -85,3 +85,11 @@
 	cost = 10
 	allow_duplicates = FALSE
 
+/datum/map_template/ruin/space/sierra_1_3
+	name = "Sierra Wreckage"
+	id = "sierra_1_3"
+	description = "Wreckage of the Sierra after a terrible incident"
+	prefix = "_maps/map_files220/RandomRuins/SpaceRuins/"
+	suffix = "sierra_1_3.dmm"
+	cost = 20 // всвязи с "инвентовой картой". В будущем после доработки поменять. Так же имеется почти полноценный мед и РНД.
+	allow_duplicates = FALSE
