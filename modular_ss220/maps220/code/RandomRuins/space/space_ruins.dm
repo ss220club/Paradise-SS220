@@ -94,5 +94,5 @@
 	description = "Wreckage of the Sierra after a terrible incident"
 	prefix = "_maps/map_files220/RandomRuins/SpaceRuins/"
 	suffix = "sierra_1_3.dmm"
-	cost = 20 // всвязи с "инвентовой картой". В будущем после доработки поменять. Так же имеется почти полноценный мед и РНД.
+	// cost = 20 я хуй знает как это тут сделать, так что похуй.
 	allow_duplicates = FALSE
