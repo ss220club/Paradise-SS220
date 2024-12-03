@@ -37,7 +37,7 @@
 		B.name = "broken carton"
 		B.force = 0
 		B.throwforce = 0
-		B.desc = "A carton with the bottom half burst open. Might give you a papercut."
+		B.desc = "Картонная коробка с разорванным дном. Об неё можно порезаться."
 	transfer_fingerprints_to(B)
 
 	qdel(src)
@@ -51,7 +51,7 @@
 		return ..()
 
 	if(HAS_TRAIT(user, TRAIT_PACIFISM))
-		to_chat(user, "<span class='warning'>You don't want to harm [target]!</span>")
+		to_chat(user, "<span class='warning'>Вы не хотите навредить [target.declent_ru(DATIVE)]!</span>")
 		return
 
 	force = 15 //Smashing bottles over someoen's head hurts.
@@ -121,7 +121,7 @@
 
 /obj/item/reagent_containers/drinks/bottle/proc/SplashReagents(mob/M)
 	if(reagents && reagents.total_volume)
-		M.visible_message("<span class='danger'>The contents of \the [src] splashes all over [M]!</span>")
+		M.visible_message("<span class='danger'>Содержимое [declent_ru(GENITIVE)] разбрызгивается по [M.declent_ru(DATIVE)]!</span>")
 		reagents.reaction(M, REAGENT_TOUCH)
 		reagents.clear_reagents()
 
@@ -140,7 +140,7 @@
 //Keeping this here for now, I'll ask if I should keep it here.
 /obj/item/broken_bottle
 	name = "Broken Bottle"
-	desc = "A bottle with a sharp broken bottom."
+	desc = "Бутылка с острым, отломленным дном."
 	icon = 'icons/obj/drinks.dmi'
 	icon_state = "broken_bottle"
 	force = 9
@@ -161,55 +161,55 @@
 
 /obj/item/reagent_containers/drinks/bottle/gin
 	name = "Griffeater Gin"
-	desc = "A bottle of high quality gin, produced in the New London Space Station."
+	desc = "Бутылка высококачественного джина, произведенного на космической станции Новый Лондон."
 	icon_state = "ginbottle"
 	list_reagents = list("gin" = 100)
 
 /obj/item/reagent_containers/drinks/bottle/whiskey
 	name = "Uncle Git's Special Reserve"
-	desc = "A premium single-malt whiskey, gently matured inside the tunnels of a nuclear shelter. TUNNEL WHISKEY RULES."
+	desc = "Премиум односолодовый виски, мягко выдержанный внутри туннелей ядерного убежища. ПРАВИЛА ТУННЕЛЬНОГО ВИСКИ."
 	icon_state = "whiskeybottle"
 	list_reagents = list("whiskey" = 100)
 
 /obj/item/reagent_containers/drinks/bottle/vodka
 	name = "Tunguska Triple Distilled"
-	desc = "Aah, vodka. Prime choice of drink AND fuel by Russians worldwide."
+	desc = "Ох, водка. Лучший напиток по версии СССП."
 	icon_state = "vodkabottle"
 	list_reagents = list("vodka" = 100)
 
 /obj/item/reagent_containers/drinks/bottle/vodka/badminka
 	name = "Badminka Vodka"
-	desc = "The label's written in Cyrillic. All you can make out is the name and a word that looks vaguely like 'Vodka'."
+	desc = "Как только вы прочитали слово «ВОДКА» на этикетке, остальной текст уже не имеет значения — вы и так знаете, что с этим делать."
 	icon_state = "badminka"
 	list_reagents = list("vodka" = 100)
 
 /obj/item/reagent_containers/drinks/bottle/tequila
 	name = "Caccavo Guaranteed Quality Tequila"
-	desc = "Made from premium petroleum distillates, pure thalidomide and other fine quality ingredients!"
+	desc = "Сделано из премиальных нефтяных дистиллятов, чистого талидомида и других высококачественных ингредиентов!"
 	icon_state = "tequilabottle"
 	list_reagents = list("tequila" = 100)
 
 /obj/item/reagent_containers/drinks/bottle/bottleofnothing
 	name = "Bottle of Nothing"
-	desc = "A bottle filled with nothing."
+	desc = "Бутылка, наполненная пустотой."
 	icon_state = "bottleofnothing"
 	list_reagents = list("nothing" = 100)
 
 /obj/item/reagent_containers/drinks/bottle/bottleofbanana
 	name = "Jolly Jug"
-	desc = "A jug filled with banana juice."
+	desc = "Кувшин, наполненный банановым соком."
 	icon_state = "bottleofjolly"
 	list_reagents = list("banana" = 100)
 
 /obj/item/reagent_containers/drinks/bottle/patron
 	name = "Wrapp Artiste Patron"
-	desc = "Silver laced tequila, served in space night clubs across the galaxy."
+	desc = "Серебряная текила, подаваемая в космических ночных клубах по всей галактике."
 	icon_state = "patronbottle"
 	list_reagents = list("patron" = 100)
 
 /obj/item/reagent_containers/drinks/bottle/rum
 	name = "Captain Pete's Cuban Spiced Rum"
-	desc = "This isn't just rum, oh no. It's practically GRIFF in a bottle."
+	desc = "Это не просто ром, о нет. Это практически ГРИФ в бутылке."
 	icon_state = "rumbottle"
 	list_reagents = list("rum" = 100)
 
@@ -220,60 +220,60 @@
 	list_reagents = list("holywater" = 100)
 
 /obj/item/reagent_containers/drinks/bottle/holywater/hell
-	desc = "A flask of holy water...it's been sitting in the Necropolis a while though."
+	desc = "Фляга со святой водой... хотя она уже долго пролежала в Некрополисе."
 	list_reagents = list("hell_water" = 100)
 
 /obj/item/reagent_containers/drinks/bottle/vermouth
 	name = "Goldeneye Vermouth"
-	desc = "Sweet, sweet dryness~"
+	desc = "Сладкая, сладкая сухость~"
 	icon_state = "vermouthbottle"
 	list_reagents = list("vermouth" = 100)
 
 /obj/item/reagent_containers/drinks/bottle/kahlua
 	name = "Robert Robust's Coffee Liqueur"
-	desc = "A widely known, Mexican coffee-flavoured liqueur. In production since 1936, HONK."
+	desc = "Широко известный мексиканский ликёр с кофейным вкусом. Производится с 1936 года, ХОНК."
 	icon_state = "kahluabottle"
 	list_reagents = list("kahlua" = 100)
 
 /obj/item/reagent_containers/drinks/bottle/goldschlager
 	name = "College Girl Goldschlager"
-	desc = "Because they are the only ones who will drink 100 proof cinnamon schnapps."
+	desc = "Только студенты согласны пить этот коричный шнапс крепостью 100 градусов."
 	icon_state = "goldschlagerbottle"
 	list_reagents = list("goldschlager" = 100)
 
 /obj/item/reagent_containers/drinks/bottle/cognac
 	name = "Chateau De Baton Premium Cognac"
-	desc = "A sweet and strongly alcoholic drink, made after numerous distillations and years of maturing. You might as well not scream 'SHITCURITY' this time."
+	desc = "Сладкий и крепкий алкогольный напиток, изготовленный после многочисленных перегонок и многолетней выдержки. На этот раз можешь не кричать «ЩИТКУРЫ»."
 	icon_state = "cognacbottle"
 	list_reagents = list("cognac" = 100)
 
 /obj/item/reagent_containers/drinks/bottle/wine
 	name = "Doublebeard Bearded Special Wine"
-	desc = "A faint aura of unease and asspainery surrounds the bottle."
+	desc = "Слабая аура беспокойства и страдания окутывает бутылку."
 	icon_state = "winebottle"
 	list_reagents = list("wine" = 100)
 
 /obj/item/reagent_containers/drinks/bottle/absinthe
 	name = "Yellow Marquee Absinthe"
-	desc = "A strong alcoholic drink brewed and distributed by Yellow Marquee."
+	desc = "Крепкий алкогольный напиток, сваренный и распространяемый компанией «Жёлтый шатёр»."
 	icon_state = "absinthebottle"
 	list_reagents = list("absinthe" = 100)
 
 /obj/item/reagent_containers/drinks/bottle/absinthe/premium
 	name = "Gwyn's Premium Absinthe"
-	desc = "A potent alcoholic beverage, almost makes you forget the ash in your lungs."
+	desc = "Сильный алкогольный напиток, который почти заставляет забыть о пыли в легких."
 	icon_state = "absinthepremium"
 
 /obj/item/reagent_containers/drinks/bottle/hcider
 	name = "Jian Hard Cider"
-	desc = "Apple juice for adults."
+	desc = "Яблочный сок для взрослых."
 	icon_state = "hcider"
 	volume = 50
 	list_reagents = list("suicider" = 50)
 
 /obj/item/reagent_containers/drinks/bottle/fernet
 	name = "Fernet Bronca"
-	desc = "A bottle of pure Fernet Bronca, produced in Cordoba Space Station."
+	desc = "Бутылка чистого Фернет-Бранка. Настоен на 27 различных космических трав."
 	icon_state = "fernetbottle"
 	list_reagents = list("fernet" = 100)
 
@@ -281,7 +281,7 @@
 
 /obj/item/reagent_containers/drinks/bottle/orangejuice
 	name = "orange juice"
-	desc = "Full of vitamins and deliciousness!"
+	desc = "Полон витаминов и восхитительного вкуса!"
 	icon_state = "orangejuice"
 	item_state = "carton"
 	throwforce = 0
@@ -291,7 +291,7 @@
 
 /obj/item/reagent_containers/drinks/bottle/cream
 	name = "milk cream"
-	desc = "It's cream. Made from milk. What else did you think you'd find in there?"
+	desc = "Это сливки. Сделаны из молока. А что ещё вы думали найти внутри?"
 	icon_state = "cream"
 	item_state = "carton"
 	throwforce = 0
@@ -301,7 +301,7 @@
 
 /obj/item/reagent_containers/drinks/bottle/tomatojuice
 	name = "tomato juice"
-	desc = "Well, at least it LOOKS like tomato juice. You can't tell with all that redness."
+	desc = "Ну, хотя бы ВЫГЛЯДИТ как томатный сок. Трудно сказать точно из-за всей этой красноты."
 	icon_state = "tomatojuice"
 	item_state = "carton"
 	throwforce = 0
@@ -311,7 +311,7 @@
 
 /obj/item/reagent_containers/drinks/bottle/limejuice
 	name = "lime juice"
-	desc = "Sweet-sour goodness."
+	desc = "Кисло-сладкое наслаждение."
 	icon_state = "limejuice"
 	item_state = "carton"
 	throwforce = 0
@@ -321,7 +321,7 @@
 
 /obj/item/reagent_containers/drinks/bottle/milk
 	name = "milk"
-	desc = "Soothing milk."
+	desc = "Успокаивающее молоко."
 	icon_state = "milk"
 	item_state = "carton"
 	throwforce = 0
@@ -332,7 +332,7 @@
 ////////////////////////// MOLOTOV ///////////////////////
 /obj/item/reagent_containers/drinks/bottle/molotov
 	name = "molotov cocktail"
-	desc = "A throwing weapon used to ignite things, typically filled with an accelerant. Recommended highly by rioters and revolutionaries. Light and toss."
+	desc = "Метательное оружие, используемое для поджога, обычно заполнено горючей смесью. Высоко рекомендовано мятежниками и революционерами. Поджечь и бросить."
 	icon_state = "vodkabottle"
 	list_reagents = list()
 	var/list/accelerants = list(/datum/reagent/consumable/ethanol,/datum/reagent/fuel,/datum/reagent/clf3,/datum/reagent/phlogiston,
@@ -343,7 +343,7 @@
 	. = ..()
 	desc = initial(desc)
 	if(!is_glass)
-		desc += " You're not sure if making this out of a carton was the brightest idea."
+		desc += " Вы не уверены, что делать это из картонной коробки самая блестящая идея."
 
 /obj/item/reagent_containers/drinks/bottle/molotov/update_icon_state()
 	var/obj/item/reagent_containers/drinks/bottle/B = locate() in contents

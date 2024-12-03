@@ -11,9 +11,9 @@
 /obj/item/reagent_containers/drinks/cans/examine(mob/user)
 	. = ..()
 	if(can_opened)
-		. += "<span class='notice'>It has been opened.</span>"
+		. += "<span class='notice'>Напиток открыт.</span>"
 	else
-		. += "<span class='notice'>Ctrl-click to shake it up!</span>"
+		. += "<span class='notice'>Ctrl-click чтобы взболтать!</span>"
 
 /obj/item/reagent_containers/drinks/cans/attack_self(mob/user)
 	if(can_opened)
@@ -24,7 +24,7 @@
 	playsound(loc, 'sound/effects/canopen.ogg', rand(10, 50), 1)
 	can_opened = TRUE
 	container_type |= OPENCONTAINER
-	to_chat(user, "<span class='notice'>You open the drink with an audible pop!</span>")
+	to_chat(user, "<span class='notice'>Вы открываете напиток с громким щелчком!</span>")
 	return ..()
 
 /obj/item/reagent_containers/drinks/cans/proc/crush(mob/user)
@@ -47,14 +47,14 @@
 		return ..()
 	H = user
 	if(can_opened)
-		to_chat(H, "<span class='warning'>You can't shake up an already opened drink!")
+		to_chat(H, "<span class='warning'>Вы не можете взболтать уже открытый напиток!")
 		return
 	if(H.is_holding(src))
 		can_shake = FALSE
 		addtimer(CALLBACK(src, PROC_REF(reset_shakable)), 1 SECONDS, TIMER_UNIQUE | TIMER_OVERRIDE)
-		to_chat(H, "<span class='notice'>You start shaking up [src].</span>")
+		to_chat(H, "<span class='notice'>Вы начинаете взбалтывать [declent_ru(ACCUSATIVE)].</span>")
 		if(do_after(H, 1 SECONDS, target = H))
-			visible_message("<span class='warning'>[user] shakes up [src]!</span>")
+			visible_message("<span class='warning'>[user.declent_ru(NOMINATIVE)] взбалтывает [declent_ru(ACCUSATIVE)]!</span>")
 			if(times_shaken == 0)
 				times_shaken++
 				addtimer(CALLBACK(src, PROC_REF(reset_shaken)), 1 MINUTES, TIMER_UNIQUE | TIMER_OVERRIDE | TIMER_NO_HASH_WAIT)
@@ -69,7 +69,7 @@
 
 /obj/item/reagent_containers/drinks/cans/attack(mob/M, mob/user, proximity)
 	if(!can_opened)
-		to_chat(user, "<span class='notice'>You need to open the drink!</span>")
+		to_chat(user, "<span class='notice'>Вам нужно открыть напиток!</span>")
 		return
 	else if(M == user && !reagents.total_volume && user.a_intent == INTENT_HARM && user.zone_selected == "head")
 		user.visible_message("<span class='warning'>[user] crushes [src] on [user.p_their()] forehead!</span>", "<span class='notice'>You crush [src] on your forehead.</span>")
@@ -89,10 +89,10 @@
 	if(!proximity)
 		return
 	if(istype(target, /obj/structure/reagent_dispensers) && !can_opened)
-		to_chat(user, "<span class='notice'>You need to open the drink!</span>")
+		to_chat(user, "<span class='notice'>Вам нужно открыть напиток!</span>")
 		return
 	else if(target.is_open_container() && !can_opened)
-		to_chat(user, "<span class='notice'>You need to open the drink!</span>")
+		to_chat(user, "<span class='notice'>Вам нужно открыть напиток!</span>")
 		return
 	else
 		return ..(target, user, proximity)
@@ -110,21 +110,21 @@
 	container_type |= OPENCONTAINER
 
 	if(!burstopen && user)
-		to_chat(user, "<span class='notice'>You open the drink with an audible pop!</span>")
+		to_chat(user, "<span class='notice'>Вы открываете напиток с громким щелчком!</span>")
 	else
-		visible_message("<span class='warning'>[src] bursts open!</span>")
+		visible_message("<span class='warning'>Банка с [declent_ru(INSTRUMENTAL)] лопается!</span>")
 
 	if(times_shaken < 5)
-		visible_message("<span class='warning'>[src] fizzes violently!</span>")
+		visible_message("<span class='warning'>[capitalize(declent_ru(NOMINATIVE))] сильно шипит!</span>")
 	else
-		visible_message("<span class='boldwarning'>[src] erupts into foam!</span>")
+		visible_message("<span class='boldwarning'>[capitalize(declent_ru(NOMINATIVE))] вспенивается и вырывается наружу!</span>")
 		if(reagents.total_volume)
 			var/datum/effect_system/foam_spread/sodafizz = new
 			sodafizz.set_up(1, get_turf(src), reagents)
 			sodafizz.start()
 
 	for(var/mob/living/carbon/C in range(1, get_turf(src)))
-		to_chat(C, "<span class='warning'>You are splattered with [name]!</span>")
+		to_chat(C, "<span class='warning'>Вас забрызгал [declent_ru(NOMINATIVE)]!</span>")
 		reagents.reaction(C, REAGENT_TOUCH)
 		C.wetlevel = max(C.wetlevel + 1, times_shaken)
 
@@ -161,41 +161,41 @@
 
 /obj/item/reagent_containers/drinks/cans/cola
 	name = "space cola"
-	desc = "Cola. In space."
+	desc = "Кола. В космосе."
 	icon_state = "cola"
 	list_reagents = list("cola" = 30)
 
 /obj/item/reagent_containers/drinks/cans/beer
 	name = "space beer"
-	desc = "Contains only water, malt and hops."
+	desc = "Содержит только воду, солод и хмель."
 	icon_state = "beer"
 	is_glass = TRUE
 	list_reagents = list("beer" = 30)
 
 /obj/item/reagent_containers/drinks/cans/adminbooze
 	name = "admin booze"
-	desc = "Bottled Griffon tears. Drink with caution."
+	desc = "Бутылка слёз админа. Пить с осторожностью."
 	icon_state = "adminbooze"
 	is_glass = TRUE
 	list_reagents = list("adminordrazine" = 5, "capsaicin" = 5, "methamphetamine"= 20, "thirteenloko" = 20)
 
 /obj/item/reagent_containers/drinks/cans/madminmalt
 	name = "madmin malt"
-	desc = "Bottled essence of angry admins. Drink with <i>EXTREME</i> caution."
+	desc = "Бутылка с эссенцией разгневанных админов. Пить с <i>ОСОБОЙ</i> осторожностью."
 	icon_state = "madminmalt"
 	is_glass = TRUE
 	list_reagents = list("hell_water" = 20, "neurotoxin" = 15, "thirteenloko" = 15)
 
 /obj/item/reagent_containers/drinks/cans/badminbrew
 	name = "badmin brew"
-	desc = "Bottled trickery and terrible admin work. Probably shouldn't drink this one at all."
+	desc = "Бутылка обмана и ужасной работы админов. Наверное, не стоит это пить."
 	icon_state = "badminbrew"
 	is_glass = TRUE
 	list_reagents = list("mutagen" = 25, "charcoal" = 10, "thirteenloko" = 15)
 
 /obj/item/reagent_containers/drinks/cans/ale
 	name = "Magm-Ale"
-	desc = "A true dorf's drink of choice."
+	desc = "Напиток для истинных дворфов."
 	icon_state = "alebottle"
 	item_state = "beer"
 	is_glass = TRUE
@@ -203,74 +203,74 @@
 
 /obj/item/reagent_containers/drinks/cans/space_mountain_wind
 	name = "Space Mountain Wind"
-	desc = "Blows right through you like a space wind."
+	desc = "Проходит через тебя, словно космический ветер."
 	icon_state = "space_mountain_wind"
 	list_reagents = list("spacemountainwind" = 30)
 
 /obj/item/reagent_containers/drinks/cans/thirteenloko
 	name = "Thirteen Loko"
-	desc = "The CMO has advised crew members that consumption of Thirteen Loko may result in seizures, blindness, drunkenness, or even death. Please Drink Responsibly."
+	desc = "СМО предупреждает членов экипажа, что употребление Thirteen Loko может привести к судорогам, слепоте, опьянению или даже смерти. Пейте ответственно."
 	icon_state = "thirteen_loko"
 	list_reagents = list("thirteenloko" = 25, "psilocybin" = 5)
 
 /obj/item/reagent_containers/drinks/cans/dr_gibb
 	name = "Dr. Gibb"
-	desc = "A delicious mixture of 42 different flavors."
+	desc = "Вкусная смесь из 42 различных вкусов."
 	icon_state = "dr_gibb"
 	list_reagents = list("dr_gibb" = 30)
 
 
 /obj/item/reagent_containers/drinks/cans/starkist
 	name = "Star-kist"
-	desc = "The taste of a star in liquid form. And, a bit of tuna...?"
+	desc = "Вкус звезды в жидкой форме. С привкусом тунца...?"
 	icon_state = "starkist"
 	list_reagents = list("brownstar" = 30)
 
 /obj/item/reagent_containers/drinks/cans/space_up
 	name = "Space-Up"
-	desc = "Tastes like a hull breach in your mouth."
+	desc = "Вкус, как если бы в вашем рту произошла разгерметизация."
 	icon_state = "space-up"
 	list_reagents = list("space_up" = 30)
 
 /obj/item/reagent_containers/drinks/cans/lemon_lime
 	name = "Lemon-Lime"
-	desc = "You wanted ORANGE. It gave you Lemon Lime."
+	desc = "Вы хотели АПЕЛЬСИН. А получили Лимон-Лайм."
 	icon_state = "lemon-lime"
 	list_reagents = list("lemon_lime" = 30)
 
 /obj/item/reagent_containers/drinks/cans/iced_tea
 	name = "Vrisk Serket Iced Tea"
-	desc = "That sweet, refreshing southern earthy flavor. That's where it's from, right? South Earth?"
+	desc = "О этот сладкий, освежающий вкус чая."
 	icon_state = "ice_tea_can"
 	list_reagents = list("icetea" = 30)
 
 /obj/item/reagent_containers/drinks/cans/grape_juice
 	name = "Grapel Juice"
-	desc = "500 pages of rules of how to appropriately enter into a combat with this juice!"
+	desc = "500 страниц правил, как правильно вступить в бой с этим соком!"
 	icon_state = "purple_can"
 	list_reagents = list("grapejuice" = 30)
 
 /obj/item/reagent_containers/drinks/cans/tonic
 	name = "T-Borg's Tonic Water"
-	desc = "Quinine tastes funny, but at least it'll keep that Space Malaria away."
+	desc = "Хинин имеет странный вкус, но, по крайней мере, он защитит от космической малярии."
 	icon_state = "tonic"
 	list_reagents = list("tonic" = 50)
 
 /obj/item/reagent_containers/drinks/cans/sodawater
 	name = "soda water"
-	desc = "A can of soda water. Still water's more refreshing cousin."
+	desc = "Банка газированной воды. Двоюродная сестра обычной воды."
 	icon_state = "sodawater"
 	list_reagents = list("sodawater" = 50)
 
 /obj/item/reagent_containers/drinks/cans/synthanol
 	name = "Beep's Classic Synthanol"
-	desc = "A can of IPC booze, however that works."
+	desc = "Банка алкоголя для КПБ, как бы это ни работало."
 	icon_state = "synthanolcan"
 	list_reagents = list("synthanol" = 50)
 
 /obj/item/reagent_containers/drinks/cans/bottler
 	name = "generic beverage container"
-	desc = "this shouldn't ever be spawned. shame on you"
+	desc = "Это не должно было быть создано. Позор тебе."
 	icon_state = "glass_bottle"
 
 /obj/item/reagent_containers/drinks/cans/bottler/on_reagent_change()
@@ -300,17 +300,17 @@
 
 /obj/item/reagent_containers/drinks/cans/bottler/glass_bottle
 	name = "glass bottle"
-	desc = "A glass bottle suitable for beverages."
+	desc = "Стеклянная бутылка, подходящая для напитков."
 	icon_state = "glass_bottle"
 	is_glass = TRUE
 
 /obj/item/reagent_containers/drinks/cans/bottler/plastic_bottle
 	name = "plastic bottle"
-	desc = "A plastic bottle suitable for beverages."
+	desc = "Пластиковая бутылка, подходящая для напитков."
 	icon_state = "plastic_bottle"
 	is_plastic = TRUE
 
 /obj/item/reagent_containers/drinks/cans/bottler/metal_can
 	name = "metal can"
-	desc = "A metal can suitable for beverages."
+	desc = "Металлическая банка, подходящая для напитков."
 	icon_state = "metal_can"

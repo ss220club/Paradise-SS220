@@ -1,6 +1,6 @@
 /obj/item/reagent_containers/drinks/drinkingglass/shotglass
 	name = "shot glass"
-	desc = "No glasses were shot in the making of this glass."
+	desc = "В процессе производства этого стакана не было разбито ни одного бокала."
 	icon_state = "shotglass"
 	custom_fire_overlay = "shotglass_fire"
 	amount_per_transfer_from_this = 15
@@ -12,7 +12,7 @@
 
 /obj/item/reagent_containers/drinks/drinkingglass/shotglass/bluespace
 	name = "bluespace shot glass"
-	desc = "For when you need to make the Bartender's life extra hell."
+	desc = "Для тех случаев, когда нужно сделать жизнь бармена еще более адской."
 	amount_per_transfer_from_this = 50
 	volume = 50
 	icon_state = "bluespaceshotglass"

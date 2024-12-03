@@ -19,11 +19,11 @@
 
 /obj/item/reagent_containers/drinks/attack(mob/M, mob/user, def_zone)
 	if(!reagents || !reagents.total_volume)
-		to_chat(user, "<span class='warning'>None of [src] left, oh no!</span>")
+		to_chat(user, "<span class='warning'>В [declent_ru(PREPOSITIONAL)] ничего не осталось, о нет!</span>")
 		return FALSE
 
 	if(!is_drainable())
-		to_chat(user, "<span class='warning'>You need to open [src] first!</span>")
+		to_chat(user, "<span class='warning'>Вам нужно сначала открыть [declent_ru(ACCUSATIVE)]!</span>")
 		return FALSE
 
 	if(iscarbon(M))
@@ -37,20 +37,20 @@
 		return
 	var/mob/living/carbon/chugger = over_object
 	if(!(container_type & DRAINABLE))
-		to_chat(chugger, "<span class='notice'>You need to open [src] first!</span>")
+		to_chat(chugger, "<span class='notice'>Вам нужно сначала открыть [declent_ru(ACCUSATIVE)]!</span>")
 		return
 	if(reagents.total_volume && loc == chugger && src == chugger.get_active_hand())
-		chugger.visible_message("<span class='notice'>[chugger] raises [src] to [chugger.p_their()] mouth and starts [pick("chugging","gulping")] it down like [pick("a savage","a mad beast","it's going out of style","there's no tomorrow")]!</span>",
-			"<span class='notice'>You start chugging [src].</span>",
-			"<span class='notice'>You hear what sounds like gulping.</span>")
+		chugger.visible_message("<span class='notice'>[capitalize(chugger.declent_ru(NOMINATIVE))] подносит [declent_ru(ACCUSATIVE)] к рту и начинает [pick("жадно пить","пить залпом")], будто [pick("дикарь","бешеное животное","безумец","завтра не наступит")]!</span>",
+			"<span class='notice'>Вы начинаете пить залпом [declent_ru(ACCUSATIVE)].</span>",
+			"<span class='notice'>Вы слышите звук, похожий на глотание.</span>")
 		chugging = TRUE
-		while(do_after_once(chugger, 4 SECONDS, TRUE, chugger, null, "You stop chugging [src]."))
+		while(do_after_once(chugger, 4 SECONDS, TRUE, chugger, null, "Вы прекращаете пить залпом [declent_ru(ACCUSATIVE)]."))
 			chugger.drink(src, chugger, 25) //Half of a glass, quarter of a bottle.
 			if(!reagents.total_volume) //Finish in style.
 				chugger.emote("gasp")
-				chugger.visible_message("<span class='notice'>[chugger] [pick("finishes","downs","polishes off","slams")] the entire [src], what a [pick("savage","monster","champ","beast")]!</span>",
-					"<span class='notice'>You finish off [src]![prob(50) ? " Maybe that wasn't such a good idea..." : ""]</span>",
-					"<span class='notice'>You hear a gasp and a clink.</span>")
+				chugger.visible_message("<span class='notice'>[capitalize(chugger.declent_ru(NOMINATIVE))] [pick("осушает до последней капли","поглощает полностью","употребляет до конца","выпивает до дна")] [declent_ru(ACCUSATIVE)], будто  [pick("зверь","монстр","дикарь","животное")]!</span>",
+					"<span class='notice'>Вы заканчиваете пить залпом [declent_ru(ACCUSATIVE)]![prob(50) ? " Может быть, это была не такая уж хорошая идея..." : ""]</span>",
+					"<span class='notice'>Вы слышите вздох и звон.</span>")
 				break
 		chugging = FALSE
 
@@ -62,7 +62,7 @@
 
 	if(target.is_refillable() && is_drainable()) //Something like a glass. Player probably wants to transfer TO it.
 		if(!reagents.total_volume)
-			to_chat(user, "<span class='warning'>[src] is empty.</span>")
+			to_chat(user, "<span class='warning'>[declent_ru(NOMINATIVE)] [genderize_ru(src, "пустой", "пустая", "пустое", "пустые")].</span>")
 			return FALSE
 
 		if(target.reagents.holder_full())
@@ -70,11 +70,11 @@
 			return FALSE
 
 		var/trans = reagents.trans_to(target, amount_per_transfer_from_this)
-		to_chat(user, "<span class='notice'>You transfer [trans] units of the solution to [target].</span>")
+		to_chat(user, "<span class='notice'>Вы переливаете [trans] единиц[declension_ru(trans, "у", "ы", "")] жидкости в [target.declent_ru(ACCUSATIVE)].</span>")
 
 	else if(target.is_drainable()) //A dispenser. Transfer FROM it TO us.
 		if(!is_refillable())
-			to_chat(user, "<span class='warning'>[src]'s tab isn't open!</span>")
+			to_chat(user, "<span class='warning'>Крышка [declent_ru(GENITIVE)] закрыта!</span>")
 			return FALSE
 		if(!target.reagents.total_volume)
 			to_chat(user, "<span class='warning'>[target] is empty.</span>")
@@ -85,7 +85,7 @@
 			return FALSE
 
 		var/trans = target.reagents.trans_to(src, amount_per_transfer_from_this)
-		to_chat(user, "<span class='notice'>You fill [src] with [trans] units of the contents of [target].</span>")
+		to_chat(user, "<span class='notice'>Вы наполняете [declent_ru(ACCUSATIVE)] [trans] единиц[declension_ru(trans, "ей", "ами", "ами")] содержимого [target.declent_ru(GENITIVE)].</span>")
 
 	return FALSE
 
@@ -110,7 +110,7 @@
 
 /obj/item/reagent_containers/drinks/trophy
 	name = "pewter cup"
-	desc = "Everyone gets a trophy."
+	desc = "Каждый получит трофей."
 	icon_state = "pewter_cup"
 	w_class = WEIGHT_CLASS_TINY
 	force = 1
@@ -125,7 +125,7 @@
 
 /obj/item/reagent_containers/drinks/trophy/gold_cup
 	name = "gold cup"
-	desc = "You're winner!"
+	desc = "Вы победитель!!"
 	icon_state = "golden_cup"
 	w_class = WEIGHT_CLASS_BULKY
 	force = 14
@@ -136,7 +136,7 @@
 
 /obj/item/reagent_containers/drinks/trophy/silver_cup
 	name = "silver cup"
-	desc = "Best loser!"
+	desc = "Лучший неудачник!"
 	icon_state = "silver_cup"
 	w_class = WEIGHT_CLASS_NORMAL
 	force = 10
@@ -147,7 +147,7 @@
 
 /obj/item/reagent_containers/drinks/trophy/bronze_cup
 	name = "bronze cup"
-	desc = "At least you ranked!"
+	desc = "Первое место с конца!"
 	icon_state = "bronze_cup"
 	w_class = WEIGHT_CLASS_SMALL
 	force = 5
@@ -159,7 +159,7 @@
 /// 2023 toolbox tournament 3rd place went to paradise station.
 /obj/item/reagent_containers/drinks/trophy/bronze_cup/toolbox_win
 	name = "3rd place toolbox tournament 2567"
-	desc = "Awarded to centcomms elite toolbox warriors raising money for the GBS research institute."
+	desc = "Награда для элитных бойцов Центкома, собравших средства для института исследования ГБС."
 	icon_state = "reward_cup"
 	force = 10.3
 	throwforce = 10.3
@@ -172,20 +172,20 @@
 
 /obj/item/reagent_containers/drinks/coffee
 	name = "Robust Coffee"
-	desc = "Careful, the beverage you're about to enjoy is extremely hot."
+	desc = "Осторожно, горячее содержимое!"
 	icon_state = "coffee"
 	list_reagents = list("coffee" = 30)
 	resistance_flags = FREEZE_PROOF
 
 /obj/item/reagent_containers/drinks/ice
 	name = "ice cup"
-	desc = "Careful, cold ice, do not chew."
+	desc = "Осторожно, холодный лёд, не жуйте!"
 	icon_state = "icecup"
 	list_reagents = list("ice" = 30)
 
 /obj/item/reagent_containers/drinks/tea
 	name = "Duke Purple tea"
-	desc = "An insult to Duke Purple is an insult to the Space Queen! Any proper gentleman will fight you, if you sully this tea."
+	desc = "Оскорбление Дюка Пурпурного — это оскорбление Космической Королевы! Любой настоящий джентльмен вызовет вас на дуэль, если вы оскверните этот чай."
 	icon_state = "teacup"
 	item_state = "coffee"
 	list_reagents = list("tea" = 30)
@@ -197,14 +197,14 @@
 
 /obj/item/reagent_containers/drinks/mugwort
 	name = "mugwort tea"
-	desc = "A bitter herbal tea."
+	desc = "Горький травяной чай."
 	icon_state = "manlydorfglass"
 	item_state = "coffee"
 	list_reagents = list("mugwort" = 30)
 
 /obj/item/reagent_containers/drinks/h_chocolate
 	name = "Dutch hot coco"
-	desc = "Made in Space South America."
+	desc = "Прекрасно подходит для посиделок у камина!"
 	icon_state = "hot_coco"
 	item_state = "coffee"
 	list_reagents = list("hot_coco" = 30, "sugar" = 5)
@@ -212,7 +212,7 @@
 
 /obj/item/reagent_containers/drinks/chocolate
 	name = "hot chocolate"
-	desc = "Made in Space Switzerland."
+	desc = "Горячий шоколад, идеально подходящий для того, чтобы смотреть в иллюминатор, укутавшись в плед."
 	icon_state = "hot_coco"
 	item_state = "coffee"
 	list_reagents = list("hot_coco" = 15, "chocolate" = 6, "water" = 9)
@@ -220,13 +220,13 @@
 
 /obj/item/reagent_containers/drinks/weightloss
 	name = "weight-loss shake"
-	desc = "A shake designed to cause weight loss, now in a berry-flavored formulation. The package proudly proclaims that it is 'tapeworm free.'"
+	desc = "Шейк, разработанный для похудения, теперь в ягодном вкусе. Упаковка гордо заявляет, что он «без глистов»."
 	icon_state = "weightshake"
 	list_reagents = list("lipolicide" = 30, "berryjuice" = 5)
 
 /obj/item/reagent_containers/drinks/dry_ramen
 	name = "cup ramen"
-	desc = "Just add 10ml of water, self heats! A taste that reminds you of your school years."
+	desc = "Для приготовления просто добавьте 10 юнитов воды. Вкус, который напоминает о школьных годах."
 	icon_state = "ramen"
 	item_state = "ramen"
 	list_reagents = list("dry_ramen" = 30)
@@ -238,14 +238,14 @@
 
 /obj/item/reagent_containers/drinks/chicken_soup
 	name = "canned chicken soup"
-	desc = "A delicious and soothing can of chicken noodle soup; just like spessmom used to microwave it."
+	desc = "Банка вкусного и нежного куринного супа с лапшой. Лучше разогреть в микроволновке."
 	icon_state = "soupcan"
 	item_state = "soupcan"
 	list_reagents = list("chicken_soup" = 30)
 
 /obj/item/reagent_containers/drinks/sillycup
 	name = "paper cup"
-	desc = "A paper water cup."
+	desc = "Бумажный стаканчик для воды."
 	icon_state = "water_cup_e"
 	item_state = "coffee"
 	possible_transfer_amounts = null
@@ -264,7 +264,7 @@
 
 /obj/item/reagent_containers/drinks/shaker
 	name = "shaker"
-	desc = "A metal shaker to mix drinks in."
+	desc = "Металлический шейкер для смешивания напитков."
 	icon_state = "shaker"
 	materials = list(MAT_METAL=1500)
 	amount_per_transfer_from_this = 10
@@ -279,13 +279,13 @@
 
 /obj/item/reagent_containers/drinks/shaker/attack_self(mob/user)
 	if(!reagents.total_volume)
-		to_chat(user, "<span class='warning'>You won't shake an empty shaker now, will you?</span>")
+		to_chat(user, "<span class='warning'>Вы ведь не будете трясти пустой шейкер, правда?</span>")
 		return
 
 	if(COOLDOWN_FINISHED(src, shaking_cooldown))
 		shaking = TRUE
-		var/adjective = pick("furiously", "passionately", "with vigor", "with determination", "like a devil", "with care and love", "like there is no tomorrow")
-		user.visible_message("<span class='notice'>[user] shakes [src] [adjective]!</span>", "<span class='notice'>You shake [src] [adjective]!</span>")
+		var/adjective = pick("яросно", "страсно", "энергично", "решительно", "с полной отдачей", "с заботой и любовью", "стильно")
+		user.visible_message("<span class='notice'>[capitalize(user.declent_ru(NOMINATIVE))] [adjective] трясёт [declent_ru(ACCUSATIVE)]!</span>", "<span class='notice'>Вы [adjective] трясёте [declent_ru(ACCUSATIVE)]!</span>")
 		icon_state = "shaker-shake"
 		if(iscarbon(loc))
 			var/mob/living/carbon/M = loc
@@ -295,7 +295,7 @@
 		COOLDOWN_START(src, shaking_cooldown, 3 SECONDS)
 
 	if(shaking)
-		if(do_after_once(user, 3 SECONDS, target = src, allow_moving = TRUE, attempt_cancel_message = "You stop shaking [src] before it has time to mix."))
+		if(do_after_once(user, 3 SECONDS, target = src, allow_moving = TRUE, attempt_cancel_message = "Вы прекращаете трясти [declent_ru(ACCUSATIVE)] до того как, содержимое смешается."))
 			reagents.set_reacting(TRUE)
 			reagents.handle_reactions()
 	icon_state = "shaker"
@@ -313,50 +313,50 @@
 
 /obj/item/reagent_containers/drinks/flask
 	name = "flask"
-	desc = "Every good spaceman knows it's a good idea to bring along a couple of pints of whiskey wherever they go."
+	desc = "Каждый уважающий себя космонавт знает, что всегда стоит взять с собой пару пинт виски, куда бы ты ни отправился."
 	icon_state = "flask"
 	materials = list(MAT_METAL=250)
 	volume = 60
 
 /obj/item/reagent_containers/drinks/flask/barflask
 	name = "flask"
-	desc = "For those who can't be bothered to hang out at the bar to drink."
+	desc = "Для тех, кто не хочет тратить время на посиделки в баре за напитками."
 	icon_state = "barflask"
 
 /obj/item/reagent_containers/drinks/flask/gold
 	name = "captain's flask"
-	desc = "A regal flask belonging to the captain, with Nanotrasen's logo inlaid with pearl."
+	desc = "Драгоценная фляга, принадлежащая капитану, с логотипом Nanotrasen, инкрустированным перламутром."
 	icon_state = "flask_gold"
 	materials = list(MAT_GOLD=500)
 
 /obj/item/reagent_containers/drinks/flask/detflask
 	name = "detective's flask"
-	desc = "The detective's only true friend."
+	desc = "Единственный настоящий друг детектива."
 	icon_state = "detflask"
 	list_reagents = list("whiskey" = 30)
 
 /obj/item/reagent_containers/drinks/flask/hand_made
 	name = "handmade flask"
-	desc = "A wooden flask with a silver lid and bottom. It has a matte, dark blue paint on it with the initials \"W.H.\" etched in black."
+	desc = "Деревянная фляга с серебряной крышкой и дном. Она покрыта матовой тёмно-синей краской, на которой выгравированы инициалы \"W.H.\" черным цветом."
 	icon = 'icons/obj/custom_items.dmi'
 	icon_state = "williamhackett"
 	materials = list()
 
 /obj/item/reagent_containers/drinks/flask/thermos
 	name = "vintage thermos"
-	desc = "An older thermos with a faint shine."
+	desc = "Старый потёртый термос."
 	icon_state = "thermos"
 	volume = 50
 
 /obj/item/reagent_containers/drinks/flask/shiny
 	name = "shiny flask"
-	desc = "A shiny metal flask. It appears to have a Greek symbol inscribed on it."
+	desc = "Блестящая металлическая фляга. На ней выгравирован греческий символ."
 	icon_state = "shinyflask"
 	volume = 50
 
 /obj/item/reagent_containers/drinks/flask/lithium
 	name = "lithium flask"
-	desc = "A flask with a Lithium Atom symbol on it."
+	desc = "Фляга с изображением атома лития."
 	icon = 'icons/obj/custom_items.dmi'
 	icon_state = "lithiumflask"
 	volume = 50
@@ -370,19 +370,19 @@
 
 /obj/item/reagent_containers/drinks/bag
 	name = "drink bag"
-	desc = "Normally put in wine boxes, or down pants at stadium events."
+	desc = "Обычно содержит вино. Легко спрятать в штанах."
 	icon_state = "goonbag"
 	volume = 70
 
 /obj/item/reagent_containers/drinks/bag/goonbag
 	name = "goon from a Blue Toolbox special edition"
-	desc = "Wine from the land down under, where the dingos roam and the roos do wander."
+	desc = "Вино из страны на краю света, где бродят динго и странствуют кенгуру."
 	icon_state = "goonbag"
 	list_reagents = list("wine" = 70)
 
 /obj/item/reagent_containers/drinks/oilcan
 	name = "oil can"
-	desc = "Contains oil intended for use on cyborgs, robots, and other synthetics."
+	desc = "Содержит масло, предназначеное для киборгов, роботов и других синтетиков."
 	icon = 'icons/goonstation/objects/oil.dmi'
 	icon_state = "oilcan"
 	volume = 100

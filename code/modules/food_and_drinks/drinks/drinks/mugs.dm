@@ -1,7 +1,7 @@
 
 /obj/item/reagent_containers/drinks/mug
 	name = "coffee mug"
-	desc = "A mug for sipping hot beverages out of."
+	desc = "Кружка для питья горячих напитков."
 	icon = 'icons/obj/mugs.dmi'
 	icon_state = "mug"
 	var/novelty = FALSE
@@ -9,27 +9,27 @@
 
 /obj/item/reagent_containers/drinks/mug/novelty
 	name = "novelty coffee mug"
-	desc = "A fun mug for your coffee or other hot beverage!"
+	desc = "Забавная кружка для кофе или других горячих напитков!"
 	novelty = TRUE
 
 /datum/novelty_mug
 	var/name = "novelty coffee mug"
-	var/description = "A fun mug for your coffee or other hot beverage!"
+	var/description = "Забавная кружка для кофе или других горячих напитков!"
 	var/state = "mug"
 
 /datum/novelty_mug/peace
 	name = "peaceful mug"
-	description = "It's like... so peaceful, man."
+	description = "Она такая... умиротворяющая, чувак."
 	state = "mug_peace"
 
 /datum/novelty_mug/fire
 	name = "fire mug"
-	description = "Caution: contents and design may be incredibly hot."
+	description = "Осторожно: содержимое и дизайн могут быть очень горячими."
 	state = "mug_fire"
 
 /datum/novelty_mug/best
 	name = "best mug"
-	description = "By decree of this mug, you are the best!"
+	description = "По указу этой кружки, ты лучший!"
 	state = "mug_best"
 
 /datum/novelty_mug/best/New()
@@ -39,7 +39,7 @@
 
 /datum/novelty_mug/worst
 	name = "worst mug"
-	description = "By decree of this mug, you are the worst!"
+	description = "По указу этой кружки, ты худший!"
 	state = "mug_worst"
 
 /datum/novelty_mug/worst/New()
@@ -49,41 +49,41 @@
 
 /datum/novelty_mug/insult
 	name = "insulting coffee mug"
-	description = "How rude!"
+	description = "Как грубо!"
 	state = "mug_insult"
 
 /datum/novelty_mug/insult/New()
-	var/insult = pick("There isn't enough coffee to make you tolerable.", "I drink coffee so I can pretend to like people.", "I haven't had my coffee yet... What's your excuse?", "This coffee is more robust than you.", "Decaf is for weaklings like you.")
-	description = "This one says:\"[insult]\""
+	var/insult = pick("Здесь недостаточно кофе, чтобы сделать тебя терпимым.", "Я пью кофе, чтобы притворяться, что мне нравятся люди.", "Я еще не выпил кофе... А какая у тебя причина?", "Этот кофе крепче тебя.", "Латте — для слабаков, таких как ты.")
+	description = "Кружка говорит:\"[insult]\""
 
 /datum/novelty_mug/pda
 	name = "PDA mug"
-	description = "Finally, a use for one of these!"
+	description = "Наконец-то, нашлось применение для ПДА!"
 	state = "mug_pda"
 
 /datum/novelty_mug/rad
 	name = "radioactive mug"
-	description = "Is coffee supposed to be green... and glowing?"
+	description = "Должен ли кофе быть зелёным... и светящимся?"
 	state = "mug_rad"
 
 /datum/novelty_mug/tide
 	name = "greytide mug"
-	description = "This coffee packs almost as much of a punch as a toolbox to the face!"
+	description = "Этот кофе бьёт так сильно, как и тулбокс по лицу!"
 	state = "mug_tide"
 
 /datum/novelty_mug/happy
 	name = "happy mug"
-	description = "Even when you aren't, this mug helps you look happy around coworkers."
+	description = "Даже когда ты не счастлив, эта кружка помогает выглядеть радостным среди коллег."
 	state = "mug_happy"
 
 /datum/novelty_mug/pills
 	name = "prescription mug"
-	description = "Prescription: caffeine. Dosage: As much as it takes."
+	description = "Рецепт: кофеин. Дозировка: столько, сколько нужно."
 	state = "mug_pill"
 
 /datum/novelty_mug/rainbow
 	name = "rainbow mug"
-	description = "So mesmerizing!"
+	description = "Так завораживающе!"
 	state = "mug_rainbow"
 
 /obj/item/reagent_containers/drinks/mug/Initialize(mapload)
@@ -101,72 +101,72 @@
 
 /obj/item/reagent_containers/drinks/mug/eng
 	name = "engineer's mug"
-	desc = "A mug engineered to hold your beverage... IN SPACE!"
+	desc = "Кружка, спроектированная для того, чтобы держать ваш напиток... В КОСМОСЕ!"
 	icon_state = "mug_eng"
 	preset = TRUE
 
 /obj/item/reagent_containers/drinks/mug/med
 	name = "doctor's mug"
-	desc = "A mug that can hold the cure for what ails you!"
+	desc = "Кружка, которая может содержать лекарство от всех ваших болезней!"
 	icon_state = "mug_med"
 	preset = TRUE
 
 /obj/item/reagent_containers/drinks/mug/sci
 	name = "scientist's mug"
-	desc = "Nothing fuels research like a coffee mug... or grant money!"
+	desc = "Ничто не помогает исследованиям, как кружка с кофе... или грантовые деньги!"
 	icon_state = "mug_sci"
 	preset = TRUE
 
 /obj/item/reagent_containers/drinks/mug/sec
 	name = "officer's mug"
-	desc = "The perfect partner for a sprinkled donut or stunbaton!"
+	desc = "Идеальный партнер для пончика с посыпкой и дубинки!"
 	icon_state = "mug_sec"
 	preset = TRUE
 
 /obj/item/reagent_containers/drinks/mug/serv
 	name = "crewmember's mug"
-	desc = "Serve your thirst better than you serve the rest of the crew!"
+	desc = "Утоли жажду лучше, чем остальной экипаж!"
 	icon_state = "mug_serv"
 	preset = TRUE
 
 /obj/item/reagent_containers/drinks/mug/ce
 	name = "chief engineer's mug"
-	desc = "Broken and welded back together countless times, just like the station! Probably microwave safe."
+	desc = "Сломан и сварен заново бесчисленное количество раз, как и станция! Вероятно, безопасен для микроволновки."
 	icon_state = "mug_ce"
 	preset = TRUE
 
 /obj/item/reagent_containers/drinks/mug/hos
 	name = "head of security's mug"
-	desc = "If only your officers were as robust as this coffee's flavor!"
+	desc = "Если бы только ваши офицеры были такими же крепкими, как вкус этого кофе!"
 	icon_state = "mug_hos"
 	preset = TRUE
 
 /obj/item/reagent_containers/drinks/mug/rd
 	name = "research director's mug"
-	desc = "Energy tech level: 99."
+	desc = "Уровень энергетических технологий: 99."
 	icon_state = "mug_rd"
 	preset = TRUE
 
 /obj/item/reagent_containers/drinks/mug/cmo
 	name = "chief medical officer's mug"
-	desc = "Fill it with something to keep you awake while you try to keep the crew alive."
+	desc = "Наполните кружку чем-то, чтобы не заснуть, пока пытаетесь спасти экипаж."
 	icon_state = "mug_cmo"
 	preset = TRUE
 
 /obj/item/reagent_containers/drinks/mug/qm
 	name = "quartermaster's mug"
-	desc = "A newly imported mug, express delivery."
+	desc = "Новая импортная кружка доставленная экспресс-доставкой."
 	icon_state = "mug_qm"
 	preset = TRUE
 
 /obj/item/reagent_containers/drinks/mug/hop
 	name = "head of personnel's mug"
-	desc = "Are the stains on the bottom coffee or ink?"
+	desc = "На дне пятна от кофе или чернил?"
 	icon_state = "mug_hop"
 	preset = TRUE
 
 /obj/item/reagent_containers/drinks/mug/cap
 	name = "captain's mug"
-	desc = "An inscription on the side reads \"Best Captain 2559\"... The last time the station had a worthy captain."
+	desc = "На боку надпись: \"Лучший капитан 2559\"... В последний раз, когда на станции был достойный капитан."
 	icon_state = "mug_cap"
 	preset = TRUE
