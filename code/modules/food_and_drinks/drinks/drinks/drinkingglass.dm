@@ -1,7 +1,7 @@
 
 
 /obj/item/reagent_containers/drinks/drinkingglass
-	name = "drinking glass"  // SS220 EDIT
+	name = "glass"
 	desc = "Your standard drinking glass."
 	icon_state = "glass_empty"
 	item_state = "drinking_glass"
