@@ -4,6 +4,7 @@
 #define TS_POINTS_PRINCE 30
 #define TS_POINTS_QUEEN 42
 
+#define BIOHAZARD_TERROR_SPIDERS "Terrors"
 
 /datum/event/spider_terror
 	announceWhen = 240
@@ -48,7 +49,7 @@
 	spawnpoints += round(population_factor * length(GLOB.clients)) // server population sensitivity
 	log_debug("where is [spawnpoints] available spawnpoints")
 	spawn_terror_spiders(count_spawn_spiders(max_spiders), candidates)
-	SSevents.biohazards_this_round += 1
+	SSevents.biohazards_this_round += BIOHAZARD_TERROR_SPIDERS
 
 /datum/event/spider_terror/proc/count_spawn_spiders(max_spiders)
 	while(spawnpoints >= TS_POINTS_GREEN && spawncount < max_spiders)
