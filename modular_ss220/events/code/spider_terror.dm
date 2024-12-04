@@ -4,8 +4,6 @@
 #define TS_POINTS_PRINCE 30
 #define TS_POINTS_QUEEN 42
 
-#define BIOHAZARD_TERROR_SPIDERS "Terrors"
-
 /datum/event/spider_terror
 	announceWhen = 240
 	var/population_factor = 0.7 // higher - more spawnpoints
