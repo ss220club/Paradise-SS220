@@ -77,14 +77,14 @@
 		return
 	..()
 	set_light(light_intensity, null, light_color)
-	visible_message("<span class = 'notice'>[src] begins to burn with a blue hue!</span>")
+	visible_message("<span class = 'notice'>[capitalize(declent_ru(NOMINATIVE))] начинает гореть синим пламенем!</span>")
 	update_appearance(UPDATE_NAME|UPDATE_OVERLAYS)
 
 /obj/item/reagent_containers/drinks/drinkingglass/shotglass/extinguish(silent = FALSE)
 	..()
 	set_light(0)
 	if(!silent)
-		visible_message("<span class = 'notice'>The dancing flame on [src] dies out.</span>")
+		visible_message("<span class = 'notice'>Танцующее пламя на [declent_ru(PREPOSITIONAL)] гаснет.</span>")
 	update_appearance(UPDATE_NAME|UPDATE_OVERLAYS)
 
 /obj/item/reagent_containers/drinks/drinkingglass/shotglass/burn() //Let's override fire deleting the reagents inside the shot

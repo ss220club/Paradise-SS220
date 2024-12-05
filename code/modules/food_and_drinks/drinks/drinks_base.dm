@@ -62,11 +62,11 @@
 
 	if(target.is_refillable() && is_drainable()) //Something like a glass. Player probably wants to transfer TO it.
 		if(!reagents.total_volume)
-			to_chat(user, "<span class='warning'>[declent_ru(NOMINATIVE)] [genderize_ru(src, "пустой", "пустая", "пустое", "пустые")].</span>")
+			to_chat(user, "<span class='warning'>[capitalize(declent_ru(NOMINATIVE))] [genderize_ru(src, "пустой", "пустая", "пустое", "пустые")].</span>")
 			return FALSE
 
 		if(target.reagents.holder_full())
-			to_chat(user, "<span class='warning'>[target] is full.</span>")
+			to_chat(user, "<span class='warning'>[capitalize(declent_ru(NOMINATIVE))] [genderize_ru(src, "полный", "полная", "полное", "полные")].</span>")
 			return FALSE
 
 		var/trans = reagents.trans_to(target, amount_per_transfer_from_this)
@@ -77,11 +77,11 @@
 			to_chat(user, "<span class='warning'>Крышка [declent_ru(GENITIVE)] закрыта!</span>")
 			return FALSE
 		if(!target.reagents.total_volume)
-			to_chat(user, "<span class='warning'>[target] is empty.</span>")
+			to_chat(user, "<span class='warning'>[capitalize(declent_ru(NOMINATIVE))] [genderize_ru(src, "пустой", "пустая", "пустое", "пустые")].</span>")
 			return FALSE
 
 		if(reagents.holder_full())
-			to_chat(user, "<span class='warning'>[src] is full.</span>")
+			to_chat(user, "<span class='warning'>[capitalize(declent_ru(NOMINATIVE))] [genderize_ru(src, "полный", "полная", "полное", "полные")].</span>")
 			return FALSE
 
 		var/trans = target.reagents.trans_to(src, amount_per_transfer_from_this)
@@ -93,16 +93,16 @@
 	. = ..()
 	if(in_range(user, src))
 		if(!reagents || reagents.total_volume == 0)
-			. += "<span class='notice'>[src] is empty!</span>"
+			. += "<span class='notice'>[capitalize(declent_ru(NOMINATIVE))] [genderize_ru(src, "пустой", "пустая", "пустое", "пустые")]!</span>"
 		else if(reagents.total_volume <= volume/4)
-			. += "<span class='notice'>[src] is almost empty!</span>"
+			. += "<span class='notice'>[capitalize(declent_ru(NOMINATIVE))] почти [genderize_ru(src, "полный", "полная", "полное", "полные")]!</span>"
 		else if(reagents.total_volume <= volume*0.66)
-			. += "<span class='notice'>[src] is half full!</span>"// We're all optimistic, right?!
+			. += "<span class='notice'>[capitalize(declent_ru(NOMINATIVE))] наполовину [genderize_ru(src, "полный", "полная", "полное", "полные")]!</span>"// We're all optimistic, right?!
 
 		else if(reagents.total_volume <= volume*0.90)
-			. += "<span class='notice'>[src] is almost full!</span>"
+			. += "<span class='notice'>[capitalize(declent_ru(NOMINATIVE))] почти [genderize_ru(src, "полный", "полная", "полное", "полные")]!</span>"
 		else
-			. += "<span class='notice'>[src] is full!</span>"
+			. += "<span class='notice'>[capitalize(declent_ru(NOMINATIVE))] [genderize_ru(src, "полный", "полная", "полное", "полные")]!</span>"
 
 ////////////////////////////////////////////////////////////////////////////////
 /// Drinks. END
@@ -295,7 +295,7 @@
 		COOLDOWN_START(src, shaking_cooldown, 3 SECONDS)
 
 	if(shaking)
-		if(do_after_once(user, 3 SECONDS, target = src, allow_moving = TRUE, attempt_cancel_message = "Вы прекращаете трясти [declent_ru(ACCUSATIVE)] до того как, содержимое смешается."))
+		if(do_after_once(user, 3 SECONDS, target = src, allow_moving = TRUE, attempt_cancel_message = "Вы прекращаете трясти [declent_ru(ACCUSATIVE)] до того, как содержимое смешается."))
 			reagents.set_reacting(TRUE)
 			reagents.handle_reactions()
 	icon_state = "shaker"

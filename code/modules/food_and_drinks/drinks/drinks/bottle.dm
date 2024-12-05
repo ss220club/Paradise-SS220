@@ -167,7 +167,7 @@
 
 /obj/item/reagent_containers/drinks/bottle/whiskey
 	name = "Uncle Git's Special Reserve"
-	desc = "Премиум односолодовый виски, мягко выдержанный внутри туннелей ядерного убежища. ПРАВИЛА ТУННЕЛЬНОГО ВИСКИ."
+	desc = "Премиум односолодовый виски, мягко выдержанный внутри туннелей ядерного убежища. ТУННЕЛЬНЫЙ ВИСКИ РУЛИТ."
 	icon_state = "whiskeybottle"
 	list_reagents = list("whiskey" = 100)
 
@@ -215,7 +215,7 @@
 
 /obj/item/reagent_containers/drinks/bottle/holywater
 	name = "flask of holy water"
-	desc = "A flask of the chaplain's holy water."
+	desc = "Фляга святой воды капеллана."
 	icon_state = "holyflask"
 	list_reagents = list("holywater" = 100)
 
@@ -273,7 +273,7 @@
 
 /obj/item/reagent_containers/drinks/bottle/fernet
 	name = "Fernet Bronca"
-	desc = "Бутылка чистого Фернет-Бранка. Настоен на 27 различных космических трав."
+	desc = "Бутылка чистого Фернет-Бранка. Настоен на 27 различных космических травах."
 	icon_state = "fernetbottle"
 	list_reagents = list("fernet" = 100)
 
