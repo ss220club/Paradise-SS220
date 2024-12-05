@@ -1,15 +1,15 @@
 // MARK: MODsuit control
 /obj/item/mod/control/proc/build_head()
-	return new /obj/item/mod/head/mod(src)
+	return new /obj/item/clothing/head/mod(src)
 
 /obj/item/mod/control/proc/build_suit()
-	return new /obj/item/mod/suit/mod(src)
+	return new /obj/item/clothing/suit/mod(src)
 
 /obj/item/mod/control/proc/build_gloves()
-	return new /obj/item/mod/gloves/mod(src)
+	return new /obj/item/clothing/gloves/mod(src)
 
 /obj/item/mod/control/proc/build_shoes()
-	return new /obj/item/mod/shoes/mod(src)
+	return new /obj/item/clothing/shoes/mod(src)
 
 /obj/item/mod/control/proc/is_any_part_deployed()
 	for(var/obj/item/part as anything in mod_parts)
@@ -52,39 +52,39 @@
 	icon_override = 'modular_ss220/mod/icons/mob/mod_clothing.dmi'
 
 /obj/item/mod/control/pre_equipped/exclusive/build_head()
-	return new /obj/item/mod/head/mod/exclusive(src)
+	return new /obj/item/clothing/head/mod/exclusive(src)
 
 /obj/item/mod/control/pre_equipped/exclusive/build_suit()
-	return new /obj/item/mod/suit/mod/exclusive(src)
+	return new /obj/item/clothing/suit/mod/exclusive(src)
 
 /obj/item/mod/control/pre_equipped/exclusive/build_gloves()
-	return new /obj/item/mod/gloves/mod/exclusive(src)
+	return new /obj/item/clothing/gloves/mod/exclusive(src)
 
 /obj/item/mod/control/pre_equipped/exclusive/build_shoes()
-	return new /obj/item/mod/shoes/mod/exclusive(src)
+	return new /obj/item/clothing/shoes/mod/exclusive(src)
 
 //MARK: Corporate
 /obj/item/mod/control/pre_equipped/corporate/build_head()
-	return new /obj/item/mod/head/mod/exclusive(src)
+	return new /obj/item/clothing/head/mod/exclusive(src)
 
 /obj/item/mod/control/pre_equipped/corporate/build_suit()
-	return new /obj/item/mod/suit/mod/exclusive(src)
+	return new /obj/item/clothing/suit/mod/exclusive(src)
 
 /obj/item/mod/control/pre_equipped/corporate/build_gloves()
-	return new /obj/item/mod/gloves/mod/exclusive(src)
+	return new /obj/item/clothing/gloves/mod/exclusive(src)
 
 /obj/item/mod/control/pre_equipped/corporate/build_shoes()
-	return new /obj/item/mod/shoes/mod/exclusive(src)
+	return new /obj/item/clothing/shoes/mod/exclusive(src)
 
 //MARK: ERT Red
 /obj/item/mod/control/pre_equipped/responsory/red/build_head()
-	return new /obj/item/mod/head/mod/exclusive(src)
+	return new /obj/item/clothing/head/mod/exclusive(src)
 
 /obj/item/mod/control/pre_equipped/responsory/red/build_suit()
-	return new /obj/item/mod/suit/mod/exclusive(src)
+	return new /obj/item/clothing/suit/mod/exclusive(src)
 
 /obj/item/mod/control/pre_equipped/responsory/red/build_gloves()
-	return new /obj/item/mod/gloves/mod/exclusive(src)
+	return new /obj/item/clothing/gloves/mod/exclusive(src)
 
 /obj/item/mod/control/pre_equipped/responsory/red/build_shoes()
-	return new /obj/item/mod/shoes/mod/exclusive(src)
+	return new /obj/item/clothing/shoes/mod/exclusive(src)

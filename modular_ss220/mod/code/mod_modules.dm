@@ -1,4 +1,4 @@
-/obj/item/mod/module/insignia
+/obj/item/mod/module/insignia/red
 	icon = 'modular_ss220/mod/icons/object/mod_modules.dmi'
 	name = "MOD insignia module"
 	desc = "Despite the existence of IFF systems, radio communique, and modern methods of deductive reasoning involving \

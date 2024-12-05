@@ -44,7 +44,6 @@
 	icon_override = 'modular_ss220/mod/icons/mob/mod_clothing.dmi'
 
 // MARK: ERT RED MODsuit
-
 /obj/item/mod/control/pre_equipped/responsory/red
 	icon = 'modular_ss220/mod/icons/object/mod_clothing.dmi'
 	icon_override = 'modular_ss220/mod/icons/mob/mod_clothing.dmi'
@@ -60,4 +59,4 @@
 		/obj/item/mod/module/jetpack/advanced,
 		/obj/item/mod/module/ert_camera,
 	)
-
+	insignia_type = /obj/item/mod/module/insignia/red

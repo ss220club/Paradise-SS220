@@ -1,5 +1,5 @@
 // MARK: MODsuit clothes
-/obj/item/mod/head/mod/exclusive
+/obj/item/clothing/head/mod/exclusive
 	icon = 'modular_ss220/mod/icons/object/mod_clothing.dmi'
 	item_state = 'modular_ss220/mod/icons/mob/mod_clothing.dmi'
 	icon_override = 'modular_ss220/mod/icons/mob/mod_clothing.dmi'
@@ -12,7 +12,7 @@
 		"Vox" = 'modular_ss220/mod/icons/mob/species/vox/mod_clothing.dmi',
 		)
 
-/obj/item/mod/suit/mod/exclusive
+/obj/item/clothing/suit/mod/exclusive
 	icon = 'modular_ss220/mod/icons/object/mod_clothing.dmi'
 	item_state = 'modular_ss220/mod/icons/mob/mod_clothing.dmi'
 	icon_override = 'modular_ss220/mod/icons/mob/mod_clothing.dmi'
@@ -25,7 +25,7 @@
 		"Vox" = 'modular_ss220/mod/icons/mob/species/vox/mod_clothing.dmi',
 		)
 
-/obj/item/mod/gloves/mod/exclusive
+/obj/item/clothing/gloves/mod/exclusive
 	icon = 'modular_ss220/mod/icons/object/mod_clothing.dmi'
 	item_state = 'modular_ss220/mod/icons/mob/mod_clothing.dmi'
 	icon_override = 'modular_ss220/mod/icons/mob/mod_clothing.dmi'
@@ -38,7 +38,7 @@
 		"Vox" = 'modular_ss220/mod/icons/mob/species/vox/mod_clothing.dmi',
 		)
 
-/obj/item/mod/shoes/mod/exclusive
+/obj/item/clothing/shoes/mod/exclusive
 	icon = 'modular_ss220/mod/icons/object/mod_clothing.dmi'
 	item_state = 'modular_ss220/mod/icons/mob/mod_clothing.dmi'
 	icon_override = 'modular_ss220/mod/icons/mob/mod_clothing.dmi'
