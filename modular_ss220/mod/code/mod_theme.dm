@@ -174,6 +174,7 @@
 	)
 	skins = list(
 		"rhino" = list(
+			MOD_ICON_OVERRIDE = 'modular_ss220/mod/icons/object/mod_clothing.dmi',
 			HELMET_FLAGS = list(
 				UNSEALED_LAYER = COLLAR_LAYER,
 
