@@ -60,3 +60,31 @@
 		/obj/item/mod/module/ert_camera,
 	)
 	insignia_type = /obj/item/mod/module/insignia/red
+
+/obj/item/mod/control/pre_equipped/responsory/red/commander
+	insignia_type = /obj/item/mod/module/insignia/red/commander
+
+/obj/item/mod/control/pre_equipped/responsory/red/security
+	insignia_type = /obj/item/mod/module/insignia/red/security
+
+/obj/item/mod/control/pre_equipped/responsory/red/engineer
+	insignia_type = /obj/item/mod/module/insignia/red/engineer
+
+/obj/item/mod/control/pre_equipped/responsory/red/medic
+	insignia_type = /obj/item/mod/module/insignia/red/medic
+
+/obj/item/mod/control/pre_equipped/responsory/red/medic/Initialize(mapload, new_theme, new_skin, new_core, new_access)
+	. = ..()
+	ADD_TRAIT(chestplate, TRAIT_RSG_IMMUNE, ROUNDSTART_TRAIT)
+
+/obj/item/mod/control/pre_equipped/responsory/red/janitor
+		insignia_type = /obj/item/mod/module/insignia/red/janitor
+
+/obj/item/mod/control/pre_equipped/responsory/red/clown
+		insignia_type = /obj/item/mod/module/insignia/red/clown
+
+/obj/item/mod/control/pre_equipped/responsory/red/chaplain
+	insignia_type = /obj/item/mod/module/insignia/red/chaplain
+
+/obj/item/mod/control/pre_equipped/responsory/red/inquisitory
+		applied_skin = "inquisitory"

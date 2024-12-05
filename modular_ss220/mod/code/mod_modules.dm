@@ -1,11 +1,23 @@
 /obj/item/mod/module/insignia/red
-	icon = 'modular_ss220/mod/icons/object/mod_modules.dmi'
-	name = "MOD insignia module"
-	desc = "Despite the existence of IFF systems, radio communique, and modern methods of deductive reasoning involving \
-		the wearer's own eyes, colorful paint jobs remain a popular way for different factions in the galaxy to display who \
-		they are. This system utilizes a series of tiny moving paint sprayers to both apply and remove different \
-		color patterns to and from the suit."
-	icon_state = "insignia"
-	removable = FALSE
-	incompatible_modules = list(/obj/item/mod/module/insignia)
-	overlay_state_inactive = "module_insignia"
+	overlay_icon_file = 'modular_ss220/mod/icons/mob/mod_modules.dmi'
+
+/obj/item/mod/module/insignia/red/commander
+	color = "#4980a5"
+
+/obj/item/mod/module/insignia/red/security
+	color = "#b30d1e"
+
+/obj/item/mod/module/insignia/red/engineer
+	color = "#e9c80e"
+
+/obj/item/mod/module/insignia/red/medic
+	color = "#ebebf5"
+
+/obj/item/mod/module/insignia/red/janitor
+	color = "#7925c7"
+
+/obj/item/mod/module/insignia/red/clown
+	color = "#ff1fc7"
+
+/obj/item/mod/module/insignia/red/chaplain
+	color = "#f0a00c"
