@@ -39,7 +39,7 @@
 #define MAX_HAMSTER 20
 GLOBAL_VAR_INIT(hamster_count, 0)
 
-/mob/living/simple_animal/mouse/hamster/Initialize()
+/mob/living/simple_animal/mouse/hamster/Initialize(mapload)
 	. = ..()
 	gender = prob(80) ? MALE : FEMALE
 
