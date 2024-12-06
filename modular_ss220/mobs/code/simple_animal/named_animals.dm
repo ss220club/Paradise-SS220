@@ -84,6 +84,10 @@
 	maxHealth = 20
 	health = 20
 
+/mob/living/simple_animal/mouse/rat/ratatui/update_desc()
+	. = ..()
+	desc = initial(desc)
+
 /mob/living/simple_animal/mouse/rat/irish/remi
 	name = "Реми"
 	real_name = "Реми"
@@ -93,6 +97,10 @@
 	maxHealth = 25
 	health = 25
 	transform = matrix(1.250, 0, 0, 0, 1, 0) // Толстячок на +2 пикселя
+
+/mob/living/simple_animal/mouse/rat/irish/remi/update_desc()
+	. = ..()
+	desc = initial(desc)
 
 /mob/living/simple_animal/mouse/rat/white/brain
 	name = "Брейн"
@@ -104,6 +112,10 @@
 	health = 20
 	universal_speak = 1
 	resting = TRUE
+
+/mob/living/simple_animal/mouse/rat/white/brain/update_desc()
+	. = ..()
+	desc = initial(desc)
 
 /obj/effect/decal/remains/mouse/pinkie
 	name = "Пинки"
