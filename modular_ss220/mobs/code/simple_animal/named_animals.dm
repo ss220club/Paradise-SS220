@@ -73,6 +73,18 @@
 	desc = "Крокодил обожающий музыкальные инструменты и плюшевые игрушки. Пожевать."
 	faction = list("neutral")
 
+/mob/living/simple_animal/mouse/brown/demon
+	name = "Мышедемон"
+	desc = "Секретная разработка синдиката. Сидит тут потому, что сам хочет"
+	unique_pet = TRUE
+	gold_core_spawnable = NO_SPAWN
+	maxHealth = 20
+	health = 20
+
+/mob/living/simple_animal/mouse/brown/demon/update_desc()
+	. = ..()
+	desc = initial(desc)
+
 // rats
 /mob/living/simple_animal/mouse/rat/ratatui
 	name = "Рататуй"
