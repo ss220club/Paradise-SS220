@@ -20,5 +20,5 @@
 	var/modular_count = biohazard_count(biohazard)
 	switch(biohazard)
 		if(BIOHAZARD_TERROR_SPIDERS)
-			return modular_count >= 5
+			return modular_count >= 3
 	return ..()
