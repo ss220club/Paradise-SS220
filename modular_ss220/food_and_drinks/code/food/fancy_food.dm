@@ -17,7 +17,7 @@
 	if(opened)
 		icon_state = "[initial(icon_state)]_open"
 
-/obj/item/food/fancy/attack(mob/M, mob/user, def_zone)
+/obj/item/food/fancy/attack__legacy__attackchain(mob/M, mob/user, def_zone)
 	if(!opened)
 		to_chat(user, span_warning("[src] сначала нужно открыть!"))
 		return FALSE
@@ -26,7 +26,7 @@
 		return FALSE
 	return ..()
 
-/obj/item/food/fancy/attack_self(mob/user)
+/obj/item/food/fancy/attack_self__legacy__attackchain(mob/user)
 	AltClick(user)
 
 /obj/item/food/fancy/examine(mob/user)
