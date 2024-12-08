@@ -439,7 +439,7 @@
 
 /* Security */
 /obj/item/clothing/suit/armor/cop
-	name = "серая шинель"
+	name = "grey overcoat"
 	desc = "Не забудьте про шлем любителя свежего воздуха."
 	icon = 'modular_ss220/clothing/icons/object/suits.dmi'
 	icon_override = 'modular_ss220/clothing/icons/mob/suits.dmi'
