@@ -70,7 +70,7 @@
 		? span_danger("Следующий удар будет крайне травмирующим!") \
 		: span_warning("Следующий удар будет усиленным!")
 
-/obj/item/melee/vibroblade/attack_self(mob/living/user)
+/obj/item/melee/vibroblade/attack_self__legacy__attackchain(mob/living/user)
 	. = ..()
 	if(charge_level >= max_charge_level)
 		user.visible_message(
@@ -94,7 +94,7 @@
 	. = ..()
 	force = initial(force) * get_damage_factor()
 
-/obj/item/melee/vibroblade/attack(mob/living/target, mob/living/user, def_zone)
+/obj/item/melee/vibroblade/attack__legacy__attackchain(mob/living/target, mob/living/user, def_zone)
 	var/obj/item/organ/external/selected_bodypart
 	if(user.zone_selected in cutoff_candidates)
 		selected_bodypart = target.get_organ(user.zone_selected)
