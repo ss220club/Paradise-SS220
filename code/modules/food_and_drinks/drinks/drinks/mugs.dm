@@ -68,7 +68,7 @@
 
 /datum/novelty_mug/tide
 	name = "greytide mug"
-	description = "Этот кофе бьёт так сильно, как и тулбокс по лицу!"
+	description = "Этот кофе бьёт так же сильно, как и тулбокс по лицу!"
 	state = "mug_tide"
 
 /datum/novelty_mug/happy
@@ -119,13 +119,13 @@
 
 /obj/item/reagent_containers/drinks/mug/sec
 	name = "officer's mug"
-	desc = "Идеальный партнер для пончика с посыпкой и дубинки!"
+	desc = "Идеальный партнер для пончика с посыпкой или дубинки!"
 	icon_state = "mug_sec"
 	preset = TRUE
 
 /obj/item/reagent_containers/drinks/mug/serv
 	name = "crewmember's mug"
-	desc = "Утоли жажду лучше, чем остальной экипаж!"
+	desc = "Позаботься о своей жажде лучше, чем заботишься об остальном экипаже!"
 	icon_state = "mug_serv"
 	preset = TRUE
 

@@ -70,7 +70,7 @@
 			return FALSE
 
 		var/trans = reagents.trans_to(target, amount_per_transfer_from_this)
-		to_chat(user, "<span class='notice'>Вы переливаете [trans] единиц[declension_ru(trans, "у", "ы", "")] жидкости в [target.declent_ru(ACCUSATIVE)].</span>")
+		to_chat(user, "<span class='notice'>Вы переливаете [trans] единиц[declension_ru(trans, "у", "ы", "")] содержимого в [target.declent_ru(ACCUSATIVE)].</span>")
 
 	else if(target.is_drainable()) //A dispenser. Transfer FROM it TO us.
 		if(!is_refillable())
@@ -172,7 +172,7 @@
 
 /obj/item/reagent_containers/drinks/coffee
 	name = "Robust Coffee"
-	desc = "Осторожно, горячее содержимое!"
+	desc = "Осторожно, очень горячее содержимое для вашего наслаждения!"
 	icon_state = "coffee"
 	list_reagents = list("coffee" = 30)
 	resistance_flags = FREEZE_PROOF
@@ -238,7 +238,7 @@
 
 /obj/item/reagent_containers/drinks/chicken_soup
 	name = "canned chicken soup"
-	desc = "Банка вкусного и нежного куринного супа с лапшой. Лучше разогреть в микроволновке."
+	desc = "Банка вкусного и нежного куринного супа с лапшой. Вкус домашнего супа прямиком из микроволновки."
 	icon_state = "soupcan"
 	item_state = "soupcan"
 	list_reagents = list("chicken_soup" = 30)
@@ -337,14 +337,14 @@
 
 /obj/item/reagent_containers/drinks/flask/hand_made
 	name = "handmade flask"
-	desc = "Деревянная фляга с серебряной крышкой и дном. Она покрыта матовой тёмно-синей краской, на которой выгравированы инициалы \"W.H.\" черным цветом."
+	desc = "Деревянная фляга с серебряной крышкой и дном. Она покрыта матовой тёмно-синей краской, на которой черным цветом выгравированы инициалы \"W.H.\"."
 	icon = 'icons/obj/custom_items.dmi'
 	icon_state = "williamhackett"
 	materials = list()
 
 /obj/item/reagent_containers/drinks/flask/thermos
 	name = "vintage thermos"
-	desc = "Старый потёртый термос."
+	desc = "Старый потёртый термос с тусклым отблеском.."
 	icon_state = "thermos"
 	volume = 50
 

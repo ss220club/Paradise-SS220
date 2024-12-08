@@ -1,6 +1,6 @@
 /obj/item/reagent_containers/drinks/drinkingglass/shotglass
 	name = "shot glass"
-	desc = "В процессе производства этого стакана не было разбито ни одного бокала."
+	desc = "В процессе производства этой рюмки не было разбито ни одного бокала."
 	icon_state = "shotglass"
 	custom_fire_overlay = "shotglass_fire"
 	amount_per_transfer_from_this = 15

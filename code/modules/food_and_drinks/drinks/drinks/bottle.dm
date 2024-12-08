@@ -173,7 +173,7 @@
 
 /obj/item/reagent_containers/drinks/bottle/vodka
 	name = "Tunguska Triple Distilled"
-	desc = "Ох, водка. Лучший напиток по версии СССП."
+	desc = "Ох, водка. Лучший напиток и топливо по версии СССП."
 	icon_state = "vodkabottle"
 	list_reagents = list("vodka" = 100)
 
@@ -203,7 +203,7 @@
 
 /obj/item/reagent_containers/drinks/bottle/patron
 	name = "Wrapp Artiste Patron"
-	desc = "Серебряная текила, подаваемая в космических ночных клубах по всей галактике."
+	desc = "Текила с добавлением серебра, подаваемая в космических ночных клубах по всей галактике."
 	icon_state = "patronbottle"
 	list_reagents = list("patron" = 100)
 
@@ -237,7 +237,7 @@
 
 /obj/item/reagent_containers/drinks/bottle/goldschlager
 	name = "College Girl Goldschlager"
-	desc = "Только студенты согласны пить этот коричный шнапс крепостью 100 градусов."
+	desc = "Только студентки согласны пить этот коричный шнапс крепостью 100 градусов."
 	icon_state = "goldschlagerbottle"
 	list_reagents = list("goldschlager" = 100)
 

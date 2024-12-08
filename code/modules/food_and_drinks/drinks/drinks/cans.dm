@@ -174,7 +174,7 @@
 
 /obj/item/reagent_containers/drinks/cans/adminbooze
 	name = "admin booze"
-	desc = "Бутылка слёз админа. Пить с осторожностью."
+	desc = "Слёзы забаненных игроков 10-летней выдержки, для услаждения работы админов."
 	icon_state = "adminbooze"
 	is_glass = TRUE
 	list_reagents = list("adminordrazine" = 5, "capsaicin" = 5, "methamphetamine"= 20, "thirteenloko" = 20)
@@ -234,13 +234,13 @@
 
 /obj/item/reagent_containers/drinks/cans/lemon_lime
 	name = "Lemon-Lime"
-	desc = "Вы хотели АПЕЛЬСИН. А получили Лимон-Лайм."
+	desc = "Вы хотели АПЕЛЬСИН. Жизнь подарила вам Лимон-Лайм."
 	icon_state = "lemon-lime"
 	list_reagents = list("lemon_lime" = 30)
 
 /obj/item/reagent_containers/drinks/cans/iced_tea
 	name = "Vrisk Serket Iced Tea"
-	desc = "О этот сладкий, освежающий вкус чая."
+	desc = "О этот сладкий, освежающий вкус Земного чая. Он ведь точно оттуда? С Земли?"
 	icon_state = "ice_tea_can"
 	list_reagents = list("icetea" = 30)
 
@@ -258,7 +258,7 @@
 
 /obj/item/reagent_containers/drinks/cans/sodawater
 	name = "soda water"
-	desc = "Банка газированной воды. Двоюродная сестра обычной воды."
+	desc = "Банка газированной воды. Более освежающая двоюродная сестра обычной воды."
 	icon_state = "sodawater"
 	list_reagents = list("sodawater" = 50)
 
