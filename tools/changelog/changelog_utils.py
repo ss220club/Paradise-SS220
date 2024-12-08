@@ -27,6 +27,8 @@ DISCORD_TAG_EMOJI = {
 
 def build_changelog(pr: dict, tags_config: dict) -> dict:
     changelog = parse_changelog(pr.body, tags_config)
+    if changelog is None:
+        raise Exception("Failed to parse the changelog. Check changelog format.")
     changelog["author"] = changelog["author"] or pr.user.login
     return changelog
 
@@ -53,10 +55,11 @@ def validate_changelog(changelog: dict):
         raise Exception(f"The changelog exceeds the length limit ({DISCORD_EMBED_DESCRIPTION_LIMIT}). Shorten it.")
 
 
-def parse_changelog(message: str, tags_config: dict) -> dict:
+def parse_changelog(message: str, tags_config: dict = {}) -> dict | None:
     cl_parse_result = CL_BODY.search(message)
     if cl_parse_result is None:
-        raise Exception("Failed to parse the changelog. Check changelog format.")
+        return None
+
     cl_changes = []
     for cl_line in cl_parse_result.group("content").splitlines():
         if not cl_line:
@@ -66,15 +69,15 @@ def parse_changelog(message: str, tags_config: dict) -> dict:
             raise Exception(f"Invalid change: '{cl_line}'")
         tag = change_parse_result["tag"]
         message = change_parse_result["message"]
-        if tag and tag not in tags_config['tags'].keys():
+        if tags_config and tag and tag not in tags_config['tags'].keys():
             raise Exception(f"Invalid tag: '{cl_line}'. Valid tags: {', '.join(tags_config['tags'].keys())}")
         if not message:
             raise Exception(f"No message for change: '{cl_line}'")
-        if message in list(tags_config['defaults'].values()): # Check to see if the tags are associated with something that isn't the default text
+        if tags_config and message in list(tags_config['defaults'].values()): # Check to see if the tags are associated with something that isn't the default text
             raise Exception(f"Don't use default message for change: '{cl_line}'")
         if tag:
             cl_changes.append({
-                "tag": tags_config['tags'][tag],
+                "tag": tags_config['tags'][tag] if tags_config else tag,
                 "message": message
             })
         # Append line without tag to the previous change

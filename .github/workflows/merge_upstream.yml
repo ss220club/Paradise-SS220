@@ -16,21 +16,24 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install github googletrans
+          pip install PyGithub googletrans==4.0.0-rc1
 
       - name: Download the script
         run: |
-          wget https://raw.githubusercontent.com/ss220club/Paradise-SS220/master/tools/changelog/changelog_utils.py
-          wget https://raw.githubusercontent.com/ss220club/Paradise-SS220/master/tools/merge-upstream/merge_upstream.py
+          wget https://raw.githubusercontent.com/${{ github.repository }}/${{ github.ref_name }}/tools/changelog/changelog_utils.py
+          wget https://raw.githubusercontent.com/${{ github.repository }}/${{ github.ref_name }}/tools/merge-upstream/merge_upstream.py
 
-      - name: Run the changelog sync script
+      - name: Run the script
         env:
           GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
-          TARGET_REPO: "ss220club/Paradise-SS220"
-          TARGET_BRANCH: "master"
-          UPSTREAM_REPO: "ParadiseSS13/Paradise"
-          UPSTREAM_BRANCH: "master"
-          MERGE_BRANCH: "merge-upstream"
-          TRANSLATE_CHANGES: "true"
+          TARGET_REPO: 'ss220club/Paradise-SS220'
+          TARGET_BRANCH: 'master'
+          UPSTREAM_REPO: 'ParadiseSS13/Paradise'
+          UPSTREAM_BRANCH: 'master'
+          MERGE_BRANCH: 'merge-upstream'
+          TRANSLATE_CHANGES: 'true'
+          CHANGELOG_AUTHOR: 'ParadiseSS13'
         run: |
+          git config --global user.email "action@github.com"
+          git config --global user.name "Upstream Sync"
           python3 merge_upstream.py
