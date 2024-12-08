@@ -181,7 +181,7 @@
 	armor = list(MELEE = 20, BULLET = 20, LASER = 20, ENERGY = 20, BOMB = 10, RAD = 50, FIRE = 200, ACID = 115)
 
 /obj/item/clothing/head/helmet/cop
-	name = "шлем обороняющего гражданских"
+	name = "helmet of civil defend officer"
 	desc = "Шлем для любителей свежего воздуха. Подними эту банку!"
 	flags = BLOCKHAIR
 	flags_inv = HIDEMASK | HIDEEARS | HIDEEYES | HIDEFACE
