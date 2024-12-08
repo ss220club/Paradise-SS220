@@ -23903,9 +23903,9 @@
 /obj/machinery/access_button{
 	autolink_id = "eng_atmos_btn_ext";
 	pixel_y = 24;
-	req_access = list(13)
+	req_access = list(10)
 	},
-/obj/effect/mapping_helpers/airlock/access/any/engineering/external,
+/obj/effect/mapping_helpers/airlock/access/any/engineering/general,
 /turf/simulated/floor/plating,
 /area/station/maintenance/storage)
 "bUE" = (
@@ -24769,14 +24769,13 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
-/obj/effect/mapping_helpers/airlock/access/all/engineering/external,
-/obj/effect/mapping_helpers/airlock/access/all/engineering/general,
 /obj/machinery/access_button{
 	autolink_id = "eng_s_tesla_btn_ext";
 	pixel_y = 24;
-	req_access = list(10,13)
+	req_access = list(10)
 	},
 /obj/effect/turf_decal/delivery,
+/obj/effect/mapping_helpers/airlock/access/any/engineering/general,
 /turf/simulated/floor/plasteel{
 	icon_state = "darkredfull"
 	},
@@ -37557,9 +37556,9 @@
 /obj/machinery/access_button{
 	autolink_id = "eng_atmos_btn_int";
 	pixel_y = 24;
-	req_access = list(13)
+	req_access = list(10)
 	},
-/obj/effect/mapping_helpers/airlock/access/any/engineering/external,
+/obj/effect/mapping_helpers/airlock/access/any/engineering/general,
 /turf/simulated/floor/plating,
 /area/station/maintenance/storage)
 "cWX" = (
@@ -37914,7 +37913,7 @@
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/machinery/atmospherics/pipe/simple/hidden/yellow,
 /obj/machinery/door/firedoor,
-/obj/effect/mapping_helpers/airlock/access/any/engineering/construction,
+/obj/effect/mapping_helpers/airlock/access/any/engineering/general,
 /turf/simulated/floor/catwalk,
 /area/station/maintenance/storage)
 "cYy" = (
@@ -37978,8 +37977,7 @@
 	},
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/highsecurity,
-/obj/effect/mapping_helpers/airlock/access/all/engineering/tech_storage,
-/obj/effect/mapping_helpers/airlock/access/all/command/general,
+/obj/effect/mapping_helpers/airlock/access/any/engineering/ce,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -38855,14 +38853,13 @@
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 4
 	},
-/obj/effect/mapping_helpers/airlock/access/all/engineering/external,
-/obj/effect/mapping_helpers/airlock/access/all/engineering/general,
 /obj/machinery/access_button{
 	autolink_id = "eng_s_tesla_btn_int";
 	pixel_y = 24;
-	req_access = list(10,13)
+	req_access = list(10)
 	},
 /obj/effect/turf_decal/delivery,
+/obj/effect/mapping_helpers/airlock/access/any/engineering/general,
 /turf/simulated/floor/plasteel{
 	icon_state = "darkredfull"
 	},
@@ -38943,7 +38940,7 @@
 	dir = 1
 	},
 /obj/effect/mapping_helpers/airlock/autoname,
-/obj/effect/mapping_helpers/airlock/access/any/engineering/construction,
+/obj/effect/mapping_helpers/airlock/access/any/engineering/general,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -40759,7 +40756,7 @@
 	},
 /obj/machinery/door/airlock/engineering/glass,
 /obj/effect/mapping_helpers/airlock/autoname,
-/obj/effect/mapping_helpers/airlock/access/any/engineering/construction,
+/obj/effect/mapping_helpers/airlock/access/any/engineering/general,
 /turf/simulated/floor/plasteel{
 	icon_state = "darkyellowfull"
 	},
@@ -43814,14 +43811,13 @@
 	locked = 1
 	},
 /obj/effect/mapping_helpers/airlock/autoname,
-/obj/effect/mapping_helpers/airlock/access/all/engineering/external,
-/obj/effect/mapping_helpers/airlock/access/all/engineering/general,
 /obj/machinery/access_button{
 	autolink_id = "eng_n_tesla_btn_int";
 	pixel_y = -24;
-	req_access = list(10,13)
+	req_access = list(10)
 	},
 /obj/effect/turf_decal/delivery,
+/obj/effect/mapping_helpers/airlock/access/any/engineering/general,
 /turf/simulated/floor/plasteel{
 	icon_state = "darkredfull"
 	},
@@ -47604,7 +47600,7 @@
 	int_door_link_id = "eng_s_tesla_door_int";
 	pixel_y = 25;
 	vent_link_id = "eng_s_tesla_vent";
-	req_access = list(10,13)
+	req_access = list(10)
 	},
 /turf/simulated/floor/plasteel{
 	dir = 9;
@@ -55299,7 +55295,7 @@
 	int_door_link_id = "eng_atmos_door_int";
 	pixel_y = 25;
 	vent_link_id = "eng_atmos_vent";
-	req_access = list(10,13)
+	req_access = list(10)
 	},
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
 	autolink_id = "eng_atmos_vent";
@@ -60942,7 +60938,7 @@
 	id = "Singularity";
 	name = "Containment Blast Doors"
 	},
-/obj/effect/mapping_helpers/airlock/access/any/engineering/construction,
+/obj/effect/mapping_helpers/airlock/access/any/engineering/general,
 /turf/simulated/floor/plasteel{
 	icon_state = "darkyellowfull"
 	},
@@ -69655,7 +69651,7 @@
 /obj/machinery/door/airlock/maintenance,
 /obj/effect/mapping_helpers/airlock/autoname,
 /obj/machinery/door/firedoor,
-/obj/effect/mapping_helpers/airlock/access/any/engineering/construction,
+/obj/effect/mapping_helpers/airlock/access/any/engineering/general,
 /turf/simulated/floor/plating,
 /area/station/maintenance/apmaint)
 "nuM" = (
@@ -81432,7 +81428,7 @@
 	},
 /obj/machinery/door/airlock/engineering/glass,
 /obj/effect/mapping_helpers/airlock/autoname,
-/obj/effect/mapping_helpers/airlock/access/any/engineering/construction,
+/obj/effect/mapping_helpers/airlock/access/any/engineering/general,
 /turf/simulated/floor/plasteel{
 	icon_state = "darkyellowfull"
 	},
@@ -90580,7 +90576,7 @@
 	int_door_link_id = "eng_n_tesla_door_int";
 	pixel_y = -25;
 	vent_link_id = "eng_n_tesla_vent";
-	req_access = list(10,13)
+	req_access = list(10)
 	},
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 5
@@ -91722,14 +91718,13 @@
 	locked = 1
 	},
 /obj/effect/mapping_helpers/airlock/autoname,
-/obj/effect/mapping_helpers/airlock/access/all/engineering/external,
-/obj/effect/mapping_helpers/airlock/access/all/engineering/general,
 /obj/machinery/access_button{
 	autolink_id = "eng_n_tesla_btn_ext";
 	pixel_y = -24;
-	req_access = list(10,13)
+	req_access = list(10)
 	},
 /obj/effect/turf_decal/delivery,
+/obj/effect/mapping_helpers/airlock/access/any/engineering/general,
 /turf/simulated/floor/plasteel{
 	icon_state = "darkredfull"
 	},
