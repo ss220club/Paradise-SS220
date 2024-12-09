@@ -640,6 +640,11 @@
 	icon_state = "darkred"
 	},
 /area/ruin/space/sierra/rnd)
+"fm" = (
+/obj/structure/filingcabinet/chestdrawer,
+/obj/machinery/light/directional/east,
+/turf/simulated/floor/plasteel,
+/area/ruin/space/sierra/rnd)
 "fo" = (
 /obj/structure/rack,
 /obj/effect/spawner/random/maintenance,
@@ -971,6 +976,11 @@
 	icon_state = "whiteblue"
 	},
 /area/ruin/space/sierra/med)
+"hk" = (
+/obj/structure/table,
+/obj/machinery/light/directional/north,
+/turf/simulated/floor/plasteel,
+/area/ruin/space/sierra/rnd)
 "hm" = (
 /obj/effect/turf_decal/stripes,
 /obj/item/shard{
@@ -1261,6 +1271,7 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 4
 	},
+/obj/machinery/light/directional/west,
 /turf/simulated/floor/plasteel{
 	dir = 10;
 	icon_state = "darkred"
@@ -2198,6 +2209,12 @@
 	icon_state = "darkblue"
 	},
 /area/ruin/space/sierra/med)
+"rr" = (
+/obj/machinery/light/directional/north,
+/turf/simulated/floor/plasteel{
+	icon_state = "whiteblue"
+	},
+/area/ruin/space/sierra/med)
 "ru" = (
 /obj/effect/spawner/random/blood/maybe,
 /turf/simulated/floor/plasteel{
@@ -2238,6 +2255,7 @@
 /obj/machinery/computer/nonfunctional{
 	dir = 8
 	},
+/obj/machinery/light/directional/east,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "whiteblue"
@@ -2582,6 +2600,7 @@
 	},
 /obj/item/radio/intercom/directional/east,
 /obj/effect/mapping_helpers/turfs/damage,
+/obj/effect/mob_spawn/human/corpse/doctor,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -2846,6 +2865,7 @@
 /area/ruin/space/sierra/maint)
 "wi" = (
 /obj/machinery/optable,
+/obj/effect/mob_spawn/human/corpse/doctor,
 /turf/simulated/floor/plasteel/dark{
 	icon_state = "white_large"
 	},
@@ -4352,6 +4372,7 @@
 "Jg" = (
 /obj/structure/table,
 /obj/effect/spawner/random/trash,
+/obj/machinery/light/directional/west,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "whiteblue"
@@ -5049,6 +5070,14 @@
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
 /area/ruin/space/sierra/hall)
+"OQ" = (
+/obj/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 1
+	},
+/obj/machinery/light/directional/east,
+/turf/simulated/floor/plasteel,
+/area/ruin/space/sierra/rnd)
 "OX" = (
 /obj/effect/spawner/random/trash,
 /turf/simulated/floor/plasteel{
@@ -5134,6 +5163,11 @@
 	icon_state = "whitebluecorner"
 	},
 /area/ruin/space/sierra/med)
+"PB" = (
+/obj/structure/lattice,
+/obj/effect/mob_spawn/human/corpse/scientist,
+/turf/space,
+/area/ruin/space/sierra/rnd)
 "PC" = (
 /turf/simulated/floor/catwalk/airless,
 /area/space/nearstation)
@@ -5236,12 +5270,12 @@
 	},
 /area/ruin/space/sierra/rnd)
 "QG" = (
-/obj/machinery/door/airlock/public,
 /obj/effect/turf_decal/delivery,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/public/glass,
 /turf/simulated/floor/plasteel,
 /area/ruin/space/sierra/hall)
 "QJ" = (
@@ -5926,6 +5960,10 @@
 /obj/effect/mapping_helpers/turfs/damage,
 /turf/simulated/floor/plasteel/airless,
 /area/space/nearstation)
+"VA" = (
+/obj/effect/mob_spawn/human/corpse/scientist,
+/turf/simulated/floor/plasteel,
+/area/ruin/space/sierra/rnd)
 "VF" = (
 /obj/structure/cable/green{
 	d1 = 1;
@@ -5971,9 +6009,9 @@
 	},
 /area/ruin/space/sierra/rnd)
 "VX" = (
-/obj/machinery/door/airlock/public,
 /obj/effect/turf_decal/delivery,
 /obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/public/glass,
 /turf/simulated/floor/plasteel,
 /area/ruin/space/sierra/hall)
 "VZ" = (
@@ -6045,6 +6083,7 @@
 "WE" = (
 /obj/structure/table,
 /obj/machinery/kitchen_machine/microwave,
+/obj/machinery/light/directional/east,
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -6103,6 +6142,10 @@
 	icon_state = "white"
 	},
 /area/ruin/space/sierra/med)
+"Xe" = (
+/obj/machinery/light/directional/north,
+/turf/simulated/floor/plasteel/dark,
+/area/ruin/space/sierra/rnd)
 "Xf" = (
 /obj/machinery/atmospherics/unary/vent_scrubber{
 	dir = 8
@@ -11046,7 +11089,7 @@ MZ
 IN
 Un
 cx
-dk
+PB
 dk
 sU
 sU
@@ -12365,7 +12408,7 @@ mO
 cK
 DG
 IN
-wF
+hk
 ML
 Ar
 ic
@@ -12572,7 +12615,7 @@ RP
 np
 ZU
 JB
-dd
+OQ
 dg
 RU
 Ez
@@ -12875,7 +12918,7 @@ RL
 Kx
 Dj
 IN
-gy
+Xe
 me
 gy
 MF
@@ -13284,7 +13327,7 @@ Kx
 nX
 dg
 XD
-XD
+VA
 YY
 XD
 MF
@@ -13488,7 +13531,7 @@ jL
 Dj
 IN
 Vb
-Vb
+fm
 Vm
 Ol
 MF
@@ -13677,7 +13720,7 @@ Tx
 yg
 yg
 yg
-Xn
+rr
 Hz
 wa
 ci
