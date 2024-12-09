@@ -114,3 +114,16 @@
 		if(title in GLOB.all_jobs_ss220)
 			return TRUE
 	return FALSE
+
+/datum/job/proc/species_ban(client/C)
+	if(!GLOB.configuration.jobs.enable_black_list)
+		return FALSE
+
+	var/list/job_ban = GLOB.configuration.jobs.blacklist_species.Copy()
+
+	if(!C || !length(job_ban))
+		return FALSE
+	for(var/job_data in job_ban)
+		if((src.title == job_data["name"]) && (C.prefs.active_character.species in job_data["species_blacklist"]))
+			return TRUE
+	return FALSE
