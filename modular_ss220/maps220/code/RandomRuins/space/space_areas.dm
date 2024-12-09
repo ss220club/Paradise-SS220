@@ -113,20 +113,20 @@
 	requires_power = TRUE
 
 /area/ruin/space/sierra/med
-	name = "Medical Department"
+	name = "Sierra Medical Department"
 	icon_state = "medbay"
 
 /area/ruin/space/sierra/rnd
-	name = "Research And Development"
+	name = "Sierra Research And Development"
 	icon_state = "scilab"
 
 /area/ruin/space/sierra/hall
-	name = "hall"
+	name = "Sierra hall"
 	icon_state = "hallC"
 /area/ruin/space/sierra/maint
-	name = "Port Maintenance"
+	name = "Sierra Port Maintenance"
 	icon_state = "pmaint"
 
 /area/ruin/space/sierra/shelter
-	name = "Shelter"
+	name = "Sierra Shelter"
 	icon_state = "head_quarters"
