@@ -5,6 +5,16 @@
 	icon_state = "white"
 	},
 /area/ruin/space/sierra/med)
+"ai" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "darkbluefull"
+	},
+/area/ruin/space/sierra/med)
 "am" = (
 /obj/effect/turf_decal{
 	dir = 8
@@ -18,6 +28,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
+/obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/plating,
 /area/ruin/space/sierra/med)
 "aq" = (
@@ -26,11 +37,33 @@
 	icon_state = "white"
 	},
 /area/ruin/space/sierra/med)
+"at" = (
+/obj/structure/chair/office/dark{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dust,
+/obj/machinery/alarm/directional/east,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/ruin/space/sierra/shelter)
 "aw" = (
 /obj/machinery/autolathe,
 /obj/effect/mapping_helpers/machinery/destroyed,
 /turf/simulated/floor/plasteel/dark,
 /area/ruin/space/sierra/rnd)
+"aB" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "1-2"
+	},
+/obj/effect/decal/cleanable/dust,
+/obj/effect/spawner/random/blood/maybe,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/ruin/space/sierra/shelter)
 "aH" = (
 /obj/structure/shelf,
 /obj/structure/railing{
@@ -55,6 +88,11 @@
 /turf/simulated/floor/plating/airless,
 /area/ruin/space/sierra/rnd)
 "aO" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/plasteel/airless{
 	icon_state = "purple"
 	},
@@ -101,12 +139,16 @@
 "bo" = (
 /obj/machinery/door/airlock/medical,
 /obj/effect/mapping_helpers/airlock/access/all/medical/cmo,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
 /area/ruin/space/sierra/med)
 "bp" = (
 /obj/structure/table,
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/plasteel{
 	icon_state = "darkred"
 	},
@@ -127,8 +169,29 @@
 /obj/machinery/door/airlock/multi_tile,
 /obj/structure/disposalpipe/segment,
 /obj/effect/mapping_helpers/airlock/access/any/science/research,
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/plating,
 /area/ruin/space/sierra/rnd)
+"bu" = (
+/obj/structure/cable{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/obj/machinery/firealarm{
+	dir = 4;
+	pixel_x = 24
+	},
+/obj/machinery/power/smes,
+/turf/simulated/floor/plating,
+/area/ruin/space/sierra/maint)
+"bL" = (
+/obj/machinery/light/small/directional/south,
+/turf/simulated/floor/catwalk,
+/area/ruin/space/sierra/maint)
 "bP" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/box/beakers{
@@ -152,6 +215,21 @@
 	icon_state = "white"
 	},
 /area/ruin/space/sierra/med)
+"bU" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "1-2"
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "2-4"
+	},
+/obj/structure/disposalpipe/segment,
+/obj/effect/decal/cleanable/dust,
+/turf/simulated/floor/plating,
+/area/ruin/space/sierra/med)
 "bV" = (
 /obj/effect/turf_decal/delivery,
 /obj/structure/disposalpipe/segment{
@@ -163,23 +241,66 @@
 	icon_state = "purple"
 	},
 /area/ruin/space/sierra/rnd)
+"bZ" = (
+/obj/machinery/light/directional/south,
+/turf/simulated/floor/plasteel{
+	icon_state = "darkbluefull"
+	},
+/area/ruin/space/sierra/med)
 "ci" = (
 /turf/simulated/wall/r_wall,
 /area/ruin/space/sierra/med)
+"cl" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	d2 = 4;
+	icon_state = "0-4"
+	},
+/obj/machinery/power/terminal,
+/obj/machinery/light/small/directional/north,
+/turf/simulated/floor/catwalk,
+/area/ruin/space/sierra/maint)
 "ct" = (
 /turf/simulated/floor/plasteel{
 	icon_state = "purplefull"
 	},
 /area/ruin/space/sierra/rnd)
+"cw" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/spawner/random/blood/maybe,
+/turf/simulated/floor/plasteel,
+/area/ruin/space/sierra/hall)
 "cx" = (
 /turf/simulated/floor/plasteel/airless{
 	icon_state = "purplefull"
 	},
 /area/ruin/space/sierra/rnd)
+"cA" = (
+/obj/effect/spawner/random/blood/maybe,
+/turf/simulated/floor/plasteel/airless,
+/area/ruin/space/sierra/hall)
 "cE" = (
 /obj/effect/turf_decal/siding/trimline/dark{
 	dir = 5
 	},
+/obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -188,10 +309,19 @@
 /obj/structure/chair/office/dark{
 	dir = 4
 	},
+/obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/plasteel{
 	icon_state = "barber"
 	},
 /area/ruin/space/sierra/med)
+"cH" = (
+/obj/machinery/alarm{
+	dir = 4;
+	pixel_x = -24
+	},
+/obj/structure/table,
+/turf/simulated/floor/plating,
+/area/ruin/space/sierra/maint)
 "cK" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -226,6 +356,26 @@
 	icon_state = "dark"
 	},
 /area/ruin/space/sierra/med)
+"cW" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/obj/effect/decal/cleanable/dust,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/ruin/space/sierra/shelter)
+"cX" = (
+/obj/structure/chair/office/dark{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dust,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/ruin/space/sierra/shelter)
 "db" = (
 /obj/structure/rack,
 /obj/structure/window/reinforced{
@@ -250,6 +400,12 @@
 /obj/effect/spawner/window/reinforced/grilled,
 /turf/simulated/floor/plating,
 /area/ruin/space/sierra/rnd)
+"dj" = (
+/obj/effect/spawner/random/blood/maybe,
+/turf/simulated/floor/plasteel{
+	icon_state = "purplefull"
+	},
+/area/ruin/space/sierra/rnd)
 "dk" = (
 /obj/structure/lattice,
 /turf/space,
@@ -266,6 +422,15 @@
 	icon_state = "whiteblue"
 	},
 /area/ruin/space/sierra/med)
+"dA" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/spawner/random/blood/maybe,
+/turf/simulated/floor/plasteel{
+	icon_state = "white"
+	},
+/area/ruin/space/sierra/med)
 "dB" = (
 /obj/machinery/computer/nonfunctional{
 	dir = 8
@@ -276,11 +441,28 @@
 /area/ruin/space/sierra/med)
 "dH" = (
 /obj/structure/table,
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/plasteel{
 	dir = 6;
 	icon_state = "darkred"
 	},
 /area/ruin/space/sierra/rnd)
+"dI" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/disposalpipe/segment,
+/turf/simulated/floor/plasteel{
+	icon_state = "white"
+	},
+/area/ruin/space/sierra/med)
+"dL" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/disposalpipe/broken,
+/turf/simulated/floor/plating/airless,
+/area/ruin/space/sierra/hall)
 "dN" = (
 /obj/machinery/shieldwallgen,
 /turf/simulated/floor/engine,
@@ -296,9 +478,28 @@
 	icon_state = "dark"
 	},
 /area/ruin/space/sierra/med)
+"dX" = (
+/obj/structure/table/reinforced,
+/obj/machinery/door/window{
+	dir = 8
+	},
+/obj/machinery/door/window{
+	dir = 4
+	},
+/obj/effect/spawner/random/maintenance,
+/turf/simulated/floor/plasteel,
+/area/ruin/space/sierra/rnd)
 "ee" = (
 /obj/item/kirbyplants/dead,
 /turf/simulated/floor/plasteel/airless,
+/area/ruin/space/sierra/rnd)
+"eg" = (
+/obj/structure/table,
+/obj/effect/spawner/random/trash,
+/turf/simulated/floor/plasteel/airless{
+	icon_state = "purple";
+	dir = 4
+	},
 /area/ruin/space/sierra/rnd)
 "ej" = (
 /obj/structure/disposalpipe/segment{
@@ -309,6 +510,13 @@
 	icon_state = "purple"
 	},
 /area/ruin/space/sierra/rnd)
+"eo" = (
+/obj/effect/spawner/random/trash,
+/turf/simulated/floor/plasteel{
+	dir = 8;
+	icon_state = "whiteblue"
+	},
+/area/ruin/space/sierra/med)
 "ep" = (
 /obj/structure/window/reinforced/tinted{
 	dir = 1
@@ -370,14 +578,18 @@
 	},
 /area/ruin/space/sierra/med)
 "eU" = (
-/obj/structure/table,
-/obj/item/tank/internals/plasma,
-/obj/item/weldingtool/largetank,
-/turf/simulated/floor/plasteel/airless{
-	icon_state = "purple";
-	dir = 4
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
 	},
-/area/ruin/space/sierra/rnd)
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/catwalk,
+/area/ruin/space/sierra/maint)
 "eV" = (
 /obj/structure/filingcabinet/chestdrawer,
 /turf/simulated/floor/plasteel/airless{
@@ -399,6 +611,22 @@
 	icon_state = "purple"
 	},
 /area/ruin/space/sierra/rnd)
+"eZ" = (
+/obj/machinery/door/airlock/engineering{
+	name = "Auxiliary Power Storage";
+	req_access = newlist();
+	dir = 8
+	},
+/obj/machinery/door/firedoor,
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plasteel/dark{
+	icon_state = "dark_large"
+	},
+/area/ruin/space/sierra/maint)
 "fa" = (
 /obj/structure/table,
 /turf/simulated/floor/plasteel/airless{
@@ -423,6 +651,8 @@
 /area/ruin/space/sierra/rnd)
 "fo" = (
 /obj/structure/rack,
+/obj/effect/spawner/random/maintenance,
+/obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -435,6 +665,11 @@
 /area/ruin/space/sierra/med)
 "fr" = (
 /obj/structure/closet/emcloset,
+/obj/structure/cable/green{
+	d2 = 4;
+	icon_state = "0-4"
+	},
+/obj/machinery/power/apc/off_station/empty_charge/directional/south,
 /turf/simulated/floor/plasteel{
 	dir = 5;
 	icon_state = "purple"
@@ -459,21 +694,44 @@
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/plasteel,
 /area/ruin/space/sierra/hall)
+"fv" = (
+/obj/structure/table,
+/obj/effect/spawner/random/trash,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/ruin/space/sierra/shelter)
 "fw" = (
+/obj/machinery/atmospherics/unary/vent_pump/on{
+	dir = 8
+	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "whiteblue"
 	},
 /area/ruin/space/sierra/med)
+"fB" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 8
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/ruin/space/sierra/shelter)
 "fC" = (
 /obj/structure/disposalpipe/junction/reversed{
 	dir = 8
 	},
 /turf/simulated/floor/plasteel,
 /area/ruin/space/sierra/hall)
+"fD" = (
+/obj/machinery/light/directional/south,
+/turf/simulated/floor/plating,
+/area/ruin/space/sierra/maint)
 "fG" = (
 /obj/structure/rack,
 /obj/structure/railing,
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/catwalk,
 /area/ruin/space/sierra/maint)
 "fM" = (
@@ -494,13 +752,20 @@
 	dir = 6
 	},
 /area/ruin/space/sierra/rnd)
+"fS" = (
+/obj/machinery/door/airlock/maintenance_hatch,
+/turf/simulated/floor/engine,
+/area/ruin/space/sierra/maint)
 "fX" = (
 /obj/machinery/door/airlock/highsecurity,
 /obj/effect/turf_decal/delivery,
 /turf/simulated/floor/plasteel/dark,
 /area/space/nearstation)
 "gb" = (
-/obj/machinery/atmospherics/unary/tank/air,
+/obj/machinery/atmospherics/unary/tank/air{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -527,6 +792,12 @@
 	icon_state = "darkred"
 	},
 /area/ruin/space/sierra/rnd)
+"gn" = (
+/obj/effect/spawner/random/trash,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/ruin/space/sierra/rnd)
 "go" = (
 /obj/machinery/door/airlock/maintenance_hatch,
 /turf/simulated/floor/plating/airless,
@@ -535,12 +806,25 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
 	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "0-2"
+	},
 /turf/simulated/floor/plating/airless,
 /area/ruin/space/sierra/med)
 "gq" = (
 /obj/item/kirbyplants/plant10,
 /turf/simulated/floor/plasteel{
 	icon_state = "whiteblue"
+	},
+/area/ruin/space/sierra/med)
+"gr" = (
+/obj/structure/table,
+/obj/effect/spawner/random/maintenance,
+/obj/effect/decal/cleanable/dust,
+/turf/simulated/floor/plasteel{
+	icon_state = "barber"
 	},
 /area/ruin/space/sierra/med)
 "gu" = (
@@ -568,9 +852,18 @@
 "gy" = (
 /turf/simulated/floor/plasteel/dark,
 /area/ruin/space/sierra/rnd)
+"gF" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plating,
+/area/ruin/space/sierra/maint)
 "gG" = (
 /obj/machinery/door/airlock/maintenance_hatch,
 /obj/effect/mapping_helpers/airlock/access/all/medical/general,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -588,6 +881,9 @@
 "gL" = (
 /obj/effect/turf_decal/delivery,
 /obj/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 8
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -601,10 +897,31 @@
 	icon_state = "dark"
 	},
 /area/ruin/space/sierra/med)
+"gQ" = (
+/obj/machinery/power/terminal,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/obj/machinery/light/small/directional/north,
+/turf/simulated/floor/catwalk,
+/area/ruin/space/sierra/maint)
 "gR" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
 /obj/effect/turf_decal/siding/trimline/dark{
 	dir = 1
 	},
+/obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -614,6 +931,17 @@
 /area/space)
 "gX" = (
 /obj/structure/table/reinforced,
+/obj/item/shard{
+	icon_state = "small";
+	pixel_x = -6;
+	pixel_y = -3
+	},
+/obj/item/shard{
+	icon_state = "small";
+	pixel_x = 6;
+	pixel_y = 9
+	},
+/obj/effect/spawner/random/trash,
 /turf/simulated/floor/plating,
 /area/ruin/space/sierra/med)
 "gY" = (
@@ -625,10 +953,28 @@
 "hb" = (
 /turf/simulated/floor/catwalk/airless,
 /area/ruin/space/sierra/maint)
+"hd" = (
+/obj/effect/turf_decal/box,
+/obj/structure/bed/roller,
+/obj/machinery/iv_drip,
+/obj/machinery/light/directional/north,
+/turf/simulated/floor/plasteel/dark{
+	icon_state = "white_large"
+	},
+/area/ruin/space/sierra/med)
 "he" = (
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "darkblue"
+	},
+/area/ruin/space/sierra/med)
+"hi" = (
+/obj/machinery/atmospherics/unary/vent_scrubber/on{
+	dir = 8
+	},
+/turf/simulated/floor/plasteel{
+	dir = 8;
+	icon_state = "whiteblue"
 	},
 /area/ruin/space/sierra/med)
 "hm" = (
@@ -658,6 +1004,9 @@
 /area/ruin/space/sierra/med)
 "hz" = (
 /obj/effect/turf_decal/siding/trimline/dark{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment/corner{
 	dir = 4
 	},
 /turf/simulated/floor/plasteel{
@@ -690,6 +1039,8 @@
 /area/ruin/space/sierra/med)
 "hQ" = (
 /obj/structure/shelf,
+/obj/effect/spawner/random/maintenance,
+/obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -737,6 +1088,7 @@
 /turf/simulated/floor/plasteel/dark,
 /area/ruin/space/sierra/rnd)
 "im" = (
+/obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/plasteel/dark{
 	icon_state = "white_large"
 	},
@@ -763,9 +1115,18 @@
 	dir = 1
 	},
 /obj/structure/closet,
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/catwalk,
 /area/ruin/space/sierra/maint)
 "iH" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/disposalpipe/junction/reversed,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "darkblue"
@@ -777,6 +1138,13 @@
 	icon_state = "dark"
 	},
 /area/ruin/space/sierra/med)
+"iO" = (
+/obj/effect/decal/cleanable/dust,
+/obj/effect/spawner/random/blood/maybe,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/ruin/space/sierra/shelter)
 "iQ" = (
 /turf/simulated/floor/plasteel{
 	dir = 9;
@@ -811,11 +1179,42 @@
 	icon_state = "white"
 	},
 /area/ruin/space/sierra/med)
+"jc" = (
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/disposalpipe/broken{
+	dir = 2
+	},
+/obj/structure/disposalpipe/broken{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dust,
+/turf/simulated/floor/plasteel{
+	icon_state = "white"
+	},
+/area/ruin/space/sierra/med)
+"jd" = (
+/obj/effect/decal/cleanable/dust,
+/turf/simulated/floor/plasteel{
+	dir = 8;
+	icon_state = "darkblue"
+	},
+/area/ruin/space/sierra/med)
 "jl" = (
 /obj/structure/rack,
 /obj/structure/railing{
 	dir = 8
 	},
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/plating,
 /area/ruin/space/sierra/med)
 "jm" = (
@@ -831,6 +1230,15 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/ruin/space/sierra/rnd)
+"jr" = (
+/obj/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 1
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "white"
+	},
+/area/ruin/space/sierra/med)
 "ju" = (
 /obj/effect/turf_decal/stripes/corner{
 	dir = 8
@@ -901,14 +1309,20 @@
 	dir = 10;
 	initialize_directions = 10
 	},
-/obj/effect/turf_decal/siding/trimline/dark,
 /turf/simulated/floor/plating,
 /area/ruin/space/sierra/med)
 "jX" = (
 /obj/structure/engineeringcart,
 /obj/effect/turf_decal/box,
+/obj/machinery/light/small/directional/east,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
+	},
+/area/ruin/space/sierra/med)
+"kf" = (
+/obj/machinery/light/directional/south,
+/turf/simulated/floor/plasteel{
+	icon_state = "white"
 	},
 /area/ruin/space/sierra/med)
 "kn" = (
@@ -931,6 +1345,15 @@
 /obj/machinery/computer/operating,
 /turf/simulated/floor/plasteel/dark{
 	icon_state = "white_large"
+	},
+/area/ruin/space/sierra/med)
+"kA" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 8
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "white"
 	},
 /area/ruin/space/sierra/med)
 "kB" = (
@@ -981,14 +1404,30 @@
 /area/ruin/space/sierra/hall)
 "kT" = (
 /obj/structure/table,
+/obj/effect/spawner/random/trash,
 /turf/simulated/floor/plasteel/dark,
 /area/ruin/space/sierra/rnd)
+"kZ" = (
+/obj/effect/decal/cleanable/dust,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/ruin/space/sierra/shelter)
 "lb" = (
 /obj/machinery/photocopier,
 /turf/simulated/floor/plasteel/airless{
 	icon_state = "purplefull"
 	},
 /area/space/nearstation)
+"le" = (
+/obj/structure/chair/office/dark{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dust,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/ruin/space/sierra/shelter)
 "lh" = (
 /obj/structure/railing,
 /turf/simulated/floor/plasteel/stairs/left{
@@ -1011,14 +1450,40 @@
 	icon_state = "darkred"
 	},
 /area/ruin/space/sierra/rnd)
+"lm" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "white"
+	},
+/area/ruin/space/sierra/med)
 "lo" = (
 /obj/machinery/disposal,
 /turf/simulated/floor/plasteel/dark,
 /area/space/nearstation)
 "lp" = (
+/obj/machinery/cell_charger,
+/obj/random/powercell,
 /obj/structure/table,
 /turf/simulated/floor/plating,
 /area/ruin/space/sierra/maint)
+"lq" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/trimline/dark{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dust,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/ruin/space/sierra/med)
 "lw" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
@@ -1046,6 +1511,31 @@
 	icon_state = "white"
 	},
 /area/ruin/space/sierra/med)
+"lH" = (
+/obj/structure/disposalpipe/segment/corner{
+	dir = 1
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "darkbluefull"
+	},
+/area/ruin/space/sierra/med)
+"lK" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/simulated/floor/plasteel{
+	dir = 4;
+	icon_state = "whiteblue"
+	},
+/area/ruin/space/sierra/med)
+"lM" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plasteel/airless,
+/area/ruin/space/sierra/hall)
 "lV" = (
 /obj/effect/turf_decal{
 	dir = 8
@@ -1058,6 +1548,12 @@
 	icon_state = "dark"
 	},
 /area/ruin/space/sierra/shelter)
+"mc" = (
+/obj/structure/disposalpipe/broken{
+	dir = 1
+	},
+/turf/space,
+/area/space)
 "md" = (
 /obj/structure/railing{
 	dir = 8;
@@ -1117,10 +1613,19 @@
 /obj/effect/mapping_helpers/airlock/access/any/science/research,
 /turf/simulated/floor/plasteel/dark,
 /area/space/nearstation)
+"mH" = (
+/obj/structure/disposalpipe/segment,
+/turf/simulated/floor/plasteel{
+	dir = 4;
+	icon_state = "darkblue"
+	},
+/area/ruin/space/sierra/med)
 "mI" = (
 /obj/effect/turf_decal/siding/trimline/dark/end{
 	dir = 1
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -1131,9 +1636,29 @@
 	icon_state = "white"
 	},
 /area/ruin/space/sierra/med)
+"mO" = (
+/obj/effect/spawner/random/blood/maybe,
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "blue"
+	},
+/area/ruin/space/sierra/hall)
 "mS" = (
 /obj/structure/railing,
 /obj/structure/rack,
+/turf/simulated/floor/plating,
+/area/ruin/space/sierra/maint)
+"mV" = (
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/plating,
 /area/ruin/space/sierra/maint)
 "ne" = (
@@ -1144,6 +1669,26 @@
 	icon_state = "purple"
 	},
 /area/ruin/space/sierra/hall)
+"ng" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/effect/spawner/random/blood/maybe,
+/turf/simulated/floor/plasteel{
+	icon_state = "white"
+	},
+/area/ruin/space/sierra/med)
 "np" = (
 /obj/structure/reagent_dispensers/water_cooler,
 /obj/structure/disposalpipe/segment,
@@ -1156,6 +1701,13 @@
 	icon_state = "dark"
 	},
 /area/ruin/space/sierra/med)
+"nB" = (
+/obj/machinery/light_construct/directional/north,
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "blue"
+	},
+/area/ruin/space/sierra/hall)
 "nC" = (
 /obj/item/stack/sheet/plasteel/fifteen,
 /turf/space,
@@ -1172,17 +1724,64 @@
 /obj/structure/closet/secure_closet/medical3,
 /turf/simulated/floor/catwalk,
 /area/ruin/space/sierra/maint)
+"nO" = (
+/obj/effect/spawner/random/trash,
+/turf/simulated/floor/plasteel{
+	dir = 8;
+	icon_state = "darkblue"
+	},
+/area/ruin/space/sierra/med)
 "nQ" = (
 /obj/structure/disposalpipe/segment/corner{
 	dir = 2
 	},
 /turf/simulated/floor/plating/airless,
 /area/ruin/space/sierra/rnd)
+"nR" = (
+/obj/effect/decal/cleanable/dust,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 6
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/ruin/space/sierra/shelter)
 "nS" = (
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
 /area/ruin/space/sierra/med)
+"nW" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/trimline/dark{
+	dir = 1
+	},
+/obj/effect/spawner/random/trash,
+/obj/effect/decal/cleanable/dust,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/ruin/space/sierra/med)
+"nX" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/spawner/random/blood/maybe,
+/turf/simulated/floor/plasteel/airless,
+/area/ruin/space/sierra/hall)
+"oa" = (
+/obj/structure/closet,
+/obj/effect/decal/cleanable/dust,
+/obj/effect/spawner/random/maintenance,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/ruin/space/sierra/shelter)
 "od" = (
 /obj/effect/spawner/window/reinforced/grilled,
 /turf/simulated/floor/plating,
@@ -1203,12 +1802,25 @@
 	icon_state = "whiteyellow"
 	},
 /area/ruin/space/sierra/med)
+"or" = (
+/obj/effect/spawner/random/trash,
+/obj/effect/decal/cleanable/dust,
+/turf/simulated/floor/plasteel{
+	icon_state = "whitebluefull"
+	},
+/area/ruin/space/sierra/med)
 "os" = (
 /obj/machinery/door/airlock/maintenance_hatch,
 /obj/machinery/door/firedoor/closed,
 /obj/effect/mapping_helpers/airlock/access/all/medical/general,
 /turf/simulated/floor/plasteel,
 /area/ruin/space/sierra/maint)
+"ow" = (
+/obj/effect/decal/cleanable/dust,
+/turf/simulated/floor/plasteel{
+	icon_state = "whitebluefull"
+	},
+/area/ruin/space/sierra/med)
 "ox" = (
 /obj/structure/table,
 /turf/simulated/floor/plasteel/airless{
@@ -1238,6 +1850,20 @@
 	},
 /turf/simulated/floor/plating,
 /area/ruin/space/sierra/maint)
+"oU" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/effect/decal/cleanable/dust,
+/turf/simulated/floor/plasteel{
+	icon_state = "white"
+	},
+/area/ruin/space/sierra/med)
+"oW" = (
+/obj/effect/spawner/random/blood/maybe,
+/turf/simulated/floor/plasteel/dark{
+	icon_state = "white_large"
+	},
+/area/ruin/space/sierra/med)
 "oX" = (
 /obj/item/shard,
 /turf/simulated/floor/plating/airless,
@@ -1273,6 +1899,7 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/siding/trimline/blue/corner,
+/obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -1281,6 +1908,7 @@
 /obj/structure/chair/office/dark{
 	dir = 4
 	},
+/obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/plasteel{
 	dir = 10;
 	icon_state = "whiteblue"
@@ -1324,6 +1952,14 @@
 	icon_state = "white_large"
 	},
 /area/ruin/space/sierra/med)
+"pU" = (
+/obj/structure/shelf,
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/effect/spawner/random/maintenance,
+/turf/simulated/floor/plating,
+/area/ruin/space/sierra/maint)
 "qb" = (
 /obj/machinery/iv_drip,
 /obj/machinery/atmospherics/unary/vent_scrubber{
@@ -1365,6 +2001,14 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/space,
 /area/space/nearstation)
+"qs" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/catwalk,
+/area/ruin/space/sierra/maint)
 "qt" = (
 /obj/structure/shelf,
 /obj/structure/railing{
@@ -1374,6 +2018,19 @@
 /obj/effect/spawner/random/engineering/materials,
 /turf/simulated/floor/plasteel/dark,
 /area/space/nearstation)
+"qu" = (
+/obj/effect/turf_decal/box,
+/turf/simulated/floor/plasteel{
+	icon_state = "whiteblue"
+	},
+/area/ruin/space/sierra/med)
+"qD" = (
+/obj/structure/disposalpipe/segment,
+/obj/effect/decal/cleanable/dust,
+/turf/simulated/floor/plasteel{
+	icon_state = "white"
+	},
+/area/ruin/space/sierra/med)
 "qH" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plating/airless,
@@ -1415,6 +2072,23 @@
 	icon_state = "white_large"
 	},
 /area/ruin/space/sierra/med)
+"qX" = (
+/obj/effect/decal/cleanable/dust,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/ruin/space/sierra/med)
+"ra" = (
+/obj/structure/table/reinforced,
+/obj/effect/decal/cleanable/dust,
+/turf/simulated/floor/plasteel/dark{
+	icon_state = "white_large"
+	},
+/area/ruin/space/sierra/med)
+"ri" = (
+/obj/effect/spawner/random/fungus/probably,
+/turf/simulated/wall/r_wall,
+/area/ruin/space/sierra/med)
 "rj" = (
 /obj/structure/shelf,
 /obj/structure/railing{
@@ -1432,8 +2106,17 @@
 /obj/effect/turf_decal/siding/trimline/blue/corner{
 	dir = 4
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "darkblue"
+	},
+/area/ruin/space/sierra/med)
+"ru" = (
+/obj/effect/spawner/random/blood/maybe,
+/turf/simulated/floor/plasteel{
+	icon_state = "darkbluefull"
 	},
 /area/ruin/space/sierra/med)
 "rv" = (
@@ -1449,6 +2132,10 @@
 	icon_state = "whiteblue"
 	},
 /area/ruin/space/sierra/med)
+"rx" = (
+/obj/effect/spawner/random/fungus/probably,
+/turf/simulated/wall/r_wall,
+/area/ruin/space/sierra/maint)
 "rJ" = (
 /obj/effect/turf_decal/delivery,
 /obj/machinery/door/airlock/maintenance_hatch,
@@ -1471,6 +2158,10 @@
 	icon_state = "whiteblue"
 	},
 /area/ruin/space/sierra/med)
+"rX" = (
+/obj/effect/spawner/random/blood/maybe,
+/turf/simulated/floor/plasteel,
+/area/ruin/space/sierra/hall)
 "sb" = (
 /turf/simulated/floor/plasteel/airless{
 	icon_state = "darkblue";
@@ -1493,6 +2184,7 @@
 /obj/effect/turf_decal/siding/trimline/blue/corner{
 	dir = 4
 	},
+/obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -1519,6 +2211,7 @@
 /area/ruin/space/sierra/rnd)
 "sv" = (
 /obj/structure/chair/office/dark,
+/obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/plasteel{
 	icon_state = "barber"
 	},
@@ -1536,6 +2229,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9
 	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "1-2"
+	},
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plasteel{
 	dir = 5;
 	icon_state = "darkblue"
@@ -1573,9 +2272,45 @@
 /obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/plasteel/airless,
 /area/ruin/space/sierra/rnd)
+"te" = (
+/obj/machinery/door/airlock/maintenance_hatch,
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plating,
+/area/ruin/space/sierra/maint)
 "ti" = (
 /turf/simulated/wall/mineral/titanium/nodiagonal,
 /area/ruin/space/sierra/maint)
+"tl" = (
+/obj/effect/spawner/random/fungus/frequent,
+/turf/simulated/wall,
+/area/ruin/space/sierra/maint)
+"to" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/spawner/random/blood/maybe,
+/turf/simulated/floor/plasteel{
+	icon_state = "purple"
+	},
+/area/ruin/space/sierra/hall)
+"tt" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/spawner/random/blood/maybe,
+/turf/simulated/floor/plasteel,
+/area/ruin/space/sierra/hall)
+"tu" = (
+/obj/structure/cable/green{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/turf/simulated/floor/plating/airless,
+/area/ruin/space/sierra/rnd)
 "tv" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -1602,6 +2337,15 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plasteel/airless,
 /area/ruin/space/sierra/rnd)
+"tC" = (
+/obj/structure/disposalpipe/broken{
+	dir = 1
+	},
+/turf/simulated/floor/plasteel{
+	dir = 8;
+	icon_state = "darkblue"
+	},
+/area/ruin/space/sierra/med)
 "tR" = (
 /obj/machinery/door/airlock/multi_tile/glass,
 /obj/effect/mapping_helpers/airlock/access/all/medical/general,
@@ -1621,17 +2365,67 @@
 	icon_state = "whiteyellow"
 	},
 /area/ruin/space/sierra/med)
-"tX" = (
-/obj/structure/closet/secure_closet/paramedic,
+"tU" = (
+/obj/structure/table/reinforced,
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
 /area/ruin/space/sierra/med)
+"tW" = (
+/obj/structure/lattice,
+/obj/structure/disposalpipe/broken{
+	dir = 8
+	},
+/turf/space,
+/area/space/nearstation)
+"tX" = (
+/obj/structure/closet/secure_closet/paramedic,
+/obj/effect/decal/cleanable/dust,
+/obj/machinery/light/directional/north,
+/turf/simulated/floor/plasteel{
+	icon_state = "white"
+	},
+/area/ruin/space/sierra/med)
+"ub" = (
+/obj/machinery/recharger,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/obj/structure/table,
+/turf/simulated/floor/plating,
+/area/ruin/space/sierra/maint)
+"uc" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/obj/effect/spawner/random/blood/maybe,
+/turf/simulated/floor/plasteel,
+/area/ruin/space/sierra/hall)
 "ud" = (
 /obj/structure/railing{
 	dir = 6
 	},
 /obj/structure/shelf,
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/plating,
 /area/ruin/space/sierra/maint)
 "uh" = (
@@ -1666,6 +2460,7 @@
 "up" = (
 /obj/structure/closet/wardrobe/coroner,
 /obj/effect/turf_decal/box,
+/obj/machinery/light/small/directional/north,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -1716,6 +2511,18 @@
 	icon_state = "white"
 	},
 /area/ruin/space/sierra/med)
+"uO" = (
+/obj/machinery/light/directional/north,
+/obj/machinery/disposal,
+/obj/structure/disposalpipe/trunk,
+/turf/simulated/floor/plasteel{
+	icon_state = "white"
+	},
+/area/ruin/space/sierra/med)
+"uS" = (
+/obj/structure/disposalpipe/segment,
+/turf/simulated/floor/plating,
+/area/ruin/space/sierra/med)
 "uX" = (
 /obj/effect/spawner/random/maintenance,
 /turf/space,
@@ -1735,6 +2542,12 @@
 /area/ruin/space/sierra/rnd)
 "ve" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "1-2"
+	},
+/obj/structure/disposalpipe/segment/corner,
 /turf/simulated/floor/plating/airless,
 /area/ruin/space/sierra/med)
 "vg" = (
@@ -1758,10 +2571,58 @@
 "vp" = (
 /obj/effect/turf_decal/box,
 /obj/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 8
+	},
+/obj/machinery/light/directional/north,
 /turf/simulated/floor/plasteel/dark{
 	icon_state = "white_large"
 	},
 /area/ruin/space/sierra/med)
+"vr" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "1-4"
+	},
+/obj/structure/disposalpipe/junction/reversed{
+	dir = 4
+	},
+/turf/simulated/floor/catwalk,
+/area/ruin/space/sierra/hall)
+"vt" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/plasteel/airless,
+/area/ruin/space/sierra/hall)
 "vw" = (
 /obj/structure/rack,
 /obj/structure/window/reinforced{
@@ -1827,6 +2688,24 @@
 	icon_state = "darkblue"
 	},
 /area/ruin/space/sierra/med)
+"vR" = (
+/obj/structure/bed,
+/obj/structure/curtain/open{
+	level = 5;
+	layer = 5
+	},
+/obj/item/bedsheet/green,
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "1-2"
+	},
+/obj/effect/decal/cleanable/dust,
+/obj/effect/spawner/random/maintenance,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/ruin/space/sierra/shelter)
 "wa" = (
 /obj/structure/chair/office/dark{
 	dir = 1
@@ -1854,16 +2733,31 @@
 	},
 /area/ruin/space/sierra/med)
 "wj" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
 /obj/effect/turf_decal/siding/trimline/dark{
 	dir = 1
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
 /area/ruin/space/sierra/med)
 "wm" = (
 /obj/machinery/atmospherics/unary/vent_scrubber,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "darkblue"
+	},
+/area/ruin/space/sierra/med)
+"wn" = (
+/obj/effect/decal/cleanable/dust,
+/turf/simulated/floor/plasteel{
+	dir = 6;
+	icon_state = "whiteblue"
 	},
 /area/ruin/space/sierra/med)
 "wo" = (
@@ -1881,16 +2775,26 @@
 /obj/effect/turf_decal/siding/trimline/blue{
 	dir = 4
 	},
+/obj/effect/spawner/random/blood/maybe,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
 /area/ruin/space/sierra/med)
+"wA" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plasteel,
+/area/ruin/space/sierra/rnd)
 "wC" = (
 /obj/machinery/atmospherics/portable/canister,
 /turf/space,
 /area/space)
 "wD" = (
-/turf/simulated/floor/engine,
+/turf/simulated/floor/engine/airless,
 /area/ruin/space/sierra/maint)
 "wF" = (
 /obj/structure/table,
@@ -1901,6 +2805,7 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/siding/trimline/dark,
+/obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -1921,10 +2826,28 @@
 /area/ruin/space/sierra/med)
 "wR" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "1-2"
+	},
+/obj/structure/disposalpipe/junction/reversed,
 /turf/simulated/floor/plasteel{
 	icon_state = "darkbluefull"
 	},
 /area/ruin/space/sierra/med)
+"wT" = (
+/obj/machinery/light/directional/north,
+/turf/simulated/floor/plasteel/airless{
+	icon_state = "blue";
+	dir = 1
+	},
+/area/ruin/space/sierra/hall)
 "wU" = (
 /turf/simulated/floor/plasteel{
 	dir = 1;
@@ -1944,6 +2867,21 @@
 	icon_state = "dark"
 	},
 /area/ruin/space/sierra/med)
+"xq" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plating/airless,
+/area/ruin/space/sierra/rnd)
+"xH" = (
+/obj/structure/table,
+/obj/effect/decal/cleanable/dust,
+/turf/simulated/floor/plasteel{
+	icon_state = "barber"
+	},
+/area/ruin/space/sierra/med)
 "xL" = (
 /obj/structure/table,
 /turf/simulated/floor/catwalk,
@@ -1951,6 +2889,10 @@
 "xQ" = (
 /turf/simulated/floor/plasteel/airless,
 /area/ruin/space/sierra/rnd)
+"xS" = (
+/obj/effect/spawner/random/fungus/frequent,
+/turf/simulated/wall/r_wall,
+/area/ruin/space/sierra/maint)
 "yc" = (
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plating,
@@ -1974,6 +2916,11 @@
 "yr" = (
 /obj/structure/disposalpipe/segment/corner{
 	dir = 2
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/plasteel/airless{
 	icon_state = "purple"
@@ -2030,17 +2977,31 @@
 /obj/effect/turf_decal/siding/trimline/blue{
 	dir = 1
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "darkblue"
 	},
 /area/ruin/space/sierra/med)
+"yO" = (
+/obj/machinery/door/airlock/medical/glass,
+/obj/effect/mapping_helpers/airlock/access/all/medical/general,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/simulated/floor/plasteel,
+/area/ruin/space/sierra/med)
 "yQ" = (
 /obj/structure/railing,
 /obj/structure/rack,
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/catwalk,
 /area/ruin/space/sierra/maint)
 "yR" = (
 /obj/structure/table,
+/obj/effect/spawner/random/trash,
+/obj/machinery/light/directional/south,
 /turf/simulated/floor/plasteel/dark{
 	icon_state = "white_large"
 	},
@@ -2058,11 +3019,21 @@
 /obj/structure/girder,
 /turf/simulated/floor/plating/airless,
 /area/ruin/space/sierra/med)
+"yY" = (
+/obj/structure/disposalpipe/junction/reversed{
+	dir = 8
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plasteel,
+/area/ruin/space/sierra/hall)
 "za" = (
 /obj/machinery/atmospherics/unary/vent_pump,
-/turf/simulated/floor/plasteel{
-	icon_state = "darkbluefull"
-	},
+/obj/effect/decal/cleanable/dust,
+/turf/simulated/floor/plating,
 /area/ruin/space/sierra/med)
 "zd" = (
 /obj/effect/spawner/window/shuttle,
@@ -2085,12 +3056,28 @@
 "zq" = (
 /turf/simulated/floor/catwalk,
 /area/ruin/space/sierra/maint)
+"zu" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dust,
+/turf/simulated/floor/plasteel{
+	icon_state = "darkblue"
+	},
+/area/ruin/space/sierra/med)
 "zx" = (
 /obj/machinery/door/airlock/maintenance_hatch,
 /obj/machinery/door/firedoor/closed,
 /obj/effect/mapping_helpers/airlock/access/all/medical/general,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
+	},
+/area/ruin/space/sierra/med)
+"zI" = (
+/obj/effect/decal/cleanable/dust,
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "darkblue"
 	},
 /area/ruin/space/sierra/med)
 "zP" = (
@@ -2101,12 +3088,36 @@
 	icon_state = "dark"
 	},
 /area/ruin/space/sierra/shelter)
-"zU" = (
-/obj/machinery/power/smes{
-	charge = 2e+006
+"zR" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
+/turf/simulated/floor/catwalk,
+/area/ruin/space/sierra/maint)
+"zU" = (
+/obj/machinery/power/smes,
 /turf/simulated/floor/plasteel/dark,
 /area/space/nearstation)
+"zX" = (
+/obj/structure/bed,
+/obj/structure/curtain/open{
+	level = 5;
+	layer = 5
+	},
+/obj/item/bedsheet/green,
+/obj/machinery/power/apc/off_station/directional/north,
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "0-2"
+	},
+/obj/effect/decal/cleanable/dust,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/ruin/space/sierra/shelter)
 "Ad" = (
 /obj/item/reagent_containers/glass/bottle/phosphorus,
 /turf/space,
@@ -2138,12 +3149,19 @@
 	},
 /area/ruin/space/sierra/rnd)
 "An" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 9
+	},
 /obj/effect/turf_decal/siding/trimline/dark/corner{
 	dir = 1
 	},
 /obj/effect/turf_decal/siding/trimline/dark/corner{
 	dir = 4
 	},
+/obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -2174,6 +3192,14 @@
 	icon_state = "barber"
 	},
 /area/ruin/space/sierra/med)
+"Au" = (
+/obj/effect/turf_decal{
+	dir = 8
+	},
+/obj/structure/disposalpipe/segment,
+/obj/item/tank/internals/plasma,
+/turf/simulated/floor/plasteel/airless,
+/area/ruin/space/sierra/rnd)
 "AE" = (
 /obj/structure/closet/secure_closet/research_reagents,
 /turf/simulated/floor/plasteel,
@@ -2182,6 +3208,7 @@
 /obj/structure/chair/office/dark{
 	dir = 8
 	},
+/obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "whiteblue"
@@ -2192,6 +3219,12 @@
 /obj/structure/bed/roller,
 /turf/simulated/floor/plasteel/dark{
 	icon_state = "white_large"
+	},
+/area/ruin/space/sierra/med)
+"AI" = (
+/obj/effect/spawner/random/blood/maybe,
+/turf/simulated/floor/plasteel{
+	icon_state = "white"
 	},
 /area/ruin/space/sierra/med)
 "AQ" = (
@@ -2205,6 +3238,22 @@
 /obj/structure/chair/comfy/black{
 	dir = 8
 	},
+/turf/simulated/floor/plasteel{
+	icon_state = "white"
+	},
+/area/ruin/space/sierra/med)
+"AX" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -2235,11 +3284,20 @@
 	icon_state = "white_large"
 	},
 /area/ruin/space/sierra/med)
+"Bq" = (
+/obj/effect/turf_decal{
+	dir = 8
+	},
+/obj/structure/disposalpipe/segment,
+/obj/item/weldingtool/largetank,
+/turf/simulated/floor/plasteel/airless,
+/area/ruin/space/sierra/rnd)
 "Bs" = (
 /obj/structure/shelf,
 /obj/structure/railing{
 	dir = 1
 	},
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/catwalk,
 /area/ruin/space/sierra/maint)
 "Bv" = (
@@ -2297,6 +3355,38 @@
 	},
 /turf/simulated/floor/plating/airless,
 /area/ruin/space/sierra/rnd)
+"BS" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "white"
+	},
+/area/ruin/space/sierra/med)
+"BT" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/obj/machinery/power/terminal,
+/obj/structure/cable{
+	d2 = 4;
+	icon_state = "0-4"
+	},
+/turf/simulated/floor/catwalk,
+/area/ruin/space/sierra/maint)
 "BY" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -2316,6 +3406,7 @@
 /area/ruin/space/sierra/med)
 "Ch" = (
 /obj/structure/closet/secure_closet/medical1,
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "darkblue"
@@ -2348,12 +3439,28 @@
 /obj/structure/closet/emcloset,
 /turf/simulated/floor/plating/airless,
 /area/ruin/space/sierra/hall)
+"CJ" = (
+/obj/structure/disposalpipe/segment,
+/obj/effect/spawner/random/trash,
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "1-2"
+	},
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/plating,
+/area/ruin/space/sierra/rnd)
 "CL" = (
 /obj/structure/rack,
 /obj/structure/railing{
 	dir = 8
 	},
 /obj/item/storage/firstaid/brute,
+/obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -2451,6 +3558,12 @@
 /obj/effect/turf_decal/box,
 /obj/structure/bed/roller,
 /obj/machinery/iv_drip,
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "0-4"
+	},
+/obj/machinery/power/apc/off_station/empty_charge/directional/north,
 /turf/simulated/floor/plasteel/dark{
 	icon_state = "white_large"
 	},
@@ -2479,6 +3592,9 @@
 /area/ruin/space/sierra/med)
 "DR" = (
 /obj/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 4
+	},
 /turf/simulated/floor/plating/airless,
 /area/ruin/space/sierra/med)
 "DZ" = (
@@ -2518,6 +3634,11 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/plasteel/airless{
 	icon_state = "purple"
 	},
@@ -2548,6 +3669,32 @@
 	icon_state = "whiteblue"
 	},
 /area/ruin/space/sierra/med)
+"Ez" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plating/airless,
+/area/ruin/space/sierra/rnd)
+"EA" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/trimline/dark{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dust,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/ruin/space/sierra/med)
 "EE" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -2560,6 +3707,15 @@
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/plasteel,
 /area/ruin/space/sierra/rnd)
+"EG" = (
+/obj/structure/disposalpipe/broken{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dust,
+/turf/simulated/floor/plasteel{
+	icon_state = "white"
+	},
+/area/ruin/space/sierra/med)
 "EH" = (
 /obj/machinery/door/airlock/medical,
 /obj/effect/mapping_helpers/airlock/access/all/medical/general,
@@ -2601,6 +3757,29 @@
 	},
 /turf/space,
 /area/space)
+"Fb" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/disposalpipe/segment,
+/turf/simulated/floor/plasteel{
+	dir = 4;
+	icon_state = "darkblue"
+	},
+/area/ruin/space/sierra/med)
+"Fe" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "darkbluefull"
+	},
+/area/ruin/space/sierra/med)
 "Fk" = (
 /obj/structure/lattice,
 /obj/item/shard{
@@ -2612,6 +3791,7 @@
 /obj/effect/turf_decal/siding/trimline/blue{
 	dir = 8
 	},
+/obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -2629,6 +3809,33 @@
 	},
 /turf/simulated/floor/plasteel/dark{
 	icon_state = "white_large"
+	},
+/area/ruin/space/sierra/med)
+"Fr" = (
+/obj/structure/lattice,
+/obj/structure/disposalpipe/broken{
+	dir = 4
+	},
+/turf/space,
+/area/space/nearstation)
+"Fw" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/disposalpipe/segment,
+/obj/effect/spawner/random/blood/maybe,
+/turf/simulated/floor/plasteel{
+	icon_state = "white"
+	},
+/area/ruin/space/sierra/med)
+"FB" = (
+/obj/effect/spawner/random/trash,
+/obj/effect/decal/cleanable/dust,
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "darkblue"
 	},
 /area/ruin/space/sierra/med)
 "FF" = (
@@ -2649,6 +3856,7 @@
 	},
 /area/ruin/space/sierra/med)
 "FJ" = (
+/obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/plasteel{
 	dir = 9;
 	icon_state = "darkblue"
@@ -2698,6 +3906,7 @@
 	dir = 4;
 	color = "#8c911d"
 	},
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/plating,
 /area/ruin/space/sierra/med)
 "Ge" = (
@@ -2711,10 +3920,38 @@
 /obj/structure/chair/office/dark{
 	dir = 8
 	},
+/obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/plasteel{
 	dir = 6;
 	icon_state = "whiteblue"
 	},
+/area/ruin/space/sierra/med)
+"Gp" = (
+/obj/structure/disposalpipe/broken{
+	dir = 2
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "darkblue"
+	},
+/area/ruin/space/sierra/med)
+"Gv" = (
+/obj/structure/chair/office/dark{
+	dir = 4
+	},
+/obj/effect/spawner/random/blood/maybe,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/ruin/space/sierra/shelter)
+"Gw" = (
+/obj/effect/decal/cleanable/dust,
+/turf/simulated/floor/plasteel{
+	icon_state = "darkbluefull"
+	},
+/area/ruin/space/sierra/med)
+"Gx" = (
+/obj/effect/decal/cleanable/dust,
+/turf/simulated/floor/plating,
 /area/ruin/space/sierra/med)
 "Gy" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
@@ -2726,12 +3963,24 @@
 	},
 /area/ruin/space/sierra/med)
 "GA" = (
-/obj/machinery/power/smes/engineering,
-/obj/structure/railing{
-	dir = 9
+/obj/structure/cable/green{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/obj/machinery/power/smes,
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
 /area/ruin/space/sierra/maint)
+"GF" = (
+/obj/effect/spawner/random/blood/maybe,
+/turf/simulated/floor/plasteel{
+	icon_state = "darkblue"
+	},
+/area/ruin/space/sierra/med)
 "GH" = (
 /obj/machinery/disposal,
 /turf/simulated/floor/plating/airless,
@@ -2742,12 +3991,14 @@
 /area/ruin/space/sierra/maint)
 "GL" = (
 /obj/structure/bed/roller,
+/obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/plasteel/dark{
 	icon_state = "white_large"
 	},
 /area/ruin/space/sierra/med)
 "GM" = (
 /obj/structure/shelf/science,
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plasteel{
 	icon_state = "purplefull"
 	},
@@ -2774,6 +4025,38 @@
 	icon_state = "green"
 	},
 /area/ruin/space/sierra/hall)
+"Hj" = (
+/obj/structure/disposalpipe/broken{
+	dir = 8
+	},
+/turf/simulated/floor/plating/airless,
+/area/ruin/space/sierra/hall)
+"Hu" = (
+/obj/structure/table,
+/obj/effect/spawner/random/maintenance,
+/turf/simulated/floor/plasteel{
+	icon_state = "white"
+	},
+/area/ruin/space/sierra/med)
+"Hw" = (
+/obj/structure/cable/green{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/obj/machinery/power/apc/off_station/empty_charge/directional/north,
+/turf/simulated/floor/catwalk,
+/area/ruin/space/sierra/maint)
+"Hz" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "white"
+	},
+/area/ruin/space/sierra/med)
 "HA" = (
 /obj/structure/curtain/medical,
 /turf/simulated/floor/plasteel{
@@ -2785,6 +4068,32 @@
 /obj/effect/spawner/random/snacks,
 /turf/space,
 /area/space)
+"HG" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "1-2"
+	},
+/obj/structure/disposalpipe/segment,
+/turf/simulated/floor/plasteel{
+	dir = 4;
+	icon_state = "darkblue"
+	},
+/area/ruin/space/sierra/med)
+"HJ" = (
+/obj/machinery/door/airlock/vault,
+/obj/machinery/door/firedoor/closed,
+/obj/effect/mapping_helpers/airlock/locked,
+/obj/effect/mapping_helpers/airlock/access/all/command/general,
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plasteel/dark{
+	icon_state = "dark_large"
+	},
+/area/ruin/space/sierra/shelter)
 "HK" = (
 /obj/structure/railing{
 	dir = 9
@@ -2796,6 +4105,11 @@
 /obj/item/clipboard,
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/plasteel/airless{
 	icon_state = "purple"
@@ -2878,6 +4192,7 @@
 /area/ruin/space/sierra/med)
 "IY" = (
 /obj/machinery/disposal,
+/obj/structure/disposalpipe/trunk,
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -2890,6 +4205,7 @@
 /area/ruin/space/sierra/rnd)
 "Jg" = (
 /obj/structure/table,
+/obj/effect/spawner/random/trash,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "whiteblue"
@@ -2925,7 +4241,9 @@
 	},
 /area/ruin/space/sierra/rnd)
 "Jv" = (
-/obj/structure/closet/secure_closet/security/science,
+/obj/structure/closet/secure_closet{
+	name = "Security Equipment Locker"
+	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "darkred"
@@ -2947,10 +4265,35 @@
 	icon_state = "dark"
 	},
 /area/ruin/space/sierra/med)
+"JQ" = (
+/obj/machinery/atmospherics/unary/portables_connector{
+	dir = 1
+	},
+/obj/machinery/atmospherics/portable/canister/oxygen,
+/obj/machinery/light/small/directional/south,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/ruin/space/sierra/med)
+"JR" = (
+/obj/effect/decal/cleanable/dust,
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/ruin/space/sierra/shelter)
 "JT" = (
 /obj/machinery/door/poddoor,
 /turf/space,
 /area/ruin/space/sierra/maint)
+"JU" = (
+/obj/structure/disposalpipe/broken{
+	dir = 8
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "whitebluefull"
+	},
+/area/ruin/space/sierra/med)
 "Ka" = (
 /obj/machinery/door/airlock/maintenance_hatch,
 /turf/simulated/floor/plasteel,
@@ -2961,6 +4304,27 @@
 	},
 /turf/simulated/floor/plating/airless,
 /area/ruin/space/sierra/rnd)
+"Kd" = (
+/obj/structure/table,
+/obj/effect/spawner/random/maintenance,
+/obj/effect/decal/cleanable/dust,
+/turf/simulated/floor/plasteel{
+	icon_state = "whiteblue"
+	},
+/area/ruin/space/sierra/med)
+"Kj" = (
+/obj/effect/decal/cleanable/dust,
+/turf/simulated/floor/plasteel{
+	dir = 8;
+	icon_state = "whiteblue"
+	},
+/area/ruin/space/sierra/med)
+"Kr" = (
+/obj/effect/spawner/random/trash,
+/turf/simulated/floor/plasteel{
+	icon_state = "whitebluefull"
+	},
+/area/ruin/space/sierra/med)
 "Kv" = (
 /obj/effect/turf_decal/delivery,
 /turf/simulated/floor/plasteel/airless,
@@ -3006,6 +4370,44 @@
 	dir = 4
 	},
 /area/ruin/space/sierra/rnd)
+"KK" = (
+/obj/structure/disposalpipe/segment/corner{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dust,
+/turf/simulated/floor/plasteel{
+	icon_state = "darkblue"
+	},
+/area/ruin/space/sierra/med)
+"KP" = (
+/obj/structure/disposalpipe/segment/corner{
+	dir = 4
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "white"
+	},
+/area/ruin/space/sierra/med)
+"KS" = (
+/obj/machinery/door/airlock/engineering{
+	name = "Auxiliary Power Storage";
+	req_access = newlist()
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plasteel/dark{
+	icon_state = "dark_large"
+	},
+/area/ruin/space/sierra/maint)
+"KX" = (
+/obj/structure/chair/office/dark,
+/obj/effect/decal/cleanable/dust,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/ruin/space/sierra/shelter)
 "Lb" = (
 /turf/simulated/floor/engine/airless,
 /area/ruin/space/sierra/rnd)
@@ -3015,6 +4417,11 @@
 "Lg" = (
 /obj/machinery/door/airlock/multi_tile/glass,
 /obj/machinery/door/firedoor/closed,
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -3062,6 +4469,25 @@
 /obj/effect/spawner/random/engineering/toolbox,
 /turf/simulated/floor/plasteel/dark,
 /area/space/nearstation)
+"LA" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "0-2"
+	},
+/turf/simulated/floor/catwalk,
+/area/ruin/space/sierra/maint)
+"LC" = (
+/obj/effect/turf_decal/delivery,
+/obj/structure/disposalpipe/segment,
+/obj/machinery/door/firedoor,
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plasteel,
+/area/ruin/space/sierra/rnd)
 "LG" = (
 /turf/simulated/wall,
 /area/space/nearstation)
@@ -3097,21 +4523,57 @@
 	icon_state = "purplecorner"
 	},
 /area/ruin/space/sierra/rnd)
-"Md" = (
-/obj/machinery/disposal,
-/turf/simulated/floor/plasteel,
-/area/ruin/space/sierra/rnd)
-"Me" = (
-/obj/structure/railing{
-	dir = 9
+"LY" = (
+/obj/structure/shelf,
+/obj/structure/railing,
+/obj/effect/spawner/random/maintenance,
+/turf/simulated/floor/catwalk,
+/area/ruin/space/sierra/maint)
+"Mc" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "1-2"
 	},
-/obj/machinery/power/smes/engineering,
+/obj/structure/disposalpipe/segment,
+/obj/effect/decal/cleanable/dust,
+/turf/simulated/floor/plasteel{
+	dir = 4;
+	icon_state = "darkblue"
+	},
+/area/ruin/space/sierra/med)
+"Md" = (
+/obj/effect/spawner/random/blood/maybe,
+/turf/simulated/floor/plating/airless,
+/area/space/nearstation)
+"Me" = (
+/obj/structure/cable{
+	d2 = 4;
+	icon_state = "0-4"
+	},
+/obj/structure/cable{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/obj/machinery/power/smes,
+/obj/machinery/light/small/directional/south,
 /turf/simulated/floor/plating,
 /area/ruin/space/sierra/maint)
 "Mn" = (
 /obj/item/storage/box/beakers,
 /turf/space,
 /area/space)
+"Mp" = (
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/obj/effect/decal/cleanable/dust,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/ruin/space/sierra/shelter)
 "Mr" = (
 /obj/effect/turf_decal/siding/trimline/blue,
 /turf/simulated/floor/plating,
@@ -3176,9 +4638,30 @@
 /obj/structure/railing{
 	dir = 5
 	},
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/catwalk,
 /area/ruin/space/sierra/maint)
+"MX" = (
+/obj/machinery/door/airlock/medical/glass,
+/obj/effect/mapping_helpers/airlock/access/all/medical/general,
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "darkbluefull"
+	},
+/area/ruin/space/sierra/med)
 "MY" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/disposalpipe/segment,
+/obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/plasteel{
 	icon_state = "darkbluecorners"
 	},
@@ -3235,6 +4718,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/door/firedoor/closed,
 /obj/effect/mapping_helpers/airlock/access/all/medical/general,
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "1-2"
+	},
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -3248,17 +4737,33 @@
 "NE" = (
 /turf/space,
 /area/ruin/space/sierra/med)
+"NK" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "white"
+	},
+/area/ruin/space/sierra/med)
 "NL" = (
 /obj/effect/turf_decal/siding/trimline/blue{
 	dir = 8
 	},
 /obj/effect/spawner/random/maintenance,
+/obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
 /area/ruin/space/sierra/med)
 "NM" = (
 /obj/effect/turf_decal/siding/trimline/blue,
+/obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -3272,6 +4777,10 @@
 	},
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plasteel/airless,
+/area/ruin/space/sierra/rnd)
+"NT" = (
+/obj/structure/disposalpipe/segment/corner,
+/turf/simulated/floor/plasteel,
 /area/ruin/space/sierra/rnd)
 "NY" = (
 /obj/machinery/door/airlock/multi_tile/glass{
@@ -3289,6 +4798,14 @@
 	icon_state = "whiteyellow"
 	},
 /area/ruin/space/sierra/med)
+"Of" = (
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/catwalk,
+/area/ruin/space/sierra/maint)
 "Og" = (
 /obj/machinery/atmospherics/portable/canister/sleeping_agent,
 /obj/structure/window/reinforced{
@@ -3343,6 +4860,10 @@
 	icon_state = "dark"
 	},
 /area/ruin/space/sierra/med)
+"ON" = (
+/obj/effect/spawner/random/fungus/probably,
+/turf/simulated/wall/r_wall,
+/area/ruin/space/sierra/shelter)
 "OO" = (
 /obj/structure/cable/green{
 	d1 = 4;
@@ -3362,6 +4883,13 @@
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/plating,
 /area/ruin/space/sierra/hall)
+"OX" = (
+/obj/effect/spawner/random/trash,
+/turf/simulated/floor/plasteel{
+	dir = 8;
+	icon_state = "purple"
+	},
+/area/ruin/space/sierra/rnd)
 "Pa" = (
 /obj/machinery/economy/vending/cigarette,
 /turf/simulated/floor/plasteel{
@@ -3381,6 +4909,9 @@
 	},
 /area/ruin/space/sierra/med)
 "Pf" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel{
 	dir = 10;
 	icon_state = "darkblue"
@@ -3399,20 +4930,39 @@
 	icon_state = "dark"
 	},
 /area/ruin/space/sierra/med)
+"Pr" = (
+/obj/structure/disposalpipe/segment/corner{
+	dir = 1
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "whitebluefull"
+	},
+/area/ruin/space/sierra/med)
+"Pt" = (
+/obj/structure/disposalpipe/broken{
+	dir = 4
+	},
+/turf/simulated/floor/plating/airless,
+/area/ruin/space/sierra/hall)
 "Pw" = (
 /obj/machinery/photocopier,
 /turf/simulated/floor/plating/airless,
 /area/ruin/space/sierra/rnd)
 "Px" = (
-/obj/effect/spawner/window/reinforced/polarized/grilled,
-/turf/simulated/floor/plating,
-/area/ruin/space/sierra/med)
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/catwalk,
+/area/ruin/space/sierra/maint)
 "Py" = (
 /obj/item/paper_bin,
 /turf/space,
 /area/space)
 "Pz" = (
 /obj/structure/reagent_dispensers/water_cooler,
+/obj/effect/turf_decal/box,
 /turf/simulated/floor/plasteel{
 	icon_state = "whitebluecorner"
 	},
@@ -3420,9 +4970,27 @@
 "PC" = (
 /turf/simulated/floor/catwalk/airless,
 /area/space/nearstation)
+"PF" = (
+/obj/structure/rack,
+/obj/effect/spawner/random/maintenance,
+/turf/simulated/floor/plating,
+/area/ruin/space/sierra/med)
+"PH" = (
+/obj/effect/turf_decal/siding/trimline/blue{
+	dir = 8
+	},
+/obj/effect/spawner/random/trash,
+/obj/effect/decal/cleanable/dust,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/ruin/space/sierra/med)
 "Qb" = (
 /obj/effect/turf_decal/siding/trimline/blue/corner{
 	dir = 1
+	},
+/obj/structure/disposalpipe/segment/corner{
+	dir = 2
 	},
 /turf/simulated/floor/plasteel{
 	dir = 8;
@@ -3444,6 +5012,28 @@
 	icon_state = "purple"
 	},
 /area/ruin/space/sierra/hall)
+"Qq" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/door/airlock/engineering{
+	name = "First Deck Substation";
+	req_access = newlist()
+	},
+/obj/machinery/door/firedoor,
+/turf/simulated/floor/plasteel/dark{
+	icon_state = "dark_large"
+	},
+/area/ruin/space/sierra/maint)
+"Qs" = (
+/obj/structure/closet/secure_closet/medical3,
+/obj/effect/spawner/random/maintenance,
+/turf/simulated/floor/plasteel{
+	icon_state = "white"
+	},
+/area/ruin/space/sierra/med)
 "Qt" = (
 /obj/machinery/door/window/reinforced,
 /turf/simulated/floor/plasteel{
@@ -3457,6 +5047,12 @@
 /obj/effect/mapping_helpers/airlock/access/any/science/research,
 /turf/simulated/floor/plasteel,
 /area/ruin/space/sierra/rnd)
+"QE" = (
+/obj/structure/disposalpipe/broken{
+	dir = 4
+	},
+/turf/simulated/floor/plasteel,
+/area/ruin/space/sierra/rnd)
 "QG" = (
 /obj/machinery/door/airlock/public,
 /obj/effect/turf_decal/delivery,
@@ -3466,6 +5062,13 @@
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/plasteel,
 /area/ruin/space/sierra/hall)
+"QJ" = (
+/obj/structure/table,
+/obj/effect/spawner/random/maintenance,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/ruin/space/sierra/shelter)
 "QK" = (
 /obj/machinery/economy/vending/coffee,
 /turf/simulated/floor/plasteel{
@@ -3473,6 +5076,18 @@
 	icon_state = "whiteblue"
 	},
 /area/ruin/space/sierra/med)
+"QO" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d2 = 4;
+	icon_state = "0-4"
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "purple"
+	},
+/area/ruin/space/sierra/rnd)
 "QR" = (
 /obj/effect/turf_decal/siding/trimline/dark{
 	dir = 8
@@ -3489,6 +5104,14 @@
 	icon_state = "white"
 	},
 /area/ruin/space/sierra/med)
+"QX" = (
+/obj/structure/shelf,
+/obj/structure/railing{
+	dir = 6
+	},
+/obj/effect/spawner/random/maintenance,
+/turf/simulated/floor/plating,
+/area/ruin/space/sierra/maint)
 "QZ" = (
 /obj/machinery/computer/nonfunctional{
 	dir = 1
@@ -3498,10 +5121,52 @@
 	},
 /turf/simulated/floor/plasteel/airless,
 /area/space/nearstation)
+"Ra" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/disposalpipe/segment,
+/turf/simulated/floor/plating,
+/area/ruin/space/sierra/med)
 "Rd" = (
 /obj/structure/chair/office/dark{
 	dir = 4
 	},
+/turf/simulated/floor/plasteel{
+	icon_state = "white"
+	},
+/area/ruin/space/sierra/med)
+"Re" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 5
+	},
+/obj/structure/disposalpipe/segment/corner{
+	dir = 4
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "white"
+	},
+/area/ruin/space/sierra/med)
+"Rg" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -3521,6 +5186,17 @@
 /obj/machinery/floodlight/anchored,
 /turf/simulated/floor/plating,
 /area/ruin/space/sierra/maint)
+"Rm" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/effect/spawner/random/blood/maybe,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/ruin/space/sierra/shelter)
 "Ro" = (
 /obj/effect/turf_decal/stripes/corner,
 /obj/effect/turf_decal/stripes/corner{
@@ -3538,6 +5214,37 @@
 /obj/structure/bed/roller,
 /turf/simulated/floor/plating/airless,
 /area/ruin/space/sierra/med)
+"Rv" = (
+/obj/machinery/door/airlock/engineering{
+	name = "Auxiliary Power Storage";
+	req_access = newlist();
+	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/door/firedoor,
+/turf/simulated/floor/plasteel/dark{
+	icon_state = "dark_large"
+	},
+/area/ruin/space/sierra/maint)
+"Rw" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/door/airlock/engineering{
+	name = "First Deck Substation";
+	req_access = newlist()
+	},
+/obj/machinery/door/firedoor,
+/turf/simulated/floor/plasteel/dark{
+	icon_state = "dark_large"
+	},
+/area/ruin/space/sierra/maint)
 "Rz" = (
 /obj/effect/turf_decal{
 	dir = 5
@@ -3575,6 +5282,10 @@
 	dir = 1;
 	icon_state = "whiteyellow"
 	},
+/area/ruin/space/sierra/med)
+"RK" = (
+/obj/effect/spawner/random/fungus/frequent,
+/turf/simulated/wall/r_wall,
 /area/ruin/space/sierra/med)
 "RL" = (
 /turf/simulated/floor/plasteel/airless{
@@ -3625,6 +5336,7 @@
 /area/space)
 "Sb" = (
 /obj/structure/closet,
+/obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -3638,6 +5350,14 @@
 /obj/structure/table,
 /turf/simulated/floor/plating/airless,
 /area/ruin/space/sierra/med)
+"Sf" = (
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/catwalk,
+/area/ruin/space/sierra/maint)
 "Sn" = (
 /obj/structure/table{
 	anchored = 0
@@ -3662,9 +5382,23 @@
 	icon_state = "white"
 	},
 /area/ruin/space/sierra/med)
+"Ss" = (
+/obj/structure/disposalpipe/broken{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/ruin/space/sierra/med)
 "Sy" = (
 /turf/simulated/floor/plating,
 /area/ruin/space/sierra/hall)
+"SG" = (
+/obj/machinery/hologram/holopad,
+/obj/structure/disposalpipe/segment,
+/obj/effect/decal/cleanable/dust,
+/turf/simulated/floor/plasteel{
+	icon_state = "white"
+	},
+/area/ruin/space/sierra/med)
 "SJ" = (
 /obj/machinery/door/airlock/research,
 /obj/machinery/door/firedoor,
@@ -3683,6 +5417,19 @@
 	icon_state = "white"
 	},
 /area/ruin/space/sierra/med)
+"Tb" = (
+/obj/structure/cable/green{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/catwalk,
+/area/ruin/space/sierra/maint)
 "Ti" = (
 /obj/effect/turf_decal,
 /obj/effect/turf_decal{
@@ -3695,6 +5442,18 @@
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/plasteel,
 /area/ruin/space/sierra/hall)
+"To" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/disposalpipe/segment,
+/obj/effect/decal/cleanable/dust,
+/turf/simulated/floor/plasteel{
+	icon_state = "white"
+	},
+/area/ruin/space/sierra/med)
 "Tt" = (
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
@@ -3703,8 +5462,22 @@
 "Tx" = (
 /obj/machinery/door/airlock/medical/glass,
 /obj/effect/mapping_helpers/airlock/access/all/medical/general,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "whitebluefull"
+	},
+/area/ruin/space/sierra/med)
+"Ty" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/effect/spawner/random/blood/maybe,
+/turf/simulated/floor/plasteel{
+	icon_state = "darkbluefull"
 	},
 /area/ruin/space/sierra/med)
 "TE" = (
@@ -3713,11 +5486,8 @@
 /turf/simulated/floor/plasteel,
 /area/ruin/space/sierra/rnd)
 "TH" = (
-/obj/effect/turf_decal/siding/trimline/dark/corner{
-	dir = 4
-	},
-/obj/effect/turf_decal/siding/trimline/dark/corner,
-/turf/simulated/floor/plating,
+/obj/effect/spawner/random/fungus/probably,
+/turf/simulated/wall,
 /area/ruin/space/sierra/med)
 "TI" = (
 /obj/structure/table,
@@ -3726,6 +5496,14 @@
 	dir = 1
 	},
 /area/ruin/space/sierra/rnd)
+"TL" = (
+/obj/structure/table,
+/obj/effect/spawner/random/maintenance,
+/turf/simulated/floor/plasteel{
+	dir = 1;
+	icon_state = "whiteblue"
+	},
+/area/ruin/space/sierra/med)
 "TN" = (
 /obj/effect/turf_decal/delivery/red,
 /obj/machinery/atmospherics/unary/vent_scrubber{
@@ -3742,19 +5520,37 @@
 /obj/structure/chair{
 	dir = 8
 	},
+/obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/plasteel{
 	dir = 6;
 	icon_state = "darkred"
 	},
 /area/ruin/space/sierra/med)
 "TT" = (
-/obj/structure/table,
-/obj/item/tank/internals/plasma,
-/turf/simulated/floor/plasteel/airless{
-	icon_state = "purple";
-	dir = 4
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "1-2"
 	},
-/area/ruin/space/sierra/rnd)
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 8
+	},
+/obj/structure/disposalpipe/segment,
+/turf/simulated/floor/plating,
+/area/ruin/space/sierra/med)
+"Ua" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/catwalk,
+/area/ruin/space/sierra/maint)
+"Ug" = (
+/obj/effect/spawner/random/blood/maybe,
+/turf/simulated/floor/plating,
+/area/ruin/space/sierra/med)
 "Ur" = (
 /obj/item/storage/surgical_tray{
 	pixel_y = 8
@@ -3792,6 +5588,11 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "purple"
 	},
@@ -3825,6 +5626,12 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/ruin/space/sierra/rnd)
+"UL" = (
+/obj/effect/decal/cleanable/dust,
+/turf/simulated/floor/plasteel{
+	icon_state = "white"
+	},
+/area/ruin/space/sierra/med)
 "UN" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -3845,6 +5652,18 @@
 	icon_state = "purple";
 	dir = 4
 	},
+/area/ruin/space/sierra/rnd)
+"US" = (
+/obj/machinery/door/airlock/research,
+/obj/machinery/door/firedoor/closed,
+/obj/effect/mapping_helpers/airlock/access/any/science/research,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/disposalpipe/broken{
+	dir = 4
+	},
+/turf/simulated/floor/plasteel,
 /area/ruin/space/sierra/rnd)
 "UU" = (
 /obj/structure/closet/secure_closet/scientist,
@@ -3867,9 +5686,25 @@
 	icon_state = "white"
 	},
 /area/ruin/space/sierra/med)
+"Va" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/catwalk,
+/area/ruin/space/sierra/maint)
 "Vb" = (
 /obj/structure/filingcabinet/chestdrawer,
 /turf/simulated/floor/plasteel,
+/area/ruin/space/sierra/rnd)
+"Vd" = (
+/obj/effect/turf_decal,
+/obj/effect/turf_decal{
+	dir = 1
+	},
+/obj/item/tank/internals/plasma,
+/turf/simulated/floor/plasteel/airless,
 /area/ruin/space/sierra/rnd)
 "Vf" = (
 /obj/structure/chair/office/dark{
@@ -3883,8 +5718,16 @@
 /obj/structure/sink/directional/west,
 /turf/simulated/floor/plasteel,
 /area/ruin/space/sierra/rnd)
+"Vn" = (
+/obj/structure/curtain/open,
+/obj/effect/decal/cleanable/dust,
+/turf/simulated/floor/plasteel{
+	icon_state = "darkbluefull"
+	},
+/area/ruin/space/sierra/med)
 "Vr" = (
 /obj/structure/disposalpipe/segment,
+/obj/structure/cable/green,
 /turf/simulated/floor/plating/airless,
 /area/ruin/space/sierra/rnd)
 "Vt" = (
@@ -3892,16 +5735,40 @@
 	icon_state = "whiteyellowfull"
 	},
 /area/ruin/space/sierra/med)
+"VF" = (
+/obj/structure/cable/green{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/catwalk,
+/area/ruin/space/sierra/maint)
 "VI" = (
 /obj/effect/turf_decal/delivery,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /obj/machinery/door/firedoor/closed,
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "purple"
 	},
 /area/ruin/space/sierra/rnd)
+"VU" = (
+/obj/effect/decal/cleanable/dust,
+/turf/simulated/floor/plasteel{
+	icon_state = "barber"
+	},
+/area/ruin/space/sierra/med)
 "VW" = (
 /turf/simulated/floor/plasteel/airless{
 	icon_state = "purple";
@@ -3920,6 +5787,12 @@
 	},
 /turf/simulated/floor/plasteel,
 /area/ruin/space/sierra/rnd)
+"Wd" = (
+/obj/structure/railing,
+/obj/structure/rack,
+/obj/effect/spawner/random/maintenance,
+/turf/simulated/floor/plating,
+/area/ruin/space/sierra/maint)
 "Wg" = (
 /obj/structure/table,
 /turf/simulated/floor/plasteel{
@@ -3933,6 +5806,7 @@
 	},
 /area/ruin/space/sierra/med)
 "Wi" = (
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "darkbluecorners"
@@ -3957,10 +5831,16 @@
 /area/ruin/space/sierra/rnd)
 "Wp" = (
 /obj/structure/table,
+/obj/effect/turf_decal/box,
 /turf/simulated/floor/plasteel{
 	icon_state = "whiteblue"
 	},
 /area/ruin/space/sierra/med)
+"Ww" = (
+/obj/structure/closet,
+/obj/effect/spawner/random/maintenance,
+/turf/simulated/floor/plating,
+/area/ruin/space/sierra/maint)
 "WB" = (
 /obj/structure/curtain/medical,
 /turf/simulated/floor/plasteel{
@@ -3975,12 +5855,19 @@
 	},
 /area/ruin/space/sierra/med)
 "WP" = (
-/obj/structure/railing{
-	dir = 1
+/obj/machinery/power/smes,
+/obj/structure/cable/green{
+	d2 = 8;
+	icon_state = "0-8"
 	},
-/obj/machinery/power/smes/engineering,
 /turf/simulated/floor/plating,
 /area/ruin/space/sierra/maint)
+"WQ" = (
+/obj/effect/spawner/random/blood/maybe,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/ruin/space/sierra/med)
 "WS" = (
 /obj/effect/turf_decal/delivery,
 /obj/machinery/door/firedoor/closed,
@@ -3992,6 +5879,7 @@
 /obj/machinery/atmospherics/unary/vent_scrubber{
 	dir = 4
 	},
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/plasteel/dark{
 	icon_state = "white_large"
 	},
@@ -4006,6 +5894,17 @@
 /obj/structure/filingcabinet/chestdrawer,
 /turf/simulated/floor/plasteel/dark{
 	icon_state = "white_large"
+	},
+/area/ruin/space/sierra/med)
+"Xd" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "0-4"
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "white"
 	},
 /area/ruin/space/sierra/med)
 "Xf" = (
@@ -4025,6 +5924,27 @@
 	icon_state = "barber"
 	},
 /area/ruin/space/sierra/med)
+"Xk" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "1-2"
+	},
+/obj/structure/disposalpipe/broken{
+	dir = 2
+	},
+/obj/structure/disposalpipe/broken{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dust,
+/turf/simulated/floor/plating,
+/area/ruin/space/sierra/med)
+"Xl" = (
+/obj/effect/decal/cleanable/dust,
+/turf/simulated/floor/plasteel{
+	icon_state = "darkblue"
+	},
+/area/ruin/space/sierra/med)
 "Xn" = (
 /turf/simulated/floor/plasteel{
 	icon_state = "whiteblue"
@@ -4037,12 +5957,18 @@
 	},
 /area/ruin/space/sierra/med)
 "Xp" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/plasteel/dark{
 	icon_state = "dark_large"
 	},
 /area/ruin/space/sierra/shelter)
 "Xq" = (
 /obj/effect/turf_decal/box,
+/obj/effect/spawner/random/blood/maybe,
 /turf/simulated/floor/plasteel/dark{
 	icon_state = "white_large"
 	},
@@ -4053,6 +5979,18 @@
 	icon_state = "whiteblue"
 	},
 /area/ruin/space/sierra/med)
+"Xu" = (
+/obj/effect/turf_decal{
+	dir = 1
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "1-2"
+	},
+/obj/structure/disposalpipe/segment,
+/turf/simulated/floor/plasteel,
+/area/ruin/space/sierra/hall)
 "Xx" = (
 /obj/effect/turf_decal/tile/neutral/full{
 	color = "#000000"
@@ -4065,6 +6003,15 @@
 	color = "gray"
 	},
 /area/ruin/space/sierra/med)
+"XB" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plating,
+/area/ruin/space/sierra/rnd)
 "XD" = (
 /turf/simulated/floor/plasteel,
 /area/ruin/space/sierra/rnd)
@@ -4130,16 +6077,41 @@
 	level = 5;
 	layer = 5
 	},
+/obj/item/bedsheet/green,
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "1-2"
+	},
+/obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
 /area/ruin/space/sierra/shelter)
+"Yv" = (
+/obj/machinery/light/directional/north,
+/turf/simulated/floor/plasteel/airless,
+/area/ruin/space/sierra/hall)
 "YF" = (
 /obj/structure/closet/secure_closet/security/science,
 /turf/simulated/floor/plasteel{
 	dir = 9;
 	icon_state = "darkred"
 	},
+/area/ruin/space/sierra/rnd)
+"YX" = (
+/obj/structure/shelf,
+/obj/structure/railing{
+	dir = 4;
+	color = "#8c911d"
+	},
+/obj/effect/spawner/random/maintenance,
+/turf/simulated/floor/plating,
+/area/ruin/space/sierra/maint)
+"YY" = (
+/obj/structure/table,
+/obj/effect/spawner/random/trash,
+/turf/simulated/floor/plasteel,
 /area/ruin/space/sierra/rnd)
 "Zb" = (
 /obj/structure/rack,
@@ -4164,9 +6136,7 @@
 	},
 /area/ruin/space/sierra/med)
 "Zi" = (
-/obj/effect/turf_decal/siding/trimline/dark/corner{
-	dir = 8
-	},
+/obj/effect/spawner/random/trash,
 /turf/simulated/floor/plating,
 /area/ruin/space/sierra/med)
 "Zn" = (
@@ -4199,6 +6169,38 @@
 	},
 /turf/simulated/floor/plating/airless,
 /area/ruin/space/sierra/rnd)
+"Zt" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/catwalk/airless,
+/area/ruin/space/sierra/hall)
+"Zy" = (
+/obj/structure/cable/green{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/ruin/space/sierra/shelter)
 "ZA" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -4210,6 +6212,7 @@
 /obj/effect/turf_decal/siding/trimline/blue/corner{
 	dir = 8
 	},
+/obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -4223,6 +6226,10 @@
 /area/ruin/space/sierra/med)
 "ZH" = (
 /obj/effect/turf_decal/delivery,
+/obj/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 8
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -4245,6 +6252,13 @@
 	icon_state = "purplefull"
 	},
 /area/ruin/space/sierra/rnd)
+"ZV" = (
+/obj/effect/decal/cleanable/dust,
+/obj/machinery/light/directional/south,
+/turf/simulated/floor/plasteel{
+	icon_state = "darkbluefull"
+	},
+/area/ruin/space/sierra/med)
 "ZW" = (
 /obj/structure/rack,
 /obj/item/vending_refill/medical{
@@ -6566,7 +8580,7 @@ Et
 Et
 Et
 aV
-qT
+Fr
 qT
 qT
 sU
@@ -6669,7 +8683,7 @@ hb
 go
 aV
 UG
-aV
+Pt
 qT
 sU
 sU
@@ -6968,8 +8982,8 @@ yH
 zq
 FF
 Cn
-Il
-Cn
+kZ
+KX
 Wg
 GU
 FF
@@ -7069,13 +9083,13 @@ sB
 FF
 FF
 FF
-Wg
-Il
-Cn
-Wg
-GU
+fv
+iO
+KX
+QJ
+le
 FF
-Zg
+Yv
 kR
 EE
 Zg
@@ -7163,24 +9177,24 @@ Op
 sA
 Kw
 Kw
-zq
-zq
-zq
-zq
+Tb
+Va
+Va
+qs
 Kw
 FF
 zP
-zP
-Wg
-Il
-Cn
+Gv
+QJ
+iO
+KX
 Wg
 GU
 FF
-Zg
+cA
 Kx
 EE
-Zg
+cA
 IN
 Lb
 Lb
@@ -7265,22 +9279,22 @@ hK
 Et
 Kw
 Kw
-zq
+Px
 yH
 iG
-zq
+Px
 Kw
 fd
+kZ
+kZ
 Il
-Il
-Il
-Il
-Il
-Il
-Il
-fd
-Zg
-Kx
+kZ
+kZ
+Mp
+Zy
+HJ
+lM
+Zt
 EE
 Zg
 IN
@@ -7367,18 +9381,18 @@ Et
 Et
 Bz
 Kw
-zq
+Px
 yH
 Et
-Kw
-Et
+eZ
+rx
 FF
+cX
+cX
+at
 oI
 oI
-oI
-oI
-oI
-Il
+Rm
 oI
 FF
 Zg
@@ -7469,16 +9483,16 @@ hK
 Et
 Kw
 Kw
-zq
+Px
 zq
 Et
-zq
+Hw
 lp
 FF
 FF
 FF
 FF
-FF
+ON
 FF
 Xp
 FF
@@ -7571,19 +9585,19 @@ Op
 sA
 Kw
 Kw
-zq
+Px
 zq
 Et
-zq
-lp
+Sf
+ub
 FF
+zX
+vR
 Yp
 Yp
-Yp
-Yp
-Il
-Il
-Il
+aB
+cW
+kZ
 FF
 WS
 uL
@@ -7673,19 +9687,19 @@ hK
 Et
 Kw
 Kw
-yH
+gF
 zq
-Kw
-zq
+KS
+BT
 Me
 FF
-Il
-Il
-Il
-Il
-Il
-Il
-Il
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
+kZ
 FF
 BH
 Uy
@@ -7775,23 +9789,23 @@ Et
 Et
 Bz
 Kw
-zq
+Px
 zq
 Et
-zq
-WP
+cl
+bu
 FF
-Il
-Il
-Il
-Il
-Il
-Il
-Sb
+nR
+fB
+JR
+JR
+kZ
+kZ
+oa
 FF
 BH
 cK
-UN
+tt
 So
 mw
 XD
@@ -7877,10 +9891,10 @@ hK
 Et
 Kw
 Kw
+Px
 zq
-zq
-Et
-Kw
+rx
+Rv
 Et
 FF
 gb
@@ -7888,7 +9902,7 @@ Sb
 hQ
 Sb
 fo
-Sb
+oa
 lY
 FF
 BH
@@ -7900,7 +9914,7 @@ XD
 XD
 XK
 XK
-XD
+QE
 XD
 IN
 qT
@@ -7979,11 +9993,11 @@ Op
 sA
 Kw
 Kw
-yH
+gF
 yH
 Et
-zq
-lp
+zR
+cH
 ci
 ci
 ci
@@ -8002,7 +10016,7 @@ IN
 IN
 IN
 IN
-So
+US
 IN
 IN
 IN
@@ -8081,32 +10095,32 @@ hK
 Et
 pJ
 zq
-zq
-zq
-Kw
-zq
-zq
+Px
+Of
+Rw
+VF
+qs
 ci
 Zb
-bq
-aq
-aq
+Vn
+Qs
+Qs
 fq
 jG
-kB
+PF
 ci
 BH
 cK
-DG
+to
 IN
 CW
 yz
 AE
 pC
 kP
-XD
+NT
 GM
-Md
+dd
 IN
 qT
 sU
@@ -8183,19 +10197,19 @@ Et
 Et
 dR
 eu
-yH
-zq
+mV
+Ua
 Et
-zq
+gQ
 GA
 ci
 tX
 oZ
 FJ
+Gx
 IM
-IM
-oZ
-oZ
+Gw
+bZ
 ci
 BH
 cK
@@ -8280,25 +10294,25 @@ Et
 Et
 Et
 Iu
+YX
 UO
-UO
-UO
+YX
 dR
 dR
-wh
+te
 dR
 Et
-zq
+eU
 WP
 ci
 Zb
 bq
-MD
-ge
+FB
+Xl
 kB
 Tt
 eW
-ci
+ri
 BH
 Uy
 DG
@@ -8306,7 +10320,7 @@ IN
 CW
 ct
 XD
-wF
+YY
 Nv
 wJ
 ct
@@ -8381,22 +10395,22 @@ sU
 sU
 Et
 Et
-oS
+QX
 zq
 yH
 zq
 wh
 yH
-zq
+Px
 MU
 Et
-Kw
+Qq
 Et
 ci
 aq
 Tt
-MD
-ge
+zI
+Xl
 vw
 Gd
 Ao
@@ -8488,8 +10502,8 @@ zq
 yH
 zq
 dR
-zq
-zq
+LA
+Ua
 zq
 zq
 zq
@@ -8500,11 +10514,11 @@ oZ
 IM
 IM
 ps
-IM
-oZ
+Gx
+ZV
 ci
 BH
-Uy
+cw
 He
 IN
 IN
@@ -8598,7 +10612,7 @@ zq
 qo
 ci
 IY
-oZ
+lH
 bS
 iY
 db
@@ -8700,10 +10714,10 @@ os
 ci
 ci
 od
-Sd
+yO
 ci
 ci
-ci
+ri
 ci
 ci
 ci
@@ -8796,20 +10810,20 @@ gv
 hT
 uY
 ci
-DJ
-Tt
+hd
+AI
 oZ
 WW
 AH
 Lx
-RT
+lK
 EW
 od
 Ch
 ZW
 vB
-ci
-BH
+ri
+rX
 cK
 UN
 BH
@@ -8900,16 +10914,16 @@ Bj
 ci
 Bl
 yI
-he
+nO
 IM
-IM
-he
+Gx
+jd
 Pf
 Xr
 Lq
 Tt
 Tt
-Tt
+kf
 ci
 BH
 Uy
@@ -9309,12 +11323,12 @@ ci
 DJ
 lw
 ZB
-Fl
+PH
 Fl
 NL
 Qb
-he
-he
+tC
+jd
 he
 tR
 he
@@ -9324,7 +11338,7 @@ cK
 DG
 MF
 fk
-gh
+gn
 gh
 bp
 IN
@@ -9401,7 +11415,7 @@ Et
 zq
 zq
 yH
-yg
+TH
 NE
 NE
 NE
@@ -9410,20 +11424,20 @@ ve
 NA
 wR
 sz
-iH
-iH
-iH
-IM
+Mc
+bU
+Mc
+Xk
 MY
-IM
-IM
+TT
+Ra
 iH
-iH
-iH
-iH
-ND
-cK
-DG
+Fb
+Fb
+HG
+Xu
+vr
+to
 dg
 ew
 Ya
@@ -9431,7 +11445,7 @@ jz
 dH
 IN
 qn
-Eh
+OX
 Eh
 bg
 rv
@@ -9500,7 +11514,7 @@ sU
 sU
 Et
 Et
-yh
+Ww
 hD
 zq
 yg
@@ -9513,7 +11527,7 @@ ci
 vp
 IS
 aP
-oZ
+ai
 TN
 MD
 ge
@@ -9525,11 +11539,11 @@ AS
 AS
 ND
 cK
-DG
+to
 IN
 dg
 dg
-Ct
+dX
 IN
 IN
 Jq
@@ -9600,7 +11614,7 @@ sU
 sU
 sU
 sU
-Et
+xS
 Et
 dR
 dR
@@ -9611,17 +11625,17 @@ IP
 IP
 CU
 JJ
+ri
 ci
 ci
-ci
-Px
-vA
+od
+MX
 ci
 HA
 WB
 ci
 Pq
-Px
+od
 ci
 ci
 ci
@@ -9716,25 +11730,25 @@ ci
 ci
 eB
 im
-im
-oZ
+oW
+Ty
 ci
 wm
 ge
 ci
 nS
-ge
-IM
+GF
+Gx
 mL
 ci
-wU
-Uy
-fC
-EF
-JB
-yc
-yc
-yc
+nB
+uc
+yY
+LC
+wA
+XB
+XB
+CJ
 bt
 Vr
 nD
@@ -9809,7 +11823,7 @@ Et
 zq
 zq
 zq
-rj
+pU
 yg
 Og
 wj
@@ -9818,15 +11832,15 @@ oA
 ci
 eK
 Dq
-oZ
-oZ
+Ug
+Fe
 ci
 IM
-IM
+Gx
 ci
 IM
-ge
-IM
+Xl
+Ug
 SO
 ci
 wU
@@ -9839,7 +11853,7 @@ JB
 JB
 JB
 VZ
-UA
+QO
 MF
 Jm
 jO
@@ -9909,14 +11923,14 @@ sU
 Et
 Et
 GJ
-mS
+Wd
 yH
 RH
 yg
 up
 gR
 Gy
-OE
+JQ
 ci
 ku
 wi
@@ -9924,9 +11938,9 @@ im
 nS
 ci
 MO
-IM
+Gx
 ci
-nS
+WQ
 qb
 ag
 QW
@@ -10014,16 +12028,16 @@ Et
 mS
 zq
 rj
-yg
+TH
 FY
-wj
+nW
 jP
 OE
 ci
 sX
 za
-oZ
-oZ
+IM
+ru
 ci
 CO
 hW
@@ -10116,26 +12130,26 @@ Et
 dR
 wh
 dR
-yg
+TH
 ZC
-gR
+lq
 cR
 EJ
 ci
 eB
 Ur
-eB
+ra
 oZ
 ci
-MD
+zI
 nS
-Tt
-nS
+UL
+qX
 ez
-nS
+qX
 ur
 ci
-wU
+mO
 cK
 DG
 IN
@@ -10150,7 +12164,7 @@ MF
 Jm
 Zs
 md
-Ti
+Vd
 gN
 gN
 Kc
@@ -10220,29 +12234,29 @@ zq
 zq
 yg
 ZC
-gR
+EA
 wG
 mp
 ci
 od
 od
-Px
+od
 vA
 ci
 MD
-nS
+qX
 nS
 nS
 Xf
 Ym
 TO
 ci
-wU
+nB
 cK
 DG
 dg
 ML
-ct
+dj
 ct
 ct
 va
@@ -10332,7 +12346,7 @@ he
 he
 IM
 IM
-IM
+Gx
 Yo
 ci
 ci
@@ -10349,7 +12363,7 @@ JB
 dd
 dg
 RU
-bf
+Ez
 MF
 Jm
 bm
@@ -10425,16 +12439,16 @@ yH
 yg
 ns
 cE
-TH
+IM
 hz
 gP
-IM
-IM
-iH
-iH
-iH
+uS
+uS
+mH
+mH
+mH
 Wi
-ge
+KK
 oZ
 Iz
 iQ
@@ -10520,10 +12534,10 @@ sU
 sU
 sU
 Et
-Et
+xS
 yH
 fG
-zq
+bL
 yg
 uo
 jX
@@ -10536,7 +12550,7 @@ wN
 BY
 ao
 IM
-ge
+zu
 oZ
 Sd
 RI
@@ -10560,8 +12574,8 @@ tB
 tB
 NQ
 tB
-tB
-tB
+Bq
+Au
 Nx
 rJ
 sU
@@ -10638,8 +12652,8 @@ yg
 IM
 Tt
 MD
-IM
-JG
+Ss
+tU
 od
 DZ
 Vt
@@ -10659,9 +12673,9 @@ aO
 MF
 Pm
 VW
-TT
 fa
-eU
+eg
+fa
 fa
 VW
 fQ
@@ -10738,7 +12752,7 @@ Wj
 Ic
 yg
 GL
-Tt
+UL
 IM
 ge
 JG
@@ -10832,18 +12846,18 @@ ks
 Aj
 yH
 yg
+ow
 px
-px
-px
-px
+ow
+or
 Tt
-Zh
+Hu
 yg
 im
 im
 MD
-ge
-IY
+Gp
+jr
 ci
 bP
 ok
@@ -10937,7 +12951,7 @@ yg
 in
 qN
 pp
-px
+or
 Wj
 Ic
 yg
@@ -10961,7 +12975,7 @@ TE
 jp
 dg
 bf
-gN
+xq
 MF
 aI
 KJ
@@ -11038,15 +13052,15 @@ zq
 yg
 Bx
 As
-Wp
-px
+Kd
+ow
 so
 Rh
 UY
 Pz
 Xo
 Tt
-Tt
+Xd
 Tt
 Jj
 Jg
@@ -11055,15 +13069,15 @@ QK
 ci
 RL
 Kx
-EE
+nX
 dg
 XD
 XD
-wF
+YY
 XD
 MF
 bf
-gN
+tu
 MF
 MF
 MF
@@ -11136,27 +13150,27 @@ Et
 Et
 hR
 zq
-yH
+fD
 yg
 mC
 AF
 Go
-px
+or
 Cc
 Vf
 KB
-Xn
-Tt
-Tt
-Tt
-Tt
-Tt
-Tt
-Tt
-Tt
+qu
+KP
+SG
+jc
+Fw
+Fw
+dI
+AX
+To
 Lg
-Zg
-jL
+lM
+vt
 EE
 va
 XD
@@ -11241,21 +13255,21 @@ xL
 zq
 yg
 px
-px
-px
-px
+Kr
+ow
+ow
 RF
 Rd
 Sp
-Xn
-Tt
-Tt
-Tt
-Tt
-Tt
-Tt
-Tt
-Tt
+qu
+NK
+oU
+Rg
+kA
+lm
+oU
+Re
+qD
 uM
 Zg
 jL
@@ -11268,7 +13282,7 @@ Ol
 MF
 nQ
 wt
-sU
+mc
 sU
 qT
 Fk
@@ -11337,26 +13351,26 @@ sU
 sU
 sU
 dR
-dR
+tl
 dR
 dR
 wh
 dR
 dR
 yg
-Tt
-px
+uO
+Pr
 ep
 dB
 CZ
 Wp
-Tt
+BS
 Yk
+eo
 fw
-fw
-fw
+hi
 hP
-Tt
+ng
 Yk
 ci
 RL
@@ -11441,7 +13455,7 @@ sU
 sU
 sU
 dR
-XQ
+LY
 zq
 zq
 Bs
@@ -11452,7 +13466,7 @@ yg
 yg
 yg
 Xn
-Tt
+Hz
 wa
 ci
 od
@@ -11461,7 +13475,7 @@ od
 bo
 ci
 ci
-RL
+wT
 Kx
 sw
 IN
@@ -11549,18 +13563,18 @@ yH
 MU
 yg
 Tt
-px
+JU
 qW
 Bw
 yg
-Xo
-Tt
+wn
+dA
 wa
 ci
 Ev
-fw
-fw
-fw
+Kj
+Kj
+Kj
 jm
 ci
 RL
@@ -11651,17 +13665,17 @@ yH
 zq
 yg
 Pa
-px
-px
+ow
+ow
 px
 EH
 Tt
-Tt
+EG
 wa
 ci
-Bx
-Xh
-Xh
+TL
+VU
+VU
 cG
 gq
 ci
@@ -11758,18 +13772,18 @@ WE
 Zh
 yg
 hP
-Tt
+UL
 wa
 ci
 rw
-Xh
-As
-As
+VU
+gr
+xH
 eM
 od
 RL
 tv
-qT
+tW
 qT
 sU
 sU
@@ -11849,9 +13863,9 @@ sU
 sU
 sU
 Et
-zq
-zq
-wD
+hb
+hb
+fS
 zq
 yg
 yg
@@ -11950,8 +13964,8 @@ sU
 sU
 sU
 sU
-Et
-zq
+xS
+hb
 Et
 Et
 zq
@@ -11989,8 +14003,8 @@ qT
 oX
 sy
 qT
-sy
-sy
+Md
+Md
 sy
 sy
 sU
@@ -12053,7 +14067,7 @@ sU
 sU
 sU
 Et
-zq
+hb
 Et
 Et
 Et
@@ -12069,7 +14083,7 @@ yg
 ci
 ci
 ci
-ci
+RK
 ci
 ci
 ci
@@ -12160,7 +14174,7 @@ Et
 Et
 sU
 sU
-Et
+xS
 Et
 yQ
 zq
@@ -12175,7 +14189,7 @@ ME
 qH
 qH
 qH
-qH
+dL
 Iv
 qr
 sU
@@ -12278,7 +14292,7 @@ sU
 sU
 qT
 aV
-aV
+Hj
 qT
 sU
 qT
