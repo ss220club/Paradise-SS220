@@ -2,10 +2,10 @@
 DO NOT MANUALLY RUN THIS SCRIPT.
 ---------------------------------
 
-Expected envrionmental variables:
+Expected environmental variables:
 -----------------------------------
 GITHUB_REPOSITORY: Github action variable representing the active repo (Action provided)
-BOT_TOKEN: A repository account token, this will allow the action to push the changes (Action provided)
+GITHUB_TOKEN: A repository account token, this will allow the action to push the changes (Action provided)
 GITHUB_EVENT_PATH: path to JSON file containing the event info (Action provided)
 """
 import os
@@ -18,7 +18,7 @@ import changelog_utils
 
 # Blessed is the GoOnStAtIoN birb ZeWaKa for thinking of this first
 repo = os.getenv("GITHUB_REPOSITORY")
-token = os.getenv("BOT_TOKEN")
+token = os.getenv("GITHUB_TOKEN")
 event_path = os.getenv("GITHUB_EVENT_PATH")
 
 with open(event_path, 'r') as f:
