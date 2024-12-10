@@ -90,15 +90,11 @@ def update_merge_branch():
         run_command(f"git push -u origin {MERGE_BRANCH}")
         return
 
-    print(f"Rebasing {MERGE_BRANCH} onto upstream/{UPSTREAM_BRANCH}...")
+    print(f"Resetting {MERGE_BRANCH} onto upstream/{UPSTREAM_BRANCH}...")
     run_command(f"git checkout {MERGE_BRANCH}")
-    result = run_command(f"git pull --rebase upstream {UPSTREAM_BRANCH}")
+    result = run_command(f"git reset --hard upstream/{UPSTREAM_BRANCH}")
 
-    if "Current branch is up to date" in result:
-        print("No changes detected from upstream.")
-        return
-
-    print("Pushing rebased changes to origin...")
+    print("Pushing changes to origin...")
     run_command(f"git push origin {MERGE_BRANCH} --force")
 
 
