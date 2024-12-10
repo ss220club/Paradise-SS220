@@ -26,7 +26,7 @@
 /datum/configuration_section/job_configuration_restriction/proc/race_exist_in_config(race_name, job_name)
 	if(race_name in GLOB.all_species)
 		return TRUE
-	CRASH("Race [race_name] mentioned in config of job_configuration_restriction for job [job_name] not found in global var of all spieces GLOB.all_species")
+	CRASH("Race [race_name] mentioned in config of job_configuration_restriction for job [job_name] not found in global var of all species GLOB.all_species")
 
 /datum/server_configuration/load_all_sections()
 	. = ..()
