@@ -10,19 +10,23 @@
 	CONFIG_LOAD_LIST(blacklist_species, data["job_species_blacklist"])
 
 /datum/configuration_section/job_configuration_restriction/proc/sanitize_job_checks()
-	if(!SSjobs)
+	if(!SSjobs || !GLOB.all_species)
 		return
 
-	var/list/name_list = list()
 	for(var/job_info in blacklist_species)
-		name_list += job_info["name"]
+		job_exist_in_config(job_info["name"])
+		for(var/race_info in job_info["species_blacklist"])
+			race_exist_in_config(race_info, job_name)
 
-	var/list/all_jobs = SSjobs.name_occupations
-	for(var/check_job in all_jobs)
-		if(check_job in name_list)
-			continue
-		else
-			CRASH("[check_job] job not found in config block job_configuration_restriction")
+/datum/configuration_section/job_configuration_restriction/proc/job_exist_in_config(job_name)
+	if(job_name in SSjobs.name_occupations)
+		return TRUE
+	CRASH("[job_name] job not found in config block job_configuration_restriction")
+
+/datum/configuration_section/job_configuration_restriction/proc/race_exist_in_config(race_name, job_name)
+	if(race_name in GLOB.all_species)
+		return TRUE
+	CRASH("[race_name] in config of job_configuration_restriction for job [job_name] not found in global var of all spieces GLOB.all_species")
 
 /datum/server_configuration/load_all_sections()
 	. = ..()

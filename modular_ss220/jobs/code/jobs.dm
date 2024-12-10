@@ -116,9 +116,10 @@
 	return FALSE
 
 /datum/job/proc/species_ban(client/C)
-	GLOB.configuration.jobs_restrict.sanitize_job_checks()
 	if(!GLOB.configuration.jobs_restrict.enable_black_list)
 		return FALSE
+
+	GLOB.configuration.jobs_restrict.sanitize_job_checks()
 
 	var/list/job_ban = GLOB.configuration.jobs_restrict.blacklist_species
 	if(!C || !length(job_ban))
