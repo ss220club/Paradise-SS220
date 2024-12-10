@@ -116,14 +116,20 @@
 	return FALSE
 
 /datum/job/proc/species_ban(client/C)
-	if(!GLOB.configuration.jobs.enable_black_list)
+	GLOB.configuration.jobs_restrict.sanitize_job_checks()
+	if(!GLOB.configuration.jobs_restrict.enable_black_list)
 		return FALSE
 
-	var/list/job_ban = GLOB.configuration.jobs.blacklist_species.Copy()
-
+	var/list/job_ban = GLOB.configuration.jobs_restrict.blacklist_species
 	if(!C || !length(job_ban))
 		return FALSE
 	for(var/job_data in job_ban)
-		if((src.title == job_data["name"]) && (C.prefs.active_character.species in job_data["species_blacklist"]))
+		if((title == job_data["name"]) && (C.prefs.active_character.species in job_data["species_blacklist"]))
 			return TRUE
 	return FALSE
+
+/mob/new_player/IsJobAvailable(rank)
+	. = .. ()
+	var/datum/job/job = SSjobs.GetJob(rank)
+	if(job.species_ban(client))
+		return FALSE

@@ -289,10 +289,6 @@
 		return FALSE
 	if(job.get_exp_restrictions(client))
 		return FALSE
-	// SS220 EDIT START - RACE/JOB BANS
-	if(job.species_ban(client))
-		return FALSE
-	// SS220 EDIT END - RACE/JOB BANS
 
 	if(GLOB.configuration.jobs.assistant_limit)
 		if(job.title == "Assistant")
