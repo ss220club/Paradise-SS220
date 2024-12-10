@@ -11,7 +11,7 @@
 
 /datum/configuration_section/job_configuration_restriction/proc/sanitize_job_checks()
 	if(!SSjobs || !GLOB.all_species)
-		return
+		CRASH("Can't check job_configuration_restriction without SSjobs and GLOB.all_species")
 
 	for(var/job_info in blacklist_species)
 		job_exist_in_config(job_info["name"])
