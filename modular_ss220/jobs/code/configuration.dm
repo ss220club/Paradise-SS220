@@ -16,17 +16,17 @@
 	for(var/job_info in blacklist_species)
 		job_exist_in_config(job_info["name"])
 		for(var/race_info in job_info["species_blacklist"])
-			race_exist_in_config(race_info, job_name)
+			race_exist_in_config(race_info, job_info["name"])
 
 /datum/configuration_section/job_configuration_restriction/proc/job_exist_in_config(job_name)
 	if(job_name in SSjobs.name_occupations)
 		return TRUE
-	CRASH("[job_name] job not found in config block job_configuration_restriction")
+	CRASH("Job [job_name] mentioned in job_configuration_restriction not found in SSjobs.name_occupations")
 
 /datum/configuration_section/job_configuration_restriction/proc/race_exist_in_config(race_name, job_name)
 	if(race_name in GLOB.all_species)
 		return TRUE
-	CRASH("[race_name] in config of job_configuration_restriction for job [job_name] not found in global var of all spieces GLOB.all_species")
+	CRASH("Race [race_name] mentioned in config of job_configuration_restriction for job [job_name] not found in global var of all spieces GLOB.all_species")
 
 /datum/server_configuration/load_all_sections()
 	. = ..()
