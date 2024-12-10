@@ -119,8 +119,6 @@
 	if(!GLOB.configuration.jobs_restrict.enable_black_list)
 		return FALSE
 
-	GLOB.configuration.jobs_restrict.sanitize_job_checks()
-
 	var/list/job_ban = GLOB.configuration.jobs_restrict.blacklist_species
 	if(!C || !length(job_ban))
 		return FALSE
@@ -130,7 +128,11 @@
 	return FALSE
 
 /mob/new_player/IsJobAvailable(rank)
-	. = .. ()
+	. = ..()
 	var/datum/job/job = SSjobs.GetJob(rank)
 	if(job.species_ban(client))
 		return FALSE
+
+/datum/controller/subsystem/jobs/Initialize()
+	. = ..()
+	GLOB.configuration.jobs_restrict.sanitize_job_checks()
