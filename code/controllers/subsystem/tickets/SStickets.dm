@@ -163,6 +163,10 @@ SUBSYSTEM_DEF(tickets)
 	L += "(<a href='byond://?_src_=holder;openticket=[ticketNum][anchor_link_extra]'>ТИКЕТ</a>) "
 	L += "[isAI(M) ? "(<a href='byond://?_src_=holder;adminchecklaws=[M.UID()]'>ЗАКОНЫ</a>)" : ""] (<a href='byond://?_src_=holder;take_question=[ticketNum][anchor_link_extra]'>ВЗЯТЬ</a>) "
 	L += "(<a href='byond://?_src_=holder;resolve=[ticketNum][anchor_link_extra]'>РЕШИТЬ</a>) (<a href='byond://?_src_=holder;autorespond=[ticketNum][anchor_link_extra]'>АВТО</a>) "
+	// SS220 ADDTITION START
+	if(GLOB.configuration.gpt.gpt_enabled)
+		L += "(<a href='byond://?_src_=holder;ai_respond=[ticketNum][anchor_link_extra]'>АВТО(ИИ)</a>) "
+	// SS220 ADDTITION END
 	L += "(<a href='byond://?_src_=holder;convert_ticket=[ticketNum][anchor_link_extra]'>КОНВЕРТ</a>) :</span> <span class='[ticket_help_span]'>[one_line ? " " : "<br><br>"][msg]</span>"
 	return L.Join()
 
