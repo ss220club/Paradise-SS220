@@ -8,7 +8,7 @@ CL_NOT_NEEDED = ":scroll: CL не требуется"
 DISCORD_EMBED_DESCRIPTION_LIMIT = 4096
 
 CL_BODY = re.compile(r"(:cl:|🆑)[ \t]*(?P<author>.+?)?\s*\n(?P<content>(.|\n)*?)\n/(:cl:|🆑)", re.MULTILINE)
-CL_SPLIT = re.compile(r"\s*(?:<!--.*-->)?((?P<tag>\w+)\s*:)?\s*(?P<message>.*)")
+CL_SPLIT = re.compile(r"\s*(?:(?P<tag>\w+)\s*:)?\s*(?P<message>.*)")
 
 DISCORD_TAG_EMOJI = {
     "soundadd": ":notes:",
@@ -55,8 +55,9 @@ def validate_changelog(changelog: dict):
         raise Exception(f"The changelog exceeds the length limit ({DISCORD_EMBED_DESCRIPTION_LIMIT}). Shorten it.")
 
 
-def parse_changelog(message: str, tags_config: dict = {}) -> dict | None:
-    cl_parse_result = CL_BODY.search(message)
+def parse_changelog(pr_body: str, tags_config: dict | None = None) -> dict | None:
+    clean_pr_body = re.sub(r"<!--.*?-->", "", pr_body, flags=re.DOTALL)
+    cl_parse_result = CL_BODY.search(clean_pr_body)
     if cl_parse_result is None:
         return None
 
@@ -69,10 +70,14 @@ def parse_changelog(message: str, tags_config: dict = {}) -> dict | None:
             raise Exception(f"Invalid change: '{cl_line}'")
         tag = change_parse_result["tag"]
         message = change_parse_result["message"]
+
         if tags_config and tag and tag not in tags_config['tags'].keys():
             raise Exception(f"Invalid tag: '{cl_line}'. Valid tags: {', '.join(tags_config['tags'].keys())}")
         if not message:
             raise Exception(f"No message for change: '{cl_line}'")
+
+        message = message.strip()
+
         if tags_config and message in list(tags_config['defaults'].values()): # Check to see if the tags are associated with something that isn't the default text
             raise Exception(f"Don't use default message for change: '{cl_line}'")
         if tag:
