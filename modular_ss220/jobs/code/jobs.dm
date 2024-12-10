@@ -129,6 +129,8 @@
 
 /mob/new_player/IsJobAvailable(rank)
 	. = ..()
+	if(!.)
+		return FALSE
 	var/datum/job/job = SSjobs.GetJob(rank)
 	if(job.species_ban(client))
 		return FALSE
