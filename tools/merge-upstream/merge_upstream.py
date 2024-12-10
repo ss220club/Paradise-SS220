@@ -1,7 +1,9 @@
+import enum
 import os
 import re
 import subprocess
 import time
+import typing
 from datetime import datetime
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from github import Github
@@ -10,23 +12,29 @@ from googletrans import Translator
 
 import changelog_utils
 
-CHANGELOG = "changelog"
-MERGE_ORDER = "merge_order"
-UPSTREAM_CONFIG_CHANGE_LABEL = "Configuration Change"
-UPSTREAM_SQL_CHANGE_LABEL = "SQL Change"
-UPSTREAM_WIKI_CHANGE_LABEL = "Requires Wiki Update"
-DOWNSTREAM_WIKI_CHANGE_LABEL = ":page_with_curl: Требуется изменение WIKI"
 
-TRACKED_LABELS = {
-    UPSTREAM_CONFIG_CHANGE_LABEL,
-    UPSTREAM_SQL_CHANGE_LABEL,
-    UPSTREAM_WIKI_CHANGE_LABEL,
-}
+class UpstreamLabel(str, enum.Enum):
+    CONFIG_CHANGE = "Configuration Change"
+    SQL_CHANGE = "SQL Change"
+    WIKI_CHANGE = "Requires Wiki Update"
+
+
+class DownstreamLabel(str, enum.Enum):
+    WIKI_CHANGE = ":page_with_curl: Требуется изменение WIKI"
+
+
+class PullDetails(typing.TypedDict):
+    changelog: typing.Dict[str, list[str]]
+    merge_oder: list[str]
+    config_changes: typing.Dict[str, PullRequest]
+    sql_changes: typing.Dict[str, PullRequest]
+    wiki_changes: typing.Dict[str, PullRequest]
+
 
 LABEL_BLOCK_STYLE = {
-    UPSTREAM_CONFIG_CHANGE_LABEL: "IMPORTANT",
-    UPSTREAM_SQL_CHANGE_LABEL: "IMPORTANT",
-    UPSTREAM_WIKI_CHANGE_LABEL: "NOTE",
+    UpstreamLabel.CONFIG_CHANGE: "IMPORTANT",
+    UpstreamLabel.SQL_CHANGE: "IMPORTANT",
+    UpstreamLabel.WIKI_CHANGE: "NOTE",
 }
 
 
@@ -92,7 +100,7 @@ def update_merge_branch():
 
     print(f"Resetting {MERGE_BRANCH} onto upstream/{UPSTREAM_BRANCH}...")
     run_command(f"git checkout {MERGE_BRANCH}")
-    result = run_command(f"git reset --hard upstream/{UPSTREAM_BRANCH}")
+    run_command(f"git reset --hard upstream/{UPSTREAM_BRANCH}")
 
     print("Pushing changes to origin...")
     run_command(f"git push origin {MERGE_BRANCH} --force")
@@ -123,14 +131,16 @@ def fetch_pull(pull_id) -> PullRequest | None:
                 return None
 
 
-def build_details(commit_log: list[str]) -> dict:
+def build_details(commit_log: list[str]) -> PullDetails:
     """Generate data from parsed commits."""
     print("Building details...")
-    details = {
-        CHANGELOG: {},
-        MERGE_ORDER: [match.group()[1:] for c in commit_log if (match := re.search("#\\d+", c))],
-        **{label: {} for label in TRACKED_LABELS}
-    }
+    details = PullDetails(
+        changelog={},
+        merge_oder=[match.group()[1:] for c in commit_log if (match := re.search("#\\d+", c))],
+        config_changes={},
+        sql_changes={},
+        wiki_changes={}
+    )
     pull_cache = {}
     translator = Translator()
 
@@ -167,8 +177,12 @@ def build_details(commit_log: list[str]) -> dict:
 
             try:
                 for label in labels:
-                    if label in TRACKED_LABELS:
-                        details[label][pull_id] = pull
+                    if label == UpstreamLabel.CONFIG_CHANGE.value:
+                        details["config_changes"][pull_id] = pull
+                    elif label == UpstreamLabel.SQL_CHANGE.value:
+                        details["sql_changes"][pull_id] = pull
+                    elif label == UpstreamLabel.WIKI_CHANGE.value:
+                        details["wiki_changes"][pull_id] = pull
 
                 parsed = changelog_utils.parse_changelog(pull.body)
                 if parsed and parsed["changes"]:
@@ -183,7 +197,7 @@ def build_details(commit_log: list[str]) -> dict:
                         pull_changes.append(change)
 
                 if pull_changes:
-                    details[CHANGELOG][pull_id] = pull_changes
+                    details["changelog"][pull_id] = pull_changes
             except Exception as e:
                 print(
                     f"An error occurred while processing {commit}\n"
@@ -195,7 +209,7 @@ def build_details(commit_log: list[str]) -> dict:
     return details
 
 
-def prepare_pull_body(details: dict) -> str:
+def prepare_pull_body(details: PullDetails) -> str:
     """Build new pull request body from the generated changelog."""
     pull_body = (
         f"This pull request merges upstream/{UPSTREAM_BRANCH}. "
@@ -205,32 +219,37 @@ def prepare_pull_body(details: dict) -> str:
     if not details:
         return pull_body
 
-    for label in TRACKED_LABELS:
-        if not details[label]:
+    label_to_changes = {
+        UpstreamLabel.CONFIG_CHANGE: details["config_changes"],
+        UpstreamLabel.SQL_CHANGE: details["sql_changes"],
+        UpstreamLabel.WIKI_CHANGE: details["wiki_changes"]
+    }
+    for label, changes in label_to_changes.items():
+        if not changes:
             continue
 
         pull_body += (
             f"\n> [!{LABEL_BLOCK_STYLE[label]}]\n"
-            f"> {label}:\n"
+            f"> {label.value}:\n"
         )
-        for _, pull in sorted(details[label].items()):
+        for _, pull in sorted(changes.items()):
             pull_body += f"> {pull.html_url}\n"
 
-    if not details[CHANGELOG]:
+    if not details["changelog"]:
         return pull_body
 
     pull_body += f"\n## Changelog\n"
     pull_body += f":cl: {CHANGELOG_AUTHOR}\n" if CHANGELOG_AUTHOR else ":cl:\n"
-    for pull_id in details[MERGE_ORDER]:
-        if pull_id not in details[CHANGELOG]:
+    for pull_id in details["merge_oder"]:
+        if pull_id not in details["changelog"]:
             continue
-        pull_body += f"{'\n'.join(details[CHANGELOG][pull_id])}\n"
+        pull_body += f"{'\n'.join(details["changelog"][pull_id])}\n"
     pull_body += "/:cl:\n"
 
     return pull_body
 
 
-def create_pr(details: dict):
+def create_pr(details: PullDetails):
     """Create a pull request with the processed changelog."""
     pull_body = prepare_pull_body(details)
 
@@ -246,8 +265,8 @@ def create_pr(details: dict):
         base=TARGET_BRANCH
     )
 
-    if details[UPSTREAM_WIKI_CHANGE_LABEL]:
-        pull.add_to_labels(DOWNSTREAM_WIKI_CHANGE_LABEL)
+    if details["wiki_changes"]:
+        pull.add_to_labels(DownstreamLabel.WIKI_CHANGE)
 
     print("Pull request created successfully.")
 
