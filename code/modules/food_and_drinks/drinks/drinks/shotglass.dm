@@ -1,6 +1,6 @@
 /obj/item/reagent_containers/drinks/drinkingglass/shotglass
 	name = "shot glass"
-	desc = "No glasses were shot in the making of this glass."
+	desc = "В процессе производства этой рюмки не было разбито ни одного бокала."
 	icon_state = "shotglass"
 	custom_fire_overlay = "shotglass_fire"
 	amount_per_transfer_from_this = 15
@@ -12,7 +12,7 @@
 
 /obj/item/reagent_containers/drinks/drinkingglass/shotglass/bluespace
 	name = "bluespace shot glass"
-	desc = "For when you need to make the Bartender's life extra hell."
+	desc = "Для тех случаев, когда нужно сделать жизнь бармена еще более адской."
 	amount_per_transfer_from_this = 50
 	volume = 50
 	icon_state = "bluespaceshotglass"
@@ -77,14 +77,14 @@
 		return
 	..()
 	set_light(light_intensity, null, light_color)
-	visible_message("<span class = 'notice'>[src] begins to burn with a blue hue!</span>")
+	visible_message("<span class = 'notice'>[capitalize(declent_ru(NOMINATIVE))] начинает гореть синим пламенем!</span>")
 	update_appearance(UPDATE_NAME|UPDATE_OVERLAYS)
 
 /obj/item/reagent_containers/drinks/drinkingglass/shotglass/extinguish(silent = FALSE)
 	..()
 	set_light(0)
 	if(!silent)
-		visible_message("<span class = 'notice'>The dancing flame on [src] dies out.</span>")
+		visible_message("<span class = 'notice'>Танцующее пламя на [declent_ru(PREPOSITIONAL)] гаснет.</span>")
 	update_appearance(UPDATE_NAME|UPDATE_OVERLAYS)
 
 /obj/item/reagent_containers/drinks/drinkingglass/shotglass/burn() //Let's override fire deleting the reagents inside the shot

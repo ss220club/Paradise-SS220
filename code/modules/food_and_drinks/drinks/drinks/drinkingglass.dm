@@ -2,7 +2,7 @@
 
 /obj/item/reagent_containers/drinks/drinkingglass
 	name = "glass"
-	desc = "Your standard drinking glass."
+	desc = "Обыкновенный стакан для напитков."
 	icon_state = "glass_empty"
 	item_state = "drinking_glass"
 	amount_per_transfer_from_this = 10
@@ -20,9 +20,9 @@
 		var/obj/item/food/egg/E = I
 		if(reagents)
 			if(reagents.total_volume >= reagents.maximum_volume)
-				to_chat(user, "<span class='notice'>[src] is full.</span>")
+				to_chat(user, "<span class='notice'>[declent_ru(NOMINATIVE)] полон.</span>")
 			else
-				to_chat(user, "<span class='notice'>You break [E] in [src].</span>")
+				to_chat(user, "<span class='notice'>Вы разбиваете [E.declent_ru(ACCUSATIVE)] в [declent_ru(ACCUSATIVE)].</span>")
 				E.reagents.trans_to(src, E.reagents.total_volume)
 				qdel(E)
 			return
@@ -53,7 +53,7 @@
 	else
 		icon_state = "glass_empty"
 		name = "glass"
-		desc = "Your standard drinking glass."
+		desc = "Обыкновенный стакан для напитков."
 
 // for /obj/machinery/economy/vending/sovietsoda
 /obj/item/reagent_containers/drinks/drinkingglass/soda
