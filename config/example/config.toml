@@ -185,7 +185,7 @@ ipc_screens = [
 # Enable/disable the database on a whole
 sql_enabled = false
 # SQL version. If this is a mismatch, round start will be delayed
-sql_version = 622207
+sql_version = 632207
 # SQL server address. Can be an IP or DNS name
 sql_address = "127.0.0.1"
 # SQL server port
@@ -1159,5 +1159,13 @@ tag = "vox_raiders"
 "antag_cap" = 4
 "team_size" = 4
 "candidates_required" = 2
+
+################################################################
+
+[gpt_configuration]
+gpt_enabled = false
+access_token = ""
+endpoint = "https://models.inference.ai.azure.com/chat/completions" # Allows github authorization with free tiers
+model = "gpt-4o"
 
 ################################################################
