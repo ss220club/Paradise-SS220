@@ -1162,6 +1162,14 @@ tag = "vox_raiders"
 
 ################################################################
 
+[gpt_configuration]
+gpt_enabled = false
+access_token = ""
+endpoint = "https://models.inference.ai.azure.com/chat/completions" # Allows github authorization with free tiers
+model = "gpt-4o"
+
+################################################################
+
 [job_configuration_restriction]
 
 # Should enable job ban for species
@@ -1251,6 +1259,5 @@ job_species_blacklist = [
 	{ name = "VIP Corporate Guest", species_blacklist = [] },
 	{ name = "Banker", species_blacklist = [] },
 	{ name = "Security Clown", species_blacklist = [] },
-]
 
 ################################################################
