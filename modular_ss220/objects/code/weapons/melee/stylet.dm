@@ -3,7 +3,7 @@
 	desc = "Маленький складной нож скрытого ношения. \
 	Нож в итальянском стиле, который исторически стал предметом споров и даже запретов \
 	Его лезвие практически мгновенно выбрасывается при нажатии кнопки-качельки."
-	slot_flags = SLOT_FLAG_BELT
+	slot_flags = ITEM_SLOT_BELT
 	w_class = WEIGHT_CLASS_TINY
 
 	var/on = FALSE
@@ -30,7 +30,7 @@
 	else
 		icon_state = "stylet_0"
 
-/obj/item/melee/stylet/attack_self(mob/user)
+/obj/item/melee/stylet/attack_self__legacy__attackchain(mob/user)
 	on = !on
 
 	if(on)

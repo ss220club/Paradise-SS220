@@ -1,9 +1,9 @@
 // "Микро-компонент" модульности ради...? Возможно, и, скорее всего, плохая идея.
-// Не использовал squeak.dm ибо у squeak есть регистрация COMSIG_ITEM_ATTACK_SELF, который мешает использовать attack_self() с проверкой интентов
+// Не использовал squeak.dm ибо у squeak есть регистрация COMSIG_ACTIVATE_SELF, который мешает использовать attack_self() с проверкой интентов
 /datum/component/plushtoy/Initialize()
 	. = ..()
 	// Пищит при ударах
-	RegisterSignal(parent, list(COMSIG_ATOM_HULK_ATTACK, COMSIG_PARENT_ATTACKBY, COMSIG_MOVABLE_BUMP, COMSIG_ITEM_ATTACK, COMSIG_ITEM_ATTACK_OBJ), PROC_REF(play_squeak))
+	RegisterSignal(parent, list(COMSIG_ATOM_HULK_ATTACK, COMSIG_ATTACK_BY, COMSIG_MOVABLE_BUMP, COMSIG_ATTACK, COMSIG_ATTACK_OBJ), PROC_REF(play_squeak))
 
 	// Пищит при наступании
 	RegisterSignal(parent, COMSIG_MOVABLE_CROSSED, PROC_REF(play_squeak_crossed))
@@ -53,7 +53,7 @@
 	icon_override = 'modular_ss220/objects/icons/inhead/head.dmi'
 	lefthand_file = 'modular_ss220/objects/icons/inhands/plushies_lefthand.dmi'
 	righthand_file = 'modular_ss220/objects/icons/inhands/plushies_righthand.dmi'
-	slot_flags = SLOT_FLAG_HEAD
+	slot_flags = ITEM_SLOT_HEAD
 	w_class = WEIGHT_CLASS_TINY
 	blood_color = "#d42929"
 	var/squeak = 'sound/items/squeaktoy.ogg'
@@ -65,7 +65,7 @@
 	AddComponent(/datum/component/plushtoy)
 
 // Действия при взаимодействии в руке при разных интентах
-/obj/item/toy/hampter/attack_self(mob/living/carbon/human/user)
+/obj/item/toy/hampter/attack_self__legacy__attackchain(mob/living/carbon/human/user)
 	. = ..()
 	// Небольшой кулдаун дабы нельзя было спамить
 	if(cooldown < world.time - 10)

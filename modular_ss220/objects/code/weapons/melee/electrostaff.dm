@@ -6,7 +6,7 @@
 	icon = 'modular_ss220/objects/icons/melee.dmi'
 	base_icon = "electrostaff"
 	icon_state = "electrostaff_orange"
-	slot_flags = SLOT_FLAG_BELT
+	slot_flags = ITEM_SLOT_BELT
 	w_class = WEIGHT_CLASS_HUGE
 	force = 10
 	throwforce = 7
@@ -66,8 +66,8 @@
 	if(unique_reskin)
 		. += span_notice("<b>Alt-click</b>, to reskin it.")
 
-/obj/item/melee/baton/electrostaff/attack_self(mob/user)
-	var/signal_ret = SEND_SIGNAL(src, COMSIG_ITEM_ATTACK_SELF, user)
+/obj/item/melee/baton/electrostaff/attack_self__legacy__attackchain(mob/user)
+	var/signal_ret = SEND_SIGNAL(src, COMSIG_ACTIVATE_SELF, user)
 	if(signal_ret & COMPONENT_NO_INTERACT)
 		return
 	if(signal_ret & COMPONENT_CANCEL_ATTACK_CHAIN)
