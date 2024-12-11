@@ -219,6 +219,12 @@
 	desc = "Пласталевый нож, устанавливаемый киборгам. Крайне острый и прочный."
 	origin_tech = null
 
+/obj/item/kitchen/knife/cheese
+	name = "cheese knife"
+	desc = "A blunt knife used to slice cheese."
+	icon_state = "knife-cheese"
+	force = 3
+
 /*
  * Rolling Pins
  */

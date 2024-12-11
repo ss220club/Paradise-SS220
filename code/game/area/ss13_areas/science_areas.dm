@@ -14,24 +14,16 @@
 	name = "Салон Робототехники"
 	icon_state = "showroom"
 
-// Experimentor
-
-/area/station/science/explab
-	name = "Лаборатория E.X.P.E.R.I-MENTOR"
-	icon_state = "scilab"
-	request_console_flags = RC_SUPPLY
-	request_console_name = "Science"
-
-/area/station/science/explab/chamber
-	name = "Камера E.X.P.E.R.I-MENTOR"
-	icon_state = "scitest"
-
 /area/station/science/research
 	name = "Отдел Исследований"
 	icon_state = "sci"
 
 /area/station/science/lobby
 	name = "Фойе Отдела Исследований"
+	icon_state = "sci"
+
+/area/station/science/testrange
+	name = "Research Test Range"
 	icon_state = "sci"
 
 /area/station/science/break_room
