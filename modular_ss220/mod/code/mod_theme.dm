@@ -147,13 +147,11 @@
 //MARK: ERT Red MODsuit
 /datum/mod_theme/responsory/red
 	name = "\improper 'Rhino' responsory"
-	desc = "A high-tech combat modsuit designed and produced by Nanotrasen. Well armored, environmentally sealed, and outfitted with all manner of useful gadgetry. \
-		The pinnacle of corporate security hardware."
-	extended_desc = "A streamlined suit of powered armor produced entirely in-house by the Nanotrasen Corporation, the NA-22 'Ward' rapid response suit is one of the finest combat modsuits available on the market today. \
-		Equipped with a fire-resistant polybenzimidazole bodyglove and lightweight nano-polymer impact panels underneath a steel armored shell, the NA-22 offers reliable protection \
-		while retaining combat mobility. Internally, the NA-22 comes pre-loaded with NTOS-11 on a five-year subscription, which enables unparallelled customization options in conjunction \
-		with the Ward's unusually generous design specifications. Naturally, the NA-22 has a price tag to match its quality, and is thus only found within Nanotrasen's \
-		personal response units, as well as among the wealthiest of Sector PMCs and mercenary groups."
+	desc = "Высокотехнологичный боевой Модульный Одевающий Девайс 'Носорог', разработанный и произведенный Нанотрейзен. Хорошо бронированный, герметичный и оснащенный всевозможными полезными приспособлениями. \
+		Лучшее корпоративное оборудование для обеспечения безопасности."
+	extended_desc = "Костюм быстрого реагирования NS-20 'Носорог' - один из самых лучших в категории 'цена и качество' из всех боевых костюмов на рынке. \
+		Внутри NS-20 установлена система NTOS-11 с пятилетней подпиской, что позволяет использовать несравненные возможности настройки в сочетании с \
+		необычайно щедрыми техническими характеристиками 'Носорога'. Цена NS-20 соответствует качеству, поэтому его можно встретить только в отряде быстрого реагирования Нанотрейзен."
 	default_skin = "rhino"
 	armor_type_1 = /obj/item/mod/armor/mod_theme_responsory/red
 
@@ -172,6 +170,7 @@
 		/obj/item/melee/baton,
 		/obj/item/gun,
 	)
+	species_allowed = list("Human")
 	skins = list(
 		"rhino" = list(
 			MOD_ICON_OVERRIDE = 'modular_ss220/mod/icons/object/mod_clothing.dmi',
