@@ -165,14 +165,6 @@
 	icon_state = "cola"
 	list_reagents = list("cola" = 30)
 
-/obj/item/reagent_containers/drinks/cans/beer
-	name = "space beer"
-	desc = "Содержит только воду, солод и хмель."
-	icon_state = "beer"
-	is_glass = TRUE
-	list_reagents = list("beer" = 30)
-
-
 /obj/item/reagent_containers/drinks/cans/adminbooze
 	name = "admin booze"
 	desc = "Слёзы забаненных игроков 10-летней выдержки, для услаждения работы админов."
@@ -193,14 +185,6 @@
 	icon_state = "badminbrew"
 	is_glass = TRUE
 	list_reagents = list("mutagen" = 25, "charcoal" = 10, "thirteenloko" = 15)
-
-/obj/item/reagent_containers/drinks/cans/ale
-	name = "Magm-Ale"
-	desc = "Напиток для истинных дворфов."
-	icon_state = "alebottle"
-	item_state = "beer"
-	is_glass = TRUE
-	list_reagents = list("ale" = 30)
 
 /obj/item/reagent_containers/drinks/cans/space_mountain_wind
 	name = "Space Mountain Wind"

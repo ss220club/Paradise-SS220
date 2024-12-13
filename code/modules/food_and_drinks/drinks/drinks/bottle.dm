@@ -279,14 +279,14 @@
 
 /obj/item/reagent_containers/drinks/bottle/beer
 	name = "space beer"
-	desc = "Contains only water, malt and hops."
+	desc = "Содержит только воду, солод и хмель."
 	icon_state = "beer"
 	volume = 50
 	list_reagents = list("beer" = 50)
 
 /obj/item/reagent_containers/drinks/bottle/ale
 	name = "Magm-Ale"
-	desc = "A true dorf's drink of choice."
+	desc = "Напиток для истинных дворфов."
 	icon_state = "alebottle"
 	volume = 50
 	list_reagents = list("ale" = 50)
