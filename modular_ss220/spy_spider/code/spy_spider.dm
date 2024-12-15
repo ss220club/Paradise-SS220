@@ -87,7 +87,7 @@
 		to_chat(usr, span_info("Тебе нужно подойти ближе, чтобы снять жучок с [src.declent_ru(GENITIVE)]."))
 		return
 	if(usr.stat || HAS_TRAIT(usr, TRAIT_HANDS_BLOCKED) || usr.restrained())
-		to_chat(usr, span_info("Тебе нужны свободные руки для этого")
+		to_chat(usr, span_info("Тебе нужны свободные руки для этого"))
 		return
 	if(isnull(src.spy_spider_attached))
 		to_chat(usr, span_info("На [src.declent_ru(PREPOSITIONAL)] нет жучка."))
@@ -95,10 +95,10 @@
 
 	var/obj/item/I = locate(spider_uid)
 	if(do_after(usr, 3 SECONDS, needhand = 1, target = src))
-			I.forceMove(get_turf(src))
-			usr.put_in_hands(I)
-			usr.visible_message("[usr] Что-то снимает с [src.declent_ru(GENITIVE)] !","<span class='notice'>Вы успешно снимаете жучок с [src.declent_ru(ACCUSATIVE)].</span>")
-			spy_spider_attached = null
+		I.forceMove(get_turf(src))
+		usr.put_in_hands(I)
+		usr.visible_message("[capitalize(usr.declent_ru(NOMINATIVE))] что-то снимает с [src.declent_ru(GENITIVE)] !","<span class='notice'>Вы успешно снимаете жучок с [src.declent_ru(ACCUSATIVE)].</span>")
+		spy_spider_attached = null
 
 
 /obj/item/clothing/Topic(href, href_list)
