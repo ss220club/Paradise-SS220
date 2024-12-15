@@ -12,3 +12,6 @@
 #define GADOM_BASIC_LOAD_TIMER 2 SECONDS
 
 #define isserpentid(A) (is_species(A, /datum/species/serpentid))
+
+/// Трейт ТТСа для робо рас
+#define TTS_TRAIT_ROBOTIZE "tts_trait_robotize"

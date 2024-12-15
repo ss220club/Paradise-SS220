@@ -10,6 +10,7 @@
 	force = 11
 	armour_penetration_flat = 30
 	tool_behaviour = TOOL_SAW
+	new_attack_chain = TRUE
 
 /obj/item/kitchen/knife/combat/serpentblade/Initialize(mapload)
 	. = ..()
