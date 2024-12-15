@@ -6,7 +6,7 @@
 	origin_tech = "biotech=2"
 	slot_flags = ITEM_SLOT_HEAD
 
-/obj/item/holder/attack(mob/living/target, mob/living/user, def_zone)
+/obj/item/holder/attack__legacy__attackchain(mob/living/target, mob/living/user, def_zone)
 	ASSERT(length(contents) > 0)
 	var/mob/living/simple_animal/animal = contents[1]
 	var/mob/living/carbon/devourer = target
@@ -57,7 +57,7 @@
 	icon = null // workaround to hide cringy holder lying on the floor for 1 sec
 	user.drop_item()
 
-/mob/living/simple_animal/attackby(obj/item/O, mob/living/user)
+/mob/living/simple_animal/attackby__legacy__attackchain(obj/item/O, mob/living/user)
 	if(user.a_intent == INTENT_HELP || user.a_intent == INTENT_GRAB)
 		if(istype(O, /obj/item/pet_carrier))
 			var/obj/item/pet_carrier/C = O

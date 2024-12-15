@@ -22,7 +22,7 @@
 		return ..()
 	return FALSE
 
-/obj/item/organ/internal/nucleation/attackby(obj/item/I, mob/living/user, params)
+/obj/item/organ/internal/nucleation/attackby__legacy__attackchain(obj/item/I, mob/living/user, params)
 	if(istype(I, /obj/item/organ/internal/nucleation) || istype(I, /obj/item/organ/internal/ears/resonant_crystal))
 		playsound(src, 'sound/effects/supermatter.ogg', 50, TRUE)
 		radiation_pulse(user, radiation_pulse_amount, radiation_pulse_range)
@@ -51,11 +51,11 @@
 	else
 		try_burn_hit(I, user)
 
-/obj/item/organ/internal/nucleation/attack(mob/living/carbon/M, mob/user)
+/obj/item/organ/internal/nucleation/attack__legacy__attackchain(mob/living/carbon/M, mob/user)
 	if(!try_burn_hit(affected_user = user, def_zone = user.zone_selected))
 		return ..()
 
-/obj/item/organ/internal/nucleation/attack_self(mob/user)
+/obj/item/organ/internal/nucleation/attack_self__legacy__attackchain(mob/user)
 	if(!try_burn_hit(affected_user = user, def_zone = user.zone_selected))
 		return ..()
 

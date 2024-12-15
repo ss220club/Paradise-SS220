@@ -21,7 +21,7 @@
 /obj/item/forensics/swab/proc/is_used()
 	return used
 
-/obj/item/forensics/swab/attack(mob/living/M, mob/user)
+/obj/item/forensics/swab/attack__legacy__attackchain(mob/living/M, mob/user)
 	if(!ishuman(M))
 		return ..()
 	if(is_used())
@@ -97,7 +97,7 @@
 		inuse = FALSE
 		return TRUE
 
-/obj/item/forensics/swab/afterattack(atom/A, mob/user, proximity)
+/obj/item/forensics/swab/afterattack__legacy__attackchain(atom/A, mob/user, proximity)
 
 	if(!proximity || istype(A, /obj/machinery/dnaforensics))
 		return

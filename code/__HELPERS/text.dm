@@ -280,6 +280,7 @@
 
 //Returns a string with the first element of the string capitalized.
 /proc/capitalize(t as text)
+	t = format_text(t) // SS220 EDIT
 	return uppertext(copytext_char(t, 1, 2)) + copytext_char(t, 2)
 
 //Centers text by adding spaces to either side of the string.
@@ -463,7 +464,13 @@
 			text = replacetext(text, "\[signfont\]",		"<font face=\"[signfont]\"><i>")
 			text = replacetext(text, "\[/signfont\]",		"</i></font>")
 	if(sign)
-		text = replacetext(text, "\[sign\]",	"<font face=\"[signfont]\"><i>[user ? user.real_name : "Anonymous"]</i></font>")
+		if(istype(P, /obj/item/pen/chameleon)) // if we are using chameleon pen use fake name from the pen
+			var/obj/item/pen/chameleon/chameleon_pen = P
+			add_attack_logs(user, "paper", "Has signed paper as [chameleon_pen.forge_name]")
+			// small tip for a player if the left forge_name empty
+			text = replacetext(text, "\[sign\]",	"<font face=\"[signfont]\"><i>[chameleon_pen.forge_name ? chameleon_pen.forge_name : "No name was provided"]</i></font>")
+		else
+			text = replacetext(text, "\[sign\]",	"<font face=\"[signfont]\"><i>[user ? user.real_name : "Anonymous"]</i></font>")
 	if(fields)
 		text = replacetext(text, "\[field\]",	"<span class=\"paper_field\"></span>")
 	if(format)
@@ -596,12 +603,12 @@
 	text = replacetext(text, "<img src='syndielogo.png'>",	"\[syndielogo\]")
 	return text
 
-/datum/html/split_holder
+/datum/html_split_holder
 	var/list/opening
 	var/inner_text
 	var/list/closing
 
-/datum/html/split_holder/New()
+/datum/html_split_holder/New()
 	opening = list()
 	inner_text = ""
 	closing = list()
@@ -609,7 +616,7 @@
 /proc/split_html(raw_text="")
 	// gently borrowed and re-purposed from code/modules/pda/utilities.dm
 	// define a datum to hold our result
-	var/datum/html/split_holder/s = new()
+	var/datum/html_split_holder/s = new()
 
 	// copy the raw_text to get started
 	var/text = copytext_char(raw_text, 1)
