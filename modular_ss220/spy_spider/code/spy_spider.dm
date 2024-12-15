@@ -96,10 +96,10 @@
 	var/obj/item/I = locate(spider_uid)
 	if(do_after(usr, 3 SECONDS, needhand = 1, target = src))
 		if(usr.put_in_any_hand_if_possible(I))
-			usr.visible_message("[capitalize(usr.declent_ru(NOMINATIVE))] что-то снимает с [src.declent_ru(GENITIVE)] !","<span class='notice'>Вы успешно снимаете жучок с [src.declent_ru(ACCUSATIVE)].</span>")
+			usr.visible_message("[capitalize(usr.declent_ru(NOMINATIVE))] что-то снимает с [src.declent_ru(GENITIVE)] !", span_notice("Вы успешно снимаете жучок с [src.declent_ru(ACCUSATIVE)]."))
 		else
 			I.forceMove(get_turf(src))
-			usr.visible_message("[capitalize(usr.declent_ru(NOMINATIVE))] роняет шпионский жучок на пол.","<span class='notice'>Вы роняете жучок на пол.</span>")
+			usr.visible_message("[capitalize(usr.declent_ru(NOMINATIVE))] роняет шпионский жучок на пол.", span_notice("Вы роняете жучок на пол."))
 		spy_spider_attached = null
 
 /obj/item/clothing/Topic(href, href_list)
