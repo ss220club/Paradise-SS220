@@ -116,26 +116,7 @@
 		"Syndicate Officer",
 		"Solar Federation General")
 	possible_species = list("Machine")
-	restricted_species = list(
-		"Abductor",
-		"Diona",
-		"Drask",
-		"Golem",
-		"Grey",
-		"Human",
-		"Kidan",
-		"Machine",
-		"Monkey",
-		"Moth",
-		"Plasmaman",
-		"Shadow",
-		"Skeleton_species",
-		"Skrell",
-		"Slimepeople",
-		"Tajaran",
-		"Unathi",
-		"Vox",
-		"Vulpkanin")
+
 
 /datum/antag_scenario/team/blood_brothers
 	name = "Blood Brothers"
