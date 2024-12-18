@@ -94,7 +94,7 @@
 	antag_role = ROLE_MIND_FLAYER
 	antag_special_role = SPECIAL_ROLE_MIND_FLAYER
 	antag_datum = /datum/antagonist/mindflayer
-	required_players = 10
+	required_players = 1
 	cost = 10
 	weight = 1
 	antag_cap = 1
@@ -115,6 +115,7 @@
 		"Special Operations Officer",
 		"Syndicate Officer",
 		"Solar Federation General")
+	possible_species = list("Machine")
 	restricted_species = list(
 		"Abductor",
 		"Diona",
