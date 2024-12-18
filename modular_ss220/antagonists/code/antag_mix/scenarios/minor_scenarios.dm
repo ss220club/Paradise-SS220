@@ -87,19 +87,19 @@
 		"Solar Federation General")
 	restricted_species = list("Machine")
 
-/datum/antag_scenario/mindflayer
+/datum/antag_scenario/Mindflayer
 	name = "Mindflayer"
 	config_tag = "mindflayer"
 	abstract = FALSE
 	antag_role = ROLE_MIND_FLAYER
 	antag_special_role = SPECIAL_ROLE_MIND_FLAYER
 	antag_datum = /datum/antagonist/mindflayer
-	required_players = 1
+	required_players = 10
 	cost = 10
 	weight = 1
 	antag_cap = 1
 	candidates_required = 1
-	restricted_roles = list("Cyborg", "AI")
+	restricted_roles = list("Cyborg", "AI", "Chaplain")
 	protected_roles = list(
 		"Security Cadet",
 		"Security Officer",
@@ -115,7 +115,26 @@
 		"Special Operations Officer",
 		"Syndicate Officer",
 		"Solar Federation General")
-	possible_species = list("Machine")
+	restricted_species = list(
+		"Abductor",
+		"Diona",
+		"Drask",
+		"Golem",
+		"Grey",
+		"Human",
+		"Kidan",
+		"Machine",
+		"Monkey",
+		"Moth",
+		"Plasmaman",
+		"Shadow",
+		"Skeleton_species",
+		"Skrell",
+		"Slimepeople",
+		"Tajaran",
+		"Unathi",
+		"Vox",
+		"Vulpkanin")
 
 /datum/antag_scenario/team/blood_brothers
 	name = "Blood Brothers"
