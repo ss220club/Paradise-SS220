@@ -87,7 +87,7 @@
 		"Solar Federation General")
 	restricted_species = list("Machine")
 
-/datum/antag_scenario/Mindflayer
+/datum/antag_scenario/mindflayer
 	name = "Mindflayer"
 	config_tag = "mindflayer"
 	abstract = FALSE
