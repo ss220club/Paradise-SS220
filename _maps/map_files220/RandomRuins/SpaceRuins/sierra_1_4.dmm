@@ -159,6 +159,13 @@
 	icon_state = "darkbluefull"
 	},
 /area/ruin/space/sierra/med)
+"bs" = (
+/obj/structure/lattice,
+/obj/structure/chair/office/dark{
+	dir = 8
+	},
+/turf/space,
+/area/space/nearstation)
 "bt" = (
 /obj/machinery/door/airlock/multi_tile,
 /obj/structure/disposalpipe/segment,
@@ -399,6 +406,9 @@
 /turf/space,
 /area/ruin/space/sierra/rnd)
 "dv" = (
+/obj/structure/table{
+	anchored = 0
+	},
 /turf/simulated/floor/plasteel/airless{
 	icon_state = "white"
 	},
@@ -772,6 +782,10 @@
 /obj/machinery/door/airlock/maintenance_hatch,
 /turf/simulated/floor/engine,
 /area/ruin/space/sierra/maint)
+"fX" = (
+/obj/effect/turf_decal/delivery,
+/turf/simulated/floor/plasteel/dark,
+/area/space/nearstation)
 "gb" = (
 /obj/machinery/atmospherics/unary/tank/air{
 	dir = 8
@@ -889,6 +903,9 @@
 "gJ" = (
 /obj/machinery/door/window/reinforced{
 	dir = 8
+	},
+/obj/structure/table{
+	anchored = 0
 	},
 /turf/simulated/floor/plating/airless,
 /area/ruin/space/sierra/rnd)
@@ -1654,7 +1671,7 @@
 	dir = 1
 	},
 /turf/space,
-/area/space)
+/area/ruin/space/sierra/rnd)
 "md" = (
 /obj/structure/railing{
 	dir = 8;
@@ -1712,8 +1729,11 @@
 	},
 /area/ruin/space/sierra/med)
 "mG" = (
-/obj/effect/turf_decal/delivery,
-/turf/simulated/floor/plasteel/dark,
+/obj/structure/lattice,
+/obj/structure/table{
+	anchored = 0
+	},
+/turf/space,
 /area/space/nearstation)
 "mH" = (
 /obj/structure/disposalpipe/segment,
@@ -1892,6 +1912,12 @@
 /obj/machinery/atmospherics/portable/scrubber,
 /turf/simulated/floor/plasteel,
 /area/ruin/space/sierra/rnd)
+"oh" = (
+/obj/structure/chair/office/dark{
+	dir = 4
+	},
+/turf/simulated/floor/plating/airless,
+/area/space/nearstation)
 "ok" = (
 /obj/machinery/chem_dispenser,
 /obj/item/reagent_containers/glass/beaker/large,
@@ -2020,6 +2046,13 @@
 	icon_state = "darkbluefull"
 	},
 /area/ruin/space/sierra/med)
+"pw" = (
+/obj/structure/lattice,
+/obj/structure/chair/office/dark{
+	dir = 1
+	},
+/turf/space,
+/area/space/nearstation)
 "px" = (
 /turf/simulated/floor/plasteel{
 	icon_state = "whitebluefull"
@@ -2105,11 +2138,10 @@
 /turf/simulated/floor/catwalk,
 /area/ruin/space/sierra/maint)
 "qp" = (
-/obj/structure/table{
-	anchored = 0
-	},
-/turf/space,
-/area/space)
+/obj/effect/mapping_helpers/turfs/damage,
+/obj/structure/chair/office/dark,
+/turf/simulated/floor/plasteel/airless,
+/area/space/nearstation)
 "qq" = (
 /obj/structure/closet/secure_closet/scientist,
 /turf/simulated/floor/plasteel/airless,
@@ -10608,7 +10640,7 @@ Ih
 Lp
 Uz
 XV
-mG
+fX
 XV
 Uz
 qT
@@ -10699,8 +10731,8 @@ qT
 sU
 sU
 sU
-qp
-qp
+sU
+sU
 qT
 sU
 sU
@@ -10798,12 +10830,12 @@ LH
 MF
 IN
 qT
-qT
+mG
 sU
 sU
 sU
 sU
-qT
+mG
 sU
 sU
 sU
@@ -10901,19 +10933,19 @@ ee
 hA
 qT
 sU
-qp
 sU
 sU
 sU
 sU
 sU
 sU
-qp
+sU
+sU
 sU
 qT
 LG
 Uz
-mG
+fX
 Uz
 Uz
 qT
@@ -11013,7 +11045,7 @@ sU
 sU
 sU
 sU
-Vv
+qp
 CP
 yN
 Vv
@@ -11412,10 +11444,10 @@ Rz
 qT
 sU
 sU
-qp
 sU
 sU
-qT
+sU
+bs
 sU
 sU
 sU
@@ -11723,9 +11755,9 @@ sU
 sU
 sU
 sU
-qT
+mG
 sU
-qp
+sU
 sU
 sU
 sU
@@ -13252,7 +13284,7 @@ YV
 Uv
 YV
 qT
-qT
+mG
 sU
 sU
 sU
@@ -13452,7 +13484,7 @@ MF
 MF
 qT
 qT
-qT
+mG
 qT
 nC
 sU
@@ -13461,7 +13493,7 @@ sU
 sU
 sU
 sU
-qp
+sU
 sU
 sU
 sU
@@ -13556,7 +13588,7 @@ qT
 sU
 Mn
 sU
-qp
+sU
 sU
 sU
 ux
@@ -13759,7 +13791,7 @@ sU
 sU
 Ad
 ph
-qp
+sU
 sU
 sU
 sU
@@ -13858,7 +13890,7 @@ qT
 sU
 sU
 sU
-qp
+sU
 sU
 sU
 sU
@@ -14064,14 +14096,14 @@ sU
 sU
 sU
 sU
-qT
+pw
 sU
 Wm
 sU
 sU
 gx
 sU
-qp
+sU
 sU
 sU
 sU
@@ -14263,15 +14295,15 @@ sU
 sU
 sU
 sU
+mG
 qT
-qT
 sU
 sU
 sU
 sU
 sU
 qT
-qT
+mG
 sU
 sU
 sU
@@ -14360,8 +14392,8 @@ qT
 sU
 sU
 sU
-qp
-qT
+sU
+mG
 sU
 sU
 sU
@@ -14873,7 +14905,7 @@ sU
 qT
 Xw
 qT
-sy
+oh
 Xw
 Ld
 Uz
