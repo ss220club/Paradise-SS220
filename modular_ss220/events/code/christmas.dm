@@ -130,7 +130,7 @@ GLOBAL_LIST_EMPTY(possible_gifts)
 	for(var/obj/machinery/light/lights in GLOB.machines)
 		lights.brightness_color = "#FFE6D9"
 		lights.nightshift_light_color = "#FFC399"
-	// Гирлянды
+	// Гурлянды
 	for(var/obj/structure/window/full/window in world)
 		if(is_type_in_typecache(window, decorated_objects))
 			window.edge_overlay_file = 'modular_ss220/events/icons/xmaslights.dmi'
@@ -179,7 +179,7 @@ GLOBAL_LIST_EMPTY(possible_gifts)
 		var/datum/supply_packs/misc/snow_machine/xmas = SSeconomy.supply_packs["[/datum/supply_packs/misc/snow_machine]"]
 		xmas.special = FALSE
 
-// Световые маски на гирлянды, красивое в темноте
+// Световые маски на гурлянды, красивое в темноте
 /obj/structure/window/full/update_overlays()
 	. = ..()
 	var/list/decorated_objects = /datum/holiday/xmas::decorated_objects
