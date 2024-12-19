@@ -118,37 +118,44 @@ GLOBAL_LIST_EMPTY(possible_gifts)
 
 // Рождество
 /datum/holiday/xmas
-	var/static/list/decorated_objects = typecacheof(list(
-		/obj/structure/window/full/basic,
-		/obj/structure/window/full/reinforced,
-		/obj/structure/window/full/plasmabasic,
-		/obj/structure/window/full/plasmareinforced,
-	))
+	var/light_color = "#FFE6D9"
+	var/nightshift_light_color = "#FFC399"
+	var/window_edge_overlay_file = 'modular_ss220/events/icons/xmaslights.dmi'
+	var/window_light_range = 4
+	var/window_light_power = 0.1
+	var/window_color = "#6CA66C"
 
 /datum/holiday/xmas/celebrate()
 	// Новогоднее освещение
 	for(var/obj/machinery/light/lights in GLOB.machines)
-		lights.brightness_color = "#FFE6D9"
-		lights.nightshift_light_color = "#FFC399"
+		lights.brightness_color = light_color
+		lights.nightshift_light_color = nightshift_light_color
+
 	// Гурлянды
-	for(var/obj/structure/window/full/window in world)
-		if(is_type_in_typecache(window, decorated_objects))
-			window.edge_overlay_file = 'modular_ss220/events/icons/xmaslights.dmi'
-			window.light_range = 4
-			window.light_power = 0.1
-			window.update_light()
-	for(var/turf/simulated/wall/indestructible/fakeglass/window in world)
-		window.edge_overlay_file = 'modular_ss220/events/icons/xmaslights.dmi'
-		window.light_range = 4
-		window.light_power = 0.1
+	for(var/obj/structure/window/full/reinforced/window in world)
+		window.edge_overlay_file = window_edge_overlay_file
+		window.light_range = window_light_range
+		window.light_power = window_light_power
 		window.update_light()
+	for(var/obj/structure/window/full/plasmareinforced/window in world)
+		window.edge_overlay_file = window_edge_overlay_file
+		window.light_range = window_light_range
+		window.light_power = window_light_power
+		window.update_light()
+	for(var/turf/simulated/wall/indestructible/fakeglass/window in world)
+		window.edge_overlay_file = window_edge_overlay_file
+		window.light_range = window_light_range
+		window.light_power = window_light_power
+		window.update_light()
+
 	// Новогодний цвет окон
 	for(var/obj/structure/window/windows in world)
-		windows.color = "#6CA66C"
+		windows.color = window_color
 	for(var/obj/machinery/door/window/windoor in world)
-		windoor.color = "#6CA66C"
+		windoor.color = window_color
 	for(var/turf/simulated/wall/indestructible/fakeglass/fakeglass in world)
-		fakeglass.color = "#6CA66C"
+		fakeglass.color = window_color
+
 	// Их не красить
 	for(var/obj/structure/window/full/plasmabasic/plasma in world)
 		plasma.color = null
@@ -158,32 +165,41 @@ GLOBAL_LIST_EMPTY(possible_gifts)
 		shuttle.color = null
 	for(var/obj/structure/window/full/plastitanium/syndie in world)
 		syndie.color = null
+
 	// Лучший подарок для лучшего экипажа
 	for(var/obj/structure/reagent_dispensers/beerkeg/nuke/beernuke in world)
 		beernuke.icon = 'modular_ss220/events/icons/nuclearbomb.dmi'
 	for(var/obj/machinery/nuclearbomb/nuke in world)
 		nuke.icon = 'modular_ss220/events/icons/nuclearbomb.dmi'
+
 	// Новогодние цветочки (И снеговик)
 	for(var/obj/item/kirbyplants/plants in world)
 		plants.icon = 'modular_ss220/events/icons/xmas.dmi'
 		plants.icon_state = "plant-[rand(1,9)]"
+
 	// Шляпа Иану
 	for(var/mob/living/simple_animal/pet/dog/corgi/ian/Ian in GLOB.mob_list)
 		Ian.place_on_head(new /obj/item/clothing/head/helmet/space/santahat)
+
 	// Снеговик в крафт
 	for(var/datum/crafting_recipe/snowman/S in GLOB.crafting_recipes)
 		S.always_available = TRUE
 		break
+
 	//The following spawn is necessary as both the timer and the shuttle systems initialise after the events system does, so we can't add stuff to the shuttle system as it doesn't exist yet and we can't use a timer
 	spawn(60 SECONDS)
 		var/datum/supply_packs/misc/snow_machine/xmas = SSeconomy.supply_packs["[/datum/supply_packs/misc/snow_machine]"]
 		xmas.special = FALSE
 
 // Световые маски на гурлянды, красивое в темноте
-/obj/structure/window/full/update_overlays()
+/obj/structure/window/full/reinforced/update_overlays()
 	. = ..()
-	var/list/decorated_objects = /datum/holiday/xmas::decorated_objects
-	if((CHRISTMAS in SSholiday.holidays) && is_type_in_typecache(src, decorated_objects))
+	if(CHRISTMAS in SSholiday.holidays)
+		underlays += emissive_appearance(edge_overlay_file, "[smoothing_junction]_lightmask")
+
+/obj/structure/window/full/plasmareinforced/update_overlays()
+	. = ..()
+	if(CHRISTMAS in SSholiday.holidays)
 		underlays += emissive_appearance(edge_overlay_file, "[smoothing_junction]_lightmask")
 
 /turf/simulated/wall/indestructible/fakeglass/update_overlays()
