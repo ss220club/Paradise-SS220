@@ -117,6 +117,27 @@
 		"Solar Federation General")
 	possible_species = list("Machine")
 
+	restricted_species = list(
+		"Abductor",
+		"Ancient Skeleton",
+		"Diona",
+		"Drask",
+		"Golem",
+		"Grey",
+		"Human",
+		"Kidan",
+		"Monkey",
+		"Nian",
+		"Plasmaman",
+		"Shadow",
+		"Skrell",
+		"Slime People",
+		"Tajaran",
+		"Unathi",
+		"Vox",
+		"Vulpkanin",
+		"Nucleation")
+
 /datum/antag_scenario/team/blood_brothers
 	name = "Blood Brothers"
 	config_tag = "blood_brothers"
