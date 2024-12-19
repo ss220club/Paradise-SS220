@@ -66,6 +66,8 @@ GLOBAL_LIST_EMPTY(possible_gifts)
 	desc = "Превосходная новогодняя ёлка."
 	icon = 'modular_ss220/events/icons/xmastree.dmi'
 	icon_state = "xmas_tree"
+	light_range = 6
+	light_power = 1
 	resistance_flags = INDESTRUCTIBLE // Protected by the christmas spirit
 
 /obj/structure/flora/tree/pine/xmas/Initialize(mapload)
