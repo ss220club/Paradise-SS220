@@ -4,11 +4,15 @@ import re
 import subprocess
 import time
 import typing
+
 from datetime import datetime
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from pathlib import Path
+
 from github import Github
 from github.PullRequest import PullRequest
-from googletrans import Translator
+from github.Repository import Repository
+from openai import OpenAI
 
 import changelog_utils
 
@@ -23,12 +27,19 @@ class DownstreamLabel(str, enum.Enum):
     WIKI_CHANGE = ":page_with_curl: Требуется изменение WIKI"
 
 
+class Change(typing.TypedDict):
+    tag: str
+    message: str
+    translated_message: typing.NotRequired[str]
+    pull: PullRequest
+
+
 class PullDetails(typing.TypedDict):
-    changelog: typing.Dict[str, list[str]]
-    merge_order: list[str]
-    config_changes: typing.Dict[str, PullRequest]
-    sql_changes: typing.Dict[str, PullRequest]
-    wiki_changes: typing.Dict[str, PullRequest]
+    changelog: typing.Dict[int, list[Change]]
+    merge_order: list[int]
+    config_changes: list[PullRequest]
+    sql_changes: list[PullRequest]
+    wiki_changes: list[PullRequest]
 
 
 LABEL_BLOCK_STYLE = {
@@ -48,12 +59,17 @@ def check_env():
         "UPSTREAM_BRANCH",
         "MERGE_BRANCH"
     ]
+    if TRANSLATE_CHANGES:
+        required_vars.append("OPENAI_API_KEY")
     missing_vars = [var for var in required_vars if not os.getenv(var)]
     if missing_vars:
         raise EnvironmentError(f"Missing required environment variables: {', '.join(missing_vars)}")
 
 
 # Environment variables
+TRANSLATE_CHANGES = os.getenv("TRANSLATE_CHANGES", "False").lower() in ("true", "yes", "1")
+CHANGELOG_AUTHOR = os.getenv("CHANGELOG_AUTHOR", "")
+
 check_env()
 GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
 TARGET_REPO = os.getenv("TARGET_REPO")
@@ -61,8 +77,7 @@ TARGET_BRANCH = os.getenv("TARGET_BRANCH")
 UPSTREAM_REPO = os.getenv("UPSTREAM_REPO")
 UPSTREAM_BRANCH = os.getenv("UPSTREAM_BRANCH")
 MERGE_BRANCH = os.getenv("MERGE_BRANCH")
-TRANSLATE_CHANGES = os.getenv("TRANSLATE_CHANGES", "False").lower() in ("true", "yes", "1")
-CHANGELOG_AUTHOR = os.getenv("CHANGELOG_AUTHOR", "")
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 
 def run_command(command) -> str:
@@ -114,7 +129,7 @@ def detect_commits() -> list[str]:
     return commit_log
 
 
-def fetch_pull(pull_id) -> PullRequest | None:
+def fetch_pull(pull_number) -> PullRequest | None:
     """Fetch the pull request from GitHub."""
     github = Github(GITHUB_TOKEN)
     repo = github.get_repo(UPSTREAM_REPO)
@@ -122,91 +137,137 @@ def fetch_pull(pull_id) -> PullRequest | None:
     max_retries = 3
     for attempt in range(max_retries):
         try:
-            return repo.get_pull(int(pull_id))
+            return repo.get_pull(int(pull_number))
         except Exception as e:
-            print(f"Error fetching PR #{pull_id}: {e}")
+            print(f"Error fetching PR #{pull_number}: {e}")
             if attempt + 1 < max_retries:
                 time.sleep(2)
             else:
                 return None
 
 
-def build_details(commit_log: list[str]) -> PullDetails:
+def build_details(commit_log: list[str],
+                  translate: typing.Optional[typing.Callable[[typing.Dict[int, list[Change]]], None]]) -> PullDetails:
     """Generate data from parsed commits."""
     print("Building details...")
+    pull_number_pattern = re.compile("#(?P<id>\\d+)")
     details = PullDetails(
         changelog={},
-        merge_order=[match.group()[1:] for c in commit_log if (match := re.search("#\\d+", c))],
-        config_changes={},
-        sql_changes={},
-        wiki_changes={}
+        merge_order=[int(match.group("id")) for c in commit_log if (match := re.search(pull_number_pattern, c))],
+        config_changes=[],
+        sql_changes=[],
+        wiki_changes=[]
     )
     pull_cache = {}
-    translator = Translator()
 
     with ThreadPoolExecutor() as executor:
         futures = {}
         for commit in commit_log:
-            match = re.search("#\\d+", commit)
+            match = re.search(pull_number_pattern, commit)
             if not match:
                 print(f"Skipping {commit}")
                 continue
 
-            pull_id = match.group()[1:]
+            pull_number = int(match.group("id"))
 
-            if pull_id in pull_cache:
+            if pull_number in pull_cache:
                 print(
                     f"WARNING: pull duplicate found.\n"
-                    f"1: {pull_cache[pull_id]}\n"
+                    f"1: {pull_cache[pull_number]}\n"
                     f"2: {commit}"
                 )
                 print(f"Skipping {commit}")
                 continue
 
-            pull_cache[pull_id] = commit
-            futures[executor.submit(fetch_pull, pull_id)] = pull_id
+            pull_cache[pull_number] = commit
+            futures[executor.submit(fetch_pull, pull_number)] = pull_number
 
         for future in as_completed(futures):
-            pull_id = futures[future]
+            pull_number = futures[future]
             pull: PullRequest | None = future.result()
-            labels = [label.name for label in pull.get_labels()]
-            pull_changes = []
 
             if not pull:
+                print(f"Pull {pull_number} was not fetched. Skipping.")
                 continue
 
-            try:
-                for label in labels:
-                    if label == UpstreamLabel.CONFIG_CHANGE.value:
-                        details["config_changes"][pull_id] = pull
-                    elif label == UpstreamLabel.SQL_CHANGE.value:
-                        details["sql_changes"][pull_id] = pull
-                    elif label == UpstreamLabel.WIKI_CHANGE.value:
-                        details["wiki_changes"][pull_id] = pull
+            process_pull(details, pull)
 
-                parsed = changelog_utils.parse_changelog(pull.body)
-                if parsed and parsed["changes"]:
-                    for change in parsed["changes"]:
-                        tag = change["tag"]
-                        message = change["message"]
-                        if TRANSLATE_CHANGES:
-                            translated_message = translator.translate(message, src="en", dest="ru").text
-                            change = f"{tag}: {translated_message} <!-- {tag}: {message} ({pull.html_url}) -->"
-                        else:
-                            change = f"{tag}: {message} <!-- ({pull.html_url}) -->"
-                        pull_changes.append(change)
-
-                if pull_changes:
-                    details["changelog"][pull_id] = pull_changes
-            except Exception as e:
-                print(
-                    f"An error occurred while processing {commit}\n"
-                    f"URL: {pull.html_url}\n"
-                    f"Body: {pull.body}"
-                )
-                raise e
+    if translate:
+        translate(details["changelog"])
 
     return details
+
+
+def process_pull(details: PullDetails, pull: PullRequest):
+    """Handle fetched pull request data during details building."""
+    pull_number = pull.number
+    labels = [label.name for label in pull.get_labels()]
+    pull_changes = []
+    try:
+        for label in labels:
+            if label == UpstreamLabel.CONFIG_CHANGE.value:
+                details["config_changes"].append(pull)
+            elif label == UpstreamLabel.SQL_CHANGE.value:
+                details["sql_changes"].append(pull)
+            elif label == UpstreamLabel.WIKI_CHANGE.value:
+                details["wiki_changes"].append(pull)
+
+        parsed = changelog_utils.parse_changelog(pull.body)
+        if parsed and parsed["changes"]:
+            for change in parsed["changes"]:
+                pull_changes.append(Change(
+                    tag=change["tag"],
+                    message=change["message"],
+                    pull=pull
+                ))
+
+        if pull_changes:
+            details["changelog"][pull_number] = pull_changes
+    except Exception as e:
+        print(
+            f"An error occurred while processing {pull.html_url}\n"
+            f"Body: {pull.body}"
+        )
+        raise e
+
+
+def translate_changelog(changelog: typing.Dict[int, list[Change]]):
+    """Translate changelog using OpenAI API."""
+    print("Translating changelog...")
+    if not changelog:
+        return
+
+    changes = [change for changes in changelog.values() for change in changes]
+    if not changes:
+        return
+
+    script_dir = Path(__file__).resolve().parent
+    with open(script_dir.joinpath("translation_context.txt"), encoding="utf-8") as f:
+        context = "\n".join(f.readlines()).strip()
+    text = "\n".join([change["message"] for change in changes])
+
+    client = OpenAI(
+        base_url="https://models.inference.ai.azure.com",
+        api_key=OPENAI_API_KEY,
+    )
+    response = client.chat.completions.create(
+        messages=[
+            {"role": "system", "content": context},
+            {"role": "user", "content": text}
+        ],
+        temperature=1.0,
+        top_p=1.0,
+        model="gpt-4o",
+    )
+    translated_text = response.choices[0].message.content
+
+    for change, translated_message in zip(changes, translated_text.split("\n"), strict=True):
+        change["translated_message"] = translated_message
+
+
+def silence_pull_url(pull_url: str) -> str:
+    """Reformat HTTP URL with 'www' prefix to prevent pull request linking."""
+    return re.sub("https?://", "www.", pull_url)
 
 
 def prepare_pull_body(details: PullDetails) -> str:
@@ -219,43 +280,48 @@ def prepare_pull_body(details: PullDetails) -> str:
     if not details:
         return pull_body
 
-    label_to_changes = {
+    label_to_pulls = {
         UpstreamLabel.CONFIG_CHANGE: details["config_changes"],
         UpstreamLabel.SQL_CHANGE: details["sql_changes"],
         UpstreamLabel.WIKI_CHANGE: details["wiki_changes"]
     }
-    for label, changes in label_to_changes.items():
-        if not changes:
+    for label, fetched_pulls in label_to_pulls.items():
+        if not fetched_pulls:
             continue
 
         pull_body += (
             f"\n> [!{LABEL_BLOCK_STYLE[label]}]\n"
             f"> {label.value}:\n"
         )
-        for _, pull in sorted(changes.items()):
-            pull_body += f"> {pull.html_url}\n"
+        for fetched_pull in fetched_pulls:
+            pull_body += f"> {silence_pull_url(fetched_pull.html_url)}\n"
 
     if not details["changelog"]:
         return pull_body
 
     pull_body += f"\n## Changelog\n"
     pull_body += f":cl: {CHANGELOG_AUTHOR}\n" if CHANGELOG_AUTHOR else ":cl:\n"
-    for pull_id in details["merge_order"]:
-        if pull_id not in details["changelog"]:
+    for pull_number in details["merge_order"]:
+        if pull_number not in details["changelog"]:
             continue
-        pull_body += f"{'\n'.join(details["changelog"][pull_id])}\n"
+        for change in details["changelog"][pull_number]:
+            tag = change["tag"]
+            message = change["message"]
+            translated_message = change.get("translated_message")
+            pull_url = silence_pull_url(change["pull"].html_url)
+            if translated_message:
+                pull_body += f"{tag}: {translated_message} <!-- {message} ({pull_url}) -->\n"
+            else:
+                pull_body += f"{tag}: {message} <!-- ({pull_url}) -->\n"
     pull_body += "/:cl:\n"
 
     return pull_body
 
 
-def create_pr(details: PullDetails):
+def create_pr(repo: Repository, details: PullDetails):
     """Create a pull request with the processed changelog."""
     pull_body = prepare_pull_body(details)
-
     print("Creating pull request...")
-    github = Github(GITHUB_TOKEN)
-    repo = github.get_repo(TARGET_REPO)
 
     # Create the pull request
     pull = repo.create_pull(
@@ -271,14 +337,28 @@ def create_pr(details: PullDetails):
     print("Pull request created successfully.")
 
 
+def check_pull_exists(repo: Repository, base: str, head: str):
+    """Check if the merge pull request already exist. In this case, fail the action."""
+    print("Checking on existing pull request...")
+    existing_pulls = repo.get_pulls(state="open", base=base, head=head)
+    for pull in existing_pulls:
+        print(f"Pull request already exists. {pull.html_url}")
+
+    if existing_pulls.totalCount:
+        exit(1)
+
 if __name__ == "__main__":
+    github = Github(GITHUB_TOKEN)
+    repo = github.get_repo(TARGET_REPO)
+
+    check_pull_exists(repo, TARGET_BRANCH, MERGE_BRANCH)
     setup_repo()
 
     update_merge_branch()
     commit_log = detect_commits()
 
     if commit_log:
-        details = build_details(commit_log)
-        create_pr(details)
+        details = build_details(commit_log, translate_changelog if TRANSLATE_CHANGES else None)
+        create_pr(repo, details)
     else:
         print(f"No changes detected from {UPSTREAM_REPO}/{UPSTREAM_BRANCH}. Skipping pull request creation.")
