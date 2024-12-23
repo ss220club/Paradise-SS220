@@ -133,12 +133,14 @@ def detect_commits() -> list[str]:
     return commit_log
 
 
-def fetch_pull(repo: Repository, pull_number: int) -> PullRequest | None:
+def fetch_pull(github: Github, pull_number: int) -> PullRequest | None:
     """Fetch the pull request from GitHub."""
+    upstream_repo: Repository = github.get_repo(UPSTREAM_REPO)
+
     max_retries = 3
     for attempt in range(max_retries):
         try:
-            return repo.get_pull(int(pull_number))
+            return upstream_repo.get_pull(int(pull_number))
         except Exception as e:
             print(f"Error fetching PR #{pull_number}: {e}")
             if attempt + 1 < max_retries:
@@ -147,7 +149,7 @@ def fetch_pull(repo: Repository, pull_number: int) -> PullRequest | None:
                 return None
 
 
-def build_details(repo: Repository, commit_log: list[str],
+def build_details(github: Github, commit_log: list[str],
                   translate: typing.Optional[typing.Callable[[typing.Dict[int, list[Change]]], None]]) -> PullDetails:
     """Generate data from parsed commits."""
     print("Building details...")
@@ -181,7 +183,7 @@ def build_details(repo: Repository, commit_log: list[str],
                 continue
 
             pull_cache[pull_number] = commit
-            futures[executor.submit(fetch_pull, repo, pull_number)] = pull_number
+            futures[executor.submit(fetch_pull, github, pull_number)] = pull_number
 
         for future in as_completed(futures):
             pull_number = futures[future]
@@ -343,10 +345,10 @@ def create_pr(repo: Repository, details: PullDetails):
     print("Pull request created successfully.")
 
 
-def check_pull_exists(repo: Repository, base: str, head: str):
+def check_pull_exists(target_repo: Repository, base: str, head: str):
     """Check if the merge pull request already exist. In this case, fail the action."""
     print("Checking on existing pull request...")
-    existing_pulls: PaginatedList[PullRequest] = repo.get_pulls(state="open", base=base, head=head)
+    existing_pulls: PaginatedList[PullRequest] = target_repo.get_pulls(state="open", base=base, head=head)
     for pull in existing_pulls:
         print(f"Pull request already exists. {pull.html_url}")
 
@@ -355,16 +357,16 @@ def check_pull_exists(repo: Repository, base: str, head: str):
 
 if __name__ == "__main__":
     github = Github(GITHUB_TOKEN)
-    repo: Repository = github.get_repo(TARGET_REPO)
+    target_repo: Repository = github.get_repo(TARGET_REPO)
 
-    check_pull_exists(repo, TARGET_BRANCH, MERGE_BRANCH)
+    check_pull_exists(target_repo, TARGET_BRANCH, MERGE_BRANCH)
     setup_repo()
 
     update_merge_branch()
     commit_log: list[str] = detect_commits()
 
     if commit_log:
-        details: PullDetails = build_details(repo, commit_log, translate_changelog if TRANSLATE_CHANGES else None)
-        create_pr(repo, details)
+        details: PullDetails = build_details(github, commit_log, translate_changelog if TRANSLATE_CHANGES else None)
+        create_pr(target_repo, details)
     else:
         print(f"No changes detected from {UPSTREAM_REPO}/{UPSTREAM_BRANCH}. Skipping pull request creation.")
