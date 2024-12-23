@@ -37,6 +37,8 @@
 	var/list/protected_roles = list()
 	/// Species that can't be chosen for the scenario
 	var/list/restricted_species = list()
+	/// Only species that can be chosen for the scenario
+	var/list/allowed_species = list("All")
 	/// List of available candidates for this scenario
 	var/list/mob/new_player/candidates = list()
 	/// List of players that were drafted to be antagonists of this scenario
@@ -176,6 +178,7 @@
 	for(var/mob/new_player/candidate as anything in candidates)
 		var/client/candidate_client = candidate.client
 		var/datum/mind/candidate_mind = candidate.mind
+		var/my_specie = candidate_client.prefs.active_character.species
 		if(!candidate_client || !candidate_mind || !candidate.ready)
 			candidates.Remove(candidate)
 			continue
@@ -196,7 +199,11 @@
 			candidates.Remove(candidate)
 			continue
 
-		if(!(antag_role in candidate.client.prefs.be_special) || (candidate.client.prefs.active_character.species in restricted_species))
+		if(!(antag_role in candidate_client.prefs.be_special) || (my_specie in restricted_species))
+			candidates.Remove(candidate)
+			continue
+
+		if(!(("All" in allowed_species) || (my_specie in allowed_species)))
 			candidates.Remove(candidate)
 			continue
 
