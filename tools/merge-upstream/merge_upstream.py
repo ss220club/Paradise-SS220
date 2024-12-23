@@ -6,13 +6,17 @@ import time
 import typing
 
 from datetime import datetime
-from concurrent.futures import ThreadPoolExecutor, as_completed
+from concurrent.futures import ThreadPoolExecutor, Future, as_completed
 from pathlib import Path
+from re import Pattern
+from subprocess import CompletedProcess
 
 from github import Github
+from github.PaginatedList import PaginatedList
 from github.PullRequest import PullRequest
 from github.Repository import Repository
 from openai import OpenAI
+from openai.types.chat import ChatCompletion
 
 import changelog_utils
 
@@ -80,10 +84,10 @@ MERGE_BRANCH = os.getenv("MERGE_BRANCH")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 
-def run_command(command) -> str:
+def run_command(command: str) -> str:
     """Run a shell command and return its output."""
     try:
-        result = subprocess.run(command, shell=True, capture_output=True, text=True)
+        result: CompletedProcess[str] = subprocess.run(command, shell=True, capture_output=True, text=True)
         result.check_returncode()
         return result.stdout.strip()
     except subprocess.CalledProcessError as e:
@@ -105,7 +109,7 @@ def update_merge_branch():
     print(f"Fetching branch {UPSTREAM_BRANCH} from upstream...")
     run_command(f"git fetch upstream {UPSTREAM_BRANCH}")
     run_command(f"git fetch origin")
-    all_branches = run_command("git branch -a").split()
+    all_branches: list[str] = run_command("git branch -a").split()
 
     if f"remotes/origin/{MERGE_BRANCH}" not in all_branches:
         print(f"Branch '{MERGE_BRANCH}' does not exist. Creating it from upstream/{UPSTREAM_BRANCH}...")
@@ -124,16 +128,13 @@ def update_merge_branch():
 def detect_commits() -> list[str]:
     """Detect commits from upstream not yet in downstream."""
     print("Detecting new commits from upstream...")
-    commit_log = run_command(f"git log {TARGET_BRANCH}..{MERGE_BRANCH} --pretty=format:'%h %s'").split("\n")
+    commit_log: list[str] = run_command(f"git log {TARGET_BRANCH}..{MERGE_BRANCH} --pretty=format:'%h %s'").split("\n")
     commit_log.reverse()
     return commit_log
 
 
-def fetch_pull(pull_number) -> PullRequest | None:
+def fetch_pull(repo: Repository, pull_number: int) -> PullRequest | None:
     """Fetch the pull request from GitHub."""
-    github = Github(GITHUB_TOKEN)
-    repo = github.get_repo(UPSTREAM_REPO)
-
     max_retries = 3
     for attempt in range(max_retries):
         try:
@@ -146,11 +147,11 @@ def fetch_pull(pull_number) -> PullRequest | None:
                 return None
 
 
-def build_details(commit_log: list[str],
+def build_details(repo: Repository, commit_log: list[str],
                   translate: typing.Optional[typing.Callable[[typing.Dict[int, list[Change]]], None]]) -> PullDetails:
     """Generate data from parsed commits."""
     print("Building details...")
-    pull_number_pattern = re.compile("#(?P<id>\\d+)")
+    pull_number_pattern: Pattern[str] = re.compile("#(?P<id>\\d+)")
     details = PullDetails(
         changelog={},
         merge_order=[int(match.group("id")) for c in commit_log if (match := re.search(pull_number_pattern, c))],
@@ -158,10 +159,10 @@ def build_details(commit_log: list[str],
         sql_changes=[],
         wiki_changes=[]
     )
-    pull_cache = {}
+    pull_cache: dict[int, str] = {}
 
     with ThreadPoolExecutor() as executor:
-        futures = {}
+        futures: dict[Future, int] = {}
         for commit in commit_log:
             match = re.search(pull_number_pattern, commit)
             if not match:
@@ -180,7 +181,7 @@ def build_details(commit_log: list[str],
                 continue
 
             pull_cache[pull_number] = commit
-            futures[executor.submit(fetch_pull, pull_number)] = pull_number
+            futures[executor.submit(fetch_pull, repo, pull_number)] = pull_number
 
         for future in as_completed(futures):
             pull_number = futures[future]
@@ -200,9 +201,9 @@ def build_details(commit_log: list[str],
 
 def process_pull(details: PullDetails, pull: PullRequest):
     """Handle fetched pull request data during details building."""
-    pull_number = pull.number
-    labels = [label.name for label in pull.get_labels()]
-    pull_changes = []
+    pull_number: int = pull.number
+    labels: list[str] = [label.name for label in pull.get_labels()]
+    pull_changes: list[Change] = []
     try:
         for label in labels:
             if label == UpstreamLabel.CONFIG_CHANGE.value:
@@ -237,7 +238,7 @@ def translate_changelog(changelog: typing.Dict[int, list[Change]]):
     if not changelog:
         return
 
-    changes = [change for changes in changelog.values() for change in changes]
+    changes: list[Change] = [change for changes in changelog.values() for change in changes]
     if not changes:
         return
 
@@ -250,7 +251,7 @@ def translate_changelog(changelog: typing.Dict[int, list[Change]]):
         base_url="https://models.inference.ai.azure.com",
         api_key=OPENAI_API_KEY,
     )
-    response = client.chat.completions.create(
+    response: ChatCompletion = client.chat.completions.create(
         messages=[
             {"role": "system", "content": context},
             {"role": "user", "content": text}
@@ -259,7 +260,12 @@ def translate_changelog(changelog: typing.Dict[int, list[Change]]):
         top_p=1.0,
         model="gpt-4o",
     )
-    translated_text = response.choices[0].message.content
+    translated_text: str | None = response.choices[0].message.content
+
+    if not translated_text:
+        print("WARNING: changelog translation failed!")
+        print(response)
+        return
 
     for change, translated_message in zip(changes, translated_text.split("\n"), strict=True):
         change["translated_message"] = translated_message
@@ -272,7 +278,7 @@ def silence_pull_url(pull_url: str) -> str:
 
 def prepare_pull_body(details: PullDetails) -> str:
     """Build new pull request body from the generated changelog."""
-    pull_body = (
+    pull_body: str = (
         f"This pull request merges upstream/{UPSTREAM_BRANCH}. "
         f"Resolve possible conflicts manually and make sure all the changes are applied correctly.\n"
     )
@@ -280,7 +286,7 @@ def prepare_pull_body(details: PullDetails) -> str:
     if not details:
         return pull_body
 
-    label_to_pulls = {
+    label_to_pulls: dict[UpstreamLabel, list[PullRequest]] = {
         UpstreamLabel.CONFIG_CHANGE: details["config_changes"],
         UpstreamLabel.SQL_CHANGE: details["sql_changes"],
         UpstreamLabel.WIKI_CHANGE: details["wiki_changes"]
@@ -305,10 +311,10 @@ def prepare_pull_body(details: PullDetails) -> str:
         if pull_number not in details["changelog"]:
             continue
         for change in details["changelog"][pull_number]:
-            tag = change["tag"]
-            message = change["message"]
-            translated_message = change.get("translated_message")
-            pull_url = silence_pull_url(change["pull"].html_url)
+            tag: str = change["tag"]
+            message: str = change["message"]
+            translated_message: str | None = change.get("translated_message")
+            pull_url: str = silence_pull_url(change["pull"].html_url)
             if translated_message:
                 pull_body += f"{tag}: {translated_message} <!-- {message} ({pull_url}) -->\n"
             else:
@@ -320,11 +326,11 @@ def prepare_pull_body(details: PullDetails) -> str:
 
 def create_pr(repo: Repository, details: PullDetails):
     """Create a pull request with the processed changelog."""
-    pull_body = prepare_pull_body(details)
+    pull_body: str = prepare_pull_body(details)
     print("Creating pull request...")
 
     # Create the pull request
-    pull = repo.create_pull(
+    pull: PullRequest = repo.create_pull(
         title=f"Merge Upstream {datetime.today().strftime('%d.%m.%Y')}",
         body=pull_body,
         head=MERGE_BRANCH,
@@ -340,7 +346,7 @@ def create_pr(repo: Repository, details: PullDetails):
 def check_pull_exists(repo: Repository, base: str, head: str):
     """Check if the merge pull request already exist. In this case, fail the action."""
     print("Checking on existing pull request...")
-    existing_pulls = repo.get_pulls(state="open", base=base, head=head)
+    existing_pulls: PaginatedList[PullRequest] = repo.get_pulls(state="open", base=base, head=head)
     for pull in existing_pulls:
         print(f"Pull request already exists. {pull.html_url}")
 
@@ -349,16 +355,16 @@ def check_pull_exists(repo: Repository, base: str, head: str):
 
 if __name__ == "__main__":
     github = Github(GITHUB_TOKEN)
-    repo = github.get_repo(TARGET_REPO)
+    repo: Repository = github.get_repo(TARGET_REPO)
 
     check_pull_exists(repo, TARGET_BRANCH, MERGE_BRANCH)
     setup_repo()
 
     update_merge_branch()
-    commit_log = detect_commits()
+    commit_log: list[str] = detect_commits()
 
     if commit_log:
-        details = build_details(commit_log, translate_changelog if TRANSLATE_CHANGES else None)
+        details: PullDetails = build_details(repo, commit_log, translate_changelog if TRANSLATE_CHANGES else None)
         create_pr(repo, details)
     else:
         print(f"No changes detected from {UPSTREAM_REPO}/{UPSTREAM_BRANCH}. Skipping pull request creation.")
