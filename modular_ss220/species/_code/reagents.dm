@@ -1,6 +1,6 @@
 /obj/item/seeds/cabbage/Initialize(mapload)
 	. = ..()
-	reagents_add += list("cabbagilium" = 0.01)
+	reagents_add += list("cabbagilium" = 0.1)
 
 /datum/reagent/cabbagilium
 	name = "Cabbagilium"
@@ -146,7 +146,6 @@
 	mix_message = "The mixture fizzes into a vibrant red solution that doesn't stay still."
 	mix_sound = 'sound/goonstation/misc/fuse.ogg'
 
-
 //Пара помощников - получить количество и путь химиката по его ID в теле куклы
 /mob/living/carbon/human/proc/get_chemical_value(id)
 	for(var/datum/reagent/R in src.reagents.reagent_list)
@@ -160,3 +159,76 @@
 		if(R.id == id)
 			return R
 	return null
+
+//Ивентовые рецепты (Удалить?)
+/datum/chemical_reaction/serpentid_eyes
+	name = "Serpeye"
+	id = "serpeye"
+	result = null
+	required_reagents = list("blood" = 100, "facid" = 50, "mitocholide" = 50, "sanguine_reagent" = 50, "plasma_dust" = 20, "cabbagilium" = 10, "oculine" = 20)
+	result_amount = 1
+
+/datum/chemical_reaction/serpentid_eyes/on_reaction(datum/reagents/holder, created_volume)
+	var/location = get_turf(holder.my_atom)
+	for(var/i = 1, i <= created_volume, i++)
+		new /obj/item/organ/internal/eyes/serpentid(location)
+
+/datum/chemical_reaction/serpentid_ears
+	name = "Serpears"
+	id = "serpears"
+	result = null
+	required_reagents = list("blood" = 100, "facid" = 50, "mitocholide" = 50, "sanguine_reagent" = 50, "plasma_dust" = 20, "cabbagilium" = 10, "sonic_powder" = 20)
+	result_amount = 1
+
+/datum/chemical_reaction/serpentid_ears/on_reaction(datum/reagents/holder, created_volume)
+	var/location = get_turf(holder.my_atom)
+	for(var/i = 1, i <= created_volume, i++)
+		new /obj/item/organ/internal/ears/serpentid(location)
+
+/datum/chemical_reaction/serpentid_lungs
+	name = "Serplungs"
+	id = "serplungs"
+	result = null
+	required_reagents = list("blood" = 100, "facid" = 50, "mitocholide" = 50, "sanguine_reagent" = 50, "plasma_dust" = 20, "cabbagilium" = 10, "perfluorodecalin" = 20)
+	result_amount = 1
+
+/datum/chemical_reaction/serpentid_lungs/on_reaction(datum/reagents/holder, created_volume)
+	var/location = get_turf(holder.my_atom)
+	for(var/i = 1, i <= created_volume, i++)
+		new /obj/item/organ/internal/lungs/serpentid(location)
+
+/datum/chemical_reaction/serpentid_liver
+	name = "Serpliver"
+	id = "serpliver"
+	result = null
+	required_reagents = list("blood" = 100, "facid" = 50, "mitocholide" = 50, "sanguine_reagent" = 50, "plasma_dust" = 20, "cabbagilium" = 10, "nutriment" = 20)
+	result_amount = 1
+
+/datum/chemical_reaction/serpentid_liver/on_reaction(datum/reagents/holder, created_volume)
+	var/location = get_turf(holder.my_atom)
+	for(var/i = 1, i <= created_volume, i++)
+		new /obj/item/organ/internal/liver/serpentid(location)
+
+/datum/chemical_reaction/serpentid_heart
+	name = "Serpheart"
+	id = "serpheart"
+	result = null
+	required_reagents = list("blood" = 100, "facid" = 50, "mitocholide" = 50, "sanguine_reagent" = 50, "plasma_dust" = 20, "cabbagilium" = 10, "teslium" = 20)
+	result_amount = 1
+
+/datum/chemical_reaction/serpentid_heart/on_reaction(datum/reagents/holder, created_volume)
+	var/location = get_turf(holder.my_atom)
+	for(var/i = 1, i <= created_volume, i++)
+		new /obj/item/organ/internal/heart/serpentid(location)
+
+/datum/chemical_reaction/serpentid_kidneys
+	name = "Serpkidneys"
+	id = "serpkidneys"
+	result = null
+	required_reagents = list("blood" = 100, "facid" = 50, "mitocholide" = 50, "sanguine_reagent" = 50, "plasma_dust" = 20, "cabbagilium" = 10, "synaptizine" = 20)
+	result_amount = 1
+
+/datum/chemical_reaction/serpentid_kidneys/on_reaction(datum/reagents/holder, created_volume)
+	var/location = get_turf(holder.my_atom)
+	for(var/i = 1, i <= created_volume, i++)
+		new /obj/item/organ/internal/kidneys/serpentid(location)
