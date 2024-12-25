@@ -24,7 +24,7 @@
 	if(!Adjacent(usr))
 		return
 	if(IsFrozen(src) && !is_admin(usr))
-		to_chat(usr, "<span class='boldannounceic'>Interacting with admin-frozen players is not permitted.</span>")
+		to_chat(usr, span_boldannounce("Interacting with admin-frozen players is not permitted."))
 		return
 	if((SEND_SIGNAL(usr, COMSIG_GADOM_CAN_GRAB) & GADOM_CAN_GRAB))
 		SEND_SIGNAL(usr, COMSIG_GADOM_LOAD, usr, src)

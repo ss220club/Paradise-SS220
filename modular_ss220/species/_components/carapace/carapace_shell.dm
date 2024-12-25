@@ -203,8 +203,8 @@
 /datum/surgery_step/finish_carapace/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message(
-		"<span class='notice'>[user] has mended the damaged carapace in [target]'s [affected.name] with \the [tool].</span>",
-		"<span class='notice'>You have mended the damaged carapace in [target]'s [affected.name] with \the [tool].</span>",
+		span_notice("[user] has mended the damaged carapace in [target]'s [affected.name] with \the [tool]."),
+		span_notice("You have mended the damaged carapace in [target]'s [affected.name] with \the [tool]."),
 		chat_message_type = MESSAGE_TYPE_COMBAT
 	)
 	SEND_SIGNAL(target, COMSIG_SURGERY_REPAIR)
@@ -213,8 +213,8 @@
 /datum/surgery_step/finish_carapace/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message(
-		"<span class='warning'>[user]'s hand slips, smearing [tool] in the incision in [target]'s [affected.name]!</span>",
-		"<span class='warning'>Your hand slips, smearing [tool] in the incision in [target]'s [affected.name]!</span>",
+		span_notice("[user]'s hand slips, smearing [tool] in the incision in [target]'s [affected.name]!"),
+		span_notice("Your hand slips, smearing [tool] in the incision in [target]'s [affected.name]!"),
 		chat_message_type = MESSAGE_TYPE_COMBAT
 	)
 	return SURGERY_STEP_RETRY

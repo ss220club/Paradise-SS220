@@ -88,13 +88,13 @@
 		if(arm_item)
 			if(istype(arm_item, /obj/item/offhand))
 				var/obj/item/offhand_arm_item = owner.get_active_hand()
-				to_chat(owner, "<span class='warning'>Your hands are too encumbered wielding [offhand_arm_item] to deploy [src]!</span>")
+				to_chat(owner, span_warning("Your hands are too encumbered wielding [offhand_arm_item] to deploy [src]!"))
 				return
 			else if(!owner.unEquip(arm_item))
-				to_chat(owner, "<span class='warning'>Your [arm_item] interferes with [src]!</span>")
+				to_chat(owner, span_warning("Your [arm_item] interferes with [src]!"))
 				return
 			else
-				to_chat(owner, "<span class='notice'>You drop [arm_item] to activate [src]!</span>")
+				to_chat(owner, span_notice("You drop [arm_item] to activate [src]!"))
 
 	if(!owner.put_in_l_hand(holder_l))
 		return
@@ -128,7 +128,7 @@
 		if(blades_implant.blades_active)
 			if((M != H) && M.a_intent != INTENT_HELP && H.check_shields(M, 0, M.name, attack_type = UNARMED_ATTACK))
 				add_attack_logs(M, H, "Melee attacked with blades (miss/block)")
-				H.visible_message("<span class='warning'>[M] attempted to touch [H]!</span>")
+				H.visible_message(span_warning("[M] attempted to touch [H]!"))
 				return FALSE
 
 			switch(M.a_intent)
@@ -152,7 +152,7 @@
 //Модификация усиленного граба
 /datum/species/proc/blades_grab(mob/living/carbon/human/user, mob/living/carbon/human/target, datum/martial_art/attacker_style)
 	if(target.check_block())
-		target.visible_message("<span class='warning'>[target] blocks [user]'s grab attempt!</span>")
+		target.visible_message(span_warning("[target] blocks [user]'s grab attempt!"))
 		return FALSE
 	if(!attacker_style && target.buckled)
 		target.buckled.user_unbuckle_mob(target, user)
@@ -169,12 +169,12 @@
 	if(user == target)
 		return FALSE
 	if(target.check_block())
-		target.visible_message("<span class='warning'>[target] blocks [user]'s disarm attempt!</span>")
+		target.visible_message(span_warning("[target] blocks [user]'s disarm attempt!"))
 		return FALSE
 	if(SEND_SIGNAL(target, COMSIG_HUMAN_ATTACKED, user) & COMPONENT_CANCEL_ATTACK_CHAIN)
 		return FALSE
 	if(target.absorb_stun(0))
-		target.visible_message("<span class='warning'>[target] is not affected by [user]'s disarm attempt!</span>")
+		target.visible_message(span_warning("[target] is not affected by [user]'s disarm attempt!"))
 		user.do_attack_animation(target, ATTACK_EFFECT_DISARM)
 		playsound(target.loc, 'sound/weapons/punchmiss.ogg', 25, TRUE, -1)
 		return FALSE
@@ -227,8 +227,8 @@
 		var/moved = target.Move(shove_to, shove_dir)
 		if(!moved) //they got pushed into a dense object
 			add_attack_logs(user, target, "Disarmed into a dense object", ATKLOG_ALL)
-			target.visible_message("<span class='warning'>[user] slams [target] into an obstacle!</span>", \
-									"<span class='userdanger'>You get slammed into the obstacle by [user]!</span>", \
+			target.visible_message(span_warning("[user] slams [target] into an obstacle!"), \
+									span_userdanger("You get slammed into the obstacle by [user]!"), \
 									"You hear a loud thud.")
 			if(!HAS_TRAIT(target, TRAIT_FLOORED))
 				target.KnockDown(3 SECONDS)
@@ -244,19 +244,19 @@
 				target.Slowed(2.5 SECONDS, 0.5)
 				var/obj/item/I = target.get_active_hand()
 				if(I)
-					to_chat(target, "<span class='warning'>Your grip on [I] loosens!</span>")
+					to_chat(target, span_warning("Your grip on [I] loosens!"))
 				add_attack_logs(user, target, "Disarmed, shoved back", ATKLOG_ALL)
 		target.stop_pulling()
 
 //Модификация усиленного дизарма
 /datum/species/proc/blades_harm(mob/living/carbon/human/user, mob/living/carbon/human/target, datum/martial_art/attacker_style)
 	if(HAS_TRAIT(user, TRAIT_PACIFISM))
-		to_chat(user, "<span class='warning'>You don't want to harm [target]!</span>")
+		to_chat(user, span_warning("You don't want to harm [target]!"))
 		return FALSE
 	if(target != user && handle_harm_antag(user, target))
 		return FALSE
 	if(target.check_block())
-		target.visible_message("<span class='warning'>[target] blocks [user]'s attack!</span>")
+		target.visible_message(span_warning("[target] blocks [user]'s attack!"))
 		return FALSE
 	if(SEND_SIGNAL(target, COMSIG_HUMAN_ATTACKED, user) & COMPONENT_CANCEL_ATTACK_CHAIN)
 		return FALSE
