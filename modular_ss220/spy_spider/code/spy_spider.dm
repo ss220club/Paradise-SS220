@@ -152,8 +152,11 @@
 
 	if(istype(A, /obj/item/clothing))
 		var/obj/item/clothing/scanned_clothing = A
+		usr.visible_message("[capitalize(usr.declent_ru(NOMINATIVE))] сканирует одежду на наличие шпиоского устройства.")
+
 		if(scanned_clothing.spy_spider_attached)
-			sleep(1 SECONDS)
 			// Triger /obj/item/clothing/Topic
 			add_log(span_info("<a href='byond://?src=[scanned_clothing.UID()];remove_spy_spider=[scanned_clothing.spy_spider_attached.UID()];' class='warning'><b>Найдено шпионское устройство!</b></a>"))
+		else
+			usr.visible_message("Но ничего не находит")
 	scanning = FALSE
