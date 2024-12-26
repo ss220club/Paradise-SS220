@@ -3,6 +3,7 @@
 #define SERPENTID_COLD_THRESHOLD_LEVEL_DOWN 40
 #define SERPENTID_HEAT_THRESHOLD_LEVEL_BASE 350
 #define SERPENTID_HEAT_THRESHOLD_LEVEL_UP 60
+#define SERPENTID_LUNGS_SAFE_TIMER 10 SECONDS
 
 /obj/item/organ/internal/lungs/serpentid
 	name = "thacheal bag"
@@ -16,10 +17,11 @@
 	var/chemical_consuption = SERPENTID_ORGAN_HUNGER_LUNGS
 	var/obj/item/tank/internals/oxygen/serpentid_vault = new /obj/item/tank/internals/oxygen/serpentid_vault_tank
 	var/chem_to_oxy_mult = 0.1
-	var/danger_air = FALSE
 	var/hand_active = FALSE
 	var/active_secretion = FALSE
 	var/salbutamol_production = 0.5
+	var/last_safe_zone_check = 0
+	var/last_danger_air_check = 0
 	radial_action_state = "ballon"
 	radial_action_icon = 'modular_ss220/species/serpentids/icons/organs.dmi'
 
@@ -50,59 +52,75 @@
 	heat_level_2_threshold = SERPENTID_HEAT_THRESHOLD_LEVEL_BASE + SERPENTID_HEAT_THRESHOLD_LEVEL_UP
 	heat_level_3_threshold = SERPENTID_HEAT_THRESHOLD_LEVEL_BASE + 2*SERPENTID_HEAT_THRESHOLD_LEVEL_UP
 
+/obj/item/organ/internal/lungs/serpentid/proc/switch_mode_on()
+	if(owner?.nutrition >= NUTRITION_LEVEL_HYPOGLYCEMIA)
+		active_secretion = TRUE
+		chemical_consuption = initial(chemical_consuption)
+		last_safe_zone_check = world.time
+	else
+		switch_mode_off()
+
+/obj/item/organ/internal/lungs/serpentid/proc/switch_mode_off()
+	active_secretion = FALSE
+	chemical_consuption = 0
+
 /obj/item/organ/internal/lungs/serpentid/switch_mode(force_off = FALSE)
 	. = ..()
-	if(!hand_active)
-		owner.internal = serpentid_vault
-		hand_active = TRUE
+	if(!force_off && !(status & ORGAN_DEAD))
+		switch_mode_on()
 	else
-		owner.internal = null
-		hand_active = FALSE
+		switch_mode_off()
+	SEND_SIGNAL(src, COMSIG_ORGAN_CHANGE_CHEM_CONSUPTION, chemical_consuption)
 
 /obj/item/organ/internal/lungs/serpentid/on_life()
 	. = ..()
 	if(!owner)
 		return
 
-	var/datum/gas_mixture/breath
 	var/datum/organ/lungs/serpentid/lung_data = organ_datums[organ_tag]
-	var/breath_moles = 0
 	var/turf/T = get_turf(owner)
 	var/datum/gas_mixture/environment = get_turf_air(T)
+	var/danger_air = lung_data.in_danger_zone(environment)
 
-	if(environment)
-		breath_moles = environment.total_moles()*BREATH_PERCENTAGE
-	breath = environment.get_by_amount(breath_moles)
-	danger_air = lung_data.in_danger_zone(breath)
+	if(last_danger_air_check)
+		last_safe_zone_check = world.time
 
-	if(owner.getOxyLoss())
-		if(!active_secretion)
-			switch_mode(FALSE)
-		else
+	last_danger_air_check = danger_air
+
+	if(active_secretion)
+		// Если Серпентид выделяет вещества и задыхается - подать сальбутамол
+		if(owner.getOxyLoss())
 			owner.reagents.add_reagent("salbutamol", salbutamol_production)
-	else
-		if(active_secretion)
-			switch_mode(TRUE)
 
-	if(!hand_active)
-		if(danger_air && (owner.stat == UNCONSCIOUS))
-			if(!owner.internal)
-				owner.internal = serpentid_vault
-		else if(!danger_air && owner.internal == serpentid_vault)
-			owner.internal = null
+		// Если Серпентид выделяет вещества, но среда опасна и не активен "болон" - дышать через мешок
+		if(danger_air && !owner.internal)
+			owner.internal = serpentid_vault
+
+		// Если Серпентид выделяет вещества, но среда не опасна и с момента последней проверки на безопасность дыхание прошло более 10 секунд - прекращение выделения
+		var/safe_zone_timer = world.time - last_safe_zone_check
+		if(safe_zone_timer > SERPENTID_LUNGS_SAFE_TIMER && !danger_air)
+			switch_mode_off()
+
+	// Если Серпентид не выделяет вещества, и среда опасна и он без сознания - начать выделять вещества
+	if(danger_air && (owner.stat == UNCONSCIOUS) && !active_secretion)
+		if(!owner.internal)
+			switch_mode_on()
+
+	// Если среда не опасна и Серпентид дышит через мешок - дышать нормально
+	if(!danger_air && owner.internal == serpentid_vault)
+		owner.internal = null
 
 	var/datum/gas_mixture/int_tank_air = serpentid_vault.air_contents
 	var/pressure_value = int_tank_air.return_pressure()
+	// Если давление в мешке ниже нормы (50 КПа)
 	if(pressure_value < 50)
 		var/replenish_value = 0
+		// Если среда опасна, вырабатывать кислород химические, иначе наполнять его через среду
 		if(danger_air)
-			if(!active_secretion)
-				switch_mode(FALSE)
-			else
+			if(active_secretion)
 				replenish_value = chemical_consuption * chem_to_oxy_mult
 		else
-			if(active_secretion)
-				switch_mode(TRUE)
+			var/breath_moles = 0
 			if(environment)
 				breath_moles = environment.total_moles()*BREATH_PERCENTAGE
 			var/datum/gas_mixture/replenish_gas = environment.get_by_amount(breath_moles)
@@ -115,15 +133,15 @@
 
 //Без этого псевдо-баллон не работает (отрубается так как не проходит проверки основы)
 /mob/living/carbon/breathe(datum/gas_mixture/environment)
-	var/obj/item/organ/internal/lungs/lugns = null
+	var/obj/item/organ/internal/lungs/lungs = null
 	for(var/obj/item/organ/internal/O in src.internal_organs)
 		if(istype(O, /obj/item/organ/internal/lungs))
-			lugns = O
-	if(istype(lugns, /obj/item/organ/internal/lungs/serpentid))
-		var/obj/item/organ/internal/lungs/serpentid/serpentid_lungs = lugns
+			lungs = O
+	if(istype(lungs, /obj/item/organ/internal/lungs/serpentid))
+		var/obj/item/organ/internal/lungs/serpentid/serpentid_lungs = lungs
 		if(src.internal == serpentid_lungs.serpentid_vault)
 			var/mob/living/carbon/human/puppet = src
-			var/breath = puppet.serpen_lugns(BREATH_VOLUME)
+			var/breath = puppet.serpen_lungs(BREATH_VOLUME)
 			check_breath(breath)
 			if(breath)
 				environment.merge(breath)
@@ -133,7 +151,7 @@
 			return
 	. = ..()
 
-/mob/living/carbon/human/proc/serpen_lugns(volume_needed)
+/mob/living/carbon/human/proc/serpen_lungs(volume_needed)
 	if(internal)
 		return internal.remove_air_volume(volume_needed)
 	return null
@@ -212,16 +230,7 @@
 
 	return danger_zone
 
-/obj/item/organ/internal/lungs/serpentid/switch_mode(force_off = FALSE)
-	. = ..()
-	if(!force_off && owner?.nutrition >= NUTRITION_LEVEL_HYPOGLYCEMIA && !(status & ORGAN_DEAD))
-		active_secretion = TRUE
-		chemical_consuption = initial(chemical_consuption)
-	else
-		active_secretion = FALSE
-		chemical_consuption = 0
-	SEND_SIGNAL(src, COMSIG_ORGAN_CHANGE_CHEM_CONSUPTION, chemical_consuption)
-
+#undef SERPENTID_LUNGS_SAFE_TIMER
 #undef SERPENTID_COLD_THRESHOLD_LEVEL_BASE
 #undef SERPENTID_COLD_THRESHOLD_LEVEL_DOWN
 #undef SERPENTID_HEAT_THRESHOLD_LEVEL_BASE

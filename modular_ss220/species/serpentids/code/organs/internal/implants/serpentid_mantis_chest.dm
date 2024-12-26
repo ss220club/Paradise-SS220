@@ -18,6 +18,7 @@
 	var/activation_in_progress = FALSE
 	unremovable = TRUE
 	emp_proof = TRUE
+	var/first_recollor = TRUE
 
 /datum/action/item_action/organ_action/toggle/switch_blades
 	name = "Switch Threat Mode"
@@ -27,6 +28,9 @@
 
 /obj/item/organ/internal/cyberimp/chest/serpentid_blades/on_life()
 	. = ..()
+	if(first_recollor)
+		update_overlays()
+		first_recollor = FALSE
 	if(blades_active)
 		var/isleft = owner.hand
 		var/obj/item/item = (isleft ? owner.get_inactive_hand() : owner.get_active_hand())
