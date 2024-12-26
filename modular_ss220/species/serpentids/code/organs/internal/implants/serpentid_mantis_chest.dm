@@ -29,7 +29,7 @@
 /obj/item/organ/internal/cyberimp/chest/serpentid_blades/on_life()
 	. = ..()
 	if(first_recollor)
-		update_overlays()
+		update_icon(UPDATE_OVERLAYS)
 		first_recollor = FALSE
 	if(blades_active)
 		var/isleft = owner.hand
