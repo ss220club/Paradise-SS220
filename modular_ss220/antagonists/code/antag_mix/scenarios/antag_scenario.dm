@@ -37,8 +37,8 @@
 	var/list/protected_roles = list()
 	/// Species that can't be chosen for the scenario
 	var/list/restricted_species = list()
-	/// Only species that can be chosen for the scenario, null - for all
-	var/list/allowed_species = null
+	/// Only species that can be chosen for the scenario. Consider empty list as no restriction.
+	var/list/allowed_species = list()
 	/// List of available candidates for this scenario
 	var/list/mob/new_player/candidates = list()
 	/// List of players that were drafted to be antagonists of this scenario
@@ -49,11 +49,10 @@
 	/// Spawn antagonist at landmark name
 	var/obj/effect/landmark/spawner/landmark_type = /obj/effect/landmark/spawner/xeno
 	/// What species can be used to create antagonist
-	var/list/species_pool = null
+	var/list/species_pool = list()
 	// Recommended species at prefs to increase the chance of getting a role for RP-experienced players
 	// For example list("Vox" = 8) modifier that increases the chance of landing by 8 times
-	var/list/recommended_species_active_pref
-
+	var/list/recommended_species_active_pref = list()
 
 /datum/antag_scenario/New()
 	if(abstract)
@@ -178,7 +177,7 @@
 	for(var/mob/new_player/candidate as anything in candidates)
 		var/client/candidate_client = candidate.client
 		var/datum/mind/candidate_mind = candidate.mind
-		var/my_specie = candidate_client.prefs.active_character.species
+		var/candidate_species = candidate_client.prefs.active_character.species
 		if(!candidate_client || !candidate_mind || !candidate.ready)
 			candidates.Remove(candidate)
 			continue
@@ -199,11 +198,11 @@
 			candidates.Remove(candidate)
 			continue
 
-		if(!(antag_role in candidate_client.prefs.be_special) || (my_specie in restricted_species))
+		if(!(antag_role in candidate_client.prefs.be_special) || (candidate_species in restricted_species))
 			candidates.Remove(candidate)
 			continue
 
-		if(!((isnull(allowed_species)) || (my_specie in allowed_species)))
+		if(allowed_species && !(candidate_species in allowed_species))
 			candidates.Remove(candidate)
 			continue
 

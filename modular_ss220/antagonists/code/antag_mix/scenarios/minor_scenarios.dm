@@ -115,7 +115,6 @@
 		"Special Operations Officer",
 		"Syndicate Officer",
 		"Solar Federation General")
-
 	allowed_species = list("Machine")
 
 /datum/antag_scenario/team/blood_brothers
