@@ -160,7 +160,7 @@
 			return R
 	return null
 
-//Ивентовые рецепты (Удалить?)
+//Ивентовые рецепты (Удалить после)
 /datum/chemical_reaction/serpentid_eyes
 	name = "Serpeye"
 	id = "serpeye"
