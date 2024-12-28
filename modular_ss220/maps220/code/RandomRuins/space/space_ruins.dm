@@ -96,4 +96,4 @@
 	suffix = "sierra_1_4.dmm"
 	// cost = 20 я хуй знает как это тут сделать, так что похуй.
 	allow_duplicates = FALSE
-	always_place = TRUE
+	always_place = TRUE // Ивент - убрать после
