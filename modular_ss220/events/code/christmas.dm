@@ -207,3 +207,10 @@ GLOBAL_LIST_EMPTY(possible_gifts)
 	. = ..()
 	if(CHRISTMAS in SSholiday.holidays)
 		underlays += emissive_appearance(edge_overlay_file, "[smoothing_junction]_lightmask")
+
+/mob/living/simple_animal/hostile/megafauna/dragon/space_dragon/Initialize(mapload)
+	. = ..()
+	if(CHRISTMAS in SSholiday.holidays)
+		icon = 'modular_ss220/events/icons/grinch.dmi'
+		icon_state = "Grinch_santa"
+		icon_living = "Grinch_santa"
