@@ -94,7 +94,7 @@
 		return
 
 	var/obj/item/I = locate(spider_uid)
-	if(do_after(usr, 3 SECONDS, needhand = 1, target = src))
+	if(do_after(usr, 3 SECONDS, needhand = TRUE, target = src))
 		if(usr.put_in_any_hand_if_possible(I))
 			usr.visible_message("[capitalize(usr.declent_ru(NOMINATIVE))] что-то снимает с [src.declent_ru(GENITIVE)] !", span_notice("Вы успешно снимаете жучок с [src.declent_ru(ACCUSATIVE)]."))
 		else
@@ -104,8 +104,7 @@
 
 /obj/item/clothing/Topic(href, href_list)
 	. = ..()
-	remove_spy_spider( href_list["src"], href_list["remove_spy_spider"])
-
+	remove_spy_spider(href_list["src"], href_list["remove_spy_spider"])
 
 /**
  * HUMAN PART
