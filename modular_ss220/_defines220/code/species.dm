@@ -15,3 +15,7 @@
 
 /// Трейт ТТСа для робо рас
 #define TTS_TRAIT_ROBOTIZE "tts_trait_robotize"
+
+/mob/living/carbon/human
+	var/atom/movable/loaded = null
+	var/mob/living/passenger = null

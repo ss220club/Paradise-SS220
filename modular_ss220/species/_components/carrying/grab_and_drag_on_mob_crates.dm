@@ -19,6 +19,7 @@
 /datum/component/gadom_cargo/Initialize()
 	..()
 	carrier = parent
+	START_PROCESSING(SSprojectiles, src)
 
 /datum/component/gadom_cargo/RegisterWithParent()
 	RegisterSignal(parent, COMSIG_GADOM_LOAD, PROC_REF(try_load_cargo))
@@ -39,12 +40,15 @@
 	INVOKE_ASYNC(src, PROC_REF(pre_load), component_holder, user, AM)
 
 /datum/component/gadom_cargo/proc/pre_load(datum/component_holder, mob/user, mob/AM)
-	if(user.a_intent == "grab")
-		if(user.incapacitated() || HAS_TRAIT(user, TRAIT_HANDS_BLOCKED) || get_dist(user, AM) > 1)
+	var/mob/living/carbon/human/check_one = user
+	if(check_one.a_intent == "grab")
+		if(check_one.loaded || check_one.passenger || AM.anchored || get_dist(check_one, AM) > 1 || check_one.incapacitated() || HAS_TRAIT(check_one, TRAIT_HANDS_BLOCKED))
 			return
+
 		if(!istype(AM, /obj/structure/closet/crate/))
 			return
-		if(!do_after(user, GADOM_BASIC_LOAD_TIMER * user.dna.species.action_mult, FALSE, AM))
+
+		if(!do_after(check_one, GADOM_BASIC_LOAD_TIMER * check_one.dna.species.action_mult, FALSE, AM))
 			return
 		load(AM)
 
@@ -75,6 +79,10 @@
 	carrier.loaded = AM
 	carrier.update_icon()
 	carrier.throw_alert("serpentid_holding", /atom/movable/screen/alert/carrying)
+
+/datum/component/gadom_cargo/process()
+	if(carrier.incapacitated() || HAS_TRAIT(carrier, TRAIT_HANDS_BLOCKED))
+		try_unload_cargo()
 
 /datum/component/gadom_cargo/proc/try_unload_cargo()
 	SIGNAL_HANDLER

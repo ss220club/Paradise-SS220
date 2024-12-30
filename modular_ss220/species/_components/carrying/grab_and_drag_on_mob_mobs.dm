@@ -3,15 +3,12 @@
 Компонент для переноса мобов на мобах. Срабатывает в случае граб-интента, драг-энд-дропа моба на модель (аля стул)
 */
 
-/mob/living/carbon/human
-	var/atom/movable/loaded = null
-	var/mob/living/passenger = null
-
 /datum/component/gadom_living
 	var/mob/living/carbon/human/carrier = null
 
 /datum/component/gadom_living/Initialize()
 	carrier = parent
+	START_PROCESSING(SSprojectiles, src)
 
 /datum/component/gadom_living/RegisterWithParent()
 	RegisterSignal(parent, COMSIG_GADOM_LOAD, PROC_REF(try_load_mob))
@@ -41,11 +38,12 @@
 		load(puppet, target)
 
 /datum/component/gadom_living/proc/load(mob/living/carbon/human/puppet, atom/movable/AM)
-	if(puppet.loaded || puppet.passenger || AM.anchored || get_dist(puppet, AM) > 1)
+	if(puppet.loaded || puppet.passenger || AM.anchored || get_dist(puppet, AM) > 1 || puppet.incapacitated() || HAS_TRAIT(puppet, TRAIT_HANDS_BLOCKED))
 		return
 
 	if(!isitem(AM) && !ismachinery(AM) && !isstructure(AM) && !ismob(AM))
 		return
+
 	if(!isturf(AM.loc))
 		return
 
@@ -65,6 +63,11 @@
 
 		return TRUE
 	return FALSE
+
+/datum/component/gadom_living/process()
+	. = ..()
+	if(carrier.incapacitated() || HAS_TRAIT(carrier, TRAIT_HANDS_BLOCKED))
+		try_unload_mob()
 
 /datum/component/gadom_living/proc/try_unload_mob(mob/user)
 	SIGNAL_HANDLER
