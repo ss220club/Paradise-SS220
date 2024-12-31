@@ -216,7 +216,7 @@
 	var/on = FALSE
 	var/brightness_on = 2
 
-/obj/item/clothing/head/helmet/cop/attack_self(mob/living/user)
+/obj/item/clothing/head/helmet/cop/attack_self__legacy__attackchain(mob/living/user)
 	toggle_helmet_light(user)
 
 /obj/item/clothing/head/helmet/cop/proc/toggle_helmet_light(mob/living/user)
