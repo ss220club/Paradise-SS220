@@ -45,8 +45,9 @@
 	message = "шипит."
 	message_param = "шипит на %t."
 	species_type_whitelist_typecache = list(/datum/species/serpentid)
-	emote_type = EMOTE_AUDIBLE | EMOTE_MOUTH
+	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE | EMOTE_MOUTH
 	age_based = TRUE
+	muzzled_noises = list("слабо")
 	sound = "modular_ss220/species/serpentids/sounds/serpentid_hiss.ogg"
 	muzzled_noises = list("weak hissing")
 
@@ -57,11 +58,12 @@
 	message_param = "шевелит усиками в сторону %t."
 	cooldown = 5 SECONDS
 	species_type_whitelist_typecache = list(/datum/species/serpentid)
-	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE | EMOTE_MOUTH
+	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
 	age_based = TRUE
-	volume = 80
-	muzzled_noises = list("слабо")
 	sound = 'modular_ss220/species/serpentids/sounds/serpentid_tendrils.ogg'
+	hands_use_check = FALSE
+	target_behavior = EMOTE_TARGET_BHVR_USE_PARAMS_ANYWAY
+	emote_target_type = EMOTE_TARGET_ANY
 
 /datum/keybinding/emote/carbon/human/serpentidroar
 	linked_emote = /datum/emote/living/carbon/human/serpentidroar
