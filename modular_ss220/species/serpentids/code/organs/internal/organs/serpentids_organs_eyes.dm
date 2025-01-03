@@ -11,7 +11,6 @@
 	flash_protect = FLASH_PROTECTION_EXTRA_SENSITIVE
 	tint = FLASH_PROTECTION_NONE
 	var/chemical_consuption = SERPENTID_ORGAN_HUNGER_EYES
-	var/vision_ajust_coefficient = 0.75
 	var/update_time_client_colour = 10
 	var/active = FALSE
 	radial_action_state = "serpentid_nvg"
