@@ -11,7 +11,7 @@
 	flash_protect = FLASH_PROTECTION_EXTRA_SENSITIVE
 	tint = FLASH_PROTECTION_NONE
 	var/chemical_consuption = SERPENTID_ORGAN_HUNGER_EYES
-	var/vision_ajust_coefficient = 0.7
+	var/vision_ajust_coefficient = 0.75
 	var/update_time_client_colour = 10
 	var/active = FALSE
 	radial_action_state = "serpentid_nvg"
@@ -42,13 +42,10 @@
 /obj/item/organ/internal/eyes/serpentid/get_colourmatrix()
 	if(!owner)
 		return
-	var/chem_value = (owner.nutrition - NUTRITION_LEVEL_STARVING)/NUTRITION_LEVEL_HUNGRY
+
+	var/chem_value = clamp((owner.nutrition - NUTRITION_LEVEL_STARVING)/NUTRITION_LEVEL_STARVING, 0, 1)
 	var/vision_chem = clamp(chem_value, SERPENTID_EYES_LOW_VISIBLE_VALUE, SERPENTID_EYES_MAX_VISIBLE_VALUE)
-	var/vision_concentration = (1 - vision_chem/SERPENTID_EYES_MAX_VISIBLE_VALUE/2)*SERPENTID_EYES_LOW_VISIBLE_VALUE
-
-	vision_concentration = SERPENTID_EYES_LOW_VISIBLE_VALUE * (1 - chem_value ** vision_ajust_coefficient)
-	var/vision_adjust = clamp(vision_concentration, 0, SERPENTID_EYES_LOW_VISIBLE_VALUE)
-
+	var/vision_adjust= clamp((1 - vision_chem)/2, 0, 1)
 	var/vision_matrix = list(vision_chem, vision_adjust, vision_adjust,\
 		vision_adjust, vision_chem, vision_adjust,\
 		vision_adjust, vision_adjust, vision_chem)
