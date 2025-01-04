@@ -13,5 +13,6 @@
 	target.rejuvenate()
 	target.puppet.mind.add_antag_datum(/datum/antagonist/cultist)
 
+	TEST_ASSERT_EQUAL(target.puppet.health, target.puppet.getMaxHealth(), "cultist is not healed before being attacked")
 	cultist.click_on(target)
 	TEST_ASSERT_EQUAL(target.puppet.health, target.puppet.getMaxHealth(), "cultist attacking cultist with dagger caused damage")
