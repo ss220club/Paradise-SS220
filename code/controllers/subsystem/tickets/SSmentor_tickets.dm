@@ -72,7 +72,7 @@ GLOBAL_REAL(SSmentor_tickets, /datum/controller/subsystem/tickets/mentor_tickets
 	if(message_key == null)
 		T.staffAssigned = null //if they cancel we dont need to hold this ticket anymore
 		return
-	if(message_key == "NCT Dispatch")
+	if(message_key == "Уведомление NCT")
 		var/nct_active = list()
 		for(var/mob/living/carbon/human/trainer as anything in GLOB.human_list) // Let's check if we have any active NCTs
 			if(trainer.mind?.assigned_role != "Nanotrasen Career Trainer")
