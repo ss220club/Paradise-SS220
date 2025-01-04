@@ -31,7 +31,8 @@ GLOBAL_REAL(SSmentor_tickets, /datum/controller/subsystem/tickets/mentor_tickets
 		"Почисти Кэш" = "Чтобы исправить пустой экран, перейдите во вкладку 'Special Verbs' и нажмите 'Reload UI Resources'. Если это не поможет, очистите Кэш Byond, для этого закройте все процессы 'Dream Maker', перейдите в Byond, нажмите шестерёнку и выберите 'Preferences', во вкладке 'Games' будет кнопка 'Clear Cache'. Если ни один из этих способов не помог, советуем обратиться в 'paradise-help' чат на дискорд сервере.",
 		"Эксперементируй!" = "Эксперементируй! Большая часть удовольствия от этой игры, состоит в том, чтобы пробовать различные вещи и бороться с последствиями, если что-то пошло не так.",
 		"Как выполнить цель" = "Есть множество способов выполнить цель на антаге. Если вы собрались действовать напролом, постарайтесь убедиться в том, что успеете войти и выйти до прибытия подкрепления. Стелс тоже может сработать, если вы будете действовать быстро и избегать лишнего внимания. Но не забывайте об РП способах! Заманить цель в ловушку гораздо интереснее, чем разрядить в неё барабан с револьвера. Даже если вы не преуспеете, таким образом все стороны явно получат больше удовольствия.",
-		"Английский тикет" = "Hello! You've reached the Russian Paradise server. Perhaps you've mistaken. The English one has this name: \[Paradise Station]."
+		"Английский тикет" = "Hello! You've reached the Russian Paradise server. Perhaps you've mistaken. The English one has this name: \[Paradise Station].",
+		"Уведомление NCT" = "Вам поможет Nanotrasen Career Trainer. Его можно узнать по зеленой униформе и черному пальто."
 	)
 
 	if(GLOB.configuration.url.github_url)
@@ -71,6 +72,21 @@ GLOBAL_REAL(SSmentor_tickets, /datum/controller/subsystem/tickets/mentor_tickets
 	if(message_key == null)
 		T.staffAssigned = null //if they cancel we dont need to hold this ticket anymore
 		return
+	if(message_key == "NCT Dispatch")
+		var/nct_active = list()
+		for(var/mob/living/carbon/human/trainer as anything in GLOB.human_list) // Let's check if we have any active NCTs
+			if(trainer.mind?.assigned_role != "Nanotrasen Career Trainer")
+				continue
+			nct_active += trainer
+		if(!length(nct_active))
+			to_chat(usr, "There are no active NCTs. Autoresponse canceled.") // If we don't, don't solve the ticket and then send feedback.
+			return
+		var/mob/living/carbon/human/trainee = get_mob_by_ckey(T.client_ckey)
+		for(var/mob/living/carbon/human/nct as anything in nct_active)
+			if(!locate(/obj/item/radio/headset) in list(nct.l_ear, nct.r_ear)) // If the NCT doesn't have a headset, ignore it.
+				continue
+			to_chat(nct, "<span class='notice'>Incoming priority transmission from Nanotrasen Training Center. Request information as follows: </span><span class='specialnotice'>Career Trainer, we've received a request from an employee. [trainee.p_their(TRUE)] name is [trainee.real_name], [trainee.p_theyre()] a [trainee.mind.assigned_role]. See if [trainee.p_they()] need [trainee.p_s()] any help.</span>")
+			SEND_SOUND(nct, 'sound/effects/headset_message.ogg')
 
 	SEND_SOUND(returnClient(N), sound('sound/effects/adminhelp.ogg'))
 	to_chat_safe(returnClient(N), "<span class='[span_class]'>[key_name_hidden(C)] использует автоответ:</span> <span class='adminticketalt'>[response_phrases[message_key]]</span>") //for this we want the full value of whatever key this is to tell the player so we do response_phrases[message_key]
