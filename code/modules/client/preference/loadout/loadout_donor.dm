@@ -76,17 +76,24 @@
 	display_name = "Fur Cap"
 	path = /obj/item/clothing/head/furcap
 
+/datum/gear/donor/welding_redflame
+	display_name = "Red flame decal welding helmet"
+	path = /obj/item/clothing/head/welding/flamedecal
+	allowed_roles = list("Chief Engineer", "Station Engineer", "Life Support Specialist")
+	donator_tier = 2
+	cost = 2
+
 /datum/gear/donor/welding_blueflame
 	display_name = "Blue flame decal welding helmet"
 	path = /obj/item/clothing/head/welding/flamedecal/blue
-	allowed_roles = list("Chief Engineer", "Station Engineer", "Life Support Specialist", "Roboticist")
+	allowed_roles = list("Chief Engineer", "Station Engineer", "Life Support Specialist")
 	donator_tier = 2
 	cost = 2
 
 /datum/gear/donor/welding_white
 	display_name = "White decal welding helmet"
 	path = /obj/item/clothing/head/welding/white
-	allowed_roles = list("Chief Engineer", "Station Engineer", "Life Support Specialist", "Roboticist")
+	allowed_roles = list("Chief Engineer", "Station Engineer", "Life Support Specialist")
 	donator_tier = 2
 	cost = 2
 
