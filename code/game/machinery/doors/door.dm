@@ -142,7 +142,7 @@
 	return !density
 
 /obj/machinery/door/CanAtmosPass(direction)
-	return operating || !density
+	return !density
 
 /obj/machinery/door/get_superconductivity(direction)
 	if(!density)
@@ -373,7 +373,6 @@
 		return
 	SEND_SIGNAL(src, COMSIG_DOOR_OPEN)
 	operating = DOOR_OPENING
-	recalculate_atmos_connectivity()
 	do_animate("opening")
 	set_opacity(0)
 	if(width > 1)
@@ -389,6 +388,7 @@
 	if(width > 1)
 		set_fillers_opacity(0)
 	operating = NONE
+	recalculate_atmos_connectivity()
 	update_freelook_sight()
 	if(autoclose)
 		autoclose_in(normalspeed ? auto_close_time : auto_close_time_dangerous)

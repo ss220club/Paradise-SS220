@@ -160,7 +160,8 @@
 		oil.name = "fat"
 		oil.desc = "Uh oh, looks like some fat from [src]!"
 		oil.loc = location
-		location.hotspot_expose(700, 1)
+		location.hotspot_expose(700, 50, 1)
+		//TODO have a chance of setting the tile on fire
 
 /obj/machinery/cooker/proc/changename(obj/item/name, obj/item/setme)
 	setme.name = "[thiscooktype] [name.name]"

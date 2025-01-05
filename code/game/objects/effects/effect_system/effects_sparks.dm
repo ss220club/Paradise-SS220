@@ -26,20 +26,20 @@
 	playsound(src, "sparks", 100, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 	var/turf/T = loc
 	if(isturf(T))
-		T.hotspot_expose(hotspottemp, 1)
+		T.hotspot_expose(hotspottemp, 100)
 	QDEL_IN(src, 20)
 
 /obj/effect/particle_effect/sparks/Destroy()
 	var/turf/T = loc
 	if(isturf(T))
-		T.hotspot_expose(hotspottemp,1)
+		T.hotspot_expose(hotspottemp,100)
 	return ..()
 
 /obj/effect/particle_effect/sparks/Move()
 	..()
 	var/turf/T = loc
 	if(isturf(T))
-		T.hotspot_expose(hotspottemp,1)
+		T.hotspot_expose(hotspottemp,100)
 
 /datum/effect_system/spark_spread
 	effect_type = /obj/effect/particle_effect/sparks

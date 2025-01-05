@@ -341,6 +341,7 @@
 /obj/effect/anomaly/pyro
 	name = "pyroclastic anomaly"
 	icon_state = "mustard"
+	var/ticks = 0
 	var/produces_slime = TRUE
 	aSignal = /obj/item/assembly/signaler/anomaly/pyro
 
@@ -350,11 +351,16 @@
 
 /obj/effect/anomaly/pyro/anomalyEffect()
 	..()
+	ticks++
 	for(var/mob/living/M in hearers(4, src))
 		if(prob(50))
 			M.adjust_fire_stacks(4)
 			M.IgniteMob()
 
+	if(ticks < 4)
+		return
+	else
+		ticks = 0
 	var/turf/simulated/T = get_turf(src)
 	if(istype(T))
 		var/datum/gas_mixture/air = new()
@@ -376,8 +382,8 @@
 		//Make it hot and burny for the new slime
 		var/datum/gas_mixture/air = new()
 		air.set_temperature(1000)
-		air.set_toxins(125)
-		air.set_oxygen(125)
+		air.set_toxins(500)
+		air.set_oxygen(500)
 		T.blind_release_air(air)
 	var/new_colour = pick("red", "orange")
 	var/mob/living/simple_animal/slime/S = new(T, new_colour)
