@@ -41,6 +41,10 @@
 	exotic_blood = "facid"
 	blood_color = "#b0fc22"
 
+	damage_overlays = 'modular_ss220/species/serpentids/icons/mob/r_serpentid_dam.dmi'
+	damage_mask = 'modular_ss220/species/serpentids/icons/mob/r_serpentid_dam_mask.dmi'
+	blood_mask = 'modular_ss220/species/serpentids/icons/mob/r_serpentid_blood.dmi'
+
 	reagent_tag = PROCESS_ORG
 
 	punchdamagehigh = 10
