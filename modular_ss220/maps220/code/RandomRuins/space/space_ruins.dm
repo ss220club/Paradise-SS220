@@ -96,8 +96,3 @@
 	suffix = "sierra_1_4.dmm"
 	// cost = 20 я хуй знает как это тут сделать, так что похуй.
 	allow_duplicates = FALSE
-	always_place = TRUE // Ивент - убрать после
-	placement_weight = 100 // Ивент - убрать после
-
-/datum/map_template/ruin/space/sierra_1_4/get_cost() // Ивент - убрать после
-	return 0 // Ивент - убрать после

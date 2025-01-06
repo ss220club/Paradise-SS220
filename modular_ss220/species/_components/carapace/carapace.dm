@@ -21,7 +21,7 @@
 //Вероятность восстановления конечности при достижении 0 урона
 #define CARAPACE_HEAL_BROKEN_PROB 50
 //Список операций, которые будут заблокированы пока панцирь не будет сломан
-#define CARAPACE_BLOCK_OPERATION list(/datum/surgery/bone_repair,/datum/surgery/bone_repair/skull,/datum/surgery/organ_manipulation)
+#define CARAPACE_BLOCK_OPERATION list(/datum/surgery/bone_repair,/datum/surgery/bone_repair/skull,/datum/surgery/organ_manipulation,/datum/surgery/organ_manipulation/soft)
 #define CARAPACE_ENCASE_WORD "chitin"
 
 /datum/component/carapace
