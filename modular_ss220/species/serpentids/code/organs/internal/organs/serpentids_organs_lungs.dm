@@ -66,7 +66,7 @@
 
 /obj/item/organ/internal/lungs/serpentid/switch_mode(force_off = FALSE)
 	. = ..()
-	if(!force_off && !(status & ORGAN_DEAD))
+	if(!force_off && !(status & ORGAN_DEAD) && !active_secretion)
 		switch_mode_on()
 	else
 		switch_mode_off()
