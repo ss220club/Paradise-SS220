@@ -1,6 +1,6 @@
 /obj/item/seeds/cabbage/Initialize(mapload)
 	. = ..()
-	reagents_add += list("cabbagilium" = 0.1)
+	reagents_add += list("cabbagilium" = 0.05)
 
 /datum/reagent/cabbagilium
 	name = "Cabbagilium"
