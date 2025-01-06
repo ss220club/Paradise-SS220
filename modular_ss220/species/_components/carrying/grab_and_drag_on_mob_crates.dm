@@ -10,7 +10,7 @@
 /mob/living/carbon/human/Move(NewLoc, direct)
 	. = .. ()
 	var/mob/living/carbon/human/puppet = src
-	if(puppet.loaded)
+	if(puppet.loaded && isserpentid(puppet))
 		puppet.loaded.forceMove(puppet.loc)
 
 /datum/component/gadom_cargo

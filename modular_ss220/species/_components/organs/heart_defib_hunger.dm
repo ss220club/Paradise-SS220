@@ -38,6 +38,8 @@
 		owner.med_hud_set_health()
 		owner.med_hud_set_status()
 		add_attack_logs(owner, owner, "Revived by heart")
+		owner.reagents.add_reagent("mannitol", 2)
+		owner.reagents.add_reagent("epinephrine", 2)
 		SSblackbox.record_feedback("tally", "players_revived", 1, "self_revived")
 
 #undef AUTO_DEFIBRILATION_THRESHOLD
