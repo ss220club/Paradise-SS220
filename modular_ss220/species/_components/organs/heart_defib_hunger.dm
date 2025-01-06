@@ -22,7 +22,7 @@
 		owner = limb.owner
 	if(!owner)
 		qdel(src)
-	var/damage_amount = owner.getBruteLoss() + owner.getFireLoss() + getCloneLoss()
+	var/damage_amount = owner.getBruteLoss() + owner.getFireLoss() + owner.getCloneLoss()
 	if(owner?.nutrition < NUTRITION_LEVEL_HUNGRY || owner.stat != DEAD || damage_amount > AUTO_DEFIBRILATION_THRESHOLD)
 		return
 	var/defib_chance = owner.nutrition - NUTRITION_LEVEL_HUNGRY
