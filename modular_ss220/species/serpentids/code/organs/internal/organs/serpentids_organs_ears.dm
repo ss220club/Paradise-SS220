@@ -32,9 +32,11 @@
 	if(!force_off && owner?.nutrition >= NUTRITION_LEVEL_HYPOGLYCEMIA && !(status & ORGAN_DEAD) && !active)
 		active = TRUE
 		chemical_consuption = initial(chemical_consuption)
+		owner.visible_message(span_warning("Тело [owner] слегка колышется."))
 	else
 		active = FALSE
 		chemical_consuption = 0
+		owner.visible_message(span_notice("Тело [owner] перестает колыхаться."))
 	SEND_SIGNAL(src, COMSIG_ORGAN_CHANGE_CHEM_CONSUPTION, chemical_consuption)
 
 /obj/item/organ/internal/ears/serpentid/proc/sense_creatures()

@@ -36,7 +36,9 @@
 	if(!force_off && owner?.nutrition >= NUTRITION_LEVEL_HYPOGLYCEMIA && !cloak_engaged && !(status & ORGAN_DEAD))
 		cloak_engaged = TRUE
 		chemical_consuption = initial(chemical_consuption)
+		owner.visible_message(span_warning("Тело [owner] начинает покрываться пятнами и преломлять свет!"))
 	else
 		cloak_engaged = FALSE
 		chemical_consuption = 0
+		owner.visible_message(span_notice("Тело [owner] перестает преломлять свет."))
 	SEND_SIGNAL(src, COMSIG_ORGAN_CHANGE_CHEM_CONSUPTION, chemical_consuption)

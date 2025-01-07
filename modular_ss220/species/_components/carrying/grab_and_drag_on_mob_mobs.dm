@@ -53,6 +53,7 @@
 	puppet.loaded = AM
 	puppet.update_icon()
 	puppet.throw_alert("serpentid_holding", /atom/movable/screen/alert/carrying)
+	puppet.visible_message(span_warning("[carrier] водружает на себя [AM]!"))
 
 /datum/component/gadom_living/proc/load_mob(mob/living/carbon/human/puppet, mob/living/M)
 	puppet.can_buckle = TRUE

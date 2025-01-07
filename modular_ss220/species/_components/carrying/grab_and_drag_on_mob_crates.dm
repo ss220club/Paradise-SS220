@@ -79,6 +79,7 @@
 	carrier.loaded = AM
 	carrier.update_icon()
 	carrier.throw_alert("serpentid_holding", /atom/movable/screen/alert/carrying)
+	carrier.visible_message(span_warning("[carrier] обвивает хвостом [AM]!"))
 
 /datum/component/gadom_cargo/process()
 	if(carrier.incapacitated() || HAS_TRAIT(carrier, TRAIT_HANDS_BLOCKED))

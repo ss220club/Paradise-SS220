@@ -56,9 +56,11 @@
 		see_in_dark = 8
 		chemical_consuption = initial(chemical_consuption)
 		active = TRUE
+		owner.visible_message(span_warning("Зрачки [owner] расширяются!"))
 	else
 		see_in_dark = initial(see_in_dark)
 		chemical_consuption = 0
 		active = FALSE
+		owner.visible_message(span_notice("Зрачки [owner] сужаются."))
 	owner?.update_sight()
 	SEND_SIGNAL(src, COMSIG_ORGAN_CHANGE_CHEM_CONSUPTION, chemical_consuption)
