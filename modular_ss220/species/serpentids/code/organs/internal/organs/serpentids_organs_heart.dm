@@ -1,7 +1,7 @@
 /obj/item/organ/internal/heart/serpentid
 	name = "double heart"
 	icon = 'modular_ss220/species/serpentids/icons/organs.dmi'
-	icon_state = "heart-on"
+	icon_state = "heart_on"
 	dead_icon = "heart"
 	base_icon_state = "heart"
 	desc = "A pair of hearts."
