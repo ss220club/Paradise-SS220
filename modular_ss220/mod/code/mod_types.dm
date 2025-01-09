@@ -81,7 +81,7 @@
 	insignia_type = /obj/item/mod/module/insignia/red/janitor
 
 /obj/item/mod/control/pre_equipped/responsory/red/clown
-		insignia_type = /obj/item/mod/module/insignia/red/clown
+	insignia_type = /obj/item/mod/module/insignia/red/clown
 
 /obj/item/mod/control/pre_equipped/responsory/red/chaplain
 	insignia_type = /obj/item/mod/module/insignia/red/chaplain
