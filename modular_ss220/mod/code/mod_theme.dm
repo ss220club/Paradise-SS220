@@ -154,7 +154,6 @@
 		необычайно щедрыми техническими характеристиками 'Носорога'. Цена NS-20 соответствует качеству, поэтому его можно встретить только в отряде быстрого реагирования Нанотрейзен."
 	default_skin = "rhino"
 	armor_type_1 = /obj/item/mod/armor/mod_theme_responsory/red
-
 	resistance_flags = FIRE_PROOF
 	flag_2_flags = RAD_PROTECT_CONTENTS_2
 	max_heat_protection_temperature = FIRE_IMMUNITY_MAX_TEMP_PROTECT
