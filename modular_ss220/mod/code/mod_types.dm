@@ -78,7 +78,7 @@
 	ADD_TRAIT(chestplate, TRAIT_RSG_IMMUNE, ROUNDSTART_TRAIT)
 
 /obj/item/mod/control/pre_equipped/responsory/red/janitor
-		insignia_type = /obj/item/mod/module/insignia/red/janitor
+	insignia_type = /obj/item/mod/module/insignia/red/janitor
 
 /obj/item/mod/control/pre_equipped/responsory/red/clown
 		insignia_type = /obj/item/mod/module/insignia/red/clown
