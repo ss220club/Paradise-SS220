@@ -328,6 +328,7 @@
 		/obj/item/clothing/shoes/magboots = 1,
 		/obj/item/storage/box/mindshield = 1
 	)
+
 /* Security */
 /datum/outfit/job/response_team/security/red
 	name = "RT Security (Red)"
