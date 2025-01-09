@@ -87,4 +87,4 @@
 	insignia_type = /obj/item/mod/module/insignia/red/chaplain
 
 /obj/item/mod/control/pre_equipped/responsory/red/inquisitory
-		applied_skin = "inquisitory"
+	applied_skin = "inquisitory"
