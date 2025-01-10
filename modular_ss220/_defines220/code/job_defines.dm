@@ -11,17 +11,17 @@
 
 // ====================================
 //			JOBCAT_ENGSEC
-// Начинаются с JOB_NANO		(1<<14)
-#define JOB_TRAINEE				(1<<15)
-#define JOB_CADET				(1<<16)
-//#define JOB_PILOT				(1<<17)
+// Начинаются с JOB_INSTRUCTOR  (1<<15)
+#define JOB_TRAINEE				(1<<16)
+#define JOB_CADET				(1<<17)
+//#define JOB_PILOT				(1<<18)
 
-#define JOB_REPRESENTATIVE_TSF	(1<<17)
-#define JOB_REPRESENTATIVE_USSP	(1<<18)
-#define JOB_DEALER				(1<<19)
-#define JOB_VIP_GUEST			(1<<20)
-#define JOB_BANKER				(1<<21)
-#define JOB_SECURITY_CLOWN		(1<<22)
+#define JOB_REPRESENTATIVE_TSF	(1<<18)
+#define JOB_REPRESENTATIVE_USSP	(1<<19)
+#define JOB_DEALER				(1<<20)
+#define JOB_VIP_GUEST			(1<<21)
+#define JOB_BANKER				(1<<22)
+#define JOB_SECURITY_CLOWN		(1<<23)
 
 #define JOBCAT_LAST_ENGSEC		(1<<23)
 
