@@ -251,6 +251,7 @@
 			D = SSshuttle.getDock("emergency_away")
 	else
 		D = preview_shuttle.findRoundstartDock()
+
 	if(!D)
 		var/m = "No dock found for preview shuttle, aborting."
 		WARNING(m)
