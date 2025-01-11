@@ -8,6 +8,8 @@
 	cultist.spawn_obj_in_hand(/obj/item/melee/cultblade/dagger)
 	cultist.set_intent("harm")
 
+	TEST_ASSERT_EQUAL(victim.puppet.health, victim.puppet.getMaxHealth(), "victim puppet is damaged before tests")
+	TEST_ASSERT_EQUAL(cultist_bro.puppet.health, cultist_bro.puppet.getMaxHealth(), "cultist puppet is damaged before tests")
 	TEST_ASSERT(istype(cultist.puppet.get_active_hand(), /obj/item/melee/cultblade/dagger), "cultist's active hand has no dagger")
 
 	cultist.click_on(victim)
