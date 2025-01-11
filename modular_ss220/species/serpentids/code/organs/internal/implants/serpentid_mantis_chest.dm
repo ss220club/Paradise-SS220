@@ -94,7 +94,7 @@
 				var/obj/item/offhand_arm_item = owner.get_active_hand()
 				to_chat(owner, span_warning("Your hands are too encumbered wielding [offhand_arm_item] to deploy [src]!"))
 				return
-			else if(!owner.unEquip(arm_item))
+			else if(!owner.drop_item_to_ground(arm_item))
 				to_chat(owner, span_warning("Your [arm_item] interferes with [src]!"))
 				return
 			else
@@ -113,8 +113,7 @@
 	if(status & ORGAN_DEAD)
 		return
 
-	owner.unEquip(holder_l, 1)
-	holder_l.forceMove(src)
+	owner.transfer_item_to(holder_l, src, force = TRUE)
 	holder_l = null
 	blades_active = FALSE
 	playsound(get_turf(owner), 'sound/mecha/mechmove03.ogg', 50, 1)
