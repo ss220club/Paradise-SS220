@@ -17,10 +17,10 @@
 	cultist.click_on(cultist_bro)
 
 	for(var/log_text in victim.puppet.attack_log_old)
-		log_world("victim: " + log_text)
+		log_world("victim ([victim.puppet.name]): " + log_text)
 
 	for(var/log_text in cultist_bro.puppet.attack_log_old)
-		log_world("cultist_bro: " + log_text)
+		log_world("cultist_bro ([cultist_bro.puppet.name]): " + log_text)
 
 	TEST_ASSERT(victim.check_attack_log("Attacked with ritual dagger"), "non-cultist missing dagger attack log")
 	TEST_ASSERT_NOTEQUAL(victim.puppet.health, victim.puppet.getMaxHealth(), "cultist attacking non-cultist with dagger caused no damage")
