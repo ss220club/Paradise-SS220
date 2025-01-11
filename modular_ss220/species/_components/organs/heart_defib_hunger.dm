@@ -21,7 +21,7 @@
 		var/obj/item/organ/internal/limb = parent
 		owner = limb.owner
 	if(!owner)
-		qdel(src)
+		return
 	var/damage_amount = owner.getBruteLoss() + owner.getFireLoss() + owner.getCloneLoss()
 	if(owner?.nutrition < NUTRITION_LEVEL_HUNGRY || owner.stat != DEAD || damage_amount > AUTO_DEFIBRILATION_THRESHOLD)
 		return
