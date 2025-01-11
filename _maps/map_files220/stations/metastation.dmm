@@ -30972,6 +30972,12 @@
 /area/station/medical/reception)
 "cop" = (
 /obj/structure/closet/secure_closet/paramedic,
+/obj/machinery/light_switch/west,
+/obj/machinery/button/windowtint/west{
+	id = "paramedic";
+	pixel_y = 8;
+	range = 10
+	},
 /turf/simulated/floor/plasteel{
 	icon_state = "whitebluefull"
 	},
@@ -68187,6 +68193,9 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/medical/glass,
 /obj/effect/mapping_helpers/airlock/autoname,
+/obj/effect/mapping_helpers/airlock/polarized{
+	id = "paramedic"
+	},
 /obj/effect/mapping_helpers/airlock/access/any/medical/paramedic,
 /turf/simulated/floor/plasteel{
 	icon_state = "whitebluefull"
@@ -69078,6 +69087,9 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
+/obj/effect/mapping_helpers/airlock/polarized{
+	id = "paramedic"
+	},
 /obj/effect/mapping_helpers/airlock/access/any/medical/paramedic,
 /turf/simulated/floor/plasteel{
 	icon_state = "whitebluefull"
@@ -69115,9 +69127,6 @@
 	},
 /area/station/security/brig)
 "rhw" = (
-/obj/structure/mirror{
-	pixel_y = -34
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/sink/directional/north,
 /turf/simulated/floor/wood,
@@ -79251,6 +79260,9 @@
 	c_tag = "Bar - Backroom";
 	dir = 1
 	},
+/obj/structure/mirror{
+	pixel_y = -34
+	},
 /turf/simulated/floor/wood,
 /area/station/service/bar)
 "wBl" = (
@@ -80845,7 +80857,9 @@
 /turf/simulated/floor/plating,
 /area/station/maintenance/fpmaint)
 "xvh" = (
-/obj/effect/spawner/window/reinforced/grilled,
+/obj/effect/spawner/window/reinforced/polarized/grilled{
+	id = "paramedic"
+	},
 /turf/simulated/floor/plating,
 /area/station/medical/paramedic)
 "xvi" = (
