@@ -8,6 +8,8 @@
 	cultist.spawn_obj_in_hand(/obj/item/melee/cultblade/dagger)
 	cultist.set_intent("harm")
 
+	TEST_ASSERT(istype(cultist.puppet.get_active_hand(), /obj/item/melee/cultblade/dagger), "cultist's active hand has no dagger")
+
 	cultist.click_on(victim)
 	sleep(2 SECONDS)
 	cultist.click_on(cultist_bro)
