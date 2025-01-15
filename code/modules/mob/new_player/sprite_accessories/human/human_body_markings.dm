@@ -35,38 +35,3 @@
 /datum/sprite_accessory/body_markings/tattoo/nightling
 	name = "Nightling Tattoo"
 	icon_state = "nightling"
-
-/datum/sprite_accessory/body_markings/cybernetics/cybershoulders
-	name = "Cybernetic neck and shoulders (man)"
-	species_allowed = list("Human")
-	icon_state = "shoulders_m"
-
-/datum/sprite_accessory/body_markings/cybernetics/cybershouldersalt
-	name = "Cybernetic neck and shoulders (female)"
-	species_allowed = list("Human")
-	icon_state = "shoulders_w"
-
-/datum/sprite_accessory/body_markings/cybernetics/cybershouldersandjaw
-	name = "Cybernetic neck, shoulders and jaw (man)"
-	species_allowed = list("Human")
-	icon_state = "shoulders_jaw_m"
-
-/datum/sprite_accessory/body_markings/cybernetics/cybershouldersandjawalt
-	name = "Cybernetic neck, shoulders and jaw (female)"
-	species_allowed = list("Human")
-	icon_state = "shoulders_jaw_w"
-
-/datum/sprite_accessory/body_markings/cybernetics/cyberjaw
-	name = "Cybernetic jaw"
-	species_allowed = list("Human")
-	icon_state = "jaw"
-
-/datum/sprite_accessory/body_markings/cybernetics/cybereyeaddon
-	name = "Cybernetic eyes addon"
-	species_allowed = list("Human")
-	icon_state = "eyes"
-
-/datum/sprite_accessory/body_markings/cybernetics/cyberjawandeyes
-	name = "Cybernetic eyes addon and jaw"
-	species_allowed = list("Human")
-	icon_state = "jaw_eyes"
