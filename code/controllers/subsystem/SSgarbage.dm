@@ -251,7 +251,10 @@ SUBSYSTEM_DEF(garbage)
 	var/type = D.type
 	var/refID = text_ref(D)
 
-	// del(D) SS220 EDIT - disable hard del (performance tweak)
+	// SS220 EDIT START - disable hard del (performance tweak)
+	if(istype(D, /client))
+		del(D) // this allows player kicking
+	// SS220 EDIT END
 
 	tick = (TICK_USAGE - tick + ((world.time - ticktime) / world.tick_lag * 100))
 
