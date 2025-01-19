@@ -99,7 +99,6 @@
 	set category = "Эмоции"
 	emote("mrowss", intentional = TRUE)
 
-
 /// Action Emotes ///
 /mob/living/carbon/human/verb/emote_collapse()
 	set name = "○ " + EMOTE_COLLAPSE + " "
