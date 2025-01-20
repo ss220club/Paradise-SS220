@@ -317,6 +317,7 @@
 
 /obj/item/clothing/under/rank/procedure/nct
 	icon = 'modular_ss220/clothing/icons/object/under.dmi'
+	desc = "A neatly pressed black shirt paired with black jeans, worn by those dedicated to shaping the future of the workforce."
 	sprite_sheets = list(
 		"Human" = 'modular_ss220/clothing/icons/mob/under.dmi',
 		"Vox" = 'modular_ss220/clothing/icons/mob/species/vox/under.dmi',
