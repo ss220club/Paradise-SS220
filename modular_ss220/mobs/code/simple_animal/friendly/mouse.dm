@@ -1,3 +1,11 @@
+
+// Коэфицент питательности еды, чтобы полностью не копировать сложную систему питание людей.
+#define NUTRITION_COEF 20
+#define MAX_FEADING_TIME 15 SECONDS
+#define MIN_FEADING_TIME 3 SECONDS
+// Сколько нутриентов должно быть в мыше, перед тем как мы её гибнем
+#define GIB_FEED_LEVEL NUTRITION_LEVEL_FULL * 1.35
+
 /datum/hud/simple_animal_mouse/New(mob/user)
 	..()
 
@@ -31,8 +39,13 @@
 
 	// hungry mouse
 	hud_type = /datum/hud/simple_animal_mouse
+	// Стартовый уровень голода
 	nutrition = NUTRITION_LEVEL_HUNGRY + 10
-	hunger_drain = HUNGER_FACTOR * 1.5
+	// Скорость с которой снижается наш голод
+	// Мышка тратит 1800 nutrition в час, при hunger_drain = 1. Одно блюдо сополняет где-то 100 nutrition
+	// Вычесиление голода для 3 блюд в час. На 66% больше чем голод у человека (HUNGER_FACTOR * 1.66). Да мыши очень голодные
+	hunger_drain = 3/(1800/100)
+
 	var/previous_status
 	var/busy = FALSE
 
@@ -49,8 +62,10 @@
 	color_pick()
 	update_appearance(UPDATE_ICON_STATE|UPDATE_DESC)
 
+// Отслеживаем, что призрак попал в мышку.
 /mob/living/simple_animal/mouse/Login()
 	. = ..()
+	// Теперь мышка будет обрабатыватся в цикле life, обычные мышки не будут обрабатывать голод.
 	reagents = new()
 
 
@@ -88,6 +103,7 @@
 	remains.pixel_x = pixel_x
 	remains.pixel_y = pixel_y
 
+// Вызывается цикилически из модуля live. Отвечает за обработку голода
 /mob/living/simple_animal/mouse/handle_chemicals_in_body()
 
 	var/hunger_rate = hunger_drain
@@ -96,11 +112,11 @@
 	log_debug("\[ANTAG MIX\] nutriment in body: [nutrition]")
 
 	switch(nutrition)
-		if(NUTRITION_LEVEL_FULL * 1.4 to INFINITY)
-			nutrition_display.icon_state = "explode"
+		if(GIB_FEED_LEVEL to INFINITY)
+			visible_message("[src] разарвало от обжорства!.", "Ваши внутренности не выдерживают и лопаются.")
 			do_sparks(3, 1, src)
 			src.gib()
-		if(NUTRITION_LEVEL_FULL to INFINITY)
+		if(NUTRITION_LEVEL_FULL to GIB_FEED_LEVEL)
 			nutrition_display.icon_state = "fat"
 		if(NUTRITION_LEVEL_WELL_FED to NUTRITION_LEVEL_FULL)
 			nutrition_display.icon_state = "full"
@@ -112,7 +128,11 @@
 			nutrition_display.icon_state = "hungry"
 		if(NUTRITION_LEVEL_HYPOGLYCEMIA to NUTRITION_LEVEL_STARVING)
 			nutrition_display.icon_state = "starving"
-			// Someting bad
+			adjustHealth(0.02)
+		else
+			// we are below 0 that's realy bad. Let's kill us
+			adjustHealth(0.05)
+
 
 	new_status = nutrition_display.icon_state
 
@@ -121,14 +141,9 @@
 
 	previous_status = new_status
 	switch(new_status)
-		if("explode")
-			visible_message("[src] разарвало от обжорства!.", "Ваши внутренности не выдерживают и лопаются.")
-			do_sparks(3, 1, src)
-			src.gib()
 		if("fat")
 			name = "жирная [initial(name)]" // Мешаем англиский с русским
 			desc = "[initial(desc)] Господи! Она же огромная!"
-
 			to_chat(src, "<span class='userdanger'>Ты чувствуешь, что в тебя больше не влезет и кусочка</span>")
 		if("full")
 			name = initial(name)
@@ -138,13 +153,15 @@
 		if("fed")
 			name = initial(name)
 			desc = initial(desc)
-		if("hungr")
+		if("hungry")
 			name = "костлявая [initial(name)]"
 			desc = "[initial(desc)] Вы можете видеть рёбра через кожу."
 			to_chat(src, "<span class='userdanger'>Твой живот угрюмо урчит, лучше найти что-то поесть</span>")
 		if("starving")
+			to_chat(src, "<span class='userdanger'>Ты смертельно голоден!</span>")
 			nutrition_display.icon_state = "starving"
-		// Someting bad
+		else
+			CRASH("Не известный статус [new_status]")
 
 
 //Prevents mouse from pulling things
@@ -165,6 +182,7 @@
 		to_chat(src, "<span class='warning'>You are too small to pull anything except food.</span>")
 	return
 
+// Вызывается, когда мышка кликает на еду, можно кушать только одну еду за раз.
 /mob/living/simple_animal/mouse/proc/consume(obj/item/food/F)
 
 	if(busy)
@@ -172,28 +190,22 @@
 		return
 
 	busy = TRUE
+	// liniar scale from (MIN_FEADING_TIME, to MAX_FEADING_TIME)
+	var/eat_time = MIN_FEADING_TIME + (MAX_FEADING_TIME - MIN_FEADING_TIME) * (nutrition / GIB_FEED_LEVEL)
 	to_chat(src, "<span class='warning'>You're starting to chew on [F]...</span>")
-	if(!do_after_once(src, 5 SECONDS, target = F, needhand = FALSE))
+	if(!do_after_once(src, eat_time, target = F, needhand = FALSE))
 		to_chat(src, "<span class='warning'>You hurry up and stop chewing on [F]!</span>")
 		busy = FALSE
 		return
 
 	visible_message("[src] ravenously consumes [F].", "You ravenously devour [F].")
 	playsound(loc, 'sound/items/eatfood.ogg', 30, FALSE, frequency = 1.5)
-	var/nutriment = F.reagents.get_reagent_amount("nutriment") * 20 // Human biology is hard, but you get about 20 times more regents.
+	var/nutriment = F.reagents.get_reagent_amount("nutriment") * NUTRITION_COEF
 	log_debug("\[ANTAG MIX\] nutriment got: [nutriment]")
 	adjust_nutrition(nutriment)
 	F.generate_trash(F)
 	busy = FALSE
 	qdel(F)
-
-
-
-// /mob/living/simple_animal/mouse/emote(act, m_type = 1, message = null, force)
-
-// 		if("help")
-// 			to_chat(src, "scream, squeak")
-// 			playsound(src, damaged_sound, 40, 1)
 
 /mob/living/simple_animal/mouse/brown/tom
 	maxHealth = 10
@@ -212,3 +224,9 @@
 	butcher_results = list(/obj/item/stack/sheet/metal = 1)
 	maxHealth = 20
 	health = 20
+
+
+#undef NUTRITION_COEF
+#undef MAX_FEADING_TIME
+#undef MIN_FEADING_TIME
+#undef GIB_FEED_LEVEL
