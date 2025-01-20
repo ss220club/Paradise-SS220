@@ -557,7 +557,3 @@
 	new /obj/item/ammo_box/magazine/skrell_magazine/skrell_magazine_elite(src)
 	new /obj/item/ammo_box/magazine/skrell_magazine/skrell_magazine_elite(src)
 	new /obj/item/restraints/legcuffs/bola/energy(src)
-
-// MARK: Misc
-/datum/outfit/job/nct
-	head = /obj/item/clothing/head/beret/nct/black
