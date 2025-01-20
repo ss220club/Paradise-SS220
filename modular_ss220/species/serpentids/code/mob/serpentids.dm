@@ -19,8 +19,9 @@
 	dangerous_existence = TRUE
 
 	species_traits = list(LIPS, NO_HAIR, TTS_TRAIT_ROBOTIZE)
-	inherent_traits = list(TRAIT_NOPAIN)
+	inherent_traits = list(TRAIT_NOPAIN, TRAIT_CHUNKYFINGERS)
 	inherent_biotypes = MOB_ORGANIC | MOB_HUMANOID | MOB_REPTILE
+	no_equip = ITEM_SLOT_OUTER_SUIT | ITEM_SLOT_GLOVES | ITEM_SLOT_SHOES | ITEM_SLOT_JUMPSUIT | ITEM_SLOT_SUIT_STORE
 
 	dietflags = DIET_OMNI
 	taste_sensitivity = TASTE_SENSITIVITY_SHARP
