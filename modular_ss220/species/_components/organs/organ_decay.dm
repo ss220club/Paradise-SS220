@@ -34,7 +34,7 @@
 	var/is_no_owner = isnull(organ.owner)
 	if(!dead_last_state)
 		death_state_timer = world.time
-	dead_last_state = organ?.owner.stat == DEAD
+	dead_last_state = organ?.owner?.stat == DEAD
 	var/formaldehyde_found = organ.owner?.get_chemical_value("formaldehyde") > 0
 	var/is_destroying = (dead_last_state || (is_no_owner && !organ.is_in_freezer))
 	if(is_destroying && !formaldehyde_found && ((world.time - death_state_timer) >= ORGAN_DEATH_TIMER))

@@ -13,7 +13,6 @@
 /obj/item/organ/external/chest/carapace/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/carapace, FALSE, min_broken_damage)
-	owner.clear_alert("carapace_break")
 
 /obj/item/organ/external/chest/carapace/replaced()
 	. = ..()
@@ -23,6 +22,11 @@
 	if(owner)
 		owner.clear_alert("carapace_break")
 	. = ..()
+
+/obj/item/organ/external/chest/carapace/rejuvenate()
+	. = ..()
+	if(owner)
+		owner.clear_alert("carapace_break")
 
 #undef SERPENTID_ARMOR_THRESHOLD_1
 #undef SERPENTID_ARMOR_THRESHOLD_2
