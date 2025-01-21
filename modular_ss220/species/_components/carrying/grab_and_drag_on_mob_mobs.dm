@@ -89,3 +89,4 @@
 	passenger = null
 	M.layer = initial(M.layer)
 	M.pixel_y = initial(M.pixel_y)
+	clear_alert("serpentid_holding")

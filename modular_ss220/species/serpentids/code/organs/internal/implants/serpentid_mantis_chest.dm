@@ -5,7 +5,7 @@
 	icon_state = "chest_implant"
 	parent_organ = "chest"
 	actions_types = list(/datum/action/item_action/organ_action/toggle/switch_blades)
-	contents = newlist(/obj/item/kitchen/knife/combat/serpentblade,/obj/item/kitchen/knife/combat/serpentblade)
+	contents = newlist(/obj/item/kitchen/knife/combat/serpentblade)
 	action_icon = list(/datum/action/item_action/organ_action/toggle/switch_blades = 'modular_ss220/species/serpentids/icons/organs.dmi')
 	action_icon_state = list(/datum/action/item_action/organ_action/toggle/switch_blades = "serpentid_hand_act")
 	var/obj/item/holder_l = null
@@ -19,6 +19,12 @@
 	unremovable = TRUE
 	emp_proof = TRUE
 	var/first_recollor = TRUE
+	destroy_on_removal = TRUE
+
+/obj/item/organ/internal/cyberimp/chest/serpentid_blades/Initialize(mapload)
+	. = ..()
+	var/obj/item/kitchen/knife/combat/serpentblade/blade = contents[1]
+	blade.parent_blade_implant = src
 
 /datum/action/item_action/organ_action/toggle/switch_blades
 	name = "Switch Threat Mode"
@@ -85,6 +91,22 @@
 	holder_l.slot_flags = null
 	holder_l.w_class = WEIGHT_CLASS_HUGE
 	holder_l.materials = null
+
+	if(IS_CHANGELING(owner)) //Если линг
+		for(var/arm_slot in list(ITEM_SLOT_LEFT_HAND,ITEM_SLOT_RIGHT_HAND)) //Если активны в одной руке щит или меч - убрать
+			var/obj/item/arm_item = owner.get_item_by_slot(arm_slot)
+
+			if(arm_item)
+				if(istype(arm_item, /obj/item/melee/arm_blade) || istype(arm_item, /obj/item/shield/changeling))
+					if(istype(arm_item, /obj/item/melee/arm_blade))
+						var/obj/item/melee/arm_blade/armblade = arm_item
+						var/datum/action/changeling/weapon/item_datum = armblade.parent_action
+						item_datum.retract(owner, TRUE)
+					else
+						var/obj/item/shield/changeling/armshield = arm_item
+						armshield.remaining_uses = 0
+						qdel(armshield)
+
 
 	for(var/arm_slot in list(ITEM_SLOT_LEFT_HAND,ITEM_SLOT_RIGHT_HAND))
 		var/obj/item/arm_item = owner.get_item_by_slot(arm_slot)

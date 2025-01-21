@@ -204,6 +204,9 @@
 			return FALSE
 		if(ITEM_SLOT_OUTER_SUIT)
 			return FALSE
+		if(ITEM_SLOT_HEAD)
+			if(istype(I,/obj/item/clothing/head/helmet/changeling)) //Снятие шлема линга
+				return FALSE
 	. = .. ()
 
 //Ограничение на роли антагов (генокрад онли)

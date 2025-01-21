@@ -103,5 +103,5 @@
 				step(carrier.loaded, dirn)
 		carrier.loaded.crate_carrying_person = null
 		carrier.loaded = null
-		carrier.clear_alert("serpentid_holding")
 	carrier.update_icon(UPDATE_OVERLAYS)
+	carrier.clear_alert("serpentid_holding")

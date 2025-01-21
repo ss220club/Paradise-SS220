@@ -14,9 +14,5 @@
 	no_tts = TRUE
 
 /datum/language/serpentid/get_random_name(gender)
-	var/new_name = ""
-	if(gender == FEMALE)
-		new_name = capitalize(pick(GLOB.first_names_female))
-	else
-		new_name = capitalize(pick(GLOB.first_names_male))
+	var/new_name = capitalize(pick(file2list("config/names/serpentids_names.txt")))
 	return new_name
