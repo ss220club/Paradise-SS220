@@ -8,7 +8,7 @@
 	ask_verb = "стучит жвалами и жестикулирует конечностями"
 	exclaim_verbs = list("издает гремящие щелчки")
 	colour = "serpentid"
-	key = "g"
+	key = "w"
 	flags = RESTRICTED | WHITELISTED
 	syllables = list("click","clack","cling","clang","cland","clog")
 	no_tts = TRUE
