@@ -113,7 +113,7 @@
 
 	switch(nutrition)
 		if(GIB_FEED_LEVEL to INFINITY)
-			visible_message("[src] разарвало от обжорства!.", "Ваши внутренности не выдерживают и лопаются.")
+			visible_message("[src] разорвало от обжорства!", "Ваши внутренности не выдерживают и лопаются.")
 			do_sparks(3, 1, src)
 			src.gib()
 		if(NUTRITION_LEVEL_FULL to GIB_FEED_LEVEL)
@@ -149,19 +149,19 @@
 			name = initial(name)
 			desc = initial(desc)
 		if("well_fed")
-			to_chat(src, "<span class='userdanger'>Ты чувствуешь себя превосходно!</span>")
+			to_chat(src, "<span class='notice'>Ты чувствуешь себя превосходно!</span>")
 		if("fed")
 			name = initial(name)
 			desc = initial(desc)
 		if("hungry")
 			name = "костлявая [initial(name)]"
 			desc = "[initial(desc)] Вы можете видеть рёбра через кожу."
-			to_chat(src, "<span class='userdanger'>Твой живот угрюмо урчит, лучше найти что-то поесть</span>")
+			to_chat(src, "<span class='warning'>Твой живот угрюмо урчит, лучше найти что-то поесть</span>")
 		if("starving")
 			to_chat(src, "<span class='userdanger'>Ты смертельно голоден!</span>")
 			nutrition_display.icon_state = "starving"
 		else
-			CRASH("Не известный статус [new_status]")
+			CRASH("Неизвестный статус [new_status]")
 
 
 //Prevents mouse from pulling things
@@ -192,9 +192,9 @@
 	busy = TRUE
 	// liniar scale from (MIN_FEADING_TIME, to MAX_FEADING_TIME)
 	var/eat_time = MIN_FEADING_TIME + (MAX_FEADING_TIME - MIN_FEADING_TIME) * (nutrition / GIB_FEED_LEVEL)
-	to_chat(src, "<span class='warning'>You're starting to chew on [F]...</span>")
+	to_chat(src, "<span class='notice'>You're starting to chew on [F]...</span>")
 	if(!do_after_once(src, eat_time, target = F, needhand = FALSE))
-		to_chat(src, "<span class='warning'>You hurry up and stop chewing on [F]!</span>")
+		to_chat(src, "<span class='notice'>You hurry up and stop chewing on [F]!</span>")
 		busy = FALSE
 		return
 
