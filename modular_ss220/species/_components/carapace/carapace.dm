@@ -27,6 +27,7 @@
 /datum/component/carapace
 	var/self_mending = FALSE
 	var/broken_treshold = CARAPACE_BROKEN_STATE
+	var/operation_in_process = FALSE
 
 /datum/component/carapace/Initialize(allow_self_mending, break_threshold)
 	src.self_mending = allow_self_mending
@@ -37,10 +38,16 @@
 /datum/component/carapace/RegisterWithParent()
 	RegisterSignal(parent, COMSIG_LIMB_RECEIVE_DAMAGE, PROC_REF(receive_damage))
 	RegisterSignal(parent, COMSIG_LIMB_HEAL_DAMAGE, PROC_REF(heal_damage))
+	RegisterSignal(parent, COMSIG_LIMB_SHELL_OPERATION, PROC_REF(handle_operation_status))
 
 /datum/component/carapace/UnregisterFromParent()
 	UnregisterSignal(parent, COMSIG_LIMB_RECEIVE_DAMAGE)
 	UnregisterSignal(parent, COMSIG_LIMB_HEAL_DAMAGE)
+	UnregisterSignal(parent, COMSIG_LIMB_SHELL_OPERATION)
+
+/datum/component/carapace/proc/handle_operation_status(obj/item/organ/external/affected_limb, state_to_apply)
+	SIGNAL_HANDLER
+	operation_in_process = state_to_apply
 
 //Проки, срабатываемые при получении или исцелении урона
 /datum/component/carapace/proc/receive_damage(obj/item/organ/external/affected_limb, brute, burn, sharp, used_weapon = null, list/forbidden_limbs = list(), ignore_resists = FALSE, updating_health = TRUE)
@@ -54,7 +61,7 @@
 /datum/component/carapace/proc/heal_damage(obj/item/organ/external/affected_limb, brute, burn, internal = 0, robo_repair = 0, updating_health = TRUE)
 	SIGNAL_HANDLER
 	if((affected_limb.status & ORGAN_BROKEN) && affected_limb.get_damage() == 0)
-		if(self_mending || prob(CARAPACE_HEAL_BROKEN_PROB))
+		if((self_mending || prob(CARAPACE_HEAL_BROKEN_PROB)) && !operation_in_process)
 			affected_limb.mend_fracture()
 
 //////////////////////////////////////////////////////////////////
@@ -142,12 +149,14 @@
 	var/obj/item/organ/external/affected = target.get_organ(user.zone_selected)
 	if((affected?.encased == CARAPACE_ENCASE_WORD) && !(affected.status & ORGAN_BROKEN))
 		affected.fracture()
+		SEND_SIGNAL(affected, COMSIG_LIMB_SHELL_OPERATION, TRUE)
 	. = .. ()
 
 /datum/surgery_step/set_bone/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(user.zone_selected)
-	if((affected?.encased == CARAPACE_ENCASE_WORD) && !(affected.status & ORGAN_BROKEN))
+	if((affected?.encased == CARAPACE_ENCASE_WORD) && (affected.status & ORGAN_BROKEN))
 		affected.mend_fracture()
+		SEND_SIGNAL(affected, COMSIG_LIMB_SHELL_OPERATION, FALSE)
 	. = .. ()
 
 #undef CARAPACE_BROKEN_STATE

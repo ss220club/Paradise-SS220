@@ -14,7 +14,7 @@
 
 /obj/item/organ/internal/kidneys/serpentid/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/organ_decay, 0.03, BASIC_RECOVER_VALUE)
+	AddComponent(/datum/component/organ_decay, 0.12, BASIC_RECOVER_VALUE)
 	AddComponent(/datum/component/organ_toxin_damage, 0.15)
 	AddComponent(/datum/component/hunger_organ)
 	AddComponent(/datum/component/organ_action, radial_action_state, radial_action_icon)

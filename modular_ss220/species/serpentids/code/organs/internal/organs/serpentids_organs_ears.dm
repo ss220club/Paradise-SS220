@@ -16,7 +16,7 @@
 
 /obj/item/organ/internal/ears/serpentid/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/organ_decay, 0.05, BASIC_RECOVER_VALUE)
+	AddComponent(/datum/component/organ_decay, 0.2, BASIC_RECOVER_VALUE)
 	AddComponent(/datum/component/organ_toxin_damage, 0.05)
 	AddComponent(/datum/component/hunger_organ)
 	AddComponent(/datum/component/organ_action, radial_action_state, radial_action_icon)
