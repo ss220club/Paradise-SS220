@@ -42,9 +42,8 @@
 	// Стартовый уровень голода
 	nutrition = NUTRITION_LEVEL_HUNGRY + 10
 	// Скорость с которой снижается наш голод
-	// Мышка тратит 1800 nutrition в час, при hunger_drain = 1. Одно блюдо сополняет где-то 100 nutrition
-	// Вычесиление голода для 3 блюд в час. На 66% больше чем голод у человека (HUNGER_FACTOR * 1.66). Да мыши очень голодные
-	hunger_drain = 3/(1800/100)
+	// Мышка тратит 1800 nutrition в час, при hunger_drain = 1. Одно блюдо восполняет где-то 100-200 nutrition
+	hunger_drain = HUNGER_FACTOR * 1.66
 
 	var/previous_status
 	var/busy = FALSE
@@ -109,7 +108,6 @@
 	var/hunger_rate = hunger_drain
 	var/new_status
 	adjust_nutrition(-hunger_rate)
-	log_debug("\[ANTAG MIX\] nutriment in body: [nutrition]")
 
 	switch(nutrition)
 		if(GIB_FEED_LEVEL to INFINITY)
@@ -201,7 +199,6 @@
 	visible_message("[src] ravenously consumes [F].", "You ravenously devour [F].")
 	playsound(loc, 'sound/items/eatfood.ogg', 30, FALSE, frequency = 1.5)
 	var/nutriment = F.reagents.get_reagent_amount("nutriment") * NUTRITION_COEF
-	log_debug("\[ANTAG MIX\] nutriment got: [nutriment]")
 	adjust_nutrition(nutriment)
 	F.generate_trash(F)
 	busy = FALSE
