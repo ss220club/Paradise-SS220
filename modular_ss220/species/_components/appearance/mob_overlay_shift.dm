@@ -35,11 +35,11 @@
 	shift_call(parent)
 
 /datum/component/mob_overlay_shift/RegisterWithParent()
-	RegisterSignal(parent, list(COMSIG_ATOM_DIR_CHANGE, COMSIG_COMPONENT_CLEAN_ACT, COMSIG_MOB_ON_EQUIP, COMSIG_MOB_ON_CLICK), PROC_REF(shift_call))
+	RegisterSignal(parent, list(COMSIG_ATOM_DIR_CHANGE, COMSIG_COMPONENT_CLEAN_ACT, COMSIG_MOB_ON_EQUIP, COMSIG_MOB_ON_CLICK, COMSIG_CHANGELING_FINISHED_TRANSFORM), PROC_REF(shift_call))
 	RegisterSignal(parent, list(COMSIG_MOB_GET_OVERLAY_SHIFTS_LIST), PROC_REF(get_list))
 
 /datum/component/mob_overlay_shift/UnregisterFromParent()
-	UnregisterSignal(parent, list(COMSIG_ATOM_DIR_CHANGE, COMSIG_COMPONENT_CLEAN_ACT, COMSIG_MOB_ON_EQUIP, COMSIG_MOB_ON_CLICK, COMSIG_MOB_GET_OVERLAY_SHIFTS_LIST))
+	UnregisterSignal(parent, list(COMSIG_ATOM_DIR_CHANGE, COMSIG_COMPONENT_CLEAN_ACT, COMSIG_MOB_ON_EQUIP, COMSIG_MOB_ON_CLICK, COMSIG_MOB_GET_OVERLAY_SHIFTS_LIST, COMSIG_CHANGELING_FINISHED_TRANSFORM))
 
 /datum/component/mob_overlay_shift/proc/shift_call(mob/living/carbon/human/mob)
 	SIGNAL_HANDLER
@@ -65,15 +65,16 @@
 			var/x_shift_key = "shift_x"
 			var/y_shift_key = "shift_y"
 
-
-
 			var/x_shift_value = shift_data[body_part][position]["x"]
 			var/y_shift_value = shift_data[body_part][position]["y"]
 			var/x_central_value = shift_data[body_part][MOB_OVERLAY_SHIFT_CENTER]["x"]
 			var/y_central_value = shift_data[body_part][MOB_OVERLAY_SHIFT_CENTER]["y"]
 
-			shift_data[body_part][x_shift_key] = flip * x_shift_value + x_central_value
-			shift_data[body_part][y_shift_key] = flip * y_shift_value + y_central_value
+			shift_data[body_part][y_shift_key] = 0
+			shift_data[body_part][x_shift_key] = 0
+			if(isserpentid(mob))
+				shift_data[body_part][x_shift_key] = flip * x_shift_value + x_central_value
+				shift_data[body_part][y_shift_key] = flip * y_shift_value + y_central_value
 
 	update_call(mob)
 

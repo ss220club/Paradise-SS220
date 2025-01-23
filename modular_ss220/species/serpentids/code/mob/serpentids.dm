@@ -225,3 +225,9 @@
 //Расширение для действий органов серпентидов
 /datum/action/item_action/organ_action/toggle/serpentid
 	name = "serpentid organ selection"
+
+/datum/action/changeling/transform/sting_action(mob/living/carbon/human/user)
+	. = ..()
+	if(!.)
+		return
+	SEND_SIGNAL(user, COMSIG_CHANGELING_FINISHED_TRANSFORM)
