@@ -65,6 +65,9 @@
 		var/x_shift_key = "shift_x"
 		var/y_shift_key = "shift_y"
 
+		if(!position)
+			continue
+
 		var/x_shift_value = shift_data[body_part][position]["x"]
 		var/y_shift_value = shift_data[body_part][position]["y"]
 		var/x_central_value = shift_data[body_part][MOB_OVERLAY_SHIFT_CENTER]["x"]
