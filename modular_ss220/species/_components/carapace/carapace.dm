@@ -69,7 +69,7 @@
 //////////////////////////////////////////////////////////////////
 ///Датумы для операций
 /datum/surgery/carapace_break
-	name = "Break carapace"
+	name = "Break chitin"
 	steps = list(
 		/datum/surgery_step/saw_carapace,
 		/datum/surgery_step/cut_carapace,
@@ -90,7 +90,7 @@
 	requires_organic_bodypart = TRUE
 
 /datum/surgery/bone_repair/carapace
-	name = "Carapace Repair"
+	name = "Chitin Repair"
 	steps = list(
 		/datum/surgery_step/glue_bone,
 		/datum/surgery_step/set_bone,
@@ -140,7 +140,7 @@
 //Блокировка простого скальпеля (базовый начальный шаг любой операции), если карапас не был сломан, но появилась какая-то операция, которая не должна быть
 /datum/surgery_step/generic/cut_open/begin_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	if((affected?.encased == CARAPACE_ENCASE_WORD) && !(affected.status & ORGAN_BROKEN))
+	if((affected?.encased == CARAPACE_ENCASE_WORD) && !(affected.status & ORGAN_BROKEN) && !istype(surgery, /datum/surgery/carapace_shell_repair))
 		to_chat(user, span_notice("[capitalize(target.declent_ru(NOMINATIVE))] покрыта крепким хитином. Сломайте его, прежде чем начать операцию."))
 		return SURGERY_BEGINSTEP_ABORT
 	. = .. ()

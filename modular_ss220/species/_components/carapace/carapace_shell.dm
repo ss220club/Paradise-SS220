@@ -169,11 +169,10 @@
 	SIGNAL_HANDLER
 	broken_stage = 0
 
-
 //////////////////////////////////////////////////////////////////
 //					Хирургия для панциря						//
 //////////////////////////////////////////////////////////////////
-/datum/surgery/bone_repair/carapace_shell
+/datum/surgery/carapace_shell_repair
 	name = "Carapace Integrity Repair"
 	steps = list(
 		/datum/surgery_step/generic/cut_open,
@@ -234,7 +233,7 @@
 	)
 	return SURGERY_STEP_RETRY
 
-/datum/surgery/bone_repair/carapace_shell/can_start(mob/user, mob/living/carbon/target)
+/datum/surgery/carapace_shell_repair/can_start(mob/user, mob/living/carbon/target)
 	var/can_start = (SEND_SIGNAL(target, COMSIG_SURGERY_STOP) & SURGERY_STOP)
 	return can_start
 
