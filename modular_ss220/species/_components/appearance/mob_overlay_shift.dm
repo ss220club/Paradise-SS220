@@ -59,22 +59,21 @@
 			position = MOB_OVERLAY_SHIFT_FRONT
 
 	var/flip = (dir == WEST || dir == SOUTH) ? -1 : 1
+	if(position)
+		// Update shift values based on direction
+		for(var/body_part in body_parts)
+			var/x_shift_key = "shift_x"
+			var/y_shift_key = "shift_y"
 
-	// Update shift values based on direction
-	for(var/body_part in body_parts)
-		var/x_shift_key = "shift_x"
-		var/y_shift_key = "shift_y"
 
-		if(!position)
-			continue
 
-		var/x_shift_value = shift_data[body_part][position]["x"]
-		var/y_shift_value = shift_data[body_part][position]["y"]
-		var/x_central_value = shift_data[body_part][MOB_OVERLAY_SHIFT_CENTER]["x"]
-		var/y_central_value = shift_data[body_part][MOB_OVERLAY_SHIFT_CENTER]["y"]
+			var/x_shift_value = shift_data[body_part][position]["x"]
+			var/y_shift_value = shift_data[body_part][position]["y"]
+			var/x_central_value = shift_data[body_part][MOB_OVERLAY_SHIFT_CENTER]["x"]
+			var/y_central_value = shift_data[body_part][MOB_OVERLAY_SHIFT_CENTER]["y"]
 
-		shift_data[body_part][x_shift_key] = flip * x_shift_value + x_central_value
-		shift_data[body_part][y_shift_key] = flip * y_shift_value + y_central_value
+			shift_data[body_part][x_shift_key] = flip * x_shift_value + x_central_value
+			shift_data[body_part][y_shift_key] = flip * y_shift_value + y_central_value
 
 	update_call(mob)
 
