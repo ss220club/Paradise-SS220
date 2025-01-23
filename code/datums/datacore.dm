@@ -265,7 +265,6 @@ GLOBAL_VAR_INIT(record_id_num, 1001)
 		preview_icon.Blend(temp, ICON_OVERLAY)
 	// SS220 EDIT END - SERPENTIDS
 
-
 	//Tail
 	if(H.body_accessory && (istype(H.body_accessory, /datum/body_accessory/tail) || istype(H.body_accessory, /datum/body_accessory/wing)))
 		temp = new/icon("icon" = H.body_accessory.icon, "icon_state" = H.body_accessory.icon_state)
