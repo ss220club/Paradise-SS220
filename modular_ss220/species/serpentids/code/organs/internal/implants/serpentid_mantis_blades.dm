@@ -17,7 +17,7 @@
 	. = ..()
 	ADD_TRAIT(src, TRAIT_ADVANCED_SURGICAL, ROUNDSTART_TRAIT)
 	AddComponent(/datum/component/surgery_initiator)
-	AddComponent(/datum/component/forces_doors_open)
+	AddComponent(/datum/component/forces_doors_open/serpentid_blades)
 	AddComponent(/datum/component/parry, _stamina_constant = 2, _stamina_coefficient = 0.5, _parryable_attack_types = NON_PROJECTILE_ATTACKS)
 	AddComponent(/datum/component/double_attack)
 
@@ -36,3 +36,14 @@
 		var/obj/item/organ/internal/kidneys/serpentid/kidneys= H.get_int_organ(/obj/item/organ/internal/kidneys/serpentid)
 		H.reset_visibility()
 		kidneys.switch_mode(force_off = TRUE)
+
+/// subtype for mantis blades
+/datum/component/forces_doors_open/serpentid_blades/on_interact(datum/source, mob/user, atom/target)
+	if(check_intent(user))
+		return
+
+	if(try_to_open_firedoor(target))
+		return ITEM_INTERACT_COMPLETE
+
+	if(try_to_force_open_airlock(user, target))
+		return ITEM_INTERACT_COMPLETE
