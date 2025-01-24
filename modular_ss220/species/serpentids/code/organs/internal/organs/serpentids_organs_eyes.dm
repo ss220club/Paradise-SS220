@@ -53,7 +53,7 @@
 /obj/item/organ/internal/eyes/serpentid/switch_mode(force_off = FALSE)
 	. = ..()
 	if(!force_off && owner?.nutrition >= NUTRITION_LEVEL_HYPOGLYCEMIA && !(status & ORGAN_DEAD) && !active)
-		see_in_dark = 8
+		see_in_dark = 10
 		chemical_consuption = initial(chemical_consuption)
 		active = TRUE
 		owner.visible_message(span_warning("Зрачки [owner] расширяются!"))
