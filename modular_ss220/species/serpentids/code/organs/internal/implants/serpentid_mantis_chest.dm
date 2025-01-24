@@ -20,6 +20,7 @@
 	emp_proof = TRUE
 	var/first_recollor = TRUE
 	destroy_on_removal = TRUE
+	stealth_level = 5
 
 /obj/item/organ/internal/cyberimp/chest/serpentid_blades/Initialize(mapload)
 	. = ..()

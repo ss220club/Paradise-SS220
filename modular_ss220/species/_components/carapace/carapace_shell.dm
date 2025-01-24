@@ -45,7 +45,7 @@
 	RegisterSignal(H, COMSIG_SURGERY_REPAIR, PROC_REF(surgery_carapace_shell_repair))
 	RegisterSignal(H, COMSIG_MOB_APPLY_DAMAGE, PROC_REF(update_attacked_time))
 	RegisterSignal(H, COMSIG_LIVING_AHEAL, PROC_REF(clear_state))
-	RegisterSignal(H, COMSIG_SURGERY_GET_CARAPACE, PROC_REF(is_armor_piercied))
+	RegisterSignal(H, COMSIG_SHELL_GET_CARAPACE, PROC_REF(is_armor_piercied))
 
 /datum/component/carapace_shell/UnregisterFromParent()
 	UnregisterSignal(H, COMSIG_LIVING_LIFE)
@@ -53,11 +53,11 @@
 	UnregisterSignal(H, COMSIG_SURGERY_REPAIR)
 	UnregisterSignal(H, COMSIG_MOB_APPLY_DAMAGE)
 	UnregisterSignal(H, COMSIG_LIVING_AHEAL)
-	UnregisterSignal(H, COMSIG_SURGERY_GET_CARAPACE)
+	UnregisterSignal(H, COMSIG_SHELL_GET_CARAPACE)
 
 /datum/component/carapace_shell/proc/is_armor_piercied()
 	SIGNAL_HANDLER
-	return broken_stage < 1 ? CARAPACE_SHELL_NOT_BROKEN : FALSE
+	return broken_stage > 0 ? CARAPACE_SHELL_BROKEN : FALSE
 
 /datum/component/carapace_shell/proc/stage_1_break()
 	H.dna.species.brute_mod = CARAPACE_SHELL_BROKEN_BRUTE

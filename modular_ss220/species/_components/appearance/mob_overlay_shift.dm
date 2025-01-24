@@ -35,17 +35,26 @@
 	shift_call(parent)
 
 /datum/component/mob_overlay_shift/RegisterWithParent()
-	RegisterSignal(parent, list(COMSIG_ATOM_DIR_CHANGE, COMSIG_COMPONENT_CLEAN_ACT, COMSIG_MOB_ON_EQUIP, COMSIG_MOB_ON_CLICK, COMSIG_CHANGELING_FINISHED_TRANSFORM), PROC_REF(shift_call))
+	RegisterSignal(parent, list(COMSIG_COMPONENT_CLEAN_ACT, COMSIG_MOB_ON_EQUIP, COMSIG_MOB_ON_CLICK, COMSIG_CHANGELING_FINISHED_TRANSFORM), PROC_REF(shift_call))
+	RegisterSignal(parent, list(COMSIG_ATOM_DIR_CHANGE), PROC_REF(update_dir))
 	RegisterSignal(parent, list(COMSIG_MOB_GET_OVERLAY_SHIFTS_LIST), PROC_REF(get_list))
 
 /datum/component/mob_overlay_shift/UnregisterFromParent()
 	UnregisterSignal(parent, list(COMSIG_ATOM_DIR_CHANGE, COMSIG_COMPONENT_CLEAN_ACT, COMSIG_MOB_ON_EQUIP, COMSIG_MOB_ON_CLICK, COMSIG_MOB_GET_OVERLAY_SHIFTS_LIST, COMSIG_CHANGELING_FINISHED_TRANSFORM))
 
+/datum/component/mob_overlay_shift/proc/update_dir(mob/living/carbon/human/mob, olddir, newdir)
+	SIGNAL_HANDLER
+	if(newdir)
+		dir = newdir
+	update_apperance(mob)
+
 /datum/component/mob_overlay_shift/proc/shift_call(mob/living/carbon/human/mob)
 	SIGNAL_HANDLER
 	if(mob.dir)
 		dir = mob.dir
+	update_apperance(mob)
 
+/datum/component/mob_overlay_shift/proc/update_apperance(mob/living/carbon/human/mob)
 	var/list/body_parts = list(MOB_OVERLAY_SHIFT_HAND, MOB_OVERLAY_SHIFT_BELT, MOB_OVERLAY_SHIFT_BACK, MOB_OVERLAY_SHIFT_HEAD)
 	var/position
 	switch(dir)
