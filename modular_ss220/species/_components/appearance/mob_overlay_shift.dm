@@ -35,12 +35,12 @@
 	shift_call(parent)
 
 /datum/component/mob_overlay_shift/RegisterWithParent()
-	RegisterSignal(parent, list(COMSIG_COMPONENT_CLEAN_ACT, COMSIG_MOB_ON_EQUIP, COMSIG_MOB_ON_CLICK, COMSIG_CHANGELING_FINISHED_TRANSFORM), PROC_REF(shift_call))
+	RegisterSignal(parent, list(COMSIG_COMPONENT_CLEAN_ACT, COMSIG_MOVABLE_MOVED, COMSIG_MOB_ON_EQUIP, COMSIG_MOB_ON_CLICK, COMSIG_CHANGELING_FINISHED_TRANSFORM), PROC_REF(shift_call))
 	RegisterSignal(parent, list(COMSIG_ATOM_DIR_CHANGE), PROC_REF(update_dir))
 	RegisterSignal(parent, list(COMSIG_MOB_GET_OVERLAY_SHIFTS_LIST), PROC_REF(get_list))
 
 /datum/component/mob_overlay_shift/UnregisterFromParent()
-	UnregisterSignal(parent, list(COMSIG_ATOM_DIR_CHANGE, COMSIG_COMPONENT_CLEAN_ACT, COMSIG_MOB_ON_EQUIP, COMSIG_MOB_ON_CLICK, COMSIG_MOB_GET_OVERLAY_SHIFTS_LIST, COMSIG_CHANGELING_FINISHED_TRANSFORM))
+	UnregisterSignal(parent, list(COMSIG_ATOM_DIR_CHANGE, COMSIG_MOVABLE_MOVED, COMSIG_COMPONENT_CLEAN_ACT, COMSIG_MOB_ON_EQUIP, COMSIG_MOB_ON_CLICK, COMSIG_MOB_GET_OVERLAY_SHIFTS_LIST, COMSIG_CHANGELING_FINISHED_TRANSFORM))
 
 /datum/component/mob_overlay_shift/proc/update_dir(mob/living/carbon/human/mob, olddir, newdir)
 	SIGNAL_HANDLER
@@ -110,3 +110,7 @@
 #undef MOB_OVERLAY_SHIFT_SIDE
 #undef MOB_OVERLAY_SHIFT_FRONT
 #undef MOB_OVERLAY_SHIFT_CENTER
+
+/atom/movable/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
+	. = ..()
+	l_move_time = world.time

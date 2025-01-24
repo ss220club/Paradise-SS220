@@ -16,7 +16,7 @@
 /obj/item/kitchen/knife/combat/serpentblade/Initialize(mapload)
 	. = ..()
 	ADD_TRAIT(src, TRAIT_ADVANCED_SURGICAL, ROUNDSTART_TRAIT)
-	AddComponent(/datum/component/forces_doors_open)
+	AddComponent(/datum/component/surgery_initiator)
 	AddComponent(/datum/component/parry, _stamina_constant = 2, _stamina_coefficient = 0.5, _parryable_attack_types = NON_PROJECTILE_ATTACKS)
 	AddComponent(/datum/component/double_attack)
 
@@ -25,7 +25,7 @@
 	var/mob/living/carbon/human/owner = loc
 	if(ishuman(owner))
 		if(IS_CHANGELING(owner) && force == 11)
-			force = 7
+			force = 8
 			armour_penetration_flat = 10
 
 /obj/item/kitchen/knife/combat/serpentblade/attack(mob/living/M, mob/living/user, def_zone)
