@@ -1,10 +1,16 @@
 
 // Коэфицент питательности еды, чтобы полностью не копировать сложную систему питание людей.
 #define NUTRITION_COEF 20
-#define MAX_FEADING_TIME 15 SECONDS
+#define MAX_FEADING_TIME 7 SECONDS
 #define MIN_FEADING_TIME 3 SECONDS
 // Сколько нутриентов должно быть в мыше, перед тем как мы её гибнем
 #define GIB_FEED_LEVEL NUTRITION_LEVEL_FULL * 1.35
+#define STATUS_FAT 0
+#define STATUS_FULL 1
+#define STATUS_WELL_FED 2
+#define STATUS_FED 3
+#define STATUS_HUNGRY 4
+#define STATUS_STARVING 5
 
 /datum/hud/simple_animal_mouse/New(mob/user)
 	..()
@@ -45,6 +51,7 @@
 	// Мышка тратит 1800 nutrition в час, при hunger_drain = 1. Одно блюдо восполняет где-то 100-200 nutrition
 	hunger_drain = HUNGER_FACTOR * 1.66
 
+	var/const/bitesize = 2
 	var/previous_status
 	var/busy = FALSE
 
@@ -105,61 +112,63 @@
 // Вызывается цикилически из модуля live. Отвечает за обработку голода
 /mob/living/simple_animal/mouse/handle_chemicals_in_body()
 
-	var/hunger_rate = hunger_drain
 	var/new_status
-	adjust_nutrition(-hunger_rate)
+	adjust_nutrition(-hunger_drain)
+	// log_debug("\[MOUSE BUFF\] nutriment in body: [nutrition]")
+
 
 	switch(nutrition)
 		if(GIB_FEED_LEVEL to INFINITY)
 			visible_message("[src] разорвало от обжорства!", "Ваши внутренности не выдерживают и лопаются.")
-			do_sparks(3, 1, src)
 			src.gib()
 		if(NUTRITION_LEVEL_FULL to GIB_FEED_LEVEL)
 			nutrition_display.icon_state = "fat"
+			new_status = STATUS_FAT
 		if(NUTRITION_LEVEL_WELL_FED to NUTRITION_LEVEL_FULL)
 			nutrition_display.icon_state = "full"
+			new_status = STATUS_FULL
 		if(NUTRITION_LEVEL_FED to NUTRITION_LEVEL_WELL_FED)
 			nutrition_display.icon_state = "well_fed"
+			new_status = STATUS_WELL_FED
 		if(NUTRITION_LEVEL_HUNGRY to NUTRITION_LEVEL_FED)
 			nutrition_display.icon_state = "fed"
+			new_status = STATUS_FED
 		if(NUTRITION_LEVEL_STARVING to NUTRITION_LEVEL_HUNGRY)
 			nutrition_display.icon_state = "hungry"
+			new_status = STATUS_HUNGRY
 		if(NUTRITION_LEVEL_HYPOGLYCEMIA to NUTRITION_LEVEL_STARVING)
 			nutrition_display.icon_state = "starving"
+			new_status = STATUS_STARVING
 			adjustHealth(0.02)
 		else
 			// we are below 0 that's realy bad. Let's kill us
 			adjustHealth(0.05)
-
-
-	new_status = nutrition_display.icon_state
 
 	if(previous_status == new_status)
 		return
 
 	previous_status = new_status
 	switch(new_status)
-		if("fat")
+		if(STATUS_FAT)
 			name = "жирная [initial(name)]" // Мешаем англиский с русским
 			desc = "[initial(desc)] Господи! Она же огромная!"
-			to_chat(src, "<span class='userdanger'>Ты чувствуешь, что в тебя больше не влезет и кусочка</span>")
-		if("full")
+			to_chat(src, span_userdanger("Ты чувствуешь, что в тебя больше не влезет и кусочка"))
+		if(STATUS_FULL)
 			name = initial(name)
 			desc = initial(desc)
-		if("well_fed")
-			to_chat(src, "<span class='notice'>Ты чувствуешь себя превосходно!</span>")
-		if("fed")
+		if(STATUS_WELL_FED)
+			to_chat(src, span_notice("Ты чувствуешь себя превосходно!"))
+		if(STATUS_FED)
 			name = initial(name)
 			desc = initial(desc)
-		if("hungry")
+		if(STATUS_HUNGRY)
 			name = "костлявая [initial(name)]"
 			desc = "[initial(desc)] Вы можете видеть рёбра через кожу."
-			to_chat(src, "<span class='warning'>Твой живот угрюмо урчит, лучше найти что-то поесть</span>")
-		if("starving")
-			to_chat(src, "<span class='userdanger'>Ты смертельно голоден!</span>")
-			nutrition_display.icon_state = "starving"
+			to_chat(src, span_warning("Твой живот угрюмо урчит, лучше найти что-то поесть"))
+		if(STATUS_STARVING)
+			to_chat(src, span_userdanger("Ты смертельно голоден!"))
 		else
-			CRASH("Неизвестный статус [new_status]")
+			CRASH("Unknown status: [new_status]")
 
 
 //Prevents mouse from pulling things
@@ -177,32 +186,39 @@
 			return FALSE
 		return
 	if(show_message)
-		to_chat(src, "<span class='warning'>You are too small to pull anything except food.</span>")
+		to_chat(src, span_warning("You are too small to pull anything except food."))
 	return
 
 // Вызывается, когда мышка кликает на еду, можно кушать только одну еду за раз.
 /mob/living/simple_animal/mouse/proc/consume(obj/item/food/F)
 
 	if(busy)
-		to_chat(src, "<span class='warning'>You need to finish chewing first.</span>")
+		to_chat(src, span_warning("You need to finish chewing first."))
 		return
 
 	busy = TRUE
 	// liniar scale from (MIN_FEADING_TIME, to MAX_FEADING_TIME)
 	var/eat_time = MIN_FEADING_TIME + (MAX_FEADING_TIME - MIN_FEADING_TIME) * (nutrition / GIB_FEED_LEVEL)
-	to_chat(src, "<span class='notice'>You're starting to chew on [F]...</span>")
+	to_chat(src, span_notice("You're starting to chew on [F]..."))
 	if(!do_after_once(src, eat_time, target = F, needhand = FALSE))
-		to_chat(src, "<span class='notice'>You hurry up and stop chewing on [F]!</span>")
+		to_chat(src, span_notice("You hurry up and stop chewing on [F]!"))
 		busy = FALSE
 		return
 
-	visible_message("[src] ravenously consumes [F].", "You ravenously devour [F].")
-	playsound(loc, 'sound/items/eatfood.ogg', 30, FALSE, frequency = 1.5)
-	var/nutriment = F.reagents.get_reagent_amount("nutriment") * NUTRITION_COEF
-	adjust_nutrition(nutriment)
-	F.generate_trash(F)
 	busy = FALSE
-	qdel(F)
+	playsound(loc, 'sound/items/eatfood.ogg', 30, FALSE, frequency = 1.5)
+	var/nutriment = F.reagents.get_reagent_amount("nutriment")
+	// Добовляю только нутриенты т.к. яды и другие вещества не обрабатываются по умолчанию.
+	if(nutriment > bitesize)
+		F.reagents.remove_reagent("nutriment", bitesize, TRUE)
+		adjust_nutrition(bitesize * NUTRITION_COEF)
+	else
+		visible_message("[src] ravenously consumes [F].", "You ravenously devour [F].")
+		F.reagents.remove_reagent("nutriment", nutriment, TRUE)
+		adjust_nutrition(nutriment * NUTRITION_COEF)
+		F.generate_trash(F)
+		qdel(F)
+
 
 /mob/living/simple_animal/mouse/brown/tom
 	maxHealth = 10
@@ -227,3 +243,9 @@
 #undef MAX_FEADING_TIME
 #undef MIN_FEADING_TIME
 #undef GIB_FEED_LEVEL
+#undef STATUS_FAT
+#undef STATUS_FULL
+#undef STATUS_WELL_FED
+#undef STATUS_FED
+#undef STATUS_HUNGRY
+#undef STATUS_STARVING
