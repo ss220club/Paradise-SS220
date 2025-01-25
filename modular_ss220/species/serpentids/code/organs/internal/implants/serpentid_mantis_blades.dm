@@ -32,7 +32,7 @@
 /obj/item/kitchen/knife/combat/serpentblade/attack(mob/living/M, mob/living/user, def_zone)
 	. = ..()
 	var/mob/living/carbon/human/H = user
-	if(H.invisibility != INVISIBILITY_OBSERVER)
+	if(H.invisibility == INVISIBILITY_LEVEL_TWO || H.alpha != 255)
 		var/obj/item/organ/internal/kidneys/serpentid/kidneys= H.get_int_organ(/obj/item/organ/internal/kidneys/serpentid)
 		H.reset_visibility()
 		kidneys.switch_mode(force_off = TRUE)

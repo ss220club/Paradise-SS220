@@ -54,8 +54,8 @@
 	if(crit_fail || (!holder_l && !length(contents)))
 		to_chat(owner, span_warning("Вы не можете поднять клинки"))
 		return
-	var/extended = holder_l && !(holder_l in src)
-	if(extended)
+
+	if(blades_active)
 		if(!activation_in_progress)
 			activation_in_progress = TRUE
 			Retract()
@@ -123,11 +123,11 @@
 			else
 				to_chat(owner, span_notice("You drop [arm_item] to activate [src]!"))
 
-	holder_l.forceMove(owner)		//TODO: move to equipped?
+	holder_l.forceMove(owner)
 	owner.l_hand = holder_l
 	holder_l.layer = ABOVE_HUD_LAYER	//TODO: move to equipped?
 	holder_l.plane = ABOVE_HUD_PLANE	//TODO: move to equipped?
-	holder_l.equipped(src, ITEM_SLOT_LEFT_HAND)
+	holder_l.equipped(owner, ITEM_SLOT_LEFT_HAND)
 	owner.update_inv_l_hand()
 
 	blades_active = TRUE
@@ -153,10 +153,6 @@
 		return
 	var/obj/item/organ/internal/cyberimp/chest/serpentid_blades/blades_implant = M.get_int_organ(/obj/item/organ/internal/cyberimp/chest/serpentid_blades)
 	if(blades_implant)
-		if(blades_implant.owner.invisibility != INVISIBILITY_OBSERVER)
-			var/obj/item/organ/internal/kidneys/serpentid/kidneys = M.get_int_organ(/obj/item/organ/internal/kidneys/serpentid)
-			blades_implant.owner.reset_visibility()
-			kidneys.switch_mode(force_off = TRUE)
 		if(blades_implant.blades_active)
 			if((M != H) && M.a_intent != INTENT_HELP && H.check_shields(M, 0, M.name, attack_type = UNARMED_ATTACK))
 				add_attack_logs(M, H, "Melee attacked with blades (miss/block)")
@@ -182,6 +178,13 @@
 
 //Модификация усиленного граба
 /datum/species/proc/blades_grab(mob/living/carbon/human/user, mob/living/carbon/human/target, datum/martial_art/attacker_style)
+	var/grab_level = GRAB_AGGRESSIVE
+	if(isserpentid(user) && (user.invisibility == INVISIBILITY_LEVEL_TWO))
+		var/obj/item/organ/internal/kidneys/serpentid/kidneys = user.get_int_organ(/obj/item/organ/internal/kidneys/serpentid)
+		user.reset_visibility()
+		kidneys.switch_mode(force_off = TRUE)
+	else
+		grab_level = GRAB_PASSIVE
 	if(target.check_block())
 		target.visible_message(span_warning("[target] blocks [user]'s grab attempt!"))
 		return FALSE
@@ -192,11 +195,15 @@
 		user.swap_hand()
 	target.grabbedby(user)
 	var/obj/item/grab/grab_item = user.get_active_hand()
-	grab_item.state = GRAB_AGGRESSIVE
+	grab_item.state = grab_level
 	grab_item.icon_state = "grabbed1"
 
 //Модификация усиленного дизарма
 /datum/species/proc/blades_disarm(mob/living/carbon/human/user, mob/living/carbon/human/target, datum/martial_art/attacker_style)
+	if(isserpentid(user))
+		var/obj/item/organ/internal/kidneys/serpentid/kidneys = user.get_int_organ(/obj/item/organ/internal/kidneys/serpentid)
+		user.reset_visibility()
+		kidneys.switch_mode(force_off = TRUE)
 	if(user == target)
 		return FALSE
 	if(target.check_block())
@@ -293,5 +300,9 @@
 		return FALSE
 	if(!user.hand)
 		user.swap_hand()
+	if(isserpentid(user))
+		var/obj/item/organ/internal/kidneys/serpentid/kidneys = user.get_int_organ(/obj/item/organ/internal/kidneys/serpentid)
+		user.reset_visibility()
+		kidneys.switch_mode(force_off = TRUE)
 	var/obj/item/kitchen/knife/combat/serpentblade/blade = user.get_active_hand()
 	blade.attack(target, user)
