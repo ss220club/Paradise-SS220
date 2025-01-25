@@ -24,8 +24,9 @@ GLOBAL_LIST_INIT(radios_broadcasting_common, list(
 
 /obj/item/radio/handle_message_mode(mob/living/M, list/message_pieces, message_mode)
 	// Check if it can be send to common.
-	if(!can_broadcast_into_common && (!message_mode || message_mode == "headset"))
-		return RADIO_CONNECTION_FAIL
+	if(!message_mode || message_mode == "headset")
+		if (!can_broadcast_into_common && SSsecurity_level.current_security_level < SEC_LEVEL_GAMMA)
+			return RADIO_CONNECTION_FAIL
 	return ..()
 
 /obj/item/radio/intercom
