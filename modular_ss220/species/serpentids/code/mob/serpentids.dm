@@ -212,19 +212,12 @@
 //Ограничение на роли антагов (генокрад онли)
 /datum/antag_scenario/vampire
 	restricted_species = list("Machine","Serpentid")
-	. = .. ()
 
 /datum/antag_scenario/traitor
 	restricted_species = list("Serpentid")
-	. = .. ()
 
-/datum/antagonist/mindflayer
+/datum/antag_scenario/mindflayer
 	restricted_species = list("Serpentid")
-	. = .. ()
-
-/datum/antagonist/blood_brother
-	restricted_species = list("Serpentid")
-	. = .. ()
 
 /datum/antag_scenario/team/blood_brothers/New()
 	restricted_species = list("Serpentid")
