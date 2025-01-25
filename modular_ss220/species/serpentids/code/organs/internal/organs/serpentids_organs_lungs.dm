@@ -103,6 +103,9 @@
 		if(safe_zone_timer > SERPENTID_LUNGS_SAFE_TIMER && !danger_air)
 			switch_mode_off()
 
+	else
+		if(owner.internal == serpentid_vault)
+			owner.internal = null
 	// Если Серпентид не выделяет вещества, и среда опасна и он без сознания - начать выделять вещества
 	if(danger_air && (owner.stat == UNCONSCIOUS) && !active_secretion)
 		if(!owner.internal)

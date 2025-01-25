@@ -56,7 +56,7 @@
 		affected_limb.fracture()
 	if(length(affected_limb.internal_organs))
 		var/obj/item/organ/internal/O = pick(affected_limb.internal_organs)
-		O.receive_damage(burn * affected_limb.burn_dam)
+		O.receive_damage(burn)
 
 /datum/component/carapace/proc/heal_damage(obj/item/organ/external/affected_limb, brute, burn, internal = 0, robo_repair = 0, updating_health = TRUE)
 	SIGNAL_HANDLER
