@@ -124,11 +124,11 @@
 				to_chat(owner, span_notice("You drop [arm_item] to activate [src]!"))
 
 	holder_l.forceMove(owner)		//TODO: move to equipped?
-	l_hand = holder_l
+	owner.l_hand = holder_l
 	holder_l.layer = ABOVE_HUD_LAYER	//TODO: move to equipped?
 	holder_l.plane = ABOVE_HUD_PLANE	//TODO: move to equipped?
 	holder_l.equipped(src, ITEM_SLOT_LEFT_HAND)
-	update_inv_l_hand()
+	owner.update_inv_l_hand()
 
 	blades_active = TRUE
 	playsound(get_turf(owner), 'sound/mecha/mechmove03.ogg', 50, 1)
