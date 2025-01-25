@@ -219,9 +219,8 @@
 /datum/antag_scenario/mindflayer
 	restricted_species = list("Serpentid")
 
-/datum/antag_scenario/team/blood_brothers/New()
+/datum/antag_scenario/team/blood_brothers
 	restricted_species = list("Serpentid")
-	. = .. ()
 
 //Расширение для действий органов серпентидов
 /datum/action/item_action/organ_action/toggle/serpentid
