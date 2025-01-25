@@ -204,9 +204,9 @@ GLOBAL_LIST_EMPTY(deadsay_radio_systems)
 			if(has_channel_access(usr, num2text(freq)))
 				set_frequency(freq)
 		if("listen")
-			listening = !listening
+			ToggleReception() // SS220 EDIT - better reception toggling
 		if("broadcast")
-			broadcasting = !broadcasting
+			ToggleBroadcast() // SS220 EDIT - better broadcast toggling
 		if("channel") // For keyed channels on headset radios only
 			var/channel = params["channel"]
 			if(!(channel in channels))
@@ -219,7 +219,7 @@ GLOBAL_LIST_EMPTY(deadsay_radio_systems)
 			if(has_loudspeaker)
 				loudspeaker = !loudspeaker
 				if(loudspeaker)
-					canhear_range = 3
+					canhear_range = initial(canhear_range) // SS220 EDIT - use initial value for toggling speaker
 				else
 					canhear_range = 0
 		else
