@@ -209,6 +209,11 @@
 	playsound(loc, 'sound/items/eatfood.ogg', 30, FALSE, frequency = 1.5)
 	var/nutriment = F.reagents.get_reagent_amount("nutriment")
 	// Добовляю только нутриенты т.к. яды и другие вещества не обрабатываются по умолчанию.
+
+	if(istype(F, /obj/item/food/cheesewedge) || istype(F, /obj/item/food/sliceable/cheesewheel))
+		Druggy(2 SECONDS)
+		emote(pick("дёргается","быстро вертит хвостиком","издаёт продолжительный писк"))
+
 	if(nutriment > bitesize)
 		F.reagents.remove_reagent("nutriment", bitesize, TRUE)
 		adjust_nutrition(bitesize * NUTRITION_COEF)
