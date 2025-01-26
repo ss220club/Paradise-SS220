@@ -158,7 +158,7 @@
 	if((affected?.encased == CARAPACE_ENCASE_WORD) && (affected.status & ORGAN_BROKEN))
 		affected.mend_fracture()
 		if(isserpentid(target))
-			if(!(SEND_SIGNAL(target, COMSIG_SHELL_GET_CARAPACE) & CARAPACE_SHELL_BROKEN))
+			if(!(SEND_SIGNAL(target, COMSIG_SHELL_GET_CARAPACE_STATE) & CARAPACE_SHELL_BROKEN))
 				ADD_TRAIT(target, TRAIT_PIERCEIMMUNE, "carapace_state")
 		SEND_SIGNAL(affected, COMSIG_LIMB_SHELL_OPERATION, FALSE)
 	. = .. ()
