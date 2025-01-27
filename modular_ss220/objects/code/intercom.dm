@@ -15,7 +15,7 @@
 	var/icon_postfix_off = "-p"
 
 	/// Used to disable mic if not used
-	var/mic_timeout = 10 SECONDS
+	var/mic_timeout = 20 SECONDS
 
 /obj/item/radio/intercom/ToggleBroadcast()
 	. = ..()
