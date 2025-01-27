@@ -1,6 +1,9 @@
 /obj/item/radio/intercom
 	icon = 'modular_ss220/objects/icons/intercom.dmi'
 
+	max_hear_range = 5
+	has_fixed_hear_range = FALSE
+
 	overlay_speaker_idle = "intercom_s"
 	overlay_speaker_active = "intercom_receive"
 
