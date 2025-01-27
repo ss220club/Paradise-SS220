@@ -120,7 +120,7 @@
 
 	switch(nutrition)
 		if(GIB_FEED_LEVEL to INFINITY)
-			visible_message("[src] разорвало от обжорства!", "Ваши внутренности не выдерживают и лопаются.")
+			visible_message("[src] разорвало от обжорства!", "Ваши внутренности не выдерживают и лопаются!")
 			src.gib()
 		if(NUTRITION_LEVEL_FULL to GIB_FEED_LEVEL)
 			nutrition_display.icon_state = "fat"
@@ -187,22 +187,22 @@
 			return FALSE
 		return
 	if(show_message)
-		to_chat(src, span_warning("You are too small to pull anything except food."))
+		to_chat(src, span_warning("Ты слишком крохотный, чтобы тянуть что-то кроме еды."))
 	return
 
 // Вызывается, когда мышка кликает на еду, можно кушать только одну еду за раз.
 /mob/living/simple_animal/mouse/proc/consume(obj/item/food/F)
 
 	if(busy)
-		to_chat(src, span_warning("You need to finish chewing first."))
+		to_chat(src, span_warning("Сначала доешь, то что уже жуёшь."))
 		return
 
 	busy = TRUE
 	// liniar scale from (MIN_FEADING_TIME, to MAX_FEADING_TIME)
 	var/eat_time = MIN_FEADING_TIME + (MAX_FEADING_TIME - MIN_FEADING_TIME) * (nutrition / GIB_FEED_LEVEL)
-	to_chat(src, span_notice("You're starting to chew on [F]..."))
+	to_chat(src, span_notice("Ты начинаешь употреблять [F]."))
 	if(!do_after_once(src, eat_time, target = F, needhand = FALSE))
-		to_chat(src, span_notice("You hurry up and stop chewing on [F]!"))
+		to_chat(src, span_notice("Не доедая, ты перестаёшь жевать [F]!"))
 		busy = FALSE
 		return
 
@@ -217,9 +217,10 @@
 
 	if(nutriment > bitesize)
 		F.reagents.remove_reagent("nutriment", bitesize, TRUE)
+		visible_message("[src] употребляет часть [F].", "Ты съедаешь часть [F].")
 		adjust_nutrition(bitesize * NUTRITION_COEF)
 	else
-		visible_message("[src] ravenously consumes [F].", "You ravenously devour [F].")
+		visible_message("[src] заканчивает есть [F].", "Ты доедаешь [F].")
 		F.reagents.remove_reagent("nutriment", nutriment, TRUE)
 		adjust_nutrition(nutriment * NUTRITION_COEF)
 		F.generate_trash(F)
