@@ -42,3 +42,6 @@
 		chemical_consuption = 0
 		owner.visible_message(span_notice("Тело [owner] перестает преломлять свет."))
 	SEND_SIGNAL(src, COMSIG_ORGAN_CHANGE_CHEM_CONSUPTION, chemical_consuption)
+
+/obj/item/organ/internal/kidneys/serpentid/get_active_state()
+	return cloak_engaged

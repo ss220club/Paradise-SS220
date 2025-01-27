@@ -74,6 +74,9 @@
 		switch_mode_off()
 	SEND_SIGNAL(src, COMSIG_ORGAN_CHANGE_CHEM_CONSUPTION, chemical_consuption)
 
+/obj/item/organ/internal/lungs/serpentid/get_active_state()
+	return active_secretion
+
 /obj/item/organ/internal/lungs/serpentid/on_life()
 	. = ..()
 	if(!owner)

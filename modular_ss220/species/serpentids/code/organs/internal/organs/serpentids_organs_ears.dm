@@ -39,6 +39,9 @@
 		owner.visible_message(span_notice("Тело [owner] перестает колыхаться."))
 	SEND_SIGNAL(src, COMSIG_ORGAN_CHANGE_CHEM_CONSUPTION, chemical_consuption)
 
+/obj/item/organ/internal/ears/serpentid/get_active_state()
+	return active
+
 /obj/item/organ/internal/ears/serpentid/proc/sense_creatures()
 	for(var/mob/living/creature in range(9, owner))
 		var/last_movement_timer = world.time - creature.l_move_time

@@ -64,3 +64,6 @@
 		owner.visible_message(span_notice("Зрачки [owner] сужаются."))
 	owner?.update_sight()
 	SEND_SIGNAL(src, COMSIG_ORGAN_CHANGE_CHEM_CONSUPTION, chemical_consuption)
+
+/obj/item/organ/internal/eyes/serpentid/get_active_state()
+	return active
