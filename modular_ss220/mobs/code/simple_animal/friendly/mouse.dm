@@ -33,8 +33,6 @@
 
 	user.overlay_fullscreen("see_through_darkness", /atom/movable/screen/fullscreen/stretch/see_through_darkness)
 
-
-
 /mob/living/simple_animal/mouse
 	var/non_standard = FALSE // for no "mouse_" with mouse_color
 	icon = 'modular_ss220/mobs/icons/mob/animal.dmi'
@@ -43,7 +41,6 @@
 	damaged_sound = list('modular_ss220/mobs/sound/creatures/rat_wound.ogg')
 	blood_volume = BLOOD_VOLUME_SURVIVE
 	butcher_results = list(/obj/item/food/meat/mouse = 1)
-
 	// hungry mouse
 	hud_type = /datum/hud/simple_animal_mouse
 	// Стартовый уровень голода
@@ -55,8 +52,6 @@
 	var/const/bitesize = 2
 	var/previous_status
 	var/busy = FALSE
-
-
 
 /mob/living/simple_animal/mouse/Initialize(mapload)
 	. = ..()
@@ -74,7 +69,6 @@
 	. = ..()
 	// Теперь мышка будет обрабатыватся в цикле life, обычные мышки не будут обрабатывать голод.
 	reagents = new()
-
 
 /mob/living/simple_animal/mouse/proc/color_pick()
 	if(!mouse_color)
@@ -112,11 +106,8 @@
 
 // Вызывается цикилически из модуля live. Отвечает за обработку голода
 /mob/living/simple_animal/mouse/handle_chemicals_in_body()
-
 	var/new_status
 	adjust_nutrition(-hunger_drain)
-	// log_debug("\[MOUSE BUFF\] nutriment in body: [nutrition]")
-
 
 	switch(nutrition)
 		if(GIB_FEED_LEVEL to INFINITY)
@@ -171,7 +162,6 @@
 		else
 			CRASH("Unknown status: [new_status]")
 
-
 //Prevents mouse from pulling things
 /mob/living/simple_animal/mouse/start_pulling(atom/movable/AM, state, force = pull_force, show_message = FALSE)
 	if(istype(AM, /obj/item/food))
@@ -192,7 +182,6 @@
 
 // Вызывается, когда мышка кликает на еду, можно кушать только одну еду за раз.
 /mob/living/simple_animal/mouse/proc/consume(obj/item/food/F)
-
 	if(busy)
 		to_chat(src, span_warning("You need to finish chewing first."))
 		return
@@ -243,7 +232,6 @@
 	butcher_results = list(/obj/item/stack/sheet/metal = 1)
 	maxHealth = 20
 	health = 20
-
 
 #undef NUTRITION_COEF
 #undef MAX_FEADING_TIME
