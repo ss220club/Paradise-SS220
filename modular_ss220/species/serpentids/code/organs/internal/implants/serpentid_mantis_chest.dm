@@ -153,7 +153,7 @@
 		return
 	var/obj/item/organ/internal/cyberimp/chest/serpentid_blades/blades_implant = M.get_int_organ(/obj/item/organ/internal/cyberimp/chest/serpentid_blades)
 	if(isserpentid(M))
-		var/obj/item/organ/internal/kidneys/serpentid/kidneys = user.get_int_organ(/obj/item/organ/internal/kidneys/serpentid)
+		var/obj/item/organ/internal/kidneys/serpentid/kidneys = M.get_int_organ(/obj/item/organ/internal/kidneys/serpentid)
 		M.reset_visibility()
 		kidneys.switch_mode(force_off = TRUE)
 	if(blades_implant)
