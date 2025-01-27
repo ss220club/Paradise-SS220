@@ -58,12 +58,12 @@
 	if(listening && overlay_speaker_idle)
 		. += overlay_speaker_idle
 
-/obj/item/radio/ToggleReception()
+/obj/item/radio/ToggleReception(mob/user)
 	. = ..()
 	if(!isnull(overlay_speaker_idle))
 		update_icon()
 
-/obj/item/radio/ToggleBroadcast()
+/obj/item/radio/ToggleBroadcast(mob/user)
 	. = ..()
 	if(!isnull(overlay_mic_idle))
 		update_icon()

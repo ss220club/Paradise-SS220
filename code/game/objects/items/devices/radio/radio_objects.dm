@@ -204,9 +204,9 @@ GLOBAL_LIST_EMPTY(deadsay_radio_systems)
 			if(has_channel_access(usr, num2text(freq)))
 				set_frequency(freq)
 		if("listen")
-			ToggleReception() // SS220 EDIT - better reception toggling
+			ToggleReception(ui.user) // SS220 EDIT - better reception toggling
 		if("broadcast")
-			ToggleBroadcast() // SS220 EDIT - better broadcast toggling
+			ToggleBroadcast(ui.user) // SS220 EDIT - better broadcast toggling
 		if("channel") // For keyed channels on headset radios only
 			var/channel = params["channel"]
 			if(!(channel in channels))
@@ -267,12 +267,12 @@ GLOBAL_LIST_EMPTY(deadsay_radio_systems)
 /mob/dead/observer/has_internal_radio_channel_access(mob/user, list/req_one_accesses)
 	return can_admin_interact()
 
-/obj/item/radio/proc/ToggleBroadcast()
+/obj/item/radio/proc/ToggleBroadcast(mob/user = usr) // SS220 EDIT - user argument
 	broadcasting = !broadcasting && !(wires.is_cut(WIRE_RADIO_TRANSMIT) || wires.is_cut(WIRE_RADIO_SIGNAL))
 	if(broadcasting)
 		playsound(src, 'sound/items/radio_common.ogg', rand(4, 16) * 5, SOUND_RANGE_SET(3))
 
-/obj/item/radio/proc/ToggleReception()
+/obj/item/radio/proc/ToggleReception(mob/user = usr) // SS220 EDIT - user argument
 	listening = !listening && !(wires.is_cut(WIRE_RADIO_RECEIVER) || wires.is_cut(WIRE_RADIO_SIGNAL))
 
 /obj/item/radio/proc/autosay(message, from, channel, follow_target_override) //BS12 EDIT

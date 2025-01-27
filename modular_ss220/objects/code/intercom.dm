@@ -20,9 +20,9 @@
 	/// Used to disable mic if not used
 	var/mic_timeout = 20 SECONDS
 
-/obj/item/radio/intercom/ToggleBroadcast()
+/obj/item/radio/intercom/ToggleBroadcast(mob/user = usr)
 	. = ..()
-	if(broadcasting)
+	if(broadcasting && !issilicon(user))
 		start_mic_timer()
 
 /obj/item/radio/intercom/proc/start_mic_timer()
