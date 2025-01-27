@@ -23,11 +23,17 @@ GLOBAL_LIST_INIT(radios_broadcasting_common, list(
 		can_broadcast_into_common = TRUE
 
 /obj/item/radio/handle_message_mode(mob/living/M, list/message_pieces, message_mode)
+	var/datum/radio_frequency/channel = ..()
+	if(!istype(channel))
+		return channel // this will be handled
+	
+	var/common_granted = SSsecurity_level.current_security_level.grants_common_channel_access
+
 	// Check if it can be send to common.
-	if(!message_mode || message_mode == "headset")
-		if(!SSsecurity_level.current_security_level.grants_common_channel_access && !can_broadcast_into_common)
-			return RADIO_CONNECTION_FAIL
-	return ..()
+	if(channel.frequency == PUB_FREQ && !common_granted && !can_broadcast_into_common)
+		return RADIO_CONNECTION_FAIL
+
+	return channel
 
 /obj/item/radio/intercom
 	canhear_range = 1
