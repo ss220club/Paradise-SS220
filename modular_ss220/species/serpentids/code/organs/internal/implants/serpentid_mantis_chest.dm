@@ -105,7 +105,6 @@
 						item_datum.retract(owner, TRUE)
 					else
 						var/obj/item/shield/changeling/armshield = arm_item
-						armshield.remaining_uses = 0
 						qdel(armshield)
 
 
