@@ -211,7 +211,7 @@
 	var/nutriment = F.reagents.get_reagent_amount("nutriment")
 	// Добовляю только нутриенты т.к. яды и другие вещества не обрабатываются по умолчанию.
 
-	if(istype(F, /obj/item/food/cheesewedge) || istype(F, /obj/item/food/sliceable/cheesewheel))
+	if(istype(F, /obj/item/food/sliced/cheesewedge) || istype(F, /obj/item/food/sliceable/cheesewheel))
 		Druggy(2 SECONDS)
 		emote(pick("дёргается","быстро вертит хвостиком","издаёт продолжительный писк"))
 
