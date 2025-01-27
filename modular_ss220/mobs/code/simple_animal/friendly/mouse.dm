@@ -21,7 +21,8 @@
 	mymob.nutrition_display = new /atom/movable/screen/nutrition()
 	mymob.nutrition_display.screen_loc = "EAST-1:26,CENTER-1:15"
 	// "EAST-2:32,CENTER-1:13"
-	mymob.nutrition_display.icon = 'modular_ss220/mobs/code/simple_animal/friendly/screen_hunger_mouse_test.dmi' // TODO Перерисовать на сыр
+	mymob.nutrition_display.icon = 'modular_ss220/mobs/code/simple_animal/friendly/screen_hunger_ui_for_mouse.dmi'
+
 	infodisplay += mymob.nutrition_display
 
 	var/atom/movable/screen/using
