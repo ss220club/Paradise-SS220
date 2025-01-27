@@ -135,7 +135,6 @@
 	)
 	)
 
-
 //Перенести на карапас/грудь
 /datum/species/serpentid/handle_life(mob/living/carbon/human/H)
 	if(gene_lastcall >= SERPENTID_GENE_DEGRADATION_CD)
@@ -178,6 +177,8 @@
 	H.verbs -= /mob/living/carbon/human/verb/emote_blink
 	H.verbs -= /mob/living/carbon/human/verb/emote_blink_r
 	H.chat_message_y_offset = 11
+	H.status_flags &= ~CANPUSH
+	H.move_resist = MOVE_FORCE_STRONG
 
 /datum/species/serpentid/on_species_loss(mob/living/carbon/human/H)
 	..()
@@ -192,6 +193,8 @@
 	H.verbs |= /mob/living/carbon/human/verb/emote_sigh
 	H.verbs |= /mob/living/carbon/human/verb/emote_blink
 	H.verbs |= /mob/living/carbon/human/verb/emote_blink_r
+	H.status_flags |= CANPUSH
+	H.move_resist = MOVE_FORCE_DEFAULT
 
 //Работа с инвентарем
 /datum/species/serpentid/can_equip(obj/item/I, slot, disable_warning = FALSE, mob/living/carbon/human/H)
@@ -231,3 +234,9 @@
 	if(!.)
 		return
 	SEND_SIGNAL(user, COMSIG_CHANGELING_FINISHED_TRANSFORM)
+
+/mob/living/death(gibbed)
+	. = ..()
+	if(!.)
+		return
+	SEND_SIGNAL(src, COMSIG_GADOM_UNLOAD)
