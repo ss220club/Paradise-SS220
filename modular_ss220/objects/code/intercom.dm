@@ -1,5 +1,5 @@
 /obj/item/radio/intercom
-	icon = 'modular_ss220/aesthetics/radio/icons/intercom.dmi'
+	icon = 'modular_ss220/objects/icons/intercom.dmi'
 
 	overlay_speaker_idle = "intercom_s"
 	overlay_speaker_active = "intercom_receive"
@@ -35,7 +35,7 @@
 		start_mic_timer()
 
 /obj/item/mounted/frame/intercom
-	icon = 'modular_ss220/aesthetics/radio/icons/intercom.dmi'
+	icon = 'modular_ss220/objects/icons/intercom.dmi'
 	icon_state = "intercom-frame"
 
 /obj/item/mounted/frame/intercom/do_build(turf/on_wall, mob/user)
