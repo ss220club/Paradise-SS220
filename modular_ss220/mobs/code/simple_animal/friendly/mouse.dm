@@ -206,7 +206,7 @@
 
 	if(nutriment > bitesize)
 		F.reagents.remove_reagent("nutriment", bitesize, TRUE)
-		visible_message("[src] употребляет часть [F].", "Ты съедаешь часть [F].")
+		visible_message("[src] съедает часть [F].", "Ты съедаешь часть [F].")
 		adjust_nutrition(bitesize * NUTRITION_COEF)
 	else
 		visible_message("[src] заканчивает есть [F].", "Ты доедаешь [F].")
