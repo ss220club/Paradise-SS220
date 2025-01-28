@@ -28,7 +28,7 @@
 		)
 		return
 
-	if(!is_station_level(usr.z) && !is_mining_level(usr.z))
+	if(!radio.on || (!is_station_level(usr.z) && !is_mining_level(usr.z)))
 		tgui_alert(
 			user = usr,
 			title = "Ошибка",
@@ -52,7 +52,8 @@
 	radio.autosay(
 		from = "Система Оповещения",
 		message = "Внимание! [owner], [ownrank], требует помощи в [area.name]! Необходимо немедленное реагирование.",
-		channel = DEPARTMENT_SECURITY
+		channel = DEPARTMENT_SECURITY,
+		follow_target_override = src
 	)
 	if(!silent)
 		playsound(src, 'sound/machines/terminal_success.ogg', vol = 50, vary = TRUE)
