@@ -8,7 +8,7 @@
 		return channel // this will be handled
 	
 	// Check if the radio can send to common.
-	var/sec_level_grants_common = SSsecurity_level.current_security_level.grants_common_channel_access
+	var/sec_level_grants_common = SSsecurity_level.current_security_level.grants_common_channel_access()
 	if(channel.frequency == PUB_FREQ && !sec_level_grants_common && has_limited_common_channel_access())
 		return RADIO_CONNECTION_FAIL
 
