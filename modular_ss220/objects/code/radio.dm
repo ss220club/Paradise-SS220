@@ -46,8 +46,6 @@
 				return TRUE
 			else
 				return FALSE
-		else
-			return FALSE
 
 /obj/item/radio/update_overlays()
 	. = ..()

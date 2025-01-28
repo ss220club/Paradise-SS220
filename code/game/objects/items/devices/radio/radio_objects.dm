@@ -176,7 +176,7 @@ GLOBAL_LIST_EMPTY(deadsay_radio_systems)
 
 /obj/item/radio/ui_act(action, params, datum/tgui/ui)
 	if(..())
-		return
+		return TRUE // SS220 EDIT - return TRUE if the action was handled
 	. = TRUE
 	switch(action)
 		if("frequency") // Available to both headsets and non-headset radios
