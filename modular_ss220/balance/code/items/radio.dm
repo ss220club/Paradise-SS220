@@ -14,6 +14,19 @@
 
 	return channel
 
+/obj/item/radio/emag_act(mob/user)
+	..()
+	if(emagged)
+		to_chat(user, span_notice("[src] is unresponsive. It is probably already modified."))
+		return FALSE
+
+	respects_common_channel_limitations = FALSE
+	emagged = TRUE
+	playsound(loc, 'sound/effects/sparks4.ogg', vol = 75, vary = TRUE)
+	to_chat(user, span_notice("You disable common channel limitations of [src]."))
+	log_game("[key_name(user)] emagged [src]")
+	return TRUE
+
 /// Whether the radio has limited common channel access
 /obj/item/radio/proc/has_limited_common_channel_access()
 	return respects_common_channel_limitations
