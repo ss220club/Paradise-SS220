@@ -73,3 +73,6 @@
 
 /obj/item/pda/heads
 	alarm_timeout = 2 MINUTES
+
+/obj/item/pda/heads/centcom
+	alarm_timeout = 1 MINUTES
