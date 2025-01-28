@@ -1,42 +1,67 @@
-GLOBAL_LIST_INIT(radios_broadcasting_common, list(
-	/obj/item/radio/intercom,
-	/obj/item/radio/centcom,
-	/obj/item/radio/uplink,
-	/obj/item/radio/syndicate,
-	/obj/item/radio/headset/heads,
-	/obj/item/radio/headset/ert,
-	/obj/item/radio/headset/alt/deathsquad,
-	/obj/item/radio/headset/skrellian,
-	/obj/item/radio/headset/centcom,
-	/obj/item/radio/headset/syndicate,
-	/obj/item/radio/headset/uplink,
-	/obj/item/radio/headset/chameleon,
-	/obj/item/radio/headset/deadsay,
-))
-
 /obj/item/radio
-	var/can_broadcast_into_common = FALSE
-
-/obj/item/radio/Initialize(mapload)
-	. = ..()
-	if(is_type_in_list(src, GLOB.radios_broadcasting_common))
-		can_broadcast_into_common = TRUE
+	/// Whether the radio respects common channel limitations
+	var/respects_common_channel_limitations = TRUE
 
 /obj/item/radio/handle_message_mode(mob/living/M, list/message_pieces, message_mode)
 	var/datum/radio_frequency/channel = ..()
 	if(!istype(channel))
 		return channel // this will be handled
 	
-	var/common_granted = SSsecurity_level.current_security_level.grants_common_channel_access
-
-	// Check if it can be send to common.
-	if(channel.frequency == PUB_FREQ && !common_granted && !can_broadcast_into_common)
+	// Check if the radio can send to common.
+	var/sec_level_grants_common = SSsecurity_level.current_security_level.grants_common_channel_access
+	if(channel.frequency == PUB_FREQ && !sec_level_grants_common && has_limited_common_channel_access())
 		return RADIO_CONNECTION_FAIL
 
 	return channel
 
+/// Whether the radio has limited common channel access
+/obj/item/radio/proc/has_limited_common_channel_access()
+	return respects_common_channel_limitations
+
+/obj/item/radio/headset/has_limited_common_channel_access()
+	if(!respects_common_channel_limitations)
+		return FALSE
+	if(keyslot1 && keyslot1.grants_common_channel_access)
+		return FALSE
+	if(keyslot2 && keyslot2.grants_common_channel_access)
+		return FALSE
+	return TRUE
+
+/obj/item/radio/borg/has_limited_common_channel_access()
+	if(!respects_common_channel_limitations)
+		return FALSE
+	if(keyslot && keyslot.grants_common_channel_access)
+		return FALSE
+	return TRUE
+
 /obj/item/radio/intercom
 	canhear_range = 1
+	respects_common_channel_limitations = FALSE
 
 /obj/item/radio/intercom/department
 	canhear_range = 1
+
+/obj/item/radio/headset/chameleon
+	respects_common_channel_limitations = FALSE
+
+/obj/item/encryptionkey
+	/// Whether the key grants access to the common channel
+	var/grants_common_channel_access = FALSE
+
+/obj/item/encryptionkey/heads
+	grants_common_channel_access = TRUE
+
+/obj/item/encryptionkey/headset_nct
+	grants_common_channel_access = TRUE
+
+/obj/item/encryptionkey/ert
+	grants_common_channel_access = TRUE
+
+/obj/item/encryptionkey/skrell
+	grants_common_channel_access = TRUE
+
+/obj/item/encryptionkey/centcom
+	grants_common_channel_access = TRUE
+
+/obj/item/encryptionkey/syndicate
+	grants_common_channel_access = TRUE
