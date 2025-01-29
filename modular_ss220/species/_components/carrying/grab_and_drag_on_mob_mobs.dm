@@ -8,6 +8,7 @@
 
 /datum/component/gadom_living/Initialize()
 	carrier = parent
+	carrier.can_buckle = FALSE
 	START_PROCESSING(SSprojectiles, src)
 
 /datum/component/gadom_living/RegisterWithParent()
@@ -80,7 +81,7 @@
 	carrier.loaded = null
 	carrier.passenger = null
 	carrier.unbuckle_all_mobs()
-	carrier.can_buckle = TRUE
+	carrier.can_buckle = FALSE
 	carrier.update_icon(UPDATE_OVERLAYS)
 	carrier.clear_alert("serpentid_holding")
 

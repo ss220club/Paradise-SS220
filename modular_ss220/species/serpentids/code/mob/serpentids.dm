@@ -250,3 +250,15 @@
 	if(!.)
 		return
 	SEND_SIGNAL(src, COMSIG_GADOM_UNLOAD)
+
+/mob/living/on_immobilized_trait_gain(datum/source)
+	. = ..()
+	SEND_SIGNAL(src, COMSIG_GADOM_UNLOAD)
+
+/mob/living/on_knockedout_trait_gain(datum/source)
+	. = ..()
+	SEND_SIGNAL(src, COMSIG_GADOM_UNLOAD)
+
+/mob/living/on_floored_trait_gain(datum/source)
+	. = ..()
+	SEND_SIGNAL(src, COMSIG_GADOM_UNLOAD)

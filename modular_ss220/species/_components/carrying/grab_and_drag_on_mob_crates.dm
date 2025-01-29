@@ -76,6 +76,7 @@
 
 	if(!isliving(AM))
 		AM.crate_carrying_person = carrier
+		AM.density = FALSE
 		AM.forceMove(carrier.loc)
 
 	carrier.loaded = AM
@@ -103,6 +104,7 @@
 			var/turf/newT = get_step(T,dirn)
 			if(carrier.loaded.CanPass(carrier.loaded, newT))
 				step(carrier.loaded, dirn)
+		carrier.loaded.density = TRUE
 		carrier.loaded.crate_carrying_person = null
 		carrier.loaded = null
 	carrier.update_icon(UPDATE_OVERLAYS)
