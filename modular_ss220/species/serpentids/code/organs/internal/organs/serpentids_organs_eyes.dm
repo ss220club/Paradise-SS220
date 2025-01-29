@@ -53,12 +53,14 @@
 /obj/item/organ/internal/eyes/serpentid/switch_mode(force_off = FALSE)
 	. = ..()
 	if(!force_off && owner?.nutrition >= NUTRITION_LEVEL_HYPOGLYCEMIA && !(status & ORGAN_DEAD) && !active)
-		see_in_dark = 10
+		see_in_dark = 8
+		lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
 		chemical_consuption = initial(chemical_consuption)
 		active = TRUE
 		owner.visible_message(span_warning("Зрачки [owner] расширяются!"))
 	else
 		see_in_dark = initial(see_in_dark)
+		lighting_alpha = initial(lighting_alpha)
 		chemical_consuption = 0
 		active = FALSE
 		owner.visible_message(span_notice("Зрачки [owner] сужаются."))
