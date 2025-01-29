@@ -165,14 +165,14 @@
 	H.AddComponent(/datum/component/mob_overlay_shift, shift_data)
 	H.AddComponent(/datum/component/gadom_living)
 	H.AddComponent(/datum/component/gadom_cargo)
-	H.verbs |= /mob/living/carbon/human/verb/emote_serpentidroar
-	H.verbs |= /mob/living/carbon/human/verb/emote_serpentidhiss
-	H.verbs |= /mob/living/carbon/human/verb/emote_serpentidwiggles
-	H.verbs |= /mob/living/carbon/human/verb/emote_serpentidblinks
-	H.verbs |= /mob/living/carbon/human/verb/emote_serpentidblinksblades
-	H.verbs |= /mob/living/carbon/human/verb/emote_serpentidbuzzes
-	H.verbs |= /mob/living/carbon/human/verb/emote_serpentidmandibles
-	H.verbs |= /mob/living/carbon/human/verb/emote_serpentidblades
+	H.verbs |= /mob/living/carbon/human/proc/emote_serpentidroar
+	H.verbs |= /mob/living/carbon/human/proc/emote_serpentidhiss
+	H.verbs |= /mob/living/carbon/human/proc/emote_serpentidwiggles
+	H.verbs |= /mob/living/carbon/human/proc/emote_serpentidblinks
+	H.verbs |= /mob/living/carbon/human/proc/emote_serpentidblinksblades
+	H.verbs |= /mob/living/carbon/human/proc/emote_serpentidbuzzes
+	H.verbs |= /mob/living/carbon/human/proc/emote_serpentidmandibles
+	H.verbs |= /mob/living/carbon/human/proc/emote_serpentidblades
 	H.verbs -= /mob/living/carbon/human/verb/emote_cry
 	H.verbs -= /mob/living/carbon/human/verb/emote_cough
 	H.verbs -= /mob/living/carbon/human/verb/emote_sneeze
@@ -187,14 +187,14 @@
 
 /datum/species/serpentid/on_species_loss(mob/living/carbon/human/H)
 	..()
-	H.verbs -= /mob/living/carbon/human/verb/emote_serpentidroar
-	H.verbs -= /mob/living/carbon/human/verb/emote_serpentidhiss
-	H.verbs -= /mob/living/carbon/human/verb/emote_serpentidwiggles
-	H.verbs -= /mob/living/carbon/human/verb/emote_serpentidblinks
-	H.verbs -= /mob/living/carbon/human/verb/emote_serpentidblinksblades
-	H.verbs -= /mob/living/carbon/human/verb/emote_serpentidbuzzes
-	H.verbs -= /mob/living/carbon/human/verb/emote_serpentidmandibles
-	H.verbs -= /mob/living/carbon/human/verb/emote_serpentidblades
+	H.verbs -= /mob/living/carbon/human/proc/emote_serpentidroar
+	H.verbs -= /mob/living/carbon/human/proc/emote_serpentidhiss
+	H.verbs -= /mob/living/carbon/human/proc/emote_serpentidwiggles
+	H.verbs -= /mob/living/carbon/human/proc/emote_serpentidblinks
+	H.verbs -= /mob/living/carbon/human/proc/emote_serpentidblinksblades
+	H.verbs -= /mob/living/carbon/human/proc/emote_serpentidbuzzes
+	H.verbs -= /mob/living/carbon/human/proc/emote_serpentidmandibles
+	H.verbs -= /mob/living/carbon/human/proc/emote_serpentidblades
 	H.verbs |= /mob/living/carbon/human/verb/emote_cough
 	H.verbs |= /mob/living/carbon/human/verb/emote_cry
 	H.verbs |= /mob/living/carbon/human/verb/emote_sneeze
