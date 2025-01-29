@@ -142,7 +142,7 @@
 	owner.transfer_item_to(holder_l, src, force = TRUE)
 	holder_l = null
 	blades_active = FALSE
-	playsound(get_turf(owner), 'sound/weapons/blade_sheath.ogg', 50, 1)
+	playsound(get_turf(owner), 'sound/weapons/blade_unsheath.ogg', 50, 1)
 	new_icon_state = "blades_0"
 	update_icon(UPDATE_OVERLAYS)
 

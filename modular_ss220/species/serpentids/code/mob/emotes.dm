@@ -23,12 +23,12 @@
 	emote("serpentidwiggles", intentional = TRUE)
 
 /mob/living/carbon/human/proc/emote_serpentidblinks()
-	set name = "< " + EMOTE_HUMAN_SERPENTIDBLINK + " >"
+	set name = "◦ " + EMOTE_HUMAN_SERPENTIDBLINK + " >"
 	set category = "Эмоции"
 	emote("serpentidblinks", intentional = TRUE)
 
 /mob/living/carbon/human/proc/emote_serpentidblinksblades()
-	set name = "< " + EMOTE_HUMAN_SERPENTIDBLINKBLADES + " >"
+	set name = "◦ " + EMOTE_HUMAN_SERPENTIDBLINKBLADES + " >"
 	set category = "Эмоции"
 	emote("serpentidblinksblades", intentional = TRUE)
 
@@ -173,7 +173,7 @@
 	species_type_whitelist_typecache = list(/datum/species/serpentid)
 	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
 	age_based = TRUE
-	sound = 'sound/weapons/blade1.ogg'
+	sound = 'sound/weapons/blade_unsheath.ogg'
 	hands_use_check = FALSE
 	target_behavior = EMOTE_TARGET_BHVR_USE_PARAMS_ANYWAY
 	emote_target_type = EMOTE_TARGET_ANY
