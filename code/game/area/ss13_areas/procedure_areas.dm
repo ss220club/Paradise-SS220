@@ -1,4 +1,4 @@
 
 /area/station/procedure/trainer_office
-	name = "Офис Профессионального Тренера НТ"
+	name = "\improper Trainer's Office"
 	icon_state = "procedure_nct"
