@@ -23,13 +23,13 @@
 	name = "Склад Медицинского Отдела"
 	icon_state = "medbaystorage"
 	request_console_flags = RC_ASSIST
-	request_console_name = "Medbay"
+	request_console_name = "Медицинский Отдел"
 
 /area/station/medical/reception
 	name = "Ресепшен Медицинского Отдела"
 	icon_state = "medbaylobby"
 	request_console_flags = RC_ASSIST
-	request_console_name = "Medbay"
+	request_console_name = "Медицинский Отдел"
 
 /area/station/medical/psych
 	name = "Офис Психолога"
