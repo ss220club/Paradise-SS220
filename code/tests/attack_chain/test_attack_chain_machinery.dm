@@ -119,7 +119,7 @@
 	player.retrieve(knife)
 	player.set_intent("harm")
 	player.click_on(upload_console)
-	TEST_ASSERT_LAST_CHATLOG(player, "AI upload console with the kitchen knife")
+	TEST_ASSERT_LAST_CHATLOG(player, "<span class='danger'>You hit the Консоль аплоуда ИИ with the kitchen knife!</span>")
 	player.put_away(knife)
 
 	var/obj/machinery/cell_charger/cell_charger = teleport_to_first(player, /obj/machinery/cell_charger)
