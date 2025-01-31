@@ -114,7 +114,7 @@
 	var/obj/upload_console = teleport_to_first(player, /obj/machinery/computer/aiupload)
 	var/obj/ai_module = player.spawn_obj_in_hand(/obj/item/ai_module/asimov)
 	player.click_on(upload_console)
-	TEST_ASSERT_LAST_CHATLOG(player, span_danger("Не выбран ИИ. Пожалуйста, выберите его перед загрузкой законов."))
+	TEST_ASSERT_LAST_CHATLOG(player, "<span class='danger'>Не выбран ИИ. Пожалуйста, выберите его перед загрузкой законов.</span>")
 	qdel(ai_module)
 	player.retrieve(knife)
 	player.set_intent("harm")
