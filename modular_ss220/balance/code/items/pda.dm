@@ -1,7 +1,6 @@
 // MARK: PDA
 /obj/item/pda
 	default_cartridge = /obj/item/cartridge/common
-
 	/// Radio to call security.
 	var/obj/item/radio/radio
 
@@ -20,23 +19,23 @@
 	default_cartridge = null
 
 // MARK: Alarm Button App
+/datum/data/pda
+	var/color = null
+
 /datum/data/pda/app/alarm
 	name = "Call Security"
 	icon = "exclamation-triangle"
+	color = "red"
 	title = "Alarm Button"
 	category = "Danger"
 	template = "pda_alarm_button"
-
 	/// Tells the alarm priority. TRUE for command members.
 	var/prioritized = FALSE
-
 	/// Timer to prevent spamming the alarm.
 	COOLDOWN_DECLARE(alarm_cooldown)
 	var/alarm_timeout = 5 MINUTES
-
 	/// Tells if the app is on the home screen
 	var/is_home = TRUE
-
 	/// App response
 	var/last_response_title = null
 	var/last_response_text = null
