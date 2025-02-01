@@ -39,9 +39,11 @@
 			cat |= list(list(name = P.name, icon = P.icon, notify_icon = P.notify_icon, uid = "[P.UID()]"))
 
 		// force the order of a few core categories
+		// SS220 EDIT START - alarm button
 		shortcut_cat_order = list("General") \
-			+ sortList(shortcut_cat_order - list("General", "Scanners", "Utilities")) \
-			+ list("Scanners", "Utilities")
+			+ sortList(shortcut_cat_order - list("General", "Scanners", "Utilities", "Danger")) \
+			+ list("Scanners", "Utilities", "Danger")
+		// SS220 EDIT END - alarm button
 
 	data["idInserted"] = (id ? TRUE : FALSE)
 	data["idLink"] = (id ? "[id.registered_name], [id.assignment]" : "--------")
