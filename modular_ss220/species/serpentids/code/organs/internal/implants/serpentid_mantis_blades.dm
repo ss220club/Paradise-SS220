@@ -9,14 +9,13 @@
 	origin_tech = null
 	force = 11
 	armour_penetration_flat = 20
-	tool_behaviour = TOOL_SAW
+	tool_behaviour = TOOL_CROWBAR
 	new_attack_chain = TRUE
 	var/obj/item/organ/internal/cyberimp/chest/serpentid_blades/parent_blade_implant
 
 /obj/item/kitchen/knife/combat/serpentblade/Initialize(mapload)
 	. = ..()
 	ADD_TRAIT(src, TRAIT_ADVANCED_SURGICAL, ROUNDSTART_TRAIT)
-	AddComponent(/datum/component/surgery_initiator)
 	AddComponent(/datum/component/forces_doors_open/serpentid_blades)
 	AddComponent(/datum/component/parry, _stamina_constant = 2, _stamina_coefficient = 0.5, _parryable_attack_types = NON_PROJECTILE_ATTACKS)
 	AddComponent(/datum/component/double_attack)
