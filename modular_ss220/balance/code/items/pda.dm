@@ -96,11 +96,16 @@
 	var/area/area = get_area(pda)
 	var/message = "Внимание! [pda.owner], [pda.ownrank], использует тревожную кнопку в [area.name]! \
 		Необходимо[prioritized ? " немедленное" : ""] реагирование."
+	var/receive_sound = prioritized \
+		? 'modular_ss220/aesthetics/tcomms/sound/walkie_talkie_alert_major.ogg' \
+		: 'modular_ss220/aesthetics/tcomms/sound/walkie_talkie_alert_minor.ogg'
+
 	pda.radio.autosay(
 		from = "Система Оповещения",
 		message = message,
 		channel = DEPARTMENT_SECURITY,
-		follow_target_override = pda
+		follow_target_override = pda,
+		receive_sound = receive_sound
 	)
 	if(!pda.silent)
 		playsound(pda, 'sound/machines/terminal_success.ogg', vol = 50, vary = TRUE)

@@ -43,7 +43,7 @@
 		shortcut_cat_order = list("General") \
 			+ sortList(shortcut_cat_order - list("General", "Scanners", "Utilities", "Danger")) \
 			+ list("Scanners", "Utilities", "Danger")
-		// SS220 EDIT END - alarm button
+		// SS220 EDIT END
 
 	data["idInserted"] = (id ? TRUE : FALSE)
 	data["idLink"] = (id ? "[id.registered_name], [id.assignment]" : "--------")
