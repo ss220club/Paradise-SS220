@@ -17,13 +17,13 @@
 /obj/item/radio/emag_act(mob/user)
 	..()
 	if(emagged)
-		to_chat(user, span_notice("[src] is unresponsive. It is probably already modified."))
+		to_chat(user, span_notice("[declent_ru(NOMINATIVE)] не реагирует. Видимо, модификация уже производилась."))
 		return FALSE
 
 	respects_common_channel_limitations = FALSE
 	emagged = TRUE
 	playsound(loc, 'sound/effects/sparks4.ogg', vol = 75, vary = TRUE)
-	to_chat(user, span_notice("You disable common channel limitations of [src]."))
+	to_chat(user, span_notice("Вы отключаете ограничения на общий канал у [declent_ru(GENITIVE)]."))
 	log_game("[key_name(user)] emagged [src]")
 	return TRUE
 
