@@ -50,6 +50,10 @@
 	var/datum/job/detective/J = new/datum/job/detective
 	access_card.access += J.get_access()
 	prev_access = access_card.access
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_ENTERED = PROC_REF(on_atom_entered)
+	)
+	AddElement(/datum/element/connect_loc, loc_connections)
 
 /mob/living/simple_animal/bot/secbot/Destroy()
 	QDEL_NULL(baton)
@@ -116,7 +120,7 @@
 	target = null
 	oldtarget_name = null
 	anchored = FALSE
-	walk_to(src,0)
+	GLOB.move_manager.stop_looping(src)
 	set_path(null)
 	last_found = world.time
 
@@ -271,7 +275,7 @@
 	addtimer(VARSET_CALLBACK(src, icon_state, "[base_icon][on]"), 2)
 	if(declare_arrests)
 		var/area/location = get_area(src)
-		speak("[no_handcuffs ? "Detaining" : "Arresting"] level [threat] scumbag <b>[C]</b> in [location].", radio_channel)
+		speak("Внимание, проводится [no_handcuffs ? "задержание" : "арест"] преступного отродья <b>[C]</b> с уровнем угрозы [threat] в [location]!", radio_channel)
 
 /mob/living/simple_animal/bot/secbot/Life(seconds, times_fired)
 	. = ..()
@@ -311,7 +315,7 @@
 
 	switch(mode)
 		if(BOT_IDLE)		// idle
-			walk_to(src, 0)
+			GLOB.move_manager.stop_looping(src)
 			set_path(null)
 			if(find_new_target())	// see if any criminals are in range
 				return
@@ -322,7 +326,7 @@
 			// if can't reach perp for long enough, go idle
 			if(frustration >= 8)
 				playsound(loc, 'sound/machines/buzz-two.ogg', 25, FALSE)
-				walk_to(src, 0)
+				GLOB.move_manager.stop_looping(src)
 				set_path(null)
 				back_to_idle()
 				return
@@ -422,7 +426,7 @@
 
 		target = C
 		oldtarget_name = C.name
-		speak("Level [threatlevel] infraction alert!")
+		speak("Внимание, обнаружена угроза уровня [threatlevel]!")
 		playsound(loc, pick('sound/voice/bcriminal.ogg', 'sound/voice/bjustice.ogg', 'sound/voice/bfreeze.ogg'), 50, FALSE)
 		visible_message("<b>[src]</b> points at [C.name]!")
 		mode = BOT_HUNT
@@ -437,7 +441,7 @@
 
 
 /mob/living/simple_animal/bot/secbot/explode()
-	walk_to(src,0)
+	GLOB.move_manager.stop_looping(src)
 	visible_message("<span class='userdanger'>[src] blows apart!</span>")
 	var/turf/Tsec = get_turf(src)
 	var/obj/item/secbot_assembly/Sa = new /obj/item/secbot_assembly(Tsec)
@@ -458,9 +462,9 @@
 		target = user
 		mode = BOT_HUNT
 
-/mob/living/simple_animal/bot/secbot/Crossed(atom/movable/AM, oldloc)
-	if(ismob(AM) && target)
-		var/mob/living/carbon/C = AM
+/mob/living/simple_animal/bot/secbot/proc/on_atom_entered(datum/source, atom/movable/entered)
+	if(ismob(entered) && target)
+		var/mob/living/carbon/C = entered
 		if(!istype(C) || !C || in_range(src, target))
 			return
 		C.visible_message("<span class='warning'>[pick( \
@@ -472,7 +476,6 @@
 						"[C] leaps out of [src]'s way!")]</span>")
 		C.KnockDown(4 SECONDS)
 		return
-	..()
 
 #undef BATON_COOLDOWN
 #undef BOT_REBATON_THRESHOLD

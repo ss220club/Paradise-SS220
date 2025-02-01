@@ -97,7 +97,7 @@
 	oldtarget_name = null
 	anchored = FALSE
 	currently_cuffing = FALSE
-	walk_to(src,0)
+	GLOB.move_manager.stop_looping(src)
 	set_path(null)
 	last_found = world.time
 	set_weapon()
@@ -216,7 +216,7 @@
 		if(lasertag_check)
 			icon_state = "[lasercolor]ed2090"
 			disabled = TRUE
-			walk_to(src, 0)
+			GLOB.move_manager.stop_looping(src)
 			target = null
 			addtimer(CALLBACK(src, PROC_REF(unset_disabled)), 10 SECONDS)
 			return TRUE
@@ -260,7 +260,7 @@
 	switch(mode)
 
 		if(BOT_IDLE)		// idle
-			walk_to(src,0)
+			GLOB.move_manager.stop_looping(src)
 			set_path(null)
 			if(!lasercolor) //lasertag bots don't want to arrest anyone
 				if(find_new_target())
@@ -271,7 +271,7 @@
 		if(BOT_HUNT)		// hunting for perp
 			// if can't reach perp for long enough, go idle
 			if(frustration >= 8)
-				walk_to(src, 0)
+				GLOB.move_manager.stop_looping(src)
 				set_path(null)
 				back_to_idle()
 				return
@@ -381,7 +381,7 @@
 
 		target = C
 		oldtarget_name = C.name
-		speak("Level [threatlevel] infraction alert!")
+		speak("Внимание, обнаружена угроза уровня [threatlevel]!")
 		playsound(loc, pick('sound/voice/ed209_20sec.ogg', 'sound/voice/edplaceholder.ogg'), 50, FALSE)
 		visible_message("<b>[src]</b> points at [C.name]!")
 		mode = BOT_HUNT
@@ -395,7 +395,7 @@
 	return 0
 
 /mob/living/simple_animal/bot/ed209/explode()
-	walk_to(src,0)
+	GLOB.move_manager.stop_looping(src)
 	visible_message("<span class='userdanger'>[src] blows apart!</span>")
 	var/turf/Tsec = get_turf(src)
 
@@ -568,7 +568,7 @@
 	addtimer(VARSET_CALLBACK(src, icon_state, "[lasercolor]ed209[on]"), 2)
 	if(declare_arrests)
 		var/area/location = get_area(src)
-		speak("[no_handcuffs ? "Detaining" : "Arresting"] level [threat] scumbag <b>[C]</b> in [location].", radio_channel)
+		speak("Внимание, проводится [no_handcuffs ? "задержание" : "арест"] преступного отродья <b>[C]</b> с уровнем угрозы [threat] в [location]!", radio_channel)
 
 /mob/living/simple_animal/bot/ed209/proc/cuff(mob/living/carbon/C)
 	mode = BOT_ARREST

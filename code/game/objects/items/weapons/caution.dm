@@ -1,5 +1,5 @@
 /obj/item/caution
-	desc = "Caution! Wet Floor!"
+	desc = "Осторожно! Скользкий пол!"
 	name = "wet floor sign"
 	icon = 'icons/obj/janitor.dmi'
 	icon_state = "caution"
@@ -16,10 +16,11 @@
 	var/timing = FALSE
 	var/armed = FALSE
 	var/timepassed = 0
+	var/datum/proximity_monitor/proximity_monitor
 
 /obj/item/caution/proximity_sign/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/proximity_monitor)
+	proximity_monitor = new(src, 1)
 
 /obj/item/caution/proximity_sign/attack_self__legacy__attackchain(mob/user as mob)
 	if(ishuman(user))

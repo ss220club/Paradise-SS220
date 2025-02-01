@@ -174,7 +174,7 @@
 /obj/item/defibrillator/proc/remove_paddles(mob/user) // from your hands
 	var/mob/living/carbon/human/M = user
 	if(paddles in get_both_hands(M))
-		M.unEquip(paddles)
+		M.drop_item_to_ground(paddles)
 		paddles_on_defib = TRUE
 	update_icon(UPDATE_OVERLAYS)
 	return
@@ -275,7 +275,7 @@
 
 /obj/item/defibrillator/compact/advanced/emp_act(severity)
 	if(world.time > next_emp_message)
-		atom_say("Warning: Electromagnetic pulse detected. Integrated shielding prevented all potential hardware damage.")
+		atom_say("Внимание: обнаружен электромагнитный импульс. Встроенное экранирование предотвращает все возможные повреждения оборудования.")
 		playsound(src, 'sound/machines/defib_saftyon.ogg', 50)
 		next_emp_message = world.time + 5 SECONDS
 
@@ -387,7 +387,7 @@
 
 /obj/item/shockpaddles/proc/check_defib_exists(mainunit, mob/living/carbon/human/M, obj/O)
 	if(!mainunit || !istype(mainunit, /obj/item/defibrillator))	//To avoid weird issues from admin spawns
-		M?.unEquip(O)
+		M?.unequip(O)
 		qdel(O)
 		return FALSE
 	else

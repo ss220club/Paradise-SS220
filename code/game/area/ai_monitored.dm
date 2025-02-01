@@ -20,7 +20,7 @@
 			cam.newTarget(O)
 			return
 
-/area/station/ai_monitored/Exited(atom/movable/O)
+/area/station/ai_monitored/Exited(atom/movable/O, direction)
 	..()
 	if(ismob(O) && length(motioncameras))
 		for(var/X in motioncameras)
@@ -29,7 +29,7 @@
 			return
 
 /area/station/ai_monitored/storage/eva
-	name = "EVA Storage"
+	name = "Хранилище ВКД"
 	icon_state = "eva"
 	ambientsounds = HIGHSEC_SOUNDS
 	request_console_name = "EVA"

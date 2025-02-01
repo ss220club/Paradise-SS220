@@ -36,6 +36,10 @@
 	var/datum/job/clown/J = new /datum/job/clown()
 	access_card.access += J.get_access()
 	prev_access = access_card.access
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_ENTERED = PROC_REF(on_atom_entered)
+	)
+	AddElement(/datum/element/connect_loc, loc_connections)
 
 /mob/living/simple_animal/bot/honkbot/proc/sensor_blink()
 	icon_state = "honkbot-c"
@@ -57,7 +61,7 @@
 	target = null
 	oldtarget_name = null
 	anchored = FALSE
-	walk_to(src, 0)
+	GLOB.move_manager.stop_looping(src)
 	last_found = world.time
 	spam_flag = FALSE
 
@@ -262,7 +266,7 @@
 		return
 	switch(mode)
 		if(BOT_IDLE)		// idle
-			walk_to(src, 0)
+			GLOB.move_manager.stop_looping(src)
 			if(find_new_target())
 				return
 			if(!mode && auto_patrol)
@@ -270,7 +274,7 @@
 		if(BOT_HUNT)
 			// if can't reach perp for long enough, go idle
 			if(frustration >= 5) //gives up easier than beepsky
-				walk_to(src, 0)
+				GLOB.move_manager.stop_looping(src)
 				playsound(loc, 'sound/misc/sadtrombone.ogg', 25, TRUE, -1)
 				back_to_idle()
 				return
@@ -346,7 +350,7 @@
 			playsound(loc, pick('sound/voice/bcriminal.ogg', 'sound/voice/bjustice.ogg', 'sound/voice/bfreeze.ogg'), 50, FALSE)
 			visible_message("<b>[src]</b> points at [C.name]!")
 		else
-			speak("Honk!")
+			speak("Хонк!")
 			visible_message("<b>[src]</b> starts chasing [C.name]!")
 		mode = BOT_HUNT
 		INVOKE_ASYNC(src, PROC_REF(handle_automated_action))
@@ -354,7 +358,7 @@
 	return FALSE
 
 /mob/living/simple_animal/bot/honkbot/explode()	//doesn't drop cardboard nor its assembly, since its a very frail material.
-	walk_to(src, 0)
+	GLOB.move_manager.stop_looping(src)
 	visible_message("<span class='boldannounceic'>[src] blows apart!</span>")
 	var/turf/Tsec = get_turf(src)
 	new /obj/item/bikehorn(Tsec)
@@ -373,10 +377,10 @@
 		target = user
 		mode = BOT_HUNT
 
-/mob/living/simple_animal/bot/honkbot/Crossed(atom/movable/AM, oldloc)
-	if(ismob(AM) && on) //only if its online
+/mob/living/simple_animal/bot/honkbot/proc/on_atom_entered(datum/source, atom/movable/entered)
+	if(ismob(entered) && on) //only if its online
 		if(prob(30)) //you're far more likely to trip on a honkbot
-			var/mob/living/carbon/C = AM
+			var/mob/living/carbon/C = entered
 			if(!istype(C) || !C || in_range(src, target))
 				return
 			C.visible_message("<span class='warning'>[pick( \
@@ -389,7 +393,5 @@
 			C.KnockDown(10 SECONDS)
 			playsound(loc, 'sound/misc/sadtrombone.ogg', 50, TRUE, -1)
 			if(!client)
-				speak("Honk!")
+				speak("Хонк!")
 			sensor_blink()
-			return
-	..()

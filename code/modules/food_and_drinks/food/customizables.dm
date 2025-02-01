@@ -6,7 +6,7 @@ do {\
 	qdel(src);\
 } while(FALSE)
 
-/obj/item/food/breadslice/attackby__legacy__attackchain(obj/item/W, mob/user, params)
+/obj/item/food/sliced/bread/attackby__legacy__attackchain(obj/item/W, mob/user, params)
 	if(istype(W, /obj/item/food) && !(W.flags & NODROP))
 		MAKE_CUSTOM_FOOD(W, user, /obj/item/food/customizable/sandwich)
 		return
@@ -42,7 +42,7 @@ do {\
 
 /obj/item/trash/bowl
 	name = "bowl"
-	desc = "An empty bowl. Put some food in it to start making a soup."
+	desc = "Пустая миска. Положи в неё еду, чтобы приготовить суп."
 	icon = 'icons/obj/food/custom.dmi'
 	icon_state = "soup"
 
@@ -56,7 +56,7 @@ do {\
 
 /obj/item/food/customizable
 	name = "sandwich"
-	desc = "A sandwich! A timeless classic."
+	desc = "Это бутерброд. Отличный перекус!"
 	icon = 'icons/obj/food/custom.dmi'
 	icon_state = "sandwichcustom"
 	var/baseicon = "sandwichcustom"
@@ -82,7 +82,7 @@ do {\
 
 /obj/item/food/customizable/sandwich
 	name = "sandwich"
-	desc = "A sandwich! A timeless classic."
+	desc = "Это бутерброд. Отличный перекус!"
 	icon_state = "sandwichcustom"
 	baseicon = "sandwichcustom"
 	basename = "sandwich"
@@ -356,7 +356,7 @@ do {\
 			to_chat(user, "<span class='warning'>Merging [snack] and [src] together is going to make a mess.</span>")
 			return
 
-	if(!user.unEquip(snack))
+	if(!user.unequip(snack))
 		to_chat(user, "<span class='warning'>[snack] is stuck to your hand!</span>")
 		return
 
