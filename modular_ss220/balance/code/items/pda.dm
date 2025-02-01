@@ -16,7 +16,7 @@
 	qdel(radio)
 	return ..()
 
-/obj/item/pda/proc/call_security()
+/obj/item/pda/proc/handle_alarm_button()
 	if(!COOLDOWN_FINISHED(src, alarm_cooldown))
 		var/remaining_time = COOLDOWN_TIMELEFT(src, alarm_cooldown)
 		tgui_alert(
@@ -48,7 +48,11 @@
 	if(response != "Да")
 		return
 	
-	var/area/area = get_area(usr)
+	call_security()
+	COOLDOWN_START(src, alarm_cooldown, alarm_timeout)
+
+/obj/item/pda/proc/call_security()
+	var/area/area = get_area(src)
 	radio.autosay(
 		from = "Система Оповещения",
 		message = "Внимание! [owner], [ownrank], требует помощи в [area.name]! Необходимо немедленное реагирование.",
@@ -57,7 +61,17 @@
 	)
 	if(!silent)
 		playsound(src, 'sound/machines/terminal_success.ogg', vol = 50, vary = TRUE)
-	COOLDOWN_START(src, alarm_cooldown, alarm_timeout)
+
+	notify_ghosts(
+		title = "Система Оповещения",
+		message = "Кто-то вызвал службу безопасности!",
+		ghost_sound = 'sound/effects/electheart.ogg',
+		enter_link = "<a href=byond://?src=[UID()];follow=1>(Click to follow)</a>",
+		source = src,
+		action = NOTIFY_FOLLOW
+	)
+
+	log_game("[usr] called for security at ([usr.x], [usr.y], [usr.z]) using PDA of [owner] ([ownrank])")
 
 /datum/data/pda/app/main_menu
 	template = "pda_main_menu220"
@@ -66,7 +80,7 @@
 	. = ..()
 	switch(action)
 		if("security")
-			pda.call_security()
+			pda.handle_alarm_button()
 			return TRUE
 
 /obj/item/pda/captain
