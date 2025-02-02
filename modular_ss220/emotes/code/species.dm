@@ -328,7 +328,7 @@
 	female_giggle_sound = 'modular_ss220/emotes/audio/vulpkanin/vulp_giggle.ogg'
 	male_laugh_sound = 'modular_ss220/emotes/audio/vulpkanin/vulp_laugh.ogg'
 	female_laugh_sound = 'modular_ss220/emotes/audio/vulpkanin/vulp_laugh.ogg'
-	scream_verb = "скулит"
+	scream_verb = "кричит"
 	suicide_messages = list(
 		"пытается откусить себе язык!",
 		"выдавливает когтями свои глазницы!",
