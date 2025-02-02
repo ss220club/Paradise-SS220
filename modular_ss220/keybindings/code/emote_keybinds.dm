@@ -101,6 +101,10 @@
 	linked_emote = /datum/emote/living/carbon/human/mrowss
 	name = EMOTE_HUMAN_MROWSS
 
+/datum/keybinding/emote/carbon/human/wurble
+	linked_emote = /datum/emote/living/carbon/human/wurble
+	name = EMOTE_HUMAN_WURBLE
+
 /datum/keybinding/emote/carbon/human/mrow/New()
 	. = ..()
 	name +=  " (таяр)"
