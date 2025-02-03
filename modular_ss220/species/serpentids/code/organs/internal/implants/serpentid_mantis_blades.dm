@@ -14,7 +14,7 @@
 
 /obj/item/kitchen/knife/combat/serpentblade/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/forces_doors_open/serpentid_blades, time_to_open = 10 SECONDS)
+	AddComponent(/datum/component/forces_doors_open/serpentid_blades, time_to_open = 8 SECONDS)
 	AddComponent(/datum/component/parry, _stamina_constant = 2, _stamina_coefficient = 0.5, _parryable_attack_types = NON_PROJECTILE_ATTACKS)
 	AddComponent(/datum/component/double_attack)
 

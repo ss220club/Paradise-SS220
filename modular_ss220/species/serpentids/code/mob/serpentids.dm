@@ -242,7 +242,7 @@
 	banned_species = list("Serpentid")
 
 /datum/ruleset/vampire
-	banned_species = list("Serpentid")
+	banned_species = list("Machine","Serpentid")
 
 /datum/game_mode/traitor/pre_setup()
 	. = ..()
@@ -264,8 +264,6 @@
 		if(isserpentid(posible_antag.current?.client?.prefs.active_character.species))
 			pre_vampires -= posible_antag
 			posible_antag.special_role = null
-
-
 
 //Расширение для действий органов серпентидов
 /datum/action/item_action/organ_action/toggle/serpentid
