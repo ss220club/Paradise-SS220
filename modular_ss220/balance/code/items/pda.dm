@@ -92,6 +92,9 @@
 	last_response_acts = list("ok")
 
 /datum/data/pda/app/alarm/proc/call_security()
+	var/turf/loc = get_turf(pda)
+	log_game("[usr] ([usr.client.ckey]) has triggered an alarm button at ([loc.x], [loc.y], [loc.z]) using PDA of [pda.owner], [pda.ownrank].")
+	
 	var/area/area = get_area(pda)
 	var/message = "Внимание! [pda.owner], [pda.ownrank], использует тревожную кнопку в [area.name]! \
 		Необходимо[prioritized ? " немедленное" : ""] реагирование."
@@ -126,7 +129,7 @@
 	prioritized = TRUE
 	alarm_timeout = 1 MINUTES
 
-// MARK: Cartidges
+// MARK: Cartridges
 /obj/item/cartridge
 	var/is_nt_cartridge = TRUE
 	var/alarm_app_type = /datum/data/pda/app/alarm
