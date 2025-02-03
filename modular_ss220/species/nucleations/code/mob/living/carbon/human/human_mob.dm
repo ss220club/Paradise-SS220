@@ -13,3 +13,6 @@
 
 /mob/living/carbon/human/serpentid/Initialize(mapload)
 	. = ..(mapload, /datum/species/serpentid)
+
+/mob/living/carbon/human/human_doll/Initialize(mapload)
+	. = ..(mapload, /datum/species/doll)
