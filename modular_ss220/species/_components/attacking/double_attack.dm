@@ -25,8 +25,9 @@
 		addtimer(CALLBACK(src, PROC_REF(hand_attack), target, user, def_zone, hand_item), attack_haste SECONDS)
 
 /datum/component/double_attack/proc/hand_attack(mob/living/target, mob/living/user, def_zone, obj/item/hand_item)
-	state_attack = FALSE
 	if(QDELETED(src) || QDELETED(target) || user != hand_item.loc  || !user.Adjacent(target))
+		state_attack = FALSE
 		return
 	hand_item.attack(target, user, def_zone)
+	state_attack = FALSE
 
