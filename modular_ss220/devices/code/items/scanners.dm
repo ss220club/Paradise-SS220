@@ -51,7 +51,7 @@
 
 /obj/item/t_scanner/mod/security
 	name = "Специализированный T-ray сканнер"
-	desc = "Специальный вариант T-ray сканнера, используемый СБ для обнаружения биологических объектов. Устройство уязвимо для ЭМИ излучения."
+	desc = "Специальный вариант T-ray сканнера, используемый для обнаружения биологических объектов. Устройство уязвимо для ЭМИ излучения."
 	icon = 'modular_ss220/devices/icons/device.dmi'
 	lefthand_file = 'modular_ss220/devices/icons/inhands/items_lefthand.dmi'
 	righthand_file = 'modular_ss220/devices/icons/inhands/items_righthand.dmi'
