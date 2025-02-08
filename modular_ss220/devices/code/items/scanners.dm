@@ -20,62 +20,38 @@
 // new scanners
 /obj/item/t_scanner/mod/extended_range
 	name = "Расширенный T-ray сканнер"
-	desc = "Излучатель и сканер терагерцового излучения, используемый для обнаружения скрытых объектов и объектов под полом, таких как кабели и трубы. \
-	\nОбразец с расширенным радиусов воздействия."
+	desc = "Расширенный T-ray сканнер с увеличенной дальностью и стандартной продолжительностью отображения скрытых инженерных коммуникаций."
 	icon_state = "t-ray-range0"
 	scan_range = 5
 	origin_tech = "magnets=3;engineering=3"
 
 /obj/item/t_scanner/mod/pulse
 	name = "Пульсовой T-ray сканнер"
-	desc = "Излучатель и сканер терагерцового излучения, используемый для обнаружения скрытых объектов и объектов под полом, таких как кабели и трубы. \
-	\nОбразец с продолжительным пульсаром."
+	desc = "Пульсовый T-ray сканнер с увеличенной длительностью и стандартной дальностью отображения скрытых инженерных коммуникаций."
 	icon_state = "t-ray-pulse0"
-	pulse_duration = 20
+	pulse_duration = 2 SECONDS
 	origin_tech = "magnets=5;engineering=3"
 
 /obj/item/t_scanner/mod/advanced
 	name = "Продвинутый T-ray сканнер"
-	desc = "Излучатель и сканер терагерцового излучения, используемый для обнаружения скрытых объектов и объектов под полом, таких как кабели и трубы. \
-	\nОбразец с расширенным радиусом воздействия и продолжительным пульсаром."
+	desc = "Продвинутый T-ray сканнер с увеличенной длительностью и дальностью отображения скрытых инженерных коммуникаций.""
 	icon_state = "t-ray-advanced0"
-	pulse_duration = 20
+	pulse_duration = 2 SECONDS
 	scan_range = 5
 	origin_tech = "magnets=7;engineering=3"
 
 /obj/item/t_scanner/mod/science
 	name = "Научный T-ray сканнер"
-	desc = "Излучатель и сканер терагерцового излучения, используемый для обнаружения скрытых объектов и объектов под полом, таких как кабели и трубы. \
-	\nНаучный образец сканнера с расширенным радиусом действия и продолжительным пульсаром."
+	desc = "Научный T-ray сканнер, дальнейшее развитие улучшенного T-ray сканнера."
 	icon_state = "t-ray-science0"
 	scan_range = 7
-	pulse_duration = 50
+	pulse_duration = 5 SECONDS
 	origin_tech = "magnets=8;engineering=5"
 	materials = list(MAT_METAL=500)
 
-/obj/item/t_scanner/mod/experimental	//a high-risk that cannot be disassembled, since this garbage was invented by, well, you know who.
-	name = "Экспериментальный T-ray сканнер"
-	desc = "Излучатель и сканер терагерцового излучения, используемый для обнаружения скрытых объектов и объектов под полом, таких как кабели и трубы. \
-	\nЭкспериментальный образец сканнера с расширенным радиусом действия и продолжительным пульсаром. \
-	\nСудя по его виду, эта вещь изобретена безумными учеными, взятая буквально с экспериментами. Вы можете представить больное воображение ученого который это сделал? \
-	\nЦенная находка в практическом и научном пользовании. \
-	\nНо её не может изучить даже самый продвинутый разборщик, требуется тщательное исследование."
-	icon_state = "t-ray-experimental0"
-	scan_range = 5
-	pulse_duration = 80
-	origin_tech = null
-	materials = null
-	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF
-
-// /datum/theft_objective/experimental
-// 	name = "experimental T-ray scanner"
-// 	typepath = /obj/item/t_scanner/mod/experimental
-// 	protected_jobs = list("Research Director")
-// 	location_override = "кабинет Директора Исследований"
-
 /obj/item/t_scanner/mod/security
-	name = "Противо-маскировочное ТГц устройство"
-	desc = "Излучатель терагерцевого типа используемый для сканирования области на наличие замаскированных биоорганизмов. Устройство уязвимо для ЭМИ излучения."
+	name = "Специализированный T-ray сканнер"
+	desc = "Специальный вариант T-ray сканнера, используемый СБ для обнаружения биологических объектов. Устройство уязвимо для ЭМИ излучения."
 	icon = 'modular_ss220/devices/icons/device.dmi'
 	lefthand_file = 'modular_ss220/devices/icons/inhands/items_lefthand.dmi'
 	righthand_file = 'modular_ss220/devices/icons/inhands/items_righthand.dmi'
