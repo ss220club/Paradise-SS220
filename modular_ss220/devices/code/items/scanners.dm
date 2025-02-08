@@ -30,7 +30,7 @@
 	desc = "Пульсовый T-ray сканнер с увеличенной длительностью и стандартной дальностью отображения скрытых инженерных коммуникаций."
 	icon_state = "t-ray-pulse0"
 	pulse_duration = 2 SECONDS
-	origin_tech = "magnets=5;engineering=3"
+	origin_tech = "magnets=3;engineering=3"
 
 /obj/item/t_scanner/mod/advanced
 	name = "Продвинутый T-ray сканнер"
@@ -38,7 +38,7 @@
 	icon_state = "t-ray-advanced0"
 	pulse_duration = 2 SECONDS
 	scan_range = 5
-	origin_tech = "magnets=7;engineering=3"
+	origin_tech = "magnets=5;engineering=5"
 
 /obj/item/t_scanner/mod/science
 	name = "Научный T-ray сканнер"
@@ -46,7 +46,7 @@
 	icon_state = "t-ray-science0"
 	scan_range = 7
 	pulse_duration = 5 SECONDS
-	origin_tech = "magnets=8;engineering=5"
+	origin_tech = "magnets=6;engineering=6"
 	materials = list(MAT_METAL=500)
 
 /obj/item/t_scanner/mod/security
@@ -62,7 +62,7 @@
 	var/was_alerted = FALSE // Protection against spam alerts from this scanner
 	var/burnt = FALSE // Did emp break us?
 	var/datum/effect_system/spark_spread/spark_system	//The spark system, used for generating... sparks?
-	origin_tech = "combat=3;magnets=5;biotech=5"
+	origin_tech = "magnets=6;engineering=6,biotech=6"
 
 /obj/item/t_scanner/mod/security/Initialize(mapload)
 	. = ..()
