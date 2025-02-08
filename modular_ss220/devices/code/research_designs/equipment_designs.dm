@@ -1,6 +1,6 @@
 /datum/design/tray_scanner_range
 	name = "Extended T-ray"
-	desc = "Расширенный T-ray сканнер с увеличеной дальностью и стандартной продолжительностью отображения скрытых инженерных коммуникаций"
+	desc = "Расширенный T-ray сканнер с увеличенной дальностью и стандартной продолжительностью отображения скрытых инженерных коммуникаций."
 	id = "tray_range"
 	req_tech = list("magnets" = 3, "engineering" = 3)
 	build_type = PROTOLATHE
@@ -10,7 +10,7 @@
 
 /datum/design/tray_scanner_pulse
 	name = "Pulse T-ray"
-	desc = "Пульсовой T-ray сканнер с увеличенной длительностью и стандартной дальностью отображения скрытых инженерных коммуникаций"
+	desc = "Пульсовой T-ray сканнер с увеличенной длительностью и стандартной дальностью отображения скрытых инженерных коммуникаций."
 	id = "tray_pulse"
 	req_tech = list("magnets" = 5, "engineering" = 3)
 	build_type = PROTOLATHE
@@ -20,7 +20,7 @@
 
 /datum/design/tray_scanner_advanced
 	name = "Advanced T-ray"
-	desc = "Продвинутый T-ray сканнер с увеличенной длительностью и дальностью отображения скрытых инженерных коммуникаций"
+	desc = "Продвинутый T-ray сканнер с увеличенной длительностью и дальностью отображения скрытых инженерных коммуникаций."
 	id = "tray_advanced"
 	req_tech = list("magnets" = 7, "programming" = 5, "engineering" = 5)
 	build_type = PROTOLATHE
@@ -30,7 +30,7 @@
 
 /datum/design/tray_scanner_science
 	name = "Science T-ray"
-	desc = "Научный T-ray сканнер, дальнейшее развитие улученного T-ray сканнера"
+	desc = "Научный T-ray сканнер, дальнейшее развитие улучшенного T-ray сканнера."
 	id = "tray_science"
 	req_tech = list("magnets" = 8, "programming" = 7, "engineering" = 7) // придется постараться чтобы найти 8-й уровень технологий
 	build_type = PROTOLATHE
