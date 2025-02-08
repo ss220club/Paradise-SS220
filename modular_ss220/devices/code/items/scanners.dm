@@ -1,12 +1,12 @@
 // translate
 /obj/item/t_scanner
-	name = "T-ray сканнер"
+	name = "T-ray сканер"
 	desc = "Излучатель и сканер терагерцового излучения, используемый для обнаружения скрытых объектов под полом, таких как кабели и трубы."
 
 // debug
 /obj/item/t_scanner/mod
-	name = "Модификация T-ray сканнера"
-	desc = "Предмодифицированный сканнер, который не должен был попасть в ваши руки. Отнесите его в ближайший научный отдел \
+	name = "Модификация T-ray сканера"
+	desc = "Предмодифицированный сканер, который не должен был попасть в ваши руки. Отнесите его в ближайший научный отдел \
 	\nдля изучения кодерами."
 	icon = 'modular_ss220/devices/icons/device.dmi'
 	icon_state = "t-ray0"
@@ -19,30 +19,30 @@
 
 // new scanners
 /obj/item/t_scanner/mod/extended_range
-	name = "Расширенный T-ray сканнер"
-	desc = "Расширенный T-ray сканнер с увеличенной дальностью и стандартной продолжительностью отображения скрытых инженерных коммуникаций."
+	name = "Расширенный T-ray сканер"
+	desc = "Расширенный T-ray сканер с увеличенной дальностью и стандартной продолжительностью отображения скрытых инженерных коммуникаций."
 	icon_state = "t-ray-range0"
 	scan_range = 5
 	origin_tech = "magnets=3;engineering=3"
 
 /obj/item/t_scanner/mod/pulse
-	name = "Пульсовой T-ray сканнер"
-	desc = "Пульсовый T-ray сканнер с увеличенной длительностью и стандартной дальностью отображения скрытых инженерных коммуникаций."
+	name = "Пульсовый T-ray сканер"
+	desc = "Пульсовый T-ray сканер с увеличенной длительностью и стандартной дальностью отображения скрытых инженерных коммуникаций."
 	icon_state = "t-ray-pulse0"
 	pulse_duration = 2 SECONDS
 	origin_tech = "magnets=3;engineering=3"
 
 /obj/item/t_scanner/mod/advanced
-	name = "Продвинутый T-ray сканнер"
-	desc = "Продвинутый T-ray сканнер с увеличенной длительностью и дальностью отображения скрытых инженерных коммуникаций."
+	name = "Продвинутый T-ray сканер"
+	desc = "Продвинутый T-ray сканер с увеличенной длительностью и дальностью отображения скрытых инженерных коммуникаций."
 	icon_state = "t-ray-advanced0"
 	pulse_duration = 2 SECONDS
 	scan_range = 5
 	origin_tech = "magnets=5;engineering=5"
 
 /obj/item/t_scanner/mod/science
-	name = "Научный T-ray сканнер"
-	desc = "Научный T-ray сканнер, дальнейшее развитие улучшенного T-ray сканнера."
+	name = "Научный T-ray сканер"
+	desc = "Научный T-ray сканер, дальнейшее развитие улучшенного T-ray сканера."
 	icon_state = "t-ray-science0"
 	scan_range = 7
 	pulse_duration = 5 SECONDS
@@ -50,8 +50,8 @@
 	materials = list(MAT_METAL=500)
 
 /obj/item/t_scanner/mod/security
-	name = "Специализированный T-ray сканнер"
-	desc = "Специальный вариант T-ray сканнера, используемый для обнаружения биологических объектов. Устройство уязвимо для ЭМИ излучения."
+	name = "Специализированный био T-ray сканер"
+	desc = "Специализированный вариант T-ray сканера, используемый для обнаружения биологических объектов. Устройство уязвимо для ЭМИ излучения."
 	icon = 'modular_ss220/devices/icons/device.dmi'
 	lefthand_file = 'modular_ss220/devices/icons/inhands/items_lefthand.dmi'
 	righthand_file = 'modular_ss220/devices/icons/inhands/items_righthand.dmi'
