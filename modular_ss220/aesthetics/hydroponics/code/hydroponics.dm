@@ -22,3 +22,4 @@
 
 /obj/machinery/hydroponics/constructable
 	icon = 'modular_ss220/aesthetics/hydroponics/icons/hydroponics.dmi'
+	icon_state = "hydrotray3"
