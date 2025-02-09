@@ -15,9 +15,6 @@
 	qdel(radio)
 	return ..()
 
-/obj/item/pda/syndicate
-	default_cartridge = null
-
 // MARK: Alarm Button App
 /datum/data/pda
 	var/color = null
