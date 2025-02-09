@@ -102,7 +102,7 @@
 			if(pai_holder.icon_state == "[pai_holder.ckey]-pai")
 				pai_holder.icon = 'icons/mob/custom_synthetic/custom-synthetic.dmi'
 			else
-				pai_holder.icon = 'icons/mob/pai.dmi'
+				pai_holder.icon = 'modular_ss220/mobs/icons/mob/pai.dmi' // SS220 EDIT - updated boxbot sprite
 
 
 // Directives //
