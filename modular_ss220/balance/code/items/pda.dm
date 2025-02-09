@@ -126,6 +126,27 @@
 	prioritized = TRUE
 	alarm_timeout = 1 MINUTES
 
+/obj/item/pda/silicon/proc/handle_call_security_command()
+	if(!can_use())
+		return
+	var/datum/data/pda/app/alarm/program = find_program(/datum/data/pda/app/alarm)
+	if(!program)
+		to_chat(usr, span_warning("Подпрограмма \"Тревожная кнопка\" не найдена!"))
+		return
+
+	program.handle_alarm_button()
+	to_chat(usr, span_notice(program.last_response_text))
+
+/obj/item/pda/silicon/ai/verb/cmd_call_security()
+	set category = "AI IM"
+	set name = "Call Security"
+	handle_call_security_command()
+
+/obj/item/pda/silicon/robot/verb/cmd_call_security()
+	set category = "AI IM"
+	set name = "Call Security"
+	handle_call_security_command()
+
 // MARK: Cartridges
 /obj/item/cartridge
 	var/is_nt_cartridge = TRUE
