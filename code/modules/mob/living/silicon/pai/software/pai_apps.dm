@@ -102,12 +102,12 @@
 			if(pai_holder.icon_state == "[pai_holder.ckey]-pai")
 				pai_holder.icon = 'icons/mob/custom_synthetic/custom-synthetic.dmi'
 			else
-													// SS220 EDIT - updated boxbot sprite START
+				// SS220 EDIT START - updated boxbot sprite
 				if(pai_holder.chassis == "boxbot")
 					pai_holder.icon = 'modular_ss220/mobs/icons/mob/pai.dmi'
 				else
-													// SS220 EDIT - updated boxbot sprite END
 					pai_holder.icon = 'icons/mob/pai.dmi'
+				// SS220 EDIT END - updated boxbot sprite
 
 
 // Directives //
