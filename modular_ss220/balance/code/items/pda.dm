@@ -149,12 +149,11 @@
 
 // MARK: Cartridges
 /obj/item/cartridge
-	var/is_nt_cartridge = TRUE
 	var/alarm_app_type = /datum/data/pda/app/alarm
 
 /obj/item/cartridge/Initialize(mapload)
 	. = ..()
-	if(!is_nt_cartridge)
+	if(!alarm_app_type)
 		return
 	for(var/program in programs)
 		if(istype(program, /datum/data/pda/app/alarm))
@@ -197,7 +196,7 @@
 	alarm_app_type = /datum/data/pda/app/alarm/centcom
 
 /obj/item/cartridge/syndicate
-	is_nt_cartridge = FALSE
+	alarm_app_type = null
 
 /obj/item/cartridge/frame
-	is_nt_cartridge = FALSE
+	alarm_app_type = null
