@@ -57,7 +57,7 @@
 	var/was_alerted = FALSE // Protection against spam alerts from this scanner
 	var/burnt = FALSE // Did emp break us?
 	var/datum/effect_system/spark_spread/spark_system	//The spark system, used for generating... sparks?
-	origin_tech = "magnets=6;engineering=6,biotech=6"
+	origin_tech = "magnets=6;engineering=6;biotech=6"
 
 /obj/item/t_scanner/mod/security/Initialize(mapload)
 	. = ..()
