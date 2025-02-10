@@ -1,5 +1,13 @@
-/datum/spawn_pool/spaceloot
-	available_points = 2200 // tweak available points considering centcomm and away mission
+/datum/configuration_section/ss220_misc_configuration
+	// Tweak available points considering centcomm and away mission
+	var/spaceloot_available_points = 2200
+
+/datum/configuration_section/ss220_misc_configuration/load_data(list/data)
+	. = ..()
+	CONFIG_LOAD_NUM(spaceloot_available_points, data["spaceloot_available_points"])
+
+/datum/spawn_pool/spaceloot/New()
+	available_points = GLOB.configuration.ss220_misc.spaceloot_available_points
 
 /obj/effect/spawner/random/pool/spaceloot/mechtransport_new/mecha
 	point_value = 100
