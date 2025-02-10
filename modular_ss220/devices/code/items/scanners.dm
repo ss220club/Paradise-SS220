@@ -78,3 +78,6 @@
 	if(prob(25) && !burnt)
 		burnt = TRUE
 		on = FALSE;
+
+/obj/item/t_scanner
+	icon = 'modular_ss220/devices/icons/device.dmi'
