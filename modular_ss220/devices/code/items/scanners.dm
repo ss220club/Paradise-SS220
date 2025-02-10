@@ -81,3 +81,6 @@
 
 /obj/item/t_scanner
 	icon = 'modular_ss220/devices/icons/device.dmi'
+
+/obj/item/t_scanner/adv_mining_scanner
+  icon = 'icons/obj/device.dmi'
