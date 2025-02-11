@@ -227,7 +227,7 @@
 	suit_adjusted = TRUE
 	actions_types = list(/datum/action/item_action/openclose)
 	adjust_flavour = "Нарукавная мигалка"
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, RAD = 5, FIRE = 50, ACID = 50)
+	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, RAD = 5, FIRE = 50, ACID = 50) // Такие же, как у жилетки
 	lefthand_file = 'modular_ss220/clothing/icons/inhands/left_hand.dmi'
 	righthand_file = 'modular_ss220/clothing/icons/inhands/right_hand.dmi'
 
