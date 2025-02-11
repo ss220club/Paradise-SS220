@@ -217,6 +217,17 @@
 		"Nucleation"		=	'modular_ss220/clothing/icons/mob/suits.dmi',
 		)
 
+/obj/item/clothing/suit/storage/pmed_jacket_new
+	name = "Светоотражающая куртка парамедика"
+	desc = "Ярко-жёлтая куртка парамедика со светоотрадающими элементами и множеством карманов. Изготовлена из плотного материала и хорошо заметна с большого расстояния. "
+	icon = 'modular_ss220/clothing/icons/object/suits.dmi'
+	icon_state = "pmed_jacket_new"
+	ignore_suitadjust = FALSE
+	suit_adjusted = TRUE
+	actions_types = list(/datum/action/item_action/openclose)
+	adjust_flavour = "Переключить нарукавную повязку"
+	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, RAD = 5, FIRE = 50, ACID = 50)
+
 // MARK: Space Battle
 /obj/item/clothing/suit/space/hardsuit/security
 	icon = 'modular_ss220/clothing/icons/object/suits.dmi'
