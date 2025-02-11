@@ -219,9 +219,10 @@
 
 /obj/item/clothing/suit/storage/pmed_jacket_new
 	name = "Светоотражающая куртка парамедика"
-	desc = "Ярко-жёлтая куртка парамедика со светоотрадающими элементами и множеством карманов. Изготовлена из плотного материала и хорошо заметна с большого расстояния. "
+	desc = "Ярко-жёлтая куртка парамедика со светоотражающими элементами и множеством карманов. Изготовлена из плотного материала и хорошо заметна с большого расстояния. "
 	icon = 'modular_ss220/clothing/icons/object/suits.dmi'
-	icon_state = "pmed_jacket_new"
+	icon_state = "pmed_jacket_new_open"
+	icon_override = 'modular_ss220/clothing/icons/mob/suits.dmi'
 	ignore_suitadjust = FALSE
 	suit_adjusted = TRUE
 	actions_types = list(/datum/action/item_action/openclose)
