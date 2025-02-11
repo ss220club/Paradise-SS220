@@ -1,6 +1,7 @@
 /mob
 	density = TRUE
 	layer = MOB_LAYER
+	appearance_flags = TILE_BOUND | LONG_GLIDE
 	animate_movement = SLIDE_STEPS
 	pressure_resistance = 8
 	throwforce = 10
