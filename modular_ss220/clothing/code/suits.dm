@@ -217,7 +217,7 @@
 		"Nucleation"		=	'modular_ss220/clothing/icons/mob/suits.dmi',
 		)
 
-/obj/item/clothing/suit/storage/pmed_jacket_new
+/obj/item/clothing/suit/storage/paramedic/pmed_jacket_new
 	name = "Светоотражающая куртка парамедика"
 	desc = "Ярко-жёлтая куртка парамедика со светоотражающими элементами, нарукавной мигалкой и множеством карманов. Изготовлена из плотного материала и хорошо заметна с большого расстояния. "
 	icon = 'modular_ss220/clothing/icons/object/suits.dmi'
@@ -225,11 +225,9 @@
 	icon_override = 'modular_ss220/clothing/icons/mob/suits.dmi'
 	ignore_suitadjust = FALSE
 	suit_adjusted = TRUE
-	actions_types = list(/datum/action/item_action/openclose)
-	adjust_flavour = "Нарукавная мигалка"
+	actions_types = list(/datum/action/item_action/toggle)
+	adjust_flavour = "unpin нарукавная мигалка"
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, RAD = 5, FIRE = 50, ACID = 50) // Такие же, как у жилетки
-	lefthand_file = 'modular_ss220/clothing/icons/inhands/left_hand.dmi'
-	righthand_file = 'modular_ss220/clothing/icons/inhands/right_hand.dmi'
 
 // MARK: Space Battle
 /obj/item/clothing/suit/space/hardsuit/security
