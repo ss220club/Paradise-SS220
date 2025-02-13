@@ -1,19 +1,18 @@
 /obj/item/storage/lockbox/experimental_weapon/gateway
 	name = "A-48 classified lockbox"
 	desc = "Contains a classifed item for experimental purposes."
+	var/static/list/loot_options = list(
+		/obj/item/gun/energy/gun/mini/selfcharge = 5,
+		/obj/item/mod/module/sphere_transform = 5,
+		/obj/item/mod/module/stealth/ninja = 5,
+
+		/obj/item/organ/internal/cyberimp/arm/katana = 1,
+		/obj/item/organ/internal/cyberimp/arm/toolset_abductor = 1,
+		/obj/item/organ/internal/cyberimp/arm/medibeam = 1,
+		/obj/item/organ/internal/heart/demon/pulse = 1,
+		/obj/item/organ/internal/eyes/cybernetic/eyesofgod = 1,
+	)
 
 /obj/item/storage/lockbox/experimental_weapon/gateway/populate_contents()
-	var/organ_loot = pick(
-			/obj/item/organ/internal/cyberimp/arm/katana,
-			/obj/item/organ/internal/cyberimp/arm/toolset_abductor,
-			/obj/item/organ/internal/cyberimp/arm/medibeam,
-			/obj/item/organ/internal/heart/demon/pulse,
-			/obj/item/organ/internal/eyes/cybernetic/eyesofgod,
-		)
-	var/spawn_type = pick(
-		/obj/item/gun/energy/gun/mini/selfcharge,
-		/obj/item/mod/module/sphere_transform,
-		/obj/item/mod/module/stealth/ninja,
-		organ_loot,
-		)
+	var/spawn_type = pick(loot_options)
 	new spawn_type(src)
