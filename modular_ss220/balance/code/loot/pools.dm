@@ -356,7 +356,7 @@
 
 /obj/effect/spawner/random/pool/gatewayloot/griefsky
 	point_value = 100
-	loot = list(/mob/living/simple_animal/bot/secbot/griefsky/syndie/spacebattle)
+	loot = list(/mob/living/simple_animal/bot/secbot/griefsky/syndie)
 
 /obj/effect/spawner/random/pool/gatewayloot/mauler
 	icon_state = "durand_old"

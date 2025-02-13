@@ -1409,10 +1409,6 @@
 	weapons_check = TRUE
 	emagged = TRUE
 
-/mob/living/simple_animal/bot/secbot/griefsky/syndie/spacebattle
-	pixel_x = 16
-	pixel_y = 16
-
 /mob/living/simple_animal/hostile/malf_drone/spacebattle
 	icon = 'modular_ss220/maps220/icons/spacebattle.dmi'
 	icon_state = "wisewill-Combat-roll"
