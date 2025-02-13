@@ -1316,140 +1316,33 @@
 			triggered = 1
 	qdel(src)
 
-/obj/effect/landmark/awaymissions/spacebattle/mob_spawn/melee
-	name = "melee"
+/obj/effect/landmark/awaymissions/spacebattle/mob_spawn/syndie
+	name = "melee/ranged"
 	icon_state = "melee"
-	syndi_mob = /mob/living/simple_animal/hostile/syndicate/melee/autogib/spacebattle
+	syndi_mob = /obj/effect/spawner/random/pool/gatewayloot/syndie_mob
 
-/obj/effect/landmark/awaymissions/spacebattle/mob_spawn/melee_space
-	name = "melee_space"
+/obj/effect/landmark/awaymissions/spacebattle/mob_spawn/syndie/space
+	name = "space melee/ranged"
 	icon_state = "space_melee"
-	syndi_mob = /mob/living/simple_animal/hostile/syndicate/melee/space/autogib/spacebattle
-
-/obj/effect/landmark/awaymissions/spacebattle/mob_spawn/ranged
-	name = "ranged"
-	icon_state = "range"
-	syndi_mob = /mob/living/simple_animal/hostile/syndicate/ranged/autogib/spacebattle
-
-/obj/effect/landmark/awaymissions/spacebattle/mob_spawn/ranged_space
-	name = "ranged_space"
-	icon_state = "space_range"
-	syndi_mob = /mob/living/simple_animal/hostile/syndicate/ranged/space/autogib/spacebattle
+	syndi_mob = /obj/effect/spawner/random/pool/gatewayloot/syndie_mob/space
 
 /obj/effect/landmark/awaymissions/spacebattle/mob_spawn/drone
 	name = "drone"
 	icon_state = "drone"
 	syndi_mob = /mob/living/simple_animal/hostile/malf_drone/spacebattle
 
-/obj/effect/spawner/random/pool/spaceloot/modsuit_syndie/spacebattle
-	loot = list(/mob/living/simple_animal/hostile/syndicate/ranged/space/autogib/spacebattle)
-
 //Enemies
-/mob/living/simple_animal/hostile/syndicate
-	//Обычный лут, дропается со всех
-	var/SynMobDrop
-	//Выпадение бладрига
-	var/SynSpace
-	//Лут с милишников
-	var/SynMelee
-	//Лут с дальников
-	var/SynRange
-
-/mob/living/simple_animal/hostile/syndicate/Initialize(mapload)
-	var/RollForLoot = rand(1,50)
-	switch(RollForLoot)
-		// 16%
-		if(1 to 8)
-			pick(SynMobDrop = /obj/item/food/syndicake,
-				SynMobDrop = /obj/item/poster/random_contraband)
-		// 14%
-		if(8 to 15)
-			pick(SynMobDrop = /obj/item/clothing/mask/gas/syndicate,
-				SynMobDrop = /obj/item/tank/internals/emergency_oxygen/engi/syndi)
-		// 10%
-		if(15 to 20)
-			pick(SynMobDrop = /obj/item/target/syndicate,
-				SynMobDrop = /obj/item/deck/cards/syndicate,
-				SynMobDrop = /obj/item/kitchen/knife/combat/survival)
-		// 8%
-		if(20 to 24)
-			pick(SynMobDrop = /obj/item/clothing/glasses/night,
-				SynMobDrop = /obj/item/stack/medical/bruise_pack,
-				SynMobDrop = /obj/item/stack/medical/ointment)
-		// 6%
-		if(24 to 27)
-			pick(SynMobDrop = /obj/item/reagent_containers/patch/styptic/small,
-				SynMobDrop = /obj/item/reagent_containers/patch/silver_sulf/small,
-				SynMobDrop = /obj/item/food/donkpocket)
-		// 4%
-		if(27 to 29)
-			pick(SynMobDrop = /obj/item/reagent_containers/patch/styptic,
-				SynMobDrop = /obj/item/reagent_containers/patch/silver_sulf,
-				SynMobDrop = /obj/item/storage/backpack/duffel/syndie,
-				SynMobDrop = /obj/item/clothing/gloves/combat)
-		// 2%
-		if(30)
-			pick(SynMobDrop = /obj/item/storage/fancy/cigarettes/cigpack_syndicate,
-				SynMobDrop = /obj/item/storage/box/syndidonkpockets,
-				SynMobDrop = /obj/item/card/id/syndicate)
-		// 40%
-		else
-			SynMobDrop = /obj/item/ammo_casing/c10mm
-	. = ..()
-
-/mob/living/simple_animal/hostile/syndicate/Initialize(mapload)
-	switch(rand(1,100))
-		// 1%
-		if(1)
-			SynSpace = /obj/item/mod/control/pre_equipped/nuclear
-		else
-			SynSpace = /obj/item/ammo_casing/c10mm
-	return ..()
-
-/mob/living/simple_animal/hostile/syndicate/melee/Initialize(mapload)
-	switch(rand(1,100))
-		// 1%
-		if(1)
-			SynMelee = /obj/item/melee/energy/sword/saber
-		// 2%
-		if(2 to 3)
-			SynMelee = /obj/item/shield/energy
-		else
-			SynMelee = /obj/item/ammo_casing/c10mm
-	return ..()
-
-/mob/living/simple_animal/hostile/syndicate/ranged/Initialize(mapload)
-	switch(rand(rand(1,100)))
-		// 10%
-		if(25 to 35)
-			SynRange = /obj/item/ammo_box/magazine/m10mm
-		// 5%
-		if(35 to 40)
-			SynRange = /obj/item/gun/projectile/automatic/pistol
-		// 7%
-		if(40 to 47)
-			SynRange = /obj/item/clothing/accessory/holster
-		// 3%
-		if(47 to 50)
-			SynRange = /obj/item/ammo_box/magazine/smgm45
-		// 1%
-		if(50 to 51)
-			SynRange = /obj/item/gun/projectile/automatic/c20r
-		else
-			SynRange = /obj/item/ammo_casing/c10mm
-	. = ..()
-
 /mob/living/simple_animal/hostile/syndicate/melee/autogib/spacebattle
 	damage_coeff = list("brute" = 1, "fire" = 0.6, "tox" = 1, "clone" = 2, "stamina" = 0, "oxy" = 0.5)
 	melee_damage_type = BURN
 	attack_sound = 'sound/weapons/saberon.ogg'
 	maxHealth = 160
 	health = 160
-
-/mob/living/simple_animal/hostile/syndicate/melee/autogib/spacebattle/Initialize(mapload)
-	. = ..()
-	loot = list(/obj/effect/decal/cleanable/ash, SynMobDrop, SynMelee)
-	return .
+	loot = list(
+		/obj/effect/decal/cleanable/ash,
+		/obj/effect/spawner/random/pool/gatewayloot/syndie_mob_loot,
+		/obj/effect/spawner/random/pool/gatewayloot/syndie_mob_loot/melee,
+	)
 
 /mob/living/simple_animal/hostile/syndicate/melee/space/autogib/spacebattle
 	damage_coeff = list("brute" = 1, "fire" = 0.8, "tox" = 1, "clone" = 2, "stamina" = 0, "oxy" = 0)
@@ -1457,29 +1350,72 @@
 	attack_sound = 'sound/weapons/saberon.ogg'
 	maxHealth = 200
 	health = 200
-
-/mob/living/simple_animal/hostile/syndicate/melee/space/autogib/spacebattle/Initialize(mapload)
-	. = ..()
-	loot = list(/obj/effect/decal/cleanable/ash, SynMobDrop, SynMelee, SynSpace)
-	return .
+	loot = list(
+		/obj/effect/decal/cleanable/ash,
+		/obj/effect/spawner/random/pool/gatewayloot/syndie_mob_loot,
+		/obj/effect/spawner/random/pool/gatewayloot/syndie_mob_loot/melee,
+		/obj/effect/spawner/random/pool/gatewayloot/syndie_mob_loot/space,
+	)
 
 /mob/living/simple_animal/hostile/syndicate/ranged/autogib/spacebattle
 	damage_coeff = list("brute" = 1, "fire" = 0.6, "tox" = 1, "clone" = 2, "stamina" = 0, "oxy" = 0.5)
 	maxHealth = 150
 	health = 150
-
-/mob/living/simple_animal/hostile/syndicate/ranged/autogib/spacebattle/Initialize(mapload)
-	. = ..()
-	loot = list(/obj/effect/decal/cleanable/ash, SynMobDrop, SynRange)
-	return .
+	loot = list(
+		/obj/effect/decal/cleanable/ash,
+		/obj/effect/spawner/random/pool/gatewayloot/syndie_mob_loot,
+		/obj/effect/spawner/random/pool/gatewayloot/syndie_mob_loot/ranged,
+	)
 
 /mob/living/simple_animal/hostile/syndicate/ranged/space/autogib/spacebattle
 	maxHealth = 180
 	health = 180
+	loot = list(
+		/obj/effect/decal/cleanable/ash,
+		/obj/effect/spawner/random/pool/gatewayloot/syndie_mob_loot,
+		/obj/effect/spawner/random/pool/gatewayloot/syndie_mob_loot/ranged,
+		/obj/effect/spawner/random/pool/gatewayloot/syndie_mob_loot/space,
+	)
 
-/mob/living/simple_animal/hostile/syndicate/ranged/space/autogib/spacebattle/Initialize(mapload)
+// Spacebattle QM
+/mob/living/simple_animal/hostile/syndicate/melee/autogib/depot/armory/spacebattle
+	name = "Syndicate Commander"
+	armour_penetration_flat = 20
+	armour_penetration_percentage = 80
+	loot = list(
+		/obj/effect/decal/cleanable/ash,
+		/obj/item/documents/syndicate/blue,
+	)
+	speed = 2
+	health = 600
+	maxHealth = 600
+
+// Spacebattle QM used at pools.dm
+/mob/living/simple_animal/hostile/syndicate/melee/autogib/depot/armory/spacebattle/gateway
+	loot = list(
+		/obj/effect/decal/cleanable/ash,
+		/obj/effect/spawner/random/pool/spaceloot/syndicate/armory/depot/centcomm,
+	)
+
+// syndie griefsky
+/mob/living/simple_animal/bot/secbot/griefsky/syndie
+	desc = "Is that a smoke around access panel?..."
+	faction = list("syndicate")
+	radio_channel = "Syndicate"
+	req_access = list(ACCESS_SYNDICATE_COMMAND)
+	declare_arrests = FALSE
+	idcheck = TRUE
+	no_handcuffs = TRUE
+	weapons_check = TRUE
+	emagged = TRUE
+	var/area/awaymission/space_battle/syndicate/spacebattle
+
+/mob/living/simple_animal/bot/secbot/griefsky/syndie/Initialize(mapload)
+	spacebattle = get_area(src)
+	if(istype(spacebattle))
+		pixel_x = 16
+		pixel_y = 16
 	. = ..()
-	loot = list(/obj/effect/decal/cleanable/ash, SynMobDrop, SynRange, SynSpace)
 
 /mob/living/simple_animal/hostile/malf_drone/spacebattle
 	icon = 'modular_ss220/maps220/icons/spacebattle.dmi'

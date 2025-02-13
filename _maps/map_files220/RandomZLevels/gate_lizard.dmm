@@ -1493,12 +1493,8 @@
 	},
 /area/awaymission/jungle_planet/outside)
 "bXF" = (
-/obj/machinery/suit_storage_unit/syndicate{
-	req_access = null;
-	state_open = 1;
-	interact_offline = 1
-	},
 /obj/effect/spawner/random/dirt/often,
+/obj/effect/spawner/random/pool/spaceloot/modsuit_syndie/nuclear/gateway,
 /turf/simulated/floor/mineral/plastitanium,
 /area/awaymission/jungle_planet/outside/abandoned)
 "bYg" = (
@@ -3435,6 +3431,13 @@
 	},
 /turf/simulated/floor/indestructible/grass,
 /area/awaymission/jungle_planet/outside/waterfall)
+"eCN" = (
+/obj/item/clothing/gloves/ring/gold,
+/obj/structure/safe/floor,
+/obj/item/documents/nanotrasen,
+/obj/item/storage/lockbox/experimental_weapon/gateway,
+/turf/simulated/floor/plating,
+/area/awaymission/jungle_planet/inside/complex)
 "eDn" = (
 /obj/structure/machine_frame,
 /obj/item/stack/cable_coil{
@@ -3650,9 +3653,8 @@
 	},
 /area/awaymission/jungle_planet/inside)
 "ePb" = (
-/obj/item/gun/energy/gun/mini{
-	selfcharge = 1;
-	name = "self-charge gun prototype"
+/obj/item/stack/sheet/wood{
+	amount = 30
 	},
 /turf/simulated/floor/wood/oak,
 /area/awaymission/jungle_planet/inside/complex)
@@ -4258,8 +4260,9 @@
 /obj/item/stack/spacecash/c100,
 /obj/item/lighter/zippo/fluff/purple,
 /obj/effect/spawner/random/dirt/frequent,
-/obj/item/ammo_box/shotgun/buck,
 /obj/effect/mapping_helpers/turfs/damage,
+/obj/effect/spawner/random/pool/gatewayloot/speedloader,
+/obj/effect/spawner/random/pool/gatewayloot/speedloader,
 /turf/simulated/floor/wood/oak,
 /area/awaymission/jungle_planet/inside/complex)
 "fGf" = (
@@ -5161,7 +5164,7 @@
 	climbable = 1
 	},
 /obj/effect/spawner/random/blood/often,
-/obj/item/claymore/ceremonial,
+/obj/effect/spawner/random/pool/gatewayloot/claymore,
 /turf/simulated/floor/indestructible/grass,
 /area/awaymission/jungle_planet/outside/river)
 "gVX" = (
@@ -8801,6 +8804,7 @@
 	pixel_y = 8
 	},
 /obj/item/cigbutt,
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/plating,
 /area/awaymission/jungle_planet/inside/complex)
 "lnA" = (
@@ -9077,8 +9081,8 @@
 /area/awaymission/jungle_planet/outside)
 "lJw" = (
 /obj/structure/gunrack,
-/obj/item/gun/energy/e_gun/old,
 /obj/effect/mapping_helpers/turfs/damage,
+/obj/effect/spawner/random/pool/gatewayloot/proto_egun,
 /turf/simulated/floor/wood/oak,
 /area/awaymission/jungle_planet/outside/cave/pirate)
 "lJK" = (
@@ -9257,6 +9261,7 @@
 /obj/structure/closet{
 	opened = 1
 	},
+/obj/effect/spawner/random/pool/spaceloot/mining_tool/gateway,
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/inside/complex)
 "lWu" = (
@@ -11505,9 +11510,6 @@
 /turf/simulated/floor/beach/away/sand,
 /area/awaymission/jungle_planet/outside/river)
 "oNz" = (
-/obj/item/clothing/gloves/ring/gold,
-/obj/structure/safe/floor,
-/obj/item/documents/nanotrasen,
 /obj/effect/spawner/random/dirt/frequent,
 /obj/item/kirbyplants/large,
 /mob/living/simple_animal/hostile/poison_snake{
@@ -11823,12 +11825,12 @@
 /turf/simulated/floor/engine,
 /area/awaymission/jungle_planet/inside/complex)
 "pjP" = (
-/obj/item/stack/spacecash/c1000,
-/obj/item/stack/spacecash/c500,
 /obj/machinery/light/small/directional/south,
 /obj/effect/spawner/random/dirt/often,
 /obj/structure/closet/crate/wooden,
-/obj/item/stack/spacecash/c1000,
+/obj/effect/spawner/random/pool/gatewayloot/credits,
+/obj/effect/spawner/random/pool/gatewayloot/credits,
+/obj/effect/spawner/random/pool/gatewayloot/credits,
 /turf/simulated/floor/wood/oak,
 /area/awaymission/jungle_planet/outside/cave/pirate)
 "pjT" = (
@@ -12124,6 +12126,7 @@
 	opened = 1
 	},
 /obj/structure/sign/poster/official/random/west,
+/obj/effect/spawner/random/pool/spaceloot/mining_tool/gateway,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "browncorner"
@@ -12308,6 +12311,7 @@
 	name = "MC-16 multicard";
 	desc = "A clip on ID Badge, has one of those fancy new magnetic strips built in."
 	},
+/obj/effect/spawner/random/pool/gatewayloot/enforcer,
 /turf/simulated/floor/wood/oak,
 /area/awaymission/jungle_planet/outside/cave/small)
 "pWt" = (
@@ -12584,8 +12588,8 @@
 /area/awaymission/jungle_planet/outside/abandoned)
 "qph" = (
 /obj/structure/closet/syndicate,
-/obj/item/clothing/suit/jacket/bomber/syndicate,
 /obj/effect/spawner/random/dirt/often,
+/obj/effect/spawner/random/pool/gatewayloot/syndicate/mixed,
 /turf/simulated/floor/mineral/plastitanium,
 /area/awaymission/jungle_planet/outside/abandoned)
 "qpu" = (
@@ -12993,6 +12997,12 @@
 	icon_state = "cafeteria"
 	},
 /area/awaymission/jungle_planet/inside/complex)
+"qOC" = (
+/obj/effect/spawner/random/pool/gatewayloot/syndicate/mixed,
+/turf/simulated/floor/plating/asteroid/ancient{
+	name = "ground"
+	},
+/area/awaymission/jungle_planet/outside/cave)
 "qOH" = (
 /obj/structure/table/wood,
 /obj/item/food/meat{
@@ -14013,6 +14023,12 @@
 /obj/structure/girder/reinforced,
 /turf/simulated/floor/beach/away/water/deep/dense_canpass,
 /area/awaymission/jungle_planet/outside/river)
+"rVL" = (
+/obj/effect/mob_spawn/human/corpse/miner,
+/turf/simulated/floor/plating/asteroid/ancient{
+	name = "ground"
+	},
+/area/awaymission/jungle_planet/outside/cave)
 "rXc" = (
 /obj/item/coin/gold{
 	pixel_x = -17;
@@ -14788,6 +14804,7 @@
 /obj/structure/sign/poster/contraband/random/north,
 /obj/effect/decal/cleanable/cobweb2,
 /obj/item/rack_parts,
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/plating,
 /area/awaymission/jungle_planet/inside/complex)
 "sWR" = (
@@ -16191,6 +16208,7 @@
 "uGj" = (
 /obj/structure/table/wood,
 /obj/item/cigbutt,
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/outside/river)
 "uGp" = (
@@ -18018,6 +18036,7 @@
 /mob/living/simple_animal/hostile/poison_snake{
 	wander = 0
 	},
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/plasteel{
 	icon_state = "freezerfloor"
 	},
@@ -18565,6 +18584,7 @@
 	pixel_x = -5;
 	pixel_y = -7
 	},
+/obj/effect/spawner/random/pool/spaceloot/mining_tool/gateway,
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/inside/complex)
 "xDN" = (
@@ -21393,7 +21413,7 @@ miM
 nai
 nai
 nai
-nai
+qeg
 miM
 miM
 miM
@@ -21580,7 +21600,7 @@ miM
 nai
 nai
 nai
-nai
+qOC
 miM
 miM
 miM
@@ -22481,7 +22501,7 @@ miM
 miM
 miM
 miM
-nai
+rVL
 tZW
 miM
 miM
@@ -28550,7 +28570,7 @@ opf
 sPM
 oZK
 pnG
-mUy
+eCN
 xRv
 omz
 prI

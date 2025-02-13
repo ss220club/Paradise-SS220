@@ -108,6 +108,10 @@
 /obj/mecha/combat/durand/old/mechtransport_new
 	obj_integrity = 120
 
+// spacebattle mauler
+/obj/mecha/combat/marauder/mauler/spacebattle
+	max_integrity = 250
+
 #undef ERT_TYPE_AMBER
 #undef ERT_TYPE_RED
 #undef ERT_TYPE_GAMMA
