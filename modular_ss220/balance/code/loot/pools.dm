@@ -357,11 +357,10 @@
 /obj/effect/spawner/random/pool/gatewayloot/syndie_mob_loot/melee
 	icon_state = "stetchkin"
 	loot = list(
-		/obj/item/ammo_casing/c10mm = 97,
+		/obj/item/ammo_casing/c10mm = 98,
 
 		// always least chance
 		/obj/item/shield/energy,
-		/obj/item/storage/belt/sheath/snakesfang,
 		/obj/item/melee/energy/sword/saber,
 	)
 
