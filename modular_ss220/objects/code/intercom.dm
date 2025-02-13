@@ -69,3 +69,12 @@
 		icon_state = icon_frame
 	else
 		icon_state = "[initial(icon_state)][!on ? icon_postfix_off : ""][b_stat ? icon_postfix_open : ""]"
+
+/obj/item/radio/intercom/locked/prison
+	name = "prison intercom"
+	desc = /obj/item/radio/intercom::desc
+
+/obj/item/radio/intercom/locked/prison/New()
+	..()
+	wires.cut(WIRE_RADIO_TRANSMIT) // this mends the wire actually
+	disable_mic()
