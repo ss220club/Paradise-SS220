@@ -220,7 +220,6 @@
 /obj/item/clothing/suit/storage/paramedic/pmed_jacket_new
 	name = "Светоотражающая куртка парамедика"
 	desc = "Ярко-жёлтая куртка парамедика со светоотражающими элементами, нарукавной мигалкой и множеством карманов. Изготовлена из плотного материала и хорошо заметна с большого расстояния. "
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, RAD = 5, FIRE = 50, ACID = 50) // Такие же, как у жилетки
 	icon = 'modular_ss220/clothing/icons/object/suits.dmi'
 	icon_state = "pmed_jacket_new_open"
 	icon_override = 'modular_ss220/clothing/icons/mob/suits.dmi'
