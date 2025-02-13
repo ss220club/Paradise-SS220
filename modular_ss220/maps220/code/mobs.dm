@@ -1408,14 +1408,10 @@
 	no_handcuffs = TRUE
 	weapons_check = TRUE
 	emagged = TRUE
-	var/area/awaymission/space_battle/syndicate/spacebattle
 
-/mob/living/simple_animal/bot/secbot/griefsky/syndie/Initialize(mapload)
-	spacebattle = get_area(src)
-	if(istype(spacebattle))
-		pixel_x = 16
-		pixel_y = 16
-	. = ..()
+/mob/living/simple_animal/bot/secbot/griefsky/syndie/spacebattle
+	pixel_x = 16
+	pixel_y = 16
 
 /mob/living/simple_animal/hostile/malf_drone/spacebattle
 	icon = 'modular_ss220/maps220/icons/spacebattle.dmi'

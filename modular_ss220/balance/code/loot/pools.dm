@@ -29,14 +29,12 @@
 		/obj/effect/spawner/random/pool/spaceloot/syndicate/common/depot/centcomm = 30,
 		/obj/effect/spawner/random/pool/spaceloot/syndicate/rare/depot/centcomm = 20,
 		/obj/effect/spawner/random/pool/spaceloot/syndicate/officer/depot/centcomm = 5,
-		/obj/effect/spawner/random/pool/spaceloot/syndicate/armory/depot/centcomm,
+		/obj/effect/spawner/random/pool/spaceloot/syndicate/armory/depot/centcomm = 1,
 	)
 
 // space loot pool
-/datum/spawn_pool/spaceloot
-	available_points = 1700
-
 /obj/effect/spawner/random/pool/spaceloot/mechtransport_new/mecha
+	icon_state = "durand_old"
 	point_value = 100
 	loot = list(/obj/mecha/combat/durand/old/mechtransport_new)
 
@@ -49,6 +47,10 @@
 		/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/lmg,
 		/obj/item/mecha_parts/mecha_equipment/weapon/energy/laser,
 		)
+
+/obj/effect/spawner/random/pool/spaceloot/modsuit_syndie
+	icon = 'modular_ss220/maps220/icons/spawner_icons.dmi'
+	icon_state = "mod"
 
 /obj/effect/spawner/random/pool/spaceloot/modsuit_syndie/nuclear
 	point_value = 110
@@ -65,6 +67,7 @@
 	)
 
 /obj/effect/spawner/random/pool/spaceloot/laser
+	icon_state = "stetchkin"
 	point_value = 30
 	spawn_loot_chance = 40
 	loot = list(
@@ -89,15 +92,17 @@
 		/obj/item/kinetic_crusher = 3,
 		/obj/item/gun/energy/kinetic_accelerator = 3,
 		/obj/item/gun/energy/kinetic_accelerator/pistol = 3,
-		/obj/item/gun/energy/kinetic_accelerator/experimental,
+		/obj/item/gun/energy/kinetic_accelerator/experimental = 1,
 	)
 
 /obj/effect/spawner/random/pool/spaceloot/security/modsuit
+	icon = 'modular_ss220/maps220/icons/spawner_icons.dmi'
+	icon_state = "mod"
 	point_value = 75
 	spawn_loot_chance = 45
 	loot = list(
 		/obj/machinery/suit_storage_unit/security/space = 9,
-		/obj/machinery/suit_storage_unit/security/space/safeguard,
+		/obj/machinery/suit_storage_unit/security/space/safeguard = 1,
 	)
 
 // gateways pool
@@ -115,6 +120,8 @@
 	spawn_loot_chance = 50
 
 /obj/effect/spawner/random/pool/gatewayloot/spellbook
+	icon = 'icons/obj/library.dmi'
+	icon_state = "random_book"
 	point_value = 100
 	loot = list(/obj/item/spellbook/oneuse/random/necropolis)
 
@@ -159,7 +166,7 @@
 /obj/effect/spawner/random/pool/gatewayloot/tsf/mixed
 	loot = list(
 		/obj/effect/spawner/random/pool/gatewayloot/tsf/marine = 99,
-		/obj/effect/spawner/random/pool/gatewayloot/tsf/lieutenant,
+		/obj/effect/spawner/random/pool/gatewayloot/tsf/lieutenant = 1,
 	)
 
 /obj/effect/spawner/random/pool/gatewayloot/cult
@@ -173,6 +180,7 @@
 	)
 
 /obj/effect/spawner/random/pool/gatewayloot/laser
+	icon_state = "stetchkin"
 	point_value = 30
 	spawn_loot_chance = 50
 	loot = list(/obj/item/gun/energy/laser)
@@ -192,6 +200,7 @@
 
 
 /obj/effect/spawner/random/pool/gatewayloot/rsg
+	icon_state = "stetchkin"
 	point_value = 80
 	spawn_loot_chance = 50
 	loot = list(
@@ -224,7 +233,7 @@
 		/obj/effect/spawner/random/pool/spaceloot/syndicate/common/gateway = 30,
 		/obj/effect/spawner/random/pool/spaceloot/syndicate/rare/gateway = 20,
 		/obj/effect/spawner/random/pool/spaceloot/syndicate/officer/gateway = 5,
-		/obj/effect/spawner/random/pool/spaceloot/syndicate/armory/gateway,
+		/obj/effect/spawner/random/pool/spaceloot/syndicate/armory/gateway = 1,
 	)
 
 /obj/effect/spawner/random/pool/gatewayloot/syndicate/common_rare
@@ -241,9 +250,9 @@
 /obj/effect/spawner/random/pool/gatewayloot/speedloader
 	point_value = 25
 	loot = list(
-		/obj/item/ammo_box/shotgun = 3,
-		/obj/item/ammo_box/shotgun/buck,
-		/obj/item/ammo_box/shotgun/confetti,
+		/obj/item/ammo_box/shotgun/buck = 3,
+		/obj/item/ammo_box/shotgun = 1,
+		/obj/item/ammo_box/shotgun/confetti = 1,
 	)
 
 /obj/effect/spawner/random/pool/gatewayloot/proto_egun
@@ -256,10 +265,11 @@
 	loot = list(
 		/obj/item/claymore/ceremonial = 6,
 		/obj/item/nullrod/claymore = 3,
-		/obj/item/claymore,
+		/obj/item/claymore = 1,
 	)
 
 /obj/effect/spawner/random/pool/gatewayloot/enforcer
+	icon_state = "stetchkin"
 	point_value = 95
 	spawn_loot_chance = 75
 	loot = list(/obj/item/gun/projectile/automatic/pistol/enforcer)
@@ -273,7 +283,7 @@
 		/mob/living/simple_animal/hostile/syndicate/melee/space/autogib/spacebattle = 25,
 
 		// let the massacre begin, always least chance
-		/mob/living/simple_animal/hostile/syndicate/melee/autogib/depot/armory/spacebattle/gateway,
+		/mob/living/simple_animal/hostile/syndicate/melee/autogib/depot/armory/spacebattle/gateway = 1,
 	)
 
 /obj/effect/spawner/random/pool/gatewayloot/syndie_mob/space
@@ -285,70 +295,70 @@
 // syndie mob loot
 /obj/effect/spawner/random/pool/gatewayloot/syndie_mob_loot
 	loot = list(
-		/obj/item/ammo_casing/c10mm = 50,
-		/obj/item/food/syndicake = 20,
-		/obj/item/poster/random_contraband = 20,
-		/obj/item/tank/internals/emergency_oxygen/engi/syndi = 20,
-		/obj/item/reagent_containers/patch/styptic = 15,
-		/obj/item/reagent_containers/patch/silver_sulf = 15,
-		/obj/item/food/donkpocket = 10,
-		/obj/effect/spawner/random/pool/gatewayloot/syndicate/mixed = 8,
+		/obj/item/ammo_casing/c10mm = 62,
+		/obj/item/food/syndicake = 5,
+		/obj/item/poster/random_contraband = 5,
+		/obj/item/tank/internals/emergency_oxygen/engi/syndi = 5,
 		/obj/item/clothing/glasses/night = 5,
-		/obj/item/storage/box/syndidonkpockets = 3,
+		/obj/item/reagent_containers/patch/styptic = 4,
+		/obj/item/reagent_containers/patch/silver_sulf = 4,
+		/obj/item/food/donkpocket = 4,
+		/obj/effect/spawner/random/pool/gatewayloot/syndicate/mixed = 3,
+		/obj/item/storage/box/syndidonkpockets = 2,
 
 		// always least chance
-		/obj/item/card/id/syndicate,
+		/obj/item/card/id/syndicate = 1,
 	)
 
 /obj/effect/spawner/random/pool/gatewayloot/syndie_mob_loot/space
 	loot = list(
 		/obj/item/ammo_casing/c10mm = 99,
-		/obj/effect/spawner/random/pool/gatewayloot/syndie_mob_loot/space/modsuit,
+		/obj/effect/spawner/random/pool/gatewayloot/syndie_mob_loot/space/modsuit = 1,
 	)
 
 /obj/effect/spawner/random/pool/gatewayloot/syndie_mob_loot/space/modsuit
+	icon = 'modular_ss220/maps220/icons/spawner_icons.dmi'
+	icon_state = "mod"
 	loot = list(
 		/obj/item/mod/control/pre_equipped/traitor = 3,
-		/obj/item/mod/control/pre_equipped/nuclear,
+		/obj/item/mod/control/pre_equipped/nuclear = 1,
 	)
 
 /obj/effect/spawner/random/pool/gatewayloot/syndie_mob_loot/ranged
 	loot = list(
 		/obj/item/ammo_casing/c10mm = 75,
 		/obj/item/clothing/accessory/holster = 15,
-		/obj/effect/spawner/random/pool/gatewayloot/syndie_mob_loot/ranged/magazine = 9,
+		/obj/item/ammo_box/magazine/m10mm = 9,
 
 		// always least chance
-		/obj/effect/spawner/random/pool/gatewayloot/syndie_mob_loot/ranged/handgun,
+		/obj/effect/spawner/random/pool/gatewayloot/syndie_mob_loot/ranged/handgun = 1,
 	)
 
 /obj/effect/spawner/random/pool/gatewayloot/syndie_mob_loot/ranged/handgun
+	icon_state = "stetchkin"
 	loot = list(
 		/obj/item/gun/projectile/automatic/pistol = 98,
 
 		// always least chance
-		/obj/item/gun/projectile/revolver,
-		/obj/item/gun/projectile/revolver/fake,
-	)
-
-/obj/effect/spawner/random/pool/gatewayloot/syndie_mob_loot/ranged/magazine
-	loot = list(
-		/obj/item/ammo_box/magazine/m10mm = 19,
+		/obj/item/gun/projectile/revolver = 1,
+		/obj/item/gun/projectile/revolver/fake = 1,
 	)
 
 /obj/effect/spawner/random/pool/gatewayloot/syndie_mob_loot/melee
+	icon_state = "stetchkin"
 	loot = list(
 		/obj/item/ammo_casing/c10mm = 98,
 
 		// always least chance
-		/obj/item/shield/energy,
-		/obj/item/melee/energy/sword/saber,
+		/obj/item/shield/energy = 1,
+		/obj/item/melee/energy/sword/saber = 1,
 	)
 
 /obj/effect/spawner/random/pool/gatewayloot/griefsky
 	point_value = 100
-	loot = list(/mob/living/simple_animal/bot/secbot/griefsky/syndie)
+	loot = list(/mob/living/simple_animal/bot/secbot/griefsky/syndie/spacebattle)
 
 /obj/effect/spawner/random/pool/gatewayloot/mauler
+	icon_state = "durand_old"
 	point_value = 200
 	loot = list(/obj/mecha/combat/marauder/mauler/spacebattle)

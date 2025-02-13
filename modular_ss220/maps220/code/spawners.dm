@@ -130,7 +130,8 @@
 
 /* Space Battle */
 /obj/effect/mob_spawn/human/corpse/spacebattle
-	var/list/pocketloot = list(/obj/item/storage/fancy/cigarettes/cigpack_robust,
+	var/list/pocketloot = list(
+		/obj/item/storage/fancy/cigarettes/cigpack_robust,
 		/obj/item/storage/fancy/cigarettes/cigpack_uplift,
 		/obj/item/storage/fancy/cigarettes/cigpack_random,
 		/obj/item/cigbutt,
@@ -313,3 +314,21 @@
 	uniform = /obj/item/clothing/under/retro/science
 	shoes = /obj/item/clothing/shoes/black
 	suit = /obj/item/clothing/suit/storage/labcoat/science
+
+/obj/effect/spawner/random/loot
+	icon = 'icons/effects/random_spawners.dmi'
+
+/obj/effect/spawner/random/loot/modkit
+	name = "random modkit"
+	icon_state = "donkpocket_single" // i'm not gonna sprite this!
+	loot = list(
+		/obj/item/borg/upgrade/modkit/range,
+		/obj/item/borg/upgrade/modkit/damage,
+		/obj/item/borg/upgrade/modkit/tracer,
+		/obj/item/borg/upgrade/modkit/tracer/adjustable,
+		/obj/item/borg/upgrade/modkit/lifesteal,
+		/obj/item/borg/upgrade/modkit/cooldown,
+		/obj/item/borg/upgrade/modkit/chassis_mod,
+		/obj/item/borg/upgrade/modkit/chassis_mod/orange,
+		/obj/item/borg/upgrade/modkit/aoe/turfs,
+	)
