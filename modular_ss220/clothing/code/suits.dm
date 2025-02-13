@@ -221,7 +221,7 @@
 	name = "Светоотражающая куртка парамедика"
 	desc = "Ярко-жёлтая куртка парамедика со светоотражающими элементами, нарукавной мигалкой и множеством карманов. Изготовлена из плотного материала и хорошо заметна с большого расстояния. "
 	icon = 'modular_ss220/clothing/icons/object/suits.dmi'
-	icon_state = "pmed_jacket_new_open"
+	icon_state = "pmed_new_jacket_open"
 	icon_override = 'modular_ss220/clothing/icons/mob/suits.dmi'
 	ignore_suitadjust = FALSE
 	suit_adjusted = TRUE
