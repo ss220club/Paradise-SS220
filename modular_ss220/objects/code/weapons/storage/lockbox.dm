@@ -2,7 +2,7 @@
 	name = "A-48 classified lockbox"
 	desc = "Contains a classifed item for experimental purposes."
 	var/static/list/loot_options = list(
-		/obj/item/gun/energy/gun/mini/selfcharge = 5,
+		/obj/item/gun/energy/sparker/selfcharge = 5,
 		/obj/item/mod/module/sphere_transform = 5,
 		/obj/item/mod/module/stealth/ninja = 5,
 
