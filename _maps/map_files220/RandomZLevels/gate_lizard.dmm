@@ -350,6 +350,7 @@
 	},
 /obj/item/clothing/head/soft,
 /obj/item/clothing/gloves/color/black,
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "darkneutralfull"
@@ -1002,7 +1003,6 @@
 	},
 /area/awaymission/jungle_planet/inside)
 "bsO" = (
-/obj/item/paper/researchnotes,
 /obj/item/stack/telecrystal,
 /obj/item/stack/sheet/leather,
 /obj/item/stack/sheet/leather,
@@ -1377,10 +1377,10 @@
 	},
 /area/awaymission/jungle_planet/inside/complex)
 "bNN" = (
-/obj/item/food/grown/harebell,
 /obj/structure/stone_tile/slab/cracked{
 	dir = 4
 	},
+/obj/effect/spawner/random/pool/gatewayloot/spellbook,
 /turf/simulated/floor/engine/cult,
 /area/awaymission/jungle_planet/outside/cave)
 "bNX" = (
@@ -1493,12 +1493,8 @@
 	},
 /area/awaymission/jungle_planet/outside)
 "bXF" = (
-/obj/machinery/suit_storage_unit/syndicate{
-	req_access = null;
-	state_open = 1;
-	interact_offline = 1
-	},
 /obj/effect/spawner/random/dirt/often,
+/obj/effect/spawner/random/pool/spaceloot/modsuit_syndie/nuclear/gateway,
 /turf/simulated/floor/mineral/plastitanium,
 /area/awaymission/jungle_planet/outside/abandoned)
 "bYg" = (
@@ -1585,6 +1581,13 @@
 /obj/structure/stone_tile/block/cracked,
 /obj/structure/bonfire/lit,
 /turf/simulated/floor/engine/cult,
+/area/awaymission/jungle_planet/outside/cave)
+"cdb" = (
+/obj/effect/mob_spawn/human/corpse/syndicatesoldier,
+/obj/effect/spawner/random/maintenance,
+/turf/simulated/floor/plating/asteroid/ancient{
+	name = "ground"
+	},
 /area/awaymission/jungle_planet/outside/cave)
 "cdh" = (
 /obj/structure/gunrack,
@@ -3435,6 +3438,13 @@
 	},
 /turf/simulated/floor/indestructible/grass,
 /area/awaymission/jungle_planet/outside/waterfall)
+"eCN" = (
+/obj/item/clothing/gloves/ring/gold,
+/obj/structure/safe/floor,
+/obj/item/documents/nanotrasen,
+/obj/item/storage/lockbox/experimental_weapon/gateway,
+/turf/simulated/floor/plating,
+/area/awaymission/jungle_planet/inside/complex)
 "eDn" = (
 /obj/structure/machine_frame,
 /obj/item/stack/cable_coil{
@@ -3573,6 +3583,7 @@
 	icon_state = "medium"
 	},
 /obj/machinery/light_construct/directional/east,
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/mineral/titanium/yellow,
 /area/awaymission/jungle_planet/outside/abandoned)
 "eKg" = (
@@ -3650,9 +3661,8 @@
 	},
 /area/awaymission/jungle_planet/inside)
 "ePb" = (
-/obj/item/gun/energy/gun/mini{
-	selfcharge = 1;
-	name = "self-charge gun prototype"
+/obj/item/stack/sheet/wood{
+	amount = 30
 	},
 /turf/simulated/floor/wood/oak,
 /area/awaymission/jungle_planet/inside/complex)
@@ -4044,6 +4054,7 @@
 /area/awaymission/jungle_planet/outside/cave/pirate)
 "fsa" = (
 /obj/effect/decal/cleanable/cobweb,
+/obj/effect/spawner/random/pool/gatewayloot/unathi/kitchen,
 /turf/simulated/floor/wood/oak,
 /area/awaymission/jungle_planet/outside/cave)
 "ftZ" = (
@@ -4258,8 +4269,9 @@
 /obj/item/stack/spacecash/c100,
 /obj/item/lighter/zippo/fluff/purple,
 /obj/effect/spawner/random/dirt/frequent,
-/obj/item/ammo_box/shotgun/buck,
 /obj/effect/mapping_helpers/turfs/damage,
+/obj/effect/spawner/random/pool/gatewayloot/speedloader,
+/obj/effect/spawner/random/pool/gatewayloot/speedloader,
 /turf/simulated/floor/wood/oak,
 /area/awaymission/jungle_planet/inside/complex)
 "fGf" = (
@@ -5161,7 +5173,7 @@
 	climbable = 1
 	},
 /obj/effect/spawner/random/blood/often,
-/obj/item/claymore/ceremonial,
+/obj/effect/spawner/random/pool/gatewayloot/claymore,
 /turf/simulated/floor/indestructible/grass,
 /area/awaymission/jungle_planet/outside/river)
 "gVX" = (
@@ -5586,6 +5598,7 @@
 /obj/machinery/door/window/brigdoor{
 	dir = 8
 	},
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/outside/abandoned)
 "htM" = (
@@ -5757,6 +5770,7 @@
 /area/awaymission/jungle_planet/inside/complex)
 "hFQ" = (
 /obj/effect/spawner/random/dirt/often,
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/wood/oak,
 /area/awaymission/jungle_planet/inside/complex)
 "hGt" = (
@@ -6756,6 +6770,12 @@
 	icon_state = "rampbottom"
 	},
 /area/awaymission/jungle_planet/inside/complex)
+"iRs" = (
+/obj/item/paper/researchnotes,
+/turf/simulated/floor/plating/asteroid/ancient{
+	name = "ground"
+	},
+/area/awaymission/jungle_planet/outside)
 "iRD" = (
 /obj/structure/closet,
 /obj/item/clothing/shoes/workboots,
@@ -7139,6 +7159,7 @@
 "jrP" = (
 /obj/item/stock_parts/capacitor,
 /obj/machinery/light_construct/directional/east,
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/inside/complex)
 "jrS" = (
@@ -8801,6 +8822,7 @@
 	pixel_y = 8
 	},
 /obj/item/cigbutt,
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/plating,
 /area/awaymission/jungle_planet/inside/complex)
 "lnA" = (
@@ -9077,8 +9099,8 @@
 /area/awaymission/jungle_planet/outside)
 "lJw" = (
 /obj/structure/gunrack,
-/obj/item/gun/energy/e_gun/old,
 /obj/effect/mapping_helpers/turfs/damage,
+/obj/effect/spawner/random/pool/gatewayloot/proto_egun,
 /turf/simulated/floor/wood/oak,
 /area/awaymission/jungle_planet/outside/cave/pirate)
 "lJK" = (
@@ -9257,6 +9279,7 @@
 /obj/structure/closet{
 	opened = 1
 	},
+/obj/effect/spawner/random/pool/spaceloot/mining_tool/gateway,
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/inside/complex)
 "lWu" = (
@@ -9295,6 +9318,7 @@
 /area/awaymission/jungle_planet/outside)
 "maV" = (
 /obj/machinery/light_construct/directional/north,
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/mineral/titanium/blue,
 /area/awaymission/jungle_planet/outside/abandoned)
 "mbT" = (
@@ -10405,6 +10429,11 @@
 	dir = 4
 	},
 /area/awaymission/jungle_planet/outside/river)
+"nlX" = (
+/obj/effect/spawner/random/dirt/often,
+/obj/effect/spawner/random/maintenance,
+/turf/simulated/floor/plating,
+/area/awaymission/jungle_planet/inside/complex)
 "nok" = (
 /obj/structure/table/wood,
 /obj/item/reagent_containers/drinks/mushroom_bowl,
@@ -10534,6 +10563,7 @@
 "nzd" = (
 /obj/structure/closet/crate/can,
 /obj/item/trash/can,
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/inside/complex)
 "nzh" = (
@@ -11277,6 +11307,7 @@
 	},
 /area/awaymission/jungle_planet/inside/complex)
 "oAH" = (
+/obj/item/food/grown/harebell,
 /turf/simulated/floor/plasteel{
 	icon_state = "rampbottom"
 	},
@@ -11505,9 +11536,6 @@
 /turf/simulated/floor/beach/away/sand,
 /area/awaymission/jungle_planet/outside/river)
 "oNz" = (
-/obj/item/clothing/gloves/ring/gold,
-/obj/structure/safe/floor,
-/obj/item/documents/nanotrasen,
 /obj/effect/spawner/random/dirt/frequent,
 /obj/item/kirbyplants/large,
 /mob/living/simple_animal/hostile/poison_snake{
@@ -11823,12 +11851,12 @@
 /turf/simulated/floor/engine,
 /area/awaymission/jungle_planet/inside/complex)
 "pjP" = (
-/obj/item/stack/spacecash/c1000,
-/obj/item/stack/spacecash/c500,
 /obj/machinery/light/small/directional/south,
 /obj/effect/spawner/random/dirt/often,
 /obj/structure/closet/crate/wooden,
-/obj/item/stack/spacecash/c1000,
+/obj/effect/spawner/random/pool/gatewayloot/credits,
+/obj/effect/spawner/random/pool/gatewayloot/credits,
+/obj/effect/spawner/random/pool/gatewayloot/credits,
 /turf/simulated/floor/wood/oak,
 /area/awaymission/jungle_planet/outside/cave/pirate)
 "pjT" = (
@@ -12124,6 +12152,7 @@
 	opened = 1
 	},
 /obj/structure/sign/poster/official/random/west,
+/obj/effect/spawner/random/pool/spaceloot/mining_tool/gateway,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "browncorner"
@@ -12308,6 +12337,7 @@
 	name = "MC-16 multicard";
 	desc = "A clip on ID Badge, has one of those fancy new magnetic strips built in."
 	},
+/obj/effect/spawner/random/pool/gatewayloot/nt/handgun,
 /turf/simulated/floor/wood/oak,
 /area/awaymission/jungle_planet/outside/cave/small)
 "pWt" = (
@@ -12584,8 +12614,8 @@
 /area/awaymission/jungle_planet/outside/abandoned)
 "qph" = (
 /obj/structure/closet/syndicate,
-/obj/item/clothing/suit/jacket/bomber/syndicate,
 /obj/effect/spawner/random/dirt/often,
+/obj/effect/spawner/random/pool/gatewayloot/syndicate/mixed,
 /turf/simulated/floor/mineral/plastitanium,
 /area/awaymission/jungle_planet/outside/abandoned)
 "qpu" = (
@@ -12993,6 +13023,12 @@
 	icon_state = "cafeteria"
 	},
 /area/awaymission/jungle_planet/inside/complex)
+"qOC" = (
+/obj/effect/spawner/random/pool/gatewayloot/syndicate/mixed,
+/turf/simulated/floor/plating/asteroid/ancient{
+	name = "ground"
+	},
+/area/awaymission/jungle_planet/outside/cave)
 "qOH" = (
 /obj/structure/table/wood,
 /obj/item/food/meat{
@@ -14013,6 +14049,12 @@
 /obj/structure/girder/reinforced,
 /turf/simulated/floor/beach/away/water/deep/dense_canpass,
 /area/awaymission/jungle_planet/outside/river)
+"rVL" = (
+/obj/effect/mob_spawn/human/corpse/miner,
+/turf/simulated/floor/plating/asteroid/ancient{
+	name = "ground"
+	},
+/area/awaymission/jungle_planet/outside/cave)
 "rXc" = (
 /obj/item/coin/gold{
 	pixel_x = -17;
@@ -14728,6 +14770,7 @@
 /area/awaymission/jungle_planet/outside/cave/small)
 "sTs" = (
 /obj/structure/closet/crate/can,
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/inside/complex)
 "sTK" = (
@@ -14788,6 +14831,7 @@
 /obj/structure/sign/poster/contraband/random/north,
 /obj/effect/decal/cleanable/cobweb2,
 /obj/item/rack_parts,
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/plating,
 /area/awaymission/jungle_planet/inside/complex)
 "sWR" = (
@@ -15660,9 +15704,7 @@
 	},
 /area/awaymission/jungle_planet/outside/cave)
 "tZW" = (
-/obj/mecha/working/ripley{
-	obj_integrity = 140
-	},
+/obj/effect/spawner/random/pool/gatewayloot/mecha/ripley_emagged,
 /turf/simulated/floor/plating/asteroid/ancient{
 	name = "ground"
 	},
@@ -16103,6 +16145,7 @@
 /obj/item/stamp/qm,
 /obj/item/clothing/shoes/centcom,
 /obj/item/lighter/zippo,
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/plasteel{
 	icon_state = "grimy"
 	},
@@ -16191,6 +16234,7 @@
 "uGj" = (
 /obj/structure/table/wood,
 /obj/item/cigbutt,
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/outside/river)
 "uGp" = (
@@ -16201,6 +16245,12 @@
 	icon_state = "bush3"
 	},
 /turf/simulated/floor/indestructible/grass,
+/area/awaymission/jungle_planet/outside)
+"uGP" = (
+/obj/effect/mob_spawn/human/corpse/spacebattle/scientist,
+/turf/simulated/floor/plating/asteroid/ancient{
+	name = "ground"
+	},
 /area/awaymission/jungle_planet/outside)
 "uIb" = (
 /obj/structure/flora/rock/pile/largejungle,
@@ -16655,6 +16705,7 @@
 	},
 /obj/structure/table,
 /obj/effect/spawner/random/dirt/frequent,
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/plasteel{
 	dir = 1;
 	icon_state = "yellowcorner"
@@ -16694,6 +16745,7 @@
 /obj/item/ammo_casing/caseless/arrow,
 /obj/effect/spawner/random/blood/often,
 /obj/machinery/light_construct/small/west,
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/plasteel{
 	icon_state = "freezerfloor"
 	},
@@ -18018,6 +18070,7 @@
 /mob/living/simple_animal/hostile/poison_snake{
 	wander = 0
 	},
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/plasteel{
 	icon_state = "freezerfloor"
 	},
@@ -18324,6 +18377,13 @@
 	},
 /turf/simulated/floor/engine/cult,
 /area/awaymission/jungle_planet/outside/cave)
+"xok" = (
+/obj/effect/spawner/random/maintenance,
+/turf/simulated/floor/plasteel{
+	icon_state = "purple";
+	dir = 1
+	},
+/area/awaymission/jungle_planet/inside/complex)
 "xqn" = (
 /obj/effect/turf_decal/delivery,
 /obj/structure/closet/crate{
@@ -18565,6 +18625,7 @@
 	pixel_x = -5;
 	pixel_y = -7
 	},
+/obj/effect/spawner/random/pool/spaceloot/mining_tool/gateway,
 /turf/simulated/floor/plasteel,
 /area/awaymission/jungle_planet/inside/complex)
 "xDN" = (
@@ -21393,7 +21454,7 @@ miM
 nai
 nai
 nai
-nai
+qeg
 miM
 miM
 miM
@@ -21580,7 +21641,7 @@ miM
 nai
 nai
 nai
-nai
+qOC
 miM
 miM
 miM
@@ -22481,7 +22542,7 @@ miM
 miM
 miM
 miM
-nai
+rVL
 tZW
 miM
 miM
@@ -28550,7 +28611,7 @@ opf
 sPM
 oZK
 pnG
-mUy
+eCN
 xRv
 omz
 prI
@@ -33211,7 +33272,7 @@ dmx
 oBh
 wQo
 gck
-btI
+nlX
 iQn
 qOM
 sPM
@@ -33405,7 +33466,7 @@ btI
 btI
 rQp
 cku
-sVj
+xok
 vBt
 sXj
 oBh
@@ -36890,7 +36951,7 @@ miM
 miM
 miM
 iTk
-iTk
+uGP
 iTk
 iTk
 iTk
@@ -37077,7 +37138,7 @@ miM
 fMq
 fMq
 iTk
-iTk
+iRs
 jCT
 qCn
 iTk
@@ -50695,7 +50756,7 @@ miM
 sbr
 sbr
 sbr
-qeg
+cdb
 miM
 vtE
 miM
