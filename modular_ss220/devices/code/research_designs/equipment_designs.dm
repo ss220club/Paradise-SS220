@@ -1,8 +1,8 @@
 /datum/design/tray_scanner_range
 	name = "Extended T-ray"
-	desc = "Расширенный по дальности Т-сканнер позволяющий визуально обнаружить скрытые объекты."
+	desc = "Расширенный T-ray сканер с увеличенной дальностью и стандартной продолжительностью отображения скрытых инженерных коммуникаций."
 	id = "tray_range"
-	req_tech = list("magnets" = 3, "engineering" = 3)
+	req_tech = list("magnets" = 3, "programming" = 3, "engineering" = 3)
 	build_type = PROTOLATHE
 	materials = list(MAT_METAL = 500, MAT_GLASS = 500, MAT_SILVER = 500, MAT_DIAMOND = 200)
 	build_path = /obj/item/t_scanner/mod/extended_range
@@ -10,9 +10,9 @@
 
 /datum/design/tray_scanner_pulse
 	name = "Pulse T-ray"
-	desc = "Пульсовой Т-сканнер позволяющий гораздо дольше визуально обнаруживать скрытые объекты."
+	desc = "Пульсовый T-ray сканер с увеличенной длительностью и стандартной дальностью отображения скрытых инженерных коммуникаций."
 	id = "tray_pulse"
-	req_tech = list("magnets" = 5, "engineering" = 3)
+	req_tech = list("magnets" = 3, "programming" = 3, "engineering" = 3)
 	build_type = PROTOLATHE
 	materials = list(MAT_METAL = 500, MAT_GLASS = 500, MAT_SILVER = 500, MAT_DIAMOND = 200)
 	build_path = /obj/item/t_scanner/mod/pulse
@@ -20,9 +20,9 @@
 
 /datum/design/tray_scanner_advanced
 	name = "Advanced T-ray"
-	desc = "Расширенный по дальности Т-сканнер, более дольше удерживающий пульсар, позволяющий визуально обнаружить скрытые объекты."
+	desc = "Продвинутый T-ray сканер с увеличенной длительностью и дальностью отображения скрытых инженерных коммуникаций."
 	id = "tray_advanced"
-	req_tech = list("magnets" = 7, "programming" = 5, "engineering" = 5)
+	req_tech = list("magnets" = 6, "programming" = 6, "engineering" = 6)
 	build_type = PROTOLATHE
 	materials = list(MAT_METAL = 1000, MAT_GLASS = 500, MAT_SILVER = 1000, MAT_DIAMOND = 500)
 	build_path = /obj/item/t_scanner/mod/advanced
@@ -30,9 +30,9 @@
 
 /datum/design/tray_scanner_science
 	name = "Science T-ray"
-	desc = "Научный Т-сканнер совмещающий в себя технологии пульсового и расширенного сканнера."
+	desc = "Научный T-ray сканер, дальнейшее развитие улучшенного T-ray сканнера."
 	id = "tray_science"
-	req_tech = list("magnets" = 8, "programming" = 7, "engineering" = 7) // придется постараться чтобы найти 8-й уровень технологий
+	req_tech = list("magnets" = 7, "programming" = 7, "engineering" = 7) // вершина ветки развития сканнеров, сложно открыть
 	build_type = PROTOLATHE
 	materials = list(MAT_METAL = 1000, MAT_GLASS = 500, MAT_SILVER = 2000, MAT_DIAMOND = 1500)
 	build_path = /obj/item/t_scanner/mod/science
@@ -40,10 +40,10 @@
 
 /datum/design/sec_tray_scanner
 	name = "Security T-ray"
-	desc = "An advance use of a terahertz-ray to find any invisible biological creature nearby."
+	desc = "Специальный вариант T-ray сканера, используемый для обнаружения биологических объектов. Устройство уязвимо для ЭМИ излучения."
 	id = "sec_tray"
-	req_tech = list("magnets" = 7, "biotech" = 7, "engineering" = 3)
+	req_tech = list("magnets" = 7, "programming" = 7, "engineering" = 7, "biotech" = 7) // вариант научного сканнера с упором на биообъекты
 	build_type = PROTOLATHE
-	materials = list(MAT_METAL = 500, MAT_GLASS = 500, MAT_DIAMOND = 500)
+	materials = list(MAT_METAL = 1000, MAT_GLASS = 500, MAT_SILVER = 2000, MAT_DIAMOND = 1500)
 	build_path = /obj/item/t_scanner/mod/security
 	category = list("Equipment")
