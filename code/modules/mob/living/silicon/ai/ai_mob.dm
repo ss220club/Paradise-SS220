@@ -1434,7 +1434,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 // Return to the Core.
 /mob/living/silicon/ai/proc/core()
 	set category = "Команды ИИ"
-	set name = "AI Core"
+	set name = "Ядро Ии"
 
 	view_core()
 
