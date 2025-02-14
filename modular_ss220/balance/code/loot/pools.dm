@@ -335,7 +335,7 @@
 /obj/effect/spawner/random/pool/gatewayloot/syndie_mob
 	icon = 'icons/effects/spawner_icons.dmi'
 	icon_state = "syndie_depot"
-	point_value = 8
+	point_value = 6
 	loot = list(
 		/mob/living/simple_animal/hostile/syndicate/ranged/autogib/spacebattle = 25,
 		/mob/living/simple_animal/hostile/syndicate/melee/autogib/spacebattle = 25,
