@@ -53,6 +53,7 @@
 	icon_state = "mod"
 
 /obj/effect/spawner/random/pool/spaceloot/modsuit_syndie/nuclear
+	name = "blood mod 30pc"
 	point_value = 110
 	spawn_loot_chance = 30
 	loot = list(/obj/machinery/suit_storage_unit/syndicate)
@@ -67,6 +68,7 @@
 	)
 
 /obj/effect/spawner/random/pool/spaceloot/laser
+	name = "laser 40pc"
 	icon_state = "stetchkin"
 	point_value = 30
 	spawn_loot_chance = 40
@@ -96,6 +98,7 @@
 	)
 
 /obj/effect/spawner/random/pool/spaceloot/security/modsuit
+	name = "sec mod 45pc"
 	icon = 'modular_ss220/maps220/icons/spawner_icons.dmi'
 	icon_state = "mod"
 	point_value = 75
@@ -120,8 +123,12 @@
 	spawn_loot_chance = 50
 	record_spawn = FALSE
 
+/obj/effect/spawner/random/pool/spaceloot/security/modsuit/gateway
+	spawn_pool_id = "gateway_spawn_pool"
+	record_spawn = FALSE
+
 /obj/effect/spawner/random/pool/gatewayloot/unathi/kitchen
-	point_value = 65
+	point_value = 70
 	loot = list(/obj/item/gun/magic/hook) // currently there is not much to suggest
 
 /obj/effect/spawner/random/pool/gatewayloot/spellbook
@@ -159,7 +166,7 @@
 
 /obj/effect/spawner/random/pool/gatewayloot/tsf/marine
 	spawn_all_loot = TRUE
-	point_value = 150
+	point_value = 140
 	loot = list(
 		/obj/item/clothing/head/soft/solgov/marines,
 		/obj/item/clothing/under/solgov,
@@ -170,11 +177,12 @@
 
 /obj/effect/spawner/random/pool/gatewayloot/tsf/mixed
 	loot = list(
-		/obj/effect/spawner/random/pool/gatewayloot/tsf/marine = 99,
+		/obj/effect/spawner/random/pool/gatewayloot/tsf/marine = 9,
 		/obj/effect/spawner/random/pool/gatewayloot/tsf/lieutenant,
 	)
 
 /obj/effect/spawner/random/pool/gatewayloot/cult
+	name = "cult item 60pc"
 	point_value = 30
 	spawn_loot_chance = 60
 	loot = list(
@@ -184,7 +192,27 @@
 		/obj/item/clothing/suit/hooded/cultrobes,
 	)
 
+/obj/effect/spawner/random/pool/gatewayloot/cult/valuable
+	name = "valuable cult alike item"
+	point_value = 75
+	spawn_loot_chance = 100
+	loot = list(
+		/obj/item/book_of_babel,
+		/obj/item/soulstone/anybody,
+		/obj/item/shared_storage/red,
+		/obj/item/organ/internal/heart/cursed/wizard,
+		/obj/item/nullrod/scythe/talking,
+		/obj/item/nullrod/armblade/mining,
+		/obj/item/blank_tarot_card,
+		/obj/item/tarot_card_pack,
+		/obj/item/tarot_card_pack/jumbo,
+		/obj/item/tarot_card_pack/mega,
+		/obj/item/reagent_containers/drinks/bottle/holywater/hell,
+		/obj/item/immortality_talisman,
+	)
+
 /obj/effect/spawner/random/pool/gatewayloot/laser
+	name = "laser 50pc"
 	icon_state = "stetchkin"
 	point_value = 30
 	spawn_loot_chance = 50
@@ -194,17 +222,15 @@
 	loot = list(/obj/item/gun/energy/laser/retro)
 
 /obj/effect/spawner/random/pool/gatewayloot/laser/advanced
-	point_value = 55
+	point_value = 40
 	loot = list(
 		/obj/item/gun/energy/laser,
-		/obj/item/gun/energy/laser/retro,
 		/obj/item/gun/energy/lasercannon,
-		/obj/item/gun/energy/lwap,
-		/obj/item/gun/energy/xray,
 	)
 
 
 /obj/effect/spawner/random/pool/gatewayloot/rsg
+	name = "rsg 50pc"
 	icon_state = "stetchkin"
 	point_value = 80
 	spawn_loot_chance = 50
@@ -213,7 +239,7 @@
 	)
 
 /obj/effect/spawner/random/pool/gatewayloot/immortality_ring
-	point_value = 250
+	point_value = 185
 	loot = list(
 		/obj/item/clothing/gloves/ring/immortality_ring
 	)
@@ -229,14 +255,17 @@
 /obj/effect/spawner/random/pool/spaceloot/syndicate/rare/gateway
 	spawn_pool_id = "gateway_spawn_pool"
 	record_spawn = FALSE
+	point_value = 30
 
 /obj/effect/spawner/random/pool/spaceloot/syndicate/officer/gateway
 	spawn_pool_id = "gateway_spawn_pool"
 	record_spawn = FALSE
+	point_value = 60
 
 /obj/effect/spawner/random/pool/spaceloot/syndicate/armory/gateway
 	spawn_pool_id = "gateway_spawn_pool"
 	record_spawn = FALSE
+	point_value = 90
 
 /obj/effect/spawner/random/pool/gatewayloot/syndicate/mixed
 	loot = list(
@@ -254,8 +283,15 @@
 
 /obj/effect/spawner/random/pool/gatewayloot/lockbox
 	guaranteed = TRUE
-	point_value = 200
+	point_value = 180
 	loot = list(/obj/item/storage/lockbox/experimental_weapon/gateway)
+
+/obj/effect/spawner/random/pool/gatewayloot/ammo_box/shotgun
+	point_value = 20
+	loot = list(
+		/obj/item/storage/fancy/shell/buck = 4,
+		/obj/item/storage/fancy/shell/slug,
+	)
 
 /obj/effect/spawner/random/pool/gatewayloot/speedloader
 	point_value = 25
@@ -278,13 +314,27 @@
 		/obj/item/claymore,
 	)
 
+/obj/effect/spawner/random/pool/gatewayloot/nt/handgun
+	name = "enforcer 25pc"
+	icon_state = "stetchkin"
+	spawn_loot_chance = 75
+	loot = list(
+		/obj/effect/spawner/random/pool/gatewayloot/enforcer/mag = 2,
+		/obj/effect/spawner/random/pool/gatewayloot/enforcer,
+		)
+
 /obj/effect/spawner/random/pool/gatewayloot/enforcer
 	icon_state = "stetchkin"
-	point_value = 95
-	spawn_loot_chance = 75
+	point_value = 85
 	loot = list(/obj/item/gun/projectile/automatic/pistol/enforcer)
 
+/obj/effect/spawner/random/pool/gatewayloot/enforcer/mag
+	point_value = 15
+	loot = list(/obj/item/ammo_box/magazine/enforcer/lethal)
+
 /obj/effect/spawner/random/pool/gatewayloot/syndie_mob
+	icon = 'icons/effects/spawner_icons.dmi'
+	icon_state = "syndie_depot"
 	point_value = 8
 	loot = list(
 		/mob/living/simple_animal/hostile/syndicate/ranged/autogib/spacebattle = 25,
@@ -292,7 +342,7 @@
 		/mob/living/simple_animal/hostile/syndicate/ranged/space/autogib/spacebattle = 25,
 		/mob/living/simple_animal/hostile/syndicate/melee/space/autogib/spacebattle = 25,
 
-		// let the massacre begin, always least chance
+		// let the massacre begin; always least chance
 		/mob/living/simple_animal/hostile/syndicate/melee/autogib/depot/armory/spacebattle/gateway,
 	)
 
@@ -347,8 +397,8 @@
 /obj/effect/spawner/random/pool/gatewayloot/syndie_mob_loot/ranged/handgun
 	icon_state = "stetchkin"
 	loot = list(
-		/obj/item/gun/projectile/automatic/pistol = 95,
-		/obj/item/gun/projectile/revolver/fake = 4,
+		/obj/item/gun/projectile/automatic/pistol = 17,
+		/obj/item/gun/projectile/revolver/fake = 2,
 
 		// always least chance
 		/obj/item/gun/projectile/revolver,
@@ -365,7 +415,7 @@
 	)
 
 /obj/effect/spawner/random/pool/gatewayloot/griefsky
-	point_value = 100
+	point_value = 155
 	loot = list(/mob/living/simple_animal/bot/secbot/griefsky/syndie)
 
 /obj/effect/spawner/random/pool/gatewayloot/mecha
@@ -386,3 +436,18 @@
 		/obj/effect/spawner/random/bluespace_tap/organic_uncommon = 3,
 		/obj/effect/spawner/random/bluespace_tap/organic_rare,
 	)
+
+/obj/effect/spawner/random/pool/gatewayloot/bluespace_tap/cultural_mixed
+	point_value = 25
+	loot = list(
+		/obj/effect/spawner/random/bluespace_tap/cultural_common = 6,
+		/obj/effect/spawner/random/bluespace_tap/cultural_uncommon = 3,
+		/obj/effect/spawner/random/bluespace_tap/cultural_rare,
+	)
+
+/obj/effect/spawner/random/pool/gatewayloot/nt/corpse/security
+	point_value = 30
+	loot = list(/obj/effect/mob_spawn/human/corpse/spacebattle/security)
+
+/obj/effect/spawner/random/pool/gatewayloot/nt/corpse/security/bridge
+	loot = list(/obj/effect/mob_spawn/human/corpse/spacebattle/security/bridge)

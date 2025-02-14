@@ -112,7 +112,7 @@
 /area/awaymission/space_battle/cruiser)
 "at" = (
 /obj/effect/decal/cleanable/blood,
-/obj/effect/mob_spawn/human/corpse/spacebattle/security,
+/obj/effect/spawner/random/pool/gatewayloot/nt/corpse/security,
 /turf/simulated/floor/plasteel{
 	icon_state = "neutral";
 	dir = 9
@@ -820,10 +820,7 @@
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/space_battle/syndicate/syndicate6)
 "cH" = (
-/obj/structure/closet/crate/medical,
-/obj/item/roller_holder,
-/obj/item/roller_holder,
-/obj/effect/spawner/random/maintenance,
+/obj/structure/closet/crate/freezer/iv_storage,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "whiteblue"
@@ -1251,8 +1248,7 @@
 /turf/simulated/floor/mineral/plastitanium,
 /area/awaymission/space_battle/syndicate/syndicate2)
 "ek" = (
-/obj/item/gun/projectile/shotgun/lethal,
-/obj/effect/mob_spawn/human/corpse/spacebattle/bridgeofficer,
+/obj/effect/spawner/random/pool/gatewayloot/nt/corpse/security/bridge,
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/bridge)
 "el" = (
@@ -1732,6 +1728,7 @@
 	req_access = list(301)
 	},
 /obj/structure/rack,
+/obj/effect/spawner/random/pool/gatewayloot/nt/handgun,
 /turf/simulated/floor/plasteel/dark,
 /area/awaymission/space_battle/hallway8)
 "fK" = (
@@ -1849,6 +1846,7 @@
 "gd" = (
 /obj/structure/rack,
 /obj/machinery/light/directional/west,
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/mineral/titanium,
 /area/awaymission/space_battle/storage)
 "ge" = (
@@ -2221,6 +2219,7 @@
 	health = 80;
 	maxHealth = 80
 	},
+/obj/effect/spawner/random/pool/gatewayloot/syndicate/mixed,
 /turf/simulated/floor/mineral/plastitanium,
 /area/awaymission/space_battle/syndicate/syndicate2)
 "hg" = (
@@ -2512,6 +2511,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/plasteel{
 	icon_state = "yellow";
 	dir = 1
@@ -2576,6 +2576,7 @@
 /area/awaymission/space_battle/engineering)
 "im" = (
 /obj/structure/closet/crate/can,
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/plasteel{
 	icon_state = "neutral";
 	dir = 6
@@ -2929,7 +2930,7 @@
 /area/awaymission/space_battle/bridge)
 "jm" = (
 /obj/machinery/light/directional/north,
-/obj/item/storage/fancy/shell/buck,
+/obj/effect/spawner/random/pool/gatewayloot/ammo_box/shotgun,
 /turf/simulated/floor/plasteel{
 	icon_state = "neutral";
 	dir = 1
@@ -3335,13 +3336,13 @@
 "kD" = (
 /obj/effect/turf_decal/delivery,
 /obj/structure/closet/crate/secure/weapon,
-/obj/item/storage/fancy/shell/buck,
-/obj/item/storage/fancy/shell/buck,
+/obj/effect/spawner/random/pool/gatewayloot/ammo_box/shotgun,
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/sec_storage)
 "kF" = (
 /obj/structure/closet/crate/can,
 /obj/item/flashlight/seclite,
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/plasteel{
 	icon_state = "neutral";
 	dir = 10
@@ -3515,7 +3516,7 @@
 /area/awaymission/space_battle/prhallway1)
 "lh" = (
 /obj/structure/rack,
-/obj/item/storage/fancy/shell/slug,
+/obj/effect/spawner/random/pool/gatewayloot/ammo_box/shotgun,
 /turf/simulated/floor/plasteel{
 	icon_state = "red";
 	dir = 5
@@ -4186,7 +4187,7 @@
 /area/awaymission/space_battle/syndicate/syndicate2)
 "nA" = (
 /obj/effect/decal/cleanable/blood,
-/obj/effect/mob_spawn/human/corpse/spacebattle/security,
+/obj/effect/spawner/random/pool/gatewayloot/nt/corpse/security,
 /turf/simulated/floor/plasteel{
 	icon_state = "neutral";
 	dir = 1
@@ -4267,7 +4268,7 @@
 /area/awaymission/space_battle/hallway7)
 "nP" = (
 /obj/machinery/suit_storage_unit{
-	suit_type = /obj/item/mod/control/pre_equipped/prototype;
+	suit_type = /obj/item/mod/control/pre_equipped/prototype/spacebattle;
 	mask_type = /obj/item/clothing/mask/breath;
 	state_open = 1
 	},
@@ -5455,13 +5456,6 @@
 /obj/machinery/door/airlock/titanium,
 /turf/simulated/floor/plating,
 /area/awaymission/space_battle/hallway1)
-"rR" = (
-/obj/effect/turf_decal/delivery,
-/obj/structure/closet/crate/freezer,
-/obj/item/storage/box/syndidonkpockets,
-/obj/item/storage/box/syndidonkpockets,
-/turf/simulated/floor/plasteel,
-/area/awaymission/space_battle/sec_storage)
 "rU" = (
 /obj/machinery/light/directional/south,
 /turf/simulated/floor/mineral/plastitanium/red,
@@ -5653,6 +5647,8 @@
 /obj/structure/table/reinforced,
 /obj/item/clothing/gloves/color/latex/nitrile,
 /obj/machinery/light/directional/east,
+/obj/item/roller_holder,
+/obj/item/roller_holder,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "whiteblue"
@@ -5800,7 +5796,7 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/sec_storage)
 "td" = (
-/obj/item/ammo_casing/shotgun,
+/obj/item/trash/spentcasing/shotgun/slug,
 /turf/simulated/floor/plasteel{
 	icon_state = "blue";
 	dir = 1
@@ -6197,6 +6193,7 @@
 	color = "#444444"
 	},
 /obj/item/shard,
+/obj/effect/spawner/random/pool/gatewayloot/syndicate/mixed,
 /turf/simulated/floor/mineral/plastitanium/red/airless,
 /area/awaymission/space_battle/syndicate/syndicate5)
 "uv" = (
@@ -6338,7 +6335,6 @@
 /area/space/nearstation)
 "uT" = (
 /obj/structure/closet/crate/can,
-/obj/effect/spawner/random/pool/gatewayloot/enforcer,
 /obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/plasteel/dark{
 	icon_state = "dark_diagonal"
@@ -6494,7 +6490,7 @@
 /obj/machinery/door_control/bolt_control/north{
 	id = "t3"
 	},
-/obj/effect/mob_spawn/human/corpse/spacebattle/security,
+/obj/effect/spawner/random/pool/gatewayloot/nt/corpse/security,
 /obj/item/paper/crumpled/bloody/spacebattle/officer,
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/hallway3)
@@ -6674,8 +6670,7 @@
 	},
 /area/awaymission/space_battle/bridge)
 "vY" = (
-/obj/structure/closet,
-/obj/item/clothing/suit/space/hardsuit/security,
+/obj/effect/spawner/random/pool/spaceloot/security/modsuit/gateway,
 /turf/simulated/floor/plasteel{
 	icon_state = "red";
 	dir = 9
@@ -6698,7 +6693,7 @@
 	},
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/mob_spawn/human/corpse/spacebattle/bridgeofficer,
+/obj/effect/spawner/random/pool/gatewayloot/nt/corpse/security/bridge,
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/sec_storage)
 "we" = (
@@ -6774,7 +6769,7 @@
 /obj/structure/table/reinforced{
 	color = "#444444"
 	},
-/obj/item/storage/box/syndidonkpockets,
+/obj/effect/spawner/random/pool/gatewayloot/syndicate/mixed,
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/space_battle/syndicate/syndicate1)
 "wv" = (
@@ -9237,7 +9232,7 @@
 /area/awaymission/space_battle/hallway11)
 "Ew" = (
 /obj/effect/decal/cleanable/blood,
-/obj/effect/mob_spawn/human/corpse/spacebattle/security,
+/obj/effect/spawner/random/pool/gatewayloot/nt/corpse/security,
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/hallway10)
 "Ey" = (
@@ -9800,7 +9795,7 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/bridge)
 "Gm" = (
-/obj/effect/spawner/random/pool/gatewayloot/enforcer,
+/obj/effect/spawner/random/pool/gatewayloot/nt/handgun,
 /obj/structure/sign/engineering{
 	pixel_x = 32
 	},
@@ -10396,7 +10391,7 @@
 /area/awaymission/space_battle/prhallway1)
 "Ib" = (
 /obj/effect/decal/cleanable/blood,
-/obj/item/ammo_casing/shotgun,
+/obj/item/trash/spentcasing/shotgun/slug,
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/bridge)
 "Ic" = (
@@ -10793,7 +10788,7 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/hallway8)
 "Jr" = (
-/obj/effect/mob_spawn/human/corpse/spacebattle/security,
+/obj/effect/spawner/random/pool/gatewayloot/nt/corpse/security,
 /turf/simulated/floor/plasteel{
 	icon_state = "neutral"
 	},
@@ -11022,7 +11017,7 @@
 /area/awaymission/space_battle/sec_storage)
 "Kh" = (
 /obj/effect/decal/cleanable/blood,
-/obj/effect/mob_spawn/human/corpse/spacebattle/bridgeofficer,
+/obj/effect/spawner/random/pool/gatewayloot/nt/corpse/security/bridge,
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/bridge)
 "Ki" = (
@@ -11326,6 +11321,9 @@
 	color = "#444444"
 	},
 /obj/item/storage/box/survival_vox,
+/obj/item/clothing/head/collectable/petehat{
+	pixel_y = 8
+	},
 /turf/simulated/floor/mineral/plastitanium/red/nitrogen,
 /area/awaymission/space_battle/syndicate)
 "Lk" = (
@@ -11593,7 +11591,7 @@
 /area/awaymission/space_battle/prhallway2)
 "LX" = (
 /obj/effect/decal/cleanable/blood,
-/obj/effect/mob_spawn/human/corpse/spacebattle/security,
+/obj/effect/spawner/random/pool/gatewayloot/nt/corpse/security,
 /turf/simulated/floor/plasteel{
 	dir = 6;
 	icon_state = "red"
@@ -11608,7 +11606,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/effect/mob_spawn/human/corpse/spacebattle/bridgeofficer,
+/obj/effect/spawner/random/pool/gatewayloot/nt/corpse/security/bridge,
 /obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/plasteel{
 	icon_state = "neutral";
@@ -11667,7 +11665,7 @@
 	},
 /area/awaymission/space_battle/kitchen)
 "Mj" = (
-/obj/effect/mob_spawn/human/corpse/spacebattle/bridgeofficer,
+/obj/effect/spawner/random/pool/gatewayloot/nt/corpse/security/bridge,
 /obj/effect/decal/cleanable/blood/gibs/down,
 /turf/space,
 /area/space)
@@ -11968,7 +11966,7 @@
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/hallway9)
 "Ng" = (
-/obj/item/ammo_casing/shotgun/buckshot,
+/obj/item/trash/spentcasing/shotgun,
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/bridge)
 "Ni" = (
@@ -12183,7 +12181,7 @@
 /obj/structure/table/reinforced{
 	color = "#444444"
 	},
-/obj/item/clothing/head/collectable/petehat,
+/obj/effect/spawner/random/pool/gatewayloot/bluespace_tap/cultural_mixed,
 /turf/simulated/floor/mineral/plastitanium/red/nitrogen,
 /area/awaymission/space_battle/syndicate)
 "NO" = (
@@ -12347,7 +12345,7 @@
 /turf/simulated/floor/mineral/titanium,
 /area/awaymission/space_battle/storage)
 "Ot" = (
-/obj/item/ammo_casing/shotgun/buckshot,
+/obj/item/trash/spentcasing/shotgun,
 /turf/simulated/floor/plasteel{
 	icon_state = "bluecorner";
 	dir = 1
@@ -12375,7 +12373,7 @@
 /area/space)
 "Oy" = (
 /obj/structure/rack,
-/obj/item/storage/fancy/shell/buck,
+/obj/effect/spawner/random/pool/gatewayloot/ammo_box/shotgun,
 /obj/machinery/light/small/directional/east,
 /turf/simulated/floor/plating,
 /area/awaymission/space_battle/turret2)
@@ -12695,7 +12693,7 @@
 /obj/effect/turf_decal/siding/blue{
 	dir = 4
 	},
-/obj/item/reagent_containers/hypospray/autoinjector/nanocalcium,
+/obj/effect/spawner/random/pool/gatewayloot/syndicate/mixed,
 /turf/simulated/floor/plasteel{
 	icon_state = "white"
 	},
@@ -12881,7 +12879,7 @@
 	},
 /area/awaymission/space_battle/hallway6)
 "Qh" = (
-/obj/item/ammo_casing/shotgun/buckshot,
+/obj/item/trash/spentcasing/shotgun,
 /obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/bridge)
@@ -12897,7 +12895,7 @@
 /obj/structure/table/reinforced{
 	color = "#444444"
 	},
-/obj/item/reagent_containers/drinks/oilcan/full,
+/obj/effect/spawner/random/pool/gatewayloot/bluespace_tap/cultural_mixed,
 /turf/simulated/floor/mineral/plastitanium,
 /area/awaymission/space_battle/syndicate/syndicate2)
 "Qm" = (
@@ -13215,13 +13213,6 @@
 	toxins = 200
 	},
 /area/awaymission/space_battle/syndicate/syndicate6)
-"Ri" = (
-/obj/item/ammo_box/magazine/m10mm,
-/turf/simulated/floor/plasteel{
-	icon_state = "neutral";
-	dir = 1
-	},
-/area/awaymission/space_battle/prhallway1)
 "Rj" = (
 /obj/machinery/mecha_part_fabricator,
 /turf/simulated/floor/plasteel{
@@ -13238,6 +13229,7 @@
 /area/awaymission/space_battle/syndicate/syndicate1)
 "Rm" = (
 /obj/structure/closet/crate/can,
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/plasteel/airless{
 	icon_state = "yellow";
 	dir = 10
@@ -13415,7 +13407,7 @@
 /area/awaymission/space_battle/medbay)
 "RT" = (
 /obj/structure/closet/crate/can,
-/obj/item/reagent_containers/glass/bottle/morphine,
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/plasteel{
 	icon_state = "blue";
 	dir = 10
@@ -13485,7 +13477,7 @@
 /area/awaymission/space_battle/turret4)
 "Se" = (
 /obj/effect/decal/cleanable/blood,
-/obj/item/ammo_casing/shotgun,
+/obj/item/trash/spentcasing/shotgun/slug,
 /turf/simulated/floor/plasteel{
 	icon_state = "blue";
 	dir = 1
@@ -14230,10 +14222,6 @@
 	icon_state = "neutral"
 	},
 /area/awaymission/space_battle/hallway8)
-"UK" = (
-/obj/item/gun/projectile/shotgun/lethal,
-/turf/simulated/floor/plasteel,
-/area/awaymission/space_battle/bridge)
 "UL" = (
 /obj/structure/table/reinforced{
 	color = "#444444"
@@ -14272,8 +14260,7 @@
 /area/awaymission/space_battle/engine)
 "UR" = (
 /obj/effect/decal/cleanable/blood,
-/obj/item/gun/projectile/shotgun/lethal,
-/obj/effect/mob_spawn/human/corpse/spacebattle/bridgeofficer,
+/obj/effect/spawner/random/pool/gatewayloot/nt/corpse/security/bridge,
 /turf/simulated/floor/plasteel{
 	icon_state = "blue";
 	dir = 1
@@ -14475,6 +14462,7 @@
 /area/awaymission/space_battle/hallway9)
 "Vw" = (
 /obj/structure/table/reinforced,
+/obj/item/reagent_containers/glass/bottle/morphine,
 /turf/simulated/floor/plasteel{
 	icon_state = "whiteblue"
 	},
@@ -14589,6 +14577,7 @@
 /area/awaymission/space_battle/kitchen)
 "VP" = (
 /obj/effect/spawner/random/loot/crate,
+/obj/effect/spawner/random/pool/gatewayloot/syndicate/mixed,
 /turf/simulated/floor/mineral/plastitanium,
 /area/awaymission/space_battle/syndicate/syndicate2)
 "VQ" = (
@@ -14830,7 +14819,7 @@
 /area/awaymission/space_battle/sec_storage)
 "WD" = (
 /obj/effect/decal/cleanable/blood,
-/obj/effect/mob_spawn/human/corpse/spacebattle/security,
+/obj/effect/spawner/random/pool/gatewayloot/nt/corpse/security,
 /turf/simulated/floor/plating,
 /area/awaymission/space_battle/hallway6)
 "WF" = (
@@ -14844,6 +14833,7 @@
 /area/awaymission/space_battle/bridge)
 "WH" = (
 /obj/structure/closet/crate/can,
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/plasteel{
 	dir = 10;
 	icon_state = "whiteblue"
@@ -15407,7 +15397,7 @@
 	},
 /area/awaymission/space_battle/syndicate)
 "Ys" = (
-/obj/item/ammo_casing/shotgun,
+/obj/item/trash/spentcasing/shotgun/slug,
 /obj/effect/decal/cleanable/blood,
 /turf/simulated/floor/plasteel{
 	icon_state = "neutralcorner";
@@ -15872,7 +15862,7 @@
 	},
 /area/awaymission/space_battle/hallway10)
 "ZR" = (
-/obj/item/ammo_casing/shotgun,
+/obj/item/trash/spentcasing/shotgun/slug,
 /obj/effect/landmark/awaystart,
 /turf/simulated/floor/plasteel,
 /area/awaymission/space_battle/hallway9)
@@ -15900,7 +15890,7 @@
 	icon_state = "1-2"
 	},
 /obj/effect/decal/cleanable/blood,
-/obj/effect/mob_spawn/human/corpse/spacebattle/bridgeofficer,
+/obj/effect/spawner/random/pool/gatewayloot/nt/corpse/security/bridge,
 /turf/simulated/floor/plasteel{
 	icon_state = "neutral";
 	dir = 4
@@ -34810,7 +34800,7 @@ Wx
 CY
 cu
 RW
-Gc
+YL
 VC
 JR
 Mn
@@ -41478,7 +41468,7 @@ Nc
 cx
 sQ
 wd
-rR
+wE
 dq
 JC
 Wz
@@ -46608,7 +46598,7 @@ xz
 Kl
 yO
 SL
-Ri
+CB
 Fz
 Uu
 dY
@@ -48849,7 +48839,7 @@ LM
 rU
 QL
 TW
-Aj
+wF
 ZV
 QL
 Dm
@@ -49105,7 +49095,7 @@ Ig
 FT
 kV
 kv
-wF
+Aj
 wF
 qL
 QL
@@ -49451,7 +49441,7 @@ kc
 JE
 Gk
 Ib
-UK
+JE
 Kh
 vX
 VC
