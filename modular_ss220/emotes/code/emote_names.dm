@@ -467,6 +467,9 @@
 /datum/emote/living/carbon/human/tajaran/mrowss
 	name = EMOTE_HUMAN_MROWSS
 
+/datum/emote/living/carbon/human/vulpkanin/wurble
+	name = EMOTE_HUMAN_WURBLE
+
 /// Emote Animal
 
 /datum/emote/living/simple_animal/gorilla/ooga

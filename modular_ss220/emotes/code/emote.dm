@@ -457,3 +457,16 @@
 	cooldown = 5 SECONDS
 	volume = 50
 	muzzled_noises = list("слабо")
+
+/datum/emote/living/carbon/human/wurble
+	key = "wurble"
+	key_third_person = "wurble"
+	message = "приглушенно рычит"
+	message_param = "приглушенно рычит на %t."
+	sound = 'modular_ss220/emotes/audio/vulpkanin/wurble.ogg'
+	species_type_whitelist_typecache = list(/datum/species/vulpkanin)
+	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
+	vary = TRUE
+	cooldown = 5 SECONDS
+	volume = 50
+	muzzled_noises = list("слабо")
