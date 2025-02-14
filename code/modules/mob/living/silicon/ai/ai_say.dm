@@ -35,7 +35,7 @@
 	else if(ispAI(speaker))
 		jobname = "Персональный ИИ"
 	else if(isradio(speaker))
-		jobname = "Automated Announcement"
+		jobname = "Автоматическое оповещение"
 	else
 		jobname = "Неизвестно"
 
@@ -80,7 +80,7 @@ GLOBAL_VAR_INIT(announcing_vox, 0) // Stores the time of the last announcement
 		<ul><li>Вы можете также кликать на слова для предпросмотра.</li>\
 		<li>Вы можете использовать не более 30 слов в одном оповещении.</li>\
 		<li>Не используйте пунктуацию как обычно, если вы хотите поставить паузу, используйте точку или запятую, отделяя их пробелами, как пример: 'Alpha . Test , Bravo'.</li></ul>\
-		<font class='bad'>WARNING:</font><br>Misuse of the announcement system will get you job banned.<hr>"
+		<font class='bad'>WARNING:</font><br>Злоупотребление данной системой приведёт к Джоббану.<hr>"
 
 		// Show alert and voice sounds separately
 		var/vox_words = GLOB.vox_sounds - GLOB.vox_alerts
