@@ -100,6 +100,16 @@
 
 /obj/item/organ/external/proc/update_icon_alt(mob/living/carbon/holder)
 	if(ishuman(holder))
+		if(holder.dna)
+			dna = holder.dna.Clone()
+			if(!blood_DNA)
+				blood_DNA = list()
+			blood_DNA[dna.unique_enzymes] = dna.blood_type
+		else
+			stack_trace("[holder] spawned without a proper DNA.")
+	else
+		dna = new /datum/dna(null)
+	if(ishuman(holder))
 		var/mob/living/carbon/human/H = holder
 		replaced(H)
 		sync_colour_to_human(H)

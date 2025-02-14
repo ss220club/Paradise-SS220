@@ -15,4 +15,4 @@
 	. = ..(mapload, /datum/species/serpentid)
 
 /mob/living/carbon/human/human_doll/Initialize(mapload)
-	. = ..(mapload, /datum/species/doll)
+	. = ..(mapload, /datum/species/human_doll)

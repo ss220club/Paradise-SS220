@@ -1,8 +1,10 @@
-/datum/species/doll
+/datum/species/human_doll
 	name = "Doll"
 	name_plural = "Dolls"
 	icobase = 'modular_ss220/species/eventdoll/icons/placeholder.dmi'
 	eyes_icon = 'modular_ss220/species/eventdoll/icons/placeholder.dmi'
+	nojumpsuit = TRUE
+	no_equip = ITEM_SLOT_OUTER_SUIT | ITEM_SLOT_GLOVES | ITEM_SLOT_SHOES | ITEM_SLOT_JUMPSUIT | ITEM_SLOT_SUIT_STORE | ITEM_SLOT_NECK | ITEM_SLOT_MASK | ITEM_SLOT_HEAD | ITEM_SLOT_EYES | ITEM_SLOT_BELT
 
 	has_limbs = list(
 		"chest" =  list("path" = /obj/item/organ/external/chest/doll, "descriptor" = "chest"),
