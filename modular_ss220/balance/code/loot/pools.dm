@@ -46,7 +46,7 @@
 		/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/flashbang,
 		/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/lmg,
 		/obj/item/mecha_parts/mecha_equipment/weapon/energy/laser,
-		)
+	)
 
 /obj/effect/spawner/random/pool/spaceloot/modsuit_syndie
 	icon = 'modular_ss220/maps220/icons/spawner_icons.dmi'
@@ -307,7 +307,7 @@
 
 /obj/effect/spawner/random/pool/gatewayloot/claymore
 	guaranteed = TRUE
-	point_value = 60
+	point_value = 50
 	loot = list(
 		/obj/item/claymore/ceremonial = 6,
 		/obj/item/nullrod/claymore = 3,
@@ -321,12 +321,12 @@
 	loot = list(
 		/obj/effect/spawner/random/pool/gatewayloot/enforcer/mag = 2,
 		/obj/effect/spawner/random/pool/gatewayloot/enforcer,
-		)
+	)
 
 /obj/effect/spawner/random/pool/gatewayloot/enforcer
 	icon_state = "stetchkin"
 	point_value = 85
-	loot = list(/obj/item/gun/projectile/automatic/pistol/enforcer)
+	loot = list(/obj/item/gun/projectile/automatic/pistol/enforcer/lethal)
 
 /obj/effect/spawner/random/pool/gatewayloot/enforcer/mag
 	point_value = 15
