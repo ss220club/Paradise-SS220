@@ -89,9 +89,11 @@
 
 /datum/component/carapace_shell/proc/stage_2_break()
 	H.throw_alert("carapace_break", /atom/movable/screen/alert/carapace/break_cloak)
+	ADD_TRAIT(H, TRAIT_CLOAKBLOCKED, "carapace_state")
 	broken_stage++
 
 /datum/component/carapace_shell/proc/stage_2_repair()
+	REMOVE_TRAIT(H, TRAIT_CLOAKBLOCKED, "carapace_state")
 	broken_stage--
 
 /datum/component/carapace_shell/proc/stage_3_break()
