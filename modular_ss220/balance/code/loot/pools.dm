@@ -1,4 +1,4 @@
-// CC loot pool
+// MARK: CC loot pool
 /datum/spawn_pool/centcommloot
 	id = "central_command_spawn_pool"
 	available_points = INFINITY
@@ -7,6 +7,13 @@
 	icon = 'icons/effects/random_spawners.dmi'
 	icon_state = "giftbox"
 	spawn_pool_id = "central_command_spawn_pool"
+	record_spawn = TRUE
+
+/obj/effect/spawner/random/pool/centcommloot/record_item(type_path_to_make)
+	if(ispath(type_path_to_make, /obj/effect))
+		return
+
+	SSblackbox.record_feedback("tally", "CC_loot_spawns", 1, "[type_path_to_make]")
 
 /obj/effect/spawner/random/pool/spaceloot/syndicate/common/depot/centcomm
 	spawn_inside = null
@@ -32,7 +39,7 @@
 		/obj/effect/spawner/random/pool/spaceloot/syndicate/armory/depot/centcomm,
 	)
 
-// space loot pool
+// MARK: Space loot pool
 /obj/effect/spawner/random/pool/spaceloot/mechtransport_new/mecha
 	icon_state = "durand_old"
 	point_value = 100
@@ -108,7 +115,7 @@
 		/obj/machinery/suit_storage_unit/security/space/safeguard,
 	)
 
-// gateways pool
+// MARK: Awaymission pool
 /datum/spawn_pool/gatewayloot
 	id = "gateway_spawn_pool"
 	available_points = 850
@@ -117,6 +124,12 @@
 	icon = 'icons/effects/random_spawners.dmi'
 	icon_state = "giftbox"
 	spawn_pool_id = "gateway_spawn_pool"
+
+/obj/effect/spawner/random/pool/gatewayloot/record_item(type_path_to_make)
+	if(ispath(type_path_to_make, /obj/effect))
+		return
+
+	SSblackbox.record_feedback("tally", "gatewayloot_loot_spawns", 1, "[type_path_to_make]")
 
 /obj/effect/spawner/random/pool/spaceloot/mining_tool/gateway
 	spawn_pool_id = "gateway_spawn_pool"
