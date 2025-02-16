@@ -14,5 +14,9 @@
 /mob/living/carbon/human/serpentid/Initialize(mapload)
 	. = ..(mapload, /datum/species/serpentid)
 
+/mob/living/carbon/human/human_doll
+	icon = 'icons/mob/human_races/r_human.dmi'
+	icon_state = "preview"
+
 /mob/living/carbon/human/human_doll/Initialize(mapload)
 	. = ..(mapload, /datum/species/human_doll)
