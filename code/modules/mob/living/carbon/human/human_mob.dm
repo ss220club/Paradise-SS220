@@ -2013,7 +2013,7 @@ Eyes need to have significantly high darksight to shine unless the mob has the X
 /mob/living/carbon/human/proc/get_unarmed_attack()
 	var/datum/antagonist/zombie/zombie = mind?.has_antag_datum(/datum/antagonist/zombie)
 	if(!istype(zombie))
-		return dna.species.unarmed
+		return HAS_TRAIT(src, TRAIT_HANDS_WEAKNESS) ? dna.species.unarmed : dna.species.unarmed * 0.3
 	return zombie.claw_attack
 
 /mob/living/carbon/human/proc/get_dna_scrambled()

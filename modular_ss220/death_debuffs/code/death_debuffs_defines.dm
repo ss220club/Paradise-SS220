@@ -5,7 +5,7 @@
 #define DD_BASIC_HEALING_CARE_FACTOR 0.2
 #define DD_BASIC_HEALING_SLEEP_FACTOR 0.1
 #define DD_BASIC_STATE 100
-#define COMSIG_BRAIN_UNDEBUFFED  "brain_undebuffed"
+#define COMSIG_BRAIN_UNDEBUFFED "brain_undebuffed"
 
 /datum/death_debuff
 	var/name = "basic death debuff"
