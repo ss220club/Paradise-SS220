@@ -59,5 +59,5 @@
 
 /obj/item/organ/external/change_organ_icobase(new_icobase, owner_sensitive)
 	if(ignores_icobase_updates)
-	return
+		return
 	return ..()
