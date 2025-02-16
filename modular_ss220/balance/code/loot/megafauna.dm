@@ -27,24 +27,17 @@
 		return ..()
 
 	var/extra_force
-	var/extra_power
 	if(user.health >= 80)
 		extra_force = force/2
 		force -= extra_force
-		extra_power = power/2
-		power -= extra_power
 		. = ..()
 		force += extra_force
-		power += extra_power
 		return
 
 	extra_force = force/2 - force/2 * (80 - user.health) / 80
-	extra_power = power/2 - power/2 * (80 - user.health) / 80
 	force -= extra_force
-	power -= extra_power
 	. = ..()
 	force += extra_force
-	power += extra_power
 
 /obj/item/melee/spellblade/random/afterattack__legacy__attackchain(atom/target, mob/living/user, proximity, params)
 	if(is_mining_level(user.z) || istype(get_area(user), /area/ruin/space/bubblegum_arena) || user.health < 80 || iswizard(user))
