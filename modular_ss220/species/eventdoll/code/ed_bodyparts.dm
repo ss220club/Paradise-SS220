@@ -55,9 +55,9 @@
 	ignores_icobase_updates = TRUE
 
 /obj/item/organ/external
-  var/ignores_icobase_updates = FALSE
+	var/ignores_icobase_updates = FALSE
 
 /obj/item/organ/external/change_organ_icobase(new_icobase, owner_sensitive)
-  if(ignores_icobase_updates)
-    return
-  return ..()
+	if(ignores_icobase_updates)
+	return
+	return ..()
