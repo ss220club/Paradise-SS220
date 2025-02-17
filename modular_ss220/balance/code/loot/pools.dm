@@ -222,6 +222,7 @@
 		/obj/item/tarot_card_pack/mega,
 		/obj/item/reagent_containers/drinks/bottle/holywater/hell,
 		/obj/item/immortality_talisman,
+		/obj/item/organ/internal/eyes/night_vision/nightmare,
 	)
 
 /obj/effect/spawner/random/pool/gatewayloot/laser
@@ -464,3 +465,10 @@
 
 /obj/effect/spawner/random/pool/gatewayloot/nt/corpse/security/bridge
 	loot = list(/obj/effect/mob_spawn/human/corpse/spacebattle/security/bridge)
+
+/obj/effect/spawner/random/pool/gatewayloot/wish_granter
+	point_value = 90
+	loot = list(
+		/obj/machinery/wish_granter_dark,
+		/obj/item/dice/d20/fate/one_use,
+		)

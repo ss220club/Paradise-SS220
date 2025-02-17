@@ -1459,3 +1459,21 @@
 	else if(health / maxHealth < 0.5)
 		icon_state = "wisewill-Combat"
 
+// Wildwest fauna
+/mob/living/simple_animal/hostile/faithless/ww
+	faction = list("wildwest")
+
+/mob/living/simple_animal/hostile/creature/ww
+	faction = list("wildwest")
+
+/mob/living/simple_animal/hostile/netherworld/ww
+	faction = list("wildwest")
+
+/mob/living/simple_animal/hostile/netherworld/migo/ww
+	faction = list("wildwest")
+
+/mob/living/simple_animal/hostile/hellhound/ww
+	faction = list("wildwest")
+
+/mob/living/simple_animal/hostile/hellhound/tear/ww
+	faction = list("wildwest")

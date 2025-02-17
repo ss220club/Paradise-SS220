@@ -121,6 +121,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/wildwest/wildwest_refine)
 "aZ" = (
+/obj/effect/spawner/random/hostile_fauna,
 /turf/simulated/floor{
 	icon_state = "cultdamage4"
 	},
@@ -462,6 +463,7 @@
 /area/awaymission/wildwest/wildwest_refine)
 "eL" = (
 /obj/structure/table,
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "eN" = (
@@ -527,7 +529,7 @@
 /turf/simulated/floor/carpet,
 /area/awaymission/wildwest/wildwest_mines)
 "fr" = (
-/mob/living/simple_animal/hostile/creature,
+/obj/effect/spawner/random/hostile_fauna,
 /turf/simulated/floor{
 	icon_state = "cult"
 	},
@@ -1148,6 +1150,7 @@
 /obj/effect/turf_decal/delivery/white,
 /obj/structure/closet/cardboard,
 /obj/machinery/light/small/directional/west,
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -1218,9 +1221,7 @@
 /turf/simulated/floor/plating/ironsand,
 /area/awaymission/wildwest/wildwest_mines)
 "lw" = (
-/mob/living/simple_animal/hostile/faithless{
-	wander = 0
-	},
+/obj/effect/spawner/random/hostile_fauna,
 /turf/simulated/floor{
 	icon_state = "cult"
 	},
@@ -1466,9 +1467,7 @@
 /turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "nT" = (
-/mob/living/simple_animal/hostile/faithless{
-	wander = 0
-	},
+/obj/effect/spawner/random/hostile_fauna,
 /turf/simulated/floor/bluegrid{
 	icon_state = "bcircuitoff"
 	},
@@ -2042,16 +2041,6 @@
 "tv" = (
 /turf/simulated/wall/indestructible/rock/mineral,
 /area/awaymission/wildwest/wildwest_mines)
-"ty" = (
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/closet{
-	icon_state = "syndicate"
-	},
-/obj/effect/spawner/random/pool/gatewayloot/syndicate/mixed,
-/turf/simulated/floor/mineral/plastitanium/red,
-/area/awaymission/wildwest/wildwest_refine)
 "tz" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/old,
@@ -2192,6 +2181,7 @@
 /area/awaymission/wildwest/wildwest_mines)
 "uF" = (
 /obj/structure/table,
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/plasteel{
 	dir = 10;
 	icon_state = "darkyellowfull"
@@ -2263,12 +2253,6 @@
 /obj/item/storage/belt/medical,
 /turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
-"vA" = (
-/mob/living/simple_animal/hostile/illusion,
-/turf/simulated/floor{
-	icon_state = "cult"
-	},
-/area/awaymission/wildwest/wildwest_vault)
 "vD" = (
 /obj/structure/reagent_dispensers/fueltank,
 /turf/simulated/floor/plasteel{
@@ -2284,6 +2268,14 @@
 /obj/effect/mapping_helpers/turfs/damage,
 /turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
+"vH" = (
+/obj/effect/turf_decal/delivery,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate,
+/turf/simulated/floor/plasteel{
+	icon_state = "dark"
+	},
+/area/awaymission/wildwest/wildwest_refine)
 "vJ" = (
 /obj/machinery/light/small/directional/east,
 /turf/simulated/floor/carpet/orange,
@@ -2500,6 +2492,10 @@
 	icon_state = "darkyellowfull"
 	},
 /area/awaymission/wildwest/wildwest_refine)
+"yh" = (
+/obj/effect/spawner/random/hostile_fauna,
+/turf/simulated/floor/carpet/royalblack,
+/area/awaymission/wildwest/wildwest_vault)
 "yi" = (
 /obj/structure/grille/broken,
 /obj/item/stack/rods,
@@ -2815,6 +2811,7 @@
 "Bf" = (
 /obj/structure/table/holotable/wood,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/pool/gatewayloot/syndicate/mixed,
 /turf/simulated/floor/carpet/red,
 /area/awaymission/wildwest/wildwest_mines)
 "Bj" = (
@@ -3153,13 +3150,16 @@
 /obj/structure/mineral_door/wood,
 /turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
+"EE" = (
+/obj/structure/chair/comfy/black{
+	dir = 8
+	},
+/obj/effect/spawner/random/pool/gatewayloot/syndie_mob,
+/turf/simulated/floor/carpet/red,
+/area/awaymission/wildwest/wildwest_mines)
 "EG" = (
 /obj/effect/mob_spawn/human/corpse/miner,
 /obj/effect/decal/cleanable/blood/old,
-/turf/simulated/floor/plating/ironsand,
-/area/awaymission/wildwest/wildwest_mines)
-"EH" = (
-/mob/living/simple_animal/hostile/creature,
 /turf/simulated/floor/plating/ironsand,
 /area/awaymission/wildwest/wildwest_mines)
 "EI" = (
@@ -3634,6 +3634,11 @@
 	},
 /turf/space,
 /area/space)
+"JH" = (
+/obj/structure/chair/comfy/black,
+/obj/effect/spawner/random/pool/gatewayloot/syndie_mob,
+/turf/simulated/floor/carpet/red,
+/area/awaymission/wildwest/wildwest_mines)
 "JI" = (
 /obj/structure/stone_tile/surrounding/cracked,
 /obj/structure/stone_tile/surrounding_tile/cracked,
@@ -3764,6 +3769,12 @@
 "Lc" = (
 /turf/simulated/floor/mineral/plastitanium/red,
 /area/awaymission/wildwest/wildwest_refine)
+"Lm" = (
+/obj/structure/table/holotable/wood,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/maintenance,
+/turf/simulated/floor/carpet/red,
+/area/awaymission/wildwest/wildwest_mines)
 "Lp" = (
 /obj/machinery/light/small/directional/north,
 /turf/simulated/floor/plating/asteroid,
@@ -3982,7 +3993,7 @@
 	},
 /area/awaymission/wildwest/wildwest_vault)
 "Ni" = (
-/obj/machinery/wish_granter_dark,
+/obj/effect/spawner/random/pool/gatewayloot/wish_granter,
 /turf/simulated/floor{
 	icon_state = "necro3"
 	},
@@ -4044,6 +4055,10 @@
 /obj/structure/bed,
 /obj/item/bedsheet/blue,
 /turf/simulated/floor/carpet/purple,
+/area/awaymission/wildwest/wildwest_mines)
+"NE" = (
+/obj/effect/spawner/random/hostile_fauna,
+/turf/simulated/floor/plating/ironsand,
 /area/awaymission/wildwest/wildwest_mines)
 "NH" = (
 /obj/structure/sign/poster/official/random/south,
@@ -4224,6 +4239,7 @@
 "PM" = (
 /obj/effect/turf_decal/delivery/white,
 /obj/structure/closet/cardboard,
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/plasteel{
 	icon_state = "dark"
 	},
@@ -4328,6 +4344,12 @@
 /obj/effect/turf_decal/stripes/line,
 /turf/simulated/floor/plating/airless,
 /area/awaymission/wildwest/wildwest_refine)
+"QE" = (
+/obj/effect/spawner/random/hostile_fauna,
+/turf/simulated/floor{
+	icon_state = "cultdamage3"
+	},
+/area/awaymission/wildwest/wildwest_vault)
 "QG" = (
 /obj/structure/machine_frame,
 /obj/item/stack/cable_coil{
@@ -4414,6 +4436,12 @@
 /obj/structure/fans/tiny,
 /turf/simulated/floor/plating,
 /area/awaymission/wildwest/wildwest_refine)
+"RM" = (
+/obj/effect/spawner/random/hostile_fauna,
+/turf/simulated/floor{
+	icon_state = "necro3"
+	},
+/area/awaymission/wildwest/wildwest_vault)
 "RO" = (
 /obj/structure/chair/sofa/right{
 	dir = 4
@@ -4608,6 +4636,7 @@
 "TN" = (
 /obj/structure/table,
 /obj/machinery/light/small/directional/east,
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/wood/oak,
 /area/awaymission/wildwest/wildwest_mines)
 "TO" = (
@@ -4694,6 +4723,7 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/pool/gatewayloot/syndie_mob,
 /turf/simulated/floor/carpet/red,
 /area/awaymission/wildwest/wildwest_mines)
 "Uz" = (
@@ -8277,7 +8307,7 @@ Mh
 jC
 qJ
 jC
-ty
+hW
 Od
 qJ
 hW
@@ -9088,7 +9118,7 @@ wp
 wp
 wp
 wp
-wp
+NE
 wp
 em
 em
@@ -9365,7 +9395,7 @@ em
 wp
 wp
 wp
-EH
+NE
 wp
 wp
 em
@@ -9922,7 +9952,7 @@ em
 tv
 tv
 em
-EH
+NE
 wp
 wp
 wp
@@ -10644,7 +10674,7 @@ em
 em
 em
 em
-wp
+NE
 wp
 wp
 em
@@ -10774,7 +10804,7 @@ tv
 tv
 em
 gz
-gz
+fr
 cT
 wp
 gz
@@ -11275,7 +11305,7 @@ ZQ
 oL
 gN
 gN
-Qz
+vH
 Qz
 wD
 gN
@@ -11415,7 +11445,7 @@ KR
 ur
 gN
 Za
-nX
+gN
 Qz
 Qz
 Qz
@@ -11760,7 +11790,7 @@ em
 em
 tv
 em
-EH
+NE
 gz
 em
 wp
@@ -11811,7 +11841,7 @@ hk
 hk
 Pt
 JS
-Sa
+JH
 kg
 Ye
 VF
@@ -12627,7 +12657,7 @@ em
 em
 em
 em
-EH
+NE
 em
 em
 em
@@ -13819,7 +13849,7 @@ XE
 HI
 Pt
 DI
-Bf
+Lm
 Aa
 tW
 hk
@@ -13962,7 +13992,7 @@ HI
 Pt
 Ih
 SL
-SL
+EE
 Ih
 hk
 wK
@@ -15034,7 +15064,7 @@ pb
 xI
 Qe
 pb
-pb
+lw
 pb
 pb
 pb
@@ -16595,7 +16625,7 @@ xI
 pb
 pb
 pb
-pb
+lw
 pb
 pb
 pb
@@ -16753,7 +16783,7 @@ pb
 pb
 pb
 pb
-pb
+lw
 xI
 tv
 em
@@ -16882,7 +16912,7 @@ xI
 xI
 xI
 xI
-Bb
+QE
 pb
 pb
 pb
@@ -17457,7 +17487,7 @@ xI
 xI
 pb
 ri
-pb
+lw
 pb
 pb
 pb
@@ -17877,7 +17907,7 @@ pb
 pb
 pb
 pb
-pb
+lw
 xI
 pb
 pb
@@ -18024,13 +18054,13 @@ xI
 pb
 pb
 xI
-vA
+lw
 pb
 Ix
 XQ
 ud
 pb
-vA
+lw
 xI
 em
 em
@@ -18169,7 +18199,7 @@ xI
 pb
 pb
 pb
-vA
+lw
 pb
 pb
 pb
@@ -18295,7 +18325,7 @@ em
 em
 xI
 pb
-pb
+lw
 xI
 pb
 xI
@@ -18734,13 +18764,13 @@ xI
 xI
 pb
 xI
-vA
+lw
 pb
 pb
 pb
 pb
 pb
-vA
+lw
 xI
 em
 em
@@ -18874,7 +18904,7 @@ pb
 pb
 pb
 pb
-pb
+lw
 xI
 Qe
 pb
@@ -19156,7 +19186,7 @@ pb
 xI
 xI
 Qe
-pb
+lw
 pb
 pb
 pb
@@ -19438,7 +19468,7 @@ pb
 xI
 xI
 pb
-pb
+lw
 xI
 pb
 xI
@@ -19447,7 +19477,7 @@ Qe
 xI
 pb
 xI
-pb
+lw
 xI
 pb
 xI
@@ -19457,7 +19487,7 @@ pb
 xI
 xI
 pb
-pb
+lw
 em
 em
 xI
@@ -19716,7 +19746,7 @@ xI
 pb
 pb
 pb
-pb
+lw
 xI
 Qe
 pb
@@ -20017,7 +20047,7 @@ pb
 xI
 pb
 pb
-pb
+lw
 xI
 pb
 lw
@@ -20454,7 +20484,7 @@ pb
 pb
 xI
 pb
-pb
+lw
 pb
 pb
 pb
@@ -20571,7 +20601,7 @@ xI
 pb
 pb
 pb
-pb
+lw
 xI
 Qe
 pb
@@ -20732,7 +20762,7 @@ pb
 pb
 xI
 pb
-pb
+lw
 pb
 pb
 pb
@@ -20766,7 +20796,7 @@ pb
 pb
 pb
 pb
-pb
+lw
 pb
 pb
 pb
@@ -20866,7 +20896,7 @@ lw
 pb
 pb
 xI
-pb
+lw
 pb
 pb
 pb
@@ -21141,7 +21171,7 @@ xI
 pb
 xI
 pb
-pb
+lw
 xI
 xI
 xI
@@ -21170,7 +21200,7 @@ nV
 nV
 nV
 nV
-nV
+yh
 nV
 nV
 nV
@@ -21295,13 +21325,13 @@ xI
 pb
 pb
 xI
-pb
+lw
 xI
 pb
 pb
 pb
 pb
-pb
+lw
 pb
 pb
 CE
@@ -21471,7 +21501,7 @@ pb
 pb
 pb
 pb
-pb
+lw
 pb
 pb
 pb
@@ -21495,7 +21525,7 @@ xI
 iS
 Nf
 oP
-js
+RM
 um
 js
 iS
@@ -21561,7 +21591,7 @@ tv
 xI
 xI
 xI
-pb
+lw
 xI
 xI
 xI
@@ -21717,7 +21747,7 @@ pb
 xI
 pb
 pb
-pb
+lw
 xI
 lw
 pb
@@ -21728,7 +21758,7 @@ pb
 xI
 pb
 pb
-pb
+lw
 xI
 xI
 pb
@@ -22000,14 +22030,14 @@ xI
 pb
 pb
 xI
-pb
-pb
-pb
-xI
+lw
 pb
 pb
 xI
 pb
+pb
+xI
+lw
 pb
 xI
 pb
@@ -22277,7 +22307,7 @@ pb
 xI
 nK
 xI
-pb
+lw
 xI
 pb
 pb
@@ -22475,7 +22505,7 @@ pb
 pb
 pb
 pb
-pb
+lw
 pb
 pb
 LV
@@ -22563,7 +22593,7 @@ nK
 xI
 pb
 xI
-pb
+lw
 xI
 aZ
 xI
@@ -22573,7 +22603,7 @@ pb
 pb
 pb
 pb
-pb
+lw
 pb
 pb
 pb
@@ -22605,7 +22635,7 @@ pb
 pb
 pb
 pb
-pb
+lw
 pb
 pb
 LV
@@ -22733,7 +22763,7 @@ pb
 pb
 pb
 pb
-pb
+lw
 pb
 pb
 pb
@@ -22840,7 +22870,7 @@ em
 em
 xI
 Qe
-pb
+lw
 pb
 pb
 pb

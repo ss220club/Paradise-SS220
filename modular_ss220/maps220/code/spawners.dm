@@ -125,3 +125,19 @@
 /obj/item/reagent_containers/drinks/bottle/random_drink/Initialize(mapload)
 	icon = 'icons/obj/drinks.dmi'
 	. = ..()
+
+/obj/effect/spawner/random/hostile_fauna
+	name = "hostile fauna spawner"
+	icon = 'icons/effects/spawner_icons.dmi'
+	icon_state = "Carp"
+	spawn_loot_chance = 65
+	loot = list(
+		/mob/living/simple_animal/hostile/faithless/ww = 30,
+		/mob/living/simple_animal/hostile/creature/ww = 20,
+		/mob/living/simple_animal/hostile/netherworld/ww = 10,
+		/mob/living/simple_animal/hostile/netherworld/migo/ww = 10,
+		/mob/living/simple_animal/hostile/hellhound/ww = 5,
+
+		// always least chance
+		/mob/living/simple_animal/hostile/hellhound/tear/ww,
+	)
