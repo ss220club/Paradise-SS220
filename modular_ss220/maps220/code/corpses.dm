@@ -87,7 +87,7 @@
 		/obj/item/flashlight/flare/glowstick/emergency,
 		/obj/item/flashlight/flare,
 		/obj/item/toy/crayon/white,
-		)
+	)
 
 /obj/effect/mob_spawn/human/corpse/spacebattle/Initialize(mapload)
 	l_pocket = pick(pocketloot)

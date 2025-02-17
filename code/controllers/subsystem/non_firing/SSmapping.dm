@@ -238,7 +238,7 @@ SUBSYSTEM_DEF(mapping)
 				for(var/obj/structure/rack/rack in T) // SS220 EDIT
 					seeded_salvage_surfaces |= rack // SS220 EDIT
 
-	var/max_salvage_attempts = space ? rand(10, 15) : rand(20, 30) // SS220 EDIT
+	var/max_salvage_attempts = rand(10, 15)
 	while(max_salvage_attempts > 0 && length(seeded_salvage_closets) > 0)
 		var/obj/structure/closet/C = pick_n_take(seeded_salvage_closets)
 		var/salvage_item_type = pick(small_salvage_items)
@@ -246,7 +246,7 @@ SUBSYSTEM_DEF(mapping)
 		salvage_item.scatter_atom()
 		max_salvage_attempts -= 1
 
-	max_salvage_attempts = space ? rand(10, 15) : rand(20, 30) // SS220 EDIT
+	max_salvage_attempts = rand(10, 15)
 	while(max_salvage_attempts > 0 && length(seeded_salvage_surfaces) > 0)
 		var/obj/T = pick_n_take(seeded_salvage_surfaces)
 		var/salvage_item_type = pick(small_salvage_items)

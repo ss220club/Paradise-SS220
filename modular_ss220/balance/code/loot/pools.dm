@@ -378,7 +378,6 @@
 		/obj/item/reagent_containers/patch/silver_sulf = 4,
 		/obj/item/food/donkpocket = 4,
 		/obj/effect/spawner/random/pool/gatewayloot/syndicate/mixed = 3,
-		/obj/item/storage/box/syndidonkpockets = 2,
 
 		// always least chance
 		/obj/item/card/id/syndicate,

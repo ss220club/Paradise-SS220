@@ -439,17 +439,16 @@
 /obj/effect/landmark/awaymissions/gate_lizard/mine_spawner
 	icon = 'icons/obj/restraints.dmi'
 	icon_state = "fleshtrap"
-	var/id = null
+	var/id
 	var/triggered = FALSE
-	var/faction = null
-	var/safety_z_check = TRUE
+	var/faction
 
 /obj/effect/landmark/awaymissions/gate_lizard/mob_spawn
 	name = "spawner"
 	icon = 'modular_ss220/maps220/icons/simple_human.dmi'
 	icon_state = "spawner"
-	var/id = null
-	var/jungle_mob = null
+	var/id
+	var/jungle_mob
 
 /obj/effect/landmark/awaymissions/gate_lizard/mine_spawner/on_atom_entered(datum/source, atom/movable/entered)
 	if(!isliving(entered))
@@ -464,9 +463,7 @@
 		return
 	victim.spawn_alert(victim)
 	for(var/obj/effect/landmark/awaymissions/gate_lizard/mob_spawn/S in GLOB.landmarks_list)
-		if(safety_z_check && S.z != z)
-			continue
-		if(S.id == id)
+		if(S.id == id && S.z == z)
 			new S.jungle_mob(get_turf(S))
 			triggered = TRUE
 	qdel(src)
@@ -1284,17 +1281,18 @@
 /obj/effect/landmark/awaymissions/spacebattle/mine_spawner
 	icon = 'modular_ss220/maps220/icons/spacebattle.dmi'
 	icon_state = "spawner_mine"
-	var/id = null
-	var/triggered = 0
+	var/id
+	var/triggered = FALSE
 	var/faction = "syndicate"
-	var/safety_z_check = 1
+	var/shutters = FALSE
+	var/airlock = FALSE
 
 /obj/effect/landmark/awaymissions/spacebattle/mob_spawn
 	name = "spawner"
 	icon = 'modular_ss220/maps220/icons/spacebattle.dmi'
 	icon_state = "melee"
-	var/id = null
-	var/syndi_mob = null
+	var/id
+	var/syndi_mob
 
 /obj/effect/landmark/awaymissions/spacebattle/mine_spawner/on_atom_entered(datum/source, atom/movable/entered)
 	if(!isliving(entered))
@@ -1308,13 +1306,34 @@
 	if(triggered)
 		return
 	victim.spawn_alert(victim)
-	for(var/obj/effect/landmark/awaymissions/spacebattle/mob_spawn/S in GLOB.landmarks_list)
-		if(safety_z_check && S.z != z)
-			continue
-		if(S.id == id)
-			new S.syndi_mob(get_turf(S))
-			triggered = 1
+	spawn_mob()
+	if(airlock)
+		airlock_lockdown()
+	if(shutters)
+		shutters_unlock()
+	triggered = TRUE
 	qdel(src)
+
+/obj/effect/landmark/awaymissions/spacebattle/mine_spawner/proc/spawn_mob()
+	for(var/obj/effect/landmark/awaymissions/spacebattle/mob_spawn/S in GLOB.landmarks_list)
+		if(S.id == id && S.z == z)
+			new S.syndi_mob(get_turf(S))
+
+/obj/effect/landmark/awaymissions/spacebattle/mine_spawner/proc/airlock_lockdown()
+	for(var/obj/machinery/door/airlock/A in GLOB.airlocks)
+		if(A.id_tag == id && A.z == z)
+			spawn(-1)
+				if(A.locked && !A.density)
+					A.unlock()
+				A.close()
+				if(!A.locked)
+					A.lock()
+
+/obj/effect/landmark/awaymissions/spacebattle/mine_spawner/proc/shutters_unlock()
+	for(var/obj/machinery/door/poddoor/P in GLOB.airlocks)
+		if(P.density && P.id_tag == id && P.z == z)
+			spawn(-1)
+				P.open()
 
 /obj/effect/landmark/awaymissions/spacebattle/mob_spawn/syndie
 	name = "melee/ranged"
@@ -1384,11 +1403,19 @@
 	armour_penetration_percentage = 80
 	loot = list(
 		/obj/effect/decal/cleanable/ash,
-		/obj/item/documents/syndicate/blue,
 	)
 	speed = 2
 	health = 600
 	maxHealth = 600
+	var/mob = /mob/living/simple_animal/hostile/syndicate/melee/autogib/depot/armory/spacebattle
+
+/mob/living/simple_animal/hostile/syndicate/melee/autogib/depot/armory/spacebattle/death()
+	if(type == mob)
+		for(var/obj/machinery/door/poddoor/P in GLOB.airlocks)
+			if(P.density && (P.id_tag == "Spacebattle_exit" || P.id_tag == "1ShipLock"))
+				spawn(0)
+					P.open()
+	return ..()
 
 // Spacebattle QM used at pools.dm
 /mob/living/simple_animal/hostile/syndicate/melee/autogib/depot/armory/spacebattle/gateway
