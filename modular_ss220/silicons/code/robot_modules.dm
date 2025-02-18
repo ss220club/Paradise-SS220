@@ -13,6 +13,7 @@
 		/obj/item/inflatable/cyborg,
 		/obj/item/inflatable/cyborg/door,
 		/obj/item/gps/cyborg,
+		/obj/item/holosign_creator/atmos,
 		)
 
 /obj/item/robot_module/medical/Initialize(mapload)
