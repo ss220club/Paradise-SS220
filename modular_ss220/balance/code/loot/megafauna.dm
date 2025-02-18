@@ -18,7 +18,3 @@
 /obj/structure/closet/crate/necropolis/bubblegum/populate_contents()
 	new /obj/item/clothing/suit/space/hostile_environment(src)
 	new /obj/item/clothing/head/helmet/space/hostile_environment(src)
-
-/obj/item/melee/spellblade/random/afterattack__legacy__attackchain(atom/target, mob/living/user, proximity, params)
-	if(is_mining_level(user.z) || istype(get_area(user), /area/ruin/space/bubblegum_arena) || user.health < 80 || iswizard(user))
-		return ..()
