@@ -460,11 +460,14 @@
 
 /obj/effect/landmark/awaymissions/gate_lizard/mine_spawner/proc/triggerlandmark(mob/living/victim)
 	if(triggered)
+		qdel(src)
 		return
 	victim.spawn_alert(victim)
 	for(var/obj/effect/landmark/awaymissions/gate_lizard/mob_spawn/S in GLOB.landmarks_list)
 		if(S.id == id && S.z == z)
 			new S.jungle_mob(get_turf(S))
+	for(var/obj/effect/landmark/awaymissions/gate_lizard/mine_spawner/S in GLOB.landmarks_list)
+		if(S.id == id && S.z == z)
 			triggered = TRUE
 	qdel(src)
 
@@ -660,7 +663,7 @@
 		rapid_fire_delay = 1
 		ranged_cooldown_time = 15
 
-/*Black Mesa*/
+// MARK: Black Mesa
 //Alert sound
 /mob/living/simple_animal/hostile/blackmesa
 	var/list/alert_sounds
@@ -1276,7 +1279,7 @@
 	icon_state = "spawn_vortigaunt"
 	possible_mobs = list(/mob/living/simple_animal/hostile/blackmesa/hecu, /mob/living/simple_animal/hostile/blackmesa/hecu/ranged,/mob/living/simple_animal/hostile/blackmesa/hecu/ranged/smg)
 
-/* Space Battle */
+// MARK: Spacebattle
 //Spawners
 /obj/effect/landmark/awaymissions/spacebattle/mine_spawner
 	icon = 'modular_ss220/maps220/icons/spacebattle.dmi'
@@ -1304,6 +1307,7 @@
 
 /obj/effect/landmark/awaymissions/spacebattle/mine_spawner/proc/triggerlandmark(mob/living/victim)
 	if(triggered)
+		qdel(src)
 		return
 	victim.spawn_alert(victim)
 	spawn_mob()
@@ -1311,7 +1315,9 @@
 		airlock_lockdown()
 	if(shutters)
 		shutters_unlock()
-	triggered = TRUE
+	for(var/obj/effect/landmark/awaymissions/spacebattle/mine_spawner/S in GLOB.landmarks_list)
+		if(S.id == id && S.z == z)
+			S.triggered = TRUE
 	qdel(src)
 
 /obj/effect/landmark/awaymissions/spacebattle/mine_spawner/proc/spawn_mob()
@@ -1486,7 +1492,7 @@
 	else if(health / maxHealth < 0.5)
 		icon_state = "wisewill-Combat"
 
-// Wildwest fauna
+// MARK: Wildwest
 /mob/living/simple_animal/hostile/faithless/ww
 	faction = list("wildwest")
 

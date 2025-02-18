@@ -56,13 +56,11 @@
 	)
 
 /obj/effect/spawner/random/pool/spaceloot/modsuit_syndie
-	icon = 'modular_ss220/maps220/icons/spawner_icons.dmi'
-	icon_state = "mod"
 
 /obj/effect/spawner/random/pool/spaceloot/modsuit_syndie/nuclear
 	name = "blood mod 30pc"
 	point_value = 110
-	spawn_loot_chance = 30
+	spawn_loot_chance = 40
 	loot = list(/obj/machinery/suit_storage_unit/syndicate)
 
 /obj/effect/spawner/random/pool/spaceloot/modsuit_syndie/corpse
@@ -109,7 +107,7 @@
 	icon = 'modular_ss220/maps220/icons/spawner_icons.dmi'
 	icon_state = "mod"
 	point_value = 75
-	spawn_loot_chance = 45
+	spawn_loot_chance = 65
 	loot = list(
 		/obj/machinery/suit_storage_unit/security/space = 9,
 		/obj/machinery/suit_storage_unit/security/space/safeguard,
@@ -247,7 +245,7 @@
 	name = "rsg 50pc"
 	icon_state = "stetchkin"
 	point_value = 80
-	spawn_loot_chance = 50
+	spawn_loot_chance = 60
 	loot = list(
 		/obj/item/gun/syringe/rapidsyringe
 	)
@@ -349,7 +347,7 @@
 /obj/effect/spawner/random/pool/gatewayloot/syndie_mob
 	icon = 'icons/effects/spawner_icons.dmi'
 	icon_state = "syndie_depot"
-	point_value = 6
+	point_value = 5
 	loot = list(
 		/mob/living/simple_animal/hostile/syndicate/ranged/autogib/spacebattle = 25,
 		/mob/living/simple_animal/hostile/syndicate/melee/autogib/spacebattle = 25,
@@ -369,15 +367,14 @@
 // syndie mob loot
 /obj/effect/spawner/random/pool/gatewayloot/syndie_mob_loot
 	loot = list(
-		/obj/item/ammo_casing/c10mm = 62,
+		/obj/item/ammo_casing/c10mm = 64,
 		/obj/item/food/syndicake = 5,
-		/obj/item/poster/random_contraband = 5,
 		/obj/item/tank/internals/emergency_oxygen/engi/syndi = 5,
 		/obj/item/clothing/glasses/night = 5,
-		/obj/item/reagent_containers/patch/styptic = 4,
-		/obj/item/reagent_containers/patch/silver_sulf = 4,
-		/obj/item/food/donkpocket = 4,
-		/obj/effect/spawner/random/pool/gatewayloot/syndicate/mixed = 3,
+		/obj/item/reagent_containers/patch/styptic = 5,
+		/obj/item/reagent_containers/patch/silver_sulf = 5,
+		/obj/item/food/donkpocket = 5,
+		/obj/effect/spawner/random/pool/gatewayloot/syndicate/mixed = 5,
 
 		// always least chance
 		/obj/item/card/id/syndicate,
@@ -390,8 +387,6 @@
 	)
 
 /obj/effect/spawner/random/pool/gatewayloot/syndie_mob_loot/space/modsuit
-	icon = 'modular_ss220/maps220/icons/spawner_icons.dmi'
-	icon_state = "mod"
 	loot = list(
 		/obj/item/mod/control/pre_equipped/traitor = 3,
 		/obj/item/mod/control/pre_equipped/nuclear,
@@ -408,10 +403,9 @@
 	)
 
 /obj/effect/spawner/random/pool/gatewayloot/syndie_mob_loot/ranged/handgun
-	icon_state = "stetchkin"
 	loot = list(
-		/obj/item/gun/projectile/automatic/pistol = 17,
-		/obj/item/gun/projectile/revolver/fake = 2,
+		/obj/item/gun/projectile/automatic/pistol = 8,
+		/obj/item/gun/projectile/revolver/fake,
 
 		// always least chance
 		/obj/item/gun/projectile/revolver,
@@ -445,16 +439,16 @@
 /obj/effect/spawner/random/pool/gatewayloot/bluespace_tap/organic_mixed
 	point_value = 25
 	loot = list(
-		/obj/effect/spawner/random/bluespace_tap/organic_common = 6,
-		/obj/effect/spawner/random/bluespace_tap/organic_uncommon = 3,
+		/obj/effect/spawner/random/bluespace_tap/organic_common = 13,
+		/obj/effect/spawner/random/bluespace_tap/organic_uncommon = 6,
 		/obj/effect/spawner/random/bluespace_tap/organic_rare,
 	)
 
 /obj/effect/spawner/random/pool/gatewayloot/bluespace_tap/cultural_mixed
 	point_value = 25
 	loot = list(
-		/obj/effect/spawner/random/bluespace_tap/cultural_common = 6,
-		/obj/effect/spawner/random/bluespace_tap/cultural_uncommon = 3,
+		/obj/effect/spawner/random/bluespace_tap/cultural_common = 13,
+		/obj/effect/spawner/random/bluespace_tap/cultural_uncommon = 6,
 		/obj/effect/spawner/random/bluespace_tap/cultural_rare,
 	)
 
@@ -470,4 +464,4 @@
 	loot = list(
 		/obj/machinery/wish_granter_dark,
 		/obj/item/dice/d20/fate/one_use,
-		)
+	)
