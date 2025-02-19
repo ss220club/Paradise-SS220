@@ -1328,6 +1328,10 @@
 	icon_state = "whitebluefull"
 	},
 /area/awaymission/jungle_planet/inside/complex)
+"bLj" = (
+/obj/effect/spawner/random/maintenance,
+/turf/simulated/floor/wood/oak,
+/area/awaymission/jungle_planet/inside/complex)
 "bLF" = (
 /obj/structure/flora/ausbushes/reedbush,
 /turf/simulated/floor/beach/away/water{
@@ -1699,17 +1703,9 @@
 /area/awaymission/jungle_planet/inside/complex)
 "cmS" = (
 /obj/structure/gunrack,
-/obj/item/gun/energy/laser/retro/old{
-	desc = "An older model of the basic lasergun, no longer used by Nanotrasen's private security or military forces. Nevertheless, it is still quite deadly and easy to maintain, making it a favorite amongst pirates and other outlaws.";
-	pixel_y = -9
-	},
-/obj/item/gun/energy/laser/retro/old{
-	desc = "An older model of the basic lasergun, no longer used by Nanotrasen's private security or military forces. Nevertheless, it is still quite deadly and easy to maintain, making it a favorite amongst pirates and other outlaws."
-	},
-/obj/item/gun/energy/laser/retro/old{
-	desc = "An older model of the basic lasergun, no longer used by Nanotrasen's private security or military forces. Nevertheless, it is still quite deadly and easy to maintain, making it a favorite amongst pirates and other outlaws.";
-	pixel_y = 9
-	},
+/obj/effect/spawner/random/loot/laser/retro,
+/obj/effect/spawner/random/loot/laser/retro,
+/obj/effect/spawner/random/loot/laser/retro,
 /turf/simulated/floor/plasteel{
 	dir = 8;
 	icon_state = "vault"
@@ -3022,7 +3018,7 @@
 	dir = 8;
 	layer = 2.9
 	},
-/obj/item/gun/energy/laser/retro/old,
+/obj/effect/spawner/random/loot/laser/retro,
 /obj/item/fireaxe,
 /obj/effect/mapping_helpers/turfs/damage,
 /turf/simulated/floor/wood/oak,
@@ -7963,6 +7959,7 @@
 	pixel_x = 22
 	},
 /obj/effect/spawner/random/dirt/maybe,
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/wood/oak,
 /area/awaymission/jungle_planet/inside/complex)
 "ksq" = (
@@ -11805,9 +11802,6 @@
 /obj/machinery/light/small/directional/south,
 /obj/effect/spawner/random/dirt/often,
 /obj/structure/closet/crate/wooden,
-/obj/effect/spawner/random/pool/gatewayloot/credits,
-/obj/effect/spawner/random/pool/gatewayloot/credits,
-/obj/effect/spawner/random/pool/gatewayloot/credits,
 /turf/simulated/floor/wood/oak,
 /area/awaymission/jungle_planet/outside/cave/pirate)
 "pjT" = (
@@ -13300,16 +13294,11 @@
 "rjA" = (
 /obj/structure/gunrack,
 /obj/structure/window/reinforced,
-/obj/item/gun/energy/laser/retro/old{
-	desc = "An older model of the basic lasergun, no longer used by Nanotrasen's private security or military forces. Nevertheless, it is still quite deadly and easy to maintain, making it a favorite amongst pirates and other outlaws."
-	},
+/obj/effect/spawner/random/loot/laser/retro,
 /obj/machinery/door/window/reinforced/normal{
 	dir = 8
 	},
-/obj/item/gun/energy/laser/retro/old{
-	desc = "An older model of the basic lasergun, no longer used by Nanotrasen's private security or military forces. Nevertheless, it is still quite deadly and easy to maintain, making it a favorite amongst pirates and other outlaws.";
-	pixel_y = 9
-	},
+/obj/effect/spawner/random/loot/laser/retro,
 /turf/simulated/floor/plasteel{
 	dir = 5;
 	icon_state = "red"
@@ -15160,6 +15149,11 @@
 /obj/structure/flora/ausbushes/fullgrass,
 /turf/simulated/floor/beach/away/sand,
 /area/awaymission/jungle_planet/outside)
+"tvL" = (
+/obj/effect/spawner/random/dirt/maybe,
+/obj/effect/spawner/random/maintenance,
+/turf/simulated/floor/wood/oak,
+/area/awaymission/jungle_planet/inside/complex)
 "tvT" = (
 /obj/effect/landmark/awaymissions/gate_lizard/mob_spawn/melee_spear{
 	id = "pathway7"
@@ -24191,7 +24185,7 @@ nsX
 lIv
 sXj
 kZZ
-bti
+tvL
 cku
 bqx
 dGT
@@ -24569,7 +24563,7 @@ fET
 jMH
 nMQ
 bti
-fOl
+bLj
 pnG
 kxM
 cyh

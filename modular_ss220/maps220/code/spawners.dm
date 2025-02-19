@@ -38,9 +38,11 @@
 		)
 
 // MARK: Loot
+/obj/effect/spawner/random/loot
+	icon = 'icons/effects/random_spawners.dmi'
+
 /obj/effect/spawner/random/loot/modkit
 	name = "random modkit"
-	icon = 'icons/effects/random_spawners.dmi'
 	icon_state = "donkpocket_single" // i'm not gonna sprite this!
 	loot = list(
 		/obj/item/borg/upgrade/modkit/range,
@@ -54,43 +56,36 @@
 		/obj/item/borg/upgrade/modkit/aoe/turfs,
 	)
 
+/obj/effect/spawner/random/loot/laser
+	name = "laser 60pc"
+	icon_state = "stetchkin"
+	spawn_loot_chance = 60
+	loot = list(/obj/item/gun/energy/laser)
+
+/obj/effect/spawner/random/loot/laser/retro
+	loot = list(/obj/item/gun/energy/laser/retro)
+
+/obj/effect/spawner/random/loot/laser/advanced
+	loot = list(
+		/obj/item/gun/energy/laser,
+		/obj/item/gun/energy/lasercannon,
+	)
+
+/obj/effect/spawner/random/loot/docs
+	icon_state = "folder"
+
+/obj/effect/spawner/random/loot/docs/syndie
+	name = "syndie documents"
+	loot = list(
+		/obj/item/documents/syndicate,
+		/obj/item/documents/syndicate/red,
+		/obj/item/documents/syndicate/blue,
+		/obj/item/documents/syndicate/yellow,
+		/obj/item/documents/syndicate/mining,
+	)
+
 /obj/effect/spawner/random/maintenance
 	icon = 'modular_ss220/maps220/icons/spawner_icons.dmi'
-
-/obj/effect/spawner/random/trash
-	icon = 'modular_ss220/maps220/icons/spawner_icons.dmi'
-
-/obj/effect/spawner/random/trash/Initialize(mapload)
-	. = ..()
-	loot += list(
-		list(
-			/obj/item/trash/bowl,
-			/obj/item/trash/can,
-			/obj/item/trash/candle,
-			/obj/item/trash/candy,
-			/obj/item/trash/cheesie,
-			/obj/item/trash/chips,
-			/obj/item/trash/fried_vox,
-			/obj/item/trash/gum,
-			/obj/item/trash/liquidfood,
-			/obj/item/trash/pistachios,
-			/obj/item/trash/plate,
-			/obj/item/trash/popcorn,
-			/obj/item/trash/raisins,
-			/obj/item/trash/semki,
-			/obj/item/trash/snack_bowl,
-			/obj/item/trash/sosjerky,
-			/obj/item/trash/spacetwinkie,
-			/obj/item/trash/spentcasing,
-			/obj/item/trash/syndi_cakes,
-			/obj/item/trash/tapetrash,
-			/obj/item/trash/tastybread,
-			/obj/item/trash/tray,
-			/obj/item/trash/waffles,
-			/obj/item/trash/vulpix_chips,
-			/obj/item/trash/foodtray,
-		) = 5,
-	)
 
 // MARK: Office toys spawners
 /obj/effect/spawner/random/officetoys
@@ -140,4 +135,40 @@
 
 		// always least chance
 		/mob/living/simple_animal/hostile/hellhound/tear/ww,
+	)
+
+// MARK: Misc
+/obj/effect/spawner/random/trash
+	icon = 'modular_ss220/maps220/icons/spawner_icons.dmi'
+
+/obj/effect/spawner/random/trash/Initialize(mapload)
+	. = ..()
+	loot += list(
+		list(
+			/obj/item/trash/bowl,
+			/obj/item/trash/can,
+			/obj/item/trash/candle,
+			/obj/item/trash/candy,
+			/obj/item/trash/cheesie,
+			/obj/item/trash/chips,
+			/obj/item/trash/fried_vox,
+			/obj/item/trash/gum,
+			/obj/item/trash/liquidfood,
+			/obj/item/trash/pistachios,
+			/obj/item/trash/plate,
+			/obj/item/trash/popcorn,
+			/obj/item/trash/raisins,
+			/obj/item/trash/semki,
+			/obj/item/trash/snack_bowl,
+			/obj/item/trash/sosjerky,
+			/obj/item/trash/spacetwinkie,
+			/obj/item/trash/spentcasing,
+			/obj/item/trash/syndi_cakes,
+			/obj/item/trash/tapetrash,
+			/obj/item/trash/tastybread,
+			/obj/item/trash/tray,
+			/obj/item/trash/waffles,
+			/obj/item/trash/vulpix_chips,
+			/obj/item/trash/foodtray,
+		) = 5,
 	)

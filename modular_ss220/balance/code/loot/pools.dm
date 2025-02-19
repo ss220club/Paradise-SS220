@@ -55,10 +55,10 @@
 		/obj/item/mecha_parts/mecha_equipment/weapon/energy/laser,
 	)
 
-/obj/effect/spawner/random/pool/spaceloot/modsuit_syndie
-
 /obj/effect/spawner/random/pool/spaceloot/modsuit_syndie/nuclear
 	name = "blood mod 30pc"
+	icon = 'modular_ss220/maps220/icons/spawner_icons.dmi'
+	icon_state = "mod"
 	point_value = 110
 	spawn_loot_chance = 40
 	loot = list(/obj/machinery/suit_storage_unit/syndicate)
@@ -85,9 +85,11 @@
 /obj/effect/spawner/random/pool/spaceloot/mining_tool
 	point_value = 15
 	loot = list(
-		/obj/item/pickaxe = 50,
-		/obj/item/pickaxe/safety = 30,
-		/obj/item/pickaxe/mini = 20,
+		// total of 21
+		/obj/item/pickaxe = 7,
+		/obj/item/pickaxe/safety = 7,
+		/obj/item/pickaxe/mini = 7,
+
 		/obj/item/pickaxe/silver = 10,
 		/obj/item/pickaxe/gold = 9,
 		/obj/item/pickaxe/diamond = 7,
@@ -99,15 +101,16 @@
 		/obj/item/kinetic_crusher = 3,
 		/obj/item/gun/energy/kinetic_accelerator = 3,
 		/obj/item/gun/energy/kinetic_accelerator/pistol = 3,
+
 		/obj/item/gun/energy/kinetic_accelerator/experimental,
 	)
 
 /obj/effect/spawner/random/pool/spaceloot/security/modsuit
-	name = "sec mod 45pc"
+	name = "sec mod 75pc"
 	icon = 'modular_ss220/maps220/icons/spawner_icons.dmi'
 	icon_state = "mod"
 	point_value = 75
-	spawn_loot_chance = 65
+	spawn_loot_chance = 75
 	loot = list(
 		/obj/machinery/suit_storage_unit/security/space = 9,
 		/obj/machinery/suit_storage_unit/security/space/safeguard,
@@ -131,7 +134,6 @@
 
 /obj/effect/spawner/random/pool/spaceloot/mining_tool/gateway
 	spawn_pool_id = "gateway_spawn_pool"
-	spawn_loot_chance = 50
 	record_spawn = FALSE
 
 /obj/effect/spawner/random/pool/spaceloot/security/modsuit/gateway
@@ -143,8 +145,7 @@
 	loot = list(/obj/item/gun/magic/hook) // currently there is not much to suggest
 
 /obj/effect/spawner/random/pool/gatewayloot/spellbook
-	icon = 'icons/obj/library.dmi'
-	icon_state = "random_book"
+	icon_state = "book"
 	point_value = 100
 	loot = list(/obj/item/spellbook/oneuse/random/necropolis)
 
@@ -155,14 +156,6 @@
 /obj/effect/spawner/random/pool/gatewayloot/wizard
 	point_value = 150
 	loot = list(/mob/living/simple_animal/hostile/deadwizard)
-
-/obj/effect/spawner/random/pool/gatewayloot/credits
-	point_value = 20
-	loot = list(
-		/obj/item/stack/spacecash/c200,
-		/obj/item/stack/spacecash/c500,
-		/obj/item/stack/spacecash/c1000,
-	)
 
 /obj/effect/spawner/random/pool/gatewayloot/tsf/lieutenant
 	spawn_all_loot = TRUE
@@ -194,13 +187,15 @@
 
 /obj/effect/spawner/random/pool/gatewayloot/cult
 	name = "cult item 60pc"
-	point_value = 30
+	point_value = 20
 	spawn_loot_chance = 60
 	loot = list(
 		/obj/item/shield/mirror,
 		/obj/item/melee/cultblade,
 		/obj/item/whetstone/cult,
 		/obj/item/clothing/suit/hooded/cultrobes,
+		/obj/item/reagent_containers/drinks/bottle/holywater/hell,
+		/obj/item/soulstone/anybody,
 	)
 
 /obj/effect/spawner/random/pool/gatewayloot/cult/valuable
@@ -209,7 +204,6 @@
 	spawn_loot_chance = 100
 	loot = list(
 		/obj/item/book_of_babel,
-		/obj/item/soulstone/anybody,
 		/obj/item/shared_storage/red,
 		/obj/item/organ/internal/heart/cursed/wizard,
 		/obj/item/nullrod/scythe/talking,
@@ -218,28 +212,9 @@
 		/obj/item/tarot_card_pack,
 		/obj/item/tarot_card_pack/jumbo,
 		/obj/item/tarot_card_pack/mega,
-		/obj/item/reagent_containers/drinks/bottle/holywater/hell,
 		/obj/item/immortality_talisman,
 		/obj/item/organ/internal/eyes/night_vision/nightmare,
 	)
-
-/obj/effect/spawner/random/pool/gatewayloot/laser
-	name = "laser 50pc"
-	icon_state = "stetchkin"
-	point_value = 30
-	spawn_loot_chance = 50
-	loot = list(/obj/item/gun/energy/laser)
-
-/obj/effect/spawner/random/pool/gatewayloot/laser/retro
-	loot = list(/obj/item/gun/energy/laser/retro)
-
-/obj/effect/spawner/random/pool/gatewayloot/laser/advanced
-	point_value = 40
-	loot = list(
-		/obj/item/gun/energy/laser,
-		/obj/item/gun/energy/lasercannon,
-	)
-
 
 /obj/effect/spawner/random/pool/gatewayloot/rsg
 	name = "rsg 50pc"
@@ -263,21 +238,22 @@
 /obj/effect/spawner/random/pool/spaceloot/syndicate/common/gateway
 	spawn_pool_id = "gateway_spawn_pool"
 	record_spawn = FALSE
+	point_value = 5
 
 /obj/effect/spawner/random/pool/spaceloot/syndicate/rare/gateway
 	spawn_pool_id = "gateway_spawn_pool"
 	record_spawn = FALSE
-	point_value = 30
+	point_value = 20
 
 /obj/effect/spawner/random/pool/spaceloot/syndicate/officer/gateway
 	spawn_pool_id = "gateway_spawn_pool"
 	record_spawn = FALSE
-	point_value = 60
+	point_value = 55
 
 /obj/effect/spawner/random/pool/spaceloot/syndicate/armory/gateway
 	spawn_pool_id = "gateway_spawn_pool"
 	record_spawn = FALSE
-	point_value = 90
+	point_value = 100
 
 /obj/effect/spawner/random/pool/gatewayloot/syndicate/mixed
 	loot = list(
@@ -347,7 +323,7 @@
 /obj/effect/spawner/random/pool/gatewayloot/syndie_mob
 	icon = 'icons/effects/spawner_icons.dmi'
 	icon_state = "syndie_depot"
-	point_value = 5
+	point_value = 5 // perfect value for current loot list
 	loot = list(
 		/mob/living/simple_animal/hostile/syndicate/ranged/autogib/spacebattle = 25,
 		/mob/living/simple_animal/hostile/syndicate/melee/autogib/spacebattle = 25,
@@ -377,7 +353,7 @@
 		/obj/effect/spawner/random/pool/gatewayloot/syndicate/mixed = 5,
 
 		// always least chance
-		/obj/item/card/id/syndicate,
+		/obj/item/card/id/syndicate, // ~1/100
 	)
 
 /obj/effect/spawner/random/pool/gatewayloot/syndie_mob_loot/space
@@ -388,8 +364,8 @@
 
 /obj/effect/spawner/random/pool/gatewayloot/syndie_mob_loot/space/modsuit
 	loot = list(
-		/obj/item/mod/control/pre_equipped/traitor = 3,
-		/obj/item/mod/control/pre_equipped/nuclear,
+		/obj/item/mod/control/pre_equipped/traitor = 3, // ~1/100
+		/obj/item/mod/control/pre_equipped/nuclear, // ~1/400
 	)
 
 /obj/effect/spawner/random/pool/gatewayloot/syndie_mob_loot/ranged
@@ -408,7 +384,7 @@
 		/obj/item/gun/projectile/revolver/fake,
 
 		// always least chance
-		/obj/item/gun/projectile/revolver,
+		/obj/item/gun/projectile/revolver, // ~1/1000
 	)
 
 /obj/effect/spawner/random/pool/gatewayloot/syndie_mob_loot/melee
@@ -417,8 +393,8 @@
 		/obj/item/ammo_casing/c10mm = 98,
 
 		// always least chance
-		/obj/item/shield/energy,
-		/obj/item/melee/energy/sword/saber,
+		/obj/item/shield/energy, // ~1/100
+		/obj/item/melee/energy/sword/saber, // ~1/100
 	)
 
 /obj/effect/spawner/random/pool/gatewayloot/griefsky
@@ -460,7 +436,7 @@
 	loot = list(/obj/effect/mob_spawn/human/corpse/spacebattle/security/bridge)
 
 /obj/effect/spawner/random/pool/gatewayloot/wish_granter
-	point_value = 90
+	point_value = 100
 	loot = list(
 		/obj/machinery/wish_granter_dark,
 		/obj/item/dice/d20/fate/one_use,

@@ -862,6 +862,14 @@
 "dX" = (
 /turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/awaymission/caves)
+"dZ" = (
+/obj/effect/spawner/random/dirt/often,
+/obj/effect/spawner/random/pool/gatewayloot/bluespace_tap/organic_mixed,
+/turf/simulated/floor/plasteel{
+	dir = 4;
+	icon_state = "dark"
+	},
+/area/awaymission/caves/build/reqpower_build)
 "ea" = (
 /mob/living/simple_animal/hostile/asteroid/hivelord{
 	wander = 0
@@ -1007,7 +1015,7 @@
 /obj/structure/closet,
 /obj/item/clothing/suit/fluff/dusty_jacket,
 /obj/effect/decal/cleanable/cobweb2,
-/obj/effect/spawner/random/pool/gatewayloot/laser/retro,
+/obj/effect/spawner/random/loot/laser/retro,
 /turf/simulated/floor/wood/lavaland_air,
 /area/awaymission/caves)
 "eQ" = (
@@ -1903,16 +1911,6 @@
 /obj/structure/girder/reinforced,
 /turf/simulated/floor/plating,
 /area/awaymission/caves/build/reqpower_build)
-"jA" = (
-/obj/structure/closet/secure_closet{
-	req_access = list(271)
-	},
-/obj/item/extinguisher/mini,
-/obj/item/kitchen/knife/combat/survival,
-/obj/item/storage/backpack/satchel/explorer,
-/obj/item/pickaxe/mini,
-/turf/simulated/floor/plating,
-/area/awaymission/caves/build)
 "jC" = (
 /obj/effect/spawner/random/dirt/often,
 /obj/structure/closet/crate/miningcar,
@@ -2195,7 +2193,7 @@
 /obj/item/extinguisher/mini,
 /obj/item/kitchen/knife/combat/survival,
 /obj/item/storage/backpack/satchel/explorer,
-/obj/item/pickaxe/mini,
+/obj/effect/spawner/random/pool/spaceloot/mining_tool/gateway,
 /turf/simulated/floor/plasteel,
 /area/awaymission/caves/build)
 "lq" = (
@@ -2509,6 +2507,7 @@
 /obj/item/clothing/suit/storage/labcoat,
 /obj/item/clothing/shoes/centcom,
 /obj/effect/decal/cleanable/cobweb,
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/carpet/purple,
 /area/awaymission/caves/build/reqpower_build)
 "na" = (
@@ -2748,10 +2747,6 @@
 /turf/simulated/floor/plasteel/lavaland_air{
 	icon_state = "dark"
 	},
-/area/awaymission/caves)
-"oq" = (
-/obj/effect/spawner/random/pool/gatewayloot/credits,
-/turf/simulated/floor/plating/asteroid/basalt/lava_land_surface,
 /area/awaymission/caves)
 "or" = (
 /obj/structure/closet/walllocker/firelocker/south,
@@ -3398,8 +3393,8 @@
 /obj/effect/spawner/random/dirt/often,
 /obj/machinery/light/small/directional/north,
 /obj/effect/decal/cleanable/cobweb2,
-/obj/effect/spawner/random/pool/gatewayloot/laser/retro,
-/obj/effect/spawner/random/pool/gatewayloot/laser/retro,
+/obj/effect/spawner/random/loot/laser/retro,
+/obj/effect/spawner/random/loot/laser/retro,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "dark"
@@ -3474,15 +3469,6 @@
 /obj/effect/decal/cleanable/dust,
 /turf/simulated/floor/engine/cult/lavaland_air,
 /area/awaymission/caves)
-"sM" = (
-/obj/structure/closet/secure_closet{
-	req_access = list(271)
-	},
-/obj/item/extinguisher/mini,
-/obj/item/kitchen/knife/combat/survival,
-/obj/item/storage/backpack/satchel/explorer,
-/turf/simulated/floor/plating,
-/area/awaymission/caves/build)
 "sP" = (
 /obj/structure/stone_tile/slab/cracked{
 	icon_state = "cracked_center1"
@@ -3694,7 +3680,7 @@
 /obj/item/clothing/suit/storage/labcoat,
 /obj/item/clothing/suit/storage/labcoat,
 /obj/item/clothing/shoes/centcom,
-/obj/effect/spawner/random/pool/gatewayloot/credits,
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/carpet/purple,
 /area/awaymission/caves/build/reqpower_build)
 "tV" = (
@@ -4016,6 +4002,7 @@
 /obj/effect/turf_decal/siding/wood/neutral,
 /obj/effect/spawner/random/dirt/often,
 /obj/machinery/light_construct/small/south,
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/wood/oak,
 /area/awaymission/caves/build/reqpower_build)
 "vE" = (
@@ -5822,7 +5809,7 @@
 /obj/item/extinguisher/mini,
 /obj/item/kitchen/knife/combat/survival,
 /obj/item/storage/backpack/satchel/explorer,
-/obj/item/gun/energy/kinetic_accelerator,
+/obj/effect/spawner/random/pool/spaceloot/mining_tool/gateway,
 /turf/simulated/floor/plating,
 /area/awaymission/caves/build)
 "FK" = (
@@ -6718,9 +6705,6 @@
 	},
 /obj/structure/closet/cabinet,
 /obj/effect/spawner/random/pool/gatewayloot/tsf/mixed,
-/obj/effect/spawner/random/pool/gatewayloot/credits,
-/obj/effect/spawner/random/pool/gatewayloot/credits,
-/obj/effect/spawner/random/pool/gatewayloot/credits,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "dark"
@@ -8101,7 +8085,6 @@
 /obj/item/surgicaldrill,
 /obj/effect/spawner/random/dirt/often,
 /obj/item/bonesetter,
-/obj/effect/spawner/random/pool/gatewayloot/bluespace_tap/organic_mixed,
 /turf/simulated/floor/plasteel{
 	dir = 4;
 	icon_state = "dark"
@@ -8348,6 +8331,7 @@
 /area/awaymission/caves/build)
 "Uj" = (
 /obj/effect/spawner/random/dirt/often,
+/obj/effect/spawner/random/maintenance,
 /turf/simulated/floor/plasteel{
 	icon_state = "showroomfloor"
 	},
@@ -18557,7 +18541,7 @@ dX
 dX
 dX
 dX
-cO
+CZ
 TK
 TK
 TK
@@ -18997,7 +18981,7 @@ bO
 dX
 bO
 kG
-jA
+FJ
 mx
 hw
 ew
@@ -19229,7 +19213,7 @@ bO
 bO
 bO
 kG
-sM
+FJ
 ZN
 ZN
 CU
@@ -34724,7 +34708,7 @@ Rn
 as
 as
 Zn
-Rk
+dZ
 GH
 gj
 as
@@ -42406,7 +42390,7 @@ TK
 TK
 TK
 dX
-oq
+CZ
 TK
 TK
 TK

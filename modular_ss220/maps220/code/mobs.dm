@@ -1415,6 +1415,11 @@
 	maxHealth = 600
 	var/mob = /mob/living/simple_animal/hostile/syndicate/melee/autogib/depot/armory/spacebattle
 
+/mob/living/simple_animal/hostile/syndicate/melee/autogib/depot/armory/spacebattle/Initialize(mapload)
+	. = ..()
+	if(prob(20))
+		loot += list(/obj/item/butcher_chainsaw/gateway)
+
 /mob/living/simple_animal/hostile/syndicate/melee/autogib/depot/armory/spacebattle/death()
 	if(type == mob)
 		for(var/obj/machinery/door/poddoor/P in GLOB.airlocks)
