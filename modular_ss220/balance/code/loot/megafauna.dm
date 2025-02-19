@@ -16,10 +16,11 @@
 		new /obj/structure/closet/crate/necropolis/tendril(loc)
 
 /mob/living/simple_animal/hostile/megafauna/bubblegum/drop_loot()
-	if(enraged)
-		var/crate_type = pick(loot)
-		var/obj/structure/closet/crate/C = new crate_type(loc)
-		new /obj/item/melee/spellblade/random(C)
+	if(!enraged)
+		return ..()
+	var/crate_type = pick(loot)
+	var/obj/structure/closet/crate/C = new crate_type(loc)
+	new /obj/item/melee/spellblade/random(C)
 
 /obj/structure/closet/crate/necropolis/bubblegum/populate_contents()
 	new /obj/item/clothing/suit/space/hostile_environment(src)
