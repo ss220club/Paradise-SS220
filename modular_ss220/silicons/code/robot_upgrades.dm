@@ -36,3 +36,23 @@
 	items_to_replace = list(
 		/obj/item/reagent_containers/borghypo/basic = /obj/item/reagent_containers/borghypo/basic/upgraded
 	)
+// Улучшения голопроектора //
+/obj/item/borg/upgrade/atmos_holofan_better
+    name = "Улучшение модульного ATMOS голопроектора"
+    desc = "Повышает энергоэффективность проектора, позволяя создавать до 3 голограмм."
+    origin_tech = "materials=4;engineering=4;magnets=4"
+    require_module = TRUE
+    module_type = /obj/item/robot_module/engineering
+    items_to_replace = list(
+            /obj/item/holosign_creator/atmos/robot_standart = /obj/item/holosign_creator/atmos/robot_better
+    )
+
+/obj/item/borg/upgrade/atmos_holofan_best
+    name = "Оптимизация модульного ATMOS голопроектора"
+    desc = "Оптимизирует энергоэффективность проектора и заменяет микросхемы на продвинутые, позволяя создавать до 5 голограмм."
+    origin_tech = "materials=6;engineering=6;magnets=6;programming=6"
+    require_module = TRUE
+    module_type = /obj/item/robot_module/engineering
+    items_to_replace = list(
+            /obj/item/holosign_creator/atmos/robot_better = /obj/item/holosign_creator/atmos/robot_best
+    )
