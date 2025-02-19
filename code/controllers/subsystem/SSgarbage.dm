@@ -26,7 +26,7 @@ SUBSYSTEM_DEF(garbage)
 
 	//Queue
 	var/list/queues
-	var/static/list/types_to_HARD_DELETE = list(/client, /obj/item/disk/nuclear) // SS220 EDIT - disable hard del (performance tweak)
+	var/static/list/hard_del_enjoyers = list(/client, /obj/item/disk/nuclear) // SS220 EDIT - disable hard del (performance tweak)
 
 	#ifdef REFERENCE_TRACKING
 	var/list/reference_find_on_fail = list()
@@ -256,7 +256,7 @@ SUBSYSTEM_DEF(garbage)
 #ifdef GAME_TESTS
 	del(D)
 #else
-	if(is_type_in_list(D, types_to_HARD_DELETE))
+	if(is_type_in_list(D, hard_del_enjoyers))
 		del(D)
 #endif
 	// SS220 EDIT END
