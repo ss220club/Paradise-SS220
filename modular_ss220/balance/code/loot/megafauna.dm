@@ -7,6 +7,7 @@
 		return ..()
 	if(length(loot))
 		loot = alt_loot
+		return ..()
 
 /mob/living/simple_animal/hostile/megafauna/ancient_robot/drop_loot()
 	if(enraged || !alt_loot_drop || prob(75))
