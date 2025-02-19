@@ -1,28 +1,31 @@
+/mob/living/simple_animal/hostile/megafauna
+	var/static/list/alt_loot = list(/obj/structure/closet/crate/necropolis/tendril)
+	var/alt_loot_drop = TRUE
+
 /mob/living/simple_animal/hostile/megafauna/drop_loot()
-	if(enraged || prob(75))
+	if(enraged || !alt_loot_drop || prob(75))
 		return ..()
 	if(length(loot))
-		var/list/blacklist = list(/datum/nothing, /obj/effect/decal/cleanable/blood/gibs/bubblegum)
-		for(var/L as anything in loot)
-			if(L in blacklist)
-				return ..()
-		new /obj/structure/closet/crate/necropolis/tendril(loc)
+		loot = alt_loot
 
 /mob/living/simple_animal/hostile/megafauna/ancient_robot/drop_loot()
-	if(enraged || prob(75))
+	if(enraged || !alt_loot_drop || prob(75))
 		return ..()
 	if(length(loot))
-		var/list/blacklist = list(/datum/nothing, /obj/effect/decal/cleanable/blood/gibs/bubblegum)
-		for(var/L as anything in loot)
-			if(L in blacklist)
-				return ..()
-		new /obj/structure/closet/crate/necropolis/tendril(loc)
+		loot = alt_loot
+		return ..()
 
-/mob/living/simple_animal/hostile/megafauna/dragon/space_dragon/drop_loot()
-	return ..()
+/mob/living/simple_animal/hostile/megafauna/bubblegum/hallucination
+	alt_loot_drop = FALSE
 
-/mob/living/simple_animal/hostile/megafauna/fleshling/drop_loot()
-	return ..()
+/mob/living/simple_animal/hostile/megafauna/dragon/lesser
+	alt_loot_drop = FALSE
+
+/mob/living/simple_animal/hostile/megafauna/dragon/space_dragon
+	alt_loot_drop = FALSE
+
+/mob/living/simple_animal/hostile/megafauna/fleshling
+	alt_loot_drop = FALSE
 
 /mob/living/simple_animal/hostile/megafauna/bubblegum/drop_loot()
 	if(!enraged)
