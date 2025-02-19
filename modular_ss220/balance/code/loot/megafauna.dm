@@ -1,32 +1,32 @@
 /mob/living/simple_animal/hostile/megafauna
 	var/static/list/alt_loot = list(/obj/structure/closet/crate/necropolis/tendril)
-	var/alt_loot_drop = TRUE
+	var/loot_chance = 75
 
 /mob/living/simple_animal/hostile/megafauna/drop_loot()
-	if(enraged || !alt_loot_drop || prob(75))
+	if(enraged || prob(loot_chance))
 		return ..()
 	if(length(loot))
 		loot = alt_loot
 		return ..()
 
 /mob/living/simple_animal/hostile/megafauna/ancient_robot/drop_loot()
-	if(enraged || !alt_loot_drop || prob(75))
+	if(enraged|| prob(loot_chance))
 		return ..()
 	if(length(loot))
 		loot = alt_loot
 		return ..()
 
 /mob/living/simple_animal/hostile/megafauna/bubblegum/hallucination
-	alt_loot_drop = FALSE
+	loot_chance = 100
 
 /mob/living/simple_animal/hostile/megafauna/dragon/lesser
-	alt_loot_drop = FALSE
+	loot_chance = 100
 
 /mob/living/simple_animal/hostile/megafauna/dragon/space_dragon
-	alt_loot_drop = FALSE
+	loot_chance = 100
 
 /mob/living/simple_animal/hostile/megafauna/fleshling
-	alt_loot_drop = FALSE
+	loot_chance = 100
 
 /mob/living/simple_animal/hostile/megafauna/bubblegum/drop_loot()
 	if(!enraged)
