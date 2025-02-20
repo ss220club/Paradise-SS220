@@ -2516,16 +2516,7 @@
 		var/use_letterheard = alert("Use letterhead? If so, do not add your own header or a footer. Type and format only your actual message.", null,"Nanotrasen","Syndicate", "No")
 		switch(use_letterheard)
 			if("Nanotrasen")
-				// SS220 EDIT - START Убрал шаблон бумаги, сделал тут наш шаблон. В сам шаблон запихнуть не смог
-				P = new /obj/item/paper(null)
-				var/SS220_pen_code_header = "\[grid\]\[row\]\[cell\]     \[logo\]\[cell\]\[small\]Форма Nano Trasen NT-\[b\]CC\[/b\]-RES\[/small\]ᅠᅠᅠᅠᅠ\[small\]Время: \[time\]\[/small\] \
-										\[small\]Станция — \[b\]Центральное командование\[/b\]\[/small\]ᅠᅠ ᅠ\[small\]Год: 2569\[/small\] \
-										\[br\]\[i\]\[large\]\[b\] ᅠ\[field\] \[b\]\[/large\]\[/i\]\[/grid\]\[hr\] \
-										\[center\]Приветствую экипаж и руководство \[station\]!\[/center\]\[br\]\[br\]"
-				P.header = pencode_to_html(SS220_pen_code_header, usr)
-				var/SS220_pen_code_footer = "\[br\]\[small\]\[i\]\[br\]Подпись: \[sign\]\[/i\],   в должности: \[i\]Nanotrasen Navy Officer\[field\].\[/i\]\[/small\]\[br\]\[hr\]\[small\] *Несоблюдение указаний, содержащихся в данном документе, считается нарушением политики компании; Дисциплинарное взыскание за нарушения может быть применено на месте или в конце смены в Центральном командовании;\[br\]*Получатель(и) данного меморандума подтверждает(ют), что он(она/они) несут ответственность за любой ущерб, который может возникнуть в результате игнорирования приведенных здесь директив или рекомендаций;\[br\]*Все отчеты должны храниться конфиденциально их предполагаемым получателем и любой соответствующей стороной. Несанкционированное распространение данного меморандума может привести к дисциплинарным взысканиям.\[/small\]"
-				P.footer = pencode_to_html(SS220_pen_code_footer, usr)
-				// SS220 EDIT - END
+				P = new /obj/item/paper/central_command(usr) // SS220 EDIT - Переопределил конструктор бумажки, чтобы была нужная форма для нашего цк
 			if("Syndicate")
 				P = new /obj/item/paper/syndicate(null)
 			if("No")
