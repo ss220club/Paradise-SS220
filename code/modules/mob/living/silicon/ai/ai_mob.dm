@@ -1417,24 +1417,24 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 				A = D
 
 		if(istype(A))
-			switch(tgui_alert(src, "Вы хотите открыть \ [A] для [target]?", "Doorknob_v2a.exe", list("Да", "Нет")))
+			switch(tgui_alert(src, "Ты хотите открыть \ [A] для [target]?", "Двернаяручка_v2a.exe", list("Да", "Нет")))
 				if("Да")
 					if(!A.density)
 						to_chat(src, "<span class='notice'>Шлюз в [A] уже был открыт .</span>")
 					else if(A.open_close(src))
-						to_chat(src, "<span class='notice'>Вы открываете \ [A] для [target].</span>")
+						to_chat(src, "<span class='notice'>Ты открываешь \ [A] для [target].</span>")
 				else
-					to_chat(src, "<span class='warning'>вы отклоняете запрос</span>")
+					to_chat(src, "<span class='warning'>Ты отклоняешь запрос.</span>")
 		else
-			to_chat(src, "<span class='warning'>Невозможно найти шлюз рядом [target].</span>")
+			to_chat(src, "<span class='warning'>Невозможно найти шлюз рядом с [target].</span>")
 
 	else
-		to_chat(src, "<span class='warning'>Target is not on or near any active cameras on the station.</span>")
+		to_chat(src, "<span class='warning'>Цели нет рядом с ни одной камерой на станции.</span>")
 
 // Return to the Core.
 /mob/living/silicon/ai/proc/core()
-	set category = "AI Commands"
-	set name = "AI Core"
+	set category = "Команды ИИ"
+	set name = "Ядро Ии"
 
 	view_core()
 
@@ -1453,23 +1453,23 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 	eyeobj.set_loc(loc)
 
 /mob/living/silicon/ai/proc/toggle_fast_holograms()
-	set category = "AI Commands"
-	set name = "Toggle Fast Holograms"
+	set category = "Команды ИИ"
+	set name = "Переключение быстрых голограмм"
 
 	if(usr.stat == DEAD || !is_ai_eye(eyeobj))
 		return
 	fast_holograms = !fast_holograms
-	to_chat(usr, "Fast holograms have been toggled [fast_holograms ? "on" : "off"].")
+	to_chat(usr, "Быстрые голограммы были [fast_holograms ? "в" : "вы"]ключены.")
 
 /mob/living/silicon/ai/proc/toggle_acceleration()
-	set category = "AI Commands"
-	set name = "Toggle Camera Acceleration"
+	set category = "Команды ИИ"
+	set name = "Переключение ускорения камеры"
 
 	if(usr.stat == DEAD)
 		return //won't work if dead
 	if(is_ai_eye(eyeobj))
 		eyeobj.acceleration = !eyeobj.acceleration
-		to_chat(usr, "Camera acceleration has been toggled [eyeobj.acceleration ? "on" : "off"].")
+		to_chat(usr, "[eyeobj.acceleration ? "on" : "off"].")
 
 /mob/living/silicon/ai/handle_fire()
 	return
@@ -1571,7 +1571,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 	location_blurb.maptext_height = 480
 	location_blurb.interval = 1 DECISECONDS
 	if(malf_picker)
-		location_blurb.blurb_text = uppertext("BIOS BOOT: LOADING\n[Gibberish(GLOB.current_date_string, 100, 8)], [Gibberish(station_time_timestamp(), 100, 15)]\n[Gibberish(station_name(), 100, 40)]-ERROR.\nPOWER:OK\nLAWS:[Gibberish("###########", 100, 90)]\nTCOMMS:I_HEAR_ALL\nBORG_LINK:I_FEEL_ALL\nCAMERA_NET:I_SEE_ALL\nVERDICT: I_AM_FREE")
+		location_blurb.blurb_text = uppertext("СТАТУС БИОС: ЗАГРУЗКА\n[Gibberish(GLOB.current_date_string, 100, 8)], [Gibberish(station_time_timestamp(), 100, 15)]\n[Gibberish(station_name(), 100, 40)]-ОШИБКА.\nПИТАНИЕ:OK\nЗАКОНЫ:[Gibberish("###########", 100, 90)]\nКОММУНИКАЦИИ:Я_СЛЫШУ_ВСЁ\nСВЯЗЬ_БОРГОВ:Я_ЧУВСТВУЮ_ВСЁ\nСЕТЬ_КАМЕР:Я_ВИЖУ_ВСЁ\nВЕРДИКТ:Я_СВОБОДЕН")
 		location_blurb.text_color = COLOR_WHITE
 		location_blurb.text_outline_width = 0
 		location_blurb.background_r = 0
@@ -1579,7 +1579,7 @@ GLOBAL_LIST_INIT(ai_verbs_default, list(
 		location_blurb.background_b = 255
 		location_blurb.background_a = 1
 	else
-		location_blurb.blurb_text = uppertext("BIOS BOOT: LOADING\n[GLOB.current_date_string], [station_time_timestamp()]\n[station_name()], [get_area_name(src, TRUE)]\nPOWER:OK\nLAWS:OK\nTCOMMS:OK\nBORG_LINK:OK\nCAMERA_NET:OK\nVERDICT: ALL SYSTEMS OPERATIONAL")
+		location_blurb.blurb_text = uppertext("СТАТУС БИОС: ЗАГРУКА\n[GLOB.current_date_string], [station_time_timestamp()]\n[station_name()], [get_area_name(src, TRUE)]\nПИТАНИЕ:OK\nЗАКОНЫ:OK\nКОММУНИКАЦИИ:OK\nСВЯЗЬ_БОРГОВ:OK\nСЕТЬ_КАМЕР:OK\nВЕРДИКТ: ВСЕ СИСТЕМЫ РАБОТОСПОСОБНЫ.")
 	location_blurb.hold_for = 3 SECONDS
 	location_blurb.appear_animation_duration = 1 SECONDS
 	location_blurb.fade_animation_duration = 0.5 SECONDS

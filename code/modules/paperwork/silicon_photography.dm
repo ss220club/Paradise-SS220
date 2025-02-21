@@ -40,7 +40,7 @@
 
 	else
 		injectaialbum(P)
-		to_chat(usr, "<span class='unconscious'>Снимок сохранён</span>")
+		to_chat(usr, "<span class='unconscious'>Снимок сохранён.</span>")
 
 /obj/item/camera/siliconcam/proc/selectpicture(obj/item/camera/siliconcam/cam)
 	if(!cam)
@@ -49,7 +49,7 @@
 	var/list/nametemp = list()
 	var/find
 	if(length(cam.aipictures) == 0)
-		to_chat(usr, "<span class='userdanger'>Нет сохранённых снимков</span>")
+		to_chat(usr, "<span class='userdanger'>Нет сохранённых снимков.</span>")
 		return
 	for(var/datum/picture/t in cam.aipictures)
 		nametemp += t.fields["name"]
@@ -81,7 +81,7 @@
 		return
 
 	cam.aipictures -= selection
-	to_chat(usr, "<span class='unconscious'>Снимок удалён</span>")
+	to_chat(usr, "<span class='unconscious'>Снимок удалён.</span>")
 
 /obj/item/camera/siliconcam/ai_camera/can_capture_turf(turf/T, mob/user)
 	var/mob/living/silicon/ai = user
@@ -95,15 +95,15 @@
 
 /obj/item/camera/siliconcam/proc/camera_mode_off()
 	src.in_camera_mode = 0
-	to_chat(usr, "<B>Режим фотоаппарата деактивирован</B>")
+	to_chat(usr, "<B>Режим фотоаппарата деактивирован.</B>")
 
 /obj/item/camera/siliconcam/proc/camera_mode_on()
 	src.in_camera_mode = 1
-	to_chat(usr, "<B>Режим фотоаппарата активирован</B>")
+	to_chat(usr, "<B>Режим фотоаппарата активирован.</B>")
 
 /obj/item/camera/siliconcam/ai_camera/printpicture(mob/user, datum/picture/P)
 	injectaialbum(P)
-	to_chat(usr, "<span class='unconscious'>Снимок записан</span>")
+	to_chat(usr, "<span class='unconscious'>Снимок записан.</span>")
 
 /obj/item/camera/siliconcam/robot_camera/printpicture(mob/user, datum/picture/P)
 	injectmasteralbum(P)
@@ -116,9 +116,9 @@
 	toggle_camera_mode()
 
 /obj/item/camera/siliconcam/ai_camera/verb/change_lens()
-	set category = "AI Commands"
-	set name = "Set Photo Focus"
-	set desc = "Changes the lens size of your photo camera"
+	set category = "Команды ИИ"
+	set name = "Смена фокусировки камеры"
+	set desc = "Меняет размер линзы твоей фотокамеры"
 
 	change_size()
 
@@ -137,29 +137,29 @@
 	deletepicture(src)
 
 /obj/item/camera/siliconcam/robot_camera/verb/take_image()
-	set category ="Robot Commands"
-	set name = "Take Image"
+	set category ="Команды робота"
+	set name = "Сделать снимок"
 	set desc = "Takes an image"
 
 	toggle_camera_mode()
 
 /obj/item/camera/siliconcam/robot_camera/verb/change_lens()
-	set category = "Robot Commands"
-	set name = "Set Photo Focus"
-	set desc = "Changes the lens size of your photo camera"
+	set category = "Команды робота"
+	set name = "Смена фокусировки камеры"
+	set desc = "Меняет размер линзы твоей фотокамеры"
 
 	change_size()
 
 /obj/item/camera/siliconcam/robot_camera/verb/view_images()
-	set category ="Robot Commands"
-	set name = "View Images"
+	set category ="Команды робота"
+	set name = "Осмотреть фотографии"
 	set desc = "View images"
 
 	viewpictures()
 
 /obj/item/camera/siliconcam/robot_camera/verb/delete_images()
-	set category = "Robot Commands"
-	set name = "Delete Image"
+	set category = "Команды робота"
+	set name = "Удалить фотографию"
 	set desc = "Delete a local image"
 
 	// Explicitly only allow deletion from the local camera

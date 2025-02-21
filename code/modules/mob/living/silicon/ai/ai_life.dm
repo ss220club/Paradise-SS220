@@ -27,7 +27,7 @@
 		check_holopad_eye()
 
 	if(malfhack && malfhack.aidisabled)
-		to_chat(src, "<span class='danger'>ERROR: APC access disabled, hack attempt canceled.</span>")
+		to_chat(src, "<span class='danger'>ОШИБКА: ДОСТУП К ЛКП ЗАБЛОКИРОВАН, попытка взлома отменена.</span>")
 		deltimer(malfhacking)
 		// This proc handles cleanup of screen notifications and
 		// messenging the client
