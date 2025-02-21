@@ -322,8 +322,13 @@
 			"r" = list("r", "rr", "rrr"),
 			"р" = list("р", "рр", "ррр"))
 	autohiss_exempt = list("Canilunzt")
-
-	scream_verb = "скулит"
+	male_scream_sound = 'modular_ss220/emotes/audio/vulpkanin/vulp_scream.ogg'
+	female_scream_sound = 'modular_ss220/emotes/audio/vulpkanin/vulp_scream.ogg'
+	male_giggle_sound = 'modular_ss220/emotes/audio/vulpkanin/vulp_giggle.ogg'
+	female_giggle_sound = 'modular_ss220/emotes/audio/vulpkanin/vulp_giggle.ogg'
+	male_laugh_sound = 'modular_ss220/emotes/audio/vulpkanin/vulp_laugh.ogg'
+	female_laugh_sound = 'modular_ss220/emotes/audio/vulpkanin/vulp_laugh.ogg'
+	scream_verb = "кричит"
 	suicide_messages = list(
 		"пытается откусить себе язык!",
 		"выдавливает когтями свои глазницы!",
